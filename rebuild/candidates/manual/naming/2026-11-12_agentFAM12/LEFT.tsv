@@ -1,0 +1,574 @@
+address	current_name	reason
+00798D30	_unattributed::GetShopKeeperGiveHintTextTag_00798d30	has a binding/vtable hint (['?GetHint@CTCShopKeeper@@QAE?AVCCharString@@XZ']) but not reached this pass
+0041971E	_unattributed::ReleaseFirstMember_0041971e	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0045019A	_unattributed::ReleaseFirstMember_0045019a	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00456389	_unattributed::ReleaseFirstMember_00456389	has a binding/vtable hint (['?_M_clear@?$vector@VCEntry@CTextureReplacementDef@@V?$allocator@VCEntry@CTextureReplacementDef@@@std@@@std@@IAEXXZ']) but not reached this pass
+0045CDE2	_unattributed::ReleaseFirstMember_0045cde2	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0046117A	_unattributed::ReleaseFirstMember_0046117a	has a binding/vtable hint (['?_M_clear@CReverbEnvironmentEntryVector@@QAEXXZ']) but not reached this pass
+004CFFB0	_unattributed::ReleaseFirstMember_004cffb0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004D9C5D	_unattributed::ReleaseFirstMember_004d9c5d	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004DCFBB	_unattributed::ReleaseFirstMember_004dcfbb	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004E2AEC	_unattributed::ReleaseFirstMember_004e2aec	has a binding/vtable hint (['?Clear@CParticleAttachmentInfoVector@@QAEXXZ']) but not reached this pass
+004E3088	_unattributed::ReleaseFirstMember_004e3088	has a binding/vtable hint (['?_M_clear@CExplosionRingVector@@QAEXXZ']) but not reached this pass
+004E60CA	_unattributed::ReleaseFirstMember_004e60ca	has a binding/vtable hint (['?_M_clear@CEngineGraphicVector@@QAEXXZ']) but not reached this pass
+0040F2C0	_unattributed::ReleaseFirstMember_0040f2c0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00440D60	_unattributed::ReleaseFirstMember_00440d60	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004545CA	_unattributed::ReleaseFirstMember_004545ca	has a binding/vtable hint (['?_M_clear@CDegradableInfoVector@@QAEXXZ']) but not reached this pass
+00406070	_unattributed::CStringOwner_00406070	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004060E0	_unattributed::CStringOwner_004060e0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0042A33F	_unattributed::CStringOwner_0042a33f	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0045368C	_unattributed::CStringOwner_0045368c	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00453698	_unattributed::CStringOwner_00453698	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00453888	_unattributed::CStringOwner_00453888	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0049378C	_unattributed::CStringOwner_0049378c	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0057F616	_unattributed::CStringOwner_0057f616	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00592D37	_unattributed::CStringOwner_00592d37	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0059ADF0	_unattributed::CStringOwner_0059adf0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0059ADFC	_unattributed::CStringOwner_0059adfc	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0059AF53	_unattributed::CStringOwner_0059af53	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00675BE0	_unattributed::CStringOwner_00675be0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006BAA40	_unattributed::CStringOwner_006baa40	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0083AFE0	_unattributed::CStringOwner_0083afe0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00869FA0	_unattributed::CStringOwner_00869fa0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A60510	_unattributed::CStringOwner_00a60510	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00BC9D60	_unattributed::CStringOwner_00bc9d60	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00413280	_unattributed::CStringOwner_00413280	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0043C3F0	_unattributed::CStringOwner_0043c3f0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0044A570	_unattributed::CStringOwner_0044a570	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0047A750	_unattributed::CStringOwner_0047a750	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004CB0D0	_unattributed::CStringOwner_004cb0d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0050B470	_unattributed::CStringOwner_0050b470	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00510540	_unattributed::CStringOwner_00510540	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00510730	_unattributed::CStringOwner_00510730	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00510890	_unattributed::CStringOwner_00510890	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00510990	_unattributed::CStringOwner_00510990	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00525FF0	_unattributed::CStringOwner_00525ff0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00619F70	_unattributed::CStringOwner_00619f70	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0074C6D0	_unattributed::CStringOwner_0074c6d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00822690	_unattributed::CStringOwner_00822690	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009C97A0	_unattributed::CStringOwner_009c97a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00B288C0	_unattributed::CStringOwner_00b288c0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00BF8D50	_unattributed::CStringOwner_00bf8d50	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00515640	_unattributed::~CStringAndBuffer_00515640	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005190D0	_unattributed::~CStringAndBuffer_005190d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0052B860	_unattributed::~CStringAndBuffer_0052b860	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009D3210	_unattributed::~CStringAndBuffer_009d3210	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009D8630	_unattributed::vfunc_0	has a binding/vtable hint ([]) but not reached this pass
+0047A770	_unattributed::~CTripleCWideString_0047a770	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00564B60	_unattributed::~CTripleCMember_0099eae0_00564b60	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00566940	_unattributed::~CTripleCMember_0099eae0_00566940	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006873D0	_unattributed::AssignTarget_006873d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0074D0D0	_unattributed::AssignTarget_0074d0d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007C76D0	_unattributed::AssignTarget_007c76d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007F39A0	_unattributed::AssignTarget_007f39a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007F39F0	_unattributed::AssignTarget_007f39f0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007F3A40	_unattributed::AssignTarget_007f3a40	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007F3B10	_unattributed::AssignTarget_007f3b10	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007F3B60	_unattributed::AssignTarget_007f3b60	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007FCD00	_unattributed::AssignTarget_007fcd00	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0085AB00	_unattributed::AssignTarget_0085ab00	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0087C390	_unattributed::AssignTarget_0087c390	folded CIntelligentPointer setter at +0xC: eight binders of different classes (CTCBed/CTCFirePoint/CTCOccupiable/CTCCoverPoint/CVillageTaskBase ...) -- no single owner
+004AB270	_unattributed::AssignTarget_004ab270	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00687420	_unattributed::AssignTarget_00687420	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008147D0	_unattributed::AssignTarget_008147d0	has a binding/vtable hint (['?SetBoastingPodium@CTCBoastingPosition@@QAEXAAVCThing@@@Z']) but not reached this pass
+008ABC90	_unattributed::AssignTarget_008abc90	only source is the binder name ?SetOnlyTarget@CTCTargetingBase@@ (no PDB carries it)
+00933280	_unattributed::AssignTarget_00933280	only source is the binder name ?SetCriminalHandler@CTCVillage@@ (no PDB carries it)
+004480D0	_unattributed::ScalarDeletingDestructor_CPairCounted_004480d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004AC780	_unattributed::ScalarDeletingDestructor_CPairCounted_004ac780	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005533D0	_unattributed::ScalarDeletingDestructor_CPairCounted_005533d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005667E0	_unattributed::ScalarDeletingDestructor_CPairCounted_005667e0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0069D000	_unattributed::ScalarDeletingDestructor_CPairCounted_0069d000	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00738780	_unattributed::ScalarDeletingDestructor_CPairCounted_00738780	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008249F0	_unattributed::ScalarDeletingDestructor_CPairCounted_008249f0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A2A760	_unattributed::ScalarDeletingDestructor_CPairCounted_00a2a760	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00AD1B60	_unattributed::ScalarDeletingDestructor_CPairCounted_00ad1b60	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00AD2640	_unattributed::ScalarDeletingDestructor_CPairCounted_00ad2640	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00AD33E0	_unattributed::ScalarDeletingDestructor_CPairCounted_00ad33e0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00AE9770	_unattributed::ScalarDeletingDestructor_CPairCounted_00ae9770	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00B440A0	_unattributed::ScalarDeletingDestructor_CPairCounted_00b440a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00B8F220	_unattributed::ScalarDeletingDestructor_CPairCounted_00b8f220	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00B96860	_unattributed::ScalarDeletingDestructor_CPairCounted_00b96860	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00553720	_unattributed::ScalarDeletingDestructor_CBufferOwner_00553720	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00567520	_unattributed::ScalarDeletingDestructor_CBufferOwner_00567520	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00616B40	_unattributed::ScalarDeletingDestructor_CBufferOwner_00616b40	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00674AA0	_unattributed::ScalarDeletingDestructor_CBufferOwner_00674aa0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00674C10	_unattributed::ScalarDeletingDestructor_CBufferOwner_00674c10	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0075F7C0	_unattributed::ScalarDeletingDestructor_CBufferOwner_0075f7c0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00764E50	_unattributed::ScalarDeletingDestructor_CBufferOwner_00764e50	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007DC6A0	_unattributed::ScalarDeletingDestructor_CBufferOwner_007dc6a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0085E510	_unattributed::ScalarDeletingDestructor_CBufferOwner_0085e510	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0099CDC0	_unattributed::ScalarDeletingDestructor_CBufferOwner_0099cdc0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A4A820	_unattributed::ScalarDeletingDestructor_CBufferOwner_00a4a820	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A72400	_unattributed::ScalarDeletingDestructor_CBufferOwner_00a72400	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00BCD9A0	_unattributed::ScalarDeletingDestructor_CBufferOwner_00bcd9a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004AD930	_unattributed::ScalarDeletingDestructor_CBufferOwner_004ad930	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0056DBC0	_unattributed::ScalarDeletingDestructor_CBufferOwner_0056dbc0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006B6310	_unattributed::ScalarDeletingDestructor_CBufferOwner_006b6310	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00709390	_unattributed::ScalarDeletingDestructor_CBufferOwner_00709390	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00728650	_unattributed::ScalarDeletingDestructor_CBufferOwner_00728650	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A97E10	_unattributed::ScalarDeletingDestructor_CBufferOwner_00a97e10	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00AADF90	_unattributed::ScalarDeletingDestructor_CBufferOwner_00aadf90	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00AD4F80	_unattributed::ScalarDeletingDestructor_CBufferOwner_00ad4f80	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00B22EB0	_unattributed::ScalarDeletingDestructor_CBufferOwner_00b22eb0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00674BE0	_unattributed::ScalarDeletingDestructor_CBufferOwner_00674be0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00708D70	_unattributed::ScalarDeletingDestructor_CBufferOwner_00708d70	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00770020	_unattributed::ScalarDeletingDestructor_CBufferOwner_00770020	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00771B00	_unattributed::ScalarDeletingDestructor_CBufferOwner_00771b00	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00AC3990	_unattributed::ScalarDeletingDestructor_CBufferOwner_00ac3990	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00AF70A0	_unattributed::ScalarDeletingDestructor_CBufferOwner_00af70a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00674DE0	_unattributed::ScalarDeletingDestructor_CBufferOwner_00674de0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0070AC30	_unattributed::ScalarDeletingDestructor_CBufferOwner_0070ac30	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00828F10	_unattributed::ScalarDeletingDestructor_CBufferOwner_00828f10	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00B2ED00	_unattributed::ScalarDeletingDestructor_CBufferOwner_00b2ed00	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00BAA030	_unattributed::ScalarDeletingDestructor_CBufferOwner_00baa030	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00BD8930	_unattributed::ScalarDeletingDestructor_CBufferOwner_00bd8930	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0042982F	_unattributed::Override_0042992b	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+00429837	_unattributed::Override_0042992b	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+0042983F	_unattributed::Override_004298f3	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+00429847	_unattributed::Override_004298f3	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+0042984F	_unattributed::Override_0042990f	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+00429857	_unattributed::Override_0042990f	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+0052D710	_unattributed::Override_0052d770	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+0053CE87	_unattributed::Override_0053cfa6	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+0053CE8F	_unattributed::Override_0053cfa6	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+00543B40	_unattributed::Override_00543c70	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+00553FE0	_unattributed::Override_005540d0	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+0055C200	_unattributed::Override_0055c4a0	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+009D80A0	_unattributed::Override_009d8180	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+00A55400	_unattributed::Override_00a555c0	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+00B38CC0	_unattributed::Override_00b38d10	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+00B4A480	_unattributed::Override_00b4a4a0	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+00B86510	_unattributed::Override_00b866a0	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+00BDAEC0	_unattributed::Override_00bdaf60	virtual override found by vtable slot; the slot's PDB method name not resolved -- not attempted (time)
+005121E0	_unattributed::GetTarget_005121e0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00643E9A	_unattributed::GetTarget_00643e9a	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00644644	_unattributed::GetTarget_00644644	has a binding/vtable hint (['?ClearDisplay@CDrawHealth@NPlayerGui@@QAEXXZ']) but not reached this pass
+0064528A	_unattributed::GetTarget_0064528a	has a binding/vtable hint (['?ClearDisplay@CDrawAbilityButtons@NPlayerGui@@QAEXXZ']) but not reached this pass
+00645605	_unattributed::GetTarget_00645605	has a binding/vtable hint (['?ClearDisplay@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ']) but not reached this pass
+00645821	_unattributed::GetTarget_00645821	has a binding/vtable hint (['?ClearDisplay@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ']) but not reached this pass
+006B8410	_unattributed::GetTarget_006b8410	has a binding/vtable hint (['?RefreshScreenEffects@CEnvironmentSpellEffectInterpolator@@QAEXXZ']) but not reached this pass
+00787C1B	_unattributed::GetTarget_00787c1b	has a binding/vtable hint (['?IsOpen@CTCTrapBase@@QBE_NXZ']) but not reached this pass
+0059422B	_unattributed::GetInterface_0x46	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00594276	_unattributed::GetInterface_0x27	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005942C1	_unattributed::GetInterface_0xe	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0059430C	_unattributed::GetInterface_0x53	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00594357	_unattributed::GetInterface_0x4	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005943EB	_unattributed::GetInterface_0x29	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00594436	_unattributed::GetInterface_0x8	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005B2DF4	_unattributed::GetInterface_0x5e	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005BB72E	_unattributed::GetInterface_0x78	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005BB779	_unattributed::GetInterface_0x5c	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005BB7C4	_unattributed::GetInterface_0x78	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005BB80F	_unattributed::GetInterface_0x5c	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005BB999	_unattributed::GetInterface_0x53	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005C155B	_unattributed::GetInterface_0x48	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005C15A6	_unattributed::GetInterface_0x39	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005C163D	_unattributed::GetInterface_0x1a	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005C1688	_unattributed::GetInterface_0x48	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005C171F	_unattributed::GetInterface_0x2	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005CC364	_unattributed::GetInterface_0x47	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005CC447	_unattributed::GetInterface_0x31	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005CC492	_unattributed::GetInterface_0x16	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005D86E5	_unattributed::GetInterface_0x42	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F99DE	_unattributed::GetInterface_0x68	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006564B3	_unattributed::GetInterface_0x34	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0065654A	_unattributed::GetInterface_0x30	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00656595	_unattributed::GetInterface_0x27	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006565E0	_unattributed::GetInterface_0xd	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0066073C	_unattributed::GetInterface_0x1f	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006607FD	_unattributed::GetInterface_0x7	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00660DD8	_unattributed::GetInterface_0x23	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00660E23	_unattributed::GetInterface_0x75	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00660F06	_unattributed::GetInterface_0x4f	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00660F6A	_unattributed::GetInterface_0x51	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00789111	_unattributed::GetInterface_0x7f	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007BEA08	_unattributed::GetInterface_0x7d	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005C15F1	_unattributed::GetInterface_0xdc	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005C16D3	_unattributed::GetInterface_0xbf	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005CC3AF	_unattributed::GetInterface_0x87	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005CC3FB	_unattributed::GetInterface_0x88	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F9992	_unattributed::GetInterface_0x91	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006563CF	_unattributed::GetInterface_0x8c	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0065641B	_unattributed::GetInterface_0xcb	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00656467	_unattributed::GetInterface_0xd0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006564FE	_unattributed::GetInterface_0xdf	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0065662B	_unattributed::GetInterface_0x90	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00656677	_unattributed::GetInterface_0xa8	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006606F0	_unattributed::GetInterface_0xc3	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00660848	_unattributed::GetInterface_0xb5	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00660E6E	_unattributed::GetInterface_0xbd	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00660EBA	_unattributed::GetInterface_0xf3	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007BEA53	_unattributed::GetInterface_0x88	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006A5250	_unattributed::GetFloatThrough_006a5250	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00751B70	_unattributed::GetFloatThrough_0x14_0x44_00751b70	binder name only; not attempted (time)
+00810F30	_unattributed::GetFloatThrough_0x08_0x2c_00810f30	binder name only; not attempted (time)
+00662030	_unattributed::GetFloatThrough_0xe0_0x78_00662030	binder name only; not attempted (time)
+006D6530	_unattributed::GetFloatThrough_0x58_0xf4_006d6530	binder name only; not attempted (time)
+006D6540	_unattributed::GetFloatThrough_0x58_0xf0_006d6540	binder name only; not attempted (time)
+00528300	_unattributed::Remove_00528300	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005285D0	_unattributed::Remove_005285d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00528B00	_unattributed::Remove_00528b00	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0052DE10	_unattributed::Remove_0052de10	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0052DF90	_unattributed::Remove_0052df90	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00535580	_unattributed::Remove_00535580	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005E8DD0	_unattributed::Remove_005e8dd0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005E8F50	_unattributed::Remove_005e8f50	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00623A00	_unattributed::Remove_00623a00	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00624080	_unattributed::Remove_00624080	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006C7530	_unattributed::Remove_006c7530	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006F0C30	_unattributed::Remove_006f0c30	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0079F030	_unattributed::Remove_0079f030	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0079F260	_unattributed::Remove_0079f260	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0082EFE0	_unattributed::Remove_0082efe0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0082F2D0	_unattributed::Remove_0082f2d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00990070	_unattributed::Remove_00990070	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00990190	_unattributed::Remove_00990190	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009D7630	_unattributed::Remove_009d7630	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009D7A50	_unattributed::Remove_009d7a50	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004C36C0	_unattributed::Remove_004c36c0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004C66A0	_unattributed::Remove_004c66a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00535160	_unattributed::Remove_00535160	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00638D70	_unattributed::Remove_00638d70	has a binding/vtable hint (['?erase@CCrimeSet@@QAEXUSCrimeIterator@@@Z']) but not reached this pass
+006C7CA0	_unattributed::Remove_006c7ca0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006D3CA0	_unattributed::Remove_006d3ca0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006D4110	_unattributed::Remove_006d4110	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006F0930	_unattributed::Remove_006f0930	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006F1890	_unattributed::Remove_006f1890	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00776F60	_unattributed::Remove_00776f60	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007E9160	_unattributed::Remove_007e9160	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0082F020	_unattributed::Remove_0082f020	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0082F350	_unattributed::Remove_0082f350	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008351B0	_unattributed::Remove_008351b0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00883450	_unattributed::Remove_00883450	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00990430	_unattributed::Remove_00990430	has a binding/vtable hint (['?erase@CObjectMap@@QAEXUCObjectIterator@@@Z']) but not reached this pass
+00A21520	_unattributed::Remove_00a21520	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A21A50	_unattributed::Remove_00a21a50	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004D97CE	_unattributed::~CAggregate_004d97ce	has a binding/vtable hint (['?CTCAvoidRegionExit_Destruct@@YIXPAX@Z']) but not reached this pass
+004E3275	_unattributed::~CAggregate_004e3275	has a binding/vtable hint (['?CTCIdleScheduler_Destruct@@YIXPAX@Z']) but not reached this pass
+005BC216	_unattributed::~CAggregate_005bc216	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00629020	_unattributed::~CAggregate_00629020	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00629060	_unattributed::~CAggregate_00629060	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00629110	_unattributed::~CAggregate_00629110	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00687210	_unattributed::~CAggregate_00687210	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006DF860	_unattributed::~CAggregate_006df860	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0078AB20	_unattributed::~CAggregate_0078ab20	has a binding/vtable hint (['??1CCreatureAction_HeroLoadRangedWeapon@@QAE@XZ']) but not reached this pass
+007A9820	_unattributed::~CAggregate_007a9820	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007ED270	_unattributed::~CAggregate_007ed270	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009005EC	_unattributed::~CAggregate_009005ec	has a binding/vtable hint (['?CAIStateGroup_NymphFloatAround_Destruct@@YIXPAX@Z']) but not reached this pass
+0090190F	_unattributed::~CAggregate_0090190f	has a binding/vtable hint (['?CAIStateGroup_Thunder_Destruct@@YIXPAX@Z']) but not reached this pass
+00903265	_unattributed::~CAggregate_00903265	has a binding/vtable hint (['?CAIStateGroup_JackOfBladesStage1_Destruct@@YIXPAX@Z']) but not reached this pass
+004585BD	_unattributed::~CAggregate_004585bd	has a binding/vtable hint (['?CArmourDef_Destruct@@YIXPAX@Z']) but not reached this pass
+004E0080	_unattributed::~CAggregate_004e0080	has a binding/vtable hint (['?CTCTargetingAI_Destruct@@YIXPAX@Z']) but not reached this pass
+0066C2F0	_unattributed::~CAggregate_0066c2f0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00730440	_unattributed::~CAggregate_00730440	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00900A2E	_unattributed::~CAggregate_00900a2e	has a binding/vtable hint (['?CAIStateGroup_MinionBehaviourCrowdBase_Destruct@@YIXPAX@Z', '?CAIStateGroup_MinionBehaviourPodiumEmoteNeutral_Destruc) but not reached this pass
+00901596	_unattributed::~CAggregate_00901596	has a binding/vtable hint (['?CAIStateGroup_StealStealableItem_Destruct@@YIXPAX@Z']) but not reached this pass
+00901635	_unattributed::~CAggregate_00901635	has a binding/vtable hint (['?CAIStateGroup_RecoverStealableItem_Destruct@@YIXPAX@Z']) but not reached this pass
+009016B6	_unattributed::~CAggregate_009016b6	has a binding/vtable hint (['?CAIStateGroup_CarryCrateAndFollow_Destruct@@YIXPAX@Z']) but not reached this pass
+0090332E	_unattributed::~CAggregate_0090332e	has a binding/vtable hint (['?CAIStateGroup_Guildmaster_Destruct@@YIXPAX@Z']) but not reached this pass
+00903456	_unattributed::~CAggregate_00903456	has a binding/vtable hint (['?CAIStateGroup_ScorpionKing_Destruct@@YIXPAX@Z']) but not reached this pass
+0092C2E0	_unattributed::~CAggregate_0092c2e0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009A8E60	_unattributed::~CAggregate_009a8e60	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005E0AB0	_unattributed::~CSharedOwner_005e0ab0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005E1790	_unattributed::~CSharedOwner_005e1790	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006B14F0	_unattributed::~CSharedOwner_006b14f0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007042A0	_unattributed::~CSharedOwner_007042a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A006E0	_unattributed::~CSharedOwner_00a006e0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0042A944	_unattributed::SPairLongCSecond_00429e29	has a binding/vtable hint (['??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABU01@@Z']) but not reached this pass
+00564B20	_unattributed::SPairLongCSecond_0099b720	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0056CB60	_unattributed::SPairLongCSecond_004b73a0	has a binding/vtable hint (['??$?0PAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@?$pair@QAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@std@@QAE) but not reached this pass
+0056DAB0	_unattributed::SPairLongCSecond_0056d490	has a binding/vtable hint (['??$?0JV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@?$pair@$$CBJV?$vector@PAVC) but not reached this pass
+00579CDE	_unattributed::SPairLongCSecond_00579c35	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00579CFB	_unattributed::SPairLongCSecond_00579c35	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00579E1B	_unattributed::SPairLongCSecond_00579c35	has a binding/vtable hint (['??$?0W4EHeroAbility@@USExpSpendUndo@@@?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@QAE@ABU?$pair@W4EHeroAbility@@U) but not reached this pass
+00579E4E	_unattributed::SPairLongCSecond_00579c35	has a binding/vtable hint (['??$?0W4EHeroTrainableStatType@@USExpSpendUndo@@@?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@QAE@ABU?$pa) but not reached this pass
+005B1653	_unattributed::SPairLongCSecond_005b12f4	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005BB37D	_unattributed::SPairLongCSecond_0043f450	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006951A0	_unattributed::SPairLongCSecond_0099ec30	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00798D50	_unattributed::SetItem_CItemOwner_00798d50	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008BD5E0	_unattributed::SetItem_CItemOwner_008bd5e0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008BD640	_unattributed::SetItem_CItemOwner_008bd640	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008BD670	_unattributed::SetItem_CItemOwner_008bd670	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008BD6A0	_unattributed::SetItem_CItemOwner_008bd6a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008BD6D0	_unattributed::SetItem_CItemOwner_008bd6d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008BD700	_unattributed::SetItem_CItemOwner_008bd700	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008BD730	_unattributed::SetItem_CItemOwner_008bd730	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008BD760	_unattributed::SetItem_CItemOwner_008bd760	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008BD790	_unattributed::SetItem_CItemOwner_008bd790	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008CEAB0	_unattributed::SetItem_CItemOwner_008ceab0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00969730	_unattributed::SetItem_CItemOwner_00969730	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00527860	_unattributed::FreeTree_CTreeOwner_00527860	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00566110	_unattributed::FreeTree_CTreeOwner_00566110	has a binding/vtable hint (['?_M_erase@?$CMap@$0BI@@@QAEXPAUSRbTreeNodeBase@@@Z']) but not reached this pass
+006EFC30	_unattributed::FreeTree_CTreeOwner_006efc30	has a binding/vtable hint (['?EraseSubtree@CSpeechGroupInfoMap@@QAEXPAUSRbTreeNode@@@Z']) but not reached this pass
+008B1D40	_unattributed::FreeTree_CTreeOwner_008b1d40	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008B1D80	_unattributed::FreeTree_CTreeOwner_008b1d80	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00510DA0	_unattributed::FreeTree_CTreeOwner_00510da0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0079EEC0	_unattributed::FreeTree_CTreeOwner_0079eec0	has a binding/vtable hint (['?Erase@CThingPointerSet@@QAEXPAUnode@1@@Z']) but not reached this pass
+00817280	_unattributed::FreeTree_CTreeOwner_00817280	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008B1DC0	_unattributed::FreeTree_CTreeOwner_008b1dc0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00999E50	_unattributed::FreeTree_CTreeOwner_00999e50	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004AE490	_unattributed::FreeTree_CTreeOwner_004ae490	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005149B0	_unattributed::FreeTree_CTreeOwner_005149b0	has a binding/vtable hint (['?_M_erase@CExitTextOffsetMap@@QAEXPAUSExitTextNode@@@Z']) but not reached this pass
+00630D90	_unattributed::FreeTree_CTreeOwner_00630d90	has a binding/vtable hint (['?_M_erase@?$CRbTree@$00@@QAEXPAUCRbTreeNode@@@Z']) but not reached this pass
+0071F8F0	_unattributed::FreeTree_CTreeOwner_0071f8f0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00782FE0	_unattributed::FreeTree_CTreeOwner_00782fe0	has a binding/vtable hint (['?_M_erase@CHeroCrowdMap@@QAEXPAU_Rb_tree_node_base@@@Z']) but not reached this pass
+008834F0	_unattributed::FreeTree_CTreeOwner_008834f0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009AA880	_unattributed::FreeTree_CTreeOwner_009aa880	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009D8460	_unattributed::FreeTree_CTreeOwner_009d8460	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00452335	_unattributed::TransferBinaryIn_00452335	CPersistTraits<CDefIndex>::TransferBinaryIn is PDB-named and bound, but engine/CDefIndex.h declares CDefIndex() out of line, so the template body's `T tval;` would call it (retail does not); needs a header opt-in (inline trivial default ctor) -- not attempted
+00453815	_unattributed::operator=	has a binding/vtable hint (['?CCarrySlotDef_CopyImpl@@YIXPAVCCarrySlotDef@@PAX@Z']) but not reached this pass
+0045389E	_unattributed::operator=	has a binding/vtable hint (['?CActionUseDef_Copy_impl@@YIXPAVCActionUseDef@@PAXPBV1@@Z']) but not reached this pass
+0045403D	_unattributed::operator=	has a binding/vtable hint (['?base_copy@@YIXPAVCDragonActionNapalmDef@@PAX@Z']) but not reached this pass
+0045D57D	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0046F6AF	_unattributed::operator=	has a binding/vtable hint (['@CLensFlareElementDef_Copy_impl@8', '??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z']) but not reached this pass
+00493617	_unattributed::operator=	has a binding/vtable hint (['??0CEmbeddedHighlight@CSubtitleRenderer@@QAE@ABV01@@Z']) but not reached this pass
+004936EC	_unattributed::operator=	has a binding/vtable hint (['??4CEmbeddedHighlight@CSubtitleRenderer@@QAEAAV01@ABV01@@Z']) but not reached this pass
+004E001A	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004E05AD	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004E0750	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004E1367	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004E189C	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004E45F7	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004E6CC6	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004ABD40	_unattributed::~CBase_0099eae0_Derived_004abd40	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004AD2A0	_unattributed::~CBase_0099eae0_Derived_004ad2a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A489C0	_unattributed::~CBase_0099eae0_Derived_00a489c0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A49EA0	_unattributed::~CBase_0099eae0_Derived_00a49ea0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00BA7F40	_unattributed::~CBase_0099a2e0_Derived_00ba7f40	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004AC700	_unattributed::ScalarDeletingDestructor_SPairCMember_0099eae0CountedPointer_004ac700	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A0A4D0	_unattributed::ScalarDeletingDestructor_SPairCMember_0099eae0CountedPointer_00a0a4d0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A49D40	_unattributed::ScalarDeletingDestructor_SPairCMember_0099eae0CountedPointer_00a49d40	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00453BE8	_unattributed::operator=	has a binding/vtable hint (['?Base_Copy@@YIXPAVCCoopSpiritDef@@PBV1@@Z']) but not reached this pass
+00453C20	_unattributed::operator=	has a binding/vtable hint (['?CContextSensitiveItemDef_CopyImpl@@YIXPAX0@Z']) but not reached this pass
+0045BDB6	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00460589	_unattributed::operator=	has a binding/vtable hint (['?CSpecialAbilitiesDrunkennessDef_CopyImpl@@YIXPAVCSpecialAbilitiesDrunkennessDef@@PAX@Z']) but not reached this pass
+00471832	_unattributed::operator=	has a binding/vtable hint (['??4CAnimationSet@@QAEAAV0@ABV0@@Z']) but not reached this pass
+004DFFC3	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004E066C	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004E0F52	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004E15A0	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004E1A26	_unattributed::operator=	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004EB831	_unattributed::operator=	has a binding/vtable hint (['??4CMultiStaticMeshEntryDef@@QAEAAV0@ABV0@@Z']) but not reached this pass
+00512210	_unattributed::AssignTarget_00512210	two landed binders disagree (CThingAICreature::SetHome vs SetHomeBuilding, both PDB names); no single owner proven
+00512260	_unattributed::AssignTarget_00512260	two landed binders disagree (CThingAICreature::SetWorkplace vs SetWorkBuilding); no single owner proven
+005122B0	_unattributed::AssignTarget_005122b0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00512300	_unattributed::AssignTarget_00512300	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00512350	_unattributed::AssignTarget_00512350	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005298E0	_unattributed::AssignTarget_005298e0	vtable slot of CThingGameObject (rtti-vtables.tsv) but the slot's PDB name was not resolved -- not attempted
+00662450	_unattributed::AssignTarget_00662450	only source is the binder name ?SetPItemToUnsheatheAfterCutscene@CThingCreatureBase@@ (no PDB carries it)
+0079F910	_unattributed::AssignTarget_0079f910	only source is the binder name ?SetTargetOverride@CTCWillLightning@@ (no PDB carries it)
+0084B1C0	_unattributed::AssignTarget_0084b1c0	binder spells CVillageTaskCarryCrate::AssignCreatureToTask QAE(CThing*); the PDB member is virtual UAE(const CThing&) and the address is in no vtable -- unproven
+00519560	_unattributed::Erase_CRetailTree_00519560	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006E6E50	_unattributed::Erase_CRetailTree_006e6e50	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00782F60	_unattributed::Erase_CRetailTree_00782f60	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008131B0	_unattributed::Erase_CRetailTree_008131b0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00883230	_unattributed::Erase_CRetailTree_00883230	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009F0E30	_unattributed::Erase_CRetailTree_009f0e30	has a binding/vtable hint (['?erase@CStringSectionMap@CodeSections@@QAEXU_Rb_tree_iterator@2@@Z']) but not reached this pass
+007C4E80	_unattributed::clear_CRetailList_007c4e80	has a binding/vtable hint (['?clear@?$_List_base@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$allocator@V?$CIntelligentPointer@VCThingCreatureB) but not reached this pass
+008FBAB0	_unattributed::clear_CRetailList_008fbab0	has a binding/vtable hint (['?clear@CMeshList@@QAEXXZ']) but not reached this pass
+004AA7F0	_unattributed::ScalarDeletingDestructor_COwner_004aa7f0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00517650	_unattributed::ScalarDeletingDestructor_COwner_00517650	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00527170	_unattributed::ScalarDeletingDestructor_COwner_00527170	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006B55A0	_unattributed::ScalarDeletingDestructor_COwner_006b55a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006C4A00	_unattributed::ScalarDeletingDestructor_COwner_006c4a00	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006C4D70	_unattributed::ScalarDeletingDestructor_COwner_006c4d70	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006EF360	_unattributed::ScalarDeletingDestructor_COwner_006ef360	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00768910	_unattributed::ScalarDeletingDestructor_COwner_00768910	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00782C80	_unattributed::ScalarDeletingDestructor_COwner_00782c80	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A30E20	_unattributed::ScalarDeletingDestructor_COwner_00a30e20	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0065F9E0	_unattributed::Construct_CRangeString_0065f9e0	STLport find_if<list<CCountedPointer<CVillageTask*>>::iterator, CIsTask> (binder + Ego_r _Find_if<..,CIsTask>): retail calls __find_if out of line (0x0065EAD6); stlport/fable_algorithm.h keeps it inline -- needs a declaration-only opt-in; not attempted
+0065FA0A	_unattributed::Construct_CRangeString_0065fa0a	STLport find_if<list<CCountedPointer<CVillageTask*>>::iterator, CIsTask> (binder + Ego_r _Find_if<..,CIsTask>): retail calls __find_if out of line (0x0065EAD6); stlport/fable_algorithm.h keeps it inline -- needs a declaration-only opt-in; not attempted
+0065FA34	_unattributed::Construct_CRangeString_0065fa34	STLport find_if<list<CCountedPointer<CVillageTask*>>::iterator, CIsTask> (binder + Ego_r _Find_if<..,CIsTask>): retail calls __find_if out of line (0x0065EAD6); stlport/fable_algorithm.h keeps it inline -- needs a declaration-only opt-in; not attempted
+0065FA5E	_unattributed::Construct_CRangeString_0065fa5e	STLport find_if<list<CCountedPointer<CVillageTask*>>::iterator, CIsTask> (binder + Ego_r _Find_if<..,CIsTask>): retail calls __find_if out of line (0x0065EAD6); stlport/fable_algorithm.h keeps it inline -- needs a declaration-only opt-in; not attempted
+0065FA88	_unattributed::Construct_CRangeString_0065fa88	STLport find_if<list<CCountedPointer<CVillageTask*>>::iterator, CIsTask> (binder + Ego_r _Find_if<..,CIsTask>): retail calls __find_if out of line (0x0065EAD6); stlport/fable_algorithm.h keeps it inline -- needs a declaration-only opt-in; not attempted
+0065FAB2	_unattributed::Construct_CRangeString_0065fab2	STLport find_if<list<CCountedPointer<CVillageTask*>>::iterator, CIsTask> (binder + Ego_r _Find_if<..,CIsTask>): retail calls __find_if out of line (0x0065EAD6); stlport/fable_algorithm.h keeps it inline -- needs a declaration-only opt-in; not attempted
+00433D75	_unattributed::Forward_CForwarder_00433d75	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004855F1	_unattributed::Forward_CForwarder_004855f1	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004939AA	_unattributed::Forward_CForwarder_004939aa	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00493C58	_unattributed::Forward_CForwarder_00493c58	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004DBF08	_unattributed::Forward_CForwarder_004dbf08	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004DD6D4	_unattributed::Forward_CForwarder_004dd6d4	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004DD860	_unattributed::Forward_CForwarder_004dd860	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0053CC90	_unattributed::Forward_CForwarder_0053cc90	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00579044	_unattributed::Forward_CForwarder_00579044	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005790E7	_unattributed::Forward_CForwarder_005790e7	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0057F62D	_unattributed::Forward_CForwarder_0057f62d	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0057F929	_unattributed::Forward_CForwarder_0057f929	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0057F97D	_unattributed::Forward_CForwarder_0057f97d	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00592D0A	_unattributed::Forward_CForwarder_00592d0a	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00592D22	_unattributed::Forward_CForwarder_00592d22	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00592D68	_unattributed::Forward_CForwarder_00592d68	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00592E2B	_unattributed::Forward_CForwarder_00592e2b	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005939C7	_unattributed::Forward_CForwarder_005939c7	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00593EBB	_unattributed::Forward_CForwarder_00593ebb	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005BA81B	_unattributed::Forward_CForwarder_005ba81b	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005C13F9	_unattributed::Forward_CForwarder_005c13f9	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005C1474	_unattributed::Forward_CForwarder_005c1474	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005C1489	_unattributed::Forward_CForwarder_005c1489	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F823B	_unattributed::Forward_CForwarder_005f823b	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F8250	_unattributed::Forward_CForwarder_005f8250	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F82FB	_unattributed::Forward_CForwarder_005f82fb	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F8310	_unattributed::Forward_CForwarder_005f8310	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F870C	_unattributed::Forward_CForwarder_005f870c	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F8721	_unattributed::Forward_CForwarder_005f8721	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F8C0A	_unattributed::Forward_CForwarder_005f8c0a	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F8DFD	_unattributed::Forward_CForwarder_005f8dfd	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F8E58	_unattributed::Forward_CForwarder_005f8e58	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005F911D	_unattributed::Forward_CForwarder_005f911d	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00655705	_unattributed::Forward_CForwarder_00655705	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00655DF6	_unattributed::Forward_CForwarder_00655df6	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00655E0B	_unattributed::Forward_CForwarder_00655e0b	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00655E2B	_unattributed::Forward_CForwarder_00655e2b	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00655E40	_unattributed::Forward_CForwarder_00655e40	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00788FE6	_unattributed::Forward_CForwarder_00788fe6	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0042CDA6	_unattributed::Forward_CForwarder_0042cda6	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0042CE29	_unattributed::Forward_CForwarder_0042ce29	map<NUISystem::CManager::EUsedKeys,long>::insert(iterator,v) proven (binder + _Tmap_traits) but the key is a nested enum of NUISystem::CManager (shared header) -- not attempted
+0042D4D3	_unattributed::Forward_CForwarder_0042d4d3	has a binding/vtable hint (['?InsertUnique@CComponentStateMap@@QAE?AUSComponentStateIterator@@U2@ABUSComponentStatePair@@@Z']) but not reached this pass
+0058117E	_unattributed::Forward_CForwarder_0058117e	map<CCharString,CTCHeroStats::MirroredCriminalStatus>::insert(iterator,v): nested struct of CTCHeroStats (shared header) -- not attempted
+005F9C88	_unattributed::Forward_CForwarder_005f9c88	map<CTCInventoryAbilities::EUISpellCategory,CComponent*>::insert(iterator,v): nested enum of a shared-header class -- not attempted
+005E35F0	_unattributed::ScalarDeletingDestructor_CIVCountedPointeeBase_Derived_005e35f0	has a binding/vtable hint ([]) but not reached this pass
+006A07A0	_unattributed::ScalarDeletingDestructor_CEventBase_Derived_006a07a0	has a binding/vtable hint ([]) but not reached this pass
+0073E970	_unattributed::ScalarDeletingDestructor_CAnimFilterBase_Derived_0073e970	has a binding/vtable hint ([]) but not reached this pass
+00811D10	_unattributed::ScalarDeletingDestructor_CEventBase_Derived_00811d10	has a binding/vtable hint ([]) but not reached this pass
+0083CF70	_unattributed::ScalarDeletingDestructor_CEventBase_Derived_0083cf70	has a binding/vtable hint ([]) but not reached this pass
+0084AE50	_unattributed::ScalarDeletingDestructor_CEventBase_Derived_0084ae50	has a binding/vtable hint ([]) but not reached this pass
+0084AFE0	_unattributed::ScalarDeletingDestructor_CEventBase_Derived_0084afe0	has a binding/vtable hint ([]) but not reached this pass
+0084B0D0	_unattributed::ScalarDeletingDestructor_CEventBase_Derived_0084b0d0	has a binding/vtable hint ([]) but not reached this pass
+0087FF30	_unattributed::ScalarDeletingDestructor_CEventBase_Derived_0087ff30	has a binding/vtable hint ([]) but not reached this pass
+00A22330	_unattributed::ScalarDeletingDestructor_CSB_Derived_00a22330	has a binding/vtable hint ([]) but not reached this pass
+00B84070	_unattributed::ScalarDeletingDestructor_CIVCountedPointeeBase_Derived_00b84070	has a binding/vtable hint ([]) but not reached this pass
+00BC7AB0	_unattributed::ScalarDeletingDestructor_CIVCountedPointeeBase_Derived_00bc7ab0	has a binding/vtable hint ([]) but not reached this pass
+004C5040	_unattributed::InsertUnique_CRetailTree_004c5040	map<void*,NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>::insert_unique: the value class is only forward-declared in the shared header (pair needs it complete) -- not attempted
+0056D930	_unattributed::InsertUnique_CRetailTree_0056d930	map<CMenuEntry*,CQuestManager::CBoast>::insert_unique: engine/CQuestManager.h CBoast needs a layout opt-in combination (#error guard) -- not attempted
+0056D9F0	_unattributed::InsertUnique_CRetailTree_0056d9f0	map<CMenuEntry*,CComponent*>::insert_unique: binder spelling uses a PDB back-reference form my evidence check did not match -- not attempted
+006F2A40	_unattributed::InsertUnique_CRetailTree_006f2a40	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00792A70	_unattributed::InsertUnique_CRetailTree_00792a70	CTCDivineWrath::PerCreatureInfo map insert_unique proven, but PerCreatureInfo is private in engine/CTCDivineWrath.h and VC7.1 rejects the explicit instantiation (C2248); needs a header friend/access opt-in
+00797D70	_unattributed::InsertUnique_CRetailTree_00797d70	same as 0x00792A70 for CTCUnholyPower::PerCreatureInfo (C2248)
+00835560	_unattributed::InsertUnique_CRetailTree_00835560	has a binding/vtable hint (['?InsertUnique@CSuspenderSet@@QAE?AUSSuspenderInsertResult@@ABQAX@Z']) but not reached this pass
+0085E140	_unattributed::InsertUnique_CRetailTree_0085e140	has a binding/vtable hint (['?insert@CTCMapwhoSet@NThingMap@@QAE?AUCInsertResult@2@ABQAUCTCMapwho@2@@Z']) but not reached this pass
+00A819B0	_unattributed::InsertUnique_CRetailTree_00a819b0	has a binding/vtable hint (['?insert_unique@_Rep_type@?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@U?$allocator@U?$pair@QBVCANa) but not reached this pass
+00AD4480	_unattributed::InsertUnique_CRetailTree_00ad4480	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0056A170	_unattributed::InsertUnique_CRetailTree_0056a170	map<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity,...>: nested enum of a class with no shared header -- not attempted
+006E6F70	_unattributed::InsertUnique_CRetailTree_006e6f70	has a binding/vtable hint (['?insert@CConversationMap@@QAE?AU?$pair@Uiterator@CConversationMap@@_N@std@@ABU?$pair@$$CBJVCScriptConversation@@@3@@Z') but not reached this pass
+0070AFE0	_unattributed::InsertUnique_CRetailTree_0070afe0	map<long,CEngineTextureDecal>::insert(const value_type&) proven (binder + _Tmap_traits), but retail expands insert_unique inside it (180 bytes); the shared header keeps insert_unique out of line: DIFFER(22v180), 1 grade
+008B2DD0	_unattributed::InsertUnique_CRetailTree_008b2dd0	has a binding/vtable hint (['?insert@CHandlerMapA@@QAE?AUCInsertResult@@ABUCHandlerPair@@@Z']) but not reached this pass
+008B2E90	_unattributed::InsertUnique_CRetailTree_008b2e90	has a binding/vtable hint (['?insert@CHandlerMapB@@QAE?AUCInsertResult@@ABUCHandlerPair@@@Z']) but not reached this pass
+008B2F50	_unattributed::InsertUnique_CRetailTree_008b2f50	has a binding/vtable hint (['?insert@CHandlerMapC@@QAE?AUCInsertResult@@ABUCHandlerPair@@@Z']) but not reached this pass
+00B96E40	_unattributed::InsertUnique_CRetailTree_00b96e40	map<EEngineRenderLayer,CEngineSceneRenderStats>: value class has no shared header (complete type needed) -- not attempted
+00619D50	_unattributed::InsertUnique_CRetailTree_00619d50	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0069D900	_unattributed::InsertUnique_CRetailTree_0069d900	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006AE9F0	_unattributed::InsertUnique_CRetailTree_006ae9f0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006DB610	_unattributed::InsertUnique_CRetailTree_006db610	has a binding/vtable hint (['?insert@Map@N006dc070@@QAE?AUInsertResult@2@ABUPair@2@@Z']) but not reached this pass
+006DCE90	_unattributed::InsertUnique_CRetailTree_006dce90	has a binding/vtable hint (['?InsertUnique@CStatMapTree@@QAE?AUSPairIB@@ABUSStatPair@@@Z']) but not reached this pass
+006F5400	_unattributed::InsertUnique_CRetailTree_006f5400	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00818000	_unattributed::InsertUnique_CRetailTree_00818000	has a binding/vtable hint (['?insert@CHandlerMap@@QAE?AUinsert_result@1@ABUSHandlerEntry@@@Z']) but not reached this pass
+00A221B0	_unattributed::InsertUnique_CRetailTree_00a221b0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00BE0BF0	_unattributed::InsertUnique_CRetailTree_00be0bf0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00567AF0	_unattributed::Insert_CRetailTree_00567af0	_M_insert of the CTCHeroOnlineScoreboard map: nested enum, no shared header -- not attempted
+00632A30	_unattributed::Insert_CRetailTree_00632a30	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0067B320	_unattributed::Insert_CRetailTree_0067b320	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0067B3E0	_unattributed::Insert_CRetailTree_0067b3e0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006DAFA0	_unattributed::Insert_CRetailTree_006dafa0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006DB390	_unattributed::Insert_CRetailTree_006db390	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00801730	_unattributed::Insert_CRetailTree_00801730	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00817D70	_unattributed::Insert_CRetailTree_00817d70	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008B29A0	_unattributed::Insert_CRetailTree_008b29a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008B2A60	_unattributed::Insert_CRetailTree_008b2a60	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008B2B20	_unattributed::Insert_CRetailTree_008b2b20	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004B85D0	_unattributed::TransferBinaryIn_004b85d0	folded body: its two callers bind it as CPersistTraits<CQuestActivityRecord> and CPersistTraits<ENumAcceptedBoasts>/Transfer<int> -- no single owner
+0042A291	_unattributed::CVector_0042a291	STLport find over list iterators (binder spellings) -- not attempted (time)
+0042A2EC	_unattributed::CVector_0042a2ec	STLport find over list iterators (binder spellings) -- not attempted (time)
+0042B2EA	_unattributed::CVector_0042b2ea	STLport find over list iterators (binder spellings) -- not attempted (time)
+0053C8D0	_unattributed::CVector_0053c8d0	STLport find over list iterators (binder spellings) -- not attempted (time)
+00655CDC	_unattributed::CVector_00655cdc	STLport find over list iterators (binder spellings) -- not attempted (time)
+0065F4E2	_unattributed::CVector_0065f4e2	STLport find over list iterators (binder spellings) -- not attempted (time)
+0065F50A	_unattributed::CVector_0065f50a	STLport find over list iterators (binder spellings) -- not attempted (time)
+0065F532	_unattributed::CVector_0065f532	STLport find over list iterators (binder spellings) -- not attempted (time)
+0065F55A	_unattributed::CVector_0065f55a	STLport find over list iterators (binder spellings) -- not attempted (time)
+0065F582	_unattributed::CVector_0065f582	STLport find over list iterators (binder spellings) -- not attempted (time)
+0065F5AA	_unattributed::CVector_0065f5aa	STLport find over list iterators (binder spellings) -- not attempted (time)
+007099E0	_unattributed::Destroy_CRetailVector_007099e0	has a binding/vtable hint (['??1CThemeChannelVector@@QAE@XZ']) but not reached this pass
+00728980	_unattributed::Destroy_CRetailVector_00728980	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00BAA1D0	_unattributed::Destroy_CRetailVector_00baa1d0	has a binding/vtable hint (['??1CTextureDecalVector@@QAE@XZ']) but not reached this pass
+00709510	_unattributed::Destroy_CRetailVector_00709510	has a binding/vtable hint (['?_M_clear@?$vector@V?$vector@VCModifierEntry@CTCHeroAttachableAppearanceModifiers@@@std@@@std@@QAEXXZ']) but not reached this pass
+00709580	_unattributed::Destroy_CRetailVector_00709580	has a binding/vtable hint (['??1CModifierEntryVectorVector@@QAE@XZ']) but not reached this pass
+0085E9C0	_unattributed::Destroy_CRetailVector_0085e9c0	has a binding/vtable hint (['?_M_clear@?$vector@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@V?$allocator) but not reached this pass
+00BA7CF0	_unattributed::CCountedPointer_00ba7cf0	has a binding/vtable hint (['??0SimulationPointer@@QAE@PAVCEngineSimulationBase@@@Z']) but not reached this pass
+00447CE0	_unattributed::UpperBound_CVectorMap_00447ce0	has a binding/vtable hint (['?UpperBound@CControlsMap@@QAEPAUSControlEntry@@PBJ@Z', '?UpperBound@CControlMap@@QBEPBUSControlEntry@@ABW4EGameAction@) but not reached this pass
+008146A0	_unattributed::UpperBound_CVectorMap_008146a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00819DB0	_unattributed::UpperBound_CVectorMap_00819db0	has a binding/vtable hint (['?UpperBound@?$CVectorMap@W4EHeroMorphType@@VCTextureMorphEntry@@V?$CKeyPairCompareLess@W4EHeroMorphType@@VCTextureMorp) but not reached this pass
+00819EC0	_unattributed::UpperBound_CVectorMap_00819ec0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0086F1E0	_unattributed::UpperBound_CVectorMap_0086f1e0	has a binding/vtable hint (['?UpperBound@CThingVectorMap@@QBEPBUCThingEntry@@ABJ@Z']) but not reached this pass
+00A7DDA0	_unattributed::UpperBound_CVectorMap_00a7dda0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00AE95E0	_unattributed::UpperBound_CVectorMap_00ae95e0	has a binding/vtable hint (['?UpperBound@?$CVectorMap@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@V?$CKeyPairCompareLess@JV?$CCountedP) but not reached this pass
+00AC4F20	_unattributed::GetCount_00ac4f20	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005064B0	_unattributed::CallWith_005064b0	has a binding/vtable hint (['?FinishMovePlayer@CWorldMap@@QAEXXZ']) but not reached this pass
+007B0CC0	_unattributed::CallWith_007b0cc0	has a binding/vtable hint (['?CastButtonPressed@CTCFishing@@QAEXXZ']) but not reached this pass
+008FA2F0	_unattributed::CallWith_008fa2f0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004DB7F8	_unattributed::CClass_004db7f8	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+004DFA58	_unattributed::CClass_004dfa58	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0056D030	_unattributed::CClass_0056d030	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00557330	_unattributed::ReturnArg_00557330	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006E4B80	_unattributed::CClass_006e4b80	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0071EFB0	_unattributed::CClass_0071efb0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00990180	_unattributed::CClass_00990180	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008F5CF0	_unattributed::CallWith_008f5cf0	has a binding/vtable hint (['?HandlerType2@CThing@@QAEXXZ']) but not reached this pass
+008FA300	_unattributed::CallWith_008fa300	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00985420	_unattributed::CallWith2_00985420	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00985430	_unattributed::CallWith2_00985430	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006409A0	_unattributed::FreeSelf_006409a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0073CC90	_unattributed::FreeSelf_0073cc90	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00834970	_unattributed::FreeSelf_00834970	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A511A0	_unattributed::FreeSelf_00a511a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A8CB70	_unattributed::FreeSelf_00a8cb70	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00658E90	_unattributed::ApplyToMember_00658e90	has a binding/vtable hint (['?HasPatroller@CTCVillage@@QAEJPAVCThing@@@Z']) but not reached this pass
+006590C4	_unattributed::ApplyToMember_006590c4	has a binding/vtable hint (['?GetTorchTask@CTCVillage@@QAEPAVCVillageTaskTorch@@PAVCThingAICreature@@@Z']) but not reached this pass
+006590D4	_unattributed::ApplyToMember_006590d4	has a binding/vtable hint (['?GetHornForCreature@CTCVillage@@QAEPAVCThing@@PAV2@@Z']) but not reached this pass
+006590E4	_unattributed::ApplyToMember_006590e4	has a binding/vtable hint (['?GetCropField@CTCVillage@@QAEPAVCThing@@PAV2@@Z']) but not reached this pass
+006590F4	_unattributed::ApplyToMember_006590f4	has a binding/vtable hint (['?GetSecuritySweepThing@CTCVillage@@QAEPAVCThing@@PAV2@@Z']) but not reached this pass
+004294D1	_unattributed::CClass_004294d1	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0057F17A	_unattributed::CClass_0057f17a	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005926C0	_unattributed::CClass_005926c0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006400A0	_unattributed::FreeSelf_006400a0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00732330	_unattributed::FreeSelf_00732330	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009A6B90	_unattributed::FreeSelf_009a6b90	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A51190	_unattributed::FreeSelf_00a51190	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00485D1A	_unattributed::ApplyPair_00485d1a	has a binding/vtable hint (['?clear@CLongVector@@QAEXXZ']) but not reached this pass
+00485D25	_unattributed::ApplyPair_00485d25	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00485FE8	_unattributed::ApplyPair_00485fe8	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005419F0	_unattributed::vfunc_88	has a binding/vtable hint ([]) but not reached this pass
+00579260	_unattributed::GetFirstAsHandle_00579260	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008000B0	_unattributed::GetFirstAsHandle_008000b0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+008F8160	_unattributed::HasIndex_008f8160	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006F0800	_unattributed::GetFirstAsHandle_006f0800	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00850800	_unattributed::GetItemAt_00850800	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009A9930	_unattributed::CClass_009a9930	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005B15C2	_unattributed::CClass_005b15c2	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+005B1FBC	_unattributed::CClass_005b1fbc	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006622C0	_unattributed::CCombatAction_IsToCauseRecoilCommon	has a binding/vtable hint (['?r_h2@@YI_NPAX@Z']) but not reached this pass
+009AA240	_unattributed::CClass_009aa240	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A35F70	_unattributed::GetScaledTargetValue_00a35f70	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0053CDE8	_unattributed::vfunc_149	has a binding/vtable hint ([]) but not reached this pass
+00B31D10	_unattributed::StoreToGlobal_0143b8e0	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A5CAB0	_unattributed::Transpose	has a binding/vtable hint (['?Transpose@CMatrix4x4@@QAEXXZ']) but not reached this pass
+009D8C10	_unattributed::InitWideStringAndCountedPointerAt14	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006F9560	_unattributed::FindMapValueAt2C	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009AD350	_unattributed::FindMapValueAt78	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0099AE50	_unattributed::CNamedHandle_0099ae50	has a binding/vtable hint (['??0CBBBFileException@@QAE@VCCharString@@W4EFileExceptionType@0@@Z']) but not reached this pass
+009D1E70	_unattributed::CNamedHandle_009d1e70	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+007504E0	_unattributed::SetInterface9Flag	has a binding/vtable hint (['?SetPushableByHero@CTCChest@@QAEX_N@Z']) but not reached this pass
+005C2A5C	_unattributed::ClearEntry	has a binding/vtable hint ([]) but not reached this pass
+00AF69D0	_unattributed::ScalarDeletingDestructor_LongCBaseClassCountedPointer	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+006E55D0	_unattributed::GetAttachedItem	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0051F010	_unattributed::Contains	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0059AC77	_unattributed::FreeBuffer	has a binding/vtable hint (['??1?$deque@PAVCComponent@NUISystem@@@std@@QAE@XZ', '??1?$_Deque_base@PAVCComponent@NUISystem@@V?$allocator@PAVCCompone) but not reached this pass
+006C3A70	_unattributed::Destroy_006c3a70	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00883AA0	_unattributed::ApplyByPassColorFilter	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A6F9C0	_unattributed::NamedMeshVolumeScalarDeletingDestructor	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00564B00	_unattributed::ZeroWordAndDefaultWideString	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0071F3D0	_unattributed::ZeroWordAndDefaultDateAndTime	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+0059B4FE	_unattributed::PointerDeque::PointerDeque	has a binding/vtable hint (['??0?$deque@PAVCComponent@NUISystem@@@std@@QAE@ABV01@@Z']) but not reached this pass
+00A0A550	_unattributed::NamedCountedPointerSizeof	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A0A610	_unattributed::NamedCountedPointerSizeof	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+00A35330	_unattributed::SortRecordsAndClearDirty	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most
+009B31A0	_unattributed::ReleaseCountedPointerAt0C	no landed real-typed binder and no vtable slot names it (its callers are stand-ins or unlanded): one source at most

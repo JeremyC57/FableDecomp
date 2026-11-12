@@ -19,6 +19,11 @@ template<class Dummy> class _Rb_global {
     typedef _Rb_tree_node_base* _Base_ptr;
 public:
     static void __cdecl _Rebalance(_Rb_tree_node_base*,_Rb_tree_node_base*&);
+#ifdef FABLE_RETAIL_STLP_TREE_ERASE_BODY
+    // Nested opt-in (agentFAM12, the erase(first, last) rows 0x00638EE0 ..): STLport 4.6 _tree.c _Rb_global::_Rebalance_for_erase,
+    // out of line (0x0042A34E, landed ?_Rebalance_for_erase@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@AAPAU32@11@Z).
+    static _Rb_tree_node_base* __cdecl _Rebalance_for_erase(_Rb_tree_node_base*,_Rb_tree_node_base*&,_Rb_tree_node_base*&,_Rb_tree_node_base*&);
+#endif
     static _Rb_tree_node_base* __cdecl _M_decrement(_Rb_tree_node_base* _M_node) {
   if (_M_node->_M_color == false && _M_node->_M_parent->_M_parent == _M_node)
     _M_node = _M_node->_M_right;
@@ -233,7 +238,20 @@ public:
     // Retail opt-in (chunk 778, row 0x00ACCBF0 COptimisedPrimitive::PerformSubContraction): STLport 4.6 _tree.h erase(iterator)
     // (rebalance, destroy, deallocate; out of line in retail: 0x00AD4CA0 map<unsigned long,CContractionReference>, 0x00AD3C30
     // multimap<float,CCountedPointer<CVertexPairContraction> >). Declaration only.
+#ifdef FABLE_RETAIL_STLP_TREE_ERASE_BODY
+    // Nested opt-in (agentFAM12): STLport 4.6 _tree.h erase(iterator) with its body visible, expanded in the out-of-line
+    // erase(first, last) of FABLE_RETAIL_STLP_TREE_ERASE_KEY (0x00638EE0 set<long>, 0x007775B0 map<long,CShopItem>, 0x007E99F0
+    // map<CThing*,float>, 0x009D7760 set<CBankFileAsyncData*>, ..: _Rebalance_for_erase 0x0042A34E, _Destroy, deallocate, --count).
+    void erase(iterator position) {
+        _Link_type y=(_Link_type)_Rb_global_inst::_Rebalance_for_erase(position._M_node,this->_M_header._M_data->_M_parent,
+            this->_M_header._M_data->_M_left,this->_M_header._M_data->_M_right);
+        _Destroy(&y->_M_value_field);
+        this->_M_header.deallocate(y,1);
+        --_M_node_count;
+    }
+#else
     void erase(iterator position);
+#endif
 #endif
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY
     // Retail opt-in (chunk 867, row 0x005B01FE CTCInventoryTrade::SellItemPC): STLport 4.6 _tree.h upper_bound / equal_range and

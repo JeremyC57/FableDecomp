@@ -127,3 +127,10 @@
 - (chunk Q26, 2026-11-12) Defines must precede every include in a row: appending a second block of `#define FABLE_RETAIL_*` after Q25's include list silently skips them (CDefString ==, STLport list size).
 - (chunk Q26, 2026-11-12) For `if (T) return; X;` tail blocks with destructors, `if (!T) X;` moves the return copy to the function end but changes which copy the other returns tail-merge into; keep whichever leaves fewer hunks and record both.
 - (landing du, 2026-11-12) Chunk size: eight 1.3-1.8 KB rows left four with only a baseline regrade. Cut five or six rows per author chunk and require a full port (shared headers + identities) before a row may be left.
+- (agentFAM12, 2026-11-12) A landed caller's reloc binding plus a PDB name set is a cheap two-source proof: start each sub-family from reloc_bindings.tsv, not the body.
+- (agentFAM12, 2026-11-12) Generated `_unattributed` STL rows collapse to one explicit instantiation over stlport/fable_map.h; the stand-in bodies were already STLport-exact.
+- (agentFAM12, 2026-11-12) Binder spellings are often abbreviated (no allocator, single-arg iterator, public _M_erase): use them for the types, pin the Leaf from the object.
+- (agentFAM12, 2026-11-12) STLport erase(first,last) expands erase(iterator); the shared header needed an erase(iterator) body opt-in (_Rebalance_for_erase out of line).
+- (agentFAM12, 2026-11-12) VC7.1 rejects an explicit instantiation naming a private nested type (C2248), although the standard waives access there.
+- (agentFAM12, 2026-11-12) Put per-TU defines before stlport/fable_map.h: a later engine header's opt-in (e.g. STLP_MAP_EMPTY) is ignored once the map header is in.
+- (agentFAM12, 2026-11-12) A Leaf that names no symbol in the object still grades (fallback to the largest function): pin every Leaf from objdump -t.

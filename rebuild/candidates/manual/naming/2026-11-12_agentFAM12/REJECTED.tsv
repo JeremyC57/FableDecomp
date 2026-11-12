@@ -1,0 +1,2 @@
+tag	address	claim	reason
+land1011dr	0042abca	??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ owns 0x0042ABCA	the body is ~list<NUISystem::CComponent*> (landed row, 117 callers, shared-header precedent 0x005A887D binds ~list; STLport ~list() {} expands ~_List_base, one COMDAT). The ~_List_base binding was an artefact of 0x00545B10's local model (the inlined ~list left ~_List_base out of line); that binder now binds ~list, same bytes

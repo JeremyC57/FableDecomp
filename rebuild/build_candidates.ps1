@@ -73626,9 +73626,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00429160'
-        Module = '_global'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429160.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429160_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CAction>'
+        Source = '00/42/CCountedPointer_ReleaseData_00429160.cpp'
+        TestSource = '00/42/CCountedPointer_ReleaseData_00429160_test.cpp'
         PassPattern = 'PASS_00429160'
     }
     [pscustomobject]@{
@@ -76811,9 +76811,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0043211d'
-        Module = '_unattributed'
-        Source = '00/43/_unattributed_ReleaseFirstMember_0043211d_0043211d.cpp'
-        TestSource = '00/43/_unattributed_ReleaseFirstMember_0043211d_0043211d_test.cpp'
+        Module = 'std::vector<std::pair<unsigned long,CDefClassBase::CSubDefInfo>,std::allocator<std::pair<unsigned long,CDefClassBase::CSubDefInfo>>>'
+        Source = '00/43/stdvector_Mclear_0043211d.cpp'
+        TestSource = '00/43/stdvector_Mclear_0043211d_test.cpp'
         PassPattern = '0043211d_TEST PASS'
     }
     [pscustomobject]@{
@@ -83861,16 +83861,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00440080'
-        Module = '_unattributed'
-        Source = '00/44/_unattributed_ReleaseFirstMember_00440080_00440080.cpp'
-        TestSource = '00/44/_unattributed_ReleaseFirstMember_00440080_00440080_test.cpp'
+        Module = 'std::vector<long,std::allocator<long>>'
+        Source = '00/44/stdvector_Mclear_00440080.cpp'
+        TestSource = '00/44/stdvector_Mclear_00440080_test.cpp'
         PassPattern = '00440080_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00440e60'
-        Module = '_unattributed'
-        Source = '00/44/_unattributed_ReleaseFirstMember_00440e60_00440e60.cpp'
-        TestSource = '00/44/_unattributed_ReleaseFirstMember_00440e60_00440e60_test.cpp'
+        Module = 'std::vector<C2DVector,std::allocator<C2DVector>>'
+        Source = '00/44/stdvector_Mclear_00440e60.cpp'
+        TestSource = '00/44/stdvector_Mclear_00440e60_test.cpp'
         PassPattern = '00440e60_TEST PASS'
     }
     [pscustomobject]@{
@@ -83896,16 +83896,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045d2aa'
-        Module = '_unattributed'
-        Source = '00/45/_unattributed_ReleaseFirstMember_0045d2aa_0045d2aa.cpp'
-        TestSource = '00/45/_unattributed_ReleaseFirstMember_0045d2aa_0045d2aa_test.cpp'
+        Module = 'std::vector<std::pair<unsigned long,CDefString>,std::allocator<std::pair<unsigned long,CDefString>>>'
+        Source = '00/45/stdvector_Mclear_0045d2aa.cpp'
+        TestSource = '00/45/stdvector_Mclear_0045d2aa_test.cpp'
         PassPattern = '0045d2aa_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046089a'
-        Module = '_unattributed'
-        Source = '00/46/_unattributed_ReleaseFirstMember_0046089a_0046089a.cpp'
-        TestSource = '00/46/_unattributed_ReleaseFirstMember_0046089a_0046089a_test.cpp'
+        Module = 'std::vector<CDefString,std::allocator<CDefString>>'
+        Source = '00/46/stdvector_Mclear_0046089a.cpp'
+        TestSource = '00/46/stdvector_Mclear_0046089a_test.cpp'
         PassPattern = '0046089a_TEST PASS'
     }
     [pscustomobject]@{
@@ -83945,16 +83945,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e212d'
-        Module = '_unattributed'
-        Source = '00/4e/_unattributed_ReleaseFirstMember_004e212d_004e212d.cpp'
-        TestSource = '00/4e/_unattributed_ReleaseFirstMember_004e212d_004e212d_test.cpp'
+        Module = 'std::vector<EVillageTaskType,std::allocator<EVillageTaskType>>'
+        Source = '00/4e/stdvector_Mclear_004e212d.cpp'
+        TestSource = '00/4e/stdvector_Mclear_004e212d_test.cpp'
         PassPattern = '004e212d_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e25c8'
-        Module = '_unattributed'
-        Source = '00/4e/_unattributed_ReleaseFirstMember_004e25c8_004e25c8.cpp'
-        TestSource = '00/4e/_unattributed_ReleaseFirstMember_004e25c8_004e25c8_test.cpp'
+        Module = 'std::vector<CDefIndex,std::allocator<CDefIndex>>'
+        Source = '00/4e/stdvector_Mclear_004e25c8.cpp'
+        TestSource = '00/4e/stdvector_Mclear_004e25c8_test.cpp'
         PassPattern = '004e25c8_TEST PASS'
     }
     [pscustomobject]@{
@@ -83987,16 +83987,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b800f0'
-        Module = '_unattributed'
-        Source = '00/b8/_unattributed_ReleaseFirstMember_00b800f0_00b800f0.cpp'
-        TestSource = '00/b8/_unattributed_ReleaseFirstMember_00b800f0_00b800f0_test.cpp'
+        Module = 'std::vector<CTVertexWaterBackground,std::allocator<CTVertexWaterBackground>>'
+        Source = '00/b8/stdvector_Mclear_00b800f0.cpp'
+        TestSource = '00/b8/stdvector_Mclear_00b800f0_test.cpp'
         PassPattern = '00b800f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b80550'
-        Module = '_unattributed'
-        Source = '00/b8/_unattributed_ReleaseFirstMember_00b80550_00b80550.cpp'
-        TestSource = '00/b8/_unattributed_ReleaseFirstMember_00b80550_00b80550_test.cpp'
+        Module = 'std::vector<CTVertexSeaBackground,std::allocator<CTVertexSeaBackground>>'
+        Source = '00/b8/stdvector_Mclear_00b80550.cpp'
+        TestSource = '00/b8/stdvector_Mclear_00b80550_test.cpp'
         PassPattern = '00b80550_TEST PASS'
     }
     [pscustomobject]@{
@@ -93473,9 +93473,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00440070'
-        Module = '_unattributed'
-        Source = '00/44/_unattributed_ReleaseFirstMember_00440070_00440070.cpp'
-        TestSource = '00/44/_unattributed_ReleaseFirstMember_00440070_00440070_test.cpp'
+        Module = 'std::vector<float,std::allocator<float>>'
+        Source = '00/44/stdvector_Mclear_00440070.cpp'
+        TestSource = '00/44/stdvector_Mclear_00440070_test.cpp'
         PassPattern = '00440070_TEST PASS'
     }
     [pscustomobject]@{
@@ -125066,9 +125066,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0053c97c'
-        Module = 'std::list'
-        Source = '00/53/stdlist_Constructsingle_0053c97c.cpp'
-        TestSource = '00/53/stdlist_Constructsingle_0053c97c_test.cpp'
+        Module = 'std::list<NUISystem::CList*,std::allocator<NUISystem::CList*>>'
+        Source = '00/53/stdlist_insert_0053c97c.cpp'
+        TestSource = '00/53/stdlist_insert_0053c97c_test.cpp'
         PassPattern = 'LISTINSERT_0053c97c_PASS'
     }
     [pscustomobject]@{
@@ -155741,9 +155741,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007841f0'
-        Module = '_unattributed'
-        Source = '00/78/unattributed_AssignTarget007841f0_007841f0.cpp'
-        TestSource = '00/78/unattributed_AssignTarget007841f0_007841f0_test.cpp'
+        Module = 'CTCCreatureGroupBoastingCrowd'
+        Source = '00/78/CTCCreatureGroupBoastingCrowd_SetHero_007841f0.cpp'
+        TestSource = '00/78/CTCCreatureGroupBoastingCrowd_SetHero_007841f0_test.cpp'
         PassPattern = '007841f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -155769,9 +155769,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009106e0'
-        Module = '_unattributed'
-        Source = '00/91/unattributed_AssignTarget009106e0_009106e0.cpp'
-        TestSource = '00/91/unattributed_AssignTarget009106e0_009106e0_test.cpp'
+        Module = 'CAIStateGroup_UsesSeat'
+        Source = '00/91/CAIStateGroupUsesSeat_SetSeat_009106e0.cpp'
+        TestSource = '00/91/CAIStateGroupUsesSeat_SetSeat_009106e0_test.cpp'
         PassPattern = '009106e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -155783,9 +155783,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00929550'
-        Module = '_unattributed'
-        Source = '00/92/unattributed_AssignTarget00929550_00929550.cpp'
-        TestSource = '00/92/unattributed_AssignTarget00929550_00929550_test.cpp'
+        Module = 'CTCDiceGame'
+        Source = '00/92/CTCDiceGame_SetCurrentPlayer_00929550.cpp'
+        TestSource = '00/92/CTCDiceGame_SetCurrentPlayer_00929550_test.cpp'
         PassPattern = '00929550_TEST PASS'
     }
     [pscustomobject]@{
@@ -166476,9 +166476,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004aa650'
-        Module = '_unattributed'
-        Source = '00/4a/unattributed_FreeTreeCTreeOwner004aa650_004aa650.cpp'
-        TestSource = '00/4a/unattributed_FreeTreeCTreeOwner004aa650_004aa650_test.cpp'
+        Module = 'std::_Rb_tree<void*,std::pair<void* const,CBulletTimeManager::CBulletTimeInfo>,std::_Select1st<std::pair<void* const,CBulletTimeManager::CBulletTimeInfo>>,std::less<void*>,std::allocator<std::pair<void* const,CBulletTimeManager::CBulletTimeInfo>>>'
+        Source = '00/4a/stdRbtree_Merase_004aa650.cpp'
+        TestSource = '00/4a/stdRbtree_Merase_004aa650_test.cpp'
         PassPattern = '004aa650_TEST PASS'
     }
     [pscustomobject]@{
@@ -166581,9 +166581,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e8fe0'
-        Module = '_unattributed'
-        Source = '00/7e/unattributed_FreeTreeCTreeOwner007e8fe0_007e8fe0.cpp'
-        TestSource = '00/7e/unattributed_FreeTreeCTreeOwner007e8fe0_007e8fe0_test.cpp'
+        Module = 'std::_Rb_tree<CThing*,std::pair<CThing* const,float>,std::_Select1st<std::pair<CThing* const,float>>,std::less<CThing*>,std::allocator<std::pair<CThing* const,float>>>'
+        Source = '00/7e/stdRbtree_Merase_007e8fe0.cpp'
+        TestSource = '00/7e/stdRbtree_Merase_007e8fe0_test.cpp'
         PassPattern = '007e8fe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -166700,9 +166700,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006efc70'
-        Module = '_unattributed'
-        Source = '00/6e/unattributed_FreeTreeCTreeOwner006efc70_006efc70.cpp'
-        TestSource = '00/6e/unattributed_FreeTreeCTreeOwner006efc70_006efc70_test.cpp'
+        Module = 'std::_Rb_tree<unsigned __int64,std::pair<unsigned __int64 const,CThingCreatureBase*>,std::_Select1st<std::pair<unsigned __int64 const,CThingCreatureBase*>>,std::less<unsigned __int64>,std::allocator<std::pair<unsigned __int64 const,CThingCreatureBase*>>>'
+        Source = '00/6e/stdRbtree_Merase_006efc70.cpp'
+        TestSource = '00/6e/stdRbtree_Merase_006efc70_test.cpp'
         PassPattern = '006efc70_TEST PASS'
     }
     [pscustomobject]@{
@@ -167232,9 +167232,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0053c879'
-        Module = 'CRetailList_node0xc_dword'
-        Source = '00/53/CRetailListnode0xcdword_Buynode_0053c879.cpp'
-        TestSource = '00/53/CRetailListnode0xcdword_Buynode_0053c879_test.cpp'
+        Module = 'std::list<NUISystem::CList*,std::allocator<NUISystem::CList*>>'
+        Source = '00/53/stdlist_Mcreatenode_0053c879.cpp'
+        TestSource = '00/53/stdlist_Mcreatenode_0053c879_test.cpp'
         PassPattern = '0053c879_TEST PASS'
     }
     [pscustomobject]@{
@@ -167267,44 +167267,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004311df'
-        Module = '_unattributed'
-        Source = '00/43/unattributed_TransferBinaryIn004311df_004311df.cpp'
-        TestSource = '00/43/unattributed_TransferBinaryIn004311df_004311df_test.cpp'
+        Module = 'CPersistTraits<EMusicSetType>'
+        Source = '00/43/CPersistTraits_TransferBinaryIn_004311df.cpp'
+        TestSource = '00/43/CPersistTraits_TransferBinaryIn_004311df_test.cpp'
         PassPattern = '004311df_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00451e9a'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00451e9a_00451e9a.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00451e9a_00451e9a_test.cpp'
+        Module = 'CPersistTraits<EInventoryActionType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00451e9a.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00451e9a_test.cpp'
         PassPattern = '00451e9a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00451f3e'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00451f3e_00451f3e.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00451f3e_00451f3e_test.cpp'
+        Module = 'CPersistTraits<ETCInterfaceType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00451f3e.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00451f3e_test.cpp'
         PassPattern = '00451f3e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00451fe2'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00451fe2_00451fe2.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00451fe2_00451fe2_test.cpp'
+        Module = 'CPersistTraits<EInventoryObjectOrientation>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00451fe2.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00451fe2_test.cpp'
         PassPattern = '00451fe2_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004520c7'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn004520c7_004520c7.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn004520c7_004520c7_test.cpp'
+        Module = 'CPersistTraits<EUIInventoryCategory>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_004520c7.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_004520c7_test.cpp'
         PassPattern = '004520c7_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004521f3'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn004521f3_004521f3.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn004521f3_004521f3_test.cpp'
+        Module = 'CPersistTraits<ENoiseType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_004521f3.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_004521f3_test.cpp'
         PassPattern = '004521f3_TEST PASS'
     }
     [pscustomobject]@{
@@ -167316,443 +167316,443 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00452738'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00452738_00452738.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00452738_00452738_test.cpp'
+        Module = 'CPersistTraits<EContextSensitiveType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00452738.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00452738_test.cpp'
         PassPattern = '00452738_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045294b'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn0045294b_0045294b.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn0045294b_0045294b_test.cpp'
+        Module = 'CPersistTraits<EHeroTitle>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_0045294b.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_0045294b_test.cpp'
         PassPattern = '0045294b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00452aa1'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00452aa1_00452aa1.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00452aa1_00452aa1_test.cpp'
+        Module = 'CPersistTraits<ECompositeBlendType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00452aa1.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00452aa1_test.cpp'
         PassPattern = '00452aa1_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00452d8e'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00452d8e_00452d8e.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00452d8e_00452d8e_test.cpp'
+        Module = 'CPersistTraits<EObjectAugmentationType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00452d8e.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00452d8e_test.cpp'
         PassPattern = '00452d8e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00452e42'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00452e42_00452e42.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00452e42_00452e42_test.cpp'
+        Module = 'CPersistTraits<EHeroAbility>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00452e42.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00452e42_test.cpp'
         PassPattern = '00452e42_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00454d3b'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00454d3b_00454d3b.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00454d3b_00454d3b_test.cpp'
+        Module = 'CPersistTraits<EReverbEnvironmentType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00454d3b.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00454d3b_test.cpp'
         PassPattern = '00454d3b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00454e9c'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00454e9c_00454e9c.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00454e9c_00454e9c_test.cpp'
+        Module = 'CPersistTraits<ESwitchTriggerType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00454e9c.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00454e9c_test.cpp'
         PassPattern = '00454e9c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00455049'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00455049_00455049.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00455049_00455049_test.cpp'
+        Module = 'CPersistTraits<EPSwitchTriggerType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00455049.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00455049_test.cpp'
         PassPattern = '00455049_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00455639'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00455639_00455639.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00455639_00455639_test.cpp'
+        Module = 'CPersistTraits<NInventory::EInventoryCategoryIdentifier>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00455639.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00455639_test.cpp'
         PassPattern = '00455639_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00455753'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00455753_00455753.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00455753_00455753_test.cpp'
+        Module = 'CPersistTraits<EMessageEventType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00455753.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00455753_test.cpp'
         PassPattern = '00455753_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004557f7'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn004557f7_004557f7.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn004557f7_004557f7_test.cpp'
+        Module = 'CPersistTraits<EReactionSpeechType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_004557f7.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_004557f7_test.cpp'
         PassPattern = '004557f7_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00456b1a'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00456b1a_00456b1a.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00456b1a_00456b1a_test.cpp'
+        Module = 'CPersistTraits<EGameEventType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00456b1a.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00456b1a_test.cpp'
         PassPattern = '00456b1a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00456bbe'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00456bbe_00456bbe.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00456bbe_00456bbe_test.cpp'
+        Module = 'CPersistTraits<EOpinionDeedType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00456bbe.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00456bbe_test.cpp'
         PassPattern = '00456bbe_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00456c62'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00456c62_00456c62.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00456c62_00456c62_test.cpp'
+        Module = 'CPersistTraits<EExpressionInventoryType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00456c62.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00456c62_test.cpp'
         PassPattern = '00456c62_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045872c'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn0045872c_0045872c.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn0045872c_0045872c_test.cpp'
+        Module = 'CPersistTraits<EActionRegisteredType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_0045872c.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_0045872c_test.cpp'
         PassPattern = '0045872c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004587d0'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn004587d0_004587d0.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn004587d0_004587d0_test.cpp'
+        Module = 'CPersistTraits<EHitLocationCodelet>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_004587d0.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_004587d0_test.cpp'
         PassPattern = '004587d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00459083'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn00459083_00459083.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn00459083_00459083_test.cpp'
+        Module = 'CPersistTraits<EDamageAttribute>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_00459083.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_00459083_test.cpp'
         PassPattern = '00459083_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004593a4'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn004593a4_004593a4.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn004593a4_004593a4_test.cpp'
+        Module = 'CPersistTraits<ECreatureAbility>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_004593a4.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_004593a4_test.cpp'
         PassPattern = '004593a4_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045994c'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn0045994c_0045994c.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn0045994c_0045994c_test.cpp'
+        Module = 'CPersistTraits<EMinimapThemeType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_0045994c.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_0045994c_test.cpp'
         PassPattern = '0045994c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004599f0'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn004599f0_004599f0.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn004599f0_004599f0_test.cpp'
+        Module = 'CPersistTraits<EWaterType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_004599f0.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_004599f0_test.cpp'
         PassPattern = '004599f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045db8f'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn0045db8f_0045db8f.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn0045db8f_0045db8f_test.cpp'
+        Module = 'CPersistTraits<ETargetingType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_0045db8f.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_0045db8f_test.cpp'
         PassPattern = '0045db8f_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045e011'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn0045e011_0045e011.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn0045e011_0045e011_test.cpp'
+        Module = 'CPersistTraits<EOpinionReactionType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_0045e011.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_0045e011_test.cpp'
         PassPattern = '0045e011_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045ed25'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn0045ed25_0045ed25.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn0045ed25_0045ed25_test.cpp'
+        Module = 'CPersistTraits<EOpinionAttitudeType>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_0045ed25.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_0045ed25_test.cpp'
         PassPattern = '0045ed25_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045f414'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_TransferBinaryIn0045f414_0045f414.cpp'
-        TestSource = '00/45/unattributed_TransferBinaryIn0045f414_0045f414_test.cpp'
+        Module = 'CPersistTraits<EOpinion>'
+        Source = '00/45/CPersistTraits_TransferBinaryIn_0045f414.cpp'
+        TestSource = '00/45/CPersistTraits_TransferBinaryIn_0045f414_test.cpp'
         PassPattern = '0045f414_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00463dcb'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn00463dcb_00463dcb.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn00463dcb_00463dcb_test.cpp'
+        Module = 'CPersistTraits<EHeroTrainableStatType>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_00463dcb.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_00463dcb_test.cpp'
         PassPattern = '00463dcb_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00464030'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn00464030_00464030.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn00464030_00464030_test.cpp'
+        Module = 'CPersistTraits<EWeaponClass>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_00464030.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_00464030_test.cpp'
         PassPattern = '00464030_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004646d0'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn004646d0_004646d0.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn004646d0_004646d0_test.cpp'
+        Module = 'CPersistTraits<EWorldMapNameGraphic>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_004646d0.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_004646d0_test.cpp'
         PassPattern = '004646d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00468e51'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn00468e51_00468e51.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn00468e51_00468e51_test.cpp'
+        Module = 'CPersistTraits<NInventory::EInventoryIdentifier>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_00468e51.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_00468e51_test.cpp'
         PassPattern = '00468e51_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004697ee'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn004697ee_004697ee.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn004697ee_004697ee_test.cpp'
+        Module = 'CPersistTraits<ECreatureGeneratorGenerateType>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_004697ee.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_004697ee_test.cpp'
         PassPattern = '004697ee_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00469bcb'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn00469bcb_00469bcb.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn00469bcb_00469bcb_test.cpp'
+        Module = 'CPersistTraits<EHeroExperienceStatCategory>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_00469bcb.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_00469bcb_test.cpp'
         PassPattern = '00469bcb_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046c7a1'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046c7a1_0046c7a1.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046c7a1_0046c7a1_test.cpp'
+        Module = 'CPersistTraits<ECombatSequenceType>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046c7a1.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046c7a1_test.cpp'
         PassPattern = '0046c7a1_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046c845'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046c845_0046c845.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046c845_0046c845_test.cpp'
+        Module = 'CPersistTraits<ECombatSequenceInterruptionType>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046c845.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046c845_test.cpp'
         PassPattern = '0046c845_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046c8e9'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046c8e9_0046c8e9.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046c8e9_0046c8e9_test.cpp'
+        Module = 'CPersistTraits<ECombatSequenceIsValidType>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046c8e9.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046c8e9_test.cpp'
         PassPattern = '0046c8e9_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046c98d'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046c98d_0046c98d.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046c98d_0046c98d_test.cpp'
+        Module = 'CPersistTraits<ECombatSequenceOnStartModuleType>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046c98d.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046c98d_test.cpp'
         PassPattern = '0046c98d_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046ca31'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046ca31_0046ca31.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046ca31_0046ca31_test.cpp'
+        Module = 'CPersistTraits<ECombatSequenceOnStopModuleType>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046ca31.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046ca31_test.cpp'
         PassPattern = '0046ca31_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046f293'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046f293_0046f293.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046f293_0046f293_test.cpp'
+        Module = 'CPersistTraits<EControllerType>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046f293.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046f293_test.cpp'
         PassPattern = '0046f293_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046f337'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046f337_0046f337.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046f337_0046f337_test.cpp'
+        Module = 'CPersistTraits<EXboxControllerButton>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046f337.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046f337_test.cpp'
         PassPattern = '0046f337_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046f3db'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046f3db_0046f3db.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046f3db_0046f3db_test.cpp'
+        Module = 'CPersistTraits<EMouseButtonControl>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046f3db.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046f3db_test.cpp'
         PassPattern = '0046f3db_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046f91b'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046f91b_0046f91b.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046f91b_0046f91b_test.cpp'
+        Module = 'CPersistTraits<ECombatCreatureType>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046f91b.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046f91b_test.cpp'
         PassPattern = '0046f91b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046f9bf'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046f9bf_0046f9bf.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046f9bf_0046f9bf_test.cpp'
+        Module = 'CPersistTraits<ECombatStrikeRecoilStyle>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046f9bf.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046f9bf_test.cpp'
         PassPattern = '0046f9bf_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046fd39'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046fd39_0046fd39.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046fd39_0046fd39_test.cpp'
+        Module = 'CPersistTraits<EClothingSuitPart>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046fd39.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046fd39_test.cpp'
         PassPattern = '0046fd39_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046fddd'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_TransferBinaryIn0046fddd_0046fddd.cpp'
-        TestSource = '00/46/unattributed_TransferBinaryIn0046fddd_0046fddd_test.cpp'
+        Module = 'CPersistTraits<EHeroAttachableAppearanceModifierType>'
+        Source = '00/46/CPersistTraits_TransferBinaryIn_0046fddd.cpp'
+        TestSource = '00/46/CPersistTraits_TransferBinaryIn_0046fddd_test.cpp'
         PassPattern = '0046fddd_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00473617'
-        Module = '_unattributed'
-        Source = '00/47/unattributed_TransferBinaryIn00473617_00473617.cpp'
-        TestSource = '00/47/unattributed_TransferBinaryIn00473617_00473617_test.cpp'
+        Module = 'CPersistTraits<ELightingChannel>'
+        Source = '00/47/CPersistTraits_TransferBinaryIn_00473617.cpp'
+        TestSource = '00/47/CPersistTraits_TransferBinaryIn_00473617_test.cpp'
         PassPattern = '00473617_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00475b93'
-        Module = '_unattributed'
-        Source = '00/47/unattributed_TransferBinaryIn00475b93_00475b93.cpp'
-        TestSource = '00/47/unattributed_TransferBinaryIn00475b93_00475b93_test.cpp'
+        Module = 'CPersistTraits<EGameAction>'
+        Source = '00/47/CPersistTraits_TransferBinaryIn_00475b93.cpp'
+        TestSource = '00/47/CPersistTraits_TransferBinaryIn_00475b93_test.cpp'
         PassPattern = '00475b93_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004791c8'
-        Module = '_unattributed'
-        Source = '00/47/unattributed_TransferBinaryIn004791c8_004791c8.cpp'
-        TestSource = '00/47/unattributed_TransferBinaryIn004791c8_004791c8_test.cpp'
+        Module = 'CPersistTraits<NSpeechGainManager::EDialogueLayer>'
+        Source = '00/47/CPersistTraits_TransferBinaryIn_004791c8.cpp'
+        TestSource = '00/47/CPersistTraits_TransferBinaryIn_004791c8_test.cpp'
         PassPattern = '004791c8_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0047926c'
-        Module = '_unattributed'
-        Source = '00/47/unattributed_TransferBinaryIn0047926c_0047926c.cpp'
-        TestSource = '00/47/unattributed_TransferBinaryIn0047926c_0047926c_test.cpp'
+        Module = 'CPersistTraits<ECrimeSeverity>'
+        Source = '00/47/CPersistTraits_TransferBinaryIn_0047926c.cpp'
+        TestSource = '00/47/CPersistTraits_TransferBinaryIn_0047926c_test.cpp'
         PassPattern = '0047926c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004ddc11'
-        Module = '_unattributed'
-        Source = '00/4d/unattributed_TransferBinaryIn004ddc11_004ddc11.cpp'
-        TestSource = '00/4d/unattributed_TransferBinaryIn004ddc11_004ddc11_test.cpp'
+        Module = 'CPersistTraits<EDoorTriggerType>'
+        Source = '00/4d/CPersistTraits_TransferBinaryIn_004ddc11.cpp'
+        TestSource = '00/4d/CPersistTraits_TransferBinaryIn_004ddc11_test.cpp'
         PassPattern = '004ddc11_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004ddded'
-        Module = '_unattributed'
-        Source = '00/4d/unattributed_TransferBinaryIn004ddded_004ddded.cpp'
-        TestSource = '00/4d/unattributed_TransferBinaryIn004ddded_004ddded_test.cpp'
+        Module = 'CPersistTraits<EPointLightChannelEffect>'
+        Source = '00/4d/CPersistTraits_TransferBinaryIn_004ddded.cpp'
+        TestSource = '00/4d/CPersistTraits_TransferBinaryIn_004ddded_test.cpp'
         PassPattern = '004ddded_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004ddf0c'
-        Module = '_unattributed'
-        Source = '00/4d/unattributed_TransferBinaryIn004ddf0c_004ddf0c.cpp'
-        TestSource = '00/4d/unattributed_TransferBinaryIn004ddf0c_004ddf0c_test.cpp'
+        Module = 'CPersistTraits<EHeroTrainingStatus>'
+        Source = '00/4d/CPersistTraits_TransferBinaryIn_004ddf0c.cpp'
+        TestSource = '00/4d/CPersistTraits_TransferBinaryIn_004ddf0c_test.cpp'
         PassPattern = '004ddf0c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004de05a'
-        Module = '_unattributed'
-        Source = '00/4d/unattributed_TransferBinaryIn004de05a_004de05a.cpp'
-        TestSource = '00/4d/unattributed_TransferBinaryIn004de05a_004de05a_test.cpp'
+        Module = 'CPersistTraits<EPerceivedThingType>'
+        Source = '00/4d/CPersistTraits_TransferBinaryIn_004de05a.cpp'
+        TestSource = '00/4d/CPersistTraits_TransferBinaryIn_004de05a_test.cpp'
         PassPattern = '004de05a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004de5a7'
-        Module = '_unattributed'
-        Source = '00/4d/unattributed_TransferBinaryIn004de5a7_004de5a7.cpp'
-        TestSource = '00/4d/unattributed_TransferBinaryIn004de5a7_004de5a7_test.cpp'
+        Module = 'CPersistTraits<EGiftType>'
+        Source = '00/4d/CPersistTraits_TransferBinaryIn_004de5a7.cpp'
+        TestSource = '00/4d/CPersistTraits_TransferBinaryIn_004de5a7_test.cpp'
         PassPattern = '004de5a7_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004dee1b'
-        Module = '_unattributed'
-        Source = '00/4d/unattributed_TransferBinaryIn004dee1b_004dee1b.cpp'
-        TestSource = '00/4d/unattributed_TransferBinaryIn004dee1b_004dee1b_test.cpp'
+        Module = 'CPersistTraits<EWallMountEffects>'
+        Source = '00/4d/CPersistTraits_TransferBinaryIn_004dee1b.cpp'
+        TestSource = '00/4d/CPersistTraits_TransferBinaryIn_004dee1b_test.cpp'
         PassPattern = '004dee1b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e44ef'
-        Module = '_unattributed'
-        Source = '00/4e/unattributed_TransferBinaryIn004e44ef_004e44ef.cpp'
-        TestSource = '00/4e/unattributed_TransferBinaryIn004e44ef_004e44ef_test.cpp'
+        Module = 'CPersistTraits<EClockHandType>'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e44ef.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e44ef_test.cpp'
         PassPattern = '004e44ef_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e5de5'
-        Module = '_unattributed'
-        Source = '00/4e/unattributed_TransferBinaryIn004e5de5_004e5de5.cpp'
-        TestSource = '00/4e/unattributed_TransferBinaryIn004e5de5_004e5de5_test.cpp'
+        Module = 'CPersistTraits<ETrapTriggerType>'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e5de5.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e5de5_test.cpp'
         PassPattern = '004e5de5_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e5e89'
-        Module = '_unattributed'
-        Source = '00/4e/unattributed_TransferBinaryIn004e5e89_004e5e89.cpp'
-        TestSource = '00/4e/unattributed_TransferBinaryIn004e5e89_004e5e89_test.cpp'
+        Module = 'CPersistTraits<ETrapType>'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e5e89.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e5e89_test.cpp'
         PassPattern = '004e5e89_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e637d'
-        Module = '_unattributed'
-        Source = '00/4e/unattributed_TransferBinaryIn004e637d_004e637d.cpp'
-        TestSource = '00/4e/unattributed_TransferBinaryIn004e637d_004e637d_test.cpp'
+        Module = 'CPersistTraits<EIdleStateGroup>'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e637d.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e637d_test.cpp'
         PassPattern = '004e637d_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e68b5'
-        Module = '_unattributed'
-        Source = '00/4e/unattributed_TransferBinaryIn004e68b5_004e68b5.cpp'
-        TestSource = '00/4e/unattributed_TransferBinaryIn004e68b5_004e68b5_test.cpp'
+        Module = 'CPersistTraits<EQuakeStrength>'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e68b5.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e68b5_test.cpp'
         PassPattern = '004e68b5_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e6b50'
-        Module = '_unattributed'
-        Source = '00/4e/unattributed_TransferBinaryIn004e6b50_004e6b50.cpp'
-        TestSource = '00/4e/unattributed_TransferBinaryIn004e6b50_004e6b50_test.cpp'
+        Module = 'CPersistTraits<EQuakeLength>'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e6b50.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e6b50_test.cpp'
         PassPattern = '004e6b50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e7b52'
-        Module = '_unattributed'
-        Source = '00/4e/unattributed_TransferBinaryIn004e7b52_004e7b52.cpp'
-        TestSource = '00/4e/unattributed_TransferBinaryIn004e7b52_004e7b52_test.cpp'
+        Module = 'CPersistTraits<EQuestCardPrerequisite>'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e7b52.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e7b52_test.cpp'
         PassPattern = '004e7b52_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e854b'
-        Module = '_unattributed'
-        Source = '00/4e/unattributed_TransferBinaryIn004e854b_004e854b.cpp'
-        TestSource = '00/4e/unattributed_TransferBinaryIn004e854b_004e854b_test.cpp'
+        Module = 'CPersistTraits<EVillageStanceToHero>'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e854b.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e854b_test.cpp'
         PassPattern = '004e854b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e86a2'
-        Module = '_unattributed'
-        Source = '00/4e/unattributed_TransferBinaryIn004e86a2_004e86a2.cpp'
-        TestSource = '00/4e/unattributed_TransferBinaryIn004e86a2_004e86a2_test.cpp'
+        Module = 'CPersistTraits<EVillageTaskType>'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e86a2.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e86a2_test.cpp'
         PassPattern = '004e86a2_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e8f29'
-        Module = '_unattributed'
-        Source = '00/4e/unattributed_TransferBinaryIn004e8f29_004e8f29.cpp'
-        TestSource = '00/4e/unattributed_TransferBinaryIn004e8f29_004e8f29_test.cpp'
+        Module = 'CPersistTraits<EWeaponType>'
+        Source = '00/4e/CPersistTraits_TransferBinaryIn_004e8f29.cpp'
+        TestSource = '00/4e/CPersistTraits_TransferBinaryIn_004e8f29_test.cpp'
         PassPattern = '004e8f29_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004f9ba4'
-        Module = '_unattributed'
-        Source = '00/4f/unattributed_TransferBinaryIn004f9ba4_004f9ba4.cpp'
-        TestSource = '00/4f/unattributed_TransferBinaryIn004f9ba4_004f9ba4_test.cpp'
+        Module = 'CPersistTraits<ETavernGameControlType>'
+        Source = '00/4f/CPersistTraits_TransferBinaryIn_004f9ba4.cpp'
+        TestSource = '00/4f/CPersistTraits_TransferBinaryIn_004f9ba4_test.cpp'
         PassPattern = '004f9ba4_TEST PASS'
     }
     [pscustomobject]@{
@@ -173629,9 +173629,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0094d430'
-        Module = '_unattributed'
-        Source = '00/94/unattributed_AssignTarget0094d430_0094d430.cpp'
-        TestSource = '00/94/unattributed_AssignTarget0094d430_0094d430_test.cpp'
+        Module = 'CTCTavernGame'
+        Source = '00/94/CTCTavernGame_RegisterGameMaster_0094d430.cpp'
+        TestSource = '00/94/CTCTavernGame_RegisterGameMaster_0094d430_test.cpp'
         PassPattern = '0094d430_TEST PASS'
     }
     [pscustomobject]@{
@@ -175386,9 +175386,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042cdc3'
-        Module = '_unattributed'
-        Source = '00/42/unattributed_ForwardCForwarder0042cdc3_0042cdc3.cpp'
-        TestSource = '00/42/unattributed_ForwardCForwarder0042cdc3_0042cdc3_test.cpp'
+        Module = 'std::map<NUISystem::CComponent*,long,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent* const,long>>>'
+        Source = '00/42/stdmap_insert_0042cdc3.cpp'
+        TestSource = '00/42/stdmap_insert_0042cdc3_test.cpp'
         PassPattern = '0042cdc3_TEST PASS'
     }
     [pscustomobject]@{
@@ -175400,16 +175400,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042ce46'
-        Module = '_unattributed'
-        Source = '00/42/unattributed_ForwardCForwarder0042ce46_0042ce46.cpp'
-        TestSource = '00/42/unattributed_ForwardCForwarder0042ce46_0042ce46_test.cpp'
+        Module = 'std::map<long,EEngine2DLayer,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer>>>'
+        Source = '00/42/stdmap_insert_0042ce46.cpp'
+        TestSource = '00/42/stdmap_insert_0042ce46_test.cpp'
         PassPattern = '0042ce46_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0042d2a9'
-        Module = '_unattributed'
-        Source = '00/42/unattributed_ForwardCForwarder0042d2a9_0042d2a9.cpp'
-        TestSource = '00/42/unattributed_ForwardCForwarder0042d2a9_0042d2a9_test.cpp'
+        Module = 'std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent>>>>'
+        Source = '00/42/stdmap_insert_0042d2a9.cpp'
+        TestSource = '00/42/stdmap_insert_0042d2a9_test.cpp'
         PassPattern = '0042d2a9_TEST PASS'
     }
     [pscustomobject]@{
@@ -175428,51 +175428,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00594821'
-        Module = '_unattributed'
-        Source = '00/59/unattributed_ForwardCForwarder00594821_00594821.cpp'
-        TestSource = '00/59/unattributed_ForwardCForwarder00594821_00594821_test.cpp'
+        Module = 'std::map<long,NUISystem::CComponent*,std::less<long>,std::allocator<std::pair<long const,NUISystem::CComponent*>>>'
+        Source = '00/59/stdmap_insert_00594821.cpp'
+        TestSource = '00/59/stdmap_insert_00594821_test.cpp'
         PassPattern = '00594821_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0059483e'
-        Module = '_unattributed'
-        Source = '00/59/unattributed_ForwardCForwarder0059483e_0059483e.cpp'
-        TestSource = '00/59/unattributed_ForwardCForwarder0059483e_0059483e_test.cpp'
+        Module = 'std::map<CDateAndTime,CWideString,std::less<CDateAndTime>,std::allocator<std::pair<CDateAndTime const,CWideString>>>'
+        Source = '00/59/stdmap_insert_0059483e.cpp'
+        TestSource = '00/59/stdmap_insert_0059483e_test.cpp'
         PassPattern = '0059483e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0059b559'
-        Module = '_unattributed'
-        Source = '00/59/unattributed_ForwardCForwarder0059b559_0059b559.cpp'
-        TestSource = '00/59/unattributed_ForwardCForwarder0059b559_0059b559_test.cpp'
+        Module = 'std::map<FRONTEND_SCREEN,NUISystem::CComponent*,std::less<FRONTEND_SCREEN>,std::allocator<std::pair<FRONTEND_SCREEN const,NUISystem::CComponent*>>>'
+        Source = '00/59/stdmap_insert_0059b559.cpp'
+        TestSource = '00/59/stdmap_insert_0059b559_test.cpp'
         PassPattern = '0059b559_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005b2e8a'
-        Module = '_unattributed'
-        Source = '00/5b/unattributed_ForwardCForwarder005b2e8a_005b2e8a.cpp'
-        TestSource = '00/5b/unattributed_ForwardCForwarder005b2e8a_005b2e8a_test.cpp'
+        Module = 'std::map<NUISystem::CComponent*,NUISystem::CList*,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent* const,NUISystem::CList*>>>'
+        Source = '00/5b/stdmap_insert_005b2e8a.cpp'
+        TestSource = '00/5b/stdmap_insert_005b2e8a_test.cpp'
         PassPattern = '005b2e8a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005b2ea7'
-        Module = '_unattributed'
-        Source = '00/5b/unattributed_ForwardCForwarder005b2ea7_005b2ea7.cpp'
-        TestSource = '00/5b/unattributed_ForwardCForwarder005b2ea7_005b2ea7_test.cpp'
+        Module = 'std::map<long,long,std::less<long>,std::allocator<std::pair<long const,long>>>'
+        Source = '00/5b/stdmap_insert_005b2ea7.cpp'
+        TestSource = '00/5b/stdmap_insert_005b2ea7_test.cpp'
         PassPattern = '005b2ea7_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005b2ec4'
-        Module = '_unattributed'
-        Source = '00/5b/unattributed_ForwardCForwarder005b2ec4_005b2ec4.cpp'
-        TestSource = '00/5b/unattributed_ForwardCForwarder005b2ec4_005b2ec4_test.cpp'
+        Module = 'std::map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent* const,std::pair<CWideString,long>>>>'
+        Source = '00/5b/stdmap_insert_005b2ec4.cpp'
+        TestSource = '00/5b/stdmap_insert_005b2ec4_test.cpp'
         PassPattern = '005b2ec4_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005b2ee1'
-        Module = '_unattributed'
-        Source = '00/5b/unattributed_ForwardCForwarder005b2ee1_005b2ee1.cpp'
-        TestSource = '00/5b/unattributed_ForwardCForwarder005b2ee1_005b2ee1_test.cpp'
+        Module = 'std::map<NUISystem::CComponent*,NUISystem::CComponent*,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent* const,NUISystem::CComponent*>>>'
+        Source = '00/5b/stdmap_insert_005b2ee1.cpp'
+        TestSource = '00/5b/stdmap_insert_005b2ee1_test.cpp'
         PassPattern = '005b2ee1_TEST PASS'
     }
     [pscustomobject]@{
@@ -175484,9 +175484,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bbadc'
-        Module = '_unattributed'
-        Source = '00/5b/unattributed_ForwardCForwarder005bbadc_005bbadc.cpp'
-        TestSource = '00/5b/unattributed_ForwardCForwarder005bbadc_005bbadc_test.cpp'
+        Module = 'std::map<EClothingSuitPart,long,std::less<EClothingSuitPart>,std::allocator<std::pair<EClothingSuitPart const,long>>>'
+        Source = '00/5b/stdmap_insert_005bbadc.cpp'
+        TestSource = '00/5b/stdmap_insert_005bbadc_test.cpp'
         PassPattern = '005bbadc_TEST PASS'
     }
     [pscustomobject]@{
@@ -175505,9 +175505,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005d8916'
-        Module = '_unattributed'
-        Source = '00/5d/unattributed_ForwardCForwarder005d8916_005d8916.cpp'
-        TestSource = '00/5d/unattributed_ForwardCForwarder005d8916_005d8916_test.cpp'
+        Module = 'std::map<unsigned long,long,std::less<unsigned long>,std::allocator<std::pair<unsigned long const,long>>>'
+        Source = '00/5d/stdmap_insert_005d8916.cpp'
+        TestSource = '00/5d/stdmap_insert_005d8916_test.cpp'
         PassPattern = '005d8916_TEST PASS'
     }
     [pscustomobject]@{
@@ -175519,9 +175519,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005f9ca5'
-        Module = '_unattributed'
-        Source = '00/5f/unattributed_ForwardCForwarder005f9ca5_005f9ca5.cpp'
-        TestSource = '00/5f/unattributed_ForwardCForwarder005f9ca5_005f9ca5_test.cpp'
+        Module = 'std::map<EHeroAbility,NUISystem::CComponent*,std::less<EHeroAbility>,std::allocator<std::pair<EHeroAbility const,NUISystem::CComponent*>>>'
+        Source = '00/5f/stdmap_insert_005f9ca5.cpp'
+        TestSource = '00/5f/stdmap_insert_005f9ca5_test.cpp'
         PassPattern = '005f9ca5_TEST PASS'
     }
     [pscustomobject]@{
@@ -175785,23 +175785,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c3f90'
-        Module = '_unattributed'
-        Source = '00/4c/unattributed_EraseRangeCRetailTree004c3f90_004c3f90.cpp'
-        TestSource = '00/4c/unattributed_EraseRangeCRetailTree004c3f90_004c3f90_test.cpp'
+        Module = 'std::_Rb_tree<void*,std::pair<void* const,CRGBColour>,std::_Select1st<std::pair<void* const,CRGBColour>>,std::less<void*>,std::allocator<std::pair<void* const,CRGBColour>>>'
+        Source = '00/4c/stdRbtree_erase_004c3f90.cpp'
+        TestSource = '00/4c/stdRbtree_erase_004c3f90_test.cpp'
         PassPattern = '004c3f90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004c6810'
-        Module = '_unattributed'
-        Source = '00/4c/unattributed_EraseRangeCRetailTree004c6810_004c6810.cpp'
-        TestSource = '00/4c/unattributed_EraseRangeCRetailTree004c6810_004c6810_test.cpp'
+        Module = 'std::_Rb_tree<void*,std::pair<void* const,CBulletTimeManager::CBulletTimeInfo>,std::_Select1st<std::pair<void* const,CBulletTimeManager::CBulletTimeInfo>>,std::less<void*>,std::allocator<std::pair<void* const,CBulletTimeManager::CBulletTimeInfo>>>'
+        Source = '00/4c/stdRbtree_erase_004c6810.cpp'
+        TestSource = '00/4c/stdRbtree_erase_004c6810_test.cpp'
         PassPattern = '004c6810_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00638ee0'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_EraseRangeCRetailTree00638ee0_00638ee0.cpp'
-        TestSource = '00/63/unattributed_EraseRangeCRetailTree00638ee0_00638ee0_test.cpp'
+        Module = 'std::_Rb_tree<long,long,std::_Identity<long>,std::less<long>,std::allocator<long>>'
+        Source = '00/63/stdRbtree_erase_00638ee0.cpp'
+        TestSource = '00/63/stdRbtree_erase_00638ee0_test.cpp'
         PassPattern = '00638ee0_TEST PASS'
     }
     [pscustomobject]@{
@@ -175820,16 +175820,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007775b0'
-        Module = '_unattributed'
-        Source = '00/77/unattributed_EraseRangeCRetailTree007775b0_007775b0.cpp'
-        TestSource = '00/77/unattributed_EraseRangeCRetailTree007775b0_007775b0_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const,CShopItem>,std::_Select1st<std::pair<long const,CShopItem>>,std::less<long>,std::allocator<std::pair<long const,CShopItem>>>'
+        Source = '00/77/stdRbtree_erase_007775b0.cpp'
+        TestSource = '00/77/stdRbtree_erase_007775b0_test.cpp'
         PassPattern = '007775b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007e99f0'
-        Module = '_unattributed'
-        Source = '00/7e/unattributed_EraseRangeCRetailTree007e99f0_007e99f0.cpp'
-        TestSource = '00/7e/unattributed_EraseRangeCRetailTree007e99f0_007e99f0_test.cpp'
+        Module = 'std::_Rb_tree<CThing*,std::pair<CThing* const,float>,std::_Select1st<std::pair<CThing* const,float>>,std::less<CThing*>,std::allocator<std::pair<CThing* const,float>>>'
+        Source = '00/7e/stdRbtree_erase_007e99f0.cpp'
+        TestSource = '00/7e/stdRbtree_erase_007e99f0_test.cpp'
         PassPattern = '007e99f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -175855,9 +175855,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009d7760'
-        Module = '_unattributed'
-        Source = '00/9d/unattributed_EraseRangeCRetailTree009d7760_009d7760.cpp'
-        TestSource = '00/9d/unattributed_EraseRangeCRetailTree009d7760_009d7760_test.cpp'
+        Module = 'std::_Rb_tree<CBankFileAsyncData*,CBankFileAsyncData*,std::_Identity<CBankFileAsyncData*>,std::less<CBankFileAsyncData*>,std::allocator<CBankFileAsyncData*>>'
+        Source = '00/9d/stdRbtree_erase_009d7760.cpp'
+        TestSource = '00/9d/stdRbtree_erase_009d7760_test.cpp'
         PassPattern = '009d7760_TEST PASS'
     }
     [pscustomobject]@{
@@ -175981,9 +175981,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c4960'
-        Module = '_unattributed'
-        Source = '00/4c/unattributed_InsertUniqueCRetailTree004c4960_004c4960.cpp'
-        TestSource = '00/4c/unattributed_InsertUniqueCRetailTree004c4960_004c4960_test.cpp'
+        Module = 'std::_Rb_tree<void*,std::pair<void* const,CRGBColour>,std::_Select1st<std::pair<void* const,CRGBColour>>,std::less<void*>,std::allocator<std::pair<void* const,CRGBColour>>>'
+        Source = '00/4c/stdRbtree_insertunique_004c4960.cpp'
+        TestSource = '00/4c/stdRbtree_insertunique_004c4960_test.cpp'
         PassPattern = '004c4960_TEST PASS'
     }
     [pscustomobject]@{
@@ -175995,9 +175995,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c6a30'
-        Module = '_unattributed'
-        Source = '00/4c/unattributed_InsertUniqueCRetailTree004c6a30_004c6a30.cpp'
-        TestSource = '00/4c/unattributed_InsertUniqueCRetailTree004c6a30_004c6a30_test.cpp'
+        Module = 'std::_Rb_tree<void*,std::pair<void* const,CBulletTimeManager::CBulletTimeInfo>,std::_Select1st<std::pair<void* const,CBulletTimeManager::CBulletTimeInfo>>,std::less<void*>,std::allocator<std::pair<void* const,CBulletTimeManager::CBulletTimeInfo>>>'
+        Source = '00/4c/stdRbtree_insertunique_004c6a30.cpp'
+        TestSource = '00/4c/stdRbtree_insertunique_004c6a30_test.cpp'
         PassPattern = '004c6a30_TEST PASS'
     }
     [pscustomobject]@{
@@ -176037,9 +176037,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e9c00'
-        Module = '_unattributed'
-        Source = '00/7e/unattributed_InsertUniqueCRetailTree007e9c00_007e9c00.cpp'
-        TestSource = '00/7e/unattributed_InsertUniqueCRetailTree007e9c00_007e9c00_test.cpp'
+        Module = 'std::_Rb_tree<CThing*,std::pair<CThing* const,float>,std::_Select1st<std::pair<CThing* const,float>>,std::less<CThing*>,std::allocator<std::pair<CThing* const,float>>>'
+        Source = '00/7e/stdRbtree_insertunique_007e9c00.cpp'
+        TestSource = '00/7e/stdRbtree_insertunique_007e9c00_test.cpp'
         PassPattern = '007e9c00_TEST PASS'
     }
     [pscustomobject]@{
@@ -176072,9 +176072,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009d7cf0'
-        Module = '_unattributed'
-        Source = '00/9d/unattributed_InsertUniqueCRetailTree009d7cf0_009d7cf0.cpp'
-        TestSource = '00/9d/unattributed_InsertUniqueCRetailTree009d7cf0_009d7cf0_test.cpp'
+        Module = 'std::_Rb_tree<CBankFileAsyncData*,CBankFileAsyncData*,std::_Identity<CBankFileAsyncData*>,std::less<CBankFileAsyncData*>,std::allocator<CBankFileAsyncData*>>'
+        Source = '00/9d/stdRbtree_insertunique_009d7cf0.cpp'
+        TestSource = '00/9d/stdRbtree_insertunique_009d7cf0_test.cpp'
         PassPattern = '009d7cf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -176114,9 +176114,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00514b50'
-        Module = '_unattributed'
-        Source = '00/51/unattributed_InsertUniqueCRetailTree00514b50_00514b50.cpp'
-        TestSource = '00/51/unattributed_InsertUniqueCRetailTree00514b50_00514b50_test.cpp'
+        Module = 'std::_Rb_tree<char,char,std::_Identity<char>,std::less<char>,std::allocator<char>>'
+        Source = '00/51/stdRbtree_insertunique_00514b50.cpp'
+        TestSource = '00/51/stdRbtree_insertunique_00514b50_test.cpp'
         PassPattern = '00514b50_TEST PASS'
     }
     [pscustomobject]@{
@@ -176128,9 +176128,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00553ae0'
-        Module = '_unattributed'
-        Source = '00/55/unattributed_InsertUniqueCRetailTree00553ae0_00553ae0.cpp'
-        TestSource = '00/55/unattributed_InsertUniqueCRetailTree00553ae0_00553ae0_test.cpp'
+        Module = 'std::_Rb_tree<NUISystem::ETableSprites,std::pair<NUISystem::ETableSprites const,CCountedPointer<NUISystem::CComponent>>,std::_Select1st<std::pair<NUISystem::ETableSprites const,CCountedPointer<NUISystem::CComponent>>>,std::less<NUISystem::ETableSprites>,std::allocator<std::pair<NUISystem::ETableSprites const,CCountedPointer<NUISystem::CComponent>>>>'
+        Source = '00/55/stdRbtree_insertunique_00553ae0.cpp'
+        TestSource = '00/55/stdRbtree_insertunique_00553ae0_test.cpp'
         PassPattern = '00553ae0_TEST PASS'
     }
     [pscustomobject]@{
@@ -176142,23 +176142,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0056e020'
-        Module = '_unattributed'
-        Source = '00/56/unattributed_InsertUniqueCRetailTree0056e020_0056e020.cpp'
-        TestSource = '00/56/unattributed_InsertUniqueCRetailTree0056e020_0056e020_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const,std::vector<NUISystem::CMenuEntry*,std::allocator<NUISystem::CMenuEntry*>>>,std::_Select1st<std::pair<long const,std::vector<NUISystem::CMenuEntry*,std::allocator<NUISystem::CMenuEntry*>>>>,std::less<long>,std::allocator<std::pair<long const,std::vector<NUISystem::CMenuEntry*,std::allocator<NUISystem::CMenuEntry*>>>>>'
+        Source = '00/56/stdRbtree_insertunique_0056e020.cpp'
+        TestSource = '00/56/stdRbtree_insertunique_0056e020_test.cpp'
         PassPattern = '0056e020_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005e91c0'
-        Module = '_unattributed'
-        Source = '00/5e/unattributed_InsertUniqueCRetailTree005e91c0_005e91c0.cpp'
-        TestSource = '00/5e/unattributed_InsertUniqueCRetailTree005e91c0_005e91c0_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const,unsigned long>,std::_Select1st<std::pair<long const,unsigned long>>,std::less<long>,std::allocator<std::pair<long const,unsigned long>>>'
+        Source = '00/5e/stdRbtree_insertunique_005e91c0.cpp'
+        TestSource = '00/5e/stdRbtree_insertunique_005e91c0_test.cpp'
         PassPattern = '005e91c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00616ed0'
-        Module = '_unattributed'
-        Source = '00/61/unattributed_InsertUniqueCRetailTree00616ed0_00616ed0.cpp'
-        TestSource = '00/61/unattributed_InsertUniqueCRetailTree00616ed0_00616ed0_test.cpp'
+        Module = 'std::_Rb_tree<CHeroLogBook::CHeroLogBookEntry::ECategory,std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const,NUISystem::CComponent*>,std::_Select1st<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const,NUISystem::CComponent*>>,std::less<CHeroLogBook::CHeroLogBookEntry::ECategory>,std::allocator<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const,NUISystem::CComponent*>>>'
+        Source = '00/61/stdRbtree_insertunique_00616ed0.cpp'
+        TestSource = '00/61/stdRbtree_insertunique_00616ed0_test.cpp'
         PassPattern = '00616ed0_TEST PASS'
     }
     [pscustomobject]@{
@@ -176268,16 +176268,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b96fe0'
-        Module = '_unattributed'
-        Source = '00/b9/unattributed_InsertUniqueCRetailTree00b96fe0_00b96fe0.cpp'
-        TestSource = '00/b9/unattributed_InsertUniqueCRetailTree00b96fe0_00b96fe0_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const,CCountedPointer<CEngineSceneMap>>,std::_Select1st<std::pair<long const,CCountedPointer<CEngineSceneMap>>>,std::less<long>,std::allocator<std::pair<long const,CCountedPointer<CEngineSceneMap>>>>'
+        Source = '00/b9/stdRbtree_insertunique_00b96fe0.cpp'
+        TestSource = '00/b9/stdRbtree_insertunique_00b96fe0_test.cpp'
         PassPattern = '00b96fe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b984a0'
-        Module = '_unattributed'
-        Source = '00/b9/unattributed_InsertUniqueCRetailTree00b984a0_00b984a0.cpp'
-        TestSource = '00/b9/unattributed_InsertUniqueCRetailTree00b984a0_00b984a0_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const,std::map<long,CCountedPointer<CEngineSceneMap>,std::less<long>,std::allocator<std::pair<long const,CCountedPointer<CEngineSceneMap>>>>>,std::_Select1st<std::pair<long const,std::map<long,CCountedPointer<CEngineSceneMap>,std::less<long>,std::allocator<std::pair<long const,CCountedPointer<CEngineSceneMap>>>>>>,std::less<long>,std::allocator<std::pair<long const,std::map<long,CCountedPointer<CEngineSceneMap>,std::less<long>,std::allocator<std::pair<long const,CCountedPointer<CEngineSceneMap>>>>>>>'
+        Source = '00/b9/stdRbtree_insertunique_00b984a0.cpp'
+        TestSource = '00/b9/stdRbtree_insertunique_00b984a0_test.cpp'
         PassPattern = '00b984a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -176296,16 +176296,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005685e0'
-        Module = '_unattributed'
-        Source = '00/56/unattributed_InsertUniqueCRetailTree005685e0_005685e0.cpp'
-        TestSource = '00/56/unattributed_InsertUniqueCRetailTree005685e0_005685e0_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const,CCountedPointer<CTexture>>,std::_Select1st<std::pair<long const,CCountedPointer<CTexture>>>,std::less<long>,std::allocator<std::pair<long const,CCountedPointer<CTexture>>>>'
+        Source = '00/56/stdRbtree_insertunique_005685e0.cpp'
+        TestSource = '00/56/stdRbtree_insertunique_005685e0_test.cpp'
         PassPattern = '005685e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00617060'
-        Module = '_unattributed'
-        Source = '00/61/unattributed_InsertUniqueCRetailTree00617060_00617060.cpp'
-        TestSource = '00/61/unattributed_InsertUniqueCRetailTree00617060_00617060_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const,std::pair<long,long>>,std::_Select1st<std::pair<long const,std::pair<long,long>>>,std::less<long>,std::allocator<std::pair<long const,std::pair<long,long>>>>'
+        Source = '00/61/stdRbtree_insertunique_00617060.cpp'
+        TestSource = '00/61/stdRbtree_insertunique_00617060_test.cpp'
         PassPattern = '00617060_TEST PASS'
     }
     [pscustomobject]@{
@@ -176366,9 +176366,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c29b0'
-        Module = '_unattributed'
-        Source = '00/9c/unattributed_InsertUniqueCRetailTree009c29b0_009c29b0.cpp'
-        TestSource = '00/9c/unattributed_InsertUniqueCRetailTree009c29b0_009c29b0_test.cpp'
+        Module = 'std::_Rb_tree<ESurfaceMultisampleType,ESurfaceMultisampleType,std::_Identity<ESurfaceMultisampleType>,std::less<ESurfaceMultisampleType>,std::allocator<ESurfaceMultisampleType>>'
+        Source = '00/9c/stdRbtree_insertunique_009c29b0.cpp'
+        TestSource = '00/9c/stdRbtree_insertunique_009c29b0_test.cpp'
         PassPattern = '009c29b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -176401,16 +176401,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005e9100'
-        Module = '_unattributed'
-        Source = '00/5e/unattributed_InsertCRetailTree005e9100_005e9100.cpp'
-        TestSource = '00/5e/unattributed_InsertCRetailTree005e9100_005e9100_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const,unsigned long>,std::_Select1st<std::pair<long const,unsigned long>>,std::less<long>,std::allocator<std::pair<long const,unsigned long>>>'
+        Source = '00/5e/stdRbtree_Minsert_005e9100.cpp'
+        TestSource = '00/5e/stdRbtree_Minsert_005e9100_test.cpp'
         PassPattern = '005e9100_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00616e10'
-        Module = '_unattributed'
-        Source = '00/61/unattributed_InsertCRetailTree00616e10_00616e10.cpp'
-        TestSource = '00/61/unattributed_InsertCRetailTree00616e10_00616e10_test.cpp'
+        Module = 'std::_Rb_tree<CHeroLogBook::CHeroLogBookEntry::ECategory,std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const,NUISystem::CComponent*>,std::_Select1st<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const,NUISystem::CComponent*>>,std::less<CHeroLogBook::CHeroLogBookEntry::ECategory>,std::allocator<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const,NUISystem::CComponent*>>>'
+        Source = '00/61/stdRbtree_Minsert_00616e10.cpp'
+        TestSource = '00/61/stdRbtree_Minsert_00616e10_test.cpp'
         PassPattern = '00616e10_TEST PASS'
     }
     [pscustomobject]@{
@@ -176506,9 +176506,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040fef0'
-        Module = '_unattributed'
-        Source = '00/40/unattributed_TransferBinaryIn0040fef0_0040fef0.cpp'
-        TestSource = '00/40/unattributed_TransferBinaryIn0040fef0_0040fef0_test.cpp'
+        Module = 'CPersistTraits<ETutorialCategory>'
+        Source = '00/40/CPersistTraits_TransferBinaryIn_0040fef0.cpp'
+        TestSource = '00/40/CPersistTraits_TransferBinaryIn_0040fef0_test.cpp'
         PassPattern = '0040fef0_TEST PASS'
     }
     [pscustomobject]@{
@@ -176520,23 +176520,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00625730'
-        Module = '_unattributed'
-        Source = '00/62/unattributed_TransferBinaryIn00625730_00625730.cpp'
-        TestSource = '00/62/unattributed_TransferBinaryIn00625730_00625730_test.cpp'
+        Module = 'CPersistTraits<NUISystem::EStateChangeType>'
+        Source = '00/62/CPersistTraits_TransferBinaryIn_00625730.cpp'
+        TestSource = '00/62/CPersistTraits_TransferBinaryIn_00625730_test.cpp'
         PassPattern = '00625730_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006322b0'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_TransferBinaryIn006322b0_006322b0.cpp'
-        TestSource = '00/63/unattributed_TransferBinaryIn006322b0_006322b0_test.cpp'
+        Module = 'CPersistTraits<NUISystem::EType>'
+        Source = '00/63/CPersistTraits_TransferBinaryIn_006322b0.cpp'
+        TestSource = '00/63/CPersistTraits_TransferBinaryIn_006322b0_test.cpp'
         PassPattern = '006322b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00632390'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_TransferBinaryIn00632390_00632390.cpp'
-        TestSource = '00/63/unattributed_TransferBinaryIn00632390_00632390_test.cpp'
+        Module = 'CPersistTraits<NUISystem::ETableExpansionTypes>'
+        Source = '00/63/CPersistTraits_TransferBinaryIn_00632390.cpp'
+        TestSource = '00/63/CPersistTraits_TransferBinaryIn_00632390_test.cpp'
         PassPattern = '00632390_TEST PASS'
     }
     [pscustomobject]@{
@@ -176548,86 +176548,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00632550'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_TransferBinaryIn00632550_00632550.cpp'
-        TestSource = '00/63/unattributed_TransferBinaryIn00632550_00632550_test.cpp'
+        Module = 'CPersistTraits<NUISystem::EActionType>'
+        Source = '00/63/CPersistTraits_TransferBinaryIn_00632550.cpp'
+        TestSource = '00/63/CPersistTraits_TransferBinaryIn_00632550_test.cpp'
         PassPattern = '00632550_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00632630'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_TransferBinaryIn00632630_00632630.cpp'
-        TestSource = '00/63/unattributed_TransferBinaryIn00632630_00632630_test.cpp'
+        Module = 'CPersistTraits<NUISystem::ETextAlignement>'
+        Source = '00/63/CPersistTraits_TransferBinaryIn_00632630.cpp'
+        TestSource = '00/63/CPersistTraits_TransferBinaryIn_00632630_test.cpp'
         PassPattern = '00632630_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00632710'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_TransferBinaryIn00632710_00632710.cpp'
-        TestSource = '00/63/unattributed_TransferBinaryIn00632710_00632710_test.cpp'
+        Module = 'CPersistTraits<EEngineSprite2DFlag>'
+        Source = '00/63/CPersistTraits_TransferBinaryIn_00632710.cpp'
+        TestSource = '00/63/CPersistTraits_TransferBinaryIn_00632710_test.cpp'
         PassPattern = '00632710_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00632900'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_TransferBinaryIn00632900_00632900.cpp'
-        TestSource = '00/63/unattributed_TransferBinaryIn00632900_00632900_test.cpp'
+        Module = 'CPersistTraits<NUISystem::ETableSprites>'
+        Source = '00/63/CPersistTraits_TransferBinaryIn_00632900.cpp'
+        TestSource = '00/63/CPersistTraits_TransferBinaryIn_00632900_test.cpp'
         PassPattern = '00632900_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00671c60'
-        Module = '_unattributed'
-        Source = '00/67/unattributed_TransferBinaryIn00671c60_00671c60.cpp'
-        TestSource = '00/67/unattributed_TransferBinaryIn00671c60_00671c60_test.cpp'
+        Module = 'CPersistTraits<ESex>'
+        Source = '00/67/CPersistTraits_TransferBinaryIn_00671c60.cpp'
+        TestSource = '00/67/CPersistTraits_TransferBinaryIn_00671c60_test.cpp'
         PassPattern = '00671c60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00671d40'
-        Module = '_unattributed'
-        Source = '00/67/unattributed_TransferBinaryIn00671d40_00671d40.cpp'
-        TestSource = '00/67/unattributed_TransferBinaryIn00671d40_00671d40_test.cpp'
+        Module = 'CPersistTraits<ECreatureType>'
+        Source = '00/67/CPersistTraits_TransferBinaryIn_00671d40.cpp'
+        TestSource = '00/67/CPersistTraits_TransferBinaryIn_00671d40_test.cpp'
         PassPattern = '00671d40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00671e20'
-        Module = '_unattributed'
-        Source = '00/67/unattributed_TransferBinaryIn00671e20_00671e20.cpp'
-        TestSource = '00/67/unattributed_TransferBinaryIn00671e20_00671e20_test.cpp'
+        Module = 'CPersistTraits<ECreatureInteractionType>'
+        Source = '00/67/CPersistTraits_TransferBinaryIn_00671e20.cpp'
+        TestSource = '00/67/CPersistTraits_TransferBinaryIn_00671e20_test.cpp'
         PassPattern = '00671e20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00671f00'
-        Module = '_unattributed'
-        Source = '00/67/unattributed_TransferBinaryIn00671f00_00671f00.cpp'
-        TestSource = '00/67/unattributed_TransferBinaryIn00671f00_00671f00_test.cpp'
+        Module = 'CPersistTraits<EThingCreatureProperty>'
+        Source = '00/67/CPersistTraits_TransferBinaryIn_00671f00.cpp'
+        TestSource = '00/67/CPersistTraits_TransferBinaryIn_00671f00_test.cpp'
         PassPattern = '00671f00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00671fe0'
-        Module = '_unattributed'
-        Source = '00/67/unattributed_TransferBinaryIn00671fe0_00671fe0.cpp'
-        TestSource = '00/67/unattributed_TransferBinaryIn00671fe0_00671fe0_test.cpp'
+        Module = 'CPersistTraits<EControlledMovementType>'
+        Source = '00/67/CPersistTraits_TransferBinaryIn_00671fe0.cpp'
+        TestSource = '00/67/CPersistTraits_TransferBinaryIn_00671fe0_test.cpp'
         PassPattern = '00671fe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006725d0'
-        Module = '_unattributed'
-        Source = '00/67/unattributed_TransferBinaryIn006725d0_006725d0.cpp'
-        TestSource = '00/67/unattributed_TransferBinaryIn006725d0_006725d0_test.cpp'
+        Module = 'CPersistTraits<ENavigatorType>'
+        Source = '00/67/CPersistTraits_TransferBinaryIn_006725d0.cpp'
+        TestSource = '00/67/CPersistTraits_TransferBinaryIn_006725d0_test.cpp'
         PassPattern = '006725d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0077fd10'
-        Module = '_unattributed'
-        Source = '00/77/unattributed_TransferBinaryIn0077fd10_0077fd10.cpp'
-        TestSource = '00/77/unattributed_TransferBinaryIn0077fd10_0077fd10_test.cpp'
+        Module = 'CPersistTraits<EHeroCentreDoorType>'
+        Source = '00/77/CPersistTraits_TransferBinaryIn_0077fd10.cpp'
+        TestSource = '00/77/CPersistTraits_TransferBinaryIn_0077fd10_test.cpp'
         PassPattern = '0077fd10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007ad7f0'
-        Module = '_unattributed'
-        Source = '00/7a/unattributed_TransferBinaryIn007ad7f0_007ad7f0.cpp'
-        TestSource = '00/7a/unattributed_TransferBinaryIn007ad7f0_007ad7f0_test.cpp'
+        Module = 'CPersistTraits<EScriptingStateGroups>'
+        Source = '00/7a/CPersistTraits_TransferBinaryIn_007ad7f0.cpp'
+        TestSource = '00/7a/CPersistTraits_TransferBinaryIn_007ad7f0_test.cpp'
         PassPattern = '007ad7f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179460,9 +179460,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00675530'
-        Module = '_unattributed'
-        Source = '00/67/unattributed_DestroyCRetailVector00675530_00675530.cpp'
-        TestSource = '00/67/unattributed_DestroyCRetailVector00675530_00675530_test.cpp'
+        Module = 'std::vector<CRandomAppearanceMorph::CBodyPartMesh,std::allocator<CRandomAppearanceMorph::CBodyPartMesh>>'
+        Source = '00/67/stdvector_Mclear_00675530.cpp'
+        TestSource = '00/67/stdvector_Mclear_00675530_test.cpp'
         PassPattern = '00675530_TEST PASS'
     }
     [pscustomobject]@{
@@ -179488,9 +179488,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00889a30'
-        Module = '_unattributed'
-        Source = '00/88/unattributed_DestroyCRetailVector00889a30_00889a30.cpp'
-        TestSource = '00/88/unattributed_DestroyCRetailVector00889a30_00889a30_test.cpp'
+        Module = 'std::vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry,std::allocator<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry>>'
+        Source = '00/88/stdvector_Mclear_00889a30.cpp'
+        TestSource = '00/88/stdvector_Mclear_00889a30_test.cpp'
         PassPattern = '00889a30_TEST PASS'
     }
     [pscustomobject]@{
@@ -179516,9 +179516,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00675340'
-        Module = '_unattributed'
-        Source = '00/67/unattributed_DestroyCRetailVector00675340_00675340.cpp'
-        TestSource = '00/67/unattributed_DestroyCRetailVector00675340_00675340_test.cpp'
+        Module = 'std::vector<CVectorMap<unsigned long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned long,CRandomAppearanceMorph::CTextureMorph>>,std::allocator<CVectorMap<unsigned long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned long,CRandomAppearanceMorph::CTextureMorph>>>>'
+        Source = '00/67/stdvector_Mclear_00675340.cpp'
+        TestSource = '00/67/stdvector_Mclear_00675340_test.cpp'
         PassPattern = '00675340_TEST PASS'
     }
     [pscustomobject]@{
@@ -183069,30 +183069,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006336e0'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_ForwardThroughMember006336e0_006336e0.cpp'
-        TestSource = '00/63/unattributed_ForwardThroughMember006336e0_006336e0_test.cpp'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_UninitModeControlSpirit_006336e0.cpp'
+        TestSource = '00/63/CPlayer_UninitModeControlSpirit_006336e0_test.cpp'
         PassPattern = '006336e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006336f0'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_ForwardThroughMember006336f0_006336f0.cpp'
-        TestSource = '00/63/unattributed_ForwardThroughMember006336f0_006336f0_test.cpp'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_UninitModeTavernGame_006336f0.cpp'
+        TestSource = '00/63/CPlayer_UninitModeTavernGame_006336f0_test.cpp'
         PassPattern = '006336f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006337b0'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_ForwardThroughMember006337b0_006337b0.cpp'
-        TestSource = '00/63/unattributed_ForwardThroughMember006337b0_006337b0_test.cpp'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_UninitModeDigging_006337b0.cpp'
+        TestSource = '00/63/CPlayer_UninitModeDigging_006337b0_test.cpp'
         PassPattern = '006337b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00633bd0'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_ForwardThroughMember00633bd0_00633bd0.cpp'
-        TestSource = '00/63/unattributed_ForwardThroughMember00633bd0_00633bd0_test.cpp'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_UninitModeFireheartMinigame_00633bd0.cpp'
+        TestSource = '00/63/CPlayer_UninitModeFireheartMinigame_00633bd0_test.cpp'
         PassPattern = '00633bd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -183412,9 +183412,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00633780'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_ForwardThroughMember00633780_00633780.cpp'
-        TestSource = '00/63/unattributed_ForwardThroughMember00633780_00633780_test.cpp'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_UninitModeFishing_00633780.cpp'
+        TestSource = '00/63/CPlayer_UninitModeFishing_00633780_test.cpp'
         PassPattern = '00633780_TEST PASS'
     }
     [pscustomobject]@{
@@ -347004,7 +347004,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007776a0'
-        Module = 'std::_Rb_tree'
+        Module = 'std::_Rb_tree<long,std::pair<long const,CShopItem>,std::_Select1st<std::pair<long const,CShopItem>>,std::less<long>,std::allocator<std::pair<long const,CShopItem>>>'
         Source = '00/77/stdRbtree_equalrange_007776a0.cpp'
         TestSource = '00/77/stdRbtree_equalrange_007776a0_test.cpp'
         PassPattern = '007776a0_TEST PASS'

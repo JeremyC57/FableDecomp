@@ -1,0 +1,10 @@
+// std::_Rb_tree<long, std::pair<long const, std::pair<long, long> >, std::_Select1st<std::pair<long const, std::pair<long, long> > >, std::less<long>, std::allocator<std::pair<long const, std::pair<long, long> > > >::insert_unique(std::pair<long const, std::pair<long, long> > const&) -- STLport 4.6 insert_unique (stlport/fable_map.h)
+// Leaf: ?insert_unique@?$_Rb_tree@JU?$pair@$$CBJU?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBJU?$pair@JJ@std@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJU?$pair@JJ@std@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBJU?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJU?$pair@JJ@std@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBJU?$pair@JJ@std@@@2@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00617060, oracle length 180 bytes.
+// Identity: (1) the landed caller 0x00617D50 (std::_Rb_tree::insert_unique) binds this exact spelling (rebuild/oracles/reloc_bindings.tsv); (2) Ego_r.pdb / FableWin.pdb carry the map<JU?$pair@JJ@std@@> instantiation (_Tmap_traits@JU?$pair@JJ@std@@U?$less@).
+// Model: the shared stlport/fable_map.h (STLport 4.6 _tree.h / _tree.c; FABLE_RETAIL_STLP_MAP); the explicit instantiation emits the member as
+//   its own COMDAT. Replaces the generated stand-in (was _unattributed, a descriptive placeholder class).
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_map.h"
+
+template std::pair<std::_Rb_tree_iterator<std::pair<long const, std::pair<long, long> >, std::_Nonconst_traits<std::pair<long const, std::pair<long, long> > > >, bool> std::_Rb_tree<long, std::pair<long const, std::pair<long, long> >, std::_Select1st<std::pair<long const, std::pair<long, long> > >, std::less<long>, std::allocator<std::pair<long const, std::pair<long, long> > > >::insert_unique(std::pair<long const, std::pair<long, long> > const&);
