@@ -8,6 +8,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CTAVERNGAMECOINGOLFDEF_SUBDEF
+// Retail opt-in (row 0x007D2CC0 CTCTavernGameCoinGolf::EnableCourse): the polymorphic retail class (RTTI .?AVCTavernGameCoinGolfDef@@ :
+// CSubDefClassBase, as landed row 0x007D4BD0 GetSubDef<CTavernGameCoinGolfDef> declares it) with the Ego_r members from +0x28.
+#include "fable_string.h"
+#include "engine/CSubDefClassBase.h"
+class CPersistContext;
+class CTavernGameCoinGolfDef : public CSubDefClassBase {
+public:
+    static CCharString FABLE_FASTCALL StatGetTypeName() { return CCharString("CTavernGameCoinGolfDef", -1); }
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    float         TargetDistanceScale;                       // +0x28
+    float         JoystickScaleXboxX;                        // +0x2c
+    float         JoystickScaleXboxY;                        // +0x30
+    float         JoystickScaleX;                            // +0x34
+    float         JoystickScaleY;                            // +0x38
+    float         JoystickMagBelow;                          // +0x3c
+    float         AverageJoystickMagAbove;                   // +0x40
+    float         AverageDrift;                              // +0x44
+    float         MaxPower;                                  // +0x48
+    float         RestSpeed;                                 // +0x4c
+    long          Courses;                                   // +0x50
+    float         GoalRadius;                                // +0x54
+    long          StartingCourse;                            // +0x58
+};
+FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinGolfDef, Courses) == 0x50);
+#else
 #pragma pack(push, 1)
 class CTavernGameCoinGolfDef {
 public:
@@ -53,4 +81,5 @@ FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinGolfDef, Courses) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinGolfDef, GoalRadius) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinGolfDef, StartingCourse) == 0x58);
 
+#endif // FABLE_RETAIL_CTAVERNGAMECOINGOLFDEF_SUBDEF
 #endif // FABLE_ENGINE_CTAVERNGAMECOINGOLFDEF_H

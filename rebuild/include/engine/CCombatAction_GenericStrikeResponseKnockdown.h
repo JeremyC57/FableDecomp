@@ -7,7 +7,9 @@
 class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase {
 public:
     CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase&,const CThing*,const C3DVector&,const C3DVector&);
+#ifndef FABLE_RETAIL_CCOMBATACTIONGENERICSTRIKERESPONSEKNOCKDOWN_IMPLICIT_DTOR
     virtual ~CCombatAction_GenericStrikeResponseKnockdown();
+#endif
 #ifdef FABLE_RETAIL_CCOMBATACTIONGENERICSTRIKERESPONSEKNOCKDOWN_FINISHACTION
     // Retail opt-in (wf9, row 0x00867B40): Ego_r.pdb ?FinishAction@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ (public virtual
     // override; vtable 0x01277344 slot 4). Declaration only: an override, no new slot, no layout change.
@@ -15,7 +17,16 @@ public:
 #endif
 private: virtual CCreatureActionBase* Clone() const;
 private:
+#ifdef FABLE_RETAIL_CCOMBATACTIONGENERICSTRIKERESPONSEKNOCKDOWN_IMPLICIT_DTOR
+    // Retail opt-in (wf12, row 0x007AF490 CTCBoss::KillHelpers): the destructor is the implicit inline one (retail destroys the
+    // temporary with ~CBaseIntelligentPointer 0x00A01C10 on PThingThatHit +0x118, ~CCharString 0x0099EAE0 on AnimName +0x114,
+    // then ~CCombatActionBase 0x0062E900), so the two members carry their real types (Ego_r.pdb TPI 0x3bfda).
+    CCharString AnimName;
+    CIntelligentPointer<const CThing> PThingThatHit;
+    unsigned char PointOfHit[12];
+#else
     unsigned char AnimName[4],PThingThatHit[8],PointOfHit[12];
+#endif
     bool GotPointOfHit;
     unsigned char DirectionOfHit[12];
     bool GotDirectionOfHit,FlipFacing;

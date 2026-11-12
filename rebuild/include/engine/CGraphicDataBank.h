@@ -9,6 +9,9 @@
 #include "engine/CPixelFormat.h"
 #endif
 class CGraphicInfo;class CGraphicInfoFrame;class CGraphicFrame;class CVolumeTexture;class CTextureManager;
+#ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
+class CManagedTexture;
+#endif
 class CGraphicDataBank : public CBankFileAsync, public CResourceBank {
 public:
     class CGraphicHeader;
@@ -40,6 +43,12 @@ public:
     const CGraphicInfoFrame* PeekGraphicInfoFrame(unsigned long,unsigned long) const;
     const CTexture* GetBlankTexture(ETextureType) const; // native009fd150
 private:
+#ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
+    // Retail opt-in (wf12, row 0x009FF220): Ego_r.pdb private ?LoadVolumeGraphic@CGraphicDataBank@@AAE_NAAVCManagedTexture@@AAVCBankFileAsyncData@@ABVCGraphicHeader@1@_NK3@Z
+    // (0x009FD9B0) and ?LoadGraphicFrame@CGraphicDataBank@@AAE_NAAVCGraphicFrame@@AAVCManagedTexture@@AAVCBankFileAsyncData@@PAVCGraphicInfo@@_NKW4ETextureType@1@4@Z (0x009FED30).
+    bool LoadVolumeGraphic(CManagedTexture&,CBankFileAsyncData&,const CGraphicHeader&,bool,unsigned long,bool);
+    bool LoadGraphicFrame(CGraphicFrame&,CManagedTexture&,CBankFileAsyncData&,CGraphicInfo*,bool,unsigned long,ETextureType,bool);
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
     friend class CGraphicInfo;
     ETextureType GetTextureType(const CGraphicHeader& header,bool is_bump) const;

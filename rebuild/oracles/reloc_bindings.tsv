@@ -38876,3 +38876,16 @@ __imp__GetVersionExA@4	0143fe70	00a0fdb0
 ?CopyFromUnsignedDataToSignedSurface@CSurface@@AAEXPBXABVCPixelFormat@@J@Z	009f36e0	009f4390
 ?IsEquivalent@CPixelFormat@@QBE_NABV1@@Z	009e37f0	009f4390
 _D3DXLoadSurfaceFromMemory@40	00bfefc8	009f4390
+??4CManagedTexture@@QAEABV0@ABV0@@Z	00a69b20	009ff220
+?LoadGraphicFrame@CGraphicDataBank@@AAE_NAAVCGraphicFrame@@AAVCManagedTexture@@AAVCBankFileAsyncData@@PAVCGraphicInfo@@_NKW4ETextureType@1@4@Z	009fed30	009ff220
+?LoadVolumeGraphic@CGraphicDataBank@@AAE_NAAVCManagedTexture@@AAVCBankFileAsyncData@@ABVCGraphicHeader@1@_NK3@Z	009fd9b0	009ff220
+?AddAutoMarker@CMiniMapDisplay@@IAEXABVCThing@@J@Z	0082a500	0082b7e0
+?DrawMarker@CMiniMapDisplay@@IAE_NABVCEnginePrimitivePrepareInfo@@ABVCMarkerInfo@1@JABVC2DBoxF@@E_N@Z	0082a570	0082b7e0
+?erase@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@PAV3@0@Z	00440d70	0082b7e0
+?GetCurrentMeshRadius@CThingCreatureBase@@QBEMXZ	00664ba0	0084d910
+?GetNominalMeshHeight@CThingCreatureBase@@QBEMXZ	006625e0	0084d910
+?GetNominalMeshRadius@CThingCreatureBase@@QBEMXZ	006625c0	0084d910
+??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_IsNotList@@VCThingFilter_IsTargetable@@VCThingFilter_In3DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_IsNotList@@VCThingFilter_IsTargetable@@VCThingFilter_In3DRange@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	007f9c00	007f9960
+??$sort@PAPAVCThing@@VCThingCompare_BestForTargeting2@@@std@@YIXPAPAVCThing@@0VCThingCompare_BestForTargeting2@@@Z	007fae60	007f9960
+??$GetSubDef@VCFireballSpellLevelDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFireballSpellLevelDef@@@@@Z	007be88c	007bde31
+??$GetSubDef@VCTavernGameCoinGolfDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameCoinGolfDef@@@@@Z	007d4bd0	007d2cc0

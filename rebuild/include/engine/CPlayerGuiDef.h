@@ -11,6 +11,11 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 // Retail opt-in (Codex pass20): both PDBs name these vectors; native reads434/438 and43c/440.
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_MINIMAPMARKERGRAPHICS
+// Retail opt-in (wf12, row 0x0082B7E0 DrawMarkers): MiniMapMarkerGraphics typed as its Ego_r.pdb vector<long> at retail +0x958
+// (DrawMarkers / IsHeroMarker 0x0082A210 read [def+0x958] as the vector start and compare element 0).
+#include "stlport/fable_containers.h"
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_CRIME
 #include "engine/C2DVector.h"
 #endif
@@ -655,7 +660,11 @@ public:
 #endif
     unsigned char    GameActionValues[0xc];                  // +0x940 map<CCharString,EGameAction,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,EGameAction>_>_>
     unsigned char    MiniMapGraphics[0xc];                   // +0x94c map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_MINIMAPMARKERGRAPHICS
+    std::vector<long> MiniMapMarkerGraphics;                 // +0x958 (retail opt-in, wf12 row 0x0082B7E0)
+#else
     unsigned char    MiniMapMarkerGraphics[0xc];             // +0x958 vector<long,std::allocator<long>_>
+#endif
     float            MiniMapScreenOrigin_X;                  // +0x964 C2DVector::X
     float            MiniMapScreenOrigin_Y;                  // +0x968 C2DVector::Y
     float            MiniMapScreenSize_X;                    // +0x96c C2DVector::X

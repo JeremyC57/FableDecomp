@@ -13,6 +13,9 @@ class C3DVector;
 class CRightHandedSet;
 class CThing;
 class CThingObject;
+#ifdef FABLE_RETAIL_CTCTAVERNTABLE_GETSEAT
+class CCharString;
+#endif
 #ifdef FABLE_RETAIL_CTCTAVERNTABLE_SEATS
 #include "stlport/fable_containers.h"
 class CThingAICreature;
@@ -62,6 +65,13 @@ public:
     bool AvailableForUse;                                                                         // +0x5C
     bool GetEatingPoint(CThing& creature, C3DVector& pos, CRightHandedSet& rh_set, long& action_point_index, long& seat_index);   // 0x007B8B10
 #endif
+#endif
+#ifdef FABLE_RETAIL_CTCTAVERNTABLE_GETSEAT
+    // Retail opt-in (wf12, row 0x0096CB40 CAIStateGroup_EatAtTable::GetSeat): Ego_r.pdb / FableWin.pdb
+    // ?GetSeat@CTCTavernTable@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3PBVCCharString@@@Z (retail 0x007B8840), out of
+    // line; the row pushes 0 for the action-point name. Declaration only.
+    bool GetSeat(CThing& creature, C3DVector& pos, CRightHandedSet& rh_set, long& action_point_index, long& seat_index,
+                 const CCharString* action_point_name);                                          // 0x007B8840
 #endif
 };
 #endif

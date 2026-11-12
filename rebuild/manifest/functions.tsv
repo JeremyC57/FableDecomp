@@ -13943,7 +13943,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0064fb47	AddTick	NPlayerGui::CDrawQuestInfo	__thiscall	long	4	CDrawQuestInfo *,EGameAction,bool,float	1	yes	accepted									
 0064fc23	AddMiniGameBar	NPlayerGui::CDrawQuestInfo	__thiscall	long	3	CDrawQuestInfo *,EMiniGameType,long	1	yes	accepted									
 0064fdb4	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::vfunc_0	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006507d5	DrawAt	CQuestInfoElementTimer	__thiscall	float	3	CQuestInfoElementTimer *,C2DVector *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
+006507d5	DrawAt	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer	__thiscall	float	3	CQuestInfoElementTimer *,C2DVector *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 006509f8	DrawAt	CQuestInfoElementCounter	__thiscall	float	3	CQuestInfoElementCounter *,C2DVector *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 00650c1d	DrawAt	CQuestInfoElementCounterList	__thiscall	float	3	CQuestInfoElementCounterList *,C2DVector *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 00650e98	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick::vfunc_0	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -22365,7 +22365,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007bdb66	OnCollision	NThingShot::CTCShotDefinitionNymphFun	__thiscall	void	5	CTCShotDefinitionNymphFun *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
 007bdcfc	GetShotDamage	CTCShotDefinitionMultiArrow	__thiscall	float	1	CTCShotDefinitionMultiArrow *	1	yes	accepted									
 007bdd77	InitAttachedEffects	NThingShot::CTCShotDefinitionMultiArrow	__thiscall	void	1	CTCShotDefinitionMultiArrow *	1	yes	accepted									
-007bde31	OnCollision	CTCShotDefinitionFireballSpell	__thiscall	void	5	CTCShotDefinitionFireballSpell *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
+007bde31	OnCollision	NThingShot::CTCShotDefinitionFireballSpell	__thiscall	void	5	CTCShotDefinitionFireballSpell *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
 007be05c	SetSoulEffect	NThingShot::CTCShotDefinitionDrainLife	__thiscall	void	2	CTCShotDefinitionDrainLife *,long	1	yes	accepted									
 007be0f9	OnCollision	NThingShot::CTCShotDefinitionForcePushBall	__thiscall	void	5	CTCShotDefinitionForcePushBall *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
 007be3e0	InitAttachedEffects	NThingShot::CTCShotDefinitionForcePushBall	__thiscall	void	1	CTCShotDefinitionDrainLife *	1	yes	accepted									
@@ -25279,7 +25279,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0084d7d0	IsStretchAroundHero	NCameraModes::CBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0084d7e0	UpdateRaiseUp	NCameraModes::CBase	unknown	undefined	0		0	yes	accepted									
 0084d8b0	GetObservedThingCurrentMeshHeight	CBase	__thiscall	float	1	CBase *	1	yes	accepted									
-0084d910	UpdateCameraStretchAroundHero	CBase	__thiscall	void	3	CBase *,C3DVector *,C3DVector *	1	yes	accepted									
+0084d910	UpdateCameraStretchAroundHero	NCameraModes::CBase	__thiscall	void	3	CBase *,C3DVector *,C3DVector *	1	yes	accepted									
 0084db30	UpdateCameraOcclusion	NCameraModes::CBase	__thiscall	void	2	CBase *,C3DVector *	1	yes	accepted									
 0084dc10	FrameUpdate	NCameraModes::CBase	__thiscall	void	1	CBase *	1	yes	accepted									
 0084dfe0	OnDie	CFirstPerson	__thiscall	void	1	CFirstPerson *	1	yes	accepted									
@@ -35554,7 +35554,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009febc0	~CGraphicDataBank	CGraphicDataBank	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
 009fece0	Close	CGraphicDataBank	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
 009fed30	LoadGraphicFrame	CGraphicDataBank	__thiscall	bool	9	CGraphicDataBank *,CGraphicFrame *,CManagedTexture *,CBankFileAsyncData *,CGraphicInfo *,bool,ulong,ETextureType,bool	1	yes	accepted									
-009ff220	UploadFrame	CFrameData	__thiscall	bool	2	CFrameData *,bool	1	yes	accepted									
+009ff220	UploadFrame	CGraphicInfoFrame::CFrameData	__thiscall	bool	2	CFrameData *,bool	1	yes	accepted									
 009ff440	InitFrames	_global	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
 009ff580	NotifyBankOpened	CGraphicDataBank	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CGraphicDataBank_NotifyBankOpenedCGraphicDataBankMAEXXZ_009ff580.cpp
 009ff590	NotifyEntryAdded	CGraphicDataBank	__thiscall	void	4	CGraphicDataBank *,ulong,ulong,CArray<char> *	1	yes	accepted									

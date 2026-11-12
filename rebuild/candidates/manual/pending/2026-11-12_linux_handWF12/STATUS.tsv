@@ -1,0 +1,3 @@
+009ff220	CGraphicInfoFrame::CFrameData::UploadFrame	RELOCATION_MATCH	20	ported onto shared headers; FABLE_FORCEINLINE CGraphicFrame release; Header member not PeekGraphicHeader
+0084d910	NCameraModes::CBase::UpdateCameraStretchAroundHero	DIFFER(542v542)	188	lookAt temp Y-copy scheduling (region cut)
+0096cb40	CAIStateGroup_EatAtTable::GetSeat	RELOCATION_MATCH	9	IS_THING_ALIVE(building) fixed block order

@@ -22,6 +22,13 @@ class CWorld;class CThing;class CThingGameObject;
 class CCameraManagerSetDef;class CCameraManagerDef;class CCameraModeDef;
 // Full original owner data; unused composites retain original storage and names.
 class CGameCameraManager:public CAIGameCameraBase {
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_GETOBSERVEDTHING
+public:
+ // FableWin.pdb ?GetObservedThing@CGameCameraManager@@QBEPBVCThingGameObject@@XZ, inline in retail (row 0x0084D910 reads
+ // PObservedThing +0x100 in place: `lea ecx,[eax+100h] ; call CBaseIntelligentPointer::GetPItem`).
+ const CThingGameObject* GetObservedThing() const { return PObservedThing.Get(); }
+private:
+#endif
  CCamera Camera,OldCamera;
  const CWorld& World;
  NCameraModes::CTools CamTools;

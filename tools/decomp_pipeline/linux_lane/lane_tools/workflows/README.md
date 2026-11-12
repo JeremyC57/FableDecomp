@@ -34,3 +34,7 @@ args scratch, agent = the prepared `$S/w22/<agent>/` directory with BRIEF.md, QU
 
 Run `bash lane_tools/fast/cl_watchdog.sh 300` in the background beside any author lane: it kills Wine compiler processes older than
 five minutes (orphans of timed-out graders that otherwise hold a core each for hours).
+
+`repair_and_verify_row.js` (args scratch, wf, addr, module, name, length, leaf, findings[]): for a matched row whose verifier
+findings are too large to fix at landing -- one Opus repair agent fixes them while keeping the match, then a mechanical and an
+evidence verifier check the result. The coordinator lands the row only when both come back ok.

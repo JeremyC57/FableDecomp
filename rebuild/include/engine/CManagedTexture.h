@@ -18,6 +18,12 @@ public:
     // (inference from those bytes). No layout change.
     friend class CTextureManager;
 #endif
+#ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
+    // Retail opt-in (wf12, row 0x009FF220): Ego_r.pdb ??4CManagedTexture@@QAEABV0@ABV0@@Z (0x00A69B20) and ?Release@CManagedTexture@@QAE_NXZ
+    // (0x00A69AD0), both called out of line. No layout change.
+    const CManagedTexture& operator=(const CManagedTexture&);  // 0x00A69B20
+    bool Release();                                             // 0x00A69AD0
+#endif
 private:
     CIVCountedPointer<CManagedTextureData> Data;
 };

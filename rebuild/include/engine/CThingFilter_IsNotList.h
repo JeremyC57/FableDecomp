@@ -8,7 +8,11 @@ class CThing;class CThingCreatureBase;class CThingAICreature;
 class CThingFilter_IsNotList : public std::unary_function<CThing,bool> {
 public:
  CThingFilter_IsNotList(std::vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing> > > const & p0);
+#ifdef FABLE_RETAIL_THINGFILTER_ISNOTLIST_INLINE_CTOR
+ CThingFilter_IsNotList(std::vector<CThing const *,std::allocator<CThing const *> > const & p0):PNotList(&p0),PNotList2(0){}
+#else
  CThingFilter_IsNotList(std::vector<CThing const *,std::allocator<CThing const *> > const & p0);
+#endif
  bool operator()(CThing const & p0) const;
 private:
  std::vector<CThing const *,std::allocator<CThing const *> > const * PNotList;

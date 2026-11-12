@@ -84,6 +84,10 @@ public:
     // `call Compare 0x00411570 ; neg eax ; sbb al,al ; inc al` (CV_BeardyBaldyScript::Main 0x00E4FB88..0x00E4FB98, the landed
     // chunk 778 WatchForQuestCardConditions model), i.e. Compare(PData, text) == 0 (FableWin ??8?$CBasicString@D@@QBE_NPBD@Z).
     bool operator==(const T* text) const { return Compare(PData,text) ? false : true; }
+#elif defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE)
+    // Retail opt-in (row 0x007D2CC0 CTCTavernGameCoinGolf::EnableCourse): the template body visible but called out of line
+    // (0x004115A0 COMDAT): VC7.1 then knows it writes no memory, so the caller's string pointer survives the call (no second null test).
+    __declspec(noinline) bool operator==(const T* text) const { return Compare(PData,text) ? false : true; }
 #else
     bool operator==(const T* text) const;
 #endif

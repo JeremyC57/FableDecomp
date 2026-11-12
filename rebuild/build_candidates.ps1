@@ -394347,6 +394347,69 @@ $catalog = @(
         TestSource = '00/9f/CSurface_CopyFromMemory_009f4390_test.cpp'
         PassPattern = '009f4390_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009ff220'
+        Module = 'CGraphicInfoFrame::CFrameData'
+        Source = '00/9f/CGraphicInfoFrameCFrameData_UploadFrame_009ff220.cpp'
+        TestSource = '00/9f/CGraphicInfoFrameCFrameData_UploadFrame_009ff220_test.cpp'
+        PassPattern = '009ff220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082b7e0'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_DrawMarkers_0082b7e0.cpp'
+        TestSource = '00/82/CMiniMapDisplay_DrawMarkers_0082b7e0_test.cpp'
+        PassPattern = '0082b7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084d910'
+        Module = 'NCameraModes::CBase'
+        Source = '00/84/NCameraModesCBase_UpdateCameraStretchAroundHero_0084d910.cpp'
+        TestSource = '00/84/NCameraModesCBase_UpdateCameraStretchAroundHero_0084d910_test.cpp'
+        PassPattern = '0084d910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006507d5'
+        Module = 'NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer'
+        Source = '00/65/NPlayerGuiCDrawQuestInfoCQuestInfoElementTimer_DrawAt_006507d5.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawQuestInfoCQuestInfoElementTimer_DrawAt_006507d5_test.cpp'
+        PassPattern = '006507d5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007af490'
+        Module = 'CTCBoss'
+        Source = '00/7a/CTCBoss_KillHelpers_007af490.cpp'
+        TestSource = '00/7a/CTCBoss_KillHelpers_007af490_test.cpp'
+        PassPattern = '007af490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f9960'
+        Module = 'CTCTargetingSpirit'
+        Source = '00/7f/CTCTargetingSpirit_UpdateTargetList_007f9960.cpp'
+        TestSource = '00/7f/CTCTargetingSpirit_UpdateTargetList_007f9960_test.cpp'
+        PassPattern = '007f9960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096cb40'
+        Module = 'CAIStateGroup_EatAtTable'
+        Source = '00/96/CAIStateGroupEatAtTable_GetSeat_0096cb40.cpp'
+        TestSource = '00/96/CAIStateGroupEatAtTable_GetSeat_0096cb40_test.cpp'
+        PassPattern = '0096cb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bde31'
+        Module = 'NThingShot::CTCShotDefinitionFireballSpell'
+        Source = '00/7b/NThingShotCTCShotDefinitionFireballSpell_OnCollision_007bde31.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionFireballSpell_OnCollision_007bde31_test.cpp'
+        PassPattern = '007bde31_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d2cc0'
+        Module = 'CTCTavernGameCoinGolf'
+        Source = '00/7d/CTCTavernGameCoinGolf_EnableCourse_007d2cc0.cpp'
+        TestSource = '00/7d/CTCTavernGameCoinGolf_EnableCourse_007d2cc0_test.cpp'
+        PassPattern = '007d2cc0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

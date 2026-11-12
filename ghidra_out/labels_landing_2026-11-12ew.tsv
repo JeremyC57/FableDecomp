@@ -1,0 +1,10 @@
+address	name	evidence
+009FF220	?UploadFrame@CFrameData@CGraphicInfoFrame@@QAE_N_N@Z	workflow wf12 (landing ew): RELOCATION_MATCH, two PDBs
+0082B7E0	?DrawMarkers@CMiniMapDisplay@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@E_N@Z	workflow wf12 (landing ew): RELOCATION_MATCH, two PDBs
+0084D910	?UpdateCameraStretchAroundHero@CBase@NCameraModes@@IBEXAAVC3DVector@@0@Z	workflow wf12 (landing ew): RELOCATION_MATCH, two PDBs
+006507D5	?DrawAt@CQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@UAEMABVC2DVector@@ABVCEnginePrimitivePrepareInfo@@@Z	workflow wf12 (landing ew): RELOCATION_MATCH, two PDBs
+007AF490	?KillHelpers@CTCBoss@@QAEXXZ	workflow wf12 (landing ew): RELOCATION_MATCH, two PDBs
+007F9960	?UpdateTargetList@CTCTargetingSpirit@@IAEXXZ	workflow wf12 (landing ew): RELOCATION_MATCH, two PDBs
+0096CB40	?GetSeat@CAIStateGroup_EatAtTable@@IAE_NXZ	workflow wf12 (landing ew): RELOCATION_MATCH, two PDBs
+007BDE31	?OnCollision@CTCShotDefinitionFireballSpell@NThingShot@@MAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z	workflow wf12 (landing ew): RELOCATION_MATCH, two PDBs
+007D2CC0	?EnableCourse@CTCTavernGameCoinGolf@@QAEXJ@Z	workflow wf12 (landing ew): RELOCATION_MATCH, two PDBs

@@ -32,6 +32,14 @@ private:
     void ReduceMipmapLevel(CGraphicFrame&,CManagedTexture&,unsigned long) const;
     void ReleaseData() const;
 #endif
+#ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
+    // Retail opt-in (wf12, row 0x009FF220): FableWin.pdb ?IsVolumeTexture@CGraphicInfoFrame@@ABE_NXZ,
+    // ?UploadToVolumeTexture@CGraphicInfoFrame@@ABE_NAAVCManagedTexture@@AAVCBankFileAsyncData@@K@Z and
+    // ?UploadToTexture@CGraphicInfoFrame@@ABE_NAAVCGraphicFrame@@AAVCManagedTexture@@AAVCBankFileAsyncData@@K_N@Z (inline in the row).
+    bool IsVolumeTexture() const;
+    bool UploadToVolumeTexture(CManagedTexture&,CBankFileAsyncData&,unsigned long) const;
+    bool UploadToTexture(CGraphicFrame&,CManagedTexture&,CBankFileAsyncData&,unsigned long,bool) const;
+#endif
     bool InternalGetFrameForcedLoading(unsigned long) const; // native009ff6b0
     unsigned short FrameNum;
     signed char SmallMipmapLevel;
@@ -61,6 +69,9 @@ public:
         return size;
     }
     void ResetTexture();
+#ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
+    bool UploadFrame(bool force);                            // 0x009FF220
+#endif
     // Ego_r c5c8 fields are public; no layout change.
 #else
 private:

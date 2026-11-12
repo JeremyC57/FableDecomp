@@ -20,6 +20,13 @@
 #include "stlport/fable_containers.h"
 #include "engine/CIntelligentPointer.h"
 class CThing;
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_DRAWMARKERS
+// Retail opt-in (wf12, row 0x0082B7E0 DrawMarkers): the members after Markers typed at the generated retail offsets
+// (MarkerFlashFade +0x24 .. UpdateRequired +0xBC), the two handle vectors typed (clear/resize on +0x10), and the protected
+// DrawMarkers / DrawMarker / AddAutoMarker (Ego_r.pdb mangled names) plus the inline CMarkerInfo::IsHeroMarker.
+#include "engine/CFadeInFadeOutBase.h"
+class CEnginePrimitiveHandle; class CEnginePrimitivePrepareInfo; class C2DBoxF; class CRegion; class CTexture;
+#endif
 #ifdef FABLE_RETAIL_CMINIMAPDISPLAY_ADDMARKER
 #include "engine/CBaseClassNonCopyable.h"
 class CMiniMapDisplay:public CBaseClassNonCopyable {
@@ -37,6 +44,9 @@ public:
         CIntelligentPointer<const CThing> PThing;            // +0x00
         long GraphicIndex;                                   // +0x08
         bool AutoMarker;                                     // +0x0c
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_DRAWMARKERS
+        bool IsHeroMarker() const;                           // inline (out-of-line copy 0x0082A210); defined by the user TU
+#endif
     };
     class CIsMarkerBoundToThing {
     public:
@@ -51,12 +61,35 @@ public:
 #endif
     void RemoveAllMarkers();                                 // 0x0082A300
     void RemoveMarker(const CThing& thing);                  // 0x0082A380
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_DRAWMARKERS
+protected:
+    void AddAutoMarker(const CThing& thing, long graphic_index);                                  // 0x0082A500
+    bool DrawMarker(const CEnginePrimitivePrepareInfo& info, const CMarkerInfo& marker, long index,
+                    const C2DBoxF& box, unsigned char alpha, bool front);                         // 0x0082A570
+    void DrawMarkers(const CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front);   // 0x0082B7E0
+private:
+    std::vector<CEnginePrimitiveHandle> MapPrimitiveHandles;      // +0x04
+    std::vector<CEnginePrimitiveHandle> MarkerPrimitiveHandles;   // +0x10
+    long          MiniMapGraphic;                            // +0x1c
+    std::list<CMarkerInfo> Markers;                          // +0x20
+    CFadeInFadeOutBase MarkerFlashFade;                      // +0x24
+    bool          MiniMapIsPrisonCourtyard1;                 // +0x40
+    bool          MiniMapIsPrisonCourtyard2;                 // +0x41
+    bool          MiniMapIsHeadsmansHillNorth;               // +0x42
+    bool          MiniMapIsHeadsmansHillSouth;               // +0x43
+    unsigned char MinimapList[0xc];                          // +0x44 vector<CMinimapData>
+    CTexture*     RegionMinimapTexture;                      // +0x50
+    unsigned char RegionMinimap[0x64];                       // +0x54 CRegionMinimap
+    CRegion*      PRegion;                                   // +0xb8
+    bool          UpdateRequired;                            // +0xbc
+#else
 private:
     unsigned char MapPrimitiveHandles[0xc];                  // +0x04 vector<CEnginePrimitiveHandle>
     unsigned char MarkerPrimitiveHandles[0xc];               // +0x10 vector<CEnginePrimitiveHandle>
     long          MiniMapGraphic;                            // +0x1c
     std::list<CMarkerInfo> Markers;                          // +0x20
     unsigned char _pad_0x24[0x9c];                           // +0x24 MarkerFlashFade .. UpdateRequired (opaque)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CMiniMapDisplay::CMarkerInfo)==0x10);
 FABLE_STATIC_ASSERT(sizeof(CMiniMapDisplay)==0xc0);

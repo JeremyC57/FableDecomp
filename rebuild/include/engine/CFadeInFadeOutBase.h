@@ -7,6 +7,9 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_OPEN
+#include "engine/CRGBColour.h"
+#endif
 
 #pragma pack(push, 1)
 class CFadeInFadeOutBase {
@@ -20,7 +23,27 @@ public:
     unsigned char _pad_0x0e[0x2];                            // +0x0e
     float         OpenTimer;                                 // +0x10
     float         CloseTimer;                                // +0x14
+#ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_OPEN
+    // Retail opt-in (wf12, row 0x0082B7E0): ToColour typed; FableWin ?Open@CFadeInFadeOutBase@@ (out of line 0x00434840, body from it),
+    // ?Update@ (0x00434870), ?IsOpen@ / ?Close@ inline.
+    CRGBColour    ToColour;                                  // +0x18
+    void Open(float fade_in_time, float fade_out_time, CRGBColour to_colour)
+    {
+        Active = true;
+        FadeInTime = fade_in_time;
+        FadeOutTime = fade_out_time;
+        Closing = false;
+        Opening = true;
+        OpenTimer = 0.0f;
+        CloseTimer = fade_out_time;
+        ToColour = to_colour;
+    }
+    void Update(float time_delta);                           // 0x00434870
+    bool IsOpen() const { return Active && !Opening && !Closing; }
+    void Close() { Opening = false; Closing = true; }
+#else
     unsigned char ToColour[0x4];                             // +0x18 CRGBColour
+#endif
 #ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_ISACTIVE
     // Retail opt-in (agentNF14, row 0x007E2790 via CDisplayEngine::IsScreenFadeOut): FableWin.pdb ?IsActive@CFadeInFadeOutBase@@QBE_NXZ
     // (0x01A65280), inline in retail (the byte Active +0 tested in place). Member function only: no layout change.

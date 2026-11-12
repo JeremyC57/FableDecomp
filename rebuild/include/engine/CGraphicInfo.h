@@ -16,6 +16,19 @@ public:
     bool IsBump() const {return Bank->GetEntryDataType(Index)==2;}
 private:
 #endif
+#ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
+    // Retail opt-in (wf12, row 0x009FF220): FableWin.pdb ?IsBump@CGraphicInfo@@QBE_NXZ and ?IsVolumeTexture@CGraphicInfo@@QBE_NXZ,
+    // inline in retail (GetEntryDataType 0x009CC210 ==2 / ==4). No layout change.
+    // (IsBump is also declared by FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT above, which ends in `private:`; both opt-ins may be combined.)
+public:
+#ifndef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+    bool IsBump() const {return Bank->GetEntryDataType(Index)==2;}
+#endif
+    bool IsVolumeTexture() const {return Bank->GetEntryDataType(Index)==4;}
+#ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+private:
+#endif
+#endif
 #if defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE) || defined(FABLE_RETAIL_CGRAPHICINFO_SPRITE)
 private:
     friend class CGraphicInfoFrame;

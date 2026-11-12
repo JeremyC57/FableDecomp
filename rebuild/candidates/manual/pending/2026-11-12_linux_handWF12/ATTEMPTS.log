@@ -1,0 +1,683 @@
+==== 0x009FF220
+17:18 009ff220 grade v1.cpp SRC_FAIL -- port onto headers + inline UploadTo* helpers
+17:18 009ff220 grade v1.cpp DIFFER(401v540) hunks=15 -- port onto headers + inline UploadTo* helpers
+17:19 009ff220 grade v1.cpp DIFFER(381v540) hunks=15 -- probe: explicit dtor+operator delete in CGraphicFrame
+17:19 009ff220 grade v2.cpp DIFFER(381v540) hunks=18 -- flatten nested inline helpers (inline budget?)
+17:19 009ff220 grade v2.cpp DIFFER(364v540) hunks=18 -- flatten + explicit dtor/operator delete
+17:20 009ff220 grade v3.cpp SRC_FAIL -- probe: fully flat body, does CGraphicFrame op=/dtor inline
+17:20 009ff220 grade v3.cpp DIFFER(367v540) hunks=23 -- probe: fully flat body, does CGraphicFrame op=/dtor inline
+17:21 009ff220 grade v1.cpp DIFFER(393v540) hunks=15 -- CGraphicFrame via UnInitialise (landed 0041c700 body)
+17:21 009ff220 grade v2.cpp DIFFER(373v540) hunks=16 -- CGraphicFrame via UnInitialise (landed 0041c700 body)
+17:21 009ff220 grade p_P1.cpp DIFFER(373v540) hunks=16 -- probe: what blocks UnInitialise inlining
+17:21 009ff220 grade p_P2.cpp DIFFER(391v540) hunks=18 -- probe: what blocks UnInitialise inlining
+17:21 009ff220 grade p_DEL.cpp DIFFER(379v540) hunks=18 -- probe: what blocks UnInitialise inlining
+17:23 009ff220 grade v1.cpp DIFFER(429v540) hunks=15 -- FABLE_FORCEINLINE CGraphicFrame dtor/op= with delete
+17:23 009ff220 grade v2.cpp DIFFER(412v540) hunks=9 -- FABLE_FORCEINLINE CGraphicFrame dtor/op= with delete
+17:24 009ff220 grade v1.cpp DIFFER(429v540) hunks=15 -- forceinline ~CGraphicFrameData; delete vs explicit
+17:24 009ff220 grade v1e.cpp DIFFER(556v540) hunks=25 -- forceinline ~CGraphicFrameData; delete vs explicit
+17:24 009ff220 grade v1.cpp DIFFER(536v540) hunks=11 -- CGraphicFrame op=/dtor with local data, explicit dtor+delete
+17:24 009ff220 grade v2.cpp DIFFER(520v540) hunks=13 -- CGraphicFrame op=/dtor with local data, explicit dtor+delete
+17:25 009ff220 grade v3.cpp DIFFER(536v540) hunks=11 -- UploadToVolumeTexture body: bank local / bump local / info local
+17:25 009ff220 grade v4.cpp DIFFER(543v540) hunks=6 -- UploadToVolumeTexture body: bank local / bump local / info local
+17:25 009ff220 grade v5.cpp DIFFER(536v540) hunks=11 -- UploadToVolumeTexture body: bank local / bump local / info local
+17:25 009ff220 grade v4.cpp DIFFER(543v540) hunks=6 -- view v4
+17:25 009ff220 grade v6.cpp DIFFER(548v540) hunks=12 -- bank stmt + bump stmt / header stmt
+17:25 009ff220 grade v7.cpp DIFFER(536v540) hunks=11 -- bank stmt + bump stmt / header stmt
+17:25 009ff220 grade v6.cpp DIFFER(548v540) hunks=12 -- view v6
+17:26 009ff220 grade v8.cpp RELOCATION_MATCH -- header via ->Header member variants
+17:26 009ff220 grade final.cpp RELOCATION_MATCH -- final cleaned (plain ~CGraphicFrameData)
+17:27 009ff220 grade final.cpp RELOCATION_MATCH -- strict regrade
+17:53 009ff220 grade src.cpp RELOCATION_MATCH -- 
+17:53 009ff220 grade src.cpp SRC_FAIL -- 
+18:08 009ff220 grade final.cpp RELOCATION_MATCH -- repair: guard fable_compiler include, provenance comment
+18:08 009ff220 grade final.cpp RELOCATION_MATCH -- repair: strict regrade
+18:13 009ff220 grade src.cpp RELOCATION_MATCH -- 
+18:13 009ff220 grade src.cpp SRC_FAIL -- 
+18:27 009ff220 grade final.cpp RELOCATION_MATCH -- landing: comment + IsBump guard
+
+==== 0x0082B7E0
+17:14 0082b7e0 grade v1.cpp DIFFER(556v541) hunks=9 -- const& PeekGuiDef, const op[], IsHeroMarker inline
+17:14 0082b7e0 grade v2.cpp DIFFER(556v541) hunks=9 -- const& PeekGuiDef, const op[], IsHeroMarker inline
+17:17 0082b7e0 grade v3.cpp SRC_FAIL -- full port onto shared headers + overlays
+17:17 0082b7e0 grade v3.cpp SRC_FAIL -- port: add PEEKGUIDEF/PLAYER/CTHING opt-ins
+17:17 0082b7e0 grade v3.cpp DIFFER(537v541) hunks=25 -- port: + ISACTIVE
+17:18 0082b7e0 grade v4.cpp DIFFER(556v541) hunks=9 -- marker ref local; [0]/front/begin
+17:18 0082b7e0 grade v5.cpp SRC_FAIL -- marker ref local; [0]/front/begin
+17:18 0082b7e0 grade v6.cpp DIFFER(556v541) hunks=9 -- marker ref local; [0]/front/begin
+17:18 0082b7e0 grade v5.cpp DIFFER(556v541) hunks=6 -- IsHeroMarker spellings
+17:18 0082b7e0 grade v6.cpp RELOCATION_MATCH -- IsHeroMarker spellings
+17:19 0082b7e0 grade CMiniMapDisplay_DrawMarkers_0082b7e0.cpp RELOCATION_MATCH -- final strict regrade
+17:48 0082b7e0 grade src.cpp RELOCATION_MATCH -- 
+17:48 0082b7e0 grade src.cpp SRC_FAIL -- 
+
+==== 0x0084D910
+17:24 0084d910 grade v1.cpp DIFFER(530v542) hunks=28 -- port + tail forms
+17:24 0084d910 grade v2.cpp DIFFER(525v542) hunks=27 -- port + tail forms
+17:24 0084d910 grade v3.cpp DIFFER(530v542) hunks=28 -- port + tail forms
+17:24 0084d910 grade v1.cpp DIFFER(530v542) hunks=28 -- v1 full view
+17:25 0084d910 grade v2.cpp DIFFER(525v542) hunks=27 -- v2 full view
+17:25 0084d910 grade v4.cpp DIFFER(546v542) hunks=28 -- tail: +C3DVector(0,0,h), p.Z+=h, re-construct
+17:25 0084d910 grade v5.cpp DIFFER(524v542) hunks=23 -- tail: +C3DVector(0,0,h), p.Z+=h, re-construct
+17:25 0084d910 grade v6.cpp DIFFER(556v542) hunks=27 -- tail: +C3DVector(0,0,h), p.Z+=h, re-construct
+17:25 0084d910 grade v5.cpp DIFFER(524v542) hunks=23 -- v5 view
+17:26 0084d910 grade v7.cpp DIFFER(530v542) hunks=28 -- tail: const ref p, memberwise, h+p.Z
+17:26 0084d910 grade v8.cpp DIFFER(516v542) hunks=21 -- tail: const ref p, memberwise, h+p.Z
+17:26 0084d910 grade v9.cpp DIFFER(530v542) hunks=28 -- tail: const ref p, memberwise, h+p.Z
+17:26 0084d910 grade v8.cpp DIFFER(516v542) hunks=21 -- v8 view
+17:26 0084d910 grade v8.cpp DIFFER(516v542) hunks=21 -- v8 view
+17:27 0084d910 grade w1.cpp DIFFER(542v542) hunks=27 -- delta vector, delta.Z=0, RETAIL_C3DVECTOR
+17:27 0084d910 grade w2.cpp DIFFER(525v542) hunks=24 -- delta vector, delta.Z=0, RETAIL_C3DVECTOR
+17:27 0084d910 grade w3.cpp DIFFER(542v542) hunks=27 -- delta vector, delta.Z=0, RETAIL_C3DVECTOR
+17:27 0084d910 grade w1.cpp DIFFER(542v542) hunks=27 -- w1 view
+17:27 0084d910 grade x1.cpp DIFFER(530v542) hunks=28 -- separate dx/dy/dz with RETAIL_C3DVECTOR; const-ref p
+17:27 0084d910 grade x3.cpp DIFFER(530v542) hunks=28 -- separate dx/dy/dz with RETAIL_C3DVECTOR; const-ref p
+17:27 0084d910 grade x4.cpp DIFFER(542v542) hunks=27 -- separate dx/dy/dz with RETAIL_C3DVECTOR; const-ref p
+17:28 0084d910 grade y1.cpp DIFFER(530v542) hunks=20 -- flat C3DVector(dx,dy,0) + float dz
+17:28 0084d910 grade y2.cpp DIFFER(530v542) hunks=20 -- flat C3DVector(dx,dy,0) + float dz
+17:28 0084d910 grade y3.cpp DIFFER(525v542) hunks=19 -- flat C3DVector(dx,dy,0) + float dz
+17:28 0084d910 grade y1.cpp DIFFER(530v542) hunks=18 -- flat + X*X+Y*Y
+17:28 0084d910 grade y2.cpp DIFFER(530v542) hunks=18 -- flat + X*X+Y*Y
+17:28 0084d910 grade z1.cpp DIFFER(542v542) hunks=27 -- w1 + X*X+Y*Y; ctor; dz early
+17:28 0084d910 grade z2.cpp DIFFER(542v542) hunks=27 -- w1 + X*X+Y*Y; ctor; dz early
+17:28 0084d910 grade z3.cpp DIFFER(530v542) hunks=18 -- w1 + X*X+Y*Y; ctor; dz early
+17:28 0084d910 grade z1.cpp DIFFER(542v542) hunks=27 -- z1 view
+17:28 0084d910 grade z1.cpp DIFFER(542v542) hunks=27 -- z1 view
+17:29 0084d910 grade z4.cpp DIFFER(542v542) hunks=27 -- z1 + height early decl; p early decl; scale inline
+17:29 0084d910 grade z5.cpp DIFFER(558v542) hunks=24 -- z1 + height early decl; p early decl; scale inline
+17:29 0084d910 grade z6.cpp DIFFER(542v542) hunks=27 -- z1 + height early decl; p early decl; scale inline
+17:29 0084d910 grade z7.cpp DIFFER(542v542) hunks=27 -- copy-ctor body form; GetMagnitude2D
+17:29 0084d910 grade z8.cpp DIFFER(542v542) hunks=27 -- copy-ctor body form; GetMagnitude2D
+17:29 0084d910 grade z9.cpp DIFFER(542v542) hunks=27 -- copy-ctor body form; GetMagnitude2D
+17:29 0084d910 grade a1.cpp DIFFER(526v542) hunks=29 -- z1 tails: p.Z+=h; h+p.Z; p(...)
+17:29 0084d910 grade a2.cpp DIFFER(542v542) hunks=27 -- z1 tails: p.Z+=h; h+p.Z; p(...)
+17:29 0084d910 grade a3.cpp DIFFER(542v542) hunks=27 -- z1 tails: p.Z+=h; h+p.Z; p(...)
+17:30 0084d910 grade a4.cpp DIFFER(542v542) hunks=27 -- w3 + sqrt order (sum + C3DVector(0,0,h))
+17:30 0084d910 grade b1.cpp SRC_FAIL -- -= / += forms
+17:30 0084d910 grade b2.cpp DIFFER(542v542) hunks=29 -- -= / += forms
+17:30 0084d910 grade b3.cpp SRC_FAIL -- -= / += forms
+17:30 0084d910 grade c1.cpp DIFFER(562v542) hunks=19 -- reuse delta for sum
+17:30 0084d910 grade c2.cpp DIFFER(558v542) hunks=30 -- reuse delta for sum
+17:30 0084d910 grade c3.cpp DIFFER(538v542) hunks=20 -- reuse delta for sum
+17:31 0084d910 grade d1.cpp DIFFER(530v542) hunks=29 -- full delta + flat ctor after height
+17:31 0084d910 grade d2.cpp DIFFER(530v542) hunks=29 -- full delta + flat ctor after height
+17:31 0084d910 grade d3.cpp DIFFER(542v542) hunks=27 -- full delta + flat ctor after height
+17:31 0084d910 grade e1.cpp DIFFER(530v542) hunks=18 -- dz=delta.Z + late delta.Z=0; ctor form; dz recomputed
+17:31 0084d910 grade e2.cpp DIFFER(542v542) hunks=27 -- dz=delta.Z + late delta.Z=0; ctor form; dz recomputed
+17:31 0084d910 grade e3.cpp DIFFER(530v542) hunks=18 -- dz=delta.Z + late delta.Z=0; ctor form; dz recomputed
+17:31 0084d910 grade e1.cpp DIFFER(530v542) hunks=18 -- e1 view
+17:31 0084d910 grade f1.cpp DIFFER(546v542) hunks=28 -- height as +C3DVector(0,0,h) operand, inline
+17:31 0084d910 grade f2.cpp DIFFER(542v542) hunks=8 -- height as +C3DVector(0,0,h) operand, inline
+17:31 0084d910 grade f3.cpp DIFFER(542v542) hunks=8 -- height as +C3DVector(0,0,h) operand, inline
+17:31 0084d910 grade f3.cpp DIFFER(542v542) hunks=8 -- f3 view
+17:32 0084d910 grade g1.cpp SRC_FAIL -- exp arg forms
+17:32 0084d910 grade g2.cpp DIFFER(542v542) hunks=8 -- exp arg forms
+17:32 0084d910 grade g3.cpp DIFFER(542v542) hunks=8 -- exp arg forms
+17:32 0084d910 grade h1.cpp DIFFER(542v542) hunks=8 -- clamp/d forms
+17:32 0084d910 grade h2.cpp DIFFER(542v542) hunks=8 -- clamp/d forms
+17:32 0084d910 grade h3.cpp DIFFER(542v542) hunks=8 -- clamp/d forms
+17:32 0084d910 grade i1.cpp DIFFER(542v542) hunks=4 -- double exp/sqrt overloads
+17:32 0084d910 grade i2.cpp DIFFER(542v542) hunks=8 -- double exp/sqrt overloads
+17:32 0084d910 grade i3.cpp DIFFER(542v542) hunks=4 -- double exp/sqrt overloads
+17:32 0084d910 grade i1.cpp DIFFER(542v542) hunks=4 -- i1 view
+17:33 0084d910 grade j1.cpp DIFFER(542v542) hunks=4 -- lookAt tail forms
+17:33 0084d910 grade j2.cpp DIFFER(542v542) hunks=4 -- lookAt tail forms
+17:33 0084d910 grade j3.cpp DIFFER(542v542) hunks=4 -- lookAt tail forms
+17:33 0084d910 grade k1.cpp DIFFER(542v542) hunks=4 -- lookAt tail forms 2
+17:33 0084d910 grade k2.cpp DIFFER(542v542) hunks=4 -- lookAt tail forms 2
+17:33 0084d910 grade k3.cpp DIFFER(542v542) hunks=4 -- lookAt tail forms 2
+17:33 0084d910 grade l1.cpp DIFFER(542v542) hunks=4 -- f2+expdouble; named lookAt; copy pos
+17:33 0084d910 grade l2.cpp DIFFER(542v542) hunks=4 -- f2+expdouble; named lookAt; copy pos
+17:33 0084d910 grade l3.cpp DIFFER(552v542) hunks=5 -- f2+expdouble; named lookAt; copy pos
+17:33 0084d910 grade m1.cpp DIFFER(542v542) hunks=4 -- chained assignment
+17:33 0084d910 grade m2.cpp DIFFER(542v542) hunks=4 -- chained assignment
+17:34 0084d910 grade i1.cpp DIFFER(542v542) hunks=4 -- i1 full
+17:34 0084d910 grade n1.cpp DIFFER(542v542) hunks=4 -- lookAt copy forms
+17:34 0084d910 grade n2.cpp DIFFER(536v542) hunks=5 -- lookAt copy forms
+17:34 0084d910 grade n3.cpp DIFFER(526v542) hunks=16 -- lookAt copy forms
+17:34 0084d910 grade o1.cpp DIFFER(538v542) hunks=17 -- operand orders of position sum
+17:34 0084d910 grade o2.cpp DIFFER(542v542) hunks=4 -- operand orders of position sum
+17:34 0084d910 grade o3.cpp DIFFER(550v542) hunks=12 -- operand orders of position sum
+17:34 0084d910 grade p1.cpp DIFFER(566v542) hunks=6 -- offset decl early; nested if; rename
+17:34 0084d910 grade p2.cpp DIFFER(542v542) hunks=4 -- offset decl early; nested if; rename
+17:34 0084d910 grade p3.cpp DIFFER(542v542) hunks=4 -- offset decl early; nested if; rename
+17:35 0084d910 grade i1.cpp DIFFER(529v542) hunks=33 /Oa -- flag /Oa
+17:35 0084d910 grade i1.cpp DIFFER(542v542) hunks=6 /Ow -- flag /Ow
+17:35 0084d910 grade q1.cpp DIFFER(542v542) hunks=4 -- heroPos decl forms
+17:35 0084d910 grade q2.cpp DIFFER(542v542) hunks=4 -- heroPos decl forms
+17:35 0084d910 grade q3.cpp DIFFER(530v542) hunks=18 -- heroPos decl forms
+17:35 0084d910 grade r1.cpp DIFFER(536v542) hunks=22 -- C3DVector grouping opt-ins
+17:35 0084d910 grade r2.cpp DIFFER(542v542) hunks=4 -- C3DVector grouping opt-ins
+17:35 0084d910 grade r3.cpp DIFFER(542v542) hunks=4 -- C3DVector grouping opt-ins
+17:35 0084d910 grade s1.cpp DIFFER(542v542) hunks=6 -- paren grouping tuples
+17:35 0084d910 grade s2.cpp DIFFER(542v542) hunks=6 -- paren grouping tuples
+17:35 0084d910 grade s3.cpp DIFFER(542v542) hunks=6 -- paren grouping tuples
+17:36 0084d910 grade s1.cpp DIFFER(542v542) hunks=6 -- s1 view
+17:36 0084d910 grade s3.cpp DIFFER(542v542) hunks=6 -- s3 view
+17:36 0084d910 grade t1.cpp DIFFER(542v542) hunks=4 -- paren tuples in exp/scale/height
+17:36 0084d910 grade t2.cpp DIFFER(542v542) hunks=4 -- paren tuples in exp/scale/height
+17:36 0084d910 grade t3.cpp DIFFER(542v542) hunks=4 -- paren tuples in exp/scale/height
+17:36 0084d910 grade u1.cpp DIFFER(542v542) hunks=4 -- ctor-arg paren tuples
+17:36 0084d910 grade u2.cpp DIFFER(542v542) hunks=4 -- ctor-arg paren tuples
+17:36 0084d910 grade u3.cpp DIFFER(542v542) hunks=4 -- ctor-arg paren tuples
+17:36 0084d910 grade v1x.cpp DIFFER(542v542) hunks=4 -- more ctor-arg parens
+17:36 0084d910 grade v2x.cpp DIFFER(542v542) hunks=4 -- more ctor-arg parens
+17:36 0084d910 grade v3x.cpp DIFFER(542v542) hunks=4 -- more ctor-arg parens
+17:37 0084d910 grade w1x.cpp DIFFER(542v542) hunks=4 -- named newPosition forms
+17:37 0084d910 grade w2x.cpp DIFFER(542v542) hunks=4 -- named newPosition forms
+17:37 0084d910 grade w3x.cpp DIFFER(542v542) hunks=4 -- named newPosition forms
+17:37 0084d910 grade x1.cpp DIFFER(542v542) hunks=8 -- nomH inline in expression
+17:37 0084d910 grade x2.cpp DIFFER(542v542) hunks=4 -- nomH inline in expression
+17:37 0084d910 grade x1.cpp DIFFER(542v542) hunks=8 -- x1 view
+17:37 0084d910 grade r1.cpp DIFFER(536v542) hunks=22 -- r1 view
+17:38 0084d910 grade y1x.cpp DIFFER(542v542) hunks=6 -- lookAt ctor paren combos
+17:38 0084d910 grade y2x.cpp DIFFER(542v542) hunks=4 -- lookAt ctor paren combos
+17:38 0084d910 grade y3x.cpp DIFFER(542v542) hunks=4 -- lookAt ctor paren combos
+17:38 0084d910 grade aa1.cpp DIFFER(542v542) hunks=5 -- exp double variants
+17:38 0084d910 grade aa2.cpp DIFFER(542v542) hunks=5 -- exp double variants
+17:38 0084d910 grade aa3.cpp DIFFER(542v542) hunks=4 -- exp double variants
+17:38 0084d910 grade bb1.cpp DIFFER(542v542) hunks=4 -- sqrt wrappers: GetMagnitude2D, GFFastSqrt, sqrtf
+17:38 0084d910 grade bb2.cpp SRC_FAIL -- sqrt wrappers: GetMagnitude2D, GFFastSqrt, sqrtf
+17:39 0084d910 grade bb3.cpp DIFFER(542v542) hunks=4 -- sqrt wrappers: GetMagnitude2D, GFFastSqrt, sqrtf
+17:39 0084d910 grade cc1.cpp DIFFER(542v542) hunks=4 -- reference aliases
+17:39 0084d910 grade cc2.cpp DIFFER(542v542) hunks=4 -- reference aliases
+17:39 0084d910 grade cc3.cpp DIFFER(542v542) hunks=4 -- reference aliases
+17:39 0084d910 grade dd1.cpp DIFFER(542v542) hunks=4 -- offset decl forms
+17:39 0084d910 grade dd2.cpp DIFFER(542v542) hunks=4 -- offset decl forms
+17:39 0084d910 grade dd3.cpp DIFFER(576v542) hunks=24 -- offset decl forms
+17:40 0084d910 grade ee1.cpp DIFFER(542v542) hunks=4 -- GFGetInterpolatedValue for blends
+17:40 0084d910 grade ee2.cpp DIFFER(542v542) hunks=4 -- GFGetInterpolatedValue for blends
+17:40 0084d910 grade ee3.cpp DIFFER(542v542) hunks=4 -- GFGetInterpolatedValue for blends
+17:40 0084d910 grade ff1.cpp DIFFER(542v542) hunks=8 -- interp: natural exp; named scales
+17:40 0084d910 grade ff2.cpp DIFFER(546v542) hunks=28 -- interp: natural exp; named scales
+17:40 0084d910 grade ff3.cpp DIFFER(546v542) hunks=28 -- interp: natural exp; named scales
+17:40 0084d910 grade gg1.cpp DIFFER(552v542) hunks=24 -- offset -=; pos+offset; int zeros
+17:40 0084d910 grade gg2.cpp DIFFER(542v542) hunks=4 -- offset -=; pos+offset; int zeros
+17:40 0084d910 grade gg3.cpp DIFFER(542v542) hunks=4 -- offset -=; pos+offset; int zeros
+17:40 0084d910 grade hh1.cpp DIFFER(542v542) hunks=25 -- delta spellings under interp form
+17:40 0084d910 grade hh2.cpp DIFFER(542v542) hunks=4 -- delta spellings under interp form
+17:40 0084d910 grade hh3.cpp DIFFER(542v542) hunks=28 -- delta spellings under interp form
+17:41 0084d910 grade port1.cpp DIFFER(542v542) hunks=4 -- port onto shared headers
+17:42 0084d910 grade pa1.cpp DIFFER(542v542) hunks=4 -- exp arg orders w double
+17:42 0084d910 grade pa2.cpp DIFFER(542v542) hunks=4 -- exp arg orders w double
+17:42 0084d910 grade pa3.cpp DIFFER(542v542) hunks=4 -- exp arg orders w double
+17:42 0084d910 grade ii1.cpp DIFFER(542v542) hunks=4 -- lookAt temp address exposure
+17:42 0084d910 grade ii2.cpp DIFFER(542v542) hunks=4 -- lookAt temp address exposure
+17:42 0084d910 grade ii3.cpp DIFFER(542v542) hunks=4 -- lookAt temp address exposure
+17:43 0084d910 grade kk1.cpp DIFFER(542v542) hunks=4 -- probe: C3DVector ops plain inline
+17:43 0084d910 grade ll1.cpp DIFFER(542v542) hunks=7 -- double d
+17:43 0084d910 grade ll2.cpp DIFFER(542v542) hunks=7 -- double d
+17:43 0084d910 grade ll3.cpp DIFFER(542v542) hunks=7 -- double d
+17:44 0084d910 grade mm1.cpp DIFFER(518v542) hunks=3 -- lookAt member-wise / two-step
+17:44 0084d910 grade mm2.cpp DIFFER(560v542) hunks=5 -- lookAt member-wise / two-step
+17:44 0084d910 grade mm3.cpp DIFFER(542v542) hunks=4 -- lookAt member-wise / two-step
+17:44 0084d910 grade port1.cpp DIFFER(542v542) hunks=4 /G7 -- flag /G7
+17:44 0084d910 grade port1.cpp DIFFER(542v542) hunks=4 /G6 -- flag /G6
+17:44 0084d910 grade port1.cpp DIFFER(542v542) hunks=4 /G5 -- flag /G5
+17:45 0084d910 grade P2.cpp DIFFER(542v542) hunks=4 -- region-cut parens 1
+17:45 0084d910 grade P3.cpp DIFFER(542v542) hunks=4 -- region-cut parens 1
+17:45 0084d910 grade P4.cpp DIFFER(542v542) hunks=4 -- region-cut parens 1
+17:45 0084d910 grade P5.cpp DIFFER(542v542) hunks=4 -- region-cut parens 2
+17:45 0084d910 grade P6.cpp DIFFER(542v542) hunks=8 -- region-cut parens 2
+17:45 0084d910 grade P7.cpp DIFFER(542v542) hunks=4 -- region-cut parens 2
+17:45 0084d910 grade P6.cpp DIFFER(542v542) hunks=8 -- P6 view
+17:46 0084d910 grade Q1.cpp DIFFER(542v542) hunks=4 -- stack ctor-arg paren tuples 1-3
+17:46 0084d910 grade Q2.cpp DIFFER(542v542) hunks=4 -- stack ctor-arg paren tuples 1-3
+17:46 0084d910 grade Q3.cpp DIFFER(542v542) hunks=4 -- stack ctor-arg paren tuples 1-3
+17:46 0084d910 grade R1.cpp DIFFER(542v542) hunks=8 -- GFSqr in exp
+17:46 0084d910 grade R2.cpp DIFFER(542v542) hunks=4 -- GFSqr in exp
+17:46 0084d910 grade R3.cpp DIFFER(542v542) hunks=8 -- GFSqr in exp
+17:46 0084d910 grade S_nat_x.cpp DIFFER(542v542) hunks=10 -- natural exp + lookAt paren combos
+17:46 0084d910 grade S_nat_xy.cpp DIFFER(542v542) hunks=10 -- natural exp + lookAt paren combos
+17:46 0084d910 grade S_nat_xz.cpp DIFFER(542v542) hunks=10 -- natural exp + lookAt paren combos
+17:47 0084d910 grade T1.cpp DIFFER(542v542) hunks=4 -- guards one-if; C cast; hero ref
+17:47 0084d910 grade T2.cpp DIFFER(542v542) hunks=4 -- guards one-if; C cast; hero ref
+17:47 0084d910 grade T3.cpp DIFFER(542v542) hunks=4 -- guards one-if; C cast; hero ref
+17:47 0084d910 grade U1.cpp DIFFER(542v542) hunks=4 -- dz * interp; natural exp
+17:47 0084d910 grade U2.cpp DIFFER(542v542) hunks=8 -- dz * interp; natural exp
+17:47 0084d910 grade U3.cpp DIFFER(542v542) hunks=8 -- dz * interp; natural exp
+17:47 0084d910 grade V1.cpp DIFFER(542v542) hunks=4 -- block scopes
+17:47 0084d910 grade V2.cpp DIFFER(542v542) hunks=4 -- block scopes
+17:47 0084d910 grade V3.cpp DIFFER(542v542) hunks=4 -- block scopes
+17:47 0084d910 grade 0084d910.cpp DIFFER(542v542) hunks=4 -- final best source regrade
+18:03 0084d910 grade base.cpp DIFFER(542v542) hunks=4 -- attempt2 baseline
+18:04 0084d910 grade m0.cpp DIFFER(542v542) hunks=4 -- sweep paren/cast tuples
+18:04 0084d910 grade m2.cpp DIFFER(542v542) hunks=8 -- sweep paren/cast tuples
+18:04 0084d910 grade m4.cpp DIFFER(542v542) hunks=4 -- sweep paren/cast tuples
+18:05 0084d910 grade m0.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m1.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m2.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m3.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m4.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m5.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m6.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m7.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m8.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m9.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m10.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m11.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m12.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m13.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m14.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m15.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:05 0084d910 grade m16.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m17.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m18.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m19.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m20.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m21.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m22.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m23.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:05 0084d910 grade m24.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m25.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m26.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m27.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:05 0084d910 grade m28.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m29.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:05 0084d910 grade m30.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:05 0084d910 grade m31.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m32.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m33.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m34.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m35.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m36.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m37.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m38.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m39.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:05 0084d910 grade m40.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m41.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m42.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m43.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:05 0084d910 grade m44.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m45.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:05 0084d910 grade m46.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:05 0084d910 grade m47.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m48.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m49.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m50.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:05 0084d910 grade m51.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:05 0084d910 grade m52.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m53.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:05 0084d910 grade m54.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:05 0084d910 grade m55.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:05 0084d910 grade m56.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m57.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:06 0084d910 grade m58.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:06 0084d910 grade m59.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m60.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:06 0084d910 grade m61.cpp RELOCATION_MATCH -- sweep8 tuples
+18:06 0084d910 grade m63.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:06 0084d910 grade m64.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m65.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m66.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m67.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m68.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m69.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m70.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m71.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m72.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m73.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m74.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m75.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m76.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m77.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m78.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m79.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:06 0084d910 grade m80.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m81.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m82.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m83.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m84.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m85.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m86.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m87.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:06 0084d910 grade m88.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m89.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m90.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m91.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:06 0084d910 grade m92.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m93.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:06 0084d910 grade m94.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:06 0084d910 grade m95.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m96.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m97.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m98.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m99.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m100.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m101.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m102.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m103.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:06 0084d910 grade m104.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m105.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m106.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m107.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:06 0084d910 grade m108.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m109.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:06 0084d910 grade m110.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:06 0084d910 grade m111.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m112.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m113.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m114.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:06 0084d910 grade m115.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:06 0084d910 grade m116.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m117.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:06 0084d910 grade m118.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:06 0084d910 grade m119.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m120.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:06 0084d910 grade m121.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:06 0084d910 grade m122.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m123.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m124.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:07 0084d910 grade m125.cpp RELOCATION_MATCH -- sweep8 tuples
+18:07 0084d910 grade m126.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m127.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m128.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m129.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m130.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:07 0084d910 grade m131.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:07 0084d910 grade m132.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m133.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m134.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:07 0084d910 grade m135.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m136.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m137.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m138.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:07 0084d910 grade m139.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m140.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m141.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:07 0084d910 grade m142.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m143.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m144.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m145.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m146.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:07 0084d910 grade m147.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m148.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m149.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:07 0084d910 grade m150.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m151.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m152.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m153.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:07 0084d910 grade m154.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m155.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m156.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:07 0084d910 grade m157.cpp RELOCATION_MATCH -- sweep8 tuples
+18:07 0084d910 grade m159.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m160.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m161.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m162.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:07 0084d910 grade m163.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m164.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m165.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:07 0084d910 grade m166.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m167.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m168.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m169.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:07 0084d910 grade m170.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m171.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m172.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:07 0084d910 grade m173.cpp RELOCATION_MATCH -- sweep8 tuples
+18:07 0084d910 grade m174.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m175.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m176.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m177.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:07 0084d910 grade m178.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m179.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:07 0084d910 grade m180.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:07 0084d910 grade m181.cpp RELOCATION_MATCH -- sweep8 tuples
+18:07 0084d910 grade m183.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:07 0084d910 grade m184.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:07 0084d910 grade m185.cpp RELOCATION_MATCH -- sweep8 tuples
+18:07 0084d910 grade m186.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m187.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m188.cpp RELOCATION_MATCH -- sweep8 tuples
+18:08 0084d910 grade m189.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:08 0084d910 grade m190.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m191.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:08 0084d910 grade m192.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m193.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m194.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:08 0084d910 grade m195.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:08 0084d910 grade m196.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m197.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m198.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:08 0084d910 grade m199.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m200.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m201.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m202.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:08 0084d910 grade m203.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m204.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m205.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:08 0084d910 grade m206.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m207.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m208.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m209.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m210.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:08 0084d910 grade m211.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m212.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m213.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:08 0084d910 grade m214.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m215.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m216.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m217.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:08 0084d910 grade m218.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m219.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m220.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:08 0084d910 grade m221.cpp RELOCATION_MATCH -- sweep8 tuples
+18:08 0084d910 grade m222.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m223.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m224.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m225.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m226.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:08 0084d910 grade m227.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m228.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m229.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:08 0084d910 grade m230.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m231.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m232.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m233.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:08 0084d910 grade m234.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m235.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m236.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:08 0084d910 grade m237.cpp RELOCATION_MATCH -- sweep8 tuples
+18:08 0084d910 grade m240.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m241.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:08 0084d910 grade m242.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m243.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m244.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:08 0084d910 grade m245.cpp RELOCATION_MATCH -- sweep8 tuples
+18:08 0084d910 grade m246.cpp DIFFER(542v542) hunks=4 -- sweep8 tuples
+18:08 0084d910 grade m247.cpp DIFFER(542v542) hunks=6 -- sweep8 tuples
+18:08 0084d910 grade m248.cpp DIFFER(542v542) hunks=2 -- sweep8 tuples
+18:08 0084d910 grade m249.cpp RELOCATION_MATCH -- sweep8 tuples
+18:08 0084d910 grade m252.cpp RELOCATION_MATCH -- sweep8 tuples
+18:09 0084d910 grade m255.cpp DIFFER(542v542) hunks=8 -- sweep8 tuples
+18:09 0084d910 grade m256.cpp ERROR -- sweep8 tuples
+18:09 0084d910 grade m257.cpp ERROR -- sweep8 tuples
+18:09 0084d910 grade m61.cpp RELOCATION_MATCH -- m61 confirm
+18:09 0084d910 grade final.cpp RELOCATION_MATCH -- final strict
+18:15 0084d910 grade src.cpp RELOCATION_MATCH -- 
+18:15 0084d910 grade src.cpp SRC_FAIL -- 
+18:24 0084d910 grade 0084d910.cpp RELOCATION_MATCH -- repair: rebased overlay on current header; comments
+18:24 0084d910 grade 0084d910.cpp RELOCATION_MATCH -- repair: strict regrade
+18:24 0084d910 grade src.cpp RELOCATION_MATCH -- 
+18:24 0084d910 grade src.cpp SRC_FAIL -- 
+
+==== 0x006507D5
+17:19 006507d5 grade a.cpp SRC_FAIL -- port onto Counter sibling; colour ternary/if/per-channel
+17:19 006507d5 grade b.cpp SRC_FAIL -- port onto Counter sibling; colour ternary/if/per-channel
+17:20 006507d5 grade c.cpp SRC_FAIL -- port onto Counter sibling; colour ternary/if/per-channel
+17:20 006507d5 grade a.cpp SRC_FAIL -- port + CMAINGAMECOMPONENT
+17:20 006507d5 grade b.cpp SRC_FAIL -- port + CMAINGAMECOMPONENT
+17:20 006507d5 grade c.cpp SRC_FAIL -- port + CMAINGAMECOMPONENT
+17:20 006507d5 grade a.cpp DIFFER(562v547) hunks=33 -- port + CWORLD
+17:20 006507d5 grade b.cpp DIFFER(563v547) hunks=29 -- port + CWORLD
+17:20 006507d5 grade c.cpp DIFFER(544v547) hunks=24 -- port + CWORLD
+17:20 006507d5 grade c.cpp DIFFER(544v547) hunks=24 -- c full diff
+17:21 006507d5 grade d.cpp DIFFER(553v547) hunks=33 -- colour: Initialise if/else, assign if/else, 4-arg ternary
+17:21 006507d5 grade e.cpp DIFFER(559v547) hunks=26 -- colour: Initialise if/else, assign if/else, 4-arg ternary
+17:21 006507d5 grade f.cpp DIFFER(562v547) hunks=33 -- colour: Initialise if/else, assign if/else, 4-arg ternary
+17:21 006507d5 grade d.cpp DIFFER(553v547) hunks=33 -- view d
+17:21 006507d5 grade e.cpp DIFFER(559v547) hunks=26 -- view e
+17:21 006507d5 grade a.cpp DIFFER(562v547) hunks=33 -- view a
+17:22 006507d5 grade g.cpp DIFFER(553v547) hunks=33 -- colour local Initialise if/else at diff decl points
+17:22 006507d5 grade h.cpp DIFFER(553v547) hunks=33 -- colour local Initialise if/else at diff decl points
+17:22 006507d5 grade i.cpp DIFFER(546v547) hunks=30 -- colour local Initialise if/else at diff decl points
+17:22 006507d5 grade j.cpp DIFFER(530v547) hunks=35 -- inline colour helper probe (shape)
+17:22 006507d5 grade k.cpp DIFFER(530v547) hunks=35 -- inline colour helper probe (shape)
+17:22 006507d5 grade l.cpp DIFFER(530v547) hunks=35 -- inline colour helper probe (shape)
+17:23 006507d5 grade m.cpp RELOCATION_MATCH -- if/else two Draw2DText calls (tail merge)
+17:23 006507d5 grade 006507d5.cpp RELOCATION_MATCH -- final with header comment
+17:23 006507d5 grade 006507d5.cpp RELOCATION_MATCH -- strict regrade
+17:51 006507d5 grade src.cpp RELOCATION_MATCH -- 
+17:51 006507d5 grade src.cpp RELOCATION_MATCH -- 
+18:04 006507d5 grade 006507d5.cpp RELOCATION_MATCH -- repair: Fidelity + GFToScreen evidence comments
+18:04 006507d5 grade 006507d5.cpp RELOCATION_MATCH -- repair: strict regrade
+18:12 006507d5 grade src.cpp RELOCATION_MATCH -- 
+18:12 006507d5 grade src.cpp RELOCATION_MATCH -- 
+
+==== 0x007AF490
+17:29 007af490 grade v1.cpp SRC_FAIL -- port to shared headers
+17:29 007af490 grade v1.cpp SRC_FAIL -- port to shared headers + CTHINGAICREATURE
+17:29 007af490 grade v1.cpp DIFFER(539v550) hunks=15 -- orig vtable, PeekBaseDef; v2 GetSubDef noinline
+17:29 007af490 grade v2.cpp DIFFER(539v550) hunks=15 -- orig vtable, PeekBaseDef; v2 GetSubDef noinline
+17:30 007af490 grade v3.cpp DIFFER(549v550) hunks=12 -- implicit string conv; effect before def; creature ref + direct SetCurrentAction
+17:30 007af490 grade v4.cpp DIFFER(549v550) hunks=12 -- implicit string conv; effect before def; creature ref + direct SetCurrentAction
+17:30 007af490 grade v5.cpp DIFFER(550v550) hunks=4 -- implicit string conv; effect before def; creature ref + direct SetCurrentAction
+17:30 007af490 grade v6.cpp DIFFER(550v550) hunks=4 -- creature ptr; ref before up; all-inline temp args
+17:30 007af490 grade v7.cpp DIFFER(550v550) hunks=4 -- creature ptr; ref before up; all-inline temp args
+17:30 007af490 grade v8.cpp RELOCATION_MATCH -- creature ptr; ref before up; all-inline temp args
+17:30 007af490 grade KillHelpers.cpp RELOCATION_MATCH -- final strict regrade
+17:54 007af490 grade src.cpp RELOCATION_MATCH -- 
+17:54 007af490 grade src.cpp SRC_FAIL -- 
+17:55 007af490 grade alt.cpp SRC_FAIL -- 
+18:09 007af490 grade nobody.cpp DIFFER(550v550) hunks=23 -- repair: evidence, no GETEFFECT_BODY
+18:09 007af490 grade KillHelpers.cpp RELOCATION_MATCH -- repair: cite GETEFFECT_BODY evidence + IS_THING_ALIVE comment
+18:09 007af490 grade KillHelpers.cpp RELOCATION_MATCH -- repair: strict headers
+18:14 007af490 grade src.cpp RELOCATION_MATCH -- 
+18:14 007af490 grade src.cpp SRC_FAIL -- 
+18:14 007af490 grade src.cpp DIFFER(526v550) hunks=3 -- 
+18:14 007af490 grade src.cpp SRC_FAIL -- 
+
+==== 0x007F9960
+17:31 007f9960 grade v1.cpp DIFFER(552v551) hunks=10 -- port onto shared headers, sibling 804020 defines
+17:32 007f9960 grade v2.cpp DIFFER(550v551) hunks=8 -- final SetPTargetedThing spelling
+17:32 007f9960 grade v3.cpp DIFFER(552v551) hunks=10 -- final SetPTargetedThing spelling
+17:32 007f9960 grade v4.cpp DIFFER(559v551) hunks=13 -- final SetPTargetedThing spelling
+17:32 007f9960 grade v5.cpp RELOCATION_MATCH -- parent local placement/no local/const
+17:32 007f9960 grade final.cpp RELOCATION_MATCH -- strict regrade final
+17:56 007f9960 grade src.cpp RELOCATION_MATCH -- 
+17:56 007f9960 grade src.cpp DIFFER(549v551) hunks=9 -- 
+18:10 007f9960 grade r1.cpp RELOCATION_MATCH -- repair: shared overlay engine/CTCTargetingSpirit.h full layout
+18:11 007f9960 grade r1.cpp RELOCATION_MATCH -- repair: strict headers
+18:18 007f9960 grade src.cpp RELOCATION_MATCH -- 
+18:22 007f9960 grade src.cpp TIMEOUT -- 
+18:22 007f9960 grade src.cpp DIFFER(549v551) hunks=9 -- 
+
+==== 0x0096CB40
+17:34 0096cb40 grade v1.cpp SRC_FAIL -- port onto shared headers, dossier shape
+17:34 0096cb40 grade v1.cpp SRC_FAIL -- +CTHING_STATEACCESS for IsInLimbo
+17:34 0096cb40 grade v1.cpp DIFFER(579v553) hunks=31 -- +COMPARE_NULL_INT; v2 +GET_ORIGINAL_CHAIN
+17:34 0096cb40 grade v2.cpp DIFFER(579v553) hunks=31 -- +COMPARE_NULL_INT; v2 +GET_ORIGINAL_CHAIN
+17:35 0096cb40 grade v1.cpp DIFFER(560v553) hunks=3 -- drop CTCWEAPONTRAIL_UPDATE (HasTC direct test)
+17:35 0096cb40 grade v2.cpp DIFFER(560v553) hunks=3 -- early-exit spellings: combined / IS_THING_ALIVE / IS_THING_DEAD
+17:35 0096cb40 grade v3.cpp RELOCATION_MATCH -- early-exit spellings: combined / IS_THING_ALIVE / IS_THING_DEAD
+17:35 0096cb40 grade 0096cb40.cpp RELOCATION_MATCH -- final, strict headers
+17:58 0096cb40 grade src.cpp RELOCATION_MATCH -- 
+17:58 0096cb40 grade src.cpp SRC_FAIL -- 
+18:10 0096cb40 grade 0096cb40.cpp RELOCATION_MATCH -- repair: CCharString fwd decl moved under GETSEAT guard
+18:10 0096cb40 grade 0096cb40.cpp RELOCATION_MATCH -- repair: strict regrade
+18:16 0096cb40 grade src.cpp RELOCATION_MATCH -- 
+18:16 0096cb40 grade src.cpp SRC_FAIL -- 
+
+==== 0x007BDE31
+17:37 007bde31 grade v1.cpp SRC_FAIL -- port onto shared headers, temp per arm
+17:37 007bde31 grade v1.cpp DIFFER(566v555) hunks=24 -- IS_THING_ALIVE noinline, GetTypeFlags, Get
+17:37 007bde31 grade v1.cpp DIFFER(566v555) hunks=24 -- level decl order / ternary
+17:37 007bde31 grade v2.cpp DIFFER(566v555) hunks=24 -- level decl order / ternary
+17:37 007bde31 grade v3.cpp DIFFER(568v555) hunks=24 -- level decl order / ternary
+17:37 007bde31 grade v1.cpp DIFFER(566v555) hunks=24 -- v1 full diff view
+17:38 007bde31 grade v1.cpp DIFFER(566v555) hunks=24 -- v1 view head
+17:38 007bde31 grade v4.cpp DIFFER(566v555) hunks=24 -- Release variants; level top
+17:38 007bde31 grade v5.cpp DIFFER(566v555) hunks=24 -- Release variants; level top
+17:38 007bde31 grade v6.cpp DIFFER(566v555) hunks=32 -- Release variants; level top
+17:39 007bde31 grade v5.cpp DIFFER(566v555) hunks=24 -- v5 view tail
+17:39 007bde31 grade v7.cpp SRC_FAIL -- GetSubDef body visible noinline (GOTCHA Q19)
+17:39 007bde31 grade v7.cpp RELOCATION_MATCH -- GetSubDef body visible noinline + CDEFINITIONMANAGER
+17:40 007bde31 grade src.cpp RELOCATION_MATCH -- final src strict
+17:59 007bde31 grade src.cpp RELOCATION_MATCH -- 
+17:59 007bde31 grade src.cpp SRC_FAIL -- 
+18:12 007bde31 grade src.cpp RELOCATION_MATCH -- repair: HERO_ABILITY_FIREBALL_SPELL + type-flag bit 8 evidence comment
+18:12 007bde31 grade src.cpp RELOCATION_MATCH -- repair: strict headers
+18:23 007bde31 grade src.cpp RELOCATION_MATCH -- 
+18:23 007bde31 grade src.cpp SRC_FAIL -- 
+
+==== 0x007D2CC0
+17:47 007d2cc0 grade v1.cpp SRC_FAIL -- port onto shared headers
+17:47 007d2cc0 grade v1.cpp SRC_FAIL -- port onto shared headers + ORIGINAL_VTABLE/STATEACCESS
+17:47 007d2cc0 grade v1.cpp SRC_FAIL -- +CDEFINITIONMANAGER
+17:48 007d2cc0 grade v1.cpp DIFFER(588v558) hunks=21 -- +CRESOURCELIST
+17:48 007d2cc0 grade v1.cpp DIFFER(588v558) hunks=21 -- char access spellings
+17:48 007d2cc0 grade v2.cpp DIFFER(605v558) hunks=23 -- char access spellings
+17:48 007d2cc0 grade v3.cpp DIFFER(584v558) hunks=20 -- char access spellings
+17:48 007d2cc0 grade v3.cpp DIFFER(584v558) hunks=20 -- v3 full listing
+17:49 007d2cc0 grade v1n.cpp DIFFER(588v558) hunks=21 -- CBasicString text== visible noinline
+17:49 007d2cc0 grade v3n.cpp DIFFER(584v558) hunks=20 -- CBasicString text== visible noinline
+17:49 007d2cc0 grade v4.cpp DIFFER(558v558) hunks=10 -- Compare body visible + text== noinline
+17:49 007d2cc0 grade v5.cpp DIFFER(558v558) hunks=10 -- Compare body visible + text== noinline
+17:49 007d2cc0 grade v6.cpp DIFFER(558v558) hunks=10 -- C2DVector; const name; i declared first
+17:49 007d2cc0 grade v7.cpp DIFFER(558v558) hunks=10 -- C2DVector; const name; i declared first
+17:49 007d2cc0 grade v8.cpp DIFFER(558v558) hunks=10 -- C2DVector; const name; i declared first
+17:50 007d2cc0 grade v9.cpp DIFFER(528v558) hunks=12 -- nested if; angle decl; ZAngle direct
+17:50 007d2cc0 grade v10.cpp DIFFER(558v558) hunks=10 -- nested if; angle decl; ZAngle direct
+17:50 007d2cc0 grade v11.cpp DIFFER(580v558) hunks=15 -- nested if; angle decl; ZAngle direct
+17:50 007d2cc0 grade v12.cpp DIFFER(573v558) hunks=17 -- GetSubDef invisible; GetSubDef fully inline
+17:50 007d2cc0 grade v13.cpp DIFFER(558v558) hunks=10 -- GetSubDef invisible; GetSubDef fully inline
+17:51 007d2cc0 grade v14.cpp DIFFER(558v558) hunks=11 -- len>; angle top; ref start
+17:51 007d2cc0 grade v15.cpp DIFFER(558v558) hunks=10 -- len>; angle top; ref start
+17:51 007d2cc0 grade v16.cpp DIFFER(558v558) hunks=8 -- len>; angle top; ref start
+17:51 007d2cc0 grade v16.cpp DIFFER(558v558) hunks=8 -- v16 view
+17:52 007d2cc0 grade v18.cpp DIFFER(564v558) hunks=9 -- temp-bound name; long i; operator->
+17:52 007d2cc0 grade v19.cpp DIFFER(558v558) hunks=8 -- temp-bound name; long i; operator->
+17:52 007d2cc0 grade v20.cpp DIFFER(558v558) hunks=8 -- temp-bound name; long i; operator->
+17:52 007d2cc0 grade v18.cpp DIFFER(564v558) hunks=9 -- v18 view
+17:52 007d2cc0 grade v21.cpp DIFFER(573v558) hunks=16 -- GetSubDef invisible, slot check
+17:52 007d2cc0 grade p1.cpp DIFFER(452v558) hunks=9 -- probe: ablations for slot order (no tail / no early ret / no body)
+17:52 007d2cc0 grade p2.cpp DIFFER(514v558) hunks=16 -- probe: ablations for slot order (no tail / no early ret / no body)
+17:52 007d2cc0 grade p3.cpp SRC_FAIL -- probe: ablations for slot order (no tail / no early ret / no body)
+17:53 007d2cc0 grade v22.cpp SRC_FAIL -- continue forms; bool enable
+17:53 007d2cc0 grade v23.cpp SRC_FAIL -- continue forms; bool enable
+17:53 007d2cc0 grade v24.cpp SRC_FAIL -- continue forms; bool enable
+17:53 007d2cc0 grade v22.cpp RELOCATION_MATCH -- continue forms; bool enable
+17:53 007d2cc0 grade 007d2cc0.cpp RELOCATION_MATCH -- final: shared C2DVector + header comment
+17:54 007d2cc0 grade 007d2cc0.cpp RELOCATION_MATCH -- strict regrade
+18:04 007d2cc0 grade src.cpp RELOCATION_MATCH -- 
+18:04 007d2cc0 grade src.cpp SRC_FAIL -- 
+18:05 007d2cc0 grade src.cpp DIFFER(584v558) hunks=18 -- 
+18:05 007d2cc0 grade src.cpp SRC_FAIL -- 
+
+==== 0x004085F0 (not landed)
+17:41 004085f0 grade v1.cpp DIFFER(622v557) hunks=43 -- port onto shared headers, VECTOR_C vs VECTOR_ASSIGN
+17:41 004085f0 grade v2.cpp DIFFER(622v557) hunks=43 -- port onto shared headers, VECTOR_C vs VECTOR_ASSIGN
+17:42 004085f0 grade v3.cpp DIFFER(511v557) hunks=20 -- GetDef by-name template body in TU (+VECTOR_C / +ASSIGN)
+17:42 004085f0 grade v4.cpp DIFFER(511v557) hunks=20 -- GetDef by-name template body in TU (+VECTOR_C / +ASSIGN)
+17:42 004085f0 grade v3.cpp DIFFER(511v557) hunks=20 -- regrade v3 for full diff
+17:43 004085f0 grade v5.cpp DIFFER(513v557) hunks=18 -- def in inner block: release before ApplyValues
+17:43 004085f0 grade v6.cpp SRC_FAIL -- unqualified GetDef / controls ref local
+17:43 004085f0 grade v7.cpp DIFFER(513v557) hunks=18 -- unqualified GetDef / controls ref local
+17:44 004085f0 grade v8.cpp DIFFER(513v557) hunks=18 -- bool flags / pointer-typed startup static
+17:44 004085f0 grade v9.cpp DIFFER(513v557) hunks=18 -- bool flags / pointer-typed startup static
+17:44 004085f0 grade r_POINTEE.cpp DIFFER(513v557) hunks=18 -- CDefPointer Release variants
+17:44 004085f0 grade r_COUNTREF.cpp DIFFER(521v557) hunks=19 -- CDefPointer Release variants
+17:44 004085f0 grade r_SELFDELETING_POINTEE.cpp DIFFER(504v557) hunks=19 -- CDefPointer Release variants
+17:45 004085f0 grade v10.cpp RELOCATION_MATCH -- def per scheme branch (hoisted init)
+17:45 004085f0 grade 004085f0.cpp RELOCATION_MATCH -- final with header comment
+17:45 004085f0 grade 004085f0.cpp RELOCATION_MATCH -- strict regrade
+18:00 004085f0 grade src.cpp RELOCATION_MATCH -- 
+18:00 004085f0 grade src.cpp SRC_FAIL -- 
+18:01 004085f0 grade variant_hdrbody.cpp RELOCATION_MATCH -- 
+18:11 004085f0 grade a.cpp RELOCATION_MATCH -- repair: header GetDef body + descriptive counted-pointer static
+18:11 004085f0 grade ResetAssignedInputs.cpp RELOCATION_MATCH -- repair: comments
+18:11 004085f0 grade ResetAssignedInputs.cpp RELOCATION_MATCH -- repair: strict
+18:11 004085f0 grade 004085f0.cpp RELOCATION_MATCH -- repair: final
+18:21 004085f0 grade src.cpp RELOCATION_MATCH -- 
+18:21 004085f0 grade src.cpp SRC_FAIL -- 
+

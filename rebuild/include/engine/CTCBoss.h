@@ -36,6 +36,10 @@ public:
  // 0x007AF310). Declaration only.
  void SetHelperCreature(CThingAICreature& helper);                       // 0x007AF310
 #endif
+#ifdef FABLE_RETAIL_CTCBOSS_KILLHELPERS
+ // Retail opt-in (wf12, row 0x007AF490): Ego_r.pdb ?KillHelpers@CTCBoss@@QAEXXZ (retail 0x007AF490). Declaration only.
+ void KillHelpers();                                                     // 0x007AF490
+#endif
 #ifdef FABLE_RETAIL_CTCBOSS_LIVINGHELPERS
  // Retail opt-in (chunk Q3, rows 0x008E20F0 / 0x008E24F0 CModeGuildmasterPowerUpShield / Speed::FrameUpdate): Ego_r.pdb
  // ?CountLivingHelpers@CTCBoss@@QAEJXZ (retail 0x007AEEC0; the landed Heal FrameUpdate 0x008DFFD0 calls it too). Declaration only.

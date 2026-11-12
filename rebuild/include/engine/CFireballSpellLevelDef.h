@@ -7,6 +7,20 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CFIREBALLSPELLLEVELDEF
+// Retail opt-in (wf12 row 0x007BDE31 FireballSpell::OnCollision): the polymorphic def (RTTI CFireballSpellLevelDef : CSubDefClassBase,
+// as the landed GetSubDef<CFireballSpellLevelDef> 0x007BE88C models it); Ego_r.pdb SpellLevel +0x28 (`mov ebx,[eax+28h]`, 0x007BDF59).
+// Needs FABLE_RETAIL_DEF_CLASS_BASE.
+#include "fable_string.h"
+#include "engine/CSubDefClassBase.h"
+class CFireballSpellLevelDef : public CSubDefClassBase {
+public:
+    // Ego_r.pdb / FableWin.pdb ?StatGetTypeName@CFireballSpellLevelDef@@SI?AVCCharString@@XZ (inline; the GetSubDef 0x007BE88C key).
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CFireballSpellLevelDef", -1); }
+    long SpellLevel;                                         // +0x28
+};
+FABLE_STATIC_ASSERT(sizeof(CFireballSpellLevelDef) == 0x2c);
+#else
 
 #pragma pack(push, 1)
 class CFireballSpellLevelDef {
@@ -29,4 +43,5 @@ FABLE_STATIC_ASSERT(sizeof(CFireballSpellLevelDef) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CFireballSpellLevelDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CFireballSpellLevelDef, SpellLevel) == 0x28);
 
+#endif // FABLE_RETAIL_CFIREBALLSPELLLEVELDEF
 #endif // FABLE_ENGINE_CFIREBALLSPELLLEVELDEF_H

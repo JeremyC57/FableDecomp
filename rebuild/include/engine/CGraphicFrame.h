@@ -14,6 +14,9 @@
 // the only member (Ego_r sizeof 4). The flat default below stays the landed default.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
+#include "fable_compiler.h"  // FABLE_FORCEINLINE for the wf12 opt-in below
+#endif
 
 class CGraphicFrameData;
 
@@ -57,6 +60,13 @@ public:
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
     unsigned long Sizeof() const;
 #endif
+#ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
+    // Retail opt-in (wf12, row 0x009FF220 CFrameData::UploadFrame): FableWin.pdb ??1CGraphicFrameData@@QAE@XZ (inline: IsInitialised
+    // test, ?Uninitialise@CGraphicFrameData@@QAEXXZ 0x009FCBA0, then the PTexture release); CGraphicFrame owns the reference count.
+    ~CGraphicFrameData() {if(IsInitialised)Uninitialise();}
+    void Uninitialise();                                     // 0x009FCBA0
+    friend class CGraphicFrame;
+#endif
 private:
     unsigned long ReferenceCount;
     void* Data;
@@ -77,6 +87,30 @@ public:
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
     bool IsInitialised() const {return FrameData!=0;}
     unsigned long Sizeof() const;
+#endif
+#ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
+    // Retail opt-in (wf12, row 0x009FF220): FableWin.pdb ??0/??1/??4CGraphicFrame@@, all inline in retail (0x009FF2FA ctor,
+    // 0x009FF338 operator= release `dec [edi] ; jne`, 0x009FF3AE dtor release `dec [edi] ; cmp [edi],0`). VC7.1 will not auto-inline
+    // a function that expands ~CGraphicFrameData (nor ??_G below the top level: `delete data` there stays `push 1 ; call ??_G`), so the
+    // two release paths are FABLE_FORCEINLINE with the destructor and ::operator delete spelled out, as the landed
+    // ?UnInitialise@CGraphicFrame@@QAEXXZ (0x0041C700) does. Same-TU ResetTexture (0x009FE440) calls UnInitialise out of line.
+    CGraphicFrame() : FrameData(0) {}
+    FABLE_FORCEINLINE ~CGraphicFrame() {
+        CGraphicFrameData* data=FrameData;
+        if(data) {
+            --data->ReferenceCount;
+            if(data->ReferenceCount==0) {data->~CGraphicFrameData();::operator delete(data);}
+        }
+    }
+    FABLE_FORCEINLINE const CGraphicFrame& operator=(const CGraphicFrame& other) {
+        CGraphicFrameData* data=FrameData;
+        if(data) {
+            if(--data->ReferenceCount==0) {data->~CGraphicFrameData();::operator delete(data);}
+        }
+        FrameData=other.FrameData;
+        if(FrameData)++FrameData->ReferenceCount;
+        return *this;
+    }
 #endif
 };
 #pragma pack(pop)

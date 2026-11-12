@@ -25,6 +25,14 @@ enum ESex;
 class CCreatureAbilityDef;class CSoundPair;
 #endif
 class CThingCreatureBase : public CThingGameObject {
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_MESHSIZE
+public:
+ // Ego_r.pdb ?GetNominalMeshRadius / ?GetNominalMeshHeight / ?GetCurrentMeshRadius@CThingCreatureBase@@QBEMXZ (all out of line in retail).
+ float GetNominalMeshRadius() const;                                     // 0x006625C0
+ float GetNominalMeshHeight() const;                                     // 0x006625E0
+ float GetCurrentMeshRadius() const;                                     // 0x00664BA0
+private:
+#endif
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 // Evidence: both original PDB type records and donor OnHit/helper disassembly.
 public:

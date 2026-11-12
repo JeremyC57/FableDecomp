@@ -1,0 +1,36 @@
+addr       parity           behav  name
+009ff220   RELOCATION_MATCH PASS   UploadFrame
+0082b7e0   RELOCATION_MATCH PASS   DrawMarkers
+0084d910   WARN RELOC_NAME: ?GetNominalMeshRadius@CThingCreatureBase@@QBEMXZ -> 006625c0 labelled 'CTCWeapon::GetAnimationSpeedValue'
+0084d910   WARN RELOC_NAME: ?GetNominalMeshHeight@CThingCreatureBase@@QBEMXZ -> 006625e0 labelled 'CTCWeapon::GetAnimationSpeedValue'
+0084d910   RELOCATION_MATCH PASS   UpdateCameraStretchAroundHero
+006507d5   RELOCATION_MATCH PASS   DrawAt
+007af490   RELOCATION_MATCH PASS   KillHelpers
+007f9960   RELOCATION_MATCH PASS   UpdateTargetList
+0096cb40   RELOCATION_MATCH PASS   GetSeat
+007bde31   RELOCATION_MATCH PASS   OnCollision
+007d2cc0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+007d2cc0   RELOCATION_MATCH PASS   EnableCourse
+
+WINS: 9
+  009ff220 RELOCATION_MATCH CGraphicInfoFrame::CFrameData::UploadFrame
+  0082b7e0 RELOCATION_MATCH CMiniMapDisplay::DrawMarkers
+  0084d910 RELOCATION_MATCH NCameraModes::CBase::UpdateCameraStretchAroundHero
+  006507d5 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer::DrawAt
+  007af490 RELOCATION_MATCH CTCBoss::KillHelpers
+  007f9960 RELOCATION_MATCH CTCTargetingSpirit::UpdateTargetList
+  0096cb40 RELOCATION_MATCH CAIStateGroup_EatAtTable::GetSeat
+  007bde31 RELOCATION_MATCH NThingShot::CTCShotDefinitionFireballSpell::OnCollision
+  007d2cc0 RELOCATION_MATCH CTCTavernGameCoinGolf::EnableCourse
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CGraphicInfoFrameCFrameData_UploadFrame_009ff220
+  CMiniMapDisplay_DrawMarkers_0082b7e0
+  NCameraModesCBase_UpdateCameraStretchAroundHero_0084d910
+  NPlayerGuiCDrawQuestInfoCQuestInfoElementTimer_DrawAt_006507d5
+  CTCBoss_KillHelpers_007af490
+  CTCTargetingSpirit_UpdateTargetList_007f9960
+  CAIStateGroupEatAtTable_GetSeat_0096cb40
+  NThingShotCTCShotDefinitionFireballSpell_OnCollision_007bde31
+  CTCTavernGameCoinGolf_EnableCourse_007d2cc0
+rc=0
