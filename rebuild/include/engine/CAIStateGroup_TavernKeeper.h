@@ -11,6 +11,12 @@ class CAIStateGroup_TavernKeeper:public CAIStateGroupBase {
 public:
  bool GetPaymentFinishedMessage();
  bool GetPaymentCancelledMessage();
+#ifdef FABLE_RETAIL_CAISTATEGROUP_TAVERNKEEPER_RECEIVEPAYMENT
+ // Nested opt-in (wf5 row 0x009692C0): Ego_r.pdb / FableWin.pdb public members, out of line in retail.
+ bool WalkToPoint(const C3DVector&,const CRightHandedSet&);   // 0x00968230 ?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NABVC3DVector@@ABVCRightHandedSet@@@Z
+ void FreeBarPoint();                                         // 0x00968950 ?FreeBarPoint@CAIStateGroup_TavernKeeper@@QAEXXZ
+ bool ReceivePayment();                                       // 0x009692C0 ?ReceivePayment@CAIStateGroup_TavernKeeper@@QAE_NXZ
+#endif
 private:
  CIntelligentPointer<CThingObject> PJug,PBar;
  CIntelligentPointer<CThingBuilding> PPub;

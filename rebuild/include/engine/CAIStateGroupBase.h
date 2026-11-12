@@ -67,6 +67,11 @@ protected:
     template<class Filter> EAIActionReturn AIAction_WaitForMessageCallback(EAIActionRepeat,const Filter&,const CMessageEvent**);
 #endif
     bool IsStopping() const;                                             // 0x008FD010 ?IsStopping@CAIStateGroupBase@@IBE_NXZ
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_SETPUSHABLEBYHERO
+    // Nested opt-in (wf5 row 0x009692C0 CAIStateGroup_TavernKeeper::ReceivePayment): Ego_r.pdb / FableWin.pdb
+    // ?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z (protected), out of line in retail.
+    void SetPushableByHero(bool pushable);                               // 0x0097E330
+#endif
     unsigned long* GetPWorldSeed() const;                                // 0x008FCFD0 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (chunk 751)
     // Chunk 754 (row 0x00945BD0 CAIStateGroup_SitForMeal::Update): Ego_r.pdb ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
     // (protected; retail 0x0097E200).
@@ -109,6 +114,13 @@ protected:
     // (protected; retail 0x0097F3A0), declaration only.
     EAIActionReturn AIAction_ProjectileAttackAndStrafeToPos(EAIActionRepeat repeat, C3DVector pos, CIntelligentPointer<const CThing> target,
         bool& nav_route_calculated, EMovementType movement, bool param);   // 0x0097F3A0
+#endif
+#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_PROJECTILESTRAFETHING) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS)
+    // Nested opt-in (wf5, row 0x0095E0B0 CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::Update): Ego_r.pdb / FableWin.pdb
+    // ?AIAction_ProjectileAttackAndStrafeToThingProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@1MAA_NW4EMovementType@@_N@Z
+    // (protected; retail 0x0097EF60, landed), declaration only.
+    EAIActionReturn AIAction_ProjectileAttackAndStrafeToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing,
+        CIntelligentPointer<const CThing> target, float proximity, bool& reached, EMovementType movement, bool param);   // 0x0097EF60
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_COMBATPERFORMACTION
     // Nested opt-in (chunk 854, row 0x00924C70 CAIStateGroup_KrakenAttack::Update): Ego_r.pdb / FableWin.pdb

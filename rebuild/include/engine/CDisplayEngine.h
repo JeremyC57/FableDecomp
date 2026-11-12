@@ -31,6 +31,11 @@ class CWorld;
 #pragma pack(push, 1)
 class CDisplayEngine {
 public:
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_ISLETTERBOXMODE
+    // Retail opt-in (wf5, row 0x0064C869 NPlayerGui::CDrawSpiritTargetingCursor::Draw): FableWin.pdb ?IsLetterBoxMode@CDisplayEngine@@QBE_NXZ,
+    // inline in retail (the row tests the first byte of LetterBox +0x70 in place: `cmp byte ptr [eax+70h],0`, 0x0064C94F). No layout change.
+    bool IsLetterBoxMode() const { return *reinterpret_cast<const bool*>(LetterBox); }
+#endif
 #ifdef FABLE_RETAIL_CTCWIFE_MARRY
     void StartScreenFadeOut(float,float,CRGBColour,float);
 #endif

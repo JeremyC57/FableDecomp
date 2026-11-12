@@ -114,6 +114,15 @@ protected:
     CDefClassInfo* GetPDefClassInfo(const CCharString& name);            // 0x009AD580
     bool InstantiateDef(const CCharString& class_name, const CCharString& instantiation_name, bool is_template);   // 0x009ADC90
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATESUBDEF
+    // Retail opt-in (wf5, row 0x009ADAE0 CDefinitionManager::InstantiateSubDef; needs FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF):
+    // Ego_r.pdb / FableWin.pdb ?InstantiateSubDef@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@ABVCCharString@@K@Z
+    // 0x009ADAE0 and ?LoadDef@CDefinitionManager@@IBEXK@Z 0x009AD6E0 (protected, const), plus the inline body of the protected
+    // non-const GetPDefFromGlobalIndex(long) (below the class; retail expands it inline in InstantiateSubDef and also keeps
+    // out-of-line copies at 0x009AD9E0 / 0x009ADA10). Declarations and an inline body only, no layout change.
+    CDefPointer<CDefClassBase> InstantiateSubDef(const CCharString& class_name, unsigned long parent_index);   // 0x009ADAE0
+    void LoadDef(unsigned long index) const;                             // 0x009AD6E0
+#endif
     unsigned char PDefTypeDebugInfoMap[4];
     unsigned char SymbolPathList[12],CompilePathList[12];
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF
@@ -135,6 +144,15 @@ protected:
     unsigned char RecompiledDefs[12];
 };
 FABLE_STATIC_ASSERT(sizeof(CDefinitionManager)==0xd0);
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATESUBDEF
+// ?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z (Ego_r.pdb / FableWin.pdb): make sure the
+// def is loaded, then hand out a counted copy of its record's handle (retail 0x009ADBE5..0x009ADBFF inside InstantiateSubDef).
+inline CDefPointer<CDefClassBase> CDefinitionManager::GetPDefFromGlobalIndex(long index)
+{
+    LoadDef(index);
+    return InstantiatedDefs[index]->PDef;
+}
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
 // Original FableWin01ccd240 and native00513160: genuine global-index lookup.
 #if defined(_MSC_VER)

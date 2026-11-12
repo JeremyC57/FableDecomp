@@ -1,0 +1,7 @@
+00a73d10	CPhysicsMesh::GetNavigationLevelAt	CPhysicsMesh
+0x0094D780	CAIStateGroup_TrollBase::Initialise	CAIStateGroup_TrollBase
+0x00744460	CTCPerceiveThing::GetGiveUpChaseRadius	CTCPerceiveThing
+0x0042AF3C	CDefinitionManager::GetDef<CThingBaseDef>	CDefinitionManager
+0x008C79B0	CDefClassBase::GetSubDef<CAreaOfEffectAttackDef>	CDefClassBase
+0x00788E53	CDefClassBase::GetSubDef<CTrapDef>	CDefClassBase
+0x00751190	CDefClassBase::GetSubDef<CExplosionDef>	CDefClassBase

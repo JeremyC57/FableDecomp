@@ -6,12 +6,30 @@
 #include "rebuild_abi.h"
 #include "engine/CIVCountedPointeeBase.h"
 #include "engine/C3DBoundingSphere.h"
+#ifdef FABLE_RETAIL_CPHYSICSMESH_NAVIGATION
+#include "engine/CVectorMap.h"
+class C3DMeshVolume;
+#endif
 class CPhysicsMesh : public CIVCountedPointeeBase {
 public:
     virtual ~CPhysicsMesh();
     const C3DBoundingSphere& GetBoundingSphere() const { return BoundingSphere; }
     bool HasBoundingSphereIntersectedFromTo(float sphere_radius,
         const C3DVector& from, const C3DVector& to) const;
+#ifdef FABLE_RETAIL_CPHYSICSMESH_NAVIGATION
+    // Retail opt-in (wf5, row 0x00A11D10 CPhysicsMeshObject::GetNavigationLevelAt): the member's Ego_r.pdb type (same offset and
+    // size), FableWin.pdb's inline ?GetNavigationContainmentVolumes@CPhysicsMesh@@QBEABV?$CVectorMap@JVC3DMeshVolume@@..@@XZ and
+    // Ego_r.pdb / FableWin.pdb ?GetNavigationLevelAt@CPhysicsMesh@@QBEJABVC3DVector@@@Z (out of line at retail 0x00A73D10).
+    const CVectorMap<long,C3DMeshVolume,CKeyPairCompareLess<long,C3DMeshVolume> >& GetNavigationContainmentVolumes() const { return NavigationContainmentVolumes; }
+    long GetNavigationLevelAt(const C3DVector& position) const;   // 0x00A73D10
+#endif
+#ifdef FABLE_RETAIL_CPHYSICSMESH_BOUNDINGBOXINTERSECTED
+    // Retail opt-in (wf5, row 0x00A11F20 CPhysicsMeshObject::IsSpherePartContainedInBoundingBox): Ego_r.pdb / FableWin.pdb
+    // ?HasBoundingBoxIntersectedFromTo@CPhysicsMesh@@QBE_NMABVC3DVector@@0@Z, out of line at retail 0x00A17690 (landed). Declaration
+    // only: no layout change.
+    bool HasBoundingBoxIntersectedFromTo(float sphere_radius,
+        const C3DVector& from, const C3DVector& to) const;   // 0x00A17690
+#endif
 private:
     unsigned long ReferenceCount;                     //0x08
     bool NavigationLineListInfo;                       //0x0c
@@ -21,7 +39,11 @@ private:
     unsigned char TotalFaceIndices[12];                //0x30 CArray<C3DTriangle2>
     unsigned char TotalPoints[12];                     //0x3c CArray<C3DVector>
     unsigned char NavigationLines[12];                 //0x48 CArray<CArray<C2DLineF> >
+#ifdef FABLE_RETAIL_CPHYSICSMESH_NAVIGATION
+    CVectorMap<long,C3DMeshVolume,CKeyPairCompareLess<long,C3DMeshVolume> > NavigationContainmentVolumes;    //0x54
+#else
     unsigned char NavigationContainmentVolumes[16];    //0x54 CVectorMap<long,C3DMeshVolume,CKeyPairCompareLess<long,C3DMeshVolume> >
+#endif
     unsigned char ContainmentVolumes[16];              //0x64 CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<CCharString,C3DMeshVolume> >
     C3DBoundingSphere BoundingSphere;                  //0x74
     unsigned char BoundingBox[24];                    //0x84 C3DBoundingBox

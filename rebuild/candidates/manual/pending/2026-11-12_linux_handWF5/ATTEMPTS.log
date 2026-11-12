@@ -1,0 +1,236 @@
+==== 0x009ADAE0
+13:56 009adae0 grade v1.cpp DIFFER(413v417) hunks=3 -- port to shared headers, InstantiateDef idiom, inline GetPDefFromGlobalIndex
+13:56 009adae0 grade v2.cpp DIFFER(413v417) hunks=3 -- port to shared headers, InstantiateDef idiom, inline GetPDefFromGlobalIndex
+13:56 009adae0 grade v3.cpp DIFFER(420v417) hunks=6 -- port to shared headers, InstantiateDef idiom, inline GetPDefFromGlobalIndex
+13:56 009adae0 grade v1.cpp DIFFER(413v417) hunks=3 -- Template=false via bool local / const local / 0
+13:56 009adae0 grade v2.cpp DIFFER(413v417) hunks=3 -- Template=false via bool local / const local / 0
+13:56 009adae0 grade v3.cpp DIFFER(413v417) hunks=3 -- Template=false via bool local / const local / 0
+13:56 009adae0 grade v1.cpp RELOCATION_MATCH -- inline SetAsTemplate(false): direct / ?: / if-else
+13:58 009adae0 grade 009adae0.cpp RELOCATION_MATCH -- final source, strict headers
+14:21 009adae0 grade src.cpp RELOCATION_MATCH -- 
+14:21 009adae0 grade src.cpp SRC_FAIL -- 
+14:21 009adae0 grade src.cpp SRC_FAIL -- 
+14:21 009adae0 grade src.cpp SRC_FAIL -- 
+14:22 009adae0 grade src.cpp RELOCATION_MATCH -- 
+14:41 009adae0 grade 009adae0.cpp RELOCATION_MATCH -- repair: overlay rebased onto current CDefinitionManager.h (NF28 CInstantiatedDefInfo decl blocks restored)
+14:41 009adae0 grade 009adae0.cpp RELOCATION_MATCH -- repair: strict headers after rebase
+14:43 009adae0 grade src.cpp RELOCATION_MATCH -- 
+14:44 009adae0 grade src.cpp SRC_FAIL -- 
+14:44 009adae0 grade src.cpp SRC_FAIL -- 
+14:44 009adae0 grade src.cpp SRC_FAIL -- 
+
+==== 0x00499AA0
+13:57 00499aa0 grade v1.cpp SRC_FAIL -- ported to shared headers; implicit-conversion temporaries; v1 visible noinline operator=, v2 decl-only, v3 default
+13:57 00499aa0 grade v2.cpp SRC_FAIL -- ported to shared headers; implicit-conversion temporaries; v1 visible noinline operator=, v2 decl-only, v3 default
+13:57 00499aa0 grade v3.cpp SRC_FAIL -- ported to shared headers; implicit-conversion temporaries; v1 visible noinline operator=, v2 decl-only, v3 default
+13:57 00499aa0 grade v1.cpp RELOCATION_MATCH -- ported; Get()/GetFontManager() accessors; v1 visible noinline operator=, v2 decl-only, v3 default
+13:58 00499aa0 grade 00499aa0.cpp RELOCATION_MATCH -- final source with header comment
+13:58 00499aa0 grade 00499aa0.cpp RELOCATION_MATCH -- strict headers regrade
+13:58 00499aa0 grade v3.cpp RELOCATION_MATCH -- control: v3 default inline operator=, v2 decl-only operator=
+13:59 00499aa0 grade 00499aa0.cpp RELOCATION_MATCH -- final: default repo headers, no overlay, strict headers
+14:24 00499aa0 grade src.cpp RELOCATION_MATCH -- 
+14:24 00499aa0 grade src.cpp RELOCATION_MATCH -- 
+
+==== 0x00EF4320
+13:59 00ef4320 grade v1.cpp DIFFER(381v420) hunks=6 -- shared headers; v1 declared copy, v2 implicit copy
+13:59 00ef4320 grade v2.cpp DIFFER(492v420) hunks=11 -- shared headers; v1 declared copy, v2 implicit copy
+14:00 00ef4320 grade v2.cpp DIFFER(373v420) hunks=12 /d2inlT20 -- implicit copy + /d2inlT20
+14:00 00ef4320 grade v2.cpp DIFFER(492v420) hunks=11 /d2inlT36 -- implicit copy + /d2inlT36
+14:00 00ef4320 grade v2.cpp DIFFER(492v420) hunks=11 /d2inlT50 -- implicit copy + /d2inlT50
+14:00 00ef4320 grade v2.cpp DIFFER(492v420) hunks=11 /d2inlT65 -- implicit copy + /d2inlT65
+14:00 00ef4320 grade v2.cpp DIFFER(381v420) hunks=6 /d2inlT22 -- implicit copy + /d2inlT22
+14:00 00ef4320 grade v2.cpp RELOCATION_MATCH /d2inlT24 -- implicit copy + /d2inlT24
+14:00 00ef4320 grade v2.cpp RELOCATION_MATCH /d2inlT26 -- implicit copy + /d2inlT26
+14:00 00ef4320 grade v2.cpp RELOCATION_MATCH /d2inlT28 -- implicit copy + /d2inlT28
+14:00 00ef4320 grade v2.cpp DIFFER(460v420) hunks=16 /d2inlT30 -- implicit copy + /d2inlT30
+14:00 00ef4320 grade v2.cpp DIFFER(460v420) hunks=16 /d2inlT32 -- implicit copy + /d2inlT32
+14:00 00ef4320 grade v2.cpp DIFFER(492v420) hunks=11 /d2inlT34 -- implicit copy + /d2inlT34
+14:00 00ef4320 grade 00ef4320.cpp RELOCATION_MATCH /d2inlT23 -- final source, range edge /d2inlT23
+14:00 00ef4320 grade 00ef4320.cpp DIFFER(460v420) hunks=16 /d2inlT29 -- final source, range edge /d2inlT29
+14:00 00ef4320 grade 00ef4320.cpp RELOCATION_MATCH /d2inlT28 -- final source strict /d2inlT28
+14:01 00ef4320 grade 00ef4320.cpp RELOCATION_MATCH /d2inlT28 -- final source (comment fix) strict /d2inlT28
+14:26 00ef4320 grade src.cpp RELOCATION_MATCH /d2inlT28 -- 
+14:26 00ef4320 grade src.cpp RELOCATION_MATCH /d2inlT28 -- 
+14:26 00ef4320 grade src.cpp DIFFER(492v420) hunks=11 -- 
+
+==== 0x00A11D10
+14:00 00a11d10 grade v1.cpp ERROR -- ported: shared headers, SetInverse + member operator* (ZYX / XYZ / paren)
+14:00 00a11d10 grade v2.cpp ERROR -- ported: shared headers, SetInverse + member operator* (ZYX / XYZ / paren)
+14:00 00a11d10 grade v3.cpp ERROR -- ported: shared headers, SetInverse + member operator* (ZYX / XYZ / paren)
+14:01 00a11d10 grade v1.cpp DIFFER(418v422) hunks=9 -- ported: shared headers, SetInverse + member operator* (ZYX / XYZ / paren)
+14:01 00a11d10 grade v2.cpp DIFFER(418v422) hunks=9 -- ported: shared headers, SetInverse + member operator* (ZYX / XYZ / paren)
+14:01 00a11d10 grade v3.cpp DIFFER(420v422) hunks=8 -- ported: shared headers, SetInverse + member operator* (ZYX / XYZ / paren)
+14:02 00a11d10 grade v1.cpp DIFFER(422v422) hunks=7 -- if(!empty){..} return 0; SetInverse sums in 1,3,2 order (v1 MV zyx, v2 MV paren), v3 default sums
+14:02 00a11d10 grade v2.cpp DIFFER(424v422) hunks=6 -- if(!empty){..} return 0; SetInverse sums in 1,3,2 order (v1 MV zyx, v2 MV paren), v3 default sums
+14:02 00a11d10 grade v3.cpp DIFFER(424v422) hunks=6 -- if(!empty){..} return 0; SetInverse sums in 1,3,2 order (v1 MV zyx, v2 MV paren), v3 default sums
+14:02 00a11d10 grade v1.cpp DIFFER(422v422) hunks=7 -- view v1 alone (same sources as grade 2)
+14:02 00a11d10 grade v3.cpp DIFFER(424v422) hunks=6 -- view v3 alone (same sources as grade 2)
+14:04 00a11d10 grade s1.cpp DIFFER(435v422) hunks=31 -- SetInverse spellings: s1 cofactor locals, s2 paren translation, s3 reversed translation terms
+14:04 00a11d10 grade s2.cpp DIFFER(422v422) hunks=11 -- SetInverse spellings: s1 cofactor locals, s2 paren translation, s3 reversed translation terms
+14:04 00a11d10 grade s3.cpp DIFFER(422v422) hunks=7 -- SetInverse spellings: s1 cofactor locals, s2 paren translation, s3 reversed translation terms
+14:04 00a11d10 grade s4.cpp DIFFER(422v422) hunks=7 -- s4 m-first translation, s5 paren det, s6 cof-first det
+14:04 00a11d10 grade s5.cpp DIFFER(422v422) hunks=14 -- s4 m-first translation, s5 paren det, s6 cof-first det
+14:04 00a11d10 grade s6.cpp DIFFER(422v422) hunks=7 -- s4 m-first translation, s5 paren det, s6 cof-first det
+14:04 00a11d10 grade s7.cpp DIFFER(422v422) hunks=5 -- s7 no det local, s8 s4+s6, s9 libpk det minors spelling
+14:04 00a11d10 grade s8.cpp DIFFER(422v422) hunks=7 -- s7 no det local, s8 s4+s6, s9 libpk det minors spelling
+14:04 00a11d10 grade s9.cpp DIFFER(422v422) hunks=7 -- s7 no det local, s8 s4+s6, s9 libpk det minors spelling
+14:04 00a11d10 grade s7.cpp DIFFER(422v422) hunks=5 -- s7 (inv = 1/(sum), no det local) with operator* zyx / paren / xyz
+14:04 00a11d10 grade s7b.cpp DIFFER(422v422) hunks=5 -- s7 (inv = 1/(sum), no det local) with operator* zyx / paren / xyz
+14:04 00a11d10 grade s7c.cpp DIFFER(422v422) hunks=5 -- s7 (inv = 1/(sum), no det local) with operator* zyx / paren / xyz
+14:07 00a11d10 grade c1.cpp DIFFER(422v422) hunks=7 -- context: c1 named C3DVector local, c2 op* via copy+xx/yy/zz, c3 op* via result local
+14:07 00a11d10 grade c2.cpp DIFFER(485v422) hunks=27 -- context: c1 named C3DVector local, c2 op* via copy+xx/yy/zz, c3 op* via result local
+14:07 00a11d10 grade c3.cpp DIFFER(450v422) hunks=31 -- context: c1 named C3DVector local, c2 op* via copy+xx/yy/zz, c3 op* via result local
+14:07 00a11d10 grade s7d.cpp DIFFER(422v422) hunks=5 -- s7 + det 1,3,2 / three products respelled / cof-first 1,3,2
+14:07 00a11d10 grade s7p.cpp DIFFER(422v422) hunks=5 -- s7 + det 1,3,2 / three products respelled / cof-first 1,3,2
+14:07 00a11d10 grade s7q.cpp DIFFER(422v422) hunks=5 -- s7 + det 1,3,2 / three products respelled / cof-first 1,3,2
+14:08 00a11d10 grade n0.cpp DIFFER(422v422) hunks=7 -- name sensitivity: n0 default body via macro, n1 det->determinant, n2 inv->one_over_det
+14:08 00a11d10 grade n1.cpp DIFFER(422v422) hunks=7 -- name sensitivity: n0 default body via macro, n1 det->determinant, n2 inv->one_over_det
+14:08 00a11d10 grade n2.cpp DIFFER(422v422) hunks=7 -- name sensitivity: n0 default body via macro, n1 det->determinant, n2 inv->one_over_det
+14:08 00a11d10 grade n3.cpp DIFFER(422v422) hunks=7 -- n3 param m->matrix
+14:08 00a11d10 grade g1.cpp DIFFER(422v422) hunks=7 -- det through inline m.GetDeterminant() (FableWin name): g1 det local, g2 direct, g3 1,3,2 body
+14:08 00a11d10 grade g2.cpp DIFFER(422v422) hunks=5 -- det through inline m.GetDeterminant() (FableWin name): g1 det local, g2 direct, g3 1,3,2 body
+14:08 00a11d10 grade g3.cpp DIFFER(422v422) hunks=7 -- det through inline m.GetDeterminant() (FableWin name): g1 det local, g2 direct, g3 1,3,2 body
+14:11 00a11d10 grade t1.cpp SRC_FAIL -- two-arg TransformPoint(pos, local) (FableWin name), det local: xyz / zyx / paren rows
+14:11 00a11d10 grade t2.cpp SRC_FAIL -- two-arg TransformPoint(pos, local) (FableWin name), det local: xyz / zyx / paren rows
+14:11 00a11d10 grade t3.cpp SRC_FAIL -- two-arg TransformPoint(pos, local) (FableWin name), det local: xyz / zyx / paren rows
+14:11 00a11d10 grade u1.cpp SRC_FAIL -- two-arg TransformPoint, no det local: xyz / zyx / paren rows
+14:11 00a11d10 grade u2.cpp SRC_FAIL -- two-arg TransformPoint, no det local: xyz / zyx / paren rows
+14:11 00a11d10 grade u3.cpp SRC_FAIL -- two-arg TransformPoint, no det local: xyz / zyx / paren rows
+14:11 00a11d10 grade t1.cpp RELOCATION_MATCH -- two-arg TransformPoint(pos, local) (FableWin name), det local: xyz / zyx / paren rows
+14:11 00a11d10 grade u1.cpp SRC_FAIL -- two-arg TransformPoint, no det local: xyz / zyx / paren rows
+14:11 00a11d10 grade u2.cpp SRC_FAIL -- two-arg TransformPoint, no det local: xyz / zyx / paren rows
+14:11 00a11d10 grade u3.cpp SRC_FAIL -- two-arg TransformPoint, no det local: xyz / zyx / paren rows
+14:12 00a11d10 grade t0.cpp DIFFER(388v422) hunks=22 -- two-arg TransformPoint, header default body
+14:12 00a11d10 grade f1.cpp DIFFER(418v422) hunks=2 -- clean overlay: default SetInverse + forced two-arg TransformPoint xyz sums; f1 early return, f0 positive if
+14:12 00a11d10 grade f0.cpp RELOCATION_MATCH -- clean overlay: default SetInverse + forced two-arg TransformPoint xyz sums; f1 early return, f0 positive if
+14:13 00a11d10 grade 00a11d10.cpp RELOCATION_MATCH -- final source with header comment
+14:13 00a11d10 grade 00a11d10.cpp RELOCATION_MATCH -- final source, strict headers
+14:14 00a11d10 grade 00a11d10.cpp RELOCATION_MATCH -- final source after comment edits, strict headers
+14:34 00a11d10 grade src.cpp RELOCATION_MATCH -- 
+14:35 00a11d10 grade src.cpp SRC_FAIL -- 
+
+==== 0x007F53B0
+14:06 007f53b0 grade a1.cpp SRC_FAIL -- ported onto shared headers, find(CCharString(*it)) != end()
+14:06 007f53b0 grade a1.cpp DIFFER(444v424) hunks=35 -- ported + ATMOSMAP + GETDEF_INDEX_BODY
+14:06 007f53b0 grade a1.cpp DIFFER(444v424) hunks=35 -- same, full diff
+14:06 007f53b0 grade a2.cpp DIFFER(434v424) hunks=23 -- a2 by-value inline HasAtmosGroup const; a3 +FIND_MEMBER_TEMPLATE; a4 a1+FIND_MEMBER_TEMPLATE
+14:06 007f53b0 grade a3.cpp DIFFER(434v424) hunks=23 -- a2 by-value inline HasAtmosGroup const; a3 +FIND_MEMBER_TEMPLATE; a4 a1+FIND_MEMBER_TEMPLATE
+14:06 007f53b0 grade a4.cpp DIFFER(444v424) hunks=35 -- a2 by-value inline HasAtmosGroup const; a3 +FIND_MEMBER_TEMPLATE; a4 a1+FIND_MEMBER_TEMPLATE
+14:06 007f53b0 grade b1.cpp RELOCATION_MATCH -- b1 CONSTFIND_TEMPLATE_BODY; b2 nonconst+FIND_MEMBER_TEMPLATE; b3 CONSTFIND
+14:07 007f53b0 grade c1.cpp DIFFER(422v424) hunks=22 -- c1 explicit temp find(CCharString(*it))+CONSTFIND_TEMPLATE_BODY; c2 same multimap; c3 b1 with multimap
+14:07 007f53b0 grade c2.cpp SRC_FAIL -- c1 explicit temp find(CCharString(*it))+CONSTFIND_TEMPLATE_BODY; c2 same multimap; c3 b1 with multimap
+14:07 007f53b0 grade c3.cpp SRC_FAIL -- c1 explicit temp find(CCharString(*it))+CONSTFIND_TEMPLATE_BODY; c2 same multimap; c3 b1 with multimap
+14:08 007f53b0 grade d1.cpp RELOCATION_MATCH -- d1 = b1 with multimap + overlay FABLE_RETAIL_STLP_MULTIMAP_CONSTFIND
+14:08 007f53b0 grade 007f53b0.cpp RELOCATION_MATCH -- final source, strict headers
+14:09 007f53b0 grade 007f53b0.cpp RELOCATION_MATCH -- final regrade from repo cwd, strict headers
+14:30 007f53b0 grade src.cpp RELOCATION_MATCH -- 
+14:30 007f53b0 grade src.cpp SRC_FAIL -- 
+14:30 007f53b0 grade src.cpp RELOCATION_MATCH -- 
+14:41 007f53b0 grade 007f53b0.cpp RELOCATION_MATCH -- repair: rebase fable_map.h overlay on current repo header
+14:42 007f53b0 grade 007f53b0.cpp RELOCATION_MATCH -- repair: strict headers after rebase
+14:45 007f53b0 grade src.cpp RELOCATION_MATCH -- 
+14:45 007f53b0 grade src.cpp SRC_FAIL -- 
+
+==== 0x009692C0
+14:02 009692c0 grade v1.cpp SRC_FAIL -- ported onto shared headers; temp vs named pos/creature; fps order
+14:02 009692c0 grade v2.cpp SRC_FAIL -- ported onto shared headers; temp vs named pos/creature; fps order
+14:02 009692c0 grade v3.cpp SRC_FAIL -- ported onto shared headers; temp vs named pos/creature; fps order
+14:03 009692c0 grade v1.cpp SRC_FAIL -- implicit PPayee conversion
+14:03 009692c0 grade v2.cpp SRC_FAIL -- implicit PPayee conversion
+14:03 009692c0 grade v3.cpp SRC_FAIL -- implicit PPayee conversion
+14:03 009692c0 grade v1.cpp DIFFER(436v426) hunks=6 -- &*PPayee
+14:03 009692c0 grade v2.cpp DIFFER(436v426) hunks=12 -- &*PPayee
+14:03 009692c0 grade v3.cpp DIFFER(436v426) hunks=18 -- &*PPayee
+14:03 009692c0 grade a.cpp RELOCATION_MATCH -- first exit: two separate ifs / else form / nested positive
+14:04 009692c0 grade 009692c0.cpp RELOCATION_MATCH -- final source, strict headers
+14:28 009692c0 grade src.cpp RELOCATION_MATCH -- 
+14:28 009692c0 grade src.cpp SRC_FAIL -- 
+14:29 009692c0 grade src.cpp SRC_FAIL -- 
+14:29 009692c0 grade src.cpp SRC_FAIL -- 
+
+==== 0x0094D780
+14:12 0094d780 grade v1.cpp RELOCATION_MATCH -- port onto shared headers, GetDef/GetSubDef real bodies visible noinline, structured if/else
+14:13 0094d780 grade 0094d780.cpp RELOCATION_MATCH -- final source with header comment, strict headers
+14:32 0094d780 grade src.cpp RELOCATION_MATCH -- 
+14:32 0094d780 grade src.cpp SRC_FAIL -- 
+14:42 0094d780 grade 0094d780.cpp RELOCATION_MATCH -- repair: correct -4 offset cause comments
+14:42 0094d780 grade 0094d780.cpp RELOCATION_MATCH -- repair: strict regrade
+14:45 0094d780 grade src.cpp RELOCATION_MATCH -- 
+14:45 0094d780 grade src.cpp SRC_FAIL -- 
+
+==== 0x0064C869
+14:16 0064c869 grade v1.cpp SRC_FAIL -- port onto shared headers
+14:16 0064c869 grade v1.cpp SRC_FAIL -- port onto shared headers (fix sprite defines)
+14:17 0064c869 grade v1.cpp SRC_FAIL -- port: add IsMainPlayer/GetMultiplayerColour opt-ins
+14:17 0064c869 grade v1.cpp DIFFER(429v428) hunks=20 -- port: GetMultiplayerColour in retail branch
+14:17 0064c869 grade v2.cpp DIFFER(429v428) hunks=20 -- hero temp copy for IS_THING_ALIVE: explicit <const TPC*> / const hero / <const CThing*>
+14:17 0064c869 grade v3.cpp DIFFER(429v428) hunks=20 -- hero temp copy for IS_THING_ALIVE: explicit <const TPC*> / const hero / <const CThing*>
+14:17 0064c869 grade v4.cpp DIFFER(428v428) hunks=2 -- hero temp copy for IS_THING_ALIVE: explicit <const TPC*> / const hero / <const CThing*>
+14:18 0064c869 grade v5.cpp DIFFER(428v428) hunks=16 -- second named local for IS_THING_ALIVE arg (CThing* / same type) / const ref to temp
+14:18 0064c869 grade v6.cpp DIFFER(428v428) hunks=16 -- second named local for IS_THING_ALIVE arg (CThing* / same type) / const ref to temp
+14:18 0064c869 grade v7.cpp DIFFER(429v428) hunks=20 -- second named local for IS_THING_ALIVE arg (CThing* / same type) / const ref to temp
+14:19 0064c869 grade v8.cpp RELOCATION_MATCH -- PROBE-on-row: block-scoped copy / inline helper by-value param (does the copy share the key slot?)
+14:19 0064c869 grade v10.cpp SRC_FAIL -- IS_THING_ALIVE real body visible, noinline (ThingAlive.h opt-in) instead of block-scoped copy
+14:19 0064c869 grade v11.cpp RELOCATION_MATCH -- IS_THING_ALIVE real body visible, noinline (ThingAlive.h opt-in) instead of block-scoped copy
+14:20 0064c869 grade final.cpp RELOCATION_MATCH -- final source, strict headers
+14:38 0064c869 grade src.cpp RELOCATION_MATCH -- 
+14:42 0064c869 grade src.cpp TIMEOUT -- 
+
+==== 0x0095E0B0
+14:16 0095e0b0 grade v1.cpp SRC_FAIL -- port onto shared headers, real class + PTarget member, inline IS_THING_ALIVE + inline copy
+14:17 0095e0b0 grade v1.cpp DIFFER(450v428) hunks=33 -- v1 Reload user dtor / v2 Reload implicit dtor
+14:17 0095e0b0 grade v2.cpp DIFFER(450v428) hunks=33 -- v1 Reload user dtor / v2 Reload implicit dtor
+14:17 0095e0b0 grade v3.cpp DIFFER(428v428) hunks=21 -- named results aimed/fired (draft structure), implicit Reload dtor
+14:17 0095e0b0 grade v4.cpp DIFFER(431v428) hunks=3 -- v4 early-return exits / v5 one && chain / v6 single ret local
+14:17 0095e0b0 grade v5.cpp DIFFER(428v428) hunks=21 -- v4 early-return exits / v5 one && chain / v6 single ret local
+14:17 0095e0b0 grade v6.cpp DIFFER(428v428) hunks=21 -- v4 early-return exits / v5 one && chain / v6 single ret local
+14:18 0095e0b0 grade v7.cpp RELOCATION_MATCH -- v7 early-return exits + named fired / v8 + named aimed
+14:18 0095e0b0 grade 0095e0b0.cpp RELOCATION_MATCH -- final source (v7 + header comment), strict headers
+14:36 0095e0b0 grade src.cpp RELOCATION_MATCH -- 
+14:36 0095e0b0 grade src.cpp SRC_FAIL -- 
+
+==== 0x00A11F20
+14:20 00a11f20 grade v1.cpp SRC_FAIL -- port: header SetInverse + (v1 TransformPoint2 / v2 accumulated rows / v3 sum rows)
+14:20 00a11f20 grade v2.cpp SRC_FAIL -- port: header SetInverse + (v1 TransformPoint2 / v2 accumulated rows / v3 sum rows)
+14:20 00a11f20 grade v3.cpp SRC_FAIL -- port: header SetInverse + (v1 TransformPoint2 / v2 accumulated rows / v3 sum rows)
+14:20 00a11f20 grade v1.cpp DIFFER(386v428) hunks=23 -- port: header SetInverse + (v1 TransformPoint2 / v2 accumulated rows / v3 sum rows), DEF_CLASS_BASE
+14:20 00a11f20 grade v2.cpp DIFFER(428v428) hunks=16 -- port: header SetInverse + (v1 TransformPoint2 / v2 accumulated rows / v3 sum rows), DEF_CLASS_BASE
+14:20 00a11f20 grade v3.cpp DIFFER(430v428) hunks=18 -- port: header SetInverse + (v1 TransformPoint2 / v2 accumulated rows / v3 sum rows), DEF_CLASS_BASE
+14:21 00a11f20 grade vA.cpp DIFFER(428v428) hunks=16 -- SetInverse variant: E11 products swapped, E4k reversed, det (A c*E / B E*c / C c*E paren)
+14:21 00a11f20 grade vB.cpp DIFFER(428v428) hunks=16 -- SetInverse variant: E11 products swapped, E4k reversed, det (A c*E / B E*c / C c*E paren)
+14:21 00a11f20 grade vC.cpp DIFFER(428v428) hunks=17 -- SetInverse variant: E11 products swapped, E4k reversed, det (A c*E / B E*c / C c*E paren)
+14:22 00a11f20 grade vD.cpp DIFFER(428v428) hunks=16 -- D: det T2+T1+T3, E4k (E2+E3)+E1 ; E: A with original E4k order
+14:22 00a11f20 grade vE.cpp DIFFER(428v428) hunks=16 -- D: det T2+T1+T3, E4k (E2+E3)+E1 ; E: A with original E4k order
+14:23 00a11f20 grade vF.cpp DIFFER(428v428) hunks=16 -- F: A+DATA_UNION ; G: named cofactor locals ; H: G+DATA_UNION
+14:23 00a11f20 grade vG.cpp DIFFER(434v428) hunks=24 -- F: A+DATA_UNION ; G: named cofactor locals ; H: G+DATA_UNION
+14:23 00a11f20 grade vH.cpp DIFFER(434v428) hunks=24 -- F: A+DATA_UNION ; G: named cofactor locals ; H: G+DATA_UNION
+00a11f20 probe 1 what order does v3 (single-expression sum rows) emit -> see NOTES
+14:27 00a11f20 grade vK.cpp DIFFER(428v428) hunks=18 -- K: SetInverse via inline GetDeterminant ; L: local = inverse*pos (operator* natural XYZ) ; M: both
+14:27 00a11f20 grade vL.cpp DIFFER(426v428) hunks=6 -- K: SetInverse via inline GetDeterminant ; L: local = inverse*pos (operator* natural XYZ) ; M: both
+14:27 00a11f20 grade vM.cpp DIFFER(428v428) hunks=16 -- K: SetInverse via inline GetDeterminant ; L: local = inverse*pos (operator* natural XYZ) ; M: both
+14:28 00a11f20 grade vL1.cpp DIFFER(426v428) hunks=6 -- operator* spellings: L1 XZY ctor / L2 local result / L3 v.X*E11 ctor
+14:28 00a11f20 grade vL2.cpp DIFFER(456v428) hunks=32 -- operator* spellings: L1 XZY ctor / L2 local result / L3 v.X*E11 ctor
+14:28 00a11f20 grade vL3.cpp DIFFER(426v428) hunks=6 -- operator* spellings: L1 XZY ctor / L2 local result / L3 v.X*E11 ctor
+14:28 00a11f20 grade vNA.cpp DIFFER(426v428) hunks=6 -- opmul + SetInverse: A (c*E det, E4k reversed) / R (orig det, E4k reversed) / G named cofactor locals c11,c12,c13
+14:28 00a11f20 grade vNR.cpp DIFFER(426v428) hunks=6 -- opmul + SetInverse: A (c*E det, E4k reversed) / R (orig det, E4k reversed) / G named cofactor locals c11,c12,c13
+14:28 00a11f20 grade vNG.cpp DIFFER(442v428) hunks=35 -- opmul + SetInverse: A (c*E det, E4k reversed) / R (orig det, E4k reversed) / G named cofactor locals c11,c12,c13
+14:30 00a11f20 grade vP1.cpp DIFFER(426v428) hunks=6 -- opmul + SetInverse via GetDeterminant() (view hunks)
+14:32 00a11f20 grade vQ1.cpp DIFFER(406v428) hunks=33 -- L + optimize(s)
+14:32 00a11f20 grade vQ0.cpp DIFFER(412v428) hunks=22 /Oa -- L + /Oa
+14:32 00a11f20 grade vQ0.cpp DIFFER(426v428) hunks=6 /G7 -- L + /G7
+14:32 00a11f20 grade vQ0.cpp DIFFER(426v428) hunks=6 /G5 -- L + /G5
+00a11f20 probe 2 ours Z-row order in L -> see below
+14:33 00a11f20 grade vU1.cpp DIFFER(448v428) hunks=25 -- D3D-signed SetInverse: U1 -inv*(..) + signed det / U2 -(..)*inv / U3 signed elements, plain det
+14:33 00a11f20 grade vU2.cpp DIFFER(448v428) hunks=25 -- D3D-signed SetInverse: U1 -inv*(..) + signed det / U2 -(..)*inv / U3 signed elements, plain det
+14:33 00a11f20 grade vU3.cpp DIFFER(448v428) hunks=33 -- D3D-signed SetInverse: U1 -inv*(..) + signed det / U2 -(..)*inv / U3 signed elements, plain det
+14:34 00a11f20 grade vV1.cpp DIFFER(414v428) hunks=25 -- L + V1 radius*GetOneOnScale() local / V2 radius*=GetOneOnScale() / V3 radius*=OO_Scale
+14:35 00a11f20 grade vV2.cpp DIFFER(414v428) hunks=25 -- L + V1 radius*GetOneOnScale() local / V2 radius*=GetOneOnScale() / V3 radius*=OO_Scale
+14:35 00a11f20 grade vV3.cpp DIFFER(419v428) hunks=15 -- L + V1 radius*GetOneOnScale() local / V2 radius*=GetOneOnScale() / V3 radius*=OO_Scale
+14:36 00a11f20 grade vW1.cpp RELOCATION_MATCH -- forceinline TransformPoint(pos,local): W1 natural sums / W2 header accumulated / W3 xx,yy,zz copies
+14:37 00a11f20 grade 00a11f20.cpp RELOCATION_MATCH -- final source, clean overlay opt-in FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_SOURCE_SUMS
+14:37 00a11f20 grade 00a11f20.cpp RELOCATION_MATCH -- final source, strict headers
+14:38 00a11f20 grade 00a11f20.cpp RELOCATION_MATCH -- final regrade, strict headers, clean dir
+14:43 00a11f20 grade src.cpp RELOCATION_MATCH -- 
+14:43 00a11f20 grade src.cpp SRC_FAIL -- 
+14:43 00a11f20 grade src.cpp DIFFER(386v428) hunks=23 -- 
+

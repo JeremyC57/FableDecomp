@@ -330,6 +330,12 @@ private:
     void InitModeViewHero(EPlayerMode,CProcessedInput*);
     void UninitModeViewHero(EPlayerMode,CProcessedInput*);
 public:
+#if defined(FABLE_RETAIL_PLAYER_ISMAINPLAYER_OUTOFLINE) && !defined(FABLE_RETAIL_PLAYER_SWITCHCHARACTERS)
+    // Retail opt-in (wf5, row 0x0064C869 NPlayerGui::CDrawSpiritTargetingCursor::Draw): Ego_r.pdb / FableWin.pdb
+    // ?IsMainPlayer@CPlayer@@QBE_NXZ, the out-of-line copy at 0x00487520 (landed CPlayer_IsMainPlayer_00487520.cpp) that the row
+    // calls (`mov ecx,[ebp-8] ; call 0x00487520`). Declaration only.
+    bool IsMainPlayer() const;                                   // 0x00487520
+#endif
 #ifdef FABLE_RETAIL_PLAYER_SWITCHCHARACTERS
     // Nested opt-in (chunk 762, row 0x004888C0): Ego_r.pdb / FableWin.pdb ?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z (public),
     // ?SetupInitialPlayerMode@CPlayer@@AAEXXZ (private, retail 0x004887C0) and ?IsMainPlayer@CPlayer@@QBE_NXZ (const; inline in that

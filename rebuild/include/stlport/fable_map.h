@@ -553,6 +553,15 @@ public:
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE
     void erase(iterator position){_M_t.erase(position);}
 #endif
+#ifdef FABLE_RETAIL_STLP_MULTIMAP_CONSTFIND
+    // Retail opt-in (wf5, row 0x007F53B0 CTCSoundAtmosphere::FrameUpdate): STLport 4.6 _map.h multimap
+    // `const_iterator find(const key_type& __x) const { return _M_t.find(__x); }` and `const_iterator end() const { return _M_t.end(); }`
+    // (both inline; retail calls the tree's _M_find<CCharString> 0x0042B467 on CSoundThemeDef::AtmosGroupMap and compares the node
+    // with the header word). Pair with FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_BODY (or _CONSTFIND) for the tree's const find body.
+    typedef typename _Rep_type::const_iterator const_iterator;
+    const_iterator find(const K& x)const{return _M_t.find(x);}
+    const_iterator end()const{return _M_t.end();}
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(std::map<unsigned long,long>)==12);

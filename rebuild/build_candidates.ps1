@@ -393932,6 +393932,77 @@ $catalog = @(
         TestSource = '00/4b/CQuestManager_ActivateMultipleQuests_004b4260_test.cpp'
         PassPattern = '004b4260_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009adae0'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_InstantiateSubDef_009adae0.cpp'
+        TestSource = '00/9a/CDefinitionManager_InstantiateSubDef_009adae0_test.cpp'
+        PassPattern = '009adae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00499aa0'
+        Module = 'CProgressDisplay'
+        Source = '00/49/CProgressDisplay_StartProgress_00499aa0.cpp'
+        TestSource = '00/49/CProgressDisplay_StartProgress_00499aa0_test.cpp'
+        PassPattern = '00499aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a11d10'
+        Module = 'CPhysicsMeshObject'
+        Source = '00/a1/CPhysicsMeshObject_GetNavigationLevelAt_00a11d10.cpp'
+        TestSource = '00/a1/CPhysicsMeshObject_GetNavigationLevelAt_00a11d10_test.cpp'
+        PassPattern = '00a11d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f53b0'
+        Module = 'CTCSoundAtmosphere'
+        Source = '00/7f/CTCSoundAtmosphere_FrameUpdate_007f53b0.cpp'
+        TestSource = '00/7f/CTCSoundAtmosphere_FrameUpdate_007f53b0_test.cpp'
+        PassPattern = '007f53b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009692c0'
+        Module = 'CAIStateGroup_TavernKeeper'
+        Source = '00/96/CAIStateGroupTavernKeeper_ReceivePayment_009692c0.cpp'
+        TestSource = '00/96/CAIStateGroupTavernKeeper_ReceivePayment_009692c0_test.cpp'
+        PassPattern = '009692c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094d780'
+        Module = 'CAIStateGroup_TrollBase'
+        Source = '00/94/CAIStateGroupTrollBase_Initialise_0094d780.cpp'
+        TestSource = '00/94/CAIStateGroupTrollBase_Initialise_0094d780_test.cpp'
+        PassPattern = '0094d780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064c869'
+        Module = 'NPlayerGui::CDrawSpiritTargetingCursor'
+        Source = '00/64/NPlayerGuiCDrawSpiritTargetingCursor_Draw_0064c869.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawSpiritTargetingCursor_Draw_0064c869_test.cpp'
+        PassPattern = '0064c869_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095e0b0'
+        Module = 'CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets'
+        Source = '00/95/CAIStateGroupCreatureRangedCombatFireAtSpecificTargets_Update_0095e0b0.cpp'
+        TestSource = '00/95/CAIStateGroupCreatureRangedCombatFireAtSpecificTargets_Update_0095e0b0_test.cpp'
+        PassPattern = '0095e0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a11f20'
+        Module = 'CPhysicsMeshObject'
+        Source = '00/a1/CPhysicsMeshObject_IsSpherePartContainedInBoundingBox_00a11f20.cpp'
+        TestSource = '00/a1/CPhysicsMeshObject_IsSpherePartContainedInBoundingBox_00a11f20_test.cpp'
+        PassPattern = '00a11f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef4320'
+        Module = 'NScript::CPersonalScript_EmptyScript::CMeanBandit'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCMeanBandit_Main_00ef4320.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCMeanBandit_Main_00ef4320_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT28'
+        PassPattern = '00ef4320_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

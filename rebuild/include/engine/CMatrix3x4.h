@@ -220,6 +220,22 @@ public:
         v.Z=xx*E13+yy*E23+zz*E33;
     }
 #endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_SOURCE_DEST_SUMS
+    // Retail opt-in (wf5, row 0x00A11D10 CPhysicsMeshObject::GetNavigationLevelAt): FableWin.pdb
+    // ?TransformPoint@CMatrix3x4@@QBEXABVC3DVector@@AAV2@@Z (debug copy 0x01D129F0, 164 bytes / 61 instructions = three plain
+    // 18-instruction row sums; no Ego_r.pdb or retail out-of-line copy), each row one left-to-right sum
+    // `E1k*x + E2k*y + E3k*z + E4k`. Expanded in place after the inline SetInverse it gives retail's `fld E3k ; fmul z ; fld E2k ;
+    // fmul y ; faddp ; fld E1k ; fmul x ; faddp ; fadd E4k` rows (0x00A11E46..0x00A11E9F) and, through them, the 1,3,2 term order
+    // of the inverse's determinant and translation sums. __forceinline (owner 2026-11-01 helper rule): retail expands it in place
+    // and has no out-of-line copy; the plain-inline default below graded 388 v 422 in that row. The default path is unchanged.
+    // Row 0x00A11F20 CPhysicsMeshObject::IsSpherePartContainedInBoundingBox (same workflow, a different author agent) arrived at the
+    // same three lines independently and matches with them too (386 v 428 with the plain-inline default).
+    FABLE_FORCEINLINE void TransformPoint(const C3DVector& pSource,C3DVector& destination) const {
+        destination.X=E11*pSource.X+E21*pSource.Y+E31*pSource.Z+E41;
+        destination.Y=E12*pSource.X+E22*pSource.Y+E32*pSource.Z+E42;
+        destination.Z=E13*pSource.X+E23*pSource.Y+E33*pSource.Z+E43;
+    }
+#else
     void TransformPoint(const C3DVector& pSource,C3DVector& destination) const {
         destination.X=E11*pSource.X+(E21*pSource.Y+E31*pSource.Z)+E41;
         destination.Y=E12*pSource.X;
@@ -231,6 +247,7 @@ public:
         destination.Z+=E23*pSource.Y;
         destination.Z+=E43;
     }
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY
     // Retail opt-in (chunk Q21, row 0x00B39080 CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh): FableWin.pdb
     // ?SetMultiply@CMatrix3x4@@QAEXABV1@0@Z (this = a * b; no Ego_r.pdb or retail out-of-line copy: the row expands it over a named copy

@@ -1,0 +1,47 @@
+addr       parity           behav  name
+009adae0   RELOCATION_MATCH PASS   InstantiateSubDef
+00499aa0   RELOCATION_MATCH PASS   StartProgress
+00ef4320   NOT_GENUINE      -      Main
+00a11d10   RELOCATION_MATCH PASS   GetNavigationLevelAt
+007f53b0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+007f53b0   RELOCATION_MATCH PASS   FrameUpdate
+009692c0   RELOCATION_MATCH PASS   ReceivePayment
+0094d780   WARN RELOC_NAME: ?GetGiveUpChaseRadius@CTCPerceiveThing@@QBEMXZ -> 00744460 labelled '_global::GetMember_float0x4c_00744460'
+0094d780   RELOCATION_MATCH PASS   Initialise
+0064c869   WARN RELOC_NAME: ??$?9VCThing@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThing@@@@@Z -> 005cbdd2 labelled 'operator!=<CThing>'
+0064c869   RELOCATION_MATCH PASS   Draw
+0095e0b0   WARN RELOC_CONFLICT: ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z -> 00654d58 here, 004a9730 in landed 00788d68
+0095e0b0   RELOCATION_MATCH PASS   Update
+00a11f20   RELOCATION_MATCH PASS   IsSpherePartContainedInBoundingBox
+
+WINS: 9
+  009adae0 RELOCATION_MATCH CDefinitionManager::InstantiateSubDef
+  00499aa0 RELOCATION_MATCH CProgressDisplay::StartProgress
+  00a11d10 RELOCATION_MATCH CPhysicsMeshObject::GetNavigationLevelAt
+  007f53b0 RELOCATION_MATCH CTCSoundAtmosphere::FrameUpdate
+  009692c0 RELOCATION_MATCH CAIStateGroup_TavernKeeper::ReceivePayment
+  0094d780 RELOCATION_MATCH CAIStateGroup_TrollBase::Initialise
+  0064c869 RELOCATION_MATCH NPlayerGui::CDrawSpiritTargetingCursor::Draw
+  0095e0b0 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::Update
+  00a11f20 RELOCATION_MATCH CPhysicsMeshObject::IsSpherePartContainedInBoundingBox
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CDefinitionManager_InstantiateSubDef_009adae0
+  CProgressDisplay_StartProgress_00499aa0
+  CPhysicsMeshObject_GetNavigationLevelAt_00a11d10
+  CTCSoundAtmosphere_FrameUpdate_007f53b0
+  CAIStateGroupTavernKeeper_ReceivePayment_009692c0
+  CAIStateGroupTrollBase_Initialise_0094d780
+  NPlayerGuiCDrawSpiritTargetingCursor_Draw_0064c869
+  CAIStateGroupCreatureRangedCombatFireAtSpecificTargets_Update_0095e0b0
+  CPhysicsMeshObject_IsSpherePartContainedInBoundingBox_00a11f20
+rc=0
+addr       parity           behav  name
+00ef4320   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00ef4320 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CMeanBandit::Main
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCPersonalScriptEmptyScriptCMeanBandit_Main_00ef4320
+rc=0

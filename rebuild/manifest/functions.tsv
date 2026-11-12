@@ -4243,7 +4243,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00498490	DrawRetailDisplay	CProgressDisplay	__thiscall	void	4	CProgressDisplay *,CCharString *,float,bool	1	yes	accepted									
 00499880	RenderProgress	CProgressDisplay	__thiscall	void	5	CProgressDisplay *,CCharString *,float,bool,bool	1	yes	accepted									
 00499a70	SetToDisplayText	CProgressDisplay	__thiscall	void	2	CProgressDisplay *,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CProgressDisplay_SetToDisplayText_00499a70.cpp
-00499aa0	CProgressDisplay::StartProgress	CProgressDisplay	__thiscall	void	7	CProgressDisplay *,bool,bool,bool,bool,bool,bool	1	yes	accepted									
+00499aa0	StartProgress	CProgressDisplay	__thiscall	void	7	CProgressDisplay *,bool,bool,bool,bool,bool,bool	1	yes	accepted									
 00499c50	DisplayProgress	CProgressDisplay	__thiscall	void	5	CProgressDisplay *,CCharString const &,float,bool,bool	1	yes	accepted									
 00499ce0	CProgressDisplay	CProgressDisplay	__thiscall	CProgressDisplay *	1	CProgressDisplay *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CProgressDisplay_Constructor_00499ce0.cpp
 00499d90	StopProgress	CProgressDisplay	__thiscall	void	3	CProgressDisplay *,bool,bool	1	yes	accepted									
@@ -23526,7 +23526,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007f5150	GetGain	CTCSoundAtmosphereVillage	__thiscall	float	2	CTCSoundAtmosphereVillage *,CCharString *	1	yes	accepted									
 007f5370	CTCSoundAtmosphere	CTCSoundAtmosphere	__thiscall	undefined	2	CComponentContainer *,long	0	yes	accepted									
 007f53a0	OnInitialActivate	CTCSoundAtmosphere	__thiscall	void	2	CTCInventoryAbilities *,long	1	yes	accepted									
-007f53b0	FrameUpdate	CTCSoundAtmosphereVillage	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007f53b0	FrameUpdate	CTCSoundAtmosphere	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f5560	GetSubDef<CSoundAtmospheresDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 007f5620	`scalar_deleting_destructor'	CTCSoundAtmosphere	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\CLandscapeBackgroundPatch_vectordeletingdestructor_007f5620.cpp
 007f5730	operator()<CThingPhysical>	CThingCompare_Nearest	__thiscall	CThingMarker *	3	CThingCompare_Nearest *,CThingMarker *,CThingMarker *	1	yes	accepted									
@@ -32439,7 +32439,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0095e010	sort	std	unknown	undefined	0		0	yes	accepted									
 0095e080	Dtor_CCreatureActionBaseBase_0095e080	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\95\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0095e080.cpp
 0095e0a0	InitStateGroup	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	__thiscall	void	3	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets *,CWorld const &,CThingAICreature &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\95\CAIStateGroupCreatureRangedCombatFireAtSpecificTargets_InitStateGroup_0095e0a0.cpp
-0095e0b0	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::Update	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	__thiscall	void	1	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets *	1	yes	accepted									
+0095e0b0	Update	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	__thiscall	void	1	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets *	1	yes	accepted									
 0095e260	IsRunnable	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	__thiscall	bool	1	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets *	1	yes	accepted									
 0095e340	Cleanup	CAIStateGroup_ReactToDeadLeader	__thiscall	void	1	CAIStateGroup_ReactToDeadLeader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\95\CAIStateGroupReactToDeadLeader_Cleanup_0095e340.cpp
 0095e350	IsRunnable	CAIStateGroup_ReactToDeadLeader	__thiscall	bool	1	CAIStateGroup_ReactToDeadLeader *	1	yes	accepted									
