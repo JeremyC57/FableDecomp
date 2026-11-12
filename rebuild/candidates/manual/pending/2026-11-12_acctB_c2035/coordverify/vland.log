@@ -1,0 +1,6 @@
+addr       parity           behav  name
+006fdd60   WARN RELOC_NAME: ?IsThingCollision@CGameCameraBase@@AAE_NXZ -> 006fda20 labelled 'CGameCameraBase_TracePhysics'
+006fdd60   RELOCATION_MATCH PASS   Update
+
+WINS: 1
+  006fdd60 RELOCATION_MATCH CGameCameraBase::?Update@CGameCameraBase@@UAEXXZ

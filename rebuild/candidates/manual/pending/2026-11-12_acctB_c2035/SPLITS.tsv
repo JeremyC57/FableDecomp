@@ -1,0 +1,2 @@
+address	true_length	evidence
+006fdd60	1659	oracle length is right: last instruction ret at 0x006FE3DA, int3 0x006FE3DB..0x006FE3DF; the 2018-byte reservation estimate ran into 0x006FE3E0..0x006FE53F = 22 uncatalogued, unreferenced STLport list<C3DVector> inline COMDATs of this TU (empty 0x006FE3E0, iterator ops 0x006FE3F0..0x006FE500, front 0x006FE4C0, begin/end 0x006FE4D0/0x006FE4E0, allocator<C3DVector>::allocate 0x006FE510 (n*12, malloc 0x00BFEA0E) / deallocate 0x006FE530 (free 0x00BFEA14)); next catalog row 0x006FE550

@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+006fd4f0	?GetRotationAngle@CGameCameraBase@@AAEMABVC3DVector@@0@Z	Ego_r.pdb / FableWin.pdb list it private (AAE); the landed definer rebuild/src/compiled/00/6f/CGameCameraBase_GetRotationAngle_006fd4f0.cpp declares it public in a local class (emits QAE)	?GetRotationAngle@CGameCameraBase@@QAEMABVC3DVector@@0@Z (landed definer 0x006FD4F0)
+006fda20	?IsThingCollision@CGameCameraBase@@AAE_NXZ	Ego_r donor order = retail order of the CGameCameraBase members; Update's only call	CGameCameraBase_TracePhysics (catalog / manifest label, _global)
+0049d9d0	?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ	Ego_r.pdb / FableWin.pdb; no ?GetCurrentPlayer@CWorld@@ record in either PDB name set	?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ (reloc_bindings, binder site 0x0095F9A0)

@@ -1,0 +1,3 @@
+address	grade	bytes	test	grades_used	notes
+006fdd60	RELOCATION_MATCH	1659v1659	PASS	7 (pass1 7/10; pass2 0; pass3 0)	matched at grade 6, grade 7 = final header/include cleanup re-check; ~70 free probe compiles (deciding instructions only) + 3 c2prio traces + 1 c2h record dump; overlay hdr/ required (FABLE_RETAIL_CGAMECAMERABASE_UPDATE, FABLE_RETAIL_CWORLDMAP_FINDLASTUNBLOCKEDGROUND)
+006aca30	NOT_ATTEMPTED	-	-	0	optional second row not started (context budget after row 1 below the brief's threshold): no source, goes to a fresh agent
