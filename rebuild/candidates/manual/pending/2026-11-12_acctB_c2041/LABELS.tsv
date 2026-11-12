@@ -1,0 +1,7 @@
+address	name	evidence
+0x006AB820	?ResolveFacingDirection@CThingPlayerCreature@@IAEXXZ	Ego_r.pdb donor order ResolveMovementAcceleration 0x005475B0 -> ResolveFacingDirection 0x00547690 = retail landed 0x006AB770 -> 0x006AB820; FableWin 0x01DF5810; sole caller UpdateWalkingControlForces 0x006AD260 (landed) tail-jumps here after ResolveMovementAcceleration
+0x006A99D0	?GetMaxTurnSpeed@CThingPlayerCreature@@IBEMXZ	Ego_r 0x005469C0 + FableWin 0x01DF7490 (protected const); landed body reads PPlayerMovementDef MaxTurnSpeed / MaxTurnSpeedHeavyWeapon; called four times by the row (turn limit)
+0x00661540	?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z	Ego_r + FableWin name; landed row; header body compiled out of line grades RELOCATION_MATCH against 0x00661540 (QLEN 0x5B)
+0x006ADDB0	?GFGetRoundedSignedAngle@@YIMM@Z	FableWin 0x01DF7300, first COMDAT after ResolveFacingDirection in FableWin; retail unreferenced copy in this TU (float on the stack, ret 4) whose wrap-to-[-0.5,0.5) body equals the row's expansion 0x006AC0B7..0x006AC10D (GFWrapReturn<float> / GFMod<float> expanded)
+0x005DB180	?GFArcCos@@YIMN@Z	FableWin 0x01DF7340 (COMDAT after ResolveFacingDirection); retail unreferenced copy: fld qword [esp+4] ; call _CIacos ; fmul 0.15915494f ; ret 8 = the row's expansion at 0x006ABCFB..0x006ABD04
+0x0048DAE0	??$GFLimit@MMM@@YIXAAMABM1@Z	landed row + bound name; out of line (9 callers): plain inline, NOT used by this row (its clamps are written out; trace scores 83 / 93 would leave the calls)
