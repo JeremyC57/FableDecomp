@@ -1,0 +1,10 @@
+address	name	evidence
+006B3FF0	?Update@CEnvironment@@QAEXM@Z	workflow wf19 (landing fp): RELOCATION_MATCH, two PDBs
+00727D00	?OnAppearanceDraw@CTCRandomAppearanceMorph@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z	workflow wf19 (landing fp): RELOCATION_MATCH, two PDBs
+007BF790	?Init@CTCShotDefinitionBase@NThingShot@@QAEXV?$CDefPointer@$$CBVCThingShotDef@@@@PAVCThing@@1ABVC3DVector@@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z	workflow wf19 (landing fp): RELOCATION_MATCH, two PDBs
+006BFCD0	?GetSignPostPos@CTCBuyableHouse@@AAE_N_NAAVC3DVector@@PAVCRightHandedSet@@@Z	workflow wf19 (landing fp): RELOCATION_MATCH, two PDBs
+0055D180	?TakeQuickScreenshot@CTCPhotojournalCapture@@QAEXXZ	workflow wf19 (landing fp): RELOCATION_MATCH, two PDBs
+00A8F9E0	?UploadToIndexBuffer@C3DPrimitive2@@AAE_NK@Z	workflow wf19 (landing fp): RELOCATION_MATCH, two PDBs
+00B206B0	?OffsetSplinePositions@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXXZ	workflow wf19 (landing fp): RELOCATION_MATCH, two PDBs
+007D46D0	?FadeOutTableOccupants@CTCTavernGameCoinGolf@@AAEX_N@Z	workflow wf19 (landing fp): RELOCATION_MATCH, two PDBs
+0094A3B0	?ChooseAction@CAIStateGroup_GoToPub@@IAE_N_N@Z	workflow wf19 (landing fp): RELOCATION_MATCH, two PDBs

@@ -35,6 +35,11 @@ public:
     static void __fastcall SplitPath(const CCharString&,CCharString*,CCharString*,CCharString*,CCharString*);
     static bool __fastcall PathExists(const CWideString&);
     static bool __fastcall IsPathFile(const CWideString&);
+#ifdef FABLE_RETAIL_CAFILE_ISROOMFORFILE
+    // Nested opt-in (wf19, row 0x0055D180): Ego_r.pdb / FableWin.pdb ?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z (retail 0x00999AB0; the
+    // byte count in ecx, the path in edx). Declaration only.
+    static bool __fastcall IsRoomForFile(long size, const CWideString& path);   // 0x00999AB0
+#endif
 #ifdef FABLE_RETAIL_CAFILE_MODIFIEDTIME_WACKY
     // Nested opt-in (chunk 1013, row 0x00502620 CWorldMap::LoadLevel): Ego_r.pdb / FableWin.pdb
     // ?GetFileModifiedTimeAsSomeWackyWin32BigNumber@CAFile@@SI_KABVCWideString@@@Z (retail 0x00999320; the path in ecx, the stamp in edx:eax).

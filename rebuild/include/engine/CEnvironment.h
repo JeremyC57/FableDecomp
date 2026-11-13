@@ -20,6 +20,14 @@
 #include "engine/CGameDefinitionManager.h"
 #endif
 
+#ifdef FABLE_RETAIL_CENVIRONMENT_UPDATE
+// Retail opt-in (row 0x006B3FF0 CEnvironment::Update): the game tick states and the rain-splash particle typed as the Ego_r.pdb
+// types they are (nested CEnvironment::CEnvironmentGameTickState, CIntelligentPointer<CThing>). Needs FABLE_RETAIL_CINTELLIGENTPOINTER.
+#include "engine/CBlendedEnvironmentTheme.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+#endif
 class CEnvironmentSpellEffectInterface;
 class CEnvironmentSpellEffectInterpolator;
 class CGameDefinitionManager;
@@ -27,6 +35,44 @@ class CGameDefinitionManager;
 #pragma pack(push, 1)
 class CEnvironment {
 public:
+#ifdef FABLE_RETAIL_CENVIRONMENT_UPDATE
+    // Ego_r.pdb CEnvironment::CEnvironmentGameTickState (Ego_r 0xcb0 bytes; retail 0xc20: the six 0x1f4-byte retail themes put Time at
+    // +0xbb8, Update stores it at +0xc0c of the environment). Members after BlendedTheme in Ego_r order (pack 1). The assignment is
+    // out of line in retail at 0x006B63C0 (??4CEnvironmentGameTickState@CEnvironment@@QAEAAV01@ABV01@@Z, landed).
+    class CEnvironmentGameTickState {
+    public:
+        CEnvironmentGameTickState& operator=(const CEnvironmentGameTickState&);   // 0x006B63C0
+        NEnvironmentInternal::CBlendedEnvironmentTheme BlendedTheme[6];          // +0x000
+        float     Time;                                                          // +0xbb8
+        float     WindSpeed;                                                     // +0xbbc
+        C3DVector WindDirection;                                                 // +0xbc0
+        float     ThemeWindSpeed;                                                // +0xbcc
+        C3DVector ThemeWindDirection;                                            // +0xbd0
+        C3DVector SunVector;                                                     // +0xbdc
+        C3DVector MoonVector;                                                    // +0xbe8
+        C3DVector DiffuseVector;                                                 // +0xbf4
+        C3DVector ShadowVector;                                                  // +0xc00
+        bool      OverrideWindDirection;                                         // +0xc0c
+        C3DVector OldWindDirection;                                              // +0xc0d
+        float     OldWindSpeed;                                                  // +0xc19
+        unsigned char _pad_0xc1d[0x3];                                           // +0xc1d
+    };
+#ifndef FABLE_RETAIL_CENVIRONMENT
+    void Update(float time);                                     // 0x006B3FF0
+#endif
+private:
+    // Ego_r.pdb / FableWin.pdb ?UpdateSunAndMoonPositions@CEnvironment@@AAEXXZ (retail 0x006B2CA0), ?UpdateWind@CEnvironment@@AAEXXZ
+    // (0x006B3030, landed), ?LightingFlash@CEnvironment@@AAEXXZ (0x006B3B80, landed); Update calls them in that order.
+    void UpdateSunAndMoonPositions();                            // 0x006B2CA0
+    void UpdateWind();                                           // 0x006B3030
+#ifndef FABLE_RETAIL_CENVIRONMENT_LIGHTINGFLASH
+    void LightingFlash();                                        // 0x006B3B80
+#endif
+public:
+#ifndef FABLE_RETAIL_CENVIRONMENT_RAINSTRENGTH
+    float GetRainStrength() const;                               // 0x006B2BD0 (body in the CEnvironment TU)
+#endif
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENT
     // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): member functions only, the layout below is unchanged.
     // Ego_r.pdb / FableWin.pdb ?UpdateInterpolation@CEnvironment@@QAEXXZ (retail 0x006B32A0, the forward to +0x1960; the only public
@@ -150,10 +196,16 @@ public:
     float                                MistStrength;       // +0x1c8
     float                                LightningFrequency; // +0x1cc
     unsigned char                        GameTickStateRest[0xc20 - 0x17c]; // +0x1d0
+#elif defined(FABLE_RETAIL_CENVIRONMENT_UPDATE)
+    CEnvironmentGameTickState            GameTickState;      // +0x54
 #else
     unsigned char                        GameTickState[0xc20]; // +0x54 CEnvironmentGameTickState
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_UPDATE
+    CEnvironmentGameTickState            PrevGameTickState;  // +0xc74
+#else
     unsigned char                        PrevGameTickState[0xc20]; // +0xc74 CEnvironmentGameTickState
+#endif
     unsigned char                        InterpolatedEnvironmentParams[0xc0]; // +0x1894 CIDrawEnvironmentParams
 #ifdef FABLE_RETAIL_CENVIRONMENT_THEMESTACKS
     NEnvironmentInternal::CEnvironmentThemeResourcePallette ThemeSet;  // +0x1954
@@ -162,7 +214,11 @@ public:
 #endif
     CEnvironmentSpellEffectInterface*    SpellEffectInterface_ptr; // +0x1960 scoped_ptr<CEnvironmentSpellEffectInterface>::ptr
     CEnvironmentSpellEffectInterpolator* SpellEffectInterpolator_ptr; // +0x1964 scoped_ptr<CEnvironmentSpellEffectInterpolator>::ptr
+#ifdef FABLE_RETAIL_CENVIRONMENT_UPDATE
+    CIntelligentPointer<CThing>          PRainSplashParticle; // +0x1968
+#else
     unsigned char                        PRainSplashParticle[0x8]; // +0x1968 CIntelligentPointer<CThing>
+#endif
 };
 #pragma pack(pop)
 
@@ -197,4 +253,8 @@ FABLE_STATIC_ASSERT(offsetof(CEnvironment, SpellEffectInterface_ptr) == 0x1960);
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, SpellEffectInterpolator_ptr) == 0x1964);
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, PRainSplashParticle) == 0x1968);
 
+#ifdef FABLE_RETAIL_CENVIRONMENT_UPDATE
+FABLE_STATIC_ASSERT(sizeof(CEnvironment::CEnvironmentGameTickState) == 0xc20);
+FABLE_STATIC_ASSERT(offsetof(CEnvironment::CEnvironmentGameTickState, Time) == 0xbb8);
+#endif
 #endif // FABLE_ENGINE_CENVIRONMENT_H

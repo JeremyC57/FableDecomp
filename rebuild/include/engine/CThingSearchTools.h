@@ -90,7 +90,16 @@ public:
         const std::list<CClass*>& things=PeekClassList();
         for(std::list<CClass*>::const_iterator it=things.begin();it!=things.end();++it) {
             T* thing=static_cast<T*>(*it);
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY_TYPEMASK
+            // Nested opt-in (wf19 repair, row 0x007D46D0 CTCTavernGameCoinGolf::FadeOutTableOccupants): the THING_TYPE mask test of the
+            // landed instance 0x007D4CE0 GetAllThings<CThingCreatureBase,list<CThingCreatureBase*>,CThingFilter_IsHuman> (scan test,
+            // then `and edx,0Fh / cmp dl,0Fh` at 0x007D4D1E, then the filter), as GetPBestThing below. Needs T::StatGetTypeFlags
+            // (FABLE_RETAIL_CTHING_STATTYPEFLAGS / FABLE_RETAIL_CTHINGCREATUREBASE_STATTYPEFLAGS). The default path is unchanged.
+            unsigned long mask=T::StatGetTypeFlags();
+            if(thing->IsIncludedInThingScans() && (thing->GetTypeFlags()&mask)==mask && filter(*thing))
+#else
             if(thing->IsIncludedInThingScans() && filter(*thing))
+#endif
                 result.push_back(thing);
         }
     }

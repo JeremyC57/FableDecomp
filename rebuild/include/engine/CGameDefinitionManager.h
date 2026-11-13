@@ -11,6 +11,9 @@ class CHeroStatsDef;
 #if defined(FABLE_RETAIL_CGAMEDEFINITIONMANAGER_GLOBALDEF) || defined(FABLE_RETAIL_CGAMEDEFINITIONMANAGER_GLOBAL)
 class CGlobalDef;
 #endif
+#ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_ENVIRONMENTDEF
+class CEnvironmentDef;
+#endif
 class CGameDefinitionManager : public CDefinitionManager {
 public:
     static CGameDefinitionManager& __fastcall Get();
@@ -60,6 +63,17 @@ private:
     // PGlobalDef is descriptive: both original manager records are forward-only.
     CDefPointer<const CGlobalDef> PGlobalDef;
     unsigned char _pad_0xd4[12];
+#elif defined(FABLE_RETAIL_CGAMEDEFINITIONMANAGER_ENVIRONMENTDEF)
+    // Opt-in (row 0x006B3FF0 CEnvironment::Update): FableWin.pdb ?PeekEnvironmentDef@CGameDefinitionManager@@QBEABVCEnvironmentDef@@XZ
+    // (0x02455340; Ego_r 0x0178FAAA), inline in retail: Update reads `mov eax,[ecx+0D8h]` off the environment's manager, then the def's
+    // RainSplashParticle +0x100 (the landed CEnvironment::BuildThemes 0x006B3350 / ctor 0x006B4900 read the same word). Member name
+    // descriptive (forward record only). No layout change.
+    unsigned char _pad_0xd0[8];
+public:
+    const CEnvironmentDef& PeekEnvironmentDef() const { return *PEnvironmentDef; }
+    const CEnvironmentDef* PEnvironmentDef;                               // +0xd8 (descriptive name)
+private:
+    unsigned char _pad_0xdc[4];
 #else
     unsigned char _pad_0xd0[16];
 #endif

@@ -1,0 +1,5 @@
+006bfcd0	CTCBuyableHouse::GetSignPostPos	DIFFER(766v764)	107	final add operand order only
+006bfcd0	CTCBuyableHouse::GetSignPostPos	RELOCATION_MATCH	~45	made-up file-static AddOffset(const C3DVector&, C3DVector) helper gives the retail final-add roles
+00b206b0	CSplineRandomOffsetData::OffsetSplinePositions	RELOCATION_MATCH	29	GFSqr + running-sum ellipsoid terms
+00d17a80	NScript::CQ_BountyHuntScript::WatchForBoasts	DIFFER(705v785)	~75	return-site inline split is retail's reverse order
+0x00D17A80	NScript::CQ_BountyHuntScript::WatchForBoasts	DIFFER(705v785)	attempt2	per-site inline split of ~vector at 5 early returns (retail budget spent in reverse order); see NOTES attempt 2

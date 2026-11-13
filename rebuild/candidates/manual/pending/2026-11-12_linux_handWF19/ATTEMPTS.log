@@ -1,0 +1,1459 @@
+==== 0x006B3FF0
+22:26 006b3ff0 grade e1.cpp DIFFER(754v758) hunks=10 -- explore: draft + CCamera 0x38 by-value temp
+22:26 006b3ff0 grade e2.cpp DIFFER(754v758) hunks=10 -- explore: draft + CCamera 0x38 by-value temp
+22:26 006b3ff0 grade e3.cpp DIFFER(754v758) hunks=11 -- explore: rain spellings
+22:26 006b3ff0 grade e4.cpp DIFFER(754v758) hunks=10 -- explore: rain spellings
+22:26 006b3ff0 grade e5.cpp DIFFER(754v758) hunks=11 -- explore: rain spellings
+22:27 006b3ff0 grade e6.cpp RELOCATION_MATCH -- explore: threshold as non-const global
+22:28 006b3ff0 grade v1.cpp SRC_FAIL -- port v1 (compile probe)
+22:29 006b3ff0 grade v1.cpp SRC_FAIL -- port v1 + envdef/attach opt-ins
+22:29 006b3ff0 grade v1.cpp SRC_FAIL -- port v1 + defmanager macros
+22:29 006b3ff0 grade v1.cpp RELOCATION_MATCH -- port v1 + particle FULL + null-int compare
+22:30 006b3ff0 grade CEnvironment_Update_006b3ff0.cpp RELOCATION_MATCH -- final strict regrade
+23:14 006b3ff0 grade src.cpp RELOCATION_MATCH -- 
+23:14 006b3ff0 grade src.cpp SRC_FAIL -- 
+23:14 006b3ff0 grade src.cpp SRC_FAIL -- 
+23:14 006b3ff0 grade src.cpp SRC_FAIL -- 
+23:14 006b3ff0 grade src.cpp SRC_FAIL -- 
+006b3b80 probe 1 LightingFlash respelled onto typed GameTickState (Scalers[15]/[17]) under this overlay -> see below
+23:39 006b3ff0 grade CEnvironment_Update_006b3ff0.cpp RELOCATION_MATCH -- repair: one GetRainStrength spelling (typed GameTickState chain) for the TU
+006b3b80 probe 1 -> RELOCATION_MATCH with Scalers[15]/[17]; 006b2bd0 GetRainStrength typed body -> MATCH
+00:06 006b3ff0 grade src.cpp RELOCATION_MATCH -- 
+00:06 006b3ff0 grade src.cpp SRC_FAIL -- 
+
+==== 0x00727D00
+22:28 00727d00 grade v1.cpp SRC_FAIL -- port onto shared headers, dossier structure
+22:29 00727d00 grade v1.cpp DIFFER(764v760) hunks=64 -- port; PeekLightingChannel in opt-in
+22:29 00727d00 grade v2.cpp DIFFER(764v760) hunks=64 -- ref local / begin==end / size==0
+22:29 00727d00 grade v3.cpp DIFFER(764v760) hunks=64 -- ref local / begin==end / size==0
+22:29 00727d00 grade v4.cpp DIFFER(776v760) hunks=63 -- ref local / begin==end / size==0
+22:29 00727d00 grade v1.cpp DIFFER(764v760) hunks=64 -- v1 full diff view
+22:30 00727d00 grade v5.cpp DIFFER(764v760) hunks=64 -- int i / explicit ++i at ends / uint+const floats
+22:30 00727d00 grade v6.cpp DIFFER(760v760) hunks=8 -- int i / explicit ++i at ends / uint+const floats
+22:30 00727d00 grade v7.cpp DIFFER(764v760) hunks=64 -- int i / explicit ++i at ends / uint+const floats
+22:30 00727d00 grade v8.cpp RELOCATION_MATCH -- RELEASE_MEMBER+RELEASE_DELETES / RELEASE_INNER
+22:30 00727d00 grade CTCRandomAppearanceMorph_OnAppearanceDraw_00727d00.cpp RELOCATION_MATCH -- strict regrade final
+22:30 00727d00 grade CTCRandomAppearanceMorph_OnAppearanceDraw_00727d00.cpp RELOCATION_MATCH -- strict final after comment
+23:17 00727d00 grade src.cpp RELOCATION_MATCH -- 
+23:17 00727d00 grade src.cpp SRC_FAIL -- 
+00:00 00727d00 grade CTCRandomAppearanceMorph_OnAppearanceDraw_00727d00.cpp RELOCATION_MATCH -- repair: rebase overlay on current header, use FULLSCALE opt-in
+00:00 00727d00 grade CTCRandomAppearanceMorph_OnAppearanceDraw_00727d00.cpp RELOCATION_MATCH -- repair: strict regrade
+00:26 00727d00 grade src.cpp RELOCATION_MATCH -- 
+00:26 00727d00 grade src.cpp SRC_FAIL -- 
+00:46 00727d00 grade _land_src.cpp RELOCATION_MATCH -- nested PDB types
+
+==== 0x007BF790
+22:31 007bf790 grade v1.cpp SRC_FAIL -- port onto shared headers
+22:31 007bf790 grade v1.cpp SRC_FAIL -- port + SOLIDTOTHING opt-in
+22:36 007bf790 grade v1.cpp TIMEOUT -- port + opt-ins
+22:36 007bf790 grade v1.cpp SRC_FAIL -- port + opt-ins + CDEFSTRINGTABLE
+22:36 007bf790 grade v1.cpp DIFFER(877v762) hunks=39 -- setter overlay; speed vs size
+22:36 007bf790 grade v2.cpp DIFFER(659v762) hunks=38 -- setter overlay; speed vs size
+22:36 007bf790 grade v1.cpp DIFFER(877v762) hunks=39 -- v1 full diff
+22:37 007bf790 grade v1.cpp DIFFER(793v762) hunks=17 -- inline StatGetInterfaceType overlays, store order, named CCharString; v2 HASTC_FORCEINLINE
+22:37 007bf790 grade v2.cpp DIFFER(793v762) hunks=17 -- inline StatGetInterfaceType overlays, store order, named CCharString; v2 HASTC_FORCEINLINE
+22:38 007bf790 grade v1.cpp DIFFER(756v762) hunks=14 -- solid block: HasTC/AddTC then solid=0 GetTC; solid=0 first; GetTC-temp form
+22:38 007bf790 grade v2.cpp DIFFER(754v762) hunks=14 -- solid block: HasTC/AddTC then solid=0 GetTC; solid=0 first; GetTC-temp form
+22:38 007bf790 grade v3.cpp DIFFER(762v762) hunks=17 -- solid block: HasTC/AddTC then solid=0 GetTC; solid=0 first; GetTC-temp form
+22:38 007bf790 grade v1.cpp DIFFER(762v762) hunks=17 -- GetTC-temp form full diff
+22:38 007bf790 grade v1.cpp RELOCATION_MATCH -- solid=0 inside fail branch + named block; init+named block; solid=0 in branch + temp
+22:39 007bf790 grade src.cpp RELOCATION_MATCH -- final src strict regrade
+23:18 007bf790 grade src.cpp RELOCATION_MATCH -- 
+23:18 007bf790 grade src.cpp SRC_FAIL -- 
+00:01 007bf790 grade src.cpp RELOCATION_MATCH -- repair: rebase CTCGraphicAppearance overlay onto current repo header
+00:01 007bf790 grade src.cpp RELOCATION_MATCH -- repair: strict-header regrade after overlay rebase
+00:30 007bf790 grade src.cpp RELOCATION_MATCH -- 
+00:30 007bf790 grade src.cpp SRC_FAIL -- 
+
+==== 0x006BFCD0
+22:31 006bfcd0 grade v1.cpp DIFFER(741v764) hunks=30 -- draft one-expression candidate
+22:32 006bfcd0 grade v2.cpp SRC_FAIL -- port to shared headers
+22:32 006bfcd0 grade v2.cpp SRC_FAIL -- port: retail opt-ins
+22:32 006bfcd0 grade v2.cpp SRC_FAIL -- port: drop TO2D
+22:33 006bfcd0 grade v2.cpp DIFFER(739v764) hunks=42 -- port: worldmap/defmgr opt-ins
+22:33 006bfcd0 grade v3.cpp DIFFER(725v764) hunks=29 -- cache list end
+22:33 006bfcd0 grade v4.cpp DIFFER(735v764) hunks=39 -- named ahead/forward; +=, base, one-expr
+22:33 006bfcd0 grade v5.cpp DIFFER(755v764) hunks=39 -- named ahead/forward; +=, base, one-expr
+22:33 006bfcd0 grade v6.cpp DIFFER(725v764) hunks=30 -- named ahead/forward; +=, base, one-expr
+22:34 006bfcd0 grade v7.cpp DIFFER(755v764) hunks=39 -- GetPos ref first; base one stmt; +=
+22:34 006bfcd0 grade v8.cpp DIFFER(755v764) hunks=39 -- GetPos ref first; base one stmt; +=
+22:34 006bfcd0 grade v9.cpp DIFFER(735v764) hunks=39 -- GetPos ref first; base one stmt; +=
+22:34 006bfcd0 grade v8.cpp DIFFER(755v764) hunks=39 -- v8 view
+22:35 006bfcd0 grade v10.cpp DIFFER(755v764) hunks=39 -- perp order: perp+base; named offset; inline scaled
+22:35 006bfcd0 grade v11.cpp DIFFER(755v764) hunks=39 -- perp order: perp+base; named offset; inline scaled
+22:35 006bfcd0 grade v12.cpp DIFFER(755v764) hunks=39 -- perp order: perp+base; named offset; inline scaled
+22:35 006bfcd0 grade v13.cpp DIFFER(766v764) hunks=4 -- forward as C3DVector copy (v8/v10/v11)
+22:35 006bfcd0 grade v14.cpp DIFFER(766v764) hunks=4 -- forward as C3DVector copy (v8/v10/v11)
+22:35 006bfcd0 grade v15.cpp DIFFER(766v764) hunks=4 -- forward as C3DVector copy (v8/v10/v11)
+22:35 006bfcd0 grade v16.cpp DIFFER(766v764) hunks=4 -- ADD_XY_GROUP base+perp / perp+base; candidate=base; +=
+22:35 006bfcd0 grade v17.cpp DIFFER(766v764) hunks=4 -- ADD_XY_GROUP base+perp / perp+base; candidate=base; +=
+22:35 006bfcd0 grade v18.cpp DIFFER(766v764) hunks=4 -- ADD_XY_GROUP base+perp / perp+base; candidate=base; +=
+22:35 006bfcd0 grade v19.cpp DIFFER(725v764) hunks=30 -- C3D forward: named ahead one-expr; one-expr; offset named first
+22:35 006bfcd0 grade v20.cpp DIFFER(725v764) hunks=29 -- C3D forward: named ahead one-expr; one-expr; offset named first
+22:36 006bfcd0 grade v21.cpp DIFFER(725v764) hunks=29 -- C3D forward: named ahead one-expr; one-expr; offset named first
+22:36 006bfcd0 grade v22.cpp DIFFER(766v764) hunks=6 -- SCALE_X_PAREN combos
+22:36 006bfcd0 grade v23.cpp DIFFER(766v764) hunks=6 -- SCALE_X_PAREN combos
+22:36 006bfcd0 grade v24.cpp DIFFER(766v764) hunks=6 -- SCALE_X_PAREN combos
+22:36 006bfcd0 grade v25.cpp DIFFER(735v764) hunks=36 -- candidate +=; candidate = candidate+; const ref base
+22:36 006bfcd0 grade v26.cpp DIFFER(786v764) hunks=11 -- candidate +=; candidate = candidate+; const ref base
+22:36 006bfcd0 grade v27.cpp DIFFER(766v764) hunks=4 -- candidate +=; candidate = candidate+; const ref base
+22:37 006bfcd0 grade v28.cpp DIFFER(766v764) hunks=4 -- offset*=; explicit scaled ctor; componentwise
+22:37 006bfcd0 grade v29.cpp DIFFER(766v764) hunks=6 -- offset*=; explicit scaled ctor; componentwise
+22:37 006bfcd0 grade v30.cpp DIFFER(729v764) hunks=30 -- offset*=; explicit scaled ctor; componentwise
+22:37 006bfcd0 grade v31.cpp DIFFER(766v764) hunks=4 -- perp+sum one expr; scoped base; const base
+22:37 006bfcd0 grade v32.cpp DIFFER(815v764) hunks=42 -- perp+sum one expr; scoped base; const base
+22:37 006bfcd0 grade v33.cpp DIFFER(766v764) hunks=4 -- perp+sum one expr; scoped base; const base
+22:37 006bfcd0 grade v34.cpp DIFFER(766v764) hunks=4 -- probe copy-ctor body variants
+22:37 006bfcd0 grade v35.cpp DIFFER(766v764) hunks=4 -- probe copy-ctor body variants
+22:38 006bfcd0 grade v36.cpp DIFFER(766v764) hunks=4 -- pos+ahead orders
+22:38 006bfcd0 grade v37.cpp DIFFER(725v764) hunks=29 -- pos+ahead orders
+22:38 006bfcd0 grade v38.cpp DIFFER(766v764) hunks=4 -- pos+ahead orders
+22:38 006bfcd0 grade v39.cpp DIFFER(766v764) hunks=4 -- offset const-ref / named variants
+22:38 006bfcd0 grade v40.cpp DIFFER(766v764) hunks=4 -- offset const-ref / named variants
+22:38 006bfcd0 grade v41.cpp DIFFER(766v764) hunks=4 -- offset const-ref / named variants
+22:39 006bfcd0 grade v42.cpp DIFFER(823v764) hunks=49 -- declare offset/candidate early, assign late
+22:39 006bfcd0 grade v43.cpp DIFFER(823v764) hunks=49 -- declare offset/candidate early, assign late
+22:39 006bfcd0 grade v44.cpp DIFFER(815v764) hunks=42 -- declare offset/candidate early, assign late
+22:39 006bfcd0 grade v29.cpp DIFFER(766v764) hunks=6 -- view v29
+22:39 006bfcd0 grade v13.cpp DIFFER(812v764) hunks=40 /Op -- probe /Op
+22:39 006bfcd0 grade v38.cpp DIFFER(812v764) hunks=40 /Op -- probe /Op
+22:40 006bfcd0 grade v45.cpp DIFFER(782v764) hunks=20 -- probe liveness: named perp / temp sum
+22:40 006bfcd0 grade v46.cpp DIFFER(786v764) hunks=11 -- probe liveness: named perp / temp sum
+22:40 006bfcd0 grade v47.cpp DIFFER(766v764) hunks=4 -- probe liveness: named perp / temp sum
+22:40 006bfcd0 grade v48.cpp DIFFER(766v764) hunks=4 -- inline-level context: GetTC arity, GetPItem direct
+22:40 006bfcd0 grade v49.cpp DIFFER(766v764) hunks=4 -- inline-level context: GetTC arity, GetPItem direct
+22:40 006bfcd0 grade v50.cpp DIFFER(766v764) hunks=4 -- inline-level context: GetTC arity, GetPItem direct
+22:41 006bfcd0 grade v51.cpp DIFFER(766v764) hunks=4 -- consumption variants: float ground; direct-init; map ref
+22:41 006bfcd0 grade v52.cpp DIFFER(766v764) hunks=4 -- consumption variants: float ground; direct-init; map ref
+22:41 006bfcd0 grade v53.cpp DIFFER(766v764) hunks=13 -- consumption variants: float ground; direct-init; map ref
+22:41 006bfcd0 grade v54.cpp DIFFER(766v764) hunks=4 -- named ahead; forward*3; ahead then forward
+22:41 006bfcd0 grade v55.cpp DIFFER(766v764) hunks=4 -- named ahead; forward*3; ahead then forward
+22:41 006bfcd0 grade v56.cpp DIFFER(766v764) hunks=4 -- named ahead; forward*3; ahead then forward
+22:42 006bfcd0 grade v57.cpp DIFFER(766v764) hunks=4 -- scalar paren tuples in perp ctor
+22:42 006bfcd0 grade v58.cpp DIFFER(766v764) hunks=4 -- scalar paren tuples in perp ctor
+22:42 006bfcd0 grade v59.cpp DIFFER(766v764) hunks=4 -- scalar paren tuples in perp ctor
+22:42 006bfcd0 grade p1.cpp DIFFER(766v764) hunks=4 -- probe operator+ body variants (overlay)
+22:42 006bfcd0 grade p2.cpp DIFFER(803v764) hunks=40 -- probe operator+ body variants (overlay)
+22:42 006bfcd0 grade p3.cpp DIFFER(766v764) hunks=4 -- probe operator+ body variants (overlay)
+22:42 006bfcd0 grade v60.cpp DIFFER(780v764) hunks=10 -- context: IsAlive; static_cast building; direct-init copies
+22:42 006bfcd0 grade v61.cpp SRC_FAIL -- context: IsAlive; static_cast building; direct-init copies
+22:42 006bfcd0 grade v62.cpp DIFFER(766v764) hunks=4 -- context: IsAlive; static_cast building; direct-init copies
+22:43 006bfcd0 grade v63.cpp DIFFER(713v764) hunks=33 -- componentwise sums (operand weight theory)
+22:43 006bfcd0 grade v64.cpp DIFFER(731v764) hunks=32 -- componentwise sums (operand weight theory)
+22:43 006bfcd0 grade v65.cpp DIFFER(766v764) hunks=4 -- componentwise sums (operand weight theory)
+22:43 006bfcd0 grade p4.cpp DIFFER(766v764) hunks=4 -- probe plain-inline vector ops
+22:43 006bfcd0 grade p5.cpp DIFFER(766v764) hunks=4 -- probe plain-inline vector ops
+22:44 006bfcd0 grade v66.cpp DIFFER(767v764) hunks=6 -- loop spelling context
+22:44 006bfcd0 grade v67.cpp DIFFER(766v764) hunks=4 -- loop spelling context
+22:44 006bfcd0 grade v68.cpp DIFFER(766v764) hunks=4 -- loop spelling context
+22:45 006bfcd0 grade v69.cpp DIFFER(805v764) hunks=49 -- CrossWithUp (FableWin C3DVector method) forms
+22:45 006bfcd0 grade v70.cpp DIFFER(764v764) hunks=16 -- CrossWithUp (FableWin C3DVector method) forms
+22:45 006bfcd0 grade v71.cpp DIFFER(766v764) hunks=7 -- CrossWithUp (FableWin C3DVector method) forms
+22:45 006bfcd0 grade v70.cpp DIFFER(764v764) hunks=16 -- view v70
+22:46 006bfcd0 grade v72.cpp DIFFER(766v764) hunks=14 -- named across dir (unscaled) before/after base
+22:46 006bfcd0 grade v73.cpp DIFFER(766v764) hunks=4 -- named across dir (unscaled) before/after base
+22:46 006bfcd0 grade v74.cpp DIFFER(725v764) hunks=29 -- named across dir (unscaled) before/after base
+22:46 006bfcd0 grade v75.cpp DIFFER(810v764) hunks=42 -- context: index ?: forms; door/signPost decl order
+22:46 006bfcd0 grade v76.cpp DIFFER(811v764) hunks=58 -- context: index ?: forms; door/signPost decl order
+22:46 006bfcd0 grade v77.cpp DIFFER(766v764) hunks=6 -- context: index ?: forms; door/signPost decl order
+22:48 006bfcd0 grade v78.cpp DIFFER(766v764) hunks=9 -- doorPos ref then one pure expression (C3D forward)
+22:48 006bfcd0 grade v79.cpp DIFFER(766v764) hunks=9 -- doorPos ref then one pure expression (C3D forward)
+22:48 006bfcd0 grade v80.cpp DIFFER(766v764) hunks=9 -- doorPos ref then one pure expression (C3D forward)
+22:48 006bfcd0 grade p6.cpp DIFFER(774v764) hunks=27 -- probe: trivial (implicit) C3DVector copy ctor
+22:48 006bfcd0 grade p7.cpp DIFFER(774v764) hunks=27 -- probe: trivial (implicit) C3DVector copy ctor
+22:48 006bfcd0 grade p8.cpp DIFFER(776v764) hunks=25 -- probe: trivial (implicit) C3DVector copy ctor
+22:48 006bfcd0 grade v81.cpp DIFFER(766v764) hunks=6 -- paren call; worldMap ref; side if-form
+22:48 006bfcd0 grade v82.cpp DIFFER(766v764) hunks=13 -- paren call; worldMap ref; side if-form
+22:48 006bfcd0 grade v83.cpp DIFFER(774v764) hunks=18 -- paren call; worldMap ref; side if-form
+22:48 006bfcd0 grade v81.cpp DIFFER(766v764) hunks=6 -- view v81
+22:49 006bfcd0 grade v84.cpp DIFFER(766v764) hunks=4 -- region-cut parens
+22:49 006bfcd0 grade v85.cpp DIFFER(766v764) hunks=4 -- region-cut parens
+22:49 006bfcd0 grade v86.cpp DIFFER(766v764) hunks=6 -- region-cut parens
+22:49 006bfcd0 grade v87.cpp DIFFER(766v764) hunks=4 -- const door/signPost; physics local
+22:49 006bfcd0 grade v88.cpp DIFFER(766v764) hunks=4 -- const door/signPost; physics local
+22:49 006bfcd0 grade v89.cpp DIFFER(766v764) hunks=4 -- const door/signPost; physics local
+22:49 006bfcd0 grade final.cpp DIFFER(766v764) hunks=4 -- final best (v13) without probe overlay
+23:20 006bfcd0 grade a1.cpp DIFFER(766v764) hunks=4 -- baseline attempt2
+23:22 006bfcd0 grade b1.cpp DIFFER(725v764) hunks=29 -- named offset before one-expr sum; candidate reuse
+23:22 006bfcd0 grade b2.cpp DIFFER(725v764) hunks=29 -- named offset before one-expr sum; candidate reuse
+23:22 006bfcd0 grade b3.cpp DIFFER(786v764) hunks=11 -- named offset before one-expr sum; candidate reuse
+23:22 006bfcd0 grade c1.cpp DIFFER(725v764) hunks=30 -- named ahead + one-expr; candidate self-add
+23:22 006bfcd0 grade c2.cpp DIFFER(725v764) hunks=30 -- named ahead + one-expr; candidate self-add
+23:22 006bfcd0 grade c3.cpp DIFFER(786v764) hunks=11 -- named ahead + one-expr; candidate self-add
+23:23 006bfcd0 grade d1.cpp DIFFER(725v764) hunks=29 -- C2DVector forward copy (scout) one-expr/two-stmt/perp-first
+23:23 006bfcd0 grade d2.cpp DIFFER(755v764) hunks=39 -- C2DVector forward copy (scout) one-expr/two-stmt/perp-first
+23:23 006bfcd0 grade d3.cpp DIFFER(755v764) hunks=39 -- C2DVector forward copy (scout) one-expr/two-stmt/perp-first
+23:23 006bfcd0 grade d1.cpp DIFFER(725v764) hunks=29 -- view d1
+23:23 006bfcd0 grade d1.cpp DIFFER(725v764) hunks=29 -- view d1
+23:24 006bfcd0 grade v70.cpp DIFFER(764v764) hunks=16 -- view v70
+23:25 006bfcd0 grade e1.cpp DIFFER(766v764) hunks=4 -- named offset after base (ref/value)
+23:25 006bfcd0 grade e2.cpp DIFFER(766v764) hunks=4 -- named offset after base (ref/value)
+23:25 006bfcd0 grade e3.cpp DIFFER(766v764) hunks=4 -- named offset after base (ref/value)
+23:25 006bfcd0 grade f1.cpp DIFFER(823v764) hunks=49 -- symbol-age: offset declared before base, assigned after
+23:25 006bfcd0 grade f2.cpp DIFFER(823v764) hunks=49 -- symbol-age: offset declared before base, assigned after
+23:25 006bfcd0 grade f3.cpp DIFFER(854v764) hunks=38 -- symbol-age: offset declared before base, assigned after
+23:26 006bfcd0 grade g1.cpp DIFFER(766v764) hunks=4 -- eval order probes: perp+(sum), perp+(pos+ahead), pos+ahead+perp
+23:26 006bfcd0 grade g2.cpp DIFFER(766v764) hunks=4 -- eval order probes: perp+(sum), perp+(pos+ahead), pos+ahead+perp
+23:26 006bfcd0 grade g3.cpp DIFFER(725v764) hunks=29 -- eval order probes: perp+(sum), perp+(pos+ahead), pos+ahead+perp
+23:26 006bfcd0 grade h1.cpp DIFFER(766v764) hunks=4 -- direct-init forms (inline count)
+23:26 006bfcd0 grade h2.cpp DIFFER(766v764) hunks=4 -- direct-init forms (inline count)
+23:26 006bfcd0 grade h3.cpp DIFFER(766v764) hunks=4 -- direct-init forms (inline count)
+23:27 006bfcd0 grade i1.cpp DIFFER(778v764) hunks=14 -- in-place base += perp then copy to candidate
+23:27 006bfcd0 grade i2.cpp DIFFER(827v764) hunks=39 -- in-place base += perp then copy to candidate
+23:27 006bfcd0 grade i3.cpp DIFFER(778v764) hunks=14 -- in-place base += perp then copy to candidate
+23:27 006bfcd0 grade a1.cpp DIFFER(768v764) hunks=5 /G7 -- flag /G7
+23:27 006bfcd0 grade a1.cpp DIFFER(766v764) hunks=4 /G5 -- flag /G5
+23:27 006bfcd0 grade a1.cpp DIFFER(675v764) hunks=47 /Oy- -- flag /Oy-
+23:28 006bfcd0 grade i1.cpp DIFFER(778v764) hunks=14 -- view i1
+23:28 006bfcd0 grade i1.cpp DIFFER(778v764) hunks=14 -- view i1
+23:28 006bfcd0 grade j1.cpp DIFFER(766v764) hunks=4 -- inline-level opt-ins HASTC_FORCEINLINE/TCDRIVER/CINTELLIGENTPOINTER
+23:28 006bfcd0 grade j2.cpp DIFFER(766v764) hunks=4 -- inline-level opt-ins HASTC_FORCEINLINE/TCDRIVER/CINTELLIGENTPOINTER
+23:28 006bfcd0 grade j3.cpp DIFFER(766v764) hunks=4 -- inline-level opt-ins HASTC_FORCEINLINE/TCDRIVER/CINTELLIGENTPOINTER
+23:28 006bfcd0 grade k1.cpp DIFFER(766v764) hunks=9 -- ahead var + doorPos ref + one-expr
+23:28 006bfcd0 grade k2.cpp DIFFER(766v764) hunks=9 -- ahead var + doorPos ref + one-expr
+23:28 006bfcd0 grade k3.cpp DIFFER(766v764) hunks=9 -- ahead var + doorPos ref + one-expr
+23:28 006bfcd0 grade k2.cpp DIFFER(766v764) hunks=9 -- view k2
+23:30 006bfcd0 grade m1.cpp DIFFER(766v764) hunks=4 -- probe operator+ body: reversed / copy+= / named result
+23:30 006bfcd0 grade m2.cpp DIFFER(803v764) hunks=40 -- probe operator+ body: reversed / copy+= / named result
+23:30 006bfcd0 grade m3.cpp DIFFER(803v764) hunks=40 -- probe operator+ body: reversed / copy+= / named result
+23:30 006bfcd0 grade n1.cpp DIFFER(766v764) hunks=4 -- symbol-counter context: ptr ref, side if/else, orientation order
+23:30 006bfcd0 grade n2.cpp DIFFER(766v764) hunks=4 -- symbol-counter context: ptr ref, side if/else, orientation order
+23:30 006bfcd0 grade n3.cpp DIFFER(775v764) hunks=11 -- symbol-counter context: ptr ref, side if/else, orientation order
+23:31 006bfcd0 grade o1.cpp DIFFER(766v764) hunks=4 -- PROBE counter hypothesis: 1/2/3 dead C3DVector copies
+23:31 006bfcd0 grade o2.cpp DIFFER(766v764) hunks=4 -- PROBE counter hypothesis: 1/2/3 dead C3DVector copies
+23:31 006bfcd0 grade o3.cpp DIFFER(766v764) hunks=4 -- PROBE counter hypothesis: 1/2/3 dead C3DVector copies
+23:31 006bfcd0 grade p1x.cpp DIFFER(815v764) hunks=42 -- candidate assigned (operator=) not initialised
+23:31 006bfcd0 grade p2x.cpp DIFFER(815v764) hunks=42 -- candidate assigned (operator=) not initialised
+23:31 006bfcd0 grade p3x.cpp DIFFER(815v764) hunks=42 -- candidate assigned (operator=) not initialised
+23:33 006bfcd0 grade r1.cpp DIFFER(766v764) hunks=6 -- PROBE inline helper (made-up) base param + perp in body
+23:33 006bfcd0 grade r2.cpp DIFFER(719v764) hunks=31 -- PROBE inline helper (made-up) base param + perp in body
+23:33 006bfcd0 grade r3.cpp DIFFER(766v764) hunks=6 -- PROBE inline helper (made-up) base param + perp in body
+23:33 006bfcd0 grade s1.cpp DIFFER(766v764) hunks=4 -- symbol-id order: ahead declared before forward
+23:33 006bfcd0 grade s2.cpp DIFFER(725v764) hunks=30 -- symbol-id order: ahead declared before forward
+23:33 006bfcd0 grade s3.cpp DIFFER(766v764) hunks=4 -- symbol-id order: ahead declared before forward
+23:34 006bfcd0 grade a1.cpp DIFFER(766v764) hunks=4 /Ob2 -- flag /Ob2
+23:34 006bfcd0 grade a1.cpp DIFFER(766v764) hunks=4 /Ox -- flag /Ox
+23:34 006bfcd0 grade a1.cpp DIFFER(766v764) hunks=4 /Oa -- flag /Oa
+23:34 006bfcd0 grade t1.cpp DIFFER(725v764) hunks=29 -- PROBE reference-valued perp arg (evaluated late?)
+23:34 006bfcd0 grade t2.cpp DIFFER(776v764) hunks=19 -- PROBE reference-valued perp arg (evaluated late?)
+23:34 006bfcd0 grade t3.cpp DIFFER(725v764) hunks=29 -- PROBE reference-valued perp arg (evaluated late?)
+23:35 006bfcd0 grade a1.cpp DIFFER(768v764) hunks=5 /G7 -- view /G7
+23:35 006bfcd0 grade a1.cpp DIFFER(766v764) hunks=4 -- PROBE QFE-4035 compiler
+23:36 006bfcd0 grade g1.cpp DIFFER(766v764) hunks=4 -- PROBE QFE-4035 compiler
+23:36 006bfcd0 grade w1.cpp DIFFER(766v764) hunks=4 -- forward 2D-with-zero; named across after base
+23:36 006bfcd0 grade w2.cpp DIFFER(766v764) hunks=4 -- forward 2D-with-zero; named across after base
+23:36 006bfcd0 grade w3.cpp DIFFER(766v764) hunks=4 -- forward 2D-with-zero; named across after base
+23:37 006bfcd0 grade x1.cpp DIFFER(766v764) hunks=6 -- older-symbol perp var set via Initialise after base
+23:37 006bfcd0 grade x2.cpp DIFFER(766v764) hunks=4 -- older-symbol perp var set via Initialise after base
+23:37 006bfcd0 grade x3.cpp DIFFER(766v764) hunks=6 -- older-symbol perp var set via Initialise after base
+23:37 006bfcd0 grade x1.cpp DIFFER(766v764) hunks=6 -- view x1
+00:05 006bfcd0 grade y1.cpp DIFFER(821v764) hunks=44 -- decl-site of base/perp (symbol order)
+00:05 006bfcd0 grade y2.cpp DIFFER(821v764) hunks=44 -- decl-site of base/perp (symbol order)
+00:05 006bfcd0 grade y3.cpp DIFFER(823v764) hunks=49 -- decl-site of base/perp (symbol order)
+00:05 006bfcd0 grade v70.cpp DIFFER(764v764) hunks=16 -- re-view v70 CrossWithUp
+00:06 006bfcd0 grade z0.cpp DIFFER(766v764) hunks=4 -- baseline
+00:07 006bfcd0 grade z1.cpp DIFFER(766v764) hunks=4 -- PROBE perp+(sum) with reversed operator+ body
+00:07 006bfcd0 grade z2.cpp DIFFER(735v764) hunks=36 -- candidate holds sum then += named/unnamed offset
+00:07 006bfcd0 grade z3.cpp DIFFER(735v764) hunks=36 -- candidate holds sum then += named/unnamed offset
+00:07 006bfcd0 grade z4.cpp DIFFER(766v764) hunks=4 -- candidate holds sum then += named/unnamed offset
+00:08 006bfcd0 grade k1.cpp DIFFER(766v764) hunks=9 -- review k1
+00:09 006bfcd0 grade z3.cpp DIFFER(735v764) hunks=36 -- view z3
+00:10 006bfcd0 grade y4.cpp DIFFER(766v764) hunks=4 -- fresh copy temp of base in final expr (newer symbol goes left)
+00:10 006bfcd0 grade y5.cpp DIFFER(766v764) hunks=4 -- fresh copy temp of base in final expr (newer symbol goes left)
+00:10 006bfcd0 grade y6.cpp DIFFER(766v764) hunks=4 -- fresh copy temp of base in final expr (newer symbol goes left)
+00:11 006bfcd0 grade u1.cpp SRC_FAIL -- GetPos real body visible (noinline / auto_inline off)
+00:11 006bfcd0 grade u2.cpp SRC_FAIL -- GetPos real body visible (noinline / auto_inline off)
+00:11 006bfcd0 grade u1.cpp DIFFER(723v764) hunks=29 -- GetPos real body visible (noinline / auto_inline off)
+00:11 006bfcd0 grade u2.cpp DIFFER(703v764) hunks=32 -- GetPos real body visible (noinline / auto_inline off)
+00:12 006bfcd0 grade t4.cpp DIFFER(752v764) hunks=11 -- counter shifts earlier: explicit CCharString / (*it).Get / set direct-init
+00:12 006bfcd0 grade t5.cpp DIFFER(766v764) hunks=4 -- counter shifts earlier: explicit CCharString / (*it).Get / set direct-init
+00:12 006bfcd0 grade t6.cpp DIFFER(766v764) hunks=4 -- counter shifts earlier: explicit CCharString / (*it).Get / set direct-init
+00:13 006bfcd0 grade t7.cpp DIFFER(757v764) hunks=32 -- side placement: inline ternary / before loop / in body
+00:13 006bfcd0 grade t8.cpp DIFFER(780v764) hunks=19 -- side placement: inline ternary / before loop / in body
+00:13 006bfcd0 grade t9.cpp DIFFER(782v764) hunks=31 -- side placement: inline ternary / before loop / in body
+00:13 006bfcd0 grade k1.cpp DIFFER(766v764) hunks=9 -- k1 relist
+00:14 006bfcd0 grade s4.cpp DIFFER(766v764) hunks=14 -- unscaled named across vector early/late, scaled in final expr
+00:14 006bfcd0 grade s5.cpp DIFFER(766v764) hunks=14 -- unscaled named across vector early/late, scaled in final expr
+00:14 006bfcd0 grade s6.cpp DIFFER(766v764) hunks=4 -- unscaled named across vector early/late, scaled in final expr
+00:14 006bfcd0 grade s4.cpp DIFFER(766v764) hunks=14 -- view s4
+00:15 006bfcd0 grade aa1.cpp DIFFER(739v764) hunks=39 -- ahead var += GetPos then + perp
+00:15 006bfcd0 grade aa2.cpp DIFFER(739v764) hunks=39 -- ahead var += GetPos then + perp
+00:15 006bfcd0 grade aa3.cpp DIFFER(751v764) hunks=33 -- ahead var += GetPos then + perp
+00:15 006bfcd0 grade e1.cpp DIFFER(766v764) hunks=4 -- relist e1
+00:16 006bfcd0 grade v20.cpp DIFFER(725v764) hunks=29 -- relist v20
+00:16 006bfcd0 grade ab1.cpp DIFFER(766v764) hunks=4 -- perp + (sum) variants w/ different sum inline shapes
+00:16 006bfcd0 grade ab2.cpp DIFFER(766v764) hunks=4 -- perp + (sum) variants w/ different sum inline shapes
+00:16 006bfcd0 grade ab3.cpp DIFFER(766v764) hunks=4 -- perp + (sum) variants w/ different sum inline shapes
+00:20 006bfcd0 grade ka.cpp DIFFER(766v764) hunks=9 -- k1 (perp var first, sum temp) + tuple-count opt-ins to move sched region
+00:20 006bfcd0 grade kb.cpp DIFFER(766v764) hunks=11 -- k1 (perp var first, sum temp) + tuple-count opt-ins to move sched region
+00:20 006bfcd0 grade kc.cpp DIFFER(766v764) hunks=11 -- k1 (perp var first, sum temp) + tuple-count opt-ins to move sched region
+00:20 006bfcd0 grade kb.cpp DIFFER(766v764) hunks=11 -- view kb
+00:22 006bfcd0 grade kd.cpp DIFFER(786v764) hunks=11 -- k1 family: perp regvar + sum temp variants
+00:22 006bfcd0 grade ke.cpp DIFFER(805v764) hunks=40 -- k1 family: perp regvar + sum temp variants
+00:22 006bfcd0 grade kf.cpp DIFFER(766v764) hunks=9 -- k1 family: perp regvar + sum temp variants
+00:26 006bfcd0 grade pa1.cpp RELOCATION_MATCH -- PROBE by-value base param helper (x1 toy mechanism)
+00:28 006bfcd0 grade final.cpp RELOCATION_MATCH -- final: AddOffset helper
+00:29 006bfcd0 grade final.cpp RELOCATION_MATCH -- strict regrade final
+00:36 006bfcd0 grade src.cpp RELOCATION_MATCH -- 
+00:36 006bfcd0 grade src.cpp SRC_FAIL -- 
+
+==== 0x0055D180
+22:46 0055d180 grade a.cpp DIFFER(772v772) hunks=29 /GS -- probe: restructured path chain, local models
+22:46 0055d180 grade a.cpp DIFFER(772v772) hunks=29 /GS -- probe full diff
+22:46 0055d180 grade b.cpp DIFFER(772v772) hunks=41 /GS -- CCharString temporary in PlaySample arg
+22:46 0055d180 grade c.cpp DIFFER(772v772) hunks=41 /GS -- CCharString temporary in PlaySample arg
+22:47 0055d180 grade d.cpp DIFFER(772v772) hunks=29 /GS -- sound in block / inline helper / no profiles ref
+22:47 0055d180 grade e.cpp DIFFER(772v772) hunks=29 /GS -- sound in block / inline helper / no profiles ref
+22:47 0055d180 grade f.cpp DIFFER(774v772) hunks=30 /GS -- sound in block / inline helper / no profiles ref
+22:52 0055d180 grade h.cpp DIFFER(774v772) hunks=15 /GS -- named filetime
+22:53 0055d180 grade i.cpp DIFFER(770v772) hunks=27 /GS -- CDateAndTime temporary / buffers first
+22:53 0055d180 grade j.cpp DIFFER(772v772) hunks=29 /GS -- CDateAndTime temporary / buffers first
+22:54 0055d180 grade l.cpp DIFFER(772v772) hunks=29 /GS -- named SYSTEMTIME fields / FILETIME
+22:54 0055d180 grade m.cpp DIFFER(772v772) hunks=29 /GS -- named SYSTEMTIME fields / FILETIME
+22:54 0055d180 grade o1.cpp DIFFER(772v772) hunks=29 /GS -- rename sound / temp / rename file on l
+22:54 0055d180 grade o2.cpp DIFFER(772v772) hunks=41 /GS -- rename sound / temp / rename file on l
+22:54 0055d180 grade o3.cpp DIFFER(772v772) hunks=29 /GS -- rename sound / temp / rename file on l
+22:54 0055d180 grade p1.cpp DIFFER(772v772) hunks=29 /GS -- D3DX real enum/types
+22:54 0055d180 grade p2.cpp DIFFER(772v772) hunks=29 /GS -- D3DX real enum/types
+22:54 0055d180 grade q1.cpp DIFFER(772v772) hunks=27 /GS -- GetBackBuffer().GetD3DSurface() inline
+22:55 0055d180 grade r1.cpp RELOCATION_MATCH /GS -- early return when no room
+22:56 0055d180 grade s1.cpp SRC_FAIL /GS -- ported onto shared headers + overlay
+22:56 0055d180 grade s2.cpp RELOCATION_MATCH /GS -- ported + CDISPLAYMANAGER retail
+22:57 0055d180 grade 0055d180.cpp RELOCATION_MATCH /GS -- strict regrade
+23:25 0055d180 grade src.cpp RELOCATION_MATCH /GS -- 
+23:25 0055d180 grade src.cpp SRC_FAIL /GS -- 
+00:03 0055d180 grade 0055d180.cpp RELOCATION_MATCH /GS -- repair: rebase CSurface overlay on current header
+00:03 0055d180 grade 0055d180.cpp RELOCATION_MATCH /GS -- repair: strict regrade
+00:34 0055d180 grade src.cpp RELOCATION_MATCH /GS -- 
+00:34 0055d180 grade src.cpp SRC_FAIL /GS -- 
+
+==== 0x00A8F9E0
+22:40 00a8f9e0 grade v1.cpp SRC_FAIL -- port onto shared headers + overlay
+22:41 00a8f9e0 grade v1.cpp DIFFER(642v773) hunks=29 -- port; dead GetTotalTriangleCount vs empty peek loop
+22:41 00a8f9e0 grade v2.cpp DIFFER(690v773) hunks=34 -- port; dead GetTotalTriangleCount vs empty peek loop
+22:41 00a8f9e0 grade v3.cpp DIFFER(802v773) hunks=41 -- index count loop written in the function
+22:41 00a8f9e0 grade v4.cpp DIFFER(802v773) hunks=41 -- index count loop written in the function
+22:41 00a8f9e0 grade v5.cpp DIFFER(802v773) hunks=34 -- length local before 2nd new
+22:41 00a8f9e0 grade v6.cpp DIFFER(802v773) hunks=34 -- length local before 2nd new
+22:42 00a8f9e0 grade v7.cpp DIFFER(789v773) hunks=38 -- strip size local
+22:42 00a8f9e0 grade v8.cpp DIFFER(792v773) hunks=44 -- decl order / offset scope / unsigned base
+22:42 00a8f9e0 grade v9.cpp DIFFER(789v773) hunks=38 -- decl order / offset scope / unsigned base
+22:42 00a8f9e0 grade v10.cpp DIFFER(789v773) hunks=38 -- decl order / offset scope / unsigned base
+22:43 00a8f9e0 grade v11.cpp DIFFER(789v773) hunks=38 -- block select spelled / GetDeviceIndependent / list pointer
+22:43 00a8f9e0 grade v12.cpp DIFFER(789v773) hunks=38 -- block select spelled / GetDeviceIndependent / list pointer
+22:43 00a8f9e0 grade v13.cpp DIFFER(789v773) hunks=38 -- block select spelled / GetDeviceIndependent / list pointer
+22:43 00a8f9e0 grade v14.cpp DIFFER(773v773) hunks=3 -- tri[j] indexing / ref / k loop
+22:43 00a8f9e0 grade v15.cpp DIFFER(773v773) hunks=3 -- tri[j] indexing / ref / k loop
+22:43 00a8f9e0 grade v16.cpp DIFFER(773v773) hunks=3 -- tri[j] indexing / ref / k loop
+22:43 00a8f9e0 grade v17.cpp DIFFER(773v773) hunks=3 -- base init in for-init / rep*vertex_count
+22:43 00a8f9e0 grade v18.cpp DIFFER(773v773) hunks=3 -- base init in for-init / rep*vertex_count
+22:44 00a8f9e0 grade v19.cpp RELOCATION_MATCH -- base init in for-init / rep*vertex_count
+22:44 00a8f9e0 grade 00a8f9e0.cpp RELOCATION_MATCH -- final strict
+23:19 00a8f9e0 grade src.cpp RELOCATION_MATCH -- 
+23:19 00a8f9e0 grade src.cpp SRC_FAIL -- 
+00:02 00a8f9e0 grade 00a8f9e0.cpp RELOCATION_MATCH -- repair: landed enum spelling, drop made-up enumerators
+00:02 00a8f9e0 grade 00a8f9e0.cpp RELOCATION_MATCH -- repair: strict
+00:31 00a8f9e0 grade src.cpp RELOCATION_MATCH -- 
+00:31 00a8f9e0 grade src.cpp SRC_FAIL -- 
+
+==== 0x00B206B0
+22:50 00b206b0 grade v1.cpp DIFFER(791v773) hunks=46 -- port to shared headers + dossier fixes
+22:51 00b206b0 grade v2.cpp DIFFER(791v773) hunks=46 -- IsNonZero ZYX / default
+22:51 00b206b0 grade v3.cpp DIFFER(791v773) hunks=46 -- IsNonZero ZYX / default
+22:51 00b206b0 grade v4.cpp DIFFER(791v773) hunks=45 -- GFSqr for limit squares
+22:51 00b206b0 grade v5.cpp DIFFER(791v773) hunks=46 -- GFSqr for limit squares
+22:51 00b206b0 grade v6.cpp DIFFER(821v773) hunks=46 -- moved storage: change=offset+change / offset+=change / change+=offset
+22:51 00b206b0 grade v7.cpp DIFFER(791v773) hunks=44 -- moved storage: change=offset+change / offset+=change / change+=offset
+22:51 00b206b0 grade v8.cpp DIFFER(791v773) hunks=51 -- moved storage: change=offset+change / offset+=change / change+=offset
+22:51 00b206b0 grade v9.cpp DIFFER(799v773) hunks=38 -- initialPoint ref binding placement
+22:51 00b206b0 grade v10.cpp DIFFER(799v773) hunks=29 -- initialPoint ref binding placement
+22:52 00b206b0 grade v11.cpp DIFFER(798v773) hunks=47 -- initialPoint ref binding placement
+22:52 00b206b0 grade v12.cpp DIFFER(799v773) hunks=29 -- slot order: change declared first / change=offset+change / speed+change first
+22:52 00b206b0 grade v13.cpp DIFFER(829v773) hunks=39 -- slot order: change declared first / change=offset+change / speed+change first
+22:52 00b206b0 grade v14.cpp DIFFER(799v773) hunks=29 -- slot order: change declared first / change=offset+change / speed+change first
+22:52 00b206b0 grade v15.cpp DIFFER(799v773) hunks=39 -- sum spellings on v10
+22:52 00b206b0 grade v16.cpp DIFFER(799v773) hunks=25 -- sum spellings on v10
+22:52 00b206b0 grade v17.cpp DIFFER(829v773) hunks=36 -- sum spellings on v10
+22:52 00b206b0 grade v18.cpp DIFFER(799v773) hunks=25 -- ellipsoid terms GFSqr / paren / +XZY decl
+22:52 00b206b0 grade v19.cpp DIFFER(799v773) hunks=22 -- ellipsoid terms GFSqr / paren / +XZY decl
+22:52 00b206b0 grade v20.cpp DIFFER(799v773) hunks=25 -- ellipsoid terms GFSqr / paren / +XZY decl
+22:52 00b206b0 grade v19.cpp DIFFER(799v773) hunks=22 -- full view v19
+22:52 00b206b0 grade v19.cpp DIFFER(799v773) hunks=22 -- full view v19
+22:53 00b206b0 grade v21.cpp DIFFER(799v773) hunks=22 -- term order reversed / each term parenthesised
+22:53 00b206b0 grade v22.cpp DIFFER(799v773) hunks=25 -- term order reversed / each term parenthesised
+22:53 00b206b0 grade v24.cpp DIFFER(799v773) hunks=23 -- limit square decl order ZYX / XZY / C3DVector limitSquared
+22:53 00b206b0 grade v25.cpp DIFFER(799v773) hunks=22 -- limit square decl order ZYX / XZY / C3DVector limitSquared
+22:53 00b206b0 grade v26.cpp DIFFER(807v773) hunks=37 -- limit square decl order ZYX / XZY / C3DVector limitSquared
+22:54 00b206b0 grade v27.cpp RELOCATION_MATCH -- running-sum d statements
+22:55 00b206b0 grade 00b206b0.cpp RELOCATION_MATCH -- final source with header comment
+22:55 00b206b0 grade 00b206b0.cpp RELOCATION_MATCH -- strict regrade
+23:22 00b206b0 grade src.cpp RELOCATION_MATCH -- 
+23:22 00b206b0 grade src.cpp SRC_FAIL -- 
+00:02 00b206b0 grade v30.cpp DIFFER(773v773) hunks=7 -- repair: confirm no-alias residue
+00:02 00b206b0 grade 00b206b0.cpp RELOCATION_MATCH -- repair: document moved alias in Shape
+00:02 00b206b0 grade 00b206b0.cpp RELOCATION_MATCH -- repair: strict regrade
+00:02 00b206b0 grade 00b206b0.cpp RELOCATION_MATCH -- repair: comment wording
+00:02 00b206b0 grade 00b206b0.cpp RELOCATION_MATCH -- repair: strict
+00:32 00b206b0 grade src.cpp RELOCATION_MATCH -- 
+00:32 00b206b0 grade src.cpp SRC_FAIL -- 
+
+==== 0x007D46D0
+22:56 007d46d0 grade v1.cpp SRC_FAIL -- port onto headers
+22:56 007d46d0 grade v1.cpp DIFFER(792v780) hunks=29 -- port onto headers, retail chain
+22:57 007d46d0 grade v2.cpp DIFFER(792v780) hunks=29 -- named filter; +ALLTHINGSBODY
+22:57 007d46d0 grade v3.cpp DIFFER(768v780) hunks=16 -- named filter; +ALLTHINGSBODY
+22:57 007d46d0 grade a.cpp DIFFER(768v780) hunks=12 -- lookAt block scope; sum orders
+22:57 007d46d0 grade b.cpp DIFFER(768v780) hunks=12 -- lookAt block scope; sum orders
+22:57 007d46d0 grade c.cpp DIFFER(768v780) hunks=12 -- lookAt block scope; sum orders
+22:58 007d46d0 grade A.cpp RELOCATION_MATCH -- coin dist spellings
+22:58 007d46d0 grade final.cpp RELOCATION_MATCH -- final strict
+23:27 007d46d0 grade src.cpp RELOCATION_MATCH -- 
+23:27 007d46d0 grade src.cpp RELOCATION_MATCH -- 
+00:03 007d46d0 grade r1.cpp RELOCATION_MATCH -- repair: TYPEMASK allthings body + CTCTavernGame base chain
+00:03 007d46d0 grade r1.cpp RELOCATION_MATCH -- repair: comments; strict headers
+00:04 007d46d0 grade r1.cpp RELOCATION_MATCH -- repair: comments; strict headers
+00:05 007d46d0 grade 007d46d0.cpp RELOCATION_MATCH -- repair: offset comments (strict)
+007d46d0 repair: TYPEMASK body + CTCTavernGame chain + NAME_FIXES; RELOCATION_MATCH strict
+00:34 007d46d0 grade src.cpp RELOCATION_MATCH -- 
+00:34 007d46d0 grade src.cpp RELOCATION_MATCH -- 
+00:46 007d46d0 grade _land_src.cpp RELOCATION_MATCH -- IsHuman PDB parameter
+
+==== 0x0094A3B0
+22:58 0094a3b0 grade v1.cpp SRC_FAIL -- port onto shared headers
+22:58 0094a3b0 grade v1.cpp DIFFER(813v785) hunks=9 -- port onto shared headers + CTCVILLAGE/SEATS
+22:58 0094a3b0 grade v2.cpp DIFFER(813v785) hunks=9 -- ==0 return false; case0 inverted; laugh inverted
+22:58 0094a3b0 grade v3.cpp DIFFER(810v785) hunks=7 -- ==0 return false; case0 inverted; laugh inverted
+22:58 0094a3b0 grade v4.cpp DIFFER(813v785) hunks=9 -- ==0 return false; case0 inverted; laugh inverted
+22:59 0094a3b0 grade v5.cpp DIFFER(810v785) hunks=7 -- switch5 case order; explicit SitIdle; default-before-case2
+22:59 0094a3b0 grade v6.cpp DIFFER(813v785) hunks=11 -- switch5 case order; explicit SitIdle; default-before-case2
+22:59 0094a3b0 grade v7.cpp DIFFER(810v785) hunks=7 -- switch5 case order; explicit SitIdle; default-before-case2
+23:00 0094a3b0 grade v8.cpp DIFFER(806v785) hunks=6 -- !talking first; if/else
+23:00 0094a3b0 grade v9.cpp DIFFER(810v785) hunks=7 -- !talking first; if/else
+23:00 0094a3b0 grade v10.cpp DIFFER(810v785) hunks=7 -- talking switch no default + TellStory after; case3; default break
+23:00 0094a3b0 grade v11.cpp DIFFER(836v785) hunks=25 -- talking switch no default + TellStory after; case3; default break
+23:00 0094a3b0 grade v12.cpp DIFFER(810v785) hunks=7 -- talking switch no default + TellStory after; case3; default break
+23:01 0094a3b0 grade v13.cpp DIFFER(810v785) hunks=7 -- talking switch case orders 021d 201d d210
+23:01 0094a3b0 grade v14.cpp DIFFER(810v785) hunks=7 -- talking switch case orders 021d 201d d210
+23:01 0094a3b0 grade v15.cpp DIFFER(810v785) hunks=7 -- talking switch case orders 021d 201d d210
+23:02 0094a3b0 grade v16.cpp DIFFER(810v785) hunks=7 -- else-if chain; nested laugh if; !GFRandom
+23:02 0094a3b0 grade v17.cpp DIFFER(810v785) hunks=7 -- else-if chain; nested laugh if; !GFRandom
+23:02 0094a3b0 grade v18.cpp DIFFER(810v785) hunks=7 -- else-if chain; nested laugh if; !GFRandom
+23:02 0094a3b0 grade v2.cpp DIFFER(813v785) hunks=9 -- v2 alone to view hunks
+23:02 0094a3b0 grade v19.cpp DIFFER(818v785) hunks=9 -- && Drink; ternaries; ternary a only
+23:02 0094a3b0 grade v20.cpp DIFFER(792v785) hunks=7 -- && Drink; ternaries; ternary a only
+23:02 0094a3b0 grade v21.cpp DIFFER(792v785) hunks=7 -- && Drink; ternaries; ternary a only
+23:03 0094a3b0 grade v22.cpp DIFFER(792v785) hunks=7 -- ==0?false:Drink; + sit/tell ternary; sit/tell ternary only
+23:03 0094a3b0 grade v23.cpp DIFFER(792v785) hunks=7 -- ==0?false:Drink; + sit/tell ternary; sit/tell ternary only
+23:03 0094a3b0 grade v24.cpp DIFFER(792v785) hunks=7 -- ==0?false:Drink; + sit/tell ternary; sit/tell ternary only
+23:03 0094a3b0 grade v25.cpp DIFFER(792v785) hunks=7 -- laugh path ternaries
+23:03 0094a3b0 grade v26.cpp DIFFER(792v785) hunks=6 -- laugh path ternaries
+23:03 0094a3b0 grade v27.cpp DIFFER(792v785) hunks=7 -- laugh path ternaries
+23:03 0094a3b0 grade v28.cpp DIFFER(810v785) hunks=7 -- thanked local returned; with a-forms
+23:03 0094a3b0 grade v29.cpp DIFFER(810v785) hunks=7 -- thanked local returned; with a-forms
+23:03 0094a3b0 grade v30.cpp DIFFER(792v785) hunks=7 -- thanked local returned; with a-forms
+23:04 0094a3b0 grade v31.cpp DIFFER(810v785) hunks=7 -- laugh switch(r2); rand5 if-chain; rand4 switch
+23:04 0094a3b0 grade v32.cpp DIFFER(834v785) hunks=11 -- laugh switch(r2); rand5 if-chain; rand4 switch
+23:04 0094a3b0 grade v33.cpp DIFFER(810v785) hunks=7 -- laugh switch(r2); rand5 if-chain; rand4 switch
+23:05 0094a3b0 grade v34.cpp DIFFER(810v785) hunks=7 -- (a) ==0?false:Drink w/ plain b; + talking result var; result local
+23:05 0094a3b0 grade v35.cpp DIFFER(810v785) hunks=6 -- (a) ==0?false:Drink w/ plain b; + talking result var; result local
+23:05 0094a3b0 grade v36.cpp DIFFER(810v785) hunks=7 -- (a) ==0?false:Drink w/ plain b; + talking result var; result local
+23:05 0094a3b0 grade v37.cpp DIFFER(792v785) hunks=7 -- (a) ternary + (b) returns thanked / &&; (a) if-form + thanked
+23:05 0094a3b0 grade v38.cpp DIFFER(834v785) hunks=9 -- (a) ternary + (b) returns thanked / &&; (a) if-form + thanked
+23:05 0094a3b0 grade v39.cpp DIFFER(810v785) hunks=7 -- (a) ternary + (b) returns thanked / &&; (a) if-form + thanked
+23:05 0094a3b0 grade v40.cpp DIFFER(792v785) hunks=7 -- v21 base: else-if; full ternary; unreachable return
+23:05 0094a3b0 grade v41.cpp DIFFER(792v785) hunks=6 -- v21 base: else-if; full ternary; unreachable return
+23:05 0094a3b0 grade v42.cpp DIFFER(792v785) hunks=7 -- v21 base: else-if; full ternary; unreachable return
+23:06 0094a3b0 grade v43.cpp DIFFER(832v785) hunks=10 -- (a) &&; result=false var; if/else
+23:06 0094a3b0 grade v44.cpp DIFFER(817v785) hunks=21 -- (a) &&; result=false var; if/else
+23:06 0094a3b0 grade v45.cpp DIFFER(810v785) hunks=7 -- (a) &&; result=false var; if/else
+23:06 0094a3b0 grade v3.cpp DIFFER(810v785) hunks=7 /Ob2 -- flag /Ob2
+23:06 0094a3b0 grade v21.cpp DIFFER(792v785) hunks=7 /Ob2 -- flag /Ob2
+23:06 0094a3b0 grade v3.cpp DIFFER(810v785) hunks=7 /Ob1 -- flag /Ob1
+23:06 0094a3b0 grade v21.cpp DIFFER(792v785) hunks=7 /Ob1 -- flag /Ob1
+23:06 0094a3b0 grade v3.cpp ERROR /GL -- flag /GL
+23:06 0094a3b0 grade v21.cpp ERROR /GL -- flag /GL
+23:06 0094a3b0 grade v3.cpp DIFFER(810v785) hunks=19 /Oa -- flag /Oa
+23:06 0094a3b0 grade v21.cpp DIFFER(792v785) hunks=20 /Oa -- flag /Oa
+23:07 0094a3b0 grade v46.cpp DIFFER(784v785) hunks=5 -- choice variable + single switch (jump threading)
+23:07 0094a3b0 grade v47.cpp DIFFER(792v785) hunks=9 -- (a) ternary spellings
+23:07 0094a3b0 grade v48.cpp DIFFER(792v785) hunks=7 -- (a) ternary spellings
+23:07 0094a3b0 grade v49.cpp DIFFER(792v785) hunks=7 -- (a) ternary spellings
+23:07 0094a3b0 grade v50.cpp DIFFER(795v785) hunks=11 -- single TellStory statement after if/else
+23:08 0094a3b0 grade v51.cpp DIFFER(777v785) hunks=11 -- single TellStory statement after if/else
+23:08 0094a3b0 grade v52.cpp DIFFER(813v785) hunks=12 -- single SitIdle at end, nested if/else
+23:08 0094a3b0 grade v53.cpp DIFFER(792v785) hunks=10 -- single SitIdle at end, nested if/else
+23:09 0094a3b0 grade v50.cpp DIFFER(795v785) hunks=11 -- v50 full hunks view
+23:09 0094a3b0 grade v54.cpp DIFFER(812v785) hunks=12 -- goto probe: every action call once
+23:10 0094a3b0 grade v51.cpp DIFFER(777v785) hunks=11 -- v51 view
+23:10 0094a3b0 grade v58.cpp DIFFER(777v785) hunks=11 -- v51 talking-area variants
+23:10 0094a3b0 grade v59.cpp DIFFER(777v785) hunks=11 -- v51 talking-area variants
+23:10 0094a3b0 grade v60.cpp DIFFER(777v785) hunks=11 -- v51 talking-area variants
+23:10 0094a3b0 grade v61.cpp DIFFER(777v785) hunks=11 -- SitIdle single via goto / nesting, TellStory shared
+23:10 0094a3b0 grade v62.cpp DIFFER(777v785) hunks=11 -- SitIdle single via goto / nesting, TellStory shared
+23:10 0094a3b0 grade v63.cpp DIFFER(777v785) hunks=11 -- SitIdle single via goto / nesting, TellStory shared
+23:11 0094a3b0 grade v64.cpp DIFFER(777v785) hunks=11 -- v51 base: (a)/(b) forms
+23:11 0094a3b0 grade v65.cpp ERROR -- v51 base: (a)/(b) forms
+23:11 0094a3b0 grade v66.cpp ERROR -- v51 base: (a)/(b) forms
+23:12 0094a3b0 grade v67.cpp DIFFER(792v785) hunks=6 -- v21: talking switch result var / block / ternary chain
+23:12 0094a3b0 grade v68.cpp DIFFER(792v785) hunks=7 -- v21: talking switch result var / block / ternary chain
+23:12 0094a3b0 grade v69.cpp DIFFER(822v785) hunks=10 -- v21: talking switch result var / block / ternary chain
+23:12 0094a3b0 grade v70.cpp DIFFER(810v785) hunks=6 -- laugh as else-arm of ternary
+23:12 0094a3b0 grade v71.cpp DIFFER(792v785) hunks=6 -- laugh as else-arm of ternary
+23:12 0094a3b0 grade v72.cpp DIFFER(810v785) hunks=6 -- laugh as else-arm of ternary
+23:12 0094a3b0 grade v73.cpp DIFFER(810v785) hunks=7 -- PROBE: GFRandom body spelling (ternary / if-zero)
+23:12 0094a3b0 grade v74.cpp DIFFER(792v785) hunks=7 -- PROBE: GFRandom body spelling (ternary / if-zero)
+23:12 0094a3b0 grade v75.cpp DIFFER(810v785) hunks=7 -- PROBE: GFRandom body spelling (ternary / if-zero)
+23:13 0094a3b0 grade v76.cpp DIFFER(792v785) hunks=7 -- full else-chain structure
+23:13 0094a3b0 grade v77.cpp DIFFER(813v785) hunks=8 -- full else-chain structure
+23:13 0094a3b0 grade p1.cpp DIFFER(796v785) hunks=8 -- PROBE: out-of-line random in laughing / talking switch -> survivor flips?
+23:13 0094a3b0 grade p2.cpp DIFFER(793v785) hunks=21 -- PROBE: out-of-line random in laughing / talking switch -> survivor flips?
+23:14 0094a3b0 grade c11.cpp DIFFER(795v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c12.cpp DIFFER(777v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c13.cpp DIFFER(795v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c14.cpp DIFFER(795v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c21.cpp DIFFER(777v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c22.cpp DIFFER(777v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c23.cpp DIFFER(777v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c24.cpp DIFFER(777v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c31.cpp DIFFER(795v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c32.cpp DIFFER(777v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c33.cpp DIFFER(795v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c34.cpp DIFFER(795v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c41.cpp DIFFER(795v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c42.cpp DIFFER(777v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c43.cpp DIFFER(795v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:14 0094a3b0 grade c44.cpp DIFFER(795v785) hunks=11 -- v50 struct: (a)x(b) form matrix
+23:15 0094a3b0 grade v3.cpp DIFFER(810v785) hunks=7 /EHsc -- flag /EHsc
+23:15 0094a3b0 grade v50.cpp DIFFER(795v785) hunks=11 /EHsc -- flag /EHsc
+23:15 0094a3b0 grade v51.cpp DIFFER(777v785) hunks=11 /EHsc -- flag /EHsc
+23:15 0094a3b0 grade v3.cpp DIFFER(810v785) hunks=7 /GR -- flag /GR
+23:15 0094a3b0 grade v50.cpp DIFFER(795v785) hunks=11 /GR -- flag /GR
+23:15 0094a3b0 grade v51.cpp DIFFER(777v785) hunks=11 /GR -- flag /GR
+23:15 0094a3b0 grade v3.cpp DIFFER(810v785) hunks=7 /Zi -- flag /Zi
+23:15 0094a3b0 grade v50.cpp DIFFER(795v785) hunks=11 /Zi -- flag /Zi
+23:15 0094a3b0 grade v51.cpp DIFFER(777v785) hunks=11 /Zi -- flag /Zi
+23:16 0094a3b0 grade v78.cpp DIFFER(792v785) hunks=7 -- laughing nested if / bool local
+23:16 0094a3b0 grade v79.cpp DIFFER(792v785) hunks=7 -- laughing nested if / bool local
+23:16 0094a3b0 grade v80.cpp DIFFER(810v785) hunks=7 -- laughing nested if / bool local
+23:17 0094a3b0 grade 0094a3b0.cpp DIFFER(810v785) hunks=7 -- final best saved (v3 spelling)
+0094a3b0 probe 1 does an out-of-line random in the laughing path / talking switch flip the Laugh survivor (p1/p2.cpp)? -> no, survivor stays the laughing-path copy
+0094a3b0 probe 2 does the GFRandom body spelling (ternary / if-zero, v73-v75) change merging? -> no
+23:40 0094a3b0 grade a1.cpp DIFFER(810v785) hunks=7 -- baseline attempt2
+23:42 0094a3b0 grade v41.cpp DIFFER(792v785) hunks=6 -- recheck v41
+23:47 0094a3b0 grade b1.cpp DIFFER(814v785) hunks=6 -- result-var in table section (toy: result var flips merge survivor to earlier)
+23:47 0094a3b0 grade b2.cpp DIFFER(814v785) hunks=6 -- result-var in table section (toy: result var flips merge survivor to earlier)
+23:47 0094a3b0 grade b3.cpp DIFFER(814v785) hunks=6 -- switch result var + laughing direct returns
+23:47 0094a3b0 grade b4.cpp DIFFER(810v785) hunks=6 -- switch result var + laughing direct returns
+23:47 0094a3b0 grade b5.cpp DIFFER(810v785) hunks=6 -- switch result var + laughing direct returns
+23:48 0094a3b0 grade v46.cpp DIFFER(784v785) hunks=5 -- recheck v46 choice var
+23:48 0094a3b0 grade b6.cpp DIFFER(814v785) hunks=6 -- b1 result-var switch: case orders (fallthrough-to-join survivor theory)
+23:48 0094a3b0 grade b7.cpp DIFFER(814v785) hunks=6 -- b1 result-var switch: case orders (fallthrough-to-join survivor theory)
+23:48 0094a3b0 grade b8.cpp DIFFER(814v785) hunks=6 -- b1 result-var switch: case orders (fallthrough-to-join survivor theory)
+23:50 0094a3b0 grade b9.cpp DIFFER(793v785) hunks=45 -- b1 + duplicated r2 tail inside laughing (cross-jump explains hoists)
+23:51 0094a3b0 grade b10.cpp DIFFER(796v785) hunks=47 -- b9 + result-var in rand5 / (a) for Drink survivor
+23:51 0094a3b0 grade b11.cpp DIFFER(793v785) hunks=45 -- b9 + result-var in rand5 / (a) for Drink survivor
+23:51 0094a3b0 grade b12.cpp DIFFER(796v785) hunks=47 -- b9 + result-var in rand5 / (a) for Drink survivor
+23:51 0094a3b0 grade c1.cpp DIFFER(848v785) hunks=3 -- duplicated r2: returns / a1-base / ternary
+23:51 0094a3b0 grade c2.cpp DIFFER(859v785) hunks=4 -- duplicated r2: returns / a1-base / ternary
+23:51 0094a3b0 grade c3.cpp DIFFER(793v785) hunks=45 -- duplicated r2: returns / a1-base / ternary
+23:51 0094a3b0 grade c1.cpp DIFFER(848v785) hunks=3 -- c1 view
+23:52 0094a3b0 grade c4.cpp DIFFER(808v785) hunks=4 -- c1 variants: r2 copies same form
+23:52 0094a3b0 grade c5.cpp DIFFER(808v785) hunks=4 -- c1 variants: r2 copies same form
+23:52 0094a3b0 grade c6.cpp DIFFER(793v785) hunks=45 -- c1 variants: r2 copies same form
+23:52 0094a3b0 grade c7.cpp DIFFER(859v785) hunks=4 -- c4 + switch case return forms
+23:52 0094a3b0 grade c8.cpp DIFFER(848v785) hunks=3 -- c4 + switch case return forms
+23:52 0094a3b0 grade c9.cpp DIFFER(848v785) hunks=3 -- c4 + switch case return forms
+23:53 0094a3b0 grade e1.cpp DIFFER(775v785) hunks=45 -- b9 + (a)/(TB) forms for Drink survivor
+23:53 0094a3b0 grade e2.cpp DIFFER(775v785) hunks=45 -- b9 + (a)/(TB) forms for Drink survivor
+23:53 0094a3b0 grade e3.cpp DIFFER(793v785) hunks=45 -- b9 + (a)/(TB) forms for Drink survivor
+23:53 0094a3b0 grade e4.cpp DIFFER(775v785) hunks=45 -- b9 + (a) ternary + TB forms
+23:53 0094a3b0 grade e5.cpp DIFFER(775v785) hunks=45 -- b9 + (a) ternary + TB forms
+23:53 0094a3b0 grade e7.cpp DIFFER(793v785) hunks=45 -- b9 + (a) ternary + TB forms
+23:55 0094a3b0 grade e8.cpp DIFFER(815v785) hunks=48 -- b9 + (a) && / init-false local / if-else result
+23:55 0094a3b0 grade e9.cpp DIFFER(800v785) hunks=55 -- b9 + (a) && / init-false local / if-else result
+23:55 0094a3b0 grade e10.cpp DIFFER(775v785) hunks=45 -- b9 + (a) && / init-false local / if-else result
+23:55 0094a3b0 grade e11.cpp DIFFER(800v785) hunks=55 -- b9 + (a) result forms + TB result form
+23:55 0094a3b0 grade e12.cpp DIFFER(775v785) hunks=45 -- b9 + (a) result forms + TB result form
+23:55 0094a3b0 grade e13.cpp DIFFER(786v785) hunks=52 -- b9 + (a) result forms + TB result form
+23:56 0094a3b0 grade e14.cpp DIFFER(817v785) hunks=47 -- e10 + TB forms / (a) return-false + result Drink
+23:56 0094a3b0 grade e15.cpp DIFFER(775v785) hunks=45 -- e10 + TB forms / (a) return-false + result Drink
+23:56 0094a3b0 grade e16.cpp DIFFER(793v785) hunks=45 -- e10 + TB forms / (a) return-false + result Drink
+23:59 0094a3b0 grade f1.cpp DIFFER(785v785) hunks=45 -- grid2 winner: dup r2 + TB !TB return false + R4 (Drink survivor right); regs swapped?
+23:59 0094a3b0 grade g1.cpp DIFFER(785v785) hunks=2 -- f1 + table variants / result scope for regs
+23:59 0094a3b0 grade g2.cpp DIFFER(840v785) hunks=3 -- f1 + table variants / result scope for regs
+23:59 0094a3b0 grade g3.cpp DIFFER(785v785) hunks=45 -- f1 + table variants / result scope for regs
+00:00 0094a3b0 grade h1.cpp DIFFER(808v785) hunks=4 -- g1 + rand5 forms for the mov ecx hoist
+00:00 0094a3b0 grade h2.cpp DIFFER(793v785) hunks=3 -- g1 + rand5 forms for the mov ecx hoist
+00:00 0094a3b0 grade h3.cpp DIFFER(793v785) hunks=5 -- g1 + rand5 forms for the mov ecx hoist
+00:00 0094a3b0 grade i2.cpp DIFFER(785v785) hunks=2 -- g1 + rand5 default/fallthrough forms
+00:00 0094a3b0 grade i3.cpp RELOCATION_MATCH -- g1 + rand5 default/fallthrough forms
+00:00 0094a3b0 grade m.cpp RELOCATION_MATCH -- final formatted i3
+00:01 0094a3b0 grade m.cpp RELOCATION_MATCH -- strict regrade
+00:30 0094a3b0 grade src.cpp RELOCATION_MATCH -- 
+00:30 0094a3b0 grade src.cpp RELOCATION_MATCH -- 
+
+==== 0x00D17A80 (not landed)
+22:59 00d17a80 grade v1.cpp SRC_FAIL -- port onto shared headers, vector in inner block
+22:59 00d17a80 grade v1.cpp DIFFER(705v785) hunks=17 -- port onto shared headers, vector in inner block
+22:59 00d17a80 grade s10.cpp DIFFER(705v785) hunks=17 -- d2inlS sweep
+22:59 00d17a80 grade s15.cpp DIFFER(705v785) hunks=17 -- d2inlS sweep
+22:59 00d17a80 grade s20.cpp DIFFER(705v785) hunks=17 -- d2inlS sweep
+23:00 00d17a80 grade v1.cpp DIFFER(705v785) hunks=17 /d2inlS15 -- d2inlS15 flag
+23:00 00d17a80 grade v1.cpp DIFFER(705v785) hunks=17 /d2inlS1 -- flag /d2inlS1
+23:00 00d17a80 grade v1.cpp DIFFER(705v785) hunks=17 /d2inlS5 -- flag /d2inlS5
+23:00 00d17a80 grade v1.cpp DIFFER(705v785) hunks=17 /d2inlS40 -- flag /d2inlS40
+23:00 00d17a80 grade v1.cpp DIFFER(482v785) hunks=16 /d2inlT5 -- flag /d2inlT5
+23:00 00d17a80 grade v1.cpp DIFFER(492v785) hunks=16 /d2inlT15 -- flag /d2inlT15
+23:00 00d17a80 grade v1.cpp DIFFER(580v785) hunks=19 /d2inlT25 -- flag /d2inlT25
+23:00 00d17a80 grade v1.cpp DIFFER(641v785) hunks=15 /d2inlT40 -- flag /d2inlT40
+23:00 00d17a80 grade v1.cpp DIFFER(705v785) hunks=17 /d2inlT80 -- flag /d2inlT80
+23:00 00d17a80 grade a1.cpp DIFFER(705v785) hunks=4 -- implicit CCharString conversions for spawn temps
+23:00 00d17a80 grade a2.cpp DIFFER(705v785) hunks=13 -- implicit CCharString conversions for spawn temps
+23:00 00d17a80 grade a3.cpp DIFFER(705v785) hunks=10 -- implicit CCharString conversions for spawn temps
+23:00 00d17a80 grade v1.cpp DIFFER(584v785) hunks=6 /d2inlT30 -- a1 + /d2inlT30
+23:00 00d17a80 grade v1.cpp DIFFER(673v785) hunks=3 /d2inlT35 -- a1 + /d2inlT35
+23:01 00d17a80 grade v1.cpp DIFFER(641v785) hunks=3 /d2inlT40 -- a1 + /d2inlT40
+23:01 00d17a80 grade v1.cpp DIFFER(673v785) hunks=5 /d2inlT45 -- a1 + /d2inlT45
+23:01 00d17a80 grade v1.cpp DIFFER(697v785) hunks=7 /d2inlT50 -- a1 + /d2inlT50
+23:01 00d17a80 grade v1.cpp DIFFER(661v785) hunks=4 /d2inlT55 -- a1 + /d2inlT55
+23:01 00d17a80 grade v1.cpp DIFFER(661v785) hunks=4 /d2inlT60 -- a1 + /d2inlT60
+23:01 00d17a80 grade v1.cpp DIFFER(694v785) hunks=4 /d2inlT65 -- a1 + /d2inlT65
+23:01 00d17a80 grade v1.cpp DIFFER(705v785) hunks=4 /d2inlT70 -- a1 + /d2inlT70
+23:01 00d17a80 grade v1.cpp DIFFER(705v785) hunks=4 /d2inlT75 -- a1 + /d2inlT75
+23:01 00d17a80 grade v1.cpp DIFFER(673v785) hunks=3 /d2inlT35 -- view T35
+23:02 00d17a80 grade v1.cpp DIFFER(673v785) hunks=3 /d2inlT36 -- a1 + /d2inlT36
+23:02 00d17a80 grade v1.cpp DIFFER(673v785) hunks=3 /d2inlT38 -- a1 + /d2inlT38
+23:02 00d17a80 grade v1.cpp DIFFER(641v785) hunks=3 /d2inlT42 -- a1 + /d2inlT42
+23:02 00d17a80 grade v1.cpp DIFFER(673v785) hunks=5 /d2inlT44 -- a1 + /d2inlT44
+23:02 00d17a80 grade v1.cpp DIFFER(673v785) hunks=5 /d2inlT48 -- a1 + /d2inlT48
+23:02 00d17a80 grade v1.cpp DIFFER(632v785) hunks=4 /d2inlT52 -- a1 + /d2inlT52
+23:02 00d17a80 grade v1.cpp DIFFER(661v785) hunks=4 /d2inlT58 -- a1 + /d2inlT58
+23:02 00d17a80 grade v1.cpp DIFFER(661v785) hunks=4 /d2inlT62 -- a1 + /d2inlT62
+23:02 00d17a80 grade v1.cpp DIFFER(694v785) hunks=4 /d2inlT66 -- a1 + /d2inlT66
+23:02 00d17a80 grade v1.cpp DIFFER(705v785) hunks=4 /d2inlT68 -- a1 + /d2inlT68
+23:03 00d17a80 grade f1.cpp DIFFER(584v785) hunks=6 /d2inlT25 -- range destroy forceinline (f1) +aux (f2), T25
+23:03 00d17a80 grade f2.cpp DIFFER(496v785) hunks=5 /d2inlT25 -- range destroy forceinline (f1) +aux (f2), T25
+23:03 00d17a80 grade f1.cpp DIFFER(673v785) hunks=3 /d2inlT35 -- range destroy forceinline (f1) +aux (f2), T35
+23:03 00d17a80 grade f2.cpp DIFFER(496v785) hunks=5 /d2inlT35 -- range destroy forceinline (f1) +aux (f2), T35
+23:03 00d17a80 grade f1.cpp DIFFER(673v785) hunks=5 /d2inlT45 -- range destroy forceinline (f1) +aux (f2), T45
+23:03 00d17a80 grade f2.cpp DIFFER(632v785) hunks=4 /d2inlT45 -- range destroy forceinline (f1) +aux (f2), T45
+23:03 00d17a80 grade f1.cpp DIFFER(661v785) hunks=4 /d2inlT55 -- range destroy forceinline (f1) +aux (f2), T55
+23:03 00d17a80 grade f2.cpp DIFFER(661v785) hunks=4 /d2inlT55 -- range destroy forceinline (f1) +aux (f2), T55
+23:03 00d17a80 grade f2.cpp DIFFER(496v785) hunks=5 /d2inlT38 -- f2 + /d2inlT38
+23:03 00d17a80 grade f2.cpp DIFFER(496v785) hunks=5 /d2inlT42 -- f2 + /d2inlT42
+23:03 00d17a80 grade f2.cpp DIFFER(632v785) hunks=4 /d2inlT45 -- f2 + /d2inlT45
+23:03 00d17a80 grade f2.cpp DIFFER(632v785) hunks=4 /d2inlT48 -- f2 + /d2inlT48
+23:03 00d17a80 grade f2.cpp DIFFER(632v785) hunks=4 /d2inlT50 -- f2 + /d2inlT50
+23:03 00d17a80 grade f2.cpp DIFFER(632v785) hunks=4 /d2inlT52 -- f2 + /d2inlT52
+23:04 00d17a80 grade v1.cpp DIFFER(673v785) hunks=3 /d2inlT35 -- view T35 ours
+23:04 00d17a80 grade b1.cpp DIFFER(588v785) hunks=7 /d2inlT35 -- while-loop / int index / boast outside, T35
+23:04 00d17a80 grade b2.cpp DIFFER(673v785) hunks=3 /d2inlT35 -- while-loop / int index / boast outside, T35
+23:04 00d17a80 grade b3.cpp DIFFER(673v785) hunks=3 /d2inlT35 -- while-loop / int index / boast outside, T35
+23:04 00d17a80 grade b1.cpp DIFFER(739v785) hunks=7 /d2inlT45 -- while-loop / int index / boast outside, T45
+23:04 00d17a80 grade b2.cpp DIFFER(673v785) hunks=5 /d2inlT45 -- while-loop / int index / boast outside, T45
+23:04 00d17a80 grade b3.cpp DIFFER(673v785) hunks=5 /d2inlT45 -- while-loop / int index / boast outside, T45
+23:04 00d17a80 grade b1.cpp DIFFER(739v785) hunks=7 /d2inlT45 -- b1 + /d2inlT45
+23:04 00d17a80 grade b1.cpp DIFFER(734v785) hunks=7 /d2inlT50 -- b1 + /d2inlT50
+23:04 00d17a80 grade b1.cpp DIFFER(759v785) hunks=6 /d2inlT55 -- b1 + /d2inlT55
+23:04 00d17a80 grade b1.cpp DIFFER(798v785) hunks=4 /d2inlT60 -- b1 + /d2inlT60
+23:04 00d17a80 grade b1.cpp DIFFER(798v785) hunks=4 /d2inlT70 -- b1 + /d2inlT70
+23:04 00d17a80 grade b1.cpp DIFFER(798v785) hunks=4 /d2inlT60 -- b1 T60 view
+23:05 00d17a80 grade d2.cpp DIFFER(739v785) hunks=7 /d2inlT45 -- for-noincr / outer for(;;) on b1 / outer for(;;) on v1, T45
+23:05 00d17a80 grade d3.cpp DIFFER(739v785) hunks=7 /d2inlT45 -- for-noincr / outer for(;;) on b1 / outer for(;;) on v1, T45
+23:05 00d17a80 grade d4.cpp DIFFER(673v785) hunks=5 /d2inlT45 -- for-noincr / outer for(;;) on b1 / outer for(;;) on v1, T45
+23:05 00d17a80 grade d2.cpp DIFFER(798v785) hunks=4 /d2inlT60 -- for-noincr / outer for(;;) on b1 / outer for(;;) on v1, T60
+23:05 00d17a80 grade d3.cpp DIFFER(798v785) hunks=4 /d2inlT60 -- for-noincr / outer for(;;) on b1 / outer for(;;) on v1, T60
+23:05 00d17a80 grade d4.cpp DIFFER(661v785) hunks=4 /d2inlT60 -- for-noincr / outer for(;;) on b1 / outer for(;;) on v1, T60
+23:05 00d17a80 grade g1.cpp DIFFER(705v785) hunks=4 /d2inlT20 -- forceinline ~vector+range (g1) +_Destroy(T*) (g2), T20
+23:05 00d17a80 grade g2.cpp DIFFER(705v785) hunks=4 /d2inlT20 -- forceinline ~vector+range (g1) +_Destroy(T*) (g2), T20
+23:05 00d17a80 grade g1.cpp DIFFER(705v785) hunks=4 /d2inlT35 -- forceinline ~vector+range (g1) +_Destroy(T*) (g2), T35
+23:05 00d17a80 grade g2.cpp DIFFER(705v785) hunks=4 /d2inlT35 -- forceinline ~vector+range (g1) +_Destroy(T*) (g2), T35
+23:05 00d17a80 grade g1.cpp DIFFER(705v785) hunks=4 /d2inlT50 -- forceinline ~vector+range (g1) +_Destroy(T*) (g2), T50
+23:05 00d17a80 grade g2.cpp DIFFER(705v785) hunks=4 /d2inlT50 -- forceinline ~vector+range (g1) +_Destroy(T*) (g2), T50
+23:05 00d17a80 grade g2.cpp DIFFER(705v785) hunks=4 /d2inlT0 -- g2, T0
+23:05 00d17a80 grade g2.cpp DIFFER(689v785) hunks=6 /d2inlT3 -- g2, T3
+23:06 00d17a80 grade g2.cpp DIFFER(689v785) hunks=6 /d2inlT8 -- g2, T8
+23:06 00d17a80 grade g2.cpp DIFFER(705v785) hunks=4 /d2inlT14 -- g2, T14
+23:06 00d17a80 grade e1.cpp DIFFER(673v785) hunks=3 /d2inlT35 -- nested-if expiry (e1) / switch arms (e2), T35
+23:06 00d17a80 grade e2.cpp DIFFER(632v785) hunks=8 /d2inlT35 -- nested-if expiry (e1) / switch arms (e2), T35
+23:06 00d17a80 grade e1.cpp DIFFER(673v785) hunks=5 /d2inlT45 -- nested-if expiry (e1) / switch arms (e2), T45
+23:06 00d17a80 grade e2.cpp DIFFER(641v785) hunks=7 /d2inlT45 -- nested-if expiry (e1) / switch arms (e2), T45
+23:06 00d17a80 grade v1.cpp DIFFER(661v785) hunks=4 /d2inlT60 /d2inlS5 -- v1/b1 with /d2inlT60 /d2inlS5
+23:06 00d17a80 grade b1.cpp DIFFER(798v785) hunks=4 /d2inlT60 /d2inlS5 -- v1/b1 with /d2inlT60 /d2inlS5
+23:06 00d17a80 grade v1.cpp DIFFER(661v785) hunks=4 /d2inlT60 /d2inlS30 -- v1/b1 with /d2inlT60 /d2inlS30
+23:06 00d17a80 grade b1.cpp DIFFER(798v785) hunks=4 /d2inlT60 /d2inlS30 -- v1/b1 with /d2inlT60 /d2inlS30
+23:06 00d17a80 grade v1.cpp DIFFER(641v785) hunks=3 /d2inlT40 /d2inlS5 -- v1/b1 with /d2inlT40 /d2inlS5
+23:06 00d17a80 grade b1.cpp DIFFER(588v785) hunks=7 /d2inlT40 /d2inlS5 -- v1/b1 with /d2inlT40 /d2inlS5
+23:06 00d17a80 grade v1.cpp DIFFER(496v785) hunks=5 /d2inlT40 /d2inlS30 -- v1/b1 with /d2inlT40 /d2inlS30
+23:06 00d17a80 grade b1.cpp DIFFER(496v785) hunks=5 /d2inlT40 /d2inlS30 -- v1/b1 with /d2inlT40 /d2inlS30
+23:07 00d17a80 grade h2.cpp DIFFER(514v785) hunks=16 /d2inlT20 -- inline vector ctor, b1, T20
+23:07 00d17a80 grade h2.cpp DIFFER(514v785) hunks=16 /d2inlT30 -- inline vector ctor, b1, T30
+23:07 00d17a80 grade h2.cpp DIFFER(610v785) hunks=21 /d2inlT40 -- inline vector ctor, b1, T40
+23:07 00d17a80 grade h2.cpp DIFFER(734v785) hunks=29 /d2inlT50 -- inline vector ctor, b1, T50
+23:07 00d17a80 grade h2.cpp DIFFER(798v785) hunks=34 /d2inlT60 -- inline vector ctor, b1, T60
+23:07 00d17a80 grade h2.cpp DIFFER(798v785) hunks=34 /d2inlT70 -- inline vector ctor, b1, T70
+23:07 00d17a80 grade v1.cpp DIFFER(705v785) hunks=4 /Ob1 -- v1/h1 /Ob1
+23:07 00d17a80 grade h1.cpp DIFFER(705v785) hunks=30 /Ob1 -- v1/h1 /Ob1
+23:07 00d17a80 grade v1.cpp DIFFER(705v785) hunks=4 /Ob2 -- v1/h1 /Ob2
+23:07 00d17a80 grade h1.cpp DIFFER(705v785) hunks=30 /Ob2 -- v1/h1 /Ob2
+23:08 00d17a80 grade b1.cpp DIFFER(705v785) hunks=4 /d2inlS2 -- b1 + /d2inlS2
+23:08 00d17a80 grade b1.cpp DIFFER(705v785) hunks=4 /d2inlS8 -- b1 + /d2inlS8
+23:08 00d17a80 grade b1.cpp DIFFER(705v785) hunks=4 /d2inlS12 -- b1 + /d2inlS12
+23:08 00d17a80 grade b1.cpp DIFFER(705v785) hunks=4 /d2inlS16 -- b1 + /d2inlS16
+23:08 00d17a80 grade b1.cpp DIFFER(705v785) hunks=4 /d2inlS24 -- b1 + /d2inlS24
+23:08 00d17a80 grade b1.cpp DIFFER(705v785) hunks=4 /d2inlS32 -- b1 + /d2inlS32
+23:09 00d17a80 grade k1.cpp DIFFER(705v785) hunks=4 /d2inlS15 -- plain inline CSpawnedFunc ctor, v1/b1, /d2inlS15
+23:09 00d17a80 grade k2.cpp DIFFER(705v785) hunks=4 /d2inlS15 -- plain inline CSpawnedFunc ctor, v1/b1, /d2inlS15
+23:09 00d17a80 grade k1.cpp DIFFER(661v785) hunks=4 /d2inlT60 -- plain inline CSpawnedFunc ctor, v1/b1, /d2inlT60
+23:09 00d17a80 grade k2.cpp DIFFER(798v785) hunks=4 /d2inlT60 -- plain inline CSpawnedFunc ctor, v1/b1, /d2inlT60
+23:09 00d17a80 grade k1.cpp DIFFER(673v785) hunks=5 /d2inlT45 -- plain inline CSpawnedFunc ctor, v1/b1, /d2inlT45
+23:09 00d17a80 grade k2.cpp DIFFER(739v785) hunks=7 /d2inlT45 -- plain inline CSpawnedFunc ctor, v1/b1, /d2inlT45
+23:09 00d17a80 grade k1.cpp DIFFER(705v785) hunks=4 -- plain inline ctor default
+23:09 00d17a80 grade k2.cpp DIFFER(705v785) hunks=4 -- plain inline ctor default
+23:09 00d17a80 grade m1.cpp DIFFER(673v785) hunks=8 /d2inlT45 -- unsigned < loop cond, for/while, /d2inlT45
+23:09 00d17a80 grade m2.cpp DIFFER(739v785) hunks=10 /d2inlT45 -- unsigned < loop cond, for/while, /d2inlT45
+23:09 00d17a80 grade m1.cpp DIFFER(661v785) hunks=7 /d2inlT60 -- unsigned < loop cond, for/while, /d2inlT60
+23:09 00d17a80 grade m2.cpp DIFFER(798v785) hunks=7 /d2inlT60 -- unsigned < loop cond, for/while, /d2inlT60
+23:10 00d17a80 grade p1.cpp DIFFER(562v785) hunks=5 /d2inlT45 -- do-while inner / i++ for / i++ while, /d2inlT45
+23:10 00d17a80 grade p2.cpp DIFFER(673v785) hunks=5 /d2inlT45 -- do-while inner / i++ for / i++ while, /d2inlT45
+23:10 00d17a80 grade p3.cpp DIFFER(739v785) hunks=7 /d2inlT45 -- do-while inner / i++ for / i++ while, /d2inlT45
+23:10 00d17a80 grade p1.cpp DIFFER(531v785) hunks=5 /d2inlT60 -- do-while inner / i++ for / i++ while, /d2inlT60
+23:10 00d17a80 grade p2.cpp DIFFER(661v785) hunks=4 /d2inlT60 -- do-while inner / i++ for / i++ while, /d2inlT60
+23:10 00d17a80 grade p3.cpp DIFFER(798v785) hunks=4 /d2inlT60 -- do-while inner / i++ for / i++ while, /d2inlT60
+23:10 00d17a80 grade b1.cpp DIFFER(734v785) hunks=7 /d2inlT51 -- b1 + /d2inlT51
+23:10 00d17a80 grade b1.cpp DIFFER(759v785) hunks=6 /d2inlT53 -- b1 + /d2inlT53
+23:10 00d17a80 grade b1.cpp DIFFER(759v785) hunks=6 /d2inlT54 -- b1 + /d2inlT54
+23:10 00d17a80 grade b1.cpp DIFFER(759v785) hunks=6 /d2inlT56 -- b1 + /d2inlT56
+23:10 00d17a80 grade b1.cpp DIFFER(798v785) hunks=4 /d2inlT57 -- b1 + /d2inlT57
+23:10 00d17a80 grade b1.cpp DIFFER(798v785) hunks=4 /d2inlT58 -- b1 + /d2inlT58
+23:10 00d17a80 grade b1.cpp DIFFER(798v785) hunks=4 /d2inlT59 -- b1 + /d2inlT59
+23:10 00d17a80 grade b1.cpp DIFFER(798v785) hunks=4 /d2inlT57 -- b1 T57 view
+23:11 00d17a80 grade g3.cpp DIFFER(566v785) hunks=7 /d2inlT10 -- forceinline ~vector only, for/while, T10
+23:11 00d17a80 grade g4.cpp DIFFER(566v785) hunks=7 /d2inlT10 -- forceinline ~vector only, for/while, T10
+23:11 00d17a80 grade g3.cpp DIFFER(602v785) hunks=7 /d2inlT20 -- forceinline ~vector only, for/while, T20
+23:11 00d17a80 grade g4.cpp DIFFER(578v785) hunks=5 /d2inlT20 -- forceinline ~vector only, for/while, T20
+23:11 00d17a80 grade g3.cpp DIFFER(558v785) hunks=5 /d2inlT30 -- forceinline ~vector only, for/while, T30
+23:11 00d17a80 grade g4.cpp DIFFER(558v785) hunks=5 /d2inlT30 -- forceinline ~vector only, for/while, T30
+23:11 00d17a80 grade g3.cpp DIFFER(641v785) hunks=3 /d2inlT40 -- forceinline ~vector only, for/while, T40
+23:11 00d17a80 grade g4.cpp DIFFER(558v785) hunks=5 /d2inlT40 -- forceinline ~vector only, for/while, T40
+23:11 00d17a80 grade g3.cpp DIFFER(697v785) hunks=7 /d2inlT50 -- forceinline ~vector only, for/while, T50
+23:11 00d17a80 grade g4.cpp DIFFER(734v785) hunks=7 /d2inlT50 -- forceinline ~vector only, for/while, T50
+23:11 00d17a80 grade g1.cpp DIFFER(689v785) hunks=6 /d2inlT1 -- forceinline ~vector+range+aux, for/while, T1
+23:11 00d17a80 grade g5.cpp DIFFER(689v785) hunks=6 /d2inlT1 -- forceinline ~vector+range+aux, for/while, T1
+23:11 00d17a80 grade g1.cpp DIFFER(689v785) hunks=6 /d2inlT4 -- forceinline ~vector+range+aux, for/while, T4
+23:11 00d17a80 grade g5.cpp DIFFER(689v785) hunks=6 /d2inlT4 -- forceinline ~vector+range+aux, for/while, T4
+23:11 00d17a80 grade g1.cpp DIFFER(689v785) hunks=6 /d2inlT8 -- forceinline ~vector+range+aux, for/while, T8
+23:11 00d17a80 grade g5.cpp DIFFER(689v785) hunks=6 /d2inlT8 -- forceinline ~vector+range+aux, for/while, T8
+23:11 00d17a80 grade g1.cpp DIFFER(689v785) hunks=6 /d2inlT12 -- forceinline ~vector+range+aux, for/while, T12
+23:11 00d17a80 grade g5.cpp DIFFER(705v785) hunks=4 /d2inlT12 -- forceinline ~vector+range+aux, for/while, T12
+23:11 00d17a80 grade g1.cpp DIFFER(705v785) hunks=4 /d2inlT16 -- forceinline ~vector+range+aux, for/while, T16
+23:11 00d17a80 grade g5.cpp DIFFER(705v785) hunks=4 /d2inlT16 -- forceinline ~vector+range+aux, for/while, T16
+23:11 00d17a80 grade q1.cpp DIFFER(673v785) hunks=4 /d2inlT45 -- inverted term-check polarity, for/while, /d2inlT45
+23:11 00d17a80 grade q2.cpp DIFFER(739v785) hunks=7 /d2inlT45 -- inverted term-check polarity, for/while, /d2inlT45
+23:11 00d17a80 grade q1.cpp DIFFER(673v785) hunks=3 /d2inlT57 -- inverted term-check polarity, for/while, /d2inlT57
+23:11 00d17a80 grade q2.cpp DIFFER(798v785) hunks=4 /d2inlT57 -- inverted term-check polarity, for/while, /d2inlT57
+23:11 00d17a80 grade q1.cpp DIFFER(705v785) hunks=4 -- inverted term-check polarity, for/while, 
+23:12 00d17a80 grade q2.cpp DIFFER(705v785) hunks=4 -- inverted term-check polarity, for/while, 
+23:12 00d17a80 grade v1.cpp DIFFER(584v785) hunks=6 /d2inlT31 -- v1 + /d2inlT31
+23:12 00d17a80 grade v1.cpp DIFFER(584v785) hunks=6 /d2inlT32 -- v1 + /d2inlT32
+23:12 00d17a80 grade v1.cpp DIFFER(584v785) hunks=6 /d2inlT33 -- v1 + /d2inlT33
+23:12 00d17a80 grade v1.cpp DIFFER(673v785) hunks=3 /d2inlT34 -- v1 + /d2inlT34
+23:12 00d17a80 grade v1.cpp DIFFER(673v785) hunks=3 /d2inlT37 -- v1 + /d2inlT37
+23:12 00d17a80 grade v1.cpp DIFFER(641v785) hunks=3 /d2inlT39 -- v1 + /d2inlT39
+23:12 00d17a80 grade v1.cpp DIFFER(641v785) hunks=3 /d2inlT41 -- v1 + /d2inlT41
+23:12 00d17a80 grade v1.cpp DIFFER(641v785) hunks=3 /d2inlT43 -- v1 + /d2inlT43
+23:12 00d17a80 grade r1.cpp DIFFER(798v785) hunks=4 /d2inlT57 -- site1 as if(!term){body}else return, T57
+23:13 00d17a80 grade 00d17a80.cpp DIFFER(705v785) hunks=4 -- final best source regrade
+00d17a80 probe 1 QFE-4035 compiler on v1/b1 -> see output
+23:31 00d17a80 grade c1.cpp DIFFER(673v785) hunks=3 /d2inlT34 -- baseline T34
+23:32 00d17a80 grade x1.cpp DIFFER(705v785) hunks=4 -- for(;!term;NewScriptFrame()) vector in body scope
+23:32 00d17a80 grade x1.cpp DIFFER(584v785) hunks=6 /d2inlT30 -- x1 T30
+23:32 00d17a80 grade x1.cpp DIFFER(673v785) hunks=3 /d2inlT34 -- x1 T34
+23:32 00d17a80 grade x1.cpp DIFFER(641v785) hunks=3 /d2inlT40 -- x1 T40
+23:32 00d17a80 grade x1.cpp DIFFER(673v785) hunks=5 /d2inlT46 -- x1 T46
+23:32 00d17a80 grade x1.cpp DIFFER(632v785) hunks=4 /d2inlT52 -- x1 T52
+23:32 00d17a80 grade x1.cpp DIFFER(661v785) hunks=4 /d2inlT58 -- x1 T58
+23:34 00d17a80 grade x1.cpp DIFFER(593v785) hunks=29 /EHsc -- x1 /EHsc
+23:36 00d17a80 grade x1.cpp DIFFER(486v785) /d2inlT1  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(486v785) /d2inlT4  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(486v785) /d2inlT7  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(486v785) /d2inlT10  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(496v785) /d2inlT13  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(496v785) /d2inlT16  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(496v785) /d2inlT19  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(496v785) /d2inlT22  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(584v785) /d2inlT25  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(584v785) /d2inlT28  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(584v785) /d2inlT31  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(673v785) /d2inlT34  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(673v785) /d2inlT37  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(641v785) /d2inlT40  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(641v785) /d2inlT43  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(673v785) /d2inlT46  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(673v785) /d2inlT49  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(632v785) /d2inlT52  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(661v785) /d2inlT55  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(661v785) /d2inlT58  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(661v785) /d2inlT61  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(661v785) /d2inlT64  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(694v785) /d2inlT67  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT70  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT73  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT76  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT79  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT82  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT85  -- sweep
+23:36 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT88  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT91  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT94  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT97  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT100  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT103  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT106  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT109  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT112  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT115  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT118  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT121  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT124  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT127  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT130  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT133  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT136  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT139  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT142  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT145  -- sweep
+23:37 00d17a80 grade x1.cpp DIFFER(705v785) /d2inlT148  -- sweep
+23:39 00d17a80 probe 2 does a 16-exit variant hit an inline cap -> see NOTES
+23:40 00d17a80 probe 3 16-exit variant with inline vector ctor: is the ctor called once the cap is hit
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /Ox -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /G7 -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /G6 -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /G5 -- flag survey
+23:40 00d17a80 grade x1.cpp  /GL -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /Oa -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /Ow -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /Gy -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /Oi- -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /GF -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /GR -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /Op -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /Gd /O2 -- flag survey
+23:40 00d17a80 grade x1.cpp DIFFER(705v785) /arch:SSE -- flag survey
+23:41 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlcrmax0 -- c2 inliner option survey
+23:41 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlcrmax1 -- c2 inliner option survey
+23:41 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlcrmax4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlcrmax16 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inld0 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(661v785) /d2inld1 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inld4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inld16 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlld0 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlld1 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlld4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlld16 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnobr0 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnobr1 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnobr4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnobr16 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnold0 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnold1 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnold4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnold16 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnoln0 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnoln1 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnoln4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnoln16 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnild0 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnild1 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnild4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlnild16 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlniln0 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlniln1 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlniln4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlniln16 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlflcsw0 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlflcsw1 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlflcsw4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlflcsw16 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlfcsw0 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlfcsw1 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlfcsw4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlfcsw16 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlocsa10 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlocsa11 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlocsa14 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlocsa116 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlfcsa0 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlfcsa1 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlfcsa4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlfcsa16 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inluserinl0 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inluserinl1 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inluserinl4 -- c2 inliner option survey
+23:42 00d17a80 grade x2.cpp DIFFER(705v785) /d2inluserinl16 -- c2 inliner option survey
+23:43 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT1  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT3  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT5  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT7  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT9  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT11  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT13  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT15  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT17  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT19  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT21  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT23  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT25  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT27  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT29  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT31  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT33  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT35  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT37  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT39  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT41  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT43  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT45  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT47  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT49  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT51  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT53  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT55  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT57  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT59  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT61  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT63  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT65  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT67  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT69  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT71  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT73  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT75  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT77  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT79  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT81  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT83  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT85  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT87  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT89  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT91  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT93  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT95  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT97  -- sweep
+23:43 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT99  -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT10 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT14 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT18 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT22 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT26 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT34 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT38 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT42 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT46 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT54 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT58 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT62 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT66 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT70 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT74 /d2inlnobr1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT10 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT14 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT18 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT22 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT26 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT34 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT38 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT42 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT46 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT54 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT58 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT62 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT66 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT70 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT74 /d2inlnold1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT10 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT14 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT18 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT22 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT26 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT34 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT38 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT42 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT46 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT54 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT58 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT62 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT66 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT70 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT74 /d2inlnoln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT10 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT14 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT18 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT22 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT26 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT34 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT38 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT42 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT46 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT54 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT58 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT62 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT66 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT70 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT74 /d2inlnild1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT10 /d2inlniln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT14 /d2inlniln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT18 /d2inlniln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT22 /d2inlniln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT26 /d2inlniln1 -- sweep
+23:44 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT34 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT38 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT42 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT46 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT54 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT58 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT62 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT66 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT70 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT74 /d2inlniln1 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT10 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT14 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT18 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT22 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT26 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT34 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT38 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT42 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT46 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT54 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT58 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT62 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT66 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT70 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT74 /d2inlnobr0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT10 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT14 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT18 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT22 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT26 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT34 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT38 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT42 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT46 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT54 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT58 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT62 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT66 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT70 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT74 /d2inlnold0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(504v785) /d2inlT10 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT14 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT18 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT22 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT26 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT34 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT38 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT42 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT46 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT54 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT58 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT62 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT66 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT70 /d2inlnoln0 -- sweep
+23:45 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT74 /d2inlnoln0 -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(496v785) /d2inlT20  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(496v785) /d2inlT23  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(584v785) /d2inlT26  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(584v785) /d2inlT29  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(584v785) /d2inlT32  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(673v785) /d2inlT35  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(673v785) /d2inlT38  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(641v785) /d2inlT41  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(673v785) /d2inlT44  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(673v785) /d2inlT47  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(697v785) /d2inlT50  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(632v785) /d2inlT53  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(661v785) /d2inlT56  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(661v785) /d2inlT59  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(661v785) /d2inlT62  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(694v785) /d2inlT65  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(705v785) /d2inlT68  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(705v785) /d2inlT71  -- sweep
+23:46 00d17a80 grade d1.cpp DIFFER(705v785) /d2inlT74  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(496v785) /d2inlT20  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(496v785) /d2inlT23  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(584v785) /d2inlT26  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(584v785) /d2inlT29  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(584v785) /d2inlT32  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(673v785) /d2inlT35  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(673v785) /d2inlT38  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(641v785) /d2inlT41  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(673v785) /d2inlT44  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(673v785) /d2inlT47  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(697v785) /d2inlT50  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(632v785) /d2inlT53  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(661v785) /d2inlT56  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(661v785) /d2inlT59  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(661v785) /d2inlT62  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(694v785) /d2inlT65  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(705v785) /d2inlT68  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(705v785) /d2inlT71  -- sweep
+23:46 00d17a80 grade d2.cpp DIFFER(705v785) /d2inlT74  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(496v785) /d2inlT20  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(496v785) /d2inlT23  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(584v785) /d2inlT26  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(584v785) /d2inlT29  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(584v785) /d2inlT32  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(673v785) /d2inlT35  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(673v785) /d2inlT38  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(641v785) /d2inlT41  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(673v785) /d2inlT44  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(673v785) /d2inlT47  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(697v785) /d2inlT50  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(632v785) /d2inlT53  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(661v785) /d2inlT56  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(661v785) /d2inlT59  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(661v785) /d2inlT62  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(694v785) /d2inlT65  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(705v785) /d2inlT68  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(705v785) /d2inlT71  -- sweep
+23:46 00d17a80 grade d3.cpp DIFFER(705v785) /d2inlT74  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(496v785) /d2inlT20  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(496v785) /d2inlT23  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(584v785) /d2inlT26  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(584v785) /d2inlT29  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(584v785) /d2inlT32  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(673v785) /d2inlT35  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(673v785) /d2inlT38  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(641v785) /d2inlT41  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(673v785) /d2inlT44  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(673v785) /d2inlT47  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(697v785) /d2inlT50  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(632v785) /d2inlT53  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(661v785) /d2inlT56  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(661v785) /d2inlT59  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(661v785) /d2inlT62  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(694v785) /d2inlT65  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(705v785) /d2inlT68  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(705v785) /d2inlT71  -- sweep
+23:46 00d17a80 grade d4.cpp DIFFER(705v785) /d2inlT74  -- sweep
+23:46 00d17a80 grade d5.cpp DIFFER(496v785) /d2inlT20  -- sweep
+23:46 00d17a80 grade d5.cpp DIFFER(496v785) /d2inlT23  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(584v785) /d2inlT26  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(584v785) /d2inlT29  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(584v785) /d2inlT32  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(673v785) /d2inlT35  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(673v785) /d2inlT38  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(641v785) /d2inlT41  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(673v785) /d2inlT44  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(673v785) /d2inlT47  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(697v785) /d2inlT50  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(632v785) /d2inlT53  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(661v785) /d2inlT56  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(661v785) /d2inlT59  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(661v785) /d2inlT62  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(694v785) /d2inlT65  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(705v785) /d2inlT68  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(705v785) /d2inlT71  -- sweep
+23:47 00d17a80 grade d5.cpp DIFFER(705v785) /d2inlT74  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(496v785) /d2inlT20  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(496v785) /d2inlT23  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(584v785) /d2inlT26  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(584v785) /d2inlT29  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(584v785) /d2inlT32  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(673v785) /d2inlT35  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(673v785) /d2inlT38  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(641v785) /d2inlT41  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(673v785) /d2inlT44  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(673v785) /d2inlT47  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(697v785) /d2inlT50  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(632v785) /d2inlT53  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(661v785) /d2inlT56  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(661v785) /d2inlT59  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(661v785) /d2inlT62  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(694v785) /d2inlT65  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(705v785) /d2inlT68  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(705v785) /d2inlT71  -- sweep
+23:47 00d17a80 grade d6.cpp DIFFER(705v785) /d2inlT74  -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlcrmax2 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlcrmax2 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlcrmax2 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlcrmax8 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlcrmax8 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlcrmax8 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlcrmax30 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlcrmax30 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlcrmax30 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlcrmax100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlcrmax100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlcrmax100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT40 /d2inld2 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inld2 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inld2 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT40 /d2inld3 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inld3 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inld3 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inld6 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inld6 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inld6 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT40 /d2inlld1 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlld1 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlld1 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlld3 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlld3 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlld3 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlocsa21 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlocsa21 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlocsa21 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlocsa1100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlocsa1100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlocsa1100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlfcsa100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlfcsa100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlfcsa100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlfcsw100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlfcsw100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlfcsw100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlflcsw100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlflcsw100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlflcsw100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inluserinl100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inluserinl100 -- sweep
+23:48 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inluserinl100 -- sweep
+23:49 00d17a80 probe 4 is the inline budget TU-wide (filler function before/after) -> see NOTES
+23:55 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT20 /Ob1 -- sweep
+23:55 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT24 /Ob1 -- sweep
+23:55 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT28 /Ob1 -- sweep
+23:55 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT32 /Ob1 -- sweep
+23:55 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT36 /Ob1 -- sweep
+23:55 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /Ob1 -- sweep
+23:55 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT44 /Ob1 -- sweep
+23:55 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT48 /Ob1 -- sweep
+23:55 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT52 /Ob1 -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT56 /Ob1 -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /Ob1 -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT64 /Ob1 -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT68 /Ob1 -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT72 /Ob1 -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT76 /Ob1 -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /Ob1 -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /Ob1 -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /Ob1 -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /Ob1 -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT20 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT24 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT28 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT32 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT36 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT40 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT44 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT48 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT52 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT56 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT60 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT64 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT68 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT72 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT76 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT30 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT40 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT50 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(748v785) /d2inlT60 /Og- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT20 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT24 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT28 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT32 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT36 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT44 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT48 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT52 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT56 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT64 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT68 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT72 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT76 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /Oi- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT20 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT24 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT28 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT32 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT36 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT44 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT48 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT52 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT56 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT64 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT68 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT72 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT76 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /Ot- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(496v785) /d2inlT20 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(496v785) /d2inlT24 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(575v785) /d2inlT28 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(575v785) /d2inlT32 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(654v785) /d2inlT36 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(654v785) /d2inlT40 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(628v785) /d2inlT44 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(660v785) /d2inlT48 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(686v785) /d2inlT52 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(654v785) /d2inlT56 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(654v785) /d2inlT60 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(654v785) /d2inlT64 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT68 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT72 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(694v785) /d2inlT76 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(575v785) /d2inlT30 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(654v785) /d2inlT40 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(660v785) /d2inlT50 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(654v785) /d2inlT60 /Oy- -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT20 /Gy -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(514v785) /d2inlT24 /Gy -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT28 /Gy -- sweep
+23:56 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT32 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT36 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT44 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(673v785) /d2inlT48 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(632v785) /d2inlT52 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT56 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT64 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT68 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT72 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT76 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(606v785) /d2inlT30 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /Gy -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlS0 -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlS0 -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlS0 -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT74 /d2inlS0 -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlS1 -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlS1 -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlS1 -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT74 /d2inlS1 -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(641v785) /d2inlT40 /d2inlS3 -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(697v785) /d2inlT50 /d2inlS3 -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(661v785) /d2inlT60 /d2inlS3 -- sweep
+23:57 00d17a80 grade x2.cpp DIFFER(705v785) /d2inlT74 /d2inlS3 -- sweep
+23:58 00d17a80 probe 5 14 extra exits after the for loop: which sites lose inlining
+23:58 00d17a80 grade in1.cpp DIFFER(705v785) hunks=4 -- PROBE inline-defined function (address-taken) -> inliner order?
+23:58 00d17a80 grade in2.cpp DIFFER(705v785) hunks=30 -- PROBE inline-defined function (address-taken) -> inliner order?
+23:58 00d17a80 grade in1.cpp DIFFER(584v785) /d2inlT25  -- sweep
+23:58 00d17a80 grade in1.cpp DIFFER(584v785) /d2inlT29  -- sweep
+23:58 00d17a80 grade in1.cpp DIFFER(584v785) /d2inlT33  -- sweep
+23:58 00d17a80 grade in1.cpp DIFFER(673v785) /d2inlT37  -- sweep
+23:58 00d17a80 grade in1.cpp DIFFER(641v785) /d2inlT41  -- sweep
+23:58 00d17a80 grade in1.cpp DIFFER(673v785) /d2inlT45  -- sweep
+23:58 00d17a80 grade in1.cpp DIFFER(673v785) /d2inlT49  -- sweep
+23:58 00d17a80 grade in1.cpp DIFFER(632v785) /d2inlT53  -- sweep
+23:58 00d17a80 grade in1.cpp DIFFER(661v785) /d2inlT57  -- sweep
+23:59 00d17a80 grade in1.cpp DIFFER(661v785) /d2inlT61  -- sweep
+23:59 00d17a80 grade in1.cpp DIFFER(694v785) /d2inlT65  -- sweep
+23:59 00d17a80 grade in1.cpp DIFFER(705v785) /d2inlT69  -- sweep
+23:59 00d17a80 grade in1.cpp DIFFER(705v785) /d2inlT73  -- sweep
+23:59 00d17a80 grade 00d17a80.cpp DIFFER(705v785) hunks=4 -- attempt 2 final regrade of best source
+00:09 00d17a80 grade z1.cpp DIFFER(705v785) hunks=4 -- probe: same-type vector user earlier/later in TU
+00:09 00d17a80 grade z2.cpp DIFFER(705v785) hunks=4 -- probe: same-type vector user earlier/later in TU
+00:09 00d17a80 grade z3.cpp DIFFER(705v785) hunks=4 -- probe: same-type vector user earlier/later in TU
+00:10 00d17a80 grade z4.cpp DIFFER(705v785) hunks=4 -- probe: ??_G pair emitted in TU (delete pair*) before/after
+00:10 00d17a80 grade z5.cpp DIFFER(705v785) hunks=4 -- probe: ??_G pair emitted in TU (delete pair*) before/after
+00:10 00d17a80 grade z4.cpp DIFFER(584v785) hunks=6 /d2inlT30 -- probe ??_G present T30
+00:10 00d17a80 grade z4.cpp DIFFER(673v785) hunks=5 /d2inlT45 -- probe ??_G present T45
+00:10 00d17a80 grade z4.cpp DIFFER(661v785) hunks=4 /d2inlT57 -- probe ??_G present T57
+00:12 00d17a80 grade y1.cpp DIFFER(705v785) hunks=4 -- real STLport __malloc_alloc deallocate level
+00:12 00d17a80 grade y1.cpp DIFFER(641v785) hunks=3 /d2inlT40 -- real dealloc T40
+00:12 00d17a80 grade y1.cpp DIFFER(697v785) hunks=7 /d2inlT50 -- real dealloc T50
+00:12 00d17a80 grade y1.cpp DIFFER(661v785) hunks=4 /d2inlT60 -- real dealloc T60
+00:13 00d17a80 grade y_DEPTH0.cpp DIFFER(705v785) hunks=4 -- pragma inline_depth(0)/auto_inline(off) round ~vector def
+00:13 00d17a80 grade y_NOAUTO.cpp DIFFER(705v785) hunks=4 -- pragma inline_depth(0)/auto_inline(off) round ~vector def
+00:13 00d17a80 grade 00d17a80.cpp DIFFER(705v785) hunks=4 /Zi -- debug info flag /Zi
+00:13 00d17a80 grade 00d17a80.cpp DIFFER(705v785) hunks=4 /Z7 -- debug info flag /Z7
+00:13 00d17a80 grade 00d17a80.cpp DIFFER(705v785) hunks=4 /Zd -- debug info flag /Zd
+00:14 00d17a80 grade y_cd0.cpp DIFFER(705v785) hunks=4 -- inline_depth(0) round destroy chain defs 
+00:14 00d17a80 grade y_cd0.cpp DIFFER(697v785) hunks=7 /d2inlT50 -- inline_depth(0) round destroy chain defs /d2inlT50
+00:14 00d17a80 grade y_cd0.cpp DIFFER(641v785) hunks=3 /d2inlT40 -- inline_depth(0) round destroy chain defs /d2inlT40
+00:15 00d17a80 grade g_rev.cpp DIFFER(705v785) hunks=4 -- PROBE goto: post-loop site first in IL 
+00:15 00d17a80 grade g_rev.cpp DIFFER(576v785) hunks=6 /d2inlT50 -- PROBE goto: post-loop site first in IL /d2inlT50
+00:15 00d17a80 grade g_rev.cpp DIFFER(558v785) hunks=5 /d2inlT40 -- PROBE goto: post-loop site first in IL /d2inlT40
+00:18 00d17a80 grade 00d17a80.cpp DIFFER(444v785) hunks=39 /Os -- flags /Os
+00:18 00d17a80 grade 00d17a80.cpp DIFFER(444v785) hunks=39 /O1 -- flags /O1
+00:18 00d17a80 grade 00d17a80.cpp DIFFER(705v785) hunks=4 /Os /Ot -- flags /Os /Ot
+00:18 00d17a80 grade 00d17a80.cpp DIFFER(444v785) hunks=39 /Ob2 /Os -- flags /Ob2 /Os
+00:18 00d17a80 grade id2.cpp DIFFER(578v785) hunks=7 -- function-wide #pragma inline_depth(N)
+00:18 00d17a80 grade id4.cpp DIFFER(722v785) hunks=15 -- function-wide #pragma inline_depth(N)
+00:18 00d17a80 grade id6.cpp DIFFER(696v785) hunks=9 -- function-wide #pragma inline_depth(N)
+00:18 00d17a80 grade id8.cpp DIFFER(705v785) hunks=4 -- function-wide #pragma inline_depth(N)
+00:18 00d17a80 grade id12.cpp DIFFER(705v785) hunks=4 -- function-wide #pragma inline_depth(N)
+00:19 00d17a80 grade id3.cpp DIFFER(616v785) hunks=8 -- function-wide #pragma inline_depth(N)
+00:19 00d17a80 grade id5.cpp DIFFER(722v785) hunks=9 -- function-wide #pragma inline_depth(N)
+00:19 00d17a80 grade id7.cpp DIFFER(705v785) hunks=4 -- function-wide #pragma inline_depth(N)
+00:19 00d17a80 grade id5.cpp DIFFER(584v785) hunks=6 /d2inlT30 -- fn inline_depth(5/6) x T30
+00:19 00d17a80 grade id6.cpp DIFFER(584v785) hunks=6 /d2inlT30 -- fn inline_depth(5/6) x T30
+00:19 00d17a80 grade id5.cpp DIFFER(643v785) hunks=5 /d2inlT40 -- fn inline_depth(5/6) x T40
+00:19 00d17a80 grade id6.cpp DIFFER(640v785) hunks=6 /d2inlT40 -- fn inline_depth(5/6) x T40
+00:19 00d17a80 grade id5.cpp DIFFER(710v785) hunks=6 /d2inlT50 -- fn inline_depth(5/6) x T50
+00:19 00d17a80 grade id6.cpp DIFFER(693v785) hunks=5 /d2inlT50 -- fn inline_depth(5/6) x T50
+00:19 00d17a80 grade id5.cpp DIFFER(665v785) hunks=4 /d2inlT60 -- fn inline_depth(5/6) x T60
+00:19 00d17a80 grade id6.cpp DIFFER(658v785) hunks=5 /d2inlT60 -- fn inline_depth(5/6) x T60
+00:19 00d17a80 grade id5.cpp DIFFER(722v785) hunks=9 /d2inlT70 -- fn inline_depth(5/6) x T70
+00:19 00d17a80 grade id6.cpp DIFFER(696v785) hunks=9 /d2inlT70 -- fn inline_depth(5/6) x T70
+00:19 00d17a80 grade id5.cpp DIFFER(722v785) hunks=9 /d2inlT80 -- fn inline_depth(5/6) x T80
+00:19 00d17a80 grade id6.cpp DIFFER(696v785) hunks=9 /d2inlT80 -- fn inline_depth(5/6) x T80
+00:22 00d17a80 grade inv1.cpp DIFFER(705v785) hunks=4 -- all in-loop term checks as if(!term){...}else return (DFS postorder theory)
+00:22 00d17a80 grade inv2.cpp DIFFER(705v785) hunks=4 -- all in-loop term checks as if(!term){...}else return (DFS postorder theory)
+00:22 00d17a80 grade inv1.cpp DIFFER(641v785) hunks=4 /d2inlT40 -- inverted checks T40
+00:22 00d17a80 grade inv2.cpp DIFFER(641v785) hunks=4 /d2inlT40 -- inverted checks T40
+00:22 00d17a80 grade inv1.cpp DIFFER(705v785) hunks=5 /d2inlT50 -- inverted checks T50
+00:22 00d17a80 grade inv2.cpp DIFFER(705v785) hunks=5 /d2inlT50 -- inverted checks T50
+00:22 00d17a80 grade inv1.cpp DIFFER(673v785) hunks=3 /d2inlT60 -- inverted checks T60
+00:22 00d17a80 grade inv2.cpp DIFFER(673v785) hunks=3 /d2inlT60 -- inverted checks T60
+00:23 00d17a80 grade w1.cpp DIFFER(705v785) hunks=4 -- term-check spellings (while/!=false/else{}) 
+00:23 00d17a80 grade w2.cpp DIFFER(705v785) hunks=4 -- term-check spellings (while/!=false/else{}) 
+00:23 00d17a80 grade w3.cpp DIFFER(705v785) hunks=4 -- term-check spellings (while/!=false/else{}) 
+00:23 00d17a80 grade w1.cpp DIFFER(697v785) hunks=7 /d2inlT50 -- term-check spellings (while/!=false/else{}) /d2inlT50
+00:23 00d17a80 grade w2.cpp DIFFER(697v785) hunks=7 /d2inlT50 -- term-check spellings (while/!=false/else{}) /d2inlT50
+00:23 00d17a80 grade w3.cpp DIFFER(697v785) hunks=7 /d2inlT50 -- term-check spellings (while/!=false/else{}) /d2inlT50
+00:23 00d17a80 grade gd1.cpp DIFFER(705v785) hunks=13 -- term checks as goto done (label at fn end) 
+00:23 00d17a80 grade gd1.cpp DIFFER(697v785) hunks=15 /d2inlT50 -- term checks as goto done (label at fn end) /d2inlT50
+00:23 00d17a80 grade gd1.cpp DIFFER(661v785) hunks=15 /d2inlT60 -- term checks as goto done (label at fn end) /d2inlT60
+00:25 00d17a80 grade 00d17a80.cpp DIFFER(593v785) hunks=29 /EHsc -- theory probe: EH cleanup placement /EHsc
+00:25 00d17a80 grade 00d17a80.cpp DIFFER(593v785) hunks=29 /EHsc /d2inlT50 -- theory probe: EH cleanup placement /EHsc /d2inlT50
+00:25 00d17a80 grade 00d17a80.cpp DIFFER(593v785) hunks=29 /EHsc /d2inlT40 -- theory probe: EH cleanup placement /EHsc /d2inlT40
+00:25 00d17a80 grade 00d17a80.cpp DIFFER(705v785) hunks=4 -- attempt 3 final regrade of best source
+00:25 00d17a80 grade sw1.cpp DIFFER(705v785) hunks=10 -- term checks as switch(bool) case true: return (successor-order probe) 
+00:25 00d17a80 grade sw1.cpp DIFFER(705v785) hunks=11 /d2inlT50 -- term checks as switch(bool) case true: return (successor-order probe) /d2inlT50
+00:25 00d17a80 grade sw1.cpp DIFFER(641v785) hunks=10 /d2inlT40 -- switch term checks T40
+00:25 00d17a80 grade sw1.cpp DIFFER(673v785) hunks=10 /d2inlT45 -- switch term checks T45
+00:25 00d17a80 grade sw1.cpp DIFFER(673v785) hunks=9 /d2inlT55 -- switch term checks T55
+00:25 00d17a80 grade sw1.cpp DIFFER(673v785) hunks=9 /d2inlT60 -- switch term checks T60
+00:25 00d17a80 grade sw1.cpp DIFFER(705v785) hunks=9 /d2inlT65 -- switch term checks T65
+

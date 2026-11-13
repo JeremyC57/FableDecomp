@@ -56,6 +56,15 @@ namespace NHeroInformationScreens { class CManager; }
 // bytes in retail; FableWin.pdb ?GetSubtitleRenderer@CPlayerGui@@QAEAAVCSubtitleRenderer@@XZ is inline in Ego_r.pdb and retail
 // (CTCTavernGame::FrameUpdate reads the singleton's byte +0xFD = +0x18 + DisplayingText +0xE5 in place, 0x005EBA74).
 class CPlayerGui : public CTBaseSingletonNoDefaultAlloc<CPlayerGui> {
+#ifdef FABLE_RETAIL_CPLAYERGUI_SCREENSHOTMESSAGE
+public:
+    // Retail opt-in (wf19, row 0x0055D180): Ego_r.pdb / FableWin.pdb ?ShowScreenshotMessage / ?HideScreenshotMessage /
+    // ?IsShowingScreenshotMessage@CPlayerGui (Ego_r 0x0044A6C0 / D0 / E0 = retail 0x004379E0 / F0 / 0x00437A00, out-of-line forwarders to
+    // PDrawNPCName, +0x248). Declarations only.
+    void ShowScreenshotMessage();                                        // 0x004379E0
+    void HideScreenshotMessage();                                        // 0x004379F0
+    bool IsShowingScreenshotMessage();                                   // 0x00437A00
+#endif
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 public:
 void AddDamageChange(float,bool);

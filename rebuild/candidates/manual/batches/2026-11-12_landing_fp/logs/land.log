@@ -1,0 +1,41 @@
+addr       parity           behav  name
+006b3ff0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006b3ff0   WARN RELOC_NAME: ?UpdateSunAndMoonPositions@CEnvironment@@AAEXXZ -> 006b2ca0 labelled 'CGameCamera_UpdateViewMatrix'
+006b3ff0   RELOCATION_MATCH PASS   Update
+00727d00   WARN RELOC_NAME: ?GetFullScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ -> 004bbff0 labelled 'CMap::DrawGetSeaLevel'
+00727d00   RELOCATION_MATCH PASS   OnAppearanceDraw
+007bf790   RELOCATION_MATCH PASS   Init
+006bfcd0   RELOCATION_MATCH PASS   GetSignPostPos
+0055d180   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+0055d180   WARN RELOC_ALIAS: _D3DXSaveSurfaceToFileW@20 -> 00bfefb6 is the import thunk 'D3DX9_25.DLL::D3DXSaveSurfaceToFileW'
+0055d180   WARN RELOC_NAME: ?ShowScreenshotMessage@CPlayerGui@@QAEXXZ -> 004379e0 labelled '_global::Forward_BoughtSomething_via0x248_004379e0'
+0055d180   RELOCATION_MATCH PASS   TakeQuickScreenshot
+00a8f9e0   RELOCATION_MATCH PASS   UploadToIndexBuffer
+00b206b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b206b0   RELOCATION_MATCH PASS   OffsetSplinePositions
+007d46d0   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007d46d0   WARN RELOC_NAME: ??$GetAllThings@VCThingCreatureBase@@V?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@VCThingFilter_IsHuman@@@CThingSearchTools@@QBEXABVCThingFilter_IsHuman@@AAV?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@@Z -> 007d4ce0 labelled 'CThingSearchTools::GetAllThings<CThingCreatureBase, std::list<CThingCreatureBase *, std::allocator<CThingCreatureBase *>>, CThingFilter_IsHuman>'
+007d46d0   RELOCATION_MATCH PASS   FadeOutTableOccupants
+0094a3b0   RELOCATION_MATCH PASS   ChooseAction
+
+WINS: 9
+  006b3ff0 RELOCATION_MATCH CEnvironment::Update
+  00727d00 RELOCATION_MATCH CTCRandomAppearanceMorph::OnAppearanceDraw
+  007bf790 RELOCATION_MATCH NThingShot::CTCShotDefinitionBase::Init
+  006bfcd0 RELOCATION_MATCH CTCBuyableHouse::GetSignPostPos
+  0055d180 RELOCATION_MATCH CTCPhotojournalCapture::TakeQuickScreenshot
+  00a8f9e0 RELOCATION_MATCH C3DPrimitive2::UploadToIndexBuffer
+  00b206b0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::OffsetSplinePositions
+  007d46d0 RELOCATION_MATCH CTCTavernGameCoinGolf::FadeOutTableOccupants
+  0094a3b0 RELOCATION_MATCH CAIStateGroup_GoToPub::ChooseAction
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CEnvironment_Update_006b3ff0
+  CTCRandomAppearanceMorph_OnAppearanceDraw_00727d00
+  NThingShotCTCShotDefinitionBase_Init_007bf790
+  CTCBuyableHouse_GetSignPostPos_006bfcd0
+  CTCPhotojournalCapture_TakeQuickScreenshot_0055d180
+  C3DPrimitive2_UploadToIndexBuffer_00a8f9e0
+  NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_OffsetSplinePositions_00b206b0
+  CTCTavernGameCoinGolf_FadeOutTableOccupants_007d46d0
+  CAIStateGroupGoToPub_ChooseAction_0094a3b0

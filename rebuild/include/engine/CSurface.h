@@ -24,6 +24,11 @@ public:
  virtual ~CSurface();
 #endif
  void Uninitialise();                                     // 0x009F2E20
+#ifdef FABLE_RETAIL_CSURFACE_GETD3DSURFACE
+ // Retail opt-in (wf19, row 0x0055D180 CTCPhotojournalCapture::TakeQuickScreenshot): FableWin.pdb ?GetD3DSurface@CSurface@@QBEPAUIDirect3DSurface9@@XZ
+ // (debug only, inline in release: the row reads BackBufferSurface.PD3DSurface, +0x30 of the display manager, in place).
+ IDirect3DSurface9* GetD3DSurface() const { return PD3DSurface; }
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_READONLYLOCK
  // Retail opt-in (chunk Q9, row 0x009F3010): Ego_r.pdb / FableWin.pdb ?ReadOnlyLock@CSurface@@QBE?AVCSurfaceLockedRect@@K@Z (hidden result,
  // `ret 8`). Needs CSurfaceLockedRect complete (engine/CSurfaceLockedRect.h) before the include; GetDimensions comes from

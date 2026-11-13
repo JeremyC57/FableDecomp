@@ -42,6 +42,12 @@ public: CTCWeaponTrail & operator=(const CTCWeaponTrail & p0);
 #else
 public:
     void SetLastProjectileWeaponTrailPoint(const C3DVector& point);
+#ifdef FABLE_RETAIL_CTCWEAPONTRAIL_UPDATEWEAPONTRAILS
+    // Overlay opt-in (row 0x007BF790 CTCShotDefinitionBase::Init): inline StatGetInterfaceType (retail tests TCI_WEAPON_TRAIL = 0x4C in
+    // place, `test ch,10h`, 0x007BFA2D) and Ego_r/FableWin ?UpdateWeaponTrails@CTCWeaponTrail@@QAEXXZ, out of line at 0x0076EFA0.
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_WEAPON_TRAIL; }
+    void UpdateWeaponTrails();                                     // 0x0076EFA0
+#endif
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
 // Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
 public:

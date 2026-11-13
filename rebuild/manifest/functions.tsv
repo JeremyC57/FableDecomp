@@ -18993,7 +18993,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00727bc0	OnSerialise	CTCRandomAppearanceMorph	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00727bf0	OnAppearanceClear	CTCRandomAppearanceMorph	__thiscall	void	1	CTCRandomAppearanceMorph *	1	yes	accepted									
 00727c20	GetMeshesUsed	CTCRandomAppearanceMorph	__thiscall	void	2	CTCRandomAppearanceMorph *,std::vector<NGraphicAppearance::CMeshInfo,std::allocator<NGraphicAppearance::CMeshInfo> > &	1	yes	accepted									
-00727d00	CTCRandomAppearanceMorph::OnAppearanceDraw	CTCRandomAppearanceMorph	__thiscall	bool	3	CTCRandomAppearanceMorph *,NGraphicAppearance::CTCGraphicAppearance &,NGraphicAppearance::CGraphicAppearanceDrawInfo const &	1	yes	accepted									
+00727d00	OnAppearanceDraw	CTCRandomAppearanceMorph	__thiscall	bool	3	CTCRandomAppearanceMorph *,NGraphicAppearance::CTCGraphicAppearance &,NGraphicAppearance::CGraphicAppearanceDrawInfo const &	1	yes	accepted									
 00728000	CTCRandomAppearanceMorph	CTCRandomAppearanceMorph	__thiscall	undefined	2	CTCRandomAppearanceMorph *,CThing *	0	yes	accepted									
 007280c0	UpdateMorphSet	CTCRandomAppearanceMorph	__thiscall	void	1	CTCRandomAppearanceMorph *	1	yes	accepted									
 007283f0	UpdateMorphSet	CTCRandomAppearanceMorph	__thiscall	void	1	CTCRandomAppearanceMorph *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CTCRandomAppearanceMorph_UpdateMorphSet_007283f0.cpp

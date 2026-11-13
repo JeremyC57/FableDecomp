@@ -88,6 +88,13 @@ public:
     long GetPriceForNextDressLevel() const;                              // 0x006BF920
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_GETSIGNPOSTPOS
+    // Retail opt-in (w22 wf19, row 0x006BFCD0): Ego_r.pdb / FableWin.pdb ?GetSignPostPos@CTCBuyableHouse@@AAE_N_NAAVC3DVector@@PAVCRightHandedSet@@@Z
+    // (private). Declaration only: no layout or vtable change.
+private:
+    bool GetSignPostPos(bool main, class C3DVector& pos, class CRightHandedSet* orientation);   // 0x006BFCD0
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
     // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;

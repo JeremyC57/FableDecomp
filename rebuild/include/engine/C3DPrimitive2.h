@@ -97,6 +97,13 @@ public:
     unsigned char ClothPrimitives[12],Data[4];
     boost::scoped_ptr<CVertexBufferWin32> VertexBuffer;
     boost::scoped_ptr<CIndexBuffer> IndexBuffer;
+#elif defined(FABLE_RETAIL_C3DPRIMITIVE2_DATA)
+    // Opt-in (wf19, row 0x00A8F9E0 UploadToIndexBuffer): Ego_r.pdb Data is boost::scoped_ptr<N3DPrimitive::CDeviceIndependent>
+    // (+0x2C retail; the includer defines CDeviceIndependent). No layout change.
+    unsigned char ClothPrimitives[12];
+    boost::scoped_ptr<N3DPrimitive::CDeviceIndependent> Data;
+    unsigned char VertexBuffer[4];
+    boost::scoped_ptr<CIndexBuffer> IndexBuffer;
 #else
     unsigned char ClothPrimitives[12],Data[4],VertexBuffer[4];
     boost::scoped_ptr<CIndexBuffer> IndexBuffer;
@@ -124,6 +131,29 @@ public:
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER
 private:
     bool CreateDegenerateTriangleIndexBuffer();                          // 0x00A90260 ?CreateDegenerateTriangleIndexBuffer@C3DPrimitive2@@AAE_NXZ
+public:
+#endif
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_UPLOADTOINDEXBUFFER
+    // Opt-in (wf19, row 0x00A8F9E0): Ego_r/FableWin ?UploadToIndexBuffer@C3DPrimitive2@@AAE_NK@Z (private) and the inline helpers
+    // it expands: ?InitIndexBuffer@C3DPrimitive2@@AAE_NAAVCIndexBuffer@@KK@Z (Ego_r 0x00BD0F20, no retail out-of-line copy),
+    // ?SetIndexBufferStatus@C3DPrimitive2@@AAEXW4EBufferStatus@1@@Z, GetRepeatingMeshBatchSize, ?GetBaseBlock@C3DPrimitive2@@QAEPAVCBaseBlock@N3DPrimitive@@K@Z.
+    // Needs FABLE_RETAIL_C3DPRIMITIVE2_ANIMATEDBLOCKS and the includer's EIndexBufferFormat (IndexFormat16) / EIndexBufferPool (IndexPoolManaged). No layout change.
+    enum EBufferStatus { };                                              // PDB type name only; enumerator names unknown
+    long GetRepeatingMeshBatchSize() { return RepeatingMeshReps > 1 ? RepeatingMeshReps : 1; }
+    N3DPrimitive::CBaseBlock* GetBaseBlock(unsigned long index) {
+        if (AnimatedBlockCount) return &AnimatedBlocks[index];
+        return &StaticBlocks[index];
+    }
+private:
+    void SetIndexBufferStatus(EBufferStatus status) { IndexBufferStatus |= status; }
+    bool InitIndexBuffer(CIndexBuffer& buffer, unsigned long length, unsigned long flags) {
+        unsigned long usage = 8;
+        EIndexBufferPool pool = IndexPoolManaged;
+        if (flags & 1) { usage = 0x18; pool = (EIndexBufferPool)2; }
+        buffer.Initialise(length, usage, IndexFormat16, pool, PT_TRIANGLE_LIST);
+        return true;
+    }
+    bool UploadToIndexBuffer(unsigned long flags);                       // 0x00A8F9E0
 public:
 #endif
 #ifdef FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS

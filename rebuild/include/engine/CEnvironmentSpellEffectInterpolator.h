@@ -16,6 +16,11 @@ class CRGBFloatColour;
 #endif
 class CEnvironmentSpellEffectInterpolator {
 public:
+#ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FRAMEUPDATE
+    // Opt-in (row 0x006B3FF0 CEnvironment::Update): Ego_r.pdb ?FrameUpdate@CEnvironmentSpellEffectInterpolator@@QAEXXZ, retail 0x006B8640
+    // (landed). Declaration only.
+    void FrameUpdate();                                                  // 0x006B8640
+#endif
     void ScreenFilterSetFlags(const NScreenEffect::CScreenEffectPriorityStack::ThingGraphicArgPassers& things, void* handle);  // 0x006B83E0
 #ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FADETO
     // Opt-in (chunk 1010, row 0x008A9880 CGameScriptInterface::ScreenFilterFadeTo): Ego_r.pdb

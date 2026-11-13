@@ -1,6 +1,6 @@
 #ifndef FABLE_ENGINE_CUSERPROFILEMANAGER_H
 #define FABLE_ENGINE_CUSERPROFILEMANAGER_H
-#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME
+#if defined(FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME) || defined(FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME_MEMBER)
 #include "fable_string.h"
 #endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD
@@ -42,6 +42,13 @@ public:
 private:
     static CWideString m_strProfileName;                                  // 0x013B7D54
 public:
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME_MEMBER
+    // Retail opt-in (wf19, row 0x0055D180): struct_layouts_egor.tsv CUserProfileManager ProfileName (CWideString) at +0x08 after the vptr and
+    // CBaseClass; read in place by TakeQuickScreenshot (lea edx,[eax+8]) for GetValidProfileName. Layout-only prefix: do not combine with
+    // the VOLUME / SCOREBOARD layout opt-ins.
+    unsigned char _pad_profilename_0x00[0x08];                           // +0x00 vptr, CBaseClass
+    CWideString ProfileName;                                              // +0x08
 #endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
     // Retail opt-in (chunk F2, row 0x00406AE0): Ego_r.pdb / FableWin.pdb ?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z

@@ -138,6 +138,10 @@ long GetOnHitExplodingEffect()const;void StopTrailEffect();
 #endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_OBJECT_AUGMENTATIONS; }
+#ifdef FABLE_RETAIL_CTCOBJECTAUGMENTATIONS_COPYFROMTHING
+    // Overlay opt-in (row 0x007BF790): Ego_r/FableWin ?CopyAugmentationDataFromThing@CTCObjectAugmentations@@QAEXABVCThing@@@Z, out of line 0x00768210.
+    void CopyAugmentationDataFromThing(const CThing& thing);        // 0x00768210
+#endif
     long GetFreeSlot() const;                                        // 0x00765D50
     void AttachAugmentationToSlot(long augmentationDefIndex, long slot);   // 0x00768120
     static float __fastcall GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations);   // 0x007661C0

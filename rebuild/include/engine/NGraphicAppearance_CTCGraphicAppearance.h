@@ -58,6 +58,10 @@ class CCharString;
 #include "engine/CIVCountedPointer.h"
 class CEngineMeshEffect;
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_RANDOMMORPH
+#include "engine/CIVCountedPointer.h"
+class CEngineMeshEffect; class C3DAnimationInterpolator; class C3DPositionInterpolator; class C3DOrientationInterpolator;
+#endif
 namespace NGraphicAppearance {
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
 class CPrimitive; class CAGraphicAppearanceComponent;
@@ -98,6 +102,11 @@ protected:
  signed char ByPassColorFilter;
 public:
  const CEngineGraphic& GetMainGraphic()const{return MainGraphic;}
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETFORCERESEND
+ // Overlay opt-in (row 0x007BF790 CTCShotDefinitionBase::Init): FableWin.pdb ?SetForceResendEveryRenderFrame@CTCGraphicAppearance@NGraphicAppearance@@QAEX_N@Z
+ // (0x017DD73C), inline in retail (`or byte ptr [eax+59h],2`, 0x007BF9FE).
+ void SetForceResendEveryRenderFrame(bool force){ForceResendEveryRenderFrame=force;}
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_BYPASSCOLORFILTER
  // Row 0x00881A40 opt-in: Ego_r.pdb / FableWin.pdb ?GetByPassColorFilter@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ (inline in
  // retail: `mov al,[ebp+5Bh] ; test al,al ; setg cl`, 0x00881BF3) and ?SetByPassColorFilter@..@@QAEX_N@Z (out of line 0x004BFB00).
@@ -136,6 +145,21 @@ public:
     float GetFadeDistance() const;
     CPrimitive* AddPersistentPrimitive(const CPrimitive&);
     void SetPrimitiveGraphics(CPrimitive*,const CEnginePrimitive&,unsigned short);
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_RANDOMMORPH
+    // Nested opt-in (row 0x00727D00 CTCRandomAppearanceMorph::OnAppearanceDraw; needs _MOVEMENT and _FLARE; GetFullScale 0x004BBFF0
+    // comes from _FULLSCALE): Ego_r.pdb ?GetAlpha@..@@QBEEXZ (inline in retail: `mov dl,[esi+5Ah]`), ?GetTintColour@..@@QBE?BVCRGBColour@@XZ
+    // (0x004BD040), ?GetPMeshEffect@..@@QAE?AV?$CIVCountedPointer@VCEngineMeshEffect@@@@XZ (0x004BCF50) and
+    // ?RefreshPrimitiveAnimationAndPos@..@@QAEXPAVCPrimitive@2@ABVC3DAnimationInterpolator@@ABVC3DPositionInterpolator@@ABVC3DOrientationInterpolator@@@Z
+    // (0x004BCFE0), all out of line except GetAlpha. Declarations only: no layout change.
+    unsigned char GetAlpha() const { return Alpha; }
+#ifndef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_LIGHTINGCHANNEL
+    const CEnginePrimitiveThemeChannelDesc& PeekLightingChannel() const { return LightingChannel; }   // FableWin.pdb, inline
+#endif
+    const CRGBColour GetTintColour() const;                      // 0x004BD040
+    CIVCountedPointer<CEngineMeshEffect> GetPMeshEffect();       // 0x004BCF50
+    void RefreshPrimitiveAnimationAndPos(CPrimitive* primitive, const C3DAnimationInterpolator& anim, const C3DPositionInterpolator& pos,
+                                         const C3DOrientationInterpolator& orientation);   // 0x004BCFE0
 #endif
     C3DVector GetFocalPos(float time) const;                 // 0x004C1060
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPERNAMES

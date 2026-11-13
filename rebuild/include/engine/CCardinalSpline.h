@@ -13,6 +13,12 @@ public:
  long GetControlPointCount()const{return ControlPoints.size();}
  CArray<C3DVector> GetControlPoints()const{return ControlPoints;}
  void SetControlPoints(const CArray<C3DVector>& points){ControlPoints=points;}
+#ifdef FABLE_RETAIL_CCARDINALSPLINE_CONTROLPOINT
+ // FableWin.pdb ?GetControlPoint@CCardinalSpline@@QBEABVC3DVector@@J@Z / ?SetControlPoint@CCardinalSpline@@QAEXJABVC3DVector@@@Z,
+ // expanded in retail (0x00B206B0 OffsetSplinePositions). Bodies only: no layout change, default path unchanged.
+ const C3DVector& GetControlPoint(long index)const{return ControlPoints[index];}
+ void SetControlPoint(long index,const C3DVector& point){ControlPoints[index]=point;}
+#endif
 private:
  CArray<C3DVector> ControlPoints;float Tension;bool EndPointsConnected;
 };
