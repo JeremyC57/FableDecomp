@@ -1,0 +1,44 @@
+--- rebuild/include/engine/CTCInventoryStats.h	2026-11-13 08:07:19.182365235 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC1/hdr/engine/CTCInventoryStats.h	2026-11-13 09:41:16.143705442 +0000
+@@ -9,6 +9,9 @@
+ #include "engine/EHeroAbility.h"
+ #endif
+ class CTCHeroExperience;class CTCHeroStats;
++#ifdef FABLE_RETAIL_CTCINVENTORYSTATS_PERSONALITY
++enum EHeroSexuality;                                         // MS forward enum (no enumerator is needed by the rows)
++#endif
+ #ifdef FABLE_RETAIL_CTCINVENTORYSTATS_TIMESPENT
+ namespace NGameText { class CDataBank; }
+ #endif
+@@ -56,6 +59,24 @@
+ public: void AddHeroAbility(NUISystem::CComponent *,EHeroAbility,float &);
+ #endif
+ public: virtual NUISystem::CComponent * ConstructPersonalityListPC(NUISystem::CComponent *);
++#ifdef FABLE_RETAIL_CTCINVENTORYSTATS_PERSONALITY
++// Nested opt-in (chunk 4006, rows 0x005D1F0C ConstructPersonalityListPC / 0x005CE0E6 ConstructPersonalityList): the non-virtual
++// helpers the personality page calls, all out of line in retail and all in Ego_r.pdb / FableWin.pdb with these exact manglings:
++// ?BuildHeroClass@CTCInventoryStats@@QAE?AVCWideString@@XZ 0x005CD4C4, ?BuildRenownString@..@@QAE?AVCWideString@@XZ 0x005CD433,
++// ?ConvertMap@..@@QAEXABV?$map@KJ..@std@@AAV?$list@U?$pair@VCWideString@@J@std@@..@3@@Z 0x005CD6B7,
++// ?CreateTitle@..@@QAEXABVCWideString@@PAVCComponent@NUISystem@@_N@Z 0x005CCF0E, ?CreateTitlePC@.. 0x005CCFFC,
++// ?GetFatnessAsString@..@@QAE?AVCWideString@@M@Z 0x005CC862, ?GetHeroSexualityAsString@..@@QAE?AVCWideString@@W4EHeroSexuality@@@Z
++// 0x005CCBBD, ?GetTimeSpentInGame@..@@SI?AVCWideString@@KPBVCDataBank@NGameText@@@Z 0x005CCC91 (static __fastcall).
++// Declarations only: no layout change. The includer defines FABLE_RETAIL_STLP_LIST (std::list) before this header.
++public: CWideString BuildHeroClass();
++public: CWideString BuildRenownString();
++public: void ConvertMap(const std::map<unsigned long,long,std::less<unsigned long>,std::allocator<std::pair<unsigned long const ,long> > > &,std::list<std::pair<CWideString,long>,std::allocator<std::pair<CWideString,long> > > &);
++public: void CreateTitle(const CWideString &,NUISystem::CComponent *,bool);
++public: void CreateTitlePC(const CWideString &,NUISystem::CComponent *,bool);
++public: CWideString GetCreatureGroupAsString(unsigned long);   // 0x005CC9AD ?GetCreatureGroupAsString@CTCInventoryStats@@QAE?AVCWideString@@K@Z (landed row)
++public: CWideString GetFatnessAsString(float);
++public: CWideString GetHeroSexualityAsString(EHeroSexuality);
++#endif
+ private: std::map<unsigned long,long,std::less<unsigned long>,std::allocator<std::pair<unsigned long const ,long> > > CreaturesKilled;
+ private: CThing * pMannequin;
+ private: bool UseMannequin;
+@@ -64,5 +85,5 @@
+ private: const CTCHeroStats * pTCHeroStats;
+ };
+ // Native Alloc004d2fdc pushes0x158; original fields plus inherited alignment agree.
+-FABLE_STATIC_ASSERT(sizeof(CTCInventoryStats)==0x158);
++FABLE_STATIC_ASSERT_AT(67, sizeof(CTCInventoryStats)==0x158);
+ #endif

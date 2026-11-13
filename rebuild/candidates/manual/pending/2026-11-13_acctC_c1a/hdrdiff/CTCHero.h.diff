@@ -1,0 +1,24 @@
+--- rebuild/include/engine/CTCHero.h	2026-11-13 08:07:19.182365235 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC1/hdr/engine/CTCHero.h	2026-11-13 09:41:16.146189455 +0000
+@@ -20,6 +20,11 @@
+ class CTCHero : public CTCBase {
+ public:
+     void ProcessPendingTutorials();                                      // 0x006C9FC0
++#ifdef FABLE_RETAIL_CTCHERO_TITLEGUITEXT
++    // Opt-in (chunk 4006, rows 0x005D1F0C / 0x005CE0E6): Ego_r.pdb / FableWin.pdb ?GetTitleGuiText@CTCHero@@QBE?AVCWideString@@XZ,
++    // out of line at 0x006CA0A0 (landed; hidden result). Declaration only.
++    CWideString GetTitleGuiText() const;                                 // 0x006CA0A0
++#endif
+     virtual void FrameUpdate();                                          // slot 9 0x006C9FD0
+ #ifdef FABLE_RETAIL_CTCHERO_TUTORIAL
+     // Opt-in (chunk 1010, row 0x00896390 CGameScriptInterface::OpenChest): FableWin.pdb ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z,
+@@ -67,7 +72,7 @@
+ #endif
+ };
+ #ifdef FABLE_RETAIL_CTCHERO_TITLE
+-FABLE_STATIC_ASSERT(sizeof(CTCHero) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CTCHero, WeaponsUsable) == 0x0c);
++FABLE_STATIC_ASSERT_AT(70, sizeof(CTCHero) == 0x38);
++FABLE_STATIC_ASSERT_AT(71, offsetof(CTCHero, WeaponsUsable) == 0x0c);
+ #endif
+ #endif

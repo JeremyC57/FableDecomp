@@ -1,0 +1,48 @@
+--- rebuild/include/engine/CTCInventoryItem.h	2026-11-13 08:07:19.182365235 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC1/hdr/engine/CTCInventoryItem.h	2026-11-13 09:41:16.144806074 +0000
+@@ -109,6 +109,11 @@
+     // Row 0x005AD571: Ego_r.pdb / FableWin.pdb ?IsClothing@CTCInventoryItem@@SI_NJ@Z, out of line.
+     static bool __fastcall IsClothing(long defIndex);                                 // 0x005D9C60
+ #endif
++#ifdef FABLE_RETAIL_CTCINVENTORYITEM_ISTROPHY
++    // Nested opt-in (chunk 4006, rows 0x005D1F0C / 0x005CE0E6): Ego_r.pdb / FableWin.pdb ?IsTrophy@CTCInventoryItem@@SI_NJ@Z, static
++    // `__fastcall`, out of line at 0x005D9930 (landed). Declaration only.
++    static bool __fastcall IsTrophy(long defIndex);                                   // 0x005D9930
++#endif
+ #ifdef FABLE_RETAIL_CTCINVENTORYITEM_DETAILS
+     // Nested opt-in (chunk 1002, CTCInventoryWeapons description rows 0x005C6B26 / 0x005C71AA / 0x005C7452): Ego_r.pdb / FableWin.pdb
+     // ?GetDetails@CTCInventoryItem@@SI?AVCWideString@@J@Z, static `__fastcall`, out of line at 0x005D9630 (donor order CacheDef /
+@@ -185,7 +190,7 @@
+ #endif
+ };
+ #pragma pack(pop)
+-FABLE_STATIC_ASSERT(sizeof(CTCInventoryItem) == 0x28);
++FABLE_STATIC_ASSERT_AT(188, sizeof(CTCInventoryItem) == 0x28);
+ #else
+ class CDefPointeeBase;
+ struct CTCInventoryBase;
+@@ -205,15 +210,15 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTCInventoryItem) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, slot) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, field8) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, PDef_Object) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, PInventory) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, call) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, InventoryUIDToAttachTo) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, DefaultItem) == 0x20);
++FABLE_STATIC_ASSERT_AT(208, sizeof(CTCInventoryItem) == 0x28);
++FABLE_STATIC_ASSERT_AT(209, offsetof(CTCInventoryItem, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(210, offsetof(CTCInventoryItem, slot) == 0x4);
++FABLE_STATIC_ASSERT_AT(211, offsetof(CTCInventoryItem, field8) == 0x8);
++FABLE_STATIC_ASSERT_AT(212, offsetof(CTCInventoryItem, PDef_Object) == 0xc);
++FABLE_STATIC_ASSERT_AT(213, offsetof(CTCInventoryItem, PInventory) == 0x10);
++FABLE_STATIC_ASSERT_AT(214, offsetof(CTCInventoryItem, call) == 0x14);
++FABLE_STATIC_ASSERT_AT(215, offsetof(CTCInventoryItem, InventoryUIDToAttachTo) == 0x18);
++FABLE_STATIC_ASSERT_AT(216, offsetof(CTCInventoryItem, DefaultItem) == 0x20);
+ 
+ #endif // FABLE_RETAIL_CTCINVENTORYITEM
+ 

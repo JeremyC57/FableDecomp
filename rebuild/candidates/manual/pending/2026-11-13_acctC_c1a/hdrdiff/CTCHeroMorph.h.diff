@@ -1,0 +1,34 @@
+--- rebuild/include/engine/CTCHeroMorph.h	2026-11-13 08:07:19.182365235 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC1/hdr/engine/CTCHeroMorph.h	2026-11-13 09:41:16.146713887 +0000
+@@ -3,7 +3,7 @@
+ // Overlay header (chunk 1009b): there is no promoted engine/CTCHeroMorph.h (the generated flattened layout sits in
+ // engine/_quarantine/ with a reconciliation conflict). This file only carries a retail opt-in; without it the class is
+ // forward-declared.
+-#if defined(FABLE_RETAIL_CTCHEROMORPH) || defined(FABLE_RETAIL_CTCHEROMORPH_TATTOOTHINGS)
++#if defined(FABLE_RETAIL_CTCHEROMORPH) || defined(FABLE_RETAIL_CTCHEROMORPH_TATTOOTHINGS) || defined(FABLE_RETAIL_CTCHEROMORPH_TATTOONAMES)
+ // Retail opt-in (chunk 1009b, row 0x0059FC17 CTCInventoryTrade::AlreadyHaveSpecial): the hero's morph component as the trade
+ // screen reaches it. RTTI .?AVCTCHeroMorph@@ : CTCAppearanceMorphBase : CTCBase (ghidra_out/rtti_bases.tsv); no
+ // CTCAppearanceMorphBase header exists, so the class derives CTCBase directly (both single-inheritance at offset 0). The GetTC key
+@@ -18,6 +18,9 @@
+ #include "engine/CTattooDef.h"
+ #include "stlport/fable_containers.h"
+ class CThingBaseDef;
++#ifdef FABLE_RETAIL_CTCHEROMORPH_TATTOONAMES
++class CWideString;
++#endif
+ class CTCHeroMorph : public CTCBase {
+ public:
+     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_APPEARANCE_MORPH; }
+@@ -33,6 +36,12 @@
+     // Declaration only.
+     void GetTattooThings(std::vector<CDefPointer<const CThingBaseDef> >& tattoos) const;   // 0x0071DE20
+ #endif
++#ifdef FABLE_RETAIL_CTCHEROMORPH_TATTOONAMES
++    // Nested opt-in (chunk 4006 / acctC agentC1, rows 0x005D1F0C / 0x005CE0E6 CTCInventoryStats::ConstructPersonalityListPC /
++    // ConstructPersonalityList): Ego_r.pdb / FableWin.pdb ?GetTattooNames@CTCHeroMorph@@QAEXAAV?$vector@VCWideString@@V?$allocator@
++    // VCWideString@@@std@@@std@@@Z (non-const), out of line at 0x0071CE80 (landed). Declaration only.
++    void GetTattooNames(std::vector<CWideString>& names);                // 0x0071CE80
++#endif
+ };
+ #else
+ class CTCHeroMorph;
