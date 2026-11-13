@@ -57,3 +57,23 @@
   Named mask local (`bookmark_mask = CurrentBookmarkMask`) and `CStateInfo* const entry = &state` change load order (3 hunks).
 - Headers: hdr/engine/CRenderStateManager.h (full copy of HEAD + the three opt-ins, README lines) on top of the earlier overlay; no flags.
 - Made-up local names: origin, bookmark_mask, dirty (descriptive; no PDB local records). Names otherwise unchanged from attempt 2.
+
+## repair (verifier findings) -- still RELOCATION_MATCH (also LANDVERIFY_STRICT_HEADERS=1), vt PASS; probes in r/
+- Comments only (no code change): src header now has a `// Retail-volatile:` line (0x00B60C79..0x00B60C9C load order), a FITTED
+  paragraph for the `origin` locals citing the mid-loop SetAlphaBlendEnable(false) before loop block B (0x00B6094A..0x00B60985; without
+  them 0x00B6097C/0x00B60982 loads swap, r/noorig.cpp 2 hunks), and the FITTED record-count paragraph citing 0x00B60665 mov edi,[eax+0x2814]
+  / 0x00B6066B mov edx,[ecx+8] (without BOOKMARK/DIRTY the registers swap, r/nobd.cpp 1 hunk). hdr CRenderStateManager.h opt-in
+  comments (SETRENDERSTATE_BOOKMARK, ADDSTATE_DIRTY) carry the same citation.
+- Made-up names (descriptive, no PDB record anywhere): locals `origin`, `bookmark_mask`, `dirty`; function statics `BlurOffsetScale`
+  (0x0139A6B0), `NoBlurPasses` (0x0139A6B4), `QuadIndices` (0x0139A6B8) (DOSSIER: no PDB names; Fable PDBs not on this lane's disk).
+
+## Verifier findings not applied
+- Finding 1 (`volatile` on BlurOffsetScale / NoBlurPasses): NOT dropped, needs a COORDINATOR DECISION. Without it the row does not match:
+  r/nv1.cpp (both non-volatile) and r/nv2.cpp (`*=` form) DIFFER 3 hunks at the loop end (retail 0x00B60C88 mov [i],eax / 0x00B60C96
+  mov ecx,[0x0139A6B4] after the second fld [0x0139A6B0]; ours loads N right after `mov eax,[i]` and stores i after the cmp);
+  r/v_n.cpp / r/v_s.cpp (volatile on only one static) same 3 hunks; r/nv3.cpp (N copied to a local + break form) 88 hunks.
+  Prior attempts (~300 grades: loop shapes, int/unsigned, extern/global N, address escapes, flags, QFE compiler) found no other text.
+  Honest status: no PDB LF_MODIFIER and no vendor source is available (Fable PDBs not on this disk); the only evidence is that retail's
+  loop-end order needs the volatile load->load edge. No read is dropped without it, so ASM_RULES' first bullet is not literally met;
+  the source now documents this in a `// Retail-volatile:` line. If the coordinator rejects it, the row is DIFFER(5302v5302) 3 hunks
+  with r/nv1.cpp as the best non-volatile source.

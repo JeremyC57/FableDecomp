@@ -73,3 +73,9 @@
 00:32 005a04f7 grade r1.cpp RELOCATION_MATCH -- repair: strict regrade
 00:33 005a04f7 grade CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp RELOCATION_MATCH -- repair: final source
 00:33 005a04f7 grade CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp RELOCATION_MATCH -- repair: final strict
+01:31 005a04f7 grade src.cpp RELOCATION_MATCH -- 
+01:31 005a04f7 grade src.cpp SRC_FAIL -- 
+01:40 005a04f7 grade CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp RELOCATION_MATCH -- repair: callee comment names ShareData 0x00429460, CBankFile::EntryExists 0x009CC190
+01:40 005a04f7 grade CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp RELOCATION_MATCH -- repair: strict regrade
+01:52 005a04f7 grade src.cpp RELOCATION_MATCH -- 
+01:52 005a04f7 grade src.cpp SRC_FAIL -- 

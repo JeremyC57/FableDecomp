@@ -9,3 +9,4 @@
 - Strings: the three Msg* tests use "" (retail 0x0122D70E-style empty literal), not "SCRIPT_NAME_HERO". Made-up local names: unusedHandle, timeUp, guard1H.. (locals only).
 
 - repair (2026-11-12): header now justifies the visible CScriptThing::GetPos / IsAlive bodies (inline in retail, no call to 0x004AA980 / 0x004AB130; copied from the landed rows). Still RELOCATION_MATCH, strict headers too.
+- repair (2026-11-13): Shape comment now explains the local `game` copy (retail edi reuse across RunCutsceneMacro: 0x00D6E333/0x00D6E372, 0x00D6E99F/0x00D6E9DE, 0x00D6EBC3/0x00D6EC1B; same spelling as landed PlayCutscene 0x00D848D0). Still RELOCATION_MATCH, strict headers too.

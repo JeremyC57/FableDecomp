@@ -1,0 +1,21 @@
+18:49 00bcff10 grade v1.cpp SRC_FAIL -- first full draft; bank decl order 3,4 v 4,3
+18:49 00bcff10 grade v2.cpp SRC_FAIL -- first full draft; bank decl order 3,4 v 4,3
+18:49 00bcff10 grade v1.cpp SRC_FAIL -- first full draft + windows/d3d9; bank decl order 3,4 v 4,3
+18:49 00bcff10 grade v2.cpp SRC_FAIL -- first full draft + windows/d3d9; bank decl order 3,4 v 4,3
+18:49 00bcff10 grade v1.cpp SRC_FAIL -- first full draft + Direct3D9Types; bank decl order 3,4 v 4,3
+18:49 00bcff10 grade v2.cpp SRC_FAIL -- first full draft + Direct3D9Types; bank decl order 3,4 v 4,3
+18:49 00bcff10 grade v1.cpp RELOCATION_MATCH -- first full draft + SCOPED_PTR; bank decl order 3,4 v 4,3
+18:50 00bcff10 grade src.cpp RELOCATION_MATCH -- final src with header comment; v2 bank order 4,3
+18:50 00bcff10 grade src.cpp RELOCATION_MATCH -- strict regrade
+20:54 00bcff10 grade src.cpp RELOCATION_MATCH -- 
+20:54 00bcff10 grade src.cpp SRC_FAIL -- 
+20:54 00bcff10 grade src.cpp SRC_FAIL -- 
+23:30 00bcff10 grade src.cpp RELOCATION_MATCH -- repair: NAME_FIXES + NOTES descriptive (no source change)
+23:30 00bcff10 grade src.cpp RELOCATION_MATCH -- repair: strict headers
+01:25 00bcff10 grade src.cpp RELOCATION_MATCH -- 
+01:29 00bcff10 grade src.cpp TIMEOUT -- 
+01:31 00bcff10 grade src.cpp TIMEOUT -- 
+01:40 00bcff10 grade src.cpp RELOCATION_MATCH -- repair: GPResourceManager spelling
+01:40 00bcff10 grade src.cpp RELOCATION_MATCH -- repair: strict
+01:47 00bcff10 grade src.cpp RELOCATION_MATCH -- 
+01:51 00bcff10 grade src.cpp TIMEOUT -- 

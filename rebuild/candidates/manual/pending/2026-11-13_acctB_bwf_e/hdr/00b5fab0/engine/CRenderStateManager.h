@@ -345,6 +345,9 @@ private:
     // FITTED (FableWin.pdb's debug SetRenderState, 213 instructions, carries assert code: its size proves nothing here).
     // + FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_BOOKMARK (row 0x00B5FAB0 CaptureBackBuffer): the state's bookmark mask read into a
     // named local for the bookmark test as well (code-identical; one more named symbol per expansion; FITTED by the count ruler).
+    // Retail bytes that need it (with ADDSTATE_DIRTY): row 0x00B5FAB0's loop-top SetAlphaBlendEnable(false) at 0x00B60665
+    // mov edi,[eax+0x2814] (CurrentBookmarkMask -> edi) / 0x00B6066B mov edx,[ecx+8] (BookmarkMask -> edx) / test edi,edx; without the
+    // two opt-ins VC7.1 swaps the registers (mask -> edx, flags -> edi). No PDB local record: `bookmark_mask` is a made-up name.
     FABLE_FORCEINLINE void SetRenderState(unsigned long value, CStateInfo& state)
     {
         const unsigned long desired_state = state.DesiredState;
@@ -385,6 +388,8 @@ private:
 #ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_ADDSTATE_DIRTY
         // Opt-in (row 0x00B5FAB0 CaptureBackBuffer): the dirty flag read into a named local for the test. Code-identical; one more
         // named symbol per expansion (the record-count tie of the expanded setters, see SETRENDERSTATE_DESIRED). FITTED.
+        // Retail bytes that need it: row 0x00B5FAB0 0x00B60665 mov edi,[eax+0x2814] / 0x00B6066B mov edx,[ecx+8] (registers swap
+        // without it, see SETRENDERSTATE_BOOKMARK). No PDB local record: `dirty` is a made-up name.
         const bool dirty = state.DirtyListFlag;
         if (!dirty) {
 #else

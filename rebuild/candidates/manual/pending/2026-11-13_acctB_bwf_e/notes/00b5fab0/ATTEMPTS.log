@@ -295,3 +295,19 @@
 23:42 00b5fab0 grade h1.cpp RELOCATION_MATCH -- h1 regrade on the clean overlay (DESIRED+BOOKMARK+DIRTY)
 23:42 00b5fab0 grade final.cpp RELOCATION_MATCH -- final source (comment cleanup)
 23:43 00b5fab0 grade final.cpp RELOCATION_MATCH -- strict-header regrade of final
+01:32 00b5fab0 grade src.cpp RELOCATION_MATCH -- 
+01:32 00b5fab0 grade src.cpp SRC_FAIL -- 
+01:41 00b5fab0 grade base.cpp RELOCATION_MATCH -- repair: baseline + drop volatile probes
+01:41 00b5fab0 grade nv1.cpp DIFFER(5302v5302) hunks=3 -- repair: drop volatile probes
+01:41 00b5fab0 grade nv2.cpp DIFFER(5302v5302) hunks=3 -- repair: drop volatile probes
+01:41 00b5fab0 grade v_n.cpp DIFFER(5302v5302) hunks=3 -- repair: single-volatile probes + passes local
+01:41 00b5fab0 grade v_s.cpp DIFFER(5302v5302) hunks=3 -- repair: single-volatile probes + passes local
+01:41 00b5fab0 grade nv3.cpp DIFFER(5335v5302) hunks=88 -- repair: single-volatile probes + passes local
+01:42 00b5fab0 grade fix1.cpp RELOCATION_MATCH -- repair: comments (retail-volatile line, origin/bookmark/dirty citations)
+01:42 00b5fab0 grade fix1.cpp RELOCATION_MATCH -- repair: strict headers
+01:42 00b5fab0 grade nobd.cpp DIFFER(5302v5302) hunks=1 -- repair: check fitted-local citations
+01:42 00b5fab0 grade noorig.cpp DIFFER(5302v5302) hunks=2 -- repair: check fitted-local citations
+01:42 00b5fab0 grade noorig.cpp DIFFER(5302v5302) hunks=2 -- repair: origin citation hunks
+01:43 00b5fab0 grade 00b5fab0.cpp RELOCATION_MATCH -- repair: hdr opt-in citations
+01:43 00b5fab0 grade 00b5fab0.cpp RELOCATION_MATCH -- repair: strict
+01:43 00b5fab0 grade 00b5fab0.cpp RELOCATION_MATCH -- repair: final regrade

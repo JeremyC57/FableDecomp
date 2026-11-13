@@ -14,11 +14,24 @@
 //   weights (symbol records that fix the mid-loop setter's load order). CRenderTarget has no shared header: local model (Ego_r: CBaseClass
 //   base, RenderToSurface +4, ZBufferSurface +0x14, implicit destructor -- an empty user one stores the vtable, retail does not).
 //   Function statics BlurOffsetScale / NoBlurPasses / QuadIndices are descriptive names (no PDB record).
-//   BlurOffsetScale / NoBlurPasses are `static volatile` tweakables: retail orders the second `fld BlurOffsetScale` before
-//   `mov ecx,[NoBlurPasses]` at the loop end (a load->load edge only volatile gives). The loop blocks name the -1/128 origin tap.
-//   Record-count fit (the lane's bookmark test/or register tie): the expanded SetRenderState / AddStateToUpdateList carry three named
-//   locals (hdr opt-ins SETRENDERSTATE_DESIRED + _BOOKMARK, ADDSTATE_DIRTY; 12 expansions = 36 symbols, a dead-local ruler put the
-//   needed count at 36..44, matched here with 0..3 diagnostic units to spare).
+//   BlurOffsetScale / NoBlurPasses are `static volatile` tweakables (see the Retail-volatile line; coordinator decision pending: no
+//   PDB LF_MODIFIER or vendor source backs it, the evidence is the loop-end schedule only).
+// Retail-volatile: 0x00B60C79 fld [0x0139A6B0] / 0x00B60C83..0x00B60C88 mov eax,[i]; inc eax; mov [i],eax / 0x00B60C90 fld [0x0139A6B0]
+//   then 0x00B60C96 mov ecx,[0x0139A6B4]; cmp eax,ecx -- retail loads NoBlurPasses AFTER the second BlurOffsetScale load and after the
+//   i store. Without volatile on both statics VC7.1 hoists `mov ecx,[0x0139A6B4]` up to right after `mov eax,[i]` and stores i after
+//   the cmp (r/nv1.cpp: DIFFER, 3 hunks, all at 0x00B60C87..0x00B60C9C; volatile on only one of the two: same 3 hunks). The c2 DAG
+//   (prior v2/sch_base.json) has no edge fld scale -> load N without volatile (load-N prio 38912 > inc 7168); the volatile
+//   load->load order edge is the only text found that gives retail's order (no read is dropped either way).
+//   FITTED origin locals: the two loop blocks name the -1/128 origin tap (`const float origin`, no code of its own) only to add one
+//   symbol record per block: without them the mid-loop inline SetAlphaBlendEnable(false) in front of loop block B loads in the wrong
+//   order (retail 0x00B6094A fld [0x0139A6B0]; fmul [esp+28]; 0x00B60954 mov ecx,[GPRenderManager]; mov edx,[ecx+0x28BC]; cmp edx,ebx;
+//   fstp; lea eax,[ecx+0x28B8]; 0x00B6096C fld ...; 0x00B6097C mov edi,[ecx+0x2814]; 0x00B60982 mov edx,[eax+8]; test edi,edx).
+//   FITTED record count (the lane's bookmark test/or register tie): the expanded SetRenderState / AddStateToUpdateList carry three named
+//   locals that leave no code (hdr opt-ins SETRENDERSTATE_DESIRED `desired_state`, SETRENDERSTATE_BOOKMARK `bookmark_mask`,
+//   ADDSTATE_DIRTY `dirty`; 12 expansions = 36 symbols, a dead-local ruler put the needed count at 36..44, matched here with 0..3
+//   diagnostic units to spare). Retail bytes that need them: the loop-top inline SetAlphaBlendEnable(false) at 0x00B60665
+//   mov edi,[eax+0x2814] (CurrentBookmarkMask -> edi) / 0x00B6066B mov edx,[ecx+8] (state BookmarkMask -> edx) / test edi,edx; without
+//   bookmark_mask / dirty the two registers come out swapped (edx / edi).
 #define FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_DESIRED
 #define FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_BOOKMARK
 #define FABLE_RETAIL_CRENDERSTATEMANAGER_ADDSTATE_DIRTY

@@ -6,3 +6,4 @@
 - engine/CRenderStateManager.h (row 0x00B5FAB0): full copy of the current repo header + FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_DESIRED (chunk 2048 / bwf2 0x00B72180 text, named desired_state local in SetRenderState)
 - engine/CRenderStateManager.h (row 0x00B5FAB0): + FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_BOOKMARK (nested in DESIRED: named bookmark_mask = state.BookmarkMask for the bookmark test; code-identical, FITTED record count)
 - engine/CRenderStateManager.h (row 0x00B5FAB0): + FABLE_RETAIL_CRENDERSTATEMANAGER_ADDSTATE_DIRTY (AddStateToUpdateList: named dirty = state.DirtyListFlag for the test; code-identical, FITTED record count)
+- engine/CRenderStateManager.h (row 0x00B5FAB0, repair): BOOKMARK / DIRTY opt-in comments now cite 0x00B60665 mov edi,[eax+0x2814] / 0x00B6066B mov edx,[ecx+8] (registers swap without them); bookmark_mask / dirty are made-up names.

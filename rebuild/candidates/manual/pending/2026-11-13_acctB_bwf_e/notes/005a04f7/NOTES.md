@@ -38,6 +38,10 @@
   0x0059B79A / 0x0059C0C6 PDB signatures (CComponent*, CComponent*, EItem_Menu_Type&), 0x0042925C ReleaseData<CText> (chunk-735 label
   ~CCountedPointer<CText> superseded by labels_agentNF_2026-11-10), 0x004115A0 CBasicString<char>::operator== (landed CBasicStringChar).
 
+## 0x005A04F7 repair pass 2 (callee comment names)
+- Applied: header comment now names 0x00429460 as `CCountedPointer<CText>::SetStaticCast (inline) -> ShareData 0x00429460` and
+  0x009CC190 as `CBankFile::EntryExists` (inherited by CDataBank). Comment-only; RELOCATION_MATCH (also strict headers), test PASS.
+
 ## Verifier findings not applied
 - Check 5 template spellings (GetDef<T> `out->SetDynamicCast(def)` v landed 0x0042B312 `out = def`; template CBasicString<T>::operator== v
   landed 0x004115A0 non-template CBasicStringChar): names agree (CDefinitionManager::GetDef, operator== -- the latter's wrong class name

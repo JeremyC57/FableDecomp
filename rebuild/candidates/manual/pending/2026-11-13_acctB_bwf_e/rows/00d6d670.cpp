@@ -24,7 +24,11 @@
 //   VC7.1's own inline budget in this 5.8 KB body once every body is visible; the map needs STLport's separate no-argument
 //   constructor (FABLE_RETAIL_STLP_MAP: retail passes only `this` to 0x00CDBF70); the wait loop is a top-tested do/while (retail
 //   tests ExecutionerInterrupted at the head and loops on !timeUp at the bottom); the escape cut-scene's locals sit in an inner
-//   scope (MissionSucceeded is stored after their destructors). Header overlay: FABLE_RETAIL_CQ_HANGINGTREEEVIL_CONCLUSION declares
+//   scope (MissionSucceeded is stored after their destructors). Each of the three cut-scene blocks copies Game into a local
+//   (`CGameScriptInterfaceBase* game = Game;`) because retail loads it once into edi and reuses it for both slot-379
+//   PauseAllNonScriptedEntities calls without reloading [this+0x40] after RunCutsceneMacro: mov edi,[esi+0x40] at 0x00D6E333,
+//   calls 0x00D6E33C / 0x00D6E372; 0x00D6E99F, calls 0x00D6E9A8 / 0x00D6E9DE; 0x00D6EBC3, calls 0x00D6EBCC / 0x00D6EC1B. The same
+//   spelling is in the landed PlayCutscene rows (e.g. NScript::CQ_HeroSoulsMotherScript::PlayCutscene 0x00D848D0). Header overlay: FABLE_RETAIL_CQ_HANGINGTREEEVIL_CONCLUSION declares
 //   Conclusion() in engine/CQ_HangingTreeEvilScript.h. Local names are descriptive (unusedHandle: a fifth handle retail builds and
 //   destroys but never uses).
 #include "fable_compiler.h"

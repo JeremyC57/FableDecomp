@@ -10,7 +10,8 @@
 //   `push ebp ; lea ebp,[esp-70h]`), no /EHsc. The only caller is CTCInventoryTrade::OpenInventory 0x005A94BD.
 // Callees: map::clear 0x005B1C18 (ItemsToBuy/ToSell) / 0x005B1C41 (*ListsByCategory) / 0x005B21A1 (Num*Things); CManager::GetInstance
 //   0x0041E5F2 / CreateComponent 0x0041DB1D; CCharString 0x0099EBF0 / ~ 0x0099EAE0; CCountedPointer<CComponent> ctor 0x00429C15 /
-//   Reset 0x00429C6F / ReleaseData 0x004291DE; CCountedPointer<CText>::SetStaticCast 0x00429460 / ReleaseData 0x0042925C
+//   Reset 0x00429C6F / ReleaseData 0x004291DE; CCountedPointer<CText>::SetStaticCast (inline) -> ShareData 0x00429460 / ReleaseData
+//   0x0042925C
 //   (?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ: under the RELEASEDATA opt-in the dtor is inline `{ ReleaseData(); }`);
 //   CGameDefinitionManager::Get 0x0044C6B0, GetGlobalIndexFromClassIndex 0x009AD390, GetDef<CUIMiscThingsDef> 0x0042B312;
 //   map<CComponent*,long> ctor 0x004DF81D / dtor 0x004DD1C4 / find 0x005B1AC5 / operator[] 0x0042D1B7; map<CComponent*,CList*>
@@ -19,7 +20,7 @@
 //   AddWantedItemToList 0x0059CB90; ConstructSubtitles 0x0059DF49; GetBuildingThing 0x005BC4C4 + inline GetTC (bitset::test
 //   0x00410DE0, CVectorMap::LowerBound 0x0040F020) / PeekTC (LowerBound 0x004365B0); CTCShop::GetWantedItemsList 0x00774100 /
 //   GetName 0x00772610; CPlayerManager::GetMainPlayer 0x00449960; CPlayer::PeekPControlledCreature 0x00487DD0;
-//   CDataBank::GetTextBySymbol 0x009C95E0 / EntryExists 0x009CC190 / GetTextInfo 0x009C7D00 / GetPTextEntry 0x009C9070;
+//   CDataBank::GetTextBySymbol 0x009C95E0 / CBankFile::EntryExists 0x009CC190 (inherited) / GetTextInfo 0x009C7D00 / GetPTextEntry 0x009C9070;
 //   CTextEntry::GetText 0x009C7A40; CTCInventoryStats::GetXString 0x005CC772; GFIntToWideString 0x00405F00; CWideString
 //   operator+ 0x0099BE70, copy 0x0099B720, default 0x0099AED0, dtor 0x0099B510, operator= 0x0099B7D0, operator+= 0x0099B8D0;
 //   CBasicString<char>::operator==(const char*) 0x004115A0; free 0x00BFEA14 (vector<long> dtor).

@@ -1,0 +1,22 @@
+17:43 005ad571 grade a.cpp TIMEOUT -- first full draft
+17:44 005ad571 grade a.cpp SRC_FAIL -- first full draft
+17:44 005ad571 grade a.cpp SRC_FAIL -- first full draft
+17:45 005ad571 grade a.cpp SRC_FAIL -- first full draft
+17:45 005ad571 grade a.cpp DIFFER(4399v4414) hunks=75 -- first full draft
+17:46 005ad571 grade a.cpp DIFFER(4414v4414) hunks=74 -- combatDef assigned (inc inc dec)
+17:47 005ad571 grade A.cpp RELOCATION_MATCH -- single CText* line var reused
+17:47 005ad571 grade 005ad571.cpp RELOCATION_MATCH -- final source with header comment
+17:48 005ad571 grade 005ad571.cpp RELOCATION_MATCH -- strict regrade
+20:29 005ad571 grade src.cpp RELOCATION_MATCH -- 
+20:29 005ad571 grade src.cpp SRC_FAIL -- 
+23:16 005ad571 grade 005ad571.cpp RELOCATION_MATCH -- repair: comments (caller list, movzx addr) + NAME_FIXES
+23:16 005ad571 grade 005ad571.cpp RELOCATION_MATCH -- repair: strict regrade
+00:38 005ad571 grade src.cpp RELOCATION_MATCH -- 
+00:38 005ad571 grade src.cpp SRC_FAIL -- 
+01:01 005ad571 grade src.cpp RELOCATION_MATCH -- 
+01:01 005ad571 grade src.cpp SRC_FAIL -- 
+01:01 005ad571 grade src.cpp SRC_FAIL -- 
+01:38 005ad571 grade 005ad571.cpp RELOCATION_MATCH -- repair: Class == WC_HEAVY
+01:38 005ad571 grade 005ad571.cpp RELOCATION_MATCH -- repair: strict regrade
+01:41 005ad571 grade src.cpp RELOCATION_MATCH -- 
+01:41 005ad571 grade src.cpp SRC_FAIL -- 

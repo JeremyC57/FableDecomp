@@ -1,0 +1,10 @@
+17:52 00a079b0 grade v1.cpp MATCH -- header retail branch + inline CStateInfo ctor, empty CDeviceState ctor
+17:53 00a079b0 grade src_00a079b0.cpp MATCH -- strict regrade
+20:34 00a079b0 grade src.cpp MATCH -- 
+20:34 00a079b0 grade src.cpp MATCH -- 
+01:11 00a079b0 grade src.cpp MATCH -- 
+01:11 00a079b0 grade src.cpp MATCH -- 
+01:39 00a079b0 grade src_00a079b0.cpp MATCH -- repair: cite landed 00a05970 row and retail inline evidence
+01:39 00a079b0 grade src_00a079b0.cpp MATCH -- repair: strict headers
+01:44 00a079b0 grade src.cpp MATCH -- 
+01:44 00a079b0 grade src.cpp MATCH -- 

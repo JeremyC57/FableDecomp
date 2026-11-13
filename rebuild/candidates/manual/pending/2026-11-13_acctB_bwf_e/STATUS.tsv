@@ -1,5 +1,5 @@
 address	grade	bytes	test	module	name	flags	notes
-00b5fab0	RELOCATION_MATCH	5302	PASS (VC7.1, lander check)	CEngineScreenEffectGlowRenderer	CaptureBackBuffer		purity volatile; 0 stale overlay header(s)
-005a04f7	RELOCATION_MATCH	9469	PASS (VC7.1, lander check)	CTCInventoryTrade	ConstructNormalShopList		purity clean; 0 stale overlay header(s)
 0073b130	RELOCATION_MATCH	6673	PASS (VC7.1, lander check)	CTCCreatureModeManager	RegisterModes		purity clean; 0 stale overlay header(s)
+005a04f7	RELOCATION_MATCH	9469	PASS (VC7.1, lander check)	CTCInventoryTrade	ConstructNormalShopList		purity clean; 0 stale overlay header(s)
+00b5fab0	RELOCATION_MATCH	5302	PASS (VC7.1, lander check)	CEngineScreenEffectGlowRenderer	CaptureBackBuffer		purity volatile; 0 stale overlay header(s)
 00d6d670	RELOCATION_MATCH	5786	PASS (VC7.1, lander check)	NScript::CQ_HangingTreeEvilScript	Conclusion		purity clean; 0 stale overlay header(s)

@@ -1,0 +1,1 @@
+00a079b0	??0CDeviceState@CRenderStateManager@@QAE@XZ	Ego_r.pdb+FableWin.pdb symbol; sole caller 0x00A05970 lea ecx,[esi+0x2818]=DeviceState; sizeof 0x120C	CPSCOrbit::CPSCOrbit

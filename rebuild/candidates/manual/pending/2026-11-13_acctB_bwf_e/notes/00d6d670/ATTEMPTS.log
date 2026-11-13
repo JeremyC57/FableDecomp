@@ -9,3 +9,18 @@
 20:42 00d6d670 grade src.cpp SRC_FAIL -- 
 23:23 00d6d670 grade final.cpp RELOCATION_MATCH -- repair: justify GetPos/IsAlive bodies
 23:23 00d6d670 grade final.cpp RELOCATION_MATCH -- repair: strict
+01:19 00d6d670 grade src.cpp ERROR -- 
+01:19 00d6d670 grade src.cpp ERROR -- 
+01:20 00d6d670 grade src.cpp ERROR -- 
+01:20 00d6d670 grade src.cpp RELOCATION_MATCH -- 
+01:20 00d6d670 grade src.cpp SRC_FAIL -- 
+01:39 00d6d670 grade repair.cpp RELOCATION_MATCH -- repair: cite retail edi reuse for local game copy
+01:40 00d6d670 grade repair.cpp RELOCATION_MATCH -- repair: strict regrade
+01:45 00d6d670 grade src.cpp RELOCATION_MATCH -- 
+01:45 00d6d670 grade src.cpp SRC_FAIL -- 
+01:47 00d6d670 grade a.cpp RELOCATION_MATCH -- verifier: forceinline probes
+01:47 00d6d670 grade b.cpp RELOCATION_MATCH -- verifier probe b
+01:47 00d6d670 grade c.cpp RELOCATION_MATCH -- verifier probe c
+01:48 00d6d670 grade d.cpp RELOCATION_MATCH -- verifier probe both plain inline
+01:49 00d6d670 grade e.cpp RELOCATION_MATCH -- verifier probe ENTITY_MOVE_WALK + plain inline
+01:49 00d6d670 grade e.cpp RELOCATION_MATCH -- verifier probe strict

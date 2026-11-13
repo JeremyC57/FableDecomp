@@ -16,7 +16,9 @@ NoBlurPasses` (0x0139A6B4). The author's evidence is instruction ORDER only (ret
 before `mov ecx,[NoBlurPasses]` at the loop end; see `notes/00b5fab0/NOTES.md`). That is not one of the three cases
 `docs/pipeline/ASM_RULES.md` allows (`volatile` section): no kept read is cited, there is no vendor source, and no PDB
 `LF_MODIFIER` record was checked (the lane has no record for these statics, and both names are descriptive, not PDB names).
-The source also has no `// Retail-volatile:` line. Until someone with the PDBs confirms a volatile modifier on these two
+After the verifiers the author added a `// Retail-volatile:` line (retail 0x00B60C79 and 0x00B60C90 both read 0x0139A6B0 around the
+`i` increment; without `volatile` on both statics VC7.1 moves the `NoBlurPasses` load and the `i` store: 3 hunks). That is still
+an ordering argument, so the decision stays with the owner. Until someone with the PDBs confirms a volatile modifier on these two
 statics, treat this row as a matched draft, not as landable.
 
 ## Verifier findings
@@ -24,3 +26,5 @@ statics, treat this row as a matched draft, not as landable.
 `2026-11-12_acctB_bwf2a`, `_bwf_b`, `_bwf_c`, `_bwf_d`), verbatim from the run record. Rows 0x005AAF28, 0x005AD571, 0x007CACB0
 and 0x00BBF4A0 passed both lenses after their repair. The re-verification of 0x00B72180 is running; the repaired rows
 0x005A04F7, 0x0073B130, 0x00D6D670, 0x00B9ECE0 and 0x00BCFF10 are re-verified next.
+
+Update 01:55 UTC: 0x005A04F7, 0x00B5FAB0 and 0x00D6D670 were repaired once more by the workflow and re-staged here after a fresh coordinator re-verification.
