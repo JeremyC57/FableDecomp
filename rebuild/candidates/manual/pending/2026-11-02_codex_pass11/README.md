@@ -16,3 +16,7 @@ against the PDB name sets before landing (precedent: `batches/2026-10-31_chatgpt
 ## Return (2026-11-02)
 Returned and regraded: see `batches/2026-11-02_codex_pass11/README.md`. Wave 1 landed 17 rows; the other 37 verified rows wait in
 `verified_pending/` for header consolidation; 0x00C5FA50 is held (SDK packing header).
+
+**Released 2026-11-13 (owner):** the Codex work for this pass has been handed back. `RESERVED.tsv` is renamed `RELEASED.tsv`, so the
+reservation glob (`pending/*/RESERVED.tsv`) no longer holds these rows back. The rows still unlanded go to the normal parked pool with
+their closest version on file: `../2026-11-13_codex_released/` (STATUS.tsv, differ/).

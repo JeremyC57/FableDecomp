@@ -9,3 +9,7 @@ names/ (bindings, established spellings, the name-fix queue, PDB name sets and t
 sets, BOUNDS_FIX, every labels file), docs (incl. CLAUDE.md and HANDOFF.md), lessons (chunks 1009-1017 + SND2, Codex passes 15-18 incl.
 the pass-18 header audit, today's landing READMEs). README_CODEX.md / PROMPT_CODEX.md are the copies handed out; they repeat the owner
 rules of 2026-11-10 (made-up names; volatile where retail used it; the inline-device ladder).
+
+**Released 2026-11-13 (owner):** the Codex work for this pass has been handed back. `RESERVED.tsv` is renamed `RELEASED.tsv`, so the
+reservation glob (`pending/*/RESERVED.tsv`) no longer holds these rows back. The rows still unlanded go to the normal parked pool with
+their closest version on file: `../2026-11-13_codex_released/` (STATUS.tsv, differ/).

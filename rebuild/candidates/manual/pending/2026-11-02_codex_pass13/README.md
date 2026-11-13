@@ -8,3 +8,7 @@ finishes the previous one: `fabledecomp_codex_pass13_100_2026-11-02.zip` (scratc
 lessons of chunks 709-714 added. No retail bytes (checked: 0 of 200 sampled 24-byte row windows found in the package), no links.
 Reserved until 2026-11-30: in-house chunk cuts skip NA087-NA096. Returned rows are regraded with vland.py and every bound symbol checked
 against the PDB name sets before landing (precedent: `batches/2026-10-31_chatgpt_pass10/README.md`).
+
+**Released 2026-11-13 (owner):** the Codex work for this pass has been handed back. `RESERVED.tsv` is renamed `RELEASED.tsv`, so the
+reservation glob (`pending/*/RESERVED.tsv`) no longer holds these rows back. The rows still unlanded go to the normal parked pool with
+their closest version on file: `../2026-11-13_codex_released/` (STATUS.tsv, differ/).

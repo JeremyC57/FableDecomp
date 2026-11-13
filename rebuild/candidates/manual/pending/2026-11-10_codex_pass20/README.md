@@ -10,3 +10,7 @@ bytes). 40 rows, listed in RESERVED.tsv: keep in-house agents off them until the
 The package carries include/ at HEAD (Codex pass 19 merged), the naming data (reloc_bindings, NAME_FIXES_QUEUE through land1011bb,
 PDB name sets, labels), docs (HANDOFF, GOTCHAS, playbook, EXTRA_RULES, ASM_RULES ...), the newest hand-back lessons (chunks 1013-1020,
 naming NF3-NF5, Codex passes 15-19) and README_CODEX.md / PROMPT_CODEX.md (copies here).
+
+**Released 2026-11-13 (owner):** the Codex work for this pass has been handed back. `RESERVED.tsv` is renamed `RELEASED.tsv`, so the
+reservation glob (`pending/*/RESERVED.tsv`) no longer holds these rows back. The rows still unlanded go to the normal parked pool with
+their closest version on file: `../2026-11-13_codex_released/` (STATUS.tsv, differ/).

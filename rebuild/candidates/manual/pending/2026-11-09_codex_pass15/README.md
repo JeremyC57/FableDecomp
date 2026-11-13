@@ -17,3 +17,7 @@ separately. No retail bytes (checked: 0 of 200 sampled 24-byte row windows found
 
 In-house chunk cuts skip these 20 rows until Codex returns. Returned rows are regraded with vland.py and every bound symbol checked
 against the PDB name sets before landing.
+
+**Released 2026-11-13 (owner):** the Codex work for this pass has been handed back. `RESERVED.tsv` is renamed `RELEASED.tsv`, so the
+reservation glob (`pending/*/RESERVED.tsv`) no longer holds these rows back. The rows still unlanded go to the normal parked pool with
+their closest version on file: `../2026-11-13_codex_released/` (STATUS.tsv, differ/).

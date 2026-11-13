@@ -7,3 +7,7 @@ instruction lines after masking. Excluded: rows that have landed since, and rows
 DrawAt rows, HenchmanCommentary, the three CTCInventory screens, the set / map / list instantiations of Codex fix [5]-[10], and 0x0099BDB0.
 In-house agents leave these 40 rows alone until the return lands (`group_remaining.py --exclude .../RESERVED.tsv`).
 The README and prompt given to Codex are `README_CODEX.md` and `PROMPT_CODEX.md` in this folder.
+
+**Released 2026-11-13 (owner):** the Codex work for this pass has been handed back. `RESERVED.tsv` is renamed `RELEASED.tsv`, so the
+reservation glob (`pending/*/RESERVED.tsv`) no longer holds these rows back. The rows still unlanded go to the normal parked pool with
+their closest version on file: `../2026-11-13_codex_released/` (STATUS.tsv, differ/).
