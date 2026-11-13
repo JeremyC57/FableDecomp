@@ -1,0 +1,4 @@
+NEW engine/C3DClothPrimitive.h
+NEW engine/CEngineInternalPrimitiveMorphedStaticMesh.h
+NEW engine/CEngineSubPrimitiveStaticMesh.h
+NEW fable_assert.h

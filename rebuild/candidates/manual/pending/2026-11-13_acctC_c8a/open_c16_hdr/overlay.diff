@@ -1,0 +1,2358 @@
+--- a/rebuild/include/engine/C3DMeshInfo.h
++++ b/rebuild/include/engine/C3DMeshInfo.h
+@@ -59,8 +59,14 @@
+     // FableWin.pdb inline ?PeekTextureBank@C3DMeshInfo@@QBEPBVCGraphicDataBank@@XZ (0x02E77A90; the caller reads Bank +0x04, then
+     // the bank's TextureBank, in place: 0x00BEC74A). Needs FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK. No layout change.
+     bool GetMesh(CCountedPointer<const C3DMesh2>& mesh, unsigned long lod, unsigned long flags) const;   // 0x00A25E70
++#ifdef FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_MEMBER
++    // Nested opt-in (agentC8, rows 0x00BB30A0 / 0x00BB3E80): FableWin.pdb's debug PeekTextureBank is 10 instructions / 25 bytes = the bank's
++    // TextureBank (+0x3D4) read in place (`PeekBank()->TextureBank`); the GetTextureBank() call form is 11 / 26. Same release bytes.
++    const CGraphicDataBank* PeekTextureBank() const { return PeekBank()->TextureBank; }
++#else
+     const CGraphicDataBank* PeekTextureBank() const { return PeekBank()->GetTextureBank(); }
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_C3DMESHINFO_BEGINLOADINGTEXTURES
+     // Retail opt-in (chunk 2059, row 0x00BC25F0; the r3013 NAME_FIXES spelling; also rows 0x00B9A4A0 / 0x00BA6FF0): Ego_r.pdb
+     // ?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z (donor 0x00B5FEA0 between HasPhysicsMesh and AreTexturesLoaded =
+@@ -101,7 +107,7 @@
+     unsigned char _body_0x0c[0x60 - 0xc];                               // +0x0c MeshData, BoundingBox, BoundingSphere, ...
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshInfo) == 0x60);
++FABLE_STATIC_ASSERT_AT(104, sizeof(C3DMeshInfo) == 0x60);
+ #ifdef FABLE_RETAIL_C3DMESHINFO_DETAILLEVEL
+ class C3DMeshLODInfo;
+ class C3DMeshInfo::CMeshData : public CIVCountedPointeeBase {
+@@ -147,16 +153,16 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshInfo) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, f4) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, MeshData_Object) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, BoundingBox) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, BoundingSphere) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, SafeBoundingRadius) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, PhysicsMeshIndex) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, LODErrors) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, LODDataSizes) == 0x50);
++FABLE_STATIC_ASSERT_AT(150, sizeof(C3DMeshInfo) == 0x60);
++FABLE_STATIC_ASSERT_AT(151, offsetof(C3DMeshInfo, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(152, offsetof(C3DMeshInfo, f4) == 0x4);
++FABLE_STATIC_ASSERT_AT(153, offsetof(C3DMeshInfo, MeshData_Object) == 0xc);
++FABLE_STATIC_ASSERT_AT(154, offsetof(C3DMeshInfo, BoundingBox) == 0x10);
++FABLE_STATIC_ASSERT_AT(155, offsetof(C3DMeshInfo, BoundingSphere) == 0x28);
++FABLE_STATIC_ASSERT_AT(156, offsetof(C3DMeshInfo, SafeBoundingRadius) == 0x38);
++FABLE_STATIC_ASSERT_AT(157, offsetof(C3DMeshInfo, PhysicsMeshIndex) == 0x3c);
++FABLE_STATIC_ASSERT_AT(158, offsetof(C3DMeshInfo, LODErrors) == 0x40);
++FABLE_STATIC_ASSERT_AT(159, offsetof(C3DMeshInfo, LODDataSizes) == 0x50);
+ 
+ #endif
+ #endif // FABLE_ENGINE_C3DMESHINFO_H
+--- a/rebuild/include/engine/C3DMeshMaterial.h
++++ b/rebuild/include/engine/C3DMeshMaterial.h
+@@ -22,6 +22,18 @@
+     bool HasValidDiffuseMap() const { return DiffuseMapBankIndex != 0; }
+     unsigned long GetSelfIllumination() const { return SelfIllumination; }
+ #endif
++#ifdef FABLE_RETAIL_C3DMESHMATERIAL_FLAGS
++    // Opt-in (bwf1 / agentC2, row 0x00BB3E80): FableWin.pdb inline ?GetSelfIllumination@C3DMeshMaterial@@QBEKXZ, ?IsTwoSided@C3DMeshMaterial@@QBE_NXZ,
++    // ?IsTransparent@C3DMeshMaterial@@QBE_NXZ (no out-of-line copy; +0x24 / +0x28 / +0x29 read in place). Members shared with the
++    // _PARTICLEMESH / _FLAG_ACCESSORS opt-ins are declared here only without them.
++#ifndef FABLE_RETAIL_C3DMESHMATERIAL_PARTICLEMESH
++    unsigned long GetSelfIllumination() const{return SelfIllumination;}
++#endif
++    bool IsTwoSided() const{return TwoSided;}
++#ifndef FABLE_RETAIL_C3DMESHMATERIAL_FLAG_ACCESSORS
++    bool IsTransparent() const{return Transparent;}
++#endif
++#endif
+ #ifdef FABLE_RETAIL_C3DMESHMATERIAL_FLAG_ACCESSORS
+     // Retail opt-in (chunk 3013, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): the FableWin.pdb inline
+     // accessors ?IsTransparent@C3DMeshMaterial@@QBE_NXZ / ?IsBooleanAlpha@C3DMeshMaterial@@QBE_NXZ / ?GetMapFlags@C3DMeshMaterial@@QBEKXZ
+@@ -35,5 +47,5 @@
+     bool TwoSided,Transparent,BooleanAlpha,DegenerateTriangles;
+     unsigned char Filenames[4]; // CIVCountedPointer<CFilenames>, one word.
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshMaterial)==0x30);
++FABLE_STATIC_ASSERT_AT(38, sizeof(C3DMeshMaterial)==0x30);
+ #endif
+--- a/rebuild/include/engine/C3DPrimitive2.h
++++ b/rebuild/include/engine/C3DPrimitive2.h
+@@ -3,6 +3,9 @@
+ #include "engine/C3DTextureStages.h"
+ #include "engine/N3DPrimitive_CStaticBlock.h"
+ #include <stddef.h>
++#ifdef FABLE_RETAIL_C3DPRIMITIVE2_RENDER
++#include "engine/C3DBoundingSphere.h"
++#endif
+ #ifdef FABLE_RETAIL_C3DPRIMITIVE2_CLOTHPRIMITIVES
+ #include "engine/CCountedPointer.h"
+ #include "engine/CArray.h"
+@@ -65,7 +68,7 @@
+ #endif
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(N3DPrimitive::CAnimatedBlock)==0x30);
++FABLE_STATIC_ASSERT_AT(68, sizeof(N3DPrimitive::CAnimatedBlock)==0x30);
+ #endif
+ // Full original member range: donor172 becomes native160 after three16-byte CArrays shrink to12.
+ #ifdef FABLE_RETAIL_C3DPRIMITIVE2_HIERARCHY
+@@ -75,13 +78,36 @@
+ class C3DPrimitive2 {
+ #endif
+ public:
++#ifdef FABLE_RETAIL_C3DPRIMITIVE2_ISDP3BUMP
++    // Opt-in (bwf2, row 0x00BA2350): FableWin.pdb ?IsDP3Bump@C3DPrimitive2@@QBE_NXZ (13 debug instructions), inline: InitFlags bit 1.
++#ifdef FABLE_RETAIL_C3DPRIMITIVE2_ISDP3BUMP_MASK
++    bool IsDP3Bump()const{return (InitFlags&2)!=0;}
++#else
++    bool IsDP3Bump()const{return (InitFlags>>1)&1;}
++#endif
++#endif
+ #ifdef FABLE_RETAIL_C3DPRIMITIVE2_HIERARCHY
+     virtual ~C3DPrimitive2();
+     virtual void RelocateData(long,void*,void*,long);
+ #else
+     unsigned char UnmodelledBase[4];
+ #endif
++#ifdef FABLE_RETAIL_C3DPRIMITIVE2_RENDER
++    // Opt-in (chunk 2060 row 0x00BA5260; re-based by bwf1 / agentC2 row 0x00BB3E80): BoundingSphere typed as Ego_r.pdb declares it
++    // (C3DBoundingSphere +0xC, same storage) and the FableWin.pdb inline accessors ?GetMaterialIndex@C3DPrimitive2@@QBEJXZ,
++    // ?GetBoundingSphere@C3DPrimitive2@@QBE?AVC3DBoundingSphere@@XZ (by value), ?GetAverageTextureStretch@C3DPrimitive2@@QBEMXZ.
++    long GetMaterialIndex()const{return MaterialIndex;}
++    C3DBoundingSphere GetBoundingSphere()const{return BoundingSphere;}
++    float GetAverageTextureStretch()const{return AverageTextureStretch;}
++    long MaterialIndex,RepeatingMeshReps;C3DBoundingSphere BoundingSphere;float AverageTextureStretch;
++#else
+     long MaterialIndex,RepeatingMeshReps;unsigned char BoundingSphere[16];float AverageTextureStretch;
++#endif
++#if defined(FABLE_RETAIL_C3DPRIMITIVE2_GETVERTEXBUFFER) && defined(FABLE_RETAIL_C3DPRIMITIVE2_VERTEXBUFFER)
++    // Opt-in (agentC13, row 0x00BA5260 RenderMeshPrimitive; chunk 2060's text): FableWin.pdb inline accessor
++    // ?GetVertexBuffer@C3DPrimitive2@@QAEPAVCVertexBufferWin32@@XZ = VertexBuffer.get() (needs _VERTEXBUFFER for the typed member).
++    CVertexBufferWin32* GetVertexBuffer(){return VertexBuffer.get();}
++#endif
+ #ifdef FABLE_RETAIL_C3DPRIMITIVE2_CLOTHPRIMITIVES
+     // Retail opt-in (wf8, row 0x00B81F30): Ego_r.pdb types ClothPrimitives (+0x20) as CArray<CCountedPointer<C3DClothPrimitive> >
+     // (the retail 12-byte STLport vector). Not combinable with FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER yet. No layout change.
+@@ -190,8 +216,8 @@
+     void SetRecordedTextureStages(const C3DTextureStages& stages) { RecordedTextureStages=stages; }
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DPrimitive2)==0xa0);
+-FABLE_STATIC_ASSERT(offsetof(C3DPrimitive2,StaticBlockCount)==0x40);
+-FABLE_STATIC_ASSERT(offsetof(C3DPrimitive2,StaticBlocks)==0x44);
+-FABLE_STATIC_ASSERT(offsetof(C3DPrimitive2,RecordedFrame)==0x7c);
++FABLE_STATIC_ASSERT_AT(193, sizeof(C3DPrimitive2)==0xa0);
++FABLE_STATIC_ASSERT_AT(194, offsetof(C3DPrimitive2,StaticBlockCount)==0x40);
++FABLE_STATIC_ASSERT_AT(195, offsetof(C3DPrimitive2,StaticBlocks)==0x44);
++FABLE_STATIC_ASSERT_AT(196, offsetof(C3DPrimitive2,RecordedFrame)==0x7c);
+ #endif
+--- a/rebuild/include/engine/C3DTextureStages.h
++++ b/rebuild/include/engine/C3DTextureStages.h
+@@ -3,11 +3,17 @@
+ #include "rebuild_abi.h"
+ // Original Ego_r sizeof12, fields0/4/8; native00ba48f0 reads both stage indices.
+ class C3DTextureStages {public:long DiffuseTextureStage,BumpTextureStage;bool UseBlankTextures;
++#ifdef FABLE_RETAIL_C3DTEXTURESTAGES_CTOR
++    // Opt-in (chunk 2060 / agentC13, row 0x00BA5260 RenderMeshPrimitive): FableWin.pdb ??0C3DTextureStages@@QAE@XZ (14 debug
++    // instructions), inline in retail: 0x00BA5564 `or eax,-1 ; mov [ebp-40h],eax ; mov [ebp-3Ch],eax` and 0x00BA558B
++    // `mov byte ptr [ebp-38h],0` (both stage indices -1, no blank textures). No layout change.
++    C3DTextureStages():DiffuseTextureStage(-1),BumpTextureStage(-1),UseBlankTextures(false){}
++#endif
+ #ifdef FABLE_RETAIL_C3DTEXTURESTAGES_EQUALS
+     // Retail opt-in (wf8, row 0x00BA4A40): FableWin.pdb ??8C3DTextureStages@@QBE_NABV0@@Z (inline in retail: the row compares
+     // +0 / +4 as dwords and +8 as a byte, 0x00BA4A6B..0x00BA4A80). No layout change.
+     bool operator==(const C3DTextureStages& other) const { return DiffuseTextureStage==other.DiffuseTextureStage && BumpTextureStage==other.BumpTextureStage && UseBlankTextures==other.UseBlankTextures; }
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DTextureStages)==12);
++FABLE_STATIC_ASSERT_AT(12, sizeof(C3DTextureStages)==12);
+ #endif
+--- a/rebuild/include/engine/C3DVector.h
++++ b/rebuild/include/engine/C3DVector.h
+@@ -148,11 +148,17 @@
+ #endif
+ #endif
+     FABLE_VECTOR_INLINE void Initialise(float x,float y,float z){X=x;Y=y;Z=z;}
++#if defined(FABLE_RETAIL_C3DVECTOR_NAMED_RESULT_SUB)
++    // Retail opt-in (chunk 2060, row 0x00BA5260 RenderMeshPrimitive; agentC2 row 0x00BB3E80): the named-result text (as C2DVector's
++    // FableWin operators). FableWin.pdb ??GC3DVector@@QBE?BV0@ABV0@@Z debug copy is 34i/90b; `return C3DVector(...)` is 28i/70b at /Od.
++    FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{C3DVector result(X-other.X,Y-other.Y,Z-other.Z);return result;}
++#else
+ #ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP
+     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector((X-other.X),(Y-other.Y),Z-other.Z);}
+ #else
+     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector(X-other.X,Y-other.Y,Z-other.Z);}
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_C3DVECTOR_ADD_XY_GROUP
+     // Original addition signature and scalar components, donor018C0B60.
+     FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector((X+other.X),(Y+other.Y),Z+other.Z);}
+@@ -307,7 +313,11 @@
+     // Original FableWin01d99fb0 and both PDB signatures; named squared sum.
+     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return (float)sqrt(magnitude);}
+ #endif
+-#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_XY_THEN_Z)
++#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_NAMED_SQUARED)
++    // Retail opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): the named squared sum in X, Z, Y order (retail 0x00BA547A..
++    // 0x00BA548C squares X, then Z, then Y). FableWin.pdb ?GetMagnitude@C3DVector@@QBEMXZ is 26i/66b.
++    FABLE_VECTOR_INLINE float GetMagnitude()const{float squared=X*X+Z*Z+Y*Y;return (float)sqrt(squared);}
++#elif defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_XY_THEN_Z)
+     // Retail opt-in (chunk 2053, row 0x0087F3A0): a named squared sum, X/Y pair first. FableWin.pdb ?GetMagnitude@C3DVector@@QBEMXZ
+     // debug copy 0x01B52910 is 26i/66b (same signature hash as GetAccurateMagnitude 0x01D99FB0); this text is 26i/66b at plain /Od
+     // (fwsize SAME). The unparenthesised `X*X+Y*Y+Z*Z` (same /Od bytes) grades DIFFER in the row (md.py 710 equal). Body only.
+--- a/rebuild/include/engine/CActionInputControl.h
++++ b/rebuild/include/engine/CActionInputControl.h
+@@ -42,6 +42,11 @@
+ #else
+     EActionDirection GetDirection() const;                              // 0x0040ED10
+ #endif
++#ifdef FABLE_RETAIL_CACTIONINPUTCONTROL_DEFAULT_CTOR
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): the inline default constructor (five zero words and a zero C2DVector).
++    CActionInputControl() : GameAction((EGameAction)0), ControllerType((EControllerType)0), KeyboardKey((EInputKey)0),
++        XboxButton((EXboxControllerButton)0), MouseButton((EMouseButtonControl)0), ControlDirection(0.0f, 0.0f) {}
++#endif
+     bool IsSameButton(const CActionInputControl& other) const;          // 0x00405DB0 (landed)
+     bool IsSameActionAndButton(const CActionInputControl& other) const; // 0x0040EDA0 (no caller in retail)
+     EGameAction           GameAction;         // +0x00
+--- a/rebuild/include/engine/CEngineCamera.h
++++ b/rebuild/include/engine/CEngineCamera.h
+@@ -37,6 +37,10 @@
+ #endif
+  virtual unsigned long PeekSceneFilterFlags()const;
+  const C3DVector& PeekCameraPos()const{return CameraDesc.WorldPosition;}
++#ifdef FABLE_RETAIL_CENGINECAMERA_PEEKWINDOW
++ // Opt-in (bwf2, row 0x00BA2350): FableWin.pdb ?PeekWindow@CEngineCamera@@QBEABVC2DBoxF@@XZ (9 debug instructions), inline.
++ const C2DBoxF& PeekWindow()const{return CameraDesc.Window;}
++#endif
+ #ifdef FABLE_RETAIL_CENGINECAMERA_CLIPBOX
+  // Retail opt-in (chunk 2037, CEngineWeatherRenderer::ClipBoxToCamera 0x00B51F60 in the RenderRain / RenderSnow TU): Ego_r.pdb
+  // ?ClipBox@CEngineCamera@@QBE_NABVCMatrix3x4@@@Z, retail 0x00B30610 (called at 0x00B52066 with the box matrix, `test al,al`).
+@@ -113,7 +117,7 @@
+  bool DebugScriptRunning;
+  double DebugScriptElementStartTime;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineCamera)==552);
++FABLE_STATIC_ASSERT_AT(116, sizeof(CEngineCamera)==552);
+ #endif
+ #else
+ #ifndef FABLE_ENGINE_CENGINECAMERA_H
+@@ -173,7 +177,7 @@
+     unsigned char _pad_0xc[0x21c];              // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineCamera) == 0x228);
++FABLE_STATIC_ASSERT_AT(176, sizeof(CEngineCamera) == 0x228);
+ #else // generated flattened Ego_r layout (the landed default, unchanged)
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+ // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngineCamera = 0x228.
+@@ -228,39 +232,39 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEngineCamera) == 0x228);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, GameCamera) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, GameWindow) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, CameraDesc) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, ViewTransform) == 0x80);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, WindowWidth) == 0xb0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, WindowHeight) == 0xb4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, HalfWindowWidth) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, HalfWindowHeight) == 0xbc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, OneOverHalfWindowWidth) == 0xc0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, OneOverHalfWindowHeight) == 0xc4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, WindowCenterX) == 0xc8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, WindowCenterY) == 0xcc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, AspectRatio) == 0xd0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, HomogenousViewScaleX) == 0xd4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, HomogenousViewScaleY) == 0xd8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, ZBufferFactor) == 0xdc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, ZBufferOffset) == 0xe0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, InverseViewTransform) == 0xe4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, NoScaleViewTransform) == 0x114);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, InverseNoScaleViewTransform) == 0x144);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, ProjectionTransform) == 0x174);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, LookVector_X) == 0x1b4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, LookVector_Y) == 0x1b8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, LookVector_Z) == 0x1bc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, FrustrumPlanes) == 0x1c0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, ConsoleOverrideViewPortWidth) == 0x200);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, ConsoleOverrideViewPortHeight) == 0x204);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, DebugScript) == 0x208);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, CurrentDebugScriptElement) == 0x214);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, DebugScriptRunning) == 0x218);
+-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, DebugScriptElementStartTime) == 0x220);
++FABLE_STATIC_ASSERT_AT(231, sizeof(CEngineCamera) == 0x228);
++FABLE_STATIC_ASSERT_AT(232, offsetof(CEngineCamera, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(233, offsetof(CEngineCamera, GameCamera) == 0xc);
++FABLE_STATIC_ASSERT_AT(234, offsetof(CEngineCamera, GameWindow) == 0x10);
++FABLE_STATIC_ASSERT_AT(235, offsetof(CEngineCamera, CameraDesc) == 0x14);
++FABLE_STATIC_ASSERT_AT(236, offsetof(CEngineCamera, ViewTransform) == 0x80);
++FABLE_STATIC_ASSERT_AT(237, offsetof(CEngineCamera, WindowWidth) == 0xb0);
++FABLE_STATIC_ASSERT_AT(238, offsetof(CEngineCamera, WindowHeight) == 0xb4);
++FABLE_STATIC_ASSERT_AT(239, offsetof(CEngineCamera, HalfWindowWidth) == 0xb8);
++FABLE_STATIC_ASSERT_AT(240, offsetof(CEngineCamera, HalfWindowHeight) == 0xbc);
++FABLE_STATIC_ASSERT_AT(241, offsetof(CEngineCamera, OneOverHalfWindowWidth) == 0xc0);
++FABLE_STATIC_ASSERT_AT(242, offsetof(CEngineCamera, OneOverHalfWindowHeight) == 0xc4);
++FABLE_STATIC_ASSERT_AT(243, offsetof(CEngineCamera, WindowCenterX) == 0xc8);
++FABLE_STATIC_ASSERT_AT(244, offsetof(CEngineCamera, WindowCenterY) == 0xcc);
++FABLE_STATIC_ASSERT_AT(245, offsetof(CEngineCamera, AspectRatio) == 0xd0);
++FABLE_STATIC_ASSERT_AT(246, offsetof(CEngineCamera, HomogenousViewScaleX) == 0xd4);
++FABLE_STATIC_ASSERT_AT(247, offsetof(CEngineCamera, HomogenousViewScaleY) == 0xd8);
++FABLE_STATIC_ASSERT_AT(248, offsetof(CEngineCamera, ZBufferFactor) == 0xdc);
++FABLE_STATIC_ASSERT_AT(249, offsetof(CEngineCamera, ZBufferOffset) == 0xe0);
++FABLE_STATIC_ASSERT_AT(250, offsetof(CEngineCamera, InverseViewTransform) == 0xe4);
++FABLE_STATIC_ASSERT_AT(251, offsetof(CEngineCamera, NoScaleViewTransform) == 0x114);
++FABLE_STATIC_ASSERT_AT(252, offsetof(CEngineCamera, InverseNoScaleViewTransform) == 0x144);
++FABLE_STATIC_ASSERT_AT(253, offsetof(CEngineCamera, ProjectionTransform) == 0x174);
++FABLE_STATIC_ASSERT_AT(254, offsetof(CEngineCamera, LookVector_X) == 0x1b4);
++FABLE_STATIC_ASSERT_AT(255, offsetof(CEngineCamera, LookVector_Y) == 0x1b8);
++FABLE_STATIC_ASSERT_AT(256, offsetof(CEngineCamera, LookVector_Z) == 0x1bc);
++FABLE_STATIC_ASSERT_AT(257, offsetof(CEngineCamera, FrustrumPlanes) == 0x1c0);
++FABLE_STATIC_ASSERT_AT(258, offsetof(CEngineCamera, ConsoleOverrideViewPortWidth) == 0x200);
++FABLE_STATIC_ASSERT_AT(259, offsetof(CEngineCamera, ConsoleOverrideViewPortHeight) == 0x204);
++FABLE_STATIC_ASSERT_AT(260, offsetof(CEngineCamera, DebugScript) == 0x208);
++FABLE_STATIC_ASSERT_AT(261, offsetof(CEngineCamera, CurrentDebugScriptElement) == 0x214);
++FABLE_STATIC_ASSERT_AT(262, offsetof(CEngineCamera, DebugScriptRunning) == 0x218);
++FABLE_STATIC_ASSERT_AT(263, offsetof(CEngineCamera, DebugScriptElementStartTime) == 0x220);
+ 
+ #endif // FABLE_RETAIL_CENGINECAMERA
+ #endif // FABLE_ENGINE_CENGINECAMERA_H
+--- a/rebuild/include/engine/CEngineClothRenderer.h
++++ b/rebuild/include/engine/CEngineClothRenderer.h
+@@ -20,6 +20,11 @@
+ class C4DVector;
+ class CParticleSimulation;
+ class CParticleProgram;
++#ifdef FABLE_RETAIL_CENGINECLOTHRENDERER_RENDER
++#include "engine/CEngineRenderEnums.h"
++class C3DClothPrimitive; class C3DPrimitive2; class CEngineSubPrimitiveMeshBase; class CEngineInternalPrimitiveMeshBase; class CMatrix3x4;
++class CEngineLocalLightArray; class CTexture;
++#endif
+ class CEngineClothRenderer : public CEnginePrimitiveRenderUtil {
+ public:
+     CEngineClothRenderer();
+@@ -50,6 +55,23 @@
+     CSimpleMemoryPool NormalBufferPool;
+     C4DVector* NormalBuffer;
+     unsigned long NormalBufferSize;
++#ifdef FABLE_RETAIL_CENGINECLOTHRENDERER_RENDER
++    // Opt-in (agentC6, rows 0x00BB3E80 RenderClothPrimitive / 0x00BB30A0 Render2DClothPrimitive): the cloth draw entry points (Ego_r.pdb /
++    // FableWin.pdb spellings, public QAE; callers 0x00B81426 / 0x00B81612 / 0x00B8179E), the out-of-line RenderPolygons 0x00BB2540
++    // (private AAE) and the inline ApplyTriVertexShader (FableWin.pdb ?ApplyTriVertexShader@CEngineClothRenderer@@AAEXK_NK@Z, no retail
++    // copy: the includer defines the body). Declarations only; no layout change.
++    void RenderClothPrimitive(const CParticleSimulation& simulation, const C3DClothPrimitive& cloth_primitive, const C3DPrimitive2& mesh_primitive,
++        const CEngineSubPrimitiveMeshBase& sub_primitive, CEngineInternalPrimitiveMeshBase& primitive, const CMatrix3x4& transform,
++        ERenderPassType pass, bool block_on_load);
++    void Render2DClothPrimitive(const CParticleSimulation& simulation, const C3DClothPrimitive& cloth_primitive, const C3DPrimitive2& mesh_primitive,
++        const CEngineSubPrimitiveMeshBase& sub_primitive, CEngineInternalPrimitiveMeshBase& primitive, const CMatrix3x4& transform,
++        ERenderPassType pass, bool block_on_load);
++private:
++    void RenderPolygons(const CParticleSimulation& simulation, const CParticleProgram& program, const CMatrix3x4& transform,
++        const CEngineLocalLightArray& lights, const CTexture** textures, unsigned long texture_count, bool a, bool two_sided,
++        unsigned long render_flags, bool b, bool c, unsigned long fvf, ERenderPassType pass, CEngineInternalPrimitiveMeshBase& primitive);
++    void ApplyTriVertexShader(unsigned long light_count, bool force, unsigned long render_flags);
++#endif
+ private:
+     C4DVector* GetNormalBuffer(unsigned long count);                    // 0x00BB1E90
+     void CalculateVertexNormals(const CParticleSimulation& simulation, const CParticleProgram& program);   // 0x00BB1F50
+@@ -76,5 +98,5 @@
+     unsigned long NormalBufferSize;                                      // +0xec
+ };
+ #endif
+-FABLE_STATIC_ASSERT(sizeof(CEngineClothRenderer) == 0xf0);
++FABLE_STATIC_ASSERT_AT(79, sizeof(CEngineClothRenderer) == 0xf0);
+ #endif
+--- a/rebuild/include/engine/CEngineInternalPrimitiveStaticMesh.h
++++ b/rebuild/include/engine/CEngineInternalPrimitiveStaticMesh.h
+@@ -25,10 +25,30 @@
+ #else
+  CEngineRenderInfoStaticMesh* GetRenderInfo();
+ #endif
++#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_PEEKRENDERINFO
++ // Opt-in (bwf2 / agentC16, row 0x00BA2350): FableWin.pdb ?PeekRenderInfo@CEngineInternalPrimitiveStaticMesh@@QBEPBVCEngineRenderInfoStaticMesh@@XZ (19 debug bytes), inline.
++ const CEngineRenderInfoStaticMesh* PeekRenderInfo()const{return &RenderInfo;}
++#else
+  const CEngineRenderInfoStaticMesh* PeekRenderInfo()const;
++#endif
+  virtual const CEngineRenderInfoMeshBase* PeekRenderInfoMeshBase()const;
++#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_PEEKMESH
++ // Opt-in (chunk 2060, row 0x00BA5260): FableWin.pdb ?PeekMesh@CEngineInternalPrimitiveStaticMesh@@QBEABVC3DMesh2@@XZ inline
++ // (no Ego_r / retail out-of-line copy; RenderMeshPrimitive reads RenderInfo.Mesh +0xA4 in place, 0x00BA537D).
++ const C3DMesh2& PeekMesh()const{return *RenderInfo.Mesh;}
++#else
+  const C3DMesh2& PeekMesh()const;
++#endif
++#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_PEEKLIGHTS
++ // Opt-in (bwf2 / agentC16, row 0x00BA2350): FableWin.pdb ?PeekLights@CEngineInternalPrimitiveStaticMesh@@QBEABVCEngineLocalLightArray@@XZ (10 debug instructions), inline.
++#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_PEEKRENDERINFO
++ const CEngineLocalLightArray& PeekLights()const{return *PeekRenderInfo()->Lights;}
++#else
++ const CEngineLocalLightArray& PeekLights()const{return *RenderInfo.Lights;}
++#endif
++#else
+  const CEngineLocalLightArray& PeekLights()const;
++#endif
+  virtual bool GetTransformFrameStart(CMatrix3x4&)const;
+  virtual bool GetTransformFrameEnd(CMatrix3x4&)const;
+  void InitialiseSimulation(const C3DMeshInfo*,const C3DMesh2&);
+@@ -40,7 +60,7 @@
+ private:
+  CEngineRenderInfoStaticMesh RenderInfo;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveStaticMesh)==172);
++FABLE_STATIC_ASSERT_AT(43, sizeof(CEngineInternalPrimitiveStaticMesh)==172);
+ #else
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+ // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngineInternalPrimitiveStaticMesh = 0xac.
+@@ -86,11 +106,11 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveStaticMesh) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveStaticMesh, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveStaticMesh, field58) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveStaticMesh, ObjectTransform) == 0x70);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveStaticMesh, RenderInfo) == 0xa0);
++FABLE_STATIC_ASSERT_AT(89, sizeof(CEngineInternalPrimitiveStaticMesh) == 0xac);
++FABLE_STATIC_ASSERT_AT(90, offsetof(CEngineInternalPrimitiveStaticMesh, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(91, offsetof(CEngineInternalPrimitiveStaticMesh, field58) == 0x58);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CEngineInternalPrimitiveStaticMesh, ObjectTransform) == 0x70);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CEngineInternalPrimitiveStaticMesh, RenderInfo) == 0xa0);
+ 
+ #endif
+ #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVESTATICMESH_H
+--- a/rebuild/include/engine/CEngineLightingManager.h
++++ b/rebuild/include/engine/CEngineLightingManager.h
+@@ -59,6 +59,10 @@
+ class CEngineLocalLightArray {
+ public:
+     CEngineLocalLightArray() : LightCount(0) { }
++#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SPOTLIGHT
++    // Opt-in (bwf1 / agentC2, row 0x00BB3E80): FableWin.pdb inline ?GetCount@CEngineLocalLightArray@@QBEJXZ (9 debug instructions).
++    long GetCount() const { return LightCount; }
++#endif
+     unsigned long            LightCount;                                 // +0x00
+     CEngineLocalLightElement Lights[8];                                  // +0x04
+ };
+@@ -104,6 +108,10 @@
+     void SetupShaderPointLights(const CEngineLocalLightArray& lights);   // 0x00B44F20
+     void DisablePointLights();                                           // 0x00B44D50
+     void UpdateGlobalLightingStates();                                   // 0x00B46C80
++#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SPOTLIGHT
++    // Opt-in (bwf1 / agentC2, row 0x00BB3E80): Ego_r.pdb / FableWin.pdb ?SetupShaderSpotLight@CEngineLightingManager@@QAEXABVCMatrix3x4@@@Z (0x00B47390).
++    void SetupShaderSpotLight(const CMatrix3x4& transform);              // 0x00B47390
++#endif
+     void SetupDefaultFogStates();                                        // 0x00B47630 ?SetupDefaultFogStates@CEngineLightingManager@@QAEXXZ (CEngine::SetDefaultRenderStates 0x00B25877)
+ #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_FOGTRANSFORM
+     // Chunk 764 (row 0x00B451D0): Ego_r.pdb ?CalculateFogTransformMatrix@CEngineLightingManager@@AAE?AVC4DVector@@MM@Z (private). Declaration only.
+@@ -238,22 +246,22 @@
+     unsigned char          _pad_0xec[0x46d0 - 0xec];                     // +0xec LightLookupGrid .. (opaque)
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineLightingManager::CThemeChannel) == 0x70);
+-FABLE_STATIC_ASSERT(sizeof(CEngineLightingManager) == 0x46d0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SunVector) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ThemeChannels) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SelfIlluminationAmbientPercentage) == 0xe8);
++FABLE_STATIC_ASSERT_AT(241, sizeof(CEngineLightingManager::CThemeChannel) == 0x70);
++FABLE_STATIC_ASSERT_AT(242, sizeof(CEngineLightingManager) == 0x46d0);
++FABLE_STATIC_ASSERT_AT(243, offsetof(CEngineLightingManager, SunVector) == 0x18);
++FABLE_STATIC_ASSERT_AT(244, offsetof(CEngineLightingManager, ThemeChannels) == 0x3c);
++FABLE_STATIC_ASSERT_AT(245, offsetof(CEngineLightingManager, PrimitiveFogColour) == 0x78);
++FABLE_STATIC_ASSERT_AT(246, offsetof(CEngineLightingManager, SelfIlluminationAmbientPercentage) == 0xe8);
+ #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+-FABLE_STATIC_ASSERT(sizeof(CEngineLocalLightArray) == 0x1a4);
+-FABLE_STATIC_ASSERT(sizeof(CEngineLightingManagerSpotlightParams) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightAttenuation) == 0x90);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LocalLightList) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LocalLightsEnabled) == 0xcc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightLookupGrid) == 0xec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, EmptyLightArray) == 0x44ec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShadowMode) == 0x4694);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentShadowedSpotLightParams) == 0x4698);
++FABLE_STATIC_ASSERT_AT(248, sizeof(CEngineLocalLightArray) == 0x1a4);
++FABLE_STATIC_ASSERT_AT(249, sizeof(CEngineLightingManagerSpotlightParams) == 0x38);
++FABLE_STATIC_ASSERT_AT(250, offsetof(CEngineLightingManager, LightAttenuation) == 0x90);
++FABLE_STATIC_ASSERT_AT(251, offsetof(CEngineLightingManager, LocalLightList) == 0xac);
++FABLE_STATIC_ASSERT_AT(252, offsetof(CEngineLightingManager, LocalLightsEnabled) == 0xcc);
++FABLE_STATIC_ASSERT_AT(253, offsetof(CEngineLightingManager, LightLookupGrid) == 0xec);
++FABLE_STATIC_ASSERT_AT(254, offsetof(CEngineLightingManager, EmptyLightArray) == 0x44ec);
++FABLE_STATIC_ASSERT_AT(255, offsetof(CEngineLightingManager, ShadowMode) == 0x4694);
++FABLE_STATIC_ASSERT_AT(256, offsetof(CEngineLightingManager, CurrentShadowedSpotLightParams) == 0x4698);
+ #endif
+ #else // flattened Ego_r layout (the landed default, unchanged)
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+@@ -342,68 +350,68 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEngineLightingManager) == 0x46d0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SunVector_X) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SunVector_Y) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SunVector_Z) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MoonVector_X) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MoonVector_Y) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MoonVector_Z) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, DiffuseVector_X) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, DiffuseVector_Y) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, DiffuseVector_Z) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ThemeChannels) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveDiffuseColour_R) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveDiffuseColour_G) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveDiffuseColour_B) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveDiffuseColour_A) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveAmbientColour_R) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveAmbientColour_G) == 0x5c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveAmbientColour_B) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveAmbientColour_A) == 0x64);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveBacklightColour_R) == 0x68);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveBacklightColour_G) == 0x6c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveBacklightColour_B) == 0x70);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveBacklightColour_A) == 0x74);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour_R) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour_G) == 0x7c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour_B) == 0x80);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour_A) == 0x84);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogStartZ) == 0x88);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogEndZ) == 0x8c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightAttenuation_Attenuation0) == 0x90);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightAttenuation_Attenuation1) == 0x94);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightAttenuation_Attenuation2) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightAttenuation_AttenuationBase) == 0x9c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShaderPointLightsEnabledCount) == 0xa0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, DrawLightRadius) == 0xa4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, DrawSpotLightCone) == 0xa5);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, EnableLightCache) == 0xa6);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentShaderLocalLights) == 0xa8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LocalLightList) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShadowedSpotLightList) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LookupGridWorldX) == 0xc4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LookupGridWorldY) == 0xc8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LocalLightsEnabled) == 0xcc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShadowedSpotLightsEnabled) == 0xcd);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, FadedShadowDiffuseFactorEnabled) == 0xce);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MistEffectColour_R) == 0xd0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MistEffectColour_G) == 0xd4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MistEffectColour_B) == 0xd8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MistEffectColour_A) == 0xdc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelIndex0) == 0xe0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelIndex1) == 0xe1);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelBlendFactor) == 0xe2);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentThemeChannel_Pad) == 0xe3);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, StateUpdateFlags) == 0xe4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SelfIlluminationAmbientPercentage) == 0xe8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightLookupGrid) == 0xec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SmallObjectLookupGrid) == 0x4ec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, EmptyLightArray) == 0x44ec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SIMDVarBlock) == 0x4690);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShadowMode) == 0x4694);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentShadowedSpotLightParams) == 0x4698);
++FABLE_STATIC_ASSERT_AT(345, sizeof(CEngineLightingManager) == 0x46d0);
++FABLE_STATIC_ASSERT_AT(346, offsetof(CEngineLightingManager, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(347, offsetof(CEngineLightingManager, SunVector_X) == 0x18);
++FABLE_STATIC_ASSERT_AT(348, offsetof(CEngineLightingManager, SunVector_Y) == 0x1c);
++FABLE_STATIC_ASSERT_AT(349, offsetof(CEngineLightingManager, SunVector_Z) == 0x20);
++FABLE_STATIC_ASSERT_AT(350, offsetof(CEngineLightingManager, MoonVector_X) == 0x24);
++FABLE_STATIC_ASSERT_AT(351, offsetof(CEngineLightingManager, MoonVector_Y) == 0x28);
++FABLE_STATIC_ASSERT_AT(352, offsetof(CEngineLightingManager, MoonVector_Z) == 0x2c);
++FABLE_STATIC_ASSERT_AT(353, offsetof(CEngineLightingManager, DiffuseVector_X) == 0x30);
++FABLE_STATIC_ASSERT_AT(354, offsetof(CEngineLightingManager, DiffuseVector_Y) == 0x34);
++FABLE_STATIC_ASSERT_AT(355, offsetof(CEngineLightingManager, DiffuseVector_Z) == 0x38);
++FABLE_STATIC_ASSERT_AT(356, offsetof(CEngineLightingManager, ThemeChannels) == 0x3c);
++FABLE_STATIC_ASSERT_AT(357, offsetof(CEngineLightingManager, PrimitiveDiffuseColour_R) == 0x48);
++FABLE_STATIC_ASSERT_AT(358, offsetof(CEngineLightingManager, PrimitiveDiffuseColour_G) == 0x4c);
++FABLE_STATIC_ASSERT_AT(359, offsetof(CEngineLightingManager, PrimitiveDiffuseColour_B) == 0x50);
++FABLE_STATIC_ASSERT_AT(360, offsetof(CEngineLightingManager, PrimitiveDiffuseColour_A) == 0x54);
++FABLE_STATIC_ASSERT_AT(361, offsetof(CEngineLightingManager, PrimitiveAmbientColour_R) == 0x58);
++FABLE_STATIC_ASSERT_AT(362, offsetof(CEngineLightingManager, PrimitiveAmbientColour_G) == 0x5c);
++FABLE_STATIC_ASSERT_AT(363, offsetof(CEngineLightingManager, PrimitiveAmbientColour_B) == 0x60);
++FABLE_STATIC_ASSERT_AT(364, offsetof(CEngineLightingManager, PrimitiveAmbientColour_A) == 0x64);
++FABLE_STATIC_ASSERT_AT(365, offsetof(CEngineLightingManager, PrimitiveBacklightColour_R) == 0x68);
++FABLE_STATIC_ASSERT_AT(366, offsetof(CEngineLightingManager, PrimitiveBacklightColour_G) == 0x6c);
++FABLE_STATIC_ASSERT_AT(367, offsetof(CEngineLightingManager, PrimitiveBacklightColour_B) == 0x70);
++FABLE_STATIC_ASSERT_AT(368, offsetof(CEngineLightingManager, PrimitiveBacklightColour_A) == 0x74);
++FABLE_STATIC_ASSERT_AT(369, offsetof(CEngineLightingManager, PrimitiveFogColour_R) == 0x78);
++FABLE_STATIC_ASSERT_AT(370, offsetof(CEngineLightingManager, PrimitiveFogColour_G) == 0x7c);
++FABLE_STATIC_ASSERT_AT(371, offsetof(CEngineLightingManager, PrimitiveFogColour_B) == 0x80);
++FABLE_STATIC_ASSERT_AT(372, offsetof(CEngineLightingManager, PrimitiveFogColour_A) == 0x84);
++FABLE_STATIC_ASSERT_AT(373, offsetof(CEngineLightingManager, PrimitiveFogStartZ) == 0x88);
++FABLE_STATIC_ASSERT_AT(374, offsetof(CEngineLightingManager, PrimitiveFogEndZ) == 0x8c);
++FABLE_STATIC_ASSERT_AT(375, offsetof(CEngineLightingManager, LightAttenuation_Attenuation0) == 0x90);
++FABLE_STATIC_ASSERT_AT(376, offsetof(CEngineLightingManager, LightAttenuation_Attenuation1) == 0x94);
++FABLE_STATIC_ASSERT_AT(377, offsetof(CEngineLightingManager, LightAttenuation_Attenuation2) == 0x98);
++FABLE_STATIC_ASSERT_AT(378, offsetof(CEngineLightingManager, LightAttenuation_AttenuationBase) == 0x9c);
++FABLE_STATIC_ASSERT_AT(379, offsetof(CEngineLightingManager, ShaderPointLightsEnabledCount) == 0xa0);
++FABLE_STATIC_ASSERT_AT(380, offsetof(CEngineLightingManager, DrawLightRadius) == 0xa4);
++FABLE_STATIC_ASSERT_AT(381, offsetof(CEngineLightingManager, DrawSpotLightCone) == 0xa5);
++FABLE_STATIC_ASSERT_AT(382, offsetof(CEngineLightingManager, EnableLightCache) == 0xa6);
++FABLE_STATIC_ASSERT_AT(383, offsetof(CEngineLightingManager, CurrentShaderLocalLights) == 0xa8);
++FABLE_STATIC_ASSERT_AT(384, offsetof(CEngineLightingManager, LocalLightList) == 0xac);
++FABLE_STATIC_ASSERT_AT(385, offsetof(CEngineLightingManager, ShadowedSpotLightList) == 0xb8);
++FABLE_STATIC_ASSERT_AT(386, offsetof(CEngineLightingManager, LookupGridWorldX) == 0xc4);
++FABLE_STATIC_ASSERT_AT(387, offsetof(CEngineLightingManager, LookupGridWorldY) == 0xc8);
++FABLE_STATIC_ASSERT_AT(388, offsetof(CEngineLightingManager, LocalLightsEnabled) == 0xcc);
++FABLE_STATIC_ASSERT_AT(389, offsetof(CEngineLightingManager, ShadowedSpotLightsEnabled) == 0xcd);
++FABLE_STATIC_ASSERT_AT(390, offsetof(CEngineLightingManager, FadedShadowDiffuseFactorEnabled) == 0xce);
++FABLE_STATIC_ASSERT_AT(391, offsetof(CEngineLightingManager, MistEffectColour_R) == 0xd0);
++FABLE_STATIC_ASSERT_AT(392, offsetof(CEngineLightingManager, MistEffectColour_G) == 0xd4);
++FABLE_STATIC_ASSERT_AT(393, offsetof(CEngineLightingManager, MistEffectColour_B) == 0xd8);
++FABLE_STATIC_ASSERT_AT(394, offsetof(CEngineLightingManager, MistEffectColour_A) == 0xdc);
++FABLE_STATIC_ASSERT_AT(395, offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelIndex0) == 0xe0);
++FABLE_STATIC_ASSERT_AT(396, offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelIndex1) == 0xe1);
++FABLE_STATIC_ASSERT_AT(397, offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelBlendFactor) == 0xe2);
++FABLE_STATIC_ASSERT_AT(398, offsetof(CEngineLightingManager, CurrentThemeChannel_Pad) == 0xe3);
++FABLE_STATIC_ASSERT_AT(399, offsetof(CEngineLightingManager, StateUpdateFlags) == 0xe4);
++FABLE_STATIC_ASSERT_AT(400, offsetof(CEngineLightingManager, SelfIlluminationAmbientPercentage) == 0xe8);
++FABLE_STATIC_ASSERT_AT(401, offsetof(CEngineLightingManager, LightLookupGrid) == 0xec);
++FABLE_STATIC_ASSERT_AT(402, offsetof(CEngineLightingManager, SmallObjectLookupGrid) == 0x4ec);
++FABLE_STATIC_ASSERT_AT(403, offsetof(CEngineLightingManager, EmptyLightArray) == 0x44ec);
++FABLE_STATIC_ASSERT_AT(404, offsetof(CEngineLightingManager, SIMDVarBlock) == 0x4690);
++FABLE_STATIC_ASSERT_AT(405, offsetof(CEngineLightingManager, ShadowMode) == 0x4694);
++FABLE_STATIC_ASSERT_AT(406, offsetof(CEngineLightingManager, CurrentShadowedSpotLightParams) == 0x4698);
+ 
+ #endif // FABLE_RETAIL_CENGINELIGHTINGMANAGER
+ 
+--- a/rebuild/include/engine/CEngineOcclusionManager.h
++++ b/rebuild/include/engine/CEngineOcclusionManager.h
+@@ -21,6 +21,13 @@
+ public:
+     CEngineOcclusionManager();                 // 0x00B8D780 ??0CEngineOcclusionManager@@QAE@XZ
+     virtual unsigned long PeekSceneFilterFlags() const;
++#ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_OCCLUSIONTEST
++    // Opt-in (chunk 2060, row 0x00BA5260): Ego_r.pdb ?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ (Ego_r 0x00A347A0, 1 byte `ret`)
++    // and ?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z (0x00A347B0, 3 bytes `ret 4`), FableWin.pdb the same names: the empty PC
++    // bodies at retail 0x00B8D090 / 0x00B8D0A0 (landed as BeginQuery / EndQuery: NAME_FIXES.tsv).
++    void StartOcclusionTest();                                           // 0x00B8D090
++    void EndOcclusionTest(unsigned long handle);                         // 0x00B8D0A0
++#endif
+ #ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_FLARE
+     // Opt-in (chunk 2048, RenderSunFlare 0x00B64550): FableWin.pdb ?GetPrevFrameFlareTestResultFromRetrivalID@CEngineOcclusionManager@@QAEMK@Z
+     // (landed bound address 0x00B8D3C0, reloc_bindings).
+@@ -72,7 +79,7 @@
+     unsigned char _pad_0xc[0x240b4];            // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineOcclusionManager) == 0x240c0);
++FABLE_STATIC_ASSERT_AT(75, sizeof(CEngineOcclusionManager) == 0x240c0);
+ #else // generated flattened Ego_r layout (the landed default, unchanged)
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+ // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngineOcclusionManager = 0x240d4.
+@@ -83,7 +90,17 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_ALLOCATE
++// Opt-in (bwf1 / agentC2, row 0x00BB3E80): Ego_r.pdb COccluderEntry (8 bytes: PixelCount, SlotID:30, Testing:1, Completed:1).
++struct COccluderEntry {
++    unsigned long PixelCount;
++    unsigned long SlotID : 30;
++    unsigned long Testing : 1;
++    unsigned long Completed : 1;
++};
++#else
+ struct COccluderEntry;
++#endif
+ 
+ #pragma pack(push, 1)
+ class CEngineOcclusionManager {
+@@ -110,30 +127,50 @@
+     unsigned char   UnitBoxIB[0x14];                         // +0x2409c CIndexBuffer
+     unsigned char   OcclusionBoxVShader[0x8];                // +0x240b0 CVertexShader
+     unsigned char   OcclusionBoxPixelShader[0x8];            // +0x240b8 CPixelShader
++#ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_ALLOCATE
++    // Opt-in (bwf1 / agentC2, row 0x00BB3E80 CEngineClothRenderer::RenderClothPrimitive): the FableWin.pdb inline
++    // ?AllocateOccluderHandle@CEngineOcclusionManager@@QAEKXZ (expanded at 0x00BB3EFD..0x00BB3F34; text of landed 0x00B91140) and the
++    // Ego_r.pdb out-of-line ?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ 0x00B8D090 / ?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z 0x00B8D0A0.
++    FABLE_FORCEINLINE unsigned long AllocateOccluderHandle()
++    {
++        if (EntriesSize < 0x2000) {
++            unsigned long index = EntriesSize;
++            COccluderEntry empty;
++            empty.PixelCount = 0;
++            *(unsigned long*)((char*)&empty + 4) = 0;
++            Entries[index] = empty;
++            ++EntriesSize;
++            return index;
++        }
++        return 0xffffffff;
++    }
++    void StartOcclusionTest();                                           // 0x00B8D090
++    void EndOcclusionTest(unsigned long handle);                         // 0x00B8D0A0
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEngineOcclusionManager) == 0x240c0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, OccluderSlots) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, NextSlot) == 0x400c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, CurrentFrame) == 0x4010);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, Entries) == 0x4014);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, PrevFrameEntries) == 0x4018);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, EntriesSize) == 0x401c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, PrevFrameEntriesSize) == 0x4020);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, EntriesBuffer1) == 0x4024);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, EntriesBuffer2) == 0x14024);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, FlareTests) == 0x24024);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, PrevFrameFlareTests) == 0x24030);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, HandleMapper) == 0x2403c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, PrevFrameHandleMapper) == 0x24048);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, FlareVertexBuffers) == 0x24054);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, VertexShaderFlareTest) == 0x24060);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, UnitBoxVB) == 0x24068);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, UnitBoxIB) == 0x2409c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, OcclusionBoxVShader) == 0x240b0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, OcclusionBoxPixelShader) == 0x240b8);
++FABLE_STATIC_ASSERT_AT(116, sizeof(CEngineOcclusionManager) == 0x240c0);
++FABLE_STATIC_ASSERT_AT(117, offsetof(CEngineOcclusionManager, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(118, offsetof(CEngineOcclusionManager, OccluderSlots) == 0xc);
++FABLE_STATIC_ASSERT_AT(119, offsetof(CEngineOcclusionManager, NextSlot) == 0x400c);
++FABLE_STATIC_ASSERT_AT(120, offsetof(CEngineOcclusionManager, CurrentFrame) == 0x4010);
++FABLE_STATIC_ASSERT_AT(121, offsetof(CEngineOcclusionManager, Entries) == 0x4014);
++FABLE_STATIC_ASSERT_AT(122, offsetof(CEngineOcclusionManager, PrevFrameEntries) == 0x4018);
++FABLE_STATIC_ASSERT_AT(123, offsetof(CEngineOcclusionManager, EntriesSize) == 0x401c);
++FABLE_STATIC_ASSERT_AT(124, offsetof(CEngineOcclusionManager, PrevFrameEntriesSize) == 0x4020);
++FABLE_STATIC_ASSERT_AT(125, offsetof(CEngineOcclusionManager, EntriesBuffer1) == 0x4024);
++FABLE_STATIC_ASSERT_AT(126, offsetof(CEngineOcclusionManager, EntriesBuffer2) == 0x14024);
++FABLE_STATIC_ASSERT_AT(127, offsetof(CEngineOcclusionManager, FlareTests) == 0x24024);
++FABLE_STATIC_ASSERT_AT(128, offsetof(CEngineOcclusionManager, PrevFrameFlareTests) == 0x24030);
++FABLE_STATIC_ASSERT_AT(129, offsetof(CEngineOcclusionManager, HandleMapper) == 0x2403c);
++FABLE_STATIC_ASSERT_AT(130, offsetof(CEngineOcclusionManager, PrevFrameHandleMapper) == 0x24048);
++FABLE_STATIC_ASSERT_AT(131, offsetof(CEngineOcclusionManager, FlareVertexBuffers) == 0x24054);
++FABLE_STATIC_ASSERT_AT(132, offsetof(CEngineOcclusionManager, VertexShaderFlareTest) == 0x24060);
++FABLE_STATIC_ASSERT_AT(133, offsetof(CEngineOcclusionManager, UnitBoxVB) == 0x24068);
++FABLE_STATIC_ASSERT_AT(134, offsetof(CEngineOcclusionManager, UnitBoxIB) == 0x2409c);
++FABLE_STATIC_ASSERT_AT(135, offsetof(CEngineOcclusionManager, OcclusionBoxVShader) == 0x240b0);
++FABLE_STATIC_ASSERT_AT(136, offsetof(CEngineOcclusionManager, OcclusionBoxPixelShader) == 0x240b8);
+ 
+ #endif // FABLE_RETAIL_CENGINEOCCLUSIONMANAGER
+ #endif // FABLE_ENGINE_CENGINEOCCLUSIONMANAGER_H
+--- a/rebuild/include/engine/CEnginePrimitive2DViewportManager.h
++++ b/rebuild/include/engine/CEnginePrimitive2DViewportManager.h
+@@ -23,10 +23,15 @@
+     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);
+     virtual void Render2DPrimitive(CEngineInternalPrimitiveBase&,CEngineSubPrimitiveChain&,ESubPrimitiveType);
+     virtual void RenderSubPrimitive(CEngineSubPrimitiveBase&,ERenderPassType);
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DVIEWPORTMANAGER_ALPHAMASK
++    // Opt-in (bwf2, row 0x00BA2350): FableWin.pdb ?GetCurrentAlphaMask@CEnginePrimitive2DViewportManager@@QAEPBVC2DAlphaMaskInfo@@XZ (9 debug instructions), inline.
++    const C2DAlphaMaskInfo* GetCurrentAlphaMask(){return &AlphaMaskInfo;}
++#else
+     const C2DAlphaMaskInfo* GetCurrentAlphaMask();
++#endif
+     C2DAlphaMaskInfo AlphaMaskInfo;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitive2DViewportManager)==0x38);
++FABLE_STATIC_ASSERT_AT(29, sizeof(CEnginePrimitive2DViewportManager)==0x38);
+ #else
+ #pragma pack(push, 1)
+ class CEnginePrimitive2DViewportManager {
+@@ -38,9 +43,9 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitive2DViewportManager) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitive2DViewportManager, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitive2DViewportManager, AlphaMaskInfo) == 0xc);
++FABLE_STATIC_ASSERT_AT(41, sizeof(CEnginePrimitive2DViewportManager) == 0x38);
++FABLE_STATIC_ASSERT_AT(42, offsetof(CEnginePrimitive2DViewportManager, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(43, offsetof(CEnginePrimitive2DViewportManager, AlphaMaskInfo) == 0xc);
+ 
+ #endif
+ 
+--- a/rebuild/include/engine/CEnginePrimitiveManagerMeshBase.h
++++ b/rebuild/include/engine/CEnginePrimitiveManagerMeshBase.h
+@@ -3,6 +3,9 @@
+ #ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+ #include "engine/CEnginePrimitiveManagerOcclusionBase.h"
+ class CTexture;class CGraphicDataBank;class C3DMeshMaterial;class CCompositeSurfaceInfo;
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_GETAPPROPRIATEMIPMAP
++class C3DVector;class CMatrix3x4;class C3DPrimitive2;
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_APPROPRIATELOD
+ class C3DMeshInfo;
+ #endif
+@@ -16,6 +19,27 @@
+     CEnginePrimitiveManagerMeshBase(CArray<CEngineScene *>&);
+     static const CTexture* FABLE_FASTCALL GetDiffuseTexture(const C3DMeshMaterial*,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >*,unsigned long,bool&,const CGraphicDataBank*,bool);
+     static const CTexture* FABLE_FASTCALL GetBumpTexture(const C3DMeshMaterial*,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >*,unsigned long,bool&,const CGraphicDataBank*,bool);
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_2DALPHAMASK
++    // Opt-in (agentC6, row 0x00BB30A0 Render2DClothPrimitive): Ego_r.pdb 0x00A60640 / FableWin.pdb
++    // ?Get2DAlphaMaskTexture@CEnginePrimitiveManagerMeshBase@@SIPBVCTexture@@KKAA_NPBVCGraphicDataBank@@_N@Z, out of line at 0x00BA9A70
++    // (call 0x00BB3C25: bank index in ecx, mipmap in edx, then &preloading, the bank, the force flag). Declaration only.
++    static const CTexture* FABLE_FASTCALL Get2DAlphaMaskTexture(unsigned long bank_index, unsigned long mipmap, bool& preloading,
++        const CGraphicDataBank* bank, bool force);
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_REFLECTIONTEXTURE
++    // Opt-in (bwf2 / agentC16, row 0x00BA2350): Ego_r.pdb / FableWin.pdb
++    // ?GetReflectionTexture@CEnginePrimitiveManagerMeshBase@@SIPBVCTexture@@PBVC3DMeshMaterial@@KAA_NPBVCGraphicDataBank@@_N@Z, out of line
++    // at 0x00BA9830. Declaration only (Get2DAlphaMaskTexture is under _2DALPHAMASK).
++    static const CTexture* FABLE_FASTCALL GetReflectionTexture(const C3DMeshMaterial* material, unsigned long mipmap_level, bool& used_blank,
++        const CGraphicDataBank* bank, bool block_on_load);
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_GETAPPROPRIATEMIPMAP
++    // Opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): FableWin.pdb
++    // ?GetAppropriateMipmap@CEnginePrimitiveManagerMeshBase@@SIKABVC3DVector@@ABVCMatrix3x4@@ABVC3DPrimitive2@@MPBVC3DMeshMaterial@@PBVCGraphicDataBank@@@Z
++    // (public static __fastcall; no Ego_r.pdb or retail out-of-line copy: expanded in place). The including row defines the body.
++    static unsigned long FABLE_FASTCALL GetAppropriateMipmap(const C3DVector& camera_position, const CMatrix3x4& transform,
++        const C3DPrimitive2& mesh_primitive, float scale, const C3DMeshMaterial* material, const CGraphicDataBank* graphic_bank);
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_APPROPRIATELOD
+     // Opt-in (chunk 2032, row 0x00BA6FF0): FableWin.pdb ?GetAppropriateLOD@CEnginePrimitiveManagerMeshBase@@SIKPBVC3DMeshInfo@@MMM@Z
+     // (static fastcall; no Ego_r.pdb or Fable.exe copy: expanded in place). The including row defines the body.
+@@ -24,7 +48,7 @@
+ private:
+     static const CTexture* FABLE_FASTCALL GetComposedTexture(long&,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >&,unsigned long,bool,const CGraphicDataBank*);
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerMeshBase)==0x20);
++FABLE_STATIC_ASSERT_AT(27, sizeof(CEnginePrimitiveManagerMeshBase)==0x20);
+ 
+ #else
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+@@ -65,8 +89,8 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerMeshBase) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerMeshBase, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(68, sizeof(CEnginePrimitiveManagerMeshBase) == 0x20);
++FABLE_STATIC_ASSERT_AT(69, offsetof(CEnginePrimitiveManagerMeshBase, __vftable) == 0x0);
+ 
+ #endif
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERMESHBASE_H
+--- a/rebuild/include/engine/CEnginePrimitiveManagerOcclusionBase.h
++++ b/rebuild/include/engine/CEnginePrimitiveManagerOcclusionBase.h
+@@ -5,6 +5,9 @@
+ #include "engine/CVertexShader.h"
+ #include "engine/CCountedPointer.h"
+ class C3DMesh2;
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_PREPAREOCCLUSIONTEST
++class CEngineInternalPrimitiveOcclusionBase;
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_SILHOUETTE
+ class CEngineInternalPrimitiveOcclusionBase;
+ class CRGBColour;
+@@ -17,6 +20,13 @@
+ public:
+     CEnginePrimitiveManagerOcclusionBase(const CEnginePrimitiveManagerOcclusionBase&);
+     CEnginePrimitiveManagerOcclusionBase(CArray<CEngineScene *>&);
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_PREPAREOCCLUSIONTEST
++protected:
++    // Opt-in (chunk 2060, row 0x00BA5260): Ego_r.pdb / FableWin.pdb
++    // ?PrepareOcclusionTest@CEnginePrimitiveManagerOcclusionBase@@IAEXAAVCEngineInternalPrimitiveOcclusionBase@@W4ERenderPassType@@AAK@Z
++    // (protected; retail 0x00B905A0, manifest label agrees). Declaration only.
++    void PrepareOcclusionTest(CEngineInternalPrimitiveOcclusionBase& primitive, ERenderPassType pass, unsigned long& query);   // 0x00B905A0
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_RENDERUNTEXTURED
+     // Retail opt-in (wf8, row 0x00B903D0): Ego_r.pdb / FableWin.pdb
+     // ?RenderUntexturedStaticMeshPrimitive@CEnginePrimitiveManagerOcclusionBase@@AAEXPAVC3DPrimitive2@@ABVCMatrix3x4@@@Z (private).
+@@ -37,6 +47,6 @@
+     CCountedPointer<const C3DMesh2> UnitBox;
+     float SilhouetteTreshold;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerOcclusionBase)==0x20);
++FABLE_STATIC_ASSERT_AT(40, sizeof(CEnginePrimitiveManagerOcclusionBase)==0x20);
+ #endif
+ #endif
+--- a/rebuild/include/engine/CEnginePrimitiveManagerStaticMeshesBase.h
++++ b/rebuild/include/engine/CEnginePrimitiveManagerStaticMeshesBase.h
+@@ -5,6 +5,10 @@
+ #include "engine/CVertexShader.h"
+ #include "engine/CPixelShader.h"
+ class C3DPrimitive2;class C3DMesh2;class C3DTextureStages;class CGraphicDataBank;
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_RENDERMESHPRIMITIVE
++class CEngineSubPrimitiveStaticMesh;class CEngineInternalPrimitiveStaticMesh;class C3DMeshMaterial;
++class CEnginePrimitiveHandle;class C3DMeshInfo;class CMatrix3x4;class CEngineFadeDistance;class CRGBColour;
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_SILHOUETTE
+ class CEngineInternalPrimitiveStaticMesh;
+ enum ERenderMode;                                                        // MS forward enum (Ego_r.pdb; no enumerator name recovered)
+@@ -29,6 +33,30 @@
+     CEnginePrimitiveManagerStaticMeshesBase(const CEnginePrimitiveManagerStaticMeshesBase&);
+     CEnginePrimitiveManagerStaticMeshesBase(CArray<CEngineScene *>&);
+     static bool FABLE_FASTCALL SetupStaticBlocksNoMorph(C3DPrimitive2&,const C3DMesh2&,C3DTextureStages&,long,const CGraphicDataBank*,bool);
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_RENDERMESHPRIMITIVE
++    // Opt-in (chunk 2060, row 0x00BA5260): the members RenderMeshPrimitive reaches, Ego_r.pdb / FableWin.pdb spellings and access:
++    // ?RenderMeshPrimitive@..@@QAEXAAVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z 0x00BA5260 (public),
++    // ?SetupFirstTextures@..@@SIXAAVC3DPrimitive2@@AAVC3DTextureStages@@@Z 0x00B9D670, ?RenderMeshPrimitiveBlocks@..@@SIXAAVC3DPrimitive2@@ABVC3DTextureStages@@_N2@Z
++    // 0x00BA1110 (public static; RenderMeshPrimitive expands it, so it is an inline COMDAT whose out-of-line copy the other callers use),
++    // the private statics ?RenderMeshPrimitiveBlocksIndexBuffer@..@@CIX.. 0x00B9E5B0 / ?RenderMeshPrimitiveBlocksDegenerateTriangles@..@@CIX..
++    // 0x00B9E750, and the private ?SetupRenderModeShadersAndConstants@..@@AAE_NW4ERenderPassType@@PBVC3DMeshMaterial@@AAVCEngineSubPrimitiveStaticMesh@@AAVC3DTextureStages@@JPAKPA_N@Z
++    // 0x00BA2350 / ?SetupStaticBlocks@..@@AAE_NAAVC3DPrimitive2@@AAVCEngineInternalPrimitiveStaticMesh@@AAVC3DTextureStages@@PBVC3DMeshMaterial@@PAV?$CVectorMap@..@@JPA_N@Z
++    // 0x00BA50A0 (manifest labels agree).
++    void RenderMeshPrimitive(CEngineSubPrimitiveStaticMesh& sub_primitive, ERenderPassType pass);   // 0x00BA5260
++    static void FABLE_FASTCALL SetupFirstTextures(C3DPrimitive2& mesh_primitive, C3DTextureStages& texture_stages);   // 0x00B9D670
++    static void FABLE_FASTCALL RenderMeshPrimitiveBlocks(C3DPrimitive2& mesh_primitive, const C3DTextureStages& texture_stages,
++                                                         bool use_push_buffer, bool render_degenerate_triangles);   // 0x00BA1110
++private:
++    static void FABLE_FASTCALL RenderMeshPrimitiveBlocksIndexBuffer(C3DPrimitive2& mesh_primitive, const C3DTextureStages& texture_stages);   // 0x00B9E5B0
++    static void FABLE_FASTCALL RenderMeshPrimitiveBlocksDegenerateTriangles(C3DPrimitive2& mesh_primitive, const C3DTextureStages& texture_stages);   // 0x00B9E750
++    bool SetupRenderModeShadersAndConstants(ERenderPassType pass, const C3DMeshMaterial* material, CEngineSubPrimitiveStaticMesh& sub_primitive,
++                                            C3DTextureStages& texture_stages, long mipmap_level, unsigned long* shader_flags,
++                                            bool* render_degenerate_triangles);   // 0x00BA2350
++    bool SetupStaticBlocks(C3DPrimitive2& mesh_primitive, CEngineInternalPrimitiveStaticMesh& primitive, C3DTextureStages& texture_stages,
++                           const C3DMeshMaterial* material,
++                           CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >* composite_surfaces,
++                           long mipmap_level, bool* used_blank_textures);   // 0x00BA50A0
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_BLANKTEXTURES
+     // Retail opt-in (wf8, row 0x00BA4A40): Ego_r.pdb / FableWin.pdb
+     // ?SetupStaticBlocksBlankTextures@CEnginePrimitiveManagerStaticMeshesBase@@AAE_NAAVC3DPrimitive2@@AAVCEngineInternalPrimitiveStaticMesh@@AAVC3DTextureStages@@PBVC3DMeshMaterial@@PA_N@Z
+@@ -88,8 +116,25 @@
+     long OverridePrimitive;
+     long RenderOnlyNMeshes;
+     long StippleAlphaSolidFactor;
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_SETUPRENDERMODE
++    // Opt-in (bwf2, row 0x00BA2350): FableWin.pdb private inline helpers (?ApplyStaticVertexShader@..@@AAEXK@Z and its family,
++    // ?ApplyVertexShader@..@@AAEXABVCVertexShader@@@Z, ?Apply2DStaticVertexShader@..@@AAEXXZ ...; no retail out-of-line copy). Bodies in the row.
++    void ApplyVertexShader(const CVertexShader& shader);
++    void ApplyStaticVertexShader(unsigned long light_count);
++    void ApplyStaticVertexShaderStippleAlpha(unsigned long light_count);
++    void ApplyStaticVertexShaderEnv(unsigned long light_count);
++    void ApplyStaticVertexShaderShadow(unsigned long light_count);
++    void ApplyStaticVertexShaderEnvShadow(unsigned long light_count);
++    void ApplyStaticVertexShaderDP3BumpShadow(unsigned long light_count);
++    void ApplyStaticVertexShaderSpotLight(unsigned long light_count);
++    void ApplyStaticVertexShaderSpotShadow(unsigned long light_count);
++    void ApplyStaticVertexShaderEnvSpotShadow(unsigned long light_count);
++    void Apply2DStaticVertexShader();
++    void Apply2DStaticVertexShaderEnv();
++    void Apply2DStaticVertexShaderDP3Bump();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerStaticMeshesBase)==0x318);
++FABLE_STATIC_ASSERT_AT(92, sizeof(CEnginePrimitiveManagerStaticMeshesBase)==0x318);
+ 
+ #else
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+@@ -191,49 +236,49 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerStaticMeshesBase) == 0x318);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, PointLightShaderIndex) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotlight) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticStippleAlpha) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStatic) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnv) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBump) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDepthBufferShadow) == 0xd8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvDepthBufferShadow) == 0xf8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpDepthBufferShadow) == 0x118);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpDepthBufferShadow) == 0x138);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotDepthBufferShadow) == 0x158);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotDepthBufferShadow) == 0x178);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpSpotDepthBufferShadow) == 0x198);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpSpotDepthBufferShadow) == 0x1b8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStatic) == 0x1d8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticEnv) == 0x1e0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticEnvBump) == 0x1e8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticDP3Bump) == 0x1f0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDepthShadowBufferRender) == 0x1f8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderColourShadowBufferRender) == 0x200);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticColourBufferShadow) == 0x208);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvColourBufferShadow) == 0x228);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpColourBufferShadow) == 0x248);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpColourBufferShadow) == 0x268);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotColourBufferShadow) == 0x288);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotColourBufferShadow) == 0x2a8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, PixelShaderDiffuseFogStippleAlpha) == 0x2c8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderOutline) == 0x2d0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDP3BumpOutline) == 0x2d8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderOutlineSmoothFill) == 0x2e0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDP3BumpOutlineSmoothFill) == 0x2e8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticShadow) == 0x2f0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvShadow) == 0x2f4);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpShadow) == 0x2f8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpShadow) == 0x2fc);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotShadow) == 0x300);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotShadow) == 0x304);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderShadowBufferRender) == 0x308);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, OverridePrimitive) == 0x30c);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, RenderOnlyNMeshes) == 0x310);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, StippleAlphaSolidFactor) == 0x314);
++FABLE_STATIC_ASSERT_AT(194, sizeof(CEnginePrimitiveManagerStaticMeshesBase) == 0x318);
++FABLE_STATIC_ASSERT_AT(195, offsetof(CEnginePrimitiveManagerStaticMeshesBase, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(196, offsetof(CEnginePrimitiveManagerStaticMeshesBase, PointLightShaderIndex) == 0x20);
++FABLE_STATIC_ASSERT_AT(197, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotlight) == 0x38);
++FABLE_STATIC_ASSERT_AT(198, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticStippleAlpha) == 0x58);
++FABLE_STATIC_ASSERT_AT(199, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStatic) == 0x78);
++FABLE_STATIC_ASSERT_AT(200, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnv) == 0x98);
++FABLE_STATIC_ASSERT_AT(201, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBump) == 0xb8);
++FABLE_STATIC_ASSERT_AT(202, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDepthBufferShadow) == 0xd8);
++FABLE_STATIC_ASSERT_AT(203, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvDepthBufferShadow) == 0xf8);
++FABLE_STATIC_ASSERT_AT(204, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpDepthBufferShadow) == 0x118);
++FABLE_STATIC_ASSERT_AT(205, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpDepthBufferShadow) == 0x138);
++FABLE_STATIC_ASSERT_AT(206, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotDepthBufferShadow) == 0x158);
++FABLE_STATIC_ASSERT_AT(207, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotDepthBufferShadow) == 0x178);
++FABLE_STATIC_ASSERT_AT(208, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpSpotDepthBufferShadow) == 0x198);
++FABLE_STATIC_ASSERT_AT(209, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpSpotDepthBufferShadow) == 0x1b8);
++FABLE_STATIC_ASSERT_AT(210, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStatic) == 0x1d8);
++FABLE_STATIC_ASSERT_AT(211, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticEnv) == 0x1e0);
++FABLE_STATIC_ASSERT_AT(212, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticEnvBump) == 0x1e8);
++FABLE_STATIC_ASSERT_AT(213, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticDP3Bump) == 0x1f0);
++FABLE_STATIC_ASSERT_AT(214, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDepthShadowBufferRender) == 0x1f8);
++FABLE_STATIC_ASSERT_AT(215, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderColourShadowBufferRender) == 0x200);
++FABLE_STATIC_ASSERT_AT(216, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticColourBufferShadow) == 0x208);
++FABLE_STATIC_ASSERT_AT(217, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvColourBufferShadow) == 0x228);
++FABLE_STATIC_ASSERT_AT(218, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpColourBufferShadow) == 0x248);
++FABLE_STATIC_ASSERT_AT(219, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpColourBufferShadow) == 0x268);
++FABLE_STATIC_ASSERT_AT(220, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotColourBufferShadow) == 0x288);
++FABLE_STATIC_ASSERT_AT(221, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotColourBufferShadow) == 0x2a8);
++FABLE_STATIC_ASSERT_AT(222, offsetof(CEnginePrimitiveManagerStaticMeshesBase, PixelShaderDiffuseFogStippleAlpha) == 0x2c8);
++FABLE_STATIC_ASSERT_AT(223, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderOutline) == 0x2d0);
++FABLE_STATIC_ASSERT_AT(224, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDP3BumpOutline) == 0x2d8);
++FABLE_STATIC_ASSERT_AT(225, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderOutlineSmoothFill) == 0x2e0);
++FABLE_STATIC_ASSERT_AT(226, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDP3BumpOutlineSmoothFill) == 0x2e8);
++FABLE_STATIC_ASSERT_AT(227, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticShadow) == 0x2f0);
++FABLE_STATIC_ASSERT_AT(228, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvShadow) == 0x2f4);
++FABLE_STATIC_ASSERT_AT(229, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpShadow) == 0x2f8);
++FABLE_STATIC_ASSERT_AT(230, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpShadow) == 0x2fc);
++FABLE_STATIC_ASSERT_AT(231, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotShadow) == 0x300);
++FABLE_STATIC_ASSERT_AT(232, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotShadow) == 0x304);
++FABLE_STATIC_ASSERT_AT(233, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderShadowBufferRender) == 0x308);
++FABLE_STATIC_ASSERT_AT(234, offsetof(CEnginePrimitiveManagerStaticMeshesBase, OverridePrimitive) == 0x30c);
++FABLE_STATIC_ASSERT_AT(235, offsetof(CEnginePrimitiveManagerStaticMeshesBase, RenderOnlyNMeshes) == 0x310);
++FABLE_STATIC_ASSERT_AT(236, offsetof(CEnginePrimitiveManagerStaticMeshesBase, StippleAlphaSolidFactor) == 0x314);
+ 
+ #endif
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_H
+--- a/rebuild/include/engine/CEnginePrimitiveOcclusionInfo.h
++++ b/rebuild/include/engine/CEnginePrimitiveOcclusionInfo.h
+@@ -2,6 +2,17 @@
+ #define FABLE_ENGINE_CENGINEPRIMITIVEOCCLUSIONINFO_H
+ #include "engine/CIVCountedPointeeBase.h"
+ #include "engine/CArray.h"
+-class CEnginePrimitiveOcclusionInfo:public CIVCountedPointeeBase {public:CEnginePrimitiveOcclusionInfo();virtual ~CEnginePrimitiveOcclusionInfo();private:long InvisibleFrames;CArray<unsigned long> OcclusionTestHandles;bool Seen;unsigned long TestFrame;};
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveOcclusionInfo)==0x20);
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONINFO_ADDOCCLUSIONTEST
++// Opt-in (bwf1 / agentC2, row 0x00BB3E80): FableWin.pdb inline ?AddOcclusionTest@CEnginePrimitiveOcclusionInfo@@QAEXK@Z (24 debug instructions)
++// and the private ?ClearHandles@CEnginePrimitiveOcclusionInfo@@AAEXXZ (13; Ego_r.pdb out-of-line copy 0x009D01F0), expanded at
++// 0x00BB3F3B..0x00BB3FA7 (no retail out-of-line copy). The row defines AddOcclusionTest's body (it reads g_pOcclusionManager).
++class CEnginePrimitiveOcclusionInfo:public CIVCountedPointeeBase {public:CEnginePrimitiveOcclusionInfo();virtual ~CEnginePrimitiveOcclusionInfo();
++ void AddOcclusionTest(unsigned long handle);
++private:
++ void ClearHandles() { OcclusionTestHandles.clear(); }
++#else
++class CEnginePrimitiveOcclusionInfo:public CIVCountedPointeeBase {public:CEnginePrimitiveOcclusionInfo();virtual ~CEnginePrimitiveOcclusionInfo();private:
++#endif
++long InvisibleFrames;CArray<unsigned long> OcclusionTestHandles;bool Seen;unsigned long TestFrame;};
++FABLE_STATIC_ASSERT_AT(6, sizeof(CEnginePrimitiveOcclusionInfo)==0x20);
+ #endif
+--- a/rebuild/include/engine/CEnginePrimitiveRenderUtil.h
++++ b/rebuild/include/engine/CEnginePrimitiveRenderUtil.h
+@@ -29,6 +29,18 @@
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MESHRENDER
+ #include "engine/EEngineOcclusionLayer.h"
+ #endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTH2D
++class C2DAlphaMaskInfo;
++enum EEnginePrimitiveBlendMode;                                          // MS forward enum (engine/CEnginePrimitive2DSprite.h)
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MESHPRIMITIVE
++class CEngineMeshEffect;
++class CMatrix3x4;
++enum ERenderPassType;
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTHRENDER
++class CEngineMeshEffectOutline;
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_FINDLOCALLIGHTS
+ #include "engine/CEnginePrimitiveThemeChannelDesc.h"
+ class C3DVector;
+@@ -74,6 +86,58 @@
+     void SetupOutlineStencilStates(const CEngineMeshEffectOutline& effect, float scale);   // 0x00BF0B20
+ #endif
+ #endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MESHPRIMITIVE
++    // Opt-in (chunk 2060 row 0x00BA5260 RenderMeshPrimitive, there spelled _MESHRENDER before that name was taken by chunk 2028; agentC2 row
++    // 0x00BB3E80): Ego_r.pdb / FableWin.pdb ?SetupStencilMask@CEnginePrimitiveRenderUtil@@QAEXPBVCEngineMeshEffect@@KW4ERenderPassType@@@Z
++    // (out of line, 0x00BF1030, landed), the FableWin.pdb inline statics ?SetWorldTransform@CEnginePrimitiveRenderUtil@@SIXABVCMatrix3x4@@@Z
++    // and ?GetMipmapSizeMultiplier@CEnginePrimitiveRenderUtil@@SIMXZ, and ?SetupAlphaBlendingStatesFromRenderFlags@CEnginePrimitiveRenderUtil@@
++    // QAEXKW4ERenderPassType@@EE@Z (no retail out-of-line copy). The including row defines the inline bodies.
++    void SetupStencilMask(const CEngineMeshEffect* effect, unsigned long flags, ERenderPassType pass);   // 0x00BF1030
++    static void __fastcall SetWorldTransform(const CMatrix3x4& transform);
++    static float __fastcall GetMipmapSizeMultiplier();
++    void SetupAlphaBlendingStatesFromRenderFlags(unsigned long render_flags, ERenderPassType pass, unsigned char alpha, unsigned char alpha_ref);
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTHSHADERS
++    // Opt-in (agentC2, row 0x00BB3E80 CEngineClothRenderer::RenderClothPrimitive): the FableWin.pdb static shader getters listed right after
++    // that row (its first user): ?GetPixelShaderDiffuseOnly@CEnginePrimitiveRenderUtil@@SIABVCPixelShader@@XZ (15b / 6 debug instructions
++    // each = the shared data's member address), ..DiffuseColourTextureDiffuseAlpha, ..OutlineSmoothFill, ..OutlineSmoothFillAlpha, ..Diffuse,
++    // and ..DiffuseFogShadow / ..DiffuseFogShadowOutputFactor (16b / 6: the pointer member dereferenced). No retail copy (read in place).
++    // The including row defines the bodies (they reach the shared data global).
++    static const CPixelShader& __fastcall GetPixelShaderDiffuseOnly();
++    static const CPixelShader& __fastcall GetPixelShaderDiffuseColourTextureDiffuseAlpha();
++    static const CPixelShader& __fastcall GetPixelShaderOutlineSmoothFill();
++    static const CPixelShader& __fastcall GetPixelShaderOutlineSmoothFillAlpha();
++    static const CPixelShader& __fastcall GetPixelShaderDiffuse();
++    static const CPixelShader& __fastcall GetPixelShaderDiffuseFogShadow();
++    static const CPixelShader& __fastcall GetPixelShaderDiffuseFogShadowOutputFactor();
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTH2D
++    // Opt-in (agentC6, row 0x00BB30A0 CEngineClothRenderer::Render2DClothPrimitive): the 2D alpha-mask helpers that row expands (FableWin.pdb
++    // names, listed right after that row: ?GetPixelShader2DDiffuse@CEnginePrimitiveRenderUtil@@SIABVCPixelShader@@W4EEnginePrimitiveBlendMode@@@Z,
++    // ?Set2DAlphaMaskTextureMode@..@@QAEXK_N0@Z, ?DisableTextureFiltering@..@@QAEXK@Z, ?GetCurrent2DAlphaMaskInfo@..@@QAEPBVC2DAlphaMaskInfo@@XZ).
++    // No retail copy (all expanded); the including row defines the bodies.
++    static const CPixelShader& __fastcall GetPixelShader2DDiffuse(EEnginePrimitiveBlendMode blend_mode);
++    void Set2DAlphaMaskTextureMode(unsigned long stage, bool filter, bool clamp);
++    void DisableTextureFiltering(unsigned long stage);
++    const C2DAlphaMaskInfo* GetCurrent2DAlphaMaskInfo();
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SETUPBLANKTEXTURES
++    // Opt-in (bwf2 / agentC16, row 0x00BA2350): FableWin.pdb inline ?SetupBlankTextures@CEnginePrimitiveRenderUtil@@QAEXAAVC3DTextureStages@@_N@Z
++    // (no Ego_r.pdb / retail out-of-line copy). The including row defines the body.
++    void SetupBlankTextures(class C3DTextureStages& texture_stages, bool dp3_bump);
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTHRENDER
++    // Opt-in (bwf1 / agentC2, row 0x00BB3E80 CEngineClothRenderer::RenderClothPrimitive): the outline set-ups the cloth renderer calls out of
++    // line (Ego_r.pdb / FableWin.pdb names; `this` unused). Identities by pass: 0x00BF0740 = SetupOutlineStencilStates (pass 12), 0x00BF0B20 =
++    // SetupOutlineFillStates (pass 13) -- the _OUTLINESTENCILSTATES opt-in binds SetupOutlineStencilStates to 0x00BF0B20: see NAME_FIXES.tsv.
++    void SetupOutlineSmoothStencilStates(const CEngineMeshEffectOutline& effect, float scale);                       // 0x00BEFD90
++#ifndef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_OUTLINESTENCIL
++    void SetupOutlineSmoothAlphaStencilMaskStates(const CEngineMeshEffectOutline& effect);                          // 0x00BF01E0
++#endif
++    void SetupOutlineSmoothFillStates(const CEngineMeshEffectOutline& effect, float scale, bool alpha, long pass_index);   // 0x00BF2240
++    void SetupOutlineStencilStates(const CEngineMeshEffectOutline& effect, float scale);                            // 0x00BF0740
++    void SetupOutlineFillStates(const CEngineMeshEffectOutline& effect, float scale);                               // 0x00BF0B20
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_ADDGENERATEDOBJECTS
+     // Overlay opt-in (chunk 2011): Ego_r.pdb / FableWin.pdb ?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveStaticMesh@@@Z
+     // (retail 0x00BF12A0, `ret 4`) and ?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z
+@@ -107,6 +171,6 @@
+     static long __fastcall GetShowSilhouettes();
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRenderUtil) == 0x4);
++FABLE_STATIC_ASSERT_AT(110, sizeof(CEnginePrimitiveRenderUtil) == 0x4);
+ 
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVERENDERUTIL_H
+--- a/rebuild/include/engine/CEnginePrimitiveRendererSharedData.h
++++ b/rebuild/include/engine/CEnginePrimitiveRendererSharedData.h
+@@ -78,9 +78,28 @@
+ // PixelShaderDiffuse +0xF4 goes to ApplyPixelShader, HighlightMirroredTexturesEnabled +0x262 gates the pass); the rest stays opaque.
+ #include "engine/CPixelShader.h"
+ enum EIndexBufferPool;                                                   // MS forward enum (engine/CIndexBuffer.h)
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_CLOTH
++#include "engine/EEngineOcclusionLayer.h"
++#endif
+ class CEnginePrimitiveRendererSharedData : public CBaseClassNonCopyable {
+ public:
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_CLOTH
++    // Nested opt-in (bwf1 / agentC2, row 0x00BB3E80 CEngineClothRenderer::RenderClothPrimitive): Ego_r.pdb CurrentOcclusionLayer +0x78,
++    // MipmapSizeMultiplier +0xB0 and OcclusionEnable +0xBD (retail 0x00BB3EC9 / 0x00BB3EEF; no container before them: retail = Ego_r),
++    // with the FableWin.pdb inline getters, plus the outline / shadow pixel shaders below (+0x1FC .. +0x228, Ego_r offsets).
++    bool             BlockOnLoad;                                        // +0x04
++    unsigned char    _pad_0x5[0x78 - 0x5];                               // +0x05 members not modelled yet
++    EEngineOcclusionLayer CurrentOcclusionLayer;                         // +0x78
++    unsigned char    _pad_0x7c[0xb0 - 0x7c];                             // +0x7c members not modelled yet
++    float            MipmapSizeMultiplier;                               // +0xb0
++    unsigned char    _pad_0xb4[0xbd - 0xb4];                             // +0xb4 members not modelled yet
++    bool             OcclusionEnable;                                    // +0xbd
++    unsigned char    _pad_0xbe[0xd0 - 0xbe];                             // +0xbe members not modelled yet
++    EEngineOcclusionLayer GetCurrentOcclusionLayer() { return CurrentOcclusionLayer; }   // ?GetCurrentOcclusionLayer@CEnginePrimitiveRendererSharedData@@QAE?AW4EEngineOcclusionLayer@@XZ
++    bool GetOcclusionEnable() { return OcclusionEnable; }                // ?GetOcclusionEnable@CEnginePrimitiveRendererSharedData@@QAE_NXZ
++#else
+     unsigned char    _pad_0x4[0xd0 - 0x4];                               // +0x04 members not modelled yet
++#endif
+     unsigned long    DynamicIBUsage;                                     // +0xd0
+     EIndexBufferPool DynamicIBPool;                                      // +0xd4
+     unsigned long    DynamicIBLockFlags;                                 // +0xd8
+@@ -88,7 +107,57 @@
+     CPixelShader     PixelShaderDiffuseColourTextureDiffuseAlpha;        // +0xe4
+     CPixelShader     PixelShaderTextureOnly;                             // +0xec
+     CPixelShader     PixelShaderDiffuse;                                 // +0xf4
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_CLOTH
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_CLOTH2D
++    // Nested opt-in (agentC6, row 0x00BB30A0 Render2DClothPrimitive): the 2D pixel shaders, Ego_r.pdb names / offsets (no container before
++    // them: retail = Ego_r; the row applies +0x1AC at 0x00BB3A30).
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_SETUPRENDERMODE
++    // Nested opt-in (agentC16, row 0x00BA2350 SetupRenderModeShadersAndConstants; needs _CLOTH and _CLOTH2D): the pixel shaders that row
++    // applies, Ego_r.pdb names / offsets (struct_layouts_egor; no container before them: retail = Ego_r).
++    CPixelShader     PixelShaderDiffuseFog;                              // +0xfc
++    CPixelShader     PixelShaderDiffuseEnvFog;                           // +0x104
++    unsigned char    _pad_0x10c[0x19c - 0x10c];                          // +0x10c members not modelled yet
++#else
++    unsigned char    _pad_0xfc[0x19c - 0xfc];                            // +0xfc members not modelled yet
++#endif
++    CPixelShader     PixelShader2DDiffuseOnly;                           // +0x19c
++    CPixelShader     PixelShader2DTextureOnly;                           // +0x1a4
++    CPixelShader     PixelShader2DDiffuse;                               // +0x1ac
++    CPixelShader     PixelShader2DDiffuseEnv;                            // +0x1b4
++    CPixelShader     PixelShader2DDiffuseEnvBump;                        // +0x1bc
++    CPixelShader     PixelShader2DDiffuseDP3Bump;                        // +0x1c4
++    CPixelShader     PixelShader2DDiffuseOnlyAdditiveAlpha;              // +0x1cc
++    CPixelShader     PixelShader2DTextureOnlyAdditiveAlpha;              // +0x1d4
++    CPixelShader     PixelShader2DDiffuseAdditiveAlpha;                  // +0x1dc
++    CPixelShader     PixelShader2DDiffuseEnvAdditiveAlpha;               // +0x1e4
++    CPixelShader     PixelShader2DDiffuseEnvBumpAdditiveAlpha;           // +0x1ec
++    CPixelShader     PixelShader2DDiffuseDP3BumpAdditiveAlpha;           // +0x1f4
++#else
++    unsigned char    _pad_0xfc[0x1fc - 0xfc];                            // +0xfc members not modelled yet
++#endif
++    CPixelShader     PixelShaderOutlineSmoothFill;                       // +0x1fc
++    CPixelShader     PixelShaderOutlineSmoothFillAlpha;                  // +0x204
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_SETUPRENDERMODE
++    CPixelShader     PixelShaderOutlineSmoothFillDP3;                    // +0x20c
++    CPixelShader     PixelShaderOutlineSmoothFillDP3Alpha;               // +0x214
++    unsigned char    _pad_0x21c[0x224 - 0x21c];                          // +0x21c PixelShaderShadowBufferRender[Alpha]*
++#else
++    unsigned char    _pad_0x20c[0x224 - 0x20c];                          // +0x20c members not modelled yet
++#endif
++    CPixelShader*    PixelShaderDiffuseFogShadow;                        // +0x224
++    CPixelShader*    PixelShaderDiffuseFogShadowOutputFactor;            // +0x228
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_SETUPRENDERMODE
++    CPixelShader*    PixelShaderDiffuseEnvFogShadow;                     // +0x22c
++    CPixelShader*    PixelShaderDiffuseEnvBumpFogShadow;                 // +0x230
++    CPixelShader*    PixelShaderDiffuseDP3BumpFogShadow;                 // +0x234
++    CPixelShader*    PixelShaderDiffuseDP3BumpFogShadowOutputFactor;     // +0x238
++    unsigned char    _pad_0x23c[0x262 - 0x23c];                          // +0x23c members not modelled yet
++#else
++    unsigned char    _pad_0x22c[0x262 - 0x22c];                          // +0x22c members not modelled yet
++#endif
++#else
+     unsigned char    _pad_0xfc[0x262 - 0xfc];                            // +0xfc members not modelled yet
++#endif
+     bool             HighlightMirroredTexturesEnabled;                   // +0x262
+     unsigned char    _pad_0x263[0x268 - 0x263];                          // +0x263 (LODForced +0x264)
+ };
+@@ -104,5 +173,5 @@
+ #endif
+ };
+ #endif
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRendererSharedData) == 0x268);
++FABLE_STATIC_ASSERT_AT(107, sizeof(CEnginePrimitiveRendererSharedData) == 0x268);
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVERENDERERSHAREDDATA_H
+--- a/rebuild/include/engine/CEngineShadowRenderer.h
++++ b/rebuild/include/engine/CEngineShadowRenderer.h
+@@ -155,45 +155,60 @@
+     unsigned char RenderingTechnique[0x4];                   // +0x334 EShadowRenderingTechnique
+     long          UserVideoOptionShadowBufferSize;           // +0x338
+     float         UserVideoOptionShadowDistanceScale;        // +0x33c
++#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_SHADOWFUNC
++    // Opt-in (bwf1 / agentC2, row 0x00BB3E80): Ego_r.pdb CEngineShadowRenderer::CColorBufferDepthPackParameters (12 bytes) and
++    // ?SetupShadowFuncRenderStates@CEngineShadowRenderer@@QAEXJABVCMatrix3x4@@ABUCColorBufferDepthPackParameters@1@@Z (0x00B4FC40, out of line).
++    struct CColorBufferDepthPackParameters {
++        long DepthToColourLookupTextureStage;
++        long LowByteCarryPixelShaderConstant;
++        long LowRepeatFactorUserVertexShaderConstant;
++#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_SHADOWFUNC_CTOR
++        // Nested opt-in (agentC16, row 0x00BA2350): FableWin.pdb ??0CColorBufferDepthPackParameters@CEngineShadowRenderer@@QAE@JJJ@Z (inline).
++        CColorBufferDepthPackParameters(long stage, long carry, long repeat)
++            : DepthToColourLookupTextureStage(stage), LowByteCarryPixelShaderConstant(carry), LowRepeatFactorUserVertexShaderConstant(repeat) { }
++#endif
++    };
++    void SetupShadowFuncRenderStates(long stage, const class CMatrix3x4& transform, const CColorBufferDepthPackParameters& params);   // 0x00B4FC40
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEngineShadowRenderer) == 0x340);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, SceneData) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferRenderStateCaptureBlock) == 0x24c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowProjectionZOffset) == 0x250);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowProjectionZSlopeOffset) == 0x254);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ColourBufferShadowTextureZBias) == 0x258);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ColourBufferShadowMinWClamp) == 0x25c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, EnableShadowBufferDraw) == 0x260);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, StaticDataOrigin_X) == 0x261);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, StaticDataOrigin_Y) == 0x265);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, StaticDataOrigin_Z) == 0x269);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, CameraLookVector) == 0x26d);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, CameraViewMatrix) == 0x27c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, PerspectiveShadowsEnabled) == 0x2ac);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, SceneOriginLocked) == 0x2ad);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, EnableFrustrumDebugDisplay) == 0x2ae);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, TexturesAllocated) == 0x2af);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, PerspectiveInterpStart) == 0x2b0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, PerspectiveInterpEnd) == 0x2b4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ForegroundBufferSpan) == 0x2b8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, MaxShadowDistance) == 0x2bc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowFadeRatio) == 0x2c0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, RenderTarget) == 0x2c4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferTexture) == 0x2e8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, RenderSurface) == 0x2f0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferDepthSurface) == 0x2f8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferColourSurface) == 0x308);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferColourTexture) == 0x318);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferTextureUVScaler_X) == 0x320);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferTextureUVScaler_Y) == 0x324);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferTextureUVScaler_Z) == 0x328);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, DepthPackingLookupTexture) == 0x32c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, RenderingTechnique) == 0x334);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, UserVideoOptionShadowBufferSize) == 0x338);
+-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, UserVideoOptionShadowDistanceScale) == 0x33c);
++FABLE_STATIC_ASSERT_AT(161, sizeof(CEngineShadowRenderer) == 0x340);
++FABLE_STATIC_ASSERT_AT(162, offsetof(CEngineShadowRenderer, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(163, offsetof(CEngineShadowRenderer, SceneData) == 0xc);
++FABLE_STATIC_ASSERT_AT(164, offsetof(CEngineShadowRenderer, ShadowBufferRenderStateCaptureBlock) == 0x24c);
++FABLE_STATIC_ASSERT_AT(165, offsetof(CEngineShadowRenderer, ShadowProjectionZOffset) == 0x250);
++FABLE_STATIC_ASSERT_AT(166, offsetof(CEngineShadowRenderer, ShadowProjectionZSlopeOffset) == 0x254);
++FABLE_STATIC_ASSERT_AT(167, offsetof(CEngineShadowRenderer, ColourBufferShadowTextureZBias) == 0x258);
++FABLE_STATIC_ASSERT_AT(168, offsetof(CEngineShadowRenderer, ColourBufferShadowMinWClamp) == 0x25c);
++FABLE_STATIC_ASSERT_AT(169, offsetof(CEngineShadowRenderer, EnableShadowBufferDraw) == 0x260);
++FABLE_STATIC_ASSERT_AT(170, offsetof(CEngineShadowRenderer, StaticDataOrigin_X) == 0x261);
++FABLE_STATIC_ASSERT_AT(171, offsetof(CEngineShadowRenderer, StaticDataOrigin_Y) == 0x265);
++FABLE_STATIC_ASSERT_AT(172, offsetof(CEngineShadowRenderer, StaticDataOrigin_Z) == 0x269);
++FABLE_STATIC_ASSERT_AT(173, offsetof(CEngineShadowRenderer, CameraLookVector) == 0x26d);
++FABLE_STATIC_ASSERT_AT(174, offsetof(CEngineShadowRenderer, CameraViewMatrix) == 0x27c);
++FABLE_STATIC_ASSERT_AT(175, offsetof(CEngineShadowRenderer, PerspectiveShadowsEnabled) == 0x2ac);
++FABLE_STATIC_ASSERT_AT(176, offsetof(CEngineShadowRenderer, SceneOriginLocked) == 0x2ad);
++FABLE_STATIC_ASSERT_AT(177, offsetof(CEngineShadowRenderer, EnableFrustrumDebugDisplay) == 0x2ae);
++FABLE_STATIC_ASSERT_AT(178, offsetof(CEngineShadowRenderer, TexturesAllocated) == 0x2af);
++FABLE_STATIC_ASSERT_AT(179, offsetof(CEngineShadowRenderer, PerspectiveInterpStart) == 0x2b0);
++FABLE_STATIC_ASSERT_AT(180, offsetof(CEngineShadowRenderer, PerspectiveInterpEnd) == 0x2b4);
++FABLE_STATIC_ASSERT_AT(181, offsetof(CEngineShadowRenderer, ForegroundBufferSpan) == 0x2b8);
++FABLE_STATIC_ASSERT_AT(182, offsetof(CEngineShadowRenderer, MaxShadowDistance) == 0x2bc);
++FABLE_STATIC_ASSERT_AT(183, offsetof(CEngineShadowRenderer, ShadowFadeRatio) == 0x2c0);
++FABLE_STATIC_ASSERT_AT(184, offsetof(CEngineShadowRenderer, RenderTarget) == 0x2c4);
++FABLE_STATIC_ASSERT_AT(185, offsetof(CEngineShadowRenderer, ShadowBufferTexture) == 0x2e8);
++FABLE_STATIC_ASSERT_AT(186, offsetof(CEngineShadowRenderer, RenderSurface) == 0x2f0);
++FABLE_STATIC_ASSERT_AT(187, offsetof(CEngineShadowRenderer, ShadowBufferDepthSurface) == 0x2f8);
++FABLE_STATIC_ASSERT_AT(188, offsetof(CEngineShadowRenderer, ShadowBufferColourSurface) == 0x308);
++FABLE_STATIC_ASSERT_AT(189, offsetof(CEngineShadowRenderer, ShadowBufferColourTexture) == 0x318);
++FABLE_STATIC_ASSERT_AT(190, offsetof(CEngineShadowRenderer, ShadowBufferTextureUVScaler_X) == 0x320);
++FABLE_STATIC_ASSERT_AT(191, offsetof(CEngineShadowRenderer, ShadowBufferTextureUVScaler_Y) == 0x324);
++FABLE_STATIC_ASSERT_AT(192, offsetof(CEngineShadowRenderer, ShadowBufferTextureUVScaler_Z) == 0x328);
++FABLE_STATIC_ASSERT_AT(193, offsetof(CEngineShadowRenderer, DepthPackingLookupTexture) == 0x32c);
++FABLE_STATIC_ASSERT_AT(194, offsetof(CEngineShadowRenderer, RenderingTechnique) == 0x334);
++FABLE_STATIC_ASSERT_AT(195, offsetof(CEngineShadowRenderer, UserVideoOptionShadowBufferSize) == 0x338);
++FABLE_STATIC_ASSERT_AT(196, offsetof(CEngineShadowRenderer, UserVideoOptionShadowDistanceScale) == 0x33c);
+ 
+ #endif // FABLE_RETAIL_CENGINESHADOWRENDERER
+ #endif // FABLE_ENGINE_CENGINESHADOWRENDERER_H
+--- a/rebuild/include/engine/CEngineSubPrimitiveBase.h
++++ b/rebuild/include/engine/CEngineSubPrimitiveBase.h
+@@ -17,7 +17,20 @@
+  CEngineInternalPrimitiveBase* GetParentBase() { return Parent; }
+  const CEngineInternalPrimitiveBase* PeekParentBase() const { return Parent; }
+ #endif
++#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_ACCESSORS
++ // Opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): FableWin.pdb inline accessors ?PeekRenderFlags@CEngineSubPrimitiveBase@@QBEKXZ,
++ // ?PeekAlpha@CEngineSubPrimitiveBase@@QBEEXZ, ?GetParentBase@ / ?PeekParentBase@ (9 debug instructions each = one member read); the data
++ // are protected for the derived sub-primitives (FableWin ?GetParent@CEngineSubPrimitiveStaticMesh@@ is 9 instructions too).
++ unsigned long PeekRenderFlags()const{return RenderFlags;}
++ unsigned char PeekAlpha()const{return Alpha;}
++#ifndef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_PARENTBASE
++ CEngineInternalPrimitiveBase* GetParentBase(){return Parent;}
++ const CEngineInternalPrimitiveBase* PeekParentBase()const{return Parent;}
++#endif
++protected:
++#else
+ private:
++#endif
+  unsigned long RenderFlags;
+  unsigned char Alpha;
+  CEngineInternalPrimitiveBase* Parent;
+@@ -30,5 +43,5 @@
+ #endif
+  static CSimpleMemoryPool* MemoryPool;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveBase)==24);
++FABLE_STATIC_ASSERT_AT(33, sizeof(CEngineSubPrimitiveBase)==24);
+ #endif
+--- a/rebuild/include/engine/CEngineSubPrimitiveRepeatedStaticMesh.h
++++ b/rebuild/include/engine/CEngineSubPrimitiveRepeatedStaticMesh.h
+@@ -9,9 +9,20 @@
+ class C3DPrimitive2;
+ class CEngineInternalPrimitiveRepeatedStaticMesh;
+ enum ERenderMode;                                                        // MS forward enum (no enumerator name recovered)
++#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEMESHBASE_ACCESSORS
++#include "engine/CEngineInternalPrimitiveMeshBase.h"
++#endif
+ class CEngineSubPrimitiveMeshBase : public CEngineSubPrimitiveBase {
+ public:
+     virtual ~CEngineSubPrimitiveMeshBase();
++#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEMESHBASE_ACCESSORS
++    // Opt-in (chunk 2060 row 0x00BA5260 / agentC2 row 0x00BB3E80): FableWin.pdb inline ?GetScale@CEngineSubPrimitiveMeshBase@@QBEMXZ (10 debug
++    // instructions: the parent's Scale +0x58), ?GetRenderMode@..@@QBE?AW4ERenderMode@@XZ and ?PeekParent@..@@QBEPBVCEngineInternalPrimitiveMeshBase@@XZ
++    // (9 = a member read). Needs FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_ACCESSORS (Parent protected) and the retail engine/CEngineInternalPrimitiveMeshBase.h.
++    float GetScale() const { return static_cast<const CEngineInternalPrimitiveMeshBase*>(Parent)->Scale; }
++    ERenderMode GetRenderMode() const { return RenderMode; }
++    const CEngineInternalPrimitiveMeshBase* PeekParent() const { return static_cast<const CEngineInternalPrimitiveMeshBase*>(Parent); }
++#endif
+ protected:
+     C3DPrimitive2* MeshPrimitive;                                        // +0x18
+     ERenderMode    RenderMode;                                           // +0x1c
+@@ -22,5 +33,5 @@
+     CEngineSubPrimitiveRepeatedStaticMesh(CEngineInternalPrimitiveRepeatedStaticMesh* parent, C3DPrimitive2* primitive, ERenderMode mode);   // 0x00B98BC0
+     virtual ~CEngineSubPrimitiveRepeatedStaticMesh();
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveRepeatedStaticMesh) == 0x24);
++FABLE_STATIC_ASSERT_AT(25, sizeof(CEngineSubPrimitiveRepeatedStaticMesh) == 0x24);
+ #endif
+--- a/rebuild/include/engine/CEngineWaterRenderer.h
++++ b/rebuild/include/engine/CEngineWaterRenderer.h
+@@ -95,6 +95,15 @@
+     void RenderSeaMidground(float time);                                 // 0x00B6FA40
+     void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time);   // 0x00B6E260
+ #endif
++#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_RENDER
++    // Opt-in (bwf2 / agentC8, row 0x00B783F0 Render): Ego_r.pdb private members Render calls (?RenderBackground / ?RenderIceBackground /
++    // ?RenderSeaNonReflectiveForeground@CEngineWaterRenderer@@AAEXM@Z) and the FableWin.pdb inline ?SetCommonRenderStates@CEngineWaterRenderer@@AAEXXZ
++    // (0x02D4CC20 debug; no retail copy, expanded three times by Render; body in the row).
++    void RenderBackground(float time);                                   // 0x00B76BC0
++    void RenderIceBackground(float time);                                // 0x00B75CA0
++    void RenderSeaNonReflectiveForeground(float time);                   // 0x00B77E20
++    void SetCommonRenderStates();
++#endif
+ public:
+     CIndexBuffer         ForegroundIndexBuffers;                         // +0x00c
+     CIndexBuffer         ForegroundTextureIndexBuffers;                  // +0x020
+@@ -223,20 +232,20 @@
+     }
+ }
+ #endif
+-FABLE_STATIC_ASSERT(sizeof(CEngineWaterRenderer) == 0x5c4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, ForegroundIndexBuffers) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBackgroundVertexShader) == 0xbc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceForegroundVertexShader) == 0x12c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, DynamicTexturePageHandle) == 0x1d8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, ForegroundRenderList) == 0x1fc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, HighendWaterEnabled) == 0x274);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadedOrLoadingSeaBodyID) == 0x278);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, Settings) == 0x280);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, Tesselator) == 0x564);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaTesselator) == 0x584);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, StaticMapSeaEntryPrefix) == 0x5ac);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSea) == 0x5b8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterBumpFactor) == 0x5c0);
++FABLE_STATIC_ASSERT_AT(226, sizeof(CEngineWaterRenderer) == 0x5c4);
++FABLE_STATIC_ASSERT_AT(227, offsetof(CEngineWaterRenderer, ForegroundIndexBuffers) == 0xc);
++FABLE_STATIC_ASSERT_AT(228, offsetof(CEngineWaterRenderer, SeaBackgroundVertexShader) == 0xbc);
++FABLE_STATIC_ASSERT_AT(229, offsetof(CEngineWaterRenderer, IceForegroundVertexShader) == 0x12c);
++FABLE_STATIC_ASSERT_AT(230, offsetof(CEngineWaterRenderer, DynamicTexturePageHandle) == 0x1d8);
++FABLE_STATIC_ASSERT_AT(231, offsetof(CEngineWaterRenderer, ForegroundRenderList) == 0x1fc);
++FABLE_STATIC_ASSERT_AT(232, offsetof(CEngineWaterRenderer, HighendWaterEnabled) == 0x274);
++FABLE_STATIC_ASSERT_AT(233, offsetof(CEngineWaterRenderer, LoadedOrLoadingSeaBodyID) == 0x278);
++FABLE_STATIC_ASSERT_AT(234, offsetof(CEngineWaterRenderer, Settings) == 0x280);
++FABLE_STATIC_ASSERT_AT(235, offsetof(CEngineWaterRenderer, Tesselator) == 0x564);
++FABLE_STATIC_ASSERT_AT(236, offsetof(CEngineWaterRenderer, SeaTesselator) == 0x584);
++FABLE_STATIC_ASSERT_AT(237, offsetof(CEngineWaterRenderer, StaticMapSeaEntryPrefix) == 0x5ac);
++FABLE_STATIC_ASSERT_AT(238, offsetof(CEngineWaterRenderer, LoadingSea) == 0x5b8);
++FABLE_STATIC_ASSERT_AT(239, offsetof(CEngineWaterRenderer, WaterBumpFactor) == 0x5c0);
+ #else // flattened Ego_r layout (the landed default, unchanged)
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+ // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngineWaterRenderer = 0x608.
+@@ -342,85 +351,85 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEngineWaterRenderer) == 0x5c4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, ForegroundIndexBuffers) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, ForegroundTextureIndexBuffers) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, ForegroundTextureVertexBuffers) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBackgroundIndexBuffer) == 0x68);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBackgroundVertexBuffer) == 0x7c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBackgroundVertexCount) == 0xb0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBackgroundPolyCount) == 0xb4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterForegroundPolyCount) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBackgroundVertexShader) == 0xbc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBackgroundPixelShader) == 0xc4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaForegroundReflectiveVertexShader) == 0xcc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaForegroundReflectivePixelShader) == 0xd4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaForegroundNonReflectiveVertexShader) == 0xdc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaForegroundNonReflectivePixelShader) == 0xe4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, ForegroundVertexShader) == 0xec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, ForegroundPixelShader) == 0xf4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, RefractionForegroundPixelShader) == 0xfc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, BackgroundVertexShader) == 0x104);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, BackgroundPixelShader) == 0x10c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBackgroundLowEndVertexShader) == 0x114);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterBackgroundLowEndVertexShader) == 0x11c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterLowEndPixelShader) == 0x124);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceForegroundVertexShader) == 0x12c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceForegroundShadowedVertexShader) == 0x138);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceForegroundColbuffShadowedVertexShader) == 0x144);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceBackgroundVertexShader) == 0x150);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceForegroundPixelShader) == 0x158);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceForegroundShadowedPixelShader) == 0x160);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceForegroundColbuffShadowedPixelShader) == 0x168);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceBackgroundPixelShader) == 0x170);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, BumpmapVertexShader) == 0x178);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, BumpmapPixelShader) == 0x180);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceBumpmapVertexShader) == 0x188);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceBumpmapPixelShader) == 0x190);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, BumpmapRainVertexShader) == 0x198);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, BumpmapRainPixelShader) == 0x1a0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, EnvironmentMapVertexShader) == 0x1a8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, EnvironmentMapPixelShader) == 0x1b0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SkyMapVertexShader) == 0x1b8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SkyMapPixelShader) == 0x1c0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, EnvMapOverlayVertexShader) == 0x1c8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, EnvMapOverlayPixelShader) == 0x1d0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, DynamicTexturePageHandle) == 0x1d8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, EnvironmentMapHandle) == 0x1dc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, EnvironmentMap) == 0x1e0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBumpMapHandle) == 0x1e4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBumpMap) == 0x1e8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterBumpMapHandle) == 0x1ec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterBumpMap) == 0x1f0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceBumpMapHandle) == 0x1f4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceBumpMap) == 0x1f8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, ForegroundRenderList) == 0x1fc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, BackgroundRenderList) == 0x208);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, AlphaedBackgroundRenderList) == 0x214);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceForegroundRenderList) == 0x220);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceBackgroundRenderList) == 0x22c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceAlphaedBackgroundRenderList) == 0x238);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaReflectiveForegroundRenderList) == 0x244);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaNonReflectiveForegroundRenderList) == 0x250);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaMidgroundRenderList) == 0x25c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaAlphaedMidgroundRenderList) == 0x268);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, HighendWaterEnabled) == 0x274);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, HighendWaterSupported) == 0x275);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, HaveBackgroundSea) == 0x276);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadedOrLoadingSeaBodyID_PStringData) == 0x278);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, RequestedSeaBodyID_PStringData) == 0x27c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, Settings) == 0x280);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, Tesselator) == 0x564);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaTesselator) == 0x584);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterGenerator) == 0x5a4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, StaticMapBankFile) == 0x5a8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, StaticMapSeaEntryPrefix_PStringData) == 0x5ac);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSeaEntry_Data) == 0x5b0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSeaEntry_Info) == 0x5b4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSea_Data) == 0x5b8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSea_Info) == 0x5bc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterBumpFactor) == 0x5c0);
++FABLE_STATIC_ASSERT_AT(345, sizeof(CEngineWaterRenderer) == 0x5c4);
++FABLE_STATIC_ASSERT_AT(346, offsetof(CEngineWaterRenderer, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(347, offsetof(CEngineWaterRenderer, ForegroundIndexBuffers) == 0xc);
++FABLE_STATIC_ASSERT_AT(348, offsetof(CEngineWaterRenderer, ForegroundTextureIndexBuffers) == 0x20);
++FABLE_STATIC_ASSERT_AT(349, offsetof(CEngineWaterRenderer, ForegroundTextureVertexBuffers) == 0x34);
++FABLE_STATIC_ASSERT_AT(350, offsetof(CEngineWaterRenderer, SeaBackgroundIndexBuffer) == 0x68);
++FABLE_STATIC_ASSERT_AT(351, offsetof(CEngineWaterRenderer, SeaBackgroundVertexBuffer) == 0x7c);
++FABLE_STATIC_ASSERT_AT(352, offsetof(CEngineWaterRenderer, SeaBackgroundVertexCount) == 0xb0);
++FABLE_STATIC_ASSERT_AT(353, offsetof(CEngineWaterRenderer, SeaBackgroundPolyCount) == 0xb4);
++FABLE_STATIC_ASSERT_AT(354, offsetof(CEngineWaterRenderer, WaterForegroundPolyCount) == 0xb8);
++FABLE_STATIC_ASSERT_AT(355, offsetof(CEngineWaterRenderer, SeaBackgroundVertexShader) == 0xbc);
++FABLE_STATIC_ASSERT_AT(356, offsetof(CEngineWaterRenderer, SeaBackgroundPixelShader) == 0xc4);
++FABLE_STATIC_ASSERT_AT(357, offsetof(CEngineWaterRenderer, SeaForegroundReflectiveVertexShader) == 0xcc);
++FABLE_STATIC_ASSERT_AT(358, offsetof(CEngineWaterRenderer, SeaForegroundReflectivePixelShader) == 0xd4);
++FABLE_STATIC_ASSERT_AT(359, offsetof(CEngineWaterRenderer, SeaForegroundNonReflectiveVertexShader) == 0xdc);
++FABLE_STATIC_ASSERT_AT(360, offsetof(CEngineWaterRenderer, SeaForegroundNonReflectivePixelShader) == 0xe4);
++FABLE_STATIC_ASSERT_AT(361, offsetof(CEngineWaterRenderer, ForegroundVertexShader) == 0xec);
++FABLE_STATIC_ASSERT_AT(362, offsetof(CEngineWaterRenderer, ForegroundPixelShader) == 0xf4);
++FABLE_STATIC_ASSERT_AT(363, offsetof(CEngineWaterRenderer, RefractionForegroundPixelShader) == 0xfc);
++FABLE_STATIC_ASSERT_AT(364, offsetof(CEngineWaterRenderer, BackgroundVertexShader) == 0x104);
++FABLE_STATIC_ASSERT_AT(365, offsetof(CEngineWaterRenderer, BackgroundPixelShader) == 0x10c);
++FABLE_STATIC_ASSERT_AT(366, offsetof(CEngineWaterRenderer, SeaBackgroundLowEndVertexShader) == 0x114);
++FABLE_STATIC_ASSERT_AT(367, offsetof(CEngineWaterRenderer, WaterBackgroundLowEndVertexShader) == 0x11c);
++FABLE_STATIC_ASSERT_AT(368, offsetof(CEngineWaterRenderer, WaterLowEndPixelShader) == 0x124);
++FABLE_STATIC_ASSERT_AT(369, offsetof(CEngineWaterRenderer, IceForegroundVertexShader) == 0x12c);
++FABLE_STATIC_ASSERT_AT(370, offsetof(CEngineWaterRenderer, IceForegroundShadowedVertexShader) == 0x138);
++FABLE_STATIC_ASSERT_AT(371, offsetof(CEngineWaterRenderer, IceForegroundColbuffShadowedVertexShader) == 0x144);
++FABLE_STATIC_ASSERT_AT(372, offsetof(CEngineWaterRenderer, IceBackgroundVertexShader) == 0x150);
++FABLE_STATIC_ASSERT_AT(373, offsetof(CEngineWaterRenderer, IceForegroundPixelShader) == 0x158);
++FABLE_STATIC_ASSERT_AT(374, offsetof(CEngineWaterRenderer, IceForegroundShadowedPixelShader) == 0x160);
++FABLE_STATIC_ASSERT_AT(375, offsetof(CEngineWaterRenderer, IceForegroundColbuffShadowedPixelShader) == 0x168);
++FABLE_STATIC_ASSERT_AT(376, offsetof(CEngineWaterRenderer, IceBackgroundPixelShader) == 0x170);
++FABLE_STATIC_ASSERT_AT(377, offsetof(CEngineWaterRenderer, BumpmapVertexShader) == 0x178);
++FABLE_STATIC_ASSERT_AT(378, offsetof(CEngineWaterRenderer, BumpmapPixelShader) == 0x180);
++FABLE_STATIC_ASSERT_AT(379, offsetof(CEngineWaterRenderer, IceBumpmapVertexShader) == 0x188);
++FABLE_STATIC_ASSERT_AT(380, offsetof(CEngineWaterRenderer, IceBumpmapPixelShader) == 0x190);
++FABLE_STATIC_ASSERT_AT(381, offsetof(CEngineWaterRenderer, BumpmapRainVertexShader) == 0x198);
++FABLE_STATIC_ASSERT_AT(382, offsetof(CEngineWaterRenderer, BumpmapRainPixelShader) == 0x1a0);
++FABLE_STATIC_ASSERT_AT(383, offsetof(CEngineWaterRenderer, EnvironmentMapVertexShader) == 0x1a8);
++FABLE_STATIC_ASSERT_AT(384, offsetof(CEngineWaterRenderer, EnvironmentMapPixelShader) == 0x1b0);
++FABLE_STATIC_ASSERT_AT(385, offsetof(CEngineWaterRenderer, SkyMapVertexShader) == 0x1b8);
++FABLE_STATIC_ASSERT_AT(386, offsetof(CEngineWaterRenderer, SkyMapPixelShader) == 0x1c0);
++FABLE_STATIC_ASSERT_AT(387, offsetof(CEngineWaterRenderer, EnvMapOverlayVertexShader) == 0x1c8);
++FABLE_STATIC_ASSERT_AT(388, offsetof(CEngineWaterRenderer, EnvMapOverlayPixelShader) == 0x1d0);
++FABLE_STATIC_ASSERT_AT(389, offsetof(CEngineWaterRenderer, DynamicTexturePageHandle) == 0x1d8);
++FABLE_STATIC_ASSERT_AT(390, offsetof(CEngineWaterRenderer, EnvironmentMapHandle) == 0x1dc);
++FABLE_STATIC_ASSERT_AT(391, offsetof(CEngineWaterRenderer, EnvironmentMap) == 0x1e0);
++FABLE_STATIC_ASSERT_AT(392, offsetof(CEngineWaterRenderer, SeaBumpMapHandle) == 0x1e4);
++FABLE_STATIC_ASSERT_AT(393, offsetof(CEngineWaterRenderer, SeaBumpMap) == 0x1e8);
++FABLE_STATIC_ASSERT_AT(394, offsetof(CEngineWaterRenderer, WaterBumpMapHandle) == 0x1ec);
++FABLE_STATIC_ASSERT_AT(395, offsetof(CEngineWaterRenderer, WaterBumpMap) == 0x1f0);
++FABLE_STATIC_ASSERT_AT(396, offsetof(CEngineWaterRenderer, IceBumpMapHandle) == 0x1f4);
++FABLE_STATIC_ASSERT_AT(397, offsetof(CEngineWaterRenderer, IceBumpMap) == 0x1f8);
++FABLE_STATIC_ASSERT_AT(398, offsetof(CEngineWaterRenderer, ForegroundRenderList) == 0x1fc);
++FABLE_STATIC_ASSERT_AT(399, offsetof(CEngineWaterRenderer, BackgroundRenderList) == 0x208);
++FABLE_STATIC_ASSERT_AT(400, offsetof(CEngineWaterRenderer, AlphaedBackgroundRenderList) == 0x214);
++FABLE_STATIC_ASSERT_AT(401, offsetof(CEngineWaterRenderer, IceForegroundRenderList) == 0x220);
++FABLE_STATIC_ASSERT_AT(402, offsetof(CEngineWaterRenderer, IceBackgroundRenderList) == 0x22c);
++FABLE_STATIC_ASSERT_AT(403, offsetof(CEngineWaterRenderer, IceAlphaedBackgroundRenderList) == 0x238);
++FABLE_STATIC_ASSERT_AT(404, offsetof(CEngineWaterRenderer, SeaReflectiveForegroundRenderList) == 0x244);
++FABLE_STATIC_ASSERT_AT(405, offsetof(CEngineWaterRenderer, SeaNonReflectiveForegroundRenderList) == 0x250);
++FABLE_STATIC_ASSERT_AT(406, offsetof(CEngineWaterRenderer, SeaMidgroundRenderList) == 0x25c);
++FABLE_STATIC_ASSERT_AT(407, offsetof(CEngineWaterRenderer, SeaAlphaedMidgroundRenderList) == 0x268);
++FABLE_STATIC_ASSERT_AT(408, offsetof(CEngineWaterRenderer, HighendWaterEnabled) == 0x274);
++FABLE_STATIC_ASSERT_AT(409, offsetof(CEngineWaterRenderer, HighendWaterSupported) == 0x275);
++FABLE_STATIC_ASSERT_AT(410, offsetof(CEngineWaterRenderer, HaveBackgroundSea) == 0x276);
++FABLE_STATIC_ASSERT_AT(411, offsetof(CEngineWaterRenderer, LoadedOrLoadingSeaBodyID_PStringData) == 0x278);
++FABLE_STATIC_ASSERT_AT(412, offsetof(CEngineWaterRenderer, RequestedSeaBodyID_PStringData) == 0x27c);
++FABLE_STATIC_ASSERT_AT(413, offsetof(CEngineWaterRenderer, Settings) == 0x280);
++FABLE_STATIC_ASSERT_AT(414, offsetof(CEngineWaterRenderer, Tesselator) == 0x564);
++FABLE_STATIC_ASSERT_AT(415, offsetof(CEngineWaterRenderer, SeaTesselator) == 0x584);
++FABLE_STATIC_ASSERT_AT(416, offsetof(CEngineWaterRenderer, WaterGenerator) == 0x5a4);
++FABLE_STATIC_ASSERT_AT(417, offsetof(CEngineWaterRenderer, StaticMapBankFile) == 0x5a8);
++FABLE_STATIC_ASSERT_AT(418, offsetof(CEngineWaterRenderer, StaticMapSeaEntryPrefix_PStringData) == 0x5ac);
++FABLE_STATIC_ASSERT_AT(419, offsetof(CEngineWaterRenderer, LoadingSeaEntry_Data) == 0x5b0);
++FABLE_STATIC_ASSERT_AT(420, offsetof(CEngineWaterRenderer, LoadingSeaEntry_Info) == 0x5b4);
++FABLE_STATIC_ASSERT_AT(421, offsetof(CEngineWaterRenderer, LoadingSea_Data) == 0x5b8);
++FABLE_STATIC_ASSERT_AT(422, offsetof(CEngineWaterRenderer, LoadingSea_Info) == 0x5bc);
++FABLE_STATIC_ASSERT_AT(423, offsetof(CEngineWaterRenderer, WaterBumpFactor) == 0x5c0);
+ #endif // FABLE_RETAIL_CENGINEWATERRENDERER
+ 
+ #endif // FABLE_ENGINE_CENGINEWATERRENDERER_H
+--- a/rebuild/include/engine/CFontBank.h
++++ b/rebuild/include/engine/CFontBank.h
+@@ -59,6 +59,10 @@
+     long GetFontHeight()const{return (long)FontHeight;}
+ #endif
+     float GetVFontMaxHeight() const { return GFAYToVY(GetFontMaxHeight()); }
++#ifdef FABLE_RETAIL_CFONTBANK_VSTRINGEXTENTS_OUTOFLINE
++    // Opt-in (bwf1 / agentC2, row 0x00651B04): out of line in this TU (call 0x00437210, Ego_r.pdb keeps it out of line). Declaration only.
++    C2DExtentsF GetVStringExtents(const CWideString& text) const;       // 0x00437210
++#else
+     C2DExtentsF GetVStringExtents(const CWideString& text) const
+     {
+         C2DExtentsF extents = GetStringExtents(text.GetAsCharArray(), false);
+@@ -66,12 +70,13 @@
+         extents.Y = GFAYToVY(extents.Y);
+         return extents;
+     }
++#endif
+ protected:
+     unsigned long FontHeight;                                            // +0x04
+     CCharString Name;                                                    // +0x08
+     CFontManager* PManager;                                              // +0x0C
+ };
+-FABLE_STATIC_ASSERT(sizeof(CFontBank) == 0x10);
++FABLE_STATIC_ASSERT_AT(74, sizeof(CFontBank) == 0x10);
+ #else
+ class CCharStringData;
+ class CFontManager;
+@@ -86,11 +91,11 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CFontBank) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CFontBank, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CFontBank, FontHeight) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CFontBank, Name_PStringData) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CFontBank, PManager) == 0xc);
++FABLE_STATIC_ASSERT_AT(89, sizeof(CFontBank) == 0x10);
++FABLE_STATIC_ASSERT_AT(90, offsetof(CFontBank, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(91, offsetof(CFontBank, FontHeight) == 0x4);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CFontBank, Name_PStringData) == 0x8);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CFontBank, PManager) == 0xc);
+ #endif // FABLE_RETAIL_CFONTBANK
+ 
+ #endif // FABLE_ENGINE_CFONTBANK_H
+--- a/rebuild/include/engine/CGamePlayerInterface.h
++++ b/rebuild/include/engine/CGamePlayerInterface.h
+@@ -106,6 +106,9 @@
+ class CDefPointeeBase;
+ class CMainGameComponent;
+ class CPlayerManager;
++#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_GETACTIONNAME
++class CActionInputControl; class CWideString;
++#endif
+ 
+ #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE
+ enum EGameAction;                                            // MS forward enums (as engine/fable_nscript_forward.h)
+@@ -117,6 +120,11 @@
+ #pragma pack(push, 1)
+ class CGamePlayerInterface {
+ public:
++#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_GETACTIONNAME
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?GetActionName@CGamePlayerInterface@@SI_NABVCActionInputControl@@AAVCWideString@@_N@Z
++    // (static __fastcall, retail 0x00446720: ecx = control, edx = name, the bool on the stack). Declaration only.
++    static bool FABLE_FASTCALL GetActionName(const CActionInputControl& control, CWideString& name, bool short_name);   // 0x00446720
++#endif
+ #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_TOGGLE_ZTARGET
+     bool IsToggleZTarget() const;
+ #endif
+@@ -618,26 +626,26 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CGamePlayerInterface) == 0x898);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, Component) == 0x6f8);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PlayerManager) == 0x6fc);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PacketSave) == 0x700);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PacketLoad) == 0x701);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PacketFile) == 0x704);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, InputEventIsLoaded) == 0x720);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, LoadedInputEvent) == 0x724);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, Suspended) == 0x79c);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PControlsDef_Object) == 0x7a0);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, ControlsDefIndex) == 0x7a4);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, Controls) == 0x7a8);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, AssignableSpecialMoveButtons) == 0x7b8);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, QuickAccessItemButtons) == 0x7c4);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, ContextSensitiveItemButtons) == 0x7d0);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, CurrentQueuedProcessedInputNo) == 0x7dc);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, CurrentProcessedInput) == 0x7e0);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, CurrentEventInProcessedInput) == 0x890);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, HasCalledInputUpdateThisFrame) == 0x894);
++FABLE_STATIC_ASSERT_AT(621, sizeof(CGamePlayerInterface) == 0x898);
++FABLE_STATIC_ASSERT_AT(622, offsetof(CGamePlayerInterface, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(623, offsetof(CGamePlayerInterface, Component) == 0x6f8);
++FABLE_STATIC_ASSERT_AT(624, offsetof(CGamePlayerInterface, PlayerManager) == 0x6fc);
++FABLE_STATIC_ASSERT_AT(625, offsetof(CGamePlayerInterface, PacketSave) == 0x700);
++FABLE_STATIC_ASSERT_AT(626, offsetof(CGamePlayerInterface, PacketLoad) == 0x701);
++FABLE_STATIC_ASSERT_AT(627, offsetof(CGamePlayerInterface, PacketFile) == 0x704);
++FABLE_STATIC_ASSERT_AT(628, offsetof(CGamePlayerInterface, InputEventIsLoaded) == 0x720);
++FABLE_STATIC_ASSERT_AT(629, offsetof(CGamePlayerInterface, LoadedInputEvent) == 0x724);
++FABLE_STATIC_ASSERT_AT(630, offsetof(CGamePlayerInterface, Suspended) == 0x79c);
++FABLE_STATIC_ASSERT_AT(631, offsetof(CGamePlayerInterface, PControlsDef_Object) == 0x7a0);
++FABLE_STATIC_ASSERT_AT(632, offsetof(CGamePlayerInterface, ControlsDefIndex) == 0x7a4);
++FABLE_STATIC_ASSERT_AT(633, offsetof(CGamePlayerInterface, Controls) == 0x7a8);
++FABLE_STATIC_ASSERT_AT(634, offsetof(CGamePlayerInterface, AssignableSpecialMoveButtons) == 0x7b8);
++FABLE_STATIC_ASSERT_AT(635, offsetof(CGamePlayerInterface, QuickAccessItemButtons) == 0x7c4);
++FABLE_STATIC_ASSERT_AT(636, offsetof(CGamePlayerInterface, ContextSensitiveItemButtons) == 0x7d0);
++FABLE_STATIC_ASSERT_AT(637, offsetof(CGamePlayerInterface, CurrentQueuedProcessedInputNo) == 0x7dc);
++FABLE_STATIC_ASSERT_AT(638, offsetof(CGamePlayerInterface, CurrentProcessedInput) == 0x7e0);
++FABLE_STATIC_ASSERT_AT(639, offsetof(CGamePlayerInterface, CurrentEventInProcessedInput) == 0x890);
++FABLE_STATIC_ASSERT_AT(640, offsetof(CGamePlayerInterface, HasCalledInputUpdateThisFrame) == 0x894);
+ 
+ #endif // FABLE_ENGINE_CGAMEPLAYERINTERFACE_H
+ 
+--- a/rebuild/include/engine/CGraphicInfo.h
++++ b/rebuild/include/engine/CGraphicInfo.h
+@@ -46,6 +46,12 @@
+ class CGraphicInfo {
+ public:
+     const CGraphicInfoFrame* PeekInfoFrame(unsigned long index) const {return Frames+index;}
++#ifdef FABLE_RETAIL_CGRAPHICINFO_GETWIDTH
++    // Opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): FableWin.pdb ?GetWidth@CGraphicInfo@@QBEKXZ (9 debug instructions =
++    // one movzx of a header word: FrameWidth +6, 0x00BA54EB / 0x00BB43C0 `movzx ..,word ptr [..+6]`). Needs the typed header
++    // (FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT). FITTED: which header word GetWidth returns is taken from the retail read.
++    unsigned long GetWidth() const {return Header.FrameWidth;}
++#endif
+ #ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+     // Retail opt-in (wf8, row 0x00BA4A40): FableWin.pdb ?GetTextureType@CGraphicInfo@@QBE?AW4ETextureType@CGraphicDataBank@@XZ
+     // (inline in retail: +0x1C read in place, 0x00BA4B1C). No layout change.
+@@ -118,7 +124,7 @@
+     long Index;
+     CGraphicInfoFrame* Frames;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CGraphicInfo)==44);
++FABLE_STATIC_ASSERT_AT(121, sizeof(CGraphicInfo)==44);
+ #ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+ // FableWin.pdb ?GetTextureType@CGraphicInfoFrame@@QBE?AW4ETextureType@CGraphicDataBank@@XZ (inline: GraphicInfo +0xC, then +0x1C).
+ inline CGraphicDataBank::ETextureType CGraphicInfoFrame::GetTextureType() const {return GraphicInfo->GetTextureType();}
+--- a/rebuild/include/engine/CIVCountedPointer.h
++++ b/rebuild/include/engine/CIVCountedPointer.h
+@@ -143,6 +143,16 @@
+             Object = 0;
+         }
+     }
++#elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_FORCEINLINE)
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): the default retail body below, FABLE_FORCEINLINE for the size TU that expands the
++    // handle's Clear -> Reset(0) -> Release chain in place (0x00651B85..0x00651B96: `dec [ecx+4] ; jne ; call [eax+4] ; mov [ebx+4],0`).
++    FABLE_FORCEINLINE void Release() {
++        CIVCountedPointeeBase* object = Object;
++        if (object) {
++            if (object->Release() == 0) object->Delete();
++            Object = 0;
++        }
++    }
+ #elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_INNER)
+     // Nested opt-in (chunk 873, row 0x005DD670 CAnimationEntry::StatRegisterClass): the pointer copied inside the null test, so the
+     // copy into ecx follows the `je` (0x005DD707: `cmp eax,ebx ; je ; mov edx,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edx`), then the
+--- a/rebuild/include/engine/CInputManager.h
++++ b/rebuild/include/engine/CInputManager.h
+@@ -16,6 +16,9 @@
+ #include "stlport/fable_containers.h"
+ #endif
+ class CInputEvent; class CInputEventScanInfo;
++#ifdef FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE
++#include "engine/CInputEvent.h"
++#endif
+ class CInputManager : public CBaseClass {
+ #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+ public:
+@@ -31,6 +34,10 @@
+     // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb / FableWin.pdb ?ClearEvents@CInputManager@@QAEXXZ, out of line in retail (0x009F5540). Declaration only.
+     void ClearEvents();                                                  // 0x009F5540
+ #endif
++#ifdef FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?IsJoystickEventInQueue@CInputManager@@QAE_NW4EInputEventType@@JPAVCInputEvent@@J@Z (0x009F4C60).
++    bool IsJoystickEventInQueue(EInputEventType type, long button, CInputEvent* event, long device);   // 0x009F4C60
++#endif
+ #ifdef FABLE_RETAIL_CINPUTMANAGER_EVENTSCANEND
+     // Retail opt-in (chunk 791, row 0x004963A0 CFrontendGameComponent::Input): Ego_r.pdb / FableWin.pdb
+     // ?EventScanEnd@CInputManager@@QBEXAAVCInputEventScanInfo@@@Z (0x009F4AC0), called after every EventScanStart / Next loop.
+@@ -57,5 +64,8 @@
+     unsigned char _pad_0x04[0x80 - 0x04];                                // +0x04 data members (opaque, see above)
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CInputManager) == 0x80);
++FABLE_STATIC_ASSERT_AT(60, sizeof(CInputManager) == 0x80);
++#ifdef FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE
++extern CInputManager* PInputManager;                                    // 0x013B8388 ?PInputManager@@3PAVCInputManager@@A
++#endif
+ #endif // FABLE_ENGINE_CINPUTMANAGER_H
+--- a/rebuild/include/engine/CPlayerGui.h
++++ b/rebuild/include/engine/CPlayerGui.h
+@@ -238,6 +238,21 @@
+     unsigned char ScaleAlpha(unsigned char alpha) const { return (unsigned char)(alpha*Alpha); }
+     unsigned char GetAlpha() const { return (unsigned char)(255.0f*Alpha); }
+ #endif
++#if defined(FABLE_RETAIL_CPLAYERGUI_ABILITYBUTTONS_DRAW) && defined(FABLE_RETAIL_CPLAYERGUI_MEMBERS)
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb / FableWin.pdb ?GetButtonAlpha@CPlayerGui@@QBEMJ_N00@Z (0x00439AB0),
++    // ?GetAbilityButton@CPlayerGui@@QAEJJ@Z (0x00438990), ?GetAbilityButtonScale@CPlayerGui@@QBEMXZ (out of line 0x004375E0) and
++    // FableWin ?SetAbilityButtonScale@CPlayerGui@@QAEXM@Z (inline: the row stores +0x278 in place).
++    float GetButtonAlpha(long button, bool normal, bool show, bool special) const;   // 0x00439AB0
++    long GetAbilityButton(long button);                                  // 0x00438990
++    float GetAbilityButtonScale() const;                                 // 0x004375E0
++    void SetAbilityButtonScale(float scale) { AbilityButtonScale = scale; }
++    // FableWin.pdb ?IsNormalToSpecial@CPlayerGui@@QBE_NXZ, ?IsSpecialToNormal@..QBE_NXZ, ?IsShowActualAbilityButtons@..QBE_NXZ,
++    // ?ResetNormalToSpecialState@..QAEXXZ: inline (the row reads / clears +0x27C / +0x27D / +0x251 in place).
++    bool IsNormalToSpecial() const { return NormalToSpecial; }
++    bool IsSpecialToNormal() const { return SpecialToNormal; }
++    bool IsShowActualAbilityButtons() const { return ShowSpecialAbilityButtonsAbilities; }
++    void ResetNormalToSpecialState() { NormalToSpecial = false; SpecialToNormal = false; }
++#endif
+     void Update(bool paused);                                            // 0x0043A080
+     void UpdateMiniMapMarkers(bool);                                     // 0x004378C0
+     CSubtitleRenderer& GetSubtitleRenderer() { return SubtitleRenderer; }
+@@ -288,7 +303,7 @@
+     void SetCrimeAsDisplaying();                                         // 0x004376B0
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CPlayerGui)==0x338);
++FABLE_STATIC_ASSERT_AT(291, sizeof(CPlayerGui)==0x338);
+ 
+ #else
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+@@ -489,136 +504,136 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CPlayerGui) == 0x338);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, World) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PlayerManager) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, InputInterface) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, Component) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, Graphics) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, SubtitleRenderer) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PFont_Data) == 0x138);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PFont_Info) == 0x13c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawHealth_Data) == 0x140);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawHealth_Info) == 0x144);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawStamina_Data) == 0x148);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawStamina_Info) == 0x14c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawCombatMultiplier_Data) == 0x150);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawCombatMultiplier_Info) == 0x154);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawSpiritsHealth_Data) == 0x158);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawSpiritsHealth_Info) == 0x15c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawMiniMap_Data) == 0x160);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawMiniMap_Info) == 0x164);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawScreenFade_Data) == 0x168);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawScreenFade_Info) == 0x16c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawMoney_Data) == 0x170);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawMoney_Info) == 0x174);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawRenown_Data) == 0x178);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawRenown_Info) == 0x17c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawMorality_Data) == 0x180);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawMorality_Info) == 0x184);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawExperience_Data) == 0x188);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawExperience_Info) == 0x18c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawCrime_Data) == 0x190);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawCrime_Info) == 0x194);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawReceivedItems_Data) == 0x198);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawReceivedItems_Info) == 0x19c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawFishingGame_Data) == 0x1a0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawFishingGame_Info) == 0x1a4);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawStatUpdates_Data) == 0x1a8);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawStatUpdates_Info) == 0x1ac);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawAutoPickups_Data) == 0x1b0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawAutoPickups_Info) == 0x1b4);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawPerceivers_Data) == 0x1b8);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawPerceivers_Info) == 0x1bc);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawDamage_Data) == 0x1c0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawDamage_Info) == 0x1c4);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawQuestInfo_Data) == 0x1c8);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawQuestInfo_Info) == 0x1cc);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawGuildSeal_Data) == 0x1d0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawGuildSeal_Info) == 0x1d4);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawQuickAccessIcons_Data) == 0x1d8);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawQuickAccessIcons_Info) == 0x1dc);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawScriptScreenText_Data) == 0x1e0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawScriptScreenText_Info) == 0x1e4);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawTargetInfo_Data) == 0x1e8);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawTargetInfo_Info) == 0x1ec);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawHighlightingTargetingCursor_Data) == 0x1f0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawHighlightingTargetingCursor_Info) == 0x1f4);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawWorldTime_Data) == 0x1f8);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawWorldTime_Info) == 0x1fc);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawAbilityButtons_Data) == 0x200);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawAbilityButtons_Info) == 0x204);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawLetterBoxBlackBars_Data) == 0x208);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawLetterBoxBlackBars_Info) == 0x20c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawBettingHUD_Data) == 0x210);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawBettingHUD_Info) == 0x214);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawProjectileTargetingCentre_Data) == 0x218);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawProjectileTargetingCentre_Info) == 0x21c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawMeleeActionButtonEffects_Data) == 0x220);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawMeleeActionButtonEffects_Info) == 0x224);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawSpiritScores_Data) == 0x228);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawSpiritScores_Info) == 0x22c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawSpiritTargetingCursor_Data) == 0x230);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawSpiritTargetingCursor_Info) == 0x234);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDraw2DText_Data) == 0x238);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDraw2DText_Info) == 0x23c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawMouseCursor_Data) == 0x240);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawMouseCursor_Info) == 0x244);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawNPCName_Data) == 0x248);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PDrawNPCName_Info) == 0x24c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, ShowSpecialAbilityButtons) == 0x250);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, ShowSpecialAbilityButtonsAbilities) == 0x251);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, SpecialSelected) == 0x252);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, SpecialDeselected) == 0x253);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, AbilityButtons) == 0x254);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, AbilityButtonsAlpha) == 0x260);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, QuickAccessButtonsAlpha) == 0x26c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, AbilityButtonScale) == 0x278);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, NormalToSpecial) == 0x27c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, SpecialToNormal) == 0x27d);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, VWindow_TLX) == 0x280);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, VWindow_TLY) == 0x284);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, VWindow_BRX) == 0x288);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, VWindow_BRY) == 0x28c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, DrawGui) == 0x290);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, OldDrawGui) == 0x291);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, GuiMode) == 0x294);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, FadeInTimer) == 0x298);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, ForcedClosed) == 0x29c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, ShowTime) == 0x29d);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, ShowMoneyBag) == 0x29e);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, ShowStatBars) == 0x29f);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, Alpha) == 0x2a0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, HeroCentreUID) == 0x2a8);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, DrawingSafeAreas) == 0x2b0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, DrawingDebugTGA) == 0x2b1);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, DebugTGATexture) == 0x2b4);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, ScreenMessagingEnabled) == 0x2bc);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, ForceAllowSubtitleToRender) == 0x2bd);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, LiveGuiMode) == 0x2be);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, Illustrators) == 0x2c0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PMoney_Data) == 0x2cc);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PMoney_Info) == 0x2d0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PRenown_Data) == 0x2d4);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PRenown_Info) == 0x2d8);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PMorality_Data) == 0x2dc);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PMorality_Info) == 0x2e0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PExperience_Data) == 0x2e4);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PExperience_Info) == 0x2e8);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PCrime_Data) == 0x2ec);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PCrime_Info) == 0x2f0);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PStatUpdates_Data) == 0x2f4);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PStatUpdates_Info) == 0x2f8);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PAutoPickups_Data) == 0x2fc);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PAutoPickups_Info) == 0x300);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, TextPrimitiveHandles) == 0x304);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, SafeAreaPrimitiveHandles) == 0x310);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, DebugTGAPrimitiveHandle) == 0x31c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, ScriptScreenText) == 0x324);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, ScreenMessages) == 0x328);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, PHeroInfoScreensManager_ptr) == 0x32c);
+-FABLE_STATIC_ASSERT(offsetof(CPlayerGui, DisplayBottomHalfGUI) == 0x330);
++FABLE_STATIC_ASSERT_AT(492, sizeof(CPlayerGui) == 0x338);
++FABLE_STATIC_ASSERT_AT(493, offsetof(CPlayerGui, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(494, offsetof(CPlayerGui, World) == 0x4);
++FABLE_STATIC_ASSERT_AT(495, offsetof(CPlayerGui, PlayerManager) == 0x8);
++FABLE_STATIC_ASSERT_AT(496, offsetof(CPlayerGui, InputInterface) == 0xc);
++FABLE_STATIC_ASSERT_AT(497, offsetof(CPlayerGui, Component) == 0x10);
++FABLE_STATIC_ASSERT_AT(498, offsetof(CPlayerGui, Graphics) == 0x14);
++FABLE_STATIC_ASSERT_AT(499, offsetof(CPlayerGui, SubtitleRenderer) == 0x18);
++FABLE_STATIC_ASSERT_AT(500, offsetof(CPlayerGui, PFont_Data) == 0x138);
++FABLE_STATIC_ASSERT_AT(501, offsetof(CPlayerGui, PFont_Info) == 0x13c);
++FABLE_STATIC_ASSERT_AT(502, offsetof(CPlayerGui, PDrawHealth_Data) == 0x140);
++FABLE_STATIC_ASSERT_AT(503, offsetof(CPlayerGui, PDrawHealth_Info) == 0x144);
++FABLE_STATIC_ASSERT_AT(504, offsetof(CPlayerGui, PDrawStamina_Data) == 0x148);
++FABLE_STATIC_ASSERT_AT(505, offsetof(CPlayerGui, PDrawStamina_Info) == 0x14c);
++FABLE_STATIC_ASSERT_AT(506, offsetof(CPlayerGui, PDrawCombatMultiplier_Data) == 0x150);
++FABLE_STATIC_ASSERT_AT(507, offsetof(CPlayerGui, PDrawCombatMultiplier_Info) == 0x154);
++FABLE_STATIC_ASSERT_AT(508, offsetof(CPlayerGui, PDrawSpiritsHealth_Data) == 0x158);
++FABLE_STATIC_ASSERT_AT(509, offsetof(CPlayerGui, PDrawSpiritsHealth_Info) == 0x15c);
++FABLE_STATIC_ASSERT_AT(510, offsetof(CPlayerGui, PDrawMiniMap_Data) == 0x160);
++FABLE_STATIC_ASSERT_AT(511, offsetof(CPlayerGui, PDrawMiniMap_Info) == 0x164);
++FABLE_STATIC_ASSERT_AT(512, offsetof(CPlayerGui, PDrawScreenFade_Data) == 0x168);
++FABLE_STATIC_ASSERT_AT(513, offsetof(CPlayerGui, PDrawScreenFade_Info) == 0x16c);
++FABLE_STATIC_ASSERT_AT(514, offsetof(CPlayerGui, PDrawMoney_Data) == 0x170);
++FABLE_STATIC_ASSERT_AT(515, offsetof(CPlayerGui, PDrawMoney_Info) == 0x174);
++FABLE_STATIC_ASSERT_AT(516, offsetof(CPlayerGui, PDrawRenown_Data) == 0x178);
++FABLE_STATIC_ASSERT_AT(517, offsetof(CPlayerGui, PDrawRenown_Info) == 0x17c);
++FABLE_STATIC_ASSERT_AT(518, offsetof(CPlayerGui, PDrawMorality_Data) == 0x180);
++FABLE_STATIC_ASSERT_AT(519, offsetof(CPlayerGui, PDrawMorality_Info) == 0x184);
++FABLE_STATIC_ASSERT_AT(520, offsetof(CPlayerGui, PDrawExperience_Data) == 0x188);
++FABLE_STATIC_ASSERT_AT(521, offsetof(CPlayerGui, PDrawExperience_Info) == 0x18c);
++FABLE_STATIC_ASSERT_AT(522, offsetof(CPlayerGui, PDrawCrime_Data) == 0x190);
++FABLE_STATIC_ASSERT_AT(523, offsetof(CPlayerGui, PDrawCrime_Info) == 0x194);
++FABLE_STATIC_ASSERT_AT(524, offsetof(CPlayerGui, PDrawReceivedItems_Data) == 0x198);
++FABLE_STATIC_ASSERT_AT(525, offsetof(CPlayerGui, PDrawReceivedItems_Info) == 0x19c);
++FABLE_STATIC_ASSERT_AT(526, offsetof(CPlayerGui, PDrawFishingGame_Data) == 0x1a0);
++FABLE_STATIC_ASSERT_AT(527, offsetof(CPlayerGui, PDrawFishingGame_Info) == 0x1a4);
++FABLE_STATIC_ASSERT_AT(528, offsetof(CPlayerGui, PDrawStatUpdates_Data) == 0x1a8);
++FABLE_STATIC_ASSERT_AT(529, offsetof(CPlayerGui, PDrawStatUpdates_Info) == 0x1ac);
++FABLE_STATIC_ASSERT_AT(530, offsetof(CPlayerGui, PDrawAutoPickups_Data) == 0x1b0);
++FABLE_STATIC_ASSERT_AT(531, offsetof(CPlayerGui, PDrawAutoPickups_Info) == 0x1b4);
++FABLE_STATIC_ASSERT_AT(532, offsetof(CPlayerGui, PDrawPerceivers_Data) == 0x1b8);
++FABLE_STATIC_ASSERT_AT(533, offsetof(CPlayerGui, PDrawPerceivers_Info) == 0x1bc);
++FABLE_STATIC_ASSERT_AT(534, offsetof(CPlayerGui, PDrawDamage_Data) == 0x1c0);
++FABLE_STATIC_ASSERT_AT(535, offsetof(CPlayerGui, PDrawDamage_Info) == 0x1c4);
++FABLE_STATIC_ASSERT_AT(536, offsetof(CPlayerGui, PDrawQuestInfo_Data) == 0x1c8);
++FABLE_STATIC_ASSERT_AT(537, offsetof(CPlayerGui, PDrawQuestInfo_Info) == 0x1cc);
++FABLE_STATIC_ASSERT_AT(538, offsetof(CPlayerGui, PDrawGuildSeal_Data) == 0x1d0);
++FABLE_STATIC_ASSERT_AT(539, offsetof(CPlayerGui, PDrawGuildSeal_Info) == 0x1d4);
++FABLE_STATIC_ASSERT_AT(540, offsetof(CPlayerGui, PDrawQuickAccessIcons_Data) == 0x1d8);
++FABLE_STATIC_ASSERT_AT(541, offsetof(CPlayerGui, PDrawQuickAccessIcons_Info) == 0x1dc);
++FABLE_STATIC_ASSERT_AT(542, offsetof(CPlayerGui, PDrawScriptScreenText_Data) == 0x1e0);
++FABLE_STATIC_ASSERT_AT(543, offsetof(CPlayerGui, PDrawScriptScreenText_Info) == 0x1e4);
++FABLE_STATIC_ASSERT_AT(544, offsetof(CPlayerGui, PDrawTargetInfo_Data) == 0x1e8);
++FABLE_STATIC_ASSERT_AT(545, offsetof(CPlayerGui, PDrawTargetInfo_Info) == 0x1ec);
++FABLE_STATIC_ASSERT_AT(546, offsetof(CPlayerGui, PDrawHighlightingTargetingCursor_Data) == 0x1f0);
++FABLE_STATIC_ASSERT_AT(547, offsetof(CPlayerGui, PDrawHighlightingTargetingCursor_Info) == 0x1f4);
++FABLE_STATIC_ASSERT_AT(548, offsetof(CPlayerGui, PDrawWorldTime_Data) == 0x1f8);
++FABLE_STATIC_ASSERT_AT(549, offsetof(CPlayerGui, PDrawWorldTime_Info) == 0x1fc);
++FABLE_STATIC_ASSERT_AT(550, offsetof(CPlayerGui, PDrawAbilityButtons_Data) == 0x200);
++FABLE_STATIC_ASSERT_AT(551, offsetof(CPlayerGui, PDrawAbilityButtons_Info) == 0x204);
++FABLE_STATIC_ASSERT_AT(552, offsetof(CPlayerGui, PDrawLetterBoxBlackBars_Data) == 0x208);
++FABLE_STATIC_ASSERT_AT(553, offsetof(CPlayerGui, PDrawLetterBoxBlackBars_Info) == 0x20c);
++FABLE_STATIC_ASSERT_AT(554, offsetof(CPlayerGui, PDrawBettingHUD_Data) == 0x210);
++FABLE_STATIC_ASSERT_AT(555, offsetof(CPlayerGui, PDrawBettingHUD_Info) == 0x214);
++FABLE_STATIC_ASSERT_AT(556, offsetof(CPlayerGui, PDrawProjectileTargetingCentre_Data) == 0x218);
++FABLE_STATIC_ASSERT_AT(557, offsetof(CPlayerGui, PDrawProjectileTargetingCentre_Info) == 0x21c);
++FABLE_STATIC_ASSERT_AT(558, offsetof(CPlayerGui, PDrawMeleeActionButtonEffects_Data) == 0x220);
++FABLE_STATIC_ASSERT_AT(559, offsetof(CPlayerGui, PDrawMeleeActionButtonEffects_Info) == 0x224);
++FABLE_STATIC_ASSERT_AT(560, offsetof(CPlayerGui, PDrawSpiritScores_Data) == 0x228);
++FABLE_STATIC_ASSERT_AT(561, offsetof(CPlayerGui, PDrawSpiritScores_Info) == 0x22c);
++FABLE_STATIC_ASSERT_AT(562, offsetof(CPlayerGui, PDrawSpiritTargetingCursor_Data) == 0x230);
++FABLE_STATIC_ASSERT_AT(563, offsetof(CPlayerGui, PDrawSpiritTargetingCursor_Info) == 0x234);
++FABLE_STATIC_ASSERT_AT(564, offsetof(CPlayerGui, PDraw2DText_Data) == 0x238);
++FABLE_STATIC_ASSERT_AT(565, offsetof(CPlayerGui, PDraw2DText_Info) == 0x23c);
++FABLE_STATIC_ASSERT_AT(566, offsetof(CPlayerGui, PDrawMouseCursor_Data) == 0x240);
++FABLE_STATIC_ASSERT_AT(567, offsetof(CPlayerGui, PDrawMouseCursor_Info) == 0x244);
++FABLE_STATIC_ASSERT_AT(568, offsetof(CPlayerGui, PDrawNPCName_Data) == 0x248);
++FABLE_STATIC_ASSERT_AT(569, offsetof(CPlayerGui, PDrawNPCName_Info) == 0x24c);
++FABLE_STATIC_ASSERT_AT(570, offsetof(CPlayerGui, ShowSpecialAbilityButtons) == 0x250);
++FABLE_STATIC_ASSERT_AT(571, offsetof(CPlayerGui, ShowSpecialAbilityButtonsAbilities) == 0x251);
++FABLE_STATIC_ASSERT_AT(572, offsetof(CPlayerGui, SpecialSelected) == 0x252);
++FABLE_STATIC_ASSERT_AT(573, offsetof(CPlayerGui, SpecialDeselected) == 0x253);
++FABLE_STATIC_ASSERT_AT(574, offsetof(CPlayerGui, AbilityButtons) == 0x254);
++FABLE_STATIC_ASSERT_AT(575, offsetof(CPlayerGui, AbilityButtonsAlpha) == 0x260);
++FABLE_STATIC_ASSERT_AT(576, offsetof(CPlayerGui, QuickAccessButtonsAlpha) == 0x26c);
++FABLE_STATIC_ASSERT_AT(577, offsetof(CPlayerGui, AbilityButtonScale) == 0x278);
++FABLE_STATIC_ASSERT_AT(578, offsetof(CPlayerGui, NormalToSpecial) == 0x27c);
++FABLE_STATIC_ASSERT_AT(579, offsetof(CPlayerGui, SpecialToNormal) == 0x27d);
++FABLE_STATIC_ASSERT_AT(580, offsetof(CPlayerGui, VWindow_TLX) == 0x280);
++FABLE_STATIC_ASSERT_AT(581, offsetof(CPlayerGui, VWindow_TLY) == 0x284);
++FABLE_STATIC_ASSERT_AT(582, offsetof(CPlayerGui, VWindow_BRX) == 0x288);
++FABLE_STATIC_ASSERT_AT(583, offsetof(CPlayerGui, VWindow_BRY) == 0x28c);
++FABLE_STATIC_ASSERT_AT(584, offsetof(CPlayerGui, DrawGui) == 0x290);
++FABLE_STATIC_ASSERT_AT(585, offsetof(CPlayerGui, OldDrawGui) == 0x291);
++FABLE_STATIC_ASSERT_AT(586, offsetof(CPlayerGui, GuiMode) == 0x294);
++FABLE_STATIC_ASSERT_AT(587, offsetof(CPlayerGui, FadeInTimer) == 0x298);
++FABLE_STATIC_ASSERT_AT(588, offsetof(CPlayerGui, ForcedClosed) == 0x29c);
++FABLE_STATIC_ASSERT_AT(589, offsetof(CPlayerGui, ShowTime) == 0x29d);
++FABLE_STATIC_ASSERT_AT(590, offsetof(CPlayerGui, ShowMoneyBag) == 0x29e);
++FABLE_STATIC_ASSERT_AT(591, offsetof(CPlayerGui, ShowStatBars) == 0x29f);
++FABLE_STATIC_ASSERT_AT(592, offsetof(CPlayerGui, Alpha) == 0x2a0);
++FABLE_STATIC_ASSERT_AT(593, offsetof(CPlayerGui, HeroCentreUID) == 0x2a8);
++FABLE_STATIC_ASSERT_AT(594, offsetof(CPlayerGui, DrawingSafeAreas) == 0x2b0);
++FABLE_STATIC_ASSERT_AT(595, offsetof(CPlayerGui, DrawingDebugTGA) == 0x2b1);
++FABLE_STATIC_ASSERT_AT(596, offsetof(CPlayerGui, DebugTGATexture) == 0x2b4);
++FABLE_STATIC_ASSERT_AT(597, offsetof(CPlayerGui, ScreenMessagingEnabled) == 0x2bc);
++FABLE_STATIC_ASSERT_AT(598, offsetof(CPlayerGui, ForceAllowSubtitleToRender) == 0x2bd);
++FABLE_STATIC_ASSERT_AT(599, offsetof(CPlayerGui, LiveGuiMode) == 0x2be);
++FABLE_STATIC_ASSERT_AT(600, offsetof(CPlayerGui, Illustrators) == 0x2c0);
++FABLE_STATIC_ASSERT_AT(601, offsetof(CPlayerGui, PMoney_Data) == 0x2cc);
++FABLE_STATIC_ASSERT_AT(602, offsetof(CPlayerGui, PMoney_Info) == 0x2d0);
++FABLE_STATIC_ASSERT_AT(603, offsetof(CPlayerGui, PRenown_Data) == 0x2d4);
++FABLE_STATIC_ASSERT_AT(604, offsetof(CPlayerGui, PRenown_Info) == 0x2d8);
++FABLE_STATIC_ASSERT_AT(605, offsetof(CPlayerGui, PMorality_Data) == 0x2dc);
++FABLE_STATIC_ASSERT_AT(606, offsetof(CPlayerGui, PMorality_Info) == 0x2e0);
++FABLE_STATIC_ASSERT_AT(607, offsetof(CPlayerGui, PExperience_Data) == 0x2e4);
++FABLE_STATIC_ASSERT_AT(608, offsetof(CPlayerGui, PExperience_Info) == 0x2e8);
++FABLE_STATIC_ASSERT_AT(609, offsetof(CPlayerGui, PCrime_Data) == 0x2ec);
++FABLE_STATIC_ASSERT_AT(610, offsetof(CPlayerGui, PCrime_Info) == 0x2f0);
++FABLE_STATIC_ASSERT_AT(611, offsetof(CPlayerGui, PStatUpdates_Data) == 0x2f4);
++FABLE_STATIC_ASSERT_AT(612, offsetof(CPlayerGui, PStatUpdates_Info) == 0x2f8);
++FABLE_STATIC_ASSERT_AT(613, offsetof(CPlayerGui, PAutoPickups_Data) == 0x2fc);
++FABLE_STATIC_ASSERT_AT(614, offsetof(CPlayerGui, PAutoPickups_Info) == 0x300);
++FABLE_STATIC_ASSERT_AT(615, offsetof(CPlayerGui, TextPrimitiveHandles) == 0x304);
++FABLE_STATIC_ASSERT_AT(616, offsetof(CPlayerGui, SafeAreaPrimitiveHandles) == 0x310);
++FABLE_STATIC_ASSERT_AT(617, offsetof(CPlayerGui, DebugTGAPrimitiveHandle) == 0x31c);
++FABLE_STATIC_ASSERT_AT(618, offsetof(CPlayerGui, ScriptScreenText) == 0x324);
++FABLE_STATIC_ASSERT_AT(619, offsetof(CPlayerGui, ScreenMessages) == 0x328);
++FABLE_STATIC_ASSERT_AT(620, offsetof(CPlayerGui, PHeroInfoScreensManager_ptr) == 0x32c);
++FABLE_STATIC_ASSERT_AT(621, offsetof(CPlayerGui, DisplayBottomHalfGUI) == 0x330);
+ 
+ #endif // FABLE_RETAIL_CPLAYERGUI
+ #endif // FABLE_ENGINE_CPLAYERGUI_H
+--- a/rebuild/include/engine/CRGBFloatColour.h
++++ b/rebuild/include/engine/CRGBFloatColour.h
+@@ -56,11 +56,26 @@
+     // AddAbilityToList 0x00570332: the four __ftol2 calls on the returned colour's pointer, A first, after the later arguments).
+     // __forceinline, not plain inline: retail expands it in that /Os TU (calls 0x00570785..0x005707AB to __ftol2 0x00BFEA70, no
+     // call to 0x00429880) while the out-of-line COMDAT exists; plain in-class inline is called out of line under /Os.
++#if defined(FABLE_RETAIL_CRGBFLOATCOLOUR_GETRGBCOLOUR_NAMED_RESULT)
++    // Nested opt-in (bwf1 / agentC2, row 0x00BB3E80): the channels converted into named bytes in R, G, B, A order, then the colour built and
++    // returned (retail 0x00BB415C..0x00BB41A8 converts R first and stores R / G / B after the third __ftol2; the out-of-line COMDAT
++    // 0x00429880 converts A first). FITTED.
++    FABLE_FORCEINLINE CRGBColour GetRGBColour() const
++    {
++        unsigned char r = (unsigned char)(R * 255.0f);
++        unsigned char g = (unsigned char)(G * 255.0f);
++        unsigned char b = (unsigned char)(B * 255.0f);
++        unsigned char a = (unsigned char)(A * 255.0f);
++        CRGBColour colour(r, g, b, a);
++        return colour;
++    }
++#else
+     FABLE_FORCEINLINE CRGBColour GetRGBColour() const
+     {
+         return CRGBColour((unsigned char)(R * 255.0f), (unsigned char)(G * 255.0f), (unsigned char)(B * 255.0f),
+                           (unsigned char)(A * 255.0f));
+     }
++#endif
+     // Chunk 737 (CPSCLight::PreparePrimitives 0x00B19C60, CPSCSingleSprite::PreparePrimitives 0x00B087C0): FableWin.pdb
+     // ??HCRGBFloatColour@@QBE?AV0@ABV0@@Z / ??GCRGBFloatColour@@QBE?AV0@ABV0@@Z / ??DCRGBFloatColour@@QBE?AV0@M@Z (no retail copy),
+     // ?Interpolate@CRGBFloatColour@@QBE?AV1@ABV1@M@Z (out-of-line copy 0x00B09B90, landed; expanded in both rows) and
+@@ -128,7 +143,7 @@
+     float B;                                                             // +0x08
+     float A;                                                             // +0x0c
+ };
+-FABLE_STATIC_ASSERT(sizeof(CRGBFloatColour) == 0x10);
++FABLE_STATIC_ASSERT_AT(131, sizeof(CRGBFloatColour) == 0x10);
+ inline CRGBFloatColour operator*(const CRGBFloatColour& a, const CRGBFloatColour& b)
+ {
+     return CRGBFloatColour(a.R * b.R, a.G * b.G, a.B * b.B, a.A * b.A);
+--- a/rebuild/include/engine/CRenderStateCaptureBlock.h
++++ b/rebuild/include/engine/CRenderStateCaptureBlock.h
+@@ -21,7 +21,15 @@
+     CRenderStateCaptureBlock() : Open(false) { }
+     ~CRenderStateCaptureBlock() { if (Open) Restore(); }
+     void Capture() { StateManager->StartCaptureBlock(this); Open = true; }
++#ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_RESTORE_OPEN_FIRST
++    // Nested opt-in (agentC8, row 0x00B783F0 CEngineWaterRenderer::Render): Open cleared before the RestoreCaptureBlock call -- retail
++    // 0x00B7911F..0x00B7912A `mov ecx,[StateManager] ; mov byte ptr [esp+24h],0 ; call 0x00A05840` (the block's address has escaped
++    // through StartCaptureBlock(this), so VC7.1 cannot move the store above the call: the source order is store first), as the
++    // INLINE_DTOR opt-in's `Open = false; StateManager->RestoreCaptureBlock();`.
++    void Restore() { Open = false; StateManager->RestoreCaptureBlock(); }
++#else
+     void Restore() { StateManager->RestoreCaptureBlock(); Open = false; }
++#endif
+     static void __fastcall SetStateManager(CRenderStateManager* manager);
+ private:
+     bool Open;
+--- a/rebuild/include/engine/CTCInventoryAbilities.h
++++ b/rebuild/include/engine/CTCInventoryAbilities.h
+@@ -103,6 +103,17 @@
+     bool IsAbilityAvailable(EHeroAbility ability) const;                                                         // 0x005EDF08
+     long GetNumAssignedReceivedAbilities() const;                                                                // 0x005EE146
+ #endif
++#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_SPECIALBUTTONS
++    // Opt-in (bwf1 / agentC2, row 0x00651B04 NPlayerGui::CDrawAbilityButtons::Draw): Ego_r.pdb spellings, out of line in retail.
++    long GetSpecialAbilityGraphicSetToButton(long button) const;                                                 // 0x005EE31D
++    CDefPointer<const CHeroAbilityDef> GetSpecialAbilityPDefSetToButton(long button) const;                      // 0x005EE365
++#ifndef FABLE_RETAIL_CTCINVENTORYABILITIES_AVAILABILITY
++    bool IsAbilityAvailable(EHeroAbility ability) const;                                                         // 0x005EDF08
++    long GetNumAssignedReceivedAbilities() const;                                                                // 0x005EE146
++#endif
++    long GetNumAssignedAbilityRows() const;                                                                      // 0x005EE183
++    long GetNumAssignedReceivedExpressions() const;                                                              // 0x005EE24B
++#endif
+ #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_PRIORITISED
+     // Opt-in (agentSND, 2026-11-10, rows 0x005F64DD / 0x005F6793 CycleAssignedAbilities / CycleAssignedExpressions): Ego_r.pdb +
+     // FableWin.pdb spellings, out of line in retail: ?GetPrioritisedAbilityDefs@CTCInventoryAbilities@@QBEXAAV?$vector@V?$CDefPointer@
+@@ -216,7 +227,7 @@
+     virtual NHeroInformationScreens::EScreenType GetScreenType() const;
+ #endif // FABLE_RETAIL_CTCINVENTORYABILITIES_HISCREEN
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCInventoryAbilities)==0x1d8);
++FABLE_STATIC_ASSERT_AT(219, sizeof(CTCInventoryAbilities)==0x1d8);
+ #else // FABLE_RETAIL_CTCINVENTORYABILITIES
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+ // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CTCInventoryAbilities = 0x220.
+@@ -326,27 +337,27 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTCInventoryAbilities) == 0x1d8);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, SpellToAssign) == 0x134);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, SpellSlotToSwap) == 0x138);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, PComponentSlotToSwap) == 0x13c);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, WaitingToGiveTutorial) == 0x140);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, Initialised) == 0x141);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, CurrentSpecialAbilityUsedFromQuickAccess) == 0x142);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, CurrentAssignedAbilityLevel) == 0x144);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, ExperienceSpentOnAbilities) == 0x148);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, ReceivedAbilityOrder) == 0x154);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, Abilities) == 0x160);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, AbilityButtons) == 0x16c);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, AssignedAbilities) == 0x17c);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, AssignedAbilitiesSave) == 0x188);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, CategoriesLists) == 0x194);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, UnassignedIcons) == 0x1a0);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, AbilitiesMenuEntries) == 0x1ac);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, CurrentAssignedExpressionLevel) == 0x1b8);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, ReceivedExpressionOrder) == 0x1bc);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, ExpressionButtons) == 0x1c8);
++FABLE_STATIC_ASSERT_AT(329, sizeof(CTCInventoryAbilities) == 0x1d8);
++FABLE_STATIC_ASSERT_AT(330, offsetof(CTCInventoryAbilities, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(331, offsetof(CTCInventoryAbilities, SpellToAssign) == 0x134);
++FABLE_STATIC_ASSERT_AT(332, offsetof(CTCInventoryAbilities, SpellSlotToSwap) == 0x138);
++FABLE_STATIC_ASSERT_AT(333, offsetof(CTCInventoryAbilities, PComponentSlotToSwap) == 0x13c);
++FABLE_STATIC_ASSERT_AT(334, offsetof(CTCInventoryAbilities, WaitingToGiveTutorial) == 0x140);
++FABLE_STATIC_ASSERT_AT(335, offsetof(CTCInventoryAbilities, Initialised) == 0x141);
++FABLE_STATIC_ASSERT_AT(336, offsetof(CTCInventoryAbilities, CurrentSpecialAbilityUsedFromQuickAccess) == 0x142);
++FABLE_STATIC_ASSERT_AT(337, offsetof(CTCInventoryAbilities, CurrentAssignedAbilityLevel) == 0x144);
++FABLE_STATIC_ASSERT_AT(338, offsetof(CTCInventoryAbilities, ExperienceSpentOnAbilities) == 0x148);
++FABLE_STATIC_ASSERT_AT(339, offsetof(CTCInventoryAbilities, ReceivedAbilityOrder) == 0x154);
++FABLE_STATIC_ASSERT_AT(340, offsetof(CTCInventoryAbilities, Abilities) == 0x160);
++FABLE_STATIC_ASSERT_AT(341, offsetof(CTCInventoryAbilities, AbilityButtons) == 0x16c);
++FABLE_STATIC_ASSERT_AT(342, offsetof(CTCInventoryAbilities, AssignedAbilities) == 0x17c);
++FABLE_STATIC_ASSERT_AT(343, offsetof(CTCInventoryAbilities, AssignedAbilitiesSave) == 0x188);
++FABLE_STATIC_ASSERT_AT(344, offsetof(CTCInventoryAbilities, CategoriesLists) == 0x194);
++FABLE_STATIC_ASSERT_AT(345, offsetof(CTCInventoryAbilities, UnassignedIcons) == 0x1a0);
++FABLE_STATIC_ASSERT_AT(346, offsetof(CTCInventoryAbilities, AbilitiesMenuEntries) == 0x1ac);
++FABLE_STATIC_ASSERT_AT(347, offsetof(CTCInventoryAbilities, CurrentAssignedExpressionLevel) == 0x1b8);
++FABLE_STATIC_ASSERT_AT(348, offsetof(CTCInventoryAbilities, ReceivedExpressionOrder) == 0x1bc);
++FABLE_STATIC_ASSERT_AT(349, offsetof(CTCInventoryAbilities, ExpressionButtons) == 0x1c8);
+ 
+ #endif // FABLE_RETAIL_CTCINVENTORYABILITIES
+ #endif // FABLE_ENGINE_CTCINVENTORYABILITIES_H
+--- a/rebuild/include/engine/CTCQuickAccessMenu.h
++++ b/rebuild/include/engine/CTCQuickAccessMenu.h
+@@ -16,6 +16,10 @@
+ public: virtual void OnCreate();
+ public: virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo &);
+ public: virtual void GlobalUpdate(bool);
++#ifdef FABLE_RETAIL_CTCQUICKACCESSMENU_ISACTIVE
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb / FableWin.pdb ?IsActive@CTCQuickAccessMenu@@QBE_NXZ, out of line at 0x00625930.
++public: bool IsActive() const;                                           // 0x00625930
++#endif
+ #ifdef FABLE_RETAIL_CTCQUICKACCESSMENU_DEACTIVATE
+     // Retail opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): FableWin.pdb ?StatGetInterfaceType@CTCQuickAccessMenu@@SI?AW4ETCInterfaceType@@XZ
+     // (0x01A93CF0; inline in retail: Activate looks up TC 246 = TCI_QUICK_ACCESS_MENU, `mov dword ptr [esp+30h],0F6h` at 0x0056AD93) and
+@@ -36,5 +40,5 @@
+ private: double LastRenderTime;
+ private: bool FirstRenderFrame;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCQuickAccessMenu)==0x30);
++FABLE_STATIC_ASSERT_AT(39, sizeof(CTCQuickAccessMenu)==0x30);
+ #endif
+--- a/rebuild/include/engine/CTCSpecialAbilities.h
++++ b/rebuild/include/engine/CTCSpecialAbilities.h
+@@ -61,6 +61,10 @@
+ public:
+     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_SPECIAL_ABILITIES; }
+     bool GetAbilityMutexLock() const { return AbilityMutexLock; }
++#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_ISABILITYAVAILABLE
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): FableWin.pdb ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z (0x0072C430).
++    bool IsAbilityAvailable(EHeroAbility ability) const;                 // 0x0072C430
++#endif
+ private:
+     bool AbilityMutexLock;                                   // +0x0C
+     bool UsingBed;                                           // +0x0D
+--- a/rebuild/include/engine/CTCWeapon.h
++++ b/rebuild/include/engine/CTCWeapon.h
+@@ -16,8 +16,17 @@
+ #ifdef FABLE_RETAIL_CTCWEAPON_DAMAGE
+ #include "engine/EWeaponClass.h"
+ #endif
++#ifdef FABLE_RETAIL_CTCWEAPON_GETWEAPONTYPE
++enum EWeaponType;                                                      // Ego_r.pdb enum (enumerators not modelled)
++#endif
+ class CThing;
+ class CTCWeapon : public CTCBase {
++#ifdef FABLE_RETAIL_CTCWEAPON_GETWEAPONTYPE
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb / FableWin.pdb ?GetWeaponType@CTCWeapon@@QBE?AW4EWeaponType@@XZ, out of line at 0x005DA7D0.
++public:
++    EWeaponType GetWeaponType() const;                                   // 0x005DA7D0
++private:
++#endif
+ #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+ public:
+ long GetExplosionType()const;void IncrementNumThingsKilled(CThing*);
+@@ -122,7 +131,7 @@
+ #endif // FABLE_RETAIL_CTCWEAPON_VSLOTS3
+ };
+ #ifdef FABLE_RETAIL_CTCWEAPON_MEMBERS
+-FABLE_STATIC_ASSERT(sizeof(CTCWeapon) == 0x28);
++FABLE_STATIC_ASSERT_AT(125, sizeof(CTCWeapon) == 0x28);
+ #endif
+ #else
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+@@ -154,15 +163,15 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTCWeapon) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CTCWeapon, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CTCWeapon, WeaponDef_Object) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CTCWeapon, ProjectileWeaponLoaded) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CTCWeapon, AimingTime) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CTCWeapon, AimingTimeOverride) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CTCWeapon, NumThingsKilled) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CTCWeapon, TimeWielded) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CTCWeapon, Wielded) == 0x24);
++FABLE_STATIC_ASSERT_AT(157, sizeof(CTCWeapon) == 0x28);
++FABLE_STATIC_ASSERT_AT(158, offsetof(CTCWeapon, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(159, offsetof(CTCWeapon, WeaponDef_Object) == 0xc);
++FABLE_STATIC_ASSERT_AT(160, offsetof(CTCWeapon, ProjectileWeaponLoaded) == 0x10);
++FABLE_STATIC_ASSERT_AT(161, offsetof(CTCWeapon, AimingTime) == 0x14);
++FABLE_STATIC_ASSERT_AT(162, offsetof(CTCWeapon, AimingTimeOverride) == 0x18);
++FABLE_STATIC_ASSERT_AT(163, offsetof(CTCWeapon, NumThingsKilled) == 0x1c);
++FABLE_STATIC_ASSERT_AT(164, offsetof(CTCWeapon, TimeWielded) == 0x20);
++FABLE_STATIC_ASSERT_AT(165, offsetof(CTCWeapon, Wielded) == 0x24);
+ 
+ #endif // FABLE_RETAIL_CTCWEAPON
+ #endif // FABLE_ENGINE_CTCWEAPON_H
+--- a/rebuild/include/engine/CUserProfileManager.h
++++ b/rebuild/include/engine/CUserProfileManager.h
+@@ -103,6 +103,19 @@
+     long GetMaxSaveSlots() const;                                                     // 0x004067B0
+     const CWideString& GetSaveSlotFileName(long) const;                               // 0x00407360
+ #endif
++#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_HUDTOOLTIP
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?GetAssignedInputForAction@CUserProfileManager@@QAE_NW4EGameAction@@_NPAVCActionInputControl@@@Z
++    // (0x00408C90) and FableWin.pdb ?IsHUDTooltipEnabled@CUserProfileManager@@QBE_NXZ (inline: `cmp byte [eax+0Ch] ; [eax+0D9h] / [eax+19h]`);
++    // HUDTooltipEnabled +0x19 (Ego_r, before the first vector) and HUDTooltipEnabledNewProfile +0xD9 (Ego_r 0xDD - 4). Own pads.
++    bool GetAssignedInputForAction(EGameAction action, bool passive, CActionInputControl* control);   // 0x00408C90
++    bool IsHUDTooltipEnabled() const { return UseNewProfileValues ? HUDTooltipEnabledNewProfile : HUDTooltipEnabled; }
++    unsigned char _pad_ht_0x00[0xc];                                     // vptr, CBaseClass, ProfileName
++    bool UseNewProfileValues;                                            // +0x0c
++    unsigned char _pad_ht_0x0d[0x19 - 0xd];
++    bool HUDTooltipEnabled;                                              // +0x19
++    unsigned char _pad_ht_0x1a[0xd9 - 0x1a];
++    bool HUDTooltipEnabledNewProfile;                                    // +0xd9
++#endif
+ #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS
+     // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): the option setters the UI actions call, out of line in
+     // retail, FableWin.pdb / Ego_r.pdb spellings (?SetGamma@CUserProfileManager@@QAEXM_N@Z ...; the second bool is "use the new
+--- a/rebuild/include/engine/NCreatureMode.h
++++ b/rebuild/include/engine/NCreatureMode.h
+@@ -124,6 +124,11 @@
+ bool __fastcall IsLightningable(const CThing& thing);                   // 0x0085FAA0
+ }
+ #endif
++#ifdef FABLE_RETAIL_NCREATUREMODE_HERORUN
++// Opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?IsAvailableForHeroRun@NCreatureMode@@YI_NABVCThing@@@Z (0x0085F560). Declaration only.
++class CThing;
++namespace NCreatureMode { bool __fastcall IsAvailableForHeroRun(const CThing& thing); }   // 0x0085F560
++#endif
+ #ifdef FABLE_RETAIL_FIRE_RANGED_WEAPON
+ class CThing;
+ namespace NCreatureMode{bool FABLE_FASTCALL IsValidRangedWeaponTargetForShooter(const CThing&,const CThing&,float);}

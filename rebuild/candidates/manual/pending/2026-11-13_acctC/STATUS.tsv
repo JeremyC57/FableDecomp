@@ -3,8 +3,8 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 005ce0e6	MATCHED_STAGED	15910	2026-11-13_acctC_c1a	C1	parked	CTCInventoryStats::CTCInventoryStats::vfunc_86
 00bd3070	OPEN	11288		true length checked by C13: code to ret 8 at 0x00BD5C3A + pad + 18-entry jump table 0x00BD5C40..87	parked	CEnginePrimitiveManagerAnimatedMeshesBase::RenderMeshPrimitive
 0060eeb0	MATCHED_STAGED	10254	2026-11-13_acctC_c14a	C1 -> C4	parked	CTCInventoryMap::ConstructPCMapList
-00ba2350	IN_PROGRESS			C16 row 1 (its body is needed by 00ba5260)	parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
-00b783f0	QUEUED	9343	2026-11-13_acctC_c8a/open_00b783f0	C8 -> C13 -> C16 row 3: DIFFER(9343v9343), 3 residues; only dead inline setter expansions fix two of them (not landable as such)	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
+00ba2350	IN_PROGRESS	9632	2026-11-13_acctC_c8a/open_00ba2350	C16 -> C17 row 2: DIFFER(9516v9632); length confirmed (ret 1Ch 0x00BA48A3 + pad + 18-entry jump table); c2 colours sub_primitive before mesh_primitive, forcing the flip gives lcs 2103/2419	parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
+00b783f0	OPEN	9343	2026-11-13_acctC_c8a/open_00b783f0	C8 -> C13 -> C16: DIFFER(9343v9343), 3 residues; quartet needs exactly 2 dead units before the second SetCommonRenderStates expansion; bool-parameter helper ruled out	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
 005f1b10	MATCHED_STAGED	8383	2026-11-13_acctC_c9a	C5 -> C7 -> C9	parked	CTCInventoryAbilities::ConstructPCMagicList
 0058578b	OPEN				parked	CTCInventory::CTCInventory::vfunc_30
@@ -17,7 +17,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00bb3e80	MATCHED_STAGED	4540	2026-11-13_acctC_c8a	C2 -> C3 -> C6 -> C8; 11 inferred release asserts (fitted count, review item)	parked	CEngineClothRenderer::RenderClothPrimitive
 00a91640	OPEN				parked	_gapscan::sub_00a91640
 00b8b780	OPEN				parked	CEngineBillboardGenerator::RenderBillboard
-00ba5260	QUEUED	4056	2026-11-13_acctC_c8a/open_00ba5260	C13 -> C16 row 2: DIFFER(4056v4056) with a stand-in callee body, 14 instructions	parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
+00ba5260	IN_PROGRESS	4056	2026-11-13_acctC_c8a/open_00ba5260	C13 -> C16 -> C17 row 1: DIFFER(4056v4056), 2 residues; a probe with stand-in callee bodies reaches RELOCATION_MATCH; needs real bodies of 00ba50a0 / 00b9e5b0 (unmatched elsewhere) and one operator- text shared with the cloth rows	parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
 00bcc800	OPEN				parked	CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
 0048e78e	OPEN				parked	CSubtitleRenderer::DrawButtonGraphics
 00cbfb7d	OPEN				parked	_global::RunCutsceneMacro
