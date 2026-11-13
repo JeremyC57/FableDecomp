@@ -49,6 +49,13 @@ public:
  // ?CountLivingHelpers@CTCBoss@@QAEJXZ (retail 0x007AEEC0; the landed Heal FrameUpdate 0x008DFFD0 calls it too). Declaration only.
  long CountLivingHelpers();
 #endif
+#ifdef FABLE_RETAIL_CTCBOSS_GETGENERICCOUNTER
+ // Retail opt-in (wf20, row 0x008C12D0 CCombatAction_StrikeResponseJackOfBladesIntoRush::Initialise): FableWin.pdb
+ // ?GetGenericCounter@CTCBoss@@QBEJXZ (0x0181ACD6 / 0x02A0EBC0; no Fable.exe copy: inline, retail reads +0x10 in place,
+ // `mov eax,[edi+10h]` at 0x008C1336) and ?SetGenericCounter@CTCBoss@@QAEXJ@Z.
+ long GetGenericCounter() const { return GenericCounter; }
+ void SetGenericCounter(long counter) { GenericCounter = counter; }
+#endif
 private:
  CDefPointer<const CBossDef> PBossDef;
  long GenericCounter,StrikesSinceHit,currentBossPhase,NextWeapon;

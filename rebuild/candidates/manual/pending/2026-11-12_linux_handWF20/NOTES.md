@@ -1,40 +1,40 @@
-## 0x00839100
+## 0x008C12D0
 
-## 0x00839100 CThingGameObject::GetWeaponTrailGraphicIndex -- RELOCATION_MATCH (also LANDVERIFY_STRICT_HEADERS=1)
-- Matched by: porting onto shared headers (CThing GETTC_EXPANDED, CWeaponDef, CTCCarryable/TrapBase/Berserk/Combat/ObjectAugmentations,
-  CThingCreatureBase PeekPCurrentAction) with GetSubDef<CWeaponDef> visible noinline (def held in edi); whole body inside
-  `if (PBaseDef->GetSubDef(&def)) {...} return -1;` (shared null-tested exit); WeaponTrails read inline at each use (no reference
-  local); reverse loop `rb = rbegin(); end = rend(); for (it = rb; it != end; ++it)` (the copy gives `mov esi,eax` + aligned loop head).
-- Headers (overlay $W/hdr, see hdr/README.md): CThingGameObject.h, CTCBerserk.h, CTCCombat.h (as before) + REPAIR: CWeaponDef.h
-  FABLE_RETAIL_CWEAPONDEF_WEAPONTRAILS (real std::map<EObjectAugmentationType,CWeaponTrailGraphicSet>), stlport/fable_map.h
-  FABLE_RETAIL_STLP_TREE_DEC_OUTOFLINE + FABLE_RETAIL_STLP_MAP_REVERSE. Existing opt-ins used: FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_BODY
-  (+ FABLE_RETAIL_AUGMENTATION_PARTICLES: noinline const find, forceinline _M_find), FABLE_RETAIL_STLP_LIST_REVERSE (reverse_iterator). Flags: none.
-- Repair (verifier findings 1-7): the made-up CTrailMap / CTrailMapIterator / CTrailMapReverseIterator / SNode / SNodeBase view is gone;
-  the row uses the real STLport types from fable_map.h. Out-of-line real bodies of landed callees in the TU: 0x0083AEA0 (map iterator
-  operator--, same bytes as landed CRetailTreeIterator_Decrement_0083aea0.cpp) and 0x0083B170 (const find<EObjectAugmentationType>,
-  same bytes as landed stdRbtreeCUnprovenKey0083b170..._find_0083b170.cpp). Both compiled from this TU grade MATCH at their own
-  addresses (q.py 0083aea0 leaf ??F?$_Rb_tree_iterator.. ; q.py 0083b170 leaf ??$find@W4EObjectAugmentationType..).
-- NAME_FIXES.tsv (with the real landed spellings): 0x0078BED0 ?M@C_0078bed0@@QAEKXZ -> CTCBerserk::GetWeaponTrailAttack;
-  0x0078BEE0 ?M@C_0078bee0@@QAEKXZ -> CTCBerserk::GetWeaponTrailKnockDown; 0x00787C18 ?fn_operator@@YI_NXZ -> CTCTrapBase::
-  IsCurrentTrapToCauseKnockdown (only caller is this row, sits among CTCTrapBase members; not ICF-shared); 0x0083AEA0 and 0x0083B170
-  -> the real STLport map<EObjectAugmentationType,CWeaponTrailGraphicSet> spellings (replacing CRetailTreeIterator / CUnprovenKey_0083b170).
-- Test: rewritten to model the things/components: covers carrier swap, creature path (null action, each of knockdown/vital/decapitating),
-  non-creature trap path on the weapon itself, wielder berserk/combat flourish, reverse augmentation walk, type-0 find, no def. vt.py PASS.
-- Made-up names: none left in the row (CWeaponTrailGraphicSet is the Ego_r struct, declared in the CWeaponDef.h opt-in).
+## 0x008C12D0 CCombatAction_StrikeResponseJackOfBladesIntoRush::Initialise -- RELOCATION_MATCH (wf20 author, ~45 grades)
+- What made it match: (1) same-TU noinline CVectorMap::LowerBound (engine/CVectorMap.h) -> ebp=&PCreature as retail; (2) the real
+  CDefPointer + real noinline GetSubDef body (engine/CDefClassBase_GetSubDef.h, FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE) -- no
+  Release null test, def not escaped; (3) THE key: the rush body is the `else` of `if (!CauseRush)` instead of an early `return` --
+  the early return made VC7.1 give the def a whole-function ebx (frame 0x38, no xor-ebx zero); (4) alive test `!IsDead()` not
+  `IsAlive()` (`!Dead` emits `not cl; test cl,1`). Named CCharString locals (a temporary argument differs, 790 bytes).
+- Headers/flags: no flags. fable_compiler.h, engine/C3DVector.h (FABLE_RETAIL_C3DVECTOR, _NORMALISE_LOCALS_XYZ, _ANGLE_BODIES ->
+  GetAngleXY), CJackOfBladesBattleDef.h, CDefClassBase_GetSubDef.h (+DEF_CLASS_BASE, CDEFINITIONMANAGER, CRESOURCELIST, CCHARSTRING),
+  CTCPhysicsBase.h (+CTCPHYSICSBASE, CTCBASE), CThing.h (GETTC_EXPANDED, FABLE_RETAIL_CTHING for inline PeekBaseDef), CThingBaseDef.h,
+  CIntelligentPointer.h, overlay CTCBoss.h (FABLE_RETAIL_CTCBOSS_JACK_INTORUSH_ACCESS friend). The CCombatAction* hierarchy stays a
+  local model like the landed same-TU siblings 0x008C2550 / 0x008C1600 (PDB header opaque, GenericStrikeResponseBase members opaque).
+- Name fixes vs the old draft (all callee spellings, not landed rows): SetAnimationName -> CCombatActionBase::SetCombatAnimation,
+  GetFacing -> CTCPhysicsBase::GetFacingVector() const, GetPosition -> CThing::GetPos, g_InvSqrtMantissaTable -> GFastOneOverSqrtTable,
+  local WrapAngle(atan2*1/2pi) -> C3DVector::GetAngleXY (header body). No made-up names remain in the row (IS_THING_ALIVE is the
+  lane's existing macro-style helper name used by siblings).
 
-## Verifier findings not applied
-- None; all seven applied.
+### Repair (verifier findings, 2026-11-13) -- still RELOCATION_MATCH (also LANDVERIFY_STRICT_HEADERS=1), test PASS
+- Local CCombatActionBase / CCombatAction_GenericStrikeResponseBase / CCombatAction_StrikeResponseJackOfBladesIntoRush models removed:
+  CCreatureActionBase (FABLE_RETAIL_CCREATUREACTIONBASE + _PCREATURE), CCombatActionBase (FABLE_RETAIL_CCOMBATACTIONBASE_RECOVER), and
+  two overlay opt-ins (hdr/README.md): ..._GENERICSTRIKERESPONSEBASE_TYPED, ..._STRIKERESPONSEJACKOFBLADESINTORUSH.
+- CTCBoss friend opt-in replaced by FABLE_RETAIL_CTCBOSS_GETGENERICCOUNTER (FableWin.pdb ?GetGenericCounter@CTCBoss@@QBEJXZ inline);
+  the row calls boss->GetGenericCounter().
+- Local IS_THING_ALIVE replaced by engine/ThingAlive.h (FABLE_RETAIL_IS_THING_ALIVE, template __fastcall, PDB spelling) with
+  FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT (defined before the first CIntelligentPointer.h include); hitter via PThingThatHit.Get().
+- Data comment fixed (0x01277128 = 100 deg in radians, cosine at run time, fcos at 0x008C14DF); CauseRush two-test shape tied to the
+  retail `jg`/`jne` pair at 0x008C1343 / 0x008C1345 in the source comment.
 
-## Repair 3
-- Finding 1: CWeaponDef::FlourishSpecialWeaponTrail is now the Ego_r CWeaponTrailGraphicSet {long Attack +0; long Knockdown +4}
-  (struct_layouts_egor.tsv CWeaponDef FlourishSpecialWeaponTrail) under the existing opt-in FABLE_RETAIL_CWEAPONDEF_WEAPONTRAILS
-  (#ifdef/#else around the member; default path keeps the long[2] line token-identical). The row reads `.Knockdown` (was [1], +4)
-  when the strike is special and `.Attack` (was [0], +0) otherwise -- same order as CTCBerserk GetWeaponTrailKnockDown/Attack and the
-  map value. Graded RELOCATION_MATCH first try, also with LANDVERIFY_STRICT_HEADERS=1. Test model's Def now holds a
-  {Attack, Knockdown} pair named FlourishSpecialWeaponTrail; vt.py PASS.
-- Finding 2: every overlay file (stlport/fable_map.h, engine/CThingGameObject.h, CTCCombat.h, CTCBerserk.h, CWeaponDef.h) diffs
-  against the current repo header with 0 removed lines (additions only); hdr/README.md updated.
-- Backup of the pre-repair state: repair3_backup/.
+### Repair 3 (verifier findings, 2026-11-13) -- still RELOCATION_MATCH (also LANDVERIFY_STRICT_HEADERS=1), test PASS
+- GetTC((ETCInterfaceType)0xad, &boss) -> GetTC(TCI_BOSS, &boss) (engine/ETCInterfaceType.h, Ego_r TCI_BOSS = 173); bytes unchanged.
+  No other raw enum cast in the row.
+- Test: new cases h (dead hitter behind at (0,-5,0), point of hit in front at (0,5,0) -> FRONT rush, angle 0) and i (same geometry,
+  hitter alive -> BACK rush). Mutation `if (w.hitterPresent)` (verify_evidence/mut2 idea, $W/mut3.cpp) now prints FAIL; real test PASS.
+- Overlays re-checked against the CURRENT repo headers: CTCBoss.h, CCombatAction_GenericStrikeResponseBase.h,
+  CCombatAction_StrikeResponseJackOfBladesIntoRush.h each have 0 removed lines (`diff repo overlay | grep -c '^<'` = 0, additions only).
+  No CIntelligentPointer.h overlay exists: the row uses the repo header (FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT is in it).
 
 ## 0x00AD9F10 (not landed)
 
@@ -121,42 +121,4 @@ Tried this pass without effect: start as first-branch out-count (frame +4); cons
    landed row still spells CEntryListBuffer_00a96da0::~CEntryListBuffer_00a96da0.
 4. Source comment on HasMoreBlocks: Ego_r keeps ?HasMoreBlocks@CVertexGroupBlockOptimiser@@ABE_NXZ out of line (0x00C5BE00) but TLC has no copy; AddBlocks
    expands it at 0x00AD9F66-0x00AD9F99 (GetBlockCount imul 0x00AD9F66-0x00AD9F7D, remaining-byte loop 0x00AD9F90-0x00AD9F99).
-
-## 0x008C12D0 (not landed)
-
-## 0x008C12D0 CCombatAction_StrikeResponseJackOfBladesIntoRush::Initialise -- RELOCATION_MATCH (wf20 author, ~45 grades)
-- What made it match: (1) same-TU noinline CVectorMap::LowerBound (engine/CVectorMap.h) -> ebp=&PCreature as retail; (2) the real
-  CDefPointer + real noinline GetSubDef body (engine/CDefClassBase_GetSubDef.h, FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE) -- no
-  Release null test, def not escaped; (3) THE key: the rush body is the `else` of `if (!CauseRush)` instead of an early `return` --
-  the early return made VC7.1 give the def a whole-function ebx (frame 0x38, no xor-ebx zero); (4) alive test `!IsDead()` not
-  `IsAlive()` (`!Dead` emits `not cl; test cl,1`). Named CCharString locals (a temporary argument differs, 790 bytes).
-- Headers/flags: no flags. fable_compiler.h, engine/C3DVector.h (FABLE_RETAIL_C3DVECTOR, _NORMALISE_LOCALS_XYZ, _ANGLE_BODIES ->
-  GetAngleXY), CJackOfBladesBattleDef.h, CDefClassBase_GetSubDef.h (+DEF_CLASS_BASE, CDEFINITIONMANAGER, CRESOURCELIST, CCHARSTRING),
-  CTCPhysicsBase.h (+CTCPHYSICSBASE, CTCBASE), CThing.h (GETTC_EXPANDED, FABLE_RETAIL_CTHING for inline PeekBaseDef), CThingBaseDef.h,
-  CIntelligentPointer.h, overlay CTCBoss.h (FABLE_RETAIL_CTCBOSS_JACK_INTORUSH_ACCESS friend). The CCombatAction* hierarchy stays a
-  local model like the landed same-TU siblings 0x008C2550 / 0x008C1600 (PDB header opaque, GenericStrikeResponseBase members opaque).
-- Name fixes vs the old draft (all callee spellings, not landed rows): SetAnimationName -> CCombatActionBase::SetCombatAnimation,
-  GetFacing -> CTCPhysicsBase::GetFacingVector() const, GetPosition -> CThing::GetPos, g_InvSqrtMantissaTable -> GFastOneOverSqrtTable,
-  local WrapAngle(atan2*1/2pi) -> C3DVector::GetAngleXY (header body). No made-up names remain in the row (IS_THING_ALIVE is the
-  lane's existing macro-style helper name used by siblings).
-
-### Repair (verifier findings, 2026-11-13) -- still RELOCATION_MATCH (also LANDVERIFY_STRICT_HEADERS=1), test PASS
-- Local CCombatActionBase / CCombatAction_GenericStrikeResponseBase / CCombatAction_StrikeResponseJackOfBladesIntoRush models removed:
-  CCreatureActionBase (FABLE_RETAIL_CCREATUREACTIONBASE + _PCREATURE), CCombatActionBase (FABLE_RETAIL_CCOMBATACTIONBASE_RECOVER), and
-  two overlay opt-ins (hdr/README.md): ..._GENERICSTRIKERESPONSEBASE_TYPED, ..._STRIKERESPONSEJACKOFBLADESINTORUSH.
-- CTCBoss friend opt-in replaced by FABLE_RETAIL_CTCBOSS_GETGENERICCOUNTER (FableWin.pdb ?GetGenericCounter@CTCBoss@@QBEJXZ inline);
-  the row calls boss->GetGenericCounter().
-- Local IS_THING_ALIVE replaced by engine/ThingAlive.h (FABLE_RETAIL_IS_THING_ALIVE, template __fastcall, PDB spelling) with
-  FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT (defined before the first CIntelligentPointer.h include); hitter via PThingThatHit.Get().
-- Data comment fixed (0x01277128 = 100 deg in radians, cosine at run time, fcos at 0x008C14DF); CauseRush two-test shape tied to the
-  retail `jg`/`jne` pair at 0x008C1343 / 0x008C1345 in the source comment.
-
-### Repair 3 (verifier findings, 2026-11-13) -- still RELOCATION_MATCH (also LANDVERIFY_STRICT_HEADERS=1), test PASS
-- GetTC((ETCInterfaceType)0xad, &boss) -> GetTC(TCI_BOSS, &boss) (engine/ETCInterfaceType.h, Ego_r TCI_BOSS = 173); bytes unchanged.
-  No other raw enum cast in the row.
-- Test: new cases h (dead hitter behind at (0,-5,0), point of hit in front at (0,5,0) -> FRONT rush, angle 0) and i (same geometry,
-  hitter alive -> BACK rush). Mutation `if (w.hitterPresent)` (verify_evidence/mut2 idea, $W/mut3.cpp) now prints FAIL; real test PASS.
-- Overlays re-checked against the CURRENT repo headers: CTCBoss.h, CCombatAction_GenericStrikeResponseBase.h,
-  CCombatAction_StrikeResponseJackOfBladesIntoRush.h each have 0 removed lines (`diff repo overlay | grep -c '^<'` = 0, additions only).
-  No CIntelligentPointer.h overlay exists: the row uses the repo header (FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT is in it).
 

@@ -9,6 +9,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH
+// Retail opt-in (wf20, row 0x008C12D0 Initialise): the real class over its RTTI base CCombatAction_GenericStrikeResponseBase (Ego_r.pdb
+// sizeof 0x164 with CauseRush +0x160 = retail 0x14c / +0x148, the base 0x18 smaller under STLport) and its virtual
+// ?Initialise@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ (0x008C12D0, vtable 0x012808EC). Needs the
+// FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEBASE_TYPED prerequisites.
+#include "engine/CCombatAction_GenericStrikeResponseBase.h"
+class CCombatAction_StrikeResponseJackOfBladesIntoRush : public CCombatAction_GenericStrikeResponseBase {
+public:
+    virtual void Initialise();                                           // 0x008C12D0
+protected:
+    bool CauseRush;                                                      // +0x148
+};
+FABLE_STATIC_ASSERT(sizeof(CCombatAction_StrikeResponseJackOfBladesIntoRush) == 0x14c);
+#else
+
 #pragma pack(push, 1)
 class CCombatAction_StrikeResponseJackOfBladesIntoRush {
 public:
@@ -96,4 +111,5 @@ FABLE_STATIC_ASSERT(sizeof(CCombatAction_StrikeResponseJackOfBladesIntoRush) == 
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_StrikeResponseJackOfBladesIntoRush, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_StrikeResponseJackOfBladesIntoRush, CauseRush) == 0x148);
 
+#endif
 #endif // FABLE_ENGINE_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH_H

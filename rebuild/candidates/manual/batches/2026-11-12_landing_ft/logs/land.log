@@ -1,0 +1,9 @@
+addr       parity           behav  name
+008c12d0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+008c12d0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 1
+  008c12d0 RELOCATION_MATCH CCombatAction_StrikeResponseJackOfBladesIntoRush::Initialise
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCombatActionStrikeResponseJackOfBladesIntoRush_Initialise_008c12d0

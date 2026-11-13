@@ -28514,7 +28514,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008c1180	FinishAction	CCreatureAction_JackFloatUp	__thiscall	void	1	CCreatureAction_JackFloatUp *	1	yes	accepted									
 008c11f0	Initialise	CCreatureAction_JackFall	__thiscall	void	1	CCreatureAction_JackFall *	1	yes	accepted									
 008c1260	FinishAction	CCreatureAction_JackGetUp	__thiscall	void	1	CCreatureAction_JackGetUp *	1	yes	accepted									
-008c12d0	?Initialise@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ	CCombatAction_StrikeResponseJackOfBladesIntoRush	__thiscall	void	1	CCombatAction_StrikeResponseJackOfBladesIntoRush *	1	yes	accepted									
+008c12d0	Initialise	CCombatAction_StrikeResponseJackOfBladesIntoRush	__thiscall	void	1	CCombatAction_StrikeResponseJackOfBladesIntoRush *	1	yes	accepted									
 008c1600	GetValidRushPosition	CCombatAction_StrikeResponseJackOfBladesIntoRush	__thiscall	bool	2	CCombatAction_StrikeResponseJackOfBladesIntoRush *,C3DVector *	1	yes	accepted									
 008c1900	Initialise	CCombatAction_Guildmaster_HealFollowersInto	__thiscall	void	1	CCombatAction_Guildmaster_HealFollowersInto *	1	yes	accepted									
 008c19b0	FinishAction	CCombatAction_Guildmaster_HealFollowersRelease	__thiscall	void	1	CCombatAction_Guildmaster_HealFollowersRelease *	1	yes	accepted									

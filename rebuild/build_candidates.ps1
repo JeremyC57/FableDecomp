@@ -395025,6 +395025,13 @@ $catalog = @(
         TestSource = '00/83/CThingGameObject_GetWeaponTrailGraphicIndex_00839100_test.cpp'
         PassPattern = '00839100_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008c12d0'
+        Module = 'CCombatAction_StrikeResponseJackOfBladesIntoRush'
+        Source = '00/8c/CCombatActionStrikeResponseJackOfBladesIntoRush_Initialise_008c12d0.cpp'
+        TestSource = '00/8c/CCombatActionStrikeResponseJackOfBladesIntoRush_Initialise_008c12d0_test.cpp'
+        PassPattern = '008c12d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
