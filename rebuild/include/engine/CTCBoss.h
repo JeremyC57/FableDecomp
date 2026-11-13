@@ -19,6 +19,10 @@ public:
  bool IsReadyForPhaseChange()const;
 #endif
 
+#ifdef FABLE_RETAIL_CTCBOSS_SETPHASESTARTPOS
+ // Opt-in (wf20, row 0x00972990): FableWin.pdb ?SetPhaseStartPos@CTCBoss@@QAEXABVC3DVector@@@Z, inline in retail (3-dword copy at +0x22).
+ void SetPhaseStartPos(const C3DVector& pos){PhaseStartPos=pos;}
+#endif
  bool HasBossDef()const{return !PBossDef.IsNull();}
  const CBossDef& GetBossDef()const{return *PBossDef;}
 #ifdef FABLE_RETAIL_CTCBOSS_EFFECTS

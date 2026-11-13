@@ -1,0 +1,8 @@
+address	name	evidence
+00956060	?Update@CAIStateGroup_MazeTutorialBattleTeleport@@UAEXXZ	workflow wf20 (landing fr): RELOCATION_MATCH, two PDBs
+00F39730	?StartComposition@CSurfaceCompositor@@QAEX_N@Z	workflow wf20 (landing fr): RELOCATION_MATCH, two PDBs
+00523CF0	?RuntimeSaveGamePersistentEntitiesInLoadedMaps@CThingManager@@AAEX_N@Z	workflow wf20 (landing fr): RELOCATION_MATCH, two PDBs
+00918B90	?Update@CAIStateGroup_Gaze@@MAEXXZ	workflow wf20 (landing fr): RELOCATION_MATCH, two PDBs
+00972990	?OnActivate@CAIStateGroup_JackOfBladesStage1@@UAEXXZ	workflow wf20 (landing fr): RELOCATION_MATCH, two PDBs
+006C8E90	??RCThingFilter_IsEligibleWitness@@QBE_NABVCThing@@@Z	workflow wf20 (landing fr): RELOCATION_MATCH, two PDBs
+0049BE90	?IsParticleCollidingAt@CParticleEnvironmentInteraction@@UBE_NABVC3DVector@@0_NAAV2@2AA_N@Z	workflow wf20 (landing fr): RELOCATION_MATCH, two PDBs

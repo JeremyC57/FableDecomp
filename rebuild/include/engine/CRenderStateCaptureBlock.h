@@ -16,7 +16,13 @@ class CRenderStateCaptureBlock {
 public:
     CRenderStateCaptureBlock();
     ~CRenderStateCaptureBlock();
+#ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_CAPTURE_INLINE
+    // Retail opt-in (wf20 row 0x00F39730 CSurfaceCompositor::StartComposition): ?Capture@CRenderStateCaptureBlock@@QAEXXZ is FableWin-only
+    // (no Ego_r / retail copy); 0x00F39739 stores Open = true and expands StartCaptureBlock on StateManager in place.
+    void Capture() { Open = true; StateManager->StartCaptureBlock(this); }
+#else
     void Capture();
+#endif
     void Restore();
     static void __fastcall SetStateManager(CRenderStateManager* manager);
 private:

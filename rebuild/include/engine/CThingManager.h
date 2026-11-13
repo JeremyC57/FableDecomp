@@ -13,6 +13,9 @@
 class CMainGameComponent; class CPersistContext; class CThing; class CGameDefinitionManager;
 class CWorld; class CWorldMap; class CPlayerManager; class CNavigatorManager; class CEnvironment;
 class CMemoryDataInputStream; class CASuspendableProcess;
+#ifdef FABLE_RETAIL_CTHINGMANAGER_RUNTIMESAVE
+class CMemoryDataOutputStream;                                  // row 0x00523CF0: SaveEntitiesBinary's parameter
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_ACCESSORS
 class CThingSearchTools;                                        // chunk 765
 #endif
@@ -36,6 +39,16 @@ public:
 #ifdef FABLE_RETAIL_CTHINGMANAGER_NPCNAMES
     // Retail opt-in (Codex pass18): Ego_r0052d760/FableWin01d45200; public original member.
     void SetNameForThing(unsigned __int64 uid,const CWideString& new_name);
+#endif
+#ifdef FABLE_RETAIL_CTHINGMANAGER_RUNTIMESAVE
+    // Opt-in (row 0x00523CF0): Ego_r.pdb ?SaveEntitiesToScript@CThingManager@@QAEXAAVCCharString@@JABV?$vector@PAVCThing@@...AAV?$vector@VCCharString@@...
+    // (public, 0x00521EB0) and ?SaveEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataOutputStream@@J... (public, 0x00522160). Declarations only.
+    void SaveEntitiesToScript(CCharString&,long,const std::vector<CThing*>&,std::vector<CCharString>&);          // 0x00521EB0
+    void SaveEntitiesBinary(CMemoryDataOutputStream&,long,const std::vector<CThing*>&,std::vector<CCharString>&); // 0x00522160
+private:
+    // Ego_r.pdb ?RuntimeSaveGamePersistentEntitiesInLoadedMaps@CThingManager@@AAEX_N@Z (private, 0x00523CF0).
+    void RuntimeSaveGamePersistentEntitiesInLoadedMaps(bool);           // 0x00523CF0
+public:
 #endif
     void InitThingTypes();                                              // 0x00522A20 (Ego_r.pdb ?InitThingTypes@CThingManager@@QAEXXZ)
 #ifdef FABLE_RETAIL_CTHINGMANAGER_PEEKWORLD

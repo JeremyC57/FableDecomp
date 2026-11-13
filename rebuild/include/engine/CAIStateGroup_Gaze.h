@@ -15,6 +15,12 @@ class CAIStateGroup_Gaze : public CAIStateGroupBase {
 protected:
     virtual CThingBuilding* GetOwner();                                     // slot 14 (+0x38)
     CThingGameObject* FindFreeParticularGazePos(long gazeType, bool inside); // 0x00918640
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GAZE_UPDATE
+    // Retail opt-in (wf20, row 0x00918B90): ?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ (0x00918880, protected)
+    // and ?Update@CAIStateGroup_Gaze@@MAEXXZ (vtable 0x0128FDEC slot 12, protected virtual).
+    CThingGameObject* FindFreeGazePos();                                     // 0x00918880
+    virtual void Update();                                                   // slot 12 (+0x30)
+#endif
 public:
     CIntelligentPointer<CThingGameObject> GazeMarker;                        // +0x14
     float ChanceOfRunning;                                                   // +0x1c

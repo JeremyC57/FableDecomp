@@ -170,6 +170,15 @@ public:
     friend class CAIStateGroup_SeekPerceivedThing;
 #endif
     bool IsAwarenessOfThingDirect() const;
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_THINGFLAGS
+    // Nested opt-in (wf20, row 0x006C8E90 CThingFilter_IsEligibleWitness::operator()): FableWin.pdb inline accessors
+    // ?IsThingIgnoreFOVLineOfSight / ?IsThingSmelt / ?IsThingHeard@CTCPerceiveThing@@QBE_NXZ (no Ego_r / Fable.exe copy: inlined in
+    // place, `mov al,[esi+2Fh]` / `[esi+31h]` / `[esi+32h]`), and ?GetSightRadius@CTCPerceiveThing@@QBEMXZ out of line at 0x007448F0.
+    bool IsThingIgnoreFOVLineOfSight() const { return IgnoreFOVLineOfSight; }
+    bool IsThingSmelt() const { return Smelt; }
+    bool IsThingHeard() const { return Heard; }
+    float GetSightRadius() const;                                        // 0x007448F0
+#endif
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_RADII
     // Nested opt-in (agentNF10, row 0x00744ED0 OnCreate): Ego_r.pdb / FableWin.pdb ?SetSoundRadius / SetSmellRadius / SetSightRadius /
     // SetExtendedSightRadius / SetGiveUpChaseRadius@CTCPerceiveThing@@QAEXM@Z (landed 0x00744470 / 0x007444A0 / 0x00744540 / 0x00744500 /

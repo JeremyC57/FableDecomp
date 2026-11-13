@@ -139,7 +139,22 @@ template<class I,class T> inline void fill(I begin,I last,const T& x) { I first=
 template<class I,class T> inline void fill(I first,I last,const T& x) { for(;first!=last;++first) *first=x; }
 #endif
 template<class I,class N,class T> inline I fill_n(I first,N n,const T& x) { for(;n>0;--n,++first) *first=x;return first; }
+#ifdef FABLE_RETAIL_STLP_VECTOR_RANGE_INSERT
+// (row 0x00523CF0 opt-in) STLport 4.6 _algobase.h __copy for input iterators (the tree-iterator copy of _M_range_insert), and
+// declarations of the _iterator_base.h distance / advance defined further down.
+template<class _InputIterator> inline ptrdiff_t distance(const _InputIterator& first,const _InputIterator& last);
+template<class _InputIterator,class _Distance> inline void advance(_InputIterator& i,_Distance n);
+template<class I,class O,class D> inline O __copy(I first,I last,O result,const input_iterator_tag&,D*) {
+    for(;first!=last;++result,++first) *result=*first; return result;
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_COPY_NOINLINE
+// Per-TU opt-in (row 0x00956060 CAIStateGroup_MazeTutorialBattleTeleport::Update): that TU calls the random-access __copy COMDAT
+// (0x0074CA20, landed) from all three inline vector::erase bodies instead of expanding it; the body stays visible, kept out of line.
+template<class I,class O,class D> __declspec(noinline) O __fastcall __copy(I first,I last,O result,const random_access_iterator_tag&,D*) {
+#else
 template<class I,class O,class D> inline O __fastcall __copy(I first,I last,O result,const random_access_iterator_tag&,D*) {
+#endif
     for(D n=last-first;n>0;--n) { *result=*first;++first;++result; } return result;
 }
 inline void* __copy_trivial(const void* first,const void* last,void* result) {
@@ -578,6 +593,48 @@ public:
     void resize(size_type n) { resize(n,_Tp()); }
 #endif
     void _M_fill_insert(iterator position,size_type n,const _Tp& x);
+#ifdef FABLE_RETAIL_STLP_VECTOR_RANGE_INSERT
+    // Per-TU opt-in (row 0x00523CF0, for the same-TU CThingManager::SaveEntitiesToScript / SaveEntitiesBinary bodies): STLport 4.6
+    // _vector.h `insert(iterator __pos, _InputIterator __first, _InputIterator __last)` -> _M_insert_dispatch -> _M_range_insert(...,
+    // forward_iterator_tag) (stl/_vector.c), the body visible to the TU but kept out of line as in retail
+    // (vector<CCharString>::_M_range_insert 0x0052B6A0, landed). VC7.1 then knows it keeps no address of the vector.
+    template<class _InputIterator> void insert(iterator position,_InputIterator first,_InputIterator last) {
+        _M_range_insert(position,first,last,forward_iterator_tag());
+    }
+    template<class _ForwardIterator> __declspec(noinline) void _M_range_insert(iterator position,_ForwardIterator first,_ForwardIterator last,const forward_iterator_tag&) {
+        if(first!=last) {
+            size_type n=distance(first,last);
+            if(size_type(this->_M_end_of_storage._M_data-this->_M_finish)>=n) {
+                const size_type elemsAfter=this->_M_finish-position;
+                iterator oldFinish=this->_M_finish;
+                if(elemsAfter>n) {
+                    __uninitialized_copy(this->_M_finish-n,this->_M_finish,this->_M_finish,_IsPODType());
+                    this->_M_finish+=n;
+                    __copy_backward_ptrs(position,oldFinish-n,oldFinish,_IsPODType());
+                    __copy(first,last,position,input_iterator_tag(),(ptrdiff_t*)0);
+                } else {
+                    _ForwardIterator mid=first;
+                    advance(mid,elemsAfter);
+                    __uninitialized_copy(mid,last,this->_M_finish,_IsPODType());
+                    this->_M_finish+=n-elemsAfter;
+                    __uninitialized_copy(position,oldFinish,this->_M_finish,_IsPODType());
+                    this->_M_finish+=elemsAfter;
+                    __copy(first,mid,position,input_iterator_tag(),(ptrdiff_t*)0);
+                }
+            } else {
+                const size_type oldSize=size();
+                const size_type len=oldSize+(max)(oldSize,n);
+                iterator newStart=this->_M_end_of_storage.allocate(len);
+                iterator newFinish=newStart;
+                newFinish=__uninitialized_copy(this->_M_start,position,newStart,_IsPODType());
+                newFinish=__uninitialized_copy(first,last,newFinish,_IsPODType());
+                newFinish=__uninitialized_copy(position,this->_M_finish,newFinish,_IsPODType());
+                _M_clear();
+                _M_set(newStart,newFinish,newStart+len);
+            }
+        }
+    }
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR
     // Retail branch (chunk 728, row 0x006D2BD0 CTCWife::OnSerialise): STLport 4.6 vector::reserve (stl/_vector.c), out of line in
     // retail (reserve<CCharString> 0x004BA7A0, reserve<pair<CCharString,long> > 0x006D4680). A declaration only.

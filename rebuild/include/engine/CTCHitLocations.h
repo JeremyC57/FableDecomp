@@ -65,6 +65,12 @@ public:
     // equals `name`; no PDB carries the name: the established landed spelling, descriptive). Declaration only.
     NHitLocations::CHitLocation* GetPHitLocationFromName(const CCharString& name);   // 0x00815820
 #endif
+#ifdef FABLE_RETAIL_CTCHITLOCATIONS_WITHDEFNAME
+    // Retail opt-in (wf20, row 0x00972990): 0x00815820 under its PDB spelling (Ego_r.pdb 0x0080E4C0 / FableWin.pdb 0x024E6630
+    // ?GetPHitLocationWithDefName@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVCCharString@@@Z): the first hit location
+    // whose def's instantiation name equals the argument. Supersedes the descriptive GetPHitLocationFromName (NAME_FIXES.tsv).
+    NHitLocations::CHitLocation* GetPHitLocationWithDefName(const CCharString& defName);   // 0x00815820
+#endif
 private:
     unsigned char HitLocations[0xC];                                  // +0x0C vector<pair<NHitLocations::CHitLocation,long> >
     NHitLocations::CHitLocation* PDefaultHitLocation;                 // +0x18

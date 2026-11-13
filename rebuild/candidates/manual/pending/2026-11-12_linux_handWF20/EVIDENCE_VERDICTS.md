@@ -1,0 +1,49 @@
+# Workflow wf20 verdicts (two independent Opus lenses per row: mechanical + evidence; one Opus repair pass)
+
+## 00956060 -- VERIFIED, author attempts 1
+
+- What made it match: Moving onto the shared headers (expanded GetTC, GetSubDef<CMazeBattleDef> with its body visible but noinline, remove_if with not1(CVectorFilter_FurtherFromPointThan), GFRandom, the erase(remove_if, end) spelling), then marking STLport's random-access __copy as noinline. Retail calls 0x0074CA20 from all three inline erase bodies.
+
+## 00f39730 -- VERIFIED, author attempts 1
+
+- What made it match: Source unchanged from the matched version: a full port onto the shared headers with the real callee identities.
+
+## 00523cf0 -- VERIFIED, author attempts 1
+
+- What made it match: unchanged from the author's version: the row was ported onto the shared headers; the real bodies of the same-file callees are visible in the file but kept out of line, which matches retail's inlining; and things.clear() comes right after construction
+
+## 00918b90 -- VERIFIED, author attempts 1
+
+- What made it match: The repair changed only a comment in the source and the test model, so the row still grades RELOCATION_MATCH (also with LANDVERIFY_STRICT_HEADERS=1), and vt.py PASS. addmatch.py rewrote payload.json and oracle.tsv, and NOTES.md has a repair entry.
+
+## 00972990 -- VERIFIED, author attempts 1
+
+- What made it match: The byte match is unchanged: the row only respells the callee, which the grader masks as a relocation, and drops an overlay the source did not use.
+
+## 006c8e90 -- VERIFIED, author attempts 2
+
+- What made it match: The source was unchanged apart from comments, so the earlier match still holds. Files: /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/wf20/006c8e90/006c8e90.cpp, /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/wf20/006c8e90/NAME_FIXES.tsv
+
+## 0049be90 -- VERIFIED, author attempts 1
+
+- What made it match: The source was not changed for the repair; it is the same as in the original match notes. Only the behaviour test was made stronger.
+
+## 00839100 -- MATCH_WITH_OPEN_ISSUES, author attempts 1
+
+- What made it match: The row uses the real STLport map types from fable_map.h with the real out-of-line bodies (noinline iterator operator--, noinline const member-template find), in place of the invented tree view. The caller bytes are unchanged (RELOCATION_MATCH). Both callee bodies now byte-match retail at their own addresses.
+- OPEN at hand-back: CWeaponDef::FlourishSpecialWeaponTrail is a CWeaponTrailGraphicSet {long Attack; long Knockdown;} in Ego_r.pdb (struct_layouts_egor.tsv: CWeaponDef +132 CWeaponTrailGraphicSet FlourishSpecialWeaponTrail), but the row reads it as `FlourishSpecialWeaponTrail[1]` / `[0]` through the header's `long[2]` stand-in. The same overlay opt-in FABLE_RETAIL_CWEAPONDEF_WEAPONTRAILS already declares CWeaponTrailGraphicSet, so the member should be retyped under that opt-in and read as `.Knockdown` / `.Attack` (the other landed CWeaponDef rows keep the long[2] spelling when the opt-in is off).
+
+## 00ad9f10 -- MATCH_WITH_OPEN_ISSUES, author attempts 3
+
+- What made it match: The source code is unchanged: only comments were added, and it still grades RELOCATION_MATCH with /Gr and the hdr overlay. InsertBlock's real body stays visible under auto_inline(off), and the folded `space < 0` exit keeps retail's list::size inline pattern.
+- OPEN at hand-back: LABELS.tsv says that no landed source uses 0x00ADB570 and calls it a manifest label only. That is false. rebuild/src/compiled/00/ad/CGuiControlTreePane_SortTreeRecursively_00adb570.cpp is tracked in the git index and functions.tsv grades it MATCH. Its landed spelling is `int __fastcall SortTreeRecursively(Tree*)`, which the author's own evidence proves wrong: the PDB symbol is ?size@?$list@VCVertexGroupBlock...@@QBEIXZ, xref.py shows the only callers are the three AddBlocks call sites, and SortTreeRecursively is 189 bytes in FableWin. So this correction belongs in NAME_FIXES.tsv (address, correct symbol, both sources), not only in LABELS.tsv.
+- OPEN at hand-back: The row names its compiler-emitted callee 0x00A96DA0 (call at 0x00ADA1A3, which destroys the CVertexGroupBlock temporary after the push_back at 0x00ADA19A) as CVertexGroupBlock::~CVertexGroupBlock. The landed row at that address still uses the address-suffixed placeholder CEntryListBuffer_00a96da0::~CEntryListBuffer_00a96da0 (rebuild/src/compiled/00/a9/CEntryListBuffer00a96da0_CEntryListBuffer00a96da0_00a96da0.cpp). ??1CVertexGroupBlock@@QAE@XZ exists in both Ego_r and FableWin, and the labels_chunk274, labels_chunk310 and labels_manifest_sync files all give this name. The hand-back carries no NAME_FIXES.tsv entry for it, which leaves two names for one address.
+- OPEN at hand-back: The hdr/ overlay still carries opt-ins that the final 00ad9f10_match.cpp never defines: FABLE_RETAIL_CVERTEXGROUPBLOCK_HASGROUP_DECL, FABLE_RETAIL_STLP_SORT2_BODY(+_NOINLINE), FABLE_RETAIL_STLP_LIST_ASSIGN_BODY and FABLE_RETAIL_STLP_LIST_POPBACK_NOINLINE. These dead attempt leftovers would be merged into the shared headers on landing, so they should be pruned from hdr/ and from hdr/README.md before landing.
+- OPEN at hand-back: The in-class HasMoreBlocks() body (PDB ?HasMoreBlocks@CVertexGroupBlockOptimiser@@ABE_NXZ, out of line in Ego_r at 0x00c5be00) is a real callee body carried in the file with no justifying comment. The file should state the retail fact that justifies it: it has no out-of-line TLC copy and is inlined at the top of AddBlocks (the remaining-byte loop after 0x00AD9F70).
+
+## 008c12d0 -- MATCH_WITH_OPEN_ISSUES, author attempts 1
+
+- What made it match: The byte match survived moving onto the shared headers unchanged. The only extra step was defining the CIntelligentPointer opt-ins before CTCBoss.h first includes CIntelligentPointer.h. Source: /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/wf20/008c12d0/008c12d0.cpp; payload.json and oracle.tsv were rewritten by addmatch.py.
+- OPEN at hand-back: The row calls GetTC((ETCInterfaceType)0xad, &boss) with a bare cast, but rebuild/include/engine/ETCInterfaceType.h (Ego_r original enum names) already defines TCI_BOSS = 173 and other landed rows use the TCI_ names. The row should write GetTC(TCI_BOSS, &boss), which leaves the bytes unchanged.
+- OPEN at hand-back: The test does not tell the alive check apart. In case e, the dead hitter at (0,5,0) and the point of hit at (5,0,0) both give RESPONSE_GENERIC_HIT_FRONT_RUSH, so changing `if (w.hitterPresent && !w.hitterDead)` to `if (w.hitterPresent)` still prints PASS ($W/verify_evidence/mut2.cpp). The IS_THING_ALIVE branch is therefore untested. A case is needed where a dead hitter sits behind the creature and the point of hit is in front, or the other way round.
+

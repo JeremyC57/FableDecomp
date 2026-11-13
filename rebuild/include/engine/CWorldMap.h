@@ -42,6 +42,10 @@ public:
     virtual void ForceLoad(long);
     virtual void ForceUnload(long);
     virtual bool IsMapLoaded(long) const;
+#ifdef FABLE_RETAIL_CWORLDMAP_GETNOMAPS
+    // Opt-in (row 0x00523CF0): Ego_r.pdb / FableWin.pdb ?GetNoMaps@CWorldMap@@QBEJXZ, inline in retail (`add eax,20h` = &Maps, then size()).
+    long GetNoMaps() const { return Maps.size(); }
+#endif
     virtual bool IsMapUsed(long) const;
     virtual long GetGranularity() const;
     virtual const C2DBoxI& GetDimensions() const;

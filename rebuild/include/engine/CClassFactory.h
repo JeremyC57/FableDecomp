@@ -28,7 +28,13 @@ protected:
     std::vector<CClassTypeInfo> ClassTypeInfo;                          // +4 (header wave 2026-11-03: typed for row 0x00522A20, ClassTypeInfo.size())
     unsigned long MaxClassTypeID;
     unsigned long NoAllocatedClasses;
+#ifdef FABLE_RETAIL_CCLASSFACTORY_CLASSLIST
+    // Opt-in (row 0x00523CF0 CThingManager::RuntimeSaveGamePersistentEntitiesInLoadedMaps): Ego_r.pdb ClassList is std::list<CClass*>
+    // (STLport 4.6: one node pointer, same 4 bytes); the row walks it (`mov ecx,[edi+18h] ; mov eax,[ecx]`).
+    std::list<CClass*> ClassList;                                       // +18
+#else
     unsigned long ClassList[1]; // std::list<CClass*> +18
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CClassFactory)==28);
 #else

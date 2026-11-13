@@ -8,6 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MAZEBASE
+// Retail opt-in (row 0x00956060): the polymorphic CAIStateGroup_MazeBase over CAIStateGroupBase (Ego_r.pdb members).
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+class CAIStateGroup_MazeBase : public CAIStateGroupBase {
+protected:
+    CIntelligentPointer<CThing> PTargetThing;                            // +0x14
+    long EnemyKnockDownFrame;                                            // +0x1c
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeBase) == 0x20);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_MazeBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -25,4 +37,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeBase, PTargetThing) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeBase, EnemyKnockDownFrame) == 0x1c);
 
+#endif // opt-in
 #endif // FABLE_ENGINE_CAISTATEGROUP_MAZEBASE_H

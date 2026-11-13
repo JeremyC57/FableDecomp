@@ -8,6 +8,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MAZETUTORIALBATTLETELEPORT
+// Retail opt-in (row 0x00956060): polymorphic class over CAIStateGroup_MazeBase (Ego_r.pdb members; vtable 0x0128C2D8,
+// slot 12 ?Update@CAIStateGroup_MazeTutorialBattleTeleport@@UAEXXZ 0x00956060).
+#define FABLE_RETAIL_CAISTATEGROUP_MAZEBASE
+#include "engine/_quarantine/CAIStateGroup_MazeBase.h"
+#include "engine/C3DVector.h"
+class CAIStateGroup_MazeTutorialBattleTeleport : public CAIStateGroup_MazeBase {
+public:
+    virtual void Update();                                               // slot 12 0x00956060
+protected:
+    long FrameOfLastTeleport;                                            // +0x20
+    C3DVector LastTeleportPos;                                           // +0x24
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeTutorialBattleTeleport) == 0x30);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_MazeTutorialBattleTeleport {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -32,4 +47,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeTutorialBattleTeleport, LastTelep
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeTutorialBattleTeleport, LastTeleportPos_Y) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeTutorialBattleTeleport, LastTeleportPos_Z) == 0x2c);
 
+#endif // opt-in
 #endif // FABLE_ENGINE_CAISTATEGROUP_MAZETUTORIALBATTLETELEPORT_H

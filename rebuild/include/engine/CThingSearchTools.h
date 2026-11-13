@@ -274,6 +274,11 @@ public:
     template<class T,class Container,class Filter>
     void GetAllThingsInRoughArea(const C2DBoxI&,const Filter&,Container&) const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTROUGH
+    // Opt-in (wf20, row 0x00972990): ??$GetPFirstThingInRoughArea@VCThingFilter_HasDefGlobalIndex@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV...@PAPAV...@@Z
+    // (retail COMDAT 0x007FCEF0), declaration only.
+    template<class Filter,class T> bool GetPFirstThingInRoughArea(const C2DBoxI&,const Filter&,T**) const;
+#endif
 #if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA_BODY) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA)
     // Retail opt-in (chunk Q23, row 0x0063F7C0, the CFilter_Bind3<CThingFilter_IsNot, CThingFilter_HasNavigationInformation,
     // CThingFilter_OverlappingBoundingBox> / CThingFindNavigationLayerAt instance): the ForEachInRoughArea<T,Filter,Proc> body with the
@@ -485,6 +490,45 @@ bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area,const Filte
   }
  }
  maps.clear();*out=best;return best!=0;
+}
+#endif
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTROUGH_BODY
+// Opt-in (wf20, row 0x00972990 CAIStateGroup_JackOfBladesStage1::OnActivate): the GetPFirstThingInRoughArea<Filter,T> body (retail
+// instance 0x007FCEF0 <CThingFilter_HasDefGlobalIndex,CThing>, landed: the maps under the area 0x0049C6F0, the search stamp bump, per
+// map the local area 0x0049C700, per mapwho layer the scaled cells, every cell's node list; the first stamped thing of type T that
+// passes the filter goes through the out pointer and returns true with the scratch list left as is; else AreaMaps is cleared and
+// false), a same-TU noinline template like GetPBestThingInRoughArea above: retail's caller then knows the out pointer's target and
+// the filter do not escape (the shield local is re-read after the intelligent pointer's base ctor; the filter temporary shares the
+// string temporaries' frame word). Needs FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY (the statics and protected helpers).
+template<class Filter,class T>
+__declspec(noinline) bool CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area,const Filter& filter,T** out)const{
+ std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
+ GetAllThingMapsInArea(area,maps);
+ ++NoLookups;NoThingsScanned=0;++SearchID;
+ for(std::vector<NThingMap::CThingMap*>::const_iterator it=maps.begin();it!=maps.end();++it){
+  const NThingMap::CThingMap& map=**it;
+  C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
+  for(long layer=0;layer<NThingMap::MaxLayers;++layer){
+   long shift=NThingMap::LayerInfo[layer].ScaleShift;
+   C2DBoxI cells(local.TLX>>shift,local.TLY>>shift,((local.BRX-1)>>shift)+1,((local.BRY-1)>>shift)+1);
+   if(cells.BRX-cells.TLX==0||cells.BRY-cells.TLY==0)continue;
+   for(long y=cells.TLY;y<cells.BRY;++y){
+    const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+    for(long x=cells.TLX;x<cells.BRX;++x,++cell){
+     for(const NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext){
+      CTCMapwho* who=node->PMapwho;
+      if(who->GetSearchID()<SearchID){
+       who->SetSearchID(SearchID);
+       CThing& thing=who->GetParentThing();
+       unsigned long mask=T::StatGetTypeFlags();
+       if((thing.GetTypeFlags()&mask)==mask&&filter(static_cast<const T&>(thing))){*out=static_cast<T*>(&thing);return true;}
+      }
+     }
+    }
+   }
+  }
+ }
+ maps.clear();return false;
 }
 #endif
 

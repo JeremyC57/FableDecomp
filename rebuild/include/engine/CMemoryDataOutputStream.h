@@ -19,6 +19,10 @@ public:
     virtual void Write(const void* data, long size);
     unsigned long GetLength() const;                         // 0x00994B40
     const void* PeekData() const;                            // 0x00995E70
+#ifdef FABLE_RETAIL_CMEMORYDATAOUTPUTSTREAM_RESERVESIZE
+    // Opt-in (row 0x00523CF0): Ego_r.pdb ?ReserveSize@CMemoryDataOutputStream@@QAEXK@Z (0x00996BC0). Declaration only.
+    void ReserveSize(unsigned long);                         // 0x00996BC0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CMemoryDataOutputStream) == 0x18);
 #endif // FABLE_ENGINE_CMEMORYDATAOUTPUTSTREAM_H

@@ -1,0 +1,806 @@
+==== 0x00956060
+22:44 00956060 grade v1.cpp SRC_FAIL -- port onto shared headers + overlay opt-ins
+22:44 00956060 grade v1.cpp DIFFER(830v786) hunks=11 -- port + nav opt-ins
+22:44 00956060 grade v1.cpp RELOCATION_MATCH -- __copy noinline opt-in
+22:45 00956060 grade 00956060.cpp RELOCATION_MATCH -- final source strict
+23:43 00956060 grade src.cpp RELOCATION_MATCH -- 
+23:43 00956060 grade src.cpp SRC_FAIL -- 
+23:44 00956060 grade src.cpp DIFFER(830v786) hunks=11 -- 
+23:44 00956060 grade src.cpp SRC_FAIL -- 
+23:44 00956060 grade src.cpp SRC_FAIL -- 
+23:44 00956060 grade src.cpp SRC_FAIL -- 
+00:56 00956060 grade _land_src.cpp RELOCATION_MATCH -- merged fable_containers.h
+
+==== 0x00F39730
+22:46 00f39730 grade v1.cpp RELOCATION_MATCH -- port onto shared headers; 4-bool vs 1-bool colourwrite
+22:46 00f39730 grade StartComposition_00f39730.cpp RELOCATION_MATCH -- final source, strict headers
+23:44 00f39730 grade src.cpp RELOCATION_MATCH -- 
+23:44 00f39730 grade src.cpp SRC_FAIL -- 
+23:45 00f39730 grade src.cpp DIFFER(752v796) hunks=19 -- 
+23:45 00f39730 grade src.cpp SRC_FAIL -- 
+00:10 00f39730 grade StartComposition_00f39730.cpp RELOCATION_MATCH -- repair: NAME_FIXES rows for 0xA0AA80 / 0xA0AAA0 old spellings (source unchanged)
+00:11 00f39730 grade StartComposition_00f39730.cpp RELOCATION_MATCH -- repair: strict headers regrade
+00:22 00f39730 grade src.cpp RELOCATION_MATCH -- 
+00:22 00f39730 grade src.cpp SRC_FAIL -- 
+00:22 00f39730 grade src.cpp DIFFER(752v796) hunks=19 -- 
+00:22 00f39730 grade src.cpp SRC_FAIL -- 
+
+==== 0x00523CF0
+22:49 00523cf0 grade v1.cpp SRC_FAIL -- port to shared headers
+22:49 00523cf0 grade v1.cpp SRC_FAIL -- port to shared headers (no fable_game.h)
+22:49 00523cf0 grade v1.cpp SRC_FAIL -- port + ReserveSize
+22:50 00523cf0 grade v1.cpp DIFFER(706v799) hunks=37 -- port + CMapInfo
+22:50 00523cf0 grade v1.cpp DIFFER(706v799) hunks=37 -- regrade for full diff
+22:51 00523cf0 grade p1.cpp DIFFER(631v799) hunks=49 -- PROBE: saver bodies visible (stand-in) -> fold?; p2 + hand expanded SaveData
+22:51 00523cf0 grade p2.cpp DIFFER(795v799) hunks=36 -- PROBE: saver bodies visible (stand-in) -> fold?; p2 + hand expanded SaveData
+22:51 00523cf0 grade p3.cpp DIFFER(795v799) hunks=36 -- PROBE p2 + resize out of line
+22:51 00523cf0 grade p4.cpp DIFFER(744v799) hunks=48 -- PROBE p2 + resize(n) decl only
+22:52 00523cf0 grade v2.cpp SRC_FAIL -- real same-TU saver bodies (auto_inline off) + resize(n) decl + hand SaveData
+22:53 00523cf0 grade v2.cpp SRC_FAIL -- real saver bodies: compile fixes
+22:54 00523cf0 grade v2.cpp DIFFER(804v799) hunks=20 -- real saver bodies: CThing LOADSINGLE+MOREACCESS
+22:55 00523cf0 grade v3.cpp SRC_FAIL -- real SetGamePersistentSaveData body in TU (auto-inline)
+22:55 00523cf0 grade v3.cpp DIFFER(797v799) hunks=18 -- real SetGamePersistentSaveData body in TU (auto-inline) + CACOMPRESSOR
+22:55 00523cf0 grade v4.cpp DIFFER(801v799) hunks=5 -- named empty script local
+22:56 00523cf0 grade v5.cpp DIFFER(797v799) hunks=11 -- names early / if-block / heroOnly local
+22:56 00523cf0 grade v6.cpp DIFFER(801v799) hunks=5 -- names early / if-block / heroOnly local
+22:56 00523cf0 grade v7.cpp DIFFER(801v799) hunks=5 -- names early / if-block / heroOnly local
+22:56 00523cf0 grade v4.cpp DIFFER(803v799) hunks=7 /Oa -- flag /Oa
+22:56 00523cf0 grade v4.cpp DIFFER(801v799) hunks=5 /GS -- flag /GS
+22:56 00523cf0 grade v4.cpp DIFFER(801v799) hunks=5 /Ow -- flag /Ow
+22:57 00523cf0 grade p5.cpp SRC_FAIL -- PROBE destroy layering: AUGMENTATION_PARTICLES forceinline / DESTROY_AUX_NOINLINE
+22:57 00523cf0 grade p6.cpp DIFFER(795v799) hunks=32 -- PROBE destroy layering: AUGMENTATION_PARTICLES forceinline / DESTROY_AUX_NOINLINE
+22:57 00523cf0 grade v8.cpp DIFFER(801v799) hunks=7 -- vectors declared at loop top (things / both / names)
+22:57 00523cf0 grade v9.cpp DIFFER(835v799) hunks=22 -- vectors declared at loop top (things / both / names)
+22:57 00523cf0 grade v10.cpp DIFFER(833v799) hunks=16 -- vectors declared at loop top (things / both / names)
+22:57 00523cf0 grade p7.cpp SRC_FAIL -- PROBE forceinline ~vector
+22:58 00523cf0 grade p7.cpp DIFFER(801v799) hunks=5 -- PROBE forceinline ~vector
+22:58 00523cf0 grade v11.cpp DIFFER(801v799) hunks=5 -- CArray for things / names / both
+22:58 00523cf0 grade v12.cpp DIFFER(801v799) hunks=5 -- CArray for things / names / both
+22:58 00523cf0 grade v13.cpp DIFFER(801v799) hunks=5 -- CArray for things / names / both
+22:58 00523cf0 grade v14.cpp DIFFER(801v799) hunks=5 -- retail function order / noinline savers / SaveData first
+22:59 00523cf0 grade v15.cpp DIFFER(801v799) hunks=5 -- retail function order / noinline savers / SaveData first
+22:59 00523cf0 grade v16.cpp DIFFER(801v799) hunks=5 -- retail function order / noinline savers / SaveData first
+22:59 00523cf0 grade v17.cpp SRC_FAIL -- hero typed CThingPlayerCreature* / implicit upcast CThing*
+22:59 00523cf0 grade v18.cpp SRC_FAIL -- hero typed CThingPlayerCreature* / implicit upcast CThing*
+22:59 00523cf0 grade v17.cpp SRC_FAIL -- hero typed CThingPlayerCreature* / implicit upcast CThing* (retail class headers)
+22:59 00523cf0 grade v18.cpp SRC_FAIL -- hero typed CThingPlayerCreature* / implicit upcast CThing* (retail class headers)
+23:00 00523cf0 grade v17.cpp DIFFER(801v799) hunks=7 -- hero typed CThingPlayerCreature* / implicit upcast CThing* (+physical)
+23:00 00523cf0 grade v18.cpp DIFFER(801v799) hunks=5 -- hero typed CThingPlayerCreature* / implicit upcast CThing* (+physical)
+23:00 00523cf0 grade v19.cpp DIFFER(787v799) hunks=12 -- inverted hero test / iterator outside for / static_cast + !=0
+23:00 00523cf0 grade v20.cpp DIFFER(801v799) hunks=5 -- inverted hero test / iterator outside for / static_cast + !=0
+23:00 00523cf0 grade v21.cpp DIFFER(801v799) hunks=5 -- inverted hero test / iterator outside for / static_cast + !=0
+23:00 00523cf0 grade p8.cpp DIFFER(799v799) hunks=4 -- PROBE: visible noinline range insert (names no escape?)
+23:01 00523cf0 grade p9.cpp DIFFER(813v799) hunks=42 -- PROBE: overflow decl only
+23:01 00523cf0 grade p10.cpp DIFFER(799v799) hunks=4 -- PROBE: visible range insert v2 (push_back)
+23:02 00523cf0 grade p11.cpp DIFFER(799v799) hunks=6 -- PROBE: hero CThingPlayerCreature* + visible range insert
+23:03 00523cf0 grade p12.cpp DIFFER(799v799) hunks=18 -- IsAlive / !=false / SGS before names
+23:03 00523cf0 grade p13.cpp DIFFER(799v799) hunks=4 -- IsAlive / !=false / SGS before names
+23:03 00523cf0 grade p14.cpp DIFFER(799v799) hunks=6 -- IsAlive / !=false / SGS before names
+23:03 00523cf0 grade p10.cpp DIFFER(799v799) hunks=4 -- PROBE: QFE 4035 compiler
+23:03 00523cf0 grade p15.cpp DIFFER(799v799) hunks=4 -- copy-init / explicit allocator / hero insert(end)
+23:03 00523cf0 grade p16.cpp DIFFER(799v799) hunks=4 -- copy-init / explicit allocator / hero insert(end)
+23:03 00523cf0 grade p17.cpp DIFFER(783v799) hunks=24 -- copy-init / explicit allocator / hero insert(end)
+23:04 00523cf0 grade v22.cpp SRC_FAIL -- real STLport _M_range_insert visible noinline (header opt-in)
+23:04 00523cf0 grade v22.cpp DIFFER(799v799) hunks=4 -- real STLport _M_range_insert visible noinline (header opt-in)
+23:04 00523cf0 grade v23.cpp DIFFER(799v799) hunks=4 -- overflow<true_type> noinline
+23:05 00523cf0 grade v24.cpp DIFFER(799v799) hunks=4 -- const_iterator / iterator before hero test / nested hero ifs
+23:05 00523cf0 grade v25.cpp DIFFER(786v799) hunks=29 -- const_iterator / iterator before hero test / nested hero ifs
+23:05 00523cf0 grade v26.cpp DIFFER(799v799) hunks=4 -- const_iterator / iterator before hero test / nested hero ifs
+23:06 00523cf0 grade p20.cpp DIFFER(726v799) hunks=50 -- PROBE which use of things decides store order: no hero push / no list push / no savers
+23:06 00523cf0 grade p21.cpp DIFFER(690v799) hunks=47 -- PROBE which use of things decides store order: no hero push / no list push / no savers
+23:06 00523cf0 grade p22.cpp DIFFER(690v799) hunks=34 -- PROBE which use of things decides store order: no hero push / no list push / no savers
+23:06 00523cf0 grade p23.cpp RELOCATION_MATCH -- PROBE things.clear() after ctor (finish restore last?)
+23:07 00523cf0 grade 00523cf0.cpp RELOCATION_MATCH -- final source with header comment
+23:08 00523cf0 grade 00523cf0.cpp RELOCATION_MATCH -- strict-headers regrade (static_cast)
+23:47 00523cf0 grade src.cpp RELOCATION_MATCH -- 
+23:47 00523cf0 grade src.cpp SRC_FAIL -- 
+00:16 00523cf0 grade 00523cf0.cpp RELOCATION_MATCH -- repair: NAME_FIXES row for 0x0099EF90 (no source change)
+00:16 00523cf0 grade 00523cf0.cpp RELOCATION_MATCH -- repair: strict regrade
+00:25 00523cf0 grade src.cpp RELOCATION_MATCH -- 
+00:25 00523cf0 grade src.cpp SRC_FAIL -- 
+00:26 00523cf0 grade src.cpp SRC_FAIL -- 
+00:26 00523cf0 grade src.cpp SRC_FAIL -- 
+00:26 00523cf0 grade src.cpp SRC_FAIL -- 
+00:26 00523cf0 grade src.cpp SRC_FAIL -- 
+00:26 00523cf0 grade src.cpp SRC_FAIL -- 
+00:26 00523cf0 grade src.cpp SRC_FAIL -- 
+00:26 00523cf0 grade src.cpp SRC_FAIL -- 
+00:26 00523cf0 grade src.cpp SRC_FAIL -- 
+00:26 00523cf0 grade src.cpp SRC_FAIL -- 
+00:56 00523cf0 grade _land_src.cpp RELOCATION_MATCH -- merged fable_containers.h
+
+==== 0x00918B90
+22:51 00918b90 grade v1.cpp SRC_FAIL -- port onto shared headers
+22:51 00918b90 grade v1.cpp SRC_FAIL -- port onto shared headers
+22:52 00918b90 grade v1.cpp SRC_FAIL -- port onto shared headers
+22:52 00918b90 grade v1.cpp DIFFER(818v802) hunks=34 -- port onto shared headers
+22:53 00918b90 grade v2.cpp DIFFER(818v802) hunks=30 -- def ref local, workBuilding local, angle local
+22:53 00918b90 grade v3.cpp DIFFER(818v802) hunks=29 -- moving scoped; release variants
+22:53 00918b90 grade v4.cpp DIFFER(818v802) hunks=29 -- moving scoped; release variants
+22:53 00918b90 grade v5.cpp DIFFER(818v802) hunks=29 -- moving scoped; release variants
+22:53 00918b90 grade v6.cpp DIFFER(786v802) hunks=15 -- jitter spellings: +=, +C2D, +C2D*0.25
+22:53 00918b90 grade v7.cpp DIFFER(834v802) hunks=27 -- jitter spellings: +=, +C2D, +C2D*0.25
+22:53 00918b90 grade v8.cpp SRC_FAIL -- jitter spellings: +=, +C2D, +C2D*0.25
+22:54 00918b90 grade v9.cpp DIFFER(834v802) hunks=27 -- jitter: ADD2D capture, C2D*0.25, reversed ctor
+22:54 00918b90 grade v10.cpp DIFFER(834v802) hunks=27 -- jitter: ADD2D capture, C2D*0.25, reversed ctor
+22:54 00918b90 grade v11.cpp DIFFER(818v802) hunks=29 -- jitter: ADD2D capture, C2D*0.25, reversed ctor
+22:54 00918b90 grade v12.cpp DIFFER(786v802) hunks=16 -- jitter via Initialise
+22:54 00918b90 grade v13.cpp DIFFER(786v802) hunks=16 -- jitter via Initialise
+22:55 00918b90 grade v14.cpp DIFFER(818v802) hunks=28 -- jitter: offset = sphere*0.25
+22:55 00918b90 grade v15.cpp DIFFER(786v802) hunks=32 -- jitter: offset = sphere*0.25
+22:55 00918b90 grade v4.cpp DIFFER(786v802) hunks=16 -- Initialise + release variant v4
+22:55 00918b90 grade v5.cpp DIFFER(786v802) hunks=16 -- Initialise + release variant v5
+22:56 00918b90 grade v17.cpp SRC_FAIL -- GetSubDef noinline visible body
+22:57 00918b90 grade v17.cpp DIFFER(786v802) hunks=14 -- GetSubDef noinline visible body
+22:57 00918b90 grade v18.cpp DIFFER(818v802) hunks=27 -- jitter spellings with visible GetSubDef
+22:57 00918b90 grade v19.cpp DIFFER(834v802) hunks=26 -- jitter spellings with visible GetSubDef
+22:57 00918b90 grade v20.cpp DIFFER(834v802) hunks=26 -- jitter spellings with visible GetSubDef
+22:57 00918b90 grade v21.cpp DIFFER(834v802) hunks=26 -- jitter: named newPos, ADD2D capture, ToC2DVector
+22:57 00918b90 grade v22.cpp DIFFER(834v802) hunks=26 -- jitter: named newPos, ADD2D capture, ToC2DVector
+22:57 00918b90 grade v23.cpp DIFFER(834v802) hunks=26 -- jitter: named newPos, ADD2D capture, ToC2DVector
+22:58 00918b90 grade pv18.cpp DIFFER(853v802) hunks=37 -- probe: C3DVector implicit copy ctor
+22:58 00918b90 grade pv19.cpp DIFFER(868v802) hunks=37 -- probe: C3DVector implicit copy ctor
+22:58 00918b90 grade pv18.cpp DIFFER(786v802) hunks=14 -- probe: C3DVector user operator=
+22:58 00918b90 grade pv19.cpp DIFFER(802v802) hunks=13 -- probe: C3DVector user operator=
+22:59 00918b90 grade pv20.cpp DIFFER(802v802) hunks=13 -- probe user operator= with ADD2D variants
+22:59 00918b90 grade pv21.cpp DIFFER(802v802) hunks=13 -- probe user operator= with ADD2D variants
+22:59 00918b90 grade pv22.cpp DIFFER(802v802) hunks=13 -- probe user operator= with ADD2D variants
+22:59 00918b90 grade v24.cpp DIFFER(802v802) hunks=6 -- C3DVector::operator+=(C2DVector) *this=*this+v
+22:59 00918b90 grade v25.cpp DIFFER(802v802) hunks=6 -- C3DVector::operator+=(C2DVector) *this=*this+v
+22:59 00918b90 grade v26.cpp DIFFER(802v802) hunks=6 -- C3DVector::operator+=(C2DVector) *this=*this+v
+22:59 00918b90 grade v24.cpp DIFFER(834v802) hunks=26 -- op+=(C2D) FABLE_VECTOR_INLINE; fields variant
+23:00 00918b90 grade v25.cpp DIFFER(834v802) hunks=26 -- op+=(C2D) FABLE_VECTOR_INLINE; fields variant
+23:00 00918b90 grade v27.cpp DIFFER(802v802) hunks=14 -- op+=(C2D) FABLE_VECTOR_INLINE; fields variant
+23:00 00918b90 grade v28.cpp DIFFER(802v802) hunks=13 -- op+= bodies: Initialise / *this=C3DVector(...)
+23:00 00918b90 grade v29.cpp DIFFER(834v802) hunks=26 -- op+= bodies: Initialise / *this=C3DVector(...)
+23:00 00918b90 grade v30.cpp DIFFER(802v802) hunks=13 -- op+= Initialise body; C2D operand spellings
+23:00 00918b90 grade v31.cpp DIFFER(802v802) hunks=13 -- op+= Initialise body; C2D operand spellings
+23:00 00918b90 grade v32.cpp DIFFER(802v802) hunks=13 -- op+= Initialise body; C2D operand spellings
+23:01 00918b90 grade pv24.cpp DIFFER(868v802) hunks=37 -- probe implicit copy ctor + op+= bodies
+23:01 00918b90 grade pv25.cpp DIFFER(868v802) hunks=37 -- probe implicit copy ctor + op+= bodies
+23:01 00918b90 grade pv29.cpp DIFFER(868v802) hunks=37 -- probe implicit copy ctor + op+= bodies
+23:01 00918b90 grade v33.cpp DIFFER(802v802) hunks=13 -- op+= bodies 5/6/7
+23:01 00918b90 grade v34.cpp DIFFER(802v802) hunks=14 -- op+= bodies 5/6/7
+23:01 00918b90 grade v35.cpp DIFFER(834v802) hunks=26 -- op+= bodies 5/6/7
+23:02 00918b90 grade v28.cpp DIFFER(802v802) hunks=13 -- re-view v28 full residue
+23:02 00918b90 grade v36.cpp DIFFER(802v802) hunks=13 -- copy ctor body-assign form
+23:02 00918b90 grade v37.cpp DIFFER(802v802) hunks=13 -- copy ctor body-assign form
+23:02 00918b90 grade v38.cpp DIFFER(834v802) hunks=26 -- copy ctor body-assign form
+23:03 00918b90 grade v39.cpp DIFFER(802v802) hunks=13 -- navDef arrow via GFDebugPDynamicCast; operator*; moving unscoped
+23:03 00918b90 grade v40.cpp DIFFER(802v802) hunks=13 -- navDef arrow via GFDebugPDynamicCast; operator*; moving unscoped
+23:03 00918b90 grade v41.cpp DIFFER(802v802) hunks=14 -- navDef arrow via GFDebugPDynamicCast; operator*; moving unscoped
+23:03 00918b90 grade v42.cpp SRC_FAIL -- offset *= 0.25 X-first spellings
+23:03 00918b90 grade v43.cpp SRC_FAIL -- offset *= 0.25 X-first spellings
+23:03 00918b90 grade v44.cpp DIFFER(802v802) hunks=15 -- offset *= 0.25 X-first spellings
+23:04 00918b90 grade v45.cpp DIFFER(802v802) hunks=20 -- jitter*=0.25 + op+= bodies 5/6/default
+23:04 00918b90 grade v46.cpp DIFFER(802v802) hunks=15 -- jitter*=0.25 + op+= bodies 5/6/default
+23:04 00918b90 grade v47.cpp DIFFER(834v802) hunks=23 -- jitter*=0.25 + op+= bodies 5/6/default
+23:04 00918b90 grade v48.cpp DIFFER(802v802) hunks=13 -- movement cond spellings
+23:04 00918b90 grade v49.cpp DIFFER(802v802) hunks=13 -- movement cond spellings
+23:04 00918b90 grade v50.cpp DIFFER(802v802) hunks=14 -- movement cond spellings
+23:05 00918b90 grade v51.cpp DIFFER(834v802) hunks=26 -- op+= return *this=*this+v
+23:05 00918b90 grade v52.cpp DIFFER(834v802) hunks=26 -- op+= return *this=*this+v
+23:05 00918b90 grade v53.cpp DIFFER(834v802) hunks=26 -- op+= return *this=*this+v
+23:05 00918b90 grade v54.cpp DIFFER(834v802) hunks=26 -- probe: C3DVector not packed
+23:05 00918b90 grade v55.cpp DIFFER(834v802) hunks=26 -- probe: C3DVector not packed
+23:05 00918b90 grade v56.cpp DIFFER(802v802) hunks=13 -- probe: C3DVector not packed
+23:05 00918b90 grade v57.cpp DIFFER(818v802) hunks=27 -- probe: forceinline xyz ctor
+23:05 00918b90 grade v58.cpp DIFFER(834v802) hunks=26 -- probe: forceinline xyz ctor
+23:05 00918b90 grade v59.cpp DIFFER(834v802) hunks=26 -- probe: forceinline xyz ctor
+23:06 00918b90 grade v60.cpp DIFFER(818v802) hunks=27 -- copy-body ctor w/ assign; op+= fields + C2DVector(jitter)*0.25
+23:06 00918b90 grade v61.cpp DIFFER(834v802) hunks=26 -- copy-body ctor w/ assign; op+= fields + C2DVector(jitter)*0.25
+23:06 00918b90 grade v62.cpp SRC_FAIL -- copy-body ctor w/ assign; op+= fields + C2DVector(jitter)*0.25
+23:06 00918b90 grade v62.cpp SRC_FAIL -- compile check
+23:06 00918b90 grade v63.cpp DIFFER(802v802) hunks=14 -- op+= fields (debug size 49B matches), 2 operand spellings
+23:06 00918b90 grade v64.cpp DIFFER(802v802) hunks=14 -- op+= fields (debug size 49B matches), 2 operand spellings
+23:07 00918b90 grade v65.cpp DIFFER(850v802) hunks=25 -- separate markerPos/pos locals (slot coalescing)
+23:07 00918b90 grade v66.cpp DIFFER(850v802) hunks=28 -- separate markerPos/pos locals (slot coalescing)
+23:07 00918b90 grade v67.cpp DIFFER(834v802) hunks=26 -- separate markerPos/pos locals (slot coalescing)
+probe 1/2: remove jitter / remove GetPos to see MoveToPos regs
+23:08 00918b90 grade v68.cpp DIFFER(802v802) hunks=14 -- copy-body / do-while / explicit copy
+23:08 00918b90 grade v69.cpp DIFFER(802v802) hunks=14 -- copy-body / do-while / explicit copy
+23:08 00918b90 grade v70.cpp DIFFER(802v802) hunks=14 -- copy-body / do-while / explicit copy
+23:09 00918b90 grade v71.cpp DIFFER(802v802) hunks=9 -- 3D add with 0.0f Z (folded self copy?)
+23:09 00918b90 grade v72.cpp DIFFER(850v802) hunks=30 -- 3D add with 0.0f Z (folded self copy?)
+23:09 00918b90 grade v73.cpp DIFFER(802v802) hunks=9 -- 3D add with 0.0f Z (folded self copy?)
+23:09 00918b90 grade v74.cpp DIFFER(802v802) hunks=9 -- 3D offset X-first spellings
+23:09 00918b90 grade v75.cpp DIFFER(802v802) hunks=9 -- 3D offset X-first spellings
+23:09 00918b90 grade v76.cpp RELOCATION_MATCH -- 3D offset X-first spellings
+23:09 00918b90 grade 00918b90_src.cpp RELOCATION_MATCH -- final source, clean overlay
+23:10 00918b90 grade 00918b90_src.cpp RELOCATION_MATCH -- strict regrade
+23:49 00918b90 grade src.cpp RELOCATION_MATCH -- 
+23:49 00918b90 grade src.cpp SRC_FAIL -- 
+23:49 00918b90 grade src.cpp SRC_FAIL -- 
+23:49 00918b90 grade src.cpp SRC_FAIL -- 
+23:49 00918b90 grade src.cpp SRC_FAIL -- 
+00:17 00918b90 grade v77.cpp RELOCATION_MATCH -- repair: cite GetWorkBuilding inline evidence
+00:17 00918b90 grade v77.cpp RELOCATION_MATCH -- repair: strict headers
+00:18 00918b90 grade 00918b90_src.cpp RELOCATION_MATCH -- repair: final src
+00:27 00918b90 grade src.cpp RELOCATION_MATCH -- 
+00:27 00918b90 grade src.cpp SRC_FAIL -- 
+00:27 00918b90 grade src.cpp SRC_FAIL -- 
+00:27 00918b90 grade src.cpp SRC_FAIL -- 
+
+==== 0x00972990
+23:09 00972990 grade v0.cpp DIFFER(792v803) hunks=31 -- baseline draft
+23:10 00972990 grade v1.cpp SRC_FAIL -- port to shared headers
+23:10 00972990 grade v1.cpp DIFFER(794v803) hunks=58 -- port to shared headers
+23:11 00972990 grade v1.cpp DIFFER(799v803) hunks=54 -- location local, temps die before SetEnabled
+23:11 00972990 grade v2.cpp DIFFER(805v803) hunks=52 -- box1 temp, filter2 temp, shield in block2, box2 named
+23:11 00972990 grade v2.cpp DIFFER(805v803) hunks=52 -- regrade v2 to see full
+23:11 00972990 grade v3.cpp DIFFER(794v803) hunks=26 -- hoist count / if count>0 / creature ptr+combat local
+23:11 00972990 grade v4.cpp DIFFER(798v803) hunks=25 -- hoist count / if count>0 / creature ptr+combat local
+23:11 00972990 grade v5.cpp DIFFER(794v803) hunks=26 -- hoist count / if count>0 / creature ptr+combat local
+23:12 00972990 grade v6.cpp DIFFER(807v803) hunks=22 -- index local then filter1 / +named filter2 / filter2 direct
+23:12 00972990 grade v7.cpp DIFFER(807v803) hunks=32 -- index local then filter1 / +named filter2 / filter2 direct
+23:12 00972990 grade v8.cpp DIFFER(801v803) hunks=23 -- index local then filter1 / +named filter2 / filter2 direct
+23:12 00972990 grade v6.cpp DIFFER(807v803) hunks=22 -- v6 full view
+23:12 00972990 grade v7.cpp DIFFER(807v803) hunks=32 -- v7 full view
+23:13 00972990 grade v9.cpp DIFFER(807v803) hunks=22 -- PShieldThing=shield implicit / shield function scope
+23:13 00972990 grade v10.cpp DIFFER(807v803) hunks=38 -- PShieldThing=shield implicit / shield function scope
+23:14 00972990 grade v12.cpp DIFFER(803v803) hunks=32 -- shield block: found bool + inner filter block / box outer / named filter2 flat
+23:14 00972990 grade v13.cpp DIFFER(807v803) hunks=32 -- shield block: found bool + inner filter block / box outer / named filter2 flat
+23:14 00972990 grade v14.cpp DIFFER(803v803) hunks=22 -- shield block: found bool + inner filter block / box outer / named filter2 flat
+23:14 00972990 grade v15.cpp DIFFER(803v803) hunks=22 -- shield outer/inner block; box outer; function scope
+23:14 00972990 grade v16.cpp DIFFER(803v803) hunks=22 -- shield outer/inner block; box outer; function scope
+23:14 00972990 grade v17.cpp DIFFER(803v803) hunks=26 -- shield outer/inner block; box outer; function scope
+23:15 00972990 grade v12.cpp DIFFER(803v803) hunks=32 -- v12 view
+23:15 00972990 grade v18.cpp DIFFER(803v803) hunks=32 -- box2 function scope +found / box2 fn scope flat / box2 block2 outer + found
+23:15 00972990 grade v19.cpp DIFFER(803v803) hunks=22 -- box2 function scope +found / box2 fn scope flat / box2 block2 outer + found
+23:15 00972990 grade v20.cpp DIFFER(803v803) hunks=32 -- box2 function scope +found / box2 fn scope flat / box2 block2 outer + found
+23:16 00972990 grade probe1.cpp SRC_FAIL -- PROBE: visible GetPFirst body (filter non-escaping) -> frame?
+23:16 00972990 grade probe1.cpp DIFFER(803v803) hunks=22 -- PROBE: visible GetPFirst body (filter non-escaping) -> frame?
+00972990 probe 1 visible noinline GetPFirst body (filter non-escaping) -> no frame change
+23:16 00972990 grade v21.cpp DIFFER(803v803) hunks=7 -- block2 one call: box temp from ToC2DCoordI radius ctor + filter temp (Initialise / radius initializers)
+23:16 00972990 grade v22.cpp DIFFER(803v803) hunks=7 -- block2 one call: box temp from ToC2DCoordI radius ctor + filter temp (Initialise / radius initializers)
+23:17 00972990 grade v23.cpp DIFFER(803v803) hunks=7 -- PShieldThing=shield / forceinline ctor / GetTC<T>(&boss)
+23:17 00972990 grade v24.cpp DIFFER(803v803) hunks=7 -- PShieldThing=shield / forceinline ctor / GetTC<T>(&boss)
+23:17 00972990 grade v25.cpp DIFFER(803v803) hunks=7 -- PShieldThing=shield / forceinline ctor / GetTC<T>(&boss)
+23:17 00972990 grade v26.cpp DIFFER(803v803) hunks=7 -- ctor SetPItem direct / SetPointer(T*) via ATTACK
+23:17 00972990 grade v27.cpp DIFFER(803v803) hunks=7 -- ctor SetPItem direct / SetPointer(T*) via ATTACK
+23:18 00972990 grade probe2.cpp RELOCATION_MATCH -- PROBE2: visible noinline GetPFirst (out non-escaping) -> shield reload after base ctor?
+00972990 probe 2 visible noinline GetPFirst (out written via local) on v21 -> RELOCATION_MATCH: callee body visibility is the fact
+23:19 00972990 grade v28.cpp SRC_FAIL -- real GetPFirstThingInRoughArea body (noinline template) via overlay opt-in
+23:19 00972990 grade v28.cpp SRC_FAIL -- real GetPFirstThingInRoughArea body (noinline template) via overlay opt-in
+23:19 00972990 grade v28.cpp RELOCATION_MATCH -- real GetPFirstThingInRoughArea body (noinline template) via overlay opt-in + STATTYPEFLAGS
+23:19 00972990 grade 00972990.cpp RELOCATION_MATCH -- final strict regrade
+23:50 00972990 grade src.cpp RELOCATION_MATCH -- 
+23:50 00972990 grade src.cpp SRC_FAIL -- 
+23:50 00972990 grade src.cpp SRC_FAIL -- 
+23:50 00972990 grade src.cpp SRC_FAIL -- 
+23:50 00972990 grade src.cpp SRC_FAIL -- 
+23:50 00972990 grade src.cpp RELOCATION_MATCH -- 
+00:18 00972990 grade v29.cpp RELOCATION_MATCH -- repair: PDB spelling GetPHitLocationWithDefName; drop CIntelligentPointer overlay
+00:18 00972990 grade 00972990.cpp RELOCATION_MATCH -- repair: strict headers regrade
+00:30 00972990 grade src.cpp RELOCATION_MATCH -- 
+00:30 00972990 grade src.cpp SRC_FAIL -- 
+00:30 00972990 grade src.cpp SRC_FAIL -- 
+00:30 00972990 grade src.cpp SRC_FAIL -- 
+00:30 00972990 grade src.cpp SRC_FAIL -- 
+00:30 00972990 grade src.cpp SRC_FAIL -- 
+
+==== 0x006C8E90
+23:12 006c8e90 grade v1.cpp DIFFER(594v804) hunks=36 -- port onto shared headers, const ref
+23:12 006c8e90 grade v2.cpp DIFFER(779v804) hunks=53 -- FABLE_FORCEINLINE inline sub-filters
+23:13 006c8e90 grade v3.cpp DIFFER(803v804) hunks=5 -- IsPerceiving: result=false init, materialised
+23:13 006c8e90 grade v4.cpp DIFFER(799v804) hunks=6 -- IsPerceiving: result=false init, materialised
+23:13 006c8e90 grade v5.cpp DIFFER(795v804) hunks=7 -- type wrap / unseen local / !result||!UsePerceiving
+23:13 006c8e90 grade v6.cpp DIFFER(803v804) hunks=5 -- type wrap / unseen local / !result||!UsePerceiving
+23:13 006c8e90 grade v7.cpp DIFFER(803v804) hunks=5 -- type wrap / unseen local / !result||!UsePerceiving
+23:14 006c8e90 grade v8.cpp DIFFER(807v804) hunks=8 -- combined || early-out conditions
+23:14 006c8e90 grade v9.cpp DIFFER(803v804) hunks=11 -- combined || early-out conditions
+23:14 006c8e90 grade v10.cpp DIFFER(795v804) hunks=8 -- combined || early-out conditions
+23:14 006c8e90 grade v11.cpp DIFFER(795v804) hunks=8 -- positive nests for filter chain
+23:14 006c8e90 grade v12.cpp DIFFER(795v804) hunks=8 -- positive nests for filter chain
+23:14 006c8e90 grade v13.cpp DIFFER(807v804) hunks=8 -- positive nests for filter chain
+23:14 006c8e90 grade v5.cpp DIFFER(795v804) hunks=7 -- recheck v5 diff
+23:15 006c8e90 grade v14.cpp DIFFER(803v804) hunks=11 -- type wrap + positive filter nest
+23:15 006c8e90 grade v15.cpp DIFFER(806v804) hunks=20 -- type wrap + positive filter nest
+23:15 006c8e90 grade v16.cpp DIFFER(804v804) hunks=12 -- single result var flow + type wrap
+23:15 006c8e90 grade v17.cpp DIFFER(804v804) hunks=12 -- single result var flow + type wrap
+23:15 006c8e90 grade v18.cpp DIFFER(804v804) hunks=6 -- result var + early !result/!UsePerceiving return
+23:15 006c8e90 grade v19.cpp DIFFER(804v804) hunks=6 -- result var + early !result/!UsePerceiving return
+23:15 006c8e90 grade v20.cpp DIFFER(804v804) hunks=6 -- result var + early !result/!UsePerceiving return
+23:16 006c8e90 grade v21.cpp DIFFER(804v804) hunks=6 -- unknown-threat false path variants
+23:16 006c8e90 grade v23.cpp DIFFER(836v804) hunks=31 -- unknown-threat false path variants
+23:16 006c8e90 grade v24.cpp DIFFER(822v804) hunks=30 -- unknown-threat false path variants
+23:16 006c8e90 grade v25.cpp ERROR -- v3 tail + result=!result
+23:16 006c8e90 grade v26.cpp ERROR -- v3 tail + result=!result
+23:16 006c8e90 grade v25.cpp DIFFER(804v804) hunks=6 -- v3 tail + result=!result
+23:16 006c8e90 grade v26.cpp DIFFER(795v804) hunks=7 -- v3 tail + result=!result
+23:17 006c8e90 grade v27.cpp DIFFER(804v804) hunks=6 -- front filter chain variants on v25
+23:17 006c8e90 grade v28.cpp DIFFER(804v804) hunks=6 -- front filter chain variants on v25
+23:17 006c8e90 grade v29.cpp DIFFER(820v804) hunks=5 -- front filter chain variants on v25
+23:17 006c8e90 grade v30.cpp DIFFER(812v804) hunks=10 -- positive filter nest with v25 tail
+23:17 006c8e90 grade v31.cpp DIFFER(812v804) hunks=10 -- positive filter nest with v25 tail
+23:17 006c8e90 grade v32.cpp DIFFER(812v804) hunks=10 -- positive filter nest with v25 tail
+23:17 006c8e90 grade v33.cpp DIFFER(812v804) hunks=10 -- mode check in wrap condition / nested
+23:17 006c8e90 grade v34.cpp DIFFER(812v804) hunks=10 -- mode check in wrap condition / nested
+23:17 006c8e90 grade v35.cpp DIFFER(812v804) hunks=10 -- mode check in wrap condition / nested
+23:18 006c8e90 grade v36.cpp DIFFER(804v804) hunks=6 -- tail return-true structure variants
+23:18 006c8e90 grade v37.cpp DIFFER(806v804) hunks=44 -- tail return-true structure variants
+23:18 006c8e90 grade v38.cpp DIFFER(836v804) hunks=31 -- result=false after first awareness test
+23:18 006c8e90 grade v39.cpp DIFFER(842v804) hunks=32 -- result=false after first awareness test
+23:18 006c8e90 grade v40.cpp DIFFER(804v804) hunks=6 -- result=false after first awareness test
+23:19 006c8e90 grade v41.cpp DIFFER(800v804) hunks=46 -- faction spelling variants
+23:19 006c8e90 grade v42.cpp DIFFER(805v804) hunks=46 -- faction spelling variants
+23:19 006c8e90 grade v43.cpp DIFFER(809v804) hunks=44 -- faction spelling variants
+23:19 006c8e90 grade v44.cpp DIFFER(804v804) hunks=6 -- result=false declared at top, early return result
+23:19 006c8e90 grade v45.cpp DIFFER(804v804) hunks=6 -- result=false declared at top, early return result
+23:20 006c8e90 grade v46.cpp DIFFER(814v804) hunks=19 -- faction sub-filter body spellings
+23:20 006c8e90 grade v47.cpp DIFFER(806v804) hunks=46 -- faction sub-filter body spellings
+23:20 006c8e90 grade v48.cpp DIFFER(808v804) hunks=19 -- faction sub-filter body spellings
+23:21 006c8e90 grade p1.cpp DIFFER(804v804) hunks=57 -- pragma sweep s/t/y-off
+23:21 006c8e90 grade p2.cpp DIFFER(804v804) hunks=6 -- pragma sweep s/t/y-off
+23:21 006c8e90 grade p3.cpp DIFFER(810v804) hunks=45 -- pragma sweep s/t/y-off
+23:21 006c8e90 grade v26.cpp DIFFER(795v804) hunks=7 -- recheck v26
+23:21 006c8e90 grade v49.cpp DIFFER(827v804) hunks=30 -- nav result assigned as bool expr, return result
+23:21 006c8e90 grade v50.cpp DIFFER(827v804) hunks=30 -- nav result assigned as bool expr, return result
+23:22 006c8e90 grade probe1.cpp DIFFER(739v804) hunks=49 -- PROBE: no mode check, where does false block land
+23:23 006c8e90 grade v54.cpp DIFFER(816v804) hunks=6 -- || chain + split !result guard
+23:23 006c8e90 grade v55.cpp DIFFER(816v804) hunks=6 -- || chain + split !result guard
+23:23 006c8e90 grade v56.cpp DIFFER(804v804) hunks=6 -- || chain + split !result guard
+23:23 006c8e90 grade v54.cpp DIFFER(816v804) hunks=6 -- show v54
+23:23 006c8e90 grade v57.cpp DIFFER(836v804) hunks=46 -- result=false + positive filter if, return result
+23:23 006c8e90 grade v58.cpp DIFFER(836v804) hunks=46 -- result=false + positive filter if, return result
+23:23 006c8e90 grade v59.cpp DIFFER(804v804) hunks=6 -- HasTC + GetTC(id) const for mode/sees
+23:23 006c8e90 grade v60.cpp DIFFER(782v804) hunks=47 -- HasTC + GetTC(id) const for mode/sees
+23:24 006c8e90 grade v61.cpp DIFFER(828v804) hunks=27 -- success returns as return result (known true)
+23:24 006c8e90 grade v62.cpp DIFFER(828v804) hunks=27 -- success returns as return result (known true)
+23:24 006c8e90 grade 006c8e90.cpp DIFFER(804v804) hunks=6 -- checkpoint best (v25 + header)
+23:24 006c8e90 grade v63.cpp DIFFER(804v804) hunks=6 -- groupings of early-out conditions
+23:24 006c8e90 grade v64.cpp DIFFER(804v804) hunks=6 -- groupings of early-out conditions
+23:24 006c8e90 grade v65.cpp DIFFER(804v804) hunks=6 -- groupings of early-out conditions
+23:25 006c8e90 grade v67.cpp DIFFER(808v804) hunks=45 -- faction as early-return, return true when !UsePerceiving
+23:25 006c8e90 grade v68.cpp DIFFER(809v804) hunks=44 -- faction as early-return, return true when !UsePerceiving
+23:25 006c8e90 grade v69.cpp DIFFER(809v804) hunks=44 -- faction as early-return, return true when !UsePerceiving
+23:25 006c8e90 grade v70.cpp DIFFER(804v804) hunks=8 -- ternary arm order
+23:25 006c8e90 grade v71.cpp DIFFER(804v804) hunks=8 -- ternary arm order
+23:25 006c8e90 grade v72.cpp DIFFER(804v804) hunks=6 -- ternary arm order
+23:25 006c8e90 grade v73.cpp DIFFER(800v804) hunks=6 -- separate sees var + unseen
+23:25 006c8e90 grade v74.cpp DIFFER(804v804) hunks=6 -- separate sees var + unseen
+23:25 006c8e90 grade v75.cpp DIFFER(795v804) hunks=7 -- separate sees var + unseen
+23:26 006c8e90 grade v76.cpp DIFFER(803v804) hunks=7 -- unknown-threat block then result=false; return result
+23:26 006c8e90 grade v77.cpp DIFFER(803v804) hunks=7 -- unknown-threat block then result=false; return result
+23:26 006c8e90 grade v78.cpp DIFFER(803v804) hunks=7 -- unknown-threat block then result=false; return result
+23:26 006c8e90 grade v79.cpp DIFFER(810v804) hunks=6 -- one success as return result / final return !result
+23:26 006c8e90 grade v80.cpp DIFFER(828v804) hunks=29 -- one success as return result / final return !result
+23:26 006c8e90 grade v81.cpp DIFFER(804v804) hunks=6 -- one success as return result / final return !result
+23:26 006c8e90 grade v79.cpp DIFFER(810v804) hunks=6 -- show v79
+23:26 006c8e90 grade final.cpp DIFFER(804v804) hunks=6 -- MODE_SLEEP_BED enum naming
+23:27 006c8e90 grade v83.cpp DIFFER(804v804) hunks=6 -- v73 tail with merged sees/!sees exit
+23:27 006c8e90 grade v84.cpp DIFFER(804v804) hunks=6 -- v73 tail with merged sees/!sees exit
+23:27 006c8e90 grade v85.cpp DIFFER(808v804) hunks=6 -- v73 tail with merged sees/!sees exit
+23:52 006c8e90 grade a0.cpp DIFFER(804v804) hunks=6 -- baseline; tail result=false; early-out return result var
+23:52 006c8e90 grade a1.cpp DIFFER(804v804) hunks=6 -- baseline; tail result=false; early-out return result var
+23:52 006c8e90 grade a2.cpp DIFFER(804v804) hunks=6 -- baseline; tail result=false; early-out return result var
+23:53 006c8e90 grade b1.cpp DIFFER(830v804) hunks=46 -- positive nest with result=false init + return result at esi level (mode separate / mode in cond)
+23:53 006c8e90 grade b2.cpp DIFFER(836v804) hunks=46 -- positive nest with result=false init + return result at esi level (mode separate / mode in cond)
+23:54 006c8e90 grade c1.cpp DIFFER(804v804) hunks=6 -- first part as bool && expression (mode in expr / faction in expr / mode early return)
+23:54 006c8e90 grade c2.cpp DIFFER(818v804) hunks=46 -- first part as bool && expression (mode in expr / faction in expr / mode early return)
+23:54 006c8e90 grade c3.cpp DIFFER(804v804) hunks=6 -- first part as bool && expression (mode in expr / faction in expr / mode early return)
+23:54 006c8e90 grade d1.cpp DIFFER(804v804) hunks=6 -- c1 + single esi-level return result after perceiving block (nest) / split ifs / result nest
+23:54 006c8e90 grade d2.cpp DIFFER(804v804) hunks=6 -- c1 + single esi-level return result after perceiving block (nest) / split ifs / result nest
+23:54 006c8e90 grade d3.cpp DIFFER(809v804) hunks=43 -- c1 + single esi-level return result after perceiving block (nest) / split ifs / result nest
+23:55 006c8e90 grade e1.cpp DIFFER(800v804) hunks=6 -- c1 head + tails: v73 sees/unseen; result=false..result=true return result; return dist&&nav expr
+23:55 006c8e90 grade e2.cpp DIFFER(822v804) hunks=30 -- c1 head + tails: v73 sees/unseen; result=false..result=true return result; return dist&&nav expr
+23:55 006c8e90 grade e3.cpp DIFFER(823v804) hunks=6 -- c1 head + tails: v73 sees/unseen; result=false..result=true return result; return dist&&nav expr
+23:55 006c8e90 grade f1.cpp DIFFER(814v804) hunks=43 -- c1 + tail with return true last (negated nest) / nav return false then true / combined negation
+23:55 006c8e90 grade f2.cpp DIFFER(804v804) hunks=6 -- c1 + tail with return true last (negated nest) / nav return false then true / combined negation
+23:55 006c8e90 grade f3.cpp DIFFER(812v804) hunks=6 -- c1 + tail with return true last (negated nest) / nav return false then true / combined negation
+23:57 006c8e90 grade g1.cpp DIFFER(804v804) hunks=6 -- PROBE: tail as forceinline helper returning bool (inline exit join)
+23:57 006c8e90 grade g2.cpp DIFFER(804v804) hunks=6 -- PROBE: tail as forceinline helper returning bool (inline exit join)
+23:57 006c8e90 grade h1.cpp DIFFER(849v804) hunks=60 -- single-exit result var through whole function (if result=true / result=expr)
+23:57 006c8e90 grade h2.cpp DIFFER(824v804) hunks=49 -- single-exit result var through whole function (if result=true / result=expr)
+23:57 006c8e90 grade i1.cpp DIFFER(804v804) hunks=6 -- c1 + UTS block nested with final return result (return false / result=false variants)
+23:57 006c8e90 grade i2.cpp DIFFER(804v804) hunks=6 -- c1 + UTS block nested with final return result (return false / result=false variants)
+23:57 006c8e90 grade i3.cpp DIFFER(804v804) hunks=6 -- c1 + UTS block nested with final return result (return false / result=false variants)
+23:58 006c8e90 grade c1.cpp DIFFER(776v804) hunks=26 /G7 -- c1 flags /G7
+23:58 006c8e90 grade c1.cpp DIFFER(804v804) hunks=6 /G5 -- c1 flags /G5
+23:58 006c8e90 grade c1.cpp DIFFER(804v804) hunks=6 /Ob1 -- c1 flags /Ob1
+23:58 006c8e90 grade f3.cpp DIFFER(812v804) hunks=6 -- show f3
+23:59 006c8e90 grade j1.cpp DIFFER(804v804) hunks=6 -- c1 head + separate 'sees' var returned at ebx level (two return-var exits)
+23:59 006c8e90 grade j2.cpp DIFFER(808v804) hunks=7 -- c1 head + separate 'sees' var returned at ebx level (two return-var exits)
+23:59 006c8e90 grade j3.cpp DIFFER(804v804) hunks=6 -- c1 head + separate 'sees' var returned at ebx level (two return-var exits)
+23:59 006c8e90 grade k1.cpp DIFFER(816v804) hunks=6 -- c1 + !result return false (const) / !UsePerceiving return true / if(sees) return false
+23:59 006c8e90 grade k2.cpp DIFFER(819v804) hunks=7 -- c1 + !result return false (const) / !UsePerceiving return true / if(sees) return false
+23:59 006c8e90 grade k3.cpp DIFFER(795v804) hunks=7 -- c1 + !result return false (const) / !UsePerceiving return true / if(sees) return false
+23:59 006c8e90 grade f4.cpp DIFFER(804v804) hunks=6 -- tail: aware negated block, return true last; result=false/return result; nav returns result(true)
+23:59 006c8e90 grade f5.cpp DIFFER(814v804) hunks=5 -- tail: aware negated block, return true last; result=false/return result; nav returns result(true)
+23:59 006c8e90 grade f6.cpp DIFFER(828v804) hunks=30 -- tail: aware negated block, return true last; result=false/return result; nav returns result(true)
+00:00 006c8e90 grade l1.cpp DIFFER(812v804) hunks=5 -- PROBE nav helper: A||Nav return true / return A||Nav / if A true; return Nav
+00:00 006c8e90 grade l2.cpp DIFFER(815v804) hunks=5 -- PROBE nav helper: A||Nav return true / return A||Nav / if A true; return Nav
+00:00 006c8e90 grade l3.cpp DIFFER(812v804) hunks=5 -- PROBE nav helper: A||Nav return true / return A||Nav / if A true; return Nav
+00:00 006c8e90 grade m1.cpp DIFFER(808v804) hunks=4 -- c1 with early type return instead of wrap
+00:00 006c8e90 grade m3.cpp DIFFER(811v804) hunks=19 -- wrap with tail falling out of the if into the type return false (c1 head / a0 head)
+00:00 006c8e90 grade m4.cpp DIFFER(811v804) hunks=19 -- wrap with tail falling out of the if into the type return false (c1 head / a0 head)
+00:01 006c8e90 grade n1.cpp DIFFER(804v804) hunks=10 -- m1 + type test in && expr / type||mode early return / !(==)
+00:01 006c8e90 grade n2.cpp DIFFER(804v804) hunks=10 -- m1 + type test in && expr / type||mode early return / !(==)
+00:01 006c8e90 grade n3.cpp DIFFER(808v804) hunks=4 -- m1 + type test in && expr / type||mode early return / !(==)
+00:01 006c8e90 grade n1.cpp DIFFER(804v804) hunks=10 -- show n1
+00:01 006c8e90 grade p3.cpp DIFFER(809v804) hunks=5 -- type exit: switch / goto label at end / if-else
+00:01 006c8e90 grade p5.cpp DIFFER(808v804) hunks=4 -- type exit: switch / goto label at end / if-else
+00:01 006c8e90 grade p6.cpp DIFFER(808v804) hunks=4 -- type exit: switch / goto label at end / if-else
+00:02 006c8e90 grade q1.cpp DIFFER(804v804) hunks=6 -- wrap with outer return result (result=false hoisted) / explicit else return false
+00:02 006c8e90 grade q2.cpp DIFFER(804v804) hunks=6 -- wrap with outer return result (result=false hoisted) / explicit else return false
+00:02 006c8e90 grade r3.cpp DIFFER(808v804) hunks=4 -- type early return + (d1 nest / i1 UTS nest / split returns)
+00:02 006c8e90 grade r4.cpp DIFFER(808v804) hunks=4 -- type early return + (d1 nest / i1 UTS nest / split returns)
+00:02 006c8e90 grade r5.cpp DIFFER(808v804) hunks=4 -- type early return + (d1 nest / i1 UTS nest / split returns)
+00:03 006c8e90 grade e3.cpp DIFFER(823v804) hunks=6 -- show e3
+00:03 006c8e90 grade t1.cpp DIFFER(812v804) hunks=4 -- PROBE tail result = A || NavProbe; return result (wrap / early type)
+00:03 006c8e90 grade t2.cpp DIFFER(808v804) hunks=7 -- PROBE tail result = A || NavProbe; return result (wrap / early type)
+00:04 006c8e90 grade t3.cpp DIFFER(812v804) hunks=5 -- PROBE wrap: if A return true; result=NavProbe; return result / helper as expr / result=A; if(!result) result=Nav
+00:04 006c8e90 grade t4.cpp DIFFER(812v804) hunks=5 -- PROBE wrap: if A return true; result=NavProbe; return result / helper as expr / result=A; if(!result) result=Nav
+00:04 006c8e90 grade t5.cpp DIFFER(812v804) hunks=5 -- PROBE wrap: if A return true; result=NavProbe; return result / helper as expr / result=A; if(!result) result=Nav
+00:04 006c8e90 grade u2.cpp DIFFER(810v804) hunks=46 -- n1 variants: result=false; if(type) result=expr / result=type; if(result) result=expr
+00:04 006c8e90 grade u5.cpp DIFFER(811v804) hunks=45 -- n1 variants: result=false; if(type) result=expr / result=type; if(result) result=expr
+00:04 006c8e90 grade w1.cpp DIFFER(812v804) hunks=5 -- PROBE wrap tail: A?true:Nav / !(!A&&!Nav) / if(!A) result=Nav (result already true)
+00:04 006c8e90 grade w2.cpp DIFFER(812v804) hunks=4 -- PROBE wrap tail: A?true:Nav / !(!A&&!Nav) / if(!A) result=Nav (result already true)
+00:04 006c8e90 grade w3.cpp DIFFER(816v804) hunks=5 -- PROBE wrap tail: A?true:Nav / !(!A&&!Nav) / if(!A) result=Nav (result already true)
+00:05 006c8e90 grade n2.cpp DIFFER(804v804) hunks=10 -- show n2
+00:05 006c8e90 grade x1.cpp DIFFER(804v804) hunks=10 -- wrap condition includes mode (x1) / mode+filters (x2)
+00:05 006c8e90 grade x2.cpp DIFFER(812v804) hunks=10 -- wrap condition includes mode (x1) / mode+filters (x2)
+00:06 006c8e90 grade c2.cpp DIFFER(818v804) hunks=46 -- show c2
+00:06 006c8e90 grade z1.cpp DIFFER(804v804) hunks=10 -- type wrap with nested mode if (falls out to outer return false)
+00:06 006c8e90 grade z2.cpp DIFFER(804v804) hunks=10 -- type wrap with nested mode if (falls out to outer return false)
+00:07 006c8e90 grade aa1.cpp DIFFER(820v804) hunks=5 -- wrap + inner if(!mode&&filters){...} return false (esi) + outer return false (type)
+00:07 006c8e90 grade aa2.cpp DIFFER(812v804) hunks=45 -- wrap + inner if(!mode&&filters){...} return false (esi) + outer return false (type)
+00:07 006c8e90 grade bb1.cpp DIFFER(812v804) hunks=10 -- wrap + inner if(!mode&&filters){...} falling out to outer return false
+00:08 006c8e90 grade c1.cpp DIFFER(804v804) hunks=6 -- QFE 4035 compiler probe
+00:08 006c8e90 grade m1.cpp DIFFER(808v804) hunks=4 -- QFE 4035 compiler probe
+00:08 006c8e90 grade x1.cpp DIFFER(804v804) hunks=10 -- QFE 4035 compiler probe
+00:08 006c8e90 grade cc1.cpp DIFFER(808v804) hunks=4 -- m1 + if(!result) return false before faction / split result returns
+00:08 006c8e90 grade cc2.cpp DIFFER(808v804) hunks=4 -- m1 + if(!result) return false before faction / split result returns
+00:12 006c8e90 grade dw1.cpp DIFFER(819v804) hunks=13 -- single-exit do{...}while(0) with ret var inside type wrap (c1 / a0 bodies)
+00:12 006c8e90 grade dw2.cpp DIFFER(819v804) hunks=13 -- single-exit do{...}while(0) with ret var inside type wrap (c1 / a0 bodies)
+00:12 006c8e90 grade dw3.cpp DIFFER(804v804) hunks=2 -- c1 wrap + do-while(0) single-exit only for tail (from perceiving / from aware / from UTS)
+00:12 006c8e90 grade dw4.cpp DIFFER(804v804) hunks=6 -- c1 wrap + do-while(0) single-exit only for tail (from perceiving / from aware / from UTS)
+00:12 006c8e90 grade dw5.cpp DIFFER(804v804) hunks=2 -- c1 wrap + do-while(0) single-exit only for tail (from perceiving / from aware / from UTS)
+00:12 006c8e90 grade dx1.cpp DIFFER(820v804) hunks=27 -- dw3 + tail true placement: ret=false then ret=true / negated with ret=true last / if-else assigns
+00:12 006c8e90 grade dx2.cpp DIFFER(804v804) hunks=2 -- dw3 + tail true placement: ret=false then ret=true / negated with ret=true last / if-else assigns
+00:12 006c8e90 grade dx3.cpp DIFFER(820v804) hunks=27 -- dw3 + tail true placement: ret=false then ret=true / negated with ret=true last / if-else assigns
+00:13 006c8e90 grade dy1.cpp DIFFER(812v804) hunks=5 -- dw3 + aware true as real return / both trues real return / nav true real return
+00:13 006c8e90 grade dy2.cpp DIFFER(804v804) hunks=6 -- dw3 + aware true as real return / both trues real return / nav true real return
+00:13 006c8e90 grade dy3.cpp DIFFER(804v804) hunks=6 -- dw3 + aware true as real return / both trues real return / nav true real return
+00:13 006c8e90 grade dz1.cpp DIFFER(828v804) hunks=26 -- dw3 + true via ret=result (nav / aware / both)
+00:13 006c8e90 grade dz2.cpp DIFFER(806v804) hunks=4 -- dw3 + true via ret=result (nav / aware / both)
+00:13 006c8e90 grade dz3.cpp DIFFER(824v804) hunks=28 -- dw3 + true via ret=result (nav / aware / both)
+00:13 006c8e90 grade dy2.cpp DIFFER(804v804) hunks=6 -- show dy2
+00:14 006c8e90 grade e1x.cpp DIFFER(812v804) hunks=5 -- dw3 mixes: final false return / result exits return / both
+00:14 006c8e90 grade e2x.cpp DIFFER(804v804) hunks=6 -- dw3 mixes: final false return / result exits return / both
+00:14 006c8e90 grade e3x.cpp DIFFER(812v804) hunks=5 -- dw3 mixes: final false return / result exits return / both
+00:14 006c8e90 grade g1.cpp DIFFER(804v804) hunks=2 -- dw3 + flatten PeekTC ifs / final ret=false no break / nested dist,LOS ifs
+00:14 006c8e90 grade g3.cpp DIFFER(804v804) hunks=2 -- dw3 + flatten PeekTC ifs / final ret=false no break / nested dist,LOS ifs
+00:14 006c8e90 grade g4.cpp DIFFER(804v804) hunks=2 -- dw3 + flatten PeekTC ifs / final ret=false no break / nested dist,LOS ifs
+00:15 006c8e90 grade h1.cpp DIFFER(804v804) hunks=2 -- dw3 + aware nested if / ret=true before aware then break
+00:15 006c8e90 grade h2.cpp DIFFER(810v804) hunks=6 -- dw3 + aware nested if / ret=true before aware then break
+00:16 006c8e90 grade ip1.cpp DIFFER(804v804) hunks=2 -- PROBE tail (from perceiving) as forceinline helper with real returns; operator returns helper()
+00:16 006c8e90 grade nn1.cpp RELOCATION_MATCH -- dw3 + nested do-while join for aware/nav part (inline-in-inline emulation)
+00:16 006c8e90 grade nat1.cpp DIFFER(814v804) hunks=26 -- natural spelling: if/else assigning aware, single return result
+00:17 006c8e90 grade final2.cpp RELOCATION_MATCH -- final source (nn1 + header)
+00:17 006c8e90 grade final2.cpp RELOCATION_MATCH -- strict headers regrade
+00:28 006c8e90 grade src.cpp RELOCATION_MATCH -- 
+00:28 006c8e90 grade src.cpp SRC_FAIL -- 
+00:35 006c8e90 grade r1.cpp RELOCATION_MATCH -- repair: shape comment (IsAllied has out-of-line 0x6C8C50) + inline body cites landed row
+00:35 006c8e90 grade r1.cpp RELOCATION_MATCH -- repair: strict regrade
+00:36 006c8e90 grade src.cpp RELOCATION_MATCH -- 
+00:36 006c8e90 grade src.cpp SRC_FAIL -- 
+
+==== 0x0049BE90
+23:28 0049be90 grade v1.cpp SRC_FAIL -- port onto shared headers, body-visible rough area
+23:28 0049be90 grade v2.cpp DIFFER(830v808) hunks=47 -- box spellings: radius ctor / 4-arg ctor / field assigns
+23:28 0049be90 grade v3.cpp DIFFER(830v808) hunks=47 -- box spellings: radius ctor / 4-arg ctor / field assigns
+23:28 0049be90 grade v4.cpp DIFFER(830v808) hunks=62 -- box spellings: radius ctor / 4-arg ctor / field assigns
+23:29 0049be90 grade v5.cpp DIFFER(804v808) hunks=33 -- ground hitPos field assigns; +/- rough body visible
+23:29 0049be90 grade v6.cpp DIFFER(804v808) hunks=33 -- ground hitPos field assigns; +/- rough body visible
+23:30 0049be90 grade v7.cpp DIFFER(845v808) hunks=44 -- no named hit local: call result in the if
+23:30 0049be90 grade v8.cpp DIFFER(804v808) hunks=33 -- no named hit local: call result in the if
+23:30 0049be90 grade v9.cpp RELOCATION_MATCH -- ground branches each with own normal + return (tail merge)
+23:30 0049be90 grade 0049be90.cpp RELOCATION_MATCH -- final with header, strict
+23:53 0049be90 grade src.cpp RELOCATION_MATCH -- 
+23:53 0049be90 grade src.cpp RELOCATION_MATCH -- 
+00:19 0049be90 grade 0049be90.cpp RELOCATION_MATCH -- repair: test strengthened (nearest-first order, sloped ground, ok=false hit)
+00:19 0049be90 grade 0049be90.cpp RELOCATION_MATCH -- repair: strict regrade
+00:32 0049be90 grade src.cpp RELOCATION_MATCH -- 
+00:32 0049be90 grade src.cpp RELOCATION_MATCH -- 
+
+==== 0x00839100 (not landed)
+22:43 00839100 grade v0.cpp DIFFER(844v795) hunks=56 -- baseline draft
+22:45 00839100 grade v1.cpp SRC_FAIL -- port to headers, GetSubDef noinline
+22:45 00839100 grade v1.cpp SRC_FAIL -- port to headers, GetSubDef noinline
+22:45 00839100 grade v1.cpp DIFFER(767v795) hunks=26 -- port to headers, GetSubDef noinline
+22:46 00839100 grade v2.cpp ERROR -- wrap in if(GetSubDef), single -1 exit
+22:46 00839100 grade v2.cpp DIFFER(786v795) hunks=45 -- wrap in if(GetSubDef), single -1 exit
+22:46 00839100 grade v3.cpp DIFFER(781v795) hunks=5 -- no trails ref / + raw def copy
+22:46 00839100 grade v4.cpp DIFFER(781v795) hunks=5 -- no trails ref / + raw def copy
+22:47 00839100 grade v5.cpp DIFFER(751v795) hunks=12 -- rbegin/rend loop forms
+22:47 00839100 grade v6.cpp DIFFER(781v795) hunks=5 -- rbegin/rend loop forms
+22:47 00839100 grade v7.cpp DIFFER(751v795) hunks=12 -- rbegin/rend loop forms
+22:47 00839100 grade v8.cpp DIFFER(781v795) hunks=5 -- STLport-shaped rbegin/rend via end()/begin()
+22:47 00839100 grade v9.cpp DIFFER(781v795) hunks=5 -- STLport-shaped rbegin/rend via end()/begin()
+22:48 00839100 grade v10.cpp DIFFER(751v795) hunks=12 -- STLport-shaped rbegin/rend via end()/begin()
+22:48 00839100 grade v11.cpp RELOCATION_MATCH -- loop init forms: rb copy / end first / while
+22:48 00839100 grade final.cpp RELOCATION_MATCH -- final with header comment, strict
+23:45 00839100 grade src.cpp RELOCATION_MATCH -- 
+23:46 00839100 grade src.cpp SRC_FAIL -- 
+00:13 00839100 grade v20.cpp RELOCATION_MATCH -- repair: real std::map WeaponTrails, STLport iter-- / const find out of line
+00:15 00839100 grade final2.cpp RELOCATION_MATCH -- repair: final, real STLport map types, strict headers
+00:24 00839100 grade src.cpp RELOCATION_MATCH -- 
+00:24 00839100 grade src.cpp SRC_FAIL -- 
+00:55 00839100 grade r3.cpp RELOCATION_MATCH -- repair3: FlourishSpecialWeaponTrail as CWeaponTrailGraphicSet .Knockdown/.Attack
+00:55 00839100 grade r3.cpp RELOCATION_MATCH -- repair3 strict
+00:56 00839100 grade src.cpp RELOCATION_MATCH -- 
+00:56 00839100 grade src.cpp RELOCATION_MATCH -- 
+
+==== 0x00AD9F10 (not landed)
+23:20 00ad9f10 grade v0.cpp DIFFER(826v806) hunks=65 -- baseline draft
+23:22 00ad9f10 grade v1.cpp DIFFER(925v806) hunks=63 /Gr -- port onto shared headers, /Gr
+23:22 00ad9f10 grade v2.cpp DIFFER(909v806) hunks=62 /Gr -- hoisted HasMoreBlocks count; first/last locals
+23:22 00ad9f10 grade v3.cpp DIFFER(847v806) hunks=60 /Gr -- hoisted HasMoreBlocks count; first/last locals
+23:22 00ad9f10 grade v3.cpp DIFFER(847v806) hunks=60 /Gr -- v3 full diff view
+23:23 00ad9f10 grade v4.cpp DIFFER(845v806) hunks=58 /Gr -- if-form next; local current ptr; const count
+23:23 00ad9f10 grade v5.cpp DIFFER(858v806) hunks=66 /Gr -- if-form next; local current ptr; const count
+23:23 00ad9f10 grade v6.cpp DIFFER(858v806) hunks=66 /Gr -- if-form next; local current ptr; const count
+23:23 00ad9f10 grade v4b.cpp DIFFER(861v806) hunks=65 /Gr -- find body visible noinline
+23:23 00ad9f10 grade v5b.cpp DIFFER(861v806) hunks=65 /Gr -- find body visible noinline
+23:23 00ad9f10 grade v4b.cpp DIFFER(861v806) hunks=65 /Gr -- view
+23:23 00ad9f10 grade v4c.cpp DIFFER(861v806) hunks=65 /Gr -- drop FABLE_RETAIL_CARRAY (operator[] = _M_start[i])
+23:23 00ad9f10 grade v5c.cpp DIFFER(861v806) hunks=65 /Gr -- drop FABLE_RETAIL_CARRAY (operator[] = _M_start[i])
+23:24 00ad9f10 grade v7.cpp DIFFER(861v806) hunks=65 /Gr -- block ptr; count in cond; group local
+23:24 00ad9f10 grade v8.cpp DIFFER(874v806) hunks=60 /Gr -- block ptr; count in cond; group local
+23:24 00ad9f10 grade v9.cpp DIFFER(861v806) hunks=65 /Gr -- block ptr; count in cond; group local
+23:24 00ad9f10 grade v10.cpp DIFFER(845v806) hunks=71 /Gr -- separate newGroups local (find visible / opaque)
+23:24 00ad9f10 grade v11.cpp DIFFER(845v806) hunks=65 /Gr -- separate newGroups local (find visible / opaque)
+23:24 00ad9f10 grade v10.cpp DIFFER(845v806) hunks=71 /Gr -- view v10
+23:25 00ad9f10 grade v12.cpp ERROR /Gr -- separate added locals for InsertBlock
+23:25 00ad9f10 grade v12.cpp DIFFER(845v806) hunks=60 /Gr -- separate added locals for InsertBlock
+23:25 00ad9f10 grade v12.cpp DIFFER(845v806) hunks=60 /Gr -- view v12
+23:25 00ad9f10 grade v13.cpp DIFFER(845v806) hunks=60 /Gr -- list size via distance
+23:25 00ad9f10 grade v14.cpp DIFFER(845v806) hunks=60 /Gr -- list size via distance
+23:26 00ad9f10 grade v15.cpp DIFFER(845v806) hunks=60 /Gr -- visible push_back/reserve bodies; list push_back inline
+23:26 00ad9f10 grade v16.cpp DIFFER(828v806) hunks=7 /Gr -- visible push_back/reserve bodies; list push_back inline
+23:26 00ad9f10 grade v17.cpp DIFFER(828v806) hunks=7 /Gr -- visible push_back/reserve bodies; list push_back inline
+23:26 00ad9f10 grade v16.cpp DIFFER(828v806) hunks=7 /Gr -- view v16
+23:26 00ad9f10 grade v18.cpp DIFFER(828v806) hunks=7 /Gr -- pop_back body visible noinline
+23:26 00ad9f10 grade v19.cpp DIFFER(828v806) hunks=7 /Gr -- pop_back body visible noinline
+23:26 00ad9f10 grade v20.cpp DIFFER(828v806) hunks=7 /Gr -- HasMoreBlocks out-of-class def
+23:27 00ad9f10 grade v21.cpp DIFFER(828v806) hunks=7 /Gr -- candidates.size()/[] loop; begin/end sort + empty(); size()==0
+23:27 00ad9f10 grade v22.cpp DIFFER(828v806) hunks=7 /Gr -- candidates.size()/[] loop; begin/end sort + empty(); size()==0
+23:27 00ad9f10 grade v23.cpp DIFFER(828v806) hunks=9 /Gr -- candidates.size()/[] loop; begin/end sort + empty(); size()==0
+23:27 00ad9f10 grade v24.cpp DIFFER(828v806) hunks=7 /Gr -- CBlockInfo ctor temp
+00ad9f10 probe 1 does dropping top size() let the 3rd later size inline?
+23:28 00ad9f10 grade v25.cpp DIFFER(828v806) hunks=7 /Gr -- v22 + size via distance
+00ad9f10 probe 2 drop Blocks.size compare -> does NewBlock2 size inline?
+23:29 00ad9f10 grade v26.cpp DIFFER(828v806) hunks=7 /Gr -- CArray push_back wrapper (inline budget)
+00ad9f10 probe 3/4 extra inline loops / plain code before candidates -> do later size() go out of line?
+23:30 00ad9f10 grade v28.cpp DIFFER(828v806) hunks=7 /Gr -- HasGroup defined in TU (named it / plain)
+23:30 00ad9f10 grade v29.cpp DIFFER(828v806) hunks=7 /Gr -- HasGroup defined in TU (named it / plain)
+23:30 00ad9f10 grade v30.cpp DIFFER(828v806) hunks=7 /Gr -- sort body visible (inline / noinline)
+23:30 00ad9f10 grade v31.cpp DIFFER(828v806) hunks=7 /Gr -- sort body visible (inline / noinline)
+00ad9f10 probe 5/6 one extra loop inline vs three non-loop inlines -> sizes out of line?
+23:31 00ad9f10 grade v32.cpp DIFFER(828v806) hunks=7 /Gr -- more accessor calls (inline budget): Benefit=GetGroupCount; GetBlock(j) each use
+23:31 00ad9f10 grade v33.cpp DIFFER(829v806) hunks=14 /Gr -- more accessor calls (inline budget): Benefit=GetGroupCount; GetBlock(j) each use
+23:31 00ad9f10 grade v34.cpp DIFFER(842v806) hunks=22 /Gr -- more accessor calls (inline budget): Benefit=GetGroupCount; GetBlock(j) each use
+23:31 00ad9f10 grade v33.cpp DIFFER(829v806) hunks=14 /Gr -- view v33
+23:31 00ad9f10 grade v35.cpp ERROR /Gr -- HasMoreBlocks count in loop condition
+23:31 00ad9f10 grade v35.cpp DIFFER(854v806) hunks=36 /Gr -- HasMoreBlocks count in loop condition
+00ad9f10 probe 7 extra getters after the size sites -> sizes out?
+23:32 00ad9f10 grade v37.cpp DIFFER(828v806) hunks=7 /Gr -- GetBlock is by-value in PDB: use InputList.Blocks[j] (friend)
+23:32 00ad9f10 grade v38.cpp DIFFER(828v806) hunks=7 /Gr -- GetBlock is by-value in PDB: use InputList.Blocks[j] (friend)
+23:32 00ad9f10 grade v39.cpp DIFFER(828v806) hunks=7 /Gr -- GetBlock is by-value in PDB: use InputList.Blocks[j] (friend)
+23:33 00ad9f10 grade v40.cpp DIFFER(828v806) hunks=8 /Gr -- RemoveBlock(index,count) same-TU inline (PDB AAEXKK), inverse of InsertBlock
+23:33 00ad9f10 grade v41.cpp DIFFER(828v806) hunks=8 /Gr -- GetMaxIterations() at top (PDB QBEKXZ, .cpp-defined)
+00ad9f10 probe 8 how many extra GetGroupCount calls flip the size inlining (v41 base)
+23:34 00ad9f10 grade v42.cpp DIFFER(828v806) hunks=8 /Gr -- Benefit = block.GetGroupCount() (with/without GetMaxIterations)
+23:34 00ad9f10 grade v43.cpp DIFFER(828v806) hunks=8 /Gr -- Benefit = block.GetGroupCount() (with/without GetMaxIterations)
+23:34 00ad9f10 grade v44.cpp DIFFER(828v806) hunks=8 /Gr -- v41 + HasGroup defined in TU
+23:34 00ad9f10 grade v45.cpp DIFFER(828v806) hunks=8 /Gr -- v41 + HasGroup defined in TU
+23:34 00ad9f10 grade v46.cpp DIFFER(828v806) hunks=8 /Gr -- empty-candidate branch shapes: early return / && || / positive condition
+23:34 00ad9f10 grade v47.cpp DIFFER(828v806) hunks=8 /Gr -- empty-candidate branch shapes: early return / && || / positive condition
+23:34 00ad9f10 grade v48.cpp DIFFER(828v806) hunks=8 /Gr -- empty-candidate branch shapes: early return / && || / positive condition
+00ad9f10 probe 9 plain early return before / inside candidate loop
+23:35 00ad9f10 grade v49.cpp DIFFER(828v806) hunks=8 /Gr -- split MaxIterations / Greedy early returns (IL budget)
+23:35 00ad9f10 grade v50.cpp DIFFER(828v806) hunks=8 /Gr -- first branch if/else; space after first branch
+23:35 00ad9f10 grade v51.cpp DIFFER(828v806) hunks=12 /Gr -- first branch if/else; space after first branch
+23:35 00ad9f10 grade v52.cpp DIFFER(828v806) hunks=8 /Gr -- continue forms; HasGroup==false
+23:35 00ad9f10 grade v53.cpp DIFFER(828v806) hunks=8 /Gr -- continue forms; HasGroup==false
+23:35 00ad9f10 grade v54.cpp DIFFER(828v806) hunks=8 /Gr -- continue forms; HasGroup==false
+23:36 00ad9f10 grade v51.cpp DIFFER(828v806) hunks=12 /Gr -- view v51
+23:36 00ad9f10 grade v55.cpp DIFFER(828v806) hunks=8 /Gr -- list operator= body visible
+23:37 00ad9f10 grade v56.cpp DIFFER(828v806) hunks=8 /Gr -- CanInsertMoreBlocks real same-TU body (auto / auto_inline off)
+23:37 00ad9f10 grade v57.cpp DIFFER(828v806) hunks=8 /Gr -- CanInsertMoreBlocks real same-TU body (auto / auto_inline off)
+23:37 00ad9f10 grade v58.cpp DIFFER(828v806) hunks=8 /Gr -- aggregate info init; newGroups decl first; postinc
+23:37 00ad9f10 grade v59.cpp DIFFER(828v806) hunks=8 /Gr -- aggregate info init; newGroups decl first; postinc
+23:37 00ad9f10 grade v60.cpp DIFFER(828v806) hunks=8 /Gr -- aggregate info init; newGroups decl first; postinc
+00ad9f10 probe 10 plain return at top / in j loop / before sort -> sizes out?
+23:38 00ad9f10 grade v61.cpp DIFFER(828v806) hunks=8 /Gr -- HasMoreBlocks result/break form; ==false
+23:38 00ad9f10 grade v62.cpp DIFFER(828v806) hunks=8 /Gr -- HasMoreBlocks result/break form; ==false
+23:38 00ad9f10 grade v63.cpp DIFFER(828v806) hunks=8 /Gr -- top: iterations local; optimal local; size<=NewBlock
+23:38 00ad9f10 grade v64.cpp DIFFER(828v806) hunks=8 /Gr -- top: iterations local; optimal local; size<=NewBlock
+23:38 00ad9f10 grade v65.cpp DIFFER(828v806) hunks=9 /Gr -- top: iterations local; optimal local; size<=NewBlock
+00ad9f10 probe 11 top if+assign / redundant Greedy return -> sizes out?
+23:39 00ad9f10 grade r5.cpp DIFFER(790v806) hunks=12 /Gr -- probe r5 view (redundant Greedy return)
+23:39 00ad9f10 grade v66.cpp DIFFER(870v806) hunks=55 /Gr -- find body inlinable (budget decides); r6 probe with redundant Greedy
+23:39 00ad9f10 grade r6.cpp DIFFER(826v806) hunks=43 /Gr -- find body inlinable (budget decides); r6 probe with redundant Greedy
+00ad9f10 probe 12 TU-wide inline budget? (function with 5 list size inlines before AddBlocks)
+23:41 00ad9f10 grade v67.cpp DIFFER(828v806) hunks=8 /Gr /Ob1 -- /Ob1 (only inline-declared functions)
+23:42 00ad9f10 grade v68.cpp DIFFER(859v806) hunks=69 /Gr -- find inlinable + heavier HasGroup chain (.cpp HasGroup / member-template find)
+23:42 00ad9f10 grade v69.cpp DIFFER(859v806) hunks=69 /Gr -- find inlinable + heavier HasGroup chain (.cpp HasGroup / member-template find)
+23:42 00ad9f10 grade v70.cpp DIFFER(870v806) hunks=55 /Gr -- find inlinable + heavier HasGroup chain (.cpp HasGroup / member-template find)
+23:42 00ad9f10 grade v71.cpp DIFFER(838v806) hunks=10 /Gr -- Greedy && !empty sort guard; Greedy==true
+23:42 00ad9f10 grade v72.cpp DIFFER(827v806) hunks=10 /Gr -- Greedy && !empty sort guard; Greedy==true
+23:42 00ad9f10 grade v72.cpp DIFFER(827v806) hunks=10 /Gr -- view v72
+23:42 00ad9f10 grade 00ad9f10.cpp DIFFER(828v806) hunks=8 /Gr -- final best source (v40) regrade
+23:55 00ad9f10 grade 00ad9f10.cpp DIFFER(828v806) hunks=8 /Gr -- baseline regrade attempt2
+23:57 00ad9f10 grade a1.cpp DIFFER(828v806) hunks=8 /Gr -- inline CalcCurrentBestTheoreticalResult wrapper; empty-path helper
+23:57 00ad9f10 grade a2.cpp DIFFER(758v806) hunks=27 /Gr -- inline CalcCurrentBestTheoreticalResult wrapper; empty-path helper
+23:57 00ad9f10 grade a3.cpp DIFFER(758v806) hunks=27 /Gr -- inline CalcCurrentBestTheoreticalResult wrapper; empty-path helper
+23:57 00ad9f10 grade b1.cpp DIFFER(828v806) hunks=8 /Gr -- candidates.size() in loop cond; size()==0; Blocks.size in j loop
+23:57 00ad9f10 grade b2.cpp DIFFER(828v806) hunks=10 /Gr -- candidates.size() in loop cond; size()==0; Blocks.size in j loop
+23:57 00ad9f10 grade b3.cpp DIFFER(828v806) hunks=10 /Gr -- candidates.size() in loop cond; size()==0; Blocks.size in j loop
+23:57 00ad9f10 grade c1.cpp DIFFER(806v806) hunks=9 /Gr -- repeated !empty()&& guards merged by optimizer (top / empty path)
+23:57 00ad9f10 grade c2.cpp DIFFER(806v806) hunks=8 /Gr -- repeated !empty()&& guards merged by optimizer (top / empty path)
+23:57 00ad9f10 grade c3.cpp DIFFER(812v806) hunks=9 /Gr -- repeated !empty()&& guards merged by optimizer (top / empty path)
+23:58 00ad9f10 grade d1.cpp DIFFER(838v806) hunks=9 /Gr -- split !empty guards in empty path only; && || empty path; top split-two-blocks
+23:58 00ad9f10 grade d2.cpp DIFFER(828v806) hunks=8 /Gr -- split !empty guards in empty path only; && || empty path; top split-two-blocks
+23:58 00ad9f10 grade d3.cpp DIFFER(806v806) hunks=8 /Gr -- split !empty guards in empty path only; && || empty path; top split-two-blocks
+23:58 00ad9f10 grade e1.cpp DIFFER(806v806) hunks=10 /Gr -- bool hasOptimal local guards; single && || chain; two blocks
+23:58 00ad9f10 grade e2.cpp DIFFER(828v806) hunks=8 /Gr -- bool hasOptimal local guards; single && || chain; two blocks
+23:58 00ad9f10 grade e3.cpp DIFFER(806v806) hunks=8 /Gr -- bool hasOptimal local guards; single && || chain; two blocks
+23:58 00ad9f10 grade e1.cpp DIFFER(806v806) hunks=10 /Gr -- view e1
+23:58 00ad9f10 grade f1.cpp DIFFER(806v806) hunks=5 /Gr -- probe: constant if(0) return / dead test / do-while0 before space
+23:58 00ad9f10 grade f2.cpp DIFFER(822v806) hunks=9 /Gr -- probe: constant if(0) return / dead test / do-while0 before space
+23:58 00ad9f10 grade f3.cpp DIFFER(828v806) hunks=8 /Gr -- probe: constant if(0) return / dead test / do-while0 before space
+23:59 00ad9f10 grade h1.cpp DIFFER(826v806) hunks=63 /Gr -- f1 + RemoveBlock order swap / in-class / manual
+23:59 00ad9f10 grade h2.cpp DIFFER(806v806) hunks=5 /Gr -- f1 + RemoveBlock order swap / in-class / manual
+23:59 00ad9f10 grade h3.cpp DIFFER(806v806) hunks=4 /Gr -- f1 + RemoveBlock order swap / in-class / manual
+23:59 00ad9f10 grade i1.cpp DIFFER(806v806) hunks=5 /Gr -- f1 + count read before store / CurrentBlock local / raw Data
+23:59 00ad9f10 grade i2.cpp DIFFER(826v806) hunks=64 /Gr -- f1 + count read before store / CurrentBlock local / raw Data
+23:59 00ad9f10 grade i3.cpp SRC_FAIL /Gr -- f1 + count read before store / CurrentBlock local / raw Data
+00:00 00ad9f10 grade j1.cpp DIFFER(806v806) hunks=5 /Gr -- f1/h3 without FABLE_RETAIL_CARRAY (plain _M_start[i])
+00:00 00ad9f10 grade j2.cpp DIFFER(806v806) hunks=4 /Gr -- f1/h3 without FABLE_RETAIL_CARRAY (plain _M_start[i])
+00:00 00ad9f10 grade k1.cpp DIFFER(806v806) hunks=35 /Gr -- f1 + InsertBlock out-count reuses start (first branch / both / loop only)
+00:00 00ad9f10 grade k2.cpp DIFFER(806v806) hunks=35 /Gr -- f1 + InsertBlock out-count reuses start (first branch / both / loop only)
+00:00 00ad9f10 grade k3.cpp DIFFER(806v806) hunks=35 /Gr -- f1 + InsertBlock out-count reuses start (first branch / both / loop only)
+00:00 00ad9f10 grade l1.cpp DIFFER(806v806) hunks=5 /Gr -- f1 + RemoveBlock(count,index) param order; explicit return
+00:00 00ad9f10 grade l2.cpp DIFFER(806v806) hunks=5 /Gr -- f1 + RemoveBlock(count,index) param order; explicit return
+00:01 00ad9f10 grade n1.cpp DIFFER(828v806) hunks=8 /Gr -- probe: if(0) return location map (in j loop / before candidates / before sort)
+00:01 00ad9f10 grade n2.cpp DIFFER(806v806) hunks=5 /Gr -- probe: if(0) return location map (in j loop / before candidates / before sort)
+00:01 00ad9f10 grade n3.cpp DIFFER(806v806) hunks=5 /Gr -- probe: if(0) return location map (in j loop / before candidates / before sort)
+00:01 00ad9f10 grade o1.cpp DIFFER(828v806) hunks=8 /Gr -- empty path: if (CanInsertMoreBlocks()) return; / probe if(0) inside empty block
+00:01 00ad9f10 grade o3.cpp DIFFER(806v806) hunks=5 /Gr -- empty path: if (CanInsertMoreBlocks()) return; / probe if(0) inside empty block
+00:01 00ad9f10 grade p1.cpp DIFFER(828v806) hunks=8 /Gr -- Debug member (+0x58) test with compiled-out trace body
+00:01 00ad9f10 grade p2.cpp DIFFER(828v806) hunks=8 /Gr -- Debug member (+0x58) test with compiled-out trace body
+00:01 00ad9f10 grade p3.cpp DIFFER(828v806) hunks=8 /Gr -- Debug member (+0x58) test with compiled-out trace body
+00:02 00ad9f10 grade s1.cpp DIFFER(806v806) hunks=5 /Gr -- natural folded exits: unsigned space<0; GetBlockCount()==0 (implied by HasMoreBlocks); CurrentBlock null
+00:02 00ad9f10 grade s2.cpp DIFFER(822v806) hunks=7 /Gr -- natural folded exits: unsigned space<0; GetBlockCount()==0 (implied by HasMoreBlocks); CurrentBlock null
+00:02 00ad9f10 grade s3.cpp DIFFER(822v806) hunks=7 /Gr -- natural folded exits: unsigned space<0; GetBlockCount()==0 (implied by HasMoreBlocks); CurrentBlock null
+00:02 00ad9f10 grade t1.cpp DIFFER(806v806) hunks=5 /Gr -- s1 + const params RemoveBlock; added at function scope
+00:02 00ad9f10 grade t2.cpp DIFFER(806v806) hunks=34 /Gr -- s1 + const params RemoveBlock; added at function scope
+00:03 00ad9f10 grade w1.cpp DIFFER(828v806) hunks=8 /Gr -- probe: dead exit inside RemoveBlock (top / mid / end)
+00:03 00ad9f10 grade w2.cpp DIFFER(828v806) hunks=8 /Gr -- probe: dead exit inside RemoveBlock (top / mid / end)
+00:03 00ad9f10 grade w3.cpp DIFFER(828v806) hunks=8 /Gr -- probe: dead exit inside RemoveBlock (top / mid / end)
+00:03 00ad9f10 grade x1.cpp DIFFER(806v806) hunks=5 /Gr -- probe: flag ref taken before count read (RemoveBlock / manual / ref only)
+00:03 00ad9f10 grade x2.cpp DIFFER(806v806) hunks=5 /Gr -- probe: flag ref taken before count read (RemoveBlock / manual / ref only)
+00:03 00ad9f10 grade x3.cpp DIFFER(806v806) hunks=5 /Gr -- probe: flag ref taken before count read (RemoveBlock / manual / ref only)
+00:04 00ad9f10 grade y1.cpp DIFFER(806v806) hunks=4 /Gr -- probe: RemainingBlocks element unsigned char (alias) manual / inline RemoveBlock
+00:04 00ad9f10 grade y2.cpp DIFFER(806v806) hunks=5 /Gr -- probe: RemainingBlocks element unsigned char (alias) manual / inline RemoveBlock
+00:04 00ad9f10 grade z1.cpp DIFFER(828v806) hunks=7 /Gr -- dead exit best<0 in first branch (manual RemoveBlock / inline)
+00:04 00ad9f10 grade z2.cpp DIFFER(806v806) hunks=4 /Gr -- dead exit best<0 in first branch (manual RemoveBlock / inline)
+00:04 00ad9f10 grade z3.cpp DIFFER(828v806) hunks=8 /Gr -- dead exit best<0 in first branch (manual RemoveBlock / inline)
+00:05 00ad9f10 grade s1.cpp DIFFER(808v806) hunks=38 /Gr /G7 -- /G7 scheduling
+00:05 00ad9f10 grade z2.cpp DIFFER(808v806) hunks=37 /Gr /G7 -- /G7 scheduling
+00:05 00ad9f10 grade s1.cpp DIFFER(806v806) hunks=5 /Gr /G5 -- /G5 scheduling
+00:05 00ad9f10 grade z2.cpp DIFFER(806v806) hunks=4 /Gr /G5 -- /G5 scheduling
+00:05 00ad9f10 grade D1.cpp DIFFER(806v806) hunks=5 /Gr -- s1 + RemoveBlock defined after AddBlocks; added=0 init; block local after store
+00:05 00ad9f10 grade D2.cpp DIFFER(807v806) hunks=7 /Gr -- s1 + RemoveBlock defined after AddBlocks; added=0 init; block local after store
+00:05 00ad9f10 grade D3.cpp DIFFER(806v806) hunks=5 /Gr -- s1 + RemoveBlock defined after AddBlocks; added=0 init; block local after store
+00:06 00ad9f10 grade 00ad9f10.cpp DIFFER(806v806) hunks=5 /Gr -- attempt2 final best (s1)
+00ad9f10 probe 13 (attempt2) where does a dead exit flip the size() inlining? -> anywhere in AddBlocks' own body after the top size and before the empty-path size sites (before candidates, before sort, inside the empty block); NOT inside the first (GetGroupCount()==0) branch, NOT inside inlined RemoveBlock, NOT inside the j loop; needs an exit (`if (Debug) ((void)0);` does not)
+00ad9f10 probe 14 (attempt2) count-register: manual RemoveBlock (store then RemoveLast(added)) gives retail's colours but store-before-load order; any count read before the store (inline param, local copy, bool& ref first) gives eax
+00:07 00ad9f10 grade P1.cpp DIFFER(806v806) hunks=5 /Gr -- probe: InsertBlock out-count by pointer (&added)
+00:07 00ad9f10 grade P2.cpp DIFFER(806v806) hunks=4 /Gr -- probe: InsertBlock out-count by pointer (&added)
+00:19 00ad9f10 grade 00ad9f10.cpp DIFFER(806v806) hunks=5 /Gr -- attempt3 baseline
+00:20 00ad9f10 grade A1.cpp DIFFER(806v806) hunks=35 /Gr -- start as out-count in first branch; RemoveBlock count by const&/&
+00:20 00ad9f10 grade A2.cpp DIFFER(806v806) hunks=4 /Gr -- start as out-count in first branch; RemoveBlock count by const&/&
+00:20 00ad9f10 grade A3.cpp DIFFER(806v806) hunks=4 /Gr -- start as out-count in first branch; RemoveBlock count by const&/&
+00:20 00ad9f10 grade B1.cpp DIFFER(806v806) hunks=5 /Gr -- const& count: flag ref then count copy; count copy first; CurrentBlock local
+00:20 00ad9f10 grade B2.cpp DIFFER(806v806) hunks=5 /Gr -- const& count: flag ref then count copy; count copy first; CurrentBlock local
+00:20 00ad9f10 grade B3.cpp DIFFER(806v806) hunks=14 /Gr -- const& count: flag ref then count copy; count copy first; CurrentBlock local
+00:20 00ad9f10 grade A2.cpp DIFFER(791v806) hunks=28 /Gr /Oa -- /Oa assume no aliasing
+00:20 00ad9f10 grade 00ad9f10.cpp DIFFER(791v806) hunks=29 /Gr /Oa -- /Oa assume no aliasing
+00:20 00ad9f10 grade A2.cpp DIFFER(806v806) hunks=4 /Gr /Ow -- /Ow
+00:21 00ad9f10 grade C1.cpp DIFFER(806v806) hunks=34 /Gr -- start as first-branch out-count + const& RemoveBlock
+00:22 00ad9f10 grade 00ad9f10.cpp DIFFER(806v806) hunks=5 /Gr /Ox -- flags /Gr /Ox
+00:22 00ad9f10 grade 00ad9f10.cpp DIFFER(806v806) hunks=5 /Gr /GX- -- flags /Gr /GX-
+00:22 00ad9f10 grade 00ad9f10.cpp DIFFER(806v806) hunks=5 /Gr /Ob2 /Oi- -- flags /Gr /Ob2 /Oi-
+00:23 00ad9f10 grade A1.cpp DIFFER(806v806) hunks=35 /Gr -- recheck A1 site1
+00:23 00ad9f10 grade F1.cpp SRC_FAIL /Gr -- InsertBlock real body visible same-TU auto_inline(off): byval / const& / manual
+00:23 00ad9f10 grade F2.cpp SRC_FAIL /Gr -- InsertBlock real body visible same-TU auto_inline(off): byval / const& / manual
+00:23 00ad9f10 grade F3.cpp SRC_FAIL /Gr -- InsertBlock real body visible same-TU auto_inline(off): byval / const& / manual
+00:23 00ad9f10 grade F1.cpp RELOCATION_MATCH /Gr -- InsertBlock real body visible same-TU auto_inline(off): byval / const& / manual
+00:24 00ad9f10 grade G1.cpp DIFFER(828v806) hunks=3 /Gr -- F1 without the dead space<0 exit
+00:24 00ad9f10 grade G2.cpp DIFFER(822v806) hunks=5 /Gr -- natural guards instead of dead space<0 with InsertBlock visible
+00:24 00ad9f10 grade G3.cpp DIFFER(822v806) hunks=6 /Gr -- natural guards instead of dead space<0 with InsertBlock visible
+00:24 00ad9f10 grade 00ad9f10_match.cpp RELOCATION_MATCH /Gr -- final strict regrade
+00:33 00ad9f10 grade src.cpp RELOCATION_MATCH /Gr -- 
+00:33 00ad9f10 grade src.cpp SRC_FAIL /Gr -- 
+00:48 00ad9f10 grade R1.cpp RELOCATION_MATCH /Gr -- repair: comments name the 0x00ADB570 call sites; InsertBlock PDB note
+00:48 00ad9f10 grade R1.cpp RELOCATION_MATCH /Gr -- repair: strict regrade
+00:49 00ad9f10 grade src.cpp RELOCATION_MATCH /Gr -- 
+00:49 00ad9f10 grade src.cpp SRC_FAIL /Gr -- 
+00:56 00ad9f10 grade R3.cpp RELOCATION_MATCH /Gr -- repair3: pruned overlay + HasMoreBlocks comment
+00:56 00ad9f10 grade R3.cpp RELOCATION_MATCH /Gr -- repair3 strict
+
+==== 0x008C12D0 (not landed)
+23:31 008c12d0 grade v0.cpp DIFFER(809v808) hunks=50 -- baseline draft
+23:32 008c12d0 grade v1.cpp DIFFER(813v808) hunks=43 -- same-TU noinline LowerBound via engine/CVectorMap.h
+23:32 008c12d0 grade v2.cpp DIFFER(813v808) hunks=43 -- same-TU noinline LowerBound via engine/CVectorMap.h
+23:32 008c12d0 grade v3.cpp DIFFER(809v808) hunks=51 -- same-TU noinline LowerBound via engine/CVectorMap.h
+23:32 008c12d0 grade v1.cpp DIFFER(813v808) hunks=41 -- same-TU noinline LowerBound, fixed CThing pad
+23:32 008c12d0 grade v2.cpp DIFFER(813v808) hunks=41 -- same-TU noinline LowerBound, fixed CThing pad
+23:32 008c12d0 grade v3.cpp DIFFER(809v808) hunks=50 -- same-TU noinline LowerBound, fixed CThing pad
+23:32 008c12d0 grade v4.cpp DIFFER(850v808) hunks=13 -- visible LowerBound + extern GetSubDef
+23:33 008c12d0 grade v6.cpp DIFFER(856v808) hunks=13 -- dtor local copy; CauseRush spellings
+23:33 008c12d0 grade v7.cpp DIFFER(842v808) hunks=54 -- dtor local copy; CauseRush spellings
+23:33 008c12d0 grade v8.cpp DIFFER(856v808) hunks=13 -- dtor local copy; CauseRush spellings
+23:33 008c12d0 grade v9.cpp DIFFER(850v808) hunks=13 -- unsigned RefCount; if/else no early return
+23:33 008c12d0 grade v10.cpp DIFFER(824v808) hunks=20 -- unsigned RefCount; if/else no early return
+23:33 008c12d0 grade v11.cpp DIFFER(824v808) hunks=20 -- unsigned RefCount; if/else no early return
+23:33 008c12d0 grade v10.cpp DIFFER(824v808) hunks=20 -- v10 view
+23:33 008c12d0 grade v12.cpp DIFFER(850v808) hunks=13 -- Dead bitfield
+23:33 008c12d0 grade v13.cpp DIFFER(850v808) hunks=13 -- Dead bitfield
+23:33 008c12d0 grade v14.cpp DIFFER(850v808) hunks=13 -- Dead bitfield
+23:34 008c12d0 grade v15.cpp DIFFER(850v808) hunks=13 -- CauseRush spellings on escaped-def base
+23:34 008c12d0 grade v16.cpp DIFFER(846v808) hunks=53 -- CauseRush spellings on escaped-def base
+23:34 008c12d0 grade v17.cpp DIFFER(820v808) hunks=50 -- CauseRush spellings on escaped-def base
+23:34 008c12d0 grade v18.cpp DIFFER(856v808) hunks=13 -- dtor spellings
+23:34 008c12d0 grade v19.cpp DIFFER(850v808) hunks=13 -- dtor spellings
+23:34 008c12d0 grade v20.cpp DIFFER(856v808) hunks=13 -- dtor spellings
+23:35 008c12d0 grade v21.cpp DIFFER(813v808) hunks=41 -- v1 base: needed local / no hits local / def first
+23:35 008c12d0 grade v22.cpp DIFFER(809v808) hunks=50 -- v1 base: needed local / no hits local / def first
+23:35 008c12d0 grade v23.cpp DIFFER(809v808) hunks=49 -- v1 base: needed local / no hits local / def first
+23:36 008c12d0 grade v24.cpp DIFFER(809v808) hunks=50 -- GetInterface forms (sibling enum key)
+23:36 008c12d0 grade v25.cpp DIFFER(813v808) hunks=41 -- GetInterface forms (sibling enum key)
+23:36 008c12d0 grade v26.cpp DIFFER(809v808) hunks=50 -- GetInterface forms (sibling enum key)
+23:36 008c12d0 grade v27.cpp SRC_FAIL -- real CDefPointer + real GetSubDef noinline body
+23:36 008c12d0 grade v27.cpp SRC_FAIL -- real CDefPointer + real GetSubDef noinline body
+23:37 008c12d0 grade v27.cpp DIFFER(813v808) hunks=41 -- real CDefPointer + real GetSubDef noinline body
+23:37 008c12d0 grade v28.cpp SRC_FAIL -- port CThing.h GETTC_EXPANDED
+23:37 008c12d0 grade v28.cpp DIFFER(822v808) hunks=40 -- port CThing.h GETTC_EXPANDED
+23:37 008c12d0 grade v28.cpp DIFFER(816v808) hunks=40 -- port CThing.h + inline PeekBaseDef
+23:38 008c12d0 grade v29.cpp DIFFER(816v808) hunks=40 -- hitter=0 variable shares ebx with the zero
+23:38 008c12d0 grade v30.cpp DIFFER(816v808) hunks=40 -- hitter=0 variable shares ebx with the zero
+23:38 008c12d0 grade v31.cpp DIFFER(816v808) hunks=40 -- hitter=0 variable shares ebx with the zero
+23:39 008c12d0 grade v32.cpp DIFFER(816v808) hunks=40 -- CauseRush compare spellings on header base
+23:39 008c12d0 grade v33.cpp DIFFER(815v808) hunks=40 -- CauseRush compare spellings on header base
+23:39 008c12d0 grade v34.cpp DIFFER(836v808) hunks=45 -- CauseRush compare spellings on header base
+23:40 008c12d0 grade v35.cpp DIFFER(816v808) hunks=40 -- hitter scope / creature local / if-else
+23:40 008c12d0 grade v36.cpp DIFFER(816v808) hunks=40 -- hitter scope / creature local / if-else
+23:40 008c12d0 grade v37.cpp DIFFER(812v808) hunks=21 -- hitter scope / creature local / if-else
+23:40 008c12d0 grade v37.cpp DIFFER(812v808) hunks=21 -- view v37
+23:40 008c12d0 grade v38.cpp RELOCATION_MATCH -- if/else + IsDead forms
+23:40 008c12d0 grade v38.cpp RELOCATION_MATCH -- strict regrade v38
+23:40 008c12d0 grade v41.cpp RELOCATION_MATCH -- port names + CIntelligentPointer.h
+23:41 008c12d0 grade v42.cpp SRC_FAIL -- port C3DVector.h + CTCPhysicsBase.h
+23:41 008c12d0 grade v43.cpp SRC_FAIL -- port C3DVector.h + CTCPhysicsBase.h
+23:41 008c12d0 grade v42.cpp SRC_FAIL -- port C3DVector.h + CTCPhysicsBase.h
+23:41 008c12d0 grade v43.cpp SRC_FAIL -- port C3DVector.h + CTCPhysicsBase.h
+23:41 008c12d0 grade v42.cpp RELOCATION_MATCH -- port C3DVector.h + CTCPhysicsBase.h (+CTCBASE)
+23:42 008c12d0 grade v44.cpp RELOCATION_MATCH -- CTCBoss.h with friend opt-in
+23:42 008c12d0 grade v45.cpp DIFFER(790v808) hunks=11 -- final cleanup: GetAngleXY, temp CCharStrings
+23:42 008c12d0 grade v46.cpp RELOCATION_MATCH -- named CCharString + GetAngleXY
+23:43 008c12d0 grade 008c12d0.cpp RELOCATION_MATCH -- strict regrade final
+00:07 008c12d0 grade src.cpp RELOCATION_MATCH -- 
+00:07 008c12d0 grade src.cpp SRC_FAIL -- 
+00:21 008c12d0 grade r1.cpp SRC_FAIL -- repair: shared headers, GetGenericCounter, IS_THING_ALIVE template
+00:21 008c12d0 grade r2.cpp RELOCATION_MATCH -- repair: CIntelligentPointer opt-ins first
+00:21 008c12d0 grade 008c12d0.cpp RELOCATION_MATCH -- repair: comments (Data line, CauseRush jg/jne, layout)
+00:21 008c12d0 grade 008c12d0.cpp RELOCATION_MATCH -- repair: strict regrade
+00:33 008c12d0 grade src.cpp RELOCATION_MATCH -- 
+00:33 008c12d0 grade src.cpp SRC_FAIL -- 
+00:55 008c12d0 grade r4.cpp RELOCATION_MATCH -- repair3: TCI_BOSS
+00:55 008c12d0 grade r4.cpp RELOCATION_MATCH -- repair3: strict
+00:56 008c12d0 grade src.cpp RELOCATION_MATCH -- 
+00:56 008c12d0 grade src.cpp RELOCATION_MATCH -- 
+

@@ -9,6 +9,29 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CMAZEBATTLEDEF
+// Retail opt-in (row 0x00956060): CMazeBattleDef : CParentDefClassBase (as landed 0x008C3510 models it); retail members
+// from Ego_r.pdb shifted -4 (CParentDefClassBase retail 0x39 -> 0x3c).
+#include "fable_string.h"
+#include "engine/CParentDefClassBase.h"
+class CMazeBattleDef : public CParentDefClassBase {
+public:
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CMazeBattleDef", -1); }
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    float ShieldUpTime;                                                  // +0x3c
+    float LightningDuration;                                             // +0x40
+    float MinThrowShotRange;                                             // +0x44
+    float LightningRange;                                                // +0x48
+    float EnflameRange;                                                  // +0x4c
+    long  TutorialNumGetHits;                                            // +0x50
+    float MinTimeBetweenHeals;                                           // +0x54
+    long  HealSpellLevel;                                                // +0x58
+    float TutorialTeleportTime;                                          // +0x5c
+};
+FABLE_STATIC_ASSERT(sizeof(CMazeBattleDef) == 0x60);
+#else
 #pragma pack(push, 1)
 class CMazeBattleDef {
 public:
@@ -48,4 +71,5 @@ FABLE_STATIC_ASSERT(offsetof(CMazeBattleDef, MinTimeBetweenHeals) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CMazeBattleDef, HealSpellLevel) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CMazeBattleDef, TutorialTeleportTime) == 0x5c);
 
+#endif // opt-in
 #endif // FABLE_ENGINE_CMAZEBATTLEDEF_H

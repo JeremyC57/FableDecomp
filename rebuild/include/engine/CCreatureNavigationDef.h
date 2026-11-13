@@ -8,6 +8,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATURENAVIGATIONDEF
+// Retail opt-in (wf20, row 0x00918B90 CAIStateGroup_Gaze::Update): the real def class, CDefClassBase base (packed 0x25 bytes) so that
+// CDefPointer<const CCreatureNavigationDef> / CDefClassBase::GetSubDef<CCreatureNavigationDef> (0x006CD2F0) compile; Ego_r.pdb members
+// at the same offsets as the generated model below (the row reads AvoidDynamicObstacles at +0x34, `mov cl,[eax+34h]` 0x00918DBF).
+#include "engine/CDefClassBase.h"
+#include "fable_string.h"
+class CCreatureNavigationDef : public CDefClassBase {
+public:
+    // FableWin.pdb ?StatGetTypeName@CCreatureNavigationDef@@SI?AVCCharString@@XZ (inline; GetSubDef<CCreatureNavigationDef> 0x006CD2F0
+    // builds CCharString("CCreatureNavigationDef", -1) from the literal at 0x012441E8).
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CCreatureNavigationDef", -1); }
+    unsigned char _pad_0x25[0x3];                            // +0x25
+    float         MinPathCost;                               // +0x28
+    float         MaxPathCost;                               // +0x2c
+    float         Radius;                                    // +0x30
+    bool          AvoidDynamicObstacles;                     // +0x34
+    unsigned char _pad_0x35[0x3];                            // +0x35
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureNavigationDef) == 0x38);
+#else
 #pragma pack(push, 1)
 class CCreatureNavigationDef {
 public:
@@ -36,4 +56,5 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureNavigationDef, MaxPathCost) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CCreatureNavigationDef, Radius) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CCreatureNavigationDef, AvoidDynamicObstacles) == 0x34);
 
+#endif // FABLE_RETAIL_CCREATURENAVIGATIONDEF
 #endif // FABLE_ENGINE_CCREATURENAVIGATIONDEF_H

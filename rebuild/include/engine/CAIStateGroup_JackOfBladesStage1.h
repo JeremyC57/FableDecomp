@@ -16,6 +16,11 @@ protected:
 protected:
  bool HasHitsCausedRush();   // 0x00972340
 #endif
+#ifdef FABLE_RETAIL_JACK_STAGE1_ONACTIVATE
+ // Opt-in (wf20, row 0x00972990): Ego_r.pdb / FableWin.pdb ?OnActivate@CAIStateGroup_JackOfBladesStage1@@UAEXXZ (vtable 0x0128D6B4 slot 2).
+public:
+ virtual void OnActivate();
+#endif
 protected:
  bool HasAttacked;
  long ZigZagCounter;

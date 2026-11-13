@@ -394969,6 +394969,55 @@ $catalog = @(
         TestSource = '00/5e/CTCTavernGame_ProcessInput_005ec270_test.cpp'
         PassPattern = '005ec270_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00956060'
+        Module = 'CAIStateGroup_MazeTutorialBattleTeleport'
+        Source = '00/95/CAIStateGroupMazeTutorialBattleTeleport_Update_00956060.cpp'
+        TestSource = '00/95/CAIStateGroupMazeTutorialBattleTeleport_Update_00956060_test.cpp'
+        PassPattern = '00956060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f39730'
+        Module = 'CSurfaceCompositor'
+        Source = '00/f3/CSurfaceCompositor_StartComposition_00f39730.cpp'
+        TestSource = '00/f3/CSurfaceCompositor_StartComposition_00f39730_test.cpp'
+        PassPattern = '00f39730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00523cf0'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_RuntimeSaveGamePersistentEntitiesInLoadedMaps_00523cf0.cpp'
+        TestSource = '00/52/CThingManager_RuntimeSaveGamePersistentEntitiesInLoadedMaps_00523cf0_test.cpp'
+        PassPattern = '00523cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00918b90'
+        Module = 'CAIStateGroup_Gaze'
+        Source = '00/91/CAIStateGroupGaze_Update_00918b90.cpp'
+        TestSource = '00/91/CAIStateGroupGaze_Update_00918b90_test.cpp'
+        PassPattern = '00918b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00972990'
+        Module = 'CAIStateGroup_JackOfBladesStage1'
+        Source = '00/97/CAIStateGroupJackOfBladesStage1_OnActivate_00972990.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesStage1_OnActivate_00972990_test.cpp'
+        PassPattern = '00972990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c8e90'
+        Module = 'CThingFilter_IsEligibleWitness'
+        Source = '00/6c/CThingFilterIsEligibleWitness_operator_006c8e90.cpp'
+        TestSource = '00/6c/CThingFilterIsEligibleWitness_operator_006c8e90_test.cpp'
+        PassPattern = '006c8e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049be90'
+        Module = 'CParticleEnvironmentInteraction'
+        Source = '00/49/CParticleEnvironmentInteraction_IsParticleCollidingAt_0049be90.cpp'
+        TestSource = '00/49/CParticleEnvironmentInteraction_IsParticleCollidingAt_0049be90_test.cpp'
+        PassPattern = '0049be90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

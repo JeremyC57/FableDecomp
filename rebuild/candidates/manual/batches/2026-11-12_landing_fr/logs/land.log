@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00956060   RELOCATION_MATCH PASS   Update
+00f39730   WARN RELOC_NAME: ?DetachZBuffer@CRenderTarget@@QAEXXZ -> 00a10e20 labelled 'CRenderTarget::DetachTarget'
+00f39730   WARN RELOC_NAME: ?GetCurrentAWindow@CRenderManagerCore@@QBEABVC2DBoxF@@XZ -> 00a0aaa0 labelled 'CVertexBufferWin32::DoSizeof'
+00f39730   WARN RELOC_NAME: ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z -> 00a0aa80 labelled '_global::Forward_SetViewport_via0x3a3c_00a0aa80'
+00f39730   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00f39730   RELOCATION_MATCH PASS   StartComposition
+00523cf0   WARN RELOC_NAME: ?Reserve@CCharString@@QAEXJ@Z -> 0099ef90 labelled 'C3DAnimationBlendState::AddCombinationBlend'
+00523cf0   RELOCATION_MATCH PASS   RuntimeSaveGamePersistentEntitiesInLoadedMaps
+00918b90   RELOCATION_MATCH PASS   Update
+00972990   WARN RELOC_NAME: ?GetPHitLocationWithDefName@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVCCharString@@@Z -> 00815820 labelled 'CTCHitLocations::GetPHitLocationFromName'
+00972990   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 0096bcb0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThing, std::vector<CThing *, std::allocator<CThing *>>, CThingFilter_HasDefGlobalIndex>'
+00972990   RELOCATION_MATCH PASS   OnActivate
+  WARN leaf 'operator()' matches no symbol in 006c8e90.obj; graded the largest function
+  WARN leaf 'operator()' matches no symbol in 006c8e90.obj; graded the largest function
+006c8e90   RELOCATION_MATCH PASS   operator()
+0049be90   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_HasPhysicsMesh@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasPhysicsMesh@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z -> 0049c490 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThing const,std::vector<CThing const *,std::allocator<CThing const *> >,CThingFilter_HasPhysicsMesh>'
+0049be90   RELOCATION_MATCH PASS   IsParticleCollidingAt
+
+WINS: 7
+  00956060 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleTeleport::Update
+  00f39730 RELOCATION_MATCH CSurfaceCompositor::StartComposition
+  00523cf0 RELOCATION_MATCH CThingManager::RuntimeSaveGamePersistentEntitiesInLoadedMaps
+  00918b90 RELOCATION_MATCH CAIStateGroup_Gaze::Update
+  00972990 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage1::OnActivate
+  006c8e90 RELOCATION_MATCH CThingFilter_IsEligibleWitness::operator()
+  0049be90 RELOCATION_MATCH CParticleEnvironmentInteraction::IsParticleCollidingAt
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupMazeTutorialBattleTeleport_Update_00956060
+  CSurfaceCompositor_StartComposition_00f39730
+  CThingManager_RuntimeSaveGamePersistentEntitiesInLoadedMaps_00523cf0
+  CAIStateGroupGaze_Update_00918b90
+  CAIStateGroupJackOfBladesStage1_OnActivate_00972990
+  CThingFilterIsEligibleWitness_operator_006c8e90
+  CParticleEnvironmentInteraction_IsParticleCollidingAt_0049be90

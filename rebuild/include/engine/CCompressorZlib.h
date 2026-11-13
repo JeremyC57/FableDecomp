@@ -34,6 +34,11 @@ public:
     unsigned long DecompressStream(void*,unsigned long,bool&);
 #endif
     unsigned long InternalDecompress(const void*,unsigned long,void*,unsigned long);
+#ifdef FABLE_RETAIL_CCOMPRESSORZLIB_INTERNALCOMPRESS
+    // Opt-in (row 0x00523CF0, for the same-TU NThingManager::CEntityRuntimePersistence::SetGamePersistentSaveData body): Ego_r.pdb
+    // ?InternalCompress@CCompressorZlib@@QAEKPBXKAAV?$CArray@E@@@Z (retail 0x00A3ADD0). Declaration only.
+    unsigned long InternalCompress(const void*,unsigned long,CArray<unsigned char>&);   // 0x00A3ADD0
+#endif
 private:
     void Initialise();
     z_stream_s Stream;

@@ -31269,7 +31269,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00918a40	IsRunnable	CAIStateGroup_GazeAtWork	__thiscall	bool	1	CAIStateGroup_GazeAtWork *	1	yes	accepted									
 00918ac0	InitCreaturePosition	CAIStateGroup_Gaze	__thiscall	bool	1	CAIStateGroup_Gaze *	1	yes	accepted									
 00918b50	InitCreaturePosition	CAIStateGroup_GazeAtWork	__thiscall	bool	1	CAIStateGroup_GazeAtWork *	1	yes	accepted									
-00918b90	?Update@CAIStateGroup_Gaze@@MAEXXZ	CAIStateGroup_Gaze	__thiscall	void	1	CAIStateGroup_Gaze *	1	yes	accepted									
+00918b90	Update	CAIStateGroup_Gaze	__thiscall	void	1	CAIStateGroup_Gaze *	1	yes	accepted									
 00918ec0	GetOwner	CAIStateGroup_Gaze	__thiscall	CThingBuilding *	1	CAIStateGroup_Gaze *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\91\CAIStateGroupGaze_GetOwner_00918ec0.cpp
 00918ed0	InsideAtNight	CAIStateGroup_Gaze	__thiscall	bool	1	CAIStateGroup_Gaze *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\91\CAIStateGroupGaze_InsideAtNight_00918ed0.cpp
 00918ee0	`scalar_deleting_destructor'	CAIStateGroup_Gaze	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\91\CThingSwitch_vectordeletingdestructor_00918ee0.cpp
@@ -32273,7 +32273,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009552c0	CAIStateGroup_MazeShieldedChase::Update	CAIStateGroup_MazeShieldedChase	__thiscall	void	1	CAIStateGroup_MazeShieldedChase *	1	yes	accepted									
 00955620	?Update@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ	CAIStateGroup_MazeDefensiveMeleeCombat	__thiscall	void	1	CAIStateGroup_MazeDefensiveMeleeCombat *	1	yes	accepted									
 00955c90	CAIStateGroup_MazeTutorialBattle::Update	CAIStateGroup_MazeTutorialBattle	__thiscall	void	1	CAIStateGroup_MazeTutorialBattle *	1	yes	accepted									
-00956060	CAIStateGroup_MazeTutorialBattleTeleport::Update	CAIStateGroup_MazeTutorialBattleTeleport	__thiscall	void	1	CAIStateGroup_MazeTutorialBattleTeleport *	1	yes	accepted									
+00956060	Update	CAIStateGroup_MazeTutorialBattleTeleport	__thiscall	void	1	CAIStateGroup_MazeTutorialBattleTeleport *	1	yes	accepted									
 00956380	Update	CAIStateGroup_MazeTutorialBattleRespondToLightning	__thiscall	void	1	CAIStateGroup_MazeTutorialBattleRespondToLightning *	1	yes	accepted									
 00956460	Update	CAIStateGroup_MazeTutorialBattleUseShield	__thiscall	void	1	CAIStateGroup_MazeTutorialBattleUseShield *	1	yes	accepted									
 009564f0	CIVCountedPointer_Release_009564f0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\95\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009564f0.cpp
@@ -32769,7 +32769,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009725b0	IsRunnable	CAIStateGroup_JackOfBladesStage3	__thiscall	bool	1	CAIStateGroup_JackOfBladesStage3 *	1	yes	accepted									
 00972670	OnActivate	CAIStateGroup_JackOfBladesStage3	__thiscall	void	1	CAIStateGroup_JackOfBladesStage3 *	1	yes	accepted									
 00972830	SetupArena	CAIStateGroup_JackOfBladesBase	__thiscall	void	1	CAIStateGroup_JackOfBladesBase *	1	yes	accepted									
-00972990	?OnActivate@CAIStateGroup_JackOfBladesStage1@@UAEXXZ	CAIStateGroup_JackOfBladesStage1	__thiscall	void	1	CAIStateGroup_JackOfBladesStage1 *	1	yes	accepted									
+00972990	OnActivate	CAIStateGroup_JackOfBladesStage1	__thiscall	void	1	CAIStateGroup_JackOfBladesStage1 *	1	yes	accepted									
 00972cc0	MeleeCombat	CAIStateGroup_JackOfBladesStage1	__thiscall	EAIActionReturn	1	CAIStateGroup_JackOfBladesStage1 *	1	yes	accepted									
 00972f30	?SetupArena@CAIStateGroup_JackOfBladesStage2@@MAEXXZ	CAIStateGroup_JackOfBladesStage2	__thiscall	void	1	CAIStateGroup_JackOfBladesStage2 *	1	yes	accepted									
 009735d0	RushToPos	CAIStateGroup_JackOfBladesBase	__thiscall	EAIActionReturn	2	CAIStateGroup_JackOfBladesBase *,C3DVector *	1	yes	accepted									

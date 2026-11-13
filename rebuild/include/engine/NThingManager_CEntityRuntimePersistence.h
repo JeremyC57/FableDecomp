@@ -39,6 +39,10 @@ public:
 #endif
     bool GetGamePersistentSaveData(long,CArray<unsigned char>&) const; // 0x00522530 (Ego_r 0x005297A0, FableWin 0x01D437D0)
     void SetGamePersistentSaveData(long,const void*,unsigned long);   // PDB: QAEXJPBXK
+#ifdef FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_SETGAMESCRIPT
+    // Opt-in (row 0x00523CF0): Ego_r.pdb ?SetGamePersistentScript@CEntityRuntimePersistence@NThingManager@@QAEXJABVCCharString@@@Z (0x005237F0, landed).
+    void SetGamePersistentScript(long,const CCharString&);              // 0x005237F0
+#endif
     const CCharString* GetLevelPersistentScript(long level) const {   // PDB QBEPBVCCharString@@J (Ego_r + FableWin); inline in 0x00522720
         if((unsigned long)level<LevelPersistentEntityScripts.size() && LevelPersistentEntityScripts[level].Valid)
             return &LevelPersistentEntityScripts[level].Script;

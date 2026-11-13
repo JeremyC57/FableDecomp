@@ -40,6 +40,13 @@ public:
  bool BeginRender();                                                    // 0x009BEF20 ?BeginRender@CDisplayManager@@QAE_NXZ
  void EndRender();                                                      // 0x009BEF50 ?EndRender@CDisplayManager@@QAEXXZ
  bool SwapScreens();                                                    // 0x009BEEB0 ?SwapScreens@CDisplayManager@@QAE_NXZ
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_RENDERTARGET
+ // Retail opt-in (wf20 row 0x00F39730 CSurfaceCompositor::StartComposition): Ego_r.pdb / FableWin.pdb
+ // ?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z (landed 0x009BF160) and FableWin-only ?IsRendering@CDisplayManager@@QBE_NXZ
+ // (inline in release: 0x00F397A9 reads Rendering +0x214 in place).
+ bool SetRenderTarget(class CRenderTarget& target);                    // 0x009BF160
+ bool IsRendering() const { return Rendering; }
+#endif
  // Chunk 774 (bake 0x0042DF9E CNewFrontendGameComponent::Draw): Ego_r.pdb ?GetVVisibleTelevisionScreenArea@CDisplayManager@@QBE?AVC2DBoxF@@XZ
  // (Draw calls it with a hidden C2DBoxF result and drops the value). Declaration only.
  C2DBoxF GetVVisibleTelevisionScreenArea() const;                       // 0x009BECE0

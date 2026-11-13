@@ -521,6 +521,11 @@ public:
     bool IsForceNoSerialise() const;                             // 0x004C7BD0 ?IsForceNoSerialise@CThing@@QBE_NXZ
     bool IsFreeForDeletion() const;                              // 0x004C7500 ?IsFreeForDeletion@CThing@@QBE_NXZ
     const CCharString& GetTypeName() const;                      // 0x004C7E10 ?GetTypeName@CThing@@QBEABVCCharString@@XZ
+#ifdef FABLE_RETAIL_CTHING_GETSERIALISATIONSECTIONNAME
+    // Opt-in (row 0x00523CF0, for the same-TU CThingManager savers): FableWin.pdb ?GetSerialisationSectionName@CThing@@QBEABVCCharString@@XZ
+    // (0x017BE742), inline in retail (the member +0x58 read in place). Member function only: no layout change.
+    const CCharString& GetSerialisationSectionName() const { return SerialisationSectionName; }
+#endif
     void CreateUID();                                            // 0x004C7FF0 ?CreateUID@CThing@@QAEXXZ
     bool IsUnderScriptControl() const;                           // 0x004C8C90 ?IsUnderScriptControl@CThing@@QBE_NXZ
     void SetToKillOnLevelUnload(bool);                           // 0x004C9C40 ?SetToKillOnLevelUnload@CThing@@QAEX_N@Z
