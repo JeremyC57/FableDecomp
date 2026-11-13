@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+01436EA0	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	landed siblings + FableWin GetCurrentCamera (*NEngineInternal::GPCamera)	g_pEngineCamera (acctB drafts)
+01436E78	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	sibling rows (agentC19 lesson: CEngine::Initialise stores the renderer at 0x01436E80)	g_pPrimitiveRenderer typed CEnginePrimitiveRenderer (acctB 0x00BCC800 draft)

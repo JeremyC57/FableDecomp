@@ -10,15 +10,15 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 0058578b	IN_PROGRESS			C23 row 3	parked	CTCInventory::CTCInventory::vfunc_30
 00b4d370	OPEN				parked	CEngineShadowRenderer::UpdateShadowSpace
 00601310	IN_PROGRESS			C23 row 1	parked	_global::ConstructQuestsScreen_MainMenu
-00b89c30	IN_PROGRESS			C22 row 1	parked	CEngineScreenEffectOutlineGlow::ApplyOutline
+00b89c30	PARKED	6431	2026-11-13_acctC_c22open	C22: DIFFER(6431v6431), one hunk; asserts/names no effect (acctB ~900 grades on it)	parked	CEngineScreenEffectOutlineGlow::ApplyOutline
 00b5ca70	OPEN				parked	CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer
 00651b04	MATCHED_STAGED	5126	2026-11-13_acctC_c2a	C2	parked	CDrawAbilityButtons::Draw
-00baa870	IN_PROGRESS			C22 row 4	parked	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList
+00baa870	OPEN	4600	2026-11-13_acctC_c22open	C22: header port incomplete, never graded	parked	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList
 00bb3e80	MATCHED_STAGED	4540	2026-11-13_acctC_c19a	C2 -> C3 -> C6 -> C8; 11 inferred release asserts (fitted count, review item)	parked	CEngineClothRenderer::RenderClothPrimitive
 00a91640	OPEN				parked	_gapscan::sub_00a91640
-00b8b780	IN_PROGRESS			C22 row 2	parked	CEngineBillboardGenerator::RenderBillboard
+00b8b780	PARKED	3921	2026-11-13_acctC_c22open	C22: DIFFER(3921v3921), 3 operand-order sites left with 2 evidenced asserts; 5 asserts would leave 1 (fitted)	parked	CEngineBillboardGenerator::RenderBillboard
 00ba5260	PARKED	4056	2026-11-13_acctC_c19a/open_00ba5260	RELOCATION_MATCH inside the TU (C19, C20) but the TU needs the real 00ba2350 body; lands with it; test not written	parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
-00bcc800	IN_PROGRESS			C22 row 3	parked	CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
+00bcc800	PARKED	3205	2026-11-13_acctC_c22open	C22: DIFFER(3207v3205), allocation residue, record counts do not move it	parked	CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
 0048e78e	OPEN				parked	CSubtitleRenderer::DrawButtonGraphics
 00cbfb7d	OPEN				parked	_global::RunCutsceneMacro
 00f0fb70	OPEN				parked	NScript::CQ_ArenaScript::Main
@@ -146,16 +146,16 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 0121f86f	OPEN				never_worked	_global::ParticleEngine_ModuleInit
 01221d20	OPEN				never_worked	_gapscan::sub_01221d20
 00dfca90	OPEN				never_worked	NScript::CQ_TraderConflictGoodScript::CBanditExtra::Main
-0058f9bc	OPEN				never_worked	CTCInventory::OpenPCPhotojournal
-007bfe30	OPEN				never_worked	CTCShotDefinitionBase::UpdateCollision
-009fde80	OPEN				never_worked	CGraphicInfoFrame::CFrameData::BeginLoading
-007c0690	OPEN				never_worked	NThingShot::CTCShotDefinitionBase::Init
-007ef200	OPEN				never_worked	CTCCarriedActionUseExpression::CTCCarriedActionUseExpression::vfunc_28
-0074e860	OPEN				never_worked	CTCContainerRewardHero::GetRewardItems
-0072cf40	OPEN				never_worked	CTCSpecialAbilities::UseSpecialAbility
-00735fd0	OPEN				never_worked	CTCCombat::AttemptToStartParticle
-007e15c0	OPEN				never_worked	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0
-006823d0	OPEN				never_worked	CTCCreatureOpinionOfHero::FrameUpdate
+0058f9bc	IN_PROGRESS			C24	never_worked	CTCInventory::OpenPCPhotojournal
+007bfe30	IN_PROGRESS			C24	never_worked	CTCShotDefinitionBase::UpdateCollision
+009fde80	IN_PROGRESS			C24	never_worked	CGraphicInfoFrame::CFrameData::BeginLoading
+007c0690	IN_PROGRESS			C24	never_worked	NThingShot::CTCShotDefinitionBase::Init
+007ef200	IN_PROGRESS			C24	never_worked	CTCCarriedActionUseExpression::CTCCarriedActionUseExpression::vfunc_28
+0074e860	IN_PROGRESS			C24	never_worked	CTCContainerRewardHero::GetRewardItems
+0072cf40	IN_PROGRESS			C24	never_worked	CTCSpecialAbilities::UseSpecialAbility
+00735fd0	IN_PROGRESS			C24	never_worked	CTCCombat::AttemptToStartParticle
+007e15c0	IN_PROGRESS			C24	never_worked	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0
+006823d0	IN_PROGRESS			C24	never_worked	CTCCreatureOpinionOfHero::FrameUpdate
 00537e70	OPEN				never_worked	_global::ContainerUI_HandleMouseInput
 00945060	OPEN				never_worked	CAIStateGroup_WorkHammerAnvil::?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ
 006b2ca0	OPEN				never_worked	_global::CGameCamera_UpdateViewMatrix

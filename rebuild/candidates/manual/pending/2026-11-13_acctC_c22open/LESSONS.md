@@ -1,0 +1,6 @@
+# agentC22 lessons (one line each)
+- (0x00B8B780) FableWin /Od sizes of helpers with float-constant stores carry the later compiler's fldz/fld1 form (3 instr / 8 bytes per store v VC7.1's 2 instr / 7-10 bytes): SetIdentity 43i/106b and SetMultiplyNoTranslation 160i/444b (= 9-sum + translation clear) are not text gaps; adjust before chasing.
+- (0x00B8B780) A FableWin size that is "call + stores" (SetTranslate(C3DVector&) 21i/56b = SetIdentity() call + 3 stores, SetTranslate(MMM) 18i/48b) reveals an inline layer: predict it with /Od arithmetic (prologue 4 + 2 per call + 4 per member store + epilogue 3).
+- (0x00B8B780) bookmark test/or operand order sites there are a whole-body record-count effect: one dead assert anywhere = no change, 2 fix one site, 4-5 fix three; position does not matter.
+- (0x00B89C30, 0x00BCC800) dead FABLE_RETAIL_ASSERTs (1..8, any site, inside helpers too) leave both rows byte-identical: count rulers do not reach a hashed-key wrap (row 1) or an allocation equilibrium (row 3).
+- Re-applying stale opt-ins: anchor by the nearest unique preceding line plus identical gap lines (reap2.py), then delete the default lines duplicated by an `#else` arm (fixelse.py); `already` must be checked against the base, not the growing copy.
