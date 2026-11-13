@@ -1,0 +1,83 @@
+--- a/rebuild/include/engine/CEnginePrimitiveRenderUtil.h
++++ b/rebuild/include/engine/CEnginePrimitiveRenderUtil.h
+@@ -29,6 +29,18 @@
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MESHRENDER
+ #include "engine/EEngineOcclusionLayer.h"
+ #endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTH2D
++class C2DAlphaMaskInfo;
++enum EEnginePrimitiveBlendMode;                                          // MS forward enum (engine/CEnginePrimitive2DSprite.h)
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MESHPRIMITIVE
++class CEngineMeshEffect;
++class CMatrix3x4;
++enum ERenderPassType;
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTHRENDER
++class CEngineMeshEffectOutline;
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_FINDLOCALLIGHTS
+ #include "engine/CEnginePrimitiveThemeChannelDesc.h"
+ class C3DVector;
+@@ -74,6 +86,53 @@
+     void SetupOutlineStencilStates(const CEngineMeshEffectOutline& effect, float scale);   // 0x00BF0B20
+ #endif
+ #endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MESHPRIMITIVE
++    // Opt-in (chunk 2060 row 0x00BA5260 RenderMeshPrimitive, there spelled _MESHRENDER before that name was taken by chunk 2028; agentC2 row
++    // 0x00BB3E80): Ego_r.pdb / FableWin.pdb ?SetupStencilMask@CEnginePrimitiveRenderUtil@@QAEXPBVCEngineMeshEffect@@KW4ERenderPassType@@@Z
++    // (out of line, 0x00BF1030, landed), the FableWin.pdb inline statics ?SetWorldTransform@CEnginePrimitiveRenderUtil@@SIXABVCMatrix3x4@@@Z
++    // and ?GetMipmapSizeMultiplier@CEnginePrimitiveRenderUtil@@SIMXZ, and ?SetupAlphaBlendingStatesFromRenderFlags@CEnginePrimitiveRenderUtil@@
++    // QAEXKW4ERenderPassType@@EE@Z (no retail out-of-line copy). The including row defines the inline bodies.
++    void SetupStencilMask(const CEngineMeshEffect* effect, unsigned long flags, ERenderPassType pass);   // 0x00BF1030
++    static void __fastcall SetWorldTransform(const CMatrix3x4& transform);
++    static float __fastcall GetMipmapSizeMultiplier();
++    void SetupAlphaBlendingStatesFromRenderFlags(unsigned long render_flags, ERenderPassType pass, unsigned char alpha, unsigned char alpha_ref);
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTHSHADERS
++    // Opt-in (agentC2, row 0x00BB3E80 CEngineClothRenderer::RenderClothPrimitive): the FableWin.pdb static shader getters listed right after
++    // that row (its first user): ?GetPixelShaderDiffuseOnly@CEnginePrimitiveRenderUtil@@SIABVCPixelShader@@XZ (15b / 6 debug instructions
++    // each = the shared data's member address), ..DiffuseColourTextureDiffuseAlpha, ..OutlineSmoothFill, ..OutlineSmoothFillAlpha, ..Diffuse,
++    // and ..DiffuseFogShadow / ..DiffuseFogShadowOutputFactor (16b / 6: the pointer member dereferenced). No retail copy (read in place).
++    // The including row defines the bodies (they reach the shared data global).
++    static const CPixelShader& __fastcall GetPixelShaderDiffuseOnly();
++    static const CPixelShader& __fastcall GetPixelShaderDiffuseColourTextureDiffuseAlpha();
++    static const CPixelShader& __fastcall GetPixelShaderOutlineSmoothFill();
++    static const CPixelShader& __fastcall GetPixelShaderOutlineSmoothFillAlpha();
++    static const CPixelShader& __fastcall GetPixelShaderDiffuse();
++    static const CPixelShader& __fastcall GetPixelShaderDiffuseFogShadow();
++    static const CPixelShader& __fastcall GetPixelShaderDiffuseFogShadowOutputFactor();
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTH2D
++    // Opt-in (agentC6, row 0x00BB30A0 CEngineClothRenderer::Render2DClothPrimitive): the 2D alpha-mask helpers that row expands (FableWin.pdb
++    // names, listed right after that row: ?GetPixelShader2DDiffuse@CEnginePrimitiveRenderUtil@@SIABVCPixelShader@@W4EEnginePrimitiveBlendMode@@@Z,
++    // ?Set2DAlphaMaskTextureMode@..@@QAEXK_N0@Z, ?DisableTextureFiltering@..@@QAEXK@Z, ?GetCurrent2DAlphaMaskInfo@..@@QAEPBVC2DAlphaMaskInfo@@XZ).
++    // No retail copy (all expanded); the including row defines the bodies.
++    static const CPixelShader& __fastcall GetPixelShader2DDiffuse(EEnginePrimitiveBlendMode blend_mode);
++    void Set2DAlphaMaskTextureMode(unsigned long stage, bool filter, bool clamp);
++    void DisableTextureFiltering(unsigned long stage);
++    const C2DAlphaMaskInfo* GetCurrent2DAlphaMaskInfo();
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTHRENDER
++    // Opt-in (bwf1 / agentC2, row 0x00BB3E80 CEngineClothRenderer::RenderClothPrimitive): the outline set-ups the cloth renderer calls out of
++    // line (Ego_r.pdb / FableWin.pdb names; `this` unused). Identities by pass: 0x00BF0740 = SetupOutlineStencilStates (pass 12), 0x00BF0B20 =
++    // SetupOutlineFillStates (pass 13) -- the _OUTLINESTENCILSTATES opt-in binds SetupOutlineStencilStates to 0x00BF0B20: see NAME_FIXES.tsv.
++    void SetupOutlineSmoothStencilStates(const CEngineMeshEffectOutline& effect, float scale);                       // 0x00BEFD90
++#ifndef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_OUTLINESTENCIL
++    void SetupOutlineSmoothAlphaStencilMaskStates(const CEngineMeshEffectOutline& effect);                          // 0x00BF01E0
++#endif
++    void SetupOutlineSmoothFillStates(const CEngineMeshEffectOutline& effect, float scale, bool alpha, long pass_index);   // 0x00BF2240
++    void SetupOutlineStencilStates(const CEngineMeshEffectOutline& effect, float scale);                            // 0x00BF0740
++    void SetupOutlineFillStates(const CEngineMeshEffectOutline& effect, float scale);                               // 0x00BF0B20
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_ADDGENERATEDOBJECTS
+     // Overlay opt-in (chunk 2011): Ego_r.pdb / FableWin.pdb ?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveStaticMesh@@@Z
+     // (retail 0x00BF12A0, `ret 4`) and ?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z
+@@ -107,6 +166,6 @@
+     static long __fastcall GetShowSilhouettes();
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRenderUtil) == 0x4);
++FABLE_STATIC_ASSERT_AT(110, sizeof(CEnginePrimitiveRenderUtil) == 0x4);
+ 
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVERENDERUTIL_H

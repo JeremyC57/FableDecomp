@@ -1,0 +1,45 @@
+--- a/rebuild/include/engine/CEngineClothRenderer.h
++++ b/rebuild/include/engine/CEngineClothRenderer.h
+@@ -20,6 +20,11 @@
+ class C4DVector;
+ class CParticleSimulation;
+ class CParticleProgram;
++#ifdef FABLE_RETAIL_CENGINECLOTHRENDERER_RENDER
++#include "engine/CEngineRenderEnums.h"
++class C3DClothPrimitive; class C3DPrimitive2; class CEngineSubPrimitiveMeshBase; class CEngineInternalPrimitiveMeshBase; class CMatrix3x4;
++class CEngineLocalLightArray; class CTexture;
++#endif
+ class CEngineClothRenderer : public CEnginePrimitiveRenderUtil {
+ public:
+     CEngineClothRenderer();
+@@ -50,6 +55,23 @@
+     CSimpleMemoryPool NormalBufferPool;
+     C4DVector* NormalBuffer;
+     unsigned long NormalBufferSize;
++#ifdef FABLE_RETAIL_CENGINECLOTHRENDERER_RENDER
++    // Opt-in (agentC6, rows 0x00BB3E80 RenderClothPrimitive / 0x00BB30A0 Render2DClothPrimitive): the cloth draw entry points (Ego_r.pdb /
++    // FableWin.pdb spellings, public QAE; callers 0x00B81426 / 0x00B81612 / 0x00B8179E), the out-of-line RenderPolygons 0x00BB2540
++    // (private AAE) and the inline ApplyTriVertexShader (FableWin.pdb ?ApplyTriVertexShader@CEngineClothRenderer@@AAEXK_NK@Z, no retail
++    // copy: the includer defines the body). Declarations only; no layout change.
++    void RenderClothPrimitive(const CParticleSimulation& simulation, const C3DClothPrimitive& cloth_primitive, const C3DPrimitive2& mesh_primitive,
++        const CEngineSubPrimitiveMeshBase& sub_primitive, CEngineInternalPrimitiveMeshBase& primitive, const CMatrix3x4& transform,
++        ERenderPassType pass, bool block_on_load);
++    void Render2DClothPrimitive(const CParticleSimulation& simulation, const C3DClothPrimitive& cloth_primitive, const C3DPrimitive2& mesh_primitive,
++        const CEngineSubPrimitiveMeshBase& sub_primitive, CEngineInternalPrimitiveMeshBase& primitive, const CMatrix3x4& transform,
++        ERenderPassType pass, bool block_on_load);
++private:
++    void RenderPolygons(const CParticleSimulation& simulation, const CParticleProgram& program, const CMatrix3x4& transform,
++        const CEngineLocalLightArray& lights, const CTexture** textures, unsigned long texture_count, bool a, bool two_sided,
++        unsigned long render_flags, bool b, bool c, unsigned long fvf, ERenderPassType pass, CEngineInternalPrimitiveMeshBase& primitive);
++    void ApplyTriVertexShader(unsigned long light_count, bool force, unsigned long render_flags);
++#endif
+ private:
+     C4DVector* GetNormalBuffer(unsigned long count);                    // 0x00BB1E90
+     void CalculateVertexNormals(const CParticleSimulation& simulation, const CParticleProgram& program);   // 0x00BB1F50
+@@ -76,5 +98,5 @@
+     unsigned long NormalBufferSize;                                      // +0xec
+ };
+ #endif
+-FABLE_STATIC_ASSERT(sizeof(CEngineClothRenderer) == 0xf0);
++FABLE_STATIC_ASSERT_AT(79, sizeof(CEngineClothRenderer) == 0xf0);
+ #endif

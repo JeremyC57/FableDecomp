@@ -1,0 +1,52 @@
+--- a/rebuild/include/engine/C3DPrimitive2.h
++++ b/rebuild/include/engine/C3DPrimitive2.h
+@@ -3,6 +3,9 @@
+ #include "engine/C3DTextureStages.h"
+ #include "engine/N3DPrimitive_CStaticBlock.h"
+ #include <stddef.h>
++#ifdef FABLE_RETAIL_C3DPRIMITIVE2_RENDER
++#include "engine/C3DBoundingSphere.h"
++#endif
+ #ifdef FABLE_RETAIL_C3DPRIMITIVE2_CLOTHPRIMITIVES
+ #include "engine/CCountedPointer.h"
+ #include "engine/CArray.h"
+@@ -65,7 +68,7 @@
+ #endif
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(N3DPrimitive::CAnimatedBlock)==0x30);
++FABLE_STATIC_ASSERT_AT(68, sizeof(N3DPrimitive::CAnimatedBlock)==0x30);
+ #endif
+ // Full original member range: donor172 becomes native160 after three16-byte CArrays shrink to12.
+ #ifdef FABLE_RETAIL_C3DPRIMITIVE2_HIERARCHY
+@@ -81,7 +84,17 @@
+ #else
+     unsigned char UnmodelledBase[4];
+ #endif
++#ifdef FABLE_RETAIL_C3DPRIMITIVE2_RENDER
++    // Opt-in (chunk 2060 row 0x00BA5260; re-based by bwf1 / agentC2 row 0x00BB3E80): BoundingSphere typed as Ego_r.pdb declares it
++    // (C3DBoundingSphere +0xC, same storage) and the FableWin.pdb inline accessors ?GetMaterialIndex@C3DPrimitive2@@QBEJXZ,
++    // ?GetBoundingSphere@C3DPrimitive2@@QBE?AVC3DBoundingSphere@@XZ (by value), ?GetAverageTextureStretch@C3DPrimitive2@@QBEMXZ.
++    long GetMaterialIndex()const{return MaterialIndex;}
++    C3DBoundingSphere GetBoundingSphere()const{return BoundingSphere;}
++    float GetAverageTextureStretch()const{return AverageTextureStretch;}
++    long MaterialIndex,RepeatingMeshReps;C3DBoundingSphere BoundingSphere;float AverageTextureStretch;
++#else
+     long MaterialIndex,RepeatingMeshReps;unsigned char BoundingSphere[16];float AverageTextureStretch;
++#endif
+ #ifdef FABLE_RETAIL_C3DPRIMITIVE2_CLOTHPRIMITIVES
+     // Retail opt-in (wf8, row 0x00B81F30): Ego_r.pdb types ClothPrimitives (+0x20) as CArray<CCountedPointer<C3DClothPrimitive> >
+     // (the retail 12-byte STLport vector). Not combinable with FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER yet. No layout change.
+@@ -190,8 +203,8 @@
+     void SetRecordedTextureStages(const C3DTextureStages& stages) { RecordedTextureStages=stages; }
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DPrimitive2)==0xa0);
+-FABLE_STATIC_ASSERT(offsetof(C3DPrimitive2,StaticBlockCount)==0x40);
+-FABLE_STATIC_ASSERT(offsetof(C3DPrimitive2,StaticBlocks)==0x44);
+-FABLE_STATIC_ASSERT(offsetof(C3DPrimitive2,RecordedFrame)==0x7c);
++FABLE_STATIC_ASSERT_AT(193, sizeof(C3DPrimitive2)==0xa0);
++FABLE_STATIC_ASSERT_AT(194, offsetof(C3DPrimitive2,StaticBlockCount)==0x40);
++FABLE_STATIC_ASSERT_AT(195, offsetof(C3DPrimitive2,StaticBlocks)==0x44);
++FABLE_STATIC_ASSERT_AT(196, offsetof(C3DPrimitive2,RecordedFrame)==0x7c);
+ #endif

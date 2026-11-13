@@ -14,7 +14,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b5ca70	OPEN				parked	CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer
 00651b04	MATCHED_STAGED	5126	2026-11-13_acctC_c2a	C2	parked	CDrawAbilityButtons::Draw
 00baa870	OPEN				parked	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList
-00bb3e80	IN_PROGRESS	4540	2026-11-13_acctC_c2a/open_00bb3e80	C6 reports RELOCATION_MATCH with 9 release asserts (fable_assert.h); to be coordinator-verified and staged when C6 hands back	parked	CEngineClothRenderer::RenderClothPrimitive
+00bb3e80	MATCHED_STAGED	4540	2026-11-13_acctC_c6a	C2 -> C3 -> C6; nine inferred release asserts (count fitted, review item)	parked	CEngineClothRenderer::RenderClothPrimitive
 00a91640	OPEN				parked	_gapscan::sub_00a91640
 00b8b780	OPEN				parked	CEngineBillboardGenerator::RenderBillboard
 00ba5260	OPEN				parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
