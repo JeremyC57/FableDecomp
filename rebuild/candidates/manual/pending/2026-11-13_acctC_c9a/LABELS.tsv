@@ -1,0 +1,9 @@
+address	name	evidence
+0x005FF190	?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z	Ego_r.pdb + FableWin.pdb (0x02099AF0) manglings; anniversary PDB S_GPROC32 CTCInventoryMap::CreateMapMarkers (params this/pmap/regions)
+0x005F1B10	?ConstructPCMagicList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z	Ego_r.pdb + FableWin.pdb (0x01ECC87B) manglings; caller 0x00422D85 in landed CManager::Action
+0x005EE3B3	?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ	landed row + Ego_r.pdb (header _EXPRESSIONS opt-in)
+0x005EDE93	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	Ego_r.pdb + FableWin.pdb (0x01EBA6D4) mangling; reloc_bindings 0x005EDE93; body `mov eax,[ecx+0x160]; mov ecx,[esp+4]; mov eax,[eax+ecx*8]; ret 4` = Abilities[ability].first; auto-inlined in 0x005F1B10 (0x005F2E7C, 0x005F2F3B, 0x005F3430)
+0x005EDE7F	?GetAbilityGraphicIndex@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	landed row 0x005EDE7F + header chunk 735; body Abilities[a].second->IconGraphicIndex (+0x44)
+0x005EEFF2	?GetMagicListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z	reloc_bindings (caller 0x005F519F); open row (sub_005eeff2, 5619 bytes); its loop 0x005EF083.. is byte-identical in shape to 0x005F1B10's loop 1 (count in a frame word)
+0x005F59C7	?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z	FableWin.pdb; console twin GetExpressionsListUIComponent 0x005F4C8F landed
+0x005F81BE	??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z	FableWin.pdb (fablewin_pdb_names 01dfc5a0) + reloc_bindings.tsv (landed 0x007EEFE0)

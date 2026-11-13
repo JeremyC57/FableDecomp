@@ -1,0 +1,8 @@
+addr       parity           behav  name
+005f1b10   WARN RELOC_NAME: ??0?$_List_base@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@ABV?$allocator@W4EHeroAbility@@@1@@Z -> 005f88ed labelled 'std_CircularList_Construct'
+005f1b10   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005f1b10   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005f1b10   WARN RELOC_NAME: ??1?$_List_base@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@XZ -> 005f8908 labelled '_global::StdList_Dtor_005f8908'
+005f1b10   RELOCATION_MATCH PASS   ConstructPCMagicList
+WINS: 1
+  005f1b10 RELOCATION_MATCH CTCInventoryAbilities::ConstructPCMagicList

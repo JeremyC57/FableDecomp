@@ -1,12 +1,11 @@
 // CTCInventoryAbilities::ConstructPCMagicList(NUISystem::CComponent* parent) -- PC skills screen, magic page: owned spells, assigned palette (received order padded with empty slots), per-category sub lists with titles, expression-item and spell quick-slot containers, one menu entry per owned spell with assign / swap / drag actions, the three category blocks
-// Grade: DIFFER(8383v8383) -- code identical to retail; residue = frame-word assignment only (c2 frame packer: 167 instructions, slot order faded/deletion v frame v entry/swap/action 0x24..0x37, pairs 0x10/0x14, 0x54/0x58, 0x28/0x30; see NOTES.md)
+// Frame: the expression-block `icon->AddActionOnDroppedNowhere(action);` is written in both arms of the isSpell if / else (c2 cross-jumps them to one call; the IL reference makes the icon weigh 9 so the packer shares its word with the spell-block assign at [ebp+30h], 0x005F225D); FABLE_RETAIL_STLP_MAP (STLport map::operator[] body visible, still called out of line) lets the CategoriesLists key temporary share [ebp+58h] (0x005F34C2); counters declared surround, physical, attack (zero stores 0x005F1CA0).
 // Leaf: ?ConstructPCMagicList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z
 // Retail: 0x005F1B10, 8383 bytes (`ret 4` at 0x005F3BCC)
 // Same-TU bodies GetAbilityLevel 0x005EDE93 / GetAbilityGraphicIndex 0x005EDE7F (auto-inlined by c2 as in retail: 0x005F2E7C,
 //   0x005F2F3B, 0x005F3430 load Abilities._M_start before the index and add 1 into a new register); `descriptionText` named
 //   (retail loads description.Data into edi before the L"" temp, 0x005F3420); loop-1 bound `count` set in an if / else (per-arm
 //   stores 0x005F1BED / 0x005F1BF2).
-// Flags:
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #ifdef _MSC_VER
 #pragma optimize("s", on)
@@ -24,6 +23,7 @@
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_STLP_FIND
 #define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE
 #define FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE
@@ -151,7 +151,7 @@ CComponent* CTCInventoryAbilities::ConstructPCMagicList(CComponent* parent)
         }
     }
     CategoriesLists.clear();
-    unsigned long attackCount=0,physicalCount=0,surroundCount=0;
+    unsigned long surroundCount=0,physicalCount=0,attackCount=0;
     for(std::list<EHeroAbility>::iterator it=owned.begin();it!=owned.end();++it) {
         EUISpellCategory category=GetCategory(*it);
         if(category==SPELL_CATEGORY_SURROUND) ++surroundCount;
@@ -233,12 +233,13 @@ CComponent* CTCInventoryAbilities::ConstructPCMagicList(CComponent* parent)
                     action.Reset(new CAction);
                     action->ActionType=NUISystem::UI_ACTION_TYPE_SET_SPELL_TO_ASSIGN_PC;
                     action->UIActionParams.push_back(new CActionParamSLONG(0));
+                    icon->AddActionOnDroppedNowhere(action);
                 } else {
                     action.Reset(new CAction);
                     action->ActionType=NUISystem::UI_ACTION_TYPE_SET_EXPRESSION_ITEM_TO_ASSIGN_PC;
                     action->UIActionParams.push_back(new CActionParamSLONG(0));
+                    icon->AddActionOnDroppedNowhere(action);
                 }
-                icon->AddActionOnDroppedNowhere(action);
                 CCountedPointer<CAction> follow(new CAction);
                 follow->ActionType=NUISystem::UI_ACTION_TYPE_OBSERVE_EVENT;
                 follow->AddParam(icon.Get(),follow);

@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x005F81BE	??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z	FableWin.pdb template instance (01dfc5a0) + reloc_bindings.tsv (caller 0x007EEFE0 landed); landed 0x005F4C8F uses the template	?GetDef@CDefinitionManager@@Q(A|B)E_NJPAV?$CDefPointer@VCExpressionDef@@@@@Z (non-template, CDefPointer<CExpressionDef>) -- rebuild/include/engine/CDefinitionManager.h opt-in FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_EXPRESSIONDEF and the chunk-867/1008 draft of 0x005F59C7
