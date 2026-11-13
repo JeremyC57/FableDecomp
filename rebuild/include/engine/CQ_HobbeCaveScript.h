@@ -78,6 +78,52 @@ public:
     class CBanditInRoomSample;                                           // Alloc 0x00D90FF0
     class CCheckTheSilverKeyChest;                                       // Alloc 0x00D91250
     class CInvisibleCage;                                                // Alloc 0x00D91470
+#ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_CBANDITSACRIFICE_MAIN
+    // Retail opt-in (chunk 815, CBanditSacrifice::Main 0x00D973D0): Ego_r.pdb CBanditSacrifice (60 bytes, struct_layouts_egor.tsv):
+    // CEntityScriptBase (0x14), ParentClass +0x14, PMasterData +0x18, CurrentAIState +0x1c, PreviousAIState +0x20, BanditHealthID
+    // +0x24, ImprisonedFX +0x28, MadeMainChamberHobbesComment +0x34, FollowingCommentsSaid +0x38 -- the offsets Main reads. Entity
+    // vtable 0x012D5A94 (stored by Alloc 0x00D90E90): 0 scalar deleting dtor 0x00D91580, 1 Main 0x00D973D0, 2 Init 0x00D90F40,
+    // 3 GetParentScript 0x00D90F30, 5 OnPredicateFail 0x00D90FA0. Spellings: Ego_r.pdb / FableWin.pdb
+    // ?<Name>@CBanditSacrifice@CQ_HobbeCaveScript@NScript@@ (Alloc SI, Main / Init / OnPredicateFail EAE, GetParentScript UBE).
+    class CBanditSacrifice : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HobbeCaveScript&, CScriptDataBase*, const CScriptThing&); // 0x00D90E90
+        virtual CScriptBase* GetParentScript() const;                    // 0x00D90F30
+    private:
+        virtual void Main();                                             // 0x00D973D0
+        virtual void Init();                                             // 0x00D90F40
+        virtual void OnPredicateFail();                                  // 0x00D90FA0
+    protected:
+        CQ_HobbeCaveScript& ParentClass;                                 // +0x14
+        CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
+    private:
+        long CurrentAIState;                                             // +0x1c
+        long PreviousAIState;                                            // +0x20
+        long BanditHealthID;                                             // +0x24
+        CScriptThing ImprisonedFX;                                       // +0x28
+        bool MadeMainChamberHobbesComment;                               // +0x34
+        long FollowingCommentsSaid;                                      // +0x38
+    };
+#endif
+#ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_CHOBBESPAWN_MAIN
+    // Retail opt-in (chunk 2006, CHobbeSpawn::Main 0x00D91E00): Ego_r.pdb CHobbeSpawn (32 bytes, struct_layouts_egor.tsv):
+    // CEntityScriptBase (0x14), ParentClass +0x14, PMasterData +0x18, NumberToGenerate +0x1c (Main reads and decrements it).
+    // Spellings: Ego_r.pdb / FableWin.pdb ?<Name>@CHobbeSpawn@CQ_HobbeCaveScript@NScript@@ (Alloc SI 0x00D8F310, Main / Init EAE,
+    // GetParentScript UBE).
+    class CHobbeSpawn : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HobbeCaveScript&, CScriptDataBase*, const CScriptThing&); // 0x00D8F310
+        virtual CScriptBase* GetParentScript() const;
+    private:
+        virtual void Main();                                             // 0x00D91E00
+        virtual void Init();
+    protected:
+        CQ_HobbeCaveScript& ParentClass;                                 // +0x14
+        CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
+    private:
+        long NumberToGenerate;                                           // +0x1c
+    };
+#endif
 };
 #ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_HOBBEROAMING
 // Retail opt-in (chunk Q12, row 0x00D91960): the nested entity script CHobbeRoaming (Ego_r.pdb, 28 bytes: CEntityScriptBase 0x14,
@@ -101,6 +147,13 @@ protected:
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeCaveScript) == 0x78);
 #ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_HOBBEROAMING
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeCaveScript::CHobbeRoaming) == 0x1c);
+#endif
+#ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_CBANDITSACRIFICE_MAIN
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeCaveScript::CBanditSacrifice) == 0x3c);
+#endif
+
+#ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_CHOBBESPAWN_MAIN
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeCaveScript::CHobbeSpawn) == 0x20);
 #endif
 
 #endif // FABLE_RETAIL_NSCRIPT

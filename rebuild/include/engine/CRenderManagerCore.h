@@ -93,7 +93,17 @@ public:
 #else
     void AttachTextureToStage(long stage, const CTexture* texture);      // 0x009A0CF0
 #endif
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_VOLUMETEXTURE_INLINE
+    // Retail opt-in (chunk 2008, row 0x00B54890 CEngineWeatherRenderer::RenderRain): the same Ego_r.pdb member expanded in place
+    // (0x00B54916..0x00B5496E: the volume texture's PD3DVolumeTexture +4 or 0, the cached stage-0 texture test, SetTexture, then the
+    // TextureStagesInUse high-water mark), through the private AttachD3DTextureToStage. Needs engine/CVolumeTexture.h.
+    FABLE_FORCEINLINE void AttachVolumeTextureToStage(long stage, const CVolumeTexture* texture)
+    {
+        AttachD3DTextureToStage(stage, texture ? (IDirect3DBaseTexture9*)texture->PD3DVolumeTexture : 0);
+    }
+#else
     void AttachVolumeTextureToStage(long stage, const CVolumeTexture* texture);   // ?AttachVolumeTextureToStage@CRenderManagerCore@@QAEXJPBVCVolumeTexture@@@Z
+#endif
     // ?SelectVertexBuffer@CRenderManagerCore@@QAEXKPAVCVertexBufferWin32@@@Z
     FABLE_FORCEINLINE void SelectVertexBuffer(unsigned long stream, CVertexBufferWin32* buffer)
     {

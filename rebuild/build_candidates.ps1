@@ -395139,6 +395139,34 @@ $catalog = @(
         TestSource = '00/72/CTCPhysicsControlled_PerformImpulseBasedMovement_00725500_test.cpp'
         PassPattern = '00725500_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b3c5d0'
+        Module = 'CEngineResourceManager'
+        Source = '00/b3/CEngineResourceManager_SetupAlphaStippleTexture_00b3c5d0.cpp'
+        TestSource = '00/b3/CEngineResourceManager_SetupAlphaStippleTexture_00b3c5d0_test.cpp'
+        PassPattern = '00b3c5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d91e00'
+        Module = 'NScript::CQ_HobbeCaveScript::CHobbeSpawn'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCHobbeSpawn_Main_00d91e00.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCHobbeSpawn_Main_00d91e00_test.cpp'
+        PassPattern = '00d91e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ca390'
+        Module = 'CThing'
+        Source = '00/4c/CThing_ConstructFromBinarySave_004ca390.cpp'
+        TestSource = '00/4c/CThing_ConstructFromBinarySave_004ca390_test.cpp'
+        PassPattern = '004ca390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b665e0'
+        Module = 'CEngineSkyRenderer'
+        Source = '00/b6/CEngineSkyRenderer_GetEnvironmentMap_00b665e0.cpp'
+        TestSource = '00/b6/CEngineSkyRenderer_GetEnvironmentMap_00b665e0_test.cpp'
+        PassPattern = '00b665e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

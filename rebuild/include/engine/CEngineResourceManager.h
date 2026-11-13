@@ -17,6 +17,16 @@ class CXboxBufferMemoryPool;
 #include "engine/CAsyncLoadingProcessCallback.h"
 #include "engine/CArray.h"
 #include "engine/CCountedPointer.h"
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_STIPPLE
+// Retail opt-in (chunk 2001, row 0x00B3C5D0 SetupAlphaStippleTexture): the stipple members typed (StipleFadeTexture +0x2AAC CTexture,
+// HWInverseStipplePatterns +0x2AB4, DitherTextureList +0x2AC0 CArray<CTexture> (8-byte elements: `sar ecx,3` at 0x00B3C66F),
+// EngineCachePath +0x2ACC CWideString (operator+ at 0x00B3C746)); same offsets and sizes as the opaque default members.
+#ifndef FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CTEXTURE
+#endif
+#include "engine/CTexture.h"
+#include "fable_string.h"
+#endif
 class CMeshDataBank; class CGraphicDataBank; class CFontBank;
 class CShaderResource; class CGPUScratchBufferTextureManager;
 enum EShaderBankNo;                                          // MS forward enums (chunk 723; no enumerator name recovered)
@@ -85,6 +95,12 @@ private:
     virtual void OnReleaseDefaultPoolResources();                        // 0x00B3AFE0
 #endif
     void BuildAlphaStippleTexture(long,CArray<unsigned char>&);
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_STIPPLE
+    // Ego_r.pdb / FableWin.pdb ?BuildHWStipplePatterns@CEngineResourceManager@@AAEXABV?$CArray@E@@@Z (0x00B3C4B0, landed) and
+    // ?SetupAlphaStippleTexture@CEngineResourceManager@@AAEX_N@Z (0x00B3C5D0), both private; the PDBs list them in this order.
+    void BuildHWStipplePatterns(const CArray<unsigned char>&);
+    void SetupAlphaStippleTexture(bool);
+#endif
     CMeshDataBank* MeshBanks[3];                             // +0x10
     CMeshDataBank* MainMeshBank;                             // +0x1C
     unsigned char EditorMeshBank[0x460];                     // +0x20 CMeshDataBank
@@ -101,10 +117,18 @@ private:
     CCountedPointer<CShaderResource> ShaderResourcePixel;    // +0x2A98
     double MaxLoadingTime;
     unsigned long VertexBufferUsageFlags;
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_STIPPLE
+    CTexture StipleFadeTexture;                              // +0x2AAC
+    CArray<unsigned long> HWInverseStipplePatterns;          // +0x2AB4
+    CArray<CTexture> DitherTextureList;                      // +0x2AC0
+    CWideString EngineCachePath;                             // +0x2ACC
+    unsigned char WriteableEngineCachePath[4];               // CWideString
+#else
     unsigned char StipleFadeTexture[8];                      // CTexture
     CArray<unsigned long> HWInverseStipplePatterns;
     unsigned char DitherTextureList[12];                     // CArray<CTexture>
     unsigned char EngineCachePath[4],WriteableEngineCachePath[4];  // CWideString
+#endif
     unsigned char ZeroRGBATexture[8],SatRGBATexture[8];      // CTexture
     unsigned char VSConstantLayoutBasic[0x14c];              // CEngineVSConstantLayoutBasic
     unsigned char VSConstantLayoutLights[0x14c];             // CEngineVSConstantLayoutLights

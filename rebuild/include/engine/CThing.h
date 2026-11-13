@@ -244,6 +244,14 @@ public:
     static void __fastcall SerialiseThingInfo(bool,CCharString&,CSerialiseInfo&);         // 0x004C88E0
     bool IsToKillOnLevelUnload() const { return KillOnLevelUnload!=0; }
     void SetSerialisationSectionName(const CCharString& name) { SerialisationSectionName=name; }
+#ifdef FABLE_RETAIL_CTHING_CONSTRUCTFROMBINARYSAVE
+    // Nested opt-in (chunk 2008, row 0x004CA390 ConstructFromBinarySave): Ego_r.pdb 0x004C9B80 ?InitFromThingInfo@CThing@@AAE_NABVCSerialiseInfo@1@@Z
+    // (private; FableWin.pdb 0x01CEFCE0), out of line in retail at 0x004C7F40 (the landed row; ConstructFromBinarySave passes its
+    // CSerialiseInfo argument, 0x004CA449..0x004CA456). Declaration only: no layout change.
+private:
+    bool InitFromThingInfo(const CSerialiseInfo&);               // 0x004C7F40
+public:
+#endif
 #endif
     void Kill(bool); // Ego_r original public member; native004c9b80.
 #ifdef FABLE_RETAIL_CTHING_LEVELPERSISTENCE

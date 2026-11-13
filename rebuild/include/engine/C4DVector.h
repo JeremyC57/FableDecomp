@@ -36,6 +36,15 @@ public:
     const C4DVector operator+(const C4DVector& v) const { return C4DVector(X+v.X,Y+v.Y,Z+v.Z,W+v.W); }
     FABLE_FORCEINLINE const C4DVector Interpolate(const C4DVector& v, float t) const { return (v - *this) * t + *this; }
 #endif
+#ifdef FABLE_RETAIL_C4DVECTOR_ADDASSIGN
+    // Retail opt-in (chunk 2005, row 0x00A4D920): FableWin.pdb ??YC4DVector@@QAEABV0@ABV0@@Z (expanded in retail).
+    const C4DVector& operator+=(const C4DVector& v) { X += v.X; Y += v.Y; Z += v.Z; W += v.W; return *this; }
+#endif
+#ifdef FABLE_RETAIL_C4DVECTOR_ASSIGN3D
+    // Retail opt-in (chunk 2005, row 0x00A4D920): FableWin.pdb ??4C4DVector@@QAEABV0@ABVC3DVector@@@Z (expanded in retail):
+    // X/Y/Z copied, W cleared (every position path of the inlined keyframe interpolation stores W = 0, 0x00A4DDC7).
+    const C4DVector& operator=(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; W = 0.0f; return *this; }
+#endif
 #ifdef FABLE_RETAIL_C4DVECTOR_RGBCOLOUR
     // Chunk 756 (row 0x00BB17D0): FableWin.pdb ??0C4DVector@@QAE@ABVCRGBColour@@@Z (FableWin 0x017D4970 / 0x02D149F0), out of line
     // in retail at 0x00BB17D0 (`ret 4`, returns this): each byte channel times 1/255, X=R, Y=G, Z=B, W=A.

@@ -74,6 +74,15 @@ public:
  CTexture& CopyBackBufferToTexture();                                   // 0x009BF5E0
  bool SetRenderTargetAsBackScreen();                                    // 0x009BF220
  #endif
+ #ifdef FABLE_RETAIL_CDISPLAYMANAGER_SETRENDERTARGET
+ // Retail opt-in (chunk 2008, row 0x00B665E0 CEngineSkyRenderer::GetEnvironmentMap): Ego_r.pdb 0x00B23F00
+ // ?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z (retail 0x009BF160: `push &target ; call`, result dropped) and
+ // ?SetRenderTargetAsBackScreen@CDisplayManager@@QAE_NXZ (0x009BF220, as the BACKSCREEN opt-in). Declarations only.
+ bool SetRenderTarget(class CRenderTarget& target);                      // 0x009BF160
+ #ifndef FABLE_RETAIL_CDISPLAYMANAGER_BACKSCREEN
+ bool SetRenderTargetAsBackScreen();                                    // 0x009BF220
+ #endif
+ #endif
  const C2DExtentsI GetRenderTargetDimensions();                         // 0x009BEDC0 ?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ
  void AddDeviceResetCallback(CDeviceResetCallback* callback);          // 0x009C0190 ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z (CEngine::Initialise)
  unsigned long GetVertexShaderVersion() const;                         // 0x009BEDE0 ?GetVertexShaderVersion@CDisplayManager@@QBEKXZ (Ego_r 0x00B23A60, FableWin)

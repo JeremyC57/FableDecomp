@@ -15,6 +15,23 @@ public:
 #endif
  virtual unsigned long PeekSceneFilterFlags()const;
  const C3DVector& PeekCameraPos()const{return CameraDesc.WorldPosition;}
+#ifdef FABLE_RETAIL_CENGINECAMERA_CAMERASTATE
+ // Retail opt-in (chunk 2008, row 0x00B665E0 CEngineSkyRenderer::GetEnvironmentMap): FableWin.pdb
+ // ?PeekCameraState@CEngineCamera@@QAEABUCEngineCameraDesc@@XZ (0x02D416A0, debug only: inline in release, CameraDesc +0x14 copied in
+ // place, 0x00B66619), Ego_r.pdb ?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z (retail 0x00B30B50) and
+ // ?RefreshD3DTransforms@CEngineCamera@@QAEXXZ (retail 0x00B2FC50). Needs FABLE_RETAIL_CENGINECAMERADESC_STRUCT. No layout change.
+ const CEngineCameraDesc& PeekCameraState(){return CameraDesc;}
+ void SetCameraState(const CEngineCameraDesc& desc,bool,bool);         // 0x00B30B50
+ void RefreshD3DTransforms();                                          // 0x00B2FC50
+#endif
+#ifdef FABLE_RETAIL_CENGINECAMERA_NONHOMOGENOUS
+ // Retail opt-in (chunk 2008, row 0x00B54890 CEngineWeatherRenderer::RenderRain): FableWin.pdb
+ // ?PeekNonHomogenousViewTransform@CEngineCamera@@QBEABVCMatrix3x4@@XZ (0x02CEE5D0) and ?PeekInverseNonHomogenousViewTransform@..@@QBEABVCMatrix3x4@@XZ
+ // (0x02D3C6F0), debug only: inline in release (RenderRain reads +0x114 / +0x144, Ego_r NoScaleViewTransform / InverseNoScaleViewTransform,
+ // in place, 0x00B549C3 / 0x00B54A2D). No layout change.
+ const CMatrix3x4& PeekNonHomogenousViewTransform()const{return NoScaleViewTransform;}
+ const CMatrix3x4& PeekInverseNonHomogenousViewTransform()const{return InverseNoScaleViewTransform;}
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_SCREENTOWORLD
  // Opt-in (chunk 1020, row 0x00BCF4F0 CEngineInternalPrimitive2DAnimatedMesh::Initialise): FableWin.pdb
  // ?TransformScreenXYLinearZToView@CEngineCamera@@QBEXAAVC3DVector@@@Z, ?TransformViewToWorld@CEngineCamera@@QBEXAAVC3DVector@@@Z and

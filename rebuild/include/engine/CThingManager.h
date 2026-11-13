@@ -93,6 +93,14 @@ public:
     const CThing* PeekPThingWithUID(unsigned __int64 uid) const;        // 0x0051ED60
     // Codex pass 13 (row 0x004FB990): FableWin ?GetCurrentThingUID@CThingManager@@QBE_KXZ, inline in retail (reads CurrentUniqueID).
     unsigned __int64 GetCurrentThingUID() const { return CurrentUniqueID; }
+#ifdef FABLE_RETAIL_CTHINGMANAGER_THINGTYPEFLAGS
+    // Retail opt-in (chunk 2008, row 0x004CA390 CThing::ConstructFromBinarySave): Ego_r.pdb 0x00528260 ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z,
+    // out of line in retail at 0x0051E580 (`mov ecx,[ecx+3Ch] ; lea eax,[eax+eax*2] ; mov eax,[ecx+eax*4+4]`: ThingTypeInfo[type].ThingTypeFlags;
+    // landed callers bind it as GetThingTypeFlags@QAEKJ), and FableWin.pdb ?PeekComponent@CThingManager@@QBEABVCMainGameComponent@@XZ
+    // (0x01CF6360, inline in retail: the Component reference +0x1C read in place, 0x004CA57C). No layout change.
+    unsigned long ThingTypeToTypeFlags(long type) const;                // 0x0051E580
+    const CMainGameComponent& PeekComponent() const { return Component; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?WorldUpdateThings@CThingManager@@QAEXXZ (0x0051FCC0)
     // and ?UpdateDeaths@CThingManager@@QAEXXZ (0x0051F070, landed), and the FableWin-only inline

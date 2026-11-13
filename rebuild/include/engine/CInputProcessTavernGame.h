@@ -16,13 +16,6 @@ public:
     // input process (retail `call 0x00687A90`); access only, no layout change.
     friend class CTCTavernGame;
 #endif
-#ifdef FABLE_RETAIL_CINPUTPROCESSTAVERNGAME_PRESSED_ACCESS
-    // Retail opt-in (w22 agent2002, row 0x007D8570 CTCTavernGameSpotTheAddition::ProcessInput): the tavern games call the protected
-    // ?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z (0x00687A90) through their CInputProcessTavernGame*
-    // (0x007D8750). How the source granted access is unproven (a using-declaration or a friend); a using-declaration keeps the base
-    // member's own symbol. Needs FABLE_RETAIL_INPUTPROCESS_ZTARGET (the base declaration).
-    using CInputProcessGameBase::IsEventButtonPressed;
-#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CInputProcessTavernGame) == 0x28);
 #else // the generated Ego_r layout (the landed default, unchanged)

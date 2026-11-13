@@ -589,6 +589,16 @@ public:
     // Retail opt-in (Codex 2026-11-09): native00443f90 is the one-argument
     // vector<CEnginePrimitiveHandle>::resize called by00651293.
     void resize(size_type n);
+#elif defined(FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_OUTOFLINE)
+    // Per-TU opt-in (chunk 2001, row 0x00B3C5D0 CEngineResourceManager::SetupAlphaStippleTexture; pair with
+    // FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE): that TU calls vector<CTexture>::resize(size_type) 0x0049B7F0 (`push 4 ; call`, Ego_r.pdb /
+    // FableWin.pdb ?resize@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEXI@Z) and vector<unsigned long>::resize(size_type,
+    // const unsigned long&) 0x00464931 out of line. STLport's body stays visible (the same TU's BuildAlphaStippleTexture resizes its
+    // CArray<unsigned char> argument through it, and VC7.1 must see that the callee keeps no address), only kept out of line.
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+    void resize(size_type n) { resize(n,_Tp()); }
 #else
     void resize(size_type n) { resize(n,_Tp()); }
 #endif

@@ -48,6 +48,16 @@ public:
  void CopyFromSurface(const class C2DBoxI* destRect, const CSurface& source, const class C2DBoxI* sourceRect,
                       unsigned long filter);              // 0x009F37E0
 #endif
+#ifdef FABLE_RETAIL_CSURFACE_AUTOSWIZZLE
+ // Opt-in (chunk 2001, row 0x00B3C5D0): Ego_r.pdb ?CopyFromMemoryAutoSwizzle@CSurface@@QAEXPAXJ@Z (0x009F3470; the stipple texture's
+ // level 0 is filled with `push 80h ; push data` = (data, pitch)). Declaration only.
+ void CopyFromMemoryAutoSwizzle(void* data, long pitch);  // 0x009F3470
+#endif
+#ifdef FABLE_RETAIL_CSURFACE_ASSIGN
+ // Retail opt-in (chunk 2008, row 0x00B665E0): Ego_r.pdb / FableWin.pdb ??4CSurface@@QAEAAV0@ABV0@@Z, out of line in retail at
+ // 0x009F2E70 (the GetSurfaceLevel result assigned, then the temporary destroyed in place). Declaration only.
+ CSurface& operator=(const CSurface& other);              // 0x009F2E70
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_BITMAP
  // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): Ego_r.pdb ?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ
  // (0x00B46C70 = the landed retail 0x009F2F90, hidden result) and ?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z

@@ -84,6 +84,14 @@ public:
     CDefPointer<const CSkyDef> PSkyDef;                                  // +0x190
 private:
     void BuildBuffers();                                                 // 0x00B620A0
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_ENVMAP
+    // Retail opt-in (chunk 2008, row 0x00B665E0): Ego_r.pdb / FableWin.pdb ?RenderSky@CEngineSkyRenderer@@AAEXMABVC3DVector@@_N@Z (private,
+    // retail 0x00B66190) and the public ?GetEnvironmentMap@CEngineSkyRenderer@@QAEXPAVCTexture@@ABVCEngineComponentRenderParams@@@Z
+    // (retail 0x00B665E0). Declarations only.
+    void RenderSky(float interpolate, const C3DVector& camera_pos, bool reflection);   // 0x00B66190
+public:
+    void GetEnvironmentMap(class CTexture* texture, const class CEngineComponentRenderParams& params);   // 0x00B665E0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineSkyRenderer) == 0x194);
 FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarFieldVertexBuffer) == 0x24);

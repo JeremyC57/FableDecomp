@@ -82,6 +82,11 @@ public:
     CCharString ReadLine();                                          // 0x00994B50
     CCharString ReadUntilCharacter(char character, bool& found);     // 0x00994DC0
     CCharString ReadUntilWhiteSpace();                               // 0x00994E90
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READWHITESPACE
+    // Opt-in (chunk 2001, row 0x00AF4900): Ego_r.pdb ?ReadWhiteSpace@CDataInputStream@@QAE?AVCCharString@@XZ (0x00994F60; the component
+    // flag reader drops the returned run of white space). Declaration only.
+    CCharString ReadWhiteSpace();                                    // 0x00994F60
+#endif
     bool IsEOF() const { return StreamPos == GetLength(); }
 #endif
     virtual void ReadCompressed(void*,long);

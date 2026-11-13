@@ -39163,3 +39163,17 @@ _SplineRandomSeed	013999c4	00b206b0
 ?UpdateCollisionGameInteractions@CTCPhysicsStandard@@IAEXAAVCThing@@ABVCPhysicsCollideResponse@@@Z	00723ac0	00725500
 ?UpdateCollisionGroundIneractions@CTCPhysicsBase@@QAEXABVC3DVector@@@Z	006aff00	00725500
 ?UpdateVelocityForImpassability@CTCPhysicsStandard@@IAEXABVC3DVector@@AAV2@@Z	007243c0	00725500
+?BuildAlphaStippleTexture@CEngineResourceManager@@AAEXJAAV?$CArray@E@@@Z	00b3be10	00b3c5d0
+?BuildHWStipplePatterns@CEngineResourceManager@@AAEXABV?$CArray@E@@@Z	00b3c4b0	00b3c5d0
+?CopyFromMemoryAutoSwizzle@CSurface@@QAEXPAXJ@Z	009f3470	00b3c5d0
+?DitherPatterns@?1??SetupAlphaStippleTexture@CEngineResourceManager@@AAEX_N@Z@4QAY03$$CBKA	012a1bb0	00b3c5d0
+?resize@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEXI@Z	0049b7f0	00b3c5d0
+?InitFromThingInfo@CThing@@AAE_NABVCSerialiseInfo@1@@Z	004c7f40	004ca390
+?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z	0051e580	004ca390
+?g_DefaultSerialisationSectionName@@3VCCharString@@A	013bab0c	004ca390
+?$S1@?1??GetEnvironmentMap@CEngineSkyRenderer@@QAEXPAVCTexture@@ABVCEngineComponentRenderParams@@@Z@4IA	01437828	00b665e0
+?ClearRenderTarget@CRenderManager2D@@QAEXABVCRGBColour@@K@Z	009d8cf0	00b665e0
+?RefreshD3DTransforms@CEngineCamera@@QAEXXZ	00b2fc50	00b665e0
+?RenderSky@CEngineSkyRenderer@@AAEXMABVC3DVector@@_N@Z	00b66190	00b665e0
+?g_pDisplayManager_01436e1c@@3PAVCDisplayManager@@A	01436e1c	00b665e0
+?sky_pos@?1??GetEnvironmentMap@CEngineSkyRenderer@@QAEXPAVCTexture@@ABVCEngineComponentRenderParams@@@Z@4VC3DVector@@A	0143781c	00b665e0
