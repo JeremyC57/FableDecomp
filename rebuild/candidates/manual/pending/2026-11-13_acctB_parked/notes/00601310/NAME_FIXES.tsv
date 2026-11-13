@@ -1,0 +1,1 @@
+0x00429F43	?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z	dossier: FableWin 0x01ABC82B + Ego_r 0x00438DF1, body if(p){~CAction 0x53FD00; delete p;}, address taken as the CAction deleter at 16 sites of 0x00601310	CTCMapwho::OnDie (rebuild/src/compiled/00/42/CTCMapwho_OnDie_00429f43.cpp)

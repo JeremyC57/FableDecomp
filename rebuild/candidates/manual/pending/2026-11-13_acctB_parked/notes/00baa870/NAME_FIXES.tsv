@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00b8d090	?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ	Ego_r.pdb 0x00A347A0 + FableWin.pdb 0x02DC6520 (same mangled name); callers 0x00BAB8EB	BeginQuery (landed callers, e.g. 0x00BE79D0), Nop_ret0
+00b8d0a0	?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z	Ego_r.pdb 0x00A347B0 + FableWin.pdb 0x02DC6530; param unsigned long	EndQuery(long), Nop_ret4

@@ -1,0 +1,129 @@
+15:41 00bd3070 grade 00bd3070.cpp SRC_FAIL -- coordinator baseline after overlay re-base
+15:41 00bd3070 grade 00bd3070.cpp DIFFER(11400v11288) hunks=375 -- coordinator baseline after overlay re-base
+15:54 00bd3070 grade a01.cpp DIFFER(11336v11288) hunks=335 -- s03 under re-based hdr + C3DMeshMaterial opt-ins
+15:54 00bd3070 grade b01.cpp DIFFER(11384v11288) hunks=317 -- no abort_render (if failed) / + colour.A from GetAlphaAsFloat
+15:54 00bd3070 grade b02.cpp DIFFER(11384v11288) hunks=332 -- no abort_render (if failed) / + colour.A from GetAlphaAsFloat
+15:57 00bd3070 grade c01.cpp DIFFER(11384v11288) hunks=317 -- StartCaptureBlock as statements (3 spellings)
+15:57 00bd3070 grade c02.cpp DIFFER(11384v11288) hunks=317 -- StartCaptureBlock as statements (3 spellings)
+15:57 00bd3070 grade c03.cpp DIFFER(11384v11288) hunks=315 -- StartCaptureBlock as statements (3 spellings)
+15:57 00bd3070 grade c04.cpp DIFFER(11384v11288) hunks=319 -- StartCaptureBlock: mask before ++size / mask first / index local
+15:57 00bd3070 grade c05.cpp DIFFER(11368v11288) hunks=316 -- StartCaptureBlock: mask before ++size / mask first / index local
+15:57 00bd3070 grade c06.cpp DIFFER(11384v11288) hunks=317 -- StartCaptureBlock: mask before ++size / mask first / index local
+16:03 00bd3070 grade a01.cpp DIFFER(11336v11288) hunks=335 -- regrade a01 for layout view
+16:05 00bd3070 grade d01.cpp DIFFER(11352v11288) hunks=350 -- SetTextureFactor early-return form d01
+16:05 00bd3070 grade d02.cpp DIFFER(11336v11288) hunks=335 -- SetTextureFactor early-return form d02
+16:05 00bd3070 grade a01.cpp DIFFER(11336v11288) hunks=335 -- a01 again (base)
+16:06 00bd3070 grade e01.cpp DIFFER(11336v11288) hunks=376 -- zero-store order: e01 (num_textures after mipmap call / mipmap=0 late / both)
+16:06 00bd3070 grade e02.cpp DIFFER(11344v11288) hunks=335 -- zero-store order: e02 (num_textures after mipmap call / mipmap=0 late / both)
+16:06 00bd3070 grade e03.cpp DIFFER(11336v11288) hunks=376 -- zero-store order: e03 (num_textures after mipmap call / mipmap=0 late / both)
+16:06 00bd3070 grade a01.cpp DIFFER(11336v11288) hunks=335 -- regrade a01 with eq metric
+16:06 00bd3070 grade e01.cpp DIFFER(11336v11288) hunks=376 -- regrade e01 with eq metric
+16:09 00bd3070 grade f01.cpp DIFFER(11336v11288) hunks=394 -- SetupAlphaBlendingStatesFromRenderFlags helper (FableWin inline) on f01
+16:09 00bd3070 grade f02.cpp DIFFER(11352v11288) hunks=357 -- SetupAlphaBlendingStatesFromRenderFlags helper (FableWin inline) on f02
+16:09 00bd3070 grade f01.cpp DIFFER(11336v11288) hunks=394 -- f01 regrade (view)
+16:10 00bd3070 grade h01.cpp DIFFER(11352v11288) hunks=357 -- num_textures=0 decl position h01 (before bank / before morph_info / before composite)
+16:10 00bd3070 grade h02.cpp DIFFER(11352v11288) hunks=355 -- num_textures=0 decl position h02 (before bank / before morph_info / before composite)
+16:10 00bd3070 grade h03.cpp DIFFER(11352v11288) hunks=355 -- num_textures=0 decl position h03 (before bank / before morph_info / before composite)
+16:11 00bd3070 grade i01.cpp DIFFER(11352v11288) hunks=355 -- scale local before num_textures (i01)
+16:11 00bd3070 grade i02.cpp DIFFER(11352v11288) hunks=355 -- scale local before num_textures (i02)
+16:11 00bd3070 grade j01.cpp DIFFER(11352v11288) hunks=355 -- mipmap=0 position in GetAppropriateMipmap (j01: after sphere / after TransformPoint / after camera_distance)
+16:11 00bd3070 grade j02.cpp DIFFER(11352v11288) hunks=355 -- mipmap=0 position in GetAppropriateMipmap (j02: after sphere / after TransformPoint / after camera_distance)
+16:11 00bd3070 grade j03.cpp DIFFER(11352v11288) hunks=355 -- mipmap=0 position in GetAppropriateMipmap (j03: after sphere / after TransformPoint / after camera_distance)
+16:11 00bd3070 grade j02.cpp DIFFER(11352v11288) hunks=355 -- j02 regrade (view)
+16:12 00bd3070 grade k01.cpp DIFFER(11288v11288) hunks=348 -- SetRenderState text: k01 (default / EARLY_RETURN) instead of DESIRED
+16:12 00bd3070 grade k02.cpp DIFFER(11288v11288) hunks=348 -- SetRenderState text: k02 (default / EARLY_RETURN) instead of DESIRED
+16:12 00bd3070 grade k01.cpp DIFFER(11288v11288) hunks=348 -- k01 regrade (view)
+16:14 00bd3070 grade k01.cpp DIFFER(11288v11288) hunks=348 -- srs metric check k01
+16:14 00bd3070 grade j02.cpp DIFFER(11352v11288) hunks=355 -- srs metric check j02
+16:14 00bd3070 grade e01.cpp DIFFER(11336v11288) hunks=376 -- srs metric check e01
+16:15 00bd3070 grade r04.cpp DIFFER(11288v11288) hunks=348 -- probe: dead-local ruler +04 on k01
+16:15 00bd3070 grade r08.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +08 on k01
+16:15 00bd3070 grade r12.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +12 on k01
+16:15 00bd3070 grade r16.cpp DIFFER(11288v11288) hunks=345 -- probe: dead-local ruler +16 on k01
+16:15 00bd3070 grade r20.cpp DIFFER(11288v11288) hunks=358 -- probe: dead-local ruler +20 on k01
+16:16 00bd3070 grade r24.cpp DIFFER(11288v11288) hunks=347 -- probe: dead-local ruler +24 on k01
+16:16 00bd3070 grade r01.cpp DIFFER(11288v11288) hunks=348 -- probe: dead-local ruler +01 on k01
+16:16 00bd3070 grade r02.cpp DIFFER(11288v11288) hunks=348 -- probe: dead-local ruler +02 on k01
+16:16 00bd3070 grade r03.cpp DIFFER(11288v11288) hunks=348 -- probe: dead-local ruler +03 on k01
+16:16 00bd3070 grade r04.cpp DIFFER(11288v11288) hunks=348 -- probe: dead-local ruler +04 on k01
+16:16 00bd3070 grade r05.cpp DIFFER(11288v11288) hunks=346 -- probe: dead-local ruler +05 on k01
+16:16 00bd3070 grade r06.cpp DIFFER(11288v11288) hunks=345 -- probe: dead-local ruler +06 on k01
+16:16 00bd3070 grade r07.cpp DIFFER(11288v11288) hunks=345 -- probe: dead-local ruler +07 on k01
+16:16 00bd3070 grade r08.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +08 on k01
+16:16 00bd3070 grade r09.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +09 on k01
+16:17 00bd3070 grade r10.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +10 on k01
+16:17 00bd3070 grade r11.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +11 on k01
+16:17 00bd3070 grade r12.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +12 on k01
+16:17 00bd3070 grade r13.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +13 on k01
+16:17 00bd3070 grade r14.cpp DIFFER(11288v11288) hunks=345 -- probe: dead-local ruler +14 on k01
+16:17 00bd3070 grade r15.cpp DIFFER(11288v11288) hunks=345 -- probe: dead-local ruler +15 on k01
+16:17 00bd3070 grade r16.cpp DIFFER(11288v11288) hunks=345 -- probe: dead-local ruler +16 on k01
+16:17 00bd3070 grade r17.cpp DIFFER(11288v11288) hunks=346 -- probe: dead-local ruler +17 on k01
+16:17 00bd3070 grade r18.cpp DIFFER(11288v11288) hunks=347 -- probe: dead-local ruler +18 on k01
+16:17 00bd3070 grade r19.cpp DIFFER(11288v11288) hunks=349 -- probe: dead-local ruler +19 on k01
+16:17 00bd3070 grade r20.cpp DIFFER(11288v11288) hunks=358 -- probe: dead-local ruler +20 on k01
+16:17 00bd3070 grade r21.cpp DIFFER(11288v11288) hunks=354 -- probe: dead-local ruler +21 on k01
+16:18 00bd3070 grade r22.cpp DIFFER(11288v11288) hunks=349 -- probe: dead-local ruler +22 on k01
+16:18 00bd3070 grade r23.cpp DIFFER(11288v11288) hunks=347 -- probe: dead-local ruler +23 on k01
+16:18 00bd3070 grade r24.cpp DIFFER(11288v11288) hunks=347 -- probe: dead-local ruler +24 on k01
+16:18 00bd3070 grade r25.cpp DIFFER(11288v11288) hunks=347 -- probe: dead-local ruler +25 on k01
+16:18 00bd3070 grade r26.cpp DIFFER(11288v11288) hunks=346 -- probe: dead-local ruler +26 on k01
+16:18 00bd3070 grade r27.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +27 on k01
+16:18 00bd3070 grade r28.cpp DIFFER(11288v11288) hunks=346 -- probe: dead-local ruler +28 on k01
+16:18 00bd3070 grade r29.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +29 on k01
+16:18 00bd3070 grade r30.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +30 on k01
+16:18 00bd3070 grade r31.cpp DIFFER(11288v11288) hunks=342 -- probe: dead-local ruler +31 on k01
+16:18 00bd3070 grade r32.cpp DIFFER(11288v11288) hunks=342 -- probe: dead-local ruler +32 on k01
+16:18 00bd3070 grade r33.cpp DIFFER(11288v11288) hunks=342 -- probe: dead-local ruler +33 on k01
+16:18 00bd3070 grade r34.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +34 on k01
+16:19 00bd3070 grade r35.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +35 on k01
+16:19 00bd3070 grade r36.cpp DIFFER(11288v11288) hunks=344 -- probe: dead-local ruler +36 on k01
+16:19 00bd3070 grade r37.cpp DIFFER(11288v11288) hunks=342 -- probe: dead-local ruler +37 on k01
+16:19 00bd3070 grade r38.cpp DIFFER(11288v11288) hunks=340 -- probe: dead-local ruler +38 on k01
+16:19 00bd3070 grade r39.cpp DIFFER(11288v11288) hunks=340 -- probe: dead-local ruler +39 on k01
+16:19 00bd3070 grade r40.cpp DIFFER(11288v11288) hunks=339 -- probe: dead-local ruler +40 on k01
+17:09 00bd3070 grade h1.cpp DIFFER(11808v11288) hunks=339 -- H1 per-arm if(failed) return
+17:10 00bd3070 grade m01.cpp DIFFER(11288v11288) hunks=348 -- distance*factor operand order
+17:14 00bd3070 grade m02.cpp DIFFER(11808v11288) hunks=339 -- H1 + distance order
+17:15 00bd3070 grade m01.cpp DIFFER(11288v11288) hunks=348 -- regen m01 listing
+17:15 00bd3070 grade m03.cpp DIFFER(11288v11288) hunks=315 -- abort flag spellings: before TF / if-set / inverse
+17:16 00bd3070 grade m04.cpp DIFFER(11288v11288) hunks=345 -- abort flag spellings: before TF / if-set / inverse
+17:16 00bd3070 grade m05.cpp DIFFER(11304v11288) hunks=320 -- abort flag spellings: before TF / if-set / inverse
+17:16 00bd3070 grade m03.cpp DIFFER(11288v11288) hunks=315 -- abort before TF (regen)
+17:17 00bd3070 grade m06.cpp DIFFER(11368v11288) hunks=332 -- m03 without abort flag
+17:17 00bd3070 grade m09.cpp DIFFER(11288v11288) hunks=311 -- abort-before-TF only combined / only Z / inverse flag
+17:17 00bd3070 grade m10.cpp DIFFER(11328v11288) hunks=295 -- abort-before-TF only combined / only Z / inverse flag
+17:17 00bd3070 grade m11.cpp DIFFER(11288v11288) hunks=289 -- abort-before-TF only combined / only Z / inverse flag
+17:17 00bd3070 grade m11.cpp DIFFER(11288v11288) hunks=289 -- inverse flag before TF (regen)
+17:18 00bd3070 grade m12.cpp DIFFER(11288v11288) hunks=348 -- flag=true + join (flag && failed); after TF / before TF
+17:18 00bd3070 grade m13.cpp DIFFER(11288v11288) hunks=348 -- flag=true + join (flag && failed); after TF / before TF
+17:19 00bd3070 grade m14.cpp DIFFER(11272v11288) hunks=324 -- forceinline ApplyPixelShader wrapper
+17:20 00bd3070 grade m15.cpp DIFFER(11272v11288) hunks=324 -- direct GPS APS in arm 12 / in arms 8,13
+17:20 00bd3070 grade m16.cpp DIFFER(11272v11288) hunks=324 -- direct GPS APS in arm 12 / in arms 8,13
+17:21 00bd3070 grade m17.cpp DIFFER(11272v11288) hunks=324 -- reflection colour: named ref / named C4DVector / member-init ctor
+17:21 00bd3070 grade m18.cpp DIFFER(11272v11288) hunks=324 -- reflection colour: named ref / named C4DVector / member-init ctor
+17:21 00bd3070 grade m19.cpp DIFFER(11272v11288) hunks=312 -- reflection colour: named ref / named C4DVector / member-init ctor
+17:21 00bd3070 grade m19.cpp DIFFER(11272v11288) hunks=312 -- member-init C4DVector colour ctor (regen)
+17:22 00bd3070 grade m14.cpp DIFFER(11272v11288) hunks=324 -- regen m14
+17:23 00bd3070 grade m06.cpp DIFFER(11368v11288) hunks=332 -- m06 regen
+17:24 00bd3070 grade m03.cpp DIFFER(11288v11288) hunks=315 -- m03 regen
+17:25 00bd3070 grade m20.cpp DIFFER(11288v11288) hunks=315 -- decal loop: named blend ref / named colour / !=false
+17:25 00bd3070 grade m21.cpp DIFFER(11304v11288) hunks=424 -- decal loop: named blend ref / named colour / !=false
+17:25 00bd3070 grade m22.cpp DIFFER(11288v11288) hunks=315 -- decal loop: named blend ref / named colour / !=false
+17:26 00bd3070 grade m23.cpp DIFFER(11288v11288) hunks=321 -- combined TF colour: A=GetAlphaAsFloat (3 spellings)
+17:26 00bd3070 grade m24.cpp DIFFER(11288v11288) hunks=318 -- combined TF colour: A=GetAlphaAsFloat (3 spellings)
+17:26 00bd3070 grade m25.cpp DIFFER(11288v11288) hunks=319 -- combined TF colour: A=GetAlphaAsFloat (3 spellings)
+17:27 00bd3070 grade m24.cpp DIFFER(11288v11288) hunks=318 -- m24 eq
+17:27 00bd3070 grade m25.cpp DIFFER(11288v11288) hunks=319 -- m25 eq
+17:28 00bd3070 grade m26.cpp DIFFER(11288v11288) hunks=315 -- AlphaRef via GetParentBase / lights via primitive / AlphaRef via primitive
+17:28 00bd3070 grade m27.cpp DIFFER(11288v11288) hunks=311 -- AlphaRef via GetParentBase / lights via primitive / AlphaRef via primitive
+17:28 00bd3070 grade m28.cpp DIFFER(11288v11288) hunks=317 -- AlphaRef via GetParentBase / lights via primitive / AlphaRef via primitive
+17:28 00bd3070 grade m27.cpp DIFFER(11288v11288) hunks=311 -- m27 eq
+17:29 00bd3070 grade m29.cpp DIFFER(11288v11288) hunks=315 -- rebase OcclusionBase (RESETOCCLUSIONINFO) + OutlineGlow onto current repo
+17:29 00bd3070 grade m29.cpp DIFFER(11288v11288) hunks=315 -- rebase CSurface/C2DVector/CRenderStateManager/CMatrix3x4 = current repo
+17:30 00bd3070 grade m29.cpp DIFFER(11288v11288) hunks=315 -- rebase C3DPrimitive2/CIVCountedPointer/C3DMeshInfo onto current repo + additions
+17:30 00bd3070 grade m30.cpp DIFFER(11288v11288) hunks=315 -- abort_render declaration position: after failed / after env_mapped / before failed
+17:30 00bd3070 grade m31.cpp DIFFER(11288v11288) hunks=315 -- abort_render declaration position: after failed / after env_mapped / before failed
+17:30 00bd3070 grade m32.cpp DIFFER(11288v11288) hunks=315 -- abort_render declaration position: after failed / after env_mapped / before failed
+17:31 00bd3070 grade m33.cpp DIFFER(11416v11288) hunks=342 -- combined arm textual if(failed) return after TF + flag for other arms (Z after / before TF)
+17:31 00bd3070 grade m34.cpp DIFFER(11392v11288) hunks=302 -- combined arm textual if(failed) return after TF + flag for other arms (Z after / before TF)

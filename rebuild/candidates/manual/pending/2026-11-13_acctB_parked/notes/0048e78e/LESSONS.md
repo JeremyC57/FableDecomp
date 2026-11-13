@@ -1,0 +1,3 @@
+- A ternary-reference select `const float& o = c ? a : b;` that retail shows as `lea eax,[..A] ; jne ; lea eax,[..B]` can be an if/else of identical statement lists cross-jumped by VC7.1 /Os; the if/else spelling also changes which values VC forwards on the x87 stack (0x0048E78E pos.Y init).
+- VC7.1 address-CSE (lea reg,[base+disp]) of float offsets added to a struct's members depends on statement ORDER: grade all permutations of a 4-statement group before chasing registers (0x0048E78E arm A: 2 of 24 orders give both CSEs).
+- A bare `{ }` around a later span (box1..return) can fix tail scheduling (movsd / xor / lea order) without changing the frame: try scope blocks when residues are pure scheduling.

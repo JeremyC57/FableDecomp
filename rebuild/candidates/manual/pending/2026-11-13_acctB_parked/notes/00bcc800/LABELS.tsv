@@ -1,0 +1,6 @@
+address	name	module
+0x00BC9FB0	AddKey	CEngineTreeFilerBase
+0x00BCA140	ReturnResource	CEngineDynamic3DResourceManager<CEngineDynamic3DResource<CVertexBufferWin32,3> >
+0x00BCA210	GetResource	CEngineDynamic3DResourceManager<CEngineDynamic3DResource<CVertexBufferWin32,3> >
+0x00BCA400	DrawBuffersNonIndexed	CShaderRenderManager
+0x00BCA510	GetBuffer	CEngineVertexBufferPool

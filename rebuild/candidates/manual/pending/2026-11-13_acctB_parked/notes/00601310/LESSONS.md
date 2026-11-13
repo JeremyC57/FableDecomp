@@ -1,0 +1,1 @@
+- (0x00601310) VC7.1 inline budget seen per site with the c2 trace (agent2003 tools/inl): pen = floor(sz*(a+g)/~18300) once a+g > 9000, called iff c1+pen >= 74; g grows by the post-inline size of each expansion, so trivial accessor layers and constant-folded inits add ~0 while STLport allocate/_Construct layers add 4..12 per site.

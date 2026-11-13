@@ -1,0 +1,14 @@
+# hdr/ overlay for row 0x00BAA870 (each file = full copy of the CURRENT repo header + the opt-in below; default path unchanged)
+- engine/C3DMeshInfo.h: FABLE_RETAIL_C3DMESHINFO_LODS -- FableWin inlines HasLOD / GetBestCurrentDetailLevel + typed CMeshData (agent2028 text, re-based; needs _BOUNDINGBOX).
+- engine/CEngineCamera.h: FABLE_RETAIL_CENGINECAMERA_ZSPRITE_ACCESSORS (POSITION branch) -- FableWin inline Peek* accessors (CameraState, HFOV, NonHomogenousViewToViewScaleX/Y, InvZToZBufferFactor/Offset, (Inverse)NonHomogenousViewTransform).
+- engine/CEngineInternalPrimitiveRepeatedZSprite.h: FABLE_RETAIL_CENGINEINTERNALPRIMITIVEREPEATEDZSPRITE_TYPED -- typed class on CEngineInternalPrimitiveOcclusionBase + GetTransitionFade decl.
+- engine/CEnginePrimitiveManagerRepeatedZSprites.h: FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDZSPRITES_TYPED -- typed class on CEnginePrimitiveManagerOcclusionBase, CEngineBillboard (Ego_r, no header), RenderFromSortList decl.
+- engine/CEnginePrimitiveManagerOcclusionBase.h: FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_PREPAREOCCLUSIONTEST -- Ego_r protected PrepareOcclusionTest decl (0x00B905A0).
+- engine/CEnginePrimitiveRendererSharedData.h: FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_ZSPRITE -- ZSpriteDrawDistanceFactor +0x8C, Min/MaxZSpriteAsMeshDistance +0x90/+0x94 + FableWin Get* accessors.
+- engine/CEngineLocalDetailGenerator.h: FABLE_RETAIL_CENGINELOCALDETAILGENERATOR_ZSPRITE -- ZSpriteGenerationEnabled +0x24 + FableWin PeekZSpriteGenerationEnabled.
+- engine/CEngineOcclusionManager.h: FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_OCCLUSIONTEST -- Ego_r/FableWin StartOcclusionTest / EndOcclusionTest(unsigned long) decls.
+- engine/CEngineBillboardGenerator.h: FABLE_RETAIL_CENGINEBILLBOARDGENERATOR_RENDERBILLBOARD -- Ego_r RenderBillboard decl (0x00B8B780).
+- engine/CPreTransposedBoneMatrix.h: FABLE_RETAIL_CPRETRANSPOSEDBONEMATRIX_SET -- Ego_r Set(const CMatrix3x4&) decl (0x00987F70).
+- engine/CMatrix3x4.h: FABLE_RETAIL_CMATRIX3X4_POSTSCALE_XYZ -- FableWin PostScale(MMM) / PostTranslate(MMM) (+ PostScale(const C3DVector&), unused) FABLE_FORCEINLINE.
+- engine/CEngineLightingManager.h: FABLE_RETAIL_CENGINELIGHTINGMANAGER_FADEDSHADOW_ENABLE_FIRST -- SetEnableFadedShadowFactor compares `enable != member` (retail `cmp al,[ecx+0CEh]`).
+- engine/CScopedShadersEnable.h: FABLE_RETAIL_CSCOPEDSHADERSENABLE_FORCEINLINE_DTOR -- retail expands the dtor in this 4.6 KB body (plain inline gets called).

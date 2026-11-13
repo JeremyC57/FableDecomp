@@ -1,0 +1,38 @@
+18:48 00a91640 grade v1.cpp SRC_FAIL -- first full draft
+18:49 00a91640 grade v1.cpp DIFFER(5739v4344) hunks=207 -- first full draft, fix includes
+18:50 00a91640 grade v2.cpp DIFFER(5739v4344) hunks=207 -- direct resize/push_back; overflow inline opt-in
+18:50 00a91640 grade v3.cpp DIFFER(5739v4344) hunks=207 -- direct resize/push_back; overflow inline opt-in
+18:50 00a91640 grade v4.cpp DIFFER(5739v4344) hunks=207 -- direct resize/push_back; overflow inline opt-in
+18:50 00a91640 grade v3.cpp DIFFER(5739v4344) hunks=207 -- v3 recheck for cdiff
+18:51 00a91640 grade v5.cpp DIFFER(5659v4344) hunks=207 -- IsNonZero/Normalise ZYX variants
+18:51 00a91640 grade v6.cpp DIFFER(5659v4344) hunks=207 -- IsNonZero/Normalise ZYX variants
+18:52 00a91640 grade v7.cpp DIFFER(5659v4344) hunks=207 -- IsNonZero/Normalise ZYX variants
+18:52 00a91640 grade v8.cpp DIFFER(5659v4344) hunks=207 -- __copy decl-only; overflow inline
+18:52 00a91640 grade v9.cpp DIFFER(5659v4344) hunks=207 -- __copy decl-only; overflow inline
+18:52 00a91640 grade v10.cpp DIFFER(1932v4344) hunks=113 -- pragma optimize s; while loop
+18:52 00a91640 grade v11.cpp DIFFER(5595v4344) hunks=207 -- pragma optimize s; while loop
+18:53 00a91640 grade v12.cpp SRC_FAIL -- copy natural / erase outofline probe
+18:53 00a91640 grade v13.cpp DIFFER(5617v4344) hunks=208 -- copy natural / erase outofline probe
+18:53 00a91640 grade v12.cpp SRC_FAIL -- copy natural (errors)
+18:55 00a91640 grade v8.cpp DIFFER(4320v4344) hunks=139 /d2inlT105 -- d2inlT105
+18:56 00a91640 grade v8.cpp DIFFER(4384v4344) hunks=146 /d2inlT108 -- d2inlT108
+18:57 00a91640 grade v14.cpp DIFFER(4352v4344) hunks=100 /d2inlT108 -- __copy spec decl only for CIVCountedPointer; T108
+18:58 00a91640 grade v15.cpp DIFFER(4352v4344) hunks=99 /d2inlT108 -- named CalculateVertexSize result
+18:58 00a91640 grade v16.cpp DIFFER(4240v4344) hunks=143 /d2inlT108 -- AllocateChecked helper / || form
+18:58 00a91640 grade v17.cpp DIFFER(4228v4344) hunks=144 /d2inlT108 -- AllocateChecked helper / || form
+18:58 00a91640 grade v17.cpp DIFFER(4228v4344) hunks=144 /d2inlT108 -- || form view
+18:59 00a91640 grade v16.cpp DIFFER(4240v4344) hunks=143 /d2inlT108 -- helper view
+18:59 00a91640 grade v18.cpp DIFFER(4308v4344) hunks=239 /d2inlT108 -- nested-if guard / helper reversed
+18:59 00a91640 grade v19.cpp DIFFER(4240v4344) hunks=143 /d2inlT108 -- nested-if guard / helper reversed
+18:59 00a91640 grade v18.cpp DIFFER(4308v4344) hunks=239 /d2inlT108 -- v18 view
+19:00 00a91640 grade n1.cpp DIFFER(4324v4344) hunks=224 /d2inlT108 -- normalise body variants
+19:00 00a91640 grade n2.cpp DIFFER(4324v4344) hunks=230 /d2inlT108 -- normalise body variants
+19:00 00a91640 grade n3.cpp DIFFER(4324v4344) hunks=227 /d2inlT108 -- normalise body variants
+19:01 00a91640 grade n1.cpp DIFFER(4324v4344) hunks=224 /d2inlT108 -- n1 regrade for normo
+19:02 00a91640 grade e2.cpp ERROR /d2inlT108 -- tangent temps unnamed / explicit C3DVector() arg
+19:02 00a91640 grade e3.cpp ERROR /d2inlT108 -- tangent temps unnamed / explicit C3DVector() arg
+19:02 00a91640 grade e2.cpp DIFFER(4324v4344) hunks=222 /d2inlT108 -- tangent temps unnamed / explicit C3DVector() arg
+19:02 00a91640 grade e3.cpp DIFFER(4324v4344) hunks=224 /d2inlT108 -- tangent temps unnamed / explicit C3DVector() arg
+19:05 00a91640 grade f1.cpp DIFFER(4417v4344) hunks=192 /d2inlT108 -- for-loop tris / verts direct-init
+19:06 00a91640 grade f2.cpp DIFFER(4324v4344) hunks=224 /d2inlT108 -- for-loop tris / verts direct-init
+19:07 00a91640 grade 00a91640.cpp DIFFER(4324v4344) hunks=224 /d2inlT108 -- final differ regrade

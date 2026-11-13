@@ -1,0 +1,20 @@
+# hdr/ overlay (re-based by the coordinator from the earlier agent's overlay; the verbatim old overlay is ../hdr_prior, its README is ../hdr_prior/README.md)
+- overlay re-based onto the current repo headers by the coordinator: 29 unchanged-base copies, 9 three-way merges, 8 new headers, 9 conflicts
+- RE-BASED engine/CEngineInternalPrimitiveOcclusionBase.h (bwf1 author B, 2026-11-12): = current repo copy; the row now uses the repo opt-in FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_RESETOCCLUSIONINFO (GetAsOcclusionPrimitive is inherited from CEngineInternalPrimitiveBase) instead of the old _VIRTUALS block; grade unchanged (315 hunks).
+- RE-BASED engine/C3DPrimitive2.h (bwf1 author B, 2026-11-12): current repo text + FABLE_RETAIL_C3DPRIMITIVE2_RENDER (typed BoundingSphere / VertexBuffer, GetMaterialIndex / GetBoundingSphere / GetAverageTextureStretch / GetVertexBuffer / IsDP3Bump); grade unchanged (315 hunks).
+- merged engine/CRGBColour.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CGraphicFrame.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CGraphicInfo.h: repo header changed since the overlay was made; three-way merge clean
+- RE-BASED engine/CEngineScreenEffectOutlineGlow.h (bwf1 author B, 2026-11-12): current repo text + FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW_DEPTHTRANSFORM (SetupDepthBufferTransform 0x00B89070); grade unchanged (315 hunks).
+- RE-BASED engine/CSurface.h (bwf1 author B, 2026-11-12): = current repo copy (the old CSURFACE_ASSIGN block is unused by this row); grade unchanged (315 hunks).
+- RE-BASED engine/CIVCountedPointer.h (bwf1 author B, 2026-11-12): current repo text + FABLE_RETAIL_CIVCOUNTEDPOINTER_GET (T* Get() const); grade unchanged (315 hunks).
+- merged engine/CGraphicInfoFrame.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CEngineResourceManager.h: repo header changed since the overlay was made; three-way merge clean
+- RE-BASED engine/C3DMeshInfo.h (bwf1 author B, 2026-11-12): current repo text + nested FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_MEMBER (PeekBank()->TextureBank); grade unchanged (315 hunks).
+- merged engine/CEnginePrimitiveRenderUtil.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CEngineInternalPrimitiveAnimatedMesh.h: repo header changed since the overlay was made; three-way merge clean
+- RE-BASED engine/C2DVector.h (bwf1 author B, 2026-11-12): = current repo copy (old NAMED_RESULT blocks unused by this row); grade unchanged (315 hunks).
+- merged engine/C3DVector.h: repo header changed since the overlay was made; three-way merge clean
+- RE-BASED engine/CRenderStateManager.h (bwf1 author B, 2026-11-12): = current repo copy (old POINTSPRITE / SETRENDERSTATE_DESIRED / STARTCAPTUREBLOCK_STATEMENTS blocks unused by this row); grade unchanged (315 hunks).
+- merged engine/CShaderRenderManager.h: repo header changed since the overlay was made; three-way merge clean
+- RE-BASED engine/CMatrix3x4.h (bwf1 author B, 2026-11-12): = current repo copy (old SETTRANSLATEONLY / TRANSFORMPOINT_COPY blocks unused by this row); grade unchanged (315 hunks).

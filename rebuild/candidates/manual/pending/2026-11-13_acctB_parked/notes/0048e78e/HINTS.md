@@ -1,0 +1,33 @@
+# Coordinator's pointers for 0x0048E78E (CSubtitleRenderer::DrawButtonGraphics, 2662 bytes)
+
+- State: draft from /opt/fable_lane/w22/agent2056/differ/0048e78e.cpp (differ/).
+- Earlier work on this row (if any) is in $W/prior/: NOTES.md, grades.log (one line per earlier grade), scout/ (earlier Opus scouts' outline.md / headers.md / probes), earlier_*/ (older chunks' notes), test.cpp (an earlier test draft). The earlier agent's full directory is /opt/fable_lane/w22/agent2056 (read-only; its cand/ holds every graded candidate). $W/dis_all.txt is the full retail listing of the function.
+- $W/hdr_prior/ (if present) is the header overlay earlier agents used, copied from an OLDER repo state; $W/hdr/ holds the coordinator's re-base of it onto the current repo headers (see hdr/README.md for conflicts to re-base by hand). Overlay rule: full copy of the CURRENT repo header plus `#ifdef FABLE_RETAIL_*` additions only.
+- Family pointers: Find the landed rows of the same class / translation unit (grep rebuild/src/compiled by class name and by the neighbouring addresses) and copy their defines, includes and flags; a full direct-call comparison early (/opt/fable_lane/w22/agent4007/tools/cd.sh) settles the inline decisions.
+- This lane's extra lessons and tools (read when a residue resists): /opt/fable_lane/w22/agent2050/CHUNK_BRIEF.md, section 'Lessons' (FableWin debug-size oracle `python3 /opt/fable_lane/tools/fwsize.py <src.cpp> [name-regex]` with FW_EXTRA=/EHsc for rows: an inline helper whose /Od size differs from FableWin's has the wrong TEXT; operand-order residues follow compiler record ids: name the intermediates the logic already has; call-v-expand decisions follow static frequency: look for one more branch level).
+- overlay re-based onto the current repo headers by the coordinator: 21 unchanged-base copies, 18 three-way merges, 12 new headers, 6 conflicts
+- STALE engine/CGameCameraManager.h: the repo header changed and the three-way merge conflicts; this is the OLD overlay copy verbatim (so the draft still compiles) -- re-base it by hand onto the current rebuild/include/engine/CGameCameraManager.h (current text + your additions only) before the hand-back
+- STALE engine/CTCInGameMenu.h: the repo header changed and the three-way merge conflicts; this is the OLD overlay copy verbatim (so the draft still compiles) -- re-base it by hand onto the current rebuild/include/engine/CTCInGameMenu.h (current text + your additions only) before the hand-back
+- merged engine/CCreatureActionBase.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CRGBColour.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/NUISystem_CManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CPlayer.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CGameTimeManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CFontManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CDataOutputStream.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CInputManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CThingSearchTools.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CIVCountedPointer.h: repo header changed since the overlay was made; three-way merge clean
+- STALE engine/CMainGameComponent.h: the repo header changed and the three-way merge conflicts; this is the OLD overlay copy verbatim (so the draft still compiles) -- re-base it by hand onto the current rebuild/include/engine/CMainGameComponent.h (current text + your additions only) before the hand-back
+- merged engine/CWorldMap.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CPlayerManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CQuestManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CPlayerGuiDef.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CCombatManager.h: repo header changed since the overlay was made; three-way merge clean
+- STALE engine/CNavigatorManager.h: the repo header changed and the three-way merge conflicts; this is the OLD overlay copy verbatim (so the draft still compiles) -- re-base it by hand onto the current rebuild/include/engine/CNavigatorManager.h (current text + your additions only) before the hand-back
+- STALE engine/C2DVector.h: the repo header changed and the three-way merge conflicts; this is the OLD overlay copy verbatim (so the draft still compiles) -- re-base it by hand onto the current rebuild/include/engine/C2DVector.h (current text + your additions only) before the hand-back
+- merged engine/CThingManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CSubtitleRenderer.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CAFile.h: repo header changed since the overlay was made; three-way merge clean
+- STALE engine/NPlayerGui_CDrawQuestInfo.h: the repo header changed and the three-way merge conflicts; this is the OLD overlay copy verbatim (so the draft still compiles) -- re-base it by hand onto the current rebuild/include/engine/NPlayerGui_CDrawQuestInfo.h (current text + your additions only) before the hand-back
+- Coordinator baseline grade of differ/0048e78e.cpp under the re-based hdr/: 0048e78e 0048e78e.cpp DIFFER(2656v2662) hunks=55

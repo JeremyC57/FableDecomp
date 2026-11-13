@@ -1,0 +1,82 @@
+20:29 00601310 grade v1.cpp SRC_FAIL -- first full draft: reset decl v visible
+20:29 00601310 grade v2.cpp SRC_FAIL -- first full draft: reset decl v visible
+20:29 00601310 grade v1.cpp SRC_FAIL -- first full draft: reset decl v visible
+20:29 00601310 grade v2.cpp SRC_FAIL -- first full draft: reset decl v visible
+20:30 00601310 grade v1.cpp DIFFER(6962v6931) hunks=179 -- first full draft: reset decl v visible (+DEF_CLASS_BASE)
+20:30 00601310 grade v2.cpp DIFFER(6962v6931) hunks=179 -- first full draft: reset decl v visible (+DEF_CLASS_BASE)
+20:31 00601310 grade v3.cpp DIFFER(6962v6931) hunks=179 -- smart pointer GetTextBank (more inline budget)
+20:31 00601310 grade v1.cpp DIFFER(6962v6931) hunks=179 -- regrade v1 for full diff
+20:31 00601310 grade p5.cpp DIFFER(7521v6931) hunks=160 -- PROBE: 5th group to test inline budget
+20:31 00601310 grade a.cpp DIFFER(6983v6931) hunks=177 -- budget: CCOUNTEDPOINTER if(Data) / +smartptr / IsNull
+20:31 00601310 grade b.cpp DIFFER(6983v6931) hunks=177 -- budget: CCOUNTEDPOINTER if(Data) / +smartptr / IsNull
+20:31 00601310 grade c.cpp DIFFER(6962v6931) hunks=179 -- budget: CCOUNTEDPOINTER if(Data) / +smartptr / IsNull
+20:32 00601310 grade d.cpp DIFFER(6962v6931) hunks=179 -- budget: STLP_LIST_CONSTRUCT_HELPER
+20:32 00601310 grade e.cpp DIFFER(6709v6931) hunks=104 -- budget: ALLOC_PROXY_REBIND (+CONSTRUCT_HELPER)
+20:32 00601310 grade f.cpp DIFFER(6601v6931) hunks=157 -- budget: ALLOC_PROXY_REBIND (+CONSTRUCT_HELPER)
+20:32 00601310 grade e.cpp DIFFER(6709v6931) hunks=104 -- regrade e for cdiff
+20:33 00601310 grade pk5.cpp DIFFER(6962v6931) hunks=179 -- PROBE budget: 5 dummy Get() at end
+20:33 00601310 grade pk15.cpp DIFFER(6962v6931) hunks=179 -- PROBE budget: 15 dummy Get() at end
+20:33 00601310 grade pk40.cpp DIFFER(6962v6931) hunks=179 -- PROBE budget: 40 dummy Get() at end
+20:33 00601310 grade e.cpp DIFFER(6709v6931) hunks=104 -- regrade e for call order
+20:34 00601310 grade pd1.cpp DIFFER(6962v6931) hunks=179 -- PROBE budget: 1 dummy CCountedPointer<CComponent> at top
+20:34 00601310 grade pd2.cpp DIFFER(6962v6931) hunks=179 -- PROBE budget: 2 dummy CCountedPointer<CComponent> at top
+20:34 00601310 grade pd3.cpp DIFFER(6962v6931) hunks=179 -- PROBE budget: 3 dummy CCountedPointer<CComponent> at top
+20:35 00601310 grade pa1.cpp DIFFER(7071v6931) hunks=276 -- PROBE budget: dummy a1 at top
+20:35 00601310 grade pc1.cpp DIFFER(7064v6931) hunks=203 -- PROBE budget: dummy c1 at top
+20:35 00601310 grade pa2.cpp DIFFER(7179v6931) hunks=276 -- PROBE budget: dummy a2 CAction at top
+20:35 00601310 grade pa3.cpp DIFFER(7160v6931) hunks=219 -- PROBE budget: dummy a3 CAction at top
+20:35 00601310 grade pb1.cpp DIFFER(7239v6931) hunks=276 -- PROBE budget: 2 CAction + b1 CCP(frame) dummies
+20:35 00601310 grade pb2.cpp DIFFER(7251v6931) hunks=229 -- PROBE budget: 2 CAction + b2 CCP(frame) dummies
+20:35 00601310 grade pb3.cpp DIFFER(7145v6931) hunks=219 -- PROBE budget: 2 CAction + b3 CCP(frame) dummies
+20:36 00601310 grade g1.cpp DIFFER(6709v6931) hunks=104 -- combos: REBIND+reset visible / +CONSTRUCT / CONSTRUCT+SMART
+20:36 00601310 grade g2.cpp DIFFER(6601v6931) hunks=157 -- combos: REBIND+reset visible / +CONSTRUCT / CONSTRUCT+SMART
+20:36 00601310 grade g3.cpp DIFFER(6962v6931) hunks=179 -- combos: REBIND+reset visible / +CONSTRUCT / CONSTRUCT+SMART
+20:37 00601310 grade h1.cpp SRC_FAIL -- STLport 4.6 _List_base ctor text (+CONSTRUCT, +REBIND)
+20:37 00601310 grade h2.cpp SRC_FAIL -- STLport 4.6 _List_base ctor text (+CONSTRUCT, +REBIND)
+20:37 00601310 grade h3.cpp SRC_FAIL -- STLport 4.6 _List_base ctor text (+CONSTRUCT, +REBIND)
+20:37 00601310 grade h1.cpp SRC_FAIL -- STLport 4.6 _List_base ctor text
+20:37 00601310 grade h1.cpp DIFFER(6334v6931) hunks=188 -- STLport 4.6 _List_base ctor text (+CONSTRUCT, +REBIND)
+20:37 00601310 grade h2.cpp DIFFER(6334v6931) hunks=188 -- STLport 4.6 _List_base ctor text (+CONSTRUCT, +REBIND)
+20:37 00601310 grade h3.cpp DIFFER(6334v6931) hunks=188 -- STLport 4.6 _List_base ctor text (+CONSTRUCT, +REBIND)
+20:38 00601310 grade i1.cpp DIFFER(6962v6931) hunks=179 -- list base ctor: alloc_create layer only / store order only
+20:38 00601310 grade i2.cpp DIFFER(6334v6931) hunks=188 -- list base ctor: alloc_create layer only / store order only
+20:38 00601310 grade j1.cpp DIFFER(6962v6931) hunks=179 -- CCountedPointer<CComponent> x(0) inits (all / entries / desc+sub+ring)
+20:38 00601310 grade j2.cpp DIFFER(6962v6931) hunks=179 -- CCountedPointer<CComponent> x(0) inits (all / entries / desc+sub+ring)
+20:38 00601310 grade j3.cpp DIFFER(6962v6931) hunks=179 -- CCountedPointer<CComponent> x(0) inits (all / entries / desc+sub+ring)
+20:38 00601310 grade k1.cpp DIFFER(6962v6931) hunks=179 -- no RELEASEDATA (direct dtor body) / +REBIND
+20:38 00601310 grade k2.cpp DIFFER(6962v6931) hunks=179 -- no RELEASEDATA (direct dtor body) / +REBIND
+20:39 00601310 grade l1.cpp DIFFER(6962v6931) hunks=179 -- no RELEASEDATA + REBIND+CONSTRUCT / +SMART / all
+20:39 00601310 grade l2.cpp DIFFER(6962v6931) hunks=179 -- no RELEASEDATA + REBIND+CONSTRUCT / +SMART / all
+20:39 00601310 grade l3.cpp DIFFER(6962v6931) hunks=179 -- no RELEASEDATA + REBIND+CONSTRUCT / +SMART / all
+20:47 00601310 grade m1.cpp DIFFER(6962v6931) hunks=179 -- noRELEASEDATA+REBIND+CONSTRUCT+SMART: IsNull / no textBank local / both
+20:47 00601310 grade m2.cpp DIFFER(6947v6931) hunks=196 -- noRELEASEDATA+REBIND+CONSTRUCT+SMART: IsNull / no textBank local / both
+20:47 00601310 grade m3.cpp DIFFER(6947v6931) hunks=196 -- noRELEASEDATA+REBIND+CONSTRUCT+SMART: IsNull / no textBank local / both
+20:50 00601310 grade n1.cpp DIFFER(6962v6931) hunks=179 -- STLport __malloc_alloc layer (+CONSTRUCT, +SMART)
+20:50 00601310 grade n2.cpp DIFFER(6962v6931) hunks=179 -- STLport __malloc_alloc layer (+CONSTRUCT, +SMART)
+20:50 00601310 grade n3.cpp DIFFER(6962v6931) hunks=179 -- STLport __malloc_alloc layer (+CONSTRUCT, +SMART)
+20:51 00601310 grade o1.cpp DIFFER(6781v6931) hunks=114 -- malloc layer + CONSTRUCT + SMART: +named result / +IsNull / both
+20:51 00601310 grade o2.cpp DIFFER(6962v6931) hunks=179 -- malloc layer + CONSTRUCT + SMART: +named result / +IsNull / both
+20:51 00601310 grade o3.cpp DIFFER(6781v6931) hunks=114 -- malloc layer + CONSTRUCT + SMART: +named result / +IsNull / both
+20:51 00601310 grade q1.cpp DIFFER(6962v6931) hunks=179 -- malloc layer + named result: +SMART / plain / +CONSTRUCT
+20:51 00601310 grade q2.cpp DIFFER(6962v6931) hunks=179 -- malloc layer + named result: +SMART / plain / +CONSTRUCT
+20:51 00601310 grade q3.cpp DIFFER(6781v6931) hunks=114 -- malloc layer + named result: +SMART / plain / +CONSTRUCT
+20:53 00601310 grade r1.cpp DIFFER(6962v6931) hunks=179 -- q1(malloc layer+result+SMART): +IsNull / +alloc_create / both
+20:53 00601310 grade r2.cpp DIFFER(6962v6931) hunks=179 -- q1(malloc layer+result+SMART): +IsNull / +alloc_create / both
+20:53 00601310 grade r3.cpp DIFFER(6962v6931) hunks=179 -- q1(malloc layer+result+SMART): +IsNull / +alloc_create / both
+20:53 00601310 grade s1.cpp DIFFER(6970v6931) hunks=166 -- q1 + named descriptionText / +IsNull / new CAction()
+20:53 00601310 grade s2.cpp DIFFER(6970v6931) hunks=166 -- q1 + named descriptionText / +IsNull / new CAction()
+20:53 00601310 grade s3.cpp DIFFER(6962v6931) hunks=179 -- q1 + named descriptionText / +IsNull / new CAction()
+20:54 00601310 grade t1.cpp DIFFER(6962v6931) hunks=179 -- ULONG ctor body assign: q1 / n3 / base
+20:54 00601310 grade t2.cpp DIFFER(6962v6931) hunks=179 -- ULONG ctor body assign: q1 / n3 / base
+20:54 00601310 grade t3.cpp DIFFER(6962v6931) hunks=179 -- ULONG ctor body assign: q1 / n3 / base
+20:55 00601310 grade w1.cpp DIFFER(6962v6931) hunks=179 -- q1 + allocate if-form / named; L+M+named
+20:55 00601310 grade w2.cpp DIFFER(6781v6931) hunks=114 -- q1 + allocate if-form / named; L+M+named
+20:55 00601310 grade w3.cpp DIFFER(6962v6931) hunks=179 -- q1 + allocate if-form / named; L+M+named
+21:01 00601310 grade y1.cpp DIFFER(6962v6931) hunks=179 -- q1 + CCP ctor ternary / Info(0) init
+21:01 00601310 grade y2.cpp DIFFER(7047v6931) hunks=199 -- q1 + CCP ctor ternary / Info(0) init
+21:02 00601310 grade z1.cpp DIFFER(6962v6931) hunks=179 -- copy-init '= new CAction' (base / q1 / q1+lists)
+21:02 00601310 grade z2.cpp DIFFER(6962v6931) hunks=179 -- copy-init '= new CAction' (base / q1 / q1+lists)
+21:03 00601310 grade z3.cpp DIFFER(6962v6931) hunks=179 -- copy-init '= new CAction' (base / q1 / q1+lists)
+21:03 00601310 grade aa1.cpp DIFFER(6962v6931) hunks=179 -- L+C+IF+M / L+RS+C+IF+M / L+C+N+M
+21:03 00601310 grade aa2.cpp DIFFER(6962v6931) hunks=179 -- L+C+IF+M / L+RS+C+IF+M / L+C+N+M
+21:03 00601310 grade aa3.cpp DIFFER(6839v6931) hunks=116 -- L+C+IF+M / L+RS+C+IF+M / L+C+N+M

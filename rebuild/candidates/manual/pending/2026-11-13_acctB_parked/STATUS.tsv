@@ -1,0 +1,43 @@
+address	workflow	bytes	module	name	draft_grade	dossier	outline
+0044c72b	bwf1	8995	CGameDefinitionManager	InitAndCompile	no draft	y	y
+0048e78e	bwf1	2662	CSubtitleRenderer	DrawButtonGraphics	DIFFER(ours	y	n
+0058578b	bwf1	8081	CTCInventory	vfunc_30	DIFFER(7948v8081)	y	y
+005f1b10	bwf1	8383	CTCInventoryAbilities	ConstructPCMagicList	DIFFER(8380v8383)	y	y
+00601310	bwf1	6931	_global	ConstructQuestsScreen_MainMenu	DIFFER(6962v6931)	y	y
+0060eeb0	bwf1	10254	CTCInventoryMap	ConstructPCMapList	DIFFER(10242v10254)	y	n
+00651b04	bwf1	5126	CDrawAbilityButtons	Draw	DIFFER(5126v5126)	y	y
+00a91640	bwf1	4344	_gapscan	sub_00a91640	DIFFER(4324v4344)	y	y
+00b33b50	bwf1	8858	CEnginePrimitiveRenderer	CEnginePrimitiveRenderer	no draft	y	y
+00b5ca70	bwf1	5748	CEngineScreenEffectRadialBlurRenderer	CaptureBackBuffer	DIFFER(5724v5748)	y	y
+00b89c30	bwf1	6431	CEngineScreenEffectOutlineGlow	ApplyOutline	DIFFER(6431v6431)	y	y
+00b8b780	bwf1	3921	CEngineBillboardGenerator	RenderBillboard	DIFFER(3921v3921,	y	y
+00ba5260	bwf1	4056	CEnginePrimitiveManagerStaticMeshesBase	RenderMeshPrimitive	DIFFER(4060v4056)	y	n
+00baa870	bwf1	4600	CEnginePrimitiveManagerRepeatedZSprites	RenderFromSortList	DIFFER(4575v4600)	y	y
+00bb3e80	bwf1	4540	CEngineClothRenderer	RenderClothPrimitive	DIFFER(4540v4540)	y	y
+00bcc800	bwf1	3205	CEnginePrimitiveManagerWeaponTrails	RenderWeaponTrail	DIFFER(3207v3205)	y	n
+00bd3070	bwf1	11288	CEnginePrimitiveManagerAnimatedMeshesBase	RenderMeshPrimitive	DIFFER(ours	y	n
+00795300	bwf2	9268	CTCDivineWrath	FrameUpdate	DIFFER(9501v9268)	y	y
+00b4d370	bwf2	7176	CEngineShadowRenderer	UpdateShadowSpace	DIFFER(7160v7176)	y	y
+00b783f0	bwf2	9343	CEngineWaterRenderer	?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	DIFFER(9343v9343)	y	y
+00ba2350	bwf2	9632	CEnginePrimitiveManagerStaticMeshesBase	SetupRenderModeShadersAndConstants	DIFFER(9500v9632)	y	y
+004736c4	bwf3	6498	CPlayerGuiDef	?Transfer@CPlayerGuiDef@@UAEXAAVCPersistContext@@@Z	no draft	y	y
+004804de	bwf3	11203	CTCInGameMenu	OpenInGameMenuPC	no draft	n	n
+004a3740	bwf3	8948	CWorld	UpdateRegionLoad	no draft	n	n
+0058807d	bwf3	4997	CTCInventory	OpenPCInventoryMenu	no draft	y	y
+00598a1c	bwf3	4928	CFrontEndManager	Init2	no draft	y	y
+005eeff2	bwf3	5619	_gapscan	sub_005eeff2	no draft	y	y
+0060c900	bwf3	9635	CTCInventoryMap	BuildMapTeleportUI	no draft	n	n
+00652fa4	bwf3	4653	NPlayerGui::CDrawQuickAccessIcons	Draw	no draft	y	y
+006f5c10	bwf3	8717	_global	StatRegisterClass	no draft	n	n
+00a059e0	bwf3	7958	CRenderStateManager	SetDefaultRenderStates	no draft	y	y
+00aa0fa0	bwf3	4460	C3DAnimationManager	CalcBoneTransformation	no draft	y	y
+00aa2110	bwf3	4556	C3DAnimationManager	CalcBlendedBoneTransformation	no draft	y	y
+00aca830	bwf3	7256	COptimisedPrimitive	Initialise	no draft	y	y
+00b3cb30	bwf3	5399	CEngineResourceManager	CEngineResourceManager	no draft	y	y
+00b555a0	bwf3	3832	CEngineWeatherRenderer	?Render@CEngineWeatherRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	no draft	y	y
+00b69000	bwf3	8358	CEnginePrimitiveManagerParticleSpriteGroup	CEnginePrimitiveManagerParticleSpriteGroup	no draft	n	n
+00b73760	bwf3	6799	CEngineWaterRenderer	CEngineWaterRenderer	no draft	y	y
+00b9ac30	bwf3	4229	CEnginePrimitiveManagerRepeatedStaticMeshes	RenderSubPrimitive	no draft	y	y
+00bae2d0	bwf3	5892	CEnginePrimitiveManager2DSprites	?RenderSubPrimitive@CEnginePrimitiveManager2DSprites@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	no draft	y	y
+00d4a270	bwf3	9388	NScript::CQ_GuildTrainingScript::CCombatApprentice	Main	no draft	n	n
+00f1eed0	bwf3	9262	CQ_ArenaScript	PlayWave	no draft	n	n

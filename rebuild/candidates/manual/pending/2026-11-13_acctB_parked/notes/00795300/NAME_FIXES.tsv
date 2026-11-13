@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00795300	?FrameUpdate@CTCUnholyPower@@UAEXXZ	rtti-vtables.tsv CTCUnholyPower 0126bfdc slot 9 -> 00795300; FableWin.exe.signatures.tsv; CTCDivineWrath slot 9 is 0x0078FD60	CTCDivineWrath::FrameUpdate (manifest)

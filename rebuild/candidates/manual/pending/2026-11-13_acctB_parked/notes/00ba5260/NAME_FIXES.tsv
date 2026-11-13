@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00b8d090	?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ	Ego_r.pdb 0x00A347A0 (1 byte ret) and FableWin.pdb same name; retail body = ret, called from 0x00BA5F25 on g_pOcclusionManager	?BeginQuery@CEngineOcclusionManager@@QAEXXZ ?BeginUntextured@CEngineRenderer_00b906c0@@QAEXXZ
+00b8d0a0	?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z	Ego_r.pdb 0x00A347B0 (3 bytes ret 4) and FableWin.pdb same name; retail body = ret 4 with the handle argument	?EndQuery@CEngineOcclusionManager@@QAEXJ@Z ?EndUntextured@CEngineRenderer_00b906c0@@QAEXPAX@Z
+00ba77b0	?RenderMeshPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@QAEXAAVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z (callee declaration inside landed CEnginePrimitiveManager2DStaticMeshes::RenderSubPrimitive 0x00BA77B0)	Ego_r.pdb + FableWin.pdb mangled name of 0x00BA5260 (signature only; same method name)	RenderMeshPrimitive(CEngineSubPrimitiveBase&, long)

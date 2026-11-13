@@ -1,0 +1,12 @@
+# hdr overlay for row 0x00B4D370 (CEngineShadowRenderer::UpdateShadowSpace)
+Base: rebuild/candidates/manual/pending/2026-11-11_acctB_r3004/hdr/engine (CEngineShadowRenderer, CMatrix4x4, CEngineLightingManager, C4DVector,
+CRenderStateCaptureBlock, CShadowRendererSceneData, CShadowClipVolume, CRenderTarget; supersets of the current repo files, re-diffed 2026-11-12:
+no removals) + full copies of the current repo CMatrix3x4.h / C2DVector.h. Additions below are `#ifdef FABLE_RETAIL_*` opt-ins only.
+- CEngineShadowRenderer.h: FABLE_RETAIL_CENGINESHADOWRENDERER_UPDATESHADOWSPACE -- private CalcLocalWorldToBaseShadowSpace / BuildDerivedShadowMatriciesFromWorldToShadowMatrix / CalcClipVolume / UpdateShadowSpace declarations (Ego_r + FableWin mangled names).
+- CEngineLightingManager.h: FABLE_RETAIL_CENGINELIGHTINGMANAGER_PEEKDIFFUSEVECTOR -- inline PeekDiffuseVector (FableWin 0x02D767C0 ?PeekDiffuseVector@CEngineLightingManager@@QBEABVC3DVector@@XZ; fwsize SAME 9i/17b).
+- C2DVector.h: FABLE_RETAIL_C2DVECTOR_ACCURATENORMALISE -- declaration, out of line 0x00A14510 (Ego_r + FableWin ?AccurateNormalise@C2DVector@@QAEAAV1@XZ).
+- C2DVector.h: FABLE_RETAIL_C2DVECTOR_MAGNITUDE_SQUARED_LOCAL -- GetMagnitude as `float squared=X*X+Y*Y; return sqrtf(squared);` (FableWin 21i/52b, fwsize SAME).
+- CMatrix3x4.h: FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_XZY -- TransformPoint(C3DVector&) with X parenthesised, Y/Z single sums in x,z,y order (retail 0x00B4D654.. / 0x00B4DB00..).
+- CMatrix4x4.h: FABLE_RETAIL_CMATRIX4X4_SHADOWSPACE -- enum EMatrix34Init, CMatrix4x4(EMatrix34Init) (column loop of (i==j)?1:0, landed 0x01224340 model), Initialise(16 floats) (fwsize SAME 55i/156b), PerspectiveTransformPoint (fwsize SAME 87i/241b), PostTranslate / PostScale row loops (fwsize 59i v 60i, 45i v 48i: text still differs).
+- CMatrix3x4.h: FABLE_RETAIL_CMATRIX3X4_SETTRANSLATEONLY_FLOATS -- SetTranslateOnly(float,float,float) (FableWin 0x02D78EA0 ?SetTranslateOnly@CMatrix3x4@@QAEXMMM@Z, first referenced by the shadow TU; fwsize SAME 16i/40b). Attempt 2.
+- C3DVector.h (full copy of the current repo header): FABLE_RETAIL_C3DVECTOR_SCALE_RESULT_LOCAL -- operator*(float) as `C3DVector result(...); return result;` (retail grid keeps the scaled vectors in memory and builds the final + straight into p: result-local * with the default RVO +); FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQUARED_LOCAL -- GetMagnitude `float squared=X*X+Y*Y+Z*Z; return sqrtf(squared);` (fwsize SAME 26i/66b). Attempt 2.

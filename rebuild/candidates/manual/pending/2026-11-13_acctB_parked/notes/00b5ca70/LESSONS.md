@@ -1,0 +1,1 @@
+- 0x00B5CA70: math.h `sin(float)`/`cos(float)`/`pow(float,float)` inline bodies leave PAREN (0x269) IL tuples (cos 3 / sin 2 per product arg, pow 2) that move c2's 81-tuple region cuts; `(float)sin((double)x)` leaves none. A nested-paren offset scan at one statement (k=1..40) pins how many tuples retail has before a cut.

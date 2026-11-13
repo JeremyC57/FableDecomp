@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+007021f0	?GetTeleporterRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ	Ego_r 0x00723D30 + FableWin (DOSSIER sec.3)	CTCQuestCard_GetMarkerRegionName_007021f0.cpp
+004fb470	?GetRegionCount@CWorldMap@@QBEJXZ	Ego_r 0x004CEBA0 + FableWin (DOSSIER sec.3)	CWorldMap_DrawGetNoMaps_004fb470.cpp
+005beb57	?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z	Ego_r 0x00620EC7; header NInventory_CTCInventoryBase.h:174	Leaf QAEJPBVCRegion@@@Z

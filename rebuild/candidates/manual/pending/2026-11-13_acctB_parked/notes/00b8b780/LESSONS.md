@@ -1,0 +1,2 @@
+- (bwf1 0x00B8B780) A by-value `C3DBoundingSphere sphere = mesh->GetBoundingSphere();` and a `const&`-bound temporary give identical code except one x87 operand order (fld E43 ; fmul R); the bookmark test/or tie of CRenderStateManager::SetRenderState blocks follows the function's c1 record count (one block per ~32 outer names, position-independent, other TU functions neutral) -- measure natural candidates with a dead-name ruler.
+- (bwf1) VC7.1 /O2 factors `x * 0.5f + 0.5f` into `(x + 1.0f) * 0.5f`: retail `fmul ; fadd` needs two statements (`*= 0.5f` then `+= 0.5f`).

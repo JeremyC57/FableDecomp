@@ -1,0 +1,5 @@
+address	landed_spelling	proven_spelling	evidence
+0x00412130	CCombatWheel_ResetRings / ResetRings	std::vector<CWideString>::~vector (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)	body = destroy each CWideString + free; manifest functions.tsv already ~vector; 25 vector<CWideString> owners call it
+0x00451354	CDefinitionManager::GetDef_00451354	??$GetDef@VCEnvironmentDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCEnvironmentDef@@@@@Z	only caller 0x0044E9FE passes "ENVIRONMENT" + this+0xD8; FableWin GetDef<CEnvironmentDef> 0x0199e1ab precedes GetDef<CHeroStatsDef>
+0x004513B9	CDefinitionManager::GetDef_004513b9	??$GetDef@VCHeroStatsDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCHeroStatsDef@@@@@Z	only caller 0x0044EA24 passes "HERO_STATS" + this+0xDC; FableWin 0x0199e24e
+0x004336BC	AddDefinitionType/SDefinitionType/Create*Def (callee spellings in the row)	AddDefClass / CDefClassInit / X::Alloc	Ego_r+FableWin ?AddDefClass@CDefinitionManager@@QAEXABVCDefClassInit@@@Z, ?Alloc@X@@SIPAVCDefClassBase@@XZ

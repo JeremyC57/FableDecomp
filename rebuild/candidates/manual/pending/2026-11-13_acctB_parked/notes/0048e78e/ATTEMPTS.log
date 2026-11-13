@@ -1,0 +1,180 @@
+15:41 0048e78e grade 0048e78e.cpp SRC_FAIL -- coordinator baseline after overlay re-base
+15:41 0048e78e grade 0048e78e.cpp DIFFER(2656v2662) hunks=55 -- coordinator baseline after overlay re-base
+17:32 0048e78e grade a0.cpp DIFFER(2656v2662) hunks=55 -- baseline c39 and c67
+17:32 0048e78e grade a67.cpp DIFFER(2668v2662) hunks=50 -- baseline c39 and c67
+17:33 0048e78e grade a67.cpp DIFFER(2668v2662) hunks=50 -- c67 full diff view
+17:35 0048e78e grade b1.cpp DIFFER(2652v2662) hunks=81 -- default-ctor positions + Y assignment chains
+17:35 0048e78e grade b2.cpp DIFFER(2670v2662) hunks=52 -- default-ctor positions + Y assignment chains
+17:35 0048e78e grade b3.cpp DIFFER(2669v2662) hunks=52 -- default-ctor positions + Y assignment chains
+17:36 0048e78e grade b4.cpp DIFFER(2660v2662) hunks=50 -- copy chains on c67 base
+17:36 0048e78e grade b5.cpp DIFFER(2670v2662) hunks=53 -- copy chains on c67 base
+17:36 0048e78e grade b6.cpp DIFFER(2667v2662) hunks=50 -- copy chains on c67 base
+17:36 0048e78e grade a0.cpp DIFFER(2656v2662) hunks=55 -- c39 view
+17:37 0048e78e grade b7.cpp DIFFER(2652v2662) hunks=82 -- interleaved decl+=, += order 1,3,2 / 3,2,1
+17:37 0048e78e grade b8.cpp DIFFER(2666v2662) hunks=85 -- interleaved decl+=, += order 1,3,2 / 3,2,1
+17:37 0048e78e grade b9.cpp DIFFER(2666v2662) hunks=83 -- interleaved decl+=, += order 1,3,2 / 3,2,1
+17:38 0048e78e grade c1.cpp DIFFER(2668v2662) hunks=50 -- offset as if/else arms (DrawButtonText sibling shape, cross-jumped)
+17:38 0048e78e grade c2.cpp DIFFER(2673v2662) hunks=46 -- offset as if/else arms (DrawButtonText sibling shape, cross-jumped)
+17:38 0048e78e grade c3.cpp DIFFER(2668v2662) hunks=82 -- offset as if/else arms (DrawButtonText sibling shape, cross-jumped)
+17:38 0048e78e grade d1.cpp DIFFER(2661v2662) hunks=51 -- c2 + width spellings
+17:38 0048e78e grade d2.cpp DIFFER(2663v2662) hunks=53 -- c2 + width spellings
+17:38 0048e78e grade d3.cpp DIFFER(2673v2662) hunks=46 -- c2 + width spellings
+17:38 0048e78e grade d1.cpp DIFFER(2661v2662) hunks=51 -- view d1
+17:39 0048e78e grade e1.cpp DIFFER(2667v2662) hunks=157 -- d1 + layer placement
+17:39 0048e78e grade e2.cpp DIFFER(2664v2662) hunks=42 -- d1 + layer placement
+17:39 0048e78e grade e3.cpp SRC_FAIL -- d1 + layer placement
+17:40 0048e78e grade f1.cpp DIFFER(2661v2662) hunks=160 -- d1 + bools/layer decl placement
+17:40 0048e78e grade f2.cpp DIFFER(2661v2662) hunks=121 -- d1 + bools/layer decl placement
+17:40 0048e78e grade f3.cpp DIFFER(2661v2662) hunks=51 -- d1 + bools/layer decl placement
+17:41 0048e78e grade i1.cpp DIFFER(2666v2662) hunks=42 -- d1 DIAG: mouse layer const / pulse before half / pulse before width
+17:41 0048e78e grade i2.cpp DIFFER(2661v2662) hunks=51 -- d1 DIAG: mouse layer const / pulse before half / pulse before width
+17:41 0048e78e grade i3.cpp DIFFER(2664v2662) hunks=45 -- d1 DIAG: mouse layer const / pulse before half / pulse before width
+17:41 0048e78e grade j1.cpp DIFFER(2661v2662) hunks=51 -- d1 + timer through reference/pointer local
+17:41 0048e78e grade j2.cpp DIFFER(2661v2662) hunks=51 -- d1 + timer through reference/pointer local
+17:41 0048e78e grade j3.cpp DIFFER(2661v2662) hunks=51 -- d1 + timer through reference/pointer local
+17:41 0048e78e grade k1.cpp DIFFER(2669v2662) hunks=128 -- d1 + flags local copy at 3 places
+17:41 0048e78e grade k2.cpp DIFFER(2670v2662) hunks=104 -- d1 + flags local copy at 3 places
+17:42 0048e78e grade k3.cpp DIFFER(2672v2662) hunks=71 -- d1 + flags local copy at 3 places
+17:42 0048e78e grade l1.cpp DIFFER(2664v2662) hunks=42 -- e2 + arm A offset spellings
+17:42 0048e78e grade l2.cpp DIFFER(2662v2662) hunks=35 -- e2 + arm A offset spellings
+17:42 0048e78e grade l3.cpp DIFFER(2669v2662) hunks=37 -- e2 + arm A offset spellings
+17:42 0048e78e grade l2.cpp DIFFER(2662v2662) hunks=35 -- view l2
+17:43 0048e78e grade m1.cpp DIFFER(2656v2662) hunks=143 -- DIAG d1: no button1_drawn / no Button3Text CSE / no extents
+17:43 0048e78e grade m2.cpp DIFFER(2661v2662) hunks=55 -- DIAG d1: no button1_drawn / no Button3Text CSE / no extents
+17:43 0048e78e grade m3.cpp DIFFER(2633v2662) hunks=137 -- DIAG d1: no button1_drawn / no Button3Text CSE / no extents
+17:44 0048e78e grade n1.cpp SRC_FAIL -- IsFlagSet accessor (FableWin) on d1 / l2
+17:44 0048e78e grade n2.cpp SRC_FAIL -- IsFlagSet accessor (FableWin) on d1 / l2
+17:44 0048e78e grade n1.cpp DIFFER(2661v2662) hunks=50 -- IsFlagSet accessor (FableWin) on d1 / l2
+17:44 0048e78e grade n2.cpp DIFFER(2662v2662) hunks=34 -- IsFlagSet accessor (FableWin) on d1 / l2
+17:44 0048e78e grade o1.cpp DIFFER(2664v2662) hunks=41 -- n2 + arm A offset orders / float refs
+17:44 0048e78e grade o2.cpp DIFFER(2666v2662) hunks=35 -- n2 + arm A offset orders / float refs
+17:44 0048e78e grade o3.cpp DIFFER(2664v2662) hunks=34 -- n2 + arm A offset orders / float refs
+17:45 0048e78e grade n2.cpp DIFFER(2662v2662) hunks=34 -- view n2
+17:45 0048e78e grade p1.cpp DIFFER(2662v2662) hunks=69 -- n1 + layer ternary / if-else / if after bools before box3
+17:45 0048e78e grade p3.cpp DIFFER(2662v2662) hunks=69 -- n1 + layer ternary / if-else / if after bools before box3
+17:45 0048e78e grade p4.cpp DIFFER(2661v2662) hunks=50 -- n1 + layer ternary / if-else / if after bools before box3
+17:46 0048e78e grade q1.cpp DIFFER(2661v2662) hunks=58 -- n1 + scope variants (box1 in block / outer block / bool order)
+17:46 0048e78e grade q2.cpp DIFFER(2661v2662) hunks=42 -- n1 + scope variants (box1 in block / outer block / bool order)
+17:46 0048e78e grade q3.cpp DIFFER(2661v2662) hunks=50 -- n1 + scope variants (box1 in block / outer block / bool order)
+17:46 0048e78e grade q2.cpp DIFFER(2661v2662) hunks=42 -- view q2
+17:46 0048e78e grade r1.cpp DIFFER(2659v2662) hunks=34 -- q2 + armA XXYY; outer block from half / from width
+17:46 0048e78e grade r2.cpp DIFFER(2659v2662) hunks=34 -- q2 + armA XXYY; outer block from half / from width
+17:46 0048e78e grade r3.cpp DIFFER(2659v2662) hunks=34 -- q2 + armA XXYY; outer block from half / from width
+17:46 0048e78e grade s1.cpp DIFFER(2662v2662) hunks=26 -- r1 + split / r1 view
+17:46 0048e78e grade r1.cpp DIFFER(2659v2662) hunks=34 -- r1 + split / r1 view
+17:47 0048e78e grade t1.cpp DIFFER(2664v2662) hunks=33 -- s1 + arm A XYXY / C2DVector ref / float refs
+17:47 0048e78e grade t2.cpp DIFFER(2664v2662) hunks=33 -- s1 + arm A XYXY / C2DVector ref / float refs
+17:47 0048e78e grade t3.cpp DIFFER(2664v2662) hunks=34 -- s1 + arm A XYXY / C2DVector ref / float refs
+17:48 0048e78e grade u1.cpp DIFFER(2664v2662) hunks=33 -- s1 arm A: YXYX / box ref / a=a+b
+17:48 0048e78e grade u2.cpp DIFFER(2664v2662) hunks=33 -- s1 arm A: YXYX / box ref / a=a+b
+17:48 0048e78e grade u3.cpp DIFFER(2664v2662) hunks=33 -- s1 arm A: YXYX / box ref / a=a+b
+17:48 0048e78e grade q2.cpp DIFFER(2661v2662) hunks=42 -- q2 view (single block, XYXY)
+17:48 0048e78e grade v1.cpp DIFFER(2437v2662) hunks=43 -- DIAG t1 without flag tests in arms (is arm A X CSE blocked by flags?)
+17:49 0048e78e grade x1.cpp DIFFER(2659v2662) hunks=108 -- r1 single block: decls before box1 (inside outer block) / bool order / layer after bools
+17:49 0048e78e grade x2.cpp DIFFER(2659v2662) hunks=34 -- r1 single block: decls before box1 (inside outer block) / bool order / layer after bools
+17:49 0048e78e grade x3.cpp DIFFER(2659v2662) hunks=34 -- r1 single block: decls before box1 (inside outer block) / bool order / layer after bools
+17:49 0048e78e grade y1.cpp DIFFER(2659v2662) hunks=34 -- r1 single block: mixed raw/IsFlagSet flag spellings
+17:49 0048e78e grade y2.cpp DIFFER(2659v2662) hunks=35 -- r1 single block: mixed raw/IsFlagSet flag spellings
+17:49 0048e78e grade y3.cpp DIFFER(2659v2662) hunks=34 -- r1 single block: mixed raw/IsFlagSet flag spellings
+17:50 0048e78e grade z1.cpp DIFFER(2664v2662) hunks=33 -- t1 arm A huge_pos spellings (GetTLX / inline temp / += half)
+17:50 0048e78e grade z2.cpp DIFFER(2664v2662) hunks=33 -- t1 arm A huge_pos spellings (GetTLX / inline temp / += half)
+17:50 0048e78e grade z3.cpp DIFFER(2664v2662) hunks=34 -- t1 arm A huge_pos spellings (GetTLX / inline temp / += half)
+17:50 0048e78e grade v2.cpp DIFFER(2666v2662) hunks=37 -- DIAG arm A X CSE: mouse layer const LAYER_1 / no mouse sprite
+17:50 0048e78e grade v3.cpp DIFFER(2522v2662) hunks=121 -- DIAG arm A X CSE: mouse layer const LAYER_1 / no mouse sprite
+17:51 0048e78e grade aa1.cpp DIFFER(2664v2662) hunks=36 -- r1 + bool behind = IsFlagSet(0x800) early, if(behind) after box3
+17:51 0048e78e grade aa2.cpp DIFFER(2664v2662) hunks=36 -- r1 + bool behind = IsFlagSet(0x800) early, if(behind) after box3
+17:51 0048e78e grade aa3.cpp DIFFER(2674v2662) hunks=105 -- r1 + bool behind = IsFlagSet(0x800) early, if(behind) after box3
+17:53 0048e78e grade ac1.cpp DIFFER(2678v2662) hunks=28 -- t1 + drawn/button1_drawn at the start of arm A
+17:53 0048e78e grade ac2.cpp DIFFER(2664v2662) hunks=33 -- t1 + drawn/button1_drawn at the start of arm A
+17:53 0048e78e grade ac3.cpp DIFFER(2678v2662) hunks=28 -- t1 + drawn/button1_drawn at the start of arm A
+17:53 0048e78e grade ac3.cpp DIFFER(2678v2662) hunks=28 -- view ac3
+17:54 0048e78e grade pm00.cpp DIFFER(2664v2662) hunks=26 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm01.cpp DIFFER(2662v2662) hunks=25 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm02.cpp DIFFER(2664v2662) hunks=26 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm03.cpp DIFFER(2662v2662) hunks=15 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm04.cpp DIFFER(2664v2662) hunks=24 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm05.cpp DIFFER(2664v2662) hunks=24 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm06.cpp DIFFER(2659v2662) hunks=31 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm07.cpp DIFFER(2662v2662) hunks=24 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm08.cpp DIFFER(2659v2662) hunks=35 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm09.cpp DIFFER(2662v2662) hunks=25 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm10.cpp DIFFER(2662v2662) hunks=25 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm11.cpp DIFFER(2662v2662) hunks=14 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm12.cpp DIFFER(2661v2662) hunks=28 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm13.cpp DIFFER(2662v2662) hunks=16 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm14.cpp DIFFER(2661v2662) hunks=28 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm15.cpp DIFFER(2662v2662) hunks=16 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm16.cpp DIFFER(2664v2662) hunks=26 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm17.cpp DIFFER(2662v2662) hunks=24 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm18.cpp DIFFER(2659v2662) hunks=35 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm19.cpp DIFFER(2664v2662) hunks=26 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm20.cpp DIFFER(2659v2662) hunks=31 -- arm A block 1 statement permutations
+17:54 0048e78e grade pm11.cpp DIFFER(2662v2662) hunks=14 -- view pm11
+17:55 0048e78e grade pm03.cpp DIFFER(2662v2662) hunks=15 -- view pm03
+17:55 0048e78e grade ad1.cpp DIFFER(2664v2662) hunks=33 -- DIAG t1 TLY from button2_pos.Y
+17:55 0048e78e grade fl01.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:55 0048e78e grade fl02.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:55 0048e78e grade fl03.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:55 0048e78e grade fl04.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:55 0048e78e grade fl05.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:56 0048e78e grade fl06.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:56 0048e78e grade fl07.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:56 0048e78e grade fl08.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:56 0048e78e grade fl09.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:56 0048e78e grade fl10.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:56 0048e78e grade fl11.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:56 0048e78e grade fl12.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:56 0048e78e grade fl13.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:56 0048e78e grade fl14.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:56 0048e78e grade fl15.cpp DIFFER(2664v2662) hunks=33 -- arm A block1 operand-order masks (off + box)
+17:56 0048e78e grade ae1.cpp DIFFER(2666v2662) hunks=21 -- t1 + huge_pos between TL and BR adds / default-ctor huge_pos
+17:56 0048e78e grade ae2.cpp DIFFER(2664v2662) hunks=33 -- t1 + huge_pos between TL and BR adds / default-ctor huge_pos
+17:57 0048e78e grade af1.cpp DIFFER(2659v2662) hunks=23 -- single-block r1 + arm A orders pm11/pm03/t1
+17:57 0048e78e grade af2.cpp DIFFER(2659v2662) hunks=23 -- single-block r1 + arm A orders pm11/pm03/t1
+17:57 0048e78e grade af3.cpp DIFFER(2661v2662) hunks=42 -- single-block r1 + arm A orders pm11/pm03/t1
+17:57 0048e78e grade af1.cpp DIFFER(2659v2662) hunks=23 -- view af1
+17:57 0048e78e grade ag1.cpp DIFFER(2659v2662) hunks=23 -- af1 + InCutscene local copy before arms / before box3
+17:57 0048e78e grade ag2.cpp DIFFER(2659v2662) hunks=23 -- af1 + InCutscene local copy before arms / before box3
+17:58 0048e78e grade ah1.cpp DIFFER(2659v2662) hunks=23 -- af1 single block: raw/IsFlagSet mixes, arm C cond order
+17:58 0048e78e grade ah2.cpp DIFFER(2659v2662) hunks=24 -- af1 single block: raw/IsFlagSet mixes, arm C cond order
+17:58 0048e78e grade ah3.cpp DIFFER(2669v2662) hunks=23 -- af1 single block: raw/IsFlagSet mixes, arm C cond order
+17:58 0048e78e grade ai1.cpp DIFFER(2635v2662) hunks=133 -- DIAG af1 without the 0x800 flags use
+17:58 0048e78e grade ai2.cpp DIFFER(2663v2662) hunks=16 -- DIAG af1 without the 0x800 flags use
+17:58 0048e78e grade aj1.cpp DIFFER(2664v2662) hunks=33 -- t1 arm A: scoped adds / TL scoped / both offsets via C2DVector refs
+17:58 0048e78e grade aj2.cpp DIFFER(2664v2662) hunks=33 -- t1 arm A: scoped adds / TL scoped / both offsets via C2DVector refs
+17:58 0048e78e grade aj3.cpp DIFFER(2666v2662) hunks=34 -- t1 arm A: scoped adds / TL scoped / both offsets via C2DVector refs
+17:59 0048e78e grade al1.cpp DIFFER(2667v2662) hunks=120 -- af1 + const flags local at 3 places
+17:59 0048e78e grade al2.cpp DIFFER(2667v2662) hunks=120 -- af1 + const flags local at 3 places
+17:59 0048e78e grade al3.cpp DIFFER(2670v2662) hunks=46 -- af1 + const flags local at 3 places
+18:00 0048e78e grade rt01.cpp DIFFER(2659v2662) hunks=23 -- DIAG ruler: N dead IL statements before def on af1
+18:00 0048e78e grade rt02.cpp DIFFER(2659v2662) hunks=24 -- DIAG ruler: N dead IL statements before def on af1
+18:00 0048e78e grade rt03.cpp DIFFER(2659v2662) hunks=24 -- DIAG ruler: N dead IL statements before def on af1
+18:00 0048e78e grade rt04.cpp DIFFER(2659v2662) hunks=24 -- DIAG ruler: N dead IL statements before def on af1
+18:00 0048e78e grade rt06.cpp DIFFER(2659v2662) hunks=24 -- DIAG ruler: N dead IL statements before def on af1
+18:00 0048e78e grade rt08.cpp DIFFER(2659v2662) hunks=23 -- DIAG ruler: N dead IL statements before def on af1
+18:00 0048e78e grade rt12.cpp DIFFER(2659v2662) hunks=24 -- DIAG ruler: N dead IL statements before def on af1
+18:00 0048e78e grade rt16.cpp DIFFER(2659v2662) hunks=23 -- DIAG ruler: N dead IL statements before def on af1
+18:00 0048e78e grade rt24.cpp DIFFER(2659v2662) hunks=23 -- DIAG ruler: N dead IL statements before def on af1
+18:00 0048e78e grade ru01.cpp DIFFER(2664v2662) hunks=33 -- DIAG ruler: N dead IL statements before arms on t1 (TLX,TLY order)
+18:00 0048e78e grade ru02.cpp DIFFER(2664v2662) hunks=34 -- DIAG ruler: N dead IL statements before arms on t1 (TLX,TLY order)
+18:00 0048e78e grade ru03.cpp DIFFER(2664v2662) hunks=34 -- DIAG ruler: N dead IL statements before arms on t1 (TLX,TLY order)
+18:00 0048e78e grade ru04.cpp DIFFER(2664v2662) hunks=34 -- DIAG ruler: N dead IL statements before arms on t1 (TLX,TLY order)
+18:00 0048e78e grade ru06.cpp DIFFER(2664v2662) hunks=34 -- DIAG ruler: N dead IL statements before arms on t1 (TLX,TLY order)
+18:00 0048e78e grade ru08.cpp DIFFER(2664v2662) hunks=33 -- DIAG ruler: N dead IL statements before arms on t1 (TLX,TLY order)
+18:00 0048e78e grade ru12.cpp DIFFER(2664v2662) hunks=34 -- DIAG ruler: N dead IL statements before arms on t1 (TLX,TLY order)
+18:00 0048e78e grade ru16.cpp DIFFER(2664v2662) hunks=33 -- DIAG ruler: N dead IL statements before arms on t1 (TLX,TLY order)
+18:00 0048e78e grade ru24.cpp DIFFER(2664v2662) hunks=33 -- DIAG ruler: N dead IL statements before arms on t1 (TLX,TLY order)
+18:01 0048e78e grade am1.cpp DIFFER(2666v2662) hunks=27 -- DIAG arm A via inline C2DVector::operator+= on the corners
+18:01 0048e78e grade am1.cpp DIFFER(2666v2662) hunks=27 -- view am1
+18:01 0048e78e grade an1.cpp DIFFER(2664v2662) hunks=33 -- DIAG TL from button2_pos + offset
+18:02 0048e78e grade ao1.cpp DIFFER(2659v2662) hunks=23 -- bools declared at top, assigned false in the box block (af1 single / pm11 split)
+18:02 0048e78e grade ao3.cpp DIFFER(2659v2662) hunks=23 -- bools declared at top, assigned false in the box block (af1 single / pm11 split)
+18:02 0048e78e grade ap1.cpp DIFFER(2662v2662) hunks=14 -- bools declared at top, assigned false in the box block (af1 single / pm11 split)
+18:02 0048e78e grade aq1.cpp DIFFER(2664v2662) hunks=24 -- af1 + const bool behind read early, if(behind) after box3
+18:02 0048e78e grade aq2.cpp DIFFER(2664v2662) hunks=24 -- af1 + const bool behind read early, if(behind) after box3
+18:03 0048e78e grade as2.cpp DIFFER(2659v2662) hunks=23 -- af1 + arm E nested if (!InCutscene) { if (respawn==0) }
+18:03 0048e78e grade fin.cpp SRC_FAIL -- pm11 under the re-based overlay (stale headers re-based/dropped)
+18:04 0048e78e grade fin.cpp DIFFER(2662v2662) hunks=14 -- pm11 under the re-based overlay (stale headers re-based/dropped)
+18:04 0048e78e grade bo1.cpp DIFFER(2664v2662) hunks=39 -- t1 + box2 before box1 / button2 Y before X subtract
+18:04 0048e78e grade bo2.cpp DIFFER(2664v2662) hunks=37 -- t1 + box2 before box1 / button2 Y before X subtract
+18:04 0048e78e grade final.cpp DIFFER(2662v2662) hunks=14 -- final differ source regrade

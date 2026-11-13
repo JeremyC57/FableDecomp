@@ -1,0 +1,340 @@
+#ifndef FABLE_ENGINE_CTCINVENTORYABILITIES_H
+#define FABLE_ENGINE_CTCINVENTORYABILITIES_H
+// Retail opt-in (header wave 2026-11-03, Codex pass 12 row 0x008EDFF0): define FABLE_RETAIL_CTCINVENTORYABILITIES for the
+// polymorphic retail class: RTTI bases NInventory::CTCInventoryBase (a CTCBase) and NHeroInformationScreens::CBase, interface
+// type 111, the 19 Ego_r.pdb members in order and spelling with retail STLport sizes (sizeof 0x1D8, the generated layout
+// below). Members: Ego_r.pdb ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (0x0057CAFE) and
+// ?GetAbilityMaximumLevel@..@@QBEJW4EHeroAbility@@@Z (0x0057CB0E), both called out of line by 0x008EDFF0. The default path
+// below is unchanged.
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES
+#ifndef FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#endif
+#include "engine/NInventory_CTCInventoryBase.h"
+#include "engine/NHeroInformationScreens_CBase.h"
+#include "engine/EHeroAbility.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_LEVELUP
+#include "engine/EHeroExperienceStatCategory.h"
+#endif
+#include "engine/CVectorMap.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_MAGIC
+#include "stlport/fable_map.h"
+#endif
+#include "engine/CDefPointer.h"
+#include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_EXPRESSIONS
+#include "fable_string.h"
+namespace NUISystem { class CComponent; class CList; class CUIMiscThingsDef; }
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ASSIGN
+namespace NUISystem { class CComponent; }
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ITEMLISTS
+#include "engine/CCountedPointer.h"
+namespace NUISystem { class CComponent; class CList; }
+#endif
+class CHeroAbilityDef;
+class CTCInventoryAbilities : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
+public:
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_MAGIC
+    // Original names/values: raw Ego_r type0x2af77 and FableWin type0x2d7f3.
+    enum EUISpellCategory { SPELL_CATEGORY_ATTACK=0, SPELL_CATEGORY_SURROUND=1, SPELL_CATEGORY_PHYSICAL=2 };
+    EUISpellCategory GetCategory(EHeroAbility);
+    NUISystem::CComponent* GetMenuEntryFromCategory(EUISpellCategory,NUISystem::CComponent*);
+    CDefPointer<const CHeroAbilityDef> GetAbilityPDef(EHeroAbility) const;
+#endif
+    static ETCInterfaceType StatGetInterfaceType() { return (ETCInterfaceType)111; }
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_EXPRESSIONS
+    // Nested opt-in (chunk 867, row 0x005F59C7): the PC skills screen's expressions page. FableWin.pdb spellings, out of line in
+    // retail: ?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z 0x005F59C7 and
+    // ?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@
+    // V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z 0x005F45B5 (title, list, the category's items,
+    // the parent component, the ring picture name, the menu-guide text symbol).
+    NUISystem::CComponent* ConstructPCExpressionsList(NUISystem::CComponent* parent);                           // 0x005F59C7
+    void ConstructPCExpressionCategoryList(CWideString& title, NUISystem::CList* list, std::vector<std::pair<long, long> >& items,
+                                           NUISystem::CComponent* parent, const CCharString& ringPicture, const CCharString& guideSymbol);   // 0x005F45B5
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_PCMAGIC
+    // Overlay opt-in (row 0x005F1B10): ?ConstructPCMagicList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+    // (Ego_r.pdb / FableWin.pdb), the PC skills screen's magic page; its only caller is NUISystem::CManager::Action 0x0041E6D3.
+    NUISystem::CComponent* ConstructPCMagicList(NUISystem::CComponent* parent);                                 // 0x005F1B10
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_SCREEN
+    // Retail opt-in (Codex 2026-11-10): Ego_r/FableWin exact names; vtable1256ad4 slot77.
+    virtual NUISystem::CComponent* ConstructScreen(NUISystem::CComponent* parent); //005f519f
+    NUISystem::CComponent* GetMagicListUIComponent(long& count,NUISystem::CComponent* parent); //005eeff2
+    NUISystem::CComponent* GetExpressionsListUIComponent(long& count,NUISystem::CComponent* parent); //005f4c8f
+private:
+    void ConstructExpressionCategoryList(CWideString& title,NUISystem::CList* list,std::vector<std::pair<long,long> >& items,NUISystem::CComponent* owner,const CCharString& ringPicture,const CCharString& guideSymbol);
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ASSIGN
+    // Opt-in (chunk 1008): the quick-slot members, Ego_r.pdb + FableWin.pdb spellings (all out of line in retail):
+    // ?AssignAbility@CTCInventoryAbilities@@QAEXJK@Z 0x005F0C5F, ?AssignAbilityPC@..@@QAEXJKPAVCComponent@NUISystem@@@Z 0x005F0DC5,
+    // ?UnAssignAbility@..@@QAEXK@Z 0x005F11A9, ?UnAssignAbilityPC@..@@QAEXKPAVCComponent@NUISystem@@@Z 0x005F1320,
+    // ?CycleAssignedAbilities@..@@QAEX_N@Z 0x005F64DD, ?CycleAssignedExpressions@..@@QAEX_N@Z 0x005F6793,
+    // ?SetAbilityAsAvailable@..@@QAEXW4EHeroAbility@@_N1@Z 0x005F6BD6, ?IsAbleToUseAbility@..@@QBE_NW4EHeroAbility@@_N@Z 0x005EE49A.
+    void AssignAbility(long ability, unsigned long slot);                                                       // 0x005F0C5F
+    void AssignAbilityPC(long ability, unsigned long slot, NUISystem::CComponent* container);                    // 0x005F0DC5
+    void UnAssignAbility(unsigned long slot);                                                                    // 0x005F11A9
+    void UnAssignAbilityPC(unsigned long slot, NUISystem::CComponent* container);                                // 0x005F1320
+    void CycleAssignedAbilities(bool forward);                                                                   // 0x005F64DD
+    void CycleAssignedExpressions(bool forward);                                                                 // 0x005F6793
+    void SetAbilityAsAvailable(EHeroAbility ability, bool available, bool reassign);                             // 0x005F6BD6
+    bool IsAbleToUseAbility(EHeroAbility ability, bool checkCost) const;                                         // 0x005EE49A
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_BUTTONS
+    // Nested opt-in (chunk 1008b, row 0x005F6BD6 SetAbilityAsAvailable): Ego_r.pdb / FableWin.pdb spellings, out of line in retail:
+    // ?SetAbilityToButton@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J_N@Z 0x005F6423 (landed) and
+    // ?GetNumAssignableSpecialMoveButtons@CTCInventoryAbilities@@QBEJXZ 0x005EDCF0 (its landed callers spell it GetNumAbilitiesPerRow,
+    // which neither PDB has).
+    void SetAbilityToButton(EHeroAbility ability, long button, bool flag);                                       // 0x005F6423
+    long GetNumAssignableSpecialMoveButtons() const;                                                             // 0x005EDCF0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_PRIORITISED
+    // Opt-in (agentSND, 2026-11-10, rows 0x005F64DD / 0x005F6793 CycleAssignedAbilities / CycleAssignedExpressions): Ego_r.pdb +
+    // FableWin.pdb spellings, out of line in retail: ?GetPrioritisedAbilityDefs@CTCInventoryAbilities@@QBEXAAV?$vector@V?$CDefPointer@
+    // $$CBVCHeroAbilityDef@@@@..@std@@@Z 0x005F4B30, ?GetPrioritisedExpressionDefs@..@@QBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+    // 0x005EED8C, ?SetExpressionToButton@..@@QAEXJJ@Z 0x005F66D9 (all landed).
+    void GetPrioritisedAbilityDefs(std::vector<CDefPointer<const CHeroAbilityDef> >& defs) const;               // 0x005F4B30
+    void GetPrioritisedExpressionDefs(std::vector<long>& defs) const;                                            // 0x005EED8C
+    void SetExpressionToButton(long expression, long button);                                                    // 0x005F66D9
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ITEMLISTS
+    // Opt-in (chunk 1008): the expression item-list builders, FableWin.pdb spellings (out of line in retail):
+    // ?ConstructPCItemLists@CTCInventoryAbilities@@QAEXAAV?$vector@U?$pair@JJ@std@@...@std@@PAVCList@NUISystem@@PAVCComponent@5@
+    // AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z 0x005F1526 (public) and the console ?ContructItemLists@..@@AAEX..@Z 0x005F077F
+    // (private; the PDB's own spelling "Contruct"). Items, the category's sub list, the screen component, the shared actions list.
+    void ConstructPCItemLists(std::vector<std::pair<long, long> >& items, NUISystem::CList* list, NUISystem::CComponent* owner,
+                              CCountedPointer<NUISystem::CComponent>& actions);                                  // 0x005F1526
+private:
+    void ContructItemLists(std::vector<std::pair<long, long> >& items, NUISystem::CList* list, NUISystem::CComponent* owner,
+                           CCountedPointer<NUISystem::CComponent>& actions);                                     // 0x005F077F
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_INITIALISE
+    // Retail opt-in (agentNF8, rows 0x005F3E3E / 0x005EEDE2 / 0x005EE207): Ego_r.pdb + FableWin.pdb
+    // ?InitialiseExpressions@CTCInventoryAbilities@@QAEXXZ 0x005F3E3E, ?InitialiseAbilities@CTCInventoryAbilities@@QAEXXZ 0x005EEDE2 and
+    // (FableWin.pdb) ?GetExpressionPDef@CTCInventoryAbilities@@QBE?AV?@23019CBVCExpressionDef@@@@J@Z 0x005EE207, all out of
+    // line in retail. Declarations only.
+    void InitialiseExpressions();                                                                                // 0x005F3E3E
+    void InitialiseAbilities();                                                                                  // 0x005EEDE2
+    CDefPointer<const class CExpressionDef> GetExpressionPDef(long index) const;                                 // 0x005EE207
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_MAXLEVEL_FIRST
+    // Opt-in (chunk 1005): GetAbilityMaximumLevel declared before GetAbilityLevel. VC7.1 evaluates the two out-of-line calls of
+    // `GetAbilityLevel(a) < GetAbilityMaximumLevel(a)` with the later-declared callee first; retail calls GetAbilityLevel
+    // 0x005EDE93 first (CTCInventoryExperience::AddAbilityToList 0x00570420 / RecheckAvailabilities 0x005727C8).
+    long GetAbilityMaximumLevel(EHeroAbility) const;
+    long GetAbilityLevel(EHeroAbility) const;
+#else
+    long GetAbilityLevel(EHeroAbility) const;
+    long GetAbilityMaximumLevel(EHeroAbility) const;
+#endif
+    // Chunk 735 (CTCInventoryExperience::AddAbilityToList(PC) 0x00570332 / 0x00571280): Ego_r.pdb spellings, out of line in
+    // retail: GetAbilityGraphicIndex 0x005EDE7F, GetAbilityMoralityCostFactor 0x005EDFF7, GetExperienceCostToUpgradeAbility
+    // 0x005EE77C (ability, levels, bool).
+    long GetAbilityGraphicIndex(EHeroAbility) const;
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_SETLEVEL
+    // Opt-in (chunk 1005, row 0x00576C4F UndoBuyAbility): Ego_r.pdb ?SetAbilityLevelTo@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J@Z,
+    // out of line at 0x005EE01A.
+    void SetAbilityLevelTo(EHeroAbility, long);
+#endif
+    float GetAbilityMoralityCostFactor(EHeroAbility);
+    long GetExperienceCostToUpgradeAbility(EHeroAbility,long,bool) const;
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_LEVELUP
+    // Chunk 764 (row 0x006D7B80 CTCHeroExperience::GetAbilityPossibleLevelUpAmount): Ego_r.pdb spellings, out of line in retail:
+    // IsAbilityPotentiallyAvailable 0x005EE02E (QBE), GetAbilityStatType 0x005EDEEB (QBE), GetAbilityMaximumLevelWithRenown
+    // 0x005EE6BF (QAE). The row calls GetAbilityLevel at 0x005EDE93 and GetAbilityMaximumLevel at 0x005EDEA3 (reloc_bindings).
+    bool IsAbilityPotentiallyAvailable(EHeroAbility) const;
+    EHeroExperienceStatCategory GetAbilityStatType(EHeroAbility) const;
+    long GetAbilityMaximumLevelWithRenown(EHeroAbility);
+#endif
+private:
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_EXPRESSIONS
+    // Nested opt-in (chunk 867): ?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ
+    // 0x005EE3B3 (Ego_r.pdb + FableWin.pdb; out of line in retail, the def handle returned through a hidden pointer).
+    const CDefPointer<const NUISystem::CUIMiscThingsDef> GetMiscThingsDef() const;                                // 0x005EE3B3
+#endif
+    EHeroAbility SpellToAssign;
+    long SpellSlotToSwap;
+    NUISystem::CComponent* PComponentSlotToSwap;
+    bool WaitingToGiveTutorial,Initialised,CurrentSpecialAbilityUsedFromQuickAccess;
+    long CurrentAssignedAbilityLevel;
+    std::vector<long> ExperienceSpentOnAbilities;
+    std::vector<EHeroAbility> ReceivedAbilityOrder;
+    std::vector<std::pair<long,CDefPointer<const CHeroAbilityDef> > > Abilities;
+    CVectorMap<long,EHeroAbility> AbilityButtons;
+    std::vector<EHeroAbility> AssignedAbilities,AssignedAbilitiesSave;
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_MAGIC
+    std::map<EUISpellCategory,NUISystem::CComponent*> CategoriesLists;
+    std::map<EHeroAbility,NUISystem::CComponent*> UnassignedIcons;
+    std::map<EHeroAbility,NUISystem::CComponent*> AbilitiesMenuEntries;
+#else
+    unsigned char CategoriesLists[12]; // +0x194 std::map<EUISpellCategory,NUISystem::CComponent*>
+    unsigned char UnassignedIcons[12]; // +0x1a0 std::map<EHeroAbility,NUISystem::CComponent*>
+    unsigned char AbilitiesMenuEntries[12]; // +0x1ac std::map<EHeroAbility,NUISystem::CComponent*>
+#endif
+    long CurrentAssignedExpressionLevel;
+    std::vector<long> ReceivedExpressionOrder;
+    CVectorMap<long,long> ExpressionButtons;
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x005FA3A2
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x005FA39F
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual override this declaration lacks, declaration only (no layout change; the vtable exists). Slot from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x005FA381
+public:
+#endif // FABLE_RETAIL_CTCINVENTORYABILITIES_VSLOTS3
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_HISCREEN
+// agentFAM13 (2026-11-12): the NHeroInformationScreens::CBase overrides this declaration lacks (the secondary vtable at +0x130,
+// slots 0 GetScreenName / 1 GetPlayerMode / 2 GetScreenType / 3 IsInventoryScreen, engine/NHeroInformationScreens_CBase.h);
+// spellings from the Ego_r / FableWin name sets. Declaration only (no layout change; the vtable exists).
+public:
+    virtual EPlayerMode GetPlayerMode() const;
+    virtual NHeroInformationScreens::EScreenType GetScreenType() const;
+#endif // FABLE_RETAIL_CTCINVENTORYABILITIES_HISCREEN
+};
+FABLE_STATIC_ASSERT(sizeof(CTCInventoryAbilities)==0x1d8);
+#else // FABLE_RETAIL_CTCINVENTORYABILITIES
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CTCInventoryAbilities = 0x220.
+// Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CTCInventoryAbilities = 0x1d8.
+// Retail evidence: 4 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+struct CComponent;
+
+#pragma pack(push, 1)
+class CTCInventoryAbilities {
+public:
+    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char _pad_0x04[0x4];                            // +0x04
+    unsigned char _pad_0x08[0x4];                            // +0x08
+    unsigned char _pad_0x0c[0xc];                            // +0x0c
+    unsigned char _pad_0x18[0x1];                            // +0x18
+    unsigned char _pad_0x19[0x3];                            // +0x19
+    unsigned char _pad_0x1c[0x4];                            // +0x1c
+    unsigned char _pad_0x20[0xc];                            // +0x20
+    unsigned char _pad_0x2c[0x4];                            // +0x2c
+    unsigned char _pad_0x30[0x4];                            // +0x30
+    unsigned char _pad_0x34[0x2];                            // +0x34
+    unsigned char _pad_0x36[0x2];                            // +0x36
+    unsigned char _pad_0x38[0x4];                            // +0x38
+    unsigned char _pad_0x3c[0x4];                            // +0x3c
+    unsigned char _pad_0x40[0x4];                            // +0x40
+    unsigned char _pad_0x44[0x4];                            // +0x44
+    unsigned char _pad_0x48[0x4];                            // +0x48
+    unsigned char _pad_0x4c[0x4];                            // +0x4c
+    unsigned char _pad_0x50[0x4];                            // +0x50
+    unsigned char _pad_0x54[0x4];                            // +0x54
+    unsigned char _pad_0x58[0x1];                            // +0x58
+    unsigned char _pad_0x59[0x3];                            // +0x59
+    unsigned char _pad_0x5c[0x4];                            // +0x5c
+    unsigned char _pad_0x60[0x4];                            // +0x60
+    unsigned char _pad_0x64[0x1];                            // +0x64
+    unsigned char _pad_0x65[0x3];                            // +0x65
+    unsigned char _pad_0x68[0x4];                            // +0x68
+    unsigned char _pad_0x6c[0x4];                            // +0x6c
+    unsigned char _pad_0x70[0x4];                            // +0x70
+    unsigned char _pad_0x74[0x4];                            // +0x74
+    unsigned char _pad_0x78[0x4];                            // +0x78
+    unsigned char _pad_0x7c[0x4];                            // +0x7c
+    unsigned char _pad_0x80[0x4];                            // +0x80
+    unsigned char _pad_0x84[0x4];                            // +0x84
+    unsigned char _pad_0x88[0x2];                            // +0x88
+    unsigned char _pad_0x8a[0x2];                            // +0x8a
+    unsigned char _pad_0x8c[0x4];                            // +0x8c
+    unsigned char _pad_0x90[0x4];                            // +0x90
+    unsigned char _pad_0x94[0x24];                           // +0x94
+    unsigned char _pad_0xb8[0x4];                            // +0xb8
+    unsigned char _pad_0xbc[0x4];                            // +0xbc
+    unsigned char _pad_0xc0[0x4];                            // +0xc0
+    unsigned char _pad_0xc4[0x4];                            // +0xc4
+    unsigned char _pad_0xc8[0x4];                            // +0xc8
+    unsigned char _pad_0xcc[0x4];                            // +0xcc
+    unsigned char _pad_0xd0[0x4];                            // +0xd0
+    unsigned char _pad_0xd4[0x4];                            // +0xd4
+    unsigned char _pad_0xd8[0x4];                            // +0xd8
+    unsigned char _pad_0xdc[0x4];                            // +0xdc
+    unsigned char _pad_0xe0[0x4];                            // +0xe0
+    unsigned char _pad_0xe4[0x4];                            // +0xe4
+    unsigned char _pad_0xe8[0x4];                            // +0xe8
+    unsigned char _pad_0xec[0x4];                            // +0xec
+    unsigned char _pad_0xf0[0x4];                            // +0xf0
+    unsigned char _pad_0xf4[0x4];                            // +0xf4
+    unsigned char _pad_0xf8[0x4];                            // +0xf8
+    unsigned char _pad_0xfc[0x4];                            // +0xfc
+    unsigned char _pad_0x100[0x4];                           // +0x100
+    unsigned char _pad_0x104[0x4];                           // +0x104
+    unsigned char _pad_0x108[0x4];                           // +0x108
+    unsigned char _pad_0x10c[0x4];                           // +0x10c
+    unsigned char _pad_0x110[0x4];                           // +0x110
+    unsigned char _pad_0x114[0x4];                           // +0x114
+    unsigned char _pad_0x118[0x4];                           // +0x118
+    unsigned char _pad_0x11c[0x4];                           // +0x11c
+    unsigned char _pad_0x120[0x2];                           // +0x120
+    unsigned char _pad_0x122[0x2];                           // +0x122
+    unsigned char _pad_0x124[0x4];                           // +0x124
+    unsigned char _pad_0x128[0x4];                           // +0x128
+    unsigned char _pad_0x12c[0x4];                           // +0x12c
+    unsigned char _pad_0x130[0x4];                           // +0x130
+    unsigned char SpellToAssign[0x4];                        // +0x134 EHeroAbility
+    long          SpellSlotToSwap;                           // +0x138
+    CComponent*   PComponentSlotToSwap;                      // +0x13c
+    bool          WaitingToGiveTutorial;                     // +0x140
+    bool          Initialised;                               // +0x141
+    bool          CurrentSpecialAbilityUsedFromQuickAccess;  // +0x142
+    unsigned char _pad_0x143[0x1];                           // +0x143
+    long          CurrentAssignedAbilityLevel;               // +0x144
+    unsigned char ExperienceSpentOnAbilities[0xc];           // +0x148 vector<long,std::allocator<long>_>
+    unsigned char ReceivedAbilityOrder[0xc];                 // +0x154 vector<EHeroAbility,std::allocator<EHeroAbility>_>
+    unsigned char Abilities[0xc];                            // +0x160 vector<std::pair<long,CDefPointer<CHeroAbilityDef_const_>_>,std::allocator<std::pair<long,CDefPointer<CHeroAbilityDef_const_>_>_>_>
+    unsigned char AbilityButtons[0x10];                      // +0x16c CVectorMap<long,EHeroAbility,CKeyPairCompareLess<long,EHeroAbility>_>
+    unsigned char AssignedAbilities[0xc];                    // +0x17c vector<EHeroAbility,std::allocator<EHeroAbility>_>
+    unsigned char AssignedAbilitiesSave[0xc];                // +0x188 vector<EHeroAbility,std::allocator<EHeroAbility>_>
+    unsigned char CategoriesLists[0xc];                      // +0x194 map<CTCInventoryAbilities::EUISpellCategory,NUISystem::CComponent_*,std::less<CTCInventoryAbilities::EUISpellCategory>,std::allocator<std::pair<CTCInventoryAbilities::EUISpellCategory_const_,NUISystem::CComponent_*>_>_>
+    unsigned char UnassignedIcons[0xc];                      // +0x1a0 map<EHeroAbility,NUISystem::CComponent_*,std::less<EHeroAbility>,std::allocator<std::pair<EHeroAbility_const_,NUISystem::CComponent_*>_>_>
+    unsigned char AbilitiesMenuEntries[0xc];                 // +0x1ac map<EHeroAbility,NUISystem::CComponent_*,std::less<EHeroAbility>,std::allocator<std::pair<EHeroAbility_const_,NUISystem::CComponent_*>_>_>
+    long          CurrentAssignedExpressionLevel;            // +0x1b8
+    unsigned char ReceivedExpressionOrder[0xc];              // +0x1bc vector<long,std::allocator<long>_>
+    unsigned char ExpressionButtons[0x10];                   // +0x1c8 CVectorMap<long,long,CKeyPairCompareLess<long,long>_>
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(CTCInventoryAbilities) == 0x1d8);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, SpellToAssign) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, SpellSlotToSwap) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, PComponentSlotToSwap) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, WaitingToGiveTutorial) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, Initialised) == 0x141);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, CurrentSpecialAbilityUsedFromQuickAccess) == 0x142);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, CurrentAssignedAbilityLevel) == 0x144);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, ExperienceSpentOnAbilities) == 0x148);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, ReceivedAbilityOrder) == 0x154);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, Abilities) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, AbilityButtons) == 0x16c);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, AssignedAbilities) == 0x17c);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, AssignedAbilitiesSave) == 0x188);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, CategoriesLists) == 0x194);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, UnassignedIcons) == 0x1a0);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, AbilitiesMenuEntries) == 0x1ac);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, CurrentAssignedExpressionLevel) == 0x1b8);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, ReceivedExpressionOrder) == 0x1bc);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryAbilities, ExpressionButtons) == 0x1c8);
+
+#endif // FABLE_RETAIL_CTCINVENTORYABILITIES
+#endif // FABLE_ENGINE_CTCINVENTORYABILITIES_H

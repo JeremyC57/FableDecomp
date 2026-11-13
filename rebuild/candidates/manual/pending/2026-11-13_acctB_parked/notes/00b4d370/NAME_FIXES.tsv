@@ -1,0 +1,1 @@
+00b4d370	?UpdateShadowSpace@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z	Ego_r 0x009F0370 + FableWin 0x02D74FB0 mangled name (const CEngineCamera&)	void UpdateShadowSpace(CEngineCamera* camera) in rebuild/src/compiled/00/b4/CEngineShadowRenderer_UpdateShadowScene_00b4f390.cpp

@@ -1,0 +1,86 @@
+20:00 00795300 grade v1.cpp TIMEOUT -- first full draft
+20:01 00795300 grade v1.cpp SRC_FAIL -- first full draft
+20:04 00795300 grade v1.cpp DIFFER(9713v9268) hunks=447 -- first full draft compiles
+20:06 00795300 grade v2.cpp DIFFER(9636v9268) hunks=513 -- inline state getter, implicit info dtors, LowerBound out of line, explicit GetString
+20:09 00795300 grade v4.cpp DIFFER(9607v9268) hunks=526 -- v3 + IP ASSIGN body (op= out of line at cold sites)
+20:09 00795300 grade v5.cpp DIFFER(9572v9268) hunks=524 -- map sweeps as if/else (shared ~creature)
+20:10 00795300 grade v5.cpp DIFFER(9572v9268) hunks=428 /d2inlT57 -- v5 /d2inlT57 sweep
+20:10 00795300 grade v5.cpp DIFFER(9529v9268) hunks=437 /d2inlT52 -- v5 /d2inlT52 sweep
+20:11 00795300 grade v6a.cpp DIFFER(9572v9268) hunks=527 -- box ctor variants: radius inline / init list / named centre
+20:11 00795300 grade v6b.cpp DIFFER(9572v9268) hunks=527 -- box ctor variants: radius inline / init list / named centre
+20:11 00795300 grade v6c.cpp DIFFER(9572v9268) hunks=524 -- box ctor variants: radius inline / init list / named centre
+20:13 00795300 grade v7.cpp DIFFER(9571v9268) hunks=522 -- GetTC original chain (HasTC+GetTC(id)+Find) instead of EXPANDED
+20:14 00795300 grade v8.cpp DIFFER(9571v9268) hunks=522 -- sweep2: if (!alive || health<=0) {kill/erase} else ++it
+20:15 00795300 grade 00795300.cpp DIFFER(9571v9268) hunks=522 -- final: differ copy of v7
+22:33 00795300 grade vA.cpp DIFFER(9219v9268) hunks=347 -- while loops: A=search2+effects while, B=search2 only, C=effects only
+22:33 00795300 grade vB.cpp DIFFER(9419v9268) hunks=496 -- while loops: A=search2+effects while, B=search2 only, C=effects only
+22:33 00795300 grade vC.cpp DIFFER(9493v9268) hunks=515 -- while loops: A=search2+effects while, B=search2 only, C=effects only
+22:33 00795300 grade vA.cpp DIFFER(9219v9268) hunks=347 -- vA regrade for call diff
+22:36 00795300 grade X1.cpp DIFFER(9315v9268) hunks=495 -- vA + erase(old_it) after prefix ++it in both sweeps
+22:38 00795300 grade X2.cpp DIFFER(9344v9268) hunks=504 -- X1 + sweep1 else-if chain (X3), sweep2 '!alive||h<=0' then-erase (X4), both (X2)
+22:38 00795300 grade X3.cpp DIFFER(9344v9268) hunks=504 -- X1 + sweep1 else-if chain (X3), sweep2 '!alive||h<=0' then-erase (X4), both (X2)
+22:38 00795300 grade X4.cpp DIFFER(9315v9268) hunks=495 -- X1 + sweep1 else-if chain (X3), sweep2 '!alive||h<=0' then-erase (X4), both (X2)
+22:40 00795300 grade Y1.cpp DIFFER(9329v9268) hunks=316 -- X1 with next=it;++next;erase(it);it=next
+22:52 00795300 grade R0.cpp ERROR -- objects while + search2 for (E=0.3125) + sweep2 split alive; R1 also sweep1 !(a&&!b)
+22:52 00795300 grade R1.cpp ERROR -- objects while + search2 for (E=0.3125) + sweep2 split alive; R1 also sweep1 !(a&&!b)
+22:53 00795300 grade R1.cpp DIFFER(9450v9268) hunks=354 -- R1 retry
+23:00 00795300 grade T1.cpp ERROR -- R1 + spell-over wrapped in if (DurationOfSpellFrames <= 0) (halve f)
+23:01 00795300 grade T1.cpp DIFFER(9392v9268) hunks=423 -- T1 retry
+23:05 00795300 grade T2.cpp DIFFER(9392v9268) hunks=423 -- T1 + CIP CONVERT_MUTABLE (loop-top copy = template ctor, 2 COMDATs like retail); T3 + ASSIGN_ORIGINAL_CHAIN
+23:05 00795300 grade T3.cpp DIFFER(9392v9268) hunks=423 -- T1 + CIP CONVERT_MUTABLE (loop-top copy = template ctor, 2 COMDATs like retail); T3 + ASSIGN_ORIGINAL_CHAIN
+23:15 00795300 grade P3.cpp DIFFER(10061v9268) hunks=369 -- PROBE: T2 + 24 dummy C3DVector copies before spell-over (+600 g) + K effect_pos by assignment
+23:16 00795300 grade U4.cpp DIFFER(9394v9268) hunks=422 -- T2 + CVECTORMAP_ORIGINAL_FIND (FableWin Find text, extra Compare layer -> more g)
+23:18 00795300 grade U5.cpp DIFFER(9523v9268) hunks=372 -- U4 + C3DVector operator- named result (FableWin 34i text)
+23:20 00795300 grade U6.cpp DIFFER(9522v9268) hunks=377 -- U5 + explicit CDefString::GetString() at all 5 sound sites (FableWin has no ??BCDefString)
+23:20 00795300 grade U6.cpp DIFFER(9522v9268) hunks=377 -- U6 hunks view
+23:20 00795300 grade U7.cpp DIFFER(9522v9268) hunks=377 -- U5 + only stamina-path cancel sound .GetString() (arm1 implicit)
+23:23 00795300 grade U8.cpp DIFFER(9523v9268) hunks=372 -- U5 + STLP_ALLOC_PROXY_REBIND (U8); + objects IS_THING_ALIVE(object) (U9)
+23:23 00795300 grade U9.cpp DIFFER(9516v9268) hunks=372 -- U5 + STLP_ALLOC_PROXY_REBIND (U8); + objects IS_THING_ALIVE(object) (U9)
+23:26 00795300 grade U10.cpp DIFFER(9526v9268) hunks=372 -- U9 + GetTC(&p) TCI-less form (StatGetInterfaceType layer) for 6 TC classes
+23:28 00795300 grade U11.cpp DIFFER(9526v9268) hunks=372 -- U10 + STLP_ALLOC_CREATE (list ctor convert-allocator layer)
+23:30 00795300 grade U12.cpp DIFFER(9543v9268) hunks=374 -- U10 + K effect_pos by assignment (U12); PROBE P5 = U12 + 5 dummy copies (+~125 g)
+23:30 00795300 grade P5.cpp DIFFER(9609v9268) hunks=426 -- U10 + K effect_pos by assignment (U12); PROBE P5 = U12 + 5 dummy copies (+~125 g)
+23:30 00795300 grade U13.cpp DIFFER(9495v9268) hunks=370 -- release/spell-over as if (D>0){..} else if (D<=0){..} (no return: common ~effects); P6 probe +5 dummies
+23:30 00795300 grade P6.cpp DIFFER(9569v9268) hunks=427 -- release/spell-over as if (D>0){..} else if (D<=0){..} (no return: common ~effects); P6 probe +5 dummies
+23:30 00795300 grade U14.cpp DIFFER(9494v9268) hunks=517 -- U13 with old_it=it; ++it; erase(old_it) (retail updates it before the erase call)
+23:32 00795300 grade U14.cpp DIFFER(9494v9268) hunks=517 -- U14 confirm (best structure)
+00:49 00795300 grade n_NORMALISE_LOCALS.cpp DIFFER(9461v9268) hunks=514 -- Normalise FableWin-size texts (LOCALS 47i v FW 48i) for +IL before spell-over
+00:49 00795300 grade n_NORMALISE_LOCALS_XYZ.cpp DIFFER(9468v9268) hunks=513 -- Normalise FableWin-size texts (LOCALS 47i v FW 48i) for +IL before spell-over
+00:49 00795300 grade a0.cpp DIFFER(9494v9268) hunks=517 -- Normalise FableWin-size texts (LOCALS 47i v FW 48i) for +IL before spell-over
+00:49 00795300 grade n_NORMALISE_LOCALS.cpp DIFFER(9461v9268) hunks=514 -- regrade for call cmp
+00:49 00795300 grade a0.cpp DIFFER(9494v9268) hunks=517 -- regrade baseline for call cmp
+00:51 00795300 grade n_TRY4.cpp DIFFER(9461v9268) hunks=515 -- Normalise FW-size text TRY4 (48i: locals, scale locals, store back)
+00:55 00795300 grade b1.cpp DIFFER(9504v9268) hunks=518 -- FW header-inline accessors HasUnholyPowerActionInitialised/IsCharging used (FW sizes SAME)
+00:57 00795300 grade b2.cpp DIFFER(9504v9268) hunks=518 -- TCI-less GetTC(&nymph) (b2) + PeekTC(&enemy) (b3) for more inline IL
+00:57 00795300 grade b3.cpp SRC_FAIL -- TCI-less GetTC(&nymph) (b2) + PeekTC(&enemy) (b3) for more inline IL
+00:59 00795300 grade b2.cpp DIFFER(9504v9268) hunks=518 -- b2 regrade for region sizes
+00:59 00795300 grade c1.cpp DIFFER(9548v9268) hunks=491 -- string literals by implicit conversion to const CCharString& (retail builds the temp before the other args)
+00:59 00795300 grade c2.cpp DIFFER(9548v9268) hunks=491 -- string literals by implicit conversion to const CCharString& (retail builds the temp before the other args)
+01:00 00795300 grade c1.cpp DIFFER(9548v9268) hunks=491 -- c1 regrade for cmp
+01:01 00795300 grade d1.cpp DIFFER(9548v9268) hunks=490 -- long effect = 0 declared before CCharString name (retail stores 0 before the ctor)
+01:01 00795300 grade e1.cpp DIFFER(9539v9268) hunks=489 -- stamina loop forms (retail loop not aligned): for / if+do-while / swapped body
+01:01 00795300 grade e2.cpp DIFFER(9556v9268) hunks=493 -- stamina loop forms (retail loop not aligned): for / if+do-while / swapped body
+01:01 00795300 grade e3.cpp DIFFER(9548v9268) hunks=490 -- stamina loop forms (retail loop not aligned): for / if+do-while / swapped body
+01:01 00795300 grade e1.cpp DIFFER(9539v9268) hunks=489 -- e1 regrade (for loop)
+01:07 00795300 grade g1.cpp DIFFER(9509v9268) hunks=444 -- CDefPointer operator->/* with __assume(Object) (retail ASSERT): ability release w/o null test
+01:08 00795300 grade h1.cpp DIFFER(9509v9268) hunks=444 -- cancel sounds explicit GetString: stamina arm (h1), both (h2), button arm (h3)
+01:08 00795300 grade h2.cpp DIFFER(9509v9268) hunks=444 -- cancel sounds explicit GetString: stamina arm (h1), both (h2), button arm (h3)
+01:08 00795300 grade h3.cpp DIFFER(9509v9268) hunks=444 -- cancel sounds explicit GetString: stamina arm (h1), both (h2), button arm (h3)
+01:09 00795300 grade g1.cpp DIFFER(9509v9268) hunks=444 -- g1 hunks view
+01:09 00795300 grade k1.cpp DIFFER(9547v9268) hunks=452 -- g1+explicit stamina-arm GetString with stamina loop while/if-do/while-swapped (lower f after loop)
+01:09 00795300 grade k2.cpp DIFFER(9547v9268) hunks=456 -- g1+explicit stamina-arm GetString with stamina loop while/if-do/while-swapped (lower f after loop)
+01:09 00795300 grade k3.cpp DIFFER(9547v9268) hunks=452 -- g1+explicit stamina-arm GetString with stamina loop while/if-do/while-swapped (lower f after loop)
+01:11 00795300 grade k1.cpp DIFFER(9547v9268) hunks=452 -- k1 regrade for cmp
+01:14 00795300 grade m1.cpp DIFFER(9525v9268) hunks=458 -- IP operator-> ASSERT as __assume on k1 (m1) / g1 (m2)
+01:14 00795300 grade m2.cpp DIFFER(9509v9268) hunks=453 -- IP operator-> ASSERT as __assume on k1 (m1) / g1 (m2)
+01:16 00795300 grade p1.cpp DIFFER(9509v9268) hunks=445 -- button state read after the Finished block (p1) / inside the charging block (p2): zero-register edi
+01:16 00795300 grade p2.cpp DIFFER(9509v9268) hunks=445 -- button state read after the Finished block (p1) / inside the charging block (p2): zero-register edi
+01:16 00795300 grade g1.cpp DIFFER(9509v9268) hunks=444 -- g1 regrade (zero-reg survey)
+01:17 00795300 grade n1.cpp DIFFER(9525v9268) hunks=458 -- m1 + TCI-less PeekTC(&enemy) via CTCENEMY_QUERIES (FW inline StatGetInterfaceType) for the last +6 g
+01:18 00795300 grade q1.cpp DIFFER(9525v9268) hunks=458 -- m1 + Normalise via GFSqr helper (extra inline layer, +g)
+01:18 00795300 grade q2.cpp DIFFER(9525v9268) hunks=458 -- m1 + Normalise via GFSqr helper (extra inline layer, +g)
+01:20 00795300 grade r1.cpp DIFFER(9501v9268) hunks=459 -- m1 + sweep-1 range test via offset.GetSquaredMagnitude() (default XZY / XYZ opt-in)
+01:20 00795300 grade r2.cpp DIFFER(9501v9268) hunks=459 -- m1 + sweep-1 range test via offset.GetSquaredMagnitude() (default XZY / XYZ opt-in)
+01:21 00795300 grade t1.cpp DIFFER(9547v9268) hunks=460 -- sweep-1 range test: subtract/squared-magnitude text combos (retail loads X,Y,Z)
+01:21 00795300 grade t2.cpp DIFFER(9547v9268) hunks=460 -- sweep-1 range test: subtract/squared-magnitude text combos (retail loads X,Y,Z)
+01:21 00795300 grade t3.cpp DIFFER(9501v9268) hunks=459 -- sweep-1 range test: subtract/squared-magnitude text combos (retail loads X,Y,Z)

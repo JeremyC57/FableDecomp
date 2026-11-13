@@ -1,0 +1,4 @@
+address	landed_spelling	correct_pdb_spelling	evidence
+0x00A5D5F0	GetPixelShader (file CShaderResource_GetPixelShader_00a5d5f0.cpp, __fastcall free function)	?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z	manifest GetVertexShader; CShaderResource.h; returns CVertexShader (vtable 0x0129B3D0) in 0xB73B20
+0x00A5EC00	CBaseIntelligentPointer::CBaseIntelligentPointer()	??0CPixelShader@@QAE@XZ	stores vtable 0x0129A054 (CPixelShader); CPixelShader.h names 0x00A5EC00
+0x00B6D510	?InitialiseDynamicTextures@CWaterDynamicTextures@@QAEXXZ	?InitialiseDynamicTextures@CEngineWaterRenderer@@AAEXXZ	Ego_r + FableWin; called with this=CEngineWaterRenderer at 0xB751D7

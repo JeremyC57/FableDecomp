@@ -1,0 +1,1 @@
+0x00F36EE0	?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z	Ego_r.pdb order StartTextureUse 0x00B3C370/EndTextureUse/StartSurfaceUse/EndSurfaceUse = retail 0x00F36EE0/F00/F10/F30; CaptureBackBuffer stores the result into CTexture* BlurTexture256_1/_2	StartSurfaceUse

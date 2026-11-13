@@ -1,0 +1,118 @@
+19:18 00baa870 grade v1.cpp SRC_FAIL -- first full draft
+19:19 00baa870 grade v1.cpp SRC_FAIL -- first full draft + base defines
+19:19 00baa870 grade v1.cpp SRC_FAIL -- first full draft + base defines
+19:19 00baa870 grade v1.cpp DIFFER(4564v4600) hunks=162 -- first full draft + base defines
+19:20 00baa870 grade a.cpp DIFFER(4564v4600) hunks=159 -- transform order x*E/E*x; shadow ?: bool
+19:20 00baa870 grade b.cpp DIFFER(4564v4600) hunks=159 -- transform order x*E/E*x; shadow ?: bool
+19:21 00baa870 grade a.cpp DIFFER(4564v4600) hunks=159 -- transform x*E order + shadow ?:
+19:21 00baa870 grade b.cpp DIFFER(4564v4600) hunks=159 -- transform E*x order
+19:21 00baa870 grade c.cpp DIFFER(4564v4600) hunks=158 -- shadow !=?false:true; x paren
+19:21 00baa870 grade c.cpp DIFFER(4564v4600) hunks=158 -- 
+19:21 00baa870 grade d.cpp DIFFER(4564v4600) hunks=159 -- shadow (==)!=0; x*E11 first
+19:21 00baa870 grade d.cpp DIFFER(4564v4600) hunks=159 -- 
+19:22 00baa870 grade e.cpp DIFFER(4564v4600) hunks=159 -- SetEnableFadedShadowFactor enable!=member; E11*x+y*E21+z*E31
+19:22 00baa870 grade e.cpp DIFFER(4564v4600) hunks=159 -- 
+19:22 00baa870 grade g2.cpp DIFFER(4564v4600) hunks=160 -- shadow: local bool if
+19:22 00baa870 grade g3.cpp DIFFER(4564v4600) hunks=159 -- shadow: bool=true; if(!=1) false
+19:22 00baa870 grade g4.cpp DIFFER(4564v4600) hunks=158 -- same + enable-first body
+19:22 00baa870 grade v4.cpp DIFFER(4564v4600) hunks=158 -- baseline v4
+19:22 00baa870 grade v4.cpp DIFFER(4564v4600) hunks=158 -- 
+19:23 00baa870 grade v5.cpp DIFFER(4564v4600) hunks=156 -- second shadow bool too
+19:23 00baa870 grade h2.cpp DIFFER(4564v4600) hunks=156 -- scale: E = s*E
+19:23 00baa870 grade i1.cpp DIFFER(4456v4600) hunks=163 -- PostScale(MMM)+PostTranslate(MMM)
+19:23 00baa870 grade i1.cpp DIFFER(4564v4600) hunks=158 -- PostScale(MMM)+PostTranslate(MMM) forceinline
+19:24 00baa870 grade j1.cpp DIFFER(4564v4600) hunks=158 -- inverse copy position j1
+19:24 00baa870 grade j2.cpp DIFFER(4564v4600) hunks=155 -- inverse copy position j2
+19:24 00baa870 grade j3.cpp DIFFER(4564v4600) hunks=158 -- inverse copy position j3
+19:24 00baa870 grade v6.cpp DIFFER(4564v4600) hunks=158 -- base v6
+19:25 00baa870 grade k1.cpp DIFFER(4564v4600) hunks=159 -- up vector spelling k1 / top z
+19:25 00baa870 grade k2.cpp DIFFER(4564v4600) hunks=158 -- up vector spelling k2 / top z
+19:25 00baa870 grade k3.cpp DIFFER(4564v4600) hunks=152 -- up vector spelling k3 / top z
+19:25 00baa870 grade k3.cpp DIFFER(4564v4600) hunks=152 -- 
+19:25 00baa870 grade k4.cpp DIFFER(4564v4600) hunks=152 -- up E*0+1*E+0*E; normalise variant k4
+19:25 00baa870 grade k5.cpp DIFFER(4564v4600) hunks=151 -- up E*0+1*E+0*E; normalise variant k5
+19:25 00baa870 grade k6.cpp DIFFER(4564v4600) hunks=152 -- up E*0+1*E+0*E; normalise variant k6
+19:25 00baa870 grade v7.cpp DIFFER(4564v4600) hunks=153 -- normalise variant v7 (up k1 form)
+19:25 00baa870 grade m1.cpp DIFFER(4551v4600) hunks=151 -- normalise variant m1 (up k1 form)
+19:26 00baa870 grade m2.cpp DIFFER(4564v4600) hunks=153 -- normalise variant m2 (up k1 form)
+19:26 00baa870 grade m3.cpp DIFFER(4564v4600) hunks=153 -- normalise variant m3 (up k1 form)
+19:26 00baa870 grade v8.cpp DIFFER(4551v4600) hunks=151 -- base v8: NORMALISE_LOCALS
+19:26 00baa870 grade n0.cpp DIFFER(4612v4600) hunks=142 -- neg temp; transformpoint variant n0
+19:26 00baa870 grade n1.cpp DIFFER(4596v4600) hunks=159 -- neg temp; transformpoint variant n1
+19:26 00baa870 grade n2.cpp DIFFER(4596v4600) hunks=159 -- neg temp; transformpoint variant n2
+19:26 00baa870 grade n3.cpp DIFFER(4596v4600) hunks=159 -- neg temp; transformpoint variant n3
+19:27 00baa870 grade o1.cpp DIFFER(4596v4600) hunks=153 -- p0/p1 explicit transform o1
+19:27 00baa870 grade o2.cpp DIFFER(4596v4600) hunks=153 -- p0/p1 explicit transform o2
+19:27 00baa870 grade o3.cpp DIFFER(4612v4600) hunks=158 -- p0/p1 explicit transform o3
+19:27 00baa870 grade o5.cpp DIFFER(4596v4600) hunks=153 -- p0/p1 explicit transform o5
+19:27 00baa870 grade o6.cpp DIFFER(4596v4600) hunks=153 -- p0/p1 explicit transform o6
+19:27 00baa870 grade o7.cpp DIFFER(4612v4600) hunks=158 -- p0/p1 explicit transform o7
+19:27 00baa870 grade o3.cpp DIFFER(4612v4600) hunks=158 -- recheck o3
+19:27 00baa870 grade p1.cpp DIFFER(4596v4600) hunks=162 -- p0/p1 explicit transform p1
+19:27 00baa870 grade p2.cpp DIFFER(4612v4600) hunks=150 -- p0/p1 explicit transform p2
+19:27 00baa870 grade p3.cpp DIFFER(4612v4600) hunks=159 -- p0/p1 explicit transform p3
+19:28 00baa870 grade p1.cpp DIFFER(4596v4600) hunks=162 -- x + y + (z + w) for p0/p1
+19:28 00baa870 grade p4.cpp DIFFER(4596v4600) hunks=161 -- z row plain sum
+19:28 00baa870 grade q1.cpp DIFFER(4612v4600) hunks=174 -- blend: weighted top/bottom first (operator+ arg first) q1
+19:28 00baa870 grade q2.cpp DIFFER(4612v4600) hunks=174 -- blend: weighted top/bottom first (operator+ arg first) q2
+19:28 00baa870 grade q3.cpp DIFFER(4593v4600) hunks=163 -- control1_tex vector blend
+19:29 00baa870 grade r1.cpp DIFFER(4597v4600) hunks=163 -- half_extent local; clamps ?: r1
+19:29 00baa870 grade r2.cpp DIFFER(4593v4600) hunks=163 -- half_extent local; clamps ?: r2
+19:29 00baa870 grade s1.cpp DIFFER(4609v4600) hunks=166 -- clamps const-left; magnitude variant s1
+19:29 00baa870 grade s2.cpp DIFFER(4609v4600) hunks=166 -- clamps const-left; magnitude variant s2
+19:29 00baa870 grade s3.cpp DIFFER(4609v4600) hunks=166 -- clamps const-left; magnitude variant s3
+19:30 00baa870 grade t1.cpp DIFFER(4609v4600) hunks=166 -- squared magnitude variant t1
+19:30 00baa870 grade t2.cpp DIFFER(4609v4600) hunks=166 -- squared magnitude variant t2
+19:30 00baa870 grade t3.cpp DIFFER(4609v4600) hunks=166 -- squared magnitude variant t3
+19:31 00baa870 grade u1.cpp DIFFER(4657v4600) hunks=195 -- box before control1_tex; const3/4 * (1/r); window by value
+19:31 00baa870 grade u2.cpp DIFFER(4641v4600) hunks=175 -- window by value
+19:31 00baa870 grade w1.cpp SRC_FAIL -- window locals w1
+19:31 00baa870 grade w2.cpp SRC_FAIL -- window locals w2
+19:31 00baa870 grade w1.cpp SRC_FAIL -- window locals w1
+19:31 00baa870 grade w1.cpp DIFFER(4625v4600) hunks=140 -- window locals/copy w1
+19:31 00baa870 grade w2.cpp DIFFER(4609v4600) hunks=163 -- window locals/copy w2
+19:31 00baa870 grade u3.cpp DIFFER(4609v4600) hunks=149 -- window locals/copy u3
+19:32 00baa870 grade v11.cpp DIFFER(4625v4600) hunks=140 -- base v11
+19:32 00baa870 grade x1.cpp DIFFER(4696v4600) hunks=130 -- dtor forceinline / union fastsqrt / early return x1
+19:32 00baa870 grade x2.cpp DIFFER(4696v4600) hunks=130 -- dtor forceinline / union fastsqrt / early return x2
+19:32 00baa870 grade x3.cpp DIFFER(4696v4600) hunks=130 -- dtor forceinline / union fastsqrt / early return x3
+19:33 00baa870 grade x3.cpp DIFFER(4696v4600) hunks=130 -- x3 recheck
+19:33 00baa870 grade v12.cpp DIFFER(4696v4600) hunks=130 -- base v12 (dtor fi + union sqrt)
+19:34 00baa870 grade y1.cpp DIFFER(4680v4600) hunks=154 -- window GetWidth forms y1
+19:34 00baa870 grade y2.cpp SRC_FAIL -- window GetWidth forms y2
+19:34 00baa870 grade y1.cpp DIFFER(4680v4600) hunks=154 -- y1 again
+19:34 00baa870 grade y3.cpp DIFFER(4680v4600) hunks=154 -- z = TLX + BRX
+19:35 00baa870 grade w5.cpp DIFFER(4680v4600) hunks=152 -- window w5
+19:35 00baa870 grade w6.cpp DIFFER(4696v4600) hunks=130 -- window w6
+19:35 00baa870 grade z1.cpp DIFFER(4696v4600) hunks=129 -- SCALE_X_PAREN
+19:35 00baa870 grade z2.cpp DIFFER(4616v4600) hunks=141 -- bbox copy form z2
+19:35 00baa870 grade z3.cpp DIFFER(4619v4600) hunks=134 -- bbox copy form z3
+19:36 00baa870 grade z4.cpp DIFFER(4696v4600) hunks=131 -- bbox decl position z4
+19:36 00baa870 grade z5.cpp DIFFER(4668v4600) hunks=203 -- bbox decl position z5
+19:36 00baa870 grade z3.cpp DIFFER(4619v4600) hunks=134 -- frame check z3
+19:36 00baa870 grade v12.cpp DIFFER(4696v4600) hunks=130 -- frame check v12
+19:38 00baa870 grade f1.cpp DIFFER(4751v4600) hunks=144 -- reuse top/other_side for control points
+19:38 00baa870 grade h1.cpp DIFFER(4696v4600) hunks=132 -- PostScale(C3DVector) h1
+19:38 00baa870 grade h2.cpp DIFFER(4719v4600) hunks=128 -- PostScale(C3DVector) h2
+19:41 00baa870 grade g1.cpp DIFFER(4616v4600) hunks=146 -- reuse top as control0 (tex shares box slot)
+19:44 00baa870 grade tf1.cpp DIFFER(4601v4600) hunks=144 -- GetTransitionFade real body noinline in TU + top reuse
+19:44 00baa870 grade tf2.cpp DIFFER(4575v4600) hunks=109 -- v12 + GetTransitionFade body
+19:45 00baa870 grade c1.cpp DIFFER(4590v4600) hunks=153 -- const 3/4/5 divide spelling c1
+19:45 00baa870 grade c2.cpp DIFFER(4591v4600) hunks=119 -- const 3/4/5 divide spelling c2
+19:45 00baa870 grade c3.cpp SRC_FAIL -- const 3/4/5 divide spelling c3
+19:46 00baa870 grade e1.cpp DIFFER(4575v4600) hunks=109 -- GetCenter max-first
+19:46 00baa870 grade j2.cpp DIFFER(4584v4600) hunks=109 -- inverse copy position j2 (frame 0x124 base)
+19:46 00baa870 grade j3.cpp DIFFER(4575v4600) hunks=109 -- inverse copy position j3 (frame 0x124 base)
+19:46 00baa870 grade j3.cpp DIFFER(4575v4600) hunks=109 -- j3 view
+19:46 00baa870 grade j4.cpp DIFFER(4575v4600) hunks=109 -- inverse copy between PostScale and PostTranslate
+19:47 00baa870 grade j3.cpp DIFFER(4575v4600) hunks=109 -- j3 view2
+19:47 00baa870 grade bb1.cpp DIFFER(4575v4600) hunks=109 -- bbox bb1
+19:47 00baa870 grade bb2.cpp DIFFER(4584v4600) hunks=120 -- bbox bb2
+19:48 00baa870 grade o1.cpp DIFFER(4575v4600) hunks=109 -- GetTransitionFade body after the row
+19:48 00baa870 grade i2.cpp DIFFER(4696v4600) hunks=130 -- v12 + fade inline ctor only
+19:48 00baa870 grade e2.cpp DIFFER(4575v4600) hunks=109 -- include order e2
+19:48 00baa870 grade e3.cpp DIFFER(4575v4600) hunks=109 -- include order e3
+19:48 00baa870 grade sr1.cpp DIFFER(4584v4600) hunks=153 -- sphere accessors sr1
+19:48 00baa870 grade sr2.cpp DIFFER(4584v4600) hunks=149 -- sphere accessors sr2
+19:49 00baa870 grade fc1.cpp DIFFER(4575v4600) hunks=109 -- fade: only value ctor inline
+19:49 00baa870 grade 00baa870.cpp DIFFER(4575v4600) hunks=109 -- final check of differ copy (v13)

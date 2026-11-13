@@ -1,0 +1,312 @@
+18:10 00b8b780 grade v1.cpp SRC_FAIL -- first full draft
+18:10 00b8b780 grade v1.cpp SRC_FAIL -- first full draft +CSYSTEMMANAGER
+18:11 00b8b780 grade v1.cpp SRC_FAIL -- +Direct3D9Types
+18:11 00b8b780 grade v1.cpp SRC_FAIL -- fix overlays
+18:12 00b8b780 grade v1.cpp DIFFER(3795v3921) hunks=124 -- GetWidth via CGRAPHICINFO_SPRITE
+18:12 00b8b780 grade v2.cpp DIFFER(3891v3921) hunks=105 -- forceinline PeekGraphic*; sphere position
+18:12 00b8b780 grade v3.cpp DIFFER(3906v3921) hunks=122 -- forceinline PeekGraphic*; sphere position
+18:12 00b8b780 grade v4.cpp DIFFER(3906v3921) hunks=119 -- forceinline PeekGraphic*; sphere position
+18:12 00b8b780 grade v3.cpp DIFFER(3906v3921) hunks=122 -- v3 alone for full diff
+18:13 00b8b780 grade v3.cpp DIFFER(3906v3921) hunks=122 -- v3 full diff
+18:13 00b8b780 grade v5.cpp DIFFER(3906v3921) hunks=122 -- verts scope
+18:13 00b8b780 grade v6.cpp DIFFER(3906v3921) hunks=122 -- verts scope
+18:13 00b8b780 grade v7.cpp DIFFER(3947v3921) hunks=113 -- verts scope
+18:14 00b8b780 grade v8.cpp DIFFER(3906v3921) hunks=121 -- uchar table, vert loop order, GetWidth variants
+18:14 00b8b780 grade v9.cpp DIFFER(3906v3921) hunks=122 -- uchar table, vert loop order, GetWidth variants
+18:14 00b8b780 grade v10.cpp DIFFER(3906v3921) hunks=120 -- uchar table, vert loop order, GetWidth variants
+18:14 00b8b780 grade v8.cpp DIFFER(3939v3921) hunks=67 /GS -- /GS
+18:14 00b8b780 grade v10.cpp DIFFER(3939v3921) hunks=64 /GS -- /GS
+18:14 00b8b780 grade v10.cpp DIFFER(3939v3921) hunks=64 /GS -- full diff v10 /GS
+18:15 00b8b780 grade v11.cpp DIFFER(3939v3921) hunks=64 /GS -- stages order/pos, verts column order
+18:16 00b8b780 grade v12.cpp DIFFER(3939v3921) hunks=68 /GS -- stages order/pos, verts column order
+18:16 00b8b780 grade v13.cpp DIFFER(3939v3921) hunks=62 /GS -- stages order/pos, verts column order
+18:16 00b8b780 grade v13.cpp DIFFER(3939v3921) hunks=62 /GS -- v13 alone
+18:17 00b8b780 grade v14.cpp DIFFER(3939v3921) hunks=62 /GS -- sphere copy spellings
+18:17 00b8b780 grade v15.cpp DIFFER(3939v3921) hunks=55 /GS -- sphere copy spellings
+18:17 00b8b780 grade v16.cpp DIFFER(3939v3921) hunks=62 /GS -- sphere copy spellings
+18:17 00b8b780 grade v15.cpp DIFFER(3939v3921) hunks=55 /GS -- v15 alone
+18:17 00b8b780 grade v17.cpp DIFFER(3955v3921) hunks=46 /GS -- GetWidth(0) / tex early / zbuffer if-else
+18:17 00b8b780 grade v18.cpp DIFFER(3939v3921) hunks=102 /GS -- GetWidth(0) / tex early / zbuffer if-else
+18:17 00b8b780 grade v19.cpp DIFFER(3921v3921) hunks=49 /GS -- GetWidth(0) / tex early / zbuffer if-else
+18:18 00b8b780 grade v20.cpp DIFFER(3921v3921) hunks=26 /GS -- zbuffer forms
+18:18 00b8b780 grade v21.cpp DIFFER(3955v3921) hunks=46 /GS -- zbuffer forms
+18:18 00b8b780 grade v22.cpp DIFFER(3939v3921) hunks=55 /GS -- zbuffer forms
+18:18 00b8b780 grade v20.cpp DIFFER(3921v3921) hunks=26 /GS -- v20 full
+18:18 00b8b780 grade v23.cpp DIFFER(3921v3921) hunks=21 /GS -- E43 / Offset spellings
+18:18 00b8b780 grade v24.cpp DIFFER(3921v3921) hunks=26 /GS -- E43 / Offset spellings
+18:18 00b8b780 grade v25.cpp DIFFER(3921v3921) hunks=26 /GS -- E43 / Offset spellings
+18:18 00b8b780 grade v23.cpp DIFFER(3921v3921) hunks=21 /GS -- v23 full
+18:19 00b8b780 grade v26.cpp DIFFER(3921v3921) hunks=21 /GS -- SetTranslate translation-only + SetIdentity
+18:19 00b8b780 grade v27.cpp DIFFER(3921v3921) hunks=21 /GS -- SetTranslate translation-only + SetIdentity
+18:19 00b8b780 grade v29.cpp SRC_FAIL /GS -- -Center; GetRadius; X paren
+18:19 00b8b780 grade v30.cpp SRC_FAIL /GS -- -Center; GetRadius; X paren
+18:20 00b8b780 grade v31.cpp SRC_FAIL /GS -- -Center; GetRadius; X paren
+18:20 00b8b780 grade v29.cpp DIFFER(3921v3921) hunks=21 /GS -- -Center; GetRadius; X paren (+C3DVECTOR)
+18:20 00b8b780 grade v30.cpp DIFFER(3921v3921) hunks=21 /GS -- -Center; GetRadius; X paren (+C3DVECTOR)
+18:20 00b8b780 grade v31.cpp DIFFER(3921v3921) hunks=27 /GS -- -Center; GetRadius; X paren (+C3DVECTOR)
+18:20 00b8b780 grade v32.cpp DIFFER(3937v3921) hunks=48 /GS -- PostScale(1,1,.5)+PostTranslate / +=
+18:20 00b8b780 grade v33.cpp DIFFER(3921v3921) hunks=21 /GS -- PostScale(1,1,.5)+PostTranslate / +=
+18:20 00b8b780 grade v34.cpp DIFFER(3921v3921) hunks=26 /GS -- PostScale(1,1,.5)+PostTranslate / +=
+18:20 00b8b780 grade v35.cpp DIFFER(3921v3921) hunks=21 /GS -- Scale spellings / radius local
+18:20 00b8b780 grade v36.cpp DIFFER(3921v3921) hunks=21 /GS -- Scale spellings / radius local
+18:20 00b8b780 grade v37.cpp DIFFER(3921v3921) hunks=21 /GS -- Scale spellings / radius local
+18:21 00b8b780 grade v35.cpp DIFFER(3921v3921) hunks=21 /GS -- check v35
+18:21 00b8b780 grade v37.cpp DIFFER(3921v3921) hunks=21 /GS -- check v37
+18:21 00b8b780 grade v34.cpp DIFFER(3921v3921) hunks=26 /GS -- v34 recheck
+18:21 00b8b780 grade v38.cpp DIFFER(3921v3921) hunks=21 /GS -- Offset spellings
+18:21 00b8b780 grade v39.cpp DIFFER(3921v3921) hunks=24 /GS -- Offset spellings
+18:21 00b8b780 grade v40.cpp DIFFER(3937v3921) hunks=35 /GS -- Offset spellings
+18:21 00b8b780 grade v33.cpp DIFFER(3921v3921) hunks=21 /GS -- v33
+18:22 00b8b780 grade v41.cpp DIFFER(3921v3921) hunks=23 /GS -- sphere by value / radius const / -
+18:22 00b8b780 grade v42.cpp DIFFER(3921v3921) hunks=21 /GS -- sphere by value / radius const / -
+18:22 00b8b780 grade v44.cpp DIFFER(3921v3921) hunks=21 /GS -- EARLY_RETURN SetRenderState
+18:23 00b8b780 grade v42.cpp DIFFER(3921v3921) hunks=21 /GS -- v42
+18:24 00b8b780 grade v45.cpp DIFFER(3921v3921) hunks=21 /GS -- Peek view / GetCurrentCamera / static Apply*Shader
+18:24 00b8b780 grade v46.cpp DIFFER(3921v3921) hunks=21 /GS -- Peek view / GetCurrentCamera / static Apply*Shader
+18:24 00b8b780 grade v47.cpp DIFFER(3921v3921) hunks=21 /GS -- Peek view / GetCurrentCamera / static Apply*Shader
+18:24 00b8b780 grade v48.cpp DIFFER(3921v3921) hunks=21 /GS -- SetRenderState mask operand swaps (probe)
+18:24 00b8b780 grade v49.cpp DIFFER(3921v3921) hunks=21 /GS -- SetRenderState mask operand swaps (probe)
+18:24 00b8b780 grade v50.cpp DIFFER(3955v3921) hunks=98 /GS -- probe-ish toggle v50
+18:24 00b8b780 grade v51.cpp DIFFER(3921v3921) hunks=21 /GS -- probe-ish toggle v51
+18:24 00b8b780 grade v52.cpp DIFFER(3921v3921) hunks=21 /GS -- probe-ish toggle v52
+18:25 00b8b780 grade k1.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe k=1 dead locals
+18:25 00b8b780 grade k2.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe k=2 dead locals
+18:25 00b8b780 grade k3.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe k=3 dead locals
+18:25 00b8b780 grade r1.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe k=1 dead refs
+18:25 00b8b780 grade r2.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe k=2 dead refs
+18:25 00b8b780 grade r3.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe k=3 dead refs
+18:25 00b8b780 grade r4.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe k=4 dead refs
+18:25 00b8b780 grade r5.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe k=5 dead refs
+18:25 00b8b780 grade r6.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe k=6 dead refs
+18:25 00b8b780 grade r7.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe k=7 dead refs
+18:26 00b8b780 grade v53.cpp DIFFER(3937v3921) hunks=35 /GS -- FW-size helpers: named result op* / GetTranslation
+18:26 00b8b780 grade v54.cpp DIFFER(3921v3921) hunks=21 /GS -- FW-size helpers: named result op* / GetTranslation
+18:26 00b8b780 grade v55.cpp DIFFER(3937v3921) hunks=39 /GS -- FW-size helpers: named result op* / GetTranslation
+18:27 00b8b780 grade v56.cpp DIFFER(3921v3921) hunks=21 /GS -- GetRadius() fresh temps
+18:27 00b8b780 grade v57.cpp DIFFER(3921v3921) hunks=21 /GS -- GetRadius() fresh temps
+18:27 00b8b780 grade v58.cpp DIFFER(3921v3921) hunks=21 /GS -- GetRadius() fresh temps
+18:28 00b8b780 grade o2.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead ops k=2
+18:28 00b8b780 grade o6.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead ops k=6
+18:28 00b8b780 grade o10.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead ops k=10
+18:28 00b8b780 grade o14.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead ops k=14
+18:28 00b8b780 grade o20.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead ops k=20
+18:28 00b8b780 grade o28.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead ops k=28
+18:28 00b8b780 grade o32.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead ops k=32
+18:28 00b8b780 grade n1.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names k=1
+18:28 00b8b780 grade n2.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names k=2
+18:28 00b8b780 grade n3.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names k=3
+18:28 00b8b780 grade n4.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names k=4
+18:28 00b8b780 grade n5.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names k=5
+18:28 00b8b780 grade n6.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names k=6
+18:28 00b8b780 grade n7.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names k=7
+18:28 00b8b780 grade n8.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names k=8
+18:28 00b8b780 grade n10.cpp DIFFER(3921v3921) hunks=25 /GS -- sweep probe dead names k=10
+18:28 00b8b780 grade n12.cpp DIFFER(3921v3921) hunks=25 /GS -- sweep probe dead names k=12
+18:28 00b8b780 grade n16.cpp DIFFER(3921v3921) hunks=25 /GS -- sweep probe dead names k=16
+18:28 00b8b780 grade n20.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=20
+18:28 00b8b780 grade n24.cpp DIFFER(3921v3921) hunks=28 /GS -- sweep probe dead names k=24
+18:29 00b8b780 grade n30.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=30
+18:29 00b8b780 grade n40.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=40
+18:29 00b8b780 grade o28.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe recheck o28
+18:29 00b8b780 grade n20.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe recheck n20
+18:29 00b8b780 grade n10.cpp DIFFER(3921v3921) hunks=25 /GS -- sweep probe recheck n10
+18:29 00b8b780 grade n17.cpp DIFFER(3921v3921) hunks=25 /GS -- sweep probe dead names k=17
+18:29 00b8b780 grade n19.cpp DIFFER(3921v3921) hunks=25 /GS -- sweep probe dead names k=19
+18:29 00b8b780 grade n21.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=21
+18:29 00b8b780 grade n23.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=23
+18:29 00b8b780 grade n25.cpp DIFFER(3921v3921) hunks=36 /GS -- sweep probe dead names k=25
+18:29 00b8b780 grade n27.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=27
+18:29 00b8b780 grade n29.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=29
+18:29 00b8b780 grade n31.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=31
+18:29 00b8b780 grade n33.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=33
+18:29 00b8b780 grade n35.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=35
+18:29 00b8b780 grade n37.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=37
+18:29 00b8b780 grade n39.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=39
+18:29 00b8b780 grade n41.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=41
+18:29 00b8b780 grade n43.cpp DIFFER(3921v3921) hunks=23 /GS -- sweep probe dead names k=43
+18:29 00b8b780 grade n45.cpp DIFFER(3921v3921) hunks=23 /GS -- sweep probe dead names k=45
+18:29 00b8b780 grade n47.cpp DIFFER(3921v3921) hunks=23 /GS -- sweep probe dead names k=47
+18:29 00b8b780 grade n49.cpp DIFFER(3921v3921) hunks=23 /GS -- sweep probe dead names k=49
+18:29 00b8b780 grade n51.cpp DIFFER(3921v3921) hunks=23 /GS -- sweep probe dead names k=51
+18:29 00b8b780 grade n53.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe dead names k=53
+18:29 00b8b780 grade n55.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=55
+18:29 00b8b780 grade n57.cpp DIFFER(3921v3921) hunks=38 /GS -- sweep probe dead names k=57
+18:30 00b8b780 grade n59.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe dead names k=59
+18:30 00b8b780 grade n61.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe dead names k=61
+18:30 00b8b780 grade n64.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe dead names k=64
+18:30 00b8b780 grade n67.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe dead names k=67
+18:30 00b8b780 grade n70.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe dead names k=70
+18:30 00b8b780 grade n73.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe dead names k=73
+18:30 00b8b780 grade n76.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names k=76
+18:30 00b8b780 grade n79.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names k=79
+18:30 00b8b780 grade n82.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names k=82
+18:30 00b8b780 grade n85.cpp DIFFER(3921v3921) hunks=15 /GS -- sweep probe dead names k=85
+18:30 00b8b780 grade n88.cpp DIFFER(3921v3921) hunks=26 /GS -- sweep probe dead names k=88
+18:30 00b8b780 grade n91.cpp DIFFER(3921v3921) hunks=15 /GS -- sweep probe dead names k=91
+18:30 00b8b780 grade n94.cpp DIFFER(3921v3921) hunks=15 /GS -- sweep probe dead names k=94
+18:30 00b8b780 grade n97.cpp DIFFER(3921v3921) hunks=15 /GS -- sweep probe dead names k=97
+18:30 00b8b780 grade n100.cpp DIFFER(3921v3921) hunks=15 /GS -- sweep probe dead names k=100
+18:30 00b8b780 grade n103.cpp DIFFER(3921v3921) hunks=15 /GS -- sweep probe dead names k=103
+18:30 00b8b780 grade n106.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=106
+18:30 00b8b780 grade n109.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=109
+18:30 00b8b780 grade n112.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=112
+18:30 00b8b780 grade n115.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=115
+18:30 00b8b780 grade n118.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names k=118
+18:30 00b8b780 grade n121.cpp DIFFER(3921v3921) hunks=38 /GS -- sweep probe dead names k=121
+18:30 00b8b780 grade n124.cpp DIFFER(3921v3921) hunks=23 /GS -- sweep probe dead names k=124
+18:30 00b8b780 grade n127.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe dead names k=127
+18:30 00b8b780 grade n130.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe dead names k=130
+18:31 00b8b780 grade n91.cpp DIFFER(3921v3921) hunks=15 /GS -- sweep probe recheck n91
+18:32 00b8b780 grade gt2.cpp DIFFER(3921v3921) hunks=21 /GS -- probe dead temps in GetTranslation k=2
+18:32 00b8b780 grade gt6.cpp DIFFER(3921v3921) hunks=21 /GS -- probe dead temps in GetTranslation k=6
+18:32 00b8b780 grade gt10.cpp DIFFER(3921v3921) hunks=23 /GS -- probe dead temps in GetTranslation k=10
+18:32 00b8b780 grade gt16.cpp DIFFER(3921v3921) hunks=23 /GS -- probe dead temps in GetTranslation k=16
+18:32 00b8b780 grade gt24.cpp DIFFER(3921v3921) hunks=25 /GS -- probe dead temps in GetTranslation k=24
+18:32 00b8b780 grade gt32.cpp DIFFER(3921v3921) hunks=25 /GS -- probe dead temps in GetTranslation k=32
+18:32 00b8b780 grade gt40.cpp DIFFER(3921v3921) hunks=25 /GS -- probe dead temps in GetTranslation k=40
+18:32 00b8b780 grade v32.cpp DIFFER(3937v3921) hunks=48 /GS -- recheck v32 PostTranslate
+18:32 00b8b780 grade z1.cpp DIFFER(3921v3921) hunks=15 /GS -- probe E43 bias spellings z1 (on n91)
+18:32 00b8b780 grade z2.cpp DIFFER(3937v3921) hunks=46 /GS -- probe E43 bias spellings z2 (on n91)
+18:32 00b8b780 grade z3.cpp DIFFER(3921v3921) hunks=15 /GS -- probe E43 bias spellings z3 (on n91)
+18:33 00b8b780 grade z4.cpp DIFFER(3921v3921) hunks=18 /GS -- probe Scale after Offset z4 (on n91)
+18:33 00b8b780 grade z5.cpp DIFFER(3921v3921) hunks=19 /GS -- probe Scale after Offset z5 (on n91)
+18:33 00b8b780 grade z4.cpp DIFFER(3921v3921) hunks=18 /GS -- probe z4 detail
+18:34 00b8b780 grade v59.cpp DIFFER(3921v3921) hunks=21 /GS -- FW-text CRGBColour ctor via Initialise / SetIdentity separate
+18:34 00b8b780 grade v60.cpp DIFFER(3921v3921) hunks=21 /GS -- FW-text CRGBColour ctor via Initialise / SetIdentity separate
+18:34 00b8b780 grade v61.cpp DIFFER(3921v3921) hunks=21 /GS -- FW-text CRGBColour ctor via Initialise / SetIdentity separate
+18:34 00b8b780 grade m0.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names on v61 k=0
+18:34 00b8b780 grade m8.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names on v61 k=8
+18:34 00b8b780 grade m16.cpp DIFFER(3921v3921) hunks=25 /GS -- sweep probe dead names on v61 k=16
+18:34 00b8b780 grade m24.cpp DIFFER(3921v3921) hunks=28 /GS -- sweep probe dead names on v61 k=24
+18:34 00b8b780 grade m32.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names on v61 k=32
+18:34 00b8b780 grade m40.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names on v61 k=40
+18:34 00b8b780 grade m48.cpp DIFFER(3921v3921) hunks=23 /GS -- sweep probe dead names on v61 k=48
+18:34 00b8b780 grade m56.cpp DIFFER(3921v3921) hunks=28 /GS -- sweep probe dead names on v61 k=56
+18:34 00b8b780 grade m64.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe dead names on v61 k=64
+18:34 00b8b780 grade m72.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe dead names on v61 k=72
+18:34 00b8b780 grade m80.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe dead names on v61 k=80
+18:34 00b8b780 grade m88.cpp DIFFER(3921v3921) hunks=26 /GS -- sweep probe dead names on v61 k=88
+18:34 00b8b780 grade m96.cpp DIFFER(3921v3921) hunks=15 /GS -- sweep probe dead names on v61 k=96
+18:34 00b8b780 grade m104.cpp DIFFER(3921v3921) hunks=15 /GS -- sweep probe dead names on v61 k=104
+18:34 00b8b780 grade m112.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe dead names on v61 k=112
+18:34 00b8b780 grade m120.cpp DIFFER(3921v3921) hunks=28 /GS -- sweep probe dead names on v61 k=120
+18:35 00b8b780 grade om1.cpp DIFFER(3921v3921) hunks=15 /GS -- probe dead temps in op* k=1
+18:35 00b8b780 grade om2.cpp DIFFER(3921v3921) hunks=15 /GS -- probe dead temps in op* k=2
+18:35 00b8b780 grade om4.cpp DIFFER(3921v3921) hunks=21 /GS -- probe dead temps in op* k=4
+18:35 00b8b780 grade om8.cpp DIFFER(3921v3921) hunks=21 /GS -- probe dead temps in op* k=8
+18:35 00b8b780 grade om16.cpp DIFFER(3921v3921) hunks=23 /GS -- probe dead temps in op* k=16
+18:35 00b8b780 grade om24.cpp DIFFER(3921v3921) hunks=23 /GS -- probe dead temps in op* k=24
+18:35 00b8b780 grade om32.cpp DIFFER(3921v3921) hunks=25 /GS -- probe dead temps in op* k=32
+18:36 00b8b780 grade z2.cpp DIFFER(3937v3921) hunks=46 /GS -- probe z2 detail
+18:36 00b8b780 grade z6.cpp DIFFER(3921v3921) hunks=17 /GS -- probe z6 on n91
+18:36 00b8b780 grade z7.cpp DIFFER(3921v3921) hunks=17 /GS -- probe z7 on n91
+18:36 00b8b780 grade z8.cpp DIFFER(3921v3921) hunks=24 /GS -- probe z8 on n91
+18:36 00b8b780 grade s0.cpp DIFFER(3921v3921) hunks=23 /GS -- sweep probe names on value-sphere k=0
+18:36 00b8b780 grade s4.cpp DIFFER(3921v3921) hunks=23 /GS -- sweep probe names on value-sphere k=4
+18:36 00b8b780 grade s8.cpp DIFFER(3921v3921) hunks=23 /GS -- sweep probe names on value-sphere k=8
+18:36 00b8b780 grade s12.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe names on value-sphere k=12
+18:36 00b8b780 grade s16.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe names on value-sphere k=16
+18:36 00b8b780 grade s20.cpp DIFFER(3921v3921) hunks=23 /GS -- sweep probe names on value-sphere k=20
+18:36 00b8b780 grade s24.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe names on value-sphere k=24
+18:36 00b8b780 grade s28.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe names on value-sphere k=28
+18:36 00b8b780 grade s32.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe names on value-sphere k=32
+18:36 00b8b780 grade s36.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe names on value-sphere k=36
+18:37 00b8b780 grade s40.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe names on value-sphere k=40
+18:37 00b8b780 grade s44.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe names on value-sphere k=44
+18:37 00b8b780 grade s48.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe names on value-sphere k=48
+18:37 00b8b780 grade s52.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe names on value-sphere k=52
+18:37 00b8b780 grade s56.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe names on value-sphere k=56
+18:37 00b8b780 grade s60.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe names on value-sphere k=60
+18:37 00b8b780 grade s64.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe names on value-sphere k=64
+18:37 00b8b780 grade s68.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe names on value-sphere k=68
+18:37 00b8b780 grade s72.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe names on value-sphere k=72
+18:37 00b8b780 grade s76.cpp DIFFER(3921v3921) hunks=15 /GS -- sweep probe names on value-sphere k=76
+18:37 00b8b780 grade s80.cpp DIFFER(3921v3921) hunks=15 /GS -- sweep probe names on value-sphere k=80
+18:37 00b8b780 grade s84.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe names on value-sphere k=84
+18:37 00b8b780 grade s88.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe names on value-sphere k=88
+18:37 00b8b780 grade s92.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe names on value-sphere k=92
+18:37 00b8b780 grade s96.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe names on value-sphere k=96
+18:37 00b8b780 grade s100.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe names on value-sphere k=100
+18:37 00b8b780 grade s104.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe names on value-sphere k=104
+18:37 00b8b780 grade s108.cpp RELOCATION_MATCH /GS -- sweep probe names on value-sphere k=108
+18:37 00b8b780 grade s112.cpp RELOCATION_MATCH /GS -- sweep probe names on value-sphere k=112
+18:37 00b8b780 grade s116.cpp DIFFER(3921v3921) hunks=19 /GS -- sweep probe names on value-sphere k=116
+18:37 00b8b780 grade s120.cpp DIFFER(3921v3921) hunks=21 /GS -- sweep probe names on value-sphere k=120
+18:37 00b8b780 grade s124.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe names on value-sphere k=124
+18:37 00b8b780 grade s128.cpp DIFFER(3921v3921) hunks=17 /GS -- sweep probe names on value-sphere k=128
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=23 /GS -- ksweep probe v63.cpp k=0
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=23 /GS -- ksweep probe v63.cpp k=8
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v63.cpp k=16
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v63.cpp k=24
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v63.cpp k=32
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v63.cpp k=40
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v63.cpp k=48
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v63.cpp k=56
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v63.cpp k=64
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v63.cpp k=72
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=15 /GS -- ksweep probe v63.cpp k=80
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v63.cpp k=88
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v63.cpp k=96
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v63.cpp k=104
+18:38 00b8b780 grade ks.cpp RELOCATION_MATCH /GS -- ksweep probe v63.cpp k=112
+18:38 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v63.cpp k=120
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v63.cpp k=128
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=23 /GS -- ksweep probe v62.cpp k=0
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=23 /GS -- ksweep probe v62.cpp k=8
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v62.cpp k=16
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v62.cpp k=24
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v62.cpp k=32
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v62.cpp k=40
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v62.cpp k=48
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v62.cpp k=56
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v62.cpp k=64
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v62.cpp k=72
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=15 /GS -- ksweep probe v62.cpp k=80
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v62.cpp k=88
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v62.cpp k=96
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v62.cpp k=104
+18:39 00b8b780 grade ks.cpp RELOCATION_MATCH /GS -- ksweep probe v62.cpp k=112
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v62.cpp k=120
+18:39 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v62.cpp k=128
+18:40 00b8b780 grade pf20.cpp DIFFER(3921v3921) hunks=23 /GS -- probe extra TU function before row n=20
+18:40 00b8b780 grade pf60.cpp DIFFER(3921v3921) hunks=23 /GS -- probe extra TU function before row n=60
+18:40 00b8b780 grade pf120.cpp DIFFER(3921v3921) hunks=23 /GS -- probe extra TU function before row n=120
+18:40 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe period k=236
+18:40 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe period k=240
+18:40 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=51 /GS -- ksweep probe period k=364
+18:40 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=31 /GS -- ksweep probe period k=368
+18:41 00b8b780 grade v64.cpp DIFFER(3921v3921) hunks=24 /GS -- C3DTextureStages FW default ctor
+18:41 00b8b780 grade v64.cpp DIFFER(3921v3921) hunks=23 /GS -- C3DTextureStages ctor body UseBlank first
+18:41 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=23 /GS -- ksweep probe v64.cpp k=0
+18:41 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=23 /GS -- ksweep probe v64.cpp k=4
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=23 /GS -- ksweep probe v64.cpp k=8
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v64.cpp k=12
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v64.cpp k=16
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v64.cpp k=20
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=23 /GS -- ksweep probe v64.cpp k=24
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v64.cpp k=28
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v64.cpp k=32
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v64.cpp k=36
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v64.cpp k=40
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v64.cpp k=44
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v64.cpp k=48
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v64.cpp k=52
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v64.cpp k=56
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v64.cpp k=60
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v64.cpp k=64
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v64.cpp k=68
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v64.cpp k=72
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=15 /GS -- ksweep probe v64.cpp k=76
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=15 /GS -- ksweep probe v64.cpp k=80
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v64.cpp k=84
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v64.cpp k=88
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v64.cpp k=92
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v64.cpp k=96
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v64.cpp k=100
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v64.cpp k=104
+18:42 00b8b780 grade ks.cpp RELOCATION_MATCH /GS -- ksweep probe v64.cpp k=108
+18:42 00b8b780 grade ks.cpp RELOCATION_MATCH /GS -- ksweep probe v64.cpp k=112
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=17 /GS -- ksweep probe v64.cpp k=116
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v64.cpp k=120
+18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v64.cpp k=124
+18:44 00b8b780 grade final.cpp DIFFER(3921v3921) hunks=23 /GS -- final check of differ source (clean overlay)
