@@ -80,6 +80,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [ ] Mislabelled dtor families (`_Dest_val`/`_Cons_val` BSim labels on non-dtor bodies) re-attributed on landing; sweep the rest
 - [ ] `00995e70 PeekData` honest DIFFER(16v15) — attack load-through-lea, not the compare
 - [ ] `LinkToNeighbouringMaps 0x00A7A650` 9 bytes long; `CNavQuadTree::UpdateLines 0x00A781A0` fixture-first
+- [ ] 2026-11-13 **ON HOLD (owner, 2026-11-13: logged, not to be worked until the owner says so):** line-independent `FABLE_STATIC_ASSERT` typedef names. Today the name is `fable_static_assert_<__LINE__>` and VC7.1's stack-slot order in a few rows depends on it, so a header line shift can flip a landed row. Plan: one fixed name in `rebuild_abi.h` (drop `FABLE_STATIC_ASSERT_AT` and the pins with it), then ONE whole-tree VC7.1 recheck (about a day of compute, `lane_merge/recheck_rows.py`) and repair of whatever flips. Until then: `lane_merge/pin_asserts.py` after every header edit, and row 0x007E2A60 CTCFineDialogue::GlobalUpdate stays counted as landed while it differs at HEAD (since wf22). Evidence: `rebuild/candidates/manual/batches/2026-11-13_landing_fz/README.md`.
 - [ ] GFMain `0x00402510` dependency closure; CRT `entry 0x00401067` parity (deferred until GFMain boundary useful)
 - [ ] Wave-3 review tails (CGSI wrappers with end-sentinel derefs, co-op spirit tail) rebuilt from bytes before promotion
 - [ ] 84 deferred over-captures worklist `rebuild/backlog/overcapture-recovery-worklist.tsv` (~11 recovered)
