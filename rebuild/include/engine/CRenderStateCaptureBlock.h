@@ -36,8 +36,28 @@ public:
 class CRenderStateCaptureBlock {
     friend class CRenderStateScopedCaptureBlock;
 public:
+#ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE_CTOR
+    // Retail opt-in (chunk 2024, row 0x00B891B0 CEngineScreenEffectOutlineGlow::CEngineScreenEffectOutlineGlow): ??0CRenderStateCaptureBlock@@QAE@XZ
+    // is FableWin.pdb-only (debug 0x02D55560; no Ego_r.pdb or Fable.exe copy): inline in retail, the member is constructed in place as
+    // `mov byte ptr [esi+1E0h],bl` (0x00B89232; the same Open = false store in the landed 0x00B86C00).
+    CRenderStateCaptureBlock() : Open(false) { }
+#else
     CRenderStateCaptureBlock();
+#endif
+#ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE_DTOR
+    // Retail opt-in (chunk 2018, row 0x00B2B180 CEngineSurfaceCompositionManager::RenderToTexture): ??1CRenderStateCaptureBlock@@QAE@XZ
+    // (Ego_r.pdb / FableWin.pdb) is inline where the surface compositor's implicit destructor is expanded: `if (Open) { Open = false;
+    // StateManager->RestoreCaptureBlock(); }` (0x00B2B622..0x00B2B649; the landed ~CSurfaceCompositor 0x00B2E6C0 has the same body).
+    ~CRenderStateCaptureBlock()
+    {
+        if (Open) {
+            Open = false;
+            StateManager->RestoreCaptureBlock();
+        }
+    }
+#else
     ~CRenderStateCaptureBlock();
+#endif
 #ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_CAPTURE_INLINE
     // Retail opt-in (wf20 row 0x00F39730 CSurfaceCompositor::StartComposition): ?Capture@CRenderStateCaptureBlock@@QAEXXZ is FableWin-only
     // (no Ego_r / retail copy); 0x00F39739 stores Open = true and expands StartCaptureBlock on StateManager in place.

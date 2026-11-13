@@ -39,6 +39,11 @@ public:
     // read in place (0x00BA7732 `mov edx,[esp+18h] ; push edx` hands the silhouette colour to DrawAlphaBoundingBox's unsigned long).
     unsigned long GetAsInt() const { return IntValue; }
 #endif
+#ifdef FABLE_RETAIL_CRGBCOLOUR_GETD3DCOLOR_B
+    // Retail opt-in (chunk 2018, row 0x00B2B180): Ego_r.pdb / FableWin.pdb ?GetD3DCOLOR@CRGBColour@@QBEKXZ, inline in retail (the B, G, R,
+    // A bytes are a D3DCOLOR dword: 0x00B2B4BA `mov edx,[eax+8]` stores the blend's DiffuseColour into a vertex as one dword).
+    unsigned long GetD3DCOLOR() const { return IntValue; }
+#endif
     unsigned char GetR() const { return R; }
     unsigned char GetG() const { return G; }
     unsigned char GetB() const { return B; }

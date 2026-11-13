@@ -58,6 +58,12 @@ public:
  // 0x009F2E70 (the GetSurfaceLevel result assigned, then the temporary destroyed in place). Declaration only.
  CSurface& operator=(const CSurface& other);              // 0x009F2E70
 #endif
+#if defined(FABLE_RETAIL_CSURFACE_COPYFROMSURFACE) && !defined(FABLE_RETAIL_CSURFACE_LOADGRAPHICFRAME)
+ // Retail opt-in (chunk 2018, row 0x00B2B180): Ego_r.pdb / FableWin.pdb ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z (0x009F37E0,
+ // out of line; the same declaration as chunk 2004's FABLE_RETAIL_CSURFACE_LOADGRAPHICFRAME block). Declaration only.
+ void CopyFromSurface(const class C2DBoxI* destRect, const CSurface& source, const class C2DBoxI* sourceRect,
+                      unsigned long filter);              // 0x009F37E0
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_BITMAP
  // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): Ego_r.pdb ?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ
  // (0x00B46C70 = the landed retail 0x009F2F90, hidden result) and ?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z

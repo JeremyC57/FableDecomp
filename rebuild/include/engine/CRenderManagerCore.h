@@ -65,6 +65,12 @@ public:
     void EnableXBoxShaderConstants(bool enable);
     void SetVertexFormat(unsigned long);
     void FlushRender();
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_WAITWHILEGPUISBUSY
+    // Retail opt-in (chunk 2018, row 0x00B2D330): Ego_r.pdb ?WaitWhileGPUIsBusy@CRenderManagerCore@@QAEXXZ (Ego_r 0x00B74540, a 16-byte
+    // stub between DrawAsIndexedTris(user) 0x00B74500 and CheckBufferedTextures 0x00B74550 = retail 0x00A0AF40 / 0x00A0AF80 / 0x00A0AF90):
+    // the empty PC body (`ret`) at 0x00A0AF80, called out of line. Declaration only.
+    void WaitWhileGPUIsBusy();                                           // 0x00A0AF80
+#endif
 #ifdef FABLE_RETAIL_CRENDERMANAGERCORE_DRAWASINDEXEDTRIS
     // Retail opt-in (chunk 783, row 0x009FA780 CTexture::BltToRenderTargetWithGPU): Ego_r.pdb 0x00B74460 / FableWin.pdb 0x030EC200
     // ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z = retail 0x00A0AEA0 (7 arguments, `ret 1Ch`): texture

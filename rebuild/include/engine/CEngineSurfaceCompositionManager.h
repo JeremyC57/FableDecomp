@@ -11,7 +11,41 @@
 #include "rebuild_abi.h"
 #include "engine/CResourceBank.h"
 #include "engine/CEngineComponent.h"
-#ifdef FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_BANKS
+#ifdef FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_MEMBERS
+// Retail opt-in (chunk 2018, rows 0x00B2B180 RenderToTexture / 0x00B2CB40 the constructor / 0x00B2D330 UpdateDiskCacheTexture): the
+// own members typed, Ego_r.pdb names and order at the retail offsets of the generated default below (and of the landed
+// ~CEngineSurfaceCompositionManager 0x00B2D1B0 local model): the cache list (STLport list, node malloc(0x10) at 0x00B2CB76), the three
+// CGraphicDataBank (ctor 0x009FEA20 x3), three CWideString (0x0099AED0 x3), the morph map (header node malloc(0x2C)), the texture
+// manager (0x00A6A360), four CPixelFormat (-1 stores), the screen-copy vertex shader (0x00A62FB0), the two pair<long,long>[4][4]
+// handle tables (16-iteration zero loops) and the tail scalars. Needs the CGraphicDataBank / CTextureManager / CBankFile opt-ins.
+#ifndef FABLE_RETAIL_CGRAPHICDATABANK_SURFACECOMPOSITION
+#define FABLE_RETAIL_CGRAPHICDATABANK_SURFACECOMPOSITION
+#endif
+#ifndef FABLE_RETAIL_CTEXTUREMANAGER_CLASS
+#define FABLE_RETAIL_CTEXTUREMANAGER_CLASS
+#endif
+#ifndef FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CVERTEXSHADER
+#endif
+#ifndef FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CPIXELFORMAT
+#endif
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CGraphicDataBank.h"
+#include "engine/CTextureManager.h"
+#include "engine/CPixelFormat.h"
+#include "engine/CVertexShader.h"
+#include "engine/CEngineTextureMorph.h"
+class CCompositeSurfaceCache;
+class CGraphicInfoFrame;
+class CTexture;
+class C2DExtentsI;
+class CGraphicFrame;
+template <class T> class CArray;
+#elif defined(FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_BANKS)
 #include "engine/CGraphicDataBank.h"
 #endif
 class CEngineInit;
@@ -19,7 +53,49 @@ class CEngineSurfaceCompositionManager : public CResourceBank, public CEngineCom
 public:
     CEngineSurfaceCompositionManager();        // 0x00B2CB40 ??0CEngineSurfaceCompositionManager@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
-#ifdef FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_BANKS
+#if defined(FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_MEMBERS)
+    virtual ~CEngineSurfaceCompositionManager();                         // 0x00B2D1B0 (landed)
+    void ChangeSceneForTextureBank();                                    // 0x00B2AD80
+private:
+    // ?RenderToTexture@CEngineSurfaceCompositionManager@@AAEXAAVCTexture@@ABVC2DExtentsI@@_N2ABVCEngineTextureMorph@@ABV?$CArray@VCGraphicFrame@@@@J@Z
+    // (Ego_r.pdb; private; retail `ret 1Ch`).
+    void RenderToTexture(CTexture& texture, const C2DExtentsI& extents, bool alpha, bool unused_flag,
+                         const CEngineTextureMorph& morph, const CArray<CGraphicFrame>& frames, long scratch_texture);   // 0x00B2B180
+    // Ego_r.pdb / FableWin.pdb private members (AAE), the spellings UpdateDiskCacheTexture calls (NAME_FIXES.tsv for the landed ones):
+    void GetDimensionsAndAdjustMipmapLevel(C2DExtentsI& dimensions, const CGraphicInfoFrame* frame, unsigned long& mipmap_level);   // 0x00B2AEF0
+    bool IsNearlyIdentical(const CEngineTextureMorph& a, const CEngineTextureMorph& b, float tolerance);   // 0x00B2B050
+    const CGraphicInfoFrame* GetGraphicInfo(unsigned long index);                                         // 0x00B2B790
+    void WriteTextureToBank(CTexture& texture, CGraphicDataBank& bank, unsigned long index, bool alpha);  // 0x00B2BD80
+    bool UpdateDiskCacheTexture(CCompositeSurfaceCache& surface_cache, unsigned long mipmap_level, bool is_bump);   // 0x00B2D330
+public:
+    std::list<CCountedPointer<CCompositeSurfaceCache> >      CachedSurfaces;                  // +0x88
+    CGraphicDataBank                                         IntermediateBankFile;            // +0x8c
+    CGraphicDataBank                                         CompletedBankFile;               // +0x398
+    CGraphicDataBank                                         CustomTextureBankFile;           // +0x6a4
+    CWideString                                              IntermediateDiskCacheFileName;   // +0x9b0
+    CWideString                                              CompletedDiskCacheFileName;      // +0x9b4
+    CWideString                                              CustomTextureBankFileName;       // +0x9b8
+    std::map<std::pair<long, long>, CEngineTextureMorph>     GeneratedMorphs;                 // +0x9bc
+    float                                                    DiskCacheTolerance;              // +0x9c8
+    float                                                    MaxPreloadTime;                  // +0x9cc
+    unsigned long                                            CurrentFrame;                    // +0x9d0
+    CTextureManager                                          TextureManager;                  // +0x9d4
+    CPixelFormat                                             OpaquePixelFormat;               // +0xfa8
+    CPixelFormat                                             AlphaPixelFormat;                // +0xfac
+    CPixelFormat                                             CompressedOpaquePixelFormat;     // +0xfb0
+    CPixelFormat                                             CompressedAlphaPixelFormat;      // +0xfb4
+    CVertexShader                                            ScreenCopyVertexShader;          // +0xfb8
+    std::pair<long, long>                                    OpaqueTextureHandles[4][4];      // +0xfc0
+    std::pair<long, long>                                    AlphaTextureHandles[4][4];       // +0x1040
+    float                                                    ReuseTolerance;                  // +0x10c0
+    float                                                    ToleranceFalloffPercent;         // +0x10c4
+    long                                                     MaxCompositeTextureSize;         // +0x10c8
+    unsigned long                                            MinRenderTargetSize;             // +0x10cc
+    unsigned long                                            MinMipMapLevels;                 // +0x10d0
+    bool                                                     Enable;                          // +0x10d4
+    bool                                                     RequiresCopy;                    // +0x10d5
+    unsigned long                                            CacheSizeBytes;                  // +0x10d8
+#elif defined(FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_BANKS)
     // Chunk 767 (row 0x00B2AD80): Ego_r.pdb ?ChangeSceneForTextureBank@CEngineSurfaceCompositionManager@@QAEXXZ (`add ecx,398h ; jmp
     // 0x009FD0C0` = CompletedBankFile.ChangeScene()); the three CGraphicDataBank members (Ego_r names and order: CachedSurfaces list,
     // IntermediateBankFile, CompletedBankFile, CustomTextureBankFile), retail 0x30C bytes each from +0x8C.

@@ -79,6 +79,16 @@ private:
     void RenderIceForeground(float time);                                // ?RenderIceForeground@CEngineWaterRenderer@@AAEXM@Z
     void RenderForeground(float time);                                   // ?RenderForeground@CEngineWaterRenderer@@AAEXM@Z
     void RenderSeaReflectiveForeground(float time);                      // ?RenderSeaReflectiveForeground@CEngineWaterRenderer@@AAEXM@Z
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_CREATEDYNAMICTEXTURES
+    // Opt-in (bwf2, row 0x00B72180): Ego_r.pdb 0x00A1EE70 / FableWin.pdb ?CreateDynamicTextures@CEngineWaterRenderer@@AAE_N_N00@Z,
+    // ?RenderBumpMap@CEngineWaterRenderer@@AAEXW4EWaterArrayIndexAliases@@@Z (0x00B6E890), ?RenderIceBumpMap@CEngineWaterRenderer@@AAEXXZ
+    // (0x00B6E3E0) and FableWin ?SetRenderTargetToSurface@CEngineWaterRenderer@@AAEXAAVCRenderTarget@@ABVCSurface@@@Z (inline; retail's
+    // unreferenced out-of-line copy 0x00B7AD20). Parameter names descriptive.
+    bool CreateDynamicTextures(bool render_water_bump, bool render_sea_bump, bool render_ice_bump);   // 0x00B72180
+    void RenderBumpMap(enum EWaterArrayIndexAliases index);              // 0x00B6E890
+    void RenderIceBumpMap();                                             // 0x00B6E3E0
+    void SetRenderTargetToSurface(class CRenderTarget& target, const class CSurface& surface);   // 0x00B7AD20
+#endif
 #ifdef FABLE_RETAIL_CENGINEWATERRENDERER_SEAMIDGROUND
     // Opt-in (chunk 892, row 0x00B6FA40): Ego_r.pdb / FableWin.pdb ?RenderSeaMidground@CEngineWaterRenderer@@AAEXM@Z and
     // ?RenderBackgroundList@CEngineWaterRenderer@@AAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z (landed 0x00B6E260).

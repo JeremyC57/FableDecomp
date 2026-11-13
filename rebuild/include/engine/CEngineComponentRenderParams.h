@@ -5,10 +5,19 @@
 // +4 (CEngineInterpolationInfo, 0x70), FrameID +0x74, SceneFilterFlags +0x78, OffWorldTickProcessFlag +0x7C). The interpolation info
 // and the two enums are kept opaque / as long until a row needs their members (0x00B667C2 reads Params->FrameInterpolation).
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CENGINECOMPONENTPARAMS_INTERPOLATIONINFO
+#include "engine/CEngineInterpolationInfo.h"
+#endif
 class CEngineComponentParams {
 public:
     float         FrameInterpolation;                                    // +0x00
+#ifdef FABLE_RETAIL_CENGINECOMPONENTPARAMS_INTERPOLATIONINFO
+    // Opt-in (chunk 2030, row 0x00BEA110): the interpolation info typed (chunk 2011's engine/CEngineInterpolationInfo.h, Ego_r.pdb
+    // CEngineInterpolationInfo 0x70); CEngineWaterSettings::UpdateConstants reads BulletTimeCurrent.WFInterpolate at Params +0x3C.
+    CEngineInterpolationInfo InterpolationInfo;                          // +0x04
+#else
     unsigned char InterpolationInfo[0x70];                               // +0x04 CEngineInterpolationInfo
+#endif
     unsigned long FrameID;                                               // +0x74
     unsigned long SceneFilterFlags;                                      // +0x78
     bool          OffWorldTickProcessFlag;                               // +0x7c

@@ -20,13 +20,19 @@
 #include "engine/CGameDefinitionManager.h"
 #endif
 
-#ifdef FABLE_RETAIL_CENVIRONMENT_UPDATE
+#if defined(FABLE_RETAIL_CENVIRONMENT_UPDATE) || defined(FABLE_RETAIL_CENVIRONMENT_TICKSTATES)
 // Retail opt-in (row 0x006B3FF0 CEnvironment::Update): the game tick states and the rain-splash particle typed as the Ego_r.pdb
 // types they are (nested CEnvironment::CEnvironmentGameTickState, CIntelligentPointer<CThing>). Needs FABLE_RETAIL_CINTELLIGENTPOINTER.
 #include "engine/CBlendedEnvironmentTheme.h"
 #include "engine/C3DVector.h"
 #include "engine/CIntelligentPointer.h"
 class CThing;
+#endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_TICKSTATES
+// Opt-in (chunk 2019, row 0x006B42F0 CEnvironment::RenderUpdate): the typed game tick states of FABLE_RETAIL_CENVIRONMENT_UPDATE (shared
+// below) and InterpolatedEnvironmentParams typed CIDrawEnvironmentParams (engine/CIDrawEnvironment.h; same size 0xC0 with
+// FABLE_RETAIL_CIDRAWENVIRONMENTPARAMS_SCREENEFFECTS, same offset +0x1894). Mutually exclusive with _WEATHERSCALERS (bytes there).
+#include "engine/CIDrawEnvironment.h"
 #endif
 class CEnvironmentSpellEffectInterface;
 class CEnvironmentSpellEffectInterpolator;
@@ -38,7 +44,7 @@ class CGameDefinitionManager;
 #pragma pack(push, 1)
 class CEnvironment {
 public:
-#ifdef FABLE_RETAIL_CENVIRONMENT_UPDATE
+#if defined(FABLE_RETAIL_CENVIRONMENT_UPDATE) || defined(FABLE_RETAIL_CENVIRONMENT_TICKSTATES)
     // Ego_r.pdb CEnvironment::CEnvironmentGameTickState (Ego_r 0xcb0 bytes; retail 0xc20: the six 0x1f4-byte retail themes put Time at
     // +0xbb8, Update stores it at +0xc0c of the environment). Members after BlendedTheme in Ego_r order (pack 1). The assignment is
     // out of line in retail at 0x006B63C0 (??4CEnvironmentGameTickState@CEnvironment@@QAEAAV01@ABV01@@Z, landed).
@@ -122,6 +128,12 @@ public:
     // straight off the environment before the call, 0x0079CFCB; the same read in the CGameScriptInterface::ScreenFilterFadeOut
     // forwarder 0x00890206). Body only: no layout change.
     CEnvironmentSpellEffectInterpolator& GetSpellEffectInterpolator() { return *SpellEffectInterpolator_ptr; }
+#endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_SPELLEFFECTINTERFACE
+    // Opt-in (chunk 2019, row 0x006B42F0 CEnvironment::RenderUpdate): FableWin.pdb
+    // ?GetSpellEffectInterface@CEnvironment@@QAEAAVCEnvironmentSpellEffectInterface@@XZ, inline in retail (RenderUpdate reads +0x1960 in
+    // place before each of its three spell-effect calls, 0x006B482D / 0x006B4855 / 0x006B4883). Body only: no layout change.
+    CEnvironmentSpellEffectInterface& GetSpellEffectInterface() { return *SpellEffectInterface_ptr; }
 #endif
 #ifdef FABLE_RETAIL_CENVIRONMENT_TRANSITIONTOTHEME
     // Retail opt-in (chunk 782, row 0x007941D0 CTCUnholyPower ctor): Ego_r.pdb ?TransitionToTheme@CEnvironment@@QAEXJJJM@Z, out of line
@@ -209,17 +221,21 @@ public:
     float                                MistStrength;       // +0x1c8
     float                                LightningFrequency; // +0x1cc
     unsigned char                        GameTickStateRest[0xc20 - 0x17c]; // +0x1d0
-#elif defined(FABLE_RETAIL_CENVIRONMENT_UPDATE)
+#elif defined(FABLE_RETAIL_CENVIRONMENT_UPDATE) || defined(FABLE_RETAIL_CENVIRONMENT_TICKSTATES)
     CEnvironmentGameTickState            GameTickState;      // +0x54
 #else
     unsigned char                        GameTickState[0xc20]; // +0x54 CEnvironmentGameTickState
 #endif
-#ifdef FABLE_RETAIL_CENVIRONMENT_UPDATE
+#if defined(FABLE_RETAIL_CENVIRONMENT_UPDATE) || defined(FABLE_RETAIL_CENVIRONMENT_TICKSTATES)
     CEnvironmentGameTickState            PrevGameTickState;  // +0xc74
 #else
     unsigned char                        PrevGameTickState[0xc20]; // +0xc74 CEnvironmentGameTickState
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_TICKSTATES
+    CIDrawEnvironmentParams              InterpolatedEnvironmentParams; // +0x1894
+#else
     unsigned char                        InterpolatedEnvironmentParams[0xc0]; // +0x1894 CIDrawEnvironmentParams
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENT_THEMESTACKS
     NEnvironmentInternal::CEnvironmentThemeResourcePallette ThemeSet;  // +0x1954
 #else
@@ -266,7 +282,7 @@ FABLE_STATIC_ASSERT(offsetof(CEnvironment, SpellEffectInterface_ptr) == 0x1960);
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, SpellEffectInterpolator_ptr) == 0x1964);
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, PRainSplashParticle) == 0x1968);
 
-#ifdef FABLE_RETAIL_CENVIRONMENT_UPDATE
+#if defined(FABLE_RETAIL_CENVIRONMENT_UPDATE) || defined(FABLE_RETAIL_CENVIRONMENT_TICKSTATES)
 FABLE_STATIC_ASSERT(sizeof(CEnvironment::CEnvironmentGameTickState) == 0xc20);
 FABLE_STATIC_ASSERT(offsetof(CEnvironment::CEnvironmentGameTickState, Time) == 0xbb8);
 #endif

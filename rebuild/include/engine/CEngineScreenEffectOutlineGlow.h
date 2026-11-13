@@ -11,6 +11,85 @@
 #include "rebuild_abi.h"
 #include "engine/CEngineComponent.h"
 class CEngineInit;
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW_MEMBERS
+// Retail opt-in (chunk 2024, row 0x00B891B0 the constructor): the own members in Ego_r.pdb order, names and types
+// (struct_layouts_egor.tsv; no STLport member, so the Ego_r offsets are retail's: the constructor stores the three texture
+// pointers +0x0C..+0x14, the three texture handles +0x18..+0x20 and DynamicTexturePageHandle +0x24, the three CTVertexColTex1[4]
+// quads from +0x2C, builds OldRenderTarget +0x14C in place (CBaseClass() 0x0099A2D0, vtable 0x0129C800, two CSurface), the six
+// shader wrappers +0x180..+0x1A8 (CVertexShader() 0x00A62FB0 / CPixelShader() 0x00A5EC00, then assigned), OutlineGlowScaleFactor
+// +0x1BC, OuterStencilExtraNormalExtrusion +0x1B8, the overridden parameters +0x1C0..+0x1D4, BlurStepCount +0x1D8, DepthBufferBias
+// +0x1DC, the capture block +0x1E0 and EnableDrawDebugTextures +0x1E1; the landed destructor 0x00B898D0 releases the shaders and
+// the render target at the same offsets). Methods: Ego_r.pdb / FableWin.pdb spellings.
+#ifndef FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CVERTEXSHADER
+#endif
+#ifndef FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CSURFACE
+#endif
+#ifndef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE_CTOR
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE_CTOR
+#endif
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CTVertexColTex1.h"
+#include "engine/CRenderTarget.h"
+#include "engine/C2DBoxI.h"
+#include "engine/CRGBColour.h"
+#include "engine/CRenderStateCaptureBlock.h"
+class CTexture;
+class CMatrix3x4;
+class CEngineComponentRenderParams;
+class CEngineScreenEffectOutlineGlow : public CEngineComponent {
+public:
+    CEngineScreenEffectOutlineGlow(const CEngineInit& init);             // 0x00B891B0 ??0CEngineScreenEffectOutlineGlow@@QAE@ABVCEngineInit@@@Z
+    virtual ~CEngineScreenEffectOutlineGlow();                            // 0x00B898D0 ??1CEngineScreenEffectOutlineGlow@@UAE@XZ
+    virtual void Render(const CEngineComponentRenderParams& params);      // 0x00B8B550 ?Render@CEngineScreenEffectOutlineGlow@@UAEXABVCEngineComponentRenderParams@@@Z
+    virtual CCharString GetConsoleEnableFunctionName();                   // 0x00B8B580
+    virtual unsigned long PeekSceneFilterFlags() const;                   // 0x00B8B5A0
+    void BeginOutlineRendering();                                         // ?BeginOutlineRendering@CEngineScreenEffectOutlineGlow@@QAEXXZ
+    void FinishOutlineRendering();                                        // ?FinishOutlineRendering@CEngineScreenEffectOutlineGlow@@QAEXXZ
+    void SetupDepthBufferTransform(const CMatrix3x4& transform);          // ?SetupDepthBufferTransform@CEngineScreenEffectOutlineGlow@@QAEXABVCMatrix3x4@@@Z
+    float PeekOuterStencilExtraNormalExtrusion() { return OuterStencilExtraNormalExtrusion; }   // FableWin.pdb (inline)
+    float PeekOutlineGlowScaleFactor() { return OutlineGlowScaleFactor; }                       // FableWin.pdb (inline)
+private:
+    void FinishWithDynamicTextures();                                     // 0x00B89080 ?FinishWithDynamicTextures@CEngineScreenEffectOutlineGlow@@AAEXXZ
+    void ApplyOutline();                                                  // ?ApplyOutline@CEngineScreenEffectOutlineGlow@@AAEXXZ
+    void DrawDebugTextures();                                             // ?DrawDebugTextures@CEngineScreenEffectOutlineGlow@@AAEXXZ
+    CTexture*       OutlineTexture;                                       // +0x0c
+    CTexture*       Blur1Texture;                                         // +0x10
+    CTexture*       Blur2Texture;                                         // +0x14
+    long            OutlineTextureHandle;                                 // +0x18
+    long            Blur1TextureHandle;                                   // +0x1c
+    long            Blur2TextureHandle;                                   // +0x20
+    long            DynamicTexturePageHandle;                             // +0x24
+    bool            HasContent;                                           // +0x28
+    CTVertexColTex1 OutlineToBlurVerts[4];                                // +0x2c
+    CTVertexColTex1 BlurToBlurVerts[4];                                   // +0x8c
+    CTVertexColTex1 BlurToBackBufferVerts[4];                             // +0xec
+    CRenderTarget   OldRenderTarget;                                      // +0x14c
+    C2DBoxI         OldViewport;                                          // +0x170
+    CVertexShader   OutlineToBlurVertexShader;                            // +0x180
+    CPixelShader    OutlineToBlurPixelShader;                             // +0x188
+    CVertexShader   BlurToBlurVertexShader;                               // +0x190
+    CPixelShader    BlurToBlurPixelShader;                                // +0x198
+    CVertexShader   BlurToBackBufferVertexShader;                         // +0x1a0
+    CPixelShader    BlurToBackBufferPixelShader;                          // +0x1a8
+    float           BlurFactor;                                           // +0x1b0
+    float           SharpenFactor;                                        // +0x1b4
+    float           OuterStencilExtraNormalExtrusion;                     // +0x1b8
+    float           OutlineGlowScaleFactor;                               // +0x1bc
+    bool            ParametersOverridden;                                 // +0x1c0
+    float           OverriddenParamsWidthWorldSpace;                      // +0x1c4
+    float           OverriddenParamsWidthScreenSpace;                     // +0x1c8
+    CRGBColour      OverriddenParamsColour;                               // +0x1cc
+    long            OverriddenParamsTextureAlphaRef;                      // +0x1d0
+    long            OverriddenParamsTextureAlphaBias;                     // +0x1d4
+    long            BlurStepCount;                                        // +0x1d8
+    float           DepthBufferBias;                                      // +0x1dc
+    CRenderStateCaptureBlock OutlineRenderingCaptureBlock;                // +0x1e0
+    bool            EnableDrawDebugTextures;                              // +0x1e1
+};
+#else
 class CEngineScreenEffectOutlineGlow : public CEngineComponent {
 public:
     CEngineScreenEffectOutlineGlow(const CEngineInit&); // 0x00B891B0 ??0CEngineScreenEffectOutlineGlow@@QAE@ABVCEngineInit@@@Z
@@ -23,6 +102,7 @@ public:
 private:
     unsigned char _pad_0xc[0x1d8];              // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
 };
+#endif
 FABLE_STATIC_ASSERT(sizeof(CEngineScreenEffectOutlineGlow) == 0x1e4);
 #else // generated flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.

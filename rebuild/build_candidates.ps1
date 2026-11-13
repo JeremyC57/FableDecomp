@@ -395792,6 +395792,69 @@ $catalog = @(
         TestSource = '00/bf/CEnginePrimitiveRenderUtil_AddGeneratedObjects_00bf18b0_test.cpp'
         PassPattern = '00bf18b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006b42f0'
+        Module = 'CEnvironment'
+        Source = '00/6b/CEnvironment_RenderUpdate_006b42f0.cpp'
+        TestSource = '00/6b/CEnvironment_RenderUpdate_006b42f0_test.cpp'
+        PassPattern = '006b42f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aed600'
+        Module = 'NParticleEngine::CParticleEmitter'
+        Source = '00/ae/NParticleEngineCParticleEmitter_InterpolateTo_00aed600.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitter_InterpolateTo_00aed600_test.cpp'
+        PassPattern = '00aed600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2b180'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_RenderToTexture_00b2b180.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_RenderToTexture_00b2b180_test.cpp'
+        PassPattern = '00b2b180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2cb40'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_CEngineSurfaceCompositionManager_00b2cb40.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_CEngineSurfaceCompositionManager_00b2cb40_test.cpp'
+        PassPattern = '00b2cb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2d330'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_UpdateDiskCacheTexture_00b2d330.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_UpdateDiskCacheTexture_00b2d330_test.cpp'
+        PassPattern = '00b2d330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b64fa0'
+        Module = 'CEngineSkyRenderer'
+        Source = '00/b6/CEngineSkyRenderer_RenderClouds_00b64fa0.cpp'
+        TestSource = '00/b6/CEngineSkyRenderer_RenderClouds_00b64fa0_test.cpp'
+        PassPattern = '00b64fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b72180'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_CreateDynamicTextures_00b72180.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_CreateDynamicTextures_00b72180_test.cpp'
+        PassPattern = '00b72180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b891b0'
+        Module = 'CEngineScreenEffectOutlineGlow'
+        Source = '00/b8/CEngineScreenEffectOutlineGlow_CEngineScreenEffectOutlineGlow_00b891b0.cpp'
+        TestSource = '00/b8/CEngineScreenEffectOutlineGlow_CEngineScreenEffectOutlineGlow_00b891b0_test.cpp'
+        PassPattern = '00b891b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bea110'
+        Module = 'CEngineWaterSettings'
+        Source = '00/be/CEngineWaterSettings_UpdateConstants_00bea110.cpp'
+        TestSource = '00/be/CEngineWaterSettings_UpdateConstants_00bea110_test.cpp'
+        PassPattern = '00bea110_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

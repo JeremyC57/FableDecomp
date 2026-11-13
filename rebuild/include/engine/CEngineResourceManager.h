@@ -84,6 +84,7 @@ public:
     // inline in retail (UpdateDiskCache 0x00B2DA07 / 0x00B2DBA2 read GraphicBanks[0] at +0x954 and write through it).
     CGraphicDataBank* GetGraphicBank(EGraphicBankNo bank) { return GraphicBanks[bank]; }
 #endif
+#endif
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKVSCONSTANTLAYOUTLIGHTSBONES
     // Retail opt-in (chunk F2, row 0x00BCFB00): FableWin.pdb ?PeekVSConstantLayoutLightsBones@CEngineResourceManager@@QAEABVCEngineVSConstantLayoutLightsBones@@XZ,
     // inline in retail (the row reads the layout's BoneMatrices at +0x2E50 = VSConstantLayoutLightsBones +0x2D7C + 0xD4 in place).
@@ -97,6 +98,13 @@ public:
     // Retail opt-in (row 0x00BBCC70): FableWin.pdb ?GetStipleFadeTexture@CEngineResourceManager@@QAEAAVCTexture@@XZ, inline in
     // retail (SetupPixelShader takes the member's address: `mov ecx,[GPResourceManager] ; add ecx,2AACh`). The member stays opaque.
     class CTexture& GetStipleFadeTexture() { return *(class CTexture*)StipleFadeTexture; }
+#endif
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_CACHEPATHS
+    // Retail opt-in (chunk 2018, row 0x00B2CB40): Ego_r.pdb / FableWin.pdb ?PeekEngineCachePath@CEngineResourceManager@@QAEABVCWideString@@XZ /
+    // ?PeekWriteableEngineCachePath@..@@QAEABVCWideString@@XZ, inline in retail (0x00B2CD98 `add edx,2AD0h` = WriteableEngineCachePath,
+    // passed to the CWideString operator+ 0x0099BF30); the two members typed CWideString (same offsets +0x2ACC / +0x2AD0).
+    const CWideString& PeekEngineCachePath() { return EngineCachePath; }
+    const CWideString& PeekWriteableEngineCachePath() { return WriteableEngineCachePath; }
 #endif
     CGPUScratchBufferTextureManager& GetGPUScratchBufferTextureManager()
     {
@@ -147,6 +155,9 @@ private:
     unsigned char StipleFadeTexture[8];                      // CTexture
     CArray<unsigned long> HWInverseStipplePatterns;
     unsigned char DitherTextureList[12];                     // CArray<CTexture>
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_CACHEPATHS
+    CWideString EngineCachePath,WriteableEngineCachePath;    // +0x2ACC / +0x2AD0
+#else
     unsigned char EngineCachePath[4],WriteableEngineCachePath[4];  // CWideString
 #endif
     unsigned char ZeroRGBATexture[8],SatRGBATexture[8];      // CTexture

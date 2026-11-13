@@ -19,11 +19,23 @@
 #include "engine/CArray.h"
 #include "engine/CRGBFloatColour.h"
 #include "engine/CIDrawEnvironmentTextureSet.h"
+#ifdef FABLE_RETAIL_CIDRAWENVIRONMENTPARAMS_SCREENEFFECTS
+#include <stddef.h>
+#include "engine/CIDrawEnvironmentScreenEffectParams.h"
+#endif
 struct CIDrawEnvironmentParams {
     struct CThemeChannel {
         CRGBFloatColour Colours[19];                                     // +0x000
         float Scalers[30];                                               // +0x130
         CIDrawEnvironmentTextureSet TextureSets[3];                      // +0x1a8
+#ifdef FABLE_RETAIL_CIDRAWENVIRONMENTPARAMS_SCREENEFFECTS
+        // Opt-in (chunk 2019, row 0x006B42F0 CEnvironment::RenderUpdate): Ego_r.pdb / FableWin.pdb
+        // ??0CThemeChannel@CIDrawEnvironmentParams@@QAE@XZ and ??1CThemeChannel@CIDrawEnvironmentParams@@QAE@XZ, out of line in retail at
+        // 0x006B5FB0 (landed; zeroes the three texture sets) and 0x006B5B80 (landed; frees them last to first). RenderUpdate's
+        // ThemeChannels.resize(6) builds its value temporary with both (0x006B4383 / 0x006B4399). Declarations only.
+        CThemeChannel();                                                 // 0x006B5FB0
+        ~CThemeChannel();                                                // 0x006B5B80
+#endif
     };
     float Time;                                                          // +0x00
     C3DVector WindDirection;                                             // +0x04
@@ -35,8 +47,17 @@ struct CIDrawEnvironmentParams {
     C3DVector DiffuseVector;                                             // +0x3c
     C3DVector ShadowVector;                                              // +0x48
     CArray<CThemeChannel> ThemeChannels;                                 // +0x54
+#ifdef FABLE_RETAIL_CIDRAWENVIRONMENTPARAMS_SCREENEFFECTS
+    // Opt-in (chunk 2019): Ego_r.pdb ScreenEffectParams (CIDrawEnvironmentScreenEffectParams, Ego_r +0x64 = retail +0x60 after the
+    // 12-byte CArray); RenderUpdate fills RadialBlur (+0x60, `rep movsd` into this +0x18F4) and Displacement (+0xB0, this +0x1944).
+    CIDrawEnvironmentScreenEffectParams ScreenEffectParams;              // +0x60
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CIDrawEnvironmentParams::CThemeChannel) == 0x1f0);
+#ifdef FABLE_RETAIL_CIDRAWENVIRONMENTPARAMS_SCREENEFFECTS
+FABLE_STATIC_ASSERT(offsetof(CIDrawEnvironmentParams, ScreenEffectParams) == 0x60);
+FABLE_STATIC_ASSERT(sizeof(CIDrawEnvironmentParams) == 0xc0);
+#endif
 class CIDrawEnvironment {
 public:
     virtual ~CIDrawEnvironment();                                        // slot 0

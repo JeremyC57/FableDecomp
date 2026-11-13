@@ -33,6 +33,9 @@
 #include "engine/CVertexShader.h"
 #include "engine/CPixelShader.h"
 #include "engine/CLandscapePatchTesselator.h"
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_GETSETTINGS
+#include "engine/C4DVector.h"
+#endif
 class CEngineLandscapeMemoryManager;
 class CEngineMemoryInit;
 class CLandscapeBackgroundPatch;
@@ -65,8 +68,13 @@ public:
         bool          DrawBackgroundWater;                               // +0x0a
         float         ForegroundFadeStart;                               // +0x0c
         float         ForegroundFadeEnd;                                 // +0x10
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_GETSETTINGS
+        C4DVector     ForegroundFadeTransform;                           // +0x14
+        C4DVector     BackgroundFadeTransform;                           // +0x24
+#else
         unsigned char ForegroundFadeTransform[0x10];                     // +0x14 C4DVector
         unsigned char BackgroundFadeTransform[0x10];                     // +0x24 C4DVector
+#endif
         bool          EnableUpdate;                                      // +0x34
         bool          FogEnable;                                         // +0x35
         bool          StaticMapOcclusionEnable;                          // +0x36
@@ -100,6 +108,13 @@ public:
     CEngineLandscapeRenderer(const CEngineMemoryInit& init);             // ??0CEngineLandscapeRenderer@@QAE@ABVCEngineMemoryInit@@@Z
     virtual ~CEngineLandscapeRenderer();                                 // ??1CEngineLandscapeRenderer@@UAE@XZ 0x00B67920
     virtual unsigned long PeekSceneFilterFlags() const;                  // ?PeekSceneFilterFlags@CEngineLandscapeRenderer@@UBEKXZ (chunk 731)
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_GETSETTINGS
+    // Retail opt-in (chunk 2030, row 0x00BEA110 CEngineWaterSettings::UpdateConstants): Ego_r.pdb / FableWin.pdb
+    // ?GetSettings@CEngineLandscapeRenderer@@QAEABUCLandscapeSettings@1@XZ, inline in retail (0x00BEA579 `fld [ecx+614h]` =
+    // Settings.ForegroundFadeStart, 0x00BEA696 / 0x00BEA69F `fld [eax+62Ch]` / `[eax+638h]` = BackgroundFadeTransform X / W), with the two
+    // fade transforms typed C4DVector (Ego_r.pdb CLandscapeSettings). Same size.
+    const CLandscapeSettings& GetSettings() { return Settings; }
+#endif
 #ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_BLENDTABLES
     // Retail opt-in (chunk 1023, row 0x00B67270): Ego_r.pdb ?BuildBlendingTables@CEngineLandscapeRenderer@@AAEXXZ (private; the
     // five 128x128 ForegroundBlendTables). Declaration only.

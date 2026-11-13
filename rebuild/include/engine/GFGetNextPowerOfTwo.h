@@ -7,7 +7,16 @@
 // and ?GFGetNextPowerOfTwo@@YIKK@Z (FableWin 0x02D90380: 0 for 0, else 1 << GFGetTopBit(2 * value - 1)). Both __fastcall, inline in
 // the release build where the body is visible (GetNextValidDimensions expands both twice). Plain `inline`: the row reaches retail's
 // expansion with /d2inlT180 (owner ladder: an inline-budget flag before FABLE_FORCEINLINE).
+#ifdef FABLE_RETAIL_GFGETTOPBIT_FORCEINLINE
+// Retail opt-in (chunk 2018, rows 0x00B2CB40 / 0x00B2D330): FABLE_FORCEINLINE, the owner's 2026-11-01 rule for Lionhead header helpers --
+// FableWin.pdb-only name (no Ego_r.pdb copy), and retail expands every use: 17 expansions of the body in Fable.exe (`mov eax,10000h ;
+// sub eax,r ; sar eax,1Fh ; and eax,10h`, e.g. 0x00B2CF9F, 0x00B2D56E, 0x009FA6xx) and no call to the uncalled COMDAT 0x0099FDB0.
+// Plain `inline` leaves the variable-argument sites called (c1 120: score 125 at f 0.75 in UpdateDiskCacheTexture, 81 at f 25 in the
+// constructor's loop, against the default threshold 74).
+FABLE_FORCEINLINE unsigned long FABLE_FASTCALL GFGetTopBit(unsigned long value)
+#else
 inline unsigned long FABLE_FASTCALL GFGetTopBit(unsigned long value)
+#endif
 {
     if (value == 0)
         return (unsigned long)-1;

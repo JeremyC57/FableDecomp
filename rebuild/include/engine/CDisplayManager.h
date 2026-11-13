@@ -34,6 +34,23 @@ public:
  // (landed 0x009BEE00; the ctor compares it unsigned against 1400 = ps_1_4).
  unsigned long GetPixelShaderVersion() const;                          // 0x009BEE00
 #endif
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_ALLTEXTUREFORMATS
+ // Retail opt-in (chunk 2018, row 0x00B2CB40): the rest of the Ego_r.pdb / FableWin.pdb GetBest*TextureFormat run, all
+ // QAE_NKAAVCPixelFormat@@ (Opaque with a trailing bool), retail in Ego_r donor order 0x009BE590 Signed, 0x009BE610 Opaque,
+ // (0x009BE6C0 Alpha above), 0x009BE750 BooleanAlpha, 0x009BE830 CompressedOpaque, 0x009BE870 CompressedAlpha,
+ // 0x009BE8B0 CompressedBooleanAlpha (Ego_r 0x00B23400 / 0x00B234A0 / 0x00B23560 / 0x00B23610 / 0x00B23700 / 0x00B23750 /
+ // 0x00B237A0). Declarations only.
+ bool GetBestSignedTextureFormat(unsigned long bitDepth, CPixelFormat& format);                    // 0x009BE590
+ bool GetBestOpaqueTextureFormat(unsigned long bitDepth, CPixelFormat& format, bool allow_alpha);  // 0x009BE610
+ bool GetBestBooleanAlphaTextureFormat(unsigned long bitDepth, CPixelFormat& format);              // 0x009BE750
+#if !defined(FABLE_RETAIL_CDISPLAYMANAGER) || !defined(FABLE_RETAIL_CDISPLAYMANAGER_FRONTEND)
+ bool GetBestCompressedOpaqueTextureFormat(unsigned long bitDepth, CPixelFormat& format);          // 0x009BE830
+#endif
+#if !defined(FABLE_RETAIL_CDISPLAYMANAGER) || !defined(FABLE_RETAIL_CDISPLAYMANAGER_TEXTUREFORMATS)
+ bool GetBestCompressedAlphaTextureFormat(unsigned long bitDepth, CPixelFormat& format);           // 0x009BE870
+#endif
+ bool GetBestCompressedBooleanAlphaTextureFormat(unsigned long bitDepth, CPixelFormat& format);    // 0x009BE8B0
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER_ANTIALIASING
  // Opt-in (chunk 880, row 0x0058AF10 CTCInventory::OpenPCOptionsMenu): Ego_r.pdb
  // ?EnumerateAntiAliasingModes@CDisplayManager@@QAEXAAV?$CArray@W4ESurfaceMultisampleType@@@@@Z, landed at 0x009C05C0.
@@ -87,6 +104,12 @@ public:
  #ifndef FABLE_RETAIL_CDISPLAYMANAGER_BACKSCREEN
  bool SetRenderTargetAsBackScreen();                                    // 0x009BF220
  #endif
+ #endif
+ #ifdef FABLE_RETAIL_CDISPLAYMANAGER_PEEKBACKBUFFERRESOLUTION
+ // Nested opt-in (chunk 2030, row 0x00BEA110 CEngineWaterSettings::UpdateConstants): FableWin.pdb
+ // ?PeekBackBufferResolution@CDisplayManager@@QBEABVC2DExtentsI@@XZ (debug only, inline in release: 0x00BEA52C..0x00BEA54B copies
+ // BackBufferDimensions +0x18C / +0x190 into a local, as the landed 0x00B5A160 UpdateUVs does).
+ const C2DExtentsI& PeekBackBufferResolution() const { return BackBufferDimensions; }
  #endif
  const C2DExtentsI GetRenderTargetDimensions();                         // 0x009BEDC0 ?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ
  void AddDeviceResetCallback(CDeviceResetCallback* callback);          // 0x009C0190 ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z (CEngine::Initialise)

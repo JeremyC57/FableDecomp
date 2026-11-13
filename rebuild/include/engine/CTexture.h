@@ -54,6 +54,11 @@ public:
     long GetNoLevels() const;                                            // 0x009F9DF0
     void GenerateMipmaps(unsigned long filter, unsigned long level);     // 0x009F9E60
 #endif
+#if defined(FABLE_RETAIL_CTEXTURE_GENERATEMIPMAPS) && !defined(FABLE_RETAIL_CTEXTURE_LEVELS)
+    // Retail opt-in (chunk 2018, row 0x00B2B180): Ego_r.pdb ?GenerateMipmaps@CTexture@@QAEXKK@Z (Ego_r 0x00B69E50 = retail 0x009F9E60, `ret 8`;
+    // RenderToTexture passes (5, levels - 1) after rendering the mip chain). Declaration only.
+    void GenerateMipmaps(unsigned long filter, unsigned long levels);   // 0x009F9E60
+#endif
 #ifdef FABLE_RETAIL_CTEXTURE_NEXTVALIDDIMENSIONS
     // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): Ego_r.pdb 0x00B6A3C0
     //   ?GetNextValidDimensions@CTexture@@SI?AVC2DExtentsI@@ABV2@ABVCPixelFormat@@@Z (static __fastcall, hidden result; retail
@@ -76,6 +81,15 @@ public:
     bool IsValid() const { return PD3DTexture != 0; }
     IDirect3DTexture9* GetD3DTexture() const { return PD3DTexture; }
     C2DExtentsI GetDimensions(unsigned long mipmapLevel) const;
+#ifdef FABLE_RETAIL_CTEXTURE_WATERDYNAMIC
+#ifndef FABLE_RETAIL_CTEXTURE_LEVELS
+    // Opt-in (bwf2, row 0x00B72180): Ego_r.pdb / FableWin.pdb ?GetNoLevels@CTexture@@QBEJXZ (0x009F9DF0), ?GenerateMipmapsWithGPU@CTexture@@QAEXXZ
+    // (0x009FAF70) and ?GetHeight@CTexture@@QBEKK@Z (inline: GetDimensions(level).Y).
+    long GetNoLevels() const;                                            // 0x009F9DF0 (as FABLE_RETAIL_CTEXTURE_LEVELS)
+#endif
+    void GenerateMipmapsWithGPU();                                       // 0x009FAF70
+    unsigned long GetHeight(unsigned long mipmapLevel) const { return GetDimensions(mipmapLevel).Y; }
+#endif
 #ifdef FABLE_RETAIL_CTEXTURE_GETWIDTH
     // Retail opt-in (chunk Q32, row 0x009FC950): Ego_r.pdb / FableWin.pdb ?GetWidth@CTexture@@QBEKK@Z, inline in retail (the row calls
     // GetDimensions 0x009F9DB0 into a frame C2DExtentsI and reads its first word, `mov eax,[eax]`). No layout change.

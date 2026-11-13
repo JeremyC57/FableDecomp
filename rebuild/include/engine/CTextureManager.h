@@ -8,6 +8,21 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CTEXTUREMANAGER_CLASS
+// Retail opt-in (chunk 2018, row 0x00B2CB40): the polymorphic retail class (RTTI .?AVCTextureManager@@ : CBaseClassNonCopyable,
+// the out-of-line ??1CTextureManager@@UAE@XZ 0x00A6A440 the landed ~CEngineSurfaceCompositionManager 0x00B2D1B0 calls) with the
+// default constructor ??0CTextureManager@@QAE@XZ 0x00A6A360 (Ego_r.pdb / FableWin.pdb; called at 0x00B2CC16 on this+0x9D4).
+// Members opaque (0x5D4 bytes, the generated retail size).
+#include "engine/CBaseClassNonCopyable.h"
+class CTextureManager : public CBaseClassNonCopyable {
+public:
+    CTextureManager();                                       // 0x00A6A360
+    virtual ~CTextureManager();                              // 0x00A6A440
+private:
+    unsigned char Unmodeled_0x004[0x5d0];
+};
+FABLE_STATIC_ASSERT(sizeof(CTextureManager) == 0x5d4);
+#else
 
 #ifdef FABLE_RETAIL_CTEXTUREMANAGER_ALLOCATETEXTURE
 // Chunk Q28 (row 0x00A69B70 CTextureManager::AllocateTexture): CPreallocTexturePool (Ego_r.pdb 88 bytes with a 16-byte CArray; retail
@@ -79,5 +94,6 @@ FABLE_STATIC_ASSERT(offsetof(CTextureManager, PreallocPools) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CTextureManager, FailedAllocations) == 0x58c);
 FABLE_STATIC_ASSERT(offsetof(CTextureManager, BufferSize) == 0x5cc);
 FABLE_STATIC_ASSERT(offsetof(CTextureManager, TextureBuffer) == 0x5d0);
+#endif // FABLE_RETAIL_CTEXTUREMANAGER_CLASS
 
 #endif // FABLE_ENGINE_CTEXTUREMANAGER_H

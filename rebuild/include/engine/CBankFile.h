@@ -34,6 +34,11 @@ class CBankFileEntryUpdateData;
 class CDateAndTime;class CBankStateBlock;class CDataOutputStream;class CBankFileDataTypeCount;
 #endif
 
+#ifdef FABLE_RETAIL_CBANKFILE_ENTRIES
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+class CBankStateBlock;
+#endif
 class CBankFileEntryDependencies;
 class CCPPointerInfo;
 class CCharStringData;
@@ -198,6 +203,21 @@ public:
 private:
     void InitEntry(unsigned long index, const CCharString& symbol, const CCharString& filename);   // 0x009CE050 (PDB AAEXKABVCCharString@@0@Z)
 public:
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_ENTRIES
+    // Retail opt-in (chunk 2018, row 0x00B2D330 CEngineSurfaceCompositionManager::UpdateDiskCacheTexture): Ego_r.pdb
+    // ?FindIndexBySymbol@CBankFile@@QBEKABVCCharString@@@Z (Ego_r 0x00B1A780 = retail 0x009CCDC0, the landed manifest label) and
+    // ?AddEntry@CBankFile@@QAEXABVCCharString@@K0V?$CCountedPointer@VCBankStateBlock@@@@@Z (Ego_r 0x00B1BF50 = retail 0x009CD620; the
+    // bound CGraphicDataBank / CStaticMapBankFile spellings are wrong: NAME_FIXES.tsv), both out of line. Declarations only.
+    unsigned long FindIndexBySymbol(const CCharString& symbol) const;                                  // 0x009CCDC0
+    void AddEntry(const CCharString& symbol, unsigned long data_type, const CCharString& filename,
+                  CCountedPointer<CBankStateBlock> state_block);                                        // 0x009CD620
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_SETISSTATICMAP
+    // Retail opt-in (chunk 2018, row 0x00B2CB40 CEngineSurfaceCompositionManager::CEngineSurfaceCompositionManager): the one-bool
+    // `ret 4` setter 0x009D5230 under its established spelling ?SetIsStaticMap@CBankFile@@QAEX_N@Z (landed binders 0x00A42B80,
+    // 0x00A27030; no PDB name exists -- descriptive). Declaration only.
+    void SetIsStaticMap(bool is_static_map);                             // 0x009D5230
 #endif
 #ifdef FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
     // Retail opt-in (chunk 1021, row 0x00BEC680 CEngineInternalPrimitiveMeshBase::CollectStats): Ego_r.pdb
