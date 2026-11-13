@@ -4,7 +4,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00bd3070	OPEN				parked	CEnginePrimitiveManagerAnimatedMeshesBase::RenderMeshPrimitive
 0060eeb0	MATCHED_STAGED	10254	2026-11-13_acctC_c4a	C1 -> C4	parked	CTCInventoryMap::ConstructPCMapList
 00ba2350	OPEN				parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
-00b783f0	QUEUED	9343		C3 row 2	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
+00b783f0	QUEUED	9343		C6 row 3	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
 005f1b10	QUEUED	8383		C5 row 2	parked	CTCInventoryAbilities::ConstructPCMagicList
 0058578b	OPEN				parked	CTCInventory::CTCInventory::vfunc_30
@@ -14,7 +14,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b5ca70	OPEN				parked	CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer
 00651b04	MATCHED_STAGED	5126	2026-11-13_acctC_c2a	C2	parked	CDrawAbilityButtons::Draw
 00baa870	OPEN				parked	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList
-00bb3e80	IN_PROGRESS	4540	2026-11-13_acctC_c2a/open_00bb3e80	C2 -> C3: DIFFER(4540v4540), 3 real sites	parked	CEngineClothRenderer::RenderClothPrimitive
+00bb3e80	IN_PROGRESS	4540	2026-11-13_acctC_c2a/open_00bb3e80	C2 -> C3 -> C6: residue is c2 record count (dead release asserts); diagnostic sources match; C6 builds the shared assert opt-in	parked	CEngineClothRenderer::RenderClothPrimitive
 00a91640	OPEN				parked	_gapscan::sub_00a91640
 00b8b780	OPEN				parked	CEngineBillboardGenerator::RenderBillboard
 00ba5260	OPEN				parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
@@ -71,7 +71,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00678760	OPEN				parked	CPersistTraits<std::list<CReactionMatch*> >::TransferIn
 00cfe030	OPEN				parked	NScript::CQ_AwakeningTheOracleScript::COracleTablet::Main
 00b70a90	OPEN				parked	CEngineWaterRenderer::RenderEnvironmentMap
-00bb30a0	QUEUED			C3 row 3	parked	CEngineClothRenderer::Render2DClothPrimitive
+00bb30a0	QUEUED	3538		C6 row 2	parked	CEngineClothRenderer::Render2DClothPrimitive
 005ac10e	OPEN				parked	CTCInventoryTrade::ConstructActualBuyInventoryPC
 006d1e30	OPEN				parked	CTCWife::FrameUpdate
 00648820	OPEN				parked	CDrawMiniMap::Draw
