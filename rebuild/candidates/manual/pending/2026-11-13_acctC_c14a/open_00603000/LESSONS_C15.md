@@ -1,0 +1,9 @@
+# agentC15 LESSONS (one line each)
+- (0x00603000) Callee BODY visibility decides escape: with the same-TU out-of-line GetRelativePosOnMiniMap body compiled before the row, VC7.1 keeps the C2DVector out-param's values in registers across later calls (retail load-load-store-store after GetStates()[0]); a bare declaration makes it address-exposed (load/store/load/store and reloads). D 1760 -> 905.
+- (0x00603000) Same mechanism for std::find: FABLE_RETAIL_STLP_FIND_NOINLINE_BODY (visible noinline __find) lets the searched value (`creature`, &creature passed) stay in edi across __find and later calls. D 734 -> 429.
+- (0x00603000) Distinct frame words per loop counter in retail (tools/efm.py votes: one symbol mapping to 3 retail slots) = separate `for (unsigned long i ...)` declarations; on a near-final base it cut D 429 -> 113 (on a far base it looked worse).
+- (0x00603000) `T()` value-initialisation of an EMPTY POD filter class stores a zero byte (VC7.1); retail had none -> a named, default-initialised filter object.
+- (0x00603000) `x.Field = s.GetLength();` with the null-test inline stores in both arms; retail's single store after the join needs the value in a local first.
+- (0x00603000) `const CPlayerGuiDef& guiDef = PeekGuiDef(); guiDef.Map.find(..)` gives retail's `lea esi,[eax+94Ch]`; a `const map& m = PeekGuiDef().Map` reference gives `mov esi,eax ... add esi,94Ch`.
+- (0x00603000) VC7.1's inliner (tools/inl.sh) scores a site by callee cost AND a static site frequency that depends on loop SHAPE: a `for` loop containing `return` multiplies the post-loop frequency (x5 here), a `while` loop with the same bytes divides it; this flips which Reset<> sites are called.
+- (tooling) wq.sh/wig what-if forcing needs the candidate names with a leading underscore (`_this`, `_courtyard1`), else it silently forces nothing.

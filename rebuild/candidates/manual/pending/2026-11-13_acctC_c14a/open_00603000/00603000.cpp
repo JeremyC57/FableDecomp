@@ -1,5 +1,5 @@
 // CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegion& region) -- builds the mini-map marker sprites of a region
-// Grade: DIFFER(9682v9571) -- call targets = retail (303 calls; only the not-loaded-return cleanup is cross-jumped differently), block order = retail; residue = register / frame allocation from the head (retail this=ebx, region=edi in the head; ours this=edi) (agentC14)
+// Grade: DIFFER(9538v9571) -- D113 (exact) / DR88; call targets = retail (303); residue = Reset<CComponent> inline split + shape (FITTED ELSE_NULL text: retail expands the DEFAULT text but calls the interesting-marker site 0x00603838, a c2 static-frequency fact of the IsMapLoaded loop, see NOTES), traders-loop iterator/trader homes, alignment pads (agentC15)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00603000, 9,571 bytes, thiscall `ret 8`.
 // Leaf: ?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
@@ -102,6 +102,7 @@
 #define FABLE_RETAIL_CTCWIFE
 #define FABLE_RETAIL_CTCSHOP
 #define FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH
+#define FABLE_RETAIL_STLP_FIND_NOINLINE_BODY
 #define FABLE_RETAIL_CTHINGFILTER_ENEMYCREATURE_CTOR
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_ELSE_NULL
 #define FABLE_RETAIL_CVECTORMAP_INLINE_CONST_LOWERBOUND
@@ -113,6 +114,12 @@
 #define FABLE_RETAIL_CTCSHOPKEEPER_SHOP
 #define FABLE_RETAIL_CTCSHOP_AVAILABLE
 #define FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND
+#define FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE
+#define FABLE_RETAIL_C2DCOORDI_COPY
+#define FABLE_RETAIL_CMAP_WORLDACCESSORS
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_ENGINEGRAPHICS
+#define FABLE_RETAIL_CGRAPHICDATABANK_GRAPHICSIZE
+#define FABLE_RETAIL_CGRAPHICDATABANK_FRAMESIZE
 #include <string.h>
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"
@@ -171,22 +178,69 @@
 #include "engine/CTCWife.h"
 #include "engine/CTCShop.h"
 #include "engine/CTCShopKeeper.h"
+#include "engine/C3DVector.h"
+#include "engine/CMap.h"
+#include "engine/CGraphicDataBank.h"
 
 using namespace NUISystem;
+// Same-TU body (retail 0x005FBAA0, compiled before this row; landed text rebuild/src/compiled/00/5f/CTCInventoryMap_GetRelativePosOnMiniMap_005fbaa0.cpp
+// verbatim): VC7.1 then knows the C2DVector out-parameter does not escape and keeps each marker position in esi/edi across
+// AddChild (retail 0x00603AE8..0x00603B51).
+void CTCInventoryMap::GetRelativePosOnMiniMap(CRegion& region, const C3DVector& position, C2DVector& relative) const
+{
+    std::vector<long> maps = region.GetMaps();
+    C2DCoordI tl = PeekWorld().PeekWorldMap().PeekMap(maps[0]).GetWorldPosition();
+    C2DCoordI br;
+    br.X = PeekWorld().PeekWorldMap().PeekMap(maps[0]).GetWorldSizeX() + tl.X;
+    br.Y = PeekWorld().PeekWorldMap().PeekMap(maps[0]).GetWorldSizeY() + tl.Y;
+    for (unsigned int i = 1; i < maps.size(); ++i) {
+        const CMap& map = PeekWorld().PeekWorldMap().PeekMap(maps[i]);
+        if (tl.X > map.GetWorldPosition().X)
+            tl.X = map.GetWorldPosition().X;
+        long top = map.GetWorldPosition().Y;
+        if (tl.Y > top)
+            tl.Y = top;
+        if (br.X < map.GetWorldPosition().X + map.GetWorldSizeX())
+            br.X = map.GetWorldPosition().X + map.GetWorldSizeX();
+        if (br.Y < map.GetWorldSizeY() + top)
+            br.Y = map.GetWorldSizeY() + top;
+    }
+    relative.X = position.X - tl.X;
+    relative.Y = position.Y - tl.Y;
+    long width = br.X - tl.X;
+    long height = br.Y - tl.Y;
+    relative.X /= (float)width;
+    relative.Y /= (float)height;
+    float scale[2];
+    for (int k = 0; k < 2; ++k)
+        scale[k] = 1.0f;
+    if (width > height)
+        scale[1] = (float)height / (float)width;
+    else if (width < height)
+        scale[0] = (float)width / (float)height;
+    relative.X *= scale[0];
+    relative.Y *= scale[1];
+    float graphicWidth = (float)CMainGameComponent::Get()->PeekEngineGraphics().GetGraphicFrameWidth(GetMiniMapGraphic(region), 0);
+    float graphicHeight = (float)CMainGameComponent::Get()->PeekEngineGraphics().GetGraphicFrameHeight(GetMiniMapGraphic(region), 0);
+    relative.X = (relative.X * region.GetMiniMapScale() - 0.5f) * graphicWidth;
+    relative.Y = ((1.0f - relative.Y) * region.GetMiniMapScale() - 0.5f) * graphicHeight;
+    relative.X += region.GetMiniMapOffset().X * region.GetMiniMapScale();
+    relative.Y += region.GetMiniMapOffset().Y * region.GetMiniMapScale();
+}
 void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegion& region)
 {
     NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     CCountedPointer<NUISystem::CComponent> marker;
-    const std::map<CCharString, long>& miniMapGraphics = CPlayerGui::PeekGuiDef().MiniMapGraphics;
+    const CPlayerGuiDef& guiDef = CPlayerGui::PeekGuiDef();
     MiniMapIsPrisonCourtyard1 = false;
     MiniMapIsPrisonCourtyard2 = false;
     MiniMapIsHeadsmansHillNorth = false;
     MiniMapIsHeadsmansHillSouth = false;
-    std::map<CCharString, long>::const_iterator graphic = miniMapGraphics.find(region.GetMiniMapGraphic());
-    if (graphic != miniMapGraphics.end()) {
-        std::map<CCharString, long>::const_iterator courtyard1 = miniMapGraphics.find("MINIMAP_PRISONCOURTYARD1");
-        std::map<CCharString, long>::const_iterator courtyard2 = miniMapGraphics.find("MINIMAP_PRISONCOURTYARD2");
-        std::map<CCharString, long>::const_iterator executionTree = miniMapGraphics.find("MINIMAP_EXECUTIONTREE");
+    std::map<CCharString, long>::const_iterator graphic = guiDef.MiniMapGraphics.find(region.GetMiniMapGraphic());
+    if (graphic != guiDef.MiniMapGraphics.end()) {
+        std::map<CCharString, long>::const_iterator courtyard1 = guiDef.MiniMapGraphics.find("MINIMAP_PRISONCOURTYARD1");
+        std::map<CCharString, long>::const_iterator courtyard2 = guiDef.MiniMapGraphics.find("MINIMAP_PRISONCOURTYARD2");
+        std::map<CCharString, long>::const_iterator executionTree = guiDef.MiniMapGraphics.find("MINIMAP_EXECUTIONTREE");
         if (GetMiniMapGraphic(region) == (unsigned long)courtyard1->second)
             MiniMapIsPrisonCourtyard1 = true;
         else if (GetMiniMapGraphic(region) == (unsigned long)courtyard2->second) {
@@ -223,8 +277,7 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
     std::vector<long> maps = region.GetMaps();
     if (maps.empty())
         return;
-    unsigned long i;
-    for (i = 0; i < maps.size(); ++i)
+    for (unsigned long i = 0; i < maps.size(); ++i)
         if (!PeekWorld().PeekWorldMap().IsMapLoaded(maps[i]))
             return;
     for (std::vector<CUIMiniMapMarker>::iterator cached = MiniMapMarkers.begin(); cached != MiniMapMarkers.end(); ) {
@@ -245,9 +298,10 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
         parent->AddChild(marker);
     }
     // Creatures with information that are not the hero's body guards.
-    for (i = 0; i < maps.size(); ++i) {
+    for (unsigned long i = 0; i < maps.size(); ++i) {
         std::list<CThingAICreature*> creatures;
-        PeekWorld().PeekThingSearchTools().GetAllLeafThings<CThingAICreature>(GFFilter_Bind2(CThingFilter_HasInformation(), CThingFilter_InMap(PeekWorld().PeekWorldMap(), maps[i])), creatures);
+        CThingFilter_HasInformation hasInformation;
+        PeekWorld().PeekThingSearchTools().GetAllLeafThings<CThingAICreature>(GFFilter_Bind2(hasInformation, CThingFilter_InMap(PeekWorld().PeekWorldMap(), maps[i])), creatures);
         for (std::list<CThingAICreature*>::iterator it = creatures.begin(); it != creatures.end(); ++it) {
             CThingAICreature* creature = *it;
             std::vector<CThing*> followers;
@@ -270,7 +324,7 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
         }
     }
     // Teleporters.
-    for (i = 0; i < maps.size(); ++i) {
+    for (unsigned long i = 0; i < maps.size(); ++i) {
         std::list<const CThingMarker*> teleporters;
         PeekWorld().PeekThingSearchTools().GetAllLeafThings<CThingMarker>(GFFilter_Bind2(CThingFilter_HasTC(TCI_TELEPORTER), CThingFilter_InMap(PeekWorld().PeekWorldMap(), maps[i])), teleporters);
         for (std::list<const CThingMarker*>::iterator it = teleporters.begin(); it != teleporters.end(); ++it) {
@@ -288,14 +342,15 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
                 miniMapMarker.Position = position;
                 miniMapMarker.Region = PeekWorld().PeekWorldMap().GetRegionNumberFromName(region.GetName());
                 miniMapMarker.UIDefName = CCharString("UI_TELEPORT_MARKER");
-                miniMapMarker.DefNameLength = miniMapMarker.UIDefName.GetLength();
+                const long length = miniMapMarker.UIDefName.GetLength();
+                miniMapMarker.DefNameLength = length;
                 miniMapMarker.GraphicIndex = 0;
                 MiniMapMarkers.push_back(miniMapMarker);
             }
         }
     }
     // Houses owned by the hero or for sale.
-    for (i = 0; i < maps.size(); ++i) {
+    for (unsigned long i = 0; i < maps.size(); ++i) {
         std::list<const CThingBuilding*> buildings;
         PeekWorld().PeekThingSearchTools().GetAllLeafThings<CThingBuilding>(GFFilter_Bind2(CThingFilter_HasTC(TCI_BUYABLE_HOUSE), CThingFilter_InMap(PeekWorld().PeekWorldMap(), maps[i])), buildings);
         for (std::list<const CThingBuilding*>::iterator it = buildings.begin(); it != buildings.end(); ++it) {
@@ -317,7 +372,8 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
                     parent->AddChild(marker);
                     miniMapMarker.Position = position;
                     miniMapMarker.Region = PeekWorld().PeekWorldMap().GetRegionNumberFromName(region.GetName());
-                    miniMapMarker.DefNameLength = miniMapMarker.UIDefName.GetLength();
+                    const long length = miniMapMarker.UIDefName.GetLength();
+                miniMapMarker.DefNameLength = length;
                     miniMapMarker.GraphicIndex = 0;
                     MiniMapMarkers.push_back(miniMapMarker);
                 }
@@ -325,7 +381,7 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
         }
     }
     // Wives and creatures attracted to the hero.
-    for (i = 0; i < maps.size(); ++i) {
+    for (unsigned long i = 0; i < maps.size(); ++i) {
         std::vector<CThingAICreature*> wives;
         PeekWorld().PeekThingSearchTools().GetAllLeafThings<CThingAICreature>(GFFilter_Bind2(CThingFilter_HasTC(TCI_WIFE), CThingFilter_InMap(PeekWorld().PeekWorldMap(), maps[i])), wives);
         for (unsigned long j = 0; j < wives.size(); ++j) {
@@ -347,7 +403,8 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
                     parent->AddChild(marker);
                     miniMapMarker.Position = position;
                     miniMapMarker.Region = PeekWorld().PeekWorldMap().GetRegionNumberFromName(region.GetName());
-                    miniMapMarker.DefNameLength = miniMapMarker.UIDefName.GetLength();
+                    const long length = miniMapMarker.UIDefName.GetLength();
+                miniMapMarker.DefNameLength = length;
                     miniMapMarker.GraphicIndex = 0;
                     MiniMapMarkers.push_back(miniMapMarker);
                 }
@@ -356,7 +413,7 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
     }
     // Enemies of the hero (not the guild sparrows).
     if (hero && !hero->IsDead()) {
-        for (i = 0; i < maps.size(); ++i) {
+        for (unsigned long i = 0; i < maps.size(); ++i) {
             std::vector<CThingAICreature*> enemies;
             PeekWorld().PeekThingSearchTools().GetAllLeafThings<CThingAICreature>(GFFilter_Bind2(CThingFilter_EnemyCreature(*hero), CThingFilter_InMap(PeekWorld().PeekWorldMap(), maps[i])), enemies);
             for (unsigned long j = 0; j < enemies.size(); ++j) {
@@ -370,7 +427,8 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
                     miniMapMarker.Position = position;
                     miniMapMarker.Region = PeekWorld().PeekWorldMap().GetRegionNumberFromName(region.GetName());
                     miniMapMarker.UIDefName = CCharString("UI_ENEMY_MARKER");
-                    miniMapMarker.DefNameLength = miniMapMarker.UIDefName.GetLength();
+                    const long length = miniMapMarker.UIDefName.GetLength();
+                miniMapMarker.DefNameLength = length;
                     miniMapMarker.GraphicIndex = 0;
                     MiniMapMarkers.push_back(miniMapMarker);
                 }
@@ -392,14 +450,15 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
             miniMapMarker.Position = position;
             miniMapMarker.Region = PeekWorld().PeekWorldMap().GetRegionNumberFromName(region.GetName());
             miniMapMarker.UIDefName = CCharString("UI_DEMON_DOOR_MARKER");
-            miniMapMarker.DefNameLength = miniMapMarker.UIDefName.GetLength();
+            const long length = miniMapMarker.UIDefName.GetLength();
+                miniMapMarker.DefNameLength = length;
             miniMapMarker.GraphicIndex = 0;
             MiniMapMarkers.push_back(miniMapMarker);
         }
     }
     ConstructRegionExitMarkers(parent, region);
     // Traders whose shop keeper is in.
-    for (i = 0; i < maps.size(); ++i) {
+    for (unsigned long i = 0; i < maps.size(); ++i) {
         std::list<const CThingCreatureBase*> traders;
         PeekWorld().PeekThingSearchTools().GetAllThings<CThingCreatureBase>(GFFilter_Bind2(CThingFilter_HasTC(TCI_SHOP_KEEPER), CThingFilter_InMap(PeekWorld().PeekWorldMap(), maps[i])), traders);
         for (std::list<const CThingCreatureBase*>::iterator it = traders.begin(); it != traders.end(); ++it) {
@@ -416,7 +475,8 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
                 miniMapMarker.Position = position;
                 miniMapMarker.Region = PeekWorld().PeekWorldMap().GetRegionNumberFromName(region.GetName());
                 miniMapMarker.UIDefName = CCharString("UI_TRADER_MARKER");
-                miniMapMarker.DefNameLength = miniMapMarker.UIDefName.GetLength();
+                const long length = miniMapMarker.UIDefName.GetLength();
+                miniMapMarker.DefNameLength = length;
                 miniMapMarker.GraphicIndex = 0;
                 MiniMapMarkers.push_back(miniMapMarker);
             }
@@ -465,7 +525,8 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
             miniMapMarker.Position = position;
             miniMapMarker.Region = PeekWorld().PeekWorldMap().GetRegionNumberFromName(region.GetName());
             miniMapMarker.UIDefName = CCharString("UI_HENCHMAN_MARKER");
-            miniMapMarker.DefNameLength = miniMapMarker.UIDefName.GetLength();
+            const long length = miniMapMarker.UIDefName.GetLength();
+                miniMapMarker.DefNameLength = length;
             miniMapMarker.GraphicIndex = 0;
             MiniMapMarkers.push_back(miniMapMarker);
         }
