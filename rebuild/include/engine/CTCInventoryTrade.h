@@ -134,12 +134,6 @@ public:
     bool ConstructSellActionsListPC(NUISystem::CComponent* parent, long itemDefIndex, long count, bool dynamically);  // 0x005A731F
     bool ConstructBuyActionsListPC(NUISystem::CComponent* parent, long itemDefIndex, long count, bool dynamically);   // 0x005A79E6
 #endif
-#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_TRADEDESCRIPTION_B
-    // Retail opt-in (bwf1, row 0x005A9CBE): Ego_r.pdb (0x0060D3CD) + FableWin.pdb (0x023283BC)
-    // ?ConstructTradeDescriptionWeapon@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z. Declaration only.
-public:
-    NUISystem::CComponent* ConstructTradeDescriptionWeapon(long itemDefIndex, unsigned long unused, bool selling, bool brief);   // 0x005A9CBE
-#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYTRADE_SUBTITLES
     // Retail opt-in (row 0x005A04F7 ConstructNormalShopList): Ego_r.pdb / FableWin.pdb
     // ?ConstructSubtitles@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@...@Z
@@ -164,7 +158,7 @@ public:
     bool AddBuyItemToList(long itemDefIndex, long count, NUISystem::CList* list, NUISystem::CViewport* viewport, bool addToTop);   // 0x0059FEE3
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYTRADE_TRADEDESCRIPTION
-    // Retail opt-in (bwf2, row 0x005AAF28): Ego_r.pdb + FableWin.pdb
+    // Retail opt-in (bwf2, row 0x005AAF28; bwf1, row 0x005A9CBE): Ego_r.pdb + FableWin.pdb
     // ?ConstructTradeDescription@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z (0x005AD571) and its Weapon (0x005A9CBE) /
     // Clothing (0x005AAF28) forms, same signature. Public, declarations only.
 public:
@@ -248,15 +242,15 @@ public:
     virtual bool IsInventoryScreen() const;
 #endif // FABLE_RETAIL_CTCINVENTORYTRADE_HISCREEN
 };
-FABLE_STATIC_ASSERT(sizeof(CTCInventoryTrade) == 0x230);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, NotInStock) == 0x140);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, ItemsToBuy) == 0x144);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, BuyListsByCategory) == 0x18c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotSpecialItemsToBuy) == 0x1f8);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, SpecialItemString) == 0x1fc);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, ItemBuyLists) == 0x200);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, PTop_Level_List) == 0x220);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, PCurrentOpenTradeMenu) == 0x224);
+FABLE_STATIC_ASSERT_AT(251, sizeof(CTCInventoryTrade) == 0x230);
+FABLE_STATIC_ASSERT_AT(252, offsetof(CTCInventoryTrade, NotInStock) == 0x140);
+FABLE_STATIC_ASSERT_AT(253, offsetof(CTCInventoryTrade, ItemsToBuy) == 0x144);
+FABLE_STATIC_ASSERT_AT(254, offsetof(CTCInventoryTrade, BuyListsByCategory) == 0x18c);
+FABLE_STATIC_ASSERT_AT(255, offsetof(CTCInventoryTrade, TotSpecialItemsToBuy) == 0x1f8);
+FABLE_STATIC_ASSERT_AT(256, offsetof(CTCInventoryTrade, SpecialItemString) == 0x1fc);
+FABLE_STATIC_ASSERT_AT(257, offsetof(CTCInventoryTrade, ItemBuyLists) == 0x200);
+FABLE_STATIC_ASSERT_AT(258, offsetof(CTCInventoryTrade, PTop_Level_List) == 0x220);
+FABLE_STATIC_ASSERT_AT(259, offsetof(CTCInventoryTrade, PCurrentOpenTradeMenu) == 0x224);
 #endif // FABLE_ENGINE_CTCINVENTORYTRADE_RETAIL_H
 #else // generated flattened default (unchanged)
 #ifndef FABLE_ENGINE_CTCINVENTORYTRADE_H
@@ -393,47 +387,47 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCInventoryTrade) == 0x230);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TradeAnimPrimitiveHandles) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, NotInStock) == 0x140);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, ItemsToBuy) == 0x144);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, ItemsToSell) == 0x150);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, IsShoppingValid) == 0x15c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, CategoryCount) == 0x160);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, ItemSellCount) == 0x164);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, ItemBuyCount) == 0x168);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, ItemSellUniqueCount) == 0x16c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, CategoryIdent) == 0x170);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, PreviousScreenType) == 0x174);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, WarningNeeded) == 0x178);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TrophyUseNeeded) == 0x17c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, SellListsByCategory) == 0x180);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, BuyListsByCategory) == 0x18c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, WantedListsByCategory) == 0x198);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, SpecialItemsToDelete) == 0x1a4);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, NumBuyableThings) == 0x1b0);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, NumSellableThings) == 0x1bc);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, NumWantedThings) == 0x1c8);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotNumClothesToSell) == 0x1d4);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotNumWeaponsToSell) == 0x1d8);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotNumItemsToSell) == 0x1dc);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotNumClothesToBuy) == 0x1e0);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotNumWeaponsToBuy) == 0x1e4);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotNumItemsToBuy) == 0x1e8);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotNumClothesWanted) == 0x1ec);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotNumWeaponsWanted) == 0x1f0);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotNumItemsWanted) == 0x1f4);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotSpecialItemsToBuy) == 0x1f8);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, SpecialItemString_PStringData) == 0x1fc);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, ItemBuyLists) == 0x200);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, ItemSellLists) == 0x20c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, InventoryTradeOpen) == 0x218);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, InventoryTradeInitialised) == 0x219);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, PMouse_Pointer) == 0x21c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, PTop_Level_List) == 0x220);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, PCurrentOpenTradeMenu) == 0x224);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, AccumFadeTime) == 0x228);
+FABLE_STATIC_ASSERT_AT(396, sizeof(CTCInventoryTrade) == 0x230);
+FABLE_STATIC_ASSERT_AT(397, offsetof(CTCInventoryTrade, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(398, offsetof(CTCInventoryTrade, TradeAnimPrimitiveHandles) == 0x134);
+FABLE_STATIC_ASSERT_AT(399, offsetof(CTCInventoryTrade, NotInStock) == 0x140);
+FABLE_STATIC_ASSERT_AT(400, offsetof(CTCInventoryTrade, ItemsToBuy) == 0x144);
+FABLE_STATIC_ASSERT_AT(401, offsetof(CTCInventoryTrade, ItemsToSell) == 0x150);
+FABLE_STATIC_ASSERT_AT(402, offsetof(CTCInventoryTrade, IsShoppingValid) == 0x15c);
+FABLE_STATIC_ASSERT_AT(403, offsetof(CTCInventoryTrade, CategoryCount) == 0x160);
+FABLE_STATIC_ASSERT_AT(404, offsetof(CTCInventoryTrade, ItemSellCount) == 0x164);
+FABLE_STATIC_ASSERT_AT(405, offsetof(CTCInventoryTrade, ItemBuyCount) == 0x168);
+FABLE_STATIC_ASSERT_AT(406, offsetof(CTCInventoryTrade, ItemSellUniqueCount) == 0x16c);
+FABLE_STATIC_ASSERT_AT(407, offsetof(CTCInventoryTrade, CategoryIdent) == 0x170);
+FABLE_STATIC_ASSERT_AT(408, offsetof(CTCInventoryTrade, PreviousScreenType) == 0x174);
+FABLE_STATIC_ASSERT_AT(409, offsetof(CTCInventoryTrade, WarningNeeded) == 0x178);
+FABLE_STATIC_ASSERT_AT(410, offsetof(CTCInventoryTrade, TrophyUseNeeded) == 0x17c);
+FABLE_STATIC_ASSERT_AT(411, offsetof(CTCInventoryTrade, SellListsByCategory) == 0x180);
+FABLE_STATIC_ASSERT_AT(412, offsetof(CTCInventoryTrade, BuyListsByCategory) == 0x18c);
+FABLE_STATIC_ASSERT_AT(413, offsetof(CTCInventoryTrade, WantedListsByCategory) == 0x198);
+FABLE_STATIC_ASSERT_AT(414, offsetof(CTCInventoryTrade, SpecialItemsToDelete) == 0x1a4);
+FABLE_STATIC_ASSERT_AT(415, offsetof(CTCInventoryTrade, NumBuyableThings) == 0x1b0);
+FABLE_STATIC_ASSERT_AT(416, offsetof(CTCInventoryTrade, NumSellableThings) == 0x1bc);
+FABLE_STATIC_ASSERT_AT(417, offsetof(CTCInventoryTrade, NumWantedThings) == 0x1c8);
+FABLE_STATIC_ASSERT_AT(418, offsetof(CTCInventoryTrade, TotNumClothesToSell) == 0x1d4);
+FABLE_STATIC_ASSERT_AT(419, offsetof(CTCInventoryTrade, TotNumWeaponsToSell) == 0x1d8);
+FABLE_STATIC_ASSERT_AT(420, offsetof(CTCInventoryTrade, TotNumItemsToSell) == 0x1dc);
+FABLE_STATIC_ASSERT_AT(421, offsetof(CTCInventoryTrade, TotNumClothesToBuy) == 0x1e0);
+FABLE_STATIC_ASSERT_AT(422, offsetof(CTCInventoryTrade, TotNumWeaponsToBuy) == 0x1e4);
+FABLE_STATIC_ASSERT_AT(423, offsetof(CTCInventoryTrade, TotNumItemsToBuy) == 0x1e8);
+FABLE_STATIC_ASSERT_AT(424, offsetof(CTCInventoryTrade, TotNumClothesWanted) == 0x1ec);
+FABLE_STATIC_ASSERT_AT(425, offsetof(CTCInventoryTrade, TotNumWeaponsWanted) == 0x1f0);
+FABLE_STATIC_ASSERT_AT(426, offsetof(CTCInventoryTrade, TotNumItemsWanted) == 0x1f4);
+FABLE_STATIC_ASSERT_AT(427, offsetof(CTCInventoryTrade, TotSpecialItemsToBuy) == 0x1f8);
+FABLE_STATIC_ASSERT_AT(428, offsetof(CTCInventoryTrade, SpecialItemString_PStringData) == 0x1fc);
+FABLE_STATIC_ASSERT_AT(429, offsetof(CTCInventoryTrade, ItemBuyLists) == 0x200);
+FABLE_STATIC_ASSERT_AT(430, offsetof(CTCInventoryTrade, ItemSellLists) == 0x20c);
+FABLE_STATIC_ASSERT_AT(431, offsetof(CTCInventoryTrade, InventoryTradeOpen) == 0x218);
+FABLE_STATIC_ASSERT_AT(432, offsetof(CTCInventoryTrade, InventoryTradeInitialised) == 0x219);
+FABLE_STATIC_ASSERT_AT(433, offsetof(CTCInventoryTrade, PMouse_Pointer) == 0x21c);
+FABLE_STATIC_ASSERT_AT(434, offsetof(CTCInventoryTrade, PTop_Level_List) == 0x220);
+FABLE_STATIC_ASSERT_AT(435, offsetof(CTCInventoryTrade, PCurrentOpenTradeMenu) == 0x224);
+FABLE_STATIC_ASSERT_AT(436, offsetof(CTCInventoryTrade, AccumFadeTime) == 0x228);
 
 #endif // FABLE_ENGINE_CTCINVENTORYTRADE_H
 #endif // FABLE_RETAIL_CTCINVENTORYTRADE

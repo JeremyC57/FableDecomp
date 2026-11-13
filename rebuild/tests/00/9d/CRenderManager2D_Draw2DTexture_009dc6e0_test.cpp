@@ -6,7 +6,7 @@
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 class CRGBColour { public:
     unsigned char B, G, R, A;
-    unsigned long GetD3DCOLOR() const { return (((((unsigned long)A << 8) | R) << 8 | G) << 8) | B; }
+    unsigned char GetR() const { return R; } unsigned char GetG() const { return G; } unsigned char GetB() const { return B; } unsigned char GetA() const { return A; }
 };
 class CTexture { public: int Tag; };
 static float g_ScreenRHW = 0.25f;
@@ -46,7 +46,7 @@ class CRenderManager2D { public:
     }
     bool Draw2DTexture(const C2DBoxF& box, const CRGBColour& colour, CTexture& texture, unsigned long flags)
     {
-        unsigned long argb = colour.GetD3DCOLOR();
+        unsigned long argb = ((unsigned long)colour.GetA() << 24) | ((unsigned long)colour.GetR() << 16) | ((unsigned long)colour.GetG() << 8) | colour.GetB();
         C2DBoxF screen;
         GFVBoxToABox(box, screen);
         CTVertexRHWColSpecTex1 v[4];

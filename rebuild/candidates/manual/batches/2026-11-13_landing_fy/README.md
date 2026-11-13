@@ -34,6 +34,9 @@ of a row that then failed (removed in 1dc81baa0). Lesson: the gates need the who
 (`pending/2026-11-13_acctB_parked/`, merge work kept in the lane folders) until that helper has evidence or the rows are respelled.
 
 ## Review items carried forward
+**All but one closed in landing fz (`../2026-11-13_landing_fz/README.md`); the MULTIPLYNOTRANSLATION body waits for the owner. The proof
+below normalised the static-assert typedef names; landing fz found that those names can matter and reran it exactly.**
+
 - **`_B` opt-in names (26 in the headers).** The driver renamed an incoming opt-in whenever this branch already used the name. Most are
   plain aliases (`#if defined(X) || defined(X_B)`); respell those rows to `X` and drop the alias. Three select different content and
   need descriptive names: C3DVECTOR_MAGNITUDE2D_B (two-statement body), CAISTATEGROUP_JACKDRAGON_B / _B2 (extra declarations),

@@ -26,6 +26,10 @@ blocked acctB rows and fragments are not in the list.
   as a small diff or as (old text, new text) pairs per header, never as a whole-file copy of a header.
 - **Never reuse an opt-in name that exists on `FullDecomp` for different content**, and never edit the body of an opt-in a landed row
   uses. To serve two rows from one existing line, extend its condition (`#if defined(A) || defined(B)`).
+- **A header edit must not move a `FABLE_STATIC_ASSERT`** without pinning it: the macro names its typedef after `__LINE__`, and VC7.1's
+  stack-slot order in a few rows depends on those names (landing fz). After editing a header run `lane_merge/pin_asserts.py` (it
+  respells moved asserts `FABLE_STATIC_ASSERT_AT(<old line>, ...)`), then the exact `equiv_check.py` and `recheck_rows.py`; the
+  steps are in `lane_merge/README.md`.
 - **If a class already has a shared header, use it** (add what the row needs as an opt-in); do not write a second header or a local
   model of the class.
 - **Prove header changes over the whole tree** before handing back: `lane_merge/equiv_check.py <include tree before> <include tree

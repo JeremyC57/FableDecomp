@@ -92,7 +92,7 @@ private:
 }
 #endif
 class CQuestManager : public CTBaseSingletonNoDefaultAlloc<CQuestManager> {
-#ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE_B
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE_CONTEXT
 public:
     // Opt-in (chunk 2052, row 0x0049F4C0 CWorld::SaveGameStateInternal): Ego_r.pdb ?SaveGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z,
     // out of line at 0x004B64E0 (called on [0x013B89FC], the singleton). Declaration only.

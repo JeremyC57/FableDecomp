@@ -22,12 +22,10 @@
 #ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
 #include "engine/GFAngles.h"
 #endif
-#if (defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B)) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
-// (FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B: chunk 2029 opt-in, the same GFFastSqrt / GetMagnitude2D pair as UPDATE_NEAREST_INTERESTING
-// without the rest of that row set; see GetMagnitude2D below.)
-#ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B
+#if (defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D)) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+// (FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D: the GFFastSqrt / GetMagnitude2D pair of UPDATE_NEAREST_INTERESTING without the rest of that
+// row set; see GetMagnitude2D below.)
 #include "rebuild_abi.h"
-#endif
 inline float FABLE_FASTCALL GFFastSqrt(float value){return sqrt(value);}
 #endif
 #include "engine/C2DCoordI.h"
@@ -319,16 +317,17 @@ public:
 #else
     FABLE_VECTOR_INLINE float GetMagnitude()const{return (float)sqrt(GetSquaredMagnitude());}
 #endif
-#if (defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B)) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+#if (defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || (defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && !defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ONE_EXPRESSION))) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
     // Original FableWin01d9faa0 GetMagnitude2D, calls single-precision sqrt helper.
-    // (Chunk 2029, row 0x00915B60: FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B selects this body alone; FableWin.pdb ?GetMagnitude2D@C3DVector@@QBEMXZ,
-    // no Ego_r.pdb or Fable.exe copy: inline in release. 0x00915D8F..0x00915DA3 squares X then adds Y squared, then fsqrt.)
+    // (FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D selects this body alone: row 0x009711D0 and the chunk 2029 rows 0x00915B60 / 0x0094E7B0 /
+    // 0x0097BDA0. FableWin.pdb ?GetMagnitude2D@C3DVector@@QBEMXZ, no Ego_r.pdb or Fable.exe copy: inline in release. 0x00915D8F..0x00915DA3
+    // squares X, adds Y squared, then fsqrt.)
     inline float GetMagnitude2D()const {float squared=X*X;squared+=Y*Y;return GFFastSqrt(squared);}
 #endif
-#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && !defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
-    // Retail opt-in (chunk Q9, row 0x0092ACE0 CAIStateGroup_ApprenticeHero::GoToLibrary): the same FableWin.pdb
-    // ?GetMagnitude2D@C3DVector@@QBEMXZ body as the FABLE_RETAIL_UPDATE_NEAREST_INTERESTING branch above, without that opt-in's
-    // CThingCreatureBase / CTCTargetingBase / C2DBoxI changes. Body only: default path unchanged.
+#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ONE_EXPRESSION) && !defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+    // FITTED variant (chunk Q9, row 0x0092ACE0 CAIStateGroup_ApprenticeHero::GoToLibrary, its only user): the sum as one expression. With the
+    // two-statement body above -- the one every other row matches with -- that row differs at the same size (389 v 389, graded 2026-11-13).
+    // One retail inline has one body, so the open question is that row's own spelling of `direction /= direction.GetMagnitude2D()`.
     inline float GetMagnitude2D()const {return GFFastSqrt(X*X+Y*Y);}
 #endif
     inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }
@@ -403,8 +402,7 @@ public:
     // static __fastcall, out of line in retail at 0x00A146C0 (hidden result in ecx, seed in edx). A declaration only.
     static C3DVector __fastcall GetRandomPointWithinUnitSphere(unsigned long* seed);   // 0x00A146C0
 #endif
-#if defined(FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES) || defined(FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES_B)
-    // (FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES_B: w22 agent2042 row 0x007F2DC0 CTCLightningNode::FrameUpdate, the same declaration.)
+#ifdef FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES
     // Retail opt-in (chunk Q18, row 0x00837220 CThingTrackNode::UpdateFacingDirection): Ego_r.pdb ?Rotate@C3DVector@@QAEXMM@Z, out of
     // line in retail at 0x00A14260 (landed; thiscall, two floats, `ret 8`). A declaration only.
     void Rotate(float angle_xy, float angle_yz);                         // 0x00A14260
@@ -494,7 +492,7 @@ public:
 #endif
     C3DVector& AccurateNormalise();
     void Rotate(const C3DVector&,float);
-#if (defined(FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES) || defined(FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES_B)) && !defined(FABLE_RETAIL_C3DVECTOR)
+#if defined(FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES) && !defined(FABLE_RETAIL_C3DVECTOR)
     // (FABLE_RETAIL_C3DVECTOR declares the same member in its own ROTATE_ANGLES block above.)
     // Retail opt-in (w22 agent2022, row 0x007D3820 CTCTavernGameCoinGolf::ProcessInput, whose TU also holds GetCamera 0x007D3560):
     // Ego_r.pdb / FableWin.pdb ?Rotate@C3DVector@@QAEXMM@Z, out of line in retail at 0x00A14260 (the bound spelling; GetCamera calls

@@ -47,7 +47,7 @@ class CScriptThing; class CDefString;                           // plan phase 6:
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
 // FableWin GetTC<T> debug instantiations name this checked-cast template;
 // the release path is the identity-adjusted static cast observed in native lookups.
-template<class From,class To> inline To __fastcall GFDebugPDynamicCast(From value,To) { return static_cast<To>(value); }
+#include "engine/GFDebugPDynamicCast.h"
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
 // Original donor024CFED8 instantiates this checked cast; debug checks vanish in retail.
 template<class From,class To> inline To* FABLE_FASTCALL GFDebugDynamicCast(From* value,To*) { return static_cast<To*>(value); }

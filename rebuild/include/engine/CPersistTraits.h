@@ -141,7 +141,7 @@ template<> inline void CPersistTraits<C2DVector>::TransferBinaryIn(CMemoryDataIn
     val=is.Read2DVector();
 }
 #endif
-#ifdef FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS_B
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS_CONST_DEFAULTVAL
 // Retail opt-in (chunk 4004, row 0x00F2D6E0 CScriptDef::Transfer): CPersistTraits<float> as the explicit class specialisation it is
 // in retail -- Ego_r.pdb / FableWin.pdb ?TransferBinaryOut@?$CPersistTraits@M@@QAEXAAVCDataOutputStream@@ABM@Z takes `const float&`
 // where the generic member takes T by value (like the bool specialisation below), and both PDBs name its user constructor and
@@ -153,7 +153,7 @@ template<> inline void CPersistTraits<C2DVector>::TransferBinaryIn(CMemoryDataIn
 // definitions and a virtual destructor all give 48; tools/w6.sh probes w8 / w10). The PDB layout dump carries no qualifiers.
 // Do not combine with FABLE_RETAIL_CPERSISTTRAITS_FLOAT_TRANSFERIN_BODY (a member specialisation of the generic class).
 #ifdef FABLE_RETAIL_CPERSISTTRAITS_FLOAT_TRANSFERIN_BODY
-#error FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS_B and FABLE_RETAIL_CPERSISTTRAITS_FLOAT_TRANSFERIN_BODY are exclusive
+#error FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS_CONST_DEFAULTVAL and FABLE_RETAIL_CPERSISTTRAITS_FLOAT_TRANSFERIN_BODY are exclusive
 #endif
 template<> class CPersistTraits<float> {
 public:

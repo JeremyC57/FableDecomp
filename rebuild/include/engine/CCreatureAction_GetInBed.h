@@ -8,7 +8,7 @@
 // the constructor is inline in the class header and that TU calls it. Members Ego_r.pdb (+0xC = retail - the base shrink): PBed +0xA8,
 // AnimGroup +0xB0, SleepAnimName +0xB4, BedGetInAnim +0xB8, BedSleepAnim +0xBC. The destructor is implicit (retail destroys a temporary
 // inline: ~CCharString +0xB4 / +0xB0, ~CBaseIntelligentPointer +0xA8, ~CCreatureActionBase, 0x0092DE2B..0x0092DE53).
-// Needs the retail CCreatureActionBase (+ FABLE_RETAIL_CCREATUREACTIONBASE_ANIMCTOR_B), CIntelligentPointer, CAnimationEntry, CDefString.
+// Needs the retail CCreatureActionBase (+ FABLE_RETAIL_CCREATUREACTIONBASE_ANIMCTOR), CIntelligentPointer, CAnimationEntry, CDefString.
 #include "rebuild_abi.h"
 #include "fable_string.h"
 #include "engine/CCreatureActionBase.h"

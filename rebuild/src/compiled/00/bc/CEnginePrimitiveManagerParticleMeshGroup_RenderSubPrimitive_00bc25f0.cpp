@@ -112,13 +112,13 @@ extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;                    
 extern CEngineLightingManager* g_pEngineLightingManager;                               // 0x01436E9C
 extern CEngineScreenEffectDisplacementRenderer* g_pDisplacementRenderer_01436e38;      // 0x01436E38
 extern CEngineCamera* g_pEngineCamera;                                                 // 0x01436EA0
-extern long g_particleMeshRenderEnabled_0139b7b0;                                      // 0x0139B7B0 (descriptive)
-extern long g_particleMeshBlendOpEnabled_0139b7ac;                                     // 0x0139B7AC (descriptive)
-extern long g_particleMeshBlendModeEnabled_0139b7a8;                                   // 0x0139B7A8 (descriptive)
-extern long g_particleMeshBatchDrawEnabled_0139b7a4;                                   // 0x0139B7A4 (descriptive)
-extern long g_particleMeshTailDrawEnabled_0139b7a0;                                    // 0x0139B7A0 (descriptive)
+extern long g_particleMeshRenderEnabled;                                      // 0x0139B7B0 (descriptive)
+extern long g_particleMeshBlendOpEnabled;                                     // 0x0139B7AC (descriptive)
+extern long g_particleMeshBlendModeEnabled;                                   // 0x0139B7A8 (descriptive)
+extern long g_particleMeshBatchDrawEnabled;                                   // 0x0139B7A4 (descriptive)
+extern long g_particleMeshTailDrawEnabled;                                    // 0x0139B7A0 (descriptive)
 
-template<class From,class To> inline To __fastcall GFDebugPDynamicCast(From value,To) { return static_cast<To>(value); }
+#include "engine/GFDebugPDynamicCast.h"
 
 inline bool __fastcall CEnginePrimitiveManager::GetBlockOnLoad()
 {
@@ -170,7 +170,7 @@ FABLE_FORCEINLINE bool CEnginePrimitiveRenderUtil::SetupAlphaBlendingStatesFromB
 
 void CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive(CEngineSubPrimitiveBase& sub, ERenderPassType pass)
 {
-    if (!g_particleMeshRenderEnabled_0139b7b0)
+    if (!g_particleMeshRenderEnabled)
         return;
     CEngineInternalPrimitiveParticleMeshGroup* group = (CEngineInternalPrimitiveParticleMeshGroup*)sub.GetParentBase();
     CCountedPointer<const C3DMesh2> mesh;
@@ -205,10 +205,10 @@ void CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive(CEngineSubPrim
         NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(3, view.E13, view.E23, view.E33, view.E43);
     } else {
         ApplyMeshPointLightVertexShader(group_manager->SetUpPointLights());
-        if (g_particleMeshBlendOpEnabled_0139b7ac)
+        if (g_particleMeshBlendOpEnabled)
             SetupBlendOpState(group->BlendOp);
         bool additive = false;
-        if (g_particleMeshBlendModeEnabled_0139b7a8)
+        if (g_particleMeshBlendModeEnabled)
             additive = SetupAlphaBlendingStatesFromBlendMode(group->BlendMode);
         if (additive)
             group_manager->SetupPixelShader(0, PixelShaderAdditiveAlphaStipple, PixelShaderAdditiveAlpha);
@@ -271,7 +271,7 @@ void CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive(CEngineSubPrim
                 NEngineInternal::GPShaderRenderManager->SetWorldTransform(group->WorldTransform);
                 NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstants(5, batch_size * 4, &ConstantBlock[0].X);
                 NEngineInternal::GPShaderRenderManager->PrepareForRender(0x11);
-                if (g_particleMeshBatchDrawEnabled_0139b7a4)
+                if (g_particleMeshBatchDrawEnabled)
                     NEngineInternal::GPRenderManager->DrawCurrentBuffersAsIndexedTris(0, batch_vertices, 0, batch_triangles);
                 count = 0;
             }
@@ -281,7 +281,7 @@ void CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive(CEngineSubPrim
             unsigned long meshes = count / 4;
             NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstants(5, meshes * 4, &ConstantBlock[0].X);
             NEngineInternal::GPShaderRenderManager->PrepareForRender(0x11);
-            if (g_particleMeshTailDrawEnabled_0139b7a0)
+            if (g_particleMeshTailDrawEnabled)
                 NEngineInternal::GPRenderManager->DrawCurrentBuffersAsIndexedTris(0, primitive->GetVertexCount() * meshes, 0,
                                                                                  primitive->GetTriangleCount() * meshes);
         }

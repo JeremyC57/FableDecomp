@@ -94,8 +94,8 @@ extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;                    
 extern CEngineLightingManager* g_pEngineLightingManager;                               // 0x01436E9C
 
 // FableWin.pdb ??$GFDebugPDynamicCast@PAVCEnginePrimitiveManager@@PAVCEnginePrimitiveManagerParticleGroup@@@@YI... (this TU's COMDAT list): the
-// release path is the plain static cast (the text engine/CThing.h and the landed rows define).
-template<class From,class To> inline To __fastcall GFDebugPDynamicCast(From value,To) { return static_cast<To>(value); }
+// release path is the plain static cast (shared definition, engine/GFDebugPDynamicCast.h).
+#include "engine/GFDebugPDynamicCast.h"
 
 // The engine/CEnginePrimitiveRenderUtil.h opt-in declares these FableWin.pdb members and leaves the bodies to the including row (no retail copy):
 // blend op 1 / 2 / other -> D3DBLENDOP_SUBTRACT / REVSUBTRACT / ADD (0x00BB9166..0x00BB91E6); blend mode 3 (ONE, ONE) and 4 (ONE, INVSRCCOLOR)

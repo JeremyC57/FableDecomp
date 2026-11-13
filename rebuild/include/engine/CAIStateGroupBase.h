@@ -35,7 +35,7 @@ enum EAIStateGroupType;                                                  // MS f
 enum EAIActionReturn;                                                    // MS forward enum (chunk 754: AIAction_DoNothing's return type)
 #endif
 enum EScriptAIPriority;                                                  // MS forward enum (the row defines the enumerators it uses)
-#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD_B
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD_YELL
 class C3DVector;
 #endif
 #if defined(FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS)
@@ -83,24 +83,18 @@ protected:
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat,C3DVector,bool&,EMovementType,bool,bool,const CThing*,bool,float);
     EAIActionReturn AIAction_LookAtPos(EAIActionRepeat,C3DVector,long,float);
 #endif
-#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY)
-    // Nested opt-in (chunk Q11, row 0x00940960 CAIStateGroup_VillageTaskHorn::Update): Ego_r.pdb
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+    // Opt-in (chunk Q11, row 0x00940960 CAIStateGroup_VillageTaskHorn::Update; chunk 2023, row 0x0094C050 CAIStateGroup_SellToBuyer::Update,
+    // where the by-value C3DVector and float are built in a 0x10-byte argument block, 0x0094C342): Ego_r.pdb / FableWin.pdb
     // ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
-    // (protected; retail 0x0097E890), declaration only.
-    EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat,C3DVector,float,bool&,EMovementType,bool,bool,bool,const CThing*,bool,float);
-#endif
-    EAIActionReturn AIAction_DoNothing();                                // 0x0097E200
-#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY_B
-    // Nested opt-in (chunk 2023, row 0x0094C050 CAIStateGroup_SellToBuyer::Update): Ego_r.pdb / FableWin.pdb
-    // ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
-    // (protected), out of line in retail at 0x0097E890 (a by-value C3DVector and float built in a 0x10-byte argument block, 0x0094C342).
-    // Needs FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS (the forward enums). Declaration only.
+    // (protected; retail 0x0097E890), declaration only. Needs the forward enums (FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS or _AIACTIONS).
     EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat repeat, class C3DVector position, float proximity, bool& reached,
         EMovementType movement, bool, bool, bool, const CThing* thing, bool, float);   // 0x0097E890
 #endif
-#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FILTER
+    EAIActionReturn AIAction_DoNothing();                                // 0x0097E200
+#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_FILTER) || defined(FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD)
 public:
-    // Nested opt-in (chunk 2029, row 0x00915B60 CAIStateGroup_MoveGoodsBase::PlaceGoods): the nested filter class of Ego_r.pdb /
+    // Opt-in (chunk 2029, row 0x00915B60 CAIStateGroup_MoveGoodsBase::PlaceGoods; wf11, row 0x009810B0): the nested filter class of Ego_r.pdb /
     // FableWin.pdb ??0CAIFilterBase@CAIStateGroupBase@@QAE@XZ, ??1CAIFilterBase@CAIStateGroupBase@@QAE@XZ (non-virtual) and
     // ??RCAIFilterBase@CAIStateGroupBase@@UBE_NXZ (virtual, vtable slot 0: retail `mov edx,[ebx] ; call [edx]`, 0x00915CB5), and
     // ?AIAction_MoveToPreCalcRoute@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCThing@@AA_NW4EMovementType@@ABVCAIFilterBase@1@_N@Z
@@ -108,10 +102,12 @@ public:
     // FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS (the forward enums).
     class CAIFilterBase {
     public:
-        CAIFilterBase();
-        ~CAIFilterBase();
+        CAIFilterBase() { }                      // inline: declared only, row 0x009810B0 (which builds a derived filter) is 541 v 521
+        ~CAIFilterBase() { }
         virtual bool operator()() const;
     };
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FILTER
 protected:
     EAIActionReturn AIAction_MoveToPreCalcRoute(const CThing& thing, bool& reached, EMovementType movement, const CAIFilterBase& filter,
         bool b);                                                         // 0x0097F690
@@ -206,28 +202,20 @@ protected:
 protected:
     // Nested opt-in (wf17, row 0x00958840 CAIStateGroup_MinionReactToCrime::Update): Ego_r.pdb
     // ?AIAction_FindAGuardAndYellForHelp@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@VC3DVector@@K_N@Z (protected), out of line at 0x0097FEA0.
+    // (Chunk 2015, row 0x0097FEA0 itself uses the same opt-in: Ego_r donor 0x0084B160 between AIAction_RunAwayFrom 0x0084AE40 and
+    // AIAction_FleeToThingProximity 0x0084B800 = retail 0x0097FBE0 / 0x0097FEA0 / 0x009804A0, `ret 14h`.)
     EAIActionReturn AIAction_FindAGuardAndYellForHelp(C3DVector pos, unsigned long deedHandle, bool yell);   // 0x0097FEA0
 public:
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD
-    // Opt-in (wf11, row 0x009810B0): Ego_r.pdb / FableWin.pdb nested ?CAIFilterBase@CAIStateGroupBase@@ (vptr only; the
-    // filter test is the virtual operator() const) and the protected members
+    // Opt-in (wf11, row 0x009810B0): the protected members (the nested CAIFilterBase is the one model above)
     // ?AIAction_FleeToThingProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@V?$CIntelligentPointer@$$CBVCThingCreatureBase@@@@MABVCCreatureActionBase@@ABVCAIFilterBase@1@@Z (0x009804A0)
     // and ?AIAction_FindAGuardAndGiveMessage@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@V?$CDefPointer@$$CBVCMessageEventDef@@@@VC3DVector@@J@Z (0x009810B0).
-public:
-    class CAIFilterBase { public: virtual bool operator()() const = 0; };
 protected:
     EAIActionReturn AIAction_FleeToThingProximity(CIntelligentPointer<const class CThingCreatureBase> thing, float proximity,
         const class CCreatureActionBase& action, const CAIFilterBase& filter);   // 0x009804A0
     EAIActionReturn AIAction_FindAGuardAndGiveMessage(CDefPointer<const class CMessageEventDef> message, C3DVector position,
         long parameter);   // 0x009810B0
-#endif
-#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD_B
-    // Nested opt-in (chunk 2015, row 0x0097FEA0): Ego_r.pdb / FableWin.pdb
-    // ?AIAction_FindAGuardAndYellForHelp@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@VC3DVector@@K_N@Z (protected; Ego_r donor 0x0084B160
-    // between AIAction_RunAwayFrom 0x0084AE40 and AIAction_FleeToThingProximity 0x0084B800 = retail 0x0097FBE0 / 0x0097FEA0 /
-    // 0x009804A0, `ret 14h`). Declaration only.
-    EAIActionReturn AIAction_FindAGuardAndYellForHelp(C3DVector pos, unsigned long crime, bool flag);   // 0x0097FEA0
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
     // Chunk 756 (row 0x009104D0): Ego_r.pdb ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ (0x008FCFA0) and
@@ -251,10 +239,10 @@ public:
     bool              Enabled;                                           // +0x12
 };
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroupBase) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, PBrain) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, Name) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, Enabled) == 0x12);
+FABLE_STATIC_ASSERT_AT(254, sizeof(CAIStateGroupBase) == 0x14);
+FABLE_STATIC_ASSERT_AT(255, offsetof(CAIStateGroupBase, PBrain) == 0x4);
+FABLE_STATIC_ASSERT_AT(256, offsetof(CAIStateGroupBase, Name) == 0xc);
+FABLE_STATIC_ASSERT_AT(257, offsetof(CAIStateGroupBase, Enabled) == 0x12);
 
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
@@ -277,14 +265,14 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroupBase) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, PBrain) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, ScriptAIPriority) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, Name_PStringData) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, Terminated) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, Priority) == 0x11);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, Enabled) == 0x12);
+FABLE_STATIC_ASSERT_AT(280, sizeof(CAIStateGroupBase) == 0x14);
+FABLE_STATIC_ASSERT_AT(281, offsetof(CAIStateGroupBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(282, offsetof(CAIStateGroupBase, PBrain) == 0x4);
+FABLE_STATIC_ASSERT_AT(283, offsetof(CAIStateGroupBase, ScriptAIPriority) == 0x8);
+FABLE_STATIC_ASSERT_AT(284, offsetof(CAIStateGroupBase, Name_PStringData) == 0xc);
+FABLE_STATIC_ASSERT_AT(285, offsetof(CAIStateGroupBase, Terminated) == 0x10);
+FABLE_STATIC_ASSERT_AT(286, offsetof(CAIStateGroupBase, Priority) == 0x11);
+FABLE_STATIC_ASSERT_AT(287, offsetof(CAIStateGroupBase, Enabled) == 0x12);
 
 #endif // FABLE_RETAIL_CAISTATEGROUPBASE
 

@@ -8,18 +8,13 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
-#if defined(FABLE_RETAIL_CCREATUREACTION_UNSHEATHEWEAPONS) || defined(FABLE_RETAIL_CCREATUREACTION_UNSHEATHEWEAPONS_B)
+#ifdef FABLE_RETAIL_CCREATUREACTION_UNSHEATHEWEAPONS
 // Overlay opt-in (wf10, row 0x00929340 CAIStateGroup_BanditPlayDice::Update): the polymorphic retail class. RTTI derives
 // CCombatActionBase (retail sizeof 0x114, engine/CCombatActionBase.h FABLE_RETAIL_CCOMBATACTIONBASE_MELEE); Ego_r.pdb own member
 // EUnsheatheWeaponType WeaponType (Ego_r +0x12C = retail +0x114, sizeof 0x118 as the 0x118 temporary slot of 0x00929340 and
 // 0x006EBDD0 shows). Ctor ??0CCreatureAction_UnsheatheWeapons@@QAE@AAVCThingCreatureBase@@@Z (Ego_r.pdb + FableWin.pdb), out of line
 // at 0x008B8590; the implicit destructor calls ~CCombatActionBase 0x0062E900. Needs engine/CCombatActionBase.h and
 // engine/EUnsheatheWeaponType.h (or another definition of the enum) first.
-#ifdef FABLE_RETAIL_CCREATUREACTION_UNSHEATHEWEAPONS_B
-// (chunk 2026, row 0x0092DA20 CAIStateGroup_MinionSleep::Update: the same retail class; this spelling includes its prerequisites.)
-#include "engine/CCombatActionBase.h"
-#include "engine/EUnsheatheWeaponType.h"
-#endif
 class CThingCreatureBase;
 class CCreatureAction_UnsheatheWeapons : public CCombatActionBase {
 public:
@@ -27,7 +22,7 @@ public:
 protected:
     EUnsheatheWeaponType WeaponType;                                     // +0x114
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheWeapons) == 0x118);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_UnsheatheWeapons) == 0x118);
 #else
 
 #pragma pack(push, 1)
@@ -98,9 +93,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheWeapons) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UnsheatheWeapons, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UnsheatheWeapons, WeaponType) == 0x114);
+FABLE_STATIC_ASSERT_AT(101, sizeof(CCreatureAction_UnsheatheWeapons) == 0x118);
+FABLE_STATIC_ASSERT_AT(102, offsetof(CCreatureAction_UnsheatheWeapons, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(103, offsetof(CCreatureAction_UnsheatheWeapons, WeaponType) == 0x114);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_UNSHEATHEWEAPONS || _B
 #endif // FABLE_ENGINE_CCREATUREACTION_UNSHEATHEWEAPONS_H

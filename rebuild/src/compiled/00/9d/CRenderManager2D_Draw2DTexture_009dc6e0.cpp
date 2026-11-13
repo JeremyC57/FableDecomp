@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009DC6E0, 388 bytes, thiscall, `ret 10h`, returns true. Ego_r.pdb 0x00B302F0 / FableWin.pdb
 // ?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@AAVCTexture@@K@Z (the box overload, just before the CUVBox one
 // 0x009DC870).
-// Callees: CRGBColour::GetD3DCOLOR (inline, the A,R,G,B word, 0x009DC6ED..0x009DC70B), GFVBoxToABox 0x009E1E70 (__fastcall, virtual
+// Callees: the colour packing (inline, the A,R,G,B word, 0x009DC6ED..0x009DC70B), GFVBoxToABox 0x009E1E70 (__fastcall, virtual
 //   box in, screen box out; Ego_r.pdb ?GFVBoxToABox@@YIXABVC2DBoxF@@AAV1@@Z), CGenericVertex<CTVertexRHWColSpecTex1Base>::SetRHWFromZ
 //   (inline; reads the 2D TU's screen RHW float 0x0139652C, bound spelling g_ScreenRHW), the private CRenderManager2D::Add2DTri
 //   0x009DC030 (v0, v1, v2, mode, &texture) twice.
@@ -18,7 +18,9 @@
 //   Blend mode: flag 2 picks 2, else flag 1 picks 3, else 1 (`test al,2` hoisted above the stores, the inner choice branchless).
 //   Triangles (0, 1, 2) and (0, 2, 3).
 #define FABLE_RETAIL_CGENERICVERTEX_SETRHWFROMZ
-#define FABLE_RETAIL_CRGBCOLOUR_GETD3DCOLOR
+// Colour: the D3DCOLOR is packed here from the four channel accessors (Ego_r.pdb / FableWin.pdb GetA / GetR / GetG / GetB), the
+//   D3DCOLOR_ARGB shape (`movzx eax,[R] ; mov ah,[A] ; shl eax,8 ; or eax,G ; shl eax,8 ; or eax,B`). It is not CRGBColour::GetD3DCOLOR:
+//   FableWin.pdb's debug GetD3DCOLOR 0x02CCFDA0 is a one-load accessor (0x20-byte slot), see engine/CRGBColour.h.
 #define FABLE_RETAIL_CRENDERMANAGER2D_DRAW2DTEXTUREBOX
 #define FABLE_RETAIL_CRENDERMANAGER2D_DRAW2DBOXWITHZ
 #include "fable_compiler.h"
@@ -31,7 +33,7 @@ void FABLE_FASTCALL GFVBoxToABox(const C2DBoxF& v, C2DBoxF& a);   // 0x009E1E70
 
 bool CRenderManager2D::Draw2DTexture(const C2DBoxF& box, const CRGBColour& colour, CTexture& texture, unsigned long flags)
 {
-    unsigned long argb = colour.GetD3DCOLOR();
+    unsigned long argb = ((unsigned long)colour.GetA() << 24) | ((unsigned long)colour.GetR() << 16) | ((unsigned long)colour.GetG() << 8) | colour.GetB();
     C2DBoxF screen;
     GFVBoxToABox(box, screen);
     CTVertexRHWColSpecTex1 v[4];

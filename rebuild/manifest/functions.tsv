@@ -13726,7 +13726,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00641480	ApplyDefActiveState	CTCLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006414a0	DrawLight	CTCLight	__thiscall	void	5	CTCLight *,long,C3DVector *,CTCGraphicAppearance *,CGraphicAppearanceDrawInfo *	1	yes	accepted									
 00641ae0	DrawFlare	CTCLight	__thiscall	void	5	CTCLight *,long,C3DVector *,CTCGraphicAppearance *,CGraphicAppearanceDrawInfo *	1	yes	accepted									
-00641c30	?OnAppearanceDraw@CTCLight@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z	CTCLight	__thiscall	bool	3	CTCLight *,CTCGraphicAppearance *,CGraphicAppearanceDrawInfo *	1	yes	accepted									
+00641c30	OnAppearanceDraw	CTCLight	__thiscall	bool	3	CTCLight *,CTCGraphicAppearance *,CGraphicAppearanceDrawInfo *	1	yes	accepted									
 00641e70	CCountedPointer_Release_00641e70	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\64\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00641e70.cpp
 00641eb0	Reset	CCountedPointer_006409a0	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
 00642000	CEnginePrimitiveLight	CEnginePrimitiveLight	__thiscall	undefined	10	CEnginePrimitiveShadowedSpotLight *,__uint64,C3DVector *,C3DVector *,CRGBColour *,float,float,float,EEngineInterpolationSet,ulong	0	yes	accepted									

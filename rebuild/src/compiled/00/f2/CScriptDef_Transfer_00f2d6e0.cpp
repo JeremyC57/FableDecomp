@@ -25,7 +25,7 @@
 //     constructors) although their switch bodies then fail to expand; they still inflate G2, which is what ends the expansion at
 //     statement 452. A nested GetDefaultVal<T> (w 48 with the traits' user constructor and destructor) is accepted only when the
 //     site's share floor(budget / remaining sites) reaches 48: statements 448 and 451 (long). The float instance is refused at
-//     447 / 449 / 450 with the same share (FITTED: engine/CPersistTraits.h FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS_B, see there).
+//     447 / 449 / 450 with the same share (FITTED: engine/CPersistTraits.h FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS_CONST_DEFAULTVAL, see there).
 //   - TransferVector<CCharString> is compiled ahead of the row (explicit instantiation below): its 8 sites before the cut then go
 //     through the cost rule and leave the budget alone. Which earlier function of retail's TU asked for it is not known.
 #define FABLE_RETAIL_CCHARSTRING
@@ -41,7 +41,7 @@
 #define FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERVECTOROFSUBCOMPONENTS_NAMED
 #define FABLE_RETAIL_CPERSISTTRAITS
 #define FABLE_RETAIL_CPERSISTTRAITS_EMPTY_DTOR
-#define FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS_B
+#define FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS_CONST_DEFAULTVAL
 #define FABLE_RETAIL_CDATAINPUTSTREAM
 #define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
 #define FABLE_RETAIL_CDATAOUTPUTSTREAM

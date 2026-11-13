@@ -159,7 +159,7 @@ protected:
 public:
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDCATEGORYINDEX
- // Retail opt-in (chunk Q24, row 0x00622A00 CTCInventoryQuests::OpenInventory): Ego_r.pdb / FableWin.pdb
+ // Retail opt-in (chunk Q24, row 0x00622A00 CTCInventoryQuests::OpenInventory; also the acctB draft of 0x006224C0 OpenInventoryPC): Ego_r.pdb / FableWin.pdb
  // ?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ (out of line at 0x005BC4B2, `mov eax,[ecx+70h] ; ret`) and
  // ?SetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QAEXJ@Z (0x005BC4B6, `mov [ecx+70h],eax ; ret 4`): SelectedCategoryIndex
  // (+0x70 retail). Declarations only.
@@ -193,14 +193,6 @@ public:
  // ?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z, out of line in retail at 0x005BEB57 (`push region ; mov ecx,this ;
  // call`, ret 4). Declaration only.
  unsigned long GetMiniMapGraphic(CRegion& region) const;                                     // 0x005BEB57
-#endif
-#ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDCATEGORYINDEX
- // Retail opt-in (w22 agent2002, row 0x006224C0 CTCInventoryQuests::OpenInventoryPC): Ego_r.pdb / FableWin.pdb
- // ?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ (out of line at 0x005BC4B2: `mov eax,[ecx+70h] ; ret`) and
- // ?SetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QAEXJ@Z (0x005BC4B6: `mov [ecx+70h],arg ; ret 4`), SelectedCategoryIndex +0x70.
- // The landed bound spellings ?GetSelectedCategoryIndex@CTCInventoryQuests@@QAEJXZ / @CTCInventoryBase_Retail@@ are stand-ins. Declarations only.
- long GetSelectedCategoryIndex() const;                                                       // 0x005BC4B2
- void SetSelectedCategoryIndex(long index);                                                   // 0x005BC4B6
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_ONINITIALACTIVATE
  // Retail opt-in (chunk 1002, row 0x005CB974 CTCInventoryWeapons::OnInitialActivate, which calls it qualified last): Ego_r.pdb
@@ -389,5 +381,5 @@ public:
 #endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NInventory::CTCInventoryBase)==0x130);
+FABLE_STATIC_ASSERT_AT(392, sizeof(NInventory::CTCInventoryBase)==0x130);
 #endif

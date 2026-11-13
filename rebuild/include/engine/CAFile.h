@@ -14,12 +14,6 @@ class CFileInformation;
 enum FileAccessType { FILE_ACCESS_NULL=0, FILE_ACCESS_READ=1, FILE_ACCESS_READ_WRITE=2, FILE_ACCESS_READ_WRITE_CREATE=3, FILE_ACCESS_CREATE=4 };
 // Original CAFile virtual order from Ego_r TPI and native CDiskFileWin32 vtable.
 class CAFile : public CBaseClassNonCopyable {
-#ifdef FABLE_RETAIL_CAFILE_ISROOMFORFILE_B
-public:
-    // Opt-in (chunk 2052, row 0x0049F4C0): Ego_r.pdb ?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z (static __fastcall: size in ecx,
-    // path in edx), out of line at 0x00999AB0. Declaration only.
-    static bool FABLE_FASTCALL IsRoomForFile(long size, const CWideString& path);   // 0x00999AB0
-#endif
 public:
 #ifdef FABLE_RETAIL_CAFILE_ERRORCALLBACK
     // Retail opt-in (Codex pass17): original static callback chain, donor02dd7c60..a0.
@@ -45,7 +39,7 @@ public:
     static bool __fastcall PathExists(const CWideString&);
     static bool __fastcall IsPathFile(const CWideString&);
 #ifdef FABLE_RETAIL_CAFILE_ISROOMFORFILE
-    // Nested opt-in (wf19, row 0x0055D180): Ego_r.pdb / FableWin.pdb ?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z (retail 0x00999AB0; the
+    // Opt-in (wf19, row 0x0055D180; chunk 2052, row 0x0049F4C0): Ego_r.pdb / FableWin.pdb ?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z (retail 0x00999AB0; the
     // byte count in ecx, the path in edx). Declaration only.
     static bool __fastcall IsRoomForFile(long size, const CWideString& path);   // 0x00999AB0
 #endif

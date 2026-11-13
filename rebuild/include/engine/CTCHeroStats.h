@@ -337,7 +337,7 @@ public:
     long NumberOfShopsOwned;                                             // +0xe0
     long NumberOfHousesOwned;                                            // +0xe4
     unsigned char _pad_0xe8[0x1dc - 0xe8];
-#elif defined(FABLE_RETAIL_CTCHEROSTATS_RENTMONEY) || defined(FABLE_RETAIL_CTCHEROSTATS_RENTMONEY_B)   // one opt-in; _B is the spelling row 0x007CACB0 landed with
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_RENTMONEY)
     // Retail opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb ?AddMoney@CTCHeroStats@@QAEXJ_N@Z
     // (out of line at 0x0057B327, landed) and FableWin.pdb's inline ?AddRentMoney@CTCHeroStats@@QAEXJ@Z (0x01DF38C0) /
     // ?GetRentMoney@CTCHeroStats@@QBEJXZ (0x01DF38F0), whose first FableWin COMDAT copies follow OnCollisionWithObject (0x01DF10E0):

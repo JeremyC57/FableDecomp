@@ -396101,6 +396101,20 @@ $catalog = @(
         TestSource = '00/d6/NScriptCQHangingTreeEvilScript_Conclusion_00d6d670_test.cpp'
         PassPattern = '00d6d670_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00622a00'
+        Module = 'CTCInventoryQuests'
+        Source = '00/62/CTCInventoryQuests_OpenInventory_00622a00.cpp'
+        TestSource = '00/62/CTCInventoryQuests_OpenInventory_00622a00_test.cpp'
+        PassPattern = '00622a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00641c30'
+        Module = 'CTCLight'
+        Source = '00/64/CTCLight_OnAppearanceDraw_00641c30.cpp'
+        TestSource = '00/64/CTCLight_OnAppearanceDraw_00641c30_test.cpp'
+        PassPattern = '00641c30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

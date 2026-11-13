@@ -44,16 +44,11 @@ public:
  const C3DDummyObject* GetDummyObject(unsigned long name_crc,unsigned long index)const;   // 0x00A2E920
  virtual C3DVector GetHelperPointPositionAnimated(const C3DHelperPoint&,const C3DAnimationBlendState&,C3DAnimationManager&)const=0;
  virtual C3DVector GetHelperPointPositionAnimated(const C3DHelperPoint&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&)const=0;
-#ifdef FABLE_RETAIL_C3DMESHSTATS_DUMMYOBJECT_RESULT
- // Nested opt-in (chunk 2011, row 0x00BF18B0 CEnginePrimitiveRenderUtil::AddGeneratedObjects): the out parameter as both PDBs spell it,
+ // The out parameter as both PDBs spell it (chunk 2011, row 0x00BF18B0 CEnginePrimitiveRenderUtil::AddGeneratedObjects),
  // ?GetDummyObjectPositionAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAV2@ABVC3DAnimationBlendState@@2MAAVC3DAnimationManager@@_N@Z
  // (`AAV2@` = C3DDummyObject&; the override 0x00A89E40 writes the out object's BoneIndex +0x30, 0x00A89E56). Same slots (6 / 7).
  virtual void GetDummyObjectPositionAnimated(const C3DDummyObject& dummy_object,C3DDummyObject& result,const C3DAnimationBlendState& blend_state,C3DAnimationManager& animation_manager,bool flag)const=0;
  virtual void GetDummyObjectPositionAnimated(const C3DDummyObject& dummy_object,C3DDummyObject& result,const C3DAnimationBlendState& blend_state_start,const C3DAnimationBlendState& blend_state_end,float interpolate,C3DAnimationManager& animation_manager,bool flag)const=0;
-#else
- virtual void GetDummyObjectPositionAnimated(const C3DDummyObject&,C3DVector&,const C3DAnimationBlendState&,C3DAnimationManager&,bool)const=0;
- virtual void GetDummyObjectPositionAnimated(const C3DDummyObject&,C3DVector&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&,bool)const=0;
-#endif
  virtual void GetDummyObjectTransformAnimated(const C3DDummyObject&,CMatrix3x4&,const C3DAnimationBlendState&,C3DAnimationManager&,bool)const=0;
  virtual void GetDummyObjectTransformAnimated(const C3DDummyObject&,CMatrix3x4&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&,bool)const=0;
 #endif
@@ -83,5 +78,5 @@ private:
  unsigned short PackedNamesSize;
  bool AnimatedFlag;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshStats)==124);
+FABLE_STATIC_ASSERT_AT(86, sizeof(C3DMeshStats)==124);
 #endif

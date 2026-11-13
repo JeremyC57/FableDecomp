@@ -1,0 +1,3 @@
+address	module	name	bytes	verdict	note
+00622a00	CTCInventoryQuests	OpenInventory	877	RELOCATION_MATCH PASS	held since landing Q24; the real ConstructQuestList 0x0061B610 body (landed in fy) replaces the stand-in
+00641c30	CTCLight	OnAppearanceDraw	490	RELOCATION_MATCH PASS	held since wf10; the real DrawLight 0x006414A0 body (landed in fy) replaces the unproven reconstruction

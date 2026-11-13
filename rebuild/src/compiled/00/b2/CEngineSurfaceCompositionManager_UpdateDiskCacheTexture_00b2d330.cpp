@@ -68,7 +68,7 @@
 #define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE_DTOR
 #define FABLE_RETAIL_CGRAPHICFRAME
 #define FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE
-#define FABLE_RETAIL_CRGBCOLOUR_GETD3DCOLOR_B
+#define FABLE_RETAIL_CRGBCOLOUR_GETD3DCOLOR
 #include "engine/Direct3D9Types.h"
 #include "engine/CEngineSurfaceCompositionManager.h"
 #include "engine/CEngineResourceManager.h"

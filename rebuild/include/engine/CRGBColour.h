@@ -46,21 +46,18 @@ public:
     // read in place (0x00BA7732 `mov edx,[esp+18h] ; push edx` hands the silhouette colour to DrawAlphaBoundingBox's unsigned long).
     unsigned long GetAsInt() const { return IntValue; }
 #endif
-#ifdef FABLE_RETAIL_CRGBCOLOUR_GETD3DCOLOR_B
+#ifdef FABLE_RETAIL_CRGBCOLOUR_GETD3DCOLOR
     // Retail opt-in (chunk 2018, row 0x00B2B180): Ego_r.pdb / FableWin.pdb ?GetD3DCOLOR@CRGBColour@@QBEKXZ, inline in retail (the B, G, R,
     // A bytes are a D3DCOLOR dword: 0x00B2B4BA `mov edx,[eax+8]` stores the blend's DiffuseColour into a vertex as one dword).
+    // The dword read is the body: FableWin.pdb's debug COMDAT 0x02CCFDA0 fills one 0x20-byte slot, like GetAsInt 0x02284290 and GetR
+    // 0x01D73670 (a four-channel packing is over 50 bytes at /Od). The channel packing in CRenderManager2D::Draw2DLine 0x009DD96E /
+    // Draw2DTexture 0x009DC6ED is those rows' own expression over GetA / GetR / GetG / GetB (landing fz, 2026-11-13).
     unsigned long GetD3DCOLOR() const { return IntValue; }
 #endif
     unsigned char GetR() const { return R; }
     unsigned char GetG() const { return G; }
     unsigned char GetB() const { return B; }
     unsigned char GetA() const { return A; }
-#ifdef FABLE_RETAIL_CRGBCOLOUR_GETD3DCOLOR
-    // Retail opt-in (chunk Q12, row 0x009DD960 CRenderManager2D::Draw2DLine): Ego_r.pdb / FableWin.pdb ?GetD3DCOLOR@CRGBColour@@QBEKXZ,
-    // inline in retail: the A,R,G,B word packed from the channel bytes (`movzx eax,[R] ; mov ah,[A] ; shl eax,8 ; or eax,G ; shl
-    // eax,8 ; or eax,B` at 0x009DD96E). No layout change.
-    unsigned long GetD3DCOLOR() const { return (((((unsigned long)A << 8) | R) << 8 | G) << 8) | B; }
-#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CRGBColour)==4);
+FABLE_STATIC_ASSERT_AT(65, sizeof(CRGBColour)==4);
 #endif

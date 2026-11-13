@@ -21,11 +21,6 @@ public:
  // (landed 0x00687730). Declaration only.
  CMessageEvent* AddMessage(const class CMessageEventDef& def,const C3DVector& pos,CThing* originator,CThing* target,long extraData);   // 0x00687730
 #endif
-#ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT_DECL_B
- // Opt-in (w22 agent2007, row 0x006DEEE0 CTCTrophy::GlobalUpdate): the member template declared only, so a caller binds the
- // out-of-line COMDAT (CMessageEventFilter_IsOfType: 0x004AB8B0, landed) without instantiating the body here.
- template<class TFilter> const CMessageEvent* FindMostRecentMessage(const TFilter& filter) const;
-#endif
 #ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_ADDDEFMESSAGE
  // Opt-in (chunk 2015, row 0x0097FEA0): Ego_r.pdb / FableWin.pdb
  // ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z, the def overload, out of
@@ -59,7 +54,7 @@ public:
 #endif
 #endif
 #if defined(FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT_DECL) && !defined(FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT)
- // Opt-in (wf17, row 0x007E2A60 CTCFineDialogue::GlobalUpdate): the same member template, declaration only, for a TU that calls
+ // Opt-in (wf17, row 0x007E2A60 CTCFineDialogue::GlobalUpdate; w22 agent2007, row 0x006DEEE0 CTCTrophy::GlobalUpdate): the same member template, declaration only, for a TU that calls
  // the COMDAT out of line (FindMostRecentMessage<CMessageEventFilter_IsOfType> 0x004AB8B0: `push filter ; mov ecx,manager ; call`).
  template<class TFilter> const CMessageEvent* FindMostRecentMessage(const TFilter& filter) const;
 #endif
@@ -74,5 +69,5 @@ private:
  const CWorld& World;
  std::list<CMessageEvent> Messages;
 };
-FABLE_STATIC_ASSERT(sizeof(CMessageEventManager)==8);
+FABLE_STATIC_ASSERT_AT(77, sizeof(CMessageEventManager)==8);
 #endif

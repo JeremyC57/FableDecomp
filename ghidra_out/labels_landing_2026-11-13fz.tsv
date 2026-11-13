@@ -1,0 +1,3 @@
+address	name	evidence
+00622A00	?OpenInventory@CTCInventoryQuests@@UAEXXZ	landing fz: byte match under the strict verifier (Ego_r.pdb / FableWin.pdb name)
+00641C30	?OnAppearanceDraw@CTCLight@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z	landing fz: byte match under the strict verifier (Ego_r.pdb / FableWin.pdb name)

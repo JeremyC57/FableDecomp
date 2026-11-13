@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00622a00   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00622a00   WARN RELOC_NAME: ?SelectScreenOfType@CManager@NHeroInformationScreens@@QAEXW4EScreenType@2@@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+00622a00   WARN RELOC_NAME: ?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ -> 005bc4b2 labelled '_global::GetMember_dword0x70_005bc4b2'
+00622a00   WARN RELOC_NAME: ?SetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QAEXJ@Z -> 005bc4b6 labelled '_global::SetMember_dword0x70_005bc4b6'
+00622a00   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+00622a00   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z -> 00485dbc labelled '_global::Std_Vector_Insert_Range_Fill'
+00622a00   RELOCATION_MATCH PASS   OpenInventory
+00641c30   RELOCATION_MATCH PASS   OnAppearanceDraw
+
+WINS: 2
+  00622a00 RELOCATION_MATCH CTCInventoryQuests::OpenInventory
+  00641c30 RELOCATION_MATCH CTCLight::OnAppearanceDraw
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryQuests_OpenInventory_00622a00
+  CTCLight_OnAppearanceDraw_00641c30

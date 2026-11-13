@@ -5,7 +5,9 @@
 // Callees: GFVXToAX 0x009E1E10 / GFVYToAY 0x009E1E40 (Ego_r.pdb ?GFVXToAX@@YIMM@Z / ?GFVYToAY@@YIMM@Z, __fastcall float, the argument
 //   on the stack), the 2D TU's screen RHW float 0x0139652C (bound spelling g_ScreenRHW), the private CRenderManager2D::Add2DLine
 //   0x009DC2C0 (Ego_r.pdb ?Add2DLine@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@0JPAVCTexture@@@Z).
-#define FABLE_RETAIL_CRGBCOLOUR_GETD3DCOLOR
+// Colour: the D3DCOLOR is packed here from the four channel accessors (Ego_r.pdb / FableWin.pdb GetA / GetR / GetG / GetB), the
+//   D3DCOLOR_ARGB shape (`movzx eax,[R] ; mov ah,[A] ; shl eax,8 ; or eax,G ; shl eax,8 ; or eax,B`). It is not CRGBColour::GetD3DCOLOR:
+//   FableWin.pdb's debug GetD3DCOLOR 0x02CCFDA0 is a one-load accessor (0x20-byte slot), see engine/CRGBColour.h.
 #define FABLE_RETAIL_CRENDERMANAGER2D_DRAW2DLINE
 #include "fable_compiler.h"
 #include "engine/C2DVector.h"
@@ -18,7 +20,7 @@ extern float g_ScreenRHW;                         // 0x0139652C
 
 bool CRenderManager2D::Draw2DLine(const C2DVector& start, const C2DVector& end, const CRGBColour& colour, unsigned long flags)
 {
-    unsigned long argb = colour.GetD3DCOLOR();
+    unsigned long argb = ((unsigned long)colour.GetA() << 24) | ((unsigned long)colour.GetR() << 16) | ((unsigned long)colour.GetG() << 8) | colour.GetB();
     long mode = 1;
     CTVertexRHWColSpecTex1 v0;
     CTVertexRHWColSpecTex1 v1;

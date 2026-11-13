@@ -70,7 +70,10 @@ public:
     void SetTranslateOnly(const C3DVector& translation) { E41=translation.X; E42=translation.Y; E43=translation.Z; }
 #endif
 #endif
-#ifdef FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_B
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY
+    // (One SetMultiply for every row: chunk Q21, row 0x00B39080 CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh expands it
+    // over a named copy of the target, 0x00B3915B `rep movsd` then the k-order sums 0x00B39157..0x00B3930E. PreMultiply through it is the
+    // nested FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_PREMULTIPLY below.)
     // Retail opt-in (chunk 2006, row 0x00B399A0 CEngineInternalAttachedPrimitive::UpdateOutputPrimitive): Ego_r.pdb / FableWin.pdb
     // ?SetMultiply@CMatrix3x4@@QAEXABV1@0@Z (this = m1 * m2: each rotation row of m1 times m2's rotation, the translation row of m1
     // times m2's rotation plus m2's translation) and ?PreMultiply@CMatrix3x4@@QAEXABV1@@Z written through it on a copy of *this (the
@@ -93,6 +96,9 @@ public:
         E42 = m1.E41 * m2.E12 + m1.E42 * m2.E22 + m1.E43 * m2.E32 + m2.E42;
         E43 = m1.E41 * m2.E13 + m1.E42 * m2.E23 + m1.E43 * m2.E33 + m2.E43;
     }
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_PREMULTIPLY
+    // Nested opt-in (chunk 2006, row 0x00B399A0): ?PreMultiply@CMatrix3x4@@QAEXABV1@@Z (this = matrix * this) written through SetMultiply
+    // on a copy of *this, as described above. Mutually exclusive with FABLE_RETAIL_CMATRIX3X4_PREMULTIPLY.
     FABLE_FORCEINLINE void PreMultiply(const CMatrix3x4& matrix) {
         CMatrix3x4 copy(*this);
         SetMultiply(matrix, copy);
@@ -108,14 +114,15 @@ public:
     }
 #endif
 #endif
-#if defined(FABLE_RETAIL_CMATRIX3X4_MULTIPLYNOTRANSLATION) && defined(FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_B)
+#endif
+#if defined(FABLE_RETAIL_CMATRIX3X4_MULTIPLYNOTRANSLATION) && defined(FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY)
     // Retail opt-in (chunk 2014, row 0x00A4E300 C3DAnimation2::GetDeltaMovement): FableWin.pdb ?SetMultiplyNoTranslation@CMatrix3x4@@QAEXABV1@0@Z
     // (FableWin 0x032289C0, emitted right after ?GetDeltaMovement@C3DAnimation2 0x03228780: its first user) -- the 3x3 product
     // m1 * m2 with the translation row cleared (retail 0x00A4E71A..0x00A4E720 stores the three zeros into the result) -- and
     // ?PreScale@CMatrix3x4@@QAEXMMM@Z (FableWin 0x03228C60, after ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix3x4@@_N@Z: each rotation row
     // times its scale, the landed 0x00A52450 order). No retail out-of-line copy of either.
     // FITTED body (chunk 3010, coordinator's choice of the agent's two candidates; needs a ruling): the full product through
-    // SetMultiply (FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_B), then the translation row cleared. Evidence for: compiled out of line
+    // SetMultiply (FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY), then the translation row cleared. Evidence for: compiled out of line
     // it equals retail's unreferenced copy 0x00A4B820 (240 bytes, as the 9-sum body also does), and it is the only natural body
     // measured that gives GetDeltaMovement 0x00A4E300 retail's 13 x87 operand orders and size (the 9-sum body: DIFFER 1615v1619).
     // Evidence against: FableWin.pdb's debug COMDAT 0x032289C0 is 160 /Od instructions, which fits the 9-sum body (157), not this
@@ -405,26 +412,6 @@ public:
         destination.Z+=E33*pSource.Z;
         destination.Z+=E23*pSource.Y;
         destination.Z+=E43;
-    }
-#endif
-#ifdef FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY
-    // Retail opt-in (chunk Q21, row 0x00B39080 CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh): FableWin.pdb
-    // ?SetMultiply@CMatrix3x4@@QAEXABV1@0@Z (this = a * b; no Ego_r.pdb or retail out-of-line copy: the row expands it over a named copy
-    // of the target, 0x00B3915B `rep movsd` then the k-order sums 0x00B39157..0x00B3930E). Same sums as PostMultiply below, with both
-    // operands as parameters: with the copy inside PostMultiply VC7.1 swaps the operand order of the row-2..4 products (`fld b ; fmul a`).
-    FABLE_FORCEINLINE void SetMultiply(const CMatrix3x4& a, const CMatrix3x4& b) {
-        E11 = a.E11 * b.E11 + a.E12 * b.E21 + a.E13 * b.E31;
-        E12 = a.E11 * b.E12 + a.E12 * b.E22 + a.E13 * b.E32;
-        E13 = a.E11 * b.E13 + a.E12 * b.E23 + a.E13 * b.E33;
-        E21 = a.E21 * b.E11 + a.E22 * b.E21 + a.E23 * b.E31;
-        E22 = a.E21 * b.E12 + a.E22 * b.E22 + a.E23 * b.E32;
-        E23 = a.E21 * b.E13 + a.E22 * b.E23 + a.E23 * b.E33;
-        E31 = a.E31 * b.E11 + a.E32 * b.E21 + a.E33 * b.E31;
-        E32 = a.E31 * b.E12 + a.E32 * b.E22 + a.E33 * b.E32;
-        E33 = a.E31 * b.E13 + a.E32 * b.E23 + a.E33 * b.E33;
-        E41 = a.E41 * b.E11 + a.E42 * b.E21 + a.E43 * b.E31 + b.E41;
-        E42 = a.E41 * b.E12 + a.E42 * b.E22 + a.E43 * b.E32 + b.E42;
-        E43 = a.E41 * b.E13 + a.E42 * b.E23 + a.E43 * b.E33 + b.E43;
     }
 #endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY

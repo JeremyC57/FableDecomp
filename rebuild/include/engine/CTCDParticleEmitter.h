@@ -123,7 +123,7 @@ FABLE_STATIC_ASSERT(sizeof(CTCDParticleEmitter)==72);
 #include "engine/ETCInterfaceType.h"
 class CThing;
 class CCharString;
-#if defined(FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE_B) || defined(FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE_B2) || defined(FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE_B3)
+#ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE
 class C3DVector;
 #endif
 #ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_UPDATEPARAMETERS
@@ -139,10 +139,9 @@ public:
     // ?SetEmitterUpdateParameters@CTCDParticleEmitter@@QAEXABV?$CParticleUpdateParameters@KK@NParticleEngine@@@Z (retail 0x006E11A0, landed).
     void SetEmitterUpdateParameters(const NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>& parameters);   // 0x006E11A0
 #endif
-#if defined(FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE) || defined(FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE_B) || defined(FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE_B2) || defined(FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE_B3)
+#ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE
     // Ego_r ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z (retail 0x006E0880, static __fastcall). Needs C3DVector.h.
-    // (FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE_B: chunk 2053 row 0x0087F3A0, the same declaration with the forward declaration of C3DVector;
-    // _B2 / _B3: w22 rows 0x007F26B0 CTCLightningOrb::Initialise / 0x007F2DC0 CTCLightningNode::FrameUpdate, the same.)
+    // (C3DVector is forward-declared above for rows that include this header first: chunk 2053 row 0x0087F3A0, w22 rows 0x007F26B0 / 0x007F2DC0.)
     static CThing* __fastcall Create(long effect, const C3DVector& pos, bool flag);
 #endif
 };

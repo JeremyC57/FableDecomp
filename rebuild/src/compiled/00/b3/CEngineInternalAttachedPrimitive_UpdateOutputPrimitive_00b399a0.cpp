@@ -12,7 +12,7 @@
 //   OutputPrimitive +0x8c (Data +0x90), AttachmentInfo.Flags +0x94, ChildInverseTransform +0xa8, ChildInverseTransformValid +0xd8.
 // Shape (each measured against retail, chunk 2006):
 //   - the three products are CMatrix3x4::PreMultiply written through SetMultiply on a copy of *this (hdr opt-in
-//     FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_B): VC7.1 reorders every x87 sum by its own rule, and only this nesting gives retail's 36 term
+//     FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_PREMULTIPLY): VC7.1 reorders every x87 sum by its own rule, and only this nesting gives retail's 36 term
 //     orders (the column-dependent block at 0x00B399F9 and the two uniform blocks); the order written in the sums does not matter.
 //   - GetParentTransform is written with a `result` local and `break` (out of line at 0x00B398E0): the direct `return` form expands
 //     to the same branch code but leaves the first block's E11 / E12 sums in another order.
@@ -25,7 +25,8 @@
 #define FABLE_RETAIL_CENGINEPRIMITIVEHANDLE
 #define FABLE_RETAIL_CIVCOUNTEDPOINTER
 #define FABLE_RETAIL_CENGINEINTERNALATTACHEDPRIMITIVE_TRANSFORMS
-#define FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_B
+#define FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY
+#define FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_PREMULTIPLY
 #include "engine/CEngineInternalAttachedPrimitive.h"
 
 void CEngineInternalAttachedPrimitive::RedoMatrixConversion(CMatrix3x4& matrix) const

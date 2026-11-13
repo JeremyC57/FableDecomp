@@ -6,7 +6,7 @@ namespace line_test {
 struct C2DVector { float X, Y; };
 struct CRGBColour {
     unsigned char B, G, R, A;
-    unsigned long GetD3DCOLOR() const { return ((unsigned long)A << 24) | ((unsigned long)R << 16) | ((unsigned long)G << 8) | B; }
+    unsigned char GetR() const { return R; } unsigned char GetG() const { return G; } unsigned char GetB() const { return B; } unsigned char GetA() const { return A; }
 };
 struct CTVertexRHWColSpecTex1 { float X, Y, Z, RHW; unsigned long DiffuseColour, SpecularColour; float U1, V1; };
 static float GFVXToAX(float x) { return x * 2.0f; }
@@ -19,7 +19,7 @@ struct CRenderManager2D {
 };
 bool CRenderManager2D::Draw2DLine(const C2DVector& start, const C2DVector& end, const CRGBColour& colour, unsigned long flags)
 {
-    unsigned long argb = colour.GetD3DCOLOR();
+    unsigned long argb = ((unsigned long)colour.GetA() << 24) | ((unsigned long)colour.GetR() << 16) | ((unsigned long)colour.GetG() << 8) | colour.GetB();
     long mode = 1;
     CTVertexRHWColSpecTex1 v0;
     CTVertexRHWColSpecTex1 v1;

@@ -1,6 +1,6 @@
 // CTCLightningNode::FrameUpdate() -- per-frame update of a lightning node: expire it (remove its own TC) when the def lifetime has run out or the parent died or lost its node, else spread new nodes and branches to things in range and keep each branch's particle beam fed and its target electrocuted
 // Leaf: ?FrameUpdate@CTCLightningNode@@UAEXXZ
-// Inline-budget: header opt-in FABLE_RETAIL_CVECTORMAP_INSERT_FORCEINLINE_B (CVectorMap<unsigned long,C3DVector,...>::Insert): retail expands both inserts (push_back end test + Dirty store, 0x007F3312..0x007F33BE); the c2 inline trace (tools/inl.sh) scores the plain inline Insert 191 (c1 72, f 0.026) -> called. Ego_r.pdb holds no out-of-line Insert (FableWin.pdb, unoptimised, does), as for the existing FABLE_RETAIL_CVECTORMAP_INSERT_KEYVALUE forced Insert.
+// Inline-budget: header opt-in FABLE_RETAIL_CVECTORMAP_INSERT_FORCEINLINE (CVectorMap<unsigned long,C3DVector,...>::Insert): retail expands both inserts (push_back end test + Dirty store, 0x007F3312..0x007F33BE); the c2 inline trace (tools/inl.sh) scores the plain inline Insert 191 (c1 72, f 0.026) -> called. Ego_r.pdb holds no out-of-line Insert (FableWin.pdb, unoptimised, does), as for the existing FABLE_RETAIL_CVECTORMAP_INSERT_KEYVALUE forced Insert.
 // Retail: Fable.exe 0x007F2DC0, 1942 bytes (`push ebp` .. `ret` at 0x007F3555; the bytes up to the reservation estimate are this TU's unreferenced inline COMDATs).
 //   Ego_r.pdb / FableWin.pdb ?FrameUpdate@CTCLightningNode@@UAEXXZ; rtti-vtables CTCLightningNode 0x0124337C slot 9 = 0x007F2DC0.
 // Callees: CBaseIntelligentPointer GetPItem 0x00A01B50 / ~ 0x00A01C10; CIntelligentPointer<CThing>(CThing*) 0x004A96F0 / operator= 0x004A9760;
@@ -62,7 +62,7 @@
 #define FABLE_RETAIL_C3DVECTOR_PACKED
 #define FABLE_RETAIL_CTHING_STATEACCESS
 #define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCAL
-#define FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE_B3
+#define FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE
 #define FABLE_RETAIL_CTCDPARTICLEEMITTER_UPDATEPARAMETERS
 #define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
 #define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
@@ -77,7 +77,7 @@
 #define FABLE_RETAIL_CHITPARAMETERS_ADDDAMAGE
 #define FABLE_RETAIL_CVECTORMAP_INSERT
 #define FABLE_RETAIL_CVECTORMAP_CTOR
-#define FABLE_RETAIL_CVECTORMAP_INSERT_FORCEINLINE_B
+#define FABLE_RETAIL_CVECTORMAP_INSERT_FORCEINLINE
 #define FABLE_RETAIL_CTHINGPHYSICAL
 #define FABLE_RETAIL_CTHINGGAMEOBJECT
 #define FABLE_RETAIL_CTHING_ORIGINAL_VTABLE

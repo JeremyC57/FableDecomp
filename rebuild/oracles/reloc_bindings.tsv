@@ -39578,11 +39578,11 @@ _WHITE	0137d700	0061ad60
 ??0?$vector@VCTVertexNormTex1@@V?$allocator@VCTVertexNormTex1@@@std@@@std@@QAE@I@Z	00bb9fd0	00bb8750
 ?RenderLandscapeDecalGroup@CEnginePrimitiveManagerParticleDecalGroup@@AAEXABVCEngineInternalPrimitiveParticleDecalGroup@@_NJ@Z	00bb8750	00bb8ef0
 ?SetupShadowHWAsDepthBuffer@CEngineScreenEffectDisplacementRenderer@@QAEXPBVCMatrix3x4@@@Z	00b86a00	00bc25f0
-?g_particleMeshBatchDrawEnabled_0139b7a4@@3JA	0139b7a4	00bc25f0
-?g_particleMeshBlendModeEnabled_0139b7a8@@3JA	0139b7a8	00bc25f0
-?g_particleMeshBlendOpEnabled_0139b7ac@@3JA	0139b7ac	00bc25f0
-?g_particleMeshRenderEnabled_0139b7b0@@3JA	0139b7b0	00bc25f0
-?g_particleMeshTailDrawEnabled_0139b7a0@@3JA	0139b7a0	00bc25f0
+?g_particleMeshBatchDrawEnabled@@3JA	0139b7a4	00bc25f0
+?g_particleMeshBlendModeEnabled@@3JA	0139b7a8	00bc25f0
+?g_particleMeshBlendOpEnabled@@3JA	0139b7ac	00bc25f0
+?g_particleMeshRenderEnabled@@3JA	0139b7b0	00bc25f0
+?g_particleMeshTailDrawEnabled@@3JA	0139b7a0	00bc25f0
 ?AddStaticMesh@CEnginePrimitiveManagerStaticMeshesBase@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z	00ba0fc0	00bf12a0
 ?PeekMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z	00a24270	00bf12a0
 ??0C3DDummyObject@@QAE@XZ	00a2e4b0	00bf18b0
@@ -39972,3 +39972,8 @@ _UseCardBaseInput	01383c3f	007d6870
 ?NoBlurPasses@?1??CaptureBackBuffer@CEngineScreenEffectGlowRenderer@@AAEXXZ@4JC	0139a6b4	00b5fab0
 ?QuadIndices@?1??CaptureBackBuffer@CEngineScreenEffectGlowRenderer@@AAEXXZ@4PAGA	0139a6b8	00b5fab0
 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z	007044d0	00d6d670
+?GetQuestCards@CTCHeroCentre@@QBE_NAAV?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@Z	0077dbc0	00622a00
+?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ	005bc4b2	00622a00
+?SetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QAEXJ@Z	005bc4b6	00622a00
+?DrawFlare@CTCLight@@IAEXJABVC3DVector@@AAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@4@@Z	00641ae0	00641c30
+?DrawLight@CTCLight@@IAEXJABVC3DVector@@AAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@4@@Z	006414a0	00641c30

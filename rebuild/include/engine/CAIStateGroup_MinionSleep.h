@@ -1,5 +1,4 @@
-#if defined(FABLE_RETAIL_CAISTATEGROUP_MINIONSLEEP) || defined(FABLE_RETAIL_CAISTATEGROUP_MINIONSLEEP_B)
-// (FABLE_RETAIL_CAISTATEGROUP_MINIONSLEEP_B: chunk 2026 row 0x0092DA20 CAIStateGroup_MinionSleep::Update, the same retail class.)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONSLEEP
 #ifndef FABLE_ENGINE_CAISTATEGROUP_MINIONSLEEP_H
 #define FABLE_ENGINE_CAISTATEGROUP_MINIONSLEEP_H
 // chunk Q15 (row 0x0092E130): Ego_r.pdb CAIStateGroup_MinionSleep (0x64) derives from CAIStateGroup_GoToBed (0x60) and adds
@@ -17,7 +16,7 @@ public:
 protected:
     bool WasCarryingWeapon;
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionSleep)==0x64);
+FABLE_STATIC_ASSERT_AT(20, sizeof(CAIStateGroup_MinionSleep)==0x64);
 #endif
 #else
 #ifndef FABLE_ENGINE_CAISTATEGROUP_MINIONSLEEP_H
@@ -61,9 +60,9 @@ struct CAIStateGroup_MinionSleep {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionSleep) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionSleep, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionSleep, WasCarryingWeapon) == 0x60);
+FABLE_STATIC_ASSERT_AT(64, sizeof(CAIStateGroup_MinionSleep) == 0x64);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CAIStateGroup_MinionSleep, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CAIStateGroup_MinionSleep, WasCarryingWeapon) == 0x60);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONSLEEP_H
 #endif

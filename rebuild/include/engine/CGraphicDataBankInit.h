@@ -5,8 +5,8 @@
 // (Ego_r.pdb / FableWin.pdb). The constructor is inline: out of line at 0x00415B80 (seven formats and both maxima -1, GenerateMipmaps
 // false, AllowDither true, AllowCompressedTextures false, AllowDXT1ForBooleanAlpha true), expanded in place at 0x00B2CE25..0x00B2CE86.
 // The landed CMainGameComponent::InitGraphics 0x00416C8A / CNewFrontendGameComponent::InitialiseGraphics 0x0042DDB3 model it locally.
-#ifndef FABLE_RETAIL_CPIXELFORMAT_B
-#define FABLE_RETAIL_CPIXELFORMAT_B
+#ifndef FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CPIXELFORMAT
 #endif
 #include "rebuild_abi.h"
 #include "engine/CPixelFormat.h"

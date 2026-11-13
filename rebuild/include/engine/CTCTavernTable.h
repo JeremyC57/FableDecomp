@@ -23,7 +23,7 @@ class CThingAICreature;
 #ifdef FABLE_RETAIL_CTCTAVERNTABLE_SEAT
 class CCharString;
 #endif
-#ifdef FABLE_RETAIL_CTCTAVERNTABLE_LAYOUT_B
+#ifdef FABLE_RETAIL_CTCTAVERNTABLE_FULL_LAYOUT
 // Retail opt-in (w22 agent2002, row 0x007B90F0 CTCTavernTable::OnInitialActivate): the members in Ego_r.pdb order and spelling
 // (struct_layouts_egor.tsv) at the retail offsets the landed constructor 0x007B8710 stores (STLport containers 12 bytes; the PDB's
 // vector<bool> is the generic byte vector in retail: OnInitialActivate grows it through ?_M_fill_insert@?$vector@_NV?$allocator@_N@std@@@std@@
@@ -37,7 +37,7 @@ class CThingAICreature;
 #endif
 class CTCTavernTable : public CTCBase {
 public:
-#ifdef FABLE_RETAIL_CTCTAVERNTABLE_LAYOUT_B
+#ifdef FABLE_RETAIL_CTCTAVERNTABLE_FULL_LAYOUT
     virtual void OnInitialActivate();                                                             //  6 0x007B90F0
     CCharString GetTankardName();                                                                 // 0x007B8680
     bool BeingServed;                                                                             // +0x0c
@@ -116,7 +116,7 @@ public:
     CThingObject* GetTankard(long seat_index);                                                    // 0x007B8590
 #endif
 };
-#ifdef FABLE_RETAIL_CTCTAVERNTABLE_LAYOUT_B
+#ifdef FABLE_RETAIL_CTCTAVERNTABLE_FULL_LAYOUT
 FABLE_STATIC_ASSERT(offsetof(CTCTavernTable, Tankards) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CTCTavernTable, SeatsCurrentlyUsed) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CTCTavernTable, NumPeopleSeated) == 0x40);

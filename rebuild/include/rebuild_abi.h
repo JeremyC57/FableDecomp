@@ -30,3 +30,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #define FABLE_JOIN(a, b) FABLE_JOIN_INNER(a, b)
 #define FABLE_STATIC_ASSERT(expression) \
     typedef char FABLE_JOIN(fable_static_assert_, __LINE__)[(expression) ? 1 : -1]
+// FABLE_STATIC_ASSERT_AT(n, expression): the same assert with its typedef name pinned to fable_static_assert_<n>, whatever line it is on.
+// The plain macro names its typedef after __LINE__, and VC7.1's stack-slot order in a few rows depends on those names (row 0x007E2A60:
+// six comment lines added to a header it includes swap two of its slots), so moving an assert is not a neutral edit. After editing a
+// header, tools/decomp_pipeline/linux_lane/lane_tools/lane_merge/pin_asserts.py respells every assert that moved with the line number
+// it had before (docs/pipeline/GOTCHAS.md, landing fz). Use the plain macro for new asserts.
+#define FABLE_STATIC_ASSERT_AT(pinned_line, expression) \
+    typedef char FABLE_JOIN(fable_static_assert_, pinned_line)[(expression) ? 1 : -1]

@@ -16,8 +16,8 @@ public:
     virtual void RelocateData(long, void*, void*, long);                 // 0x00A8B4C0
     virtual C3DVector GetHelperPointPositionAnimated(const C3DHelperPoint&,const C3DAnimationBlendState&,C3DAnimationManager&)const;   // 0x00A89740
     virtual C3DVector GetHelperPointPositionAnimated(const C3DHelperPoint&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&)const;   // 0x00A898D0
-    virtual void GetDummyObjectPositionAnimated(const C3DDummyObject&,C3DVector&,const C3DAnimationBlendState&,C3DAnimationManager&,bool)const;   // 0x00A89A70
-    virtual void GetDummyObjectPositionAnimated(const C3DDummyObject&,C3DVector&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&,bool)const;   // 0x00A89E40
+    virtual void GetDummyObjectPositionAnimated(const C3DDummyObject&,C3DDummyObject&,const C3DAnimationBlendState&,C3DAnimationManager&,bool)const;   // 0x00A89A70
+    virtual void GetDummyObjectPositionAnimated(const C3DDummyObject&,C3DDummyObject&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&,bool)const;   // 0x00A89E40
     virtual void GetDummyObjectTransformAnimated(const C3DDummyObject&,CMatrix3x4&,const C3DAnimationBlendState&,C3DAnimationManager&,bool)const;   // 0x00A8A220
     virtual void GetDummyObjectTransformAnimated(const C3DDummyObject&,CMatrix3x4&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&,bool)const;   // 0x00A8A5F0
 #else

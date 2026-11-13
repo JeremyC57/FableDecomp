@@ -22,7 +22,8 @@ def pp(tree,f):
         os.makedirs(os.path.dirname(p),exist_ok=True); open(p,'a').close()
     err=re.sub(r'^.*?(error|warning)','\\1',r.stderr,flags=re.M)
     err=err.replace(tree,'TREE')
-    body=re.sub(r'fable_static_assert_\d+','fable_static_assert_N',' '.join(r.stdout.split()))   # the assert typedef name carries __LINE__      # token text only: blank lines and spacing differ when unrelated opt-in blocks are added
+    body=' '.join(r.stdout.split())
+    if os.environ.get('EQUIV_LOOSE'): body=re.sub(r'fable_static_assert_\d+','fable_static_assert_N',body)   # default is exact: VC7.1 codegen can depend on these names (row 0x007E2A60)   # the assert typedef name carries __LINE__      # token text only: blank lines and spacing differ when unrelated opt-in blocks are added
     return hashlib.sha1((body+'\n##ERR##\n'+'\n'.join(sorted(set(l for l in err.split('\n') if 'error' in l)))).encode()).hexdigest(), ('error' in r.stderr)
 def one(row):
     a,src,tst=row; res=[]
