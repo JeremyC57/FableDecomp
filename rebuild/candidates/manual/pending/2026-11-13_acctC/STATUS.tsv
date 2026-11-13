@@ -3,22 +3,22 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 005ce0e6	MATCHED_STAGED	15910	2026-11-13_acctC_c1a	C1	parked	CTCInventoryStats::CTCInventoryStats::vfunc_86
 00bd3070	OPEN	11288		true length checked by C13: code to ret 8 at 0x00BD5C3A + pad + 18-entry jump table 0x00BD5C40..87	parked	CEnginePrimitiveManagerAnimatedMeshesBase::RenderMeshPrimitive
 0060eeb0	MATCHED_STAGED	10254	2026-11-13_acctC_c14a	C1 -> C4	parked	CTCInventoryMap::ConstructPCMapList
-00ba2350	IN_PROGRESS	9632	2026-11-13_acctC_c19a/open_00ba2350	C16 -> C17 -> C19 -> C20 (Fable) row 1: DIFFER(9516v9632); more than one c2 priority differs from retail; lead: inline helper texts whose /Od size differs from FableWin	parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
+00ba2350	PARKED	9632	2026-11-13_acctC_c19a/open_00ba2350	C16 -> C17 -> C19 -> C20 (Fable): DIFFER(9376v9632), ~200 grades in all; block-2 shape now retail (alpha read in both arms); with one forced c2 priority 2310/2419 instructions equal; natural cause of the colouring order not found. Parked on owner direction (usage); next step listed in NOTES_C20.md	parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
 00b783f0	OPEN	9343	2026-11-13_acctC_c19a/open_00b783f0	C8 -> C13 -> C16: DIFFER(9343v9343), 3 residues; quartet needs exactly 2 dead units before the second SetCommonRenderStates expansion; bool-parameter helper ruled out	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
 005f1b10	MATCHED_STAGED	8383	2026-11-13_acctC_c9a	C5 -> C7 -> C9	parked	CTCInventoryAbilities::ConstructPCMagicList
 0058578b	OPEN				parked	CTCInventory::CTCInventory::vfunc_30
 00b4d370	OPEN				parked	CEngineShadowRenderer::UpdateShadowSpace
 00601310	OPEN				parked	_global::ConstructQuestsScreen_MainMenu
-00b89c30	OPEN				parked	CEngineScreenEffectOutlineGlow::ApplyOutline
+00b89c30	IN_PROGRESS			C22 row 1	parked	CEngineScreenEffectOutlineGlow::ApplyOutline
 00b5ca70	OPEN				parked	CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer
 00651b04	MATCHED_STAGED	5126	2026-11-13_acctC_c2a	C2	parked	CDrawAbilityButtons::Draw
-00baa870	OPEN				parked	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList
+00baa870	IN_PROGRESS			C22 row 4	parked	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList
 00bb3e80	MATCHED_STAGED	4540	2026-11-13_acctC_c19a	C2 -> C3 -> C6 -> C8; 11 inferred release asserts (fitted count, review item)	parked	CEngineClothRenderer::RenderClothPrimitive
 00a91640	OPEN				parked	_gapscan::sub_00a91640
-00b8b780	OPEN				parked	CEngineBillboardGenerator::RenderBillboard
-00ba5260	IN_PROGRESS	4056	2026-11-13_acctC_c19a/open_00ba5260	C13 -> C16 -> C17 -> C19 -> C20: RELOCATION_MATCH inside the TU; lands with 00ba2350 (the TU needs its real body); test not written	parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
-00bcc800	OPEN				parked	CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
+00b8b780	IN_PROGRESS			C22 row 2	parked	CEngineBillboardGenerator::RenderBillboard
+00ba5260	PARKED	4056	2026-11-13_acctC_c19a/open_00ba5260	RELOCATION_MATCH inside the TU (C19, C20) but the TU needs the real 00ba2350 body; lands with it; test not written	parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
+00bcc800	IN_PROGRESS			C22 row 3	parked	CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
 0048e78e	OPEN				parked	CSubtitleRenderer::DrawButtonGraphics
 00cbfb7d	OPEN				parked	_global::RunCutsceneMacro
 00f0fb70	OPEN				parked	NScript::CQ_ArenaScript::Main

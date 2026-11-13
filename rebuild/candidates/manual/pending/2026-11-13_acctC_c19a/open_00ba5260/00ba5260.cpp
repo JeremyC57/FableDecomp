@@ -1,5 +1,5 @@
 // CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive(CEngineSubPrimitiveStaticMesh& sub_primitive, ERenderPassType pass) -- draw one static mesh primitive inside a render-state capture block: fog / specular on, pick the diffuse mipmap from the camera distance, set the pass's z-write / alpha-test / alpha-blend states, the stencil mask, the shaders and the static blocks' textures, then draw its blocks with an occlusion test around them and reset the device and lighting state
-// Grade: DIFFER(9516v9632) for the same-TU body of SetupRenderModeShadersAndConstants 0x00BA2350 (row 2, not matched) -- agentC19: this row 0x00BA5260 itself grades RELOCATION_MATCH in this TU, and so do SetupStaticBlocks 0x00BA50A0, GetDiffuseTexture 0x00BA9360, GetBumpTexture 0x00BA95D0, SetupFirstTextures 0x00B9D670, IndexBuffer 0x00B9E5B0, DegenerateTriangles 0x00B9E750, SetupStaticBlocksBlankTextures 0x00BA4A40; row 1 needs the row-2 body (declaration only: DIFFER(4060v4056)), so it lands only with row 2. Changes since agentC17: GetAppropriateMipmap text (named radius, distance in two steps, (float)GetWidth(), GFLimit<long,long,long>; /Od 81i = FableWin 81i), PDB global names (GPPrimitiveRendererSharedData 0x01436E78, GPPrimitiveRenderer 0x01436E80, GPShadowRenderer, GPPrimitiveTypeInfo, GTopBitInByteTable), shared-header touch helpers (CGraphicInfo.h GETFRAME/TOUCHFRAME/TOUCHTEXTURE_GET, CResource TOUCHRESOURCE) and GetTexture in the landed 0x00B66C10 control flow.
+// Grade: DIFFER(9516v9632) for the same-TU body of SetupRenderModeShadersAndConstants 0x00BA2350 (row 2, not matched) -- agentC19: this row 0x00BA5260 itself grades RELOCATION_MATCH in this TU, and so do SetupStaticBlocks 0x00BA50A0, GetDiffuseTexture 0x00BA9360, GetBumpTexture 0x00BA95D0, SetupFirstTextures 0x00B9D670, IndexBuffer 0x00B9E5B0, DegenerateTriangles 0x00B9E750, SetupStaticBlocksBlankTextures 0x00BA4A40; row 1 needs the row-2 body (declaration only: DIFFER(4060v4056)), so it lands only with row 2. Changes since agentC17: GetAppropriateMipmap text (named radius, distance in two steps, (float)GetWidth(), GFLimit<long,long,long>; /Od 81i = FableWin 81i), PDB global names (GPPrimitiveRendererSharedData 0x01436E78, GPPrimitiveRenderer 0x01436E80, GPShadowRenderer, GPPrimitiveTypeInfo, GTopBitInByteTable), shared-header touch helpers (CGraphicInfo.h GETFRAME/TOUCHFRAME/TOUCHTEXTURE_GET, CResource TOUCHRESOURCE) and GetTexture in the landed 0x00B66C10 control flow. agentC20: same TU with the head-merged alpha read + shader getters in the 0x00BA2350 body: this row still RELOCATION_MATCH, 0x00BA2350 DIFFER(9376v9632).
 //   9632 bytes, not landed): retail compiled this row with that callee's body visible, so c2 knew &shader_flags / &render_degenerate_triangles
 //   are not captured, read them lazily and cached shader_flags across later calls (0x00BA5FEB `mov ebx,[ebp-1Ch]`, 0x00BA60F2 `mov al,[ebp-4]`).
 //   With any non-capturing body of it in the TU (PROBE probe/u1_standin_PROBE.cpp, never landable) this exact text grades DIFFER(4056v4056)
@@ -105,6 +105,8 @@
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SETTEXTUREFACTOR
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTHRENDER
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTHSHADERS
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_STATICMESHSHADERS
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTH2D
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SETUPBLANKTEXTURES
 #define FABLE_RETAIL_CENGINESUBPRIMITIVESTATICMESH_PARENTBASE
@@ -294,6 +296,44 @@ FABLE_FORCEINLINE void __fastcall CEnginePrimitiveRenderUtil::SetTextureFactor(c
     else
         NEngineInternal::GPRenderManager->SetTextureFactor(colour.GetRGBColour().IntValue);
 }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShader2DDiffuse(EEnginePrimitiveBlendMode blend_mode)
+{
+    if (blend_mode == ENGINE_PRIMITIVE_BLEND_ADDITIVE || blend_mode == ENGINE_PRIMITIVE_BLEND_ADDSMOOTH)
+        return NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuseAdditiveAlpha;
+    return NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuse;
+}
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShader2DDiffuseDP3Bump(EEnginePrimitiveBlendMode blend_mode)
+{
+    if (blend_mode == ENGINE_PRIMITIVE_BLEND_ADDITIVE || blend_mode == ENGINE_PRIMITIVE_BLEND_ADDSMOOTH)
+        return NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuseDP3BumpAdditiveAlpha;
+    return NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuseDP3Bump;
+}
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShader2DDiffuseEnv(EEnginePrimitiveBlendMode blend_mode)
+{
+    if (blend_mode == ENGINE_PRIMITIVE_BLEND_ADDITIVE || blend_mode == ENGINE_PRIMITIVE_BLEND_ADDSMOOTH)
+        return NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuseEnvAdditiveAlpha;
+    return NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuseEnv;
+}
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShader2DDiffuseOnly(EEnginePrimitiveBlendMode blend_mode)
+{
+    if (blend_mode == ENGINE_PRIMITIVE_BLEND_ADDITIVE || blend_mode == ENGINE_PRIMITIVE_BLEND_ADDSMOOTH)
+        return NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuseOnlyAdditiveAlpha;
+    return NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuseOnly;
+}
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderDiffuse() { return NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuse; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseColourTextureDiffuseAlpha() { return NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseColourTextureDiffuseAlpha; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseDP3BumpFogShadow() { return *NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseDP3BumpFogShadow; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseDP3BumpFogShadowOutputFactor() { return *NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseDP3BumpFogShadowOutputFactor; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseEnvFog() { return NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseEnvFog; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseEnvFogShadow() { return *NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseEnvFogShadow; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseFog() { return NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseFog; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseFogShadow() { return *NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseFogShadow; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseFogShadowOutputFactor() { return *NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseFogShadowOutputFactor; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseOnly() { return NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseOnly; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderOutlineSmoothFill() { return NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderOutlineSmoothFill; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderOutlineSmoothFillAlpha() { return NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderOutlineSmoothFillAlpha; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderOutlineSmoothFillDP3() { return NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderOutlineSmoothFillDP3; }
+inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShaderOutlineSmoothFillDP3Alpha() { return NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderOutlineSmoothFillDP3Alpha; }
 FABLE_FORCEINLINE void __fastcall CEnginePrimitiveRenderUtil::ApplyPixelShader(const CPixelShader& shader)
 {
     NEngineInternal::GPShaderRenderManager->ApplyPixelShader(shader);
@@ -404,9 +444,10 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
     unsigned long flags = 0x109;
     if (pass == RENDER_PASS_COMBINED) {
         long render_mode = sub_primitive.GetRenderMode();
-        unsigned char alpha = sub_primitive.PeekAlpha();
+        unsigned char alpha;
         if (sub_primitive.PeekRenderFlags() & 8) {
             render_mode = 5;
+            alpha = sub_primitive.PeekAlpha();
             if (!material->Transparent) {
                 long alpha_value = alpha;
                 long solid_alpha = StippleAlphaSolidFactor * alpha_value;
@@ -415,7 +456,8 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
                 else
                     alpha = (unsigned char)solid_alpha;
             }
-        }
+        } else
+            alpha = sub_primitive.PeekAlpha();
         tint_colour.A = alpha;
         CEnginePrimitiveRenderUtil::SetTextureFactor(CRGBFloatColour(tint_colour));
         NEngineInternal::GPLightingManager->SetCurrentEnvironmentThemeChannel(primitive->ThemeChannelDesc);
@@ -424,19 +466,19 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
         case 2:
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShader(lights.GetCount());
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuse);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuse());
             NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         case 3:
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShaderSpotLight(lights.GetCount());
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuse);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuse());
             NEngineInternal::GPLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
             break;
         case 4:
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShader(lights.GetCount());
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseFog);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseFog());
             NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         case 5: {
@@ -467,7 +509,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPRenderManager->AttachTextureToStage(2, GetReflectionTexture(material, mipmap_level, used_blank, graphic_bank, block_on_load));
             flags = 0x129;
             ApplyStaticVertexShaderEnv(lights.GetCount());
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseEnvFog);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseEnvFog());
             NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         }
@@ -479,7 +521,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x129;
             ApplyStaticVertexShaderEnv(lights.GetCount());
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseEnvFog);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseEnvFog());
             NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         }
@@ -487,16 +529,16 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             texture_stages.DiffuseTextureStage = 0;
             texture_stages.BumpTextureStage = 1;
             ApplyStaticVertexShader(lights.GetCount());
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseFog);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseFog());
             NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         case 9:
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShaderShadow(lights.GetCount());
             if (tinted)
-                CEnginePrimitiveRenderUtil::ApplyPixelShader(*NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseFogShadowOutputFactor);
+                CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseFogShadowOutputFactor());
             else
-                CEnginePrimitiveRenderUtil::ApplyPixelShader(*NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseFogShadow);
+                CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseFogShadow());
             NEngineInternal::GPShadowRenderer->SetupShadowFuncRenderStates(1, primitive->ObjectTransform, CEngineShadowRenderer::CColorBufferDepthPackParameters(4, 5, 0));
             flags = 0x10b;
             break;
@@ -508,7 +550,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x12b;
             ApplyStaticVertexShaderEnvShadow(lights.GetCount());
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(*NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseEnvFogShadow);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseEnvFogShadow());
             NEngineInternal::GPShadowRenderer->SetupShadowFuncRenderStates(2, primitive->ObjectTransform, CEngineShadowRenderer::CColorBufferDepthPackParameters(4, 5, 0));
             break;
         }
@@ -518,9 +560,9 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPRenderManager->AttachTextureToStage(2, NEngineInternal::GPResourceManager->GetZeroRGBATexture());
             ApplyStaticVertexShaderDP3BumpShadow(lights.GetCount());
             if (tinted)
-                CEnginePrimitiveRenderUtil::ApplyPixelShader(*NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseDP3BumpFogShadowOutputFactor);
+                CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseDP3BumpFogShadowOutputFactor());
             else
-                CEnginePrimitiveRenderUtil::ApplyPixelShader(*NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseDP3BumpFogShadow);
+                CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseDP3BumpFogShadow());
             flags = 0x10b;
             NEngineInternal::GPShadowRenderer->SetupShadowFuncRenderStates(3, primitive->ObjectTransform, CEngineShadowRenderer::CColorBufferDepthPackParameters(4, 5, 0));
             break;
@@ -528,9 +570,9 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShaderSpotShadow(lights.GetCount());
             if (tinted)
-                CEnginePrimitiveRenderUtil::ApplyPixelShader(*NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseFogShadowOutputFactor);
+                CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseFogShadowOutputFactor());
             else
-                CEnginePrimitiveRenderUtil::ApplyPixelShader(*NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseFogShadow);
+                CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseFogShadow());
             NEngineInternal::GPShadowRenderer->SetupShadowFuncRenderStates(1, primitive->ObjectTransform, CEngineShadowRenderer::CColorBufferDepthPackParameters(4, 5, 0));
             NEngineInternal::GPLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
             flags = 0x10b;
@@ -543,14 +585,14 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x12b;
             ApplyStaticVertexShaderEnvSpotShadow(lights.GetCount());
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(*NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseEnvFogShadow);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseEnvFogShadow());
             NEngineInternal::GPShadowRenderer->SetupShadowFuncRenderStates(2, primitive->ObjectTransform, CEngineShadowRenderer::CColorBufferDepthPackParameters(4, 5, 0));
             NEngineInternal::GPLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
             break;
         }
         case 1:
             ApplyStaticVertexShader(0);
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseOnly);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseOnly());
             break;
         case 16: {
             texture_stages.DiffuseTextureStage = 0;
@@ -559,7 +601,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPRenderManager->AttachTextureToStage(1, Get2DAlphaMaskTexture(mask->AlphaMaskBankIndex, 0, used_blank, mask->AlphaMaskBank, block_on_load));
             Set2DAlphaMaskTextureMode(1, mask->FilterMask, true);
             Apply2DStaticVertexShader();
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuse);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShader2DDiffuse(ENGINE_PRIMITIVE_BLEND_ALPHA));
             NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, C3DVector(mask->AlphaMaskPositionFactors.X, mask->AlphaMaskPositionFactors.Y,
                                                                                              mask->AlphaMaskPositionFactors.Z), mask->AlphaMaskPositionFactors.W);
             NEngineInternal::GPRenderManager->SetFogEnable(false);
@@ -576,7 +618,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x129;
             Apply2DStaticVertexShaderEnv();
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuseEnv);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShader2DDiffuseEnv(ENGINE_PRIMITIVE_BLEND_ALPHA));
             NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, C3DVector(mask->AlphaMaskPositionFactors.X, mask->AlphaMaskPositionFactors.Y,
                                                                                              mask->AlphaMaskPositionFactors.Z), mask->AlphaMaskPositionFactors.W);
             NEngineInternal::GPRenderManager->SetFogEnable(false);
@@ -592,7 +634,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPRenderManager->AttachTextureToStage(3, mask_texture);
             Set2DAlphaMaskTextureMode(2, mask->FilterMask, true);
             Apply2DStaticVertexShaderDP3Bump();
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuseDP3Bump);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShader2DDiffuseDP3Bump(ENGINE_PRIMITIVE_BLEND_ALPHA));
             NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, C3DVector(mask->AlphaMaskPositionFactors.X, mask->AlphaMaskPositionFactors.Y,
                                                                                              mask->AlphaMaskPositionFactors.Z), mask->AlphaMaskPositionFactors.W);
             NEngineInternal::GPRenderManager->SetFogEnable(false);
@@ -604,7 +646,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPRenderManager->AttachTextureToStage(0, Get2DAlphaMaskTexture(mask->AlphaMaskBankIndex, 0, used_blank, mask->AlphaMaskBank, block_on_load));
             Set2DAlphaMaskTextureMode(0, mask->FilterMask, true);
             Apply2DStaticVertexShader();
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShader2DDiffuseOnly);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShader2DDiffuseOnly(ENGINE_PRIMITIVE_BLEND_ALPHA));
             NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, C3DVector(mask->AlphaMaskPositionFactors.X, mask->AlphaMaskPositionFactors.Y,
                                                                                              mask->AlphaMaskPositionFactors.Z), mask->AlphaMaskPositionFactors.W);
             NEngineInternal::GPRenderManager->SetFogEnable(false);
@@ -626,12 +668,12 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             SetupBlankTextures(texture_stages, mesh_primitive->IsDP3Bump());
         }
         ApplyStaticVertexShader(0);
-        CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseFog);
+        CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseFog());
     } else if (pass == RENDER_PASS_OUTLINE_SMOOTH_STENCIL) {
         SetupOutlineSmoothStencilStates(*static_cast<const CEngineMeshEffectOutline*>(primitive->MeshEffect.Get()), primitive->Scale);
         SetupBlankTextures(texture_stages, mesh_primitive->IsDP3Bump());
         ApplyVertexShader(mesh_primitive->IsDP3Bump() ? VertexShaderDP3BumpOutline : VertexShaderOutline);
-        CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseOnly);
+        CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseOnly());
         *render_degenerate_triangles = true;
     } else if (pass == RENDER_PASS_OUTLINE_SMOOTH_FILL) {
         const CEngineMeshEffectOutline* effect = static_cast<const CEngineMeshEffectOutline*>(primitive->MeshEffect.Get());
@@ -644,16 +686,16 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             texture_stages.DiffuseTextureStage = 0;
             if (mesh_primitive->IsDP3Bump()) {
                 texture_stages.BumpTextureStage = 1;
-                CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderOutlineSmoothFillDP3Alpha);
+                CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderOutlineSmoothFillDP3Alpha());
             } else
-                CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderOutlineSmoothFillAlpha);
+                CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderOutlineSmoothFillAlpha());
             SetupOutlineSmoothFillStates(*effect, primitive->Scale, true, stage_count);
         } else {
             SetupBlankTextures(texture_stages, dp3_bump);
             if (mesh_primitive->IsDP3Bump())
-                CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderOutlineSmoothFillDP3);
+                CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderOutlineSmoothFillDP3());
             else
-                CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderOutlineSmoothFill);
+                CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderOutlineSmoothFill());
             SetupOutlineSmoothFillStates(*effect, primitive->Scale, false, stage_count);
         }
     } else if (pass == RENDER_PASS_OUTLINE_SMOOTH_ALPHA_STENCIL_MASK) {
@@ -664,11 +706,11 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             texture_stages.DiffuseTextureStage = 0;
             if (mesh_primitive->IsDP3Bump())
                 texture_stages.BumpTextureStage = 1;
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseColourTextureDiffuseAlpha);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseColourTextureDiffuseAlpha());
             SetupOutlineSmoothAlphaStencilMaskStates(*effect);
         } else {
             SetupBlankTextures(texture_stages, mesh_primitive->IsDP3Bump());
-            CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseOnly);
+            CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseOnly());
             SetupOutlineSmoothAlphaStencilMaskStates(*effect);
         }
     } else {
@@ -679,7 +721,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             SetupOutlineFillStates(*effect, primitive->Scale);
         SetupBlankTextures(texture_stages, mesh_primitive->IsDP3Bump());
         ApplyVertexShader(mesh_primitive->IsDP3Bump() ? VertexShaderDP3BumpOutline : VertexShaderOutline);
-        CEnginePrimitiveRenderUtil::ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuseOnly);
+        CEnginePrimitiveRenderUtil::ApplyPixelShader(CEnginePrimitiveRenderUtil::GetPixelShaderDiffuseOnly());
         *render_degenerate_triangles = true;
     }
     if (texture_stages.DiffuseTextureStage >= 0) {
