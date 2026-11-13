@@ -1,0 +1,12 @@
+group open: rows 10 | headers changed 33 | landed users to recheck 0 | new:engine/CTCOpinionSource.h new:engine/CThingFilter_IsOpinionSourceWithFreshDeed.h new:engine/CTCRegionFollower.h conflicts1:engine/CTCInventoryMap.h new:engine/CAIStateGroup_DeedReactionRoot.h new:engine/CThingFilter_RadiusIntersectsInfiniteLine.h conflicts1:engine/CTCStealth.h conflicts1:engine/CGPUScratchBufferTextureManager.h new:engine/CThingFilter_HasPhysicsMesh.h conflicts1:engine/CTCCombat.h
+004830a1 LANDED 004830a1   WARN RELOC_NAME: ?GetMainPlayerJoystickDeviceNumber@CPlayerManager@@QBEJXZ -> 00449980 labelled 'Catch@0042ae0a'
+00563920 LANDED 00563920   WARN RELOC_NAME: ?ActivityEnumToCharString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@ABW4EOnlineScoreboardActivity@1@@Z -> 0055e7c0 labelled 'CName
+005ad571 LANDED 005ad571   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312
+00607330 LANDED 00607330   RELOCATION_MATCH PASS   ConstructLogbookList
+006d1250 LANDED 006d1250   WARN RELOC_CONFLICT: ??$find@J@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE?AU?$_Rb_tree_iterator@JU?$_Const_traits@J@std@
+00745120 LANDED 00745120   WARN RELOC_CONFLICT: ?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ -> 00744950 here, 007448f0 in landed 00864620
+009609b0 LANDED 009609b0   WARN RELOC_CONFLICT: ?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ -> 00744950 here, 007448f0 in landed 00864620
+00a079b0 LANDED 00a079b0   WARN STANDIN_LEAF ??0CDeviceState@CRenderStateManager@@QAE@XZ (catalog CRenderStateManager::CDeviceState; names another function)
+00b5fab0 LANDED 00b5fab0   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSu
+00d6d670 LANDED 00d6d670   RELOCATION_MATCH PASS   Conclusion
+lander warnings: RELOC_ALIAS RELOC_CONFLICT RELOC_NAME

@@ -1,0 +1,141 @@
+address	name	length	route	compiler_flags
+007891f2	CTCTrapBase::BulletTimeFrameUpdate	5	gated driver (automatic header merge)	
+00aed600	NParticleEngine::CParticleEmitter::InterpolateTo	1254	hand merge (group render)	
+007b90f0	CTCTavernTable::OnInitialActivate	1257	gated driver (automatic header merge)	
+009fed30	CGraphicDataBank::LoadGraphicFrame	1206	gated driver (automatic header merge)	
+0051f480	NThingManager::CEntityRuntimePersistence::ClearPersistenceDataForSectionInEntityScript	1270	gated driver (automatic header merge)	
+00af4900	NParticleEngine::CParticleSystem::DatabaseSerialise	1282	gated driver (automatic header merge)	
+00e10e60	NScript::CQ_WaspBossScript::CWaspChaseWoman::Main	1306	gated driver (automatic header merge)	
+00912ba0	CAIStateGroup_FlyingThingBase::CalculatePrettyPath	1314	hand merge (group ai)	
+00725500	CTCPhysicsControlled::PerformImpulseBasedMovement	1324	gated driver (automatic header merge)	
+00598463	NUISystem::CFrontEndManager::RefreshAvailableSavedGamesForProfile	1335	gated driver (automatic header merge)	
+00a9eb90	C3DAnimationManager::BlendAnimations	1337	gated driver (automatic header merge)	
+007d8570	CTCTavernGameSpotTheAddition::ProcessInput	1340	gated driver (automatic header merge)	
+009609b0	CAIStateGroup_DeedReactionRoot::IsRunnable	1352	hand merge (group open)	
+00b3c5d0	CEngineResourceManager::SetupAlphaStippleTexture	1363	gated driver (automatic header merge)	
+00b51570	CEngineWeatherRenderer::BuildBuffers	1254	gated driver (automatic header merge)	
+00a12ee0	CPhysicsMeshObject::GetNavigationLevelVolumes	1144	hand merge (group mesh)	
+00e621f0	NScript::CV_BodyGuardScript::CBodyGuard::SetHenchmanAsHired	1340	gated driver (automatic header merge)	
+00550dc0	NUISystem::CTable::Draw	1399	gated driver (automatic header merge)	
+00d91e00	NScript::CQ_HobbeCaveScript::CHobbeSpawn::Main	1399	gated driver (automatic header merge)	
+00a4d920	C3DAnimation2::CalcLocalBoneTransformationRelative	1341	hand merge (group mesh)	
+00b399a0	CEngineInternalAttachedPrimitive::UpdateOutputPrimitive	1414	gated driver (automatic header merge)	
+00665860	CThingCreatureBase::UpdateAnimation	1405	gated driver (automatic header merge)	
+004ca390	CThing::ConstructFromBinarySave	1430	gated driver (automatic header merge)	
+00b54890	CEngineWeatherRenderer::RenderRain	1431	gated driver (automatic header merge)	
+007cf9a0	CTCTavernGameShoveHaPenny::ProcessInput	1434	gated driver (automatic header merge)	/O2 /Oy /W3 /d2inlT116
+006deee0	CTCTrophy::GlobalUpdate	1437	gated driver (automatic header merge)	
+00b665e0	CEngineSkyRenderer::GetEnvironmentMap	1171	gated driver (automatic header merge)	
+006de8c0	CTCTrophy::OnShowTrophyPerformAction	1460	gated driver (automatic header merge)	
+00bb1f50	CEngineClothRenderer::CalculateVertexNormals	1508	gated driver (automatic header merge)	
+00952890	CAIStateGroup_JackDragon::UpdateGround	1509	hand merge (group ai)	
+00716de0	NTCScriptedControl::CActionTalkBase::Update	1514	gated driver (automatic header merge)	
+007a0d90	CTCWillLightning::GetTargets	1517	gated driver (automatic header merge)	
+00492381	CSubtitleRenderer::ProcessEmbeddedGraphicTags	1522	gated driver (automatic header merge)	
+004959e0	CFrontendGameComponent::GetProfileNames	1522	gated driver (automatic header merge)	/O2 /Oy /W3 /GS
+0097fea0	CAIStateGroupBase::AIAction_FindAGuardAndYellForHelp	1533	gated driver (automatic header merge)	
+00745120	CTCPerceiveThing::UpdateLineOfSight	1538	hand merge (group open)	
+00b2b180	CEngineSurfaceCompositionManager::RenderToTexture	1539	hand merge (group render)	
+005248b0	NThingManager::CEntityRuntimePersistence::LoadFromGameStateScript	1543	gated driver (automatic header merge)	
+006b42f0	CEnvironment::RenderUpdate	1543	hand merge (group render)	
+00bf12a0	CEnginePrimitiveRenderUtil::AddGeneratedObjects	1549	hand merge (group mesh)	
+00949ab0	CAIStateGroup_GoToPub::IsRunnable	1572	gated driver (automatic header merge)	
+00bf18b0	CEnginePrimitiveRenderUtil::AddGeneratedObjects	1576	hand merge (group mesh)	
+006de280	CTCTrophy::TerminateMinigame	1581	gated driver (automatic header merge)	/O2 /Oy /W3 /d2inlT77
+00626110	CTCQuickAccessMenu::ContructItemLists	1596	gated driver (automatic header merge)	/O2 /Oy /W3 /d2inlT59
+006414a0	CTCLight::DrawLight	1596	gated driver (automatic header merge)	
+00bea110	CEngineWaterSettings::UpdateConstants	1607	hand merge (group render)	
+006d1250	CTCWife::CheckAppearanceChanges	1608	hand merge (group open)	/O2 /Oy /W3 /GS
+00595cc1	NUISystem::CFrontEndManager::ConstructFileDescription	1613	hand merge (group game)	/O2 /Oy /W3 /GS
+00a4e300	C3DAnimation2::GetDeltaMovement	1619	hand merge (group mesh)	
+00b3f5e0	CEngineMap::PeekMapNormal	1624	gated driver (automatic header merge)	/O2 /Oy /W3 /d2inlT444
+0061ad60	CTCInventoryQuests::DrawActiveTestQuests	1631	gated driver (automatic header merge)	
+00974110	CAIStateGroup_JackOfBladesBase::Summon	1631	gated driver (automatic header merge)	
+00b2cb40	CEngineSurfaceCompositionManager::CEngineSurfaceCompositionManager	1637	hand merge (group render)	
+00597df7	NUISystem::CFrontEndManager::GetSavedGameNames	1644	hand merge (group game)	
+00b9a4a0	CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive	1674	hand merge (group mesh)	
+00b2d330	CEngineSurfaceCompositionManager::UpdateDiskCacheTexture	1723	hand merge (group render)	
+004caa00	CThing::ConstructFromLevelScript	1730	hand merge (group game)	
+00b40bd0	CEngineMap::PeekWaterDepth	1736	gated driver (automatic header merge)	/O2 /Oy /W3 /d2inlT576
+00a50510	C3DAnimation2::InitialiseAnimationSequences	1748	hand merge (group mesh)	
+00951430	CAIStateGroup_JackDragon::IntoGroundSwoop	1765	hand merge (group ai)	
+00626750	CTCQuickAccessMenu::ContructItemLists	1771	gated driver (automatic header merge)	/O2 /Oy /W3 /d2inlT59
+007d6870	CTCTavernGameCardPairs::ProcessInput	1778	hand merge (group game)	
+007f26b0	CTCLightningOrb::Initialise	1802	hand merge (group ai)	
+0092da20	CAIStateGroup_MinionSleep::Update	1802	hand merge (group ai)	
+007c6e50	CTCTurncoatSpell::FrameUpdate	1806	gated driver (automatic header merge)	
+00b891b0	CEngineScreenEffectOutlineGlow::CEngineScreenEffectOutlineGlow	1819	hand merge (group render)	
+00dcd350	NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::Main	1833	gated driver (automatic header merge)	
+00b4fc40	CEngineShadowRenderer::SetupShadowFuncRenderStates	1837	hand merge (group mesh)	/O2 /Oy /W3 /d2inlT314
+00b8df50	CEngineOcclusionManager::FrameEnd	1626	hand merge (group mesh)	
+0094c050	CAIStateGroup_SellToBuyer::Update	1859	gated driver (automatic header merge)	
+007d3820	CTCTavernGameCoinGolf::ProcessInput	1883	hand merge (group game)	/O2 /Oy /W3 /d2inlT87
+00605570	CTCInventoryMap::ConstructRegionDescription	1890	gated driver (automatic header merge)	/O2 /Oy /W3 /d2inlT107
+00b65a20	CEngineSkyRenderer::RenderOuterSky	1893	gated driver (automatic header merge)	
+00b54e30	CEngineWeatherRenderer::RenderSnow	1901	gated driver (automatic header merge)	
+00ba6ff0	CEnginePrimitiveManagerStaticMeshesBase::DrawSilhouette	1907	hand merge (group mesh)	
+009c47a0	CFileInstaller::AddFile	1915	gated driver (automatic header merge)	
+0069ae80	CGameCameraManager::CGameCameraManager	1923	gated driver (automatic header merge)	
+00a4c5e0	C3DAnimationSequenceData::ReadCompressedFromFile	1844	gated driver (automatic header merge)	
+00915b60	CAIStateGroup_MoveGoodsBase::PlaceGoods	1931	hand merge (group ai)	
+005fe090	CTCInventoryMap::ConstructQuestsScreen	1937	hand merge (group game)	
+00bb8750	CEnginePrimitiveManagerParticleDecalGroup::RenderLandscapeDecalGroup	1951	hand merge (group mesh)	
+00600b60	CTCInventoryMap::ConstructRegionDescriptionBuyableBuildings	1963	gated driver (automatic header merge)	
+0094e7b0	CAIStateGroup_EarthTroll::Update	1980	hand merge (group ai)	
+0097bda0	CAIStateGroup_ScorpionKing::UpdateCombat	2009	hand merge (group ai)	
+006fdd60	CGameCameraBase::Update	1659	gated driver (automatic header merge)	
+00be9920	CEngineWaterSettings::CEngineWaterSettings	1886	gated driver (automatic header merge)	
+006aca30	CThingPlayerCreature::OnCollisionWithObject	2026	gated driver (automatic header merge)	
+005841f9	CTCInventory::GetItemDescription	2033	gated driver (automatic header merge)	
+005f6e40	CTCInventoryAbilities::OnSerialise	1746	gated driver (automatic header merge)	
+0042ec7c	CNewFrontendGameComponent::Run	2191	gated driver (automatic header merge)	/O2 /Oy /W3 /Gr
+004a6e30	CWorld::Init	2259	hand merge (group game)	/O2 /Oy /W3 /Gr
+0064ed4f	NPlayerGui::CDrawDamage::Draw	2314	gated driver (automatic header merge)	
+007f2dc0	CTCLightningNode::FrameUpdate	1942	hand merge (group ai)	
+006ab820	CThingPlayerCreature::ResolveFacingDirection	2328	hand merge (group ai)	
+00aa0090	C3DAnimationManager::CalcBlendedMeshTransformations	2390	hand merge (group mesh)	
+0087f3a0	CCombatAction_KickThingOnGround::PerformAction	2422	hand merge (group ai)	
+00a9e1e0	C3DAnimationManager::ApplyParentTransformations	2472	hand merge (group mesh)	
+00a7af60	CNavQuadTree::LoadFromFile	2503	hand merge (group game)	/O2 /Oy /W3 /Gr
+00b64550	CEngineSkyRenderer::RenderSunFlare	2631	gated driver (automatic header merge)	
+00821a80	CMap::LoadFromFile	2648	hand merge (group game)	/O2 /Oy /W3 /GS
+00bb8ef0	CEnginePrimitiveManagerParticleDecalGroup::RenderSubPrimitive	1941	hand merge (group mesh)	/O2 /Oy /W3 /d2inlT189
+00b64fa0	CEngineSkyRenderer::RenderClouds	2688	hand merge (group render)	
+0049f4c0	CWorld::SaveGameStateInternal	2825	gated driver (automatic header merge)	/O2 /Oy /W3 /Gr
+00a9f540	C3DAnimationManager::CalcMeshTransformations	2288	hand merge (group mesh)	
+004a21f0	CWorld::LoadGameStateInternal	2931	hand merge (group game)	/O2 /Oy /W3 /Gr /GS
+007cacb0	CTCHeroReceiveItems::GlobalUpdate	2974	gated driver (automatic header merge)	
+00d77690	NScript::CQ_HangingTreeGoodScript::DoCutscene	3064	gated driver (automatic header merge)	
+00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	3143	hand merge (group open)	
+00bc25f0	CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive	3480	hand merge (group mesh)	
+00bbf4a0	CEnginePrimitiveManagerParticleSpriteGroup::RenderSubPrimitive	4169	gated driver (automatic header merge)	
+005ad571	CTCInventoryTrade::ConstructTradeDescription	4414	hand merge (group open)	
+00b52dd0	CEngineWeatherRenderer::ClipBoxToLandscape	4489	gated driver (automatic header merge)	/O2 /Oy /W3 /d2inlT507
+005aaf28	CTCInventoryTrade::ConstructTradeDescriptionClothing	4550	gated driver (automatic header merge)	
+00a04630	CRenderStateManager::SetupRenderStates	4609	gated driver (automatic header merge)	
+005a9cbe	CTCInventoryTrade::ConstructTradeDescriptionWeapon	4714	gated driver (automatic header merge)	
+00bb5040	CEngineClothRenderer::CEngineClothRenderer	4824	gated driver (automatic header merge)	
+00b87870	CEngineScreenEffectDisplacementRenderer::ApplyDisplacement	4944	gated driver (automatic header merge)	
+00b5fab0	CEngineScreenEffectGlowRenderer::CaptureBackBuffer	5302	hand merge (group open)	
+004678e2	CInventoryDef::Transfer	5422	gated driver (automatic header merge)	
+00b72180	CEngineWaterRenderer::CreateDynamicTextures	5587	hand merge (group render)	
+00d6d670	NScript::CQ_HangingTreeEvilScript::Conclusion	5786	hand merge (group open)	
+0045a159	CInventoryDef::operator=	6481	hand merge (group game)	
+005e5f30	CTCQuestCompletionUI::ActivateReal	6580	gated driver (automatic header merge)	/O2 /Oy /W3 /GS
+0073b130	CTCCreatureModeManager::RegisterModes	6673	gated driver (automatic header merge)	
+0046ce2d	CPlayerGuiDef::operator=	7312	gated driver (automatic header merge)	
+004830a1	CTCInGameMenu::OpenInGameMenu	7896	hand merge (group open)	/O2 /Oy /W3 /GS
+00bcff10	CEnginePrimitiveManagerAnimatedMeshesBase::CEnginePrimitiveManagerAnimatedMeshesBase	8140	gated driver (automatic header merge)	
+00d30030	NScript::CQ_EndGameBossBattleScript::JackOfBladesBossBattle	8589	gated driver (automatic header merge)	/O2 /Oy /W3 /d2inlS25
+00b9ece0	CEnginePrimitiveManagerStaticMeshesBase::CEnginePrimitiveManagerStaticMeshesBase	8921	gated driver (automatic header merge)	
+00607330	CTCInventoryMap::ConstructLogbookList	9124	hand merge (group open)	
+00a079b0	CRenderStateManager::CDeviceState::CDeviceState	4950	hand merge (group open)	
+005a04f7	CTCInventoryTrade::ConstructNormalShopList	9469	gated driver (automatic header merge)	
+00f2a250	CScriptDef::operator=	11711	gated driver (automatic header merge)	
+0061b610	CTCInventoryQuests::ConstructQuestList	12341	hand merge (group game)	
+005ce0e6	NOT LANDED			
+005d1f0c	NOT LANDED			
+00d92380	NScript::CQ_HobbeCaveScript::CHobbeTorrent::Main	1468	gated driver (automatic header merge)	
+00f2d6e0	CScriptDef::Transfer	23755	gated driver (automatic header merge)	
+00cd52d0	CScriptInfoManager::RegisterScripts	24717	hand merge (group game)	
+00ce7670	NScript::CGameflowScript::Main	32057	gated driver (automatic header merge)	/O2 /Oy /W3 /d2inlT89690

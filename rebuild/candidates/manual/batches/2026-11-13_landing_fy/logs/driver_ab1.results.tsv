@@ -1,0 +1,26 @@
+007891f2	LANDED_BUT_FLAGGED	
+00aed600	HDR_DEFAULT_CHANGES	engine/CParticleSystem.h | conflicts2:engine/CParticleSystem.h
+007b90f0	HDR_USED_MACRO_CHANGES	engine/CTCTavernTable.h FABLE_RETAIL_CTCTAVERNTABLE_LAYOUT users=4
+009fed30	LANDED	RELOCATION_MATCH | hdr=8 | conflicts1:engine/CGraphicDataBank.h conflicts1:engine/CManagedTextureData.h conflicts1:engine/CSurface.h
+0051f480	LANDED	RELOCATION_MATCH | hdr=2 | conflicts1:engine/CCompressorZlib.h
+00af4900	HDR_DEFAULT_CHANGES	engine/CPSCBase.h | rewrote57:engine/CPSCBase.h removes-repo-lines:engine/CPSCBase.h conflicts2:engine/CParticleSystem.h
+00e10e60	HDR_CPP_ERR	engine/NScript_CQ_WaspBossScript.h FABLE_RETAIL_CQ_WASPBOSSSCRIPT_CHASEWOMAN=DIFF[26](cpp-err)
+00912ba0	HDR_DEFAULT_CHANGES	engine/CAIStateGroup_FlyingThingBase.h | rewrote12:engine/CAIStateGroup_FlyingThingBase.h removes-repo-lines:engine/CAIStateGroup_FlyingThingBase.h rewrote4:engine/CBezierCurve.h removes-repo-lines:engine/CBezierCurve.h conflicts1:engine/CThingCreatureBase.h conflicts3:stlport/fable_deque.h
+00725500	LANDED	RELOCATION_MATCH | hdr=4 | RELOC_NAME conflicts1:engine/CTCPhysicsBase.h new:engine/CTCPhysicsControlled.h
+00598463	HDR_USED_MACRO_CHANGES	engine/CUserProfileManager.h FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME users=2
+00a9eb90	HDR_USED_MACRO_CHANGES	engine/CQuaternion.h FABLE_RETAIL_CQUATERNION_INLINE_TOMATRIX users=1
+007d8570	VERIFY_FAIL	007d8570   SRC_FAIL         PASS   ProcessInput | conflicts1:engine/CInputProcessTavernGame.h rewrote1:engine/CRightHandedSet.h conflicts1:engine/CRightHandedSet.h new:engine/CTCTavernGameSpotTheAddition.h new:engine/CTavernGameSpotTheAdditionDef.h
+00b3c5d0	LANDED	RELOCATION_MATCH | hdr=4 | conflicts1:engine/CSurface.h
+00b51570	HDR_USED_MACRO_CHANGES	engine/CEngineResourceManager.h FABLE_RETAIL_CENGINERESOURCEMANAGER users=11
+00a12ee0	HDR_UNBALANCED	engine/CMatrix3x4.h | new:engine/C3DMeshVolume.h rewrote1:engine/CMatrix3x4.h conflicts3:engine/CMatrix3x4.h
+00e621f0	HDR_CPP_ERR	engine/CV_BodyGuardScript.h FABLE_RETAIL_CV_BODYGUARDSCRIPT_CBODYGUARD_MAIN=DIFF[726](cpp-err)
+00550dc0	HDR_UNBALANCED	engine/C2DVector.h | conflicts1:engine/C2DVector.h
+00d91e00	LANDED	RELOCATION_MATCH | hdr=1 | conflicts1:engine/CQ_HobbeCaveScript.h
+00a4d920	HDR_UNBALANCED	engine/C3DMesh2.h | rewrote2:engine/C3DAnimation2.h removes-repo-lines:engine/C3DAnimation2.h conflicts1:engine/C3DMesh2.h
+00b399a0	HDR_USED_MACRO_CHANGES	engine/CMatrix3x4.h FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY users=2
+00665860	HDR_CPP_ERR	engine/CAnimationEntry.h FABLE_RETAIL_CANIMATIONENTRY_BLENDTIMES=DIFF[815](cpp-err)
+004ca390	LANDED	RELOCATION_MATCH | hdr=2 | RELOC_NAME
+00b54890	HDR_USED_MACRO_CHANGES	engine/CEngineResourceManager.h FABLE_RETAIL_CENGINERESOURCEMANAGER users=11
+007cf9a0	VERIFY_FAIL	007cf9a0   SRC_FAIL         PASS   ProcessInput | conflicts1:engine/CInputProcessTavernGame.h rewrote1:engine/CRightHandedSet.h conflicts1:engine/CRightHandedSet.h new:engine/CTCTavernGameCoinBase.h new:engine/CTCTavernGameShoveHaPenny.h new:engine/CTavernGameShoveHaPennyDef.h new:engine/Coin.h
+006deee0	HDR_USED_MACRO_CHANGES	engine/CMessageEventManager.h FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT_DECL users=2
+00b665e0	LANDED	RELOCATION_MATCH | hdr=9 | RELOC_NAME new:engine/CEngineComponentRenderParams.h new:engine/CRenderTarget.h conflicts1:engine/CSurface.h

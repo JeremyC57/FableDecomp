@@ -1,0 +1,62 @@
+addr       parity           behav  name
+004830a1   WARN RELOC_NAME: ?GetMainPlayerJoystickDeviceNumber@CPlayerManager@@QBEJXZ -> 00449980 labelled 'Catch@0042ae0a'
+004830a1   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004830a1   WARN RELOC_NAME: ?IsDebugProfile@CUserProfileManager@@QBE_NXZ -> 00407030 labelled '_global::ReturnFalse_ret0_00407030'
+004830a1   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004830a1   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004830a1   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004830a1   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+004830a1   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 00429288 labelled 'CCountedPointer<NUISystem::CList>::~CCountedPointer'
+004830a1   RELOCATION_MATCH PASS   OpenInGameMenu
+00563920   WARN RELOC_NAME: ?ActivityEnumToCharString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@ABW4EOnlineScoreboardActivity@1@@Z -> 0055e7c0 labelled 'CNameTable_0055e7c0::GetEntryName'
+00563920   WARN RELOC_NAME: ??$find@U?$_List_iterator@VCClanMember@CTCHeroOnlineScoreboard@@U?$_Nonconst_traits@VCClanMember@CTCHeroOnlineScoreboard@@@std@@@std@@VCWideString@@@std@@YI?AU?$_List_iterator@VCClanMember@CTCHeroOnlineScoreboard@@U?$_Nonconst_traits@VCClanMember@CTCHeroOnlineScoreboard@@@std@@@0@U10@0ABVCWideString@@@Z -> 00567a40 labelled 'CTCCameraPointScripted::GetLookDirection'
+00563920   WARN RELOC_NAME: ??1?$CCountedPointer@VCTexture@@@@QAE@XZ -> 0041bc90 labelled '_global::CCountedPointer_Release_0041bc90'
+00563920   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 00429c53 here, 004291de in landed 00570332
+00563920   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429b72 labelled '_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429b72'
+00563920   RELOCATION_MATCH PASS   DisplayScoreboardGUI
+005ad571   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005ad571   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005ad571   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005ad571   WARN RELOC_NAME: ?GetBoughtPrice@CTCInventoryBase@NInventory@@QBEJJ@Z -> 005bead5 labelled 'NInventory::CTCInventoryBase::GetItemDescription'
+005ad571   WARN RELOC_NAME: ?GetQuantity@CTCShop@@QBEJJ@Z -> 007726b0 labelled 'CTCShop::GetStockQuantity'
+005ad571   RELOCATION_MATCH PASS   ConstructTradeDescription
+00607330   RELOCATION_MATCH PASS   ConstructLogbookList
+006d1250   WARN RELOC_CONFLICT: ??$find@J@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE?AU?$_Rb_tree_iterator@JU?$_Const_traits@J@std@@@1@ABJ@Z -> 00616580 here, 00b2eb20 in landed 00b2d9f0
+006d1250   RELOCATION_MATCH PASS   CheckAppearanceChanges
+00745120   WARN RELOC_CONFLICT: ?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ -> 00744950 here, 007448f0 in landed 00864620
+00745120   WARN RELOC_NAME: ?RemovePerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z -> 00437900 labelled '_global::Forward_RemoveThing_via0x1b8_00437900'
+00745120   WARN RELOC_NAME: ?IsInMelee@CTCCombat@@QBE_NXZ -> 00733190 labelled '_global::Forward_GetAlignment_via0x24_00733190'
+00745120   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+00745120   RELOCATION_MATCH PASS   UpdateLineOfSight
+009609b0   WARN RELOC_CONFLICT: ?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ -> 00744950 here, 007448f0 in landed 00864620
+009609b0   RELOCATION_MATCH PASS   IsRunnable
+00a079b0   WARN STANDIN_LEAF ??0CDeviceState@CRenderStateManager@@QAE@XZ (catalog CRenderStateManager::CDeviceState; names another function)
+00a079b0   MATCH            PASS   CDeviceState
+00b5fab0   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b5fab0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b5fab0   RELOCATION_MATCH PASS   CaptureBackBuffer
+00d6d670   RELOCATION_MATCH PASS   Conclusion
+
+WINS: 10
+  004830a1 RELOCATION_MATCH CTCInGameMenu::OpenInGameMenu
+  00563920 RELOCATION_MATCH CTCHeroOnlineScoreboard::DisplayScoreboardGUI
+  005ad571 RELOCATION_MATCH CTCInventoryTrade::ConstructTradeDescription
+  00607330 RELOCATION_MATCH CTCInventoryMap::ConstructLogbookList
+  006d1250 RELOCATION_MATCH CTCWife::CheckAppearanceChanges
+  00745120 RELOCATION_MATCH CTCPerceiveThing::UpdateLineOfSight
+  009609b0 RELOCATION_MATCH CAIStateGroup_DeedReactionRoot::IsRunnable
+  00a079b0 MATCH CRenderStateManager::CDeviceState::CDeviceState
+  00b5fab0 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::CaptureBackBuffer
+  00d6d670 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::Conclusion
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CTCInGameMenu_OpenInGameMenu_004830a1
+  CTCHeroOnlineScoreboard_DisplayScoreboardGUI_00563920
+  CTCInventoryTrade_ConstructTradeDescription_005ad571
+  CTCInventoryMap_ConstructLogbookList_00607330
+  CTCWife_CheckAppearanceChanges_006d1250
+  CTCPerceiveThing_UpdateLineOfSight_00745120
+  CAIStateGroupDeedReactionRoot_IsRunnable_009609b0
+  CRenderStateManagerCDeviceState_CDeviceState_00a079b0
+  CEngineScreenEffectGlowRenderer_CaptureBackBuffer_00b5fab0
+  NScriptCQHangingTreeEvilScript_Conclusion_00d6d670

@@ -39,3 +39,8 @@ Start here to land the acctB lane's work. This folder indexes everything the lan
 5. Closest unmatched row: 0x00B89C30 is the same size as retail with ONE hunk left (operand order in one inlined
    `SetAlphaRef(1)` block). Six sessions are recorded in `../2026-11-13_acctB_parked/notes/00b89c30/NOTES.md`; three probes that
    match only through an invented inline helper are kept in `matching_probes_not_landable/` there for reference, not for landing.
+
+## Landed 2026-11-13 (coordinator, landing fy)
+138 of the 140 MATCHED rows are landed: `../../batches/2026-11-13_landing_fy/` (README, LANDED.tsv). Not landed: 0x005CE0E6 and
+0x005D1F0C (they match only through `CTCHeroStats::GetNumberOfBuildingsOwned()`, a fitted helper named in no PDB). The DRAFT, NO_DRAFT
+and NOT_AUTHORED rows are ordinary parked rows; `../2026-11-11_acctB/RELEASED.tsv` is the former reservation.

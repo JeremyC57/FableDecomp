@@ -1,0 +1,16 @@
+group game: rows 13 | headers changed 58 | landed users to recheck 1 | conflicts1:engine/CBankFile.h new:engine/CGameMap.h new:engine/CXBConfig.h new:engine/CCard.h new:engine/CScriptInfoManager.h new:engine/CScriptConversationManager.h new:engine/CTCTavernGameCoinGolf.h new:engine/CCachedFile.h new:engine/CTCTavernGameCardPairs.h new:engine/CTCTavernGameCardBase.h new:engine/CSkeletalMorphResourceManager.h conflicts1:engine/C3DVector.h new:engine/CGameNavigatorManagerExternalInterface.h
+rechecked 1 landed users: all match
+0045a159 LANDED 0045a159   RELOCATION_MATCH PASS   operator=
+004a21f0 LANDED 004a21f0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labell
+004a6e30 LANDED 004a6e30   WARN RELOC_NAME: ??0CFactionManager@@QAE@ABVCWorld@@@Z -> 006b97e0 labelled 'CWorld_InitFactions'
+004caa00 LANDED 004caa00   WARN RELOC_NAME: ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z -> 0051e580 labelled 'CEditWorldMap::GetEditMap'
+00595cc1 LANDED 00595cc1   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+00597df7 LANDED 00597df7   WARN RELOC_NAME: ?erase@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@PAV3@0@Z -> 00411b00 labelled 'vector_pus
+005fe090 LANDED 005fe090   RELOCATION_MATCH PASS   ConstructQuestsScreen
+0061b610 LANDED 0061b610   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312
+007d3820 LANDED 007d3820   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 label
+007d6870 LANDED 007d6870   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00821a80 LANDED 00821a80   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00a7af60 LANDED 00a7af60   WARN RELOC_NAME: ??$__copy@PAVCNavigationLayer@CNavQuadTree@@PAV12@H@std@@YIPAVCNavigationLayer@CNavQuadTree@@PAV12@00ABUrandom_access_iterator_tag@0
+00cd52d0 LANDED 00cd52d0   WARN RELOC_NAME: ?CheckSectionIsNotAlreadyRegistered@CScriptInfoManager@@IAEXVCCharString@@@Z -> 00cb5ac0 labelled 'std::_Cons_val<std::allocator<std
+lander warnings: RELOC_ALIAS RELOC_NAME

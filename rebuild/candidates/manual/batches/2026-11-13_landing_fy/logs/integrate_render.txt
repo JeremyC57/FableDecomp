@@ -1,0 +1,11 @@
+group render: rows 9 | headers changed 30 | landed users to recheck 0 | conflicts1:engine/CRGBColour.h new:engine/CCompositeSurfaceCache.h new:engine/CIDrawEnvironmentScreenEffectParams.h new:engine/CGraphicDataBankInit.h new:engine/CEngineTextureMorph.h new:engine/CSurfaceCompositor.h new:engine/CBankStateBlock.h
+006b42f0 LANDED 006b42f0   WARN RELOC_NAME: ??1CThemeChannel@CIDrawEnvironmentParams@@QAE@XZ -> 006b5b80 labelled 'CBufferPairTriple_006b5b80::~CBufferPairTriple_006b5b80'
+00aed600 LANDED 00aed600   RELOCATION_MATCH PASS   InterpolateTo
+00b2b180 LANDED 00b2b180   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSu
+00b2cb40 LANDED 00b2cb40   WARN RELOC_NAME: ?SetIsStaticMap@CBankFile@@QAEX_N@Z -> 009d5230 labelled '_global::Nop_ret4_009d5230'
+00b2d330 LANDED 00b2d330   WARN RELOC_NAME: ?WaitWhileGPUIsBusy@CRenderManagerCore@@QAEXXZ -> 00a0af80 labelled '_global::Nop_ret0_00a0af80'
+00b64fa0 LANDED 00b64fa0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b72180 LANDED 00b72180   WARN RELOC_NAME: ??_GCGraphicFrameData@@QAEPAXI@Z -> 0041bdf0 labelled 'CGraphicFrameData::`scalar deleting destructor''
+00b891b0 LANDED 00b891b0   RELOCATION_MATCH PASS   CEngineScreenEffectOutlineGlow
+00bea110 LANDED 00bea110   RELOCATION_MATCH PASS   UpdateConstants
+lander warnings: RELOC_CONFLICT RELOC_NAME

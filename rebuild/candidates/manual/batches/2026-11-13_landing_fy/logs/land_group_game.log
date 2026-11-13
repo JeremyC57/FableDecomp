@@ -1,0 +1,80 @@
+addr       parity           behav  name
+0045a159   RELOCATION_MATCH PASS   operator=
+004a21f0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004a21f0   WARN RELOC_NAME: ??$Transfer@W4ESaveType@@@CPersistContext@@QAEXPBDAAW4ESaveType@@ABW41@@Z -> 004ab640 labelled 'CPersistContext::Transfer<CWorld::ESaveType>'
+004a21f0   WARN RELOC_NAME: ?LoadGameState@CFactionManager@@QAEXAAVCPersistContext@@@Z -> 006b9610 labelled 'CFaction_LoadFromPersist'
+004a21f0   RELOCATION_MATCH PASS   LoadGameStateInternal
+004a6e30   WARN RELOC_NAME: ??0CFactionManager@@QAE@ABVCWorld@@@Z -> 006b97e0 labelled 'CWorld_InitFactions'
+004a6e30   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@0ABU__false_type@0@@Z -> 004ad9e0 labelled 'std::__destroy_aux<std::pair<unsigned long, CCountedPointer<CFaction>> *>'
+004a6e30   WARN RELOC_NAME: ?Init@CCombatManager@@QAEXXZ -> 006e8300 labelled 'CCombatManager::ResetDialogue'
+004a6e30   RELOCATION_MATCH PASS   Init
+004caa00   WARN RELOC_NAME: ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z -> 0051e580 labelled 'CEditWorldMap::GetEditMap'
+004caa00   WARN RELOC_NAME: ?IsSerialisingGameState@CThingManager@@QBE_NXZ -> 0051e2e0 labelled '_global::GetMember_byte0x9a_0051e2e0'
+004caa00   WARN RELOC_NAME: ?GetLevelBeingLoaded@CThingManager@@QBEJXZ -> 0051e2c0 labelled '_global::GetMember_dword0xdc_0051e2c0'
+004caa00   WARN RELOC_NAME: ?CreateSerialiseCreatableTCs@CThing@@IAEXABVCCharString@@@Z -> 004ca230 labelled 'CThing::CreateTCsFromString'
+004caa00   RELOCATION_MATCH PASS   ConstructFromLevelScript
+00595cc1   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+00595cc1   RELOCATION_MATCH PASS   ConstructFileDescription
+00597df7   WARN RELOC_NAME: ?erase@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@PAV3@0@Z -> 00411b00 labelled 'vector_push_back_copy'
+00597df7   WARN RELOC_NAME: ?erase@?$vector@JV?$allocator@J@std@@@std@@QAEPAJPAJ0@Z -> 00440590 labelled 'Buffer_Relocate'
+00597df7   WARN RELOC_NAME: ?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z -> 004091c0 labelled 'CUserProfileManager::LoadFileList'
+00597df7   WARN RELOC_NAME: ?IsDebugProfile@CUserProfileManager@@QBE_NXZ -> 00407030 labelled '_global::ReturnFalse_ret0_00407030'
+00597df7   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00597df7   WARN RELOC_NAME: ?GetMaxSaveSlots@CUserProfileManager@@QBEJXZ -> 004067b0 labelled '_global::ReturnConst_50_004067b0'
+00597df7   WARN RELOC_NAME: ?GetSaveSlotFileName@CUserProfileManager@@QBEABVCWideString@@J@Z -> 00407360 labelled 'NInventory::CTCInventoryBase::GetCategoryWithIndex'
+00597df7   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+00597df7   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+00597df7   RELOCATION_MATCH PASS   GetSavedGameNames
+005fe090   RELOCATION_MATCH PASS   ConstructQuestsScreen
+0061b610   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+0061b610   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z -> 00429f43 labelled 'CTCMapwho::OnDie'
+0061b610   WARN RELOC_NAME: ?GetAsUpperCase@CCharString@@QBE?AV1@XZ -> 0099ee20 labelled 'CCharString::ToUpper'
+0061b610   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+0061b610   RELOCATION_MATCH PASS   ConstructQuestList
+007d3820   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 labelled 'CInputProcessGameBase::GetEventGameActionVector'
+007d3820   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+007d3820   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+007d3820   RELOCATION_MATCH PASS   ProcessInput
+007d6870   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+007d6870   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 labelled 'CInputProcessGameBase::GetEventGameActionVector'
+007d6870   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007d6870   RELOCATION_MATCH PASS   ProcessInput
+00821a80   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00821a80   RELOCATION_MATCH PASS   LoadFromFile
+00a7af60   WARN RELOC_NAME: ??$__copy@PAVCNavigationLayer@CNavQuadTree@@PAV12@H@std@@YIPAVCNavigationLayer@CNavQuadTree@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00a85870 labelled 'std::__copy<CNavQuadTree::CNavigationLayer*,CNavQuadTree::CNavigationLayer*,int>'
+00a7af60   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@0ABU__false_type@0@@Z -> 00a83420 labelled 'std::__destroy_aux<std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> *>'
+00a7af60   RELOCATION_MATCH PASS   LoadFromFile
+00cd52d0   WARN RELOC_NAME: ?CheckSectionIsNotAlreadyRegistered@CScriptInfoManager@@IAEXVCCharString@@@Z -> 00cb5ac0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00cd52d0   RELOCATION_MATCH PASS   RegisterScripts
+
+WINS: 13
+  0045a159 RELOCATION_MATCH CInventoryDef::operator=
+  004a21f0 RELOCATION_MATCH CWorld::LoadGameStateInternal
+  004a6e30 RELOCATION_MATCH CWorld::Init
+  004caa00 RELOCATION_MATCH CThing::ConstructFromLevelScript
+  00595cc1 RELOCATION_MATCH NUISystem::CFrontEndManager::ConstructFileDescription
+  00597df7 RELOCATION_MATCH NUISystem::CFrontEndManager::GetSavedGameNames
+  005fe090 RELOCATION_MATCH CTCInventoryMap::ConstructQuestsScreen
+  0061b610 RELOCATION_MATCH CTCInventoryQuests::ConstructQuestList
+  007d3820 RELOCATION_MATCH CTCTavernGameCoinGolf::ProcessInput
+  007d6870 RELOCATION_MATCH CTCTavernGameCardPairs::ProcessInput
+  00821a80 RELOCATION_MATCH CMap::LoadFromFile
+  00a7af60 RELOCATION_MATCH CNavQuadTree::LoadFromFile
+  00cd52d0 RELOCATION_MATCH CScriptInfoManager::RegisterScripts
+
+LANDED 13 wins into src/compiled + tests + catalog + oracle
+  CInventoryDef_operator_0045a159
+  CWorld_LoadGameStateInternal_004a21f0
+  CWorld_Init_004a6e30
+  CThing_ConstructFromLevelScript_004caa00
+  NUISystemCFrontEndManager_ConstructFileDescription_00595cc1
+  NUISystemCFrontEndManager_GetSavedGameNames_00597df7
+  CTCInventoryMap_ConstructQuestsScreen_005fe090
+  CTCInventoryQuests_ConstructQuestList_0061b610
+  CTCTavernGameCoinGolf_ProcessInput_007d3820
+  CTCTavernGameCardPairs_ProcessInput_007d6870
+  CMap_LoadFromFile_00821a80
+  CNavQuadTree_LoadFromFile_00a7af60
+  CScriptInfoManager_RegisterScripts_00cd52d0
+  WARN leaf 'operator=' matches no symbol in 0045a159.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045a159.obj; graded the largest function

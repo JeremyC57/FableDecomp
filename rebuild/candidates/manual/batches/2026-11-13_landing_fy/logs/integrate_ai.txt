@@ -1,0 +1,14 @@
+group ai: rows 11 | headers changed 65 | landed users to recheck 1 | new:engine/CTCBed.h new:engine/CLightningOrbDef.h new:engine/NEntityEvents_CEventKicked.h new:engine/CCreatureAction_DragonRoar.h new:engine/NBBBMaths_CLinearSpline.h new:engine/CCreatureAction_SheatheWeapons.h new:engine/CScorpionKingBattleDef.h new:engine/CTCLightningNode.h new:engine/CBedDef.h new:engine/CTCUserActionPointBase.h new:engine/CLightningDef.h new:engine/CTCLightningOrb.h new:engine/CTCExclusiveUse.h new:engine/CThingFilter_In3DRange.h new:engine/CTCElectrocutedEffect.h new:engine/CTCCrateStack.h new:engine/NEntityEvents_CEventCreatureCharging.h
+rechecked 1 landed users: all match
+006ab820 LANDED 006ab820   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007f26b0 LANDED 007f26b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007f2dc0 LANDED 007f2dc0   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+0087f3a0 LANDED 0087f3a0   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_Filter
+00912ba0 LANDED 00912ba0   RELOCATION_MATCH PASS   CalculatePrettyPath
+00915b60 LANDED 00915b60   RELOCATION_MATCH PASS   PlaceGoods
+0092da20 LANDED 0092da20   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0094e7b0 LANDED 0094e7b0   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 l
+00951430 LANDED 00951430   RELOCATION_MATCH PASS   IntoGroundSwoop
+00952890 LANDED 00952890   WARN RELOC_NAME: ??1CCreatureAction_DragonRearUpFull@@UAE@XZ -> 009531a0 labelled '_global::Dtor_CCombatActionBaseBase_009531a0'
+0097bda0 LANDED 0097bda0   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 l
+lander warnings: RELOC_ALIAS RELOC_NAME

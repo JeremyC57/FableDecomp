@@ -1,0 +1,48 @@
+addr       parity           behav  name
+006b42f0   WARN RELOC_NAME: ??1CThemeChannel@CIDrawEnvironmentParams@@QAE@XZ -> 006b5b80 labelled 'CBufferPairTriple_006b5b80::~CBufferPairTriple_006b5b80'
+006b42f0   WARN RELOC_CONFLICT: _$E2 -> 01229390 here, 01228930 in landed 01219f00
+006b42f0   WARN RELOC_NAME: _$E2 -> 01229390 labelled 'CEnvironment::RenderUpdate'::`5'::`dynamic atexit destructor for 'interpolated_theme'''
+006b42f0   WARN RELOC_NAME: ?GetRenderFrameInterpolatedRadialBlurParameters@CEnvironmentSpellEffectInterface@@QAE?AUCIDrawEnvironmentRadialBlurParameters@@M@Z -> 008857e0 labelled 'SetAsAlliedWithFaction'
+006b42f0   RELOCATION_MATCH PASS   RenderUpdate
+00aed600   RELOCATION_MATCH PASS   InterpolateTo
+00b2b180   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b2b180   WARN RELOC_NAME: ?EndTextureUse@CGPUScratchBufferTextureManager@@QAEXJ@Z -> 00f36f00 labelled '_global::Nop_ret4_00f36f00'
+00b2b180   RELOCATION_MATCH PASS   RenderToTexture
+00b2cb40   WARN RELOC_NAME: ?SetIsStaticMap@CBankFile@@QAEX_N@Z -> 009d5230 labelled '_global::Nop_ret4_009d5230'
+00b2cb40   RELOCATION_MATCH PASS   CEngineSurfaceCompositionManager
+00b2d330   WARN RELOC_NAME: ?WaitWhileGPUIsBusy@CRenderManagerCore@@QAEXXZ -> 00a0af80 labelled '_global::Nop_ret0_00a0af80'
+00b2d330   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b2d330   WARN RELOC_NAME: ?EndTextureUse@CGPUScratchBufferTextureManager@@QAEXJ@Z -> 00f36f00 labelled '_global::Nop_ret4_00f36f00'
+00b2d330   RELOCATION_MATCH PASS   UpdateDiskCacheTexture
+00b64fa0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b64fa0   RELOCATION_MATCH PASS   RenderClouds
+00b72180   WARN RELOC_NAME: ??_GCGraphicFrameData@@QAEPAXI@Z -> 0041bdf0 labelled 'CGraphicFrameData::`scalar deleting destructor''
+00b72180   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b72180   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b72180   WARN RELOC_NAME: ?DetachZBuffer@CRenderTarget@@QAEXXZ -> 00a10e20 labelled 'CRenderTarget::DetachTarget'
+00b72180   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b72180   RELOCATION_MATCH PASS   CreateDynamicTextures
+00b891b0   RELOCATION_MATCH PASS   CEngineScreenEffectOutlineGlow
+00bea110   RELOCATION_MATCH PASS   UpdateConstants
+
+WINS: 9
+  006b42f0 RELOCATION_MATCH CEnvironment::RenderUpdate
+  00aed600 RELOCATION_MATCH NParticleEngine::CParticleEmitter::InterpolateTo
+  00b2b180 RELOCATION_MATCH CEngineSurfaceCompositionManager::RenderToTexture
+  00b2cb40 RELOCATION_MATCH CEngineSurfaceCompositionManager::CEngineSurfaceCompositionManager
+  00b2d330 RELOCATION_MATCH CEngineSurfaceCompositionManager::UpdateDiskCacheTexture
+  00b64fa0 RELOCATION_MATCH CEngineSkyRenderer::RenderClouds
+  00b72180 RELOCATION_MATCH CEngineWaterRenderer::CreateDynamicTextures
+  00b891b0 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::CEngineScreenEffectOutlineGlow
+  00bea110 RELOCATION_MATCH CEngineWaterSettings::UpdateConstants
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CEnvironment_RenderUpdate_006b42f0
+  NParticleEngineCParticleEmitter_InterpolateTo_00aed600
+  CEngineSurfaceCompositionManager_RenderToTexture_00b2b180
+  CEngineSurfaceCompositionManager_CEngineSurfaceCompositionManager_00b2cb40
+  CEngineSurfaceCompositionManager_UpdateDiskCacheTexture_00b2d330
+  CEngineSkyRenderer_RenderClouds_00b64fa0
+  CEngineWaterRenderer_CreateDynamicTextures_00b72180
+  CEngineScreenEffectOutlineGlow_CEngineScreenEffectOutlineGlow_00b891b0
+  CEngineWaterSettings_UpdateConstants_00bea110

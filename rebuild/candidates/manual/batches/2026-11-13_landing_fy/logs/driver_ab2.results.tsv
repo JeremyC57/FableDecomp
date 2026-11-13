@@ -1,0 +1,60 @@
+007891f2	ALREADY_LANDED	
+00aed600	HDR_DEFAULT_CHANGES	engine/CParticleSystem.h | conflicts2:engine/CParticleSystem.h
+007b90f0	LANDED_USERS_BREAK	3 of 4 landed rows stop matching: 007b8b10 0094a3b0 0096cb40 | rewrote1:engine/CRightHandedSet.h conflicts1:engine/CRightHandedSet.h new:engine/CTCCreatedEntity.h conflicts1:engine/CTCTavernTable.h new:engine/CTCTavernTankard.h used-macro:FABLE_RETAIL_CTCTAVERNTABLE_LAYOUT used-macro:FABLE_RETAIL_CTCTAVERNTABLE_SEATS
+009fed30	ALREADY_LANDED	
+0051f480	ALREADY_LANDED	
+00af4900	HDR_DEFAULT_CHANGES	engine/CPSCBase.h | rewrote57:engine/CPSCBase.h removes-repo-lines:engine/CPSCBase.h conflicts2:engine/CParticleSystem.h
+00e10e60	LANDED	RELOCATION_MATCH | hdr=1 | 
+00912ba0	HDR_DEFAULT_CHANGES	engine/CAIStateGroup_FlyingThingBase.h | rewrote12:engine/CAIStateGroup_FlyingThingBase.h removes-repo-lines:engine/CAIStateGroup_FlyingThingBase.h rewrote4:engine/CBezierCurve.h removes-repo-lines:engine/CBezierCurve.h conflicts1:engine/CThingCreatureBase.h conflicts3:stlport/fable_deque.h
+00725500	ALREADY_LANDED	
+00598463	LANDED	RELOCATION_MATCH | hdr=2 | RELOC_NAME conflicts1:engine/CUserProfileManager.h used-macro:FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME used-macro:FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME_MEMBER used-macro:FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES rechecked4
+00a9eb90	LANDED	RELOCATION_MATCH | hdr=5 | new:engine/C3DAnimationManager.h conflicts1:engine/CQuaternion.h
+007d8570	VERIFY_FAIL	007d8570   SRC_FAIL         PASS   ProcessInput | conflicts1:engine/CInputProcessTavernGame.h rewrote1:engine/CRightHandedSet.h conflicts1:engine/CRightHandedSet.h new:engine/CTCTavernGameSpotTheAddition.h new:engine/CTavernGameSpotTheAdditionDef.h
+00b3c5d0	ALREADY_LANDED	
+00b51570	LANDED	RELOCATION_MATCH | hdr=7 | RELOC_ALIAS RELOC_NAME new:engine/CEngineWeatherSettings.h conflicts1:engine/CGenericVertex.h new:engine/CTVertexWeather.h rewrote2:stlport/fable_containers.h conflicts1:stlport/fable_containers.h removes-repo-lines:stlport/fable_containers.h used-macro:FABLE_RETAIL_CENGINERESOURCEMANAGER rechecked10
+00a12ee0	HDR_UNBALANCED	engine/CMatrix3x4.h | new:engine/C3DMeshVolume.h rewrote1:engine/CMatrix3x4.h conflicts3:engine/CMatrix3x4.h
+00e621f0	LANDED	RELOCATION_MATCH | hdr=1 | RELOC_NAME
+00550dc0	HDR_UNBALANCED	engine/C2DVector.h | conflicts1:engine/C2DVector.h
+00d91e00	ALREADY_LANDED	
+00a4d920	HDR_UNBALANCED	engine/C3DMesh2.h | rewrote2:engine/C3DAnimation2.h removes-repo-lines:engine/C3DAnimation2.h conflicts1:engine/C3DKeyframe.h conflicts1:engine/C3DMesh2.h
+00b399a0	LANDED_USERS_BREAK	1 of 1 landed rows stop matching: 00b39080 | used-macro:FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY
+00665860	LANDED	RELOCATION_MATCH | hdr=8 | RELOC_NAME new:engine/CTCCreatureExpression.h conflicts1:engine/CThingCreatureBase.h
+004ca390	ALREADY_LANDED	
+00b54890	LANDED	RELOCATION_MATCH | hdr=14 | RELOC_NAME conflicts2:engine/CGraphicInfo.h conflicts1:engine/CGraphicInfoFrame.h new:engine/CVolumeTexture.h new:engine/CWeatherMask.h
+007cf9a0	VERIFY_FAIL	007cf9a0   SRC_FAIL         PASS   ProcessInput | conflicts1:engine/CInputProcessTavernGame.h rewrote1:engine/CRightHandedSet.h conflicts1:engine/CRightHandedSet.h new:engine/CTCTavernGameCoinBase.h new:engine/CTCTavernGameShoveHaPenny.h new:engine/CTavernGameShoveHaPennyDef.h new:engine/Coin.h
+006deee0	LANDED_USERS_BREAK	1 of 1 landed rows stop matching: 007e2a60 | new:engine/CCreatureAction_UnsheatheToShowToSheatheTrophy.h rewrote1:engine/CMessageEventFilters.h removes-repo-lines:engine/CMessageEventFilters.h conflicts1:engine/CMessageEventManager.h new:engine/CTCTrophy.h conflicts1:engine/CThingCreatureBase.h used-macro:FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT_DECL
+00b665e0	ALREADY_LANDED	
+006de8c0	LANDED	RELOCATION_MATCH | hdr=4 | new:engine/CTCTrophy.h conflicts1:engine/CThingCreatureBase.h
+00bb1f50	LANDED	RELOCATION_MATCH | hdr=7 | new:engine/C3DClothRenderVertex.h rewrote1:engine/C3DVector.h conflicts1:engine/C3DVector.h new:engine/CEngineClothRenderer.h new:engine/CEngineClothRendererSSE.h new:engine/NVectorMath.h
+00952890	LANDED_USERS_BREAK	1 of 1 landed rows stop matching: 00951d60 | conflicts2:engine/CAIStateGroup_JackDragon.h new:engine/CCreatureAction_DragonRoar.h conflicts2:engine/CJackDragonDef.h used-macro:FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON
+00716de0	LANDED	RELOCATION_MATCH | hdr=6 | RELOC_NAME conflicts1:engine/CCreatureAction_PlayAnimation.h conflicts1:engine/CSubtitleRenderer.h
+007a0d90	LANDED	RELOCATION_MATCH | hdr=6 | RELOC_NAME new:engine/CFilter_Bind4.h new:engine/CThingCompare_NearestToPos.h new:engine/CThingFilter_IsTargetable.h
+00492381	LANDED	RELOCATION_MATCH | hdr=2 | RELOC_ALIAS RELOC_NAME conflicts1:engine/CSubtitleRenderer.h
+004959e0	LANDED	RELOCATION_MATCH | hdr=4 | RELOC_NAME
+0097fea0	HDR_CPP_ERR	engine/CTCCreatureOpinionOfHero.h FABLE_RETAIL_CTCCREATUREOPINIONOFHERO=DIFF[143](cpp-err) users=17
+00b2b180	HDR_UNBALANCED	engine/CEngineResourceManager.h | conflicts1:engine/CBankFile.h conflicts1:engine/CEngineResourceManager.h
+005248b0	LANDED	RELOCATION_MATCH | hdr=2 | conflicts1:engine/NThingManager_CEntityRuntimePersistence.h
+006b42f0	HDR_UNBALANCED	engine/CEnvironment.h | rewrote1:engine/CEnvironment.h conflicts1:engine/CEnvironment.h
+00bf12a0	HDR_DEFAULT_CHANGES	engine/C3DMesh2.h | new:engine/C3DDummyObject.h new:engine/C3DGeneratorObject.h rewrote1:engine/C3DMesh2.h removes-repo-lines:engine/C3DMesh2.h conflicts2:engine/C3DMeshInfo.h conflicts1:engine/C3DMeshStats.h new:engine/CEngineInterpolationInfo.h new:engine/CEnginePrimitiveManagerStaticMeshes.h
+00949ab0	LANDED	RELOCATION_MATCH | hdr=6 | RELOC_NAME new:engine/CAIStateGroup_GoToPub.h rewrote1:engine/CRightHandedSet.h conflicts1:engine/CRightHandedSet.h conflicts2:engine/CTCTavernTable.h conflicts1:engine/CThingCreatureBase.h
+00bf18b0	HDR_DEFAULT_CHANGES	engine/C3DMesh2.h | new:engine/C3DDummyObject.h new:engine/C3DGeneratorObject.h rewrote1:engine/C3DMesh2.h removes-repo-lines:engine/C3DMesh2.h conflicts2:engine/C3DMeshInfo.h conflicts1:engine/C3DMeshStats.h rewrote1:engine/CEngineInternalPrimitiveAnimatedMesh.h conflicts1:engine/CEngineInternalPrimitiveAnimatedMesh.h new:engine/CEngineInterpolationInfo.h new:engine/CEnginePrimitiveManagerStaticMeshes.h
+006de280	LANDED	RELOCATION_MATCH | hdr=4 | new:engine/CCreatureAction_SheatheItemToInventory.h rewrote1:engine/CRightHandedSet.h conflicts1:engine/CRightHandedSet.h conflicts1:engine/CTCCreatureOpinionOfHero.h conflicts1:engine/CThingCreatureBase.h
+00626110	LANDED	RELOCATION_MATCH | hdr=2 | RELOC_CONFLICT RELOC_NAME conflicts1:fable_string.h
+006414a0	LANDED	RELOCATION_MATCH | hdr=7 | conflicts1:engine/CGameTimeManager.h new:engine/NGraphicAppearance_CGraphicAppearanceDrawInfo.h rewrote1:engine/NGraphicAppearance_CTCGraphicAppearance.h removes-repo-lines:engine/NGraphicAppearance_CTCGraphicAppearance.h
+00bea110	HDR_UNBALANCED	engine/CEngineWorldMap.h | conflicts1:engine/CDisplayManager.h new:engine/CEngineInterpolationInfo.h
+00595cc1	HDR_UNBALANCED	engine/CDateAndTime.h | conflicts1:engine/CBankFile.h conflicts1:engine/CDateAndTime.h
+00a4e300	HDR_UNBALANCED	engine/CMatrix3x4.h | rewrote2:engine/C3DAnimation2.h removes-repo-lines:engine/C3DAnimation2.h conflicts1:engine/C3DKeyframe.h rewrote2:engine/CMatrix3x4.h conflicts3:engine/CMatrix3x4.h
+00b3f5e0	LANDED	RELOCATION_MATCH | hdr=0 | conflicts4:engine/CEngineMap.h
+0061ad60	LANDED	RELOCATION_MATCH | hdr=9 | conflicts1:engine/CRenderManager2D.h conflicts2:engine/CTCInventoryQuests.h conflicts1:engine/CThing.h
+00974110	LANDED	RELOCATION_MATCH | hdr=8 | RELOC_NAME conflicts1:engine/CAIStateGroupBase.h conflicts1:engine/CAIStateGroup_JackOfBladesBase.h new:engine/CCombatAction_WillForcePushInto.h new:engine/CCreatureGenerationFamilyDef.h
+00b2cb40	HDR_UNBALANCED	engine/CEngineResourceManager.h | conflicts1:engine/CBankFile.h conflicts1:engine/CEngineResourceManager.h
+00597df7	HDR_UNBALANCED	engine/CDateAndTime.h | conflicts1:engine/CDateAndTime.h
+00b9a4a0	HDR_UNBALANCED	engine/CRenderStateCaptureBlock.h | conflicts2:engine/C3DMeshInfo.h rewrote1:engine/CEngineCamera.h removes-repo-lines:engine/CEngineCamera.h conflicts1:engine/CEngineInternalPrimitiveOcclusionBase.h rewrote1:engine/CEnginePrimitiveManager.h removes-repo-lines:engine/CEnginePrimitiveManager.h rewrote1:engine/CEnginePrimitiveRendererSharedData.h removes-repo-lines:engine/CEnginePrimitiveRendererSharedData.h rewrote5:engine/CEngineRenderInfoMeshBase.h removes-repo-lines:engine/CEngineRenderInfoMeshBase.h new:engine/CEngineSubPrimitiveBoundingBox.h new:engine/CEngineSubPrimitiveRepeatedStaticMesh.h conflicts1:engine/CIVCountedPointer.h conflicts2:engine/CMatrix3x4.h conflicts1:engine/CRenderStateCaptureBlock.h
+00b2d330	HDR_UNBALANCED	engine/CEngineResourceManager.h | conflicts1:engine/CBankFile.h new:engine/CBankStateBlock.h new:engine/CCompositeSurfaceCache.h conflicts1:engine/CEngineResourceManager.h
+004caa00	HDR_UNBALANCED	stlport/fable_containers.h | rewrote1:engine/CRightHandedSet.h conflicts1:engine/CRightHandedSet.h conflicts1:stlport/fable_containers.h
+00b40bd0	VERIFY_FAIL	00b40bd0   SRC_FAIL         PASS   PeekWaterDepth | conflicts4:engine/CEngineMap.h
+00a50510	HDR_UNBALANCED	engine/C3DMesh2.h | rewrote2:engine/C3DAnimation2.h removes-repo-lines:engine/C3DAnimation2.h new:engine/C3DAnimationBuilder.h new:engine/C3DBone2.h conflicts1:engine/C3DMesh2.h
+00951430	LANDED_USERS_BREAK	1 of 1 landed rows stop matching: 00951d60 | conflicts1:engine/CAIStateGroupBase.h conflicts2:engine/CAIStateGroup_JackDragon.h used-macro:FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON
+00626750	LANDED	RELOCATION_MATCH | hdr=0 | RELOC_CONFLICT RELOC_NAME conflicts1:fable_string.h
+007d6870	HDR_UNBALANCED	stlport/fable_containers.h | new:engine/CCard.h conflicts1:engine/CInputProcessTavernGame.h rewrote1:engine/CRightHandedSet.h conflicts1:engine/CRightHandedSet.h new:engine/CTCTavernGameCardBase.h new:engine/CTCTavernGameCardPairs.h conflicts1:stlport/fable_containers.h
+007f26b0	HDR_UNBALANCED	engine/C2DVector.h | conflicts1:engine/C2DVector.h
