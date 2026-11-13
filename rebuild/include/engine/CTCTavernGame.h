@@ -102,11 +102,6 @@ public:
     void ChangeBet(bool);                                                // 0x005EB810
     CThingObject* CreateGamePiece(long);                                 // 0x005EA9B0
     long GetBanter() const;                                              // 0x005EA3C0
-#ifdef FABLE_RETAIL_CTCTAVERNGAME_GETGAMESTATE
-    // Opt-in (w22 agent2002, row 0x007D8570): Ego_r.pdb / FableWin.pdb ?GetGameState@CTCTavernGame@@QAE?AW4ETavernGameStates@1@XZ
-    // (no out-of-line copy in retail: inline, reads TavernGameState +0xC0 in place).
-    ETavernGameStates GetGameState() { return TavernGameState; }
-#endif
 #ifdef FABLE_RETAIL_CTCTAVERNGAME_POSITIONMESH
     // Opt-in (w22 agent1016, row 0x005EABC0): Ego_r.pdb / FableWin.pdb
     // ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z (public static __fastcall). Declaration only.
