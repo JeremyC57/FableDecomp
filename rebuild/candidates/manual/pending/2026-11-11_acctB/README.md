@@ -21,3 +21,7 @@ The coordinator on `FullDecomp` does all landing.
 
 Rules: CLAUDE.md, `docs/pipeline/ASM_RULES.md`, and `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`.
 The grade budget is 10 grades per row per pass. When a row parks, write the exact remaining diff in STATUS.tsv.
+
+**Released 2026-11-13 (owner):** the acctB lane is finished and handed over (`../2026-11-13_acctB_FINAL/`). `RESERVED.tsv` is renamed
+`RELEASED.tsv`: the 140 matched rows are landed by the coordinator, and the 49 others (19 drafts, 23 without a draft, 7 blocked or
+fragments) are ordinary parked rows from now on (`../2026-11-13_acctB_parked/`).
