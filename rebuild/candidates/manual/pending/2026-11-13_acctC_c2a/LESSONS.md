@@ -1,0 +1,6 @@
+- (agentC2, 0x00651B04) An x87 pair sum that retail stores X-first direct while ours computes Y first (Y-fold blocked) was the destination temporary ESCAPING to an out-of-line same-TU callee: define that callee's landed body in the TU (auto_inline off) and the sums fold; the scheduler trace shows may-alias edges from the stores to a later load.
+- (agentC2) fg.py's hunk diff hides branch-target differences: a `je` to the NEXT loop's header (not past it) means that loop is outside the preceding if; check every jcc target after the hunks are gone.
+- (agentC2) Retail "X then Y computed, then fld st(1) copy" for an in-argument C2DVector sum = an outer copy that VC7.1 does not elide: `C2DVector(C2DVector(a + b))`.
+- (agentC2, 0x00BB3E80) Retail `cmp [m],1 ; mov cl,1 ; je ; xor cl,cl` feeding a setter = the setter's own guard (`if (mode != 1) enable = false;`) called with `true`; the repo opt-in FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD (out-of-line copy 0x00B66EB0).
+- (agentC2) FableWin's first-user COMDAT run after a render row names the RenderUtil static wrappers (ApplyVertexShader / ApplyPixelShader / GetCurrentCamera / GetPixelShaderXxx): using them moved x87 term orders that no dead-local ruler moved.
+- (agentC2) TransformPoint row orders immune to rulers: try the existing body opt-ins (TRANSFORMPOINT_SUMS fixed 0x00BB3E80).

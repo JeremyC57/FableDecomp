@@ -1,0 +1,21 @@
+--- rebuild/include/engine/CFontBank.h	2026-11-13 08:07:19.166365234 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC2/hdr/engine/CFontBank.h	2026-11-13 09:24:36.170381795 +0000
+@@ -59,6 +59,10 @@
+     long GetFontHeight()const{return (long)FontHeight;}
+ #endif
+     float GetVFontMaxHeight() const { return GFAYToVY(GetFontMaxHeight()); }
++#ifdef FABLE_RETAIL_CFONTBANK_VSTRINGEXTENTS_OUTOFLINE
++    // Opt-in (bwf1 / agentC2, row 0x00651B04): out of line in this TU (call 0x00437210, Ego_r.pdb keeps it out of line). Declaration only.
++    C2DExtentsF GetVStringExtents(const CWideString& text) const;       // 0x00437210
++#else
+     C2DExtentsF GetVStringExtents(const CWideString& text) const
+     {
+         C2DExtentsF extents = GetStringExtents(text.GetAsCharArray(), false);
+@@ -66,6 +70,7 @@
+         extents.Y = GFAYToVY(extents.Y);
+         return extents;
+     }
++#endif
+ protected:
+     unsigned long FontHeight;                                            // +0x04
+     CCharString Name;                                                    // +0x08

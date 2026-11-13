@@ -1,0 +1,24 @@
+--- rebuild/include/engine/CGamePlayerInterface.h	2026-11-13 08:07:19.166365234 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC2/hdr/engine/CGamePlayerInterface.h	2026-11-13 09:24:27.140668056 +0000
+@@ -106,6 +106,9 @@
+ class CDefPointeeBase;
+ class CMainGameComponent;
+ class CPlayerManager;
++#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_GETACTIONNAME
++class CActionInputControl; class CWideString;
++#endif
+ 
+ #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE
+ enum EGameAction;                                            // MS forward enums (as engine/fable_nscript_forward.h)
+@@ -117,6 +120,11 @@
+ #pragma pack(push, 1)
+ class CGamePlayerInterface {
+ public:
++#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_GETACTIONNAME
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?GetActionName@CGamePlayerInterface@@SI_NABVCActionInputControl@@AAVCWideString@@_N@Z
++    // (static __fastcall, retail 0x00446720: ecx = control, edx = name, the bool on the stack). Declaration only.
++    static bool FABLE_FASTCALL GetActionName(const CActionInputControl& control, CWideString& name, bool short_name);   // 0x00446720
++#endif
+ #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_TOGGLE_ZTARGET
+     bool IsToggleZTarget() const;
+ #endif

@@ -1,0 +1,14 @@
+--- rebuild/include/engine/NCreatureMode.h	2026-11-13 08:07:19.194365236 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC2/hdr/engine/NCreatureMode.h	2026-11-13 09:25:27.398257369 +0000
+@@ -124,6 +124,11 @@
+ bool __fastcall IsLightningable(const CThing& thing);                   // 0x0085FAA0
+ }
+ #endif
++#ifdef FABLE_RETAIL_NCREATUREMODE_HERORUN
++// Opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?IsAvailableForHeroRun@NCreatureMode@@YI_NABVCThing@@@Z (0x0085F560). Declaration only.
++class CThing;
++namespace NCreatureMode { bool __fastcall IsAvailableForHeroRun(const CThing& thing); }   // 0x0085F560
++#endif
+ #ifdef FABLE_RETAIL_FIRE_RANGED_WEAPON
+ class CThing;
+ namespace NCreatureMode{bool FABLE_FASTCALL IsValidRangedWeaponTargetForShooter(const CThing&,const CThing&,float);}

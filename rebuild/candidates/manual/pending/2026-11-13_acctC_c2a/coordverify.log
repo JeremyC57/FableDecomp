@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00651b04   WARN RELOC_NAME: ?IsActive@CTCQuickAccessMenu@@QBE_NXZ -> 00625930 labelled '_global::GetMember_byte0xc_00625930'
+00651b04   WARN RELOC_NAME: ?GetWeaponType@CTCWeapon@@QBE?AW4EWeaponType@@XZ -> 005da7d0 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+00651b04   WARN RELOC_NAME: ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z -> 0072c430 labelled 'CTCSpecialAbilities::GetAbilityAvailability'
+00651b04   WARN RELOC_NAME: ?GetAbilityButtonScale@CPlayerGui@@QBEMXZ -> 004375e0 labelled 'CMap::DrawGetSeaLevel'
+00651b04   RELOCATION_MATCH PASS   Draw
+WINS: 1
+  00651b04 RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::Draw

@@ -1,0 +1,13 @@
+--- rebuild/include/engine/CTCSpecialAbilities.h	2026-11-13 08:07:19.186365235 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC2/hdr/engine/CTCSpecialAbilities.h	2026-11-13 09:25:27.396024402 +0000
+@@ -61,6 +61,10 @@
+ public:
+     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_SPECIAL_ABILITIES; }
+     bool GetAbilityMutexLock() const { return AbilityMutexLock; }
++#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_ISABILITYAVAILABLE
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): FableWin.pdb ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z (0x0072C430).
++    bool IsAbilityAvailable(EHeroAbility ability) const;                 // 0x0072C430
++#endif
+ private:
+     bool AbilityMutexLock;                                   // +0x0C
+     bool UsingBed;                                           // +0x0D

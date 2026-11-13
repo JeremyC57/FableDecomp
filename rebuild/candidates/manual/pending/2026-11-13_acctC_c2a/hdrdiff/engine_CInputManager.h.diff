@@ -1,0 +1,31 @@
+--- rebuild/include/engine/CInputManager.h	2026-11-13 08:07:19.170365234 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC2/hdr/engine/CInputManager.h	2026-11-13 09:24:27.142336714 +0000
+@@ -16,6 +16,9 @@
+ #include "stlport/fable_containers.h"
+ #endif
+ class CInputEvent; class CInputEventScanInfo;
++#ifdef FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE
++#include "engine/CInputEvent.h"
++#endif
+ class CInputManager : public CBaseClass {
+ #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+ public:
+@@ -31,6 +34,10 @@
+     // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb / FableWin.pdb ?ClearEvents@CInputManager@@QAEXXZ, out of line in retail (0x009F5540). Declaration only.
+     void ClearEvents();                                                  // 0x009F5540
+ #endif
++#ifdef FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?IsJoystickEventInQueue@CInputManager@@QAE_NW4EInputEventType@@JPAVCInputEvent@@J@Z (0x009F4C60).
++    bool IsJoystickEventInQueue(EInputEventType type, long button, CInputEvent* event, long device);   // 0x009F4C60
++#endif
+ #ifdef FABLE_RETAIL_CINPUTMANAGER_EVENTSCANEND
+     // Retail opt-in (chunk 791, row 0x004963A0 CFrontendGameComponent::Input): Ego_r.pdb / FableWin.pdb
+     // ?EventScanEnd@CInputManager@@QBEXAAVCInputEventScanInfo@@@Z (0x009F4AC0), called after every EventScanStart / Next loop.
+@@ -58,4 +65,7 @@
+ #endif
+ };
+ FABLE_STATIC_ASSERT(sizeof(CInputManager) == 0x80);
++#ifdef FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE
++extern CInputManager* PInputManager;                                    // 0x013B8388 ?PInputManager@@3PAVCInputManager@@A
++#endif
+ #endif // FABLE_ENGINE_CINPUTMANAGER_H

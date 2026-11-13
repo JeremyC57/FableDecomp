@@ -1,0 +1,20 @@
+--- rebuild/include/engine/CTCInventoryAbilities.h	2026-11-13 08:07:19.182365235 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC2/hdr/engine/CTCInventoryAbilities.h	2026-11-13 09:25:27.398129201 +0000
+@@ -103,6 +103,17 @@
+     bool IsAbilityAvailable(EHeroAbility ability) const;                                                         // 0x005EDF08
+     long GetNumAssignedReceivedAbilities() const;                                                                // 0x005EE146
+ #endif
++#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_SPECIALBUTTONS
++    // Opt-in (bwf1 / agentC2, row 0x00651B04 NPlayerGui::CDrawAbilityButtons::Draw): Ego_r.pdb spellings, out of line in retail.
++    long GetSpecialAbilityGraphicSetToButton(long button) const;                                                 // 0x005EE31D
++    CDefPointer<const CHeroAbilityDef> GetSpecialAbilityPDefSetToButton(long button) const;                      // 0x005EE365
++#ifndef FABLE_RETAIL_CTCINVENTORYABILITIES_AVAILABILITY
++    bool IsAbilityAvailable(EHeroAbility ability) const;                                                         // 0x005EDF08
++    long GetNumAssignedReceivedAbilities() const;                                                                // 0x005EE146
++#endif
++    long GetNumAssignedAbilityRows() const;                                                                      // 0x005EE183
++    long GetNumAssignedReceivedExpressions() const;                                                              // 0x005EE24B
++#endif
+ #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_PRIORITISED
+     // Opt-in (agentSND, 2026-11-10, rows 0x005F64DD / 0x005F6793 CycleAssignedAbilities / CycleAssignedExpressions): Ego_r.pdb +
+     // FableWin.pdb spellings, out of line in retail: ?GetPrioritisedAbilityDefs@CTCInventoryAbilities@@QBEXAAV?$vector@V?$CDefPointer@

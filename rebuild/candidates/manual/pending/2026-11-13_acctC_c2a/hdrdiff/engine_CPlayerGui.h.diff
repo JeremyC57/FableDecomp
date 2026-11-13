@@ -1,0 +1,24 @@
+--- rebuild/include/engine/CPlayerGui.h	2026-11-13 08:07:19.174365235 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC2/hdr/engine/CPlayerGui.h	2026-11-13 09:25:27.395531933 +0000
+@@ -238,6 +238,21 @@
+     unsigned char ScaleAlpha(unsigned char alpha) const { return (unsigned char)(alpha*Alpha); }
+     unsigned char GetAlpha() const { return (unsigned char)(255.0f*Alpha); }
+ #endif
++#if defined(FABLE_RETAIL_CPLAYERGUI_ABILITYBUTTONS_DRAW) && defined(FABLE_RETAIL_CPLAYERGUI_MEMBERS)
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb / FableWin.pdb ?GetButtonAlpha@CPlayerGui@@QBEMJ_N00@Z (0x00439AB0),
++    // ?GetAbilityButton@CPlayerGui@@QAEJJ@Z (0x00438990), ?GetAbilityButtonScale@CPlayerGui@@QBEMXZ (out of line 0x004375E0) and
++    // FableWin ?SetAbilityButtonScale@CPlayerGui@@QAEXM@Z (inline: the row stores +0x278 in place).
++    float GetButtonAlpha(long button, bool normal, bool show, bool special) const;   // 0x00439AB0
++    long GetAbilityButton(long button);                                  // 0x00438990
++    float GetAbilityButtonScale() const;                                 // 0x004375E0
++    void SetAbilityButtonScale(float scale) { AbilityButtonScale = scale; }
++    // FableWin.pdb ?IsNormalToSpecial@CPlayerGui@@QBE_NXZ, ?IsSpecialToNormal@..QBE_NXZ, ?IsShowActualAbilityButtons@..QBE_NXZ,
++    // ?ResetNormalToSpecialState@..QAEXXZ: inline (the row reads / clears +0x27C / +0x27D / +0x251 in place).
++    bool IsNormalToSpecial() const { return NormalToSpecial; }
++    bool IsSpecialToNormal() const { return SpecialToNormal; }
++    bool IsShowActualAbilityButtons() const { return ShowSpecialAbilityButtonsAbilities; }
++    void ResetNormalToSpecialState() { NormalToSpecial = false; SpecialToNormal = false; }
++#endif
+     void Update(bool paused);                                            // 0x0043A080
+     void UpdateMiniMapMarkers(bool);                                     // 0x004378C0
+     CSubtitleRenderer& GetSubtitleRenderer() { return SubtitleRenderer; }

@@ -1,0 +1,20 @@
+--- rebuild/include/engine/CTCWeapon.h	2026-11-13 08:07:19.186365235 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC2/hdr/engine/CTCWeapon.h	2026-11-13 09:25:27.397871869 +0000
+@@ -16,8 +16,17 @@
+ #ifdef FABLE_RETAIL_CTCWEAPON_DAMAGE
+ #include "engine/EWeaponClass.h"
+ #endif
++#ifdef FABLE_RETAIL_CTCWEAPON_GETWEAPONTYPE
++enum EWeaponType;                                                      // Ego_r.pdb enum (enumerators not modelled)
++#endif
+ class CThing;
+ class CTCWeapon : public CTCBase {
++#ifdef FABLE_RETAIL_CTCWEAPON_GETWEAPONTYPE
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb / FableWin.pdb ?GetWeaponType@CTCWeapon@@QBE?AW4EWeaponType@@XZ, out of line at 0x005DA7D0.
++public:
++    EWeaponType GetWeaponType() const;                                   // 0x005DA7D0
++private:
++#endif
+ #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+ public:
+ long GetExplosionType()const;void IncrementNumThingsKilled(CThing*);

@@ -1,0 +1,14 @@
+--- rebuild/include/engine/CActionInputControl.h	2026-11-13 08:07:19.150365233 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC2/hdr/engine/CActionInputControl.h	2026-11-13 09:24:06.862646616 +0000
+@@ -42,6 +42,11 @@
+ #else
+     EActionDirection GetDirection() const;                              // 0x0040ED10
+ #endif
++#ifdef FABLE_RETAIL_CACTIONINPUTCONTROL_DEFAULT_CTOR
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): the inline default constructor (five zero words and a zero C2DVector).
++    CActionInputControl() : GameAction((EGameAction)0), ControllerType((EControllerType)0), KeyboardKey((EInputKey)0),
++        XboxButton((EXboxControllerButton)0), MouseButton((EMouseButtonControl)0), ControlDirection(0.0f, 0.0f) {}
++#endif
+     bool IsSameButton(const CActionInputControl& other) const;          // 0x00405DB0 (landed)
+     bool IsSameActionAndButton(const CActionInputControl& other) const; // 0x0040EDA0 (no caller in retail)
+     EGameAction           GameAction;         // +0x00

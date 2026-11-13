@@ -1,0 +1,13 @@
+--- rebuild/include/engine/CTCQuickAccessMenu.h	2026-11-13 08:07:19.186365235 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w22/agentC2/hdr/engine/CTCQuickAccessMenu.h	2026-11-13 09:25:27.395864735 +0000
+@@ -16,6 +16,10 @@
+ public: virtual void OnCreate();
+ public: virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo &);
+ public: virtual void GlobalUpdate(bool);
++#ifdef FABLE_RETAIL_CTCQUICKACCESSMENU_ISACTIVE
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb / FableWin.pdb ?IsActive@CTCQuickAccessMenu@@QBE_NXZ, out of line at 0x00625930.
++public: bool IsActive() const;                                           // 0x00625930
++#endif
+ #ifdef FABLE_RETAIL_CTCQUICKACCESSMENU_DEACTIVATE
+     // Retail opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): FableWin.pdb ?StatGetInterfaceType@CTCQuickAccessMenu@@SI?AW4ETCInterfaceType@@XZ
+     // (0x01A93CF0; inline in retail: Activate looks up TC 246 = TCI_QUICK_ACCESS_MENU, `mov dword ptr [esp+30h],0F6h` at 0x0056AD93) and
