@@ -127,3 +127,38 @@
   ApplyOutline is LARGER than ours at /Od (2312b/619i v 2092b/523i with /EHsc), so the later debug build did not split the tail out either.
 - State: differ/ unchanged (1 hunk). Best evidenced-free candidates: c21/p3 (private inline member taking the alpha ref, AR..end) or
   c13/m4. Next: step 4 (recs.py / cands.py on base v c21/p3 to name the two deciding records), or the owner's call on a descriptive helper.
+
+## Session 5 (author agent, 2026-11-13) -- progress note at ~70 probes; differ/ unchanged
+- Debug-size gap (Lead 1) explained away: sibling 0x00B87870 /Od+EHsc 220i/819b v FableWin 250i/888b (+30i/+69b); this row +96i/+220b.
+  VC7.1 /Od pushes float literal args as `push imm` (seen in c22/_fw/base.dis); VC8 (FableWin is VC8: _Debug_pointer/_Is_checked
+  symbols) pushes them as `push ecx ; fldz|fld [c] ; fstp [esp]` (+2i, +4/+5b each). This row has 38 literal float args to
+  SetUserVertexShaderConstant (34 zero, 4 non-zero) -> +76i/+156b; the sibling 4 -> +8i/+16b. Residues 20i/64b v 22i/53b: the same common
+  VC8 overhead. So the gap is NOT text specific to this row.
+- No effect (all exactly base, 28:Smb): empty inline calls with 0..4 params (with or without (void) uses) between AlphaTestFunc and AlphaRef
+  (c22/d*, u*); 12 argument spellings of SetAlphaRef(1) (c22/g3); the argument produced by an inline function with 1..3 params, incl.
+  min/max/clamp templates (c22/g4); `if (true)` / `if (OutlineTexture)` / `do{}while(0)` / `{}` around 9 tail ranges (c22/g5, 36 probes).
+- Frames ENDING before AlphaRef (Lead 2, c22/f*): 0/1-param frames over [TestFunc] = base; any frame over [TestEnable..] / [BlendEnable..] /
+  [FilterMag(0)..] with a param flips 24..38; 2-3 param frames over [TestFunc] flip 28..38. None fixes 28.
+- c2 records (agent3005 cands.py, c22/h): the AlphaRef block's temp is candidate 340 (id 4054 base, 4056 in the matching c8/x3) in the
+  36-id-per-block series 2850..4455 (one temp per SetRenderState block); x3's frame records are freed after the frame, later blocks keep
+  their ids. Partner record not identified (a mod-256 brute force points at section-1 setter locals 726/727, unproven).
+- More no-effect families (all exactly base 28:Smb): plain `inline` instead of FABLE_FORCEINLINE (AddStateToUpdateList: no change; SetAlphaRef
+  or SetRenderState: not inlined, thousands of bytes off); header SetRenderState operand / increment spellings (mask & state swapped,
+  `!(..)`, `a = a | b`, `StateStack[StateStackSize++].Value`, `StateUpdateList[StateUpdateListSize++]`, postfix ++: c22/ov/b*, h*);
+  the `tex` local opened at 8 points of the tail, in its own block or at function scope (c22/g6). A live `CRenderManager*` /
+  `CRenderManager&` / `CRenderStateManager*&` local for the AlphaRef statement (c22/g7) changes code (6429..6253 bytes), never fixes 28.
+- c2 IL at the block pass (agent3005 dumpblk.py, depth 0; c22/h/base_blk.json, x3_blk.json): the two loads of block 28 are already in
+  final order there (base: `[edx+8]` node tagged 0x3d5 then `[eax+0x2814]` 0x3d9; x3: `[eax+0x2814]` 0x3dd then `[edx+8]` 0x3d9), so the
+  operand order is decided before the block pass and is not the creation order of those memory nodes.
+- Per-block state-load temps (cands 334/340/346/352/358 = blocks 27..31): base 4018/4054/4092/4128/4164; x3 4018/4056/4092/4128/4164
+  (fixed); x1 4056/4090 (29 flips); k2 dead locals 4054/4090/4126/4162 (28..31 wrong); k34 4088/4124/4160/4196 (28 ok, 29..31 wrong).
+  Blocks 29..31 sit exactly on their edge (2 lower flips them); block 28 is 2 below its edge. Only records inside / around the
+  SetAlphaRef expansion move T28 alone.
+- Overlay merged: $W/hdr/engine/CRenderStateManager.h is now the sibling's overlay copy (adds FABLE_RETAIL_CRENDERSTATEMANAGER_DISPLACEMENT_INLINE;
+  drops this row's unused LOCAL_MASK probe opt-in, backup c22/CRenderStateManager.h.bak) + CEngineScreenEffectDisplacementRenderer.h copied.
+  With it: this row DIFFER(6431v6431) 1 hunk (unchanged), sibling 0x00B87870 RELOCATION_MATCH (q.py, flags none).
+- State at end of session 5: no evidenced source matches. Every matching text is an invented inline frame (c8/x3, c13/m4, c21/p3) or
+  dead records in the shared SetAlphaRef body (breaks the sibling). Owner decision still needed. Best next idea if pursued: decode the
+  c2 commutative key (which record pair at block 28; dumpblk tuple word 0x28 nodes / sib.py-style hook earlier than the block pass) to
+  predict which REAL construct could move T28 by +2..+33 alone; or check the other SetAlphaRef users (00bbc460 / 00bf01e0 / 009a1720 /
+  00ab83a0 / 00ba6240) for a context pattern shared with this row.
