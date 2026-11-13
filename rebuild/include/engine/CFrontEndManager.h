@@ -25,6 +25,11 @@ public:
 protected:
  void ConstructFileDescription(unsigned long,CComponent*,CComponent*,CWideString&);                      // 0x00595CC1
  void GetSavedGameNames(std::vector<CWideString>&);                                                      // 0x00597DF7
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_ADDREGION
+ // Nested opt-in (chunk 2013, row 0x00597DF7): the protected AddRegionAndTimeInfo of the FABLE_RETAIL_CFRONTENDMANAGER branch,
+ // declared in the full-layout branch too (Ego_r / FableWin ?AddRegionAndTimeInfo@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z).
+ void AddRegionAndTimeInfo(const CWideString&);                                                          // 0x00597228
+#endif
  long RefreshAvailableSavedGamesForProfile();                                                            // 0x00598463
 public:
 #endif

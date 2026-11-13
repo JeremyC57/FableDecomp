@@ -4,7 +4,13 @@
 namespace NUISystem {
 // Layout: original Method+0 and actual four-byte STLport list+4.
 class CDeletion { public:
-#ifdef FABLE_RETAIL_CDELETION
+#ifdef FABLE_RETAIL_CDELETION_INLINE
+// Retail opt-in (chunk 4007, row 0x0061B610 CTCInventoryQuests::ConstructQuestList): the two user-declared constructors
+// (FableWin.pdb ??0CDeletion@NUISystem@@QAE@XZ / ??0CDeletion@NUISystem@@QAE@ABV01@@Z; retail COMDATs 0x0042BED4 / 0x0042CD84)
+// with their bodies in the class, so a caller may expand them: the row expands both at 0x0061DB42..0x0061DB85.
+CDeletion() { }
+CDeletion(const CDeletion& other) : Method(other.Method), AssociatedParents(other.AssociatedParents) { }
+#elif defined(FABLE_RETAIL_CDELETION)
 // Only for small functions: above VC7.1 c2's 10000-IL-tuple limit (CManager::Action 0x0041E6D3) a user-declared ctor makes every
 // CDeletion local escape, so block locals stop sharing a frame slot; there keep the implicit members (single-row 886, session 3).
 // Retail opt-in (chunk 735, rows 0x005729D8 / 0x00573792 CTCInventoryExperience::AddStatToList(PC)): the default and copy

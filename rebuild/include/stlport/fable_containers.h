@@ -734,7 +734,18 @@ vector<_Tp,_Alloc>::vector(const vector<_Tp,_Alloc>& x) : _Vector_base<_Tp,_Allo
 #endif
 #ifndef FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY
 // The separate overflow instantiation can be supplied by another translation unit.
-template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_insert_overflow(iterator position,const _Tp& x,const __false_type&,size_type fillLength,bool atEnd) {
+// Opt-in FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE (chunk 2055, row 0x00821A80 CMap::LoadFromFile): the two bodies stay
+// visible but are kept out of line, as STLport's stl/_vector.c definitions are in the retail TU (vector<long>::_M_insert_overflow
+// 0x00440990 is called at 0x00821DCC / 0x00821F3C / 0x00821F56, never expanded). With the body visible VC7.1 knows the call
+// writes the vector only through `this`: retail keeps the local vector's _M_finish in a CPU location across push_back's construct
+// store (0x00821EE7 `mov edx,[esp+30h] ; cmp edx,ecx ; ... ; mov ecx,edx`); with the declaration alone (..._DECL_ONLY) it is
+// reloaded after every store and the frame grows by 8 bytes (0x98 v retail 0x90).
+#if defined(FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE) && defined(_MSC_VER)
+#define FABLE_STLP_OVERFLOW_OUTOFLINE __declspec(noinline)
+#else
+#define FABLE_STLP_OVERFLOW_OUTOFLINE
+#endif
+template<class _Tp,class _Alloc> FABLE_STLP_OVERFLOW_OUTOFLINE void vector<_Tp,_Alloc>::_M_insert_overflow(iterator position,const _Tp& x,const __false_type&,size_type fillLength,bool atEnd) {
     const size_type oldSize=size();const size_type len=oldSize+(max)(oldSize,fillLength);
     _Tp* newStart=this->_M_end_of_storage.allocate(len);_Tp* newFinish=newStart;
     newFinish=__uninitialized_copy(this->_M_start,position,newStart,__false_type());
@@ -743,7 +754,7 @@ template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_insert_overflow(ite
     if(!atEnd) newFinish=__uninitialized_copy(position,this->_M_finish,newFinish,__false_type());
     _M_clear();_M_set(newStart,newFinish,newStart+len);
 }
-template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_insert_overflow(iterator position,const _Tp& x,const __true_type&,size_type fillLength,bool atEnd) {
+template<class _Tp,class _Alloc> FABLE_STLP_OVERFLOW_OUTOFLINE void vector<_Tp,_Alloc>::_M_insert_overflow(iterator position,const _Tp& x,const __true_type&,size_type fillLength,bool atEnd) {
     const size_type oldSize=size();const size_type len=oldSize+(max)(oldSize,fillLength);
     _Tp* newStart=this->_M_end_of_storage.allocate(len);
     _Tp* newFinish=(_Tp*)__copy_trivial(this->_M_start,position,newStart);
@@ -947,7 +958,11 @@ public:
 #endif
 #endif
     _STLP_alloc_proxy<_List_node<_Tp>*,_List_node<_Tp>,allocator<_List_node<_Tp> > > _M_node;
-#ifdef FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#ifdef FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFCLASS
+    // Per-TU opt-in (chunk 4007, row 0x0061B610 CTCInventoryQuests::ConstructQuestList): STLport 4.6 declares clear() in the class
+    // (_list.h) and defines it after the class as a plain template member with no `inline` (_list.c); the body is the one below.
+    void clear();
+#elif defined(FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE)
     // Per-TU opt-in (chunk 801, row 0x00833C00 CThingAICreature::DrawPreparePrimitivesForRendering): STLport 4.6 _list.c
     // _List_base::clear(), declared only. Retail calls the list<CEnginePrimitiveHandle> instantiation out of line at 0x00834F90
     // (`lea edi,[esi+194h] ; mov ecx,edi ; call 0x00834F90`, 0x00833C0C; the landed ~CThingAICreature 0x008320C0 binds the same
@@ -995,6 +1010,19 @@ template<class _Dummy> void _List_global<_Dummy>::_Transfer(_List_node_base* __p
     }
 }
 typedef _List_global<bool> _List_global_inst;
+#endif
+#ifdef FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFCLASS
+template<class _Tp,class _Alloc> void _List_base<_Tp,_Alloc>::clear() {
+    _List_node<_Tp>* cur=(_List_node<_Tp>*)_M_node._M_data->_M_next;
+    while(cur!=_M_node._M_data) {
+        _List_node<_Tp>* tmp=cur;
+        cur=(_List_node<_Tp>*)cur->_M_next;
+        tmp->_M_data.~_Tp();
+        _M_node.deallocate(tmp,1);
+    }
+    _M_node._M_data->_M_next=_M_node._M_data;
+    _M_node._M_data->_M_prev=_M_node._M_data;
+}
 #endif
 template<class _Tp,class _Alloc=allocator<_Tp> > class list : public _List_base<_Tp,_Alloc> {
 public:
@@ -1346,6 +1374,22 @@ void __fastcall random_shuffle(_RandomAccessIter,_RandomAccessIter,_RandomNumber
 // Per-TU opt-in (wf4, row 0x008F10B0 CTCTavernGameCardBase::ShuffleCards): STLport 4.6 _algo.h two-argument random_shuffle, declared
 // only; retail calls the CCard** instantiation out of line as __fastcall (first ecx, last edx; 0x007D7860, landed with /Gr).
 template<class _RandomAccessIter> void __fastcall random_shuffle(_RandomAccessIter,_RandomAccessIter);
+#endif
+#ifdef FABLE_RETAIL_STLP_MEM_FUN
+// Per-TU opt-in (chunk 729): STLport 4.6 _function_base.h const_mem_fun_ref_t / mem_fun_ref (Ego_r.pdb
+// ??$GetAllThings@VCThingCreatureBase@@...V?$const_mem_fun_ref_t@_NVCThingCreatureBase@@@std@@...; retail 0x00603000 stores the
+// 4-byte member pointer 0x005FA7F0 IsDemonDoor in the filter temporary).
+template<class _Ret,class _Tp> class const_mem_fun_ref_t : public unary_function<_Tp,_Ret> {
+    typedef _Ret (_Tp::*__fun_type)(void) const;
+public:
+    explicit const_mem_fun_ref_t(__fun_type __pf) : _M_f(__pf) {}
+    _Ret operator()(const _Tp& __r) const { return (__r.*_M_f)(); }
+private:
+    __fun_type _M_f;
+};
+template<class _Ret,class _Tp> inline const_mem_fun_ref_t<_Ret,_Tp> mem_fun_ref(_Ret (_Tp::*__f)() const) {
+    return const_mem_fun_ref_t<_Ret,_Tp>(__f);
+}
 #endif
 #ifdef FABLE_RETAIL_STLP_BACK_INSERTER
 // Per-TU opt-in (chunk 849, row 0x0057E2F1 CTCHeroStats::OnSerialise; the landed 0x007B3760 CTCGuard::OnSerialise models the same

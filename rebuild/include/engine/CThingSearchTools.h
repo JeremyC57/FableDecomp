@@ -168,7 +168,12 @@ protected:
 public:
 #endif
     CThingSearchTools(CThingManager&,CWorldMap&);
+#ifndef FABLE_RETAIL_CTHINGSEARCHTOOLS_IMPLICIT_DTOR
     ~CThingSearchTools();
+#else
+    // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): no user destructor -- retail expands the implicit one in place (0x004A72D7: the vector at +0xC freed,
+    // then operator delete).
+#endif
 #ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA
     template<class T,class Container,class Filter> void GetAllThingsInRoughArea(const C2DBoxI& area,const Filter& filter,Container& result) const {
         std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);

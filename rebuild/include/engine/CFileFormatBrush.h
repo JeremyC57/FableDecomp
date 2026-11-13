@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CFILEFORMATBRUSH_H
 #define FABLE_ENGINE_CFILEFORMATBRUSH_H
+// (chunk 2055 overlay: one nested opt-in FABLE_RETAIL_CFILEFORMAT_MAPHEADER added at the end of the pack(1) scope; default text unchanged.)
 // Retail serialized file records (header wave 2026-11-03, Codex pass 12 row 0x00821010 CMap::LoadBrushesFromFile): define
 // FABLE_RETAIL_CFILEFORMATBRUSH. Packing (owner rule 2026-11-03; evidence rows/00821010/PACKING_EVIDENCE.md of the Codex pass 12
 // handoff): Ego_r.pdb and FableWin.pdb both keep these records byte-aligned -- CReplaceSerialise / CBaseSerialise 5 bytes
@@ -95,7 +96,49 @@ class COldFileFormatHeightMapCell5:public CReplaceSerialise<COldFileFormatHeight
 FABLE_STATIC_ASSERT(sizeof(COldFileFormatHeightMapCell5)==25);
 FABLE_STATIC_ASSERT(offsetof(COldFileFormatHeightMapCell5,SoundLayer)==17);
 #endif
+#ifdef FABLE_RETAIL_CFILEFORMAT_MAPHEADER
+// Nested opt-in (chunk 2055 scout, row 0x00821A80 CMap::LoadFromFile): the three map-file records that row reads, in this header's
+// byte-aligned scope. Ego_r.pdb layouts (struct_layouts_egor.tsv): CFileFormatMapHeader 67618 = 0x10822 (retail `push 10822h` at
+// 0x00821A9D; ThingUIDCount +5 / +9 read at 0x00821B48, UsingExtraMapCells +0x15 at 0x00821F95, LargeThemePalette +0x16 at 0x00821B54,
+// VersionNumber +0x8416 at 0x00821B5D, NoSoundThemeEntries +0x841A at 0x00821DD5, AtmosThemePalette +0x841E (ctor 0x00821ABE; entries'
+// ThemePaletteThemeDefIndex at +0x849E, 0x008221BB)); CFileFormatHeightMapCell 21 (fields read at [record+5..+0x14], 0x00821FE3..
+// 0x00822098; the same layout as the landed 0x008275B0 model); CFileFormatGameMapCell 11 (AtmosThemes +5, AtmosBlends +8,
+// SoundThemePaletteIndex +10: 0x0082238F..0x008223F9). Base templates: FableWin/Ego_r ?ReadFromFile@?$CReplaceSerialise@VCFileFormatMapHeader@@
+// VCOldFileFormatMapHeader8@@@@..(0x0051CBB0), ..VCFileFormatHeightMapCell@@VCOldFileFormatHeightMapCell6@@..(0x008275B0, same TU),
+// ?ReadFromFile@?$CBaseSerialise@VCFileFormatGameMapCell@@$00@@QAE_NAAVCAFile@@PAVCASuspendableProcess@@@Z (inline in retail).
+// No user constructors: FableWin's ??0CFileFormatMapHeader@@QAE@XZ (14i/39b) and ??0CFileFormatGameMapCell@@QAE@XZ (10i/22b) equal the
+// implicit ones at plain /Od (fwsize SAME, scout/fwsize.txt); retail expands the map header's (two out-of-line
+// ??0CFileLargeThemePalette@@QAE@XZ 0x0050EE40 calls at +0x16 / +0x841E, 0x00821AB6..0x00821AC4) and the game-map cell's (version byte 1,
+// 0x00822223).
+class COldFileFormatMapHeader8;class COldFileFormatHeightMapCell6;
+class CFileFormatMapHeader:public CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHeader8>{public:
+ unsigned __int64 ThingUIDCount;unsigned long WorldSizeX,WorldSizeY;bool UsingExtraMapCells;
+ CFileLargeThemePalette LargeThemePalette;unsigned long VersionNumber,NoSoundThemeEntries;CFileLargeThemePalette AtmosThemePalette;
+ unsigned long StaticMapChecksum;
+};
+class CFileFormatHeightMapCell:public CReplaceSerialise<CFileFormatHeightMapCell,COldFileFormatHeightMapCell6>{public:
+ float Height;unsigned char TextureBlendAlpha,EngineTheme[3],EngineBlend[2],Passable,CameraPassable;
+ signed char SoundLayerPaletteIndex,MinimapZone;bool ShorePoint,NavPreferred;
+};
+class CFileFormatGameMapCell:public CBaseSerialise<CFileFormatGameMapCell,1>{public:
+ unsigned char AtmosThemes[3],AtmosBlends[2];signed char SoundThemePaletteIndex;
+};
+#endif
 #pragma pack(pop)
+#ifdef FABLE_RETAIL_CFILEFORMAT_MAPHEADER
+FABLE_STATIC_ASSERT(sizeof(CFileFormatMapHeader)==0x10822);
+FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,ThingUIDCount)==5);
+FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,UsingExtraMapCells)==0x15);
+FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,LargeThemePalette)==0x16);
+FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,VersionNumber)==0x8416);
+FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,NoSoundThemeEntries)==0x841A);
+FABLE_STATIC_ASSERT(offsetof(CFileFormatMapHeader,AtmosThemePalette)==0x841E);
+FABLE_STATIC_ASSERT(sizeof(CFileFormatHeightMapCell)==21);
+FABLE_STATIC_ASSERT(offsetof(CFileFormatHeightMapCell,SoundLayerPaletteIndex)==17);
+FABLE_STATIC_ASSERT(offsetof(CFileFormatHeightMapCell,NavPreferred)==20);
+FABLE_STATIC_ASSERT(sizeof(CFileFormatGameMapCell)==11);
+FABLE_STATIC_ASSERT(offsetof(CFileFormatGameMapCell,SoundThemePaletteIndex)==10);
+#endif
 FABLE_STATIC_ASSERT(sizeof(CFileFormatLevel)==25);
 FABLE_STATIC_ASSERT(sizeof(CFileLargeThemePaletteEntry)==132);
 FABLE_STATIC_ASSERT(sizeof(CFileLargeThemePalette)==33792);

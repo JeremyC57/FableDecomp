@@ -23,6 +23,9 @@
 #include "fable_string.h"                                                // CCharString
 #include "engine/CTCBase.h"
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CTCQUESTCARD_ACCESSORS
+#include "engine/CQuestCardDef.h"
+#endif
 #ifdef FABLE_RETAIL_CTCQUESTCARD_QUESTNAME
 #include "engine/ETCInterfaceType.h"
 #endif
@@ -58,6 +61,32 @@ public:
     // Nested opt-in (chunk 765, row 0x007021E0): Ego_r.pdb / FableWin.pdb ?SetTeleporterRegionName@CTCQuestCard@@QAEXABVCCharString@@@Z
     // (Ego_r 0x00723D20, first in the class's donor run; TeleporterRegionName +0x24).
     void SetTeleporterRegionName(const CCharString& name);               // 0x007021E0
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCARD_ACCESSORS
+    // Nested opt-in (chunk 882, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): Ego_r.pdb / FableWin.pdb accessors the row calls
+    // out of line (Ego_r order IsCore 0x00723DA0 < IsExclusive < IsOptional < IsVignette = retail 0x00702280 / 0x007022A0 / 0x007022C0 /
+    // 0x007022E0; GetQuestName / GetQuestSummary / GetQuestObjective (CWideString by value) and GetRegionName (CCharString by value))
+    // and the inline ?GetPDef@CTCQuestCard@@QBE?AV?$CDefPointer@$$CBVCQuestCardDef@@@@XZ (FableWin.pdb 0x01C543E0; retail copies PDef
+    // +0x0C in place: null test, `inc [ecx+4]`, read, `dec [ecx+4]` / release, 0x0061E7D3). Needs the complete engine/CQuestCardDef.h.
+    bool IsCore() const;                                                 // 0x00702280
+    bool IsOptional() const;                                             // 0x007022C0
+    CWideString GetQuestName() const;                                    // 0x00702310
+    CWideString GetQuestSummary() const;                                 // 0x00702400
+    CWideString GetQuestObjective() const;                               // 0x00702470
+    CCharString GetRegionName() const;                                   // 0x007025A0
+    CDefPointer<const CQuestCardDef> GetPDef() const { return PDef; }
+    // FableWin.pdb inline accessors (absent from Ego_r.pdb's out-of-line set; the row reads the members in place):
+    // ?GetScriptQuestName@CTCQuestCard@@QBEABVCCharString@@XZ 0x01C4B570 (+0x28), ?GetGoldReward@CTCQuestCard@@QBEJXZ 0x01C5B470 (+0x2C),
+    // ?GetRenownReward@CTCQuestCard@@QBEJXZ 0x01C5B490 (+0x30).
+#if defined(FABLE_RETAIL_CTCQUESTCARD_STATGETINTERFACETYPE) && !defined(FABLE_RETAIL_CTCQUESTCARD_QUESTNAME)
+    // Nested opt-in (agent4007, row 0x0061B610 CTCInventoryQuests::ConstructQuestList): FableWin.pdb
+    // ?StatGetInterfaceType@CTCQuestCard@@SI?AW4ETCInterfaceType@@XZ (0x01C6DC70), the same inline static the _QUESTNAME opt-in
+    // declares, for a TU that takes the accessors above (the two blocks both declare GetQuestName). No layout change.
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_QUEST_CARD; }
+#endif
+    const CCharString& GetScriptQuestName() const { return ScriptQuestName; }
+    long GetGoldReward() const { return GoldReward; }
+    long GetRenownReward() const { return RenownReward; }
 #endif
     CDefPointer<const CQuestCardDef> PDef;                               // +0x0c
     bool                             Finished;                           // +0x10

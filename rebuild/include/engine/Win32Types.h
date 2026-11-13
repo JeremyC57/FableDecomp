@@ -21,6 +21,15 @@ typedef struct _GUID {
 
 struct HWND__; typedef HWND__* HWND;
 
+#ifdef FABLE_RETAIL_WIN32_FILETIME
+// Opt-in (chunk 2013, row 0x00595CC1): winbase.h / winnt.h _FILETIME (8 bytes: dwLowDateTime, dwHighDateTime), the type Ego_r.pdb
+// ?ToFileTime@CDateAndTime@@QBE?AU_FILETIME@@XZ returns and ?FormatDateTime@CXBConfig@@SIXABU_FILETIME@@PA_W1H@Z takes.
+typedef struct _FILETIME {
+    unsigned long dwLowDateTime;
+    unsigned long dwHighDateTime;
+} FILETIME;
+#endif
+
 struct _RTL_CRITICAL_SECTION_DEBUG;
 typedef struct _RTL_CRITICAL_SECTION {
     _RTL_CRITICAL_SECTION_DEBUG* DebugInfo;

@@ -395932,6 +395932,103 @@ $catalog = @(
         TestSource = '00/97/CAIStateGroupScorpionKing_UpdateCombat_0097bda0_test.cpp'
         PassPattern = '0097bda0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0045a159'
+        Module = 'CInventoryDef'
+        Source = '00/45/CInventoryDef_operator_0045a159.cpp'
+        TestSource = '00/45/CInventoryDef_operator_0045a159_test.cpp'
+        PassPattern = '0045a159_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a21f0'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_LoadGameStateInternal_004a21f0.cpp'
+        TestSource = '00/4a/CWorld_LoadGameStateInternal_004a21f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr /GS'
+        PassPattern = '004a21f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a6e30'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_Init_004a6e30.cpp'
+        TestSource = '00/4a/CWorld_Init_004a6e30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '004a6e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004caa00'
+        Module = 'CThing'
+        Source = '00/4c/CThing_ConstructFromLevelScript_004caa00.cpp'
+        TestSource = '00/4c/CThing_ConstructFromLevelScript_004caa00_test.cpp'
+        PassPattern = '004caa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00595cc1'
+        Module = 'NUISystem::CFrontEndManager'
+        Source = '00/59/NUISystemCFrontEndManager_ConstructFileDescription_00595cc1.cpp'
+        TestSource = '00/59/NUISystemCFrontEndManager_ConstructFileDescription_00595cc1_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00595cc1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00597df7'
+        Module = 'NUISystem::CFrontEndManager'
+        Source = '00/59/NUISystemCFrontEndManager_GetSavedGameNames_00597df7.cpp'
+        TestSource = '00/59/NUISystemCFrontEndManager_GetSavedGameNames_00597df7_test.cpp'
+        PassPattern = '00597df7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fe090'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_ConstructQuestsScreen_005fe090.cpp'
+        TestSource = '00/5f/CTCInventoryMap_ConstructQuestsScreen_005fe090_test.cpp'
+        PassPattern = '005fe090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0061b610'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_ConstructQuestList_0061b610.cpp'
+        TestSource = '00/61/CTCInventoryQuests_ConstructQuestList_0061b610_test.cpp'
+        PassPattern = '0061b610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d3820'
+        Module = 'CTCTavernGameCoinGolf'
+        Source = '00/7d/CTCTavernGameCoinGolf_ProcessInput_007d3820.cpp'
+        TestSource = '00/7d/CTCTavernGameCoinGolf_ProcessInput_007d3820_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT87'
+        PassPattern = '007d3820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d6870'
+        Module = 'CTCTavernGameCardPairs'
+        Source = '00/7d/CTCTavernGameCardPairs_ProcessInput_007d6870.cpp'
+        TestSource = '00/7d/CTCTavernGameCardPairs_ProcessInput_007d6870_test.cpp'
+        PassPattern = '007d6870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00821a80'
+        Module = 'CMap'
+        Source = '00/82/CMap_LoadFromFile_00821a80.cpp'
+        TestSource = '00/82/CMap_LoadFromFile_00821a80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00821a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7af60'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_LoadFromFile_00a7af60.cpp'
+        TestSource = '00/a7/CNavQuadTree_LoadFromFile_00a7af60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a7af60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd52d0'
+        Module = 'CScriptInfoManager'
+        Source = '00/cd/CScriptInfoManager_RegisterScripts_00cd52d0.cpp'
+        TestSource = '00/cd/CScriptInfoManager_RegisterScripts_00cd52d0_test.cpp'
+        PassPattern = '00cd52d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

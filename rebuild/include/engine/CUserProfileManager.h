@@ -5,6 +5,11 @@
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
 #include "fable_string.h"
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVELIST
+#include "fable_string.h"
+#include "engine/CDateAndTime.h"
+#include "stlport/fable_containers.h"
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD
 #include "fable_string.h"
 #endif
@@ -74,6 +79,17 @@ public:
     const CWideString& GetProfileName() const { return ProfileName; }
     unsigned char _pad_sn_0x00[0x8];                                                  // vptr, CBaseClass word
     CWideString ProfileName;                                                          // +0x08
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVELIST
+    // Opt-in (chunk 2013, row 0x00597DF7 CFrontEndManager::GetSavedGameNames): Ego_r.pdb spellings, out of line in retail.
+    // GetSortedSaveNamesAndTimes 0x004091C0 (the names and the frontend's vector<CDateAndTime> pushed, 0x00597E53..0x00597E5C),
+    // GetAutoSaveFileName 0x00406690 (hidden result), GetMaxSaveSlots 0x004067B0 (`mov eax,32h ; ret`), GetSaveSlotFileName
+    // 0x00407360 (returns a reference: no hidden slot at 0x00598231..0x00598255). Declarations only; needs the CWideString,
+    // CDateAndTime and STLport vector declarations (fable_string.h, engine/CDateAndTime.h, stlport/fable_containers.h).
+    void GetSortedSaveNamesAndTimes(std::vector<CWideString>&, std::vector<CDateAndTime>&);   // 0x004091C0
+    CWideString GetAutoSaveFileName() const;                                          // 0x00406690
+    long GetMaxSaveSlots() const;                                                     // 0x004067B0
+    const CWideString& GetSaveSlotFileName(long) const;                               // 0x00407360
 #endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS
     // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): the option setters the UI actions call, out of line in

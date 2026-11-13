@@ -6,6 +6,11 @@ class CWorld;class CMessageEvent;class C3DVector;class CThing;
 // Original Ego_r37bae: no base, World reference then std::list<CMessageEvent>.
 // Native STLport list is4 bytes, so full manager is8 bytes.
 class CMessageEventManager {
+#ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_CTOR
+ // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0CMessageEventManager@@QAE@ABVCWorld@@@Z, retail 0x00687510. Declaration only.
+public:
+ CMessageEventManager(const CWorld& world);                     // 0x00687510
+#endif
 public:
 #ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_REMOVE
  void RemoveMessage(const CMessageEvent*);

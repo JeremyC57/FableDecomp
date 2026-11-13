@@ -32,6 +32,18 @@ class CFontBank;
 #include "engine/CCountedPointer.h"
 class CFontBank;
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_SMART_POINTER_ACCESSORS
+// Retail opt-in (agent4007, row 0x0061B610 CTCInventoryQuests::ConstructQuestList): PTextBank and PWorld carry their Ego_r.pdb
+// types (CCountedPointer<NGameText::CDataBank> +0x14, boost::scoped_ptr<CWorld> +0x24) and GetTextBank / GetWorld / PeekWorld
+// read them through the smart pointers' own operator*, one more inline layer than the opaque word read. Evidence: FableWin.pdb
+// ?GetWorld@CMainGameComponent@@QAEAAVCWorld@@XZ and ?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ are 10
+// instructions each at /Od (a call to the operator* and a ret), the opaque word read compiles to 9 with no call. Same retail
+// bytes for every caller (the layer is expanded); layout unchanged (8 and 4 bytes). Default text is unchanged.
+#include "engine/CCountedPointer.h"
+#include "boost/scoped_ptr.h"
+class CWorld;
+namespace NGameText { class CDataBank; }
+#endif
 class CMainGameComponentInit;
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ADDGAMEEVENT
 class CGameEvent;
@@ -58,10 +70,14 @@ protected:
     static CMainGameComponent* PMainGameComponent;
     static long ConstantFPS;
     CASoundBank* PSampleBank;                       // +0x10
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_SMART_POINTER_ACCESSORS
+    CCountedPointer<NGameText::CDataBank> PTextBank; // +0x14
+#else
     unsigned char PTextBank[8];                     // +0x14 CCountedPointer<NGameText::CDataBank>
+#endif
     unsigned char PPlayerManager[4];                // +0x1C boost::scoped_ptr<CPlayerManager>
     unsigned char PPlayerInterface[4];              // +0x20 boost::scoped_ptr<CGamePlayerInterface>
-#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES
+#if defined(FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES) || defined(FABLE_RETAIL_CMAINGAMECOMPONENT_SMART_POINTER_ACCESSORS)
     boost::scoped_ptr<CWorld> PWorld;
 #else
     unsigned char PWorld[4];                        // +0x24 boost::scoped_ptr<CWorld>
@@ -234,26 +250,42 @@ public:
     // Nested opt-in (chunk 755, row 0x0090C540 CAIStateGroup_MinionGuardFollowPlayer::Update): FableWin.pdb
     // ?PeekWorld@CMainGameComponent@@QBEABVCWorld@@XZ (0x0187EFF0; inline in Ego_r and retail: the caller reads the scoped_ptr word
     // +0x24 in place, 0x0090C55D). PWorld stays opaque here (boost::scoped_ptr<CWorld>, one pointer word), read as that word.
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_SMART_POINTER_ACCESSORS
+    const CWorld& PeekWorld() const { return *PWorld; }
+#else
     const CWorld& PeekWorld() const { return **reinterpret_cast<CWorld* const*>(PWorld); }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_GETWORLD
     // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): FableWin.pdb ?GetWorld@CMainGameComponent@@QAEAAVCWorld@@XZ
     // (0x018A3A80), inline in retail: the caller reads the scoped_ptr word +0x24 in place and calls the non-const
     // CWorld::ResetToFrontEnd 0x0049DCC0 (`mov ecx,[esi+24h]`, 0x0041F8A9).
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_SMART_POINTER_ACCESSORS
+    CWorld& GetWorld() { return *PWorld; }
+#else
     CWorld& GetWorld() { return **reinterpret_cast<CWorld* const*>(PWorld); }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
     // Retail opt-in (chunk 795, row 0x0092FAB0 CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoInteraction): Ego_r.pdb
     // ?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ and ?PeekCutSceneMainFont@CMainGameComponent@@QBEABVCFontBank@@XZ,
     // inline in retail (the caller reads the counted pointers' object words +0x14 / +0x1614C in place, 0x0093033B / 0x00930372; as the
     // landed CTCChest::DisplayLockedMessage 0x00750110 model). The members stay opaque (CCountedPointer: object word first).
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_SMART_POINTER_ACCESSORS
+    const NGameText::CDataBank& GetTextBank() const { return *PTextBank; }
+#else
     const NGameText::CDataBank& GetTextBank() const { return **reinterpret_cast<NGameText::CDataBank* const*>(PTextBank); }
+#endif
     const CFontBank& PeekCutSceneMainFont() const { return **reinterpret_cast<CFontBank* const*>(PCutSceneMainFont); }
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK_INITIALISED
     // Nested opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay, which expands CProgressDisplay::GetPTextBank):
     // FableWin.pdb ?IsTextBankInitialised@CMainGameComponent@@QBE_NXZ (0x018B4730), inline in retail (0x00499364 tests the PTextBank
     // object word +0x14 in place). PTextBank stays opaque (CCountedPointer: object word first).
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_SMART_POINTER_ACCESSORS
+    bool IsTextBankInitialised() const { return !PTextBank.IsNull(); }
+#else
     bool IsTextBankInitialised() const { return *reinterpret_cast<NGameText::CDataBank* const*>(PTextBank) != 0; }
+#endif
 #endif
 #endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_DISPLAYENGINE

@@ -217,6 +217,23 @@ template<class T> bool CDefinitionManager::GetDef(const CCharString& type_name, 
 #pragma auto_inline(on)
 #endif
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_INLINE
+// Opt-in (chunk 2055, row 0x00821A80 CMap::LoadFromFile): the by-name lookup
+// ??$GetDef@V..@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBV..@@@@@Z EXPANDED in the caller (retail calls
+// GetPDefFromInstantiationName 0x009ADA40 itself at 0x00821E95 and assigns the handle in line, 0x00821E9A..0x00821EC4). The text
+// is the by-global-index body above with the name lookup: `def.Get()` test, SetDynamicCast on a hit. FableWin.pdb's debug copy
+// 0x02247E20 is 40 instructions / 139 bytes and this text compiles to exactly that at /Od /EHsc (fwsize); the `!def.IsNull()` /
+// `*out = def` text of ..._GETDEF_NAME_BODY is 41 / 142. Do not combine with ..._GETDEF_NAME_BODY.
+template<class T> inline bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer<const T>* out) const
+{
+    CDefPointer<const CDefClassBase> def = GetPDefFromInstantiationName(name);
+    if (def.Get()) {
+        out->SetDynamicCast(def);
+        return true;
+    }
+    return false;
+}
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY
 // Nested opt-in (chunk 1025, row 0x006B1D30 CAtmosProcess::SetAtmosSoundsAsMuted): the same-TU body of the by-name lookup
 // ??$GetDef@V..@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBV..@@@@@Z (Ego_r.pdb / FableWin.pdb; the CSoundThemeDef

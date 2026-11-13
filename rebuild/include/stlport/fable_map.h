@@ -437,6 +437,77 @@ pair<_Rb_tree_iterator<V,_Nonconst_traits<V> >,bool> _Rb_tree<K,V,KeyOfValue,Com
     return pair<iterator,bool>(j,false);
 }
 #endif
+#if defined(FABLE_RETAIL_STLP_MAP) && defined(FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_HINT_BODY)
+// Opt-in (chunk 4007, row 0x0061B610 CTCInventoryQuests::ConstructQuestList): the STLport 4.6 _tree.c hinted
+// insert_unique(iterator, const value_type&) body, visible in every retail TU that includes <map> like insert_unique(const V&)
+// above (text = the landed row 0x0042D2C6, the size-TU COMDAT of the map<unsigned long, CUIState> instance the row calls).
+// With the body visible VC7.1 knows the callee only writes its hidden iterator result: the result temporary of the expanded
+// map::insert(iterator, const value_type&) shares state_index's frame word (0x0061DED6 `lea edx,[esp+34h]` = [esp+2Ch] + two
+// pushes) instead of taking a word of its own. Out of line (never expanded in the row).
+template<class K,class V,class KeyOfValue,class Compare,class A>
+_Rb_tree_iterator<V,_Nonconst_traits<V> > _Rb_tree<K,V,KeyOfValue,Compare,A>::insert_unique(iterator position,const V& v) {
+    if(position._M_node==this->_M_header._M_data->_M_left) {
+        if(size()<=0)
+            return insert_unique(v).first;
+        if(_M_key_compare(KeyOfValue()(v),_S_key(position._M_node)))
+            return _M_insert(position._M_node,position._M_node,v);
+        else {
+            bool comp_pos_v=_M_key_compare(_S_key(position._M_node),KeyOfValue()(v));
+            if(comp_pos_v==false)
+                return position;
+            iterator after=position;
+            ++after;
+            if(after._M_node==this->_M_header._M_data)
+                return _M_insert(0,position._M_node,v,position._M_node);
+            if(_M_key_compare(KeyOfValue()(v),_S_key(after._M_node))) {
+                if(_S_right(position._M_node)==0)
+                    return _M_insert(0,position._M_node,v,position._M_node);
+                else
+                    return _M_insert(after._M_node,after._M_node,v);
+            }
+            else
+                return insert_unique(v).first;
+        }
+    }
+    else if(position._M_node==this->_M_header._M_data) {
+        if(_M_key_compare(_S_key(_M_rightmost()),KeyOfValue()(v)))
+            return _M_insert(0,_M_rightmost(),v,position._M_node);
+        else
+            return insert_unique(v).first;
+    }
+    else {
+        iterator before=position;
+        --before;
+        bool comp_v_pos=_M_key_compare(KeyOfValue()(v),_S_key(position._M_node));
+        if(comp_v_pos && _M_key_compare(_S_key(before._M_node),KeyOfValue()(v))) {
+            if(_S_right(before._M_node)==0)
+                return _M_insert(0,before._M_node,v,before._M_node);
+            else
+                return _M_insert(position._M_node,position._M_node,v);
+        }
+        else {
+            iterator after=position;
+            ++after;
+            bool comp_pos_v=!comp_v_pos;
+            if(!comp_v_pos)
+                comp_pos_v=_M_key_compare(_S_key(position._M_node),KeyOfValue()(v));
+            if((!comp_v_pos) && comp_pos_v &&
+               (after._M_node==this->_M_header._M_data || _M_key_compare(KeyOfValue()(v),_S_key(after._M_node)))) {
+                if(_S_right(position._M_node)==0)
+                    return _M_insert(0,position._M_node,v,position._M_node);
+                else
+                    return _M_insert(after._M_node,after._M_node,v);
+            }
+            else {
+                if(comp_v_pos==comp_pos_v)
+                    return position;
+                else
+                    return insert_unique(v).first;
+            }
+        }
+    }
+}
+#endif
 template<class K,class V,class Compare=less<K>,class A=allocator<pair<const K,V> > >
 class map {
 public:typedef pair<const K,V> value_type;

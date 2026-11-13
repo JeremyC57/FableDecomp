@@ -17,7 +17,8 @@
 class CNavRegion;
 class CAFile;
 template <class T, int N> class CSmallVector;
-#ifdef FABLE_RETAIL_CANAVQUADTREENODE_SAVETOFILE
+#if defined(FABLE_RETAIL_CANAVQUADTREENODE_SAVETOFILE) || defined(FABLE_RETAIL_CANAVQUADTREENODE_LOADSLOTS)
+// (LOADSLOTS: chunk 2054, row 0x00A7AF60 CNavQuadTree::LoadFromFile needs the same enum and slots 16..22, see below.)
 #include "stlport/fable_map.h"
 enum ENavQuadTreeNeighbours { };                     // FableWin.pdb W4ENavQuadTreeNeighbours (enumerators not recovered)
 #endif
@@ -65,7 +66,9 @@ public:
     virtual unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const;   // slot 15
     // slots 16..22 (SetUpNeighboursWithLeaf, SetUpNeighbours, CalculateChildrenNeighbours, RemoveNeighbours, AddToIndexTable,
     // SaveToFile, ConvertIndexesToPointers) are not called through this model; not declared.
-#ifdef FABLE_RETAIL_CANAVQUADTREENODE_SAVETOFILE
+#if defined(FABLE_RETAIL_CANAVQUADTREENODE_SAVETOFILE) || defined(FABLE_RETAIL_CANAVQUADTREENODE_LOADSLOTS)
+    // LOADSLOTS (chunk 2054, row 0x00A7AF60 CNavQuadTree::LoadFromFile): the same slots; LoadFromFile calls slot 22 through the base
+    // pointer (`call [eax+58h]` at 0x00A7B799; CNavQuadTree is a friend).
     // Nested opt-in (chunk Q22, row 0x00A78B20 CNavQuadTree::SaveToFile): slots 16..22 in PDB order, all protected in FableWin.pdb
     // (`MAE` / `MBE`: ?SetUpNeighboursWithLeaf@CANavQuadTreeNode@@MAEXW4ENavQuadTreeNeighbours@@PAV1@@Z, ?SetUpNeighbours@..@@MAEX..,
     // ?CalculateChildrenNeighbours@..@@MAEXXZ, ?RemoveNeighbours@..@@MAEXXZ, ?AddToIndexTable@..@@MBEXAAJAAV?$map@PBVCANavQuadTreeNode@@J..,

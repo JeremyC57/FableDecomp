@@ -193,6 +193,14 @@ public:
  // override of CAIGameCameraBase slot 1 (pure there). Declaration only: no layout change.
  virtual CCamera GetRenderCamera(float interpolation) const;   // 0x00697F30
 #endif
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CTOR
+ // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0CGameCameraManager@@QAE@ABVCWorld@@@Z, retail 0x0069AE80. Declaration only.
+ CGameCameraManager(const CWorld& world);                       // 0x0069AE80
+ virtual void Update();                                         // CAIGameCameraBase slot 0 override (declaration only)
+#ifndef FABLE_RETAIL_CGAMECAMERAMANAGER_GETRENDERCAMERA
+ virtual CCamera GetRenderCamera(float interpolation) const;    // CAIGameCameraBase slot 1 override (declaration only; as GETRENDERCAMERA)
+#endif
+#endif
  NCameraModes::CTools& GetCameraTools(){return CamTools;}
  NCameraModes::CBase* GetCameraMode(){return CurrentMode.Get();}
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_GETCAMERA

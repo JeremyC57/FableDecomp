@@ -37,7 +37,25 @@ public:
     // UnConvertVector 0x0052E530 (FableWin.pdb ?UnConvertVector@CUIScreenUnitConverter@NUISystem@@SI?AVC2DVector@@V3@@Z): the
     // inverse (divides by the back-buffer size, multiplies by the screen size); callers 0x0052EA6B / 0x0052EB2B
     // (ChangePositionDelta / ChangeTargetPositionDelta). The row includes engine/C2DVector.h before this header.
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR_INLINE
+    // Nested opt-in (chunk 882, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): ConvertVector is an inline header function
+    // in retail (0x0052E580 is its out-of-line copy, the landed body): the row expands it at its first site (0x0061EA22..0x0061EA8F:
+    // the flag test, then x / 640 * back-buffer width and y / 480 * back-buffer height) and calls 0x0052E580 at its second
+    // (0x00620F0A) once the inline budget is spent. The landed 0x0052E580 body; needs FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE.
+    static C2DVector __fastcall ConvertVector(C2DVector v)         // 0x0052E580 (out-of-line copy)
+    {
+        C2DVector result = v;
+        if (IsUsingRelativeCoords) {
+            result.X = v.X / ScreenWidth;
+            result.X *= BackBufferWidth;
+            result.Y = v.Y / ScreenHeight;
+            result.Y *= BackBufferHeight;
+        }
+        return result;
+    }
+#else
     static C2DVector __fastcall ConvertVector(C2DVector v);        // 0x0052E580
+#endif
     static C2DVector __fastcall UnConvertVector(C2DVector v);      // 0x0052E530
 #endif
 };

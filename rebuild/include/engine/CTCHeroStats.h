@@ -306,6 +306,12 @@ public:
     float            RotCounter;                                         // +0x1d0
     bool             IsInCutSceneFirstTime;                              // +0x1d4
     std::list<CHeroMarriageInfo> Marriages;                              // +0x1d8
+#ifdef FABLE_RETAIL_CTCHEROSTATS_GETRENOWNLEVEL
+    // Nested opt-in (chunk 882, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): FableWin.pdb ?GetRenownLevel@CTCHeroStats@@QBEJXZ
+    // (0x01E6E164), inline in retail (absent from Ego_r.pdb's out-of-line set; the row reads RenownLevel +0x70 in place, `cmp [ecx+70h],edi`
+    // 0x00620481).
+    long GetRenownLevel() const { return RenownLevel; }
+#endif
 #elif defined(FABLE_RETAIL_CTCHEROSTATS_FINEPAID)
     // Retail opt-in (wf17, row 0x007E2A60 CTCFineDialogue::GlobalUpdate): Ego_r.pdb ?AddMoney@CTCHeroStats@@QAEXJ_N@Z (0x0057B327),
     // ?KickHeroToMostRecentSafeRegion@CTCHeroStats@@QAEXXZ (0x0057DF85, out of line), and the inline Ego_r.pdb accessors

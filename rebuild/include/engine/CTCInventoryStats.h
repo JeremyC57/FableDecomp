@@ -9,6 +9,9 @@
 #include "engine/EHeroAbility.h"
 #endif
 class CTCHeroExperience;class CTCHeroStats;
+#ifdef FABLE_RETAIL_CTCINVENTORYSTATS_TIMESPENT
+namespace NGameText { class CDataBank; }
+#endif
 // Original complete storage; native inventory base130 plus information-screen base4.
 class CTCInventoryStats : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public: virtual ~CTCInventoryStats();
@@ -33,6 +36,13 @@ public: virtual NUISystem::CComponent * ConstructScreen(NUISystem::CComponent *)
 public: virtual NUISystem::CComponent * ConstructPersonalityList(NUISystem::CComponent *);
 public: virtual NUISystem::CComponent * ConstructExperienceList(NUISystem::CComponent *);
 public: virtual NUISystem::CComponent * ConstructExperienceListPC(NUISystem::CComponent *);
+#ifdef FABLE_RETAIL_CTCINVENTORYSTATS_TIMESPENT
+// Opt-in (chunk 2013, row 0x00595CC1 CFrontEndManager::ConstructFileDescription): Ego_r.pdb
+// ?GetTimeSpentInGame@CTCInventoryStats@@SI?AVCWideString@@KPBVCDataBank@NGameText@@@Z (public static __fastcall: hidden result in
+// ecx, the play time in edx, the text bank pushed), out of line in retail at 0x005CCC91 (0x00595FEE..0x00595FFD pushes the front
+// end's text bank). Declaration only.
+public: static CWideString __fastcall GetTimeSpentInGame(unsigned long time, const NGameText::CDataBank* bank);   // 0x005CCC91
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYSTATS
 // Retail opt-in (chunk 735, row 0x00577AC0): Ego_r.pdb ?StatGetInterfaceType@CTCInventoryStats@@SI?AW4ETCInterfaceType@@XZ
 // (inline: TCI_INVENTORY_STATS = 20, the `push 14h` of the inline CThing::GetTC) and ?CreateExperienceSliders@CTCInventoryStats@@

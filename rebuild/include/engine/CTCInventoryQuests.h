@@ -13,7 +13,17 @@
 #include "stlport/fable_containers.h"
 class CThing;
 namespace NUISystem { class CComponent; class CList; }
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_QUESTLIST
+class CTCQuestCard;
+// Retail opt-in (chunk 882 / H40f, row 0x0061E6D0 ConstructQuestListPC; chunk 4007, row 0x0061B610 ConstructQuestList): the enumerator
+// names are in neither PDB name set; these three are descriptive (0 the guild's available quests, OpenInventoryPC 0x006228FD; 1 the
+// current quests 0x005FCAA7; 2 the past quests).
+#include "engine/CIntelligentPointer.h"
+#include "stlport/fable_map.h"
+enum QuestScreenType { QUEST_SCREEN_TYPE_AVAILABLE = 0, QUEST_SCREEN_TYPE_CURRENT = 1, QUEST_SCREEN_TYPE_OTHER = 2 };
+#else
 enum QuestScreenType { };
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_MEMBERS
 #include "engine/CQuestCardItem.h"
 #ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_OPENINVENTORY
@@ -54,6 +64,24 @@ public:
 #endif
     long QuestCardCount;                                                                           // +0x150
 #ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_OPENINVENTORY
+#endif
+#if defined(FABLE_RETAIL_CTCINVENTORYQUESTS_QUESTLIST) && !defined(FABLE_RETAIL_CTCINVENTORYQUESTS_OPENPC)
+    // (chunk 882 / H40f, row 0x0061E6D0; chunk 4007, row 0x0061B610) the members after QuestCardCount, the same list as the OPENPC
+    // block below (Ego_r.pdb names and order at the retail offsets: AvailableQuests +0x16C, `lea ecx,[ebx+16Ch]` insert_unique
+    // 0x0061F122; DisplayQuests +0x178, `mov edi,[ebx+17Ch]` 0x0061F15F; PreviousScreenType +0x168; sizeof 0x188 = Alloc's
+    // operator new(0x188) 0x004D30A8) without OPENPC's virtual declarations.
+    bool Teleport;                                                                                 // +0x154
+    bool QuestCardActivatable;                                                                     // +0x155
+    bool EnableQuestCardListInitialise;                                                            // +0x156
+    bool ActiveTestQuestMode;                                                                      // +0x157
+    long TestQuestSelectedIndex;                                                                   // +0x158
+    long TestQuestTopIndex;                                                                        // +0x15c
+    bool TestQuestShowAll;                                                                         // +0x160
+    long TestQuestListSize;                                                                        // +0x164
+    NHeroInformationScreens::EScreenType PreviousScreenType;                                       // +0x168
+    std::map<CThing*, NUISystem::CComponent*> AvailableQuests;                                     // +0x16c
+    std::vector<CIntelligentPointer<CThing> > DisplayQuests;                                       // +0x178
+    float AccumFadeTime;                                                                           // +0x184
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_OPENPC
     // Nested opt-in (w22 agent2002, row 0x006224C0 OpenInventoryPC): the rest of the Ego_r.pdb members in order at the retail offsets
@@ -96,6 +124,13 @@ public:
     // Ego_r.pdb / FableWin.pdb ?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@3@W4QuestScreenType@@2@Z
     void ConstructQuestListPC(NUISystem::CComponent* container, const std::vector<CThing*>& quests, NUISystem::CList* list,
                               QuestScreenType type, NUISystem::CList* parent);                             // 0x0061E6D0
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_QUESTLIST
+    // (chunk 4007, row 0x0061B610 ConstructQuestList) Ego_r.pdb / FableWin.pdb
+    // ?IsQuestCardAvailable@CTCInventoryQuests@@QBE_NABVCTCQuestCard@@@Z: retail's out-of-line copy is 0x0061A260 (`this` unused,
+    // the card by reference, `ret 4`). Inline in retail: both ConstructQuestList rows expand it (0x0061D389..0x0061D3E2 in
+    // 0x0061B610). Declaration only; a row that expands it defines the body.
+    bool IsQuestCardAvailable(const CTCQuestCard& quest_card) const;                                       // 0x0061A260
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.

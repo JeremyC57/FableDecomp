@@ -20,6 +20,11 @@ class CThing; class CWorld; class CThingAICreature; class CReactionMatch; class 
 enum EOpinionAttitudeType;
 #endif
 class COpinionReactionManager {
+#ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_CTOR
+    // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0COpinionReactionManager@@QAE@ABVCWorld@@@Z, retail 0x007004B0. Declaration only.
+public:
+    COpinionReactionManager(const CWorld& world);                        // 0x007004B0
+#endif
 public:
 #if defined(FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTITUDETOPLAYER) && !defined(FABLE_RETAIL_CTCWIFE_MARRY)
     // Retail opt-in (wf7, row 0x007735D0 CTCShop::GetAttitudeBuyPriceMultiplier): Ego_r.pdb

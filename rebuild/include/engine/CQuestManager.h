@@ -282,6 +282,11 @@ public:
     // FableWin.pdb ?GetQuestBoasts@CQuestManager@@QAEAAV?$list@VCBoast@CQuestManager@@...@std@@XZ, the only non-const list<CBoast>&
     // accessor (GetBoasts is const): inline in retail, the row walks and erases AcceptedBoasts +0x6C in place (0x005E7CAC).
     std::list<CBoast>& GetQuestBoasts() { return AcceptedBoasts; }
+#ifdef FABLE_RETAIL_CQUESTMANAGER_REGIONSTARTED
+    // Nested opt-in (chunk 882, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): Ego_r.pdb 0x004B5810 / FableWin.pdb 0x01C55840
+    // ?IsActiveQuestStartedInRegion@CQuestManager@@QBE_NABVCCharString@@@Z, out of line in retail at 0x004B1270. Declaration only.
+    bool IsActiveQuestStartedInRegion(const CCharString& region_name) const;   // 0x004B1270
+#endif
 #endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK
     // Nested opt-in (chunk 763, row 0x004B01B0 IsRegionValidInRegionLockingMode): the nested active-quest record

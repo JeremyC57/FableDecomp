@@ -15,6 +15,14 @@ class CNavigatorManagerExternalInterface;
 class CNavigatorManager {
 public:
 #ifdef FABLE_RETAIL_CNAVIGATORMANAGER
+#ifdef FABLE_RETAIL_CNAVIGATORMANAGER_VIRTUALS
+    // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): the real vptr. Retail calls the scalar deleting dtor through slot 0 (`push 1 ; call [eax]`, 0x004A700E;
+    // Ego_r.pdb ??1CNavigatorManager@@UAE@XZ, virtual) and AddNewClassType through slot 1 (`call [eax+4]`, 0x004A7050; both PDBs
+    // ?AddNewClassType@CNavigatorManager@@UAEXABVCClassTypeInit@@@Z). Ctor Ego_r.pdb ??0CNavigatorManager@@QAE@KPAKABVCNavigatorManagerExternalInterface@@@Z.
+    CNavigatorManager(unsigned long number_of_layers, unsigned long* seed, const class CNavigatorManagerExternalInterface& external_interface);   // 0x00715670
+    virtual ~CNavigatorManager();                                                // slot 0
+    virtual void AddNewClassType(const class CClassTypeInit& init);              // slot 1
+#endif
     // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): member functions only, the layout below is unchanged.
     // Ego_r.pdb / FableWin.pdb ?FrameUpdate@CNavigatorManager@@QAEXXZ, retail 0x00A14E20 (`mov [ecx+20h],320h ; ret`: resets
     // NumberOfNodeExaminationsLeftThisFrame +0x20 to 800; the catalog's CGameEventPackage::Clear label is propagated).
@@ -41,7 +49,9 @@ public:
     // ecx = NavigationManager, 0x00A1E6A7). Declaration only.
     bool IsActionPoint(const class C2DVector& position) const;           // 0x00A150A0
 #endif
+#ifndef FABLE_RETAIL_CNAVIGATORMANAGER_VIRTUALS
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char                       _pad_0x04[0xc];      // +0x04
     unsigned char                       _pad_0x10[0x4];      // +0x10
     unsigned char                       _pad_0x14[0x4];      // +0x14
@@ -55,7 +65,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CNavigatorManager) == 0x30);
+#ifndef FABLE_RETAIL_CNAVIGATORMANAGER_VIRTUALS
 FABLE_STATIC_ASSERT(offsetof(CNavigatorManager, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CNavigatorManager, Seed) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CNavigatorManager, NumberOfNodeExaminationsLeftThisFrame) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CNavigatorManager, QuadTrees) == 0x24);

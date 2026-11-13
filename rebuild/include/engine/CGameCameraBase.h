@@ -7,6 +7,11 @@
 #include "stlport/fable_containers.h"
 class CWorld;
 class CGameCameraBase:public CAIGameCameraBase {
+#ifdef FABLE_RETAIL_CGAMECAMERABASE_CTOR
+// Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0CGameCameraBase@@QAE@AAVCWorld@@@Z, retail 0x006FD8C0. Declaration only.
+public:CGameCameraBase(CWorld& world);                          // 0x006FD8C0
+public:virtual void Update();                                   // CAIGameCameraBase slot 0 override (declaration only)
+#endif
 public:virtual CCamera GetRenderCamera(float)const;
 #ifdef FABLE_RETAIL_CGAMECAMERABASE_UPDATE
  // Retail opt-in (chunk 2035, row 0x006FDD60 Update): the Ego_r.pdb / FableWin.pdb members Update calls, in the PDB spellings

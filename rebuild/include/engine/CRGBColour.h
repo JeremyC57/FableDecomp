@@ -10,7 +10,14 @@ public:
         unsigned long IntValue;
     };
     CRGBColour() { }
+#if defined(FABLE_RETAIL_CRGBCOLOUR) && defined(FABLE_RETAIL_CRGBCOLOUR_CTOR4_INITIALISE)
+    // Opt-in (chunk 4007, row 0x0061B610; first measured by hand882 on the PC twin 0x0061E6D0): FableWin ??0CRGBColour@@QAE@EEEE@Z is
+    // 18 instructions / 44 bytes at /Od = the four-channel constructor forwarding to ?Initialise@CRGBColour@@QAEXEEEE@Z (19i/48b),
+    // like the three-channel constructor below; the member-store body is 20i/51b. Same release bytes, one more inline layer.
+    CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Initialise(r,g,b,a); }
+#else
     CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
+#endif
 #ifdef FABLE_RETAIL_CRGBCOLOUR
     // Retail opt-in (chunk 724): the PDB's Initialise(r, g, b, a) (?Initialise@CRGBColour@@QAEXEEEE@Z) and the copy constructor
     // built on it: all four channel bytes are read (as Initialise's arguments) before any is stored, the byte-by-byte copy

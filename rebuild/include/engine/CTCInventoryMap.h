@@ -11,6 +11,9 @@ class CRegion;
 class CThing;
 #endif
 #include "engine/NHeroInformationScreens_CBase.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_LOGBOOK
+namespace NUISystem { class CComponent; }
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYMAP_PASTQUESTS
 namespace NUISystem { class CComponent; }
 #endif
@@ -21,10 +24,20 @@ namespace NUISystem { class CComponent; }
 class C3DVector;
 namespace NUISystem { class CComponent; }
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_QUESTMARKERS
+namespace NUISystem { class CComponent; }
+#include "stlport/fable_map.h"
+#endif
 // Layout: original TPI2aa6d and native constructor allocation258. The selected
 // serialiser independently addresses every used member at the offsets below.
 class CTCInventoryMap : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_STATGETINTERFACETYPE
+ // Retail opt-in (agent4007, row 0x0061B610 CTCInventoryQuests::ConstructQuestList): FableWin.pdb
+ // ?StatGetInterfaceType@CTCInventoryMap@@SI?AW4ETCInterfaceType@@XZ (0x01A526E0, 5 instructions), inline in retail: the row's
+ // one-argument CThing::GetTC<CTCInventoryMap>(T**) reads it (TCI_INVENTORY_MAP = 27, `push 1Bh` at the lookups). No layout change.
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_INVENTORY_MAP; }
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYMAP_PCMAPLIST
  // Retail opt-in (chunk 1007, row 0x00589A30 CTCInventory::OpenPCMapMenu): Ego_r.pdb / FableWin.pdb
  // ?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z, out of line at 0x0060EEB0 (`ret 8`; the Ego_r donor
@@ -49,7 +62,14 @@ protected:
  virtual void OnSerialise(CPersistContext&,bool);
  std::vector<long> VisitedRegions;
  float AccumFadeTime;
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_LOGBOOK
+ // Retail opt-in (chunk 883, row 0x006096E0 ConstructLogbookListPC): the real type, Ego_r.pdb CategoriesList
+ // map<CHeroLogBook::CHeroLogBookEntry::ECategory,NUISystem::CComponent*> (the landed ~CTCInventoryMap 0x00606F80 erases it with
+ // that tree's _M_erase 0x00613AE0; 12 bytes, same offset +0x144).
+ std::map<CHeroLogBook::CHeroLogBookEntry::ECategory,NUISystem::CComponent*> CategoriesList;
+#else
  unsigned char CategoriesList[12];
+#endif
  std::vector<CWideString> LogBookNameTag,LogBookAbbreviatedNameTag,LogBookTextTag;
  std::vector<CHeroLogBook::CHeroLogBookEntry::ECategory> LogBookCategory;
  long GenerateDataTimer;
@@ -75,6 +95,16 @@ private:
  long LastEventFrame;
  unsigned long RegionEventLife;
  void RemapUIDsForLoading(std::vector<unsigned __int64>&)const;
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_LOGBOOK
+ // (same opt-in) Ego_r.pdb + FableWin.pdb ?ConstructLogbookListPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z (public;
+ // retail 0x006096E0, the PC twin of ConstructLogbookList 0x00607330 and in the same donor order) and
+ // ?GetMenuEntryFromCategoryPC@CTCInventoryMap@@IAEPAVCComponent@NUISystem@@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAV23@@Z
+ // (protected, landed 0x005FAC20). Declarations only.
+public:
+ NUISystem::CComponent* ConstructLogbookListPC(NUISystem::CComponent*);
+protected:
+ NUISystem::CComponent* GetMenuEntryFromCategoryPC(CHeroLogBook::CHeroLogBookEntry::ECategory,NUISystem::CComponent*);
+#endif
  #ifdef FABLE_RETAIL_CTCINVENTORYMAP_TELEPORT
  // Nested opt-in (chunk 1011, rows 0x005FBEA0 / 0x005FBFA0 / 0x005FB4B0): Ego_r.pdb spellings
  // ?GetRegionTeleporter@CTCInventoryMap@@ABEPAVCThing@@ABVCRegion@@@Z (private const, 0x005FBEA0),
@@ -150,6 +180,26 @@ protected:
  void ConstructRegionDescriptionQuests(NUISystem::CComponent*,CRegion&,bool);
  void ConstructRegionDescriptionBuyableBuildings(NUISystem::CComponent*,CRegion&,CUIRegionInfo*,bool,bool);
  void ConstructRegionDescriptionMapKeys(NUISystem::CComponent*,CRegion&,bool);
+private:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_QUESTMARKERS
+ // Retail opt-in (chunk 882, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): Ego_r.pdb + FableWin.pdb public members
+ // ?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z (retail 0x00603000),
+ // ?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z
+ // (0x005FF190) and ?GetRegionsToDisplay@CTCInventoryMap@@QAEXAAV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z (0x005FD410).
+ // Declarations only, no layout change.
+public:
+ void CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegion& region);
+ void CreateMapMarkers(NUISystem::CComponent* parent, std::vector<CRegion>& regions);
+ void GetRegionsToDisplay(std::set<long>& regions);
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_QUESTSSCREEN
+ // Nested opt-in (chunk 2029, row 0x005FE090): Ego_r.pdb (donor 0x006522D0) + FableWin.pdb (0x02083ED0)
+ // ?ConstructQuestsScreen@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z (public, `ret 4`; reloc_bindings.tsv binds it at
+ // 0x005FE090 from NUISystem::CManager::Action 0x0041E6D3). It calls ConstructPastQuestsList / ConstructQuestReviewList (opt-ins
+ // PASTQUESTS / QUESTREVIEW). Declaration only, no layout change.
+public:
+ NUISystem::CComponent* ConstructQuestsScreen(NUISystem::CComponent* parent);                                     // 0x005FE090
 private:
 #endif
 public:

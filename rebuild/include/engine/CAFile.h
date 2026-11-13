@@ -2,6 +2,9 @@
 #define FABLE_RETAIL_HEADER_CAFILE
 #include "engine/CBaseClassNonCopyable.h"
 #include "fable_string.h"
+#ifdef FABLE_RETAIL_CAFILE_MODIFIEDTIME
+#include "engine/CDateAndTime.h"
+#endif
 #ifdef FABLE_RETAIL_CAFILE
 #include "engine/CArray.h"
 #endif
@@ -50,6 +53,12 @@ public:
     // Nested opt-in (chunk 1013, row 0x00502620 CWorldMap::LoadLevel): Ego_r.pdb / FableWin.pdb
     // ?GetFileModifiedTimeAsSomeWackyWin32BigNumber@CAFile@@SI_KABVCWideString@@@Z (retail 0x00999320; the path in ecx, the stamp in edx:eax).
     static unsigned __int64 __fastcall GetFileModifiedTimeAsSomeWackyWin32BigNumber(const CWideString& filename);   // 0x00999320
+#endif
+#ifdef FABLE_RETAIL_CAFILE_MODIFIEDTIME
+    // Nested opt-in (chunk 2013, row 0x00597DF7 CFrontEndManager::GetSavedGameNames): Ego_r.pdb / FableWin.pdb
+    // ?GetFileModifiedTime@CAFile@@SI?AVCDateAndTime@@ABVCWideString@@@Z (retail 0x009992A0: the hidden result in ecx, the path in edx,
+    // 0x00597EF5..0x00597EFE). Needs engine/CDateAndTime.h.
+    static CDateAndTime __fastcall GetFileModifiedTime(const CWideString& filename);   // 0x009992A0
 #endif
 #ifdef FABLE_RETAIL_CAFILE_SPLITPATH_WIDE
     // Nested opt-in (chunk 775, row 0x009A8170 OpenIniFile): Ego_r.pdb ?SplitPath@CAFile@@SIXABVCWideString@@PAV2@111@Z, the

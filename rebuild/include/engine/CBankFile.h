@@ -219,6 +219,17 @@ public:
     // 0x00A27030; no PDB name exists -- descriptive). Declaration only.
     void SetIsStaticMap(bool is_static_map);                             // 0x009D5230
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+    // Opt-in (chunk 2013, row 0x00595CC1 CFrontEndManager::ConstructFileDescription): Ego_r.pdb ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z,
+    // out of line in retail at 0x009CC410 (looks the CRC up in the SymbolCRCIndices CVectorMap at +0xD0 and returns the mapped index,
+    // 0 when absent); the rows call it with a CCharString CRC (0x00595ED3, landed sibling 0x0047EEE4). Declaration only.
+    unsigned long FindIndexBySymbolCRC(unsigned long crc) const;         // 0x009CC410
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_FINDINDEX
+    // Retail opt-in (chunk 882, row 0x0061E6D0): Ego_r.pdb 0x00B1A780 / FableWin.pdb 0x02F97650
+    // ?FindIndexBySymbol@CBankFile@@QBEKABVCCharString@@@Z, out of line in retail at 0x009CCDC0 (manifest label propagated).
+    unsigned long FindIndexBySymbol(const class CCharString& symbol) const;   // 0x009CCDC0
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
     // Retail opt-in (chunk 1021, row 0x00BEC680 CEngineInternalPrimitiveMeshBase::CollectStats): Ego_r.pdb
     // ?GetEntryDataSize@CBankFile@@QBEKK@Z (0x00B19F40 = retail 0x009CC240, next to GetEntryDataType 0x009CC210), out of line.

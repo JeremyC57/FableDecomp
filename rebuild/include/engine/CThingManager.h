@@ -87,7 +87,14 @@ public:
     // Ego_r.pdb ?PeekDefinitionManager@CThingManager@@QBEABVCGameDefinitionManager@@XZ (reads +0x20 in place, 0x0051FF3A) and
     // ?GetLevelBeingLoaded@CThingManager@@QBEJXZ (+0xDC in place at 0x0051FFB0; retail also keeps an out-of-line copy at 0x0051E2C0).
     const CGameDefinitionManager& PeekDefinitionManager() const { return DefinitionManager; }
+#ifdef FABLE_RETAIL_CTHINGMANAGER_LEVELBEINGLOADED_OUTOFLINE
+    // Nested opt-in (chunk 2016, row 0x004CAA00 CThing::ConstructFromLevelScript): the CThing TU calls the out-of-line copy 0x0051E2C0
+    // (`mov eax,[ecx+0DCh] ; ret`; Ego_r.pdb 0x005281F0 donor order GetLevelBeingLoaded / GetSerialiseVersion / IsSerialisingGameState =
+    // retail 0x0051E2C0 / 0x0051E2D0 / 0x0051E2E0) at 0x004CAC27. Declaration only: same member, no layout change.
+    long GetLevelBeingLoaded() const;                                   // 0x0051E2C0
+#else
     long GetLevelBeingLoaded() const { return LevelBeingLoaded; }
+#endif
 #else
     CThing* GetPThingWithUID(unsigned __int64);                         // Ego_r.pdb ?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z (0x00821010)
 #endif

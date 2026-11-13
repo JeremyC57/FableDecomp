@@ -76,6 +76,12 @@ public:
  bool IsCreatureOnOuterRing(const CThingCreatureBase&) const;
 #endif
  void Update();                                                                                                       // 0x006ED200
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_CTOR
+ // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0CCombatManager@@QAE@AAVCWorld@@@Z (retail 0x006ED3F0) and ?Init@CCombatManager@@QAEXXZ (retail
+ // 0x006E8300: DialogueManager.Init() at +0x38, then +0x30 = 0.5f, +0x34 = false; the catalog's "ResetDialogue" label is wrong).
+ CCombatManager(CWorld& world);                                                                                       // 0x006ED3F0
+ void Init();                                                                                                         // 0x006E8300
+#endif
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_PREFERREDPOS
  // Nested opt-in (chunk 892, row 0x0096E830 CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureNearCombatPosition): Ego_r.pdb
  // ?GetPreferredPos@CCombatManager@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z (0x00713700), out of line in retail at 0x006EA770

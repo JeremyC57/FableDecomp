@@ -20,11 +20,23 @@ class CUIStateDef : public CParentDefClassBase {
 public:
     CUIStateDef();                                                   // 0x00630350
     CUIStateDef(const CUIStateDef&);                                 // 0x006250B0
+#ifndef FABLE_RETAIL_CUISTATEDEF_IMPLICIT_DTOR
     virtual ~CUIStateDef();                                          // 0x00624DC0
 #ifdef FABLE_RETAIL_CUISTATEDEF_VSLOTS
 // agentFAM04 (2026-11-11): retail CDefClassBase override missing here (vtable 0x0125871C slot 19, Ego_r / FableWin ?Copy@CUIStateDef@NUISystem@@UAEXPBVCDefClassBase@@@Z). Declaration only.
     virtual void Copy(const CDefClassBase*);                        // slot 19, 0x00625340
 #endif // FABLE_RETAIL_CUISTATEDEF_VSLOTS
+#else
+    // Retail opt-in (chunk 882, row 0x0061E6D0): the destructor is the implicit one (0x00624DC0 is its out-of-line COMDAT). The row
+    // destroys two stack CUIStateDefs inline (0x00621089..0x00621106: free +0x6C, free +0x29, CDefPointeeBase vtable 0x01230BA0 store,
+    // call ~CResource 0x009FC550), the same body as 0x00624DC0. Needs FABLE_RETAIL_CPARENTDEFCLASSBASE and FABLE_PDCB_TYPED_MEMBERS.
+    // The three CDefClassBase pure virtuals it overrides (Ego_r.pdb / FableWin.pdb ?Transfer@CUIStateDef@NUISystem@@UAEXAAVCPersistContext@@@Z
+    // 0x00625630, ?Copy@CUIStateDef@NUISystem@@UAEXPBVCDefClassBase@@@Z, ?GetSizeofClass@CUIStateDef@NUISystem@@UAEKXZ 0x00625150) are
+    // declared so the row can construct the class.
+    virtual void Transfer(CPersistContext&);                         // 0x00625630
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();                          // 0x00625150
+#endif
     unsigned char _pad_39[3];
     unsigned long GraphicIndex;                                      // +0x3c
     unsigned long StateChangeFlag;                                   // +0x40

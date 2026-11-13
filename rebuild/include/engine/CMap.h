@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CMAP_H
 #define FABLE_ENGINE_CMAP_H
+// (chunk 2055 overlay: nested opt-in FABLE_RETAIL_CMAP_LOADFROMFILE added in two places; default text unchanged.)
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/C2DBoxI.h"
 #include "engine/C2DCoordI.h"
@@ -30,6 +31,12 @@ public:
     // ?IsThemeUsed@CThemePaletteEntry@@QBE_NXZ (no out-of-line copy in Ego_r.pdb or Fable.exe). No layout change.
     void SetThemePaletteIndexUsed(bool used) { ThemePaletteIndexUsed = used; }
     bool IsThemeUsed() const { return ThemePaletteIndexUsed; }
+#endif
+#ifdef FABLE_RETAIL_CMAP_LOADFROMFILE
+    // Nested opt-in (chunk 2055 scout, row 0x00821A80 CMap::LoadFromFile): FableWin.pdb ?SetThemePaletteIndexUsed@CThemePaletteEntry@@QAEX_N@Z,
+    // the first COMDAT after ?LoadFromFile@CMap in FableWin (so that row is its first user); FableWin debug 10i/22b = plain /Od of
+    // this text (fwsize SAME). Retail: the byte stores [entry+4] = 1 / 0 at 0x00821BE3 / 0x00821BF3 / 0x00821C80 / 0x00821CBA.
+    void SetThemePaletteIndexUsed(bool used) { ThemePaletteIndexUsed = used; }
 #endif
 };
 #endif
@@ -138,6 +145,15 @@ public:
     const C2DCoordI& GetWorldPosition() const { return WorldPos; }
 #endif
     void LoadBrushesFromFile(CAFile&);
+#ifdef FABLE_RETAIL_CMAP_LOADFROMFILE
+    // Nested opt-in (chunk 2055 scout, row 0x00821A80): Ego_r.pdb + FableWin.pdb ?LoadFromFile@CMap@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z
+    // (public, `ret 8`; the landed ctor 0x008224E0 binds this symbol to 0x00821A80, rebuild/oracles/reloc_bindings.tsv) and FableWin.pdb
+    // ?HeightMapUnitToGameMapUnit@CMap@@SIJJ@Z (public static fastcall, inline in retail: `cdq ; and edx,3 ; add ; sar 2` at 0x0082208D /
+    // 0x00822095; FableWin debug 12i/23b = plain /Od of this text, fwsize SAME). Needs FABLE_RETAIL_CMAP_THEMEPALETTE for the typed members.
+    // Declarations / inline bodies only, no layout change.
+    void LoadFromFile(CAFile& file, CASuspendableProcess* psuspendable_process);   // 0x00821A80
+    static long FABLE_FASTCALL HeightMapUnitToGameMapUnit(long height_map_unit) { return height_map_unit / 4; }
+#endif
     CScriptedMapBrush& CreateScriptedMapBrush(const CScriptedMapBrushInit&);
     bool IsPassableAt(const C2DCoordI&)const;
     bool IsPrefNavAt(const C2DCoordI&)const;

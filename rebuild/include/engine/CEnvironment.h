@@ -161,6 +161,10 @@ public:
     // slot 1 ?PeekInterpolatedParams@CEnvironment@@EBEABUCIDrawEnvironmentParams@@XZ 0x006B7350 (private), slot 2
     // ?PeekWindDirection@CEnvironment@@UBEABVC3DVector@@XZ 0x006B7310, 3 PeekWindSpeed 0x006B7320, 4 PeekSunVector 0x006B7330,
     // 5 PeekMoonVector 0x006B7340. Same size and offsets (vptr at +0x00); declarations only.
+#ifdef FABLE_RETAIL_CENVIRONMENT_CTOR
+    // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0CEnvironment@@QAE@ABVCGameDefinitionManager@@@Z, retail 0x006B4900. Declaration only.
+    CEnvironment(const CGameDefinitionManager& definitions);                         // 0x006B4900
+#endif
     virtual ~CEnvironment();                                                         // slot 0  0x006B7380
 private:
     virtual const struct CIDrawEnvironmentParams& PeekInterpolatedParams() const;   // slot 1  0x006B7350

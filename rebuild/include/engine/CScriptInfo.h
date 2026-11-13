@@ -8,7 +8,35 @@ class CScriptDataBase;
 class CGameScriptInterfaceBase;
 class CScriptInfo {
 public:
+#ifdef FABLE_RETAIL_CSCRIPTINFO_CTOR
+    // Retail opt-in (chunk 4003, row 0x00CD52D0 CScriptInfoManager::RegisterScripts): the constructor and the real types of the two
+    // allocator members. FableWin.pdb ??0CScriptInfo@@QAE@ABVCCharString@@J_NP6IPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@ZP6IPAV3@XZ@Z
+    // (name, id, master script, alloc, master data alloc; the COMDAT right after RegisterScripts in that build): both pointers are
+    // __fastcall and the script allocator takes the interface by reference, as under FABLE_RETAIL_CSCRIPTINFO_ACCESSORS (the landed
+    // Alloc rows, e.g. 0x00CDD550, are `static __fastcall`). Retail expands the constructor at all 161 sites of RegisterScripts: Name is
+    // copy-constructed first (0x00CD531E), then ID, MasterScript, AllocFunc and MasterScriptDataAlloc are stored in the parameter order
+    // (0x00CD5337..0x00CD5348). Same layout as the other branches.
+    typedef CScriptBase* (FABLE_FASTCALL *tAllocFunc)(CScriptDataBase*, CGameScriptInterfaceBase&);
+    typedef CScriptDataBase* (FABLE_FASTCALL *tMasterScriptDataAllocFunc)();
+    CScriptInfo(const CCharString& name, long id, bool master_script, tAllocFunc alloc_func, tMasterScriptDataAllocFunc master_script_data_alloc)
+        : Name(name)
+    {
+        ID = id;
+        MasterScript = master_script;
+        AllocFunc = alloc_func;
+        MasterScriptDataAlloc = master_script_data_alloc;
+    }
+    tAllocFunc AllocFunc;
+    tMasterScriptDataAllocFunc MasterScriptDataAlloc;
+    CCharString Name;
+    long ID;
+    bool MasterScript;
 #ifdef FABLE_RETAIL_CSCRIPTINFO_ACCESSORS
+    tAllocFunc GetAllocFunc() const { return AllocFunc; }
+    tMasterScriptDataAllocFunc GetMasterScriptDataAllocFunc() const { return MasterScriptDataAlloc; }
+    bool IsMasterScript() const { return MasterScript; }
+#endif
+#elif defined(FABLE_RETAIL_CSCRIPTINFO_ACCESSORS)
     // Retail opt-in (wf4, row 0x004B3CE0 CQuestManager::ActivateQuests): the allocator pointer types and the inline accessors as both
     // PDBs spell them -- ?GetAllocFunc@CScriptInfo@@QBEP6IPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@ZXZ,
     // ?GetMasterScriptDataAllocFunc@CScriptInfo@@QBEP6IPAVCScriptDataBase@@XZXZ, ?IsMasterScript@CScriptInfo@@QBE_NXZ (Ego_r.pdb and

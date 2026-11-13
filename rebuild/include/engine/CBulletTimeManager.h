@@ -19,6 +19,10 @@ class CWorld;
 class CBulletTimeManager {
 public:
 #ifdef FABLE_RETAIL_CBULLETTIMEMANAGER
+#ifdef FABLE_RETAIL_CBULLETTIMEMANAGER_CTOR
+    // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0CBulletTimeManager@@QAE@AAVCWorld@@AAVCPlayerManager@@@Z, retail 0x004C60F0. Declaration only.
+    CBulletTimeManager(CWorld& world, CPlayerManager& player_manager);   // 0x004C60F0
+#endif
     // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): member functions only, the layout below is unchanged.
     // Ego_r.pdb / FableWin.pdb spellings: ?IsBulletTimeActive@CBulletTimeManager@@QBE_NXZ 0x00419680 (landed),
     // ?IsTimeForFullUpdate@CBulletTimeManager@@QBE_NXZ 0x004C6060 (landed; the bound QAE spelling drops the const) and

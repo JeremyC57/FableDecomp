@@ -6,7 +6,7 @@
 // The destructor 0x00546660 removes the observer from CManager, then ~CChangingStateComponent.
 // Data members are not modelled (no row needs them), hence no sizeof assertion. Overrides are not declared.
 #include "engine/NUISystem_CChangingStateComponent.h"
-#ifdef FABLE_RETAIL_CZOOMINGCOMPONENT_MEMBERS
+#if defined(FABLE_RETAIL_CZOOMINGCOMPONENT_MEMBERS) || defined(FABLE_RETAIL_CZOOMINGCOMPONENT_ZOOM)
 #include "engine/C2DVector.h"
 #endif
 namespace NUISystem {
@@ -16,13 +16,24 @@ public:
     CZoomingComponent(const CZoomingComponent&);
     virtual ~CZoomingComponent();
     void GetDataFromDef();
-#ifdef FABLE_RETAIL_CZOOMINGCOMPONENT_VSLOTS
+#if defined(FABLE_RETAIL_CZOOMINGCOMPONENT_VSLOTS) && !defined(FABLE_RETAIL_CZOOMINGCOMPONENT_ZOOM)   // ZOOM declares all five (142..146)
 // agentFAM04 (2026-11-11): retail virtuals of vtable 0x01247DC4 the declarations above lack (Ego_r / FableWin
 // ?Pan@CZoomingComponent@NUISystem@@UAEXVC2DVector@@@Z slot 142, ?GetZoomCenter@CZoomingComponent@NUISystem@@UAE?AVC2DVector@@XZ slot 146). Declarations only.
 public:
     virtual void Pan(C2DVector);                                    // slot 142, 0x005466B0
     virtual C2DVector GetZoomCenter();                              // slot 146, 0x00546BE0
 #endif // FABLE_RETAIL_CZOOMINGCOMPONENT_VSLOTS
+#ifdef FABLE_RETAIL_CZOOMINGCOMPONENT_ZOOM
+    // Retail opt-in (chunk 882, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): the five virtuals CZoomingComponent adds
+    // after CChangingStateComponent's slot 141, in vtable 0x01247DC4 order (Ego_r.pdb / FableWin.pdb UAE names): slot 142 Pan
+    // 0x005C03A0, 143 SetMinZoom 0x005C0940, 144 SetMaxZoom 0x005C0960, 145 SetZoomCenter 0x005C0980, 146 GetZoomCenter 0x005C09C0.
+    // The row calls +0x240 (max), +0x23C (min), +0x244 (centre) on the "PC_WORLD_MAP" component.
+    virtual void Pan(C2DVector);                             // slot 142
+    virtual void SetMinZoom(C2DVector&);                     // slot 143 (+0x23c)
+    virtual void SetMaxZoom(C2DVector&);                     // slot 144 (+0x240)
+    virtual void SetZoomCenter(C2DVector&);                  // slot 145 (+0x244)
+    virtual C2DVector GetZoomCenter();                       // slot 146 (+0x248)
+#endif
 #ifdef FABLE_RETAIL_CZOOMINGCOMPONENT_MEMBERS
     // Retail opt-in (chunk 849, row 0x0041D21B NUISystem::CManager::CreateComponent: `push 0x184 ; call operator new` before the
     // constructor 0x00546B00): the Ego_r.pdb data members (struct_layouts_egor.tsv) 0x30 lower in retail (STLport 4.6 container sizes),

@@ -415,7 +415,16 @@ public:
     }
     template<class T> FABLE_FORCEINLINE bool PeekTC(T** result) const {
         if(HasTC(T::StatGetInterfaceType())) {
+#ifdef FABLE_RETAIL_CTHING_PEEKTC_ORIGINAL_CHAIN
+            // Retail opt-in (agent4007, row 0x0061B610 CTCInventoryQuests::ConstructQuestList): the const twin of the
+            // FABLE_RETAIL_CTHING_GETTC_ORIGINAL_CHAIN body above -- the const GetTC(id) reference, then the checked cast. Evidence:
+            // FableWin.pdb ??$PeekTC@$$CBVCTCQuestCard@@@CThing@@QBE_NPAPBVCTCQuestCard@@@Z is 27 instructions / 74 bytes, which this
+            // text gives at /Od exactly (the Components.Find spelling is 29i / 80b).
+            const CTCBase& tc_base=GetTC(T::StatGetInterfaceType());
+            *result=GFDebugPDynamicCast(&tc_base,(T*)0);
+#else
             *result=GFDebugPDynamicCast(static_cast<const CTCBase*>(Components.Find(T::StatGetInterfaceType())->second),(T*)0);
+#endif
             return true;
         }
         return false;

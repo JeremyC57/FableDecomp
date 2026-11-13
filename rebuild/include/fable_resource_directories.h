@@ -29,4 +29,8 @@ namespace NResourceDirectoryNames
     // Chunk 734 (row 0x004A5E90): Ego_r.pdb / FableWin.pdb ?GetDebugSaveDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ (landed 0x0041A1A0).
     CWideString FABLE_FASTCALL GetDebugSaveDir();
 #endif
+#ifdef FABLE_RETAIL_NRESOURCEDIRECTORYNAMES_LEVELDIR
+    // Opt-in (chunk 2052, row 0x004A21F0): Ego_r.pdb ?GetLevelDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ, out of line at 0x0041A060.
+    CWideString FABLE_FASTCALL GetLevelDir();                            // 0x0041A060
+#endif
 }

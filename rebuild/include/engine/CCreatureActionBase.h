@@ -352,6 +352,12 @@ class CCPPointerInfo;
 #pragma pack(push, 1)
 class CCreatureActionBase {
 public:
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_STATREGISTER
+    // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb / FableWin.pdb ?StatRegisterClass@CCreatureActionBase@@SIXXZ, retail 0x006F5C10 (registers every
+    // action prototype in the Registry map 0x013BA8C8 through insert_unique 0x006F5400 after RegisterActionEventTypes 0x006932B0;
+    // the catalog's global "StatRegisterClass" label lacks the class). Declaration only: no layout change.
+    static void __fastcall StatRegisterClass();                      // 0x006F5C10
+#endif
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>

@@ -21,6 +21,14 @@ enum EChange { UI_CHANGE_ACCEPT=0,UI_CHANGE_REJECT=1 };
 enum EInputType { UI_INPUT_KEYBOARD=0,UI_INPUT_XBOX=1 };
 enum EUsedKeys { UI_KEY_LEFT=0,UI_KEY_RIGHT=1,UI_KEY_DOWN=2,UI_KEY_UP=3,UI_KEY_RIGHT_STICK_DOWN=4,UI_KEY_RIGHT_STICK_UP=5,UI_KEY_A=6,UI_KEY_B=7,UI_KEY_ZOOM_IN=8,UI_KEY_ZOOM_OUT=9,UI_KEY_SPELL_LEFT=10,UI_KEY_SPELL_RIGHT=11,UI_KEY_SPELL_ASSIGN=12,UI_KEY_SPELL_UNASSIGN=13,UI_KEY_SPELL_LIST_UP=14,UI_KEY_SPELL_LIST_DOWN=15 };
 public: static NUISystem::CManager * __fastcall GetInstance();
+#ifdef FABLE_RETAIL_CMANAGER_WORLDINIT
+// Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ?SetMeshBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z (0x0041D198, by value),
+// ?SetInputManager@CManager@NUISystem@@QAEXPAVCInputManager@@@Z (inline: 0x004A7685 `mov [eax+20h],edi`) and
+// ?SetInput@CManager@NUISystem@@QAEXW4EInputType@12@@Z (0x0041DF10).
+public: void SetMeshBank(CCountedPointer<CMeshDataBank> mesh_bank);       // 0x0041D198
+public: void SetInputManager(CInputManager* input_manager) { PInputManager = input_manager; }
+public: void SetInput(EInputType input);                                  // 0x0041DF10
+#endif
 #ifdef FABLE_RETAIL_CMANAGER_MENUCOUNT
 // Retail opt-in (chunk 1005, row 0x0056F30B CTCInventoryExperience::CloseInventory): FableWin.pdb / Ego_r.pdb
 // ?OnOpenMenus@CManager@NUISystem@@SIXXZ / ?OnCloseMenus@CManager@NUISystem@@SIXXZ (public static, fastcall), out of line at

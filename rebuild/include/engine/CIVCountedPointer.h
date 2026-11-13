@@ -21,7 +21,21 @@ public:
     // implicit memberwise copy of the landed includers is unchanged.
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
 #endif
-#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT
+#if defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT_CLEAR)
+    // Nested opt-in (chunk 2013, row 0x00595CC1 CFrontEndManager::ConstructFileDescription, a `#pragma optimize("s")` TU): as
+    // FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT (one level, so the size-mode inliner expands it), but with Release()'s null store
+    // inside the null test: retail keeps it for the GetPGroupEntry temporary (0x00595F7C `and dword ptr [ebp+1D0h],0` after the
+    // `dec [eax+4] ; jne ; call [vtbl+4]` block) and drops it as dead for the GetPTextEntry ones (0x00595F2B..0x00595F48).
+    // Same semantics as the default destructor. With the null store the body is over the size-mode inline budget (called as a
+    // COMDAT); retail expands it at every site of that TU, hence FABLE_FORCEINLINE.
+    FABLE_FORCEINLINE ~CIVCountedPointer() {
+        if (Object) {
+            CIVCountedPointeeBase* object = Object;
+            if (object->Release() == 0) object->Delete();
+            Object = 0;
+        }
+    }
+#elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT)
     // Nested opt-in (chunk 867, row 0x005A8C66 CTCInventoryTrade::ConstructActualSpecialInventoryPC, a `#pragma optimize("s")` TU):
     // the destructor spelled in one level, the pointee's release and conditional Delete written here instead of through
     // Release(), so that VC7.1's size-mode inliner expands it in place as retail does for the CIVCountedPointer<const

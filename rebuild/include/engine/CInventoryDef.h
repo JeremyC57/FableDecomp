@@ -428,6 +428,11 @@ public:
     C2DVector MainAnimBoxTLPos;                                 // +0xA1E
     C2DVector MainAnimBoxExtents;                               // +0xA26
     float MainQuickAccessItemFlashTime;                         // +0xA30
+#ifdef FABLE_RETAIL_CINVENTORYDEF_ASSIGN
+    // Nested opt-in (acctB bwf2a, row 0x0045A159 CInventoryDef::operator=): the user copy-assignment Ego_r.pdb / FableWin.pdb
+    // ??4CInventoryDef@@QAEAAV0@ABV0@@Z, out of line in retail at 0x0045A159 (the row defines it). Needs FABLE_RETAIL_CINVENTORYDEF_FULL.
+    CInventoryDef& operator=(const CInventoryDef& other);     // 0x0045A159
+#endif
 #endif
 #ifdef FABLE_RETAIL_CINVENTORYDEF_TRANSFER
     // Retail opt-in (bwf1, row 0x004678E2 CInventoryDef::Transfer): the rest of the Ego_r.pdb member list at the retail offsets
