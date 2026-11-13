@@ -121,7 +121,7 @@ public:
     // m1 * m2 with the translation row cleared (retail 0x00A4E71A..0x00A4E720 stores the three zeros into the result) -- and
     // ?PreScale@CMatrix3x4@@QAEXMMM@Z (FableWin 0x03228C60, after ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix3x4@@_N@Z: each rotation row
     // times its scale, the landed 0x00A52450 order). No retail out-of-line copy of either.
-    // FITTED body (chunk 3010, coordinator's choice of the agent's two candidates; needs a ruling): the full product through
+    // Body by owner ruling 2026-11-13 (the one retail TLC's bytes favour; revisit only if new evidence says otherwise): the full product through
     // SetMultiply (FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY), then the translation row cleared. Evidence for: compiled out of line
     // it equals retail's unreferenced copy 0x00A4B820 (240 bytes, as the 9-sum body also does), and it is the only natural body
     // measured that gives GetDeltaMovement 0x00A4E300 retail's 13 x87 operand orders and size (the 9-sum body: DIFFER 1615v1619).

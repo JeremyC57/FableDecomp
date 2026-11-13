@@ -46,7 +46,7 @@ the first row uncompilable; the second copy is removed (no landed row used the o
 | row-local `GFDebugPDynamicCast` template | one definition in the new `engine/GFDebugPDynamicCast.h`; `engine/CThing.h` and rows 0x00BB8EF0 / 0x00BC25F0 include it |
 | 0x00B5FAB0 `volatile` | within the owner's ruling of 2026-11-13 (cited `// Retail-volatile:` line); nothing to change |
 | 0x00563920 `if (frame)`, 0x006D1250 noinline find | both are declared inline-budget devices with their measurements in the row (`// Inline-split:` / `// Inline-budget:`, EXTRA_RULES, owner decision 2026-11-08); left as landed |
-| CMatrix3x4 MULTIPLYNOTRANSLATION "FITTED, needs a ruling" | **still open, owner's call.** Retail bytes favour the landed body (it alone gives 0x00A4E300 its 13 operand orders, and out of line it equals retail's unreferenced 0x00A4B820); FableWin.pdb's debug size favours the 9-sum body, but FableWin is a later source revision. Recommendation: keep the landed body |
+| CMatrix3x4 MULTIPLYNOTRANSLATION "FITTED, needs a ruling" | **ruled by the owner, 2026-11-13: use the body retail TLC favours (the landed one) unless later evidence says otherwise.** Retail bytes favour the landed body (it alone gives 0x00A4E300 its 13 operand orders, and out of line it equals retail's unreferenced 0x00A4B820); FableWin.pdb's debug size favours the 9-sum body, but FableWin is a later source revision. Header comment updated; nothing else changes |
 
 ## What the proof found: static-assert typedef names are compiler input
 

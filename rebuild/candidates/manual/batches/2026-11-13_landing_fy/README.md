@@ -34,7 +34,7 @@ of a row that then failed (removed in 1dc81baa0). Lesson: the gates need the who
 (`pending/2026-11-13_acctB_parked/`, merge work kept in the lane folders) until that helper has evidence or the rows are respelled.
 
 ## Review items carried forward
-**All but one closed in landing fz (`../2026-11-13_landing_fz/README.md`); the MULTIPLYNOTRANSLATION body waits for the owner. The proof
+**All but one closed in landing fz (`../2026-11-13_landing_fz/README.md`); the MULTIPLYNOTRANSLATION body was ruled by the owner the same day (the landed, retail-favoured one stays). The proof
 below normalised the static-assert typedef names; landing fz found that those names can matter and reran it exactly.**
 
 - **`_B` opt-in names (26 in the headers).** The driver renamed an incoming opt-in whenever this branch already used the name. Most are
