@@ -47,6 +47,13 @@ public:
     // Nested opt-in (wf13, row 0x00492973 CSubtitleRenderer::SetText): the next members in Ego_r.pdb order and names (Ego_r +0x28..+0x33,
     // retail -0xC as for Items / PickedUpItems): SetText sets DisplayingItems (`mov byte ptr [eax+26h],1`), Clear 0x00492BAB sets
     // ForceClear +0x27. Layout only.
+#ifndef FABLE_RETAIL_CTCHERORECEIVEITEMS_GLOBALUPDATE   // GLOBALUPDATE below declares the same five members with the rest of the list
+    CIntelligentPointer<CThingObject> PCurrentItem;                      // +0x1c
+    bool PersistCurrentItem;                                             // +0x24
+    bool ReceivingItems;                                                 // +0x25
+    bool DisplayingItems;                                                // +0x26
+    bool ForceClear;                                                     // +0x27
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_GLOBALUPDATE
     // Nested opt-in (w22 agent2057 scout, row 0x007CACB0 CTCHeroReceiveItems::GlobalUpdate; needs _PICKEDUPITEMS,

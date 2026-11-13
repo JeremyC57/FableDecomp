@@ -68,7 +68,7 @@ public:
  CQuaternion operator*(const CQuaternion& q) const;            // 0x00A88B60 (out of line)
  const CQuaternion& operator*=(const CQuaternion& q);
 #endif
-#ifdef FABLE_RETAIL_CQUATERNION_TOMATRIX_FORCEINLINE
+#if defined(FABLE_RETAIL_CQUATERNION_TOMATRIX_FORCEINLINE) || defined(FABLE_RETAIL_CQUATERNION_INLINE_TOMATRIX)   // INLINE_TOMATRIX: the older opt-in for the same marking (its note is above SLERP)
  // Retail opt-in (chunk 2014, row 0x00A4E300 C3DAnimation2::GetDeltaMovement): the same body forced inline (FableWin.pdb
  // ?ToMatrix@CQuaternion@@QBEXAAVCMatrix3x4@@ABVC3DVector@@@Z has no retail out-of-line copy; plain inline leaves both of the row's
  // sites called, retail expands them, 0x00A4E3E1 / 0x00A4E578). Owner 2026-11-01 helper rule.

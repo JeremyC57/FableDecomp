@@ -16,8 +16,7 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
     // differences grouped; retail multiplies every Up component loaded first by the Forward one (0x00BC24D5..0x00BC24FD, `fld [eax+24h] ;
     // fmul [eax+34h]` for the last product). Same arithmetic as the other two spellings.
     C3DVector GetRight()const{return C3DVector((Forward.Y*Up.Z-Forward.Z*Up.Y),(Forward.Z*Up.X-Forward.X*Up.Z),(Forward.X*Up.Y-Forward.Y*Up.X));}
-#endif
-#if defined(FABLE_RETAIL_CRIGHTHANDEDSET_GETRIGHT_OUTOFLINE)
+#elif defined(FABLE_RETAIL_CRIGHTHANDEDSET_GETRIGHT_OUTOFLINE)
     // Retail opt-in (w22 agent2002, row 0x007D8570 CTCTavernGameSpotTheAddition::ProcessInput): that TU calls the out-of-line
     // copy 0x0049CE00 (`lea ecx,[esi+14Dh] ; push eax ; call 0x0049CE00` at 0x007D8640) instead of expanding it. Declaration only.
     C3DVector GetRight() const;                                          // 0x0049CE00 ?GetRight@CRightHandedSet@@QBE?AVC3DVector@@XZ

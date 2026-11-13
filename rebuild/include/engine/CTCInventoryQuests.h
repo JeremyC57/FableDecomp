@@ -63,7 +63,20 @@ public:
     void InitialiseQuestCardList();                                                                // 0x00621A20
 #endif
     long QuestCardCount;                                                                           // +0x150
-#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_OPENINVENTORY
+#if defined(FABLE_RETAIL_CTCINVENTORYQUESTS_OPENINVENTORY) && !defined(FABLE_RETAIL_CTCINVENTORYQUESTS_QUESTLIST) && !defined(FABLE_RETAIL_CTCINVENTORYQUESTS_OPENPC)
+    // (chunk Q24, row 0x00622A00) the members after QuestCardCount; the QUESTLIST and OPENPC blocks below declare the same list.
+    bool Teleport;                                                                                 // +0x154
+    bool QuestCardActivatable;                                                                     // +0x155
+    bool EnableQuestCardListInitialise;                                                            // +0x156
+    bool ActiveTestQuestMode;                                                                      // +0x157
+    long TestQuestSelectedIndex;                                                                   // +0x158
+    long TestQuestTopIndex;                                                                        // +0x15c
+    bool TestQuestShowAll;                                                                         // +0x160
+    long TestQuestListSize;                                                                        // +0x164
+    NHeroInformationScreens::EScreenType PreviousScreenType;                                       // +0x168
+    std::map<CThing*, NUISystem::CComponent*> AvailableQuests;                                     // +0x16c
+    std::vector<CIntelligentPointer<CThing> > DisplayQuests;                                       // +0x178
+    float AccumFadeTime;                                                                           // +0x184
 #endif
 #if defined(FABLE_RETAIL_CTCINVENTORYQUESTS_QUESTLIST) && !defined(FABLE_RETAIL_CTCINVENTORYQUESTS_OPENPC)
     // (chunk 882 / H40f, row 0x0061E6D0; chunk 4007, row 0x0061B610) the members after QuestCardCount, the same list as the OPENPC

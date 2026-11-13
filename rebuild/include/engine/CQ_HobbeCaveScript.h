@@ -141,6 +141,7 @@ private:
 protected:
     CQ_HobbeCaveScript* ParentClass;                                     // +0x14
     CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
 #endif
 #ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_CHOBBETORRENT
 // Retail opt-in (chunk 2046): the entity script CHobbeTorrent (Ego_r.pdb CHobbeTorrent, 32 bytes: ParentClass +0x14 (pointer),

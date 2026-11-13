@@ -84,7 +84,6 @@ public:
     // inline in retail (UpdateDiskCache 0x00B2DA07 / 0x00B2DBA2 read GraphicBanks[0] at +0x954 and write through it).
     CGraphicDataBank* GetGraphicBank(EGraphicBankNo bank) { return GraphicBanks[bank]; }
 #endif
-#endif
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKVSCONSTANTLAYOUTLIGHTSBONES
     // Retail opt-in (chunk F2, row 0x00BCFB00): FableWin.pdb ?PeekVSConstantLayoutLightsBones@CEngineResourceManager@@QAEABVCEngineVSConstantLayoutLightsBones@@XZ,
     // inline in retail (the row reads the layout's BoneMatrices at +0x2E50 = VSConstantLayoutLightsBones +0x2D7C + 0xD4 in place).
@@ -159,6 +158,7 @@ private:
     CWideString EngineCachePath,WriteableEngineCachePath;    // +0x2ACC / +0x2AD0
 #else
     unsigned char EngineCachePath[4],WriteableEngineCachePath[4];  // CWideString
+#endif
 #endif
     unsigned char ZeroRGBATexture[8],SatRGBATexture[8];      // CTexture
     unsigned char VSConstantLayoutBasic[0x14c];              // CEngineVSConstantLayoutBasic
