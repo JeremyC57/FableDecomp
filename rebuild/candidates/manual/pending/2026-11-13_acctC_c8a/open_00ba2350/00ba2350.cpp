@@ -55,6 +55,7 @@
 #define FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
 #define FABLE_RETAIL_CENGINELIGHTINGMANAGER_SPOTLIGHT
 #define FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD_DIRECT
 #define FABLE_RETAIL_CENGINECAMERA_POSITION
 #define FABLE_RETAIL_CENGINECAMERA_PEEKWINDOW
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_CLOTH
@@ -112,11 +113,11 @@
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }                          // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }              // 0x01436E14
 namespace NEngineInternal { extern CEngineScreenEffectOutlineGlow* GPScreenEffectOutlineGlow; } // 0x01436E3C
-extern CEngineCamera* g_pEngineCamera;                                                        // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                                                        // 0x01436EA0
 extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer;                                        // 0x01436E78
-extern CEngineLightingManager* g_pEngineLightingManager;                                      // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }                                      // 0x01436E9C
 extern CEngineShadowRenderer* g_pEngineShadowRenderer;                                        // 0x01436E60
-extern CEngineResourceManager* g_pResourceManager;                                            // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }                                            // 0x01436E98
 extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;                                  // 0x01436E84
 
 FABLE_FORCEINLINE bool CShaderRenderManager::GetPixelShadersEnabled() const { return PixelShadersEnabled; }
@@ -207,32 +208,32 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
         }
         tint_colour.A = alpha;
         CEnginePrimitiveRenderUtil::SetTextureFactor(CRGBFloatColour(tint_colour));
-        g_pEngineLightingManager->SetCurrentEnvironmentThemeChannel(primitive->ThemeChannelDesc);
+        NEngineInternal::GPLightingManager->SetCurrentEnvironmentThemeChannel(primitive->ThemeChannelDesc);
         const CEngineLocalLightArray& lights = sub_primitive.GetParent()->PeekLights();
         switch (render_mode) {
         case 2:
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShader(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuse);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         case 3:
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShaderSpotLight(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuse);
-            g_pEngineLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
+            NEngineInternal::GPLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
             break;
         case 4:
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShader(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuseFog);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         case 5: {
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShaderStippleAlpha(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(PixelShaderDiffuseFogStippleAlpha);
-            const C2DBoxF& window = g_pEngineCamera->PeekWindow();
+            const C2DBoxF& window = NEngineInternal::GPCamera->PeekWindow();
             float left = window.TLX;
             float top = window.TLY;
             float right = window.BRX;
@@ -244,32 +245,32 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPRenderManager->SetTextureFilterModeMag(1, TEXTURE_FILTER_POINT);
             NEngineInternal::GPRenderManager->SetTextureUVModeU(1, TEXTURE_UV_WRAP);
             NEngineInternal::GPRenderManager->SetTextureUVModeV(1, TEXTURE_UV_WRAP);
-            NEngineInternal::GPRenderManager->AttachTextureToStage(1, &g_pResourceManager->GetStipleFadeTexture());
+            NEngineInternal::GPRenderManager->AttachTextureToStage(1, &NEngineInternal::GPResourceManager->GetStipleFadeTexture());
             NEngineInternal::GPRenderManager->SetTextureTransformMode(1, TEXTURE_TRANSFORM_PROJECTED);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         }
         case 6: {
             texture_stages.DiffuseTextureStage = 0;
-            NEngineInternal::GPRenderManager->AttachTextureToStage(1, g_pResourceManager->GetZeroRGBATexture());
+            NEngineInternal::GPRenderManager->AttachTextureToStage(1, NEngineInternal::GPResourceManager->GetZeroRGBATexture());
             bool used_blank;
             NEngineInternal::GPRenderManager->AttachTextureToStage(2, GetReflectionTexture(material, mipmap_level, used_blank, graphic_bank, block_on_load));
             flags = 0x129;
             ApplyStaticVertexShaderEnv(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuseEnvFog);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         }
         case 7: {
             texture_stages.DiffuseTextureStage = 0;
             bool used_blank;
             NEngineInternal::GPRenderManager->AttachTextureToStage(1, GetReflectionTexture(material, mipmap_level, used_blank, graphic_bank, block_on_load));
-            const CRGBFloatColour& reflection = g_pEngineLightingManager->ThemeChannels[g_pEngineLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
+            const CRGBFloatColour& reflection = NEngineInternal::GPLightingManager->ThemeChannels[NEngineInternal::GPLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x129;
             ApplyStaticVertexShaderEnv(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuseEnvFog);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         }
         case 8:
@@ -277,7 +278,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             texture_stages.BumpTextureStage = 1;
             ApplyStaticVertexShader(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuseFog);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         case 9:
             texture_stages.DiffuseTextureStage = 0;
@@ -293,7 +294,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             texture_stages.DiffuseTextureStage = 0;
             bool used_blank;
             NEngineInternal::GPRenderManager->AttachTextureToStage(1, GetReflectionTexture(material, mipmap_level, used_blank, graphic_bank, block_on_load));
-            const CRGBFloatColour& reflection = g_pEngineLightingManager->ThemeChannels[g_pEngineLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
+            const CRGBFloatColour& reflection = NEngineInternal::GPLightingManager->ThemeChannels[NEngineInternal::GPLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x12b;
             ApplyStaticVertexShaderEnvShadow(lights.GetCount());
@@ -304,7 +305,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
         case 11:
             texture_stages.DiffuseTextureStage = 0;
             texture_stages.BumpTextureStage = 1;
-            NEngineInternal::GPRenderManager->AttachTextureToStage(2, g_pResourceManager->GetZeroRGBATexture());
+            NEngineInternal::GPRenderManager->AttachTextureToStage(2, NEngineInternal::GPResourceManager->GetZeroRGBATexture());
             ApplyStaticVertexShaderDP3BumpShadow(lights.GetCount());
             if (tinted)
                 CEnginePrimitiveRenderUtil::ApplyPixelShader(*g_pPrimitiveRenderer->PixelShaderDiffuseDP3BumpFogShadowOutputFactor);
@@ -321,20 +322,20 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             else
                 CEnginePrimitiveRenderUtil::ApplyPixelShader(*g_pPrimitiveRenderer->PixelShaderDiffuseFogShadow);
             g_pEngineShadowRenderer->SetupShadowFuncRenderStates(1, primitive->ObjectTransform, CEngineShadowRenderer::CColorBufferDepthPackParameters(4, 5, 0));
-            g_pEngineLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
+            NEngineInternal::GPLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
             flags = 0x10b;
             break;
         case 13: {
             texture_stages.DiffuseTextureStage = 0;
             bool used_blank;
             NEngineInternal::GPRenderManager->AttachTextureToStage(1, GetReflectionTexture(material, mipmap_level, used_blank, graphic_bank, block_on_load));
-            const CRGBFloatColour& reflection = g_pEngineLightingManager->ThemeChannels[g_pEngineLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
+            const CRGBFloatColour& reflection = NEngineInternal::GPLightingManager->ThemeChannels[NEngineInternal::GPLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x12b;
             ApplyStaticVertexShaderEnvSpotShadow(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(*g_pPrimitiveRenderer->PixelShaderDiffuseEnvFogShadow);
             g_pEngineShadowRenderer->SetupShadowFuncRenderStates(2, primitive->ObjectTransform, CEngineShadowRenderer::CColorBufferDepthPackParameters(4, 5, 0));
-            g_pEngineLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
+            NEngineInternal::GPLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
             break;
         }
         case 1:
@@ -361,7 +362,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPRenderManager->AttachTextureToStage(1, Get2DAlphaMaskTexture(mask->AlphaMaskBankIndex, 0, used_blank, mask->AlphaMaskBank, block_on_load));
             NEngineInternal::GPRenderManager->AttachTextureToStage(2, GetReflectionTexture(material, mipmap_level, used_blank, graphic_bank, block_on_load));
             Set2DAlphaMaskTextureMode(1, mask->FilterMask, true);
-            const CRGBFloatColour& reflection = g_pEngineLightingManager->ThemeChannels[g_pEngineLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
+            const CRGBFloatColour& reflection = NEngineInternal::GPLightingManager->ThemeChannels[NEngineInternal::GPLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x129;
             Apply2DStaticVertexShaderEnv();
@@ -402,9 +403,9 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
         default:
             __assume(0);
         }
-        g_pEngineLightingManager->SetupShaderPointLights(lights);
-        g_pEngineLightingManager->SetSelfIlluminationAmbient(material->SelfIllumination);
-        g_pEngineLightingManager->UpdateGlobalLightingStates();
+        NEngineInternal::GPLightingManager->SetupShaderPointLights(lights);
+        NEngineInternal::GPLightingManager->SetSelfIlluminationAmbient(material->SelfIllumination);
+        NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
     } else if (pass == RENDER_PASS_Z_WRITE) {
         CEnginePrimitiveRenderUtil::SetTextureFactor(CRGBFloatColour(1.0f, 1.0f, 1.0f, 1.0f));
         if (material->Transparent) {

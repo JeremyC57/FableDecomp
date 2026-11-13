@@ -1,0 +1,164 @@
+--- a/rebuild/include/engine/CEnginePrimitiveManagerStaticMeshesBase.h
++++ b/rebuild/include/engine/CEnginePrimitiveManagerStaticMeshesBase.h
+@@ -5,6 +5,10 @@
+ #include "engine/CVertexShader.h"
+ #include "engine/CPixelShader.h"
+ class C3DPrimitive2;class C3DMesh2;class C3DTextureStages;class CGraphicDataBank;
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_RENDERMESHPRIMITIVE
++class CEngineSubPrimitiveStaticMesh;class CEngineInternalPrimitiveStaticMesh;class C3DMeshMaterial;
++class CEnginePrimitiveHandle;class C3DMeshInfo;class CMatrix3x4;class CEngineFadeDistance;class CRGBColour;
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_SILHOUETTE
+ class CEngineInternalPrimitiveStaticMesh;
+ enum ERenderMode;                                                        // MS forward enum (Ego_r.pdb; no enumerator name recovered)
+@@ -29,6 +33,30 @@
+     CEnginePrimitiveManagerStaticMeshesBase(const CEnginePrimitiveManagerStaticMeshesBase&);
+     CEnginePrimitiveManagerStaticMeshesBase(CArray<CEngineScene *>&);
+     static bool FABLE_FASTCALL SetupStaticBlocksNoMorph(C3DPrimitive2&,const C3DMesh2&,C3DTextureStages&,long,const CGraphicDataBank*,bool);
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_RENDERMESHPRIMITIVE
++    // Opt-in (chunk 2060, row 0x00BA5260): the members RenderMeshPrimitive reaches, Ego_r.pdb / FableWin.pdb spellings and access:
++    // ?RenderMeshPrimitive@..@@QAEXAAVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z 0x00BA5260 (public),
++    // ?SetupFirstTextures@..@@SIXAAVC3DPrimitive2@@AAVC3DTextureStages@@@Z 0x00B9D670, ?RenderMeshPrimitiveBlocks@..@@SIXAAVC3DPrimitive2@@ABVC3DTextureStages@@_N2@Z
++    // 0x00BA1110 (public static; RenderMeshPrimitive expands it, so it is an inline COMDAT whose out-of-line copy the other callers use),
++    // the private statics ?RenderMeshPrimitiveBlocksIndexBuffer@..@@CIX.. 0x00B9E5B0 / ?RenderMeshPrimitiveBlocksDegenerateTriangles@..@@CIX..
++    // 0x00B9E750, and the private ?SetupRenderModeShadersAndConstants@..@@AAE_NW4ERenderPassType@@PBVC3DMeshMaterial@@AAVCEngineSubPrimitiveStaticMesh@@AAVC3DTextureStages@@JPAKPA_N@Z
++    // 0x00BA2350 / ?SetupStaticBlocks@..@@AAE_NAAVC3DPrimitive2@@AAVCEngineInternalPrimitiveStaticMesh@@AAVC3DTextureStages@@PBVC3DMeshMaterial@@PAV?$CVectorMap@..@@JPA_N@Z
++    // 0x00BA50A0 (manifest labels agree).
++    void RenderMeshPrimitive(CEngineSubPrimitiveStaticMesh& sub_primitive, ERenderPassType pass);   // 0x00BA5260
++    static void FABLE_FASTCALL SetupFirstTextures(C3DPrimitive2& mesh_primitive, C3DTextureStages& texture_stages);   // 0x00B9D670
++    static void FABLE_FASTCALL RenderMeshPrimitiveBlocks(C3DPrimitive2& mesh_primitive, const C3DTextureStages& texture_stages,
++                                                         bool use_push_buffer, bool render_degenerate_triangles);   // 0x00BA1110
++private:
++    static void FABLE_FASTCALL RenderMeshPrimitiveBlocksIndexBuffer(C3DPrimitive2& mesh_primitive, const C3DTextureStages& texture_stages);   // 0x00B9E5B0
++    static void FABLE_FASTCALL RenderMeshPrimitiveBlocksDegenerateTriangles(C3DPrimitive2& mesh_primitive, const C3DTextureStages& texture_stages);   // 0x00B9E750
++    bool SetupRenderModeShadersAndConstants(ERenderPassType pass, const C3DMeshMaterial* material, CEngineSubPrimitiveStaticMesh& sub_primitive,
++                                            C3DTextureStages& texture_stages, long mipmap_level, unsigned long* shader_flags,
++                                            bool* render_degenerate_triangles);   // 0x00BA2350
++    bool SetupStaticBlocks(C3DPrimitive2& mesh_primitive, CEngineInternalPrimitiveStaticMesh& primitive, C3DTextureStages& texture_stages,
++                           const C3DMeshMaterial* material,
++                           CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >* composite_surfaces,
++                           long mipmap_level, bool* used_blank_textures);   // 0x00BA50A0
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_BLANKTEXTURES
+     // Retail opt-in (wf8, row 0x00BA4A40): Ego_r.pdb / FableWin.pdb
+     // ?SetupStaticBlocksBlankTextures@CEnginePrimitiveManagerStaticMeshesBase@@AAE_NAAVC3DPrimitive2@@AAVCEngineInternalPrimitiveStaticMesh@@AAVC3DTextureStages@@PBVC3DMeshMaterial@@PA_N@Z
+@@ -88,8 +116,25 @@
+     long OverridePrimitive;
+     long RenderOnlyNMeshes;
+     long StippleAlphaSolidFactor;
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_SETUPRENDERMODE
++    // Opt-in (bwf2, row 0x00BA2350): FableWin.pdb private inline helpers (?ApplyStaticVertexShader@..@@AAEXK@Z and its family,
++    // ?ApplyVertexShader@..@@AAEXABVCVertexShader@@@Z, ?Apply2DStaticVertexShader@..@@AAEXXZ ...; no retail out-of-line copy). Bodies in the row.
++    void ApplyVertexShader(const CVertexShader& shader);
++    void ApplyStaticVertexShader(unsigned long light_count);
++    void ApplyStaticVertexShaderStippleAlpha(unsigned long light_count);
++    void ApplyStaticVertexShaderEnv(unsigned long light_count);
++    void ApplyStaticVertexShaderShadow(unsigned long light_count);
++    void ApplyStaticVertexShaderEnvShadow(unsigned long light_count);
++    void ApplyStaticVertexShaderDP3BumpShadow(unsigned long light_count);
++    void ApplyStaticVertexShaderSpotLight(unsigned long light_count);
++    void ApplyStaticVertexShaderSpotShadow(unsigned long light_count);
++    void ApplyStaticVertexShaderEnvSpotShadow(unsigned long light_count);
++    void Apply2DStaticVertexShader();
++    void Apply2DStaticVertexShaderEnv();
++    void Apply2DStaticVertexShaderDP3Bump();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerStaticMeshesBase)==0x318);
++FABLE_STATIC_ASSERT_AT(92, sizeof(CEnginePrimitiveManagerStaticMeshesBase)==0x318);
+ 
+ #else
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+@@ -191,49 +236,49 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerStaticMeshesBase) == 0x318);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, PointLightShaderIndex) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotlight) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticStippleAlpha) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStatic) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnv) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBump) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDepthBufferShadow) == 0xd8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvDepthBufferShadow) == 0xf8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpDepthBufferShadow) == 0x118);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpDepthBufferShadow) == 0x138);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotDepthBufferShadow) == 0x158);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotDepthBufferShadow) == 0x178);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpSpotDepthBufferShadow) == 0x198);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpSpotDepthBufferShadow) == 0x1b8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStatic) == 0x1d8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticEnv) == 0x1e0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticEnvBump) == 0x1e8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticDP3Bump) == 0x1f0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDepthShadowBufferRender) == 0x1f8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderColourShadowBufferRender) == 0x200);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticColourBufferShadow) == 0x208);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvColourBufferShadow) == 0x228);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpColourBufferShadow) == 0x248);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpColourBufferShadow) == 0x268);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotColourBufferShadow) == 0x288);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotColourBufferShadow) == 0x2a8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, PixelShaderDiffuseFogStippleAlpha) == 0x2c8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderOutline) == 0x2d0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDP3BumpOutline) == 0x2d8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderOutlineSmoothFill) == 0x2e0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDP3BumpOutlineSmoothFill) == 0x2e8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticShadow) == 0x2f0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvShadow) == 0x2f4);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpShadow) == 0x2f8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpShadow) == 0x2fc);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotShadow) == 0x300);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotShadow) == 0x304);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderShadowBufferRender) == 0x308);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, OverridePrimitive) == 0x30c);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, RenderOnlyNMeshes) == 0x310);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerStaticMeshesBase, StippleAlphaSolidFactor) == 0x314);
++FABLE_STATIC_ASSERT_AT(194, sizeof(CEnginePrimitiveManagerStaticMeshesBase) == 0x318);
++FABLE_STATIC_ASSERT_AT(195, offsetof(CEnginePrimitiveManagerStaticMeshesBase, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(196, offsetof(CEnginePrimitiveManagerStaticMeshesBase, PointLightShaderIndex) == 0x20);
++FABLE_STATIC_ASSERT_AT(197, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotlight) == 0x38);
++FABLE_STATIC_ASSERT_AT(198, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticStippleAlpha) == 0x58);
++FABLE_STATIC_ASSERT_AT(199, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStatic) == 0x78);
++FABLE_STATIC_ASSERT_AT(200, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnv) == 0x98);
++FABLE_STATIC_ASSERT_AT(201, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBump) == 0xb8);
++FABLE_STATIC_ASSERT_AT(202, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDepthBufferShadow) == 0xd8);
++FABLE_STATIC_ASSERT_AT(203, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvDepthBufferShadow) == 0xf8);
++FABLE_STATIC_ASSERT_AT(204, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpDepthBufferShadow) == 0x118);
++FABLE_STATIC_ASSERT_AT(205, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpDepthBufferShadow) == 0x138);
++FABLE_STATIC_ASSERT_AT(206, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotDepthBufferShadow) == 0x158);
++FABLE_STATIC_ASSERT_AT(207, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotDepthBufferShadow) == 0x178);
++FABLE_STATIC_ASSERT_AT(208, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpSpotDepthBufferShadow) == 0x198);
++FABLE_STATIC_ASSERT_AT(209, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpSpotDepthBufferShadow) == 0x1b8);
++FABLE_STATIC_ASSERT_AT(210, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStatic) == 0x1d8);
++FABLE_STATIC_ASSERT_AT(211, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticEnv) == 0x1e0);
++FABLE_STATIC_ASSERT_AT(212, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticEnvBump) == 0x1e8);
++FABLE_STATIC_ASSERT_AT(213, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaders2DStaticDP3Bump) == 0x1f0);
++FABLE_STATIC_ASSERT_AT(214, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDepthShadowBufferRender) == 0x1f8);
++FABLE_STATIC_ASSERT_AT(215, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderColourShadowBufferRender) == 0x200);
++FABLE_STATIC_ASSERT_AT(216, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticColourBufferShadow) == 0x208);
++FABLE_STATIC_ASSERT_AT(217, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvColourBufferShadow) == 0x228);
++FABLE_STATIC_ASSERT_AT(218, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpColourBufferShadow) == 0x248);
++FABLE_STATIC_ASSERT_AT(219, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpColourBufferShadow) == 0x268);
++FABLE_STATIC_ASSERT_AT(220, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotColourBufferShadow) == 0x288);
++FABLE_STATIC_ASSERT_AT(221, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotColourBufferShadow) == 0x2a8);
++FABLE_STATIC_ASSERT_AT(222, offsetof(CEnginePrimitiveManagerStaticMeshesBase, PixelShaderDiffuseFogStippleAlpha) == 0x2c8);
++FABLE_STATIC_ASSERT_AT(223, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderOutline) == 0x2d0);
++FABLE_STATIC_ASSERT_AT(224, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDP3BumpOutline) == 0x2d8);
++FABLE_STATIC_ASSERT_AT(225, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderOutlineSmoothFill) == 0x2e0);
++FABLE_STATIC_ASSERT_AT(226, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderDP3BumpOutlineSmoothFill) == 0x2e8);
++FABLE_STATIC_ASSERT_AT(227, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticShadow) == 0x2f0);
++FABLE_STATIC_ASSERT_AT(228, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvShadow) == 0x2f4);
++FABLE_STATIC_ASSERT_AT(229, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvBumpShadow) == 0x2f8);
++FABLE_STATIC_ASSERT_AT(230, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticDP3BumpShadow) == 0x2fc);
++FABLE_STATIC_ASSERT_AT(231, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticSpotShadow) == 0x300);
++FABLE_STATIC_ASSERT_AT(232, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShadersStaticEnvSpotShadow) == 0x304);
++FABLE_STATIC_ASSERT_AT(233, offsetof(CEnginePrimitiveManagerStaticMeshesBase, VertexShaderShadowBufferRender) == 0x308);
++FABLE_STATIC_ASSERT_AT(234, offsetof(CEnginePrimitiveManagerStaticMeshesBase, OverridePrimitive) == 0x30c);
++FABLE_STATIC_ASSERT_AT(235, offsetof(CEnginePrimitiveManagerStaticMeshesBase, RenderOnlyNMeshes) == 0x310);
++FABLE_STATIC_ASSERT_AT(236, offsetof(CEnginePrimitiveManagerStaticMeshesBase, StippleAlphaSolidFactor) == 0x314);
+ 
+ #endif
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_H

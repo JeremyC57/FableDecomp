@@ -1,0 +1,35 @@
+--- a/rebuild/include/engine/N3DPrimitive_CStaticBlock.h
++++ b/rebuild/include/engine/N3DPrimitive_CStaticBlock.h
+@@ -8,6 +8,15 @@
+ class CBaseBlock {
+ public:
+     unsigned long GetChangeFlags() const { return ChangeFlags; }
++#ifdef FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS_BLOCKDRAW
++    // Retail opt-in (agentC17, rows 0x00B9E5B0 RenderMeshPrimitiveBlocksIndexBuffer / 0x00B9E750 ...DegenerateTriangles): FableWin.pdb
++    // ?GetPrimitiveCount@CBaseBlock@N3DPrimitive@@QBEKXZ 9i, ?GetStartIndex@..@@QBEKXZ 9i, ?GetDegenerateTriangles@..@@QBE_NXZ 9i,
++    // ?GetPrimitiveType@..@@QBE?AW4EPrimitiveType@@XZ 13i (the includer provides EPrimitiveType, engine/EPrimitiveType.h). No layout change.
++    unsigned long GetPrimitiveCount() const { return PrimitiveCount; }
++    unsigned long GetStartIndex() const { return StartIndex; }
++    bool GetDegenerateTriangles() const { return DegenerateTriangles; }
++    EPrimitiveType GetPrimitiveType() const { return IsStrip ? PT_TRIANGLE_STRIP : PT_TRIANGLE_LIST; }
++#endif
+ private:
+     unsigned long PrimitiveCount,StartIndex;
+     bool IsStrip,DegenerateTriangles;
+@@ -44,11 +53,11 @@
+ class CStaticBlock:public CBaseBlock {public:unsigned long DiffuseTextureFixupOffset,BumpTextureFixupOffset;CTexture* DiffuseTexture;CTexture* BumpTexture;long MaterialIndex;};
+ }
+ #endif
+-FABLE_STATIC_ASSERT(sizeof(N3DPrimitive::CBaseBlock)==12);
+-FABLE_STATIC_ASSERT(sizeof(N3DPrimitive::CStaticBlock)==32);
++FABLE_STATIC_ASSERT_AT(47, sizeof(N3DPrimitive::CBaseBlock)==12);
++FABLE_STATIC_ASSERT_AT(48, sizeof(N3DPrimitive::CStaticBlock)==32);
+ #ifndef FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS
+-FABLE_STATIC_ASSERT(offsetof(N3DPrimitive::CStaticBlock,ChangeFlags)==0x0a);
++FABLE_STATIC_ASSERT_AT(50, offsetof(N3DPrimitive::CStaticBlock,ChangeFlags)==0x0a);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(N3DPrimitive::CStaticBlock,DiffuseTexture)==0x14);
+-FABLE_STATIC_ASSERT(offsetof(N3DPrimitive::CStaticBlock,BumpTexture)==0x18);
++FABLE_STATIC_ASSERT_AT(52, offsetof(N3DPrimitive::CStaticBlock,DiffuseTexture)==0x14);
++FABLE_STATIC_ASSERT_AT(53, offsetof(N3DPrimitive::CStaticBlock,BumpTexture)==0x18);
+ #endif

@@ -1,5 +1,5 @@
 // CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive(CEngineSubPrimitiveStaticMesh& sub_primitive, ERenderPassType pass) -- draw one static mesh primitive inside a render-state capture block: fog / specular on, pick the diffuse mipmap from the camera distance, set the pass's z-write / alpha-test / alpha-blend states, the stencil mask, the shaders and the static blocks' textures, then draw its blocks with an occlusion test around them and reset the device and lighting state
-// Grade: DIFFER(4056v4056) -- agentC16: TU now holds the real body of SetupRenderModeShadersAndConstants (differ/00ba2350.cpp text) before this row; 3 residues: the C3DTextureStages UseBlankTextures store 0x00BA558B (needs the bodies of SetupStaticBlocks 0x00BA50A0 / SetupFirstTextures 0x00B9D670 / RenderMeshPrimitiveBlocksIndexBuffer 0x00B9E5B0 / ...DegenerateTriangles 0x00B9E750 in the TU: with non-capturing stand-in bodies it moves to retail's slot), and the cull SetRenderState test/or registers 0x00BA5EB3 (function record count 1..6 too high).
+// Grade: DIFFER(4056v4056) -- agentC17: residue A gone (real same-TU bodies of SetupFirstTextures / IndexBuffer / DegenerateTriangles / SetupStaticBlocksBlankTextures / SetupStaticBlocks, all RELOCATION_MATCH at their own addresses in this TU; SetupStaticBlocks needs the GetDiffuseTexture / GetBumpTexture bodies, carried here as the landed NoMorph texts, which DIFFER at their own addresses 382v613 / 373v597: NOT landable as is); residue B (cull bookmark test/or) gone with the repo-default operator- + SHADOWGUARD_DIRECT + PDB global names; remaining: TransformPoint x87 product order 0x00BA5434..0x00BA5440 (2 instructions swapped) = about 1 more 'ruler unit' of IL needed (one dead `const ERenderPassType r = pass;` anywhere matches RELOCATION_MATCH; GetCenter() in GetAppropriateMipmap supplies 2 of the 3 needed). See NOTES.md.
 //   9632 bytes, not landed): retail compiled this row with that callee's body visible, so c2 knew &shader_flags / &render_degenerate_triangles
 //   are not captured, read them lazily and cached shader_flags across later calls (0x00BA5FEB `mov ebx,[ebp-1Ch]`, 0x00BA60F2 `mov al,[ebp-4]`).
 //   With any non-capturing body of it in the TU (PROBE probe/u1_standin_PROBE.cpp, never landable) this exact text grades DIFFER(4056v4056)
@@ -29,6 +29,20 @@
 //   alpha-ref byte parameter, shader flags with the mipmap temporaries, the occlusion handle alone). FITTED (packer traces, pk.sh).
 // Leaf: ?RenderMeshPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@QAEXAAVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z
 #include "fable_compiler.h"
+#define FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS_BLOCKDRAW
+#define FABLE_RETAIL_CSHADERRENDERMANAGER_INLINE_BLOCKDRAW
+#define FABLE_RETAIL_CRENDERMANAGERCORE
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_BLANKTEXTURES
+#define FABLE_RETAIL_C3DPRIMITIVE2_RECORDEDSTATE
+#define FABLE_RETAIL_C3DTEXTURESTAGES_EQUALS
+#define FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_STATICBLOCKS
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_STATICBLOCKS
+#define FABLE_RETAIL_C3DPRIMITIVE2_ANIMATEDBLOCKS
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CMOVABLERESOURCE
+#define FABLE_RETAIL_CGRAPHICINFOFRAME_GETBANK_DIRECT
 #define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
 #define FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS
 #define FABLE_RETAIL_C3DPRIMITIVE2_RENDER
@@ -56,11 +70,12 @@
 #define FABLE_RETAIL_CMATRIX3X4
 #define FABLE_RETAIL_C3DVECTOR
 #define FABLE_RETAIL_C3DTEXTURESTAGES_CTOR
-#define FABLE_RETAIL_C3DVECTOR_NAMED_RESULT_SUB
 #define FABLE_RETAIL_C3DVECTOR_MAGNITUDE_NAMED_SQUARED
+#define FABLE_RETAIL_C3DBOUNDINGSPHERE_CENTER_VALUE
 #define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
 #define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH
 #define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_PEEKMESH
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_PEEKMESH_RENDERINFO
 #define FABLE_RETAIL_CMESHDATABANKENTRY
 #define FABLE_RETAIL_CMESHDATABANK_BASES
 #define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
@@ -91,6 +106,7 @@
 #define FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
 #define FABLE_RETAIL_CENGINELIGHTINGMANAGER_SPOTLIGHT
 #define FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD_DIRECT
 #define FABLE_RETAIL_CENGINECAMERA_PEEKWINDOW
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_CLOTH2D
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_SETUPRENDERMODE
@@ -151,10 +167,10 @@
 
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }                  // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }      // 0x01436E14
-extern CEngineCamera* g_pEngineCamera;                                                // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                                                // 0x01436EA0
 extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer;                                // 0x01436E78
-extern CEngineLightingManager* g_pEngineLightingManager;                              // 0x01436E9C
-extern CEngineOcclusionManager* g_pOcclusionManager;                                  // 0x01436E5C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }                              // 0x01436E9C
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }                                  // 0x01436E5C
 extern unsigned char g_highestSetBitTable[256];                                       // 0x0143B990
 extern const float DELTA_NOTIONAL_ZERO;                                               // 0x0129BA3C
 
@@ -194,6 +210,10 @@ inline void __fastcall CEnginePrimitiveRenderUtil::SetWorldTransform(const CMatr
     else
         NEngineInternal::GPShaderRenderManager->SetWorldTransform(transform);
 }
+inline CEngineCamera& __fastcall CEnginePrimitiveRenderUtil::GetCurrentCamera()
+{
+    return *NEngineInternal::GPCamera;
+}
 FABLE_FORCEINLINE unsigned long FABLE_FASTCALL CEnginePrimitiveManagerMeshBase::GetAppropriateMipmap(const C3DVector& camera_position,
     const CMatrix3x4& transform, const C3DPrimitive2& mesh_primitive, float scale, const C3DMeshMaterial* material,
     const CGraphicDataBank* graphic_bank)
@@ -201,7 +221,7 @@ FABLE_FORCEINLINE unsigned long FABLE_FASTCALL CEnginePrimitiveManagerMeshBase::
     C3DBoundingSphere sphere = mesh_primitive.GetBoundingSphere();
     transform.TransformPoint(sphere.Center);
     unsigned long mipmap = 0;
-    float distance = ((camera_position - sphere.Center).GetMagnitude() - sphere.GetRadius() * scale) * mesh_primitive.GetAverageTextureStretch();
+    float distance = ((camera_position - sphere.GetCenter()).GetMagnitude() - sphere.GetRadius() * scale) * mesh_primitive.GetAverageTextureStretch();
     if (distance > DELTA_NOTIONAL_ZERO) {
         long graphic_index = material->GetDiffuseMapBankIndex();
         if (graphic_index > 0) {
@@ -253,7 +273,7 @@ FABLE_FORCEINLINE void CEnginePrimitiveRenderUtil::SetupAlphaBlendingStatesFromR
 }
 namespace NEngineInternal { extern CEngineScreenEffectOutlineGlow* GPScreenEffectOutlineGlow; } // 0x01436E3C
 extern CEngineShadowRenderer* g_pEngineShadowRenderer;                                        // 0x01436E60
-extern CEngineResourceManager* g_pResourceManager;                                            // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }                                            // 0x01436E98
 extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;                                  // 0x01436E84
 
 FABLE_FORCEINLINE bool CShaderRenderManager::GetPixelShadersEnabled() const { return PixelShadersEnabled; }
@@ -316,6 +336,51 @@ FABLE_FORCEINLINE void CEnginePrimitiveManagerStaticMeshesBase::Apply2DStaticVer
 FABLE_FORCEINLINE void CEnginePrimitiveManagerStaticMeshesBase::Apply2DStaticVertexShaderEnv() { ApplyVertexShader(VertexShaders2DStaticEnv); }
 FABLE_FORCEINLINE void CEnginePrimitiveManagerStaticMeshesBase::Apply2DStaticVertexShaderDP3Bump() { ApplyVertexShader(VertexShaders2DStaticDP3Bump); }
 
+void FABLE_FASTCALL CEnginePrimitiveManagerStaticMeshesBase::SetupFirstTextures(C3DPrimitive2& primitive, C3DTextureStages& textureStages)
+{
+    N3DPrimitive::CStaticBlock* block = primitive.StaticBlocks;
+    if (textureStages.DiffuseTextureStage != -1)
+        NEngineInternal::GPRenderManager->AttachTextureToStage(textureStages.DiffuseTextureStage, block->DiffuseTexture);
+    if (textureStages.BumpTextureStage != -1)
+        NEngineInternal::GPRenderManager->AttachTextureToStage(textureStages.BumpTextureStage, block->BumpTexture);
+}
+void FABLE_FASTCALL CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocksIndexBuffer(C3DPrimitive2& mesh_primitive, const C3DTextureStages& texture_stages)
+{
+    unsigned long no_blocks = mesh_primitive.GetStaticBlockCount();
+    for (unsigned long c_block = 0; c_block < no_blocks; ++c_block) {
+        N3DPrimitive::CStaticBlock& block_info = *mesh_primitive.GetStaticBlock(c_block);
+        if (!block_info.GetDegenerateTriangles()) {
+            if (block_info.GetChangeFlags() & 1)
+                NEngineInternal::GPRenderManager->AttachTextureToStage(texture_stages.DiffuseTextureStage, block_info.DiffuseTexture);
+            if ((block_info.GetChangeFlags() & 2) && texture_stages.BumpTextureStage != -1)
+                NEngineInternal::GPRenderManager->AttachTextureToStage(texture_stages.BumpTextureStage, block_info.BumpTexture);
+            NEngineInternal::GPShaderRenderManager->DrawBuffersIndexed(0, mesh_primitive.GetVertexCount(), *mesh_primitive.IndexBuffer,
+                block_info.GetStartIndex(), block_info.GetPrimitiveCount(), block_info.GetPrimitiveType());
+        }
+    }
+}
+
+void FABLE_FASTCALL CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocksDegenerateTriangles(C3DPrimitive2& primitive,
+                                                                                                      const C3DTextureStages& textureStages)
+{
+    if (textureStages.DiffuseTextureStage != -1)
+        NEngineInternal::GPRenderManager->AttachTextureToStage(textureStages.DiffuseTextureStage, 0);
+    if (textureStages.BumpTextureStage != -1)
+        NEngineInternal::GPRenderManager->AttachTextureToStage(textureStages.BumpTextureStage, 0);
+    const unsigned long blockCount = primitive.StaticBlockCount;
+    for (unsigned long i = 0; i < blockCount; ++i) {
+        N3DPrimitive::CStaticBlock& block = primitive.StaticBlocks[i];
+        if (block.GetDegenerateTriangles()) {
+            const unsigned long primitiveCount = block.GetPrimitiveCount();
+            const unsigned long startIndex = block.GetStartIndex();
+            const unsigned long vertexCount = primitive.VertexCount;
+            CIndexBuffer& indexBuffer = *primitive.IndexBuffer;
+            NEngineInternal::GPShaderRenderManager->DrawBuffersIndexed(0, vertexCount, indexBuffer, startIndex, primitiveCount,
+                                                                       block.GetPrimitiveType());
+        }
+    }
+}
+
 bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants(ERenderPassType pass, const C3DMeshMaterial* material,
                                                                                  CEngineSubPrimitiveStaticMesh& sub_primitive,
                                                                                  C3DTextureStages& texture_stages, long mipmap_level,
@@ -344,32 +409,32 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
         }
         tint_colour.A = alpha;
         CEnginePrimitiveRenderUtil::SetTextureFactor(CRGBFloatColour(tint_colour));
-        g_pEngineLightingManager->SetCurrentEnvironmentThemeChannel(primitive->ThemeChannelDesc);
+        NEngineInternal::GPLightingManager->SetCurrentEnvironmentThemeChannel(primitive->ThemeChannelDesc);
         const CEngineLocalLightArray& lights = sub_primitive.GetParent()->PeekLights();
         switch (render_mode) {
         case 2:
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShader(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuse);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         case 3:
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShaderSpotLight(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuse);
-            g_pEngineLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
+            NEngineInternal::GPLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
             break;
         case 4:
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShader(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuseFog);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         case 5: {
             texture_stages.DiffuseTextureStage = 0;
             ApplyStaticVertexShaderStippleAlpha(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(PixelShaderDiffuseFogStippleAlpha);
-            const C2DBoxF& window = g_pEngineCamera->PeekWindow();
+            const C2DBoxF& window = NEngineInternal::GPCamera->PeekWindow();
             float left = window.TLX;
             float top = window.TLY;
             float right = window.BRX;
@@ -381,32 +446,32 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPRenderManager->SetTextureFilterModeMag(1, TEXTURE_FILTER_POINT);
             NEngineInternal::GPRenderManager->SetTextureUVModeU(1, TEXTURE_UV_WRAP);
             NEngineInternal::GPRenderManager->SetTextureUVModeV(1, TEXTURE_UV_WRAP);
-            NEngineInternal::GPRenderManager->AttachTextureToStage(1, &g_pResourceManager->GetStipleFadeTexture());
+            NEngineInternal::GPRenderManager->AttachTextureToStage(1, &NEngineInternal::GPResourceManager->GetStipleFadeTexture());
             NEngineInternal::GPRenderManager->SetTextureTransformMode(1, TEXTURE_TRANSFORM_PROJECTED);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         }
         case 6: {
             texture_stages.DiffuseTextureStage = 0;
-            NEngineInternal::GPRenderManager->AttachTextureToStage(1, g_pResourceManager->GetZeroRGBATexture());
+            NEngineInternal::GPRenderManager->AttachTextureToStage(1, NEngineInternal::GPResourceManager->GetZeroRGBATexture());
             bool used_blank;
             NEngineInternal::GPRenderManager->AttachTextureToStage(2, GetReflectionTexture(material, mipmap_level, used_blank, graphic_bank, block_on_load));
             flags = 0x129;
             ApplyStaticVertexShaderEnv(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuseEnvFog);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         }
         case 7: {
             texture_stages.DiffuseTextureStage = 0;
             bool used_blank;
             NEngineInternal::GPRenderManager->AttachTextureToStage(1, GetReflectionTexture(material, mipmap_level, used_blank, graphic_bank, block_on_load));
-            const CRGBFloatColour& reflection = g_pEngineLightingManager->ThemeChannels[g_pEngineLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
+            const CRGBFloatColour& reflection = NEngineInternal::GPLightingManager->ThemeChannels[NEngineInternal::GPLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x129;
             ApplyStaticVertexShaderEnv(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuseEnvFog);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         }
         case 8:
@@ -414,7 +479,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             texture_stages.BumpTextureStage = 1;
             ApplyStaticVertexShader(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuseFog);
-            g_pEngineLightingManager->SetEnableFadedShadowFactor(true);
+            NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
             break;
         case 9:
             texture_stages.DiffuseTextureStage = 0;
@@ -430,7 +495,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             texture_stages.DiffuseTextureStage = 0;
             bool used_blank;
             NEngineInternal::GPRenderManager->AttachTextureToStage(1, GetReflectionTexture(material, mipmap_level, used_blank, graphic_bank, block_on_load));
-            const CRGBFloatColour& reflection = g_pEngineLightingManager->ThemeChannels[g_pEngineLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
+            const CRGBFloatColour& reflection = NEngineInternal::GPLightingManager->ThemeChannels[NEngineInternal::GPLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x12b;
             ApplyStaticVertexShaderEnvShadow(lights.GetCount());
@@ -441,7 +506,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
         case 11:
             texture_stages.DiffuseTextureStage = 0;
             texture_stages.BumpTextureStage = 1;
-            NEngineInternal::GPRenderManager->AttachTextureToStage(2, g_pResourceManager->GetZeroRGBATexture());
+            NEngineInternal::GPRenderManager->AttachTextureToStage(2, NEngineInternal::GPResourceManager->GetZeroRGBATexture());
             ApplyStaticVertexShaderDP3BumpShadow(lights.GetCount());
             if (tinted)
                 CEnginePrimitiveRenderUtil::ApplyPixelShader(*g_pPrimitiveRenderer->PixelShaderDiffuseDP3BumpFogShadowOutputFactor);
@@ -458,20 +523,20 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             else
                 CEnginePrimitiveRenderUtil::ApplyPixelShader(*g_pPrimitiveRenderer->PixelShaderDiffuseFogShadow);
             g_pEngineShadowRenderer->SetupShadowFuncRenderStates(1, primitive->ObjectTransform, CEngineShadowRenderer::CColorBufferDepthPackParameters(4, 5, 0));
-            g_pEngineLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
+            NEngineInternal::GPLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
             flags = 0x10b;
             break;
         case 13: {
             texture_stages.DiffuseTextureStage = 0;
             bool used_blank;
             NEngineInternal::GPRenderManager->AttachTextureToStage(1, GetReflectionTexture(material, mipmap_level, used_blank, graphic_bank, block_on_load));
-            const CRGBFloatColour& reflection = g_pEngineLightingManager->ThemeChannels[g_pEngineLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
+            const CRGBFloatColour& reflection = NEngineInternal::GPLightingManager->ThemeChannels[NEngineInternal::GPLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x12b;
             ApplyStaticVertexShaderEnvSpotShadow(lights.GetCount());
             CEnginePrimitiveRenderUtil::ApplyPixelShader(*g_pPrimitiveRenderer->PixelShaderDiffuseEnvFogShadow);
             g_pEngineShadowRenderer->SetupShadowFuncRenderStates(2, primitive->ObjectTransform, CEngineShadowRenderer::CColorBufferDepthPackParameters(4, 5, 0));
-            g_pEngineLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
+            NEngineInternal::GPLightingManager->SetupShaderSpotLight(primitive->ObjectTransform);
             break;
         }
         case 1:
@@ -498,7 +563,7 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
             NEngineInternal::GPRenderManager->AttachTextureToStage(1, Get2DAlphaMaskTexture(mask->AlphaMaskBankIndex, 0, used_blank, mask->AlphaMaskBank, block_on_load));
             NEngineInternal::GPRenderManager->AttachTextureToStage(2, GetReflectionTexture(material, mipmap_level, used_blank, graphic_bank, block_on_load));
             Set2DAlphaMaskTextureMode(1, mask->FilterMask, true);
-            const CRGBFloatColour& reflection = g_pEngineLightingManager->ThemeChannels[g_pEngineLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
+            const CRGBFloatColour& reflection = NEngineInternal::GPLightingManager->ThemeChannels[NEngineInternal::GPLightingManager->CurrentThemeChannel.ChannelIndex0].ReflectionColour;
             NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(0, C4DVector(reflection));
             flags = 0x129;
             Apply2DStaticVertexShaderEnv();
@@ -539,9 +604,9 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
         default:
             __assume(0);
         }
-        g_pEngineLightingManager->SetupShaderPointLights(lights);
-        g_pEngineLightingManager->SetSelfIlluminationAmbient(material->SelfIllumination);
-        g_pEngineLightingManager->UpdateGlobalLightingStates();
+        NEngineInternal::GPLightingManager->SetupShaderPointLights(lights);
+        NEngineInternal::GPLightingManager->SetSelfIlluminationAmbient(material->SelfIllumination);
+        NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
     } else if (pass == RENDER_PASS_Z_WRITE) {
         CEnginePrimitiveRenderUtil::SetTextureFactor(CRGBFloatColour(1.0f, 1.0f, 1.0f, 1.0f));
         if (material->Transparent) {
@@ -621,6 +686,164 @@ bool CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
 }
 
 
+FABLE_FORCEINLINE const CGraphicInfoFrame* CGraphicDataBank::PeekGraphicInfoFrame(unsigned long graphic,unsigned long frame) const
+{
+    return PeekGraphic(graphic) ? PeekGraphic(graphic)->PeekInfoFrame(frame) : 0;
+}
+bool CEnginePrimitiveManagerStaticMeshesBase::SetupStaticBlocksBlankTextures(C3DPrimitive2& mesh_prim, CEngineInternalPrimitiveStaticMesh& prim,
+    C3DTextureStages& stages, const C3DMeshMaterial* material, bool* already_set_up)
+{
+    const CGraphicDataBank* graphic_bank=prim.MeshInfo->PeekTextureBank();
+    long frame=graphic_bank->GetCurrentFrame();
+    if(frame==mesh_prim.GetRecordedFrame() && stages==mesh_prim.PeekRecordedTextureStages()) {
+        *already_set_up=true;
+        return true;
+    }
+    *already_set_up=false;
+    N3DPrimitive::CStaticBlock& first_block=*mesh_prim.GetStaticBlock(0);
+    if(stages.DiffuseTextureStage!=-1) {
+        CGraphicDataBank::ETextureType texture_type=CGraphicDataBank::TEXTURE_TYPE_OPAQUE;
+        unsigned long graphic_index=material->GetDiffuseMapBankIndex();
+        if(graphic_index!=0) texture_type=graphic_bank->PeekGraphicInfoFrame(graphic_index,0)->GetTextureType();
+        first_block.DiffuseTexture=graphic_bank->GetBlankTexture(texture_type);
+    }
+    if(stages.BumpTextureStage!=-1) {
+        CGraphicDataBank::ETextureType texture_type=CGraphicDataBank::TEXTURE_TYPE_BUMP;
+        unsigned long graphic_index=material->GetBumpMapBankIndex();
+        if(graphic_index!=0) texture_type=graphic_bank->PeekGraphicInfoFrame(graphic_index,0)->GetTextureType();
+        first_block.BumpTexture=graphic_bank->GetBlankTexture(texture_type);
+    }
+    unsigned long no_blocks=mesh_prim.GetStaticBlockCount();
+    for(unsigned long c_block=1;c_block<no_blocks;++c_block) {
+        N3DPrimitive::CStaticBlock& block_info=*mesh_prim.GetStaticBlock(c_block);
+        block_info.DiffuseTexture=first_block.DiffuseTexture;
+        block_info.BumpTexture=first_block.BumpTexture;
+    }
+    mesh_prim.SetRecordedFrame(frame);
+    mesh_prim.SetRecordedTextureStages(stages);
+    return true;
+}
+inline void CManagedTexture::TouchTexture()
+{
+    if(!Data.IsNull() && Data->ResourceList && Data->LastUsedFrame!=Data->ResourceList->GetCurrentFrame()) {
+        Data->SetAsMRU();
+        Data->LastUsedFrame=Data->ResourceList->GetCurrentFrame();
+    }
+}
+inline void CGraphicInfoFrame::TouchFrame(unsigned long mipmap_level) const
+{
+    const unsigned long frame=GraphicInfo->GetBank()->GetCurrentFrame();
+    if(Data->TouchedFrame!=frame || mipmap_level<=Data->TouchedMipmapLevel) {
+        Data->TouchedFrame=frame;
+        Data->ManagedTexture.TouchTexture();
+        if(mipmap_level<=Data->CurrentMipmapLevel && Data->ResourceList && Data->LastUsedFrame!=Data->ResourceList->GetCurrentFrame()) {
+            Data->SetAsMRU();
+            Data->LastUsedFrame=Data->ResourceList->GetCurrentFrame();
+        }
+        if(Data->TouchedMipmapLevel>mipmap_level)
+            Data->TouchedMipmapLevel=(signed char)mipmap_level;
+    }
+}
+FABLE_FORCEINLINE bool CGraphicInfoFrame::GetTexture(const CTexture** texture,unsigned long mipmap_level,unsigned long flags) const
+{
+    if(!Data.IsNull() && Data->Frame.FrameData) {
+        if(!(flags&8)) TouchFrame(mipmap_level);
+        if(mipmap_level<Data->CurrentMipmapLevel) {
+            Data->BeginLoading(mipmap_level,flags);
+            if((flags&16) && Data->FileData.Data) goto load_frame;
+        }
+        *texture=Data->Frame.FrameData->GetTexture();
+        return true;
+    }
+load_frame:
+    if(Data.IsNull()) {
+        if(flags&4) return false;
+        Data.Reset(new CFrameData(this));
+    }
+    Data->BeginLoading(mipmap_level,flags);
+    if((flags&1) && InternalGetFrameForcedLoading(flags)) {
+        *texture=Data->Frame.FrameData->GetTexture();
+        return true;
+    }
+    return false;
+}
+
+const CTexture* FABLE_FASTCALL CEnginePrimitiveManagerMeshBase::GetDiffuseTexture(const C3DMeshMaterial* material,
+    CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >* composite_surfaces,
+    unsigned long mipmap_level,bool& failed,const CGraphicDataBank* graphic_bank,const bool block_on_load)
+{
+    long graphic_index=material->GetDiffuseMapBankIndex();
+    if(graphic_index==0) return graphic_bank->GetBlankTexture(CGraphicDataBank::TEXTURE_TYPE_OPAQUE);
+    if(composite_surfaces) {
+        const CTexture* texture=GetComposedTexture(graphic_index,*composite_surfaces,mipmap_level,false,graphic_bank);
+        if(texture) return texture;
+    }
+    const CGraphicInfoFrame* frame_info=graphic_bank->PeekGraphicInfoFrame(graphic_index,0);
+    unsigned long get_flags=0;
+    if(g_pPrimitiveRenderer->GetBlockOnLoad() || block_on_load) get_flags=17;
+    if(frame_info) {
+        const CTexture* texture;
+        if(frame_info->GetTexture(&texture,mipmap_level,get_flags)) return texture;
+    }
+    failed=true;
+    return 0;
+}
+const CTexture* FABLE_FASTCALL CEnginePrimitiveManagerMeshBase::GetBumpTexture(const C3DMeshMaterial* material,
+    CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >* composite_surfaces,
+    unsigned long mipmap_level,bool& failed,const CGraphicDataBank* graphic_bank,const bool block_on_load)
+{
+    long graphic_index=material->GetBumpMapBankIndex();
+    if(graphic_index==0) return graphic_bank->GetBlankTexture(CGraphicDataBank::TEXTURE_TYPE_BUMP);
+    if(composite_surfaces) {
+        const CTexture* texture=GetComposedTexture(graphic_index,*composite_surfaces,mipmap_level,true,graphic_bank);
+        if(texture) return texture;
+    }
+    const CGraphicInfoFrame* frame_info=graphic_bank->PeekGraphicInfoFrame(graphic_index,0);
+    unsigned long get_flags=0;
+    if(g_pPrimitiveRenderer->GetBlockOnLoad() || block_on_load) get_flags=17;
+    const CTexture* texture;
+    if(frame_info->GetTexture(&texture,mipmap_level,get_flags)) return texture;
+    return frame_info->GetBlankTexture();
+}
+
+bool CEnginePrimitiveManagerStaticMeshesBase::SetupStaticBlocks(C3DPrimitive2& mesh_prim, CEngineInternalPrimitiveStaticMesh& prim,
+    C3DTextureStages& stages, const C3DMeshMaterial* material,
+    CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >* composite_surfaces,
+    long mipmap_level, bool* already_set_up)
+{
+    if(stages.UseBlankTextures) {
+        SetupStaticBlocksBlankTextures(mesh_prim,prim,stages,material,already_set_up);
+        return true;
+    }
+    bool failed=false;
+    const CGraphicDataBank* graphic_bank=prim.MeshInfo->PeekTextureBank();
+    const C3DMesh2& mesh=prim.PeekMesh();
+    const bool block_on_load=(prim.EnginePrimitiveFlags>>7)&1;
+    if(composite_surfaces==0 && graphic_bank->GetCurrentFrame()==mesh_prim.GetRecordedFrame() && stages==mesh_prim.PeekRecordedTextureStages()) {
+        *already_set_up=true;
+        return true;
+    }
+    *already_set_up=false;
+    N3DPrimitive::CStaticBlock& first_block=*mesh_prim.GetStaticBlock(0);
+    if(stages.DiffuseTextureStage!=-1)
+        first_block.DiffuseTexture=CEnginePrimitiveManagerMeshBase::GetDiffuseTexture(material,composite_surfaces,mipmap_level,failed,graphic_bank,block_on_load);
+    if(stages.BumpTextureStage!=-1)
+        first_block.BumpTexture=CEnginePrimitiveManagerMeshBase::GetBumpTexture(material,composite_surfaces,mipmap_level,failed,graphic_bank,block_on_load);
+    unsigned long no_blocks=mesh_prim.GetStaticBlockCount();
+    for(unsigned long c_block=1;c_block<no_blocks;++c_block) {
+        N3DPrimitive::CStaticBlock& block_info=*mesh_prim.GetStaticBlock(c_block);
+        const C3DMeshMaterial* current_material=mesh.GetMaterial(block_info.GetMaterialIndex());
+        if(block_info.GetChangeFlags()&1) {
+            if(stages.DiffuseTextureStage!=-1)
+                block_info.DiffuseTexture=CEnginePrimitiveManagerMeshBase::GetDiffuseTexture(current_material,composite_surfaces,mipmap_level,failed,graphic_bank,block_on_load);
+            else failed=true;
+        }
+        if((block_info.GetChangeFlags()&2)&&stages.BumpTextureStage!=-1)
+            block_info.BumpTexture=CEnginePrimitiveManagerMeshBase::GetBumpTexture(current_material,composite_surfaces,mipmap_level,failed,graphic_bank,block_on_load);
+    }
+    return !failed;
+}
+
 void CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive(CEngineSubPrimitiveStaticMesh& sub_primitive, ERenderPassType pass)
 {
     CRenderStateScopedCaptureBlock capture_block;
@@ -637,7 +860,7 @@ void CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive(CEngineSubPrim
     const CGraphicDataBank* graphic_bank = primitive->MeshInfo->PeekTextureBank();
     if (material->GetDiffuseMapBankIndex() == 0)
         return;
-    unsigned long mipmap_level = CEnginePrimitiveManagerMeshBase::GetAppropriateMipmap(g_pEngineCamera->PeekCameraPos(), sub_primitive.PeekObjectTransform(),
+    unsigned long mipmap_level = CEnginePrimitiveManagerMeshBase::GetAppropriateMipmap(GetCurrentCamera().PeekCameraPos(), sub_primitive.PeekObjectTransform(),
                                                                               *mesh_primitive, sub_primitive.GetScale(), material, graphic_bank);
     {
         C3DTextureStages texture_stages;
@@ -649,13 +872,13 @@ void CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive(CEngineSubPrim
         bool render_degenerate_triangles = false;
         if (!SetupRenderModeShadersAndConstants(pass, material, sub_primitive, texture_stages, mipmap_level, &shader_flags,
                                                 &render_degenerate_triangles)) {
-            g_pEngineLightingManager->RestoreDefaultPrimitiveParameters();
+            NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
             NEngineInternal::GPRenderManager->FlushRender();
             return;
         }
         bool used_blank_textures;
         if (!SetupStaticBlocks(*mesh_primitive, *primitive, texture_stages, material, composite_surfaces, mipmap_level, &used_blank_textures)) {
-            g_pEngineLightingManager->RestoreDefaultPrimitiveParameters();
+            NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
             NEngineInternal::GPRenderManager->FlushRender();
             return;
         }
@@ -663,15 +886,15 @@ void CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive(CEngineSubPrim
         NEngineInternal::GPRenderManager->SetPolyCullMode(POLY_CULL_CCW);
         PrepareOcclusionTest(*primitive, pass, occlusion_handle);
         if (occlusion_handle != (unsigned long)-1)
-            g_pOcclusionManager->StartOcclusionTest();
+            NEngineInternal::GPOcclusionManager->StartOcclusionTest();
         NEngineInternal::GPShaderRenderManager->SelectVertexBuffer(*mesh_primitive->GetVertexBuffer());
         CEnginePrimitiveRenderUtil::SetWorldTransform(sub_primitive.PeekObjectTransform());
         NEngineInternal::GPRenderManager->RealiseRenderState();
         NEngineInternal::GPShaderRenderManager->PrepareForRender(shader_flags);
         RenderMeshPrimitiveBlocks(*mesh_primitive, texture_stages, false, render_degenerate_triangles);
         if (occlusion_handle != (unsigned long)-1)
-            g_pOcclusionManager->EndOcclusionTest(occlusion_handle);
+            NEngineInternal::GPOcclusionManager->EndOcclusionTest(occlusion_handle);
         NEngineInternal::GPRenderManager->FlushRender();
-        g_pEngineLightingManager->RestoreDefaultPrimitiveParameters();
+        NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
     }
 }
