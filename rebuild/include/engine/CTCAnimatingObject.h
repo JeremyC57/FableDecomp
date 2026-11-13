@@ -14,6 +14,10 @@
 class CTCAnimatingObject : public CTCBase {
 public:
     void PlayDefaultAnimation();                                         // 0x007F8F30
+#ifdef FABLE_RETAIL_CTCANIMATINGOBJECT_PLAYANIMATION_NAME
+    // wf22 row 0x007E1FC0 CTCAmbientBird::FrameUpdate: Ego_r.pdb ?PlayAnimation@CTCAnimatingObject@@QAEXABVCCharString@@J_N@Z (public).
+    void PlayAnimation(const CCharString& name, long priority, bool looping);   // 0x007F90B0
+#endif
 private:
     void PlayAnimation(const CAnimInit& init, long priority);            // 0x007F8DC0
     bool                 Animating;                                      // +0x0c

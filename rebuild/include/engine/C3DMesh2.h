@@ -24,6 +24,18 @@ public:
 class C3DMesh2 {
 public:
 #endif
+#ifdef FABLE_RETAIL_C3DMESH2_BUILDMESH
+    // Retail opt-in (wf22, row 0x00A24520 C3DMeshLODInfo::BuildMesh): Ego_r.pdb ??0C3DMesh2@@QAE@XZ (0x00A89190),
+    // ?LoadBinary@C3DMesh2@@QAE_NAAVCMemoryDataInputStream@@PAVCMovableResourceMemoryPool@@PBVCGraphicDataBank@@_N@Z (0x00A8AD40),
+    // ?CalculateTextureChangeFlags@C3DMesh2@@QAEXXZ (0x00A89380), ?LockPrimitive@C3DMesh2@@QAEPAVC3DPrimitive2@@K@Z (0x00A89250),
+    // ?UnlockPrimitive@C3DMesh2@@QAEXK@Z (0x00A892A0), ?Sizeof@C3DMesh2@@QBEKXZ (0x00A893C0), all out of line. Declarations only.
+    C3DMesh2();                                                          // 0x00A89190
+    bool LoadBinary(class CMemoryDataInputStream&, class CMovableResourceMemoryPool*, const class CGraphicDataBank*, bool);   // 0x00A8AD40
+    void CalculateTextureChangeFlags();                                  // 0x00A89380
+    C3DPrimitive2* LockPrimitive(unsigned long);                         // 0x00A89250
+    void UnlockPrimitive(unsigned long);                                 // 0x00A892A0
+    unsigned long Sizeof() const;                                        // 0x00A893C0
+#endif
 #ifdef FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS
     const C3DMeshMaterial* GetMaterial(unsigned long index) const { return &Materials[index]; }
     C3DMeshMaterial* GetMaterial(unsigned long index) { return &Materials[index]; }

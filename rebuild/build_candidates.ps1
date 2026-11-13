@@ -395055,6 +395055,62 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Og- /d2vol10'
         PassPattern = '00d17a80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007e1fc0'
+        Module = 'CTCAmbientBird'
+        Source = '00/7e/CTCAmbientBird_FrameUpdate_007e1fc0.cpp'
+        TestSource = '00/7e/CTCAmbientBird_FrameUpdate_007e1fc0_test.cpp'
+        PassPattern = '007e1fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bd6e0'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_SetPrimitive_004bd6e0.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_SetPrimitive_004bd6e0_test.cpp'
+        PassPattern = '004bd6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24520'
+        Module = 'C3DMeshLODInfo'
+        Source = '00/a2/C3DMeshLODInfo_BuildMesh_00a24520.cpp'
+        TestSource = '00/a2/C3DMeshLODInfo_BuildMesh_00a24520_test.cpp'
+        PassPattern = '00a24520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054fbc0'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_SetValue_0054fbc0.cpp'
+        TestSource = '00/54/NUISystemCText_SetValue_0054fbc0_test.cpp'
+        PassPattern = '0054fbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c0560'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4c/NGraphicAppearanceCTCGraphicAppearance_GetHelperPoint_004c0560.cpp'
+        TestSource = '00/4c/NGraphicAppearanceCTCGraphicAppearance_GetHelperPoint_004c0560_test.cpp'
+        PassPattern = '004c0560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063b3f0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_CreateLineSegment_0063b3f0.cpp'
+        TestSource = '00/63/CWorldMap_CreateLineSegment_0063b3f0_test.cpp'
+        PassPattern = '0063b3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f3a890'
+        Module = 'CRangeCompressor'
+        Source = '00/f3/CRangeCompressor_CalcBestCompressionForBlock_00f3a890.cpp'
+        TestSource = '00/f3/CRangeCompressor_CalcBestCompressionForBlock_00f3a890_test.cpp'
+        PassPattern = '00f3a890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c9280'
+        Module = 'NGameText::CDataBank'
+        Source = '00/9c/NGameTextCDataBank_GetTextEntryFromGroup_009c9280.cpp'
+        TestSource = '00/9c/NGameTextCDataBank_GetTextEntryFromGroup_009c9280_test.cpp'
+        PassPattern = '009c9280_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

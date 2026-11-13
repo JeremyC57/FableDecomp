@@ -22,6 +22,10 @@ public:
     void SetAsMRU(); // native009fc4a0
 #endif
     CResource();                                                         // 0x009FBEC0 (??0CResource@@QAE@XZ, bound)
+#if defined(FABLE_RETAIL_CRESOURCE_SETRESOURCESIZE) && !(defined(FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS) && defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE))
+    // wf22 (row 0x00A24520): Ego_r.pdb / FableWin.pdb ?SetResourceSize@CResource@@QAEXK@Z (retail 0x009FBF20, landed). Declaration only.
+    void SetResourceSize(unsigned long);                                 // 0x009FBF20
+#endif
 #ifdef FABLE_RETAIL_CRESOURCE_ASSIGN
     // Retail opt-in (chunk 783, row 0x004321F0): the implicit-style member copy +0x04..+0x18 is the separate function
     // 0x00431F60 (landed as ??4CResource@@QAEAAV0@ABV0@@Z; FableWin.pdb has the symbol), called from CDefClassBase::operator=

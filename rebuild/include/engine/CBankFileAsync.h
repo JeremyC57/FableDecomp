@@ -1,6 +1,6 @@
 #ifndef FABLE_ENGINE_CBANKFILEASYNC_H
 #define FABLE_ENGINE_CBANKFILEASYNC_H
-#if defined(FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS) || defined(FABLE_RETAIL_CBANKFILEASYNC_DATA)
+#if defined(FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS) || defined(FABLE_RETAIL_CBANKFILEASYNC_DATA) || defined(FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT)
 #include "engine/CBankFile.h"
 #include "engine/CCountedPointer.h"
 #ifdef FABLE_RETAIL_CBANKFILEASYNC_DATA
@@ -20,6 +20,11 @@ public:
     virtual void Close();
 #ifdef FABLE_RETAIL_CBANKFILEASYNC_DATA
     friend class CBankFileAsyncData;
+#endif
+#ifdef FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+    // Opt-in (row 0x009C9280 NGameText::CDataBank::GetTextEntryFromGroup): Ego_r.pdb ?AsyncUpdatePending@CBankFileAsync@@QAEXXZ,
+    // out of line at 0x009D68B0 (landed GetPTextEntry 0x009C9070 calls it the same way). Declaration only.
+    void AsyncUpdatePending();                                           // 0x009D68B0
 #endif
 #ifdef FABLE_RETAIL_CBANKFILEASYNC_HANDLEFAILEDALLOCATION
     // Retail opt-in (chunk F2, row 0x009D5BF0): Ego_r.pdb / FableWin.pdb ?HandleFailedAllocation@CBankFileAsync@@QAE_NXZ. Declaration only.

@@ -59,6 +59,13 @@ protected:
     bool Unavailable;                                               // +0x189
     unsigned char NoRenderNextFrame;                                // +0x18a
 public:
+#ifdef FABLE_RETAIL_CTEXT_FITINWINDOW
+    // Opt-in (row 0x0054FBC0 SetValue): Ego_r.pdb / FableWin.pdb ?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z,
+    // protected, out of line (landed 0x0054F8E0). Declaration only.
+protected:
+    long FitInWindow(CWideString& text, const C2DBoxF& window);    // 0x0054F8E0
+public:
+#endif
 #endif // FABLE_RETAIL_CTEXT_VSLOTS
 };
 }

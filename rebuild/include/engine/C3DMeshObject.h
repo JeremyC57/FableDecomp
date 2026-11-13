@@ -4,16 +4,31 @@
 #include "engine/CMatrix3x4.h"
 #include "engine/CCountedPointer.h"
 #include "fable_string.h"
+#ifdef FABLE_RETAIL_C3DMESHOBJECT_INLINE
+#define FABLE_RETAIL_C3DMESHSTATS_ISANIMATED
+#include "engine/C3DMeshStats.h"
+#endif
 class C3DMeshInfo;class C3DMeshStats;class C3DAnimationBlendState;class C3DAnimationManager;
 // Original complete120-byte class, both raw PDBs; native GetHelperPoint constructs
 // the object at frame48h and accesses Mesh+8/Info+Ch and its two matrices.
 class C3DMeshObject : public CBaseClass {
 public:
+ #ifdef FABLE_RETAIL_C3DMESHOBJECT_INLINE
+ // Retail opt-in (row 0x004C0560 GetHelperPoint): ctor / IsAnimated expanded in place; dtor body visible (expanded at the
+ // loop continue, called as COMDAT 0x004C3200 at the returns).
+ C3DMeshObject() : InversePositionMatrixSetup(false) {}
+ virtual ~C3DMeshObject() {}
+ #else
  C3DMeshObject();
  virtual ~C3DMeshObject();
+ #endif
  bool HasHelperPoint(const CCharString&)const;
  long GetNoHelperPoints(const CCharString&)const;
+ #ifdef FABLE_RETAIL_C3DMESHOBJECT_INLINE
+ bool IsAnimated()const { return Mesh->IsAnimated(); }
+ #else
  bool IsAnimated()const;
+ #endif
  C3DVector GetHelperPointPositionStatic(const CCharString&,long)const;
  C3DVector GetHelperPointPositionAnimated(const CCharString&,long,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&)const;
 #ifdef FABLE_RETAIL_C3DMESHOBJECT_POSITIONMATRIXFROMRHSET

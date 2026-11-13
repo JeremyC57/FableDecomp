@@ -1,0 +1,9 @@
+address	name	evidence
+007E1FC0	?FrameUpdate@CTCAmbientBird@@UAEXXZ	workflow wf22 (landing fx): RELOCATION_MATCH, two PDBs
+004BD6E0	?SetPrimitive@CTCGraphicAppearance@NGraphicAppearance@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC3DPositionInterpolator@@ABVC3DOrientationInterpolator@@@Z	workflow wf22 (landing fx): RELOCATION_MATCH, two PDBs
+00A24520	?BuildMesh@C3DMeshLODInfo@@AAE_N_N0@Z	workflow wf22 (landing fx): RELOCATION_MATCH, two PDBs
+0054FBC0	?SetValue@CText@NUISystem@@UAEXKABVCWideString@@_N@Z	workflow wf22 (landing fx): RELOCATION_MATCH, two PDBs
+004C0560	?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z	workflow wf22 (landing fx): RELOCATION_MATCH, two PDBs
+0063B3F0	?CreateLineSegment@CWorldMap@@IBE_NPBVC3DVector@@0PAV2@1@Z	workflow wf22 (landing fx): RELOCATION_MATCH, two PDBs
+00F3A890	?CalcBestCompressionForBlock@CRangeCompressor@@AAEJABV?$CArray@K@@JAAUCScriptEntry@1@@Z	workflow wf22 (landing fx): RELOCATION_MATCH, two PDBs
+009C9280	?GetTextEntryFromGroup@CDataBank@NGameText@@QBEPBVCTextEntry@2@KABVCCharString@@AA_NPAJ_N@Z	workflow wf22 (landing fx): RELOCATION_MATCH, two PDBs

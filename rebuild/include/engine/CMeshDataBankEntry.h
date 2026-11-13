@@ -12,6 +12,10 @@
 class CCharString;
 #endif
 class CMeshDataBankEntry {
+#ifdef FABLE_RETAIL_CMESHDATABANKENTRY_LODINFO_FRIEND
+    // wf22 (row 0x00A24520): C3DMeshLODInfo::BuildMesh reads the owning entry's Bank (+4) and Index (+8) in place.
+    friend class C3DMeshLODInfo;
+#endif
 public:
 #ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
 // Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.

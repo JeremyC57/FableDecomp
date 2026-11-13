@@ -61,7 +61,29 @@ protected:
     unsigned long StringLength;
     unsigned long DataLength : 31;
     bool UseFastExtend : 1;
+#if defined(FABLE_RETAIL_CBASICSTRING_COMPARE_BODY)
+    // Opt-in (row 0x009C9280 NGameText::CDataBank::GetTextEntryFromGroup): the template body of
+    // ?Compare@?$CBasicString@D@@KIJPBD0@Z (out of line at 0x00411570, landed CBasicStringchar_Compare_00411570.cpp) is visible to the
+    // caller's TU; VC7.1 keeps calling it (the loop is not inlined) but then knows the call writes no memory, so the caller keeps a
+    // loaded array base across it (0x009C937F `mov edi,[esi+204h]` reused at 0x009C93D7 after both Compare calls).
+    static long __fastcall Compare(const T* a,const T* b)
+    {
+        for (;;) {
+            T ca = *a;
+            if (ca == 0 && *b == 0)
+                return 0;
+            T cb = *b;
+            if (ca < cb)
+                return -1;
+            if (ca > cb)
+                return 1;
+            ++a;
+            ++b;
+        }
+    }
+#else
     static long __fastcall Compare(const T*,const T*);
+#endif
 public:
     const T* PeekData() const { return PData; }
     unsigned long GetLength() const { return StringLength; }

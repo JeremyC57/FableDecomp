@@ -24,6 +24,14 @@ class C3DVector;
 class C3DMeshStats: public CMovableResource {
 public:
  bool HasDummyObject(unsigned long)const;
+#ifdef FABLE_RETAIL_C3DMESHSTATS_MESHGENERATORS
+ // Retail opt-in (wf22, row 0x00A24520): Ego_r.pdb ?InitialiseMeshGenerators@C3DMeshStats@@QAEXABVCMeshDataBank@@ABVCCharString@@@Z
+ // (retail 0x00A2EC40, landed). Declaration only.
+ void InitialiseMeshGenerators(const class CMeshDataBank&,const CCharString&);   // 0x00A2EC40
+#endif
+#ifdef FABLE_RETAIL_C3DMESHSTATS_ISANIMATED
+ bool IsAnimated()const { return AnimatedFlag; }   // FableWin.pdb ?IsAnimated@C3DMeshStats@@QBE_NXZ (inline in retail)
+#endif
 #ifdef FABLE_RETAIL_C3DMESHSTATS_DUMMYOBJECTS
  // Ego_r.pdb ?GetDummyObject@C3DMeshStats@@QBEPBVC3DDummyObject@@KK@Z (retail 0x00A2E920). The six virtuals are Ego_r.pdb / FableWin.pdb
  // C3DMesh2 overrides (UBE); declared here in source order so VC's overload grouping gives retail's C3DMesh2 slots: 4/5

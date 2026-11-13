@@ -1,0 +1,35 @@
+addr       parity           behav  name
+007e1fc0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007e1fc0   RELOCATION_MATCH PASS   FrameUpdate
+004bd6e0   WARN RELOC_NAME: ?GetHiddenMaterialNames@CTCHeroAttachableAppearanceModifiers@@QBE_NAAV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@@Z -> 00706860 labelled 'CTCActivationReceptorBase::AddTrigger'
+004bd6e0   RELOCATION_MATCH PASS   SetPrimitive
+00a24520   RELOCATION_MATCH PASS   BuildMesh
+0054fbc0   RELOCATION_MATCH PASS   SetValue
+004c0560   WARN RELOC_NAME: ?PeekAnimation@CTCAnimationComplex@@QBEABVCAnimateThing@@XZ -> 0070b470 labelled 'CTCTurnSource::GetState'
+004c0560   WARN RELOC_NAME: ?HasHelperPoint@C3DMeshObject@@QBE_NABVCCharString@@@Z -> 00a36100 labelled 'C3DMeshStatsOwner_00a36100::HasDummyObject'
+004c0560   RELOCATION_MATCH PASS   GetHelperPoint
+0063b3f0   RELOCATION_MATCH PASS   CreateLineSegment
+00f3a890   RELOCATION_MATCH PASS   CalcBestCompressionForBlock
+009c9280   WARN RELOC_CONFLICT: ?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z -> 005178a0 here, 00485ff3 in landed 0057cb2a
+009c9280   WARN RELOC_NAME: ?AsyncUpdatePending@CBankFileAsync@@QAEXXZ -> 009d68b0 labelled '_global::Dtor_RestartReadsBase_009d68b0'
+009c9280   RELOCATION_MATCH PASS   GetTextEntryFromGroup
+
+WINS: 8
+  007e1fc0 RELOCATION_MATCH CTCAmbientBird::FrameUpdate
+  004bd6e0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::SetPrimitive
+  00a24520 RELOCATION_MATCH C3DMeshLODInfo::BuildMesh
+  0054fbc0 RELOCATION_MATCH NUISystem::CText::SetValue
+  004c0560 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::GetHelperPoint
+  0063b3f0 RELOCATION_MATCH CWorldMap::CreateLineSegment
+  00f3a890 RELOCATION_MATCH CRangeCompressor::CalcBestCompressionForBlock
+  009c9280 RELOCATION_MATCH NGameText::CDataBank::GetTextEntryFromGroup
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CTCAmbientBird_FrameUpdate_007e1fc0
+  NGraphicAppearanceCTCGraphicAppearance_SetPrimitive_004bd6e0
+  C3DMeshLODInfo_BuildMesh_00a24520
+  NUISystemCText_SetValue_0054fbc0
+  NGraphicAppearanceCTCGraphicAppearance_GetHelperPoint_004c0560
+  CWorldMap_CreateLineSegment_0063b3f0
+  CRangeCompressor_CalcBestCompressionForBlock_00f3a890
+  NGameTextCDataBank_GetTextEntryFromGroup_009c9280

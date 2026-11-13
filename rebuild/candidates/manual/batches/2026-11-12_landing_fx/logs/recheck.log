@@ -1,0 +1,29 @@
+addr       parity           behav  name
+0054fbc0   RELOCATION_MATCH PASS   NUISystem::CText::SetValue
+005eb180   WARN RELOC_CONFLICT: _$E2 -> 01229150 here, 01228930 in landed 01219f00
+005eb180   WARN RELOC_NAME: _$E2 -> 01229150 labelled 'CTCTavernGame::SetStateAfterInstructions'::`5'::`dynamic atexit destructor for 'no_text_entry'''
+005eb180   RELOCATION_MATCH PASS   CTCTavernGame::SetStateAfterInstructions
+00875b10   RELOCATION_MATCH PASS   NCameraModes::CTools::TestMeshForOccupationAndGetType
+009735d0   RELOCATION_MATCH PASS   CAIStateGroup_JackOfBladesBase::RushToPos
+009d5bf0   RELOCATION_MATCH PASS   CBankFileAsync::HandleFailedAllocation
+009d5d30   RELOCATION_MATCH PASS   CBankFileAsyncData::CBankFileAsyncData
+009d5df0   RELOCATION_MATCH PASS   CBankFileAsyncData::CBankFileAsyncData
+009d6350   RELOCATION_MATCH PASS   CBankFileAsyncData::Abort
+00a24520   RELOCATION_MATCH PASS   C3DMeshLODInfo::BuildMesh
+00a89740   RELOCATION_MATCH PASS   C3DMesh2::GetHelperPointPositionAnimated
+00b39080   RELOCATION_MATCH PASS   CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh
+00bd2a90   RELOCATION_MATCH PASS   CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings
+
+WINS: 12
+  0054fbc0 RELOCATION_MATCH NUISystem::CText::?SetValue@CText@NUISystem@@UAEXKABVCWideString@@_N@Z
+  005eb180 RELOCATION_MATCH CTCTavernGame::?SetStateAfterInstructions@CTCTavernGame@@IAEXKVCWideString@@W4ETavernGameStates@1@@Z
+  00875b10 RELOCATION_MATCH NCameraModes::CTools::?TestMeshForOccupationAndGetType@CTools@NCameraModes@@QBE?BW4EMeshType@2@ABVCPhysicsMeshObject@@ABVC3DVector@@1AAM@Z
+  009735d0 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::?RushToPos@CAIStateGroup_JackOfBladesBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z
+  009d5bf0 RELOCATION_MATCH CBankFileAsync::?HandleFailedAllocation@CBankFileAsync@@QAE_NXZ
+  009d5d30 RELOCATION_MATCH CBankFileAsyncData::??0CBankFileAsyncData@@AAE@PAXKAAVCBankFileAsync@@@Z
+  009d5df0 RELOCATION_MATCH CBankFileAsyncData::??0CBankFileAsyncData@@AAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z
+  009d6350 RELOCATION_MATCH CBankFileAsyncData::?Abort@CBankFileAsyncData@@QAE_NXZ
+  00a24520 RELOCATION_MATCH C3DMeshLODInfo::?BuildMesh@C3DMeshLODInfo@@AAE_N_N0@Z
+  00a89740 RELOCATION_MATCH C3DMesh2::?GetHelperPointPositionAnimated@C3DMesh2@@UBE?AVC3DVector@@ABVC3DHelperPoint@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@@Z
+  00b39080 RELOCATION_MATCH CEngineInternalAttachedPrimitive::?GetParentTransformAnimatedMesh@CEngineInternalAttachedPrimitive@@QAE_NAAVCMatrix3x4@@M@Z
+  00bd2a90 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QBEXABVC3DMesh2@@@Z

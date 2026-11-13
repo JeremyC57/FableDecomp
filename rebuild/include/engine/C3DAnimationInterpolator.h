@@ -4,8 +4,10 @@
 // Original complete20-byte class and public states, both PDBs; native ctor4C2E20/dtor4C2E90.
 class C3DAnimationInterpolator : public CBaseClass {
 public:
+#ifndef FABLE_RETAIL_C3DANIMATIONINTERPOLATOR_IMPLICIT
  C3DAnimationInterpolator();
  virtual ~C3DAnimationInterpolator();
+#endif
  C3DAnimationBlendState StartState,EndState;
 };
 FABLE_STATIC_ASSERT(sizeof(C3DAnimationInterpolator)==20);

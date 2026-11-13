@@ -24,6 +24,12 @@ enum EHeroAttachableAppearanceModifierType {
 #pragma pack(push, 1)
 class CTCHeroAttachableAppearanceModifiers {
 public:
+#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_HIDDENMATERIALS
+    // Opt-in (row 0x004BD6E0 CTCGraphicAppearance::SetPrimitive): Ego_r.pdb
+    // ?GetHiddenMaterialNames@CTCHeroAttachableAppearanceModifiers@@QBE_NAAV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@@Z
+    // (out of line, retail 0x00706860). Needs std::set and CCharString declared. Declaration only.
+    bool GetHiddenMaterialNames(std::set<CCharString>& names) const;   // 0x00706860
+#endif
 #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_LIST
     void GetAppearanceModifierList(std::list<long>&,EHeroAttachableAppearanceModifierType)const;
 #endif

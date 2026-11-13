@@ -24,8 +24,17 @@ class CWideString;                                              // chunk 855
 #endif
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_FORMATTEXTWITHGAMEACTIONNAMES
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#endif
 class CSubtitleRenderer {
 public:
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_FORMATTEXTWITHGAMEACTIONNAMES
+    // Opt-in (row 0x0054FBC0 NUISystem::CText::SetValue): Ego_r.pdb / FableWin.pdb
+    // ?FormatTextWithGameActionNames@CSubtitleRenderer@@SI?AVCWideString@@ABV2@PAV?$vector@VCWideString@@...@std@@@Z (landed 0x004917B5).
+    static CWideString __fastcall FormatTextWithGameActionNames(const CWideString& text, std::vector<CWideString>* highlights);   // 0x004917B5
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_CTOR
     // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): Ego_r.pdb / FableWin.pdb ??0CSubtitleRenderer@@QAE@ABVCGraphicDataBank@@@Z,
     // out of line at 0x0049166E (the CPlayerGui ctor builds its SubtitleRenderer member there: `push [esp+20h] ; lea ecx,[esi+18h] ; call`).

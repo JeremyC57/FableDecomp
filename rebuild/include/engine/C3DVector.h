@@ -377,7 +377,11 @@ public:
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z (static __fastcall, out of line at 0x00A145C0,
     // landed) and ?Normalise@C3DVector@@QAEAAV1@XZ (the fast normalise: GFFastOneOverSqrt of GetSquaredMagnitude, expanded in retail).
     static C3DVector __fastcall GetRandomUnitVector(unsigned long* seed);  // 0x00A145C0
-#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_PAREN_SQUARES_ZYX)
+#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_PAREN_SQUARES_XYZ)
+    // Overlay opt-in (wf22, row 0x007E1FC0 CTCAmbientBird::FrameUpdate): the PAREN_SQUARES_ZYX body with the squares summed X, Y, Z
+    // (0x007E21F0 `fld [X*X] ; fadd [Y*Y] ; fadd [Z*Z]` from the spilled squares shared with the earlier distance test). Body only.
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float one_on_magnitude=GFFastOneOverSqrt((X*X)+(Y*Y)+(Z*Z));X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_PAREN_SQUARES_ZYX)
     // Overlay opt-in (row 0x009735D0 CAIStateGroup_JackOfBladesBase::RushToPos): the squared length written Z, Y, X with each square
     // in its own parentheses. VC7.1 keeps the parenthesised squares as separate common subexpressions (0x00973609..0x0097361D: Z*Z,
     // Y*Y, X*X computed and spilled first) and does not merge this sum with the later GetMagnitude sum of the same vector (summed

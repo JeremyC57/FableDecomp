@@ -47,6 +47,9 @@ class CCharString; class CRightHandedSet;
 #include "stlport/fable_containers.h"
 class CTCAnimationBase;
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETPRIMITIVE
+class CEnginePrimitivePrepareInfo; class C3DPositionInterpolator; class C3DOrientationInterpolator;
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPER_BODY
 #include "engine/NGraphicAppearance_CMeshInfo.h"
 class C3DAnimationInterpolator;class C3DMeshObject;
@@ -102,6 +105,15 @@ protected:
  signed char ByPassColorFilter;
 public:
  const CEngineGraphic& GetMainGraphic()const{return MainGraphic;}
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETPRIMITIVE
+ // Opt-in (row 0x004BD6E0): Ego_r.pdb ?SetPrimitive@CTCGraphicAppearance@NGraphicAppearance@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC3DPositionInterpolator@@ABVC3DOrientationInterpolator@@@Z
+ // (protected, out of line at 0x004BD6E0) and the protected inline GetUpdatePrimitiveReasons() const (0x004BD7BC: `mov eax,4` when no
+ // reason is set and ResendPrimsEveryRenderFrame is). Declarations only: no layout change.
+protected:
+ unsigned long GetUpdatePrimitiveReasons()const{if(!UpdatePrimitiveReasons&&ResendPrimsEveryRenderFrame)return 4;return UpdatePrimitiveReasons;}
+ void SetPrimitive(const CEnginePrimitivePrepareInfo&,const C3DPositionInterpolator&,const C3DOrientationInterpolator&);
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETFORCERESEND
  // Overlay opt-in (row 0x007BF790 CTCShotDefinitionBase::Init): FableWin.pdb ?SetForceResendEveryRenderFrame@CTCGraphicAppearance@NGraphicAppearance@@QAEX_N@Z
  // (0x017DD73C), inline in retail (`or byte ptr [eax+59h],2`, 0x007BF9FE).

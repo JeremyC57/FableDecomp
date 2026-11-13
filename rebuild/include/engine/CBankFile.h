@@ -160,6 +160,10 @@ public:
     bool EntryExists(unsigned long index) const;                         // 0x009CC190
     unsigned long GetEntryDataType(unsigned long index) const;           // 0x009CC210
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_ENTRYSYMBOL
+    // wf22 (row 0x00A24520): Ego_r.pdb ?GetEntrySymbol@CBankFile@@QBE?AVCCharString@@K@Z (retail 0x009CC1D0, landed), out of line.
+    CCharString GetEntrySymbol(unsigned long index) const;               // 0x009CC1D0
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
     // Ego_r.pdb ?GetEntrySymbol@CBankFile@@QBE?AVCCharString@@K@Z (0x009CC1D0) and ?GetEntryDataType@CBankFile@@QBEKK@Z (0x009CC210):
     // the landed bodies, expanded inline by FindIndicesByFilename 0x009CCEF0.

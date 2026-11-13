@@ -156,6 +156,13 @@ private:
     bool UploadToIndexBuffer(unsigned long flags);                       // 0x00A8F9E0
 public:
 #endif
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_UPLOADBUFFERS
+    // wf22 (row 0x00A24520 C3DMeshLODInfo::BuildMesh): Ego_r.pdb ?UploadAnimatedBuffers@C3DPrimitive2@@QAE_NK@Z (0x00A92870),
+    // ?UploadRepeatedBuffers@C3DPrimitive2@@QAE_NKK@Z (0x00A932C0), ?UploadStaticBuffers@C3DPrimitive2@@QAE_NK@Z (0x00A93320), landed.
+    bool UploadAnimatedBuffers(unsigned long);                           // 0x00A92870
+    bool UploadRepeatedBuffers(unsigned long, unsigned long);            // 0x00A932C0
+    bool UploadStaticBuffers(unsigned long);                             // 0x00A93320
+#endif
 #ifdef FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS
     void SetRecordedFrame(long frame){RecordedFrame=frame;}
 #endif

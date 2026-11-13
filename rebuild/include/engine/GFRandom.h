@@ -12,8 +12,18 @@ inline unsigned long FABLE_FASTCALL GFRandom(unsigned long range, unsigned long*
     *seed *= 0x24a1;
     *seed += 0x24df;
     *seed = GFROR13(*seed);
+#if defined(FABLE_RETAIL_GFRANDOM_RESULT_LOCAL)
+    // Opt-in (row 0x009C9280 NGameText::CDataBank::GetTextEntryFromGroup): the same body with the remainder in a zero-initialised
+    // result; inlined there, VC7.1 then clears edx before the range test and divides into it (`xor edx,edx ; test ebp,ebp ;
+    // mov [seed],eax ; je ; div ebp`, 0x009C94AD..0x009C94B9) instead of a separate `xor reg,reg` arm for the zero range.
+    unsigned long result = 0;
+    if (range)
+        result = *seed % range;
+    return result;
+#else
     if (range)
         return *seed % range;
     return 0;
+#endif
 }
 #endif

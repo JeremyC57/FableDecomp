@@ -14,6 +14,10 @@ public:
 #endif
     virtual ~CResourceList();
     virtual bool HandleFailedAllocation(unsigned long);
+#ifdef FABLE_RETAIL_CRESOURCELIST_MAKEFREESPACE
+    // wf22 (row 0x00A24520): Ego_r.pdb ?MakeFreeSpace@CResourceList@@QAE_NK@Z (retail 0x009FC4F0, landed). Declaration only.
+    bool MakeFreeSpace(unsigned long);                                   // 0x009FC4F0
+#endif
 #ifdef FABLE_RETAIL_CRESOURCELIST_REMOVERESOURCE
     // Chunk 767 (row 0x009FC3C0 CResourceBank::RemoveResource): Ego_r.pdb / FableWin.pdb ?RemoveResource@CResourceList@@QAEXAAVCResource@@@Z,
     // retail 0x009FC020 (bound), out of line. A declaration only.

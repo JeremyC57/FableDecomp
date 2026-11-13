@@ -1,0 +1,5 @@
+00a24520	C3DMeshLODInfo::BuildMesh	RELOCATION_MATCH	9	port + ok&= per arm
+0063b3f0	CWorldMap::CreateLineSegment	RELOCATION_MATCH	94	Y-cell compare via from->ToC2DVector().Y; (float)fromX twice; valid=true per crossing branch + valid&& gate
+009c9280	NGameText::CDataBank::GetTextEntryFromGroup	RELOCATION_MATCH	221	ported + visibility/structure fixes, see NOTES
+00646f67	NPlayerGui::CDrawExperience::Draw	DIFFER(843v843)	150	frame+slots fixed (named box + GFToScreen(box)); 7 hunks of end-cap arg scheduling left
+00f3ba70	CTriangleStripifier2::BuildCacheOptimizedVertexList	DIFFER(834v853)	~75	only inline push_back growth register colouring (len ebx/this ebp) differs

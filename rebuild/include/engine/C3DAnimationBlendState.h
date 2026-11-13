@@ -21,9 +21,15 @@ class C3DAnimationStateBase;
 template <class T> class CIVCountedPointer;
 class C3DAnimationBlendState : public CBaseClass {
 public:
+#ifndef FABLE_RETAIL_C3DANIMATIONINTERPOLATOR_IMPLICIT
     C3DAnimationBlendState();                                            // 0x004C2DD0
     C3DAnimationBlendState(const C3DAnimationBlendState&);
     virtual ~C3DAnimationBlendState();                                   // 0x004C2DF0
+#else
+    // Opt-in (row 0x004BD6E0 CTCGraphicAppearance::SetPrimitive): the compiler-generated constructor and destructor, which retail
+    // expands in place there (0x004BD719..0x004BD73F: ~CBaseClass ctor, vptr 0x01239838, Data=0; 0x004BD9C4..0x004BD9EA: Data
+    // released, ~CBaseClass, no vptr re-store), as the landed implicit 0x004C2DD0 / 0x004C2DF0 rows model them.
+#endif
     void SetBaseAnimation(const C3DAnimationState& state);               // 0x00A3C260
     void SetBaseAnimation(const CIVCountedPointer<C3DAnimationStateBase>& state);
 #if defined(FABLE_RETAIL_C3DANIMATIONBLENDSTATE_SKELETALMORPH) && defined(FABLE_RETAIL_C3DANIMATIONBLENDSTATE_SHAREDDATA)

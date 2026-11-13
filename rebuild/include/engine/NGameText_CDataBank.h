@@ -17,6 +17,15 @@
 #define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
 #endif
 #include "engine/CBankFile.h"
+#ifdef FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+#ifndef FABLE_RETAIL_NGAMETEXT_GROUPENTRY
+#define FABLE_RETAIL_NGAMETEXT_GROUPENTRY
+#endif
+#include "engine/CBankFileAsync.h"
+#include "engine/CBankFileAsyncData.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CArray.h"
+#endif
 namespace NGameText {
 #ifdef FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING_LONGS
 // Both originals and native009c7b70/009c7b80: references, namespace, fastcall.
@@ -27,13 +36,35 @@ class CDataBankTextEntry;
 class CTextEntry : public CIVCountedPointeeBase {
 public:
     CWideString GetText() const;                                                   // 0x009C7A40
+#ifdef FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+    // Opt-in (row 0x009C9280): the pending bank read at +0x38 (landed IsLoaded 0x009C7BE0 / GetPTextEntry 0x009C9070 read it there;
+    // Ego_r PFileData, a CCountedPointer<CBankFileAsyncData> whose first word is the object).
+    unsigned char _pad_0x08[0x38 - 0x08];
+    CCountedPointer<CBankFileAsyncData> PFileData;                                 // +0x38
+#endif
 };
+#ifdef FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+// Opt-in (row 0x009C9280): Ego_r.pdb CDataBankEntry (an empty tag, 1 byte) and CDataBankTextEntry (8 bytes: PText +0, NarratorIndex +4);
+// inline ?GetNarratorIndex@CDataBankTextEntry@NGameText@@QBEJXZ is named only by FableWin.pdb (fablewin_pdb_names.tsv /
+// FableWin.exe.signatures.tsv; not in egor_pdb_names.tsv); ?IsLoaded@CDataBankTextEntry@NGameText@@QBE_NXZ at 0x009C7BE0 (both PDBs).
+class CDataBankEntry { };
+class CDataBankTextEntry : public CDataBankEntry {
+public:
+    CIVCountedPointer<CTextEntry> PText;                                           // +0x00
+    long NarratorIndex;                                                            // +0x04
+    long GetNarratorIndex() const { return NarratorIndex; }
+    bool IsLoaded() const;                                                         // 0x009C7BE0
+};
+class CDataBankGroupEntry : public CDataBankEntry { };
+#endif
 #ifdef FABLE_RETAIL_NGAMETEXT_GROUPENTRY
 // Nested opt-in (chunk 1011, row 0x005EB180 CTCTavernGame::SetStateAfterInstructions): the text group a bank entry id names.
 // Ego_r.pdb ?GetPGroupEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCGroupEntry@NGameText@@@@K_N@Z (out of line,
 // 0x009C8890; rebuild/oracles/reloc_bindings.tsv), RTTI CGroupEntry : CIVCountedPointeeBase. The group's text ids are the
 // CArray<long> at +0x1C (landed 0x0048F6BD / 0x00639BA0 read it there; the member name is the landed rows' spelling, the PDB
 // layout lists no members for this class). Declaration only for the bank; no layout change to CDataBank.
+// Correction (row 0x009C9280): struct_layouts_egor.tsv does list CGroupEntry (56 bytes): Entries +28 (0x1C) CArray<long>, then
+// PFileData +44 and Owner +52, which confirms the member name.
 }
 #include "engine/CArray.h"
 namespace NGameText {
@@ -41,10 +72,28 @@ class CGroupEntry : public CIVCountedPointeeBase {
 public:
     unsigned char _pad_0x08[0x1c - 0x08];
     CArray<long> Entries;                                                          // +0x1C
+#ifdef FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+    const CArray<long>& GetTextEntries() const { return Entries; }                 // FableWin.pdb ?GetTextEntries@CGroupEntry@NGameText@@QBEABV?$CArray@J@@XZ (inline; not in Ego_r)
+#endif
 };
 #endif
+#ifdef FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+// Opt-in (row 0x009C9280): CDataBank : CBankFileAsync (0x164) with the members this row reads at their retail offsets (Ego_r names):
+// Entries +0x1E0 (landed GetTextInfo 0x009C7D00), Narrators +0x204 (landed ConvertNarratorNameToIndex 0x009C7EF0), Seed +0x210.
+class CDataBank : public CBankFileAsync {
+public:
+    unsigned char _pad_0x164[0x1e0 - 0x164];                                       // CResourceBank base and the bank state
+    CArray<CDataBankEntry*> Entries;                                               // +0x1E0
+    unsigned char _pad_0x1ec[0x204 - 0x1ec];                                       // TextEntryBuffer / GroupEntryBuffer
+    CArray<CCharString> Narrators;                                                 // +0x204
+    mutable unsigned long Seed;                                                    // +0x210
+    const CDataBankGroupEntry* GetGroupInfo(unsigned long id) const { if (GetEntryDataType(id) == 1) return static_cast<const CDataBankGroupEntry*>(Entries[id]); return 0; }
+    void BeginLoadingText(unsigned long textId) const;                             // 0x009C8630
+    const CTextEntry* GetTextEntryFromGroup(unsigned long groupId, const CCharString& narrator, bool& found, long* lastId, bool allowPending) const;
+#else
 class CDataBank : public CBankFile {
 public:
+#endif
 #ifdef FABLE_RETAIL_NGAMETEXT_GROUPENTRY
     CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long groupId, bool a) const;   // 0x009C8890
 #endif

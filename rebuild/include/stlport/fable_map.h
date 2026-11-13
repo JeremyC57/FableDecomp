@@ -141,6 +141,11 @@ public:
     const_iterator begin()const{return const_iterator(static_cast<_Rb_tree_node<V>*>(this->_M_header._M_data->_M_left));}
     iterator end(){return iterator(this->_M_header._M_data);}
 private:
+#if defined(FABLE_RETAIL_STLP_TREE_MERASE_NOINLINE) && defined(_MSC_VER)
+    // Per-TU opt-in (row 0x004BD6E0 CTCGraphicAppearance::SetPrimitive): STLport's recursive _M_erase, visible but called out of line
+    // (retail 0x004BD995 `call 0x004ABA70`, the set<CCharString> COMDAT); VC7.1 otherwise expands one level of the recursion in place.
+    __declspec(noinline)
+#endif
     void _M_erase(_Rb_tree_node<V>*);
 public:
 #ifdef FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE
