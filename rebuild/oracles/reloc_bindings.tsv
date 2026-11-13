@@ -39111,3 +39111,9 @@ _SplineRandomSeed	013999c4	00b206b0
 ?push_back@?$vector@VCBlockInfo@CVertexGroupBlockOptimiser@@V?$allocator@VCBlockInfo@CVertexGroupBlockOptimiser@@@std@@@std@@QAEXABVCBlockInfo@CVertexGroupBlockOptimiser@@@Z	00adbfb0	00ad9f10
 ?reserve@?$vector@VCBlockInfo@CVertexGroupBlockOptimiser@@V?$allocator@VCBlockInfo@CVertexGroupBlockOptimiser@@@std@@@std@@QAEXI@Z	00adb960	00ad9f10
 ?size@?$list@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QBEIXZ	00adb570	00ad9f10
+?ClampAntialiasing@CUserProfileManager@@AAEXAAKJ@Z	00409140	004093e0
+?ClampVideoOption@CUserProfileManager@@AAEXAAMMMMM@Z	004068d0	004093e0
+?g_MaxRefreshRate@@3JA	01375088	004093e0
+?g_MaxResolutionWidth@@3JA	01375084	004093e0
+?g_MemoryA@@3JA	0137509c	004093e0
+?g_MemoryB@@3JA	013750a0	004093e0

@@ -395040,6 +395040,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ad9f10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004093e0'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_SetDefaultValuesVideo_004093e0.cpp'
+        TestSource = '00/40/CUserProfileManager_SetDefaultValuesVideo_004093e0_test.cpp'
+        PassPattern = '004093e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

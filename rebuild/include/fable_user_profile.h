@@ -18,6 +18,10 @@
 // expands them; other callers call the COMDAT copies).
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CDeviceResetCallback.h"
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VIDEODEFAULTS
+#include "engine/CDisplayModeDesc.h"
+#include "stlport/fable_containers.h"
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PCLASS
 #include "engine/CCountedPointer.h"
 #endif
@@ -53,6 +57,20 @@ public:
     float GetMaxTextureDetail() const;                                   // 0x00408500
     float GetMaxShadowDetail() const;                                    // 0x00408550
     float GetMaxMeshDetail() const;                                      // 0x004085A0
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VIDEODEFAULTS
+    // Nested opt-in (wf21, row 0x004093E0 SetDefaultValuesVideo): Ego_r.pdb / FableWin.pdb ?SetDefaultValuesVideo@CUserProfileManager@@QAEXXZ,
+    // the protected ?ApplyValues@..@IAEXXZ (0x00407370) and the private same-TU clamps (Ego_r.pdb AAEXAAMMMMM@Z / AAEXAAKJ@Z).
+    void SetDefaultValuesVideo();                                        // 0x004093E0
+    const std::vector<CDisplayModeDesc>& GetDisplayModes() const;        // Ego_r.pdb 0x004054D0 + FableWin.pdb 0x01889A50 ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@..@std@@XZ; expanded in SetDefaultValuesVideo at 0x00409548..0x0040954E; no retail address of its own is bound (the 7-byte body at its ICF fold is landed as CModeBlock::GetAnimFilter)
+protected:
+    void ApplyValues();                                                  // 0x00407370
+private:
+    void ClampVideoOption(float& value, float newValue, float defaultValue, float maxValue, float defaultMaxValue);   // 0x004068D0
+    void ClampAntialiasing(unsigned long& antialiasing, long maxAntialiasing);   // 0x00409140
+    void ClampResolution(unsigned long& resolution, long maxWidth);      // 0x00406D90
+    void ClampRefreshRate(unsigned long& refreshRate, long maxRefreshRate);   // 0x004069A0
+public:
+#endif
     void SetDefaultValues();                                             // 0x0040C790 (Ego_r / FableWin ?SetDefaultValues@CUserProfileManager@@QAEXXZ)
     void SetDefaultValuesForNewProfile();                                // 0x00409B70
     // Chunk 734 (row 0x004A5E90 CWorld::AutoLoadRespawn): Ego_r.pdb / FableWin.pdb QBE save-name getters (hidden CWideString result).
@@ -116,7 +134,18 @@ private:
     unsigned long RefreshRate;                                           // +0x4C
     bool          VerticalSyncEnabled;                                   // +0x50
     bool          StereoReversed;                                        // +0x51
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VIDEODEFAULTS
+    unsigned char _pad_0x52[0x70 - 0x52];                                // +0x52 padding, +0x54 AssignedInputsPassive/Aggressive, +0x6C ShowTargetingStatus (opaque)
+    float         EffectsDetail;                                         // +0x70 (Ego_r.pdb +0x78)
+    unsigned long ScreenAspectRatio;                                     // +0x74 (Ego_r.pdb +0x7C)
+    bool          NewProfileToUseWASD;                                   // +0x78
+    bool          CameraResetting;                                       // +0x79
+    float         CameraSensitivity;                                     // +0x7C
+    std::vector<CDisplayModeDesc> DisplayModes;                          // +0x80 (Ego_r.pdb +0x88)
+    unsigned char _pad_0x8c[0xcc - 0x8c];                                // GivenTutorialCategories .. SaveGameNames (opaque)
+#else
     unsigned char _pad_0x52[0xcc - 0x52];                                // +0x52 padding, +0x54 AssignedInputsPassive .. SaveGameNames (opaque)
+#endif
     bool          DisplayTutorialsDuringCutscenes;                       // +0xCC
     bool          SubtitlingEnabledNewProfile;                           // +0xCD
     bool          VibrationEnabledNewProfile;                            // +0xCE

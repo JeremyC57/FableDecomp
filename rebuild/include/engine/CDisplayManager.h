@@ -50,6 +50,13 @@ public:
  // Chunk 774 (bake 0x0042DF9E CNewFrontendGameComponent::Draw): Ego_r.pdb ?GetVVisibleTelevisionScreenArea@CDisplayManager@@QBE?AVC2DBoxF@@XZ
  // (Draw calls it with a hidden C2DBoxF result and drops the value). Declaration only.
  C2DBoxF GetVVisibleTelevisionScreenArea() const;                       // 0x009BECE0
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_VIDEODEFAULTS
+ // Opt-in (wf21, row 0x004093E0 CUserProfileManager::SetDefaultValuesVideo): FableWin.pdb ?GetBitDepth@CDisplayManager@@QBEJXZ (debug 25 bytes:
+ // BackBufferFormat.GetColourDepth()) and ?GetRefreshRate@CDisplayManager@@QBEJXZ (debug 20 bytes: the RefreshRate member), inline in retail
+ // (the row calls CPixelFormat::GetColourDepth 0x009E3820 on [dm+1A8h] and reads [dm+1C8h] in place). Needs FABLE_RETAIL_CPIXELFORMAT_COLOURDEPTH.
+ long GetBitDepth() const { return BackBufferFormat.GetColourDepth(); }
+ long GetRefreshRate() const { return RefreshRate; }
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER_SETVIEWPORT
  // Nested opt-in (asm round 2b): Ego_r.pdb 0x00B23C90 / FableWin.pdb 0x0301F590 ?SetViewport@CDisplayManager@@QAEXABVC2DBoxI@@@Z.
  void SetViewport(const C2DBoxI& viewport);                             // 0x009BEF80

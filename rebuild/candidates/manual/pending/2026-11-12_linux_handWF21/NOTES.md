@@ -1,127 +1,4 @@
-## 0x004CE1B0
-
-
-## 0x004CE1B0 CSubtitledMessage::AddMasterShotCameraTagFromText -- RELOCATION_MATCH (20 grades)
-- What made it match: port onto engine/CStringParser.h + engine/CVectorMap.h (Insert(key,value) value_type opt-ins, CArray push_back
-  out of line), signature (float time, const CCharString& text), FindSymbol(const CCharString&, long&) const on g_MiscDefTypesSymbolMap,
-  a CCameraTag local (scalar-replaced; only CameraPosition spills to +0x24). Three source facts fixed the rest: (1) the protagonist
-  fields are assigned right after `CCameraTag tag;` at the top (one shared zero in eax at the pair build); (2) `position`/`focus`
-  declared at the top, `view` inside the third-lookup block (frame slots); (3) lookups as `if (Find(first)) { ...; if (!Find(second))
-  return false; ...; if (third != "") { if (Find(third)) view else return false; } Insert; return true; } return false;` -- puts the
-  failure blocks after the success path and gives retail's cross-jump into the ")" exit with ecx=&third preloaded.
-- Headers / flags: defines FABLE_RETAIL_CCHARSTRING, _STLP_LIST, _CSTRINGPARSER, _CARRAY_PUSHBACK_NOINLINE, _CVECTORMAP_INSERT_KEYVALUE,
-  _CVECTORMAP_INSERT_VALUE_TYPE (all existing repo opt-ins; no overlay); no flags. Strict-headers regrade RELOCATION_MATCH.
-- Names: CSubtitledMessage has no shared header (local model, as all landed CSubtitledMessage rows); enumerators copied from landed
-  0x00712340. NAME_FIXES candidate (from DOSSIER): 0x004D18E0 landed as CRetailVector_SPair28::PushBack_SPair28_004d18e0, Ego_r
-  004f04a0 says CArray<std::pair<float,CSubtitledMessage::CCameraTag> >::push_back.
-
-## 0x006A5610
-
-
-## 0x006A5610 CThingPhysical::GetFirstCylinderCollisionBetweenPoints -- RELOCATION_MATCH
-- What made it match: (1) ported onto shared headers with the PDB callee names (GetRHSet().GetUp(), GetPos, GetMagnitudeAndNormalise,
-  AccurateNormalise, GFGetShortestDistance2DSquaredBetweenPointAndLine with float&); (2) the GF 2D helper's REAL landed body (0x00A443A0)
-  in the TU as `inline __declspec(noinline)` -- only then is `t` homed in the dead `to` arg slot (frame 0x5C -> 0x58); (3) natural nested
-  if-blocks (`if (d2 > eps) { ... if (A && B && C) { ... if (Z tests) return true; } } return false;`) give retail's frame packing and the
-  shared `fstp st(0)` exit; (4) default one-line C3DVector::Dot (the DOT_ORDERED_ZYX opt-in left the hit_normal pointer load late).
-- Headers/flags: overlay opt-in FABLE_RETAIL_CTHINGPHYSICAL_CYLINDERCOLLISION (engine/CThingPhysical.h, declaration only); no flags/pragmas.
-- Proven wrong in old draft (not landed): GetUp virtual / GetPosition / GetLength / Normalise / GetClosestPointOnLineSegment(float*).
-
-## 0x007D71E0
-
-
-## 0x007D71E0 CTCTavernGameCardPairs::ShuffleCards -- RELOCATION_MATCH (wf21, ~25 grades)
-- What made it match: port onto shared headers (card_sorting_types.h, CDefPointer COUNTREF, CTCTavernGame HideMesh/PositionMesh opt-ins,
-  STLP_RANDOM_SHUFFLE_2ARG + VECTOR_INSERT_OUTOFLINE + VECTOR_OVERFLOW_DECL_ONLY) with the STLport random_shuffle body in the TU (one site
-  called, one inlined); `pdef->CardOrders[GetCardOrder()]` inline; counting-loop iterator advances; loop 1 as a scan whose match branch
-  moves the card and `goto next` past ++i, compare `(*it)->Value == (*p)->Value`; loop 2 reads the partner card into a local `other`.
-  Last residue (card reloaded after memmove / its store hoisted) was callee-body visibility: the REAL body of _M_insert_overflow
-  0x007D5D60 placed in the TU as `__declspec(noinline)` under auto_inline(off) -> c2 knows push_back never captures `card`.
-- Headers: overlay engine/CTavernGameCardBaseDef.h adds FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_CARDORDERS (std::vector<CCardPositionsDef>).
-  Flags: none. Out-of-line real bodies in the TU: std::random_shuffle (0x007D7860 template), vector::_M_insert_overflow (0x007D5D60).
-- No landed name proven wrong.
-
-## 0x00E83230
-
-
-## 0x00E83230 CFisticuffsClubRing::SetRelevantRegion -- RELOCATION_MATCH (author wf21, 2026-11-12)
-- Matched: ported onto shared headers (Me/Game from CEntityScriptBase.h, parent CV_FisticuffsClubScript RelevantRegion/Village,
-  CCharString text == opt-ins, FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_ASSIGNMENT), CFisticuffsClubRing nested locally (no shared header).
-  The plain form (823v820) called op= at all four sites; /d2inlT100 matched it (structure right, arm 1 hotter than written);
-  source-level fix: arm 1's `ParentClass->Village = ...` inside a single-site `do { } while (0)` (lever of landed 0x00DA91A0).
-- Defines: the same-TU block of 0x00E84B80 (no flags, no pragmas, no overlay headers).
-- NAME_FIXES: 0x00E83230 = ?SetRelevantRegion@CFisticuffsClubRing@CV_FisticuffsClubScript@NScript@@AAEXXZ; landed Main 0x00E82950
-  spells it `SetUpRing()`, manifest `_global::HandleVillageSelection` (evidence: DOSSIER sec. 2).
-
-## 0x00B4AC10
-
-## 0x00B4AC10 CEnginePrimitiveRenderer2D::CEnginePrimitiveRenderer2D -- RELOCATION_MATCH (17 grades)
-- What made it match: port onto shared headers (overlay opt-ins in hdr/README.md) with corrected manager classes / PDB member names; AddPrimitiveManager's REAL body (landed 0x00B4ABB0) in the TU before the ctor under `#pragma auto_inline(off)` (fixed the whole Info-in-register release residue at once); LightVector and the three colours written through reference locals (`C3DVector& light = LightVector; light.X = ...`), which gives retail's `lea ecx,[esi+7Ch]` stores and the loop-index xor placement; FOV spelled `g_TwoPi * (FOV_2D * (1.0f/360.0f))` (literal 2pi folds the two multiplies; `x*c1*g_TwoPi` loads the constant first).
-- Defines: FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS (class path of the shared MeshBase/StaticMeshesBase headers), FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D(+_MEMBERS), _CENGINECOMPONENT, _CCOUNTEDPOINTER_RESET_CAMERA_DECL (Reset out of line), _CENGINEDEF_FOV_2D, _2DSPRITES_MANAGER, _2DPARTICLEGROUP_MANAGER, _CENGINEPRIMITIVE2DVIEWPORTMANAGER, _CENGINEPRIMITIVETYPEINFO(+_REGISTER). Flags: none.
-- Local models (no shared header exists): CEnginePrimitiveManager2DStaticMeshes (0x318, ctor 0x00BA1AC0) : shared CEnginePrimitiveManagerStaticMeshesBase; CEnginePrimitiveManager2DAnimatedMeshes (0x690, ctor 0x00BD1F30) : local CEnginePrimitiveManagerAnimatedMeshesBase (0x690, ctor 0x00A84830) : shared CEnginePrimitiveManagerMeshBase.
-- Globals: g_pEngineDef_01436e20 (descriptive, landed spelling), g_TwoPi 0x0128F608 (landed spelling of CEngineCamera_Process 0x00B314E0; other rows use `static const float kTwoPi` -- one address, two spellings: coordinator should unify).
-- Name fixes (from DOSSIER, confirmed by match): landed _$E2 0x0122AD60 comment calls 0xBA1AC0 AnimatedMeshes (it is StaticMeshes); landed 0x00BBBF40 CEnginePrimitiveManagerParticleGroup ctor param is CArray<CEngineScene*>& per PDB, not CEngine*.
-
-### Repair pass (verifier findings, all applied; still RELOCATION_MATCH, also under LANDVERIFY_STRICT_HEADERS=1)
-1. Layer-72 constants respelled 0.40499997f / 0.80999994f -> 0x3ECF5C28 / 0x3F4F5C28 (retail pool 0x0139A3C4 / 0x0139A3BC); 0.405f/0.81f were 1 ulp high. (Both equal float(0.9f*0.9f) [/2], a likely original spelling, unproven.) Test updated.
-2. 2D mesh managers now derive from their real direct bases (Ego_r ctors 0x00A55E60 / 0x00A84830, rtti_bases in labels for 0x00BA1AC0 / 0x00BD1F30); StaticMeshesBase via its shared header, AnimatedMeshesBase local (no header).
-3. Source comment above AddPrimitiveManager names the landed row rebuild/src/compiled/00/b4/CEnginePrimitiveRenderer2D_AddPrimitiveManager_00b4abb0.cpp.
-
-
-## Coordinator note at landing (2026-11-13): evidence for the name fixes
-- 0x00BBBF40: ??0CEnginePrimitiveManagerParticleGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z in Ego_r 0x00A71660 and FableWin 0x02EA4AD0; the landed row spells (CEngine*).
-- 0x00B4B690: ??0CEnginePrimitiveManager2DParticleGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z, FableWin 0x02D9D090 (+ thunk 0x018587F7); it has a PDB name (the overlay comment said it had none; corrected).
-- _$E2 0x0122AD60: 0x00BA1AC0 is the 2DStaticMeshes ctor (vtable 0x012A5160 RTTI); AnimatedMeshes is 0x00BD1F30.
-All three are in NAME_FIXES.tsv.
-
-## 0x00973DC0
-
-## 0x00973DC0 CAIStateGroup_JackOfBladesBase::SummonPillars -- RELOCATION_MATCH (8 grades)
-- Matched by porting onto shared headers (RushToPos/Guildmaster idioms) + three facts: GetSubDef<T> body visible noinline
-  (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE + CDefClassBase_GetSubDef.h: in-place release, no null test at loop exit),
-  FABLE_RETAIL_C3DVECTOR_NORMALISE_UNPAREN (fstp st0 placement), and vslot +0x7c is ResetPosition (SetPosition is +0x78).
-- Header overlay: engine/CAIStateGroup_JackOfBladesBase.h opt-in FABLE_RETAIL_JACKOFBLADESBASE_SUMMONPILLARS. Needs also
-  FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD (GetWorld), FABLE_RETAIL_CWORLDMAP(_HEIGHTZ). No flags/pragmas.
-- DOSSIER correction: vslot +0x7c on CTCPhysicsBase is ResetPosition(const C3DVector&) (slot 31), not SetPosition.
-- CTCJackPillar has no shared header: minimal local class (StatGetInterfaceType + Enable decl), as landed 0x00976E20.
-- Repair (verifier findings, both applied, still RELOCATION_MATCH incl. LANDVERIFY_STRICT_HEADERS=1): height offset is
-  +0.1f (retail 0x00974061 fadd [0x0122EE58] = 0.1f; 3.0f at 0x0122DED4 is the Normalise constant), test updated to 0.1f;
-  loop frame read respelled `GetWorld().GetFrame()` (same bytes as the old split `GetWorld(); CWorld::GetFrame();`).
-
-## 0x00875B10
-
-
-## 0x00875B10 NCameraModes::CTools::TestMeshForOccupationAndGetType -- RELOCATION_MATCH (wf21 author, ~20 grades)
-- Made it match: (1) identity: retail mangling `W4EMeshType@2@` = NAMESPACE-scope NCameraModes::EMeshType (the dossier's
-  "nested in CTools" was wrong; nested mangles `@12@`), const member, const& mesh / float& height, CMeshIntersectionData;
-  (2) vertical probe `position + C3DVector(0,0,(float)(long)((0.5f-i)*2.0f)*size*3.0f)` (int copies after __ftol2; the inline form
-  also fixes the extent load order -- the extent block is sensitive to this, not to its own operand order);
-  (3) end `switch(hits){case 5: return 1; case 6: return 1; default: return 0;}` (merged cases give a range check; no default puts
-  ret0 before ret1); (4) header opt-in C3DVector operator*(float) building a named result local (loop-2 Y product scheduling).
-- Headers (overlay $W/hdr): FABLE_RETAIL_NCAMERAMODES_CTOOLS_MESHTYPE (NCameraModes_CTools.h), FABLE_RETAIL_C3DVECTOR_SCALE_NAMED_RESULT
-  (C3DVector.h). Defines: FABLE_RETAIL_C3DVECTOR, _SQUAREDMAGNITUDE_XYZ, _NORMALISE_PAREN_SQUARES_ZYX, _CROSSWITHUP,
-  FABLE_RETAIL_CPHYSICSMESHOBJECT_EDGES. Flags: none. Made-up names: enumerators MESH_TYPE_NONE / MESH_TYPE_OCCUPIED (descriptive).
-- Repair (verifier pass): hdr/README.md now states the C3DVector.h SCALE_X_PAREN `#ifdef` became an `#elif` so NAMED_RESULT takes precedence; source unchanged, regrade RELOCATION_MATCH (also strict headers), test PASS.
-
-## 0x00E6B900
-
-
-## 0x00E6B900 NScript::CV_ChapelOfEvilScript::TeleportAcolytes -- RELOCATION_MATCH (7 grades)
-- Ported onto shared headers (fable_string.h, CCountedPointer.h, CScriptThing.h, stlport/fable_containers.h via CQ_SunnyvaleMasterData.h -- do NOT add a local std::vector model, it collides; CV_ChapelOfEvilScript.h). Needed `inline CScriptThing::CScriptThing() {}` (inline ctor: CBaseClass call + vptr + PImp zero) and `FABLE_FORCEINLINE ~CScriptThing() {}`; `#pragma inline_depth(0)` regions around each terminate-return AND the marker reassignment (removing it from the reassignment grows the function).
-- Last residue (eax/edx swap in the loop around slot 72/472 calls) was the operator== spelling: `PImp->IsEqualTo(*other.PImp)` (CCountedPointer operator->/operator*) matches; `PImp.Data->IsEqualTo(*other.PImp.Data)` does not.
-- Flags: none. Overlay headers: none. Draft's `IsSameAs` was a made-up name for slot 78 = protected CScriptThing::IsEqualTo (FableWin.pdb).
-- Repair (verifier): source now names the landed rows its inline callee bodies copy (ctor 0x006E7B40, dtor 0x004AA840, operator== 0x008AAE20) and the retail evidence of inlining: CBaseClass() call 0x0099A2D0 at 0xE6B94F + vptr 0x01238C8C stored at 0xE6B95C (the task text said 0xE6B94F for the store; xdis shows the store at 0xE6B95C); inline `call [edx+0x138]` at 0xE6B9BE. Still RELOCATION_MATCH (also strict headers); test PASS.
-
-## 0x005EC270
-
-## 0x005EC270 CTCTavernGame::ProcessInput -- RELOCATION_MATCH (author wf21, 2026-11-12)
-- Made it match: port onto shared headers (CTCTavernGame/CTavernGameDef/CDefPointer/CInputProcess*/CPlayerGui/CSubtitleRenderer) with FrameUpdate's in-TU GetSubDef<CTavernGameDef> + SetState real bodies; case source order 5,46,45,44,47 (retail layout); case 5 "stay" arg read via inline FableWin.pdb `GetGameState()` (that one inline call was the whole eax/ecx/edx rotation residue); answer tails clear Alt, No, Yes in that source order (gives retail a8/ac/b0 stores).
-- Headers (overlay $W/hdr): CInputProcessTavernGame.h FABLE_RETAIL_INPUTPROCESS_TAVERNGAME_FRIEND (friend for protected IsEventButtonPressed); CTCTavernGame.h FABLE_RETAIL_CTCTAVERNGAME_GETGAMESTATE (inline GetGameState). Flags: none.
-- Landed names proven wrong (DOSSIER evidence): 0x00687D00 landed as GetEventGameActionVector = ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z; 0x00687CF0 landed as garbage T::Run = ?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z.
-- Tried without effect: dropping SetState / GetSubDef bodies (GetSubDef body required), /GS /G5 /G7 /Ob1 /Ob2 /Ox, stick scope, early-break / default / local switch var, GameWon-first.
-- Repair (2026-11-13): SetState body dropped (declared only; still RELOCATION_MATCH, also strict headers); Shape comment now names the landed GetSubDef row CDefClassBase_GetSubDefCTavernGameDef_005ed4a0.cpp (body copied verbatim) and SetState row, and states source order Alt,No,Yes -> retail stores +0xA8 Yes, +0xAC No, +0xB0 Alt at 0x005EC4F7..0x005EC503. Test re-passed vt.py; addmatch rerun.
-
-## 0x004093E0 (not landed)
+## 0x004093E0
 
 ## 0x004093E0 CUserProfileManager::SetDefaultValuesVideo -- DIFFER(841v841), 9 hunks, block placement only (wf21 author, ~100 grades)
 Best source: differ/004093e0.cpp (= v68). Same instructions and registers as retail; the only residue is that retail lays the def
@@ -212,4 +89,50 @@ Globals g_MemoryA/B declared `long` here (retail `jle`); GFConfigDetection's lan
 - Verifier findings not applied: none (finding 5 applied for the statements; the landed row's global names are respelled the
   other way, via NAME_FIXES, because the shared headers carry the PDB statics).
 - Note: $W/r1.cpp (an old author variant) was overwritten by the first repair variant.
+
+## 0x004093E0 repair 3 (verifier findings 1-5) -- still RELOCATION_MATCH (strict headers too), test vt.py PASS, addmatch.py rerun
+Work dir: $W/r3 (base.cpp = the matching source before this repair; backup of source/test/hdr/NAME_FIXES/NOTES/payload in repair3_backup/).
+- Test (1): the override case is now def 640x480 + g_MemoryA/B = 1280x1024 -> Resolution 2 (losing the override gives the def's
+  missing mode -> clamped 0). Mutant r3/mut_override.cpp (width override deleted): FAIL (bad 8).
+- Test (2): the same case is uncapped (g_MaxRefreshRate -1) with display rate 88 -> RefreshRate 3 (written against a wrong table {60,70,75,85}; in retail 0x0122DE30 = {60,75,85,100}, so
+  85 Hz is the THIRD entry, index 2; corrected in Repair 4). Mutant
+  r3/mut_loop3.cpp (`while (++i < 3)`): FAIL (bad 256). Original test: PASS under vt.py and native g++.
+- Source (3): header comment rewritten: per carried body the retail fact (call / no call, expansion range), the landed row and where
+  this row's spelling differs, and its own-address grade. Graded THIS source against each address's oracle
+  ($S/batch/wf21r3_callees_oracle.tsv, made with oracle_from_exe.py from r3/rows.tsv):
+    0x004083E0 GetConfigOptionsDefaultsDef  RELOCATION_MATCH (was DIFFER(203v194) before this repair)
+    0x00410890 GetDef<CConfigOptionsDefaultsDef> RELOCATION_MATCH
+    0x004069A0 ClampRefreshRate             RELOCATION_MATCH (out-of-line copy, 52 bytes; no landed row)
+    0x00406D90 ClampResolution              MATCH
+    0x00406880 GetDisplayModes body         MATCH (bytes only; ICF fold, no name claim)
+  What fixed 0x004083E0: GetDef's template body visible (shared opt-in FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY, noinline).
+  Found by probing the landed 0x004083E0 row: removing its auto_inline(off) GetDef body gives exactly our DIFFER(203v194); its
+  dtor / mutable / __forceinline differences do not matter. The header's GetDef body then needed SetDynamicCast to re-read the
+  source handle (new overlay opt-in FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD) to match 0x00410890 itself (Assign() caches it:
+  DIFFER(116v108)). Tried and not it for 0x004083E0: CDEFPOINTER_RELEASE_POINTEE / RELEASE_COUNTREF (203v194), RELEASE_SELFDELETING
+  (182v194, drops the Delete), each + CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES. 0x004093E0 matches with or without the GetDef body.
+- Source (4): GetDisplayModes: two-source name (Ego_r 0x004054D0 + FableWin 0x01889A50); comment says the TU never references
+  0x00406880 and binds no symbol to it (ICF fold landed as CModeBlock::GetAnimFilter). NAME_FIXES.tsv: ClampResolution row reworded
+  (reference parameter, no made-up helper, no local CRetailVector), new rows 0x004083E0 (callee spellings) and 0x00410890 (landed
+  made-up GetDef_00410890); 0x013B86A0 / 0x013B871C rows kept.
+- Source (5): duplicate `ClampVideoOption 0x004068D0 (x4 per arm)` removed.
+- Headers: hdr/engine/CDefPointer.h added (full copy of the current repo header + the one #ifdef). Flags: none.
+
+## 0x004093E0 repair 4 (second round, verifier findings 2-6) -- still RELOCATION_MATCH (strict headers too), test vt.py PASS, addmatch.py rerun
+Work dir: $W/r4 (backup of source/test/hdr/NOTES/NAME_FIXES/payload/oracle in repair4_backup/). Row code unchanged (comments only).
+- Test (2): refresh table now retail's {60, 75, 85, 100} (Fable.exe bytes at 0x0122DE30 read directly). Cases: no def 78 Hz -> index 1
+  (75); def 90 Hz picks 85 (index 2), capped at 75 -> index 1; uncapped 120 Hz -> index 3 (100, fourth entry); 84 Hz: 85 nearer but
+  above -> 75 (index 1). vt.py PASS + native g++ PASS. Mutants r4/mut_loop3.cpp (`while (++i < 3)`): FAIL (bad 256);
+  r4/mut_override.cpp (width override deleted): FAIL (bad 8). The row source only declares the table extern (no values modelled);
+  its header comment now states the retail values.
+- Headers (3): hdr/engine/CDisplayManager.h rebuilt = current repo header (keeps FABLE_RETAIL_CDISPLAYMANAGER_RENDERTARGET for
+  0x00F39730) + only the VIDEODEFAULTS #ifdef. `diff <repo> <overlay> | grep -c '^<'` = 0 for all three overlay headers.
+- Names (4): fable_user_profile.h GetDisplayModes comment no longer gives 0x00406880 (PDB addresses + expanded at 0x00409548..0x0040954E;
+  the ICF fold is landed as CModeBlock::GetAnimFilter, no symbol of this row bound there); hdr/README.md likewise.
+- NAME_FIXES (5): 0x013B86A0 / 0x013B871C rows list every spelling seen with file counts (r4/name_counts.txt, from reloc_bindings.tsv +
+  extern declarations commented with the address; 31 wrong spellings for 86A0, 8 for 871C).
+- Comments (6): do/while cites the rolled `inc ecx ; cmp ecx,4 ; jb 0x409694` at 0x00409694..0x004096C8; the unsigned guard cites the
+  unrotated `cmp ; jle ; dec ; jmp` loops at 0x004095C6..0x004095D2 and 0x004096F0..0x004096FA (checked in dis.txt).
+- Grades (r4/final.cpp == 004093e0.cpp): 0x004093E0 RELOCATION_MATCH (strict too); carried 0x004083E0 RELOCATION_MATCH, 0x00410890
+  RELOCATION_MATCH, 0x004069A0 RELOCATION_MATCH, 0x00406D90 MATCH, 0x00406880 MATCH (each also with LANDVERIFY_STRICT_HEADERS=1).
 

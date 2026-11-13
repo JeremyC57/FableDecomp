@@ -1,0 +1,8 @@
+addr       parity           behav  name
+004093e0   RELOCATION_MATCH PASS   SetDefaultValuesVideo
+
+WINS: 1
+  004093e0 RELOCATION_MATCH CUserProfileManager::SetDefaultValuesVideo
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CUserProfileManager_SetDefaultValuesVideo_004093e0

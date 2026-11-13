@@ -77,7 +77,22 @@ public:
         return *this;
     }
     template <class U> FABLE_DEFPTR_INLINE CDefPointer& operator=(const CDefPointer<U>& other) { Assign(other.InternalGetObject()); return *this; }
+#ifdef FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD
+    // Nested opt-in (row 0x004093E0 repair 3; proven on 0x00410890 CDefinitionManager::GetDef<CConfigOptionsDefaultsDef>): the
+    // release-build SetDynamicCast<U> is the copy-assignment body on the source handle, re-reading other's pointee after the
+    // Release call like operator= above (retail `mov eax,[esp+8]` at 0x004108C4 and again after the AddRef at 0x004108D7);
+    // Assign() caches it in a register instead (`mov esi,eax`). Same semantics.
+    template <class U> FABLE_DEFPTR_INLINE void SetDynamicCast(const CDefPointer<U>& other)
+    {
+        if (Object != other.InternalGetObject()) {
+            Release();
+            Object = other.InternalGetObject();
+            if (Object) Object->AddRef();
+        }
+    }
+#else
     template <class U> FABLE_DEFPTR_INLINE void SetDynamicCast(const CDefPointer<U>& other) { Assign(other.InternalGetObject()); }
+#endif
     CDefPointeeBase* InternalGetObject() const { return Object; }
     T* Get() const { return static_cast<T*>(Object); }
     T* operator->() const { return Get(); }
