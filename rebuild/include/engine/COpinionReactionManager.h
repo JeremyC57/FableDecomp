@@ -42,6 +42,12 @@ private:
 public:
 #endif
     void SetThingOpinionSource(CThing* thing);                           // 0x00700770
+#ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_PEEKSOURCE
+    // Nested opt-in (chunk 2004, row 0x009609B0 CAIStateGroup_DeedReactionRoot::IsRunnable): Ego_r.pdb / FableWin.pdb
+    // ?PeekThingOpinionSource@COpinionReactionManager@@QBEPBVCThing@@XZ, inline in retail (the caller calls GetPItem 0x00A01B50 on
+    // `lea ecx,[eax+714h]` itself, 0x009609CA). No layout change.
+    const CThing* PeekThingOpinionSource() const { return PThingOpinionSource.Get(); }
+#endif
 private:
     CDefPointer<const COpinionReactionManagerDef> PDef;                  // +0x000
     CWorld* World;                                                       // +0x004

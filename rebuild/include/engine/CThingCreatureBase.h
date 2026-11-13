@@ -89,6 +89,12 @@ public:bool IsPosInViewAngle(const C3DVector& pos,float angle,bool,bool)const;  
 // (public const), out of line in retail (0x00666D40). Declaration only.
 public:float GetHeightZBelowAt(const C3DVector& pos,bool,bool)const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_HEIGHTBELOW
+// Retail opt-in (chunk 2004, row 0x00912BA0 CAIStateGroup_FlyingThingBase::CalculatePrettyPath): Ego_r.pdb / FableWin.pdb
+// ?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z, out of line in retail at 0x00666D40 (thiscall `ret 0Ch`, float in st0;
+// called with `push 1 ; push 1 ; push <probe>` and ecx = the brain's creature, 0x00912E5D / 0x00912F35). Declaration only.
+public:float GetHeightZBelowAt(const C3DVector& pos,bool,bool)const;      // 0x00666D40
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETHEALTH
 public:
  void SetHealth(float health){Health=health;}

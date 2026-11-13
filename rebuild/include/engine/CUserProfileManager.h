@@ -63,6 +63,18 @@ public:
     CWideString GetManualSaveFileName(long slot) const;                  // 0x00406610
     CWideString GetManualSaveDisplayName(long slot) const;               // 0x00406AE0
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVESLOTS
+    // Retail opt-in (bwf2 row 0x004830A1 CTCInGameMenu::OpenInGameMenu): Ego_r.pdb / FableWin.pdb save-slot name helpers, out of line.
+    // The four already declared by the second FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES block (chunk 2003, same spellings and
+    // addresses) are declared here only without that opt-in.
+    CWideString GetAutoSaveFileName() const;                             // 0x00406690 ?GetAutoSaveFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+#ifndef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
+    CWideString GetEmptySlotName() const;                                // 0x00406A80 ?GetEmptySlotName@CUserProfileManager@@QBE?AVCWideString@@XZ
+    CWideString GetPathNameFromFileName(const CWideString& fileName, bool b) const;   // 0x00408120
+    CWideString GetSaveDisplayNameFromFileName(const CWideString& fileName, long slot) const;   // 0x00407E10
+    bool IsDebugProfile() const;                                         // 0x00407030 (ICF-folded `return false` body)
+#endif
+#endif
     void ProcessPendingTutorials();                                      // 0x0040BB30
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
     // Opt-in (chunk 2003, row 0x00598463 CFrontEndManager::RefreshAvailableSavedGamesForProfile): Ego_r.pdb / FableWin.pdb spellings,

@@ -28,6 +28,8 @@ public:
  // the bitset test of type 54 = bit 22 of +24h). Bodies only, no layout change.
  // FABLE_RETAIL_CTCSTEALTH_STATTYPE (chunk 2041, row 0x006AB820 CThingPlayerCreature::ResolveFacingDirection) selects the inline interface
  // type alone, as PeekTC<const CTCStealth> expands it (`test dword ptr [esi+24h],400000h`, key `mov [esp+1Ch],36h`, 0x006AB897 / 0x006AB8AC).
+ // FABLE_RETAIL_CTCSTEALTH_STATTYPE (chunk 2009, row 0x00745120): the same inline StatGetInterfaceType alone (the PeekTC<const CTCStealth>
+ // sites key the lookup with the constant 0x36 = TCI_STEALTH, 0x0074515B / 0x00745246).
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_STEALTH; }
 #else
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();

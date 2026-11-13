@@ -31,6 +31,10 @@ public:
     virtual unsigned long PeekSceneFilterFlags() const;
 private:
     bool InitialiseTextures();                  // 0x00B5ECE0 ?InitialiseTextures@CEngineScreenEffectGlowRenderer@@AAE_NXZ
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER_CAPTUREBACKBUFFER
+    // Retail opt-in (row 0x00B5FAB0): Ego_r.pdb / FableWin.pdb ?CaptureBackBuffer@CEngineScreenEffectGlowRenderer@@AAEXXZ.
+    void CaptureBackBuffer();                   // 0x00B5FAB0
+#endif
     bool            UseEnvironmentTheme;        // +0x0c
     CTexture*       GlowTexture256;             // +0x10
     CTexture*       GlowTexture64;              // +0x14

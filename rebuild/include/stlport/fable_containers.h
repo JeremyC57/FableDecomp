@@ -953,7 +953,7 @@ public:
     __declspec(noinline)
 #endif
     ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
-#else
+#elif !defined(FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST)
     ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
 #endif
 #endif
@@ -1036,6 +1036,11 @@ public:
     // line with its body visible, as the retail TU calls it (~list<CComponent*> 0x0042ABCA at 0x005A8A33). __declspec(noinline) is
     // MSVC's spelling (FABLE_STLP_NOINLINE is empty elsewhere).
     FABLE_STLP_NOINLINE ~list() { }
+#elif defined(FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST)
+    // Per-TU opt-in (row 0x00607330): the clear+free body in list::~list itself and no ~_List_base, as FableWin.pdb names it
+    // (??1?$list@PAVCComponent@NUISystem@@..@std@@QAE@XZ 0x017C0C95; no ??1?$_List_base symbol for any instantiation), so a call
+    // binds 0x0042ABCA under its landed name.
+    ~list() { this->clear();this->_M_node.deallocate(this->_M_node._M_data,1); }
 #else
     ~list() { }
 #endif
@@ -1054,7 +1059,17 @@ public:
 #endif
     bool empty() const { return this->_M_node._M_data->_M_next==this->_M_node._M_data; }
     template<class Input> void insert(iterator position,Input first,Input last) { _M_insert_dispatch(position,first,last,__false_type()); }
+#ifdef FABLE_RETAIL_STLP_LIST_INSERT_DISPATCH_NOINLINE
+    // Per-TU opt-in (row 0x00607330): STLport's range-insert body visible but kept out of line, as the retail TU calls it at every
+    // site (list<CComponent*>::_M_insert_dispatch 0x0042B4C3 at 0x0060780B / 0x006095B3, the CDeletion copies).
+    template<class Input>
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+    void _M_insert_dispatch(iterator position,Input first,Input last,const __false_type&) { for(;first!=last;++first) insert(position,*first); }
+#else
     template<class Input> void _M_insert_dispatch(iterator position,Input first,Input last,const __false_type&) { for(;first!=last;++first) insert(position,*first); }
+#endif
 protected:
     _List_node<_Tp>* _M_create_node(const _Tp& x) {
         _List_node<_Tp>* p=this->_M_node.allocate(1);

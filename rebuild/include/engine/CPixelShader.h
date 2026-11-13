@@ -33,6 +33,10 @@ FABLE_STATIC_ASSERT(sizeof(CPixelShaderData) == 0x14);
 class CPixelShader : public CShaderBase {
 public:
     CPixelShader();                                                      // 0x00A5EC00 ??0CPixelShader@@QAE@XZ
+#ifdef FABLE_RETAIL_CPIXELSHADER_COPYCTOR
+    // Retail opt-in (row 0x00B5FAB0): FableWin.pdb ??0CPixelShader@@QAE@ABV0@@Z, inline in retail: share the data, add a reference.
+    CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) Data->AddReference(); }
+#endif
     // operator= (??4CPixelShader@@QAEXABV0@@Z, returns void; out of line at 0x00987E50): release and null Data through a local
     // copy, then share the other's data.
     void operator=(const CPixelShader& other)

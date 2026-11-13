@@ -182,5 +182,22 @@ Input FABLE_FASTCALL find_if(Input first,Input last,Predicate pred) {
     return __find_if(first,last,pred,typename iterator_traits<Input>::iterator_category());
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_FIND_INPUT
+// Retail opt-in (chunk 2058, row 0x00563920 CTCHeroOnlineScoreboard::DisplayScoreboardGUI): STLport 4.6 _algobase.h
+// `find(first, last, val)` forwarding to the input-iterator `__find(first, last, val, const input_iterator_tag&)` (_algobase.c), both
+// /Gr `__fastcall` COMDATs in retail for list<CClanMember>::iterator: find 0x00567A40 (landed, `ret 8`) and __find 0x00567240 (landed,
+// `ret 0Ch`); the row calls find at one site and __find directly where find is expanded. Needs the list iterator's category typedef
+// (FABLE_RETAIL_STLP_FIND_IF_INPUT in stlport/fable_containers.h).
+template <class _InputIter, class _Tp>
+inline _InputIter FABLE_FASTCALL __find(_InputIter __first, _InputIter __last, const _Tp& __val, const input_iterator_tag&) {
+    while (__first != __last && !(*__first == __val))
+        ++__first;
+    return __first;
+}
+template <class _InputIter, class _Tp>
+inline _InputIter FABLE_FASTCALL find(_InputIter __first, _InputIter __last, const _Tp& __val) {
+    return __find(__first, __last, __val, typename iterator_traits<_InputIter>::iterator_category());
+}
+#endif
 }
 #endif

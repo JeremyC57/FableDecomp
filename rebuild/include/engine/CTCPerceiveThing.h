@@ -157,7 +157,22 @@ public:
     virtual void OnLevelUnload();
     virtual void OnSetInLimbo(bool);
     virtual ~CTCPerceiveThing();
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_AWARE_CALLED
+    // Nested opt-in (chunk 2004, row 0x009609B0 CAIStateGroup_DeedReactionRoot::IsRunnable): ?IsAwareOfThing@CTCPerceiveThing@@QBE_NXZ
+    // called out of line (0x00643B3B, the shared COMDAT `fld 0.0 ; fld [ecx+18h] ; fucompp`; 15 retail call sites, e.g. 0x00960DF1,
+    // 0x00864783, 0x0091DC00), and the inline Ego_r / FableWin ?IsThingIgnoreFOVLineOfSight@CTCPerceiveThing@@QBE_NXZ (read in place,
+    // `mov al,[edi+2Fh]`, 0x00960DFE), ?StatGetInterfaceType@CTCPerceiveThing@@SI?AW4ETCInterfaceType@@XZ (inline, 0x34) and the out-of-line
+    // ?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ (0x00744950: PDef +0x48 / +0x4C times ExtendedSightRadius +0x44; GetSightRadius
+    // 0x007448F0 is the +0x40 twin before it, in Ego_r order 0x007573B0 / 0x00757430). Declarations and accessors only, no layout change.
+    bool IsAwareOfThing() const;                                         // 0x00643B3B
+    bool IsThingIgnoreFOVLineOfSight() const { return IgnoreFOVLineOfSight; }
+#ifndef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_PERCEIVE_THING; }
+    float GetExtendedSightRadius() const;                                // 0x00744950
+#endif
+#else
     bool IsAwareOfThing() const { return AwarenessTimer!=0.0f; }
+#endif
     bool IsThingLineOfSight() const { return LineOfSight; }
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_SEEKPERCEIVEDTHING_FRIEND
     // Nested opt-in (wf8, row 0x0091B3A0 CAIStateGroup_SeekPerceivedThing::RunToPerceivedThingPosition): that function reads the

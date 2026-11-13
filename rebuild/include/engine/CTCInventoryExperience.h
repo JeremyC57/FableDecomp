@@ -47,6 +47,10 @@ struct SExpSpendUndo {
 class CTCInventoryExperience : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
     CWideString GetExperienceStatName(long);                                        // 0x0056F26F
+#ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_INTERFACETYPE
+    // Row 0x005AD571: ?StatGetInterfaceType@CTCInventoryExperience@@SI?AW4ETCInterfaceType@@XZ, inline (the expanded GetTC tests 0x16).
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_INVENTORY_EXPERIENCE; }
+#endif
     CCharString GetExperienceStatMovieName(EHeroTrainableStatType);                 // 0x0056E6B6
     CWideString GetExperienceStatDescription(long,long);                            // 0x0056FDC3
     CRGBFloatColour GetExperienceStatColour(EHeroTrainableStatType);                // 0x0056ED74

@@ -17,6 +17,10 @@ namespace NUISystem { class CComponent; }
 #ifdef FABLE_RETAIL_CTCINVENTORYMAP_PASTQUESTS
 namespace NUISystem { class CComponent; }
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_LOGBOOK
+#include "stlport/fable_map.h"
+namespace NUISystem { class CComponent; }
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYMAP_QUESTREVIEW
 namespace NUISystem { class CComponent; }
 #endif
@@ -66,6 +70,9 @@ protected:
  // Retail opt-in (chunk 883, row 0x006096E0 ConstructLogbookListPC): the real type, Ego_r.pdb CategoriesList
  // map<CHeroLogBook::CHeroLogBookEntry::ECategory,NUISystem::CComponent*> (the landed ~CTCInventoryMap 0x00606F80 erases it with
  // that tree's _M_erase 0x00613AE0; 12 bytes, same offset +0x144).
+ // Retail opt-in (row 0x00607330 ConstructLogbookList): the real type of CategoriesList (Ego_r.pdb member name and type, map<ECategory,
+ // CComponent*>; Ego_r's Dinkumware offset is 0x160) as the 12-byte STLport map at retail +0x144 (`add esi,144h` 0x00607506,
+ // `add ecx,144h` 0x0060830E / 0x0060852D ..., `cmp ecx,[esi+144h]` 0x0060949E).
  std::map<CHeroLogBook::CHeroLogBookEntry::ECategory,NUISystem::CComponent*> CategoriesList;
 #else
  unsigned char CategoriesList[12];
@@ -210,6 +217,16 @@ public:
   FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,SerialisedTeleporterUIDs)==0x200);
   FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,RegionsCorrespondances)==0x24c);
  }
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_LOGBOOK
+ // Retail opt-in (row 0x00607330): Ego_r.pdb / FableWin.pdb ?ConstructLogbookList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+ // (public) and ?GetMenuEntryFromCategory@CTCInventoryMap@@IAEPAVCComponent@NUISystem@@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAV23@@Z
+ // (protected, landed 0x005FAA90). Declarations only.
+public:
+ NUISystem::CComponent* ConstructLogbookList(NUISystem::CComponent* parent);                                          // 0x00607330
+protected:
+ NUISystem::CComponent* GetMenuEntryFromCategory(CHeroLogBook::CHeroLogBookEntry::ECategory category, NUISystem::CComponent* parent); // 0x005FAA90
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYMAP_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.

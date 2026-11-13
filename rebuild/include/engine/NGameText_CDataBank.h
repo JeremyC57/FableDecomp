@@ -37,6 +37,10 @@ bool FABLE_FASTCALL ConstructString(CWideString&,long,long);
 bool FABLE_FASTCALL ConstructString(CWideString&,long,long,long);
 #endif
 #endif
+#ifdef FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING_VECTOR
+// Row 0x005AD571: ?ConstructString@NGameText@@YI_NAAVCWideString@@ABV?$vector@VCWideString@@...@std@@@Z (fastcall), out of line.
+bool FABLE_FASTCALL ConstructString(CWideString& text, const std::vector<CWideString>& args);   // 0x009C7C20
+#endif
 class CDataBankTextEntry;
 class CTextEntry : public CIVCountedPointeeBase {
 public:

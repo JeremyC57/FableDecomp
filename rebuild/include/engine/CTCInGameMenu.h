@@ -11,6 +11,9 @@
 #include "engine/CTCBase.h"
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_OPENMENU
+#include "stlport/fable_map.h"
+#endif
 #if defined(FABLE_RETAIL_CTCINGAMEMENU_OPENPC) || defined(FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD)
 namespace NUISystem { class CComponent; class CYesNo; }
 #endif
@@ -34,6 +37,15 @@ public:
     void SetToSave(long);
     void PCSetToLoad(long);
 #endif
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_OPENMENU
+    // Retail opt-in (bwf2 row 0x004830A1): Ego_r.pdb ?OpenInGameMenu@CTCInGameMenu@@QAEXXZ (0x0048FB01) / FableWin.pdb (0x01AA64D9) and
+    // the private ?GetFileNameList@CTCInGameMenu@@AAEXXZ (Ego_r 0x0048C6D5; retail 0x0047FE83, same TU, out of line); FileNames +0x28
+    // and Signatures +0xE0 typed (needs FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD).
+    void OpenInGameMenu();                                           // 0x004830A1
+private:
+    void GetFileNameList();                                          // 0x0047FE83
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCINGAMEMENU_VIDEODIALOGS
     // agentQ7 (2026-11-11, rows 0x0047E651 / 0x0047F30F / 0x0047E9AE): Ego_r.pdb / FableWin.pdb ?VideoOptionsChanged@CTCInGameMenu@@QAEXXZ,
     // ?VideoOptionsNotAccepted@CTCInGameMenu@@QAEXXZ, ?SaveGame@CTCInGameMenu@@QAEXJ@Z (0x0047E196) and the CTCBase slot-26 override
@@ -55,7 +67,13 @@ private:
     void AddRegionAndTimeInfo(const CWideString&);                   // 0x0047F58B
     bool          InGameMenuOpen;                                    // +0x0c
 #ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_OPENMENU
+    unsigned char _pad_0x0d[0x28 - 0x0d];
+    std::vector<CWideString> FileNames;                              // +0x28
+    unsigned char _pad_0x34[0x58 - 0x34];                            // +0x34 FileTimes, PrimitiveHandles, MenuPrimitiveHandles
+#else
     unsigned char _pad_0x0d[0x58 - 0x0d];
+#endif
     std::vector<NUISystem::CComponent*> Components;
     long LoadGameIndex;
     double CurStartPauseTime;
@@ -86,7 +104,11 @@ private:
     NUISystem::CComponent* PSaveInProgress;
     unsigned char _pad_0xd4[4];
     double SaveInProgressTime;
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_OPENMENU
+    std::map<CWideString, bool> Signatures;                          // +0xe0
+#else
     unsigned char Signatures[12];
+#endif
     NUISystem::CComponent* PMousePointer;
     NUISystem::CYesNo* PYesNo;
     unsigned char _pad_0xf4[4];

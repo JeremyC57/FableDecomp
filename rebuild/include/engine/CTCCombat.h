@@ -37,6 +37,12 @@ public:
  // (public; out of line in retail at 0x00733210, already bound by that spelling; the row calls it on its TCI_COMBAT component). Declaration only.
  void ResetComboChainPos();                                              // 0x00733210
 #endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_ISINMELEE
+ // Nested opt-in (chunk 2009, row 0x00745120 CTCPerceiveThing::UpdateLineOfSight): Ego_r.pdb 0x0074B330 ?IsInMelee@CTCCombat@@QBE_NXZ, out of
+ // line in retail at 0x00733190 (mov ecx,[ecx+24h] ; jmp: ParentCreature; Ego_r order IsInMeleeAsAttacker 0x0074B310 / IsInMeleeAsAttacked
+ // 0x0074B320 / IsInMelee 0x0074B330 / IsAbleToBeKnockedDown 0x0074B340 = retail 0x00733170 / 0x00733180 / 0x00733190 / 0x007331A0). Declaration only.
+ bool IsInMelee() const;                                                 // 0x00733190
+#endif
 #ifdef FABLE_RETAIL_CTCCOMBAT_FLOURISH
  // Nested opt-in (agent1022, row 0x0078C210 CTCBerserk::CTCBerserk): Ego_r.pdb / FableWin.pdb ?AddMeleeFlourishAbility@CTCCombat@@QAEXJ@Z
  // (retail 0x00736640, landed). Declaration only.

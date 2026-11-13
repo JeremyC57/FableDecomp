@@ -222,6 +222,14 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // picked-up item's def index with ecx = the singleton 0x013B8790). Declaration only: no layout change.
     void AddAutoPickup(long defIndex);                                   // 0x00437980
 #endif
+#ifdef FABLE_RETAIL_CPLAYERGUI_PERCEIVERS
+    // Opt-in (chunk 2009, row 0x00745120 CTCPerceiveThing::UpdateLineOfSight): Ego_r.pdb 0x0044A590 ?AddPerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z
+    // and 0x0044A5A0 ?RemovePerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z (CThing& -- landed rows spell them with CThing*), out of line in
+    // retail at 0x004378F0 / 0x00437900 (mov ecx,[ecx+1B8h] ; jmp: forwarders to PDrawPerceivers; Ego_r donor order 0x0044A590 / 0x0044A5A0
+    // = retail 0x004378F0 / 0x00437900). Declarations only.
+    void AddPerceivingThing(CThing& thing);                              // 0x004378F0
+    void RemovePerceivingThing(CThing& thing);                           // 0x00437900
+#endif
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CPlayerGui@@QAEX_N@Z (retail 0x0043A080,
     // landed) and ?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z (0x004378C0, the forward to PDrawMiniMap +0x160), both on Get().
 #ifdef FABLE_RETAIL_CPLAYERGUI_QUEST_DRAW

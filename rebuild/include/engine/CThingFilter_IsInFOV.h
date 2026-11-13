@@ -27,6 +27,11 @@ public:
   return cos_angle>CosFOV;
  }
 #else
+#ifdef FABLE_RETAIL_CTHINGFILTER_ISINFOV_CTOR
+ // Opt-in (chunk 2009, row 0x00745120): Ego_r.pdb / FableWin.pdb ??0CThingFilter_IsInFOV@@QAE@ABVC3DVector@@0MM_N@Z, out of line in retail
+ // at 0x006A7150 (landed, ). Declaration only.
+ CThingFilter_IsInFOV(const C3DVector& from_pos,const C3DVector& direction,float fov,float radius,bool angle_test_3d);   // 0x006A7150
+#endif
  bool operator()(const NPlayerTargeting::CTargetPoint&)const;
  bool operator()(const C3DVector&)const;
 #endif

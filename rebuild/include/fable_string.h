@@ -183,6 +183,10 @@ public:
     void SetLength(long length);                               // 0x0099BC50 ?SetLength@CWideString@@QAEXJ@Z
     const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
+#ifdef FABLE_RETAIL_CWIDESTRING_ASSIGNCHAR
+    // Row 0x005AD571: ??4CWideString@@QAEABV0@G@Z, out of line (landed 0x0099B860).
+    const CWideString& operator=(wchar_t character);             // 0x0099B860
+#endif
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
     bool operator!=(const wchar_t* other) const;

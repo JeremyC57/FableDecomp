@@ -41,6 +41,9 @@ class CThingBuilding;
 class CHeroMarriageDef;
 class CThingPlayerCreature;
 enum EOpinionAttitudeType;                                   // MS forward enum (the row defines the enumerators it uses)
+#ifdef FABLE_RETAIL_CTCWIFE_APPEARANCEBOOL
+enum EWifeAppearanceCategories;                              // MS forward enum (Ego_r.pdb; enumerator names not in the name sets)
+#endif
 
 class CTCWife : public CTCBase {
 public:
@@ -152,6 +155,14 @@ private:
     float GetNumHoursMarriedFor() const;                     // 0x006CEC90 ?GetNumHoursMarriedFor@CTCWife@@ABEMXZ
     void FindAppropriateGift();                              // 0x006CF530 ?FindAppropriateGift@CTCWife@@AAEXXZ
     void SetAttractionIcon(bool show, float value, unsigned char type);   // 0x006CFC90 ?SetAttractionIcon@CTCWife@@AAEX_NME@Z
+#ifdef FABLE_RETAIL_CTCWIFE_APPEARANCEBOOL
+    // Retail opt-in (w22 agent2012, row 0x006D1250 CheckAppearanceChanges): FableWin.pdb ?AppearanceBool@CTCWife@@AAEAA_NW4EWifeAppearanceCategories@@@Z
+    // (private, inline: its COMDAT 0x02489F40 follows CheckAppearanceChanges 0x02488FE0, the function that references it): the
+    // husband-appearance flag of categories 12..15 -- the row reads / writes BooleanHusbandAppearances +0xE9 / +0xEA / +0xEB for
+    // categories 13 / 14 / 15 (paired with FrameNoticedChangeInAppearance +0xD8 / +0xDC / +0xE0). No layout change (declared in
+    // the class's private section, as the PDB's AAE spelling).
+    bool& AppearanceBool(EWifeAppearanceCategories category) { return BooleanHusbandAppearances[category - 12]; }
+#endif
     void CheckAppearanceChanges(CThingPlayerCreature& hero); // 0x006D1250 ?CheckAppearanceChanges@CTCWife@@AAEXAAVCThingPlayerCreature@@@Z
     static const CCharString CourtingAdviceGroupNames[4];
 #ifdef FABLE_RETAIL_CTCWIFE_MALEVOICE

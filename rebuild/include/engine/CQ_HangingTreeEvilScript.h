@@ -30,6 +30,10 @@ public:
     void BanditYells();                                                  // 0x00D69CD0
     void CleanUp();                                                      // 0x00D6B720
     void DoMission();                                                    // 0x00D6BFA0
+#ifdef FABLE_RETAIL_CQ_HANGINGTREEEVIL_CONCLUSION
+    // Row 0x00D6D670 (Ego_r.pdb + FableWin.pdb ?Conclusion@CQ_HangingTreeEvilScript@NScript@@QAEXXZ).
+    void Conclusion();                                                   // 0x00D6D670
+#endif
     bool IntroCutscenePlayed;                                            // +0x48
     bool BanditsStarted;                                                 // +0x49
     bool BanditKilled;                                                   // +0x4a

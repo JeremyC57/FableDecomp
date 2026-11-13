@@ -273,7 +273,20 @@ public:
         return iterator(y);
     }
 #endif
-#if defined(FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_BODY)
+#if defined(FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_NOINLINE)
+    // Retail opt-in (w22 agent3019, row 0x006D1250 CTCWife::CheckAppearanceChanges): the STLport 4.6.1 _tree.h const member-template
+    // find with its body visible (`return const_iterator(_M_find(__k));`) but called out of line, as retail does at all three
+    // set<long> sites (0x006D134D / 0x006D1467 / 0x006D1734 -> 0x00616580, whose body is this find with _M_find expanded). The
+    // visible body tells VC7.1 the key is only read (the caller forwards the stored key across the following ~CCharString call and
+    // shares its frame word, 0x006D170F..0x006D171E); declaration-only find cannot do that, and the plain inline body is expanded at
+    // the loop-2 and tattoo sites (c2 cost scores 68 / 60 < 74, while the LowerBound sites retail expands score 63 / 60, so no
+    // /d2inlT<N> separates them). Inline-budget device per EXTRA_RULES (owner decision 2026-11-08, preference 3).
+#if defined(_MSC_VER)
+    template<class KT> __declspec(noinline) const_iterator find(const KT& key) const { return const_iterator(_M_find(key)); }
+#else
+    template<class KT> const_iterator find(const KT& key) const { return const_iterator(_M_find(key)); }
+#endif
+#elif defined(FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_BODY)
     // Retail opt-in (chunk 1016, row 0x006D8790 CTCHeroExperience::AddSuccessfulStrikeOfType): owner decision D1 (2026-11-03) with the
     // body visible -- STLport 4.6.1 _tree.h `template <class _KT> const_iterator find(const _KT& __k) const { return
     // const_iterator(_M_find(__k)); }`. Retail calls the map<EDamageAttribute,float> instance out of line (0x006DAB90, the landed

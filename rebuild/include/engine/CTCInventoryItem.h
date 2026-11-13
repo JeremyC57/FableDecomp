@@ -9,6 +9,9 @@
 #include "rebuild_abi.h"
 
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_STARTINGRHSET
+#include "engine/CRightHandedSet.h"
+#endif
 #if defined(FABLE_RETAIL_CTCINVENTORYITEM_ENGINEGRAPHIC) || defined(FABLE_RETAIL_CTCINVENTORYITEM_STATICENGINEGRAPHIC)
 #include "engine/CEngineGraphic.h"
 #endif
@@ -73,6 +76,11 @@ public:
     // FableWin.pdb / Ego_r.pdb ?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z (static __fastcall, retail 0x005D9730).
     static CRightHandedSet __fastcall GetStartingRightHandedSet(long defIndex);   // 0x005D9730
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_STARTINGRHSET
+    // Retail opt-in (row 0x00607330): ?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z, static `__fastcall`,
+    // out of line at 0x005D9730 (landed). Declaration only.
+    static CRightHandedSet __fastcall GetStartingRightHandedSet(long defIndex);       // 0x005D9730
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_KINDS
     // Nested opt-in (chunk 867, row 0x00590F0B CTCInventory::GetItemsListUIComponentPC): the two static `__fastcall` item-kind
     // tests on a def index, FableWin.pdb / Ego_r.pdb ?IsBook@CTCInventoryItem@@SI_NJ@Z 0x005D9970 (a valid def with a book sub-def;
@@ -96,6 +104,10 @@ public:
     // landed 0x009261F0 binds 0x005D9070 as non-const QAE (NAME_FIX candidate). Declarations only: no layout change.
     CWideString GetDescription() const;                                               // 0x005D9070
     CRightHandedSet GetStartingRightHandedSet() const;                                // 0x005D92F0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_ISCLOTHING
+    // Row 0x005AD571: Ego_r.pdb / FableWin.pdb ?IsClothing@CTCInventoryItem@@SI_NJ@Z, out of line.
+    static bool __fastcall IsClothing(long defIndex);                                 // 0x005D9C60
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_DETAILS
     // Nested opt-in (chunk 1002, CTCInventoryWeapons description rows 0x005C6B26 / 0x005C71AA / 0x005C7452): Ego_r.pdb / FableWin.pdb

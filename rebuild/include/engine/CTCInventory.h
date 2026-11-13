@@ -320,6 +320,13 @@ public:
     void OpenPCMapMenu();                                            // 0x00589A30
     void OpenPCSkillsMenu();                                         // 0x00587BFF
     void OpenPCStatusMenu();                                         // 0x0058A763
+#ifdef FABLE_RETAIL_CTCINVENTORY_MOUSEPOINTER
+    // Nested opt-in (chunk 2058, row 0x00563920 CTCHeroOnlineScoreboard::DisplayScoreboardGUI): FableWin.pdb
+    // ?GetMousePointer@CTCInventory@@QAEPAVCComponent@NUISystem@@XZ (0x022E66F0, the COMDAT emitted right after
+    // ?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@AAEXXZ, its first user), inline in retail: the row reads PMouse_Pointer +0x214
+    // twice in place (0x005639BB / 0x005639E6). No layout change.
+    NUISystem::CComponent* GetMousePointer() { return PMouse_Pointer; }
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_OPTIONSMENU
     // Nested opt-in (chunk 880, row 0x0058AF10): ?OpenPCOptionsMenu@CTCInventory@@QAEXXZ (Ego_r.pdb / FableWin.pdb, public), the PC
     // options screen builder. The open-menu id is the PDB's nested enum CTCInventory::CURRENT_OPEN_MENU (pdb_class_keys.tsv W4,

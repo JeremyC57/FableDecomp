@@ -30,6 +30,11 @@ public:
     void LoadGameState(CPersistContext& context);                       // 0x00449E60
 #endif
     long           GetMainPlayerNumber() const;              // 0x00449700
+#ifdef FABLE_RETAIL_CPLAYERMANAGER_JOYSTICKDEVICE
+    // Retail opt-in (bwf2 row 0x004830A1 CTCInGameMenu::OpenInGameMenu): Ego_r.pdb ?GetMainPlayerJoystickDeviceNumber@CPlayerManager@@QBEJXZ
+    // (0x00445140, right after GetMainPlayer) = retail 0x00449980 (right after GetMainPlayer 0x00449970). Declaration only.
+    long           GetMainPlayerJoystickDeviceNumber() const;  // 0x00449980
+#endif
 #ifdef FABLE_RETAIL_CPLAYERMANAGER_MULTIPLAYERCOLOUR
     // Retail opt-in (wf5, row 0x0064C869): see the default branch below. Declaration only.
     class ::CRGBColour GetMultiplayerColour(long number) const;      // 0x00449B60
