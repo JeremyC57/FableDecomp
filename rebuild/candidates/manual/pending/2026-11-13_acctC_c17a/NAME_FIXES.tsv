@@ -1,9 +1,0 @@
-address	correct_symbol	evidence	wrong_spellings_seen
-01436e18	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	reloc_bindings + Ego_r name set; row-1 TU	g_pRenderManagerCore (landed 0x00B9D670, 0x00B9E750)
-01436e14	?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A	reloc_bindings; Anniversary PDB GPShaderRenderManager	g_pShaderRenderManager (landed 0x00B9E750)
-01436ea0	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	reloc_bindings	g_pEngineCamera (C16 row TU, cloth c8a sources)
-01436e9c	?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A	reloc_bindings; cloth rows already use it	g_pEngineLightingManager (C16 row TU)
-01436e5c	?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A	reloc_bindings	g_pOcclusionManager (C16 row TU)
-01436e98	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	reloc_bindings	g_pResourceManager (C16 row TU)
-01436e78	(DECISION) g_pPrimitiveRenderer v g_pEnginePrimitiveRenderer	reloc_bindings has ?g_pPrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A; 42 landed files say g_pEnginePrimitiveRenderer; Anniversary PDB has GPPrimitiveRenderer	g_pEnginePrimitiveRenderer (landed 0x00BA48F0 NoMorph etc.)
-00b9d670 helper	?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z	FableWin / shared header	CRenderManagerCore::SetTexture (landed 0x00B9D670 local model)

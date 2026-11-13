@@ -1,6 +1,0 @@
-address	name	evidence
-0x00651B04	?Draw@CDrawAbilityButtons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z	Ego_r/FableWin name; vtable slot 2 of 0x0125A6C8; RELOCATION_MATCH
-0x00645099	?DrawButton@CDrawAbilityButtons@NPlayerGui@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJ_NW4EEngine2DLayer@@@Z	landed row; same TU
-0x01375744	HUDRingAlpha	DESCRIPTIVE (unnamed .data byte, found in no PDB/FSE/EgoCore list)
-0x00BB30A0	?Render2DClothPrimitive@CEngineClothRenderer@@QAEXABVCParticleSimulation@@ABVC3DClothPrimitive@@ABVC3DPrimitive2@@ABVCEngineSubPrimitiveMeshBase@@AAVCEngineInternalPrimitiveMeshBase@@ABVCMatrix3x4@@W4ERenderPassType@@_N@Z	Ego_r + FableWin 0x02E73570; called from 0x00B81640 (landed)
-0x00BA9A70	?Get2DAlphaMaskTexture@CEnginePrimitiveManagerMeshBase@@SIPBVCTexture@@KKAA_NPBVCGraphicDataBank@@_N@Z	Ego_r 0x00A60640 / FableWin 0x02E73D60; fastcall call from 0x00BB3C25 (ecx index, edx mipmap)

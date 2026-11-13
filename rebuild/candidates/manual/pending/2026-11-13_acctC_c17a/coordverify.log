@@ -1,5 +1,0 @@
-addr       parity           behav  name
-00b9e5b0   RELOCATION_MATCH PASS   RenderMeshPrimitiveBlocksIndexBuffer
-
-WINS: 1
-  00b9e5b0 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocksIndexBuffer

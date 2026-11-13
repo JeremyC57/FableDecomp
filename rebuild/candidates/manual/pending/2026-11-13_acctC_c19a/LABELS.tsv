@@ -1,0 +1,6 @@
+address	name	evidence
+00b9e5b0	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocksIndexBuffer	Ego_r/FableWin mangled name, caller RenderMeshPrimitiveBlocks; matched
+00ba50a0	CEnginePrimitiveManagerStaticMeshesBase::SetupStaticBlocks	Ego_r/FableWin mangled name in the overlay header; matches in TU
+00ba9360	CEnginePrimitiveManagerMeshBase::GetDiffuseTexture	landed name; shared-header text in the row-1 TU matches at 0x00BA9360
+00ba95d0	CEnginePrimitiveManagerMeshBase::GetBumpTexture	landed name; shared-header text in the row-1 TU matches
+00ba9830	CEnginePrimitiveManagerMeshBase::GetReflectionTexture	Ego_r/FableWin mangled name in the overlay header; never writes its bool& param (no byte store in 0x00BA9830..0x00BA9A6A)

@@ -1,3 +1,0 @@
-address	name	evidence
-00b9e5b0	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocksIndexBuffer	Ego_r/FableWin mangled name, caller RenderMeshPrimitiveBlocks; matched
-00ba50a0	CEnginePrimitiveManagerStaticMeshesBase::SetupStaticBlocks	Ego_r/FableWin mangled name in the overlay header; matches in TU
