@@ -1,7 +1,9 @@
 // CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegion& region) -- builds the mini-map marker sprites of a region
-// Grade: DIFFER(9538v9571) -- D113 (exact) / DR88; call targets = retail (303); residue = Reset<CComponent> inline split + shape (FITTED ELSE_NULL text: retail expands the DEFAULT text but calls the interesting-marker site 0x00603838, a c2 static-frequency fact of the IsMapLoaded loop, see NOTES), traders-loop iterator/trader homes, alignment pads (agentC15)
+// Grade: DIFFER(9571v9571) -- D29 (mx) with the FITTED inline-budget pair below; 303/303 calls, every Reset expansion and all 738 esp references = retail; left: 0x006031D7 (movsx ecx v edx + push order), 0x00603C22 (two reloads swapped at the teleporters loop end), 0x00604B40 (retail reloads `it` at the traders loop top) -- agentC21
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00603000, 9,571 bytes, thiscall `ret 8`.
 // Leaf: ?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z
+// Flags: /d2inlT72
+// Inline-budget: FABLE_RETAIL_CCOUNTEDPOINTER_RESET_ELSE_KEEPS_INFO (Reset own COMDAT 114 bytes, price 106) + /d2inlT72 -- retail calls Reset<CComponent> at 0x0060328E / 0x006034D7 / 0x00603838 and expands the other ten sites; its price in this TU is 108/109 (c2 prices by COMDAT bytes), the default text prices 95. FITTED: coordinator decision needed (agentC21 NOTES).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
@@ -104,7 +106,7 @@
 #define FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH
 #define FABLE_RETAIL_STLP_FIND_NOINLINE_BODY
 #define FABLE_RETAIL_CTHINGFILTER_ENEMYCREATURE_CTOR
-#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_ELSE_NULL
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_ELSE_KEEPS_INFO
 #define FABLE_RETAIL_CVECTORMAP_INLINE_CONST_LOWERBOUND
 #define FABLE_RETAIL_STLP_MEM_FUN
 #define FABLE_RETAIL_CPLAYERGUI_PEEKGUIDEF
@@ -486,9 +488,10 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
     std::list<const CMiniMapDisplay::CMarkerInfo*> nonAutoMarkers;
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetMiniMap().GetNonAutoMarkers(nonAutoMarkers);
     for (std::list<const CMiniMapDisplay::CMarkerInfo*>::iterator info = nonAutoMarkers.begin(); info != nonAutoMarkers.end(); ++info) {
+        const CMiniMapDisplay::CMarkerInfo* markerInfo = *info;
         C3DVector pos;
-        if ((*info)->PThing.Get())
-            pos = (*info)->PThing->GetPos();
+        if (markerInfo->PThing.Get())
+            pos = markerInfo->PThing->GetPos();
         if (MiniMapIsPrisonCourtyard1 && pos.Z > 51.0f)
             continue;
         if (MiniMapIsPrisonCourtyard2 && pos.Z <= 51.0f)
@@ -501,7 +504,7 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
         C2DVector position;
         GetRelativePosOnMiniMap(region, pos, position);
         marker->GetStates()[0].Position = position;
-        GFDebugPDynamicCast(marker.Get(), (NUISystem::CSprite*)0)->SetGraphicIndex((*info)->GraphicIndex);
+        GFDebugPDynamicCast(marker.Get(), (NUISystem::CSprite*)0)->SetGraphicIndex(markerInfo->GraphicIndex);
         parent->AddChild(marker);
     }
     // The hero's henchmen.
@@ -511,11 +514,11 @@ void CTCInventoryMap::CreateMiniMapMarkers(NUISystem::CComponent* parent, CRegio
         followed->GetFollowers(followers);
     for (unsigned long j = 0; j < followers.size(); ++j) {
         CThing* follower = followers[j];
-        if (IsThingAsPosBeingDrawn(follower->GetPos())
-            && (follower->GetDefGlobalIndex() == (unsigned long)CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD")
+        if (IsThingAsPosBeingDrawn(follower->GetPos()))
+            if (follower->GetDefGlobalIndex() == (unsigned long)CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD")
                 || follower->GetDefGlobalIndex() == (unsigned long)CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD_WEAK")
                 || follower->GetDefGlobalIndex() == (unsigned long)CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD_GOOD")
-                || follower->GetDefGlobalIndex() == (unsigned long)CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD_GOOD_WEAK"))) {
+                || follower->GetDefGlobalIndex() == (unsigned long)CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD_GOOD_WEAK")) {
             marker.Reset(manager->CreateComponent("UI_HENCHMAN_MARKER", false));
             C2DVector position;
             GetRelativePosOnMiniMap(region, follower->GetPos(), position);

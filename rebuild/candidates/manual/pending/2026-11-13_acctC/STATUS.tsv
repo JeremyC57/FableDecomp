@@ -7,9 +7,9 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b783f0	OPEN	9343	2026-11-13_acctC_c19a/open_00b783f0	C8 -> C13 -> C16: DIFFER(9343v9343), 3 residues; quartet needs exactly 2 dead units before the second SetCommonRenderStates expansion; bool-parameter helper ruled out	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
 005f1b10	MATCHED_STAGED	8383	2026-11-13_acctC_c9a	C5 -> C7 -> C9	parked	CTCInventoryAbilities::ConstructPCMagicList
-0058578b	OPEN				parked	CTCInventory::CTCInventory::vfunc_30
+0058578b	IN_PROGRESS			C23 row 3	parked	CTCInventory::CTCInventory::vfunc_30
 00b4d370	OPEN				parked	CEngineShadowRenderer::UpdateShadowSpace
-00601310	OPEN				parked	_global::ConstructQuestsScreen_MainMenu
+00601310	IN_PROGRESS			C23 row 1	parked	_global::ConstructQuestsScreen_MainMenu
 00b89c30	IN_PROGRESS			C22 row 1	parked	CEngineScreenEffectOutlineGlow::ApplyOutline
 00b5ca70	OPEN				parked	CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer
 00651b04	MATCHED_STAGED	5126	2026-11-13_acctC_c2a	C2	parked	CDrawAbilityButtons::Draw
@@ -26,12 +26,12 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00e20600	OPEN				parked	NScript::CQR_EscortTraderScript::CTraderToEscort::Main
 00502e90	OPEN				parked	CWorldMap::PopulateRegionWithVillagers
 006096e0	OPEN				parked	CTCInventoryMap::ConstructLogbookListPC
-0061e6d0	OPEN				parked	CTCInventoryQuests::ConstructQuestListPC
+0061e6d0	IN_PROGRESS			C23 row 2	parked	CTCInventoryQuests::ConstructQuestListPC
 00e4b5b0	OPEN				parked	NScript::CV_BanditTollScript::CTollBandit::Main
 00e3bb70	OPEN				parked	NScript::CV_BordelloScript::CMadame::Main
 00e50fd0	OPEN				parked	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main
 00d973d0	OPEN				parked	NScript::CQ_HobbeCaveScript::CBanditSacrifice::Main
-00603000	IN_PROGRESS	9571	2026-11-13_acctC_c14a/open_00603000	C15 -> C18 -> C21 (Fable) row 1: DIFFER(9538v9571); the Reset<CComponent> inline decisions in both map rows fit one callee cost of ~108 (default text costs 95) while retail body and expansions are the default text	parked	CTCInventoryMap::CreateMiniMapMarkers
+00603000	PARKED	9571	2026-11-13_acctC_c14a/open_00603000	C15 -> C18 -> C21 (Fable): DIFFER(9571v9571), exact diff 29, three hunks (0x006031D7, 0x00603C22, 0x00604B40), but only with a fitted Reset text (else Info = Info) plus per-row /d2inlT72. Real cause of the Reset<CComponent> inline price (+13) unknown. Parked: OWNER DECISION on the Reset device	parked	CTCInventoryMap::CreateMiniMapMarkers
 00e5fd40	OPEN				parked	NScript::CV_BodyGuardScript::CBodyGuard::Main
 0078fd60	OPEN				parked	CTCDivineWrath::FrameUpdate
 00e33ea0	OPEN				parked	NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main
@@ -53,7 +53,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00dc5f80	OPEN				parked	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main
 00d3d150	OPEN				parked	NScript::CQ_GuildTrainingScript::CAppleGirl::Main
 00a8b990	OPEN				parked	C3DMesh2::InitialiseBones
-005ff190	IN_PROGRESS	4176	2026-11-13_acctC_c14a/open_005ff190	C7 -> C14 -> C15 -> C18 -> C21 (Fable) row 2: DIFFER(4096v4176); frame, jump table, 171 calls equal; same Reset cost question plus memory-vs-register residue	parked	CTCInventoryMap::CreateMapMarkers
+005ff190	PARKED	4176	2026-11-13_acctC_c14a/open_005ff190	DIFFER(4096v4176); 4112v4176 and 171/171 calls with the same fitted pair; frame-home residue not worked. Parked with 00603000	parked	CTCInventoryMap::CreateMapMarkers
 00d75060	OPEN				parked	NScript::CQ_HangingTreeGoodScript::FinalRound
 00bafa00	OPEN				parked	CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites::RenderClockPrim
 00931390	OPEN				parked	CAIStateGroup_MinionReactToCriminal::?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ

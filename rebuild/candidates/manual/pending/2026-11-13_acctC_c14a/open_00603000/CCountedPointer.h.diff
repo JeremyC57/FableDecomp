@@ -1,5 +1,5 @@
---- a/rebuild/include/engine/CCountedPointer.h
-+++ b/rebuild/include/engine/CCountedPointer.h
+--- a/engine/CCountedPointer.h
++++ b/engine/CCountedPointer.h
 @@ -203,6 +203,21 @@
      }
  #ifdef FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
@@ -22,3 +22,26 @@
  #elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CALLS_DTOR)
      // Per-TU opt-in (Codex name fix 2026-11-10, row 0x00429C6F Reset<NUISystem::CComponent>, size TU): retail's out-of-line Reset
      // calls 0x004291DE, the Data-first release body that Ego_r.pdb names ??1?$CCountedPointer@VCComponent@NUISystem@@@@ (the
+@@ -215,6 +230,22 @@
+         if (data)
+             Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
+     }
++#elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_RESET_ELSE_KEEPS_INFO)
++    // Inline-budget opt-in (acctC agentC21, the CTCInventoryMap TU: rows 0x00603000 / 0x005FF190; FITTED, see hdr/README.md). The
++    // default text plus an else arm that stores Info's own value. It emits the default bytes wherever retail can be compared (the
++    // /O1 out-of-line body = 0x00429C6F, 59 bytes; every expansion on a local = the default expansion), but VC7.1's own /O2 COMDAT
++    // of it is 114 bytes instead of 103 (the null path keeps a `mov [esi+4],0` and its own exit), and c2 prices an inline callee by
++    // the bytes of that COMDAT: 106 instead of 95. Retail's price for Reset<CComponent> in this TU is 108 or 109 (measured on three
++    // rows); the missing 2 are covered per row by `// Flags: /d2inlT72`. NOT claimed to be the original text.
++    void Reset(T* data)
++    {
++        ReleaseData();
++        Data = data;
++        if (data)
++            Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
++        else
++            Info = Info;
++    }
+ #else
+     void Reset(T* data)
+     {
