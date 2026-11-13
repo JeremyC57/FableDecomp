@@ -893,3 +893,8 @@
 05:08 00b89c30 probe sr_tfar_0.cpp pattern -> DIFFER(6429v6431) 39 39 ndiff 7 26:Smb 27:Sbm 28:Smb 29:Smb 32:Cbm 33:Cbm 34:Cbm
 05:08 00b89c30 probe sr_tfar_1.cpp pattern -> DIFFER(6429v6431) 39 39 ndiff 7 26:Smb 27:Sbm 28:Smb 29:Smb 32:Cbm 33:Cbm 34:Cbm
 05:08 00b89c30 probe base.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+05:20 00b89c30 probe v1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+05:20 00b89c30 probe v2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+05:20 00b89c30 probe v3.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+05:20 00b89c30 probe v4.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+05:20 00b89c30 probe v5.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb

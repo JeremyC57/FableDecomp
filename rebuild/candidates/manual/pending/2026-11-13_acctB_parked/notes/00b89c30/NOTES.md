@@ -162,3 +162,18 @@
   c2 commutative key (which record pair at block 28; dumpblk tuple word 0x28 nodes / sib.py-style hook earlier than the block pass) to
   predict which REAL construct could move T28 by +2..+33 alone; or check the other SetAlphaRef users (00bbc460 / 00bf01e0 / 009a1720 /
   00ab83a0 / 00ba6240) for a context pattern shared with this row.
+
+## Session 6 (author agent, 2026-11-13) -- budget-capped (5 grades); still DIFFER(6431v6431) 1 hunk; differ/ unchanged
+- Five grades (c23/v1..v5, sw.sh, all exactly base 28:Smb): qualified `GPRenderManager->CRenderStateManager::SetAlphaRef(1)`;
+  `(*GPRenderManager).SetAlphaRef(1)`; `SetAlphaRef(unsigned long(1))`; `SetAlphaRef(true ? 1 : 0)`; qualified AlphaRef + Src + Dest.
+- Ordering rule (from agent3010 NOTES l.168-175, not yet confirmed for this AND): c2's tree linearizer 0x1075FC1C canonicalises every
+  commutative tuple (ops 0x278..0x28A) by merge-sorting operands DESCENDING on key = (SU need<<24)|(count<<16)|hash16; a temp (record
+  kind 3) hashes id<<6 (mod 65536; a single-def temp hashes as its def tuple), a field-record leaf rotl16(id,5). With id<<6: T28 4054 ->
+  62848, 4056 -> 62976; T29 4092 -> 65280 (4090 -> 65152); T30 4128 -> 2048 (4126 -> 1920): edges per block differ, so the partner key
+  is per block too (likely the block's GPRenderManager-load temp / the CurrentBookmarkMask IND tuple), consistent with "2 short".
+- Hook started (not finished): $W/k/key2.py + run.sh (copy of agent3010 c2h7/key.py, hook 0x1075CD1D, all fns, ops 0x278..0x28A),
+  output $W/k/base.json; bm.py found NO leaf named *BookmarkMask* in the key events -> the AND's operands are temps/INDs (leaf kinds,
+  not named field records): next run should print every 2-operand event of ApplyOutline's predecessor fn with kind/key and match by
+  key value 0xF580 (62848) to get the partner, then repeat on c8/x3.cpp ($W/k/x3.json may be written by the background run).
+- Best next idea: finish the key dump (above) to name the partner record; then only constructs that move T28 by +2..+33 (or its
+  partner by -2) are worth grading. Otherwise owner's decision on the descriptive frame (c21/p3 or c13/m4).
