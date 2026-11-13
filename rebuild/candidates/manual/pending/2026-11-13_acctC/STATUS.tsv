@@ -53,7 +53,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00dc5f80	OPEN				parked	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main
 00d3d150	OPEN				parked	NScript::CQ_GuildTrainingScript::CAppleGirl::Main
 00a8b990	OPEN				parked	C3DMesh2::InitialiseBones
-005ff190	QUEUED	4176	2026-11-13_acctC_c4a/open_005ff190	C10 row 2: DIFFER(4096v4176) after C4, C5, C7	parked	CTCInventoryMap::CreateMapMarkers
+005ff190	OPEN	4176	2026-11-13_acctC_c4a/open_005ff190	DIFFER(4096v4176) after C4, C5, C7 (C9, C10 never reached it); needs a dedicated agent	parked	CTCInventoryMap::CreateMapMarkers
 00d75060	OPEN				parked	NScript::CQ_HangingTreeGoodScript::FinalRound
 00bafa00	OPEN				parked	CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites::RenderClockPrim
 00931390	OPEN				parked	CAIStateGroup_MinionReactToCriminal::?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ
@@ -112,7 +112,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00981410	OPEN				parked	_global::AIAction_InteractWith
 00acdb80	OPEN				parked	QuadricOptimiserInternals::COptimisedPrimitive::COptimisedPrimitive
 0068cb90	OPEN				parked	CInputProcessControlFreeCamera::CInputProcessControlFreeCamera::ProcessInput
-005f59c7	IN_PROGRESS	2652	2026-11-13_acctC_c9a/open_005f59c7	C9 -> C10: DIFFER(2649v2652), register choice only	parked	CTCInventoryAbilities::ConstructPCExpressionsList
+005f59c7	IN_PROGRESS	2652	2026-11-13_acctC_c9a/open_005f59c7	C9 -> C10 -> C11: DIFFER(2649v2652); forcing two allocator priorities gives retail exactly, source fact not yet found	parked	CTCInventoryAbilities::ConstructPCExpressionsList
 00435530	OPEN				parked	CDisplayEngine::DoRender
 00439070	OPEN				parked	CPlayerGui::DrawPreparePrimitivesForEngine
 007de710	OPEN				parked	CTCWallMount::AttachObject
@@ -133,7 +133,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b73760	OPEN				never_worked	CEngineWaterRenderer::CEngineWaterRenderer
 004736c4	OPEN				never_worked	CPlayerGuiDef::?Transfer@CPlayerGuiDef@@UAEXAAVCPersistContext@@@Z
 00bae2d0	OPEN				never_worked	CEnginePrimitiveManager2DSprites::?RenderSubPrimitive@CEnginePrimitiveManager2DSprites@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
-005eeff2	OPEN				never_worked	_gapscan::sub_005eeff2
+005eeff2	QUEUED	5619		C11 row 2 (GetMagicListUIComponent per C7)	never_worked	_gapscan::sub_005eeff2
 00b3cb30	OPEN				never_worked	CEngineResourceManager::CEngineResourceManager
 0058807d	OPEN				never_worked	CTCInventory::OpenPCInventoryMenu
 00598a1c	OPEN				never_worked	CFrontEndManager::CFrontEndManager::Init2
