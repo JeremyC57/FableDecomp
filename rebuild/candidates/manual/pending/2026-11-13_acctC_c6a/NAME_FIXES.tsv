@@ -1,0 +1,10 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x004375E0	?GetAbilityButtonScale@CPlayerGui@@QBEMXZ	body fld [ecx+278h];fabs;ret = fabs(AbilityButtonScale); Ego_r 0x0044A260 + FableWin 0x0181D201/0x01A80480	CMap_DrawGetSeaLevel
+0x00625930	?IsActive@CTCQuickAccessMenu@@QBE_NXZ	body mov al,[ecx+0Ch] = Active; Ego_r + FableWin IsActive	?M@C_00625930@@QAEEXZ
+0x00A03B30	??1CInputEvent@@QAE@XZ	Ego_r ??1CInputEvent; called as dtor after both CInputEvent locals	?M@C00a03b30@@QAEXXZ
+0x0072C430	?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z	FableWin name; bool ret 4	CTCSpecialAbilities::GetAbilityAvailability
+0x005DA7D0	?GetWeaponType@CTCWeapon@@QBE?AW4EWeaponType@@XZ	Ego_r/FableWin GetWeaponType; called on the CTCWeapon of the held weapon 3x in 0x00651B04 (row dossier)	NInventory::CCategory::GetCategoryIdentifier (ICF label)
+0x00BF0B20	?SetupOutlineFillStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@M@Z	bwf1: called for RENDER_PASS_OUTLINE_FILL (13) at 0x00BB4615, 0x00BF0740 for pass 12; Ego_r sizes; CONFLICTS with repo opt-in _OUTLINESTENCILSTATES (SetupOutlineStencilStates @ 0x00BF0B20) -- coordinator decision	SetupOutlineStencilStates
+0x00B8D090	?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ	Ego_r/FableWin	BeginQuery
+0x00B8D0A0	?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z	Ego_r/FableWin	EndQuery
+0x01436E84	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A (spelling used by 0x00BB30A0; class CEnginePrimitiveTypeInfo per Ego_r)	reloc_bindings carries four spellings for this one global; coordinator to pick one (no PDB data-symbol dump)	g_pPrimitiveManagers, g_pPrimitiveTypeInfo, g_pEngine_01436e84

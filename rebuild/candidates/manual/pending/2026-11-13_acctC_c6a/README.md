@@ -32,3 +32,14 @@ portable, and is what a Lionhead programmer plausibly wrote. What is evidenced a
 16 diffs + 3 new headers (`fable_assert.h`, `C3DClothPrimitive.h`, `CEngineInternalPrimitiveMorphedStaticMesh.h`); table in
 hdrdiff/README.md. New opt-ins only, moved asserts pinned. Whole-tree `equiv_check.py` still to run when applied. Several of these
 headers overlap hand-back c2a (same overlay lineage): apply c2a first, then this.
+
+## Update after the agent's final hand-back (same day)
+- Header diffs refreshed from the agent's final overlay: it moved the row's local `CEngineClothRenderer` / `C3DClothPrimitive`
+  models into shared headers and pinned 341 moved asserts (most from the c2a overlay lineage). Coordinator re-verified against that
+  overlay: this row RELOCATION_MATCH PASS, and the c2a row 0x00651B04 also still RELOCATION_MATCH PASS. Apply THIS folder's
+  header diffs in place of c2a's for the headers both touch.
+- A measured point against a uniform release macro, for the owner's review: dead arms placed inside the inline SetRenderState /
+  AddStateToUpdateList change the frame and inlining (4514 / 4704 bytes), although FableWin's SetRenderState has asserts. So either
+  those helpers' asserts were compiled differently, or the dead-arm form is only an approximation of the real record effect.
+- `open_00bb30a0/`: best source of the sibling 0x00BB30A0 Render2DClothPrimitive, DIFFER(3538v3538), two record-count sites left
+  (0x00BB33B7 operand order, 0x00BB3D28 load order); the text has about 20-24 record units too many. Agent C8 continues it.

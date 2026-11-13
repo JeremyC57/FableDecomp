@@ -49,3 +49,16 @@ unit shift (baseline 7). Measured 0-unit changes: GFDebugPDynamicCast vs static_
 named shader refs, C3DVector vs ToC3DVector (-1), scope blocks; -2: Set2DAlphaMaskTextureMode/DisableTextureFiltering written inline.
 GetRGBColour WITHOUT a named CRGBColour result gives O right but wrong colour code (3522 bytes); the named colour is needed for code.
 Removing one FlushRender expansion (diagnostic) moved O by +2 and L by -3: O and L are NOT one axis.
+Best source: differ/00bb30a0.cpp (the probe tools expect it at src/00bb30a0.cpp: copy it back before using meter.sh / rul.sh / s2.sh).
+More measured (all no change of either order): SetRenderState DESIRED / BOOKMARK / DIRTY opt-ins (EARLY_RETURN does not compile with this
+text: cl spins), ApplyTriVertexShader texts (one index local, clamp-in-place, shader pointer), a named CRGBColour tint, a named CRGBFloatColour,
+C4DVector(const CRGBFloatColour&) in SetTextureFactor (FABLE_RETAIL_C4DVECTOR), static_cast instead of GFDebugPDynamicCast.
+Order-fixing but code-breaking (diagnostic only): SetTextureFactor(CRGBFloatColour(r/255,...)) without the CRGBColour temporary (O right,
+colour loads differ: retail copies the four bytes into a CRGBColour first), GetRGBColour without a named result, deleting the
+ApplyTriVertexShader call (O right, L meter 11), deleting the bail-out FlushRender.
+NEXT: (1) find the ~20 surplus record units: candidates not yet metered -- CScopedShadersEnable / capture-block texts (shared with row 1),
+the FlushRender loop text (2 expansions; FableWin FlushRender 252i carries asserts), GetMaterial / PeekTextureBank / PeekRenderInfo accessors,
+the textures-array / preloading forms; (2) every shared-helper text change must be re-checked on row 1 (its 9-assert count is fitted and can be
+re-fitted: window was 9..10); (3) no behaviour test written yet for this row (write one from test/00bb3e80.cpp's model when it matches).
+
+## 0x00B783F0 CEngineWaterRenderer::Render -- UNTOUCHED (context ran out on rows 1-2).
