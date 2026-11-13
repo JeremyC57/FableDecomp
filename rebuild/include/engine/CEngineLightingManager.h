@@ -27,6 +27,9 @@
 #include "engine/CEngineComponent.h"
 #include "engine/CEnginePrimitiveThemeChannelDesc.h"
 class C3DBoundingBox;
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_LIGHTSINSPHERE
+class C3DBoundingSphere;
+#endif
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
 // Nested opt-in (chunk 892, row 0x00B482A0 the constructor): every member named, with the Ego_r.pdb names and types and the
 // retail offsets (the landed destructor 0x00B47B50 model). The member classes the constructor builds in place:
@@ -92,6 +95,12 @@ public:
     // Ego_r.pdb / FableWin.pdb publics, out of line in retail (the ice pass 0x00B751F0 calls them):
     CEngineLocalLightArray* GetLightsInArea(const C3DBoundingBox& area, long maxLights,
                                             const CEnginePrimitiveThemeChannelDesc& channel);   // 0x00B46280
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_LIGHTSINSPHERE
+    // Nested opt-in (chunk 2032, row 0x00BA6FF0): Ego_r.pdb ?GetLightsInSphereFast@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingSphere@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
+    // (donor 0x009BC860; reloc_bindings.tsv binds 0x00B46B90 to it). Declaration only.
+    CEngineLocalLightArray* GetLightsInSphereFast(const C3DBoundingSphere& sphere, long maxLights,
+                                                  const CEnginePrimitiveThemeChannelDesc& channel);   // 0x00B46B90
+#endif
     void SetupShaderPointLights(const CEngineLocalLightArray& lights);   // 0x00B44F20
     void DisablePointLights();                                           // 0x00B44D50
     void UpdateGlobalLightingStates();                                   // 0x00B46C80
@@ -218,6 +227,12 @@ public:
     CLightingSIMDVarBlock* SIMDVarBlock;                                 // +0x4690
     ELightingManagerShadowMode ShadowMode;                               // +0x4694
     CEngineLightingManagerSpotlightParams CurrentShadowedSpotLightParams;   // +0x4698
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_PEEKGLOBALSHADOWMODE
+    // Nested opt-in (chunk 2024, row 0x00B4FC40 CEngineShadowRenderer::SetupShadowFuncRenderStates): FableWin.pdb
+    // ?PeekGlobalShadowMode@CEngineLightingManager@@QBE?AW4ELightingManagerShadowMode@@XZ (0x02D739B0; no Ego_r.pdb or Fable.exe copy),
+    // inline in retail: `mov ecx,[0x01436E9C] ; cmp dword ptr [ecx+4694h],1` (0x00B5030F).
+    ELightingManagerShadowMode PeekGlobalShadowMode() const { return ShadowMode; }
+#endif
 #else
 private:
     unsigned char          _pad_0xec[0x46d0 - 0xec];                     // +0xec LightLookupGrid .. (opaque)

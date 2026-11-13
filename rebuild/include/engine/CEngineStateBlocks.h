@@ -31,7 +31,14 @@ public:
     void ApplySolidStateBlock();                                         // ?ApplySolidStateBlock@CEngineStateBlocks@@QAEXXZ
     void ApplyAlphaStateBlock();                                         // ?ApplyAlphaStateBlock@CEngineStateBlocks@@QAEXXZ
     void ApplyAddSmoothAlphaStateBlock();                                // ?ApplyAddSmoothAlphaStateBlock@CEngineStateBlocks@@QAEXXZ
+#ifdef FABLE_RETAIL_CENGINESTATEBLOCKS_APPLY_INLINE
+    // Retail opt-in (chunk 2028, row 0x00B8DF50 CEngineOcclusionManager::FrameEnd): FableWin.pdb-only ?ApplyDiffuseOnlyStateBlock@CEngineStateBlocks@@QAEXXZ
+    // (no Ego_r.pdb or Fable.exe copy): inline in release, the member block's virtual Apply (slot 0) through the global
+    // 0x01436E90 (0x00B8DFDB `mov eax,[ecx+28h] ; add ecx,28h ; call [eax]`; the landed 0x00BCD490 has the same call on +0x20).
+    void ApplyDiffuseOnlyStateBlock() { DiffuseOnlyMode.Apply(); }
+#else
     void ApplyDiffuseOnlyStateBlock();                                   // ?ApplyDiffuseOnlyStateBlock@CEngineStateBlocks@@QAEXXZ
+#endif
     CEngineStateBlockSolid          SolidMode;                           // +0x0c
     CEngineStateBlockSolid2X        Solid2XMode;                         // +0x10
     CEngineStateBlockAlpha          AlphaMode;                           // +0x14

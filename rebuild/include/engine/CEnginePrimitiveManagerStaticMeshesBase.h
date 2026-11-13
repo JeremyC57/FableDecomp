@@ -5,6 +5,10 @@
 #include "engine/CVertexShader.h"
 #include "engine/CPixelShader.h"
 class C3DPrimitive2;class C3DMesh2;class C3DTextureStages;class CGraphicDataBank;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_SILHOUETTE
+class CEngineInternalPrimitiveStaticMesh;
+enum ERenderMode;                                                        // MS forward enum (Ego_r.pdb; no enumerator name recovered)
+#endif
 class CEnginePrimitiveManagerStaticMeshesBase : public CEnginePrimitiveManagerMeshBase {
 public:
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType);
@@ -32,6 +36,15 @@ public:
 private:
     bool SetupStaticBlocksBlankTextures(C3DPrimitive2& mesh_prim, class CEngineInternalPrimitiveStaticMesh& prim, C3DTextureStages& stages,
         const class C3DMeshMaterial* material, bool* already_set_up);   // 0x00BA4A40
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_SILHOUETTE
+    // Opt-in (chunk 2032, row 0x00BA6FF0): Ego_r.pdb / FableWin.pdb private members
+    // ?DrawImmediately@CEnginePrimitiveManagerStaticMeshesBase@@AAEXAAVCEngineInternalPrimitiveStaticMesh@@W4ERenderMode@@W4ERenderPassType@@@Z
+    // (landed 0x00BA6DC0) and ?DrawSilhouette@CEnginePrimitiveManagerStaticMeshesBase@@AAEXAAVCEngineInternalPrimitiveStaticMesh@@@Z
+    // (0x00BA6FF0, the next function in the TU). Declarations only.
+private:
+    void DrawImmediately(CEngineInternalPrimitiveStaticMesh& primitive, ERenderMode mode, ERenderPassType pass);   // 0x00BA6DC0
+    void DrawSilhouette(CEngineInternalPrimitiveStaticMesh& primitive);                                           // 0x00BA6FF0
 #endif
 private:
     unsigned long PointLightShaderIndex[6];

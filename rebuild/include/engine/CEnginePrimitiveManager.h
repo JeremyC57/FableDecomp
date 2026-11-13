@@ -36,6 +36,12 @@ public:
     virtual void Render2DPrimitive(CEngineInternalPrimitiveBase& prim, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type);   // slot 10
     virtual void RenderNonsortedPrimitives();                                                                 // slot 11
     virtual void AddStaticShadowData(CEngineInternalPrimitiveBase& prim, NEngineShadowRenderer::CShadowSceneContext& context);   // slot 12
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_GETBLOCKONLOAD
+    // Opt-in (chunk 2059, row 0x00BC25F0): FableWin.pdb ?GetBlockOnLoad@CEnginePrimitiveManager@@SI_NXZ (16b/6i: the primitive renderer's
+    // GetBlockOnLoad), inline in retail (0x00BC2620 reads the renderer's BlockOnLoad +0x04 in place). The including row defines the body
+    // (it reads the engine global).
+    static bool __fastcall GetBlockOnLoad();
+#endif
     void AddEnableConsoleVariable(const CCharString& name);              // 0x00BACD80 ?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
     void AddPrimitive(CEngineInternalPrimitiveBase&,unsigned long);
@@ -48,7 +54,13 @@ public:
 #else
     bool GetEnable() const;
 #endif                                              // ?GetEnable@CEnginePrimitiveManager@@QBE_NXZ
-    void SetEnable(bool enable);                                         // ?SetEnable@CEnginePrimitiveManager@@QAEX_N@Z
+    void SetEnable(bool enable);
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_BLOCKONLOAD
+// Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): Ego_r.pdb / FableWin.pdb
+    // ?GetBlockOnLoad@CEnginePrimitiveManager@@SI_NXZ (inline: unreferenced COMDAT 0x00B98C10 reads g_pEnginePrimitiveRenderer +0x04).
+    // The including row defines the body.
+    static bool __fastcall GetBlockOnLoad();
+#endif                                         // ?SetEnable@CEnginePrimitiveManager@@QAEX_N@Z
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_SUBPRIMITIVE
 protected:
     CArray<CEngineScene*>& SceneList;

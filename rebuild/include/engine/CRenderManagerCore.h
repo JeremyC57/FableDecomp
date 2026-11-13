@@ -133,6 +133,12 @@ public:
                                    unsigned long vertexCount, unsigned long startIndex, unsigned long primitiveCount);   // 0x00A0ACA0
 #endif
     void DrawCurrentBuffersAsTris(unsigned long startVertex, unsigned long triangleCount);         // ?DrawCurrentBuffersAsTris@CRenderManagerCore@@QAEXKK@Z
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_DRAWASTRIFAN
+    // Retail opt-in (chunk 2028, row 0x00B8DF50): Ego_r.pdb / FableWin.pdb ?DrawCurrentBuffersAsTriFan@CRenderManagerCore@@QAEXJJ@Z = retail
+    // 0x00A0AE40 (RealiseRenderState, then IDirect3DDevice9::DrawPrimitive(D3DPT_TRIANGLEFAN = 6, 0, count), `ret 8`; its twin 0x00A0AE70
+    // draws D3DPT_POINTLIST = 1, DrawCurrentBuffersAsPointList(JJ)). Declaration only.
+    void DrawCurrentBuffersAsTriFan(long startVertex, long triangleCount);                         // 0x00A0AE40
+#endif
     void SetWorldTransform(const CMatrix3x4& matrix);                    // ?SetWorldTransform@CRenderManagerCore@@QAEXABVCMatrix3x4@@@Z
     void SetTextureTransform(unsigned long stage, const CMatrix3x4& matrix);   // ?SetTextureTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z
 private:

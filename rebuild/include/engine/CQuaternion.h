@@ -8,6 +8,9 @@ inline float FABLE_FASTCALL GFSqr(float value){return value*value;}
 #ifdef FABLE_RETAIL_CQUATERNION_MATRIX4
 #include "engine/CMatrix4x4.h"
 #endif
+#ifdef FABLE_RETAIL_CQUATERNION_MATRIX4_TRANSPOSED
+#include "engine/CMatrix4x4.h"
+#endif
 class CQuaternion {
 public:
  float X,Y,Z,W;
@@ -85,6 +88,11 @@ public:
  }
 #ifdef FABLE_RETAIL_CQUATERNION_MATRIX4
  // Retail opt-in (Codex pass20): both TPI overloads and original0337fd70 body/locals.
+#ifdef FABLE_RETAIL_CQUATERNION_MATRIX4_FORCEINLINE
+ // (chunk 2047, row 0x00A9E1E0) forced: the row expands all four 4x4 conversions (c2 plain-inline scores 283..286, default
+ // threshold 74); same body.
+ FABLE_FORCEINLINE
+#endif
  void ToMatrix(CMatrix4x4& dest,const C3DVector& translation)const {
   float d=GFSqr(X)+GFSqr(Y)+GFSqr(Z)+GFSqr(W);
   float s=(d!=0.0f)?2.0f/d:1.0f;
@@ -96,6 +104,27 @@ public:
   dest(1,0)=xy+wz;dest(1,1)=1.0f-(xx+zz);dest(1,2)=yz-wx;dest(1,3)=0.0f;
   dest(2,0)=xz-wy;dest(2,1)=yz+wx;dest(2,2)=1.0f-(xx+yy);dest(2,3)=0.0f;
   dest(3,0)=translation.X;dest(3,1)=translation.Y;dest(3,2)=translation.Z;dest(3,3)=1.0f;
+ }
+#endif
+#ifdef FABLE_RETAIL_CQUATERNION_MATRIX4_TRANSPOSED
+ // Retail opt-in (chunk 2047, row 0x00A9E1E0 C3DAnimationManager::ApplyParentTransformations): FableWin.pdb
+ // ?ToMatrixTransposed@CQuaternion@@QBEXAAVCMatrix4x4@@ABVC3DVector@@@Z (0x03382B80, the COMDAT after ApplyParentTransformations, the
+ // same debug size as ToMatrix 4x4: 676 bytes / 228 instructions), inline in retail: the ToMatrix body above with the rotation part
+ // transposed and the translation in the fourth column (retail out-of-line copy of the C3DKeyframe wrapper: 0x00AA3AF0).
+#ifdef FABLE_RETAIL_CQUATERNION_MATRIX4_FORCEINLINE
+ FABLE_FORCEINLINE
+#endif
+ void ToMatrixTransposed(CMatrix4x4& dest,const C3DVector& translation)const {
+  float d=GFSqr(X)+GFSqr(Y)+GFSqr(Z)+GFSqr(W);
+  float s=(d!=0.0f)?2.0f/d:1.0f;
+  float xs=X*s,ys=Y*s,zs=Z*s;
+  float wx=W*xs,wy=W*ys,wz=W*zs;
+  float xx=X*xs,xy=X*ys,xz=X*zs;
+  float yy=Y*ys,yz=Y*zs,zz=Z*zs;
+  dest(0,0)=1.0f-(yy+zz);dest(0,1)=xy+wz;dest(0,2)=xz-wy;dest(0,3)=translation.X;
+  dest(1,0)=xy-wz;dest(1,1)=1.0f-(xx+zz);dest(1,2)=yz+wx;dest(1,3)=translation.Y;
+  dest(2,0)=xz+wy;dest(2,1)=yz-wx;dest(2,2)=1.0f-(xx+yy);dest(2,3)=translation.Z;
+  dest(3,0)=0.0f;dest(3,1)=0.0f;dest(3,2)=0.0f;dest(3,3)=1.0f;
  }
 #endif
 };

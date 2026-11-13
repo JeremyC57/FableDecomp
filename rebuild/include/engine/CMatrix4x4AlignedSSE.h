@@ -193,6 +193,14 @@ FABLE_FORCEINLINE void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& a, const
         CMatrix4x4* pdst = this;
         GF_SSE_MATRIX_MULTIPLY(pdst, pa, pb);
     } else {
+#ifdef FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_ACCESSORS
+        // Retail opt-in (chunk 2047, row 0x00A9E1E0): FableWin.pdb emits the const and non-const element accessors
+        // ??RCMatrix4x4@@QBE?BMHH@Z / ??RCMatrix4x4@@QAEAAMHH@Z (0x02E8E450 / 0x02E8E480) right after AlignedSetMultiply (0x02E8E180),
+        // i.e. this body is their first user; one sum per element through the accessors (needs FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS).
+        for (int r = 0; r < 4; ++r)
+            for (int c = 0; c < 4; ++c)
+                (*this)(r, c) = a(r, 0) * b(0, c) + a(r, 1) * b(1, c) + a(r, 2) * b(2, c) + a(r, 3) * b(3, c);
+#else
         for (int r = 0; r < 4; ++r) {
             for (int c = 0; c < 4; ++c) {
                 float v = a.Data[r][0] * b.Data[0][c];
@@ -202,6 +210,7 @@ FABLE_FORCEINLINE void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& a, const
                 Data[r][c] = v;
             }
         }
+#endif
     }
 }
 #endif

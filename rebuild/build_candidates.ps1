@@ -395678,6 +395678,120 @@ $catalog = @(
         TestSource = '00/b6/CEngineSkyRenderer_RenderSunFlare_00b64550_test.cpp'
         PassPattern = '00b64550_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a12ee0'
+        Module = 'CPhysicsMeshObject'
+        Source = '00/a1/CPhysicsMeshObject_GetNavigationLevelVolumes_00a12ee0.cpp'
+        TestSource = '00/a1/CPhysicsMeshObject_GetNavigationLevelVolumes_00a12ee0_test.cpp'
+        PassPattern = '00a12ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4d920'
+        Module = 'C3DAnimation2'
+        Source = '00/a4/C3DAnimation2_CalcLocalBoneTransformationRelative_00a4d920.cpp'
+        TestSource = '00/a4/C3DAnimation2_CalcLocalBoneTransformationRelative_00a4d920_test.cpp'
+        PassPattern = '00a4d920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4e300'
+        Module = 'C3DAnimation2'
+        Source = '00/a4/C3DAnimation2_GetDeltaMovement_00a4e300.cpp'
+        TestSource = '00/a4/C3DAnimation2_GetDeltaMovement_00a4e300_test.cpp'
+        PassPattern = '00a4e300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a50510'
+        Module = 'C3DAnimation2'
+        Source = '00/a5/C3DAnimation2_InitialiseAnimationSequences_00a50510.cpp'
+        TestSource = '00/a5/C3DAnimation2_InitialiseAnimationSequences_00a50510_test.cpp'
+        PassPattern = '00a50510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9e1e0'
+        Module = 'C3DAnimationManager'
+        Source = '00/a9/C3DAnimationManager_ApplyParentTransformations_00a9e1e0.cpp'
+        TestSource = '00/a9/C3DAnimationManager_ApplyParentTransformations_00a9e1e0_test.cpp'
+        PassPattern = '00a9e1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9f540'
+        Module = 'C3DAnimationManager'
+        Source = '00/a9/C3DAnimationManager_CalcMeshTransformations_00a9f540.cpp'
+        TestSource = '00/a9/C3DAnimationManager_CalcMeshTransformations_00a9f540_test.cpp'
+        PassPattern = '00a9f540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa0090'
+        Module = 'C3DAnimationManager'
+        Source = '00/aa/C3DAnimationManager_CalcBlendedMeshTransformations_00aa0090.cpp'
+        TestSource = '00/aa/C3DAnimationManager_CalcBlendedMeshTransformations_00aa0090_test.cpp'
+        PassPattern = '00aa0090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b4fc40'
+        Module = 'CEngineShadowRenderer'
+        Source = '00/b4/CEngineShadowRenderer_SetupShadowFuncRenderStates_00b4fc40.cpp'
+        TestSource = '00/b4/CEngineShadowRenderer_SetupShadowFuncRenderStates_00b4fc40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT314'
+        PassPattern = '00b4fc40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8df50'
+        Module = 'CEngineOcclusionManager'
+        Source = '00/b8/CEngineOcclusionManager_FrameEnd_00b8df50.cpp'
+        TestSource = '00/b8/CEngineOcclusionManager_FrameEnd_00b8df50_test.cpp'
+        PassPattern = '00b8df50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9a4a0'
+        Module = 'CEnginePrimitiveManagerRepeatedStaticMeshes'
+        Source = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_RenderPrimitive_00b9a4a0.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_RenderPrimitive_00b9a4a0_test.cpp'
+        PassPattern = '00b9a4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba6ff0'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_DrawSilhouette_00ba6ff0.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_DrawSilhouette_00ba6ff0_test.cpp'
+        PassPattern = '00ba6ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb8750'
+        Module = 'CEnginePrimitiveManagerParticleDecalGroup'
+        Source = '00/bb/CEnginePrimitiveManagerParticleDecalGroup_RenderLandscapeDecalGroup_00bb8750.cpp'
+        TestSource = '00/bb/CEnginePrimitiveManagerParticleDecalGroup_RenderLandscapeDecalGroup_00bb8750_test.cpp'
+        PassPattern = '00bb8750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb8ef0'
+        Module = 'CEnginePrimitiveManagerParticleDecalGroup'
+        Source = '00/bb/CEnginePrimitiveManagerParticleDecalGroup_RenderSubPrimitive_00bb8ef0.cpp'
+        TestSource = '00/bb/CEnginePrimitiveManagerParticleDecalGroup_RenderSubPrimitive_00bb8ef0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT189'
+        PassPattern = '00bb8ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc25f0'
+        Module = 'CEnginePrimitiveManagerParticleMeshGroup'
+        Source = '00/bc/CEnginePrimitiveManagerParticleMeshGroup_RenderSubPrimitive_00bc25f0.cpp'
+        TestSource = '00/bc/CEnginePrimitiveManagerParticleMeshGroup_RenderSubPrimitive_00bc25f0_test.cpp'
+        PassPattern = '00bc25f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf12a0'
+        Module = 'CEnginePrimitiveRenderUtil'
+        Source = '00/bf/CEnginePrimitiveRenderUtil_AddGeneratedObjects_00bf12a0.cpp'
+        TestSource = '00/bf/CEnginePrimitiveRenderUtil_AddGeneratedObjects_00bf12a0_test.cpp'
+        PassPattern = '00bf12a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf18b0'
+        Module = 'CEnginePrimitiveRenderUtil'
+        Source = '00/bf/CEnginePrimitiveRenderUtil_AddGeneratedObjects_00bf18b0.cpp'
+        TestSource = '00/bf/CEnginePrimitiveRenderUtil_AddGeneratedObjects_00bf18b0_test.cpp'
+        PassPattern = '00bf18b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -18,6 +18,9 @@ class CMatrix3x4;
 class C3DBoundingBox;
 class C3DBoundingSphere;
 template<class T>class CIVCountedPointer;
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTINTERPOLATE
+#include "engine/CEngineInterpolationInfo.h"
+#endif
 class CEngineInternalPrimitiveBase : public CEnginePersistentPrimitiveBase {
 public:
  CEngineInternalPrimitiveBase(long,unsigned long);
@@ -49,7 +52,20 @@ public:
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH
  void SetNonPersistent(bool non_persistent){NonPersistent=non_persistent;}
 #endif
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTINTERPOLATE
+ // Overlay opt-in (chunk 2011, row 0x00BF18B0 CEnginePrimitiveRenderUtil::AddGeneratedObjects): the static
+ // CurrentInterpolationInfo (Ego_r.pdb / FableWin.pdb `dynamic initializer for 'CEngineInternalPrimitiveBase::CurrentInterpolationInfo''
+ // 0x01224900; the object at 0x0143B8E0) and FableWin.pdb ?GetCurrentInterpolate@CEngineInternalPrimitiveBase@@QBEMXZ (inline: the
+ // row reads `[InterpolationSet*12 + 0x0143B934]` in place, 0x00BF1942..0x00BF1948). No layout change.
+ static CEngineInterpolationInfo CurrentInterpolationInfo;                    // 0x0143B8E0
+ float GetCurrentInterpolate()const{return CurrentInterpolationInfo.InterpolationSetList[InterpolationSet].WFInterpolate;}
+#endif
  void SetEnable(bool enable){Enable=enable;}
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ISPERSISTENT
+ // Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): FableWin.pdb
+ // ?IsPersistent@CEngineInternalPrimitiveBase@@QBE_NXZ (no Ego_r.pdb or Fable.exe copy; 0x00B9A528 `test byte ptr [ebx+34h],2` = NonPersistent).
+ bool IsPersistent()const{return !NonPersistent;}
+#endif
  unsigned long EnginePrimitiveFlags;
  float AlphaMipBias;
  CEngineFadeDistance FadeDistance;

@@ -22,7 +22,17 @@ public:
  C3DKeyframe() { }
 #endif
  C3DVector GetPosition()const { return Position.ToC3DVector(); }
+#ifdef FABLE_RETAIL_C3DKEYFRAME_TOMATRIX4_INLINE
+ // Retail opt-in (chunk 2047, row 0x00A9E1E0 C3DAnimationManager::ApplyParentTransformations): Ego_r.pdb / FableWin.pdb
+ // ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z (FableWin 0x0337FD30) and ?ToMatrixTransposed@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z
+ // (FableWin 0x03382B40, the COMDAT after ApplyParentTransformations) are inline header members (both 40 bytes / 16 instructions in
+ // FableWin): the quaternion's conversion with the position; the bool is not read in this build. Retail keeps their unreferenced
+ // out-of-line copies 0x00AA39A0 (ToMatrix, landed) and 0x00AA3AF0 (ToMatrixTransposed) and expands both in the row.
+ // Needs FABLE_RETAIL_CQUATERNION_MATRIX4 + FABLE_RETAIL_CQUATERNION_MATRIX4_TRANSPOSED + FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS.
+ FABLE_FORCEINLINE void ToMatrix(CMatrix4x4& matrix,bool applyScaling)const { Rotation.ToMatrix(matrix,GetPosition()); }
+#else
  void ToMatrix(CMatrix4x4& matrix,bool applyScaling)const;
+#endif
 #ifdef FABLE_RETAIL_C3DKEYFRAME_TOMATRIX_INLINE
  // Retail opt-in (chunk 2014, row 0x00A4E300): Ego_r.pdb / FableWin.pdb ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix3x4@@_N@Z is an inline
  // header member: FableWin emits its COMDAT (0x03228BF0, 0x70 bytes: the quaternion's ToMatrix with the position, then PreScale(MMM))
@@ -35,7 +45,11 @@ public:
 #else
  void ToMatrix(CMatrix3x4& matrix,bool applyScaling)const;
 #endif
+#ifdef FABLE_RETAIL_C3DKEYFRAME_TOMATRIX4_INLINE
+ FABLE_FORCEINLINE void ToMatrixTransposed(CMatrix4x4& matrix,bool applyScaling)const { Rotation.ToMatrixTransposed(matrix,GetPosition()); }
+#else
  void ToMatrixTransposed(CMatrix4x4& matrix,bool applyScaling)const;
+#endif
 #ifdef FABLE_RETAIL_C3DKEYFRAME_BLEND
  // Retail opt-in (chunk 2044, rows 0x00AA0090 / 0x00A9F540): FableWin.pdb ?PostApplyRelativeAnimationAlpha@C3DKeyframe@@QAEXABV1@M@Z and
  // ?BlendWith@C3DKeyframe@@QAEXABV1@M@Z (retail out-of-line copy 0x00AA3C50, landed, uncalled), both expanded in the rows. Declarations

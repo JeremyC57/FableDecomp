@@ -15,6 +15,21 @@ public:
     unsigned long GetReflectionMapBankIndex() const{return ReflectionMapBankIndex;}
     unsigned long GetIlluminationMapBankIndex() const{return IlluminationMapBankIndex;}
 #endif
+#ifdef FABLE_RETAIL_C3DMESHMATERIAL_PARTICLEMESH
+    // Retail opt-in (chunk 2059, row 0x00BC25F0): FableWin.pdb ?HasValidDiffuseMap@C3DMeshMaterial@@QBE_NXZ (listed right after
+    // CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive: first user) and ?GetSelfIllumination@C3DMeshMaterial@@QBEKXZ (17b/9i),
+    // inline in retail (0x00BC2CF4 DiffuseMapBankIndex +0x10 tested, 0x00BC2EC4 SelfIllumination +0x24 read in place).
+    bool HasValidDiffuseMap() const { return DiffuseMapBankIndex != 0; }
+    unsigned long GetSelfIllumination() const { return SelfIllumination; }
+#endif
+#ifdef FABLE_RETAIL_C3DMESHMATERIAL_FLAG_ACCESSORS
+    // Retail opt-in (chunk 3013, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): the FableWin.pdb inline
+    // accessors ?IsTransparent@C3DMeshMaterial@@QBE_NXZ / ?IsBooleanAlpha@C3DMeshMaterial@@QBE_NXZ / ?GetMapFlags@C3DMeshMaterial@@QBEKXZ
+    // (no out-of-line copy in Fable.exe; +0x29 / +0x2A / +0x20 read in place).
+    bool IsTransparent() const{return Transparent;}
+    bool IsBooleanAlpha() const{return BooleanAlpha;}
+    unsigned long GetMapFlags() const{return MapFlags;}
+#endif
     unsigned char UnmodelledBase[4];long MaterialIndex;CCharString Name;long DecalID;
     unsigned long DiffuseMapBankIndex,BumpMapBankIndex,ReflectionMapBankIndex,IlluminationMapBankIndex,MapFlags,SelfIllumination;
     bool TwoSided,Transparent,BooleanAlpha,DegenerateTriangles;

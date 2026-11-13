@@ -54,9 +54,10 @@ public:
     // Nested opt-in (chunk Q31, row 0x00A69B70 CTextureManager::AllocateTexture): the same adopting body forced inline. Retail
     // expands it there (0x00A69BDB..0x00A69BF3: release, then the store); VC7.1's inline budget leaves the plain body a call in that
     // caller (a toy with the same body inlines it, the AllocateTexture shape does not). The caller AddRefs through operator->.
+    // (Also row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive, through the forced
+    // CEngineInternalPrimitiveOcclusionBase::SetupOcclusionInfo: 0x00B9A564..0x00B9A57E, release, `mov [ebx+esi*4+48h],0`, then the store.)
     FABLE_FORCEINLINE void Reset(T* object) { Release(); Object = object; }
-#endif
-#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_CASTTOBASE
+#elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_CASTTOBASE)
     // Nested opt-in (chunk 2048, session 4): FableWin.pdb private ?CastToBase@?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@AAEPAVCIVCountedPointeeBase@@PAV..@Z
     // (10 debug instructions / 24 bytes, listed right after ?Release@ in the CFrameData pointer's COMDAT run) stores the new pointer
     // through the base conversion; plain VC7.1 /Od of `CIVCountedPointeeBase* base = object; return base;` gives 10 / 24 (fwsize SAME).

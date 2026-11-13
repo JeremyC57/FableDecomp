@@ -12,6 +12,15 @@
 // Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
 class C3DMesh2;
 #endif
+#ifdef FABLE_RETAIL_C3DANIMATION2_CALCLOCAL
+class C3DMesh2;class C3DKeyframe;
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATION2_CONVERTTIME_BODY
+#include "engine/GFFloatToLongFloor.h"
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATION2_INITSEQUENCES
+class C3DMesh2;
+#endif
 class C3DVector;class CQuaternion;class CMatrix3x4;class C3DAnimFile;class CDataInputStream;class CDataOutputStream;class CChunkedFileLoader;class CChunkedFileSaver;class CChunkedFileSuperChunk;class CSimpleMemoryPool;class C3DAnimFileSequenceChunk;class C3DAnimFileObjectChunk;class C3DAnimFileRootChunk;class C3DAnimFileHelpersChunk;class C3DAnimFileMovementVectorChunk;class C3DAnimFileBoneMaskChunk;class C3DAnimationSequenceData;class C3DAnimationSequence;class CMovableResourceMemoryPool;class CMovableResource;
 // Layout: original raw PDB fields and bases; retail sizes reconciled by native accesses and 12-byte vectors.
 class C3DAnimation2:public C3DAnimationStats,public CMovableResource{
@@ -23,6 +32,54 @@ virtual ~C3DAnimation2();
 // Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
 void SetMemoryPool(CMovableResourceMemoryPool*);
 bool InitialiseAnimationInstance(C3DAnimation2&,const C3DMesh2&,bool,float*);
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATION2_CALCLOCAL
+// Retail opt-in (chunk 2005, row 0x00A4D920): Ego_r.pdb ?ConvertTimeToFrames@C3DAnimation2@@QBEXMAAJAAM@Z (retail 0x00A52650) and
+// ?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXAAVC3DKeyframe@@KMABVC3DMesh2@@@Z (retail 0x00A4D920, `ret 10h`).
+#ifdef FABLE_RETAIL_C3DANIMATION2_CONVERTTIME_BODY
+// Retail opt-in (chunk 2044, rows 0x00AA0090 / 0x00A9F540): the body of ConvertTimeToFrames visible in the includer (landed 0x00A52650's
+// text; it holds the asm helper GFFloatToLongFloor, so VC7.1 keeps the call out of line, but sees that frame / fraction are only
+// written, not captured).
+void ConvertTimeToFrames(float time,long& frame,float& fraction) const {
+    float frames = time * SamplesPerSecond;
+    long whole = GFFloatToLongFloor(frames);
+    frame = whole;
+    fraction = frames - whole;
+    frame = (unsigned long)frame % FrameCount;
+    frame = frame < 0 ? frame + FrameCount : frame;
+}
+#else
+void ConvertTimeToFrames(float time,long& frame,float& fraction) const;
+#endif
+void CalcLocalBoneTransformationRelative(C3DKeyframe& keyframe,unsigned long bone,float time,const C3DMesh2& mesh) const;
+#ifdef FABLE_RETAIL_C3DANIMATION2_CALCLOCALBONE
+// Retail opt-in (chunk 3001, row 0x00A4D920): Ego_r.pdb / FableWin.pdb ?CalcLocalBoneTransformation@C3DAnimation2@@QBEXAAVC3DKeyframe@@KM@Z
+// (retail out of line at 0x00A4D330, `ret 0Ch`, same TU ahead of the Relative form, which expands it into its local keyframe).
+void CalcLocalBoneTransformation(C3DKeyframe& keyframe,unsigned long bone,float time) const;
+#endif
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATION2_INITSEQUENCES
+// Retail opt-in (chunk 2014, row 0x00A50510): Ego_r.pdb / FableWin.pdb ?GetSamplesPerSecond@C3DAnimation2@@QBEMXZ and
+// ?GetFrameCount@C3DAnimation2@@QBEKXZ (inline in retail: the members are read in place, 0x00A50640 / 0x00A50646) and the private
+// ?InitialiseAnimationSequences@C3DAnimation2@@AAE_NAAV1@ABVC3DMesh2@@_NAAK@Z (retail 0x00A50510, `ret 10h`).
+float GetSamplesPerSecond() const { return SamplesPerSecond; }
+unsigned long GetFrameCount() const { return FrameCount; }
+private:
+bool InitialiseAnimationSequences(C3DAnimation2& shared_animation,const C3DMesh2& mesh,bool create_rigid_bones,unsigned long& build_result);
+public:
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATION2_MANAGER
+// Retail opt-in (chunk 2044, rows 0x00AA0090 / 0x00A9F540): Ego_r.pdb / FableWin.pdb ?PeekSequence@C3DAnimation2@@QBEPBVC3DAnimationSequence@@K@Z
+// and ?IsBoneEnabled@C3DAnimation2@@QBE_NK@Z, inline in retail (Sequences +0x5C indexed by 8, BoneMask +0x68 null-tested then indexed:
+// 0x00AA0590..0x00AA059B `mov eax,[edx+68h] ; test eax,eax ; je ; cmp byte ptr [eax+esi],0 ; je`).
+const C3DAnimationSequence* PeekSequence(unsigned long index) const { return &Sequences[index]; }
+bool IsBoneEnabled(unsigned long bone) const { return BoneMask == 0 || BoneMask[bone]; }
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATION2_NONLOOPINGDURATION
+// Retail opt-in (chunk 2014, row 0x00A4E300 GetDeltaMovement): Ego_r.pdb / FableWin.pdb ?GetNonLoopingDuration@C3DAnimation2@@QBEMXZ,
+// inline in retail (no out-of-line copy): the unsigned FrameCount converted to float (`fild` + the 2^32 fix-up), minus one frame,
+// over SamplesPerSecond (0x00A4E31A..0x00A4E32D).
+float GetNonLoopingDuration() const { return (FrameCount - 1.0f) / SamplesPerSecond; }
 #endif
 bool InitialiseSharedAnimation(const C3DAnimFile&,EAnimationType);
 virtual C3DVector GetMovementOffsetAtTime(float) const;

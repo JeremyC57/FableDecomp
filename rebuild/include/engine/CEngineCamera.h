@@ -10,7 +10,29 @@ class CCamera;
 class CEngineCamera:public CEngineComponent {
 public:
  CEngineCamera(bool);
-#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_UPDATE
+#if defined(FABLE_RETAIL_CENGINECAMERA_CLIPSPHERE)
+ // Retail opt-in (chunk 2028, row 0x00B8DF50 CEngineOcclusionManager::FrameEnd): FableWin.pdb ?ClipSphere@CEngineCamera@@QBE_NABVC3DVector@@M@Z
+ // (debug copy only: no Ego_r.pdb or Fable.exe out-of-line copy; reloc_bindings binds only the 3-argument 0x00B30480), expanded by the landed
+ // CEngine::ClipSphere 0x00B24150 and by FrameEnd 0x00B8E0F6..0x00B8E22B: the sphere against the near / far planes along the look
+ // vector, then the four side planes in the order 2, 3, 0, 1 (the order of the out-of-line 3-argument ClipSphere 0x00B30480).
+ // FABLE_FORCEINLINE per the owner's 2026-11-01 helper rule (no out-of-line copy anywhere in retail; plain inline is called).
+ FABLE_FORCEINLINE bool ClipSphere(const C3DVector& centre,float radius)const{
+  C3DVector d=centre-CameraDesc.WorldPosition;
+  float depth=d.Dot(LookVector);
+  if(depth+radius<CameraDesc.NearZPlane||depth-radius>CameraDesc.FarZPlane||
+     d.Dot(FrustrumPlanes[2].Normal)>radius||d.Dot(FrustrumPlanes[3].Normal)>radius||
+     d.Dot(FrustrumPlanes[0].Normal)>radius||d.Dot(FrustrumPlanes[1].Normal)>radius)
+   return false;
+  return true;}
+ // FableWin.pdb ?TransformWorldToView@CEngineCamera@@QBEXABVC3DVector@@AAV2@@Z (debug only; FrameEnd 0x00B8E2CB..0x00B8E2EA reads the
+ // ViewTransform Z row +0x88 / +0x94 / +0xA0 / +0xAC in place) and ?PeekNonHomogenousViewToViewScaleX / Y@CEngineCamera@@QBEMXZ (debug only;
+ // HomogenousViewScaleX +0xD4 / Y +0xD8 read in place at 0x00B8E337 / 0x00B8E323: the factor that takes the unscaled, "non-homogenous"
+ // view space of NoScaleViewTransform to the scaled ViewTransform space).
+ const CMatrix3x4& PeekViewTransform()const{return ViewTransform;}
+ FABLE_FORCEINLINE void TransformWorldToView(const C3DVector& world,C3DVector& view)const{ViewTransform.TransformPoint(world,view);}
+ float PeekNonHomogenousViewToViewScaleX()const{return HomogenousViewScaleX;}
+ float PeekNonHomogenousViewToViewScaleY()const{return HomogenousViewScaleY;}
+#elif defined(FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_UPDATE)
  bool ClipSphere(const C3DVector&,float)const;
 #endif
  virtual unsigned long PeekSceneFilterFlags()const;

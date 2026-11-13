@@ -3,6 +3,9 @@
 #ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
 #include "engine/CEnginePrimitiveManagerOcclusionBase.h"
 class CTexture;class CGraphicDataBank;class C3DMeshMaterial;class CCompositeSurfaceInfo;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_APPROPRIATELOD
+class C3DMeshInfo;
+#endif
 template<class K,class V> class CKeyPairCompareLess;
 template<class K,class V,class C> class CVectorMap;
 class CEnginePrimitiveManagerMeshBase : public CEnginePrimitiveManagerOcclusionBase {
@@ -13,6 +16,11 @@ public:
     CEnginePrimitiveManagerMeshBase(CArray<CEngineScene *>&);
     static const CTexture* FABLE_FASTCALL GetDiffuseTexture(const C3DMeshMaterial*,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >*,unsigned long,bool&,const CGraphicDataBank*,bool);
     static const CTexture* FABLE_FASTCALL GetBumpTexture(const C3DMeshMaterial*,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >*,unsigned long,bool&,const CGraphicDataBank*,bool);
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_APPROPRIATELOD
+    // Opt-in (chunk 2032, row 0x00BA6FF0): FableWin.pdb ?GetAppropriateLOD@CEnginePrimitiveManagerMeshBase@@SIKPBVC3DMeshInfo@@MMM@Z
+    // (static fastcall; no Ego_r.pdb or Fable.exe copy: expanded in place). The including row defines the body.
+    static unsigned long FABLE_FASTCALL GetAppropriateLOD(const C3DMeshInfo* mesh_info,float distance,float radius,float tolerance);   // parameter names descriptive
+#endif
 private:
     static const CTexture* FABLE_FASTCALL GetComposedTexture(long&,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >&,unsigned long,bool,const CGraphicDataBank*);
 };

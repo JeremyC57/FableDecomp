@@ -26,9 +26,24 @@ class CEngineInternalPrimitiveOcclusionBase:public CEngineInternalPrimitiveBase 
  // 0x00B39151; vtable 0x012A79B4). Declaration only: no layout change.
  virtual void ResetOcclusionInfo(EEngineOcclusionLayer layer);      // 0x00B90390
 #endif
+ // Retail opt-in (chunk 2028): FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_SETUP_FORCEINLINE forces this FableWin-only inline (no
+ // Ego_r.pdb or Fable.exe copy) where a large caller expands it past VC7.1's budget (0x00B9A528..0x00B9A582: c2 inline score 138 v 74).
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_SETUP_FORCEINLINE
+ FABLE_FORCEINLINE
+#endif
+ // Retail opt-in (chunk 2028): FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_SETUP_FORCEINLINE forces this FableWin-only inline (no
+ // Ego_r.pdb or Fable.exe copy) where a large caller expands it past VC7.1's budget (0x00B9A528..0x00B9A582: c2 inline score 138 v 74).
  void SetupOcclusionInfo(EEngineOcclusionLayer layer){if(layer!=OCCLUSION_LAYER_NONE&&!(EnginePrimitiveFlags&0x4000)&&OcclusionInfo[layer].IsNull())OcclusionInfo[layer].Reset(new CEnginePrimitiveOcclusionInfo);}
  CEnginePrimitiveOcclusionInfo& GetOcclusionInfo(EEngineOcclusionLayer layer)const{return *OcclusionInfo[layer];}
  CIVCountedPointer<CEnginePrimitiveOcclusionInfo> OcclusionInfo[2];
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_ISOCCLUDED
+ // Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): FableWin.pdb inlines
+ // ?HasOcclusionInfo@CEngineInternalPrimitiveOcclusionBase@@QBE_NW4EEngineOcclusionLayer@@@Z and ?IsOccluded@..@@QAE_NW4EEngineOcclusionLayer@@@Z
+ // (no Ego_r.pdb or Fable.exe copy; 0x00B9A588..0x00B9A5AB: the 0x4000 flag, then layer / record, then the occlusion manager's verdict).
+ // IsOccluded reads the engine's occlusion manager global, so the including row defines its body.
+ bool HasOcclusionInfo(EEngineOcclusionLayer layer)const{return layer!=OCCLUSION_LAYER_NONE&&!OcclusionInfo[layer].IsNull();}
+ bool IsOccluded(EEngineOcclusionLayer layer);
+#endif
 };
 #else
 #pragma pack(push, 1)

@@ -18,7 +18,13 @@ public:
  virtual bool IsInsideFrustum(const CEngineCamera&,bool);
  virtual bool GetObjectTransform(CMatrix3x4&)const;
  virtual bool SetObjectTransform(const CMatrix3x4&);
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_GETRENDERINFO
+ // Opt-in (chunk 2032, row 0x00BA6FF0): FableWin.pdb ?GetRenderInfo@CEngineInternalPrimitiveStaticMesh@@QAEPAVCEngineRenderInfoStaticMesh@@XZ
+ // (no Ego_r.pdb or Fable.exe copy): inline, RenderInfo +0xA0 written in place (0x00BA71BD / 0x00BA71FE / 0x00BA7214).
+ CEngineRenderInfoStaticMesh* GetRenderInfo(){return &RenderInfo;}
+#else
  CEngineRenderInfoStaticMesh* GetRenderInfo();
+#endif
  const CEngineRenderInfoStaticMesh* PeekRenderInfo()const;
  virtual const CEngineRenderInfoMeshBase* PeekRenderInfoMeshBase()const;
  const C3DMesh2& PeekMesh()const;

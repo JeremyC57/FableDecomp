@@ -7,6 +7,42 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEREPEATEDSTATICMESH
+// Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): RTTI .?AVCEngineInternalPrimitiveRepeatedStaticMesh@@
+// : CEngineInternalPrimitiveOcclusionBase : CEngineInternalPrimitiveBase : CEnginePersistentPrimitiveBase : CIVCountedPointeeBase (vtable
+// 0x012A3F4C); the own members with their Ego_r.pdb names / types at the Ego_r offsets (no container member, so retail = Ego_r: the row
+// reads MeshInfo +0x50, BoundingBox +0x58, BoundingSphere +0x70 and writes RenderInfo +0xA4 / +0xA8), the FableWin.pdb inline
+// ?GetRenderInfo@CEngineInternalPrimitiveRepeatedStaticMesh@@QAEPAVCEngineRenderInfoRepeatedStaticMesh@@XZ (unreferenced COMDAT 0x00B98B90).
+// Needs FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE (and its base opt-ins).
+#include "engine/CEngineInternalPrimitiveOcclusionBase.h"
+#include "engine/C3DBoundingBox.h"
+#include "engine/C3DBoundingSphere.h"
+#include "engine/CEngineRenderInfoMeshBase.h"
+class C3DMeshInfo;
+class C4DVector;
+namespace NEnginePrimitiveManagerRepeatedStaticMeshes { struct CSubsectionElement; }
+class CEngineInternalPrimitiveRepeatedStaticMesh : public CEngineInternalPrimitiveOcclusionBase {
+public:
+    CEngineInternalPrimitiveRepeatedStaticMesh();                        // ??0CEngineInternalPrimitiveRepeatedStaticMesh@@QAE@XZ
+    virtual ~CEngineInternalPrimitiveRepeatedStaticMesh();
+    CEngineRenderInfoRepeatedStaticMesh* GetRenderInfo() { return &RenderInfo; }
+    C3DMeshInfo*        MeshInfo;                                        // +0x50
+    long                ObjectCount;                                     // +0x54
+    C3DBoundingBox      BoundingBox;                                     // +0x58
+    C3DBoundingSphere   BoundingSphere;                                  // +0x70
+    float               MaxScale;                                        // +0x80
+    float               AlphaTransformMult;                              // +0x84
+    float               AlphaTransformOffset;                            // +0x88
+    float*              VectorNormals;                                   // +0x8c
+    C4DVector*          ObjectMatricies;                                 // +0x90
+    C4DVector*          ObjectOffsets;                                   // +0x94
+    NEnginePrimitiveManagerRepeatedStaticMeshes::CSubsectionElement* SubSections;   // +0x98
+    unsigned char*      WindDelayArray;                                  // +0x9c
+    float               WindScaleFactor;                                 // +0xa0
+    CEngineRenderInfoRepeatedStaticMesh RenderInfo;                      // +0xa4
+};
+FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveRepeatedStaticMesh) == 0xb0);
+#else
 
 class C3DMeshInfo;
 class C4DVector;
@@ -68,5 +104,6 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, SubSect
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, WindDelayArray) == 0x9c);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, WindScaleFactor) == 0xa0);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, RenderInfo) == 0xa4);
+#endif // FABLE_RETAIL_CENGINEINTERNALPRIMITIVEREPEATEDSTATICMESH
 
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEREPEATEDSTATICMESH_H

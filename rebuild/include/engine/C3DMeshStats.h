@@ -6,6 +6,10 @@
 #include "engine/C3DBoundingBox.h"
 #include "fable_string.h"
 class CMovableResourceMemoryPool;
+#ifdef FABLE_RETAIL_C3DMESHSTATS_GENERATORS
+#include "engine/CArray.h"
+#include "engine/C3DGeneratorObject.h"
+#endif
 #ifdef FABLE_RETAIL_C3DMESHSTATS_DUMMYOBJECTS
 // Retail opt-in (chunk Q21, row 0x00B39080): the own virtuals of the abstract stats class (C3DMesh2 0x0129DEF0 overrides them, slots
 // 4..9; the C3DMeshStats vtable 0x0129CF04 holds _purecall there) and the out-of-line GetDummyObject. Needs the polymorphic
@@ -40,10 +44,26 @@ public:
  const C3DDummyObject* GetDummyObject(unsigned long name_crc,unsigned long index)const;   // 0x00A2E920
  virtual C3DVector GetHelperPointPositionAnimated(const C3DHelperPoint&,const C3DAnimationBlendState&,C3DAnimationManager&)const=0;
  virtual C3DVector GetHelperPointPositionAnimated(const C3DHelperPoint&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&)const=0;
+#ifdef FABLE_RETAIL_C3DMESHSTATS_DUMMYOBJECT_RESULT
+ // Nested opt-in (chunk 2011, row 0x00BF18B0 CEnginePrimitiveRenderUtil::AddGeneratedObjects): the out parameter as both PDBs spell it,
+ // ?GetDummyObjectPositionAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAV2@ABVC3DAnimationBlendState@@2MAAVC3DAnimationManager@@_N@Z
+ // (`AAV2@` = C3DDummyObject&; the override 0x00A89E40 writes the out object's BoneIndex +0x30, 0x00A89E56). Same slots (6 / 7).
+ virtual void GetDummyObjectPositionAnimated(const C3DDummyObject& dummy_object,C3DDummyObject& result,const C3DAnimationBlendState& blend_state,C3DAnimationManager& animation_manager,bool flag)const=0;
+ virtual void GetDummyObjectPositionAnimated(const C3DDummyObject& dummy_object,C3DDummyObject& result,const C3DAnimationBlendState& blend_state_start,const C3DAnimationBlendState& blend_state_end,float interpolate,C3DAnimationManager& animation_manager,bool flag)const=0;
+#else
  virtual void GetDummyObjectPositionAnimated(const C3DDummyObject&,C3DVector&,const C3DAnimationBlendState&,C3DAnimationManager&,bool)const=0;
  virtual void GetDummyObjectPositionAnimated(const C3DDummyObject&,C3DVector&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&,bool)const=0;
+#endif
  virtual void GetDummyObjectTransformAnimated(const C3DDummyObject&,CMatrix3x4&,const C3DAnimationBlendState&,C3DAnimationManager&,bool)const=0;
  virtual void GetDummyObjectTransformAnimated(const C3DDummyObject&,CMatrix3x4&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&,bool)const=0;
+#endif
+#ifdef FABLE_RETAIL_C3DMESHSTATS_GENERATORS
+ // Retail opt-in (chunk 2011, rows 0x00BF12A0 / 0x00BF18B0 CEnginePrimitiveRenderUtil::AddGeneratedObjects): MeshGenerators typed
+ // (CArray<C3DGeneratorObject>, +0x68: the rows walk [stats+68h] .. [stats+6Ch]); Ego_r.pdb / FableWin.pdb
+ // ?GetMeshGeneratorsBegin@C3DMeshStats@@QBE...XZ / ?GetMeshGeneratorsEnd (inline in retail: begin read once, end re-read every
+ // iteration, 0x00BF12D0 / 0x00BF1828; the PDBs' Dinkumware const_iterator is STLport's const T*). No layout change.
+ const C3DGeneratorObject* GetMeshGeneratorsBegin()const{return MeshGenerators.begin();}
+ const C3DGeneratorObject* GetMeshGeneratorsEnd()const{return MeshGenerators.end();}
 #endif
 private:
  CMovableResourceMemoryPool* MemoryPool;
@@ -54,7 +74,11 @@ private:
  unsigned char HelperPoints[16]; // CPreAllocVectorMap<unsigned long,C3DHelperPoint,...>
  unsigned char DummyObjects[16]; // CPreAllocVectorMap<unsigned long,C3DDummyObject,...>
  unsigned char MeshVolumes[16]; // CVectorMap<unsigned long,C3DMeshVolume,...>
+#ifdef FABLE_RETAIL_C3DMESHSTATS_GENERATORS
+ CArray<C3DGeneratorObject> MeshGenerators;
+#else
  unsigned char MeshGenerators[12]; // CArray<C3DGeneratorObject>
+#endif
  char* PackedNames;
  unsigned short PackedNamesSize;
  bool AnimatedFlag;

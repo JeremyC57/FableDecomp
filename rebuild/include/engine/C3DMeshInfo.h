@@ -17,6 +17,9 @@ class C3DMeshStats;
 #ifdef FABLE_RETAIL_C3DMESHINFO_LOADSTATS
 class C3DAnimationManager;
 #endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_BEGINLOADINGTEXTURES
+enum EBankLoadPriority;                                                  // MS forward enum (Ego_r.pdb)
+#endif
 #ifdef FABLE_RETAIL_C3DMESHINFO_GETMESH
 #include "engine/CCountedPointer.h"
 class C3DMesh2;
@@ -57,6 +60,18 @@ public:
     // the bank's TextureBank, in place: 0x00BEC74A). Needs FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK. No layout change.
     bool GetMesh(CCountedPointer<const C3DMesh2>& mesh, unsigned long lod, unsigned long flags) const;   // 0x00A25E70
     const CGraphicDataBank* PeekTextureBank() const { return PeekBank()->GetTextureBank(); }
+#endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_BEGINLOADINGTEXTURES
+    // Retail opt-in (chunk 2059, row 0x00BC25F0; the r3013 NAME_FIXES spelling; also rows 0x00B9A4A0 / 0x00BA6FF0): Ego_r.pdb
+    // ?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z (donor 0x00B5FEA0 between HasPhysicsMesh and AreTexturesLoaded =
+    // retail 0x00A23C50, an empty `ret 4` between 0x00A23C40 / 0x00A23C60).
+    void BeginLoadingTextures(EBankLoadPriority priority) const;          // 0x00A23C50
+#endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_LODERROR
+    // Retail opt-in (chunk 2028, rows 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive / 0x00BA6FF0): FableWin.pdb
+    // inline ?GetLODError@C3DMeshInfo@@QBEMK@Z (no Ego_r.pdb or Fable.exe copy; LODErrors +0x40 read in place, 0x00B9A64A). Needs
+    // FABLE_RETAIL_C3DMESHINFO_BOUNDINGBOX (the typed private members). No layout change.
+    float GetLODError(unsigned long lod) const { return LODErrors[lod]; }
 #endif
 #ifdef FABLE_RETAIL_C3DMESHINFO_DETAILLEVEL
     // Retail opt-in (wf8, row 0x00B81F30 CEngineClothSimulationStaticMesh::RunSimulation; needs FABLE_RETAIL_C3DMESHINFO_BOUNDINGBOX):

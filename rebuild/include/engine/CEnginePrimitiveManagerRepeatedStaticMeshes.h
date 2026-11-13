@@ -7,6 +7,41 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES
+// Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): RTTI .?AVCEnginePrimitiveManagerRepeatedStaticMeshes@@
+// : CEnginePrimitiveManagerMeshBase : CEnginePrimitiveManagerOcclusionBase : CEnginePrimitiveManager : CEnginePrimitiveRenderUtil (vtable
+// 0x012A3E9C; RenderPrimitive = slot 7, 0x00B9A4A0); own members from +0x20 with their Ego_r.pdb names and types (sizeof 0x94, = retail:
+// the landed constructor 0x00B99D90 fills +0x20..+0x90). Needs FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS (the base chain).
+#include "engine/CEnginePrimitiveManagerMeshBase.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+struct CSIMDVariableBlock;
+class CEnginePrimitiveManagerRepeatedStaticMeshes : public CEnginePrimitiveManagerMeshBase {
+public:
+    CEnginePrimitiveManagerRepeatedStaticMeshes(CArray<CEngineScene*>& scenes);   // 0x00B99D90
+    virtual ~CEnginePrimitiveManagerRepeatedStaticMeshes();
+    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& primitive, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);   // slot 7, 0x00B9A4A0
+private:
+    CPixelShader        PixelShader;                                     // +0x20
+    CVertexShader       VertexShader;                                    // +0x28
+    CPixelShader        PixelShaderStippleAlpha;                         // +0x30
+    CVertexShader       VertexShaderStippleAlpha;                        // +0x38
+    CPixelShader        PixelShaderDepthBufferShadowed;                  // +0x40
+    CVertexShader       VertexShaderDepthBufferShadowed;                 // +0x48
+    CPixelShader        PixelShaderDepthBufferShadowedStippleAlpha;      // +0x50
+    CVertexShader       VertexShaderDepthBufferShadowedStippleAlpha;     // +0x58
+    CPixelShader        PixelShaderColourBufferShadowed;                 // +0x60
+    CVertexShader       VertexShaderColourBufferShadowed;                // +0x68
+    CPixelShader        PixelShaderColourBufferShadowedStippleAlpha;     // +0x70
+    CVertexShader       VertexShaderColourBufferShadowedStippleAlpha;    // +0x78
+    CPixelShader*       PixelShaderShadowed;                             // +0x80
+    CVertexShader*      VertexShaderShadowed;                            // +0x84
+    CPixelShader*       PixelShaderShadowedStippleAlpha;                 // +0x88
+    CVertexShader*      VertexShaderShadowedStippleAlpha;                // +0x8c
+    CSIMDVariableBlock* SIMDVariableBlock;                               // +0x90
+};
+FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerRepeatedStaticMeshes) == 0x94);
+#else
 
 class CPixelShader;
 struct CSIMDVariableBlock;
@@ -71,4 +106,5 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelS
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderShadowedStippleAlpha) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, SIMDVariableBlock) == 0x90);
 
+#endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES
 #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_H

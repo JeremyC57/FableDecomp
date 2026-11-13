@@ -5,6 +5,9 @@
 #include "engine/C3DVector.h"
 class C3DKeyframe;
 #endif
+#ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCE_GETKEYFRAME
+class C3DKeyframe;
+#endif
 class C3DVector;class CQuaternion;class CMatrix3x4;class C3DAnimFile;class CDataInputStream;class CDataOutputStream;class CChunkedFileLoader;class CChunkedFileSaver;class CChunkedFileSuperChunk;class CSimpleMemoryPool;class C3DAnimFileSequenceChunk;class C3DAnimFileObjectChunk;class C3DAnimFileRootChunk;class C3DAnimFileHelpersChunk;class C3DAnimFileMovementVectorChunk;class C3DAnimFileBoneMaskChunk;class C3DAnimationSequenceData;class C3DAnimationSequence;class CMovableResourceMemoryPool;class CMovableResource;
 // Layout: original raw PDB fields and bases; retail sizes reconciled by native accesses and 12-byte vectors.
 class C3DAnimationSequenceData{
@@ -17,6 +20,21 @@ public:
  // ??DC3DVectorWord@C3DAnimationSequenceData@@QBE?AVC3DVector@@M@Z (scale to a C3DVector; expanded in retail).
  void GetKeyframeInterpolate(C3DKeyframe& keyframe, unsigned long frame, float fraction) const;
  void InlineGetKeyframeInterpolate(C3DKeyframe& keyframe, unsigned long frame, float fraction) const;
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_ISIDENTITY
+ // Retail opt-in (chunk 2044, rows 0x00AA0090 / 0x00A9F540): Ego_r.pdb / FableWin.pdb ?IsIdentity@C3DAnimationSequenceData@@QBE_NXZ,
+ // inline in retail (the IdentityFlag bit 7 of +0x0A read in place: `mov al,[ecx+0Ah] ; test al,al ; js`, 0x00AA024D).
+ bool IsIdentity() const { return IdentityFlag; }
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCE_GETKEYFRAME
+ // Retail opt-in (chunk 2014, row 0x00A4E300): Ego_r.pdb / FableWin.pdb ?GetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXAAVC3DKeyframe@@M@Z
+ // (retail 0x00A4DEA0, out of line, `ret 8`; landed row C3DAnimationSequenceData_GetKeyframeInterpolate_00a4dea0, bound spelling of 0x00A4E250).
+ void GetKeyframeInterpolate(C3DKeyframe& keyframe, float time) const;
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCE_INITIALISE
+ // Retail opt-in (chunk 2014, row 0x00A50510): Ego_r.pdb ?InitialiseAsConstant@C3DAnimationSequenceData@@QAEXABVCMatrix3x4@@KMAAVCSimpleMemoryPool@@@Z
+ // (retail 0x00A4FD70, out of line, `ret 10h`).
+ void InitialiseAsConstant(const CMatrix3x4& matrix, unsigned long frame_count, float samples_per_second, CSimpleMemoryPool& memory_pool);
 #endif
 #ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_READ
  // Retail opt-in (chunk 2033, row 0x00A4C5E0): Ego_r.pdb / FableWin.pdb

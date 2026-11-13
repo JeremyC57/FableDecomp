@@ -109,10 +109,20 @@ FABLE_STATIC_ASSERT(sizeof(C3DAnimationInfo::CAnimationData) == 0x3c);
 #include "rebuild_abi.h"
 
 class CIVCountedPointeeBase;
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_GETANIMATION
+#include "engine/CCountedPointer.h"
+class C3DAnimation2;
+class C3DMesh2;
+#endif
 
 #pragma pack(push, 1)
 class C3DAnimationInfo {
 public:
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_GETANIMATION
+    // Retail opt-in (chunk 2044, rows 0x00AA0090 / 0x00A9F540): Ego_r.pdb ?GetAnimation@C3DAnimationInfo@@QBE?AV?$CCountedPointer@$$CBVC3DAnimation2@@@@ABVC3DMesh2@@@Z
+    // (retail 0x00A26C60, hidden result; the retail branch above declares the same). Declaration only, no layout change.
+    CCountedPointer<const C3DAnimation2> GetAnimation(const C3DMesh2& mesh) const;   // 0x00A26C60
+#endif
 #ifdef FABLE_RETAIL_C3DANIMATIONINFO_LOADING
     // Retail opt-in (agentNF9, the CThingCreatureBase preload rows 0x00663140 / 0x006631C0 / 0x00663610): Ego_r.pdb / FableWin.pdb
     // ?TouchAnimation@C3DAnimationInfo@@QBEXXZ (out of line at 0x00A26A50) and ?BeginLoading@C3DAnimationInfo@@QBEX_N@Z (0x00A26730),

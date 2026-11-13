@@ -65,6 +65,16 @@ private:
     class CSharedData;
 #endif
     CIVCountedPointer<CSharedData> Data;
+#if defined(FABLE_RETAIL_C3DANIMATIONBLENDSTATE_SHAREDDATA) && defined(FABLE_RETAIL_C3DANIMATIONBLENDSTATE_ACCESSORS)
+    // Nested opt-in (chunk 2044, rows 0x00AA0090 / 0x00A9F540): the PDBs' inline const accessors
+    // ?PeekBaseAnimation@C3DAnimationBlendState@@QBEABVC3DAnimationStateBase@@XZ, ?GetCombinationBlendCount@C3DAnimationBlendState@@QBEKXZ
+    // (landed 0x0070C770's body: Data null-tested, then the 20-byte-stride size) and
+    // ?PeekCombinationBlend@C3DAnimationBlendState@@QBEABVC3DAnimationStateAlpha@@K@Z (FableWin.pdb). No layout change.
+public:
+    const C3DAnimationStateBase& PeekBaseAnimation() const { return *Data->BaseAnimation; }
+    unsigned long GetCombinationBlendCount() const { return Data.IsNull() ? 0 : Data->CombinationBlends.size(); }
+    const C3DAnimationStateAlpha& PeekCombinationBlend(unsigned long index) const { return Data->CombinationBlends[index]; }
+#endif
 #else
     void* Data;                                                          // +0x04 CIVCountedPointer<C3DAnimationBlendState::CSharedData>
 #endif

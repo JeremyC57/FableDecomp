@@ -33,6 +33,9 @@ enum EShaderBankNo;                                          // MS forward enums
 enum EIndexBufferPool;
 enum EVertexBufferPool;
 enum EGraphicBankNo;                                         // MS forward enum (no enumerator name recovered)
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKMESHBANK
+enum EMeshBankNo;                                            // MS forward enum (no enumerator name recovered)
+#endif
 class CEngineInit;
 class CEngineMemoryInit;
 class CEngineResourceManager : public CEngineComponent, public CAsyncLoadingProcessCallback {
@@ -71,6 +74,11 @@ public:
     // Chunk 742: ?PeekGraphicBank@CEngineResourceManager@@QBEPBVCGraphicDataBank@@W4EGraphicBankNo@@@Z (FableWin.pdb 0x02C85CC0;
     // inline in retail: the particle line / sprite-trail render passes 0x00BC3F30 / 0x00BBE090 read GraphicBanks[0] at +0x954).
     const CGraphicDataBank* PeekGraphicBank(EGraphicBankNo bank) const { return GraphicBanks[bank]; }
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKMESHBANK
+    // Overlay opt-in (chunk 2011, rows 0x00BF12A0 / 0x00BF18B0): FableWin.pdb ?PeekMeshBank@CEngineResourceManager@@QBEPBVCMeshDataBank@@W4EMeshBankNo@@@Z
+    // (0x02D05E30; no Ego_r.pdb or Fable.exe copy: inline, MeshBanks[bank] at +0x10 read in place, 0x00BF12ED `mov ecx,[ecx+10h]`).
+    const CMeshDataBank* PeekMeshBank(EMeshBankNo bank) const { return MeshBanks[bank]; }
+#endif
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_GETGRAPHICBANK
     // Retail opt-in (chunk 848, row 0x00B2D9F0): Ego_r.pdb ?GetGraphicBank@CEngineResourceManager@@QAEPAVCGraphicDataBank@@W4EGraphicBankNo@@@Z,
     // inline in retail (UpdateDiskCache 0x00B2DA07 / 0x00B2DBA2 read GraphicBanks[0] at +0x954 and write through it).

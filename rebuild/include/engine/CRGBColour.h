@@ -34,6 +34,11 @@ public:
 #else
     CRGBColour(const CRGBColour& colour) { R=colour.R; G=colour.G; B=colour.B; A=colour.A; }
 #endif
+#ifdef FABLE_RETAIL_CRGBCOLOUR_GETASINT
+    // Opt-in (chunk 2032, row 0x00BA6FF0): FableWin.pdb ?GetAsInt@CRGBColour@@QBEKXZ (no Ego_r.pdb or Fable.exe copy): the packed dword
+    // read in place (0x00BA7732 `mov edx,[esp+18h] ; push edx` hands the silhouette colour to DrawAlphaBoundingBox's unsigned long).
+    unsigned long GetAsInt() const { return IntValue; }
+#endif
     unsigned char GetR() const { return R; }
     unsigned char GetG() const { return G; }
     unsigned char GetB() const { return B; }

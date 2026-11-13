@@ -42,6 +42,12 @@ public:
     virtual const C3DAnimationState& FindDominantAnimation() const;      //  4
     virtual void Validate();                                             //  5
 #endif
+#ifdef FABLE_RETAIL_C3DANIMATIONSTATE_ACCESSORS
+    // Retail opt-in (chunk 2044, row 0x00AA0090): FableWin.pdb / Ego_r.pdb ?GetAnimationIndex@C3DAnimationState@@QBEKXZ and
+    // ?GetAnimationTime@C3DAnimationState@@QBEMXZ (inline const accessors).
+    unsigned long GetAnimationIndex() const { return AnimationIndex; }
+    float GetAnimationTime() const { return AnimationTime; }
+#endif
     long AnimationIndex;                                                 // +0x08
     float AnimationTime;                                                 // +0x0c
 };

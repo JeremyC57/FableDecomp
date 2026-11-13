@@ -15,6 +15,9 @@
 #include "engine/CArray.h"
 #include "stlport/fable_map.h"
 #endif
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ANIM
+#include "engine/C3DAnimationInterpolator.h"
+#endif
 class C3DMesh2;
 class CEngineInternalPrimitiveAnimatedMesh:public CEngineInternalPrimitiveMeshBase {
 public:
@@ -25,7 +28,9 @@ public:
  // (public const; retail 0x00BD2A90, called from 0x00B83798). Being const, it fills the Cache through a mutable member (below).
  void InitialiseBoneScalings(const C3DMesh2&) const;
 #endif
-#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ORIGINAL_CACHE
+#if defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ORIGINAL_CACHE) || defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ANIM)
+ // FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ANIM: retail opt-in (chunk 2011, row 0x00BF18B0): the member typed alone (+0x70;
+ // the row passes &Anim.StartState +0x74 / &Anim.EndState +0x7C, 0x00BF1950 / 0x00BF1954). No layout change.
  C3DAnimationInterpolator Anim;
 #else
  unsigned char Anim[20]; // Original C3DAnimationInterpolator

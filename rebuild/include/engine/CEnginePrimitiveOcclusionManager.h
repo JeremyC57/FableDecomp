@@ -19,6 +19,14 @@ public:
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_SET
     void SetAsOccluded(class CEnginePrimitiveOcclusionInfo&)const;
 #endif
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_OCCLUDED) && defined(FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_SET)
+    // Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): Ego_r.pdb / FableWin.pdb
+    // ?GetOccludedFrames@CEnginePrimitiveOcclusionManager@@QAEJAAVCEnginePrimitiveOcclusionInfo@@@Z (retail 0x00B2FAC0, out of line) and the
+    // FableWin.pdb inline ?IsPrimitiveOccluded@..@@QAE_NAAVCEnginePrimitiveOcclusionInfo@@@Z (0x00B9A5A3 `call ; cmp eax,[edi+0Ch] ; jbe`:
+    // occluded for more frames than PrimitiveOccludeDelay +0x0C, the long count compared unsigned).
+    long GetOccludedFrames(class CEnginePrimitiveOcclusionInfo& info);   // 0x00B2FAC0
+    bool IsPrimitiveOccluded(class CEnginePrimitiveOcclusionInfo& info) { return GetOccludedFrames(info) > PrimitiveOccludeDelay; }
+#endif
     CEnginePrimitiveOcclusionManager();        // 0x00B2F760 ??0CEnginePrimitiveOcclusionManager@@QAE@XZ
 private:
     virtual unsigned long PeekSceneFilterFlags() const;

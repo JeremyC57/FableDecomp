@@ -52,6 +52,21 @@ public:
     unsigned long GetVertexCount() const;                                // 0x00A89320
     unsigned long GetTriangleCount() const;                              // 0x00A89350
 #endif
+#ifdef FABLE_RETAIL_C3DMESH2_PRIMITIVES
+    // Retail opt-in (chunk 2059, row 0x00BC25F0): the FableWin.pdb inline accessors ?GetPrimitiveCount@C3DMesh2@@QBEKXZ (20b/9i),
+    // ?GetPrimitive@C3DMesh2@@QBEPAVC3DPrimitive2@@K@Z (31b/11i) and ?GetMaterial@C3DMesh2@@QBEPBVC3DMeshMaterial@@K@Z (assert build);
+    // retail reads PrimitiveCount +0x90, Primitives +0x94 and Materials +0x8C in place (0x00BC2CAE, 0x00BC2CC2, 0x00BC2CE8).
+    unsigned long GetPrimitiveCount() const { return PrimitiveCount; }
+    C3DPrimitive2* GetPrimitive(unsigned long index) const { return &Primitives[index]; }
+#ifndef FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS
+    const C3DMeshMaterial* GetMaterial(unsigned long index) const { return &Materials[index]; }
+#endif
+#endif
+#if defined(FABLE_RETAIL_C3DMESH2_BONECOUNT) && !defined(FABLE_RETAIL_C3DMESH2_BONES)
+    // Retail opt-in (chunk 2044, rows 0x00AA0090 / 0x00A9F540): Ego_r.pdb / FableWin.pdb ?GetBoneCount@C3DMesh2@@QBEKXZ alone (the same
+    // body FABLE_RETAIL_C3DMESH2_BONES carries; inline in retail, BoneCount +0x98 read in place, 0x00AA00A1). No layout change.
+    unsigned long GetBoneCount() const { return BoneCount; }
+#endif
 #ifdef FABLE_RETAIL_C3DMESH2_BONES
     // Retail opt-in (chunk Q32, row 0x00BD2A90 CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings): Ego_r.pdb / FableWin.pdb
     // ?GetBoneCount@C3DMesh2@@QBEKXZ and ?GetBone@C3DMesh2@@QBEPBVC3DBone2@@K@Z, inline (BoneCount +0x98 / Bones +0x9C read in
@@ -65,7 +80,14 @@ public:
     long MemoryHandle,PrimMemoryHandle,BoneNameMemoryHandle;
     unsigned long MaterialCount;C3DMeshMaterial* Materials;unsigned long PrimitiveCount;C3DPrimitive2* Primitives;
     unsigned long BoneCount;C3DBone2* Bones;C3DKeyframe* BoneKeyframes;unsigned short* BoneNameIndices;char* BoneNameData;unsigned long BoneNameDataSize;
+#ifdef FABLE_RETAIL_C3DMESH2_INVERSETRANSFORM
+    // Retail opt-in (chunk 2011, rows 0x00BF12A0 / 0x00BF18B0): FableWin.pdb ?PeekInverseTransform@C3DMesh2@@QBEABVCMatrix3x4@@XZ
+    // (inline: InverseTransform +0xB0 read in place, 0x00BF1398 `fmul [eax+0B4h]`), the member typed as Ego_r.pdb's CMatrix3x4.
+    const CMatrix3x4& PeekInverseTransform() const { return InverseTransform; }
+    CMatrix3x4 InverseTransform;CMatrix4x4* BoneSpaceTransforms;bool ClothFlag,LockedFromMemoryRelocation;unsigned long MeshID;
+#else
     unsigned char InverseTransform[48];CMatrix4x4* BoneSpaceTransforms;bool ClothFlag,LockedFromMemoryRelocation;unsigned long MeshID;
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(C3DMesh2)==0xec);
 FABLE_STATIC_ASSERT(offsetof(C3DMesh2,Materials)==0x8c);

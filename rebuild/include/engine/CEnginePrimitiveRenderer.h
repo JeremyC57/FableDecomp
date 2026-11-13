@@ -16,6 +16,10 @@
 class CEngineScene;
 #endif
 class CEngineInit;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_STATICMESHMANAGER
+#include "engine/CCountedPointer.h"
+#include "engine/CEnginePrimitiveManagerStaticMeshes.h"
+#endif
 class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, public CEngineComponent {
 public:
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDSTATICMESH
@@ -41,6 +45,18 @@ public:
     CArray<CEngineScene*> SceneList;            // +0x338
 private:
     unsigned char _pad_0x344[0x350 - 0x344];    // +0x344 members not modelled yet
+#elif defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERER_STATICMESHMANAGER)
+    // Overlay opt-in (chunk 2011, rows 0x00BF12A0 / 0x00BF18B0 CEnginePrimitiveRenderUtil::AddGeneratedObjects): Ego_r.pdb
+    // StaticMeshManager (CCountedPointer<CEnginePrimitiveManagerStaticMeshes>) at the retail +0x280 (the generated Ego_r model below,
+    // StaticMeshManager_Data) and FableWin.pdb ?GetStaticMeshManager@CEnginePrimitiveRenderer@@QBEAAVCEnginePrimitiveManagerStaticMeshes@@XZ
+    // (no Ego_r.pdb or Fable.exe copy: inline, the Data word read in place, 0x00BF17C5 `mov ecx,[edx+280h]`, then the manager's
+    // CEnginePrimitiveManagerStaticMeshesBase::AddStaticMesh 0x00BA0FC0 is called directly).
+private:
+    unsigned char _pad_0x274[0x280 - 0x274];    // +0x274 members not modelled yet
+    CCountedPointer<CEnginePrimitiveManagerStaticMeshes> StaticMeshManager;   // +0x280
+    unsigned char _pad_0x288[0x350 - 0x288];    // +0x288 members not modelled yet
+public:
+    CEnginePrimitiveManagerStaticMeshes& GetStaticMeshManager() const { return *StaticMeshManager; }
 #else
 private:
     unsigned char _pad_0x274[0xdc];             // +0x274 members not modelled yet (Ego_r.pdb names; retail STLport sizes)

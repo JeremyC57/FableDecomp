@@ -1,6 +1,11 @@
 #ifndef FABLE_ENGINE_CPHYSICSMESHOBJECT_H
 #define FABLE_ENGINE_CPHYSICSMESHOBJECT_H
 #include "engine/CBaseClass.h"
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_NAVVOLUMES
+#include "engine/CVectorMap.h"
+#include "engine/CCountedPointer.h"
+class CContainmentVolume;
+#endif
 class CCharString;class C3DVector;class CMeshIntersectionData;
 // Ego_r TPI size40, CBaseClass base, Mesh+4, PositionMatrix+8, Scale+38.
 // Native GetPhysicsMeshObject 006b0850 and destructor00a127d0 agree.
@@ -94,6 +99,11 @@ public:
     C3DVector GetBoundingBoxZEdge() const;                               // 0x00A11BA0
     C3DVector GetCentreOfGravity() const;                                // 0x00A11EC0
     void GetRigidBodyBoundingPoints(std::vector<C3DVector>& points) const;   // 0x00A12840
+#endif
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_NAVVOLUMES
+    // Retail opt-in (chunk 2005, row 0x00A12EE0): Ego_r.pdb
+    // ?GetNavigationLevelVolumes@CPhysicsMeshObject@@QBEXAAV?$CVectorMap@JV?$CCountedPointer@VCContainmentVolume@@@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@@@Z.
+    void GetNavigationLevelVolumes(CVectorMap<long,CCountedPointer<CContainmentVolume>,CKeyPairCompareLess<long,CCountedPointer<CContainmentVolume> > >& volumes) const;
 #endif
 #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_CENTRE
     // Nested opt-in (chunk 760, row 0x00A11AE0): Ego_r.pdb ?GetBoundingBoxCentre@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ.

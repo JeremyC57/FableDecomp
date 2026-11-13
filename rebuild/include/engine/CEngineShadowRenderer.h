@@ -11,6 +11,91 @@
 #include "rebuild_abi.h"
 #include "engine/CEngineComponent.h"
 class CEngineInit;
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_MEMBERS
+// Retail opt-in (chunk 2024, row 0x00B4FC40 SetupShadowFuncRenderStates(long, const CMatrix3x4&, const CColorBufferDepthPackParameters&)):
+// the own members in Ego_r.pdb order, names and types (struct_layouts_egor.tsv; no container member and C3DVector is 1-aligned, so
+// the Ego_r offsets are retail's: the row reads SceneData.WorldToShadowBufferMatrixTextureSpace +0x8C..+0xC8, ShadowFadeStart /
+// ShadowFadeEnd +0xFC / +0x100, ShadowBufferTexture +0x2E8, DepthPackingLookupTexture +0x32C and RenderingTechnique +0x334). The nested
+// CColorBufferDepthPackParameters (Ego_r.pdb, 12 bytes, U-keyed: ?SetupShadowFuncRenderStates@CEngineShadowRenderer@@QAEXJABUCColorBufferDepthPackParameters@1@@Z)
+// and EShadowRenderingTechnique (nested: ?PeekRenderingTechnique@CEngineShadowRenderer@@QBE?AW4EShadowRenderingTechnique@1@XZ; the
+// enumerator names are descriptive, the PDB keeps only the tag; 0 / 1 / 2 select the ice pass's plain / shadow-buffer / colour-buffer
+// shaders at 0x00B75B04, hand-back 2026-11-03_linux_hand727). Inline accessors: FableWin.pdb only (no Ego_r.pdb or Fable.exe copy).
+#ifndef FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CTEXTURE
+#endif
+#ifndef FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CSURFACE
+#endif
+#include "engine/C3DVector.h"
+#include "engine/CMatrix3x4.h"
+#include "engine/CMatrix4x4.h"
+#include "engine/CShadowRendererSceneData.h"
+#include "engine/CRenderStateCaptureBlock.h"
+#include "engine/CRenderTarget.h"
+#include "engine/CTexture.h"
+#include "engine/CSurface.h"
+class CEngineShadowRenderer : public CEngineComponent {
+public:
+    struct CColorBufferDepthPackParameters {                             // 12 bytes (Ego_r.pdb)
+        CColorBufferDepthPackParameters(long stage, long carry_constant, long repeat_constant)   // FableWin ??0CColorBufferDepthPackParameters@CEngineShadowRenderer@@QAE@JJJ@Z
+            : DepthToColourLookupTextureStage(stage), LowByteCarryPixelShaderConstant(carry_constant),
+              LowRepeatFactorUserVertexShaderConstant(repeat_constant) { }
+        long DepthToColourLookupTextureStage;                            // +0x00
+        long LowByteCarryPixelShaderConstant;                            // +0x04
+        long LowRepeatFactorUserVertexShaderConstant;                    // +0x08
+    };
+    enum EShadowRenderingTechnique {
+        SHADOW_RENDERING_TECHNIQUE_NONE,                                 // descriptive (0: unshadowed shaders)
+        SHADOW_RENDERING_TECHNIQUE_SHADOW_BUFFER,                        // descriptive (1: the "Shadowed" shaders)
+        SHADOW_RENDERING_TECHNIQUE_COLOUR_BUFFER                         // descriptive (2: the "ColbuffShadowed" shaders)
+    };
+    CEngineShadowRenderer();                   // 0x00B50370 ??0CEngineShadowRenderer@@QAE@XZ
+    virtual unsigned long PeekSceneFilterFlags() const;
+    void SetupShadowFuncRenderStates(long stage, const CMatrix3x4& texture_transform,
+                                     const CColorBufferDepthPackParameters& pack_parameters);   // 0x00B4FC40
+    void SetupShadowFuncRenderStates(long stage, const CColorBufferDepthPackParameters& pack_parameters);   // 0x00B50510
+    EShadowRenderingTechnique PeekRenderingTechnique() const { return RenderingTechnique; }
+    CTexture& GetShadowBufferTexture() { return ShadowBufferTexture; }
+    CTexture& GetDepthPackingTexture() { return DepthPackingLookupTexture; }
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_PEEKSCENEDATA
+    // Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): Ego_r.pdb / FableWin.pdb
+    // ?PeekSceneData@CEngineShadowRenderer@@QAE?BVCShadowRendererSceneData@@XZ (inline; the caller copies SceneData +0x0C through the
+    // out-of-line copy constructor 0x00B38600 into its own frame, 0x00B9A71D..0x00B9A72B).
+    const CShadowRendererSceneData PeekSceneData() { return SceneData; }
+#endif
+private:
+    CShadowRendererSceneData  SceneData;                                 // +0x00c
+    CRenderStateCaptureBlock  ShadowBufferRenderStateCaptureBlock;       // +0x24c
+    float                     ShadowProjectionZOffset;                   // +0x250
+    float                     ShadowProjectionZSlopeOffset;              // +0x254
+    float                     ColourBufferShadowTextureZBias;            // +0x258
+    float                     ColourBufferShadowMinWClamp;               // +0x25c
+    bool                      EnableShadowBufferDraw;                    // +0x260
+    C3DVector                 StaticDataOrigin;                          // +0x261
+    C3DVector                 CameraLookVector;                          // +0x26d
+    CMatrix3x4                CameraViewMatrix;                          // +0x27c
+    bool                      PerspectiveShadowsEnabled;                 // +0x2ac
+    bool                      SceneOriginLocked;                         // +0x2ad
+    bool                      EnableFrustrumDebugDisplay;                // +0x2ae
+    bool                      TexturesAllocated;                         // +0x2af
+    float                     PerspectiveInterpStart;                    // +0x2b0
+    float                     PerspectiveInterpEnd;                      // +0x2b4
+    float                     ForegroundBufferSpan;                      // +0x2b8
+    float                     MaxShadowDistance;                         // +0x2bc
+    float                     ShadowFadeRatio;                           // +0x2c0
+    CRenderTarget             RenderTarget;                              // +0x2c4
+    CTexture                  ShadowBufferTexture;                       // +0x2e8
+    CTexture                  RenderSurface;                             // +0x2f0
+    CSurface                  ShadowBufferDepthSurface;                  // +0x2f8
+    CSurface                  ShadowBufferColourSurface;                 // +0x308
+    CTexture                  ShadowBufferColourTexture;                 // +0x318
+    C3DVector                 ShadowBufferTextureUVScaler;               // +0x320
+    CTexture                  DepthPackingLookupTexture;                 // +0x32c
+    EShadowRenderingTechnique RenderingTechnique;                        // +0x334
+    long                      UserVideoOptionShadowBufferSize;           // +0x338
+    float                     UserVideoOptionShadowDistanceScale;        // +0x33c
+};
+#else
 class CEngineShadowRenderer : public CEngineComponent {
 public:
     CEngineShadowRenderer();                   // 0x00B50370 ??0CEngineShadowRenderer@@QAE@XZ
@@ -18,6 +103,7 @@ public:
 private:
     unsigned char _pad_0xc[0x334];              // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
 };
+#endif
 FABLE_STATIC_ASSERT(sizeof(CEngineShadowRenderer) == 0x340);
 #else // generated flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.

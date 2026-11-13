@@ -126,6 +126,21 @@ public:
     bool UploadedFlag;unsigned char VertexStreamFlags;unsigned long InitFlags;
     C3DTextureStages RecordedTextureStages;void* RecordedConstantData;long RecordedFrame;
     unsigned char PartitionedMeshSourceIndexBuffer[12],PartitionTree[8],MirroredTextureVertexIndexList[12];
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_PARTICLEMESH
+    // Retail opt-in (chunk 2059, row 0x00BC25F0 CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive): the FableWin.pdb inline
+    // accessors the row uses (no out-of-line copy in Ego_r.pdb or Fable.exe; FableWin debug sizes: GetMaterialIndex 17b/9i,
+    // GetRepeatingMeshBatchSize 17b/9i, GetVertexCount 17b/9i, GetTriangleCount 17b/9i, GetVertexBuffer 22b/10i, GetIndexBuffer 345b/94i =
+    // assert code; retail reads +0x04 / +0x08 / +0x58 / +0x5C / +0x30 / +0x34 in place, 0x00BC2CCC..0x00BC2F50). Needs the typed buffers
+    // of FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER + FABLE_RETAIL_C3DPRIMITIVE2_VERTEXBUFFER.
+    long GetMaterialIndex() const { return MaterialIndex; }
+    long GetRepeatingMeshBatchSize() { return RepeatingMeshReps; }
+#ifndef FABLE_RETAIL_C3DPRIMITIVE2_ANIMATEDBLOCKS
+    unsigned long GetVertexCount() const { return VertexCount; }
+#endif
+    unsigned long GetTriangleCount() const { return TriangleCount; }
+    CVertexBufferWin32* GetVertexBuffer() { return VertexBuffer.get(); }
+    CIndexBuffer* GetIndexBuffer() { return IndexBuffer.get(); }
+#endif
     N3DPrimitive::CStaticBlock* GetStaticBlock(unsigned long index){return &StaticBlocks[index];}
     unsigned long GetStaticBlockCount()const{return StaticBlockCount;}
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER

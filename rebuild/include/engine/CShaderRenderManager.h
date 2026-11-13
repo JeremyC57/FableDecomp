@@ -56,6 +56,9 @@
 #include "engine/IDirect3DDevice9.h"
 #include "engine/EVertexType.h"
 #include "engine/EPrimitiveType.h"
+#ifdef FABLE_RETAIL_CSHADERRENDERMANAGER_SELECTVERTEXBUFFER
+#include "engine/CVertexBufferWin32.h"
+#endif
 struct IDirect3DVertexShader9;
 struct IDirect3DVertexDeclaration9;
 struct _D3DMATRIX;
@@ -93,7 +96,14 @@ public:
     bool GetPixelShadersEnabled() const;                                 // ?GetPixelShadersEnabled@CShaderRenderManager@@QBE_NXZ
     bool GetVertexShadersEnabled() const;                                // ?GetVertexShadersEnabled@CShaderRenderManager@@QBE_NXZ
     bool IsFixedFunctionVertexMode() const;
+#ifdef FABLE_RETAIL_CSHADERRENDERMANAGER_SELECTVERTEXBUFFER
+    // Retail opt-in (chunk 2059, row 0x00BC25F0): ?SelectVertexBuffer@CShaderRenderManager@@QAEXAAVCVertexBufferWin32@@@Z has no
+    // out-of-line copy in Ego_r.pdb or Fable.exe (FableWin.pdb debug body 537b/151i, assert build); 0x00BC2EF0..0x00BC2F0F expands it
+    // as D3DDevice (+0x1D4)->SetStreamSource(0, buffer.PVertexBuffer, 0, buffer.Stride) with no null test.
+    void SelectVertexBuffer(CVertexBufferWin32& buffer) { D3DDevice->SetStreamSource(0, buffer.PVertexBuffer, 0, buffer.Stride); }
+#else
     void SelectVertexBuffer(CVertexBufferWin32& buffer);                 // ?SelectVertexBuffer@CShaderRenderManager@@QAEXAAVCVertexBufferWin32@@@Z
+#endif
     void DrawBuffersIndexed(const CTexture**, unsigned long, CVertexBufferWin32&, unsigned long, unsigned long, CIndexBuffer&, unsigned long, unsigned long, EPrimitiveType);
     void DrawBuffersIndexed(const CTexture**, unsigned long, unsigned long, unsigned long, CIndexBuffer&, unsigned long, unsigned long, EPrimitiveType);
     void DrawBuffersIndexed(CVertexBufferWin32&, unsigned long, unsigned long, CIndexBuffer&, unsigned long, unsigned long, EPrimitiveType);
