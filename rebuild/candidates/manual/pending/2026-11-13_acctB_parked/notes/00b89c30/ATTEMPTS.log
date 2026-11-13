@@ -494,3 +494,39 @@
 03:59 00b89c30 probe hv_c5.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
 04:01 00b89c30 probe hv_st.cpp pattern -> SRC_FAIL 39 0 ndiff 39 
 04:01 00b89c30 probe hv_st.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:10 00b89c30 probe a01.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:10 00b89c30 probe a02.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:10 00b89c30 probe a03.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:10 00b89c30 probe a04.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:10 00b89c30 probe a05.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:10 00b89c30 probe a06.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:10 00b89c30 grade nv.cpp DIFFER(6408v6431) hunks=14 -- no volatile on blur statics
+04:11 00b89c30 grade nv.cpp DIFFER(6408v6431) hunks=14 /Op -- no volatile + /Op
+04:11 00b89c30 grade n2.cpp DIFFER(6408v6431) hunks=14 -- no volatile, static float[2]
+04:11 00b89c30 grade p2.cpp DIFFER(6408v6431) hunks=14 -- no volatile: positive offset spellings
+04:11 00b89c30 grade p3.cpp DIFFER(6408v6431) hunks=14 -- no volatile: positive offset spellings
+04:11 00b89c30 grade p4.cpp DIFFER(6408v6431) hunks=14 -- no volatile: positive offset spellings
+04:12 00b89c30 probe w1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 11 28:Smb 29:Smb 30:Sbm 31:Sbm 32:Smb 33:Smb 34:Smb 35:Smb 36:Smb 37:Smb 38:Smb
+04:12 00b89c30 probe w2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:12 00b89c30 probe w3.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 11 28:Smb 29:Smb 30:Sbm 31:Sbm 32:Smb 33:Smb 34:Smb 35:Smb 36:Smb 37:Smb 38:Smb
+04:12 00b89c30 probe w4.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:13 00b89c30 probe g01.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:13 00b89c30 probe g02.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:13 00b89c30 probe g03.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:13 00b89c30 probe g04.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:13 00b89c30 probe g05.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 3 27:Sbm 28:Smb 31:Cmb
+04:13 00b89c30 probe g06.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:13 00b89c30 probe g07.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:13 00b89c30 probe g08.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:13 00b89c30 probe i1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:13 00b89c30 probe i1.cpp pattern -> DIFFER(6341v6431) 39 38 ndiff 14 6:Cmb 7:Cmb 24:Smb 25:Smb 26:Smb 28:Smb 30:Cmb 32:Cbm 33:Cbm 34:Cbm 35:Cbm 36:Cbm 37:Cbm
+04:13 00b89c30 probe e1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:13 00b89c30 probe e2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 11 28:Smb 29:Smb 30:Sbm 31:Sbm 32:Smb 33:Smb 34:Smb 35:Smb 36:Smb 37:Smb 38:Smb
+04:14 00b87870 probe sib.cpp pattern -> DIFFER(4944v4944) 39 41 ndiff 34 1:Cbm 2:Cbm 6:Cmb 7:Cmb 8:Cmb 9:Cmb 10:Cmb 11:Cmb 12:Cmb 13:Cmb 14:Cmb 15:Cmb 16:Cmb 17:Cmb 18:Cmb 19:Cmb 20:Cmb 21:Cmb 22:Cmb 23:Cbm 24:Cbm 25:Cbm 26:Cmb 27:Cmb 29:Cbm 32:Cbm 33:Cbm 34:Cbm 35:Cbm 36:Cbm 37:Cbm 38:Sbm
+04:14 00b89c30 probe row.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:14 00b87870 probe sib0.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:14 00b87870 probe sk1.cpp pattern -> DIFFER(4944v4944) 39 41 ndiff 34 1:Cbm 2:Cbm 6:Cmb 7:Cmb 8:Cmb 9:Cmb 10:Cmb 11:Cmb 12:Cmb 13:Cmb 14:Cmb 15:Cmb 16:Cmb 17:Cmb 18:Cmb 19:Cmb 20:Cmb 21:Cmb 22:Cmb 23:Cbm 24:Cbm 25:Cbm 26:Cmb 27:Cmb 29:Cbm 32:Cbm 33:Cbm 34:Cbm 35:Cbm 36:Cbm 37:Cbm 38:Cbm
+04:14 00b87870 probe sk2.cpp pattern -> DIFFER(4944v4944) 39 41 ndiff 34 1:Cbm 2:Cbm 6:Cmb 7:Cmb 8:Cmb 9:Cmb 10:Cmb 11:Cmb 12:Cmb 13:Cmb 14:Cmb 15:Cmb 16:Cmb 17:Cmb 18:Cmb 19:Cmb 20:Cmb 21:Cmb 22:Cmb 23:Cbm 24:Cbm 25:Cbm 26:Cmb 27:Cmb 29:Cbm 32:Cbm 33:Cbm 34:Cbm 35:Cbm 36:Cbm 37:Cbm 38:Sbm
+04:14 00b87870 probe sk3.cpp pattern -> DIFFER(4944v4944) 39 41 ndiff 34 1:Cbm 2:Cbm 6:Cmb 7:Cmb 8:Cmb 9:Cmb 10:Cmb 11:Cmb 12:Cmb 13:Cmb 14:Cmb 15:Cmb 16:Cmb 17:Cmb 18:Cmb 19:Cmb 20:Cmb 21:Cmb 22:Cmb 23:Cbm 24:Cbm 25:Cbm 26:Cmb 27:Cmb 29:Cbm 32:Cbm 33:Cbm 34:Cbm 35:Cbm 36:Cbm 37:Sbm 38:Sbm
+04:14 00b87870 probe sk4.cpp pattern -> DIFFER(4944v4944) 39 41 ndiff 34 1:Cbm 2:Cbm 6:Cmb 7:Cmb 8:Cmb 9:Cmb 10:Cmb 11:Cmb 12:Cmb 13:Cmb 14:Cmb 15:Cmb 16:Cmb 17:Cmb 18:Cmb 19:Cmb 20:Cmb 21:Cmb 22:Cmb 23:Cbm 24:Cbm 25:Cbm 26:Cmb 27:Cmb 29:Cbm 32:Cbm 33:Cbm 34:Cbm 35:Cbm 36:Sbm 37:Sbm 38:Sbm
+04:14 00b87870 probe sk8.cpp pattern -> DIFFER(4944v4944) 39 41 ndiff 33 1:Cbm 2:Cbm 6:Cmb 7:Cmb 8:Cmb 9:Cmb 10:Cmb 11:Cmb 12:Cmb 13:Cmb 14:Cmb 15:Cmb 16:Cmb 17:Cmb 18:Cmb 19:Cmb 20:Cmb 21:Cmb 23:Cbm 24:Cbm 25:Cbm 26:Cmb 27:Cmb 29:Cbm 32:Sbm 33:Sbm 34:Sbm 35:Sbm 36:Sbm 37:Sbm 38:Sbm

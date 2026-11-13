@@ -48,3 +48,32 @@
 - Follow-up probe: the same 2 dead records also in SetStencilRef / SetStencilMask (all raw-DWORD setters, c2/hv_st) still RELOCATION_MATCH,
   so a shared DWORD-setter text with >=2 more records would be consistent for this row (regrade 0x00B87870 ApplyDisplacement with it).
   No natural /Od-neutral text found (FableWin SetAlphaRef / SetStencilRef / SetStencilMask 14i/34b = the one-line form).
+
+## Session 2 of the bwf agent (row 1 only, 2026-11-13) -- still DIFFER(6431v6431), 1 hunk; differ/ unchanged
+- Landed / matched SetAlphaRef, SetStencilRef, SetStencilMask users (00bbc460, 00bf01e0, 00b5af80, 00bbf4a0, 00bb8750, 00bc25f0, 00ba6ff0,
+  00b87870) all use the plain one-line setters with literal / variable arguments: no special spelling to copy.
+- FableWin CRenderStateManager list: every raw-DWORD setter (AlphaRef, StencilRef/Mask/WriteMask, FogColour, TextureFactor, float FogStart/End,
+  DepthOffset) is 34 bytes = one SetRenderState call; no intermediate helper (SetRenderStateValue-like) exists in the class.
+- Probes, which records inside the AlphaRef expansion fix block 28 (c2/g4, overlay c2/hp PROBE_ARBODY): two chained used copies
+  (`a = ref; b = a; SetRenderState(b, ..)`), `a + b - ref`, two dead initialised locals (any type), one used copy + one dead local:
+  RELOCATION_MATCH. One local, a `CStateInfo&` / pointer local, a clamp (`v > 255`), `ref & 0xff`, a ternary clamp: no. So retail's
+  expansion carries two more value records than ours; FableWin's 34-byte SetAlphaRef rules out a longer body there.
+- Call-site forms (c2/a2, c2/w): inline identity / copy / max / float-convert helpers around the argument, `(unsigned long)1.0f`,
+  constant float expression, enum constant, named const locals, a forced-inline wrapper with a ref parameter (ProbeAR(r)), a wrapper taking
+  CRenderManager&: none moves block 28 (wrappers that also hold AlphaTestFunc shift every later block, like outer names). Plain-inline
+  SetAlphaRef with /d2inlT200 expands it and gives the same residue (the inline path is not the cause).
+- volatile check (owner: no volatile unless retail provably used it): without `volatile` on the two blur statics (c4/nv.cpp) the row is
+  DIFFER(6408v6431), 14 hunks: VC7.1 copies the positive offsets with integer moves (`mov reg,[0139AB54h] ; push reg`), retail copies them
+  through the x87 (`sub esp,8 ; fstp [esp+4] ; fld dword ptr [0139AB54h] ; fstp [esp]`, 0x00B8A913..0x00B8A91D, 0x00B8A927..0x00B8A936).
+  Non-volatile spellings tried, all 14 hunks: `static float BlurOffset[2]`, `+x`, `x * 1.0f`, `(float)x`, flag /Op. So retail's bytes depend
+  on the volatile reads here (ASM_RULES "retail's bytes depend on it" case); needs a `// Retail-volatile:` line if the owner accepts it.
+- Out of real ideas for a natural source of the two AlphaRef records. Remaining guess: retail's SetAlphaRef (unlike FableWin's later build)
+  copied the value through two locals or a two-parameter helper; a header opt-in with that text for the DWORD setters would need the owner's
+  call (one text for SetAlphaRef / SetStencilRef / SetStencilMask; c2/hv_st shows the row still matches; regrade 0x00B87870 with it).
+- Sibling check (c5/): giving the raw-DWORD setters (SetAlphaRef / SetStencilRef / SetStencilMask) the two-copy text, or 1..8 extra
+  records, makes this row RELOCATION_MATCH (c5/row.cpp) but breaks the matched sibling 0x00B87870 ApplyDisplacement (DIFFER 4944v4944 for
+  every variant; its baseline with its own overlay is RELOCATION_MATCH). One header text cannot serve both, so "retail's SetAlphaRef has more
+  records" is NOT the source fact: the AR-internal probe only imitates some other per-block difference at block 28.
+- Hand-over: differ/00b89c30.cpp unchanged (v19, 1 hunk, `static volatile float` statics -- see the volatile check above). Next level to try:
+  what else is per-instance at block 28 (the AlphaRef statement's own scope / position relative to the volatile reads in the loop, the
+  section-2 statement grouping into blocks or helper scopes that FableWin does not list), measured with c2/sw.sh against the AR probe.
