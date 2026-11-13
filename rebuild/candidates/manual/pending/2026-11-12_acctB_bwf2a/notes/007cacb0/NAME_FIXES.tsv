@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+004bbe10	?Init@CRightHandedSet@@QAEXABVC3DVector@@0@Z	Ego_r 0x004BF6E0 + FableWin 0x01D0D780 (no PDB has CRightHandedSet::Set); same signature/body	CRightHandedSet::Set (landed CRightHandedSet_Set_004bbe10.cpp, PrepareToShowItems 0x007CA670 local)

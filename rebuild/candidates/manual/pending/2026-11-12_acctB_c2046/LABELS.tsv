@@ -1,0 +1,5 @@
+address	name	evidence
+0x00D92380	?Main@CHobbeTorrent@CQ_HobbeCaveScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name sets; retail vtable 0x012D5960 (stored by the landed Alloc 0x00D8F3F0) slot 1 = 0x00D92380
+0x00D77690	?DoCutscene@CQ_HangingTreeGoodScript@NScript@@QAEXJ@Z	Ego_r.pdb + FableWin.pdb name sets; called by the landed DoMission 0x00D74430 at 0x00D74650 / 0x00D74CC7 (ret 4: one long)
+0x00D92940	?Main@CGranny@CQ_HobbeCaveScript@NScript@@EAEXXZ	uncatalogued function after row 0x00D92380: vtable 0x012D59E4 slot 1 (stored by the landed CGranny::Alloc 0x00D8FC70 at 0x00D8FCA6); Ego_r.pdb + FableWin.pdb name sets
+0x00CBE45C	?IsDistanceFromThingToPositionOver@@YI_NABVCScriptThing@@ABVC3DVector@@M@Z	Ego_r.pdb + FableWin.pdb name sets; call site 0x00D7794F ecx = thing, edx = &pos, one float pushed (fastcall); already bound once in reloc_bindings

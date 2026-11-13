@@ -1,0 +1,12 @@
+17:52 005aaf28 grade v1.cpp TIMEOUT -- first full draft
+17:52 005aaf28 grade v1.cpp SRC_FAIL -- first full draft
+17:53 005aaf28 grade v1.cpp SRC_FAIL -- first full draft
+17:53 005aaf28 grade v1.cpp DIFFER(4538v4550) hunks=62 -- first full draft
+17:54 005aaf28 grade v2.cpp DIFFER(4547v4550) hunks=60 -- operator!= decl, combatDef assign
+17:55 005aaf28 grade v3.cpp RELOCATION_MATCH -- A single line var; C shop decl before line
+17:55 005aaf28 grade 005aaf28.cpp RELOCATION_MATCH -- final source with header
+17:56 005aaf28 grade 005aaf28.cpp RELOCATION_MATCH -- strict regrade
+20:35 005aaf28 grade src.cpp RELOCATION_MATCH -- 
+20:35 005aaf28 grade src.cpp SRC_FAIL -- 
+23:17 005aaf28 grade 005aaf28.cpp RELOCATION_MATCH -- repair: Class == WC_HEAVY
+23:17 005aaf28 grade 005aaf28.cpp RELOCATION_MATCH -- repair: strict regrade

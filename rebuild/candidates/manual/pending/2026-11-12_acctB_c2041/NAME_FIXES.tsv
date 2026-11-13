@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x006A99D0	?GetMaxTurnSpeed@CThingPlayerCreature@@IBEMXZ	Ego_r.pdb 0x005469C0 and FableWin.pdb 0x01DF7490 both list ?GetMaxTurnSpeed@CThingPlayerCreature@@IBEMXZ (protected const); the landed body only reads members (const-correct)	?GetMaxTurnSpeed@CThingPlayerCreature@@QAEMXZ (landed row 0x006A99D0 declares it public non-const)

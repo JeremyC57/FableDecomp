@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00bb1f50   RELOCATION_MATCH PASS   CalculateVertexNormals
+
+WINS: 1
+  00bb1f50 RELOCATION_MATCH CEngineClothRenderer::?CalculateVertexNormals@CEngineClothRenderer@@AAEXABVCParticleSimulation@@ABVCParticleProgram@@@Z

@@ -1,0 +1,207 @@
+#ifndef FABLE_ENGINE_CENGINEWEATHERRENDERER_H
+#define FABLE_ENGINE_CENGINEWEATHERRENDERER_H
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER
+// Retail branch (chunk 731, 2026-11-03): RTTI .?AVCEngineWeatherRenderer@@ (vtable 0x012A2434) : CEngineComponent (+0x0); sizeof 0x12FC from
+// CEngine::Initialise 0x00B26360 (`new` of 0x12FC bytes before the constructor call). Constructor ??0CEngineWeatherRenderer@@QAE@XZ 0x00B52250 and
+// the PeekSceneFilterFlags override (?PeekSceneFilterFlags@CEngineWeatherRenderer@@UBEKXZ): Ego_r.pdb / FableWin.pdb. Own members are
+// not modelled yet (one opaque block; the generated Ego_r model below lists their names).
+#ifndef FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINECOMPONENT
+#endif
+#include "rebuild_abi.h"
+#include "engine/CEngineComponent.h"
+class CEngineInit;
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_BUFFERS
+// Retail opt-in (chunk 2005, row 0x00B51570 BuildBuffers): the leading Ego_r.pdb members typed at their retail offsets (BuildBuffers
+// initialises and fills +0x0C / +0x40 / +0x54 / +0x88 / +0xBC and steps Settings.RandomNumberGeneratorSeed at +0x1EC = +0x114 + 0xD8);
+// the shader members and the tail stay opaque. ?BuildBuffers@CEngineWeatherRenderer@@AAEXXZ (Ego_r.pdb, private).
+#ifndef FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#endif
+#ifndef FABLE_RETAIL_CINDEXBUFFER
+#define FABLE_RETAIL_CINDEXBUFFER
+#endif
+#include "engine/CVertexBufferWin32.h"
+#include "engine/CIndexBuffer.h"
+#include "engine/CEngineWeatherSettings.h"
+class CVolumeTexture;
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_RENDERRAIN
+// Nested opt-in (chunk 2008, row 0x00B54890 RenderRain): the shader members typed (Ego_r.pdb names, retail offsets +0xD0..+0x108: RenderRain
+// applies RainParticlePixelShader +0xE0, RainParticleVertexShader +0xD0 and RainParticleClippingVertexShader +0xD8), the box visibility
+// array SavedBoxVisibility[729] at +0x784 after WeatherMaskList[3] (+0x66C, 0x5C each, opaque) and CurrentMask +0x780, and the private
+// members RenderRain calls, spelled as both PDB name sets (ABE = private const).
+#ifndef FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CVERTEXSHADER
+#endif
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/C3DVector.h"
+#include "engine/CWeatherMask.h"
+class CEngineComponentRenderParams;
+#endif
+#endif
+class CEngineWeatherRenderer : public CEngineComponent {
+public:
+    CEngineWeatherRenderer();                  // 0x00B52250 ??0CEngineWeatherRenderer@@QAE@XZ
+    virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_BUFFERS
+private:
+    void BuildBuffers();                                             // 0x00B51570 ?BuildBuffers@CEngineWeatherRenderer@@AAEXXZ
+    CVertexBufferWin32 RainVertexBuffer;                             // +0x0c
+    CIndexBuffer       RainIndexBuffer;                              // +0x40
+    CVertexBufferWin32 SnowVertexBuffer;                             // +0x54
+    CVertexBufferWin32 MistVertexBuffer;                             // +0x88
+    CIndexBuffer       MistIndexBuffer;                              // +0xbc
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_RENDERRAIN
+    enum EWeatherBoxVisible { WEATHER_BOX_VISIBLE = 0, WEATHER_BOX_CLIPPED = 1 };   // descriptive enumerator names (values from the clip tests)
+    EWeatherBoxVisible ClipBoxToCamera(const C3DVector& pos, float radius) const;   // 0x00B51F60
+    EWeatherBoxVisible ClipBoxToWeatherMaskSphere(const C3DVector& pos) const;       // 0x00B52090
+    EWeatherBoxVisible ClipBoxToLandscape(const C3DVector& pos) const;               // 0x00B52DD0
+    void SetCommonParticleShaderConstants(long& index);                              // 0x00B52160
+    void RenderRainBox(const C3DVector& pos);                                        // 0x00B54100
+    void RenderRain(const CEngineComponentRenderParams& params);                     // 0x00B54890
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_RENDERSNOW
+    // Nested opt-in (chunk 2031, row 0x00B54E30): Ego_r.pdb / FableWin.pdb ?RenderSnowBox@CEngineWeatherRenderer@@AAEXABVC3DVector@@@Z
+    // (landed 0x00B54210) and ?RenderSnow@CEngineWeatherRenderer@@AAEXABVCEngineComponentRenderParams@@@Z (private, AAE).
+    void RenderSnowBox(const C3DVector& pos);                                        // 0x00B54210
+    void RenderSnow(const CEngineComponentRenderParams& params);                     // 0x00B54E30
+#endif
+    CVertexShader      RainParticleVertexShader;                     // +0xd0
+    CVertexShader      RainParticleClippingVertexShader;             // +0xd8
+    CPixelShader       RainParticlePixelShader;                      // +0xe0
+    CVertexShader      SnowParticleVertexShader;                     // +0xe8
+    CVertexShader      SnowParticleClippingVertexShader;             // +0xf0
+    CPixelShader       SnowParticlePixelShader;                      // +0xf8
+    CVertexShader      MistVertexShader;                             // +0x100
+    CPixelShader       MistPixelShader;                              // +0x108
+    CVolumeTexture*    MistVolumeTexture;                            // +0x110
+    CEngineWeatherSettings Settings;                                 // +0x114
+    CWeatherMask       WeatherMaskList[3];                           // +0x66c
+    long               CurrentMask;                                  // +0x780
+    EWeatherBoxVisible SavedBoxVisibility[729];                      // +0x784
+    unsigned char      _pad_0x12e8[0x12fc - 0x12e8];                 // +0x12e8 OverridenRainStrength .. (not modelled)
+#else
+    unsigned char      ShaderMembers[0x40];                          // +0xd0 the eight CVertexShader / CPixelShader members (opaque)
+    CVolumeTexture*    MistVolumeTexture;                            // +0x110
+    CEngineWeatherSettings Settings;                                 // +0x114
+    unsigned char      _pad_0x66c[0x12fc - 0x66c];                   // +0x66c WeatherMaskList ... (not modelled)
+#endif
+#else
+private:
+    unsigned char _pad_0xc[0x12f0];             // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#endif
+};
+FABLE_STATIC_ASSERT(sizeof(CEngineWeatherRenderer) == 0x12fc);
+#else // generated flattened Ego_r layout (the landed default, unchanged)
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngineWeatherRenderer = 0x1328.
+// Retail evidence: 0 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+class CVolumeTexture;
+
+#pragma pack(push, 1)
+class CEngineWeatherRenderer {
+public:
+    void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char   _pad_0x04[0x4];                          // +0x04
+    unsigned char   _pad_0x08[0x4];                          // +0x08
+    unsigned char   RainVertexBuffer[0x34];                  // +0x0c CVertexBufferWin32
+    unsigned char   RainIndexBuffer[0x14];                   // +0x40 CIndexBuffer
+    unsigned char   SnowVertexBuffer[0x34];                  // +0x54 CVertexBufferWin32
+    unsigned char   MistVertexBuffer[0x34];                  // +0x88 CVertexBufferWin32
+    unsigned char   MistIndexBuffer[0x14];                   // +0xbc CIndexBuffer
+    unsigned char   RainParticleVertexShader[0x8];           // +0xd0 CVertexShader
+    unsigned char   RainParticleClippingVertexShader[0x8];   // +0xd8 CVertexShader
+    unsigned char   RainParticlePixelShader[0x8];            // +0xe0 CPixelShader
+    unsigned char   SnowParticleVertexShader[0x8];           // +0xe8 CVertexShader
+    unsigned char   SnowParticleClippingVertexShader[0x8];   // +0xf0 CVertexShader
+    unsigned char   SnowParticlePixelShader[0x8];            // +0xf8 CPixelShader
+    unsigned char   MistVertexShader[0x8];                   // +0x100 CVertexShader
+    unsigned char   MistPixelShader[0x8];                    // +0x108 CPixelShader
+    CVolumeTexture* MistVolumeTexture;                       // +0x110
+    unsigned char   Settings[0x558];                         // +0x114 CEngineWeatherSettings
+    unsigned char   WeatherMaskList[0x114];                  // +0x66c CWeatherMask[3]
+    long            CurrentMask;                             // +0x780
+    unsigned char   SavedBoxVisibility[0xb64];               // +0x784 EWeatherBoxVisible[729]
+    float           OverridenRainStrength;                   // +0x12e8
+    bool            RainOverriden;                           // +0x12ec
+    unsigned char   _pad_0x12ed[0x3];                        // +0x12ed
+    float           OverridenSnowStrength;                   // +0x12f0
+    bool            SnowOverriden;                           // +0x12f4
+    unsigned char   _pad_0x12f5[0x3];                        // +0x12f5
+    float           MaximumWeatherParticlePercentage;        // +0x12f8
+    bool            DrawDebugInfo;                           // +0x12fc
+    bool            EnableSnowColours;                       // +0x12fd
+    bool            DrawMaskSphere;                          // +0x12fe
+    bool            DrawMaskBox;                             // +0x12ff
+    bool            EnableDebugSpheres;                      // +0x1300
+    bool            HideCameraClippedSpheres;                // +0x1301
+    bool            HideBSClippedSpheres;                    // +0x1302
+    bool            HideBBClippedSpheres;                    // +0x1303
+    unsigned char   DebugSphereColour1[0x4];                 // +0x1304 CRGBColour
+    unsigned char   DebugSphereColour2[0x4];                 // +0x1308 CRGBColour
+    unsigned char   DebugSphereColour3[0x4];                 // +0x130c CRGBColour
+    unsigned char   DebugSphereColour4[0x4];                 // +0x1310 CRGBColour
+    bool            EnableDebugBoxes;                        // +0x1314
+    bool            HideCameraClippedBoxes;                  // +0x1315
+    bool            HideBSClippedBoxes;                      // +0x1316
+    bool            HideBBClippedBoxes;                      // +0x1317
+    unsigned char   DebugBoxColour1[0x4];                    // +0x1318 CRGBColour
+    unsigned char   DebugBoxColour2[0x4];                    // +0x131c CRGBColour
+    unsigned char   DebugBoxColour3[0x4];                    // +0x1320 CRGBColour
+    unsigned char   DebugBoxColour4[0x4];                    // +0x1324 CRGBColour
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(CEngineWeatherRenderer) == 0x1328);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, RainVertexBuffer) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, RainIndexBuffer) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, SnowVertexBuffer) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, MistVertexBuffer) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, MistIndexBuffer) == 0xbc);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, RainParticleVertexShader) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, RainParticleClippingVertexShader) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, RainParticlePixelShader) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, SnowParticleVertexShader) == 0xe8);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, SnowParticleClippingVertexShader) == 0xf0);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, SnowParticlePixelShader) == 0xf8);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, MistVertexShader) == 0x100);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, MistPixelShader) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, MistVolumeTexture) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, Settings) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, WeatherMaskList) == 0x66c);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, CurrentMask) == 0x780);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, SavedBoxVisibility) == 0x784);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, OverridenRainStrength) == 0x12e8);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, RainOverriden) == 0x12ec);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, OverridenSnowStrength) == 0x12f0);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, SnowOverriden) == 0x12f4);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, MaximumWeatherParticlePercentage) == 0x12f8);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DrawDebugInfo) == 0x12fc);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, EnableSnowColours) == 0x12fd);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DrawMaskSphere) == 0x12fe);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DrawMaskBox) == 0x12ff);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, EnableDebugSpheres) == 0x1300);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, HideCameraClippedSpheres) == 0x1301);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, HideBSClippedSpheres) == 0x1302);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, HideBBClippedSpheres) == 0x1303);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DebugSphereColour1) == 0x1304);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DebugSphereColour2) == 0x1308);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DebugSphereColour3) == 0x130c);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DebugSphereColour4) == 0x1310);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, EnableDebugBoxes) == 0x1314);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, HideCameraClippedBoxes) == 0x1315);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, HideBSClippedBoxes) == 0x1316);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, HideBBClippedBoxes) == 0x1317);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DebugBoxColour1) == 0x1318);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DebugBoxColour2) == 0x131c);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DebugBoxColour3) == 0x1320);
+FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DebugBoxColour4) == 0x1324);
+
+#endif // FABLE_RETAIL_CENGINEWEATHERRENDERER
+#endif // FABLE_ENGINE_CENGINEWEATHERRENDERER_H

@@ -1,0 +1,3 @@
+0x00B6E890	?RenderBumpMap@CEngineWaterRenderer@@AAEXW4EWaterArrayIndexAliases@@@Z	CEngineWaterRenderer
+0x00B70A90	?RenderEnvironmentMap@CEngineWaterRenderer@@AAEXXZ	CEngineWaterRenderer
+0x009FAF70	?GenerateMipmapsWithGPU@CTexture@@QAEXXZ	CTexture

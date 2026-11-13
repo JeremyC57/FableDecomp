@@ -1,0 +1,3 @@
+address	grade	bytes	test	grades_used	notes
+0069ae80	RELOCATION_MATCH	1923v1923	PASS	pass1: 3 (g1 DIFFER 2004v1923, g2 DIFFER 1935v1923, g3 RELOCATION_MATCH); pass2: 0; pass3: 0	matched; plus 2 verification regrades of the unchanged source (gall.sh after comment / overlay-only edits), ~8 compile-only and fragment probes; vland RELOCATION_MATCH PASS (3 RELOC_NAME warnings = NAME_FIXES.tsv)
+00a4c5e0	RELOCATION_MATCH	1844v1844	PASS	pass1: 1 (g1 RELOCATION_MATCH); pass2: 0; pass3: 0	matched at the first grade; true length 1844 confirmed (SPLITS.tsv); plus 2 verification regrades (gall.sh); vland RELOCATION_MATCH PASS

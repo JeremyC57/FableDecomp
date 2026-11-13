@@ -1,0 +1,27 @@
+# hdr/ overlay (re-based by the coordinator from the earlier agent's overlay; the verbatim old overlay is ../hdr_prior, its README is ../hdr_prior/README.md)
+- overlay re-based onto the current repo headers by the coordinator: 21 unchanged-base copies, 18 three-way merges, 12 new headers, 6 conflicts
+- DROPPED engine/CGameCameraManager.h (bwf1 author, 2026-11-12): not needed by this row (its old opt-ins unused); the repo header is used. Old copy in ../hdr_stale_backup/.
+- DROPPED engine/CTCInGameMenu.h (bwf1 author, 2026-11-12): not needed by this row (its old opt-ins unused); the repo header is used. Old copy in ../hdr_stale_backup/.
+- merged engine/CCreatureActionBase.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CRGBColour.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/NUISystem_CManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CPlayer.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CGameTimeManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CFontManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CDataOutputStream.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CInputManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CThingSearchTools.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CIVCountedPointer.h: repo header changed since the overlay was made; three-way merge clean
+- RE-BASED engine/CMainGameComponent.h (bwf1 author, 2026-11-12): current repo text + the old overlay additions FABLE_RETAIL_CMAINGAMECOMPONENT_SCOPED_ACCESSORS (boost::scoped_ptr members/accessors; the EVENTPACKAGES #ifdef widened to `|| defined(..SCOPED_ACCESSORS)`) and FABLE_RETAIL_CMAINGAMECOMPONENT_ENGINEGRAPHICS; repo INITLUA kept.
+- merged engine/CWorldMap.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CPlayerManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CQuestManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CPlayerGuiDef.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CCombatManager.h: repo header changed since the overlay was made; three-way merge clean
+- DROPPED engine/CNavigatorManager.h (bwf1 author, 2026-11-12): not needed by this row (its old opt-ins unused); the repo header is used. Old copy in ../hdr_stale_backup/.
+- DROPPED engine/C2DVector.h (bwf1 author, 2026-11-12): not needed by this row (its old opt-ins unused); the repo header is used. Old copy in ../hdr_stale_backup/.
+- merged engine/CThingManager.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CSubtitleRenderer.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CAFile.h: repo header changed since the overlay was made; three-way merge clean
+- RE-BASED engine/NPlayerGui_CDrawQuestInfo.h (bwf1 author, 2026-11-12): current repo text + FABLE_RETAIL_CDRAWQUESTINFO_MINIGAMETYPE (GetMiniGameType const declaration, 0x00644D54).
+- engine/CSubtitleRenderer.h: FABLE_RETAIL_CSUBTITLERENDERER_ISFLAGSET (bwf1 author): `enum ESubtitleFlag { };` (FableWin type name only) + inline `bool IsFlagSet(ESubtitleFlag flag) const { return (DisplayFlags & flag) != 0; }` (FableWin.pdb ?IsFlagSet@CSubtitleRenderer@@QBE_NW4ESubtitleFlag@@@Z 0x01A630DF, 12i/29b at /Od; ours 12i/26b -- the /Od text may differ by a cast).

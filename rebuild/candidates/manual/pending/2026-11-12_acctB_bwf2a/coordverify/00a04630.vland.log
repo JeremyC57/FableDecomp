@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a04630   RELOCATION_MATCH PASS   SetupRenderStates
+
+WINS: 1
+  00a04630 RELOCATION_MATCH CRenderStateManager::SetupRenderStates

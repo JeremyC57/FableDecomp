@@ -1,0 +1,13 @@
+address	name	evidence
+00563920	?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@AAEXXZ	Ego_r.pdb / FableWin.pdb (0x022E4BC0) private member; called once from GlobalUpdate 0x00564570 (0x00564837); this row RELOCATION_MATCH
+0055E7C0	?ActivityEnumToCharString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@ABW4EOnlineScoreboardActivity@1@@Z	see NAME_FIXES.tsv
+0055E7F0	?IsScoreboardEmpty@CTCHeroOnlineScoreboard@@QAE_NXZ	FableWin.pdb 0x022E4920 + landed 0x0055E7F0
+0055FC90	?GetCachedImage@CTCHeroOnlineScoreboard@@AAE?AV?$CCountedPointer@VCTexture@@@@ABVCWideString@@J@Z	FableWin.pdb 0x022E4320 + reloc_bindings (landed ChooseAClan)
+00564B20	??0?$pair@MVCWideString@@@std@@QAE@ABU01@@Z	see NAME_FIXES.tsv
+00566FE0	_Rb_tree<EOnlineScoreboardActivity, pair<const EOnlineScoreboardActivity, vector<pair<float,CWideString> > >, ...>::find(const EOnlineScoreboardActivity&)	see NAME_FIXES.tsv
+0056A680	map<EOnlineScoreboardActivity, vector<pair<float,CWideString> > >::operator[](const EOnlineScoreboardActivity&)	see NAME_FIXES.tsv
+00567A40	std::find<list<CTCHeroOnlineScoreboard::CClanMember>::iterator, CWideString>	see NAME_FIXES.tsv
+00567240	std::__find<list<CTCHeroOnlineScoreboard::CClanMember>::iterator, CWideString>	see NAME_FIXES.tsv
+00429C53	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	see NAME_FIXES.tsv
+00429B72	??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ	see NAME_FIXES.tsv
+0041BC90	??1?$CCountedPointer@VCTexture@@@@QAE@XZ	see NAME_FIXES.tsv

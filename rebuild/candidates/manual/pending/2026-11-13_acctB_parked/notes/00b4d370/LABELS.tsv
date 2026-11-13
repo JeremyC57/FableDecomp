@@ -1,0 +1,3 @@
+00a14510	C2DVector::AccurateNormalise	C2DVector
+00b4b8b0	CEngineShadowRenderer::CalcLocalWorldToBaseShadowSpace	CEngineShadowRenderer
+00b4bcc0	CEngineShadowRenderer::CalcClipVolume	CEngineShadowRenderer

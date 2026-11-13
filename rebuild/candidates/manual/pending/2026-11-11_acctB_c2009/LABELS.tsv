@@ -1,0 +1,22 @@
+address	name	evidence
+00745120	?UpdateLineOfSight@CTCPerceiveThing@@AAEXXZ	Ego_r.pdb + FableWin.pdb name; Ego_r donor order UpdateHearing 0x00757B60 / UpdateLineOfSight 0x00757CE0 / UpdatePerception 0x00758320 = retail 0x00744FB0 / 0x00745120 / 0x00745730; landed UpdatePerception calls 0x00745120
+007445d0	?GetFOV@CTCPerceiveThing@@QBEMXZ	Ego_r donor order GetTimeBasedVisibilityMultiplier 0x00757010 / GetFOV 0x00757070 / ctor 0x00757090 = retail 0x00744580 / 0x007445D0 / 0x007445E0; body `PDef->FieldOfView * (1/360)` (FableWin ?GetFOV@CTCPerceiveThing@@QBEMXZ); catalog label GetAirResistance is propagated
+00733190	?IsInMelee@CTCCombat@@QBE_NXZ	Ego_r order IsInMeleeAsAttacker 0x0074B310 / IsInMeleeAsAttacked 0x0074B320 / IsInMelee 0x0074B330 / IsAbleToBeKnockedDown 0x0074B340 = retail 0x00733170 / 0x00733180 / 0x00733190 / 0x007331A0 (landed); called on the PeekTC<const CTCCombat> result (TCI_COMBAT 48)
+00747660	?GetVisibilityMultiplier@CTCStealth@@QBEMXZ	Ego_r.pdb name (0x00759E30) + catalog label; called on the PeekTC<const CTCStealth> result (TCI_STEALTH 54) whose float scales the sight radii
+007463e0	?reserve@?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@QAEXI@Z	STLport 4.6 vector::reserve (stl/_vector.c) + catalog label vector<CThing const*>::reserve; reserve(32) on the row's vector<const CThing*>
+00746560	??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_HasPhysicsMesh@@VCThingFilter_RadiusIntersectsInfiniteLine@@VCThingFilter_IsNot@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_HasPhysicsMesh@@VCThingFilter_RadiusIntersectsInfiniteLine@@VCThingFilter_IsNot@@@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	Ego_r.pdb instantiation (donor 0x00758CD0, in the CTCPerceiveThing donor run) + FableWin 0x0258F400; the landed body calls HasPhysicsMesh 0x006A6F50 / RadiusIntersectsInfiniteLine 0x006A7050 / IsNot 0x006A76A0; sole caller 0x00745120
+004378f0	?AddPerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z	Ego_r.pdb 0x0044A590 (CThing&); body `mov ecx,[ecx+1B8h] ; jmp` = PDrawPerceivers forward
+00437900	?RemovePerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z	Ego_r.pdb 0x0044A5A0 (CThing&); body forwards to PDrawPerceivers +0x1B8
+006a7390	??RCThingFilter_IsInFOV@@QBE_NABVCThing@@@Z	Ego_r / FableWin const overloads (const CThing& 0x005A32E0, const CThing* 0x005A3B10); retail has ONE thing overload at 0x006A7390 called from both kinds of sites (ICF fold); the row binds the & form already bound by another caller
+00952890	?UpdateGround@CAIStateGroup_JackDragon@@AAEXXZ	Ego_r.pdb name (donor 0x00977280 between UpdateHover 0x00976950 and Update 0x00977A00 = retail 0x00951FB0 / 0x00952E80); landed Update dispatches the ground state here
+0094fdf0	?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ	Ego_r 0x009747B0 (before StayIdle 0x009747F0 = retail 0x0094FE30); body `IS_THING_ALIVE(PEnemy) && !IsStopping()`
+0094fe30	?StayIdle@CAIStateGroup_JackDragon@@AAEXM@Z	Ego_r 0x009747F0 (float); UpdateGround pushes 0.5f / 1.0f / 2.0f
+00950950	?WaitForAnimLoop@CAIStateGroup_JackDragon@@AAEXM@Z	Ego_r 0x00975490 (float, private); UpdateGround pushes 0.5f
+00950b20	?FindHitEvent@CAIStateGroup_JackDragon@@AAE_NXZ	Ego_r 0x00974AC0 (private bool); catalog label agrees
+00950bb0	?SetHeadTurning@CAIStateGroup_JackDragon@@AAEX_N@Z	Ego_r 0x00975690 (private); push 1 / push 0
+00951b20	?FlyOutOfGround@CAIStateGroup_JackDragon@@AAEXXZ	Ego_r 0x009764A0 (private); landed row 0x00951B20
+009531c0	??0CCreatureAction_SnapDragon@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	Ego_r / FableWin ctor; retail run of the TU's action ctors after Update 0x00952E80 (catalog labels agree); 2 args (`ret 8`)
+00953260	??0CCreatureAction_SnapDragonFast@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	Ego_r / FableWin ctor; catalog label agrees
+00953120	??0CCreatureAction_DragonRearUpFull@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	Ego_r / FableWin ctor; body builds PShot at +0x114 (Ego_r member) and calls CCombatActionBase(creature, target, 0xFA, sound)
+009531a0	??1CCreatureAction_DragonRearUpFull@@UAE@XZ	body: ~CIntelligentPointer of +0x114 (Ego_r PShot) then tail jump to ~CCombatActionBase 0x0062E900; called on UpdateGround's two RearUpFull temporaries (implicit destructor)
+00953300	??0CCreatureAction_DragonRoar@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	Ego_r / FableWin ctor; catalog label agrees

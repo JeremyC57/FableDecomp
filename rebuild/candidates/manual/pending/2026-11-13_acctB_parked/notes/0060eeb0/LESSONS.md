@@ -1,0 +1,1 @@
+- bwf1 0x0060EEB0: an OUT-OF-LINE callee that takes a local container by reference (CreateMapMarkers(parent, vector&)) must have its real body visible in the TU (auto_inline off): VC7.1 then knows the container is not captured and enregisters its words -- here it rewrote the allocation of the whole second half (427 -> 234 hunks).

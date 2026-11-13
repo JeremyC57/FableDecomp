@@ -1,0 +1,11 @@
+18:17 0073b130 grade v1.cpp SRC_FAIL -- first full draft, INSERT_KEYVALUE+VALUE_TYPE+INSERT Update
+18:18 0073b130 grade v1.cpp DIFFER(6924v6673) hunks=16 -- first full draft + ETCInterfaceType.h
+18:18 0073b130 grade v1.cpp DIFFER(6924v6673) hunks=16 -- regrade full listing
+18:18 0073b130 grade v1.cpp DIFFER(6924v6673) hunks=16 -- v2 make_pair; v3 Update->Sort
+18:18 0073b130 grade v2.cpp RELOCATION_MATCH -- v2 make_pair; v3 Update->Sort
+18:22 0073b130 grade v4.cpp TIMEOUT -- v2 + 7 Alloc decls via header opt-ins
+18:23 0073b130 grade v4.cpp SRC_FAIL -- v4 + DEF_CLASS_BASE
+18:23 0073b130 grade v5.cpp RELOCATION_MATCH -- v4 + mode-header opt-in chain
+18:23 0073b130 grade 0073b130.cpp RELOCATION_MATCH -- final strict regrade
+20:44 0073b130 grade src.cpp RELOCATION_MATCH -- 
+20:44 0073b130 grade src.cpp SRC_FAIL -- 

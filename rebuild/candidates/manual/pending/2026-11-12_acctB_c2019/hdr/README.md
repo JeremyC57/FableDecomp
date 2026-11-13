@@ -1,0 +1,24 @@
+# Chunk 2019 header overlay (FABLE_HDR_OVERLAY=/opt/fable_lane/w22/agent2019/hdr)
+
+Row: 0x006B42F0 CEnvironment::RenderUpdate. Every change is an opt-in or a new header; with no new opt-in defined, each copied header
+preprocesses to the same declarations as its base (checked with `g++ -E -P`; only the `__LINE__`-numbered static-assert typedef names
+move). Bases: engine/CEnvironment.h from pending/2026-11-11_acctB_c2020/hdr (= rebuild/include + c2020's
+FABLE_RETAIL_CENVIRONMENT_SUNLIGHTATTENUATOR, kept); engine/CIDrawEnvironmentParams.h from pending/2026-11-12_acctB_c2030/hdr (not yet in
+rebuild/include); engine/CEnvironmentSpellEffectInterface.h from rebuild/include. Land those bases first.
+
+| header | opt-in / change | what | evidence (two sources each) |
+|---|---|---|---|
+| engine/CEnvironment.h | `FABLE_RETAIL_CENVIRONMENT_TICKSTATES` (new `#if` branch ahead of `_WEATHERSCALERS`; mutually exclusive with `_WEATHERSCALERS` and `_SUNLIGHTATTENUATOR`, which read GameTickState as bytes) | the nested class `CEnvironment::CEnvironmentGameTickState` (BlendedTheme[6], Time +0xBB8, WindSpeed, WindDirection, ThemeWindSpeed, ThemeWindDirection, Sun / Moon / Diffuse / Shadow vectors, OverrideWindDirection +0xC0C, OldWindDirection +0xC0D, OldWindSpeed, 3 explicit tail bytes; 0xC20) and GameTickState / PrevGameTickState / InterpolatedEnvironmentParams typed (same offsets, asserted) | Ego_r.pdb CEnvironmentGameTickState member names (struct_layouts_egor.tsv), nested V-keyed spelling `??0CEnvironmentGameTickState@CEnvironment@@QAE@XZ` / `??4..@CEnvironment@@QAEAAV01@ABV01@@Z` (both PDBs); retail offsets from RenderUpdate's reads (Time +0xBB8 0x006B4368 / 0x006B4375, vectors +0xBC0..+0xBF4 of +0x54 / +0xC74) and the landed operator= 0x006B63C0 (unaligned +0xC0D) |
+| engine/CEnvironment.h | `FABLE_RETAIL_CENVIRONMENT_SPELLEFFECTINTERFACE` | inline `GetSpellEffectInterface()` returning `*SpellEffectInterface_ptr` (no layout change) | FableWin.pdb `?GetSpellEffectInterface@CEnvironment@@QAEAAVCEnvironmentSpellEffectInterface@@XZ`; retail reads +0x1960 in place before each spell-effect call (0x006B482D / 0x006B4855 / 0x006B4883); the accessor (not the member read) gives retail's register roles in the tail |
+| engine/CIDrawEnvironmentParams.h | `FABLE_RETAIL_CIDRAWENVIRONMENTPARAMS_SCREENEFFECTS` | CThemeChannel's out-of-line default ctor / dtor declarations; `ScreenEffectParams` (+0x60) after ThemeChannels; sizeof 0xC0 | `??0CThemeChannel@CIDrawEnvironmentParams@@QAE@XZ` / `??1..` in both PDB name sets; retail 0x006B5FB0 / 0x006B5B80 (landed) called at 0x006B4383 / 0x006B4399; Ego_r ScreenEffectParams (+0x64 Ego_r = +0x60 retail after the 12-byte CArray); retail stores at this +0x18F4 / +0x1944 (params +0x60 / +0xB0), CEnvironment +0x1954 follows at params +0xC0 |
+| engine/CIDrawEnvironmentScreenEffectParams.h (new) | default | CIDrawEnvironmentRadialBlurParameters (0x50), CIDrawEnvironmentDisplacementParameters (0x10), CIDrawEnvironmentScreenEffectParams (0x60), CIDrawEnvironmentScreenFilterParameters (0x20), all `struct` | Ego_r layouts (no container member, so Ego_r = retail) and U keys (pdb_class_keys.tsv); retail `rep movsd` x 0x14 (0x50 bytes) at 0x006B4853, the 16-byte and 32-byte copies at 0x006B4861 / 0x006B488E |
+| engine/CEnvironmentSpellEffectInterface.h | `FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERFACE_RENDERFRAME`; plus an include guard macro (`FABLE_ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION_DEFINED`) around its existing enum so the new params header can define the same enum | declarations of GetRenderFrameInterpolatedRadialBlurParameters / DisplacementParameters / ScreenFilterParameters(float) | Ego_r.pdb names (`?GetRenderFrameInterpolated...@CEnvironmentSpellEffectInterface@@QAE?AUCIDrawEnvironment...@@M@Z`), manifest labels of 0x00885900 / 0x008859F0; retail calls 0x008857E0 / 0x00885900 / 0x008859F0 with a hidden result pointer + the fraction (`ret 8` bodies) |
+
+Repo opt-ins used as they are: FABLE_RETAIL_CARRAY, FABLE_RETAIL_STLP_VECTOR_ASSIGN, FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE,
+FABLE_RETAIL_C3DVECTOR_ACCURATENORMALISE, FABLE_RETAIL_CENVIRONMENT(_RENDERUPDATE, _VIRTUALS), FABLE_RETAIL_CMAINGAMECOMPONENT(_DISPLAYENGINE),
+FABLE_RETAIL_CDISPLAYENGINE_GET3DENGINE, FABLE_RETAIL_CIENGINE, FABLE_RETAIL_CINITBASECLASS, FABLE_RETAIL_CGAMECOMPONENT, FABLE_RETAIL_SCOPED_PTR;
+engine/GFLimit.h, engine/CEngineColourFilterSettings.h, engine/CBlendedEnvironmentTheme.h unchanged.
+
+Header debt: FableWin.pdb lists `??0CIDrawEnvironmentScreenFilterParameters@@QAE@XZ` and `??0CIDrawEnvironmentScreenEffectParams@@QAE@XZ`
+(user default constructors, bodies unknown); not declared here (nothing in the row constructs one; the screen-filter local is copy-initialised
+from the call). SpellEffectInterface / SpellEffectInterpolator stay flattened raw pointers (boost::scoped_ptr in the PDB).

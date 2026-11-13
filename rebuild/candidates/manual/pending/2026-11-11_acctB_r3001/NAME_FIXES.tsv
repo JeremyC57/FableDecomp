@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00a52650	?ConvertTimeToFrames@C3DAnimation2@@QBEXMAAJAAM@Z	Ego_r.pdb + FableWin.pdb name sets; called by 0x00A4D93D (this chunk's matched row binds this spelling); repeated from chunk 2005	C3DAnimation2_Methods::ConvertTimeToFrames (landed leaf of 0x00A52650)

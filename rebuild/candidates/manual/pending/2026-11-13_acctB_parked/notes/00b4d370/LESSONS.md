@@ -1,0 +1,4 @@
+- 0x00B4D370: PerspectiveTransformPoint's FableWin text is `const float x = point.X*E11 + point.Y*E21 + point.Z*E31 + E41; ...y, z, w...; point.X = x / w;` (fwsize SAME 87i/241b); VC7.1 turns the three divisions into one reciprocal when two results are live and keeps fdivp when one is.
+- 0x00B4D370: a big x87 row can be chaotic: ANY extra statement anywhere in the function (even a dead `float p = 0.0f; (void)p;` after the last call) flips an unrelated inlined-sum/CSE block; unused declarations do not. Fix structure first, tune such blocks last.
+- 0x00B4D370: an in-place TransformPoint whose Y/Z rows accumulate (`Y = E12*xx; Y += ...`) stores every partial sum when the point is an array element; retail's single-expression rows are the XZY form.
+- 0x00B4D370: VC7.1 keeps a result-local operator* temp in memory but builds an RVO operator+ straight into the named local; FableWin's float helpers carry a constant +2i/+8b over ours (named result local).

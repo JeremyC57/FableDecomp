@@ -1,0 +1,2 @@
+address	name	evidence
+00550dc0	?Draw@CTable@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z	Ego_r.pdb name set 0x005CAB20 + FableWin.pdb name set 0x02292260 (ghidra_out/egor_pdb_names.tsv, fablewin_pdb_names.tsv); chunk 2006

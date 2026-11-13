@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b891b0   RELOCATION_MATCH PASS   CEngineScreenEffectOutlineGlow
+
+WINS: 1
+  00b891b0 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::??0CEngineScreenEffectOutlineGlow@@QAE@ABVCEngineInit@@@Z

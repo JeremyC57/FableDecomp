@@ -1,0 +1,29 @@
+address	name	evidence
+0x004CA390	?ConstructFromBinarySave@CThing@@UAEXAAVCMemoryDataInputStream@@ABVCSerialiseInfo@1@@Z	Ego_r 0x004CCA00 + FableWin 0x01CF1F50; vtable 0x01239ABC slot 16; literals 0x01239C30 / 0x01239C08
+0x00B665E0	?GetEnvironmentMap@CEngineSkyRenderer@@QAEXPAVCTexture@@ABVCEngineComponentRenderParams@@@Z	Ego_r 0x00A18F50 + FableWin 0x02D418F0; donor order after Render 0x00B662F0
+0x00B54890	?RenderRain@CEngineWeatherRenderer@@AAEXABVCEngineComponentRenderParams@@@Z	Ego_r 0x009FAAD0 + FableWin 0x02D3BE30; Rain* shaders / settings, RenderRainBox
+0x00BB1F50	?CalculateVertexNormals@CEngineClothRenderer@@AAEXABVCParticleSimulation@@ABVCParticleProgram@@@Z	Ego_r 0x00A67E10 + FableWin 0x02E76000; GetNormalBuffer call, VertexNormals +0x84
+0x0051E580	?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z	Ego_r 0x00528260 + body (ThingTypeInfo[type].ThingTypeFlags)
+0x004C7F40	?InitFromThingInfo@CThing@@AAE_NABVCSerialiseInfo@1@@Z	Ego_r 0x004C9B80 + FableWin 0x01CEFCE0
+0x00B66190	?RenderSky@CEngineSkyRenderer@@AAEXMABVC3DVector@@_N@Z	Ego_r 0x00A18AC0 + FableWin 0x02D42260
+0x00B2FC50	?RefreshD3DTransforms@CEngineCamera@@QAEXXZ	Ego_r 0x009D0560; shared header citation
+0x00B30B50	?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z	Ego_r 0x009D1350; bound spelling
+0x00B4AF50	??0CEngineCameraDesc@@QAE@ABU0@@Z	Ego_r 0x009EBB70; body = member-wise copy (rep movsd for the matrix)
+0x009D8CF0	?ClearRenderTarget@CRenderManager2D@@QAEXABVCRGBColour@@K@Z	Ego_r 0x00B2C780; shared header
+0x009BF160	?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z	Ego_r 0x00B23F00; bound spelling
+0x00A10E10	?DetachTarget@CRenderTarget@@QAEXXZ	Ego_r 0x00B7EE20 donor order; body tests RenderToSurface
+0x00A10E20	?DetachZBuffer@CRenderTarget@@QAEXXZ	Ego_r 0x00B7EE30 donor order; body tests ZBufferSurface
+0x00A10E30	?Uninitialise@CRenderTarget@@QAEXXZ	Ego_r 0x00B7EE40 donor order; body uninitialises both surfaces
+0x00A10E60	?AttachTarget@CRenderTarget@@QAEXABVCSurface@@@Z	Ego_r 0x00B7EE70; bound spelling
+0x00A10E90	?AttachZBuffer@CRenderTarget@@QAEXABVCSurface@@@Z	Ego_r 0x00B7EEA0 donor order; body assigns +0x14
+0x009FFB20	?GetVolumeTexture@CGraphicInfo@@QBE_NPAPAVCVolumeTexture@@K@Z	Ego_r 0x00B5D250; forwarder body
+0x009FF710	?GetVolumeTexture@CGraphicInfoFrame@@QBE_NPAPAVCVolumeTexture@@K@Z	Ego_r 0x00B5CAA0; jump target of the forwarder
+0x00B51F60	?ClipBoxToCamera@CEngineWeatherRenderer@@ABE?AW4EWeatherBoxVisible@1@ABVC3DVector@@M@Z	Ego_r 0x009F3260 + FableWin 0x02D3AD70
+0x00B52090	?ClipBoxToWeatherMaskSphere@CEngineWeatherRenderer@@ABE?AW4EWeatherBoxVisible@1@ABVC3DVector@@@Z	Ego_r 0x009F5270 + FableWin; body over WeatherMaskList[3]
+0x00B52DD0	?ClipBoxToLandscape@CEngineWeatherRenderer@@ABE?AW4EWeatherBoxVisible@1@ABVC3DVector@@@Z	Ego_r 0x009F3A70 + FableWin 0x02D3AF40; called with &pos between the camera and mask-sphere tests (unlanded, 0x00B52DD0..0x00B53F59)
+0x00B52160	?SetCommonParticleShaderConstants@CEngineWeatherRenderer@@AAEXAAJ@Z	Ego_r 0x009F3410 + FableWin 0x02D3BA40; body steps the long& index
+0x00B54100	?RenderRainBox@CEngineWeatherRenderer@@AAEXABVC3DVector@@@Z	Ego_r 0x009F8920 + FableWin 0x02D3BD40
+0x00B50E50	?GetBoxBoundingSphereRadiusSquared@CEngineWeatherRenderer@@ABEMXZ	Ego_r 0x009F31C0 + FableWin 0x02D3ACA0; ClipBoxToWeatherMaskSphere takes fsqrt of its result
+0x00BB1E90	?GetNormalBuffer@CEngineClothRenderer@@AAEPAVC4DVector@@K@Z	Ego_r 0x00A67D30 + FableWin 0x02E73500; body (NormalBufferSize / Pool / NormalBuffer)
+0x00A5C300	?GFClear4DVectors@NVectorMath@@YAXPAVC4DVector@@KABV2@@Z	bound spelling; FableWin NVectorMath
+0x00A5C360	?GFNormalise3DVectors@NVectorMath@@YAXPBVC4DVector@@KPAV2@KK@Z	bound spelling

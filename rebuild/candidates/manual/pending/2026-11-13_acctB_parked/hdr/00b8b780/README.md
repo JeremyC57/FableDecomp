@@ -1,0 +1,16 @@
+# hdr/ overlay for 0x00B8B780 (built by ../mk_hdr.py from the CURRENT repo headers; each line = one opt-in)
+- CTexture.h FABLE_RETAIL_CTEXTURE_GETNOLEVELS: ?GetNoLevels@CTexture@@QBEJXZ declaration (0x009F9DF0).
+- CDisplayManager.h FABLE_RETAIL_CDISPLAYMANAGER_SETRENDERTARGET: bool SetRenderTarget(CRenderTarget&) (0x009BF160, Ego_r/FableWin).
+- CMatrix3x4.h FABLE_RETAIL_CMATRIX3X4_BILLBOARD: SetTranslate(const C3DVector&) (translation only; _SETTRANSLATE_FULL = full identity form), SetMultiplyNoTranslation(a,b), GetTranslation() (FableWin inline members); nested _POSTSCALE3 = PostScale(x,y,z); _GETTRANSLATION_NAMED (unused variant).
+- CMatrix3x4.h FABLE_RETAIL_CMATRIX3X4_SETIDENTITY_SEPARATE: SetIdentity as twelve separate stores E43..E12, E33, E22, E11 (FableWin debug size 106/43i; same release bytes as the chained form).
+- C3DMeshStats.h FABLE_RETAIL_C3DMESHSTATS_BOUNDINGSPHERE: GetBoundingSphere() by value (FableWin).
+- C3DPrimitive2.h FABLE_RETAIL_C3DPRIMITIVE2_VERTEXBUFFER: VertexBuffer as boost::scoped_ptr<CVertexBufferWin32> (+0x30).
+- CEnginePrimitiveManagerStaticMeshesBase.h FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_BILLBOARD: SetupFirstTextures 0x00B9D670 / RenderMeshPrimitiveBlocks 0x00BA1110 static fastcall declarations (TEXTURE_HELPERS branch).
+- CEngine.h FABLE_RETAIL_CENGINE_SCRATCHZBUFFER: CSurfaceNative* GetScratchZBufferD24S8(unsigned long) 0x00B27EE0 (flattened branch).
+- CEnginePrimitiveRendererSharedData.h FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_MIPMAPSIZEMULTIPLIER: MipmapSizeMultiplier +0xB0 (Ego_r) in the TEXTURE_HELPERS branch.
+- CEnginePrimitiveRenderUtil.h FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MIPMAPSIZEMULTIPLIER: static GetMipmapSizeMultiplier() (FableWin, inline; row defines body).
+- CEngineBillboardGenerator.h FABLE_RETAIL_CENGINEBILLBOARDGENERATOR_RENDERBILLBOARD: RenderBillboard declaration + VertexShader +0x10 / PixelShader +0x18 (Ego_r) in the retail branch.
+- CEngineCamera.h FABLE_RETAIL_CENGINECAMERA_PEEKNONHOMOGENOUS: PeekNonHomogenousViewTransform() -> NoScaleViewTransform (FableWin; mapping by name only, used by src/v63/v64 only).
+- C3DVector.h FABLE_RETAIL_C3DVECTOR_SCALE_NAMED_RESULT: operator*(float) via a named result (probe variant; NOT used: +16 bytes).
+- CRGBColour.h FABLE_RETAIL_CRGBCOLOUR_CTOR_INITIALISE (with FABLE_RETAIL_CRGBCOLOUR): 4-byte ctor = Initialise(r,g,b,a) (FableWin debug 44b/18i).
+- C3DTextureStages.h FABLE_RETAIL_C3DTEXTURESTAGES_CTOR: FableWin default ctor (UseBlankTextures=false; Diffuse=0; Bump=1) (used by src/v64 only).

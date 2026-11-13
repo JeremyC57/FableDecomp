@@ -1,0 +1,81 @@
+20:07 005a04f7 grade v1.cpp DIFFER(9469v9469) hunks=464 -- first full draft
+20:08 005a04f7 grade v1.cpp DIFFER(9469v9469) hunks=464 -- regrade full diff
+20:08 005a04f7 grade v2.cpp DIFFER(9469v9469) hunks=464 -- wanted sum order permutations
+20:08 005a04f7 grade v3.cpp DIFFER(9469v9469) hunks=464 -- wanted sum order permutations
+20:08 005a04f7 grade v4.cpp DIFFER(9469v9469) hunks=464 -- wanted sum order permutations
+20:09 005a04f7 grade v2.cpp DIFFER(9469v9469) hunks=464 -- wanted inc spellings / sum parens
+20:09 005a04f7 grade v3.cpp DIFFER(9469v9469) hunks=464 -- wanted inc spellings / sum parens
+20:09 005a04f7 grade v4.cpp DIFFER(9469v9469) hunks=464 -- wanted inc spellings / sum parens
+20:13 005a04f7 grade v5.cpp DIFFER(9469v9469) hunks=5 -- share subtitle CText* var between one-off subtitle and per-entry loop (buy/wanted; +sell)
+20:13 005a04f7 grade v6.cpp DIFFER(9469v9469) hunks=5 -- share subtitle CText* var between one-off subtitle and per-entry loop (buy/wanted; +sell)
+20:14 005a04f7 grade v7.cpp SRC_FAIL -- v7 type/branch scope in NotInStock+wanted count loops
+20:14 005a04f7 grade v8.cpp SRC_FAIL -- v8 type/branch scope in NotInStock+wanted count loops
+20:14 005a04f7 grade v9.cpp SRC_FAIL -- v9 type/branch scope in NotInStock+wanted count loops
+20:14 005a04f7 grade v7.cpp DIFFER(9469v9469) hunks=153 -- v7 type/branch scope in NotInStock+wanted count loops (2nd NotInStock loop reuses)
+20:15 005a04f7 grade v8.cpp DIFFER(9469v9469) hunks=152 -- v8 type/branch scope in NotInStock+wanted count loops (2nd NotInStock loop reuses)
+20:15 005a04f7 grade v9.cpp DIFFER(9469v9469) hunks=5 -- v9 type/branch scope in NotInStock+wanted count loops (2nd NotInStock loop reuses)
+20:15 005a04f7 grade v10.cpp SRC_FAIL -- type as temporary EItem_Menu_Type() in unused-type loops (3 / 5)
+20:15 005a04f7 grade v11.cpp SRC_FAIL -- type as temporary EItem_Menu_Type() in unused-type loops (3 / 5)
+20:16 005a04f7 grade v12.cpp DIFFER(9469v9469) hunks=2 -- same-TU real body of GetMenuBranchFromDefIndex 0x0059B79A under auto_inline(off)
+20:16 005a04f7 grade v13.cpp DIFFER(9469v9469) hunks=2 -- wanted sum permutations on v12
+20:16 005a04f7 grade v14.cpp DIFFER(9469v9469) hunks=2 -- wanted sum permutations on v12
+20:16 005a04f7 grade v15.cpp DIFFER(9469v9469) hunks=2 -- wanted sum permutations on v12
+20:17 005a04f7 grade v16.cpp DIFFER(9469v9469) hunks=2 -- probe: buy / sell sum source-order sensitivity
+20:17 005a04f7 grade v17.cpp DIFFER(9469v9469) hunks=2 -- probe: buy / sell sum source-order sensitivity
+20:17 005a04f7 grade v18.cpp DIFFER(9469v9469) hunks=2 -- wanted switch case order IWC / WIC / CIW
+20:17 005a04f7 grade v19.cpp DIFFER(9469v9469) hunks=2 -- wanted switch case order IWC / WIC / CIW
+20:17 005a04f7 grade v20.cpp DIFFER(9469v9469) hunks=2 -- wanted switch case order IWC / WIC / CIW
+20:18 005a04f7 grade v19.cpp DIFFER(9469v9469) hunks=2 -- per-variant recheck v19
+20:18 005a04f7 grade v20.cpp DIFFER(9469v9469) hunks=2 -- per-variant recheck v20
+20:18 005a04f7 grade v14.cpp DIFFER(9469v9469) hunks=2 -- per-variant recheck v14
+20:19 005a04f7 grade p21.cpp DIFFER(9469v9469) hunks=2 -- PROBE: earlier TU function referencing TotNum members (ctor order) -> does wanted sum order move?
+20:19 005a04f7 grade v22.cpp DIFFER(9469v9469) hunks=2 -- v22 wanted switch spelling (+=1 / if-chain / post++)
+20:19 005a04f7 grade v23.cpp DIFFER(9473v9469) hunks=66 -- v23 wanted switch spelling (+=1 / if-chain / post++)
+20:19 005a04f7 grade v24.cpp DIFFER(9469v9469) hunks=2 -- v24 wanted switch spelling (+=1 / if-chain / post++)
+20:19 005a04f7 grade v25.cpp DIFFER(9469v9469) hunks=2 -- v25 wanted context spellings (empty() / split zero stores / post++ count)
+20:19 005a04f7 grade v26.cpp DIFFER(9469v9469) hunks=2 -- v26 wanted context spellings (empty() / split zero stores / post++ count)
+20:19 005a04f7 grade v27.cpp DIFFER(9469v9469) hunks=2 -- v27 wanted context spellings (empty() / split zero stores / post++ count)
+20:21 005a04f7 grade v28.cpp DIFFER(9469v9469) hunks=2 -- v28 wanted sum: named total / right-nested parens / named xString temp
+20:21 005a04f7 grade v29.cpp DIFFER(9469v9469) hunks=2 -- v29 wanted sum: named total / right-nested parens / named xString temp
+20:21 005a04f7 grade v30.cpp DIFFER(9472v9469) hunks=8 -- v30 wanted sum: named total / right-nested parens / named xString temp
+20:22 005a04f7 grade p31.cpp DIFFER(9392v9469) hunks=1 -- PROBE p31: does buy sum rotation depend on NotInStock add loop / || condition
+20:22 005a04f7 grade p32.cpp DIFFER(9459v9469) hunks=1 -- PROBE p32: does buy sum rotation depend on NotInStock add loop / || condition
+20:22 005a04f7 grade p31.cpp DIFFER(9392v9469) hunks=1 -- PROBE p31 recheck listing
+20:22 005a04f7 grade p32.cpp DIFFER(9459v9469) hunks=1 -- PROBE p32 recheck listing
+20:22 005a04f7 grade p32.cpp DIFFER(9459v9469) hunks=1 -- PROBE p32 listing
+20:23 005a04f7 grade v33.cpp DIFFER(9469v9469) hunks=2 -- v33 neutral record-count probes (NotInStock const_iterator / dead local / unnamed miscIndex)
+20:23 005a04f7 grade p34.cpp DIFFER(9469v9469) hunks=2 -- p34 neutral record-count probes (NotInStock const_iterator / dead local / unnamed miscIndex)
+20:23 005a04f7 grade v35.cpp DIFFER(9464v9469) hunks=72 -- v35 neutral record-count probes (NotInStock const_iterator / dead local / unnamed miscIndex)
+20:23 005a04f7 grade p36.cpp DIFFER(9316v9469) hunks=40 -- PROBE p36 remove gold block (after) / remove sell text SetValue (before, no block)
+20:23 005a04f7 grade p37.cpp DIFFER(9426v9469) hunks=31 -- PROBE p37 remove gold block (after) / remove sell text SetValue (before, no block)
+20:24 005a04f7 grade p38.cpp DIFFER(9455v9469) hunks=3 -- PROBE p38 which removal flips wanted sum (call / temp)
+20:24 005a04f7 grade p40.cpp DIFFER(9490v9469) hunks=433 -- PROBE p40 which removal flips wanted sum (call / temp)
+20:24 005a04f7 grade p41.cpp DIFFER(9451v9469) hunks=33 -- PROBE p41 which removal flips wanted sum (call / temp)
+20:24 005a04f7 grade v42.cpp DIFFER(9469v9469) hunks=2 -- v42 single post-increment spelling (sell per-entry i++ / sell count it++ / sell desc loop i++)
+20:24 005a04f7 grade v43.cpp DIFFER(9469v9469) hunks=2 -- v43 single post-increment spelling (sell per-entry i++ / sell count it++ / sell desc loop i++)
+20:24 005a04f7 grade v44.cpp DIFFER(9469v9469) hunks=2 -- v44 single post-increment spelling (sell per-entry i++ / sell count it++ / sell desc loop i++)
+20:25 005a04f7 grade p47.cpp DIFFER(9457v9469) hunks=8 -- PROBE p47 remove SetName / SetValue / AddFakeChild(description.Get())
+20:25 005a04f7 grade p48.cpp DIFFER(9454v9469) hunks=35 -- PROBE p48 remove SetName / SetValue / AddFakeChild(description.Get())
+20:25 005a04f7 grade p49.cpp DIFFER(9455v9469) hunks=3 -- PROBE p49 remove SetName / SetValue / AddFakeChild(description.Get())
+20:25 005a04f7 grade v50.cpp DIFFER(9469v9469) hunks=2 -- v50 one-temp neutral variants (subListPtr->SetName / sellSubtitle->SetName / (*found).second)
+20:25 005a04f7 grade v51.cpp DIFFER(9469v9469) hunks=2 -- v51 one-temp neutral variants (subListPtr->SetName / sellSubtitle->SetName / (*found).second)
+20:25 005a04f7 grade v52.cpp DIFFER(9469v9469) hunks=2 -- v52 one-temp neutral variants (subListPtr->SetName / sellSubtitle->SetName / (*found).second)
+20:26 005a04f7 grade v53.cpp RELOCATION_MATCH -- v53 SetName via CCountedPointer operator-> v CText* (buy one-off / buy per-entry / wanted one-off)
+20:26 005a04f7 grade v54.cpp DIFFER(9480v9469) hunks=69 -- v54 SetName via CCountedPointer operator-> v CText* (buy one-off / buy per-entry / wanted one-off)
+20:26 005a04f7 grade v55.cpp DIFFER(9469v9469) hunks=2 -- v55 SetName via CCountedPointer operator-> v CText* (buy one-off / buy per-entry / wanted one-off)
+20:26 005a04f7 grade final.cpp RELOCATION_MATCH -- final source, strict headers
+23:10 005a04f7 grade src.cpp RELOCATION_MATCH -- 
+23:10 005a04f7 grade src.cpp SRC_FAIL -- 
+23:10 005a04f7 grade src_hdr.cpp SRC_FAIL -- 
+23:11 005a04f7 grade src_hdr2.cpp SRC_FAIL -- 
+00:31 005a04f7 grade h1.cpp RELOCATION_MATCH -- repair: shared CThingPlayerCreature header
+00:32 005a04f7 grade r1.cpp RELOCATION_MATCH -- repair: shared CThingPlayerCreature + comments
+00:32 005a04f7 grade r1.cpp RELOCATION_MATCH -- repair: strict regrade
+00:33 005a04f7 grade CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp RELOCATION_MATCH -- repair: final source
+00:33 005a04f7 grade CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp RELOCATION_MATCH -- repair: final strict
+01:31 005a04f7 grade src.cpp RELOCATION_MATCH -- 
+01:31 005a04f7 grade src.cpp SRC_FAIL -- 
+01:40 005a04f7 grade CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp RELOCATION_MATCH -- repair: callee comment names ShareData 0x00429460, CBankFile::EntryExists 0x009CC190
+01:40 005a04f7 grade CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp RELOCATION_MATCH -- repair: strict regrade
+01:52 005a04f7 grade src.cpp RELOCATION_MATCH -- 
+01:52 005a04f7 grade src.cpp SRC_FAIL -- 

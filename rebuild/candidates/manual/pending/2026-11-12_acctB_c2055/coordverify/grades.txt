@@ -1,0 +1,1 @@
+00821a80 CMap::LoadFromFile RELOCATION_MATCH flags= ['/GS']

@@ -1,0 +1,9 @@
+address	name	evidence
+0094c050	?Update@CAIStateGroup_SellToBuyer@@UAEXXZ	vtable 0x0128BF84 slot 12; Ego_r.pdb + FableWin.pdb spelling; Ego_r donor 0x00970400 after IsRunnable 0x009703D0 (= retail 0x0094C010); src/0094c050.cpp RELOCATION_MATCH
+0094bef0	?StayInShop@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	Ego_r.pdb donor 0x009702A0 directly before SellToBuyer::Cleanup 0x00970310 (retail 0x0094BEF0 before Cleanup 0x0094BF50, same TU); body = shop keeper's shop IsShopKeeperAvailable (IsInWorkHours is 0x0091A6F0, interface 0x23, another body); the in-class body compiled in this TU grades RELOCATION_MATCH against 0x0094BEF0
+00798d10	?GetMinDistFromStall@CTCShopKeeper@@QAEJXZ	Ego_r + FableWin; donor order GetMinDistFromStall 0x0079E7A0 < GetMaxDistFromCustomer 0x0079E7B0 < GetHint 0x0079E7C0 = retail 0x00798D10 < 0x00798D20 < GetHint 0x00798D30 (landed); body `xor eax,eax ; ret`
+00798d20	?GetMaxDistFromCustomer@CTCShopKeeper@@QAEJXZ	same evidence; body `mov eax,0Ah ; ret`
+00798d90	?AddNewCustomer@CTCShopKeeper@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	Ego_r + FableWin; donor GetCustomer 0x0079E850 < AddNewCustomer 0x0079E860 = retail GetCustomer 0x00798D80 < 0x00798D90; the row passes a by-value CIntelligentPointer<CThingCreatureBase> (vtable 0x0123E7D8)
+008644e0	?IsSpeaking@NCreatureAI@@YI_NABVCThingCreatureBase@@@Z	Ego_r + FableWin (free __fastcall, namespace NCreatureAI, next to StopSpeaking 0x00864580 landed); the row passes the buyer in ecx and tests al
+0097e890	?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z	Ego_r + FableWin (already bound); argument block at 0x0094C322..0x0094C363 matches the 11 parameters
+006629b0	?RemoveFromCreatureInteraction@CThingCreatureBase@@QAEXXZ	Ego_r + FableWin (already bound)

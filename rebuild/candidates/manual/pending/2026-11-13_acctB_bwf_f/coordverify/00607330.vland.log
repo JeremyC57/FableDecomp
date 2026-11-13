@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00607330   RELOCATION_MATCH PASS   ConstructLogbookList
+
+WINS: 1
+  00607330 RELOCATION_MATCH CTCInventoryMap::ConstructLogbookList

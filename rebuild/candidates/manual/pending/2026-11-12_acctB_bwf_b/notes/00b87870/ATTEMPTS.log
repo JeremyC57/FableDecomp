@@ -1,0 +1,6 @@
+19:44 00b87870 grade v1.cpp DIFFER(4944v4944) hunks=3 -- first full draft
+19:45 00b87870 grade v1.cpp RELOCATION_MATCH -- bump body variant a
+19:45 00b87870 grade v1.cpp DIFFER(4944v4944) hunks=15 -- bump body variant b
+19:45 00b87870 grade v1.cpp RELOCATION_MATCH -- bump body variant c
+19:45 00b87870 grade v1.cpp RELOCATION_MATCH -- bump matrix params column-major (00,10,01,11)
+19:45 00b87870 grade v1.cpp RELOCATION_MATCH -- strict regrade

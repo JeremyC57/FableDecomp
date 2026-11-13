@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00BF3030	?AddNewKey@CEngineTreeFilerBase@@AAEKPAK@Z (private: unsigned long AddNewKey(unsigned long* key))	ghidra_out/egor_pdb_names.tsv 0x00aaa760 + FableWin.exe.signatures.tsv 0x02ef2090 / 0x017f7083	rebuild/src/compiled/00/bf/CEngineTreeFilerBase_AddNewKey_00bf3030.cpp: CNodeHeader* AddNewKey(const unsigned int* key)

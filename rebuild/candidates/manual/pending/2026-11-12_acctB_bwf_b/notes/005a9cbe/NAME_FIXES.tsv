@@ -1,0 +1,1 @@
+007726b0	?GetQuantity@CTCShop@@QBEJJ@Z	Ego_r.pdb 0x0077F780 + FableWin.pdb 0x0261E1F0 (between neighbours GetMaxStock 0x0077F7F0/0x0261E310); called from 0x005AA882	CTCShop::GetStockQuantity

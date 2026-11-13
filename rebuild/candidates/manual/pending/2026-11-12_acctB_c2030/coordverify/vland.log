@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00be9920   RELOCATION_MATCH PASS   CEngineWaterSettings
+00bea110   RELOCATION_MATCH PASS   UpdateConstants
+
+WINS: 2
+  00be9920 RELOCATION_MATCH CEngineWaterSettings::??0CEngineWaterSettings@@QAE@XZ
+  00bea110 RELOCATION_MATCH CEngineWaterSettings::?UpdateConstants@CEngineWaterSettings@@QAEXABVCEngineComponentRenderParams@@@Z

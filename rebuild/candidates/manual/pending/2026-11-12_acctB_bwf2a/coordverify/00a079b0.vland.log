@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00a079b0   WARN STANDIN_LEAF ??0CDeviceState@CRenderStateManager@@QAE@XZ (catalog CRenderStateManager::CDeviceState; names another function)
+00a079b0   MATCH            PASS   CDeviceState
+
+WINS: 1
+  00a079b0 MATCH CRenderStateManager::CDeviceState

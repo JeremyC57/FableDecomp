@@ -1,0 +1,3 @@
+0051f480 CEntityRuntimePersistence::ClearPersistenceDataForSectionInEntityScript RELOCATION_MATCH flags= []
+00598463 CFrontEndManager::RefreshAvailableSavedGamesForProfile RELOCATION_MATCH flags= []
+00e10e60 NScript::CQ_WaspBossScript::CWaspChaseWoman::Main RELOCATION_MATCH flags= []

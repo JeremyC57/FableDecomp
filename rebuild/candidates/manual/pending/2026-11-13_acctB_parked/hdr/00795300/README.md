@@ -1,0 +1,15 @@
+# Header overlay for row 0x00795300 (CTCUnholyPower::FrameUpdate) -- full copies of the current repo headers plus opt-ins
+- engine/CHitParameters.h: FABLE_RETAIL_CHITPARAMETERS_SPECIALABILITY -- 9-arg ctor 0x00789238, dtor 0x00789358, AddDamageWithAttribute 0x00868CA0, inline SetEpicSpell / SetCreateParticleEffectOnHit (FableWin.pdb spellings); EDamageAttribute.h included for it.
+- engine/CTCWillResponse.h: FABLE_RETAIL_CTCWILLRESPONSE_THINGQUERIES -- static fastcall IsThingNotBloodyWillableAtAll 0x007E45D0 / IsThingEpicSpellable 0x007E46D0 / IsThingEpicPowerExplodable 0x007E4680.
+- engine/CThingCreatureBase.h: FABLE_RETAIL_CTHINGCREATUREBASE_LEAVEORBS -- inline Get/SetLeaveExperienceOrbsOverride (+0x15C bit 5; out-of-line copies 0x0078DDD0/0x0078DDB0) and GetPLastAttackedByCreature when CTCTARGETINGAI_ATTACK is off.
+- engine/CCreatureAction_{BuildUp,Release,ReleaseAndLoop}UnholyPowerSpell.h: FABLE_RETAIL_CCREATUREACTION_UNHOLYPOWER -- polymorphic retail class on CCombatActionBase (0x114) with its FableWin ctor.
+- engine/CTCDExperienceOrb.h: FABLE_RETAIL_CTCDEXPERIENCEORB_CREATE -- static fastcall Create(CThing&) 0x0077A890.
+- engine/CTCHeroStats.h: FABLE_RETAIL_CTCHEROSTATS_MODIFYSTAMINA -- ModifyStaminaBy(long) 0x0057B1DB + inline GetStamina (needs _STAMINA branch).
+- engine/CMessageEventManager.h: FABLE_RETAIL_CMESSAGEEVENTMANAGER_ADDDEFMESSAGE -- AddMessage(const CMessageEventDef&, const C3DVector&, CThing*, CThing*, long) 0x00687730.
+- engine/CTCUnholyPower.h: FABLE_RETAIL_CTCUNHOLYPOWER_IMPLICIT_INFO_DTORS -- PerCreatureInfo / PerEffectInfo destructors left implicit (retail expands them; ??_G 0x007939A0 shows the implicit body).
+- engine/CWillButtonHelperTimer.h: FABLE_RETAIL_CWILLBUTTONHELPERTIMER_GETSTATE_INLINE -- inline GetCurrentButtonHeldState (`mov esi,[ebp+30h]`).
+- engine/C2DBoxI.h: FABLE_RETAIL_C2DBOXI_RADIUS_INLINE / _RADIUS_INLINE_INIT -- inline (coord, radius) ctor alongside CTCVOLUMECONTAINMENTTRACKER_UPDATE (tried; store order residue unchanged).
+- engine/C3DVector.h: FABLE_RETAIL_C3DVECTOR_SUBTRACT_NAMED_RESULT -- operator- as `C3DVector result(...); return result;` (FableWin ??GC3DVector 34i/90b at /Od; the `return C3DVector(...)` form is 28i/70b, this one 32i/84b). Same release code here; adds an inline copy layer per use (+92 c2 IL before the spell-over in 0x00795300).
+- stlport/fable_containers.h: FABLE_RETAIL_STLP_ALLOC_PROXY_REBIND -- STLport 4.6 _STLP_alloc_proxy::allocate/deallocate through __stl_alloc_rebind (text of chunk 883 / pending 2026-11-12_acctB_f4007). Code-neutral here; +61 c2 IL before the spell-over.
+- engine/CDefPointer.h: FABLE_RETAIL_CDEFPOINTER_ASSERT_ASSUME -- operator-> / operator* carry __assume(Object != 0) (retail ASSERT; 0x007959B2 releases the just-dereferenced ability def with no null test).
+- engine/CIntelligentPointer.h: FABLE_RETAIL_CINTELLIGENTPOINTER_ASSERT_ASSUME -- operator-> with __assume(pointer != 0) (tried attempt 3: +hunks, not used).

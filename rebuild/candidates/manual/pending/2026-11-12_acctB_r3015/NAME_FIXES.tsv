@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00b90090	?GetSilhouetteColour@CEnginePrimitiveManagerOcclusionBase@@IAE_NAAVCEngineInternalPrimitiveOcclusionBase@@AAVCRGBColour@@@Z	Ego_r.pdb 0x00A4FCE0 + FableWin.pdb 0x02ED7FD0 spelling; Ego_r donor order GetSilhouetteColour before IsClippedByNearPlane = retail 0x00B90090 before 0x00B900B0 (chunk 2032); vland WARN RELOC_NAME	_global::ReturnFalse_ret8_00b90090 / ?Get@T@@QAE_NHH@Z (landed CThingFilterIsUnconscious_operator_00b90090.cpp)
+0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	engine/C2DVector.h declaration (1e-4f) + the same spelling bound in 153 landed rows; only the reloc label is EPSILON (no PDB name set lists it: review); vland WARN RELOC_NAME	EPSILON

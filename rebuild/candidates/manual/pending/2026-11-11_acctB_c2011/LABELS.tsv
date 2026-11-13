@@ -1,0 +1,7 @@
+address	name	evidence
+00bf12a0	?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveStaticMesh@@@Z	Ego_r.pdb 0x00AA9420 + FableWin.pdb 0x02EEDF30; ret 4 (one reference); donor order before the animated overload; callers 0x00B9EB1E / 0x00BA13FD (static-mesh managers)
+00bf18b0	?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z	Ego_r.pdb 0x00AA99E0 + FableWin.pdb 0x02EEE310; ret 8; reads Anim.StartState/EndState +0x74/+0x7C; callers 0x00BD2144 / 0x00BD7426 (animated-mesh managers)
+00a2e4b0	??0C3DDummyObject@@QAE@XZ	Ego_r/FableWin name set; manifest label C3DDummyObject::C3DDummyObject; identity ctor of the 52-byte object handed by 0x00BF1928 to C3DMeshStats slot 6 as its C3DDummyObject& out
+00a89e40	?GetDummyObjectPositionAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAV2@ABVC3DAnimationBlendState@@2MAAVC3DAnimationManager@@_N@Z	PDB name sets + RTTI-port manifest; C3DMesh2 vtable 0x0129DEF0 slot 6, ret 1Ch (7 args), writes out.BoneIndex +0x30
+00a24270	?PeekMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z	Ego_r.pdb + the landed row CMeshDataBank_PeekMesh_00a24270.cpp; called on the const PeekMeshBank result
+0143b8e0	?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A	PDB dynamic initializer (landed 0x01224900) + FableWin GetCurrentInterpolate reading InterpolationSetList[set].WFInterpolate (0x0143B934 = +0x54)

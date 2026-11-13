@@ -1,0 +1,10 @@
+address	grade	bytes	test	module	name	flags	notes
+0045a159	RELOCATION_MATCH	6481	PASS (VC7.1, lander check)	CInventoryDef	operator=		coordinator re-verified; workflow verifier lenses still to run
+007cacb0	RELOCATION_MATCH	2974	PASS (VC7.1, lander check)	CTCHeroReceiveItems	GlobalUpdate		coordinator re-verified; workflow verifier lenses still to run
+00a04630	RELOCATION_MATCH	4609	PASS (VC7.1, lander check)	CRenderStateManager	SetupRenderStates		coordinator re-verified; workflow verifier lenses still to run
+00a079b0	MATCH	4950	PASS (VC7.1, lander check)	CRenderStateManager	CDeviceState		coordinator re-verified; workflow verifier lenses still to run
+00b72180	RELOCATION_MATCH	5587	PASS (VC7.1, lander check)	CEngineWaterRenderer	CreateDynamicTextures		coordinator re-verified; workflow verifier lenses still to run
+00bb5040	RELOCATION_MATCH	4824	PASS (VC7.1, lander check)	CEngineClothRenderer	CEngineClothRenderer		coordinator re-verified; workflow verifier lenses still to run
+005aaf28	RELOCATION_MATCH	4550	PASS (VC7.1, lander check)	CTCInventoryTrade	ConstructTradeDescriptionClothing		purity clean; 0 stale overlay header(s)
+005ad571	RELOCATION_MATCH	4414	PASS (VC7.1, lander check)	CTCInventoryTrade	ConstructTradeDescription		purity clean; 0 stale overlay header(s)
+00bbf4a0	RELOCATION_MATCH	4169	PASS (VC7.1, lander check)	CEnginePrimitiveManagerParticleSpriteGroup	RenderSubPrimitive		purity clean; 0 stale overlay header(s)

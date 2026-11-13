@@ -1,0 +1,31 @@
+21:19 0058578b grade v1.cpp TIMEOUT -- first full draft
+21:21 0058578b grade v1.cpp SRC_FAIL -- first full draft (+CDEFSTRINGTABLE)
+21:21 0058578b grade v1.cpp SRC_FAIL -- first full draft compile fixes
+21:21 0058578b grade v1.cpp SRC_FAIL -- first full draft compile fixes 2
+21:21 0058578b grade v1.cpp SRC_FAIL -- first full draft compile fixes 3
+21:22 0058578b grade v1.cpp SRC_FAIL -- first full draft compile fixes 4
+21:22 0058578b grade v1.cpp SRC_FAIL -- first full draft compile fixes 5
+21:23 0058578b grade v1.cpp SRC_FAIL -- first full draft compile fixes 6
+21:23 0058578b grade v1.cpp SRC_FAIL -- first full draft compile fixes 7
+21:23 0058578b grade v1.cpp SRC_FAIL -- first full draft compile fixes 8
+21:24 0058578b grade v1.cpp SRC_FAIL -- first full draft compile fixes 9
+21:24 0058578b grade v1.cpp SRC_FAIL -- first full draft compile fixes 10
+21:24 0058578b grade v1.cpp SRC_FAIL -- first full draft compiles?
+21:24 0058578b grade v1.cpp DIFFER(8248v8081) hunks=440 -- first full draft compiles?
+21:26 0058578b grade v1.cpp DIFFER(8268v8081) hunks=504 -- const playermanager + forceinline wide eq; loop1 found=true;break / while+it==end
+21:26 0058578b grade v2.cpp DIFFER(8214v8081) hunks=508 -- const playermanager + forceinline wide eq; loop1 found=true;break / while+it==end
+21:26 0058578b grade v3.cpp DIFFER(8220v8081) hunks=507 -- const playermanager + forceinline wide eq; loop1 found=true;break / while+it==end
+21:26 0058578b grade v2.cpp DIFFER(8214v8081) hunks=508 -- v2 alone for obj
+21:28 0058578b grade v4.cpp DIFFER(8163v8081) hunks=511 -- nested aug if (no continue); v5 if(any){list}else{none}; v6 goto list
+21:28 0058578b grade v5.cpp DIFFER(8170v8081) hunks=521 -- nested aug if (no continue); v5 if(any){list}else{none}; v6 goto list
+21:28 0058578b grade v6.cpp DIFFER(8159v8081) hunks=506 -- nested aug if (no continue); v5 if(any){list}else{none}; v6 goto list
+21:28 0058578b grade v7.cpp DIFFER(8159v8081) hunks=506 -- drop CDEFPOINTER_RELEASE_POINTEE; v8 +empty-then aug
+21:28 0058578b grade v8.cpp DIFFER(8159v8081) hunks=506 -- drop CDEFPOINTER_RELEASE_POINTEE; v8 +empty-then aug
+21:29 0058578b grade v9.cpp DIFFER(8157v8081) hunks=557 -- scoped suit/appearance decls in else arms
+21:30 0058578b grade v10.cpp DIFFER(7948v8081) hunks=377 -- optimize(s) alone (biased frame)
+21:30 0058578b grade v11.cpp DIFFER(7937v8081) hunks=386 -- optimize(s) alone (biased frame)
+21:31 0058578b grade v12.cpp DIFFER(7948v8081) hunks=377 -- top_level decl at top / split decl / gold as CComponent*
+21:31 0058578b grade v13.cpp DIFFER(7948v8081) hunks=377 -- top_level decl at top / split decl / gold as CComponent*
+21:31 0058578b grade v14.cpp DIFFER(7948v8081) hunks=377 -- top_level decl at top / split decl / gold as CComponent*
+21:31 0058578b grade v15.cpp DIFFER(7948v8081) hunks=377 -- separate top_level_menu home + CList* top_level reg copy
+21:31 0058578b grade v16.cpp DIFFER(7948v8081) hunks=377 -- separate top_level_menu home + CList* top_level reg copy

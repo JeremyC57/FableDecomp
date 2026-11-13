@@ -1,0 +1,25 @@
+address	name	evidence
+00b2cb40	CEngineSurfaceCompositionManager::CEngineSurfaceCompositionManager	Ego_r.pdb / FableWin.pdb ??0CEngineSurfaceCompositionManager@@QAE@XZ; sole caller CEngine::Initialise 0x00B26360 after operator new(0x10DC); stores both class vtables 0x012A1238 / 0x012A1200; RELOCATION_MATCH
+00b2b180	CEngineSurfaceCompositionManager::RenderToTexture	Ego_r.pdb / FableWin.pdb ?RenderToTexture@CEngineSurfaceCompositionManager@@AAEXAAVCTexture@@ABVC2DExtentsI@@_N2ABVCEngineTextureMorph@@ABV?$CArray@VCGraphicFrame@@@@J@Z (only seven-parameter member, ret 1Ch); sole caller UpdateDiskCacheTexture 0x00B2D911; RELOCATION_MATCH
+00b2d330	CEngineSurfaceCompositionManager::UpdateDiskCacheTexture	Ego_r.pdb / FableWin.pdb ?UpdateDiskCacheTexture@CEngineSurfaceCompositionManager@@AAE_NAAVCCompositeSurfaceCache@@K_N@Z; body uses the three parameters as typed and calls RenderToTexture; RELOCATION_MATCH
+00b2aef0	CEngineSurfaceCompositionManager::GetDimensionsAndAdjustMipmapLevel	PDB private member AAEXAAVC2DExtentsI@@PBVCGraphicInfoFrame@@AAK@Z; call 0x00B2D51F with &dimensions, frame, &mipmap_level (same-TU body reproduces the caller bytes)
+00b2b790	CEngineSurfaceCompositionManager::GetGraphicInfo	PDB private member AAEPBVCGraphicInfoFrame@@K@Z; call 0x00B2D6D4 with the blend's TextureIndex
+00b2b050	CEngineSurfaceCompositionManager::IsNearlyIdentical	PDB private member AAE_NABVCEngineTextureMorph@@0M@Z; call 0x00B2D430 with DiskCacheTolerance
+00b2bd80	CEngineSurfaceCompositionManager::WriteTextureToBank	PDB private member AAEXAAVCTexture@@AAVCGraphicDataBank@@K_N@Z; call 0x00B2D96D
+00f36ee0	CGPUScratchBufferTextureManager::StartTextureUse	Ego_r.pdb / FableWin.pdb name, donor order; returns the CTexture* used by both rows
+00f36f00	CGPUScratchBufferTextureManager::EndTextureUse	Ego_r.pdb / FableWin.pdb name, donor order; same handle as StartTextureUse
+00a0af80	CRenderManagerCore::WaitWhileGPUIsBusy	Ego_r.pdb / FableWin.pdb name, donor order, empty body; called on GPRenderManager
+009fd660	CGraphicDataBank::FrameEnd	Ego_r.pdb / FableWin.pdb ?FrameEnd@CGraphicDataBank@@QAEXXZ (already bound); call 0x00B2D387 on graphic bank 0
+009ccdc0	CBankFile::FindIndexBySymbol	Ego_r.pdb ?FindIndexBySymbol@CBankFile@@QBEKABVCCharString@@@Z (already bound)
+009cd620	CBankFile::AddEntry	Ego_r.pdb CBankFile::AddEntry; call 0x00B2D4DA on IntermediateBankFile
+00b2e340	CCountedPointer<CGraphicBankStateBlock>::CCountedPointer	takes the new CGraphicBankStateBlock (vtable 0x0129C888) at 0x00B2D492; PDB class key V
+009be610	CDisplayManager::GetBestOpaqueTextureFormat	Ego_r.pdb CPixelFormat& signature; ctor 0x00B2CB40
+009be6c0	CDisplayManager::GetBestAlphaTextureFormat	Ego_r.pdb CPixelFormat& signature; ctor 0x00B2CB40
+009be830	CDisplayManager::GetBestCompressedOpaqueTextureFormat	Ego_r.pdb donor order + signature; ctor 0x00B2CB40
+009be870	CDisplayManager::GetBestCompressedAlphaTextureFormat	Ego_r.pdb donor order + signature; ctor 0x00B2CB40
+009be8b0	CDisplayManager::GetBestCompressedBooleanAlphaTextureFormat	Ego_r.pdb donor order + signature; ctor 0x00B2CB40 (16-bit request)
+009be590	CDisplayManager::GetBestSignedTextureFormat	Ego_r.pdb signature; ctor 0x00B2CB40 (16-bit request)
+00f38990	CSurfaceCompositor::CSurfaceCompositor	Ego_r.pdb ??0CSurfaceCompositor@@QAE@AAVCSurface@@@Z; RenderToTexture builds it on the stack per mip level
+00f39730	CSurfaceCompositor::StartComposition	Ego_r.pdb ?StartComposition@CSurfaceCompositor@@QAEX_N@Z; RenderToTexture passes alpha
+00f39a50	CSurfaceCompositor::CompositeQuad	Ego_r.pdb ?CompositeQuad@CSurfaceCompositor@@QAEXABVCTexture@@QBVCVertexType@1@W4ECompositeBlendType@@@Z; one call per blend layer
+00f38930	CSurfaceCompositor::EndComposition	Ego_r.pdb ?EndComposition@CSurfaceCompositor@@QAEXXZ; after the layer loop

@@ -1,0 +1,1 @@
+0x00F36EE0	?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z	Ego_r order StartTextureUse/EndTextureUse/StartSurfaceUse/EndSurfaceUse = retail 0xF36EE0/F36F00/F36F10/F36F30 by size; result stored into GlowTexture* (CTexture*) by 0x00B5FAB0 (DOSSIER)	CGPUScratchBufferTextureManager::StartSurfaceUse

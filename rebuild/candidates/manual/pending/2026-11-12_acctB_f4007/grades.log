@@ -1,0 +1,107 @@
+g01: first draft adapted from the parked PC twin 0x0061E6D0 -> 12671v12341, fm-equal 3183/3370 (ours 3442i), exact 2367; first diff 0061b616 frame 0x424 v 0x404; residues: parent/list register swap 0061b993, && flag form 0061d390, NumBoasts temp 0061d73e, delete_action + later CCP/CAction ctors expanded (retail calls 0042be50/0042aa29/00429c15)
+g02: nested if + two unavailable copies, named num_boasts, region_offset(0,0), state_index++ inside the pair -> 12783v12341 fm 3112 exact 2534; num_boasts local right (0061d73e gone); two copies do NOT merge (+110B); state_index++ in the pair wrong (inc right after lea); zero stores of region_offset must precede GetRegionName
+g03: + FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA, region_offset declared before state_region_name, named pair local 'state' + ++state_index -> 12767v12341 fm 3173 exact 2589; named pair right (ebx = state_index, lea [ebx+8], inc after insert); Position must be two member stores; delete_action still expanded
+g04: Position as two member stores -> 12751v12341 fm 3184 exact 2554 (state block now retail's store order); inline trace g03: body f 75, take block 9.375, delete CAction() a+g 8175 expanded (retail called), U copies differ (first CDeletion copy refused) so they do not merge
+g05/g05a/g05b: viewport named local before the sprite + inventory_map = 0 -> fm 3204; a (frame_parent = parent ? parent : list) fm 3214 exact 2522: head register swap gone, all hunks before 0061c881 are frame / alignment only; b (list first) worse
+e1: U-first `if (renown < needed || <started helper>) { unavailable } else { take }` (helper = made-up free inline) -> 12463v12341 fm 3324 exact 2316; retail's branch layout (jl U / jne U, take, U), single unavailable block with retail's decisions (CDeletion copy + list dtor expanded, _M_insert_dispatch called), take_boast_entry + teleport ctors called; left: delete_action CAction()/CCountedPointer expanded
+e2: `renown >= needed && !helper` (take first) -> 12591v12341 fm 3214; unavailable block decided under the size penalty (list dtor called), no late action ctor called: wrong order
+e3: `if (renown >= needed) { if (started) U else take } else U` -> 12655v12341 fm 3306; two unavailable copies do not merge (second one under the penalty)
+e4/e5/e6: sort loop as while / unguarded for / guarded while on e1 -> 12422 / 12543 / 12422, fm 3187 / 3132 / 3197: the sort loop's own push_back / LowerBound / set-ctor decisions break; `if (size != 0) for` stays
+e7: e1 + `if (count != 0)` in front of the per-quest for -> 12463v12341 fm 3324 (same bytes as e1; the body's static frequency is halved, 75 -> 37.5)
+y1: e7 with the real inline member IsQuestCardAvailable(const CTCQuestCard&) const, body `return !started` -> 12479v12341 fm 3175 exact 2336 (the double negation adds a register candidate; worse)
+z1: y1 with the body `if (started) return false; return true;` -> 12463v12341 fm 3324 exact 2316 = e7's bytes with the PDB name: BEST, differ/0061b610.cpp
+z2: z1 without the `if (count != 0)` guard -> same bytes (12463, fm 3324); z3: body `return started == false` -> 12479 fm 3175 (as y1)
+#19 b0: baseline = differ/0061b610.cpp regraded at session 2 start -> 12463B fm-equal 3324 exact 2316
+#20 c1: b0 + Compare as while loop with direct derefs (FableWin 40i/102b SAME; retail 0x00411570 equal) -> c1: 12463B fm-equal 3324 exact 2316 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061ca06 0061ca1a 0061ca22 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d773 0061d77c 0061d784 0061d790 00
+#21 c2: c1 + CRGBColour(EEEE) through Initialise (FableWin 18i) -> c2: 12463B fm-equal 3337 exact 2495 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d773 0061d77c 0061d784 0061d790 0061d799 0061d7d0 0061db9a 0061e287 0061e2e5 00
+#22 c3: c2 + CDefPointer::Release through the self-deleting CIVCountedPointeeBase::Release (FableWin 14i/33b size form) -> c3: 12367B fm-equal 3341 exact 2218 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d773 0061d77c 0061d7a8 0061d7d0 0061db9a 0061e2e5 0061e2ee 00
+#23 d1: c3 + InitialiseOffsets argument spelling d1 -> d1: 12431B fm-equal 3342 exact 2500 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d773 0061d77c 0061d79b 0061d7a8 0061d7d0 0061e287 0061e2e5 0061e2ee 0061e2f7 00
+#24 d2: c3 + InitialiseOffsets argument spelling d2 -> d2: 12383B fm-equal 3344 exact 2219 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d759 0061d762 0061d76b 0061db9a 0061e287 0061e2e5 0061e2ee 00
+#25 d3: c3 + InitialiseOffsets argument spelling d3 -> d3: 12383B fm-equal 3344 exact 2219 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d759 0061d762 0061d76b 0061db9a 0061e287 0061e2e5 0061e2ee 00
+#26 d4: c3 + InitialiseOffsets argument spelling d4 -> d4: 12367B fm-equal 3341 exact 2218 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d773 0061d77c 0061d7a8 0061d7d0 0061db9a 0061e2e5 0061e2ee 00
+#27 d5: c3 + InitialiseOffsets argument spelling d5 -> d5: 12383B fm-equal 3336 exact 2214 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d748 0061d74b 0061d764 0061d773 0061d77c 0061d78c 0061d7a8 00
+#28 d6: c3 + InitialiseOffsets argument spelling d6 -> d6: 12431B fm-equal 3342 exact 2500 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d773 0061d77c 0061d79b 0061d7a8 0061d7d0 0061e287 0061e2e5 0061e2ee 0061e2f7 00
+#29 f1: c3 + rotation probe f1 at InitialiseOffsets / AddScrollingChildAndSetOffsets -> f1: 12431B fm-equal 3263 exact 2267 hunks: 0061b616 0061bb57 0061bb8b 0061c647 0061c881 0061c88d 0061c941 0061c9ea 0061cead 0061cec2 0061cf37 0061cf90 0061cf95 0061cfde 0061cfef 0061d064 0061d096 0061d0bb 0061d1e6 0061d1f0 0061d225 0061d239 00
+#30 f2: c3 + rotation probe f2 at InitialiseOffsets / AddScrollingChildAndSetOffsets -> f2: 12367B fm-equal 3341 exact 2218 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d773 0061d77c 0061d7a8 0061d7d0 0061db9a 0061e2e5 0061e2ee 00
+#31 f4: c3 + rotation probe f4 at InitialiseOffsets / AddScrollingChildAndSetOffsets -> f4: 12367B fm-equal 3349 exact 2224 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061db9a 0061e2e5 0061e2ee 0061e2f7 0061e33a 0061e428 0061e626 
+#32 f6: c3 + rotation probe f6 at InitialiseOffsets / AddScrollingChildAndSetOffsets -> f6: 12367B fm-equal 3341 exact 2218 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d773 0061d77c 0061d7a8 0061d7d0 0061db9a 0061e2e5 0061e2ee 00
+#33 f8: c3 + rotation probe f8 at InitialiseOffsets / AddScrollingChildAndSetOffsets -> f8: 12351B fm-equal 3330 exact 2322 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d759 0061d769 0061d773 0061d7a8 0061d7bd 0061d7c9 0061d7eb 0061d8ea 00
+#34 f9: c3 + rotation probe f9 at InitialiseOffsets / AddScrollingChildAndSetOffsets -> f9: 12367B fm-equal 3341 exact 2218 hunks: 0061b616 0061bb57 0061bb8b 0061c881 0061c88d 0061c941 0061c9e8 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061d773 0061d77c 0061d7a8 0061d7d0 0061db9a 0061e2e5 0061e2ee 00
+#35 g1: f4 + FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY (whole insert chain visible) -> g1: 12354B fm-equal 3353 exact 2293 hunks: 0061b616 0061bb57 0061c881 0061c88d 0061c941 0061c9e8 0061ca28 0061ca2e 0061cf90 0061cf95 0061d096 0061d1e6 0061d1f0 0061d323 0061db9a 0061e33a 0061e3cf 0061e3e3 
+#36 h1: g1 + boast section inside if (type == CURRENT) (h1: h1 direct, h2 nested block) -> h1: 12354B fm-equal 3360 exact 2294 hunks: 0061b616 0061bb57 0061c9e8 0061ca28 0061ca2e 0061d323 0061db9a 0061e33a 0061e3cf 0061e3e3 
+#37 h2: g1 + boast section inside if (type == CURRENT) (h2: h1 direct, h2 nested block) -> h2: 12354B fm-equal 3360 exact 2294 hunks: 0061b616 0061bb57 0061c9e8 0061ca28 0061ca2e 0061d323 0061db9a 0061e33a 0061e3cf 0061e3e3 
+#38 i1: h1 + hinted insert_unique(iterator, const V&) body visible (STLport _tree.c, landed 0x0042D2C6 text) -> i1: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#39 j1: i1 + Compare text variant j1 (SIB order probe) -> j1: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#40 j2: i1 + Compare text variant j2 (SIB order probe) -> j2: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#41 j3: i1 + Compare text variant j3 (SIB order probe) -> j3: 12341B fm-equal 3356 exact 3356 hunks: 0061c9f0 0061ca06 0061ca1a 0061ca22 0061ca28 0061ca2e 0061db9a 
+#42 j4: i1 + Compare text variant j4 (SIB order probe) -> j4: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#43 j5: i1 + Compare text variant j5 (SIB order probe) -> j5: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#44 j6: i1 + Compare text variant j6 (SIB order probe) -> j6: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#45 r1: DIAGNOSTIC ruler: i1 + 1 dead named longs at function scope (SIB order sweep) -> r1: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#46 r2: DIAGNOSTIC ruler: i1 + 2 dead named longs at function scope (SIB order sweep) -> r2: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#47 r3: DIAGNOSTIC ruler: i1 + 3 dead named longs at function scope (SIB order sweep) -> r3: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#48 r4: DIAGNOSTIC ruler: i1 + 4 dead named longs at function scope (SIB order sweep) -> r4: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#49 r5: DIAGNOSTIC ruler: i1 + 5 dead named longs at function scope (SIB order sweep) -> r5: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#50 r6: DIAGNOSTIC ruler: i1 + 6 dead named longs at function scope (SIB order sweep) -> r6: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#51 r7: DIAGNOSTIC ruler: i1 + 7 dead named longs at function scope (SIB order sweep) -> r7: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#52 r8: DIAGNOSTIC ruler: i1 + 8 dead named longs at function scope (SIB order sweep) -> r8: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#53 k1: i1 + num_entries as a ternary (num_boasts != 0 ? 2 : 1) -> k1: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#54 eq1: DIAGNOSTIC i1 + CBasicString::operator== text variant 1 (SIB order probe) -> Z:\opt\fable_lane\w22\agent4007\tmp\b\eq1\x.cpp(297) : error C3861: 'CWideString': identifier not found, even with argument-dependent lookup
+#55 eq2: DIAGNOSTIC i1 + CBasicString::operator== text variant 2 (SIB order probe) -> Z:\opt\fable_lane\w22\agent4007\tmp\b\eq2\x.cpp(297) : error C3861: 'CWideString': identifier not found, even with argument-dependent lookup
+#56 eq3: DIAGNOSTIC i1 + CBasicString::operator== text variant 3 (SIB order probe) -> Z:\opt\fable_lane\w22\agent4007\tmp\b\eq3\x.cpp(297) : error C3861: 'CWideString': identifier not found, even with argument-dependent lookup
+#57 eq4: DIAGNOSTIC i1 + CBasicString::operator== text variant 4 (SIB order probe) -> Z:\opt\fable_lane\w22\agent4007\tmp\b\eq4\x.cpp(297) : error C3861: 'CWideString': identifier not found, even with argument-dependent lookup
+#58 eq5: DIAGNOSTIC i1 + CBasicString::operator== text variant 5 (SIB order probe) -> Z:\opt\fable_lane\w22\agent4007\tmp\b\eq5\x.cpp(297) : error C3861: 'CWideString': identifier not found, even with argument-dependent lookup
+#59 eq6: DIAGNOSTIC i1 + CBasicString::operator== text variant 6 (SIB order probe) -> Z:\opt\fable_lane\w22\agent4007\tmp\b\eq6\x.cpp(297) : error C3861: 'CWideString': identifier not found, even with argument-dependent lookup
+#60 eq7: DIAGNOSTIC i1 + CBasicString::operator== text variant 7 (SIB order probe) -> Z:\opt\fable_lane\w22\agent4007\tmp\b\eq7\x.cpp(297) : error C3861: 'CWideString': identifier not found, even with argument-dependent lookup
+#61 l1: i1 with the layered GetTC / PeekTC (HasTC + GetTC(id) + GFDebugPDynamicCast; no GETTC_EXPANDED) -> l1: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#62 s16: DIAGNOSTIC ruler: i1 + 16 dead statements after the take block (SIB record-id sweep) -> s16: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#63 s48: DIAGNOSTIC ruler: i1 + 48 dead statements after the take block (SIB record-id sweep) -> s48: 12341B fm-equal 3370 exact 3370 hunks: 
+#64 s96: DIAGNOSTIC ruler: i1 + 96 dead statements after the take block (SIB record-id sweep) -> s96: 12341B fm-equal 3370 exact 3370 hunks: 
+#65 s144: DIAGNOSTIC ruler: i1 + 144 dead statements after the take block (SIB record-id sweep) -> s144: 12341B fm-equal 3370 exact 3370 hunks: 
+#66 s200: DIAGNOSTIC ruler: i1 + 200 dead statements after the take block (SIB record-id sweep) -> s200: 12341B fm-equal 3370 exact 3370 hunks: 
+#67 s280: DIAGNOSTIC ruler: i1 + 280 dead statements after the take block (SIB record-id sweep) -> s280: 12287B fm-equal 3351 exact 3081 hunks: 0061c647 0061c9e8 0061d680 0061d68f 0061db9a 0061e287 0061e33a 0061e3cf 0061e428 0061e626 
+#68 sa96: DIAGNOSTIC ruler: i1 + 96 dead statements at function start -> sa96: 12341B fm-equal 3370 exact 3370 hunks: 
+#69 sz96: DIAGNOSTIC ruler: i1 + 96 dead statements in the function tail -> sz96: 12341B fm-equal 3370 exact 3370 hunks: 
+#70 s24: DIAGNOSTIC ruler: i1 + 24 dead statements after the take block -> s24: 12341B fm-equal 3370 exact 3370 hunks: 
+#71 s32: DIAGNOSTIC ruler: i1 + 32 dead statements after the take block -> s32: 12341B fm-equal 3370 exact 3370 hunks: 
+#72 s40: DIAGNOSTIC ruler: i1 + 40 dead statements after the take block -> s40: 12341B fm-equal 3370 exact 3370 hunks: 
+#73 s240: DIAGNOSTIC ruler: i1 + 240 dead statements after the take block -> s240: 12287B fm-equal 3351 exact 3081 hunks: 0061c647 0061c9e8 0061d680 0061d68f 0061db9a 0061e287 0061e33a 0061e3cf 0061e428 0061e626 
+#74 i1s4: DIAGNOSTIC ruler: i1 + 4 dead statements after the take block -> i1s4: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#75 i1s8: DIAGNOSTIC ruler: i1 + 8 dead statements after the take block -> i1s8: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#76 i1s12: DIAGNOSTIC ruler: i1 + 12 dead statements after the take block -> i1s12: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#77 i1s16: DIAGNOSTIC ruler: i1 + 16 dead statements after the take block -> i1s16: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#78 i1s20: DIAGNOSTIC ruler: i1 + 20 dead statements after the take block -> i1s20: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#79 l1s4: DIAGNOSTIC ruler: l1 + 4 dead statements after the take block -> l1s4: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#80 l1s8: DIAGNOSTIC ruler: l1 + 8 dead statements after the take block -> l1s8: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#81 l1s12: DIAGNOSTIC ruler: l1 + 12 dead statements after the take block -> l1s12: 12341B fm-equal 3370 exact 3370 hunks: 
+#82 l1s16: DIAGNOSTIC ruler: l1 + 16 dead statements after the take block -> l1s16: 12341B fm-equal 3370 exact 3370 hunks: 
+#83 l1s20: DIAGNOSTIC ruler: l1 + 20 dead statements after the take block -> l1s20: 12341B fm-equal 3370 exact 3370 hunks: 
+#84 l1s9: DIAGNOSTIC ruler: l1 + 9 dead statements after the take block -> l1s9: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#85 l1s10: DIAGNOSTIC ruler: l1 + 10 dead statements after the take block -> l1s10: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#86 l1s11: DIAGNOSTIC ruler: l1 + 11 dead statements after the take block -> l1s11: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#87 chk2: check: l1 unchanged with CMainGameComponent overlay present -> chk2: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#88 m1: l1 + GetWorld/GetTextBank through the smart pointers' operator* (FW 10i) -> m1: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#89 m1s4: DIAGNOSTIC ruler: m1 + 4 dead statements after the take block -> m1s4: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#90 m1s8: DIAGNOSTIC ruler: m1 + 8 dead statements after the take block -> m1s8: 12341B fm-equal 3370 exact 3370 hunks: 
+#91 m1s10: DIAGNOSTIC ruler: m1 + 10 dead statements after the take block -> m1s10: 12341B fm-equal 3370 exact 3370 hunks: 
+#92 n1: m1 + SetStaticCast calls the empty inline Validate() (FW 14i/38b SAME) -> n1: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#93 n1s2: DIAGNOSTIC ruler: n1 + 2 dead statements after the take block -> n1s2: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#94 n1s4: DIAGNOSTIC ruler: n1 + 4 dead statements after the take block -> n1s4: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#95 n1s6: DIAGNOSTIC ruler: n1 + 6 dead statements after the take block -> n1s6: 12341B fm-equal 3370 exact 3370 hunks: 
+#96 n1x40: DIAGNOSTIC: n1 + a separate function of 40 statements BEFORE the row in the TU -> n1x40: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#97 n1y40: DIAGNOSTIC: n1 + a separate function of 40 statements AFTER the row in the TU -> n1y40: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#98 n1d2: DIAGNOSTIC unit probe: 3 statements of 8 multiply terms each -> n1d2: 12341B fm-equal 3370 exact 3370 hunks: 
+#99 n1d3: DIAGNOSTIC unit probe: 12 statements ruler = constant -> n1d3: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#100 n1d1: DIAGNOSTIC unit probe: 40 unused initialised locals at function scope -> n1d1: 12341B fm-equal 3370 exact 3370 hunks: 
+#101 o1: n1 + state position as one vector expression C2DVector(444,186) - region_offset -> o1: 12367B fm-equal 3355 exact 3240 hunks: 0061b616 0061bb57 0061de48 0061de59 0061de60 0061de75 0061de87 0061dea2 0061e33a 0061e3cf 0061e428 0061e626 
+#102 o2: n1 + IsQuestCardAvailable with a named bool (49i at /Od EHsc v FW 48i) -> o2: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#103 p1: n1 + the one-argument GetTC(T**) / PeekTC(T**) forms FableWin instantiates for CTCQuestCard and CTCInventoryMap (27i/74b SAME) -> p1: 12341B fm-equal 3370 exact 3370 hunks: 
+#104 p1s8: DIAGNOSTIC ruler: p1 + 8 dead statements after the take block -> p1s8: 12341B fm-equal 3370 exact 3370 hunks: 
+#105 p1s100: DIAGNOSTIC ruler: p1 + 100 dead statements after the take block -> p1s100: 12287B fm-equal 3351 exact 3081 hunks: 0061c647 0061c9e8 0061d680 0061d68f 0061db9a 0061e287 0061e33a 0061e3cf 0061e428 0061e626 
+#106 p1s24: DIAGNOSTIC ruler: p1 + 24 dead statements after the take block -> p1s24: 12341B fm-equal 3370 exact 3370 hunks: 
+#107 p1s48: DIAGNOSTIC ruler: p1 + 48 dead statements after the take block -> p1s48: 12341B fm-equal 3370 exact 3370 hunks: 
+#108 p1s72: DIAGNOSTIC ruler: p1 + 72 dead statements after the take block -> p1s72: 12287B fm-equal 3351 exact 3081 hunks: 0061c647 0061c9e8 0061d680 0061d68f 0061db9a 0061e287 0061e33a 0061e3cf 0061e428 0061e626 
+#109 p2: p1 without the Validate() layer in SetStaticCast -> p2: 12341B fm-equal 3370 exact 3370 hunks: 
+#110 p3: p2 without the smart-pointer operator* layer in GetWorld / GetTextBank -> p3: 12341B fm-equal 3368 exact 3368 hunks: 0061ca28 0061ca2e 
+#111 p4: p2 with the one-argument GetTC for hero stats too -> p4: 12341B fm-equal 3370 exact 3370 hunks: 
+#112 src: q.py on src/0061b610.cpp (= cand/p2.cpp with the final header comment) -> RELOCATION_MATCH 12341B 3370/3370

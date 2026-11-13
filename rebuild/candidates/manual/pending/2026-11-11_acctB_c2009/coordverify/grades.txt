@@ -1,0 +1,2 @@
+00745120 CTCPerceiveThing::UpdateLineOfSight RELOCATION_MATCH flags= []
+00952890 CAIStateGroup_JackDragon::UpdateGround RELOCATION_MATCH flags= []

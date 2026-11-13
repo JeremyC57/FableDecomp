@@ -1,0 +1,8 @@
+address	name	evidence
+0x00915B60	?PlaceGoods@CAIStateGroup_MoveGoodsBase@@IAE_NV?$CIntelligentPointer@VCThing@@@@MV?$vector@PBVCCharString@@V?$allocator@PBVCCharString@@@std@@@std@@ABVCAIFilterBase@CAIStateGroupBase@@PBVCThing@@@Z	Ego_r.pdb + FableWin.pdb; Ego_r donor order OnActivate < FetchGoods < PlaceGoods < Cleanup = retail 0x00915880 < 0x00915890 < 0x00915B60 < 0x009162F0; `ret 20h` = 8 + 4 + 12 + 4 + 4 (parked, differ/)
+0x0097F690	?AIAction_MoveToPreCalcRoute@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCThing@@AA_NW4EMovementType@@ABVCAIFilterBase@1@_N@Z	Ego_r.pdb + FableWin.pdb; PlaceGoods 0x00915E32 pushes (thing&, &flag, 3, filter&, 1)
+0x00916640	?SetUser@CTCExclusiveUse@@QAEXPAVCThing@@@Z	Ego_r.pdb (donor 0x0080C470) + FableWin.pdb; body stores the argument into the CIntelligentPointer<CThing> User at +0x0C (Ego_r TPI); PlaceGoods calls it on the TCI_EXCLUSIVE_USE (0x2F) component with the creature and with 0
+0x00915810	??0CCreatureAction_PutGoodsDown@@QAE@AAVCThingCreatureBase@@ABVCCharString@@@Z	Ego_r.pdb + FableWin.pdb; `ret 8`; PlaceGoods 0x009161F9..0x00916201 pushes the creature and the vector element (const CCharString*)
+0x007FEDE0	?GetFreeActionPoint@CTCUserActionPointBase@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z	Ego_r.pdb + FableWin.pdb; PlaceGoods 0x00915C84 pushes &index, &rh_set, &position, the creature on the TCI_SINGLE_USER_ACTION_POINTS (0x2D) component
+0x007FEF40	?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z	Ego_r.pdb + FableWin.pdb; reloc_bindings.tsv already binds it
+0x007B6660	?GetNumCrates@CTCCrateStack@@QBEJXZ	Ego_r.pdb + FableWin.pdb (const); PlaceGoods 0x0091614D on the TCI_CRATE_STACK (0xB5) component

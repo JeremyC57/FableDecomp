@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+004a6e30	RELOCATION_MATCH	2259v2259	PASS (g++ + VC7.1)	p1:1	first full draft matched; vland RELOCATION_MATCH (3 RELOC_NAME warnings = catalog labels fixed in LABELS/NAME_FIXES)
+0042ec7c	RELOCATION_MATCH	2191v2191	PASS (g++ + VC7.1)	p1:18 + cont:16 (+8 diagnostics, 9 c2 traces, 1 inline trace, ~20 probe compiles)	matched: menu-font glyph string as a named block-scoped CWideString (`{ CWideString glyphs(L"..."); m_pMenuFont->Preload(glyphs, true); }`); rel.py: every target = retail (11 name-only DIFFs vs stale bound spellings -> NAME_FIXES.tsv)
+0087f3a0	NOT_ATTEMPTED	-v2422	-	0	STARTED (decoded outline in NOTES.md, retail listing tmp/pa_retail.txt); no graded draft yet
+00a7af60	NOT_ATTEMPTED	-v2503	-	0	not started
+00821a80	NOT_ATTEMPTED	-v2648	-	0	not started

@@ -1,0 +1,1 @@
+- Big quest-script bodies: give every inline body visibility (implicit CScriptThing op= with ShareData declared out of line, inline ~CScriptThing) and VC7.1's own budget reproduces retail's expand-early / call-late split (0x00D6D670, 5.8 KB, matched in 6 grades).

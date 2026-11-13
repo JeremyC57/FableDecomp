@@ -1,0 +1,4 @@
+007891f2 CTCTrapBase::vfunc_10 MATCH flags= []
+00aed600 CParticleEmitter::InterpolateTo RELOCATION_MATCH flags= []
+00af4900 CParticleSystem::SerializeComponents RELOCATION_MATCH flags= []
+00b3c5d0 CEngineResourceManager::SetupAlphaStippleTexture RELOCATION_MATCH flags= []

@@ -1,0 +1,7 @@
+addr       parity           behav  name
+  WARN leaf 'operator=' matches no symbol in 0045a159.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045a159.obj; graded the largest function
+0045a159   RELOCATION_MATCH PASS   operator=
+
+WINS: 1
+  0045a159 RELOCATION_MATCH CInventoryDef::operator=

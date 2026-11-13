@@ -1,0 +1,25 @@
+address	name	evidence
+0049f4c0	?SaveGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z	Ego_r.pdb; callers SaveGameState 0x004A05C0 / SaveHeroStateInternal 0x004A00E0 (landed)
+004a21f0	?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z	Ego_r.pdb; callers LoadGameState 0x004A3200 / LoadHeroStateInternal 0x004A2D70 (landed)
+009baa50	?Init@CPersistContext@@QAEXAAVCDataOutputStream@@_N@Z	Ego_r.pdb; ret 8, stream +0x28
+00449f90	?SaveGameState@CPlayerManager@@QAEXAAVCPersistContext@@@Z	Ego_r.pdb; manifest label
+00449e60	?LoadGameState@CPlayerManager@@QAEXAAVCPersistContext@@@Z	Ego_r.pdb; manifest label
+00524290	?SaveGameState@CThingManager@@QAEXAAVCPersistContext@@@Z	Ego_r.pdb; manifest label
+005253f0	?LoadGameState@CThingManager@@QAEXAAVCPersistContext@@@Z	Ego_r.pdb; manifest label
+004b64e0	?SaveGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z	Ego_r.pdb; called on the singleton 0x013B89FC
+004b6380	?LoadGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z	Ego_r.pdb; manifest label
+004b4450	?DeactivateAllQuests@CQuestManager@@QAEXXZ	Ego_r.pdb; manifest + reloc_bindings
+004fde80	?SaveGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z	Ego_r.pdb; manifest label
+005079c0	?LoadGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z	Ego_r.pdb; manifest label
+006b9560	?SaveGameState@CFactionManager@@QBEXAAVCPersistContext@@@Z	Ego_r.pdb (const); manifest label
+006b9610	?LoadGameState@CFactionManager@@QAEXAAVCPersistContext@@@Z	Ego_r.pdb; catalog label CFaction_LoadFromPersist is wrong
+006bbb30	?Save@CGameTimeManager@@QAEXAAVCPersistContext@@@Z	Ego_r.pdb; manifest label
+009967e0	?WriteZlibCompressed@CDataOutputStream@@QAEXPBXJJ@Z	Ego_r.pdb; manifest label
+00994230	?WriteRepeatedByte@CDataOutputStream@@QAEXEJ@Z	Ego_r.pdb; manifest label
+00996bc0	?ReserveSize@CMemoryDataOutputStream@@QAEXK@Z	Ego_r.pdb + reloc_bindings
+00996b60	?Clear@CMemoryDataOutputStream@@QAEXXZ	Ego_r.pdb + manifest label
+00999ab0	?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z	Ego_r.pdb + reloc_bindings
+0041a060	?GetLevelDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	Ego_r.pdb + manifest label
+009e9ef0	?StartProgress@NProgressDisplay@@YIX_N00000@Z	Ego_r.pdb + manifest label
+004a1840	?Load@CWorld@@QAEXABVCWideString@@@Z	Ego_r.pdb + reloc_bindings
+004a0220	?PrepareForLoad@CWorld@@QAEXXZ	Ego_r.pdb + landed CWorld_PrepareForLoad_004a0220.cpp

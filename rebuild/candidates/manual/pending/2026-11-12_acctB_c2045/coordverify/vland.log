@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00bb8ef0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00bb8ef0   RELOCATION_MATCH PASS   RenderSubPrimitive
+
+WINS: 1
+  00bb8ef0 RELOCATION_MATCH CEnginePrimitiveManagerParticleDecalGroup::?RenderSubPrimitive@CEnginePrimitiveManagerParticleDecalGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z

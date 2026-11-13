@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00b2b180   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b2b180   WARN RELOC_NAME: ?EndTextureUse@CGPUScratchBufferTextureManager@@QAEXJ@Z -> 00f36f00 labelled '_global::Nop_ret4_00f36f00'
+00b2b180   RELOCATION_MATCH PASS   RenderToTexture
+00b2cb40   WARN RELOC_NAME: ?SetIsStaticMap@CBankFile@@QAEX_N@Z -> 009d5230 labelled '_global::Nop_ret4_009d5230'
+00b2cb40   RELOCATION_MATCH PASS   CEngineSurfaceCompositionManager
+00b2d330   WARN RELOC_NAME: ?WaitWhileGPUIsBusy@CRenderManagerCore@@QAEXXZ -> 00a0af80 labelled '_global::Nop_ret0_00a0af80'
+00b2d330   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b2d330   WARN RELOC_NAME: ?EndTextureUse@CGPUScratchBufferTextureManager@@QAEXJ@Z -> 00f36f00 labelled '_global::Nop_ret4_00f36f00'
+00b2d330   RELOCATION_MATCH PASS   UpdateDiskCacheTexture
+
+WINS: 3
+  00b2b180 RELOCATION_MATCH CEngineSurfaceCompositionManager::?RenderToTexture@CEngineSurfaceCompositionManager@@AAEXAAVCTexture@@ABVC2DExtentsI@@_N2ABVCEngineTextureMorph@@ABV?$CArray@VCGraphicFrame@@@@J@Z
+  00b2cb40 RELOCATION_MATCH CEngineSurfaceCompositionManager::??0CEngineSurfaceCompositionManager@@QAE@XZ
+  00b2d330 RELOCATION_MATCH CEngineSurfaceCompositionManager::?UpdateDiskCacheTexture@CEngineSurfaceCompositionManager@@AAE_NAAVCCompositeSurfaceCache@@K_N@Z

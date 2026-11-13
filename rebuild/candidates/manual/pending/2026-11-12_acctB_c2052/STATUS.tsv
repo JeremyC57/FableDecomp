@@ -1,0 +1,5 @@
+address	grade	bytes	test	grades_used	notes
+0049f4c0	RELOCATION_MATCH	2825v2825	PASS	15 (+7 header regrades)	pass 1; time-played via named start_time copy, file-assembly tail in its own block (CRC word on the shared temp slot)
+004a21f0	RELOCATION_MATCH	2931v2931	PASS	13 (+4 header regrades)	pass 1; frame-only residue (0x16C v 0x170) closed by an early `if (SerialisingHeroState) return true;` (cross-jumped return adds destructor weight to file/parser)
+0048e78e	NOT_ATTEMPTED	-v2662	-	0	context budget used on the two CWorld rows; real prologue (push ebp; lea ebp,[esp-68h]; sub esp,16Ch); see NOTES.md
+007cacb0	NOT_ATTEMPTED	-v2974	-	0	not started (one row at a time); real prologue (sub esp,74h; push esi; mov esi,ecx); see NOTES.md

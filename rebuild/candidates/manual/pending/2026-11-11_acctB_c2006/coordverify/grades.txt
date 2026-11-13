@@ -1,0 +1,3 @@
+00b399a0 CEngineInternalAttachedPrimitive::UpdateOutputPrimitive RELOCATION_MATCH flags= []
+00d91e00 NScript::CQ_HobbeCaveScript::CHobbeSpawn::Main RELOCATION_MATCH flags= []
+00e621f0 NScript::CV_BodyGuardScript::CBodyGuard::SetHenchmanAsHired RELOCATION_MATCH flags= []

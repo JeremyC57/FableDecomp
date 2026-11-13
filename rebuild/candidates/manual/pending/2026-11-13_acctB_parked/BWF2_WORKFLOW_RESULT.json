@@ -1,0 +1,381 @@
+[
+ {
+  "addr": "007cacb0",
+  "status": "VERIFIED",
+  "attempts": 1,
+  "module": "CTCHeroReceiveItems",
+  "name": "GlobalUpdate",
+  "flags": [],
+  "headers_changed": [
+   "hdr/engine/CTCHeroReceiveItems.h (_GLOBALUPDATE, _PICKEDUP re-based)",
+   "hdr/engine/CThingObject.h (_HASPROPERTY)",
+   "hdr/engine/CRightHandedSet.h (_INIT decl-only)",
+   "hdr/engine/CPlayerGuiDef.h (_CONTAINERITEM)",
+   "hdr/engine/CTCInventoryItem.h (_DESCRIPTION)",
+   "hdr/engine/CTCHeroStats.h (_RENTMONEY)",
+   "hdr/engine/CEnginePrimitiveHandle.h (NEW _CLEAR_FORCEINLINE)",
+   "hdr/engine/CTCFish.h (new)",
+   "hdr/engine/CTCFishingSpot.h (new)",
+   "hdr/engine/CTCDiggingSpot.h (new)",
+   "hdr/engine/CTCGold.h (new)",
+   "hdr/engine/CTCHeroOnlineScoreboard.h (new)"
+  ],
+  "what_made_it_match": "Plain C++ on the shared headers via the overlay. The fixes: CPlayer.h included before CThingPlayerCreature.h (so GetPPlayerCharacter is inlined); a FABLE_FORCEINLINE Clear opt-in (the c2 trace shows the plain inline scores over the threshold at both retail-expanded sites); ForceClear and Amount stores written before the box copies; `long gold = 0;` before the hero lookup; `--FullSizeTimer;` before `OldItemRHSet = CurrentItemRHSet;`; and the CSoundInit constructor body made visible but still called, with `if (PSoundManager)`. GFLimit<float,float,float> and CRightHandedSet::Init stay declaration-only (retail calls them).",
+  "open_issues": []
+ },
+ {
+  "addr": "00bbf4a0",
+  "status": "VERIFIED",
+  "attempts": 1,
+  "module": "CEnginePrimitiveManagerParticleSpriteGroup",
+  "name": "RenderSubPrimitive",
+  "flags": [],
+  "headers_changed": [
+   "engine/CEngineSubPrimitiveBase.h (PARENTBASE, 2045 text)",
+   "engine/CEngineInternalPrimitiveParticleGroup.h (2038 typed opt-in)",
+   "engine/CEnginePrimitiveManagerParticleGroup.h (NEW, 2059 file)",
+   "engine/CEngineInternalPrimitiveParticleSpriteGroup.h (NEW)",
+   "engine/CEngineInternalPrimitiveParticleSprite.h (NEW)",
+   "engine/CEnginePrimitiveManagerParticleSpriteGroup.h (_APPLYSHADERS)",
+   "engine/CEngineScreenEffectDisplacementRenderer.h (_GETENABLE3D)",
+   "engine/CEngineCamera.h (_PEEKINVERSENONHOMOGENOUSVIEWTRANSFORM)",
+   "engine/CGraphicInfo.h (_FRAMEFACTORS + 2045 GETFRAME/PEEKGRAPHIC)",
+   "engine/CGraphicFrame.h (_FLOATTL + 2018/2031 GETTEXTURE/DTOR_FORCEINLINE)",
+   "engine/GFFastCos.h (_FORCEINLINE, landed 0x00A14840 text)"
+  ],
+  "what_made_it_match": "The real structure from OUTLINE and the 2059 helper idioms got the length close. The rest came from these changes: displacement shader pickers made FABLE_FORCEINLINE; GFFastCos written as the landed 0x00A14840 text (FABLE_FORCEINLINE) with the angle copied to a local, so GFFastSin reuses angle*1024; ConstantBlock[count++] references; named refs c0/c1/c2 for the camera constant rows; the FableWin-sized GetFloatTLX/TLY text (two locals); and UpdateGlobalLightingStates moved after the point-light / self-illumination if-else. g_particleSpriteRenderEnabled_0139b6e0 is a made-up name, recorded in NOTES.md. No landed name was proved wrong.",
+  "open_issues": []
+ },
+ {
+  "addr": "005ad571",
+  "status": "MATCH_WITH_OPEN_ISSUES",
+  "attempts": 1,
+  "module": "CTCInventoryTrade",
+  "name": "ConstructTradeDescription",
+  "flags": [],
+  "headers_changed": [],
+  "what_made_it_match": "Same as before. Spelling the comparison with the enumerator compiles to the same `cmp dword ptr [eax+0x2c],2`.",
+  "open_issues": [
+   "The source declares `template<> std::vector<CWideString>::~vector();  // 0x00412130`, an explicit-specialization declaration that exists only to steer the compiler and that a Lionhead programmer would not plausibly have written. Its comment gives only the address and names no retail bytes that require it. I deleted the line and regraded (/opt/fable_lane/w22/bwf2/005ad571/verify_evidence/novecdtor.cpp) and it still gives RELOCATION_MATCH, so it is not needed for the match. Remove it, or justify it with the retail evidence it relies on."
+  ]
+ },
+ {
+  "addr": "005aaf28",
+  "status": "VERIFIED",
+  "attempts": 1,
+  "module": "CTCInventoryTrade",
+  "name": "ConstructTradeDescriptionClothing",
+  "flags": [],
+  "headers_changed": [
+   "hdr/engine/CTCInventoryTrade.h (FABLE_RETAIL_CTCINVENTORYTRADE_TRADEDESCRIPTION)",
+   "hdr/engine/CTCShop.h (FABLE_RETAIL_CTCSHOP_STOCKINFO: GetQuantity/GetMaxStock/GetDaysTillRestock)",
+   "hdr/engine/CTCInventoryClothing.h (FABLE_RETAIL_CTCINVENTORYCLOTHING_NOARMOUR)"
+  ],
+  "what_made_it_match": "Using one reassigned `NUISystem::CText* line` local for every text line, with no separately named pointer per line. VC7.1 already gives each live range its own home (ebx, [ebp-24h], edi), and extra named symbols change how frame slots are shared. Two earlier fixes were also needed: the CWideString::operator!=(const CWideString&) declaration, and the combatDef assignment form. Pragmas: optimize(\"y\",off) + optimize(\"s\",on). The GetDef/GetSubDef template bodies sit in the same TU under auto_inline(off), as in 0x5C90FC.",
+  "open_issues": []
+ },
+ {
+  "addr": "00a04630",
+  "status": "VERIFIED",
+  "attempts": 1,
+  "module": "CRenderStateManager",
+  "name": "SetupRenderStates",
+  "flags": [],
+  "headers_changed": [],
+  "what_made_it_match": "The real bodies of SetupRenderState, SetupTextureStageState and SetupSamplerStageState are plain member functions defined in the row file before SetupRenderStates, and /O2 inlines them. The states follow the order in OUTLINE.md, and the caps and InitFlags conditions sit inside the stage loop. The row only needs FABLE_RETAIL_CRENDERSTATEMANAGER: no header overlay and no extra flags. The row file defines its own copies of the d3d9types enumerators (with the SDK values) and the D3DPRASTERCAPS_* macros, because the shared headers only forward-declare those enums. Files: /opt/fable_lane/w22/bwf2/00a04630/00a04630.cpp, /opt/fable_lane/w22/bwf2/00a04630/00a04630_test.cpp",
+  "open_issues": []
+ },
+ {
+  "addr": "00bb5040",
+  "status": "VERIFIED",
+  "attempts": 1,
+  "module": "CEngineClothRenderer",
+  "name": "CEngineClothRenderer",
+  "flags": [],
+  "headers_changed": [
+   "hdr/engine/CDisplayManager.h: FABLE_RETAIL_CDISPLAYMANAGER_PIXELSHADERVERSION declares `unsigned long GetPixelShaderVersion() const;` (0x009BEE00)"
+  ],
+  "what_made_it_match": "Whole ctor built on the shared headers (CArray, CVertexShader, CIndexBuffer, CSimpleMemoryPool, CEngineResourceManager, CShaderResource and CDisplayManager), with these points: an init list IndexBufferSize(-1), PositionBufferPool(0,0x1000) and NormalBufferPool(0,0x1000); the four buffer zeroes as body statements; the bank-0 vertex shader resource (+0x29C0) read once into a local `const CShaderResource* shaders`; 34 `X[i] = shaders->GetVertexShader(\"...\")` statements; and the colour-buffer tables guarded by `GPDisplayManager->GetPixelShaderVersion() >= 1400`. The aligned frame came out of plain source. The class is modelled in the row (no shared header exists). Source: /opt/fable_lane/w22/bwf2/00bb5040/src_00bb5040.cpp; test: /opt/fable_lane/w22/bwf2/00bb5040/test_00bb5040.cpp; NAME_FIXES.tsv records that 0x00A5D5F0 is CShaderResource::GetVertexShader, not GetPixelShader.",
+  "open_issues": []
+ },
+ {
+  "addr": "00a079b0",
+  "status": "MATCH_WITH_OPEN_ISSUES",
+  "attempts": 1,
+  "module": "CRenderStateManager",
+  "name": "CDeviceState",
+  "flags": [],
+  "headers_changed": [],
+  "what_made_it_match": "Unchanged from the author's version: the shared header's retail branch (FABLE_RETAIL_CRENDERSTATEMANAGER) plus an out-of-class inline CStateInfo ctor body. The repair changed the comment only.",
+  "open_issues": [
+   "payload.json gives module \"CRenderStateManager\" and name \"CDeviceState\", and oracle.tsv names the row \"CRenderStateManager::CDeviceState\". That is the nested class, not its constructor. The leaf ??0CDeviceState@CRenderStateManager@@QAE@XZ is CRenderStateManager::CDeviceState::CDeviceState. Other nested-class constructors put the full class path in the module: in rebuild/manifest/functions.tsv, 0x0084F490 has name CPhysicsState and module NCameraModes::CPhysicsState. Other lane payloads do the same, for example 0x00D30030 with module NScript::CQ_EndGameBossBattleScript. So this row should have module \"CRenderStateManager::CDeviceState\" and name \"CDeviceState\", and the oracle name should be CRenderStateManager::CDeviceState::CDeviceState. As written, the row would land under the class name instead of the constructor name."
+  ]
+ },
+ {
+  "addr": "00b5fab0",
+  "status": "MATCH_WITH_OPEN_ISSUES",
+  "attempts": 3,
+  "module": "CEngineScreenEffectGlowRenderer",
+  "name": "CaptureBackBuffer",
+  "flags": [
+   "volatile-needs-coordinator-decision"
+  ],
+  "headers_changed": [
+   "hdr/engine/CRenderStateManager.h (comments only: retail-address citations on SETRENDERSTATE_BOOKMARK / ADDSTATE_DIRTY)",
+   "hdr/README.md (one line)"
+  ],
+  "what_made_it_match": "The code is unchanged from attempt 3 and the repair changed comments only. It still grades RELOCATION_MATCH, also with LANDVERIFY_STRICT_HEADERS=1. Files: /opt/fable_lane/w22/bwf2/00b5fab0/00b5fab0.cpp (copy in differ/), payload.json / oracle.tsv rewritten by addmatch, NOTES.md has a repair section and a \"Verifier findings not applied\" section for finding 1.",
+  "open_issues": [
+   "The source (comments stripped) uses `volatile` on two function statics, `static volatile float BlurOffsetScale` (src.cpp line 94) and `static volatile long NoBlurPasses` (line 95). Purity check 3 forbids this. CLAUDE.md and ASM_RULES allow `volatile` only where retail used it, and the author admits that no PDB LF_MODIFIER or vendor source backs it; the only evidence is the loop-end instruction schedule. The row cannot land as genuine until the coordinator decides on this (flag volatile-needs-coordinator-decision).",
+   "payload.json has no `flags` field, so the volatile-needs-coordinator-decision flag the author reported is not in the hand-back. The lander will not see it unless the coordinator adds it.",
+   "The overlay hdr/engine/CShaderRenderManager.h adds the opt-in FABLE_RETAIL_CSHADERRENDERMANAGER_SETPSCONST_INDEX, but the row source never defines it (hdr/README.md says the current source does not use it). It is dead overlay text and should be dropped before landing.",
+   "`static volatile float BlurOffsetScale` / `static volatile long NoBlurPasses` (0x0139A6B0 / 0x0139A6B4) do not meet any of the three conditions in docs/pipeline/ASM_RULES.md for `volatile`. No read is dropped without it (the author says so in the Retail-volatile line and NOTES), there is no PDB LF_MODIFIER record, and there is no vendor source. The only evidence is the load/store order at 0x00B60C79..0x00B60C9C, so the row must not land as MATCHED until the coordinator explicitly accepts `volatile` as a scheduling-only fit or the row is regraded DIFFER (r/nv1.cpp, 3 hunks).",
+   "The Identity comment says 'Ego_r order and size match the retail neighbours', but the size does not match: Ego_r has CaptureBackBuffer at 0x00A11CD0 with size 0x1570 (next symbol ApplyGlow at 0x00A13240), while retail is 0x14B6 (5302) bytes. The order and the sole caller Render 0x00B619B0 do match, so the comment should say order only (non-blocking wording fix)."
+  ]
+ },
+ {
+  "addr": "00b72180",
+  "status": "VERIFIED",
+  "attempts": 1,
+  "module": "CEngineWaterRenderer",
+  "name": "CreateDynamicTextures",
+  "flags": [],
+  "headers_changed": [
+   "hdr/engine/CEngineWaterRenderer.h (FABLE_RETAIL_CENGINEWATERRENDERER_CREATEDYNAMICTEXTURES)",
+   "hdr/engine/CGPUScratchBufferTextureManager.h (FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE)",
+   "hdr/engine/CTexture.h (FABLE_RETAIL_CTEXTURE_WATERDYNAMIC)",
+   "hdr/engine/CScopedShadersEnable.h (FABLE_RETAIL_CSCOPEDSHADERSENABLE_FORCEINLINE)",
+   "hdr/engine/CSurface.h (re-based on repo + FABLE_RETAIL_CSURFACE_ASSIGN)",
+   "hdr/engine/CRenderTarget.h (new header, Ego_r layout)",
+   "rest of hdr/engine copied unchanged from /opt/fable_lane/w22/agent2048/hdr (needs re-base onto HEAD)"
+  ],
+  "what_made_it_match": "Four changes did it:\n1. SetRenderTargetToSurface is a FABLE_FORCEINLINE member defined in the TU (its real body; retail's unreferenced copy at 0x00B7AD20 is landed).\n2. The per-level loops are `while (level < N) { if (w < 32 || h < 32) break; ...; ++level; }` instead of `for`. With `for`, the code after the loops gets the loop body's static frequency, so VC7.1 expands ??_GCGraphicFrameData in the five success-path ~CGraphicFrame. Retail calls it at all ten sites.\n3. The saved shader enables are a CScopedShadersEnable(true, true) local (FableWin ??0/??1CScopedShadersEnable) with its destructor force-inlined. This put the bytes at [esp+1Ch]/[esp+1Dh] and also fixed the slot order of the five CGraphicFrame locals.\n4. The rest of the model follows agent2048: FORCEINLINE PeekGraphicInfoFrame, GetFrame and ~CGraphicFrame, the capture block, and the CRenderManagerCore FORCEINLINE helpers.",
+  "open_issues": []
+ },
+ {
+  "addr": "00d6d670",
+  "status": "MATCH_WITH_OPEN_ISSUES",
+  "attempts": 1,
+  "module": "NScript::CQ_HangingTreeEvilScript",
+  "name": "Conclusion",
+  "flags": [],
+  "headers_changed": [],
+  "what_made_it_match": "The code is unchanged and still matches. Only the header comment changed: it now cites the retail addresses where edi is reused for the second PauseAllNonScriptedEntities call, which is why the source copies Game into a local.",
+  "open_issues": [
+   "Unexplained compiler steer: `FABLE_FORCEINLINE` on CScriptThing::GetPos and CTimer::GetTime has no comment naming retail bytes that need it, and it is not needed. With both spelled plain `inline` the row still grades RELOCATION_MATCH ($W/verify_evidence/v3/d.cpp). Drop the forceinline or justify it.",
+   "MoveToPosition is passed `(EScriptEntityMoveType)0` (twice) although the PDB enumerator exists: rebuild/include/engine/EScriptEntityMoveType.h has ENTITY_MOVE_WALK = 0, from identical Ego_r and FableWin TPI values, enabled by FABLE_RETAIL_SCRIPT_MOVE_ENUM and used by other landed rows. With that define and ENTITY_MOVE_WALK the row still grades RELOCATION_MATCH, strict headers too ($W/verify_evidence/v3/e.cpp). Use the retail enumerator name.",
+   "The Identity comment gets the Ego_r order wrong. It says `Ego_r method order Introduction 0x00D6D080 -> Conclusion -> Alloc 0x00D6ED10`, but in Ego_r.pdb (egor_pdb_names.tsv) Introduction 00d88d80 is followed by Conclusion 00d89500 and then DoMission 00d8b450. Alloc 0x00D6ED10 is the retail neighbour, not Ego_r order. Reword the comment so it does not mix the two orders.",
+   "The test misses two decisions. A mutant without the loop-head `if (ExecutionerInterrupted) break;` still prints PASS, and so does a mutant without the `Prisoner.IsAlive()` term in the execution condition ($W/verify_evidence/v3/tm3.cpp, tm2.cpp; tm3 also passes under vt.py). Add a case that pins each one, for example an upper bound on frames after an interrupt and a prisoner killed while the timer runs out."
+  ]
+ },
+ {
+  "addr": "0045a159",
+  "status": "VERIFIED",
+  "attempts": 1,
+  "module": "CInventoryDef",
+  "name": "operator=",
+  "flags": [],
+  "headers_changed": [
+   "/opt/fable_lane/w22/bwf2/0045a159/hdr/engine/CInventoryDef.h (opt-in FABLE_RETAIL_CINVENTORYDEF_FULL: the remaining members from +0xB4 to +0xA30, an empty 4-byte enum EInventoryIdentifier and the operator= declaration)"
+  ],
+  "what_made_it_match": "The scout's PDB-ordered member list, put into an explicit operator= on the shared CInventoryDef header extended through the overlay opt-in. The row defines FABLE_RETAIL_DEF_CLASS_BASE, CDEFSTRINGTABLE, CCHARSTRING, C2DVECTOR (packed) and STLP_VECTOR_ASSIGN, under optimize(\"s\"). The ClothingDoll/DollCentreOffset scheduling swap came out of the compiler by itself. Source: /opt/fable_lane/w22/bwf2/0045a159/0045a159.cpp. Notes: /opt/fable_lane/w22/bwf2/0045a159/NOTES.md",
+  "open_issues": []
+ },
+ {
+  "addr": "0073b130",
+  "status": "VERIFIED",
+  "attempts": 1,
+  "module": "CTCCreatureModeManager",
+  "name": "RegisterModes",
+  "flags": [],
+  "headers_changed": [
+   "engine/CTCCreatureModeManager.h (FABLE_RETAIL_CTCCREATUREMODEMANAGER_REGISTRY: CRegisteredModeInfo, RegisterModes, RegisteredModes, includes CVectorMap.h)",
+   "engine/NCreatureMode_CModeSitFloor.h (FABLE_RETAIL_NCREATUREMODE_ALLOC)",
+   "engine/NCreatureMode_CModeScorpionKingVulnerable.h (FABLE_RETAIL_NCREATUREMODE_ALLOC)",
+   "engine/NCreatureMode_CModeGuildmasterPowerUpShield.h (FABLE_RETAIL_NCREATUREMODE_ALLOC, Shield + Speed)",
+   "engine/NCreatureMode_CModeBriarRoseConcentrate.h (FABLE_RETAIL_NCREATUREMODE_ALLOC)",
+   "engine/NCreatureMode_CModeDrained.h (FABLE_RETAIL_NCREATUREMODE_ALLOC)"
+  ],
+  "what_made_it_match": "The row matched once Insert(key, value) used std::make_pair (FABLE_RETAIL_CVECTORMAP_INSERT_KEYVALUE without _INSERT_VALUE_TYPE). With make_pair, VC7.1's caller budget expands push_back at the first 70 sites and calls 0x00743B30 at the last 15, as retail does. The value_type spelling the dossier suggested expands 75. The other settings are FABLE_RETAIL_CVECTORMAP_INSERT (Update with the Dirty test folded) and STLP_SORT_FASTCALL, with no pragma and no flag. Files: /opt/fable_lane/w22/bwf2/0073b130/0073b130.cpp, /opt/fable_lane/w22/bwf2/0073b130/0073b130.test.cpp, payload.json, oracle.tsv and hdr/ (README.md lists the opt-ins).",
+  "open_issues": []
+ },
+ {
+  "addr": "00b4d370",
+  "status": "DIFFER",
+  "attempts": 3,
+  "last": {
+   "address": "0x00B4D370",
+   "status": "DIFFER",
+   "grade": "DIFFER(7160v7176)",
+   "grades_used": 35,
+   "residue": "Best source: /opt/fable_lane/w22/bwf2/00b4d370/differ/00b4d370.cpp (= a3/f3.cpp). Grade it with --flags /d2inlT314 and the overlay hdr/. fg.py does not read the // Flags: line; without the flag the same source grades 6887v7176. Noframe alignment is 1495 of 1760 instructions (attempt 2 had 1390). Frame is sub esp,3B4h v 3D0h. Both corner passes (0x00B4DD00..0x00B4E300) now align instruction for instruction once stack offsets are masked. What is left: (a) in many places retail loads the matrix element first (`fld E ; fmul st(i)` / `fld E ; fmul [pt]` / `fld E_i1 ; fadd p`) where ours loads the point or the product first. This happens in the SetInverse cofactor products, corner pass 2, the final 26-point loop (where retail's sum order is also Z,Y,X) and the PostTranslate rows. No spelling changes it. (b) the SetInverse + frustum block 0x00B4D454..0x00B4D8C4 is still chaotic. (c) the else-branch axes 0x00B4E589..0x00B4E660: retail stores x_axis straight to [18h]/[1Ch] and keeps both values in st, and builds y_axis in a temp [24h]/[28h] before copying it. Also the GetMagnitude sum order for frustum[2]-frustum[1], and which component the scale loop starts at. (d) scheduling: ours moves the x_max/y_max -1e30 stores and `lea ecx` up into the PostScale(0.5) block. (e) the frame is 28 bytes short.",
+   "ideas_tried": "What moved it: (1) In the 4 corner blocks of the perspective scale pass: `C2DVector projected(q.X / (n + q.Y), q.Y / (n + q.Y));` then fabs(projected.X) and projected.Y. VC7.1 makes retail's single reciprocal from the two divisions, stores py before the test, and the whole corner region lines up. (2) The final 26-point loop as a pointer walk `C3DVector* point = light_points; ...; C3DVector q = *point;`. Tried without gain: PTP written with Data[r][c] (identical bytes); PTP products with E first (identical: VC7.1 orders the operands of each product itself); PTP sums parenthesised (breaks the corners); one shared q declared before rot, before y_axis or after light_points (identical, worse); corner copies made before the PostScale branch or before rot (no flip); final loop `q; q = *p`, a member-wise copy, and an in-place reference (in place gives E first but stores back, which retail does not); FABLE_FORCEINLINE changed to plain inline (identical); the QFE 13.10.4035 compiler (identical to RTM); else-branch axes as member stores, float constructors or FROM3D mixes (gains in that block, losses elsewhere); `light_points[k] *= scale` in the non-perspective loop; a named far-edge vector; min/max through a C2DVector or a named y; GetSquaredMagnitude as a named local or the YX opt-in (release bytes identical); PostTranslate/PostScale texts t1/t2/t3 (none reaches FableWin's /Od size: FableWin 60i/189b and 48i/140b, our loops 59i/182b and 45i/134b). Full list in NOTES.md.",
+   "next_idea": "Trace c2 candidate ids (hand892 tools: c2.sh, c2prio_op.py, tor.py) on one PostTranslate row and one SetInverse product. The goal is to find which source fact gives the matrix element the higher id. The matrix-element-first order is the same everywhere, so one fix probably flips SetInverse, pass 2, the final loop and PostTranslate together. After that: find the PostScale/PostTranslate FableWin texts (they change where the scheduling regions are cut), then the else-branch x_axis materialisation, and the frustum block last.",
+   "module": "CEngineShadowRenderer",
+   "name": "UpdateShadowSpace",
+   "flags": [
+    "/d2inlT314"
+   ],
+   "headers_changed": [],
+   "what_made_it_match": "Not matched. Progress came from the C2DVector `projected` in the perspective scale pass, which aligned the corner region 0x00B4DD00..0x00B4E300, and the pointer-walk final loop."
+  }
+ },
+ {
+  "addr": "004830a1",
+  "status": "MATCH_WITH_OPEN_ISSUES",
+  "attempts": 2,
+  "module": "CTCInGameMenu",
+  "name": "OpenInGameMenu",
+  "flags": [
+   "/GS"
+  ],
+  "headers_changed": [
+   "hdr/engine/CTCInGameMenu.h (FABLE_RETAIL_CTCINGAMEMENU_OPENMENU)",
+   "hdr/engine/CUserProfileManager.h (FABLE_RETAIL_CUSERPROFILEMANAGER_SAVESLOTS)",
+   "hdr/engine/CPlayerManager.h (FABLE_RETAIL_CPLAYERMANAGER_JOYSTICKDEVICE)"
+  ],
+  "what_made_it_match": "The source did not change. Only the 0x00485AEF NAME_FIXES row was removed (/opt/fable_lane/w22/bwf2/004830a1/NAME_FIXES.tsv). The note is in /opt/fable_lane/w22/bwf2/004830a1/NOTES.md.",
+  "open_issues": [
+   "Source line 414 `bool valid = VerifySignatureCached(...) && (!hasSignature || VerifySignatureCached(signaturePath));` is a dead local with no comment. Retail does evaluate this third check and throw the result away (0x00484A10..0x00484A38: GetPathNameFromFileName 0x00408120, then VerifySignatureCached 0x0047ED0A twice, with no store), but the source must say which retail bytes require the unused local, or a reviewer will read it as compiler steering.",
+   "Source line 195 `menu->FindChild(\"UI_MENU_ENTRY_SAVE\");` throws its result away and has no comment. Retail does make this call and discard eax before the UI_MENU_ENTRY_HELP lookup, but the source should cite that retail call so it does not look arbitrary.",
+   "The NAME_FIXES.tsv row for 0x0042BED4 (??0CDeletion@NUISystem@@QAE@XZ, replacing the scout label CAction::CAction) gives only one behavioural fact as evidence (it builds the CDeletion local before SetDeletion). It names no PDB source, even though two exist: Ego_r 0x00439F9C (egor_pdb_names.tsv) and FableWin 0x0184C6B4 / 0x01AAB21B (_fablewin_api.tsv). The row needs the two required sources."
+  ]
+ },
+ {
+  "addr": "00bcff10",
+  "status": "VERIFIED",
+  "attempts": 1,
+  "module": "CEnginePrimitiveManagerAnimatedMeshesBase",
+  "name": "CEnginePrimitiveManagerAnimatedMeshesBase::CEnginePrimitiveManagerAnimatedMeshesBase",
+  "flags": [],
+  "headers_changed": [],
+  "what_made_it_match": "The body was not changed. Only the name of global 0x01436E98 changed, and it still compiles to the same code: namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }",
+  "open_issues": []
+ },
+ {
+  "addr": "00d30030",
+  "status": "VERIFIED",
+  "attempts": 2,
+  "module": "NScript::CQ_EndGameBossBattleScript",
+  "name": "JackOfBladesBossBattle",
+  "flags": [
+   "/d2inlS25"
+  ],
+  "headers_changed": [
+   "hdr/stlport/fable_containers.h (FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE new, FABLE_RETAIL_STLP_ALLOC_PROXY_REBIND from chunk 883)",
+   "hdr/engine/CScriptGameResourceObjectBase.h (FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTBASE_OUTOFLINE_CTOR)"
+  ],
+  "what_made_it_match": "Loop index declared before the n>0 guard (registers); STLport 4.6 allocator inline layers + TRetVoid returns supply the caller growth so c2's g>9000 penalty splits the loop-5 after-exit 4 expanded / 2 called like retail (also fixes vector frame order); erase(begin,end) for clear(); !(phase==4 || health<=10) for jnp; MovieBase FORCEINLINE_CTOR + GROBase out-of-line ctor; /d2inlS25 expands the cold implicit ~MovieBase; ActivateQuest inside each morality arm for the cross-jumped tail schedule.",
+  "open_issues": []
+ },
+ {
+  "addr": "00b9ece0",
+  "status": "VERIFIED",
+  "attempts": 1,
+  "module": "CEnginePrimitiveManagerStaticMeshesBase",
+  "name": "CEnginePrimitiveManagerStaticMeshesBase",
+  "flags": [],
+  "headers_changed": [
+   "engine/CDisplayManager.h (hdr overlay opt-in FABLE_RETAIL_CDISPLAYMANAGER_PIXELSHADERVERSION: unsigned long GetPixelShaderVersion() const; // 0x009BEE00)"
+  ],
+  "what_made_it_match": "Writing the whole function straight from the scout's OUTLINE on the shared headers was enough; no flags were needed. Macros: STATICBLOCKS_TEXTURE_HELPERS, CVERTEXSHADER, CENGINERESOURCEMANAGER, CCHARSTRING, CDISPLAYMANAGER_PIXELSHADERVERSION. engine/Direct3D9Types.h is included before engine/CDisplayManager.h. addmatch.py wrote payload.json and oracle.tsv in /opt/fable_lane/w22/bwf2/00b9ece0/.",
+  "open_issues": []
+ },
+ {
+  "addr": "00607330",
+  "status": "MATCH_WITH_OPEN_ISSUES",
+  "attempts": 2,
+  "module": "CTCInventoryMap",
+  "name": "ConstructLogbookList",
+  "flags": [],
+  "headers_changed": [
+   "hdr/engine/CHeroLogBook.h",
+   "hdr/stlport/fable_containers.h",
+   "hdr/README.md"
+  ],
+  "what_made_it_match": "The matching source from the earlier session is unchanged in its code. This repair added comments that name the retail evidence, corrected the GetLogEntries return to by-value with the same bytes, and added the list-dtor-in-~list opt-in, which removes the RELOC_NAME warning with the same bytes.",
+  "open_issues": [
+   "Stale, contradictory source comment (source_cpp lines 18-22, the 'Name note'): it says our object binds 0x0042ABCA as ??1?$_List_base@PAVCComponent... because the shared STLport model leaves ~list() empty. The row now defines FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST, and the graded object vl/00/60/00607330/00607330.obj shows ??1?$list@PAVCComponent... as the real 0x3e-byte body (sec 391). The ??1?$_List_base COMDAT is only the 1-byte trivial compiler-generated one (sec 344), so the note must be rewritten to describe DTOR_IN_LIST, as NOTES.md repair item 6 already does.",
+   "Wrong citation in the hdr overlay: hdr/engine/CTCInventoryMap.h (FABLE_RETAIL_CTCINVENTORYMAP_LOGBOOK comment) says 'Ego_r.pdb CategoriesList, 12-byte STLport map at +0x144'. ghidra_out/struct_layouts_egor.tsv (Ego_r) puts CategoriesList at 352 (0x160). The +0x144 offset comes from the retail bytes (`add ecx,0x144` at 0x0060830E / 0x0060852D, `add esi,0x144` at 0x00607506), so the comment should cite those instead of the PDB."
+  ]
+ },
+ {
+  "addr": "00b783f0",
+  "status": "DIFFER",
+  "attempts": 3,
+  "last": {
+   "address": "0x00B783F0",
+   "status": "DIFFER",
+   "grade": "DIFFER(9343v9343)",
+   "grades_used": 140,
+   "residue": "Size, frame, layout, calls and tail merges all match. 13 real hunks remain. (1) The 4 SetRenderState blocks of exp2's enabled-arm SetTextureBumpEnvMatrix(1,f,0,0,f), at 0x00B7945D/0x00B794C1/0x00B79525/0x00B79589: retail loads CurrentBookmarkMask before state.BookmarkMask, ours loads state first. The registers are the same on both sides, so only the scheduler's choice between two independent loads differs. (2) exp3 SetDestAlphaBlendMode/SetAlphaBlendEnable at 0x00B7A5D0/0x00B7A635: the opposite way round. (3) An esi/edx swap at 0x00B79938. Best source is $W/differ/00b783f0.cpp (unchanged).",
+   "ideas_tried": "New diagnostic in $W/a3: pat.py/roles.py print, for each of the 75 SetRenderState blocks, which mask is loaded first (C = CurrentBookmarkMask, S = state mask). sw.sh compiles a variant in about 3 s and prints its pattern against retail. Ours differs from retail only in the quartet (S, retail C) and the exp3 pair (C, retail S).\n\nThe exp3 pair is an ordinary run boundary. It moves with any IL or named-symbol count: 2 dead empty() calls in SetCommonRenderStates' else arm fix it with the size unchanged (probe only).\n\nThe quartet is pinned. It stayed S in every one of about 480 grid compiles (a3/gs/results.txt: named locals per SetRenderState 0..2, per SetTextureBumpEnvMatrix 0..4, per SetCommonRenderStates 0..4, dead longs in Render 0..40) and in follow-ups with up to 20 named locals per inline helper. It turns C only in a second \"regime\" past a named-symbol threshold, and that regime always breaks exp1's bump section too (sizes 9252..9314). It also turns C when all 4 AttachTextureToStage calls before exp2 are removed (with 1 to 5 calls it stays S).\n\nNo effect on the quartet:\n- Real SetRenderState texts A1..A6: desired_state, mask copy, bookmark local, bool bookmarked, element reference.\n- FtoDW helpers, __assume and (void) assert forms.\n- Dead inline calls in SetRenderState / AddStateToUpdateList / SetTextureBumpEnvMatrix: no IL survives, nothing changes.\n- An attach loop (VC7.1 does not unroll it: 8690 bytes), NULL literals, attach-text variants.\n- GPRenderManager typed as CRenderManagerCore* or CRenderManager2D*.\n- Environment-map spellings.\n- A RestoreCaptureBlock(void*) inline wrapper.\n- Flags /Ob1 /Ox /GS /Gy.\n- Local rm, this->, a Settings reference or a float local in the enabled arm.\n\nEvery probe is logged in ATTEMPTS.log and NOTES.md.",
+   "next_idea": "The quartet depends on the real code between block.Restore() and exp2: the 4 inline AttachTextureToStage calls and the environment-map calls. Spellings and counts in SetCommonRenderStates, SetTextureBumpEnvMatrix and SetRenderState do not move it. Two directions:\n1. Find a real text difference in that region's helpers, for example AttachD3DTextureToStage (FableWin 321i v ours 36i), or how the GetEnvironmentMap/GenerateMipmapsWithGPU calls are reached. Check it with a3/sw.sh (3 s per variant, prints the C/S pattern) before grading.\n2. Hook c2's list-scheduler tie-break for two independent loads. Registers are identical, so this is the scheduler, not the register allocator.\n\nThe exp3 pair can be fixed by a little more IL in SetCommonRenderStates once a natural statement for it is found.",
+   "module": "CEngineWaterRenderer",
+   "name": "Render",
+   "headers_changed": [
+    "$W/hdr unchanged; probe hooks only in $W/a3/hdr (default text unchanged)"
+   ],
+   "flags": [],
+   "what_made_it_match": "n/a (no match)"
+  }
+ },
+ {
+  "addr": "00ba2350",
+  "status": "DIFFER",
+  "attempts": 3,
+  "last": {
+   "address": "0x00BA2350",
+   "status": "DIFFER",
+   "grade": "DIFFER(9500v9632)",
+   "grades_used": 26,
+   "module": "CEnginePrimitiveManagerStaticMeshesBase",
+   "name": "SetupRenderModeShadersAndConstants",
+   "residue": "The row is still blocked by one c2 register-colouring decision. sub_primitive (priority 58-59) is coloured before mesh_primitive (49), so ours has sub=edi, mesh=ebp, `this` in memory and a 0xAC frame; retail has sub=ebx, mesh=edi, this=ebp and a 0xB0 frame. That one difference shifts the temp registers and slots through the whole function. Things that remain even when the flip is forced:\n- frame-slot offsets;\n- pass 12/13 (stencil/fill) does not hoist the OS/OF argument pushes the way retail does;\n- the case 4/6 jumps into case 7's pixel-shader call;\n- case 3 shares its SetupShaderSpotLight call with another case in ours, but has its own in retail.\nUnder forcing, the best match is 1903-1904 of retail's 2419 instructions.\nBest source: differ/00ba2350.cpp (attempt 2's m5, unchanged). r3/h1.cpp adds two FableWin-size-proven helper texts and grades 9548v9632 with 353 hunks.",
+   "ideas_tried": "Attempt 3, working in r3/:\n- Removed the `primitive` local and wrote `sub_primitive.GetParent()->` at every use (a1): 242 hunks, but wrong in principle. The common-subexpression temp is killed by the ThemeChannel stores, while retail keeps primitive in esi through the cases.\n- SetTextureFactor text: a named C4DVector, a named CRGBColour, both, and C4DVector(colour). No gain.\n- TU flags /G7 (9520), /G5, /GB, /Ox, /Ob2 (no change) and /Op (9252). Also the QFE-4035 compiler: no change.\n- tinted written as if/else with both arms, as !(==) and as ?1:0. c2 turns all of them into setne in IL, so the block is not split and the priorities stay the same.\n- A `const&` alias of sub for the block-2 reads: copy-propagated away.\n- block_on_load written as `(flags & 0x80) != 0`: no change.\n- FableWin-size helper texts added as overlay opt-ins:\n  - CRGBColour(EEEE) through Initialise: now SAME, no change in code.\n  - C3DMeshInfo::PeekTextureBank as PeekBank()->TextureBank: now SAME (f1: 9500, 349 hunks).\n  - CShaderRenderManager::SetPixelShaderConstant through PSConstTable[index]: now SAME (h1: 9548, 353 hunks).\n  - CRGBFloatColour(MMMM) through Initialise: still DIFF, opt-in left unused.\n- Stencil/fill else path as a ternary call, with the effect inlined per arm (9720), and with a named effect reference plus scale (9556).\n- Forced probes: forcing the SetRenderState temp or the ThemeChannel &CurrentThemeChannel temp to priority 61 does not move sub off edi; those temps take eax/edx.\n\nNone of these changed the sub (58-59) v mesh (49) priorities. The c2prio breakdown:\n- sub = +64 (block 1, K=16) +48 (block 2, K=8) -57 (live through the SetTextureFactor and ThemeChannel blocks) +10 (the lights GetParent read).\n- mesh = +32 (block 1) plus its else-path IsDP3Bump references, minus its live-through penalties (-30 in Z_WRITE's SetTextureFactor(1,1,1,1)).",
+   "next_idea": "Stop guessing at block-1/2 candidate counts. First, under forcing (`b/frc.sh r3/h1.cpp 19=60`; `om.py <obj> 200` lists the residues), find the source shape that makes VC7.1 hoist the identical OS/OF argument pushes out of the pass-12/13 if/else, and the one that makes cases 4 and 6 jump into case 7's pixel-shader call. Both change the else-path block structure that mesh_primitive's priority is summed over, so re-measure mesh v sub with c2prio after each.\n\nAlso untested:\n- The FableWin CRGBColour copy-constructor byte gap: both are 22 instructions, but 51 v 55 bytes. FableWin pushes the four channel bytes with movzx, so an argument or member type differs.\n- GetRGBColour's FableWin 54-instruction text, a named-locals form. It would change the K counts of the combined-path blocks that sub is penalised over.",
+   "headers_changed": [
+    "hdr/engine/CRGBColour.h (+FABLE_RETAIL_CRGBCOLOUR_CTOR_INITIALISE)",
+    "hdr/engine/C3DMeshInfo.h (+FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_MEMBER)",
+    "hdr/engine/CRGBFloatColour.h (+FABLE_RETAIL_CRGBFLOATCOLOUR_CTOR_INITIALISE, unused)",
+    "hdr/engine/CShaderRenderManager.h (+FABLE_RETAIL_CSHADERRENDERMANAGER_PSCONST_INDEX)"
+   ],
+   "flags": [],
+   "what_made_it_match": "Not matched."
+  }
+ },
+ {
+  "addr": "00795300",
+  "status": "DIFFER",
+  "attempts": 3,
+  "last": {
+   "address": "0x00795300",
+   "status": "DIFFER",
+   "grade": "DIFFER(9501v9268) hunks=459 (alternative g1: 9509v9268, 444 hunks)",
+   "grades_used": 40,
+   "residue": "The best draft is $W/differ/00795300.cpp (w3/r2.cpp). Its ordered call list, with every call-or-expand decision, now matches retail except in two places. (a) The two cancel-sound arms are not tail-merged. Ours pushes the zero register edi before the stamina-arm call to CDefString::GetString 0x00415DD0 and then passes eax, so it gets an extra PlaySoundW. Retail makes the GetString call first, then does `lea` / `push 0` and falls into its shared tail at 0x795473. (b) In K1, `events->AddEvent(new CEventDied)` is tail-duplicated in ours because of a zero register in ebp. Both come from the zero register: ours does `xor edi,edi` at entry, while retail sets it only at the release start, 0x79570C. Other differences: the frame is 0x240 against retail's 0x230, with a different local layout (hit object at 0xd8 against 0xc8, build-up box at 0x90 against 0x74). The stamina loop is loop-aligned in ours but not in retail. In the sweep-1 range test, operator- loads Z,Y,X where retail loads X,Y,Z (0x79625E). The c2 g margin at the spell-over IP copy is only about 6 IL units, and two of the pieces that raise g are not yet proven against retail: __assume in IP operator-> and the GetSquaredMagnitude XYZ form.",
+   "ideas_tried": "What helped (all in w3/):\n- c1: string-literal arguments by implicit conversion to const CCharString&. Retail builds the temporary before the other arguments (0x795EAB). This fixed about 10 regions and cut hunks from 518 to 491.\n- d1: `long effect = 0` declared before `CCharString name`.\n- b1: FableWin header-inline accessors HasUnholyPowerActionInitialised and IsCharging (fwsize SAME). New overlay opt-in FABLE_RETAIL_CTCUNHOLYPOWER_INLINE_ACCESSORS.\n- b2: TCI-less GetTC(&nymph).\n- g1: CDefPointer operator->/* with __assume(Object) (overlay FABLE_RETAIL_CDEFPOINTER_ASSERT_ASSUME). Hunks went from 489 to 444 and the frame from 0x250 to 0x240.\n- k1: a `while` stamina loop plus an explicit .GetString() on the stamina arm. This gives retail's build-up ~list call to 0x006F09D0 and the stamina-arm GetString call. With the `for` loop, the c1 frequency after the loop is 5x, which inlines the ~list but happens to give the right spell-over g.\n- m1: IP operator-> with __assume (+86 g).\n- r2: sweep-1 test written as offset.GetSquaredMagnitude() with SQUAREDMAGNITUDE_XYZ (+9 g). The spell-over IP copy, IS_THING_ALIVE and bitset::test are now refused, as in retail.\n\nWhat did not help:\n- Normalise texts sized to FableWin (LOCALS 47i, TRY4 48i): same calls, and -22 g.\n- Stamina loop as do-while or with the body swapped.\n- Explicit GetString on the arms while keeping the for loop.\n- Reading the button state later.\n- The GFSqr Normalise helper.\n- PeekTC(&enemy) through CTCENEMY_QUERIES: -20 g.\n- Subtract and squared-magnitude text combinations for the X,Y,Z load order.\n\nc2 traces now take about 60 s (w2/tr.sh <name>, w2/gsum.py).",
+   "next_idea": "Remove the entry-time zero register. Ours keeps 0 in edi from function entry (`cmp eax,edi`, `cmp esi,edi`, `push edi`); retail uses test and `push 0`, and sets edi=0 only at 0x79570C. Find the source fact behind this: the weight of zero uses in the start region, or the shape of the cancel arms or the Finished block. Fixing it should restore the cancel-arm tail merge and the single K1 AddEvent. Then find the real missing code-neutral IL to replace the unproven __assume and GetSquaredMagnitude g-raisers. Then fix operator-'s X,Y,Z load order (a component-wise text) and the local layout behind 0x240 against 0x230.",
+   "headers_changed": [
+    "hdr/engine/CTCUnholyPower.h (+FABLE_RETAIL_CTCUNHOLYPOWER_INLINE_ACCESSORS)",
+    "hdr/engine/CDefPointer.h (new overlay copy, +FABLE_RETAIL_CDEFPOINTER_ASSERT_ASSUME)",
+    "hdr/engine/CIntelligentPointer.h (new overlay copy, +FABLE_RETAIL_CINTELLIGENTPOINTER_ASSERT_ASSUME)",
+    "hdr/engine/C3DVector.h (+probe-only FABLE_RETAIL_C3DVECTOR_NORMALISE_TRY1..4, unused)"
+   ],
+   "what_made_it_match": "not matched",
+   "name": "CTCUnholyPower::FrameUpdate",
+   "module": "CTCUnholyPower"
+  }
+ },
+ {
+  "addr": "005a04f7",
+  "status": "VERIFIED",
+  "attempts": 1,
+  "module": "CTCInventoryTrade",
+  "name": "ConstructNormalShopList",
+  "flags": [],
+  "headers_changed": [],
+  "what_made_it_match": "Comment-only repair of /opt/fable_lane/w22/bwf2/005a04f7/src/CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp. The code and bytes did not change.",
+  "open_issues": []
+ }
+]

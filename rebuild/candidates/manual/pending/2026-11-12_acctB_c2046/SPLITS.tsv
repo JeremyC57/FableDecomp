@@ -1,0 +1,3 @@
+address	true_length	evidence
+0x00D92380	1468	length confirmed (the 19,950-byte reservation estimate is wrong): ret 0x00D92919, mov edi,edi, jump table 0x00D9291C (5 x 4), index table 0x00D92930 (12 bytes) end at 0x00D9293C; int3 x4; then 0x00D92940 = uncatalogued CQ_HobbeCaveScript::CGranny::Main (vtable 0x012D59E4 slot 1, Ego_r ?Main@CGranny@CQ_HobbeCaveScript@NScript@@EAEXXZ), not part of this row
+0x00D77690	3064	length confirmed: last instruction ret 4 at 0x00D78285 (ends 0x00D78288); no jump table

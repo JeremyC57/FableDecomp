@@ -1,0 +1,1 @@
+0x00A5D5F0	?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z	engine/CShaderResource.h pins 0x00A5D5F0; result assigned to CVertexShader members in 0x00BCFF10 / 0x00BC14E0; GetPixelShader is 0x00A5D720	GetPixelShader (rebuild/src/compiled/00/a5/CShaderResource_GetPixelShader_00a5d5f0.cpp)

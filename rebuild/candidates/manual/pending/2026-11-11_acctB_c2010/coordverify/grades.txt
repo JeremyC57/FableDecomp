@@ -1,0 +1,4 @@
+00492381 CSubtitleRenderer::ProcessEmbeddedGraphicTags RELOCATION_MATCH flags= []
+004959e0 CFrontendGameComponent::GetProfileNames RELOCATION_MATCH flags= ['/GS']
+005248b0 NThingManager::CEntityRuntimePersistence::LoadFromGameStateScript RELOCATION_MATCH flags= []
+00716de0 NTCScriptedControl::CActionTalkBase::Update RELOCATION_MATCH flags= []

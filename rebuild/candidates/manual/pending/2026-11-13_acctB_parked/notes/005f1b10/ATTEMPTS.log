@@ -1,0 +1,50 @@
+21:17 005f1b10 grade a.cpp TIMEOUT -- first full draft
+21:18 005f1b10 grade a.cpp SRC_FAIL -- first full draft
+21:18 005f1b10 grade a.cpp SRC_FAIL -- first full draft, no <algorithm>
+21:18 005f1b10 grade a.cpp DIFFER(8474v8383) hunks=475 -- STLP_FIND decl
+21:18 005f1b10 grade b.cpp DIFFER(8409v8383) hunks=489 -- wide literals
+21:19 005f1b10 grade c1.cpp DIFFER(8400v8383) hunks=459 -- pointee release, temps in loop, min ternaries
+21:19 005f1b10 grade c2.cpp DIFFER(8407v8383) hunks=467 -- pointee release, temps in loop, min ternaries
+21:19 005f1b10 grade c3.cpp DIFFER(8407v8383) hunks=467 -- pointee release, temps in loop, min ternaries
+21:21 005f1b10 grade d1.cpp DIFFER(8393v8383) hunks=472 -- dtor nozero; ternary min; empty temps 3 spellings
+21:21 005f1b10 grade d2.cpp DIFFER(8393v8383) hunks=472 -- dtor nozero; ternary min; empty temps 3 spellings
+21:21 005f1b10 grade d3.cpp DIFFER(8393v8383) hunks=468 -- dtor nozero; ternary min; empty temps 3 spellings
+21:22 005f1b10 grade e0.cpp DIFFER(8393v8383) hunks=551 -- dtor nozero object copy; min as if/else
+21:22 005f1b10 grade e1.cpp DIFFER(8393v8383) hunks=551 -- dtor nozero object copy; min as if/else
+21:22 005f1b10 grade e2.cpp DIFFER(8398v8383) hunks=551 -- dtor nozero object copy; min as if/else
+21:22 005f1b10 grade f1.cpp DIFFER(8393v8383) hunks=472 -- dtor variants 1-3
+21:23 005f1b10 grade f2.cpp DIFFER(8397v8383) hunks=474 -- dtor variants 1-3
+21:23 005f1b10 grade f3.cpp DIFFER(8393v8383) hunks=551 -- dtor variants 1-3
+21:23 005f1b10 grade f4.cpp DIFFER(8393v8383) hunks=551 -- dtor variants 4-6 (probe signedness / T* / separate dec)
+21:23 005f1b10 grade f5.cpp DIFFER(8393v8383) hunks=553 -- dtor variants 4-6 (probe signedness / T* / separate dec)
+21:23 005f1b10 grade f6.cpp DIFFER(8393v8383) hunks=553 -- dtor variants 4-6 (probe signedness / T* / separate dec)
+21:24 005f1b10 grade g1.cpp DIFFER(8397v8383) hunks=470 -- chained caption=displayName=; fadedSprite local; sprite typed
+21:24 005f1b10 grade g2.cpp DIFFER(8397v8383) hunks=470 -- chained caption=displayName=; fadedSprite local; sprite typed
+21:25 005f1b10 grade h1.cpp DIFFER(8397v8383) hunks=470 -- min spellings (macro-like)
+21:25 005f1b10 grade h2.cpp DIFFER(8402v8383) hunks=470 -- min spellings (macro-like)
+21:25 005f1b10 grade h3.cpp DIFFER(8402v8383) hunks=470 -- min spellings (macro-like)
+21:25 005f1b10 grade j1.cpp DIFFER(8409v8383) hunks=481 -- empty temps position
+21:25 005f1b10 grade j2.cpp DIFFER(8409v8383) hunks=481 -- empty temps position
+21:25 005f1b10 grade j3.cpp DIFFER(8397v8383) hunks=470 -- empty temps position
+21:26 005f1b10 grade k1.cpp DIFFER(8397v8383) hunks=470 -- count decl orders
+21:26 005f1b10 grade k2.cpp DIFFER(8397v8383) hunks=470 -- count decl orders
+21:26 005f1b10 grade k3.cpp DIFFER(8397v8383) hunks=470 -- count decl orders
+21:28 005f1b10 grade m1.cpp DIFFER(8393v8383) hunks=459 -- same-TU noinline real bodies GetCategory+GetAbilityPDef / only GetAbilityPDef
+21:28 005f1b10 grade m2.cpp DIFFER(8393v8383) hunks=471 -- same-TU noinline real bodies GetCategory+GetAbilityPDef / only GetAbilityPDef
+21:29 005f1b10 grade n1.cpp DIFFER(8393v8383) hunks=459 -- SetValue default args / implicit L"" conversion
+21:29 005f1b10 grade n2.cpp DIFFER(8390v8383) hunks=400 -- SetValue default args / implicit L"" conversion
+21:29 005f1b10 grade n3.cpp DIFFER(8390v8383) hunks=400 -- SetValue default args / implicit L"" conversion
+21:29 005f1b10 grade o0.cpp DIFFER(8390v8383) hunks=400 -- implicit L"" in SetValue; level string implicit conversions
+21:30 005f1b10 grade o1.cpp DIFFER(8349v8383) hunks=405 -- implicit L"" in SetValue; level string implicit conversions
+21:30 005f1b10 grade o2.cpp DIFFER(8373v8383) hunks=393 -- implicit L"" in SetValue; level string implicit conversions
+21:30 005f1b10 grade p1.cpp DIFFER(8386v8383) hunks=218 -- GetDef/GetSubDef bodies visible (noinline), default dtor / nozero
+21:30 005f1b10 grade p2.cpp DIFFER(8378v8383) hunks=220 -- GetDef/GetSubDef bodies visible (noinline), default dtor / nozero
+21:31 005f1b10 grade q1.cpp DIFFER(8383v8383) hunks=251 -- min spellings on p1 base
+21:31 005f1b10 grade q2.cpp DIFFER(8386v8383) hunks=218 -- min spellings on p1 base
+21:31 005f1b10 grade q3.cpp DIFFER(8386v8383) hunks=218 -- min spellings on p1 base
+21:32 005f1b10 grade r1.cpp DIFFER(8373v8383) hunks=218 -- min: clamp-if forms, std::min deduced
+21:32 005f1b10 grade r2.cpp DIFFER(8373v8383) hunks=218 -- min: clamp-if forms, std::min deduced
+21:32 005f1b10 grade r3.cpp SRC_FAIL -- min: clamp-if forms, std::min deduced
+21:33 005f1b10 grade s1.cpp DIFFER(8386v8383) hunks=218 -- min: long result, std::min cast, inline in for
+21:33 005f1b10 grade s2.cpp DIFFER(8383v8383) hunks=251 -- min: long result, std::min cast, inline in for
+21:33 005f1b10 grade s3.cpp DIFFER(8380v8383) hunks=158 -- min: long result, std::min cast, inline in for

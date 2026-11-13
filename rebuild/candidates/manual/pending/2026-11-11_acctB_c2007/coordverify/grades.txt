@@ -1,0 +1,4 @@
+00665860 CThingCreatureBase::UpdateAnimation RELOCATION_MATCH flags= []
+006de8c0 CTCTrophy::OnShowTrophyPerformAction RELOCATION_MATCH flags= []
+006deee0 CTCTrophy::vfunc_26 RELOCATION_MATCH flags= []
+007cf9a0 CTCTavernGameShoveHaPenny::ProcessInput RELOCATION_MATCH flags= ['/d2inlT116']

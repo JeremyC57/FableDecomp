@@ -1,0 +1,9 @@
+addr       parity           behav  name
+006b42f0   WARN RELOC_NAME: ??1CThemeChannel@CIDrawEnvironmentParams@@QAE@XZ -> 006b5b80 labelled 'CBufferPairTriple_006b5b80::~CBufferPairTriple_006b5b80'
+006b42f0   WARN RELOC_CONFLICT: _$E2 -> 01229390 here, 01228930 in landed 01219f00
+006b42f0   WARN RELOC_NAME: _$E2 -> 01229390 labelled 'CEnvironment::RenderUpdate'::`5'::`dynamic atexit destructor for 'interpolated_theme'''
+006b42f0   WARN RELOC_NAME: ?GetRenderFrameInterpolatedRadialBlurParameters@CEnvironmentSpellEffectInterface@@QAE?AUCIDrawEnvironmentRadialBlurParameters@@M@Z -> 008857e0 labelled 'SetAsAlliedWithFaction'
+006b42f0   RELOCATION_MATCH PASS   RenderUpdate
+
+WINS: 1
+  006b42f0 RELOCATION_MATCH CEnvironment::?RenderUpdate@CEnvironment@@QAEXM@Z

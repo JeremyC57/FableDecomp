@@ -1,0 +1,2 @@
+0049f4c0 CWorld::SaveGameStateInternal RELOCATION_MATCH flags= ['/Gr']
+004a21f0 CWorld::LoadGameStateInternal RELOCATION_MATCH flags= ['/Gr', '/GS']

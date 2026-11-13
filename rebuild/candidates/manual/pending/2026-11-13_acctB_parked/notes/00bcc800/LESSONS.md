@@ -1,0 +1,2 @@
+- (bwf1 0x00BCC800) Unreferenced out-of-line COMDAT copies of header inlines sitting in the row's TU (here FindNode/FindID/AddKey/ReturnResource/GetResource/GetBuffer at 0x00BC9B30..0x00BCA69B) are fast oracles for the helper TEXT: probe them (`template class X<..>;` or a noinline wrapper + q.py leaf) before spending row grades.
+- (bwf1 0x00BCC800) A frame-slot permutation can be caused by a later spill sharing the slot (weighted slot ordering): delete the suspect tail statement in a diagnostic grade and watch whether the slot order snaps to retail.

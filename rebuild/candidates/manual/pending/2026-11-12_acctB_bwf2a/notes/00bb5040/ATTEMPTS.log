@@ -1,0 +1,6 @@
+17:51 00bb5040 grade a.cpp SRC_FAIL -- first full draft: local shaders v global reload
+17:51 00bb5040 grade b.cpp SRC_FAIL -- first full draft: local shaders v global reload
+17:51 00bb5040 grade a.cpp SRC_FAIL -- first full draft: local shaders v global reload (+Direct3D9Types)
+17:51 00bb5040 grade b.cpp SRC_FAIL -- first full draft: local shaders v global reload (+Direct3D9Types)
+17:51 00bb5040 grade a.cpp RELOCATION_MATCH -- first full draft: local shaders v global reload
+17:52 00bb5040 grade src_00bb5040.cpp RELOCATION_MATCH -- strict regrade

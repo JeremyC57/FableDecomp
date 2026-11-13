@@ -1,0 +1,16 @@
+address	name	evidence
+009c47a0	CFileInstaller::AddFile(const CCharString&, const CCharString&, const CArray<CCharString>*, bool)	Ego_r.pdb + FableWin.pdb; RELOCATION_MATCH
+00ba6ff0	CEnginePrimitiveManagerStaticMeshesBase::DrawSilhouette(CEngineInternalPrimitiveStaticMesh&)	Ego_r.pdb donor 0x00A5EE60 + FableWin.pdb 0x02EA1B90 (private); next to DrawImmediately 0x00BA6DC0 in both orders
+009c3130	CFileInstaller::CFileInfo::CFileInfo(const CWideString&, const CWideString&, long, bool, bool)	FableWin.pdb + body
+009c6a70	CCountedPointer<const CFileInstaller::CFileInfo>::CCountedPointer(const CFileInstaller::CFileInfo*)	Ego_r.pdb + FableWin.pdb
+009c6640	CCountedPointer<const CFileInstaller::CFileInfo>::DeleteData(void*)	Ego_r.pdb + FableWin.pdb
+009c6bf0	std::list<CCountedPointer<const CFileInstaller::CFileInfo> >::push_back(const CCountedPointer<const CFileInstaller::CFileInfo>&)	FableWin.pdb + landed self-symbol
+009c46b0	CFileInstaller::IsCompressedFilename(const CWideString&, CWideString&) const	Ego_r.pdb (protected const)
+00999140	CAFile::ConvertPathToFullPath(const CWideString&, CWideString&)	Ego_r.pdb / FableWin.pdb + reloc binding
+009990b0	CAFile::ConvertPathToFullPath(const CCharString&)	Ego_r.pdb / FableWin.pdb + landed self-symbol
+00997930	CAFile::GetFilenameFromPathname(const CWideString&)	Ego_r.pdb / FableWin.pdb + landed self-symbol
+00999c50	CAFile::StartFileScan(const CWideString&, CAFile::CFileScanInfo&, CWideString&)	Ego_r.pdb / FableWin.pdb + landed self-symbol
+00999cb0	CAFile::ScanNextFile(const CWideString&, CAFile::CFileScanInfo&, CWideString&)	Ego_r.pdb / FableWin.pdb + landed self-symbol
+00b90090	CEnginePrimitiveManagerOcclusionBase::GetSilhouetteColour(CEngineInternalPrimitiveOcclusionBase&, CRGBColour&)	Ego_r.pdb donor order + caller use
+00b90cd0	CEnginePrimitiveManagerOcclusionBase::DrawAlphaBoundingBox(const CMatrix3x4&, unsigned long)	Ego_r.pdb / FableWin.pdb + landed row
+00b46b90	CEngineLightingManager::GetLightsInSphereFast(const C3DBoundingSphere&, long, const CEnginePrimitiveThemeChannelDesc&)	Ego_r.pdb + reloc binding

@@ -1,0 +1,2 @@
+006414a0 CTCLight::DrawLight RELOCATION_MATCH flags= []
+00949ab0 CAIStateGroup_GoToPub::?IsRunnable@CAIStateGroup_GoToPub@@MAE_NXZ RELOCATION_MATCH flags= []

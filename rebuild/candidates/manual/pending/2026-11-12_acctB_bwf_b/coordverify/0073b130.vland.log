@@ -1,0 +1,6 @@
+addr       parity           behav  name
+0073b130   WARN RELOC_NAME: ?Alloc@CModeBasic@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z -> 00742460 labelled 'CModeBasic::Clone'
+0073b130   RELOCATION_MATCH PASS   RegisterModes
+
+WINS: 1
+  0073b130 RELOCATION_MATCH CTCCreatureModeManager::RegisterModes

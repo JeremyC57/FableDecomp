@@ -1,0 +1,40 @@
+address	name	evidence
+0087F3A0	?PerformAction@CCombatAction_KickThingOnGround@@UAEXXZ	Ego_r.pdb + FableWin.pdb name sets; CCombatAction_KickThingOnGround vtable 0x01277D3C slot 3 (rtti-vtables.tsv); RELOCATION_MATCH, vland RELOCATION_MATCH
+0040F020	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	landed bound spelling (reloc_bindings.tsv); STLport pair return (the PDB name sets carry the Dinkumware iterator spelling); called through the inline CThing::GetTC<T>
+00415DD0	?GetString@CDefString@@QBE?AVCCharString@@XZ	FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+0042B0A2	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+004978A0	?GFFloatRandom@@YIMMPAK@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+0049D810	?GetWorldSeed@CWorld@@QBEPAKXZ	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+004C73D0	?GetPos@CThing@@QBEABVC3DVector@@XZ	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+004C7590	?SetAsRenderedThisFrame@CThing@@QAEXK@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+004C9D60	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+005DC2E0	?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+005DCC00	?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling + functions.tsv (CAnimationSet::GetRandomAnim); the vland RELOC_NAME warning quotes a stale label AnimDef_FilterAnimationList
+00661F70	?IsChild@CThingCreatureBase@@QBE_NXZ	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+006624F0	?SetAttackedByCreature@CThingCreatureBase@@QAEXPAV1@@Z	Ego_r.pdb + FableWin.pdb; landed row CThingCreatureBase_SetAttackedByCreature_006624f0; functions.tsv module CThingCreatureBase (see NAME_FIXES.tsv)
+00692940	?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+006AE260	??$GetSubDef@VCKickableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCKickableDef@@@@@Z	Ego_r.pdb + FableWin.pdb; landed row CDefClassBase_GetSubDefCKickableDef_006ae260
+006C6990	?PostDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@ABVC3DVector@@PBVCThing@@PAVCThingAICreature@@W4EOpinionPostDeedType@@_N5PBVCFaction@@5J@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+006D6520	?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+006D6770	?GetTrainableStatMaxLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+006E0880	?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+00702CE0	?ResetDieOffTimer@CThingObject@@QAEXXZ	Ego_r.pdb + FableWin.pdb; landed row CThingObject_ResetDieOffTimer_00702ce0
+0072A530	?SetRotationInfo@CTCRotate@@QAEXABVC3DVector@@MM@Z	Ego_r.pdb + FableWin.pdb; landed row CTCRotate_SetRotationInfo_0072a530
+0073AE10	?AddMode@CTCCreatureModeManager@@QAE_NK@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+00789358	??1CHitParameters@@QAE@XZ	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+0078B230	??$GetDef@VCThingShotDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingShotDef@@@@@Z	FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+007BF790	?Init@CTCShotDefinitionBase@NThingShot@@QAEXV?$CDefPointer@$$CBVCThingShotDef@@@@PAVCThing@@1ABVC3DVector@@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z	Ego_r.pdb + FableWin.pdb (two Init overloads; this body copies 3 dwords from the 4th argument to this+0x51 at 0x007BF895 = the const C3DVector& one) (see NAME_FIXES.tsv)
+007F9010	?PlayAnimation@CTCAnimatingObject@@QAEXJJ_N@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+008113C0	?AddEvent@CTCEntityEvents@@QAEXPAVCEventBase@NEntityEvents@@@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+00868CA0	?AddDamageWithAttribute@CHitParameters@@QAEXW4EDamageAttribute@@M@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+0087FF60	??0CHitParameters@@QAE@PAVCHitLocation@NHitLocations@@PAVCThing@@1@Z	Ego_r.pdb + FableWin.pdb; landed row CHitParameters_CHitParameters_0087ff60
+0099EAE0	??1CCharString@@QAE@XZ	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+0099EBF0	??0CCharString@@QAE@PBDJ@Z	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+00A01B50	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	Ego_r.pdb + FableWin.pdb + landed bound spelling (reloc_bindings.tsv)
+00BFEA1A	??2@YAPAXI@Z	landed bound spelling (reloc_bindings.tsv); global operator new
+0122FFCC	??_7CAnimFilterBase@@6B@	landed bound spelling (reloc_bindings.tsv); RTTI CAnimFilterBase vtable
+0122FFDC	??_7CAnimFilterNoGroup@@6B@	landed bound spelling (reloc_bindings.tsv); RTTI CAnimFilterNoGroup vtable
+01277B5C	??_7CEventKicked@NEntityEvents@@6B@	RTTI .?AVCEventKicked@NEntityEvents@@ (rtti-vtables.tsv: slot 0 0x0087FEA0, slot 1 0x0087E760); FableWin.pdb ??0CEventKicked@NEntityEvents@@QAE@XZ
+013CE558	?GFastOneOverSqrtTable@@3PAKA	landed bound spelling (reloc_bindings.tsv); table of the shared GFFastOneOverSqrt (engine/C3DVector.h), load at 0x0087F969
+0087E760	?GetType@CEventKicked@NEntityEvents@@UBE?AW4EEventType@2@XZ	Ego_r.pdb + FableWin.pdb; CEventKicked vtable 0x01277B5C slot 1 (rtti-vtables.tsv); declared by this row's header, not called (see NAME_FIXES.tsv: the landed row is the placeholder gapscan_sub0087e760)
+0087FEA0	??_GCEventKicked@NEntityEvents@@UAEPAXI@Z	CEventKicked vtable 0x01277B5C slot 0, its only reference; FableWin.pdb ??_ECEventKicked / ??1CEventKicked (see NAME_FIXES.tsv: landed as a global CEventBase destructor)

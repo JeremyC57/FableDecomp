@@ -1,0 +1,98 @@
+19:40 00ba2350 grade a1.cpp SRC_FAIL -- first full draft
+19:40 00ba2350 grade a1.cpp SRC_FAIL -- first full draft
+19:40 00ba2350 grade a1.cpp SRC_FAIL -- first full draft
+19:41 00ba2350 grade a1.cpp DIFFER(9316v9632) hunks=324 -- first full draft
+19:42 00ba2350 grade a2.cpp DIFFER(9316v9632) hunks=316 -- case order 2..13,1,16,17,18,15 as retail layout
+19:42 00ba2350 grade a3.cpp DIFFER(9316v9632) hunks=304 -- case17 one bool / tinted reused as out bool
+19:42 00ba2350 grade a3b.cpp DIFFER(9364v9632) hunks=315 -- case17 one bool / tinted reused as out bool
+19:44 00ba2350 grade a3.cpp DIFFER(9316v9632) hunks=304 -- regrade a3 for listing
+19:44 00ba2350 grade a4.cpp DIFFER(9324v9632) hunks=320 -- named alpha factor / imul operand swap
+19:44 00ba2350 grade a4b.cpp DIFFER(9324v9632) hunks=320 -- named alpha factor / imul operand swap
+19:45 00ba2350 grade a4.cpp DIFFER(9324v9632) hunks=320 -- regrade
+19:46 00ba2350 grade a5b.cpp DIFFER(9352v9632) hunks=324 -- camera window by value / + faded ?true:false
+19:46 00ba2350 grade a5.cpp DIFFER(9352v9632) hunks=324 -- camera window by value / + faded ?true:false
+19:46 00ba2350 grade a6.cpp DIFFER(9328v9632) hunks=319 -- camera named floats / + PeekGlobalShadowMode
+19:46 00ba2350 grade a6b.cpp DIFFER(9328v9632) hunks=324 -- camera named floats / + PeekGlobalShadowMode
+19:47 00ba2350 grade a7a.cpp DIFFER(9336v9632) hunks=319 -- camera float decl orders
+19:47 00ba2350 grade a7b.cpp DIFFER(9328v9632) hunks=320 -- camera float decl orders
+19:47 00ba2350 grade a7c.cpp DIFFER(9336v9632) hunks=322 -- camera float decl orders
+19:47 00ba2350 grade a7a.cpp DIFFER(9336v9632) hunks=319 -- camera order 7a region check
+19:47 00ba2350 grade a7b.cpp DIFFER(9328v9632) hunks=320 -- camera order 7b region check
+19:47 00ba2350 grade a7a.cpp DIFFER(9336v9632) hunks=319 -- base a7a
+19:47 00ba2350 grade a8a.cpp DIFFER(9460v9632) hunks=325 -- mesh_primitive local removed / declared early
+19:47 00ba2350 grade a8b.cpp DIFFER(9336v9632) hunks=319 -- mesh_primitive local removed / declared early
+19:48 00ba2350 grade a8a.cpp DIFFER(9460v9632) hunks=325 -- a8a region check
+19:48 00ba2350 grade a7a.cpp DIFFER(9336v9632) hunks=319 -- a7a regrade for tail view
+19:49 00ba2350 grade a9.cpp DIFFER(9340v9632) hunks=322 -- effect locals in pass 9 / else; OSASM in both arms
+19:50 00ba2350 grade a10a.cpp DIFFER(9340v9632) hunks=322 -- pass 9 direct GPShaderRenderManager->ApplyPixelShader
+19:50 00ba2350 grade a11a.cpp DIFFER(9344v9632) hunks=360 -- pass 10 transparent arm if/else with PS inside
+19:53 00ba2350 grade a12.cpp DIFFER(9340v9632) hunks=318 -- direct GPShaderRenderManager->ApplyPixelShader everywhere
+20:00 00ba2350 grade 00ba2350.cpp DIFFER(9340v9632) hunks=322 -- differ copy check
+21:59 00ba2350 grade b0.cpp DIFFER(9340v9632) hunks=322 -- attempt2 baseline
+22:02 00ba2350 grade b1.cpp DIFFER(9332v9632) hunks=346 -- tint copy: default byte copy ctor / const ref
+22:02 00ba2350 grade b2.cpp DIFFER(9300v9632) hunks=349 -- tint copy: default byte copy ctor / const ref
+22:08 00ba2350 grade c1.cpp DIFFER(9284v9632) hunks=312 -- FW-size helper texts: IsDP3Bump mask, PeekLights via PeekRenderInfo, VS index local
+22:08 00ba2350 grade c2.cpp DIFFER(9284v9632) hunks=312 -- FW-size helper texts: IsDP3Bump mask, PeekLights via PeekRenderInfo, VS index local
+22:08 00ba2350 grade c3.cpp DIFFER(9284v9632) hunks=312 -- FW-size helper texts: IsDP3Bump mask, PeekLights via PeekRenderInfo, VS index local
+22:11 00ba2350 grade c4.cpp DIFFER(9284v9632) hunks=312 -- GetParent via GetParentBase (FW 19b)
+22:13 00ba2350 grade d1.cpp DIFFER(9468v9632) hunks=343 -- pass10 transparent arm one IsDP3Bump read: if/else PS / named bool
+22:13 00ba2350 grade d2.cpp DIFFER(9492v9632) hunks=308 -- pass10 transparent arm one IsDP3Bump read: if/else PS / named bool
+22:13 00ba2350 grade d2.cpp DIFFER(9492v9632) hunks=308 -- d2 regrade for listing
+22:15 00ba2350 grade t1.cpp DIFFER(9492v9632) hunks=308 -- tinted bool via ternary / if-set (IL branch in block 1)
+22:15 00ba2350 grade t2.cpp DIFFER(9480v9632) hunks=276 -- tinted bool via ternary / if-set (IL branch in block 1)
+22:15 00ba2350 grade t3.cpp DIFFER(9480v9632) hunks=276 -- tinted bool via ternary / if-set (IL branch in block 1)
+22:15 00ba2350 grade t2.cpp DIFFER(9480v9632) hunks=276 -- t2 listing
+22:16 00ba2350 grade u1.cpp DIFFER(9492v9632) hunks=308 -- empty do-while(0) (release ASSERT shape) splitting block 1
+22:16 00ba2350 grade u2.cpp DIFFER(9492v9632) hunks=308 -- empty do-while(0) (release ASSERT shape) splitting block 1
+22:17 00ba2350 grade u3.cpp DIFFER(9492v9632) hunks=308 -- empty do-while(0) (release ASSERT shape) splitting block 1
+22:23 00ba2350 grade g1.cpp DIFFER(9488v9632) hunks=307 -- faded-shadow bool as if-assign (retail mov al,1/je/xor al,al)
+22:23 00ba2350 grade g2.cpp DIFFER(9492v9632) hunks=311 -- faded-shadow bool as if-assign (retail mov al,1/je/xor al,al)
+22:43 00ba2350 grade G1.cpp DIFFER(8692v9632) hunks=294 -- FableWin static PS getters GetPixelShader*() everywhere / + pass10 alpha arm if-else
+22:43 00ba2350 grade G2.cpp DIFFER(8692v9632) hunks=339 -- FableWin static PS getters GetPixelShader*() everywhere / + pass10 alpha arm if-else
+22:57 00ba2350 grade m2.cpp DIFFER(9488v9632) hunks=310 -- m2 baseline
+22:57 00ba2350 grade m2.cpp DIFFER(8024v9632) hunks=150 /Os -- m2 /Os
+22:57 00ba2350 grade m2.cpp DIFFER(9488v9632) hunks=310 /Ob1 -- m2 /Ob1
+23:00 00ba2350 grade m5.cpp DIFFER(9500v9632) hunks=347 -- pass10 both PS selections as if/else (retail push-per-arm)
+23:00 00ba2350 grade m4.cpp DIFFER(9468v9632) hunks=352 -- pass10 both PS selections as if/else (retail push-per-arm)
+00ba2350 probe a2-1 c2prio b1 (non-retail CRGBColour copy ctor) -> sub 55 mesh 49, K1 15
+00ba2350 probe a2-2 c2prio c1/c4 (FW helper texts IsDP3Bump/PeekLights/GetParent) -> sub 59 mesh 51 (no change)
+00ba2350 probe a2-3 c2prio t2 (tinted via if-assign) -> mesh 27 > sub 23 (flip) but branch stays in code
+00ba2350 probe a2-4 c2prio p1 (DWORD tint copy) -> K1 13, sub 48 mesh 43
+00ba2350 probe a2-5 c2prio v1 ERenderMode / v2 named CRGBFloatColour / v5 `!= 0` -> 58 v 49; v4 lights before ThemeChannel -> sub 79
+00ba2350 probe a2-6 c2prio w1 __assume(mesh_primitive) / u1-3 do-while(0) / r2 4-arg tint ctor / n1 mesh reference / q2 render_mode address probe -> no change
+00ba2350 probe a2-7 c2prio G1 (FW GetPixelShader* getters everywhere) -> sub 46 mesh 43, frame 0x5C (wrong)
+00ba2350 probe a2-8 c2prio q1 (stipple body removed) -> sub 54 mesh 49
+00ba2350 probe a2-9 forced (C2_FORCEID=19=60) om.py match/2419: b0 1883, c5(VS index helper) 1844, m2 1877, m3 1850, m4 1875, m5 1904 (best), G1 1666
+00ba2350 probe a2-10 fg --flags /Os m2 -> 8024v9632 h150 (helpers out of line: no); /Ob1 -> unchanged
+23:08 00ba2350 grade i1.cpp DIFFER(7236v9632) hunks=287 -- 2D mask helpers plain inline (inline budget)
+23:52 00ba2350 grade a0.cpp DIFFER(9500v9632) hunks=347 -- r3 baseline / primitive local -> sub_primitive.GetParent()-> everywhere (CSE temp)
+23:52 00ba2350 grade a1.cpp DIFFER(9504v9632) hunks=242 -- r3 baseline / primitive local -> sub_primitive.GetParent()-> everywhere (CSE temp)
+23:57 00ba2350 grade stfa.cpp DIFFER(9500v9632) hunks=347 -- SetTextureFactor text: named C4DVector / named CRGBColour / both
+23:57 00ba2350 grade stfb.cpp DIFFER(9500v9632) hunks=347 -- SetTextureFactor text: named C4DVector / named CRGBColour / both
+23:57 00ba2350 grade stfc.cpp DIFFER(9500v9632) hunks=352 -- SetTextureFactor text: named C4DVector / named CRGBColour / both
+00:01 00ba2350 grade a0.cpp DIFFER(9520v9632) hunks=339 /G7 -- TU flag /G7
+00:01 00ba2350 grade a0.cpp DIFFER(9500v9632) hunks=347 /G5 -- TU flag /G5
+00:01 00ba2350 grade a0.cpp DIFFER(9500v9632) hunks=347 /GB -- TU flag /GB
+00:01 00ba2350 grade a0.cpp DIFFER(9520v9632) hunks=339 /G7 -- TU flag /G7 (view)
+00:02 00ba2350 grade a0.cpp DIFFER(9500v9632) hunks=347 -- a0 rebuild for view
+00:03 00ba2350 grade b1.cpp DIFFER(9500v9632) hunks=347 -- CRGBColour(EEEE) via Initialise (FW 18i)
+00:03 00ba2350 grade c1.cpp DIFFER(9500v9632) hunks=354 -- SetTextureFactor: SetPixelShaderConstant(2, C4DVector(colour)) (FW size)
+00:04 00ba2350 grade a0.cpp DIFFER(9500v9632) hunks=347 -- a0 under QFE 4035 compiler (FABLE_VC71=vc71)
+00:05 00ba2350 grade d1.cpp DIFFER(9500v9632) hunks=352 -- tinted: if/else both arms / !(==) / ?1:0 (setcc after block split?)
+00:05 00ba2350 grade d2.cpp DIFFER(9500v9632) hunks=347 -- tinted: if/else both arms / !(==) / ?1:0 (setcc after block split?)
+00:05 00ba2350 grade d3.cpp DIFFER(9500v9632) hunks=347 -- tinted: if/else both arms / !(==) / ?1:0 (setcc after block split?)
+00:10 00ba2350 grade f1.cpp DIFFER(9500v9632) hunks=349 -- PeekTextureBank FW text (PeekBank()->TextureBank)
+00:12 00ba2350 grade f1.cpp DIFFER(9500v9632) hunks=349 /Ox -- TU flag /Ox
+00:12 00ba2350 grade f1.cpp DIFFER(9252v9632) hunks=333 /Op -- TU flag /Op
+00:12 00ba2350 grade f1.cpp DIFFER(9500v9632) hunks=349 /Ob2 -- TU flag /Ob2
+00:14 00ba2350 grade g1.cpp DIFFER(9500v9632) hunks=349 -- CRGBFloatColour(MMMM) via Initialise (FW 22i)
+00:16 00ba2350 grade h1.cpp DIFFER(9548v9632) hunks=353 -- SetPixelShaderConstant via PSConstTable[index] (FW 28i/79b)
+00:23 00ba2350 grade k1.cpp DIFFER(9548v9632) hunks=353 -- stencil/fill else path: ternary call / effect inline per arm / named effect+scale (push hoist)
+00:23 00ba2350 grade k2.cpp DIFFER(9720v9632) hunks=359 -- stencil/fill else path: ternary call / effect inline per arm / named effect+scale (push hoist)
+00:23 00ba2350 grade k3.cpp DIFFER(9556v9632) hunks=355 -- stencil/fill else path: ternary call / effect inline per arm / named effect+scale (push hoist)
+00ba2350 probe a3-1 c2prio a1 (no primitive local, CSE GetParent) -> sub 99 esi, GetParent CSE temp eax (dies at ThemeChannel stores): wrong model
+00ba2350 probe a3-2 c2prio d1 (tinted if/else both arms) -> setne in IL, 58 v 49 unchanged
+00ba2350 probe a3-3 c2prio e4a (const& alias of sub for block-2 reads) -> copy-propagated, 58 v 49
+00ba2350 probe a3-4 c2prio f1 (PeekTextureBank FW text) / h1 (+ PSConstTable[index]) -> 58 v 49 / 59 v 49
+00ba2350 probe a3-5 forced h1 (mesh 19=60) om 1884/2419 (f1 1903); forcing SetRenderState temp 611 or ThemeChannel &CTC temp 393 to 61 -> they take edx/eax, sub keeps edi (hypothesis "a combined-path temp blocks edi" needs a/c/d busy: not a single-temp fact)
+00ba2350 probe a3-6 c2prio x1 (block_on_load as (flags & 0x80) != 0) -> K1 16, 59 v 49

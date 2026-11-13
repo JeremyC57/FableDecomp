@@ -1,0 +1,4 @@
+address	grade	bytes	test	grades_used	notes
+00b2cb40	RELOCATION_MATCH	1637v1637	PASS	pass1: 7 (5 to the first match with /d2inlT82, 1 to drop the flag for FABLE_RETAIL_GFGETTOPBIT_FORCEINLINE, 1 final regrade; 3 SRC_FAIL compiles not counted; + ~12 free c2 inline/priority/packer traces and 3 fragment probes)	constructor proven; no flags (GFGetTopBit forced inline, Inline-budget line)
+00b2b180	RELOCATION_MATCH	1539v1539	PASS	pass1: 4 (3 to match + 1 final regrade; + 1 free c2prio table, 1 free rotation trace)	identity from the PDB signature and body
+00b2d330	RELOCATION_MATCH	1723v1723	PASS	pass1: 8 (7 to match + 1 final regrade; SRC_FAIL compiles not counted; + ~10 free c2 inline traces)	pair-landing: the TU also defines RenderToTexture (0x00B2B180) and a noinline GetDimensionsAndAdjustMipmapLevel (landed 0x00B2AEF0); four FABLE_FORCEINLINE Lionhead helpers (Inline-budget line)

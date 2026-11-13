@@ -1,0 +1,7 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0049e7c0	?StartAutoSaveProgress@CWorld@@IAEXXZ	Ego_r.pdb + FableWin.pdb both IAE (protected)	?StartAutoSaveProgress@CWorld@@QAEXXZ (reloc_bindings; landed AutoSave 0x004A0AE0 / AutoSaveQuestStart 0x004A0CD0 rows)
+0049e8c0	?StopAutoSaveProgress@CWorld@@IAEXXZ	Ego_r.pdb + FableWin.pdb both IAE (protected)	?StopAutoSaveProgress@CWorld@@QAEXXZ (reloc_bindings)
+00410ac0	??$Transfer@VCWideString@@@CPersistContext@@QAEXPBDAAVCWideString@@ABV1@@Z	Ego_r.pdb + FableWin.pdb template instance	?Transfer@CPersistContext@@QAEXPBDAAVCWideString@@ABV2@@Z (non-template spelling)
+004ab710	??$Transfer@N@CPersistContext@@QAEXPBDAANABN@Z	Ego_r.pdb + FableWin.pdb template instance	?Transfer@CPersistContext@@QAEXPBDAANABN@Z (non-template spelling)
+0049f180	?ActivateWorld@CWorld@@QAEX_N@Z	Ego_r.pdb; landed CWorld_ActivateWorld_0049f180.cpp	?PostLoad@CWorld@@QAEXJ@Z (rebuild/src/compiled/00/41/CMainGameComponent_PostInit_00416953.cpp local declaration)
+004ab640	??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z	Ego_r.pdb + FableWin.pdb: ESaveType is nested in CWorld	??$Transfer@W4ESaveType@@@... (repo CWorld.h declares ESaveType global; both rows emit the global spelling - header debt, see NOTES.md)

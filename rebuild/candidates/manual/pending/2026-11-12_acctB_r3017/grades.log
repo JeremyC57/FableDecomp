@@ -1,0 +1,47 @@
+1	c00.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 420  ratio 0.9882	baseline	@@ retail 00bb1fdb (replace)  - 00bb1fdb mov edi, dword ptr [esi + 0x98]  + 00bb1fdb mov eax, dword ptr [esi + 0x98] 
+2	c01.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 407  ratio 0.9588	c01	@@ retail 00bb1fdb (replace)  - 00bb1fdb mov edi, dword ptr [esi + 0x98]  + 00bb1fdb mov eax, dword ptr [esi + 0x98] 
+3	c02.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 407  ratio 0.9588	c02	@@ retail 00bb1fdb (replace)  - 00bb1fdb mov edi, dword ptr [esi + 0x98]  + 00bb1fdb mov eax, dword ptr [esi + 0x98] 
+4	c03.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 420  ratio 0.9882	c03	@@ retail 00bb1fdb (replace)  - 00bb1fdb mov edi, dword ptr [esi + 0x98]  + 00bb1fdb mov eax, dword ptr [esi + 0x98] 
+5	c04.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 269  ratio 0.6315	c04 reorder prologue	@@ retail 00bb1f57 (insert)  + 00bb1f57 mov ebx, dword ptr [esp + 0xac] @@ retail 00bb1f59 (delete) 
+6	c05.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 288  ratio 0.6784	c05 reorder prologue	@@ retail 00bb1f6f (replace)  - 00bb1f6f mov dword ptr [esp + 0x98], edi  + 00bb1f6f mov dword ptr [esp + 0x4c], edi 
+7	c06.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 422  ratio 0.9929	c06 reorder prologue	@@ retail 00bb21df (delete)  - 00bb21df mov dword ptr [eax + 0xc], edx @@ retail 00bb21f6 (insert) 
+8	c07.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 371  ratio 0.8740	c07 reorder prologue	@@ retail 00bb1fe7 (insert)  + 00bb1fe7 mov ebx, dword ptr [esi + 0x98] @@ retail 00bb1ff6 (delete) 
+9	c08.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 418  ratio 0.9835	c08 reorder prologue	@@ retail 00bb1fbd (insert)  + 00bb1fbd mov ebx, dword ptr [ebp + 0xc4] @@ retail 00bb1fcd (replace) 
+10	c09.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 266  ratio 0.6230	c09 reorder prologue	@@ retail 00bb1f60 (insert)  + 00bb1f60 mov eax, dword ptr [esi + 0x20] @@ retail 00bb1f67 (insert) 
+11	c10.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 254  ratio 0.5955	c10 reorder prologue	@@ retail 00bb1f57 (insert)  + 00bb1f57 mov ebx, dword ptr [esp + 0xac]  + 00bb1f5e mov eax, dword ptr [ebx + 0x20] 
+12	c11.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 409  ratio 0.9635	c11 helper texts on c06	@@ retail 00bb2200 (delete)  - 00bb2200 mov edx, dword ptr [eax + edi + 0xc]  - 00bb2204 fadd dword ptr [eax + edi] 
+13	c12.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 409  ratio 0.9635	c12 helper texts on c06	@@ retail 00bb2200 (delete)  - 00bb2200 mov edx, dword ptr [eax + edi + 0xc]  - 00bb2204 fadd dword ptr [eax + edi] 
+14	c13.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 422  ratio 0.9929	c13 helper texts on c06	@@ retail 00bb21df (delete)  - 00bb21df mov dword ptr [eax + 0xc], edx @@ retail 00bb21f6 (insert) 
+15	c14.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 410  ratio 0.9658	c14 helper texts on c06	@@ retail 00bb21d6 (delete)  - 00bb21d6 mov edx, dword ptr [eax + esi + 0xc]  - 00bb21da fadd dword ptr [eax + esi] 
+16	c15.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 414  ratio 0.9753	c15 helper texts on c06	@@ retail 00bb2200 (delete)  - 00bb2200 mov edx, dword ptr [eax + edi + 0xc]  - 00bb2204 fadd dword ptr [eax + edi] 
+17	c16.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 420  ratio 0.9882	c16 helper texts on c06	@@ retail 00bb2200 (insert)  + 00bb2200 fadd dword ptr [eax + edi] @@ retail 00bb2204 (delete) 
+18	c22.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 422  ratio 0.9929	c06 + GetAsCArray const V2	@@ retail 00bb21df (delete)  - 00bb21df mov dword ptr [eax + 0xc], edx @@ retail 00bb21f6 (insert) 
+19	c24.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 333  ratio 0.7976	c06 + GetAsCArray const V4	@@ retail 00bb1f59 (delete)  - 00bb1f59 mov esi, dword ptr [esp + 0xb4] @@ retail 00bb1f61 (replace) 
+20	c25.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 422  ratio 0.9929	c06 + GetAsCArray const V5	@@ retail 00bb21df (delete)  - 00bb21df mov dword ptr [eax + 0xc], edx @@ retail 00bb21f6 (insert) 
+21	c30.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 388  ratio 0.9129	c30 arm spelling	@@ retail 00bb2073 (replace)  - 00bb2073 je L111  - 00bb2079 mov esi, dword ptr [esp + 0x20] 
+22	c31.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 422  ratio 0.9929	c31 arm spelling	@@ retail 00bb21df (delete)  - 00bb21df mov dword ptr [eax + 0xc], edx @@ retail 00bb21f6 (insert) 
+23	c32.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 422  ratio 0.9929	c32 arm spelling	@@ retail 00bb21df (delete)  - 00bb21df mov dword ptr [eax + 0xc], edx @@ retail 00bb21f6 (insert) 
+24	c33.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 422  ratio 0.9929	c33 arm spelling	@@ retail 00bb21df (delete)  - 00bb21df mov dword ptr [eax + 0xc], edx @@ retail 00bb21f6 (insert) 
+25	c34.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 344  ratio 0.8142	c34 arm spelling	@@ retail 00bb1f6f (replace)  - 00bb1f6f mov dword ptr [esp + 0x98], edi  + 00bb1f6f mov dword ptr [esp + 0x8c], edi 
+26	c35.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 350  ratio 0.8284	c35 arm spelling	@@ retail 00bb1f6f (replace)  - 00bb1f6f mov dword ptr [esp + 0x98], edi  + 00bb1f6f mov dword ptr [esp + 0x8c], edi 
+27	c36.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 286  ratio 0.6722	c36 arm spelling	@@ retail 00bb1f6f (replace)  - 00bb1f6f mov dword ptr [esp + 0x98], edi  + 00bb1f6f mov dword ptr [esp + 0xa4], edi 
+28	c4_WXYZ.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 410  ratio 0.9647	c06 + operator+= WXYZ	@@ retail 00bb2297 (insert)  + 00bb2297 shl edi, 4 @@ retail 00bb229f (insert) 
+29	c4_XWYZ.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 414  ratio 0.9741	c06 + operator+= XWYZ	@@ retail 00bb2297 (insert)  + 00bb2297 shl edi, 4 @@ retail 00bb229f (insert) 
+30	c4_XYWZ.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals RELOCA	eq 425  ratio 1.0000	c06 + operator+= XYWZ	
+31	c4_CHAIN.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 422  ratio 0.9929	c06 + operator+= CHAIN	@@ retail 00bb21df (delete)  - 00bb21df mov dword ptr [eax + 0xc], edx @@ retail 00bb21f6 (insert) 
+32	c40.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 422  ratio 0.9929	c40 GetA/B/C accessors	@@ retail 00bb21df (delete)  - 00bb21df mov dword ptr [eax + 0xc], edx @@ retail 00bb21f6 (insert) 
+33	c41.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 422  ratio 0.9929	c41 GetA/B/C accessors	@@ retail 00bb21df (delete)  - 00bb21df mov dword ptr [eax + 0xc], edx @@ retail 00bb21f6 (insert) 
+34	dg1.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 410  ratio 0.9658	DIAG dg1 cross parens (ruler)	@@ retail 00bb21d6 (delete)  - 00bb21d6 mov edx, dword ptr [eax + esi + 0xc]  - 00bb21da fadd dword ptr [eax + esi] 
+35	dg2.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 411  ratio 0.9682	DIAG dg2 cross parens (ruler)	@@ retail 00bb21d6 (delete)  - 00bb21d6 mov edx, dword ptr [eax + esi + 0xc]  - 00bb21da fadd dword ptr [eax + esi] 
+36	dg3.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 400  ratio 0.9423	DIAG dg3 cross parens (ruler)	@@ retail 00bb21d6 (delete)  - 00bb21d6 mov edx, dword ptr [eax + esi + 0xc]  - 00bb21da fadd dword ptr [eax + esi] 
+37	dg5.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 397  ratio 0.9352	DIAG dg5 +10 tuples	@@ retail 00bb21d2 (insert)  + 00bb21d2 add eax, esi @@ retail 00bb21d6 (replace) 
+38	dg9.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 404  ratio 0.9506	DIAG dg9 +12 tuples	@@ retail 00bb21d6 (insert)  + 00bb21d6 fadd dword ptr [eax + esi] @@ retail 00bb21da (delete) 
+39	dk2.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 421  ratio 0.9906	DIAG dk2 fewer tuples	@@ retail 00bb23c2 (insert)  + 00bb23c2 fadd dword ptr [eax + 8] @@ retail 00bb23c5 (delete) 
+40	dk3.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals DIFFER	eq 413  ratio 0.9729	DIAG dk3 fewer tuples	@@ retail 00bb21fc (insert)  + 00bb21fc add eax, edi @@ retail 00bb2200 (replace) 
+41	s0c3.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals RELOCA	eq 425  ratio 1.0000	DIAG s0c3	
+42	c50.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals RELOCA	eq 425  ratio 1.0000	c50 CROSS_XYZ_GROUP opt-in	
+43	c51.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals RELOCA	eq 425  ratio 1.0000	c51 CROSS_XYZ_GROUP opt-in	
+44	00bb1f50.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals RELOCA	eq 425  ratio 1.0000	FINAL src	
+45	00bb1f50.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals RELOCA	eq 425  ratio 1.0000	FINAL src (comment update)	
+46	00bb1f50.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals RELOCA	eq 425  ratio 1.0000	FINAL src (purity wording)	
+47	00bb1f50.cpp	00bb1f50 CEngineClothRenderer::CalculateVertexNormals RELOCA	eq 425  ratio 1.0000	FINAL src (evidence line)	

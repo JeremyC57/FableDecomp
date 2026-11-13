@@ -1,0 +1,9 @@
+18:13 00d6d670 grade v1.cpp SRC_FAIL -- first full draft
+18:13 00d6d670 grade v1.cpp DIFFER(5335v5786) hunks=263 -- first full draft + overlay + fable_map
+18:14 00d6d670 grade v2.cpp DIFFER(5810v5786) hunks=158 -- ShareData out of line, ~CScriptThing inline; v3 timeUp at top
+18:14 00d6d670 grade v3.cpp DIFFER(5810v5786) hunks=158 -- ShareData out of line, ~CScriptThing inline; v3 timeUp at top
+18:15 00d6d670 grade v4.cpp DIFFER(5806v5786) hunks=154 -- timeUp before B3, do-while loop, block3 inner scope; v5 +STLP_MAP
+18:15 00d6d670 grade v5.cpp RELOCATION_MATCH -- timeUp before B3, do-while loop, block3 inner scope; v5 +STLP_MAP
+18:16 00d6d670 grade final.cpp RELOCATION_MATCH -- final: empty Msg strings + header comment, strict headers
+20:42 00d6d670 grade src.cpp RELOCATION_MATCH -- 
+20:42 00d6d670 grade src.cpp SRC_FAIL -- 

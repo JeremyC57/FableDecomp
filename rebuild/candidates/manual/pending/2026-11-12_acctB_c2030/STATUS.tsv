@@ -1,0 +1,3 @@
+address	grade	bytes	test	grades_used	notes
+00bea110	RELOCATION_MATCH	1607v1607	PASS	pass1: 6 (5 to match + 1 consistency check that differed); +4 verification regrades of the unchanged source	matched at pass 1 grade 5; swell angle ((new-old)*t)+old grouping moves the 81-tuple scheduling cut (measured with the c2 scheduler trace)
+00be9920	RELOCATION_MATCH	1886v1886	PASS	pass1: 9; +2 verification regrades of the unchanged source	matched at pass 1 grade 9; constructor confirmed (base ctor + vtable 0x012A8114, returns this); true length 1886 (ret 0x00BEA07D), gap 0x00BEA07E..0x00BEA10F holds two uncatalogued console commands (SPLITS.tsv)

@@ -1,0 +1,26 @@
+18:13 00d6d670 grade v1.cpp SRC_FAIL -- first full draft
+18:13 00d6d670 grade v1.cpp DIFFER(5335v5786) hunks=263 -- first full draft + overlay + fable_map
+18:14 00d6d670 grade v2.cpp DIFFER(5810v5786) hunks=158 -- ShareData out of line, ~CScriptThing inline; v3 timeUp at top
+18:14 00d6d670 grade v3.cpp DIFFER(5810v5786) hunks=158 -- ShareData out of line, ~CScriptThing inline; v3 timeUp at top
+18:15 00d6d670 grade v4.cpp DIFFER(5806v5786) hunks=154 -- timeUp before B3, do-while loop, block3 inner scope; v5 +STLP_MAP
+18:15 00d6d670 grade v5.cpp RELOCATION_MATCH -- timeUp before B3, do-while loop, block3 inner scope; v5 +STLP_MAP
+18:16 00d6d670 grade final.cpp RELOCATION_MATCH -- final: empty Msg strings + header comment, strict headers
+20:42 00d6d670 grade src.cpp RELOCATION_MATCH -- 
+20:42 00d6d670 grade src.cpp SRC_FAIL -- 
+23:23 00d6d670 grade final.cpp RELOCATION_MATCH -- repair: justify GetPos/IsAlive bodies
+23:23 00d6d670 grade final.cpp RELOCATION_MATCH -- repair: strict
+01:19 00d6d670 grade src.cpp ERROR -- 
+01:19 00d6d670 grade src.cpp ERROR -- 
+01:20 00d6d670 grade src.cpp ERROR -- 
+01:20 00d6d670 grade src.cpp RELOCATION_MATCH -- 
+01:20 00d6d670 grade src.cpp SRC_FAIL -- 
+01:39 00d6d670 grade repair.cpp RELOCATION_MATCH -- repair: cite retail edi reuse for local game copy
+01:40 00d6d670 grade repair.cpp RELOCATION_MATCH -- repair: strict regrade
+01:45 00d6d670 grade src.cpp RELOCATION_MATCH -- 
+01:45 00d6d670 grade src.cpp SRC_FAIL -- 
+01:47 00d6d670 grade a.cpp RELOCATION_MATCH -- verifier: forceinline probes
+01:47 00d6d670 grade b.cpp RELOCATION_MATCH -- verifier probe b
+01:47 00d6d670 grade c.cpp RELOCATION_MATCH -- verifier probe c
+01:48 00d6d670 grade d.cpp RELOCATION_MATCH -- verifier probe both plain inline
+01:49 00d6d670 grade e.cpp RELOCATION_MATCH -- verifier probe ENTITY_MOVE_WALK + plain inline
+01:49 00d6d670 grade e.cpp RELOCATION_MATCH -- verifier probe strict

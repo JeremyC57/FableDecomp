@@ -1,0 +1,7 @@
+engine/CTCCreatureModeManager.h: FABLE_RETAIL_CTCCREATUREMODEMANAGER_REGISTRY -- CRegisteredModeInfo, RegisterModes, RegisteredModes (+ includes engine/CVectorMap.h)
+engine/NCreatureMode_CModeSitFloor.h: FABLE_RETAIL_NCREATUREMODE_ALLOC -- static CModeSitFloor::Alloc(CThing&) declaration (registered by RegisterModes)
+engine/NCreatureMode_CModeScorpionKingVulnerable.h: FABLE_RETAIL_NCREATUREMODE_ALLOC -- static CModeScorpionKingVulnerable::Alloc(CThing&) declaration (registered by RegisterModes)
+engine/NCreatureMode_CModeGuildmasterPowerUpShield.h: FABLE_RETAIL_NCREATUREMODE_ALLOC -- static CModeGuildmasterPowerUpShield::Alloc(CThing&) declaration (registered by RegisterModes)
+engine/NCreatureMode_CModeGuildmasterPowerUpShield.h: FABLE_RETAIL_NCREATUREMODE_ALLOC -- static CModeGuildmasterPowerUpSpeed::Alloc(CThing&) declaration (registered by RegisterModes)
+engine/NCreatureMode_CModeBriarRoseConcentrate.h: FABLE_RETAIL_NCREATUREMODE_ALLOC -- static CModeBriarRoseConcentrate::Alloc(CThing&) declaration (registered by RegisterModes)
+engine/NCreatureMode_CModeDrained.h: FABLE_RETAIL_NCREATUREMODE_ALLOC -- static CModeDrained::Alloc(CThing&) declaration (registered by RegisterModes)

@@ -1,0 +1,3 @@
+address	grade	bytes	test	grades_used	notes
+006aca30	RELOCATION_MATCH	2026v2026	PASS	11 (pass 1: 10, matched at grade 9, grade 10 = comment/cast cleanup; pass 2: 1 = gall.sh verification)	matched; needs hdr/ overlay (FABLE_HDR_OVERLAY); free checks: HasTC<CTCActionUseActivateQuest> / PeekTC<Gold,StockItem,Container> COMDAT copies RELOCATION_MATCH
+006ab820	NOT_ATTEMPTED	-v2328	-	0	optional second row not started (context budget after row 1); no source written

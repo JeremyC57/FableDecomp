@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00b65a20	RELOCATION_MATCH	1893v1893	PASS (test/00b65a20.cpp, g++ + VC7.1; vland RELOCATION_MATCH + PASS)	grades: pass1 g01 (regrade of c2031 source) + pass2 g02 (match) = 2; direct colour copies `CRGBFloatColour colourN = params.ThemeChannels[0].Colours[12|13]` with the existing FABLE_RETAIL_CARRAY opt-in (begin()-based operator[]) fixes all three tail residues at once (colour addresses become opcode-18 address forms, not visited `add` tuples)

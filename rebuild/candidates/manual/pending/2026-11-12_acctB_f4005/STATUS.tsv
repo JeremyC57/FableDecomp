@@ -1,0 +1,2 @@
+address	grade	bytes	test	grades_used	notes
+00f2a250	RELOCATION_MATCH	11711v11711	PASS	9 (pass 1: 9 whole-function compiles incl. the two q.py grades of src)	implicit operator=; no flags, no inline control; TU composition (CRegionScriptDef Copy / Alloc ahead of CScriptDef Copy / ctor) decides the base-chain expansion; vland RELOCATION_MATCH PASS; header opt-ins CSCRIPTDEF_IMPLICIT_ASSIGN + CREGIONSCRIPTDEF_IMPLICIT_ASSIGN (overlay)

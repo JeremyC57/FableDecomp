@@ -1,0 +1,13 @@
+# Chunk 2021 header overlay (agent2021)
+
+Copies of two repo headers (rebuild/include/engine/, HEAD of 2026-11-11) with opt-in additions only; the default paths and every
+existing opt-in are byte-for-byte the repo's. Grade with `FABLE_HDR_OVERLAY=/opt/fable_lane/w22/agent2021/hdr`.
+
+| Header | Opt-in | What | Evidence (two sources) |
+|---|---|---|---|
+| engine/CEngineMap.h | `FABLE_RETAIL_CENGINEMAP_PEEK_BODIES` (new; needs `_PEEK`, `FABLE_RETAIL_CIDRAWMAP(_DRAW)`, `FABLE_RETAIL_CENGINEWORLDMAP(_GETMAPXY)`) | Bodies of the header inline members `PeekThemeId(long,long,long) const`, `PeekThemeBlend(long,long,long) const`, `PeekLandscapeHeight(long,long) const` (declared by the existing `_PEEK` opt-in), plain `inline`, reading `g_pEngineWorldMap` (0x01436E8C) at each use; declares `extern CEngineWorldMap* g_pEngineWorldMap;` | Names: Ego_r.pdb + FableWin.pdb name sets (`?PeekThemeId@CEngineMap@@QBEJJJJ@Z`, `?PeekThemeBlend@CEngineMap@@QBEEJJJ@Z`, `?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z`). Bodies: the retail out-of-line COMDAT copies 0x00B43720 / 0x00B43870 / 0x00B439C0 (this TU's inline run) and their five / four expansions in rows 0x00B40BD0 / 0x00B3F5E0 (both RELOCATION_MATCH with this header); the accessor COMDATs PeekWorldX/Y, PeekWidth/Height and MapHasDataAtPoint 0x00B3ED00..0x00B3ED70 in the same TU. Plain inline (not forced): CWaterPatchMesh::GetWaterType 0x00BEAB40 (another TU) calls 0x00B43720 three times in a loop. Global read in place (no local): row 0x00B40BD0's first expansion only matches that way (see the comment). |
+| engine/CEngineLandscapeRenderer.h | `FABLE_RETAIL_CENGINELANDSCAPERENDERER_PEEKTHEME` (new, nested in `FABLE_RETAIL_CENGINELANDSCAPERENDERER`) | `const CLandscapeTheme& PeekTheme(unsigned long index) const { return LandscapeThemes[index]; }` | FableWin.pdb `?PeekTheme@CEngineLandscapeRenderer@@QBEABUCLandscapeTheme@@K@Z` (no Ego_r copy: expanded in release); retail 0x00B40E5D..0x00B40E7F `imul ecx,ecx,38h ; mov ebx,[01436EA8h] ; mov ebx,[ebx+4B8h] ; fmul [ebx+ecx+34h]` = LandscapeThemes (+0x4B8, CArray of the 0x38-byte Ego_r CLandscapeTheme) indexed by the def class index, WaterHeight +0x34; the same access in PeekHasWaterFast 0x00B403AB (WaterType +0x30). |
+
+Both are opt-in only: no landed includer changes bytes. Rows using them: 0x00B40BD0 (both), 0x00B3F5E0 (CEngineMap.h).
+The bodies also fit the parked siblings that define them locally today (0x00B43720 / 0x00B43870 / 0x00B439C0 / 0x00B41770,
+hand-backs 1013b/1013c/1019): those copied a `const CEngineWorldMap* worldMap = g_pEngineWorldMap;` local, which this opt-in drops.

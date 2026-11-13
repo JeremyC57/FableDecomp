@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00bb5040   RELOCATION_MATCH PASS   CEngineClothRenderer
+
+WINS: 1
+  00bb5040 RELOCATION_MATCH CEngineClothRenderer::CEngineClothRenderer

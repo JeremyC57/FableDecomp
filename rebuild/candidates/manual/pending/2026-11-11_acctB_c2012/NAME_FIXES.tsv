@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00682310	?ClearPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXXZ	Ego_r.pdb donor order after the two SetPersonalityOverride overloads (0x00593490); no-argument thiscall on TC 79 (0x006DE402, 0x0089C4FD); the landed row 0x00682310 file is already named CTCCreatureOpinionOfHero_ClearPersonalityOverride	?Obj_Release@@YIXPAX@Z (reloc_bindings.tsv)
+009c7ba0	?ConstructString@NGameText@@YI_NAAVCWideString@@JJJ@Z	Ego_r.pdb J/JJ/JJJ/JJJJ run 0x00B15970..0x00B159C0 = retail 0x009C7B70..0x009C7BC0; `ret 8` fastcall with two stack longs, not a cdecl varargs function	?ConstructStringInternal@NGameText@@YA_NAAVCWideString@@JZZ (reloc_bindings.tsv)

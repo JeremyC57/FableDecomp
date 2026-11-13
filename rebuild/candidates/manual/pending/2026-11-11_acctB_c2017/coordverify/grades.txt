@@ -1,0 +1,2 @@
+00951430 CAIStateGroup_JackDragon::IntoGroundSwoop RELOCATION_MATCH flags= []
+00974110 CAIStateGroup_JackOfBladesBase::Summon RELOCATION_MATCH flags= []

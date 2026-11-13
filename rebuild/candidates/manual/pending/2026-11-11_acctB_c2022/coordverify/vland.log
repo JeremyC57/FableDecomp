@@ -1,0 +1,8 @@
+addr       parity           behav  name
+007d3820   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 labelled 'CInputProcessGameBase::GetEventGameActionVector'
+007d3820   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+007d3820   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+007d3820   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 1
+  007d3820 RELOCATION_MATCH CTCTavernGameCoinGolf::?ProcessInput@CTCTavernGameCoinGolf@@UAEXABVCInputEvent@@AAVCProcessedInput@@PAVCInputProcessTavernGame@@@Z

@@ -1,0 +1,57 @@
+#ifndef FABLE_ENGINE_CTCBOSS_H
+#define FABLE_ENGINE_CTCBOSS_H
+#include "engine/CTCBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CBossDef.h"
+class CThingAICreature;
+// Full original Ego_r0x2fa7d data; original private composites retained.
+class CTCBoss:public CTCBase {
+public:
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return (ETCInterfaceType)173;}
+ virtual ETCInterfaceType GetInterfaceType()const;
+ virtual CCharString GetClassTypeName()const;
+ virtual bool HasFrameUpdate()const;
+ virtual void FrameUpdate();
+ long GetBossPhase()const;
+ void SetNextBossPhase(long,bool);
+ bool HasBossDef()const{return !PBossDef.IsNull();}
+#ifdef FABLE_RETAIL_CTCBOSS_GENERICCOUNTER
+ // Opt-in (chunk 2009, row 0x00952890 CAIStateGroup_JackDragon::UpdateGround): FableWin.pdb ?GetGenericCounter@CTCBoss@@QBEJXZ, inline in
+ // retail (UpdateGround reads GenericCounter +0x10 of the GetTC<CTCBoss> result in place, 0x00952CE4 `mov edx,[ecx+10h]`). No layout change.
+ long GetGenericCounter()const{return GenericCounter;}
+#endif
+ const CBossDef& GetBossDef()const{return *PBossDef;}
+#ifdef FABLE_RETAIL_CTCBOSS_SETHELPERCREATURE
+ // Opt-in (chunk 2017, row 0x00974110 CAIStateGroup_JackOfBladesBase::Summon): Ego_r.pdb ?SetHelperCreature@CTCBoss@@QAEXAAVCThingAICreature@@@Z
+ // (donor 0x007B0CE0), out of line in retail at 0x007AF310 (bound by that spelling). Declaration only.
+ void SetHelperCreature(CThingAICreature&);                           // 0x007AF310
+#endif
+#ifdef FABLE_RETAIL_CTCBOSS_STRIKES
+ // Opt-in (chunk 2034, row 0x0097BDA0 CAIStateGroup_ScorpionKing::UpdateCombat): FableWin.pdb
+ // ?SetCountingStrikesSinceHitHero@CTCBoss@@QAEX_N@Z (no Ego_r.pdb or Fable.exe copy: inline; UpdateCombat stores the byte BCountStrikes
+ // +0x20 in place, 0x0097BFDD / 0x0097C1E2) and Ego_r.pdb / FableWin.pdb ?ResetStrikesSinceHitHero@CTCBoss@@QAEXXZ (donor 0x007B06A0
+ // after GetStrikesSinceHitHero 0x007B0690 as retail 0x007AED50 after 0x007AED40; the body stores 0 to StrikesSinceHit +0x14).
+ void SetCountingStrikesSinceHitHero(bool counting){BCountStrikes=counting;}
+ void ResetStrikesSinceHitHero();                                      // 0x007AED50
+#endif
+#ifdef FABLE_RETAIL_CTCBOSS_EFFECTS
+ // Retail opt-in (chunk Q2, row 0x008E0A10 NCreatureMode::CModeScorpionKingVulnerable::FrameUpdate): Ego_r.pdb / FableWin.pdb
+ // ?IncrementBossPhase@CTCBoss@@QAEXXZ (0x007AED20), ?IsReadyForPhaseChange@CTCBoss@@QBE_NXZ (0x007AEE90), ?CountEffects@CTCBoss@@QAEJXZ
+ // (0x007AEF10), ?ClearEffects@CTCBoss@@QAEXXZ (0x007AEF60), ?AddEffect@CTCBoss@@QAEXAAVCThing@@@Z (0x007AF6C0). Declarations only.
+ void IncrementBossPhase();
+ bool IsReadyForPhaseChange() const;
+ long CountEffects();
+ void ClearEffects();
+ void AddEffect(CThing&);
+#endif
+private:
+ CDefPointer<const CBossDef> PBossDef;
+ long GenericCounter,StrikesSinceHit,currentBossPhase,NextWeapon;
+ bool BCountStrikes,EnablePhaseChanges;
+ C3DVector PhaseStartPos; // Original C3DVector+22, shared opt-in alignment1.
+ std::vector<CIntelligentPointer<CThingAICreature> > HelperCreatures;
+ std::vector<CIntelligentPointer<CThing> > Effects;
+};
+FABLE_STATIC_ASSERT(sizeof(CTCBoss)==72);
+#endif

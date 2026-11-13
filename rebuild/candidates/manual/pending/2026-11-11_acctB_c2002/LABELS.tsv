@@ -1,0 +1,16 @@
+address	name	evidence
+0x007B90F0	?OnInitialActivate@CTCTavernTable@@UAEXXZ	CTCTavernTable vtable 0x0126DBB4 slot 6 (the CTCBase OnInitialActivate slot) + Ego_r.pdb / FableWin.pdb name set; RELOCATION_MATCH
+0x007D8570	?ProcessInput@CTCTavernGameSpotTheAddition@@UAEXABVCInputEvent@@AAVCProcessedInput@@PAVCInputProcessTavernGame@@@Z	vtable 0x0126F814 slot 28 (CTCTavernGame::ProcessInput 0x005EC270 slot, its default case) + Ego_r.pdb / FableWin.pdb; `ret 0Ch`; RELOCATION_MATCH
+0x006224C0	?OpenInventoryPC@CTCInventoryQuests@@UAEXXZ	CTCInventoryQuests vtable 0x012585B4 slot 86 + Ego_r.pdb (0x005A0020, after ConstructQuestListPC) / FableWin.pdb
+0x0074BC20	?DrawDebugInfo@CTCCreatureGenerator@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	true entry of the 0x0074BC30 fragment row (chunk 728 LABELS: Ego_r 0x0075D3C0 + FableWin 0x0251B300)
+0x00687A90	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	Ego_r.pdb + FableWin.pdb; pressed event codes (Released 0x00687B30 tests the codes +1); the only function between the ctor 0x00687A30 and Released
+0x00687CF0	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z	Ego_r.pdb + FableWin.pdb; PGamePlayerInterface (+0x24) tail forward, 0x10 before GetControlMovementFromGameActionEvent as in Ego_r
+0x007D7C40	?FindTarget@CTCTavernGameSpotTheAddition@@AAEPAVCThingObject@@M@Z	Ego_r.pdb + FableWin.pdb (private); ProcessInput passes 100000.0f and compares the result with NewKnickKnack (CThingObject*)
+0x005EABC0	?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z	Ego_r.pdb + FableWin.pdb; engine/CTCTavernGame.h POSITIONMESH opt-in
+0x0049CE00	?GetRight@CRightHandedSet@@QBE?AVC3DVector@@XZ	engine/CRightHandedSet.h (Ego_r / FableWin, out-of-line COMDAT 0x0049CE00 Forward x Up); ProcessInput calls it with the hidden result at 0x007D8640
+0x007FF190	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z	Ego_r.pdb + FableWin.pdb; catalog name; by-value CCharString built in the argument slot
+0x007FEFC0	?GetName@CTCNamedUserActionPoints@@QAEXJAAVCCharString@@@Z	Ego_r.pdb + FableWin.pdb; catalog name; (index, out string) at 0x007B919D
+0x005BC4B2	?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ	Ego_r.pdb + FableWin.pdb; `mov eax,[ecx+70h] ; ret` (SelectedCategoryIndex +0x70)
+0x005BC4B6	?SetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QAEXJ@Z	Ego_r.pdb + FableWin.pdb; `mov [ecx+70h],arg ; ret 4`
+0x00621A20	?InitialiseQuestCardList@CTCInventoryQuests@@QAEXXZ	Ego_r.pdb donor order CloseInventoryPC 0x00599160 / InitialiseQuestCardList 0x005993A0 / CloseInventory 0x005995F0 = retail 0x00621720 / 0x00621A20 / 0x00621C80; catalog name
+0x0077DBC0	?GetQuestCards@CTCHeroCentre@@QBE_NAAV?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@Z	Ego_r.pdb; landed row 0x0077DBC0

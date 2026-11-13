@@ -1,0 +1,17 @@
+addr       parity           behav  name
+005ce0e6   WARN RELOC_NAME: ?UpdateAppearanceStats@CTCHeroStats@@QAEX_N@Z -> 0057d23b labelled 'FrameUpdate_ApplyMorphEffect'
+005ce0e6   WARN RELOC_NAME: ??0?$_List_base@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@VCWideString@@J@std@@@1@@Z -> 005d84b6 labelled 'DoublyLinkedList_InitSentinelNode'
+005ce0e6   WARN RELOC_NAME: ??1?$_List_base@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@std@@QAE@XZ -> 005d864b labelled 'std::list<T_005d864b>::~list'
+005ce0e6   WARN RELOC_NAME: ?GetNumRegionsExplored@CTCHeroStats@@QBEJXZ -> 0057aa1b labelled 'CTCHeroStats::GetNumberOfRegionsVisited'
+005ce0e6   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005ce0e6   RELOCATION_MATCH PASS   ConstructPersonalityList
+005d1f0c   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005d1f0c   WARN RELOC_NAME: ?UpdateAppearanceStats@CTCHeroStats@@QAEX_N@Z -> 0057d23b labelled 'FrameUpdate_ApplyMorphEffect'
+005d1f0c   WARN RELOC_NAME: ??0?$_List_base@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@VCWideString@@J@std@@@1@@Z -> 005d84b6 labelled 'DoublyLinkedList_InitSentinelNode'
+005d1f0c   WARN RELOC_NAME: ??1?$_List_base@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@std@@QAE@XZ -> 005d864b labelled 'std::list<T_005d864b>::~list'
+005d1f0c   WARN RELOC_NAME: ?GetNumRegionsExplored@CTCHeroStats@@QBEJXZ -> 0057aa1b labelled 'CTCHeroStats::GetNumberOfRegionsVisited'
+005d1f0c   RELOCATION_MATCH PASS   ConstructPersonalityListPC
+
+WINS: 2
+  005ce0e6 RELOCATION_MATCH CTCInventoryStats::?ConstructPersonalityList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  005d1f0c RELOCATION_MATCH CTCInventoryStats::?ConstructPersonalityListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z

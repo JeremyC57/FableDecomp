@@ -1,0 +1,20 @@
+address	name	evidence
+00a4e300	?GetDeltaMovement@C3DAnimation2@@UBEXAAVCMatrix3x4@@MM@Z	Ego_r.pdb + FableWin.pdb; vtable 0x0129D560 entry; ret 0Ch
+00a50510	?InitialiseAnimationSequences@C3DAnimation2@@AAE_NAAV1@ABVC3DMesh2@@_NAAK@Z	Ego_r.pdb + FableWin.pdb; ret 10h; sole caller InitialiseAnimationInstance 0x00A50D1A; RELOCATION_MATCH
+00a4dea0	?GetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXAAVC3DKeyframe@@M@Z	both PDBs; landed 0x00A4E250 binder (see NAME_FIXES.tsv)
+00a4fd70	?InitialiseAsConstant@C3DAnimationSequenceData@@QAEXABVCMatrix3x4@@KMAAVCSimpleMemoryPool@@@Z	both PDBs; ret 10h; callers push the pool reference
+00a4fe30	?InitialiseAsConstant@C3DAnimationSequence@@QAEXABVCMatrix3x4@@KMPAVC3DAnimationSequenceData@@AAVCSimpleMemoryPool@@@Z	both PDBs; ret 14h; body Data = data, Shared = false, then 0x00A4FD70 (unreferenced: expanded in 0x00A50510)
+00a4c140	?InitialiseShared@C3DAnimationSequence@@QAEXABV1@@Z	both PDBs; ret 4; body Data = other.Data, Shared = true, ParentIndex = -1 (the same three stores expanded at 0x00A5062F..0x00A50638); unreferenced COMDAT
+00a4b820	?SetMultiplyNoTranslation@CMatrix3x4@@QAEXABV1@0@Z	FableWin.pdb (emitted after GetDeltaMovement, its first user); ret 8; nine sums of two matrix arguments then E41..E43 = 0; unreferenced COMDAT (expanded at 0x00A4E6E0..)
+00a4b910	?PreScale@CMatrix3x4@@QAEXMMM@Z	FableWin.pdb (emitted after C3DKeyframe::ToMatrix); ret 0Ch; rows times x, y, z
+00a4b970	?SetTranslateOnly@CMatrix3x4@@QAEXABVC3DVector@@@Z	both PDBs; ret 4; E41..E43 = v
+00a4bb40	?GetType@C3DAnimationStats@@QBE?AW4EAnimationType@@XZ	both PDBs; mov eax,[ecx+8] (AnimType +8); place in the TU inline run next to the animation getters (byte-identical to 0x00A4BD40: confirm)
+00a4bb50	?GetFrameCount@C3DAnimation2@@QBEKXZ	both PDBs; mov eax,[ecx+54h] (FrameCount)
+00a4bb60	?GetSamplesPerSecond@C3DAnimation2@@QBEMXZ	both PDBs; fld [ecx+50h] (SamplesPerSecond)
+00a4bc60	?SetParentIndex@C3DAnimationSequence@@QAEXJ@Z	both PDBs; ret 4; word store to +4 (ParentIndex)
+00a4bd30	?GetParent@C3DBone2@@QBEJXZ	both PDBs; mov eax,[ecx+4] (Parent, Ego_r C3DBone2 +4)
+00a4bd40	?GetOriginalNoChildren@C3DBone2@@QBEJXZ	both PDBs; mov eax,[ecx+8] (OriginalNoChildren +8); place in the run between GetParent and PeekLocalizationMatrix
+00a4bd50	?PeekLocalizationMatrix@C3DBone2@@QBEABVCMatrix3x4@@XZ	both PDBs; lea eax,[ecx+0Ch]
+00a4bd60	?GetBoneCount@C3DMesh2@@QBEKXZ	both PDBs; mov eax,[ecx+98h]
+00a4bd70	?GetBone@C3DMesh2@@QBEPBVC3DBone2@@K@Z	both PDBs (const overload, the one 0x00A50510 calls on its const mesh); Bones +9Ch, 3Ch stride
+00a4be10	?GetNonLoopingDuration@C3DAnimation2@@QBEMXZ	both PDBs; (FrameCount - 1.0f) / SamplesPerSecond, the body expanded at 0x00A4E317..0x00A4E32D

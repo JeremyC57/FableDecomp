@@ -1,0 +1,30 @@
+address	name	evidence
+00ce7670	?Main@CGameflowScript@NScript@@UAEXXZ	Ego_r.pdb + FableWin.pdb name sets; slot 2 of vtable 0x012C3FA4; RELOCATION_MATCH of this row
+00cef3b0	?CoreQuestReminder@CGameflowScript@NScript@@QAEXXZ	member pointer stored at 0x00CE76BD in the CSpawnedFunc named "CoreQuestReminder"; landed row; PDB name sets
+00cef550	?CheckBarrowFieldsGuards@CGameflowScript@NScript@@QAEXXZ	member pointer stored at 0x00CE7740 in the CSpawnedFunc named "CheckBarrowFieldsGuards"; PDB name sets (manifest module lacks the namespace)
+006e7a60	??0CScriptGameResourceObjectBase@@QAE@XZ	landed row CScriptGameResourceObjectBase_CScriptGameResourceObjectBase_006e7a60; called at 0x00CEE967 on the movie object before its vtable store; no binding in reloc_bindings.tsv before this row
+00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	reloc_bindings.tsv; 129 call sites of this row pair with it
+00cb7e50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	reloc_bindings.tsv; 2 call sites
+00cdd450	??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z	reloc_bindings.tsv; 2 call sites
+00cbe87f	?AddLogbookStoryEntry@@YIXJ@Z	reloc_bindings.tsv; 18 call sites (fastcall, entry number in ecx)
+00cbe960	?AddLogbookStoryEntryString@@YIXABVCCharString@@@Z	reloc_bindings.tsv; 5 call sites
+00cbe9ee	?AddLogbookTutorialEntry@@YIXABVCCharString@@@Z	reloc_bindings.tsv; 1 call site
+00cbfb7d	?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$	reloc_bindings.tsv; 1 call site 0x00CEE9F1
+007e72a0	??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ	reloc_bindings.tsv; called at 0x00CEE878
+007e74d0	??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	reloc_bindings.tsv; 2 call sites
+00cd23b9	?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	reloc_bindings.tsv; 0x00CEE884
+00cd2770	?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	reloc_bindings.tsv; 0x00CEE894
+008ab1e0	??4?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEAAV0@ABV0@@Z	reloc_bindings.tsv; 0x00CEE94F
+006e7ab0	??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ	reloc_bindings.tsv; 0x00CEEA14
+0099a3b0	??4CBaseObject@@IAEAAV0@ABV0@@Z	reloc_bindings.tsv; 0x00CEE93F
+0099a430	??1CBaseObject@@MAE@XZ	reloc_bindings.tsv; 0x00CEEA2B
+00cd3d2e	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameRes	reloc_bindings.tsv; 0x00CEE92E
+00cdbf70	??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameRes	reloc_bindings.tsv; 0x00CEE90A
+00cdbfb0	??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameRes	reloc_bindings.tsv; 0x00CEEA34
+004ab130	?IsAlive@CScriptThing@@UBE_NXZ	reloc_bindings.tsv; called at 0x00CE8432 (GuildDoors); the TheRealGuildmaster test at 0x00CE8318 is the same member through the vtable (+0x12C)
+004aa840	??1CScriptThing@@UAE@XZ	reloc_bindings.tsv; 8 call sites
+0044bff0	?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z	reloc_bindings.tsv; 25 call sites
+00414ea0	??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ	reloc_bindings.tsv; 2 call sites
+0099ebf0	??0CCharString@@QAE@PBDJ@Z	reloc_bindings.tsv; 533 call sites
+0099eae0	??1CCharString@@QAE@XZ	reloc_bindings.tsv; 530 call sites
+00bfea1a	??2@YAPAXI@Z	reloc_bindings.tsv; 2 call sites

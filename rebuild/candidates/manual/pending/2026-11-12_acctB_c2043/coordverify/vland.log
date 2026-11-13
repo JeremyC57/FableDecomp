@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0064ed4f   RELOCATION_MATCH PASS   Draw
+
+WINS: 1
+  0064ed4f RELOCATION_MATCH NPlayerGui::CDrawDamage::?Draw@CDrawDamage@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z

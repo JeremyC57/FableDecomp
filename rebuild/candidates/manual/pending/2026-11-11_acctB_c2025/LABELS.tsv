@@ -1,0 +1,8 @@
+address	name	evidence
+0x00605570	?ConstructRegionDescription@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z	Ego_r.pdb + FableWin.pdb; ret 0Ch; calls Quests / Shops / BuyableBuildings / MapKeys with its own arguments; catalog label agrees
+0x00600B60	?ConstructRegionDescriptionBuyableBuildings@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@PAVCUIRegionInfo@1@_N3@Z	Ego_r.pdb + FableWin.pdb; ret 14h; sole caller 0x00605B6D right after Shops 0x006001E0 with the same 5 arguments; TEXT_GUI_MENU_HOUSE(S)_OWNED ... literals; Ego_r donor order Shops 0x0064DB30 < BuyableBuildings 0x0064E6C0 = retail 0x006001E0 < 0x00600B60
+0x005FD5E0	?ConstructRegionDescriptionQuests@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z	Ego_r.pdb + FableWin.pdb; ret 0Ch; UI_/PC_QUEST_NAME, UI_/PC_CORE/OPTIONAL/VIGNETTE_ICON_AND_NAME literals; sole caller 0x00605A99
+0x005FB7E0	?ConstructRegionDescriptionMapKeys@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z	Ego_r.pdb + FableWin.pdb; ret 0Ch; UI_/PC_MAP_KEYS_CONTAINER literals; sole caller 0x00605C45
+0x006BF960	?IsForSale@CTCBuyableHouse@@QBE_NXZ	Ego_r.pdb; reloc_bindings.tsv; landed row 0x006BF960
+0x0050E540	??$__find@PAJJ@std@@YIPAJPAJ0ABJABUrandom_access_iterator_tag@0@@Z	STLport 4.6 _algobase.c body shape; reloc_bindings.tsv (see NAME_FIXES.tsv)
+0x00618420	?_M_insert_overflow@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@IAEXPAVCUIRegionInfo@CTCInventoryMap@@ABV34@ABU__false_type@2@I_N@Z	STLport 4.6 push_back overflow call on UIRegionsInfo; reloc_bindings.tsv (see NAME_FIXES.tsv)

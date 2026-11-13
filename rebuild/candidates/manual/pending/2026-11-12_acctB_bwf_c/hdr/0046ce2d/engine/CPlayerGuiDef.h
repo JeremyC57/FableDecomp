@@ -1,0 +1,2337 @@
+#ifndef FABLE_ENGINE_CPLAYERGUIDEF_H
+#define FABLE_ENGINE_CPLAYERGUIDEF_H
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_CLASS
+// Retail opt-in (bwf1 row 0x0046CE2D, the implicit CPlayerGuiDef::operator=): the whole class with its retail base and member types.
+//   RTTI .?AVCPlayerGuiDef@@ : CParentDefClassBase (0x39 bytes packed; needs FABLE_RETAIL_DEF_CLASS_BASE), vtable 0x012352DC, slot 19 Copy
+//   0x0046CE28; members natural-packed from +0x3C (every container / CCharString offset checked against the retail operator= calls).
+//   Containers need FABLE_RETAIL_STLP_VECTOR_ASSIGN (or _VECTOR_C) so their operator= is a call, as in retail.
+#include "rebuild_abi.h"
+#include "engine/CParentDefClassBase.h"
+#include "engine/C2DVector.h"
+#include "engine/C3DVector.h"
+#include "engine/CRGBColour.h"
+#include "engine/EGameAction.h"
+#include "engine/CQuickAccessItemButtonGuiDef.h"
+#include "engine/CAbilityButtonGuiDef.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+class CPersistContext;
+class CPlayerGuiDef : public CParentDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                 // slot 18
+    virtual void Copy(const CDefClassBase*);                 // slot 19 0x0046CE28
+    virtual unsigned long GetSizeofClass();                  // slot 20
+    long InventoryNoMovementSound;  // +0x03c
+    float SecondsToFadeWholeGui;  // +0x040
+    float AlphaValueToFadeWholeGui;  // +0x044
+    CRGBColour AmbientColour;  // +0x048
+    CRGBColour DiffuseColour;  // +0x04c
+    CRGBColour BacklightColour;  // +0x050
+    C3DVector DiffuseVector;  // +0x054
+    C2DVector GuildSealPos;  // +0x060
+    long GuildSealFlashCycles;  // +0x068
+    float GuildSealFlashCycleSeconds;  // +0x06c
+    float GuildSealReminderTimeSeconds;  // +0x070
+    C2DVector HealthBarPos;  // +0x074
+    long HealthBarLeftGraphic;  // +0x07c
+    C2DVector HealthBarMiddleOffset;  // +0x080
+    float HealthBarMiddleLength;  // +0x088
+    long HealthBarMiddleGraphic;  // +0x08c
+    long HealthBarRightGraphic;  // +0x090
+    C2DVector HealthBarHealthOffset;  // +0x094
+    long HealthBarHealthGraphic;  // +0x09c
+    long HealthBarHealthEvilGraphic;  // +0x0a0
+    long HealthBarHealthGoodGraphic;  // +0x0a4
+    C2DVector HealthBarHealthEffectOffset;  // +0x0a8
+    C2DVector HealthBarHealthIncreaseEffectOffset;  // +0x0b0
+    long HealthBarHealthDefaultEffect;  // +0x0b8
+    long HealthBarHealthIncreaseEffect;  // +0x0bc
+    long HealthBarHealthLevelUpEffect;  // +0x0c0
+    long HealthBarHealthAdrenalineEffect;  // +0x0c4
+    long HealthBarHealthBerserkEffect;  // +0x0c8
+    long HealthBarHealthLowHealthEffect;  // +0x0cc
+    float HealthBarHealthLowPercentage;  // +0x0d0
+    C2DVector HealthBarHealthInnerOffset;  // +0x0d4
+    long HealthBarHealthInnerGraphic;  // +0x0dc
+    long HealthBarHealthEndGraphic;  // +0x0e0
+    C2DVector HealthBarResurrectionOffset;  // +0x0e4
+    CRGBColour HealthBarResurrectionColour;  // +0x0ec
+    C2DVector HealthBarStaminaBackOffset;  // +0x0f0
+    C2DVector HealthBarStaminaOffset;  // +0x0f8
+    long HealthBarStaminaGraphic;  // +0x100
+    C2DVector HealthBarStaminaInnerOffset;  // +0x104
+    long HealthBarStaminaInnerGraphic;  // +0x10c
+    long HealthBarStaminaEndGraphic;  // +0x110
+    C2DVector HealthBarStaminaEffectOffset;  // +0x114
+    C2DVector HealthBarStaminaIncreaseEffectOffset;  // +0x11c
+    float HealthBarStaminaIncreaseEffectWidth;  // +0x124
+    float HealthBarStaminaIncreaseEffectSegmentWidth;  // +0x128
+    long HealthBarStaminaDefaultEffect;  // +0x12c
+    long HealthBarStaminaIncreaseEffect;  // +0x130
+    long HealthBarStaminaIncreaseSegmentEffect;  // +0x134
+    C2DVector StealthEyePos;  // +0x138
+    long StealthEyeFriendGraphic;  // +0x140
+    long StealthEyeNeutralGraphic;  // +0x144
+    long StealthEyeEnemyGraphic;  // +0x148
+    long StealthEyeQuestionMarkGraphic;  // +0x14c
+    std::vector<long> StealthEyeGraphicFrames;  // +0x150
+    C2DVector StealthEyeTextOffset;  // +0x15c
+    float StealthEyeSecondsToOpen;  // +0x164
+    float StealthEyeSecondsToThrob;  // +0x168
+    float StealthEyeThrobScale;  // +0x16c
+    long DPadRingsGraphic;  // +0x170
+    C2DVector DPadRingsPos;  // +0x174
+    long DPadRingsTopGraphic;  // +0x17c
+    C2DVector DPadRingsTopOffset;  // +0x180
+    long DPadRingsExtendGraphic;  // +0x188
+    std::vector<long> DPadRingsChargeGraphics;  // +0x18c
+    std::vector<C2DVector> DPadRingsChargeOffsets;  // +0x198
+    std::vector<float> DPadRingsChargeAngles;  // +0x1a4
+    long DPadRingsFavouriteGraphic;  // +0x1b0
+    long DPadRingsTopFavouriteGraphic;  // +0x1b4
+    long DPadRingsTopAggressiveGraphic;  // +0x1b8
+    long DPadGuildSealLevelUpGraphic;  // +0x1bc
+    C2DVector DPadGuildSealTooltipOffset;  // +0x1c0
+    C2DVector DPadMiddleOffset;  // +0x1c8
+    long DPadArrowUpGraphic;  // +0x1d0
+    long DPadArrowUpDepGraphic;  // +0x1d4
+    long DPadArrowRightGraphic;  // +0x1d8
+    long DPadArrowRightDepGraphic;  // +0x1dc
+    long DPadArrowDownGraphic;  // +0x1e0
+    long DPadArrowDownDepGraphic;  // +0x1e4
+    long DPadArrowLeftGraphic;  // +0x1e8
+    long DPadArrowLeftDepGraphic;  // +0x1ec
+    long DPadGuildSealRecallGraphic;  // +0x1f0
+    long GuildSealLevelUpGraphic;  // +0x1f4
+    long GuildSealQuestGraphic;  // +0x1f8
+    long GuildSealRecallGraphic;  // +0x1fc
+    C2DVector GuildSealLevelUpOffset;  // +0x200
+    C2DVector GuildSealMainLevelUpOffset;  // +0x208
+    long ABXYRingsGraphic;  // +0x210
+    C2DVector ABXYRingsPos;  // +0x214
+    long ABXYRingsAlpha;  // +0x21c
+    long ABXYRingsTopGraphic;  // +0x220
+    C2DVector ABXYRingsTopOffset;  // +0x224
+    long ABXYMiddleGraphic;  // +0x22c
+    C2DVector ABXYMiddleOffset;  // +0x230
+    long ABXYMiddleUpGraphic;  // +0x238
+    long ABXYMiddleRightGraphic;  // +0x23c
+    long ABXYMiddleDownGraphic;  // +0x240
+    long ABXYMiddleLeftGraphic;  // +0x244
+    long ABXYRingsFavouriteGraphic;  // +0x248
+    long ABXYRingsTopFavouriteGraphic;  // +0x24c
+    long WhiteButtonGraphic;  // +0x250
+    C2DVector WhiteButtonPos;  // +0x254
+    C2DVector WhiteButtonIconOffset;  // +0x25c
+    C2DVector WhiteButtonTooltipOffset;  // +0x264
+    long BlackButtonGraphic;  // +0x26c
+    C2DVector BlackButtonPos;  // +0x270
+    C2DVector BlackButtonIconOffset;  // +0x278
+    C2DVector BlackButtonTooltipOffset;  // +0x280
+    long TextBoxTLGraphic;  // +0x288
+    long TextBoxTMGraphic;  // +0x28c
+    long TextBoxTRGraphic;  // +0x290
+    long TextBoxMLGraphic;  // +0x294
+    long TextBoxMRGraphic;  // +0x298
+    long TextBoxBLGraphic;  // +0x29c
+    long TextBoxBMGraphic;  // +0x2a0
+    long TextBoxBRGraphic;  // +0x2a4
+    long TextBoxBackGraphic;  // +0x2a8
+    float TextBoxMaxWidth;  // +0x2ac
+    float TextBoxMinWidth;  // +0x2b0
+    float TextBoxMaxHeight;  // +0x2b4
+    float TextBoxMinHeight;  // +0x2b8
+    float TextBoxBorderWidth;  // +0x2bc
+    float TextBoxBorderHeight;  // +0x2c0
+    float TextBoxCutsceneSecondsBeforeSkip;  // +0x2c4
+    float StatBoxMaxWidth;  // +0x2c8
+    long StatBoxMiddleGraphic;  // +0x2cc
+    C2DVector StatBoxLeftOffset;  // +0x2d0
+    C2DVector StatBoxRightOffset;  // +0x2d8
+    long StatBoxStartGraphic;  // +0x2e0
+    long StatBoxEndGraphic;  // +0x2e4
+    long StatBoxGoldGraphic;  // +0x2e8
+    long StatBoxGoldGainEffect;  // +0x2ec
+    long StatBoxGoldLossEffect;  // +0x2f0
+    C2DVector ClockPos;  // +0x2f4
+    long ClockFaceGraphic;  // +0x2fc
+    long ClockHandGraphic;  // +0x300
+    C2DVector ClockRingPos;  // +0x304
+    long ClockRingGraphic;  // +0x30c
+    C2DVector ModePos;  // +0x310
+    C2DVector ModeOffset;  // +0x318
+    C2DVector ModeInnerOffset;  // +0x320
+    long ModeBorderGraphic;  // +0x328
+    long ModeLockOffGraphic;  // +0x32c
+    long ModeLockOnGraphic;  // +0x330
+    long ModeSneakOffGraphic;  // +0x334
+    long ModeSneakOnGraphic;  // +0x338
+    long ModeSafetyOffGraphic;  // +0x33c
+    long ModeSafetyOnGraphic;  // +0x340
+    C2DVector ModeTextOffset;  // +0x344
+    C2DVector CombatPos;  // +0x34c
+    C2DVector CombatLockedOffset;  // +0x354
+    std::vector<long> CombatLockedGraphics;  // +0x35c
+    C2DVector CombatRingOffset;  // +0x368
+    long CombatRingGraphic;  // +0x370
+    C2DVector CombatCurrentOffset;  // +0x374
+    C2DVector CombatCurrentTextOffset;  // +0x37c
+    std::vector<C2DVector> CombatCountOffsets;  // +0x384
+    long CombatCountEmptyGraphic;  // +0x390
+    std::vector<long> CombatCountGraphics;  // +0x394
+    std::vector<long> CombatRingGraphics;  // +0x3a0
+    long CombatRingBlackGraphic;  // +0x3ac
+    long CombatRingWhiteGraphic;  // +0x3b0
+    long CombatCrossGraphic;  // +0x3b4
+    C2DVector CombatCrossOffset;  // +0x3b8
+    C2DVector CombatMiddleOffset;  // +0x3c0
+    float CombatMiddleMinWidth;  // +0x3c8
+    long CombatMiddleGraphic;  // +0x3cc
+    long CombatEndGraphic;  // +0x3d0
+    C2DVector ExperiencePos;  // +0x3d4
+    long ExperienceGraphic;  // +0x3dc
+    long ExperienceGeneralGraphic;  // +0x3e0
+    long ExperienceSkillGraphic;  // +0x3e4
+    long ExperienceStrengthGraphic;  // +0x3e8
+    long ExperienceWillGraphic;  // +0x3ec
+    C2DVector ExperienceTextOffset;  // +0x3f0
+    CRGBColour ExperienceTextColour;  // +0x3f8
+    C2DVector ExperienceMiddleOffset;  // +0x3fc
+    float ExperienceMiddleMinWidth;  // +0x404
+    long ExperienceMiddleGraphic;  // +0x408
+    long ExperienceEndGraphic;  // +0x40c
+    C2DVector CrimePos;  // +0x410
+    C2DVector CrimeTextOffset;  // +0x418
+    CRGBColour CrimeTextColour;  // +0x420
+    CRGBColour CrimeTextAlertColour;  // +0x424
+    long CrimeWarningGraphic;  // +0x428
+    long CrimeCriminalGraphic;  // +0x42c
+    long CrimeBarGraphic;  // +0x430
+    C2DVector CrimeBarIconOffset;  // +0x434
+    C2DVector CrimeBarBorderOffset;  // +0x43c
+    std::vector<C2DVector> CrosshairOffsets;  // +0x444
+    std::vector<long> CrosshairGraphics;  // +0x450
+    std::vector<long> CrosshairGreenGraphics;  // +0x45c
+    long MiniGameFishingLeftGraphic;  // +0x468
+    long MiniGameFishingRightGraphic;  // +0x46c
+    long MiniGameBettingGraphic;  // +0x470
+    long MiniGameDiggingGraphic;  // +0x474
+    long MiniGamePickpocketGraphic;  // +0x478
+    long MiniGamePicklockGraphic;  // +0x47c
+    long MiniGameStealGraphic;  // +0x480
+    long MiniGameTrophyGotGraphic;  // +0x484
+    long MiniGameTrophyLeftGraphic;  // +0x488
+    long SmackEffect;  // +0x48c
+    long SmackAlphaFadePerFrame;  // +0x490
+    long SmackAlphaStartValue;  // +0x494
+    long SmackAlphaEndValue;  // +0x498
+    float SmackScaleFactorPerFrame;  // +0x49c
+    float SmackTimeToRotateSeconds;  // +0x4a0
+    C2DVector MoneyPos;  // +0x4a4
+    C2DVector MoneyTextOffset;  // +0x4ac
+    C2DVector MoneyTextRightOffset;  // +0x4b4
+    float MoneyWidth;  // +0x4bc
+    CRGBColour MoneyTextColour;  // +0x4c0
+    CRGBColour MoneyIncreaseTextColour;  // +0x4c4
+    CRGBColour MoneyDecreaseTextColour;  // +0x4c8
+    C2DVector MoneyChangeStartOffset;  // +0x4cc
+    C2DVector MoneyChangeEndOffset;  // +0x4d4
+    float MoneyChangeTextSpeed;  // +0x4dc
+    CCharString StatBarsFontName;  // +0x4e0
+    float SecondsForStatsBarsToAppear;  // +0x4e4
+    float SecondsBeforeStatsBackBarMoves;  // +0x4e8
+    float SecondsToShowStatsBars;  // +0x4ec
+    float SecondsForStatsBarsToDisappear;  // +0x4f0
+    C2DVector StatUpdatePos;  // +0x4f4
+    C2DVector StatUpdateMoralityGoodPos;  // +0x4fc
+    C2DVector StatUpdateMoralityEvilPos;  // +0x504
+    C2DVector StatUpdateRenownPos;  // +0x50c
+    C2DVector StatUpdateTextOffset;  // +0x514
+    CRGBColour StatUpdateTextColour;  // +0x51c
+    float StatUpdateDisplayDuration;  // +0x520
+    float StatUpdateWaitingDuration;  // +0x524
+    C2DVector StatUpdateEffectOffset;  // +0x528
+    long StatUpdateMoralityGoodGraphic;  // +0x530
+    long StatUpdateMoralityEvilGraphic;  // +0x534
+    long StatUpdateMoralityGoodEffect;  // +0x538
+    long StatUpdateMoralityEvilEffect;  // +0x53c
+    std::vector<CRGBColour> StatUpdateColours;  // +0x540
+    std::vector<long> StatUpdateGraphics;  // +0x54c
+    std::vector<long> StatUpdateEffects;  // +0x558
+    C2DVector AutoPickupPos;  // +0x564
+    C2DVector QuestInfoPos;  // +0x56c
+    float QuestInfoBarOffsetX;  // +0x574
+    long QuestInfoGraphicWidth;  // +0x578
+    long QuestInfoGraphicHeight;  // +0x57c
+    float QuestInfoGraphicMinHeight;  // +0x580
+    float QuestInfoSecondsToScroll;  // +0x584
+    float QuestInfoSecondsToAppear;  // +0x588
+    CRGBColour QuestInfoTurncoatColour;  // +0x58c
+    long QuestInfoTickGraphic;  // +0x590
+    C2DVector OracleSymbolPos;  // +0x594
+    C2DVector OracleSymbolOffset;  // +0x59c
+    C2DVector TextBoxTextAreaTLPos;  // +0x5a4
+    C2DVector TextBoxTextAreaBRPos;  // +0x5ac
+    CRGBColour TextBoxTextColour;  // +0x5b4
+    CRGBColour TextBoxTextGameInfoColour;  // +0x5b8
+    CRGBColour TextBoxTextGameActionColour;  // +0x5bc
+    C2DVector TextBoxButtonGraphicOffset;  // +0x5c0
+    float TextBoxButtonOffsetY;  // +0x5c8
+    float TextBoxButtonInBoxOffsetY;  // +0x5cc
+    float TextBoxButtonGapWidth;  // +0x5d0
+    CCharString TextBoxButtonTextFontName;  // +0x5d4
+    long TextBoxConfirmGraphic;  // +0x5d8
+    long TextBoxCancelGraphic;  // +0x5dc
+    long TextBoxThirdGraphic;  // +0x5e0
+    long TextBoxSkipCutsceneGraphic;  // +0x5e4
+    CCharString TextBoxButtonASoundCriteria;  // +0x5e8
+    CCharString TextBoxButtonBSoundCriteria;  // +0x5ec
+    long TextBoxHugeButtonGraphic;  // +0x5f0
+    long TextBoxHugeMouseButtonGraphic;  // +0x5f4
+    long TextBoxHugeMouseButtonLeftGraphic;  // +0x5f8
+    C2DVector TextBoxHugeButtonOffset;  // +0x5fc
+    C2DVector TextBoxHugeButtonLeftOffset;  // +0x604
+    C2DVector TextBoxFishingReelTextPos;  // +0x60c
+    C2DVector TextBoxFishingReelGraphicOffset;  // +0x614
+    C2DVector TextBoxBettingGraphicPos;  // +0x61c
+    C2DVector TextBoxBettingUpOffset;  // +0x624
+    C2DVector TextBoxBettingDownOffset;  // +0x62c
+    C2DVector TextBoxBettingLeftOffset;  // +0x634
+    C2DVector TextBoxBettingRightOffset;  // +0x63c
+    CCharString ReceiveItemsSoundCriteria;  // +0x644
+    long ControllerAGraphic;  // +0x648
+    long ControllerBGraphic;  // +0x64c
+    long ControllerXGraphic;  // +0x650
+    long ControllerYGraphic;  // +0x654
+    long ControllerDPadGraphic;  // +0x658
+    long ControllerDPadDownGraphic;  // +0x65c
+    long ControllerDPadLeftGraphic;  // +0x660
+    long ControllerDPadRightGraphic;  // +0x664
+    long ControllerDPadUpGraphic;  // +0x668
+    long ControllerThumbLeftGraphic;  // +0x66c
+    long ControllerThumbRightGraphic;  // +0x670
+    long ControllerThumbClickLeftGraphic;  // +0x674
+    long ControllerThumbClickRightGraphic;  // +0x678
+    long ControllerBackGraphic;  // +0x67c
+    long ControllerStartGraphic;  // +0x680
+    long ControllerTriggerLeftGraphic;  // +0x684
+    long ControllerTriggerRightGraphic;  // +0x688
+    long ControllerTriggerBlackGraphic;  // +0x68c
+    long ControllerTriggerWhiteGraphic;  // +0x690
+    C2DVector ControllerGraphicOffset;  // +0x694
+    C2DVector ControllerGraphicTextOffset;  // +0x69c
+    C2DVector ControllerClickGraphicTextOffset;  // +0x6a4
+    C2DVector ControllerTriggerGraphicTextOffset;  // +0x6ac
+    C2DVector MenuConfirmPos;  // +0x6b4
+    C2DVector MenuConfirmTextPos;  // +0x6bc
+    long MenuConfirmGraphic;  // +0x6c4
+    C2DVector MenuCancelPos;  // +0x6c8
+    C2DVector MenuCancelTextPos;  // +0x6d0
+    long MenuCancelGraphic;  // +0x6d8
+    long QuickAccessDPadGraphic;  // +0x6dc
+    long QuickAccessMenuGraphic;  // +0x6e0
+    long QuickAccessLampEffect;  // +0x6e4
+    long QuickAccessGuildSealEffect;  // +0x6e8
+    long QuickAccessMainGuildSealEffect;  // +0x6ec
+    C2DVector QuickAccessEffectOffset;  // +0x6f0
+    C2DVector QuickAccessAbilityCrossOffset;  // +0x6f8
+    long HotBarSingleGraphic;  // +0x700
+    long HotBarMainGraphic;  // +0x704
+    std::vector<long> HotBarEndGraphics;  // +0x708
+    C2DVector HotBarOffset;  // +0x714
+    C2DVector HotBarEndOffset;  // +0x71c
+    long HotBarItemWidth;  // +0x724
+    std::vector<CQuickAccessItemButtonGuiDef> QuickAccessItemButtons;  // +0x728
+    std::vector<CQuickAccessItemButtonGuiDef> ContextSensitiveItemButtons;  // +0x734
+    long TargetingCursorSectionEnemyEmptyGraphic;  // +0x740
+    long CompassGraphic;  // +0x744
+    C2DVector CompassPos;  // +0x748
+    long CompassShadowGraphic;  // +0x750
+    C2DVector CompassShadowOffset;  // +0x754
+    long AbilityButtonTalkGraphic;  // +0x75c
+    long AbilityButtonActivateGraphic;  // +0x760
+    long AbilityButtonBlockGraphic;  // +0x764
+    long AbilityButtonUnarmedGraphic;  // +0x768
+    long AbilityButtonMeleeGraphic;  // +0x76c
+    long AbilityButtonRangedGraphic;  // +0x770
+    long AbilityButtonSheatheAxeGraphic;  // +0x774
+    long AbilityButtonSheatheBowGraphic;  // +0x778
+    long AbilityButtonSheatheMaceGraphic;  // +0x77c
+    long AbilityButtonSheatheStickGraphic;  // +0x780
+    long AbilityButtonSheatheSwordGraphic;  // +0x784
+    C2DVector AbilityButtonFlourishEffectPos;  // +0x788
+    long AbilityButtonFlourishGraphic;  // +0x790
+    C2DVector AbilityButtonFlourishGraphicOffset;  // +0x794
+    long ABXYButtonMiddleGraphic;  // +0x79c
+    C2DVector ABXYAbilityLevelInitialOffset;  // +0x7a0
+    C2DVector ABXYAbilityLevelOffset;  // +0x7a8
+    long ABXYAbilityUnavailableGraphic;  // +0x7b0
+    long ABXYAbilityUncastableGraphic;  // +0x7b4
+    long ABXYAbilitySwitchGraphic;  // +0x7b8
+    long ABXYAbilityShieldOffGraphic;  // +0x7bc
+    long ABXYRunGraphic;  // +0x7c0
+    long ABXYTargetingEnterGraphic;  // +0x7c4
+    long ABXYTargetingCancelGraphic;  // +0x7c8
+    float ABXYButtonFadeDurationSeconds;  // +0x7cc
+    long TargetingBorderLeftGraphic;  // +0x7d0
+    C2DVector TargetingBorderLeftPos;  // +0x7d4
+    long TargetingBorderRightGraphic;  // +0x7dc
+    C2DVector TargetingBorderRightPos;  // +0x7e0
+    long InteractButtonBorderGraphic;  // +0x7e8
+    C2DVector InteractButtonBorderOffset;  // +0x7ec
+    C2DVector InteractButtonTooltipOffset;  // +0x7f4
+    std::vector<CAbilityButtonGuiDef> AbilityButtons;  // +0x7fc
+    std::vector<CAbilityButtonGuiDef> SpecialAbilityButtons;  // +0x808
+    C2DVector DigitPos;  // +0x814
+    C2DVector DigitHeroPos;  // +0x81c
+    C2DVector DigitHeroOffset;  // +0x824
+    std::vector<long> DigitGraphics;  // +0x82c
+    C2DVector RegionDisplayPos;  // +0x838
+    C2DVector InfoDisplayPos;  // +0x840
+    long HeroSprintBarLeftGraphic;  // +0x848
+    long HeroSprintBarLeftGlowGraphic;  // +0x84c
+    long HeroSprintBarMiddleGraphic;  // +0x850
+    long HeroSprintBarMiddleGlowGraphic;  // +0x854
+    long HeroSprintBarRightGraphic;  // +0x858
+    long HeroSprintBarRightGlowGraphic;  // +0x85c
+    long HeroSprintBarInnerGraphic;  // +0x860
+    C2DVector HeroSprintBarInnerGraphicOffset;  // +0x864
+    std::vector<CRGBColour> HighlightStartColour;  // +0x86c
+    std::vector<CRGBColour> HighlightEndColour;  // +0x878
+    std::vector<float> HighlightStartWidthWorldSpace;  // +0x884
+    std::vector<float> HighlightEndWidthWorldSpace;  // +0x890
+    std::vector<float> HighlightStartWidthScreenSpace;  // +0x89c
+    std::vector<float> HighlightEndWidthScreenSpace;  // +0x8a8
+    std::vector<long> HighlightFadeSteps;  // +0x8b4
+    float NumberOfSecondsForContainerItemToReachFullSize;  // +0x8c0
+    C2DVector ContainerItemDisplayAreaTLPos;  // +0x8c4
+    C2DVector ContainerItemDisplayAreaBRPos;  // +0x8cc
+    float NumberOfSecondsForContainerItemToRotate;  // +0x8d4
+    float NumberOfSecondsForContainerItemToStayAtFullSize;  // +0x8d8
+    CRGBColour ContainerItemDisplayBackgroundColour;  // +0x8dc
+    C2DVector ScreenMessageTextPos;  // +0x8e0
+    CRGBColour ScreenMessageTextColour;  // +0x8e8
+    C2DVector ScreenMessageTextDropShadowOffset;  // +0x8ec
+    CRGBColour ScreenMessageTextDropShadowColour;  // +0x8f4
+    CCharString ScreenMessageFont;  // +0x8f8
+    C2DVector ScreenMessageNextMessageTextOffset;  // +0x8fc
+    long MaximumNumberOfScreenMessages;  // +0x904
+    float NumberOfSecondsScreenMessageStaysOnScreen;  // +0x908
+    long NumberOfCharactersScreenMessageAddsPerFrame;  // +0x90c
+    std::vector<CCharString> TutorialText;  // +0x910
+    std::vector<CCharString> TutorialLogBookText;  // +0x91c
+    std::vector<long> TutorialGuildSealGraphics;  // +0x928
+    std::map<CCharString,long> ScriptSprites;  // +0x934
+    std::map<CCharString,EGameAction> GameActionValues;  // +0x940
+    std::map<CCharString,long> MiniMapGraphics;  // +0x94c
+    std::vector<long> MiniMapMarkerGraphics;  // +0x958
+    C2DVector MiniMapScreenOrigin;  // +0x964
+    C2DVector MiniMapScreenSize;  // +0x96c
+    long MiniMapScreenRadius;  // +0x974
+    long MiniMapTextureWidth;  // +0x978
+    long MiniMapMarkerTextureWidth;  // +0x97c
+    float MiniMapWorldResolution;  // +0x980
+    CRGBColour MiniMapPassableColour;  // +0x984
+    CRGBColour MiniMapImpassableColour;  // +0x988
+    CRGBColour MiniMapWaterColour;  // +0x98c
+    CRGBColour MiniMapMaplessColour;  // +0x990
+    CRGBColour MiniMapImpassableWaterColour;  // +0x994
+    unsigned long MaxMinimapZoneColours;  // +0x998
+    unsigned long MaxMinimapThemeColours;  // +0x99c
+    std::vector<CRGBColour> MinimapZoneColours;  // +0x9a0
+    std::vector<CRGBColour> MinimapThemeColours;  // +0x9ac
+    C2DVector RegionChangeTLOffset;  // +0x9b8
+    C2DVector RegionChangeTMOffset;  // +0x9c0
+    C2DVector RegionChangeTROffset;  // +0x9c8
+    C2DVector RegionChangeBLOffset;  // +0x9d0
+    C2DVector RegionChangeBMOffset;  // +0x9d8
+    C2DVector RegionChangeBROffset;  // +0x9e0
+    long RegionChangeTLGraphic;  // +0x9e8
+    long RegionChangeTMGraphic;  // +0x9ec
+    long RegionChangeTRGraphic;  // +0x9f0
+    long RegionChangeBLGraphic;  // +0x9f4
+    long RegionChangeBMGraphic;  // +0x9f8
+    long RegionChangeBRGraphic;  // +0x9fc
+    C2DVector RegionChangeBorderLeftOffset;  // +0xa00
+    C2DVector RegionChangeBorderRightOffset;  // +0xa08
+    long RegionChangeBorderLeftGraphic;  // +0xa10
+    long RegionChangeBorderRightGraphic;  // +0xa14
+    long RegionChangeGuildSealBorderGraphic;  // +0xa18
+    C2DVector RegionChangeGuildSealBorderOffset;  // +0xa1c
+    std::vector<long> RegionChangeGuildSealGraphics;  // +0xa24
+    long LoadProgressBarLeftGraphic;  // +0xa30
+    long LoadProgressBarMidGraphic;  // +0xa34
+    long LoadProgressBarRightGraphic;  // +0xa38
+    long LoadProgressBarInnerGraphic;  // +0xa3c
+    std::vector<long> LoadProgressBackdropGraphics;  // +0xa40
+    C2DVector TavernGameBlockTLOffset;  // +0xa4c
+    C2DVector TavernGameBlockTMOffset;  // +0xa54
+    C2DVector TavernGameBlockTROffset;  // +0xa5c
+    C2DVector TavernGameBlockBLOffset;  // +0xa64
+    C2DVector TavernGameBlockBMOffset;  // +0xa6c
+    C2DVector TavernGameBlockBROffset;  // +0xa74
+    long TavernGameBlockTLGraphic;  // +0xa7c
+    long TavernGameBlockTMGraphic;  // +0xa80
+    long TavernGameBlockTRGraphic;  // +0xa84
+    long TavernGameBlockBLGraphic;  // +0xa88
+    long TavernGameBlockBMGraphic;  // +0xa8c
+    long TavernGameBlockBRGraphic;  // +0xa90
+    CCharString RegionGraphFileName;  // +0xa94
+    float MouseCursorScaleX;  // +0xa98
+    float MouseCursorScaleY;  // +0xa9c
+    long MouseCursorGraphic;  // +0xaa0
+    long MouseLMBGraphic;  // +0xaa4
+    long MouseMMBGraphic;  // +0xaa8
+    long MouseRMBGraphic;  // +0xaac
+    long MouseOverlayGraphic;  // +0xab0
+};
+FABLE_STATIC_ASSERT(sizeof(CPlayerGuiDef) == 0xab4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InventoryNoMovementSound) == 0x03c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SecondsToFadeWholeGui) == 0x040);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AlphaValueToFadeWholeGui) == 0x044);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AmbientColour) == 0x048);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DiffuseColour) == 0x04c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BacklightColour) == 0x050);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DiffuseVector) == 0x054);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealPos) == 0x060);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealFlashCycles) == 0x068);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealFlashCycleSeconds) == 0x06c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealReminderTimeSeconds) == 0x070);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarPos) == 0x074);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarLeftGraphic) == 0x07c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarMiddleOffset) == 0x080);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarMiddleLength) == 0x088);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarMiddleGraphic) == 0x08c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarRightGraphic) == 0x090);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthOffset) == 0x094);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthGraphic) == 0x09c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthEvilGraphic) == 0x0a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthGoodGraphic) == 0x0a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthEffectOffset) == 0x0a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthIncreaseEffectOffset) == 0x0b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthDefaultEffect) == 0x0b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthIncreaseEffect) == 0x0bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthLevelUpEffect) == 0x0c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthAdrenalineEffect) == 0x0c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthBerserkEffect) == 0x0c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthLowHealthEffect) == 0x0cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthLowPercentage) == 0x0d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthInnerOffset) == 0x0d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthInnerGraphic) == 0x0dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthEndGraphic) == 0x0e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarResurrectionOffset) == 0x0e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarResurrectionColour) == 0x0ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaBackOffset) == 0x0f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaOffset) == 0x0f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaGraphic) == 0x100);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaInnerOffset) == 0x104);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaInnerGraphic) == 0x10c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaEndGraphic) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaEffectOffset) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaIncreaseEffectOffset) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaIncreaseEffectWidth) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaIncreaseEffectSegmentWidth) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaDefaultEffect) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaIncreaseEffect) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaIncreaseSegmentEffect) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyePos) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeFriendGraphic) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeNeutralGraphic) == 0x144);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeEnemyGraphic) == 0x148);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeQuestionMarkGraphic) == 0x14c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeGraphicFrames) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeTextOffset) == 0x15c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeSecondsToOpen) == 0x164);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeSecondsToThrob) == 0x168);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeThrobScale) == 0x16c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsGraphic) == 0x170);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsPos) == 0x174);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsTopGraphic) == 0x17c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsTopOffset) == 0x180);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsExtendGraphic) == 0x188);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsChargeGraphics) == 0x18c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsChargeOffsets) == 0x198);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsChargeAngles) == 0x1a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsFavouriteGraphic) == 0x1b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsTopFavouriteGraphic) == 0x1b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsTopAggressiveGraphic) == 0x1b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadGuildSealLevelUpGraphic) == 0x1bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadGuildSealTooltipOffset) == 0x1c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadMiddleOffset) == 0x1c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowUpGraphic) == 0x1d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowUpDepGraphic) == 0x1d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowRightGraphic) == 0x1d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowRightDepGraphic) == 0x1dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowDownGraphic) == 0x1e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowDownDepGraphic) == 0x1e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowLeftGraphic) == 0x1e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowLeftDepGraphic) == 0x1ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadGuildSealRecallGraphic) == 0x1f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealLevelUpGraphic) == 0x1f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealQuestGraphic) == 0x1f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealRecallGraphic) == 0x1fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealLevelUpOffset) == 0x200);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealMainLevelUpOffset) == 0x208);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsGraphic) == 0x210);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsPos) == 0x214);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsAlpha) == 0x21c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsTopGraphic) == 0x220);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsTopOffset) == 0x224);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleGraphic) == 0x22c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleOffset) == 0x230);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleUpGraphic) == 0x238);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleRightGraphic) == 0x23c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleDownGraphic) == 0x240);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleLeftGraphic) == 0x244);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsFavouriteGraphic) == 0x248);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsTopFavouriteGraphic) == 0x24c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, WhiteButtonGraphic) == 0x250);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, WhiteButtonPos) == 0x254);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, WhiteButtonIconOffset) == 0x25c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, WhiteButtonTooltipOffset) == 0x264);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BlackButtonGraphic) == 0x26c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BlackButtonPos) == 0x270);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BlackButtonIconOffset) == 0x278);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BlackButtonTooltipOffset) == 0x280);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTLGraphic) == 0x288);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTMGraphic) == 0x28c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTRGraphic) == 0x290);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMLGraphic) == 0x294);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMRGraphic) == 0x298);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBLGraphic) == 0x29c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBMGraphic) == 0x2a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBRGraphic) == 0x2a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBackGraphic) == 0x2a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMaxWidth) == 0x2ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMinWidth) == 0x2b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMaxHeight) == 0x2b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMinHeight) == 0x2b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBorderWidth) == 0x2bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBorderHeight) == 0x2c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxCutsceneSecondsBeforeSkip) == 0x2c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxMaxWidth) == 0x2c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxMiddleGraphic) == 0x2cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxLeftOffset) == 0x2d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxRightOffset) == 0x2d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxStartGraphic) == 0x2e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxEndGraphic) == 0x2e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxGoldGraphic) == 0x2e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxGoldGainEffect) == 0x2ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxGoldLossEffect) == 0x2f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockPos) == 0x2f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockFaceGraphic) == 0x2fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockHandGraphic) == 0x300);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockRingPos) == 0x304);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockRingGraphic) == 0x30c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModePos) == 0x310);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeOffset) == 0x318);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeInnerOffset) == 0x320);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeBorderGraphic) == 0x328);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeLockOffGraphic) == 0x32c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeLockOnGraphic) == 0x330);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeSneakOffGraphic) == 0x334);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeSneakOnGraphic) == 0x338);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeSafetyOffGraphic) == 0x33c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeSafetyOnGraphic) == 0x340);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeTextOffset) == 0x344);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatPos) == 0x34c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatLockedOffset) == 0x354);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatLockedGraphics) == 0x35c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatRingOffset) == 0x368);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatRingGraphic) == 0x370);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCurrentOffset) == 0x374);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCurrentTextOffset) == 0x37c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCountOffsets) == 0x384);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCountEmptyGraphic) == 0x390);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCountGraphics) == 0x394);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatRingGraphics) == 0x3a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatRingBlackGraphic) == 0x3ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatRingWhiteGraphic) == 0x3b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCrossGraphic) == 0x3b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCrossOffset) == 0x3b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatMiddleOffset) == 0x3c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatMiddleMinWidth) == 0x3c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatMiddleGraphic) == 0x3cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatEndGraphic) == 0x3d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperiencePos) == 0x3d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceGraphic) == 0x3dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceGeneralGraphic) == 0x3e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceSkillGraphic) == 0x3e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceStrengthGraphic) == 0x3e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceWillGraphic) == 0x3ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceTextOffset) == 0x3f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceTextColour) == 0x3f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceMiddleOffset) == 0x3fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceMiddleMinWidth) == 0x404);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceMiddleGraphic) == 0x408);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceEndGraphic) == 0x40c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimePos) == 0x410);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeTextOffset) == 0x418);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeTextColour) == 0x420);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeTextAlertColour) == 0x424);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeWarningGraphic) == 0x428);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeCriminalGraphic) == 0x42c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarGraphic) == 0x430);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarIconOffset) == 0x434);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarBorderOffset) == 0x43c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrosshairOffsets) == 0x444);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrosshairGraphics) == 0x450);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrosshairGreenGraphics) == 0x45c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameFishingLeftGraphic) == 0x468);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameFishingRightGraphic) == 0x46c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameBettingGraphic) == 0x470);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameDiggingGraphic) == 0x474);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGamePickpocketGraphic) == 0x478);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGamePicklockGraphic) == 0x47c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameStealGraphic) == 0x480);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameTrophyGotGraphic) == 0x484);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameTrophyLeftGraphic) == 0x488);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackEffect) == 0x48c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackAlphaFadePerFrame) == 0x490);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackAlphaStartValue) == 0x494);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackAlphaEndValue) == 0x498);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackScaleFactorPerFrame) == 0x49c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackTimeToRotateSeconds) == 0x4a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyPos) == 0x4a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyTextOffset) == 0x4ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyTextRightOffset) == 0x4b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyWidth) == 0x4bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyTextColour) == 0x4c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyIncreaseTextColour) == 0x4c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyDecreaseTextColour) == 0x4c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyChangeStartOffset) == 0x4cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyChangeEndOffset) == 0x4d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyChangeTextSpeed) == 0x4dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBarsFontName) == 0x4e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SecondsForStatsBarsToAppear) == 0x4e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SecondsBeforeStatsBackBarMoves) == 0x4e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SecondsToShowStatsBars) == 0x4ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SecondsForStatsBarsToDisappear) == 0x4f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdatePos) == 0x4f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityGoodPos) == 0x4fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityEvilPos) == 0x504);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateRenownPos) == 0x50c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateTextOffset) == 0x514);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateTextColour) == 0x51c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateDisplayDuration) == 0x520);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateWaitingDuration) == 0x524);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateEffectOffset) == 0x528);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityGoodGraphic) == 0x530);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityEvilGraphic) == 0x534);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityGoodEffect) == 0x538);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityEvilEffect) == 0x53c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateColours) == 0x540);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateGraphics) == 0x54c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateEffects) == 0x558);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AutoPickupPos) == 0x564);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoPos) == 0x56c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoBarOffsetX) == 0x574);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoGraphicWidth) == 0x578);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoGraphicHeight) == 0x57c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoGraphicMinHeight) == 0x580);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoSecondsToScroll) == 0x584);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoSecondsToAppear) == 0x588);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoTurncoatColour) == 0x58c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoTickGraphic) == 0x590);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, OracleSymbolPos) == 0x594);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, OracleSymbolOffset) == 0x59c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextAreaTLPos) == 0x5a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextAreaBRPos) == 0x5ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextColour) == 0x5b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextGameInfoColour) == 0x5b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextGameActionColour) == 0x5bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonGraphicOffset) == 0x5c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonOffsetY) == 0x5c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonInBoxOffsetY) == 0x5cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonGapWidth) == 0x5d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonTextFontName) == 0x5d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxConfirmGraphic) == 0x5d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxCancelGraphic) == 0x5dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxThirdGraphic) == 0x5e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxSkipCutsceneGraphic) == 0x5e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonASoundCriteria) == 0x5e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonBSoundCriteria) == 0x5ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeButtonGraphic) == 0x5f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeMouseButtonGraphic) == 0x5f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeMouseButtonLeftGraphic) == 0x5f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeButtonOffset) == 0x5fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeButtonLeftOffset) == 0x604);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxFishingReelTextPos) == 0x60c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxFishingReelGraphicOffset) == 0x614);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingGraphicPos) == 0x61c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingUpOffset) == 0x624);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingDownOffset) == 0x62c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingLeftOffset) == 0x634);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingRightOffset) == 0x63c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ReceiveItemsSoundCriteria) == 0x644);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerAGraphic) == 0x648);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerBGraphic) == 0x64c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerXGraphic) == 0x650);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerYGraphic) == 0x654);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerDPadGraphic) == 0x658);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerDPadDownGraphic) == 0x65c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerDPadLeftGraphic) == 0x660);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerDPadRightGraphic) == 0x664);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerDPadUpGraphic) == 0x668);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerThumbLeftGraphic) == 0x66c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerThumbRightGraphic) == 0x670);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerThumbClickLeftGraphic) == 0x674);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerThumbClickRightGraphic) == 0x678);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerBackGraphic) == 0x67c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerStartGraphic) == 0x680);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerTriggerLeftGraphic) == 0x684);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerTriggerRightGraphic) == 0x688);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerTriggerBlackGraphic) == 0x68c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerTriggerWhiteGraphic) == 0x690);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerGraphicOffset) == 0x694);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerGraphicTextOffset) == 0x69c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerClickGraphicTextOffset) == 0x6a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerTriggerGraphicTextOffset) == 0x6ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuConfirmPos) == 0x6b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuConfirmTextPos) == 0x6bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuConfirmGraphic) == 0x6c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuCancelPos) == 0x6c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuCancelTextPos) == 0x6d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuCancelGraphic) == 0x6d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessDPadGraphic) == 0x6dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessMenuGraphic) == 0x6e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessLampEffect) == 0x6e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessGuildSealEffect) == 0x6e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessMainGuildSealEffect) == 0x6ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessEffectOffset) == 0x6f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessAbilityCrossOffset) == 0x6f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarSingleGraphic) == 0x700);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarMainGraphic) == 0x704);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarEndGraphics) == 0x708);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarOffset) == 0x714);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarEndOffset) == 0x71c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarItemWidth) == 0x724);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessItemButtons) == 0x728);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ContextSensitiveItemButtons) == 0x734);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingCursorSectionEnemyEmptyGraphic) == 0x740);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CompassGraphic) == 0x744);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CompassPos) == 0x748);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CompassShadowGraphic) == 0x750);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CompassShadowOffset) == 0x754);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonTalkGraphic) == 0x75c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonActivateGraphic) == 0x760);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonBlockGraphic) == 0x764);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonUnarmedGraphic) == 0x768);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonMeleeGraphic) == 0x76c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonRangedGraphic) == 0x770);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheAxeGraphic) == 0x774);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheBowGraphic) == 0x778);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheMaceGraphic) == 0x77c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheStickGraphic) == 0x780);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheSwordGraphic) == 0x784);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishEffectPos) == 0x788);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishGraphic) == 0x790);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishGraphicOffset) == 0x794);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYButtonMiddleGraphic) == 0x79c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityLevelInitialOffset) == 0x7a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityLevelOffset) == 0x7a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityUnavailableGraphic) == 0x7b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityUncastableGraphic) == 0x7b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilitySwitchGraphic) == 0x7b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityShieldOffGraphic) == 0x7bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRunGraphic) == 0x7c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYTargetingEnterGraphic) == 0x7c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYTargetingCancelGraphic) == 0x7c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYButtonFadeDurationSeconds) == 0x7cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderLeftGraphic) == 0x7d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderLeftPos) == 0x7d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightGraphic) == 0x7dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightPos) == 0x7e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonBorderGraphic) == 0x7e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonBorderOffset) == 0x7ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonTooltipOffset) == 0x7f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtons) == 0x7fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SpecialAbilityButtons) == 0x808);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitPos) == 0x814);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroPos) == 0x81c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroOffset) == 0x824);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitGraphics) == 0x82c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionDisplayPos) == 0x838);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InfoDisplayPos) == 0x840);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarLeftGraphic) == 0x848);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarLeftGlowGraphic) == 0x84c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarMiddleGraphic) == 0x850);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarMiddleGlowGraphic) == 0x854);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarRightGraphic) == 0x858);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarRightGlowGraphic) == 0x85c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarInnerGraphic) == 0x860);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarInnerGraphicOffset) == 0x864);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightStartColour) == 0x86c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightEndColour) == 0x878);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightStartWidthWorldSpace) == 0x884);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightEndWidthWorldSpace) == 0x890);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightStartWidthScreenSpace) == 0x89c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightEndWidthScreenSpace) == 0x8a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightFadeSteps) == 0x8b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, NumberOfSecondsForContainerItemToReachFullSize) == 0x8c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ContainerItemDisplayAreaTLPos) == 0x8c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ContainerItemDisplayAreaBRPos) == 0x8cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, NumberOfSecondsForContainerItemToRotate) == 0x8d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, NumberOfSecondsForContainerItemToStayAtFullSize) == 0x8d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ContainerItemDisplayBackgroundColour) == 0x8dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageTextPos) == 0x8e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageTextColour) == 0x8e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageTextDropShadowOffset) == 0x8ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageTextDropShadowColour) == 0x8f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageFont) == 0x8f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageNextMessageTextOffset) == 0x8fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MaximumNumberOfScreenMessages) == 0x904);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, NumberOfSecondsScreenMessageStaysOnScreen) == 0x908);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, NumberOfCharactersScreenMessageAddsPerFrame) == 0x90c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TutorialText) == 0x910);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TutorialLogBookText) == 0x91c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TutorialGuildSealGraphics) == 0x928);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScriptSprites) == 0x934);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GameActionValues) == 0x940);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapGraphics) == 0x94c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapMarkerGraphics) == 0x958);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapScreenOrigin) == 0x964);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapScreenSize) == 0x96c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapScreenRadius) == 0x974);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapTextureWidth) == 0x978);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapMarkerTextureWidth) == 0x97c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapWorldResolution) == 0x980);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapPassableColour) == 0x984);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapImpassableColour) == 0x988);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapWaterColour) == 0x98c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapMaplessColour) == 0x990);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapImpassableWaterColour) == 0x994);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MaxMinimapZoneColours) == 0x998);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MaxMinimapThemeColours) == 0x99c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MinimapZoneColours) == 0x9a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MinimapThemeColours) == 0x9ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTLOffset) == 0x9b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTMOffset) == 0x9c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTROffset) == 0x9c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBLOffset) == 0x9d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBMOffset) == 0x9d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBROffset) == 0x9e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTLGraphic) == 0x9e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTMGraphic) == 0x9ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTRGraphic) == 0x9f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBLGraphic) == 0x9f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBMGraphic) == 0x9f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBRGraphic) == 0x9fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBorderLeftOffset) == 0xa00);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBorderRightOffset) == 0xa08);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBorderLeftGraphic) == 0xa10);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBorderRightGraphic) == 0xa14);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeGuildSealBorderGraphic) == 0xa18);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeGuildSealBorderOffset) == 0xa1c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeGuildSealGraphics) == 0xa24);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, LoadProgressBarLeftGraphic) == 0xa30);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, LoadProgressBarMidGraphic) == 0xa34);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, LoadProgressBarRightGraphic) == 0xa38);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, LoadProgressBarInnerGraphic) == 0xa3c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, LoadProgressBackdropGraphics) == 0xa40);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTLOffset) == 0xa4c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTMOffset) == 0xa54);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTROffset) == 0xa5c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBLOffset) == 0xa64);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBMOffset) == 0xa6c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBROffset) == 0xa74);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTLGraphic) == 0xa7c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTMGraphic) == 0xa80);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTRGraphic) == 0xa84);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBLGraphic) == 0xa88);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBMGraphic) == 0xa8c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBRGraphic) == 0xa90);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionGraphFileName) == 0xa94);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseCursorScaleX) == 0xa98);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseCursorScaleY) == 0xa9c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseCursorGraphic) == 0xaa0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseLMBGraphic) == 0xaa4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseMMBGraphic) == 0xaa8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseRMBGraphic) == 0xaac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseOverlayGraphic) == 0xab0);
+#else
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CPlayerGuiDef = 0xb50.
+// Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CPlayerGuiDef = 0xab4.
+// Retail evidence: 0 trusted landed function(s); reconciliation clean.
+// Retail layout check (chunk 855): ControllerAGraphic .. ControllerTriggerWhiteGraphic at +0x648 .. +0x690 (row 0x00490BE0 reads them
+// for the L"A" .. L"WHITE" button tags), ScriptSprites at +0x934 (landed 0x0064A37B / 0x006E77F0), TextBoxTextAreaTLPos at +0x5A4
+// (chunk 784's 0x00491AD2 evidence): the generated STLport layout agrees at each.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+// Retail opt-in (Codex pass20): both PDBs name these vectors; native reads434/438 and43c/440.
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_CRIME
+#include "engine/C2DVector.h"
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_MINIGAME_OFFSET
+#include "engine/C2DVector.h"
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
+#include "engine/C2DVector.h"
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUICKACCESSEFFECTOFFSET
+// Retail opt-in (row 0x0064546F CDrawQuickAccessIcons::DrawEffectAtPos): QuickAccessEffectOffset typed as its Ego_r.pdb type C2DVector at retail +0x6F0.
+#include "engine/C2DVector.h"
+#endif
+#include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_PROGRESS
+#include "stlport/fable_containers.h"
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUESTINFO
+#include "engine/C2DVector.h"
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_TARGETING
+#include "engine/C2DVector.h"
+#include "engine/CRGBColour.h"
+#include "stlport/fable_containers.h"
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_SCRIPTSPRITES
+// Retail opt-in (chunk 855, row 0x00490BE0 CSubtitleRenderer::GetGraphicFromEmbeddedTag): ScriptSprites typed as its Ego_r.pdb type
+// map<CCharString,long> (STLport 4.6, 0xC bytes) at retail +0x934. Evidence: the row looks the tag up at def+0x934 through the
+// _Rb_tree<CCharString,...>::_M_find<CCharString> 0x0042B467 and reads the mapped long at node +0x14; the CPlayerGuiDef binder
+// registers def+0x934 under the member-name string "ScriptSprites" (0x012362CC, 0x00474C8F..0x00474C9D, engine/CGameScriptInterface.h).
+#include "fable_string.h"
+#include "stlport/fable_map.h"
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_ABILITYBUTTONS
+// Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): AbilityButtons typed as its Ego_r.pdb type
+// vector<CAbilityButtonGuiDef> (STLport 4.6, 0xC bytes) at retail +0x7FC. Evidence: the CPlayerGui ctor sizes its three button vectors
+// with (def+0x800 - def+0x7FC) / 0x5C (`imul 0B21642C9h ; add ; sar 6`, 0x0043B95F); CAbilityButtonGuiDef is 96 bytes in Ego_r.pdb
+// (a 0x40-byte base, then ControllerType +0x40 .. Offset +0x58), 0x5C in retail (the base 4 bytes smaller: one STLport container).
+// Only the element size is needed here; the members are the PDB's at retail offsets (base opaque).
+#include "stlport/fable_containers.h"
+class CAbilityButtonGuiDef {
+public:
+    unsigned char _base[0x3c];                                           // +0x00 base (opaque)
+    long ControllerType;                                                 // +0x3c EControllerType
+    long ControllerButton;                                               // +0x40 EXboxControllerButton
+    long MouseButton;                                                    // +0x44 EMouseButtonControl
+    long ButtonGraphic;                                                  // +0x48
+    float Position_X, Position_Y;                                        // +0x4c C2DVector Position
+    float Offset_X, Offset_Y;                                            // +0x54 C2DVector Offset
+};
+FABLE_STATIC_ASSERT(sizeof(CAbilityButtonGuiDef) == 0x5c);
+#endif
+
+class CCharStringData;
+
+#pragma pack(push, 1)
+class CPlayerGuiDef {
+public:
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    _pad_0x28[0x1];                         // +0x28
+    unsigned char    _pad_0x29[0x13];                        // +0x29
+    long             InventoryNoMovementSound;               // +0x3c
+    float            SecondsToFadeWholeGui;                  // +0x40
+    float            AlphaValueToFadeWholeGui;               // +0x44
+    unsigned char    AmbientColour[0x4];                     // +0x48 CRGBColour
+    unsigned char    DiffuseColour[0x4];                     // +0x4c CRGBColour
+    unsigned char    BacklightColour[0x4];                   // +0x50 CRGBColour
+    float            DiffuseVector_X;                        // +0x54 C3DVector::X
+    float            DiffuseVector_Y;                        // +0x58 C3DVector::Y
+    float            DiffuseVector_Z;                        // +0x5c C3DVector::Z
+    float            GuildSealPos_X;                         // +0x60 C2DVector::X
+    float            GuildSealPos_Y;                         // +0x64 C2DVector::Y
+    long             GuildSealFlashCycles;                   // +0x68
+    float            GuildSealFlashCycleSeconds;             // +0x6c
+    float            GuildSealReminderTimeSeconds;           // +0x70
+    float            HealthBarPos_X;                         // +0x74 C2DVector::X
+    float            HealthBarPos_Y;                         // +0x78 C2DVector::Y
+    long             HealthBarLeftGraphic;                   // +0x7c
+    float            HealthBarMiddleOffset_X;                // +0x80 C2DVector::X
+    float            HealthBarMiddleOffset_Y;                // +0x84 C2DVector::Y
+    float            HealthBarMiddleLength;                  // +0x88
+    long             HealthBarMiddleGraphic;                 // +0x8c
+    long             HealthBarRightGraphic;                  // +0x90
+    float            HealthBarHealthOffset_X;                // +0x94 C2DVector::X
+    float            HealthBarHealthOffset_Y;                // +0x98 C2DVector::Y
+    long             HealthBarHealthGraphic;                 // +0x9c
+    long             HealthBarHealthEvilGraphic;             // +0xa0
+    long             HealthBarHealthGoodGraphic;             // +0xa4
+    float            HealthBarHealthEffectOffset_X;          // +0xa8 C2DVector::X
+    float            HealthBarHealthEffectOffset_Y;          // +0xac C2DVector::Y
+    float            HealthBarHealthIncreaseEffectOffset_X;  // +0xb0 C2DVector::X
+    float            HealthBarHealthIncreaseEffectOffset_Y;  // +0xb4 C2DVector::Y
+    long             HealthBarHealthDefaultEffect;           // +0xb8
+    long             HealthBarHealthIncreaseEffect;          // +0xbc
+    long             HealthBarHealthLevelUpEffect;           // +0xc0
+    long             HealthBarHealthAdrenalineEffect;        // +0xc4
+    long             HealthBarHealthBerserkEffect;           // +0xc8
+    long             HealthBarHealthLowHealthEffect;         // +0xcc
+    float            HealthBarHealthLowPercentage;           // +0xd0
+    float            HealthBarHealthInnerOffset_X;           // +0xd4 C2DVector::X
+    float            HealthBarHealthInnerOffset_Y;           // +0xd8 C2DVector::Y
+    long             HealthBarHealthInnerGraphic;            // +0xdc
+    long             HealthBarHealthEndGraphic;              // +0xe0
+    float            HealthBarResurrectionOffset_X;          // +0xe4 C2DVector::X
+    float            HealthBarResurrectionOffset_Y;          // +0xe8 C2DVector::Y
+    unsigned char    HealthBarResurrectionColour[0x4];       // +0xec CRGBColour
+    float            HealthBarStaminaBackOffset_X;           // +0xf0 C2DVector::X
+    float            HealthBarStaminaBackOffset_Y;           // +0xf4 C2DVector::Y
+    float            HealthBarStaminaOffset_X;               // +0xf8 C2DVector::X
+    float            HealthBarStaminaOffset_Y;               // +0xfc C2DVector::Y
+    long             HealthBarStaminaGraphic;                // +0x100
+    float            HealthBarStaminaInnerOffset_X;          // +0x104 C2DVector::X
+    float            HealthBarStaminaInnerOffset_Y;          // +0x108 C2DVector::Y
+    long             HealthBarStaminaInnerGraphic;           // +0x10c
+    long             HealthBarStaminaEndGraphic;             // +0x110
+    float            HealthBarStaminaEffectOffset_X;         // +0x114 C2DVector::X
+    float            HealthBarStaminaEffectOffset_Y;         // +0x118 C2DVector::Y
+    float            HealthBarStaminaIncreaseEffectOffset_X; // +0x11c C2DVector::X
+    float            HealthBarStaminaIncreaseEffectOffset_Y; // +0x120 C2DVector::Y
+    float            HealthBarStaminaIncreaseEffectWidth;    // +0x124
+    float            HealthBarStaminaIncreaseEffectSegmentWidth; // +0x128
+    long             HealthBarStaminaDefaultEffect;          // +0x12c
+    long             HealthBarStaminaIncreaseEffect;         // +0x130
+    long             HealthBarStaminaIncreaseSegmentEffect;  // +0x134
+    float            StealthEyePos_X;                        // +0x138 C2DVector::X
+    float            StealthEyePos_Y;                        // +0x13c C2DVector::Y
+    long             StealthEyeFriendGraphic;                // +0x140
+    long             StealthEyeNeutralGraphic;               // +0x144
+    long             StealthEyeEnemyGraphic;                 // +0x148
+    long             StealthEyeQuestionMarkGraphic;          // +0x14c
+    unsigned char    StealthEyeGraphicFrames[0xc];           // +0x150 vector<long,std::allocator<long>_>
+    float            StealthEyeTextOffset_X;                 // +0x15c C2DVector::X
+    float            StealthEyeTextOffset_Y;                 // +0x160 C2DVector::Y
+    float            StealthEyeSecondsToOpen;                // +0x164
+    float            StealthEyeSecondsToThrob;               // +0x168
+    float            StealthEyeThrobScale;                   // +0x16c
+    long             DPadRingsGraphic;                       // +0x170
+    float            DPadRingsPos_X;                         // +0x174 C2DVector::X
+    float            DPadRingsPos_Y;                         // +0x178 C2DVector::Y
+    long             DPadRingsTopGraphic;                    // +0x17c
+    float            DPadRingsTopOffset_X;                   // +0x180 C2DVector::X
+    float            DPadRingsTopOffset_Y;                   // +0x184 C2DVector::Y
+    long             DPadRingsExtendGraphic;                 // +0x188
+    unsigned char    DPadRingsChargeGraphics[0xc];           // +0x18c vector<long,std::allocator<long>_>
+    unsigned char    DPadRingsChargeOffsets[0xc];            // +0x198 vector<C2DVector,std::allocator<C2DVector>_>
+    unsigned char    DPadRingsChargeAngles[0xc];             // +0x1a4 vector<float,std::allocator<float>_>
+    long             DPadRingsFavouriteGraphic;              // +0x1b0
+    long             DPadRingsTopFavouriteGraphic;           // +0x1b4
+    long             DPadRingsTopAggressiveGraphic;          // +0x1b8
+    long             DPadGuildSealLevelUpGraphic;            // +0x1bc
+    float            DPadGuildSealTooltipOffset_X;           // +0x1c0 C2DVector::X
+    float            DPadGuildSealTooltipOffset_Y;           // +0x1c4 C2DVector::Y
+    float            DPadMiddleOffset_X;                     // +0x1c8 C2DVector::X
+    float            DPadMiddleOffset_Y;                     // +0x1cc C2DVector::Y
+    long             DPadArrowUpGraphic;                     // +0x1d0
+    long             DPadArrowUpDepGraphic;                  // +0x1d4
+    long             DPadArrowRightGraphic;                  // +0x1d8
+    long             DPadArrowRightDepGraphic;               // +0x1dc
+    long             DPadArrowDownGraphic;                   // +0x1e0
+    long             DPadArrowDownDepGraphic;                // +0x1e4
+    long             DPadArrowLeftGraphic;                   // +0x1e8
+    long             DPadArrowLeftDepGraphic;                // +0x1ec
+    long             DPadGuildSealRecallGraphic;             // +0x1f0
+    long             GuildSealLevelUpGraphic;                // +0x1f4
+    long             GuildSealQuestGraphic;                  // +0x1f8
+    long             GuildSealRecallGraphic;                 // +0x1fc
+    float            GuildSealLevelUpOffset_X;               // +0x200 C2DVector::X
+    float            GuildSealLevelUpOffset_Y;               // +0x204 C2DVector::Y
+    float            GuildSealMainLevelUpOffset_X;           // +0x208 C2DVector::X
+    float            GuildSealMainLevelUpOffset_Y;           // +0x20c C2DVector::Y
+    long             ABXYRingsGraphic;                       // +0x210
+    float            ABXYRingsPos_X;                         // +0x214 C2DVector::X
+    float            ABXYRingsPos_Y;                         // +0x218 C2DVector::Y
+    long             ABXYRingsAlpha;                         // +0x21c
+    long             ABXYRingsTopGraphic;                    // +0x220
+    float            ABXYRingsTopOffset_X;                   // +0x224 C2DVector::X
+    float            ABXYRingsTopOffset_Y;                   // +0x228 C2DVector::Y
+    long             ABXYMiddleGraphic;                      // +0x22c
+    float            ABXYMiddleOffset_X;                     // +0x230 C2DVector::X
+    float            ABXYMiddleOffset_Y;                     // +0x234 C2DVector::Y
+    long             ABXYMiddleUpGraphic;                    // +0x238
+    long             ABXYMiddleRightGraphic;                 // +0x23c
+    long             ABXYMiddleDownGraphic;                  // +0x240
+    long             ABXYMiddleLeftGraphic;                  // +0x244
+    long             ABXYRingsFavouriteGraphic;              // +0x248
+    long             ABXYRingsTopFavouriteGraphic;           // +0x24c
+    long             WhiteButtonGraphic;                     // +0x250
+    float            WhiteButtonPos_X;                       // +0x254 C2DVector::X
+    float            WhiteButtonPos_Y;                       // +0x258 C2DVector::Y
+    float            WhiteButtonIconOffset_X;                // +0x25c C2DVector::X
+    float            WhiteButtonIconOffset_Y;                // +0x260 C2DVector::Y
+    float            WhiteButtonTooltipOffset_X;             // +0x264 C2DVector::X
+    float            WhiteButtonTooltipOffset_Y;             // +0x268 C2DVector::Y
+    long             BlackButtonGraphic;                     // +0x26c
+    float            BlackButtonPos_X;                       // +0x270 C2DVector::X
+    float            BlackButtonPos_Y;                       // +0x274 C2DVector::Y
+    float            BlackButtonIconOffset_X;                // +0x278 C2DVector::X
+    float            BlackButtonIconOffset_Y;                // +0x27c C2DVector::Y
+    float            BlackButtonTooltipOffset_X;             // +0x280 C2DVector::X
+    float            BlackButtonTooltipOffset_Y;             // +0x284 C2DVector::Y
+    long             TextBoxTLGraphic;                       // +0x288
+    long             TextBoxTMGraphic;                       // +0x28c
+    long             TextBoxTRGraphic;                       // +0x290
+    long             TextBoxMLGraphic;                       // +0x294
+    long             TextBoxMRGraphic;                       // +0x298
+    long             TextBoxBLGraphic;                       // +0x29c
+    long             TextBoxBMGraphic;                       // +0x2a0
+    long             TextBoxBRGraphic;                       // +0x2a4
+    long             TextBoxBackGraphic;                     // +0x2a8
+    float            TextBoxMaxWidth;                        // +0x2ac
+    float            TextBoxMinWidth;                        // +0x2b0
+    float            TextBoxMaxHeight;                       // +0x2b4
+    float            TextBoxMinHeight;                       // +0x2b8
+    float            TextBoxBorderWidth;                     // +0x2bc
+    float            TextBoxBorderHeight;                    // +0x2c0
+    float            TextBoxCutsceneSecondsBeforeSkip;       // +0x2c4
+    float            StatBoxMaxWidth;                        // +0x2c8
+    long             StatBoxMiddleGraphic;                   // +0x2cc
+    float            StatBoxLeftOffset_X;                    // +0x2d0 C2DVector::X
+    float            StatBoxLeftOffset_Y;                    // +0x2d4 C2DVector::Y
+    float            StatBoxRightOffset_X;                   // +0x2d8 C2DVector::X
+    float            StatBoxRightOffset_Y;                   // +0x2dc C2DVector::Y
+    long             StatBoxStartGraphic;                    // +0x2e0
+    long             StatBoxEndGraphic;                      // +0x2e4
+    long             StatBoxGoldGraphic;                     // +0x2e8
+    long             StatBoxGoldGainEffect;                  // +0x2ec
+    long             StatBoxGoldLossEffect;                  // +0x2f0
+    float            ClockPos_X;                             // +0x2f4 C2DVector::X
+    float            ClockPos_Y;                             // +0x2f8 C2DVector::Y
+    long             ClockFaceGraphic;                       // +0x2fc
+    long             ClockHandGraphic;                       // +0x300
+    float            ClockRingPos_X;                         // +0x304 C2DVector::X
+    float            ClockRingPos_Y;                         // +0x308 C2DVector::Y
+    long             ClockRingGraphic;                       // +0x30c
+    float            ModePos_X;                              // +0x310 C2DVector::X
+    float            ModePos_Y;                              // +0x314 C2DVector::Y
+    float            ModeOffset_X;                           // +0x318 C2DVector::X
+    float            ModeOffset_Y;                           // +0x31c C2DVector::Y
+    float            ModeInnerOffset_X;                      // +0x320 C2DVector::X
+    float            ModeInnerOffset_Y;                      // +0x324 C2DVector::Y
+    long             ModeBorderGraphic;                      // +0x328
+    long             ModeLockOffGraphic;                     // +0x32c
+    long             ModeLockOnGraphic;                      // +0x330
+    long             ModeSneakOffGraphic;                    // +0x334
+    long             ModeSneakOnGraphic;                     // +0x338
+    long             ModeSafetyOffGraphic;                   // +0x33c
+    long             ModeSafetyOnGraphic;                    // +0x340
+    float            ModeTextOffset_X;                       // +0x344 C2DVector::X
+    float            ModeTextOffset_Y;                       // +0x348 C2DVector::Y
+    float            CombatPos_X;                            // +0x34c C2DVector::X
+    float            CombatPos_Y;                            // +0x350 C2DVector::Y
+    float            CombatLockedOffset_X;                   // +0x354 C2DVector::X
+    float            CombatLockedOffset_Y;                   // +0x358 C2DVector::Y
+    unsigned char    CombatLockedGraphics[0xc];              // +0x35c vector<long,std::allocator<long>_>
+    float            CombatRingOffset_X;                     // +0x368 C2DVector::X
+    float            CombatRingOffset_Y;                     // +0x36c C2DVector::Y
+    long             CombatRingGraphic;                      // +0x370
+    float            CombatCurrentOffset_X;                  // +0x374 C2DVector::X
+    float            CombatCurrentOffset_Y;                  // +0x378 C2DVector::Y
+    float            CombatCurrentTextOffset_X;              // +0x37c C2DVector::X
+    float            CombatCurrentTextOffset_Y;              // +0x380 C2DVector::Y
+    unsigned char    CombatCountOffsets[0xc];                // +0x384 vector<C2DVector,std::allocator<C2DVector>_>
+    long             CombatCountEmptyGraphic;                // +0x390
+    unsigned char    CombatCountGraphics[0xc];               // +0x394 vector<long,std::allocator<long>_>
+    unsigned char    CombatRingGraphics[0xc];                // +0x3a0 vector<long,std::allocator<long>_>
+    long             CombatRingBlackGraphic;                 // +0x3ac
+    long             CombatRingWhiteGraphic;                 // +0x3b0
+    long             CombatCrossGraphic;                     // +0x3b4
+    float            CombatCrossOffset_X;                    // +0x3b8 C2DVector::X
+    float            CombatCrossOffset_Y;                    // +0x3bc C2DVector::Y
+    float            CombatMiddleOffset_X;                   // +0x3c0 C2DVector::X
+    float            CombatMiddleOffset_Y;                   // +0x3c4 C2DVector::Y
+    float            CombatMiddleMinWidth;                   // +0x3c8
+    long             CombatMiddleGraphic;                    // +0x3cc
+    long             CombatEndGraphic;                       // +0x3d0
+    float            ExperiencePos_X;                        // +0x3d4 C2DVector::X
+    float            ExperiencePos_Y;                        // +0x3d8 C2DVector::Y
+    long             ExperienceGraphic;                      // +0x3dc
+    long             ExperienceGeneralGraphic;               // +0x3e0
+    long             ExperienceSkillGraphic;                 // +0x3e4
+    long             ExperienceStrengthGraphic;              // +0x3e8
+    long             ExperienceWillGraphic;                  // +0x3ec
+    float            ExperienceTextOffset_X;                 // +0x3f0 C2DVector::X
+    float            ExperienceTextOffset_Y;                 // +0x3f4 C2DVector::Y
+    unsigned char    ExperienceTextColour[0x4];              // +0x3f8 CRGBColour
+    float            ExperienceMiddleOffset_X;               // +0x3fc C2DVector::X
+    float            ExperienceMiddleOffset_Y;               // +0x400 C2DVector::Y
+    float            ExperienceMiddleMinWidth;               // +0x404
+    long             ExperienceMiddleGraphic;                // +0x408
+    long             ExperienceEndGraphic;                   // +0x40c
+    float            CrimePos_X;                             // +0x410 C2DVector::X
+    float            CrimePos_Y;                             // +0x414 C2DVector::Y
+    float            CrimeTextOffset_X;                      // +0x418 C2DVector::X
+    float            CrimeTextOffset_Y;                      // +0x41c C2DVector::Y
+    unsigned char    CrimeTextColour[0x4];                   // +0x420 CRGBColour
+    unsigned char    CrimeTextAlertColour[0x4];              // +0x424 CRGBColour
+    long             CrimeWarningGraphic;                    // +0x428
+    long             CrimeCriminalGraphic;                   // +0x42c
+    long             CrimeBarGraphic;                        // +0x430
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_CRIME
+    C2DVector CrimeBarIconOffset;
+#else
+    float            CrimeBarIconOffset_X;                   // +0x434 C2DVector::X
+    float            CrimeBarIconOffset_Y;                   // +0x438 C2DVector::Y
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_CRIME
+    C2DVector CrimeBarBorderOffset;
+#else
+    float            CrimeBarBorderOffset_X;                 // +0x43c C2DVector::X
+    float            CrimeBarBorderOffset_Y;                 // +0x440 C2DVector::Y
+#endif
+    unsigned char    CrosshairOffsets[0xc];                  // +0x444 vector<C2DVector,std::allocator<C2DVector>_>
+    unsigned char    CrosshairGraphics[0xc];                 // +0x450 vector<long,std::allocator<long>_>
+    unsigned char    CrosshairGreenGraphics[0xc];            // +0x45c vector<long,std::allocator<long>_>
+    long             MiniGameFishingLeftGraphic;             // +0x468
+    long             MiniGameFishingRightGraphic;            // +0x46c
+    long             MiniGameBettingGraphic;                 // +0x470
+    long             MiniGameDiggingGraphic;                 // +0x474
+    long             MiniGamePickpocketGraphic;              // +0x478
+    long             MiniGamePicklockGraphic;                // +0x47c
+    long             MiniGameStealGraphic;                   // +0x480
+    long             MiniGameTrophyGotGraphic;               // +0x484
+    long             MiniGameTrophyLeftGraphic;              // +0x488
+    long             SmackEffect;                            // +0x48c
+    long             SmackAlphaFadePerFrame;                 // +0x490
+    long             SmackAlphaStartValue;                   // +0x494
+    long             SmackAlphaEndValue;                     // +0x498
+    float            SmackScaleFactorPerFrame;               // +0x49c
+    float            SmackTimeToRotateSeconds;               // +0x4a0
+    float            MoneyPos_X;                             // +0x4a4 C2DVector::X
+    float            MoneyPos_Y;                             // +0x4a8 C2DVector::Y
+    float            MoneyTextOffset_X;                      // +0x4ac C2DVector::X
+    float            MoneyTextOffset_Y;                      // +0x4b0 C2DVector::Y
+    float            MoneyTextRightOffset_X;                 // +0x4b4 C2DVector::X
+    float            MoneyTextRightOffset_Y;                 // +0x4b8 C2DVector::Y
+    float            MoneyWidth;                             // +0x4bc
+    unsigned char    MoneyTextColour[0x4];                   // +0x4c0 CRGBColour
+    unsigned char    MoneyIncreaseTextColour[0x4];           // +0x4c4 CRGBColour
+    unsigned char    MoneyDecreaseTextColour[0x4];           // +0x4c8 CRGBColour
+    float            MoneyChangeStartOffset_X;               // +0x4cc C2DVector::X
+    float            MoneyChangeStartOffset_Y;               // +0x4d0 C2DVector::Y
+    float            MoneyChangeEndOffset_X;                 // +0x4d4 C2DVector::X
+    float            MoneyChangeEndOffset_Y;                 // +0x4d8 C2DVector::Y
+    float            MoneyChangeTextSpeed;                   // +0x4dc
+    CCharStringData* StatBarsFontName_PStringData;           // +0x4e0 CCharString::PStringData
+    float            SecondsForStatsBarsToAppear;            // +0x4e4
+    float            SecondsBeforeStatsBackBarMoves;         // +0x4e8
+    float            SecondsToShowStatsBars;                 // +0x4ec
+    float            SecondsForStatsBarsToDisappear;         // +0x4f0
+    float            StatUpdatePos_X;                        // +0x4f4 C2DVector::X
+    float            StatUpdatePos_Y;                        // +0x4f8 C2DVector::Y
+    float            StatUpdateMoralityGoodPos_X;            // +0x4fc C2DVector::X
+    float            StatUpdateMoralityGoodPos_Y;            // +0x500 C2DVector::Y
+    float            StatUpdateMoralityEvilPos_X;            // +0x504 C2DVector::X
+    float            StatUpdateMoralityEvilPos_Y;            // +0x508 C2DVector::Y
+    float            StatUpdateRenownPos_X;                  // +0x50c C2DVector::X
+    float            StatUpdateRenownPos_Y;                  // +0x510 C2DVector::Y
+    float            StatUpdateTextOffset_X;                 // +0x514 C2DVector::X
+    float            StatUpdateTextOffset_Y;                 // +0x518 C2DVector::Y
+    unsigned char    StatUpdateTextColour[0x4];              // +0x51c CRGBColour
+    float            StatUpdateDisplayDuration;              // +0x520
+    float            StatUpdateWaitingDuration;              // +0x524
+    float            StatUpdateEffectOffset_X;               // +0x528 C2DVector::X
+    float            StatUpdateEffectOffset_Y;               // +0x52c C2DVector::Y
+    long             StatUpdateMoralityGoodGraphic;          // +0x530
+    long             StatUpdateMoralityEvilGraphic;          // +0x534
+    long             StatUpdateMoralityGoodEffect;           // +0x538
+    long             StatUpdateMoralityEvilEffect;           // +0x53c
+    unsigned char    StatUpdateColours[0xc];                 // +0x540 vector<CRGBColour,std::allocator<CRGBColour>_>
+    unsigned char    StatUpdateGraphics[0xc];                // +0x54c vector<long,std::allocator<long>_>
+    unsigned char    StatUpdateEffects[0xc];                 // +0x558 vector<long,std::allocator<long>_>
+    float            AutoPickupPos_X;                        // +0x564 C2DVector::X
+    float            AutoPickupPos_Y;                        // +0x568 C2DVector::Y
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUESTINFO
+    // Opt-in (chunk 898, row 0x00654438 NPlayerGui::CDrawQuestInfo::Draw): QuestInfoPos as the C2DVector it is (same offset; the row
+    // passes it by reference to GFAnchorToTopRight 0x00643CA1).
+    C2DVector        QuestInfoPos;                           // +0x56c
+#else
+    float            QuestInfoPos_X;                         // +0x56c C2DVector::X
+    float            QuestInfoPos_Y;                         // +0x570 C2DVector::Y
+#endif
+    float            QuestInfoBarOffsetX;                    // +0x574
+    long             QuestInfoGraphicWidth;                  // +0x578
+    long             QuestInfoGraphicHeight;                 // +0x57c
+    float            QuestInfoGraphicMinHeight;              // +0x580
+    float            QuestInfoSecondsToScroll;               // +0x584
+    float            QuestInfoSecondsToAppear;               // +0x588
+    unsigned char    QuestInfoTurncoatColour[0x4];           // +0x58c CRGBColour
+    long             QuestInfoTickGraphic;                   // +0x590
+    float            OracleSymbolPos_X;                      // +0x594 C2DVector::X
+    float            OracleSymbolPos_Y;                      // +0x598 C2DVector::Y
+    float            OracleSymbolOffset_X;                   // +0x59c C2DVector::X
+    float            OracleSymbolOffset_Y;                   // +0x5a0 C2DVector::Y
+    float            TextBoxTextAreaTLPos_X;                 // +0x5a4 C2DVector::X
+    float            TextBoxTextAreaTLPos_Y;                 // +0x5a8 C2DVector::Y
+    float            TextBoxTextAreaBRPos_X;                 // +0x5ac C2DVector::X
+    float            TextBoxTextAreaBRPos_Y;                 // +0x5b0 C2DVector::Y
+    unsigned char    TextBoxTextColour[0x4];                 // +0x5b4 CRGBColour
+    unsigned char    TextBoxTextGameInfoColour[0x4];         // +0x5b8 CRGBColour
+    unsigned char    TextBoxTextGameActionColour[0x4];       // +0x5bc CRGBColour
+    float            TextBoxButtonGraphicOffset_X;           // +0x5c0 C2DVector::X
+    float            TextBoxButtonGraphicOffset_Y;           // +0x5c4 C2DVector::Y
+    float            TextBoxButtonOffsetY;                   // +0x5c8
+    float            TextBoxButtonInBoxOffsetY;              // +0x5cc
+    float            TextBoxButtonGapWidth;                  // +0x5d0
+    CCharStringData* TextBoxButtonTextFontName_PStringData;  // +0x5d4 CCharString::PStringData
+    long             TextBoxConfirmGraphic;                  // +0x5d8
+    long             TextBoxCancelGraphic;                   // +0x5dc
+    long             TextBoxThirdGraphic;                    // +0x5e0
+    long             TextBoxSkipCutsceneGraphic;             // +0x5e4
+    CCharStringData* TextBoxButtonASoundCriteria_PStringData; // +0x5e8 CCharString::PStringData
+    CCharStringData* TextBoxButtonBSoundCriteria_PStringData; // +0x5ec CCharString::PStringData
+    long             TextBoxHugeButtonGraphic;               // +0x5f0
+    long             TextBoxHugeMouseButtonGraphic;          // +0x5f4
+    long             TextBoxHugeMouseButtonLeftGraphic;      // +0x5f8
+    float            TextBoxHugeButtonOffset_X;              // +0x5fc C2DVector::X
+    float            TextBoxHugeButtonOffset_Y;              // +0x600 C2DVector::Y
+    float            TextBoxHugeButtonLeftOffset_X;          // +0x604 C2DVector::X
+    float            TextBoxHugeButtonLeftOffset_Y;          // +0x608 C2DVector::Y
+    float            TextBoxFishingReelTextPos_X;            // +0x60c C2DVector::X
+    float            TextBoxFishingReelTextPos_Y;            // +0x610 C2DVector::Y
+    float            TextBoxFishingReelGraphicOffset_X;      // +0x614 C2DVector::X
+    float            TextBoxFishingReelGraphicOffset_Y;      // +0x618 C2DVector::Y
+    float            TextBoxBettingGraphicPos_X;             // +0x61c C2DVector::X
+    float            TextBoxBettingGraphicPos_Y;             // +0x620 C2DVector::Y
+    float            TextBoxBettingUpOffset_X;               // +0x624 C2DVector::X
+    float            TextBoxBettingUpOffset_Y;               // +0x628 C2DVector::Y
+    float            TextBoxBettingDownOffset_X;             // +0x62c C2DVector::X
+    float            TextBoxBettingDownOffset_Y;             // +0x630 C2DVector::Y
+    float            TextBoxBettingLeftOffset_X;             // +0x634 C2DVector::X
+    float            TextBoxBettingLeftOffset_Y;             // +0x638 C2DVector::Y
+    float            TextBoxBettingRightOffset_X;            // +0x63c C2DVector::X
+    float            TextBoxBettingRightOffset_Y;            // +0x640 C2DVector::Y
+    CCharStringData* ReceiveItemsSoundCriteria_PStringData;  // +0x644 CCharString::PStringData
+    long             ControllerAGraphic;                     // +0x648
+    long             ControllerBGraphic;                     // +0x64c
+    long             ControllerXGraphic;                     // +0x650
+    long             ControllerYGraphic;                     // +0x654
+    long             ControllerDPadGraphic;                  // +0x658
+    long             ControllerDPadDownGraphic;              // +0x65c
+    long             ControllerDPadLeftGraphic;              // +0x660
+    long             ControllerDPadRightGraphic;             // +0x664
+    long             ControllerDPadUpGraphic;                // +0x668
+    long             ControllerThumbLeftGraphic;             // +0x66c
+    long             ControllerThumbRightGraphic;            // +0x670
+    long             ControllerThumbClickLeftGraphic;        // +0x674
+    long             ControllerThumbClickRightGraphic;       // +0x678
+    long             ControllerBackGraphic;                  // +0x67c
+    long             ControllerStartGraphic;                 // +0x680
+    long             ControllerTriggerLeftGraphic;           // +0x684
+    long             ControllerTriggerRightGraphic;          // +0x688
+    long             ControllerTriggerBlackGraphic;          // +0x68c
+    long             ControllerTriggerWhiteGraphic;          // +0x690
+    float            ControllerGraphicOffset_X;              // +0x694 C2DVector::X
+    float            ControllerGraphicOffset_Y;              // +0x698 C2DVector::Y
+    float            ControllerGraphicTextOffset_X;          // +0x69c C2DVector::X
+    float            ControllerGraphicTextOffset_Y;          // +0x6a0 C2DVector::Y
+    float            ControllerClickGraphicTextOffset_X;     // +0x6a4 C2DVector::X
+    float            ControllerClickGraphicTextOffset_Y;     // +0x6a8 C2DVector::Y
+    float            ControllerTriggerGraphicTextOffset_X;   // +0x6ac C2DVector::X
+    float            ControllerTriggerGraphicTextOffset_Y;   // +0x6b0 C2DVector::Y
+    float            MenuConfirmPos_X;                       // +0x6b4 C2DVector::X
+    float            MenuConfirmPos_Y;                       // +0x6b8 C2DVector::Y
+    float            MenuConfirmTextPos_X;                   // +0x6bc C2DVector::X
+    float            MenuConfirmTextPos_Y;                   // +0x6c0 C2DVector::Y
+    long             MenuConfirmGraphic;                     // +0x6c4
+    float            MenuCancelPos_X;                        // +0x6c8 C2DVector::X
+    float            MenuCancelPos_Y;                        // +0x6cc C2DVector::Y
+    float            MenuCancelTextPos_X;                    // +0x6d0 C2DVector::X
+    float            MenuCancelTextPos_Y;                    // +0x6d4 C2DVector::Y
+    long             MenuCancelGraphic;                      // +0x6d8
+    long             QuickAccessDPadGraphic;                 // +0x6dc
+    long             QuickAccessMenuGraphic;                 // +0x6e0
+    long             QuickAccessLampEffect;                  // +0x6e4
+    long             QuickAccessGuildSealEffect;             // +0x6e8
+    long             QuickAccessMainGuildSealEffect;         // +0x6ec
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUICKACCESSEFFECTOFFSET
+    C2DVector        QuickAccessEffectOffset;                // +0x6f0 (row 0x0064546F opt-in)
+#else
+    float            QuickAccessEffectOffset_X;              // +0x6f0 C2DVector::X
+    float            QuickAccessEffectOffset_Y;              // +0x6f4 C2DVector::Y
+#endif
+    float            QuickAccessAbilityCrossOffset_X;        // +0x6f8 C2DVector::X
+    float            QuickAccessAbilityCrossOffset_Y;        // +0x6fc C2DVector::Y
+    long             HotBarSingleGraphic;                    // +0x700
+    long             HotBarMainGraphic;                      // +0x704
+    unsigned char    HotBarEndGraphics[0xc];                 // +0x708 vector<long,std::allocator<long>_>
+    float            HotBarOffset_X;                         // +0x714 C2DVector::X
+    float            HotBarOffset_Y;                         // +0x718 C2DVector::Y
+    float            HotBarEndOffset_X;                      // +0x71c C2DVector::X
+    float            HotBarEndOffset_Y;                      // +0x720 C2DVector::Y
+    long             HotBarItemWidth;                        // +0x724
+    unsigned char    QuickAccessItemButtons[0xc];            // +0x728 vector<CQuickAccessItemButtonGuiDef,std::allocator<CQuickAccessItemButtonGuiDef>_>
+    unsigned char    ContextSensitiveItemButtons[0xc];       // +0x734 vector<CQuickAccessItemButtonGuiDef,std::allocator<CQuickAccessItemButtonGuiDef>_>
+    long             TargetingCursorSectionEnemyEmptyGraphic; // +0x740
+    long             CompassGraphic;                         // +0x744
+    float            CompassPos_X;                           // +0x748 C2DVector::X
+    float            CompassPos_Y;                           // +0x74c C2DVector::Y
+    long             CompassShadowGraphic;                   // +0x750
+    float            CompassShadowOffset_X;                  // +0x754 C2DVector::X
+    float            CompassShadowOffset_Y;                  // +0x758 C2DVector::Y
+    long             AbilityButtonTalkGraphic;               // +0x75c
+    long             AbilityButtonActivateGraphic;           // +0x760
+    long             AbilityButtonBlockGraphic;              // +0x764
+    long             AbilityButtonUnarmedGraphic;            // +0x768
+    long             AbilityButtonMeleeGraphic;              // +0x76c
+    long             AbilityButtonRangedGraphic;             // +0x770
+    long             AbilityButtonSheatheAxeGraphic;         // +0x774
+    long             AbilityButtonSheatheBowGraphic;         // +0x778
+    long             AbilityButtonSheatheMaceGraphic;        // +0x77c
+    long             AbilityButtonSheatheStickGraphic;       // +0x780
+    long             AbilityButtonSheatheSwordGraphic;       // +0x784
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
+    // Retail opt-in (wf3, row 0x00646580 NPlayerGui::CDrawMeleeActionButtonEffects::Draw): Ego_r.pdb types both members C2DVector; the row
+    // passes def+0x788 whole to GFAnchorToBottomRight (`lea edx,[edi+788h]`) and adds def+0x794 with C2DVector::operator+. Same layout.
+    C2DVector        AbilityButtonFlourishEffectPos;         // +0x788
+    long             AbilityButtonFlourishGraphic;           // +0x790
+    C2DVector        AbilityButtonFlourishGraphicOffset;     // +0x794
+#else
+    float            AbilityButtonFlourishEffectPos_X;       // +0x788 C2DVector::X
+    float            AbilityButtonFlourishEffectPos_Y;       // +0x78c C2DVector::Y
+    long             AbilityButtonFlourishGraphic;           // +0x790
+    float            AbilityButtonFlourishGraphicOffset_X;   // +0x794 C2DVector::X
+    float            AbilityButtonFlourishGraphicOffset_Y;   // +0x798 C2DVector::Y
+#endif
+    long             ABXYButtonMiddleGraphic;                // +0x79c
+    float            ABXYAbilityLevelInitialOffset_X;        // +0x7a0 C2DVector::X
+    float            ABXYAbilityLevelInitialOffset_Y;        // +0x7a4 C2DVector::Y
+    float            ABXYAbilityLevelOffset_X;               // +0x7a8 C2DVector::X
+    float            ABXYAbilityLevelOffset_Y;               // +0x7ac C2DVector::Y
+    long             ABXYAbilityUnavailableGraphic;          // +0x7b0
+    long             ABXYAbilityUncastableGraphic;           // +0x7b4
+    long             ABXYAbilitySwitchGraphic;               // +0x7b8
+    long             ABXYAbilityShieldOffGraphic;            // +0x7bc
+    long             ABXYRunGraphic;                         // +0x7c0
+    long             ABXYTargetingEnterGraphic;              // +0x7c4
+    long             ABXYTargetingCancelGraphic;             // +0x7c8
+    float            ABXYButtonFadeDurationSeconds;          // +0x7cc
+    long             TargetingBorderLeftGraphic;             // +0x7d0
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_TARGETING
+    C2DVector        TargetingBorderLeftPos;                 // +0x7d4 (the two C2DVector members as such: the row passes the right one by reference)
+    long             TargetingBorderRightGraphic;            // +0x7dc
+    C2DVector        TargetingBorderRightPos;                // +0x7e0
+#else
+    float            TargetingBorderLeftPos_X;               // +0x7d4 C2DVector::X
+    float            TargetingBorderLeftPos_Y;               // +0x7d8 C2DVector::Y
+    long             TargetingBorderRightGraphic;            // +0x7dc
+    float            TargetingBorderRightPos_X;              // +0x7e0 C2DVector::X
+    float            TargetingBorderRightPos_Y;              // +0x7e4 C2DVector::Y
+#endif
+    long             InteractButtonBorderGraphic;            // +0x7e8
+    float            InteractButtonBorderOffset_X;           // +0x7ec C2DVector::X
+    float            InteractButtonBorderOffset_Y;           // +0x7f0 C2DVector::Y
+    float            InteractButtonTooltipOffset_X;          // +0x7f4 C2DVector::X
+    float            InteractButtonTooltipOffset_Y;          // +0x7f8 C2DVector::Y
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_ABILITYBUTTONS
+    std::vector<CAbilityButtonGuiDef> AbilityButtons;                  // +0x7fc (chunk 863 opt-in)
+#else
+    unsigned char    AbilityButtons[0xc];                    // +0x7fc vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_>
+#endif
+    unsigned char    SpecialAbilityButtons[0xc];             // +0x808 vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_>
+    float            DigitPos_X;                             // +0x814 C2DVector::X
+    float            DigitPos_Y;                             // +0x818 C2DVector::Y
+    float            DigitHeroPos_X;                         // +0x81c C2DVector::X
+    float            DigitHeroPos_Y;                         // +0x820 C2DVector::Y
+    float            DigitHeroOffset_X;                      // +0x824 C2DVector::X
+    float            DigitHeroOffset_Y;                      // +0x828 C2DVector::Y
+    unsigned char    DigitGraphics[0xc];                     // +0x82c vector<long,std::allocator<long>_>
+    float            RegionDisplayPos_X;                     // +0x838 C2DVector::X
+    float            RegionDisplayPos_Y;                     // +0x83c C2DVector::Y
+    float            InfoDisplayPos_X;                       // +0x840 C2DVector::X
+    float            InfoDisplayPos_Y;                       // +0x844 C2DVector::Y
+    long             HeroSprintBarLeftGraphic;               // +0x848
+    long             HeroSprintBarLeftGlowGraphic;           // +0x84c
+    long             HeroSprintBarMiddleGraphic;             // +0x850
+    long             HeroSprintBarMiddleGlowGraphic;         // +0x854
+    long             HeroSprintBarRightGraphic;              // +0x858
+    long             HeroSprintBarRightGlowGraphic;          // +0x85c
+    long             HeroSprintBarInnerGraphic;              // +0x860
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_MINIGAME_OFFSET
+    // Ego_r donor member at2232 is C2DVector; native00651655 takes def+864 then reads X/Y.
+    C2DVector HeroSprintBarInnerGraphicOffset;
+#else
+    float            HeroSprintBarInnerGraphicOffset_X;      // +0x864 C2DVector::X
+    float            HeroSprintBarInnerGraphicOffset_Y;      // +0x868 C2DVector::Y
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_TARGETING
+    // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the seven highlight tables as the
+    // STLport vectors they are (12 bytes each, same offsets), indexed by the cursor type; the row reads _M_start[type] of each.
+    std::vector<CRGBColour> HighlightStartColour;            // +0x86c
+    std::vector<CRGBColour> HighlightEndColour;              // +0x878
+    std::vector<float>      HighlightStartWidthWorldSpace;   // +0x884
+    std::vector<float>      HighlightEndWidthWorldSpace;     // +0x890
+    std::vector<float>      HighlightStartWidthScreenSpace;  // +0x89c
+    std::vector<float>      HighlightEndWidthScreenSpace;    // +0x8a8
+    std::vector<long>       HighlightFadeSteps;              // +0x8b4
+#else
+    unsigned char    HighlightStartColour[0xc];              // +0x86c vector<CRGBColour,std::allocator<CRGBColour>_>
+    unsigned char    HighlightEndColour[0xc];                // +0x878 vector<CRGBColour,std::allocator<CRGBColour>_>
+    unsigned char    HighlightStartWidthWorldSpace[0xc];     // +0x884 vector<float,std::allocator<float>_>
+    unsigned char    HighlightEndWidthWorldSpace[0xc];       // +0x890 vector<float,std::allocator<float>_>
+    unsigned char    HighlightStartWidthScreenSpace[0xc];    // +0x89c vector<float,std::allocator<float>_>
+    unsigned char    HighlightEndWidthScreenSpace[0xc];      // +0x8a8 vector<float,std::allocator<float>_>
+    unsigned char    HighlightFadeSteps[0xc];                // +0x8b4 vector<long,std::allocator<long>_>
+#endif
+    float            NumberOfSecondsForContainerItemToReachFullSize; // +0x8c0
+    float            ContainerItemDisplayAreaTLPos_X;        // +0x8c4 C2DVector::X
+    float            ContainerItemDisplayAreaTLPos_Y;        // +0x8c8 C2DVector::Y
+    float            ContainerItemDisplayAreaBRPos_X;        // +0x8cc C2DVector::X
+    float            ContainerItemDisplayAreaBRPos_Y;        // +0x8d0 C2DVector::Y
+    float            NumberOfSecondsForContainerItemToRotate; // +0x8d4
+    float            NumberOfSecondsForContainerItemToStayAtFullSize; // +0x8d8
+    unsigned char    ContainerItemDisplayBackgroundColour[0x4]; // +0x8dc CRGBColour
+    float            ScreenMessageTextPos_X;                 // +0x8e0 C2DVector::X
+    float            ScreenMessageTextPos_Y;                 // +0x8e4 C2DVector::Y
+    unsigned char    ScreenMessageTextColour[0x4];           // +0x8e8 CRGBColour
+    float            ScreenMessageTextDropShadowOffset_X;    // +0x8ec C2DVector::X
+    float            ScreenMessageTextDropShadowOffset_Y;    // +0x8f0 C2DVector::Y
+    unsigned char    ScreenMessageTextDropShadowColour[0x4]; // +0x8f4 CRGBColour
+    CCharStringData* ScreenMessageFont_PStringData;          // +0x8f8 CCharString::PStringData
+    float            ScreenMessageNextMessageTextOffset_X;   // +0x8fc C2DVector::X
+    float            ScreenMessageNextMessageTextOffset_Y;   // +0x900 C2DVector::Y
+    long             MaximumNumberOfScreenMessages;          // +0x904
+    float            NumberOfSecondsScreenMessageStaysOnScreen; // +0x908
+    long             NumberOfCharactersScreenMessageAddsPerFrame; // +0x90c
+    unsigned char    TutorialText[0xc];                      // +0x910 vector<CCharString,std::allocator<CCharString>_>
+    unsigned char    TutorialLogBookText[0xc];               // +0x91c vector<CCharString,std::allocator<CCharString>_>
+    unsigned char    TutorialGuildSealGraphics[0xc];         // +0x928 vector<long,std::allocator<long>_>
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_SCRIPTSPRITES
+    std::map<CCharString,long> ScriptSprites;                // +0x934 (retail opt-in, chunk 855)
+#else
+    unsigned char    ScriptSprites[0xc];                     // +0x934 map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>
+#endif
+    unsigned char    GameActionValues[0xc];                  // +0x940 map<CCharString,EGameAction,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,EGameAction>_>_>
+    unsigned char    MiniMapGraphics[0xc];                   // +0x94c map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>
+    unsigned char    MiniMapMarkerGraphics[0xc];             // +0x958 vector<long,std::allocator<long>_>
+    float            MiniMapScreenOrigin_X;                  // +0x964 C2DVector::X
+    float            MiniMapScreenOrigin_Y;                  // +0x968 C2DVector::Y
+    float            MiniMapScreenSize_X;                    // +0x96c C2DVector::X
+    float            MiniMapScreenSize_Y;                    // +0x970 C2DVector::Y
+    long             MiniMapScreenRadius;                    // +0x974
+    long             MiniMapTextureWidth;                    // +0x978
+    long             MiniMapMarkerTextureWidth;              // +0x97c
+    float            MiniMapWorldResolution;                 // +0x980
+    unsigned char    MiniMapPassableColour[0x4];             // +0x984 CRGBColour
+    unsigned char    MiniMapImpassableColour[0x4];           // +0x988 CRGBColour
+    unsigned char    MiniMapWaterColour[0x4];                // +0x98c CRGBColour
+    unsigned char    MiniMapMaplessColour[0x4];              // +0x990 CRGBColour
+    unsigned char    MiniMapImpassableWaterColour[0x4];      // +0x994 CRGBColour
+    unsigned long    MaxMinimapZoneColours;                  // +0x998
+    unsigned long    MaxMinimapThemeColours;                 // +0x99c
+    unsigned char    MinimapZoneColours[0xc];                // +0x9a0 vector<CRGBColour,std::allocator<CRGBColour>_>
+    unsigned char    MinimapThemeColours[0xc];               // +0x9ac vector<CRGBColour,std::allocator<CRGBColour>_>
+    float            RegionChangeTLOffset_X;                 // +0x9b8 C2DVector::X
+    float            RegionChangeTLOffset_Y;                 // +0x9bc C2DVector::Y
+    float            RegionChangeTMOffset_X;                 // +0x9c0 C2DVector::X
+    float            RegionChangeTMOffset_Y;                 // +0x9c4 C2DVector::Y
+    float            RegionChangeTROffset_X;                 // +0x9c8 C2DVector::X
+    float            RegionChangeTROffset_Y;                 // +0x9cc C2DVector::Y
+    float            RegionChangeBLOffset_X;                 // +0x9d0 C2DVector::X
+    float            RegionChangeBLOffset_Y;                 // +0x9d4 C2DVector::Y
+    float            RegionChangeBMOffset_X;                 // +0x9d8 C2DVector::X
+    float            RegionChangeBMOffset_Y;                 // +0x9dc C2DVector::Y
+    float            RegionChangeBROffset_X;                 // +0x9e0 C2DVector::X
+    float            RegionChangeBROffset_Y;                 // +0x9e4 C2DVector::Y
+    long             RegionChangeTLGraphic;                  // +0x9e8
+    long             RegionChangeTMGraphic;                  // +0x9ec
+    long             RegionChangeTRGraphic;                  // +0x9f0
+    long             RegionChangeBLGraphic;                  // +0x9f4
+    long             RegionChangeBMGraphic;                  // +0x9f8
+    long             RegionChangeBRGraphic;                  // +0x9fc
+    float            RegionChangeBorderLeftOffset_X;         // +0xa00 C2DVector::X
+    float            RegionChangeBorderLeftOffset_Y;         // +0xa04 C2DVector::Y
+    float            RegionChangeBorderRightOffset_X;        // +0xa08 C2DVector::X
+    float            RegionChangeBorderRightOffset_Y;        // +0xa0c C2DVector::Y
+    long             RegionChangeBorderLeftGraphic;          // +0xa10
+    long             RegionChangeBorderRightGraphic;         // +0xa14
+    long             RegionChangeGuildSealBorderGraphic;     // +0xa18
+    float            RegionChangeGuildSealBorderOffset_X;    // +0xa1c C2DVector::X
+    float            RegionChangeGuildSealBorderOffset_Y;    // +0xa20 C2DVector::Y
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_PROGRESS
+    // Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): the two STLport vector<long> members the
+    // loading screen reads typed (same 12 bytes each): RegionChangeGuildSealGraphics +0xA24 (size (+0xA28 - +0xA24) >> 2,
+    // element [GuildSealFrameIndex], 0x0049917B / 0x004992A4) and LoadProgressBackdropGraphics +0xA40 (elements 0..5 read
+    // through the start word, 0x004986C4 .. 0x0049895A).
+    std::vector<long> RegionChangeGuildSealGraphics;         // +0xa24
+#else
+    unsigned char    RegionChangeGuildSealGraphics[0xc];     // +0xa24 vector<long,std::allocator<long>_>
+#endif
+    long             LoadProgressBarLeftGraphic;             // +0xa30
+    long             LoadProgressBarMidGraphic;              // +0xa34
+    long             LoadProgressBarRightGraphic;            // +0xa38
+    long             LoadProgressBarInnerGraphic;            // +0xa3c
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_PROGRESS
+    std::vector<long> LoadProgressBackdropGraphics;          // +0xa40
+#else
+    unsigned char    LoadProgressBackdropGraphics[0xc];      // +0xa40 vector<long,std::allocator<long>_>
+#endif
+    float            TavernGameBlockTLOffset_X;              // +0xa4c C2DVector::X
+    float            TavernGameBlockTLOffset_Y;              // +0xa50 C2DVector::Y
+    float            TavernGameBlockTMOffset_X;              // +0xa54 C2DVector::X
+    float            TavernGameBlockTMOffset_Y;              // +0xa58 C2DVector::Y
+    float            TavernGameBlockTROffset_X;              // +0xa5c C2DVector::X
+    float            TavernGameBlockTROffset_Y;              // +0xa60 C2DVector::Y
+    float            TavernGameBlockBLOffset_X;              // +0xa64 C2DVector::X
+    float            TavernGameBlockBLOffset_Y;              // +0xa68 C2DVector::Y
+    float            TavernGameBlockBMOffset_X;              // +0xa6c C2DVector::X
+    float            TavernGameBlockBMOffset_Y;              // +0xa70 C2DVector::Y
+    float            TavernGameBlockBROffset_X;              // +0xa74 C2DVector::X
+    float            TavernGameBlockBROffset_Y;              // +0xa78 C2DVector::Y
+    long             TavernGameBlockTLGraphic;               // +0xa7c
+    long             TavernGameBlockTMGraphic;               // +0xa80
+    long             TavernGameBlockTRGraphic;               // +0xa84
+    long             TavernGameBlockBLGraphic;               // +0xa88
+    long             TavernGameBlockBMGraphic;               // +0xa8c
+    long             TavernGameBlockBRGraphic;               // +0xa90
+    CCharStringData* RegionGraphFileName_PStringData;        // +0xa94 CCharString::PStringData
+    float            MouseCursorScaleX;                      // +0xa98
+    float            MouseCursorScaleY;                      // +0xa9c
+    long             MouseCursorGraphic;                     // +0xaa0
+    long             MouseLMBGraphic;                        // +0xaa4
+    long             MouseMMBGraphic;                        // +0xaa8
+    long             MouseRMBGraphic;                        // +0xaac
+    long             MouseOverlayGraphic;                    // +0xab0
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(CPlayerGuiDef) == 0xab4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InventoryNoMovementSound) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SecondsToFadeWholeGui) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AlphaValueToFadeWholeGui) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AmbientColour) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DiffuseColour) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BacklightColour) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DiffuseVector_X) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DiffuseVector_Y) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DiffuseVector_Z) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealPos_X) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealPos_Y) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealFlashCycles) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealFlashCycleSeconds) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealReminderTimeSeconds) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarPos_X) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarPos_Y) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarLeftGraphic) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarMiddleOffset_X) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarMiddleOffset_Y) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarMiddleLength) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarMiddleGraphic) == 0x8c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarRightGraphic) == 0x90);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthOffset_X) == 0x94);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthOffset_Y) == 0x98);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthGraphic) == 0x9c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthEvilGraphic) == 0xa0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthGoodGraphic) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthEffectOffset_X) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthEffectOffset_Y) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthIncreaseEffectOffset_X) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthIncreaseEffectOffset_Y) == 0xb4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthDefaultEffect) == 0xb8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthIncreaseEffect) == 0xbc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthLevelUpEffect) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthAdrenalineEffect) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthBerserkEffect) == 0xc8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthLowHealthEffect) == 0xcc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthLowPercentage) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthInnerOffset_X) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthInnerOffset_Y) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthInnerGraphic) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarHealthEndGraphic) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarResurrectionOffset_X) == 0xe4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarResurrectionOffset_Y) == 0xe8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarResurrectionColour) == 0xec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaBackOffset_X) == 0xf0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaBackOffset_Y) == 0xf4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaOffset_X) == 0xf8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaOffset_Y) == 0xfc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaGraphic) == 0x100);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaInnerOffset_X) == 0x104);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaInnerOffset_Y) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaInnerGraphic) == 0x10c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaEndGraphic) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaEffectOffset_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaEffectOffset_Y) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaIncreaseEffectOffset_X) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaIncreaseEffectOffset_Y) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaIncreaseEffectWidth) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaIncreaseEffectSegmentWidth) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaDefaultEffect) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaIncreaseEffect) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HealthBarStaminaIncreaseSegmentEffect) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyePos_X) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyePos_Y) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeFriendGraphic) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeNeutralGraphic) == 0x144);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeEnemyGraphic) == 0x148);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeQuestionMarkGraphic) == 0x14c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeGraphicFrames) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeTextOffset_X) == 0x15c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeTextOffset_Y) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeSecondsToOpen) == 0x164);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeSecondsToThrob) == 0x168);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StealthEyeThrobScale) == 0x16c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsGraphic) == 0x170);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsPos_X) == 0x174);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsPos_Y) == 0x178);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsTopGraphic) == 0x17c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsTopOffset_X) == 0x180);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsTopOffset_Y) == 0x184);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsExtendGraphic) == 0x188);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsChargeGraphics) == 0x18c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsChargeOffsets) == 0x198);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsChargeAngles) == 0x1a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsFavouriteGraphic) == 0x1b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsTopFavouriteGraphic) == 0x1b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadRingsTopAggressiveGraphic) == 0x1b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadGuildSealLevelUpGraphic) == 0x1bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadGuildSealTooltipOffset_X) == 0x1c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadGuildSealTooltipOffset_Y) == 0x1c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadMiddleOffset_X) == 0x1c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadMiddleOffset_Y) == 0x1cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowUpGraphic) == 0x1d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowUpDepGraphic) == 0x1d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowRightGraphic) == 0x1d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowRightDepGraphic) == 0x1dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowDownGraphic) == 0x1e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowDownDepGraphic) == 0x1e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowLeftGraphic) == 0x1e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadArrowLeftDepGraphic) == 0x1ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DPadGuildSealRecallGraphic) == 0x1f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealLevelUpGraphic) == 0x1f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealQuestGraphic) == 0x1f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealRecallGraphic) == 0x1fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealLevelUpOffset_X) == 0x200);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealLevelUpOffset_Y) == 0x204);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealMainLevelUpOffset_X) == 0x208);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GuildSealMainLevelUpOffset_Y) == 0x20c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsGraphic) == 0x210);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsPos_X) == 0x214);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsPos_Y) == 0x218);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsAlpha) == 0x21c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsTopGraphic) == 0x220);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsTopOffset_X) == 0x224);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsTopOffset_Y) == 0x228);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleGraphic) == 0x22c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleOffset_X) == 0x230);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleOffset_Y) == 0x234);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleUpGraphic) == 0x238);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleRightGraphic) == 0x23c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleDownGraphic) == 0x240);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYMiddleLeftGraphic) == 0x244);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsFavouriteGraphic) == 0x248);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRingsTopFavouriteGraphic) == 0x24c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, WhiteButtonGraphic) == 0x250);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, WhiteButtonPos_X) == 0x254);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, WhiteButtonPos_Y) == 0x258);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, WhiteButtonIconOffset_X) == 0x25c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, WhiteButtonIconOffset_Y) == 0x260);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, WhiteButtonTooltipOffset_X) == 0x264);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, WhiteButtonTooltipOffset_Y) == 0x268);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BlackButtonGraphic) == 0x26c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BlackButtonPos_X) == 0x270);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BlackButtonPos_Y) == 0x274);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BlackButtonIconOffset_X) == 0x278);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BlackButtonIconOffset_Y) == 0x27c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BlackButtonTooltipOffset_X) == 0x280);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, BlackButtonTooltipOffset_Y) == 0x284);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTLGraphic) == 0x288);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTMGraphic) == 0x28c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTRGraphic) == 0x290);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMLGraphic) == 0x294);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMRGraphic) == 0x298);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBLGraphic) == 0x29c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBMGraphic) == 0x2a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBRGraphic) == 0x2a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBackGraphic) == 0x2a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMaxWidth) == 0x2ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMinWidth) == 0x2b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMaxHeight) == 0x2b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxMinHeight) == 0x2b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBorderWidth) == 0x2bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBorderHeight) == 0x2c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxCutsceneSecondsBeforeSkip) == 0x2c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxMaxWidth) == 0x2c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxMiddleGraphic) == 0x2cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxLeftOffset_X) == 0x2d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxLeftOffset_Y) == 0x2d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxRightOffset_X) == 0x2d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxRightOffset_Y) == 0x2dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxStartGraphic) == 0x2e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxEndGraphic) == 0x2e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxGoldGraphic) == 0x2e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxGoldGainEffect) == 0x2ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBoxGoldLossEffect) == 0x2f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockPos_X) == 0x2f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockPos_Y) == 0x2f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockFaceGraphic) == 0x2fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockHandGraphic) == 0x300);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockRingPos_X) == 0x304);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockRingPos_Y) == 0x308);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ClockRingGraphic) == 0x30c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModePos_X) == 0x310);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModePos_Y) == 0x314);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeOffset_X) == 0x318);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeOffset_Y) == 0x31c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeInnerOffset_X) == 0x320);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeInnerOffset_Y) == 0x324);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeBorderGraphic) == 0x328);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeLockOffGraphic) == 0x32c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeLockOnGraphic) == 0x330);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeSneakOffGraphic) == 0x334);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeSneakOnGraphic) == 0x338);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeSafetyOffGraphic) == 0x33c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeSafetyOnGraphic) == 0x340);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeTextOffset_X) == 0x344);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ModeTextOffset_Y) == 0x348);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatPos_X) == 0x34c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatPos_Y) == 0x350);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatLockedOffset_X) == 0x354);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatLockedOffset_Y) == 0x358);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatLockedGraphics) == 0x35c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatRingOffset_X) == 0x368);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatRingOffset_Y) == 0x36c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatRingGraphic) == 0x370);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCurrentOffset_X) == 0x374);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCurrentOffset_Y) == 0x378);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCurrentTextOffset_X) == 0x37c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCurrentTextOffset_Y) == 0x380);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCountOffsets) == 0x384);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCountEmptyGraphic) == 0x390);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCountGraphics) == 0x394);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatRingGraphics) == 0x3a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatRingBlackGraphic) == 0x3ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatRingWhiteGraphic) == 0x3b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCrossGraphic) == 0x3b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCrossOffset_X) == 0x3b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatCrossOffset_Y) == 0x3bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatMiddleOffset_X) == 0x3c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatMiddleOffset_Y) == 0x3c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatMiddleMinWidth) == 0x3c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatMiddleGraphic) == 0x3cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CombatEndGraphic) == 0x3d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperiencePos_X) == 0x3d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperiencePos_Y) == 0x3d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceGraphic) == 0x3dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceGeneralGraphic) == 0x3e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceSkillGraphic) == 0x3e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceStrengthGraphic) == 0x3e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceWillGraphic) == 0x3ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceTextOffset_X) == 0x3f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceTextOffset_Y) == 0x3f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceTextColour) == 0x3f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceMiddleOffset_X) == 0x3fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceMiddleOffset_Y) == 0x400);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceMiddleMinWidth) == 0x404);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceMiddleGraphic) == 0x408);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ExperienceEndGraphic) == 0x40c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimePos_X) == 0x410);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimePos_Y) == 0x414);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeTextOffset_X) == 0x418);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeTextOffset_Y) == 0x41c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeTextColour) == 0x420);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeTextAlertColour) == 0x424);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeWarningGraphic) == 0x428);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeCriminalGraphic) == 0x42c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarGraphic) == 0x430);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_CRIME
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarIconOffset) == 0x434);
+#else
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarIconOffset_X) == 0x434);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarIconOffset_Y) == 0x438);
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_CRIME
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarBorderOffset) == 0x43c);
+#else
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarBorderOffset_X) == 0x43c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarBorderOffset_Y) == 0x440);
+#endif
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrosshairOffsets) == 0x444);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrosshairGraphics) == 0x450);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrosshairGreenGraphics) == 0x45c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameFishingLeftGraphic) == 0x468);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameFishingRightGraphic) == 0x46c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameBettingGraphic) == 0x470);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameDiggingGraphic) == 0x474);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGamePickpocketGraphic) == 0x478);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGamePicklockGraphic) == 0x47c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameStealGraphic) == 0x480);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameTrophyGotGraphic) == 0x484);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniGameTrophyLeftGraphic) == 0x488);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackEffect) == 0x48c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackAlphaFadePerFrame) == 0x490);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackAlphaStartValue) == 0x494);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackAlphaEndValue) == 0x498);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackScaleFactorPerFrame) == 0x49c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SmackTimeToRotateSeconds) == 0x4a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyPos_X) == 0x4a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyPos_Y) == 0x4a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyTextOffset_X) == 0x4ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyTextOffset_Y) == 0x4b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyTextRightOffset_X) == 0x4b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyTextRightOffset_Y) == 0x4b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyWidth) == 0x4bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyTextColour) == 0x4c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyIncreaseTextColour) == 0x4c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyDecreaseTextColour) == 0x4c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyChangeStartOffset_X) == 0x4cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyChangeStartOffset_Y) == 0x4d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyChangeEndOffset_X) == 0x4d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyChangeEndOffset_Y) == 0x4d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MoneyChangeTextSpeed) == 0x4dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatBarsFontName_PStringData) == 0x4e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SecondsForStatsBarsToAppear) == 0x4e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SecondsBeforeStatsBackBarMoves) == 0x4e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SecondsToShowStatsBars) == 0x4ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SecondsForStatsBarsToDisappear) == 0x4f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdatePos_X) == 0x4f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdatePos_Y) == 0x4f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityGoodPos_X) == 0x4fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityGoodPos_Y) == 0x500);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityEvilPos_X) == 0x504);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityEvilPos_Y) == 0x508);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateRenownPos_X) == 0x50c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateRenownPos_Y) == 0x510);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateTextOffset_X) == 0x514);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateTextOffset_Y) == 0x518);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateTextColour) == 0x51c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateDisplayDuration) == 0x520);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateWaitingDuration) == 0x524);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateEffectOffset_X) == 0x528);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateEffectOffset_Y) == 0x52c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityGoodGraphic) == 0x530);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityEvilGraphic) == 0x534);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityGoodEffect) == 0x538);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateMoralityEvilEffect) == 0x53c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateColours) == 0x540);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateGraphics) == 0x54c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateEffects) == 0x558);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AutoPickupPos_X) == 0x564);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AutoPickupPos_Y) == 0x568);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUESTINFO
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoPos) == 0x56c);
+#else
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoPos_X) == 0x56c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoPos_Y) == 0x570);
+#endif
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoBarOffsetX) == 0x574);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoGraphicWidth) == 0x578);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoGraphicHeight) == 0x57c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoGraphicMinHeight) == 0x580);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoSecondsToScroll) == 0x584);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoSecondsToAppear) == 0x588);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoTurncoatColour) == 0x58c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoTickGraphic) == 0x590);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, OracleSymbolPos_X) == 0x594);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, OracleSymbolPos_Y) == 0x598);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, OracleSymbolOffset_X) == 0x59c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, OracleSymbolOffset_Y) == 0x5a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextAreaTLPos_X) == 0x5a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextAreaTLPos_Y) == 0x5a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextAreaBRPos_X) == 0x5ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextAreaBRPos_Y) == 0x5b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextColour) == 0x5b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextGameInfoColour) == 0x5b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxTextGameActionColour) == 0x5bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonGraphicOffset_X) == 0x5c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonGraphicOffset_Y) == 0x5c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonOffsetY) == 0x5c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonInBoxOffsetY) == 0x5cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonGapWidth) == 0x5d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonTextFontName_PStringData) == 0x5d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxConfirmGraphic) == 0x5d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxCancelGraphic) == 0x5dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxThirdGraphic) == 0x5e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxSkipCutsceneGraphic) == 0x5e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonASoundCriteria_PStringData) == 0x5e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxButtonBSoundCriteria_PStringData) == 0x5ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeButtonGraphic) == 0x5f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeMouseButtonGraphic) == 0x5f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeMouseButtonLeftGraphic) == 0x5f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeButtonOffset_X) == 0x5fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeButtonOffset_Y) == 0x600);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeButtonLeftOffset_X) == 0x604);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxHugeButtonLeftOffset_Y) == 0x608);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxFishingReelTextPos_X) == 0x60c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxFishingReelTextPos_Y) == 0x610);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxFishingReelGraphicOffset_X) == 0x614);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxFishingReelGraphicOffset_Y) == 0x618);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingGraphicPos_X) == 0x61c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingGraphicPos_Y) == 0x620);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingUpOffset_X) == 0x624);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingUpOffset_Y) == 0x628);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingDownOffset_X) == 0x62c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingDownOffset_Y) == 0x630);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingLeftOffset_X) == 0x634);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingLeftOffset_Y) == 0x638);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingRightOffset_X) == 0x63c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TextBoxBettingRightOffset_Y) == 0x640);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ReceiveItemsSoundCriteria_PStringData) == 0x644);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerAGraphic) == 0x648);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerBGraphic) == 0x64c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerXGraphic) == 0x650);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerYGraphic) == 0x654);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerDPadGraphic) == 0x658);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerDPadDownGraphic) == 0x65c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerDPadLeftGraphic) == 0x660);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerDPadRightGraphic) == 0x664);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerDPadUpGraphic) == 0x668);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerThumbLeftGraphic) == 0x66c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerThumbRightGraphic) == 0x670);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerThumbClickLeftGraphic) == 0x674);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerThumbClickRightGraphic) == 0x678);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerBackGraphic) == 0x67c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerStartGraphic) == 0x680);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerTriggerLeftGraphic) == 0x684);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerTriggerRightGraphic) == 0x688);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerTriggerBlackGraphic) == 0x68c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerTriggerWhiteGraphic) == 0x690);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerGraphicOffset_X) == 0x694);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerGraphicOffset_Y) == 0x698);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerGraphicTextOffset_X) == 0x69c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerGraphicTextOffset_Y) == 0x6a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerClickGraphicTextOffset_X) == 0x6a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerClickGraphicTextOffset_Y) == 0x6a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerTriggerGraphicTextOffset_X) == 0x6ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ControllerTriggerGraphicTextOffset_Y) == 0x6b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuConfirmPos_X) == 0x6b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuConfirmPos_Y) == 0x6b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuConfirmTextPos_X) == 0x6bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuConfirmTextPos_Y) == 0x6c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuConfirmGraphic) == 0x6c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuCancelPos_X) == 0x6c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuCancelPos_Y) == 0x6cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuCancelTextPos_X) == 0x6d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuCancelTextPos_Y) == 0x6d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MenuCancelGraphic) == 0x6d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessDPadGraphic) == 0x6dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessMenuGraphic) == 0x6e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessLampEffect) == 0x6e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessGuildSealEffect) == 0x6e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessMainGuildSealEffect) == 0x6ec);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUICKACCESSEFFECTOFFSET
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessEffectOffset) == 0x6f0);
+#else
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessEffectOffset_X) == 0x6f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessEffectOffset_Y) == 0x6f4);
+#endif
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessAbilityCrossOffset_X) == 0x6f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessAbilityCrossOffset_Y) == 0x6fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarSingleGraphic) == 0x700);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarMainGraphic) == 0x704);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarEndGraphics) == 0x708);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarOffset_X) == 0x714);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarOffset_Y) == 0x718);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarEndOffset_X) == 0x71c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarEndOffset_Y) == 0x720);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarItemWidth) == 0x724);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessItemButtons) == 0x728);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ContextSensitiveItemButtons) == 0x734);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingCursorSectionEnemyEmptyGraphic) == 0x740);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CompassGraphic) == 0x744);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CompassPos_X) == 0x748);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CompassPos_Y) == 0x74c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CompassShadowGraphic) == 0x750);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CompassShadowOffset_X) == 0x754);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CompassShadowOffset_Y) == 0x758);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonTalkGraphic) == 0x75c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonActivateGraphic) == 0x760);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonBlockGraphic) == 0x764);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonUnarmedGraphic) == 0x768);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonMeleeGraphic) == 0x76c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonRangedGraphic) == 0x770);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheAxeGraphic) == 0x774);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheBowGraphic) == 0x778);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheMaceGraphic) == 0x77c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheStickGraphic) == 0x780);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheSwordGraphic) == 0x784);
+#ifndef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishEffectPos_X) == 0x788);
+#endif
+#ifndef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishEffectPos_Y) == 0x78c);
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishEffectPos) == 0x788);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishGraphicOffset) == 0x794);
+#endif
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishGraphic) == 0x790);
+#ifndef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishGraphicOffset_X) == 0x794);
+#endif
+#ifndef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishGraphicOffset_Y) == 0x798);
+#endif
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYButtonMiddleGraphic) == 0x79c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityLevelInitialOffset_X) == 0x7a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityLevelInitialOffset_Y) == 0x7a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityLevelOffset_X) == 0x7a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityLevelOffset_Y) == 0x7ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityUnavailableGraphic) == 0x7b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityUncastableGraphic) == 0x7b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilitySwitchGraphic) == 0x7b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityShieldOffGraphic) == 0x7bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYRunGraphic) == 0x7c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYTargetingEnterGraphic) == 0x7c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYTargetingCancelGraphic) == 0x7c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYButtonFadeDurationSeconds) == 0x7cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderLeftGraphic) == 0x7d0);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_TARGETING
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderLeftPos) == 0x7d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightGraphic) == 0x7dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightPos) == 0x7e0);
+#else
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderLeftPos_X) == 0x7d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderLeftPos_Y) == 0x7d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightGraphic) == 0x7dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightPos_X) == 0x7e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightPos_Y) == 0x7e4);
+#endif
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonBorderGraphic) == 0x7e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonBorderOffset_X) == 0x7ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonBorderOffset_Y) == 0x7f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonTooltipOffset_X) == 0x7f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonTooltipOffset_Y) == 0x7f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtons) == 0x7fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SpecialAbilityButtons) == 0x808);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitPos_X) == 0x814);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitPos_Y) == 0x818);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroPos_X) == 0x81c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroPos_Y) == 0x820);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroOffset_X) == 0x824);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroOffset_Y) == 0x828);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitGraphics) == 0x82c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionDisplayPos_X) == 0x838);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionDisplayPos_Y) == 0x83c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InfoDisplayPos_X) == 0x840);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InfoDisplayPos_Y) == 0x844);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarLeftGraphic) == 0x848);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarLeftGlowGraphic) == 0x84c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarMiddleGraphic) == 0x850);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarMiddleGlowGraphic) == 0x854);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarRightGraphic) == 0x858);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarRightGlowGraphic) == 0x85c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarInnerGraphic) == 0x860);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_MINIGAME_OFFSET
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarInnerGraphicOffset) == 0x864);
+#else
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarInnerGraphicOffset_X) == 0x864);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarInnerGraphicOffset_Y) == 0x868);
+#endif
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightStartColour) == 0x86c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightEndColour) == 0x878);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightStartWidthWorldSpace) == 0x884);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightEndWidthWorldSpace) == 0x890);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightStartWidthScreenSpace) == 0x89c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightEndWidthScreenSpace) == 0x8a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightFadeSteps) == 0x8b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, NumberOfSecondsForContainerItemToReachFullSize) == 0x8c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ContainerItemDisplayAreaTLPos_X) == 0x8c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ContainerItemDisplayAreaTLPos_Y) == 0x8c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ContainerItemDisplayAreaBRPos_X) == 0x8cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ContainerItemDisplayAreaBRPos_Y) == 0x8d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, NumberOfSecondsForContainerItemToRotate) == 0x8d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, NumberOfSecondsForContainerItemToStayAtFullSize) == 0x8d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ContainerItemDisplayBackgroundColour) == 0x8dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageTextPos_X) == 0x8e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageTextPos_Y) == 0x8e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageTextColour) == 0x8e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageTextDropShadowOffset_X) == 0x8ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageTextDropShadowOffset_Y) == 0x8f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageTextDropShadowColour) == 0x8f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageFont_PStringData) == 0x8f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageNextMessageTextOffset_X) == 0x8fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScreenMessageNextMessageTextOffset_Y) == 0x900);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MaximumNumberOfScreenMessages) == 0x904);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, NumberOfSecondsScreenMessageStaysOnScreen) == 0x908);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, NumberOfCharactersScreenMessageAddsPerFrame) == 0x90c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TutorialText) == 0x910);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TutorialLogBookText) == 0x91c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TutorialGuildSealGraphics) == 0x928);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ScriptSprites) == 0x934);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, GameActionValues) == 0x940);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapGraphics) == 0x94c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapMarkerGraphics) == 0x958);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapScreenOrigin_X) == 0x964);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapScreenOrigin_Y) == 0x968);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapScreenSize_X) == 0x96c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapScreenSize_Y) == 0x970);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapScreenRadius) == 0x974);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapTextureWidth) == 0x978);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapMarkerTextureWidth) == 0x97c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapWorldResolution) == 0x980);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapPassableColour) == 0x984);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapImpassableColour) == 0x988);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapWaterColour) == 0x98c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapMaplessColour) == 0x990);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MiniMapImpassableWaterColour) == 0x994);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MaxMinimapZoneColours) == 0x998);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MaxMinimapThemeColours) == 0x99c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MinimapZoneColours) == 0x9a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MinimapThemeColours) == 0x9ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTLOffset_X) == 0x9b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTLOffset_Y) == 0x9bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTMOffset_X) == 0x9c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTMOffset_Y) == 0x9c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTROffset_X) == 0x9c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTROffset_Y) == 0x9cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBLOffset_X) == 0x9d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBLOffset_Y) == 0x9d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBMOffset_X) == 0x9d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBMOffset_Y) == 0x9dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBROffset_X) == 0x9e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBROffset_Y) == 0x9e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTLGraphic) == 0x9e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTMGraphic) == 0x9ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeTRGraphic) == 0x9f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBLGraphic) == 0x9f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBMGraphic) == 0x9f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBRGraphic) == 0x9fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBorderLeftOffset_X) == 0xa00);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBorderLeftOffset_Y) == 0xa04);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBorderRightOffset_X) == 0xa08);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBorderRightOffset_Y) == 0xa0c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBorderLeftGraphic) == 0xa10);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeBorderRightGraphic) == 0xa14);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeGuildSealBorderGraphic) == 0xa18);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeGuildSealBorderOffset_X) == 0xa1c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeGuildSealBorderOffset_Y) == 0xa20);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionChangeGuildSealGraphics) == 0xa24);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, LoadProgressBarLeftGraphic) == 0xa30);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, LoadProgressBarMidGraphic) == 0xa34);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, LoadProgressBarRightGraphic) == 0xa38);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, LoadProgressBarInnerGraphic) == 0xa3c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, LoadProgressBackdropGraphics) == 0xa40);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTLOffset_X) == 0xa4c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTLOffset_Y) == 0xa50);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTMOffset_X) == 0xa54);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTMOffset_Y) == 0xa58);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTROffset_X) == 0xa5c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTROffset_Y) == 0xa60);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBLOffset_X) == 0xa64);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBLOffset_Y) == 0xa68);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBMOffset_X) == 0xa6c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBMOffset_Y) == 0xa70);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBROffset_X) == 0xa74);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBROffset_Y) == 0xa78);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTLGraphic) == 0xa7c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTMGraphic) == 0xa80);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockTRGraphic) == 0xa84);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBLGraphic) == 0xa88);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBMGraphic) == 0xa8c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TavernGameBlockBRGraphic) == 0xa90);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionGraphFileName_PStringData) == 0xa94);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseCursorScaleX) == 0xa98);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseCursorScaleY) == 0xa9c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseCursorGraphic) == 0xaa0);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseLMBGraphic) == 0xaa4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseMMBGraphic) == 0xaa8);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseRMBGraphic) == 0xaac);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseOverlayGraphic) == 0xab0);
+
+#endif // FABLE_RETAIL_CPLAYERGUIDEF_CLASS
+#endif // FABLE_ENGINE_CPLAYERGUIDEF_H

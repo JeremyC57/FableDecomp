@@ -1,0 +1,6 @@
+address	name	evidence
+0064ed4f	?Draw@CDrawDamage@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	Ego_r.pdb 0x00691CB4 + FableWin.pdb 0x020E690D; body walks CDrawDamage::DamageValues (+0x28) and CPlayerGuiDef Digit* members; ret 4 (one reference argument)
+00643c94	?GFAnchorToTopLeft@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	uncatalogued, uncalled out-of-line copy right before GFAnchorToTopRight 0x00643CA1 (Ego_r.pdb order 0x00686B8B / 0x00686B98); 13-byte identity copy, byte-identical to the inline header body compiled out of line (probe/tl.cpp); expanded in Draw at 0x0064EDE2
+00643be2	?GFToScreen@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	probable: catalogued as NUISystem::CComponent::CanMove (propagated); identity C2DVector copy (__fastcall hidden result), followed by 0x00643BEF and the catalogued GFToScreenScaled 0x00643BFC = Ego_r.pdb order GFToScreen(C2DVector) 0x00686AC7, GFToScreen(C2DBoxF) 0x00686AD4, GFToScreenScaled 0x00686AED
+00643d5d	?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z	Ego_r.pdb name set + reloc_bindings; body `return PlayerGui->ScaleAlpha(alpha);` (FableWin inline CPlayerGui::ScaleAlpha) compiles out of line to retail 0x00643D5D byte for byte
+013ba860	?VALUE_DISPLAY_DURATION@NPlayerGui@@3MA	landed initialiser 0x0121DF1C (Ego_r / FableWin dynamic initializer name); read as the fade divisor here

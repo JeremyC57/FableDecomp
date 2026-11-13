@@ -1,0 +1,1 @@
+- c005aaf28: many UI "line" pointers with slot residues only (ebx/[ebp-24h]/edi homes) = ONE CText* local re-assigned after each Reset, not one named pointer per line; VC7.1 splits the webs itself and the symbol count changes frame-slot colouring.

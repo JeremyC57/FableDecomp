@@ -1,0 +1,26 @@
+address	name	evidence
+0x00492381	?ProcessEmbeddedGraphicTags@CSubtitleRenderer@@AAEXXZ	Ego_r.pdb + FableWin.pdb (private); callers SetText 0x00492973 (0x004929F2) / ClickPast 0x00493281 (0x004933C6); [tag] scan + EmbeddedGraphics records
+0x004959E0	?GetProfileNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	Ego_r.pdb + FableWin.pdb (public static __fastcall: vector in ecx, plain ret); callers 0x00496056 / 0x004961C3; ProfileName transfer of the FablePro profile files
+0x005248B0	?LoadFromGameStateScript@CEntityRuntimePersistence@NThingManager@@QAEXAAVCStringParser@@@Z	Ego_r.pdb + FableWin.pdb; one CStringParser& (`ret 4`); START_THING_LEVEL / START_DEAD_THINGS record strings; map insert at this+0x18
+0x00716DE0	?Update@CActionTalkBase@NTCScriptedControl@@UAEXXZ	Ego_r.pdb + FableWin.pdb; donor order after SetUpTextAndSpeech (Ego_r 0x0072AFB0 -> 0x0072B280, retail 0x00716B30 -> 0x00716DE0); called by CActionTalkToThing::Update 0x007173D0
+0x00751A70	?IsOverriddenByParent@CTCLook@@QBE_NXZ	Ego_r.pdb + FableWin.pdb CTCLook::IsOverriddenByParent const bool(); body returns the parent thing's IsLookTurningOverridenByParent (0x0085F200) != 0; called on the TCI_LOOK (67) component at 0x00716E68 / 0x00716EE4
+0x00999850	?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z	Ego_r.pdb + FableWin.pdb ScanNextFile (PA_W, unsigned short in the landed spelling); StartFileScan's twin (pattern ecx, info edx, buffer pushed), the loop advance of 0x004959E0 / 0x005955AB
+0x0048DA89	?GetStringWidth@CFontBank@@QBEMPBG@Z	FableWin.pdb ?GetStringWidth@CFontBank@@QBEMPB_W@Z; body = slot 1 GetStringExtents(text, false).X; called with L" " at 0x004924EB
+0x0048DAA2	?GetStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@_N@Z	FableWin.pdb; body forwards GetAsCharArray + bool to slot 1 with the hidden result (also chunk 784 / hand784 NAME_FIXES)
+0x0049417D	?push_back@?$vector@VCEmbeddedGraphic@CSubtitleRenderer@@V?$allocator@VCEmbeddedGraphic@CSubtitleRenderer@@@std@@@std@@QAEXABVCEmbeddedGraphic@CSubtitleRenderer@@@Z	STLport push_back COMDAT of vector<CSubtitleRenderer::CEmbeddedGraphic> (16-byte records, Ego_r.pdb CEmbeddedGraphic); called on this+0xB8 EmbeddedGraphics at 0x0049243A
+0x00440D70	?erase@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@PAV3@0@Z	landed row 0x00440D70 (STLport erase(first, last)); called on CSubtitleRenderer::EmbeddedPrimitiveHandles (Ego_r.pdb vector<CEnginePrimitiveHandle>) at 0x0049239F
+0x00437260	??0CWStringParser@@QAE@PBG@Z	Ego_r.pdb + FableWin.pdb ??0CWStringParser@@QAE@PB_W@Z (const text pointer)
+0x00A0C910	?SkipWhitespace@CWStringParser@@QAEJXZ	Ego_r.pdb + FableWin.pdb (returns long); landed row leaf the same
+0x00A0CCD0	?ReadAsStringUntilCharacter@CWStringParser@@QAE?AVCWideString@@G@Z	Ego_r.pdb + FableWin.pdb ..._W@Z; hidden CWideString result, the character pushed (0x00492778)
+0x00842400	??0CCreatureAction_PlayConversationAnimation@@QAE@AAVCThingCreatureBase@@W4EConversationAttitude@@ABVCSoundPair@@JJ@Z	Ego_r.pdb + FableWin.pdb ctor (five arguments, `ret 14h`); landed body 0x00842400
+0x00842DB0	??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCCharString@@ABVCSoundPair@@_N3JJ@Z	Ego_r.pdb + FableWin.pdb; landed 0x00842DB0; 7 arguments pushed at 0x00717009..0x0071702B
+0x00842E40	??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@ABVCSoundPair@@_N3JJ@Z	Ego_r.pdb + FableWin.pdb; landed 0x00842E40
+0x00693EF0	??1CCreatureActionBase@@UAE@XZ	stores the CCreatureActionBase vtable 0x01259D24 (RTTI) first; Ego_r.pdb + FableWin.pdb ??1CCreatureActionBase@@UAE@XZ
+0x006E2D30	?IsSpeechSamplePlaying@CTCTalk@@QBE_NXZ	landed row + Ego_r.pdb name set
+0x006E2DC0	?IsSpeechSampleLoadedAndPlaying@CTCTalk@@QBE_NXZ	landed row + Ego_r.pdb name set
+0x007534B0	?IsPosInViewRange@CTCLook@@QBE_NABVC3DVector@@M_N1@Z	Ego_r.pdb (QBE const) + landed row leaf
+0x00715A70	?SetUpCamera@CActionTalkBase@NTCScriptedControl@@AAEXABVCCameraTag@CSubtitledMessage@@@Z	Ego_r.pdb + FableWin.pdb (private AAE)
+0x00716B30	?SetUpTextAndSpeech@CActionTalkBase@NTCScriptedControl@@AAEXXZ	Ego_r.pdb + FableWin.pdb (private AAE); landed row leaf the same
+0x00713010	?IsCameraToBeSetupDueToMovedSetupPositions@CActionTalkBase@NTCScriptedControl@@ABE_NABVCCameraTag@CSubtitledMessage@@@Z	Ego_r.pdb + FableWin.pdb (private const); landed row
+0x009B9CE0	?SkipUntilWhitespace@CStringParser@@QAEJXZ	Ego_r.pdb + FableWin.pdb; bound by the landed 0x009BA4A0
+0x013B861B	?g_bLeftAlignText@@3_NA	DESCRIPTIVE (no data-symbol dump): the bool transferred as "LeftAlignText" (string 0x0122DB98) at 0x0040276F and handed to CXMVPlayer::SetLeftAlignText at 0x00402826; the g_bXxx spelling of its config neighbours (g_bUseCompiledDefs 0x013B8617 ...)

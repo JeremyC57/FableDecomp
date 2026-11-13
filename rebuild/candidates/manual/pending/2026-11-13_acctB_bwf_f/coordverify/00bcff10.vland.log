@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00bcff10   RELOCATION_MATCH PASS   CEnginePrimitiveManagerAnimatedMeshesBase
+
+WINS: 1
+  00bcff10 RELOCATION_MATCH CEnginePrimitiveManagerAnimatedMeshesBase::CEnginePrimitiveManagerAnimatedMeshesBase

@@ -1,0 +1,4 @@
+0x00AA7F40	?FindFirstSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@PBD@Z	Ego_r order QBE First/Next, QAE First/Next = 0xAA7F40/7FF0/80E0/8190; called on const chunk here	non-const FindFirstSubChunkOfType
+0x00AA7FF0	?FindNextSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@ABV?$CCountedPointer@$$CBVCChunkedFileChunk@@@@@Z	same	non-const FindNextSubChunkOfType
+0x00A93A60	?DeleteData@?$CCountedPointer@VC3DClothPrimitive@@@@SIXPAX@Z	stored as the cloth count block DeleteFunc at 0xA92298	gapscan DeleteIfSet
+0x00AC4F20	?GetCount@CMirroredTextureHighlightsChunk@@QBEKXZ	called on the MTEH chunk at 0xA92464 (ICF fold)	CClass_00ac4f20::GetCount_00ac4f20

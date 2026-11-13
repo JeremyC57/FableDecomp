@@ -1,0 +1,3 @@
+address	name	evidence
+0x0061B610	CTCInventoryQuests::ConstructQuestList	Ego_r.pdb + FableWin.pdb ?ConstructQuestList@CTCInventoryQuests@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@NUISystem@@W4QuestScreenType@@1@Z
+0x0061A260	CTCInventoryQuests::IsQuestCardAvailable	Ego_r.pdb (ego_r 0x00597CB0) + FableWin.pdb ?IsQuestCardAvailable@CTCInventoryQuests@@QBE_NABVCTCQuestCard@@@Z; body = the IsActiveQuestStartedInRegion test both ConstructQuestList rows expand (0x0061D389..0x0061D3E2, 0x0062048A..); callers of 0x004B1270 are exactly 0x0061A28E, 0x0061D3BD, 0x006204BE

@@ -1,0 +1,104 @@
+15:41 0060eeb0 grade 0060eeb0.cpp SRC_FAIL -- coordinator baseline after overlay re-base
+15:41 0060eeb0 grade 0060eeb0.cpp DIFFER(10242v10254) hunks=427 -- coordinator baseline after overlay re-base
+15:51 0060eeb0 grade b0.cpp DIFFER(10242v10254) hunks=427 -- baseline regrade
+16:01 0060eeb0 grade b0.cpp DIFFER(10242v10254) hunks=427 -- b0.cpp: x1 no guard / x2 guard on B loop only
+16:01 0060eeb0 grade x1.cpp DIFFER(10500v10254) hunks=568 -- x1.cpp: x1 no guard / x2 guard on B loop only
+16:01 0060eeb0 grade x2.cpp DIFFER(10242v10254) hunks=427 -- x2.cpp: x1 no guard / x2 guard on B loop only
+16:04 0060eeb0 grade y1.cpp DIFFER(10500v10254) hunks=568 -- y1.cpp: no guard; B loop: y1 nested ifs+named teleporter / y2 continue chain / y3 bool locals
+16:04 0060eeb0 grade y2.cpp DIFFER(10500v10254) hunks=568 -- y2.cpp: no guard; B loop: y1 nested ifs+named teleporter / y2 continue chain / y3 bool locals
+16:04 0060eeb0 grade y3.cpp DIFFER(10500v10254) hunks=566 -- y3.cpp: no guard; B loop: y1 nested ifs+named teleporter / y2 continue chain / y3 bool locals
+16:09 0060eeb0 grade x1.cpp DIFFER(10500v10254) hunks=568 -- x1 regrade to read head
+16:11 0060eeb0 grade x1.cpp DIFFER(10500v10254) hunks=568 -- x1 regrade: B-loop alignment check
+16:19 0060eeb0 grade x2.cpp DIFFER(10242v10254) hunks=427 -- x2.cpp: x2 base (B-loop guard only); j1 begin!=end; j2 empty() early return then size
+16:19 0060eeb0 grade j1.cpp DIFFER(10242v10254) hunks=427 -- j1.cpp: x2 base (B-loop guard only); j1 begin!=end; j2 empty() early return then size
+16:19 0060eeb0 grade j2.cpp DIFFER(10238v10254) hunks=423 -- j2.cpp: x2 base (B-loop guard only); j1 begin!=end; j2 empty() early return then size
+16:20 0060eeb0 grade x2.cpp DIFFER(10242v10254) hunks=427 -- x2 regrade for masked diff
+16:21 0060eeb0 grade h1.cpp DIFFER(10242v10254) hunks=427 -- h1.cpp: head order: h1 regions;PanMode;clear / h2 regions;clear;PanMode / h3 B-loop guard as size()==0
+16:21 0060eeb0 grade h2.cpp DIFFER(10242v10254) hunks=424 -- h2.cpp: head order: h1 regions;PanMode;clear / h2 regions;clear;PanMode / h3 B-loop guard as size()==0
+16:22 0060eeb0 grade h3.cpp DIFFER(10242v10254) hunks=427 -- h3.cpp: head order: h1 regions;PanMode;clear / h2 regions;clear;PanMode / h3 B-loop guard as size()==0
+16:24 0060eeb0 grade r1.cpp DIFFER(10242v10254) hunks=427 -- r1.cpp: DIAGNOSTIC ruler: N dead locals at function start (N=1,4,12)
+16:24 0060eeb0 grade r4.cpp DIFFER(10242v10254) hunks=427 -- r4.cpp: DIAGNOSTIC ruler: N dead locals at function start (N=1,4,12)
+16:24 0060eeb0 grade r12.cpp DIFFER(10242v10254) hunks=427 -- r12.cpp: DIAGNOSTIC ruler: N dead locals at function start (N=1,4,12)
+16:24 0060eeb0 grade r2.cpp DIFFER(10236v10254) hunks=425 -- r2.cpp: DIAGNOSTIC ruler: N dead locals initialised from a parameter (N=2,10,34)
+16:24 0060eeb0 grade r10.cpp DIFFER(10236v10254) hunks=425 -- r10.cpp: DIAGNOSTIC ruler: N dead locals initialised from a parameter (N=2,10,34)
+16:24 0060eeb0 grade r34.cpp DIFFER(10236v10254) hunks=423 -- r34.cpp: DIAGNOSTIC ruler: N dead locals initialised from a parameter (N=2,10,34)
+16:25 0060eeb0 grade t1.cpp DIFFER(10322v10254) hunks=564 -- t1.cpp: t1 regions.clear() after decl / t2 empty()?false:true / t3 nested ifs at the join
+16:25 0060eeb0 grade t2.cpp DIFFER(10242v10254) hunks=427 -- t2.cpp: t1 regions.clear() after decl / t2 empty()?false:true / t3 nested ifs at the join
+16:25 0060eeb0 grade t3.cpp DIFFER(10242v10254) hunks=427 -- t3.cpp: t1 regions.clear() after decl / t2 empty()?false:true / t3 nested ifs at the join
+17:07 0060eeb0 grade b0.cpp DIFFER(10242v10254) hunks=427 -- baseline
+17:09 0060eeb0 grade e4.cpp DIFFER(10194v10254) hunks=412 -- scout e4 regrade: double guard (A body)
+17:10 0060eeb0 grade g1.cpp DIFFER(10242v10254) hunks=427 -- g1 guard around A for-loop / g2 empty if in body (control) / g3 shown_regions.empty() else-if in body
+17:10 0060eeb0 grade g2.cpp DIFFER(10242v10254) hunks=427 -- g1 guard around A for-loop / g2 empty if in body (control) / g3 shown_regions.empty() else-if in body
+17:10 0060eeb0 grade g3.cpp SRC_FAIL -- g1 guard around A for-loop / g2 empty if in body (control) / g3 shown_regions.empty() else-if in body
+17:11 0060eeb0 grade b0.cpp DIFFER(10242v10254) hunks=427 -- baseline full diff dump
+17:11 0060eeb0 grade b0.cpp DIFFER(10242v10254) hunks=427 -- baseline (for pd)
+17:15 0060eeb0 grade B1.cpp DIFFER(10242v10254) hunks=427 -- DIAG foldable num_regions!=0 guard: B1 around list if/else / B2 empty / B3 around display+marker section
+17:15 0060eeb0 grade B2.cpp DIFFER(10242v10254) hunks=427 -- DIAG foldable num_regions!=0 guard: B1 around list if/else / B2 empty / B3 around display+marker section
+17:15 0060eeb0 grade B3.cpp DIFFER(10177v10254) hunks=435 -- DIAG foldable num_regions!=0 guard: B1 around list if/else / B2 empty / B3 around display+marker section
+17:16 0060eeb0 grade k1.cpp DIFFER(10242v10254) hunks=427 -- has_regions spelling: k1 begin()!=end() / k2 empty()==false / k3 named bool
+17:16 0060eeb0 grade k2.cpp DIFFER(10242v10254) hunks=427 -- has_regions spelling: k1 begin()!=end() / k2 empty()==false / k3 named bool
+17:16 0060eeb0 grade k3.cpp DIFFER(10242v10254) hunks=427 -- has_regions spelling: k1 begin()!=end() / k2 empty()==false / k3 named bool
+17:16 0060eeb0 grade l1.cpp DIFFER(10242v10254) hunks=427 -- A loop: l1 it++ / l2 const_iterator / l3 it declared outside
+17:16 0060eeb0 grade l2.cpp SRC_FAIL -- A loop: l1 it++ / l2 const_iterator / l3 it declared outside
+17:16 0060eeb0 grade l3.cpp DIFFER(10242v10254) hunks=427 -- A loop: l1 it++ / l2 const_iterator / l3 it declared outside
+17:17 0060eeb0 grade f1.cpp DIFFER(10242v10254) hunks=427 -- decl order: f1 frame before manager / f2 frame at top / f3 manager at top
+17:17 0060eeb0 grade f2.cpp DIFFER(10242v10254) hunks=427 -- decl order: f1 frame before manager / f2 frame at top / f3 manager at top
+17:17 0060eeb0 grade f3.cpp DIFFER(10242v10254) hunks=427 -- decl order: f1 frame before manager / f2 frame at top / f3 manager at top
+17:20 0060eeb0 grade m1.cpp DIFFER(10242v10254) hunks=427 -- m1: Compare body = landed 0x411570 text (for(;;) ca/cb)
+17:22 0060eeb0 grade p1.cpp DIFFER(10242v10254) hunks=234 -- PROBE p1: dummy visible CreateMapMarkers body (non-capturing) -- does marker_regions/regions alloc change?
+17:22 0060eeb0 grade p2.cpp DIFFER(10242v10254) hunks=234 -- PROBE p2: p1 + dummy visible CreateMiniMapMarkers body
+17:22 0060eeb0 grade q1.cpp DIFFER(10500v10254) hunks=554 -- p1 base: q1 no FITTED guard / q2 e4-style double guard
+17:22 0060eeb0 grade q2.cpp DIFFER(10194v10254) hunks=250 -- p1 base: q1 no FITTED guard / q2 e4-style double guard
+17:22 0060eeb0 grade p1.cpp DIFFER(10242v10254) hunks=234 -- p1 regrade for pd
+17:23 0060eeb0 grade p3.cpp DIFFER(10242v10254) hunks=234 -- PROBE p3: p1 + dummy visible GetRegionsToDisplay (insert)
+17:24 0060eeb0 grade j1.cpp DIFFER(10226v10254) hunks=412 -- p1 base exits: j1 empty() return then size / j3 num_regions declared before check / j4 size()>0
+17:24 0060eeb0 grade j3.cpp DIFFER(10242v10254) hunks=234 -- p1 base exits: j1 empty() return then size / j3 num_regions declared before check / j4 size()>0
+17:24 0060eeb0 grade j4.cpp DIFFER(10274v10254) hunks=206 -- p1 base exits: j1 empty() return then size / j3 num_regions declared before check / j4 size()>0
+17:24 0060eeb0 grade j4.cpp DIFFER(10274v10254) hunks=206 -- j4 regrade for pd
+17:24 0060eeb0 grade k1.cpp DIFFER(10242v10254) hunks=235 -- p1 base has_regions: k1 begin()!=end() / k5 size()!=0 / k6 !(size()==0)
+17:24 0060eeb0 grade k5.cpp DIFFER(10274v10254) hunks=206 -- p1 base has_regions: k1 begin()!=end() / k5 size()!=0 / k6 !(size()==0)
+17:24 0060eeb0 grade k6.cpp DIFFER(10274v10254) hunks=206 -- p1 base has_regions: k1 begin()!=end() / k5 size()!=0 / k6 !(size()==0)
+17:25 0060eeb0 grade p4.cpp DIFFER(10242v10254) hunks=234 -- PROBE p4: p1 + dummy visible ConstructRegionDescription + CreateMiniMapMarkers
+17:26 0060eeb0 grade o1.cpp DIFFER(10258v10254) hunks=232 -- p1 base head order: o1 regions;Pan;clear / o2 regions;clear;Pan / o3 Pan;clear;regions
+17:26 0060eeb0 grade o2.cpp DIFFER(10258v10254) hunks=234 -- p1 base head order: o1 regions;Pan;clear / o2 regions;clear;Pan / o3 Pan;clear;regions
+17:26 0060eeb0 grade o3.cpp DIFFER(10242v10254) hunks=209 -- p1 base head order: o1 regions;Pan;clear / o2 regions;clear;Pan / o3 Pan;clear;regions
+17:26 0060eeb0 grade o3.cpp DIFFER(10242v10254) hunks=209 -- o3 regrade for pd
+17:26 0060eeb0 grade c1.cpp DIFFER(10258v10254) hunks=206 -- p1 base head order: c1 clear;Pan;regions / c2 clear;regions;Pan / c3 Pan;regions;marker;clear
+17:26 0060eeb0 grade c2.cpp DIFFER(10258v10254) hunks=207 -- p1 base head order: c1 clear;Pan;regions / c2 clear;regions;Pan / c3 Pan;regions;marker;clear
+17:26 0060eeb0 grade c3.cpp DIFFER(10258v10254) hunks=231 -- p1 base head order: c1 clear;Pan;regions / c2 clear;regions;Pan / c3 Pan;regions;marker;clear
+17:27 0060eeb0 grade o3.cpp DIFFER(10242v10254) hunks=209 -- o3 regrade for pd
+17:27 0060eeb0 grade o1.cpp DIFFER(10258v10254) hunks=232 -- o1 regrade for pd
+17:27 0060eeb0 grade c1.cpp DIFFER(10258v10254) hunks=206 -- c1 regrade for pd
+17:28 0060eeb0 grade a1.cpp DIFFER(10242v10254) hunks=236 -- p1 base A-loop ||: a1 reversed == / a2 ParentThing-> / a3 both
+17:28 0060eeb0 grade a2.cpp DIFFER(10242v10254) hunks=236 -- p1 base A-loop ||: a1 reversed == / a2 ParentThing-> / a3 both
+17:28 0060eeb0 grade a3.cpp DIFFER(10242v10254) hunks=238 -- p1 base A-loop ||: a1 reversed == / a2 ParentThing-> / a3 both
+17:28 0060eeb0 grade n1.cpp DIFFER(10242v10254) hunks=234 -- p1 base A-loop: n1 named const CRegion& / n2 CRegion copy (diag) / n3 named long region_number=*it
+17:28 0060eeb0 grade n2.cpp DIFFER(10286v10254) hunks=254 -- p1 base A-loop: n1 named const CRegion& / n2 CRegion copy (diag) / n3 named long region_number=*it
+17:28 0060eeb0 grade n3.cpp DIFFER(10258v10254) hunks=246 -- p1 base A-loop: n1 named const CRegion& / n2 CRegion copy (diag) / n3 named long region_number=*it
+17:29 0060eeb0 grade o3.cpp DIFFER(10242v10254) hunks=209 -- o3 regrade for pd
+17:29 0060eeb0 grade s1.cpp DIFFER(10242v10254) hunks=70 -- o3 base subtitle: s1 named CText* / s2 named CComponent*
+17:29 0060eeb0 grade s2.cpp DIFFER(10242v10254) hunks=70 -- o3 base subtitle: s1 named CText* / s2 named CComponent*
+17:29 0060eeb0 grade s1.cpp DIFFER(10242v10254) hunks=70 -- s1 regrade for pd
+17:30 0060eeb0 grade t1.cpp DIFFER(10242v10254) hunks=95 -- s1 base head order: t1 Pan;regions;clear / t2 regions;Pan;clear / t3 clear;Pan;regions
+17:30 0060eeb0 grade t2.cpp DIFFER(10258v10254) hunks=93 -- s1 base head order: t1 Pan;regions;clear / t2 regions;Pan;clear / t3 clear;Pan;regions
+17:30 0060eeb0 grade t3.cpp DIFFER(10258v10254) hunks=67 -- s1 base head order: t1 Pan;regions;clear / t2 regions;Pan;clear / t3 clear;Pan;regions
+17:30 0060eeb0 grade t1.cpp DIFFER(10242v10254) hunks=95 -- t1 regrade for pd
+17:30 0060eeb0 grade s1.cpp DIFFER(10242v10254) hunks=70 -- s1 regrade for pd
+17:31 0060eeb0 grade y1.cpp DIFFER(10242v10254) hunks=70 -- s1 base Position+origin: y1 Y+= / y2 Y=Y+o / y3 Position+=origin
+17:31 0060eeb0 grade y2.cpp DIFFER(10242v10254) hunks=70 -- s1 base Position+origin: y1 Y+= / y2 Y=Y+o / y3 Position+=origin
+17:31 0060eeb0 grade y3.cpp DIFFER(10242v10254) hunks=70 -- s1 base Position+origin: y1 Y+= / y2 Y=Y+o / y3 Position+=origin
+17:31 0060eeb0 grade y3.cpp DIFFER(10242v10254) hunks=70 -- y3 regrade pd
+17:31 0060eeb0 grade y1.cpp DIFFER(10242v10254) hunks=70 -- y1 regrade pd
+17:32 0060eeb0 grade z5.cpp DIFFER(10226v10254) hunks=75 -- s1 base state stmt order: z5 T,F,Y,X / z6 X,T,F,Y / z7 Y,T,F,X
+17:32 0060eeb0 grade z6.cpp DIFFER(10242v10254) hunks=70 -- s1 base state stmt order: z5 T,F,Y,X / z6 X,T,F,Y / z7 Y,T,F,X
+17:32 0060eeb0 grade z7.cpp DIFFER(10226v10254) hunks=75 -- s1 base state stmt order: z5 T,F,Y,X / z6 X,T,F,Y / z7 Y,T,F,X
+17:33 0060eeb0 grade L1.cpp DIFFER(10226v10254) hunks=416 -- legit (no dummy): L1 b0+named subtitle CText* / L2 L1+o3 head order
+17:33 0060eeb0 grade L2.cpp DIFFER(10242v10254) hunks=399 -- legit (no dummy): L1 b0+named subtitle CText* / L2 L1+o3 head order
+17:33 0060eeb0 grade r1.cpp SRC_FAIL -- r1: s1 with the REAL CreateMapMarkers draft body (hand729 differ) instead of the dummy
+17:34 0060eeb0 grade r2.cpp DIFFER(10242v10254) hunks=70 -- r2: real CreateMapMarkers body, fix headers
+17:34 0060eeb0 grade u1.cpp DIFFER(10242v10254) hunks=95 -- r2 base head: u1 Pan;regions;clear / u2 u1+begin!=end / u3 regions;Pan;clear
+17:34 0060eeb0 grade u2.cpp DIFFER(10242v10254) hunks=96 -- r2 base head: u1 Pan;regions;clear / u2 u1+begin!=end / u3 regions;Pan;clear
+17:34 0060eeb0 grade u3.cpp DIFFER(10258v10254) hunks=93 -- r2 base head: u1 Pan;regions;clear / u2 u1+begin!=end / u3 regions;Pan;clear
+17:35 0060eeb0 grade v1.cpp DIFFER(10242v10254) hunks=70 -- r2 base Compare text: v1 ++b;++a / v2 landed for(;;) / v3 landed with ++b;++a
+17:35 0060eeb0 grade v2.cpp DIFFER(10242v10254) hunks=70 -- r2 base Compare text: v1 ++b;++a / v2 landed for(;;) / v3 landed with ++b;++a
+17:35 0060eeb0 grade v3.cpp DIFFER(10242v10254) hunks=70 -- r2 base Compare text: v1 ++b;++a / v2 landed for(;;) / v3 landed with ++b;++a

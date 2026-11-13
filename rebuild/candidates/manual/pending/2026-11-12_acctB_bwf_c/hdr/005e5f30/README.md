@@ -1,0 +1,7 @@
+# hdr/ overlay for row 0x005E5F30 CTCQuestCompletionUI::ActivateReal (each file = current repo header + one opt-in block; default text unchanged)
+- engine/CTCQuestCompletionUI.h: FABLE_RETAIL_CTCQUESTCOMPLETIONUI_ACTIVATEREAL -- `void ActivateReal();` (Ego_r.pdb / FableWin.pdb ?ActivateReal@CTCQuestCompletionUI@@QAEXXZ), the three StartQuest maps typed std::map<long,unsigned long> and PRenownText / PGoldText / PExperienceText typed NUISystem::CText* (same offsets/sizes).
+- engine/CTCInventoryMap.h: FABLE_RETAIL_CTCINVENTORYMAP_MINIMAPMARKERS -- `void CreateMiniMapMarkers(NUISystem::CComponent*, CRegion&);` (Ego_r 0x00652B10 / FableWin 0x02093750, retail 0x00603000).
+- engine/CQuestManager.h: FABLE_RETAIL_CQUESTMANAGER_FINISHSCREEN -- `bool OnQuestFinishScreenDisplayed(const CCharString&);` (both PDBs, retail 0x004B0160).
+- engine/CTCInventoryItem.h: FABLE_RETAIL_CTCINVENTORYITEM_RIGHTHANDEDSET -- `static CRightHandedSet __fastcall GetStartingRightHandedSet(long);` (FableWin ?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z, retail 0x005D9730).
+- engine/CTCHeroStats.h: FABLE_RETAIL_CTCHEROSTATS_TOTALS -- inline GetRenownTotal / GetTotalMoneyEarned (FableWin ?..@CTCHeroStats@@QBEJXZ; retail reads +0x7C / +0x48 in place), placed at the end of the retail class.
+- engine/CTCHeroExperience.h: FABLE_RETAIL_CTCHEROEXPERIENCE_TOTALEXPERIENCE -- inline GetTotalExperience (FableWin ?GetTotalExperience@CTCHeroExperience@@QBEJXZ; retail reads +0x10 in place).

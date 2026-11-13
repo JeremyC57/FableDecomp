@@ -1,0 +1,13 @@
+# Header overlay for row 0x00B72180 (bwf2; FABLE_HDR_OVERLAY=$W/hdr)
+Base: /opt/fable_lane/w22/agent2048/hdr (RenderClouds / RenderSunFlare overlay, itself c2031 + c2008 + c2018 copies) copied unchanged except the files
+below. Re-base needed before landing: these copies lack later repo opt-ins (C2DVector, CEngineResourceManager, CGraphicFrame, CGraphicInfo,
+CGraphicInfoFrame, CIVCountedPointer, CRenderStateManager, CShaderRenderManager: the repo has opt-ins added after the 2048 copy); the 2048 additions
+themselves are documented in that overlay's README.
+| header | opt-in | what | evidence |
+|---|---|---|---|
+| engine/CEngineWaterRenderer.h (repo copy) | `FABLE_RETAIL_CENGINEWATERRENDERER_CREATEDYNAMICTEXTURES` | private CreateDynamicTextures(bool,bool,bool), RenderBumpMap(EWaterArrayIndexAliases), RenderIceBumpMap(), SetRenderTargetToSurface(CRenderTarget&, const CSurface&) | Ego_r 0x00A1EE70 / FableWin ?CreateDynamicTextures@CEngineWaterRenderer@@AAE_N_N00@Z; ?RenderBumpMap@..@@AAEXW4EWaterArrayIndexAliases@@@Z (Ego_r 0x00A1E110, retail 0x00B6E890); FableWin ?SetRenderTargetToSurface@..@@AAEXAAVCRenderTarget@@ABVCSurface@@@Z (retail out-of-line 0x00B7AD20) |
+| engine/CGPUScratchBufferTextureManager.h (repo copy) | `FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE` | StartTextureUse(long) -> CTexture* | Ego_r 0x00B3C370 ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z; retail 0x00F36EE0 returns entry+4 (0x00F36F10 returns +8) |
+| engine/CTexture.h (repo copy) | `FABLE_RETAIL_CTEXTURE_WATERDYNAMIC` | GetNoLevels() 0x009F9DF0, GenerateMipmapsWithGPU() 0x009FAF70, inline GetHeight(level) | Ego_r + FableWin ?GetNoLevels@CTexture@@QBEJXZ / ?GenerateMipmapsWithGPU@CTexture@@QAEXXZ; FableWin ?GetHeight@CTexture@@QBEKK@Z (inline: `cmp [eax+4],20h ; jb` on GetDimensions) |
+| engine/CSurface.h (re-based: repo copy) | `FABLE_RETAIL_CSURFACE_ASSIGN` (moved over from the 2048 copy) | operator= 0x009F2E70 | as in the 2048 overlay (chunk 2008) |
+| engine/CScopedShadersEnable.h (repo copy) | `FABLE_RETAIL_CSCOPEDSHADERSENABLE_FORCEINLINE` | FABLE_FORCEINLINE ~CScopedShadersEnable | retail expands the dtor at 0x00B7369C..0x00B736DE; plain inline left it called (??1CScopedShadersEnable) |
+| engine/CRenderTarget.h (NEW) | default | class CRenderTarget : CBaseClass { CSurface RenderToSurface +4, ZBufferSurface +0x14 } (0x24), inline default ctor, Detach/Attach Target/ZBuffer, Uninitialise | Ego_r layout (struct_layouts_egor.tsv) + Ego_r names ??0CRenderTarget@@QAE@AAVCSurface@@0@Z, ?DetachTarget/?DetachZBuffer/?Uninitialise/?AttachTarget/?AttachZBuffer@CRenderTarget@@; vtable 0x0129C800 stored at 0x00B72D25 |

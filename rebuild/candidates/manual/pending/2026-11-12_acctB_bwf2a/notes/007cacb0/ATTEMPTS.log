@@ -1,0 +1,18 @@
+17:22 007cacb0 grade v1.cpp DIFFER(2918v2974) hunks=17 -- first full draft
+17:24 007cacb0 grade v2.cpp DIFFER(2918v2974) hunks=17 -- direct member flags / default Clear
+17:24 007cacb0 grade v3.cpp DIFFER(2950v2974) hunks=21 -- direct member flags / default Clear
+17:31 007cacb0 probe trace Clear sz for 3 bodies
+17:32 007cacb0 grade v5.cpp DIFFER(2919v2974) hunks=16 -- CPlayer include order + RESET_ADOPT; + forceinline Clear
+17:32 007cacb0 grade v6.cpp DIFFER(2977v2974) hunks=14 -- CPlayer include order + RESET_ADOPT; + forceinline Clear
+17:32 007cacb0 grade v7.cpp DIFFER(2974v2974) hunks=12 -- sound_manager local + gold=0 first; + FullSizeTimer before copy
+17:32 007cacb0 grade v8.cpp DIFFER(2974v2974) hunks=10 -- sound_manager local + gold=0 first; + FullSizeTimer before copy
+17:34 007cacb0 grade v9.cpp DIFFER(2974v2974) hunks=6 -- ForceClear stmt order / chained copy / emitter ref
+17:34 007cacb0 grade v10.cpp DIFFER(2974v2974) hunks=10 -- ForceClear stmt order / chained copy / emitter ref
+17:34 007cacb0 grade v11.cpp DIFFER(2974v2974) hunks=10 -- ForceClear stmt order / chained copy / emitter ref
+17:34 007cacb0 grade v12.cpp DIFFER(2974v2974) hunks=6 -- CSoundInit ctor body visible (local / global)
+17:34 007cacb0 grade v13.cpp RELOCATION_MATCH -- CSoundInit ctor body visible (local / global)
+17:35 007cacb0 grade v14.cpp DIFFER(2916v2974) hunks=10 -- plain Clear check / no emitter ref
+17:35 007cacb0 grade v15.cpp RELOCATION_MATCH -- plain Clear check / no emitter ref
+17:35 007cacb0 grade final.cpp RELOCATION_MATCH -- final source with header comment
+17:36 007cacb0 grade final.cpp RELOCATION_MATCH -- strict headers regrade
+17:37 007cacb0 grade 007cacb0.cpp RELOCATION_MATCH -- final regrade after overlay marker cleanup

@@ -1,0 +1,2 @@
+007b90f0 CTCTavernTable::OnInitialActivate RELOCATION_MATCH flags= []
+007d8570 CTCTavernGameSpotTheAddition::ProcessInput RELOCATION_MATCH flags= []

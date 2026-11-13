@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a50510   RELOCATION_MATCH PASS   InitialiseAnimationSequences
+
+WINS: 1
+  00a50510 RELOCATION_MATCH C3DAnimation2::?InitialiseAnimationSequences@C3DAnimation2@@AAE_NAAV1@ABVC3DMesh2@@_NAAK@Z

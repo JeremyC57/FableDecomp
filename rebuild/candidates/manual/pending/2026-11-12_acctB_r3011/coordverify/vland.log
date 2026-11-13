@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00915b60   WARN RELOC_NAME: ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z -> 007fef40 labelled 'CTCUserActionPointBase::FreeActionPoint'
+00915b60   RELOCATION_MATCH PASS   PlaceGoods
+
+WINS: 1
+  00915b60 RELOCATION_MATCH CAIStateGroup_MoveGoodsBase::?PlaceGoods@CAIStateGroup_MoveGoodsBase@@IAE_NV?$CIntelligentPointer@VCThing@@@@MV?$vector@PBVCCharString@@V?$allocator@PBVCCharString@@@std@@@std@@ABVCAIFilterBase@CAIStateGroupBase@@PBVCThing@@@Z

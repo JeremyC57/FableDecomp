@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00bf0b20	?SetupOutlineFillStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@M@Z	called for RENDER_PASS_OUTLINE_FILL (13) at 0x00BB4615; 0x00BF0740 is called for RENDER_PASS_OUTLINE_STENCIL (12) at 0x00BB45FC; Ego_r order/sizes (Stencil 0x410 ~ 0x00BF0740 0x3E0, Fill 0x520 ~ 0x00BF0B20 0x510)	SetupOutlineStencilStates (CEnginePrimitiveRenderUtil.h FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_OUTLINESTENCILSTATES, manifest)
+00b8d090	?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ	Ego_r.pdb / FableWin.pdb; called under occlusion_test before RenderPolygons (0x00BB4EA3)	Nop_ret0_00b8d090, BeginQuery
+00b8d0a0	?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z	Ego_r.pdb / FableWin.pdb; called with the occluder handle after RenderPolygons (0x00BB4EF2)	Nop_ret4_00b8d0a0, EndQuery

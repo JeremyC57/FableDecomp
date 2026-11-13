@@ -1,0 +1,2 @@
+004ca390 CThing::vfunc_16 RELOCATION_MATCH flags= []
+00b665e0 CEngineSkyRenderer::GetEnvironmentMap RELOCATION_MATCH flags= []

@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00b87870   WARN RELOC_CONFLICT: ?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA -> 01396dd8 here, 01396de8 in landed 00bbc460
+00b87870   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b87870   RELOCATION_MATCH PASS   ApplyDisplacement
+
+WINS: 1
+  00b87870 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::ApplyDisplacement

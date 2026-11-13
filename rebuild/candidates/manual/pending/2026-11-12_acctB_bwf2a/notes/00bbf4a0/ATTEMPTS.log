@@ -1,0 +1,68 @@
+17:28 00bbf4a0 grade v1.cpp SRC_FAIL -- first full draft
+17:28 00bbf4a0 grade v1.cpp DIFFER(4119v4169) hunks=69 -- first full draft (flattened displacement renderer)
+17:29 00bbf4a0 grade v1.cpp DIFFER(4049v4169) hunks=59 -- displacement Apply* FORCEINLINE
+17:29 00bbf4a0 grade v1.cpp DIFFER(4049v4169) hunks=59 -- same, full hunks
+17:29 00bbf4a0 grade v1.cpp DIFFER(4156v4169) hunks=61 -- GFFastCos forceinline
+17:30 00bbf4a0 grade v2.cpp DIFFER(4165v4169) hunks=62 -- angle local (in block / before shape ref)
+17:30 00bbf4a0 grade v3.cpp DIFFER(4165v4169) hunks=60 -- angle local (in block / before shape ref)
+17:31 00bbf4a0 grade v1.cpp DIFFER(4156v4169) hunks=61 -- GFFastCos landed text (angle scaled in place)
+17:31 00bbf4a0 grade v3.cpp DIFFER(4159v4169) hunks=27 -- GFFastCos landed text (angle scaled in place)
+17:31 00bbf4a0 grade v3.cpp DIFFER(4159v4169) hunks=27 -- regrade v3 for hunks
+17:31 00bbf4a0 grade v4.cpp DIFFER(4159v4169) hunks=23 -- ConstantBlock[count++] refs / + no view ref
+17:31 00bbf4a0 grade v5.cpp DIFFER(4201v4169) hunks=29 -- ConstantBlock[count++] refs / + no view ref
+17:31 00bbf4a0 grade v4.cpp DIFFER(4159v4169) hunks=23 -- regrade v4 hunks
+17:32 00bbf4a0 grade v6.cpp DIFFER(4154v4169) hunks=27 -- additive=false init / group_manager before texture / additive decl early
+17:32 00bbf4a0 grade v7.cpp DIFFER(4159v4169) hunks=24 -- additive=false init / group_manager before texture / additive decl early
+17:32 00bbf4a0 grade v8.cpp DIFFER(4159v4169) hunks=23 -- additive=false init / group_manager before texture / additive decl early
+17:33 00bbf4a0 grade v4.cpp DIFFER(4159v4169) hunks=23 -- regrade v4 (for obj)
+17:33 00bbf4a0 grade v9.cpp DIFFER(4159v4169) hunks=23 -- loop body: continue / nested if / <= continue
+17:33 00bbf4a0 grade v10.cpp DIFFER(4159v4169) hunks=23 -- loop body: continue / nested if / <= continue
+17:33 00bbf4a0 grade v11.cpp DIFFER(4159v4169) hunks=25 -- loop body: continue / nested if / <= continue
+17:34 00bbf4a0 grade v12.cpp DIFFER(4159v4169) hunks=23 -- loop: guarded do-while / while / iterator
+17:34 00bbf4a0 grade v13.cpp DIFFER(4159v4169) hunks=23 -- loop: guarded do-while / while / iterator
+17:34 00bbf4a0 grade v14.cpp DIFFER(4159v4169) hunks=23 -- loop: guarded do-while / while / iterator
+17:34 00bbf4a0 grade v4.cpp DIFFER(4127v4169) hunks=146 /G7 -- flag /G7
+17:34 00bbf4a0 grade v4.cpp DIFFER(4159v4169) hunks=23 /G5 -- flag /G5
+17:35 00bbf4a0 grade v15.cpp DIFFER(4159v4169) hunks=23 -- no dyncast wrapper / FrameData->GetTexture / !=false
+17:35 00bbf4a0 grade v16.cpp DIFFER(4159v4169) hunks=23 -- no dyncast wrapper / FrameData->GetTexture / !=false
+17:35 00bbf4a0 grade v17.cpp DIFFER(4159v4169) hunks=23 -- no dyncast wrapper / FrameData->GetTexture / !=false
+17:36 00bbf4a0 grade v18.cpp DIFFER(4201v4169) hunks=56 -- camera: GetRowX/Y locals / camera ref / c0..c2 refs
+17:36 00bbf4a0 grade v19.cpp DIFFER(4169v4169) hunks=24 -- camera: GetRowX/Y locals / camera ref / c0..c2 refs
+17:36 00bbf4a0 grade v20.cpp DIFFER(4169v4169) hunks=10 -- camera: GetRowX/Y locals / camera ref / c0..c2 refs
+17:36 00bbf4a0 grade v20.cpp DIFFER(4169v4169) hunks=10 -- regrade v20 hunks
+17:37 00bbf4a0 grade v21.cpp DIFFER(4169v4169) hunks=10 -- TL sched: 40==count / FrameData->GetFloatTL / sizeof count
+17:37 00bbf4a0 grade v22.cpp DIFFER(4169v4169) hunks=10 -- TL sched: 40==count / FrameData->GetFloatTL / sizeof count
+17:37 00bbf4a0 grade v23.cpp DIFFER(4169v4169) hunks=10 -- TL sched: 40==count / FrameData->GetFloatTL / sizeof count
+17:38 00bbf4a0 grade v24.cpp DIFFER(4169v4169) hunks=13 -- TL: u/v locals / frame ref / no ref
+17:38 00bbf4a0 grade v25.cpp DIFFER(4169v4169) hunks=10 -- TL: u/v locals / frame ref / no ref
+17:38 00bbf4a0 grade v26.cpp DIFFER(4171v4169) hunks=11 -- TL: u/v locals / frame ref / no ref
+17:38 00bbf4a0 grade v24.cpp DIFFER(4169v4169) hunks=13 -- v24 regrade for bytes
+17:38 00bbf4a0 grade v20.cpp DIFFER(4169v4169) hunks=10 -- GetFloatTL text B (B: /32767, C: (float) cast)
+17:38 00bbf4a0 grade v20.cpp DIFFER(4169v4169) hunks=10 -- GetFloatTL text C (B: /32767, C: (float) cast)
+17:38 00bbf4a0 grade v27.cpp DIFFER(4169v4169) hunks=10 -- count decl placement v27
+17:39 00bbf4a0 grade v28.cpp DIFFER(4178v4169) hunks=128 -- count decl placement v28
+17:39 00bbf4a0 grade v29.cpp DIFFER(4169v4169) hunks=10 -- count decl placement v29
+17:39 00bbf4a0 grade v20.cpp DIFFER(4169v4169) hunks=10 -- v20 regrade for listing
+17:39 00bbf4a0 grade v30.cpp DIFFER(4169v4169) hunks=12 -- TL count: ++count==40 / ++count; stmt / [++count]
+17:39 00bbf4a0 grade v31.cpp DIFFER(4169v4169) hunks=12 -- TL count: ++count==40 / ++count; stmt / [++count]
+17:39 00bbf4a0 grade v32.cpp DIFFER(4169v4169) hunks=10 -- TL count: ++count==40 / ++count; stmt / [++count]
+17:41 00bbf4a0 grade v20.cpp DIFFER(4169v4169) hunks=8 -- GetFloatTL text I (I: two locals, FableWin size; G: /32767.0 double)
+17:41 00bbf4a0 grade v20.cpp DIFFER(4169v4169) hunks=11 -- GetFloatTL text G (I: two locals, FableWin size; G: /32767.0 double)
+17:41 00bbf4a0 grade v20.cpp DIFFER(4169v4169) hunks=8 -- hdr now with GetFloatTL two-local text
+17:43 00bbf4a0 grade v20.cpp DIFFER(4169v4169) hunks=8 -- regrade v20 (mask check)
+17:44 00bbf4a0 grade v33.cpp RELOCATION_MATCH -- UpdateGlobalLightingStates after both light branches
+17:44 00bbf4a0 grade final.cpp RELOCATION_MATCH -- final source (no CMatrix3x4 overlay, header comment)
+17:45 00bbf4a0 grade final.cpp RELOCATION_MATCH -- strict headers regrade
+17:45 00bbf4a0 grade 00bbf4a0.cpp RELOCATION_MATCH -- final strict regrade, minimal overlay
+20:22 00bbf4a0 grade src.cpp ERROR -- 
+20:22 00bbf4a0 grade src.cpp ERROR -- 
+20:22 00bbf4a0 grade src.cpp RELOCATION_MATCH -- 
+20:24 00bbf4a0 grade src.cpp RELOCATION_MATCH -- 
+20:26 00bbf4a0 grade src.cpp TIMEOUT -- 
+20:28 00bbf4a0 grade src.cpp TIMEOUT -- 
+23:14 00bbf4a0 grade v1.cpp RELOCATION_MATCH -- repair: CThing.h cast; probe plain-inline GFFastSin / Setup*
+23:14 00bbf4a0 grade v2.cpp DIFFER(4005v4169) hunks=59 -- probe: GFFastSin plain inline
+23:14 00bbf4a0 grade v3.cpp DIFFER(3225v4169) hunks=81 -- probe: Setup* plain inline
+23:15 00bbf4a0 grade 00bbf4a0.cpp RELOCATION_MATCH -- repair: CThing.h cast, body/inline-budget/name comments
+23:15 00bbf4a0 grade 00bbf4a0.cpp RELOCATION_MATCH -- repair: strict headers
+23:15 00bbf4a0 grade 00bbf4a0.cpp RELOCATION_MATCH -- repair: comment wording

@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00b4fc40   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b4fc40   RELOCATION_MATCH PASS   SetupShadowFuncRenderStates
+
+WINS: 1
+  00b4fc40 RELOCATION_MATCH CEngineShadowRenderer::?SetupShadowFuncRenderStates@CEngineShadowRenderer@@QAEXJABVCMatrix3x4@@ABUCColorBufferDepthPackParameters@1@@Z

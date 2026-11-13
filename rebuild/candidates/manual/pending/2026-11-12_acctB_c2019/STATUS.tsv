@@ -1,0 +1,2 @@
+address	grade	bytes	test	grades_used	notes
+006b42f0	RELOCATION_MATCH	1543v1543	PASS	5 (pass 1: 5; pass 2: 0; pass 3: 0)	matched at grade 4 (grade 5 = the comment-only final file via gall.sh); about 110 free compile-only probes + 9 c2 traces on top (none diffed against retail)

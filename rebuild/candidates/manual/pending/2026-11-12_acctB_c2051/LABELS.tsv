@@ -1,0 +1,35 @@
+address	name	evidence
+004A6E30	?Init@CWorld@@UAEXXZ	CWorld vtable slot 9 (engine/CWorld.h); Ego_r.pdb + FableWin.pdb name sets; RELOCATION_MATCH
+006E8300	?Init@CCombatManager@@QAEXXZ	Ego_r.pdb ?Init@CCombatManager@@QAEXXZ; body calls CombatDialogueManager::Init 0x008AF2B0 on +0x38 (the DialogueManager member) then sets AttackPatternIdleStandardInterval +0x30 = 0.5 / +0x34 false; called right after the CCombatManager ctor in CWorld::Init (catalog label ResetDialogue is wrong)
+006F5C10	?StatRegisterClass@CCreatureActionBase@@SIXXZ	Ego_r.pdb/FableWin.pdb ?StatRegisterClass@CCreatureActionBase@@SIXXZ; body calls RegisterActionEventTypes 0x006932B0 then fills CCreatureActionBase::Registry 0x013BA8C8 via insert_unique 0x006F5400 (catalog: global StatRegisterClass)
+006B97E0	??0CFactionManager@@QAE@ABVCWorld@@@Z	Ego_r.pdb ctor (const CWorld&); new(0x10) + push esi in CWorld::Init 0x004A70B6 (catalog: CWorld_InitFactions)
+005066E0	??0CWorldMap@@QAE@ABVCMainGameComponent@@AAVCWorld@@ABVC2DBoxI@@K@Z	Ego_r.pdb ctor; CWorld::Init arguments (Component, this, box 0,0,0x2000,0x2000, 5)
+006BBC30	??0CGameTimeManager@@QAE@AAVCMainGameComponent@@AAVCWorld@@@Z	Ego_r.pdb; CWorld::Init
+006B4900	??0CEnvironment@@QAE@ABVCGameDefinitionManager@@@Z	Ego_r.pdb; CWorld::Init (DefinitionManager +0x10)
+00A15670	??0CNavigatorManager@@QAE@KPAKABVCNavigatorManagerExternalInterface@@@Z	Ego_r.pdb; CWorld::Init (4, &Component->WorldSeed, stack CGameNavigatorManagerExternalInterface)
+00687510	??0CMessageEventManager@@QAE@ABVCWorld@@@Z	Ego_r.pdb; CWorld::Init
+0049C7A0	??0CThingSearchTools@@QAE@AAVCThingManager@@AAVCWorldMap@@@Z	Ego_r.pdb; CWorld::Init
+0069AE80	??0CGameCameraManager@@QAE@ABVCWorld@@@Z	Ego_r.pdb; CWorld::Init
+004C60F0	??0CBulletTimeManager@@QAE@AAVCWorld@@AAVCPlayerManager@@@Z	Ego_r.pdb; CWorld::Init (this, PlayerManager +0xC)
+007004B0	??0COpinionReactionManager@@QAE@ABVCWorld@@@Z	Ego_r.pdb; CWorld::Init
+006E6150	??0CScriptConversationManager@@QAE@XZ	Ego_r.pdb; CWorld::Init new(0x14)
+006FD8C0	??0CGameCameraBase@@QAE@AAVCWorld@@@Z	Ego_r.pdb; CWorld::Init new(0xC8)
+006ED3F0	??0CCombatManager@@QAE@AAVCWorld@@@Z	Ego_r.pdb; CWorld::Init new(0x5C)
+0049EBF0	?InitThingManager@CWorld@@IAE_NXZ	Ego_r.pdb (protected); CWorld::Init
+0049E620	?InitMeshBank@CWorld@@IAE_NXZ	Ego_r.pdb (protected); CWorld::Init
+00419D90	?Initialise@NGlobalConsole@@YIXXZ	Ego_r.pdb; CWorld::Init after "Init Global Console"
+00AEAA90	?SetMeshBank@NParticleEngine@@YIXABVCMeshDataBank@@@Z	Ego_r.pdb; CWorld::Init after "Setting Particle Engine Mesh Bank"
+006FAA90	?InitialiseManagers@NAnimationEvents@@YIXABVCMeshDataBank@@@Z	Ego_r.pdb; CWorld::Init after "Init Animation Event Managers"
+006FABF0	?LoadAnimationEvents@NAnimationEvents@@YIX_N@Z	Ego_r.pdb; CWorld::Init (`mov cl,1`)
+006E3EC0	?Initialise@NSpeechGainManager@@YIXABVCWorld@@@Z	shared engine/NSpeechGainManager.h + Ego_r.pdb
+006C37D0	?PreloadBoneConfigs@CSkeletalMorphResourceManager@@QAEXXZ	Ego_r.pdb; CWorld::Init on the singleton
+004ADD30	??$checked_delete@VCGameTimeManager@@@boost@@YIXPAVCGameTimeManager@@@Z	FableWin.pdb ??$checked_delete@...@boost@@YIX (fastcall, /Gr); body = implicit ~CGameTimeManager (StopTimeIndexes set) + operator delete
+004AE080	??$checked_delete@VCBulletTimeManager@@@boost@@YIXPAVCBulletTimeManager@@@Z	same pattern; map at +0 then operator delete
+004AE810	??$checked_delete@VCScriptConversationManager@@@boost@@YIXPAVCScriptConversationManager@@@Z	same pattern; map at +0 then operator delete
+004ADF80	?Reset@?$CCountedPointer@VCMessageEventManager@@@@QAEXPAVCMessageEventManager@@@Z	shared CCountedPointer<T>::Reset, out of line per T; CWorld::Init lea ecx,[esi+60h]
+004ADAE0	?Reset@?$CCountedPointer@VCOpinionReactionManager@@@@QAEXPAVCOpinionReactionManager@@@Z	same; lea ecx,[esi+74h]
+00595A03	?CanStartAttractMode@CFrontEndManager@NUISystem@@QAE_NXZ	Ego_r.pdb name; `xor al,al ; ret` called after the 120 s attract-mode idle test in CNewFrontendGameComponent::Run (catalog/binding IsBlockingControllerMessage / ReturnFalse is wrong) -- context-proven
+00404490	?Release@?$CTBaseSingleton@VCFileInstaller@@@@SIXXZ	Ego_r.pdb; landed body resets the static counted pointer 0x013CA818 (catalog Release_013ca818)
+0042DB80	?SetClearColour@CXMVPlayer@@SIXVCRGBColour@@@Z	Ego_r.pdb; uncalled inline copy storing 0x013961E0 (expanded in Run)
+0042DB90	?SetSkipOnAnyButton@CXMVPlayer@@SIX_N@Z	Ego_r.pdb CXMVPlayer static bool setters: SetLeftAlignText / SetNoHangulWordWrap are the called copies 0x009BC890 / 0x009BC8A0 (fed from config bytes); this one is set only around the front-end movies (context; by elimination)
+0042EC7C	?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z	Ego_r.pdb + FableWin.pdb; CGameComponent vtable slot 2 of CNewFrontendGameComponent; RELOCATION_MATCH (chunk 2051 continuation)

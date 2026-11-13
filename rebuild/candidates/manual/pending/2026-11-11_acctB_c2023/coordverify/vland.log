@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0094c050   WARN RELOC_NAME: ?GetMinDistFromStall@CTCShopKeeper@@QAEJXZ -> 00798d10 labelled '_global::ReturnZero_ret0_00798d10'
+0094c050   WARN RELOC_NAME: ?GetMaxDistFromCustomer@CTCShopKeeper@@QAEJXZ -> 00798d20 labelled '_global::ReturnConst_10_00798d20'
+0094c050   WARN RELOC_NAME: ?StayInShop@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ -> 0094bef0 labelled 'CAIStateGroup_WorkBase::IsInWorkHours'
+0094c050   RELOCATION_MATCH PASS   Update
+
+WINS: 1
+  0094c050 RELOCATION_MATCH CAIStateGroup_SellToBuyer::?Update@CAIStateGroup_SellToBuyer@@UAEXXZ

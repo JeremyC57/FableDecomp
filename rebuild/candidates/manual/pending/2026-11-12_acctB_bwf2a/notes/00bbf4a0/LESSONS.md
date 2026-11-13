@@ -1,0 +1,4 @@
+- (0x00BBF4A0) Once fg.py shows only reloc-looking hunks with equal lengths, diff the MASKED bytes (V.mask over our obj relocs): a 1-byte jump-target difference (a call merged after both arms of an if) hides among identical-looking hunks.
+- (0x00BBF4A0) Named references to fixed array slots (`CEngineParticleConstantBlock& c0 = ConstantBlock[0]; ...`) moved a callee-saved register swap 30 instructions earlier, a load/address-add order and a loop-head alignment at once.
+- (0x00BBF4A0) A one-instruction scheduling residue at an inline accessor (cmp before fild) was the accessor's TEXT: fwsize showed FableWin's GetFloatTLX at 14i/38b; the two-local text matches the size and the retail order.
+- (0x00BBF4A0) GFFastCos + GFFastSin of the same angle: retail shares angle*1024 only with the landed out-of-line texts (`angle = angle * 1024.0f`) and the angle copied to a local first.

@@ -1,0 +1,2 @@
+address	grade	bytes	test	grades_used	notes
+00a9e1e0	RELOCATION_MATCH	2472v2472	PASS (g++ + VC7.1)	5 (pass 1: 5 -- 3 to match + 2 comment-only regrades of the final file; passes 2-3 unused)	retail_asm via shared engine/CMatrix4x4AlignedSSE.h GF_SSE_MATRIX_MULTIPLY (2 sites, 35+13 per-site table); forced 4x4 ToMatrix[Transposed] + AlignedSetMultiplyTransposed (Inline-budget); accessor x87 arm of AlignedSetMultiply; `unsigned long i` at function scope + named `bone` pointer

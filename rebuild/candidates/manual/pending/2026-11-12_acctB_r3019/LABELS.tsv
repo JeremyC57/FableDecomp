@@ -1,0 +1,5 @@
+address	name	evidence
+006d1250	?CheckAppearanceChanges@CTCWife@@AAEXAAVCThingPlayerCreature@@@Z	Ego_r.pdb + FableWin.pdb name sets; RELOCATION_MATCH
+00616580	??$find@J@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE?AU?$_Rb_tree_iterator@JU?$_Const_traits@J@std@@@1@ABJ@Z	STLport set<long> const find<long>; header body compiled out of line equals the retail bytes
+00512da0	?insert_unique@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@JU?$_Nonconst_traits@J@std@@@std@@_N@2@ABJ@Z	already bound spelling; header body compiled out of line equals the retail bytes
+0071de20	?GetTattooThings@CTCHeroMorph@@QBEXAAV?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@V?$allocator@V?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@@std@@@Z	chunk 2012 (both PDB name sets); unbound in reloc_bindings

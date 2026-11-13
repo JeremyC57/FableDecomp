@@ -1,0 +1,17 @@
+address	name	evidence
+00821A80	?LoadFromFile@CMap@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	Ego_r.pdb 0x0067CFA0 + FableWin.pdb 0x022327B0; bound by the landed ctor 0x008224E0; RELOCATION_MATCH
+0050EE40	??0CFileLargeThemePalette@@QAE@XZ	Ego_r.pdb + FableWin.pdb; called at 0x00821AB6 / 0x00821AC4 on header+0x16 / +0x841E (the landed row file is misnamed CLayer::SetAllPolys, see NAME_FIXES.tsv)
+00A5B210	?OpenFromFile@CCachedFile@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	Ego_r.pdb + FableWin.pdb; called at 0x00821AEF; chunk 2054 overlay
+0051A240	?ReadFromFile@?$CReplaceSerialise@VCFileFormatLevel@@VCOldFileFormatLevel3@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	FableWin.pdb; binding of landed 0x00500230
+0051CBB0	?ReadFromFile@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	Ego_r.pdb + FableWin.pdb; landed row header; called at 0x00821B43
+008F6050	?Clear@CHeightMap@@AAEXXZ	Ego_r.pdb + FableWin.pdb (private); landed Leaf
+009AD3B0	?GetNoInstantiatedDefsOfType@CDefinitionManager@@QBEJABVCCharString@@@Z	Ego_r.pdb + FableWin.pdb; CDefinitionManager.h opt-in
+009AD410	?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z	Ego_r.pdb + FableWin.pdb
+009ADA40	?GetPDefFromInstantiationName@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z	Ego_r.pdb + FableWin.pdb; landed row; called at 0x00821E95
+009ACCA0	?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z	Ego_r.pdb + FableWin.pdb
+0063F3A0	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z	FableWin.pdb; landed Leaf
+00440990	?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z	landed Leaf; called at 0x00821DCC / 0x00821F3C / 0x00821F56
+008275B0	?ReadFromFile@?$CReplaceSerialise@VCFileFormatHeightMapCell@@VCOldFileFormatHeightMapCell6@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	FableWin.pdb; landed, same TU
+0042B144	GetDef<T>(long, CDefPointer<const T>*) const, T unresolved	ICF-folded COMDAT (callers 0x00423647 and this row); written T = CDefClassBase here, DESCRIPTIVE; FableWin's GetDef<CDefClassBase>(long) is 39 instructions / 128 bytes against 41 / 140 for every other T, so that instance has its own text
+013B8636	g_bResetThingUIDsOnMapLoad	DESCRIPTIVE (no PDB data symbol, no string): bool tested at 0x00821B73, when set ThingUIDCount = 1
+01375718	g_LoadMapCellsPerSuspend	DESCRIPTIVE (no PDB data symbol): long in .data, initial 0x800, read at 0x00821FAA, the height cell count between suspends

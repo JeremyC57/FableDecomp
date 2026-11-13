@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a9e1e0   RELOCATION_MATCH PASS   ApplyParentTransformations
+
+WINS: 1
+  00a9e1e0 RELOCATION_MATCH C3DAnimationManager::?ApplyParentTransformations@C3DAnimationManager@@ABEXPBVC3DKeyframe@@PAVCMatrix4x4@@ABVC3DMesh2@@_N@Z

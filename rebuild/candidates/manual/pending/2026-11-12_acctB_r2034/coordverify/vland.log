@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0097bda0   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0097bda0   WARN RELOC_NAME: ??1CCreatureAction_ScorpionChargeInto@@UAE@XZ -> 0097c900 labelled '_global::Dtor_CCombatActionBaseBase_0097c900'
+0097bda0   WARN RELOC_NAME: ?ResetStrikesSinceHitHero@CTCBoss@@QAEXXZ -> 007aed50 labelled '_global::SetMemberConst_007aed50'
+0097bda0   RELOCATION_MATCH PASS   UpdateCombat
+
+WINS: 1
+  0097bda0 RELOCATION_MATCH CAIStateGroup_ScorpionKing::?UpdateCombat@CAIStateGroup_ScorpionKing@@IAEXXZ

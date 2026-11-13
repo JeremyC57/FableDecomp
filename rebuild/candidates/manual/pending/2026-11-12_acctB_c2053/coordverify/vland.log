@@ -1,0 +1,6 @@
+addr       parity           behav  name
+0087f3a0   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+0087f3a0   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 1
+  0087f3a0 RELOCATION_MATCH CCombatAction_KickThingOnGround::?PerformAction@CCombatAction_KickThingOnGround@@UAEXXZ

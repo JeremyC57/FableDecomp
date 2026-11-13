@@ -1,0 +1,2 @@
+005ce0e6 CTCInventoryStats::vfunc_86 RELOCATION_MATCH flags= []
+005d1f0c CTCInventoryStats::vfunc_89 RELOCATION_MATCH flags= []

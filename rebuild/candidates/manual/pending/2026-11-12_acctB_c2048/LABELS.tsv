@@ -1,0 +1,9 @@
+address	name	evidence
+0x00B64FA0	?RenderClouds@CEngineSkyRenderer@@AAEXM@Z	FableWin.pdb name; Ego_r.pdb 0x00A15F60 directly before RenderOuterSky 0x00A169E0 (retail 0x00B65A20 follows 0x00B64FA0); ret 4 = one float
+0x00B64550	?RenderSunFlare@CEngineSkyRenderer@@AAEXXZ	FableWin.pdb (debug COMDAT 0x02D42EC0, TransformViewToScreen / TransformWorldToView follow) + Ego_r.pdb 0x00A17F00; `ret` (no arguments); draft in differ/
+0x00B63530	?RenderScreenSpaceSprite@CEngineSkyRenderer@@AAEXPBVCTexture@@MMMMVCRGBColour@@@Z	FableWin.pdb (right after RenderSunFlare's COMDAT run); RenderSunFlare 0x00B64C56 / 0x00B64F1C push colour (by value, built in place), 4 floats, texture
+0x00B8D3C0	?GetPrevFrameFlareTestResultFromRetrivalID@CEngineOcclusionManager@@QAEMK@Z	FableWin.pdb name + landed binding (reloc_bindings) at 0x00B8D3C0; RenderSunFlare 0x00B645A2 (ecx = [0x01436E5C], push 0x1000000, float result)
+0x009FE620	?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z	Ego_r.pdb / FableWin.pdb (const QBE); RenderSunFlare 0x00B649D7 / 0x00B64DB2 (push 0 ; push 0 on the info frame)
+0x009FF8D0	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	Ego_r.pdb / FableWin.pdb; RenderSunFlare 0x00B64A3E (flags 1) / 0x00B64E35 (flags 0)
+0x00B64550	CEngineSkyRenderer::RenderSunFlare	FableWin ?RenderSunFlare@CEngineSkyRenderer@@AAEXXZ + Ego_r 0x00A17F00 (RELOCATION_MATCH)
+0x00B64FA0	CEngineSkyRenderer::RenderClouds	FableWin ?RenderClouds@CEngineSkyRenderer@@AAEXM@Z + Ego_r 0x00A15F60 (RELOCATION_MATCH, session 4)

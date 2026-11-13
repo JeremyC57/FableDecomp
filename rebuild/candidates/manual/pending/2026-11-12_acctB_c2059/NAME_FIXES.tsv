@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00a23c50	?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z	Ego_r donor order (LABELS.tsv); 0x00BC264C calls it on the group MeshInfo with priority 1 when GetMesh fails (also pending r3013)	?SetLoadPriority@C3DMeshInfo@@QAEXJ@Z (landed 0x00B9E950, 0x00BD1F70) | ?UnknownRet4@C3DMeshInfoRet4CallView@@QAEXK@Z (landed 0x00B991D0) | manifest Nop_ret4_00a23c50
+00a23c60	?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ	Ego_r donor order (LABELS.tsv): the slot after BeginLoadingTextures, body `mov al,1`	?IsBuilt@C3DMeshInfo@@QAE_NXZ (landed 0x00B9E950) | ?IsValid@CMeshInfoOwner_00b9ce10@@QAE_NXZ (landed 0x00B9CE10)
+00b86a00	?SetupShadowHWAsDepthBuffer@CEngineScreenEffectDisplacementRenderer@@QAEXPBVCMatrix3x4@@@Z	Ego_r donor order (LABELS.tsv)	manifest Nop_ret4_00b86a00 (landed stub E2_E2_00b86a00.cpp)

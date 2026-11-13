@@ -1,0 +1,9 @@
+addr       parity           behav  name
+007b90f0   RELOCATION_MATCH PASS   OnInitialActivate
+007d8570   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+007d8570   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 labelled 'CInputProcessGameBase::GetEventGameActionVector'
+007d8570   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 2
+  007b90f0 RELOCATION_MATCH CTCTavernTable::?OnInitialActivate@CTCTavernTable@@UAEXXZ
+  007d8570 RELOCATION_MATCH CTCTavernGameSpotTheAddition::?ProcessInput@CTCTavernGameSpotTheAddition@@UAEXABVCInputEvent@@AAVCProcessedInput@@PAVCInputProcessTavernGame@@@Z

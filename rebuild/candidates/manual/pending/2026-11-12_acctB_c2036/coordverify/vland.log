@@ -1,0 +1,5 @@
+addr       parity           behav  name
+005841f9   RELOCATION_MATCH PASS   GetItemDescription
+
+WINS: 1
+  005841f9 RELOCATION_MATCH CTCInventory::?GetItemDescription@CTCInventory@@UBEXAAVCWideString@@J_N@Z

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00ce7670   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00ce7670 RELOCATION_MATCH NScript::CGameflowScript::?Main@CGameflowScript@NScript@@UAEXXZ

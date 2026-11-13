@@ -1,0 +1,151 @@
+20:27 00b5ca70 grade v1.cpp SRC_FAIL -- first full draft
+20:27 00b5ca70 grade v2.cpp SRC_FAIL -- include order
+20:27 00b5ca70 grade v3.cpp SRC_FAIL -- include order
+20:28 00b5ca70 grade v4.cpp SRC_FAIL -- CPixelFormat for d3d types
+20:28 00b5ca70 grade v5.cpp DIFFER(5673v5748) hunks=214 -- retail resource manager
+20:29 00b5ca70 grade v6.cpp DIFFER(5740v5748) hunks=46 -- offset products: inline CSE / double / arrays
+20:29 00b5ca70 grade v7.cpp DIFFER(5799v5748) hunks=214 -- offset products: inline CSE / double / arrays
+20:29 00b5ca70 grade v8.cpp DIFFER(5749v5748) hunks=239 -- offset products: inline CSE / double / arrays
+20:29 00b5ca70 grade v6.cpp DIFFER(5740v5748) hunks=46 -- regrade v6 for hunks
+20:30 00b5ca70 grade v6.cpp DIFFER(5740v5748) hunks=46 -- regrade v6 full hunks
+20:31 00b5ca70 grade v9.cpp DIFFER(5740v5748) hunks=48 -- SetPixelShaderConstant via PSConstTable[index] (FableWin size match)
+20:32 00b5ca70 grade v11.cpp DIFFER(5740v5748) hunks=48 -- intensity spellings: const / double / no cast
+20:32 00b5ca70 grade v12.cpp DIFFER(5914v5748) hunks=211 -- intensity spellings: const / double / no cast
+20:32 00b5ca70 grade v13.cpp SRC_FAIL -- intensity spellings: const / double / no cast
+20:33 00b5ca70 grade v14.cpp DIFFER(5740v5748) hunks=48 -- tap operand order length*trig
+20:33 00b5ca70 grade v15.cpp DIFFER(5740v5748) hunks=48 -- tap operand order length*trig
+20:33 00b5ca70 grade v16.cpp DIFFER(5740v5748) hunks=48 -- tap operand order length*trig
+20:34 00b5ca70 grade v17.cpp DIFFER(6153v5748) hunks=213 -- intensity: named C4DVector locals / float array
+20:34 00b5ca70 grade v18.cpp DIFFER(5803v5748) hunks=202 -- intensity: named C4DVector locals / float array
+20:34 00b5ca70 grade v19.cpp DIFFER(5740v5748) hunks=48 -- C-style declarations at block top / function top
+20:34 00b5ca70 grade v20.cpp DIFFER(5746v5748) hunks=195 -- C-style declarations at block top / function top
+20:35 00b5ca70 grade v21.cpp DIFFER(5724v5748) hunks=47 -- sinf/cosf; (float)sin(double)
+20:35 00b5ca70 grade v22.cpp DIFFER(5740v5748) hunks=48 -- sinf/cosf; (float)sin(double)
+20:35 00b5ca70 grade v21.cpp DIFFER(5724v5748) hunks=47 -- regrade v21 view
+20:36 00b5ca70 grade v23.cpp DIFFER(5740v5748) hunks=46 -- FABLE_RETAIL_CARRAY operator[] via begin()
+20:36 00b5ca70 grade v24.cpp DIFFER(5724v5748) hunks=47 -- FABLE_RETAIL_CARRAY operator[] via begin()
+probe 1 pass-B-only: tap4 sched
+20:37 00b5ca70 grade v25.cpp DIFFER(5740v5748) hunks=46 -- angle k*twist / named tap4 y,x / const
+20:37 00b5ca70 grade v26.cpp DIFFER(5740v5748) hunks=46 -- angle k*twist / named tap4 y,x / const
+20:37 00b5ca70 grade v27.cpp DIFFER(5740v5748) hunks=46 -- angle k*twist / named tap4 y,x / const
+20:37 00b5ca70 grade v23.cpp DIFFER(5740v5748) hunks=46 -- view v23
+20:38 00b5ca70 grade v28.cpp DIFFER(5740v5748) hunks=46 -- twist const / top decl / decl after pool
+20:38 00b5ca70 grade v29.cpp DIFFER(5740v5748) hunks=46 -- twist const / top decl / decl after pool
+20:38 00b5ca70 grade v30.cpp DIFFER(5740v5748) hunks=46 -- twist const / top decl / decl after pool
+20:39 00b5ca70 grade v31.cpp DIFFER(5751v5748) hunks=63 -- PAREN tuples: length / offset / tap products
+20:39 00b5ca70 grade v32.cpp DIFFER(5740v5748) hunks=46 -- PAREN tuples: length / offset / tap products
+20:39 00b5ca70 grade v33.cpp DIFFER(5740v5748) hunks=46 -- PAREN tuples: length / offset / tap products
+20:39 00b5ca70 grade v31.cpp DIFFER(5751v5748) hunks=63 -- view v31
+20:40 00b5ca70 grade v34.cpp DIFFER(5748v5748) hunks=61 -- PAREN: length1 all / length1+2 all / passB length1
+20:40 00b5ca70 grade v35.cpp DIFFER(5751v5748) hunks=57 -- PAREN: length1 all / length1+2 all / passB length1
+20:40 00b5ca70 grade v36.cpp DIFFER(5748v5748) hunks=52 -- PAREN: length1 all / length1+2 all / passB length1
+20:40 00b5ca70 grade v36.cpp DIFFER(5748v5748) hunks=52 -- view v36
+20:40 00b5ca70 grade v37.cpp DIFFER(5740v5748) hunks=46 -- PAREN in pass B taps: 1/2/4 parens
+20:40 00b5ca70 grade v38.cpp DIFFER(5748v5748) hunks=48 -- PAREN in pass B taps: 1/2/4 parens
+20:40 00b5ca70 grade v39.cpp DIFFER(5748v5748) hunks=46 -- PAREN in pass B taps: 1/2/4 parens
+20:40 00b5ca70 grade v38.cpp DIFFER(5748v5748) hunks=48 -- view v38
+20:40 00b5ca70 grade v39.cpp DIFFER(5748v5748) hunks=46 -- view v39
+20:41 00b5ca70 grade v40.cpp DIFFER(5748v5748) hunks=46 -- PAREN count in pass B taps: 5/6/3
+20:41 00b5ca70 grade v41.cpp DIFFER(5748v5748) hunks=47 -- PAREN count in pass B taps: 5/6/3
+20:41 00b5ca70 grade v42.cpp DIFFER(5748v5748) hunks=48 -- PAREN count in pass B taps: 5/6/3
+probe 2 region dump v23
+probe 3 region dump (float)sin
+20:43 00b5ca70 grade v44.cpp DIFFER(5724v5748) hunks=38 -- trig via double sin: (float)sin((double)a) / sin((double)a)
+20:43 00b5ca70 grade v45.cpp DIFFER(5724v5748) hunks=38 -- trig via double sin: (float)sin((double)a) / sin((double)a)
+20:43 00b5ca70 grade v44.cpp DIFFER(5724v5748) hunks=38 -- view v44
+probe 4 region dump v44
+20:44 00b5ca70 grade v46.cpp DIFFER(5748v5748) hunks=52 -- pass B 3 length parens on cos(float) / on double trig
+20:44 00b5ca70 grade v47.cpp DIFFER(5724v5748) hunks=41 -- pass B 3 length parens on cos(float) / on double trig
+20:44 00b5ca70 grade v46.cpp DIFFER(5748v5748) hunks=52 -- view v46
+20:45 00b5ca70 grade v48.cpp DIFFER(5724v5748) hunks=41 -- pass B math.h trig only; + (2.0f) paren
+20:45 00b5ca70 grade v49.cpp DIFFER(5724v5748) hunks=41 -- pass B math.h trig only; + (2.0f) paren
+probe 5 region dump pass-B sinf
+20:46 00b5ca70 grade v51.cpp DIFFER(5724v5748) hunks=38 -- pass B trig paren count n=11/10/6
+20:46 00b5ca70 grade v52.cpp DIFFER(5724v5748) hunks=38 -- pass B trig paren count n=11/10/6
+20:46 00b5ca70 grade v53.cpp DIFFER(5724v5748) hunks=38 -- pass B trig paren count n=11/10/6
+20:46 00b5ca70 grade v51.cpp DIFFER(5724v5748) hunks=38 -- view v51
+20:46 00b5ca70 grade v52.cpp DIFFER(5724v5748) hunks=38 -- view v52
+20:46 00b5ca70 grade v53.cpp DIFFER(5724v5748) hunks=38 -- view v53
+20:47 00b5ca70 grade v54.cpp DIFFER(5724v5748) hunks=41 -- angle init parens n=12/13 and v44+2
+20:47 00b5ca70 grade v55.cpp DIFFER(5724v5748) hunks=45 -- angle init parens n=12/13 and v44+2
+20:47 00b5ca70 grade v56.cpp DIFFER(5724v5748) hunks=43 -- angle init parens n=12/13 and v44+2
+20:47 00b5ca70 grade v54.cpp DIFFER(5724v5748) hunks=41 -- view v54
+20:47 00b5ca70 grade v55.cpp DIFFER(5724v5748) hunks=45 -- view v55
+20:47 00b5ca70 grade p14.cpp DIFFER(5730v5748) hunks=44 -- PROBE nested parens k=14/19/5 at pass B length1 (offset test)
+20:47 00b5ca70 grade p19.cpp DIFFER(5741v5748) hunks=48 -- PROBE nested parens k=14/19/5 at pass B length1 (offset test)
+20:47 00b5ca70 grade p5.cpp DIFFER(5724v5748) hunks=43 -- PROBE nested parens k=14/19/5 at pass B length1 (offset test)
+20:47 00b5ca70 grade p14.cpp DIFFER(5730v5748) hunks=44 -- view p14
+20:47 00b5ca70 grade p19.cpp DIFFER(5741v5748) hunks=48 -- view p19
+20:47 00b5ca70 grade p5.cpp DIFFER(5724v5748) hunks=43 -- view p5
+20:48 00b5ca70 grade p1.cpp DIFFER(5724v5748) hunks=42 -- PROBE paren offset k=1
+20:48 00b5ca70 grade p2.cpp DIFFER(5724v5748) hunks=42 -- PROBE paren offset k=2
+20:48 00b5ca70 grade p3.cpp DIFFER(5724v5748) hunks=41 -- PROBE paren offset k=3
+20:48 00b5ca70 grade p4.cpp DIFFER(5724v5748) hunks=43 -- PROBE paren offset k=4
+20:48 00b5ca70 grade p6.cpp DIFFER(5727v5748) hunks=44 -- PROBE paren offset k=6
+20:48 00b5ca70 grade p7.cpp DIFFER(5727v5748) hunks=42 -- PROBE paren offset k=7
+20:48 00b5ca70 grade p8.cpp DIFFER(5727v5748) hunks=44 -- PROBE paren offset k=8
+20:48 00b5ca70 grade p9.cpp DIFFER(5730v5748) hunks=43 -- PROBE paren offset k=9
+20:48 00b5ca70 grade p10.cpp DIFFER(5730v5748) hunks=43 -- PROBE paren offset k=10
+20:48 00b5ca70 grade p11.cpp DIFFER(5730v5748) hunks=44 -- PROBE paren offset k=11
+20:48 00b5ca70 grade p12.cpp DIFFER(5730v5748) hunks=43 -- PROBE paren offset k=12
+20:48 00b5ca70 grade p13.cpp DIFFER(5730v5748) hunks=45 -- PROBE paren offset k=13
+20:48 00b5ca70 grade p15.cpp DIFFER(5730v5748) hunks=49 -- PROBE paren offset k=15
+20:48 00b5ca70 grade p16.cpp DIFFER(5730v5748) hunks=46 -- PROBE paren offset k=16
+20:48 00b5ca70 grade p17.cpp DIFFER(5738v5748) hunks=47 -- PROBE paren offset k=17
+20:48 00b5ca70 grade p18.cpp DIFFER(5738v5748) hunks=45 -- PROBE paren offset k=18
+20:48 00b5ca70 grade p20.cpp DIFFER(5741v5748) hunks=47 -- PROBE paren offset k=20
+20:48 00b5ca70 grade p21.cpp DIFFER(5741v5748) hunks=50 -- PROBE paren offset k=21
+20:48 00b5ca70 grade p22.cpp DIFFER(5741v5748) hunks=47 -- PROBE paren offset k=22
+probe 6 tuple counts of paren spellings
+20:50 00b5ca70 grade q1.cpp DIFFER(5724v5748) hunks=38 -- PROBE PS offset k=1 after tap4
+20:50 00b5ca70 grade q2.cpp DIFFER(5724v5748) hunks=38 -- PROBE PS offset k=2 after tap4
+20:50 00b5ca70 grade q3.cpp DIFFER(5724v5748) hunks=36 -- PROBE PS offset k=3 after tap4
+20:50 00b5ca70 grade q4.cpp DIFFER(5724v5748) hunks=38 -- PROBE PS offset k=4 after tap4
+20:50 00b5ca70 grade q5.cpp DIFFER(5724v5748) hunks=38 -- PROBE PS offset k=5 after tap4
+20:50 00b5ca70 grade q6.cpp DIFFER(5724v5748) hunks=38 -- PROBE PS offset k=6 after tap4
+20:50 00b5ca70 grade q7.cpp DIFFER(5724v5748) hunks=38 -- PROBE PS offset k=7 after tap4
+20:50 00b5ca70 grade q8.cpp DIFFER(5724v5748) hunks=38 -- PROBE PS offset k=8 after tap4
+20:50 00b5ca70 grade q9.cpp DIFFER(5724v5748) hunks=36 -- PROBE PS offset k=9 after tap4
+20:50 00b5ca70 grade q10.cpp DIFFER(5724v5748) hunks=36 -- PROBE PS offset k=10 after tap4
+20:50 00b5ca70 grade q11.cpp DIFFER(5724v5748) hunks=36 -- PROBE PS offset k=11 after tap4
+20:50 00b5ca70 grade q12.cpp DIFFER(5724v5748) hunks=36 -- PROBE PS offset k=12 after tap4
+20:50 00b5ca70 grade q13.cpp DIFFER(5724v5748) hunks=38 -- PROBE PS offset k=13 after tap4
+20:50 00b5ca70 grade q14.cpp DIFFER(5724v5748) hunks=38 -- PROBE PS offset k=14 after tap4
+20:50 00b5ca70 grade q15.cpp DIFFER(5724v5748) hunks=40 -- PROBE PS offset k=15 after tap4
+20:50 00b5ca70 grade q16.cpp DIFFER(5724v5748) hunks=39 -- PROBE PS offset k=16 after tap4
+20:50 00b5ca70 grade q17.cpp DIFFER(5732v5748) hunks=41 -- PROBE PS offset k=17 after tap4
+20:50 00b5ca70 grade q18.cpp DIFFER(5732v5748) hunks=39 -- PROBE PS offset k=18 after tap4
+20:50 00b5ca70 grade q19.cpp DIFFER(5732v5748) hunks=40 -- PROBE PS offset k=19 after tap4
+20:50 00b5ca70 grade q20.cpp DIFFER(5732v5748) hunks=40 -- PROBE PS offset k=20 after tap4
+20:50 00b5ca70 grade q21.cpp DIFFER(5732v5748) hunks=40 -- PROBE PS offset k=21 after tap4
+20:50 00b5ca70 grade q23.cpp DIFFER(5732v5748) hunks=40 -- PROBE PS offset k=23 after tap4
+20:50 00b5ca70 grade q25.cpp DIFFER(5732v5748) hunks=41 -- PROBE PS offset k=25 after tap4
+20:50 00b5ca70 grade q27.cpp DIFFER(5732v5748) hunks=40 -- PROBE PS offset k=27 after tap4
+20:50 00b5ca70 grade q29.cpp DIFFER(5732v5748) hunks=35 -- PROBE PS offset k=29 after tap4
+20:51 00b5ca70 grade q31.cpp DIFFER(5732v5748) hunks=35 -- PROBE PS offset k=31 after tap4
+20:51 00b5ca70 grade q33.cpp DIFFER(5732v5748) hunks=32 -- PROBE PS offset k=33 after tap4
+20:51 00b5ca70 grade q35.cpp DIFFER(5724v5748) hunks=39 -- PROBE PS offset k=35 after tap4
+20:51 00b5ca70 grade q37.cpp DIFFER(5724v5748) hunks=38 -- PROBE PS offset k=37 after tap4
+20:51 00b5ca70 grade q39.cpp DIFFER(5732v5748) hunks=36 -- PROBE PS offset k=39 after tap4
+20:51 00b5ca70 grade q30.cpp DIFFER(5732v5748) hunks=35 -- PROBE PS offset k=30 after tap4
+20:51 00b5ca70 grade q32.cpp DIFFER(5732v5748) hunks=27 -- PROBE PS offset k=32 after tap4
+20:51 00b5ca70 grade q34.cpp DIFFER(5724v5748) hunks=37 -- PROBE PS offset k=34 after tap4
+20:51 00b5ca70 grade v57.cpp DIFFER(5748v5748) hunks=49 -- math.h pow(float,float)+trig all / pass B only / pow only
+20:51 00b5ca70 grade v58.cpp DIFFER(5732v5748) hunks=42 -- math.h pow(float,float)+trig all / pass B only / pow only
+20:51 00b5ca70 grade v59.cpp DIFFER(5724v5748) hunks=43 -- math.h pow(float,float)+trig all / pass B only / pow only
+20:51 00b5ca70 grade v57.cpp DIFFER(5748v5748) hunks=49 -- view v57
+20:51 00b5ca70 grade v58.cpp DIFFER(5732v5748) hunks=42 -- view v58
+probe 7 region dump v57
+20:54 00b5ca70 grade t18.cpp DIFFER(5724v5748) hunks=41 -- PROBE nested parens at pass B tap1 y k=18/17/19
+20:54 00b5ca70 grade t17.cpp DIFFER(5724v5748) hunks=42 -- PROBE nested parens at pass B tap1 y k=18/17/19
+20:54 00b5ca70 grade t19.cpp DIFFER(5732v5748) hunks=42 -- PROBE nested parens at pass B tap1 y k=18/17/19
+20:54 00b5ca70 grade t18.cpp DIFFER(5724v5748) hunks=41 -- view t18
+20:54 00b5ca70 grade t17.cpp DIFFER(5724v5748) hunks=42 -- view t17
+20:54 00b5ca70 grade t19.cpp DIFFER(5732v5748) hunks=42 -- view t19
+20:54 00b5ca70 grade v44.cpp DIFFER(5724v5748) hunks=38 -- final regrade of best plausible source v44
+20:54 00b5ca70 grade v60.cpp DIFFER(5748v5748) hunks=46 -- tap1 *1.0f copy-paste: math.h all / double / pass B math.h
+20:54 00b5ca70 grade v61.cpp DIFFER(5724v5748) hunks=38 -- tap1 *1.0f copy-paste: math.h all / double / pass B math.h
+20:54 00b5ca70 grade v62.cpp DIFFER(5732v5748) hunks=43 -- tap1 *1.0f copy-paste: math.h all / double / pass B math.h
+20:54 00b5ca70 grade v60.cpp DIFFER(5748v5748) hunks=46 -- view v60
+20:54 00b5ca70 grade v62.cpp DIFFER(5732v5748) hunks=43 -- view v62
+20:55 00b5ca70 grade 00b5ca70.cpp DIFFER(5724v5748) hunks=38 -- final check of differ source

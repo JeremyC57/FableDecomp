@@ -1,0 +1,1 @@
+engine/CInventoryDef.h: FABLE_RETAIL_CINVENTORYDEF_FULL -- adds the remaining 374 Ego_r members (+0xB4..+0xA30, retail offsets), the EInventoryIdentifier enum and the user operator= declaration (0x0045A159).

@@ -1,0 +1,2 @@
+00a9f540 C3DAnimationManager::CalcMeshTransformations RELOCATION_MATCH flags= []
+00aa0090 C3DAnimationManager::CalcBlendedMeshTransformations RELOCATION_MATCH flags= []

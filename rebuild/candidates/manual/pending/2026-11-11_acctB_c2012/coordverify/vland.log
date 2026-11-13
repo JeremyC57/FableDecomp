@@ -1,0 +1,5 @@
+addr       parity           behav  name
+006de280   RELOCATION_MATCH PASS   TerminateMinigame
+
+WINS: 1
+  006de280 RELOCATION_MATCH CTCTrophy::?TerminateMinigame@CTCTrophy@@AAEXXZ

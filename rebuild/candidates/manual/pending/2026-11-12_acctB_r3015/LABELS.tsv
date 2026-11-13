@@ -1,0 +1,8 @@
+address	name	evidence
+00ba6ff0	CEnginePrimitiveManagerStaticMeshesBase::DrawSilhouette(CEngineInternalPrimitiveStaticMesh&)	Ego_r.pdb donor 0x00A5EE60 + FableWin.pdb 0x02EA1B90 (private); next to DrawImmediately 0x00BA6DC0; RELOCATION_MATCH
+00b9c210	CEnginePrimitiveManagerMeshBase::GetAppropriateLOD(const C3DMeshInfo*, float, float, float)	FableWin.pdb ?GetAppropriateLOD@CEnginePrimitiveManagerMeshBase@@SIKPBVC3DMeshInfo@@MMM@Z (static fastcall, ret 0Ch) + the inline body in src/00ba6ff0.cpp compiles out of line to these exact bytes (file-scope address-taking probe probe/b/cb4.cpp); unreferenced COMDAT copy in the RepeatedStaticMeshes TU
+00b9c280	CEnginePrimitiveRenderUtil::CalcDistanceFromCamera(const C3DVector&)	FableWin.pdb ?CalcDistanceFromCamera@CEnginePrimitiveRenderUtil@@SIMABVC3DVector@@@Z + the one-line GetMagnitude body (as matched 0x00B9A4A0) compiles out of line to these exact bytes; unreferenced COMDAT
+00b9c2b0	CEnginePrimitiveRenderUtil::CalcDistanceFromCameraSquared(const C3DVector&)	FableWin.pdb ?CalcDistanceFromCameraSquared@CEnginePrimitiveRenderUtil@@SIMABVC3DVector@@@Z + body `(position - GetCurrentCamera().PeekCameraPos()).GetSquaredMagnitude()` compiles out of line to these exact bytes (probe/b/csq.cpp); unreferenced COMDAT
+00b90090	CEnginePrimitiveManagerOcclusionBase::GetSilhouetteColour(CEngineInternalPrimitiveOcclusionBase&, CRGBColour&)	Ego_r.pdb donor order + caller use (chunk 2032)
+00b90cd0	CEnginePrimitiveManagerOcclusionBase::DrawAlphaBoundingBox(const CMatrix3x4&, unsigned long)	Ego_r.pdb / FableWin.pdb + landed row (chunk 2032)
+00b46b90	CEngineLightingManager::GetLightsInSphereFast(const C3DBoundingSphere&, long, const CEnginePrimitiveThemeChannelDesc&)	Ego_r.pdb + reloc binding (chunk 2032)

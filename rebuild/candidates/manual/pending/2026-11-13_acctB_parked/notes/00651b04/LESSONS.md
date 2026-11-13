@@ -1,0 +1,2 @@
+- (bwf1, 0x00651B04) A whole-frame slot swap (two pairs) came from a made-up control flag: writing the original flag in both arms (`if (a||b||!c) normal = true; else { ...; if (x) normal = true; }`) instead of a separate favourite flag fixed every slot (c2 packer: density ties).
+- (bwf1) With a GFAnchorToBottomRight() temporary as an operand of C2DVector::operator+ passed to a pushed call, VC7.1 computes Y first; retail's X-first direct stores were not reproduced by any operator+ text or spelling tried (toys in work/toy).

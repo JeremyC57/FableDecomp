@@ -1,0 +1,20 @@
+# hdr/ overlay (re-based by the coordinator from the earlier agent's overlay; the verbatim old overlay is ../hdr_prior, its README is ../hdr_prior/README.md)
+- overlay re-based onto the current repo headers by the coordinator: 7 unchanged-base copies, 9 three-way merges, 0 new headers, 6 conflicts
+- STALE stlport/fable_containers.h: the repo header changed and the three-way merge conflicts; this is the OLD overlay copy verbatim (so the draft still compiles) -- re-base it by hand onto the current rebuild/include/stlport/fable_containers.h (current text + your additions only) before the hand-back
+- merged stlport/fable_map.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CBankFile.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CRGBColour.h: repo header changed since the overlay was made; three-way merge clean
+- STALE engine/CTCInventoryQuests.h: the repo header changed and the three-way merge conflicts; this is the OLD overlay copy verbatim (so the draft still compiles) -- re-base it by hand onto the current rebuild/include/engine/CTCInventoryQuests.h (current text + your additions only) before the hand-back
+- STALE engine/CQuestCardDef.h: new in the old overlay, but the repo now has its own engine header of this name; this is the OLD overlay copy verbatim -- re-base onto the repo's header before the hand-back
+- merged engine/CTCInventoryMap.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CMainGameComponent.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CWorldMap.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CQuestManager.h: repo header changed since the overlay was made; three-way merge clean
+- STALE engine/NUISystem_CZoomingComponent.h: the repo header changed and the three-way merge conflicts; this is the OLD overlay copy verbatim (so the draft still compiles) -- re-base it by hand onto the current rebuild/include/engine/NUISystem_CZoomingComponent.h (current text + your additions only) before the hand-back
+- STALE engine/C2DVector.h: the repo header changed and the three-way merge conflicts; this is the OLD overlay copy verbatim (so the draft still compiles) -- re-base it by hand onto the current rebuild/include/engine/C2DVector.h (current text + your additions only) before the hand-back
+- STALE engine/NUISystem_CUIStateDef.h: the repo header changed and the three-way merge conflicts; this is the OLD overlay copy verbatim (so the draft still compiles) -- re-base it by hand onto the current rebuild/include/engine/NUISystem_CUIStateDef.h (current text + your additions only) before the hand-back
+- merged engine/CThing.h: repo header changed since the overlay was made; three-way merge clean
+- merged engine/CTCHeroStats.h: repo header changed since the overlay was made; three-way merge clean
+- FABLE_RETAIL_CTCQUESTCARD_ISVIGNETTE (engine/CTCQuestCard.h, bwf1): `bool IsVignette() const;` 0x007022E0 (Ego_r 0x00723E00 / FableWin ?IsVignette@CTCQuestCard@@QBE_NXZ), declaration only -- needed by the CreateMapMarkers body compiled in the 0x0060EEB0 TU.
+- FABLE_RETAIL_CREGION_WORLDMAPNAMEGRAPHIC (engine/CRegion.h, bwf1): `unsigned long GetWorldMapNameGraphic() const;` 0x006BC380 (Ego_r 0x005580D0 / FableWin ?GetWorldMapNameGraphic@CRegion@@QBEKXZ), declaration only -- same reason.
+- NOTE (bwf1): the six STALE copies above were NOT re-based this session (the row is still DIFFER); re-base before any landing.

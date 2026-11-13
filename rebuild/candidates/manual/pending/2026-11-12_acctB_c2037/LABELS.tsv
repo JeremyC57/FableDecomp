@@ -1,0 +1,11 @@
+address	name	evidence
+0x00B52DD0	?ClipBoxToLandscape@CEngineWeatherRenderer@@ABE?AW4EWeatherBoxVisible@1@ABVC3DVector@@@Z	Ego_r.pdb 0x009F3A70 + FableWin.pdb 0x02D3AF40 (private const); called by RenderRain 0x00B54C65 / RenderSnow 0x00B55395 between the camera and mask-sphere tests; body tests the landscape under the four box corners
+0x00B56880	?MapHasDataAtPoint@CEngineWorldMap@@QBE_NJJ@Z	FableWin.pdb 0x02D3B260 (after ClipBoxToLandscape and PeekLandscapeHeight, as here) + Ego_r.pdb 0x009FC700; uncalled retail COMDAT in the weather TU; our header body compiled out of line MATCHes it
+0x00B566B0	?PeekLandscapeHeight@CEngineWorldMap@@QBEMJJ@Z	FableWin.pdb 0x02D3B1F0 (right after ClipBoxToLandscape); uncalled retail COMDAT in the weather TU, calls CEngineMap::PeekLandscapeHeight 0x00B439C0; our header body compiled out of line grades RELOCATION_MATCH
+0x00B439C0	?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z	Ego_r + FableWin name sets (c2021 LABELS); ClipBoxToLandscape calls it from the four expanded neighbour paths (0x00B531DD / 0x00B5362A / 0x00B53A77 / 0x00B53ECE)
+0x00B30610	?ClipBox@CEngineCamera@@QBE_NABVCMatrix3x4@@@Z	Ego_r.pdb name; called by ClipBoxToCamera 0x00B52066
+0x00B51F60	?ClipBoxToCamera@CEngineWeatherRenderer@@ABE?AW4EWeatherBoxVisible@1@ABVC3DVector@@M@Z	Ego_r 0x009F3260 + FableWin 0x02D3AD70
+0x00B52090	?ClipBoxToWeatherMaskSphere@CEngineWeatherRenderer@@ABE?AW4EWeatherBoxVisible@1@ABVC3DVector@@@Z	Ego_r 0x009F5270 + FableWin 0x02D3B3D0
+0x00B50E50	?GetBoxBoundingSphereRadiusSquared@CEngineWeatherRenderer@@ABEMXZ	Ego_r 0x009F31C0 + FableWin 0x02D3ACA0
+0x00B54890	?RenderRain@CEngineWeatherRenderer@@AAEXABVCEngineComponentRenderParams@@@Z	Ego_r 0x009FAAD0 + FableWin 0x02D3BE30 (c2008)
+0x00B54E30	?RenderSnow@CEngineWeatherRenderer@@AAEXABVCEngineComponentRenderParams@@@Z	Ego_r 0x009FB0F0 + FableWin (c2031)

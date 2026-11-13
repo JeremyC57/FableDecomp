@@ -1,0 +1,10 @@
+addr       parity           behav  name
+0069ae80   WARN RELOC_NAME: ??0CTools@NCameraModes@@QAE@ABVCGameCameraManager@@@Z -> 00877160 labelled 'CGameflowAssistanceScript::CGameflowAssistanceScript'
+0069ae80   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCBaseInit@NCameraModes@@@@SIXPAX@Z -> 0069bba0 labelled '_global::OperatorDelete_thunk_0069bba0'
+0069ae80   WARN RELOC_NAME: ?StatRegisterMode@CProjectileWeapon@NCameraModes@@SIXXZ -> 00878a50 labelled 'CameraState::ResetCameraInputFlag'
+0069ae80   RELOCATION_MATCH PASS   CGameCameraManager
+00a4c5e0   RELOCATION_MATCH PASS   ReadCompressedFromFile
+
+WINS: 2
+  0069ae80 RELOCATION_MATCH CGameCameraManager::??0CGameCameraManager@@QAE@ABVCWorld@@@Z
+  00a4c5e0 RELOCATION_MATCH C3DAnimationSequenceData::?ReadCompressedFromFile@C3DAnimationSequenceData@@QAEXAAVCDataInputStream@@AAVCSimpleMemoryPool@@@Z

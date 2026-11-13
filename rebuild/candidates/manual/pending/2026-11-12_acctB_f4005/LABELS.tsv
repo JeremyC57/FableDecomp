@@ -1,0 +1,15 @@
+address	name	evidence
+00f2a250	??4CScriptDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb name sets; sole reference is the tail jump of ?Copy@CScriptDef@@UAEXPBVCDefClassBase@@@Z 0x00F2A240 (vtable 0x012FB5C8 slot 19); the compiler-written implicit operator= of engine/CScriptDef.h grades RELOCATION_MATCH
+00431f60	??4CResource@@QAEAAV0@ABV0@@Z	FableWin.pdb name set; bound spelling (reloc_bindings.tsv); relocation pairing of the matched object (first call of the row)
+00431f90	??4?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEAAV01@ABV01@@Z	bound spelling; relocation pairing; called on SubDefInfoMap +0x29 (CVectorMap<unsigned long,CSubDefInfo> = CArray<pair> = vector<pair>)
+0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	both PDB name sets; bound spelling; 15 call sites, each on a CCharString member of CScriptDef
+00432ee9	??4?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAV01@ABV01@@Z	both PDB name sets; bound spelling; 14 call sites on the 14 vector<CCharString> members
+0045ef2d	??4?$vector@MV?$allocator@M@std@@@std@@QAEAAV01@ABV01@@Z	both PDB name sets; bound spelling; 14 call sites on the 14 vector<float> members
+0046078c	??4?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@QAEAAV01@ABV01@@Z	both PDB name sets; 12 call sites on the 12 vector<CDefString> members; its own callees are bound as vector<CDefString>::_M_allocate_and_copy 0x0046085B / _M_clear 0x0046089A; manifest label agrees
+00454886	??4?$vector@JV?$allocator@J@std@@@std@@QAEAAV01@ABV01@@Z	both PDB name sets; bound spelling; 5 call sites on the 5 vector<long> members
+00e54aa0	??4?$vector@VCConversation@@V?$allocator@VCConversation@@@std@@@std@@QAEAAV01@ABV01@@Z	both PDB name sets; called on BookReactions +0x4c8 (PDB type vector<CConversation>); manifest label agrees
+00d34d40	??4?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@QAEAAV01@ABV01@@Z	both PDB name sets; called on FHPatterns +0xc2c (PDB type vector<CFireHeartPatternDef>); manifest label agrees
+00f2d010	??4?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@std@@@std@@QAEAAV01@ABV01@@Z	both PDB name sets; called on Feats +0x1038; first COMDAT after the row (its first user); manifest label agrees
+00f25980	??4?$vector@VCArenaRoundDef@@V?$allocator@VCArenaRoundDef@@@std@@@std@@QAEAAV01@ABV01@@Z	both PDB name sets; called on ArenaRounds +0x1044; its own callees are bound as vector<CArenaRoundDef> helpers; manifest label agrees
+00f26c30	??4?$vector@VCHeroSoulsRoundDef@@V?$allocator@VCHeroSoulsRoundDef@@@std@@@std@@QAEAAV01@ABV01@@Z	both PDB name sets; bound spelling; called on HeroSoulsRounds +0x1050
+00f29f70	??4CRegionScriptDef@@QAEAAV0@ABV0@@Z	FableWin.pdb name set; the implicit assignment's COMDAT (tail-jump target of ?Copy@CRegionScriptDef 0x00F29F60); the implicit operator= of this row's unit equals its 45 retail bytes (tools/sib.py)

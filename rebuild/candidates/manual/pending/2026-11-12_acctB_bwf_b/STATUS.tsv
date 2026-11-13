@@ -1,0 +1,9 @@
+address	grade	bytes	test	module	name	flags	notes
+004678e2	RELOCATION_MATCH	5422	PASS (VC7.1, lander check)	CInventoryDef	Transfer		purity clean; 0 stale overlay header(s)
+005a9cbe	RELOCATION_MATCH	4714	PASS (VC7.1, lander check)	CTCInventoryTrade	ConstructTradeDescriptionWeapon		purity clean; 0 stale overlay header(s)
+00b87870	RELOCATION_MATCH	4944	PASS (VC7.1, lander check)	CEngineScreenEffectDisplacementRenderer	ApplyDisplacement		purity clean; 0 stale overlay header(s)
+005a04f7	RELOCATION_MATCH	9469	PASS (VC7.1, lander check)	CTCInventoryTrade	ConstructNormalShopList		purity clean; 0 stale overlay header(s)
+0073b130	RELOCATION_MATCH	6673	PASS (VC7.1, lander check)	CTCCreatureModeManager	RegisterModes		purity clean; 0 stale overlay header(s)
+00b9ece0	RELOCATION_MATCH	8921	PASS (VC7.1, lander check)	CEnginePrimitiveManagerStaticMeshesBase	CEnginePrimitiveManagerStaticMeshesBase		purity clean; 0 stale overlay header(s)
+00bcff10	RELOCATION_MATCH	8140	PASS (VC7.1, lander check)	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase		purity clean; 0 stale overlay header(s)
+00d6d670	RELOCATION_MATCH	5786	PASS (VC7.1, lander check)	NScript::CQ_HangingTreeEvilScript	Conclusion		purity clean; 0 stale overlay header(s)

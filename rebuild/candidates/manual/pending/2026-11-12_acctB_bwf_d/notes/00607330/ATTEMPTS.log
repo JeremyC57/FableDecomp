@@ -1,0 +1,160 @@
+19:08 00607330 grade v1.cpp TIMEOUT -- first full draft
+19:09 00607330 grade v1.cpp SRC_FAIL -- first full draft
+19:09 00607330 grade v1.cpp SRC_FAIL -- first full draft
+19:09 00607330 grade v1.cpp SRC_FAIL -- first full draft
+19:09 00607330 grade v1.cpp DIFFER(9312v9124) hunks=70 -- first full draft
+19:10 00607330 grade v2.cpp DIFFER(9312v9124) hunks=70 -- map copy out of line
+19:11 00607330 grade v2.cpp DIFFER(9312v9124) hunks=70 -- regrade full dump
+19:11 00607330 grade v3.cpp DIFFER(9284v9124) hunks=538 -- v3 list dtor outofline; v4 end()-begin() in switch
+19:12 00607330 grade v4.cpp DIFFER(9344v9124) hunks=65 -- v3 list dtor outofline; v4 end()-begin() in switch
+19:13 00607330 grade v5.cpp DIFFER(9284v9124) hunks=406 -- v5 dispatch noinline; v6 + list dtor outofline
+19:13 00607330 grade v6.cpp DIFFER(9244v9124) hunks=394 -- v5 dispatch noinline; v6 + list dtor outofline
+19:13 00607330 grade v6.cpp DIFFER(9244v9124) hunks=394 -- v6 regrade dump
+19:13 00607330 grade v7.cpp DIFFER(9272v9124) hunks=390 -- v6 + end()-begin() switch
+19:14 00607330 grade v8.cpp DIFFER(9280v9124) hunks=323 -- v6 + vector size via end()-begin() overlay
+19:14 00607330 grade v9.cpp DIFFER(9292v9124) hunks=326 -- named orientation local
+19:15 00607330 grade v10.cpp DIFFER(9296v9124) hunks=518 -- v10 default defptr release; v11 COUNTREF
+19:15 00607330 grade v11.cpp DIFFER(9212v9124) hunks=320 -- v10 default defptr release; v11 COUNTREF
+19:16 00607330 grade v12.cpp DIFFER(9296v9124) hunks=518 -- v12 selfdeleting release (4007 combo); v10 default regrade
+19:16 00607330 grade v10.cpp DIFFER(9296v9124) hunks=518 -- v12 selfdeleting release (4007 combo); v10 default regrade
+19:17 00607330 grade v13.cpp DIFFER(9316v9124) hunks=518 -- v12 without list dtor outofline
+19:19 00607330 grade v14.cpp DIFFER(9232v9124) hunks=488 -- v14 *book_it everywhere + content_text before AddFakeChild; v15 only the latter
+19:19 00607330 grade v15.cpp DIFFER(9296v9124) hunks=517 -- v14 *book_it everywhere + content_text before AddFakeChild; v15 only the latter
+19:19 00607330 grade v16.cpp DIFFER(9296v9124) hunks=517 -- v16 book declared before for; v17 book at function top
+19:19 00607330 grade v17.cpp DIFFER(9296v9124) hunks=517 -- v16 book declared before for; v17 book at function top
+19:20 00607330 grade v18.cpp DIFFER(9232v9124) hunks=496 -- v18 iterator before if(!empty); v19 iterator before if(it!=end)
+19:20 00607330 grade v19.cpp DIFFER(9232v9124) hunks=496 -- v18 iterator before if(!empty); v19 iterator before if(it!=end)
+19:22 00607330 grade v20.cpp DIFFER(9340v9124) hunks=363 -- v20 no dtor outofline; v21 +clear outofclass; v22 v21 without dispatch noinline
+19:22 00607330 grade v21.cpp DIFFER(9340v9124) hunks=363 -- v20 no dtor outofline; v21 +clear outofclass; v22 v21 without dispatch noinline
+19:22 00607330 grade v22.cpp DIFFER(9376v9124) hunks=63 -- v20 no dtor outofline; v21 +clear outofclass; v22 v21 without dispatch noinline
+19:23 00607330 grade v23.cpp DIFFER(9340v9124) hunks=363 -- CDELETION_INLINE on v20/v22/v18
+19:23 00607330 grade v24.cpp DIFFER(9376v9124) hunks=63 -- CDELETION_INLINE on v20/v22/v18
+19:23 00607330 grade v25.cpp DIFFER(9232v9124) hunks=496 -- CDELETION_INLINE on v20/v22/v18
+19:24 00607330 grade v26.cpp SRC_FAIL -- vector size via distance / via named locals
+19:24 00607330 grade v27.cpp DIFFER(9232v9124) hunks=495 -- vector size via distance / via named locals
+19:25 00607330 grade pa.cpp DIFFER(9200v9124) hunks=464 -- PROBE which object forces and esp,-8 / frame
+19:25 00607330 grade pb.cpp DIFFER(9168v9124) hunks=198 -- PROBE which object forces and esp,-8 / frame
+00607330 probe 1 which object forces and esp,-8 (RHS removed / EG removed)
+00607330 probe 2 /FAs listing of v18 for frame layout
+19:27 00607330 grade v28.cpp ERROR -- PROBE extra guard at site 1 (frequency theory)
+19:27 00607330 grade v28.cpp DIFFER(9236v9124) hunks=494 -- PROBE extra guard at site 1 (frequency theory)
+19:28 00607330 grade v29.cpp DIFFER(9300v9124) hunks=366 -- v29 v20 with default vector size; v30 + begin()==end() at site 1 guard
+19:28 00607330 grade v30.cpp DIFFER(9300v9124) hunks=366 -- v29 v20 with default vector size; v30 + begin()==end() at site 1 guard
+19:28 00607330 grade v32.cpp DIFFER(9300v9124) hunks=366 -- site 1 guard: v31 size()==0; v32 !=0 spellings
+19:28 00607330 grade v31.cpp DIFFER(9332v9124) hunks=439 -- site 1 guard: v31 size()==0; v32 !=0 spellings
+19:28 00607330 grade v34.cpp DIFFER(9332v9124) hunks=367 -- GetTC 4007 spelling (ADDANDCOPYTC+ORIGINAL_CHAIN) v33; +INLINE_LOWERBOUND v34
+19:29 00607330 grade v33.cpp DIFFER(9300v9124) hunks=366 -- GetTC 4007 spelling (ADDANDCOPYTC+ORIGINAL_CHAIN) v33; +INLINE_LOWERBOUND v34
+00607330 probe 3 fwsize ~list text (clear in body)
+19:29 00607330 grade v35.cpp DIFFER(9372v9124) hunks=367 -- ~list() { clear(); } (FableWin size)
+19:30 00607330 grade v36.cpp DIFFER(9300v9124) hunks=366 -- site1: v36 condition-declarations; v37 split entry tests
+19:30 00607330 grade v37.cpp DIFFER(9300v9124) hunks=366 -- site1: v36 condition-declarations; v37 split entry tests
+21:24 00607330 grade w1.cpp DIFFER(9236v9124) hunks=489 -- redundant entry test at site1 arrow guard (v29 base)
+21:24 00607330 grade w2.cpp DIFFER(9236v9124) hunks=489 -- redundant entry test at site1 arrow guard (v29 base)
+21:25 00607330 grade w3.cpp DIFFER(9236v9124) hunks=489 -- redundant entry test at site1 arrow guard (v29 base)
+21:25 00607330 grade w1.cpp DIFFER(9236v9124) hunks=489 -- w1 regrade dump
+21:25 00607330 grade w4.cpp DIFFER(9268v9124) hunks=519 -- book local on w1 (in loop / const / outer)
+21:25 00607330 grade w5.cpp DIFFER(9268v9124) hunks=519 -- book local on w1 (in loop / const / outer)
+21:25 00607330 grade w6.cpp DIFFER(9268v9124) hunks=519 -- book local on w1 (in loop / const / outer)
+21:26 00607330 grade w7.cpp DIFFER(9236v9124) hunks=489 -- defptr release default / POINTEE / default+DELETES on w1
+21:26 00607330 grade w8.cpp DIFFER(9212v9124) hunks=297 -- defptr release default / POINTEE / default+DELETES on w1
+21:26 00607330 grade w9.cpp DIFFER(9236v9124) hunks=489 -- defptr release default / POINTEE / default+DELETES on w1
+21:26 00607330 grade w8.cpp DIFFER(9212v9124) hunks=297 -- w8 dump
+00607330 probe 4 /FAs listing of w8 for frame layout
+00607330 probe 5 w4 listing (named book)
+21:31 00607330 grade x1.cpp SRC_FAIL -- GetSubDef body visible noinline (GETSUBDEF_BODY) on w1/w8/w7
+21:31 00607330 grade x2.cpp SRC_FAIL -- GetSubDef body visible noinline (GETSUBDEF_BODY) on w1/w8/w7
+21:31 00607330 grade x3.cpp SRC_FAIL -- GetSubDef body visible noinline (GETSUBDEF_BODY) on w1/w8/w7
+21:31 00607330 grade x1.cpp DIFFER(9220v9124) hunks=503 -- GetSubDef body visible noinline (GETSUBDEF_NOINLINE header) on w1/w8/w7
+21:31 00607330 grade x2.cpp DIFFER(9236v9124) hunks=532 -- GetSubDef body visible noinline (GETSUBDEF_NOINLINE header) on w1/w8/w7
+21:31 00607330 grade x3.cpp DIFFER(9220v9124) hunks=503 -- GetSubDef body visible noinline (GETSUBDEF_NOINLINE header) on w1/w8/w7
+21:31 00607330 grade x1.cpp DIFFER(9220v9124) hunks=503 -- x1 dump
+21:31 00607330 grade x4.cpp DIFFER(9220v9124) hunks=503 -- x1 + named rhs / +book local / book only
+21:31 00607330 grade x5.cpp DIFFER(9188v9124) hunks=291 -- x1 + named rhs / +book local / book only
+21:31 00607330 grade x6.cpp DIFFER(9188v9124) hunks=292 -- x1 + named rhs / +book local / book only
+21:32 00607330 grade x5.cpp DIFFER(9188v9124) hunks=291 -- x5 dump
+21:32 00607330 grade x7.cpp DIFFER(9188v9124) -- entry index spelling (long i / *(begin()+i) / int i)
+21:32 00607330 grade x8.cpp DIFFER(9188v9124) -- entry index spelling (long i / *(begin()+i) / int i)
+21:32 00607330 grade x9.cpp DIFFER(9188v9124) -- entry index spelling (long i / *(begin()+i) / int i)
+00607330 probe 6 /FAs x5 frame layout
+21:35 00607330 grade y1.cpp DIFFER(9116v9124) hunks=19 -- books title/back scope: separate if / loop outside if / inner block (x6 base)
+21:35 00607330 grade y2.cpp DIFFER(9116v9124) hunks=19 -- books title/back scope: separate if / loop outside if / inner block (x6 base)
+21:35 00607330 grade y3.cpp DIFFER(9116v9124) hunks=19 -- books title/back scope: separate if / loop outside if / inner block (x6 base)
+21:36 00607330 grade y1.cpp DIFFER(9116v9124) hunks=19 -- y1 dump
+21:36 00607330 grade z1.cpp DIFFER(9124v9124) hunks=5 -- y1 + GetAbbreviatedName for menu entry (z2), + named orientation (z1)
+21:36 00607330 grade z2.cpp DIFFER(9116v9124) hunks=18 -- y1 + GetAbbreviatedName for menu entry (z2), + named orientation (z1)
+21:36 00607330 grade z3.cpp DIFFER(9124v9124) hunks=5 -- entry index: begin()+(long)i / begin()[i] / i+begin()
+21:36 00607330 grade z4.cpp DIFFER(9124v9124) hunks=5 -- entry index: begin()+(long)i / begin()[i] / i+begin()
+21:36 00607330 grade z5.cpp DIFFER(9124v9124) hunks=5 -- entry index: begin()+(long)i / begin()[i] / i+begin()
+21:37 00607330 grade z6.cpp DIFFER(9068v9124) hunks=583 -- entries ref / const ref / (*it).second
+21:37 00607330 grade z7.cpp DIFFER(9068v9124) hunks=583 -- entries ref / const ref / (*it).second
+21:37 00607330 grade z8.cpp DIFFER(9124v9124) hunks=5 -- entries ref / const ref / (*it).second
+21:37 00607330 grade z9.cpp DIFFER(9124v9124) hunks=5 -- const_iterator it (both loops / second loop only)
+21:37 00607330 grade z10.cpp DIFFER(9124v9124) hunks=5 -- const_iterator it (both loops / second loop only)
+21:38 00607330 grade za.cpp DIFFER(9124v9124) hunks=5 -- cat loop counter: i++ / i in outer body / i before outer loop
+21:38 00607330 grade zb.cpp DIFFER(9124v9124) hunks=5 -- cat loop counter: i++ / i in outer body / i before outer loop
+21:38 00607330 grade zc.cpp DIFFER(9124v9124) hunks=5 -- cat loop counter: i++ / i in outer body / i before outer loop
+21:38 00607330 grade zd.cpp DIFFER(9084v9124) hunks=224 -- operator[] via _M_start[n] / default size()
+21:38 00607330 grade ze.cpp DIFFER(9124v9124) hunks=5 -- operator[] via _M_start[n] / default size()
+21:39 00607330 grade zf.cpp DIFFER(9124v9124) hunks=5 -- entry via const& source / 3-arg ctor / size()>i
+21:39 00607330 grade zg.cpp DIFFER(9084v9124) hunks=233 -- entry via const& source / 3-arg ctor / size()>i
+21:39 00607330 grade zh.cpp DIFFER(9124v9124) hunks=7 -- entry via const& source / 3-arg ctor / size()>i
+21:40 00607330 grade zi.cpp SRC_FAIL -- user inline copy ctor for CHeroLogBookEntry
+21:40 00607330 grade zi.cpp DIFFER(9124v9124) hunks=5 -- implicit copy ctor for CHeroLogBookEntry (probe) / ze regrade
+21:40 00607330 grade ze.cpp DIFFER(9124v9124) hunks=5 -- implicit copy ctor for CHeroLogBookEntry (probe) / ze regrade
+21:40 00607330 grade zd.cpp DIFFER(9084v9124) -- zd full dump (_M_start[n])
+21:41 00607330 grade zj.cpp DIFFER(9132v9124) -- long i signed compare (lea probe)
+21:42 00607330 grade zk.cpp SRC_FAIL -- operator[] with difference_type(n)
+21:42 00607330 grade zk.cpp DIFFER(9124v9124) hunks=5 -- operator[] with ptrdiff_t(n)
+21:43 00607330 grade zl.cpp DIFFER(9084v9124) hunks=260 -- while loop / direct-init entry / explicit operator[]
+21:43 00607330 grade zm.cpp DIFFER(9124v9124) hunks=5 -- while loop / direct-init entry / explicit operator[]
+21:43 00607330 grade zn.cpp DIFFER(9124v9124) hunks=5 -- while loop / direct-init entry / explicit operator[]
+21:43 00607330 grade zo.cpp DIFFER(9124v9124) hunks=5 -- inner-body named vector ref / entry iterator / raw pointer
+21:43 00607330 grade zp.cpp DIFFER(9124v9124) hunks=5 -- inner-body named vector ref / entry iterator / raw pointer
+21:43 00607330 grade zq.cpp DIFFER(9124v9124) hunks=5 -- inner-body named vector ref / entry iterator / raw pointer
+21:43 00607330 grade zr.cpp DIFFER(9124v9124) hunks=5 -- GetDef def.Get() / size LOCALS / size DISTANCE
+21:43 00607330 grade zs.cpp DIFFER(9132v9124) hunks=24 -- GetDef def.Get() / size LOCALS / size DISTANCE
+21:43 00607330 grade zt.cpp SRC_FAIL -- GetDef def.Get() / size LOCALS / size DISTANCE
+21:44 00607330 grade zu.cpp DIFFER(9124v9124) hunks=5 -- i declared before it / at top / after it
+21:44 00607330 grade zv.cpp DIFFER(9124v9124) hunks=5 -- i declared before it / at top / after it
+21:44 00607330 grade zw.cpp DIFFER(9124v9124) hunks=5 -- i declared before it / at top / after it
+00607330 probe 7 lea order sensitivity: no SetDefaultChild / abbreviated first / no list
+00607330 probe 8 toy loop lea order
+21:47 00607330 grade q1.cpp DIFFER(9124v9124) hunks=5 -- index temp: long(i) / i+0 / named index copy
+21:47 00607330 grade q2.cpp DIFFER(9124v9124) hunks=5 -- index temp: long(i) / i+0 / named index copy
+21:47 00607330 grade q3.cpp DIFFER(9124v9124) hunks=5 -- index temp: long(i) / i+0 / named index copy
+00607330 probe 9 lea: precomputed n / in-body size test
+00607330 probe 10 lea sensitivity to global changes (orientation / arrow guard / release form)
+21:48 00607330 grade r1.cpp DIFFER(9124v9124) hunks=5 -- site-1 guard spellings on ze (lea depends on site 1)
+21:48 00607330 grade r2.cpp DIFFER(9124v9124) hunks=5 -- site-1 guard spellings on ze (lea depends on site 1)
+21:48 00607330 grade r3.cpp DIFFER(9124v9124) hunks=5 -- site-1 guard spellings on ze (lea depends on site 1)
+21:48 00607330 grade n1.cpp DIFFER(9124v9124) hunks=5 -- byte-neutral perturbations: CDELETION_INLINE / CLEAR_OUTOFCLASS / both
+21:48 00607330 grade n2.cpp DIFFER(9124v9124) hunks=5 -- byte-neutral perturbations: CDELETION_INLINE / CLEAR_OUTOFCLASS / both
+21:48 00607330 grade n3.cpp DIFFER(9124v9124) hunks=5 -- byte-neutral perturbations: CDELETION_INLINE / CLEAR_OUTOFCLASS / both
+00607330 probe 11 lea with ~list out of line (p7/ze)
+21:49 00607330 grade s1.cpp DIFFER(9140v9124) hunks=6 -- site-1 structure: split if(entry) / ternary entry / && assignment
+21:49 00607330 grade s2.cpp DIFFER(9140v9124) hunks=6 -- site-1 structure: split if(entry) / ternary entry / && assignment
+21:49 00607330 grade s3.cpp DIFFER(9140v9124) hunks=6 -- site-1 structure: split if(entry) / ternary entry / && assignment
+21:49 00607330 grade s1.cpp DIFFER(9140v9124) hunks=6 -- s1 dump
+00607330 probe 12 lea vs dead-IL count (1/2/3 dead size())
+21:50 00607330 grade t1.cpp DIFFER(9152v9124) hunks=141 -- plain arrow guard + books test spelled size()==0 / begin()==end() / size()<1
+21:50 00607330 grade t2.cpp DIFFER(9140v9124) hunks=6 -- plain arrow guard + books test spelled size()==0 / begin()==end() / size()<1
+21:50 00607330 grade t3.cpp DIFFER(9152v9124) hunks=141 -- plain arrow guard + books test spelled size()==0 / begin()==end() / size()<1
+21:50 00607330 grade u1.cpp DIFFER(9124v9124) hunks=5 -- GetSubDef via CDefinitionManager.h GETSUBDEF_BODY spelling
+21:51 00607330 grade v1.cpp DIFFER(9140v9124) hunks=6 -- CDefPointer plain inline (budget probe) on p7 / ze
+21:51 00607330 grade v2.cpp DIFFER(9124v9124) hunks=5 -- CDefPointer plain inline (budget probe) on p7 / ze
+21:53 00607330 grade w10.cpp DIFFER(9140v9124) hunks=6 -- user-declared ~CDeletion(){} on plain-arrow (p7) / ze
+21:53 00607330 grade w11.cpp DIFFER(9124v9124) hunks=5 -- user-declared ~CDeletion(){} on plain-arrow (p7) / ze
+21:53 00607330 grade w12.cpp DIFFER(9140v9124) hunks=6 -- plain arrow + CDELETION_INLINE / +DTOR / LIST_DTOR_CLEARS (depth for site-1 ~list)
+21:53 00607330 grade w13.cpp DIFFER(9140v9124) hunks=6 -- plain arrow + CDELETION_INLINE / +DTOR / LIST_DTOR_CLEARS (depth for site-1 ~list)
+21:53 00607330 grade w14.cpp DIFFER(9212v9124) hunks=7 -- plain arrow + CDELETION_INLINE / +DTOR / LIST_DTOR_CLEARS (depth for site-1 ~list)
+21:53 00607330 grade w14.cpp DIFFER(9212v9124) hunks=7 -- w14 dump
+21:54 00607330 grade b1.cpp DIFFER(9140v9124) hunks=6 -- PROBE inline-budget theory: dead locals added to plain-arrow p7
+21:54 00607330 grade b2.cpp DIFFER(9140v9124) hunks=6 -- PROBE inline-budget theory: dead locals added to plain-arrow p7
+21:54 00607330 grade b3.cpp DIFFER(9140v9124) hunks=6 -- PROBE inline-budget theory: dead locals added to plain-arrow p7
+00607330 probe 13 lea under other site-1 extra-branch forms
+00607330 probe 14 loop-count theory: empty loop inserted (before cat loop / before books_list / after books decl)
+21:55 00607330 grade d1.cpp RELOCATION_MATCH -- viewport block: 8 named desc locals (seq / cond-decl / all-find-first)
+21:56 00607330 grade f1.cpp DIFFER(9124v9124) hunks=5 -- d1 cleanup: default defptr release (f1) / plain arrow guard (f2)
+21:56 00607330 grade f2.cpp DIFFER(9140v9124) hunks=6 -- d1 cleanup: default defptr release (f1) / plain arrow guard (f2)
+21:56 00607330 grade final.cpp RELOCATION_MATCH -- final source (cleaned overlay)
+21:58 00607330 grade final.cpp RELOCATION_MATCH -- strict-headers regrade of final

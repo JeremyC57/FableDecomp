@@ -1,0 +1,11 @@
+address	name	evidence
+00b8df50	?FrameEnd@CEngineOcclusionManager@@UAEXABVCEngineComponentParams@@@Z	Ego_r.pdb + FableWin.pdb; Ego_r donor order FrameStart / SelectFlareTestVertexBuffer / FrameEnd = retail 0x00B8DBE0 / 0x00B8DCD0 / 0x00B8DF50; reads FlareTests +0x24024
+00b8dcd0	?SelectFlareTestVertexBuffer@CEngineOcclusionManager@@AAEXK@Z	Ego_r.pdb + FableWin.pdb; donor order; FrameEnd passes CircleSegments (manifest already says so)
+00a0ae40	?DrawCurrentBuffersAsTriFan@CRenderManagerCore@@QAEXJJ@Z	Ego_r.pdb + FableWin.pdb; body = RealiseRenderState + DrawPrimitive(D3DPT_TRIANGLEFAN=6), ret 8 (twin 0x00A0AE70 = PointList, type 1)
+00b9a4a0	?RenderPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z	Ego_r.pdb + FableWin.pdb; rtti-vtables slot 7 of 0x012A3E9C (RTTI CEnginePrimitiveManagerRepeatedStaticMeshes)
+00a23c50	?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z	Ego_r donor 0x00B5FEA0 between HasPhysicsMesh 0x00B5FE90 / AreTexturesLoaded 0x00B5FEB0 = retail 0x00A23C40 / 0x00A23C50 / 0x00A23C60; one stack argument (ret 4, empty PC body)
+00b98b10	??0CEngineSubPrimitiveBoundingBox@@QAE@PAVCEngineInternalPrimitiveOcclusionBase@@@Z	stores vtable 0x012A3E84 = RTTI .?AVCEngineSubPrimitiveBoundingBox@@ (tools/rtti.py); Ego_r / FableWin ctor spelling
+00b98bc0	??0CEngineSubPrimitiveRepeatedStaticMesh@@QAE@PAVCEngineInternalPrimitiveRepeatedStaticMesh@@PAVC3DPrimitive2@@W4ERenderMode@@@Z	stores vtable 0x012A3E94 = RTTI .?AVCEngineSubPrimitiveRepeatedStaticMesh@@; 3 arguments (ret 0Ch); Ego_r / FableWin spelling
+00b98c10	?GetBlockOnLoad@CEnginePrimitiveManager@@SI_NXZ	unreferenced COMDAT reading g_pEnginePrimitiveRenderer +0x04 (BlockOnLoad); FableWin.pdb static fastcall
+00b98c20	?AddSubPrimitive@CEnginePrimitiveManager@@IAEXPAVCEngineSubPrimitiveBase@@MEK@Z	unreferenced COMDAT forwarding to 0x00B846E0 with this; FableWin.pdb protected member (expanded in 0x00B9A4A0)
+00b98cc0	?CalculateSubPrimitiveRenderFlags@CEnginePrimitiveRenderUtil@@QAEK_N00K0@Z	unreferenced COMDAT (ret 14h, five args: three bools, flags, bool) = the logic expanded at 0x00B9AA14..0x00B9AAA0; FableWin.pdb

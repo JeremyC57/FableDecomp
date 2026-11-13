@@ -1,0 +1,2 @@
+address	true_length	evidence
+00bb8ef0	1941	the oracle row already says 1941 (graded against it); the 2659-byte reservation estimate also covered 0x00BB9690..0x00BB9952, a run of unreferenced inline COMDATs of the decal TU (list helpers, distance 0x00BB9770, ApplyLandscapeVertexShader 0x00BB97F0, ApplyMeshVertexShader 0x00BB9810, CArray/vector<CTVertexNormTex1> helpers, uninitialized_fill_n 0x00BB9910): RenderSubPrimitive ends with `ret 8` at 0x00BB9682, int3 to 0x00BB9690

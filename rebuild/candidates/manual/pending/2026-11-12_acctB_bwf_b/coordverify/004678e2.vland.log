@@ -1,0 +1,6 @@
+addr       parity           behav  name
+004678e2   WARN RELOC_NAME: ??$Transfer@W4EInventoryIdentifier@NInventory@@@CPersistContext@@QAEXAAW4EInventoryIdentifier@NInventory@@@Z -> 00468e10 labelled 'CPersistContext::Transfer<NInventory::EInventoryIdentifier>'
+004678e2   RELOCATION_MATCH PASS   Transfer
+
+WINS: 1
+  004678e2 RELOCATION_MATCH CInventoryDef::Transfer

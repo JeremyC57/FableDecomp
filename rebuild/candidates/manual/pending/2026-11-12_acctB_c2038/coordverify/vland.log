@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00bb8750   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00bb8750   RELOCATION_MATCH PASS   RenderLandscapeDecalGroup
+
+WINS: 1
+  00bb8750 RELOCATION_MATCH CEnginePrimitiveManagerParticleDecalGroup::?RenderLandscapeDecalGroup@CEnginePrimitiveManagerParticleDecalGroup@@AAEXABVCEngineInternalPrimitiveParticleDecalGroup@@_NJ@Z

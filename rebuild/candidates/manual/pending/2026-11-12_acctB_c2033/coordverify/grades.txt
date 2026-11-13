@@ -1,0 +1,2 @@
+0069ae80 CGameCameraManager::CGameCameraManager RELOCATION_MATCH flags= []
+00a4c5e0 C3DAnimationSequenceData::ReadCompressedFromFile RELOCATION_MATCH flags= []

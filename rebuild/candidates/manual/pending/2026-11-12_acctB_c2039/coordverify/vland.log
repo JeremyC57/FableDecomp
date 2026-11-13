@@ -1,0 +1,10 @@
+addr       parity           behav  name
+006aca30   WARN RELOC_NAME: ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ -> 004c79a0 labelled 'CAnimateThing::GetMeshBank'
+006aca30   WARN RELOC_NAME: ?AddAutoPickup@CPlayerGui@@QAEXJ@Z -> 00437980 labelled '_global::Forward_AddObject_via0x2fc_00437980'
+006aca30   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ -> 005d9030 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+006aca30   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+006aca30   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+006aca30   RELOCATION_MATCH PASS   OnCollisionWithObject
+
+WINS: 1
+  006aca30 RELOCATION_MATCH CThingPlayerCreature::?OnCollisionWithObject@CThingPlayerCreature@@QAEXPAVCThing@@@Z

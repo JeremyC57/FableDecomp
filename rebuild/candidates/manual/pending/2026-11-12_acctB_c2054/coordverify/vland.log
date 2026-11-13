@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00a7af60   WARN RELOC_NAME: ??$__copy@PAVCNavigationLayer@CNavQuadTree@@PAV12@H@std@@YIPAVCNavigationLayer@CNavQuadTree@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00a85870 labelled 'std::__copy<CNavQuadTree::CNavigationLayer*,CNavQuadTree::CNavigationLayer*,int>'
+00a7af60   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@0ABU__false_type@0@@Z -> 00a83420 labelled 'std::__destroy_aux<std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> *>'
+00a7af60   RELOCATION_MATCH PASS   LoadFromFile
+
+WINS: 1
+  00a7af60 RELOCATION_MATCH CNavQuadTree::?LoadFromFile@CNavQuadTree@@QAE_NAAVCAFile@@JABVC2DBoxI@@AAVCASuspendableProcess@@@Z

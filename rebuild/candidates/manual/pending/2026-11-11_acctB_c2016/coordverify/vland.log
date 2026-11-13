@@ -1,0 +1,11 @@
+addr       parity           behav  name
+004caa00   WARN RELOC_NAME: ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z -> 0051e580 labelled 'CEditWorldMap::GetEditMap'
+004caa00   WARN RELOC_NAME: ?IsSerialisingGameState@CThingManager@@QBE_NXZ -> 0051e2e0 labelled '_global::GetMember_byte0x9a_0051e2e0'
+004caa00   WARN RELOC_NAME: ?GetLevelBeingLoaded@CThingManager@@QBEJXZ -> 0051e2c0 labelled '_global::GetMember_dword0xdc_0051e2c0'
+004caa00   WARN RELOC_NAME: ?CreateSerialiseCreatableTCs@CThing@@IAEXABVCCharString@@@Z -> 004ca230 labelled 'CThing::CreateTCsFromString'
+004caa00   RELOCATION_MATCH PASS   ConstructFromLevelScript
+0061ad60   RELOCATION_MATCH PASS   DrawActiveTestQuests
+
+WINS: 2
+  004caa00 RELOCATION_MATCH CThing::?ConstructFromLevelScript@CThing@@UAE_NPBD@Z
+  0061ad60 RELOCATION_MATCH CTCInventoryQuests::?DrawActiveTestQuests@CTCInventoryQuests@@QAEXABVCEnginePrimitivePrepareInfo@@@Z

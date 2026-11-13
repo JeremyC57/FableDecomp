@@ -1,0 +1,29 @@
+18:00 00b72180 grade v1.cpp SRC_FAIL -- first full draft
+18:00 00b72180 grade v2.cpp SRC_FAIL -- displaymanager include fix
+18:00 00b72180 grade v3.cpp SRC_FAIL -- displaymanager include fix
+18:00 00b72180 grade v4.cpp SRC_FAIL -- Direct3D9Types include
+18:01 00b72180 grade v5.cpp SRC_FAIL -- csurface rebase, sized/bitmap
+18:01 00b72180 grade v6.cpp SRC_FAIL -- camera opt-in
+18:01 00b72180 grade v7.cpp SRC_FAIL -- camera position opt-in
+18:01 00b72180 grade v8.cpp DIFFER(5158v5587) hunks=175 -- CENGINECAMERA opt-in
+18:02 00b72180 grade v9.cpp DIFFER(5158v5587) hunks=175 -- SetRenderTargetToSurface plain def / forceinline / +no dtor forceinline
+18:02 00b72180 grade v10.cpp DIFFER(5852v5587) hunks=53 -- SetRenderTargetToSurface plain def / forceinline / +no dtor forceinline
+18:02 00b72180 grade v11.cpp DIFFER(5505v5587) hunks=55 -- SetRenderTargetToSurface plain def / forceinline / +no dtor forceinline
+18:02 00b72180 grade v10.cpp DIFFER(5852v5587) hunks=53 -- regrade v10 for cdiff
+18:03 00b72180 grade v10.cpp DIFFER(5712v5587) hunks=46 /d2inlT70 -- d2inlT70
+18:03 00b72180 grade v10.cpp DIFFER(5740v5587) hunks=132 /d2inlT60 -- d2inlT60
+18:03 00b72180 grade v10.cpp DIFFER(5436v5587) hunks=95 /d2inlT45 -- d2inlT45
+18:04 00b72180 grade v12.cpp DIFFER(5852v5587) hunks=53 -- loop cond in header / else-block
+18:04 00b72180 grade v13.cpp DIFFER(5852v5587) hunks=53 -- loop cond in header / else-block
+18:05 00b72180 grade v14.cpp DIFFER(5587v5587) hunks=37 -- while loops (break / full cond)
+18:05 00b72180 grade v15.cpp DIFFER(5587v5587) hunks=37 -- while loops (break / full cond)
+18:05 00b72180 grade v14.cpp DIFFER(5587v5587) hunks=37 -- v14 view hunks
+18:05 00b72180 grade v14.cpp DIFFER(5587v5587) hunks=37 -- v14 view hunks 2
+18:06 00b72180 grade v17.cpp DIFFER(5587v5587) hunks=37 -- frame decl single / frames before bank / +ok separate
+18:06 00b72180 grade v18.cpp DIFFER(5587v5587) hunks=37 -- frame decl single / frames before bank / +ok separate
+18:06 00b72180 grade v19.cpp DIFFER(5587v5587) hunks=37 -- frame decl single / frames before bank / +ok separate
+18:08 00b72180 grade v20.cpp DIFFER(5530v5587) hunks=32 -- CScopedShadersEnable (FableWin ctor/dtor)
+18:08 00b72180 grade v20.cpp DIFFER(5530v5587) hunks=32 -- v20 view
+18:08 00b72180 grade v21.cpp RELOCATION_MATCH -- CScopedShadersEnable dtor forceinline
+18:09 00b72180 grade 00b72180.cpp RELOCATION_MATCH -- final strict regrade
+18:09 00b72180 grade 00b72180.cpp RELOCATION_MATCH -- final strict regrade (no flags line)

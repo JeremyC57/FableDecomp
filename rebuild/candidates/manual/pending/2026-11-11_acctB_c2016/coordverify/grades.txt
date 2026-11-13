@@ -1,0 +1,2 @@
+004caa00 CThing::ConstructFromLevelScript RELOCATION_MATCH flags= []
+0061ad60 CTCInventoryQuests::DrawActiveTestQuests RELOCATION_MATCH flags= []

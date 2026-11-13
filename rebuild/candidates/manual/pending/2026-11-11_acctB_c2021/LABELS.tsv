@@ -1,0 +1,11 @@
+address	name	evidence
+00b3f5e0	?PeekMapNormal@CEngineMap@@QBE?AVC3DVector@@JJ@Z	Ego_r.pdb + FableWin.pdb name sets; Ego_r donor order (after ReadMapInfoBlock, before PeekInterpolatedMapNormal) = retail order; sole caller PeekInterpolatedMapNormal 0x00B3FC40 (4 calls); RELOCATION_MATCH
+00b40bd0	?PeekWaterDepth@CEngineMap@@QBEMJJ@Z	Ego_r.pdb + FableWin.pdb name sets; Ego_r donor order after PeekInterpolatedHasWaterFast; landed caller 0x00B41C30 spells it so; RELOCATION_MATCH
+00b43720	?PeekThemeId@CEngineMap@@QBEJJJJ@Z	Ego_r + FableWin name sets; COMDAT in the CEngineMap TU inline run; called by the expanded copies in 0x00B40BD0 with (x, y, layer 0/1/2) and DrawGetEngineThemeAt slot 6
+00b43870	?PeekThemeBlend@CEngineMap@@QBEEJJJ@Z	Ego_r + FableWin name sets; unsigned char result (byte stores, xor al,al); DrawGetEngineBlendAt slot 7; called from 0x00B40DFD / 0x00B41097
+00b439c0	?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z	Ego_r + FableWin name sets; called by the four expanded copies in 0x00B3F5E0; QuantiseLandscapeHeight (x128 fistp /128)
+009acca0	?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z	landed spelling (reloc_bindings), Ego_r + FableWin name sets
+00a14540	?Normalise@C2DVector@@QAEAAV1@XZ	landed spelling (reloc_bindings), Ego_r + FableWin name sets
+01436e8c	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A	established landed spelling (CEngineWorldMap::SetWorld 0x00B42ED0, CEngine::Initialise 0x00B26360); no PDB data-symbol dump (descriptive per the 2026-11-01 data-symbol rule)
+01436e28	?g_pEngineDefinitionManager@@3PAVCDefinitionManager@@A	established landed spelling (CEngine::Initialise 0x00B26360, descriptive)
+01436ea8	?g_LandscapeRenderer_01436EA8@@3PAVCEngineLandscapeRenderer@@A	established landed spelling (CEngine::Initialise 0x00B26360: new CEngineLandscapeRenderer stored there); class proven by +0x4B8 LandscapeThemes (CArray<CLandscapeTheme>) in engine/CEngineLandscapeRenderer.h; descriptive data name

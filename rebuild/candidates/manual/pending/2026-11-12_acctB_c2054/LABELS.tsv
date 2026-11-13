@@ -1,0 +1,15 @@
+address	name	evidence
+00A7AF60	?LoadFromFile@CNavQuadTree@@QAE_NAAVCAFile@@JABVC2DBoxI@@AAVCASuspendableProcess@@@Z	Ego_r.pdb (0x00BC1160 there) + FableWin.pdb name sets; engine/CNavQuadTree.h; RELOCATION_MATCH + vland PASS
+00A5B590	??0CCachedFile@@QAE@J@Z	Ego_r.pdb + FableWin.pdb; landed CCachedFile_CCachedFile_00a5b590.cpp; called at 0x00A7AFAE with 307200
+00A5B210	?OpenFromFile@CCachedFile@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	Ego_r.pdb + FableWin.pdb; landed CCachedFile_OpenFromFile_00a5b210.cpp
+00A5B370	?Read@CCachedFile@@UAEXPAXJPAVCASuspendableProcess@@@Z	Ego_r.pdb + FableWin.pdb; CCachedFile vtable 0x012724D4 slot (engine/CCachedFile.h overlay); 17 call sites in the row
+00826380	??1CCachedFile@@UAE@XZ	Ego_r.pdb + FableWin.pdb; landed row; the row TU inline destructor body equals retail 0x00826380 (95 bytes, tmp/sibs_final.txt)
+00A83110	??0CNavRegion@@QAE@ABV0@@Z	implicit copy constructor (engine/CNavRegion.h); landed row Leaf; the row TU copy equals retail 0x00A83110 (81 bytes, tmp/sibs_final.txt)
+00A78680	??0CNavRegion@@QAE@JJ@Z	Ego_r.pdb + FableWin.pdb; landed row; the row same-TU text (init-list zero) grades RELOCATION_MATCH against 0x00A78680
+00A762A0	?GFProcessBreath@@YIXAAVCASuspendableProcess@@AAN@Z	Ego_r.pdb + FableWin.pdb (landed row header); the row same-TU body grades RELOCATION_MATCH against 0x00A762A0; expanded five times in the row
+00A79A30	??0CNavSwitchableLeafNode@@QAE@ABVC2DVector@@EEAAVCAFile@@ABV?$list@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@_N@Z	Ego_r.pdb (0x00BBF920 there) + FableWin.pdb; landed row
+00A76580	??0CNavQuadTreeNode@@QAE@ABVC2DVector@@EEAAVCAFile@@@Z	Ego_r.pdb (0x00BBC2E0 there) + FableWin.pdb; landed row
+00A80980	?reserve@?$vector@VCNavigationPosition@@V?$allocator@VCNavigationPosition@@@std@@@std@@QAEXI@Z	Ego_r.pdb (0x004E4560 there) + FableWin.pdb; landed STLvector_reserve_00a80980.cpp; called on ActionPoints (+0x50)
+00A81890	?_M_fill_insert@?$vector@PAVCANavQuadTreeNode@@V?$allocator@PAVCANavQuadTreeNode@@@std@@@std@@QAEXPAPAVCANavQuadTreeNode@@IABQAV3@@Z	STLport 4.6 name; landed stdvector_Mfillinsert_00a81890.cpp; called from the expanded CNavigationLayer::Nodes.resize at 0x00A7B3E8
+00A85EC0	?resize@?$vector@VCNavigationLayer@CNavQuadTree@@V?$allocator@VCNavigationLayer@CNavQuadTree@@@std@@@std@@QAEXIABVCNavigationLayer@CNavQuadTree@@@Z	landed row; the row TU out-of-line copy equals retail 0x00A85EC0 (105 bytes, tmp/sibs_final.txt)
+00A85F30	?resize@?$vector@VCNavigationLayer@CNavQuadTree@@V?$allocator@VCNavigationLayer@CNavQuadTree@@@std@@@std@@QAEXI@Z	the row TU out-of-line copy equals retail 0x00A85F30 (72 bytes, tmp/sibs_final.txt); the landed 0x00A85EC0 row names it as its only caller

@@ -1,0 +1,4 @@
+address	name	evidence
+00ba5260	?RenderMeshPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@QAEXAAVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z	Ego_r.pdb + FableWin.pdb; callers 0x00BA6FA0 / 0x00BA6DC0 landed
+00b8d090	?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ	Ego_r + FableWin, body size
+00b8d0a0	?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z	Ego_r + FableWin, body size

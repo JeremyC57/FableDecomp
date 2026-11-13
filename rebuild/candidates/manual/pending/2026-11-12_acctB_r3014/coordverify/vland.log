@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b65a20   RELOCATION_MATCH PASS   RenderOuterSky
+
+WINS: 1
+  00b65a20 RELOCATION_MATCH CEngineSkyRenderer::?RenderOuterSky@CEngineSkyRenderer@@AAEXM@Z

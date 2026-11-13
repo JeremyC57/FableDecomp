@@ -1,0 +1,487 @@
+19:25 00b783f0 grade v1.cpp DIFFER(9640v9343) hunks=54 -- first full draft
+19:26 00b783f0 grade v2.cpp DIFFER(9640v9343) hunks=54 -- bump param order 00,10,01,11; v3 inner scope for block
+19:26 00b783f0 grade v3.cpp DIFFER(9640v9343) hunks=54 -- bump param order 00,10,01,11; v3 inner scope for block
+19:28 00b783f0 grade v4.cpp DIFFER(9640v9343) hunks=50 -- probe: block declared before shaders (slot order)
+19:28 00b783f0 grade v2.cpp DIFFER(9640v9343) hunks=54 -- capture block members FORCEINLINE (overlay hdr_b)
+19:29 00b783f0 grade v2f.cpp DIFFER(9343v9343) hunks=37 -- CScopedShadersEnable FORCEINLINE opt-in
+19:29 00b783f0 grade v4f.cpp DIFFER(9343v9343) hunks=39 -- CScopedShadersEnable FORCEINLINE opt-in
+19:29 00b783f0 grade v2f.cpp DIFFER(9343v9343) hunks=37 -- regrade for full hunks
+19:30 00b783f0 grade v5.cpp DIFFER(9343v9343) hunks=37 -- SetRenderState spelling: EARLY_RETURN / DESIRED
+19:30 00b783f0 grade v6.cpp DIFFER(9301v9343) hunks=70 -- SetRenderState spelling: EARLY_RETURN / DESIRED
+19:31 00b783f0 grade t1.cpp DIFFER(9343v9343) hunks=37 -- SetRenderState mask spellings: swapped &, !(), named mask local
+19:31 00b783f0 grade t2.cpp DIFFER(9343v9343) hunks=37 -- SetRenderState mask spellings: swapped &, !(), named mask local
+19:31 00b783f0 grade t3.cpp DIFFER(9180v9343) hunks=76 -- SetRenderState mask spellings: swapped &, !(), named mask local
+19:33 00b783f0 grade w1.cpp DIFFER(8690v9343) hunks=96 -- attach loop / const locals / early-return spelling
+19:33 00b783f0 grade w2.cpp DIFFER(9343v9343) hunks=37 -- attach loop / const locals / early-return spelling
+19:33 00b783f0 grade w3.cpp DIFFER(9343v9343) hunks=36 -- attach loop / const locals / early-return spelling
+19:33 00b783f0 grade w3.cpp DIFFER(9343v9343) hunks=36 -- w3 detail
+19:33 00b783f0 grade x1.cpp DIFFER(9304v9343) hunks=87 -- named ice/water/sea bools; !a&&!b chain
+19:33 00b783f0 grade x2.cpp DIFFER(9304v9343) hunks=87 -- named ice/water/sea bools; !a&&!b chain
+19:34 00b783f0 grade x3.cpp DIFFER(9343v9343) hunks=37 -- named ice/water/sea bools; !a&&!b chain
+19:34 00b783f0 grade y1.cpp DIFFER(9343v9343) hunks=37 -- nested ifs / ice+water named / grouped negations
+19:34 00b783f0 grade y2.cpp DIFFER(9342v9343) hunks=71 -- nested ifs / ice+water named / grouped negations
+19:34 00b783f0 grade y3.cpp DIFFER(9343v9343) hunks=37 -- nested ifs / ice+water named / grouped negations
+19:34 00b783f0 grade z1.cpp DIFFER(2030v9343) hunks=90 -- SetCommonRenderStates plain member in TU (auto-inline) / +shaders forceinline / inline
+19:34 00b783f0 grade z2.cpp DIFFER(2030v9343) hunks=90 -- SetCommonRenderStates plain member in TU (auto-inline) / +shaders forceinline / inline
+19:34 00b783f0 grade z3.cpp DIFFER(2030v9343) hunks=90 -- SetCommonRenderStates plain member in TU (auto-inline) / +shaders forceinline / inline
+19:35 00b783f0 grade b1.cpp DIFFER(9359v9343) hunks=45 -- named ice+sea / sea only / ice declared early
+19:35 00b783f0 grade b2.cpp DIFFER(9347v9343) hunks=87 -- named ice+sea / sea only / ice declared early
+19:35 00b783f0 grade b3.cpp DIFFER(9345v9343) hunks=53 -- named ice+sea / sea only / ice declared early
+19:36 00b783f0 grade c1.cpp DIFFER(9343v9343) hunks=34 -- w3 + named params ref / settings ref / interpolation ref
+19:36 00b783f0 grade c2.cpp SRC_FAIL -- w3 + named params ref / settings ref / interpolation ref
+19:36 00b783f0 grade c3.cpp DIFFER(9343v9343) hunks=34 -- w3 + named params ref / settings ref / interpolation ref
+19:36 00b783f0 grade c1.cpp DIFFER(9343v9343) hunks=34 -- c1 detail; settings ref; both
+19:36 00b783f0 grade c2b.cpp DIFFER(9340v9343) hunks=51 -- c1 detail; settings ref; both
+19:36 00b783f0 grade c4.cpp DIFFER(9340v9343) hunks=51 -- c1 detail; settings ref; both
+19:36 00b783f0 grade c1.cpp DIFFER(9343v9343) hunks=34 -- c1 detail
+19:37 00b783f0 grade d2.cpp DIFFER(9349v9343) hunks=36 -- c1 + seaPasses / params pointer / flat sea-refl if
+19:37 00b783f0 grade d4.cpp DIFFER(9343v9343) hunks=34 -- c1 + seaPasses / params pointer / flat sea-refl if
+19:37 00b783f0 grade d5.cpp DIFFER(9343v9343) hunks=34 -- c1 + seaPasses / params pointer / flat sea-refl if
+19:37 00b783f0 grade e1.cpp DIFFER(9354v9343) hunks=79 -- SetCommonRenderStates: settings ref / bump_map bool / stage loop
+19:37 00b783f0 grade e2.cpp DIFFER(9343v9343) hunks=46 -- SetCommonRenderStates: settings ref / bump_map bool / stage loop
+19:37 00b783f0 grade e3.cpp DIFFER(8987v9343) hunks=73 -- SetCommonRenderStates: settings ref / bump_map bool / stage loop
+19:37 00b783f0 grade f1.cpp DIFFER(9343v9343) hunks=34 -- c1 + SetRenderState spellings early-return / desired / swapped &
+19:38 00b783f0 grade f2.cpp DIFFER(9247v9343) hunks=59 -- c1 + SetRenderState spellings early-return / desired / swapped &
+19:38 00b783f0 grade f3.cpp DIFFER(9343v9343) hunks=34 -- c1 + SetRenderState spellings early-return / desired / swapped &
+19:38 00b783f0 grade p1.cpp DIFFER(9343v9343) hunks=34 -- PROBE: dead named local at top / sea start / before exp3 -- are ties symbol-count sensitive?
+19:38 00b783f0 grade p2.cpp DIFFER(9343v9343) hunks=34 -- PROBE: dead named local at top / sea start / before exp3 -- are ties symbol-count sensitive?
+19:38 00b783f0 grade p3.cpp DIFFER(9343v9343) hunks=34 -- PROBE: dead named local at top / sea start / before exp3 -- are ties symbol-count sensitive?
+19:39 00b783f0 grade h1.cpp DIFFER(9343v9343) hunks=34 -- early-test intermediates: ice in !(||) / anything / ice+anything
+19:39 00b783f0 grade h2.cpp DIFFER(9343v9343) hunks=34 -- early-test intermediates: ice in !(||) / anything / ice+anything
+19:39 00b783f0 grade h3.cpp DIFFER(9343v9343) hunks=34 -- early-test intermediates: ice in !(||) / anything / ice+anything
+19:39 00b783f0 grade h1.cpp DIFFER(9343v9343) hunks=34 -- ties h1.cpp
+19:39 00b783f0 grade h2.cpp DIFFER(9343v9343) hunks=34 -- ties h2.cpp
+19:39 00b783f0 grade h3.cpp DIFFER(9343v9343) hunks=34 -- ties h3.cpp
+19:39 00b783f0 grade k1.cpp DIFFER(9343v9343) hunks=34 -- ties k1.cpp
+19:39 00b783f0 grade k2.cpp DIFFER(9343v9343) hunks=34 -- ties k2.cpp
+19:39 00b783f0 grade k3.cpp DIFFER(9343v9343) hunks=34 -- ties k3.cpp
+19:40 00b783f0 grade m1.cpp DIFFER(9343v9343) hunks=34 -- ties m1.cpp
+19:40 00b783f0 grade m2.cpp DIFFER(9343v9343) hunks=34 -- ties m2.cpp
+19:41 00b783f0 grade q1.cpp DIFFER(9343v9343) hunks=34 -- ties q1.cpp
+19:41 00b783f0 grade q2.cpp DIFFER(9343v9343) hunks=34 -- ties q2.cpp
+19:41 00b783f0 grade q3.cpp DIFFER(9343v9343) hunks=34 -- ties q3.cpp
+19:42 00b783f0 grade s1.cpp DIFFER(5165v9343) hunks=192 -- ties s1.cpp
+19:42 00b783f0 grade s2.cpp DIFFER(5165v9343) hunks=192 -- ties s2.cpp
+19:42 00b783f0 grade u1.cpp DIFFER(9343v9343) hunks=44 -- ties u1.cpp
+19:42 00b783f0 grade u2.cpp DIFFER(9402v9343) hunks=59 -- ties u2.cpp
+19:42 00b783f0 grade u3.cpp DIFFER(9409v9343) hunks=61 -- ties u3.cpp
+19:43 00b783f0 grade tc_ea.cpp DIFFER(9343v9343) hunks=34 -- ties tc_ea.cpp
+19:43 00b783f0 grade tc_eh.cpp DIFFER(9343v9343) hunks=34 -- ties tc_eh.cpp
+19:43 00b783f0 grade tc_eo.cpp DIFFER(9343v9343) hunks=35 -- ties tc_eo.cpp
+19:43 00b783f0 grade tc_ew.cpp DIFFER(9343v9343) hunks=34 -- ties tc_ew.cpp
+19:43 00b783f0 grade tc_ex.cpp DIFFER(9343v9343) hunks=35 -- ties tc_ex.cpp
+19:43 00b783f0 grade td_ea.cpp DIFFER(9343v9343) hunks=36 -- ties td_ea.cpp
+19:43 00b783f0 grade td_eh.cpp DIFFER(9343v9343) hunks=36 -- ties td_eh.cpp
+19:43 00b783f0 grade td_eo.cpp DIFFER(9343v9343) hunks=37 -- ties td_eo.cpp
+19:43 00b783f0 grade td_ew.cpp DIFFER(9343v9343) hunks=36 -- ties td_ew.cpp
+19:43 00b783f0 grade td_ex.cpp DIFFER(9343v9343) hunks=37 -- ties td_ex.cpp
+19:43 00b783f0 grade ti_ea.cpp DIFFER(9343v9343) hunks=34 -- ties ti_ea.cpp
+19:43 00b783f0 grade ti_eh.cpp DIFFER(9343v9343) hunks=34 -- ties ti_eh.cpp
+19:43 00b783f0 grade ti_eo.cpp DIFFER(9343v9343) hunks=35 -- ties ti_eo.cpp
+19:44 00b783f0 grade ti_ew.cpp DIFFER(9343v9343) hunks=34 -- ties ti_ew.cpp
+19:44 00b783f0 grade ti_ex.cpp DIFFER(9343v9343) hunks=35 -- ties ti_ex.cpp
+19:44 00b783f0 grade tp_ea.cpp DIFFER(9343v9343) hunks=34 -- ties tp_ea.cpp
+19:44 00b783f0 grade tp_eh.cpp DIFFER(9343v9343) hunks=34 -- ties tp_eh.cpp
+19:44 00b783f0 grade tp_eo.cpp DIFFER(9343v9343) hunks=35 -- ties tp_eo.cpp
+19:44 00b783f0 grade tp_ew.cpp DIFFER(9343v9343) hunks=34 -- ties tp_ew.cpp
+19:44 00b783f0 grade tp_ex.cpp DIFFER(9343v9343) hunks=35 -- ties tp_ex.cpp
+19:44 00b783f0 grade a_eq.cpp DIFFER(9343v9343) hunks=34 -- ties a_eq.cpp
+19:44 00b783f0 grade a_if.cpp DIFFER(9341v9343) hunks=38 -- ties a_if.cpp
+19:44 00b783f0 grade a_par.cpp DIFFER(9343v9343) hunks=34 -- ties a_par.cpp
+19:44 00b783f0 grade a_pre.cpp DIFFER(9343v9343) hunks=34 -- ties a_pre.cpp
+19:45 00b783f0 grade n1.cpp DIFFER(9343v9343) hunks=34 -- ties n1.cpp
+19:45 00b783f0 grade n2.cpp DIFFER(9343v9343) hunks=46 -- ties n2.cpp
+19:45 00b783f0 grade n3.cpp DIFFER(9343v9343) hunks=46 -- ties n3.cpp
+19:45 00b783f0 grade n4.cpp DIFFER(9343v9343) hunks=44 -- ties n4.cpp
+19:45 00b783f0 grade b1.cpp DIFFER(9343v9343) hunks=34 -- ties b1.cpp
+19:45 00b783f0 grade b2.cpp DIFFER(9343v9343) hunks=32 -- ties b2.cpp
+19:45 00b783f0 grade b3.cpp DIFFER(9343v9343) hunks=32 -- ties b3.cpp
+19:45 00b783f0 grade b4.cpp DIFFER(9343v9343) hunks=30 -- ties b4.cpp
+19:45 00b783f0 grade a1.cpp DIFFER(9343v9343) hunks=30 -- ties a1.cpp
+19:45 00b783f0 grade a2.cpp DIFFER(9343v9343) hunks=30 -- ties a2.cpp
+19:45 00b783f0 grade a3.cpp DIFFER(9343v9343) hunks=46 -- ties a3.cpp
+19:45 00b783f0 grade a4.cpp DIFFER(9343v9343) hunks=46 -- ties a4.cpp
+19:46 00b783f0 grade i1.cpp DIFFER(8947v9343) hunks=55 -- ties i1.cpp
+19:46 00b783f0 grade sb1.cpp DIFFER(9343v9343) hunks=57 -- ties sb1.cpp
+19:46 00b783f0 grade sb2.cpp DIFFER(9343v9343) hunks=30 -- ties sb2.cpp
+19:46 00b783f0 grade sb3.cpp SRC_FAIL -- ties sb3.cpp
+19:47 00b783f0 grade sc4.cpp DIFFER(9294v9343) hunks=61 -- ties sc4.cpp
+19:47 00b783f0 grade sc5.cpp DIFFER(9340v9343) hunks=30 -- ties sc5.cpp
+19:47 00b783f0 grade c1.cpp DIFFER(9343v9343) hunks=34 -- clean overlay regrade of best (c1)
+21:59 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- a2 baseline regrade
+22:01 00b783f0 grade k0.cpp DIFFER(9343v9343) hunks=34 -- SCRS in TU: k0 same text, ka local factor in arm, kb local factor before if
+22:01 00b783f0 grade ka.cpp DIFFER(9602v9343) hunks=70 -- SCRS in TU: k0 same text, ka local factor in arm, kb local factor before if
+22:01 00b783f0 grade kb.cpp DIFFER(9584v9343) hunks=81 -- SCRS in TU: k0 same text, ka local factor in arm, kb local factor before if
+22:03 00b783f0 grade r4.cpp DIFFER(9343v9343) hunks=44 -- probe: N dead empty() after UpdateConstants (ruler)
+22:03 00b783f0 grade r8.cpp DIFFER(9343v9343) hunks=46 -- probe: N dead empty() after UpdateConstants (ruler)
+22:03 00b783f0 grade r16.cpp DIFFER(9343v9343) hunks=46 -- probe: N dead empty() after UpdateConstants (ruler)
+22:04 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- rh filter check base / r4 probe
+22:04 00b783f0 grade r4.cpp DIFFER(9343v9343) hunks=44 -- rh filter check base / r4 probe
+22:04 00b783f0 grade r4.cpp DIFFER(9343v9343) hunks=44 -- r4 probe detail
+22:04 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- base detail
+22:04 00b783f0 grade r1.cpp DIFFER(9343v9343) hunks=34 -- probe: ruler r1 after UpdateConstants
+22:04 00b783f0 grade r2.cpp DIFFER(9343v9343) hunks=46 -- probe: ruler r2 after UpdateConstants
+22:04 00b783f0 grade r3.cpp DIFFER(9343v9343) hunks=46 -- probe: ruler r3 after UpdateConstants
+22:04 00b783f0 grade r8.cpp DIFFER(9343v9343) hunks=46 -- probe: ruler r8 after UpdateConstants
+22:04 00b783f0 grade r24.cpp DIFFER(9343v9343) hunks=67 -- probe: ruler r24 after UpdateConstants
+22:04 00b783f0 grade r32.cpp DIFFER(8947v9343) hunks=57 -- probe: ruler r32 after UpdateConstants
+22:04 00b783f0 grade r48.cpp DIFFER(9247v9343) hunks=66 -- probe: ruler r48 after UpdateConstants
+22:05 00b783f0 grade d1.cpp DIFFER(9343v9343) hunks=34 -- probe: dead-local ruler d1 after UpdateConstants
+22:05 00b783f0 grade d2.cpp DIFFER(9343v9343) hunks=46 -- probe: dead-local ruler d2 after UpdateConstants
+22:05 00b783f0 grade d3.cpp DIFFER(9343v9343) hunks=46 -- probe: dead-local ruler d3 after UpdateConstants
+22:05 00b783f0 grade n1.cpp DIFFER(9343v9343) hunks=36 -- negative ruler: n1 drop component_params / ice / both
+22:05 00b783f0 grade n2.cpp DIFFER(9343v9343) hunks=35 -- negative ruler: n2 drop component_params / ice / both
+22:05 00b783f0 grade n3.cpp DIFFER(9343v9343) hunks=37 -- negative ruler: n3 drop component_params / ice / both
+22:06 00b783f0 grade s0.cpp DIFFER(9586v9343) hunks=50 /d2inlS10 -- plain-inline CScopedShadersEnable + /d2inlS10
+22:06 00b783f0 grade s0.cpp DIFFER(9586v9343) hunks=50 /d2inlS12 -- plain-inline CScopedShadersEnable + /d2inlS12
+22:06 00b783f0 grade s0.cpp DIFFER(9586v9343) hunks=50 /d2inlS16 -- plain-inline CScopedShadersEnable + /d2inlS16
+22:06 00b783f0 grade s0.cpp DIFFER(9586v9343) hunks=50 /d2inlT80 -- plain-inline CScopedShadersEnable + /d2inlT80
+22:06 00b783f0 grade s0.cpp DIFFER(9586v9343) hunks=50 /d2inlT120 -- plain-inline CScopedShadersEnable + /d2inlT120
+22:06 00b783f0 grade s0.cpp DIFFER(9343v9343) hunks=34 /d2inlT300 -- plain-inline CScopedShadersEnable + /d2inlT300
+22:08 00b783f0 grade t1.cpp DIFFER(9343v9343) hunks=34 -- probe: TU context - other functions before/after Render (t1)
+22:08 00b783f0 grade t2.cpp DIFFER(9343v9343) hunks=34 -- probe: TU context - other functions before/after Render (t2)
+22:08 00b783f0 grade t3.cpp DIFFER(9343v9343) hunks=34 -- probe: TU context - other functions before/after Render (t3)
+22:09 00b783f0 grade p1.cpp DIFFER(9343v9343) hunks=46 -- probe: ruler inside exp2 before SCRS x2/x4, float dead locals at top (p1)
+22:09 00b783f0 grade p2.cpp DIFFER(9343v9343) hunks=44 -- probe: ruler inside exp2 before SCRS x2/x4, float dead locals at top (p2)
+22:09 00b783f0 grade p3.cpp DIFFER(9343v9343) hunks=46 -- probe: ruler inside exp2 before SCRS x2/x4, float dead locals at top (p3)
+22:09 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- SBEM text sb_a (param order 00,01,10,11 / named state refs / DWORD)
+22:09 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=50 -- SBEM text sb_b (param order 00,01,10,11 / named state refs / DWORD)
+22:09 00b783f0 grade base.cpp SRC_FAIL -- SBEM text sb_c (param order 00,01,10,11 / named state refs / DWORD)
+22:11 00b783f0 grade d6.cpp DIFFER(9343v9343) hunks=44 -- probe: dead const long named-symbol ruler d6
+22:11 00b783f0 grade d12.cpp DIFFER(9343v9343) hunks=40 -- probe: dead const long named-symbol ruler d12
+22:11 00b783f0 grade d20.cpp DIFFER(9343v9343) hunks=48 -- probe: dead const long named-symbol ruler d20
+22:11 00b783f0 grade d28.cpp DIFFER(8947v9343) hunks=51 -- probe: dead const long named-symbol ruler d28
+22:11 00b783f0 grade d40.cpp DIFFER(9343v9343) hunks=48 -- probe: dead const long named-symbol ruler d40
+22:11 00b783f0 grade d56.cpp DIFFER(9343v9343) hunks=67 -- probe: dead const long named-symbol ruler d56
+22:12 00b783f0 grade q1.cpp DIFFER(9343v9343) hunks=46 -- probe: dead empty() inside SCRS arm1 before SBEM1 / after SBEM1 x1 / x2 (q1)
+22:12 00b783f0 grade q2.cpp DIFFER(9343v9343) hunks=32 -- probe: dead empty() inside SCRS arm1 before SBEM1 / after SBEM1 x1 / x2 (q2)
+22:12 00b783f0 grade q3.cpp DIFFER(9343v9343) hunks=30 -- probe: dead empty() inside SCRS arm1 before SBEM1 / after SBEM1 x1 / x2 (q3)
+22:13 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- probe: empty inline check layers inside SBEM (pb_b)
+22:13 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- probe: empty inline check layers inside SBEM (pb_c)
+22:13 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- probe: empty inline check layers inside SBEM (pb_d)
+22:14 00b783f0 grade e2.cpp DIFFER(9343v9343) hunks=34 -- probe: rulers AFTER (end of fn x2/x4, after exp3 x2) (e2)
+22:14 00b783f0 grade e4.cpp DIFFER(9343v9343) hunks=34 -- probe: rulers AFTER (end of fn x2/x4, after exp3 x2) (e4)
+22:14 00b783f0 grade e5.cpp DIFFER(9343v9343) hunks=34 -- probe: rulers AFTER (end of fn x2/x4, after exp3 x2) (e5)
+22:16 00b783f0 grade L10.cpp DIFFER(9343v9343) hunks=48 -- probe: dead long locals (member+N) ruler L10
+22:16 00b783f0 grade L20.cpp DIFFER(9643v9343) hunks=77 -- probe: dead long locals (member+N) ruler L20
+22:16 00b783f0 grade L30.cpp DIFFER(9601v9343) hunks=85 -- probe: dead long locals (member+N) ruler L30
+22:16 00b783f0 grade L40.cpp DIFFER(9305v9343) hunks=61 -- probe: dead long locals (member+N) ruler L40
+22:16 00b783f0 grade L50.cpp DIFFER(9312v9343) hunks=107 -- probe: dead long locals (member+N) ruler L50
+22:16 00b783f0 grade L60.cpp DIFFER(9312v9343) hunks=101 -- probe: dead long locals (member+N) ruler L60
+22:16 00b783f0 grade base.cpp DIFFER(9247v9343) hunks=59 -- desired_state SetRenderState + ruler (base)
+22:16 00b783f0 grade r1.cpp DIFFER(9247v9343) hunks=59 -- desired_state SetRenderState + ruler (r1)
+22:16 00b783f0 grade r2.cpp DIFFER(9247v9343) hunks=59 -- desired_state SetRenderState + ruler (r2)
+22:17 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- SBEM state/value spellings sa1 (ptr+stage / (ulong&) / const ulong*)
+22:17 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- SBEM state/value spellings sa2 (ptr+stage / (ulong&) / const ulong*)
+22:17 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- SBEM state/value spellings sa3 (ptr+stage / (ulong&) / const ulong*)
+22:18 00b783f0 grade B8.cpp DIFFER(9343v9343) hunks=46 -- probe: dead bool=fg ruler B8
+22:18 00b783f0 grade B16.cpp DIFFER(9343v9343) hunks=46 -- probe: dead bool=fg ruler B16
+22:18 00b783f0 grade B24.cpp DIFFER(9343v9343) hunks=44 -- probe: dead bool=fg ruler B24
+22:18 00b783f0 grade B32.cpp DIFFER(9343v9343) hunks=38 -- probe: dead bool=fg ruler B32
+22:18 00b783f0 grade B40.cpp DIFFER(9343v9343) hunks=48 -- probe: dead bool=fg ruler B40
+22:18 00b783f0 grade B48.cpp DIFFER(9343v9343) hunks=69 -- probe: dead bool=fg ruler B48
+22:19 00b783f0 grade hi1.cpp DIFFER(9323v9343) hunks=53 -- probe: expansion k written inline in Render instead of SCRS() (hi1)
+22:19 00b783f0 grade hi2.cpp DIFFER(8947v9343) hunks=59 -- probe: expansion k written inline in Render instead of SCRS() (hi2)
+22:19 00b783f0 grade hi3.cpp DIFFER(9343v9343) hunks=34 -- probe: expansion k written inline in Render instead of SCRS() (hi3)
+22:20 00b783f0 grade iv1.cpp DIFFER(9343v9343) hunks=29 -- SCRS bump: inverted arms / per-stage if-else (iv1)
+22:20 00b783f0 grade iv2.cpp DIFFER(8362v9343) hunks=99 -- SCRS bump: inverted arms / per-stage if-else (iv2)
+22:20 00b783f0 grade iv1.cpp DIFFER(9343v9343) hunks=29 -- iv1 detail
+22:20 00b783f0 grade iv1.cpp DIFFER(9343v9343) hunks=29 -- iv1 detail2
+22:20 00b783f0 grade w1.cpp SRC_FAIL -- probe: Fog/SCRS/Fog wrapped in an inline layer: setupA+exp2 / exp2 only (w1)
+22:21 00b783f0 grade w2.cpp SRC_FAIL -- probe: Fog/SCRS/Fog wrapped in an inline layer: setupA+exp2 / exp2 only (w2)
+22:21 00b783f0 grade w1.cpp DIFFER(3721v9343) hunks=116 -- probe: Fog/SCRS/Fog wrapped in an inline member layer: setupA+exp2 / exp2 only (w1)
+22:21 00b783f0 grade w2.cpp DIFFER(9343v9343) hunks=34 -- probe: Fog/SCRS/Fog wrapped in an inline member layer: setupA+exp2 / exp2 only (w2)
+22:21 00b783f0 grade base.cpp DIFFER(8555v9343) hunks=312 /G7 -- TU flag /G7 (scheduler model)
+22:21 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 /G6 -- TU flag /G6 (scheduler model)
+22:21 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 /G5 -- TU flag /G5 (scheduler model)
+22:21 00b783f0 grade base.cpp DIFFER(9459v9343) hunks=97 /Oa -- TU flag /Oa
+22:21 00b783f0 grade base.cpp DIFFER(9467v9343) hunks=97 /Ow -- TU flag /Ow
+22:21 00b783f0 grade base.cpp DIFFER(9538v9343) hunks=137 /Op -- TU flag /Op
+22:23 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- probe: swapped & operands in SetRenderState (pattern check)
+22:23 00b783f0 grade x1.cpp DIFFER(9343v9343) hunks=32 -- probe: dead BRANCH (extra CFG block) at top / before exp2 / before Highend if (x1)
+22:23 00b783f0 grade x2.cpp DIFFER(9343v9343) hunks=32 -- probe: dead BRANCH (extra CFG block) at top / before exp2 / before Highend if (x2)
+22:23 00b783f0 grade x3.cpp DIFFER(9343v9343) hunks=34 -- probe: dead BRANCH (extra CFG block) at top / before exp2 / before Highend if (x3)
+22:24 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- probe: QFE 4035 compiler (FABLE_VC71=vc71)
+22:24 00b783f0 grade f1.cpp DIFFER(9343v9343) hunks=34 -- sea section nesting (frequency): f1 nested in if(EnableSea) with re-test / f2 split ifs (f1)
+22:25 00b783f0 grade f2.cpp DIFFER(9343v9343) hunks=34 -- sea section nesting (frequency): f1 nested in if(EnableSea) with re-test / f2 split ifs (f2)
+22:25 00b783f0 grade C2.cpp DIFFER(9343v9343) hunks=46 -- probe: dead float-constant ruler (time*K.5f) C2
+22:25 00b783f0 grade C4.cpp DIFFER(9343v9343) hunks=44 -- probe: dead float-constant ruler (time*K.5f) C4
+22:25 00b783f0 grade C8.cpp DIFFER(9343v9343) hunks=46 -- probe: dead float-constant ruler (time*K.5f) C8
+22:26 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- SBEM const params (cp1: all / stage / mats)
+22:26 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- SBEM const params (cp2: all / stage / mats)
+22:26 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- SBEM const params (cp3: all / stage / mats)
+22:26 00b783f0 grade final.cpp DIFFER(9343v9343) hunks=34 -- session 2 final regrade of differ source
+23:51 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 -- a3 baseline
+23:53 00b783f0 grade p1.cpp DIFFER(8947v9343) hunks=52 -- probe: release ASSERT as __assume in SBEM
+23:53 00b783f0 grade p2.cpp DIFFER(8947v9343) hunks=50 -- probe: release ASSERT as __assume in SBEM
+23:53 00b783f0 grade p3.cpp DIFFER(9601v9343) hunks=88 -- probe: release ASSERT as __assume in SBEM
+23:56 00b783f0 grade d1.cpp DIFFER(9343v9343) hunks=34 -- probe: release ASSERT as dead (void)(expr) IL in SRS/ASUL/SBEM
+23:56 00b783f0 grade d2.cpp DIFFER(9343v9343) hunks=34 -- probe: release ASSERT as dead (void)(expr) IL in SRS/ASUL/SBEM
+23:56 00b783f0 grade d3.cpp DIFFER(9343v9343) hunks=34 -- probe: release ASSERT as dead (void)(expr) IL in SRS/ASUL/SBEM
+23:57 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 /Ob1 -- TU flag /Ob1
+23:57 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 /Ox -- TU flag /Ox
+23:57 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 /GS -- TU flag /GS
+23:57 00b783f0 grade base.cpp DIFFER(9343v9343) hunks=34 /Gy -- TU flag /Gy
+00:00 00b783f0 probe base.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:01 00b783f0 probe top_L*.cpp pattern ->   0
+00:01 00b783f0 probe top_E*.cpp pattern ->   0
+00:01 00b783f0 probe top_L1.cpp pattern ->   0
+00:01 00b783f0 probe top_L16.cpp pattern ->   0
+00:01 00b783f0 probe top_L2.cpp pattern ->   0
+00:01 00b783f0 probe top_L32.cpp pattern ->   0
+00:01 00b783f0 probe top_L4.cpp pattern ->   0
+00:01 00b783f0 probe top_L64.cpp pattern ->   0
+00:01 00b783f0 probe top_L8.cpp pattern ->   0
+00:01 00b783f0 probe top_E1.cpp pattern ->   0
+00:01 00b783f0 probe top_E16.cpp pattern ->   0
+00:01 00b783f0 probe top_E2.cpp pattern ->   0
+00:01 00b783f0 probe top_E32.cpp pattern ->   0
+00:01 00b783f0 probe top_E4.cpp pattern ->   0
+00:01 00b783f0 probe top_E64.cpp pattern ->   0
+00:01 00b783f0 probe top_E8.cpp pattern ->   0
+00:01 00b783f0 probe top_L1.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_L16.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_L2.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_L32.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_L4.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_L64.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_L8.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_E1.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_E16.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_E2.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_E32.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_E4.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_E64.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe top_E8.cpp pattern -> SRC_FAIL  0
+00:01 00b783f0 probe base.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:01 00b783f0 probe top_L1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:02 00b783f0 probe top_L16.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS...............................SSS.... 75
+00:02 00b783f0 probe top_L2.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS..............................C... 75
+00:02 00b783f0 probe top_L32.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:02 00b783f0 probe top_L4.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:02 00b783f0 probe top_L64.cpp pattern -> DIFFER(8947v9343) ...........?..................SSSS.....SSS..C...S..C........SSS.CCC..SS. 72
+00:02 00b783f0 probe top_L8.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.............................S.... 75
+00:02 00b783f0 probe top_E1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:02 00b783f0 probe top_E16.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS...............................SSS.... 75
+00:02 00b783f0 probe top_E2.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS..............................C... 75
+00:02 00b783f0 probe top_E32.cpp pattern -> DIFFER(8947v9343) ...........?..................SSSS.....SSS..C...S..C........SSS....SSSS. 72
+00:02 00b783f0 probe top_E4.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:02 00b783f0 probe top_E64.cpp pattern -> DIFFER(9601v9343) ..............?CCC?CCC...???..SSSSSSS.......C......C...S.......CCCCSSSS.... 79
+00:02 00b783f0 probe top_E8.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.............................S.... 75
+00:02 00b783f0 probe top_L18.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS...............................SSS.... 75
+00:02 00b783f0 probe top_L20.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS..............................SSSS.... 75
+00:02 00b783f0 probe top_L22.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS..............................SSSS.... 75
+00:02 00b783f0 probe top_L24.cpp pattern -> DIFFER(9343v9343) ..............................SSSSS................................SSSS.... 75
+00:02 00b783f0 probe top_L26.cpp pattern -> DIFFER(8947v9343) ..........................CC..SSSS.....SSS..C......C........SSS.CCC...SC 72
+00:02 00b783f0 probe top_L28.cpp pattern -> DIFFER(8947v9343) ..........................CC..SSSS.....SSS..C......C........SSS.CCC...SC 72
+00:02 00b783f0 probe top_L30.cpp pattern -> DIFFER(9343v9343) ..........................C...SSSS.....................................CC.. 75
+00:03 00b783f0 probe pre2_L1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:03 00b783f0 probe pre2_L2.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS..............................C... 75
+00:03 00b783f0 probe pre2_L3.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS..............................C... 75
+00:03 00b783f0 probe pre2_L4.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:03 00b783f0 probe pre2_L5.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:03 00b783f0 probe pre2_L6.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:03 00b783f0 probe pre2_L7.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.............................S.... 75
+00:04 00b783f0 probe pre2_L8.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.............................S.... 75
+00:04 00b783f0 probe pre2_L10.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSS..............................SS.... 75
+00:04 00b783f0 probe pre2_L12.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS................................SS.... 75
+00:04 00b783f0 probe pre2_L14.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS................................SS.... 75
+00:04 00b783f0 probe pre2_L16.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS...............................SSS.... 75
+00:04 00b783f0 probe pre2_L20.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS..............................SSSS.... 75
+00:04 00b783f0 probe pre2_L24.cpp pattern -> DIFFER(9343v9343) ..............................SSSSS................................SSSS.... 75
+00:04 00b783f0 probe pre2_L28.cpp pattern -> DIFFER(8947v9343) ..........................CC..SSSS.....SSS..C......C........SSS.CCC...SC 72
+00:04 00b783f0 probe pre2_L32.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:04 00b783f0 probe pre2_L40.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSS..............................S.... 75
+00:04 00b783f0 probe top_L25.cpp pattern -> DIFFER(8947v9343) ..........................CC..SSSS.....SSS..C......C........SSS....SSSS. 72
+00:04 00b783f0 probe top_L26.cpp pattern -> DIFFER(8947v9343) ..........................CC..SSSS.....SSS..C......C........SSS.CCC...SC 72
+00:04 00b783f0 probe top_L27.cpp pattern -> DIFFER(8947v9343) ..........................CC..SSSS.....SSS..C......C........SSS.CCC...SC 72
+00:04 00b783f0 probe top_L29.cpp pattern -> DIFFER(8947v9343) ..........................C...SSSS.....SSS..C......C........SSS.CCC...S. 72
+00:04 00b783f0 probe top_L31.cpp pattern -> DIFFER(9343v9343) ..........................C...SSSS.....................................CC.. 75
+00:04 00b783f0 probe top_L33.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:04 00b783f0 probe top_L34.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................C... 75
+00:05 00b783f0 probe top_L35.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS..............................C... 75
+00:05 00b783f0 probe top_L36.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:05 00b783f0 probe top_L37.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:05 00b783f0 probe top_L38.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:05 00b783f0 grade top_L29.cpp DIFFER(8947v9343) hunks=47 -- probe: what changes at the 8947 wrap (29 dead longs)
+00:05 00b783f0 probe en_1.cpp pattern -> DIFFER(9602v9343) ...............CCCCCCC...???..SSSSSSSSSSSSSSC..S...C..S........CCC.SSS.CCCC 78
+00:05 00b783f0 probe en_2.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:05 00b783f0 probe en_3.cpp pattern -> DIFFER(9320v9343) ..............................SSSS.....................................CC.. 75
+00:06 00b783f0 probe en_4.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:06 00b783f0 probe en_5.cpp pattern -> DIFFER(9356v9343) ..............................SSSSSSSSSSS..............................C... 75
+00:06 00b783f0 probe ctx_1.cpp pattern -> DIFFER(6375v9343) .C...........SSS.CCCCCCSC.....S......SSS....C... 48
+00:06 00b783f0 probe ctx_2.cpp pattern -> DIFFER(8589v9343) ..............SS..CCCCCC.CCCCC...S.....SSS..C......C.........SS.CCC...SC 72
+00:06 00b783f0 probe ctx_3.cpp pattern -> DIFFER(9539v9343) ...............CCCCCCC...???..SSSSSS........C.S....C.S.........CCC.SS..CCCC 77
+00:06 00b783f0 probe ctx_4.cpp pattern -> DIFFER(8666v9343) ...............S..C.....SCCCCC...S.....SSS..C......C.........SS.CCC...SC 72
+00:06 00b783f0 probe ctx_5.cpp pattern -> DIFFER(8910v9343) ...............C...CCCCCC?....?SSS?...?SSS..C???S..C.........SS.CCC...S. 72
+00:06 00b783f0 probe ctx_6.cpp pattern -> DIFFER(9314v9343) ..............................SSSS.....................................CC.. 75
+00:06 00b783f0 probe ctx_7.cpp pattern -> DIFFER(9169v9343) ...............CCCCCCC...???.C.SSSSSS......S.S.....C...........CC..S...CCC. 76
+00:07 00b783f0 probe prb_A1.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS..............................C... 75
+00:07 00b783f0 probe prb_A2.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:07 00b783f0 probe prb_A4.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS............................SS.... 75
+00:07 00b783f0 probe prb_A8.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSSSS..............................SSSS.... 75
+00:07 00b783f0 probe prb_B1.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS..............................C... 75
+00:07 00b783f0 probe prb_B2.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:08 00b783f0 probe prb_B4.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS............................SS.... 75
+00:08 00b783f0 probe prb_B8.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSSSS..............................SSSS.... 75
+00:08 00b783f0 probe prb_C1.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS..............................C... 75
+00:08 00b783f0 probe prb_C2.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:08 00b783f0 probe prb_C4.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS............................SS.... 75
+00:08 00b783f0 probe prb_C8.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSSSS..............................SSSS.... 75
+00:08 00b783f0 probe prb_D1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................C... 75
+00:08 00b783f0 probe prb_D2.cpp pattern -> DIFFER(9343v9343) ..............................SSSS......................................... 75
+00:08 00b783f0 probe prb_D4.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSS.............................SS.... 75
+00:08 00b783f0 probe prb_D8.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSSSS..............................SSSS.... 75
+00:08 00b783f0 probe prb_E1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................C... 75
+00:08 00b783f0 probe prb_E2.cpp pattern -> DIFFER(9343v9343) ..............................SSSS......................................... 75
+00:08 00b783f0 probe prb_E4.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS..........................SSSS.... 75
+00:08 00b783f0 probe prb_E8.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSSSSSSS...........................SSSS.... 75
+00:09 00b783f0 probe fb_1.cpp pattern -> DIFFER(9938v9343) ...............CC?CCS....??...SSSSSSSSSSS...C.S?.S.C.S.........CCCC.....C.. 80
+00:09 00b783f0 probe fb_2.cpp pattern -> DIFFER(9938v9343) ...............CC?CCS....??...SSSSSSSSSSS...C.S?.S.C.S.........CCCC.....C.. 80
+00:09 00b783f0 probe fb_3.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSSSS................................SS.... 75
+00:09 00b783f0 probe at_1.cpp pattern -> DIFFER(8731v9343) ...............S..?.....SCCCC.SSSS.....SSS..C......C.........SS.CCC...SC 72
+00:09 00b783f0 probe at_3.cpp pattern -> DIFFER(9289v9343) ...............CCCCCCC...???.CSSSSSSS......S.S.....C...........CCC.SS..CCCC 77
+00:09 00b783f0 probe at_5.cpp pattern -> DIFFER(9409v9343) ..............................SSSSSSSSSSS..............................C... 75
+00:10 00b783f0 probe il_SBEM_PRE_1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_SBEM_PRE_2.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_SBEM_PRE_3.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_SRS_PRE_1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_SRS_PRE_2.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_SRS_PRE_3.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_SRS_IN_1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_SRS_IN_2.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_SRS_IN_3.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_SRS_BM_1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_SRS_BM_2.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_SRS_BM_3.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_ASUL_1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:10 00b783f0 probe il_ASUL_2.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il_ASUL_3.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_2.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_3.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_4.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_5.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_6.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_7.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_8.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_9.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_10.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_11.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe il2_12.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:11 00b783f0 probe brk.cpp pattern -> SRC_FAIL  0
+00:11 00b783f0 probe nl_1.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS............................SS.... 75
+00:12 00b783f0 probe nl_2.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS..............................SSSS.... 75
+00:12 00b783f0 probe nl_3.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS............................SS.... 75
+00:12 00b783f0 probe nl_4.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS..............................SSSS.... 75
+00:12 00b783f0 probe nl_5.cpp pattern -> DIFFER(9247v9343) ..............?CCC?CCC...???..SSSSSSS.....SS.........................SS.... 75
+00:12 00b783f0 probe nl_6.cpp pattern -> DIFFER(9305v9343) ..........?...?S..?.....S.....SSS...........C......................SSSS...? 75
+00:12 00b783f0 probe nl_7.cpp pattern -> DIFFER(9314v9343) ......?...?...?S..?.....S.....SSS..........SC.....SC..........S....SSSS??? 74
+00:12 00b783f0 probe nl_8.cpp pattern -> DIFFER(9644v9343) ...............S..CCCCCCS.....SSS..........SC.....SC...........CCC.SSSS.... 78
+00:12 00b783f0 probe nl_9.cpp pattern -> DIFFER(9247v9343) ..............?CCC?CCC...???..SSSSSSS.....SS.........................SS.... 75
+00:12 00b783f0 probe nl_10.cpp pattern -> DIFFER(9305v9343) ..........?...?S..?.....S.....SSS...........C......................SSSS...? 75
+00:12 00b783f0 probe nl_11.cpp pattern -> DIFFER(9247v9343) ..............?CCC?CCC...???..SSSSSSS.....SS..........................S.... 75
+00:12 00b783f0 probe nl_12.cpp pattern -> DIFFER(9305v9343) ..........?...?S..?.....S.....SSS...........C......................SSSS...? 75
+00:12 00b783f0 probe g_1_0_0_0.cpp pattern -> DIFFER(9247v9343) ..............?CCC?CCC...???..SSSSSSS.....SS.........................SS.... 75
+00:12 00b783f0 probe g_1_0_0_2.cpp pattern -> DIFFER(9247v9343) ..............?CCC?CCC...???..SSSSSS......SS.........................SS.... 75
+00:12 00b783f0 probe g_1_0_0_4.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSSSS....C..S...C..S........CCC.SSS.C... 78
+00:12 00b783f0 probe g_1_0_0_6.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSSSS....C..S...C..S........CCC.SSS.C... 78
+00:12 00b783f0 probe g_1_0_0_8.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSSSS....C..S...C..S........CCC.SSS.C... 78
+00:12 00b783f0 probe g_1_0_0_10.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSSSS....C..S...C..S........CCC.SSS..... 78
+00:12 00b783f0 probe g_1_0_0_12.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSSSS....C..S...C..S........CCC.SSS..... 78
+00:12 00b783f0 probe g_1_0_0_14.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSSSS....C..S...C..S........CCC.SSS..... 78
+00:13 00b783f0 probe g_1_0_0_16.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSSSS....C..S...C..S........CCC.SSSS.... 78
+00:13 00b783f0 probe g_1_0_0_18.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSSSS....C..S...C..S........CCC.SSSS.... 78
+00:13 00b783f0 probe g_1_0_0_20.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSSS.....C..S...C..S........CCC.SSSS.... 78
+00:13 00b783f0 probe g_1_0_0_22.cpp pattern -> DIFFER(9247v9343) ..............?CCC?CCC...???..SSSSSSS.....SS.......................SSSS.... 75
+00:13 00b783f0 probe g_1_0_0_24.cpp pattern -> DIFFER(9247v9343) ..............?CCC?CCC...???..SSSSSSS.....SS.......................SSSS.... 75
+00:13 00b783f0 probe g_1_0_0_26.cpp pattern -> DIFFER(9247v9343) ..............?CCC?CCC...???..SSSSSSS.....SS.......................SSSS.... 75
+00:13 00b783f0 probe g_1_0_0_28.cpp pattern -> DIFFER(9601v9343) ..............?CCC?CCC...???..SSSSSSS.......C......C...S.......CCCCSSSS.... 79
+00:13 00b783f0 probe g_1_0_0_30.cpp pattern -> DIFFER(9601v9343) ..............?CCC?CCC...???..SSSSSSS.......C......C...S.......CCCCSSSS.... 79
+00:13 00b783f0 probe g_1_0_0_32.cpp pattern -> DIFFER(9601v9343) ..............?CCC?CCC...???..SSSSSSS.......C......C...S.......CCCCSSSS.... 79
+00:13 00b783f0 probe g_1_0_0_34.cpp pattern -> DIFFER(9601v9343) ..............?CCC?CCC...???..SSSSSS........C......C...S.......CCCCSSSS.... 79
+00:13 00b783f0 probe g_1_0_0_36.cpp pattern -> DIFFER(9601v9343) ..............?CCC?CCC...???..SSSSS.........C......C...S.......CCCCSSSSCC.. 79
+00:13 00b783f0 probe g_1_0_0_38.cpp pattern -> DIFFER(9601v9343) ..............?CCC?CCC...???..SSSS..........C......C...S.......CCCCSSSSCC.. 79
+00:13 00b783f0 probe g_1_0_0_40.cpp pattern -> DIFFER(9601v9343) ..............?CCC?CCC...???..SSS...........C......C...S.......CCCCSSSSCC.. 79
+00:13 00b783f0 probe g_0_0_0_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:13 00b783f0 probe g_0_0_1_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS..............................C... 75
+00:13 00b783f0 probe g_0_0_2_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:13 00b783f0 probe g_0_0_3_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.............................S.... 75
+00:13 00b783f0 probe g_0_0_4_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS............................SS.... 75
+00:13 00b783f0 probe g_0_1_0_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS............................SS.... 75
+00:13 00b783f0 probe g_0_1_1_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSS............................SSS.... 75
+00:13 00b783f0 probe g_0_1_2_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSS..............................SSS.... 75
+00:13 00b783f0 probe g_0_1_3_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS..............................SSSS.... 75
+00:14 00b783f0 probe g_0_1_4_0.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSSSS..............................SSSS.... 75
+00:14 00b783f0 probe g_0_2_0_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS..............................SSSS.... 75
+00:14 00b783f0 probe g_0_2_1_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS..............................SSSS.... 75
+00:14 00b783f0 probe g_0_2_2_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS..................................CC.. 75
+00:14 00b783f0 probe g_0_2_3_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS..................................C... 75
+00:14 00b783f0 probe g_0_2_4_0.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSSSS...................................... 75
+00:14 00b783f0 probe g_0_3_0_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS...................................... 75
+00:14 00b783f0 probe g_0_3_1_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS.................................S.... 75
+00:14 00b783f0 probe g_0_3_2_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSS................................SS.... 75
+00:14 00b783f0 probe g_0_3_3_0.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSS..................................SS.... 75
+00:14 00b783f0 probe g_0_3_4_0.cpp pattern -> DIFFER(9247v9343) ..............?CCC?CCC...???..SSSSSSS.....SS........................SSS.... 75
+00:14 00b783f0 probe g_0_4_0_0.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSS.................................SSS.... 75
+00:14 00b783f0 probe g_0_4_1_0.cpp pattern -> DIFFER(8947v9343) ...........?..................SSSS.....SSS..C...S..C........SSS.C..SSSS. 72
+00:14 00b783f0 probe g_0_4_2_0.cpp pattern -> DIFFER(8947v9343) ...........?..................SSSS.....SSS..C...S..C........SSS.C..SSSS. 72
+00:14 00b783f0 probe g_0_4_3_0.cpp pattern -> DIFFER(8947v9343) ...........?..................SSSS.....SSS..C...S..C........SSS....SSSS. 72
+00:14 00b783f0 probe g_0_4_4_0.cpp pattern -> DIFFER(9247v9343) ..............?CCC?CCC...???..SSSSSSS.....SS.......................SSSS.... 75
+00:14 00b783f0 probe att_0.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:15 00b783f0 probe att_1.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:15 00b783f0 probe att_2.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.................................. 75
+00:15 00b783f0 probe att_3.cpp pattern -> DIFFER(9652v9343) ..............?CCC?CCC...???..SSSSSSSSSSS...C......C...S.......CCCCSSSSCC.. 79
+00:15 00b783f0 probe att_4.cpp pattern -> DIFFER(9343v9343) ..............................SSSSSSSSSSS.............................S.... 75
+00:15 00b783f0 probe search.sh: background grid of named-symbol rulers (s per SRS, b per SBEM, c per SCRS, a in Render) -> gs/results.txt
+00:34 00b783f0 probe srs_A1.cpp pattern -> DIFFER(9180v9343) ...............CCCCCCCCCCCCCCC...........SSS.......C...........CCCC....CCCC 75
+00:34 00b783f0 probe srs_A2.cpp pattern -> DIFFER(9657v9343) ..SSSS?SSS?SSS?S..?SSS...???..SSSSSSSSSSSSSS.SS.SSS.SSSSSSSSSSS....SSSS.... 78
+00:34 00b783f0 probe srs_A3.cpp pattern -> DIFFER(9321v9343) ......?...?...?S..?.....S.....SSS...........C......................SSS??CCC 75
+00:34 00b783f0 probe srs_A4.cpp pattern -> DIFFER(8952v9343) ..????.........S..?......????.SSSSSS.......S????..SC..........S...C??????? 74
+00:34 00b783f0 probe srs_A5.cpp pattern -> DIFFER(9180v9343) ...............CCCCCCCCCCCCCCC...........SSS.......C...........CCCC....CCCC 75
+00:34 00b783f0 probe srs_A6.cpp pattern -> DIFFER(9295v9343) ...............S..CCCCCCS.....SSS...........C......................SSSS...? 75
+00:34 00b783f0 probe lp_1.cpp pattern -> DIFFER(8690v9343) ..............SS..CCCCCC.CCCC.SSSS.....SSS..C......C.........SS.CCC...SC 72
+00:34 00b783f0 probe lp_2.cpp pattern -> DIFFER(8690v9343) ..............SS..CCCCCC.CCCC.SSSS.....SSS..C......C.........SS.CCC...SC 72
+00:34 00b783f0 probe lp_3.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:35 00b783f0 probe env_1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:35 00b783f0 probe env_2.cpp pattern -> DIFFER(9339v9343) ..............................SSSS.....................................CC.. 75
+00:35 00b783f0 probe env_3.cpp pattern -> DIFFER(9342v9343) ..............................SSSS.....................................CC.. 75
+00:35 00b783f0 probe env_4.cpp pattern -> DIFFER(9359v9343) ..............................SSSS.....................................CC.. 75
+00:35 00b783f0 probe env_5.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:35 00b783f0 probe ty_CRenderManagerCore.cpp pattern -> SRC_FAIL  0
+00:35 00b783f0 probe ty_CRenderManager2D.cpp pattern -> SRC_FAIL  0
+00:35 00b783f0 probe ty2_CRenderManagerCore.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:35 00b783f0 probe ty2_CRenderManager2D.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:35 00b783f0 probe gb_6.cpp pattern -> DIFFER(8947v9343) ...........?..................SSSS.....SSS..C...S..C........SSS.CC.SSSS. 72
+00:35 00b783f0 probe gb_8.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSSSS....C..S...C..S........CCC.SSSS.... 78
+00:35 00b783f0 probe gb_10.cpp pattern -> DIFFER(9601v9343) ..............?CCC?CCC...???..SSSSSSS.......C......C...S.......CCCCSSSSC... 79
+00:36 00b783f0 probe gb_12.cpp pattern -> DIFFER(9305v9343) ..........?...?S..?.....S.....SSS...........C......................SSSS...? 75
+00:36 00b783f0 probe gb_16.cpp pattern -> DIFFER(9298v9343) ..........?...?S..?.....S.....SSS..........SC.....SC..........S....SSSS.?? 74
+00:36 00b783f0 probe gb_20.cpp pattern -> DIFFER(9314v9343) ......?...?...?S..?.....S.....S............SC.....SC..........S....SSSS??? 74
+00:36 00b783f0 probe gc_6.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSSSS...............................SSS.... 75
+00:36 00b783f0 probe gc_8.cpp pattern -> DIFFER(9343v9343) ...........?..................SSSSSSS..............................SSSS.... 75
+00:36 00b783f0 probe gc_10.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSSSS....C..S...C..S........CCC.SSSS.... 78
+00:36 00b783f0 probe gc_12.cpp pattern -> DIFFER(9643v9343) ..............?CCC?CCC...???..SSSSSSSS......C..S...C..S........CCC.SSS.CCC. 78
+00:36 00b783f0 probe gc_16.cpp pattern -> DIFFER(9305v9343) ..........?...?S..?.....S.....SSS...........C.......................SSS...? 75
+00:36 00b783f0 probe gc_20.cpp pattern -> DIFFER(9298v9343) ..........?...?S..?.....S....C.............SC.....SC..........S....SSSS.?? 74
+00:37 00b783f0 probe rcb_1.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:37 00b783f0 probe rcb_2.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:37 00b783f0 probe rcb_3.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:37 00b783f0 probe rcb_4.cpp pattern -> DIFFER(9343v9343) ..............................SSSS.....................................CC.. 75
+00:37 00b783f0 grade final3.cpp DIFFER(9343v9343) hunks=34 -- session 3 final regrade of differ source (unchanged)
+04:01 00b783f0 probe base.cpp pattern -> DIFFER(9343v9343) 75 75 ndiff 7 30:Sbm 31:Smb 32:Smb 33:Smb 41:Cbm 71:Cmb 72:Cmb
+04:01 00b783f0 probe p0_2.cpp pattern -> DIFFER(9343v9343) 75 75 ndiff 16 12:Cbm 13:Cbm 30:Sbm 31:Smb 32:Smb 33:Smb 34:Sbm 35:Smb 36:Smb 41:Cbm 47:Cbm 52:Cmb 67:Smb 68:Smb 69:Smb 70:Smb
+04:01 00b783f0 probe p0_4.cpp pattern -> DIFFER(9343v9343) 75 75 ndiff 16 11:??? 14:Cmb 30:Sbm 31:Smb 32:Smb 33:Smb 34:Sbm 41:Cbm 46:Cbm 47:Cbm 50:Cmb 51:Smb 52:Cmb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p0_8.cpp pattern -> DIFFER(9643v9343) 75 78 ndiff 40 10:Cmb 12:Cbm 13:C?? 14:??? 15:Cmb 16:Cmb 17:Cmb 18:??? 19:Cmb 20:Cmb 21:Cmb 25:??? 26:??? 27:??? 30:Sbm 31:Sbm 32:Sbm 33:Sbm 34:Smb 35:Smb 36:Smb 37:Sbm 38:Smb 39:Smb 40:Cbm 44:Cbm 47:Smb 51:Cmb 52:Cmb 54:Smb 63:Cmb 64:Cmb 65:Cmb 67:Smb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p1_2.cpp pattern -> DIFFER(9343v9343) 75 75 ndiff 16 12:Cbm 13:Cbm 30:Sbm 31:Smb 32:Smb 33:Smb 34:Sbm 35:Smb 36:Smb 41:Cbm 47:Cbm 52:Cmb 67:Smb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p1_4.cpp pattern -> DIFFER(9343v9343) 75 75 ndiff 16 11:??? 14:Cmb 30:Sbm 31:Smb 32:Smb 33:Smb 34:Sbm 41:Cbm 46:Cbm 47:Cbm 50:Cmb 51:Smb 52:Cmb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p1_8.cpp pattern -> DIFFER(9643v9343) 75 78 ndiff 40 10:Cmb 12:Cbm 13:C?? 14:??? 15:Cmb 16:Cmb 17:Cmb 18:??? 19:Cmb 20:Cmb 21:Cmb 25:??? 26:??? 27:??? 30:Sbm 31:Sbm 32:Sbm 33:Sbm 34:Smb 35:Smb 36:Smb 37:Sbm 38:Smb 39:Smb 40:Cbm 44:Cbm 47:Smb 51:Cmb 52:Cmb 54:Smb 63:Cmb 64:Cmb 65:Cmb 67:Smb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p2_2.cpp pattern -> DIFFER(9343v9343) 75 75 ndiff 16 12:Cbm 13:Cbm 30:Sbm 31:Smb 32:Smb 33:Smb 34:Sbm 35:Smb 36:Smb 41:Cbm 47:Cbm 52:Cmb 67:Smb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p2_4.cpp pattern -> DIFFER(9343v9343) 75 75 ndiff 16 11:??? 14:Cmb 30:Sbm 31:Smb 32:Smb 33:Smb 34:Sbm 41:Cbm 46:Cbm 47:Cbm 50:Cmb 51:Smb 52:Cmb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p2_8.cpp pattern -> DIFFER(9643v9343) 75 78 ndiff 40 10:Cmb 12:Cbm 13:C?? 14:??? 15:Cmb 16:Cmb 17:Cmb 18:??? 19:Cmb 20:Cmb 21:Cmb 25:??? 26:??? 27:??? 30:Sbm 31:Sbm 32:Sbm 33:Sbm 34:Smb 35:Smb 36:Smb 37:Sbm 38:Smb 39:Smb 40:Cbm 44:Cbm 47:Smb 51:Cmb 52:Cmb 54:Smb 63:Cmb 64:Cmb 65:Cmb 67:Smb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p3_2.cpp pattern -> DIFFER(9343v9343) 75 75 ndiff 16 12:Cbm 13:Cbm 30:Sbm 31:Smb 32:Smb 33:Smb 34:Sbm 35:Smb 36:Smb 41:Cbm 47:Cbm 52:Cmb 67:Smb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p3_4.cpp pattern -> DIFFER(9343v9343) 75 75 ndiff 16 11:??? 14:Cmb 30:Sbm 31:Smb 32:Smb 33:Smb 34:Sbm 41:Cbm 46:Cbm 47:Cbm 50:Cmb 51:Smb 52:Cmb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p3_8.cpp pattern -> DIFFER(9643v9343) 75 78 ndiff 40 10:Cmb 12:Cbm 13:C?? 14:??? 15:Cmb 16:Cmb 17:Cmb 18:??? 19:Cmb 20:Cmb 21:Cmb 25:??? 26:??? 27:??? 30:Sbm 31:Sbm 32:Sbm 33:Sbm 34:Smb 35:Smb 36:Smb 37:Sbm 38:Smb 39:Smb 40:Cbm 44:Cbm 47:Smb 51:Cmb 52:Cmb 54:Smb 63:Cmb 64:Cmb 65:Cmb 67:Smb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p4_2.cpp pattern -> DIFFER(9343v9343) 75 75 ndiff 16 12:Cbm 13:Cbm 30:Sbm 31:Smb 32:Smb 33:Smb 34:Sbm 35:Smb 36:Smb 41:Cbm 47:Cbm 52:Cmb 67:Smb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p4_4.cpp pattern -> DIFFER(9343v9343) 75 75 ndiff 16 11:??? 14:Cmb 30:Sbm 31:Smb 32:Smb 33:Smb 34:Sbm 41:Cbm 46:Cbm 47:Cbm 50:Cmb 51:Smb 52:Cmb 68:Smb 69:Smb 70:Smb
+04:02 00b783f0 probe p4_8.cpp pattern -> DIFFER(9643v9343) 75 78 ndiff 40 10:Cmb 12:Cbm 13:C?? 14:??? 15:Cmb 16:Cmb 17:Cmb 18:??? 19:Cmb 20:Cmb 21:Cmb 25:??? 26:??? 27:??? 30:Sbm 31:Sbm 32:Sbm 33:Sbm 34:Smb 35:Smb 36:Smb 37:Sbm 38:Smb 39:Smb 40:Cbm 44:Cbm 47:Smb 51:Cmb 52:Cmb 54:Smb 63:Cmb 64:Cmb 65:Cmb 67:Smb 68:Smb 69:Smb 70:Smb

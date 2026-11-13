@@ -1,0 +1,15 @@
+# hdr/ overlay for 0x00651B04 NPlayerGui::CDrawAbilityButtons::Draw (bwf1). Each file = CURRENT repo header + opt-in blocks only.
+- engine/CPlayerGuiDef.h: FABLE_RETAIL_CPLAYERGUIDEF_ABXY -- ABXYRingsPos / ABXYRingsTopOffset / ABXYMiddleOffset / White* / Black* / InteractButton* offsets typed C2DVector (static asserts on the _X/_Y names guarded), CAbilityButtonGuiDef Position / Offset as C2DVector, SpecialAbilityButtons as vector<CAbilityButtonGuiDef> (with _ABILITYBUTTONS).
+- engine/CPlayerGui.h: FABLE_RETAIL_CPLAYERGUI_ABILITYBUTTONS_DRAW (needs _MEMBERS) -- GetButtonAlpha 0x00439AB0, GetAbilityButton 0x00438990, GetAbilityButtonScale 0x004375E0 (decls), inline SetAbilityButtonScale / IsNormalToSpecial / IsSpecialToNormal / IsShowActualAbilityButtons / ResetNormalToSpecialState (FableWin names).
+- engine/CActionInputControl.h: FABLE_RETAIL_CACTIONINPUTCONTROL_DEFAULT_CTOR -- inline zeroing default ctor.
+- engine/CTCQuickAccessMenu.h: FABLE_RETAIL_CTCQUICKACCESSMENU_ISACTIVE -- IsActive() const 0x00625930.
+- engine/CTCSpecialAbilities.h: FABLE_RETAIL_CTCSPECIALABILITIES_ISABILITYAVAILABLE -- IsAbilityAvailable(EHeroAbility) const 0x0072C430.
+- engine/CTCInventoryAbilities.h: FABLE_RETAIL_CTCINVENTORYABILITIES_SPECIALBUTTONS -- the six special-button queries 0x005EE31D .. 0x005EE24B.
+- engine/CUserProfileManager.h: FABLE_RETAIL_CUSERPROFILEMANAGER_HUDTOOLTIP -- GetAssignedInputForAction 0x00408C90 + inline IsHUDTooltipEnabled (+0x0C/+0x19/+0xD9; own pads).
+- engine/CInputManager.h: FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE -- IsJoystickEventInQueue 0x009F4C60 + extern PInputManager 0x013B8388.
+- engine/NCreatureMode.h: FABLE_RETAIL_NCREATUREMODE_HERORUN -- IsAvailableForHeroRun 0x0085F560.
+- engine/CFontBank.h: FABLE_RETAIL_CFONTBANK_VSTRINGEXTENTS_OUTOFLINE -- GetVStringExtents declared (called out of line 0x00437210 here).
+- engine/CTCWeapon.h: FABLE_RETAIL_CTCWEAPON_GETWEAPONTYPE -- GetWeaponType() const 0x005DA7D0.
+- engine/CGamePlayerInterface.h: FABLE_RETAIL_CGAMEPLAYERINTERFACE_GETACTIONNAME -- static __fastcall GetActionName 0x00446720 in the generated branch.
+- engine/CEnginePrimitiveHandle.h: FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_FORCEINLINE -- the retail Clear body FABLE_FORCEINLINE (expanded in this size TU at 0x00651B64, as landed 0x00644FFC does).
+- engine/CIVCountedPointer.h: FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_FORCEINLINE -- the default retail Release body FABLE_FORCEINLINE (with the repo's RESET_ADOPT / RESET_FORCEINLINE) for the Clear -> Reset(0) -> Release chain.

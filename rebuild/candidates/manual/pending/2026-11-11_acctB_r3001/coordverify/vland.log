@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a4d920   RELOCATION_MATCH PASS   CalcLocalBoneTransformationRelative
+
+WINS: 1
+  00a4d920 RELOCATION_MATCH C3DAnimation2::?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXAAVC3DKeyframe@@KMABVC3DMesh2@@@Z

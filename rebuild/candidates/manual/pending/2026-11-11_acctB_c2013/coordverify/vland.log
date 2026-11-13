@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00595cc1   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+00595cc1   RELOCATION_MATCH PASS   ConstructFileDescription
+00597df7   WARN RELOC_NAME: ?erase@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@PAV3@0@Z -> 00411b00 labelled 'vector_push_back_copy'
+00597df7   WARN RELOC_NAME: ?erase@?$vector@JV?$allocator@J@std@@@std@@QAEPAJPAJ0@Z -> 00440590 labelled 'Buffer_Relocate'
+00597df7   WARN RELOC_NAME: ?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z -> 004091c0 labelled 'CUserProfileManager::LoadFileList'
+00597df7   WARN RELOC_NAME: ?IsDebugProfile@CUserProfileManager@@QBE_NXZ -> 00407030 labelled '_global::ReturnFalse_ret0_00407030'
+00597df7   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00597df7   WARN RELOC_NAME: ?GetMaxSaveSlots@CUserProfileManager@@QBEJXZ -> 004067b0 labelled '_global::ReturnConst_50_004067b0'
+00597df7   WARN RELOC_NAME: ?GetSaveSlotFileName@CUserProfileManager@@QBEABVCWideString@@J@Z -> 00407360 labelled 'NInventory::CTCInventoryBase::GetCategoryWithIndex'
+00597df7   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+00597df7   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+00597df7   RELOCATION_MATCH PASS   GetSavedGameNames
+00626110   WARN RELOC_NAME: ?GetUseButtonActionType@CTCInventoryItem@@SI?AW4EInventoryActionType@@J@Z -> 005d9710 labelled 'CTCInventoryItem::GetInventoryCategory'
+00626110   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 00429c53 here, 004291de in landed 00570332
+00626110   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z -> 00429f43 labelled 'CTCMapwho::OnDie'
+00626110   RELOCATION_MATCH PASS   ContructItemLists
+00626750   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 00429c53 here, 004291de in landed 00570332
+00626750   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z -> 00429f43 labelled 'CTCMapwho::OnDie'
+00626750   RELOCATION_MATCH PASS   ContructItemLists
+
+WINS: 4
+  00595cc1 RELOCATION_MATCH NUISystem::CFrontEndManager::?ConstructFileDescription@CFrontEndManager@NUISystem@@IAEXKPAVCComponent@2@0AAVCWideString@@@Z
+  00597df7 RELOCATION_MATCH NUISystem::CFrontEndManager::?GetSavedGameNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  00626110 RELOCATION_MATCH CTCQuickAccessMenu::?ContructItemLists@CTCQuickAccessMenu@@AAEXAAV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  00626750 RELOCATION_MATCH CTCQuickAccessMenu::?ContructItemLists@CTCQuickAccessMenu@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z

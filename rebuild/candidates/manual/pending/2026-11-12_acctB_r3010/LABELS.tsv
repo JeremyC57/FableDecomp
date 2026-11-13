@@ -1,0 +1,4 @@
+address	name	evidence
+0x00A4E300	?GetDeltaMovement@C3DAnimation2@@UBEXAAVCMatrix3x4@@MM@Z	Ego_r.pdb + FableWin.pdb name sets; vtable 0x0129D560; ret 0Ch (chunks 2014 / 3004)
+0x00A4B820	?SetMultiplyNoTranslation@CMatrix3x4@@QAEXABV1@0@Z	FableWin.pdb 0x032289C0 after GetDeltaMovement; header body compiled out of line byte-identical (240 B) to the unreferenced retail COMDAT
+0x00A4BE10	?GetNonLoopingDuration@C3DAnimation2@@QBEMXZ	Ego_r / FableWin name sets; header body compiled out of line relocation-equal (28 B, push ecx / pop ecx frame) to the retail COMDAT

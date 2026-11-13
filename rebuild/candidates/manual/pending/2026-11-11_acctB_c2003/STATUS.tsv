@@ -1,0 +1,5 @@
+address	grade	bytes	test	grades_used	notes
+00e10e60	RELOCATION_MATCH	1306v1306	PASS	14 (pass1 10, pass2 4)	for(;;NSF){if(T)return; ...} loop with the saved-by-hero code in the not-alive arm ending in break; const-reference chaser (virtual IsAlive); same-TU noinline CTimer ctor; folded `&& true` on the route-update arm (Inline-budget line 3). Also ~15 uncounted c2 inline/frame-packer trace probes (tools/inl.sh, tools/pk.sh) and fragment probes (probe/fr).
+0051f480	RELOCATION_MATCH	1270v1270	PASS	2 (pass1)	shared headers; named new_count local (lea ecx,[ebp-1] at 0x0051F87E); vector<unsigned char>(n) out of line.
+00598463	RELOCATION_MATCH	1335v1335	PASS	3 (pass1)	shared headers; FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ + FABLE_RETAIL_STLP_MAP; one extra compile-only SRC_FAIL check through tools/cc.sh (missing stlport/fable_map.h include), not graded.
+00d2988b	SKIP	-v1308	-	0	not a function start: 11 bytes inside the function at 0x00D29880 (sub esp,38h; mov edx,[pGlobalScriptDef]; push ebx; push ebp precede it; the epilogue pops ebx/ebp the row never pushes). True extent 0x00D29880..0x00D29DA6 = 1319 bytes (SPLITS.tsv).

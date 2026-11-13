@@ -1,0 +1,2 @@
+00600b60 CTCInventoryMap::ConstructRegionDescriptionBuyableBuildings RELOCATION_MATCH flags= []
+00605570 CTCInventoryMap::ConstructRegionDescription RELOCATION_MATCH flags= ['/d2inlT107']

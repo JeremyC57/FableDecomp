@@ -1,0 +1,54 @@
+15:41 00bcc800 grade 00bcc800.cpp SRC_FAIL -- coordinator baseline after overlay re-base
+15:41 00bcc800 grade 00bcc800.cpp DIFFER(3207v3205) hunks=84 -- coordinator baseline after overlay re-base
+18:03 00bcc800 grade v0.cpp DIFFER(3207v3205) hunks=84 -- baseline
+18:07 00bcc800 grade v1.cpp DIFFER(3207v3205) hunks=84 -- tangents via At()
+18:07 00bcc800 grade v2.cpp DIFFER(3207v3205) hunks=84 -- tangents via At()
+18:08 00bcc800 grade v3.cpp DIFFER(3207v3205) hunks=84 -- vertex_count decl first / no segments var / skip before trail_size
+18:08 00bcc800 grade v4.cpp DIFFER(3207v3205) hunks=86 -- vertex_count decl first / no segments var / skip before trail_size
+18:08 00bcc800 grade v5.cpp DIFFER(3223v3205) hunks=91 -- vertex_count decl first / no segments var / skip before trail_size
+18:09 00bcc800 grade v0.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- rescore
+18:09 00bcc800 grade v3.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- rescore
+18:09 00bcc800 grade v4.cpp DIFFER(3207v3205) flags= [] eq=966 frameMasked=1041 of 1078 -- rescore
+18:19 00bcc800 grade v6.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- AddKey a2 form (id = AddNewKey; return id), matches retail out-of-line AddKey 0x00BC9FB0 node-in-param-slot
+18:21 00bcc800 grade v7.cpp SRC_FAIL flags= [] - -- port onto overlay CEngineTreeFiler.h / CEngineVertexBufferPool.h opt-ins
+18:21 00bcc800 grade v7.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- port onto overlay CEngineTreeFiler.h / CEngineVertexBufferPool.h opt-ins
+18:35 00bcc800 grade v7F2.cpp DIFFER(3207v3205) flags= [] eq=965 frameMasked=1040 of 1078 -- GetGenericObject form F2 (FableWin-size 37b)
+18:35 00bcc800 grade v7F6.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- GetGenericObject form F6 (FableWin-size 37b)
+18:35 00bcc800 grade v7F7.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- GetGenericObject form F7 (FableWin-size 37b)
+18:35 00bcc800 grade d1.cpp DIFFER(3001v3205) flags= [] eq=741 frameMasked=903 of 1078 -- DIAG: ReturnResource removed (frame-order test)
+18:36 00bcc800 grade v7h12.cpp DIFFER(3207v3205) flags= [] eq=961 frameMasked=1036 of 1078 -- DIAG GetEntry direct
+18:36 00bcc800 grade v7h16.cpp DIFFER(3207v3205) flags= [] eq=961 frameMasked=1036 of 1078 -- DIAG GetGenericObject ternary F4
+18:38 00bcc800 grade v7s_CSurface.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- re-base check: CSurface overlay dropped (repo header)
+18:38 00bcc800 grade v7s_CIVCountedPointer.cpp SRC_FAIL flags= [] - -- re-base check: CIVCountedPointer overlay dropped (repo header)
+18:38 00bcc800 grade v7s_C2DVector.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- re-base check: C2DVector overlay dropped (repo header)
+18:38 00bcc800 grade v7s_CRenderStateManager.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- re-base check: CRenderStateManager overlay dropped (repo header)
+18:38 00bcc800 grade v7.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- STALE re-base: CIVCountedPointer = repo + GET + RELEASE_ISNULL; CSurface/C2DVector/CRenderStateManager overlays dropped
+18:40 00bcc800 grade v7_m1.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- row with header edit m1
+18:40 00bcc800 grade v7_m2.cpp DIFFER(3207v3205) flags= [] eq=953 frameMasked=1020 of 1078 -- row with header edit m2
+18:40 00bcc800 grade v7_k4.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- row with header edit k4
+18:40 00bcc800 grade v7_k5.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- row with header edit k5
+18:40 00bcc800 grade v7_k6.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- row with header edit k6
+18:40 00bcc800 grade v7_u1.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- row with header edit u1
+18:40 00bcc800 grade v7_i1.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- row with header edit i1
+18:40 00bcc800 grade v7_g1.cpp DIFFER(3207v3205) flags= [] eq=965 frameMasked=1040 of 1078 -- row with header edit g1
+18:40 00bcc800 grade v7_o1.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- row with header edit o1
+18:40 00bcc800 grade v7_q2.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- row with header edit q2
+18:40 00bcc800 grade v7_s3.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- row with header edit s3
+18:40 00bcc800 grade v7_r1.cpp DIFFER(3214v3205) flags= [] eq=799 frameMasked=921 of 1078 -- row with header edit r1
+18:41 00bcc800 grade t1.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- pool ref at ReturnResource / pool ref for both / vertex_buffer ref for draw
+18:41 00bcc800 grade t2.cpp DIFFER(3218v3205) flags= [] eq=906 frameMasked=996 of 1078 -- pool ref at ReturnResource / pool ref for both / vertex_buffer ref for draw
+18:41 00bcc800 grade t3.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- pool ref at ReturnResource / pool ref for both / vertex_buffer ref for draw
+18:42 00bcc800 grade v7.cpp DIFFER(3167v3205) hunks=229 /Oa -- row flag /Oa
+18:42 00bcc800 grade v7.cpp DIFFER(3207v3205) hunks=84 /GS -- row flag /GS
+18:42 00bcc800 grade v7.cpp DIFFER(3230v3205) hunks=144 /G7 -- row flag /G7
+18:43 00bcc800 grade dfin.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- final differ source (v7 + Retail-asm/callee comment lines)
+18:43 00bcc800 grade d2.cpp DIFFER(3046v3205) flags= [] eq=761 frameMasked=859 of 1078 -- DIAG: FlushRender removed (tail-context test)
+18:43 00bcc800 grade f2.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- FlushRender loop: int stage / != 0 test / unsigned stage
+18:44 00bcc800 grade f3.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- FlushRender loop: int stage / != 0 test / unsigned stage
+18:44 00bcc800 grade f4.cpp DIFFER(3207v3205) flags= [] eq=966 frameMasked=1041 of 1078 -- FlushRender loop: int stage / != 0 test / unsigned stage
+18:44 00bcc800 grade da.cpp DIFFER(3090v3205) flags= [] eq=715 frameMasked=834 of 1078 -- DIAG: FlushRender parts removed (loop / SelectVertexBuffer / stages=0)
+18:44 00bcc800 grade db.cpp DIFFER(3186v3205) flags= [] eq=912 frameMasked=1008 of 1078 -- DIAG: FlushRender parts removed (loop / SelectVertexBuffer / stages=0)
+18:44 00bcc800 grade dc.cpp DIFFER(3193v3205) flags= [] eq=985 frameMasked=1047 of 1078 -- DIAG: FlushRender parts removed (loop / SelectVertexBuffer / stages=0)
+18:45 00bcc800 grade w1.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- FlushRender loop spellings: while / selected ref / assign-in-arg
+18:45 00bcc800 grade w2.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- FlushRender loop spellings: while / selected ref / assign-in-arg
+18:45 00bcc800 grade w3.cpp DIFFER(3207v3205) flags= [] eq=968 frameMasked=1043 of 1078 -- FlushRender loop spellings: while / selected ref / assign-in-arg
