@@ -1,0 +1,85 @@
+--- a/rebuild/include/engine/CTCInventoryMap.h
++++ b/rebuild/include/engine/CTCInventoryMap.h
+@@ -32,6 +32,10 @@
+ namespace NUISystem { class CComponent; }
+ #include "stlport/fable_map.h"
+ #endif
++#ifdef FABLE_RETAIL_CTCINVENTORYMAP_MAPMEMBERS
++namespace NUISystem { class CComponent; class CList; class CZoomingComponent; }
++#include "stlport/fable_map.h"
++#endif
+ // Layout: original TPI2aa6d and native constructor allocation258. The selected
+ // serialiser independently addresses every used member at the offsets below.
+ class CTCInventoryMap : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
+@@ -82,7 +86,16 @@
+  long GenerateDataTimer;
+  bool MiniMapIsPrisonCourtyard1,MiniMapIsPrisonCourtyard2,MiniMapIsHeadsmansHillNorth,MiniMapIsHeadsmansHillSouth;
+ private:
++#ifdef FABLE_RETAIL_CTCINVENTORYMAP_MAPMEMBERS
++ // Retail opt-in (agent4008 scout, row 0x0060EEB0 ConstructPCMapList): the Ego_r.pdb types of pmap_real (CZoomingComponent*, +0x188),
++ // MapList (CList*, +0x214) and MapRegions (map<long,CRegion>, +0x218); same sizes and offsets (struct_layouts_egor.tsv). Retail
++ // stores CreateComponent results to +0x188 / +0x214 (0x0060F69D / 0x0060FA21), calls CZoomingComponent slots 143..145 on +0x188
++ // (0x0060F7CF..0x0060F7FB), expands MapRegions.clear() with the map<long,CRegion> tree's _M_erase 0x006196D0 (0x0060EEF3) and
++ // inserts with its insert_unique 0x00619D50 (0x0061120D); the landed ~CTCInventoryMap 0x00606F80 erases +0x218 as that map.
++ NUISystem::CZoomingComponent* pmap_real;
++#else
+  unsigned char pmap_real[4];
++#endif
+  std::vector<CUIMiniMapMarker> MiniMapMarkers;
+  std::vector<CUIRegionInfo> UIRegionsInfo;
+  long QuestToBeDropped;
+@@ -91,7 +104,13 @@
+  unsigned char MapScreenTeleportPrimitiveHandles[12],MapScreenHousePrimitiveHandles[12];
+  unsigned char ActiveRegionQuestPositions[12],ActiveRegionTeleportPositions[12],ActiveRegionHousePositions[12];
+  CCountedPointer<std::vector<unsigned __int64> > SerialisedTeleporterUIDs;
++#ifdef FABLE_RETAIL_CTCINVENTORYMAP_MAPMEMBERS
++ unsigned char TeleportRegions[12];
++ NUISystem::CList* MapList;
++ std::map<long,CRegion> MapRegions;
++#else
+  unsigned char TeleportRegions[12],MapList[4],MapRegions[12];
++#endif
+  C2DBoxI MapBox;
+  bool WorldMapActive;
+  long ActiveRegionIndex,NumRegions;
+@@ -189,6 +208,12 @@
+  void ConstructRegionDescriptionMapKeys(NUISystem::CComponent*,CRegion&,bool);
+ private:
+ #endif
++#ifdef FABLE_RETAIL_CTCINVENTORYMAP_GUILDSEALRECALLREGION
++ // Nested opt-in (agent4008 scout, row 0x0060EEB0): Ego_r.pdb + FableWin.pdb ?GetGuildSealRecallRegion@CTCInventoryMap@@ABEJXZ
++ // (private const), landed out of line at 0x005FA990 under that Leaf; ConstructPCMapList calls it at 0x0060F458. Declaration only.
++private:
++ long GetGuildSealRecallRegion() const;                               // 0x005FA990
++#endif
+ #ifdef FABLE_RETAIL_CTCINVENTORYMAP_QUESTMARKERS
+  // Retail opt-in (chunk 882, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): Ego_r.pdb + FableWin.pdb public members
+  // ?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z (retail 0x00603000),
+@@ -211,11 +236,11 @@
+ #endif
+ public:
+  static void CheckRetailLayout() {
+-  FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,VisitedRegions)==0x134);
+-  FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,LogBookNameTag)==0x150);
+-  FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,MiniMapMarkers)==0x18c);
+-  FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,SerialisedTeleporterUIDs)==0x200);
+-  FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,RegionsCorrespondances)==0x24c);
++  FABLE_STATIC_ASSERT_AT(214, offsetof(CTCInventoryMap,VisitedRegions)==0x134);
++  FABLE_STATIC_ASSERT_AT(215, offsetof(CTCInventoryMap,LogBookNameTag)==0x150);
++  FABLE_STATIC_ASSERT_AT(216, offsetof(CTCInventoryMap,MiniMapMarkers)==0x18c);
++  FABLE_STATIC_ASSERT_AT(217, offsetof(CTCInventoryMap,SerialisedTeleporterUIDs)==0x200);
++  FABLE_STATIC_ASSERT_AT(218, offsetof(CTCInventoryMap,RegionsCorrespondances)==0x24c);
+  }
+ #ifdef FABLE_RETAIL_CTCINVENTORYMAP_LOGBOOK
+  // Retail opt-in (row 0x00607330): Ego_r.pdb / FableWin.pdb ?ConstructLogbookList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+@@ -250,7 +275,7 @@
+  void CreateMiniMapMarkers(NUISystem::CComponent* pminimap, CRegion& region);
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCInventoryMap)==0x258);
+-FABLE_STATIC_ASSERT(sizeof(CTCInventoryMap::CUIMiniMapMarker)==28);
+-FABLE_STATIC_ASSERT(sizeof(CTCInventoryMap::CUIRegionInfo)==40);
++FABLE_STATIC_ASSERT_AT(253, sizeof(CTCInventoryMap)==0x258);
++FABLE_STATIC_ASSERT_AT(254, sizeof(CTCInventoryMap::CUIMiniMapMarker)==28);
++FABLE_STATIC_ASSERT_AT(255, sizeof(CTCInventoryMap::CUIRegionInfo)==40);
+ #endif

@@ -2,11 +2,11 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 005d1f0c	MATCHED_STAGED	17873	2026-11-13_acctC_c1a	C1	parked	CTCInventoryStats::CTCInventoryStats::vfunc_89
 005ce0e6	MATCHED_STAGED	15910	2026-11-13_acctC_c1a	C1	parked	CTCInventoryStats::CTCInventoryStats::vfunc_86
 00bd3070	OPEN				parked	CEnginePrimitiveManagerAnimatedMeshesBase::RenderMeshPrimitive
-0060eeb0	IN_PROGRESS	10254		C1 -> C4: DIFFER(10238v10254), 17 real differences	parked	CTCInventoryMap::ConstructPCMapList
+0060eeb0	MATCHED_STAGED	10254	2026-11-13_acctC_c4a	C1 -> C4	parked	CTCInventoryMap::ConstructPCMapList
 00ba2350	OPEN				parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
 00b783f0	QUEUED	9343		C3 row 2	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
-005f1b10	QUEUED	8383		C4 row 3	parked	CTCInventoryAbilities::ConstructPCMagicList
+005f1b10	QUEUED	8383		C5 row 2	parked	CTCInventoryAbilities::ConstructPCMagicList
 0058578b	OPEN				parked	CTCInventory::CTCInventory::vfunc_30
 00b4d370	OPEN				parked	CEngineShadowRenderer::UpdateShadowSpace
 00601310	OPEN				parked	_global::ConstructQuestsScreen_MainMenu
@@ -53,7 +53,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00dc5f80	OPEN				parked	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main
 00d3d150	OPEN				parked	NScript::CQ_GuildTrainingScript::CAppleGirl::Main
 00a8b990	OPEN				parked	C3DMesh2::InitialiseBones
-005ff190	QUEUED			C4 row 2	parked	CTCInventoryMap::CreateMapMarkers
+005ff190	IN_PROGRESS	4176	2026-11-13_acctC_c4a/open_005ff190	C4 -> C5: DIFFER(4096v4176), calls all right, register/frame allocation differs	parked	CTCInventoryMap::CreateMapMarkers
 00d75060	OPEN				parked	NScript::CQ_HangingTreeGoodScript::FinalRound
 00bafa00	OPEN				parked	CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites::RenderClockPrim
 00931390	OPEN				parked	CAIStateGroup_MinionReactToCriminal::?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ
