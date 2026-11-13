@@ -1,8 +1,15 @@
 // CEngineClothRenderer::RenderClothPrimitive -- draw one cloth primitive (Fable.exe TLC, VC7.1) @ 0x00BB3E80, 4540 bytes, public thiscall, `ret 20h`,
 // Grade: RELOCATION_MATCH (4540v4540) -- release-mode asserts (fable_assert.h) present; see Inferred below.
 // ebp frame (sub esp,48h), no EH frame, no /GS, no pragma. Matches with the repo DEFAULT CRenderStateManager
-//   SetRenderState / AddStateToUpdateList text and the nine release-mode asserts below (fable_assert.h, FABLE_RETAIL_ASSERT_DEAD_ARM).
-// Inferred: nine FABLE_RETAIL_ASSERT statements (owner rule "Inferred statements", 2026-11-12; they emit no bytes). Retail bytes that
+//   SetRenderState / AddStateToUpdateList text and the eleven release-mode asserts below (fable_assert.h, FABLE_RETAIL_ASSERT_DEAD_ARM).
+// agentC8 (2026-11-13) re-fit after the shared helper texts changed for the same-TU sibling 0x00BB30A0 (one text per helper; both rows
+//   graded with them): FlushRender releases stream 0 with PD3DDevice->SetStreamSource(0, 0, 0, 0) (was the inline SelectVertexBuffer(0, 0);
+//   same bytes), SetTextureFactor's pixel path builds C4DVector(colour) (FableWin ??0C4DVector@@QAE@ABVCRGBFloatColour@@@Z), opt-ins
+//   FABLE_RETAIL_CRGBFLOATCOLOUR_INITIALISE_CTOR (existing), FABLE_RETAIL_CSHADERRENDERMANAGER_PSCONST_INDEX (existing; fwsize = FableWin
+//   28i/79b), FABLE_RETAIL_C3DCLOTHPRIMITIVE_GETPARTICLEPROGRAM_GET and FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_MEMBER (new, FableWin
+//   10i/22b and 10i/25b). With them this row needs two more dead arms (program pointer before its dereference, the outline mesh effect in the
+//   first outline arm): count eleven, FITTED (each arm moves the or-operand order by one 32-record step here; window: exactly these).
+// Inferred: eleven FABLE_RETAIL_ASSERT statements (nine by agentC6, two by agentC8) (owner rule "Inferred statements", 2026-11-12; they emit no bytes). Retail bytes that
 //   need them: the 16 inline SetRenderState expansions 0x00BB46E0..0x00BB4E80 -- retail tests `test CurrentBookmarkMask,mask` in the
 //   first 8 and `test mask,CurrentBookmarkMask` (or-operand order swapped) in the last 8 (first swapped block 0x00BB49F2 area; ours
 //   without the dead arms: 11 / 5, i.e. 0x00BB49F2, 0x00BB4A69, 0x00BB4AD9 come out the other way), and CurrentBookmarkMask loaded
@@ -10,7 +17,7 @@
 //   ASSERT is turned into IL that c2 deletes after numbering, so the count of such arms (not their position) moves the operand order;
 //   arms whose condition has no inline call leave the load order alone. Measured window with this macro: 9..10 asserts (8 -> 9/7
 //   split, 11 -> 7/9). Evidence for asserts here: FableWin.pdb's debug body of this function is 566 /Od instructions v 440 for this
-//   text at /Od /EHsc (+126 = about TWO debug asserts at ~63 instructions each); the count of nine is FITTED to the window (the
+//   text at /Od /EHsc (+126 = about TWO debug asserts at ~63 instructions each); the count (nine, now eleven) is FITTED to the window (the
 //   conditions are the pointers / ranges the function dereferences, chosen as plausible, not recovered). Ruled out: the
 //   DESIRED / BOOKMARK / DIRTY setter opt-ins (no count lines L and O up), 0..130 dead named locals except 124..128 (not a
 //   statement a programmer writes), class-typed temporaries in the dead arm (change the live register allocation), dead arms in
@@ -41,6 +48,7 @@
 //   (mipmap size floor inside the expanded GetAppropriateMipmap). Per-site attempts table: not built yet (row not matched).
 // Scopes: the texture lives in a block opened after the mipmap (shares retail's [ebp-24h] word with the floor temporary) and preloading in
 //   an inner block that ends before the pass dispatch (lands in the dead parameter word +0Fh, shared with the alpha-ref byte).
+// Retail: 0x00BB3E80, 4540 bytes (0x00BB3E80..0x00BB503B, last instruction ret 20h)
 // Leaf: ?RenderClothPrimitive@CEngineClothRenderer@@QAEXABVCParticleSimulation@@ABVC3DClothPrimitive@@ABVC3DPrimitive2@@ABVCEngineSubPrimitiveMeshBase@@AAVCEngineInternalPrimitiveMeshBase@@ABVCMatrix3x4@@W4ERenderPassType@@_N@Z
 #include "fable_compiler.h"
 #define FABLE_RETAIL_ASSERT_DEAD_ARM
@@ -103,6 +111,10 @@
 #define FABLE_RETAIL_C3DMESHMATERIAL_FLAGS
 #define FABLE_RETAIL_CRGBFLOATCOLOUR
 #define FABLE_RETAIL_CRGBCOLOUR
+#define FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_MEMBER
+#define FABLE_RETAIL_C3DCLOTHPRIMITIVE_GETPARTICLEPROGRAM_GET
+#define FABLE_RETAIL_CSHADERRENDERMANAGER_PSCONST_INDEX
+#define FABLE_RETAIL_CRGBFLOATCOLOUR_INITIALISE_CTOR
 #define FABLE_RETAIL_CRGBFLOATCOLOUR_GETRGBCOLOUR_NAMED_RESULT
 #include "engine/CMatrix3x4.h"
 #include "engine/CRenderManager.h"
@@ -167,7 +179,7 @@ FABLE_FORCEINLINE bool CShaderRenderManager::GetPixelShadersEnabled() const { re
 FABLE_FORCEINLINE void CRenderStateManager::SetTextureFactor(unsigned long factor) { SetRenderState(factor, DeviceState.TextureFactor); }
 FABLE_FORCEINLINE void CRenderManagerCore::FlushRender()
 {
-    SelectVertexBuffer(0, 0);
+    PD3DDevice->SetStreamSource(0, 0, 0, 0);
     PD3DDevice->SetIndices(0);
     for (long stage = 0; stage < TextureStagesInUse; ++stage) {
         if (CurrentlySelectedTextures[stage]) {
@@ -180,7 +192,7 @@ FABLE_FORCEINLINE void CRenderManagerCore::FlushRender()
 FABLE_FORCEINLINE void __fastcall CEnginePrimitiveRenderUtil::SetTextureFactor(const CRGBFloatColour& colour)
 {
     if (NEngineInternal::GPShaderRenderManager->GetPixelShadersEnabled())
-        NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(2, C4DVector(colour.R, colour.G, colour.B, colour.A));
+        NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(2, C4DVector(colour));
     else
         NEngineInternal::GPRenderManager->SetTextureFactor(colour.GetRGBColour().IntValue);
 }
@@ -293,6 +305,7 @@ void CEngineClothRenderer::RenderClothPrimitive(const CParticleSimulation& simul
     const CMatrix3x4& transform, ERenderPassType pass, bool block_on_load)
 {
     FABLE_RETAIL_ASSERT(pass < RENDER_PASS_COUNT);
+    FABLE_RETAIL_ASSERT(cloth_primitive.GetParticleProgram());
     const CParticleProgram& program = *cloth_primitive.GetParticleProgram();
     CRenderStateScopedCaptureBlock capture_block;
     bool occlusion_test = false;
@@ -340,6 +353,7 @@ void CEngineClothRenderer::RenderClothPrimitive(const CParticleSimulation& simul
         }
     }
     if (pass == RENDER_PASS_OUTLINE_SMOOTH_STENCIL) {
+        FABLE_RETAIL_ASSERT(primitive.MeshEffect.Get());
         SetupOutlineSmoothStencilStates(*static_cast<const CEngineMeshEffectOutline*>(primitive.MeshEffect.Get()), primitive.Scale);
         ApplyVertexShader(TriVertexShaderOutline);
         ApplyPixelShader(GetPixelShaderDiffuseOnly());

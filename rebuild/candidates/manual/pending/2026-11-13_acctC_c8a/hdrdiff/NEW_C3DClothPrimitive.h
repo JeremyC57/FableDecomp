@@ -10,12 +10,19 @@
 class CParticleProgram;
 class C3DClothPrimitive {
 public:
+#ifdef FABLE_RETAIL_C3DCLOTHPRIMITIVE_GETPARTICLEPROGRAM_GET
+    // Opt-in (agentC8, rows 0x00BB30A0 / 0x00BB3E80): FableWin.pdb's debug ?GetParticleProgram@C3DClothPrimitive@@QBEPAVCParticleProgram@@XZ
+    // is 10 instructions / 22 bytes = a call of the smart pointer's Get() (?Get@?$CCountedPointer@VCParticleProgram@@@@QBEPAVCParticleProgram@@XZ,
+    // also in FableWin.pdb); the member read is 9 / 17. Same release bytes.
+    CParticleProgram* GetParticleProgram() const { return ParticleProgram.Get(); }
+#else
     CParticleProgram* GetParticleProgram() const { return ParticleProgram.Data; }   // FableWin ?GetParticleProgram@C3DClothPrimitive@@QBEPAVCParticleProgram@@XZ
+#endif
     unsigned long GetMaterialIndex() const { return MaterialIndex; }                // FableWin ?GetMaterialIndex@C3DClothPrimitive@@QBEKXZ
     void* _vftable;
     CCountedPointer<CParticleProgram> ParticleProgram;                              // +0x04
     unsigned long PrimitiveIndex;                                                   // +0x0C
     unsigned long MaterialIndex;                                                    // +0x10
 };
-FABLE_STATIC_ASSERT(sizeof(C3DClothPrimitive) == 0x14);
+FABLE_STATIC_ASSERT_AT(20, sizeof(C3DClothPrimitive) == 0x14);
 #endif

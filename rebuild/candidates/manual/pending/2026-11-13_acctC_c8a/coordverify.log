@@ -4,5 +4,9 @@ addr       parity           behav  name
 00bb3e80   WARN RELOC_NAME: ?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ -> 00b8d090 labelled '_global::Nop_ret0_00b8d090'
 00bb3e80   WARN RELOC_NAME: ?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z -> 00b8d0a0 labelled '_global::Nop_ret4_00b8d0a0'
 00bb3e80   RELOCATION_MATCH PASS   RenderClothPrimitive
-WINS: 1
+00bb30a0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00bb30a0   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00bb30a0   RELOCATION_MATCH PASS   Render2DClothPrimitive
+WINS: 2
   00bb3e80 RELOCATION_MATCH CEngineClothRenderer::RenderClothPrimitive
+  00bb30a0 RELOCATION_MATCH CEngineClothRenderer::Render2DClothPrimitive

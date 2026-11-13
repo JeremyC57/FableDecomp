@@ -1,0 +1,53 @@
+--- a/rebuild/include/engine/C3DMeshInfo.h
++++ b/rebuild/include/engine/C3DMeshInfo.h
+@@ -59,8 +59,14 @@
+     // FableWin.pdb inline ?PeekTextureBank@C3DMeshInfo@@QBEPBVCGraphicDataBank@@XZ (0x02E77A90; the caller reads Bank +0x04, then
+     // the bank's TextureBank, in place: 0x00BEC74A). Needs FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK. No layout change.
+     bool GetMesh(CCountedPointer<const C3DMesh2>& mesh, unsigned long lod, unsigned long flags) const;   // 0x00A25E70
++#ifdef FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_MEMBER
++    // Nested opt-in (agentC8, rows 0x00BB30A0 / 0x00BB3E80): FableWin.pdb's debug PeekTextureBank is 10 instructions / 25 bytes = the bank's
++    // TextureBank (+0x3D4) read in place (`PeekBank()->TextureBank`); the GetTextureBank() call form is 11 / 26. Same release bytes.
++    const CGraphicDataBank* PeekTextureBank() const { return PeekBank()->TextureBank; }
++#else
+     const CGraphicDataBank* PeekTextureBank() const { return PeekBank()->GetTextureBank(); }
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_C3DMESHINFO_BEGINLOADINGTEXTURES
+     // Retail opt-in (chunk 2059, row 0x00BC25F0; the r3013 NAME_FIXES spelling; also rows 0x00B9A4A0 / 0x00BA6FF0): Ego_r.pdb
+     // ?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z (donor 0x00B5FEA0 between HasPhysicsMesh and AreTexturesLoaded =
+@@ -101,7 +107,7 @@
+     unsigned char _body_0x0c[0x60 - 0xc];                               // +0x0c MeshData, BoundingBox, BoundingSphere, ...
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshInfo) == 0x60);
++FABLE_STATIC_ASSERT_AT(104, sizeof(C3DMeshInfo) == 0x60);
+ #ifdef FABLE_RETAIL_C3DMESHINFO_DETAILLEVEL
+ class C3DMeshLODInfo;
+ class C3DMeshInfo::CMeshData : public CIVCountedPointeeBase {
+@@ -147,16 +153,16 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshInfo) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, f4) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, MeshData_Object) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, BoundingBox) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, BoundingSphere) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, SafeBoundingRadius) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, PhysicsMeshIndex) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, LODErrors) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, LODDataSizes) == 0x50);
++FABLE_STATIC_ASSERT_AT(150, sizeof(C3DMeshInfo) == 0x60);
++FABLE_STATIC_ASSERT_AT(151, offsetof(C3DMeshInfo, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(152, offsetof(C3DMeshInfo, f4) == 0x4);
++FABLE_STATIC_ASSERT_AT(153, offsetof(C3DMeshInfo, MeshData_Object) == 0xc);
++FABLE_STATIC_ASSERT_AT(154, offsetof(C3DMeshInfo, BoundingBox) == 0x10);
++FABLE_STATIC_ASSERT_AT(155, offsetof(C3DMeshInfo, BoundingSphere) == 0x28);
++FABLE_STATIC_ASSERT_AT(156, offsetof(C3DMeshInfo, SafeBoundingRadius) == 0x38);
++FABLE_STATIC_ASSERT_AT(157, offsetof(C3DMeshInfo, PhysicsMeshIndex) == 0x3c);
++FABLE_STATIC_ASSERT_AT(158, offsetof(C3DMeshInfo, LODErrors) == 0x40);
++FABLE_STATIC_ASSERT_AT(159, offsetof(C3DMeshInfo, LODDataSizes) == 0x50);
+ 
+ #endif
+ #endif // FABLE_ENGINE_C3DMESHINFO_H

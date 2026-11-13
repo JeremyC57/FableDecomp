@@ -1,10 +1,10 @@
 address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 005d1f0c	MATCHED_STAGED	17873	2026-11-13_acctC_c1a	C1	parked	CTCInventoryStats::CTCInventoryStats::vfunc_89
 005ce0e6	MATCHED_STAGED	15910	2026-11-13_acctC_c1a	C1	parked	CTCInventoryStats::CTCInventoryStats::vfunc_86
-00bd3070	OPEN				parked	CEnginePrimitiveManagerAnimatedMeshesBase::RenderMeshPrimitive
+00bd3070	QUEUED			C13 row 3	parked	CEnginePrimitiveManagerAnimatedMeshesBase::RenderMeshPrimitive
 0060eeb0	MATCHED_STAGED	10254	2026-11-13_acctC_c4a	C1 -> C4	parked	CTCInventoryMap::ConstructPCMapList
 00ba2350	OPEN				parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
-00b783f0	QUEUED	9343		C8 row 2	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
+00b783f0	IN_PROGRESS	9343	2026-11-13_acctC_c8a/open_00b783f0	C8 -> C13: DIFFER(9343v9343), record-count ties at 7 sites	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
 005f1b10	MATCHED_STAGED	8383	2026-11-13_acctC_c9a	C5 -> C7 -> C9	parked	CTCInventoryAbilities::ConstructPCMagicList
 0058578b	OPEN				parked	CTCInventory::CTCInventory::vfunc_30
@@ -14,10 +14,10 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b5ca70	OPEN				parked	CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer
 00651b04	MATCHED_STAGED	5126	2026-11-13_acctC_c2a	C2	parked	CDrawAbilityButtons::Draw
 00baa870	OPEN				parked	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList
-00bb3e80	MATCHED_STAGED	4540	2026-11-13_acctC_c6a	C2 -> C3 -> C6; nine inferred release asserts (count fitted, review item)	parked	CEngineClothRenderer::RenderClothPrimitive
+00bb3e80	MATCHED_STAGED	4540	2026-11-13_acctC_c8a	C2 -> C3 -> C6 -> C8; 11 inferred release asserts (fitted count, review item)	parked	CEngineClothRenderer::RenderClothPrimitive
 00a91640	OPEN				parked	_gapscan::sub_00a91640
 00b8b780	OPEN				parked	CEngineBillboardGenerator::RenderBillboard
-00ba5260	OPEN				parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
+00ba5260	QUEUED	4056		C13 row 2	parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
 00bcc800	OPEN				parked	CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
 0048e78e	OPEN				parked	CSubtitleRenderer::DrawButtonGraphics
 00cbfb7d	OPEN				parked	_global::RunCutsceneMacro
@@ -71,7 +71,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00678760	OPEN				parked	CPersistTraits<std::list<CReactionMatch*> >::TransferIn
 00cfe030	OPEN				parked	NScript::CQ_AwakeningTheOracleScript::COracleTablet::Main
 00b70a90	OPEN				parked	CEngineWaterRenderer::RenderEnvironmentMap
-00bb30a0	IN_PROGRESS	3538	2026-11-13_acctC_c6a/open_00bb30a0	C6 -> C8: DIFFER(3538v3538), 2 record-count sites	parked	CEngineClothRenderer::Render2DClothPrimitive
+00bb30a0	MATCHED_STAGED	3538	2026-11-13_acctC_c8a	C6 -> C8; shared helper texts + 1 assert + 5 named values (fitted set, review item)	parked	CEngineClothRenderer::Render2DClothPrimitive
 005ac10e	OPEN				parked	CTCInventoryTrade::ConstructActualBuyInventoryPC
 006d1e30	OPEN				parked	CTCWife::FrameUpdate
 00648820	OPEN				parked	CDrawMiniMap::Draw

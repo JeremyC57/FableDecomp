@@ -1,5 +1,20 @@
 // CEngineClothRenderer::Render2DClothPrimitive -- draw one 2D (flat, alpha-masked) cloth primitive (Fable.exe TLC, VC7.1) @ 0x00BB30A0, 3538 bytes, public thiscall, `ret 20h`
-// Grade: DIFFER(3538v3538) -- record-keyed only: test/or operand order of the SetAlphaTestEnable(false) expansion 0x00BB33B7..0x00BB33C6 (retail test eax,esi ; or esi,eax) and the load order of the SetFogEnable(false) expansion 0x00BB3D28 (retail state mask first); the text has ~20 record units too many (NOTES.md)
+// Grade: RELOCATION_MATCH (3538v3538) -- release-mode assert (fable_assert.h) present; see Inferred below.
+// Record-keyed residue closed by agentC8 (the bookmark test/or operand order of the SetAlphaTestEnable(false) expansion 0x00BB33B7 and the
+//   load order of the SetFogEnable(false) expansion 0x00BB3D28 are c2 record-id ties: the first moves with the function's whole record
+//   count, the second with the records created before the fog expansion; probe tools tools/om.py / meter.sh / combo.py):
+//   shared helper texts (same text in the sibling 0x00BB3E80, re-graded RELOCATION_MATCH): FlushRender releases stream 0 with
+//   PD3DDevice->SetStreamSource(0, 0, 0, 0) (the inline SelectVertexBuffer(0, 0) gives the same bytes but ~34 more records; this is what
+//   moves 0x00BB33B7), SetTextureFactor's pixel path C4DVector(colour) (FableWin ??0C4DVector@@QAE@ABVCRGBFloatColour@@@Z), opt-ins
+//   FABLE_RETAIL_CRGBFLOATCOLOUR_INITIALISE_CTOR, FABLE_RETAIL_CSHADERRENDERMANAGER_PSCONST_INDEX (FableWin 28i/79b SAME),
+//   FABLE_RETAIL_C3DCLOTHPRIMITIVE_GETPARTICLEPROGRAM_GET (FableWin 10i/22b) and FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_MEMBER (FableWin
+//   10i/25b); GetCurrent2DAlphaMaskInfo with a named viewport-manager pointer (fwsize 16i/46b = FableWin SAME; the one-expression form is 15i/40b).
+//   Row text: the tint built as a CRGBColour copy with the sub-primitive alpha and a named CRGBFloatColour, the mask position factors
+//   through a const C4DVector&, named mesh and self-illumination values, and one release assert (program pointer, as in the sibling).
+//   These six names / the assert are FITTED as a set (the fog load order needs the record count in an 8-wide window; this set sits at its
+//   low edge and tolerates 6 more records); each one is a plain spelling of a value the function already has.
+// Inferred: one FABLE_RETAIL_ASSERT (cloth_primitive.GetParticleProgram(), before the dereference; the same statement the sibling has). Dead
+//   arm, no bytes; site and count FITTED with the names above.
 // What it does: inside a scoped render-state capture block, set the alpha states from the sub-primitive render flags; enable vertex +
 //   pixel shaders; set the 2D alpha-mask texture mode on stage 1 (point filtering unless the current viewport's mask filters); pass the
 //   mask position factors to vertex constant 0; apply the cloth vertex shader for 0 lights and the 2D diffuse pixel shader; set the texture
@@ -17,6 +32,7 @@
 //   SetupAlphaBlendingStatesFromRenderFlags, CScopedShadersEnable, GetCurrent2DAlphaMaskInfo / GetCurrentAlphaMask,
 //   Set2DAlphaMaskTextureMode / DisableTextureFiltering, ApplyTriVertexShader, GetPixelShader2DDiffuse, SetTextureFactor + GetRGBColour,
 //   SetSelfIlluminationAmbient, FlushRender.
+// Retail: 0x00BB30A0, 3538 bytes (0x00BB30A0..0x00BB3E71, last instruction ret 20h at 0x00BB3E6F)
 // Leaf: ?Render2DClothPrimitive@CEngineClothRenderer@@QAEXABVCParticleSimulation@@ABVC3DClothPrimitive@@ABVC3DPrimitive2@@ABVCEngineSubPrimitiveMeshBase@@AAVCEngineInternalPrimitiveMeshBase@@ABVCMatrix3x4@@W4ERenderPassType@@_N@Z
 #include "fable_compiler.h"
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTH2D
@@ -84,6 +100,10 @@
 #define FABLE_RETAIL_C3DMESHMATERIAL_FLAGS
 #define FABLE_RETAIL_CRGBFLOATCOLOUR
 #define FABLE_RETAIL_CRGBCOLOUR
+#define FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_MEMBER
+#define FABLE_RETAIL_C3DCLOTHPRIMITIVE_GETPARTICLEPROGRAM_GET
+#define FABLE_RETAIL_CSHADERRENDERMANAGER_PSCONST_INDEX
+#define FABLE_RETAIL_CRGBFLOATCOLOUR_INITIALISE_CTOR
 #define FABLE_RETAIL_CRGBFLOATCOLOUR_GETRGBCOLOUR_NAMED_RESULT
 #include "engine/CMatrix3x4.h"
 #include "engine/CRenderManager.h"
@@ -119,8 +139,6 @@
 #include "engine/CEnginePrimitiveRenderUtil.h"
 #include "engine/CEngineMeshEffect.h"
 #include "engine/CArray.h"
-#include "engine/GFFloatToLongFloor.h"
-#include "engine/GFLimit.h"
 #include "fable_assert.h"
 #include "engine/C3DClothPrimitive.h"
 #include "engine/CEngineClothRenderer.h"
@@ -137,24 +155,14 @@ extern CEngineCamera* g_pEngineCamera;                                          
 extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer;                                // 0x01436E78
 extern CEngineOcclusionManager* g_pOcclusionManager;                                  // 0x01436E5C
 extern CEngineShadowRenderer* g_pEngineShadowRenderer;                                // 0x01436E60
-extern unsigned char g_highestSetBitTable[256];                                       // 0x0143B990
-extern const float DELTA_NOTIONAL_ZERO;                                               // 0x0129BA3C
 extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;                          // 0x01436E84
 
 
-inline unsigned long FABLE_FASTCALL GFGetTopBitInByte(unsigned char value)
-{
-    return g_highestSetBitTable[value];
-}
-FABLE_FORCEINLINE const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) const
-{
-    return index < GraphicList.size() ? &GraphicList[index] : 0;
-}
 FABLE_FORCEINLINE bool CShaderRenderManager::GetPixelShadersEnabled() const { return PixelShadersEnabled; }
 FABLE_FORCEINLINE void CRenderStateManager::SetTextureFactor(unsigned long factor) { SetRenderState(factor, DeviceState.TextureFactor); }
 FABLE_FORCEINLINE void CRenderManagerCore::FlushRender()
 {
-    SelectVertexBuffer(0, 0);
+    PD3DDevice->SetStreamSource(0, 0, 0, 0);
     PD3DDevice->SetIndices(0);
     for (long stage = 0; stage < TextureStagesInUse; ++stage) {
         if (CurrentlySelectedTextures[stage]) {
@@ -167,7 +175,7 @@ FABLE_FORCEINLINE void CRenderManagerCore::FlushRender()
 FABLE_FORCEINLINE void __fastcall CEnginePrimitiveRenderUtil::SetTextureFactor(const CRGBFloatColour& colour)
 {
     if (NEngineInternal::GPShaderRenderManager->GetPixelShadersEnabled())
-        NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(2, C4DVector(colour.R, colour.G, colour.B, colour.A));
+        NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(2, C4DVector(colour));
     else
         NEngineInternal::GPRenderManager->SetTextureFactor(colour.GetRGBColour().IntValue);
 }
@@ -201,33 +209,6 @@ inline bool __fastcall CEnginePrimitiveRenderUtil::GetOcclusionEnable()
 inline float __fastcall CEnginePrimitiveRenderUtil::GetMipmapSizeMultiplier()
 {
     return g_pPrimitiveRenderer->MipmapSizeMultiplier;
-}
-FABLE_FORCEINLINE void CEnginePrimitiveOcclusionInfo::AddOcclusionTest(unsigned long handle)
-{
-    if (g_pOcclusionManager->CurrentFrame != TestFrame)
-        ClearHandles();
-    OcclusionTestHandles.push_back(handle);
-    TestFrame = g_pOcclusionManager->CurrentFrame;
-}
-FABLE_FORCEINLINE unsigned long FABLE_FASTCALL CEnginePrimitiveManagerMeshBase::GetAppropriateMipmap(const C3DVector& camera_position,
-    const CMatrix3x4& transform, const C3DPrimitive2& mesh_primitive, float scale, const C3DMeshMaterial* material,
-    const CGraphicDataBank* graphic_bank)
-{
-    C3DBoundingSphere sphere = mesh_primitive.GetBoundingSphere();
-    transform.TransformPoint(sphere.Center);
-    unsigned long mipmap = 0;
-    float distance = ((camera_position - sphere.Center).GetMagnitude() - sphere.GetRadius() * scale) * mesh_primitive.GetAverageTextureStretch();
-    if (distance > DELTA_NOTIONAL_ZERO) {
-        long graphic_index = material->GetDiffuseMapBankIndex();
-        if (graphic_index > 0) {
-            const CGraphicInfo* graphic = graphic_bank->PeekGraphic(graphic_index);
-            float ratio = (float)(long)graphic->GetWidth() / (CEnginePrimitiveRenderUtil::GetMipmapSizeMultiplier() / distance * scale);
-            long size = GFFloatToLongFloor(ratio);
-            GFLimit(size, 1, 255);
-            mipmap = GFGetTopBitInByte((unsigned char)size);
-        }
-    }
-    return mipmap;
 }
 FABLE_FORCEINLINE void CEnginePrimitiveRenderUtil::SetupAlphaBlendingStatesFromRenderFlags(unsigned long render_flags, ERenderPassType pass, unsigned char alpha,
     unsigned char alpha_ref)
@@ -284,8 +265,9 @@ inline const CPixelShader& __fastcall CEnginePrimitiveRenderUtil::GetPixelShader
 inline const C2DAlphaMaskInfo* CEnginePrimitive2DViewportManager::GetCurrentAlphaMask() { return &AlphaMaskInfo; }
 FABLE_FORCEINLINE const C2DAlphaMaskInfo* CEnginePrimitiveRenderUtil::GetCurrent2DAlphaMaskInfo()
 {
-    return GFDebugPDynamicCast(g_pEnginePrimitiveTypeInfo->GetPrimitiveManager(ENGINE_PRIMITIVE_2D_VIEWPORT),
-                               (CEnginePrimitive2DViewportManager*)0)->GetCurrentAlphaMask();
+    CEnginePrimitive2DViewportManager* manager = GFDebugPDynamicCast(g_pEnginePrimitiveTypeInfo->GetPrimitiveManager(ENGINE_PRIMITIVE_2D_VIEWPORT),
+                                                                      (CEnginePrimitive2DViewportManager*)0);
+    return manager->GetCurrentAlphaMask();
 }
 FABLE_FORCEINLINE void CEnginePrimitiveRenderUtil::DisableTextureFiltering(unsigned long stage)
 {
@@ -305,21 +287,25 @@ void CEngineClothRenderer::Render2DClothPrimitive(const CParticleSimulation& sim
     const C3DPrimitive2& mesh_primitive, const CEngineSubPrimitiveMeshBase& sub_primitive, CEngineInternalPrimitiveMeshBase& primitive,
     const CMatrix3x4& transform, ERenderPassType pass, bool block_on_load)
 {
+    FABLE_RETAIL_ASSERT(cloth_primitive.GetParticleProgram());
     const CParticleProgram& program = *cloth_primitive.GetParticleProgram();
     CRenderStateScopedCaptureBlock capture_block;
     SetupAlphaBlendingStatesFromRenderFlags(sub_primitive.PeekRenderFlags(), pass, sub_primitive.PeekAlpha(), sub_primitive.PeekParent()->AlphaRef);
     CScopedShadersEnable shaders(true, true);
     const C2DAlphaMaskInfo* alpha_mask = GetCurrent2DAlphaMaskInfo();
     Set2DAlphaMaskTextureMode(1, alpha_mask->FilterMask, true);
-    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, C3DVector(alpha_mask->AlphaMaskPositionFactors.X,
-        alpha_mask->AlphaMaskPositionFactors.Y, alpha_mask->AlphaMaskPositionFactors.Z), alpha_mask->AlphaMaskPositionFactors.W);
+    const C4DVector& factors = alpha_mask->AlphaMaskPositionFactors;
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, C3DVector(factors.X, factors.Y, factors.Z), factors.W);
     ApplyTriVertexShader(0, false, sub_primitive.PeekRenderFlags());
     ApplyPixelShader(GetPixelShader2DDiffuse(ENGINE_PRIMITIVE_BLEND_ALPHA));
-    CEnginePrimitiveRenderUtil::SetTextureFactor(CRGBFloatColour(CRGBColour(primitive.TintColour.R, primitive.TintColour.G, primitive.TintColour.B,
-                                                                              sub_primitive.PeekAlpha())));
+    CRGBColour tint(primitive.TintColour);
+    tint.A = sub_primitive.PeekAlpha();
+    CRGBFloatColour tint_colour(tint);
+    CEnginePrimitiveRenderUtil::SetTextureFactor(tint_colour);
     const CEngineRenderInfoMeshBase* render_info = primitive.PeekRenderInfoMeshBase();
     const CEngineLocalLightArray& lights = *render_info->Lights;
-    const C3DMeshMaterial* material = render_info->Mesh->GetMaterial(cloth_primitive.GetMaterialIndex());
+    const C3DMesh2* mesh = render_info->Mesh;
+    const C3DMeshMaterial* material = mesh->GetMaterial(cloth_primitive.GetMaterialIndex());
     const CGraphicDataBank* graphic_bank = primitive.MeshInfo->PeekTextureBank();
     CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >* composite_surfaces = 0;
     CEngineInternalPrimitiveMorphInfo* morph_info = primitive.GetMorphInfo();
@@ -337,7 +323,8 @@ void CEngineClothRenderer::Render2DClothPrimitive(const CParticleSimulation& sim
             return;
         }
     }
-    NEngineInternal::GPLightingManager->SetSelfIlluminationAmbient(material->GetSelfIllumination());
+    long self_illumination = material->GetSelfIllumination();
+    NEngineInternal::GPLightingManager->SetSelfIlluminationAmbient(self_illumination);
     NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
     bool two_sided = material->IsTwoSided();
     NEngineInternal::GPRenderManager->SetFogEnable(false);
