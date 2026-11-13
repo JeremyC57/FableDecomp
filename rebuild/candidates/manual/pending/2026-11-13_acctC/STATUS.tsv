@@ -6,7 +6,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00ba2350	OPEN				parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
 00b783f0	QUEUED	9343		C8 row 2	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
-005f1b10	IN_PROGRESS	8383	2026-11-13_acctC_c4a/open_005f1b10	C5 -> C7: DIFFER(8383v8383), instructions identical, only frame-slot assignment differs	parked	CTCInventoryAbilities::ConstructPCMagicList
+005f1b10	IN_PROGRESS	8383	2026-11-13_acctC_c4a/open_005f1b10	C5 -> C7 -> C9: DIFFER(8383v8383), instructions identical, only frame-slot assignment differs	parked	CTCInventoryAbilities::ConstructPCMagicList
 0058578b	OPEN				parked	CTCInventory::CTCInventory::vfunc_30
 00b4d370	OPEN				parked	CEngineShadowRenderer::UpdateShadowSpace
 00601310	OPEN				parked	_global::ConstructQuestsScreen_MainMenu
@@ -53,7 +53,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00dc5f80	OPEN				parked	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main
 00d3d150	OPEN				parked	NScript::CQ_GuildTrainingScript::CAppleGirl::Main
 00a8b990	OPEN				parked	C3DMesh2::InitialiseBones
-005ff190	IN_PROGRESS	4176	2026-11-13_acctC_c4a/open_005ff190	C4 -> C5 -> C7: DIFFER(4096v4176), calls and frame size right, register/frame-word allocation differs; C7 tries the release-assert lead	parked	CTCInventoryMap::CreateMapMarkers
+005ff190	IN_PROGRESS	4176	2026-11-13_acctC_c4a/open_005ff190	C4 -> C5 -> C7 -> C9 (row 3): DIFFER(4096v4176), register/frame-word allocation; assert lead measured, does not apply	parked	CTCInventoryMap::CreateMapMarkers
 00d75060	OPEN				parked	NScript::CQ_HangingTreeGoodScript::FinalRound
 00bafa00	OPEN				parked	CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites::RenderClockPrim
 00931390	OPEN				parked	CAIStateGroup_MinionReactToCriminal::?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ
@@ -112,7 +112,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00981410	OPEN				parked	_global::AIAction_InteractWith
 00acdb80	OPEN				parked	QuadricOptimiserInternals::COptimisedPrimitive::COptimisedPrimitive
 0068cb90	OPEN				parked	CInputProcessControlFreeCamera::CInputProcessControlFreeCamera::ProcessInput
-005f59c7	OPEN				parked	CTCInventoryAbilities::ConstructPCExpressionsList
+005f59c7	QUEUED			C9 row 2	parked	CTCInventoryAbilities::ConstructPCExpressionsList
 00435530	OPEN				parked	CDisplayEngine::DoRender
 00439070	OPEN				parked	CPlayerGui::DrawPreparePrimitivesForEngine
 007de710	OPEN				parked	CTCWallMount::AttachObject
