@@ -6,7 +6,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00ba2350	OPEN				parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
 00b783f0	QUEUED	9343		C8 row 2	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
-005f1b10	IN_PROGRESS	8383	2026-11-13_acctC_c4a/open_005f1b10	C5 -> C7: DIFFER(8367v8383), 23 blocks / 118 bytes	parked	CTCInventoryAbilities::ConstructPCMagicList
+005f1b10	IN_PROGRESS	8383	2026-11-13_acctC_c4a/open_005f1b10	C5 -> C7: DIFFER(8383v8383), instructions identical, only frame-slot assignment differs	parked	CTCInventoryAbilities::ConstructPCMagicList
 0058578b	OPEN				parked	CTCInventory::CTCInventory::vfunc_30
 00b4d370	OPEN				parked	CEngineShadowRenderer::UpdateShadowSpace
 00601310	OPEN				parked	_global::ConstructQuestsScreen_MainMenu

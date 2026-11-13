@@ -1,7 +1,11 @@
 // CTCInventoryAbilities::ConstructPCMagicList(NUISystem::CComponent* parent) -- PC skills screen, magic page: owned spells, assigned palette (received order padded with empty slots), per-category sub lists with titles, expression-item and spell quick-slot containers, one menu entry per owned spell with assign / swap / drag actions, the three category blocks
-// Grade: DIFFER(8367v8383) -- frame-masked 23 hunks / 118 retail-only bytes: loop-1 bound computed once into a frame word (ours recomputes or, named, takes esi from the &AssignedAbilities CSE), frame-word permutation (packer: frame 0x2C, slot pairs 0x54/0x58, 0x10/0x14, 0x24..0x34), level-index load order (0x005F2E7C/0x005F2F3B), 0x005F3420 order
+// Grade: DIFFER(8383v8383) -- code identical to retail; residue = frame-word assignment only (c2 frame packer: 167 instructions, slot order faded/deletion v frame v entry/swap/action 0x24..0x37, pairs 0x10/0x14, 0x54/0x58, 0x28/0x30; see NOTES.md)
 // Leaf: ?ConstructPCMagicList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z
 // Retail: 0x005F1B10, 8383 bytes (`ret 4` at 0x005F3BCC)
+// Same-TU bodies GetAbilityLevel 0x005EDE93 / GetAbilityGraphicIndex 0x005EDE7F (auto-inlined by c2 as in retail: 0x005F2E7C,
+//   0x005F2F3B, 0x005F3430 load Abilities._M_start before the index and add 1 into a new register); `descriptionText` named
+//   (retail loads description.Data into edi before the L"" temp, 0x005F3420); loop-1 bound `count` set in an if / else (per-arm
+//   stores 0x005F1BED / 0x005F1BF2).
 // Flags:
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #ifdef _MSC_VER
@@ -110,6 +114,14 @@ const CDefPointer<const NUISystem::CUIMiscThingsDef> CTCInventoryAbilities::GetM
     return def;
 }
 #pragma auto_inline(on)
+long CTCInventoryAbilities::GetAbilityLevel(EHeroAbility ability) const
+{
+    return Abilities[ability].first;
+}
+long CTCInventoryAbilities::GetAbilityGraphicIndex(EHeroAbility ability) const
+{
+    return Abilities[ability].second->IconGraphicIndex;
+}
 
 CComponent* CTCInventoryAbilities::ConstructPCMagicList(CComponent* parent)
 {
@@ -122,7 +134,10 @@ CComponent* CTCInventoryAbilities::ConstructPCMagicList(CComponent* parent)
         if(Abilities[n].first>=0) owned.push_back(static_cast<EHeroAbility>(n));
     AssignedAbilities.clear();
     AssignedAbilitiesSave.clear();
-    for(unsigned long n=0;n<(ReceivedAbilityOrder.size()>misc->TotalSpellsInPalettes?misc->TotalSpellsInPalettes:ReceivedAbilityOrder.size());++n) {
+    unsigned long count;
+    if(ReceivedAbilityOrder.size()<=misc->TotalSpellsInPalettes) count=ReceivedAbilityOrder.size();
+    else count=misc->TotalSpellsInPalettes;
+    for(unsigned long n=0;n<count;++n) {
         AssignedAbilities.push_back(ReceivedAbilityOrder[n]);
         AssignedAbilitiesSave.push_back(ReceivedAbilityOrder[n]);
     }
@@ -340,9 +355,9 @@ CComponent* CTCInventoryAbilities::ConstructPCMagicList(CComponent* parent)
         if(ParentThing->GetTC(static_cast<ETCInterfaceType>(22),&experience)) {
             caption=displayName=experience->GetExperienceAbilityName(*it);
             caption+=misc->SpaceSeparator;
-            caption+=GFIntToWideString(Abilities[*it].first+1);
+            caption+=GFIntToWideString(GetAbilityLevel(*it)+1);
             displayName+=CWideString(L" - ")+bank.GetTextBySymbol("TEXT_GUI_MENU_LEVEL")+CWideString(L" ");
-            displayName+=GFIntToWideString(Abilities[*it].first+1);
+            displayName+=GFIntToWideString(GetAbilityLevel(*it)+1);
         }
         CCountedPointer<CComponent> entry(ui->CreateMenuEntryComponent(caption,0.0f,1.0f,"PC_MENU_ENTRY_TEMPLATE",0.0f,CCharString(""),0.0f,CCharString("PC_BUTTON_BASTARD")));
         CCountedPointer<CComponent> icon(ui->CreateComponent("PC_SPELL_ASSIGNMENT_ICON",false));
@@ -393,7 +408,8 @@ CComponent* CTCInventoryAbilities::ConstructPCMagicList(CComponent* parent)
             if(frame) frame->AddPositionChild(ring.Get());
         }
         CCountedPointer<CComponent> description(ui->CreateComponent("PC_DESCRIPTION",false));
-        static_cast<NUISystem::CText*>(description.Get())->SetValue(GetAbilityPDef(*it)->LevDescription[Abilities[*it].first],L"",true);
+        NUISystem::CText* descriptionText=static_cast<NUISystem::CText*>(description.Get());
+        descriptionText->SetValue(GetAbilityPDef(*it)->LevDescription[GetAbilityLevel(*it)],L"",true);
         entry->AddChild(description);
         if(viewport) viewport->AddFakeChild(description.Get());
         if(frame) frame->AddPositionChild(description.Get());
