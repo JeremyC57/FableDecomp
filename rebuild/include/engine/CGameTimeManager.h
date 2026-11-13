@@ -87,6 +87,11 @@ public:
     // besides GetTime / GetVillageTime; the body is inferred from those two facts (no out-of-line copy to read). No layout change.
     float GetDaySpeed() const { return TimeStep; }
 #endif
+#ifdef FABLE_RETAIL_CGAMETIMEMANAGER_GETTIME
+    // Opt-in (chunk 2020, row 0x006414A0 CTCLight::DrawLight): Ego_r.pdb / FableWin.pdb ?GetTime@CGameTimeManager@@QBEMXZ, inline in
+    // retail (0x006415C1 `mov eax,[eax+1Ch] ; mov ecx,[eax+8]` after CTCBase::PeekWorld: Time +0x08 copied as a dword). No layout change.
+    float GetTime() const { return Time; }
+#endif
 private:
     CWorld*             World;                                      // +0x00
     CMainGameComponent* GameComponent;                              // +0x04

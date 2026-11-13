@@ -48,6 +48,19 @@ class CAnimateThing {public:
  // forwards (init, 1, 0) to SetMainAnim). Declaration only.
  void Init(const CAnimInit& init);                                     // 0x0070D920
 #endif
+#ifdef FABLE_RETAIL_CANIMATETHING_UPDATEANIMATION
+ // Retail opt-in (w22 agent2007, row 0x00665860 CThingCreatureBase::UpdateAnimation): FableWin.pdb ?IsMainAnimFinished@CAnimateThing@@QBE_NXZ
+ // (out of line in retail at 0x0070C0E0: no anim index, a first index <= 0 or the main set finished), the inline
+ // ?IsInterruptable@CAnimateThing@@QBE_NXZ / ?SetInterruptable@CAnimateThing@@QAEX_N@Z (the bit at +0x94: `test byte [animator+94h],1`,
+ // `or byte [animator+94h],1`), ?GetMainAnimType@CAnimateThing@@QBEJXZ (inline: MainAnimSet.Type +0x50) and Ego_r.pdb / FableWin.pdb
+ // ?RemoveCombinationAnimsOfType@CAnimateThing@@QAEXJ@Z (0x0070D8C0). Needs FABLE_RETAIL_CANIMATETHING_MAINANIM (PeekMainAnim) and
+ // FABLE_RETAIL_CANIMSET_TYPE.
+ bool IsMainAnimFinished()const;                                       // 0x0070C0E0
+ bool IsInterruptable()const{return Interruptable;}
+ void SetInterruptable(bool interruptable){Interruptable=interruptable;}
+ long GetMainAnimType()const{return CurrentAnim.MainAnimSet.GetType();}
+ void RemoveCombinationAnimsOfType(long type);                         // 0x0070D8C0
+#endif
  void ClearUseAnimFromFile(){AnimFromFileInfo.Active=false;}
 #ifdef FABLE_RETAIL_CANIMATETHING_MESHANIMS
 // agentFAM05 (2026-11-11): Ego_r.pdb / FableWin.pdb ?GetInterpolatedMeshAnim@CAnimateThing@@QBEXAAVC3DAnimationBlendState@@M@Z and

@@ -22,6 +22,14 @@ enum QuestScreenType { };
 #endif
 class CEnginePrimitiveHandle;
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_OPENPC
+#include "stlport/fable_map.h"
+#include "engine/CIntelligentPointer.h"
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_TESTQUESTS
+#include "engine/CTestQuest.h"
+class CEnginePrimitivePrepareInfo;
+#endif
 class CTCInventoryQuests : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_INVENTORY_QUESTS; }
@@ -46,6 +54,12 @@ public:
 #endif
     long QuestCardCount;                                                                           // +0x150
 #ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_OPENINVENTORY
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_OPENPC
+    // Nested opt-in (w22 agent2002, row 0x006224C0 OpenInventoryPC): the rest of the Ego_r.pdb members in order at the retail offsets
+    // (STLport map / vector 12 bytes): ActiveTestQuestMode +0x157, PreviousScreenType +0x168, AvailableQuests +0x16C (clear() inline,
+    // _M_erase 0x00623560), DisplayQuests +0x178, AccumFadeTime +0x184 (the stores of 0x006224C0; ~CTCInventoryQuests 0x0061A500 and
+    // CloseInventoryPC 0x00621720 touch +0x168 / +0x134 / +0x140). Needs stlport/fable_map.h and the retail CIntelligentPointer.
     bool Teleport;                                                                                 // +0x154
     bool QuestCardActivatable;                                                                     // +0x155
     bool EnableQuestCardListInitialise;                                                            // +0x156
@@ -58,6 +72,22 @@ public:
     std::map<CThing*, NUISystem::CComponent*> AvailableQuests;                                     // +0x16c
     std::vector<CIntelligentPointer<CThing> > DisplayQuests;                                       // +0x178
     float AccumFadeTime;                                                                           // +0x184
+    // Ego_r.pdb / FableWin.pdb overrides and members the row calls (vtable 0x012585B4: slot 49 GetInventoryGuildValidity 0x0061A0B0,
+    // slot 86 OpenInventoryPC 0x006224C0; the NHeroInformationScreens::CBase slot 3 IsInventoryScreen override is called through the
+    // +0x130 base); ?InitialiseQuestCardList@CTCInventoryQuests@@QAEXXZ out of line at 0x00621A20 (Ego_r donor order: CloseInventoryPC,
+    // InitialiseQuestCardList, CloseInventory = retail 0x00621720, 0x00621A20, 0x00621C80).
+    virtual bool GetInventoryGuildValidity();                                                      // 49 0x0061A0B0
+    virtual bool IsInventoryScreen() const;                                                        // CBase slot 3
+    virtual void OpenInventoryPC();                                                                // 86 0x006224C0
+    void InitialiseQuestCardList();                                                                // 0x00621A20
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_TESTQUESTS
+    // Nested opt-in (chunk 2016, row 0x0061AD60): Ego_r.pdb 0x005982E0 / FableWin.pdb 0x01F7D530
+    // ?GetTestQuestsToDisplay@CTCInventoryQuests@@QAEXAAV?$vector@VCTestQuest@@V?$allocator@VCTestQuest@@@std@@@std@@@Z (retail 0x0061A8A0, out
+    // of line, the bound spelling) and Ego_r.pdb 0x005987B0 ?DrawActiveTestQuests@CTCInventoryQuests@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+    // (retail 0x0061AD60, the next function in donor order; DrawPreparePrimitivesForRendering calls it at 0x0061B518). Declarations only.
+    void GetTestQuestsToDisplay(std::vector<CTestQuest>& quests);                                  // 0x0061A8A0
+    void DrawActiveTestQuests(const CEnginePrimitivePrepareInfo& info);                            // 0x0061AD60
+#endif
 #endif
 #endif
     // Ego_r.pdb / FableWin.pdb ?ConstructQuestList@CTCInventoryQuests@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@NUISystem@@W4QuestScreenType@@1@Z

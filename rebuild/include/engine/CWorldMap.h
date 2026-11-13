@@ -131,6 +131,13 @@ public:
     // Declaration only.
     long GetMapNumberFromScriptName(const CCharString& script_name) const;   // 0x004FB880
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_MAPNUMBERFROMMAPUID
+    // Opt-in (chunk 2010, row 0x005248B0 NThingManager::CEntityRuntimePersistence::LoadFromGameStateScript): Ego_r.pdb / FableWin.pdb
+    // ?GetMapNumberFromMapUID@CWorldMap@@QBEJK@Z, out of line at 0x004FB920 (landed); FableWin.pdb ?GetNoMaps@CWorldMap@@QBEJXZ, inline in
+    // retail (the caller divides Maps' finish - start by 0x48 in place, 0x0052495E..0x00524977). Declarations / inline body only.
+    long GetMapNumberFromMapUID(unsigned long uid) const;   // 0x004FB920
+    long GetNoMaps() const { return Maps.size(); }
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_UPDATEDESTROYEDTHEMEAREAS
     // Nested opt-in (chunk 1013, row 0x004FEC80): Ego_r.pdb / FableWin.pdb ?UpdateDestroyedThemeAreas@CWorldMap@@IAEXXZ (protected).
 protected:

@@ -231,8 +231,17 @@ public:
     void SetAmbientMaterialColourSource(MATERIAL_COLOUR_SOURCE);
     void SetDiffuseMaterialColourSource(MATERIAL_COLOUR_SOURCE);
     void SetSpecularMaterialColourSource(MATERIAL_COLOUR_SOURCE);
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_POINTSPRITE_INLINE
+    // Retail opt-in (chunk 2031, row 0x00B54E30 CEngineWeatherRenderer::RenderSnow): FableWin.pdb ?SetPointSpriteEnable@CRenderStateManager@@QAEX_N@Z
+    // and ?SetPointScaleEnable@CRenderStateManager@@QAEX_N@Z (no Ego_r.pdb copy, no retail out-of-line copy): RenderSnow expands both into
+    // SetRenderState on PointSpriteEnable (+0x280, core +0x2A98, 0x00B55063..0x00B550CC) and PointScaleEnable (+0x294, core +0x2AAC,
+    // 0x00B550D1..0x00B5512A), value 1 for true, as the other bool setters.
+    FABLE_FORCEINLINE void SetPointSpriteEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.PointSpriteEnable); }
+    FABLE_FORCEINLINE void SetPointScaleEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.PointScaleEnable); }
+#else
     void SetPointSpriteEnable(bool);
     void SetPointScaleEnable(bool);
+#endif
     void SetPointSize(float);
     void SetPointSizeMin(float);
     void SetPointSizeMax(float);

@@ -31,6 +31,11 @@ protected:
  // Overlay opt-in (row 0x00973DC0): Ego_r/FableWin ?SummonPillars@CAIStateGroup_JackOfBladesBase@@IAEXXZ (protected, non-virtual).
  void SummonPillars();
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_JACKOFBLADESBASE_SUMMON
+ // Nested opt-in (chunk 2017): Ego_r.pdb ?Summon@CAIStateGroup_JackOfBladesBase@@IAEXJ_N@Z (protected; donor 0x009992F0 after SummonPillars
+ // 0x00998F40 = retail 0x00974110).
+ void Summon(long family_def_index,bool force_push_close_enemy);   // 0x00974110
+#endif
  CIntelligentPointer<CThing> PSwordEmitter,PArenaCentre;
  CIntelligentPointer<CThingCreatureBase> PTargetThing;
  long EnemyKnockDownFrame,SpeechCounter;

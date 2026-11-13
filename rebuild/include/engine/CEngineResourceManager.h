@@ -31,6 +31,7 @@ class CMeshDataBank; class CGraphicDataBank; class CFontBank;
 class CShaderResource; class CGPUScratchBufferTextureManager;
 enum EShaderBankNo;                                          // MS forward enums (chunk 723; no enumerator name recovered)
 enum EIndexBufferPool;
+enum EVertexBufferPool;
 enum EGraphicBankNo;                                         // MS forward enum (no enumerator name recovered)
 class CEngineInit;
 class CEngineMemoryInit;
@@ -60,6 +61,11 @@ public:
     EIndexBufferPool GetIndexBufferMemPool();                            // 0x00B3B0A0
     unsigned long GetIndexBufferUsage();                                 // 0x00B3B060
     unsigned long GetVertexBufferUsage();                                // 0x00B3B030
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_VBPOOL
+    // Retail opt-in (chunk 2005, row 0x00B51570): Ego_r.pdb ?GetVertexBufferMemPool@CEngineResourceManager@@QAE?AW4EVertexBufferPool@@XZ,
+    // out of line at 0x00B3B090 (no arguments; `mov ecx,[0x01436E98] ; call` ahead of GetVertexBufferUsage at 0x00B51583).
+    EVertexBufferPool GetVertexBufferMemPool();                          // 0x00B3B090
+#endif
     const CShaderResource* GetVShaderResource(EShaderBankNo bank) const { return VShaderResources[bank].Get(); }
     const CShaderResource* GetPShaderResource() const { return ShaderResourcePixel.Get(); }
     // Chunk 742: ?PeekGraphicBank@CEngineResourceManager@@QBEPBVCGraphicDataBank@@W4EGraphicBankNo@@@Z (FableWin.pdb 0x02C85CC0;

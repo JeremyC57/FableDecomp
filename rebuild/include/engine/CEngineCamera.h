@@ -15,6 +15,11 @@ public:
 #endif
  virtual unsigned long PeekSceneFilterFlags()const;
  const C3DVector& PeekCameraPos()const{return CameraDesc.WorldPosition;}
+#ifdef FABLE_RETAIL_CENGINECAMERA_CLIPBOX
+ // Retail opt-in (chunk 2037, CEngineWeatherRenderer::ClipBoxToCamera 0x00B51F60 in the RenderRain / RenderSnow TU): Ego_r.pdb
+ // ?ClipBox@CEngineCamera@@QBE_NABVCMatrix3x4@@@Z, retail 0x00B30610 (called at 0x00B52066 with the box matrix, `test al,al`).
+ bool ClipBox(const CMatrix3x4& box)const;
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_CAMERASTATE
  // Retail opt-in (chunk 2008, row 0x00B665E0 CEngineSkyRenderer::GetEnvironmentMap): FableWin.pdb
  // ?PeekCameraState@CEngineCamera@@QAEABUCEngineCameraDesc@@XZ (0x02D416A0, debug only: inline in release, CameraDesc +0x14 copied in

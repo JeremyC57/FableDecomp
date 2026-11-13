@@ -51,6 +51,13 @@ class CThing;
 class CTCTargetingAI : public CTCTargetingBase {
 public:
     void ClearAllThingsToNotAttack();                                    // 0x007F6160
+#ifdef FABLE_RETAIL_CTCTARGETINGAI_SETSCRIPTTARGETOVERRIDE
+    // Opt-in (chunk 2017, row 0x00974110 CAIStateGroup_JackOfBladesBase::Summon): Ego_r.pdb / FableWin.pdb
+    // ?SetScriptTargetOverride@CTCTargetingAI@@QAEXPAVCThingCreatureBase@@@Z, expanded in retail (0x00974564..0x009745A3: the
+    // CIntelligentPointer<CThingCreatureBase> temporary built from the argument, SetPItem on +0x40, the temporary destroyed). Needs
+    // FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN.
+    void SetScriptTargetOverride(CThingCreatureBase* target) { PScriptTargetOverride = target; }
+#endif
 protected:
     CIntelligentPointer<CThingCreatureBase> PBestEnemyCreatureForAttack; // +0x38
     CIntelligentPointer<CThingCreatureBase> PScriptTargetOverride;       // +0x40

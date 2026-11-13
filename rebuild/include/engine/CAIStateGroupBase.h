@@ -122,6 +122,12 @@ protected:
     EAIActionReturn AIAction_ProjectileAttackAndStrafeToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing,
         CIntelligentPointer<const CThing> target, float proximity, bool& reached, EMovementType movement, bool param);   // 0x0097EF60
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION_NOWAIT
+    // Nested opt-in (chunk 2017, row 0x00974110 CAIStateGroup_JackOfBladesBase::Summon): Ego_r.pdb
+    // ?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z (protected; donor 0x00848680 just
+    // before AIAction_PerformActionAndWait as retail 0x0097D8B0 / 0x0097DB70; the landed GoToBed::Update binds a pointer spelling).
+    EAIActionReturn AIAction_PerformAction(const class CCreatureActionBase& action);   // 0x0097D8B0
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_COMBATPERFORMACTION
     // Nested opt-in (chunk 854, row 0x00924C70 CAIStateGroup_KrakenAttack::Update): Ego_r.pdb / FableWin.pdb
     // ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z (protected; retail 0x0097DA40).

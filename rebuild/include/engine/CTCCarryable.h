@@ -16,6 +16,12 @@ class CTCCarryable : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CARRYABLE; }
     const CThing* GetPCarriedByThing() const;                        // 0x00705170
+#ifdef FABLE_RETAIL_CTCCARRYABLE_NONCONST_CARRIER
+    // Opt-in (w22 agent2007, rows 0x006DE8C0 / 0x006DEEE0 CTCTrophy): Ego_r.pdb / FableWin.pdb ?GetPCarriedByThing@CTCCarryable@@QAEPAVCThing@@XZ,
+    // the non-const twin, out of line at 0x00705180 right after the const copy 0x00705170 (byte-identical bodies; the trophy rows
+    // call 0x00705180). Declaration only.
+    CThing* GetPCarriedByThing();                                    // 0x00705180
+#endif
     long GetCarrySlotActive() const;                                 // 0x00705CC0
 #ifdef FABLE_RETAIL_CTCCARRYABLE_SETASCARRIEDBY
     // Opt-in (w22 agent1016, row 0x006A16A0 CTCCarrying::RemoveThingInCarrySlot calls it with 0): Ego_r.pdb / FableWin.pdb

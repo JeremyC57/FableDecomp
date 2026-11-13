@@ -22,6 +22,12 @@ public:
     // the inline body is in engine/CGraphicInfo.h (needs the complete CGraphicInfo). No layout change.
     CGraphicDataBank::ETextureType GetTextureType() const;
 #endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME
+    // Retail opt-in (chunk 2031, rows 0x00B54E30 RenderSnow / 0x00B65A20 RenderOuterSky): FableWin.pdb
+    // ?GetFrame@CGraphicInfoFrame@@QBE_NAAVCGraphicFrame@@KK@Z (no Ego_r.pdb copy, no retail out-of-line copy; expanded in both rows).
+    // The body is in engine/CGraphicInfo.h (it needs the complete CGraphicInfo / CGraphicDataBank).
+    bool GetFrame(CGraphicFrame& frame, unsigned long mipmap_level, unsigned long flags) const;
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
     bool IsFlatSequence() const;
 #endif

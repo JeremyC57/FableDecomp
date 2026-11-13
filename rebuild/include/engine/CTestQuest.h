@@ -16,4 +16,13 @@ public:
     CCharString OutiFile;                                    // +0x14
     CCharString QuestCardDefName;                            // +0x18
 };
+#ifdef FABLE_RETAIL_CTESTQUEST_NAMECOMPARE
+// Retail opt-in (chunk 2016): the sort predicate of CTCInventoryQuests::GetTestQuestsToDisplay 0x0061A8A0, Ego_r.pdb 0x005A0AB0
+// ??RCTestQuestNameCompare@@QBE_NABVCTestQuest@@0@Z (class key V; the std::sort / _Med3 / _Adjust_heap instantiations over CTestQuest*
+// take it by value, VCTestQuestNameCompare@@). No members; operator() declared only (retail 0x006257C0's sort calls it).
+class CTestQuestNameCompare {
+public:
+    bool operator()(const CTestQuest& a, const CTestQuest& b) const;
+};
+#endif
 #endif

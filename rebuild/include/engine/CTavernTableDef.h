@@ -7,25 +7,6 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
-#ifdef FABLE_RETAIL_CTAVERNTABLEDEF
-// Retail opt-in (w22 agent2002, row 0x007B90F0 CTCTavernTable::OnInitialActivate): the polymorphic retail def, RTTI
-// .?AVCTavernTableDef@@ : CSubDefClassBase (packed 0x25-byte base, so AddTankards sits at +0x25 as the generated layout says and as
-// retail reads it, `mov bl,[ecx+25h]` at 0x007B92B2); StatGetTypeName inline (GetSubDef<CTavernTableDef> 0x007B9700 builds the literal
-// in place) and the virtual overrides the landed GetSubDef row 0x007B9700 declares. Needs FABLE_RETAIL_DEF_CLASS_BASE.
-#include "fable_string.h"
-#include "engine/CSubDefClassBase.h"
-class CPersistContext;
-class CTavernTableDef : public CSubDefClassBase {
-public:
-    static CCharString __fastcall StatGetTypeName() { return CCharString("CTavernTableDef", -1); }   // (inline)
-    virtual void Transfer(CPersistContext&);                      // ?Transfer@CTavernTableDef@@UAEXAAVCPersistContext@@@Z
-    virtual void Copy(const CDefClassBase*);                      // ?Copy@CTavernTableDef@@UAEXPBVCDefClassBase@@@Z
-    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CTavernTableDef@@UAEKXZ
-    bool AddTankards;                                             // +0x25
-    bool HighQualityTankards;                                     // +0x26
-};
-FABLE_STATIC_ASSERT(offsetof(CTavernTableDef, AddTankards) == 0x25);
-#else
 
 #pragma pack(push, 1)
 class CTavernTableDef {
@@ -42,5 +23,4 @@ FABLE_STATIC_ASSERT(offsetof(CTavernTableDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTavernTableDef, AddTankards) == 0x25);
 FABLE_STATIC_ASSERT(offsetof(CTavernTableDef, HighQualityTankards) == 0x26);
 
-#endif // FABLE_RETAIL_CTAVERNTABLEDEF
 #endif // FABLE_ENGINE_CTAVERNTABLEDEF_H

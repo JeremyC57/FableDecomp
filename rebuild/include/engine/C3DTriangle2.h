@@ -5,6 +5,13 @@
 class C3DTriangle2 {
 public:
     unsigned long GetVertexIndex(unsigned long index) const { return VertexIndex[index]; }
+#ifdef FABLE_RETAIL_C3DPRIMITIVE_CORNER_ACCESSORS
+    // Retail opt-in (chunk 3017, row 0x00BB1F50): FableWin.pdb ?GetA/B/C@C3DTriangle2@@QBEKXZ, the corner accessors the cloth TU instantiates
+    // (debug COMDATs listed after CalculateVertexNormals, 0x02E77990..).
+    unsigned long GetA() const { return VertexIndex[0]; }
+    unsigned long GetB() const { return VertexIndex[1]; }
+    unsigned long GetC() const { return VertexIndex[2]; }
+#endif
 private:
     unsigned short VertexIndex[3];
 };

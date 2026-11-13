@@ -98,6 +98,12 @@ private:
     void Add2DTri(const CTVertexRHWColSpecTex1&,const CTVertexRHWColSpecTex1&,const CTVertexRHWColSpecTex1&,long,CTexture*);   // 0x009DC030
 public:
 #endif
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_BOXCOLOURS
+    // Retail opt-in (chunk 2016, row 0x0061AD60 CTCInventoryQuests::DrawActiveTestQuests): Ego_r.pdb 0x00B31770 / FableWin.pdb 0x030E2A80
+    //   ?Draw2DBoxColours@CRenderManager2D@@QAE_NABVC2DBoxF@@QBVCRGBColour@@K@Z (retail 0x009DDA50, landed; `ret 0Ch`). The `QBV` is an
+    //   array parameter (one colour per corner), not a plain pointer: the landed row's `const CRGBColour*` mangles PBV (NAME_FIXES).
+    bool Draw2DBoxColours(const C2DBoxF& box, const CRGBColour colours[], unsigned long flags);   // 0x009DDA50
+#endif
 #ifdef FABLE_RETAIL_CRENDERMANAGER2D_VIEWPORTBOXFLOAT
     // Retail opt-in (chunk 784, row 0x00BC6DB0 CEnginePrimitiveManagerText::RenderSubPrimitive): the out-of-line viewport box getter
     // 0x00A0AAA0 (`ret`, returns the address of the float viewport box), called on NEngineInternal::GPRenderManager (0x01436E18) there and

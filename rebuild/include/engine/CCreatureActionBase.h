@@ -193,6 +193,12 @@ protected:
     virtual void OnAnimationLoaded();
 protected:
     virtual bool WaitForMeshToLoad() const;
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_UPDATEANIM
+    // Opt-in (w22 agent2007, row 0x00665860 CThingCreatureBase::UpdateAnimation): Ego_r.pdb / FableWin.pdb
+    // ?UpdateActionAnimation@CCreatureActionBase@@QAEXXZ (public, out of line in retail at 0x00694890). Declaration only.
+public:
+    void UpdateActionAnimation();                                        // 0x00694890
+#endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
     // Chunk 764 (row 0x00859660 CCombatActionBase::ResetMeleeCombatAbilityEffects): Ego_r.pdb protected accessors, out of line in
     // retail: ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ 0x00692910 and

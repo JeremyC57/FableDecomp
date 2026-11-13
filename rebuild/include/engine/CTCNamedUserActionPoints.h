@@ -67,22 +67,9 @@ FABLE_STATIC_ASSERT(sizeof(CTCUserActionPointBase) == 0x34);
 FABLE_STATIC_ASSERT(sizeof(CTCNamedUserActionPoints) == 0x40);
 #else
 
-#ifdef FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS_FREEPOINT
-// Retail opt-in (w22 agent2002, row 0x007B90F0 CTCTavernTable::OnInitialActivate): Ego_r.pdb / FableWin.pdb
-// ?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z (out of line
-// at 0x007FF190; the landed binding with pointer parameters is a stand-in) and ?GetName@CTCNamedUserActionPoints@@QAEXJAAVCCharString@@@Z
-// (0x007FEFC0). Declarations only (the flattened layout is unchanged).
-#include "fable_string.h"
-class CThing; class C3DVector; class CRightHandedSet;
-#endif
 #pragma pack(push, 1)
 class CTCNamedUserActionPoints {
 public:
-#ifdef FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS_FREEPOINT
-    bool GetFreeNamedActionPoint(CThing& thing, C3DVector& pos, CRightHandedSet& rh_set, CCharString name, long& index, long user,
-                                 bool reserve);                                              // 0x007FF190
-    void GetName(long index, CCharString& name);                                             // 0x007FEFC0
-#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08

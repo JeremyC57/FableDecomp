@@ -44,4 +44,14 @@ template<class Base> inline void CGenericVertex<Base>::SetNormal(const C3DVector
 template<class Base> inline void CGenericVertex<Base>::SetU1(float u){this->U1=u;}
 template<class Base> inline void CGenericVertex<Base>::SetV1(float v){this->V1=v;}
 #endif
+#ifdef FABLE_RETAIL_CGENERICVERTEX_INLINE
+// Retail opt-in (chunk 2005, row 0x00B51570): the FableWin.pdb inline setters (no out-of-line copy in retail): plain member stores.
+template<class Base> inline void CGenericVertex<Base>::SetX(float x) { this->X = x; }
+template<class Base> inline void CGenericVertex<Base>::SetY(float y) { this->Y = y; }
+template<class Base> inline void CGenericVertex<Base>::SetZ(float z) { this->Z = z; }
+template<class Base> inline void CGenericVertex<Base>::SetXYZ(float x, float y, float z) { this->X = x; this->Y = y; this->Z = z; }
+template<class Base> inline void CGenericVertex<Base>::SetU1(float u) { this->U1 = u; }
+template<class Base> inline void CGenericVertex<Base>::SetV1(float v) { this->V1 = v; }
+template<class Base> inline void CGenericVertex<Base>::SetU1V1(float u, float v) { this->U1 = u; this->V1 = v; }
+#endif
 #endif

@@ -33,6 +33,13 @@ public:
     unsigned long GetAnimateThingFlags() const;                // 0x005DC390
     long GetTransitionTime() const;                            // 0x005DC1D0
 #endif
+#ifdef FABLE_RETAIL_CANIMATIONENTRY_BLENDTIMES
+    // Opt-in (w22 agent2007, row 0x00665860 CThingCreatureBase::UpdateAnimation): Ego_r.pdb / FableWin.pdb ?GetDelayTime@CAnimationEntry@@QBEJXZ
+    // (out of line, 0x005DC1F0) and ?GetTimeToBlendIn@CAnimationEntry@@QBEJABVCThing@@@Z (0x005DC230; the creature itself is pushed).
+    // Declarations only.
+    long GetDelayTime() const;                                 // 0x005DC1F0
+    long GetTimeToBlendIn(const class CThing& thing) const;    // 0x005DC230
+#endif
 #ifdef FABLE_RETAIL_CANIMATIONENTRY_GETFLAGS
     // Retail opt-in (agentNF9, row 0x00663140 CThingCreatureBase::PreloadAnims): Ego_r.pdb / FableWin.pdb ?GetFlags@CAnimationEntry@@QBEJXZ
     // (public const, out of line at 0x005DC210; the row tests `& 4` on its result). Declaration only.

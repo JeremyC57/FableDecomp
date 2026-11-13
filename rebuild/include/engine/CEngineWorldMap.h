@@ -39,18 +39,37 @@ public:
         return GetMap(index);
     }
 #endif
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_PEEKLANDSCAPE
+    // Retail opt-in (chunk 2037, row 0x00B52DD0 CEngineWeatherRenderer::ClipBoxToLandscape): FableWin.pdb
+    // ?MapHasDataAtPoint@CEngineWorldMap@@QBE_NJJ@Z (also Ego_r.pdb 0x009FC700) and ?PeekLandscapeHeight@CEngineWorldMap@@QBEMJJ@Z,
+    // inline in retail (FableWin keeps their COMDATs right after ClipBoxToLandscape, 0x02D3B1F0 / 0x02D3B260). Bodies in
+    // engine/CEngineMap.h (FABLE_RETAIL_CENGINEMAP_PEEK_BODIES): they need CEngineMap complete.
+    bool MapHasDataAtPoint(long x, long y) const;
+    float PeekLandscapeHeight(long x, long y) const;
+#endif
     short*         Map;                                    // +0x0c
     long             MapArrayWidth;                          // +0x10
     long             MapArrayHeight;                         // +0x14
     long             MapOffsetX;                             // +0x18
     long             MapOffsetY;                             // +0x1c
     CArray<CEngineMap*> MapList;                             // +0x20
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLD
+    // Retail opt-in (chunk 2031, row 0x00B65A20 CEngineSkyRenderer::RenderOuterSky): Ego_r.pdb GameWorld (CIDrawWorld*) at retail +0x198
+    // with FableWin.pdb ?PeekGameWorld@CEngineWorldMap@@QBEPBVCIDrawWorld@@XZ, inline in retail (0x00B65A48..0x00B65A55:
+    // `mov ecx,[map+198h] ; mov edx,[ecx] ; call [edx+4]`, the CIDrawWorld slot-1 DrawGetEnvironment). The members around it stay opaque.
+    const CIDrawWorld* PeekGameWorld() const { return GameWorld; }
+private:
+    unsigned char       _pad_0x2c[0x16c];                    // +0x2c
+    CIDrawWorld*        GameWorld;                           // +0x198
+    unsigned char       _pad_0x19c[0x24];                    // +0x19c GameWorldMap .. (not modelled)
+#else
 private:
     // Chunk 731: retail CEngineWorldMap is 0x1C0 bytes (CEngine::Initialise 0x00B26360 news 0x1C0 before ??0CEngineWorldMap@@QAE@
     // ABVCEngineInit@@@Z 0x00B423F0), not the 0x360 the generated container-size model gives: the two CStaticMapBankFile members
     // are smaller in retail. The members after MapList (VisibleMapList .. CommonHeaderPosLookupTable, see the default model
     // below) are opaque until their retail offsets are proven; no landed row reads them (0x00B67920 uses MapList only).
     unsigned char       _pad_0x2c[0x194];                    // +0x2c
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineWorldMap) == 0x1c0);
 FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, MapList) == 0x20);

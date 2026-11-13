@@ -243,6 +243,13 @@ public:
     const CEnvironment& PeekEnvironment()const { return *PEnvironment_ptr; }
 #endif
 #endif
+#ifdef FABLE_RETAIL_CWORLD_REGIONLOADCONFIRMATION
+    // Retail opt-in (w22 agent2012, row 0x006DE280 CTCTrophy::TerminateMinigame): FableWin.pdb ?SetRegionLoadConfirmationAsGiven@CWorld@@QAEXXZ,
+    // inline in retail (`call GetWorld ; mov byte ptr [eax+130h],0`, 0x006DE896..0x006DE89E); FableWin emits its COMDAT (0x0249D470) right
+    // after TerminateMinigame (0x0249BE40), the function that references it. The body clears RegionLoadWaitingForConfirmation (+0x130).
+    // No layout change.
+    void SetRegionLoadConfirmationAsGiven() { RegionLoadWaitingForConfirmation = false; }
+#endif
 #ifdef FABLE_RETAIL_CWORLD_GAMESCRIPTINTERFACE
     // Opt-in (chunk 1024, row 0x006E2ED0 CTCTalk::GetCurrentLipSyncFrameData): Ego_r.pdb / FableWin.pdb
     // ?GetGameScriptInterface@CWorld@@QBEAAVCGameScriptInterface@@XZ, inline in retail (`mov ecx,[eax+38h]` straight after GetWorld,
@@ -350,6 +357,12 @@ public:
     CArray<CCharString>         InitialActiveQuests;         // +0xac (chunk 734: typed)
     std::vector<CCharString>    RegisteredQuests;            // +0xb8 (chunk 734: typed)
     std::vector<CTestQuest>     ActiveTestQuests;            // +0xc4 (chunk 734: typed)
+#ifdef FABLE_RETAIL_CWORLD_ACTIVETESTQUESTS
+    // Nested opt-in (chunk 2016, the CTCInventoryQuests::GetTestQuestsToDisplay body 0x0061A8A0 written into row 0x0061AD60's TU):
+    // FableWin.pdb 0x01F7D6A0 ?GetActiveTestQuests@CWorld@@QBEABV?$vector@VCTestQuest@@V?$allocator@VCTestQuest@@@std@@@std@@XZ (no Ego_r.pdb
+    // or Fable.exe copy: inline, 0x0061A8AC adds 0xC4 to PeekWorld's result in place). No layout change.
+    const std::vector<CTestQuest>& GetActiveTestQuests() const { return ActiveTestQuests; }
+#endif
     unsigned long               CreatureGenerationDisabledGroups; // +0xd0
     bool                        CreatureGenerationEnabled;   // +0xd4
     bool                        TeleportingEnabled;          // +0xd5

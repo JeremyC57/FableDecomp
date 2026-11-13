@@ -65,6 +65,12 @@ public:
         long SearchHandle;                                   // +0x04
     };
     static bool __fastcall StartFileScan(const CWideString& pattern,CFileScanInfo& info,wchar_t* firstFile);   // 0x00999760
+#ifdef FABLE_RETAIL_CAFILE_SCANNEXTFILE
+    // Nested opt-in (chunk 2010, row 0x004959E0 CFrontendGameComponent::GetProfileNames): Ego_r.pdb / FableWin.pdb
+    // ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PA_W@Z (retail 0x00999850; pattern in ecx, info in edx, the name buffer
+    // pushed, as StartFileScan; bound as ...PAG@Z by the landed 0x005955AB: VC7.1 without /Zc:wchar_t spells the buffer unsigned short).
+    static bool __fastcall ScanNextFile(const CWideString& pattern,CFileScanInfo& info,unsigned short* nextFile);   // 0x00999850
+#endif
     // Header wave 2026-11-03 (row 0x00821010, the length/version prefix of each file record): FableWin.pdb
     // ??$ReadVar@K@CAFile@@QAEXAAKPAVCASuspendableProcess@@@Z / ??$ReadVar@E@.. (no out-of-line copy in Fable.exe): an aligned
     // file reads through a rounded CArray<unsigned char> buffer.

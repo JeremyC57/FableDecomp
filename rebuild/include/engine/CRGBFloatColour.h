@@ -28,6 +28,11 @@ public:
         : R(colour.R * (1.0f / 255.0f)), G(colour.G * (1.0f / 255.0f)), B(colour.B * (1.0f / 255.0f)), A(colour.A * (1.0f / 255.0f)) { }
     void Initialise(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }
     CRGBFloatColour& operator*=(const CRGBFloatColour& other) { R *= other.R; G *= other.G; B *= other.B; A *= other.A; return *this; }
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_SCALE
+    // Opt-in (chunk 2020, row 0x006414A0 CTCLight::DrawLight): FableWin.pdb ??XCRGBFloatColour@@QAEAAV0@M@Z (operator*=(float)), inline
+    // in retail (0x0064194A..0x00641982: R, G, B, A each `fld ; fmul [scale] ; fstp` in member order; no out-of-line copy is bound).
+    CRGBFloatColour& operator*=(float value) { R *= value; G *= value; B *= value; A *= value; return *this; }
+#endif
 #ifdef FABLE_RETAIL_CRGBFLOATCOLOUR
     // ?GetRGBColour@CRGBFloatColour@@QBE?AVCRGBColour@@XZ (FableWin.pdb; out-of-line COMDAT 0x00429880, landed): inline here so
     // a caller that passes `colour.GetRGBColour()` by value expands it in its argument list (CTCInventoryExperience::

@@ -1,6 +1,8 @@
 #ifndef FABLE_ENGINE_CUSERPROFILEMANAGER_H
 #define FABLE_ENGINE_CUSERPROFILEMANAGER_H
 #if defined(FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME) || defined(FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME_MEMBER)
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
 #include "fable_string.h"
 #endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD
@@ -57,6 +59,22 @@ public:
     CWideString GetManualSaveDisplayName(long slot) const;               // 0x00406AE0
 #endif
     void ProcessPendingTutorials();                                      // 0x0040BB30
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
+    // Opt-in (chunk 2003, row 0x00598463 CFrontEndManager::RefreshAvailableSavedGamesForProfile): Ego_r.pdb / FableWin.pdb spellings,
+    // out of line in retail. IsDebugProfile is retail's two-byte `xor al,al ; ret` 0x00407030 (FableWin.pdb lays it right before
+    // SetProfileName / DeleteProfile, retail right before DeleteProfile 0x00407040); GetEmptySlotName 0x00406A80 looks up
+    // "TEXT_GUI_SAVE_EMPTY_SLOT"; GetSaveDisplayNameFromFileName 0x00407E10 and GetPathNameFromFileName 0x00408120 (both hidden
+    // result). FableWin.pdb ?GetProfileName@CUserProfileManager@@QBEABVCWideString@@XZ is inline in retail (`lea edx,[eax+8]`,
+    // 0x00598510): ProfileName is Ego_r.pdb's member at +0x08 (vptr, CBaseClass word, then ProfileName). Not combinable with the
+    // VOLUME / TARGETINGSTATUS / SCOREBOARD layout blocks (own pad).
+    bool IsDebugProfile() const;                                                      // 0x00407030
+    CWideString GetEmptySlotName() const;                                             // 0x00406A80
+    CWideString GetSaveDisplayNameFromFileName(const CWideString&, long) const;       // 0x00407E10
+    CWideString GetPathNameFromFileName(const CWideString&, bool) const;             // 0x00408120
+    const CWideString& GetProfileName() const { return ProfileName; }
+    unsigned char _pad_sn_0x00[0x8];                                                  // vptr, CBaseClass word
+    CWideString ProfileName;                                                          // +0x08
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS
     // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): the option setters the UI actions call, out of line in
     // retail, FableWin.pdb / Ego_r.pdb spellings (?SetGamma@CUserProfileManager@@QAEXM_N@Z ...; the second bool is "use the new

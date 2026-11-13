@@ -23,6 +23,12 @@ private:
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_TALK; }
     bool IsTalking() const;
+#ifdef FABLE_RETAIL_CTCTALK_UPDATE
+    // Opt-in (w22 agent2007, row 0x00665860 CThingCreatureBase::UpdateAnimation): Ego_r.pdb / FableWin.pdb
+    // ?Update@CTCTalk@@QAEXAAVCAnimateThing@@ABVCAnimateThingUpdate@@@Z (out of line in retail at 0x006E3B90, the talk component's lip-sync
+    // animation step). Declaration only.
+    void Update(class CAnimateThing& animation, const class CAnimateThingUpdate& update);              // 0x006E3B90
+#endif
 #ifdef FABLE_RETAIL_CTCTALK
     // Retail opt-in (chunk 755, row 0x008AF500 CombatDialogueManager::AttemptToSpeak): Ego_r.pdb 0x0070E0C0
     // ?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@K_NW4EDialogueLayer@NSpeechGainManager@@00@Z (retail 0x006E3B60). The
@@ -37,6 +43,12 @@ public:
 #endif
 #endif
     void StopCurrentSpeech();
+#ifdef FABLE_RETAIL_CTCTALK_SPEECHSAMPLEPLAYING
+    // Opt-in (chunk 2010, row 0x00716DE0 CActionTalkBase::Update): Ego_r.pdb / FableWin.pdb ?IsSpeechSamplePlaying@CTCTalk@@QBE_NXZ (retail
+    // 0x006E2D30, landed) and ?IsSpeechSampleLoadedAndPlaying@CTCTalk@@QBE_NXZ (retail 0x006E2DC0, landed), out of line. Declarations only.
+    bool IsSpeechSamplePlaying() const;                                  // 0x006E2D30
+    bool IsSpeechSampleLoadedAndPlaying() const;                         // 0x006E2DC0
+#endif
 #ifdef FABLE_RETAIL_CTCTALK_CONVERSATION
     // Retail opt-in (chunk 1026, row 0x00716B30 CActionTalkBase::SetUpTextAndSpeech): FableWin.pdb
     // ?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@AAVCASoundBank@@J_NABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@11@Z

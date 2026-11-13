@@ -66,6 +66,11 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_NAVIGATION; }
     bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity) const;   // 0x006CB620
 #endif
+#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGATORTYPE
+    // Nested opt-in (w22 agent2007, row 0x00665860 CThingCreatureBase::UpdateAnimation): Ego_r.pdb / FableWin.pdb
+    // ?GetNavigatorType@CTCCreatureNavigation@@QBEKXZ (public const, out of line in retail at 0x006CB6A0). Declaration only.
+    unsigned long GetNavigatorType() const;                                                                 // 0x006CB6A0
+#endif
 #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_LINEOFSIGHT
     // Nested opt-in (chunk 770, row 0x006CB610): Ego_r.pdb ?IsPosNavLineOfSightToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0@Z
     // (public const), retail a PNavigator slot-10 forward (IsNavLineOfSightClear) just before IsAbleToNavigateFromPosToPos 0x006CB620.

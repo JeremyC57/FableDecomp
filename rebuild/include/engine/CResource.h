@@ -20,6 +20,18 @@ public:
     void SetResourceSize(unsigned long); // original both PDBs, native009fbf20
 #endif
     void SetAsMRU(); // native009fc4a0
+#ifdef FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+    // Retail opt-in (chunk 2031, rows 0x00B54E30 / 0x00B65A20): FableWin.pdb ?TouchResource@CResource@@QAEXXZ (no Ego_r.pdb copy), inline:
+    // move the resource to the most-recently-used end of its list once per frame -- the private Ego_r.pdb / FableWin.pdb
+    // ?ListRemove@CResource@@AAEXXZ 0x009FBFB0 and ?ListInsert@CResource@@AAEXPAV1@0@Z 0x009FBF90 called out of line (0x00B54F11 /
+    // 0x00B54F23), as the landed CGraphicInfoFrame::GetTexture 0x00B66C10 spells it. The body is in engine/CResourceList.h (it needs the
+    // complete list).
+    void TouchResource();
+private:
+    void ListRemove();                                                   // 0x009FBFB0
+    void ListInsert(CResource* prev, CResource* next);                   // 0x009FBF90
+public:
+#endif
 #endif
     CResource();                                                         // 0x009FBEC0 (??0CResource@@QAE@XZ, bound)
 #if defined(FABLE_RETAIL_CRESOURCE_SETRESOURCESIZE) && !(defined(FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS) && defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE))

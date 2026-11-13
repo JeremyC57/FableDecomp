@@ -24,7 +24,17 @@ public:
  void SetPhaseStartPos(const C3DVector& pos){PhaseStartPos=pos;}
 #endif
  bool HasBossDef()const{return !PBossDef.IsNull();}
+#ifdef FABLE_RETAIL_CTCBOSS_GENERICCOUNTER
+ // Opt-in (chunk 2009, row 0x00952890 CAIStateGroup_JackDragon::UpdateGround): FableWin.pdb ?GetGenericCounter@CTCBoss@@QBEJXZ, inline in
+ // retail (UpdateGround reads GenericCounter +0x10 of the GetTC<CTCBoss> result in place, 0x00952CE4 `mov edx,[ecx+10h]`). No layout change.
+ long GetGenericCounter()const{return GenericCounter;}
+#endif
  const CBossDef& GetBossDef()const{return *PBossDef;}
+#ifdef FABLE_RETAIL_CTCBOSS_SETHELPERCREATURE
+ // Opt-in (chunk 2017, row 0x00974110 CAIStateGroup_JackOfBladesBase::Summon): Ego_r.pdb ?SetHelperCreature@CTCBoss@@QAEXAAVCThingAICreature@@@Z
+ // (donor 0x007B0CE0), out of line in retail at 0x007AF310 (bound by that spelling). Declaration only.
+ void SetHelperCreature(CThingAICreature&);                           // 0x007AF310
+#endif
 #ifdef FABLE_RETAIL_CTCBOSS_EFFECTS
  // Retail opt-in (chunk Q2, row 0x008E0A10 NCreatureMode::CModeScorpionKingVulnerable::FrameUpdate): Ego_r.pdb / FableWin.pdb
  // ?IncrementBossPhase@CTCBoss@@QAEXXZ (0x007AED20), ?IsReadyForPhaseChange@CTCBoss@@QBE_NXZ (0x007AEE90), ?CountEffects@CTCBoss@@QAEJXZ

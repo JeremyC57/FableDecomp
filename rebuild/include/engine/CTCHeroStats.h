@@ -66,6 +66,13 @@ public:
     // out of line in retail at 0x0057D8BE (`push [def+184h] ; mov ecx,stats ; call 0x0057D8BE`, 0x005EB6BA). Declaration only.
     void AddRenown(long amount);                                         // 0x0057D8BE
 #endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_TROPHYWITNESSES
+    // Nested opt-in (w22 agent2012, row 0x006DE280 CTCTrophy::TerminateMinigame): FableWin.pdb ?GetBestTrophyWitnesses@CTCHeroStats@@QBEJXZ
+    // (0x021BC9D9) and ?SetBestTrophyWitnesses@CTCHeroStats@@QAEXJ@Z (COMDAT 0x0249D490, emitted right after TerminateMinigame 0x0249BE40),
+    // inline in retail (`cmp ebx,[ebp+0DCh] ; jle ; mov [ebp+0DCh],ebx`, 0x006DE571..0x006DE579). No layout change.
+    long GetBestTrophyWitnesses() const { return BestTrophyWitnesses; }
+    void SetBestTrophyWitnesses(long value) { BestTrophyWitnesses = value; }
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_MORALITYMAX
     // Opt-in (chunk 1008, row 0x005EE77C CTCInventoryAbilities::GetExperienceCostToUpgradeAbility): Ego_r.pdb
     // ?GetMoralityMax@CTCHeroStats@@QBEJXZ (public const), out of line at 0x0057A67E (landed). Declaration only: no layout change.
@@ -321,6 +328,25 @@ public:
 private:unsigned char _before_stamina[0x58-sizeof(CTCBase)];
     long Stamina,MaxStamina,FramesUntilStaminaRefills;
     unsigned char _after_stamina[0x1dc-0x64];
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_FATNESS)
+    // Nested opt-in layout (w22 agent2012, row 0x006D1250 CTCWife::CheckAppearanceChanges): Ego_r.pdb Fatness (float) at the generated
+    // default branch's +0x38 (the row's `fld dword ptr [ecx+38h]` on the hero's TC 4 and the integer copy `mov ecx,[ecx+38h]`,
+    // 0x006D180E / 0x006D183A) with FableWin.pdb's inline ?GetFatness@CTCHeroStats@@QBEMXZ (0x01E65BE1).
+public:
+    float GetFatness() const { return Fatness; }
+private:
+    unsigned char _pad_after_base[0x38 - sizeof(CTCBase)];
+    float Fatness;                                                       // +0x38
+    unsigned char _pad_0x3c[0x1dc - 0x3c];
+public:
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_TROPHYWITNESSES)
+    // Nested opt-in layout (w22 agent2012, row 0x006DE280): Ego_r.pdb BestTrophyWitnesses (long) at the generated default branch's +0xDC
+    // (retail TerminateMinigame `cmp ebx,[ebp+0DCh]` / `mov [ebp+0DCh],ebx` on the hero's TC 4, 0x006DE571 / 0x006DE579).
+private:
+    unsigned char _pad_after_base[0xdc - sizeof(CTCBase)];
+    long BestTrophyWitnesses;                                            // +0xdc
+    unsigned char _pad_0xe0[0x1dc - 0xe0];
+public:
 #else
     unsigned char _pad_after_base[0x1dc - sizeof(CTCBase)];
 #endif

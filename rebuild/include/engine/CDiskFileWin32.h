@@ -21,7 +21,14 @@ public:
     virtual long GetPosition() const { return Position; }
     virtual long GetLength() const { return Length; }
     virtual void SetLength(long);
+#ifdef FABLE_RETAIL_CDISKFILEWIN32_ISOPEN_INLINE
+    // Nested opt-in (chunk 2010, row 0x004959E0 CFrontendGameComponent::GetProfileNames): Ego_r.pdb / FableWin.pdb ?IsOpen@CDiskFileWin32@@UBE_NXZ
+    // is defined in the class: its vtable slot 10 (0x0122D06C + 0x28) is the COMDAT 0x00401680 (`mov al,[ecx+14h] ; ret`), and a local
+    // object's call is expanded in place (0x00495BCF `mov al,[esp+0BCh] ; test al,al`).
+    virtual bool IsOpen() const { return Opened; }
+#else
     virtual bool IsOpen() const;
+#endif
     virtual CWideString GetPathname() const;
     virtual CFileInformation GetFileInformation();
     virtual CAFile* Clone() const;

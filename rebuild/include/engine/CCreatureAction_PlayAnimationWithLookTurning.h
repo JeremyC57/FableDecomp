@@ -11,7 +11,13 @@ public: CCreatureAction_PlayAnimationWithLookTurning(CThingCreatureBase&,const C
 public: virtual bool IsPreventingLookTurning() const;
 public: virtual void FinishAction();
 public: virtual CCreatureActionBase* Clone() const;
+#ifndef FABLE_RETAIL_CCREATUREACTION_PLAYANIMATION_IMPLICIT_DTOR
 public: virtual ~CCreatureAction_PlayAnimationWithLookTurning();
+#else
+    // Nested opt-in (chunk 2010, row 0x00716DE0 CActionTalkBase::Update): no user-declared destructor. A stack object of this class is
+    // destroyed in retail by a direct call of ~CCreatureActionBase 0x00693EF0 with no derived vtable store first (0x0071703F, 0x00717142):
+    // the derived destructors are compiler-generated (VC7.1 drops their vtable reset), as the PDB-listed ??1 of a generated destructor.
+#endif
 public: CCreatureAction_PlayAnimationWithLookTurning& operator=(const CCreatureAction_PlayAnimationWithLookTurning&);
 };
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PlayAnimationWithLookTurning)==0xb4);

@@ -252,6 +252,15 @@ private:
     bool InitFromThingInfo(const CSerialiseInfo&);               // 0x004C7F40
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHING_CONSTRUCTFROMLEVELSCRIPT
+    // Nested opt-in (chunk 2016, row 0x004CAA00 ConstructFromLevelScript): Ego_r.pdb 0x004CC640 / FableWin.pdb 0x01CF0320
+    // ?CreateSerialiseCreatableTCs@CThing@@IAEXABVCCharString@@@Z (protected; the load twin of SaveSerialiseCreatableTCs), out of line in
+    // retail at 0x004CA230 (the landed row, spelled there as the descriptive public CreateTCsFromString; the level-script loader calls it
+    // with its script string, 0x004CAE5B..0x004CAE62). Declaration only: no layout change.
+protected:
+    void CreateSerialiseCreatableTCs(const CCharString&);        // 0x004CA230
+public:
+#endif
 #endif
     void Kill(bool); // Ego_r original public member; native004c9b80.
 #ifdef FABLE_RETAIL_CTHING_LEVELPERSISTENCE

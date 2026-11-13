@@ -68,12 +68,33 @@ class CRegion;
 class CThing;
 namespace NInventory { class CItem; }
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_DRAWTEXT
+class C2DVector; class CWideString; class CFontBank; class CRGBColour;
+#endif
 namespace NInventory {
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED
 class CCategory;
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_DRAWTEXT
+// Retail opt-in (chunk 2016, row 0x0061AD60 CTCInventoryQuests::DrawActiveTestQuests): the namespace-scope enum the Ego_r.pdb /
+// FableWin.pdb DrawInventoryText signature mangles as W4ETextLayout@2@ (NInventory::ETextLayout). The landed body 0x005BCE49 shifts the
+// position left by half the width for 1 and by the full width for 2; the PDB extracts on disk carry no enumerator names, so these
+// are descriptive (the landed row's spelling).
+enum ETextLayout { TEXT_LAYOUT_LEFT = 0, TEXT_LAYOUT_CENTRE = 1, TEXT_LAYOUT_RIGHT = 2 };
+#endif
 class CTCInventoryBase : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_DRAWTEXT
+ // Same opt-in: Ego_r.pdb 0x0061F9FC ?Draw2DText@CTCInventoryBase@NInventory@@SIXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@M_N@Z
+ // (public static __fastcall; retail 0x005BCAFE, ecx = position, edx = text, then font, colour, scale, shadow on the stack; the landed
+ // row binds a free ?Draw2DText@@YIX... stand-in) and Ego_r.pdb 0x0061FD48 / FableWin.pdb
+ // ?DrawInventoryText@CTCInventoryBase@NInventory@@QAEXVC2DVector@@ABVCFontBank@@ABVCWideString@@W4ETextLayout@2@ABVCRGBColour@@_N@Z
+ // (retail 0x005BCE49, `ret 1Ch`; it calls 0x005BCAFE). Both out of line (the size-optimised CTCInventoryBase TU). Declarations only.
+ static void __fastcall Draw2DText(const C2DVector& position, const CWideString& text, const CFontBank& font, const CRGBColour& colour,
+                                   float scale, bool shadow);                                 // 0x005BCAFE
+ void DrawInventoryText(C2DVector position, const CFontBank& font, const CWideString& text, ETextLayout layout, const CRGBColour& colour,
+                        bool shadow);                                                         // 0x005BCE49
+#endif
  long GetBoughtPrice(long) const; // original const member, native005bead5
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_ONCREATE
  // Retail opt-in (chunk 1023, row 0x0061A6A0 CTCInventoryQuests::OnCreate): Ego_r.pdb / FableWin.pdb
@@ -172,6 +193,14 @@ public:
  // ?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z, out of line in retail at 0x005BEB57 (`push region ; mov ecx,this ;
  // call`, ret 4). Declaration only.
  unsigned long GetMiniMapGraphic(CRegion& region) const;                                     // 0x005BEB57
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDCATEGORYINDEX
+ // Retail opt-in (w22 agent2002, row 0x006224C0 CTCInventoryQuests::OpenInventoryPC): Ego_r.pdb / FableWin.pdb
+ // ?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ (out of line at 0x005BC4B2: `mov eax,[ecx+70h] ; ret`) and
+ // ?SetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QAEXJ@Z (0x005BC4B6: `mov [ecx+70h],arg ; ret 4`), SelectedCategoryIndex +0x70.
+ // The landed bound spellings ?GetSelectedCategoryIndex@CTCInventoryQuests@@QAEJXZ / @CTCInventoryBase_Retail@@ are stand-ins. Declarations only.
+ long GetSelectedCategoryIndex() const;                                                       // 0x005BC4B2
+ void SetSelectedCategoryIndex(long index);                                                   // 0x005BC4B6
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_ONINITIALACTIVATE
  // Retail opt-in (chunk 1002, row 0x005CB974 CTCInventoryWeapons::OnInitialActivate, which calls it qualified last): Ego_r.pdb

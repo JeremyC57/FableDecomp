@@ -30,6 +30,14 @@ class CAnimSet{friend class CAnimateThing;public:
  long GetAnimIndex()const{return Anims[0];}
  CAnimFrameInfo GetFrame()const{return CAnimFrameInfo(CurrentPercentageComplete,LastPercentageComplete);}
 #endif
+#ifdef FABLE_RETAIL_CANIMSET_TYPE
+ // Retail opt-in (w22 agent2007, row 0x00665860 CThingCreatureBase::UpdateAnimation): Ego_r.pdb / FableWin.pdb ?GetType@CAnimSet@@QBEJXZ
+ // (inline: the byte +0x50) and ?IsFinished@CAnimSet@@QBE_NXZ (called out of line in that TU: the COMDAT 0x00668A80, `Anims` empty or
+ // the Finished bit +0x51 & 2). Declaration of IsFinished only.
+ long GetType()const{return Type;}
+ unsigned long GetFlags()const{return Flags;}                         // ?GetFlags@CAnimSet@@QBEKXZ (inline: +0x40)
+ bool IsFinished()const;                                               // 0x00668A80
+#endif
 private:
 #ifdef FABLE_RETAIL_CANIMSET_UPDATEDISTANCE
  // Retail opt-in (row 0x0070CE10): Ego_r.pdb ?UpdateDistanceMoved@CAnimSet@@AAEXM@Z, ?PeekAnimInfo@CAnimSet@@ABEABVC3DAnimationInfo@@F@Z

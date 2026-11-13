@@ -231,7 +231,9 @@ public:
     const CEnginePrimitiveThemeChannelDesc& PeekLightingChannel() const { return LightingChannel; }
     void SetLightingChannel(const CEnginePrimitiveThemeChannelDesc& channel, bool update_primitives, bool update_children);   // 0x004BFB40
 private:
-#if !defined(FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT) || !defined(FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE)
+// (chunk 2020 overlay: with FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT the class above already lays out LightingChannel at +0x40, so the
+// opaque layout is skipped -- PeekLightingChannel then reads that member; the two macros together otherwise redefine it, C2086.)
+#if !defined(FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT)
     unsigned char LayoutMeshEffectsToComponents[0x40 - 0x0C];       // +0x0C .. +0x3F (opaque)
     CEnginePrimitiveThemeChannelDesc LightingChannel;               // +0x40
 #endif

@@ -11,12 +11,90 @@
 #include "rebuild_abi.h"
 #include "engine/CEngineComponent.h"
 class CEngineInit;
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_BUFFERS
+// Retail opt-in (chunk 2005, row 0x00B51570 BuildBuffers): the leading Ego_r.pdb members typed at their retail offsets (BuildBuffers
+// initialises and fills +0x0C / +0x40 / +0x54 / +0x88 / +0xBC and steps Settings.RandomNumberGeneratorSeed at +0x1EC = +0x114 + 0xD8);
+// the shader members and the tail stay opaque. ?BuildBuffers@CEngineWeatherRenderer@@AAEXXZ (Ego_r.pdb, private).
+#ifndef FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#endif
+#ifndef FABLE_RETAIL_CINDEXBUFFER
+#define FABLE_RETAIL_CINDEXBUFFER
+#endif
+#include "engine/CVertexBufferWin32.h"
+#include "engine/CIndexBuffer.h"
+#include "engine/CEngineWeatherSettings.h"
+class CVolumeTexture;
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_RENDERRAIN
+// Nested opt-in (chunk 2008, row 0x00B54890 RenderRain): the shader members typed (Ego_r.pdb names, retail offsets +0xD0..+0x108: RenderRain
+// applies RainParticlePixelShader +0xE0, RainParticleVertexShader +0xD0 and RainParticleClippingVertexShader +0xD8), the box visibility
+// array SavedBoxVisibility[729] at +0x784 after WeatherMaskList[3] (+0x66C, 0x5C each, opaque) and CurrentMask +0x780, and the private
+// members RenderRain calls, spelled as both PDB name sets (ABE = private const).
+#ifndef FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CVERTEXSHADER
+#endif
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/C3DVector.h"
+#include "engine/CWeatherMask.h"
+class CEngineComponentRenderParams;
+#endif
+#endif
 class CEngineWeatherRenderer : public CEngineComponent {
 public:
     CEngineWeatherRenderer();                  // 0x00B52250 ??0CEngineWeatherRenderer@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_BUFFERS
+private:
+    void BuildBuffers();                                             // 0x00B51570 ?BuildBuffers@CEngineWeatherRenderer@@AAEXXZ
+    CVertexBufferWin32 RainVertexBuffer;                             // +0x0c
+    CIndexBuffer       RainIndexBuffer;                              // +0x40
+    CVertexBufferWin32 SnowVertexBuffer;                             // +0x54
+    CVertexBufferWin32 MistVertexBuffer;                             // +0x88
+    CIndexBuffer       MistIndexBuffer;                              // +0xbc
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_RENDERRAIN
+    enum EWeatherBoxVisible { WEATHER_BOX_VISIBLE = 0, WEATHER_BOX_CLIPPED = 1 };   // descriptive enumerator names (values from the clip tests)
+    EWeatherBoxVisible ClipBoxToCamera(const C3DVector& pos, float radius) const;   // 0x00B51F60
+    EWeatherBoxVisible ClipBoxToWeatherMaskSphere(const C3DVector& pos) const;       // 0x00B52090
+    EWeatherBoxVisible ClipBoxToLandscape(const C3DVector& pos) const;               // 0x00B52DD0
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_CLIPBODIES
+    // Nested opt-in (chunk 2037): Ego_r.pdb / FableWin.pdb ?GetBoxBoundingSphereRadiusSquared@CEngineWeatherRenderer@@ABEMXZ (private
+    // const, retail 0x00B50E50), called by ClipBoxToWeatherMaskSphere 0x00B52090 (0x00B52096) for the box's bounding-sphere radius.
+    float GetBoxBoundingSphereRadiusSquared() const;                                 // 0x00B50E50
+#endif
+    void SetCommonParticleShaderConstants(long& index);                              // 0x00B52160
+    void RenderRainBox(const C3DVector& pos);                                        // 0x00B54100
+    void RenderRain(const CEngineComponentRenderParams& params);                     // 0x00B54890
+#ifdef FABLE_RETAIL_CENGINEWEATHERRENDERER_RENDERSNOW
+    // Nested opt-in (chunk 2031, row 0x00B54E30): Ego_r.pdb / FableWin.pdb ?RenderSnowBox@CEngineWeatherRenderer@@AAEXABVC3DVector@@@Z
+    // (landed 0x00B54210) and ?RenderSnow@CEngineWeatherRenderer@@AAEXABVCEngineComponentRenderParams@@@Z (private, AAE).
+    void RenderSnowBox(const C3DVector& pos);                                        // 0x00B54210
+    void RenderSnow(const CEngineComponentRenderParams& params);                     // 0x00B54E30
+#endif
+    CVertexShader      RainParticleVertexShader;                     // +0xd0
+    CVertexShader      RainParticleClippingVertexShader;             // +0xd8
+    CPixelShader       RainParticlePixelShader;                      // +0xe0
+    CVertexShader      SnowParticleVertexShader;                     // +0xe8
+    CVertexShader      SnowParticleClippingVertexShader;             // +0xf0
+    CPixelShader       SnowParticlePixelShader;                      // +0xf8
+    CVertexShader      MistVertexShader;                             // +0x100
+    CPixelShader       MistPixelShader;                              // +0x108
+    CVolumeTexture*    MistVolumeTexture;                            // +0x110
+    CEngineWeatherSettings Settings;                                 // +0x114
+    CWeatherMask       WeatherMaskList[3];                           // +0x66c
+    long               CurrentMask;                                  // +0x780
+    EWeatherBoxVisible SavedBoxVisibility[729];                      // +0x784
+    unsigned char      _pad_0x12e8[0x12fc - 0x12e8];                 // +0x12e8 OverridenRainStrength .. (not modelled)
+#else
+    unsigned char      ShaderMembers[0x40];                          // +0xd0 the eight CVertexShader / CPixelShader members (opaque)
+    CVolumeTexture*    MistVolumeTexture;                            // +0x110
+    CEngineWeatherSettings Settings;                                 // +0x114
+    unsigned char      _pad_0x66c[0x12fc - 0x66c];                   // +0x66c WeatherMaskList ... (not modelled)
+#endif
+#else
 private:
     unsigned char _pad_0xc[0x12f0];             // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineWeatherRenderer) == 0x12fc);
 #else // generated flattened Ego_r layout (the landed default, unchanged)

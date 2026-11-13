@@ -69,25 +69,58 @@ protected:
 protected:
  void DrawFlare(long p0,const C3DVector & p1,NGraphicAppearance::CTCGraphicAppearance & p2,const NGraphicAppearance::CGraphicAppearanceDrawInfo & p3);
 protected:
+#ifdef FABLE_RETAIL_CTCLIGHT_DRAWLIGHT
+ const CRGBColour & GetColour() const{if(Overridden)return PLightInfo->Colour;return PLightDef->Colour;}
+#else
  const CRGBColour & GetColour() const;
+#endif
 protected:
  long GetHaloGraphic() const{if(Overridden)return 0;return PLightDef->HaloGraphic;}
 protected:
+#ifdef FABLE_RETAIL_CTCLIGHT_DRAWLIGHT
+ float GetInnerRadius() const{if(Overridden)return PLightInfo->InnerRadius;return PLightDef->InnerRadius;}
+#else
  float GetInnerRadius() const;
+#endif
 protected:
+#ifdef FABLE_RETAIL_CTCLIGHT_DRAWLIGHT
+ float GetOuterRadius() const{if(Overridden)return PLightInfo->OuterRadius;return PLightDef->OuterRadius;}
+#else
  float GetOuterRadius() const;
+#endif
 protected:
  float GetFlicker() const;
 protected:
  float GetFlickerSpeed() const;
 protected:
+#ifdef FABLE_RETAIL_CTCLIGHT_DRAWLIGHT
+ bool IsInverted() const{if(Overridden)return PLightInfo->Inverted;return PLightDef->Inverted;}
+#else
  bool IsInverted() const;
+#endif
 protected:
  void AttachParticles();
 public:
  CTCLight & operator=(const CTCLight & p0);
 protected:
+#ifdef FABLE_RETAIL_CTCLIGHT_DRAWLIGHT
+ // Opt-in (chunk 2020, row 0x006414A0 DrawLight): the nested CTCLight::CLightInfo (Ego_r.pdb, 0x18 bytes; FableWin ??0CLightInfo@CTCLight@@QAE@XZ)
+ // with its members at the offsets DrawLight and the landed setters read (Colour +0, InnerRadius +4, OuterRadius +8, Flicker +0xC,
+ // LightingChannelsEffected +0x10, Inverted +0x14), and the protected getters' bodies above: FableWin.pdb ?GetColour@CTCLight@@IBEABVCRGBColour@@XZ,
+ // ?GetInnerRadius@CTCLight@@IBEMXZ, ?GetOuterRadius@CTCLight@@IBEMXZ, ?IsInverted@CTCLight@@IBE_NXZ -- inline in retail (no out-of-line copy
+ // bound; DrawLight expands each as `Overridden ? PLightInfo->X : PLightDef->X`, 0x0064151E / 0x00641986 / 0x0064199F / 0x0064191E).
+ class CLightInfo {
+ public:
+  CRGBColour Colour;
+  float InnerRadius;
+  float OuterRadius;
+  float Flicker;
+  unsigned long LightingChannelsEffected;
+  bool Inverted;
+ };
+#else
  class CLightInfo;
+#endif
  CCountedPointer<CLightInfo> PLightInfo;
  CDefPointer<const CLightDef> PLightDef;
  bool Active,Overridden;

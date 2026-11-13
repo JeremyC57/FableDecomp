@@ -28,6 +28,9 @@
 #include "engine/CArray.h"
 #include "engine/C3DTriangle2.h"
 #include "engine/C3DQuad2.h"
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_RENDERACCESS
+#include "engine/C3DClothRenderVertex.h"
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEPROGRAM_REMAPBONEINDICES
 #include "stlport/fable_map.h"
 #endif
@@ -79,7 +82,24 @@ private:
     unsigned char ExportParticles[16];                       // +0x88 CVectorMap<CCharString,unsigned long,CKeyPairCompareLess<CCharString,unsigned long> >
     CArray<C3DTriangle2> RenderTris;                         // +0x98
     CArray<C3DQuad2> RenderQuads;                            // +0xA4
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_RENDERACCESS
+public:
+    // Retail opt-in (chunk 2008, row 0x00BB1F50 CEngineClothRenderer::CalculateVertexNormals): FableWin.pdb's inline render accessors
+    // (debug COMDATs 0x02E75C80..0x02E75D20 and 0x02D7B290, expanded in release): GetRenderTriangleCount / GetRenderQuadCount (size()),
+    // PeekRenderTriangles / PeekRenderQuads / PeekRenderVertices (CArray::GetAsCArray: `test ; jbe` keeps the array object's address for
+    // an empty array, 0x00BB1FBD..0x00BB1FD9) and GetVertexPositionCount (NonSimCount + the initial simulation's particle count,
+    // 0x00BB1F61..0x00BB1F69). RenderVertices typed (Ego_r CArray<C3DClothRenderVertex>, 12 bytes): no layout change.
+    unsigned long GetRenderTriangleCount() const { return RenderTris.size(); }
+    const C3DTriangle2* PeekRenderTriangles() const { return RenderTris.GetAsCArray(); }
+    unsigned long GetRenderQuadCount() const { return RenderQuads.size(); }
+    const C3DQuad2* PeekRenderQuads() const { return RenderQuads.GetAsCArray(); }
+    const C3DClothRenderVertex* PeekRenderVertices() const { return RenderVertices.GetAsCArray(); }
+    unsigned long GetVertexPositionCount() const { return NonSimCount + InitialSimulation.GetParticleCount(); }
+private:
+    CArray<C3DClothRenderVertex> RenderVertices;             // +0xB0
+#else
     unsigned char RenderVertices[12];                        // +0xB0 CArray<C3DClothRenderVertex>
+#endif
     unsigned long NonSimCount;                               // +0xBC
     C4DVector* NonSimPositions;                              // +0xC0
     unsigned char IndexedTextureCoords[12];                  // +0xC4 CArray<C2DVector>

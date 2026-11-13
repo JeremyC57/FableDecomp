@@ -39,6 +39,16 @@ public:
     {
         return count != 0 ? ((unsigned __int64)count * sizeof(T) > 0xffffffffUL ? 0 : (T*)Allocate(count * sizeof(T))) : 0;
     }
+#ifdef FABLE_RETAIL_CSIMPLEMEMORYPOOL_FREEALL
+    // Retail opt-in (chunk 2044, rows 0x00AA0090 / 0x00A9F540): Ego_r.pdb ?FreeAll@CSimpleMemoryPool@@QAEXXZ (retail 0x00A5C720, out of
+    // line; bound in reloc_bindings.tsv from landed 0x0098B420). Declaration only.
+    void FreeAll();                                                      // 0x00A5C720
+#endif
+#ifdef FABLE_RETAIL_CSIMPLEMEMORYPOOL_NEW
+    // Retail opt-in (chunk 2014, row 0x00A50510): the template ??$New@...@CSimpleMemoryPool@@QAEPAV..@K@Z (both PDBs; out of line in
+    // retail: New<C3DAnimationSequence> 0x00A533F0, New<C3DAnimationSequenceData> 0x00A53440, both landed). Declaration only.
+    template<class T> T* New(unsigned long count);
+#endif
 private:
     void ClearMemoryBlocks();                                            // 0x00A5C600 ?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ
 public:

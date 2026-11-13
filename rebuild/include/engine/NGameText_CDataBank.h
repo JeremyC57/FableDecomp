@@ -31,6 +31,11 @@ namespace NGameText {
 // Both originals and native009c7b70/009c7b80: references, namespace, fastcall.
 bool FABLE_FASTCALL ConstructString(CWideString&,long);
 bool FABLE_FASTCALL ConstructString(CWideString&,long,long);
+#ifdef FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING_LONGS3
+// Nested opt-in (w22 agent2012, row 0x006DE280): Ego_r.pdb ?ConstructString@NGameText@@YI_NAAVCWideString@@JJJ@Z (Ego_r 0x00B159A0, after
+// the J / JJ overloads 0x00B15970 / 0x00B15980 = retail 0x009C7B70 / 0x009C7B80), retail 0x009C7BA0 (`ret 8`, forwards a, b, c, -1).
+bool FABLE_FASTCALL ConstructString(CWideString&,long,long,long);
+#endif
 #endif
 class CDataBankTextEntry;
 class CTextEntry : public CIVCountedPointeeBase {

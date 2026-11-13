@@ -15,6 +15,19 @@ public:
  static CFrontEndManager* __fastcall GetInstance();
  virtual void ProcessEvent(EEvent);
  void CloseVirtualKeyboard(bool);
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_SAVEDGAMES
+ // Opt-in (chunk 2003, row 0x00598463 RefreshAvailableSavedGamesForProfile): Ego_r.pdb / FableWin.pdb spellings of the members that
+ // row calls, all out of line in retail (reloc_bindings.tsv; the Ego_r donor order GetProfileNames, ConstructFileDescription, ...,
+ // GetSavedGameNames, RefreshAvailableSavedGamesForProfile matches retail's). Declarations only.
+ CComponent* CreateComponent(const CCharString&);                                                       // 0x00594F94
+ CComponent* CreateFrontEndButtonComponent(CWideString&,float,const CCharString&,const CCharString&,bool); // 0x00596A68
+ bool VerifySignatureCached(const CWideString&);                                                         // 0x005957D9
+protected:
+ void ConstructFileDescription(unsigned long,CComponent*,CComponent*,CWideString&);                      // 0x00595CC1
+ void GetSavedGameNames(std::vector<CWideString>&);                                                      // 0x00597DF7
+ long RefreshAvailableSavedGamesForProfile();                                                            // 0x00598463
+public:
+#endif
 protected:
  CWideString MediaPlayerErrorString;
  std::list<CActionParam*> UIActionParams;

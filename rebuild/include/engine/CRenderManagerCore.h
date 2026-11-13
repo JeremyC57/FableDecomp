@@ -125,6 +125,13 @@ public:
                                          unsigned long startIndex, unsigned long triangleCount);   // 0x00A0AC60 ?DrawCurrentBuffersAsIndexedTris@CRenderManagerCore@@QAEXKKKK@Z
     void DrawCurrentBuffersIndexed(unsigned long minVertexIndex, unsigned long vertexCount,
                                    unsigned long startIndex, unsigned long primitiveCount);        // 0x00A0AD40 ?DrawCurrentBuffersIndexed@CRenderManagerCore@@QAEXKKKK@Z
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_DRAWINDEXED_TEXTURES
+    // Retail opt-in (chunk 2031, row 0x00B65A20): Ego_r.pdb / FableWin.pdb ?DrawCurrentBuffersIndexed@CRenderManagerCore@@QAEXPAPBVCTexture@@KKKKK@Z
+    // = retail 0x00A0ACA0 (Ego_r donor 0x00B74260, between the textured AsIndexedTris / AsTris pair and the KKKK form 0x00A0AD40 = Ego_r
+    // 0x00B74300; `ret 18h`: attach the texture array to stages 0.., then RealiseRenderState and DrawIndexedPrimitive). Declaration only.
+    void DrawCurrentBuffersIndexed(const CTexture** textures, unsigned long texture_count, unsigned long minVertexIndex,
+                                   unsigned long vertexCount, unsigned long startIndex, unsigned long primitiveCount);   // 0x00A0ACA0
+#endif
     void DrawCurrentBuffersAsTris(unsigned long startVertex, unsigned long triangleCount);         // ?DrawCurrentBuffersAsTris@CRenderManagerCore@@QAEXKK@Z
     void SetWorldTransform(const CMatrix3x4& matrix);                    // ?SetWorldTransform@CRenderManagerCore@@QAEXABVCMatrix3x4@@@Z
     void SetTextureTransform(unsigned long stage, const CMatrix3x4& matrix);   // ?SetTextureTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z

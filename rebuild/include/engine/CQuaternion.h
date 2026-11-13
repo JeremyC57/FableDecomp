@@ -35,6 +35,40 @@ public:
  // Native00B0EAB8 begins this expanded math body after axis-angle call00B0EAB3.
  // Natural,T200/T400 and scoped
  // depth255 leave it called; T400 additionally expands the wrong list site.
+#endif
+#ifdef FABLE_RETAIL_CQUATERNION_SLERP
+ // Retail opt-in (chunk 2001, row 0x00A9EB90 C3DAnimationManager::BlendAnimations): FableWin.pdb ?Dot@CQuaternion@@QBEMABV1@@Z,
+ // ?SetSlerp@CQuaternion@@QAEXABV1@0M@Z and the static ?CalculateSlerpWeights@CQuaternion@@SIXAAV1@ABV1@1M@Z (out-of-line copy
+ // 0x00AA3390, landed), all expanded in retail. Declarations only: the includer defines the bodies (they need the engine's
+ // GFFastArcCos / GFFastSin table helpers and the shared engine/GFFloatToLongNear.h; VC7.1 never auto-inlines a body holding
+ // the expanded asm helper, so a caller that retail expanded defines SetSlerp / CalculateSlerpWeights FABLE_FORCEINLINE).
+ float Dot(const CQuaternion& q) const;
+ void SetIdentity();
+ void SetSlerp(const CQuaternion& from, const CQuaternion& to, float t);
+ static void FABLE_FASTCALL CalculateSlerpWeights(CQuaternion& weights, const CQuaternion& from, const CQuaternion& to, float t);
+#endif
+#ifdef FABLE_RETAIL_CQUATERNION_SLERPFROMIDENTITY
+ // Retail opt-in (chunk 2044, rows 0x00AA0090 / 0x00A9F540 C3DAnimationManager::Calc[Blended]MeshTransformations): FableWin.pdb
+ // ?SetSlerpFromIdentity@CQuaternion@@QAEXABV1@M@Z (retail out-of-line copy 0x00AA3560, landed, uncalled; expanded in the rows through
+ // C3DKeyframe::PostApplyRelativeAnimationAlpha). Declaration only: the includer defines the FABLE_FORCEINLINE body (landed 0x00AA3560's).
+ void SetSlerpFromIdentity(const CQuaternion& q, float t);
+#endif
+#ifdef FABLE_RETAIL_CQUATERNION_MULASSIGN
+ // Retail opt-in (chunk 2005, row 0x00A4D920 C3DAnimation2::CalcLocalBoneTransformationRelative): Ego_r.pdb + FableWin.pdb
+ // ??DCQuaternion@@QBE?AV0@ABV0@@Z (retail 0x00A88B60) and ??XCQuaternion@@QAEABV0@ABV0@@Z (retail 0x00A88C10, landed; `ret 4`,
+ // returns this), both out of line.
+ CQuaternion operator*(const CQuaternion& q) const;
+ const CQuaternion& operator*=(const CQuaternion& q);
+#endif
+#ifdef FABLE_RETAIL_CQUATERNION_MULASSIGN_INLINE
+ // the inline header body (retail 0x00A88C10 is its emitted COMDAT copy): visible, so callers know it does not capture
+ CQuaternion operator*(const CQuaternion& q) const;            // 0x00A88B60 (out of line)
+ const CQuaternion& operator*=(const CQuaternion& q);
+#endif
+#ifdef FABLE_RETAIL_CQUATERNION_TOMATRIX_FORCEINLINE
+ // Retail opt-in (chunk 2014, row 0x00A4E300 C3DAnimation2::GetDeltaMovement): the same body forced inline (FableWin.pdb
+ // ?ToMatrix@CQuaternion@@QBEXAAVCMatrix3x4@@ABVC3DVector@@@Z has no retail out-of-line copy; plain inline leaves both of the row's
+ // sites called, retail expands them, 0x00A4E3E1 / 0x00A4E578). Owner 2026-11-01 helper rule.
  FABLE_FORCEINLINE
 #endif
  void ToMatrix(CMatrix3x4& dest,const C3DVector& translation)const {
@@ -65,4 +99,10 @@ public:
  }
 #endif
 };
+#ifdef FABLE_RETAIL_CQUATERNION_MULASSIGN_INLINE
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+inline const CQuaternion& CQuaternion::operator*=(const CQuaternion& q) { *this = *this * q; return *this; }
+#endif
 #endif

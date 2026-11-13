@@ -32,6 +32,9 @@ class CEnvironmentSpellEffectInterface;
 class CEnvironmentSpellEffectInterpolator;
 class CGameDefinitionManager;
 
+#ifdef FABLE_RETAIL_CENVIRONMENT_SUNLIGHTATTENUATOR
+#include "engine/CRGBFloatColour.h"
+#endif
 #pragma pack(push, 1)
 class CEnvironment {
 public:
@@ -154,6 +157,16 @@ public:
     virtual float PeekWindSpeed() const;                                             // slot 3  0x006B7320
     virtual const class C3DVector& PeekSunVector() const;                           // slot 4  0x006B7330
     virtual const class C3DVector& PeekMoonVector() const;                          // slot 5  0x006B7340
+#ifdef FABLE_RETAIL_CENVIRONMENT_SUNLIGHTATTENUATOR
+    // Nested opt-in (chunk 2020, row 0x006414A0 CTCLight::DrawLight): FableWin.pdb ?PeekSunlightAttenuatorAngleFadeStart@CEnvironment@@QBEMXZ /
+    // ?PeekSunlightAttenuatorAngleFadeEnd@CEnvironment@@QBEMXZ (inline in retail: +0x08 / +0x0C read in place, 0x00641884 / 0x006418A3) and
+    // ?PeekDiffuseColour@CEnvironment@@QBE?BVCRGBFloatColour@@XZ (inline: the 16-byte colour at +0x58 copied as four dwords, 0x00641900).
+    // +0x58 is GameTickState (+0x54) BlendedTheme[0] (Ego_r CBlendedEnvironmentTheme: TimeOfDay +0, Colours[19] +4) Colours[0]; the
+    // opaque GameTickState stays as it is, read through its byte offset. Needs CRGBFloatColour complete.
+    float PeekSunlightAttenuatorAngleFadeStart() const { return SunlightAttenuatorAngleFadeStart; }
+    float PeekSunlightAttenuatorAngleFadeEnd() const { return SunlightAttenuatorAngleFadeEnd; }
+    const CRGBFloatColour PeekDiffuseColour() const { return *reinterpret_cast<const CRGBFloatColour*>(GameTickState + 4); }
+#endif
 #else
     void*                                __vftable;          // +0x00 vptr, or first dword of a flattened base subobject
 #endif

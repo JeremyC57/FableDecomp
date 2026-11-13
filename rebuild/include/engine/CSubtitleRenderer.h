@@ -23,6 +23,17 @@ class CWideString;                                              // chunk 795
 class CWideString;                                              // chunk 855
 #endif
 
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDED
+// Retail opt-in (chunk 2010, row 0x00492381 ProcessEmbeddedGraphicTags): the members the embedded-tag code uses typed as Ego_r.pdb has them
+// (Text CWideString +0x5C, the STLport 4.6 vectors EmbeddedPrimitiveHandles +0xAC / EmbeddedGraphics +0xB8 / EmbeddedHighlights +0xC4 /
+// EmbeddedHighlightActionNames +0xD0, 12 bytes each in retail), at the same offsets as the generated members; the nested CEmbeddedGraphic /
+// CEmbeddedHighlight records (Ego_r.pdb, 16 / 20 bytes; 0x00492642 `sar eax,4`), and the private / static members the row calls.
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/C2DVector.h"
+#include "engine/CEnginePrimitiveHandle.h"
+class C2DBoxF;
+#endif
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_FORMATTEXTWITHGAMEACTIONNAMES
 #include "fable_string.h"
@@ -34,6 +45,21 @@ public:
     // Opt-in (row 0x0054FBC0 NUISystem::CText::SetValue): Ego_r.pdb / FableWin.pdb
     // ?FormatTextWithGameActionNames@CSubtitleRenderer@@SI?AVCWideString@@ABV2@PAV?$vector@VCWideString@@...@std@@@Z (landed 0x004917B5).
     static CWideString __fastcall FormatTextWithGameActionNames(const CWideString& text, std::vector<CWideString>* highlights);   // 0x004917B5
+#endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDED
+    class CEmbeddedGraphic {
+    public:
+        long      Graphic;                                   // +0x00
+        long      CharIndex;                                 // +0x04
+        C2DVector Offset;                                    // +0x08
+    };
+    class CEmbeddedHighlight {
+    public:
+        CWideString Text;                                    // +0x00
+        long        CharIndex;                               // +0x04
+        C2DVector   Offset;                                  // +0x08
+        bool        Split;                                   // +0x10
+    };
 #endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_CTOR
     // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): Ego_r.pdb / FableWin.pdb ??0CSubtitleRenderer@@QAE@ABVCGraphicDataBank@@@Z,
@@ -63,7 +89,11 @@ public:
     long              TextGroupIndex;                        // +0x2c
     CWideStringData*  TextGroupTag_PStringData;              // +0x30 CWideString::PStringData
     unsigned char     TextInfoQueue[0x28];                   // +0x34 queue<CSubtitleRenderer::CSetTextInfo,std::deque<CSubtitleRenderer::CSetTextInfo,std::allocator<CSubtitleRenderer::CSetTextInfo>_>_>
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDED
+    CWideString       Text;                                  // +0x5c
+#else
     CWideStringData*  Text_PStringData;                      // +0x5c CWideString::PStringData
+#endif
     CWideStringData*  NameText_PStringData;                  // +0x60 CWideString::PStringData
     CWideStringData*  Button1Text_PStringData;               // +0x64 CWideString::PStringData
     CWideStringData*  Button2Text_PStringData;               // +0x68 CWideString::PStringData
@@ -81,10 +111,17 @@ public:
     unsigned char     PlayerModeAdded[0x4];                  // +0x90 EPlayerMode
     unsigned char     PrimitiveHandles[0xc];                 // +0x94 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char     ButtonPrimitiveHandles[0xc];           // +0xa0 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDED
+    std::vector<CEnginePrimitiveHandle> EmbeddedPrimitiveHandles;   // +0xac
+    std::vector<CEmbeddedGraphic>       EmbeddedGraphics;           // +0xb8
+    std::vector<CEmbeddedHighlight>     EmbeddedHighlights;         // +0xc4
+    std::vector<CWideString>            EmbeddedHighlightActionNames;   // +0xd0
+#else
     unsigned char     EmbeddedPrimitiveHandles[0xc];         // +0xac vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char     EmbeddedGraphics[0xc];                 // +0xb8 vector<CSubtitleRenderer::CEmbeddedGraphic,std::allocator<CSubtitleRenderer::CEmbeddedGraphic>_>
     unsigned char     EmbeddedHighlights[0xc];               // +0xc4 vector<CSubtitleRenderer::CEmbeddedHighlight,std::allocator<CSubtitleRenderer::CEmbeddedHighlight>_>
     unsigned char     EmbeddedHighlightActionNames[0xc];     // +0xd0 vector<CWideString,std::allocator<CWideString>_>
+#endif
     bool              PausedGame;                            // +0xdc
     bool              AllCharactersDisplayed;                // +0xdd
     bool              InCutscene;                            // +0xde
@@ -122,6 +159,13 @@ public:
     // (0x0187F200; no Ego_r.pdb copy, inline in retail: Activate tests the CPlayerGui singleton's byte +0xF6 = SubtitleRenderer +0x18 +
     // InCutscene +0xDE in place, 0x0056AD6B, right after the +0xFD IsDisplayingText test). Member function only: no layout change.
     bool IsInCutscene() const { return InCutscene; }
+#endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_CLICKPAST
+    // Retail opt-in (chunk 2010, row 0x00716DE0 CActionTalkBase::Update): FableWin.pdb ?IsWaitingForClickPast@CSubtitleRenderer@@QBE_NXZ (retail
+    // 0x0048DB46, out of line: `lea ecx,[eax+18h] ; call` on the CPlayerGui singleton, 0x00717361) and ?SetAsUpdatingTimer@CSubtitleRenderer@@QAEX_N@Z,
+    // inline in retail (the CPlayerGui singleton's byte +0xFF = SubtitleRenderer +0x18 + UpdateTimer +0xE7 stored in place, 0x00716F8A).
+    bool IsWaitingForClickPast() const;                                  // 0x0048DB46
+    void SetAsUpdatingTimer(bool update) { UpdateTimer = update; }
 #endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_CLEAR
     // Retail opt-in (chunk 800, row 0x007D8E20 CTCTavernGameSpotTheAddition::FrameUpdate): Ego_r.pdb / FableWin.pdb
@@ -182,6 +226,19 @@ public:
     void SetText(const CFontBank& font, const CWideString& text, const CWideString& button0_text, const CWideString& button1_text,
                  const CWideString& button2_text, unsigned long flags, float time, bool click_past, bool pause_game);              // 0x00492F69
 #endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDED
+    // Ego_r.pdb / FableWin.pdb: ?FormatTextWithGameActionNames@CSubtitleRenderer@@SI?AVCWideString@@ABV2@PAV?$vector@VCWideString@@...@Z (public
+    // static __fastcall, retail 0x004917B5), ?GetBlackBarHeight@CSubtitleRenderer@@ABEMXZ (0x0048DBC3), ?FormatTextForVWindow@CSubtitleRenderer@@
+    // ABEXABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV4@AAV2@@Z (0x0048F50C), ?ProcessEmbeddedGraphicTags@CSubtitleRenderer@@AAEXXZ (0x00492381);
+    // all landed or out of line in retail. Declarations only.
+    static CWideString __fastcall FormatTextWithGameActionNames(const CWideString& text, std::vector<CWideString>* action_names);   // 0x004917B5
+private:
+    float GetBlackBarHeight() const;                                     // 0x0048DBC3
+    void FormatTextForVWindow(const C2DBoxF& vwindow, const CFontBank& font, const CWideString& text, CWideString& formatted_text,
+                              C2DBoxF& formatted_box) const;            // 0x0048F50C
+    void ProcessEmbeddedGraphicTags();                                   // 0x00492381
+public:
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_GRAPHICTAG
     // Retail opt-in (chunk 855, row 0x00490BE0): Ego_r.pdb / FableWin.pdb ?GetGraphicFromEmbeddedTag@CSubtitleRenderer@@ABEJABVCWideString@@@Z
     // (private const thiscall, ret 4; its one caller ProcessEmbeddedGraphicTags 0x0049241E passes this in ecx and a CWideString).
@@ -210,7 +267,11 @@ FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, TextGroupHasEntriesRemaining) ==
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, TextGroupIndex) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, TextGroupTag_PStringData) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, TextInfoQueue) == 0x34);
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDED
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Text) == 0x5c);
+#else
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Text_PStringData) == 0x5c);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, NameText_PStringData) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button1Text_PStringData) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button2Text_PStringData) == 0x68);

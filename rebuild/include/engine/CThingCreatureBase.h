@@ -65,6 +65,17 @@ public:
  virtual CSoundPair GetSoundPair(const CCharString & p0) const;
 #endif
 
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ATTACKEDBY
+public:
+ // Retail opt-in (chunk 2015, row 0x0097FEA0): Ego_r.pdb / FableWin.pdb ?ClearAttackedByCreature@CThingCreatureBase@@QAEXXZ (out of
+ // line at 0x006691C0: PLastAttackedByCreature (+0xF4) = 0 through a CIntelligentPointer<CThingCreatureBase> temporary; Ego_r donor
+ // 0x005454B0) and the FableWin.pdb inline ?GetPLastAttackedByCreature@CThingCreatureBase@@QBEPAV1@XZ (`lea ecx,[eax+0F4h] ; call
+ // GetPItem`, 0x00980354), as the FABLE_RETAIL_CTCTARGETINGAI_ATTACK accessor above. No layout change.
+ void ClearAttackedByCreature();                                         // 0x006691C0
+#ifndef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+ CThingCreatureBase* GetPLastAttackedByCreature()const{return PLastAttackedByCreature.Get();}
+#endif
+#endif
 #ifdef FABLE_RETAIL_UPDATE_NEAREST_INTERESTING
 public:bool IsThingInFOV(const CThing&,bool)const;
 #endif
@@ -315,6 +326,11 @@ public:
     // Declarations only: no layout change.
     bool IsPerformingAnyAction() const;                                  // 0x006622A0
     const class CAnimationEntry& GetRandomAnimFromName(const CCharString& name, long index) const;   // 0x00662D80
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMDURATION
+    // Nested opt-in (chunk 2010, row 0x00716DE0 CActionTalkBase::Update): Ego_r.pdb / FableWin.pdb ?GetAnimDuration@CThingCreatureBase@@QBEMJ@Z
+    // (retail 0x006627F0, landed; the animation's bank index pushed, the duration in st0). Declaration only.
+    float GetAnimDuration(long anim_index) const;                        // 0x006627F0
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SAVE
     // Nested opt-in (chunk 794, row 0x008304A0 CThingAICreature::Save): Ego_r.pdb ?Save@CThingCreatureBase@@UAEXAAVCCharString@@@Z (public
@@ -357,6 +373,19 @@ protected:
     float GetMovementSpeedFromCreatureMode(const C3DVector&, EMovementType) const;   // 0x00663BA0
 public:
 #endif // FABLE_RETAIL_CTHINGCREATUREBASE_VSLOTS2
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_UPDATEANIMATION
+    // Retail opt-in (w22 agent2007, row 0x00665860): Ego_r.pdb / FableWin.pdb ?UpdateAnimation@CThingCreatureBase@@IAEXM@Z (protected,
+    // retail 0x00665860; Ego_r donor order UpdateAnimation 0x00541160 / UpdateAnimationBulletTime 0x00541780 = retail 0x00665860 /
+    // 0x00665DE0, the second a `push 0 ; call 0x00665860 ; ret` forwarder) and its callees, out of line in retail:
+    // ?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ 0x006655A0, ?IsAnimCombinationAnim@CThingCreatureBase@@QBE_NJ@Z 0x00662820
+    // (Ego_r donor order IsAnimCombinationAnim 0x0053D700 before GetAnimFromName 0x0053D8E0 = retail 0x00662A00). Declarations only.
+    float GetAnimationSpeedMultiplier() const;                           // 0x006655A0
+    bool IsAnimCombinationAnim(long anim) const;                         // 0x00662820
+protected:
+    void UpdateAnimation(float time);                                    // 0x00665860
+    void UpdateAnimationBulletTime();                                    // 0x00665DE0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingCreatureBase)==0x160);
 #ifdef FABLE_ENGINE_CTHINGCREATUREDEF_H

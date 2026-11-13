@@ -21,11 +21,92 @@
 class CGraphicFrameData;
 
 #ifdef FABLE_RETAIL_CGRAPHICFRAME
+#include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
 class CTexture;
+#ifdef FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE
+// Retail opt-in (chunk 2018, row 0x00B2B180 CEngineSurfaceCompositionManager::RenderToTexture): Ego_r.pdb CGraphicFrameData (0x1B bytes,
+// packed; the FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS model above, PTexture +0x08) with FableWin.pdb ?GetTexture@CGraphicFrameData@@QBEPAVCTexture@@XZ
+// and ?GetTexture@CGraphicFrame@@QBEPAVCTexture@@XZ, inline in retail (0x00B2B47B..0x00B2B486: `mov ecx,[frame] ; mov ecx,[ecx+8]`).
+#pragma pack(push, 1)
+class CGraphicFrameData {
+public:
+    CTexture* GetTexture() const { return PTexture.Data; }
+    // Ego_r.pdb non-virtual ??1CGraphicFrameData@@QAE@XZ (the landed ~CEngineSurfaceCompositionManager 0x00B2D1B0 model): IsInitialised
+    // (bit 4 of +0x1A) -> Uninitialise 0x009FCBA0, then the PTexture counted pointer; FableWin.pdb ?AddReference@CGraphicFrameData@@QAEXXZ.
+    ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }
+    void Uninitialise();                                     // 0x009FCBA0
+    void AddReference() { ++ReferenceCount; }
+    // FableWin.pdb ?Release@CGraphicFrameData@@QAEXXZ (no Ego_r.pdb copy; retail's only out-of-line copy, 0x0041C090 -- `dec [esi] ; jne`,
+    // then the expanded delete with no null test -- has no caller, and every UnInitialise / operator= / ~CGraphicFrame body in retail
+    // expands it: 0x0041C0E0, 0x0041C700, 0x00A00B90, 0x00B2EEC0, 0x00B2EFB0, 0x00B2D724..0x00B2D766). FABLE_FORCEINLINE per the owner's
+    // 2026-11-01 rule for Lionhead header helpers: plain `inline` leaves it called inside the expanded operator= (c1 75, score 85 at f 0.5
+    // against the default threshold 74; UpdateDiskCacheTexture 0x00B2D330).
+    FABLE_FORCEINLINE void Release() { if (--ReferenceCount == 0) delete this; }
+    friend class CGraphicFrame;
+private:
+    unsigned long ReferenceCount;                            // +0x00
+    void* Data;                                              // +0x04
+    CCountedPointer<CTexture> PTexture;                      // +0x08
+    unsigned short TLX,TLY,Width,Height,Pitch;               // +0x10
+    unsigned char Alpha:1;                                   // +0x1A
+    unsigned char BooleanAlpha:1;
+    unsigned char UsesSurface:1;
+    unsigned char SectionOfTPage:1;
+    unsigned char IsInitialised:1;
+    unsigned char ScreenGraphic:1;
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CGraphicFrameData)==0x1b);
+#endif
 
 class CGraphicFrame {
 public:
+#ifdef FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE
+    CTexture* GetTexture() const { return FrameData->GetTexture(); }
+    // FableWin.pdb ?IsInitialised@CGraphicFrame@@QBE_NXZ, ?UnInitialise@CGraphicFrame@@QAEXXZ (retail COMDATs 0x0041C700 / 0x00A00B90 /
+    // 0x00B2EEC0) and ??4CGraphicFrame@@QAEABV0@ABV0@@Z (retail COMDAT 0x0041C0E0, no self test; expanded at 0x00B2D719..0x00B2D77B).
+    // FableWin.pdb ??0CGraphicFrame@@QAE@ABV0@@Z / ??1CGraphicFrame@@QAE@XZ: share with a reference; release (the vector element destructor
+    // in the retail __destroy_aux 0x00B2EFB0: `if (data) { if (--count == 0) delete data; FrameData = 0; }`).
+    CGraphicFrame(const CGraphicFrame& other) : FrameData(other.FrameData) { if (FrameData) FrameData->AddReference(); }
+#ifdef FABLE_RETAIL_CGRAPHICFRAME_DTOR_FORCEINLINE
+    // Retail opt-in (chunk 2031, rows 0x00B54E30 / 0x00B65A20): FableWin.pdb ??1CGraphicFrame@@QAE@XZ with the release in its own body,
+    // FABLE_FORCEINLINE (owner 2026-11-01 rule: no retail out-of-line ??1CGraphicFrame; the ??_G 0x00B2ED60 expands it). Evidence that the
+    // destructor is forced while UnInitialise stays a plain inline: ~CFrameData 0x009FE6C0 calls UnInitialise 0x00A00B90 (0x009FE6DB) and
+    // then expands the member destructor of the same Frame in place (0x009FE721..0x009FE769) -- one cost (c1 88, over the default 74),
+    // two decisions. RenderSnow 0x00B55542 / RenderOuterSky 0x00B660EB expand it after the frame's texture was read (no null test left).
+    FABLE_FORCEINLINE ~CGraphicFrame()
+    {
+        if (FrameData) {
+            FrameData->Release();
+            FrameData = 0;
+        }
+    }
+#else
+    ~CGraphicFrame() { UnInitialise(); }
+#endif
+    bool IsInitialised() const { return FrameData != 0; }
+    // UnInitialise / operator= as retail's uncalled COMDATs 0x00B2EEC0 / 0x0041C0E0: release through the data's Release (the zero store
+    // stays inside the null test; operator= has none, the pointer is overwritten), then share the other frame's data.
+    void UnInitialise()
+    {
+        if (FrameData) {
+            FrameData->Release();
+            FrameData = 0;
+        }
+    }
+    // operator= is FABLE_FORCEINLINE (owner 2026-11-01 rule): no Ego_r.pdb copy, retail's out-of-line copy 0x0041C0E0 has no caller, and
+    // plain `inline` leaves it called once Release is expanded into it (c1 101, score 115..127 at f 0.35..0.5; UpdateDiskCacheTexture).
+    FABLE_FORCEINLINE const CGraphicFrame& operator=(const CGraphicFrame& other)
+    {
+        if (FrameData)
+            FrameData->Release();
+        FrameData = other.FrameData;
+        if (FrameData)
+            FrameData->AddReference();
+        return *this;
+    }
+#endif
     CGraphicFrameData* FrameData;                            // +0x00
 #ifdef FABLE_RETAIL_CGRAPHICFRAME_CTOR
     // Retail opt-in (chunk 848, row 0x00B2D9F0): Ego_r.pdb / FableWin.pdb ??0CGraphicFrame@@QAE@XZ, inline in retail (the expanded

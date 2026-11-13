@@ -26,6 +26,13 @@ public:
  float GetTargetingDistanceOffset()const{return TargetingDistanceOffset;}
 #endif
  long GetActionFrequency()const{return ActionFrequency;}
+#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_TABLESEAT
+ // Opt-in (chunk 2020, row 0x00949AB0 CAIStateGroup_GoToPub::IsRunnable): FableWin.pdb ?GetTableName@CTCAIScratchpad@@QBE?AVCCharString@@XZ /
+ // ?GetSeatName@CTCAIScratchpad@@QBE?AVCCharString@@XZ (by value), inline in retail: the copy constructor 0x0099EC30 on &TableName (+0x70) /
+ // &SeatName (+0x74) straight into the caller's temporary (0x00949B1B / 0x00949B3F / 0x00949B9A). No layout change.
+ CCharString GetTableName()const{return TableName;}
+ CCharString GetSeatName()const{return SeatName;}
+#endif
  float GetActionFrequencyVariation()const{return (ActionFrequencyVariation);}
 public: unsigned long ThankingPhrase;
 #ifdef FABLE_RETAIL_CTCAISCRATCHPAD_GETTHANKINGPHRASE

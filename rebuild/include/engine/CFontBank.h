@@ -48,6 +48,12 @@ public:
     C2DExtentsF GetStringExtents(const CWideString& text, bool) const;   // 0x0048DAA2
     float GetStringWidth(const CWideString& text) const;                 // 0x0048DA62
 #endif
+#ifdef FABLE_RETAIL_CFONTBANK_STRINGWIDTH_TEXT
+    // Retail opt-in (chunk 2010, row 0x00492381 CSubtitleRenderer::ProcessEmbeddedGraphicTags): FableWin.pdb ?GetStringWidth@CFontBank@@QBEMPB_W@Z,
+    // out of line in retail at 0x0048DA89 (slot 1 GetStringExtents(text, false), the X of the hidden result; the caller pushes L" " 0x0122D820).
+    // Declaration only; wide text is unsigned short.
+    float GetStringWidth(const unsigned short* text) const;              // 0x0048DA89
+#endif
 #ifdef FABLE_RETAIL_CFONTBANK_HEIGHT
     // Retail opt-in (Codex2026-11-10): FableWin018aee90 and raw return type signed long.
     long GetFontHeight()const{return (long)FontHeight;}

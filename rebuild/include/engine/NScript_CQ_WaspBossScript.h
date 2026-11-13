@@ -32,6 +32,11 @@ public:
     // vtable 0x012E0490, Alloc 0x00E11580). A row defines the class body after the include.
     class CWaspVictim;
 #endif
+#ifdef FABLE_RETAIL_CQ_WASPBOSSSCRIPT_CHASEWOMAN
+    // Chunk 2003: nested entity script CQ_WaspBossScript::CWaspChaseWoman (Ego_r.pdb / FableWin.pdb, 0x1c: ParentClass +0x14,
+    // PMasterData +0x18; Alloc 0x00E10D70, Init 0x00E10E20, Main 0x00E10E60). A row defines the class body after the include.
+    class CWaspChaseWoman;
+#endif
 #ifdef FABLE_RETAIL_CQ_WASPBOSSSCRIPT_WASPHELPER
     // Chunk 831: nested entity script CQ_WaspBossScript::CWaspHelper (Ego_r.pdb, 0x20: ParentClass +0x14, PMasterData +0x18,
     // PleadedToHero +0x1c, LeadToRegion +0x1d, WavedOver +0x1e; vtable 0x012E0284 stored by the landed Alloc 0x00E0F7F6, slot 1

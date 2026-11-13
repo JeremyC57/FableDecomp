@@ -6,6 +6,9 @@
 #include "stlport/fable_map.h"
 class CPersistContext;
 class CThingManager;
+#ifdef FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_LOADSCRIPT
+class CStringParser;
+#endif
 namespace NThingManager {
 // Original TPI0x194b2/194be/194c4; native00521620 proves all accessed
 // field offsets,24byte script records and16byte dead records. Full outer40.
@@ -17,6 +20,11 @@ public:
         CArray<unsigned char> SaveData;
         long UncompressedSize;
         bool Valid;
+#ifdef FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_LOADSCRIPT
+        // Opt-in (chunk 2010, row 0x005248B0): Ego_r.pdb ??0CEntityScriptInfo@CEntityRuntimePersistence@NThingManager@@QAE@XZ, inline in
+        // retail: the resize(n) temporary is Script() then SaveData zeroed, UncompressedSize = 0, Valid = false (0x0052C6A0, 0x00524AA5..0x00524ADA).
+        CEntityScriptInfo() : UncompressedSize(0), Valid(false) {}
+#endif
     };
     class CPersistedDeadEntity {
     public:
@@ -53,6 +61,16 @@ public:
             return &GamePersistentEntityScripts[level].Script;
         return 0;
     }
+#ifdef FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_LOADSCRIPT
+    // Opt-in (chunk 2010, row 0x005248B0): Ego_r.pdb / FableWin.pdb ?Clear@CEntityRuntimePersistence@NThingManager@@QAEXXZ (retail 0x005236F0,
+    // landed), ?LoadFromGameStateScript@CEntityRuntimePersistence@NThingManager@@QAEXAAVCStringParser@@@Z (0x005248B0),
+    // ?AddPersistedDeadEntity@..@QAEX_K_NK@Z (0x00520330, landed) and ?SetGamePersistentScript@..@QAEXJABVCCharString@@@Z (0x005237F0,
+    // landed). Declarations only: the row defines the two small same-TU bodies it expands.
+    void Clear();                                                                       // 0x005236F0
+    void LoadFromGameStateScript(CStringParser& parser);                                // 0x005248B0
+    void AddPersistedDeadEntity(unsigned __int64 uid, bool gamePersistent, unsigned long sectionNameCRC);   // 0x00520330
+    void SetGamePersistentScript(long index, const CCharString& script);               // 0x005237F0
+#endif
 #ifdef FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_CLEARINSCRIPT
     // Opt-in (chunk 2003, row 0x0051F480): Ego_r.pdb ?ClearPersistenceDataForSectionInEntityScript@CEntityRuntimePersistence@NThingManager@@
     // AAEXABVCCharString@@AAVCEntityScriptInfo@12@@Z (private), called only by ClearPersistenceDataForSection 0x00520390 for every

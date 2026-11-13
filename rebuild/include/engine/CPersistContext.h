@@ -328,3 +328,57 @@ template<class V,class K> void CPersistContext::TransferMap(std::map<K,V,std::le
 }
 #endif
 #endif
+#if defined(FABLE_RETAIL_CPERSISTCONTEXT_TRANSFER_BODY) && !defined(FABLE_ENGINE_CPERSISTCONTEXT_TRANSFER_BODY_H)
+#define FABLE_ENGINE_CPERSISTCONTEXT_TRANSFER_BODY_H
+// Retail opt-in (chunk 2010, row 0x005248B0 NThingManager::CEntityRuntimePersistence::LoadFromGameStateScript): the shared body of the
+// member template ??$Transfer@<T>@CPersistContext@@QAEXPBDAA<T>AB<T>@Z (Ego_r.pdb / FableWin.pdb), the body of the landed instances
+// 0x0044BB00 (unsigned __int64) and 0x004106F0 (unsigned long): CheckCRC(name), then a closed switch on Mode laid out 4, 3, 2, 1, 0 --
+// MODE_CLEAR copies the default, the binary arms go through a block-scoped CPersistTraits<T>, the text arms hand the
+// CPersistContext_TransferableComponent<T> wrapper to TransferObjectSaveText 0x009BAD60 / TransferObjectLoadText 0x009BBA40 (the load
+// arm seeds the default first when UseDefaults is set). Retail calls the instances out of line; the body visible in the includer tells
+// VC7.1 that the call only reads the default, so the caller's loop-invariant default stores are hoisted into the loop preheader
+// (0x00524C6B..0x00524C7B: `xor edi,edi` and the three default words stored once before the dead-thing loop). Needs the retail stream
+// models (FABLE_RETAIL_CMEMORYDATAINPUTSTREAM, FABLE_RETAIL_CDATAINPUTSTREAM, FABLE_RETAIL_CDATAOUTPUTSTREAM).
+#if !defined(FABLE_RETAIL_CMEMORYDATAINPUTSTREAM) || !defined(FABLE_RETAIL_CDATAINPUTSTREAM) || !defined(FABLE_RETAIL_CDATAOUTPUTSTREAM)
+#error FABLE_RETAIL_CPERSISTCONTEXT_TRANSFER_BODY needs the retail stream models
+#endif
+#include "engine/CMemoryDataInputStream.h"
+#include "engine/CDataOutputStream.h"
+#include "engine/CPersistTraits.h"
+#include "engine/CPersistContext_TransferableComponent.h"
+template<class T> void CPersistContext::Transfer(const char* name,T& value,const T& defaultValue)
+{
+    CheckCRC(name);
+    switch (Mode) {
+    case MODE_CLEAR:
+        value = defaultValue;
+        break;
+    case MODE_SAVE_BINARY: {
+        CPersistTraits<T> traits;
+        traits.TransferBinaryOut(*PSaveStream, value);
+        break;
+    }
+    case MODE_LOAD_BINARY: {
+        CPersistTraits<T> traits;
+        traits.TransferBinaryIn(*PLoadStream, value);
+        break;
+    }
+    case MODE_SAVE_TEXT: {
+        CPersistContext_TransferableComponent<T> item(value);
+        TransferObjectSaveText(name, item);
+        break;
+    }
+    case MODE_LOAD_TEXT: {
+        if (UseDefaults)
+            value = defaultValue;
+        CPersistContext_TransferableComponent<T> item(value);
+        TransferObjectLoadText(name, item);
+        break;
+    }
+#ifdef _MSC_VER
+    default:
+        __assume(0);
+#endif
+    }
+}
+#endif

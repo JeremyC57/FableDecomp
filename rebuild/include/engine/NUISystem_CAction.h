@@ -20,7 +20,15 @@
 namespace NUISystem {
 class CAction {
 public:
+#ifdef FABLE_RETAIL_CACTION_INLINE_CTOR
+    // Opt-in (chunk 2013, rows 0x00626110 / 0x00626750 CTCQuickAccessMenu::ContructItemLists, a speed TU): the constructor's body
+    // (FableWin.pdb ??0CAction@NUISystem@@QAE@XZ; out of line at 0x0042BE50 = `and [esi],0`, the two STLport list constructors,
+    // `mov byte [esi+0Ch],1`, the landed row's mem-initialisers) visible, so the speed TU expands it after `new(10h)` as retail
+    // does (0x0062651D..0x00626546: ActionType 0, each list's null store then its malloc'ed self-linked head, Valid 1).
+    CAction() : ActionType(UI_ACTION_TYPE_NONE), Valid(true) { }        // 0x0042BE50
+#else
     CAction();                                                              // 0x0042BE50
+#endif
     void AddParam(CActionParam* param);                                     // 0x0053FDB0
     void AddParam(CActionParam* param, CCountedPointer<CAction>& self);     // 0x0053FDE0
 #ifdef FABLE_RETAIL_CACTION_ISVALID

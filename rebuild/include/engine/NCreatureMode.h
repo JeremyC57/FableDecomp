@@ -116,6 +116,14 @@ bool __fastcall IsUnderground(const CThing& thing);                     // 0x008
 bool __fastcall IsToEvadeAllHits(const CThing& thing);                  // 0x0085FA00
 }
 #endif
+#ifdef FABLE_RETAIL_NCREATUREMODE_LIGHTNINGABLE
+// Nested opt-in (chunk 2015, row 0x007A0D90 CTCWillLightning::GetTargets): Ego_r.pdb ?IsLightningable@NCreatureMode@@YI_NABVCThing@@@Z, the
+// static `__fastcall` thing query out of line at 0x0085FAA0 (landed; `mov ecx,<thing> ; call`, 0x007A0E98 / 0x007A1029). Declaration only.
+class CThing;
+namespace NCreatureMode {
+bool __fastcall IsLightningable(const CThing& thing);                   // 0x0085FAA0
+}
+#endif
 #ifdef FABLE_RETAIL_FIRE_RANGED_WEAPON
 class CThing;
 namespace NCreatureMode{bool FABLE_FASTCALL IsValidRangedWeaponTargetForShooter(const CThing&,const CThing&,float);}

@@ -93,6 +93,11 @@ private:
 #endif
 class CQuestManager : public CTBaseSingletonNoDefaultAlloc<CQuestManager> {
 public:
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ISQUESTACTIVE
+    // Retail opt-in (chunk 2016, row 0x0061AD60): Ego_r.pdb 0x004B4930 / FableWin.pdb 0x01C53CE0 ?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z,
+    // out of line in retail at 0x004AF610 (called on the singleton's PClass object word 0x013B89FC, 0x0061B103). Declaration only.
+    bool IsQuestActive(const CCharString& name) const;                   // 0x004AF610
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST
     // Original Ego_r complete nested type2c092 and FableWin donor020ed41c.
     class CActiveQuest {

@@ -29,6 +29,9 @@ public: virtual ~CCreatureAction_PlayAnimation();
 // Retail opt-in (chunk Q9, row 0x0092B900 CAIStateGroup_OnHeroPush::Update): no user destructor, so the implicit one expands and a
 // temporary's destruction calls ~CCreatureActionBase 0x00693EF0 straight (0x0092BB7B `lea ecx,[esp+1Ch] ; call 00693EF0`), as
 // retail binds it; the declared one calls a ??1CCreatureAction_PlayAnimation@@UAE@XZ retail does not have there. Default unchanged.
+    // Nested opt-in (chunk 2010, row 0x00716DE0 CActionTalkBase::Update): no user-declared destructor. A stack object of this class is
+    // destroyed in retail by a direct call of ~CCreatureActionBase 0x00693EF0 with no derived vtable store first (0x0071703F, 0x00717142):
+    // the derived destructors are compiler-generated (VC7.1 drops their vtable reset), as the PDB-listed ??1 of a generated destructor.
 #endif
 public: CCreatureAction_PlayAnimation& operator=(const CCreatureAction_PlayAnimation&);
 };

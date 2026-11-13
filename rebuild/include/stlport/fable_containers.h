@@ -217,12 +217,26 @@ inline void _Destroy(char*,char*) { }
 template<class I> void FABLE_FASTCALL __destroy_aux(I first,I last,const __false_type&);
 #else
 #if defined(FABLE_RETAIL_STLP_DESTROY_AUX_NOINLINE) && defined(_MSC_VER)
+#endif
+#if defined(FABLE_RETAIL_STLP_DESTROY_AUX_NOINLINE_FASTCALL) && defined(_MSC_VER)
+// Retail opt-in (chunk 2005, row 0x00AB2520 C3DAnimationBuilder::BuildMeshAnimation): the range destructor kept as its out-of-line
+// __fastcall COMDAT (0x00AB2BD0 ??$__destroy_aux@...@std@@YIXPAV...0ABU__false_type@0@@Z: first in ecx, last in edx, the tag pushed)
+// with its body visible in the TU, so the tag temporary is homed in a dead argument slot (0x00AB2975 `lea eax,[esp+7Ch]`), as the
+// landed same-TU sibling 0x00AB1F30 models it.
+template<class I> __declspec(noinline) void __fastcall __destroy_aux(I first,I last,const __false_type&) {
+#elif defined(FABLE_RETAIL_STLP_DESTROY_AUX_NOINLINE) && defined(_MSC_VER)
 // Inline-budget: retain the actual nontrivial range destructor COMDAT call.
 template<class I> __declspec(noinline) void __destroy_aux(I first,I last,const __false_type&) {
 #else
 #ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
 // Original native 0076a2a0 takes its range in ecx/edx and the tag on the stack.
 template<class I> inline void FABLE_FASTCALL __destroy_aux(I first,I last,const __false_type&) {
+#elif defined(FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL) && defined(_MSC_VER)
+// Retail opt-in (chunk 2016, row 0x0061AD60 CTCInventoryQuests::DrawActiveTestQuests): the same __fastcall convention alone (the /Gr
+// Lionhead TUs' default for free template functions), without the AUGMENTATION_PARTICLES forceinline wrappers or its fable_map.h
+// changes: ~vector<CTestQuest> calls 0x004ABD90 with ecx = first, edx = last and the tag pushed (0x0061B37A..0x0061B389).
+// (Spelled __fastcall under _MSC_VER: rebuild_abi.h may not be included yet when this header comes first.)
+template<class I> inline void __fastcall __destroy_aux(I first,I last,const __false_type&) {
 #else
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
 template<class I> inline void FABLE_FASTCALL __destroy_aux(I first,I last,const __false_type&) {
@@ -1249,7 +1263,47 @@ compose2(const _Operation1& __fn1,const _Operation2& __fn2,const _Operation3& __
     return binary_compose<_Operation1,_Operation2,_Operation3>(__fn1,__fn2,__fn3);
 }
 #endif
-#ifdef FABLE_RETAIL_STLP_SORT_FASTCALL
+#ifdef FABLE_RETAIL_STLP_SORT_INLINE
+// Retail opt-in (chunk 2005, row 0x00A12EE0 CPhysicsMeshObject::GetNavigationLevelVolumes): STLport 4.6 _algo.c sort(first, last, comp)
+// expanded in place (0x00A132B9..0x00A13328): the empty-range test, __introsort_loop (out of line, __fastcall: first in ecx, last in
+// edx, the (T*)0, the depth __lg(n) * 2 and the comparator pushed; 0x008274B0 for pair<long, CCountedPointer<CContainmentVolume> >)
+// and the inline __final_insertion_sort, whose __insertion_sort (0x008270E0) and __unguarded_insertion_sort_aux (0x00825B40) are
+// out of line __fastcall instantiations. Declarations only for the three out-of-line helpers.
+#ifndef __stl_threshold
+#define __stl_threshold 16
+#endif
+template<class _Size> inline _Size __lg(_Size __n) { _Size __k; for(__k=0;__n!=1;__n>>=1) ++__k; return __k; }
+template<class _RandomAccessIter,class _Tp,class _Size,class _Compare>
+void __fastcall __introsort_loop(_RandomAccessIter __first,_RandomAccessIter __last,_Tp*,_Size __depth_limit,_Compare __comp);
+template<class _RandomAccessIter,class _Compare>
+void __fastcall __insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp);
+template<class _RandomAccessIter,class _Tp,class _Compare>
+void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first,_RandomAccessIter __last,_Tp*,_Compare __comp);
+template<class _RandomAccessIter,class _Compare>
+inline void __unguarded_insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
+    __unguarded_insertion_sort_aux(__first,__last,(typename iterator_traits<_RandomAccessIter>::value_type*)0,__comp);
+}
+template<class _RandomAccessIter,class _Compare>
+inline void __final_insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
+    if(__last-__first>__stl_threshold) {
+        __insertion_sort(__first,__first+__stl_threshold,__comp);
+        __unguarded_insertion_sort(__first+__stl_threshold,__last,__comp);
+    } else
+        __insertion_sort(__first,__last,__comp);
+}
+template<class _RandomAccessIter,class _Compare>
+#if defined(FABLE_RETAIL_STLP_SORT_INLINE_FORCE) && defined(_MSC_VER)
+__forceinline
+#else
+inline
+#endif
+void sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
+    if(__first!=__last) {
+        __introsort_loop(__first,__last,(typename iterator_traits<_RandomAccessIter>::value_type*)0,__lg(__last-__first)*2,__comp);
+        __final_insertion_sort(__first,__last,__comp);
+    }
+}
+#elif defined(FABLE_RETAIL_STLP_SORT_FASTCALL)
 // Retail opt-in (chunk 796, row 0x008E18D0): the std::sort instantiations are __fastcall in retail (first in ecx, last in edx, the
 // comparator pushed: 0x0076C000 / 0x0076C1A0 are bound as ??$sort@...@std@@YIX...; the landed 0x00767DA0 local model spells the
 // same). A declaration only.

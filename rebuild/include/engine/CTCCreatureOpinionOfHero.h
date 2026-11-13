@@ -107,6 +107,12 @@ public:
     // (`mov byte ptr [eax+343h],1/0`). No layout change.
     void SetInFindAGuardAndYellForHelp(bool value) { InFindAGuardAndYellForHelp = value; }
 #endif
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_CLEARPERSONALITY
+    // Retail opt-in (w22 agent2012, row 0x006DE280 CTCTrophy::TerminateMinigame): Ego_r.pdb ?ClearPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXXZ
+    // (Ego_r 0x00593490, right after the two SetPersonalityOverride overloads 0x00593040 / 0x00593410 = retail 0x006820E0), out of line in
+    // retail at 0x00682310 (called with no arguments at 0x006DE402 and 0x0089C4FD). Declaration only.
+    void ClearPersonalityOverride();                                     // 0x00682310
+#endif
     bool IsWillingToAttackHeroOnOpinion() const;                         // 0x006817F0
     bool IsFactionEnemyToHeroOverriddenOnOpinion() const;                // 0x00681850
     bool IsWillingToStartFollowingHero() const;                          // 0x006818A0

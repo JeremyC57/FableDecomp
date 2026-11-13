@@ -55,6 +55,13 @@ public:
 #endif
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingAICreature@@SIPAVCClass@@XZ.
     static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_STATEGROUPENABLED
+    // Retail opt-in (w22 agent2007, row 0x006DE8C0 CTCTrophy::OnShowTrophyPerformAction): Ego_r.pdb / FableWin.pdb
+    // ?SetStateGroupEnabled@CThingAICreature@@QAEXABVCCharString@@_N@Z, out of line in retail at 0x008302D0 (`mov ecx,[ecx+1A8h] ; jmp
+    // CAIBrain::SetStateGroupEnabled 0x0088B9E0`, the PBrain forwarder; Ego_r donor order IsStateGroupPresentAndEnabled 0x005370E0 /
+    // SetStateGroupEnabled 0x005370F0 / SetAllStateGroupsEnabled 0x00537100). Declaration only.
+    void SetStateGroupEnabled(const CCharString& name, bool enabled);   // 0x008302D0
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_STATTYPEFLAGS
     // Nested opt-in (chunk 1016, row 0x00934E50 via CMessageEvent::GetPOriginator<CThingAICreature>): FableWin.pdb
     // ?StatGetTypeFlags@CThingAICreature@@SIKXZ (static fastcall, inline in retail: the type test `not eax ; test al,1Fh`, 0x00934E9D).

@@ -186,6 +186,12 @@ public:
     // Both original PDBs; native0099b0f0, called at005e50a2.
     bool operator!=(const CWideString& other) const;
 #endif
+#ifdef FABLE_RETAIL_CWIDESTRING_NE
+    // Opt-in (chunk 2013, row 0x00595CC1 CFrontEndManager::ConstructFileDescription): Ego_r.pdb / FableWin.pdb
+    // ??9CWideString@@QBE_NABV0@@Z, out of line in retail (0x0099B0F0; reloc_bindings.tsv, bound by the landed 0x00541E60), called
+    // for `name != CUserProfileManager::Get().GetEmptySlotName()` at 0x0059612F / 0x0059628A. Declaration only.
+    bool operator!=(const CWideString& other) const;           // 0x0099B0F0
+#endif
 
     static CWideString FABLE_FASTCALL CreateFromCharString(
         const CCharString& text);

@@ -395167,6 +395167,165 @@ $catalog = @(
         TestSource = '00/b6/CEngineSkyRenderer_GetEnvironmentMap_00b665e0_test.cpp'
         PassPattern = '00b665e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e10e60'
+        Module = 'NScript::CQ_WaspBossScript::CWaspChaseWoman'
+        Source = '00/e1/NScriptCQWaspBossScriptCWaspChaseWoman_Main_00e10e60.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScriptCWaspChaseWoman_Main_00e10e60_test.cpp'
+        PassPattern = '00e10e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00598463'
+        Module = 'NUISystem::CFrontEndManager'
+        Source = '00/59/NUISystemCFrontEndManager_RefreshAvailableSavedGamesForProfile_00598463.cpp'
+        TestSource = '00/59/NUISystemCFrontEndManager_RefreshAvailableSavedGamesForProfile_00598463_test.cpp'
+        PassPattern = '00598463_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9eb90'
+        Module = 'C3DAnimationManager'
+        Source = '00/a9/C3DAnimationManager_BlendAnimations_00a9eb90.cpp'
+        TestSource = '00/a9/C3DAnimationManager_BlendAnimations_00a9eb90_test.cpp'
+        PassPattern = '00a9eb90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b51570'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_BuildBuffers_00b51570.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_BuildBuffers_00b51570_test.cpp'
+        PassPattern = '00b51570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e621f0'
+        Module = 'NScript::CV_BodyGuardScript::CBodyGuard'
+        Source = '00/e6/NScriptCVBodyGuardScriptCBodyGuard_SetHenchmanAsHired_00e621f0.cpp'
+        TestSource = '00/e6/NScriptCVBodyGuardScriptCBodyGuard_SetHenchmanAsHired_00e621f0_test.cpp'
+        PassPattern = '00e621f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00665860'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_UpdateAnimation_00665860.cpp'
+        TestSource = '00/66/CThingCreatureBase_UpdateAnimation_00665860_test.cpp'
+        PassPattern = '00665860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b54890'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_RenderRain_00b54890.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_RenderRain_00b54890_test.cpp'
+        PassPattern = '00b54890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006de8c0'
+        Module = 'CTCTrophy'
+        Source = '00/6d/CTCTrophy_OnShowTrophyPerformAction_006de8c0.cpp'
+        TestSource = '00/6d/CTCTrophy_OnShowTrophyPerformAction_006de8c0_test.cpp'
+        PassPattern = '006de8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb1f50'
+        Module = 'CEngineClothRenderer'
+        Source = '00/bb/CEngineClothRenderer_CalculateVertexNormals_00bb1f50.cpp'
+        TestSource = '00/bb/CEngineClothRenderer_CalculateVertexNormals_00bb1f50_test.cpp'
+        PassPattern = '00bb1f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00716de0'
+        Module = 'NTCScriptedControl::CActionTalkBase'
+        Source = '00/71/NTCScriptedControlCActionTalkBase_Update_00716de0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkBase_Update_00716de0_test.cpp'
+        PassPattern = '00716de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a0d90'
+        Module = 'CTCWillLightning'
+        Source = '00/7a/CTCWillLightning_GetTargets_007a0d90.cpp'
+        TestSource = '00/7a/CTCWillLightning_GetTargets_007a0d90_test.cpp'
+        PassPattern = '007a0d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00492381'
+        Module = 'CSubtitleRenderer'
+        Source = '00/49/CSubtitleRenderer_ProcessEmbeddedGraphicTags_00492381.cpp'
+        TestSource = '00/49/CSubtitleRenderer_ProcessEmbeddedGraphicTags_00492381_test.cpp'
+        PassPattern = '00492381_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004959e0'
+        Module = 'CFrontendGameComponent'
+        Source = '00/49/CFrontendGameComponent_GetProfileNames_004959e0.cpp'
+        TestSource = '00/49/CFrontendGameComponent_GetProfileNames_004959e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '004959e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005248b0'
+        Module = 'NThingManager::CEntityRuntimePersistence'
+        Source = '00/52/NThingManagerCEntityRuntimePersistence_LoadFromGameStateScript_005248b0.cpp'
+        TestSource = '00/52/NThingManagerCEntityRuntimePersistence_LoadFromGameStateScript_005248b0_test.cpp'
+        PassPattern = '005248b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00949ab0'
+        Module = 'CAIStateGroup_GoToPub'
+        Source = '00/94/CAIStateGroupGoToPub_IsRunnable_00949ab0.cpp'
+        TestSource = '00/94/CAIStateGroupGoToPub_IsRunnable_00949ab0_test.cpp'
+        PassPattern = '00949ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006de280'
+        Module = 'CTCTrophy'
+        Source = '00/6d/CTCTrophy_TerminateMinigame_006de280.cpp'
+        TestSource = '00/6d/CTCTrophy_TerminateMinigame_006de280_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT77'
+        PassPattern = '006de280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00626110'
+        Module = 'CTCQuickAccessMenu'
+        Source = '00/62/CTCQuickAccessMenu_ContructItemLists_00626110.cpp'
+        TestSource = '00/62/CTCQuickAccessMenu_ContructItemLists_00626110_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT59'
+        PassPattern = '00626110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006414a0'
+        Module = 'CTCLight'
+        Source = '00/64/CTCLight_DrawLight_006414a0.cpp'
+        TestSource = '00/64/CTCLight_DrawLight_006414a0_test.cpp'
+        PassPattern = '006414a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3f5e0'
+        Module = 'CEngineMap'
+        Source = '00/b3/CEngineMap_PeekMapNormal_00b3f5e0.cpp'
+        TestSource = '00/b3/CEngineMap_PeekMapNormal_00b3f5e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT444'
+        PassPattern = '00b3f5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0061ad60'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_DrawActiveTestQuests_0061ad60.cpp'
+        TestSource = '00/61/CTCInventoryQuests_DrawActiveTestQuests_0061ad60_test.cpp'
+        PassPattern = '0061ad60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00974110'
+        Module = 'CAIStateGroup_JackOfBladesBase'
+        Source = '00/97/CAIStateGroupJackOfBladesBase_Summon_00974110.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesBase_Summon_00974110_test.cpp'
+        PassPattern = '00974110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00626750'
+        Module = 'CTCQuickAccessMenu'
+        Source = '00/62/CTCQuickAccessMenu_ContructItemLists_00626750.cpp'
+        TestSource = '00/62/CTCQuickAccessMenu_ContructItemLists_00626750_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT59'
+        PassPattern = '00626750_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -12,7 +12,29 @@
 class CStringParserCommentBoundaries {public:const char* PStart;const char* PEnd;};
 class CStringParser : public CBaseClass {
 public:
+#ifdef FABLE_RETAIL_CSTRINGPARSER_INLINE_CTOR
+    // Retail opt-in (chunk 2001, row 0x00AF4900 CParticleSystem::DatabaseSerialise): Ego_r.pdb / FableWin.pdb
+    // ??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z is inline in retail: its COMDAT 0x00404720 (called by CParticleEmitter::
+    // DatabaseSerialise 0x00AEF8E6) is CBaseClass(), the vtable 0x0122D874, Filename(), TempCharString(), Comments() (`mov [esi+14h],0`,
+    // the malloc'd 0x10-byte sentinel node), `TempCharString = text`, then Init(text's characters, callback, filename, offset) 0x009B9530;
+    // 0x00AF4CA1..0x00AF4D04 expand the same body in place. Init(const char*, ...) is the PDB overload the body calls.
+    CStringParser(const CCharString& text,void (__fastcall* errorCallback)(const CCharString&)=0,const CCharString& filename=CCharString(""),long baseLineOffset=0)
+    {
+        TempCharString=text;
+        Init(text.GetAsCharArray(),errorCallback,filename,baseLineOffset);
+    }
+#else
     CStringParser(const CCharString&,void (__fastcall*)(const CCharString&)=0,const CCharString& filename=CCharString(""),long baseLineOffset=0);
+#endif
+#ifdef FABLE_RETAIL_CSTRINGPARSER_SKIPUNTILWHITESPACE
+    // Opt-in (chunk 2010, row 0x005248B0): Ego_r.pdb ?SkipUntilWhitespace@CStringParser@@QAEJXZ, retail 0x009B9CE0 (bound by the landed
+    // 0x009BA4A0 ReadAsStringUntilWhitespace). Declaration only.
+    long SkipUntilWhitespace();                         // 0x009B9CE0
+#endif
+#ifdef FABLE_RETAIL_CSTRINGPARSER_READLINE
+    // Opt-in (chunk 2001, row 0x00AF4900): Ego_r.pdb ?ReadLineAsString@CStringParser@@QAE?AVCCharString@@XZ (0x009BA390). Declaration only.
+    CCharString ReadLineAsString();                     // 0x009BA390
+#endif
     bool ReadAsStringUntilString(const CCharString&,CParsedItem&);
     bool SkipPastString(const CCharString&);
     bool SkipPastNextItemIfIs(const CCharString&);

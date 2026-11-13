@@ -26,6 +26,9 @@ class CThingBuilding; class CThingAICreature; class CThingObject; class CThingTr
 #ifdef FABLE_RETAIL_CTCVILLAGE_REMOVE_TASK
 class CVillageTaskBase;
 #endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_TAVERN
+enum ESimBuildingProperty;                                   // MS forward enum (the row casts the value it uses)
+#endif
 class CVillageTaskTorch; class CVillageTaskHorn; class CVillageTaskPatrol; class CVillageTaskPickCrops;
 class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
 #pragma pack(push, 1)
@@ -65,6 +68,14 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CTCWIFE_MARRY
     void DetachFromDummyVillager(CThing*);
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_TAVERN
+    // Opt-in (chunk 2020, row 0x00949AB0 CAIStateGroup_GoToPub::IsRunnable): Ego_r.pdb / FableWin.pdb ?IsTavernTime@CTCVillage@@QBE_NXZ
+    // (retail 0x00658C0A, landed; called at 0x00949D1A) and FableWin.pdb
+    // ?GetNearestBuildingWithProperty@CTCVillage@@QAEPAVCThingBuilding@@ABVC3DVector@@W4ESimBuildingProperty@@@Z (retail 0x00658E38, landed;
+    // called at 0x00949D37). Declarations only: no layout change.
+    bool IsTavernTime() const;                               // 0x00658C0A
+    CThingBuilding* GetNearestBuildingWithProperty(const C3DVector& pos, ESimBuildingProperty property);   // 0x00658E38
 #endif
     void AddThingToVillage(CThing& thing);                   // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
 #ifdef FABLE_RETAIL_CTCVILLAGE_FINEDIALOGUE

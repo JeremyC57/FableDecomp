@@ -27,13 +27,25 @@ public:
     // UpdateObjectSpaceLighting 0x00989CB0 scales the attenuation pairs), all inline in retail (no out-of-line copy).
     inline C4DVector(const CRGBFloatColour& colour);
     void Initialise(float x, float y, float z, float w) { X = x; Y = y; Z = z; W = w; }
+#if defined(FABLE_RETAIL_C4DVECTOR_NAMED_RESULT) || defined(FABLE_RETAIL_C4DVECTOR_NAMED_SCALE)
+    // Retail opt-in (chunk 2044, row 0x00AA0090): FableWin.pdb's /Od copies of ??DC4DVector@@QBE?BV0@M@Z / ??GC4DVector@@QBE?BV0@ABV0@@Z /
+    // ??HC4DVector@@QBE?BV0@ABV0@@Z are 38i / 42i / 42i (101 / 112 / 112 bytes), exactly a named result returned through the
+    // copy (VC7.1 /Od of `return C4DVector(...)` is 30i / 34i / 34i); release bytes unchanged, extra IL folds away.
+    const C4DVector operator*(float sc) const { C4DVector result(X*sc,Y*sc,Z*sc,W*sc); return result; }
+#else
     const C4DVector operator*(float sc) const { return C4DVector(X*sc,Y*sc,Z*sc,W*sc); }
+#endif
     // chunk 747 (row 0x00AA3C50 C3DKeyframe::BlendWith): FableWin.pdb ??GC4DVector@@QBE?BV0@ABV0@@Z / ??HC4DVector@@QBE?BV0@ABV0@@Z
     // and ?Interpolate@C4DVector@@QBE?BV1@ABV1@M@Z, inline in retail: BlendWith builds (v - *this) in a frame temporary, scales it
     // into a second one and adds *this (three temporaries, `fsub` / `fmul [t]` / `fadd`). Interpolate is __forceinline: written
     // plain inline, VC7.1 emits it out of line in that caller.
+#if defined(FABLE_RETAIL_C4DVECTOR_NAMED_RESULT) || defined(FABLE_RETAIL_C4DVECTOR_NAMED_ADDSUB)
+    const C4DVector operator-(const C4DVector& v) const { C4DVector result(X-v.X,Y-v.Y,Z-v.Z,W-v.W); return result; }
+    const C4DVector operator+(const C4DVector& v) const { C4DVector result(X+v.X,Y+v.Y,Z+v.Z,W+v.W); return result; }
+#else
     const C4DVector operator-(const C4DVector& v) const { return C4DVector(X-v.X,Y-v.Y,Z-v.Z,W-v.W); }
     const C4DVector operator+(const C4DVector& v) const { return C4DVector(X+v.X,Y+v.Y,Z+v.Z,W+v.W); }
+#endif
     FABLE_FORCEINLINE const C4DVector Interpolate(const C4DVector& v, float t) const { return (v - *this) * t + *this; }
 #endif
 #ifdef FABLE_RETAIL_C4DVECTOR_ADDASSIGN
