@@ -118,8 +118,23 @@ private:
     unsigned char _pad_0xc[0x108];              // +0xc GameCamera .. InverseViewTransform (not modelled)
 public:
     CMatrix3x4 NoScaleViewTransform;            // +0x114
+#ifdef FABLE_RETAIL_CENGINECAMERA_PEEKNONHOMOGENOUSVIEWTRANSFORM
+    // Nested opt-in (chunk 2059, row 0x00BC25F0): FableWin.pdb ?PeekNonHomogenousViewTransform@CEngineCamera@@QBEABVCMatrix3x4@@XZ (19b/9i),
+    // inline in retail (0x00BC2807 copies +0x114 into a local with `rep movsd`).
+    const CMatrix3x4& PeekNonHomogenousViewTransform() const { return NoScaleViewTransform; }
+#endif
 private:
+#ifdef FABLE_RETAIL_CENGINECAMERA_PEEKINVERSENONHOMOGENOUSVIEWTRANSFORM
+    // Nested opt-in (row 0x00BBF4A0): Ego_r.pdb InverseNoScaleViewTransform (CMatrix3x4) at +0x144 and FableWin.pdb
+    // ?PeekInverseNonHomogenousViewTransform@CEngineCamera@@QBEABVCMatrix3x4@@XZ, inline in retail (0x00BBFF0F reads +0x144 .. +0x158).
+public:
+    CMatrix3x4 InverseNoScaleViewTransform;     // +0x144
+    const CMatrix3x4& PeekInverseNonHomogenousViewTransform() const { return InverseNoScaleViewTransform; }
+private:
+    unsigned char _pad_0x174[0xb4];             // +0x174 .. (not modelled)
+#else
     unsigned char _pad_0x144[0xe4];             // +0x144 InverseNoScaleViewTransform .. (not modelled)
+#endif
 #else
 private:
     unsigned char _pad_0xc[0x21c];              // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)

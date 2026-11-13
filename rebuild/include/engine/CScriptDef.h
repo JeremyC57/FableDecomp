@@ -12,7 +12,15 @@ class CScriptDef : public CParentDefClassBase {
 public:
     CScriptDef();
     CScriptDef(const CScriptDef&);
+#ifndef FABLE_RETAIL_CSCRIPTDEF_IMPLICIT_ASSIGN
     CScriptDef& operator=(const CScriptDef&);
+#else
+    // Retail opt-in (chunk 4005, row 0x00F2A250 CScriptDef::operator=): operator= is the implicit one. Ego_r.pdb / FableWin.pdb
+    // ??4CScriptDef@@QAEAAV0@ABV0@@Z is the out-of-line COMDAT the 5-byte Copy 0x00F2A240 tail-jumps to (vtable 0x012FB5C8 slot
+    // 19); its 11,711 bytes copy the parent-def chain and then all 943 members in declaration (= offset) order, each with its
+    // type's own assignment, which no hand-written list is needed for. Same as CCutsceneDef (0x00F2A000) and NUISystem::CUIDef
+    // (0x00631720), whose classes declare no operator= either.
+#endif
     virtual void Copy(const CDefClassBase*);
     virtual unsigned long GetSizeofClass();
     static CDefClassBase* __fastcall Alloc();

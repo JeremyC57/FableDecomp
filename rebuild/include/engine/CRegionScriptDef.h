@@ -16,7 +16,13 @@ public:
     virtual void Transfer(CPersistContext&);                             // slot 18
     virtual void Copy(const CDefClassBase*);                             // slot 19 0x00F29F60
     virtual unsigned long GetSizeofClass();                              // slot 20
+#ifndef FABLE_RETAIL_CREGIONSCRIPTDEF_IMPLICIT_ASSIGN
     CRegionScriptDef& operator=(const CRegionScriptDef&);                // 0x00F29F70 (the implicit assignment's retail body)
+#else
+    // Retail opt-in (chunk 4005, row 0x00F2A250 CScriptDef::operator=): operator= is the implicit one (0x00F29F70 is its
+    // out-of-line COMDAT, 45 bytes: call CParentDefClassBase::operator= 0x00431ED0, then the four longs), emitted because the
+    // inline virtual Copy 0x00F29F60 tail-jumps to it.
+#endif
     long RandomVillagerMax;                                              // +0x3c
     long RandomGuardMax;                                                 // +0x40
     long RandomBanditMax;                                                // +0x44

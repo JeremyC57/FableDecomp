@@ -355,6 +355,15 @@ template<class I,class N,class T> inline I uninitialized_fill_n(I first,N n,cons
     return __uninitialized_fill_n(first,n,x,IsPOD());
 }
 // _alloc.h (malloc-based allocator)
+#ifdef FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE
+// Per-TU opt-in (row 0x00D30030): STLport's allocator<T>::deallocate forwards to __sgi_alloc = __malloc_alloc<0>::deallocate,
+// whose body is `free(p)` (stl/_alloc.h); the extra inline layer is invisible in /O2 code but adds to the caller size VC7.1's
+// inliner scores later sites with.
+template<int __inst> class __malloc_alloc {
+public:
+    static void deallocate(void* __p, size_t) { free((char*)__p); }
+};
+#endif
 template<class _Tp> class allocator {
 public:
     allocator() { }
@@ -362,7 +371,17 @@ public:
     template<class _Tp1> allocator(const allocator<_Tp1>&) { }
     ~allocator() { }
     _Tp* allocate(size_t n,const void* =0) { return n?(_Tp*)malloc(n*sizeof(_Tp)):0; }
+#ifdef FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE
+    void deallocate(_Tp* p,size_t n) { if (p != 0) __malloc_alloc<0>::deallocate((void*)p, n * sizeof(_Tp)); }
+#else
     void deallocate(_Tp* p,size_t) { if(p) free(p); }
+#endif
+#ifdef FABLE_RETAIL_STLP_ALLOC_PROXY_REBIND
+// Retail opt-in (chunk 883, row 0x006096E0 CTCInventoryMap::ConstructLogbookListPC; reused for row 0x00D30030): STLport 4.6 _alloc.h, where
+// _STLP_alloc_proxy::allocate / deallocate go through __stl_alloc_rebind (a reference cast of the stored allocator). Same code; the
+// extra inline layer is what spends the row's auto-inline budget as retail does.
+template<class _Tp1,class _Tp2> inline allocator<_Tp2>& __stl_alloc_rebind(allocator<_Tp1>& a,const _Tp2*) { return (allocator<_Tp2>&)(a); }
+#endif
 };
 template<class _Value, class _Tp, class _MaybeReboundAlloc>
 class _STLP_alloc_proxy : public _MaybeReboundAlloc {
@@ -370,6 +389,10 @@ public:
     _Value _M_data;
     _STLP_alloc_proxy(const _MaybeReboundAlloc& a, _Value p)
         : _MaybeReboundAlloc(a), _M_data(p) { }
+#ifdef FABLE_RETAIL_STLP_ALLOC_PROXY_REBIND
+    _Tp* allocate(size_t n) { return __stl_alloc_rebind(static_cast<_MaybeReboundAlloc&>(*this),(_Tp*)0).allocate(n,0); }
+    void deallocate(_Tp* p, size_t n) { __stl_alloc_rebind(static_cast<_MaybeReboundAlloc&>(*this),(_Tp*)0).deallocate(p,n); }
+#endif
 };
 #if defined(FABLE_RETAIL_STLP_VECTOR_SWAP) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS)
 // (also FABLE_RETAIL_STLP_SORT_INTERNALS, chunk 892: iter_swap below swaps through it)

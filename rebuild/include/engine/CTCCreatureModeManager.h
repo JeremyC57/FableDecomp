@@ -3,6 +3,9 @@
 #include "engine/CTCBase.h"
 #include "engine/CCountedPointer.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_REGISTRY
+#include "engine/CVectorMap.h"
+#endif
 // Raw TPI0x27a12 and nested0x28568; native0073a6e0 reads front mode of PModes+0c.
 #ifdef FABLE_RETAIL_CMODEBASE_VIRTUALS
 class CWorld; class CAnimateThing; class CAnimFilterBase; class C3DVector; enum EMovementType;   // chunk 802 opt-in: the slot types
@@ -57,6 +60,18 @@ public:
         unsigned char WeaponBasedFilter[12]; // Original CAnimFilterOfGroup.
         long FramesBeforeRemovingSelf;bool Active;
     };
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_REGISTRY
+    // Opt-in (row 0x0073B130 RegisterModes): FableWin.pdb ??0CRegisteredModeInfo@CTCCreatureModeManager@@QAE@P6IPAVCModeBase@1@AAVCThing@@@Z@Z
+    // (4 bytes: AllocFunc), ?RegisterModes@CTCCreatureModeManager@@SIXXZ (Ego_r.pdb / FableWin.pdb), and the static registry
+    // RegisteredModes (Ego_r / FableWin "dynamic initializer for 'CTCCreatureModeManager::RegisteredModes'", 0x013BAD44).
+    class CRegisteredModeInfo {
+    public:
+        CRegisteredModeInfo(CModeBase* (__fastcall* allocFunc)(CThing&)) : AllocFunc(allocFunc) {}
+        CModeBase* (__fastcall* AllocFunc)(CThing&);
+    };
+    static void __fastcall RegisterModes();                              // 0x0073B130
+    static CVectorMap<unsigned long, CRegisteredModeInfo> RegisteredModes;   // 0x013BAD44
+#endif
     CModeBase& GetCurrentMode() const;
     bool IsModeActive(unsigned long) const;
 #ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER

@@ -25,6 +25,8 @@ class CGraphicFrameData;
 #include "engine/CCountedPointer.h"
 class CTexture;
 #ifdef FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE_B
 // Retail opt-in (chunk 2018, row 0x00B2B180 CEngineSurfaceCompositionManager::RenderToTexture): Ego_r.pdb CGraphicFrameData (0x1B bytes,
 // packed; the FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS model above, PTexture +0x08) with FableWin.pdb ?GetTexture@CGraphicFrameData@@QBEPAVCTexture@@XZ
 // and ?GetTexture@CGraphicFrame@@QBEPAVCTexture@@XZ, inline in retail (0x00B2B47B..0x00B2B486: `mov ecx,[frame] ; mov ecx,[ecx+8]`).
@@ -32,6 +34,12 @@ class CTexture;
 class CGraphicFrameData {
 public:
     CTexture* GetTexture() const { return PTexture.Data; }
+#ifdef FABLE_RETAIL_CGRAPHICFRAME_FLOATTL
+    // Opt-in (row 0x00BBF4A0): FableWin.pdb ?GetFloatTLX@CGraphicFrameData@@QBEMXZ / ?GetFloatTLY@..@@QBEMXZ (the 16-bit texel offset scaled
+    // by 1/32767, 0x0129C81C), inline in retail (0x00BC01C9..0x00BC0200).
+    float GetFloatTLX() const { float tlx = TLX; float result = tlx * (1.0f / 32767.0f); return result; }
+    float GetFloatTLY() const { float tly = TLY; float result = tly * (1.0f / 32767.0f); return result; }
+#endif
     // Ego_r.pdb non-virtual ??1CGraphicFrameData@@QAE@XZ (the landed ~CEngineSurfaceCompositionManager 0x00B2D1B0 model): IsInitialised
     // (bit 4 of +0x1A) -> Uninitialise 0x009FCBA0, then the PTexture counted pointer; FableWin.pdb ?AddReference@CGraphicFrameData@@QAEXXZ.
     ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }
@@ -64,6 +72,14 @@ class CGraphicFrame {
 public:
 #ifdef FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE
     CTexture* GetTexture() const { return FrameData->GetTexture(); }
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE_B
+    CTexture* GetTexture() const { return FrameData->GetTexture(); }
+#ifdef FABLE_RETAIL_CGRAPHICFRAME_FLOATTL
+    // FableWin.pdb ?GetFloatTLX@CGraphicFrame@@QBEMXZ / ?GetFloatTLY@CGraphicFrame@@QBEMXZ.
+    float GetFloatTLX() const { return FrameData->GetFloatTLX(); }
+    float GetFloatTLY() const { return FrameData->GetFloatTLY(); }
+#endif
     // FableWin.pdb ?IsInitialised@CGraphicFrame@@QBE_NXZ, ?UnInitialise@CGraphicFrame@@QAEXXZ (retail COMDATs 0x0041C700 / 0x00A00B90 /
     // 0x00B2EEC0) and ??4CGraphicFrame@@QAEABV0@ABV0@@Z (retail COMDAT 0x0041C0E0, no self test; expanded at 0x00B2D719..0x00B2D77B).
     // FableWin.pdb ??0CGraphicFrame@@QAE@ABV0@@Z / ??1CGraphicFrame@@QAE@XZ: share with a reference; release (the vector element destructor

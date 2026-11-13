@@ -20,6 +20,18 @@ public:
     // in retail at 0x009FFB20 (`mov ecx,[ecx+28h] ; jmp 0x009FF710`, the Frames forwarder to CGraphicInfoFrame::GetVolumeTexture). Declaration only.
     bool GetVolumeTexture(class CVolumeTexture** texture, unsigned long level) const;   // 0x009FFB20
 #endif
+#ifdef FABLE_RETAIL_CGRAPHICINFO_GETFRAME
+    // Retail opt-in (chunk 2045, row 0x00BB8EF0): Ego_r.pdb / FableWin.pdb ?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z, out of line in
+    // retail at 0x009FF8D0 (the frame index, mipmap level and flags; `ret 10h`). Declaration only.
+    bool GetFrame(CGraphicFrame& frame, unsigned long frame_index, unsigned long mipmap_level, unsigned long flags) const;   // 0x009FF8D0
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFO_FRAMEFACTORS
+    // Opt-in (row 0x00BBF4A0): FableWin.pdb ?GetFrameWidthFactor@CGraphicInfo@@QBEMXZ / ?GetFrameHeightFactor@CGraphicInfo@@QBEMXZ, inline in
+    // retail (0x00BBFF58..0x00BBFF8D: fild FrameWidth (+6) / fidiv Width (+0), fild FrameHeight (+8) / fidiv Height (+2)). Needs the typed
+    // Header (FABLE_RETAIL_CGRAPHICINFO_SPRITE).
+    float GetFrameWidthFactor() const { return (float)Header.FrameWidth / Header.Width; }
+    float GetFrameHeightFactor() const { return (float)Header.FrameHeight / Header.Height; }
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
     CGraphicInfo(unsigned long index,CGraphicDataBank* bank,const CGraphicDataBank::CGraphicHeader& header);
     bool IsBump() const {return Bank->GetEntryDataType(Index)==2;}
@@ -125,6 +137,14 @@ FABLE_FORCEINLINE bool CGraphicInfoFrame::GetFrame(CGraphicFrame& frame, unsigne
         return false;
     frame = Data->Frame;
     return true;
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_PEEKGRAPHIC
+// Retail opt-in (chunk 2045, row 0x00BB8EF0): FableWin.pdb ?PeekGraphic@CGraphicDataBank@@QBEPBVCGraphicInfo@@K@Z (donor 0x01D2D7A0), inline in
+// retail: 0x00BB8F49..0x00BB8F81 reads GraphicList (+0x1E0 begin / +0x1E4 end), divides by sizeof(CGraphicInfo) 0x2C and returns the element
+// address for an index below the count, else 0. Defined here because the element type must be complete.
+inline const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) const
+{
+    return index < GraphicList.size() ? &GraphicList[index] : 0;
 }
 #endif
 #endif

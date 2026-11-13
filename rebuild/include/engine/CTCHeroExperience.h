@@ -29,6 +29,11 @@ class CHeroCombatDef;class CThingCreatureBase;class CHeroExperienceDef;class CHe
 class CHitParameters;
 #endif
 class CTCHeroExperience:public CTCBase{
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_TOTALEXPERIENCE
+public:
+    // Ego_r.pdb / FableWin.pdb ?GetTotalExperience@CTCHeroExperience@@QBEJXZ (inline in retail).
+    long GetTotalExperience() const { return TotalExperiencePoints; }
+#endif
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
 // Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
 public:

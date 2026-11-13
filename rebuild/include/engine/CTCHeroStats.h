@@ -332,6 +332,7 @@ public:
     long NumberOfHousesOwned;                                            // +0xe4
     unsigned char _pad_0xe8[0x1dc - 0xe8];
 #elif defined(FABLE_RETAIL_CTCHEROSTATS_RENTMONEY)
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_RENTMONEY_B)
     // Retail opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb ?AddMoney@CTCHeroStats@@QAEXJ_N@Z
     // (out of line at 0x0057B327, landed) and FableWin.pdb's inline ?AddRentMoney@CTCHeroStats@@QAEXJ@Z (0x01DF38C0) /
     // ?GetRentMoney@CTCHeroStats@@QBEJXZ (0x01DF38F0), whose first FableWin COMDAT copies follow OnCollisionWithObject (0x01DF10E0):
@@ -389,6 +390,12 @@ public:
     virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x005814A8
 public:
 #endif // FABLE_RETAIL_CTCHEROSTATS_VSLOTS3
+#ifdef FABLE_RETAIL_CTCHEROSTATS_TOTALS
+public:
+    // Ego_r.pdb / FableWin.pdb ?GetRenownTotal@CTCHeroStats@@QBEJXZ / ?GetTotalMoneyEarned@CTCHeroStats@@QBEJXZ (inline in retail).
+    long GetRenownTotal() const { return RenownTotal; }
+    long GetTotalMoneyEarned() const { return TotalMoneyEarned; }
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCHeroStats) == 0x1dc);
 #endif

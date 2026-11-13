@@ -134,6 +134,19 @@ public:
     bool ConstructSellActionsListPC(NUISystem::CComponent* parent, long itemDefIndex, long count, bool dynamically);  // 0x005A731F
     bool ConstructBuyActionsListPC(NUISystem::CComponent* parent, long itemDefIndex, long count, bool dynamically);   // 0x005A79E6
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_TRADEDESCRIPTION_B
+    // Retail opt-in (bwf1, row 0x005A9CBE): Ego_r.pdb (0x0060D3CD) + FableWin.pdb (0x023283BC)
+    // ?ConstructTradeDescriptionWeapon@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z. Declaration only.
+public:
+    NUISystem::CComponent* ConstructTradeDescriptionWeapon(long itemDefIndex, unsigned long unused, bool selling, bool brief);   // 0x005A9CBE
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_SUBTITLES
+    // Retail opt-in (row 0x005A04F7 ConstructNormalShopList): Ego_r.pdb / FableWin.pdb
+    // ?ConstructSubtitles@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@...@Z
+    // (0x0059DF49, landed; the console twin of ConstructSubtitlesPC 0x0059E4D7). Private, declaration only.
+private:
+    void ConstructSubtitles(NUISystem::CComponent* menu, std::map<NUISystem::CComponent*,std::pair<CWideString,long> >& subtitles);   // 0x0059DF49
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYTRADE_SHOPLISTS
     // Retail opt-in (chunk 1009b, rows 0x005A6769 ConstructNormalShopListPC / 0x005A29F4 ConstructSpecialShopList / 0x0059FEE3
     // AddBuyItemToList): Ego_r.pdb + FableWin.pdb, public, all out of line in retail (declarations only):
@@ -149,6 +162,15 @@ public:
     NUISystem::CComponent* ConstructSpecialShopList(const std::vector<std::pair<long,long> >& buyItems, CCharString& name);     // 0x005A29F4
     NUISystem::CComponent* ConstructSpecialShopListPC(const std::vector<std::pair<long,long> >& buyItems, CCharString& name);   // 0x005A8A5D
     bool AddBuyItemToList(long itemDefIndex, long count, NUISystem::CList* list, NUISystem::CViewport* viewport, bool addToTop);   // 0x0059FEE3
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_TRADEDESCRIPTION
+    // Retail opt-in (bwf2, row 0x005AAF28): Ego_r.pdb + FableWin.pdb
+    // ?ConstructTradeDescription@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z (0x005AD571) and its Weapon (0x005A9CBE) /
+    // Clothing (0x005AAF28) forms, same signature. Public, declarations only.
+public:
+    NUISystem::CComponent* ConstructTradeDescription(long itemDefIndex, unsigned long count, bool buying, bool special);           // 0x005AD571
+    NUISystem::CComponent* ConstructTradeDescriptionWeapon(long itemDefIndex, unsigned long count, bool buying, bool special);     // 0x005A9CBE
+    NUISystem::CComponent* ConstructTradeDescriptionClothing(long itemDefIndex, unsigned long count, bool buying, bool special);   // 0x005AAF28
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYTRADE_BUYPOSSIBILITY
     // Retail opt-in (chunk 1009, row 0x005A9A87 RefreshBuyPossibility): Ego_r.pdb / FableWin.pdb

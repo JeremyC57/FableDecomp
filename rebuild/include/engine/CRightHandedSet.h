@@ -41,6 +41,14 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
     // Both PDB names and donor01D0D780 prove signature, up then forward copies.
     void Init(const C3DVector& up,const C3DVector& forward){Up=up;Forward=forward;}
 #endif
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_INIT
+    // Retail opt-in (w22 agent2057 scout, row 0x007CACB0 CTCHeroReceiveItems::GlobalUpdate): Ego_r.pdb 0x004BF6E0 / FableWin.pdb
+    // 0x01D0D780 ?Init@CRightHandedSet@@QAEXABVC3DVector@@0@Z, out of line in retail at 0x004BBE10 (landed under the descriptive leaf
+    // `Set`; Ego_r donor order InitLUA / Init / CTCGraphicAppearance::SetGraphicBank = retail 0x004BBE10 / 0x004BBFC0; NAME_FIXES queue
+    // land0711f). The row calls it with ecx = &OldItemRHSet (0x007CB65C, `push &vector ; push 01383A5Ch ; call`). Declaration only;
+    // parameter order from the landed body (first argument -> Up +0, second -> Forward +0xC).
+    void Init(const C3DVector& up, const C3DVector& forward);           // 0x004BBE10
+#endif
     void SetForward(const C3DVector& forward) { Forward = forward; }
     void SetUp(const C3DVector& up) { Up = up; }
 #ifdef FABLE_RETAIL_CRIGHTHANDEDSET_ROTATE

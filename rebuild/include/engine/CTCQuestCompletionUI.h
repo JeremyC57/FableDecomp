@@ -21,6 +21,10 @@
 #if defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST) || defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION)
 #include "fable_string.h"
 #endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_ACTIVATEREAL
+#include "stlport/fable_map.h"
+namespace NUISystem { class CText; }
+#endif
 #ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
 #include "engine/CQuestCardDef.h"
 #include "engine/CQuestManager.h"
@@ -44,6 +48,10 @@ public:
 #if defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST) || defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION)
     // Retail opt-in (Codex pass20): original PDB accessor; native004b2a6b assigns ScriptName+0x50.
     void SetScriptName(const CCharString& script_name){ScriptName=script_name;}
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_ACTIVATEREAL
+    // Ego_r.pdb / FableWin.pdb ?ActivateReal@CTCQuestCompletionUI@@QAEXXZ (retail 0x005E5F30, called by GlobalUpdate 0x005E7E25).
+    void ActivateReal();
 #endif
     void SaveInitialValues(const CCharString& scriptName);                                                                    // 0x005E4860
     bool IsActive() const { return Active; }                             // FableWin ?IsActive@CTCQuestCompletionUI@@QBE_NXZ
@@ -118,12 +126,21 @@ private:
     float         ExperienceGainedDisplayed;                             // +0x78
     float         RenownGainedDisplayed;                                 // +0x7c
     float         GoldGainedDisplayed;                                   // +0x80
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_ACTIVATEREAL
+    std::map<long,unsigned long> StartQuestExperience;                   // +0x84
+    std::map<long,unsigned long> StartQuestGold;                         // +0x90
+    std::map<long,unsigned long> StartQuestRenown;                       // +0x9c
+    NUISystem::CText* PRenownText;                                       // +0xa8
+    NUISystem::CText* PGoldText;                                         // +0xac
+    NUISystem::CText* PExperienceText;                                   // +0xb0
+#else
     unsigned char StartQuestExperience[0xc];                             // +0x84 std::map<long,unsigned long>
     unsigned char StartQuestGold[0xc];                                   // +0x90 std::map<long,unsigned long>
     unsigned char StartQuestRenown[0xc];                                 // +0x9c std::map<long,unsigned long>
     void*         PRenownText;                                           // +0xa8 CText*
     void*         PGoldText;                                             // +0xac CText*
     void*         PExperienceText;                                       // +0xb0 CText*
+#endif
     float         AccumFadeTime;                                         // +0xb4
 #ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
     NUISystem::CComponent* PFrame;

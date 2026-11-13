@@ -35,6 +35,9 @@ enum EInventoryActionType;                                  // MS forward enum (
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_CARDDEFS
 class CHairCardDef; class CTattooDef;
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_DESCRIPTION
+class CWideString; class CRightHandedSet;
+#endif
 #pragma pack(push, 1)
 class CTCInventoryItem : public CTCBase {
 public:
@@ -66,6 +69,10 @@ public:
     // no enumerator spellings: MS forward enum, as EUIInventoryCategory above.
     static EInventoryActionType __fastcall GetUseButtonActionType(long defIndex);   // 0x005D9710
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_RIGHTHANDEDSET
+    // FableWin.pdb / Ego_r.pdb ?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z (static __fastcall, retail 0x005D9730).
+    static CRightHandedSet __fastcall GetStartingRightHandedSet(long defIndex);   // 0x005D9730
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_KINDS
     // Nested opt-in (chunk 867, row 0x00590F0B CTCInventory::GetItemsListUIComponentPC): the two static `__fastcall` item-kind
     // tests on a def index, FableWin.pdb / Ego_r.pdb ?IsBook@CTCInventoryItem@@SI_NJ@Z 0x005D9970 (a valid def with a book sub-def;
@@ -79,6 +86,16 @@ public:
     static bool __fastcall IsWeapon(long defIndex);                                   // 0x005D97F0
     static bool __fastcall IsBuyable(long defIndex);                                  // 0x005D9B30
     static CWideString __fastcall GetDescription(long defIndex);                      // 0x005D95C0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_DESCRIPTION
+    // Nested opt-in (w22 agent2057 scout, row 0x007CACB0 CTCHeroReceiveItems::GlobalUpdate): the const member overloads, Ego_r.pdb
+    // ?GetDescription@CTCInventoryItem@@QBE?AVCWideString@@XZ (0x00559FC0) / FableWin.pdb 0x01E00DD0 and
+    // ?GetStartingRightHandedSet@CTCInventoryItem@@QBE?AVCRightHandedSet@@XZ (Ego_r 0x0055A250 / FableWin 0x01E01360), out of line in
+    // retail at 0x005D9070 / 0x005D92F0 (donor order: Ego_r GetEngineGraphic 0x0055A220 -> GetStartingRightHandedSet 0x0055A250 =
+    // retail 0x005D92D0 -> 0x005D92F0; the row calls both thiscall with a hidden result pointer, 0x007CB1C9 / 0x007CB2D9). The
+    // landed 0x009261F0 binds 0x005D9070 as non-const QAE (NAME_FIX candidate). Declarations only: no layout change.
+    CWideString GetDescription() const;                                               // 0x005D9070
+    CRightHandedSet GetStartingRightHandedSet() const;                                // 0x005D92F0
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_DETAILS
     // Nested opt-in (chunk 1002, CTCInventoryWeapons description rows 0x005C6B26 / 0x005C71AA / 0x005C7452): Ego_r.pdb / FableWin.pdb

@@ -250,7 +250,21 @@ public:
     void SetPointScaleDistanceSqrFactor(float);
     void SetTextureCoordWrapUVW(long,bool,bool,bool);
     void SetTextureBorderColour(long,unsigned long);
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_DISPLACEMENT_INLINE
+    // Retail opt-in (row 0x00B87870 ApplyDisplacement): ?SetTextureBumpEnvMatrix@CRenderStateManager@@QAEXJMMMM@Z has no retail / Ego_r
+    // out-of-line copy (FableWin debug 0x02D54210); 0x00B87FA4.. expands it per stage as Mat00, Mat10, Mat01, Mat11 from the 1st..4th
+    // float params in order (proved by the home-slot order of the two 0.0f args): the matrix is passed column by column (parameter
+    // names descriptive; the PDB extracts carry no parameter names).
+    FABLE_FORCEINLINE void SetTextureBumpEnvMatrix(long stage, float m00, float m10, float m01, float m11)
+    {
+        SetRenderState(*(unsigned long*)&m00, DeviceState.TextureBumpEnvMat00[stage]);
+        SetRenderState(*(unsigned long*)&m10, DeviceState.TextureBumpEnvMat10[stage]);
+        SetRenderState(*(unsigned long*)&m01, DeviceState.TextureBumpEnvMat01[stage]);
+        SetRenderState(*(unsigned long*)&m11, DeviceState.TextureBumpEnvMat11[stage]);
+    }
+#else
     void SetTextureBumpEnvMatrix(long,float,float,float,float);
+#endif
 #ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_STENCIL_INLINE
     // Retail opt-in (chunk 792, rows 0x00B5A3F0 CEngineScreenEffectColourFilter::ApplyColourFilter / 0x00B5AF80 RenderColorFilteredQuad):
     // ?SetStencilEnable@CRenderStateManager@@QAEX_N@Z, ?SetStencilFunc@CRenderStateManager@@QAEXW4STENCIL_FUNC@@@Z,
@@ -262,8 +276,15 @@ public:
     FABLE_FORCEINLINE void SetStencilFunc(STENCIL_FUNC func) { SetRenderState(D3DStencilFuncModeTable[func], DeviceState.StencilFunc); }
     FABLE_FORCEINLINE void SetStencilRef(unsigned long ref) { SetRenderState(ref, DeviceState.StencilRef); }
     FABLE_FORCEINLINE void SetStencilMask(unsigned long mask) { SetRenderState(mask, DeviceState.StencilMask); }
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_DISPLACEMENT_INLINE
+    // Retail opt-in (row 0x00B87870): ?SetStencilOpFail / ?SetStencilOpZFail@CRenderStateManager@@QAEXW4STENCIL_OP_MODE@@@Z have no retail copy
+    // (FableWin debug 0x02DBB250 / 0x02DBB290); expanded at 0x00B87C5C / 0x00B87CC8.
+    FABLE_FORCEINLINE void SetStencilOpFail(STENCIL_OP_MODE mode) { SetRenderState(D3DStencilOperationModeTable[mode], DeviceState.StencilOpFail); }
+    FABLE_FORCEINLINE void SetStencilOpZFail(STENCIL_OP_MODE mode) { SetRenderState(D3DStencilOperationModeTable[mode], DeviceState.StencilOpZFail); }
+#else
     void SetStencilOpFail(STENCIL_OP_MODE);
     void SetStencilOpZFail(STENCIL_OP_MODE);
+#endif
 #ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_OUTLINE_INLINE
     // Opt-in (chunk 892, row 0x00BF01E0): ?SetStencilOpPass@CRenderStateManager@@QAEXW4STENCIL_OP_MODE@@@Z has no out-of-line copy
     // in retail; 0x00BF01E0 expands it into SetRenderState on StencilOpPass (+0x3AC) through D3DStencilOperationModeTable 0x01396F38
@@ -274,8 +295,15 @@ public:
 #endif
 #else
     void SetStencilEnable(bool);
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_DISPLACEMENT_INLINE
+    // Retail opt-in (row 0x00B87870): ?SetStencilOpFail / ?SetStencilOpZFail@CRenderStateManager@@QAEXW4STENCIL_OP_MODE@@@Z have no retail copy
+    // (FableWin debug 0x02DBB250 / 0x02DBB290); expanded at 0x00B87C5C / 0x00B87CC8.
+    FABLE_FORCEINLINE void SetStencilOpFail(STENCIL_OP_MODE mode) { SetRenderState(D3DStencilOperationModeTable[mode], DeviceState.StencilOpFail); }
+    FABLE_FORCEINLINE void SetStencilOpZFail(STENCIL_OP_MODE mode) { SetRenderState(D3DStencilOperationModeTable[mode], DeviceState.StencilOpZFail); }
+#else
     void SetStencilOpFail(STENCIL_OP_MODE);
     void SetStencilOpZFail(STENCIL_OP_MODE);
+#endif
 #ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_OUTLINE_INLINE
     // Opt-in (chunk 892, row 0x00BF01E0): ?SetStencilOpPass@CRenderStateManager@@QAEXW4STENCIL_OP_MODE@@@Z has no out-of-line copy
     // in retail; 0x00BF01E0 expands it into SetRenderState on StencilOpPass (+0x3AC) through D3DStencilOperationModeTable 0x01396F38

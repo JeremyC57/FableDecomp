@@ -141,6 +141,33 @@ template<> inline void CPersistTraits<C2DVector>::TransferBinaryIn(CMemoryDataIn
     val=is.Read2DVector();
 }
 #endif
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS_B
+// Retail opt-in (chunk 4004, row 0x00F2D6E0 CScriptDef::Transfer): CPersistTraits<float> as the explicit class specialisation it is
+// in retail -- Ego_r.pdb / FableWin.pdb ?TransferBinaryOut@?$CPersistTraits@M@@QAEXAAVCDataOutputStream@@ABM@Z takes `const float&`
+// where the generic member takes T by value (like the bool specialisation below), and both PDBs name its user constructor and
+// destructor (??0?$CPersistTraits@M@@QAE@XZ / ??1?$CPersistTraits@M@@QAE@XZ) and the two-overload TransferIn / TransferBinaryIn
+// family. Member DefaultVal +0 (Ego_r.pdb, float). FITTED, NOT PROVEN: the `const` on DefaultVal. c2's budget rule refuses
+// GetDefaultVal<float> at a share of 48 where it accepts GetDefaultVal<long> (c1 size word 48) -- 0x00F30E76 / 0x00F30EB5 /
+// 0x00F30ED6 call 0x0040E250 while 0x00F30E97 / 0x00F30EF7 store an inlined 0 -- so the float instance's size word is at least 49;
+// a const-qualified member is the one class shape measured to give that (49; non-const, a base class, out-of-class ctor / dtor
+// definitions and a virtual destructor all give 48; tools/w6.sh probes w8 / w10). The PDB layout dump carries no qualifiers.
+// Do not combine with FABLE_RETAIL_CPERSISTTRAITS_FLOAT_TRANSFERIN_BODY (a member specialisation of the generic class).
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_FLOAT_TRANSFERIN_BODY
+#error FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS_B and FABLE_RETAIL_CPERSISTTRAITS_FLOAT_TRANSFERIN_BODY are exclusive
+#endif
+template<> class CPersistTraits<float> {
+public:
+    CPersistTraits() : DefaultVal(0.0f) {}
+    ~CPersistTraits() {}
+    void TransferBinaryIn(CMemoryDataInputStream&,float&);
+    float TransferBinaryIn(CMemoryDataInputStream&);
+    void TransferBinaryOut(CDataOutputStream&,const float&);
+    void TransferIn(CPersistContext&,CStringParser&,float&);
+    float TransferIn(CPersistContext&,CStringParser&);
+    void TransferOut(CPersistContext&,CCharString&,const float&);
+    const float DefaultVal;
+};
+#endif
 #ifdef FABLE_RETAIL_CPERSISTTRAITS_FLOAT_TRANSFERIN_BODY
 // Retail opt-in (chunk 1020, row 0x009E81E0 CPersistTraits<C2DVector>::TransferIn): the body of Ego_r.pdb / FableWin.pdb
 // ?TransferIn@?$CPersistTraits@M@@QAEXAAVCPersistContext@@AAVCStringParser@@AAM@Z (retail 0x0040F7E0, landed): an unquoted word (item

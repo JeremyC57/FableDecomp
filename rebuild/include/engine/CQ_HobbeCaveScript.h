@@ -141,6 +141,28 @@ private:
 protected:
     CQ_HobbeCaveScript* ParentClass;                                     // +0x14
     CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+#endif
+#ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_CHOBBETORRENT
+// Retail opt-in (chunk 2046): the entity script CHobbeTorrent (Ego_r.pdb CHobbeTorrent, 32 bytes: ParentClass +0x14 (pointer),
+//   PMasterData +0x18, NumberToGenerate +0x1C; retail vtable 0x012D5960 stored by the landed Alloc 0x00D8F3F0: slot 1 Main
+//   0x00D92380, slot 4 OnPersist 0x00D91930). Method spellings: Ego_r.pdb / FableWin.pdb ?<Name>@CHobbeTorrent@CQ_HobbeCaveScript@NScript@@.
+class CQ_HobbeCaveScript::CHobbeTorrent : public CEntityScriptBase {
+public:
+    CHobbeTorrent(CQ_HobbeCaveScript& parent, CScriptDataBase* data, const CScriptThing& me)
+        : CEntityScriptBase(*parent.Game, me), ParentClass(&parent)
+    {
+        PMasterData = (CQ_SunnyvaleMasterData*)data;
+    }
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HobbeCaveScript&, CScriptDataBase*, const CScriptThing&);   // 0x00D8F3F0
+    virtual CScriptBase* GetParentScript() const;                        // slot 3
+private:
+    virtual void Init();                                                 // slot 2
+    virtual void Main();                                                 // slot 1  0x00D92380
+    virtual void OnPersist(CPersistContext&);                            // slot 4  0x00D91930
+public:
+    CQ_HobbeCaveScript* ParentClass;                                     // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    long NumberToGenerate;                                               // +0x1C
 };
 #endif
 }

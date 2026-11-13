@@ -45,7 +45,15 @@ public:
         Data=other.Data;return *this;
     }
 #endif
-#ifdef FABLE_RETAIL_CENGINEPRIMITIVEHANDLE
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE) && defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_FORCEINLINE)
+    // Nested opt-in (bwf2, row 0x007CACB0 CTCHeroReceiveItems::GlobalUpdate): the same Clear text as below, FABLE_FORCEINLINE. Retail
+    // expands both Clear sites of that 2974-byte function (0x007CAD10, 0x007CAEE4) while VC7.1's inline scorer (c2 trace: c1 52..54,
+    // score 74..108 against the threshold 74 at static frequency 1/4 and 1/8) keeps the plain inline out of line.
+    FABLE_FORCEINLINE void Clear() {
+        if (Data.GetRefCount() == 1) Data->NotifyReleased(*this);
+        Data.Reset(0);
+    }
+#elif defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE)
     // Retail opt-in (chunk 737, CPSCLight::PreparePrimitives 0x00B19C60; the landed CPSCLight::Kill 0x00B19C20 model): FableWin.pdb
     // ?Clear@CEnginePrimitiveHandle@@QAEXXZ, inline in retail: the last handle notifies the primitive (slot 3), then `Data = 0`
     // through the counted pointer's Reset (needs FABLE_RETAIL_CIVCOUNTEDPOINTER: release inside the null test, then the second store).

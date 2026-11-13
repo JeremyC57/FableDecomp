@@ -29,6 +29,11 @@ public:
  CDisplayManager(CSystemManager&);
  virtual ~CDisplayManager();
  bool GetBestAlphaTextureFormat(unsigned long,CPixelFormat&);
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_PIXELSHADERVERSION
+ // Opt-in (row 0x00BB5040 CEngineClothRenderer ctor): Ego_r.pdb / FableWin.pdb ?GetPixelShaderVersion@CDisplayManager@@QBEKXZ
+ // (landed 0x009BEE00; the ctor compares it unsigned against 1400 = ps_1_4).
+ unsigned long GetPixelShaderVersion() const;                          // 0x009BEE00
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER_ANTIALIASING
  // Opt-in (chunk 880, row 0x0058AF10 CTCInventory::OpenPCOptionsMenu): Ego_r.pdb
  // ?EnumerateAntiAliasingModes@CDisplayManager@@QAEXAAV?$CArray@W4ESurfaceMultisampleType@@@@@Z, landed at 0x009C05C0.

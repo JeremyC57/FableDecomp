@@ -513,6 +513,11 @@ public:
         FABLE_STATIC_ASSERT(offsetof(CQuestManager, TempBoasts) == 0x70);
         FABLE_STATIC_ASSERT(sizeof(CBoast) == 0x20);
     }
+#ifdef FABLE_RETAIL_CQUESTMANAGER_FINISHSCREEN
+    // Ego_r.pdb / FableWin.pdb ?OnQuestFinishScreenDisplayed@CQuestManager@@QAE_NABVCCharString@@@Z (retail 0x004B0160).
+public:
+    bool OnQuestFinishScreenDisplayed(const CCharString& questName);     // 0x004B0160
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CQuestManager) == 0xb4);
 #else

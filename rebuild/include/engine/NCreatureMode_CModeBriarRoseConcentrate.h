@@ -10,6 +10,10 @@ class CBriarRoseDef;
 namespace NCreatureMode {
 class CModeBriarRoseConcentrate:public CModeStandBase {
 public:
+#ifdef FABLE_RETAIL_NCREATUREMODE_ALLOC
+    // Opt-in (row 0x0073B130 CTCCreatureModeManager::RegisterModes): FableWin.pdb ?Alloc@CModeBriarRoseConcentrate@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z.
+    static CTCCreatureModeManager::CModeBase* __fastcall Alloc(CThing& owner);
+#endif
  virtual unsigned long GetType()const;
  virtual const CAnimFilterBase& GetAnimFilter()const;
  virtual void OnActivate();

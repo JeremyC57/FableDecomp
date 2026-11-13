@@ -130,6 +130,11 @@ public:
     };
 #pragma pack(pop)
     void GetItemDescriptionArmourRating(CWideString& text, long itemDefIndex) const;   // 0x005B6767
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_NOARMOUR
+    // Retail opt-in (bwf2, row 0x005AAF28): FableWin.pdb ?GetItemDescriptionNoArmourRating@CTCInventoryClothing@@QBEXAAVCWideString@@J@Z
+    // (0x005B62FE), out of line. Declaration only.
+    void GetItemDescriptionNoArmourRating(CWideString& text, long itemDefIndex) const;   // 0x005B62FE
+#endif
 private:
     void CalculateArmorValues(ArgPasser& values, long itemDefIndex) const;              // 0x005B4EBA
 public:

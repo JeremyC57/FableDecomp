@@ -38,10 +38,41 @@ public:
     void RenderSingleSprite(CEngineSubPrimitiveBase& sub, ERenderPassType pass);                              // 0x00BC04F0 QAE
 private:
     void BuildBuffers();                                                 // 0x00BBF380 ?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@AAEXXZ
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLESPRITEGROUP_APPLYSHADERS
+    // Opt-in (row 0x00BBF4A0 RenderSubPrimitive): the six private shader pickers with their bodies (FableWin.pdb COMDATs after
+    // 0x02EB49B0: the three ?Apply*PointLightVertexShader@..@@AAEXK@Z 77b, the three ?Apply*DisplacementVertexShader@..@@AAEXXZ 22b; no
+    // retail copy, expanded at 0x00BBF752.. / 0x00BBFD23..). Text of the particle mesh group's ApplyMeshPointLightVertexShader /
+    // ApplyDisplacementVertexShader (same FableWin sizes): the light count clamped to the last shader of the array.
+    FABLE_FORCEINLINE void ApplyBillboardPointLightVertexShader(unsigned long light_count)
+    {
+        unsigned long index = light_count;
+        if (light_count > VertexShadersBillboardSpritePointLights.size() - 1)
+            index = VertexShadersBillboardSpritePointLights.size() - 1;
+        ApplyVertexShader(VertexShadersBillboardSpritePointLights[index]);
+    }
+    FABLE_FORCEINLINE void ApplyCrossedSpritePointLightVertexShader(unsigned long light_count)
+    {
+        unsigned long index = light_count;
+        if (light_count > VertexShadersCrossedSpritePointLights.size() - 1)
+            index = VertexShadersCrossedSpritePointLights.size() - 1;
+        ApplyVertexShader(VertexShadersCrossedSpritePointLights[index]);
+    }
+    FABLE_FORCEINLINE void Apply3DFaceMePointLightVertexShader(unsigned long light_count)
+    {
+        unsigned long index = light_count;
+        if (light_count > VertexShaders3DFaceMeSpritePointLights.size() - 1)
+            index = VertexShaders3DFaceMeSpritePointLights.size() - 1;
+        ApplyVertexShader(VertexShaders3DFaceMeSpritePointLights[index]);
+    }
+    FABLE_FORCEINLINE void ApplyBillboardDisplacementVertexShader() { ApplyVertexShader(VertexShadersBillboardSpriteDisplacement); }
+    FABLE_FORCEINLINE void ApplyCrossedSpriteDisplacementVertexShader() { ApplyVertexShader(VertexShadersCrossedSpriteDisplacement); }
+    FABLE_FORCEINLINE void Apply3DFaceMeDisplacementVertexShader() { ApplyVertexShader(VertexShaders3DFaceMeSpriteDisplacement); }
+#else
     void ApplyBillboardDisplacementVertexShader();                       // AAE
     void ApplyBillboardPointLightVertexShader(unsigned long lights);     // AAE
     void ApplyCrossedSpriteDisplacementVertexShader();                   // AAE
     void ApplyCrossedSpritePointLightVertexShader(unsigned long lights); // AAE
+#endif
 public:
     CArray<CVertexShader> VertexShadersBillboardSpritePointLights;       // +0x0c
     CArray<CVertexShader> VertexShadersCrossedSpritePointLights;         // +0x18

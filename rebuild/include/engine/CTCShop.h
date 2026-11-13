@@ -45,6 +45,13 @@ public:
     // catalog's GetCurrentBuyPrice label for that address is propagated). Declaration only.
     long GetCurrentSellPrice(long,long) const;                         // 0x007743B0
 #endif
+#ifdef FABLE_RETAIL_CTCSHOP_STOCKQUERIES
+    // Retail opt-in (bwf1, row 0x005A9CBE): Ego_r.pdb + FableWin.pdb ?GetQuantity@CTCShop@@QBEJJ@Z (0x007726B0; landed as
+    // "GetStockQuantity"), ?GetMaxStock@CTCShop@@QBEJJ@Z (0x00772720), ?GetDaysTillRestock@CTCShop@@QBEJJ@Z (0x00772790), out of line.
+    long GetQuantity(long) const;                                        // 0x007726B0
+    long GetMaxStock(long) const;                                        // 0x00772720
+    long GetDaysTillRestock(long) const;                                 // 0x00772790
+#endif
     std::vector<GoodsPlace> GetFreeSaleItemPlaces(bool);
     void AddSaleItem(long,const GoodsPlace&);
 #ifdef FABLE_RETAIL_CTCSHOP
@@ -97,6 +104,13 @@ public:
     // (0x007735D0 / 0x00773790; the two price rows call them after reading the shop def's multiplier). Declarations only.
     float GetAttitudeBuyPriceMultiplier() const;                         // 0x007735D0
     float GetAttitudeSellPriceMultiplier() const;                        // 0x00773790
+#endif
+#ifdef FABLE_RETAIL_CTCSHOP_STOCKINFO
+    // Retail opt-in (bwf2, row 0x005AAF28): Ego_r.pdb + FableWin.pdb ?GetQuantity@CTCShop@@QBEJJ@Z (0x007726B0),
+    // ?GetMaxStock@CTCShop@@QBEJJ@Z (0x00772720), ?GetDaysTillRestock@CTCShop@@QBEJJ@Z (0x00772790), out of line. Declarations only.
+    long GetQuantity(long) const;                                        // 0x007726B0
+    long GetMaxStock(long) const;                                        // 0x00772720
+    long GetDaysTillRestock(long) const;                                 // 0x00772790
 #endif
 #ifdef FABLE_RETAIL_CTCSHOP_WANTED
     // Retail opt-in (chunk 891, row 0x005A5B31 CTCInventoryTrade::ConstructActualWantedInventoryPC): Ego_r.pdb

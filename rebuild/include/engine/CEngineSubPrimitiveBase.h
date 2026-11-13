@@ -11,6 +11,12 @@ public:
  virtual ~CEngineSubPrimitiveBase();
  static void* __fastcall operator new(unsigned int size);
  static void __fastcall operator delete(void*);
+#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_PARENTBASE
+ // Retail opt-in (chunk 2045, row 0x00BB8EF0): FableWin.pdb ?GetParentBase@CEngineSubPrimitiveBase@@QAEPAVCEngineInternalPrimitiveBase@@XZ
+ // and ?PeekParentBase@CEngineSubPrimitiveBase@@QBEPBVCEngineInternalPrimitiveBase@@XZ, inline in retail (0x00BB8F0A `mov ebp,[eax+0Ch]`).
+ CEngineInternalPrimitiveBase* GetParentBase() { return Parent; }
+ const CEngineInternalPrimitiveBase* PeekParentBase() const { return Parent; }
+#endif
 private:
  unsigned long RenderFlags;
  unsigned char Alpha;

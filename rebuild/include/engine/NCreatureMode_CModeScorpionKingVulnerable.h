@@ -15,6 +15,10 @@ class CThingCreatureBase;
 namespace NCreatureMode {
 class CModeScorpionKingVulnerable : public CModeStandBase {
 public:
+#ifdef FABLE_RETAIL_NCREATUREMODE_ALLOC
+    // Opt-in (row 0x0073B130 CTCCreatureModeManager::RegisterModes): FableWin.pdb ?Alloc@CModeScorpionKingVulnerable@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z.
+    static CTCCreatureModeManager::CModeBase* __fastcall Alloc(CThing& owner);
+#endif
     CModeScorpionKingVulnerable(CThing& thing);                          // 0x008D8120
     virtual ~CModeScorpionKingVulnerable();
     virtual unsigned long GetType() const;

@@ -126,6 +126,11 @@ protected:
     // (0x009BC120) and ?CleanOutLine@CPersistContext@@IAEXJJ@Z (0x009BB0D0, out of line).
     void TransferVectorOfSubComponentsLoadText(const char*,CPersistContext_TransferableVectorOfSubComponentsGenericType&);
     void TransferVectorLoadText(const char*,CPersistContext_TransferableVectorGenericType&);
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERVECTOR_NAMED_BODY
+    // Retail opt-in (chunk 4004): Ego_r.pdb / FableWin.pdb ?TransferVectorSaveText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z
+    // (protected, out of line at 0x009BAC80). Declaration only.
+    void TransferVectorSaveText(const char*,CPersistContext_TransferableVectorGenericType&);
+#endif
     void TransferSubComponentLoadText(const char*,CPersistContext_TransferableSubComponentGenericType&);
     void CleanOutLine(long,long);
     // Chunk 728 round 2 (row 0x006D2BD0 CTCWife::OnSerialise): the protected text-arm workers of the three-argument Transfer<T> body
@@ -255,6 +260,57 @@ template<class T> void CPersistContext::TransferVectorOfSubComponents(const char
         break;
     }
 }
+#endif
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERVECTOR_NAMED_BODY
+// Retail opt-in (chunk 4004, row 0x00F2D6E0 CScriptDef::Transfer): the shared body of the named member template
+// ??$TransferVector@<T>@CPersistContext@@QAEXPBDAAV?$vector@<T>V?$allocator@<T>@std@@@std@@@Z (Ego_r.pdb / FableWin.pdb), `ret 8`:
+// CheckCRC(name), then a closed switch on Mode (5-entry jump table, `default` unreachable): MODE_CLEAR empties the vector,
+// MODE_SAVE_BINARY / MODE_LOAD_BINARY call the global vector serialisers, the two text modes hand a
+// CPersistContext_TransferableVector<T> wrapper to TransferVectorSaveText 0x009BAC80 / TransferVectorLoadText 0x009BB110.
+// Retail instances: 0x00F333B0 (CDefString, right after CScriptDef::Transfer), 0x0049B8D0 (CCharString), 0x00569FE0 (float),
+// 0x005815D6 (long). The body must be visible to a row whose inline split follows c2's budget rule (the call sites count as
+// inline candidates there). Needs FABLE_RETAIL_CPERSISTCONTEXT.
+#include "engine/CPersistContext_TransferableVector.h"
+template<class T> void FABLE_FASTCALL GFSerialiseVectorBinaryIn(CMemoryDataInputStream&,std::vector<T,std::allocator<T> >&);
+template<class T> void FABLE_FASTCALL GFSerialiseVectorBinaryOut(CDataOutputStream&,std::vector<T,std::allocator<T> >&);
+template<class T> void CPersistContext::TransferVector(const char* name,std::vector<T,std::allocator<T> >& value)
+{
+    CheckCRC(name);
+    switch (Mode) {
+    case MODE_CLEAR:
+        value.clear();
+        break;
+    case MODE_SAVE_BINARY:
+        GFSerialiseVectorBinaryOut(*PSaveStream,value);
+        break;
+    case MODE_LOAD_BINARY:
+        GFSerialiseVectorBinaryIn(*PLoadStream,value);
+        break;
+    case MODE_SAVE_TEXT: {
+        CPersistContext_TransferableVector<T> item(value);
+        TransferVectorSaveText(name,item);
+        break;
+    }
+    case MODE_LOAD_TEXT: {
+        CPersistContext_TransferableVector<T> item(value);
+        TransferVectorLoadText(name,item);
+        break;
+    }
+    default:
+#ifdef _MSC_VER
+        __assume(0);
+#endif
+        break;
+    }
+}
+#endif
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_GETDEFAULTVAL_BODY
+// Retail opt-in (chunk 4004, row 0x00F2D6E0 CScriptDef::Transfer): the inline body of the protected static member template
+// ??$GetDefaultVal@<T>@CPersistContext@@KI?A<T>XZ (Ego_r.pdb / FableWin.pdb). It returns the DefaultVal of a CPersistTraits<T> local,
+// which is why the CCharString instance 0x0040E1E0 builds a local, copies it out and destroys it (no NRVO) and the scalar
+// instances return a plain zero (0x0040E160 long `xor eax,eax ; ret`, 0x0040E250 float). Needs FABLE_RETAIL_CPERSISTCONTEXT and
+// engine/CPersistTraits.h with FABLE_RETAIL_CPERSISTTRAITS (the value-initialising traits constructor) at the point of instantiation.
+template<class T> inline T FABLE_FASTCALL CPersistContext::GetDefaultVal() { CPersistTraits<T> traits; return traits.DefaultVal; }
 #endif
 #ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFER_BINARY_BODY
 // Retail opt-in (chunk 1018, row 0x0067E290 CDegradableDef::Transfer): the shared bodies of the one-argument member templates

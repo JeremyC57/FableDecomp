@@ -74,6 +74,15 @@ public:
     virtual bool CanBlockUpperLevelNavigatingCreature() const;  // slot 56, 0x00702CD0
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGOBJECT_HASPROPERTY
+    // Retail opt-in (w22 agent2057 scout, row 0x007CACB0 CTCHeroReceiveItems::GlobalUpdate): FableWin.pdb
+    // ?HasProperty@CThingObject@@QBE_NK@Z (0x01D860F0, public const, inline: no Ego_r.pdb / Fable.exe copy), over the virtual
+    // ?GetProperties@CThingObject@@UBEKXZ (slot 48, +0xC0; needs FABLE_RETAIL_CTHING_ORIGINAL_VTABLE). The argument is a bit INDEX:
+    // retail tests property 10 as `call [edx+0C0h] ; shr eax,0Ah ; test al,1 ; jne` (0x007CB356..0x007CB365); a mask argument
+    // (`& 0x400`) folds to `test ah,4`. Body FITTED: the shift-and-mask text that gives retail's shr/test (scout/headers.md has the
+    // FableWin /Od size check).
+    bool HasProperty(unsigned long property) const { return ((GetProperties() >> property) & 1) != 0; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGOBJECT_VSLOTS2
 // agentFAM04 (2026-11-11): retail CThingObject overrides (TLC vtable slots aligned with the Xbox 360 Test PDB order;
 // Ego_r.pdb / FableWin.pdb spellings, all public virtual). Declaration only (no layout change).

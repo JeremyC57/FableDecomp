@@ -20,6 +20,11 @@
 #include "engine/CBaseObject.h"
 class CScriptGameResourceObjectBase : public CBaseObject {
 public:
+#ifdef FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTBASE_OUTOFLINE_CTOR
+    // Per-TU opt-in (row 0x00D30030 CQ_EndGameBossBattleScript::JackOfBladesBossBattle): the default ctor COMDAT 0x006E7A60
+    // (??0CScriptGameResourceObjectBase@@QAE@XZ) is called from the expanded MovieBase ctor (`call 0x006E7A60; mov [esi],0x01260EF4`).
+    CScriptGameResourceObjectBase();
+#endif
     virtual ~CScriptGameResourceObjectBase() { }                         // slot 0  0x006E70A0 (scalar deleting)
 };
 FABLE_STATIC_ASSERT(sizeof(CScriptGameResourceObjectBase) == 0x8);

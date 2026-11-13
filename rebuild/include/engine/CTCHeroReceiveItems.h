@@ -14,6 +14,13 @@
 #include "engine/CIntelligentPointer.h"
 class CPersistContext;
 #endif
+#ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_GLOBALUPDATE
+#include <stddef.h>
+#include "engine/C2DBoxF.h"
+#include "engine/CRightHandedSet.h"
+#include "engine/CEnginePrimitiveHandle.h"
+class CThing;
+#endif
 class CThingObject;
 class CTCHeroReceiveItems : public CTCBase {
 public:
@@ -40,11 +47,44 @@ public:
     // Nested opt-in (wf13, row 0x00492973 CSubtitleRenderer::SetText): the next members in Ego_r.pdb order and names (Ego_r +0x28..+0x33,
     // retail -0xC as for Items / PickedUpItems): SetText sets DisplayingItems (`mov byte ptr [eax+26h],1`), Clear 0x00492BAB sets
     // ForceClear +0x27. Layout only.
+#endif
+#ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_GLOBALUPDATE
+    // Nested opt-in (w22 agent2057 scout, row 0x007CACB0 CTCHeroReceiveItems::GlobalUpdate; needs _PICKEDUPITEMS,
+    // FABLE_RETAIL_CINTELLIGENTPOINTER, FABLE_RETAIL_CRIGHTHANDEDSET, FABLE_RETAIL_CENGINEPRIMITIVEHANDLE + FABLE_RETAIL_CIVCOUNTEDPOINTER):
+    // the rest of the Ego_r.pdb member list (struct_layouts_egor.tsv CTCHeroReceiveItems, names and order) at retail offsets (Ego_r less
+    // 12: the 4-byte STLport list and 12-byte vector), as the landed ctor 0x007CA830 / dtor 0x007CA8E0 / OnKill 0x007CA630 /
+    // PrepareToShowItems 0x007CA670 rows read them (PCurrentItem +0x1C, flags +0x24..+0x28, PContainer +0x29 byte-packed,
+    // AmountThroughForAreaResize +0x34 .. BackgroundPrimitiveHandle +0xA4; sizeof 0xAC = the retail malloc size of the Alloc row
+    // 0x004D57C7 UNVERIFIED). Members:
+    //   ?GlobalUpdate@CTCHeroReceiveItems@@UAEX_N@Z (Ego_r 0x007C9230 / FableWin 0x02726CD0; vtable 0x0126EBFC slot 26 = 0x007CACB0),
+    //   ?AddItemToInventory@CTCHeroReceiveItems@@AAEXAAVCThing@@_N@Z (private; Ego_r 0x007C8F40 / FableWin 0x02726C20; landed 0x007CABD0).
+    // SendMessageW is the PDB spelling (windows.h maps SendMessage to SendMessageW in Lionhead's TU).
+    virtual void GlobalUpdate(bool paused);                             // 0x007CACB0
+    // FableWin.pdb inline accessors (no Ego_r.pdb / Fable.exe copy; a member-byte read in retail): ?IsReceivingItems@CTCHeroReceiveItems@@QBE_NXZ
+    // (0x027290B0, 17 bytes / 9 instructions: its first COMDAT copy directly follows GlobalUpdate 0x02726CD0, so GlobalUpdate is its first
+    // user -- retail 0x007CACB6 `mov al,[esi+25h] ; test al,al`) and ?IsDisplayingItems@CTCHeroReceiveItems@@QBE_NXZ (0x020E152B, first
+    // copy in another TU, so whether GlobalUpdate uses it is UNVERIFIED; retail 0x007CB6BF `mov al,[esi+26h]`).
+    bool IsReceivingItems() const { return ReceivingItems; }
+    bool IsDisplayingItems() const { return DisplayingItems; }
+private:
+    void AddItemToInventory(CThing& item, bool persist);                 // 0x007CABD0
+public:
     CIntelligentPointer<CThingObject> PCurrentItem;                      // +0x1c
     bool PersistCurrentItem;                                             // +0x24
     bool ReceivingItems;                                                 // +0x25
     bool DisplayingItems;                                                // +0x26
     bool ForceClear;                                                     // +0x27
+    bool SendMessageW;                                                   // +0x28
+    CIntelligentPointer<CThing> PContainer;                              // +0x29 (byte-packed pointer class)
+    float AmountThroughForAreaResize;                                    // +0x34
+    long FullSizeTimer;                                                  // +0x38
+    C2DBoxF InitialAreaItemTook;                                         // +0x3c
+    C2DBoxF OldAreaItemTaking;                                           // +0x4c
+    C2DBoxF CurrentAreaItemTaking;                                       // +0x5c
+    CRightHandedSet OldItemRHSet;                                        // +0x6c
+    CRightHandedSet CurrentItemRHSet;                                    // +0x84
+    CEnginePrimitiveHandle ItemPrimitiveHandle;                          // +0x9c
+    CEnginePrimitiveHandle BackgroundPrimitiveHandle;                    // +0xa4
 #endif
 #endif
 #ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_VSLOTS
@@ -55,4 +95,18 @@ public:
 public:
 #endif
 };
+#ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_GLOBALUPDATE
+FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, Items) == 0x0c);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, PickedUpItems) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, PCurrentItem) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, ReceivingItems) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, SendMessageW) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, PContainer) == 0x29);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, AmountThroughForAreaResize) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, InitialAreaItemTook) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, OldItemRHSet) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, ItemPrimitiveHandle) == 0x9c);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, BackgroundPrimitiveHandle) == 0xa4);
+FABLE_STATIC_ASSERT(sizeof(CTCHeroReceiveItems) == 0xac);
+#endif
 #endif

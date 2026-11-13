@@ -15,6 +15,10 @@ class CThingAICreature;
 namespace NCreatureMode {
 class CModeGuildmasterPowerUpShield : public CModeStandBase {
 public:
+#ifdef FABLE_RETAIL_NCREATUREMODE_ALLOC
+    // Opt-in (row 0x0073B130 CTCCreatureModeManager::RegisterModes): FableWin.pdb ?Alloc@CModeGuildmasterPowerUpShield@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z.
+    static CTCCreatureModeManager::CModeBase* __fastcall Alloc(CThing& owner);
+#endif
     CModeGuildmasterPowerUpShield(CThing& thing);
     CModeGuildmasterPowerUpShield(CThing& thing, float time);
     virtual ~CModeGuildmasterPowerUpShield();
@@ -36,6 +40,10 @@ inline void CModeGuildmasterPowerUpShield::CheckRetailLayout() {
 }
 class CModeGuildmasterPowerUpSpeed : public CModeStandBase {
 public:
+#ifdef FABLE_RETAIL_NCREATUREMODE_ALLOC
+    // Opt-in (row 0x0073B130 CTCCreatureModeManager::RegisterModes): FableWin.pdb ?Alloc@CModeGuildmasterPowerUpSpeed@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z.
+    static CTCCreatureModeManager::CModeBase* __fastcall Alloc(CThing& owner);
+#endif
     CModeGuildmasterPowerUpSpeed(CThing& thing);
     CModeGuildmasterPowerUpSpeed(CThing& thing, float time);
     virtual ~CModeGuildmasterPowerUpSpeed();

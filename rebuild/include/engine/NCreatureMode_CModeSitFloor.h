@@ -32,6 +32,10 @@ protected:
 };
 class CModeSitFloor : public CModeSitBase {
 public:
+#ifdef FABLE_RETAIL_NCREATUREMODE_ALLOC
+    // Opt-in (row 0x0073B130 CTCCreatureModeManager::RegisterModes): FableWin.pdb ?Alloc@CModeSitFloor@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z.
+    static CTCCreatureModeManager::CModeBase* __fastcall Alloc(CThing& owner);
+#endif
     CModeSitFloor(CThing& thing, const CCharString& group);              // 0x008AC3C0
     virtual ~CModeSitFloor();
     virtual unsigned long GetType() const;                               // MODE_SIT_FLOOR

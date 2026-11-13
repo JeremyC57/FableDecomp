@@ -177,6 +177,11 @@ public:
     virtual NHeroInformationScreens::EScreenType GetScreenType() const;
     virtual bool IsInventoryScreen() const;
 #endif // FABLE_RETAIL_CTCINVENTORYMAP_HISCREEN
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_MINIMAPMARKERS
+ public:
+ // Ego_r.pdb 0x00652B10 / FableWin.pdb 0x02093750 ?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z (retail 0x00603000).
+ void CreateMiniMapMarkers(NUISystem::CComponent* pminimap, CRegion& region);
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryMap)==0x258);
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryMap::CUIMiniMapMarker)==28);
