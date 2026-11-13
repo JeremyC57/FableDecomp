@@ -1,0 +1,7 @@
+# agentC12 LESSONS (one line each)
+- (0x005EEFF2) A "frame-only" residue can hide a real source fact: list every instruction whose frame operand differs (tools/fd2.py); one load from a different variable's slot (retail `mov ecx,[ebp+68h]` = spellContainer, ours container.Get()) both proves the spelling and changes liveness, which re-partitions the packer's slots.
+- (0x005EEFF2) Packer partition problems: probe with --iset (interference sets), replay the packer (tools/psim.py) and search weight deltas (tools/ps2.py) and extra conflicts; "any conflict with slot X works" points at a liveness fact, "+4 weight" with robust weights points away from weights.
+- (0x005EEFF2) Separate `for (unsigned long n ...)` counters vs one shared counter decides which frame slot each loop's counter joins; read retail's slot membership per loop from the frame map before choosing.
+- (CTCInventoryAbilities TU) The TU is /Gr: retail's vector<EHeroAbility>(size_type) COMDAT calls a __fastcall uninitialized_fill_n (YI); check out-of-line STLport COMDATs' callee conventions to detect /Gr TUs.
+- (0x005F59C7) wig.py forcing applies to every split piece of the named candidate: a forced value equal to the natural one can still change the result; use the forced/unforced difference to locate piece-order effects.
+- (0x005F59C7) Extra basic blocks (real branches between statements) do not lower K when every block still references the same essential candidates; K counts distinct candidates per block.

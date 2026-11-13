@@ -26,5 +26,5 @@ asserts pinned. Whole-tree `equiv_check.py` to run when applied.
 ## Review items
 - NAME_FIXES.tsv: 0x005F81BE is the TEMPLATE `GetDef<CExpressionDef>` (FableWin.pdb + reloc_bindings + landed callers); the repo
   opt-in `FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_EXPRESSIONDEF` spells it as a non-template overload.
-- `open_005f59c7/`: sibling 0x005F59C7 ConstructPCExpressionsList, DIFFER(2649v2652), identical with registers and frame offsets
+- `../2026-11-13_acctC_c12a/open_005f59c7/`: sibling 0x005F59C7 ConstructPCExpressionsList, DIFFER(2649v2652), identical with registers and frame offsets
   masked; register choice differs (textBank in memory in retail). Agent C10 continues it.

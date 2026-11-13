@@ -1,0 +1,7 @@
+address	name	evidence
+005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	Ego_r.pdb 0x0057DCEB + FableWin.pdb 0x01EBF630 ?GetMagicListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z; header CTCInventoryAbilities.h:70 //005eeff2; only caller ConstructScreen 0x005F519F
+005f88ed	std::_List_base<EHeroAbility,std::allocator<EHeroAbility> >::_List_base	row 0x005EEFF2 call (calltg.py) + vland RELOC_NAME (DB label std_CircularList_Construct); STLport COMDAT, body RELOCATION_MATCH in this TU
+005f8908	std::_List_base<EHeroAbility,std::allocator<EHeroAbility> >::~_List_base	row 0x005EEFF2 call + vland RELOC_NAME (DB label _global::StdList_Dtor_005f8908); body RELOCATION_MATCH in this TU
+005f8ec0	std::vector<EHeroAbility,std::allocator<EHeroAbility> >::vector(unsigned int)	row 0x005EEFF2 call (??0?$vector@W4EHeroAbility@@...@QAE@I@Z)
+005f8220	std::uninitialized_fill_n<EHeroAbility*,unsigned int,EHeroAbility>	reloc_bindings ??$uninitialized_fill_n@PAW4EHeroAbility@@IW41@@std@@YI... (__fastcall) bound from 0x005F8EC0
+005f59c7	CTCInventoryAbilities::ConstructPCExpressionsList	FableWin.pdb ?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z + rebuild/include/engine/CTCInventoryAbilities.h (header comment, 0x005F59C7)

@@ -1,0 +1,47 @@
+--- a/rebuild/include/stlport/fable_containers.h
++++ b/rebuild/include/stlport/fable_containers.h
+@@ -446,7 +446,19 @@
+         this->_M_finish=uninitialized_fill_n(this->_M_start,n,value);
+     }
+ #endif
+-#ifdef FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE
++#if defined(FABLE_RETAIL_STLP_VECTOR_SIZECTOR_VISIBLE_NOINLINE)
++    // Per-TU opt-in (acctC agentC12, row 0x005EEFF2 CTCInventoryAbilities::GetMagicListUIComponent; like
++    // FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE): the vector(size_type n) body below, visible but kept out of line, as that TU calls
++    // the COMDAT (vector<EHeroAbility>::vector(size_type), call in the row after `push [n]`). Unlike the declaration-only
++    // FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE, c2 knows the constructor keeps no address of its allocator temporary, which it then homes
++    // in the caller's live argument slot as retail does.
++#ifdef _MSC_VER
++    __declspec(noinline)
++#endif
++    explicit vector(size_type n) : _Vector_base<_Tp,_Alloc>(n,_Alloc()) {
++        this->_M_finish=uninitialized_fill_n(this->_M_start,n,_Tp());
++    }
++#elif defined(FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE)
+     // Per-TU opt-in (chunk 779, row 0x00BEAE50 CWaterPatchMesh::Load; like FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE): STLport's
+     // vector(size_type n) is one inline body, which VC7.1 expanded in some TUs and called as a COMDAT in others; that TU calls
+     // vector<unsigned char>::vector(size_type) 0x00514E20 (??0?$vector@EV?$allocator@E@std@@@std@@QAE@I@Z, bound by the landed
+@@ -936,7 +948,22 @@
+ #endif
+ template<class _Tp,class _Alloc> class _List_base {
+ public:
+-#ifdef FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
++#if defined(FABLE_RETAIL_STLP_LIST_BASE_VISIBLE_NOINLINE)
++    // Per-TU opt-in (acctC agentC12, row 0x005EEFF2 CTCInventoryAbilities::GetMagicListUIComponent; like
++    // FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE): the _List_base constructor / destructor bodies below, visible but kept out of line,
++    // as that TU calls the list<EHeroAbility> COMDATs (??0 0x005F88ED, ??1 0x005F8908). Unlike the declaration-only
++    // FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE, c2 knows the constructor keeps no address of its allocator temporary.
++#ifdef _MSC_VER
++    __declspec(noinline)
++#endif
++    _List_base(const _Alloc&) : _M_node(allocator<_List_node<_Tp> >(),0) {
++        _List_node<_Tp>* n=_M_node.allocate(1);n->_M_next=n;n->_M_prev=n;_M_node._M_data=n;
++    }
++#ifdef _MSC_VER
++    __declspec(noinline)
++#endif
++    ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
++#elif defined(FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE)
+     // Per-TU opt-in (Codex name fix 2026-11-10, list<long>): retail calls the _List_base constructor and destructor COMDATs
+     // out of line (??0?$_List_base@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z 0x0042AB58, ??1.. 0x0042AB73) from the
+     // owning classes' constructors and destructors (NUISystem::CAction 0x0042BE50, CTCInventoryTrade 0x0059EB0C, ...).

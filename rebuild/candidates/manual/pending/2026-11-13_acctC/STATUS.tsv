@@ -31,7 +31,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00e3bb70	OPEN				parked	NScript::CV_BordelloScript::CMadame::Main
 00e50fd0	OPEN				parked	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main
 00d973d0	OPEN				parked	NScript::CQ_HobbeCaveScript::CBanditSacrifice::Main
-00603000	OPEN				parked	CTCInventoryMap::CreateMiniMapMarkers
+00603000	QUEUED			C14 row 2	parked	CTCInventoryMap::CreateMiniMapMarkers
 00e5fd40	OPEN				parked	NScript::CV_BodyGuardScript::CBodyGuard::Main
 0078fd60	OPEN				parked	CTCDivineWrath::FrameUpdate
 00e33ea0	OPEN				parked	NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main
@@ -53,7 +53,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00dc5f80	OPEN				parked	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main
 00d3d150	OPEN				parked	NScript::CQ_GuildTrainingScript::CAppleGirl::Main
 00a8b990	OPEN				parked	C3DMesh2::InitialiseBones
-005ff190	OPEN	4176	2026-11-13_acctC_c4a/open_005ff190	DIFFER(4096v4176) after C4, C5, C7 (C9, C10 never reached it); needs a dedicated agent	parked	CTCInventoryMap::CreateMapMarkers
+005ff190	QUEUED	4176	2026-11-13_acctC_c4a/open_005ff190	C14 row 3: DIFFER(4096v4176) after C4, C5, C7	parked	CTCInventoryMap::CreateMapMarkers
 00d75060	OPEN				parked	NScript::CQ_HangingTreeGoodScript::FinalRound
 00bafa00	OPEN				parked	CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites::RenderClockPrim
 00931390	OPEN				parked	CAIStateGroup_MinionReactToCriminal::?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ
@@ -112,7 +112,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00981410	OPEN				parked	_global::AIAction_InteractWith
 00acdb80	OPEN				parked	QuadricOptimiserInternals::COptimisedPrimitive::COptimisedPrimitive
 0068cb90	OPEN				parked	CInputProcessControlFreeCamera::CInputProcessControlFreeCamera::ProcessInput
-005f59c7	QUEUED	2652	2026-11-13_acctC_c9a/open_005f59c7	C9 -> C10 -> C11 -> C12 (row 2): DIFFER(2649v2652); two allocator priorities	parked	CTCInventoryAbilities::ConstructPCExpressionsList
+005f59c7	OPEN	2652	2026-11-13_acctC_c12a/open_005f59c7	DIFFER(2649v2652) after C9, C10, C11, C12 (~175 grades); register choice in the final block	parked	CTCInventoryAbilities::ConstructPCExpressionsList
 00435530	OPEN				parked	CDisplayEngine::DoRender
 00439070	OPEN				parked	CPlayerGui::DrawPreparePrimitivesForEngine
 007de710	OPEN				parked	CTCWallMount::AttachObject
@@ -121,7 +121,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 006d0830	OPEN				parked	CTCWife::GlobalUpdate
 00d4a270	OPEN				never_worked	NScript::CQ_GuildTrainingScript::CCombatApprentice::Main
 004804de	OPEN				never_worked	CTCInGameMenu::OpenInGameMenuPC
-0060c900	OPEN				never_worked	CTCInventoryMap::CTCInventoryMap::BuildMapTeleportUI
+0060c900	IN_PROGRESS			C14 row 1	never_worked	CTCInventoryMap::CTCInventoryMap::BuildMapTeleportUI
 00b33b50	OPEN				never_worked	CEnginePrimitiveRenderer::CEnginePrimitiveRenderer
 00f1eed0	OPEN				never_worked	CQ_ArenaScript::PlayWave
 0044c72b	OPEN				never_worked	CGameDefinitionManager::InitAndCompile
@@ -133,7 +133,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b73760	OPEN				never_worked	CEngineWaterRenderer::CEngineWaterRenderer
 004736c4	OPEN				never_worked	CPlayerGuiDef::?Transfer@CPlayerGuiDef@@UAEXAAVCPersistContext@@@Z
 00bae2d0	OPEN				never_worked	CEnginePrimitiveManager2DSprites::?RenderSubPrimitive@CEnginePrimitiveManager2DSprites@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
-005eeff2	IN_PROGRESS	5619	2026-11-13_acctC_c9a/open_005eeff2	C11 -> C12: CTCInventoryAbilities::GetMagicListUIComponent, DIFFER(5619v5619), code identical, two frame words swapped	never_worked	_gapscan::sub_005eeff2
+005eeff2	MATCHED_STAGED	5619	2026-11-13_acctC_c12a	C11 -> C12; CTCInventoryAbilities::GetMagicListUIComponent; /Gr (review item)	never_worked	_gapscan::sub_005eeff2
 00b3cb30	OPEN				never_worked	CEngineResourceManager::CEngineResourceManager
 0058807d	OPEN				never_worked	CTCInventory::OpenPCInventoryMenu
 00598a1c	OPEN				never_worked	CFrontEndManager::CFrontEndManager::Init2

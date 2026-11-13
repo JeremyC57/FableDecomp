@@ -1,18 +1,20 @@
 // CTCInventoryAbilities::GetMagicListUIComponent(long& count, NUISystem::CComponent* parent) -- the console skills screen's magic section
-// Grade: DIFFER(5619v5619) -- every instruction right (sd.py: 0 hunks beyond 2 masked vtable relocations); frame residue only: two frame words swapped, retail `received` [ebp+68h] / received-loop n [ebp+64h] (0x005EF0AE..0x005EF0F3) v ours [ebp+64h] / [ebp+68h] (+1 word [ebp+68h] v [ebp-0Ch]); D 49 DF 2 DR 2
+// Grade: RELOCATION_MATCH (5619 bytes) under VC7.1 RTM with the acctC agentC12 overlay (hdr/: FABLE_RETAIL_STLP_LIST_BASE_VISIBLE_NOINLINE, FABLE_RETAIL_STLP_VECTOR_SIZECTOR_VISIBLE_NOINLINE).
 // Leaf: ?GetMagicListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z
+// Flags: /Gr
+//   (/Gr: this TU's free template functions are __fastcall -- retail's vector<EHeroAbility>(size_type) COMDAT 0x005F8EC0 calls
+//   ??$uninitialized_fill_n@...@std@@YI... 0x005F8220 with ecx/edx; with /Gr that COMDAT RELOCATION_MATCHes too; the row is the same either way)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005EEFF2, 5619 bytes, `ret 8`. Biased frame (lea ebp,[esp-70h]): optimize("s",on) alone.
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #define FABLE_RETAIL_STLP_LIST
-#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_BASE_VISIBLE_NOINLINE
 #define FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE
 #define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
 #define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE
-#define FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_SIZECTOR_VISIBLE_NOINLINE
 #define FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE
 #define FABLE_RETAIL_STLP_FIND_NOINLINE_BODY_FORWARDER
-#define FABLE_RETAIL_CDEFPOINTER_RELEASE_POINTEE
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #ifdef _MSC_VER
 #pragma optimize("s", on)
@@ -37,6 +39,7 @@
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_EXPRESSIONDEF
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_EXPRESSION_NONCONST
 #define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
@@ -80,16 +83,6 @@ CWideString FABLE_FASTCALL GFIntToWideString(long value);
 // Same-TU bodies of the helpers the row calls out of line (retail emits them earlier in this TU: GetCategory 0x005EDE37,
 // GetAbilityPDef 0x005EDFD9, GetMiscThingsDef 0x005EE3B3); only the row is graded.
 #pragma auto_inline(off)
-// STLport _List_base<EHeroAbility> constructor / destructor COMDATs (0x005F88ED / 0x005F8908): out of line in retail, bodies visible.
-namespace std {
-template<class _Tp,class _Alloc> _List_base<_Tp,_Alloc>::_List_base(const _Alloc&) : _M_node(allocator<_List_node<_Tp> >(),0) {
-    _List_node<_Tp>* n=_M_node.allocate(1);n->_M_next=n;n->_M_prev=n;_M_node._M_data=n;
-}
-template<class _Tp,class _Alloc> vector<_Tp,_Alloc>::vector(size_type n) : _Vector_base<_Tp,_Alloc>(n,_Alloc()) {
-    this->_M_finish=uninitialized_fill_n(this->_M_start,n,_Tp());
-}
-template<class _Tp,class _Alloc> _List_base<_Tp,_Alloc>::~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
-}
 CTCInventoryAbilities::EUISpellCategory CTCInventoryAbilities::GetCategory(EHeroAbility ability)
 {
     switch (ability) {
@@ -137,7 +130,6 @@ NUISystem::CComponent* CTCInventoryAbilities::GetMagicListUIComponent(long& coun
             owned.push_back(static_cast<EHeroAbility>(n));
     AssignedAbilities.clear();
     AssignedAbilitiesSave.clear();
-    unsigned long n;
     unsigned long received = ReceivedAbilityOrder.size() <= misc->TotalSpellsInPalettes ? ReceivedAbilityOrder.size() : misc->TotalSpellsInPalettes;
     for (unsigned long n = 0; n < received; ++n) {
         AssignedAbilities.push_back(ReceivedAbilityOrder[n]);
@@ -145,14 +137,14 @@ NUISystem::CComponent* CTCInventoryAbilities::GetMagicListUIComponent(long& coun
     }
     unsigned long assigned = AssignedAbilities.size();
     if (assigned < misc->TotalSpellsInPalettes) {
-        for (n = 0; n < misc->TotalSpellsInPalettes - assigned; ++n) {
+        for (unsigned long n = 0; n < misc->TotalSpellsInPalettes - assigned; ++n) {
             EHeroAbility empty = static_cast<EHeroAbility>(0);
             EHeroAbility savedEmpty = static_cast<EHeroAbility>(0);
             AssignedAbilities.push_back(empty);
             AssignedAbilitiesSave.push_back(savedEmpty);
         }
     }
-    for (n = 0; n < AssignedAbilities.size() && n < AssignedAbilitiesSave.size(); ++n) {
+    for (unsigned long n = 0; n < AssignedAbilities.size() && n < AssignedAbilitiesSave.size(); ++n) {
         if (n % misc->TotalSpellsInContainer == 1 && n < AssignedAbilities.size() - 1 && n < AssignedAbilitiesSave.size() - 1) {
             EHeroAbility swapped = AssignedAbilities[n];
             AssignedAbilities[n] = AssignedAbilities[n + 1];
@@ -188,7 +180,8 @@ NUISystem::CComponent* CTCInventoryAbilities::GetMagicListUIComponent(long& coun
             static_cast<NUISystem::CSprite*>(spell.Get())->SetGraphicIndex(Abilities[reordered[n]].second->IconGraphicIndex);
         } else
             spell.Reset(ui->CreateComponent("UI_SPELL_EMPTY_TEMPLATE", false));
-        static_cast<NUISystem::CSpellContainer*>(container.Get())->AddChildAndSetOffsets(spell);
+        // through the named container pointer: retail 0x005EF489 `mov ecx,[ebp+68h]` (spellContainer's frame word), not container.Get()
+        spellContainer->AddChildAndSetOffsets(spell);
     }
     paletteList->AddChildAndSetOffsets(container);
     CCountedPointer<NUISystem::CComponent> actions(NUISystem::CManager::GetInstance()->CreateComponent("UI_LIST_MAGIC_ACTIONS", false));
