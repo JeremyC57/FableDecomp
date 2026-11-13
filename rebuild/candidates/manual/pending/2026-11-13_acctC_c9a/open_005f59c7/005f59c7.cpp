@@ -1,7 +1,7 @@
 // CTCInventoryAbilities::ConstructPCExpressionsList(NUISystem::CComponent* parent) -- the PC skills screen's expressions page: sort the hero's inventory into the four expression categories (social, renown, alignment, stealth) by each item's expression def, build the "PC_SUB_LIST" with its items container and bottom-left position dummy, wire one containment slot per quick-access item (observe-event prompts, the assign action, an empty inside-container or the assigned icon with its graphic, drag-off unassign, observe and drop-to-swap actions), add the "EXPRESSIONS TITLE" header (registered with the PC frame), initialise the list offsets and append the four category lists with their text-bank titles; returns the sub-list (null when the hero has no CTCInventory)
-// Grade: DIFFER(2649v2652) -- code identical modulo colouring; what-if (agentC10) proves retail = ours with textBank prio <= ~20 (memory) AND every -1 piece prio < inventory head..middle piece (41): B0 + const -1=30,_textBank=-100 gives D 13 (= masked relocations only)
-// Residue detail: ours textBank (prio 56 = K 8 x 7, tail block only) takes edi before const 0 (48) -> const 0 ebx, inventory piece edi, -1 immediates; retail const 0 edi, inventory piece ebx (0x005F5A3E..0x005F5C45), -1 tail piece ebx (0x005F60F8 / 0x005F6122), textBank [ebp+5Ch]
-// Next: find the source fact behind the -1 piece order (see NOTES.md row 1: split pass right after const 0 -> edi) and the bank fact (non-candidate or prio <= 20)
+// Grade: DIFFER(2649v2652) -- code identical modulo colouring; what-if (agentC10, re-confirmed agentC11 on this text) gives retail with textBank prio 35 and every const -1 piece <= 40: B + const -1=40,_textBank=35 = D 13 (masked relocations only)
+// Residue detail: ours textBank (prio 56 = tail-block K 8 x cost 7) takes edi before const 0 (48); retail const 0 edi, inventory piece ebx (0x005F5A3E..0x005F5C45), -1 tail piece ebx (0x005F60F8 / 0x005F6122), textBank memory [ebp+5Ch]. agentC11: same-TU helpers now byte-match retail (GetMiscThingsDef 0x005EE3B3, GetDef<CExpressionDef> 0x005F81BE, GetDef<CThingBaseDef> 0x0042AF3C); row unchanged
+// Next: K of the tail block. Measured agentC11: K drops 8->7 only when the PeekComponent result is used with no inline layer (diagnostic raw cast); the vector-free "local" is the stealth vector's _M_start field itself (stays with every ~_Vector_base text). See NOTES.md row 1
 // Leaf: ?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005F59C7, 2652 bytes, `ret 4`. Biased frame (lea ebp,[esp-74h]): optimize("s",on) alone.
 // Callees: CManager::GetInstance 0x0041E5F2 / CreateComponent 0x0041DB1D, CCharString 0x0099EBF0 / copy 0x0099EC30 / ~ 0x0099EAE0,
@@ -27,6 +27,9 @@
 //   (QuickAccessItems +0x148, ItemsMenuEntries +0x1fc, AssignedIcons +0x208); CExpressionSubDef::ExpressionDef +0x28,
 //   CExpressionDef::ExpressionType +0x8c (engine/CExpressionDef.h).
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CEXPRESSIONSUBDEF_STATGETTYPENAME
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD
 #define FABLE_RETAIL_CTCINVENTORYABILITIES_ITEMLISTS
 #define FABLE_RETAIL_CDELETION
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
@@ -104,16 +107,7 @@ template <class T> bool CDefinitionManager::GetDef(long index, CDefPointer<const
     if (index <= 0)
         return false;
     CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
-    if (def.IsNull())
-        return false;
-    out->SetDynamicCast(def);
-    return true;
-}
-template <> bool CDefClassBase::GetSubDef<CExpressionSubDef>(CDefPointer<const CExpressionSubDef>* out) const
-{
-    const CSubDefInfo* info = GetPSubDefInfo(CCharString("CExpressionSubDef"));
-    if (info) {
-        CDefPointer<const CDefClassBase> def = PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
+    if (!def.IsNull()) {
         out->SetDynamicCast(def);
         return true;
     }
@@ -122,10 +116,16 @@ template <> bool CDefClassBase::GetSubDef<CExpressionSubDef>(CDefPointer<const C
 // the UI misc-things def ("UI_MISC_THINGS_DEF", class index 1) the abilities screen reads its layout values from
 const CDefPointer<const NUISystem::CUIMiscThingsDef> CTCInventoryAbilities::GetMiscThingsDef() const
 {
-    long index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(CCharString("UI_MISC_THINGS_DEF"), 1);
-    CDefPointer<const NUISystem::CUIMiscThingsDef> def;
-    CGameDefinitionManager::Get().GetDef(index, &def);
-    return def;
+    long index;
+    {
+        CCharString name("UI_MISC_THINGS_DEF");
+        index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(name, 1);
+    }
+    {
+        CDefPointer<const NUISystem::CUIMiscThingsDef> def;
+        CGameDefinitionManager::Get().GetDef(index, &def);
+        return def;
+    }
 }
 // The PC category builder 0x005F45B5 (landed row CTCInventoryAbilities_ConstructPCExpressionCategoryList_005f45b5.cpp), defined
 // above this function in retail's TU: VC7.1 reads its body and sees the references it gets are never stored.

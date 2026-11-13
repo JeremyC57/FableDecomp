@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+009ad390	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z	Ego_r.pdb 0x00B05260 / FableWin.pdb 0x030622E0 (the only PDB name with that shape; CDefinitionManager.h:78 donor order maps it to 0x009AD390); no `GetDefGlobalIndex(const CCharString&, bool)` exists in either PDB	rebuild/oracles/reloc_bindings.tsv + landed CTCInventoryAbilities_GetMiscThingsDef_005ee3b3.cpp: ?GetDefGlobalIndex@CDefinitionManager@@QAEJABVCCharString@@_N@Z
