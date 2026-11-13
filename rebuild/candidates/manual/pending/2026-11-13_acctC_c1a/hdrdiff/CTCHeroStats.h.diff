@@ -56,7 +56,7 @@
 +    long GetNumMountedTrophies() const { return NumMountedTrophies; }
 +    long GetNumTrophyGamePlayed() const { return NumTrophyGamePlayed; }
 +    long GetNumberOfShopsOwned() const { return NumberOfShopsOwned; }
-+    // FITTED body (acctC agentC1): the value passes through a named local. Retail 0x005D4698 / 0x005D00AB `lea edx,[eax+ecx]` (houses
++    // Inferred: FITTED body (acctC agentC1): the value passes through a named local. Retail 0x005D4698 / 0x005D00AB `lea edx,[eax+ecx]` (houses
 +    // the SIB base, shops the index) needs one more record on the houses side of the NUMBUILDINGS sum; written plainly the row gives
 +    // `[ecx+eax]`. Same out-of-line bytes as retail's COMDAT copy 0x005CC5FD (`mov eax,[ecx+0E4h] ; ret`). The made-up sum helper of
 +    // the stale chunk-4006 overlay is NOT used: retail keeps this TU's inline getter COMDATs (0x005CC58E..0x005CC685, header order)

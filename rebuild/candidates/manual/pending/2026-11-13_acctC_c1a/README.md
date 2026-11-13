@@ -17,7 +17,15 @@ No flags. No oracle file here: cut it from retail on the landing machine.
 - **GFRoundFloatNear:** f4006 had changed the shared default body; here it is a new opt-in
   `FABLE_RETAIL_GFROUNDFLOATNEAR_GROUP_QUOTIENT` (default and GROUP_PRODUCT bodies untouched).
 
-## OPEN, owner decision needed before landing
+## Decision (2026-11-13): the fitted getter body is ACCEPTED -- the rows are ready to land
+The owner left the choice to the lane ("whatever ... aligns with our goal to byte match, behave exactly like retail, and
+portability"). Accepted under the inferred-statement rule (EXTRA_RULES, owner 2026-11-12): the named local is plain portable C++,
+cannot change the result, uses only PDB names, and the bytes match retail at both sites and at the getter's own COMDAT 0x005CC5FD.
+The header comment carries the `// Inferred:` mark with the retail addresses and what was ruled out (NOTES.md has the full list of
+spellings tried). The alternative, keeping 33,783 matching bytes parked over a no-code local, serves none of the three goals. If a
+later row or PDB evidence shows the original text, respell the getter and regrade these two rows.
+
+## Review items (kept for the landing record)
 1. **Fitted getter body.** `long GetNumberOfHousesOwned() const { long houses = NumberOfHousesOwned; return houses; }` (inside the new
    CTCHEROSTATS_PERSONALITY opt-in) is what gives retail's `lea edx,[eax+ecx]` at 0x005D4698 / 0x005D00AB; the plain one-line getter
    gives `lea edx,[ecx+eax]` (one instruction, same length). Only PDB names are used, and the getter's out-of-line bytes equal
