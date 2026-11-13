@@ -395111,6 +395111,34 @@ $catalog = @(
         TestSource = '00/9c/NGameTextCDataBank_GetTextEntryFromGroup_009c9280_test.cpp'
         PassPattern = '009c9280_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007891f2'
+        Module = 'CTCTrapBase'
+        Source = '00/78/CTCTrapBase_BulletTimeFrameUpdate_007891f2.cpp'
+        TestSource = '00/78/CTCTrapBase_BulletTimeFrameUpdate_007891f2_test.cpp'
+        PassPattern = '007891f2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fed30'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_LoadGraphicFrame_009fed30.cpp'
+        TestSource = '00/9f/CGraphicDataBank_LoadGraphicFrame_009fed30_test.cpp'
+        PassPattern = '009fed30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051f480'
+        Module = 'NThingManager::CEntityRuntimePersistence'
+        Source = '00/51/NThingManagerCEntityRuntimePersistence_ClearPersistenceDataForSectionInEntityScript_0051f480.cpp'
+        TestSource = '00/51/NThingManagerCEntityRuntimePersistence_ClearPersistenceDataForSectionInEntityScript_0051f480_test.cpp'
+        PassPattern = '0051f480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00725500'
+        Module = 'CTCPhysicsControlled'
+        Source = '00/72/CTCPhysicsControlled_PerformImpulseBasedMovement_00725500.cpp'
+        TestSource = '00/72/CTCPhysicsControlled_PerformImpulseBasedMovement_00725500_test.cpp'
+        PassPattern = '00725500_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -9,6 +9,13 @@ class CMovableResourceMemoryPool;
 // Both give CThreadedFileCallback@0, CMovableResource@4, and BankFile as a reference.
 class CBankFileAsyncData : public CThreadedFileCallback, public CMovableResource {
 public:
+#if defined(FABLE_RETAIL_CBANKFILEASYNCDATA_PEEKDATA) && !defined(FABLE_RETAIL_C3DANIMATIONINFO_BUILD)
+    // Retail opt-in (chunk 2004, row 0x009FED30 CGraphicDataBank::LoadGraphicFrame): Ego_r.pdb / FableWin.pdb
+    // ?PeekData@CBankFileAsyncData@@QBEPBXXZ (out of line, 0x009D5580, landed) and the inline ?GetLength@CBankFileAsyncData@@QBEKXZ
+    // (Length +0x10 read in place, 0x009FEE1F / 0x009FEFAD). No layout change.
+    const void* PeekData() const;                                        // 0x009D5580
+    unsigned long GetLength() const { return Length; }
+#endif
 #ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
 // Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
     bool IsFinished()const;

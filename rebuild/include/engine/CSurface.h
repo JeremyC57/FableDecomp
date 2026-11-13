@@ -35,6 +35,19 @@ public:
  // FABLE_RETAIL_CSURFACE_BITMAP. Declaration only.
  CSurfaceLockedRect ReadOnlyLock(unsigned long flags) const;            // 0x009F3010
 #endif
+#ifdef FABLE_RETAIL_CSURFACE_LOADGRAPHICFRAME
+ // Retail opt-in (chunk 2004, row 0x009FED30 CGraphicDataBank::LoadGraphicFrame; with FABLE_RETAIL_CSURFACE_COPYFROMMEMORY for the inline
+ // destructor): Ego_r.pdb / FableWin.pdb ?GetByteLength@CSurface@@QBEKXZ (0x009F2FC0), ?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z
+ // (0x009F33E0, hidden result), ?Unlock@CSurface@@QBEXXZ (0x009F2DC0: Ego_r order GetRefCount 0x00B46A60 / Unlock 0x00B46A90 = retail
+ // 0x009F2DA0 / 0x009F2DC0), ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z (0x009F3230) and
+ // ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z (0x009F37E0), all out of line in retail. Declarations only.
+ unsigned long GetByteLength() const;                     // 0x009F2FC0
+ class CSurfaceLockedRect Lock(unsigned long flags);      // 0x009F33E0
+ void Unlock() const;                                     // 0x009F2DC0
+ bool InitialiseAsImage(const class C2DExtentsI& size, const class CPixelFormat& format, bool);   // 0x009F3230
+ void CopyFromSurface(const class C2DBoxI* destRect, const CSurface& source, const class C2DBoxI* sourceRect,
+                      unsigned long filter);              // 0x009F37E0
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_BITMAP
  // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): Ego_r.pdb ?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ
  // (0x00B46C70 = the landed retail 0x009F2F90, hidden result) and ?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z

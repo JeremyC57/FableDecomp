@@ -39150,3 +39150,16 @@ _SplineRandomSeed	013999c4	00b206b0
 ?TestRedundantBitStrip@CRangeCompressor@@AAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z	00f3a710	00f3a890
 ?BeginLoadingText@CDataBank@NGameText@@QBEXK@Z	009c8630	009c9280
 ?IsLoaded@CDataBankTextEntry@NGameText@@QBE_NXZ	009c7be0	009c9280
+?InitialiseAsSurface@CGraphicFrame@@QAE_NABV?$CCountedPointer@VCTexture@@@@JJ_N1@Z	009fcb20	009fed30
+?InitialiseFramesAsSurfaceSections@CGraphicInfo@@AAEXAAVCManagedTexture@@CAAV?$CCountedPointer@VCTexture@@@@_N2@Z	009fe780	009fed30
+?ReadCompressed@CMemoryDataInputStream@@UAEXPAXJ@Z	00995b10	009fed30
+?Unlock@CSurface@@QBEXXZ	009f2dc0	009fed30
+?InternalCompress@CCompressorZlib@@QAEKPBXKAAV?$CArray@E@@@Z	00a3add0	0051f480
+?ImpulseRespondToCollision@CTCPhysicsBase@@IBEXABVCPhysicsCollideResponse@@AAVC3DVector@@@Z	006af7d0	00725500
+?ImpulseRespondToCollisonWithCylinder@CTCPhysicsBase@@IBE_NABVCPhysicsCollideResponse@@AAVC3DVector@@@Z	006afa40	00725500
+?ImpulseRespondToCollisonWithImpassableObject@CTCPhysicsBase@@IBEXABVCPhysicsCollideResponse@@ABV1@AAVC3DVector@@@Z	006afaf0	00725500
+?IsCollisionWithThingToCauseResponse@CTCPhysicsStandard@@IBE_NABVCTCPhysicsBase@@@Z	008e5750	00725500
+?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@IBEXAAVCPhysicsCollideResponse@@@Z	006b0610	00725500
+?UpdateCollisionGameInteractions@CTCPhysicsStandard@@IAEXAAVCThing@@ABVCPhysicsCollideResponse@@@Z	00723ac0	00725500
+?UpdateCollisionGroundIneractions@CTCPhysicsBase@@QAEXABVC3DVector@@@Z	006aff00	00725500
+?UpdateVelocityForImpassability@CTCPhysicsStandard@@IAEXABVC3DVector@@AAV2@@Z	007243c0	00725500

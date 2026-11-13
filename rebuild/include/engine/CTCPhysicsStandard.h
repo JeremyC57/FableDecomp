@@ -21,6 +21,18 @@ class CThingPhysicsMeshInfo;
 class CTCPhysicsStandard : public CTCPhysicsBase {
 public:
     virtual void ResetInterpolation();                       // slot 80 0x007236E0
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_IMPULSE
+    // Retail opt-in (chunk 2004, row 0x00725500 CTCPhysicsControlled::PerformImpulseBasedMovement): Ego_r.pdb / FableWin.pdb protected
+    // ?UpdateVelocityForImpassability@CTCPhysicsStandard@@IAEXABVC3DVector@@AAV2@@Z (0x007243C0, inside the CTCPhysicsStandard range),
+    // ?IsCollisionWithThingToCauseResponse@CTCPhysicsStandard@@IBE_NABVCTCPhysicsBase@@@Z (0x008E5750, catalog row) and
+    // ?UpdateCollisionGameInteractions@CTCPhysicsStandard@@IAEXAAVCThing@@ABVCPhysicsCollideResponse@@@Z (0x00723AC0, landed). All out
+    // of line in retail; declarations only.
+protected:
+    void UpdateVelocityForImpassability(const C3DVector& pos, C3DVector& velocity);                     // 0x007243C0
+    bool IsCollisionWithThingToCauseResponse(const CTCPhysicsBase& other) const;                        // 0x008E5750
+    void UpdateCollisionGameInteractions(CThing& thing, const CPhysicsCollideResponse& response);         // 0x00723AC0
+public:
+#endif
 protected:
     CThingPhysicsMeshInfo* PPhysicsMeshInfo;                 // +0x40
     C3DVector              OffsetVector3D;                   // +0x44

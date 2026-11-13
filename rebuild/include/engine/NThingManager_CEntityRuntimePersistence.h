@@ -53,6 +53,13 @@ public:
             return &GamePersistentEntityScripts[level].Script;
         return 0;
     }
+#ifdef FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_CLEARINSCRIPT
+    // Opt-in (chunk 2003, row 0x0051F480): Ego_r.pdb ?ClearPersistenceDataForSectionInEntityScript@CEntityRuntimePersistence@NThingManager@@
+    // AAEXABVCCharString@@AAVCEntityScriptInfo@12@@Z (private), called only by ClearPersistenceDataForSection 0x00520390 for every
+    // valid record of both script arrays (0x005203C6 / 0x00520426). Declaration only.
+private:
+    void ClearPersistenceDataForSectionInEntityScript(const CCharString& section, CEntityScriptInfo& info);   // 0x0051F480
+#endif
 private:
     // CThingManager reads SaveFormatVersion in place (ctor 0x00523540, RuntimeLoadEntities 0x00522720); the PDB layout
     // records no access, so the friendship is a modelling assumption that changes no bytes or names.

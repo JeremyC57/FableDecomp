@@ -12,6 +12,9 @@ class CGraphicInfo;class CGraphicInfoFrame;class CGraphicFrame;class CVolumeText
 #ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
 class CManagedTexture;
 #endif
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_LOADGRAPHICFRAME
+class CManagedTexture;class CBankFileAsyncData;
+#endif
 class CGraphicDataBank : public CBankFileAsync, public CResourceBank {
 public:
     class CGraphicHeader;
@@ -53,6 +56,13 @@ private:
     friend class CGraphicInfo;
     ETextureType GetTextureType(const CGraphicHeader& header,bool is_bump) const;
 #endif
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_LOADGRAPHICFRAME
+    // Retail opt-in (chunk 2004, row 0x009FED30): Ego_r.pdb / FableWin.pdb
+    // ?LoadGraphicFrame@CGraphicDataBank@@AAE_NAAVCGraphicFrame@@AAVCManagedTexture@@AAVCBankFileAsyncData@@PAVCGraphicInfo@@_NKW4ETextureType@1@4@Z
+    // (private; retail 0x009FED30, `ret 20h`; called by the 48-byte wrapper at 0x009FF1F0). Declaration only, no layout change.
+    bool LoadGraphicFrame(CGraphicFrame& frame,CManagedTexture& managed_texture,CBankFileAsyncData& data,CGraphicInfo* info,bool,
+                          unsigned long mipmap_level,ETextureType texture_type,bool);   // 0x009FED30
+#endif
     CArray<CGraphicInfo> GraphicList;
     CArray<CGraphicInfoFrame> GraphicFrameBuffer;
     bool Initialised;
@@ -62,7 +72,11 @@ private:
     long MinAvailablePreloadMemory,AvailableMemory;
     bool FreezeGraphics;
     CCountedPointer<CTextureManager> TextureManager;
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_LOADGRAPHICFRAME
+    CPixelFormat PixelFormats[11];  // +0x288 (chunk 2004: typed, same 44 bytes; LoadGraphicFrame copies PixelFormats[type], 0x009FED57)
+#else
     unsigned char PixelFormats[44]; // CPixelFormat[11]
+#endif
     CTexture BlankTextures[11];
 };
 FABLE_STATIC_ASSERT(sizeof(CGraphicDataBank)==0x30c);

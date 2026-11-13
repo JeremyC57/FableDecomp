@@ -238,6 +238,22 @@ bool IsMoving()const{return Moving;}
 #endif
 protected:
     float CalculateRadius() const;                                   // 0x006AFE20
+#endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_IMPULSE
+    // Retail opt-in (chunk 2004, row 0x00725500 CTCPhysicsControlled::PerformImpulseBasedMovement): Ego_r.pdb / FableWin.pdb
+    // ?IsPhysicsMeshTypeCylinder@CTCPhysicsBase@@QBE_NXZ (0x006B0170, landed) and ?UpdateCollisionGroundIneractions@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
+    // (0x006AFF00; Ego_r 0x006ECC80 right after the impassable-object response), public; the protected const
+    // ?ImpulseRespondToCollision@CTCPhysicsBase@@IBEXABVCPhysicsCollideResponse@@AAVC3DVector@@@Z (0x006AF7D0: the 0x264-byte body after
+    // ResetInterpolation 0x006AF790, Ego_r order ResetInterpolation .. RespondToCollision 0x006EC6D0, ImpulseRespondToCollision 0x006EC7A0,
+    // ..WithCylinder 0x006ECA40 = retail 0x006AFA40), ?ImpulseRespondToCollisonWithCylinder@CTCPhysicsBase@@IBE_NABVCPhysicsCollideResponse@@AAVC3DVector@@@Z
+    // (0x006AFA40, landed) and ?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@IBEXAAVCPhysicsCollideResponse@@@Z (0x006B0610, landed).
+    // All out of line in retail; declarations only (no layout change).
+    bool IsPhysicsMeshTypeCylinder() const;                              // 0x006B0170
+    void UpdateCollisionGroundIneractions(const C3DVector& pos);         // 0x006AFF00
+protected:
+    void ImpulseRespondToCollision(const CPhysicsCollideResponse& response, C3DVector& velocity) const;              // 0x006AF7D0
+    bool ImpulseRespondToCollisonWithCylinder(const CPhysicsCollideResponse& response, C3DVector& velocity) const;   // 0x006AFA40
+    void ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse& response) const;                             // 0x006B0610
 public:
 #endif
     const C3DVector& GetPosition() const { return Position; }

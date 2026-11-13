@@ -20,6 +20,11 @@ public:
     // ?ReleaseTexture@CManagedTextureData@@QAEXXZ, the landed row at 0x00A69A80; called out of line. Declaration only.
     void ReleaseTexture();                                                // 0x00A69A80
 #endif
+#ifdef FABLE_RETAIL_CMANAGEDTEXTURE_GETTEXTURE
+    // Retail opt-in (chunk 2004, row 0x009FED30): Ego_r.pdb ?GetTexture@CManagedTextureData@@QAE?AV?$CCountedPointer@VCTexture@@@@XZ,
+    // inline in retail (the counted pointer copied in place). No layout change.
+    CCountedPointer<CTexture> GetTexture() { return Texture; }
+#endif
 private:
     unsigned short Width,Height;
     CCountedPointer<CTexture> Texture;

@@ -4,6 +4,9 @@
 // Retail opt-in (retry11a, Codex pass 11 row 0x00520670): original zlib stream56 and flags +54..56.
 // The const-input virtuals introduce slots5..7, distinct from CACompressor.
 #include "engine/CACompressor.h"
+#ifdef FABLE_RETAIL_CCOMPRESSORZLIB_COMPRESS_ARRAY
+#include "engine/CArray.h"
+#endif
 struct internal_state;
 struct z_stream_s {
     unsigned char* next_in;
@@ -38,6 +41,12 @@ public:
     // Opt-in (row 0x00523CF0, for the same-TU NThingManager::CEntityRuntimePersistence::SetGamePersistentSaveData body): Ego_r.pdb
     // ?InternalCompress@CCompressorZlib@@QAEKPBXKAAV?$CArray@E@@@Z (retail 0x00A3ADD0). Declaration only.
     unsigned long InternalCompress(const void*,unsigned long,CArray<unsigned char>&);   // 0x00A3ADD0
+#endif
+#ifdef FABLE_RETAIL_CCOMPRESSORZLIB_COMPRESS_ARRAY
+    // Opt-in (chunk 2003, row 0x0051F480): Ego_r.pdb / FableWin.pdb ?InternalCompress@CCompressorZlib@@QAEKPBXKAAV?$CArray@E@@@Z, out of line
+    // at 0x00A3ADD0 (the landed 0x00523860 SetGamePersistentSaveData binds it under the stand-in class name CCompressorZlibNative). Declaration only;
+    // the includer declares CArray (engine/CArray.h).
+    unsigned long InternalCompress(const void*,unsigned long,CArray<unsigned char>&);
 #endif
 private:
     void Initialise();

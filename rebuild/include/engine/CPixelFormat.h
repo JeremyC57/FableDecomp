@@ -33,6 +33,10 @@ public:
 #ifdef FABLE_RETAIL_CPIXELFORMAT_COLOURDEPTH
  unsigned long GetColourDepth()const;
 #endif
+#ifdef FABLE_RETAIL_CPIXELFORMAT_ISEQUIVALENT
+ // Retail opt-in (chunk 2004, row 0x009FED30): Ego_r.pdb ?IsEquivalent@CPixelFormat@@QBE_NABV1@@Z, out of line in retail (0x009E37F0, landed).
+ bool IsEquivalent(const CPixelFormat& other) const;                 // 0x009E37F0
+#endif
  unsigned long GetNoABits() const {return GD3DFormats[FormatIndex].AlphaBits;}
  unsigned long GetNoRBits() const {return GD3DFormats[FormatIndex].RBits;}
  unsigned long GetNoGBits() const {return GD3DFormats[FormatIndex].GBits;}

@@ -48,6 +48,12 @@ public:
         : PD3DTexture(0), AllocationSource(0) { Initialise(size, levels, format, usage, pool, false, false); }
     class CSurface GetSurfaceLevel(long level) const;                    // 0x009F9E00
 #endif
+#ifdef FABLE_RETAIL_CTEXTURE_LEVELS
+    // Retail opt-in (chunk 2004, row 0x009FED30 CGraphicDataBank::LoadGraphicFrame): Ego_r.pdb ?GetNoLevels@CTexture@@QBEJXZ (0x009F9DF0) and
+    // ?GenerateMipmaps@CTexture@@QAEXKK@Z (0x009F9E60, `push 0 ; push -1`), out of line in retail (landed). Declarations only.
+    long GetNoLevels() const;                                            // 0x009F9DF0
+    void GenerateMipmaps(unsigned long filter, unsigned long level);     // 0x009F9E60
+#endif
 #ifdef FABLE_RETAIL_CTEXTURE_NEXTVALIDDIMENSIONS
     // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): Ego_r.pdb 0x00B6A3C0
     //   ?GetNextValidDimensions@CTexture@@SI?AVC2DExtentsI@@ABV2@ABVCPixelFormat@@@Z (static __fastcall, hidden result; retail
