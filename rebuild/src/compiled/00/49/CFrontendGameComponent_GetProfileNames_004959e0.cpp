@@ -50,10 +50,8 @@
 #include "engine/CPersistContext.h"
 #include <string.h>
 
-class CFrontendGameComponent {
-public:
-    static void __fastcall GetProfileNames(std::vector<CWideString>& names);
-};
+#define FABLE_RETAIL_CFRONTENDGAMECOMPONENT_GETPROFILENAMES
+#include "engine/CFrontendGameComponent.h"
 
 template<class T> inline T FABLE_FASTCALL CPersistContext::GetDefaultVal() { T value = T(); return value; }
 

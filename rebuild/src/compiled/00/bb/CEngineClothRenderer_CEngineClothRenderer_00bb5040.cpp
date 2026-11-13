@@ -14,11 +14,13 @@
 #define FABLE_RETAIL_CMOVABLERESOURCE
 #define FABLE_RETAIL_CSIMPLEMEMORYPOOL
 #define FABLE_RETAIL_CDISPLAYMANAGER_PIXELSHADERVERSION
+#define FABLE_RETAIL_CENGINECLOTHRENDERER_MEMBERS
 #include "engine/CEnginePrimitiveRenderUtil.h"
 #include "engine/CArray.h"
 #include "engine/CVertexShader.h"
 #include "engine/CIndexBuffer.h"
 #include "engine/CSimpleMemoryPool.h"
+#include "engine/CEngineClothRenderer.h"
 #include "engine/CEngineResourceManager.h"
 #include "engine/CShaderResource.h"
 #include "engine/Direct3D9Types.h"
@@ -29,38 +31,6 @@ namespace NEngineInternal {
 extern CEngineResourceManager* GPResourceManager;   // 0x01436E98
 extern CDisplayManager* GPDisplayManager;           // 0x01436E1C
 }
-
-class CEngineClothRenderer : public CEnginePrimitiveRenderUtil {
-public:
-    CEngineClothRenderer();
-    virtual ~CEngineClothRenderer();
-    virtual void FrameStart();
-    CArray<CVertexShader> TriVertexShaders;
-    CArray<CVertexShader> TriVertexShadersDepthBufferShadow;
-    CArray<CVertexShader> TriVertexShadersSpotDepthBufferShadow;
-    CArray<CVertexShader> TriVertexShadersColourBufferShadow;
-    CArray<CVertexShader> TriVertexShadersSpotColourBufferShadow;
-    CVertexShader* TriVertexShadersShadow;
-    CVertexShader* TriVertexShadersSpotShadow;
-    CArray<CVertexShader> PatchVertexShaders;
-    CVertexShader TriVertexShaderOutline;
-    CVertexShader TriVertexShaderOutlineSmoothFill;
-    CVertexShader TriVertexShaders2D;
-    CVertexShader TriBackfaceVertexShaders2D;
-    CVertexShader PatchVertexShaders2D;
-    CVertexShader DebugVertexShader;
-    C4DVector* VertexNormals;
-    bool ClothDebug;
-    CIndexBuffer IndexBuffer;
-    long IndexBufferSize;
-    bool EnableCloth;
-    CSimpleMemoryPool PositionBufferPool;
-    C4DVector* PositionBuffer;
-    unsigned long PositionBufferSize;
-    CSimpleMemoryPool NormalBufferPool;
-    C4DVector* NormalBuffer;
-    unsigned long NormalBufferSize;
-};
 
 CEngineClothRenderer::CEngineClothRenderer()
     : IndexBufferSize(-1)

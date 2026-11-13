@@ -17,6 +17,11 @@ public:
     virtual void ChangeTextureColourDepth(long depth);
     virtual void OnPreDeviceReset();
     virtual bool OnPostDeviceReset();
+#ifdef FABLE_RETAIL_CFRONTENDGAMECOMPONENT_GETPROFILENAMES
+    // Retail opt-in (row 0x004959E0): the static ?GetProfileNames@CFrontendGameComponent@@... (the row's Leaf line has the full
+    // symbol), `__fastcall` with the vector in ecx. Declaration only. The includer has std::vector and CWideString in scope.
+    static void __fastcall GetProfileNames(std::vector<CWideString>& names);   // 0x004959E0
+#endif
 private:
     unsigned char _body[0x1e60 - 0x10];
 };
