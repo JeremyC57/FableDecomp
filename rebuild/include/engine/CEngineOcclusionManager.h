@@ -15,6 +15,11 @@ class CEngineOcclusionManager : public CEngineComponent {
 public:
     CEngineOcclusionManager();                 // 0x00B8D780 ??0CEngineOcclusionManager@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_FLARE
+    // Opt-in (chunk 2048, RenderSunFlare 0x00B64550): FableWin.pdb ?GetPrevFrameFlareTestResultFromRetrivalID@CEngineOcclusionManager@@QAEMK@Z
+    // (landed bound address 0x00B8D3C0, reloc_bindings).
+    float GetPrevFrameFlareTestResultFromRetrivalID(unsigned long id);   // 0x00B8D3C0
+#endif
 private:
     unsigned char _pad_0xc[0x240b4];            // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
 };

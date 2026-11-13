@@ -129,7 +129,12 @@ protected:
     unsigned char RoughFPSCounter[8];               // +0x161BC CRoughFrameCounter
 #endif
     CGameComponent* NextComponentToRun;             // +0x161C4
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ENGINEGRAPHICS
+    friend class CGraphicDataBank;
+    CCountedPointer<CGraphicDataBank> PMainGraphicBank;  // +0x161C8 (typed: opt-in below)
+#else
     unsigned char PMainGraphicBank[8];              // +0x161C8 CCountedPointer<CGraphicDataBank>
+#endif
     unsigned char InitStructure[0x10];              // +0x161D0 CMainGameComponentInit
     bool Initialised;                               // +0x161E0
     bool AllowRender;                               // +0x161E1
@@ -194,6 +199,11 @@ public:
 protected:
     void InitLUA(const class CCharString& script);                 // 0x004BBC00
 public:
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ENGINEGRAPHICS
+    // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ?PeekEngineGraphics@CMainGameComponent@@QBEABVCGraphicDataBank@@XZ, inline in retail (0x004A756C
+    // `mov ecx,[world+8] ; mov ecx,[ecx+161C8h]`: PMainGraphicBank's Data read in place); the member typed as Ego_r.pdb declares it.
+    const CGraphicDataBank& PeekEngineGraphics() const { return *PMainGraphicBank; }
 #endif
 #ifdef FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE
     CASoundBank& GetSampleBank() const {return *PSampleBank;} // Both original PDBs; FableWin01b50310.

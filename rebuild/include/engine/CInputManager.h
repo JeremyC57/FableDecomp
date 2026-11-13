@@ -27,6 +27,10 @@ public:
     virtual void Update();                                               // slot 2 (+0x08) ?Update@CInputManager@@UAEXXZ
     bool EventScanStart(CInputEventScanInfo&,CInputEvent&) const;        // 0x009F4ED0 ?EventScanStart@CInputManager@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z
     bool EventScanNext(CInputEventScanInfo&,CInputEvent&) const;         // 0x009F4F10 ?EventScanNext@CInputManager@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z
+#ifdef FABLE_RETAIL_CINPUTMANAGER_CLEAREVENTS
+    // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb / FableWin.pdb ?ClearEvents@CInputManager@@QAEXXZ, out of line in retail (0x009F5540). Declaration only.
+    void ClearEvents();                                                  // 0x009F5540
+#endif
 #ifdef FABLE_RETAIL_CINPUTMANAGER_EVENTSCANEND
     // Retail opt-in (chunk 791, row 0x004963A0 CFrontendGameComponent::Input): Ego_r.pdb / FableWin.pdb
     // ?EventScanEnd@CInputManager@@QBEXAAVCInputEventScanInfo@@@Z (0x009F4AC0), called after every EventScanStart / Next loop.

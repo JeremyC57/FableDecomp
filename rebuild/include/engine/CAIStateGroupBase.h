@@ -35,6 +35,9 @@ enum EAIStateGroupType;                                                  // MS f
 enum EAIActionReturn;                                                    // MS forward enum (chunk 754: AIAction_DoNothing's return type)
 #endif
 enum EScriptAIPriority;                                                  // MS forward enum (the row defines the enumerators it uses)
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD_B
+class C3DVector;
+#endif
 #if defined(FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS)
 class CThing;
 template<class T> class CIntelligentPointer;
@@ -194,6 +197,13 @@ protected:
         const class CCreatureActionBase& action, const CAIFilterBase& filter);   // 0x009804A0
     EAIActionReturn AIAction_FindAGuardAndGiveMessage(CDefPointer<const class CMessageEventDef> message, C3DVector position,
         long parameter);   // 0x009810B0
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD_B
+    // Nested opt-in (chunk 2015, row 0x0097FEA0): Ego_r.pdb / FableWin.pdb
+    // ?AIAction_FindAGuardAndYellForHelp@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@VC3DVector@@K_N@Z (protected; Ego_r donor 0x0084B160
+    // between AIAction_RunAwayFrom 0x0084AE40 and AIAction_FleeToThingProximity 0x0084B800 = retail 0x0097FBE0 / 0x0097FEA0 /
+    // 0x009804A0, `ret 14h`). Declaration only.
+    EAIActionReturn AIAction_FindAGuardAndYellForHelp(C3DVector pos, unsigned long crime, bool flag);   // 0x0097FEA0
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
     // Chunk 756 (row 0x009104D0): Ego_r.pdb ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ (0x008FCFA0) and

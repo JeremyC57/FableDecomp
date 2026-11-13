@@ -19,6 +19,10 @@ protected:
     CTBaseSingleton() { }
 public:
     virtual ~CTBaseSingleton();
+#ifdef FABLE_RETAIL_CTBASESINGLETON_RELEASE
+    // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?Release@?$CTBaseSingleton@VCFileInstaller@@@@SIXXZ (out of line in retail at 0x00404490: PClass.Reset(0)).
+    static void FABLE_FASTCALL Release();
+#endif
     static T& FABLE_FASTCALL Get()
     {
         if (PClass.IsNull())

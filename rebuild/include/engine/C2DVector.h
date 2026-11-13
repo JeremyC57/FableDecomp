@@ -39,13 +39,28 @@ public:
     void operator=(const class C3DVector& v);
 #endif
 #endif
+    // Retail opt-ins (chunk 2048, row 0x00B64FA0 RenderClouds): FableWin.pdb's debug ??HC2DVector / ??GC2DVector / ??DC2DVector are
+    // 26/68, 26/68, 24/63 (instructions/bytes), which plain VC7.1 /Od reproduces exactly with a named result local returned by value
+    // (VC7.1 has no named-return optimisation: in release each expansion carries the local and an inline copy-constructor expansion,
+    // IL that folds away); the unnamed `return C2DVector(...)` text is 22/54, 22/54, 20/49 (/opt/fable_lane/tools/fwsize.py).
+#ifdef FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_ADD
+    C2DVector operator+(const C2DVector& vector) const { C2DVector result(X+vector.X,Y+vector.Y); return result; }
+#else
     C2DVector operator+(const C2DVector& vector) const { return C2DVector(X+vector.X,Y+vector.Y); }
+#endif
+#ifdef FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_SUB
+    C2DVector operator-(const C2DVector& vector) const { C2DVector result(X-vector.X,Y-vector.Y); return result; }
+#else
     C2DVector operator-(const C2DVector& vector) const { return C2DVector(X-vector.X,Y-vector.Y); }
+#endif
     // lib_coord.hpp arithmetic used by Mass (row 008eec70; Codex pass 11 Mass model, parked row).
     const C2DVector operator-() const { return C2DVector(-X,-Y); }
     #ifdef FABLE_RETAIL_NAVIGATORASTAR_PASS21
     // Original PDB parameter spelling: VECTOR_MULTIPLY_LOCALS.txt.
     const C2DVector operator*(float scale) const { return C2DVector(X*scale,Y*scale); }
+#endif
+#ifdef FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_MUL
+    const C2DVector operator*(float scalar) const { C2DVector result(X*scalar,Y*scalar); return result; }
 #else
     const C2DVector operator*(float scalar) const { return C2DVector(X*scalar,Y*scalar); }
 #endif

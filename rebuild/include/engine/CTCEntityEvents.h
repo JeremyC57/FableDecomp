@@ -29,6 +29,14 @@ public:
  // override (Events.remove_if(NEntityEvents::CPred_EventExpired(frame)), the instantiation 0x00812030). Declaration only.
  virtual void FrameUpdate();                                         // 0x00811450
 #endif
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS_EVENTS
+ // Nested opt-in (chunk 2015, row 0x0097FEA0): Ego_r.pdb / FableWin.pdb
+ // ?GetEvents@CTCEntityEvents@@QBEABV?$list@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@V?$allocator@..@std@@@std@@XZ (inline:
+ // the caller walks +0x0C in place, 0x009801A4) and ?RemoveEvent@CTCEntityEvents@@QAEXAAVCEventBase@NEntityEvents@@@Z (out of line
+ // at 0x008112D0: `push edi ; mov ecx,[esp+24h] ; call`, 0x00980286). No layout change.
+ const std::list<CCountedPointer<NEntityEvents::CEventBase> >& GetEvents() const { return Events; }
+ void RemoveEvent(NEntityEvents::CEventBase& event);                // 0x008112D0
+#endif
 protected:std::list<CCountedPointer<NEntityEvents::CEventBase> > Events;
 #ifdef FABLE_RETAIL_CTCENTITYEVENTS_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the

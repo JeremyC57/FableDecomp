@@ -94,6 +94,12 @@ public:
     {
         return *(CGPUScratchBufferTextureManager*)GPUScratchBufferTextureManager;
     }
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_ZERORGBATEXTURE
+    // Retail opt-in (chunk 2048, row 0x00B64FA0): FableWin.pdb ?GetZeroRGBATexture@CEngineResourceManager@@QAEPAVCTexture@@XZ (its COMDAT is
+    // listed right after RenderClouds) on the Ego_r.pdb member ZeroRGBATexture (+0x2AD4, the landed ~CEngineResourceManager 0x00B3B8E0);
+    // inline in retail (RenderClouds 0x00B659C9..0x00B659DA: `add edx,2AD4h`).
+    class CTexture* GetZeroRGBATexture() { return (class CTexture*)ZeroRGBATexture; }
+#endif
 private:
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_ONRELEASE
     // Chunk 767 (row 0x00B3AFE0, vtable 0x012A1B3C slot 11): Ego_r.pdb ?OnReleaseDefaultPoolResources@CEngineResourceManager@@EAEXXZ

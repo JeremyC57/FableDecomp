@@ -46,6 +46,8 @@
 #include "engine/CDefPointer.h"
 class CEngineInit;
 class CSkyDef;
+class CTexture;
+class CRGBColour;
 class CEngineSkyRenderer : public CEngineComponent {
 public:
     CEngineSkyRenderer(const CEngineInit& init);                         // 0x00B625E0
@@ -97,6 +99,21 @@ public:
     // (private), called by RenderSky 0x00B66190 (0x00B66284).
 private:
     void RenderOuterSky(float interpolate);                              // 0x00B65A20
+public:
+#endif
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_RENDERCLOUDS
+    // Retail opt-in (chunk 2048, row 0x00B64FA0): Ego_r.pdb 0x00A15F60 / FableWin.pdb ?RenderClouds@CEngineSkyRenderer@@AAEXM@Z
+    // (private, one float argument: `ret 4`), the function right before RenderOuterSky in both PDBs and in retail.
+private:
+    void RenderClouds(float interpolate);                                // 0x00B64FA0
+public:
+#endif
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_RENDERSUNFLARE
+    // Retail opt-in (chunk 2048, row 0x00B64550): FableWin.pdb ?RenderSunFlare@CEngineSkyRenderer@@AAEXXZ (Ego_r.pdb 0x00A17F00) and
+    // ?RenderScreenSpaceSprite@CEngineSkyRenderer@@AAEXPBVCTexture@@MMMMVCRGBColour@@@Z 0x00B63530 (`ret 18h`).
+private:
+    void RenderSunFlare();                                               // 0x00B64550
+    void RenderScreenSpaceSprite(const CTexture* texture, float x, float y, float width, float height, CRGBColour colour);   // 0x00B63530
 public:
 #endif
 };

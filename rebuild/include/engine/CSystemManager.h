@@ -75,6 +75,12 @@ CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
 // build (0x006286F0 reads PInputManager +0x58 in place, as GetDisplayManager reads PDisplayManager +0x60).
  ESystemReturn Update();
  CInputManager* GetInputManager(){return PInputManager.Get();}
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER_FORCEMUSICPLAY
+// Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?GetForceMusicPlay@CSystemManager@@QBE_NAAM@Z / ?ResetForceMusicPlay@CSystemManager@@QAEXXZ, inline in
+// retail (Run 0x0042F04A reads ForceMusicPlay +0x16C and ForceMusicPlayOffset +0x170 in place, then stores 0.0f and false). Bodies FITTED.
+ bool GetForceMusicPlay(float& offset) const { offset = ForceMusicPlayOffset; return ForceMusicPlay; }
+ void ResetForceMusicPlay() { ForceMusicPlayOffset = 0.0f; ForceMusicPlay = false; }
+#endif
 // Chunk 749 (the CText destructor TU of rows 0x00550010 / 0x00550020): Ego_r.pdb ?GetFontManager@CSystemManager@@QAEPAVCFontManager@@XZ,
 // inline in retail (~CText 0x0054F6E0 reads PFontManager +0x84 in place).
  CFontManager* GetFontManager(){return PFontManager.Get();}

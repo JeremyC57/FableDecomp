@@ -11,6 +11,28 @@
 #include "rebuild_abi.h"
 #include "engine/CRenderStateManager.h"
 class CRenderStateScopedCaptureBlock;
+#ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE
+// Opt-in (chunk 2048): the retail-era inline bodies (Ego_r.pdb has no out-of-line CRenderStateCaptureBlock function; FableWin.pdb
+// debug COMDATs: ??0 10 instructions = `Open = false`, ??1 13 instructions = `if (Open) Restore();`). The scoped block derives from
+// it (PDB: size 1, no members of its own) and captures in its constructor / restores in its destructor.
+class CRenderStateCaptureBlock {
+    friend class CRenderStateScopedCaptureBlock;
+public:
+    CRenderStateCaptureBlock() : Open(false) { }
+    ~CRenderStateCaptureBlock() { if (Open) Restore(); }
+    void Capture() { StateManager->StartCaptureBlock(this); Open = true; }
+    void Restore() { StateManager->RestoreCaptureBlock(); Open = false; }
+    static void __fastcall SetStateManager(CRenderStateManager* manager);
+private:
+    bool Open;
+    static CRenderStateManager* StateManager;                            // 0x013CB508
+};
+class CRenderStateScopedCaptureBlock : public CRenderStateCaptureBlock {
+public:
+    CRenderStateScopedCaptureBlock() { Capture(); }
+    ~CRenderStateScopedCaptureBlock() { Restore(); }
+};
+#else
 class CRenderStateCaptureBlock {
     friend class CRenderStateScopedCaptureBlock;
 public:
@@ -34,4 +56,5 @@ public:
     CRenderStateScopedCaptureBlock() { CRenderStateCaptureBlock::StateManager->StartCaptureBlock(this); }
     ~CRenderStateScopedCaptureBlock() { CRenderStateCaptureBlock::StateManager->RestoreCaptureBlock(); }
 };
+#endif
 #endif

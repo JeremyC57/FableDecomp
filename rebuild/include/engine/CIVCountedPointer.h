@@ -55,6 +55,15 @@ public:
     // expands it there (0x00A69BDB..0x00A69BF3: release, then the store); VC7.1's inline budget leaves the plain body a call in that
     // caller (a toy with the same body inlines it, the AllocateTexture shape does not). The caller AddRefs through operator->.
     FABLE_FORCEINLINE void Reset(T* object) { Release(); Object = object; }
+#endif
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_CASTTOBASE
+    // Nested opt-in (chunk 2048, session 4): FableWin.pdb private ?CastToBase@?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@AAEPAVCIVCountedPointeeBase@@PAV..@Z
+    // (10 debug instructions / 24 bytes, listed right after ?Release@ in the CFrameData pointer's COMDAT run) stores the new pointer
+    // through the base conversion; plain VC7.1 /Od of `CIVCountedPointeeBase* base = object; return base;` gives 10 / 24 (fwsize SAME).
+    void Reset(T* object) { Release(); Object = CastToBase(object); }
+private:
+    CIVCountedPointeeBase* CastToBase(T* object) { CIVCountedPointeeBase* base = object; return base; }
+public:
 #else
     void Reset(T* object) { Release(); Object = object; }
 #endif
@@ -91,9 +100,24 @@ public:
     T& operator*() const { return *static_cast<T*>(Object); }
 #endif
     bool IsNull() const { return Object == 0; }
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_GET
+    // Opt-in (chunk 2048): FableWin.pdb ?Get@?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@QBEPAV..@XZ (9 instructions / 17 bytes).
+    T* Get() const { return static_cast<T*>(Object); }
+#endif
     unsigned long GetRefCount() const { return Object ? Object->GetRefCount() : 0; }
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER
-#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_MEMBER
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL
+    // Nested opt-in (chunk 2048, row 0x00B64FA0 RenderClouds; needs FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT, the pointee deletes
+    // itself): FableWin.pdb ?Release@?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@QAEXXZ (0x01D2FB90) is 17 debug instructions /
+    // 50 bytes; plain VC7.1 /Od of this text gives 17 / 45 (instruction count SAME), the RELEASE_MEMBER text 15 / 38, the default 22 / 59.
+    // Same semantics as the default branch (zero store inside the null test, after the release: 0x00B65A14).
+    void Release() {
+        if (!IsNull()) {
+            Object->Release();
+            Object = 0;
+        }
+    }
+#elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_MEMBER)
     // Nested opt-in (chunk 851, row 0x00A9BBE0 C3DMeshFileLoader ctor, the C3DMeshFileEngineMaterialChunk temporary's MapFilenames
     // at 0x00A9C4BF): the pointee's own Release deletes it (FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES); retail loads the
     // count before it copies the pointer into ecx (`mov edi,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edi`), which the local-copy

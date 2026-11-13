@@ -151,7 +151,13 @@ public:
     // the pixel constants dirty (update flag 2).
     FABLE_FORCEINLINE void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
     {
+#ifdef FABLE_RETAIL_CSHADERRENDERMANAGER_PSCONST_INDEX
+        // Opt-in (chunk 2048): FableWin.pdb's debug copy is 28 instructions / 79 bytes = the CArray subscript (plain VC7.1 /Od of this
+        // text, /opt/fable_lane/tools/fwsize.py); `*(begin() + index)` is 29 / 83.
+        PSConstTable[index] = value;
+#else
         *(PSConstTable.begin() + index) = value;
+#endif
         UpdateFlags |= 2;
     }
     // ?SetBoneMatrixCount@CShaderRenderManager@@QAEXJ@Z (inline): size the bone-matrix table (STLport vector::resize, out of line).

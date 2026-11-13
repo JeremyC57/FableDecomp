@@ -37,6 +37,17 @@ public:
  const CMatrix3x4& PeekNonHomogenousViewTransform()const{return NoScaleViewTransform;}
  const CMatrix3x4& PeekInverseNonHomogenousViewTransform()const{return InverseNoScaleViewTransform;}
 #endif
+#ifdef FABLE_RETAIL_CENGINECAMERA_VIEWTOSCREEN
+ // Opt-in (chunk 2048, RenderSunFlare 0x00B64550): FableWin.pdb ?TransformWorldToView@CEngineCamera@@QBEXAAVC3DVector@@@Z and
+ // ?TransformViewToScreen@CEngineCamera@@QBEXAAVC3DVector@@@Z (debug COMDATs listed right after RenderSunFlare = first used there; expanded
+ // in retail: ViewTransform +0x80, HalfWindowWidth / Height +0xB8 / +0xBC, WindowCenterX / Y +0xC8 / +0xCC).
+ FABLE_FORCEINLINE void TransformWorldToView(C3DVector& point)const{ViewTransform.TransformPoint(point);}
+ FABLE_FORCEINLINE void TransformViewToScreen(C3DVector& point)const{
+  const float one_over_z=1.0f/point.Z;
+  point.X=WindowCenterX+one_over_z*HalfWindowWidth*point.X;
+  point.Y=WindowCenterY-one_over_z*HalfWindowHeight*point.Y;
+ }
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_SCREENTOWORLD
  // Opt-in (chunk 1020, row 0x00BCF4F0 CEngineInternalPrimitive2DAnimatedMesh::Initialise): FableWin.pdb
  // ?TransformScreenXYLinearZToView@CEngineCamera@@QBEXAAVC3DVector@@@Z, ?TransformViewToWorld@CEngineCamera@@QBEXAAVC3DVector@@@Z and

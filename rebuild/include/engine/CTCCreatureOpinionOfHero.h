@@ -36,6 +36,7 @@ enum EOpinion;
 class COpinionOfHeroDef;
 class COpinionPersonalityDef;
 class COpinionDeedEffectsDef;
+class COpinionDeed;
 enum EOpinionAttitudeType;                                               // MS forward enum (the row defines the enumerators it uses)
 #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_SERIALISE
 #include "engine/CArray.h"
@@ -145,6 +146,25 @@ public:
     // ?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJ_N@Z, the (handle, flag) overload, out of line in retail at 0x00683590 (the row pushes
     // `push 0 ; push handle` after KnowsOfDeed 0x00681AE0 returned false). Declaration only.
     void InformOfDeed(long handle, bool flag);                                                            // 0x00683590
+#endif
+#endif
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_REPORTCRIMES
+    // Nested opt-in (chunk 2015, row 0x0097FEA0): Ego_r.pdb ?ReportAllCrimes@CTCCreatureOpinionOfHero@@QAEXPAV1@@Z (public), out of line
+    // in retail at 0x00684210 (`push edi ; mov ecx,eax ; call`, 0x0098046F: the creature's own opinion reports to the guard's).
+    // Declaration only, no layout change.
+    void ReportAllCrimes(CTCCreatureOpinionOfHero* other);                // 0x00684210
+#if !defined(FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_INFORM) && !defined(FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_GREET) && !defined(FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_HEADPENDINGDEED)
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CREATURE_OPINION_OF_HERO; }   // inline (the GetTC key 0x4F)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_HEADPENDINGDEED
+    // Nested opt-in (chunk 2004, row 0x009609B0 CAIStateGroup_DeedReactionRoot::IsRunnable): Ego_r.pdb / FableWin.pdb
+    // ?GetHeadPendingDeed@CTCCreatureOpinionOfHero@@QAEPBVCOpinionDeed@@XZ (non-const member returning a const deed), out of line in
+    // retail at 0x00683770 (called with ecx = the component, result tested and kept, 0x00960C1C), and the inline interface number.
+    // Declarations only, no layout change.
+    const COpinionDeed* GetHeadPendingDeed();                            // 0x00683770
+#if !defined(FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_INFORM) && !defined(FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_GREET)
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CREATURE_OPINION_OF_HERO; }
 #endif
 #endif
     long                                      LastOpinionReactionFrame;      // +0x0c

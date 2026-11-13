@@ -77,7 +77,20 @@ public:
     void Draw(CIEngine&, CEnginePrimitiveHandle*);                     // 0x00595222
 protected:
     void AddRegionAndTimeInfo(const CWideString&);                   // 0x00597228
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_RUN
+public:
+    // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?ChangeStateFirstTime@CFrontEndManager@NUISystem@@QAEXXZ (0x005952C3), ?CanStartAttractMode@..@@QAE_NXZ
+    // (0x00595A03, `xor al,al ; ret` on PC; called after the 120 s idle test) and the inline
+    // ?SetMediaPlayerErrorString@CFrontEndManager@NUISystem@@QAEXAAVCWideString@@@Z (Run 0x0042EDF4: CWideString::operator= on +0x14).
+    void ChangeStateFirstTime();                                       // 0x005952C3
+    bool CanStartAttractMode();                                        // 0x00595A03
+    void SetMediaPlayerErrorString(CWideString& error) { MediaPlayerErrorString = error; }
+protected:
+    CWideString MediaPlayerErrorString;                                // +0x14
+    unsigned char _pad_0x18[0x74 - 0x18];                            // +0x18 UIActionParams .. m_vFileTimes
+#else
     unsigned char _pad_0x14[0x74 - 0x14];                            // +0x14 MediaPlayerErrorString .. m_vFileTimes (generated layout below)
+#endif
     std::vector<CCharString> FileRegionNames;                        // +0x74
     std::vector<CCharString> FileRegionMiniMapNames;                 // +0x80
     std::vector<long>        FilePlayTimes;                          // +0x8c

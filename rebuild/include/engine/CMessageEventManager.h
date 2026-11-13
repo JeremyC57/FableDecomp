@@ -21,6 +21,12 @@ public:
  // out-of-line COMDAT (CMessageEventFilter_IsOfType: 0x004AB8B0, landed) without instantiating the body here.
  template<class TFilter> const CMessageEvent* FindMostRecentMessage(const TFilter& filter) const;
 #endif
+#ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_ADDDEFMESSAGE
+ // Opt-in (chunk 2015, row 0x0097FEA0): Ego_r.pdb / FableWin.pdb
+ // ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z, the def overload, out of
+ // line in retail at 0x00687730 (landed; it reads the def's radii +0x3C / +0x40 and lifespan +0x44). Declaration only.
+ CMessageEvent* AddMessage(const class CMessageEventDef& def,const C3DVector& position,CThing* originator,CThing* target,long extra_data);   // 0x00687730
+#endif
 #ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT
  // Opt-in (w22 agent1016, row 0x00934E50): Ego_r.pdb / FableWin.pdb member template
  // ??$FindMostRecentMessage@<filter>@CMessageEventManager@@QBEPBVCMessageEvent@@ABV<filter>@@Z (one COMDAT per filter type in retail:

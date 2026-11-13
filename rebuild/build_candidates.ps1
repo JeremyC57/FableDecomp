@@ -395656,6 +395656,28 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT89690'
         PassPattern = '00ce7670_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0097fea0'
+        Module = 'CAIStateGroupBase'
+        Source = '00/97/CAIStateGroupBase_AIActionFindAGuardAndYellForHelp_0097fea0.cpp'
+        TestSource = '00/97/CAIStateGroupBase_AIActionFindAGuardAndYellForHelp_0097fea0_test.cpp'
+        PassPattern = '0097fea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ec7c'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/42/CNewFrontendGameComponent_Run_0042ec7c.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_Run_0042ec7c_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0042ec7c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b64550'
+        Module = 'CEngineSkyRenderer'
+        Source = '00/b6/CEngineSkyRenderer_RenderSunFlare_00b64550.cpp'
+        TestSource = '00/b6/CEngineSkyRenderer_RenderSunFlare_00b64550_test.cpp'
+        PassPattern = '00b64550_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -87,6 +87,10 @@ public:
     };
     void OpenRetailBank(const CWideString& pathname, bool startupPriority);   // 0x009A8840
     void OpenIniFile(const CWideString& pathname);                            // 0x009A8170
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_CLOSERETAILBANK
+    // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?CloseRetailBank@CBankFileManager@@QAEXABVCWideString@@@Z, retail 0x009A78D0 (landed). Declaration only.
+    void CloseRetailBank(const CWideString& name);                            // 0x009A78D0
+#endif
 #ifdef FABLE_RETAIL_CBANKFILEMANAGER_HEADERPATHS
     // Retail opt-in (chunk 849, row 0x009CF3A0 CBankFile::WriteSymbolHeaderFile): Ego_r.pdb / FableWin.pdb
     // ?GetDevHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z (0x009A7E20) and

@@ -28,10 +28,19 @@ public:
     // The body is in engine/CGraphicInfo.h (it needs the complete CGraphicInfo / CGraphicDataBank).
     bool GetFrame(CGraphicFrame& frame, unsigned long mipmap_level, unsigned long flags) const;
 #endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_BEGINLOADING
+    // Opt-in (chunk 2048): Ego_r.pdb / FableWin.pdb ?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z 0x009FE620 (const), and the inline
+    // loaded test RenderSunFlare expands (`mov eax,[f+8] ; test ; mov edi,[eax+1Ch] ; test ; setne`): Data set and its frame initialised.
+    void BeginLoading(unsigned long mipmap_level, unsigned long flags) const;   // 0x009FE620
+    bool IsFrameDataLoaded() const;   // descriptive name (no PDB name found): Data set and its frame initialised
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
     bool IsFlatSequence() const;
 #endif
 private:
+#if defined(FABLE_RETAIL_CGRAPHICINFOFRAME_TOUCHFRAME) && !defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE)
+    CGraphicDataBank* GetBank() const;                                  // FableWin.pdb ?GetBank@CGraphicInfoFrame@@ABEPAVCGraphicDataBank@@XZ
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
     friend class CFrameData;
     CGraphicDataBank* GetBank() const;
@@ -64,6 +73,20 @@ public:
 public:
     CFrameData(const CGraphicInfoFrame*); // native009fe380
     void BeginLoading(unsigned long,unsigned long); // native009fde80
+#if defined(FABLE_RETAIL_CGRAPHICINFOFRAME_BEGINLOADING) && !defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE)
+    // Ego_r.pdb / FableWin.pdb ?IsLoaded@CFrameData@CGraphicInfoFrame@@QAE_NXZ (the FREE branch's body).
+    bool IsLoaded() {return Frame.IsInitialised();}
+#endif
+#ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING
+    // FableWin.pdb ?IsLoading@CFrameData@CGraphicInfoFrame@@QBE_NXZ (14 debug instructions; listed in GetFrame's COMDAT run).
+#ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING_ISNULL
+    // Nested opt-in (chunk 2048): FableWin.pdb ?IsLoading@CFrameData@CGraphicInfoFrame@@QBE_NXZ is 14 instructions / 32 bytes =
+    // `!FileData.IsNull()` (FableWin.pdb debug size reproduced by plain VC7.1 /Od of this text: /opt/fable_lane/tools/fwsize.py); `FileData.Get() != 0` is 13 / 28.
+    bool IsLoading() const { return !FileData.IsNull(); }
+#else
+    bool IsLoading() const { return FileData.Get() != 0; }
+#endif
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
     bool FreeTextureMemory(bool allow_unload);
     bool IsLoaded() {return Frame.IsInitialised();}

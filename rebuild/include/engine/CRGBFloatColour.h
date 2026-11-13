@@ -22,6 +22,13 @@ class CRGBFloatColour {
 public:
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_GETCHANNEL
+    // FableWin.pdb ?GetR / ?GetG / ?GetB / ?GetA@CRGBFloatColour@@QBEMXZ (debug COMDATs 0x02CF7320.. 9 instructions each = a member read)
+    float GetR() const { return R; }
+    float GetG() const { return G; }
+    float GetB() const { return B; }
+    float GetA() const { return A; }
+#endif
     // ??0CRGBFloatColour@@QAE@ABVCRGBColour@@@Z (inline; chunk 723c, RenderSingleSprite 0x00BC04F0): each byte channel times
     // 1/255 (the float pool 0x01231724), R, G, B, A in member order.
 #ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_INITIALISE_CTOR

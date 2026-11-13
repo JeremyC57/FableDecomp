@@ -177,6 +177,15 @@ public:
     bool IsTimeBetween(const std::vector<long>& start_times, long duration) const;   // 0x00658620
     bool IsWorkTime() const;                                 // 0x00658B20
 #endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_YELLFORHELP
+    // Retail opt-in (chunk 2015, row 0x0097FEA0 CAIStateGroupBase::AIAction_FindAGuardAndYellForHelp): Ego_r.pdb
+    // ?RemoveApologiseableCrimes@CTCVillage@@QAEXJ@Z (out of line, landed 0x0065CE56) and the FableWin.pdb inline accessors
+    // ?IsHeroEnemyBecauseOfCrime@CTCVillage@@QBE_NXZ (`mov cl,[eax+7Ch]`, 0x00980036) and ?SetFrameBribeEnds@CTCVillage@@QAEXJ@Z
+    // (`mov dword ptr [eax+0A8h],0`, 0x009803FD). No layout change.
+    void RemoveApologiseableCrimes(long deedHandle);         // 0x0065CE56
+    bool IsHeroEnemyBecauseOfCrime() const { return IsEnemyBecauseOfCrime; }
+    void SetFrameBribeEnds(long frame) { FrameBribeEnds = frame; }
+#endif
 private:
 #ifdef FABLE_RETAIL_CTCVILLAGE_REMOVE_TASK
     // Ego_r/FableWin original private const member template; six retail instances 00660ae2..00660d49.

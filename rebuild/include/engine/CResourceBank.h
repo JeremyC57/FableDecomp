@@ -27,7 +27,13 @@ public:
     void AddToLoadingQueue(CResource& resource);                         // ?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z
     void ProcessLoadingQueue(bool flag, double time);                    // 0x009FC410 ?ProcessLoadingQueue@CResourceBank@@QAEX_NN@Z
 #ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#ifdef FABLE_RETAIL_CRESOURCEBANK_CURRENTFRAME_DIRECT
+    // Opt-in (chunk 2048): FableWin.pdb ?GetCurrentFrame@CResourceBank@@QBEKXZ is 9 instructions / 17 bytes = the member read directly
+    // (FableWin.pdb debug size reproduced by plain VC7.1 /Od of this text: /opt/fable_lane/tools/fwsize.py); through CResourceList::GetCurrentFrame it is 10 / 22.
+    unsigned long GetCurrentFrame() const {return ResourceList.CurrentFrame;}
+#else
     unsigned long GetCurrentFrame() const {return ResourceList.GetCurrentFrame();}
+#endif
 #endif
     void FrameEnd();                                                     // 0x009FC430 ?FrameEnd@CResourceBank@@QAEXXZ
     CResourceList ResourceList;                                          // +0x04

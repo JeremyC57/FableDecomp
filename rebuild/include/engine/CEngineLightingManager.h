@@ -81,6 +81,10 @@ public:
     // Chunk 731: the constructor (CEngine::Initialise 0x00B26360 news 0x46D0 bytes) and the overrides of the pure CEnginePrimitiveManager
     // slots and CEngineComponent::PeekSceneFilterFlags (Ego_r.pdb / FableWin.pdb spellings).
     CEngineLightingManager();                                            // 0x00B482A0 ??0CEngineLightingManager@@QAE@XZ
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_PEEKSUNVECTOR
+    // Opt-in (chunk 2048): FableWin.pdb ?PeekSunVector@CEngineLightingManager@@QBEABVC3DVector@@XZ (inline; RenderSunFlare reads +0x18..+0x20).
+    const C3DVector& PeekSunVector() const { return SunVector; }
+#endif
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);   // ?CreateInternalPrimitive@CEngineLightingManager@@UAEPAVCEngineInternalPrimitiveBase@@W4EEnginePrimitiveType@@@Z
     virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;                      // ?GetSupportedTypes@CEngineLightingManager@@UBEXAAVCEnginePrimitiveTypeList@@@Z
     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);   // ?RenderPrimitive@CEngineLightingManager@@UAE?AW4ERendered@@...@Z

@@ -28,7 +28,13 @@ public:
     virtual ~CIVCountedPointeeBase() { }                                 // slot 0  0x004664E0 (scalar deleting; inline dtor)
     virtual void Delete() const;                                         // slot 1  0x0042D930
     void AddRef() const { ++IVRefCount; }                                // FableWin.pdb ?AddRef@CIVCountedPointeeBase@@QBEXXZ (inline)
-#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT
+    // Nested opt-in (chunk 2048, row 0x00B64FA0 RenderClouds): the release that deletes the pointee itself, the new count held in a
+    // named local. FableWin.pdb ?Release@CIVCountedPointeeBase@@QBEJXZ (0x018727C0) is 24 debug instructions / 58 bytes; plain VC7.1
+    // /Od of this text gives 24 / 61 (instruction count SAME; /opt/fable_lane/tools/fwsize.py), the RELEASE_DELETES text 23 / 56 and
+    // `return --IVRefCount;` 14 / 32. Retail: the expanded release `dec [ecx+4] ; jne ; mov eax,[ecx] ; call [eax+4]` (0x00B65A0A).
+    long Release() const { unsigned long count = --IVRefCount; if (count == 0) { Delete(); return 0; } return count; }
+#elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES)
     // Nested opt-in (chunk 851, row 0x00A9BBE0; the Codex pass 12 model, as its React / Factions rows): the release that deletes
     // the pointee itself when the count reaches zero, the caller ignoring the result (0x00A9C4C7: count loaded, `this` copied
     // to ecx, decrement stored, slot-1 Delete).

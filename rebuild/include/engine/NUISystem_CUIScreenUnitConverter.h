@@ -8,6 +8,10 @@
 namespace NUISystem {
 class CUIScreenUnitConverter {
 public:
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_RESETDIMENSIONS
+    // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?ResetDimensions@CUIScreenUnitConverter@NUISystem@@SIXXZ, retail 0x0040F0E0 (landed). Declaration only.
+    static void __fastcall ResetDimensions();                // 0x0040F0E0
+#endif
 #ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE
     // Chunk 749 (rows 0x0054EF00 CText::Draw / 0x005502E0 CMesh::Draw): the two getters are inline header functions -- the
     // Draw rows expand them in place (`cmp byte [13B8768h],0 ; je ; fld [13B876Ch] / fld [1375CD4h]`), the out-of-line

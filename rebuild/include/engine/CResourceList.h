@@ -29,6 +29,9 @@ public:
 private:
 #ifdef FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
     friend class CResource;
+#ifdef FABLE_RETAIL_CRESOURCEBANK_CURRENTFRAME_DIRECT
+    friend class CResourceBank;
+#endif
 #endif
     CResource Head;
     unsigned long ResourceCount;
