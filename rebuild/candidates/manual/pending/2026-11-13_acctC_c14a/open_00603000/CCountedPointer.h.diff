@@ -1,0 +1,24 @@
+--- a/rebuild/include/engine/CCountedPointer.h
++++ b/rebuild/include/engine/CCountedPointer.h
+@@ -203,6 +203,21 @@
+     }
+ #ifdef FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+     void Reset(T* data);
++#elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_RESET_ELSE_NULL)
++    // Opt-in (acctC agentC4, rows 0x005FF190 CreateMapMarkers / 0x0060EEB0 ConstructPCMapList, one TU): the same release and adopt
++    // with the count block built from the argument and an explicit `else Info = 0;`. Same expanded bytes; c2 then costs the
++    // inline body 108 (the default text 95), which alone reproduces retail's 9 Reset sites in 0x005FF190 (called at the hero site,
++    // the three loop-1 sites and loop-3 sites 2-4, expanded at loop-3 site 1 0x005FF8C7 and the teleport site 0x005FFD4D: score
++    // c1*(1/f+2)/3 against 74). FableWin.pdb ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@ is 69i/207b (ours 44i at /Od /EHsc).
++    void Reset(T* data)
++    {
++        ReleaseData();
++        Data = data;
++        if (data)
++            Info = new CCPPointerInfo(1, DeleteData, (void*)data);
++        else
++            Info = 0;
++    }
+ #elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CALLS_DTOR)
+     // Per-TU opt-in (Codex name fix 2026-11-10, row 0x00429C6F Reset<NUISystem::CComponent>, size TU): retail's out-of-line Reset
+     // calls 0x004291DE, the Data-first release body that Ego_r.pdb names ??1?$CCountedPointer@VCComponent@NUISystem@@@@ (the

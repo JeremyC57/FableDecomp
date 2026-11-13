@@ -1,3 +1,0 @@
-address	name	evidence
-0060eeb0	?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z	Ego_r + FableWin; RELOCATION_MATCH (agentC4)
-005ff190	?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z	Ego_r + FableWin (CTCInventoryMap member list); retail extent 0x005FF190..0x006001E0 incl. jump table

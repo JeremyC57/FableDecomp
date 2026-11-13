@@ -1,9 +1,0 @@
-addr       parity           behav  name
-0060eeb0   WARN RELOC_NAME: ?GetRegionCount@CWorldMap@@QBEJXZ -> 004fb470 labelled 'CWorldMap::DrawGetNoMaps'
-0060eeb0   WARN RELOC_NAME: ?GetTeleporterRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ -> 007021f0 labelled 'CTCQuestCard::GetMarkerRegionName'
-0060eeb0   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
-0060eeb0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
-0060eeb0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z -> 00429f43 labelled 'CTCMapwho::OnDie'
-0060eeb0   RELOCATION_MATCH PASS   ConstructPCMapList
-WINS: 1
-  0060eeb0 RELOCATION_MATCH CTCInventoryMap::ConstructPCMapList

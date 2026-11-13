@@ -1,0 +1,6 @@
+addr       parity           behav  name
+0060c900   RELOCATION_MATCH PASS   ConstructMapList
+0060eeb0   RELOCATION_MATCH PASS   ConstructPCMapList
+WINS: 2
+  0060c900 RELOCATION_MATCH CTCInventoryMap::ConstructMapList
+  0060eeb0 RELOCATION_MATCH CTCInventoryMap::ConstructPCMapList

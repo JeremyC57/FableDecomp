@@ -1,0 +1,5 @@
+# agentC14 LESSONS (one line each)
+- (0x0060C900) A sibling of a matched row in the same TU (console v PC list builder) can be authored by copying the matched text and diffing the retail CALL OUTLINES (tools/outl.py: call target + pushed strings): first grade 13 aligned diffs, RELOCATION_MATCH on grade 2.
+- (0x0060C900) Two last residues were evaluation-order facts: a `const CWorldMap& wm = PeekWorldMap();` local before the push_back (retail calls PeekWorldMap before reading the argument), and each FindChild result in its own named local (retail calls FindChild before constructing the next argument's temporary).
+- (0x00603000) Loop-invariant CFilter_Bind2 pointer stores hoisted above each per-map loop = the GetAllLeafThings / GetAllThings bodies are visible in the TU (FABLE_RETAIL_CTHINGSEARCHTOOLS_LEAFBODY + _ALLTHINGSBODY); with LEAFBODY alone the row gets much worse (both bodies or none).
+- (0x00603000) q.py masks call targets; compare call sequences by TARGET ADDRESS (tools/cc.py + tools/alias.tsv for symbols reloc_bindings lacks), not by symbol name, or one unbound helper misaligns the whole list.

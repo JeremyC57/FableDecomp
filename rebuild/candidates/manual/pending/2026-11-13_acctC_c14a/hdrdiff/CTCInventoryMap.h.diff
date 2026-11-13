@@ -11,7 +11,20 @@
  // Layout: original TPI2aa6d and native constructor allocation258. The selected
  // serialiser independently addresses every used member at the offsets below.
  class CTCInventoryMap : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
-@@ -82,7 +86,16 @@
+@@ -49,6 +53,12 @@
+  // arguments). The bound spelling BuildMapMenu is not a PDB name (NAME_FIXES). Declaration only.
+  NUISystem::CComponent* ConstructPCMapList(bool a, bool* b);          // 0x0060EEB0
+ #endif
++#ifdef FABLE_RETAIL_CTCINVENTORYMAP_MAPLIST
++ // Retail opt-in (agentC14, row 0x0060C900): Ego_r.pdb 0x0065F950 / FableWin.pdb 0x0208A2A0
++ // ?ConstructMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@_NPA_N@Z, out of line at 0x0060C900 (`ret 0Ch`; the
++ // first argument is never read). The catalogue label BuildMapTeleportUI is not a PDB name (NAME_FIXES). Declaration only.
++ NUISystem::CComponent* ConstructMapList(NUISystem::CComponent* parent, bool check_only, bool* has_regions); // 0x0060C900
++#endif
+  void AddLogBookSaveInfo(const CWideString&,const CWideString&,const CWideString&,CHeroLogBook::CHeroLogBookEntry::ECategory);
+  class CUIMiniMapMarker {
+  public: long Region;CCharString UIDefName;C2DVector Position;long DefNameLength,GraphicIndex;float Angle;
+@@ -82,7 +92,16 @@
   long GenerateDataTimer;
   bool MiniMapIsPrisonCourtyard1,MiniMapIsPrisonCourtyard2,MiniMapIsHeadsmansHillNorth,MiniMapIsHeadsmansHillSouth;
  private:
@@ -28,7 +41,7 @@
   std::vector<CUIMiniMapMarker> MiniMapMarkers;
   std::vector<CUIRegionInfo> UIRegionsInfo;
   long QuestToBeDropped;
-@@ -91,7 +104,13 @@
+@@ -91,7 +110,13 @@
   unsigned char MapScreenTeleportPrimitiveHandles[12],MapScreenHousePrimitiveHandles[12];
   unsigned char ActiveRegionQuestPositions[12],ActiveRegionTeleportPositions[12],ActiveRegionHousePositions[12];
   CCountedPointer<std::vector<unsigned __int64> > SerialisedTeleporterUIDs;
@@ -42,7 +55,7 @@
   C2DBoxI MapBox;
   bool WorldMapActive;
   long ActiveRegionIndex,NumRegions;
-@@ -189,6 +208,12 @@
+@@ -189,6 +214,12 @@
   void ConstructRegionDescriptionMapKeys(NUISystem::CComponent*,CRegion&,bool);
  private:
  #endif
@@ -55,7 +68,7 @@
  #ifdef FABLE_RETAIL_CTCINVENTORYMAP_QUESTMARKERS
   // Retail opt-in (chunk 882, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): Ego_r.pdb + FableWin.pdb public members
   // ?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z (retail 0x00603000),
-@@ -211,11 +236,11 @@
+@@ -211,11 +242,11 @@
  #endif
  public:
   static void CheckRetailLayout() {
@@ -72,7 +85,7 @@
   }
  #ifdef FABLE_RETAIL_CTCINVENTORYMAP_LOGBOOK
   // Retail opt-in (row 0x00607330): Ego_r.pdb / FableWin.pdb ?ConstructLogbookList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z
-@@ -250,7 +275,7 @@
+@@ -250,7 +281,7 @@
   void CreateMiniMapMarkers(NUISystem::CComponent* pminimap, CRegion& region);
  #endif
  };

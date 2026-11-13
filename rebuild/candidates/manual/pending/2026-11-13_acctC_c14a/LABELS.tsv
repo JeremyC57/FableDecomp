@@ -1,0 +1,2 @@
+address	name	evidence
+0060c900	CTCInventoryMap::ConstructMapList	Ego_r.pdb 0x0065F950 + FableWin.pdb 0x0208A2A0 ?ConstructMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@_NPA_N@Z; donor order with ConstructPCMapList; ret 0Ch; RELOCATION_MATCH

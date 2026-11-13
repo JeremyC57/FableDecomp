@@ -2,7 +2,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 005d1f0c	MATCHED_STAGED	17873	2026-11-13_acctC_c1a	C1	parked	CTCInventoryStats::CTCInventoryStats::vfunc_89
 005ce0e6	MATCHED_STAGED	15910	2026-11-13_acctC_c1a	C1	parked	CTCInventoryStats::CTCInventoryStats::vfunc_86
 00bd3070	QUEUED			C13 row 3	parked	CEnginePrimitiveManagerAnimatedMeshesBase::RenderMeshPrimitive
-0060eeb0	MATCHED_STAGED	10254	2026-11-13_acctC_c4a	C1 -> C4	parked	CTCInventoryMap::ConstructPCMapList
+0060eeb0	MATCHED_STAGED	10254	2026-11-13_acctC_c14a	C1 -> C4	parked	CTCInventoryMap::ConstructPCMapList
 00ba2350	OPEN				parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
 00b783f0	IN_PROGRESS	9343	2026-11-13_acctC_c8a/open_00b783f0	C8 -> C13: DIFFER(9343v9343), record-count ties at 7 sites	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
@@ -31,7 +31,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00e3bb70	OPEN				parked	NScript::CV_BordelloScript::CMadame::Main
 00e50fd0	OPEN				parked	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main
 00d973d0	OPEN				parked	NScript::CQ_HobbeCaveScript::CBanditSacrifice::Main
-00603000	QUEUED			C14 row 2	parked	CTCInventoryMap::CreateMiniMapMarkers
+00603000	IN_PROGRESS	9571	2026-11-13_acctC_c14a/open_00603000	C14 -> C15: DIFFER(9682v9571), calls right, register allocation	parked	CTCInventoryMap::CreateMiniMapMarkers
 00e5fd40	OPEN				parked	NScript::CV_BodyGuardScript::CBodyGuard::Main
 0078fd60	OPEN				parked	CTCDivineWrath::FrameUpdate
 00e33ea0	OPEN				parked	NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main
@@ -53,7 +53,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00dc5f80	OPEN				parked	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main
 00d3d150	OPEN				parked	NScript::CQ_GuildTrainingScript::CAppleGirl::Main
 00a8b990	OPEN				parked	C3DMesh2::InitialiseBones
-005ff190	QUEUED	4176	2026-11-13_acctC_c4a/open_005ff190	C14 row 3: DIFFER(4096v4176) after C4, C5, C7	parked	CTCInventoryMap::CreateMapMarkers
+005ff190	QUEUED	4176	2026-11-13_acctC_c14a/open_005ff190	C15 row 2: DIFFER(4096v4176) after C4, C5, C7	parked	CTCInventoryMap::CreateMapMarkers
 00d75060	OPEN				parked	NScript::CQ_HangingTreeGoodScript::FinalRound
 00bafa00	OPEN				parked	CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites::RenderClockPrim
 00931390	OPEN				parked	CAIStateGroup_MinionReactToCriminal::?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ
@@ -121,7 +121,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 006d0830	OPEN				parked	CTCWife::GlobalUpdate
 00d4a270	OPEN				never_worked	NScript::CQ_GuildTrainingScript::CCombatApprentice::Main
 004804de	OPEN				never_worked	CTCInGameMenu::OpenInGameMenuPC
-0060c900	IN_PROGRESS			C14 row 1	never_worked	CTCInventoryMap::CTCInventoryMap::BuildMapTeleportUI
+0060c900	MATCHED_STAGED	9635	2026-11-13_acctC_c14a	C14; real name CTCInventoryMap::ConstructMapList	never_worked	CTCInventoryMap::CTCInventoryMap::BuildMapTeleportUI
 00b33b50	OPEN				never_worked	CEnginePrimitiveRenderer::CEnginePrimitiveRenderer
 00f1eed0	OPEN				never_worked	CQ_ArenaScript::PlayWave
 0044c72b	OPEN				never_worked	CGameDefinitionManager::InitAndCompile
