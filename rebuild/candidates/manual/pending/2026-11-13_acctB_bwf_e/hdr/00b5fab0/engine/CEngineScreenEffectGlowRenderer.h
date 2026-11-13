@@ -1,0 +1,175 @@
+#ifndef FABLE_ENGINE_CENGINESCREENEFFECTGLOWRENDERER_H
+#define FABLE_ENGINE_CENGINESCREENEFFECTGLOWRENDERER_H
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER
+// Retail branch (chunk 731, 2026-11-03): RTTI .?AVCEngineScreenEffectGlowRenderer@@ (vtable 0x012A27CC) : CEngineComponent (+0x0); sizeof 0x280 from
+// CEngine::Initialise 0x00B26360 (`new` of 0x280 bytes before the constructor call). Constructor ??0CEngineScreenEffectGlowRenderer@@QAE@ABVCEngineInit@@@Z 0x00B5F090 and
+// the PeekSceneFilterFlags override (?PeekSceneFilterFlags@CEngineScreenEffectGlowRenderer@@UBEKXZ): Ego_r.pdb / FableWin.pdb. Own members are
+// not modelled yet (one opaque block; the generated Ego_r model below lists their names).
+#ifndef FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINECOMPONENT
+#endif
+#include "rebuild_abi.h"
+#include "engine/CEngineComponent.h"
+class CEngineInit;
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER_MEMBERS
+// Retail opt-in (chunk 782, row 0x00B5F090 the constructor): the own members in Ego_r.pdb order and names (struct_layouts_egor.tsv;
+// no STLport member, so the Ego_r offsets are retail's: the constructor stores DynamicTexturePageHandle +0x30, the nine shader
+// wrappers' Data at +0x38..+0x78, the five CTVertexColTex1[4] quads from +0x7C, Threshold R/G/B +0x1FC..+0x204, Intensity
+// +0x208..+0x210, MotionBlur +0x214, ShowDebug +0x218, EffectSupported +0x21C, UseEnvironmentTheme +0x0C; the landed destructor
+// 0x00B5EE80 releases the shaders at the same offsets). InitialiseTextures: FableWin.pdb ?InitialiseTextures@CEngineScreenEffectGlowRenderer@@AAE_NXZ
+// (0x00B5ECE0, called at 0x00B5F5BE).
+#ifndef FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CVERTEXSHADER
+#endif
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CTVertexColTex1.h"
+class CTexture;
+class CEngineScreenEffectGlowRenderer : public CEngineComponent {
+public:
+    CEngineScreenEffectGlowRenderer(const CEngineInit&); // 0x00B5F090 ??0CEngineScreenEffectGlowRenderer@@QAE@ABVCEngineInit@@@Z
+    virtual unsigned long PeekSceneFilterFlags() const;
+private:
+    bool InitialiseTextures();                  // 0x00B5ECE0 ?InitialiseTextures@CEngineScreenEffectGlowRenderer@@AAE_NXZ
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER_CAPTUREBACKBUFFER
+    // Retail opt-in (row 0x00B5FAB0): Ego_r.pdb / FableWin.pdb ?CaptureBackBuffer@CEngineScreenEffectGlowRenderer@@AAEXXZ.
+    void CaptureBackBuffer();                   // 0x00B5FAB0
+#endif
+    bool            UseEnvironmentTheme;        // +0x0c
+    CTexture*       GlowTexture256;             // +0x10
+    CTexture*       GlowTexture64;              // +0x14
+    CTexture*       GlowTexture64Alt;           // +0x18
+    CTexture*       GlowTexture16;              // +0x1c
+    long            GlowTexture256Handle;       // +0x20
+    long            GlowTexture64Handle;        // +0x24
+    long            GlowTexture64AltHandle;     // +0x28
+    long            GlowTexture16Handle;        // +0x2c
+    long            DynamicTexturePageHandle;   // +0x30
+    CVertexShader   VertexShaderCopy;           // +0x34
+    CVertexShader   VertexShaderBlur;           // +0x3c
+    CVertexShader   VertexShaderApplyGlow;      // +0x44
+    CPixelShader    PixelShaderGlow;            // +0x4c
+    CPixelShader    PixelShaderGlowNeg;         // +0x54
+    CPixelShader    PixelShaderBlur;            // +0x5c
+    CPixelShader    PixelShaderApplyGlow;       // +0x64
+    CVertexShader   VertexShaderShowDebug;      // +0x6c
+    CPixelShader    PixelShaderShowDebug;       // +0x74
+    CTVertexColTex1 BackBufferToTextureVerts[4];   // +0x7c
+    CTVertexColTex1 Glow256ToGlow64Verts[4];       // +0xdc
+    CTVertexColTex1 Glow64ToGlow16Verts[4];        // +0x13c
+    CTVertexColTex1 TextureToBackBufferVerts[4];   // +0x19c
+    float           ThresholdR;                 // +0x1fc
+    float           ThresholdG;                 // +0x200
+    float           ThresholdB;                 // +0x204
+    float           IntensityR;                 // +0x208
+    float           IntensityG;                 // +0x20c
+    float           IntensityB;                 // +0x210
+    float           MotionBlur;                 // +0x214
+    long            ShowDebug;                  // +0x218
+    bool            EffectSupported;            // +0x21c
+    CTVertexColTex1 GlowToBackBufferVerts[4];      // +0x220
+};
+#else
+class CEngineScreenEffectGlowRenderer : public CEngineComponent {
+public:
+    CEngineScreenEffectGlowRenderer(const CEngineInit&); // 0x00B5F090 ??0CEngineScreenEffectGlowRenderer@@QAE@ABVCEngineInit@@@Z
+    virtual unsigned long PeekSceneFilterFlags() const;
+private:
+    unsigned char _pad_0xc[0x274];              // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+};
+#endif
+FABLE_STATIC_ASSERT(sizeof(CEngineScreenEffectGlowRenderer) == 0x280);
+#else // generated flattened Ego_r layout (the landed default, unchanged)
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngineScreenEffectGlowRenderer = 0x280.
+// Retail evidence: 0 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+class CTexture;
+
+#pragma pack(push, 1)
+class CEngineScreenEffectGlowRenderer {
+public:
+    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char _pad_0x04[0x4];                            // +0x04
+    unsigned char _pad_0x08[0x4];                            // +0x08
+    bool          UseEnvironmentTheme;                       // +0x0c
+    unsigned char _pad_0x0d[0x3];                            // +0x0d
+    CTexture*     GlowTexture256;                            // +0x10
+    CTexture*     GlowTexture64;                             // +0x14
+    CTexture*     GlowTexture64Alt;                          // +0x18
+    CTexture*     GlowTexture16;                             // +0x1c
+    long          GlowTexture256Handle;                      // +0x20
+    long          GlowTexture64Handle;                       // +0x24
+    long          GlowTexture64AltHandle;                    // +0x28
+    long          GlowTexture16Handle;                       // +0x2c
+    long          DynamicTexturePageHandle;                  // +0x30
+    unsigned char VertexShaderCopy[0x8];                     // +0x34 CVertexShader
+    unsigned char VertexShaderBlur[0x8];                     // +0x3c CVertexShader
+    unsigned char VertexShaderApplyGlow[0x8];                // +0x44 CVertexShader
+    unsigned char PixelShaderGlow[0x8];                      // +0x4c CPixelShader
+    unsigned char PixelShaderGlowNeg[0x8];                   // +0x54 CPixelShader
+    unsigned char PixelShaderBlur[0x8];                      // +0x5c CPixelShader
+    unsigned char PixelShaderApplyGlow[0x8];                 // +0x64 CPixelShader
+    unsigned char VertexShaderShowDebug[0x8];                // +0x6c CVertexShader
+    unsigned char PixelShaderShowDebug[0x8];                 // +0x74 CPixelShader
+    unsigned char BackBufferToTextureVerts[0x60];            // +0x7c CTVertexColTex1[4]
+    unsigned char Glow256ToGlow64Verts[0x60];                // +0xdc CTVertexColTex1[4]
+    unsigned char Glow64ToGlow16Verts[0x60];                 // +0x13c CTVertexColTex1[4]
+    unsigned char TextureToBackBufferVerts[0x60];            // +0x19c CTVertexColTex1[4]
+    float         ThresholdR;                                // +0x1fc
+    float         ThresholdG;                                // +0x200
+    float         ThresholdB;                                // +0x204
+    float         IntensityR;                                // +0x208
+    float         IntensityG;                                // +0x20c
+    float         IntensityB;                                // +0x210
+    float         MotionBlur;                                // +0x214
+    long          ShowDebug;                                 // +0x218
+    bool          EffectSupported;                           // +0x21c
+    unsigned char _pad_0x21d[0x1];                           // +0x21d
+    unsigned char _pad_0x21e[0x2];                           // +0x21e
+    unsigned char GlowToBackBufferVerts[0x60];               // +0x220 CTVertexColTex1[4]
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(CEngineScreenEffectGlowRenderer) == 0x280);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, UseEnvironmentTheme) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, GlowTexture256) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, GlowTexture64) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, GlowTexture64Alt) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, GlowTexture16) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, GlowTexture256Handle) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, GlowTexture64Handle) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, GlowTexture64AltHandle) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, GlowTexture16Handle) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, DynamicTexturePageHandle) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, VertexShaderCopy) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, VertexShaderBlur) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, VertexShaderApplyGlow) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, PixelShaderGlow) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, PixelShaderGlowNeg) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, PixelShaderBlur) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, PixelShaderApplyGlow) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, VertexShaderShowDebug) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, PixelShaderShowDebug) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, BackBufferToTextureVerts) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, Glow256ToGlow64Verts) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, Glow64ToGlow16Verts) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, TextureToBackBufferVerts) == 0x19c);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, ThresholdR) == 0x1fc);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, ThresholdG) == 0x200);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, ThresholdB) == 0x204);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, IntensityR) == 0x208);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, IntensityG) == 0x20c);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, IntensityB) == 0x210);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, MotionBlur) == 0x214);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, ShowDebug) == 0x218);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, EffectSupported) == 0x21c);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, GlowToBackBufferVerts) == 0x220);
+
+#endif // FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER
+#endif // FABLE_ENGINE_CENGINESCREENEFFECTGLOWRENDERER_H

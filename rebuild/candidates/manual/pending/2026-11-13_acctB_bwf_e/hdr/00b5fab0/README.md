@@ -1,0 +1,8 @@
+- engine/CEngineScreenEffectGlowRenderer.h: FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER_CAPTUREBACKBUFFER declares private CaptureBackBuffer() (0x00B5FAB0).
+- engine/CDisplayManager.h: FABLE_RETAIL_CDISPLAYMANAGER_SETRENDERTARGET declares bool SetRenderTarget(CRenderTarget&) (0x009BF160).
+- engine/CGPUScratchBufferTextureManager.h: FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE declares CTexture* StartTextureUse(long) (0x00F36EE0).
+- engine/CPixelShader.h: FABLE_RETAIL_CPIXELSHADER_COPYCTOR inline copy ctor (FableWin ??0CPixelShader@@QAE@ABV0@@Z).
+- engine/CShaderRenderManager.h: FABLE_RETAIL_CSHADERRENDERMANAGER_SETPSCONST_INDEX spells SetPixelShaderConstant as `PSConstTable[index] = value;` (FableWin /Od 28i/79b, fwsize SAME; repo text is 29i/83b). Not used by the current best source (it moves the record windows; see NOTES attempt 2).
+- engine/CRenderStateManager.h (row 0x00B5FAB0): full copy of the current repo header + FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_DESIRED (chunk 2048 / bwf2 0x00B72180 text, named desired_state local in SetRenderState)
+- engine/CRenderStateManager.h (row 0x00B5FAB0): + FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_BOOKMARK (nested in DESIRED: named bookmark_mask = state.BookmarkMask for the bookmark test; code-identical, FITTED record count)
+- engine/CRenderStateManager.h (row 0x00B5FAB0): + FABLE_RETAIL_CRENDERSTATEMANAGER_ADDSTATE_DIRTY (AddStateToUpdateList: named dirty = state.DirtyListFlag for the test; code-identical, FITTED record count)
