@@ -1080,6 +1080,12 @@ public:
     void pop_back() { iterator tmp=end(); erase(--tmp); }
 #endif
 #endif
+#ifdef FABLE_RETAIL_STLP_LIST_ASSIGN_POPBACK_DECL
+    // Per-TU opt-in (wf20, row 0x00AD9F10 CVertexGroupBlockOptimiser::AddBlocks): STLport 4.6 _list.c operator=(const list&) and
+    // _list.h pop_back(), called out of line by that row (list<CVertexGroupBlock> 0x00ADD020 / 0x00ADC790). Declarations only.
+    list& operator=(const list& x);
+    void pop_back();
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_REMOVE_DECL
     // Per-TU opt-in (agentNF 2026-11-10, rows 0x00846100 / 0x00BBCE10): STLport 4.6 _list.h `void remove(const _Tp& __val);`, declared
     // only (its body is in _list.c). Retail calls the list<long> instance out of line (?remove@?$list@JV?$allocator@J@std@@@std@@QAEXABJ@Z

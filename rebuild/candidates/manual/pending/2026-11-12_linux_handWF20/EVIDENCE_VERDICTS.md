@@ -1,11 +1,5 @@
 # Workflow wf20 verdicts (two independent Opus lenses per row: mechanical + evidence; one Opus repair pass)
 
-## 008c12d0 -- MATCH_WITH_OPEN_ISSUES, author attempts 1
-
-- What made it match: The byte match survived moving onto the shared headers unchanged. The only extra step was defining the CIntelligentPointer opt-ins before CTCBoss.h first includes CIntelligentPointer.h. Source: /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/wf20/008c12d0/008c12d0.cpp; payload.json and oracle.tsv were rewritten by addmatch.py.
-- OPEN at hand-back: The row calls GetTC((ETCInterfaceType)0xad, &boss) with a bare cast, but rebuild/include/engine/ETCInterfaceType.h (Ego_r original enum names) already defines TCI_BOSS = 173 and other landed rows use the TCI_ names. The row should write GetTC(TCI_BOSS, &boss), which leaves the bytes unchanged.
-- OPEN at hand-back: The test does not tell the alive check apart. In case e, the dead hitter at (0,5,0) and the point of hit at (5,0,0) both give RESPONSE_GENERIC_HIT_FRONT_RUSH, so changing `if (w.hitterPresent && !w.hitterDead)` to `if (w.hitterPresent)` still prints PASS ($W/verify_evidence/mut2.cpp). The IS_THING_ALIVE branch is therefore untested. A case is needed where a dead hitter sits behind the creature and the point of hit is in front, or the other way round.
-
 ## 00ad9f10 -- MATCH_WITH_OPEN_ISSUES, author attempts 3
 
 - What made it match: The source code is unchanged: only comments were added, and it still grades RELOCATION_MATCH with /Gr and the hdr overlay. InsertBlock's real body stays visible under auto_inline(off), and the folded `space < 0` exit keeps retail's list::size inline pattern.

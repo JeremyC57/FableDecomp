@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00ad9f10   WARN RELOC_NAME: ?size@?$list@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QBEIXZ -> 00adb570 labelled 'CGuiControlTreePane::SortTreeRecursively'
+00ad9f10   RELOCATION_MATCH PASS   AddBlocks
+
+WINS: 1
+  00ad9f10 RELOCATION_MATCH CVertexGroupBlockOptimiser::AddBlocks
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CVertexGroupBlockOptimiser_AddBlocks_00ad9f10

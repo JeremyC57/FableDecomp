@@ -1,42 +1,4 @@
-## 0x008C12D0
-
-## 0x008C12D0 CCombatAction_StrikeResponseJackOfBladesIntoRush::Initialise -- RELOCATION_MATCH (wf20 author, ~45 grades)
-- What made it match: (1) same-TU noinline CVectorMap::LowerBound (engine/CVectorMap.h) -> ebp=&PCreature as retail; (2) the real
-  CDefPointer + real noinline GetSubDef body (engine/CDefClassBase_GetSubDef.h, FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE) -- no
-  Release null test, def not escaped; (3) THE key: the rush body is the `else` of `if (!CauseRush)` instead of an early `return` --
-  the early return made VC7.1 give the def a whole-function ebx (frame 0x38, no xor-ebx zero); (4) alive test `!IsDead()` not
-  `IsAlive()` (`!Dead` emits `not cl; test cl,1`). Named CCharString locals (a temporary argument differs, 790 bytes).
-- Headers/flags: no flags. fable_compiler.h, engine/C3DVector.h (FABLE_RETAIL_C3DVECTOR, _NORMALISE_LOCALS_XYZ, _ANGLE_BODIES ->
-  GetAngleXY), CJackOfBladesBattleDef.h, CDefClassBase_GetSubDef.h (+DEF_CLASS_BASE, CDEFINITIONMANAGER, CRESOURCELIST, CCHARSTRING),
-  CTCPhysicsBase.h (+CTCPHYSICSBASE, CTCBASE), CThing.h (GETTC_EXPANDED, FABLE_RETAIL_CTHING for inline PeekBaseDef), CThingBaseDef.h,
-  CIntelligentPointer.h, overlay CTCBoss.h (FABLE_RETAIL_CTCBOSS_JACK_INTORUSH_ACCESS friend). The CCombatAction* hierarchy stays a
-  local model like the landed same-TU siblings 0x008C2550 / 0x008C1600 (PDB header opaque, GenericStrikeResponseBase members opaque).
-- Name fixes vs the old draft (all callee spellings, not landed rows): SetAnimationName -> CCombatActionBase::SetCombatAnimation,
-  GetFacing -> CTCPhysicsBase::GetFacingVector() const, GetPosition -> CThing::GetPos, g_InvSqrtMantissaTable -> GFastOneOverSqrtTable,
-  local WrapAngle(atan2*1/2pi) -> C3DVector::GetAngleXY (header body). No made-up names remain in the row (IS_THING_ALIVE is the
-  lane's existing macro-style helper name used by siblings).
-
-### Repair (verifier findings, 2026-11-13) -- still RELOCATION_MATCH (also LANDVERIFY_STRICT_HEADERS=1), test PASS
-- Local CCombatActionBase / CCombatAction_GenericStrikeResponseBase / CCombatAction_StrikeResponseJackOfBladesIntoRush models removed:
-  CCreatureActionBase (FABLE_RETAIL_CCREATUREACTIONBASE + _PCREATURE), CCombatActionBase (FABLE_RETAIL_CCOMBATACTIONBASE_RECOVER), and
-  two overlay opt-ins (hdr/README.md): ..._GENERICSTRIKERESPONSEBASE_TYPED, ..._STRIKERESPONSEJACKOFBLADESINTORUSH.
-- CTCBoss friend opt-in replaced by FABLE_RETAIL_CTCBOSS_GETGENERICCOUNTER (FableWin.pdb ?GetGenericCounter@CTCBoss@@QBEJXZ inline);
-  the row calls boss->GetGenericCounter().
-- Local IS_THING_ALIVE replaced by engine/ThingAlive.h (FABLE_RETAIL_IS_THING_ALIVE, template __fastcall, PDB spelling) with
-  FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT (defined before the first CIntelligentPointer.h include); hitter via PThingThatHit.Get().
-- Data comment fixed (0x01277128 = 100 deg in radians, cosine at run time, fcos at 0x008C14DF); CauseRush two-test shape tied to the
-  retail `jg`/`jne` pair at 0x008C1343 / 0x008C1345 in the source comment.
-
-### Repair 3 (verifier findings, 2026-11-13) -- still RELOCATION_MATCH (also LANDVERIFY_STRICT_HEADERS=1), test PASS
-- GetTC((ETCInterfaceType)0xad, &boss) -> GetTC(TCI_BOSS, &boss) (engine/ETCInterfaceType.h, Ego_r TCI_BOSS = 173); bytes unchanged.
-  No other raw enum cast in the row.
-- Test: new cases h (dead hitter behind at (0,-5,0), point of hit in front at (0,5,0) -> FRONT rush, angle 0) and i (same geometry,
-  hitter alive -> BACK rush). Mutation `if (w.hitterPresent)` (verify_evidence/mut2 idea, $W/mut3.cpp) now prints FAIL; real test PASS.
-- Overlays re-checked against the CURRENT repo headers: CTCBoss.h, CCombatAction_GenericStrikeResponseBase.h,
-  CCombatAction_StrikeResponseJackOfBladesIntoRush.h each have 0 removed lines (`diff repo overlay | grep -c '^<'` = 0, additions only).
-  No CIntelligentPointer.h overlay exists: the row uses the repo header (FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT is in it).
-
-## 0x00AD9F10 (not landed)
+## 0x00AD9F10
 
 
 ## 0x00AD9F10 CVertexGroupBlockOptimiser::AddBlocks -- wf20 author pass 1: DIFFER(828v806), 8 hunks (from 826v806 regalloc-wide, 65 hunks)

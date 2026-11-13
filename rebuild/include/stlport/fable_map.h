@@ -281,6 +281,11 @@ public:
 #else
     template<class KT> const_iterator find(const KT& key) const { return const_iterator(_M_find(key)); }
 #endif
+#elif defined(FABLE_RETAIL_STLP_TREE_CONSTFIND_NOINLINE) && defined(_MSC_VER)
+    // Per-TU opt-in (wf20, row 0x00AD9F10 CVertexGroupBlockOptimiser::AddBlocks): the same STLport const find body, visible but out of
+    // line as the retail TU calls it (map<unsigned long,long> 0x006699C0, hidden iterator result); seeing it writes nothing, VC7.1
+    // hoists &CurrentBlock->GroupToIndexMap out of the group loop (0x00ADA084).
+    __declspec(noinline) const_iterator find(const K& key) const { return const_iterator(_M_find(key)); }
 #elif defined(FABLE_RETAIL_STLP_TREE_CONSTFIND)
     // Retail opt-in (chunk 846, row 0x0051FD80 via CEntityRuntimePersistence::IsEntityPersistedAsDead): STLport 4.6 _tree.h
     // `const_iterator find(const _KT& __k) const { return const_iterator(_M_find(__k)); }` -- the const twin calls the out-of-line

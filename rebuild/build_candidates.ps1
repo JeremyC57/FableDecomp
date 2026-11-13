@@ -395032,6 +395032,14 @@ $catalog = @(
         TestSource = '00/8c/CCombatActionStrikeResponseJackOfBladesIntoRush_Initialise_008c12d0_test.cpp'
         PassPattern = '008c12d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ad9f10'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_AddBlocks_00ad9f10.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_AddBlocks_00ad9f10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ad9f10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
