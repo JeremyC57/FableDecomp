@@ -6,7 +6,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00ba2350	OPEN				parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
 00b783f0	QUEUED	9343		C6 row 3	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
-005f1b10	QUEUED	8383		C5 row 2	parked	CTCInventoryAbilities::ConstructPCMagicList
+005f1b10	IN_PROGRESS	8383	2026-11-13_acctC_c4a/open_005f1b10	C5 -> C7: DIFFER(8367v8383), 23 blocks / 118 bytes	parked	CTCInventoryAbilities::ConstructPCMagicList
 0058578b	OPEN				parked	CTCInventory::CTCInventory::vfunc_30
 00b4d370	OPEN				parked	CEngineShadowRenderer::UpdateShadowSpace
 00601310	OPEN				parked	_global::ConstructQuestsScreen_MainMenu
@@ -14,7 +14,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b5ca70	OPEN				parked	CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer
 00651b04	MATCHED_STAGED	5126	2026-11-13_acctC_c2a	C2	parked	CDrawAbilityButtons::Draw
 00baa870	OPEN				parked	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList
-00bb3e80	IN_PROGRESS	4540	2026-11-13_acctC_c2a/open_00bb3e80	C2 -> C3 -> C6: residue is c2 record count (dead release asserts); diagnostic sources match; C6 builds the shared assert opt-in	parked	CEngineClothRenderer::RenderClothPrimitive
+00bb3e80	IN_PROGRESS	4540	2026-11-13_acctC_c2a/open_00bb3e80	C6 reports RELOCATION_MATCH with 9 release asserts (fable_assert.h); to be coordinator-verified and staged when C6 hands back	parked	CEngineClothRenderer::RenderClothPrimitive
 00a91640	OPEN				parked	_gapscan::sub_00a91640
 00b8b780	OPEN				parked	CEngineBillboardGenerator::RenderBillboard
 00ba5260	OPEN				parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
@@ -53,7 +53,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00dc5f80	OPEN				parked	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main
 00d3d150	OPEN				parked	NScript::CQ_GuildTrainingScript::CAppleGirl::Main
 00a8b990	OPEN				parked	C3DMesh2::InitialiseBones
-005ff190	IN_PROGRESS	4176	2026-11-13_acctC_c4a/open_005ff190	C4 -> C5: DIFFER(4096v4176), calls all right, register/frame allocation differs	parked	CTCInventoryMap::CreateMapMarkers
+005ff190	IN_PROGRESS	4176	2026-11-13_acctC_c4a/open_005ff190	C4 -> C5 -> C7: DIFFER(4096v4176), calls and frame size right, register/frame-word allocation differs; C7 tries the release-assert lead	parked	CTCInventoryMap::CreateMapMarkers
 00d75060	OPEN				parked	NScript::CQ_HangingTreeGoodScript::FinalRound
 00bafa00	OPEN				parked	CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites::RenderClockPrim
 00931390	OPEN				parked	CAIStateGroup_MinionReactToCriminal::?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ
@@ -71,7 +71,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00678760	OPEN				parked	CPersistTraits<std::list<CReactionMatch*> >::TransferIn
 00cfe030	OPEN				parked	NScript::CQ_AwakeningTheOracleScript::COracleTablet::Main
 00b70a90	OPEN				parked	CEngineWaterRenderer::RenderEnvironmentMap
-00bb30a0	QUEUED	3538		C6 row 2	parked	CEngineClothRenderer::Render2DClothPrimitive
+00bb30a0	IN_PROGRESS	3538		C6 row 2	parked	CEngineClothRenderer::Render2DClothPrimitive
 005ac10e	OPEN				parked	CTCInventoryTrade::ConstructActualBuyInventoryPC
 006d1e30	OPEN				parked	CTCWife::FrameUpdate
 00648820	OPEN				parked	CDrawMiniMap::Draw

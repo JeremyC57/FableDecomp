@@ -1,6 +1,7 @@
-// CTCInventoryMap::ConstructPCMapList(bool check_only, bool* has_regions) -- build the PC map / teleport list: one branch entry per region to show (world-map regions, or teleporter regions plus quest-card and guild-seal recall targets), each with subtitle, description, zoom or teleport sub-list and mini map, the world-map zoom states and the region markers
-// Grade: DIFFER(4096v4176) -- every call target = retail (Reset split, Compare call, LowerBound expansions, map dtor expanded); residue = register / frame allocation from the head on (frame 0x84 v 0x7C; retail keeps the constant 0 in ebx for the marker init, then parent in ebx).
-// Leaf: ?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z
+// CTCInventoryMap::CreateMapMarkers(NUISystem::CComponent* parent, std::vector<CRegion>& regions) -- build the world-map markers: hero (with facing), quest-card teleporter markers per region, quest markers per region (offset when several share a region), region names, teleport markers and the region-to-region path sprites
+// Grade: DIFFER(4096v4176) -- every call target = retail (133 v 133); residue = register allocation in every region from the head on (retail: manager wholly in a frame word, const 0 then parent in ebx at the head, parent in ebx pieces through loops 1/3/4/path, loop-1 compare bool and LowerBound end in frame words); see NOTES.md
+// Leaf: ?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z
+// Retail: 0x005FF190, 4176 bytes (code to 0x006001CB `ret 8`, `mov edi,edi` pad, switch jump table 0x006001D0..0x006001DF)
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #define FABLE_RETAIL_STLP_MAP_FORCEINLINE_DTOR
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_ELSE_NULL
@@ -238,7 +239,7 @@ void CTCInventoryMap::CreateMapMarkers(NUISystem::CComponent* parent, std::vecto
         if (graphic != miscDef->MapPaths.end()) {
             CCountedPointer<NUISystem::CComponent> pathMarker(manager->CreateComponent("UI_REGION_PATH_MARKER", false));
             GFDebugPDynamicCast(pathMarker.Get(), (NUISystem::CSprite*)0)->SetGraphicIndex(graphic->second);
-            pathMarker->GetStates()[0].Position = path->first->GetWorldMapOffset() + (path->second->GetWorldMapOffset() - path->first->GetWorldMapOffset()) * 0.5f;
+            pathMarker->GetStates()[0].Position = path->first->GetWorldMapOffset() + (path->second->GetWorldMapOffset() - path->first->GetWorldMapOffset()) / 2.0f;
             parent->AddChild(pathMarker);
         }
     }
