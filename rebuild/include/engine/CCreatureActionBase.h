@@ -199,6 +199,14 @@ protected:
 public:
     void UpdateActionAnimation();                                        // 0x00694890
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_ANIMCTOR_B
+    // Opt-in (chunk 2026, row 0x0092DA20: the inline CCreatureAction_GetInBed ctor, out-of-line COMDAT 0x0092E300): Ego_r.pdb
+    // ??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@MMABVCAnimationEntry@@ABVCSoundPair@@JJ@Z (donor 0x0051B170), out of line in
+    // retail at 0x00693B30 (landed). Declaration only: no layout change.
+public:
+    CCreatureActionBase(CThingCreatureBase& creature, float speed, float blend, const class CAnimationEntry& anim,
+                        const class CSoundPair& sound, long a, long b);   // 0x00693B30
+#endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
     // Chunk 764 (row 0x00859660 CCombatActionBase::ResetMeleeCombatAbilityEffects): Ego_r.pdb protected accessors, out of line in
     // retail: ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ 0x00692910 and

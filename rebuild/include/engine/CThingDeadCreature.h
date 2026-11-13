@@ -20,6 +20,12 @@ protected:
     bool StartedDecay; // +e8, ctor835c73
     unsigned char _pad_0xe9[7];
 public: static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGDEADCREATURE_GETANIMATIONFILTER
+    // Opt-in (chunk 2053, row 0x0087F3A0): FableWin.pdb ?GetAnimationFilter@CThingDeadCreature@@QBEAAVCAnimFilterBase@@XZ (debug copy
+    // 0x02878DD0, listed right after CCombatAction_KickThingOnGround::PerformAction: its first user; no Ego_r.pdb / Fable.exe copy: the
+    // row reads the PAnimFilter object word +0xD0 in place, `mov eax,[ebp+0D0h] ; push eax`, 0x0087F686). Needs _ANIMATION.
+    CAnimFilterBase& GetAnimationFilter() const { return *PAnimFilter; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGDEADCREATURE_PEEKDEFINITION
     // Retail opt-in (agentNF9, row 0x00835B90): Ego_r.pdb ?PeekDefinition@CThingDeadCreature@@IBEABVCThingCreatureDef@@XZ (protected
     // const, returns a reference), out of line in retail at 0x00835B90 (called by OnCreate 0x00835FD0 and WorldUpdate 0x00836260).

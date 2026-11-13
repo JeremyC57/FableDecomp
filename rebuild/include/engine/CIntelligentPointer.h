@@ -42,6 +42,14 @@ public:
     // Original debug02511d30 uses nonconst template source and Get/SetPointer.
     template<class U> CIntelligentPointer(CIntelligentPointer<U>& other) { SetPointer(other.Get()); }
 #endif
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE_OUTOFLINE
+    // Retail opt-in (chunk 2026, row 0x0094E7B0 CAIStateGroup_EarthTroll::Update): the FableWin.pdb converting constructor from a non-const
+    // source, ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z, called out of
+    // line at 0x0091F990 (base ctor 0x00A01B10, vptr 0x01237F1C, GetPItem on the source, SetPItem; `ret 4`) to build the by-value
+    // CIntelligentPointer<const CThing> argument of AIAction_LookAtThing in its stack slot (0x0094EC84 `sub esp,8 ; mov ecx,esp ; push ebx`).
+    // Declaration only (the CONVERT_MUTABLE opt-in above is the same member with its inline body).
+    template<class U> CIntelligentPointer(CIntelligentPointer<U>& other);
+#endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_OUTOFLINE
     // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the (T*) constructor called out of
     // line (0x004A96F0 for CThing, FableWin ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z) for the temporary of

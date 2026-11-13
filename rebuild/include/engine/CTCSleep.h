@@ -19,6 +19,12 @@ public:
     bool GetFastTrack();
     bool GetIsReadyToSleep() { return IsReadyToSleep; }
 #endif
+#ifdef FABLE_RETAIL_CTCSLEEP_READY
+    // Opt-in (chunk 2026, row 0x0092DA20 CAIStateGroup_MinionSleep::Update): Ego_r.pdb / FableWin.pdb ?GetIsReadyToSleep@CTCSleep@@QAE_NXZ
+    // (inline in retail: `mov al,[sleep+0Ch]`, 0x0092DEEE) and ?GetFastTrack@CTCSleep@@QAE_NXZ (out of line, landed 0x0092C3B0).
+    bool GetIsReadyToSleep() { return IsReadyToSleep; }
+    bool GetFastTrack();                                                 // 0x0092C3B0
+#endif
 protected:
     bool IsReadyToSleep;
     bool FastTrack;

@@ -14,7 +14,9 @@ class C2DBoxI { public:
 #endif
  long TLX,TLY,BRX,BRY; C2DBoxI() {}
 // Original Ego_r TPI0xb186; centre/radius arithmetic is native0074a685 onward.
-#ifdef FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE
+#if defined(FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE) || defined(FABLE_RETAIL_C2DBOXI_CENTRE_RADIUS_OUTOFLINE)
+// FABLE_RETAIL_C2DBOXI_CENTRE_RADIUS_OUTOFLINE (w22 agent2042, row 0x007F2DC0 CTCLightningNode::FrameUpdate): the same out-of-line
+// declaration without the other CTCVolumeContainmentTracker opt-ins (FrameUpdate calls 0x00434740, 0x007F2EAD).
 C2DBoxI(const C2DCoordI&,long); // Original both PDBs; native00434740.
 #elif defined(FABLE_RETAIL_C2DBOXI_RADIUS_INITIALIZERS)
 // Retail opt-in (Codex2026-11-10): FableWin01addbb0 has direct four field initialization.

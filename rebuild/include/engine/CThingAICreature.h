@@ -130,6 +130,12 @@ public:
     bool IsMessageEventWithinSightRange(const CMessageEvent& event) const;     // 0x00833230
     bool IsMessageEventWithinHearingRange(const CMessageEvent& event) const;   // 0x008332E0
 #endif
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_SLEEPTIMES
+    // Retail opt-in (chunk 2026, rows 0x0092DA20 CAIStateGroup_MinionSleep::Update / its inline IsInSleepTime 0x0092C520): Ego_r.pdb /
+    // FableWin.pdb ?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z (public const, two long& outs; out of line in retail at 0x00833390,
+    // `push <&end> ; push <&start> ; mov ecx,<creature> ; call`). Declaration only: no layout change.
+    void GetSleepTimes(long& start, long& end) const;                    // 0x00833390
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_HOMEBUILDING
     // Nested opt-in (chunk 760, row 0x00946400 CAIStateGroup_PrepareMeal::IsRunnable): Ego_r.pdb HomeBuilding
     // (CIntelligentPointer<CThingBuilding>, retail +0x168: `lea ecx,[eax+168h] ; call 0x00A01B50`) and FableWin.pdb

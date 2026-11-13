@@ -5,6 +5,30 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CKICKABLEDEF
+// Opt-in (chunk 2053, row 0x0087F3A0 CCombatAction_KickThingOnGround::PerformAction): the sub-def over the retail CDefClassBase (0x25
+// bytes, first member at +0x28 as in Ego_r.pdb), looked up by GetSubDef<CKickableDef> 0x006AE260 (landed). Members and offsets are the
+// generated Ego_r.pdb layout below; OpinionDeedType / OpinionDeedTypeToEnemies typed EOpinionDeedType. Needs FABLE_RETAIL_DEF_CLASS_BASE.
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/EOpinionDeedType.h"
+class CKickableDef : public CDefClassBase {
+public:
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CKickableDef"); }
+    float            BaseDistanceToTravel;                               // +0x28
+    float            StrengthScaleRange;                                 // +0x2c
+    float            SpeedScaleRange;                                    // +0x30
+    float            BaseSpeedScaleRange;                                // +0x34
+    float            RandomBase;                                         // +0x38
+    float            RandomRange;                                        // +0x3c
+    long             ShotToAttach;                                       // +0x40
+    EOpinionDeedType OpinionDeedType;                                    // +0x44
+    long             OpinionDeedFaction;                                 // +0x48
+    EOpinionDeedType OpinionDeedTypeToEnemies;                           // +0x4c
+    bool             IgnoreNavigationTest;                               // +0x50
+};
+FABLE_STATIC_ASSERT(sizeof(CKickableDef) == 0x54);
+#else
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -50,4 +74,5 @@ FABLE_STATIC_ASSERT(offsetof(CKickableDef, OpinionDeedFaction) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CKickableDef, OpinionDeedTypeToEnemies) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CKickableDef, IgnoreNavigationTest) == 0x50);
 
+#endif // FABLE_RETAIL_CKICKABLEDEF
 #endif // FABLE_ENGINE_CKICKABLEDEF_H

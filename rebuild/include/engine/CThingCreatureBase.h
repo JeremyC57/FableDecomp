@@ -12,7 +12,7 @@ class CAnimationEntry;                                                   // chun
 #endif
 class CCreatureInteraction; class CTCCreatureModeManager;
 class CHeroCombatDef;
-#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE
+#if defined(FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE) || defined(FABLE_RETAIL_CTHINGCREATUREBASE_GETCOMBATTYPEDEF)
 class CCombatTypeDef;
 #endif
 class CEnginePrimitivePrepareInfo;
@@ -111,6 +111,13 @@ public:
  CDefPointer<const CCombatTypeDef> GetPCombatTypeDef()const;
  long GetCombatType()const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_GETCOMBATTYPEDEF
+public:
+ // Opt-in (chunk 2034, row 0x0097BDA0 CAIStateGroup_ScorpionKing::UpdateCombat): Ego_r.pdb
+ // ?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ (donor 0x00540EE0), out of line in retail at 0x00666D10 (the catalog
+ // label; `mov ecx,<creature> ; call`, then FrontNearLimit +0x74 read off the returned reference, 0x0097BFC2). Declaration only.
+ const CCombatTypeDef& GetCombatTypeDef()const;                       // 0x00666D10
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_STATTYPEFLAGS
 public:
  static unsigned long FABLE_FASTCALL StatGetTypeFlags(){return 15;}
@@ -192,6 +199,11 @@ public:
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CHILD
     // Both original PDBs: public const IsChild; donor GetPrioritisedAbilityDefs and native00661f70.
     bool IsChild()const;
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETATTACKEDBYCREATURE
+    // Opt-in (chunk 2053, row 0x0087F3A0): Ego_r.pdb / FableWin.pdb ?SetAttackedByCreature@CThingCreatureBase@@QAEXPAV1@@Z (public, out of
+    // line at 0x006624F0, landed). Declaration only: no layout change.
+    void SetAttackedByCreature(CThingCreatureBase* creature);           // 0x006624F0
 #endif
     bool IsInMelee()const;bool IsInMeleeAsAttacker()const;
     bool IsUnderInfluenceOfEpicSpell() const { return UnderInfluenceOfEpicSpell; }
@@ -284,6 +296,23 @@ public:
     // Declaration plus an accessor body: no layout change.
     const CAnimationEntry& GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
     const CCreatureActionBase* PeekPCurrentAction() const { return PCurrentAction.Data; }
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_BEDSLEEP
+    // Retail opt-in (chunk 2026, row 0x0092DA20 CAIStateGroup_MinionSleep::Update): Ego_r.pdb / FableWin.pdb
+    // ?SheatheAllWeapons@CThingCreatureBase@@QAEXXZ (public, out of line in retail at 0x006647F0, `mov ecx,<creature> ; call`,
+    // 0x0092DCD2; already bound by that spelling) and, unless ANIMQUERY declares it, ?HasAnim@CThingCreatureBase@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z
+    // (0x00662C70, 0x0092DB22). Declarations only: no layout change.
+    void SheatheAllWeapons();                                                                                                    // 0x006647F0
+#ifndef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMQUERY
+    bool HasAnim(const CCharString& name, const class CAnimFilterBase& filter) const;                                           // 0x00662C70
+#endif
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETHANDEDNESS
+    // Retail opt-in (chunk 2026, row 0x0094E7B0 CAIStateGroup_EarthTroll::Update): Ego_r.pdb / FableWin.pdb
+    // ?SetLastActionHandedness@CThingCreatureBase@@QAEXW4ECombatAnimationHandedness@@@Z (public, out of line in retail at 0x006619F0,
+    // `push 0 ; mov ecx,<creature> ; call`, 0x0094ED10; already bound by that spelling). ECombatAnimationHandedness is an MS forward enum
+    // here (its enumerator names are in neither PDB name list). Declaration only: no layout change.
+    void SetLastActionHandedness(enum ECombatAnimationHandedness handedness);   // 0x006619F0
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMQUERY
     // Retail opt-in (agentNF8, the appearance-animation queries over GetSubDef<CAppearanceDef> 0x0042B0A2): Ego_r.pdb spellings (all

@@ -81,6 +81,11 @@ protected:
  }
  void _M_reallocate_map(size_type nodes_to_add,bool add_at_front);
 public:
+#ifdef FABLE_RETAIL_STLP_DEQUE_CLEAR
+ // Nested opt-in (chunk 2004, row 0x00912BA0 CAIStateGroup_FlyingThingBase::CalculatePrettyPath): STLport 4.6 deque::clear
+ // (?clear@?$deque@..@std@@QAEXXZ), called out of line in retail (deque<CBezierCurve> 0x00913A20, landed). Declaration only.
+ void clear();
+#endif
 #endif
 };
 #if defined(FABLE_STLPORT_DEQUE_PUSH_BACK) && defined(FABLE_STLPORT_DEQUE_PUSH_BACK_AUX_NOINLINE)

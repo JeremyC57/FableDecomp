@@ -88,6 +88,12 @@ protected:
     void SetPlayerCreatureActionForMelee(ECombatZone zone, const C3DVector& direction, CThing* target,
                                          const CCreatureAbilityDef& ability);              // 0x006AA720 IAE
     void ResolveFacingDirection();                                                         // 0x006AB820 IAE
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_MAXTURNSPEED
+    // Nested opt-in (chunk 2041, row 0x006AB820 ResolveFacingDirection): Ego_r.pdb 0x005469C0 / FableWin.pdb 0x01DF7490
+    // ?GetMaxTurnSpeed@CThingPlayerCreature@@IBEMXZ (protected const), out of line in retail at 0x006A99D0 (landed; the row calls it
+    // four times). Declaration only.
+    float GetMaxTurnSpeed() const;                                                         // 0x006A99D0 IBE
+#endif
     C3DVector ControlPos;                                    // +0x160
     C3DVector ControlMoveByVector;                           // +0x16c
     unsigned char MovedByPlayer:1, Jumping:1, Pad1:1;        // +0x178

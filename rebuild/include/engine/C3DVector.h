@@ -12,10 +12,22 @@
 #define FABLE_VECTOR_INLINE inline
 #endif
 #include <math.h>
+#ifdef FABLE_RETAIL_C3DVECTOR_INITFROMANGLES_GFSIN
+// Retail opt-in (chunk 2041, row 0x006AB820 CThingPlayerCreature::ResolveFacingDirection): InitialiseFromAngles through the GFCos / GFSin
+// inlines (FableWin.pdb ?GFCos@@YINM@Z / ?GFSin@@YINM@Z); see InitialiseFromAngles below. Needs FABLE_RETAIL_C3DVECTOR_ANGLE_BODIES.
+#include "rebuild_abi.h"
+#include "engine/GFSin.h"
+#include "engine/GFCos.h"
+#endif
 #ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
 #include "engine/GFAngles.h"
 #endif
-#if (defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D)) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+#if (defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B)) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+// (FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B: chunk 2029 opt-in, the same GFFastSqrt / GetMagnitude2D pair as UPDATE_NEAREST_INTERESTING
+// without the rest of that row set; see GetMagnitude2D below.)
+#ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B
+#include "rebuild_abi.h"
+#endif
 inline float FABLE_FASTCALL GFFastSqrt(float value){return sqrt(value);}
 #endif
 #include "engine/C2DCoordI.h"
@@ -239,7 +251,13 @@ public:
 #endif
     FABLE_VECTOR_INLINE float GetSquaredMagnitude2D()const{return X*X+Y*Y;}
 #endif
-#ifdef FABLE_RETAIL_C3DVECTOR_DOT_GROUPED
+#if defined(FABLE_RETAIL_C3DVECTOR_DOT_XY_THEN_Z)
+    // Retail opt-in (chunk 2053, row 0x0087F3A0 CCombatAction_KickThingOnGround::PerformAction): the X/Y pair as one parenthesised
+    // sum, then Z added to the named total. FableWin.pdb ?Dot@C3DVector@@QBE?BMABV1@@Z debug copy 0x01D89990 is 23i/59b; this text is
+    // 23i/60b at plain /Od (fwsize SAME; the same +1 byte as the landed running-sum GetSquaredMagnitude2D, 18i/44b v 18i/43b). Without
+    // the parentheses (identical /Od bytes) the row grades DIFFER (md.py 714 equal; matched 715). Body only.
+    FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=(X*other.X+Y*other.Y);dot+=Z*other.Z;return dot;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_DOT_GROUPED)
     FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=(Y*other.Y);dot+=Z*other.Z;dot+=X*other.X;return dot;}
 #else
 #ifdef FABLE_RETAIL_C3DVECTOR_DOT_ORDERED_YXZ
@@ -291,16 +309,23 @@ public:
     // Original FableWin01d99fb0 and both PDB signatures; named squared sum.
     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return (float)sqrt(magnitude);}
 #endif
-#ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQRTF
+#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_XY_THEN_Z)
+    // Retail opt-in (chunk 2053, row 0x0087F3A0): a named squared sum, X/Y pair first. FableWin.pdb ?GetMagnitude@C3DVector@@QBEMXZ
+    // debug copy 0x01B52910 is 26i/66b (same signature hash as GetAccurateMagnitude 0x01D99FB0); this text is 26i/66b at plain /Od
+    // (fwsize SAME). The unparenthesised `X*X+Y*Y+Z*Z` (same /Od bytes) grades DIFFER in the row (md.py 710 equal). Body only.
+    FABLE_VECTOR_INLINE float GetMagnitude()const{float squared=(X*X+Y*Y)+Z*Z;return (float)sqrt(squared);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQRTF)
     FABLE_VECTOR_INLINE float GetMagnitude()const{return GFRoot(X*X+Y*Y+Z*Z);}
 #else
     FABLE_VECTOR_INLINE float GetMagnitude()const{return (float)sqrt(GetSquaredMagnitude());}
 #endif
-#if defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+#if (defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B)) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
     // Original FableWin01d9faa0 GetMagnitude2D, calls single-precision sqrt helper.
+    // (Chunk 2029, row 0x00915B60: FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B selects this body alone; FableWin.pdb ?GetMagnitude2D@C3DVector@@QBEMXZ,
+    // no Ego_r.pdb or Fable.exe copy: inline in release. 0x00915D8F..0x00915DA3 squares X then adds Y squared, then fsqrt.)
     inline float GetMagnitude2D()const {float squared=X*X;squared+=Y*Y;return GFFastSqrt(squared);}
 #endif
-#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && !defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && !defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_B) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
     // Retail opt-in (chunk Q9, row 0x0092ACE0 CAIStateGroup_ApprenticeHero::GoToLibrary): the same FableWin.pdb
     // ?GetMagnitude2D@C3DVector@@QBEMXZ body as the FABLE_RETAIL_UPDATE_NEAREST_INTERESTING branch above, without that opt-in's
     // CThingCreatureBase / CTCTargetingBase / C2DBoxI changes. Body only: default path unchanged.
@@ -332,6 +357,20 @@ public:
     }
 #endif
     FABLE_VECTOR_INLINE C3DVector CrossWithUp() const {return C3DVector(Y,-X,0.0f);}
+#ifdef FABLE_RETAIL_C3DVECTOR_INITFROMANGLES_GFSIN
+    // Nested opt-in (chunk 2041, row 0x006AB820 ResolveFacingDirection): the body goes through GFCos / GFSin (double fastcall, float
+    // angle) with the implicit double -> float stores. FableWin.pdb: ?GFSin@@YINM@Z 0x01DCB5D0 is the COMDAT right after
+    // ?InitialiseFromAngles@ 0x01DCB530 (InitialiseFromAngles is GFSin's first instantiation; GFCos 0x01D9E180 came earlier). The explicit
+    // `(float)(sin(..)*(cosYZ*length))` spelling below leaves a no-code PAREN tuple between the Y fmul and its fstp that moves
+    // 0x006ABB81..8F in that row. Same arithmetic; body only.
+    FABLE_VECTOR_INLINE const C3DVector& InitialiseFromAngles(float angleXY,float angleYZ,float length) {
+        float cosYZ=GFCos(angleYZ);
+        X=GFSin(angleXY)*(cosYZ*length);
+        Y=GFCos(angleXY)*(cosYZ*length);
+        Z=GFSin(angleYZ)*length;
+        return *this;
+    }
+#else
     FABLE_VECTOR_INLINE const C3DVector& InitialiseFromAngles(float angleXY,float angleYZ,float length) {
         float cosYZ=(float)cos(angleYZ*(double)6.2831855f);
         X=(float)(sin(angleXY*(double)6.2831855f)*(cosYZ*length));
@@ -339,6 +378,7 @@ public:
         Z=(float)(sin(angleYZ*(double)6.2831855f)*length);
         return *this;
     }
+#endif
 #else
     float GetAngleXY() const;
 #endif
@@ -363,7 +403,8 @@ public:
     // static __fastcall, out of line in retail at 0x00A146C0 (hidden result in ecx, seed in edx). A declaration only.
     static C3DVector __fastcall GetRandomPointWithinUnitSphere(unsigned long* seed);   // 0x00A146C0
 #endif
-#ifdef FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES
+#if defined(FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES) || defined(FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES_B)
+    // (FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES_B: w22 agent2042 row 0x007F2DC0 CTCLightningNode::FrameUpdate, the same declaration.)
     // Retail opt-in (chunk Q18, row 0x00837220 CThingTrackNode::UpdateFacingDirection): Ego_r.pdb ?Rotate@C3DVector@@QAEXMM@Z, out of
     // line in retail at 0x00A14260 (landed; thiscall, two floats, `ret 8`). A declaration only.
     void Rotate(float angle_xy, float angle_yz);                         // 0x00A14260
@@ -453,7 +494,8 @@ public:
 #endif
     C3DVector& AccurateNormalise();
     void Rotate(const C3DVector&,float);
-#ifdef FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES
+#if (defined(FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES) || defined(FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES_B)) && !defined(FABLE_RETAIL_C3DVECTOR)
+    // (FABLE_RETAIL_C3DVECTOR declares the same member in its own ROTATE_ANGLES block above.)
     // Retail opt-in (w22 agent2022, row 0x007D3820 CTCTavernGameCoinGolf::ProcessInput, whose TU also holds GetCamera 0x007D3560):
     // Ego_r.pdb / FableWin.pdb ?Rotate@C3DVector@@QAEXMM@Z, out of line in retail at 0x00A14260 (the bound spelling; GetCamera calls
     // it twice). Declaration only.

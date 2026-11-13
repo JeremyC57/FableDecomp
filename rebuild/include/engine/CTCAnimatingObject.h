@@ -13,6 +13,13 @@
 #include "stlport/fable_containers.h"
 class CTCAnimatingObject : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCANIMATINGOBJECT_PLAYANIMATION
+    // Opt-in (chunk 2053, row 0x0087F3A0): Ego_r.pdb / FableWin.pdb ?PlayAnimation@CTCAnimatingObject@@QAEXJJ_N@Z (public, out of line at
+    // 0x007F9010) and ?StatGetInterfaceType@CTCAnimatingObject@@SI?AW4ETCInterfaceType@@XZ (TCI_ANIMATING_OBJECT 0x83: the row's GetTC
+    // looks up 0x83). Declarations only: no layout change.
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ANIMATING_OBJECT; }
+    void PlayAnimation(long anim, long priority, bool loop);             // 0x007F9010
+#endif
     void PlayDefaultAnimation();                                         // 0x007F8F30
 #ifdef FABLE_RETAIL_CTCANIMATINGOBJECT_PLAYANIMATION_NAME
     // wf22 row 0x007E1FC0 CTCAmbientBird::FrameUpdate: Ego_r.pdb ?PlayAnimation@CTCAnimatingObject@@QAEXABVCCharString@@J_N@Z (public).

@@ -85,6 +85,15 @@ class CTCPhysicalShieldSpell:public CTCBase {public:
  void SetAICasting(long level){SpellLevel=level;}
  void SetTimeLimit(long time){DurationTimer=time;}
  void SetShieldHealth(float health){ShieldHealth=health;}
+#ifdef FABLE_RETAIL_CTCPHYSICALSHIELDSPELL_ALLOWREACTIONS
+ // Nested opt-in (chunk 2034, row 0x0097BDA0 CAIStateGroup_ScorpionKing::UpdateCombat): Ego_r.pdb
+ // ?StatGetInterfaceType@CTCPhysicalShieldSpell@@SI?AW4ETCInterfaceType@@XZ (inline: TCI_PHYSICAL_SHIELD_SPELL 147, the caller's
+ // UsingComponents test `test dword ptr [eax+30h],80000h`, 0x0097C036) and
+ // ?AllowReactionsOnHitFromAttacker@CTCPhysicalShieldSpell@@QAEXPAVCThing@@_N@Z (donor 0x007A3910 after GetAllowReactionsOnHit /
+ // OnHitAtPos as retail 0x0079E580; `push 1 ; push <creature> ; call`, 0x0097C070). Declaration only.
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_PHYSICAL_SHIELD_SPELL;}
+ void AllowReactionsOnHitFromAttacker(CThing* attacker, bool allow);   // 0x0079E580
+#endif
 
 protected:
  CDefPointer<const CSpecialAbilitiesPhysicalShieldDef> PDef;

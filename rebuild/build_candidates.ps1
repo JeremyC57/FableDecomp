@@ -395855,6 +395855,83 @@ $catalog = @(
         TestSource = '00/be/CEngineWaterSettings_UpdateConstants_00bea110_test.cpp'
         PassPattern = '00bea110_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006ab820'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_ResolveFacingDirection_006ab820.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_ResolveFacingDirection_006ab820_test.cpp'
+        PassPattern = '006ab820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f26b0'
+        Module = 'CTCLightningOrb'
+        Source = '00/7f/CTCLightningOrb_Initialise_007f26b0.cpp'
+        TestSource = '00/7f/CTCLightningOrb_Initialise_007f26b0_test.cpp'
+        PassPattern = '007f26b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f2dc0'
+        Module = 'CTCLightningNode'
+        Source = '00/7f/CTCLightningNode_FrameUpdate_007f2dc0.cpp'
+        TestSource = '00/7f/CTCLightningNode_FrameUpdate_007f2dc0_test.cpp'
+        PassPattern = '007f2dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087f3a0'
+        Module = 'CCombatAction_KickThingOnGround'
+        Source = '00/87/CCombatActionKickThingOnGround_PerformAction_0087f3a0.cpp'
+        TestSource = '00/87/CCombatActionKickThingOnGround_PerformAction_0087f3a0_test.cpp'
+        PassPattern = '0087f3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00912ba0'
+        Module = 'CAIStateGroup_FlyingThingBase'
+        Source = '00/91/CAIStateGroupFlyingThingBase_CalculatePrettyPath_00912ba0.cpp'
+        TestSource = '00/91/CAIStateGroupFlyingThingBase_CalculatePrettyPath_00912ba0_test.cpp'
+        PassPattern = '00912ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00915b60'
+        Module = 'CAIStateGroup_MoveGoodsBase'
+        Source = '00/91/CAIStateGroupMoveGoodsBase_PlaceGoods_00915b60.cpp'
+        TestSource = '00/91/CAIStateGroupMoveGoodsBase_PlaceGoods_00915b60_test.cpp'
+        PassPattern = '00915b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092da20'
+        Module = 'CAIStateGroup_MinionSleep'
+        Source = '00/92/CAIStateGroupMinionSleep_Update_0092da20.cpp'
+        TestSource = '00/92/CAIStateGroupMinionSleep_Update_0092da20_test.cpp'
+        PassPattern = '0092da20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094e7b0'
+        Module = 'CAIStateGroup_EarthTroll'
+        Source = '00/94/CAIStateGroupEarthTroll_Update_0094e7b0.cpp'
+        TestSource = '00/94/CAIStateGroupEarthTroll_Update_0094e7b0_test.cpp'
+        PassPattern = '0094e7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00951430'
+        Module = 'CAIStateGroup_JackDragon'
+        Source = '00/95/CAIStateGroupJackDragon_IntoGroundSwoop_00951430.cpp'
+        TestSource = '00/95/CAIStateGroupJackDragon_IntoGroundSwoop_00951430_test.cpp'
+        PassPattern = '00951430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00952890'
+        Module = 'CAIStateGroup_JackDragon'
+        Source = '00/95/CAIStateGroupJackDragon_UpdateGround_00952890.cpp'
+        TestSource = '00/95/CAIStateGroupJackDragon_UpdateGround_00952890_test.cpp'
+        PassPattern = '00952890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097bda0'
+        Module = 'CAIStateGroup_ScorpionKing'
+        Source = '00/97/CAIStateGroupScorpionKing_UpdateCombat_0097bda0.cpp'
+        TestSource = '00/97/CAIStateGroupScorpionKing_UpdateCombat_0097bda0_test.cpp'
+        PassPattern = '0097bda0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

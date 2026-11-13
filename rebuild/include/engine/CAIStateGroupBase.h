@@ -98,6 +98,24 @@ protected:
     EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat repeat, class C3DVector position, float proximity, bool& reached,
         EMovementType movement, bool, bool, bool, const CThing* thing, bool, float);   // 0x0097E890
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FILTER
+public:
+    // Nested opt-in (chunk 2029, row 0x00915B60 CAIStateGroup_MoveGoodsBase::PlaceGoods): the nested filter class of Ego_r.pdb /
+    // FableWin.pdb ??0CAIFilterBase@CAIStateGroupBase@@QAE@XZ, ??1CAIFilterBase@CAIStateGroupBase@@QAE@XZ (non-virtual) and
+    // ??RCAIFilterBase@CAIStateGroupBase@@UBE_NXZ (virtual, vtable slot 0: retail `mov edx,[ebx] ; call [edx]`, 0x00915CB5), and
+    // ?AIAction_MoveToPreCalcRoute@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCThing@@AA_NW4EMovementType@@ABVCAIFilterBase@1@_N@Z
+    // (protected, out of line at 0x0097F690; 0x00915E32 pushes the five arguments). Declarations only. Needs
+    // FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS (the forward enums).
+    class CAIFilterBase {
+    public:
+        CAIFilterBase();
+        ~CAIFilterBase();
+        virtual bool operator()() const;
+    };
+protected:
+    EAIActionReturn AIAction_MoveToPreCalcRoute(const CThing& thing, bool& reached, EMovementType movement, const CAIFilterBase& filter,
+        bool b);                                                         // 0x0097F690
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MINIONWANDER
     // Opt-in (chunk 1024, row 0x00967D40 CAIStateGroup_TavernServer::Update): Ego_r.pdb / FableWin.pdb
     // ?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z (protected), out of line
@@ -138,6 +156,12 @@ protected:
     // ?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z (protected; donor 0x00848680 just
     // before AIAction_PerformActionAndWait as retail 0x0097D8B0 / 0x0097DB70; the landed GoToBed::Update binds a pointer spelling).
     EAIActionReturn AIAction_PerformAction(const class CCreatureActionBase& action);   // 0x0097D8B0
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PUMPCOMBATACTIONS
+    // Nested opt-in (chunk 2034, row 0x0097BDA0 CAIStateGroup_ScorpionKing::UpdateCombat): Ego_r.pdb
+    // ?AIAction_PumpCombatActions@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ (protected; donor 0x00848740 between AIAction_PerformAction
+    // 0x00848680 and AIAction_CombatPerformActionAndWait 0x00848800 = retail 0x0097D8B0 / 0x0097D980 / 0x0097DA40). Declaration only.
+    EAIActionReturn AIAction_PumpCombatActions();                        // 0x0097D980
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_COMBATPERFORMACTION
     // Nested opt-in (chunk 854, row 0x00924C70 CAIStateGroup_KrakenAttack::Update): Ego_r.pdb / FableWin.pdb

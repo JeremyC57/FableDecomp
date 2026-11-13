@@ -39,6 +39,12 @@ protected:
     virtual CDefPointer<const CMaterialDef> PeekPMaterial() const;       // 0x00703150 ?PeekPMaterial@CThingObject@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGOBJECT_RESETDIEOFFTIMER
+    // Opt-in (chunk 2053, row 0x0087F3A0): Ego_r.pdb / FableWin.pdb ?ResetDieOffTimer@CThingObject@@QAEXXZ (public, out of line at
+    // 0x00702CE0, landed). Declaration only: no layout change.
+public:
+    void ResetDieOffTimer();                                             // 0x00702CE0
+#endif
 #ifdef FABLE_RETAIL_CTHINGOBJECT_ONHIT
     // Retail opt-in (chunk 794, row 0x007039A0): Ego_r.pdb / FableWin.pdb ?OnHit@CThingObject@@MAEXAAVCHitParameters@@@Z (protected
     // virtual override of CThingGameObject::OnHit 0x00839940, which it calls by name). Declaration only: no layout change.

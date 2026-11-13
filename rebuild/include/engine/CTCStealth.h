@@ -22,10 +22,12 @@ C3DVector FABLE_FASTCALL GetStabPosOnThing(CThing&);
 // Full original Ego_r0x28491, native vector12 yields76bytes.
 class CTCStealth:public CTCBase {
 public:
-#ifdef FABLE_RETAIL_CTCSTEALTH_SETSNEAKING
+#if defined(FABLE_RETAIL_CTCSTEALTH_SETSNEAKING) || defined(FABLE_RETAIL_CTCSTEALTH_STATTYPE)
  // Retail opt-in (chunk Q15, row 0x00713D50): FableWin.pdb ?StatGetInterfaceType@CTCStealth@@SI?AW4ETCInterfaceType@@XZ and
  // ?SetSneaking@CTCStealth@@QAEX_N@Z (debug copies only; no Ego_r.pdb copy, expanded in retail: 0x00713DC9 `mov byte ptr [eax+0Fh],1`,
  // the bitset test of type 54 = bit 22 of +24h). Bodies only, no layout change.
+ // FABLE_RETAIL_CTCSTEALTH_STATTYPE (chunk 2041, row 0x006AB820 CThingPlayerCreature::ResolveFacingDirection) selects the inline interface
+ // type alone, as PeekTC<const CTCStealth> expands it (`test dword ptr [esi+24h],400000h`, key `mov [esp+1Ch],36h`, 0x006AB897 / 0x006AB8AC).
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_STEALTH; }
 #else
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();

@@ -35,6 +35,14 @@ public:
  // (donor 0x007B0CE0), out of line in retail at 0x007AF310 (bound by that spelling). Declaration only.
  void SetHelperCreature(CThingAICreature&);                           // 0x007AF310
 #endif
+#ifdef FABLE_RETAIL_CTCBOSS_STRIKES
+ // Opt-in (chunk 2034, row 0x0097BDA0 CAIStateGroup_ScorpionKing::UpdateCombat): FableWin.pdb
+ // ?SetCountingStrikesSinceHitHero@CTCBoss@@QAEX_N@Z (no Ego_r.pdb or Fable.exe copy: inline; UpdateCombat stores the byte BCountStrikes
+ // +0x20 in place, 0x0097BFDD / 0x0097C1E2) and Ego_r.pdb / FableWin.pdb ?ResetStrikesSinceHitHero@CTCBoss@@QAEXXZ (donor 0x007B06A0
+ // after GetStrikesSinceHitHero 0x007B0690 as retail 0x007AED50 after 0x007AED40; the body stores 0 to StrikesSinceHit +0x14).
+ void SetCountingStrikesSinceHitHero(bool counting){BCountStrikes=counting;}
+ void ResetStrikesSinceHitHero();                                      // 0x007AED50
+#endif
 #ifdef FABLE_RETAIL_CTCBOSS_EFFECTS
  // Retail opt-in (chunk Q2, row 0x008E0A10 NCreatureMode::CModeScorpionKingVulnerable::FrameUpdate): Ego_r.pdb / FableWin.pdb
  // ?IncrementBossPhase@CTCBoss@@QAEXXZ (0x007AED20), ?IsReadyForPhaseChange@CTCBoss@@QBE_NXZ (0x007AEE90), ?CountEffects@CTCBoss@@QAEJXZ

@@ -32,6 +32,11 @@ public:
  bool IsMeleeFlourishValid() const;                                      // 0x00733EE0
  bool GetIsInMiddleOfFlourishAction() const { return IsInMiddleOfFlourishAction; }
 #endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_RESETCOMBO
+ // Nested opt-in (chunk 2026, row 0x0094E7B0 CAIStateGroup_EarthTroll::Update): Ego_r.pdb / FableWin.pdb ?ResetComboChainPos@CTCCombat@@QAEXXZ
+ // (public; out of line in retail at 0x00733210, already bound by that spelling; the row calls it on its TCI_COMBAT component). Declaration only.
+ void ResetComboChainPos();                                              // 0x00733210
+#endif
 #ifdef FABLE_RETAIL_CTCCOMBAT_FLOURISH
  // Nested opt-in (agent1022, row 0x0078C210 CTCBerserk::CTCBerserk): Ego_r.pdb / FableWin.pdb ?AddMeleeFlourishAbility@CTCCombat@@QAEXJ@Z
  // (retail 0x00736640, landed). Declaration only.

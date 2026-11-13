@@ -100,7 +100,9 @@ public:
     // UpdateParticleAttachment local model): Ego_r.pdb CVectorMap::Insert (push_back, then mark Dirty) and Update (sort with the
     // stored Compare when Dirty, then clear it), both inline in retail (the push_backs and the guarded std::sort calls 0x0076C000 /
     // 0x0076C1A0 sit in the callers).
-#if defined(FABLE_RETAIL_CVECTORMAP_INSERT_FORCEINLINE) && defined(_MSC_VER)
+#if (defined(FABLE_RETAIL_CVECTORMAP_INSERT_FORCEINLINE) || defined(FABLE_RETAIL_CVECTORMAP_INSERT_FORCEINLINE_B)) && defined(_MSC_VER)
+    // (FABLE_RETAIL_CVECTORMAP_INSERT_FORCEINLINE_B: w22 agent2042 row 0x007F2DC0 CTCLightningNode::FrameUpdate, the same device: retail
+    // expands both inserts of FrameUpdate, 0x007F3312..0x007F336D, where VC7.1 scores the plain inline Insert 191 and calls it.)
     // Q19 nested opt-in (row 0x008E16A0 CModeScreamerSuperAttack::FrameUpdate): the same Insert forced inline, as the
     // INSERT_KEYVALUE overload below (Ego_r.pdb holds no out-of-line CVectorMap::Insert). In that TU a plain inline Insert is called
     // out of line, while retail expands both push_backs in place (the first straight into _M_insert_overflow 0x0076ADA0 on the

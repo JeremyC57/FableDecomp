@@ -25,8 +25,10 @@ class CArmourDef;class CThingGameObject;
 #endif
 // Original Ego_r TPI0x2af3a; native OnHit proves offsets0,1,2,e,1a..28,48,50,58.
 // STLport replaces both 16-byte donor containers with12-byte containers: native sizeof60.
-#ifdef FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
+#if defined(FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP) || defined(FABLE_RETAIL_CHITPARAMETERS_LOCATIONCTOR) || defined(FABLE_RETAIL_CHITPARAMETERS_ADDDAMAGE)
 #include "engine/EDamageAttribute.h"
+#endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
 #include "stlport/fable_map.h"
 #endif
 #ifdef FABLE_RETAIL_CHITPARAMETERS_AUGMENTATIONS
@@ -144,6 +146,15 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
     // (the +0x1C byte read in place, passed to CTCShotDefinitionBase::OnHitByMelee). Body only: no layout change.
     bool IsBlockable() const { return Blockable; }
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_LOCATIONCTOR
+    // Opt-in (chunk 2053, row 0x0087F3A0): FableWin.pdb ??0CHitParameters@@QAE@PAVCHitLocation@NHitLocations@@PAVCThing@@1@Z (out of line,
+    // retail 0x0087FF60, landed; FableWin lists it right after CCombatAction_KickThingOnGround::PerformAction, its first user) and Ego_r.pdb
+    // ?AddDamageWithAttribute@CHitParameters@@QAEXW4EDamageAttribute@@M@Z (retail 0x00868CA0). Declarations only: no layout change.
+    CHitParameters(NHitLocations::CHitLocation* location, CThing* thing_hitting, CThing* weapon);   // 0x0087FF60
+#ifndef FABLE_RETAIL_CHITPARAMETERS_HIT_CTOR
+    void AddDamageWithAttribute(EDamageAttribute attribute, float damage);   // 0x00868CA0
+#endif
+#endif
 #ifdef FABLE_RETAIL_CHITPARAMETERS_CTOR
     // Retail opt-in (chunk 794, row 0x007C4430 CTCHealLife::StartHealingEffect): Ego_r.pdb ??0CHitParameters@@QAE@XZ /
     // ??1CHitParameters@@QAE@XZ / ?SetThingHitting@CHitParameters@@QAEXAAVCThing@@@Z, out of line in retail (0x007A3BC0 /
@@ -202,6 +213,13 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
     // Retail opt-in (row 0x00868CE0): Ego_r.pdb ?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z, out of line in retail (callers
     // 0x00838BED / 0x00838FB2). Declaration only: no layout change.
     void SetWeapon(CThing& weapon);                                      // 0x00868CE0
+#endif
+#if defined(FABLE_RETAIL_CHITPARAMETERS_ADDDAMAGE) && !defined(FABLE_RETAIL_CHITPARAMETERS_HIT_CTOR) && !defined(FABLE_RETAIL_CHITPARAMETERS_LOCATIONCTOR)
+    // (HIT_CTOR / LOCATIONCTOR declare the same member.)
+    // Retail opt-in (w22 agent2042, row 0x007F2DC0 CTCLightningNode::FrameUpdate): Ego_r.pdb / FableWin.pdb
+    // ?AddDamageWithAttribute@CHitParameters@@QAEXW4EDamageAttribute@@M@Z, out of line in retail at 0x00868CA0 (the bound spelling;
+    // FrameUpdate pushes the def's DamagePerCycle then 2 = DAMAGE_LIGHTNING, 0x007F3455..0x007F3465). Declaration only: no layout change.
+    void AddDamageWithAttribute(EDamageAttribute attribute, float damage);   // 0x00868CA0
 #endif
     void SetKnockDown(bool value) { KnockDown=value; }
     void SetDecapitate(bool value) { Decapitate=value; }

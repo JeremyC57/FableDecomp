@@ -126,6 +126,12 @@ public:
  void SetByPassColorFilter(bool bypass);                    // 0x004BFB00
 #endif
  float GetScale()const{return Scale;}
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FORCERESEND
+ // Nested opt-in (w22 agent2022, row 0x007F26B0 CTCLightningOrb::Initialise; needs FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT): Ego_r.pdb /
+ // FableWin.pdb ?SetForceResendEveryRenderFrame@CTCGraphicAppearance@NGraphicAppearance@@QAEX_N@Z, inline in retail (the orb sets bit 1 of the
+ // +0x59 bitfield byte in place, `or byte ptr [eax+59h],2` at 0x007F2C98; the landed OnInitialActivate 0x007F23D0 does the same through cl).
+ void SetForceResendEveryRenderFrame(bool force){ForceResendEveryRenderFrame=force;}
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETMAINGRAPHIC
  // Nested opt-in (agentNF9, row 0x0082D6F0 CThingBuilding::OnCreate): Ego_r.pdb / FableWin.pdb
  // ?SetMainGraphic@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEngineGraphic@@@Z, inline in retail (the 14-byte copy into +0x44,

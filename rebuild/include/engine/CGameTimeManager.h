@@ -96,6 +96,12 @@ public:
     // retail (0x006415C1 `mov eax,[eax+1Ch] ; mov ecx,[eax+8]` after CTCBase::PeekWorld: Time +0x08 copied as a dword). No layout change.
     float GetTime() const { return Time; }
 #endif
+#ifdef FABLE_RETAIL_CGAMETIMEMANAGER_ISTIMEBETWEEN
+    // Opt-in (chunk 2026, row 0x0092DA20 / the inline IsInSleepTime 0x0092C520): Ego_r.pdb / FableWin.pdb
+    // ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z (public const; the private float overload is ABE_NMMM), out of line in retail at
+    // 0x006BB390 (`push <end> ; push <start> ; mov ecx,[world+1Ch] ; call`). Declaration only: no layout change.
+    bool IsTimeBetween(long start, long end) const;                 // 0x006BB390
+#endif
 private:
     CWorld*             World;                                      // +0x00
     CMainGameComponent* GameComponent;                              // +0x04

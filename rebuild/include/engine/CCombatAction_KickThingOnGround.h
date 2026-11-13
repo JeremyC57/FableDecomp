@@ -6,6 +6,26 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CCOMBATACTION_KICKTHINGONGROUND
+// Opt-in (chunk 2053, row 0x0087F3A0 PerformAction): the class over the retail CCombatActionBase (FABLE_RETAIL_CCOMBATACTIONBASE_MELEE,
+// 0x114 bytes) with the Ego_r.pdb members MoveToPos / Movement / MaxRunningSpeed at retail +0x114 / +0x120 / +0x12C (PDB +0x12C / +0x138
+// / +0x144; the landed ctor 0x0087FD20, Initialise 0x0087E860 and GetNextPos 0x0087E770 read them there). Virtuals as declared by
+// Ego_r.pdb (?PerformAction@CCombatAction_KickThingOnGround@@UAEXXZ ...). Needs engine/CCombatActionBase.h (MELEE) and C3DVector.h first.
+class CThingCreatureBase; class CThing;
+class CCombatAction_KickThingOnGround : public CCombatActionBase {
+public:
+    CCombatAction_KickThingOnGround(CThingCreatureBase& creature, CThing& thing);   // 0x0087FD20
+    virtual void PerformAction();                                        // 0x0087F3A0
+    virtual void Initialise();                                           // 0x0087E860
+    virtual C3DVector GetNextPos() const;                                // 0x0087E770
+protected:
+    virtual void FinishAction();                                         // 0x0087EBD0
+    C3DVector MoveToPos;                                                 // +0x114
+    C3DVector Movement;                                                  // +0x120
+    float     MaxRunningSpeed;                                           // +0x12c
+};
+FABLE_STATIC_ASSERT(sizeof(CCombatAction_KickThingOnGround) == 0x130);
+#else
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -93,4 +113,5 @@ FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement_Y) == 0x1
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement_Z) == 0x128);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MaxRunningSpeed) == 0x12c);
 
+#endif // FABLE_RETAIL_CCOMBATACTION_KICKTHINGONGROUND
 #endif // FABLE_ENGINE_CCOMBATACTION_KICKTHINGONGROUND_H

@@ -19,6 +19,11 @@ public:
 #ifdef FABLE_RETAIL_EXPRESSION_FRAME
  bool operator!=(const char*)const;
 #endif
+#if (defined(FABLE_RETAIL_CDEFSTRING_NOTEQUAL) || defined(FABLE_RETAIL_CDEFSTRING_NOTEQUAL_B)) && !defined(FABLE_RETAIL_EXPRESSION_FRAME)
+ // Opt-in (chunk 2026, row 0x0092DA20 CAIStateGroup_MinionSleep::Update): Ego_r.pdb / FableWin.pdb ??9CDefString@@QBE_NPBD@Z, out of line
+ // in retail at 0x005FA740 (`push offset "" ; mov ecx,<def+34h> ; call`, 0x0092DF45; already bound by that spelling). Declaration only.
+ bool operator!=(const char* text)const;                                // 0x005FA740
+#endif
 #ifdef FABLE_RETAIL_CDEFSTRING_DEFAULTCTOR_OUTOFLINE
  // Opt-in (2026-11-05, row 0x007E37C0): the out-of-line COMDAT of the default ctor (Ego_r.pdb / FableWin.pdb ??0CDefString@@QAE@XZ;
  // `mov eax,ecx ; mov [eax],-1 ; ret`), called by the NScript TUs that build CPersistContext::Transfer<CDefString> defaults

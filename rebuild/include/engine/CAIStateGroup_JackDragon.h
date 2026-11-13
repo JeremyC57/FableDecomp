@@ -1,6 +1,6 @@
 #ifndef FABLE_ENGINE_CAISTATEGROUP_JACKDRAGON_H
 #define FABLE_ENGINE_CAISTATEGROUP_JACKDRAGON_H
-#ifdef FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON
+#if defined(FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON) || defined(FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_B) || defined(FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_B2)
 // Overlay opt-in (wf13, row 0x00951D60 IntoHover): RTTI .?AVCAIStateGroup_JackDragon@@ : CAIStateGroupBase (rtti_bases.tsv); members
 // Ego_r.pdb struct_layouts_egor.tsv (packed, sizeof 0x140) with their real types; member functions and access from Ego_r.pdb
 // egor_signatures.tsv (FableWin.pdb _fablewin_api.tsv agrees for StartFlying / IsStillRunnable). EDragonState is nested
@@ -43,6 +43,19 @@ private:
     void FlyOutOfGround();                                   // 0x00951B20
     void IntoHover();                                        // 0x00951D60
     void UpdateHover();                                      // 0x00951FB0
+#ifdef FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_B
+    // Nested opt-in (acctB chunk 2009, row 0x00952890 UpdateGround): Ego_r.pdb / FableWin.pdb names, private (AAE); retail addresses
+    // follow the Ego_r donor order (StayIdle 0x009747F0 / WaitForAnimLoop / UpdateGround 0x00977280 = retail 0x0094FE30 / 0x00950950 /
+    // 0x00952890).
+    void StayIdle(float time);                               // 0x0094FE30
+    void WaitForAnimLoop(float time);                        // 0x00950950
+    void UpdateGround();                                     // 0x00952890
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_INTOGROUND
+    // Nested opt-in (acctB chunk 2017, row 0x00951430 IntoGroundSwoop): Ego_r.pdb ?IntoGroundSwoop@CAIStateGroup_JackDragon@@AAEXXZ,
+    // private (donor 0x00975F70 = retail 0x00951430). ChooseHoverOrStrafeState / StartFlying are declared above.
+    void IntoGroundSwoop();                                  // 0x00951430
+#endif
     CIntelligentPointer<CThingCreatureBase> PEnemy;          // +0x14
     CIntelligentPointer<CThing> PLandedMarker;               // +0x1c
     CIntelligentPointer<CThing> PHoverMarker1;               // +0x24
@@ -233,5 +246,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameRight
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameRight_Z) == 0x12e);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameLeft) == 0x132);
 
-#endif // FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON
+#endif // FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON || _B || _B2
 #endif // FABLE_ENGINE_CAISTATEGROUP_JACKDRAGON_H

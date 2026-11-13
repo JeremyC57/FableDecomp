@@ -157,6 +157,12 @@ public:
     bool IsPCProjectileWeaponThirdPersonAimingMode()const{return PCProjectileWeaponThirdPersonAimingMode;}
     const CGamePlayerInterface* PeekPlayerInterface()const{return PlayerInterface;}
 #endif
+#ifdef FABLE_RETAIL_PLAYER_ISPCPROJECTILEAIMING
+    // Retail opt-in (chunk 2041, row 0x006AB820 CThingPlayerCreature::ResolveFacingDirection): FableWin.pdb
+    // ?IsPCProjectileWeaponThirdPersonAimingMode@CPlayer@@QBE_NXZ (0x01DECBB0; no Ego_r.pdb or Fable.exe copy: the row reads
+    // PCProjectileWeaponThirdPersonAimingMode +0x21A in place off CThing::GetPlayer, `mov cl,[eax+21Ah] ; test cl,cl`, 0x006AB8E2).
+    bool IsPCProjectileWeaponThirdPersonAimingMode() const { return PCProjectileWeaponThirdPersonAimingMode; }
+#endif
 #ifdef FABLE_RETAIL_PLAYER_ISSPELLMODE
     // Retail opt-in (chunk 1025, row 0x008028D0 GetTargetingRangeForTargetType): FableWin.pdb ?IsSpellMode@CPlayer@@QBE_NXZ (no Ego_r.pdb
     // or Fable.exe copy: the row reads SpellMode +0x218 in place off CThing::PeekPlayer, `mov cl,[eax+218h] ; test cl,cl`, 0x00802903).
