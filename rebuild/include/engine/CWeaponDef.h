@@ -19,6 +19,17 @@
 #include "engine/CSubDefClassBase.h"
 #include "engine/EWeaponClass.h"
 class CPersistContext;
+#ifdef FABLE_RETAIL_CWEAPONDEF_WEAPONTRAILS
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "engine/EObjectAugmentationType.h"
+// CWeaponTrailGraphicSet: Ego_r.pdb (struct_layouts_egor.tsv, 8 bytes: long Attack +0, long Knockdown +4); no shared header of its
+// own, declared with the opt-in that needs it.
+struct CWeaponTrailGraphicSet {
+    long Attack;
+    long Knockdown;
+};
+#endif
 class CWeaponDef : public CSubDefClassBase {
 public:
     static CCharString __fastcall StatGetTypeName() { return CCharString("CWeaponDef", -1); }   // inline (Ego_r name set)
@@ -43,8 +54,20 @@ public:
     long          DamageType;                                        // +0x48 EDamageAttribute
     long          Explosion;                                         // +0x4c
     unsigned char FlourishParticles[0x2c];                           // +0x50 CObjectAugmentationParticleSet
+#ifdef FABLE_RETAIL_CWEAPONDEF_WEAPONTRAILS
+    // Opt-in (wf20, row 0x00839100): the member's real Ego_r type (struct_layouts_egor.tsv CWeaponDef FlourishSpecialWeaponTrail).
+    CWeaponTrailGraphicSet FlourishSpecialWeaponTrail;               // +0x7c
+#else
     long          FlourishSpecialWeaponTrail[2];                     // +0x7c CWeaponTrailGraphicSet {Attack, Knockdown}
+#endif
+#ifdef FABLE_RETAIL_CWEAPONDEF_WEAPONTRAILS
+    // Opt-in (wf20, row 0x00839100 CThingGameObject::GetWeaponTrailGraphicIndex): the member's real type (struct_layouts_egor.tsv
+    // CWeaponDef WeaponTrails, std::map<EObjectAugmentationType,CWeaponTrailGraphicSet,std::less<..>,std::allocator<..> >), the
+    // three-word STLport tree of stlport/fable_map.h (retail +0x84..+0x90; header node +0, node key +0x10, value +0x14).
+    std::map<EObjectAugmentationType,CWeaponTrailGraphicSet> WeaponTrails; // +0x84
+#else
     unsigned char WeaponTrails[0xc];                                 // +0x84 map<EObjectAugmentationType,CWeaponTrailGraphicSet>
+#endif
     bool          UseAnalogueLoading;                                // +0x90
     long          MissileLoadCarrySlot;                              // +0x94
     CCharString   ProjectileWeaponHelperNameTip;                     // +0x98
@@ -69,6 +92,9 @@ public:
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Class) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Damage) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Shot) == 0xa0);
+#ifdef FABLE_RETAIL_CWEAPONDEF_WEAPONTRAILS
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, UseAnalogueLoading) == 0x90);
+#endif
 FABLE_STATIC_ASSERT(sizeof(CWeaponDef) == 0xe4);
 #endif // FABLE_RETAIL_DEF_CLASS_BASE
 #endif // FABLE_ENGINE_CWEAPONDEF_H

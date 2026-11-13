@@ -39092,3 +39092,8 @@ _SplineRandomSeed	013999c4	00b206b0
 ?IsAwareOfThingIndirectly@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z	00864700	006c8e90
 ?IsEnemyOfFaction@CTCEnemy@@QBE_NPBVCFaction@@@Z	0076c7d0	006c8e90
 ??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_HasPhysicsMesh@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasPhysicsMesh@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	0049c490	0049be90
+??$find@W4EObjectAugmentationType@@@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Const_traits@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@2@@1@ABW4EObjectAugmentationType@@@Z	0083b170	00839100
+??F?$_Rb_tree_iterator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Const_traits@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@2@@std@@QAEAAU01@XZ	0083aea0	00839100
+?GetWeaponTrailAttack@CTCBerserk@@QBEJXZ	0078bed0	00839100
+?GetWeaponTrailKnockDown@CTCBerserk@@QBEJXZ	0078bee0	00839100
+?IsCurrentTrapToCauseKnockdown@CTCTrapBase@@QBE_NXZ	00787c18	00839100

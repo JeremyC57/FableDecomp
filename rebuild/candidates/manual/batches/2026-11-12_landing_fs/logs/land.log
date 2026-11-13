@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00839100   WARN RELOC_NAME: ?IsCurrentTrapToCauseKnockdown@CTCTrapBase@@QBE_NXZ -> 00787c18 labelled '_global::ReturnTrue_ret0_00787c18'
+00839100   WARN RELOC_NAME: ?GetWeaponTrailKnockDown@CTCBerserk@@QBEJXZ -> 0078bee0 labelled '_global::GetMember_dword0x68_deref0x14c_0078bee0'
+00839100   WARN RELOC_NAME: ?GetWeaponTrailAttack@CTCBerserk@@QBEJXZ -> 0078bed0 labelled '_global::GetMember_dword0x68_deref0x148_0078bed0'
+00839100   WARN RELOC_NAME: ??F?$_Rb_tree_iterator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Const_traits@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@2@@std@@QAEAAU01@XZ -> 0083aea0 labelled 'CRetailTreeIterator::Decrement'
+00839100   RELOCATION_MATCH PASS   GetWeaponTrailGraphicIndex
+
+WINS: 1
+  00839100 RELOCATION_MATCH CThingGameObject::GetWeaponTrailGraphicIndex
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CThingGameObject_GetWeaponTrailGraphicIndex_00839100

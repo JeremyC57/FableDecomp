@@ -1,6 +1,3 @@
-00f39730	CSurfaceCompositor::StartComposition	RELOCATION_MATCH	2	port onto shared headers
-00523cf0	CThingManager::RuntimeSaveGamePersistentEntitiesInLoadedMaps	RELOCATION_MATCH	66	things.clear() + visible same-TU saver bodies
-006c8e90	CThingFilter_IsEligibleWitness::operator()	RELOCATION_MATCH	32	nested do/while(0) single-exit tail + && chain head
 00ad9f10	CVertexGroupBlockOptimiser::AddBlocks	DIFFER(828v806)	~75	list::size inline-budget residue (3 empty-path calls)
 00ad9f10	CVertexGroupBlockOptimiser::AddBlocks	DIFFER(806v806)	155	attempt2: size inlining fixed by folded dead exit; RemoveBlock count register colour left (5 hunks)
 00ad9f10	CVertexGroupBlockOptimiser::AddBlocks	RELOCATION_MATCH	2	repair: test covers new-block/NewBlock2/Greedy sort; LABELS 0x00ADB570; NAME_FIXES 0x00AD92E0 signature; device comment cites call sites

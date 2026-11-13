@@ -395018,6 +395018,13 @@ $catalog = @(
         TestSource = '00/49/CParticleEnvironmentInteraction_IsParticleCollidingAt_0049be90_test.cpp'
         PassPattern = '0049be90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00839100'
+        Module = 'CThingGameObject'
+        Source = '00/83/CThingGameObject_GetWeaponTrailGraphicIndex_00839100.cpp'
+        TestSource = '00/83/CThingGameObject_GetWeaponTrailGraphicIndex_00839100_test.cpp'
+        PassPattern = '00839100_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

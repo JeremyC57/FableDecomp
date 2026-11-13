@@ -69,7 +69,15 @@ template<class V,class Traits>struct _Rb_tree_iterator:public _Rb_tree_base_iter
     _Rb_tree_iterator(const _Rb_tree_iterator<V,_Nonconst_traits<V> >& p){_M_node=p._M_node;}
     reference operator*()const{return static_cast<_Rb_tree_node<V>*>(_M_node)->_M_value_field;}
     pointer operator->()const{return &operator*();}
+#if defined(FABLE_RETAIL_STLP_TREE_DEC_OUTOFLINE) && defined(_MSC_VER)
+    // Per-TU opt-in (wf20, row 0x00839100 CThingGameObject::GetWeaponTrailGraphicIndex): the same STLport body, visible but kept
+    // out of line -- retail calls the map<EObjectAugmentationType,CWeaponTrailGraphicSet> iterator's operator-- as a thiscall COMDAT
+    // (0x0083AEA0, landed as CRetailTreeIterator::Decrement: `mov eax,ecx ; push edi ; mov edi,[eax] ; cmp byte ptr [edi],0 ..`,
+    // _M_decrement inlined, the node stored back once) from the reverse_iterator operator* / operator++ in that row.
+    __declspec(noinline) _Rb_tree_iterator& operator--(){this->_M_node=_Rb_global_inst::_M_decrement(this->_M_node);return *this;}
+#else
     _Rb_tree_iterator& operator--(){this->_M_node=_Rb_global_inst::_M_decrement(this->_M_node);return *this;}
+#endif
     _Rb_tree_iterator& operator++(){this->_M_node=_Rb_global_inst::_M_increment(this->_M_node);return *this;}
 #ifdef FABLE_RETAIL_STLP_TREE_POSTINC
     // chunk 778 (row 0x00ACCBF0): STLport 4.6 _tree.h post-increment (`_Self __tmp = *this; _M_increment(); return __tmp;`).
@@ -290,6 +298,13 @@ public:
 #endif
 #endif
     const_iterator end()const{return const_iterator(this->_M_header._M_data);}
+#ifdef FABLE_RETAIL_STLP_MAP_REVERSE
+    // Per-TU opt-in (wf20, row 0x00839100; needs FABLE_RETAIL_STLP_LIST_REVERSE for reverse_iterator): STLport 4.6 _tree.h
+    // `const_reverse_iterator rbegin() const { return const_reverse_iterator(end()); }` / `rend() const { ..(begin()); }`.
+    typedef reverse_iterator<const_iterator> const_reverse_iterator;
+    const_reverse_iterator rbegin()const{return const_reverse_iterator(end());}
+    const_reverse_iterator rend()const{return const_reverse_iterator(begin());}
+#endif
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE
     // Retail opt-in (chunk 778, row 0x00ACCBF0 COptimisedPrimitive::PerformSubContraction): STLport 4.6 _tree.h erase(iterator)
     // (rebalance, destroy, deallocate; out of line in retail: 0x00AD4CA0 map<unsigned long,CContractionReference>, 0x00AD3C30
@@ -472,6 +487,12 @@ public:
     Compare key_comp()const{return _M_t.key_comp();}
     const_iterator find(const K& key)const{return _M_t.find(key);}
     const_iterator end()const{return _M_t.end();}
+#ifdef FABLE_RETAIL_STLP_MAP_REVERSE
+    // (same opt-in) STLport 4.6 _map.h `const_reverse_iterator rbegin() const { return _M_t.rbegin(); }` / rend.
+    typedef typename _Rep_type::const_reverse_iterator const_reverse_iterator;
+    const_reverse_iterator rbegin()const{return _M_t.rbegin();}
+    const_reverse_iterator rend()const{return _M_t.rend();}
+#endif
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE
     void erase(iterator position){_M_t.erase(position);}
 #endif

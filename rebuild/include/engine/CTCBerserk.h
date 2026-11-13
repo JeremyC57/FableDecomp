@@ -12,6 +12,16 @@ public:
 static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_BERSERK;}
 void IncreaseBerserkDamageToMeMultiplier();
 #endif
+#ifdef FABLE_RETAIL_CTCBERSERK_WEAPONTRAIL
+ // Row 0x00839100: Ego_r.pdb ?GetWeaponTrailAttack@CTCBerserk@@QBEJXZ / ?GetWeaponTrailKnockDown@CTCBerserk@@QBEJXZ
+ // (retail 0x0078BED0 / 0x0078BEE0, landed under a descriptive name). Declarations only (and StatGetInterfaceType when ONHIT is off).
+public:
+#ifndef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_BERSERK;}
+#endif
+long GetWeaponTrailAttack() const;                                       // 0x0078BED0
+long GetWeaponTrailKnockDown() const;                                    // 0x0078BEE0
+#endif
 public:void PlayHitEffectAtPos(const C3DVector& pos)const;
 #ifdef FABLE_RETAIL_CTCBERSERK_CTOR
  // Nested opt-in (agent1022, row 0x0078C210): Ego_r.pdb / FableWin.pdb ??0CTCBerserk@@QAE@AAVCThing@@@Z (retail 0x0078C210, `ret 4`,

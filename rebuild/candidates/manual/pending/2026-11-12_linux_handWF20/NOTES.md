@@ -1,146 +1,4 @@
-## 0x00956060
-
-## 0x00956060 CAIStateGroup_MazeTutorialBattleTeleport::Update -- RELOCATION_MATCH (3 grades)
-- Matched by porting onto shared headers (Guildmaster Update + JackOfBlades GetRushToPosForLunge idioms): GetCreature/GetWorld/GetTC expanded,
-  GetSubDef<CMazeBattleDef> visible+noinline, remove_if+not1(CVectorFilter_FurtherFromPointThan), GFRandom, erase(remove_if,end), erase(begin()+i).
-- Last residue was the inline vector::erase(pos) expanding STLport __copy; retail calls __copy 0x0074CA20 out of line from all three erase bodies
-  -> new overlay opt-in FABLE_RETAIL_STLP_COPY_NOINLINE (stlport/fable_containers.h, __declspec(noinline) on the visible body).
-- Overlay opt-ins needed (hdr/README.md): FABLE_RETAIL_CAISTATEGROUP_MAZETUTORIALBATTLETELEPORT, FABLE_RETAIL_CAISTATEGROUP_MAZEBASE,
-  FABLE_RETAIL_CMAZEBATTLEDEF, FABLE_RETAIL_STLP_COPY_NOINLINE. No flags.
-- Old draft name errors (see DOSSIER sec. 3): GetPosition->GetPos, GetPWorld->GetWorld, GetRandomSeed->GetWorldSeed, GFGetCurrentFrame->CWorld::GetFrame,
-  PTarget->PTargetThing; these were draft-only spellings, not landed ones.
-
-## 0x00F39730
-
-## 0x00F39730 CSurfaceCompositor::StartComposition -- RELOCATION_MATCH (grade 1)
-- What made it match: full port onto shared headers (CRenderStateManager setters, CSystemManager/CDisplayManager/CRenderManager, CSurface, CCountedPointer, C2DExtentsI) with the real callee identities (DetachZBuffer 0xA10E20, AttachTarget(const CSurface&), bool SetRenderTarget(CRenderTarget&), GetCurrentAWindow() const) and 4-bool SetColourWriteEnable(true,true,true,true) (the old 0xF-in-ebx residue was the hand-rolled setter). The 1-bool form was not needed.
-- Headers/flags: no flags. Overlay opt-ins FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_CAPTURE_INLINE (inline Capture) and FABLE_RETAIL_CDISPLAYMANAGER_RENDERTARGET (SetRenderTarget decl + inline IsRendering); plus repo opt-ins SCOPED_PTR, COLOURWRITE4, CSYSTEMMANAGER, CDISPLAYMANAGER, CRENDERMANAGERCORE, CTEXTURE, CPIXELFORMAT, C2DBOXF, CSURFACE, CSURFACE_BITMAP. CSurfaceCompositor and CRenderTarget have no shared header (modeled locally like siblings).
-- Name fixes: 0x00A10E20 landed as CRenderTarget::DetachTarget -> really ?DetachZBuffer@CRenderTarget@@QAEXXZ; 0x00A0AAA0 = ?GetCurrentAWindow@CRenderManagerCore@@QBEABVC2DBoxF@@XZ (old: DoSizeof label, CRenderManager2D::GetViewportBoxFloat in shared header + 6 landed 0x009DB7xx-0x009DC2C0 callers); 0x00A0AA80 = ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z (old: _global::Forward_SetViewport_via0x3a3c_00a0aa80 manifest/labels, CRenderManagerCoreView binding via 0x00B4F510) (see NAME_FIXES.tsv).
-- Repair (verifier findings 1+2): NAME_FIXES.tsv extended only; source unchanged, still RELOCATION_MATCH (also strict headers), test PASS.
-
-## 0x00523CF0
-
-## 0x00523CF0 CThingManager::RuntimeSaveGamePersistentEntitiesInLoadedMaps -- RELOCATION_MATCH (first authoring session)
-- What made it match: (1) ported onto the shared headers (all draft names were wrong; see DOSSIER sec. 3); (2) callee BODY VISIBILITY:
-  the real same-TU bodies of SaveEntitiesBinary 0x00522160 / SaveEntitiesToScript 0x00521EB0 (landed bodies, `#pragma auto_inline(off)`)
-  and of SetGamePersistentSaveData 0x00523860 (auto-inlined in the text path, called in the binary path -- exactly retail), plus
-  STLport's range insert body visible-but-noinline -> neither local vector escapes (hero push_back folds to the direct 0x436AC0
-  call; list walk keeps _M_finish in ebp; names dtor loads start/finish in retail order); (3) named `CCharString noScript("")`;
-  (4) `things.clear()` right after construction: the only spelling found that gives retail's zero-store order start, eos, finish
-  (the clear re-stores _M_finish; ~25 other spellings, QFE compiler, /Oa /GS /Ow all kept start, finish, eos).
-- Headers: hdr/ overlay (README there). Flags: none. Retail TU includes the savers' landed bodies (out of line, real, not stand-ins).
-- Not done here: the hero is typed through CThingPlayerCreature.h retail chain (CTHINGPHYSICAL/GAMEOBJECT/CREATUREBASE/PLAYERCREATURE)
-  so GetPControlledCreature's result converts implicitly to CThing*.
-- Name fix (repair pass): landed 0x0099EF90 (rebuild/src/compiled/00/99/C3DAnimationBlendState_AddCombinationBlend_0099ef90.cpp, leaf
-  ?C3DAnimationBlendState_AddCombinationBlend@@YIX...) is really ?Reserve@CCharString@@QAEXJ@Z (Ego_r 0x00AFA7F0, FableWin 0x018092B5,
-  labels_chunk307_corrections 0x0099EF90 CCharString::Reserve); recorded in NAME_FIXES.tsv for the coordinator to respell at landing.
-
-## 0x00918B90
-
-
-## 0x00918B90 CAIStateGroup_Gaze::Update -- RELOCATION_MATCH (wf20 author, ~75 grades)
-- What made it match: ported onto shared headers (CAIStateGroup_Gaze/CAIStateGroupBase/CThing/CThingAICreature/CDefPointer/C3DVector);
-  (1) GetSubDef<T> real body visible via engine/CDefClassBase_GetSubDef.h + FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE -- fixed the
-  merged Terminate exits and the normal-path release null test; (2) jitter spelled `jitter.Z = 0.0f; jitter *= 0.25f; pos += jitter;`
-  (VC folds Z+=0 into the `mov ecx,[esp+28h] ; mov [esp+28h],ecx` self copy; any `pos = <C3DVector rvalue>` keeps a 12-byte temp,
-  Initialise / fields op+=(C2DVector) lose the Z copy); also fixed the global register residue at GetPos / MoveToPos args.
-  (3) workBuilding local before GetOwner(), named float angle, fps read after GFRandom, `moving` in its own block.
-- Headers (overlay $W/hdr, see hdr/README.md): C3DVector.h FABLE_RETAIL_C3DVECTOR_RANDOMPOINTINSPHERE; CAIStateGroup_Gaze.h
-  FABLE_RETAIL_CAISTATEGROUP_GAZE_UPDATE; CCreatureNavigationDef.h FABLE_RETAIL_CCREATURENAVIGATIONDEF (CDefClassBase base +
-  FableWin StatGetTypeName). Flags: none. CTCExclusiveUse is a local model (no shared header; Ego_r User +0x0C).
-- Identity fixes vs old draft (dossier-proven): SetUser (0x00916640, landed as placeholder CClass_00916640::AssignTarget_00916640 ->
-  NAME_FIXES), GetWorkBuilding (not LookAtThing), GetOwner slot 14, GetFacingVector slot 70, CDefClassBase::GetSubDef on PeekBaseDef,
-  AvoidDynamicObstacles, GetWorld/GetWorldSeed/GetFrame/RotateXY/GetPos, LookAt tolerance 0.0027777f, facing + pos order.
-- Lesson: a Z-only integer self copy amid an XY float update = a 3D `+=` of a vector whose Z was zeroed (Z += 0 folded).
-- Repair (verifier findings, both applied): (1) GetWorkBuilding inline body now cites retail `lea ecx,[eax+170h] ; call 0x00A01B50`
-  at 0x00918CB7-0x00918CBD and the landed rows carrying the same line (GetFreeBench_0090bc60.cpp:46, IsTimeToGoToTavern_0065aa6f.cpp:83);
-  (2) test now models C3DVector::RotateXY (landed 0x00A14040 formula, turns) on the jitter path and asserts the rotated look-at
-  (10.1+0.95106, 19.8+0.30902, 5) plus the unrotated look-at on the plain path. Still RELOCATION_MATCH (also strict headers); vt PASS.
-
-## 0x00972990
-
-## 0x00972990 CAIStateGroup_JackOfBladesStage1::OnActivate -- RELOCATION_MATCH (wf20)
-- What made it match: ported onto shared headers; first search = index local + named filter + C2DBoxI temp; light loop `count = size(); if (count > 0) for (...)`;
-  shield search ONE call over temporaries `GetPFirstThingInRoughArea(C2DBoxI(GetCreature().GetPos().ToC2DCoordI(), 50), CThingFilter_HasDefGlobalIndex(index), &shield)`;
-  and the decisive fact: GetPFirstThingInRoughArea<CThingFilter_HasDefGlobalIndex,CThing> (0x007FCEF0) body VISIBLE in the TU as a noinline template
-  (probe 2 proved it; then the real algorithm via overlay opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTROUGH_BODY). Without it: shield loaded before the IP base ctor and boss GetTC regs differ (7 hunks).
-- Headers: overlay CAIStateGroup_JackOfBladesStage1.h (_JACK_STAGE1_ONACTIVATE), CTCBoss.h (_CTCBOSS_SETPHASESTARTPOS inline), CThingSearchTools.h (_FIRSTROUGH decl, _FIRSTROUGH_BODY). No flags/pragmas.
-- Names: draft's ArenaCentrePos -> CTCBoss::PhaseStartPos via SetPhaseStartPos; GetPWorld -> GetWorld; GetHitLocation -> CTCHitLocations::GetPHitLocationWithDefName (0x00815820; Ego_r.pdb 0x0080E4C0 + FableWin.pdb 0x024E6630 ?GetPHitLocationWithDefName@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVCCharString@@@Z; overlay opt-in FABLE_RETAIL_CTCHITLOCATIONS_WITHDEFNAME). The landed descriptive GetPHitLocationFromName is wrong: NAME_FIXES.tsv asks the coordinator to respell the 0x00815820 row and its callers. No made-up names remain in this row.
-
-- Repair (verifier findings): callee respelled to the PDB name GetPHitLocationWithDefName (+ NAME_FIXES.tsv); dead probe overlay engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_SETPITEM) removed from hdr/ (moved to old_overlay/, not part of the hand-back). Regraded RELOCATION_MATCH, also with LANDVERIFY_STRICT_HEADERS=1; test PASS.
-
-## 0x006C8E90
-
-## 0x006C8E90 CThingFilter_IsEligibleWitness::operator()(const CThing&) const -- DIFFER(804v804), 6 hunks (wf20 author, first attempt)
-Best source: differ/006c8e90.cpp (= v25 + MODE_SLEEP_BED naming). Ported onto shared headers: CThing.h (GETTC_EXPANDED),
-CVectorMap.h, CTCPerceiveThing.h (overlay opt-in FABLE_RETAIL_CTCPERCEIVETHING_THINGFLAGS, see hdr/README.md), CTCEnemy.h
-(_QUERIES), CTCCreatureModeManager.h, CTCCreatureNavigation.h (_LINEOFSIGHT), COpinionDeed.h, CThingFilter_HasTC.h (_OUTOFLINE),
-CThingFilter_IsNot.h, NCreatureMode.h. Local models only for classes with no header (IsEligibleWitness, IsDeedTypeEnabled,
-IsPerceivingThingAndIsThingPerceived, IsAlliedWithFaction, IsEnemyOfFaction). IS_THING_ALIVE declared as a template (no body).
-What fixed the old draft's ebp/edi swap + 8-byte frame: const CThing& signature + shared headers + FABLE_FORCEINLINE sub-filter
-operator()s (plain inline = called out of line, 594 bytes) + IsPerceiving result written `bool result=false; if (perceived==X)
-result = (hear&&heard)||los||smelt; return result;` (gives the `xor bl,bl` before GetPerceivedThing) + `if (GetType()==1) {...}
-return false;` wrap (moves the type exit to the function end) + one `result` var through faction/sees/!sees (`sete al`).
-Residue (only block placement; every instruction/register right):
- (a) retail places the shared esi-level `xor al,al; return` (mode-13/HasOpinions/DeedType/IsNot fails) after the IsEnemy arm
-     (0x6C8F67, falling into the `!result` exit 0x6C8F69); ours keeps it in line after the mode test.
- (b) unknown-threat tail: retail tail-duplicates the `return true` epilogue (0x6C90C5) and the final `xor al,al` falls into the
-     shared `return result` exit; ours has `mov al,1` falling into the shared exit and a duplicated false epilogue at the end.
-Ideas tried (ATTEMPTS.log has all 80 variants): early-return vs positive nests of the filter chain (worse: esi push moves up);
-|| groupings of mode/filters (moves the block to the IsNot site or the function end, never after the enemy arm); mode check as
-nested if / HasTC+GetTC(id) const / in the type-wrap condition; faction as if/else, early return, `!Reverse ? A : E` (register
-swap or no change); sub-filter bodies as `&&` / result var (worse); tail: result=false/return result, nav result as bool expr
-(adds 8-byte frame), `return result` for successes (frame), separate `sees`/`unseen` vars (v73: FIXES (b) but then the
-!unseen exit is folded to a constant in-line `xor al,al` block instead of `je` to the shared exit); pragma optimize s/t/y-off.
-Best next idea: combine v73's tail (separate `sees` var, which fixes (b)) with a spelling that keeps the `!unseen` exit merged
-with `return sees` (same exit block) -- e.g. a single return statement for both; then attack (a) (the shared false block's
-placement after the enemy arm suggests the early-out returns share one exit created at/after the faction code).
-Follow-up (v83-v85): every spelling that merges the `!UnknownThreatSearch` and `!unseen` exits into one `return <var>` exit
-(`if (!UTS || !(sees = !sees)) return sees;`, nested `if (UTS) { sees = !sees; if (sees) {...} } return sees;`) brings back
-residue (b); keeping them separate (v73) fixes (b) but in-lines the !unseen exit. So (b) is tied to how the `!unseen` exit
-joins the shared exit; retail may build the tail as a value (e.g. a bool expression / inline whose result is returned) rather
-than `return true` statements -- untested next idea.
-
-## 0x006C8E90 -- RELOCATION_MATCH (attempt 2), source $W/006c8e90.cpp (= final2.cpp), test 006c8e90_test.cpp (vt PASS), strict-headers regrade RELOCATION_MATCH
-What made it match (block placement only; no flag or header change beyond attempt 1's overlay):
- 1. mode / HasOpinions / DeedTypeEnabled / IsNot as ONE && expression into `result` (c1.cpp): moves the shared esi-level false
-    block to just after the IsEnemy arm.
- 2. the perceiving tail (from `bool perceiving`) as a single-exit block: `bool ret; do { ... {ret = X; break;} ... } while (0);
-    return ret;` (= the shape of an inlined helper): esi-level false now falls into its own `return result` exit and the final
-    false falls into the ebx-level exit (dw3.cpp, 2 hunks).
- 3. the unknown-threat awareness test (aware-of-target || in sight radius + nav LOS) as a SECOND nested single-exit block
-    (`bool aware; do {...} while (0); ret = aware;`): puts the tail-duplicated `return true` right after the awareness test
-    (nn1.cpp -> RELOCATION_MATCH). Probes: the toy files in $W/probe showed VC7.1 places a merged `return true` after its first
-    predecessor only when it is a real return / inline-exit join, and that an inlined helper == do/while(0)+break here.
- Natural if/else-assignment spellings of the same logic (nat1.cpp) add an 8-byte frame; real `return` statements anywhere in
- the tail bring back the old residue (dy*/e*x variants). No helper names were invented (do/while blocks only, locals `ret`,
- `aware`). Headers: overlay engine/CTCPerceiveThing.h FABLE_RETAIL_CTCPERCEIVETHING_THINGFLAGS (attempt 1, hdr/README.md).
-
-## 0x006C8E90 -- repair (verifier findings), still RELOCATION_MATCH (also strict headers), test vt PASS
-- Shape comment corrected: only IsPerceivingThingAndIsThingPerceived / IsEnemyOfFaction operator() are FableWin-only; IsAlliedWithFaction
-  has the landed out-of-line row 0x006C8C50 (retail inlines it here anyway); the inline IsAllied body now cites that row (check 5).
-- Name conflict handed back in NAME_FIXES.tsv: landed 0x006C8C50 spells `long m_faction` / `CTCEnemy::IsAlliedWithFaction(long)` via a
-  local CTCEnemy model; PDB (struct_layouts_egor `CFaction* PFaction`, ctor `@@QAE@PBVCFaction@@@Z`) and CTCEnemy.h / mangled
-  `?IsAlliedWithFaction@CTCEnemy@@QBE_NPBVCFaction@@@Z` say `const CFaction* PFaction` / `IsAlliedWithFaction(const CFaction*) const`.
-  This row uses the PDB spelling; the coordinator should respell 0x006C8C50 at landing.
-
-## 0x0049BE90
-
-
-## 0x0049BE90 CParticleEnvironmentInteraction::IsParticleCollidingAt -- RELOCATION_MATCH (grade 9 of this session, strict headers OK)
-- Made it match: (1) ported onto shared headers (PWorld CWorld* over NParticleEngine::CAEnvironmentInteraction, const virtual UBE leaf,
-  PeekWorldMap() x3, vector<const CThing*> + CThingFilter_HasPhysicsMesh with FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY,
-  C2DBoxI(pos.ToC2DCoordI(), 2) via FABLE_RETAIL_C2DBOXI_RADIUS_INITIALIZERS) -> 830v808; (2) ground hitPos stored field by field ->
-  804v808; (3) the two ground cases as separate ifs each with its own `hitNormal = ...GetGroundFaceNormalAt(hitPos); return true;`
-  (VC tail-merges; the doubled hitNormal use moves hitPos/hitNormal into edi/ebp) -> MATCH. Mesh hit test as nested ifs (no named bool).
-- Opt-ins (all in repo headers, no overlay): CCHARSTRING, CCLASS, DEF_CLASS_BASE, C3DVECTOR, CTCBASE, CTHING, CTCPHYSICSBASE,
-  CMAINGAMECOMPONENT(+_GETWORLD,_WORLD), CWORLD, C2DBOXI_RADIUS_INITIALIZERS, CTHINGSEARCHTOOLS(+_ROUGHAREABODY), CTHING_STATTYPEFLAGS,
-  CTCMAPWHO(+_SEARCHID), CPHYSICSMESHOBJECT, CWORLDMAP(+_GROUNDFACENORMAL). Flags: none. Local class CThingFilter_HasPhysicsMesh (no header).
-- Repair (verifier findings, all applied; source unchanged, still RELOCATION_MATCH incl. strict headers): test now lists the nearer
-  hit first with a farther one after it, slopes the ground in X (start 2.5 / end 5.0, asserts hitPos.Z == start's 2.5), and adds an
-  ok=false thing with the smallest distance. Mutants m/m2/m3 (keep-last, endGroundZ, ok-test removed) all FAIL now.
-
-## 0x00839100 (not landed)
+## 0x00839100
 
 ## 0x00839100 CThingGameObject::GetWeaponTrailGraphicIndex -- RELOCATION_MATCH (also LANDVERIFY_STRICT_HEADERS=1)
 - Matched by: porting onto shared headers (CThing GETTC_EXPANDED, CWeaponDef, CTCCarryable/TrapBase/Berserk/Combat/ObjectAugmentations,
@@ -251,6 +109,18 @@ Tried this pass without effect: start as first-branch out-count (frame +4); cons
 3. NAME_FIXES.tsv: 0x00AD92E0 InsertBlock signature is AAEXKAAK (unsigned long&) per Ego_r + FableWin; the landed row spells `unsigned long*`.
 4. Source comments now name the retail bytes the `space < 0` device reproduces: top size() inline at 0x00AD9F42-0x00AD9F57, out-of-line
    `call 0x00ADB570` at 0x00ADA15A / 0x00ADA163 / 0x00ADA172.
+
+## Repair 3 (verifier findings): RELOCATION_MATCH kept (normal and LANDVERIFY_STRICT_HEADERS=1), source 00ad9f10_match.cpp (= R3.cpp), vt PASS, addmatch redone (/Gr)
+1. Overlay pruned to the current repo headers + only the opt-ins the source defines: removed FABLE_RETAIL_CVERTEXGROUPBLOCK_HASGROUP_DECL,
+   FABLE_RETAIL_STLP_SORT2_BODY (+_NOINLINE), FABLE_RETAIL_STLP_LIST_ASSIGN_BODY, FABLE_RETAIL_STLP_LIST_POPBACK_NOINLINE (ASSIGN_POPBACK_DECL now
+   declares pop_back plainly). Kept: LIST_ASSIGN_POPBACK_DECL, TREE_CONSTFIND_NOINLINE, CVERTEXGROUPBLOCK_REMOVELAST / _ADDGROUP. 0 removed repo lines.
+2. 0x00ADB570 moved from LABELS.tsv to NAME_FIXES.tsv: it IS landed (CGuiControlTreePane_SortTreeRecursively_00adb570.cpp, `int __fastcall
+   SortTreeRecursively(Tree*)`), wrong; correct symbol ?size@?$list@VCVertexGroupBlock...@@QBEIXZ (FableWin.pdb + xref: only AddBlocks' 3 call sites;
+   SortTreeRecursively is 189 bytes in FableWin, takes a list&). LABELS.tsv now has no rows.
+3. NAME_FIXES.tsv: 0x00A96DA0 = ??1CVertexGroupBlock@@QAE@XZ (Ego_r 0x00BD5B30, FableWin 0x032FF390; called at 0x00ADA1A3 after push_back 0x00ADA19A);
+   landed row still spells CEntryListBuffer_00a96da0::~CEntryListBuffer_00a96da0.
+4. Source comment on HasMoreBlocks: Ego_r keeps ?HasMoreBlocks@CVertexGroupBlockOptimiser@@ABE_NXZ out of line (0x00C5BE00) but TLC has no copy; AddBlocks
+   expands it at 0x00AD9F66-0x00AD9F99 (GetBlockCount imul 0x00AD9F66-0x00AD9F7D, remaining-byte loop 0x00AD9F90-0x00AD9F99).
 
 ## 0x008C12D0 (not landed)
 
