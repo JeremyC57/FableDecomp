@@ -38,6 +38,19 @@ public:
  CEngineInternalPrimitiveBase& GetOutputPrimitive(){return static_cast<CEngineInternalPrimitiveBase&>(OutputPrimitive.GetData());}
  void UpdateOutputPrimitive(float);
 #endif
+#ifdef FABLE_RETAIL_CENGINEINTERNALATTACHEDPRIMITIVE_TRANSFORMS
+ // Chunk 2006 (row 0x00B399A0 UpdateOutputPrimitive): Ego_r.pdb / FableWin.pdb members of the same TU (retail order 0x00B38E30
+ // RedoMatrixConversion, 0x00B39080 GetParentTransformAnimatedMesh, 0x00B393D0 GetChildInverseTransformStaticMesh, 0x00B398E0
+ // GetParentTransform, 0x00B39900 GetChildInverseTransform). Declarations only: no layout change.
+ bool GetParentTransform(CMatrix3x4&,float);                       // 0x00B398E0
+ bool GetParentTransformAnimatedMesh(CMatrix3x4&,float);           // 0x00B39080
+ bool GetChildInverseTransform();                                  // 0x00B39900
+ bool GetChildInverseTransformStaticMesh(CMatrix3x4&);             // 0x00B393D0
+#ifndef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_UPDATE
+ CEngineInternalPrimitiveBase& GetOutputPrimitive(){return static_cast<CEngineInternalPrimitiveBase&>(OutputPrimitive.GetData());}
+ void UpdateOutputPrimitive(float);
+#endif
+#endif
  CMatrix3x4 PrimitiveTransform;
  EParentType ParentType;
  EChildType ChildType;

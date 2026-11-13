@@ -74,6 +74,11 @@ public:CParticleEmitter();virtual ~CParticleEmitter();
 #endif
  // Chunk 742 (0x00AEFAA0): FableWin.pdb / Ego_r.pdb ?ReadBinary@CParticleEmitter@NParticleEngine@@QAEXAAVCDataInputStream@@@Z.
  void ReadBinary(CDataInputStream&);
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_INTERPOLATETO
+ // Opt-in (chunk 2001, row 0x00AED600): Ego_r.pdb / FableWin.pdb ?InterpolateTo@CParticleEmitter@NParticleEngine@@QAEXABV12@M@Z
+ // (public non-virtual; called by CParticleEmitterManager::CreateInterpolatedEmitter 0x00AEB674). Declaration only.
+ void InterpolateTo(const CParticleEmitter& other, float t);
+#endif
 protected:
  std::vector<CCountedPointer<CParticleSystem> > ParticleSystems;
  unsigned char UpdateParameters[36]; // Original NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>, unaccessed composite.

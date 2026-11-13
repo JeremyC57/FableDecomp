@@ -453,6 +453,12 @@ public:
 #endif
     C3DVector& AccurateNormalise();
     void Rotate(const C3DVector&,float);
+#ifdef FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES
+    // Retail opt-in (w22 agent2022, row 0x007D3820 CTCTavernGameCoinGolf::ProcessInput, whose TU also holds GetCamera 0x007D3560):
+    // Ego_r.pdb / FableWin.pdb ?Rotate@C3DVector@@QAEXMM@Z, out of line in retail at 0x00A14260 (the bound spelling; GetCamera calls
+    // it twice). Declaration only.
+    void Rotate(float angleXY,float angleYZ);                            // 0x00A14260
+#endif
 };
 #ifdef FABLE_RETAIL_C3DVECTOR_PACKED
 #pragma pack(pop)

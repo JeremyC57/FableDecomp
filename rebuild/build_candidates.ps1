@@ -395326,6 +395326,20 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT59'
         PassPattern = '00626750_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00af4900'
+        Module = 'NParticleEngine::CParticleSystem'
+        Source = '00/af/NParticleEngineCParticleSystem_DatabaseSerialise_00af4900.cpp'
+        TestSource = '00/af/NParticleEngineCParticleSystem_DatabaseSerialise_00af4900_test.cpp'
+        PassPattern = '00af4900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00550dc0'
+        Module = 'NUISystem::CTable'
+        Source = '00/55/NUISystemCTable_Draw_00550dc0.cpp'
+        TestSource = '00/55/NUISystemCTable_Draw_00550dc0_test.cpp'
+        PassPattern = '00550dc0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

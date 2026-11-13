@@ -98,6 +98,15 @@ public:
 #else
     const C2DVector& operator*=(float scalar) { X*=scalar; Y*=scalar; return *this; }
 #endif
+#ifdef FABLE_RETAIL_C2DVECTOR_ROTATE
+    // Retail opt-in (w22 agent2022, row 0x007D3820 CTCTavernGameCoinGolf::ProcessInput): Ego_r.pdb / FableWin.pdb
+    // ?Rotate@C2DVector@@QAEXM@Z (out of line in retail at 0x00A141D0, the bound spelling; `lea ecx,[coin+0Ch] ; push angle ; call` at
+    // 0x007D3B07), ?AccurateNormalise@C2DVector@@QAEAAV1@XZ (out of line at 0x00A14510, called at 0x007D3C0C) and the inline
+    // ??ZC2DVector@@QAEABV0@ABV0@@Z (subtract in place: 0x007D3B7B `fld [x] ; fsub [m.X] ; fstp [x]` then Y).
+    void Rotate(float angle);                                                // 0x00A141D0
+    C2DVector& AccurateNormalise();                                          // 0x00A14510
+    const C2DVector& operator-=(const C2DVector& vector) { X-=vector.X; Y-=vector.Y; return *this; }
+#endif
 #ifdef FABLE_RETAIL_C2DVECTOR_ISNONZERO_DIRECT
     bool IsNonZero() const { return X*X+Y*Y>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO; }
 #else

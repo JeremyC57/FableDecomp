@@ -139,6 +139,14 @@ public:
     void Insert(const K& key,const V& value) { this->push_back(std::make_pair(key,value)); Dirty=true; }
 #endif
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_SORT_INLINE
+    // Retail opt-in (chunk 2005, row 0x00A12EE0): Ego_r.pdb ?Sort@?$CVectorMap@..@@QAEXXZ as the inline body (std::sort with the
+    // stored Compare, then Dirty cleared), expanded at 0x00A132B9..0x00A13334 (no Dirty test ahead of it).
+#ifdef FABLE_RETAIL_CVECTORMAP_SORT_INLINE_FORCE
+    FABLE_FORCEINLINE
+#endif
+    void Sort() { std::sort(this->begin(),this->end(),Compare); Dirty=false; }
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_SORT
     // Retail opt-in (row 0x004EE23F CTCBase::RegisterTCs): Ego_r.pdb ?Sort@?$CVectorMap@..@@QAEXXZ (the CCharString /
     // CTCBase::CRegisteredTCInfo instance at Ego_r 0x00507625; 58 FableWin.pdb instances) and FableWin.pdb ?Update@?$CVectorMap@..@@QAEXXZ.

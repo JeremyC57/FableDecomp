@@ -14,8 +14,14 @@
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM_PEEKEMITTERTRANSFORM
 #include "engine/CMatrix3x4.h"
 #endif
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_SCALE
+#include "engine/C3DVector.h"
+#endif
 class CIEngine;
 namespace NParticleEngine {
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_ADDCOMPONENT
+class CPSCBase;
+#endif
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM
 class CParticle;
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM_UPDATE
@@ -58,6 +64,18 @@ public:CParticleSystem();virtual ~CParticleSystem();
  void ReadBinary(CDataInputStream&);
  bool IsEnabled() const { return Enabled; }
 #endif
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_ADDCOMPONENT
+ // Opt-in (chunk 2001, row 0x00AF4900 DatabaseSerialise): Ego_r.pdb / FableWin.pdb
+ // ?AddComponent@CParticleSystem@NParticleEngine@@QAEAAVCPSCBase@2@ABVCCharString@@ABK_N2@Z (0x00AF4530; (type name, name CRC, enabled,
+ // visible), returns the new component). Declaration only.
+ CPSCBase& AddComponent(const CCharString& type, const unsigned long& nameCRC, bool enabled, bool visible);   // 0x00AF4530
+#endif
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_INTERPOLATETO
+ // Opt-in (chunk 2001, row 0x00AED600 CParticleEmitter::InterpolateTo): Ego_r.pdb / FableWin.pdb
+ // ?InterpolateTo@CParticleSystem@NParticleEngine@@QAEXABV12@M@Z (public non-virtual, out of line at 0x00AF4100; its only caller is
+ // 0x00AED623). Declaration only: no layout change.
+ void InterpolateTo(const CParticleSystem& other, float t);
+#endif
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM_UPDATE
  // PDB accessors, donor02F3F4C0 and native AF5330/AF5380/AF22C0.
  const CParticleEmitter& GetParentEmitter()const{return *PParentEmitter;}
@@ -96,7 +114,8 @@ protected:
  long NoActiveParticles,NoActiveDecals;
  bool Initialised:1,Enabled:1,Dead:1,NormalisedTimeEnabled:1,UseAllAttractors:1,Visible:1,StayWithEmitter:1,ScaleParticles:1;
  float GlobalAlpha,FadeAlpha,NormalisedTime;
-#ifdef FABLE_RETAIL_CPARTICLESYSTEM_UPDATE
+// FABLE_RETAIL_CPARTICLESYSTEM_SCALE (chunk 2001, row 0x00AF4900 DatabaseSerialise: ScaleX/Y/Z at +0x60/+0x64/+0x68) types the member alone.
+#if defined(FABLE_RETAIL_CPARTICLESYSTEM_UPDATE) || defined(FABLE_RETAIL_CPARTICLESYSTEM_SCALE)
  C3DVector Scale;
 #else
  unsigned char Scale[12];

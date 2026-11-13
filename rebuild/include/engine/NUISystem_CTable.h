@@ -32,6 +32,12 @@ protected:
     virtual void ConstructVerticalLine(CCountedPointer<CComponent> sprite, CCountedPointer<CComponent> separation,
                                        C2DVector& position, unsigned long count, unsigned long separationOffset);     // 144  0x00551BC0
 #endif
+#ifdef FABLE_RETAIL_CTABLE_DRAW
+    // Retail opt-in (chunk 2006, row 0x00550DC0): the Draw override, CTable vtable 0x0124A224 slot 2 (the CUIInterface slot of the
+    // primary vtable). Ego_r.pdb / FableWin.pdb ?Draw@CTable@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z.
+public:
+    virtual void Draw(CIEngine&, CEnginePrimitiveHandle*, long, long*, CComponent*);          // 0x00550DC0
+#endif
 protected:
     std::map<ETableSprites, CCountedPointer<CComponent> > Sprites;  // +0x15c
     std::vector<unsigned long>* PHorizontalSeparations;             // +0x168

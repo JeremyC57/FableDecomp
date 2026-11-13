@@ -24,9 +24,19 @@ public:
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
     // ??0CRGBFloatColour@@QAE@ABVCRGBColour@@@Z (inline; chunk 723c, RenderSingleSprite 0x00BC04F0): each byte channel times
     // 1/255 (the float pool 0x01231724), R, G, B, A in member order.
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_INITIALISE_CTOR
+    // Retail opt-in (chunk 2006, row 0x00550DC0 NUISystem::CTable::Draw): the same constructor written through Initialise, so the
+    // four channel conversions are the call's arguments, evaluated right to left (A, B, G, R: 0x00550EA8..0x00550F53).
+    void Initialise(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBFloatColour(const CRGBColour& colour)
+    {
+        Initialise(colour.R * (1.0f / 255.0f), colour.G * (1.0f / 255.0f), colour.B * (1.0f / 255.0f), colour.A * (1.0f / 255.0f));
+    }
+#else
     FABLE_FORCEINLINE CRGBFloatColour(const CRGBColour& colour)
         : R(colour.R * (1.0f / 255.0f)), G(colour.G * (1.0f / 255.0f)), B(colour.B * (1.0f / 255.0f)), A(colour.A * (1.0f / 255.0f)) { }
     void Initialise(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }
+#endif
     CRGBFloatColour& operator*=(const CRGBFloatColour& other) { R *= other.R; G *= other.G; B *= other.B; A *= other.A; return *this; }
 #ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_SCALE
     // Opt-in (chunk 2020, row 0x006414A0 CTCLight::DrawLight): FableWin.pdb ??XCRGBFloatColour@@QAEAAV0@M@Z (operator*=(float)), inline
