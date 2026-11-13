@@ -3,6 +3,21 @@
 #include "engine/C3DVector.h"
 #include "engine/CIntelligentPointer.h"
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CHITPARAMETERS_HIT_CTOR_BODY
+// The visible constructor body needs the real member types it initialises (see the opt-in below).
+#ifndef FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS
+#define FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS
+#endif
+#ifndef FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
+#define FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
+#endif
+#ifndef FABLE_RETAIL_CHITPARAMETERS_AUGMENTATIONS
+#define FABLE_RETAIL_CHITPARAMETERS_AUGMENTATIONS
+#endif
+#endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_HIT_CTOR
+#include "engine/EDamageAttribute.h"
+#endif
 namespace NHitLocations { class CHitLocation; }
 class CMaterialDef;class CThing;
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
@@ -18,6 +33,13 @@ class CArmourDef;class CThingGameObject;
 #include "engine/EObjectAugmentationType.h"
 #include "stlport/fable_containers.h"
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS
+// Retail opt-in (row 0x00854DD0, for the visible body of the constructor 0x00789238): Position / Direction as the real C3DVector
+// members (Ego_r.pdb CHitParameters: C3DVector Position +2, Direction +0x0E; landed row CHitParameters_CHitParameters_00789238.cpp
+// models them the same way). They sit at unaligned offsets, so the record is byte-packed with the explicit three pad bytes
+// before ShotBuildupTime (+0x2C); every other offset and sizeof 0x60 are unchanged (CheckRetailVectorLayout below).
+#pragma pack(push, 1)
+#endif
 class CHitParameters {
 #ifdef FABLE_ONHIT_TEST_ACCESS
     friend class COnHitFixture;
@@ -25,12 +47,20 @@ class CHitParameters {
 
 private:
     bool Localised,Directional;
+#ifdef FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS
+    C3DVector Position;         // +0x02
+    C3DVector Direction;        // +0x0E
+#else
     unsigned char Position[12]; // Original C3DVector, deliberately unaligned at+2.
     unsigned char Direction[12]; // Original C3DVector, deliberately unaligned at+e.
+#endif
     bool KnockDown,Decapitate,Blockable,Flourish,EpicSpell,BlockCounter;
     bool PlayHitResponse,PlayHitResponseOverrideSet,MoveBack;
     bool CreateParticleEffectOnHit,CreateDustParticleEffectOnHit,GuaranteeHit;
     bool Blocked,HitNegated,CauseRecoil;
+#ifdef FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS
+    unsigned char _pad29[3];    // natural alignment of ShotBuildupTime, explicit under pack(1)
+#endif
     float ShotBuildupTime;
 #ifdef FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
     std::map<EDamageAttribute,float> DamageMap;
@@ -63,8 +93,25 @@ void SetAsModifiedByArmour(const CThing&,CDefPointer<const CArmourDef>&);
 float GetDamageToThing(const CThingGameObject&)const;
 bool IsLightningStrike()const;bool IsDivineWrathStrike()const;bool IsUnholyPowerStrike()const;
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS
+    const C3DVector& GetHitPosition() const { return Position; }
+    const C3DVector& GetHitDirection() const { return Direction; }
+    static void CheckRetailVectorLayout() {
+        FABLE_STATIC_ASSERT(offsetof(CHitParameters,Position)==0x02);
+        FABLE_STATIC_ASSERT(offsetof(CHitParameters,Direction)==0x0e);
+        FABLE_STATIC_ASSERT(offsetof(CHitParameters,KnockDown)==0x1a);
+        FABLE_STATIC_ASSERT(offsetof(CHitParameters,ShotBuildupTime)==0x2c);
+        FABLE_STATIC_ASSERT(offsetof(CHitParameters,DamageMap)==0x30);
+        FABLE_STATIC_ASSERT(offsetof(CHitParameters,Augmentations)==0x3c);
+        FABLE_STATIC_ASSERT(offsetof(CHitParameters,PHitLocation)==0x48);
+        FABLE_STATIC_ASSERT(offsetof(CHitParameters,PThingHitting)==0x50);
+        FABLE_STATIC_ASSERT(offsetof(CHitParameters,PWeapon)==0x58);
+        FABLE_STATIC_ASSERT(sizeof(CHitParameters)==0x60);
+    }
+#else
     const C3DVector& GetHitPosition() const { return *reinterpret_cast<const C3DVector*>(Position); }
     const C3DVector& GetHitDirection() const { return *reinterpret_cast<const C3DVector*>(Direction); }
+#endif
     CThing* GetPThingHitting() const { return PThingHitting.Get(); }
     CThing* GetPWeapon() const { return PWeapon.Get(); }
     NHitLocations::CHitLocation* GetPHitLocation() const { return PHitLocation; }
@@ -105,6 +152,52 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
     ~CHitParameters();                                                   // 0x00789358
     void SetThingHitting(CThing& thing);                                 // 0x008685F0
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_HIT_CTOR
+    // Retail opt-in (wf17, row 0x00854DD0 CCreatureAction_SpiritAttack::PerformAction): Ego_r.pdb
+    // ??0CHitParameters@@QAE@PAVCHitLocation@NHitLocations@@PAVCThing@@1ABVC3DVector@@2_N333@Z (0x00789238, ret 24h) and
+    // ?AddDamageWithAttribute@CHitParameters@@QAEXW4EDamageAttribute@@M@Z (0x00868CA0), both out of line in retail (landed rows).
+    // Declarations only: no layout change.
+#ifdef FABLE_RETAIL_CHITPARAMETERS_HIT_CTOR_BODY
+    // Retail opt-in (row 0x00854DD0 CCreatureAction_SpiritAttack::PerformAction): the REAL body of the nine-argument constructor
+    // 0x00789238, spelled as the landed row CHitParameters_CHitParameters_00789238.cpp spells it (every member an initialiser in
+    // declaration order, Position(position) / Direction(direction) included; DamageMap, Augmentations and PHitMaterialDef are
+    // default-constructed), defined in the class and kept out of line. Retail calls it out of line, but a caller's TU that sees
+    // the body lets VC7.1 use the callee's mod/ref: the two `const C3DVector&` arguments are only read, so the caller's vectors
+    // do not count as escaped (retail 0x00854F14..0x00854FEF builds both X first and keeps the unscaled X/Y on the x87 stack).
+    // Implies FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS + _DAMAGEMAP + _AUGMENTATIONS (the real member types).
+    __declspec(noinline) CHitParameters(NHitLocations::CHitLocation* hit_location, CThing* thing_hitting, CThing* weapon, const C3DVector& position,
+                   const C3DVector& direction, bool knock_down, bool blockable, bool flourish, bool block_counter)
+        : Localised(true)
+        , Directional(true)
+        , Position(position)
+        , Direction(direction)
+        , KnockDown(knock_down)
+        , Decapitate(false)
+        , Blockable(blockable)
+        , Flourish(flourish)
+        , EpicSpell(false)
+        , BlockCounter(block_counter)
+        , PlayHitResponse(true)
+        , PlayHitResponseOverrideSet(false)
+        , MoveBack(true)
+        , CreateParticleEffectOnHit(true)
+        , CreateDustParticleEffectOnHit(true)
+        , GuaranteeHit(false)
+        , Blocked(false)
+        , HitNegated(false)
+        , CauseRecoil(false)
+        , ShotBuildupTime(0.0f)
+        , PHitLocation(hit_location)
+        , PThingHitting(thing_hitting)
+        , PWeapon(weapon)
+    {
+    }
+#else
+    CHitParameters(NHitLocations::CHitLocation* hit_location, CThing* thing_hitting, CThing* weapon, const C3DVector& position,
+                   const C3DVector& direction, bool knock_down, bool blockable, bool flourish, bool block_counter); // 0x00789238
+#endif
+    void AddDamageWithAttribute(EDamageAttribute attribute, float damage);   // 0x00868CA0
+#endif
 #ifdef FABLE_RETAIL_CHITPARAMETERS_SETWEAPON
     // Retail opt-in (row 0x00868CE0): Ego_r.pdb ?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z, out of line in retail (callers
     // 0x00838BED / 0x00838FB2). Declaration only: no layout change.
@@ -119,6 +212,9 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
     bool IsDrainStrike() const;
     bool IsPlayGetHitResponse(const CThing*) const;
 };
+#ifdef FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS
+#pragma pack(pop)
+#endif
 FABLE_STATIC_ASSERT(sizeof(CHitParameters)==0x60);
 
 #endif

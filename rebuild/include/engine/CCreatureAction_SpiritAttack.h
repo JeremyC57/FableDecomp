@@ -7,6 +7,10 @@
 #include "engine/CIntelligentPointer.h"
 class CThing;
 class CCreatureAction_SpiritAttack : public CCreatureActionBase {
+#ifdef FABLE_RETAIL_CCREATUREACTION_SPIRITATTACK_PERFORMACTION
+public:                                           // Opt-in (row 0x00854DD0): Ego_r.pdb + FableWin.pdb ?PerformAction@CCreatureAction_SpiritAttack@@UAEXXZ
+    virtual void PerformAction();                 // 0x00854DD0 (vtable 0x01275D74 slot 3)
+#endif
 private:                                          // Ego_r.pdb: ?CreateAttackEffect@...@@AAEXXZ (private)
     void CreateAttackEffect();                    // 0x008548B0
     CIntelligentPointer<CThing> PTarget;          // +0xA8

@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00854dd0   WARN RELOC_NAME: ?GetMeleeTargetRange@CTCCoopSpirit@@QBEMXZ -> 00670000 labelled 'CTCPhysicsBase::GetAirResistance'
+00854dd0   WARN RELOC_NAME: ?AddScore@CTCCoopSpirit@@QAEXJ@Z -> 0066fb10 labelled 'CTCCoopSpirit::AddExperience'
+00854dd0   RELOCATION_MATCH PASS   CCreatureAction_SpiritAttack::PerformAction
+
+WINS: 1
+  00854dd0 RELOCATION_MATCH CCreatureAction_SpiritAttack::?PerformAction@CCreatureAction_SpiritAttack@@UAEXXZ

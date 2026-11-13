@@ -1,0 +1,10 @@
+## 0x00854DD0
+
+- 0x00854DD0: a C3DVector bound to a non-inline const-ref parameter anywhere in the function builds `a - b` as Z,Y,X stack temporaries; one whose address is never taken builds X,Y,Z with X/Y on the x87 stack and Z homed at its own +8 (`fst [z] ; fmul [z]`) -- check address-taking before any operator-/ctor-order work.
+- 0x00854DD0: `C3DVector unit = offset * factor;` (operator*(float) from a non-address-taken vector) gives `fstp f ; fxch ; fmul f ; fstp X ; fmul f ; fstp Y ; fld Z ; fmul f ; fstp Z` with no copy; Normalise() in place gives the same bytes only while the vector stays non-address-taken.
+- 0x00854DD0: VC7.1 frame packing overlays two 12-byte locals only when their lifetimes do not overlap in the final code; a by-value struct copy (implicit or user copy ctor) into a forceinline parameter is never elided, even when the source is dead.
+- 0x00854DD0: /Oa on a GetTC-heavy row wrecks the register allocation (54 hunks) and does not change eager stores into an address-taken vector.
+- A local vector passed by const reference to an out-of-line constructor is built Z,Y,X as an escaped object unless the callee's body is visible: define the callee's REAL body in the class header (noinline opt-in) and VC7.1's mod/ref lets the caller build X first, keep X/Y on the x87 stack and home only Z in the object (0x00854DD0: CHitParameters 9-arg ctor 0x00789238; GetPos 0x004C73D0 + IsInRange 0x006A4DF0 visible flip `fld range ; fadd [radius]`).
+- A visible out-of-line callee body in a row TU must be provably retail's: grade the SAME TU against the callee's own catalog oracle (`fg.py <callee addr> '<callee leaf>' row.cpp`; q.py reads rebuild/oracles first) -- 0x00854DD0's IsInRange / GetPos copies grade MATCH that way; a body that calls a noinline helper retail does not call is a stand-in even when the row matches.
+- A header ctor body that must initialise unaligned C3DVector members needs the real member types (pack(1) record + explicit pad, opt-in), not byte arrays copied by cast in the body: the initialiser order is part of the body.
+

@@ -1,0 +1,1 @@
+00670000	?GetMeleeTargetRange@CTCCoopSpirit@@QBEMXZ	body mov eax,[ecx+28h]; fld [eax+38h]; ret = PCoopSpiritDef->MeleeTargetRange (CCoopSpiritDef +0x38, struct_layouts_egor); Ego_r.pdb egor_pdb_names 0x00677730 + FableWin.pdb _fablewin_api carry the symbol; caller 0x00854DD0 uses it as the melee range	CTCPhysicsBase::GetAirResistance (CTCPhysicsBase_GetAirResistance_00670000.cpp)

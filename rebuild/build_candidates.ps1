@@ -394835,6 +394835,13 @@ $catalog = @(
         TestSource = '00/6d/CHeroExperienceDef_Transfer_006d8f10_test.cpp'
         PassPattern = '006d8f10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00854dd0'
+        Module = 'CCreatureAction_SpiritAttack'
+        Source = '00/85/CCreatureActionSpiritAttack_PerformAction_00854dd0.cpp'
+        TestSource = '00/85/CCreatureActionSpiritAttack_PerformAction_00854dd0_test.cpp'
+        PassPattern = '00854dd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,1 @@
+00854dd0	CCreatureAction_SpiritAttack::PerformAction	RELOCATION_MATCH	74	attempt 5: natural source + visible real bodies of CHitParameters 9-arg ctor (header opt-in), CThing::GetPos, CThingPhysical::IsInRange; no flags; REPAIRED: IsInRange body = PhysicsTC->GetPosition() - pos (TU copy MATCHes 0x006A4DF0), ctor body = landed init list on real C3DVector members

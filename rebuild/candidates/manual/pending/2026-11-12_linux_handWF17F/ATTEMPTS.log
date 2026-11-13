@@ -1,0 +1,455 @@
+==== 0x00854DD0
+20:45 00854dd0 grade v1.cpp SRC_FAIL -- port onto shared headers
+20:45 00854dd0 grade v1.cpp SRC_FAIL -- port onto shared headers, creature casts
+20:45 00854dd0 grade v1.cpp DIFFER(703v720) hunks=54 -- port + ISINRANGE opt-in
+20:46 00854dd0 grade v1.cpp DIFFER(714v720) hunks=57 -- + CINTELLIGENTPOINTER_ASSIGN
+20:46 00854dd0 grade v1.cpp DIFFER(714v720) hunks=57 -- same, full diff view
+20:46 00854dd0 grade v1.cpp DIFFER(717v720) hunks=57 -- ORIGINAL_VTABLE; v2 +SUBTRACT_XY_GROUP
+20:46 00854dd0 grade v2.cpp DIFFER(717v720) hunks=57 -- ORIGINAL_VTABLE; v2 +SUBTRACT_XY_GROUP
+20:47 00854dd0 grade v3.cpp DIFFER(739v720) hunks=48 -- memberwise operator- overlay
+20:47 00854dd0 grade v4.cpp DIFFER(739v720) hunks=48 -- memberwise + newton paren variants
+20:47 00854dd0 grade v5.cpp DIFFER(739v720) hunks=48 -- memberwise + newton paren variants
+20:47 00854dd0 grade v6.cpp DIFFER(739v720) hunks=48 -- memberwise + newton paren variants
+20:48 00854dd0 grade v7.cpp SRC_FAIL -- direction/position as copy + -= locals
+20:48 00854dd0 grade v8.cpp SRC_FAIL -- direction/position as copy + -= locals
+20:48 00854dd0 grade v9.cpp SRC_FAIL -- direction/position as copy + -= locals
+20:48 00854dd0 grade v7.cpp DIFFER(775v720) hunks=61 -- direction/position as copy + -= locals (SUBTRACT_ASSIGN)
+20:48 00854dd0 grade v8.cpp DIFFER(745v720) hunks=55 -- direction/position as copy + -= locals (SUBTRACT_ASSIGN)
+20:48 00854dd0 grade v9.cpp DIFFER(759v720) hunks=62 -- direction/position as copy + -= locals (SUBTRACT_ASSIGN)
+20:48 00854dd0 grade v1s.cpp DIFFER(666v720) hunks=35 -- pragma optimize s
+20:48 00854dd0 grade v3s.cpp DIFFER(674v720) hunks=35 -- pragma optimize s
+20:49 00854dd0 grade v1d.cpp SRC_FAIL -- default GetTC (HasTC+Find)
+20:49 00854dd0 grade v3d.cpp SRC_FAIL -- default GetTC (HasTC+Find)
+20:49 00854dd0 grade v1d.cpp DIFFER(717v720) hunks=57 -- default GetTC (HasTC+Find), CTCCoopSpirit:CTCBase probe
+20:49 00854dd0 grade v3d.cpp DIFFER(739v720) hunks=48 -- default GetTC (HasTC+Find), CTCCoopSpirit:CTCBase probe
+20:49 00854dd0 grade v10.cpp DIFFER(699v720) hunks=20 -- one tc_spirit variable at function scope
+20:49 00854dd0 grade v11.cpp DIFFER(727v720) hunks=25 -- one tc_spirit variable at function scope
+20:50 00854dd0 grade v12.cpp DIFFER(696v720) hunks=50 -- range local
+20:50 00854dd0 grade v13.cpp DIFFER(718v720) hunks=48 -- range local
+20:50 00854dd0 grade v10.cpp DIFFER(699v720) hunks=20 -- v10 regrade full view
+20:50 00854dd0 grade v14.cpp DIFFER(717v720) hunks=57 -- final GetTC separate var / tc_spirit declared before if
+20:50 00854dd0 grade v15.cpp DIFFER(699v720) hunks=20 -- final GetTC separate var / tc_spirit declared before if
+20:50 00854dd0 grade v11.cpp DIFFER(727v720) hunks=25 -- v11 regrade full view
+20:51 00854dd0 grade v16.cpp DIFFER(747v720) hunks=48 -- operator- as copy-=, friend
+20:51 00854dd0 grade v17.cpp DIFFER(699v720) hunks=20 -- operator- as copy-=, friend
+20:51 00854dd0 grade v19.cpp SRC_FAIL -- direction = (a-b).Normalise()
+20:51 00854dd0 grade v20.cpp SRC_FAIL -- direction = (a-b).Normalise()
+20:52 00854dd0 grade v21.cpp DIFFER(741v720) hunks=22 -- direction copy + -= on v10 base
+20:52 00854dd0 grade v22.cpp DIFFER(763v720) hunks=50 -- direction copy + -= on v10 base
+20:52 00854dd0 grade v23.cpp DIFFER(739v720) hunks=29 -- direction copy + -= on v10 base
+20:52 00854dd0 grade v10.cpp DIFFER(699v720) hunks=20 -- v10 regrade obj view
+20:52 00854dd0 grade v24.cpp DIFFER(699v720) hunks=20 -- range operand order
+20:52 00854dd0 grade v25.cpp DIFFER(699v720) hunks=20 -- range operand order
+20:52 00854dd0 grade v12.cpp DIFFER(696v720) hunks=50 -- v12 view
+20:53 00854dd0 grade v26.cpp DIFFER(705v720) hunks=46 -- range local variants
+20:53 00854dd0 grade v27.cpp DIFFER(696v720) hunks=50 -- range local variants
+20:53 00854dd0 grade v28.cpp DIFFER(696v720) hunks=50 -- range local variants
+20:53 00854dd0 grade v29.cpp DIFFER(699v720) hunks=20 -- const GetPhysicsTC / creature_target local
+20:53 00854dd0 grade v30.cpp DIFFER(699v720) hunks=20 -- const GetPhysicsTC / creature_target local
+20:54 00854dd0 grade v10.cpp DIFFER(757v720) hunks=48 /Op -- v10 /Op
+20:54 00854dd0 grade v10.cpp DIFFER(809v720) hunks=51 /EHsc -- v10 /EHsc
+20:54 00854dd0 grade v21.cpp DIFFER(741v720) hunks=22 -- v21 view
+20:54 00854dd0 grade v31.cpp DIFFER(699v720) hunks=20 -- C3DVector(x,y,z) ctor spelling: assign / forceinline / both
+20:54 00854dd0 grade v32.cpp DIFFER(699v720) hunks=20 -- C3DVector(x,y,z) ctor spelling: assign / forceinline / both
+20:54 00854dd0 grade v33.cpp DIFFER(699v720) hunks=20 -- C3DVector(x,y,z) ctor spelling: assign / forceinline / both
+20:54 00854dd0 grade v10.cpp DIFFER(693v720) hunks=25 /G7 -- v10 /G7
+20:54 00854dd0 grade v10.cpp DIFFER(699v720) hunks=20 /G5 -- v10 /G5
+20:54 00854dd0 grade v10.cpp DIFFER(699v720) hunks=20 /Ob1 -- v10 /Ob1
+20:55 00854dd0 grade v34.cpp DIFFER(727v720) hunks=25 -- memberwise op- + copy-ctor assign body / assign direction
+20:55 00854dd0 grade v35.cpp DIFFER(773v720) hunks=48 -- memberwise op- + copy-ctor assign body / assign direction
+20:55 00854dd0 grade v36.cpp DIFFER(699v720) hunks=20 -- sum order XYZ / default / NORMALISE_LOCALS
+20:55 00854dd0 grade v37.cpp DIFFER(699v720) hunks=20 -- sum order XYZ / default / NORMALISE_LOCALS
+20:55 00854dd0 grade v38.cpp DIFFER(707v720) hunks=21 -- sum order XYZ / default / NORMALISE_LOCALS
+20:56 00854dd0 grade v39.cpp DIFFER(715v720) hunks=23 -- per-component blocks: direction / both / position
+20:56 00854dd0 grade v40.cpp DIFFER(721v720) hunks=47 -- per-component blocks: direction / both / position
+20:56 00854dd0 grade v41.cpp DIFFER(705v720) hunks=28 -- per-component blocks: direction / both / position
+20:56 00854dd0 grade v42.cpp DIFFER(709v720) hunks=23 -- operator- via float locals (overlay) / direction via locals
+20:56 00854dd0 grade v43.cpp DIFFER(707v720) hunks=22 -- operator- via float locals (overlay) / direction via locals
+20:56 00854dd0 grade v44.cpp DIFFER(707v720) hunks=22 -- v43 + newton paren variants
+20:56 00854dd0 grade v45.cpp DIFFER(707v720) hunks=22 -- v43 + newton paren variants
+20:56 00854dd0 grade v46.cpp DIFFER(707v720) hunks=22 -- v43 + newton paren variants
+20:57 00854dd0 grade v47.cpp DIFFER(715v720) hunks=23 -- block: sum XYZ / default / via offset copy
+20:57 00854dd0 grade v48.cpp DIFFER(715v720) hunks=23 -- block: sum XYZ / default / via offset copy
+20:57 00854dd0 grade v49.cpp DIFFER(717v720) hunks=26 -- block: sum XYZ / default / via offset copy
+20:58 00854dd0 grade v50.cpp DIFFER(699v720) hunks=20 -- IsInRange arg1 spellings
+20:58 00854dd0 grade v51.cpp DIFFER(699v720) hunks=20 -- IsInRange arg1 spellings
+20:58 00854dd0 grade v52.cpp DIFFER(699v720) hunks=19 -- IsInRange arg1 spellings
+20:58 00854dd0 grade v52.cpp DIFFER(699v720) hunks=19 -- v52 view
+20:58 00854dd0 grade v53.cpp DIFFER(697v720) hunks=23 -- range local variants on v10
+20:58 00854dd0 grade v54.cpp DIFFER(696v720) hunks=50 -- range local variants on v10
+20:59 00854dd0 grade v55.cpp DIFFER(699v720) hunks=20 -- range local variants on v10
+20:59 00854dd0 grade v53.cpp DIFFER(697v720) hunks=23 -- v53 view
+20:59 00854dd0 grade v56.cpp DIFFER(696v720) hunks=50 -- range + physics locals
+20:59 00854dd0 grade v57.cpp DIFFER(697v720) hunks=17 -- range + physics locals
+20:59 00854dd0 grade v58.cpp DIFFER(696v720) hunks=50 -- range + physics locals
+20:59 00854dd0 grade v59.cpp DIFFER(697v720) hunks=17 -- radius+range order; + X-first sub variants
+20:59 00854dd0 grade v60.cpp DIFFER(705v720) hunks=19 -- radius+range order; + X-first sub variants
+20:59 00854dd0 grade v61.cpp DIFFER(725v720) hunks=22 -- radius+range order; + X-first sub variants
+21:00 00854dd0 grade v62.cpp DIFFER(711v720) hunks=42 -- GetRadius defined out of class (probe of c1 order)
+21:00 00854dd0 grade v63.cpp DIFFER(711v720) hunks=42 -- GetRadius deferred forceinline; both operand orders
+21:00 00854dd0 grade v64.cpp DIFFER(711v720) hunks=42 -- GetRadius deferred forceinline; both operand orders
+21:00 00854dd0 grade v63.cpp DIFFER(699v720) hunks=20 -- GetRadius deferred inline (fixed placement); both operand orders
+21:00 00854dd0 grade v64.cpp DIFFER(699v720) hunks=20 -- GetRadius deferred inline (fixed placement); both operand orders
+21:01 00854dd0 grade v65.cpp DIFFER(697v720) hunks=17 -- range += radius
+21:01 00854dd0 grade v66.cpp DIFFER(697v720) hunks=17 -- range += radius
+00854dd0 probe 1 c1 order with GetRadius undefined, radius+range -> see obj
+21:01 00854dd0 grade v67.cpp DIFFER(697v720) hunks=17 -- v57/v59 + GetRadius deferred inline
+21:01 00854dd0 grade v68.cpp DIFFER(697v720) hunks=17 -- v57/v59 + GetRadius deferred inline
+21:02 00854dd0 grade v60.cpp DIFFER(705v720) hunks=19 -- v60 view
+21:02 00854dd0 grade v69.cpp DIFFER(705v720) hunks=19 -- v60 + Normalise locals variants / default sum
+21:02 00854dd0 grade v70.cpp DIFFER(705v720) hunks=19 -- v60 + Normalise locals variants / default sum
+21:02 00854dd0 grade v71.cpp DIFFER(705v720) hunks=19 -- v60 + Normalise locals variants / default sum
+21:02 00854dd0 grade 00854dd0.cpp DIFFER(697v720) hunks=17 -- final best (v57) saved to differ
+00854dd0 final best v57 DIFFER(697v720) 17 hunks
+21:28 00854dd0 grade a1.cpp DIFFER(697v720) hunks=17 -- SUBTRACT_XY_GROUP (+/- ZYX)
+21:28 00854dd0 grade a2.cpp DIFFER(697v720) hunks=17 -- SUBTRACT_XY_GROUP (+/- ZYX)
+21:28 00854dd0 grade b1.cpp DIFFER(739v720) hunks=19 -- creature_pos ref local + copy/-= or sub
+21:28 00854dd0 grade b2.cpp DIFFER(697v720) hunks=17 -- creature_pos ref local + copy/-= or sub
+21:28 00854dd0 grade b3.cpp DIFFER(739v720) hunks=19 -- creature_pos ref local + copy/-= or sub
+21:29 00854dd0 grade c1.cpp DIFFER(779v720) hunks=48 -- implicit copy ctor (+memberwise sub)
+21:29 00854dd0 grade c2.cpp DIFFER(697v720) hunks=17 -- implicit copy ctor (+memberwise sub)
+21:29 00854dd0 grade c3.cpp DIFFER(725v720) hunks=22 -- implicit copy ctor (+memberwise sub)
+21:29 00854dd0 grade c3.cpp DIFFER(725v720) hunks=22 -- c3 view
+21:30 00854dd0 grade d1.cpp DIFFER(749v720) hunks=20 -- direction default-constructed then assigned
+21:30 00854dd0 grade d2.cpp DIFFER(771v720) hunks=46 -- direction default-constructed then assigned
+21:30 00854dd0 grade d3.cpp DIFFER(779v720) hunks=48 -- direction default-constructed then assigned
+21:31 00854dd0 grade e1.cpp DIFFER(697v720) hunks=17 -- operator- defined out of class (deferred)
+21:31 00854dd0 grade e2.cpp DIFFER(725v720) hunks=22 -- operator- defined out of class (deferred)
+21:31 00854dd0 grade e3.cpp DIFFER(697v720) hunks=17 -- operator- defined out of class (deferred)
+21:32 00854dd0 grade 00854dd0.cpp DIFFER(697v720) hunks=17 /G6 -- flag sweep on best
+21:32 00854dd0 grade 00854dd0.cpp DIFFER(691v720) hunks=22 /G7 -- flag sweep on best
+21:32 00854dd0 grade 00854dd0.cpp DIFFER(697v720) hunks=17 /Ox -- flag sweep on best
+21:32 00854dd0 grade f1.cpp DIFFER(697v720) hunks=17 -- Normalise sum sweep
+21:32 00854dd0 grade f2.cpp DIFFER(697v720) hunks=17 -- Normalise sum sweep
+21:32 00854dd0 grade f3.cpp DIFFER(697v720) hunks=17 -- Normalise sum sweep
+21:32 00854dd0 grade f4.cpp DIFFER(697v720) hunks=17 -- Normalise sum sweep 2
+21:33 00854dd0 grade f5.cpp DIFFER(697v720) hunks=17 -- Normalise sum sweep 2
+21:33 00854dd0 grade f6.cpp DIFFER(705v720) hunks=18 -- Normalise sum sweep 2
+21:33 00854dd0 grade g1.cpp DIFFER(589v720) hunks=29 -- C3DVector arithmetic plain inline (not forceinline)
+21:33 00854dd0 grade g2.cpp DIFFER(615v720) hunks=26 -- C3DVector arithmetic plain inline (not forceinline)
+21:33 00854dd0 grade g3.cpp DIFFER(589v720) hunks=29 -- C3DVector arithmetic plain inline (not forceinline)
+21:33 00854dd0 grade h1.cpp DIFFER(697v720) hunks=17 -- operator- plain inline only
+21:33 00854dd0 grade h2.cpp DIFFER(725v720) hunks=22 -- operator- plain inline only
+21:33 00854dd0 grade h3.cpp DIFFER(697v720) hunks=17 -- operator- plain inline only
+21:35 00854dd0 grade k1.cpp DIFFER(713v720) hunks=20 -- per-component blocks direction/hitpos
+21:35 00854dd0 grade k2.cpp DIFFER(703v720) hunks=25 -- per-component blocks direction/hitpos
+21:35 00854dd0 grade k3.cpp DIFFER(719v720) hunks=46 -- per-component blocks direction/hitpos
+21:35 00854dd0 grade k2.cpp DIFFER(703v720) hunks=25 -- k2 view
+21:35 00854dd0 grade m1.cpp DIFFER(719v720) hunks=23 -- k2 + separate final spirit var / block-scoped first
+21:35 00854dd0 grade m2.cpp DIFFER(719v720) hunks=23 -- k2 + separate final spirit var / block-scoped first
+21:35 00854dd0 grade m3.cpp DIFFER(719v720) hunks=23 -- k2 + separate final spirit var / block-scoped first
+21:35 00854dd0 grade m1.cpp DIFFER(719v720) hunks=23 -- m1 view
+21:36 00854dd0 grade n1.cpp DIFFER(735v720) hunks=45 -- m1 + per-component direction, sum variants
+21:36 00854dd0 grade n2.cpp DIFFER(735v720) hunks=45 -- m1 + per-component direction, sum variants
+21:36 00854dd0 grade n3.cpp DIFFER(735v720) hunks=45 -- m1 + per-component direction, sum variants
+21:36 00854dd0 grade p1.cpp DIFFER(710v720) hunks=14 -- m1 tail + operator- hitpos: ctor-assign / locals
+21:36 00854dd0 grade p2.cpp DIFFER(720v720) hunks=17 -- m1 tail + operator- hitpos: ctor-assign / locals
+21:36 00854dd0 grade p3.cpp DIFFER(720v720) hunks=17 -- m1 tail + operator- hitpos: ctor-assign / locals
+21:36 00854dd0 grade p0.cpp DIFFER(710v720) hunks=14 -- m1 tail + default operator- hit pos
+21:36 00854dd0 grade p2.cpp DIFFER(720v720) hunks=17 -- p2 view
+21:37 00854dd0 grade q1.cpp DIFFER(718v720) hunks=16 -- operator- local-temps spellings
+21:37 00854dd0 grade q2.cpp DIFFER(710v720) hunks=14 -- operator- local-temps spellings
+21:37 00854dd0 grade q3.cpp DIFFER(716v720) hunks=17 -- operator- local-temps spellings
+21:37 00854dd0 grade p0.cpp DIFFER(710v720) hunks=14 -- p0 view
+21:37 00854dd0 grade r1.cpp DIFFER(741v720) hunks=20 -- p0 + memberwise/copy-assign operator- (X-first)
+21:37 00854dd0 grade r2.cpp DIFFER(761v720) hunks=46 -- p0 + memberwise/copy-assign operator- (X-first)
+21:37 00854dd0 grade r3.cpp DIFFER(741v720) hunks=20 -- p0 + memberwise/copy-assign operator- (X-first)
+21:38 00854dd0 grade s1.cpp DIFFER(710v720) hunks=14 -- ctor defined out of class
+21:38 00854dd0 grade s2.cpp DIFFER(710v720) hunks=14 -- ctor defined out of class
+21:38 00854dd0 grade s3.cpp DIFFER(710v720) hunks=14 -- ctor defined out of class
+21:38 00854dd0 grade t1.cpp DIFFER(717v720) hunks=57 -- p0 + inline range expression
+21:38 00854dd0 grade t2.cpp DIFFER(717v720) hunks=57 -- p0 + inline range expression
+21:38 00854dd0 grade t3.cpp DIFFER(711v720) hunks=58 -- p0 + inline range expression
+21:39 00854dd0 grade w1.cpp DIFFER(710v720) hunks=14 -- range+radius operand spellings
+21:39 00854dd0 grade w2.cpp DIFFER(710v720) hunks=14 -- range+radius operand spellings
+21:39 00854dd0 grade w3.cpp SRC_FAIL -- range+radius operand spellings
+21:39 00854dd0 grade t4.cpp DIFFER(717v720) hunks=57 -- range expression variants on p0
+21:39 00854dd0 grade t5.cpp DIFFER(711v720) hunks=58 -- range expression variants on p0
+21:39 00854dd0 grade t6.cpp DIFFER(715v720) hunks=57 -- range expression variants on p0
+21:40 00854dd0 grade x1.cpp DIFFER(710v720) hunks=14 -- ctor const params / const-ref params
+21:40 00854dd0 grade x2.cpp DIFFER(718v720) hunks=16 -- ctor const params / const-ref params
+21:40 00854dd0 grade x3.cpp DIFFER(720v720) hunks=17 -- ctor const params / const-ref params
+21:40 00854dd0 grade x2.cpp DIFFER(718v720) hunks=16 -- x2 view
+21:40 00854dd0 grade p0.cpp DIFFER(710v720) hunks=14 -- p0 under QFE-4035 compiler (probe)
+21:41 00854dd0 grade L1.cpp DIFFER(710v720) hunks=14 -- PROBE: empty loops count flips x87 order?
+21:41 00854dd0 grade L2.cpp DIFFER(710v720) hunks=14 -- PROBE: empty loops count flips x87 order?
+21:41 00854dd0 grade L3.cpp DIFFER(710v720) hunks=14 -- PROBE: empty loops count flips x87 order?
+21:41 00854dd0 grade L1.cpp DIFFER(710v720) hunks=14 -- PROBE: unrolled 2-trip dead loops count
+21:41 00854dd0 grade L2.cpp DIFFER(710v720) hunks=14 -- PROBE: unrolled 2-trip dead loops count
+21:41 00854dd0 grade L3.cpp DIFFER(710v720) hunks=14 -- PROBE: unrolled 2-trip dead loops count
+00854dd0 probe 2 does removing the hit (direction address use) make the subtraction X-first? -> see output
+00854dd0 probe 3 hit pos without subtraction -> direction order
+00854dd0 probe 4 direction copied before hit -> order
+21:43 00854dd0 grade z1.cpp DIFFER(718v720) hunks=16 -- direction from float locals / Initialise
+21:43 00854dd0 grade z2.cpp DIFFER(762v720) hunks=17 -- direction from float locals / Initialise
+21:43 00854dd0 grade z3.cpp DIFFER(718v720) hunks=16 -- direction from float locals / Initialise
+21:43 00854dd0 grade P3.cpp DIFFER(749v720) hunks=30 -- probe-grade: direction copy before hit
+21:43 00854dd0 grade 00854dd0.cpp DIFFER(710v720) hunks=14 -- final best (p0) saved to differ
+21:44 00854dd0 grade A1.cpp DIFFER(719v720) hunks=23 -- range/physics/creature in own block (scope packing) + per-component hit pos
+21:44 00854dd0 grade A2.cpp DIFFER(710v720) hunks=9 -- range/physics/creature in own block (scope packing) + per-component hit pos
+21:44 00854dd0 grade A3.cpp DIFFER(710v720) hunks=14 -- range/physics/creature in own block (scope packing) + per-component hit pos
+21:44 00854dd0 grade B1.cpp DIFFER(726v720) hunks=10 -- A2 + direction X-first spellings
+21:44 00854dd0 grade B2.cpp DIFFER(731v720) hunks=20 -- A2 + direction X-first spellings
+21:44 00854dd0 grade B3.cpp DIFFER(718v720) hunks=10 -- A2 + direction X-first spellings
+21:44 00854dd0 grade D1.cpp DIFFER(718v720) hunks=9 -- A2 + direction from float locals
+21:44 00854dd0 grade D2.cpp DIFFER(718v720) hunks=9 -- A2 + direction from float locals
+21:44 00854dd0 grade D3.cpp DIFFER(718v720) hunks=9 -- A2 + direction from float locals
+21:45 00854dd0 grade A2s1.cpp DIFFER(710v720) hunks=9 -- A2 sum variants
+21:45 00854dd0 grade A2s2.cpp DIFFER(710v720) hunks=9 -- A2 sum variants
+21:45 00854dd0 grade A2s3.cpp DIFFER(718v720) hunks=10 -- A2 sum variants
+21:45 00854dd0 grade D1s1.cpp DIFFER(718v720) hunks=9 -- D1 sum variants
+21:45 00854dd0 grade D1s2.cpp DIFFER(718v720) hunks=9 -- D1 sum variants
+21:45 00854dd0 grade D1s3.cpp DIFFER(718v720) hunks=11 -- D1 sum variants
+21:45 00854dd0 grade E1.cpp DIFFER(718v720) hunks=9 -- D1 float-local order permutations
+21:45 00854dd0 grade E2.cpp DIFFER(718v720) hunks=9 -- D1 float-local order permutations
+21:45 00854dd0 grade E3.cpp DIFFER(718v720) hunks=9 -- D1 float-local order permutations
+21:45 00854dd0 grade A2.cpp DIFFER(710v720) hunks=9 -- A2 view
+21:46 00854dd0 grade F1.cpp DIFFER(719v720) hunks=23 -- A2 block placement variants
+21:46 00854dd0 grade F2.cpp DIFFER(719v720) hunks=23 -- A2 block placement variants
+21:46 00854dd0 grade F3.cpp DIFFER(719v720) hunks=23 -- A2 block placement variants
+21:46 00854dd0 grade 00854dd0.cpp DIFFER(710v720) hunks=9 -- saved A2 as best (9 hunks)
+21:46 00854dd0 grade G1.cpp DIFFER(718v720) hunks=10 -- A2 + Normalise body variants
+21:46 00854dd0 grade G2.cpp DIFFER(710v720) hunks=9 -- A2 + Normalise body variants
+21:46 00854dd0 grade G3.cpp DIFFER(710v720) hunks=9 -- A2 + Normalise body variants
+21:46 00854dd0 grade H1.cpp DIFFER(710v720) hunks=9 -- A2 + Newton variants
+21:46 00854dd0 grade H2.cpp DIFFER(710v720) hunks=9 -- A2 + Newton variants
+21:46 00854dd0 grade H3.cpp DIFFER(710v720) hunks=9 -- A2 + Newton variants
+21:47 00854dd0 grade I1.cpp DIFFER(717v720) hunks=54 -- A2 + range expression variants
+21:47 00854dd0 grade I2.cpp DIFFER(710v720) hunks=12 -- A2 + range expression variants
+21:47 00854dd0 grade I3.cpp DIFFER(710v720) hunks=9 -- A2 + range expression variants
+21:55 00854dd0 grade b0.cpp DIFFER(710v720) hunks=9 -- baseline attempt3
+21:56 00854dd0 grade c1.cpp DIFFER(749v720) hunks=29 -- normalise a temp then copy into direction
+21:56 00854dd0 grade c2.cpp DIFFER(753v720) hunks=22 -- normalise a temp then copy into direction
+21:56 00854dd0 grade c3.cpp DIFFER(749v720) hunks=29 -- normalise a temp then copy into direction
+21:56 00854dd0 grade d1.cpp DIFFER(758v720) hunks=14 -- direction default ctor then assign / self-subtract
+21:56 00854dd0 grade d2.cpp DIFFER(780v720) hunks=27 -- direction default ctor then assign / self-subtract
+21:57 00854dd0 grade e1.cpp DIFFER(710v720) hunks=9 -- radius local / distance copy
+21:57 00854dd0 grade e2.cpp DIFFER(710v720) hunks=9 -- radius local / distance copy
+21:57 00854dd0 grade e3.cpp DIFFER(710v720) hunks=9 -- radius local / distance copy
+21:58 00854dd0 grade f1.cpp DIFFER(717v720) hunks=54 -- inline range expressions, look at fadd
+21:58 00854dd0 grade f2.cpp DIFFER(711v720) hunks=55 -- inline range expressions, look at fadd
+21:58 00854dd0 grade f3.cpp DIFFER(720v720) hunks=57 -- inline range expressions, look at fadd
+21:58 00854dd0 grade f1.cpp DIFFER(717v720) hunks=54 -- f1 rerun to view fadd
+21:58 00854dd0 grade f1.cpp DIFFER(717v720) hunks=54 -- f1 rerun view
+21:58 00854dd0 grade g1.cpp DIFFER(710v720) hunks=9 -- range decl placement
+21:58 00854dd0 grade g2.cpp DIFFER(710v720) hunks=9 -- range decl placement
+21:58 00854dd0 grade g3.cpp DIFFER(710v720) hunks=9 -- range decl placement
+21:59 00854dd0 grade h1.cpp DIFFER(749v720) hunks=24 -- hit takes copy of direction
+21:59 00854dd0 grade h2.cpp DIFFER(755v720) hunks=21 -- hit takes copy of direction
+21:59 00854dd0 grade h3.cpp DIFFER(740v720) hunks=22 -- hit takes copy of direction
+22:00 00854dd0 grade h3.cpp DIFFER(740v720) hunks=22 -- h3 view
+22:00 00854dd0 grade i1.cpp DIFFER(710v720) hunks=9 -- no-code tuples: parens/casts
+22:00 00854dd0 grade i2.cpp DIFFER(710v720) hunks=9 -- no-code tuples: parens/casts
+22:00 00854dd0 grade i3.cpp DIFFER(729v720) hunks=21 -- no-code tuples: parens/casts
+22:01 00854dd0 grade j1.cpp DIFFER(711v720) hunks=55 -- fadd: creature/physics local removal
+22:01 00854dd0 grade j2.cpp DIFFER(715v720) hunks=54 -- fadd: creature/physics local removal
+22:01 00854dd0 grade j3.cpp DIFFER(710v720) hunks=12 -- fadd: creature/physics local removal
+22:02 00854dd0 grade m1.cpp SRC_FAIL -- direct Radius member (toy: fixes fadd order)
+22:04 00854dd0 grade r1.cpp DIFFER(715v720) hunks=20 -- radius local then += range (toy: retail fadd order)
+22:04 00854dd0 grade r2.cpp DIFFER(715v720) hunks=20 -- radius-first named forms
+22:04 00854dd0 grade r3.cpp DIFFER(710v720) hunks=9 -- radius-first named forms
+22:04 00854dd0 grade r4.cpp DIFFER(715v720) hunks=20 -- radius-first named forms
+22:05 00854dd0 grade m1.cpp DIFFER(710v720) hunks=8 -- PROBE: direct Radius access (lvalue) fixes fadd?
+22:06 00854dd0 grade t1.cpp SRC_FAIL -- creature pos ref first, copy target pos then -=
+22:06 00854dd0 grade t2.cpp SRC_FAIL -- creature pos ref first, copy target pos then -=
+22:06 00854dd0 grade t3.cpp DIFFER(710v720) hunks=8 -- creature pos ref first, copy target pos then -=
+22:06 00854dd0 grade t1.cpp SRC_FAIL -- t1 compile err
+22:06 00854dd0 grade t1.cpp DIFFER(750v720) hunks=14 -- creature pos ref first, copy target pos then -= (SUBTRACT_ASSIGN)
+22:06 00854dd0 grade t2.cpp DIFFER(750v720) hunks=14 -- creature pos ref first, copy target pos then -= (SUBTRACT_ASSIGN)
+22:07 00854dd0 grade w1.cpp DIFFER(753v720) hunks=21 -- c1 temp-normalise + copy ctor kinds (with Radius lvalue probe)
+22:07 00854dd0 grade w2.cpp DIFFER(749v720) hunks=28 -- c1 temp-normalise + copy ctor kinds (with Radius lvalue probe)
+22:07 00854dd0 grade w3.cpp DIFFER(749v720) hunks=28 -- c1 temp-normalise + copy ctor kinds (with Radius lvalue probe)
+22:13 00854dd0 grade x1.cpp DIFFER(729v720) hunks=21 -- offset = a-b; direction = offset; Normalise (toy: X-first, Z homed, coalesced)
+22:13 00854dd0 grade x2.cpp DIFFER(729v720) hunks=20 -- offset = a-b; direction = offset; Normalise (toy: X-first, Z homed, coalesced)
+22:13 00854dd0 grade y1.cpp DIFFER(758v720) hunks=13 -- offset/direction coalescing: block, assign, no hit block
+22:13 00854dd0 grade y2.cpp DIFFER(758v720) hunks=13 -- offset/direction coalescing: block, assign, no hit block
+22:13 00854dd0 grade y3.cpp DIFFER(729v720) hunks=20 -- offset/direction coalescing: block, assign, no hit block
+22:14 00854dd0 grade x2.cpp DIFFER(729v720) hunks=20 -- x2 view
+22:14 00854dd0 grade z1.cpp DIFFER(729v720) hunks=21 -- offset coalescing variants
+22:14 00854dd0 grade z2.cpp DIFFER(729v720) hunks=20 -- offset coalescing variants
+22:14 00854dd0 grade z3.cpp DIFFER(729v720) hunks=20 -- offset coalescing variants
+00854dd0 probe A3-1 toy: what makes `range + physics->GetRadius()` emit fld range; fadd [p+34h]? -> only an lvalue radius (direct member or const float& getter); every by-value inline getter / local / cast / flag (/Op /O1 /G7 /Oa /Ow) gives fld [p+34h] first; sum into a named variable gives retail order but spills (mov/push)
+00854dd0 probe A3-2 toy: what builds the subtraction X-first with only Z homed (`fst z; fmul z`)? -> only a NON-address-taken vector (diff, or direction when the hit gets a copy); `C3DVector diff = a-b; C3DVector direction = diff; direction.Normalise();` reproduces retail's whole x87 sequence (fstp f; fxch st1; fmul f ...) but diff gets its own slot (frame +8)
+22:16 00854dd0 grade 00854dd0.cpp DIFFER(710v720) hunks=9 -- final regrade of best source
+22:24 00854dd0 grade n0.cpp DIFFER(710v720) hunks=9 -- attempt4 baseline
+22:25 00854dd0 grade p1.cpp DIFFER(716v720) hunks=51 -- forceinline HitTarget helper: pos by value / both by value / direction by value normalise inside
+22:25 00854dd0 grade p2.cpp DIFFER(744v720) hunks=51 -- forceinline HitTarget helper: pos by value / both by value / direction by value normalise inside
+22:25 00854dd0 grade p3.cpp DIFFER(724v720) hunks=52 -- forceinline HitTarget helper: pos by value / both by value / direction by value normalise inside
+22:25 00854dd0 grade p3.cpp DIFFER(724v720) hunks=52 -- view p3
+22:25 00854dd0 grade p2.cpp DIFFER(744v720) hunks=51 -- view p2
+22:26 00854dd0 grade p3.cpp DIFFER(724v720) hunks=52 -- view p3
+22:28 00854dd0 grade q1.cpp DIFFER(722v720) hunks=10 -- helper with by-value direction: named offset arg / memberwise operator- temp / both
+22:28 00854dd0 grade q2.cpp DIFFER(738v720) hunks=36 -- helper with by-value direction: named offset arg / memberwise operator- temp / both
+22:28 00854dd0 grade q3.cpp DIFFER(741v720) hunks=19 -- helper with by-value direction: named offset arg / memberwise operator- temp / both
+22:28 00854dd0 grade q1.cpp DIFFER(722v720) hunks=10 -- q1 view
+22:28 00854dd0 grade r1.cpp DIFFER(740v720) hunks=21 -- outer normalise, helper takes direction by value; position temp / named / memberwise
+22:28 00854dd0 grade r2.cpp DIFFER(740v720) hunks=21 -- outer normalise, helper takes direction by value; position temp / named / memberwise
+22:28 00854dd0 grade r3.cpp DIFFER(740v720) hunks=22 -- outer normalise, helper takes direction by value; position temp / named / memberwise
+22:29 00854dd0 grade s1.cpp DIFFER(773v720) hunks=55 -- implicit copy ctor + helper by-value: both by value outer normalise / dir by value outer normalise / q1
+22:29 00854dd0 grade s2.cpp DIFFER(744v720) hunks=14 -- implicit copy ctor + helper by-value: both by value outer normalise / dir by value outer normalise / q1
+22:29 00854dd0 grade s3.cpp DIFFER(762v720) hunks=16 -- implicit copy ctor + helper by-value: both by value outer normalise / dir by value outer normalise / q1
+22:30 00854dd0 grade t1.cpp DIFFER(747v720) hunks=29 -- direction returned by value from forceinline normalising helper (copy of const ref / to-from / by-value param)
+22:30 00854dd0 grade t2.cpp DIFFER(749v720) hunks=29 -- direction returned by value from forceinline normalising helper (copy of const ref / to-from / by-value param)
+22:30 00854dd0 grade t3.cpp DIFFER(749v720) hunks=57 -- direction returned by value from forceinline normalising helper (copy of const ref / to-from / by-value param)
+22:31 00854dd0 grade fa1.cpp DIFFER(711v720) hunks=55 -- fadd: range as by-value float param of forceinline range helper (3 signatures)
+22:31 00854dd0 grade fa2.cpp DIFFER(713v720) hunks=54 -- fadd: range as by-value float param of forceinline range helper (3 signatures)
+22:31 00854dd0 grade fa3.cpp DIFFER(719v720) hunks=46 -- fadd: range as by-value float param of forceinline range helper (3 signatures)
+22:33 00854dd0 grade ga.cpp DIFFER(727v720) hunks=37 -- fadd: sum passed as by-value float param of forceinline IsInRange wrapper
+22:33 00854dd0 grade gb.cpp DIFFER(717v720) hunks=24 -- fadd: sum passed as by-value float param of forceinline IsInRange wrapper
+22:33 00854dd0 grade gc.cpp DIFFER(722v720) hunks=57 -- fadd: sum passed as by-value float param of forceinline IsInRange wrapper
+22:33 00854dd0 grade u1.cpp DIFFER(746v720) hunks=51 -- sibling inline scopes: Direction()/NormalisedCopy() result straight into HitTarget by-value / const-ref param
+22:33 00854dd0 grade u2.cpp DIFFER(744v720) hunks=52 -- sibling inline scopes: Direction()/NormalisedCopy() result straight into HitTarget by-value / const-ref param
+22:34 00854dd0 grade u3.cpp DIFFER(745v720) hunks=55 -- sibling inline scopes: Direction()/NormalisedCopy() result straight into HitTarget by-value / const-ref param
+22:34 00854dd0 grade n0.cpp DIFFER(715v720) hunks=54 /Oa -- n0 with /Oa (assume no aliasing)
+22:34 00854dd0 grade n0.cpp DIFFER(710v720) hunks=9 /Ow -- n0 with /Ow
+22:35 00854dd0 grade v1.cpp DIFFER(749v720) hunks=29 -- direction = C3DVector(a-b).Normalise() view
+22:35 00854dd0 grade w1.cpp DIFFER(773v720) hunks=56 -- helper(direction, position) both by value, position evaluated first; implicit/user copy; named position inside + implicit
+22:35 00854dd0 grade w2.cpp DIFFER(750v720) hunks=53 -- helper(direction, position) both by value, position evaluated first; implicit/user copy; named position inside + implicit
+22:35 00854dd0 grade w3.cpp DIFFER(744v720) hunks=14 -- helper(direction, position) both by value, position evaluated first; implicit/user copy; named position inside + implicit
+22:36 00854dd0 grade x1.cpp DIFFER(727v720) hunks=21 -- direction = offset * GFFastOneOverSqrt(offset.GetSquaredMagnitude()) (ctor-built from a non-address-taken offset): named / helper temp / factor local
+22:36 00854dd0 grade x2.cpp DIFFER(727v720) hunks=21 -- direction = offset * GFFastOneOverSqrt(offset.GetSquaredMagnitude()) (ctor-built from a non-address-taken offset): named / helper temp / factor local
+22:36 00854dd0 grade x3.cpp DIFFER(729v720) hunks=21 -- direction = offset * GFFastOneOverSqrt(offset.GetSquaredMagnitude()) (ctor-built from a non-address-taken offset): named / helper temp / factor local
+22:36 00854dd0 grade y1.cpp DIFFER(720v720) hunks=11 -- direction = offset*factor born in inner block / as HitTarget by-value param temp
+22:36 00854dd0 grade y2.cpp DIFFER(718v720) hunks=11 -- direction = offset*factor born in inner block / as HitTarget by-value param temp
+22:36 00854dd0 grade y3.cpp DIFFER(718v720) hunks=11 -- direction = offset*factor born in inner block / as HitTarget by-value param temp
+22:37 00854dd0 grade z1.cpp DIFFER(720v720) hunks=11 -- swap slots: hit_pos declared before direction / hit_pos in deeper block
+22:37 00854dd0 grade z2.cpp DIFFER(720v720) hunks=11 -- swap slots: hit_pos declared before direction / hit_pos in deeper block
+22:37 00854dd0 grade z3.cpp DIFFER(718v720) hunks=11 -- swap slots: hit_pos declared before direction / hit_pos in deeper block
+22:37 00854dd0 grade y2.cpp DIFFER(718v720) hunks=11 -- y2 view
+22:37 00854dd0 grade y3.cpp DIFFER(718v720) hunks=11 -- y3 view
+22:38 00854dd0 grade a1.cpp DIFFER(720v720) hunks=11 -- packer probe: offset dead before direction's birth (scalars / in-place normalise + 3-float ctor / copy)
+22:38 00854dd0 grade a2.cpp DIFFER(734v720) hunks=13 -- packer probe: offset dead before direction's birth (scalars / in-place normalise + 3-float ctor / copy)
+22:38 00854dd0 grade a3.cpp DIFFER(740v720) hunks=22 -- packer probe: offset dead before direction's birth (scalars / in-place normalise + 3-float ctor / copy)
+22:39 00854dd0 grade b1.cpp DIFFER(710v720) hunks=7 -- outer direction+Normalise, HitTarget takes const C3DVector& direction (memberwise position / temp position)
+22:39 00854dd0 grade b2.cpp DIFFER(710v720) hunks=14 -- outer direction+Normalise, HitTarget takes const C3DVector& direction (memberwise position / temp position)
+22:40 00854dd0 grade c1.cpp DIFFER(729v720) hunks=21 -- scope placement of offset/direction/hit_pos: all in block / no block / direction outer assigned from block
+22:40 00854dd0 grade c2.cpp DIFFER(729v720) hunks=21 -- scope placement of offset/direction/hit_pos: all in block / no block / direction outer assigned from block
+22:40 00854dd0 grade c3.cpp DIFFER(753v720) hunks=23 -- scope placement of offset/direction/hit_pos: all in block / no block / direction outer assigned from block
+22:40 00854dd0 grade d1.cpp DIFFER(737v720) hunks=22 -- packer probes: hit_pos born before direction (junk store) / hit_pos declared in if-body before offset / at function top
+22:40 00854dd0 grade d2.cpp DIFFER(729v720) hunks=20 -- packer probes: hit_pos born before direction (junk store) / hit_pos declared in if-body before offset / at function top
+22:40 00854dd0 grade d3.cpp DIFFER(729v720) hunks=20 -- packer probes: hit_pos born before direction (junk store) / hit_pos declared in if-body before offset / at function top
+22:43 00854dd0 grade e1.cpp DIFFER(731v720) hunks=20 -- memberwise operator- overlay on current base: explicit hit_pos / hit_pos = a-b / temp arg
+22:43 00854dd0 grade e2.cpp DIFFER(741v720) hunks=20 -- memberwise operator- overlay on current base: explicit hit_pos / hit_pos = a-b / temp arg
+22:43 00854dd0 grade e3.cpp DIFFER(741v720) hunks=20 -- memberwise operator- overlay on current base: explicit hit_pos / hit_pos = a-b / temp arg
+22:46 00854dd0 grade f1.cpp DIFFER(726v720) hunks=10 -- direction built per component from two reference locals (single AT symbol), sum ZYX/default/XYZ
+22:46 00854dd0 grade f2.cpp DIFFER(726v720) hunks=10 -- direction built per component from two reference locals (single AT symbol), sum ZYX/default/XYZ
+22:46 00854dd0 grade f3.cpp DIFFER(726v720) hunks=10 -- direction built per component from two reference locals (single AT symbol), sum ZYX/default/XYZ
+22:47 00854dd0 grade f1.cpp DIFFER(731v720) hunks=57 /Oa -- probe: per-component single AT direction under /Oa -- does the 2-enregistered + Z-homed pattern appear?
+22:48 00854dd0 grade g1.cpp DIFFER(758v720) hunks=14 -- implicit copy + memberwise operator- (return of local as block copy) / + temp position / Direction() helper returning local
+22:48 00854dd0 grade g2.cpp DIFFER(795v720) hunks=47 -- implicit copy + memberwise operator- (return of local as block copy) / + temp position / Direction() helper returning local
+22:48 00854dd0 grade g3.cpp DIFFER(753v720) hunks=22 -- implicit copy + memberwise operator- (return of local as block copy) / + temp position / Direction() helper returning local
+22:51 00854dd0 grade i1.cpp DIFFER(755v720) hunks=21 -- non-AT direction; ctor gets C3DVector(direction) temp (implicit copy / named const copy first / user copy)
+22:51 00854dd0 grade i2.cpp DIFFER(744v720) hunks=15 -- non-AT direction; ctor gets C3DVector(direction) temp (implicit copy / named const copy first / user copy)
+22:51 00854dd0 grade i3.cpp DIFFER(755v720) hunks=21 -- non-AT direction; ctor gets C3DVector(direction) temp (implicit copy / named const copy first / user copy)
+22:54 00854dd0 grade j1.cpp DIFFER(710v720) hunks=14 -- address escapes only through Normalise()'s returned reference (ctor arg direction.Normalise() / reference local)
+22:54 00854dd0 grade j2.cpp DIFFER(710v720) hunks=7 -- address escapes only through Normalise()'s returned reference (ctor arg direction.Normalise() / reference local)
+22:54 00854dd0 grade j3.cpp DIFFER(710v720) hunks=9 -- address escapes only through Normalise()'s returned reference (ctor arg direction.Normalise() / reference local)
+22:54 00854dd0 grade k1.cpp DIFFER(730v720) hunks=52 -- offset as HitTarget param (by value / const ref temp), direction = offset*factor and hit inside helper
+22:54 00854dd0 grade k2.cpp DIFFER(723v720) hunks=54 -- offset as HitTarget param (by value / const ref temp), direction = offset*factor and hit inside helper
+22:54 00854dd0 grade k3.cpp DIFFER(730v720) hunks=52 -- offset as HitTarget param (by value / const ref temp), direction = offset*factor and hit inside helper
+22:56 00854dd0 grade l1.cpp DIFFER(744v720) hunks=14 -- by-value const param (implicit / user copy), static helper with PCreature ref
+22:56 00854dd0 grade l2.cpp DIFFER(740v720) hunks=21 -- by-value const param (implicit / user copy), static helper with PCreature ref
+22:56 00854dd0 grade l3.cpp DIFFER(744v720) hunks=14 -- by-value const param (implicit / user copy), static helper with PCreature ref
+22:56 00854dd0 grade m1.cpp DIFFER(720v720) hunks=11 -- fadd: range bound to const float& (memory temp) on y1 / const float on y1 / const float& on n0
+22:56 00854dd0 grade m2.cpp DIFFER(720v720) hunks=11 -- fadd: range bound to const float& (memory temp) on y1 / const float on y1 / const float& on n0
+22:56 00854dd0 grade m3.cpp DIFFER(710v720) hunks=9 -- fadd: range bound to const float& (memory temp) on y1 / const float on y1 / const float& on n0
+22:57 00854dd0 grade Y.cpp DIFFER(720v720) hunks=11 -- ported onto the _TYPED class header (+_PERFORMACTION overlay opt-in): scaled-offset lead / natural Normalise source
+22:57 00854dd0 grade N.cpp DIFFER(710v720) hunks=9 -- ported onto the _TYPED class header (+_PERFORMACTION overlay opt-in): scaled-offset lead / natural Normalise source
+22:58 00854dd0 grade 00854dd0.cpp DIFFER(720v720) hunks=11 -- attempt4 final regrade of differ sources
+22:58 00854dd0 grade 00854dd0_natural_normalise.cpp DIFFER(710v720) hunks=9 -- attempt4 final regrade of differ sources
+00854dd0 probe A4-1 (on the row, q.py listings of p3/q1/v1/d1/i1/fa1/fa3): where do the two vectors and the offset land? -> see NOTES attempt 4 item 3 (packer rules); by-value float range parameter stays in st(0) (`fld radius ; fadd st(1)`), no fadd fix
+00854dd0 attempt 4 summary: 86 grades; best differ/00854dd0.cpp DIFFER(720v720) 11 operand-only hunks; natural source differ/00854dd0_natural_normalise.cpp DIFFER(710v720) 9 hunks
+23:06 00854dd0 grade j2.cpp DIFFER(710v720) hunks=7 -- a5 view j2 (7 hunks) residue
+23:07 00854dd0 grade q1.cpp DIFFER(722v720) hunks=10 -- a5 view q1 (10 hunks) residue
+23:12 00854dd0 grade n1.cpp DIFFER(731v720) hunks=20 -- a5: natural Normalise base + memberwise operator- (explicit pos / temp pos) / copy+-= operator-
+23:12 00854dd0 grade n2.cpp DIFFER(741v720) hunks=20 -- a5: natural Normalise base + memberwise operator- (explicit pos / temp pos) / copy+-= operator-
+23:12 00854dd0 grade n3.cpp DIFFER(761v720) hunks=46 -- a5: natural Normalise base + memberwise operator- (explicit pos / temp pos) / copy+-= operator-
+23:15 00854dd0 grade h1.cpp DIFFER(722v720) hunks=5 -- a5: single AT direction, x/y multi-use scalar temps + Z through the member (h1 hack) / x,y,z locals + ctor + *= (h2) / + member scale (h3)
+23:15 00854dd0 grade h2.cpp DIFFER(731v720) hunks=39 -- a5: single AT direction, x/y multi-use scalar temps + Z through the member (h1 hack) / x,y,z locals + ctor + *= (h2) / + member scale (h3)
+23:15 00854dd0 grade h3.cpp DIFFER(731v720) hunks=39 -- a5: single AT direction, x/y multi-use scalar temps + Z through the member (h1 hack) / x,y,z locals + ctor + *= (h2) / + member scale (h3)
+23:15 00854dd0 grade h2.cpp DIFFER(731v720) hunks=39 -- a5: view h2
+23:17 00854dd0 grade s1.cpp DIFFER(722v720) hunks=5 -- a5: h1 (x,y temps + Z member) with scaling by Normalise() after X/Y copies (s1) / *= factor local (s2) / *= GFFastOneOverSqrt(GetSquaredMagnitude()) (s3)
+23:17 00854dd0 grade s2.cpp DIFFER(722v720) hunks=5 -- a5: h1 (x,y temps + Z member) with scaling by Normalise() after X/Y copies (s1) / *= factor local (s2) / *= GFFastOneOverSqrt(GetSquaredMagnitude()) (s3)
+23:17 00854dd0 grade s3.cpp DIFFER(722v720) hunks=5 -- a5: h1 (x,y temps + Z member) with scaling by Normalise() after X/Y copies (s1) / *= factor local (s2) / *= GFFastOneOverSqrt(GetSquaredMagnitude()) (s3)
+23:18 00854dd0 grade u1.cpp DIFFER(722v720) hunks=5 -- a5: h1 with in-place x*=factor,y*=factor then stores (u1 grouped / u2 interleaved) / const factor (u3)
+23:18 00854dd0 grade u2.cpp DIFFER(722v720) hunks=5 -- a5: h1 with in-place x*=factor,y*=factor then stores (u1 grouped / u2 interleaved) / const factor (u3)
+23:18 00854dd0 grade u3.cpp DIFFER(722v720) hunks=5 -- a5: h1 with in-place x*=factor,y*=factor then stores (u1 grouped / u2 interleaved) / const factor (u3)
+23:19 00854dd0 grade w1.cpp DIFFER(722v720) hunks=7 -- a5: reciprocal through const float& (BlockRespond 00855500 lesson): hack + const float& factor (w1) / memberwise operator- + Normalise = *this *= (const float&) (w2) / ctor operator- + same (w3)
+23:19 00854dd0 grade w2.cpp DIFFER(731v720) hunks=20 -- a5: reciprocal through const float& (BlockRespond 00855500 lesson): hack + const float& factor (w1) / memberwise operator- + Normalise = *this *= (const float&) (w2) / ctor operator- + same (w3)
+23:19 00854dd0 grade w3.cpp DIFFER(710v720) hunks=9 -- a5: reciprocal through const float& (BlockRespond 00855500 lesson): hack + const float& factor (w1) / memberwise operator- + Normalise = *this *= (const float&) (w2) / ctor operator- + same (w3)
+00854dd0 probe a5-1 natural /Oa FP region view
+23:23 00854dd0 grade p1.cpp DIFFER(718v720) hunks=10 -- a5 PROBE (not landable): args evaluated X,Y,Z then ctor-style stores into the AT direction (reversed-parameter inline) + natural Normalise -- does that IL give retail's FP code?
+23:23 00854dd0 grade p2.cpp DIFFER(712v720) hunks=9 -- a5 PROBE (not landable): args evaluated X,Y,Z then ctor-style stores into the AT direction (reversed-parameter inline) + natural Normalise -- does that IL give retail's FP code?
+23:25 00854dd0 grade p3.cpp DIFFER(726v720) hunks=7 -- a5 PROBE (not landable): args X,Y,Z-evaluated, stores Z,Y,X (p3) / args Z,Y,X-evaluated, stores Z,Y,X (p4) + natural Normalise
+23:25 00854dd0 grade p4.cpp DIFFER(726v720) hunks=9 -- a5 PROBE (not landable): args X,Y,Z-evaluated, stores Z,Y,X (p3) / args Z,Y,X-evaluated, stores Z,Y,X (p4) + natural Normalise
+00854dd0 probe a5-2 view f1 (per-component AT direction) FP code
+23:29 00854dd0 grade g1.cpp DIFFER(722v720) hunks=5 -- a5: h1 with X/Y as fields of a non-AT C3DVector instead of scalars (g1 new-object scale / g2 in-place then copy) / scalars scaled Z,Y,X order (g3)
+23:29 00854dd0 grade g2.cpp DIFFER(739v720) hunks=24 -- a5: h1 with X/Y as fields of a non-AT C3DVector instead of scalars (g1 new-object scale / g2 in-place then copy) / scalars scaled Z,Y,X order (g3)
+23:29 00854dd0 grade g3.cpp DIFFER(718v720) hunks=6 -- a5: h1 with X/Y as fields of a non-AT C3DVector instead of scalars (g1 new-object scale / g2 in-place then copy) / scalars scaled Z,Y,X order (g3)
+23:30 00854dd0 grade k1.cpp DIFFER(722v720) hunks=5 -- a5: h1 scale-form probes: factor symbol declared first (k1) / X,Y via ctor params of a non-AT vector (k2) / scale through operator*(float) temp (k3)
+23:30 00854dd0 grade k2.cpp DIFFER(724v720) hunks=5 -- a5: h1 scale-form probes: factor symbol declared first (k1) / X,Y via ctor params of a non-AT vector (k2) / scale through operator*(float) temp (k3)
+23:30 00854dd0 grade k3.cpp DIFFER(747v720) hunks=44 -- a5: h1 scale-form probes: factor symbol declared first (k1) / X,Y via ctor params of a non-AT vector (k2) / scale through operator*(float) temp (k3)
+23:31 00854dd0 grade m1.cpp DIFFER(722v720) hunks=5 -- a5: h1 scale-form probes: scaled temps evaluated Z,Y,X then stored X,Y,Z (m1) / assigned from a C3DVector(x*f,y*f,z*f) temp (m2) / temps X,Y,Z then stores (m3)
+23:31 00854dd0 grade m2.cpp DIFFER(746v720) hunks=8 -- a5: h1 scale-form probes: scaled temps evaluated Z,Y,X then stored X,Y,Z (m1) / assigned from a C3DVector(x*f,y*f,z*f) temp (m2) / temps X,Y,Z then stores (m3)
+23:31 00854dd0 grade m3.cpp DIFFER(722v720) hunks=5 -- a5: h1 scale-form probes: scaled temps evaluated Z,Y,X then stored X,Y,Z (m1) / assigned from a C3DVector(x*f,y*f,z*f) temp (m2) / temps X,Y,Z then stores (m3)
+23:32 00854dd0 grade a5/b1.cpp DIFFER(731v720) -- a5 morph a1->h1: memberwise non-AT offset (b1) / operator- offset + member scale (b2) / scalars x,y,z + member scale (b3)
+23:32 00854dd0 grade a5/b2.cpp DIFFER(729v720) -- a5 morph a1->h1: memberwise non-AT offset (b1) / operator- offset + member scale (b2) / scalars x,y,z + member scale (b3)
+23:32 00854dd0 grade a5/b3.cpp DIFFER(731v720) -- a5 morph a1->h1: memberwise non-AT offset (b1) / operator- offset + member scale (b2) / scalars x,y,z + member scale (b3)
+23:33 00854dd0 grade c1.cpp DIFFER(724v720) hunks=5 -- a5: non-AT offset via operator- (ctor-param temps are consumable, b2 lesson); Z copied into direction first, then explicit sum + member scale (c1) / X,Y copies + *= (c2) / copies Z,X,Y + Normalise (c3)
+23:33 00854dd0 grade c2.cpp DIFFER(724v720) hunks=5 -- a5: non-AT offset via operator- (ctor-param temps are consumable, b2 lesson); Z copied into direction first, then explicit sum + member scale (c1) / X,Y copies + *= (c2) / copies Z,X,Y + Normalise (c3)
+23:33 00854dd0 grade c3.cpp DIFFER(726v720) hunks=7 -- a5: non-AT offset via operator- (ctor-param temps are consumable, b2 lesson); Z copied into direction first, then explicit sum + member scale (c1) / X,Y copies + *= (c2) / copies Z,X,Y + Normalise (c3)
+23:35 00854dd0 grade d1.cpp DIFFER(733v720) hunks=21 -- a5: non-AT offset via operator-; direction.Z = offset.Z as the Z home, sum/scale read offset.Z (d1) / copy after factor + Z*= (d2) / early copy + Z*= (d3)
+23:35 00854dd0 grade d2.cpp DIFFER(733v720) hunks=22 -- a5: non-AT offset via operator-; direction.Z = offset.Z as the Z home, sum/scale read offset.Z (d1) / copy after factor + Z*= (d2) / early copy + Z*= (d3)
+23:35 00854dd0 grade d3.cpp DIFFER(733v720) hunks=21 -- a5: non-AT offset via operator-; direction.Z = offset.Z as the Z home, sum/scale read offset.Z (d1) / copy after factor + Z*= (d2) / early copy + Z*= (d3)
+23:36 00854dd0 grade a5/e1.cpp DIFFER(724v720) -- a5: c1 with the explicit squared-length sum permuted (e1)
+23:36 00854dd0 grade a5/e2.cpp DIFFER(724v720) -- a5: c1 with the explicit squared-length sum permuted (e2)
+23:36 00854dd0 grade a5/e3.cpp DIFFER(724v720) -- a5: c1 with the explicit squared-length sum permuted (e3)
+23:36 00854dd0 grade a5/e4.cpp DIFFER(724v720) -- a5: c1 with the explicit squared-length sum permuted (e4)
+23:36 00854dd0 grade a5/e5.cpp DIFFER(724v720) -- a5: c1 with the explicit squared-length sum permuted (e5)
+23:36 00854dd0 grade a5/e6.cpp DIFFER(724v720) -- a5: c1 with the explicit squared-length sum permuted (e6)
+23:36 00854dd0 grade a5/z1.cpp DIFFER(724v720) -- a5: composite: X,Y from operator- temps of a non-AT offset + Z direct into direction; Z*=factor (z1) / *= const float& (z2) / const float& factor (z3)
+23:36 00854dd0 grade a5/z2.cpp DIFFER(726v720) -- a5: composite: X,Y from operator- temps of a non-AT offset + Z direct into direction; Z*=factor (z1) / *= const float& (z2) / const float& factor (z3)
+23:36 00854dd0 grade a5/z3.cpp DIFFER(724v720) -- a5: composite: X,Y from operator- temps of a non-AT offset + Z direct into direction; Z*=factor (z1) / *= const float& (z2) / const float& factor (z3)
+23:37 00854dd0 grade a5/pa.cpp DIFFER(731v720) -- a5 PROBE (not landable): inline with params (z,y,x) evaluated X,Y,Z; Z=z first then sum/scale from the params (pa) / +X=x,Y=y stores (pb) / stores X,Y,Z (pc)
+23:37 00854dd0 grade a5/pb.cpp DIFFER(731v720) -- a5 PROBE (not landable): inline with params (z,y,x) evaluated X,Y,Z; Z=z first then sum/scale from the params (pa) / +X=x,Y=y stores (pb) / stores X,Y,Z (pc)
+23:37 00854dd0 grade a5/pc.cpp DIFFER(731v720) -- a5 PROBE (not landable): inline with params (z,y,x) evaluated X,Y,Z; Z=z first then sum/scale from the params (pa) / +X=x,Y=y stores (pb) / stores X,Y,Z (pc)
+23:39 00854dd0 grade v1.cpp SRC_FAIL -- a5 (Q32 lesson): CThing::GetPos real body visible in the TU as inline noinline: natural Normalise + explicit hit_pos (v1) / + temp position (v2) / + fully natural range expression (v3)
+23:39 00854dd0 grade v2.cpp SRC_FAIL -- a5 (Q32 lesson): CThing::GetPos real body visible in the TU as inline noinline: natural Normalise + explicit hit_pos (v1) / + temp position (v2) / + fully natural range expression (v3)
+23:40 00854dd0 grade v3.cpp SRC_FAIL -- a5 (Q32 lesson): CThing::GetPos real body visible in the TU as inline noinline: natural Normalise + explicit hit_pos (v1) / + temp position (v2) / + fully natural range expression (v3)
+23:40 00854dd0 grade v1.cpp DIFFER(710v720) hunks=9 -- a5 (Q32 lesson): CThing::GetPos real body visible in the TU as inline noinline: natural Normalise + explicit hit_pos (v1) / + temp position (v2) / + fully natural range expression (v3)
+23:40 00854dd0 grade v2.cpp DIFFER(710v720) hunks=14 -- a5 (Q32 lesson): CThing::GetPos real body visible in the TU as inline noinline: natural Normalise + explicit hit_pos (v1) / + temp position (v2) / + fully natural range expression (v3)
+23:40 00854dd0 grade v3.cpp DIFFER(717v720) hunks=57 -- a5 (Q32 lesson): CThing::GetPos real body visible in the TU as inline noinline: natural Normalise + explicit hit_pos (v1) / + temp position (v2) / + fully natural range expression (v3)
+23:42 00854dd0 grade hb1.cpp DIFFER(722v720) hunks=5 -- a5 PROBE: CHitParameters 9-arg ctor body VISIBLE in the TU (approximate, noinline) -- do the vector args stop counting as escaped? natural + explicit hit_pos (hb1) / temp position (hb2)
+23:42 00854dd0 grade hb2.cpp DIFFER(720v720) hunks=2 -- a5 PROBE: CHitParameters 9-arg ctor body VISIBLE in the TU (approximate, noinline) -- do the vector args stop counting as escaped? natural + explicit hit_pos (hb1) / temp position (hb2)
+23:43 00854dd0 grade r1.cpp DIFFER(721v720) hunks=57 -- a5: on the ctor-body-visible base (2 hunks): natural range spellings: range local + inline radius in the call (r1) / all in the call (r2) / sum local (r3)
+23:43 00854dd0 grade r2.cpp DIFFER(727v720) hunks=53 -- a5: on the ctor-body-visible base (2 hunks): natural range spellings: range local + inline radius in the call (r1) / all in the call (r2) / sum local (r3)
+23:43 00854dd0 grade r3.cpp DIFFER(730v720) hunks=57 -- a5: on the ctor-body-visible base (2 hunks): natural range spellings: range local + inline radius in the call (r1) / all in the call (r2) / sum local (r3)
+23:45 00854dd0 grade t1.cpp DIFFER(729v720) hunks=46 -- a5: fadd order on the ctor-visible base: range as by-value float PARAMETER of a TU-local inline: (target, thing, physics, range) args evaluated range/physics/GetPItem (t1) / physics inside (t2) / only the sum in a helper (t3)
+23:45 00854dd0 grade t2.cpp DIFFER(723v720) hunks=56 -- a5: fadd order on the ctor-visible base: range as by-value float PARAMETER of a TU-local inline: (target, thing, physics, range) args evaluated range/physics/GetPItem (t1) / physics inside (t2) / only the sum in a helper (t3)
+23:45 00854dd0 grade t3.cpp DIFFER(720v720) hunks=2 -- a5: fadd order on the ctor-visible base: range as by-value float PARAMETER of a TU-local inline: (target, thing, physics, range) args evaluated range/physics/GetPItem (t1) / physics inside (t2) / only the sum in a helper (t3)
+23:46 00854dd0 grade i1.cpp DIFFER(720v720) hunks=2 -- a5: more visible callee bodies on the ctor-visible base: CThingPhysical::IsInRange (i1) / + CThing::GetPos (i2) / GetPos only (i3)
+23:46 00854dd0 grade i2.cpp RELOCATION_MATCH -- a5: more visible callee bodies on the ctor-visible base: CThingPhysical::IsInRange (i1) / + CThing::GetPos (i2) / GetPos only (i3)
+23:47 00854dd0 grade j1.cpp RELOCATION_MATCH -- a5: i2 (RELOCATION_MATCH with probe ctor body) with the REAL ctor init list: + real std::map/vector members (j1) / byte-array members (j2)
+23:48 00854dd0 grade final.cpp RELOCATION_MATCH -- a5: final -- natural source + visible real bodies (ctor in header opt-in, GetPos, IsInRange)
+23:48 00854dd0 grade final_noisin.cpp DIFFER(720v720) hunks=2 -- a5: final_noisin -- natural source + visible real bodies (ctor in header opt-in, GetPos, IsInRange)
+23:48 00854dd0 grade final_natrange.cpp DIFFER(727v720) hunks=53 -- a5: final_natrange -- natural source + visible real bodies (ctor in header opt-in, GetPos, IsInRange)
+23:49 00854dd0 grade 00854dd0.cpp RELOCATION_MATCH -- a5 FINAL strict-headers regrade of 00854dd0.cpp
+23:49 00854dd0 grade 00854dd0.cpp RELOCATION_MATCH -- a5 FINAL regrade (strict headers) with the overlay reduced to the two needed headers
+23:50 00854dd0 grade src.cpp RELOCATION_MATCH -- 
+23:50 00854dd0 grade src.cpp SRC_FAIL -- 
+23:54 00854dd0 grade rep1.cpp RELOCATION_MATCH -- repair: IsInRange body via PhysicsTC->GetPosition(); ctor body = init list in declaration order on real C3DVector members (pack 1)
+23:54 006a4df0 grade rep1.cpp MATCH -- repair probe: does the TU's visible IsInRange body compile to retail 0x006A4DF0?
+23:54 004c73d0 grade rep1.cpp MATCH -- repair probe: does the TU's visible GetPos body compile to retail 0x004C73D0?
+23:54 00789238 grade rep1.cpp DIFFER(242v178) hunks=16 -- repair probe: the TU's visible ctor body vs retail 0x00789238 (retail TU is optimize s / y-off, expected to differ in codegen only)
+23:55 00789238 grade ctor_s.cpp DIFFER(186v178) hunks=3 -- repair probe: header ctor body under the landed row's pragmas (optimize y-off, s-on) vs retail 0x00789238
+23:55 00789238 grade ctor_s_tree.cpp DIFFER(186v178) hunks=3 -- repair probe: header ctor body under the landed row's pragmas (optimize y-off, s-on) vs retail 0x00789238
+23:55 00854dd0 grade 00854dd0.cpp RELOCATION_MATCH -- repair: final source (IsInRange via PhysicsTC->GetPosition(), ctor init list in declaration order), default headers mode
+23:55 00854dd0 grade 00854dd0.cpp RELOCATION_MATCH -- repair: final source, LANDVERIFY_STRICT_HEADERS=1
+23:55 006a4df0 grade 00854dd0.cpp MATCH -- repair check: final TU's IsInRange copy vs retail 0x006A4DF0
+23:55 00854dd0 grade 00854dd0.cpp RELOCATION_MATCH -- repair: final source with explicit _VECTOR_MEMBERS define, default headers mode
+23:55 00854dd0 grade 00854dd0.cpp RELOCATION_MATCH -- repair: FINAL source, LANDVERIFY_STRICT_HEADERS=1
+23:56 00854dd0 grade src.cpp RELOCATION_MATCH -- 
+23:56 00854dd0 grade src.cpp SRC_FAIL -- 
+23:57 00854dd0 grade src.cpp SRC_FAIL -- 
+23:57 00854dd0 grade src.cpp SRC_FAIL -- 
+
