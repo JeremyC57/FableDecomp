@@ -37,3 +37,9 @@ blocked acctB rows and fragments are not in the list.
 - The standing project rules apply unchanged (CLAUDE.md): byte match plus behaviour test, plain portable C++, PDB names from two
   sources, no retail bytes committed, nothing landed by the lane itself. Matched rows are staged in pending folders for the
   coordinator, with a final index like `../2026-11-13_acctB_FINAL/INDEX.tsv`, and with REAL lengths in it.
+
+## Lane progress (acctC coordinator)
+`STATUS.tsv` is the lane's ledger, one line per reserved row (OPEN / QUEUED / IN_PROGRESS / MATCHED_STAGED, true length, the pending
+folder a matched row is staged in). Owner goal (2026-11-13): every reserved row matched; author agents (Opus, expert brief, large
+budgets) are relaunched as they end. `lane/mkagent.py <agent> <addr>...` builds an agent's work folder and brief from
+`lane/BRIEF_TEMPLATE.md` (scratch paths are filled in at run time; oracles stay in the scratch).
