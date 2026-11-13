@@ -395047,6 +395047,14 @@ $catalog = @(
         TestSource = '00/40/CUserProfileManager_SetDefaultValuesVideo_004093e0_test.cpp'
         PassPattern = '004093e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d17a80'
+        Module = 'NScript::CQ_BountyHuntScript'
+        Source = '00/d1/NScriptCQBountyHuntScript_WatchForBoasts_00d17a80.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScript_WatchForBoasts_00d17a80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Og- /d2vol10'
+        PassPattern = '00d17a80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

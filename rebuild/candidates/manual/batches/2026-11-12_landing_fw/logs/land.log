@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00d17a80   WARN RELOC_NAME: ??0?$_Vector_base@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@JVCCharString@@@std@@@1@@Z -> 0074f680 labelled 'CIndexBuffer::CIndexBuffer'
+00d17a80   WARN RELOC_NAME: ??_G?$pair@JVCCharString@@@std@@QAEPAXI@Z -> 004da68a labelled 'std::pair<long,CCharString>::`scalardeletingdestructor''
+00d17a80   WARN RELOC_NAME: ??1?$_Vector_base@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAE@XZ -> 004d9c5d labelled '_unattributed::ReleaseFirstMember_004d9c5d'
+00d17a80   RELOCATION_MATCH PASS   WatchForBoasts
+
+WINS: 1
+  00d17a80 RELOCATION_MATCH NScript::CQ_BountyHuntScript::WatchForBoasts
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQBountyHuntScript_WatchForBoasts_00d17a80

@@ -30,6 +30,10 @@ public:
     void WatchForDeputy2GruntsKilled();                                  // 0x00D19AF0
     class CBH_GangDeputy2;                                               // Alloc 0x00D161A0
 #endif
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_BOASTS
+    void WatchForBoasts();                                               // 0x00D17A80 (Ego_r.pdb QAEXXZ)
+    void WatchForQuestInfoDisplayConditions();                           // 0x00D17DA0 (Ego_r.pdb QAEXXZ)
+#endif
 #ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY1
     void WatchForDeputy1GruntsKilled();                                  // 0x00D18B20 (retail; Ego_r.pdb QAEXXZ)
     class CBH_GangDeputy1;                                               // Alloc 0x00D15FC0

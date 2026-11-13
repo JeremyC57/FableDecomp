@@ -1,0 +1,1 @@
+00d17a80	NScript::CQ_BountyHuntScript::WatchForBoasts	RELOCATION_MATCH	50	budget inliner: #pragma optimize(g,on) + Flags /Og- /d2vol10 (explained in the source header; threshold vol 8); GetMasterData() x2 + made-up Game accessor x2; repair: global 0x0143E8F8 respelled pDSTGame

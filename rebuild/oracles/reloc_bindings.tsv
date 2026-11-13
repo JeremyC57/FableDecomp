@@ -39117,3 +39117,6 @@ _SplineRandomSeed	013999c4	00b206b0
 ?g_MaxResolutionWidth@@3JA	01375084	004093e0
 ?g_MemoryA@@3JA	0137509c	004093e0
 ?g_MemoryB@@3JA	013750a0	004093e0
+??0?$_Vector_base@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@JVCCharString@@@std@@@1@@Z	0074f680	00d17a80
+??1?$_Vector_base@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAE@XZ	004d9c5d	00d17a80
+?WatchForQuestInfoDisplayConditions@CQ_BountyHuntScript@NScript@@QAEXXZ	00d17da0	00d17a80
