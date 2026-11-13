@@ -1,0 +1,181 @@
+address	length_estimate	catalog_module	catalog_name	kind	closest_version	note
+005d1f0c	17873	CTCInventoryStats	CTCInventoryStats::vfunc_89	parked	rebuild/candidates/manual/pending/2026-11-12_acctB_f4006/rows/005d1f0c.cpp	matched in the acctB lane but not landed: it relies on a fitted helper named in no PDB (see batches/2026-11-13_landing_fy/README.md)
+005ce0e6	15910	CTCInventoryStats	CTCInventoryStats::vfunc_86	parked	rebuild/candidates/manual/pending/2026-11-12_acctB_f4006/rows/005ce0e6.cpp	matched in the acctB lane but not landed: it relies on a fitted helper named in no PDB (see batches/2026-11-13_landing_fy/README.md)
+00bd3070	11296	CEnginePrimitiveManagerAnimatedMeshesBase	RenderMeshPrimitive	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00bd3070.cpp	acctB best draft: DIFFER(ours
+0060eeb0	10256	CTCInventoryMap	ConstructPCMapList	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/0060eeb0.cpp	acctB best draft: DIFFER(10242v10254)
+00ba2350	9632	CEnginePrimitiveManagerStaticMeshesBase	SetupRenderModeShadersAndConstants	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00ba2350.cpp	acctB best draft: DIFFER(9500v9632)
+00b783f0	9360	CEngineWaterRenderer	?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00b783f0.cpp	acctB best draft: DIFFER(9343v9343)
+00795300	9312	CTCDivineWrath	FrameUpdate	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00795300.cpp	acctB best draft: DIFFER(9501v9268)
+005f1b10	8383	CTCInventoryAbilities	ConstructPCMagicList	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/005f1b10.cpp	acctB best draft: DIFFER(8380v8383)
+0058578b	8081	CTCInventory	CTCInventory::vfunc_30	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/0058578b.cpp	acctB best draft: DIFFER(7948v8081)
+00b4d370	7184	CEngineShadowRenderer	UpdateShadowSpace	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00b4d370.cpp	acctB best draft: DIFFER(7160v7176)
+00601310	6944	_global	ConstructQuestsScreen_MainMenu	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00601310.cpp	acctB best draft: DIFFER(6962v6931)
+00b89c30	6432	CEngineScreenEffectOutlineGlow	ApplyOutline	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00b89c30.cpp	acctB best draft: DIFFER(6431v6431)
+00b5ca70	5760	CEngineScreenEffectRadialBlurRenderer	CaptureBackBuffer	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00b5ca70.cpp	acctB best draft: DIFFER(5724v5748)
+00651b04	5126	CDrawAbilityButtons	Draw	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00651b04.cpp	acctB best draft: DIFFER(5126v5126)
+00baa870	4608	CEnginePrimitiveManagerRepeatedZSprites	RenderFromSortList	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00baa870.cpp	acctB best draft: DIFFER(4575v4600)
+00bb3e80	4544	CEngineClothRenderer	RenderClothPrimitive	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00bb3e80.cpp	acctB best draft: DIFFER(4540v4540)
+00a91640	4352	_gapscan	sub_00a91640	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00a91640.cpp	acctB best draft: DIFFER(4324v4344)
+00b8b780	4096	CEngineBillboardGenerator	RenderBillboard	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00b8b780.cpp	acctB best draft: DIFFER(3921v3921,
+00ba5260	4064	CEnginePrimitiveManagerStaticMeshesBase	RenderMeshPrimitive	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00ba5260.cpp	acctB best draft: DIFFER(4060v4056)
+00bcc800	3216	CEnginePrimitiveManagerWeaponTrails	RenderWeaponTrail	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00bcc800.cpp	acctB best draft: DIFFER(3207v3205)
+0048e78e	2662	CSubtitleRenderer	DrawButtonGraphics	parked	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/0048e78e.cpp	acctB best draft: DIFFER(ours
+00cbfb7d	74804	_global	RunCutsceneMacro	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand885/differ/00cbfb7d.cpp	
+00f0fb70	18144	NScript::CQ_ArenaScript	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00f0fb70.cpp	
+00d45060	18064	NScript::CQ_GuildTrainingScript	CheckFriendlyAttacks	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand868/differ/00d45060.cpp	
+00e20600	14512	NScript::CQR_EscortTraderScript::CTraderToEscort	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00e20600.cpp	
+00502e90	13632	CWorldMap	PopulateRegionWithVillagers	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00502e90.cpp	
+006096e0	12832	CTCInventoryMap	ConstructLogbookListPC	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/006096e0.cpp	
+0061e6d0	12368	CTCInventoryQuests	ConstructQuestListPC	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/0061e6d0.cpp	
+00e4b5b0	10608	NScript::CV_BanditTollScript::CTollBandit	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00e4b5b0.cpp	
+00e3bb70	10160	NScript::CV_BordelloScript::CMadame	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00e3bb70.cpp	
+00e50fd0	9888	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00e50fd0.cpp	
+00d973d0	9824	NScript::CQ_HobbeCaveScript::CBanditSacrifice	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00d973d0.cpp	
+00603000	9584	CTCInventoryMap	CreateMiniMapMarkers	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00603000.cpp	
+00e5fd40	9392	NScript::CV_BodyGuardScript::CBodyGuard	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00e5fd40.cpp	
+0078fd60	9280	CTCDivineWrath	FrameUpdate	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/0078fd60.cpp	
+00e33ea0	9232	NScript::CV_ArcheryCompetitionScript::CAC_Owner	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00e33ea0.cpp	
+00c4f600	9216	_global	PropertySerializer_GetPropertyTypeCode	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00c4f600.cpp	
+00b10b10	9184	NParticleEngine::CPSCEmitterGeneric	GenerateParticle	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00b10b10.cpp	
+00d0f640	8944	NScript::CQ_BanditCampBossBattleScript	CheckForSecondAreaMassacre	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00d0f640.cpp	
+00cf68c0	8080	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00cf68c0.cpp	
+00507c30	7664	CWorldMap	CWorldMap::LoadFromFile	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00507c30.cpp	
+00db97a0	7024	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00db97a0.cpp	
+00d13580	6928	NScript::CQ_BountyHuntScript	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00d13580.cpp	
+00b03ca0	6528	NParticleEngine::CPSCRenderMesh	PreparePrimitives	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00b03ca0.cpp	
+00df6010	6496	NScript::CQ_TraderConflictEvilScript	Main	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00df6010.cpp	
+00dcfa60	5200	NScript::CQ_OrchardFarmRaidScript	DoCutsceneIfRequired	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand868/differ/00dcfa60.cpp	
+00a2f740	4912	C3DMeshStats	InitialiseFromFileData	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand868/differ/00a2f740.cpp	
+007a1b20	4816	CTCWillLightning::CLightningBeam	FrameUpdate	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand868/differ/007a1b20.cpp	
+00dc4d70	4320	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan	Main	parked	rebuild/candidates/manual/pending/2026-11-06_linux_hand804/differ/00dc4d70.cpp	
+00ed17d0	4288	NScript::CV_SingingStonesScript::CManWithDoorName	Main	parked	rebuild/candidates/manual/pending/2026-11-06_linux_hand804/differ/00ed17d0.cpp	
+00ee57b0	4256	NScript::CV_TourGuideScript::CTourGuideGuide	Main	parked	rebuild/candidates/manual/pending/2026-11-06_linux_hand825/differ/00ee57b0.cpp	
+00dc5f80	4256	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman	Main	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand835/differ/00dc5f80.cpp	
+00d3d150	4256	NScript::CQ_GuildTrainingScript::CAppleGirl	Main	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand835/differ/00d3d150.cpp	
+00a8b990	4208	C3DMesh2	InitialiseBones	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand864/differ/00a8b990.cpp	
+005ff190	4176	CTCInventoryMap	CreateMapMarkers	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand729/differ/005ff190.cpp	
+00d75060	4048	NScript::CQ_HangingTreeGoodScript	FinalRound	parked	rebuild/candidates/manual/pending/2026-11-04_linux_hand744/differ/00d75060.cpp	
+00bafa00	3952	CEnginePrimitiveManager2DSprites	CEnginePrimitiveManager2DSprites::RenderClockPrim	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand888/differ/00bafa00.cpp	
+00931390	3904	CAIStateGroup_MinionReactToCriminal	?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand830/differ/00931390.cpp	
+00b01900	3792	NParticleEngine::CPSCRenderMesh	AddToBoundingSphere	parked	rebuild/candidates/manual/pending/2026-11-04_linux_hand740/differ/00b01900.cpp	
+00879900	3776	NCameraModes::CProjectileWeapon	Update	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand724/round3/differ/00879900.cpp	
+00bca950	3760	CEnginePrimitiveManagerSpriteTrails	RenderSpriteTrail	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand889/differ/00bca950.cpp	
+00bc04f0	3760	CEnginePrimitiveManagerParticleSpriteGroup	RenderSingleSprite	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/differ/00bc04f0.cpp	
+00bbac60	3744	CEnginePrimitiveManagerDecal	RenderLandscapeDecal	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand888/differ/00bbac60.cpp	
+009a25d0	3728	CStreamingFontBank	Render	parked	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/009a25d0.cpp	
+00b1e380	3712	NParticleEngine::CPSCDecalRenderer	DatabaseSerialise	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand724/round3/differ/00b1e380.cpp	
+0090d030	3696	CAIStateGroup_MinionGossip	?Update@CAIStateGroup_MinionGossip@@MAEXXZ	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand830/differ/0090d030.cpp	
+005a4cdd	3668	CTCInventoryTrade	ConstructActualSellInventoryPC	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand891/differ/005a4cdd.cpp	
+00531ec0	3648	NUISystem::CComponent	Update	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand865/differ/00531ec0.cpp	
+00e27e90	3600	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze	Main	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand835/differ/00e27e90.cpp	
+00678760	3584	CPersistTraits<std::list<CReactionMatch*> >	TransferIn	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand829/differ/00678760.cpp	
+00cfe030	3584	NScript::CQ_AwakeningTheOracleScript::COracleTablet	Main	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand864/differ/00cfe030.cpp	
+00b70a90	3568	CEngineWaterRenderer	RenderEnvironmentMap	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/differ/00b70a90.cpp	
+00bb30a0	3552	CEngineClothRenderer	Render2DClothPrimitive	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand860/differ/00bb30a0.cpp	
+005ac10e	3532	CTCInventoryTrade	ConstructActualBuyInventoryPC	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand891/differ/005ac10e.cpp	
+006d1e30	3488	CTCWife	FrameUpdate	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand728/round2/differ/006d1e30.cpp	
+00648820	3464	CDrawMiniMap	Draw	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand858/differ/00648820.cpp	
+00682810	3456	CTCCreatureOpinionOfHero	InformOfDeed	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand858/differ/00682810.cpp	
+009d9c80	3440	CRenderManager2D	DrawBufferedPolys	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand864/differ/009d9c80.cpp	
+00bc8a60	3424	CEnginePrimitiveManagerLines	RenderLine	parked	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/00bc8a60.cpp	
+009d8cf0	3392	CRenderManager2D	ClearRenderTarget	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand864/differ/009d8cf0.cpp	
+00715a70	3360	NTCScriptedControl::CActionTalkBase	SetUpCamera	parked	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/00715a70.cpp	
+00b1c880	3280	NParticleEngine::CPSCDecalRenderer	ReadBinary	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand724/round2/differ/00b1c880.cpp	
+00d82640	3264	NScript::CQ_HeroSoulsBriarScript::CBriarRose	Main	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand835/differ/00d82640.cpp	
+0066cf00	3248	CRegionMinimap	PopulateRegionMinimap	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand827/differ/0066cf00.cpp	
+007db6a0	3248	CTCTavernGameCardBlackjack	CardsMainGame	parked	rebuild/candidates/manual/pending/2026-11-06_linux_hand823/differ/007db6a0.cpp	
+00bb0970	3216	CEnginePrimitiveManager2DSprites	?RenderSpritePrim@CEnginePrimitiveManager2DSprites@@MAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand888/differ/00bb0970.cpp	
+00b1f200	3200	NParticleEngine::CPSCDecalRenderer	PreparePrimitives	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand724/round3/differ/00b1f200.cpp	
+00d7fe90	3152	NScript::CQ_HeroSoulsArenaScript	WatchForRoundsInArena	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand826/differ/00d7fe90.cpp	
+00b6edf0	3152	CEngineWaterRenderer	BuildConstantBuffers	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/differ/00b6edf0.cpp	
+00dea3f0	3088	NScript::CQ_RansomVictimScript::CVictimsBrother	Main	parked	rebuild/candidates/manual/pending/2026-11-06_linux_hand825/differ/00dea3f0.cpp	
+00974aa0	3088	CAIStateGroup_JackOfBladesStage2	Update	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand828/differ/00974aa0.cpp	
+00a593f0	3040	NBBBMaths::CCylinder	GetFirstIntersectionWithTriangle	parked	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/00a593f0.cpp	
+00f3bdd0	3008	CTriangleStripifier2	FillInTriStrip	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/differ/00f3bdd0.cpp	
+0049a0b0	2992	CProgressDisplay	InitialiseTextures	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand860/differ/0049a0b0.cpp	
+00b087c0	2976	NParticleEngine::CPSCSingleSprite	PreparePrimitives	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand737/differ/00b087c0.cpp	
+00eaf810	2960	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff	DoAskingHeroToKillAssassin	parked	rebuild/candidates/manual/pending/2026-11-04_linux_hand746/differ/00eaf810.cpp	
+00d0a830	2960	NScript::CQ_BanditCampBossBattleScript::CBanditKing	Main	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand832/differ/00d0a830.cpp	
+00ae3c30	2944	CParticleProgram	ReadFromFile	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand850/differ/00ae3c30.cpp	
+00bd5c90	2944	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveToShadowBuffer	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand889/differ/00bd5c90.cpp	
+00ba6240	2944	CEnginePrimitiveManagerStaticMeshesBase	?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManagerStaticMeshesBase@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand888/differ/00ba6240.cpp	
+00b5a3f0	2928	CEngineScreenEffectColourFilter	ApplyColourFilter	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand864/differ/00b5a3f0.cpp	
+00bb2540	2912	CEngineClothRenderer	RenderPolygons	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand852/differ/00bb2540.cpp	
+00be0eb0	2896	CEnginePrimitiveManager2DParticleGroup	RenderSubPrimitive	parked	rebuild/candidates/manual/pending/2026-11-04_linux_hand742/differ/00be0eb0.cpp	
+00c79fd0	2896	_global	Audio_ConvolveFilter_WithGain	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand874/differ/00c79fd0.cpp	
+00ade080	2880	C3DBoundingBox	InitialiseFromOBB	parked	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/00ade080.cpp	
+00dadf80	2800	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager	Main	parked	rebuild/candidates/manual/pending/2026-11-06_linux_hand822/differ/00dadf80.cpp	
+00e2f170	2784	CV_AmbushScamScript	SpringAmbush	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/differ/00e2f170.cpp	
+004a0d90	2736	CWorld	LoadQuestsFromFile	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand734/differ/004a0d90.cpp	
+00b77370	2736	CEngineWaterRenderer	RenderSeaReflectiveForeground	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round2/differ/00b77370.cpp	
+00b751f0	2736	CEngineWaterRenderer	RenderIceForeground	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/differ/00b751f0.cpp	
+00981410	2704	_global	AIAction_InteractWith	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand852/differ/00981410.cpp	
+00acdb80	2688	QuadricOptimiserInternals::COptimisedPrimitive	COptimisedPrimitive	parked	rebuild/candidates/manual/pending/2026-11-05_linux_hand785/differ/00acdb80.cpp	
+0068cb90	2656	CInputProcessControlFreeCamera	CInputProcessControlFreeCamera::ProcessInput	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand835/differ/0068cb90.cpp	
+005f59c7	2652	CTCInventoryAbilities	ConstructPCExpressionsList	parked	rebuild/candidates/manual/pending/2026-11-10_linux_hand1008b/differ/005f59c7.cpp	
+00435530	2624	CDisplayEngine	DoRender	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand829/differ/00435530.cpp	
+00439070	2624	CPlayerGui	DrawPreparePrimitivesForEngine	parked	rebuild/candidates/manual/pending/2026-11-07_linux_hand829/differ/00439070.cpp	
+007de710	2592	CTCWallMount	AttachObject	parked	rebuild/candidates/manual/pending/2026-11-05_linux_hand794/differ/007de710.cpp	
+00772bb0	2592	CTCShop	AddSaleItem	parked	rebuild/candidates/manual/pending/2026-11-08_linux_hand850/differ/00772bb0.cpp	
+00dce230	2592	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember	Main	parked	rebuild/candidates/manual/pending/2026-11-05_linux_hand786/differ/00dce230.cpp	
+006d0830	2592	CTCWife	GlobalUpdate	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand728/round2/differ/006d0830.cpp	
+00d4a270	25488	NScript::CQ_GuildTrainingScript::CCombatApprentice	Main	never_worked		acctB: nothing yet
+004804de	11203	CTCInGameMenu	OpenInGameMenuPC	never_worked		acctB: nothing yet
+0060c900	9648	CTCInventoryMap	CTCInventoryMap::BuildMapTeleportUI	never_worked		acctB: nothing yet
+00b33b50	9488	CEnginePrimitiveRenderer	CEnginePrimitiveRenderer	never_worked		acctB dossier / outline only
+00f1eed0	9264	CQ_ArenaScript	PlayWave	never_worked		acctB: nothing yet
+0044c72b	9225	CGameDefinitionManager	InitAndCompile	never_worked		acctB dossier / outline only
+004a3740	8960	CWorld	UpdateRegionLoad	never_worked		acctB: nothing yet
+006f5c10	8720	_global	StatRegisterClass	never_worked		acctB: nothing yet
+00b69000	8368	CEnginePrimitiveManagerParticleSpriteGroup	CEnginePrimitiveManagerParticleSpriteGroup	never_worked		acctB: nothing yet
+00a059e0	7968	CRenderStateManager	SetDefaultRenderStates	never_worked		acctB dossier / outline only
+00aca830	7264	COptimisedPrimitive	Initialise	never_worked		acctB dossier / outline only
+00b73760	6800	CEngineWaterRenderer	CEngineWaterRenderer	never_worked		acctB dossier / outline only
+004736c4	6498	CPlayerGuiDef	?Transfer@CPlayerGuiDef@@UAEXAAVCPersistContext@@@Z	never_worked		acctB dossier / outline only
+00bae2d0	5904	CEnginePrimitiveManager2DSprites	?RenderSubPrimitive@CEnginePrimitiveManager2DSprites@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	never_worked		acctB dossier / outline only
+005eeff2	5619	_gapscan	sub_005eeff2	never_worked		acctB dossier / outline only
+00b3cb30	5440	CEngineResourceManager	CEngineResourceManager	never_worked		acctB dossier / outline only
+0058807d	4997	CTCInventory	OpenPCInventoryMenu	never_worked		acctB dossier / outline only
+00598a1c	4928	CFrontEndManager	CFrontEndManager::Init2	never_worked		acctB dossier / outline only
+00aa2110	4736	C3DAnimationManager	CalcBlendedBoneTransformation	never_worked		acctB dossier / outline only
+00652fa4	4653	NPlayerGui::CDrawQuickAccessIcons	Draw	never_worked		acctB dossier / outline only
+00aa0fa0	4464	C3DAnimationManager	CalcBoneTransformation	never_worked		acctB dossier / outline only
+00b9ac30	4240	CEnginePrimitiveManagerRepeatedStaticMeshes	CEnginePrimitiveManagerRepeatedStaticMeshes::RenderSubPrimitive	never_worked		acctB dossier / outline only
+00b555a0	3872	CEngineWeatherRenderer	?Render@CEngineWeatherRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	never_worked		acctB dossier / outline only
+0121b9b0	9568	_gapscan	sub_0121b9b0	never_worked		
+0121f86f	8145	_global	ParticleEngine_ModuleInit	never_worked		
+01221d20	8000	_gapscan	sub_01221d20	never_worked		
+00dfca90	2928	NScript::CQ_TraderConflictGoodScript::CBanditExtra	Main	never_worked		
+0058f9bc	2012	CTCInventory	OpenPCPhotojournal	never_worked		
+007bfe30	1648	CTCShotDefinitionBase	UpdateCollision	never_worked		
+009fde80	1280	CGraphicInfoFrame::CFrameData	BeginLoading	never_worked		
+007c0690	1088	NThingShot::CTCShotDefinitionBase	Init	never_worked		
+007ef200	1024	CTCCarriedActionUseExpression	CTCCarriedActionUseExpression::vfunc_28	never_worked		
+0074e860	1008	CTCContainerRewardHero	GetRewardItems	never_worked		
+0072cf40	1008	CTCSpecialAbilities	UseSpecialAbility	never_worked		
+00735fd0	976	CTCCombat	AttemptToStartParticle	never_worked		
+007e15c0	976	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0	never_worked		
+006823d0	976	CTCCreatureOpinionOfHero	FrameUpdate	never_worked		
+00537e70	955	_global	ContainerUI_HandleMouseInput	never_worked		
+00945060	944	CAIStateGroup_WorkHammerAnvil	?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ	never_worked		
+006b2ca0	912	_global	CGameCamera_UpdateViewMatrix	never_worked		
+00944940	912	CAIStateGroup_WorkSawingWood	?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ	never_worked		
+007b57c0	896	CTCCarriedActionUseActivateQuest	CTCCarriedActionUseActivateQuest::vfunc_28	never_worked		
+007bc38a	880	_global	CTCPhysicsRigidBody_ApplyForceToward	never_worked		
+006a1a00	864	CTCCarrying	GetCarriedThingInterpolatedPosAndOrientation	never_worked		
+0074af50	864	CTCCreatureGenerator	CreateCreaturesUndead	never_worked		
+00a5cb90	848	CMatrix4x4	AlignedTransformTransposedAssumeW	never_worked		
+00c6f3e0	848	_global	CAudioMixer_ProcessChannels_64bit	never_worked		
+00c271f0	848	_global	CTCInventory_OnItemEquippedHelper	never_worked		
+007fc9d0	816	CTCKraken	FrameUpdate	never_worked		
+0075d580	816	CTCCameraPointScriptedSpline	UpdateCameraParams	never_worked		
+0077b350	800	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::vfunc_0	never_worked		
+007ea580	768	_global	CTCTargeted_BuildTargetTrajectory	never_worked		
+00875690	768	CGeneralCircle	CGeneralCircle	never_worked		
+00a3e830	752	CSoundManagerLH	CSoundManagerLH::vfunc_35	never_worked		
+00bd2d90	736	CEngineInternalPrimitiveAnimatedMesh	GetBoneTransformations	never_worked		
+007db2e0	736	_global	CTCTavernGameCardBase_NewGame	never_worked		
+00a3e520	736	CSoundManagerLH	CSoundManagerLH::vfunc_18	never_worked		
+00564d5d	723	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics::CEntry*>	never_worked		
+00ed14e0	720	NScript::CV_SingingStonesScript::CSingingStone	Init	never_worked		
+00bbddd0	704	CEnginePrimitiveManagerParticleSpriteTrailGroup	?RenderPrimitive@CEnginePrimitiveManagerParticleSpriteTrailGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z	never_worked		
