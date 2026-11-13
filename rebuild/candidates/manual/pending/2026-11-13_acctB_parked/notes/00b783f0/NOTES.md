@@ -82,3 +82,9 @@
   exp3 DstB/ABE 0x00B7A5D0/0x00B7A635, reg pair 0x00B79938). ~140 compiles (probes logged in ATTEMPTS.log as `probe`, grid in
   a3/gs/results.txt). Tools for the next agent: a3/sw.sh <abs src...> (compile + C/S pattern diff), a3/roles.py (block roles),
   a3/gen2.py (named-symbol ruler generator), a3/hdr (probe hooks PROBE_SRS_BODY / PROBE_SBEM_BODY / PRB_A..E / PRB_ATT / PRB_RMTYPE ...).
+
+## Session 4 (bwf rows 1-4 agent, 2026-11-13) -- unchanged DIFFER(9343v9343), 7 block-token diffs (quartet 30..33, 41 roles, 71/72)
+- Tool: /opt/fable_lane/w22/bwf1/00b89c30/c2/sw.sh + pat.py (block tokens: load order S/C + test/or roles). Probe overlay b4/hp: 2/4/8 dead
+  ulong records at the start, between the four SetRenderState calls, or at the end of SetTextureBumpEnvMatrix: identical result at every
+  position (2: +12/13 flips, quartet stays S; 8: code changes). The row 0x00B89C30 lever (records inside one raw-DWORD setter instance) does
+  not reach the quartet here.

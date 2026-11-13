@@ -47,3 +47,12 @@
   FABLE_RETAIL_C3DVECTOR_SUB_INITIALISE in hdr/C3DVector.h) leaves the row at 37 with the same orders. fwsize probes on a TINY file
   run in ~1 s (probe/q*.cpp pattern); only the full-TU probe hung. TransformPoint is fwsize SAME, so its row orders (retail row 2
   X,Z,Y / row 3 Y,X,Z; ours Z,Y,X) are pure c2 record-id ties: next step is agent3010's tools/c2h7/model.py on this row.
+
+## Session (bwf rows 1-4 agent, 2026-11-13) -- unchanged DIFFER(4540v4540) 37 hunks
+- PeekGlobalShadowMode() accessor (FableWin 9i/20b, SAME by fwsize; overlay b5/hdr opt-in FABLE_RETAIL_CENGINELIGHTINGMANAGER_PEEKGLOBALSHADOWMODE)
+  at both faded-shadow sites (`== 1`, `== (ELightingManagerShadowMode)1`, `1 == ...`): no change (37).
+- fwsize: SetEnableFadedShadowFactor ours 20i/64b v FableWin 24i/80b (+4i/+16b: the setter TEXT differs). Probe texts (b5/fw/v*.cpp):
+  `= enable ? true : false` 22i/70b, old-copy form 22i/72b, both-ternary compare 26i/80b, early return 21i/66b, two-arm 33i; none 24i/80b.
+  Row grades with them (b5/f1..f6 via PROBE_FADED_BODY): call site keeps `sete` in every one (sizes 4540..4667).
+- Retail's `cmp [m],1 ; mov cl,1 ; je ; xor cl,cl` is VC7.1's branchy bool materialisation (an inlined `return a && b`-style body,
+  lesson c2037): next idea = a bool-returning inline at the call site / in the setter whose text gives the branch form, sized 24i/80b.

@@ -26,3 +26,8 @@
 - Headers: hdr/README.md (15 opt-ins). Local models (no repo header): CRenderTarget (Ego_r 0x24 : CBaseClass), CEngineBillboard (Ego_r 0x18).
 - Name evidence: 0x00A10E90 is CRenderTarget::AttachZBuffer (FableWin ?AttachZBuffer@CRenderTarget@@QAEXABVCSurface@@@Z + body writes
   ZBufferSurface +0x14); landed spelling AttachTarget is wrong (NAME_FIXES.tsv). Test: test/00b8b780_test.cpp (vt.py PASS).
+
+## Session (bwf rows 1-4 agent, 2026-11-13) -- unchanged DIFFER(3921v3921); block tokens differ at 3,4,5 (AlphaRef/AlphaTestFunc/Fog roles) + 7,8
+- Probe (tools /opt/fable_lane/w22/bwf1/00b89c30/c2/{mkprobe.py,sw.sh,pat.py}; overlay c2/r3hp): 2/4/8/16 dead records inside ONE setter
+  instance (SetAlphaTestEnable, SetAlphaBlendEnable, SetAlphaRef, SetAlphaTestFunc, SetFogEnable): at most blocks 7,8 fixed (8 in AT/AB,
+  16 in AR/AF/Fog); blocks 3..5 never move. The row-0x00B89C30 lever (records inside one setter instance) does not apply here.

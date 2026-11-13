@@ -310,3 +310,52 @@
 18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=19 /GS -- ksweep probe v64.cpp k=120
 18:42 00b8b780 grade ks.cpp DIFFER(3921v3921) hunks=21 /GS -- ksweep probe v64.cpp k=124
 18:44 00b8b780 grade final.cpp DIFFER(3921v3921) hunks=23 /GS -- final check of differ source (clean overlay)
+04:00 00b8b780 probe k00.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:00 00b8b780 probe k01.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:00 00b8b780 probe k02.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:00 00b8b780 probe k03.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:00 00b8b780 probe k04.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:00 00b8b780 probe k08.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:00 00b8b780 probe k16.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 3 3:Cmb 4:Cmb 5:Cmb
+04:02 00b8b780 probe SetAlphaBlendEnable_02.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:02 00b8b780 probe SetAlphaBlendEnable_04.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:02 00b8b780 probe SetAlphaBlendEnable_08.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:02 00b8b780 probe SetAlphaBlendEnable_16.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:02 00b8b780 probe SetAlphaRef_02.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:02 00b8b780 probe SetAlphaRef_04.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:02 00b8b780 probe SetAlphaRef_08.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:02 00b8b780 probe SetAlphaRef_16.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetAlphaTestEnable_02.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetAlphaTestEnable_04.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetAlphaTestEnable_08.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetAlphaTestEnable_16.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetAlphaTestFunc_02.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetAlphaTestFunc_04.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetAlphaTestFunc_08.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetAlphaTestFunc_16.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetFogEnable_02.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetFogEnable_04.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetFogEnable_08.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetFogEnable_16.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe base.cpp pattern -> SRC_FAIL 14 0 ndiff 14 
+04:03 00b8b780 probe SetAlphaBlendEnable_02.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetAlphaBlendEnable_04.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetAlphaBlendEnable_08.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 3 3:Cmb 4:Cmb 5:Cmb
+04:03 00b8b780 probe SetAlphaBlendEnable_16.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 7:Cmb 8:Cmb 13:Smb
+04:03 00b8b780 probe SetAlphaRef_02.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetAlphaRef_04.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetAlphaRef_08.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetAlphaRef_16.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 3 3:Cmb 4:Cmb 5:Cmb
+04:03 00b8b780 probe SetAlphaTestEnable_02.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetAlphaTestEnable_04.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetAlphaTestEnable_08.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 3 3:Cmb 4:Cmb 5:Cmb
+04:03 00b8b780 probe SetAlphaTestEnable_16.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 4 3:Cmb 4:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetAlphaTestFunc_02.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetAlphaTestFunc_04.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetAlphaTestFunc_08.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetAlphaTestFunc_16.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 3 3:Cmb 4:Cmb 5:Cmb
+04:03 00b8b780 probe SetFogEnable_02.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetFogEnable_04.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetFogEnable_08.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb
+04:03 00b8b780 probe SetFogEnable_16.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 3 3:Cmb 4:Cmb 5:Cmb
+04:03 00b8b780 probe base.cpp pattern -> DIFFER(3921v3921) 14 14 ndiff 5 3:Cmb 4:Cmb 5:Cmb 7:Cmb 8:Cmb

@@ -178,3 +178,11 @@
 18:04 0048e78e grade bo1.cpp DIFFER(2664v2662) hunks=39 -- t1 + box2 before box1 / button2 Y before X subtract
 18:04 0048e78e grade bo2.cpp DIFFER(2664v2662) hunks=37 -- t1 + box2 before box1 / button2 Y before X subtract
 18:04 0048e78e grade final.cpp DIFFER(2662v2662) hunks=14 -- final differ source regrade
+04:07 0048e78e grade v1.cpp DIFFER(2611v2662) hunks=138 -- C2DBoxF::Move (FableWin 31i/81b SAME) for arm A offsets
+04:07 0048e78e grade v2.cpp DIFFER(2640v2662) hunks=127 -- C2DBoxF::Move (FableWin 31i/81b SAME) for arm A offsets
+04:07 0048e78e grade v1.cpp DIFFER(2660v2662) hunks=33 -- C2DBoxF::Move FORCEINLINE for arm A offsets
+04:07 0048e78e grade v2.cpp DIFFER(2664v2662) hunks=33 -- C2DBoxF::Move FORCEINLINE for arm A offsets
+04:07 0048e78e grade a1.cpp DIFFER(2657v2662) hunks=42 -- single-block af1 + C2DBoxF::Move
+04:08 0048e78e grade r1.cpp DIFFER(2660v2662) hunks=33 -- Move + named offset ref/copy
+04:08 0048e78e grade r2.cpp DIFFER(2657v2662) hunks=42 -- Move + named offset ref/copy
+04:08 0048e78e grade r3.cpp DIFFER(2668v2662) hunks=29 -- Move + named offset ref/copy

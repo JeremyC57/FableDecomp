@@ -27,3 +27,14 @@ c/pm11.cpp 1178i v 1205i): find the extra statement(s) -- e.g. a named extents l
 accessors, or the 0x800 test feeding `layer` through an inline helper -- that make c2 allocate flags before InCutscene with the if after box3,
 then re-run the 24 arm-A orders on that single-block base (c/af1.cpp is the single-block template).
 Names: no landed name proven wrong beyond prior NAME_FIXES.tsv. Made-up names: parameter/local names only (descriptive, as prior notes).
+
+## Session (bwf agent, 2026-11-13) -- best unchanged (differ/ = 14 hunks)
+- New fact: FableWin/Ego_r have ?Move@C2DBoxF@@QAEXABVC2DVector@@@Z (FableWin 0x01D2ECC0, 31i/81b); `TLX += o.X; TLY += o.Y; BRX += o.X;
+  BRY += o.Y;` is SAME by fwsize (b6/fw/m1). Overlay b6/hdr/engine/C2DBoxF.h opt-in FABLE_RETAIL_C2DBOXF_MOVE (plain inline is CALLED
+  in this optimize("s") TU -> 2611/2640 bytes; FABLE_FORCEINLINE needed -> needs an // Inline-budget: line if kept).
+  Arm A as `button2_box.Move(def.TextBoxHugeButtonOffset); ... button2_box.Move(def.TextBoxHugeButtonLeftOffset);`: b6/v1 33 hunks
+  (2660v2662) on the two-block base, b6/a1 42 hunks on the single-block af1 base. Store order now TLX,TLY,BRX,BRY as retail, but the X
+  offset address is still not CSE'd (ours `fadd [ebx+5FCh]` twice; retail `lea eax,[ebx+5FCh]` / `lea ecx,[ebx+600h]`). Move looks like
+  the real text (retail store order = its statement order), so the missing X-address CSE is probably the same "one missing source fact"
+  as the single-block flags/InCutscene register residue. Next: combine Move with the single-block base and look for what keeps the
+  reference parameter's address live (e.g. offset passed through a named `const C2DVector& offset = def.TextBoxHugeButtonOffset;`).

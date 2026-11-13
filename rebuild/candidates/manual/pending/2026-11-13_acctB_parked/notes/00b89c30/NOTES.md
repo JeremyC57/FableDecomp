@@ -26,3 +26,25 @@
   twin rows. No landed name proved wrong in this row (dossier side note: the landed 0x00B89080 "ReleaseTextures" is probably
   ?FinishWithDynamicTextures@CEngineScreenEffectOutlineGlow@@AAEXXZ -- one source only, not added to NAME_FIXES).
 - session end: 129 grades; best differ/00b89c30.cpp (v19). Also tried after the hand-back block: CSurface(...) functional casts (none), chained textures assignment (store order changes), v23 viewport inside the current block (dtor order changes). FableWin COMDAT order puts CRenderTarget::GetPRenderToSurface right after this TU's functions (probably DrawDebugTextures' use, not ApplyOutline).
+
+## Session (bwf rows 1-4 agent, 2026-11-13) -- still DIFFER(6431v6431), 1 hunk (AlphaRef block load order); best source unchanged
+- New probe tools: c2/pat.py (per-SetRenderState block token: load order S/C + test/or operand roles m/b), c2/sw.sh (compile + token diff
+  v retail, ~1.2 s per compile), c2/mk.sh (adds header opt-in defines). Retail tokens differ from ours ONLY at block 28 (AlphaRef).
+- Overlay hdr/engine/CRenderStateManager.h restored to the session-1 copy (LOCAL_MASK probe opt-in); the bwf_e copy (DESIRED/BOOKMARK/DIRTY
+  opt-ins) was tried: DESIRED alone 13 hunks, DESIRED+BOOKMARK+DIRTY 16, DIRTY alone / DESIRED+BOOKMARK / +DIRTY: 3..5 token diffs.
+- Ruler grids (probes, not source): dead const floats k=0..40 at fn top / before loop / section 2 / before SetAlphaRef are position-
+  independent (period ~34) and never give retail (k=34/35 fixes block 28 but flips the test/or roles of blocks 29..31); the same k=0..36
+  grid on top of DESIRED, DESIRED+BOOKMARK, DIRTY, DESIRED+BOOKMARK+DIRTY: no exact point.
+- KEY PROBE: 2..16 dead initialised locals INSIDE the SetAlphaRef inline body (before or after its SetRenderState) give RELOCATION_MATCH
+  (c2/h/AR02..AR16, c2/g2/h01 `unsigned long a = 1; unsigned long b = 1;`, h03 bools, h06 floats); 1 is not enough; the same records in
+  SetAlphaTestFunc (before or after its SetRenderState) or SetSourceAlphaBlendMode act like global outer names. So retail's AlphaRef
+  expansion carries >=2 more records than `SetRenderState(ref, DeviceState.AlphaRef)` -- but FableWin's /Od SetAlphaRef is 14i/34b = ours.
+  Natural forms tried, no effect: used local copy of ref, const local, CStateInfo& / CStateInfo* local, casts, `this->`, nested block,
+  `return;`, `const` param, renamed param; call-site args (unsigned long)1 / true / static_cast / 1L / (unsigned char)1 / 1.0f / (long)1 /
+  named block local; plain `inline` SetAlphaRef (VC7.1 then CALLS it: 6341 bytes). Same probe on row 0x00B8B780: no fix (other lever).
+- Best next idea: find what natural text puts >=2 records into the AlphaRef expansion only (a different SetAlphaRef signature/body in the
+  retail build than FableWin's, e.g. a DWORD-valued helper layer shared with SetStencilRef/Mask -- test that the same records in those
+  two setters keep the match), or why plain-inline SetAlphaRef is refused (budget rule) while retail expands it.
+- Follow-up probe: the same 2 dead records also in SetStencilRef / SetStencilMask (all raw-DWORD setters, c2/hv_st) still RELOCATION_MATCH,
+  so a shared DWORD-setter text with >=2 more records would be consistent for this row (regrade 0x00B87870 ApplyDisplacement with it).
+  No natural /Od-neutral text found (FableWin SetAlphaRef / SetStencilRef / SetStencilMask 14i/34b = the one-line form).

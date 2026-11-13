@@ -66,3 +66,14 @@
 19:29 00bb3e80 grade d1.cpp DIFFER(4540v4540) hunks=39 -- DIAGNOSTIC (not source): +1 / +3 dead outer locals to test record-id sensitivity
 19:29 00bb3e80 grade d2.cpp DIFFER(4540v4540) hunks=39 -- DIAGNOSTIC (not source): +1 / +3 dead outer locals to test record-id sensitivity
 19:30 00bb3e80 grade v2.cpp DIFFER(4540v4540) hunks=37 -- C3DVector operator- default ctor + Initialise (34i)
+04:04 00bb3e80 grade base.cpp DIFFER(4540v4540) hunks=37 -- regrade baseline (bwf agent)
+04:04 00bb3e80 grade p1.cpp DIFFER(4540v4540) hunks=37 -- PeekGlobalShadowMode() accessor for the faded-shadow arg
+04:04 00bb3e80 grade p2.cpp DIFFER(4540v4540) hunks=37 -- PeekGlobalShadowMode() accessor for the faded-shadow arg
+04:04 00bb3e80 grade p3.cpp DIFFER(4540v4540) hunks=37 -- PeekGlobalShadowMode() accessor for the faded-shadow arg
+04:05 00bb3e80 probe base.cpp pattern -> DIFFER(4540v4540) 20 20 ndiff 5 1:Cbm 12:Cmb 13:Cmb 14:Cmb 18:Sbm
+04:05 00bb3e80 probe f1.cpp pattern -> DIFFER(4556v4540) 20 20 ndiff 5 1:Cbm 12:Cmb 13:Cmb 14:Cmb 18:Sbm
+04:06 00bb3e80 probe f2.cpp pattern -> DIFFER(4540v4540) 20 20 ndiff 6 1:Cbm 12:Cmb 13:Cmb 14:Cmb 17:Sbm 18:Sbm
+04:06 00bb3e80 probe f3.cpp pattern -> DIFFER(4667v4540) 20 20 ndiff 3 12:Cmb 13:Cmb 18:Sbm
+04:06 00bb3e80 probe f4.cpp pattern -> DIFFER(4540v4540) 20 20 ndiff 5 1:Cbm 12:Cmb 13:Cmb 14:Cmb 18:Sbm
+04:06 00bb3e80 probe f5.cpp pattern -> DIFFER(4593v4540) 20 20 ndiff 3 12:Cmb 13:Cmb 18:Sbm
+04:06 00bb3e80 probe f6.cpp pattern -> DIFFER(4555v4540) 20 20 ndiff 5 1:Cbm 12:Cmb 13:Cmb 14:Cmb 18:Sbm
