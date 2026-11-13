@@ -8,6 +8,22 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DSPRITES_MANAGER
+// Opt-in (wf21, row 0x00B4AC10): the class over its RTTI base CEnginePrimitiveManager (0xc bytes), constructor
+// ??0CEnginePrimitiveManager2DSprites@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z 0x00BAD040 (Ego_r.pdb / FableWin.pdb). Own members opaque.
+#include "engine/CEnginePrimitiveManager.h"
+class CEnginePrimitiveManager2DSprites : public CEnginePrimitiveManager {
+public:
+    CEnginePrimitiveManager2DSprites(CArray<CEngineScene*>& scenes);     // 0x00BAD040
+    virtual ~CEnginePrimitiveManager2DSprites();
+    virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);
+    virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;
+    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);
+private:
+    unsigned char _pad_0x0c[0x2c];                                       // +0x0c own members (see the generated layout)
+};
+FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManager2DSprites) == 0x38);
+#else
 #pragma pack(push, 1)
 class CEnginePrimitiveManager2DSprites {
 public:
@@ -39,5 +55,6 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DSprites, VertexShader2DClo
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DSprites, PixelShader2DClockSprite) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DSprites, PixelShader2DClockSpriteAdditive) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DSprites, Indices) == 0x2c);
+#endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DSPRITES_MANAGER
 
 #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGER2DSPRITES_H

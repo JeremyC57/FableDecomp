@@ -87,6 +87,10 @@ public:
     virtual void DrawBetAndMoney(const CEnginePrimitivePrepareInfo&, float, float, float, float, float, float);   // 50 0x005EA400
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_TAVERN_GAME; }   // ?StatGetInterfaceType@CTCTavernGame@@SI?AW4ETCInterfaceType@@XZ
     void SetState(ETavernGameStates);                                    // 0x005E9B20 ?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z
+#ifdef FABLE_RETAIL_CTCTAVERNGAME_GETGAMESTATE
+    // Opt-in (row 0x005EC270): FableWin.pdb ?GetGameState@CTCTavernGame@@QAE?AW4ETavernGameStates@1@XZ, inline (no Ego_r / retail copy).
+    ETavernGameStates GetGameState() { return TavernGameState; }
+#endif
     void SetStateAfterTime(ETavernGameStates, float);                    // 0x005E9B70
     bool IsCurrentOrUpcomingState(ETavernGameStates);                    // 0x005E9BF0
     bool IsBetting();                                                    // 0x005E9C30

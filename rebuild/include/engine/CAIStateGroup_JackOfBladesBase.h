@@ -27,6 +27,10 @@ protected:
  // without the rest of the Jack Stage1 TU switch.
  EAIActionReturn RushToPos(const C3DVector&);
 #endif
+#ifdef FABLE_RETAIL_JACKOFBLADESBASE_SUMMONPILLARS
+ // Overlay opt-in (row 0x00973DC0): Ego_r/FableWin ?SummonPillars@CAIStateGroup_JackOfBladesBase@@IAEXXZ (protected, non-virtual).
+ void SummonPillars();
+#endif
  CIntelligentPointer<CThing> PSwordEmitter,PArenaCentre;
  CIntelligentPointer<CThingCreatureBase> PTargetThing;
  long EnemyKnockDownFrame,SpeechCounter;

@@ -8,6 +8,29 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_MANAGER
+// Opt-in (wf21, row 0x00B4AC10): RTTI CEnginePrimitiveManager2DParticleGroup (vtable 0x012A22D0) : CEnginePrimitiveManagerParticleGroup
+// : CEnginePrimitiveManager. The base constructor ??0CEnginePrimitiveManagerParticleGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z is
+// out of line (0x00BBBF40); the derived constructor is FableWin.pdb ??0CEnginePrimitiveManager2DParticleGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z
+// (0x02D9D090, thunk 0x018587F7; retail 0x00B4B690, expanded inline in the renderer ctor). No header for the base; members opaque.
+#include "engine/CEnginePrimitiveManager.h"
+class CEnginePrimitiveManagerParticleGroup : public CEnginePrimitiveManager {
+public:
+    CEnginePrimitiveManagerParticleGroup(CArray<CEngineScene*>& scenes); // 0x00BBBF40
+    virtual ~CEnginePrimitiveManagerParticleGroup();
+    virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);
+    virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;
+    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);
+private:
+    unsigned char _pad_0x0c[0x1c];                                       // +0x0c own members
+};
+class CEnginePrimitiveManager2DParticleGroup : public CEnginePrimitiveManagerParticleGroup {
+public:
+    CEnginePrimitiveManager2DParticleGroup(CArray<CEngineScene*>& scenes) : CEnginePrimitiveManagerParticleGroup(scenes) { }
+    virtual ~CEnginePrimitiveManager2DParticleGroup();
+};
+FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManager2DParticleGroup) == 0x28);
+#else
 #pragma pack(push, 1)
 class CEnginePrimitiveManager2DParticleGroup {
 public:
@@ -26,5 +49,6 @@ FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManager2DParticleGroup) == 0x28);
 #ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DParticleGroup, __vftable) == 0x0);
 #endif
+#endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_MANAGER
 
 #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_H

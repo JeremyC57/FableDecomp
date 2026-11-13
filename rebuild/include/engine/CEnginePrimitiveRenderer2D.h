@@ -11,6 +11,19 @@
 #include "rebuild_abi.h"
 #include "engine/CEngineComponent.h"
 class CEngineInit;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D_MEMBERS
+#include "engine/CArray.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CRGBFloatColour.h"
+#include "engine/C3DVector.h"
+class CEnginePrimitiveManager;
+class CEnginePrimitiveManager2DStaticMeshes;
+class CEnginePrimitiveManager2DAnimatedMeshes;
+class CEnginePrimitiveManager2DSprites;
+class CEnginePrimitive2DViewportManager;
+class CEnginePrimitiveManager2DParticleGroup;
+class CEngineInternalPrimitiveBase;
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D_LAYER2DTODISTANCE
 #ifdef _MSC_VER
 enum EEngine2DLayer;
@@ -27,8 +40,31 @@ public:
     // out of line in retail at 0x00B4A6B0 (called on the renderer pointer 0x01436E7C). Declaration only.
     float Layer2DToDistance(EEngine2DLayer layer);                       // 0x00B4A6B0
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D_MEMBERS
+    // Opt-in (wf21, row 0x00B4AC10 the constructor): the Ego_r.pdb members at their retail offsets (CArray 0xc bytes in retail).
+private:
+    void AddPrimitiveManager(const CCountedPointer<CEnginePrimitiveManager>& manager);   // 0x00B4ABB0 ?AddPrimitiveManager@CEnginePrimitiveRenderer2D@@AAEXABV?$CCountedPointer@VCEnginePrimitiveManager@@@@@Z
+public:
+    CArray<CCountedPointer<CEnginePrimitiveManager> >        PrimitiveManagers;        // +0x0c
+    CCountedPointer<CEnginePrimitiveManager2DStaticMeshes>   StaticMesh2DManager;      // +0x18
+    CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes> AnimatedMesh2DManager;    // +0x20
+    CCountedPointer<CEnginePrimitiveManager2DSprites>        Sprite2DManager;          // +0x28
+    CCountedPointer<CEnginePrimitive2DViewportManager>       Viewport2DManager;        // +0x30
+    CCountedPointer<CEnginePrimitiveManager2DParticleGroup>  Particle2DManager;        // +0x38
+    CEngineInternalPrimitiveBase*                            First2DPrim;              // +0x40
+    CEngineInternalPrimitiveBase*                            First2DDisplacementPrim;  // +0x44
+    float                                                    FOV2D;                    // +0x48
+    CRGBFloatColour                                          AmbientLightColour;       // +0x4c
+    CRGBFloatColour                                          DiffuseLightColour;       // +0x5c
+    CRGBFloatColour                                          BackLightColour;          // +0x6c
+    C3DVector                                                LightVector;              // +0x7c
+    float                                                    Layer2DDistances[83];     // +0x88
+    float                                                    Layer2DSortDistances[83]; // +0x1d4
+    bool                                                     Enable2DLayer[83];        // +0x320
+#else
 private:
     unsigned char _pad_0xc[0x368];              // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRenderer2D) == 0x374);
 #else // generated flattened Ego_r layout (the landed default, unchanged)

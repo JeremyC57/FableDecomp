@@ -1,0 +1,3 @@
+006a5610	CThingPhysical::GetFirstCylinderCollisionBetweenPoints	RELOCATION_MATCH	67	GF body visible + nested ifs + default Dot
+00875b10	NCameraModes::CTools::TestMeshForOccupationAndGetType	RELOCATION_MATCH	~20	namespace enum EMeshType; offset-form probe; split-case switch; operator* named-result opt-in
+0x004093E0	CUserProfileManager::SetDefaultValuesVideo	DIFFER(841v841)	~100	only the def-arm block placement (+3 alignment pads) differs

@@ -11,6 +11,11 @@
 class CInputProcessTavernGame : public CInputProcessGameBase {
 public:
     CInputProcessTavernGame(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_INPUTPROCESS_TAVERNGAME_FRIEND
+    // Opt-in (row 0x005EC270 CTCTavernGame::ProcessInput): the tavern game calls the protected IsEventButtonPressed on its
+    // input process (retail `call 0x00687A90`); access only, no layout change.
+    friend class CTCTavernGame;
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CInputProcessTavernGame) == 0x28);
 #else // the generated Ego_r layout (the landed default, unchanged)

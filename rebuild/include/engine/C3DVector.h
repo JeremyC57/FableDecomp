@@ -149,7 +149,12 @@ public:
 #else
     FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector(X+other.X,Y+other.Y,Z+other.Z);}
 #endif
-#ifdef FABLE_RETAIL_C3DVECTOR_SCALE_X_PAREN
+#if defined(FABLE_RETAIL_C3DVECTOR_SCALE_NAMED_RESULT)
+    // Retail opt-in (wf21 row 0x00875B10 NCameraModes::CTools::TestMeshForOccupationAndGetType): the scaled copy built in a named
+    // local. Same arithmetic; the extra copy tuple moves VC7.1's x87 scheduling so the Y product of `normal * cos` is
+    // `fld [nY] ; fmul st(2)` (retail 0x00875DD3) instead of `fld st(1) ; fmul [nY]`. Body only: default path unchanged.
+    FABLE_VECTOR_INLINE const C3DVector operator*(float scale)const{C3DVector result(X*scale,Y*scale,Z*scale);return result;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_SCALE_X_PAREN)
     // Retail opt-in (Codex 2026-11-10,007bc6fa): grouping the X product adds one no-code
     // scheduler tuple. The81-tuple region boundary then places the physics reload at007bc824
     // before the three x87 stack pops, matching the original shot TU. Arithmetic is unchanged.

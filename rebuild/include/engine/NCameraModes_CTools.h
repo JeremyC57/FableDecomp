@@ -23,9 +23,21 @@ class CWorld;
 #include "engine/C3DVector.h"
 class CThingGameObject;
 #endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_MESHTYPE
+class CPhysicsMeshObject;
+#endif
 namespace NCameraModes {
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_MESHTYPE
+// Retail opt-in (wf21 row 0x00875B10): Ego_r.pdb / FableWin.pdb
+// ?TestMeshForOccupationAndGetType@CTools@NCameraModes@@QBE?BW4EMeshType@2@ABVCPhysicsMeshObject@@ABVC3DVector@@1AAM@Z -- EMeshType is
+// a namespace-scope enum of NCameraModes (`W4EMeshType@2@`). Enumerator names found nowhere: descriptive (values 0 / 1).
+enum EMeshType { MESH_TYPE_NONE = 0, MESH_TYPE_OCCUPIED = 1 };
+#endif
 class CTools {
 public:
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_MESHTYPE
+    const EMeshType TestMeshForOccupationAndGetType(const CPhysicsMeshObject& mesh,const C3DVector& position,const C3DVector& up,float& height) const;   // 0x00875B10
+#endif
 #ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_LANDSCAPEFROMTO
     // Ego_r.pdb ?GetLandscapePointIntersectionFromTo@CTools@NCameraModes@@QBE_NABVC3DVector@@0AAV3@1_N@Z (const). Declaration only.
     bool GetLandscapePointIntersectionFromTo(const C3DVector& from,const C3DVector& to,C3DVector& hitPos,C3DVector& hitNormal,bool includeWater) const;   // 0x00875550

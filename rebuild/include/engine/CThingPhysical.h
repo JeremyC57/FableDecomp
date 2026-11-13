@@ -98,6 +98,12 @@ bool IsToNegateAllHits()const{return NegateAllHits;}
     bool GetFirstCollision(float radius, const C3DVector& from, const C3DVector& delta, C3DVector& hit_position,
                            C3DVector& hit_normal) const;                // 0x006A4FB0
 #endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_CYLINDERCOLLISION
+    // Retail opt-in (row 0x006A5610): Ego_r.pdb / FableWin.pdb
+    // ?GetFirstCylinderCollisionBetweenPoints@CThingPhysical@@QBE_NMABVC3DVector@@0AAV2@1@Z (public const). Declaration only.
+    bool GetFirstCylinderCollisionBetweenPoints(float radius, const C3DVector& from, const C3DVector& to, C3DVector& hit_position,
+                                                C3DVector& hit_normal) const;   // 0x006A5610
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_SERIALISE
     // Retail opt-in (agentNF9, row 0x007030C0 CThingObject::SerialiseGameState, which calls it by name): Ego_r.pdb / FableWin.pdb
     // ?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z (public virtual, CThingPhysical vtable 0x01244E84 slot 3 =

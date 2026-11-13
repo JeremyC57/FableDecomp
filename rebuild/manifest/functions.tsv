@@ -53322,7 +53322,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e82940	OnPredicateFail	NScript::CV_FisticuffsClubScript::CFisticuffsClubRing	unknown	undefined	0		0			discovered	gapscan							
 00e82950	Main	NScript::CV_FisticuffsClubScript::CFisticuffsClubRing	__thiscall	void	1	CFisticuffsClubRing *	1	yes	accepted									
 00e82f80	GetQuestText	NScript::CV_FisticuffsClubScript	__thiscall	CCharString	2	CV_FisticuffsClubScript *,CCharString	1	yes	accepted									
-00e83230	HandleVillageSelection	_global	unknown	undefined	0		0	yes	accepted									
+00e83230	SetRelevantRegion	NScript::CV_FisticuffsClubScript::CFisticuffsClubRing	unknown	undefined	0		0	yes	accepted									
 00e83570	Alloc	NScript::CV_FisticuffsClubScript::CTyler	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00e83610	GetParentScript	NScript::CV_FisticuffsClubScript::CTyler	unknown	undefined	0		0			discovered	gapscan							
 00e83620	OnPredicateFail	NScript::CV_FisticuffsClubScript::CTyler	__thiscall	void	1	CTyler *	1	yes	accepted									

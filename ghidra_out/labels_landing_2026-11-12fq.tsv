@@ -1,0 +1,10 @@
+address	name	evidence
+004CE1B0	?AddMasterShotCameraTagFromText@CSubtitledMessage@@AAE_NMABVCCharString@@@Z	workflow wf21 (landing fq): RELOCATION_MATCH, two PDBs
+006A5610	?GetFirstCylinderCollisionBetweenPoints@CThingPhysical@@QBE_NMABVC3DVector@@0AAV2@1@Z	workflow wf21 (landing fq): RELOCATION_MATCH, two PDBs
+007D71E0	?ShuffleCards@CTCTavernGameCardPairs@@UAEXXZ	workflow wf21 (landing fq): RELOCATION_MATCH, two PDBs
+00E83230	?SetRelevantRegion@CFisticuffsClubRing@CV_FisticuffsClubScript@NScript@@AAEXXZ	workflow wf21 (landing fq): RELOCATION_MATCH, two PDBs
+00B4AC10	??0CEnginePrimitiveRenderer2D@@QAE@XZ	workflow wf21 (landing fq): RELOCATION_MATCH, two PDBs
+00973DC0	?SummonPillars@CAIStateGroup_JackOfBladesBase@@IAEXXZ	workflow wf21 (landing fq): RELOCATION_MATCH, two PDBs
+00875B10	?TestMeshForOccupationAndGetType@CTools@NCameraModes@@QBE?BW4EMeshType@2@ABVCPhysicsMeshObject@@ABVC3DVector@@1AAM@Z	workflow wf21 (landing fq): RELOCATION_MATCH, two PDBs
+00E6B900	?TeleportAcolytes@CV_ChapelOfEvilScript@NScript@@QAEXABVCScriptThing@@@Z	workflow wf21 (landing fq): RELOCATION_MATCH, two PDBs
+005EC270	?ProcessInput@CTCTavernGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@PAVCInputProcessTavernGame@@@Z	workflow wf21 (landing fq): RELOCATION_MATCH, two PDBs

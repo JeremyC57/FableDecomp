@@ -394906,6 +394906,69 @@ $catalog = @(
         TestSource = '00/94/CAIStateGroupGoToPub_ChooseAction_0094a3b0_test.cpp'
         PassPattern = '0094a3b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004ce1b0'
+        Module = 'CSubtitledMessage'
+        Source = '00/4c/CSubtitledMessage_AddMasterShotCameraTagFromText_004ce1b0.cpp'
+        TestSource = '00/4c/CSubtitledMessage_AddMasterShotCameraTagFromText_004ce1b0_test.cpp'
+        PassPattern = '004ce1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a5610'
+        Module = 'CThingPhysical'
+        Source = '00/6a/CThingPhysical_GetFirstCylinderCollisionBetweenPoints_006a5610.cpp'
+        TestSource = '00/6a/CThingPhysical_GetFirstCylinderCollisionBetweenPoints_006a5610_test.cpp'
+        PassPattern = '006a5610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d71e0'
+        Module = 'CTCTavernGameCardPairs'
+        Source = '00/7d/CTCTavernGameCardPairs_ShuffleCards_007d71e0.cpp'
+        TestSource = '00/7d/CTCTavernGameCardPairs_ShuffleCards_007d71e0_test.cpp'
+        PassPattern = '007d71e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e83230'
+        Module = 'NScript::CV_FisticuffsClubScript::CFisticuffsClubRing'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCFisticuffsClubRing_SetRelevantRegion_00e83230.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCFisticuffsClubRing_SetRelevantRegion_00e83230_test.cpp'
+        PassPattern = '00e83230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b4ac10'
+        Module = 'CEnginePrimitiveRenderer2D'
+        Source = '00/b4/CEnginePrimitiveRenderer2D_CEnginePrimitiveRenderer2D_00b4ac10.cpp'
+        TestSource = '00/b4/CEnginePrimitiveRenderer2D_CEnginePrimitiveRenderer2D_00b4ac10_test.cpp'
+        PassPattern = '00b4ac10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00973dc0'
+        Module = 'CAIStateGroup_JackOfBladesBase'
+        Source = '00/97/CAIStateGroupJackOfBladesBase_SummonPillars_00973dc0.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesBase_SummonPillars_00973dc0_test.cpp'
+        PassPattern = '00973dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00875b10'
+        Module = 'NCameraModes::CTools'
+        Source = '00/87/NCameraModesCTools_TestMeshForOccupationAndGetType_00875b10.cpp'
+        TestSource = '00/87/NCameraModesCTools_TestMeshForOccupationAndGetType_00875b10_test.cpp'
+        PassPattern = '00875b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6b900'
+        Module = 'NScript::CV_ChapelOfEvilScript'
+        Source = '00/e6/NScriptCVChapelOfEvilScript_TeleportAcolytes_00e6b900.cpp'
+        TestSource = '00/e6/NScriptCVChapelOfEvilScript_TeleportAcolytes_00e6b900_test.cpp'
+        PassPattern = '00e6b900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ec270'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_ProcessInput_005ec270.cpp'
+        TestSource = '00/5e/CTCTavernGame_ProcessInput_005ec270_test.cpp'
+        PassPattern = '005ec270_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

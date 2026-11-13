@@ -50,7 +50,13 @@ public: CTavernGameCardBaseDef& operator=(const CTavernGameCardBaseDef&);
     float         TableSeparation;                           // +0x60
     float         PackOffset_X;                              // +0x64 C2DVector::X
     float         PackOffset_Y;                              // +0x68 C2DVector::Y
+#ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_CARDORDERS
+    // Opt-in (wf21, row 0x007D71E0 CTCTavernGameCardPairs::ShuffleCards): the member with its Ego_r.pdb type (STLport vector, 0xc bytes;
+    // CCardPositionsDef is 0x48 bytes: `lea eax,[eax+eax*8]` *8 at 0x007D720A). The includer includes engine/CCardPositionsDef.h first.
+    std::vector<CCardPositionsDef> CardOrders;               // +0x6c
+#else
     unsigned char CardOrders[0xc];                           // +0x6c vector<CCardPositionsDef,std::allocator<CCardPositionsDef>_>
+#endif
 #ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_CARDPACK
     // Opt-in (wf4, row 0x008F10B0 CTCTavernGameCardBase::ShuffleCards): the member with its Ego_r.pdb type (STLport vector, 0xc bytes;
     // CCardDef is 0x44 bytes: ShuffleCards divides the range by 0x44 at 0x008F10E5). The includer includes engine/CCardDef.h first.

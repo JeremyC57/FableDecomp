@@ -1,0 +1,40 @@
+addr       parity           behav  name
+004ce1b0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004ce1b0   RELOCATION_MATCH PASS   AddMasterShotCameraTagFromText
+006a5610   RELOCATION_MATCH PASS   GetFirstCylinderCollisionBetweenPoints
+007d71e0   WARN RELOC_NAME: ??$random_shuffle@PAPAVCCard@@@std@@YIXPAPAVCCard@@0@Z -> 007d7860 labelled '_global::Algorithm_FisherYatesShuffle'
+007d71e0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+007d71e0   RELOCATION_MATCH PASS   ShuffleCards
+00e83230   RELOCATION_MATCH PASS   SetRelevantRegion
+00b4ac10   WARN RELOC_CONFLICT: _$E2 -> 0122ad60 here, 01228930 in landed 01219f00
+00b4ac10   WARN RELOC_CONFLICT: ?g_TwoPi@@3MB -> 0128f608 here, 01238020 in landed 00b314e0
+00b4ac10   RELOCATION_MATCH PASS   CEnginePrimitiveRenderer2D
+00973dc0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00973dc0   RELOCATION_MATCH PASS   SummonPillars
+00875b10   RELOCATION_MATCH PASS   TestMeshForOccupationAndGetType
+00e6b900   RELOCATION_MATCH PASS   TeleportAcolytes
+005ec270   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 labelled 'CInputProcessGameBase::GetEventGameActionVector'
+005ec270   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+005ec270   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 9
+  004ce1b0 RELOCATION_MATCH CSubtitledMessage::AddMasterShotCameraTagFromText
+  006a5610 RELOCATION_MATCH CThingPhysical::GetFirstCylinderCollisionBetweenPoints
+  007d71e0 RELOCATION_MATCH CTCTavernGameCardPairs::ShuffleCards
+  00e83230 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CFisticuffsClubRing::SetRelevantRegion
+  00b4ac10 RELOCATION_MATCH CEnginePrimitiveRenderer2D::CEnginePrimitiveRenderer2D
+  00973dc0 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::SummonPillars
+  00875b10 RELOCATION_MATCH NCameraModes::CTools::TestMeshForOccupationAndGetType
+  00e6b900 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::TeleportAcolytes
+  005ec270 RELOCATION_MATCH CTCTavernGame::ProcessInput
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CSubtitledMessage_AddMasterShotCameraTagFromText_004ce1b0
+  CThingPhysical_GetFirstCylinderCollisionBetweenPoints_006a5610
+  CTCTavernGameCardPairs_ShuffleCards_007d71e0
+  NScriptCVFisticuffsClubScriptCFisticuffsClubRing_SetRelevantRegion_00e83230
+  CEnginePrimitiveRenderer2D_CEnginePrimitiveRenderer2D_00b4ac10
+  CAIStateGroupJackOfBladesBase_SummonPillars_00973dc0
+  NCameraModesCTools_TestMeshForOccupationAndGetType_00875b10
+  NScriptCVChapelOfEvilScript_TeleportAcolytes_00e6b900
+  CTCTavernGame_ProcessInput_005ec270
