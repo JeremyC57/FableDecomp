@@ -11,12 +11,48 @@
 #include "rebuild_abi.h"
 #include "engine/CEngineComponent.h"
 class CEngineInit;
+#ifdef FABLE_RETAIL_CENGINEENVIRONMENT_WIND
+// Retail opt-in (chunk 2031, row 0x00B54E30 CEngineWeatherRenderer::RenderSnow): the Ego_r.pdb members (no containers, so the Ego_r
+// offsets are retail's: RenderSnow reads CurrentWindVector +0x61C..+0x624 and CurrentWindSpeed +0x640; the landed WorldFrameUpdate
+// 0x00B52B30 reads NextWindVector +0x628 / NextWindSpeed +0x644) and FableWin.pdb
+// ?GetClampedScaledCurrentWindVector@CEngineEnvironment@@QBE?AVC3DVector@@MMM@Z, inline in retail (no Ego_r.pdb copy; expanded at
+// 0x00B55130..0x00B5518C: the speed scaled, clamped below by the minimum and above by the maximum, times the current wind vector).
+// FABLE_FORCEINLINE (owner 2026-11-01 rule for Lionhead header helpers): no out-of-line copy; plain `inline` leaves it called (c2 inline
+// trace: c1 73, score 83 at f 0.5 in RenderSnow; the Next twin in WorldFrameUpdate 0x00B52B30 sits at f 0.75, score 76.5; threshold 74).
+#include "fable_compiler.h"
+#include "engine/C3DVector.h"
+#endif
 class CEngineEnvironment : public CEngineComponent {
 public:
     CEngineEnvironment();                      // 0x00B8CEE0 ??0CEngineEnvironment@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINEENVIRONMENT_WIND
+    // The clamp is spelled as WorldFrameUpdate 0x00B52B30 spells its own (below the minimum: the minimum; above the maximum: the maximum).
+    FABLE_FORCEINLINE C3DVector GetClampedScaledCurrentWindVector(float scale, float min_speed, float max_speed) const
+    {
+        float speed = CurrentWindSpeed * scale;
+        return CurrentWindVector * (speed < min_speed ? min_speed : (speed > max_speed ? max_speed : speed));
+    }
+private:
+    float         CurrentInterpolation;                      // +0x0c
+    float         BulletTimeInterpolation;                   // +0x10
+    float         PausedInterpolation;                       // +0x14
+    float         NonPausedInterpolation;                    // +0x18
+    C3DVector     WindSkewHistory[64];                       // +0x1c
+    C3DVector     InterpolatedWindSkewHistory[64];           // +0x31c
+    C3DVector     CurrentWindVector;                         // +0x61c
+    C3DVector     NextWindVector;                            // +0x628
+    C3DVector     PreviousWindVector;                        // +0x634
+    float         CurrentWindSpeed;                          // +0x640
+    float         NextWindSpeed;                             // +0x644
+    float         PreviousWindSpeed;                         // +0x648
+    long          CurrentRenderFrame;                        // +0x64c
+    bool          EnvironmentalEffectsAlwaysUpdate;          // +0x650
+    bool          ShowWindVector;                            // +0x651
+#else
 private:
     unsigned char _pad_0xc[0x648];              // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineEnvironment) == 0x654);
 #else // generated flattened Ego_r layout (the landed default, unchanged)

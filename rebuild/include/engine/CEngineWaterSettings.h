@@ -16,6 +16,21 @@
 #endif
 #include "engine/CRGBFloatColour.h"
 #endif
+#ifdef FABLE_RETAIL_CENGINEWATERSETTINGS_TYPED
+// Opt-in (chunk 2030, rows 0x00BEA110 UpdateConstants / 0x00BE9920 the constructor): the composite members typed, Ego_r.pdb types
+// (struct_layouts_egor.tsv): BumpmapGenerationShift C2DVector[3][2] +0xE8, BumpmapGenerationShiftHistory C2DVector[3][2][2] +0x118
+// (UpdateConstants reads History[i][j][0] / [1] at +0x118 / +0x120 and writes Shift[i][j] at +0xE8), the seven CMatrix3x4 members
+// +0x194..+0x2B4 (rows of three: UpdateConstants stores OtherShaderVars E11..E43 at +0x224..+0x250). Implies the COLOUR opt-in.
+#ifndef FABLE_RETAIL_CENGINEWATERSETTINGS_COLOUR
+#define FABLE_RETAIL_CENGINEWATERSETTINGS_COLOUR
+#endif
+#ifndef FABLE_RETAIL_CRGBFLOATCOLOUR
+#define FABLE_RETAIL_CRGBFLOATCOLOUR
+#endif
+#include "engine/CRGBFloatColour.h"
+#include "engine/C2DVector.h"
+#include "engine/CMatrix3x4.h"
+#endif
 class CEngineComponentRenderParams;
 class CGenericVar;
 namespace std {
@@ -25,6 +40,13 @@ template <class _Tp, class _Alloc> class vector;
 class C2DVector;
 class CEngineWaterSettings : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_CENGINEWATERSETTINGS_CTOR
+    // Opt-in (chunk 2030, row 0x00BE9920): Ego_r.pdb / FableWin.pdb ??0CEngineWaterSettings@@QAE@XZ (called by the CEngineWaterRenderer
+    // constructor at 0x00B73A4F on Settings +0x280; it stores the vtable 0x012A8114) and the virtual ??1CEngineWaterSettings@@UAE@XZ (the
+    // landed ??_G 0x00BEA760 calls it). Declarations only.
+    CEngineWaterSettings();                                                // 0x00BE9920
+    virtual ~CEngineWaterSettings();
+#endif
     void WorldFrameUpdate(bool force);                    // 0x00BE95F0 ?WorldFrameUpdate@CEngineWaterSettings@@QAEX_N@Z
     void UpdateConstants(const CEngineComponentRenderParams& params);   // ?UpdateConstants@CEngineWaterSettings@@QAEXABVCEngineComponentRenderParams@@@Z
     void CalcReflectToRefractBlendFactors(float a, float b);           // ?CalcReflectToRefractBlendFactors@CEngineWaterSettings@@QAEXMM@Z
@@ -102,8 +124,13 @@ public:
     float IceBumpMapPCFrameOffset[2];                         // +0x0d0
     float WaterBumpMapPCFrameOffset[2];                       // +0x0d8
     float SeaBumpMapPCFrameOffset[2];                         // +0x0e0
+#ifdef FABLE_RETAIL_CENGINEWATERSETTINGS_TYPED
+    C2DVector BumpmapGenerationShift[3][2];                   // +0x0e8
+    C2DVector BumpmapGenerationShiftHistory[3][2][2];         // +0x118
+#else
     unsigned char BumpmapGenerationShift[0x30];               // +0x0e8 C2DVector[3][2]
     unsigned char BumpmapGenerationShiftHistory[0x60];        // +0x118 C2DVector[3][2][2]
+#endif
     float ReflectToRefractBlendMult;                          // +0x178
     float ReflectToRefractBlendAdd;                           // +0x17c
     long BumpMap1BankIndex;                                   // +0x180
@@ -111,6 +138,15 @@ public:
     long IceBumpMapPCFrameIndex;                              // +0x188
     long WaterBumpMapPCFrameIndex;                            // +0x18c
     long SeaBumpMapPCFrameIndex;                              // +0x190
+#ifdef FABLE_RETAIL_CENGINEWATERSETTINGS_TYPED
+    CMatrix3x4 ShoreLookupMaskMatrix;                         // +0x194
+    CMatrix3x4 ShoreLookupMaskMatrix2;                        // +0x1c4
+    CMatrix3x4 ShoreLookupMaskMatrixForBounds;                // +0x1f4
+    CMatrix3x4 OtherShaderVars;                               // +0x224
+    CMatrix3x4 OtherSeaShaderVars;                            // +0x254
+    CMatrix3x4 OtherBackgroundShaderVars;                     // +0x284
+    CMatrix3x4 OtherSeaBackgroundShaderVars;                  // +0x2b4
+#else
     unsigned char ShoreLookupMaskMatrix[0x30];                // +0x194 CMatrix3x4
     unsigned char ShoreLookupMaskMatrix2[0x30];               // +0x1c4 CMatrix3x4
     unsigned char ShoreLookupMaskMatrixForBounds[0x30];       // +0x1f4 CMatrix3x4
@@ -118,6 +154,7 @@ public:
     unsigned char OtherSeaShaderVars[0x30];                   // +0x254 CMatrix3x4
     unsigned char OtherBackgroundShaderVars[0x30];            // +0x284 CMatrix3x4
     unsigned char OtherSeaBackgroundShaderVars[0x30];         // +0x2b4 CMatrix3x4
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineWaterSettings) == 0x2e4);
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterSettings, ForceWaterSettings) == 0x4);

@@ -332,6 +332,15 @@ public:
     float GetAnimDuration(long anim_index) const;                        // 0x006627F0
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_INTERACTION
+    // Retail opt-in (chunk 2023, row 0x0094C050 CAIStateGroup_SellToBuyer::Update): FableWin.pdb
+    // ?GetPCreatureInteraction@CThingCreatureBase@@QAEAAV?$CCountedPointer@VCCreatureInteraction@@@@XZ (+ the QBE const twin; no Ego_r.pdb
+    // or Fable.exe copy: inline, the row reads the Data word +0x12C in place) and Ego_r.pdb / FableWin.pdb
+    // ?RemoveFromCreatureInteraction@CThingCreatureBase@@QAEXXZ, out of line at 0x006629B0 (bound there; called at 0x0094C71B). No layout change.
+    CCountedPointer<CCreatureInteraction>& GetPCreatureInteraction() { return PCreatureInteraction; }
+    const CCountedPointer<CCreatureInteraction>& GetPCreatureInteraction() const { return PCreatureInteraction; }
+    void RemoveFromCreatureInteraction();                                // 0x006629B0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SAVE
     // Nested opt-in (chunk 794, row 0x008304A0 CThingAICreature::Save): Ego_r.pdb ?Save@CThingCreatureBase@@UAEXAAVCCharString@@@Z (public
     // virtual), retail 0x00661A60 (the catalog row CThingCreatureBase::Save: `jmp 0x006A4BA0`, CThingPhysical::Save), called by name from the

@@ -278,6 +278,13 @@ public:
     // FableWin.pdb; CTCInventory vtable 0x01250DE4 slot 33). Needs FABLE_RETAIL_CTCINVENTORYBASE_VTABLE.
     virtual void OnItemSelected(long itemDefIndex, bool& handled);   // 0x00583E26
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_ITEMDESCRIPTION
+    // Nested opt-in (chunk 2036, row 0x005841F9): the slot-78 override ?GetItemDescription@CTCInventory@@UBEXAAVCWideString@@J_N@Z
+    // (Ego_r.pdb + FableWin.pdb; CTCInventory vtable 0x01250DE4 slot 78, the slot of CTCInventoryBase::GetItemDescription 0x005BC6B3
+    // in the Experience table 0x0124F11C and of the landed Clothing 0x005B5CF8 / Weapons 0x005C7913 overrides; the landed
+    // ConstructItemDescription 0x005819DD calls it through +0x138 with false). Needs FABLE_RETAIL_CTCINVENTORYBASE_VTABLE.
+    virtual void GetItemDescription(CWideString& text, long itemDefIndex, bool hidePrice) const;   // 0x005841F9
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_OPENPC
     // Nested opt-in (chunk 1007, rows 0x0058F649 OpenPCInventory / 0x0058F9BC OpenPCPhotojournal): Ego_r.pdb / FableWin.pdb
     // ?OpenPCInventory@CTCInventory@@QAEXXZ, ?OpenPCPhotojournal@CTCInventory@@QAEXXZ and ?HasScreenshots@CTCInventory@@QAE_NXZ

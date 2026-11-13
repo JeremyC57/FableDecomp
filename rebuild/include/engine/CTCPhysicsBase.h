@@ -201,7 +201,17 @@ protected:
     C3DVector OldPosition;
     long OldPositionLastFrameSet;
     C3DVector Velocity;
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_RADIUS_ACCESS
+    // Retail opt-in (chunk 2023, row 0x0094C050 CAIStateGroup_SellToBuyer::Update): retail reads Radius +0x34 from outside the class as
+    // an lvalue -- the TC pointer is loaded before two out-of-line calls and the float is read after them (`mov ebx,[eax+60h]` at
+    // 0x0094C1F2, `fadd dword ptr [ebx+34h]` at 0x0094C216). VC7.1 evaluates the inline by-value GetRadius() ahead of out-of-line calls
+    // in the same expression (measured), so that shape needs the member itself. Access only: no layout change.
+public:
     float Radius;
+protected:
+#else
+    float Radius;
+#endif
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_COLLISION_RESPONSE
     // Retail opt-in (Codex pass17): both PDBs and native006afe60 prove the real def handle.
     CDefPointer<const CPhysicsDef> PhysicsDef;

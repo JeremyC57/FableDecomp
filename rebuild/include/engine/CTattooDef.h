@@ -11,6 +11,10 @@
 #include "rebuild_abi.h"
 #include "fable_string.h"
 #endif
+#ifdef FABLE_RETAIL_CTATTOODEF_TYPEBALANCED
+#include "stlport/fable_containers.h"
+class CAppearanceModifierScalingDef;
+#endif
 class CTattooDef : public CDefClassBase {
 public:
 #ifdef FABLE_RETAIL_CTATTOODEF_TYPENAME
@@ -41,6 +45,15 @@ public:
     float         Scariness;                                             // +0x58
     float         Goodstrength;                                          // +0x5c
     bool IsConflicting(const CTattooDef& other) const;                   // 0x0059B679
+#endif
+#ifdef FABLE_RETAIL_CTATTOODEF_TYPEBALANCED
+    // Nested opt-in (chunk 2036, row 0x005841F9 CTCInventory::GetItemDescription): Ego_r.pdb
+    // ?GetTypeBalancedAttractiveness / Scariness / Goodstrength@CTattooDef@@QBEMABV?$vector@VCAppearanceModifierScalingDef@@..@Z,
+    // out of line in retail at 0x0057FC46 / 0x0057FC71 / 0x0057FC9C (landed; the CAppearanceModifierDef twins 0x0057FB86 / BBB / BF0
+    // sit right before them). Declaration only. Needs stlport/fable_containers.h.
+    float GetTypeBalancedAttractiveness(const std::vector<CAppearanceModifierScalingDef>& scaling) const;   // 0x0057FC46
+    float GetTypeBalancedScariness(const std::vector<CAppearanceModifierScalingDef>& scaling) const;        // 0x0057FC71
+    float GetTypeBalancedGoodstrength(const std::vector<CAppearanceModifierScalingDef>& scaling) const;     // 0x0057FC9C
 #endif
 };
 #ifdef FABLE_RETAIL_CTATTOODEF_MEMBERS

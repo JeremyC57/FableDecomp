@@ -51,6 +51,15 @@ private:
 public:
 #endif
     void InitThingTypes();                                              // 0x00522A20 (Ego_r.pdb ?InitThingTypes@CThingManager@@QAEXXZ)
+#ifdef FABLE_RETAIL_CTHINGMANAGER_SAVEGAMESTATE
+    // Opt-in (chunk 2052, row 0x0049F4C0 CWorld::SaveGameStateInternal): Ego_r.pdb ?SaveGameState@CThingManager@@QAEXAAVCPersistContext@@@Z,
+    // out of line at 0x00524290. Declaration only.
+    void SaveGameState(CPersistContext& context);                       // 0x00524290
+#endif
+#ifdef FABLE_RETAIL_CTHINGMANAGER_LOADGAMESTATE
+    // Opt-in (chunk 2052, row 0x004A21F0): Ego_r.pdb ?LoadGameState@CThingManager@@QAEXAAVCPersistContext@@@Z, out of line at 0x005253F0.
+    void LoadGameState(CPersistContext& context);                       // 0x005253F0
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_PEEKWORLD
     // Opt-in (agentNF14, row 0x006C8780 CPersistTraits<CIntelligentPointer<CThing> >::TransferBinaryIn): FableWin.pdb
     // ?PeekWorld@CThingManager@@QBEABVCWorld@@XZ (0x01CF6420; ?GetWorld@CThingManager@@QAEAAVCWorld@@XZ 0x01CF63E0 is its twin), inline

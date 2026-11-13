@@ -21,6 +21,14 @@ public:
     const CPlayer& GetPlayer(long number) const;             // 0x00449910
     CPlayer&       GetMainPlayer();                          // 0x00449970
     const CPlayer& GetMainPlayer() const;                    // 0x00449960
+#ifdef FABLE_RETAIL_CPLAYERMANAGER_SAVEGAMESTATE
+    // Opt-in (chunk 2052, row 0x0049F4C0): Ego_r.pdb ?SaveGameState@CPlayerManager@@QAEXAAVCPersistContext@@@Z, out of line at 0x00449F90.
+    void SaveGameState(CPersistContext& context);                       // 0x00449F90
+#endif
+#ifdef FABLE_RETAIL_CPLAYERMANAGER_LOADGAMESTATE
+    // Opt-in (chunk 2052, row 0x004A21F0): Ego_r.pdb ?LoadGameState@CPlayerManager@@QAEXAAVCPersistContext@@@Z, out of line at 0x00449E60.
+    void LoadGameState(CPersistContext& context);                       // 0x00449E60
+#endif
     long           GetMainPlayerNumber() const;              // 0x00449700
 #ifdef FABLE_RETAIL_CPLAYERMANAGER_MULTIPLAYERCOLOUR
     // Retail opt-in (wf5, row 0x0064C869): see the default branch below. Declaration only.

@@ -23,6 +23,11 @@ C2DBoxI(const C2DCoordI& p,long radius):TLX(p.X-radius),TLY(p.Y-radius),BRX(p.X+
 C2DBoxI(const C2DCoordI& p,long radius){long x=p.X;long y=p.Y;Initialise(x-radius,y-radius,x+radius,y+radius);}
 #endif
 void Initialise(long tlx,long tly,long brx,long bry){TLX=tlx;TLY=tly;BRX=brx;BRY=bry;}
+#ifdef FABLE_RETAIL_C2DBOXI_GETHEIGHT
+// Retail opt-in (chunk 2031, row 0x00B54E30 CEngineWeatherRenderer::RenderSnow): FableWin.pdb ?GetHeight@C2DBoxI@@QBEJXZ (no Ego_r.pdb copy), inline
+// (0x00B55222..0x00B55236: `mov edi,[box+4] ... mov edx,[box+0Ch] ; sub edx,edi`).
+long GetHeight()const{return BRY-TLY;}
+#endif
 #ifdef FABLE_RETAIL_C2DBOXI_CTORS
 // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): Ego_r.pdb ??0C2DBoxI@@QAE@JJJJ@Z and
 // ??0C2DBoxI@@QAE@ABVC2DCoordI@@ABVC2DExtentsI@@@Z, inline (no out-of-line copy bound in Fable.exe).

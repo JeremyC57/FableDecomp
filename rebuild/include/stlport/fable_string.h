@@ -6,7 +6,7 @@
 // Computer Systems, Inc.; 1997 Moscow Center for SPARC Technology;
 // 1999 Boris Fomitchev. Permission to use/copy/modify is granted without
 // fee provided these notices are retained. Provided as is, without warranty.
-#include "fable_containers.h"
+#include "stlport/fable_containers.h"   // overlay copy: the repo file sits next to it in rebuild/include/stlport
 #include <string.h>
 #ifdef _MSC_VER
 #pragma intrinsic(strlen,memcmp,memcpy,memset)
@@ -15,6 +15,17 @@ namespace std {
 // Authentic STLport4.6.2 char_traits.h125..150,207..209; native403c60.
 template<class C,class I> class __char_traits_base {
 public:static int __cdecl compare(const C*,const C*,size_t);
+#ifdef FABLE_RETAIL_STLP_CHAR_TRAITS_LENGTH
+    // Opt-in (chunk 2032, row 0x009C47A0 CFileInstaller::AddFile): STLport 4.6.2 char_traits.h __char_traits_base::length, inline.
+    // For a literal argument the loop folds to a constant: `filename == L""` tests `(finish - start) & ~1` and pushes n = 0 to the
+    // out-of-line compare 0x00403C60 (0x009C4C9A..0x009C4CB5; same shape in the landed 0x0049EF50 / 0x00997F80 local models).
+    static size_t __cdecl length(const C* s) {
+        const C null_char = C();
+        size_t i;
+        for (i = 0; !(s[i] == null_char); ++i) { }
+        return i;
+    }
+#endif
 };
 template<class C> class char_traits:public __char_traits_base<C,C> {};
 template<> class char_traits<char>

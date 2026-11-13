@@ -44,6 +44,12 @@ public:
     CDefPointer<const CHeroAbilityDef> GetAbilityPDef(EHeroAbility) const;
 #endif
     static ETCInterfaceType StatGetInterfaceType() { return (ETCInterfaceType)111; }
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ONSERIALISE
+    // Nested opt-in (chunk 2040, row 0x005F6E40): Ego_r.pdb + FableWin.pdb ?OnSerialise@CTCInventoryAbilities@@UAEXAAVCPersistContext@@_N@Z
+    // (public virtual override of NInventory::CTCInventoryBase::OnSerialise 0x005BFD5E; vtable 0x01256AD4 slot 1 = 0x005F6E40). An
+    // override only: no layout or vtable change.
+    virtual void OnSerialise(CPersistContext& context, bool inGameSave);
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_EXPRESSIONS
     // Nested opt-in (chunk 867, row 0x005F59C7): the PC skills screen's expressions page. FableWin.pdb spellings, out of line in
     // retail: ?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z 0x005F59C7 and

@@ -331,6 +331,20 @@ public:
     long NumberOfShopsOwned;                                             // +0xe0
     long NumberOfHousesOwned;                                            // +0xe4
     unsigned char _pad_0xe8[0x1dc - 0xe8];
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_RENTMONEY)
+    // Retail opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb ?AddMoney@CTCHeroStats@@QAEXJ_N@Z
+    // (out of line at 0x0057B327, landed) and FableWin.pdb's inline ?AddRentMoney@CTCHeroStats@@QAEXJ@Z (0x01DF38C0) /
+    // ?GetRentMoney@CTCHeroStats@@QBEJXZ (0x01DF38F0), whose first FableWin COMDAT copies follow OnCollisionWithObject (0x01DF10E0):
+    // no Ego_r.pdb or Fable.exe copy, retail adds the gold to RentMoney +0x54 in place (`mov ecx,[ebx+54h] ; add ecx,eax ; mov
+    // [ebx+54h],ecx`, 0x006AD14F) and reads the sum back. RentMoney +0x54 is the generated default branch's offset (Ego_r.pdb name).
+    void AddMoney(long amount, bool flag);                               // 0x0057B327
+    void AddRentMoney(long amount) { RentMoney += amount; }
+    long GetRentMoney() const { return RentMoney; }
+private:
+    unsigned char _pad_after_base[0x54 - sizeof(CTCBase)];
+    long RentMoney;                                                      // +0x54
+    unsigned char _pad_0x58[0x1dc - 0x58];
+public:
 #elif defined(FABLE_RETAIL_CTCHEROSTATS_STAMINA)
     // Retail opt-in (Codex pass 17): original fields at native58/5C/60; all remaining bytes retained.
 private:unsigned char _before_stamina[0x58-sizeof(CTCBase)];

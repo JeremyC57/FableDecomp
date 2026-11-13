@@ -395398,6 +395398,113 @@ $catalog = @(
         TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_Main_00dcd350_test.cpp'
         PassPattern = '00dcd350_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0094c050'
+        Module = 'CAIStateGroup_SellToBuyer'
+        Source = '00/94/CAIStateGroupSellToBuyer_Update_0094c050.cpp'
+        TestSource = '00/94/CAIStateGroupSellToBuyer_Update_0094c050_test.cpp'
+        PassPattern = '0094c050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00605570'
+        Module = 'CTCInventoryMap'
+        Source = '00/60/CTCInventoryMap_ConstructRegionDescription_00605570.cpp'
+        TestSource = '00/60/CTCInventoryMap_ConstructRegionDescription_00605570_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT107'
+        PassPattern = '00605570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b65a20'
+        Module = 'CEngineSkyRenderer'
+        Source = '00/b6/CEngineSkyRenderer_RenderOuterSky_00b65a20.cpp'
+        TestSource = '00/b6/CEngineSkyRenderer_RenderOuterSky_00b65a20_test.cpp'
+        PassPattern = '00b65a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b54e30'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_RenderSnow_00b54e30.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_RenderSnow_00b54e30_test.cpp'
+        PassPattern = '00b54e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c47a0'
+        Module = 'CFileInstaller'
+        Source = '00/9c/CFileInstaller_AddFile_009c47a0.cpp'
+        TestSource = '00/9c/CFileInstaller_AddFile_009c47a0_test.cpp'
+        PassPattern = '009c47a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069ae80'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_CGameCameraManager_0069ae80.cpp'
+        TestSource = '00/69/CGameCameraManager_CGameCameraManager_0069ae80_test.cpp'
+        PassPattern = '0069ae80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4c5e0'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/a4/C3DAnimationSequenceData_ReadCompressedFromFile_00a4c5e0.cpp'
+        TestSource = '00/a4/C3DAnimationSequenceData_ReadCompressedFromFile_00a4c5e0_test.cpp'
+        PassPattern = '00a4c5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00600b60'
+        Module = 'CTCInventoryMap'
+        Source = '00/60/CTCInventoryMap_ConstructRegionDescriptionBuyableBuildings_00600b60.cpp'
+        TestSource = '00/60/CTCInventoryMap_ConstructRegionDescriptionBuyableBuildings_00600b60_test.cpp'
+        PassPattern = '00600b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fdd60'
+        Module = 'CGameCameraBase'
+        Source = '00/6f/CGameCameraBase_Update_006fdd60.cpp'
+        TestSource = '00/6f/CGameCameraBase_Update_006fdd60_test.cpp'
+        PassPattern = '006fdd60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be9920'
+        Module = 'CEngineWaterSettings'
+        Source = '00/be/CEngineWaterSettings_CEngineWaterSettings_00be9920.cpp'
+        TestSource = '00/be/CEngineWaterSettings_CEngineWaterSettings_00be9920_test.cpp'
+        PassPattern = '00be9920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006aca30'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_OnCollisionWithObject_006aca30.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_OnCollisionWithObject_006aca30_test.cpp'
+        PassPattern = '006aca30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005841f9'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_GetItemDescription_005841f9.cpp'
+        TestSource = '00/58/CTCInventory_GetItemDescription_005841f9_test.cpp'
+        PassPattern = '005841f9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f6e40'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_OnSerialise_005f6e40.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_OnSerialise_005f6e40_test.cpp'
+        PassPattern = '005f6e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064ed4f'
+        Module = 'NPlayerGui::CDrawDamage'
+        Source = '00/64/NPlayerGuiCDrawDamage_Draw_0064ed4f.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawDamage_Draw_0064ed4f_test.cpp'
+        PassPattern = '0064ed4f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049f4c0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_SaveGameStateInternal_0049f4c0.cpp'
+        TestSource = '00/49/CWorld_SaveGameStateInternal_0049f4c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0049f4c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

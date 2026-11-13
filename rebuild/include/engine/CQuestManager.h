@@ -92,6 +92,19 @@ private:
 }
 #endif
 class CQuestManager : public CTBaseSingletonNoDefaultAlloc<CQuestManager> {
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE_B
+public:
+    // Opt-in (chunk 2052, row 0x0049F4C0 CWorld::SaveGameStateInternal): Ego_r.pdb ?SaveGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z,
+    // out of line at 0x004B64E0 (called on [0x013B89FC], the singleton). Declaration only.
+    void SaveGameState(CPersistContext& context);                       // 0x004B64E0
+#endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE_CONTEXT
+    // Opt-in (chunk 2052, row 0x004A21F0): Ego_r.pdb ?LoadGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z (0x004B6380) and
+    // ?DeactivateAllQuests@CQuestManager@@QAEXXZ (0x004B4450), out of line. Declarations only.
+public:
+    void LoadGameState(CPersistContext& context);                       // 0x004B6380
+    void DeactivateAllQuests();                                         // 0x004B4450
+#endif
 public:
 #ifdef FABLE_RETAIL_CQUESTMANAGER_ISQUESTACTIVE
     // Retail opt-in (chunk 2016, row 0x0061AD60): Ego_r.pdb 0x004B4930 / FableWin.pdb 0x01C53CE0 ?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z,

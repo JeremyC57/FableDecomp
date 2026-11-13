@@ -12,7 +12,11 @@ class CGameTimeManager{
 public:
  CGameTimeManager(const CGameTimeManager & p0);
  CGameTimeManager(CMainGameComponent & p0, CWorld & p1);
+ // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): no user destructor -- retail's out-of-line boost::checked_delete<CGameTimeManager> 0x004ADD30 expands the
+ // StopTimeIndexes set's destructor in place (no ??1 call), so the destructor is the implicit one.
+#ifndef FABLE_RETAIL_CGAMETIMEMANAGER_IMPLICIT_DTOR
  ~CGameTimeManager();
+#endif
  void Update(float p0);
  bool IsNightSounds() const;
  bool IsDaySounds() const;

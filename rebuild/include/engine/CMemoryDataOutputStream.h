@@ -23,6 +23,12 @@ public:
     // Opt-in (row 0x00523CF0): Ego_r.pdb ?ReserveSize@CMemoryDataOutputStream@@QAEXK@Z (0x00996BC0). Declaration only.
     void ReserveSize(unsigned long);                         // 0x00996BC0
 #endif
+#ifdef FABLE_RETAIL_CMEMORYDATAOUTPUTSTREAM_RESERVE
+    // Opt-in (chunk 2052, row 0x0049F4C0): Ego_r.pdb ?ReserveSize@CMemoryDataOutputStream@@QAEXK@Z (0x00996BC0) and
+    // ?Clear@CMemoryDataOutputStream@@QAEXXZ (0x00996B60), out of line. Declarations only.
+    void ReserveSize(unsigned long size);                    // 0x00996BC0
+    void Clear();                                            // 0x00996B60
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CMemoryDataOutputStream) == 0x18);
 #endif // FABLE_ENGINE_CMEMORYDATAOUTPUTSTREAM_H

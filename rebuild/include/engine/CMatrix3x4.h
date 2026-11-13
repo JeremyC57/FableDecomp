@@ -31,6 +31,16 @@ public:
     // 0x00A114F8..0x00A11512), then the diagonal (E33, E22, E11, 0x00A1151A..0x00A11520). Body only: no layout change.
     FABLE_FORCEINLINE void SetIdentity() { E12=E13=E21=E23=E31=E32=E41=E42=E43=0.0f; E11=E22=E33=1.0f; }
 #endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETSCALE
+    // Retail opt-in (chunk 2030, row 0x00BE9920 the CEngineWaterSettings constructor): FableWin.pdb ?SetScale@CMatrix3x4@@QAEXM@Z (debug
+    // only, inline in release): the nine off-diagonal / translation entries cleared in one chained assignment (stored E43 first) and the
+    // diagonal set to the scale (E33, E22, E11) -- the order 0x00BE9AAC..0x00BE9AEE stores for OtherShaderVars with scale 0, the same
+    // body as the chunk 2005 SetIdentity with 1.0f.
+    void SetScale(float scale) {
+        E12 = E13 = E21 = E23 = E31 = E32 = E41 = E42 = E43 = 0.0f;
+        E11 = E22 = E33 = scale;
+    }
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETFROMVECTORANDANGLE
     // Nested opt-in (chunk 1016, row 0x00A55F90): Ego_r.pdb / FableWin.pdb ?SetFromVectorAndAngle@CMatrix3x4@@QAEXABVC3DVector@@M@Z
     // (thiscall, out of line at 0x00A55F90; the landed C3DVector::Rotate 0x00A13C60 calls it). A declaration only: no layout change.

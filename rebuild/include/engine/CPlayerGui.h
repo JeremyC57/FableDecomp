@@ -215,6 +215,13 @@ public:
     bool IsShowSpecialAbilityButtons() const { return ShowSpecialAbilityButtons; }
 #endif
 public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
+#ifdef FABLE_RETAIL_CPLAYERGUI_AUTOPICKUP
+    // Retail opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb ?AddAutoPickup@CPlayerGui@@QAEXJ@Z
+    // (Ego_r 0x0044A630, 16 bytes, between OnHeroHit and AddHitByMelee), out of line in retail at 0x00437980 (`mov ecx,[ecx+2FCh] ;
+    // jmp 0x00647511`, the forward to the auto-pickup drawer; its only callers are the row's two auto-pickup sites, which push the
+    // picked-up item's def index with ecx = the singleton 0x013B8790). Declaration only: no layout change.
+    void AddAutoPickup(long defIndex);                                   // 0x00437980
+#endif
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CPlayerGui@@QAEX_N@Z (retail 0x0043A080,
     // landed) and ?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z (0x004378C0, the forward to PDrawMiniMap +0x160), both on Get().
 #ifdef FABLE_RETAIL_CPLAYERGUI_QUEST_DRAW

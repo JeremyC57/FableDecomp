@@ -42,6 +42,12 @@ public:
     // Ego_r.pdb ?GetLandscapePointIntersectionFromTo@CTools@NCameraModes@@QBE_NABVC3DVector@@0AAV3@1_N@Z (const). Declaration only.
     bool GetLandscapePointIntersectionFromTo(const C3DVector& from,const C3DVector& to,C3DVector& hitPos,C3DVector& hitNormal,bool includeWater) const;   // 0x00875550
 #endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_CTOR
+    // Retail opt-in (chunk 2033, row 0x0069AE80 CGameCameraManager::CGameCameraManager): Ego_r.pdb / FableWin.pdb
+    // ??0CTools@NCameraModes@@QAE@ABVCGameCameraManager@@@Z, out of line in retail at 0x00877160 (the manager's constructor
+    // passes its own `this`: `push esi ; lea ecx,[esi+78h] ; call 0x00877160`). Declaration only, no layout change.
+    CTools(const CGameCameraManager& camera_manager);                    // 0x00877160
+#endif
 #ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_AVERAGE
     // Retail opt-in (Codex pass 17): original donor template and arithmetic at0x02889720.
 #ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_OUTOFLINE

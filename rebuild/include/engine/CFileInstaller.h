@@ -31,7 +31,16 @@ public:
  bool Decompress;
  bool CreateMarkerFile;
  CFileInfo(const CFileInfo&);
+#ifdef FABLE_RETAIL_CFILEINSTALLER_CFILEINFO_CTOR
+ // Opt-in (chunk 2032, row 0x009C47A0 CFileInstaller::AddFile): FableWin.pdb ??0CFileInfo@CFileInstaller@@QAE@ABVCWideString@@0J_N1@Z,
+ // inline in retail: AddFile expands it after operator new(0x10) inside the wildcard scan loop (0x009C4A86..0x009C4AB5: both copy
+ // constructors 0x0099B720, then InputSize +8, Started = false +0xC, Decompress +0xD, CreateMarkerFile +0xE) and calls its COMDAT
+ // 0x009C3130 (landed, the same stores, `ret 14h`) at the two single-file sites (0x009C4C90, 0x009C4DA1).
+ CFileInfo(const CWideString& src_path,const CWideString& dst_path,long input_size,bool decompress,bool create_marker_file)
+  : SrcPath(src_path),DstPath(dst_path),InputSize(input_size),Started(false),Decompress(decompress),CreateMarkerFile(create_marker_file) { }
+#else
  CFileInfo(const CWideString&,const CWideString&,long,bool,bool);
+#endif
  CFileInfo();
  ~CFileInfo();
  CFileInfo& operator=(const CFileInfo&);

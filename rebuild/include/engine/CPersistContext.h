@@ -74,6 +74,14 @@ public:
     // 0x009BAA30 (Ego_r.pdb / FableWin.pdb ?Init@CPersistContext@@QAEXAAVCMemoryDataInputStream@@_N@Z, `ret 8`: stream +0x24, Mode
     // MODE_LOAD_BINARY) and ReadSection 0x009BAE70 (?ReadSection@CPersistContext@@QAE_NAAVCPersistContextReadSection@@ABVCCharString@@@Z, landed).
     void Init(CMemoryDataInputStream&,bool);
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_WRITESECTIONS
+    // Opt-in (chunk 2052, rows 0x0049F4C0 / 0x004A21F0 CWorld::Save/LoadGameStateInternal): Ego_r.pdb
+    // ?Init@CPersistContext@@QAEXAAVCDataOutputStream@@_N@Z (retail 0x009BAA50, `ret 8`), ?StartSection@CPersistContext@@QAEXAAVCPersistContextWriteSection@@ABVCCharString@@@Z
+    // (0x009BAB60, landed) and ?EndSection@CPersistContext@@QAEXAAVCPersistContextWriteSection@@@Z (0x009BABF0, landed). Declarations only.
+    void Init(CDataOutputStream&,bool);                                  // 0x009BAA50
+    void StartSection(CPersistContextWriteSection&,const CCharString&);  // 0x009BAB60
+    void EndSection(CPersistContextWriteSection&);                       // 0x009BABF0
+#endif
     bool ReadSection(CPersistContextReadSection&,const CCharString&);
     // pass 12 header wave (0x009BC120): Ego_r / FableWin ?PersistError@CPersistContext@@QBEXABVCStringParser@@ABVCCharString@@@Z,
     // ?CheckUnknownSymbols@CPersistContext@@QAEXXZ (out of line: 0x009BAA90 / 0x009BBBF0); SetAsSingleTransfer has no copy in

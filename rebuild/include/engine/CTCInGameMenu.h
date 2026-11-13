@@ -44,6 +44,13 @@ public:
     void SaveGame(long);                                             // 0x0047E196
     virtual void GlobalUpdate(bool);                                 // 0x0047E9AE (slot 26)
 #endif
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_PAUSEDTIME
+    // Opt-in (chunk 2052, rows 0x0049F4C0 / 0x004A21F0): FableWin.pdb ?GetAccumulativePausedTime@CTCInGameMenu@@QBENXZ /
+    // ?SetAccumulativePausedTime@CTCInGameMenu@@QAEXN@Z, inline in retail (SaveGameStateInternal reads +0x70 in place, 0x0049F9BC).
+    // Needs the _SAVELOAD layout.
+    double GetAccumulativePausedTime() const { return AccumulativePausedTime; }
+    void SetAccumulativePausedTime(double time) { AccumulativePausedTime = time; }
+#endif
 private:
     void AddRegionAndTimeInfo(const CWideString&);                   // 0x0047F58B
     bool          InGameMenuOpen;                                    // +0x0c

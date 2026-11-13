@@ -15,10 +15,14 @@
 // Retail CWideStringData (Ego_r TPI: protected Data, public NoRefs at +0x0C, const operator==); the STLport
 // basic_string<unsigned short> is the three-pointer string of stlport/fable_string.h (0x10 bytes in all).
 #include "stlport/fable_string.h"
-#ifdef FABLE_RETAIL_CWIDESTRING_TEXT_EQ
+#if defined(FABLE_RETAIL_CWIDESTRING_TEXT_EQ) && !defined(FABLE_RETAIL_CWIDESTRING_TEXT_EQ_STLP_INLINE)
 // (chunk 784) the wide text comparison is out of line in retail (0x00404280; char_traits<unsigned short>::length has no body here).
 namespace std { template<> bool operator==(const basic_string<unsigned short>&,const unsigned short*); }
 #endif
+// FABLE_RETAIL_CWIDESTRING_TEXT_EQ_STLP_INLINE (nested in FABLE_RETAIL_CWIDESTRING_TEXT_EQ; chunk 2032, row 0x009C47A0
+// CFileInstaller::AddFile): that TU expands the STLport text operator== under CWideString::operator==(const wchar_t*) instead of
+// calling 0x00404280. The literal's length folds to 0 (define FABLE_RETAIL_STLP_CHAR_TRAITS_LENGTH for STLport's
+// __char_traits_base::length), so retail tests `(finish - start) & ~1` and calls compare 0x00403C60 with n = 0 (0x009C4C9A..B5).
 class CWideStringData
 {
 protected:

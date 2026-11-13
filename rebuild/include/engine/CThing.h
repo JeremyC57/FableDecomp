@@ -32,6 +32,9 @@ class CMainGameComponent; class CPlayer;                        // chunk 732: Pe
 #ifdef FABLE_RETAIL_CTHING_MOREACCESS
 class CGameDefinitionManager; class CASoundBank; class CWorldMap;   // plan phase 7: FABLE_RETAIL_CTHING_MOREACCESS return types
 #endif
+#ifdef FABLE_RETAIL_CTHING_PEEKGLOBALDEFINITION
+class CGlobalDef;                                                // chunk 2039: PeekGlobalDefinition's return type
+#endif
 #ifdef FABLE_RETAIL_CTHING_LOADSINGLE
 class CPersistContext; class CMemoryDataInputStream;            // chunk 846: the serialise virtuals' parameter types
 #endif
@@ -376,6 +379,26 @@ public:
     }
     template<class T> FABLE_FORCEINLINE bool GetTC(T** result) { return GetTC(T::StatGetInterfaceType(),result); }
     template<class T> FABLE_FORCEINLINE bool PeekTC(T** result) const { return PeekTC(T::StatGetInterfaceType(),result); }
+#ifdef FABLE_RETAIL_CTHING_HASTC_CLASSTYPE
+    // Nested opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb / FableWin.pdb
+    // ??$HasTC@VCTCActionUseActivateQuest@@@CThing@@QBE_NXZ (also ..@VCTCActionUseWindow@@@ / ..@VCTCRandomAppearanceMorph@@@ in FableWin):
+    // whether the thing has T's interface AND that component's class is T (several classes share one interface type). Retail keeps an
+    // unreferenced out-of-line copy of the CTCActionUseActivateQuest instance at 0x006AE680 (178 bytes, in the TU's run of unreferenced
+    // COMDATs next to the PeekTC<const CTCGold / CTCStockItem / CTCContainer> copies 0x006AE5E0 / 0x006AE630 / 0x006AE740) and expands
+    // it in the row (0x006ACAB1..0x006ACB4E). FABLE_FORCEINLINE like GetTC / PeekTC (owner decision 2026-11-01): c2's inline trace gives
+    // the plain-inline body cost c1 = 175 at the row's site (f 0.19, score 283), and 175 * 6/7 = 150 > 74 at any frequency. Shape from that copy: the expanded
+    // PeekTC (const LowerBound 0x004365B0), T::StatGetClassTypeName() built first, the GetClassTypeName virtual (CTCBase slot 22,
+    // +0x58), the inline CCharString::operator== into one byte, both temporaries destroyed unconditionally, then the test (the nested
+    // if: an `&&` with the comparison would add conditional-destruction flags).
+    template<class T> FABLE_FORCEINLINE bool HasTC() const {
+        const CTCBase* tc;
+        if(PeekTC(T::StatGetInterfaceType(),&tc)) {
+            if(tc->GetClassTypeName()==T::StatGetClassTypeName())
+                return true;
+        }
+        return false;
+    }
+#endif
 #else
     template<class T> FABLE_FORCEINLINE bool GetTC(T** result) {
         if(HasTC(T::StatGetInterfaceType())) {
@@ -549,6 +572,15 @@ public:
     void FrameUpdate();                                          // 0x004C9D20 ?FrameUpdate@CThing@@QAEXXZ
 protected:
     const CWorldMap& PeekWorldMap() const;                       // 0x004C79E0 ?PeekWorldMap@CThing@@IBEABVCWorldMap@@XZ
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_PEEKGLOBALDEFINITION
+    // Retail opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb
+    // ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ (protected const), out of line in retail at 0x004C79A0 (`mov eax,[013B8A1Ch]
+    // ; mov ecx,[eax+20h] ; mov eax,[ecx+0D0h] ; ret`: the current thing manager's definition manager (as PeekDefinitionManager
+    // 0x004C7990 reads it), then its global def +0xD0, the word CGameDefinitionManager::PeekGlobalDef reads). Declaration only.
+protected:
+    const CGlobalDef& PeekGlobalDefinition() const;              // 0x004C79A0
 public:
 #endif
 #ifdef FABLE_RETAIL_CTHING_OPERATORNEW

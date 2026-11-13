@@ -60,6 +60,13 @@ class CWorldMap;
 #include "fable_string.h"                                    // chunk 734: SaveGamePathName / MostRecentManualSaveName' real type
 #include "engine/CArray.h"                                   // chunk 734: InitialActiveQuests
 #include "engine/CTestQuest.h"                               // chunk 734: ActiveTestQuests
+#ifdef FABLE_RETAIL_CWORLD_TYPED_SAVE
+#include "engine/C3DVector.h"
+#endif
+#ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+#include "engine/CCountedPointer.h"                          // chunk 2051 typed members
+#include "boost/scoped_ptr.h"
+#endif
 class CAFile;
 class CEnginePrimitiveHandle;
 class C3DVector;
@@ -192,9 +199,24 @@ public:
     // ?GetThingSearchTools@CWorld@@QAEAAVCThingSearchTools@@XZ (FableWin 0x018C3A00; 0x00666EF0 reads [world+0x20]),
     // ?PeekThingSearchTools@CWorld@@QBEABVCThingSearchTools@@XZ (FableWin 0x018CE450) and ?IsSerialisingHeroState@CWorld@@QBE_NXZ
     // (FableWin 0x01B3AB20; 0x0047A9F0 reads [world+0x102]). No layout or vtable change.
+#ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+    CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools; }
+#else
     CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools_ptr; }
+#endif
+#ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+    const CThingSearchTools& PeekThingSearchTools() const { return *PThingSearchTools; }
+#else
     const CThingSearchTools& PeekThingSearchTools() const { return *PThingSearchTools_ptr; }
+#endif
     bool IsSerialisingHeroState() const { return SerialisingHeroState; }
+#ifdef FABLE_RETAIL_CWORLD_ABOUTTOLOADHEROSTATE
+    // Nested opt-in (chunk 2040, row 0x005F6E40 CTCInventoryAbilities::OnSerialise): FableWin.pdb
+    // ?IsSerialisingAboutToLoadHeroState@CWorld@@QBE_NXZ (FableWin 0x01D3BD00; not in Ego_r.pdb: inline in the release builds), the
+    // twin of IsSerialisingHeroState above; retail reads [world+0x101] after PeekWorld 0x00686A80 (0x005F70AB, 0x005F70F4, 0x005F7282,
+    // 0x005F72EE, 0x005F73CB: `cmp byte ptr [eax+101h],0`). No layout or vtable change.
+    bool IsSerialisingAboutToLoadHeroState() const { return SerialisingAboutToLoadHeroState; }
+#endif
 #ifdef FABLE_RETAIL_CWORLD_NAVIGATORMANAGER
     // Nested opt-in (chunk 1013, row 0x004FEB70 CWorldMap::HeightAreaChanged): FableWin.pdb ?GetNavigatorManager@CWorld@@QAEAAVCNavigatorManager@@XZ
     // (0x01C78D00) / ?PeekNavigatorManager@CWorld@@QBEABVCNavigatorManager@@XZ (0x01C8E790), inline in retail (0x004FEC25 / 0x004FEC47
@@ -205,8 +227,16 @@ public:
     // chunk 751 (row 0x006817F0): the inline opinion-reaction accessors, Ego_r.pdb / FableWin.pdb
     // ?GetOpinionReactionManager@CWorld@@QAEAAVCOpinionReactionManager@@XZ / ?PeekOpinionReactionManager@CWorld@@QBEABVCOpinionReactionManager@@XZ
     // (expanded in retail: 0x00681803 `mov eax,[eax+74h]`, the CCountedPointer's Data). No layout change.
+#ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+    COpinionReactionManager& GetOpinionReactionManager() { return *POpinionReactionManager; }
+#else
     COpinionReactionManager& GetOpinionReactionManager() { return *POpinionReactionManager_Data; }
+#endif
+#ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+    const COpinionReactionManager& PeekOpinionReactionManager() const { return *POpinionReactionManager; }
+#else
     const COpinionReactionManager& PeekOpinionReactionManager() const { return *POpinionReactionManager_Data; }
+#endif
     // Retail opt-in addition (chunk 718): the inline game-camera accessors, FableWin.pdb ?GetGameCamera@CWorld@@QAEPAVCAIGameCameraBase@@XZ
     // (0x01ACC440) / ?PeekGameCamera@CWorld@@QBEPBVCAIGameCameraBase@@XZ (0x018A7070), expanded by Ego_r and retail: they read
     // PCurrentGameCamera (+0x34; 0x0088E0F0 `mov eax,[ecx+4] ; mov ecx,[eax+34h]`, landed 0x00892410 / 0x007A9B10). No layout change.
@@ -219,11 +249,23 @@ public:
     // Retail opt-in (2026-11-03, chunk 720 rows 0x0065B854 / 0x00659800): FableWin.pdb ?PeekGameTimeManager@CWorld@@QBEABVCGameTimeManager@@XZ
     // (0x01E6B1B6) and ?GetGameTimeManager@CWorld@@QAEAAVCGameTimeManager@@XZ (0x01C87B00), inline in Ego_r and retail
     // (AddThingToVillage 0x0065BBF3: `call PeekWorld; mov ecx,[eax+1Ch]; call IsDay`). No layout change.
+#ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+    const CGameTimeManager& PeekGameTimeManager() const { return *PGameTimeManager; }
+#else
     const CGameTimeManager& PeekGameTimeManager() const { return *PGameTimeManager_ptr; }
+#endif
+#ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+    CGameTimeManager& GetGameTimeManager() { return *PGameTimeManager; }
+#else
     CGameTimeManager& GetGameTimeManager() { return *PGameTimeManager_ptr; }
+#endif
     // Chunk 734 (row 0x004A5A40): FableWin.pdb ?GetBulletTimeManager@CWorld@@QAEAAVCBulletTimeManager@@XZ, inline in retail
     // (UpdateFrame holds the scoped_ptr's pointer in edi across IsBulletTimeActive / IsTimeForFullUpdate, 0x004A5D3F).
+#ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+    CBulletTimeManager& GetBulletTimeManager() { return *PBulletTimeManager; }
+#else
     CBulletTimeManager& GetBulletTimeManager() { return *PBulletTimeManager_ptr; }
+#endif
 #ifdef FABLE_RETAIL_CWORLD_BULLETTIME_CONST
     // Retail opt-in (chunk 1014, row 0x007EA2F0): FableWin.pdb ?GetBulletTimeManager@CWorld@@QBEABVCBulletTimeManager@@XZ (the const
     // overload, inline: the row reads +0x68 off the const world). No layout change.
@@ -300,6 +342,22 @@ protected:
     bool IsHeroStateFileValid(const CWideString& name) const;    // 0x0049D4E0 ?IsHeroStateFileValid@CWorld@@IBE_NABVCWideString@@@Z
     bool LoadGameStateInternal(const CWideString& pathName, bool b);   // 0x004A21F0 ?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
     bool LoadHeroStateInternal(const CWideString& name);         // 0x004A2D70 ?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z
+#ifdef FABLE_RETAIL_CWORLD_SAVEGAMESTATEINTERNAL
+    // Opt-in (chunk 2052, row 0x0049F4C0): Ego_r.pdb ?SaveGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z, ?StartAutoSaveProgress@CWorld@@IAEXXZ
+    // (0x0049E7C0) and ?StopAutoSaveProgress@CWorld@@IAEXXZ (0x0049E8C0), protected in Ego_r.pdb. Declarations only.
+    bool SaveGameStateInternal(const CWideString& pathName, bool b);   // 0x0049F4C0
+    void StartAutoSaveProgress();                                // 0x0049E7C0
+    void StopAutoSaveProgress();                                 // 0x0049E8C0
+#endif
+#ifdef FABLE_RETAIL_CWORLD_LOADGAMESTATEINTERNAL
+    // Opt-in (chunk 2052, row 0x004A21F0 LoadGameStateInternal): Ego_r.pdb ?PrepareForLoad@CWorld@@QAEXXZ (0x004A0220, landed),
+    // ?Load@CWorld@@QAEXABVCWideString@@@Z (0x004A1840) and ?ActivateWorld@CWorld@@QAEX_N@Z (0x0049F180, landed). Declarations only.
+public:
+    void PrepareForLoad();                                       // 0x004A0220
+    void Load(const CWideString& fileName);                      // 0x004A1840
+    void ActivateWorld(bool b);                                  // 0x0049F180
+protected:
+#endif
     bool AutoLoadInternal(const CWideString& name, bool loadNow);   // 0x004A3730 ?AutoLoadInternal@CWorld@@IAE_NABVCWideString@@_N@Z
 private:
     // The world frame counter behind the static GetFrame / SetFrame (0x013B89BC, read by 806 call sites). No PDB data symbol:
@@ -309,6 +367,37 @@ public:
     CMainGameComponent*         Component;                   // +0x08
     CPlayerManager*             PlayerManager;               // +0x0c
     CGameDefinitionManager*     DefinitionManager;           // +0x10
+#ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+    // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): the owning members typed as Ego_r.pdb declares them (boost::scoped_ptr<T> /
+    // CCountedPointer<T>, same offsets and sizes as the flattened words below), so Init writes `PWorldMap.reset(new CWorldMap(...))`
+    // and `PMessageEventManager.Reset(new CMessageEventManager(*this))` as retail does (0x004A6EC9 swap + in-place deleting dtor,
+    // 0x004A727D out-of-line CCountedPointer<CMessageEventManager>::Reset). Needs FABLE_RETAIL_SCOPED_PTR (+ _RESET) before the include.
+protected:
+    bool InitThingManager();                                                // 0x0049EBF0 ?InitThingManager@CWorld@@IAE_NXZ
+    bool InitMeshBank();                                                    // 0x0049E620 ?InitMeshBank@CWorld@@IAE_NXZ
+public:
+    boost::scoped_ptr<CWorldMap>                  PWorldMap;              // +0x14
+    boost::scoped_ptr<CEnvironment>               PEnvironment;           // +0x18
+    boost::scoped_ptr<CGameTimeManager>           PGameTimeManager;       // +0x1c
+    boost::scoped_ptr<CThingSearchTools>          PThingSearchTools;      // +0x20
+    CCountedPointer<CAtmosProcess>                PAtmosProcessor;        // +0x24
+    boost::scoped_ptr<CAIGameCameraBase>          PGameCamera;            // +0x2c
+    boost::scoped_ptr<CAIGameCameraBase>          PGameCameraManager;     // +0x30
+    CAIGameCameraBase*                            PCurrentGameCamera;     // +0x34
+    boost::scoped_ptr<CGameScriptInterface>       PGameScriptInterface;   // +0x38
+    CCountedPointer<CMeshDataBank>                PMainMeshBank;          // +0x3c
+    C3DAnimationManager*                          PAnimationManager;      // +0x44
+    boost::scoped_ptr<CNavigatorManager>          PNavigationManager;     // +0x48
+    boost::scoped_ptr<CCombatManager>             PThingCombatManager;    // +0x4c
+    boost::scoped_ptr<CThingManager>              PThingManager;          // +0x50
+    boost::scoped_ptr<CFactionManager>            PFactionManager;        // +0x54
+    CCountedPointer<CScriptInfoManager>           PScriptInfoManager;     // +0x58
+    CCountedPointer<CMessageEventManager>         PMessageEventManager;   // +0x60
+    boost::scoped_ptr<CBulletTimeManager>         PBulletTimeManager;     // +0x68
+    CCountedPointer<CMusicManager>                PMusicManager;          // +0x6c
+    CCountedPointer<COpinionReactionManager>      POpinionReactionManager; // +0x74
+    boost::scoped_ptr<CScriptConversationManager> PScriptConversationManager; // +0x7c
+#else
     CWorldMap*                  PWorldMap_ptr;               // +0x14 scoped_ptr<CWorldMap>::ptr
     CEnvironment*               PEnvironment_ptr;            // +0x18 scoped_ptr<CEnvironment>::ptr
     CGameTimeManager*           PGameTimeManager_ptr;        // +0x1c scoped_ptr<CGameTimeManager>::ptr
@@ -340,9 +429,16 @@ public:
     COpinionReactionManager*    POpinionReactionManager_Data; // +0x74 CCountedPointer<COpinionReactionManager>::Data
     CCPPointerInfo*             POpinionReactionManager_Info; // +0x78 CCountedPointer<COpinionReactionManager>::Info
     CScriptConversationManager* PScriptConversationManager_ptr; // +0x7c scoped_ptr<CScriptConversationManager>::ptr
+#endif
     bool                        JustLoaded;                  // +0x80
     unsigned char               _pad_0x81[0x3];              // +0x81
+#ifdef FABLE_RETAIL_CWORLD_TYPED_SAVE
+    // Opt-in (chunk 2052): the Ego_r.pdb member types of CurrentWorldName, SaveGameMarkerPos and GuildSealRecallPos (same offsets; SaveGameMarkerPos
+    // sits at the odd +0x141, so it needs FABLE_RETAIL_C3DVECTOR_PACKED: Save/LoadGameStateInternal pass `lea [esi+141h]` to Transfer<C3DVector>).
+    CCharString                 CurrentWorldName;            // +0x84
+#else
     CCharStringData*            CurrentWorldName_PStringData; // +0x84 CCharString::PStringData
+#endif
     long                        ConsolePauseAtFrameNumber;   // +0x88
     long                        FrameStarted3DRendering;     // +0x8c
     double                      LastUpdateTimeLength;        // +0x90
@@ -411,11 +507,20 @@ public:
     ESaveType                   MostRecentSaveTypeBeforeManualSave; // +0x138 (chunk 734: typed)
     CWideString                 MostRecentManualSaveName;    // +0x13c (chunk 734: typed)
     bool                        AutoSaveCheckPointExists;    // +0x140
+#ifdef FABLE_RETAIL_CWORLD_TYPED_SAVE
+    C3DVector                   SaveGameMarkerPos;           // +0x141 (C3DVector alignment 1)
+    unsigned char               _pad_0x14d[0x3];             // +0x14d
+#else
     unsigned char               SaveGameMarkerPos[0xf];      // +0x141 C3DVector
+#endif
     float                       SaveGameMarkerAngleXY;       // +0x150
+#ifdef FABLE_RETAIL_CWORLD_TYPED_SAVE
+    C3DVector                   GuildSealRecallPos;          // +0x154
+#else
     float                       GuildSealRecallPos_X;        // +0x154 C3DVector::X
     float                       GuildSealRecallPos_Y;        // +0x158 C3DVector::Y
     float                       GuildSealRecallPos_Z;        // +0x15c C3DVector::Z
+#endif
     float                       GuildSealRecallAngleXY;      // +0x160
     bool                        WeatherMaskingPrimitivesSent; // +0x164
     unsigned char               _pad_0x165[0x3];             // +0x165
@@ -572,6 +677,7 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CWorld) == 0x198);
 FABLE_STATIC_ASSERT(offsetof(CWorld, __vftable) == 0x0);
 #endif // FABLE_RETAIL_CWORLD
+#ifndef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
 FABLE_STATIC_ASSERT(offsetof(CWorld, Component) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CWorld, PlayerManager) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CWorld, DefinitionManager) == 0x10);
@@ -639,6 +745,16 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_X) == 0xec);
 FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_Y) == 0xf0);
 FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_Z) == 0xf4);
 FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameLoadStatus) == 0xf8);
+#else
+FABLE_STATIC_ASSERT(offsetof(CWorld, PWorldMap) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PGameCameraManager) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMainMeshBank) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PFactionManager) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMessageEventManager) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CWorld, POpinionReactionManager) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PScriptConversationManager) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ConsolePauseAtFrameNumber) == 0x88);
+#endif
 #ifdef FABLE_RETAIL_CWORLD
 FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGamePathName) == 0xfc);
 #else
@@ -674,9 +790,13 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentManualSaveName_PStringData) == 0x
 FABLE_STATIC_ASSERT(offsetof(CWorld, AutoSaveCheckPointExists) == 0x140);
 FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerPos) == 0x141);
 FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerAngleXY) == 0x150);
+#ifdef FABLE_RETAIL_CWORLD_TYPED_SAVE
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos) == 0x154);
+#else
 FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_X) == 0x154);
 FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_Y) == 0x158);
 FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_Z) == 0x15c);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallAngleXY) == 0x160);
 FABLE_STATIC_ASSERT(offsetof(CWorld, WeatherMaskingPrimitivesSent) == 0x164);
 FABLE_STATIC_ASSERT(offsetof(CWorld, WeatherMaskingPrimitiveHandles) == 0x168);

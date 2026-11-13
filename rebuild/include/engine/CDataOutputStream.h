@@ -30,6 +30,12 @@ public:
     void WriteULONG(unsigned long value);                    // 0x00993EA0 ?WriteULONG@CDataOutputStream@@QAEXK@Z
     void WriteSLONG(long value);                             // 0x00993EB0 ?WriteSLONG@CDataOutputStream@@QAEXJ@Z
     void WriteUHUGE(unsigned __int64 value);                 // 0x00993EC0 ?WriteUHUGE@CDataOutputStream@@QAEX_K@Z
+#ifdef FABLE_RETAIL_CDATAOUTPUTSTREAM_ZLIB
+    // Opt-in (chunk 2052, row 0x0049F4C0): Ego_r.pdb ?WriteZlibCompressed@CDataOutputStream@@QAEXPBXJJ@Z (0x009967E0) and
+    // ?WriteRepeatedByte@CDataOutputStream@@QAEXEJ@Z (0x00994230), out of line. Declarations only.
+    void WriteZlibCompressed(const void* data, long size, long chunk_size);   // 0x009967E0
+    void WriteRepeatedByte(unsigned char value, long count);                 // 0x00994230
+#endif
     void WriteFloat(float value);                            // 0x00993EE0 ?WriteFloat@CDataOutputStream@@QAEXM@Z
     void WriteNullTerminatedWString(const CWideString& text); // 0x00993F00 ?WriteNullTerminatedWString@CDataOutputStream@@QAEXABVCWideString@@@Z
     void WriteColour(const CRGBColour& colour);              // 0x00993F30 ?WriteColour@CDataOutputStream@@QAEXABVCRGBColour@@@Z

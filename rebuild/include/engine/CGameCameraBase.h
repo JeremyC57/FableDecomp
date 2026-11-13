@@ -8,6 +8,15 @@
 class CWorld;
 class CGameCameraBase:public CAIGameCameraBase {
 public:virtual CCamera GetRenderCamera(float)const;
+#ifdef FABLE_RETAIL_CGAMECAMERABASE_UPDATE
+ // Retail opt-in (chunk 2035, row 0x006FDD60 Update): the Ego_r.pdb / FableWin.pdb members Update calls, in the PDB spellings
+ // ?Update@CGameCameraBase@@UAEXXZ (vtable 0x01264A8C slot 0), ?GetRotationAngle@CGameCameraBase@@AAEMABVC3DVector@@0@Z (0x006FD4F0,
+ // landed), ?IsLandscapeCollision@CGameCameraBase@@AAE_NXZ (0x006FD6C0, landed) and ?IsThingCollision@CGameCameraBase@@AAE_NXZ
+ // (0x006FDA20). Declarations only: no layout change.
+ virtual void Update();
+private:float GetRotationAngle(const C3DVector& from,const C3DVector& to);bool IsLandscapeCollision();bool IsThingCollision();
+public:
+#endif
 private:CCamera InternalCam,LastInternalCam;C3DVector LastPointingAt,PointingAt;CWorld& World;
  float Theta,Phi,Rad;const float ThetaFixed,RadFixed;bool ActAsFixedCam,GoingIntoBuilding;
  std::list<C3DVector> DrawCoordList,LocalThingPosList;long TriggerFrame;

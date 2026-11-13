@@ -27,6 +27,16 @@ public:
     CTCShop* GetShopTC() const;                                          // 0x00798F50
     CCharString GetHint();                                               // 0x00798D30
 #endif
+#ifdef FABLE_RETAIL_CTCSHOPKEEPER_CUSTOMER
+    // Retail opt-in (chunk 2023, row 0x0094C050 CAIStateGroup_SellToBuyer::Update): Ego_r.pdb / FableWin.pdb
+    // ?GetMinDistFromStall@CTCShopKeeper@@QAEJXZ / ?GetMaxDistFromCustomer@CTCShopKeeper@@QAEJXZ (Ego_r donors 0x0079E7A0 / 0x0079E7B0, just
+    // before GetHint 0x0079E7C0, as retail 0x00798D10 `xor eax,eax` / 0x00798D20 `mov eax,0Ah` before GetHint 0x00798D30) and
+    // ?AddNewCustomer@CTCShopKeeper@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z (Ego_r 0x0079E860 right after GetCustomer
+    // 0x0079E850, as retail 0x00798D90 after GetCustomer 0x00798D80). All out of line in retail: declarations only.
+    long GetMinDistFromStall();                                          // 0x00798D10
+    long GetMaxDistFromCustomer();                                       // 0x00798D20
+    void AddNewCustomer(CIntelligentPointer<CThingCreatureBase> customer);   // 0x00798D90
+#endif
 protected:
     CIntelligentPointer<CThingCreatureBase> Customer;                    // +0x0c
     CIntelligentPointer<CThing> Shop;                                    // +0x14

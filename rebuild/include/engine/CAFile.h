@@ -11,6 +11,12 @@ class CFileInformation;
 enum FileAccessType { FILE_ACCESS_NULL=0, FILE_ACCESS_READ=1, FILE_ACCESS_READ_WRITE=2, FILE_ACCESS_READ_WRITE_CREATE=3, FILE_ACCESS_CREATE=4 };
 // Original CAFile virtual order from Ego_r TPI and native CDiskFileWin32 vtable.
 class CAFile : public CBaseClassNonCopyable {
+#ifdef FABLE_RETAIL_CAFILE_ISROOMFORFILE_B
+public:
+    // Opt-in (chunk 2052, row 0x0049F4C0): Ego_r.pdb ?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z (static __fastcall: size in ecx,
+    // path in edx), out of line at 0x00999AB0. Declaration only.
+    static bool FABLE_FASTCALL IsRoomForFile(long size, const CWideString& path);   // 0x00999AB0
+#endif
 public:
 #ifdef FABLE_RETAIL_CAFILE_ERRORCALLBACK
     // Retail opt-in (Codex pass17): original static callback chain, donor02dd7c60..a0.
@@ -70,6 +76,15 @@ public:
     // ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PA_W@Z (retail 0x00999850; pattern in ecx, info in edx, the name buffer
     // pushed, as StartFileScan; bound as ...PAG@Z by the landed 0x005955AB: VC7.1 without /Zc:wchar_t spells the buffer unsigned short).
     static bool __fastcall ScanNextFile(const CWideString& pattern,CFileScanInfo& info,unsigned short* nextFile);   // 0x00999850
+#endif
+#ifdef FABLE_RETAIL_CAFILE_INSTALLERPATHS
+    // Nested opt-in (chunk 2032, row 0x009C47A0 CFileInstaller::AddFile): Ego_r.pdb / FableWin.pdb static __fastcall members, each
+    // also the self-symbol of a landed row (0x009990B0, 0x00999140, 0x00997930, 0x00999C50, 0x00999CB0). Wide text is unsigned short.
+    static CCharString __fastcall ConvertPathToFullPath(const CCharString&);                                // 0x009990B0 SI?AVCCharString@@ABV2@@Z
+    static bool __fastcall ConvertPathToFullPath(const CWideString&,CWideString&);                          // 0x00999140 SI_NABVCWideString@@AAV2@@Z
+    static CWideString __fastcall GetFilenameFromPathname(const CWideString&);                              // 0x00997930 SI?AVCWideString@@ABV2@@Z
+    static bool __fastcall StartFileScan(const CWideString& pattern,CFileScanInfo& info,CWideString& firstFile);   // 0x00999C50
+    static bool __fastcall ScanNextFile(const CWideString& pattern,CFileScanInfo& info,CWideString& nextFile);     // 0x00999CB0
 #endif
     // Header wave 2026-11-03 (row 0x00821010, the length/version prefix of each file record): FableWin.pdb
     // ??$ReadVar@K@CAFile@@QAEXAAKPAVCASuspendableProcess@@@Z / ??$ReadVar@E@.. (no out-of-line copy in Fable.exe): an aligned

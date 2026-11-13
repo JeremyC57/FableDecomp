@@ -92,6 +92,13 @@ private:
 public:
     void GetEnvironmentMap(class CTexture* texture, const class CEngineComponentRenderParams& params);   // 0x00B665E0
 #endif
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_RENDEROUTERSKY
+    // Retail opt-in (chunk 2031, row 0x00B65A20): Ego_r.pdb 0x00A169E0 / FableWin.pdb ?RenderOuterSky@CEngineSkyRenderer@@AAEXM@Z
+    // (private), called by RenderSky 0x00B66190 (0x00B66284).
+private:
+    void RenderOuterSky(float interpolate);                              // 0x00B65A20
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineSkyRenderer) == 0x194);
 FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarFieldVertexBuffer) == 0x24);

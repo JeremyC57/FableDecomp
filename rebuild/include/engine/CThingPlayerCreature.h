@@ -25,6 +25,9 @@ class CHeroCombatDef;
 class CPlayerMovementDef;
 class CCreatureAbilityDef;
 class CEnginePrimitivePrepareInfo;
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_CREATEANDADD
+class CThingObject;
+#endif
 #pragma pack(push, 1)
 class CThingPlayerCreature : public CThingCreatureBase {
 
@@ -43,6 +46,12 @@ public:
     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x006AA2E0 UAE
     virtual bool SetActionForMelee(const CCreatureAbilityDef& ability);                     // 0x006AABE0 UAE
     void OnCollisionWithObject(CThing* thing);                                             // 0x006ACA30 QAE
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_CREATEANDADD
+    // Nested opt-in (chunk 2039, row 0x006ACA30 OnCollisionWithObject): Ego_r.pdb / FableWin.pdb
+    // ?CreateAndAddObjectToInventory@CThingPlayerCreature@@QAEPAVCThingObject@@JJ_NABVCCharString@@@Z, out of line in retail at
+    // 0x006AC200 (`ret 10h`; the row pushes the container entry's name, 1, -1 and its def index). Declaration only.
+    CThingObject* CreateAndAddObjectToInventory(long defIndex, long, bool, const CCharString& scriptName);   // 0x006AC200 QAE
+#endif
     float GetCurrentRelativeMovementAngleXY() const;                                      // 0x006A9640 QBE
 #ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_RELATIVEMOVEMENT
     // Nested opt-in (chunk 1012, row 0x0062BD80 CWorld::EAControlledCreatureStrafe): Ego_r.pdb / FableWin.pdb

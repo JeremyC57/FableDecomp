@@ -69,6 +69,12 @@ public:
 #endif
     CStringParser(const char*,void (__fastcall*)(const CCharString&)=0,const CCharString& filename=CCharString(""),long baseLineOffset=0);
     void Init(const CCharString&,void (__fastcall*)(const CCharString&),const CCharString&,long);
+#ifdef FABLE_RETAIL_CSTRINGPARSER_INIT_STRING_INLINE
+    // Opt-in (chunk 2052, row 0x004A21F0): the body of the CCharString overload ?Init@CStringParser@@QAEXABVCCharString@@P6IX0@Z0J@Z
+    // (Ego_r.pdb), inline in retail: TempCharString = string (operator= 0x0099EFB0), then the const char* Init 0x009B9530 on the
+    // argument's characters (0x004A2624..0x004A2653 read the caller's string word, not TempCharString). Declared out of line above in the
+    // default path; this opt-in supplies the inline definition below the class.
+#endif
     unsigned long GetLine() const { return CursorPos.Line; }
     EParsedItemType PeekNextItemType();
     bool ReadNextItem(CParsedItem&);
@@ -136,6 +142,13 @@ protected:
     CCursorPos CursorPos;
 };
 FABLE_STATIC_ASSERT(sizeof(CStringParser)==0x28);
+#ifdef FABLE_RETAIL_CSTRINGPARSER_INIT_STRING_INLINE
+inline void CStringParser::Init(const CCharString& string,void (__fastcall* errorCallback)(const CCharString&),const CCharString& filename,long baseLineOffset)
+{
+    TempCharString=string;
+    Init(string.GetAsCharArray(),errorCallback,filename,baseLineOffset);
+}
+#endif
 #endif
 #else
 #ifndef FABLE_ENGINE_CSTRINGPARSER_H

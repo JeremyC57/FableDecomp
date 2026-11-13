@@ -15,6 +15,12 @@ public:
     // Original Graphic member; native005e51f5 Type+32,005e51fb BankIndex+25.
     CEngineGraphic Graphic;
 #else
+#ifdef FABLE_RETAIL_CINVENTORYITEMDEF_STATGETTYPENAME
+    // Retail opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb
+    // ?StatGetTypeName@CInventoryItemDef@@SI?AVCCharString@@XZ, declared so the shared GetSubDef body
+    // (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY) instantiates for CInventoryItemDef (retail's COMDAT 0x005BADE1). Declaration only.
+    static CCharString __fastcall StatGetTypeName();
+#endif
     unsigned char Graphic[0xf];                              // +0x25 CEngineGraphic
 #endif
     unsigned long ItemDescription;                           // +0x34

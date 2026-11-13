@@ -7,6 +7,22 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CGOLDDEF
+// Retail opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): the sub-def on the retail CSubDefClassBase
+// (0x25 bytes, packed), so CDefPointer<const CGoldDef> and CDefClassBase::GetSubDef<CGoldDef> (0x006AE320, landed) take it.
+// Gold +0x28 as the generated layout below (the row pushes `[esi+28h]` for CTCHeroStats::AddMoney, 0x006ACC39); the alignment gap
+// +0x25..+0x27 is spelled out. Ego_r.pdb ?StatGetTypeName@CGoldDef@@SI?AVCCharString@@XZ declared for the shared GetSubDef body.
+#include "engine/CSubDefClassBase.h"
+class CGoldDef : public CSubDefClassBase {
+public:
+    static CCharString __fastcall StatGetTypeName();
+private:
+    unsigned char _pad_0x25[0x3];                            // +0x25
+public:
+    long          Gold;                                      // +0x28
+};
+FABLE_STATIC_ASSERT(sizeof(CGoldDef) == 0x2c);
+#else
 
 #pragma pack(push, 1)
 class CGoldDef {
@@ -29,4 +45,5 @@ FABLE_STATIC_ASSERT(sizeof(CGoldDef) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CGoldDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CGoldDef, Gold) == 0x28);
 
+#endif // FABLE_RETAIL_CGOLDDEF
 #endif // FABLE_ENGINE_CGOLDDEF_H

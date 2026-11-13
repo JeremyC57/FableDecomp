@@ -135,6 +135,23 @@ protected:
 private:
  void ConstructRegionExitMarkers(NUISystem::CComponent*,CRegion&);
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_REGIONDESCRIPTION_ALL
+ // Nested opt-in (chunk 2025, rows 0x00605570 / 0x00600B60): Ego_r.pdb + FableWin.pdb (both name sets)
+ // ?ConstructRegionDescription@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z (protected, `ret 0Ch`, 0x00605570),
+ // ?ConstructRegionDescriptionQuests@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z (protected, `ret 0Ch`,
+ // 0x005FD5E0: UI_/PC_QUEST_NAME, *_CORE/OPTIONAL/VIGNETTE_ICON_AND_NAME templates),
+ // ?ConstructRegionDescriptionBuyableBuildings@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@PAVCUIRegionInfo@1@_N3@Z
+ // (protected, `ret 14h`, 0x00600B60: TEXT_GUI_MENU_HOUSE(S)_OWNED / SHOP(S)_OWNED / ..._FOR_SALE) and
+ // ?ConstructRegionDescriptionMapKeys@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z (protected, `ret 0Ch`,
+ // 0x005FB7E0: UI_/PC_MAP_KEYS_CONTAINER). ConstructRegionDescription calls the other four in this order. Declarations only, no
+ // layout change. Needs FABLE_RETAIL_CTCINVENTORYMAP_REGIONDESCRIPTION.
+protected:
+ void ConstructRegionDescription(NUISystem::CComponent*,CRegion&,bool);
+ void ConstructRegionDescriptionQuests(NUISystem::CComponent*,CRegion&,bool);
+ void ConstructRegionDescriptionBuyableBuildings(NUISystem::CComponent*,CRegion&,CUIRegionInfo*,bool,bool);
+ void ConstructRegionDescriptionMapKeys(NUISystem::CComponent*,CRegion&,bool);
+private:
+#endif
 public:
  static void CheckRetailLayout() {
   FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,VisitedRegions)==0x134);

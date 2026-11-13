@@ -23,6 +23,11 @@ public:
 #endif
     bool GetOwnedByPlayer() const { return OwnedByPlayer; }
     bool GetRented() const { return Rented; }
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_ISFORSALE
+    // Nested opt-in (chunk 2025, row 0x00600B60): Ego_r.pdb ?IsForSale@CTCBuyableHouse@@QBE_NXZ, out of line at 0x006BF960 (landed
+    // row; reloc_bindings binds the same symbol from 0x0082ACD0). Declaration only.
+    bool IsForSale() const;                                  // 0x006BF960
+#endif
 private:
     CDefPointer<const CBuyableHouseDef> PDef;                // +0x0c
     bool IsScripted;                                         // +0x10

@@ -9,7 +9,123 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_LOOKAROUND
+#if defined(FABLE_RETAIL_CGAMECAMERAMANAGER_FULL)
+// Retail opt-in (chunk 2033, row 0x0069AE80 CGameCameraManager::CGameCameraManager): the whole class with every member typed as
+// Ego_r.pdb types it (struct_layouts_egor.tsv names and order) over the retail STLport 4.6 containers (list 4, vector / map 0xC),
+// sizeof 0x160. Offsets proven by the constructor's stores: Camera +0x04 (CCamera ctor 0x00A0C130), OldCamera +0x3C (copy ctor
+// 0x0049D380), World +0x74, CamTools +0x78 (CTools ctor 0x00877160), CurrentMode / PendingMode +0x98 / +0xA0, the bools +0xA9 /
+// +0xAA, AvailableCamPoints +0xAC (16-byte list node), ChangeInControlDirection +0xB1, ... ScriptedCameraRemoveTimer +0xE4 = -1,
+// EarthQuakes +0xEC, PObservedThing +0x100 (base ctor 0x00A01B10 + vptr 0x0125C29C), CameraList +0x108 / its two indices +0x114 /
+// +0x118, SpecialCameraList +0x11C / index +0x128, PCameraManagerSet / PDef +0x130 / +0x134, RegisteredModes +0x138 (0x1C-byte tree
+// node), ScriptedCameraPreloadFlag +0x145, CamRSLookAroundDeltaTheta +0x148 .. LimitMinMaxWorldHeight +0x152, DrawDebugGraphics
+// +0x154, DebugPoints +0x15C (0x18-byte list node). Vtable 0x0125C754 (29 slots: the 24 CAIGameCameraBase slots, 24 ??_G
+// 0x0069E790, 25 GetAngleXY 0x0069E1B0, 26 GetAngleYZ 0x0069E1C0, 27 SetMainThing 0x00697C10, 28 SetViewThing 0x006976F0).
+// Needs FABLE_RETAIL_CAIGAMECAMERABASE, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CINTELLIGENTPOINTER, FABLE_RETAIL_CCAMERA_CTORS
+// and FABLE_RETAIL_NCAMERAMODES_CTOOLS_CTOR defined first.
+#include "engine/CAIGameCameraBase.h"
+#include "engine/CCamera.h"
+#include "engine/NCameraModes_CTools.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CDefPointer.h"
+#include "engine/C2DVector.h"
+#include "engine/C3DVector.h"
+#include "engine/CRGBColour.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+namespace NCameraModes { class CBase; class CBaseInit; class CScriptModuleBase; enum EMode; }
+class CWorld; class CThing; class CThingGameObject; class CThingCreatureBase; class CEnginePrimitivePrepareInfo;
+class CCameraModeDef; class CCameraManagerSetDef; class CCameraManagerDef;
+class CGameCameraManager : public CAIGameCameraBase {
+public:
+    CGameCameraManager(const CWorld& world);                             // 0x0069AE80 ??0CGameCameraManager@@QAE@ABVCWorld@@@Z
+    virtual void Update();                                               //  0 0x0069B790
+    virtual CCamera GetRenderCamera(float interpolation) const;          //  1 0x00697F30
+    virtual void PreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) const;
+    virtual bool IsPosInViewingFrustrum(const C3DVector& pos) const;
+    virtual bool Is2DAreaInViewingFrustrum(const C3DVector& pos, float radius) const;
+    virtual bool IsVolumeInViewingFrustrum(const C3DVector& pos, float radius) const;
+    virtual bool IsLineOfSightToPos(const C3DVector& pos) const;
+    virtual float GetControlAngleXY() const;
+    virtual void SetChangeInControlDirection();
+    virtual bool GetCameraManager(const CGameCameraManager** manager) const;
+    virtual bool GetCameraManager(CGameCameraManager** manager);
+    virtual const C3DVector PeekCurrentPos() const;
+    virtual ~CGameCameraManager();                                       // 24 ??_G 0x0069E790 (??1 0x00699BF0)
+    virtual float GetAngleXY() const;                                    // 25 0x0069E1B0
+    virtual float GetAngleYZ() const;                                    // 26 0x0069E1C0
+    virtual void SetMainThing(const CThingCreatureBase* thing);          // 27 0x00697C10
+    virtual void SetViewThing(const CThingGameObject* thing);            // 28 0x006976F0
+    void SetCameraManagerSetDef(const CDefPointer<const CCameraManagerSetDef>& def);   // 0x0069AC90
+private:
+    void SetCameraManagerDef(const CDefPointer<const CCameraManagerDef>& def);         // 0x0069A850 (Ego_r.pdb AAE: private)
+public:
+    class CQuake {                                                       // Ego_r.pdb CGameCameraManager::CQuake, 0x30 bytes
+    public:
+        C3DVector Position;                                              // +0x00
+        C3DVector Axis;                                                  // +0x0c
+        long Frame;                                                      // +0x18
+        float Amplitude;                                                 // +0x1c
+        float Duration;                                                  // +0x20
+        float Frequency;                                                 // +0x24
+        float Phase;                                                     // +0x28
+        bool Global;                                                     // +0x2c
+    };
+private:
+    CCamera Camera;                                                      // +0x04
+    CCamera OldCamera;                                                   // +0x3c
+    const CWorld& World;                                                 // +0x74
+    NCameraModes::CTools CamTools;                                       // +0x78
+    CCountedPointer<NCameraModes::CBase> CurrentMode;                    // +0x98
+    CCountedPointer<NCameraModes::CBase> PendingMode;                    // +0xa0
+    bool NewAutoMode;                                                    // +0xa8
+    bool ObservedThingInMelee;                                           // +0xa9
+    bool ObservedThingInBuilding;                                        // +0xaa
+    std::list<CIntelligentPointer<CThing> > AvailableCamPoints;          // +0xac
+    bool SingleCut;                                                      // +0xb0
+    bool ChangeInControlDirection;                                       // +0xb1
+    long InsideHeroCount;                                                // +0xb4
+    float ControlAngleXY;                                                // +0xb8
+    bool AngleChange;                                                    // +0xbc
+    bool ControlNoControlMovement;                                       // +0xbd
+    long ControlNoControlMovementStartFrame;                             // +0xc0
+    C2DVector RightStickLookAroundAngles;                                // +0xc4
+    C2DVector RightStickTargetLookAroundAngles;                          // +0xcc
+    CCountedPointer<NCameraModes::CScriptModuleBase> PCurrentScriptModule;   // +0xd4
+    CCountedPointer<NCameraModes::CScriptModuleBase> PPendingScriptModule;   // +0xdc
+    long ScriptedCameraRemoveTimer;                                      // +0xe4
+    bool CameraPreload;                                                  // +0xe8
+    bool CameraPreloadUseFastMode;                                       // +0xe9
+    bool ScriptHasPreloadedCamera;                                       // +0xea
+    std::vector<CQuake> EarthQuakes;                                     // +0xec
+    float MinWorldHeight;                                                // +0xf8
+    float MaxWorldHeight;                                                // +0xfc
+    CIntelligentPointer<const CThingGameObject> PObservedThing;          // +0x100
+    std::vector<CDefPointer<const CCameraModeDef> > CameraList;          // +0x108
+    std::vector<CDefPointer<const CCameraModeDef> >::iterator CameraListIndex;              // +0x114
+    std::vector<CDefPointer<const CCameraModeDef> >::iterator InitialModeCameraListIndex;   // +0x118
+    std::vector<CDefPointer<const CCameraModeDef> > SpecialCameraList;   // +0x11c
+    std::vector<CDefPointer<const CCameraModeDef> >::iterator SpecialCameraListIndex;       // +0x128
+    bool UsingCameraManually;                                            // +0x12c
+    bool BlockModeChange;                                                // +0x12d
+    CDefPointer<const CCameraManagerSetDef> PCameraManagerSet;           // +0x130
+    CDefPointer<const CCameraManagerDef> PDef;                           // +0x134
+    std::map<NCameraModes::EMode, CCountedPointer<NCameraModes::CBaseInit> > RegisteredModes;   // +0x138
+    bool ScriptedCameraModeFromGame;                                     // +0x144
+    bool ScriptedCameraPreloadFlag;                                      // +0x145
+public:
+    float CamRSLookAroundDeltaTheta;                                     // +0x148
+    float CamZoomMinHeightFactor;                                        // +0x14c
+    bool AutoFOVZoomInCombat;                                            // +0x150
+    bool CamAutoGoBehind;                                                // +0x151
+    bool LimitMinMaxWorldHeight;                                         // +0x152
+private:
+    long DrawDebugGraphics;                                              // +0x154
+    unsigned long DebugPersistFrame;                                     // +0x158
+    std::list<std::pair<C3DVector, CRGBColour> > DebugPoints;            // +0x15c
+};
+FABLE_STATIC_ASSERT(sizeof(CGameCameraManager) == 0x160);
+#elif defined(FABLE_RETAIL_CGAMECAMERAMANAGER_LOOKAROUND)
 #include "engine/CAIGameCameraBase.h"
 #include "engine/CDefPointer.h"
 #include "engine/CCamera.h"

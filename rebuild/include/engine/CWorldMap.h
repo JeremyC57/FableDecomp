@@ -31,6 +31,10 @@ public:
 #ifdef FABLE_RETAIL_CWORLDMAP_GETMAPBOX
     const C2DBoxI& GetMapBox(long n) const { return Maps[n].Area; }
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_CTOR
+    // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0CWorldMap@@QAE@ABVCMainGameComponent@@AAVCWorld@@ABVC2DBoxI@@K@Z, retail 0x005066E0. Declaration only.
+    CWorldMap(const CMainGameComponent& component, CWorld& world, const C2DBoxI& area, unsigned long levels);   // 0x005066E0
+#endif
     virtual ~CWorldMap();
     virtual void DeleteAllLevels();
     virtual void DeleteAllRegions();
@@ -107,6 +111,14 @@ public:
     // (both PDBs; retail 0x004FC180) and ?GetLoadedRegion@CWorldMap@@QBEJXZ (both PDBs; retail 0x004FB150).
     const CRegion& GetRegion(long) const;                    // 0x004FC180
     long GetLoadedRegion() const;                            // 0x004FB150
+#ifdef FABLE_RETAIL_CWORLDMAP_SAVEGAMESTATE
+    // Opt-in (chunk 2052, row 0x0049F4C0): Ego_r.pdb ?SaveGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z, out of line at 0x004FDE80.
+    void SaveGameState(CPersistContext& context);                       // 0x004FDE80
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_LOADGAMESTATE
+    // Opt-in (chunk 2052, row 0x004A21F0): Ego_r.pdb ?LoadGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z, out of line at 0x005079C0.
+    void LoadGameState(CPersistContext& context);                       // 0x005079C0
+#endif
     bool IsPosInMap(const C3DVector&) const;
     bool IsPosPassable(const C2DCoordI&) const;
     float GetGroundSizeZAt(const C3DVector&) const;
@@ -222,6 +234,13 @@ public:
     C3DVector ConvertWorldMapCoordsToLocalCoords(long map, const C3DVector& pos) const;   // 0x004FC2A0
     bool IsLineOfSight(const C3DVector& from, const C3DVector& to) const;                 // 0x0063AEE0
     bool IsLineOfSight(const CThing& from, const CThing& to, bool checkThings) const;     // 0x0063E6F0
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_FINDLASTUNBLOCKEDGROUND
+    // Retail opt-in (chunk 2035, row 0x006FDD60 CGameCameraBase::Update): Ego_r.pdb / FableWin.pdb
+    // ?FindLastUnblockedGroundPositionAndReportCollision@CWorldMap@@QBE_NABVC3DVector@@0AAV2@@Z, out of line in retail at 0x0063D960
+    // (the landed bound spelling; called on GetWorldMap() with the from / to vectors and the result out-reference, 0x006FE382).
+    // Declaration only: no layout change.
+    bool FindLastUnblockedGroundPositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& result) const;   // 0x0063D960
 #endif
 #ifdef FABLE_RETAIL_CWORLDMAP_LINESEGMENT
     // Nested opt-in (chunk 1013, rows 0x0063B3F0 / 0x0063D0A0 / 0x0063D4A0): Ego_r.pdb protected const

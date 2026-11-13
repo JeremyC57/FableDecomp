@@ -87,6 +87,14 @@ protected:
     EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat,C3DVector,float,bool&,EMovementType,bool,bool,bool,const CThing*,bool,float);
 #endif
     EAIActionReturn AIAction_DoNothing();                                // 0x0097E200
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY_B
+    // Nested opt-in (chunk 2023, row 0x0094C050 CAIStateGroup_SellToBuyer::Update): Ego_r.pdb / FableWin.pdb
+    // ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+    // (protected), out of line in retail at 0x0097E890 (a by-value C3DVector and float built in a 0x10-byte argument block, 0x0094C342).
+    // Needs FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS (the forward enums). Declaration only.
+    EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat repeat, class C3DVector position, float proximity, bool& reached,
+        EMovementType movement, bool, bool, bool, const CThing* thing, bool, float);   // 0x0097E890
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MINIONWANDER
     // Opt-in (chunk 1024, row 0x00967D40 CAIStateGroup_TavernServer::Update): Ego_r.pdb / FableWin.pdb
     // ?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z (protected), out of line

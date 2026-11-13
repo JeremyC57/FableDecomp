@@ -13,6 +13,17 @@ public:
 #ifdef FABLE_RETAIL_CCAMERA_TARGET_CTOR
     CCamera(const C3DVector& world_position,const C3DVector& target_position,float fov,bool is_2d);
 #endif
+#ifdef FABLE_RETAIL_CCAMERA_CTORS
+    // Retail opt-in (chunk 2033, row 0x0069AE80 CGameCameraManager::CGameCameraManager): Ego_r.pdb / FableWin.pdb
+    // ??0CCamera@@QAE@ABVC3DVector@@00MM@Z, out of line in retail at 0x00A0C130 (stores arg 1 at WorldPosition +0x00, arg 2 at
+    // RHSet.Forward +0x18, arg 3 at RHSet.Up +0x0C, arg 4 at HorizontalFOV +0x2C, arg 5 at VerticalFOV +0x30; parameter names
+    // descriptive), and the copy constructor ??0CCamera@@QAE@ABV0@@Z, out of line at 0x0049D380. Declarations only.
+    CCamera(const C3DVector& world_position, const C3DVector& forward, const C3DVector& up, float horizontal_fov,
+        float vertical_fov);                                             // 0x00A0C130
+#ifndef FABLE_RETAIL_CCAMERA_RENDER_INTERPOLATION
+    CCamera(const CCamera&);                                             // 0x0049D380
+#endif
+#endif
 #ifdef FABLE_RETAIL_CCAMERA_RENDER_INTERPOLATION
     // Retail opt-in (Codex pass 17): original copy ctor/MoveTo/PointAt signatures and debug bodies.
     CCamera(const CCamera&);

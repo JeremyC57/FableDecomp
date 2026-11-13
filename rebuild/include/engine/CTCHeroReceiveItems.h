@@ -19,6 +19,13 @@ class CTCHeroReceiveItems : public CTCBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_HERO_RECEIVE_ITEMS; }
     void GiveItem(CThingObject& item, bool flag);                        // 0x007CAB30
+#ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_PICKEDUP
+    // Retail opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb / FableWin.pdb
+    // ?HasPickedUpItem@CTCHeroReceiveItems@@QBE_NJ@Z and ?SetItemAsPickedUp@CTCHeroReceiveItems@@QAEXJ@Z, out of line in retail at
+    // 0x007CA800 / 0x007CB850 (both landed under these spellings). Declarations only: no layout change.
+    bool HasPickedUpItem(long item) const;                               // 0x007CA800
+    void SetItemAsPickedUp(long item);                                   // 0x007CB850
+#endif
 #ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_PICKEDUPITEMS
     // Retail opt-in (chunk 1023, row 0x007CB8B0 CTCHeroReceiveItems::OnSerialise): the first two members (Ego_r.pdb order and names,
     // retail STLport sizes: list 4 at +0x0C, vector<long> 12 at +0x10, as the landed SetItemAsPickedUp 0x007CB850 and OnSerialise read

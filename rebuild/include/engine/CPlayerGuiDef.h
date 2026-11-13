@@ -49,6 +49,14 @@
 #include "fable_string.h"
 #include "stlport/fable_map.h"
 #endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_DAMAGE
+// Retail opt-in (chunk 2043, row 0x0064ED4F NPlayerGui::CDrawDamage::Draw): DigitPos / DigitHeroPos / DigitHeroOffset typed as their
+// Ego_r.pdb type C2DVector and DigitGraphics as vector<long> (STLport 4.6, 0xC bytes) at retail +0x814 / +0x81C / +0x824 / +0x82C.
+// Evidence: Draw passes def+0x814 to GFAnchorToBottomRight(const C2DVector&) (0x0064EDC9), copies def+0x81C as a vector (0x0064EDE2),
+// scales def+0x824 / +0x828 by the duration (0x0064EE62), and indexes the start word of def+0x82C by the digit (0x0064EF22).
+#include "engine/C2DVector.h"
+#include "stlport/fable_containers.h"
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_ABILITYBUTTONS
 // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): AbilityButtons typed as its Ego_r.pdb type
 // vector<CAbilityButtonGuiDef> (STLport 4.6, 0xC bytes) at retail +0x7FC. Evidence: the CPlayerGui ctor sizes its three button vectors
@@ -586,6 +594,12 @@ public:
     unsigned char    AbilityButtons[0xc];                    // +0x7fc vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_>
 #endif
     unsigned char    SpecialAbilityButtons[0xc];             // +0x808 vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_>
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_DAMAGE
+    C2DVector        DigitPos;                               // +0x814 (chunk 2043 opt-in)
+    C2DVector        DigitHeroPos;                           // +0x81c
+    C2DVector        DigitHeroOffset;                        // +0x824
+    std::vector<long> DigitGraphics;                         // +0x82c
+#else
     float            DigitPos_X;                             // +0x814 C2DVector::X
     float            DigitPos_Y;                             // +0x818 C2DVector::Y
     float            DigitHeroPos_X;                         // +0x81c C2DVector::X
@@ -593,6 +607,7 @@ public:
     float            DigitHeroOffset_X;                      // +0x824 C2DVector::X
     float            DigitHeroOffset_Y;                      // +0x828 C2DVector::Y
     unsigned char    DigitGraphics[0xc];                     // +0x82c vector<long,std::allocator<long>_>
+#endif
     float            RegionDisplayPos_X;                     // +0x838 C2DVector::X
     float            RegionDisplayPos_Y;                     // +0x83c C2DVector::Y
     float            InfoDisplayPos_X;                       // +0x840 C2DVector::X
@@ -1256,12 +1271,18 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonTooltipOffset_X) == 0x
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonTooltipOffset_Y) == 0x7f8);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtons) == 0x7fc);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, SpecialAbilityButtons) == 0x808);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_DAMAGE
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitPos) == 0x814);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroPos) == 0x81c);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroOffset) == 0x824);
+#else
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitPos_X) == 0x814);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitPos_Y) == 0x818);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroPos_X) == 0x81c);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroPos_Y) == 0x820);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroOffset_X) == 0x824);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitHeroOffset_Y) == 0x828);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, DigitGraphics) == 0x82c);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionDisplayPos_X) == 0x838);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, RegionDisplayPos_Y) == 0x83c);
