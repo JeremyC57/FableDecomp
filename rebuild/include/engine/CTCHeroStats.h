@@ -96,6 +96,14 @@ public:
     // Retail opt-in (Codex pass 17): exact public float method in both donors.
     void ForceStaminaTo(float);
 #endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_MODIFYSTAMINA
+    // Nested opt-in (w22 agent2027, row 0x007C6E50 CTCTurncoatSpell::FrameUpdate; needs FABLE_RETAIL_CTCHEROSTATS_STAMINA): Ego_r.pdb /
+    // FableWin.pdb ?ModifyStaminaBy@CTCHeroStats@@QAEXJ@Z (out of line in retail at 0x0057B1DB, the bound spelling; `push ecx ; mov ecx,
+    // <stats> ; call`, 0x007C7319) and FableWin.pdb's inline ?GetStamina@CTCHeroStats@@QBEJXZ (no Ego_r.pdb / Fable.exe copy: the row
+    // reads Stamina +0x58 in place, `mov eax,[ebx+58h] ; test eax,eax ; jle`, 0x007C73A0). No layout change.
+    void ModifyStaminaBy(long amount);                                   // 0x0057B1DB
+    long GetStamina() const { return Stamina; }
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_ADDEXPERIENCE
     // Retail opt-in (Codex pass 17): both PDBs prove category parameter, native0057a8da.
     void AddHeroStatExperience(EHeroExperienceStatCategory,long);

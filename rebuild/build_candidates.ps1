@@ -395340,6 +395340,64 @@ $catalog = @(
         TestSource = '00/55/NUISystemCTable_Draw_00550dc0_test.cpp'
         PassPattern = '00550dc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007b90f0'
+        Module = 'CTCTavernTable'
+        Source = '00/7b/CTCTavernTable_OnInitialActivate_007b90f0.cpp'
+        TestSource = '00/7b/CTCTavernTable_OnInitialActivate_007b90f0_test.cpp'
+        PassPattern = '007b90f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d8570'
+        Module = 'CTCTavernGameSpotTheAddition'
+        Source = '00/7d/CTCTavernGameSpotTheAddition_ProcessInput_007d8570.cpp'
+        TestSource = '00/7d/CTCTavernGameSpotTheAddition_ProcessInput_007d8570_test.cpp'
+        PassPattern = '007d8570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b399a0'
+        Module = 'CEngineInternalAttachedPrimitive'
+        Source = '00/b3/CEngineInternalAttachedPrimitive_UpdateOutputPrimitive_00b399a0.cpp'
+        TestSource = '00/b3/CEngineInternalAttachedPrimitive_UpdateOutputPrimitive_00b399a0_test.cpp'
+        PassPattern = '00b399a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cf9a0'
+        Module = 'CTCTavernGameShoveHaPenny'
+        Source = '00/7c/CTCTavernGameShoveHaPenny_ProcessInput_007cf9a0.cpp'
+        TestSource = '00/7c/CTCTavernGameShoveHaPenny_ProcessInput_007cf9a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT116'
+        PassPattern = '007cf9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006deee0'
+        Module = 'CTCTrophy'
+        Source = '00/6d/CTCTrophy_GlobalUpdate_006deee0.cpp'
+        TestSource = '00/6d/CTCTrophy_GlobalUpdate_006deee0_test.cpp'
+        PassPattern = '006deee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b40bd0'
+        Module = 'CEngineMap'
+        Source = '00/b4/CEngineMap_PeekWaterDepth_00b40bd0.cpp'
+        TestSource = '00/b4/CEngineMap_PeekWaterDepth_00b40bd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT576'
+        PassPattern = '00b40bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c6e50'
+        Module = 'CTCTurncoatSpell'
+        Source = '00/7c/CTCTurncoatSpell_FrameUpdate_007c6e50.cpp'
+        TestSource = '00/7c/CTCTurncoatSpell_FrameUpdate_007c6e50_test.cpp'
+        PassPattern = '007c6e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcd350'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CTeamSpawn'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_Main_00dcd350.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_Main_00dcd350_test.cpp'
+        PassPattern = '00dcd350_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

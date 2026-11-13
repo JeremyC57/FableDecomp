@@ -1,7 +1,11 @@
 #ifndef FABLE_ENGINE_CTCTURNCOAT_H
 #define FABLE_ENGINE_CTCTURNCOAT_H
-#ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+#if defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK) || defined(FABLE_RETAIL_CTCTURNCOAT)
 // Original complete PDB records in both Ego_r and FableWin; native007f6200 layout/calls.
+// FABLE_RETAIL_CTCTURNCOAT (w22 agent2027, row 0x007C6E50 CTCTurncoatSpell::FrameUpdate): the same retail class without the targeting-AI
+// intelligent-pointer variants; the row calls IsTurncoated 0x007C7890, ModifyTurncoatedness 0x007C7A00 and SetTurncoatOriginator 0x007C76D0
+// (the out-of-line COMDAT of this TU: FableWin.pdb emits ?SetTurncoatOriginator@CTCTurncoat@@QAEXPAVCThing@@@Z right after the spell's
+// FrameUpdate, and Ego_r.pdb / retail place it after OnRemove in the CTCTurncoatSpell TU).
 #include "engine/CTCBase.h"
 #include "engine/CIntelligentPointer.h"
 #include "engine/CDefPointer.h"

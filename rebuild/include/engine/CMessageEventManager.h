@@ -16,6 +16,11 @@ public:
  // (landed 0x00687730). Declaration only.
  CMessageEvent* AddMessage(const class CMessageEventDef& def,const C3DVector& pos,CThing* originator,CThing* target,long extraData);   // 0x00687730
 #endif
+#ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT_DECL_B
+ // Opt-in (w22 agent2007, row 0x006DEEE0 CTCTrophy::GlobalUpdate): the member template declared only, so a caller binds the
+ // out-of-line COMDAT (CMessageEventFilter_IsOfType: 0x004AB8B0, landed) without instantiating the body here.
+ template<class TFilter> const CMessageEvent* FindMostRecentMessage(const TFilter& filter) const;
+#endif
 #ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT
  // Opt-in (w22 agent1016, row 0x00934E50): Ego_r.pdb / FableWin.pdb member template
  // ??$FindMostRecentMessage@<filter>@CMessageEventManager@@QBEPBVCMessageEvent@@ABV<filter>@@Z (one COMDAT per filter type in retail:

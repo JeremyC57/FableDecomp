@@ -23,6 +23,20 @@ public:static CThing* FABLE_FASTCALL CreateParticleEffect(long,const C3DVector&)
  // (chunk Q17, row 0x00795090: the guard lets one TU define both opt-ins; the CANCELFORCUTSCENE branch above declares the same member.)
  static void FABLE_FASTCALL FadeOrKillEffect(CIntelligentPointer<CThing>&);
 #endif
+#if defined(FABLE_RETAIL_CTCSPECIALABILITIES_TURNCOAT) && !defined(FABLE_RETAIL_CTCUNHOLYPOWER_CANCELFORCUTSCENE)
+ // Nested opt-in (w22 agent2027, row 0x007C6E50 CTCTurncoatSpell::FrameUpdate): FableWin.pdb ?StatGetInterfaceType@CTCSpecialAbilities@@ (the
+ // GetTC<CTCSpecialAbilities> key, interface 0xA7 tested as the sign bit of the +0x34 word, 0x007C6EC2) and the inline
+ // ?UnLockAbilitiyMutex@CTCSpecialAbilities@@QAEXXZ (FableWin.pdb only; retail stores `mov byte ptr [eax+0Ch],0 ; mov dword ptr
+ // [eax+10h],0` in place, 0x007C6EF4) -- the same two bodies as the CANCELFORCUTSCENE block above.
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SPECIAL_ABILITIES;}
+ void UnLockAbilitiyMutex(){AbilityMutexLock=false;CurrentAbility=(EHeroAbility)0;}
+#endif
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_TURNCOAT
+ // Ego_r.pdb / FableWin.pdb ?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z (public static __fastcall, the bound spelling of retail
+ // 0x0072AC40: `mov eax,ecx ; test eax,eax` then the dead bit +0x91 and the particle-emitter fade, right after the
+ // CIntelligentPointer& overload 0x0072ABD0 as in the Ego_r donor order). Declaration only.
+ static void FABLE_FASTCALL FadeOrKillEffect(CThing*);                  // 0x0072AC40
+#endif
 private:class CUndeadFollower;bool AbilityMutexLock,UsingBed;EHeroAbility CurrentAbility;
  std::list<CUndeadFollower> UndeadFollowers;CThingCreatureBase& Creature;std::vector<bool> AbilityAvailability;
 #ifdef FABLE_RETAIL_CTCSPECIALABILITIES_VSLOTS

@@ -20,7 +20,9 @@ class CMessageEventFilter_IsOfType
 #endif
 {
 public:
-#if defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT) || defined(FABLE_RETAIL_YELLFORHELP_UPDATE)
+#if defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT) || defined(FABLE_RETAIL_YELLFORHELP_UPDATE) || defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_ISOFTYPE_CTOR_B)
+    // FABLE_RETAIL_CMESSAGEEVENTFILTERS_ISOFTYPE_CTOR_B (w22 agent2007, row 0x006DEEE0 CTCTrophy::GlobalUpdate): the inline constructor alone
+    // (the row builds the 4-byte filter in place, `mov [esp+10h],10h`, and passes it to the out-of-line FindMostRecentMessage 0x004AB8B0).
     CMessageEventFilter_IsOfType(EMessageEventType type):Type(type){}
 #endif
 #if defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_ISOFTYPE_CTOR) && !defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT) && !defined(FABLE_RETAIL_YELLFORHELP_UPDATE)
