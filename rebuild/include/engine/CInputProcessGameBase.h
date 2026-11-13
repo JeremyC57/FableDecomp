@@ -16,6 +16,13 @@ class CWorld;
 #ifdef FABLE_RETAIL_INPUTPROCESS_MOVEMENT
 class C2DVector;
 #endif
+#ifdef FABLE_RETAIL_INPUTPROCESS_EVENTINQUEUE
+#ifdef _MSC_VER
+enum EInputButtonEventType;                                              // as engine/CGamePlayerInterface.h declares it
+#else
+enum EInputButtonEventType { };
+#endif
+#endif
 class CInputProcessGameBase : public CAInputProcess {
 public:
     CInputProcessGameBase(const CInputProcessGameBaseInit& init);        // 0x00687A30
@@ -40,6 +47,15 @@ public:
     bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& movement) const;   // 0x00687D00
 protected:
     bool IsEventButtonReleased(const CInputEvent& event) const;                                                       // 0x00687B30
+public:
+#endif
+#ifdef FABLE_RETAIL_INPUTPROCESS_EVENTINQUEUE
+    // Retail opt-in (w22 agent2007, row 0x007CF9A0 CTCTavernGameShoveHaPenny::ProcessInput), declaration only: Ego_r.pdb / FableWin.pdb
+    // ?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@AAM@Z, retail 0x00687D80 (`ret 0Ch`:
+    // MyPlayer->GetNumber() 0x00487510, then PGamePlayerInterface->IsGameActionEventInQueue(action, type, number, time) 0x00445CB0).
+    // The landed spelling ?IsGameActionEventInQueue@CInputProcessGameBase@@QAE_NJJPAM@Z (0x0068E450) is made up (NAME_FIXES.tsv).
+protected:
+    bool IsGameActionEventInQueue(EGameAction action, EInputButtonEventType type, float& time) const;                // 0x00687D80
 public:
 #endif
     CWorld*                 World;                                       // +0x14
