@@ -77,3 +77,53 @@
 - Hand-over: differ/00b89c30.cpp unchanged (v19, 1 hunk, `static volatile float` statics -- see the volatile check above). Next level to try:
   what else is per-instance at block 28 (the AlphaRef statement's own scope / position relative to the volatile reads in the loop, the
   section-2 statement grouping into blocks or helper scopes that FableWin does not list), measured with c2/sw.sh against the AR probe.
+
+## Session 3 of the bwf agent (row 1, coordinator resume) -- still DIFFER(6431v6431), 1 hunk
+- Scheduler DAG dump (agent2031 sched.sh, c7/base.json v c7/ar02.json = the two-copy probe that matches): every bookmark test region is
+  picked in the SAME order in both builds; the S/C load order is already fixed in the IL (the operand order of the inlined
+  `state.BookmarkMask & CurrentBookmarkMask`), i.e. a c2 commutative-canonicalisation key over record ids, not a scheduler tie.
+- Probes that fix block 28 alone: records inside the SetAlphaRef expansion (two value copies / two dead locals), or a forced-inline wrapper at
+  the call that copies the value once more (`Wrap(r) { v = r; SetAlphaRef(v); }`, c8/x3 RELOCATION_MATCH); a wrapper passing only the value or
+  the manager pointer fixes 28 but flips 29 (c8/x1, x2). No FableWin / Ego_r function wraps SetAlphaRef (no Alpha* helper outside the
+  CRenderStateManager setters), so none of these is a natural source.
+- No effect (block 28 stays S): grouping the section-2 setters in braces (8 groupings, c6/), AlphaTestFunc body spellings (table forms,
+  named value / state ref, c8/f*), call-site casts / base-qualified calls / `(*p).` (c9/v*), duplicated setter calls (not folded: +110 b),
+  extra functions before or after ApplyOutline in the TU (c8/t*), SetupAlphaBlendingStatesFromBlendMode(ALPHA) for the Src/Dest pair
+  (14 token diffs).
+- Volatile: per owner ruling the `static volatile float` blur offsets stay (retail x87 copies 0x00B8A913 / 0x00B8A927; without volatile 14
+  hunks). The differ draft still needs the `// Retail-volatile:` line added at hand-back.
+
+## Session 4 (author agent, 2026-11-13) -- still DIFFER(6431v6431), 1 hunk; differ/ unchanged
+- Block 28 is untouchable from outside the AlphaRef statement: 70 combos of byte-neutral spellings (c11: current/direct/temp render-target
+  copy, `textures[]`, 0x18 for sizeof, textures[1] for tex, int 0 for 0.0f args, file-scope statics, 0.00390625f) only toggle block 29
+  (the direct `OldRenderTarget = GetRenderTarget()` form flips 29 alone); `__assume`/`__noop` near it, comma-joined setter statements
+  (c14, c15): no effect. One-layer one-record wrappers (c12 w0..w3: value / manager ptr / manager ref / no param): no effect.
+- What fixes it is >=2 records alive in an inline frame AROUND the SetAlphaRef expansion: c13/m4 `PW(ref, src, dst)` (AlphaRef + Src +
+  Dest) and c13/m5 `PW(ref, src)` (AlphaRef + Src) grade RELOCATION_MATCH; frames that also hold AlphaTestFunc (m1..m3) shift 28..38.
+  No PDB (FableWin / Ego_r / Ego_d) function takes ALPHA_BLEND_MODE / ALPHA_TEST_FUNC besides the setters, no local or anonymous helper
+  in the Outline TU, no CRenderManager / CRenderManager2D setter layer -> still no natural source.
+- Header, AlphaRef-only (c16): one copy keeps the sibling 0x00B87870 RELOCATION_MATCH but leaves this row DIFFER; 2..8 chained copies
+  fix this row and break the sibling (DIFFER 4944v4944) every time. The header route is closed.
+- Note: the sibling's overlay CRenderStateManager.h has a FABLE_RETAIL_CRENDERSTATEMANAGER_DISPLACEMENT_INLINE section ours lacks (merge).
+- Sibling check of the CALL-SITE frames (c17): x3 `PW(r){ v = r; SetAlphaRef(v); }`, m4 `PW(ref, src, dst)` and m5 `PW(ref, src)` applied
+  to 0x00B87870's identical AlphaRef/Src/Dest sequence keep it RELOCATION_MATCH (its own overlay). So a shared inline frame around the
+  AlphaRef call (not a longer SetAlphaRef body) is consistent with BOTH rows; header bodies are not. x1/x2 (fix 28, flip 29) plus the
+  direct OldRenderTarget copy (c18) give 28+29 wrong: no combination trick there.
+- Not landed: every matching form is a made-up force-inline frame with no PDB / FableWin / string evidence (rule: no unexplained
+  force-inline, never for a compiler residue). Owner decision needed: accept a descriptive shared helper (best: m4 = AlphaRef + Src + Dest,
+  i.e. "set alpha ref and blend factors", or x3) for both screen-effect rows, or park the row at DIFFER(6431v6431) 1 hunk.
+- Next idea if pursued: look for a retail-era header (EgoCore / FSE / sibling repos) with an inline that groups AlphaRef + Src + Dest or
+  forwards SetAlphaRef through a by-value copy; also check the other matched SetAlphaRef users (00bbc460, 00bf01e0, 00b5af80, ...) with
+  the m4 / x3 frame to see whether one shared helper keeps them all.
+- Coordinator round (frame end points, c19..c21): a frame `PW(ref, src)` that starts at SetAlphaRef grades RELOCATION_MATCH for EVERY end
+  point from Src through Dest, Z, cull, dither, the stencil setters and PrepareForRender(0) (c19/e01..e11); to the end of the function
+  with (texture, verts, indices) params the pattern is exact but `&texture` moves a slot (c20/t2 DIFFER 6431v6431); (stencil_mask,
+  stencil_ref) frame over the setters: RELOCATION_MATCH (c20/t3). Member frames (overlay c21/hdr adds the probe members): `this` only,
+  even with the `tex` local, does nothing (p1, p2); `this` + `unsigned long ref` over the whole tail = RELOCATION_MATCH (c21/p3). So the
+  rule is: >= 2 PARAMETER records of a frame entered at SetAlphaRef (locals declared later in the frame do not count).
+- Real-function search: no member of CEngineScreenEffectOutlineGlow / Displacement / Glow / RadialBlur / ColourFilter / CEngineComponent
+  (FableWin sizes listed in the session) is a composite / draw-to-back-buffer helper; no render-state helper class in struct_layouts_egor
+  (only CScopedShadersEnable, CScopedVertexFormatShader, CScopedVertexShaderConstantLayout, CRenderStateScopedCaptureBlock). FableWin's
+  ApplyOutline is LARGER than ours at /Od (2312b/619i v 2092b/523i with /EHsc), so the later debug build did not split the tail out either.
+- State: differ/ unchanged (1 hunk). Best evidenced-free candidates: c21/p3 (private inline member taking the alpha ref, AR..end) or
+  c13/m4. Next: step 4 (recs.py / cands.py on base v c21/p3 to name the two deciding records), or the owner's call on a descriptive helper.

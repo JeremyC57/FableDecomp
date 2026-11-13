@@ -530,3 +530,171 @@
 04:14 00b87870 probe sk3.cpp pattern -> DIFFER(4944v4944) 39 41 ndiff 34 1:Cbm 2:Cbm 6:Cmb 7:Cmb 8:Cmb 9:Cmb 10:Cmb 11:Cmb 12:Cmb 13:Cmb 14:Cmb 15:Cmb 16:Cmb 17:Cmb 18:Cmb 19:Cmb 20:Cmb 21:Cmb 22:Cmb 23:Cbm 24:Cbm 25:Cbm 26:Cmb 27:Cmb 29:Cbm 32:Cbm 33:Cbm 34:Cbm 35:Cbm 36:Cbm 37:Sbm 38:Sbm
 04:14 00b87870 probe sk4.cpp pattern -> DIFFER(4944v4944) 39 41 ndiff 34 1:Cbm 2:Cbm 6:Cmb 7:Cmb 8:Cmb 9:Cmb 10:Cmb 11:Cmb 12:Cmb 13:Cmb 14:Cmb 15:Cmb 16:Cmb 17:Cmb 18:Cmb 19:Cmb 20:Cmb 21:Cmb 22:Cmb 23:Cbm 24:Cbm 25:Cbm 26:Cmb 27:Cmb 29:Cbm 32:Cbm 33:Cbm 34:Cbm 35:Cbm 36:Sbm 37:Sbm 38:Sbm
 04:14 00b87870 probe sk8.cpp pattern -> DIFFER(4944v4944) 39 41 ndiff 33 1:Cbm 2:Cbm 6:Cmb 7:Cmb 8:Cmb 9:Cmb 10:Cmb 11:Cmb 12:Cmb 13:Cmb 14:Cmb 15:Cmb 16:Cmb 17:Cmb 18:Cmb 19:Cmb 20:Cmb 21:Cmb 23:Cbm 24:Cbm 25:Cbm 26:Cmb 27:Cmb 29:Cbm 32:Sbm 33:Sbm 34:Sbm 35:Sbm 36:Sbm 37:Sbm 38:Sbm
+04:18 00b89c30 probe g1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:18 00b89c30 probe g2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:18 00b89c30 probe g3.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:18 00b89c30 probe g4.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:18 00b89c30 probe g5.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:18 00b89c30 probe g6.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:18 00b89c30 probe g7.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:18 00b89c30 probe g8.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:20 00b89c30 probe f01.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:20 00b89c30 probe f02.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:20 00b89c30 probe f03.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:20 00b89c30 probe f04.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:20 00b89c30 probe f05.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:20 00b89c30 probe f06.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:20 00b89c30 probe x1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 29:Smb
+04:20 00b89c30 probe x2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 29:Smb
+04:20 00b89c30 probe x3.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:21 00b89c30 probe sb1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 14 1:Cbm 2:Cbm 3:Cbm 4:Cbm 5:Cbm 19:Cmb 20:Cmb 21:Cmb 22:Cmb 23:Smb 27:Sbm 28:Sbm 29:Cbm 31:Cmb
+04:23 00b89c30 probe t1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:23 00b89c30 probe t2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:23 00b89c30 probe t3.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:23 00b89c30 probe t4.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:23 00b89c30 probe v1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:23 00b89c30 probe v2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:23 00b89c30 probe v3.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:23 00b89c30 probe v4.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:23 00b89c30 probe v5.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:23 00b89c30 probe v6.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:24 00b89c30 probe d1.cpp pattern -> DIFFER(6542v6431) 39 40 ndiff 5 28:Smb 29:Cbm 30:Cmb 31:Cmb
+04:24 00b89c30 probe d2.cpp pattern -> DIFFER(6540v6431) 39 40 ndiff 5 28:Smb 29:Cbm 30:Cmb 31:Cmb
+04:24 00b89c30 probe final_check.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:29 00b89c30 probe f1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:29 00b89c30 probe f2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:29 00b89c30 probe f3.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:29 00b89c30 probe f4.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:30 00b89c30 probe f5.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:30 00b89c30 probe f6.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:30 00b89c30 probe f7.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:30 00b89c30 probe f8.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:30 00b89c30 probe f9.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:31 00b89c30 probe g1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:31 00b89c30 probe g1f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:31 00b89c30 probe g2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:31 00b89c30 probe g2f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:31 00b89c30 probe g3.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:31 00b89c30 probe g3f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:32 00b89c30 probe g4.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:32 00b89c30 probe g4f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:32 00b89c30 probe g5.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:32 00b89c30 probe g5f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:32 00b89c30 probe g6.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:32 00b89c30 probe g6f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:32 00b89c30 probe g7.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:32 00b89c30 probe g7f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:34 00b89c30 probe k00010000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k00011000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k00011111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k00100011.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k00100110.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k00100111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k00101101.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k00110010.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k00111010.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k00111011.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k01000011.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k01001001.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k01001101.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k01010000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k01010100.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k01010101.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:34 00b89c30 probe k01011001.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:35 00b89c30 probe k01011101.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:35 00b89c30 probe k01111000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:35 00b89c30 probe k01111010.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:35 00b89c30 probe k01111011.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:35 00b89c30 probe k01111101.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:35 00b89c30 probe k10000000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10001010.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10001110.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10010010.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10010110.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10011001.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10011010.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10011100.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10011110.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10100100.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10100111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10101111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k10110111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k11001101.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k11011011.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k11100111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k11111100.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k11111110.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20000101.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20001000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20001011.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20001111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20010000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20100101.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20100110.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20100111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20101000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20101010.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20110000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20111000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20111100.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k20111111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k21000111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k21001110.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k21001111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k21010000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k21010110.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k21010111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k21101001.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k21101011.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k21101100.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:35 00b89c30 probe k21101110.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:36 00b89c30 probe k21110001.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:36 00b89c30 probe k21110110.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:36 00b89c30 probe k21110111.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:36 00b89c30 probe k21111000.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:36 00b89c30 probe k21111001.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:36 00b89c30 probe k21111011.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:36 00b89c30 probe w0.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:36 00b89c30 probe w0f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:36 00b89c30 probe w1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:36 00b89c30 probe w1f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:36 00b89c30 probe w2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:36 00b89c30 probe w2f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:36 00b89c30 probe w3.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:36 00b89c30 probe w3f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:37 00b89c30 probe m1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 11 28:Smb 29:Smb 30:Sbm 31:Sbm 32:Smb 33:Smb 34:Smb 35:Smb 36:Smb 37:Smb 38:Smb
+04:37 00b89c30 probe m2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 11 28:Smb 29:Smb 30:Sbm 31:Sbm 32:Smb 33:Smb 34:Smb 35:Smb 36:Smb 37:Smb 38:Smb
+04:37 00b89c30 probe m3.cpp pattern -> DIFFER(6427v6431) 39 39 ndiff 14 24:Smb 25:Smb 26:Smb 28:Smb 29:Smb 30:Smb 31:Sbm 32:Sbm 33:Sbm 34:Sbm 35:Sbm 36:Smb 37:Smb 38:Smb
+04:37 00b89c30 probe m4.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:37 00b89c30 probe m5.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:38 00b89c30 probe a1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:38 00b89c30 probe a2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:38 00b89c30 probe a3.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:38 00b89c30 probe a4.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:38 00b89c30 probe a5.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:38 00b89c30 probe c1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:38 00b89c30 probe c2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:38 00b89c30 probe c3.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:38 00b89c30 probe c4.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:38 00b89c30 probe c5.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:41 00b89c30 probe x1f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:41 00b89c30 probe x1g.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:41 00b89c30 probe x2f.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:41 00b89c30 probe x2g.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 2 28:Smb 29:Smb
+04:43 00b89c30 probe e01.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:43 00b89c30 probe e02.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:43 00b89c30 probe e03.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:43 00b89c30 probe e04.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:43 00b89c30 probe e05.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:43 00b89c30 probe e06.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:43 00b89c30 probe e07.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:43 00b89c30 probe e08.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:43 00b89c30 probe e09.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:43 00b89c30 probe e10.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:43 00b89c30 probe e11.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:43 00b89c30 probe t1.cpp pattern -> DIFFER(6393v6431) 39 39 ndiff 0 
+04:43 00b89c30 probe t2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 0 
+04:43 00b89c30 probe t3.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 
+04:44 00b89c30 probe p1.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:44 00b89c30 probe p2.cpp pattern -> DIFFER(6431v6431) 39 39 ndiff 1 28:Smb
+04:44 00b89c30 probe p3.cpp pattern -> RELOCATION_MATCH 39 0 ndiff 39 

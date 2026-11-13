@@ -18,6 +18,9 @@
 // Shape notes: `tex` sits in its own block so it shares the loop counter's slot (esp0+0x14); the blur offsets are `static volatile float`
 //   (retail copies every positive read through fld/fstp: 0x00B8A917, 0x00B8A927, 0x00B8AAF9, 0x00B8AB0E -- non-volatile reads compile to
 //   integer moves); BlurOffsetU / BlurOffsetV are descriptive names (no name in the PDBs / strings).
+// Retail-volatile: BlurOffsetU / BlurOffsetV (0x0139AB54 / 0x0139AB58) are read through the x87 at every use (0x00B8A913..0x00B8A91D
+//   `fstp [esp+4] ; fld dword ptr [0139AB54h] ; fstp [esp]`, 0x00B8A927..0x00B8A936 `fld dword ptr [0139AB58h] ... fstp [esp]`); without
+//   `volatile` VC7.1 copies the positive offsets with integer moves (14 hunks). Tweakable function statics.
 // Leaf: ?ApplyOutline@CEngineScreenEffectOutlineGlow@@AAEXXZ
 #define FABLE_RETAIL_SCOPED_PTR
 #define FABLE_RETAIL_CSYSTEMMANAGER
