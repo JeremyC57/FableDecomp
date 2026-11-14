@@ -1,0 +1,8 @@
+address	name	evidence
+0074e860	CTCContainerRewardHero::GetRewardItems	Ego_r 0x00760960 + FableWin 0x0259A5F0, reloc_bindings
+00945060	CAIStateGroup_WorkHammerAnvil::Update	Ego_r ?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ donor 0x00968DE0
+00944940	CAIStateGroup_WorkSawingWood::Update	Ego_r ?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ donor 0x00968560
+005379f5	NUISystem::CList::ComputeChildrenVisibility	CList vtable 0x012462E4 slot 185 + Ego_r/FableWin ?ComputeChildrenVisibility@CList@NUISystem@@MAEXXZ; catalog row 0x00537E70 is its tail
+006b2ca0	CEnvironment::UpdateSunAndMoonPositions	Ego_r 0x006EE710 right after GetGlobalEnvironmentThemeIndexFromLocal 0x006EE6D0 (retail 0x006B2C60 landed, same 0x40 gap); reloc_bindings; FableWin 0x0244D960; caller 0x006B42A4
+007e15c0	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::OnAppearanceDraw	Ego_r order OnAppearanceClear 0x007DCF20 / OnAppearanceDraw 0x007DCF60 / GetMeshesUsed 0x007DD360 = retail 0x007E1590 (landed) / 0x007E15C0 / 0x007E1990 (landed); ret 8; vtable ref 0x0126FFB4
+00735fd0	CTCCombat::AttemptToStartParticle	Ego_r 0x0074D250 + FableWin 0x02504840 ?AttemptToStartParticle@CTCCombat@@AAEXPAVCThing@@@Z; reloc_bindings

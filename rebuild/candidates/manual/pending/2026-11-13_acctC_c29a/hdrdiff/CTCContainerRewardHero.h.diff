@@ -1,0 +1,31 @@
+--- a/rebuild/include/engine/CTCContainerRewardHero.h
++++ b/rebuild/include/engine/CTCContainerRewardHero.h
+@@ -2,6 +2,9 @@
+ #define FABLE_ENGINE_CTCCONTAINERREWARDHERO_H
+ #include "engine/CTCContainer.h"
+ #include "engine/C3DVector.h"
++#ifdef FABLE_RETAIL_CTCCONTAINERREWARDHERO_GETREWARDITEMS
++class CThingObject;
++#endif
+ // Layout: native RTTI confirms the base at0; donor Enabled+28 maps to native+24
+ // after the vector shrinks by4. Adjacent OnSerialise reads Enabled at+24.
+ class CTCContainerRewardHero : public CTCContainer {
+@@ -10,6 +13,18 @@
+     // wf18 (row 0x007EB6A0): Ego_r.pdb ?HasReward@CTCContainerRewardHero@@QBE_NXZ, out of line at 0x0074E500 (landed). Declaration only.
+     bool HasReward() const;  // 0x0074E500
+ #endif
++#ifdef FABLE_RETAIL_CTCCONTAINERREWARDHERO_GETREWARDITEMS
++    // agentC29 (row 0x0074E860): Ego_r.pdb ?GetRewardItems@CTCContainerRewardHero@@IAEXAAV?$vector@U?$pair@JVCCharString@@@std@@...@@std@@AAJ@Z
++    // (FableWin 0x0259A5F0), ?GetDynamicPotionDefIndex / ?GetDynamicResurrectionDefIndex@CTCContainerRewardHero@@IBEJXZ (retail 0x0074E280 /
++    // 0x0074E460, landed), ?CreateNewObject@CTCContainerRewardHero@@AAEPAVCThingObject@@JABVC3DVector@@0ABVCCharString@@@Z (0x0074E560).
++    // Declarations only; no layout change. Needs fable_string.h and the STLport vector / pair (CTCContainer.h includes them).
++protected:
++    void GetRewardItems(std::vector<std::pair<long,CCharString> >& items,long& gold);
++    long GetDynamicPotionDefIndex() const;                               // 0x0074E280
++    long GetDynamicResurrectionDefIndex() const;                         // 0x0074E460
++private:
++    CThingObject* CreateNewObject(long def,const C3DVector& position,const C3DVector& acceleration,const CCharString& script_name);   // 0x0074E560
++#endif
+ protected:
+     void AdjustTrajectoryVector(long row,C3DVector& direction) const;
+ private:

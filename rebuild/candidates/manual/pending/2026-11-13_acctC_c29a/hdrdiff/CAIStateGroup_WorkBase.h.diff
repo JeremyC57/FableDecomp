@@ -1,0 +1,27 @@
+--- a/rebuild/include/engine/CAIStateGroup_WorkBase.h
++++ b/rebuild/include/engine/CAIStateGroup_WorkBase.h
+@@ -18,7 +18,24 @@
+ template<class Base> class CAIStateGroup_WorkBase:public Base {
+ protected:
+  bool IsInSchoolHours()const;
++#ifdef FABLE_RETAIL_CAISTATEGROUP_WORKBASE_ISINWORKHOURS
++ // agentC29 (rows 0x00945060 / 0x00944940 CAIStateGroup_WorkHammerAnvil / _WorkSawingWood::Update): Ego_r.pdb
++ // ?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ, expanded in those retail rows (the creature's TCI_VILLAGE_MEMBER
++ // presence bit +0x24 bit 3, the lookup, CTCVillageMember::GetPVillage 0x007EE540, CTCVillage::IsWorkTime 0x00658B20; 0x009450A2..0x00945114).
++ // Needs CThing.h (GETTC), CThingAICreature.h, CTCVillageMember.h and CTCVillage.h (FABLE_RETAIL_CTCVILLAGE_ISWORKTIME) before this header.
++ bool IsInWorkHours()const
++ {
++  CTCVillageMember* member;
++  if(this->GetCreature().GetTC(&member)) {
++   CTCVillage* village=member->GetPVillage();
++   if(village&&village->IsWorkTime())
++    return true;
++  }
++  return false;
++ }
++#else
+  bool IsInWorkHours()const;
++#endif
+ #ifdef FABLE_RETAIL_CAISTATEGROUP_WORKBASE_STAYINSHOP
+  bool StayInShop()const
+  {

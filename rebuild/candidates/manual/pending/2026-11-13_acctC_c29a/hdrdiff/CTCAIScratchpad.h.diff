@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/CTCAIScratchpad.h
++++ b/rebuild/include/engine/CTCAIScratchpad.h
+@@ -79,6 +79,11 @@
+     virtual bool IsComponentSerialisable() const;  // slot 23, 0x007ACDD0
+ public:
+ #endif
++#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_SETISPUSHABLEBYHERO
++    // agentC29 (row 0x00945060 CAIStateGroup_WorkHammerAnvil::Update): Ego_r.pdb / FableWin.pdb ?SetIsPushableByHero@CTCAIScratchpad@@QAEX_N@Z,
++    // inline in retail (`mov byte ptr [eax+79h],0` 0x00945223 / `,1` 0x0094533D on the looked-up TCI_AI_SCRATCHPAD component). No layout change.
++public: void SetIsPushableByHero(bool pushable) { IsPushableByHero = pushable; }
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCAIScratchpad)==0x84);
++FABLE_STATIC_ASSERT_AT(83, sizeof(CTCAIScratchpad)==0x84);
+ #endif
