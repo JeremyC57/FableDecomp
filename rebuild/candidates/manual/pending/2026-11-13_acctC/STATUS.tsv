@@ -115,8 +115,8 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 005f59c7	PARKED	2652	2026-11-14_acctC_wfB1open	after workflow parked/Fable; C10 -> C12 -> C33: DIFFER(2649v2652); retail tail block references only five candidates (no temporary for PeekComponent(), compare at 0x005F63C0 in an	parked	CTCInventoryAbilities::ConstructPCExpressionsList
 00435530	PARKED	2617	2026-11-14_acctC_wfA2/open	workflow unworked/Opus: stale draft only, DIFFER(2571v2617)	parked	CDisplayEngine::DoRender
 00439070	PARKED	2613	2026-11-14_acctC_wfA2/open	workflow unworked/Opus: DIFFER(2613v2613)	parked	CPlayerGui::DrawPreparePrimitivesForEngine
-007de710	PARKED	2578	2026-11-14_acctC_wfB6open/matched_needs_fixup	workflow parked/Fable: RELOCATION_MATCH / PASS but breaks lane rules (README there); needs a fix-up pass	parked	CTCWallMount::AttachObject
-00772bb0	PARKED	2585	2026-11-14_acctC_wfB6open/matched_needs_fixup	workflow parked/Fable: RELOCATION_MATCH / PASS but breaks lane rules (README there); needs a fix-up pass	parked	CTCShop::AddSaleItem
+007de710	MATCHED_STAGED	2578	2026-11-14_acctC_wfB7	workflow parked/Fable match + shared-header fix-up; coordinator-verified	parked	CTCWallMount::AttachObject
+00772bb0	MATCHED_STAGED	2585	2026-11-14_acctC_wfB7	workflow parked/Fable match + shared-header fix-up; coordinator-verified	parked	CTCShop::AddSaleItem
 00dce230	PARKED	2589	2026-11-14_acctC_wfA2/open	workflow unworked/Opus: DIFFER(2589v2589), 6 hunks eax/edx swap	parked	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Main
 006d0830	PARKED	2584	2026-11-14_acctC_wfA1/open	workflow unworked/Opus: DIFFER(2581v2584): wedding zero hoist + dowry register	parked	CTCWife::GlobalUpdate
 00d4a270	IN_PROGRESS	9388		workflow unworked/Opus round 2 batch wfD3; true extent 9,388 by scan (catalog 25,488 covers several functions); never worked	never_worked	NScript::CQ_GuildTrainingScript::CCombatApprentice::Main

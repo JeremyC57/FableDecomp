@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00772bb0   RELOCATION_MATCH PASS   AddSaleItem
+007de710   RELOCATION_MATCH PASS   AttachObject
+
+WINS: 2
+  00772bb0 RELOCATION_MATCH CTCShop::AddSaleItem
+  007de710 RELOCATION_MATCH CTCWallMount::AttachObject

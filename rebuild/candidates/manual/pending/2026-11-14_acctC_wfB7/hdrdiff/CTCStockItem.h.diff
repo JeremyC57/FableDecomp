@@ -1,0 +1,44 @@
+--- a/rebuild/include/engine/CTCStockItem.h
++++ b/rebuild/include/engine/CTCStockItem.h
+@@ -40,6 +40,9 @@
+ public:
+     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_STOCK_ITEM; }
+     bool IsForSale() const { return ForSale; }
++#ifdef FABLE_RETAIL_CTCSTOCKITEM_SETASFORSALE
++    void SetAsForSale(bool for_sale) { ForSale = for_sale; }    // ?SetAsForSale@CTCStockItem@@QAEX_N@Z (inline)
++#endif
+ private:
+     bool          ForSale;                                   // +0x0c
+     bool          Stealable;                                 // +0x0d
+@@ -47,7 +50,7 @@
+     long          Price;                                     // +0x10
+     unsigned char PrimHandle[0x8];                           // +0x14 CEnginePrimitiveHandle
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCStockItem) == 0x1c);
++FABLE_STATIC_ASSERT_AT(50, sizeof(CTCStockItem) == 0x1c);
+ #else
+ 
+ #pragma pack(push, 1)
+@@ -76,15 +79,15 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTCStockItem) == 0x1c);
++FABLE_STATIC_ASSERT_AT(79, sizeof(CTCStockItem) == 0x1c);
+ #ifndef FABLE_RETAIL_CTCSTOCKITEM_VSLOTS
+-FABLE_STATIC_ASSERT(offsetof(CTCStockItem, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(81, offsetof(CTCStockItem, __vftable) == 0x0);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CTCStockItem, ForSale) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CTCStockItem, Stealable) == 0xd);
+-FABLE_STATIC_ASSERT(offsetof(CTCStockItem, Initialised) == 0xe);
+-FABLE_STATIC_ASSERT(offsetof(CTCStockItem, Price) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CTCStockItem, PrimHandle) == 0x14);
++FABLE_STATIC_ASSERT_AT(83, offsetof(CTCStockItem, ForSale) == 0xc);
++FABLE_STATIC_ASSERT_AT(84, offsetof(CTCStockItem, Stealable) == 0xd);
++FABLE_STATIC_ASSERT_AT(85, offsetof(CTCStockItem, Initialised) == 0xe);
++FABLE_STATIC_ASSERT_AT(86, offsetof(CTCStockItem, Price) == 0x10);
++FABLE_STATIC_ASSERT_AT(87, offsetof(CTCStockItem, PrimHandle) == 0x14);
+ 
+ #endif // FABLE_RETAIL_CTCSTOCKITEM
+ #endif // FABLE_ENGINE_CTCSTOCKITEM_H
