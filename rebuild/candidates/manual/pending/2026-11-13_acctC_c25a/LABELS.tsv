@@ -1,0 +1,8 @@
+address	name	evidence
+007c0690	?Init@CTCShotDefinitionBase@NThingShot@@QAEXV?$CDefPointer@$$CBVCThingShotDef@@@@PAVCThing@@1PBV4@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z	Ego_r/FableWin name sets + header INIT opt-in (CreateShot callers)
+00802390	?GetMaxTargetingDistance@CTCTargetingPlayer@@QBEMXZ	see NAME_FIXES.tsv
+007ef200	?OnActionUse@CTCCarriedActionUseExpression@@UAEXAAVCThing@@@Z	Ego_r donor 0x007E8CE0 + vtable slot 28 (CTCActionUseBase::OnActionUse 0x007EAB90); catalog vfunc_28 is a placeholder
+0072cf40	?UseSpecialAbility@CTCSpecialAbilities@@QAE_NW4EHeroAbility@@@Z	Ego_r name set + catalog; calls every Setup<Ability> landed row by EHeroAbility
+0072c430	?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z	Ego_r name set (the only unlanded CTCSpecialAbilities (EHeroAbility) const query; IsAbleToUseAnyAbility is landed at 0x0072AF30); called with the ability before use
+0072aaf0	?SetupMultiStrike@CTCSpecialAbilities@@AAE_NXZ	Ego_r name set (the only unlanded Setup besides SetupRaiseDeadSpell); case HERO_ABILITY_DOUBLE_STRIKE (9); CSpecialAbilitiesMultiStrikeDef
+008111f0	??0CEventPerformedSpecialAbility@NEntityEvents@@QAE@W4EHeroAbility@@@Z	Ego_r name set + 16-byte layout; new(16) + ctor(ability) then CTCEntityEvents::AddEvent

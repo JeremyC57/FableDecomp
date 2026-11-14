@@ -1,0 +1,14 @@
+addr       parity           behav  name
+007c0690   WARN RELOC_NAME: ?GetMaxTargetingDistance@CTCTargetingPlayer@@QBEMXZ -> 00802390 labelled '_global::GetMember_float0x48_00802390'
+007c0690   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007c0690   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+007c0690   RELOCATION_MATCH PASS   Init
+007ef200   RELOCATION_MATCH PASS   OnActionUse
+0072cf40   WARN RELOC_NAME: ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z -> 0072c430 labelled 'CTCSpecialAbilities::GetAbilityAvailability'
+0072cf40   WARN RELOC_NAME: ?SetupMultiStrike@CTCSpecialAbilities@@AAE_NXZ -> 0072aaf0 labelled 'UseSpecialAbility_CTCMultiStrike'
+0072cf40   RELOCATION_MATCH PASS   UseSpecialAbility
+
+WINS: 3
+  007c0690 RELOCATION_MATCH NThingShot::CTCShotDefinitionBase::Init
+  007ef200 RELOCATION_MATCH CTCCarriedActionUseExpression::OnActionUse
+  0072cf40 RELOCATION_MATCH CTCSpecialAbilities::UseSpecialAbility
