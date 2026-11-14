@@ -1,12 +1,23 @@
 // NPlayerGui::CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info) -- draws the d-pad quick-access HUD: the ring sprites, the guild-seal top ring with its tooltip, the context-sensitive and quick-access item icons with their seal / lamp effects, ability crosses, charge graphics and key tooltips, kills unused effects, and the flash / d-pad middle sprites.
-// Grade: DIFFER(4734v4653) -- first compiling draft (8 grades): call list equal (140/140), biased frame present, frame 0x134 v 0x12C; `this` lands in edi and `def` in esi (retail esi / edi) which cascades through ~310 hunks; 20 extra instructions (lea +7, mov +12, and +3, cmp +3; retail has 2 `fst` we lack)
+// Grade: DIFFER(4654v4653) -- 1524 v 1524 instructions; residue = x87 commutative operand orders of five vector sums (tip X, loop-1 X, loop-2 X, main-seal X/Y, flash/d-pad X/Y), CRGBColour byte-store scheduling at 0x006534BC
 // Leaf: ?Draw@CDrawQuickAccessIcons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00652FA4, 4,653 bytes (ret 4 at 0x006541CE). Frame pointer (`lea ebp,[esp-74h]`), /GS cookie, size TU.
 // Identity: RTTI vtable 0x0125A704 slot 2; Ego_r.pdb ?Draw@CDrawQuickAccessIcons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CRGBCOLOUR
+#define FABLE_RETAIL_CRGBCOLOUR_CTOR4_INITIALISE
+#define FABLE_RETAIL_CABILITYDEF_STATGETTYPENAME
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
 #define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DVECTOR_NORMALISE
+#define FABLE_RETAIL_C2DVECTOR_ISNONZERO_FORCEINLINE
+#define FABLE_RETAIL_C2DVECTOR_SQUAREDMAGNITUDE_YX
+#define FABLE_RETAIL_C2DCOORDI_TOFLOAT
+#define FABLE_RETAIL_C2DCOORDI_NOTEQUAL
+#define FABLE_RETAIL_C2DVECTOR_TOC2DCOORDI
 #define FABLE_RETAIL_CRIGHTHANDEDSET
 #define FABLE_RETAIL_CRIGHTHANDEDSET_CTOR
 #define FABLE_RETAIL_CRIGHTHANDEDSET_RIGHT_COMPONENTS
@@ -159,10 +170,19 @@ extern long HUDRingAlpha;                                             // 0x01375
 extern C2DVector QuickAccessNumberOffset;                             // 0x01375404 (unnamed static C2DVector (0.1f, 0.01f); descriptive name)
 void __fastcall GFACoordToVCoord(const C2DVector& in, C2DVector& out);   // 0x009E21D0
 CWideString __fastcall GFIntToWideString(long value);                 // 0x00405F00
+namespace NParticleEngine {
+CParticleEmitterManager& __fastcall GetParticleEmitterManager();      // 0x00AEAAF0
+}
 using NParticleEngine::CParticleEmitter;
 inline bool CTCLight::IsActive() const { return Active; }             // FableWin ?IsActive@CTCLight@@QBE_NXZ, expanded here ([light+1Ch])
+extern CDisplayManager* GPDisplayManager;                             // 0x013B8390 ?GPDisplayManager@@3PAVCDisplayManager@@A
 namespace NPlayerGui {
-C2DVector __fastcall GFAnchorToBottomLeft(const C2DVector& pos);     // 0x00643CDA (landed; out of line)
+#pragma auto_inline(off)
+C2DVector __fastcall GFAnchorToBottomLeft(const C2DVector& pos)      // 0x00643CDA (landed; defined earlier in this source file)
+{
+    return C2DVector(pos.X, (float)GPDisplayManager->GetRenderTargetDimensions().Y + pos.Y - 480.0f);
+}
+#pragma auto_inline(on)
 
 class CDrawQuickAccessIcons : public CDrawBase {
 public:
@@ -184,12 +204,66 @@ private:
     std::vector<CEnginePrimitiveHandle> SpecialPrimitiveHandles;        // +0x64
     std::vector<CEnginePrimitiveHandle> QuickAccessSpellCrossHandles;   // +0x70
     std::vector<CIntelligentPointer<CParticleEmitter> > Effects;        // +0x7c
+    std::vector<C2DCoordI> EffectPositions;                             // +0x88
 };
+
+#pragma auto_inline(off)
+void CDrawQuickAccessIcons::DrawIcon(const CEnginePrimitivePrepareInfo& info, const C2DVector& position, float alpha, long index, long back,
+                                     long icon, bool special)   // 0x00645292 (landed; earlier in this source file)
+{
+    const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
+    std::vector<CEnginePrimitiveHandle>& handles = special ? SpecialPrimitiveHandles : PrimitiveHandles;
+    unsigned char guiAlpha = PlayerGui->GetAlpha();
+    if (PlayerGui->IsShowSpecialAbilityButtons() && guiAlpha < 0xff)
+        guiAlpha = 0xff;
+    if (back > 0) {
+        unsigned char backAlpha = guiAlpha;
+        if (back == def->QuickAccessMenuGraphic)
+            backAlpha = (unsigned char)(backAlpha * 0.5f);
+        CEnginePrimitive2DSprite sprite(0, C2DVector(position.X, position.Y), (EEngine2DLayer)0x45, back, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
+            ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha(backAlpha), 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
+        info.Engine.SetPersistentPrimitive(PrimitiveHandles[7], sprite, 0xc0);
+    }
+    if (icon > 0 && alpha > 0.0001f) {
+        float iconAlpha = guiAlpha * alpha;
+        if (PlayerGui->IsShowSpecialAbilityButtons() && guiAlpha < 0xff)
+            iconAlpha = special ? 255.0f : 0.0f;
+        CEnginePrimitive2DSprite sprite(0, C2DVector(position.X, position.Y), (EEngine2DLayer)0x44, icon, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
+            ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha((unsigned char)iconAlpha), 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f),
+            C2DVector(0.0f, 0.0f));
+        info.Engine.SetPersistentPrimitive(handles[index], sprite, 0xc0);
+    }
+}
+
+void CDrawQuickAccessIcons::DrawEffectAtPos(const C2DCoordI& pos, long effect, long index)   // 0x0064546F (landed; earlier in this source file)
+{
+    if (pos.ToC2DCoordF().IsNonZero()) {
+        if (Effects[index].GetPItem() && pos != EffectPositions[index]) {
+            Effects[index]->Kill();
+            Effects[index] = 0;
+        }
+        if (!Effects[index].GetPItem()) {
+            const C2DVector& offset = CPlayerGui::PeekGuiDef().QuickAccessEffectOffset;
+            C2DVector position(pos.ToC2DCoordF() + offset);
+            Effects[index] = NParticleEngine::GetParticleEmitterManager().Create2DEmitter(
+                effect, position, ENGINE_2D_LAYER_0, true,
+                CRightHandedSet(C3DVector(0.0f, 0.0f, 1.0f), C3DVector(0.0f, 1.0f, 0.0f)));
+            EffectPositions[index] = pos;
+        }
+    } else {
+        if (Effects[index].GetPItem()) {
+            Effects[index]->Kill();
+            Effects[index] = 0;
+            EffectPositions[index] = C2DCoordI(0, 0);
+        }
+    }
+}
+#pragma auto_inline(on)
+
 
 void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
 {
-    C2DVector pos(0.0f, 0.0f);
-    PlayerGui->SetGuildSealLevelUpPos(pos);
+    PlayerGui->SetGuildSealLevelUpPos(C2DVector(0.0f, 0.0f));
     CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!IS_THING_ALIVE(hero))
         return;
@@ -207,7 +281,7 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
     inventory->UpdateContextSensitiveItemFades(info);
     long dpadGraphic = 0;
     const C2DVector& ringsPos = def.DPadRingsPos;
-    pos = GFAnchorToBottomLeft(ringsPos);
+    C2DVector pos = GFAnchorToBottomLeft(ringsPos);
     if (!PlayerGui->IsNormalToSpecial() && !PlayerGui->IsSpecialToNormal() && PlayerGui->IsShowSpecialAbilityButtons()) {
         if (def.DPadRingsFavouriteGraphic > 0) {
             CEnginePrimitive2DSprite sprite(0, C2DVector(pos), (EEngine2DLayer)0x46, def.DPadRingsFavouriteGraphic, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
@@ -229,7 +303,7 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
             topGraphic = def.GuildSealRecallGraphic;
     }
     long alpha = HUDRingAlpha;
-    long sealIndex = World->PeekDefinitionManager().GetDefGlobalIndexFromName(CCharString("OBJECT_GUILD_SEAL_1"));
+    long sealIndex = World->PeekDefinitionManager().GetDefGlobalIndexFromName("OBJECT_GUILD_SEAL_1");
     if (sealIndex > 0 && inventory->GetNumberOfItemsOfTypeInInventory(sealIndex) <= 0)
         alpha /= 2;
     if (topGraphic > 0) {
@@ -237,8 +311,9 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
             topGraphic = def.DPadRingsTopAggressiveGraphic;
             alpha = HUDRingAlpha;
         }
+        alpha = (long)(PlayerGui->GetGuildSealAlpha() * alpha);
         CEnginePrimitive2DSprite sprite(0, C2DVector(pos), (EEngine2DLayer)0x46, topGraphic, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
-            ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha((unsigned char)(long)(PlayerGui->GetGuildSealAlpha() * alpha)), 0xff, 0xff, 0xff, 0,
+            ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha((unsigned char)alpha), 0xff, 0xff, 0xff, 0,
             C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Engine.SetPersistentPrimitive(PrimitiveHandles[1], sprite, 0xc0);
         if (CUserProfileManager::Get().IsHUDTooltipEnabled() && inventory->GetNumberOfItemsOfTypeInInventory(sealIndex) > 0) {
@@ -247,9 +322,10 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
                 || CUserProfileManager::Get().GetAssignedInputForAction((EGameAction)0x4e, false, &control)) {
                 CWideString name;
                 if (CGamePlayerInterface::GetActionName(control, name, false)) {
-                    pos = ringsPos + def.DPadGuildSealTooltipOffset;
+                    C2DVector tip = ringsPos + def.DPadGuildSealTooltipOffset;
+                    C2DVector anchored = GFAnchorToBottomLeft(tip);
                     C2DVector text;
-                    GFACoordToVCoord(GFAnchorToBottomLeft(pos), text);
+                    GFACoordToVCoord(anchored, text);
                     PlayerGui->Draw2DText(text, name, Component->PeekCutSceneMainFont(), CRGBColour(0xff, 0xff, 0xff, ScaleAlpha(0xff)), 0.6f,
                                           (EEngine2DLayer)0x49, true);
                 }
@@ -269,7 +345,7 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
         const CQuickAccessItemButtonGuiDef& button = def.ContextSensitiveItemButtons[i];
         long graphic = inventory->GetContextSensitiveItemGraphicIndex(i);
         const C2DVector& offset = button.Offset;
-        pos = GFAnchorToBottomLeft(ringsPos) + offset;
+        C2DVector pos = offset + GFAnchorToBottomLeft(ringsPos);
         long item = inventory->GetQuickAccessItem(i);
         CDefPointer<const CThingObjectDef> objDef;
         if (item > 0 && World->PeekDefinitionManager().CDefinitionManager::GetDef(item, &objDef)) {
@@ -279,19 +355,19 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
                 if (World->GetGuildSealRecallPos().IsNonZero())
                     graphic = def.DPadGuildSealRecallGraphic;
                 if (ChargingButtonIndex != -1) {
-                    DrawEffectAtPos(C2DCoordI((long)pos.X, (long)pos.Y), def.QuickAccessGuildSealEffect, i + 9);
+                    DrawEffectAtPos(pos.ToC2DCoordI(), def.QuickAccessGuildSealEffect, i + 9);
                     effectUsed[i + 9] = true;
                 }
             }
             const CTCLight* light;
             if ((objDef->Property & 1) && hero->PeekTC(TCI_LIGHT, &light) && light->IsActive()) {
-                DrawEffectAtPos(C2DCoordI((long)pos.X, (long)pos.Y), def.QuickAccessLampEffect, i + 9);
+                DrawEffectAtPos(pos.ToC2DCoordI(), def.QuickAccessLampEffect, i + 9);
                 effectUsed[i + 9] = true;
             }
         }
         DrawIcon(info, pos, fade, i + 2, 0, graphic, false);
         if (ChargingButtonIndex == i)
-            DrawChargeGraphic(info, offset, i);
+            DrawChargeGraphic(info, button.Offset, i);
         if (graphic > 0 && CUserProfileManager::Get().IsHUDTooltipEnabled()) {
             CActionInputControl control;
             if (CUserProfileManager::Get().GetAssignedInputForContextSensitiveItemAction((EGameAction)0x38, true, i, control)
@@ -315,7 +391,7 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
         long graphic = inventory->GetQuickAccessItemGraphicIndex(i);
         long slot = (long)def.ContextSensitiveItemButtons.size() + i;
         const C2DVector& offset = def.QuickAccessItemButtons[i].Offset;
-        pos = GFAnchorToBottomLeft(ringsPos + offset);
+        C2DVector pos = GFAnchorToBottomLeft(ringsPos + offset);
         long item = inventory->GetQuickAccessItem(slot);
         CDefPointer<const CThingObjectDef> objDef;
         if (item > 0) {
@@ -326,13 +402,13 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
                     if (World->GetGuildSealRecallPos().IsNonZero())
                         graphic = def.DPadGuildSealRecallGraphic;
                     if (ChargingButtonIndex != -1) {
-                        DrawEffectAtPos(C2DCoordI((long)pos.X, (long)pos.Y), def.QuickAccessGuildSealEffect, i);
+                        DrawEffectAtPos(pos.ToC2DCoordI(), def.QuickAccessGuildSealEffect, i);
                         effectUsed[i] = true;
                     }
                 }
                 const CTCLight* light;
                 if ((objDef->Property & 1) && hero->PeekTC(TCI_LIGHT, &light) && light->IsActive()) {
-                    DrawEffectAtPos(C2DCoordI((long)pos.X, (long)pos.Y), def.QuickAccessLampEffect, i);
+                    DrawEffectAtPos(pos.ToC2DCoordI(), def.QuickAccessLampEffect, i);
                     effectUsed[i] = true;
                 }
             }
@@ -380,8 +456,7 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
         }
     }
     if (ChargingButtonIndex != -1) {
-        const C2DVector& anchor = GFAnchorToBottomLeft(ringsPos + def.GuildSealMainLevelUpOffset);
-        DrawEffectAtPos(C2DCoordI((long)anchor.X, (long)anchor.Y), def.QuickAccessMainGuildSealEffect, 9);
+        DrawEffectAtPos(GFAnchorToBottomLeft(ringsPos + def.GuildSealMainLevelUpOffset).ToC2DCoordI(), def.QuickAccessMainGuildSealEffect, 9);
     } else if (Effects[9].GetPItem()) {
         Effects[9]->Kill();
         Effects[9] = 0;
@@ -404,14 +479,14 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
         }
         if (flashGraphic > 0) {
             unsigned char flashAlpha = (unsigned char)(long)(FlashFade.GetFadeInOutAlpha() * 255.0f);
-            CEnginePrimitive2DSprite sprite(0, def.DPadMiddleOffset + GFAnchorToBottomLeft(ringsPos), (EEngine2DLayer)0x43, flashGraphic, 0,
+            CEnginePrimitive2DSprite sprite(0, C2DVector(C2DVector(GFAnchorToBottomLeft(ringsPos) + def.DPadMiddleOffset)), (EEngine2DLayer)0x43, flashGraphic, 0,
                 ENGINE_PRIMITIVE_BLEND_ALPHA, ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha(flashAlpha), 0xff, 0xff, 0xff, 0,
                 C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
             info.Engine.SetPersistentPrimitive(PrimitiveHandles[7], sprite, 0xc0);
         }
     }
     if (dpadGraphic > 0) {
-        CEnginePrimitive2DSprite sprite(0, def.DPadMiddleOffset + GFAnchorToBottomLeft(ringsPos), (EEngine2DLayer)0x44, dpadGraphic, 0,
+        CEnginePrimitive2DSprite sprite(0, C2DVector(C2DVector(GFAnchorToBottomLeft(ringsPos) + def.DPadMiddleOffset)), (EEngine2DLayer)0x44, dpadGraphic, 0,
             ENGINE_PRIMITIVE_BLEND_ALPHA, ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha(0xff), 0xff, 0xff, 0xff, 0,
             C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Engine.SetPersistentPrimitive(PrimitiveHandles[6], sprite, 0xc0);
