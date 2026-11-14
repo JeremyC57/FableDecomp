@@ -1,0 +1,5 @@
+address	name	evidence
+006096e0	CTCInventoryMap::ConstructLogbookListPC	Ego_r.pdb + FableWin.pdb ?ConstructLogbookListPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z; donor order; calls GetMenuEntryFromCategoryPC 0x005FAC20
+00652fa4	NPlayerGui::CDrawQuickAccessIcons::Draw	RTTI vtable 0x0125A704 slot 2; Ego_r.pdb ?Draw@CDrawQuickAccessIcons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+01375744	HUDRingAlpha (descriptive)	unnamed .data dword 255; read as dword at 0x006532B7 and as byte for ScaleAlpha; the c2a twin declares it unsigned char
+01375404	QuickAccessNumberOffset (descriptive)	unnamed static C2DVector (0.1f, 0.01f) read at 0x00653DB0..

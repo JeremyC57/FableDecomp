@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00429f43	?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z	vland RELOC_NAME warning on row 0x006096E0 (bound by the matched siblings 0x00601310 / 0x0061E6D0 too)	CTCMapwho::OnDie
+00429b72	??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ	vland RELOC_NAME warning on row 0x006096E0	_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429b72
+0064d7a6	?DrawChargeGraphic@CDrawQuickAccessIcons@NPlayerGui@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@J@Z	Ego_r.pdb mangling; called twice by 0x00652FA4 with (info, offset, index), ret 0Ch; not landed	-

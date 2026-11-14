@@ -25,7 +25,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00d45060	OPEN				parked	NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks
 00e20600	OPEN				parked	NScript::CQR_EscortTraderScript::CTraderToEscort::Main
 00502e90	OPEN				parked	CWorldMap::PopulateRegionWithVillagers
-006096e0	IN_PROGRESS			C38 (Fable): port the old draft (seven opt-ins gone) then twin method	parked	CTCInventoryMap::ConstructLogbookListPC
+006096e0	MATCHED_STAGED	12832	2026-11-13_acctC_c38a	C38 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; one fitted redundant loop guard (review item)	parked	CTCInventoryMap::ConstructLogbookListPC
 0061e6d0	MATCHED_STAGED	12356	2026-11-13_acctC_c28a	C23 -> C26 -> C28 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; no device	parked	CTCInventoryQuests::ConstructQuestListPC
 00e4b5b0	OPEN				parked	NScript::CV_BanditTollScript::CTollBandit::Main
 00e3bb70	OPEN				parked	NScript::CV_BordelloScript::CMadame::Main
@@ -135,10 +135,10 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00bae2d0	OPEN				never_worked	CEnginePrimitiveManager2DSprites::?RenderSubPrimitive@CEnginePrimitiveManager2DSprites@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
 005eeff2	MATCHED_STAGED	5619	2026-11-13_acctC_c12a	C11 -> C12; CTCInventoryAbilities::GetMagicListUIComponent; /Gr (review item)	never_worked	_gapscan::sub_005eeff2
 00b3cb30	OPEN				never_worked	CEngineResourceManager::CEngineResourceManager
-0058807d	IN_PROGRESS			C38 (Fable)	never_worked	CTCInventory::OpenPCInventoryMenu
+0058807d	IN_PROGRESS			C39 (Fable) row 2	never_worked	CTCInventory::OpenPCInventoryMenu
 00598a1c	OPEN				never_worked	CFrontEndManager::CFrontEndManager::Init2
 00aa2110	OPEN				never_worked	C3DAnimationManager::CalcBlendedBoneTransformation
-00652fa4	IN_PROGRESS			C38 (Fable)	never_worked	NPlayerGui::CDrawQuickAccessIcons::Draw
+00652fa4	IN_PROGRESS	4653	2026-11-13_acctC_c38a/open	C38 -> C39 (Fable): DIFFER(4734v4653), 140/140 calls	never_worked	NPlayerGui::CDrawQuickAccessIcons::Draw
 00aa0fa0	OPEN				never_worked	C3DAnimationManager::CalcBoneTransformation
 00b9ac30	OPEN				never_worked	CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStaticMeshes::RenderSubPrimitive
 00b555a0	OPEN				never_worked	CEngineWeatherRenderer::?Render@CEngineWeatherRenderer@@UAEXABVCEngineComponentRenderParams@@@Z

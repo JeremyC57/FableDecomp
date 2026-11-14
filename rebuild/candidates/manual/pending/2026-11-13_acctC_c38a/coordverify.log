@@ -1,0 +1,7 @@
+addr       parity           behav  name
+006096e0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z -> 00429f43 labelled 'CTCMapwho::OnDie'
+006096e0   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429b72 labelled '_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429b72'
+006096e0   RELOCATION_MATCH PASS   ConstructLogbookListPC
+
+WINS: 1
+  006096e0 RELOCATION_MATCH CTCInventoryMap::ConstructLogbookListPC
