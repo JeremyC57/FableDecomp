@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/CTCCarrying.h
++++ b/rebuild/include/engine/CTCCarrying.h
+@@ -81,6 +81,13 @@
+     // STLport vector by reference). Declaration only; needs std::vector (stlport/fable_containers.h) before this header.
+     void GetAllCarriedThings(std::vector<CThing*>& things) const;   // 0x006A2220
+ #endif
++#ifdef FABLE_RETAIL_CTCCARRYING_INTERPOLATEDPOS
++    // Retail opt-in (agentC32, row 0x006A1A00): Ego_r.pdb 0x006C61A0 / FableWin.pdb 0x02216AF0
++    // ?GetCarriedThingInterpolatedPosAndOrientation@CTCCarrying@@QBE_NABVCThing@@AAVC3DVector@@AAVCRightHandedSet@@_NM@Z (`ret 14h`).
++    // Declaration only (no layout change). Needs C3DVector / CRightHandedSet declared.
++    bool GetCarriedThingInterpolatedPosAndOrientation(const CThing& thing, C3DVector& pos, CRightHandedSet& orientation,
++                                                      bool interpolate, float time) const;
++#endif
+ #ifdef FABLE_RETAIL_CTCCARRYING_VSLOTS
+     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.

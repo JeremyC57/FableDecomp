@@ -1,0 +1,9 @@
+addr       parity           behav  name
+006a1a00   WARN RELOC_NAME: ?Init@CRightHandedSet@@QAEXABVC3DVector@@0@Z -> 004bbe10 labelled 'CRightHandedSet::Set'
+006a1a00   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006a1a00   RELOCATION_MATCH PASS   GetCarriedThingInterpolatedPosAndOrientation
+007fc9d0   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 2
+  006a1a00 RELOCATION_MATCH CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation
+  007fc9d0 RELOCATION_MATCH CTCKraken::FrameUpdate

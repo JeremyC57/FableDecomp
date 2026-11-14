@@ -56,6 +56,11 @@
 // (0x006A1BB9).
 extern bool g_bTurnPrimarySlotCarriedThing;
 
+// Spelling notes (agentC34). EVIDENCED: the named physics pointer + the temporary up vector inside the Init call (retail stores the
+// three up floats after the facing call's pushes, 0x006A1B73..0x006A1B83); the secondary name fetched with GetString 0x00415DD0
+// (called at 0x006A1C5A before any GetDummyObject push, destroyed at 0x006A1C87 before the result test). FITTED: the inner block
+// with `bool found` that gives that lifetime (an implicit conversion gives the same bytes but calls ??B 0x00415D70).
+
 bool CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation(const CThing& thing, C3DVector& pos, CRightHandedSet& orientation,
                                                                bool interpolate, float time) const
 {
@@ -76,8 +81,8 @@ bool CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation(const CThing& thi
         if (!GetParentThing().GetPhysicsTC())
             return false;
         pos = GetParentThing().GetPhysicsTC()->GetPosition(time);
-        C3DVector up(0.0f, 0.0f, 1.0f);
-        orientation.Init(up, GetParentThing().GetPhysicsTC()->GetFacingVector(time));
+        const CTCPhysicsBase* physics = GetParentThing().GetPhysicsTC();
+        orientation.Init(C3DVector(0.0f, 0.0f, 1.0f), physics->GetFacingVector(time));
     }
     if (GetParentThing().GetType() == 2 && IsSlotPrimarySlot(it->first) && g_bTurnPrimarySlotCarriedThing)
         orientation.Rotate(orientation.GetUp(), 0.5f);
@@ -87,8 +92,13 @@ bool CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation(const CThing& thi
             !static_cast<const CThingCreatureBase&>(GetParentThing()).IsPerformingAnyAction()) {
             C3DVector secondary_pos;
             CRightHandedSet secondary_orientation;
-            if (GetParentThing().GetTCGraphicAppearance()->GetDummyObject(def->SecondaryDummyPosName, 0, flags, secondary_pos,
-                                                                          secondary_orientation, time)) {
+            bool found;
+            {
+                CCharString secondary_name = def->SecondaryDummyPosName.GetString();
+                found = GetParentThing().GetTCGraphicAppearance()->GetDummyObject(secondary_name, 0, flags, secondary_pos,
+                                                                                  secondary_orientation, time);
+            }
+            if (found) {
                 C3DVector direction = pos - secondary_pos;
                 if (direction.IsNonZero()) {
                     direction.AccurateNormalise();

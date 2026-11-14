@@ -1,0 +1,10 @@
+address	name	evidence
+006a1a00	CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation	Ego_r 0x006C61A0 + FableWin 0x02216AF0 (QBE_N...ret 14h), C30
+007fc9d0	CTCKraken::FrameUpdate	Ego_r 0x007F7DB0 after OnInitialActivate (retail 0x007FC8E0 -> 0x007FC9D0); FableWin 0x02777500; plain ret, vtable slot 9
+0137574c	g_bTurnPrimarySlotCarriedThing (DESCRIPTIVE, made up)	bool read only at 0x006A1BB9, initial value 1, no writer; next to NGlobalConsole bools 0x01375748..4A
+007aed10	CTCBoss::GetBossPhase	Ego_r 0x007B0660 ?GetBossPhase@CTCBoss@@QBEJXZ directly before IncrementBossPhase 0x007B0670 = retail 0x007AED10 before 0x007AED20 (CTCBoss.h); called on PTCBoss +0x40 at 0x007FCA94
+007bc38a	NThingShot::CTCShotDefinitionThrowPredictive::InitMovement	Ego_r 0x007BB1D9 ?InitMovement@CTCShotDefinitionThrowPredictive@NThingShot@@MAEXXZ + vtable 0x0123CE9C slot 33 (RTTI), C30
+006b2ca0	CEnvironment::UpdateSunAndMoonPositions	Ego_r 0x006EE710 + FableWin 0x0244D960 ?UpdateSunAndMoonPositions@CEnvironment@@AAEXXZ
+0074af50	CTCCreatureGenerator::CreateCreaturesUndead	Ego_r 0x0075DD00 + FableWin ?CreateCreaturesUndead@CTCCreatureGenerator@@IAEXPAVCThingCreatureBase@@@Z (ret 4)
+0075d580	CTCCameraPointScriptedSpline::UpdateCameraParams	Ego_r 0x0076D6E0 ?UpdateCameraParams@CTCCameraPointScriptedSpline@@QAEMMAAVC3DVector@@0AAM1AA_NPBV2@PBVCRightHandedSet@@@Z (8 args = ret 20h), C32; second source not checked
+0074dd20	CCreatureActionUndeadIdleUnderground ctor (landed name)	called 0x0074B19B with the new creature; SetCurrentAction 0x006644F0 follows

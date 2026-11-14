@@ -1,8 +1,8 @@
 // CTCKraken::FrameUpdate() -- per frame (not in the editor): count down and kill the beam weapon effect, drop dead tentacles, follow the boss phase, re-find the centre marker and the hero target, run the phase / mode updates, start the death phase when the Kraken's health is gone, and keep the Kraken at its centre marker plus the def's height offset
-// Grade: DIFFER(704v704, 22 hunks) -- control flow and calls match; frame 0x18 v 0x14: the GetTC<CTCTargeted> out-pointer keeps its own 4-byte slot (retail none)
 // Leaf: ?FrameUpdate@CTCKraken@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FC9D0, 704 bytes + jump tables 0x007FCC6C / 0x007FCC7C, plain `ret`.
 #define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCKRAKEN_EMPTY_UPDATES
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CTCBASE
@@ -45,18 +45,9 @@
 #include "engine/CPlayer.h"
 #include "engine/CMainGameComponent.h"
 
-void CTCKraken::UpdateUnderwater()
-{
-}
-
-void CTCKraken::UpdateTentacles()
-{
-}
-
-void CTCKraken::UpdateTentaclesAndHead()
-{
-}
-
+// Spelling notes (agentC34). EVIDENCED: `case 0: UpdateUnderwater();` (an empty inline private member, Ego_r 0x007F6220) keeps
+// retail's 4-entry Phase jump table 0x007FCC6C; the "ON_DIE" string as a named local in its own block (retail packs it into the
+// frame slot of the intelligent-pointer temporaries and the GetTC key, frame 0x14, and destroys it before SetPhase, 0x007FCC14).
 void CTCKraken::FrameUpdate()
 {
     if (PeekComponent().IsEditorActive())
@@ -104,7 +95,10 @@ void CTCKraken::FrameUpdate()
             CTCTargeted* targeted;
             if (GetParentThing().GetTC(&targeted))
                 targeted->SetTargetable(false);
-            CreateHeadEffect("ON_DIE");
+            {
+                CCharString effect("ON_DIE");
+                CreateHeadEffect(effect);
+            }
             SetPhase((EKrakenBossPhase)3);
         }
         break;

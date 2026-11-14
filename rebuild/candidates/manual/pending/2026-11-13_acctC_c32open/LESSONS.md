@@ -1,5 +1,0 @@
-- (0x007FC9D0) A switch whose case 0 shares the default's code but appears in retail's jump table = case 0 had its own statement at lowering time: here a call to an EMPTY same-TU private member (Ego_r 16-byte UpdateUnderwater) that VC7.1 inlines away after building the table; `case 0: default:` alone lowers as a compare tree.
-- (0x007FC9D0) Diagnose an extra 4-byte frame slot by deleting one block at a time (probe): the address-taken GetTC out-pointer kept a slot no instruction uses.
-- (0x006A1A00) A linear find over a CVectorMap with end() re-read after every compare call and once more for the miss = FableWin's const ValFind<const T*> expanded (FORCEINLINE); a plain inline is called out of line.
-- (0x006A1A00) `CCharString x = cdefstring;` (conversion forwarder, GetString inlined) gives retail's table call + copy-ctor 0x0099EC30; explicit `.GetString()` initialisation is RVO'd (no copy).
-- (0x006A1A00) /d2inlT / /d2inlS probes show whether two sites of one inline are decided together: if every setting flips both, the retail split is not a budget effect but two different spellings.

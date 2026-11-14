@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/CTCKraken.h
++++ b/rebuild/include/engine/CTCKraken.h
+@@ -93,4 +93,13 @@
+  CTCKraken & operator=(const CTCKraken & p0);
+ };
+ FABLE_STATIC_ASSERT(sizeof(CTCKraken)==104);
++#ifdef FABLE_RETAIL_CTCKRAKEN_EMPTY_UPDATES
++// Per-TU opt-in (agentC32/C34, row 0x007FC9D0 CTCKraken::FrameUpdate): the three private per-phase updates are EMPTY functions
++// (Ego_r.pdb 16-byte bodies ?UpdateUnderwater 0x007F6220 / ?UpdateTentacles 0x007F6230 / ?UpdateTentaclesAndHead 0x007F64F0;
++// FableWin 0x02777E30 / 0x02777E40 / 0x02778220) with no out-of-line copy in retail: FrameUpdate's Phase switch keeps a jump-table
++// entry for case 0 (0x007FCC6C) although its call expands to nothing. Inline empty bodies; no layout change.
++inline void CTCKraken::UpdateUnderwater(){}
++inline void CTCKraken::UpdateTentacles(){}
++inline void CTCKraken::UpdateTentaclesAndHead(){}
++#endif
+ #endif

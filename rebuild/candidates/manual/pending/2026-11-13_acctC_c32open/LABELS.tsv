@@ -1,5 +1,0 @@
-address	name	evidence
-006a1a00	CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation	Ego_r 0x006C61A0 + FableWin 0x02216AF0 (QBE_N...ret 14h), C30
-007fc9d0	CTCKraken::FrameUpdate	Ego_r 0x007F7DB0 after OnInitialActivate (retail 0x007FC8E0 -> 0x007FC9D0); FableWin 0x02777500; plain ret, vtable slot 9
-0137574c	g_bTurnPrimarySlotCarriedThing (DESCRIPTIVE, made up)	bool read only at 0x006A1BB9, initial value 1, no writer; next to NGlobalConsole bools 0x01375748..4A
-007aed10	CTCBoss::GetBossPhase	Ego_r 0x007B0660 ?GetBossPhase@CTCBoss@@QBEJXZ directly before IncrementBossPhase 0x007B0670 = retail 0x007AED10 before 0x007AED20 (CTCBoss.h); called on PTCBoss +0x40 at 0x007FCA94
