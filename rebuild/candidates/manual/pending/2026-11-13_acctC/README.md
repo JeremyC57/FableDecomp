@@ -1,7 +1,7 @@
 # acctC reservation (2026-11-13, owner): 180 rows for the third account, working on branch `FullDecomp-B`
 
 `RESERVED.tsv` lists the rows. They are off-limits to the coordinator's lane and to any other lane until this list is released
-(renamed `RELEASED.tsv`). It is the only reservation list in the repository: the Codex lists and the acctB list are released.
+(renamed `RELEASED.tsv`). The other reservation list is `../2026-11-14_codex_pass22/RESERVED.tsv` (100 rows for Codex, no overlap); the earlier Codex lists and the acctB list are released.
 
 | kind | rows | what they are |
 |---|---:|---|

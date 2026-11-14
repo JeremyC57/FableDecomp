@@ -4,11 +4,11 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00408820	CUserProfileManager	ResetAssignedInputsWASD	192	parked	DIFFER(185v185)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/00408820.cpp	original
 00409730	CUserProfileManager	VerifySignature	1088	parked	DIFFER(1086v1078)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00409730.cpp	original
 00409b70	CUserProfileManager	SetDefaultValuesForNewProfile	1120	parked	DIFFER(1089v1105)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1017/differ/00409b70.cpp	original
-00409fd0	CUserProfileManager	SaveGameState	1904	parked	DIFFER(1892v1892)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand733/test/00409fd0.test.cpp	original
+00409fd0	CUserProfileManager	SaveGameState	1904	reserved (pass22, parked)	DIFFER(1892v1892)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand733/test/00409fd0.test.cpp	original
 0040a7f0	CUserProfileManager	ApplyVideoValues	1952	parked	DIFFER(1925v1941)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand733/test/0040a7f0.test.cpp	original
 0040b790	CUserProfileManager	GiveTutorialForCategory	928	parked	DIFFER(938v918)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand309/differ/0040b790.cpp	original
 0040bca0	CUserProfileManager	LoadGameState	2800	parked	matched in a lane, not landed	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand733/test/0040bca0.test.cpp	original
-0040c790	CUserProfileManager	SetDefaultValues	1296	parked	DIFFER(1284v1284)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand733/test/0040c790.test.cpp	original
+0040c790	CUserProfileManager	SetDefaultValues	1296	reserved (pass22, parked)	DIFFER(1284v1284)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand733/test/0040c790.test.cpp	original
 0040cec0	CUserProfileManager	CUserProfileManager	992	parked	DIFFER(981v977)	3	rebuild/candidates/manual/pending/2026-11-03_linux_hand719/round3/exp/0040cec0_a.cpp	original
 004112a0	CPersistTraits<CSimVoice>	TransferIn	720	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/004112a0.cpp	original
 00417747	CMainGameComponent	UpdateForcedTickSpeed	596	parked	DIFFER(600v596)	3	rebuild/candidates/manual/pending/2026-11-11_linux_hand1023/differ/00417747.cpp	original
@@ -30,7 +30,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 004736c4	CPlayerGuiDef	?Transfer@CPlayerGuiDef@@UAEXAAVCPersistContext@@@Z	6498	reserved (acctC, never_worked)		0		original
 0047d296	CTCInGameMenu	PCSetQuitToFrontEnd	482	parked	DIFFER(482v482)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0047d296.cpp	original
 0047dd9d	CTCInGameMenu	PCSetToLoad	493	parked	DIFFER(493v493)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0047dd9d.cpp	original
-0047e196	CTCInGameMenu	SaveGame	1211	parked	DIFFER(1211v1211)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0047e196.cpp	original
+0047e196	CTCInGameMenu	SaveGame	1211	reserved (pass22, parked)	DIFFER(1211v1211)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0047e196.cpp	original
 0047ed76	CTCInGameMenu	SetToSave	366	parked	DIFFER(366v366)	11	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0047ed76.cpp	original
 0047fe83	CTCInGameMenu	GetFileNameList	1627	parked	DIFFER(1626v1627)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/0047fe83.cpp	original
 004804de	CTCInGameMenu	OpenInGameMenuPC	11203	reserved (acctC, never_worked)		0		original
@@ -48,8 +48,8 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0049c490	CThingSearchTools	GetAllThingsInRoughArea<CThing const,std::vector<CThing const *,std::allocator<CThing cons	608	parked	DIFFER(573v583)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0049c490.cpp	original
 0049ed80	_global	ConsoleSetFreeCameraLookVector	464	parked	DIFFER(310v310)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand536/differ/0049ed80.cpp	original
 004a0d90	CWorld	LoadQuestsFromFile	2736	reserved (acctC, parked)	DIFFER(2738v2733)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand734/differ/004a0d90.cpp	original
-004a1840	CWorld	Load	1025	parked	DIFFER(1129v1129)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/004a1840.cpp	original
-004a1c41	_global	Catch@004a1c41	77	never worked		0		original
+004a1840	CWorld	Load	1025	reserved (pass22, parked)	DIFFER(1129v1129)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/004a1840.cpp	original
+004a1c41	_global	Catch@004a1c41	77	reserved (pass22, never_worked)		0		original
 004a1c8e	CTCTrophy	OnShowTrophyInitialise	34	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ1/differ/004a1c8e.cpp	original
 004a1cb0	CWorld	CWorld::PreparePrimitivesForEngine	1344	parked	DIFFER(1331v1330)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand734/test/004a1cb0.test.cpp	original
 004a3740	CWorld	UpdateRegionLoad	8960	reserved (acctC, never_worked)		0		original
@@ -77,7 +77,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0051ea30	_gapscan	sub_0051ea30	96	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand486/differ/0051ea30.cpp	gapscan/boundary
 0051eda0	CEntityRuntimePersistence	SaveToGameStateScript	544	parked	DIFFER(485v501)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0051eda0.cpp	original
 00521cf0	_global	CThingManager_LoadMorphFromScript	448	parked	DIFFER(448v446)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00521cf0.cpp	original
-005239cd	_global	CThingDeadCreature_SavePersistentState	371	never worked		0		original
+005239cd	_global	CThingDeadCreature_SavePersistentState	371	reserved (pass22, never_worked)		0		original
 00524290	_global	CThingManager_SaveGameState	1568	parked	DIFFER(1500v1553)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00524290.cpp	original
 00524ec0	NThingManager::CEntityRuntimePersistence	LoadFromGameStateBinary	1008	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00524ec0.cpp	original
 005253f0	CThingManager	LoadGameState	2272	parked	DIFFER(2263v2263)	73	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/005253f0.cpp	original
@@ -92,18 +92,18 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 005384dd	CList	AddActionOnInactive	78	parked	DIFFER(67v78)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/differ/005384dd.cpp	original
 0053b91e	CList	Initialise	1422	parked	DIFFER(1416v1422)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/0053b91e.cpp	original
 0053e9a0	NUISystem::CScrollingViewport	NUISystem::CScrollingViewport::vfunc_1	592	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand471/differ/0053e9a0.cpp	gapscan/boundary
-0053f1c0	NUISystem::CScrollingViewport	Update	1616	parked	DIFFER(1601v1601)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand726/differ/0053f1c0.cpp	gapscan/boundary
+0053f1c0	NUISystem::CScrollingViewport	Update	1616	reserved (pass22, parked)	DIFFER(1601v1601)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand726/differ/0053f1c0.cpp	gapscan/boundary
 00540320	CEditBox	KeyPressed	768	parked	DIFFER(755v755)	5	rebuild/candidates/manual/pending/2026-11-12_linux_handQ21/differ/00540320.cpp	original
 00541a00	CIconText	FitInWindow	1120	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00541a00.cpp	original
 00542780	NUISystem::CIconText	AddIcon	688	parked	DIFFER(682v682)	2	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00542780.cpp	original
 00542a30	NUISystem::CIconText	Draw	1728	parked	DIFFER(1669v1714)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand779/differ/00542a30.test.cpp	gapscan/boundary
 005430f0	NUISystem::CIconText	InitIcons	1088	parked	DIFFER(22v1081)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/005430f0.cpp	original
 005458a0	NUISystem::CSpellContainer	AssignSpell	624	parked	DIFFER(669v621)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand532/differ/005458a0.cpp	original
-0054ac90	NUISystem::CSlider	ProcessEvent	1744	parked	DIFFER(1454v1454)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand752/differ/0054ac90.test.cpp	gapscan/boundary
+0054ac90	NUISystem::CSlider	ProcessEvent	1744	reserved (pass22, parked)	DIFFER(1454v1454)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand752/differ/0054ac90.test.cpp	gapscan/boundary
 0054d660	CFrontEndList	Initialise	1008	parked	DIFFER(976v1001)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0054d660.cpp	original
 0054e6f0	NUISystem::CScrollingViewport	NUISystem::CScrollingViewport::vfunc_2	656	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/hdr/0054e6f0.cpp	gapscan/boundary
 0054eac0	NUISystem::CViewport	~CViewport	400	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0054eac0.cpp	original
-0054ef00	NUISystem::CText	Draw	1136	parked	DIFFER(1127v1127)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand749/differ/0054ef00.test.cpp	gapscan/boundary
+0054ef00	NUISystem::CText	Draw	1136	reserved (pass22, parked)	DIFFER(1127v1127)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand749/differ/0054ef00.test.cpp	gapscan/boundary
 005502e0	NUISystem::CMesh	Draw	1312	parked	DIFFER(1321v1288)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand749/differ/005502e0.cpp	gapscan/boundary
 00554030	std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >	operator[]	160	parked	DIFFER(161v150)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand956/differ/00554030.test.cpp	original
 005542f0	CMorphingSprite	GetDataFromDef	736	parked	DIFFER(727v727)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/005542f0.cpp	original
@@ -117,10 +117,10 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0055f710	CTCHeroOnlineScoreboard	ResetAndOpenHTTPAndPrepareRequest	1136	parked	DIFFER(1121v1122)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0055f710.cpp	original
 00560bb0	CTCHeroOnlineScoreboard	GetDecryptedDocument	336	parked	DIFFER(320v321)	2	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00560bb0.cpp	original
 00560d00	CTCHeroOnlineScoreboard	CTCHeroOnlineScoreboard::ProcessLogin	1872	parked	DIFFER(1844v1860)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/00560d00.cpp	original
-00563480	CTCHeroOnlineScoreboard	DownloadScoreboardForSelectedClan	1184	parked	DIFFER(1178v1178)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00563480.cpp	original
+00563480	CTCHeroOnlineScoreboard	DownloadScoreboardForSelectedClan	1184	reserved (pass22, parked)	DIFFER(1178v1178)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00563480.cpp	original
 00564d5d	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics::CEntry*>	723	reserved (acctC, never_worked)		0		original
 005698a0	_global	RBTree_SearchOrCreate	160	parked	DIFFER(161v150)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand956/differ/005698a0.test.cpp	original
-00577ac0	CTCInventoryExperience	OpenInventoryInternalPC	2157	parked	DIFFER(2157v2157)	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1006/differ/00577ac0.cpp	gapscan/boundary
+00577ac0	CTCInventoryExperience	OpenInventoryInternalPC	2157	reserved (pass22, parked)	DIFFER(2157v2157)	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1006/differ/00577ac0.cpp	gapscan/boundary
 0057aeb4	CTCHeroStats	GetFavouriteWeapon	427	parked	DIFFER(427v427)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/0057aeb4.cpp	original
 0057b43f	CTCHeroStats	RenderHeroDrunkenness	836	parked	DIFFER(830v836)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/0057b43f.cpp	original
 0057c4f1	CTCHeroStats	ApplyBonusItemEffects	1192	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(1183v1192)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0057c4f1.cpp	original
@@ -128,25 +128,25 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0057df85	CTCHeroStats	KickHeroToMostRecentSafeRegion	876	parked	DIFFER(876v876)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/0057df85.cpp	original
 005850fd	CTCInventory	GetStyleCardsListUIComponent	1678	parked	DIFFER(1660v1678)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/differ/005850fd.cpp	original
 0058578b	CTCInventory	CTCInventory::vfunc_30	8081	reserved (acctC, parked)	DIFFER(7948v8081)	2	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/0058578b.cpp	gapscan/boundary
-0058771c	_global	Unwind@00fbdab0	45	never worked		0		original
+0058771c	_global	Unwind@00fbdab0	45	reserved (pass22, never_worked)		0		original
 0058807d	CTCInventory	OpenPCInventoryMenu	4997	reserved (acctC, never_worked)		0		original
 00589402	CTCInventory	GetStyleCardsListUIComponent	1582	parked	DIFFER(1581v1582)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/differ/00589402.cpp	original
 0058f016	CTCInventory	ConstructItemCategoryList	1587	parked	DIFFER(1588v1587)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/differ/0058f016.cpp	original
 0058f9bc	CTCInventory	OpenPCPhotojournal	2012	reserved (acctC, never_worked)		0		original
-00590235	CTCInventory	GetItemsListUIComponent	1393	parked	DIFFER(1393v1393)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/differ/00590235.cpp	original
+00590235	CTCInventory	GetItemsListUIComponent	1393	reserved (pass22, parked)	DIFFER(1393v1393)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/differ/00590235.cpp	original
 00590f0b	CTCInventory	GetItemsListUIComponentPC	2907	parked	DIFFER(2849v2907)	11	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00590f0b.cpp	original
 00591b7f	CTCInventory	UpdateContextSensitiveItems	735	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(729v735)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/differ/00591b7f.cpp	original
 00598a1c	CFrontEndManager	CFrontEndManager::Init2	4928	reserved (acctC, never_worked)		0		original
 0059fc17	CTCInventoryTrade	AlreadyHaveSpecial	716	parked	DIFFER(715v716)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/0059fc17.cpp	original
 0059fee3	CTCInventoryTrade	AddBuyItemToList	1556	parked	DIFFER(1553v1556)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1009b/differ/0059fee3.cpp	original
 005a4cdd	CTCInventoryTrade	ConstructActualSellInventoryPC	3668	reserved (acctC, parked)		0	rebuild/candidates/manual/pending/2026-11-08_linux_hand891/differ/005a4cdd.cpp	original
-005a6769	CTCInventoryTrade	ConstructNormalShopListPC	1336	parked	DIFFER(1336v1336)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/005a6769.cpp	original
+005a6769	CTCInventoryTrade	ConstructNormalShopListPC	1336	reserved (pass22, parked)	DIFFER(1336v1336)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/005a6769.cpp	original
 005a6ca1	CTCInventoryTrade	AddBuyItemToListPC	1662	parked	DIFFER(1669v1662)	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1009b/differ/005a6ca1.cpp	original
 005a94bd	CTCInventoryTrade	OpenInventory	1482	parked	DIFFER(1488v1482)	2	rebuild/candidates/manual/pending/2026-11-10_linux_handSND2/differ/005a94bd.cpp	original
 005ac10e	CTCInventoryTrade	ConstructActualBuyInventoryPC	3532	reserved (acctC, parked)		0	rebuild/candidates/manual/pending/2026-11-08_linux_hand891/differ/005ac10e.cpp	original
 005aceda	CTCInventoryTrade	ConstructActualInventoryPC	1067	parked	DIFFER(1113v1067)	5	rebuild/candidates/manual/pending/2026-11-10_linux_handSND2/differ/005aceda.cpp	original
 005ad305	CTCInventoryTrade	ApplyTattooCard	620	parked	DIFFER(620v620)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/005ad305.cpp	original
-005aecc0	CTCInventoryTrade	SellItem	2446	parked	DIFFER(2446v2446)	7	rebuild/candidates/manual/pending/2026-11-08_linux_hand860/differ/005aecc0.test.cpp	original
+005aecc0	CTCInventoryTrade	SellItem	2446	reserved (pass22, parked)	DIFFER(2446v2446)	7	rebuild/candidates/manual/pending/2026-11-08_linux_hand860/differ/005aecc0.test.cpp	original
 005b01fe	CTCInventoryTrade	SellItemPC	2222	parked	DIFFER(2217v2222)	13	rebuild/candidates/manual/pending/2026-11-08_linux_hand867/differ/005b01fe.cpp	original
 005b9641	CTCInventoryClothing	DrawPreparePrimitivesForRendering	1455	parked	matched in a lane, not landed	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1006/differ/005b9641.cpp	gapscan/boundary
 005bfd5e	CTCInventoryBase	OnSerialise	425	parked	DIFFER(424v425)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/005bfd5e.cpp	original
@@ -162,17 +162,17 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 005dcd10	_global	CTCInventoryAbilities_GetRandomAbility	608	parked	DIFFER(659v608)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/005dcd10.cpp	original
 005e1210	_Adjust_heap<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>*,int,std	_Adjust_heap<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>*,int,std::pa	256	parked	DIFFER(221v221)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand632/differ/005e1210.cpp	original
 005e1cb0	std	__adjust_heap<std::pair<unsigned long,CAnimationEntry> *,int,std::pair<unsigned long,CAnim	432	parked	DIFFER(256v256)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand522/differ/005e1cb0.cpp	original
-005e78f0	CTCQuestCompletionUI	GlobalUpdate	2352	parked	DIFFER(2340v2340)	11	rebuild/candidates/manual/pending/2026-11-08_linux_hand864/test/005e78f0.cpp	original
+005e78f0	CTCQuestCompletionUI	GlobalUpdate	2352	reserved (pass22, parked)	DIFFER(2340v2340)	11	rebuild/candidates/manual/pending/2026-11-08_linux_hand864/test/005e78f0.cpp	original
 005eabc0	CTCTavernGame	PositionMesh	512	parked	DIFFER(495v511)	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1016/differ/005eabc0.cpp	original
-005eadd6	CTCTavernGame	SetStateAfterYesNoAlt	346	never worked		0		original
-005eaf46	CTCInventoryMap	SetStateAfterYesNo_mid	314	never worked		0		original
-005eb08d	CTCInventoryMap	SetStateAfterOK_mid	243	never worked		0		original
+005eadd6	CTCTavernGame	SetStateAfterYesNoAlt	346	reserved (pass22, never_worked)		0		original
+005eaf46	CTCInventoryMap	SetStateAfterYesNo_mid	314	reserved (pass22, never_worked)		0		original
+005eb08d	CTCInventoryMap	SetStateAfterOK_mid	243	reserved (pass22, never_worked)		0		original
 005eca50	CTCTavernGame	DrawPreparePrimitivesForRendering	1280	parked	DIFFER(1185v1176)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/hdr/005eca50.cpp	original
 005eeff2	_gapscan	sub_005eeff2	5619	reserved (acctC, never_worked)		0		gapscan/boundary
 005f1b10	CTCInventoryAbilities	ConstructPCMagicList	8383	reserved (acctC, parked)	DIFFER(8380v8383)	2	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/005f1b10.cpp	original
 005f59c7	CTCInventoryAbilities	ConstructPCExpressionsList	2652	reserved (acctC, parked)	DIFFER(2649v2652)	8	rebuild/candidates/manual/pending/2026-11-10_linux_hand1008b/differ/005f59c7.cpp	original
-005f8e6d	_global	Unwind@00fbdab0	34	never worked		0		original
-005f8e8f	_global	Unwind@00fbdab0	49	never worked		0		original
+005f8e6d	_global	Unwind@00fbdab0	34	reserved (pass22, never_worked)		0		original
+005f8e8f	_global	Unwind@00fbdab0	49	reserved (pass22, never_worked)		0		original
 005fd5e0	CTCInventoryMap	ConstructRegionDescriptionQuests	992	parked	DIFFER(986v982)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/005fd5e0.cpp	original
 005fe840	CTCInventoryMap	ConstructRegionExitMarkers	2384	parked	DIFFER(2424v2379)	1	rebuild/candidates/manual/pending/2026-11-08_linux_hand851/differ/005fe840.cpp	original
 005ff190	CTCInventoryMap	CreateMapMarkers	4176	reserved (acctC, parked)	DIFFER(4604v4176)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand729/differ/005ff190.cpp	original
@@ -218,7 +218,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0064ae80	CDrawAbilityButtons	DrawAbilityButton	812	parked	DIFFER(812v812)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0064ae80.cpp	original
 0064b1ac	CDrawAbilityButtons	UpdateWeaponAbilities	1045	parked	DIFFER(1058v1045)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064b1ac.cpp	original
 0064b8b3	CDrawTargetInfo	Draw	1426	parked	DIFFER(11v1426)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064b8b3.cpp	original
-0064bfba	CDrawHighlightingTargetingCursor	Draw	2223	parked	DIFFER(2223v2223)	10	rebuild/candidates/manual/pending/2026-11-08_linux_hand867/differ/0064bfba.cpp	original
+0064bfba	CDrawHighlightingTargetingCursor	Draw	2223	reserved (pass22, parked)	DIFFER(2223v2223)	10	rebuild/candidates/manual/pending/2026-11-08_linux_hand867/differ/0064bfba.cpp	original
 0064ccb3	CDrawStamina	Draw	1526	parked	DIFFER(11v1526)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064ccb3.cpp	original
 0064d404	CDrawQuestInfo	DrawMiniGameInfo	399	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(178v399)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064d404.cpp	original
 0064d7a6	CDrawQuickAccessIcons	DrawChargeGraphic	388	parked	DIFFER(393v388)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand522/differ/0064d7a6.cpp	original
@@ -248,7 +248,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0066cf00	CRegionMinimap	PopulateRegionMinimap	3248	reserved (acctC, parked)	DIFFER(3252v3248)	13	rebuild/candidates/manual/pending/2026-11-07_linux_hand827/differ/0066cf00.cpp	original
 00670820	CTCCoopSpirit	UpdateMovement	496	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand682/differ/00670820.cpp	original
 00671600	CThingCreatureDef	Transfer	1456	parked	DIFFER(1449v1450)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand773/differ/00671600.cpp	original
-00675e20	CCreatureDef	CCreatureDef::Transfer	1920	parked	DIFFER(1912v1912)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand315/differ/00675e20.cpp	original
+00675e20	CCreatureDef	CCreatureDef::Transfer	1920	reserved (pass22, parked)	DIFFER(1912v1912)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand315/differ/00675e20.cpp	original
 00677970	CPersistTraits<CReactionFrequencyTraitsArray>	TransferIn	2272	parked	DIFFER(2273v2272)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00677970.cpp	original
 00678760	CPersistTraits<std::list<CReactionMatch*> >	TransferIn	3584	reserved (acctC, parked)	DIFFER(3554v3579)	11	rebuild/candidates/manual/pending/2026-11-07_linux_hand829/differ/00678760.cpp	original
 0067c520	CBlurredAttitudesDef	`scalar deleting destructor'	80	parked	DIFFER(46v70)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand514/differ/0067c520.cpp	original
@@ -279,7 +279,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006a1f80	CTCCarrying	PutThingInCarrySlot	672	parked	DIFFER(664v660)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/006a1f80.cpp	original
 006a3a70	_global	Vector_ReserveAndFill	288	parked	DIFFER(285v285)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand636/differ/006a3a70.cpp	original
 006a40d0	CInputProcessJumpingAndRolling	ProcessRolling	1584	parked	DIFFER(25v1579)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006a40d0.cpp	original
-006a5d90	CThingPhysical	ConstructFromLevelScript	1280	parked	DIFFER(1268v1268)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand771/differ/006a5d90.test.cpp	original
+006a5d90	CThingPhysical	ConstructFromLevelScript	1280	reserved (pass22, parked)	DIFFER(1268v1268)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand771/differ/006a5d90.test.cpp	original
 006a64d0	CThingPhysical	DrawPreparePrimitivesForRendering	944	parked	DIFFER(867v865)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006a64d0.cpp	original
 006aa720	CThingPlayerCreature	SetPlayerCreatureActionForMelee	1216	parked	DIFFER(1218v1212)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand732/work/006aa720_p8.cpp	original
 006ab0e0	CThingPlayerCreature	OnHit	544	parked	DIFFER(525v529)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/006ab0e0.cpp	gapscan/boundary
@@ -288,17 +288,17 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006af2d0	CMessageEventFilter_IsOriginatorAlive	operator()	288	parked	DIFFER(58v66)	1	rebuild/candidates/manual/pending/2026-10-14_linux_hand58/differ/006af2d0.cpp	original
 006af4e0	CMessageEvent	GetPOriginator<CThing>	64	parked	DIFFER(39v52)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand514/differ/006af4e0.cpp	original
 006af7d0	CTCPhysicsBase	ImpulseRespondToCollision	624	parked	DIFFER(614v612)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/006af7d0.cpp	original
-006b16b0	_global	SoundTheme_LoadDefinitions	592	never worked		0		original
+006b16b0	_global	SoundTheme_LoadDefinitions	592	reserved (pass22, never_worked)		0		original
 006b2960	CGameNavigatorManagerExternalInterface	?GetNavigationInformation@CGameNavigatorManagerExternalInterface@@UBEXABVC2DBoxF@@AAVCNavi	272	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(237v250)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/006b2960.cpp	original
 006b2ca0	_global	CGameCamera_UpdateViewMatrix	912	reserved (acctC, never_worked)		0		original
 006b5890	_Lower_bound<std::pair<long,float>*,std	_Lower_bound<std::pair<long,float>*,std::pair<long,float>,int>	96	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand356/differ/006b5890.cpp	original
 006b75a0	CGameMap	Resize	448	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(414v434)	4	rebuild/candidates/manual/pending/2026-10-21_linux_hand264/differ/006b75a0.cpp	original
-006b9610	_global	CFaction_LoadFromPersist	464	never worked		0		original
+006b9610	_global	CFaction_LoadFromPersist	464	reserved (pass22, never_worked)		0		original
 006b97e0	_global	CWorld_InitFactions	1456	parked	DIFFER(1450v1438)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/006b97e0.cpp	original
 006bb390	`anonymousnamespace'	Game_IsTimeOfDayInRange	544	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2/differ/006bb390.cpp	original
 006bb860	_gapscan	sub_006bb860	224	parked	DIFFER(173v181)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand503/differ/006bb860.cpp	gapscan/boundary
 006bd900	CMusicManager	PlayMusic	176	parked	DIFFER(170v169)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand680/differ/006bd900.cpp	original
-006bdc60	_global	Environment_UpdateMusicForRegion	496	never worked		0		original
+006bdc60	_global	Environment_UpdateMusicForRegion	496	reserved (pass22, never_worked)		0		original
 006c06d0	CTCBuyableHouse	GetRentMoneyPos	320	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(312v312)	3	rebuild/candidates/manual/pending/2026-10-27_linux_hand638/differ/006c06d0.cpp	original
 006c0970	CTCBuyableHouse	CreateSignPost	432	parked	DIFFER(421v419)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/006c0970.cpp	original
 006c0b20	CTCBuyableHouse	FindPosToCreateNewVillager	368	parked	DIFFER(383v368)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/006c0b20.cpp	original
@@ -310,7 +310,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006c6990	CTCHeroOpinionDeedLog	PostDeed	1168	parked	DIFFER(1183v1168)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006c6990.alt.cpp	original
 006c6e80	CTCHeroOpinionDeedLog	FrameUpdate	1264	parked	DIFFER(1220v1251)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006c6e80.cpp	original
 006c9350	CPersistTraits<CAtmosBankEntry>	TransferIn	320	parked	matched in a lane, not landed	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1018/differ/006c9350.cpp	original
-006c9c60	_global	Catch@004ab920	240	never worked		0		original
+006c9c60	_global	Catch@004ab920	240	reserved (pass22, never_worked)		0		original
 006ca8c0	CEngineTextureMorphSet	AddEngineMorph	144	parked	DIFFER(128v138)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand387/differ/006ca8c0.cpp	original
 006cbac0	CTCCreatureNavigation	GetNextNavPosOnRoute	880	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_hand1024/differ/006cbac0.cpp	original
 006cbe80	CTCCreatureNavigation	GetNearestFleePositionBehindCover	752	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_hand1024/differ/006cbe80.cpp	original
@@ -339,7 +339,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006eae20	CCombatManager	GetBestSequenceIndexAttackerOnDefender	1392	parked	DIFFER(1394v1387)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/006eae20.cpp	original
 006eb700	CCombatManager	GetBestEnemyForCombatant	416	parked	DIFFER(421v411)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/006eb700.cpp	original
 006ebf70	CCombatRing	AssignAttackersToRing	1040	parked	DIFFER(1022v1026)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/006ebf70.cpp	original
-006ec850	CCombatWheel	CCombatWheel::PopulateCombatRings	1616	parked	DIFFER(1606v1606)	6	rebuild/candidates/manual/pending/2026-11-12_linux_handQ27/differ/006ec850.cpp	original
+006ec850	CCombatWheel	CCombatWheel::PopulateCombatRings	1616	reserved (pass22, parked)	DIFFER(1606v1606)	6	rebuild/candidates/manual/pending/2026-11-12_linux_handQ27/differ/006ec850.cpp	original
 006ecea0	CDefendingCombatantInfo	CDefendingCombatantInfo::UpdateCombatState	400	parked	DIFFER(385v385)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/006ecea0.cpp	original
 006f2c00	CAttackerPositionEvaluator	CAttackerPositionEvaluator::EvaluateAttacker	480	parked	DIFFER(463v468)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/006f2c00.cpp	original
 006f2de0	CGetBestAttackerForProng	operator()	384	parked	DIFFER(376v375)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/006f2de0.cpp	original
@@ -373,8 +373,8 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0072aaf0	_global	UseSpecialAbility_CTCMultiStrike	80	parked	DIFFER(66v66)	2	rebuild/candidates/manual/pending/2026-10-31_codex_parked50/differ/0072aaf0.cpp	original
 0072c430	CTCSpecialAbilities	CTCSpecialAbilities::GetAbilityAvailability	592	parked	DIFFER(584v584)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand617/differ/0072c430.cpp	original
 0072cf40	CTCSpecialAbilities	UseSpecialAbility	1008	reserved (acctC, never_worked)		0		original
-0072dbe0	_global	Catch@0047e8cc	96	never worked		0		original
-0072dc40	_global	Unwind@00fbdab0	48	never worked		0		original
+0072dbe0	_global	Catch@0047e8cc	96	reserved (pass22, never_worked)		0		original
+0072dc40	_global	Unwind@00fbdab0	48	reserved (pass22, never_worked)		0		original
 0072f380	CTCDummyVillager	OnSerialise	976	parked	DIFFER(979v968)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand301/differ/0072f380.cpp	original
 0072f750	CTCDummyVillager	CreateVillager	656	parked	DIFFER(648v643)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0072f750.cpp	original
 0072fb70	CTCDummyVillager	FrameUpdate	1280	parked	DIFFER(1280v1278)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/0072fb70.cpp	original
@@ -385,7 +385,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00735fd0	CTCCombat	AttemptToStartParticle	976	reserved (acctC, never_worked)		0		original
 00738a80	GetEvent<NEntityEvents::CEventHitBy_const_,CFilter_Bind3<NEntityEvents::CIsHitEventHitByMelee,std::unary_negate<NEntityEvents::CIsHitEventBlocked>,NEntityEvents	GetEvent<NEntityEvents::CEventHitBy_const_,CFilter_Bind3<NEntityEvents::CIsHitEventHitByMe	240	parked	DIFFER(177v177)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ16/differ/00738a80.cpp	original
 00741d60	CModeExplosiveForcePushed	`scalar_deleting_destructor'	80	parked	DIFFER(48v69)	1	rebuild/candidates/manual/pending/2026-10-14_linux_hand58/differ/00741d60.cpp	original
-00743600	_global	Catch@0047e8cc	128	never worked		0		original
+00743600	_global	Catch@0047e8cc	128	reserved (pass22, never_worked)		0		original
 00745840	CTCPerceiveThing	CTCPerceiveThing::vfunc_11	1072	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00745840.cpp	gapscan/boundary
 00746db0	_global	GetStabPosOnThing	256	parked	DIFFER(247v247)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand477/differ/00746db0.cpp	original
 00747c70	CTCStealth	UpdateDangerInfo	304	parked	DIFFER(303v303)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00747c70.cpp	original
@@ -393,13 +393,13 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0074a4e0	CTCCreatureGenerator	DoNavCheck	240	parked	DIFFER(233v234)	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1016/differ/0074a4e0.cpp	original
 0074af50	CTCCreatureGenerator	CreateCreaturesUndead	864	reserved (acctC, never_worked)		0		original
 0074b2b0	CTCCreatureGenerator	CreateCreatures	1216	parked	DIFFER(1248v1208)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0074b2b0.cpp	original
-0074b77c	_global	CTCCreatureGenerator_SpawnInArea	388	never worked		0		original
+0074b77c	_global	CTCCreatureGenerator_SpawnInArea	388	reserved (pass22, never_worked)		0		original
 0074bc20	CTCCreatureGenerator	DrawDebugInfo	16	parked	DIFFER(1415v1290)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand728/src/0074bc20.cpp	original
-0074bc30	CTCCreatureGenerator	DrawDebugInfo	1280	never worked		0		original
+0074bc30	CTCCreatureGenerator	DrawDebugInfo	1280	reserved (pass22, never_worked)		0		original
 0074c130	CTCCreatureGenerator	FrameUpdate	1216	parked	DIFFER(1220v1202)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0074c130.cpp	original
 0074e860	CTCContainerRewardHero	GetRewardItems	1008	reserved (acctC, never_worked)		0		original
 0074ec50	CTCContainerRewardHero	CreateItemPickupContainer	576	parked	DIFFER(572v564)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/0074ec50.cpp	original
-00750e30	CTCExplodingObject	FrameUpdate	512	never worked		0		original
+00750e30	CTCExplodingObject	FrameUpdate	512	reserved (pass22, never_worked)		0		original
 00752b00	CTCLook	SetHeadLooking	768	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00752b00.cpp	original
 00753630	CTCLook	InitialiseTurningViaAnimation	528	parked	DIFFER(532v528)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/00753630.cpp	original
 00753e90	CTCLook	LookAtPos	448	parked	DIFFER(447v447)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00753e90.cpp	original
@@ -427,13 +427,13 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00774c60	CTCShop	StockDisplay	192	parked	DIFFER(188v188)	5	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00774c60.cpp	original
 00774d20	_global	CTCShop_SellHighlightedItem	1152	parked	DIFFER(1149v1149)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00774d20.cpp	original
 00775350	CTCShop	UpdateStock	2000	parked	DIFFER(1971v1988)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00775350.cpp	original
-00779ef0	_global	CTCObjectView_InitializeWillPowerDisplay	576	never worked		0		original
+00779ef0	_global	CTCObjectView_InitializeWillPowerDisplay	576	reserved (pass22, never_worked)		0		original
 0077a430	CTCDExperienceOrb	FrameUpdate	1120	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(1140v1115)	5	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0077a430.cpp	original
 0077a890	CTCDExperienceOrb	Create	720	parked	DIFFER(724v707)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand684/differ/0077a890.cpp	original
 0077b350	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::vfunc_0	800	reserved (acctC, never_worked)		0		gapscan/boundary
 0077ba40	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	NGraphicAppearance::CTCGraphicAppearanceStaticMesh::vfunc_0	576	parked	DIFFER(559v563)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/0077ba40.cpp	gapscan/boundary
-0077bec0	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::vfunc_0	672	never worked		0		gapscan/boundary
-0077c4d0	NGraphicAppearance::CTCGraphicAppearanceSprite	NGraphicAppearance::CTCGraphicAppearanceSprite::vfunc_0	624	never worked		0		gapscan/boundary
+0077bec0	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::vfunc_0	672	reserved (pass22, never_worked)		0		gapscan/boundary
+0077c4d0	NGraphicAppearance::CTCGraphicAppearanceSprite	NGraphicAppearance::CTCGraphicAppearanceSprite::vfunc_0	624	reserved (pass22, never_worked)		0		gapscan/boundary
 0077d5b0	CTCHeroCentre	FrameUpdate	1504	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(5v1491)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0077d5b0.cpp	original
 0077dc40	_global	CTCCampfire_BuildPlayerRegion	688	parked	DIFFER(591v626)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0077dc40.cpp	original
 00780430	_gapscan	sub_00780430	272	parked	DIFFER(273v271)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand510/differ/00780430.cpp	gapscan/boundary
@@ -464,7 +464,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0079f970	CLightningBeam	UpdatePositions	1056	parked	DIFFER(8v1052)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0079f970.g3.cpp	original
 007a1380	CLightningBeam	Activate	880	parked	DIFFER(864v870)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/007a1380.cpp	original
 007a1b20	CTCWillLightning::CLightningBeam	FrameUpdate	4816	reserved (acctC, parked)	DIFFER(2744v2840)	2	rebuild/candidates/manual/pending/2026-11-08_linux_hand868/differ/007a1b20.cpp	original
-007a6760	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::vfunc_0	656	never worked		0		gapscan/boundary
+007a6760	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::vfunc_0	656	reserved (pass22, never_worked)		0		gapscan/boundary
 007a76f0	CTCBattleCharge	CreateStartUpEffect	1248	parked	DIFFER(1237v1239)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/007a76f0.cpp	original
 007a7d20	CTCBattleCharge	CreateHitEffect	2528	parked	DIFFER(2528v2520)	14	rebuild/candidates/manual/pending/2026-11-06_linux_hand824/differ/007a7d20.test.cpp	original
 007a8700	CTCBattleCharge	RushForwards	1248	parked	DIFFER(1205v1243)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/007a8700.cpp	original
@@ -500,17 +500,17 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 007c22f0	CTCShotDefinitionBase	OnHitByMelee	400	parked	DIFFER(413v397)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/007c22f0.cpp	original
 007c2d10	GetAllThingsInRoughArea<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind3<CThingFilter_IsNot,_anon_6DCC4763	GetAllThingsInRoughArea<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind3	752	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand470/differ/007c2d10.cpp	original
 007c3220	CTCDrainLife	DoDrain	1152	parked	DIFFER(1172v1138)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/007c3220.cpp	original
-007c36a0	CTCDrainLife	FrameUpdate	672	never worked		0		original
+007c36a0	CTCDrainLife	FrameUpdate	672	reserved (pass22, never_worked)		0		original
 007c3fb0	CTCHealLife	FrameUpdate	880	parked	DIFFER(872v878)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/007c3fb0.cpp	original
-007c4430	CTCHealLife	StartHealingEffect	1952	parked	DIFFER(1952v1952)	28	rebuild/candidates/manual/pending/2026-11-07_linux_hand827/differ/007c4430.test.cpp	original
+007c4430	CTCHealLife	StartHealingEffect	1952	reserved (pass22, parked)	DIFFER(1952v1952)	28	rebuild/candidates/manual/pending/2026-11-07_linux_hand827/differ/007c4430.test.cpp	original
 007c5110	GetAllThingsInRoughArea<CThingCreatureBase,std::list<CIntelligentPointer<CThingCreatureBase>,std	GetAllThingsInRoughArea<CThingCreatureBase,std::list<CIntelligentPointer<CThingCreatureBas	704	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand470/differ/007c5110.cpp	original
 007c57c0	CTCGhostSword	AddSword	1520	parked	DIFFER(1531v1519)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/007c57c0.cpp	original
 007c60a0	CTCGhostSword	UpdateGhostSwordParticleEffects	960	parked	DIFFER(989v960)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/007c60a0.cpp	original
 007c7c40	CTCTurncoat	FrameUpdate	784	parked	DIFFER(744v744)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/007c7c40.cpp	original
 007c81f0	CTCHitOnCollision	OnCollision	800	parked	DIFFER(768v768)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/007c81f0.cpp	original
-007c977c	CTCCreatureGeneratorCreator	OnSerialise	292	never worked		0		original
+007c977c	CTCCreatureGeneratorCreator	OnSerialise	292	reserved (pass22, never_worked)		0		original
 007c99f0	CTCCreatureGeneratorCreator	FrameUpdate	1136	parked	DIFFER(1186v1123)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/007c99f0.cpp	original
-007ccf50	CTCMultiStrike	ApplyEffectOnWeapon	1088	parked	DIFFER(1088v1088)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ5/differ/007ccf50.cpp	original
+007ccf50	CTCMultiStrike	ApplyEffectOnWeapon	1088	reserved (pass22, parked)	DIFFER(1088v1088)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ5/differ/007ccf50.cpp	original
 007ce7a0	CTCElectrocutedEffect	Reset	864	parked	DIFFER(863v863)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/007ce7a0.cpp	original
 007d00f0	CTCTavernGameShoveHaPenny	FrameUpdate	1024	parked	DIFFER(1016v1016)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/007d00f0.cpp	original
 007d04f0	CTCTavernGameShoveHaPenny	OnInitialActivate	864	parked	DIFFER(843v851)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/007d04f0.cpp	original
@@ -542,7 +542,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 007eda90	CTCCarriedActionUseFood	CTCCarriedActionUseFood::vfunc_28	240	parked		0	rebuild/candidates/manual/pending/2026-10-20_linux_hand205/differ/007eda90.cpp	gapscan/boundary
 007ef200	CTCCarriedActionUseExpression	CTCCarriedActionUseExpression::vfunc_28	1024	reserved (acctC, never_worked)		0		gapscan/boundary
 007ef710	CTCDecapitation	Decapitate	1344	parked	DIFFER(1157v1244)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/007ef710.cpp	original
-007eff80	_global	IsThingAbleToFish	624	never worked		0		original
+007eff80	_global	IsThingAbleToFish	624	reserved (pass22, never_worked)		0		original
 007f0c70	CTCKrakenTentacle	TrackTarget	720	parked	DIFFER(718v715)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/007f0c70.cpp	original
 007f4990	CTCHasName	GetNPCShortName	464	parked	DIFFER(448v449)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/007f4990.cpp	original
 007f6200	CTCTargetingAI	UpdatePBestEnemyCreatureForAttack	1472	parked	DIFFER(1458v1458)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/007f6200.cpp	original
@@ -572,7 +572,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0080dc90	CThingFilter_IsEvadeExplosion	operator()	256	parked	DIFFER(242v242)	2	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0080dc90.cpp	original
 008100d0	_global	Create	288	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/008100d0.cpp	original
 008101f0	CTCDExplosiveTrail	FrameUpdate	1920	parked	DIFFER(1608v1914)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/008101f0.cpp	original
-00813d00	CTCBoastingPodium	FrameUpdate	1376	parked	DIFFER(1372v1372)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00813d00.cpp	original
+00813d00	CTCBoastingPodium	FrameUpdate	1376	reserved (pass22, parked)	DIFFER(1372v1372)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00813d00.cpp	original
 00816410	NHitLocations::CPhysicalPrimitiveCylinder	GetClosestPointToPos2D	1184	parked	DIFFER(1169v1174)	2	rebuild/candidates/manual/pending/2026-11-07_linux_hand846/differ/00816410.test.cpp	gapscan/boundary
 00816ac0	_global	CParticleMorphs_PopulateFromDefinitions	1360	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand524/differ/00816ac0.cpp	original
 008185b0	NMaths	GetRootsNumerically<CVeryRandomFunctionToFindThePointOnAnElipseThatIsClosestToAPoint>	1360	parked	DIFFER(1360v1360)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/008185b0.cpp	original
@@ -695,7 +695,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 008e03b0	CModeGuildmasterPowerUpSpeed	OnActivate	816	parked	DIFFER(809v811)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/008e03b0.cpp	original
 008e18d0	NCreatureMode::CModeThunderLightningStorm	UpdateLightningBeams	2080	parked	DIFFER(2069v2073)	14	rebuild/candidates/manual/pending/2026-11-07_linux_hand827/differ/008e18d0.test.cpp	original
 008e28f0	NCreatureMode::CModeThunderLightningStorm	NCreatureMode::CModeThunderLightningStorm::vfunc_3	416	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand470/differ/008e28f0.cpp	gapscan/boundary
-008e3a20	_global	Catch@0047e8cc	128	never worked		0		original
+008e3a20	_global	Catch@0047e8cc	128	reserved (pass22, never_worked)		0		original
 008e5880	CTCPhysicsStandard	PerformStepBasedMovement	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/008e5880.cpp	original
 008e5d40	CTCPhysicsStandard	Move	448	parked	DIFFER(441v441)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/008e5d40.cpp	original
 008e8060	CModeBriarRoseConcentrate	OnActivate	1792	parked	DIFFER(5v1784)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008e8060.cpp	original
@@ -725,7 +725,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0090cc40	CAIStateGroup_MinionGossip	?IsRunnable@CAIStateGroup_MinionGossip@@MAE_NXZ	1008	parked	DIFFER(974v997)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/0090cc40.cpp	original
 0090d030	CAIStateGroup_MinionGossip	?Update@CAIStateGroup_MinionGossip@@MAEXXZ	3696	reserved (acctC, parked)	DIFFER(3247v3269)	11	rebuild/candidates/manual/pending/2026-11-07_linux_hand830/differ/0090d030.cpp	original
 0090e3d0	CMessageEventManager	FindMostRecentMessage<CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_Thing	208	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0090e3d0.test.cpp	original
-0090e5d0	CAIStateGroup_BanditGossip	?Update@CAIStateGroup_BanditGossip@@MAEXXZ	1552	parked	DIFFER(1367v1367)	4	rebuild/candidates/manual/pending/2026-11-12_linux_handQ27/differ/0090e5d0.cpp	original
+0090e5d0	CAIStateGroup_BanditGossip	?Update@CAIStateGroup_BanditGossip@@MAEXXZ	1552	reserved (pass22, parked)	DIFFER(1367v1367)	4	rebuild/candidates/manual/pending/2026-11-12_linux_handQ27/differ/0090e5d0.cpp	original
 0090ebe0	_global	FindMessage	352	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0090ebe0.cpp	original
 009101c0	CAIStateGroup_MinionListenToStory	?Update@CAIStateGroup_MinionListenToStory@@MAEXXZ	736	parked	DIFFER(751v735)	2	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/009101c0.cpp	original
 00911300	CAIStateGroup_MinionGuardReactToBodyFoundMessage	?Update@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@UAEXXZ	672	parked	DIFFER(666v666)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00911300.cpp	original
@@ -753,7 +753,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00926ed0	CAIStateGroup_OpenAndCloseShop	?Update@CAIStateGroup_OpenAndCloseShop@@UAEXXZ	1408	parked	DIFFER(1389v1373)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00926ed0.cpp	original
 009277cb	_Tree<std::_Tmap_traits<long,CCharString,std::less<long>,std::allocator<std	_Tree<std::_Tmap_traits<long,CCharString,std::less<long>,std::allocator<std::pair<long_con	69	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ1/differ/009277cb.cpp	original
 00927910	_global	Sort_MergeHeap	400	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/00927910.cpp	original
-00927f30	CAIStateGroup_SetupWares	CAIStateGroup_SetupWares::Update	1408	parked	DIFFER(1331v1331)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00927f30.cpp	original
+00927f30	CAIStateGroup_SetupWares	CAIStateGroup_SetupWares::Update	1408	reserved (pass22, parked)	DIFFER(1331v1331)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00927f30.cpp	original
 00929020	CAIStateGroup_BanditPlayDice	?IsRunnable@CAIStateGroup_BanditPlayDice@@MAE_NXZ	512	parked	DIFFER(506v507)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00929020.cpp	original
 00929fc0	CAIStateGroup_ApprenticeHero	GetObjectWithScriptName	256	parked	DIFFER(265v242)	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/00929fc0.cpp	original
 0092a3f0	CAIStateGroup_ApprenticeHero	PracticeAgainstApprentice	1200	parked	DIFFER(1209v1188)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand312/differ/0092a3f0.cpp	original
@@ -871,7 +871,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009a23e0	?A0x	GFUpdateFontTextureCache	496	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/009a23e0.cpp	original
 009a25d0	CStreamingFontBank	Render	3728	reserved (acctC, parked)	DIFFER(3715v3722)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/009a25d0.cpp	original
 009a3460	_global	ReadTextFileIntoArray	480	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand644/differ/009a3460.cpp	original
-009a3c20	CStreamingFontBank	CStreamingFontBank	1312	parked	DIFFER(1298v1298)	3	rebuild/candidates/manual/pending/2026-11-12_linux_handQ26/differ/009a3c20.cpp	original
+009a3c20	CStreamingFontBank	CStreamingFontBank	1312	reserved (pass22, parked)	DIFFER(1298v1298)	3	rebuild/candidates/manual/pending/2026-11-12_linux_handQ26/differ/009a3c20.cpp	original
 009aa440	std::pair<const CCharString,CBankFileManager::CBankInfo>	~pair	48	parked	matched in a lane, not landed	1	rebuild/candidates/manual/pending/2026-11-09_linux_hand894/differ/009aa440.cpp	original
 009acee0	CDefinitionManager	ParseEnumForSymbols	1024	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(1030v1017)	1	rebuild/candidates/manual/pending/2026-10-22_linux_hand283/differ/009acee0.cpp	original
 009ae390	CEngineInternalPrimitiveBase	CEngineInternalPrimitiveBase::CompressPrimitive	608	parked	DIFFER(595v600)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/009ae390.cpp	original
@@ -905,10 +905,10 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009d8cf0	CRenderManager2D	ClearRenderTarget	3392	reserved (acctC, parked)	DIFFER(3385v3385)	26	rebuild/candidates/manual/pending/2026-11-08_linux_hand864/differ/009d8cf0.cpp	original
 009d9c80	CRenderManager2D	DrawBufferedPolys	3440	reserved (acctC, parked)	DIFFER(3435v3435)	717	rebuild/candidates/manual/pending/2026-11-08_linux_hand864/differ/009d9c80.cpp	original
 009ddc60	CRenderManager2D	Draw2DBoxWithZ	912	parked	DIFFER(899v899)	3	rebuild/candidates/manual/pending/2026-11-12_linux_handQ20/differ/009ddc60.cpp	original
-009df730	CStateBlockFunctionAlphaAdditive	?Apply@CStateBlockFunctionAlphaAdditive@@UAEXXZ	1648	parked	DIFFER(1633v1633)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009df730.cpp	original
-009dfda0	CStateBlockFunctionAlphaMultiply	?Apply@CStateBlockFunctionAlphaMultiply@@UAEXXZ	1648	parked	DIFFER(1633v1633)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009dfda0.cpp	original
-009e0410	CStateBlockFunctionAlphaBoolean	CStateBlockFunctionAlphaBoolean::Apply	1744	parked	DIFFER(1738v1738)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009e0410.cpp	original
-009e0ae0	CStateBlockFunctionAlphaText	?Apply@CStateBlockFunctionAlphaText@@UAEXXZ	1728	parked	DIFFER(1635v1635)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009e0ae0.cpp	original
+009df730	CStateBlockFunctionAlphaAdditive	?Apply@CStateBlockFunctionAlphaAdditive@@UAEXXZ	1648	reserved (pass22, parked)	DIFFER(1633v1633)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009df730.cpp	original
+009dfda0	CStateBlockFunctionAlphaMultiply	?Apply@CStateBlockFunctionAlphaMultiply@@UAEXXZ	1648	reserved (pass22, parked)	DIFFER(1633v1633)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009dfda0.cpp	original
+009e0410	CStateBlockFunctionAlphaBoolean	CStateBlockFunctionAlphaBoolean::Apply	1744	reserved (pass22, parked)	DIFFER(1738v1738)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009e0410.cpp	original
+009e0ae0	CStateBlockFunctionAlphaText	?Apply@CStateBlockFunctionAlphaText@@UAEXXZ	1728	reserved (pass22, parked)	DIFFER(1635v1635)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009e0ae0.cpp	original
 009e3f60	CPixelFormat	ConvertRGBToPFDData	576	parked	DIFFER(179v189)	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/009e3f60.cpp	original
 009e55a0	CSymbolMap	ParseEnum	1328	parked	DIFFER(1332v1317)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/009e55a0.cpp	original
 009e84d0	CPersistTraits<C3DVector>	TransferIn	1856	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand469/differ/009e84d0.cpp	original
@@ -919,7 +919,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009f4590	CSurface	SaveAsTGA	896	parked	DIFFER(916v864)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/009f4590.cpp	original
 009f57a0	CInputManager	?Update@CInputManager@@UAEXXZ	1072	parked	DIFFER(813v1072)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/009f57a0.cpp	original
 009f73c0	CVsyncCallbackTimer	OnPostSwapScreens	736	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand533/differ/009f73c0.cpp	original
-009fa780	CTexture	BltToRenderTargetWithGPU	2032	parked	DIFFER(2028v2028)	3	rebuild/candidates/manual/pending/2026-11-08_linux_hand859/test/009fa780.cpp	original
+009fa780	CTexture	BltToRenderTargetWithGPU	2032	reserved (pass22, parked)	DIFFER(2028v2028)	3	rebuild/candidates/manual/pending/2026-11-08_linux_hand859/test/009fa780.cpp	original
 009faf70	CTexture	GenerateMipmapsWithGPU	416	parked	DIFFER(407v407)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/009faf70.cpp	original
 009fb110	CTexture	SaveToDataStream	736	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand692/differ/009fb110.cpp	gapscan/boundary
 009fb3f0	CTexture	LoadFromDataStream	864	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand692/differ/009fb3f0.cpp	gapscan/boundary
@@ -986,7 +986,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a475c0	CNavigatorBase	FindNearestNavigableNode	1872	not plain C++ (CRT / hand-written asm / LTCG)		0	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a475c0.cpp	original
 00a48ba0	CLipSyncSampleData	WriteToFile	880	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(873v875)	3	rebuild/candidates/manual/pending/2026-10-27_linux_retail_asm_rasm2/differ/00a48ba0.cpp	original
 00a48f10	CLipSyncSampleData	GetFrameInterpolate	816	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(815v811)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00a48f10.cpp	original
-00a495f0	CLipSyncSampleData	ReadFromFile	1408	parked	DIFFER(1261v1261)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00a495f0.cpp	original
+00a495f0	CLipSyncSampleData	ReadFromFile	1408	reserved (pass22, parked)	DIFFER(1261v1261)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00a495f0.cpp	original
 00a4b670	_global	IsPosInFOVWithWeight	320	parked	DIFFER(312v314)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00a4b670.cpp	original
 00a4c1f0	C3DAnimationSequenceData	GetKeyframeInterpolate	1008	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(922v1006)	2	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00a4c1f0.test.cpp	original
 00a4cec0	C3DAnimation2	CalcLocalTransformations	1136	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00a4cec0.cpp	original
@@ -1045,7 +1045,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a89e40	C3DMesh2	?GetDummyObjectPositionAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAV2@ABVC3DAnimationBlend	992	parked	DIFFER(986v986)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00a89e40.cpp	original
 00a8a220	C3DMesh2	?GetDummyObjectTransformAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAVCMatrix3x4@@ABVC3DAni	976	parked	DIFFER(965v965)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00a8a220.cpp	original
 00a8a5f0	C3DMesh2	?GetDummyObjectTransformAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAVCMatrix3x4@@ABVC3DAni	992	parked	DIFFER(981v981)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00a8a5f0.cpp	original
-00a8ad40	C3DMesh2	LoadBinary	1632	parked	DIFFER(1621v1621)	4	rebuild/candidates/manual/pending/2026-11-12_linux_handQ27/differ/00a8ad40.cpp	original
+00a8ad40	C3DMesh2	LoadBinary	1632	reserved (pass22, parked)	DIFFER(1621v1621)	4	rebuild/candidates/manual/pending/2026-11-12_linux_handQ27/differ/00a8ad40.cpp	original
 00a8b990	C3DMesh2	InitialiseBones	4208	reserved (acctC, parked)	DIFFER(1614v1624)	29	rebuild/candidates/manual/pending/2026-11-08_linux_hand864/differ/00a8b990.cpp	original
 00a8f1b0	_global	TransformVertexBufferWithNormals_LoopUnrolled	1472	parked	DIFFER(1469v1469)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00a8f1b0.cpp	original
 00a90260	C3DPrimitive2	CreateDegenerateTriangleIndexBuffer	496	parked	DIFFER(496v496)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ16/differ/00a90260.cpp	original
@@ -1062,7 +1062,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00aabf60	CSoundEmitterLH	CSoundEmitterLH::vfunc_3	624	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(625v620)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/00aabf60.cpp	gapscan/boundary
 00aac5e0	CSoundEmitterLH	GetActiveSoundInfo	384	parked	DIFFER(130v136)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00aac5e0.cpp	original
 00aad340	CWaveFile	ConvertSamplingRate	656	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(606v584)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00aad340.test.cpp	original
-00aad650	CWaveLoader	LoadWaveFile	1840	parked	DIFFER(1575v1575)	123	rebuild/candidates/manual/pending/2026-11-08_linux_hand856/differ/00aad650.cpp	original
+00aad650	CWaveLoader	LoadWaveFile	1840	reserved (pass22, parked)	DIFFER(1575v1575)	123	rebuild/candidates/manual/pending/2026-11-08_linux_hand856/differ/00aad650.cpp	original
 00aaf1e0	C3DKeyframe	InitialiseFromMatrix	944	parked	DIFFER(839v904)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00aaf1e0.cpp	original
 00ab1740	C3DAnimationBuilder	AssignAnimation	592	parked	DIFFER(605v592)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00ab1740.cpp	original
 00ab1990	C3DAnimationBuilder	BuildBoneInfoTree	816	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand689/differ/00ab1990.cpp	original
@@ -1087,7 +1087,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00acd960	QuadricOptimiserInternals::COptimisedPrimitive	Optimise	384	parked	DIFFER(383v383)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/00acd960.cpp	original
 00acdb80	QuadricOptimiserInternals::COptimisedPrimitive	COptimisedPrimitive	2688	reserved (acctC, parked)		0	rebuild/candidates/manual/pending/2026-11-05_linux_hand785/differ/00acdb80.cpp	original
 00ace600	QuadricOptimiserInternals::COptimisedMesh	COptimisedMesh	1824	parked		0	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00ace600.cpp	original
-00ad7260	_global	Catch@0040d88c	96	never worked		0		original
+00ad7260	_global	Catch@0040d88c	96	reserved (pass22, never_worked)		0		original
 00ad8af0	_global	TreeNodes_HaveIntersection	320	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand629/differ/00ad8af0.cpp	original
 00ad9980	CVertexGroupBlockList	FilterBySubset	416	parked	DIFFER(415v416)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00ad9980.cpp	original
 00add5c0	_global	FUN_00add5c0	16	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand767/differ/00add5c0.test.cpp	gapscan/boundary
@@ -1097,17 +1097,17 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00adf960	CParticleSimulation	SatisfyDistanceConstraints	768	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(764v766)	4	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00adf960.test.cpp	original
 00ae1320	CParticleProgram	ClingToMesh	688	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(681v681)	4	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00ae1320.test.cpp	original
 00ae1a90	CParticleProgram	ExecuteProgram	304	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand681/differ/00ae1a90.cpp	original
-00ae1bc0	CParticleSimulation	ReadFromFile	1168	parked	DIFFER(1158v1158)	3	rebuild/candidates/manual/pending/2026-11-12_linux_handQ24/differ/00ae1bc0.cpp	original
+00ae1bc0	CParticleSimulation	ReadFromFile	1168	reserved (pass22, parked)	DIFFER(1158v1158)	3	rebuild/candidates/manual/pending/2026-11-12_linux_handQ24/differ/00ae1bc0.cpp	original
 00ae29d0	CParticleProgram	SetupSimulation	736	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(726v726)	4	rebuild/candidates/manual/pending/2026-11-04_linux_hand748/differ/00ae29d0.test.cpp	original
 00ae2e20	CParticleProgram	OptimiseSpringOrder	1296	parked	DIFFER(1389v1293)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ae2e20.cpp	original
-00ae3510	_global	Unwind@00fbdab0	64	never worked		0		original
+00ae3510	_global	Unwind@00fbdab0	64	reserved (pass22, never_worked)		0		original
 00ae3c30	CParticleProgram	ReadFromFile	2944	reserved (acctC, parked)	DIFFER(2278v2310)	1	rebuild/candidates/manual/pending/2026-11-08_linux_hand850/differ/00ae3c30.cpp	original
 00aede60	CParticleEmitter	SetOrientation	800	parked	DIFFER(796v796)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00aede60.cpp	original
 00aeeba0	CParticleEmitter	StartFrame	928	parked	DIFFER(890v890)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00aeeba0.cpp	original
 00af2200	vector<EWeaponClass	_Umove<EWeaponClass*>	80	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00af2200.cpp	original
 00af2640	NParticleEngine::CPSCBase	GetCurrentPosition	320	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand592/differ/00af2640.cpp	original
-00af7b00	_global	Unwind@00fbdab0	64	never worked		0		original
-00af7c50	_global	Unwind@00fbdab0	48	never worked		0		original
+00af7b00	_global	Unwind@00fbdab0	64	reserved (pass22, never_worked)		0		original
+00af7c50	_global	Unwind@00fbdab0	48	reserved (pass22, never_worked)		0		original
 00afae50	NParticleEngine::CPSCRenderSprite	AddToBoundingSphere	2416	parked	DIFFER(2406v2405)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand738/differ/00afae50.test.cpp	gapscan/boundary
 00b012e0	NParticleEngine::CPSCRenderMesh	CPSCRenderMesh	1296	not plain C++ (CRT / hand-written asm / LTCG)		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00b012e0.cpp	original
 00b01900	NParticleEngine::CPSCRenderMesh	AddToBoundingSphere	3792	reserved (acctC, parked)	DIFFER(3755v3777)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand740/differ/00b01900.cpp	gapscan/boundary
@@ -1117,7 +1117,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b079b0	CPSCSingleSprite	DatabaseSerialise	2032	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(2034v2032)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00b079b0.cpp	original
 00b08530	CPSCSingleSprite	Update	656	parked	DIFFER(664v654)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00b08530.cpp	original
 00b087c0	NParticleEngine::CPSCSingleSprite	PreparePrimitives	2976	reserved (acctC, parked)	DIFFER(2951v2967)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand737/differ/00b087c0.cpp	gapscan/boundary
-00b0cad0	NParticleEngine::CPSCUpdateNormal	UpdateAddParticle	2192	parked	DIFFER(2191v2191)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand739/differ/00b0cad0.test.cpp	gapscan/boundary
+00b0cad0	NParticleEngine::CPSCUpdateNormal	UpdateAddParticle	2192	reserved (pass22, parked)	DIFFER(2191v2191)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand739/differ/00b0cad0.test.cpp	gapscan/boundary
 00b0d360	NParticleEngine::CPSCUpdateNormal	DatabaseSerialise	2240	parked	DIFFER(2242v2240)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand739/differ/00b0d360.test.cpp	gapscan/boundary
 00b0dc20	NParticleEngine::CPSCUpdateNormal	Update	5616	parked	DIFFER(5601v5602)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00b0dc20.cpp	gapscan/boundary
 00b103f0	NParticleEngine::CPSCEmitterGeneric	CPSCEmitterGeneric	1472	not plain C++ (CRT / hand-written asm / LTCG)		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00b103f0.cpp	original
@@ -1129,7 +1129,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b17410	NParticleEngine::CPSCOrbit	NParticleEngine::CPSCOrbit::vfunc_10	944	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/differ/00b17410.cpp	gapscan/boundary
 00b17bd0	NParticleEngine::CPSCAttractor	InterpolateTo	928	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b17bd0.cpp	gapscan/boundary
 00b19c60	NParticleEngine::CPSCLight	PreparePrimitives	2528	parked	DIFFER(2546v2516)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand737/differ/00b19c60.test.cpp	gapscan/boundary
-00b1a870	CPSCLight	DatabaseSerialise	1312	parked	DIFFER(1310v1310)	3	rebuild/candidates/manual/pending/2026-11-12_linux_handQ26/differ/00b1a870.cpp	original
+00b1a870	CPSCLight	DatabaseSerialise	1312	reserved (pass22, parked)	DIFFER(1310v1310)	3	rebuild/candidates/manual/pending/2026-11-12_linux_handQ26/differ/00b1a870.cpp	original
 00b1bc80	NParticleEngine::CPSCDecalRenderer	GetComponentCost	288	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b1bc80.cpp	gapscan/boundary
 00b1c880	NParticleEngine::CPSCDecalRenderer	ReadBinary	3280	reserved (acctC, parked)	DIFFER(3266v3266)	2	rebuild/candidates/manual/pending/2026-11-03_linux_hand724/round2/differ/00b1c880.cpp	gapscan/boundary
 00b1d550	CPSCDecalRenderer	DecalCollides	576	not plain C++ (CRT / hand-written asm / LTCG)		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00b1d550.cpp	original
@@ -1155,7 +1155,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b30610	CEngineCamera	ClipBox	720	parked	DIFFER(710v710)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00b30610.cpp	original
 00b30b50	CEngineCamera	SetCameraState	1552	parked	DIFFER(3v1499)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00b30b50.cpp	original
 00b31160	CEngineCamera	ProcessDebugScript	896	parked	DIFFER(891v886)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand284/differ/00b31160.cpp	original
-00b32010	_global	Catch@0040d88c	144	never worked		0		original
+00b32010	_global	Catch@0040d88c	144	reserved (pass22, never_worked)		0		original
 00b328c0	CEnginePrimitiveRenderer	?LoadNewScene@CEnginePrimitiveRenderer@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z	528	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(529v517)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b328c0.cpp	original
 00b33390	CEnginePrimitiveRenderer	ProcessPrimitiveStats	400	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand600/differ/00b33390.cpp	original
 00b33b50	CEnginePrimitiveRenderer	CEnginePrimitiveRenderer	9488	reserved (acctC, never_worked)		0		original
@@ -1174,14 +1174,14 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b45720	CEngineLightingManager	CalcSWLighting	800	parked	DIFFER(787v787)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00b45720.cpp	original
 00b45a40	CEngineLightingManager	CalcSWLightingNoClipSeparateMainLight	688	parked	DIFFER(681v683)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00b45a40.cpp	original
 00b45cf0	CEngineLightingManager	CalcSWLightingNoClip	704	parked	DIFFER(697v697)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00b45cf0.cpp	original
-00b46c80	CEngineLightingManager	UpdateGlobalLightingStates	1536	parked	DIFFER(1531v1531)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand721/round3/probe/best_00b46c80.cpp	original
+00b46c80	CEngineLightingManager	UpdateGlobalLightingStates	1536	reserved (pass22, parked)	DIFFER(1531v1531)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand721/round3/probe/best_00b46c80.cpp	original
 00b47390	CEngineLightingManager	SetupShaderSpotLight	672	parked	DIFFER(665v665)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00b47390.cpp	original
 00b47bc0	CEngineLightingManager	UpdateShadowedSpotLights	1040	parked	DIFFER(1028v1028)	2	rebuild/candidates/manual/pending/2026-11-03_linux_hand721/round3/probe/00b47bc0.cpp	original
-00b484b0	CEngineLightingManager	FrameStart	1840	parked	DIFFER(1177v1177)	2	rebuild/candidates/manual/pending/2026-11-03_linux_hand721/round3/probe/00b484b0.cpp	original
+00b484b0	CEngineLightingManager	FrameStart	1840	reserved (pass22, parked)	DIFFER(1177v1177)	2	rebuild/candidates/manual/pending/2026-11-03_linux_hand721/round3/probe/00b484b0.cpp	original
 00b4a700	CEnginePrimitiveRenderer2D	?Render@CEnginePrimitiveRenderer2D@@UAEXABVCEngineComponentRenderParams@@@Z	928	parked	DIFFER(926v926)	4	rebuild/candidates/manual/pending/2026-11-12_linux_handQ24/differ/00b4a700.cpp	original
 00b4b8b0	CEngineShadowRenderer	CalcLocalWorldToBaseShadowSpace	432	parked	DIFFER(421v421)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00b4b8b0.cpp	original
-00b4bcc0	CEngineShadowRenderer	CalcClipVolume	2192	parked	DIFFER(2179v2179)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand727/src/00b4bcc0.cpp	original
-00b4c550	CEngineShadowRenderer	CalcSpotLightClipVolume	2256	parked	DIFFER(2242v2242)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand727/src/00b4c550.cpp	original
+00b4bcc0	CEngineShadowRenderer	CalcClipVolume	2192	reserved (pass22, parked)	DIFFER(2179v2179)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand727/src/00b4bcc0.cpp	original
+00b4c550	CEngineShadowRenderer	CalcSpotLightClipVolume	2256	reserved (pass22, parked)	DIFFER(2242v2242)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand727/src/00b4c550.cpp	original
 00b4d370	CEngineShadowRenderer	UpdateShadowSpace	7184	reserved (acctC, parked)	DIFFER(7160v7176)	2	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00b4d370.cpp	original
 00b4ef80	CEngineShadowRenderer	UpdateSpotLightShadowSpace	1040	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b4ef80.cpp	original
 00b4f8e0	CEngineShadowRenderer	InitialiseTextures	816	parked	DIFFER(805v811)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00b4f8e0.cpp	original
@@ -1206,14 +1206,14 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b6df50	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	64	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00b6df50.test.cpp	original
 00b6df90	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	64	parked	DIFFER(43v54)	1	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00b6df90.test.cpp	original
 00b6dfd0	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	64	parked	DIFFER(43v54)	1	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00b6dfd0.cpp	original
-00b6e890	CEngineWaterRenderer	RenderBumpMap	1376	parked	DIFFER(1371v1371)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00b6e890.cpp	original
+00b6e890	CEngineWaterRenderer	RenderBumpMap	1376	reserved (pass22, parked)	DIFFER(1371v1371)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/00b6e890.cpp	original
 00b6edf0	CEngineWaterRenderer	BuildConstantBuffers	3152	reserved (acctC, parked)	DIFFER(3144v3144)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/differ/00b6edf0.cpp	original
-00b6fa40	CEngineWaterRenderer	RenderSeaMidground	2032	parked	DIFFER(2019v2019)	2	rebuild/candidates/manual/pending/2026-11-09_linux_hand892/differ/00b6fa40.cpp	original
-00b70230	CEngineWaterRenderer	RenderSeaBackground	2144	parked	DIFFER(2138v2138)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/work/r2ca_00b70230.cpp	original
+00b6fa40	CEngineWaterRenderer	RenderSeaMidground	2032	reserved (pass22, parked)	DIFFER(2019v2019)	2	rebuild/candidates/manual/pending/2026-11-09_linux_hand892/differ/00b6fa40.cpp	original
+00b70230	CEngineWaterRenderer	RenderSeaBackground	2144	reserved (pass22, parked)	DIFFER(2138v2138)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/work/r2ca_00b70230.cpp	original
 00b70a90	CEngineWaterRenderer	RenderEnvironmentMap	3568	reserved (acctC, parked)	DIFFER(3567v3567)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/differ/00b70a90.cpp	original
 00b73760	CEngineWaterRenderer	CEngineWaterRenderer	6800	reserved (acctC, never_worked)		0		original
 00b751f0	CEngineWaterRenderer	RenderIceForeground	2736	reserved (acctC, parked)	DIFFER(2722v2722)	2	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/differ/00b751f0.cpp	original
-00b761d0	CEngineWaterRenderer	RenderForeground	2544	parked	DIFFER(2531v2531)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/work/r2ca_00b761d0.cpp	original
+00b761d0	CEngineWaterRenderer	RenderForeground	2544	reserved (pass22, parked)	DIFFER(2531v2531)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/work/r2ca_00b761d0.cpp	original
 00b77370	CEngineWaterRenderer	RenderSeaReflectiveForeground	2736	reserved (acctC, parked)	DIFFER(2798v2734)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round2/differ/00b77370.cpp	original
 00b783f0	CEngineWaterRenderer	?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	9360	reserved (acctC, parked)	DIFFER(9343v9343)	2	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00b783f0.cpp	original
 00b80ce0	CEngineClothSimulationMeshBase	CEngineClothSimulationMeshBase::GetDeltaTransform	688	parked	DIFFER(682v682)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00b80ce0.cpp	original
@@ -1224,7 +1224,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b8c830	CEngineEnvironment	CEngineEnvironment::FrameStart	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b8c830.cpp	original
 00b8ccf0	CEngineEnvironment	CEngineEnvironment::WorldFrameUpdate	496	parked	DIFFER(491v487)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00b8ccf0.cpp	original
 00b8d0d0	CEngineOcclusionManager	CEngineOcclusionManager::InitializeOcclusionBuffers	432	parked	DIFFER(435v429)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00b8d0d0.cpp	original
-00b8dcd0	CEngineOcclusionManager	SelectFlareTestVertexBuffer	640	never worked		0		original
+00b8dcd0	CEngineOcclusionManager	SelectFlareTestVertexBuffer	640	reserved (pass22, never_worked)		0		original
 00b905a0	CEnginePrimitiveManagerOcclusionBase	PrepareOcclusionTest	288	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(272v280)	2	rebuild/candidates/manual/pending/2026-10-20_linux_hand222/differ/00b905a0.cpp	original
 00b92950	CEngineSceneGrid	RenderCellClippedAndCheckVisibility	720	parked	DIFFER(719v707)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00b92950.cpp	original
 00b93b30	CEngineSceneMap	AddPrimitive	400	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(282v395)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00b93b30.cpp	original
@@ -1232,7 +1232,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b947e0	CEngineSceneMap	Update	256	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(251v246)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand747/differ/00b947e0.test.cpp	original
 00b94bf0	CEngineScene	GetMapAt	320	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(295v311)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b94bf0.cpp	original
 00b97c10	_global	std_map_find_or_insert	160	parked	DIFFER(161v150)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand956/differ/00b97c10.cpp	original
-00b98e10	CEnginePrimitiveManagerRepeatedStaticMeshes	ClipSubSectionsSIMD	672	never worked		0		original
+00b98e10	CEnginePrimitiveManagerRepeatedStaticMeshes	ClipSubSectionsSIMD	672	reserved (pass22, never_worked)		0		original
 00b99300	CEnginePrimitiveManagerRepeatedStaticMeshes	ProcessLightingSW	880	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(871v871)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00b99300.cpp	original
 00b9ac30	CEnginePrimitiveManagerRepeatedStaticMeshes	CEnginePrimitiveManagerRepeatedStaticMeshes::RenderSubPrimitive	4240	reserved (acctC, never_worked)		0		original
 00b9d220	CEngineInternalPrimitive2DStaticMesh	CEngineInternalPrimitive2DStaticMesh::CalcInterpolatedObjectTransform	1072	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b9d220.cpp	original
@@ -1240,7 +1240,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b9e120	CEngineInternalPrimitive2DStaticMesh	Initialise	368	parked	DIFFER(365v365)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand614/differ/00b9e120.cpp	original
 00b9e5b0	_global	RenderMeshPrimitiveBlocksIndexBuffer	416	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand600/differ/00b9e5b0.cpp	original
 00ba1140	CEnginePrimitiveManagerStaticMeshesBase	CEnginePrimitiveManagerStaticMeshesBase::RenderPrimitive	28	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(2372v2344)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/differ/00ba1140.cpp	original
-00ba115c	CEnginePrimitiveManagerStaticMeshesBase	RenderPrimitive	2324	never worked		0		original
+00ba115c	CEnginePrimitiveManagerStaticMeshesBase	RenderPrimitive	2324	reserved (pass22, never_worked)		0		original
 00ba2350	CEnginePrimitiveManagerStaticMeshesBase	SetupRenderModeShadersAndConstants	9632	reserved (acctC, parked)	DIFFER(9500v9632)	2	rebuild/candidates/manual/pending/2026-11-13_acctB_parked/rows/parked/00ba2350.cpp	original
 00ba4c10	CEnginePrimitiveManagerStaticMeshesBase	?PreloadPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@UAE_NAAVCEngineInternalPrimitiv	1168	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00ba4c10.cpp	original
 00ba50a0	CEnginePrimitiveManagerStaticMeshesBase	SetupStaticBlocks	448	parked	DIFFER(441v441)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00ba50a0.cpp	original
@@ -1262,9 +1262,9 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00bbe090	CEnginePrimitiveManagerParticleSpriteTrailGroup	RenderSingleSpriteTrail	2464	parked	DIFFER(2432v2464)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand742/differ/00bbe090.test.cpp	original
 00bc04f0	CEnginePrimitiveManagerParticleSpriteGroup	RenderSingleSprite	3760	reserved (acctC, parked)	DIFFER(3786v3751)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand723/round3/differ/00bc04f0.cpp	original
 00bc3f30	CEnginePrimitiveManagerParticleLineGroup	RenderSubPrimitive	13	parked	DIFFER(3272v3357)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand742/differ/00bc3f30.cpp	original
-00bc3f3d	CEnginePrimitiveManagerParticleLineGroup	RenderSubPrimitive	3347	never worked		0		original
+00bc3f3d	CEnginePrimitiveManagerParticleLineGroup	RenderSubPrimitive	3347	reserved (pass22, never_worked)		0		original
 00bc6930	CEnginePrimitiveManagerText	CEnginePrimitiveManagerText::RenderPrimitive	544	parked	DIFFER(522v530)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00bc6930.cpp	original
-00bc6db0	CEnginePrimitiveManagerText	?RenderSubPrimitive@CEnginePrimitiveManagerText@@UAEXAAVCEngineSubPrimitiveBase@@W4ERender	2224	parked	DIFFER(2217v2217)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand784/differ/00bc6db0.test.cpp	original
+00bc6db0	CEnginePrimitiveManagerText	?RenderSubPrimitive@CEnginePrimitiveManagerText@@UAEXAAVCEngineSubPrimitiveBase@@W4ERender	2224	reserved (pass22, parked)	DIFFER(2217v2217)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand784/differ/00bc6db0.test.cpp	original
 00bc7660	CEnginePrimitiveManagerText	CEnginePrimitiveManagerText::Render2DPrimitive	704	parked	DIFFER(695v692)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/00bc7660.cpp	original
 00bc8a60	CEnginePrimitiveManagerLines	RenderLine	3424	reserved (acctC, parked)	DIFFER(3323v3416)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/00bc8a60.cpp	original
 00bc9b30	CEngineTreeFilerBase	FindNode	80	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand623/differ/00bc9b30.cpp	original
@@ -1280,7 +1280,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00bd5c90	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveToShadowBuffer	2944	reserved (acctC, parked)		0	rebuild/candidates/manual/pending/2026-11-08_linux_hand889/differ/00bd5c90.cpp	original
 00bd6810	CEnginePrimitiveManagerAnimatedMeshesBase	RenderDebugBoneHierarchy	896	parked	DIFFER(868v894)	3	rebuild/candidates/manual/pending/2026-10-22_linux_hand285/differ/00bd6810.cpp	original
 00bd71b0	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitive	28	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(2121v2116)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/differ/00bd71b0.cpp	original
-00bd71cc	CEnginePrimitiveManagerAnimatedMeshesBase	RenderPrimitive	2100	never worked		0		original
+00bd71cc	CEnginePrimitiveManagerAnimatedMeshesBase	RenderPrimitive	2100	reserved (pass22, never_worked)		0		original
 00be0eb0	CEnginePrimitiveManager2DParticleGroup	RenderSubPrimitive	2896	reserved (acctC, parked)	DIFFER(2889v2889)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand742/differ/00be0eb0.cpp	original
 00be2120	CEngineInternalPrimitive2DViewport	CEngineInternalPrimitive2DViewport::ClearChildPrimitive	112	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(97v97)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00be2120.cpp	original
 00be2b70	_global	BuildBlendingTables_ComputeBlendFactor	352	parked	DIFFER(343v343)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand531/differ/00be2b70.cpp	original
@@ -1291,20 +1291,20 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00be4fe0	CWaterPatchTesselatorBase<CTVertexSeaBackground>	TesselateEdge	2416	parked		0	rebuild/candidates/manual/pending/2026-11-05_linux_hand785/differ/00be4fe0.test.cpp	original
 00be6880	CLandscapeBackgroundPatch	BuildDefaultSection	1776	parked	DIFFER(19v1776)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00be6880.cpp	original
 00be95f0	CEngineWaterSettings	UpdateWorldFrameState	816	parked	DIFFER(811v808)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00be95f0.cpp	original
-00beae50	CWaterPatchMesh	Load	1600	parked	DIFFER(1592v1592)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand779/differ/00beae50.test.cpp	original
+00beae50	CWaterPatchMesh	Load	1600	reserved (pass22, parked)	DIFFER(1592v1592)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand779/differ/00beae50.test.cpp	original
 00beb6c0	_global	Interpolate_Quaternion_Scale_Matrix	992	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand569/differ/00beb6c0.cpp	original
 00bebca0	CEnginePrimitiveManagerMeshBase	PreloadReflectionTexture	496	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand675/differ/00bebca0.cpp	original
 00becde0	CRandomAppearanceMorph	CRandomAppearanceMorph::UpdateMorphArray	560	parked	DIFFER(340v346)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00becde0.cpp	original
 00bee070	_global	__pop_heap<pair<long,CCompositeSurfaceInfo> >	208	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(206v206)	1	rebuild/candidates/manual/pending/2026-10-19_linux_hand194/differ/00bee070.cpp	original
-00befd90	CEnginePrimitiveRenderUtil	SetupOutlineSmoothStencilStates	1104	parked	DIFFER(1100v1100)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00befd90.cpp	original
+00befd90	CEnginePrimitiveRenderUtil	SetupOutlineSmoothStencilStates	1104	reserved (pass22, parked)	DIFFER(1100v1100)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00befd90.cpp	original
 00bf0740	CEnginePrimitiveRenderUtil	SetupOutlineStencilStates	992	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand648/differ/00bf0740.cpp	original
-00bf0b20	CEnginePrimitiveRenderUtil	SetupOutlineStencilStates	1296	parked	DIFFER(1290v1290)	3	rebuild/candidates/manual/pending/2026-11-12_linux_handQ25/differ/00bf0b20.cpp	original
+00bf0b20	CEnginePrimitiveRenderUtil	SetupOutlineStencilStates	1296	reserved (pass22, parked)	DIFFER(1290v1290)	3	rebuild/candidates/manual/pending/2026-11-12_linux_handQ25/differ/00bf0b20.cpp	original
 00bf1ee0	CEnginePrimitiveRenderUtil	SetupOverlayAlphaBlendingStates	864	parked	DIFFER(837v855)	1	rebuild/candidates/manual/pending/2026-10-22_linux_hand286/differ/00bf1ee0.cpp	original
 00bf2240	CEnginePrimitiveRenderUtil	SetupOutlineSmoothFillStates	1600	parked	DIFFER(1595v1589)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand317/differ/00bf2240.cpp	original
 00bf2980	_gapscan	sub_00bf2980	96	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand493/differ/00bf2980.cpp	gapscan/boundary
 00bf2b50	CEngineTreeFilerBase	ConvertListToTree	688	parked	DIFFER(732v682)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00bf2b50.cpp	original
 00bf32b0	CEngineDynamic3DResourceManager<CEngineDynamic3DResource<CVertexBufferWin32	ReleaseResources	208	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand466/differ/00bf32b0.test.cpp	original
-00bf7bc0	CEngineLandscapePatch	DebugCalcInForgroundRange	560	never worked		0		original
+00bf7bc0	CEngineLandscapePatch	DebugCalcInForgroundRange	560	reserved (pass22, never_worked)		0		original
 00bfa2a0	CLocalDetailPrimitiveRepeatedMesh	Load	1536	parked	DIFFER(93v1533)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00bfa2a0.cpp	original
 00bfad90	CLocalDetailPrimitiveMeshZSpriteBatch	RenderUpdate	1152	parked	DIFFER(18v1151)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00bfad90.cpp	original
 00bfd7c0	CEngineWaterBackgroundSubPatch	Load	1232	parked	DIFFER(1203v1231)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00bfd7c0.cpp	original
@@ -1313,7 +1313,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c0af90	_gapscan	sub_00c0af90	208	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00c0af90.cpp	gapscan/boundary
 00c0b570	CAngleInterpolator	SetTarget	576	parked	DIFFER(417v435)	3	rebuild/candidates/manual/pending/2026-10-21_linux_hand265/differ/00c0b570.cpp	original
 00c0b7b0	_global	AnimationCurve_UpdateWithDelta	208	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand431/differ/00c0b7b0.cpp	original
-00c0bf9b	_global	CCharString_CopyRange_FromOffset	69	never worked		0		original
+00c0bf9b	_global	CCharString_CopyRange_FromOffset	69	reserved (pass22, never_worked)		0		original
 00c11230	CSoundEventManager	CheckExisting	256	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand633/differ/00c11230.cpp	original
 00c11520	_global	Inventory_ProcessNavigationItem	176	parked	DIFFER(163v163)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00c11520.cpp	original
 00c11700	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHe	16	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand767/differ/00c11700.cpp	original
@@ -1328,27 +1328,27 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c20580	CSoundPlayParameterOverride	ApplyTo	352	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand595/differ/00c20580.cpp	original
 00c20720	CSoundEvent	CheckState	48	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand434/differ/00c20720.cpp	original
 00c213c0	_global	Thiscall_CreatureOpinionUpdate	416	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand601/differ/00c213c0.cpp	original
-00c26260	_global	Catch@0040d959	32	never worked		0		original
+00c26260	_global	Catch@0040d959	32	reserved (pass22, never_worked)		0		original
 00c271f0	_global	CTCInventory_OnItemEquippedHelper	848	reserved (acctC, never_worked)		0		original
 00c28380	CHandleBasedMemoryPool	GetPointerFromHandle	32	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand520/held/00c28380.cpp	original
 00c298d0	std::vector<CHandleBasedMemoryPool::CHandleInfo>	_Insert_n	352	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand597/differ/00c298d0.cpp	original
 00c29a30	_global	Catch@00c29a30	12	never worked		0		original
-00c29a3c	_global	Catch@00c29a3c	180	never worked		0		original
-00c29dc0	_gapscan	sub_00c29dc0	240	never worked		0		gapscan/boundary
+00c29a3c	_global	Catch@00c29a3c	180	reserved (pass22, never_worked)		0		original
+00c29dc0	_gapscan	sub_00c29dc0	240	reserved (pass22, never_worked)		0		gapscan/boundary
 00c2cbd0	_global	CQ_GuildTrainingPreMeleeScript_Initialize	144	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand626/differ/00c2cbd0.cpp	original
 00c2d9b0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHe	16	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand767/differ/00c2d9b0.test.cpp	original
 00c2da20	CLiOnHeAdSegmentReader	CLiOnHeAdSegmentReader	448	parked	DIFFER(443v448)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00c2da20.cpp	original
-00c32fa0	_global	Catch@0042ae0a	32	never worked		0		original
+00c32fa0	_global	Catch@0042ae0a	32	reserved (pass22, never_worked)		0		original
 00c35290	_gapscan	sub_00c35290	224	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand505/differ/00c35290.cpp	gapscan/boundary
 00c371c0	_global	CTCTavernGame_OnStateUpdate	256	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand505/differ/00c371c0.cpp	original
 00c3a7d0	CRampedParam_00c3a8f0	Advance	288	parked	DIFFER(272v273)	6	rebuild/candidates/manual/pending/2026-11-04_linux_hand768/differ/00c3a7d0.cpp	original
 00c3da60	CCombatActionManager	CreateEnvironmentCombatAction	288	parked	DIFFER(261v282)	3	rebuild/candidates/manual/pending/2026-10-20_linux_hand231/differ/00c3da60.cpp	original
-00c3dfd0	CTCHeroStats	CTCHeroStats::InitializeVectorArrays	656	never worked		0		original
+00c3dfd0	CTCHeroStats	CTCHeroStats::InitializeVectorArrays	656	reserved (pass22, never_worked)		0		original
 00c3f800	CTCHeroStats	CTCHeroStats::InitializeActorArrays	368	parked	DIFFER(330v356)	3	rebuild/candidates/manual/pending/2026-10-21_linux_hand252/differ/00c3f800.cpp	original
 00c3f9d0	CTCHeroStats	CTCHeroStats::InitializeCombatEnvironment	848	parked	DIFFER(836v848)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand769/differ/00c3f9d0.cpp	original
 00c40590	_global	AudioLib_NormalizeOrientationFrame_00c40590	192	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(192v192)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/differ/00c40590.cpp	original
 00c40d10	CEffectOwner_00c40750	CommitProperties	272	parked	DIFFER(252v272)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand774/differ/00c40d10.test.cpp	original
-00c41060	CTCHeroStats	CTCHeroStats::SetupCharacterStateInitial	624	never worked		0		original
+00c41060	CTCHeroStats	CTCHeroStats::SetupCharacterStateInitial	624	reserved (pass22, never_worked)		0		original
 00c41fb0	CCombatant	CCombatant::ComputeDerivedCombatStats	1584	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(1531v1570)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00c41fb0.cpp	original
 00c425e0	_global	Hero_ProcessExperienceBlockParry	224	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand438/differ/00c425e0.cpp	original
 00c44090	_gapscan	sub_00c44090	112	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00c44090.cpp	gapscan/boundary
@@ -1366,10 +1366,10 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c53400	_gapscan	sub_00c53400	16	never worked		0		gapscan/boundary
 00c54c10	CAudioSource	ApplyParameters	656	parked	DIFFER(651v651)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand761/differ/00c54c10.cpp	original
 00c590e0	_gapscan	sub_00c590e0	224	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand632/differ/00c590e0.cpp	gapscan/boundary
-00c5acb0	C3DMeshFileXBoundingBoxChunk	C3DMeshFileXBoundingBoxChunk::LoadData	672	never worked		0		original
+00c5acb0	C3DMeshFileXBoundingBoxChunk	C3DMeshFileXBoundingBoxChunk::LoadData	672	reserved (pass22, never_worked)		0		original
 00c5b7c0	_gapscan	sub_00c5b7c0	1344	parked		0	rebuild/candidates/manual/pending/2026-11-08_linux_hand874/differ/00c5b7c0.cpp	gapscan/boundary
 00c5ca60	_global	CTCHeroStats_UpdateSoundAndVisuals	864	parked	DIFFER(831v858)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand766/differ/00c5ca60.test.cpp	original
-00c5e0c0	_global	Unwind@00fbe57b	112	never worked		0		original
+00c5e0c0	_global	Unwind@00fbe57b	112	reserved (pass22, never_worked)		0		original
 00c5e2c0	_gapscan	sub_00c5e2c0	272	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand605/differ/00c5e2c0.cpp	gapscan/boundary
 00c5e4e0	_gapscan	sub_00c5e4e0	336	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand595/differ/00c5e4e0.cpp	gapscan/boundary
 00c5f6a0	_global	Audio_ExpandADPCM_Mono	336	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand595/differ/00c5f6a0.cpp	original
@@ -1381,7 +1381,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c69a70	NScript::CQ_GuildTrainingSkillScript	NScript::CQ_GuildTrainingSkillScript::AllocateMemory	240	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand342/differ/00c69a70.cpp	original
 00c6ac90	CSoundMixer	MixBlockRamped	48	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(39v38)	2	rebuild/candidates/manual/pending/2026-10-15_linux_hand84/differ/00c6ac90.cpp	original
 00c6ad10	_global	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	96	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand443/differ/00c6ad10.cpp	original
-00c6b050	CTCHeroStats	CTCHeroStats::InitializeAudioEffects	496	never worked		0		original
+00c6b050	CTCHeroStats	CTCHeroStats::InitializeAudioEffects	496	reserved (pass22, never_worked)		0		original
 00c6b260	_global	FloatToLongConvert_Vectorized	320	parked	DIFFER(391v315)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand680/differ/00c6b260.cpp	original
 00c6b9d0	CStateVariableFilter	FilterWithGain	272	parked	DIFFER(269v269)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00c6b9d0.cpp	original
 00c6be60	_global	Audio_ComputeFrequencyResponse	256	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c6be60.cpp	original
@@ -1448,7 +1448,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00d21b40	NScript::CQ_BreakSiegeScript::CBanditSiegeLeader	Main	2976	parked	DIFFER(2982v2965)	5	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d21b40.cpp	gapscan/boundary
 00d24a40	NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh	Main	2416	parked	DIFFER(2440v2403)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d24a40.cpp	gapscan/boundary
 00d29880	NScript::CQ_EndGameScript::CHookCoastTeleporter	Main	11	parked	DIFFER(1274v1319)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand772/differ/00d29880.test.cpp	original
-00d2988b	CHookCoastTeleporter	Main	1317	never worked		0		original
+00d2988b	CHookCoastTeleporter	Main	1317	reserved (pass22, never_worked)		0		original
 00d2d1a0	NScript::CQ_EndGameFocalSitesScript::CBattleMinion	Main	912	parked	DIFFER(556v620)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00d2d1a0.cpp	original
 00d34b30	std::vector<CScriptThing>	_M_fill_insert	480	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand582/differ/00d34b30.cpp	original
 00d3a4a0	NScript::CQ_FireHeartScript::CFH_Prisoner	Main	1152	parked	DIFFER(1140v1140)	87	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d3a4a0.cpp	original
@@ -1487,7 +1487,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00dce230	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember	Main	2592	reserved (acctC, parked)		0	rebuild/candidates/manual/pending/2026-11-05_linux_hand786/differ/00dce230.cpp	original
 00dcfa60	NScript::CQ_OrchardFarmRaidScript	DoCutsceneIfRequired	5200	reserved (acctC, parked)	DIFFER(2451v2412)	2	rebuild/candidates/manual/pending/2026-11-08_linux_hand868/differ/00dcfa60.cpp	gapscan/boundary
 00dd4ad0	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice	Main	3472	parked	DIFFER(3467v3467)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00dd4ad0.cpp	gapscan/boundary
-00dd5a60	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner	Main	2256	parked	DIFFER(2250v2250)	20	rebuild/candidates/manual/pending/2026-11-07_linux_hand832/differ/00dd5a60.cpp	original
+00dd5a60	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner	Main	2256	reserved (pass22, parked)	DIFFER(2250v2250)	20	rebuild/candidates/manual/pending/2026-11-07_linux_hand832/differ/00dd5a60.cpp	original
 00ddae40	NScript::CQ_PrisonRaceScript	Main	1184	parked	DIFFER(1180v1180)	119	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ddae40.cpp	gapscan/boundary
 00ddb720	NScript::CQ_PrisonRaceScript::CPrisonRaceGuard	Main	2160	parked	DIFFER(2150v2158)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand783/differ/00ddb720.test.cpp	original
 00ddd430	NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard	Main	2048	parked	DIFFER(2112v2044)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ddd430.cpp	original
@@ -1520,7 +1520,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00e37e40	NScript::CV_AssassinAttacksScript::CM_AssassinTrigger	Main	1104	parked	DIFFER(1104v1103)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/00e37e40.cpp	original
 00e3bb70	NScript::CV_BordelloScript::CMadame	Main	10160	reserved (acctC, parked)	DIFFER(10085v10149)	12	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00e3bb70.cpp	gapscan/boundary
 00e49020	NScript::CV_BanditTollScript::CTauntingBandit	Main	2096	parked	DIFFER(2276v2084)	2	rebuild/candidates/manual/pending/2026-11-05_linux_hand791/differ/00e49020.test.cpp	original
-00e4aa00	NScript::CV_BanditTollScript::CBanditLeader	Main	1360	parked	DIFFER(1356v1356)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00e4aa00.cpp	original
+00e4aa00	NScript::CV_BanditTollScript::CBanditLeader	Main	1360	reserved (pass22, parked)	DIFFER(1356v1356)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00e4aa00.cpp	original
 00e4b5b0	NScript::CV_BanditTollScript::CTollBandit	Main	10608	reserved (acctC, parked)	DIFFER(10610v10594)	26	rebuild/candidates/manual/pending/2026-11-11_linux_handH40k/differ/00e4b5b0.cpp	gapscan/boundary
 00e4fa20	NScript::CV_BeardyBaldyScript	Main	1760	parked	DIFFER(1763v1756)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand780/differ/00e4fa20.test.cpp	original
 00e50910	NScript::CV_BeardyBaldyScript	WatchForQuestCardConditions	1328	parked	DIFFER(1375v1328)	5	rebuild/candidates/manual/pending/2026-11-07_linux_hand835/differ/00e50910.cpp	original
@@ -1536,7 +1536,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00e7de60	CFisherman	IdleChatter	384	parked	DIFFER(356v372)	1	rebuild/candidates/manual/pending/2026-10-21_linux_hand245/differ/00e7de60.cpp	original
 00e7fd50	NScript::CV_FishingCompetitionScript	RefreshCompetition	784	parked	DIFFER(802v784)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand774/differ/00e7fd50.test.cpp	original
 00e93eb0	NScript::CV_HauntedHouseScript	Main	5328	parked	DIFFER(5173v5321)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e93eb0.cpp	gapscan/boundary
-00e95770	CM_UndeadHere	Main	1152	parked	DIFFER(1144v1144)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00e95770.cpp	original
+00e95770	CM_UndeadHere	Main	1152	reserved (pass22, parked)	DIFFER(1144v1144)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00e95770.cpp	original
 00e96110	CM_QuestControl	Main	1360	parked	DIFFER(1360v1356)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand652/differ/00e96110.cpp	original
 00e97070	NScript::CV_HeroDollsScript::CBS_Teacher	Main	3632	parked	DIFFER(3619v3619)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e97070.cpp	gapscan/boundary
 00e9e420	NScript::CV_IntroductionToTrophiesScript::CBriarRose	Main	5920	parked	DIFFER(5912v5915)	17	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e9e420.cpp	gapscan/boundary
@@ -1586,7 +1586,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00f3cf50	CTriangleStripifier2	CalcSectionPolyMask	688	parked	DIFFER(679v683)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand584/differ/00f3cf50.cpp	original
 00f3d200	CTriangleStripifier2	CheckForReshadedVerts	288	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand580/differ/00f3d200.cpp	original
 00f3d980	CTriangleStripifier2	BuildRings	1952	parked	DIFFER(2301v1947)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/src/00f3d980.cpp	original
-00f3e120	CTriangleStripifier2	FindBestStartVertex	1424	parked	DIFFER(1411v1411)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/src/00f3e120.cpp	original
+00f3e120	CTriangleStripifier2	FindBestStartVertex	1424	reserved (pass22, parked)	DIFFER(1411v1411)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/src/00f3e120.cpp	original
 00f3e6b0	_global	CTriangleStripifier2_ProcessTriangles	928	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand570/differ/00f3e6b0.cpp	original
 00f3ea50	_global	GenerateTriangleListAndStrip	2384	parked	DIFFER(2603v2379)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/src/00f3ea50.cpp	original
 00f3fbe0	CFrameData	ReleaseTexture	24	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ1/differ/00f3fbe0.cpp	original
@@ -1610,8 +1610,8 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 01213bb0	_global	Unwind@01213bb0	24	never worked		0		original
 01213c1a	_global	Unwind@01213c1a	18	never worked		0		original
 01214130	_global	Unwind@01214130	18	never worked		0		original
-01214fe0	_global	Unwind@01214fe0	32	never worked		0		original
-01215000	_global	Unwind@01215000	32	never worked		0		original
+01214fe0	_global	Unwind@01214fe0	32	reserved (pass22, never_worked)		0		original
+01215000	_global	Unwind@01215000	32	reserved (pass22, never_worked)		0		original
 01215080	_global	Unwind@01215080	11	never worked		0		original
 0121508b	_global	Unwind@0121508b	11	never worked		0		original
 01215096	_global	Unwind@01215096	11	never worked		0		original
