@@ -1,0 +1,27 @@
+--- a/rebuild/include/engine/NUISystem_CUIScreenUnitConverter.h
++++ b/rebuild/include/engine/NUISystem_CUIScreenUnitConverter.h
+@@ -29,6 +29,24 @@
+     static float __fastcall GetBackBufferWidth();      // 0x0041CC14
+     static float __fastcall GetBackBufferHeight();     // 0x0041CC2B
+ #endif
++#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_CONVERTXY
++    // Retail opt-in (agentC43, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility): FableWin.pdb ?ConvertX@CUIScreenUnitConverter@NUISystem@@SIMM@Z /
++    // ?ConvertY@CUIScreenUnitConverter@NUISystem@@SIMM@Z, out of line at 0x0052E470 / 0x0052E4D0 (static __fastcall, one float on the
++    // stack; x / ScreenWidth * BackBufferWidth when IsUsingRelativeCoords). Declarations only: the row TU defines them ahead of the row
++    // (same TU in retail), needs FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE for the static data members.
++    static float __fastcall ConvertX(float x);         // 0x0052E470
++    static float __fastcall ConvertY(float y);         // 0x0052E4D0
++#endif
++#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_CONVERTXY_INLINE
++    // Retail opt-in (wfB6, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility; use INSTEAD of
++    // FABLE_RETAIL_CUISCREENUNITCONVERTER_CONVERTXY, which only declares them): FableWin.pdb ?ConvertX@CUIScreenUnitConverter@NUISystem@@SIMM@Z /
++    // ?ConvertY@CUIScreenUnitConverter@NUISystem@@SIMM@Z as inline header functions like GetBackBufferWidth / ConvertVector above
++    // (out-of-line copies 0x0052E470 / 0x0052E4D0). The row calls them (not expanded under optimize("s")) but VC7.1 has read the
++    // bodies: it knows they write no memory, so the def fetches of the next argument are loaded after the call (0x00537B79..0x00537BDB).
++    // With declarations alone the row is 18 bytes longer. Needs FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE (static data).
++    static float __fastcall ConvertX(float x) { if (IsUsingRelativeCoords) return x / ScreenWidth * BackBufferWidth; return x; }    // 0x0052E470 (out-of-line copy)
++    static float __fastcall ConvertY(float y) { if (IsUsingRelativeCoords) return y / ScreenHeight * BackBufferHeight; return y; }  // 0x0052E4D0 (out-of-line copy)
++#endif
+ #ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR
+     // Retail opt-in (chunk 840, row 0x0052EA30 CComponent::ChangePositionDelta): the two out-of-line vector converters, static
+     // __fastcall with a by-value C2DVector argument (user copy ctor, built in its stack slot) and a hidden C2DVector result in ecx.

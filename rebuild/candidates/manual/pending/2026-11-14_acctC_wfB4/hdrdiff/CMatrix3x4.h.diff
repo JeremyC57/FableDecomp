@@ -1,0 +1,66 @@
+--- a/rebuild/include/engine/CMatrix3x4.h
++++ b/rebuild/include/engine/CMatrix3x4.h
+@@ -37,8 +37,13 @@
+     // Retail opt-in (wf1, row 0x00A114B0 CPhysicsMeshObject::SetPositionMatrix): FableWin.pdb ?SetIdentity@CMatrix3x4@@QAEXXZ (inline in
+     // retail, no out-of-line copy): the nine zeros as one chained assignment (retail stores them last to first, E43..E12,
+     // 0x00A114F8..0x00A11512), then the diagonal (E33, E22, E11, 0x00A1151A..0x00A11520). Body only: no layout change.
++#ifdef FABLE_RETAIL_CMATRIX3X4_SETIDENTITY_SEPARATE
++    // Opt-in (row 0x00B8B780): FableWin.pdb ?SetIdentity@CMatrix3x4@@QAEXXZ debug size 106 (43 instructions) = twelve separate stores.
++    FABLE_FORCEINLINE void SetIdentity() { E43=0.0f; E42=0.0f; E41=0.0f; E32=0.0f; E31=0.0f; E23=0.0f; E21=0.0f; E13=0.0f; E12=0.0f; E33=1.0f; E22=1.0f; E11=1.0f; }
++#else
+     FABLE_FORCEINLINE void SetIdentity() { E12=E13=E21=E23=E31=E32=E41=E42=E43=0.0f; E11=E22=E33=1.0f; }
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_CMATRIX3X4_SETSCALE
+     // Retail opt-in (chunk 2030, row 0x00BE9920 the CEngineWaterSettings constructor): FableWin.pdb ?SetScale@CMatrix3x4@@QAEXM@Z (debug
+     // only, inline in release): the nine off-diagonal / translation entries cleared in one chained assignment (stored E43 first) and the
+@@ -414,6 +419,49 @@
+         destination.Z+=E43;
+     }
+ #endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_BILLBOARD
++    // Opt-in (row 0x00B8B780 CEngineBillboardGenerator::RenderBillboard): FableWin.pdb ?SetTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z,
++    // ?SetMultiplyNoTranslation@CMatrix3x4@@QAEXABV1@0@Z and ?GetTranslation@CMatrix3x4@@QBE?AVC3DVector@@XZ, inline (no retail copy).
++    FABLE_FORCEINLINE void SetTranslate(const C3DVector& t) {
++#ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATE_FULL
++        E11=1.0f; E12=0.0f; E13=0.0f; E21=0.0f; E22=1.0f; E23=0.0f; E31=0.0f; E32=0.0f; E33=1.0f;
++#endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATE_IDENTITY
++        // Nested opt-in (agentC22, row 0x00B8B780): FableWin.pdb ?SetTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z is 21 /Od instructions /
++        // 56 bytes = a SetIdentity() call plus the three translation stores (?SetTranslate@CMatrix3x4@@QAEXMMM@Z 18i/48b = the same call
++        // plus three stores of the arguments; ?SetTranslateOnly@CMatrix3x4@@QAEXMMM@Z, the stores alone, 16i/40b).
++        SetIdentity();
++#endif
++        E41=t.X; E42=t.Y; E43=t.Z;
++    }
++    FABLE_FORCEINLINE void SetMultiplyNoTranslation(const CMatrix3x4& a, const CMatrix3x4& b) {
++        E11 = a.E11 * b.E11 + a.E12 * b.E21 + a.E13 * b.E31;
++        E12 = a.E11 * b.E12 + a.E12 * b.E22 + a.E13 * b.E32;
++        E13 = a.E11 * b.E13 + a.E12 * b.E23 + a.E13 * b.E33;
++        E21 = a.E21 * b.E11 + a.E22 * b.E21 + a.E23 * b.E31;
++        E22 = a.E21 * b.E12 + a.E22 * b.E22 + a.E23 * b.E32;
++        E23 = a.E21 * b.E13 + a.E22 * b.E23 + a.E23 * b.E33;
++        E31 = a.E31 * b.E11 + a.E32 * b.E21 + a.E33 * b.E31;
++        E32 = a.E31 * b.E12 + a.E32 * b.E22 + a.E33 * b.E32;
++        E33 = a.E31 * b.E13 + a.E32 * b.E23 + a.E33 * b.E33;
++        E41 = a.E41 * b.E11 + a.E42 * b.E21 + a.E43 * b.E31;
++        E42 = a.E41 * b.E12 + a.E42 * b.E22 + a.E43 * b.E32;
++        E43 = a.E41 * b.E13 + a.E42 * b.E23 + a.E43 * b.E33;
++    }
++#ifdef FABLE_RETAIL_CMATRIX3X4_GETTRANSLATION_NAMED
++    C3DVector GetTranslation() const { C3DVector translation(E41, E42, E43); return translation; }
++#else
++    C3DVector GetTranslation() const { return C3DVector(E41, E42, E43); }
++#endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_POSTSCALE3
++    // FableWin.pdb ?PostScale@CMatrix3x4@@QAEXMMM@Z (inline, debug size 191 = the one-float PostScale): column k scaled by its factor.
++    FABLE_FORCEINLINE void PostScale(float x, float y, float z) {
++        E11*=x; E21*=x; E31*=x; E41*=x;
++        E12*=y; E22*=y; E32*=y; E42*=y;
++        E13*=z; E23*=z; E33*=z; E43*=z;
++    }
++#endif
++#endif
+ #ifdef FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY
+     // Retail opt-in (chunk 794, row 0x007DE710 CTCWallMount::AttachObject): FableWin.pdb ?PostMultiply@CMatrix3x4@@QAEXABV1@@Z (this =
+     // this * matrix; the landed out-of-line copy 0x00C1CF20 gives the k-order sums) and

@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+007021f0	?GetTeleporterRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ	Ego_r.pdb + FableWin.pdb name sets; vland RELOC_NAME warning on matched row 0x005FF190	CTCQuestCard::GetMarkerRegionName (catalog label)

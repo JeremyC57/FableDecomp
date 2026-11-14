@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+005379f5	RELOCATION_MATCH	2102	PASS	30	matched: inline ContainsPoint / ConvertX / ConvertY bodies visible + child C2DBoxF; addmatch done
+00772bb0	RELOCATION_MATCH	2585	PASS	150	matched by successor: placeRH assigned through a named reference + named sum of squares in the inverse (new opt-in); addmatch done
+007de710	RELOCATION_MATCH	2578	PASS	95	matched by successor: named-square inverse opt-in + objectRH assigned through a named reference + named `player` + inline GetPPlayerCharacter (include order); addmatch done
+00875690	DIFFER(726v762)	762	-	17	parked: 2-D points kept in memory in retail; 6 more probes by the successor (C3DVector conversions, by-value return, references to temporaries, pointers: all scalar-replaced); source = prev/differ unchanged
+007db6a0	DIFFER(2556v2556)	2556	-	32	parked: two scratch-register picks; lead measured by successor (a vector-pointer candidate live in the money block gives retail's registers but moves the load; NOTES successor section); source = prev unchanged

@@ -1,0 +1,2 @@
+address	name	evidence
+007021f0	CTCQuestCard::GetTeleporterRegionName	Ego_r.pdb + FableWin.pdb ?GetTeleporterRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ (no GetMarkerRegionName in either PDB); called at 0x005FF3AF / 0x005FF3BB of the matched 0x005FF190; the catalog label CTCQuestCard::GetMarkerRegionName is descriptive

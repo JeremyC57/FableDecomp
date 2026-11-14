@@ -1,0 +1,113 @@
+--- a/rebuild/include/engine/CTCCreatureOpinionOfHero.h
++++ b/rebuild/include/engine/CTCCreatureOpinionOfHero.h
+@@ -24,6 +24,9 @@
+ #include "rebuild_abi.h"
+ #include "engine/CTCBase.h"
+ #include "engine/CDefPointer.h"
++#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_THREATSOURCE
++#include "engine/CIntelligentPointer.h"
++#endif
+ #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_INFORM
+ #include "engine/EOpinionDeedType.h"
+ #endif
+@@ -72,6 +75,13 @@
+ };
+ class COpinionSet {
+ public:
++#ifdef FABLE_RETAIL_COPINIONSET_INDEX
++    // Retail opt-in (wfB5, row 0x006823D0 CTCCreatureOpinionOfHero::FrameUpdate): FableWin.pdb ??ACOpinionSet@@QAEAAMJ@Z /
++    // ??ACOpinionSet@@QBEMJ@Z, the public index operators (no out-of-line copy in Ego_r.pdb or Fable.exe). Retail loads the index
++    // argument before the array base at every site (`mov edx,[esi+8] ; fld [esi+18h] ; mov eax,[ebp+48h]`, 0x006825DE). No layout change.
++    float& operator[](long opinion) { return OpinionValues[opinion]; }
++    float operator[](long opinion) const { return OpinionValues[opinion]; }
++#endif
+     CArray<float> OpinionValues;
+ };
+ #endif
+@@ -211,20 +221,26 @@
+     bool                 GreetedFlag;            // +0x341
+     bool                 HeroOpinionEnemy;       // +0x342
+     bool                 InFindAGuardAndYellForHelp;   // +0x343
++#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_THREATSOURCE
++    // Retail opt-in (agentC24, row 0x006823D0 FrameUpdate): the Ego_r.pdb member type CIntelligentPointer<CThing> (8 bytes; GetPItem
++    // 0x00A01B50 on ebp+0x344, 0x006823E1). Same layout.
++    CIntelligentPointer<CThing> PUnknownThreatOpinionSource;           // +0x344
++#else
+     unsigned long        PUnknownThreatOpinionSource_[2];   // +0x344 CIntelligentPointer<CThing> PUnknownThreatOpinionSource
++#endif
+     long                 FrameLastUpdatedUnknownThreat;     // +0x34c
+ #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_SERIALISE
+ private:
+     void SerialiseFlagMask(CPersistContext& context, const CCharString& name, std::vector<bool>& mask);   // 0x00681BA0
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCCreatureOpinionOfHero) == 0x350);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, LastOpinionReactionFrame) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, PPersonalityDef) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, LastFrameAppliedDeedEffect) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, ForcedAttitude) == 0x33c);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, HeroOpinionEnemy) == 0x342);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, FrameLastUpdatedUnknownThreat) == 0x34c);
++FABLE_STATIC_ASSERT_AT(221, sizeof(CTCCreatureOpinionOfHero) == 0x350);
++FABLE_STATIC_ASSERT_AT(222, offsetof(CTCCreatureOpinionOfHero, LastOpinionReactionFrame) == 0xc);
++FABLE_STATIC_ASSERT_AT(223, offsetof(CTCCreatureOpinionOfHero, PPersonalityDef) == 0x20);
++FABLE_STATIC_ASSERT_AT(224, offsetof(CTCCreatureOpinionOfHero, LastFrameAppliedDeedEffect) == 0x58);
++FABLE_STATIC_ASSERT_AT(225, offsetof(CTCCreatureOpinionOfHero, ForcedAttitude) == 0x33c);
++FABLE_STATIC_ASSERT_AT(226, offsetof(CTCCreatureOpinionOfHero, HeroOpinionEnemy) == 0x342);
++FABLE_STATIC_ASSERT_AT(227, offsetof(CTCCreatureOpinionOfHero, FrameLastUpdatedUnknownThreat) == 0x34c);
+ #else // flattened Ego_r layout (the landed default, unchanged)
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+@@ -261,29 +277,29 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTCCreatureOpinionOfHero) == 0x350);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, LastOpinionReactionFrame) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, NumberOfTimesHit) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, ToleranceToBeingHitOverride) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, FrameToDecayNumberOfTimesHit) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, PDef_Object) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, PPersonalityDef_Object) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, AttitudeMask) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, ReactionMask) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, DeedMask) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, RelativeOpinion) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, PendingDeeds) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, LastFrameAppliedDeedEffect) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, KnownDeeds) == 0x1c8);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, TransientOffsets) == 0x338);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, ForcedAttitude) == 0x33c);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, InteractedFlag) == 0x340);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, GreetedFlag) == 0x341);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, HeroOpinionEnemy) == 0x342);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, InFindAGuardAndYellForHelp) == 0x343);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, PUnknownThreatOpinionSource) == 0x344);
+-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, FrameLastUpdatedUnknownThreat) == 0x34c);
++FABLE_STATIC_ASSERT_AT(264, sizeof(CTCCreatureOpinionOfHero) == 0x350);
++FABLE_STATIC_ASSERT_AT(265, offsetof(CTCCreatureOpinionOfHero, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(266, offsetof(CTCCreatureOpinionOfHero, LastOpinionReactionFrame) == 0xc);
++FABLE_STATIC_ASSERT_AT(267, offsetof(CTCCreatureOpinionOfHero, NumberOfTimesHit) == 0x10);
++FABLE_STATIC_ASSERT_AT(268, offsetof(CTCCreatureOpinionOfHero, ToleranceToBeingHitOverride) == 0x14);
++FABLE_STATIC_ASSERT_AT(269, offsetof(CTCCreatureOpinionOfHero, FrameToDecayNumberOfTimesHit) == 0x18);
++FABLE_STATIC_ASSERT_AT(270, offsetof(CTCCreatureOpinionOfHero, PDef_Object) == 0x1c);
++FABLE_STATIC_ASSERT_AT(271, offsetof(CTCCreatureOpinionOfHero, PPersonalityDef_Object) == 0x20);
++FABLE_STATIC_ASSERT_AT(272, offsetof(CTCCreatureOpinionOfHero, AttitudeMask) == 0x24);
++FABLE_STATIC_ASSERT_AT(273, offsetof(CTCCreatureOpinionOfHero, ReactionMask) == 0x30);
++FABLE_STATIC_ASSERT_AT(274, offsetof(CTCCreatureOpinionOfHero, DeedMask) == 0x3c);
++FABLE_STATIC_ASSERT_AT(275, offsetof(CTCCreatureOpinionOfHero, RelativeOpinion) == 0x48);
++FABLE_STATIC_ASSERT_AT(276, offsetof(CTCCreatureOpinionOfHero, PendingDeeds) == 0x54);
++FABLE_STATIC_ASSERT_AT(277, offsetof(CTCCreatureOpinionOfHero, LastFrameAppliedDeedEffect) == 0x58);
++FABLE_STATIC_ASSERT_AT(278, offsetof(CTCCreatureOpinionOfHero, KnownDeeds) == 0x1c8);
++FABLE_STATIC_ASSERT_AT(279, offsetof(CTCCreatureOpinionOfHero, TransientOffsets) == 0x338);
++FABLE_STATIC_ASSERT_AT(280, offsetof(CTCCreatureOpinionOfHero, ForcedAttitude) == 0x33c);
++FABLE_STATIC_ASSERT_AT(281, offsetof(CTCCreatureOpinionOfHero, InteractedFlag) == 0x340);
++FABLE_STATIC_ASSERT_AT(282, offsetof(CTCCreatureOpinionOfHero, GreetedFlag) == 0x341);
++FABLE_STATIC_ASSERT_AT(283, offsetof(CTCCreatureOpinionOfHero, HeroOpinionEnemy) == 0x342);
++FABLE_STATIC_ASSERT_AT(284, offsetof(CTCCreatureOpinionOfHero, InFindAGuardAndYellForHelp) == 0x343);
++FABLE_STATIC_ASSERT_AT(285, offsetof(CTCCreatureOpinionOfHero, PUnknownThreatOpinionSource) == 0x344);
++FABLE_STATIC_ASSERT_AT(286, offsetof(CTCCreatureOpinionOfHero, FrameLastUpdatedUnknownThreat) == 0x34c);
+ 
+ #endif // FABLE_RETAIL_CTCCREATUREOPINIONOFHERO
+ 

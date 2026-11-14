@@ -1,0 +1,7 @@
+address	name	evidence
+00bc9b30	CEngineTreeFilerBase::FindNode	unreferenced out-of-line copy; probe MATCH with FABLE_RETAIL_CENGINETREEFILER_FINDNODE_INDEX; FableWin ?FindNode@CEngineTreeFilerBase@@AAEPAUCNodeHeader@1@PAU21@PAK@Z
+00bc9b80	CEngineTreeFilerBase::FindID	unreferenced out-of-line copy; probe RELOCATION_MATCH; FableWin ?FindID@CEngineTreeFilerBase@@QAEKPAK@Z
+00bc9fb0	CEngineTreeFilerBase::AddKey	unreferenced out-of-line copy; probe RELOCATION_MATCH; FableWin ?AddKey@CEngineTreeFilerBase@@QAEKPAK@Z
+00bca140	CEngineDynamic3DResourceManager<CEngineDynamic3DResource<CVertexBufferWin32,3> >::ReturnResource	unreferenced out-of-line copy; probe RELOCATION_MATCH; FableWin name set
+00bca210	CEngineDynamic3DResourceManager<CEngineDynamic3DResource<CVertexBufferWin32,3> >::GetResource	unreferenced out-of-line copy; probe RELOCATION_MATCH; FableWin name set
+00bca510	CEngineVertexBufferPool::GetBuffer	unreferenced out-of-line copy; probe RELOCATION_MATCH; FableWin ?GetBuffer@CEngineVertexBufferPool@@QAEPAV?$CEngineDynamic3DResource@VCVertexBufferWin32@@$02@@W4EVertexType@@JJKW4EVertexBufferPool@@@Z

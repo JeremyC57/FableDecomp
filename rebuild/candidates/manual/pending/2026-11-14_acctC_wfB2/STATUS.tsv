@@ -1,0 +1,3 @@
+address	grade	bytes	test	grades_used	notes
+00603000	DIFFER(9571v9571)	9571	none	38+45	parked: 303/303 calls, default Reset text, no flag, no diag guard; FITTED loop-entry guards; 6 real hunks at 0x006031D7 / 0x00603C22 / 0x00604B40 (differ/00603000.cpp); the three hunks explained by c2prio traces (NOTES.md)
+005ff190	RELOCATION_MATCH	4176	PASS	7+75	matched (src/005ff190.cpp, test/005ff190.cpp, addmatch done, read-only vland RELOCATION_MATCH PASS); FITTED: four byte-neutral loop-entry tests (coordinator decision); everything else evidenced

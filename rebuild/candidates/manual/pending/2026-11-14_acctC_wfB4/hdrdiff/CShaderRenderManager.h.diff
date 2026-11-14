@@ -1,0 +1,27 @@
+--- a/rebuild/include/engine/CShaderRenderManager.h
++++ b/rebuild/include/engine/CShaderRenderManager.h
+@@ -108,7 +108,15 @@
+     void DrawBuffersIndexed(const CTexture**, unsigned long, unsigned long, unsigned long, CIndexBuffer&, unsigned long, unsigned long, EPrimitiveType);
+     void DrawBuffersIndexed(CVertexBufferWin32&, unsigned long, unsigned long, CIndexBuffer&, unsigned long, unsigned long, EPrimitiveType);
+     void DrawBuffersIndexed(unsigned long, unsigned long, CIndexBuffer&, unsigned long, unsigned long, EPrimitiveType);
++#ifdef FABLE_RETAIL_CSHADERRENDERMANAGER_DRAWNONINDEXED_TEXTURES
++    // Opt-in (chunk 2061, row 0x00BCC800 RenderWeaponTrail): FableWin.pdb
++    // ?DrawBuffersNonIndexed@CShaderRenderManager@@QAEXQAPBVCTexture@@KAAVCVertexBufferWin32@@KKW4EPrimitiveType@@@Z (the texture array
++    // parameter is itself const, `QAPBV`); inline in retail (0x00BCD20E..0x00BCD2A2 expands it). The row defines the body.
++    void DrawBuffersNonIndexed(const CTexture** const textures, unsigned long texture_count, CVertexBufferWin32& vertex_buffer,
++                               unsigned long start_vertex, unsigned long primitive_count, EPrimitiveType primitive_type);
++#else
+     void DrawBuffersNonIndexed(const CTexture**, unsigned long, CVertexBufferWin32&, unsigned long, unsigned long, EPrimitiveType);
++#endif
+     void DrawBuffersNonIndexed(CVertexBufferWin32&, unsigned long, unsigned long, EPrimitiveType);
+     void SetWorldTransform(const CMatrix3x4& matrix);                    // 0x009881F0 ?SetWorldTransform@CShaderRenderManager@@QAEXABVCMatrix3x4@@@Z
+     void ResetWorldTransform();                                          // 0x00988290 ?ResetWorldTransform@CShaderRenderManager@@QAEXXZ
+@@ -308,7 +316,7 @@
+     unsigned long                  UpdateFlags;                          // +0x3d8
+     CArray<CPreTransposedBoneMatrix> BoneMatrices;                       // +0x3dc
+ };
+-FABLE_STATIC_ASSERT(sizeof(CShaderRenderManager) == 0x3e8);
++FABLE_STATIC_ASSERT_AT(311, sizeof(CShaderRenderManager) == 0x3e8);
+ 
+ #ifdef FABLE_RETAIL_CSHADERRENDERMANAGER_INLINE_BLOCKDRAW
+ // Retail opt-in (chunk F2, row 0x00BCFB00 CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveBlocksIndexBuffer): the bodies

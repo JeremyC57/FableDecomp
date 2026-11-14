@@ -3,22 +3,22 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 005ce0e6	MATCHED_STAGED	15910	2026-11-13_acctC_c1a	C1	parked	CTCInventoryStats::CTCInventoryStats::vfunc_86
 00bd3070	OPEN	11288		true length checked by C13: code to ret 8 at 0x00BD5C3A + pad + 18-entry jump table 0x00BD5C40..87	parked	CEnginePrimitiveManagerAnimatedMeshesBase::RenderMeshPrimitive
 0060eeb0	MATCHED_STAGED	10254	2026-11-13_acctC_c14a	C1 -> C4	parked	CTCInventoryMap::ConstructPCMapList
-00ba2350	IN_PROGRESS	9632	2026-11-13_acctC_c19a/open_00ba2350	workflow parked/Fable batch wfB3; C16 -> C17 -> C19 -> C20 (Fable): DIFFER(9376v9632), ~200 grades in all; block-2 shape now retail (alpha read in both arms); with one forced c2 priori	parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
+00ba2350	PARKED	9632	2026-11-14_acctC_wfB3open	after workflow parked/Fable; C16 -> C17 -> C19 -> C20 (Fable): DIFFER(9376v9632), ~200 grades in all; block-2 shape now retail (alpha read in both arms); with one forced c2 priori	parked	CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants
 00b783f0	OPEN	9343	2026-11-13_acctC_c19a/open_00b783f0	C8 -> C13 -> C16: DIFFER(9343v9343), 3 residues; quartet needs exactly 2 dead units before the second SetCommonRenderStates expansion; bool-parameter helper ruled out	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
 005f1b10	MATCHED_STAGED	8383	2026-11-13_acctC_c9a	C5 -> C7 -> C9	parked	CTCInventoryAbilities::ConstructPCMagicList
-0058578b	IN_PROGRESS	8081	2026-11-13_acctC_c23open	workflow parked/Fable batch wfB1; C23 -> C33 -> C35 (Fable): structure now retail (DIFFER 8131v8081; 826 instructions line up under a forced-priority lens); needs top_level above style	parked	CTCInventory::CTCInventory::vfunc_30
+0058578b	PARKED	8081	2026-11-14_acctC_wfB1open	after workflow parked/Fable; C23 -> C33 -> C35 (Fable): structure now retail (DIFFER 8131v8081; 826 instructions line up under a forced-priority lens); needs top_level above style	parked	CTCInventory::CTCInventory::vfunc_30
 00b4d370	OPEN				parked	CEngineShadowRenderer::UpdateShadowSpace
 00601310	MATCHED_STAGED	6931	2026-11-13_acctC_c31a	C23 -> C26 -> C31 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; inferred STLport texts + 16 fitted named locals (review items)	parked	_global::ConstructQuestsScreen_MainMenu
-00b89c30	IN_PROGRESS	6431	2026-11-13_acctC_c22open	workflow parked/Fable batch wfB4; C22: DIFFER(6431v6431), one hunk; asserts/names no effect (acctB ~900 grades on it)	parked	CEngineScreenEffectOutlineGlow::ApplyOutline
+00b89c30	PARKED	6431	2026-11-14_acctC_wfB4/open	after workflow parked/Fable; C22: DIFFER(6431v6431), one hunk; asserts/names no effect (acctB ~900 grades on it)	parked	CEngineScreenEffectOutlineGlow::ApplyOutline
 00b5ca70	OPEN				parked	CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer
 00651b04	MATCHED_STAGED	5126	2026-11-13_acctC_c2a	C2	parked	CDrawAbilityButtons::Draw
 00baa870	PARKED	4600	2026-11-14_acctC_wfA4open	workflow unworked/Opus: DIFFER(4575v4600)	parked	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList
 00bb3e80	MATCHED_STAGED	4540	2026-11-13_acctC_c19a	C2 -> C3 -> C6 -> C8; 11 inferred release asserts (fitted count, review item)	parked	CEngineClothRenderer::RenderClothPrimitive
 00a91640	OPEN				parked	_gapscan::sub_00a91640
-00b8b780	IN_PROGRESS	3921	2026-11-13_acctC_c22open	workflow parked/Fable batch wfB4; C22: DIFFER(3921v3921), 3 operand-order sites left with 2 evidenced asserts; 5 asserts would leave 1 (fitted)	parked	CEngineBillboardGenerator::RenderBillboard
-00ba5260	IN_PROGRESS	4056	2026-11-13_acctC_c19a/open_00ba5260	workflow parked/Fable batch wfB3; RELOCATION_MATCH inside the TU (C19, C20) but the TU needs the real 00ba2350 body; lands with it; test not written	parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
-00bcc800	IN_PROGRESS	3205	2026-11-13_acctC_c22open	workflow parked/Fable batch wfB4; C22: DIFFER(3207v3205), allocation residue, record counts do not move it	parked	CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
+00b8b780	PARKED	3921	2026-11-14_acctC_wfB4/open	after workflow parked/Fable; C22: DIFFER(3921v3921), 3 operand-order sites left with 2 evidenced asserts; 5 asserts would leave 1 (fitted)	parked	CEngineBillboardGenerator::RenderBillboard
+00ba5260	PARKED	4056	2026-11-14_acctC_wfB3open	after workflow parked/Fable; RELOCATION_MATCH inside the TU (C19, C20) but the TU needs the real 00ba2350 body; lands with it; test not written	parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
+00bcc800	MATCHED_STAGED	3205	2026-11-14_acctC_wfB4	workflow parked/Fable: match / PASS, verifier + coordinator-verified	parked	CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
 0048e78e	PARKED	2662	2026-11-14_acctC_wfA2/open	workflow unworked/Opus: DIFFER(2662v2662), 14 hunks	parked	CSubtitleRenderer::DrawButtonGraphics
 00cbfb7d	IN_PROGRESS	74778		workflow big-rows/Fable batch wfC1; earlier lane draft DIFFER(74846v74778), 96.7% of instructions equal	parked	_global::RunCutsceneMacro
 00f0fb70	IN_PROGRESS	18144		workflow big-rows/Fable batch wfC2; earlier lane draft in ref	parked	NScript::CQ_ArenaScript::Main
@@ -31,7 +31,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00e3bb70	OPEN				parked	NScript::CV_BordelloScript::CMadame::Main
 00e50fd0	OPEN				parked	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main
 00d973d0	OPEN				parked	NScript::CQ_HobbeCaveScript::CBanditSacrifice::Main
-00603000	IN_PROGRESS	9571	2026-11-13_acctC_c14a/open_00603000	workflow parked/Fable batch wfB2; C15..C31: DIFFER(9571v9571) only under DIAG guards; the evidenced GetParentThing() spelling closes 0x006031D7 but exposes 92 allocation hunks; Reset<C	parked	CTCInventoryMap::CreateMiniMapMarkers
+00603000	PARKED	9571	2026-11-14_acctC_wfB2/open	after workflow parked/Fable; C15..C31: DIFFER(9571v9571) only under DIAG guards; the evidenced GetParentThing() spelling closes 0x006031D7 but exposes 92 allocation hunks; Reset<C	parked	CTCInventoryMap::CreateMiniMapMarkers
 00e5fd40	OPEN				parked	NScript::CV_BodyGuardScript::CBodyGuard::Main
 0078fd60	OPEN				parked	CTCDivineWrath::FrameUpdate
 00e33ea0	OPEN				parked	NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main
@@ -53,7 +53,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00dc5f80	IN_PROGRESS			workflow unworked/Opus round 2 batch wfD2; 	parked	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main
 00d3d150	IN_PROGRESS			workflow unworked/Opus round 2 batch wfD3; 	parked	NScript::CQ_GuildTrainingScript::CAppleGirl::Main
 00a8b990	OPEN				parked	C3DMesh2::InitialiseBones
-005ff190	IN_PROGRESS	4176	2026-11-13_acctC_c14a/open_005ff190	workflow parked/Fable batch wfB2; DIFFER(4128v4176) DIAG; parked with 00603000 on the Reset split	parked	CTCInventoryMap::CreateMapMarkers
+005ff190	MATCHED_STAGED	4176	2026-11-14_acctC_wfB2	workflow parked/Fable: match / PASS, verifier + coordinator-verified	parked	CTCInventoryMap::CreateMapMarkers
 00d75060	IN_PROGRESS			workflow unworked/Opus round 2 batch wfD2; 	parked	NScript::CQ_HangingTreeGoodScript::FinalRound
 00bafa00	OPEN				parked	CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites::RenderClockPrim
 00931390	OPEN				parked	CAIStateGroup_MinionReactToCriminal::?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ
@@ -83,7 +83,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b1c880	IN_PROGRESS			workflow unworked/Opus round 2 batch wfD6; 	parked	NParticleEngine::CPSCDecalRenderer::ReadBinary
 00d82640	IN_PROGRESS			workflow unworked/Opus round 2 batch wfD1; 	parked	NScript::CQ_HeroSoulsBriarScript::CBriarRose::Main
 0066cf00	IN_PROGRESS			workflow unworked/Opus round 2 batch wfD4; 	parked	CRegionMinimap::PopulateRegionMinimap
-007db6a0	IN_PROGRESS	2556	2026-11-13_acctC_c42a/open	workflow parked/Fable batch wfB6; C42: DIFFER(2556v2556), two register picks at 0x007DBC83 / 0x007DBC91	parked	CTCTavernGameCardBlackjack::CardsMainGame
+007db6a0	PARKED	2556	2026-11-14_acctC_wfB6open	after workflow parked/Fable; C42: DIFFER(2556v2556), two register picks at 0x007DBC83 / 0x007DBC91	parked	CTCTavernGameCardBlackjack::CardsMainGame
 00bb0970	OPEN				parked	CEnginePrimitiveManager2DSprites::?RenderSpritePrim@CEnginePrimitiveManager2DSprites@@MAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z
 00b1f200	IN_PROGRESS			workflow unworked/Opus round 2 batch wfD6; 	parked	NParticleEngine::CPSCDecalRenderer::PreparePrimitives
 00d7fe90	IN_PROGRESS			workflow unworked/Opus round 2 batch wfD1; 	parked	NScript::CQ_HeroSoulsArenaScript::WatchForRoundsInArena
@@ -112,11 +112,11 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00981410	IN_PROGRESS	2703	2026-11-14_acctC_wfA3/open	workflow unworked/Opus round 2 batch wfA3; workflow unworked/Opus: DIFFER(2491v2703); needs shared-header port	parked	_global::AIAction_InteractWith
 00acdb80	IN_PROGRESS	2674	2026-11-14_acctC_wfA3/open	workflow unworked/Opus round 2 batch wfA3; workflow unworked/Opus: bytes match + test PASS but local class model instead of engine/COptimisedPrimitive.h: needs respelling	parked	QuadricOptimiserInternals::COptimisedPrimitive::COptimisedPrimitive
 0068cb90	MATCHED_STAGED	2339	2026-11-14_acctC_wfA2	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	parked	CInputProcessControlFreeCamera::CInputProcessControlFreeCamera::ProcessInput
-005f59c7	IN_PROGRESS	2652	2026-11-13_acctC_c12a/open_005f59c7	workflow parked/Fable batch wfB1; C10 -> C12 -> C33: DIFFER(2649v2652); retail tail block references only five candidates (no temporary for PeekComponent(), compare at 0x005F63C0 in an	parked	CTCInventoryAbilities::ConstructPCExpressionsList
+005f59c7	PARKED	2652	2026-11-14_acctC_wfB1open	after workflow parked/Fable; C10 -> C12 -> C33: DIFFER(2649v2652); retail tail block references only five candidates (no temporary for PeekComponent(), compare at 0x005F63C0 in an	parked	CTCInventoryAbilities::ConstructPCExpressionsList
 00435530	PARKED	2617	2026-11-14_acctC_wfA2/open	workflow unworked/Opus: stale draft only, DIFFER(2571v2617)	parked	CDisplayEngine::DoRender
 00439070	PARKED	2613	2026-11-14_acctC_wfA2/open	workflow unworked/Opus: DIFFER(2613v2613)	parked	CPlayerGui::DrawPreparePrimitivesForEngine
-007de710	IN_PROGRESS	2578	2026-11-13_acctC_c43open	workflow parked/Fable batch wfB6; C42 -> C43: DIFFER(2578v2578), 13 hunks; same residue as 00772bb0	parked	CTCWallMount::AttachObject
-00772bb0	IN_PROGRESS	2585	2026-11-13_acctC_c43open	workflow parked/Fable batch wfB6; C42 -> C43: DIFFER(2585v2585), 15 hunks; VC7.1 canonicalises the sum order, the inverse text is not the lever (24 texts identical); retail moves only 	parked	CTCShop::AddSaleItem
+007de710	PARKED	2578	2026-11-14_acctC_wfB6open/matched_needs_fixup	workflow parked/Fable: RELOCATION_MATCH / PASS but breaks lane rules (README there); needs a fix-up pass	parked	CTCWallMount::AttachObject
+00772bb0	PARKED	2585	2026-11-14_acctC_wfB6open/matched_needs_fixup	workflow parked/Fable: RELOCATION_MATCH / PASS but breaks lane rules (README there); needs a fix-up pass	parked	CTCShop::AddSaleItem
 00dce230	PARKED	2589	2026-11-14_acctC_wfA2/open	workflow unworked/Opus: DIFFER(2589v2589), 6 hunks eax/edx swap	parked	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Main
 006d0830	PARKED	2584	2026-11-14_acctC_wfA1/open	workflow unworked/Opus: DIFFER(2581v2584): wedding zero hoist + dowry register	parked	CTCWife::GlobalUpdate
 00d4a270	IN_PROGRESS	9388		workflow unworked/Opus round 2 batch wfD3; true extent 9,388 by scan (catalog 25,488 covers several functions); never worked	never_worked	NScript::CQ_GuildTrainingScript::CCombatApprentice::Main
@@ -138,7 +138,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 0058807d	MATCHED_STAGED	4997	2026-11-13_acctC_c44a	C44 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; hand-authored, no opt-in	never_worked	CTCInventory::OpenPCInventoryMenu
 00598a1c	MATCHED_STAGED	4928	2026-11-14_acctC_wfA5	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	never_worked	CFrontEndManager::CFrontEndManager::Init2
 00aa2110	MATCHED_STAGED	4556	2026-11-14_acctC_wfA5	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	never_worked	C3DAnimationManager::CalcBlendedBoneTransformation
-00652fa4	IN_PROGRESS	4653	2026-11-13_acctC_c44a/open	workflow parked/Fable batch wfB1; C38 -> C39 -> C41 -> C44: DIFFER(4653v4653), ONE instruction (flash sprite fst one push early); work dir agentC44	never_worked	NPlayerGui::CDrawQuickAccessIcons::Draw
+00652fa4	PARKED	4653	2026-11-14_acctC_wfB1open	after workflow parked/Fable; C38 -> C39 -> C41 -> C44: DIFFER(4653v4653), ONE instruction (flash sprite fst one push early); work dir agentC44	never_worked	NPlayerGui::CDrawQuickAccessIcons::Draw
 00aa0fa0	MATCHED_STAGED	4460	2026-11-14_acctC_wfA5	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	never_worked	C3DAnimationManager::CalcBoneTransformation
 00b9ac30	PARKED	4229	2026-11-14_acctC_wfA5/open	workflow unworked/Opus: draft with a few compile items left	never_worked	CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStaticMeshes::RenderSubPrimitive
 00b555a0	MATCHED_STAGED	3832	2026-11-14_acctC_wfA5	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	never_worked	CEngineWeatherRenderer::?Render@CEngineWeatherRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
@@ -147,21 +147,21 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 01221d20	OPEN				never_worked	_gapscan::sub_01221d20
 00dfca90	MATCHED_STAGED	373	2026-11-14_acctC_wfA1	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	never_worked	NScript::CQ_TraderConflictGoodScript::CBanditExtra::Main
 0058f9bc	MATCHED_STAGED	2012	2026-11-13_acctC_c24a	C24: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCInventory::OpenPCPhotojournal
-007bfe30	IN_PROGRESS	1648	2026-11-13_acctC_c37a/open	workflow parked/Fable batch wfB5; C24 -> C37: DIFFER(1643v1648); register permutation from the prologue	never_worked	CTCShotDefinitionBase::UpdateCollision
-009fde80	IN_PROGRESS	1265	2026-11-13_acctC_c37a/open	workflow parked/Fable batch wfB5; C27 -> C37: DIFFER(1269v1265); register priority header v depth, unchanged	never_worked	CGraphicInfoFrame::CFrameData::BeginLoading
+007bfe30	PARKED	1648	2026-11-14_acctC_wfB5/open	after workflow parked/Fable; C24 -> C37: DIFFER(1643v1648); register permutation from the prologue	never_worked	CTCShotDefinitionBase::UpdateCollision
+009fde80	PARKED	1265	2026-11-14_acctC_wfB5/open	after workflow parked/Fable; C27 -> C37: DIFFER(1269v1265); register priority header v depth, unchanged	never_worked	CGraphicInfoFrame::CFrameData::BeginLoading
 007c0690	MATCHED_STAGED	1088	2026-11-13_acctC_c25a	C25: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	NThingShot::CTCShotDefinitionBase::Init
 007ef200	MATCHED_STAGED	734	2026-11-13_acctC_c25a	C25: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCarriedActionUseExpression::CTCCarriedActionUseExpression::vfunc_28
 0074e860	MATCHED_STAGED	1005	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCContainerRewardHero::GetRewardItems
 0072cf40	MATCHED_STAGED	564	2026-11-13_acctC_c25a	C25: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCSpecialAbilities::UseSpecialAbility
-00735fd0	IN_PROGRESS	973	2026-11-13_acctC_c30a/open	workflow parked/Fable batch wfB5; C29 -> C30 -> C36: DIFFER(993v973); exits are return (measured); frame 0x5C v 0x58 open	never_worked	CTCCombat::AttemptToStartParticle
-007e15c0	IN_PROGRESS	963	2026-11-13_acctC_c37a/open	workflow parked/Fable batch wfB5; C30 -> C37: DIFFER(967v963) (alt 963v963, 15 hunks); one dead byte store (alias analysis) + x87 order	never_worked	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0
-006823d0	IN_PROGRESS	962	2026-11-13_acctC_c27open	workflow parked/Fable batch wfB5; C24 -> C27 -> C36: DIFFER(960v962); only fitted helper spellings reach the frame (no such helper in either PDB)	never_worked	CTCCreatureOpinionOfHero::FrameUpdate
-005379f5	IN_PROGRESS	2102	2026-11-13_acctC_c43open	workflow parked/Fable batch wfB6; C43: DIFFER(2120v2102); retail instruction sequence reached in the view-area box block, stores go to a temporary + 3-word copy (18 bytes); 0x0052E470 	parked	NUISystem::CList::ComputeChildrenVisibility
+00735fd0	MATCHED_STAGED	973	2026-11-14_acctC_wfB5	workflow parked/Fable: match / PASS, verifier + coordinator-verified	never_worked	CTCCombat::AttemptToStartParticle
+007e15c0	PARKED	963	2026-11-14_acctC_wfB5/open	after workflow parked/Fable; C30 -> C37: DIFFER(967v963) (alt 963v963, 15 hunks); one dead byte store (alias analysis) + x87 order	never_worked	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0
+006823d0	MATCHED_STAGED	962	2026-11-14_acctC_wfB5	workflow parked/Fable: match / PASS, verifier + coordinator-verified	never_worked	CTCCreatureOpinionOfHero::FrameUpdate
+005379f5	PARKED	2102	2026-11-14_acctC_wfB6open/matched_needs_fixup	workflow parked/Fable: RELOCATION_MATCH / PASS but breaks lane rules (README there); needs a fix-up pass	parked	NUISystem::CList::ComputeChildrenVisibility
 00945060	MATCHED_STAGED	936	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CAIStateGroup_WorkHammerAnvil::?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ
 006b2ca0	PARKED	910	2026-11-14_acctC_wfA1/open	workflow unworked/Opus: DIFFER(908v910)	never_worked	_global::CGameCamera_UpdateViewMatrix
 00944940	MATCHED_STAGED	883	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CAIStateGroup_WorkSawingWood::?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ
 007b57c0	MATCHED_STAGED	776	2026-11-13_acctC_c30a	C30: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCarriedActionUseActivateQuest::CTCCarriedActionUseActivateQuest::vfunc_28
-007bc38a	IN_PROGRESS	880	2026-11-13_acctC_c36a/open	workflow parked/Fable batch wfB5; C34 -> C36: DIFFER(880v880), one instruction (vtable load v fsubp at 0x007BC64D)	never_worked	_global::CTCPhysicsRigidBody_ApplyForceToward
+007bc38a	MATCHED_STAGED	880	2026-11-14_acctC_wfB5	workflow parked/Fable: match / PASS, verifier + coordinator-verified	never_worked	_global::CTCPhysicsRigidBody_ApplyForceToward
 006a1a00	MATCHED_STAGED	864	2026-11-13_acctC_c34a	C32 -> C34 (Fable): RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation
 0074af50	MATCHED_STAGED	856	2026-11-13_acctC_c36a	C36 (Fable): RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCreatureGenerator::CreateCreaturesUndead
 00a5cb90	MATCHED_STAGED	847	2026-11-13_acctC_c42a	C42 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; new retail-asm kernel + /Zi need owner sign-off	never_worked	CMatrix4x4::AlignedTransformTransposedAssumeW
@@ -170,8 +170,8 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 007fc9d0	MATCHED_STAGED	704	2026-11-13_acctC_c34a	C32 -> C34 (Fable): RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCKraken::FrameUpdate
 0075d580	MATCHED_STAGED	809	2026-11-13_acctC_c37a	C37 (Fable): RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCameraPointScriptedSpline::UpdateCameraParams
 0077b350	MATCHED_STAGED	767	2026-11-13_acctC_c37a	C37 (Fable): RELOCATION_MATCH / PASS, coordinator-verified	never_worked	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::vfunc_0
-007ea580	IN_PROGRESS	457	2026-11-13_acctC_c37a/open	workflow parked/Fable batch wfB5; C37 -> C40: DIFFER(457v457), 2 displacement hunks; allocator reload-home choice, no source lever found	never_worked	_global::CTCTargeted_BuildTargetTrajectory
-00875690	IN_PROGRESS	762	2026-11-13_acctC_c43open	workflow parked/Fable batch wfB6; C42 -> C43: DIFFER(726v762); retail keeps the 2-D points as memory members, every natural spelling is scalar-replaced	never_worked	CGeneralCircle::CGeneralCircle
+007ea580	MATCHED_STAGED	457	2026-11-14_acctC_wfB5	workflow parked/Fable: match / PASS, verifier + coordinator-verified	never_worked	_global::CTCTargeted_BuildTargetTrajectory
+00875690	PARKED	762	2026-11-14_acctC_wfB6open	after workflow parked/Fable; C42 -> C43: DIFFER(726v762); retail keeps the 2-D points as memory members, every natural spelling is scalar-replaced	never_worked	CGeneralCircle::CGeneralCircle
 00a3e830	MATCHED_STAGED	24	2026-11-13_acctC_c40a	C40 (Fable): match / PASS, coordinator-verified	never_worked	CSoundManagerLH::CSoundManagerLH::vfunc_35
 00bd2d90	MATCHED_STAGED	721	2026-11-13_acctC_c40a	C40 (Fable): match / PASS, coordinator-verified	never_worked	CEngineInternalPrimitiveAnimatedMesh::GetBoneTransformations
 007db2e0	MATCHED_STAGED	723	2026-11-13_acctC_c40a	C40 (Fable): match / PASS, coordinator-verified	never_worked	_global::CTCTavernGameCardBase_NewGame

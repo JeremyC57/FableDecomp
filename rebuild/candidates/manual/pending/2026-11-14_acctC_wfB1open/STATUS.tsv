@@ -1,0 +1,4 @@
+address	grade	bytes	test	grades_used	notes
+00652fa4	DIFFER(4653v4653)	4653	-	31 + ~75 (successor; 5 scheduler traces)	near_miss: (R1) commutative frame-operand swap at 0x653E01/0x653E11 (closed by a FITTED PAREN probe on operator+ X, not adopted) + (R2) flash fst v third push ebx at 0x6540C3 = exact c2 priority tie 0xE0 v 0xE0 (store flag wins), retail needs +4 on the push; mechanism in NOTES
+0058578b	DIFFER(8131v8081)	8131	-	6 (+3 lens, 1 trace) + 1 successor regrade	parked: top_level v style_count priority (+21), count-loop ebx; twin hair idioms measured worse
+005f59c7	DIFFER(2649v2652)	2649	-	5 (+3 traces) + 1 successor regrade	parked: tail-block K 8 v 5; /Gr and destroy-loop probes no change

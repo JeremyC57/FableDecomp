@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	C2DVector.h extern (landed rows bind it); vland RELOC_NAME warning on 007bc38a: label set still says g_NormaliseEpsilon	?g_NormaliseEpsilon@@3MB
+007ea880	??$__uninitialized_copy@PAU?$pair@VC3DVector@@J@std@@PAU12@@std@@YIPAU?$pair@VC3DVector@@J@0@PAU10@00ABU__false_type@0@@Z	vland RELOC_NAME warning on 007ea580: the label set holds the demangled text, the row binds the mangled symbol	std::__uninitialized_copy<std::pair<C3DVector,long>*,std::pair<C3DVector,long>*>
+009fc3d0	?AddResource@CResourceBank@@QAEXPAUCResourceBase@@@Z	reloc_bindings.tsv bound symbol (landed callers); parked draft differ/009fde80.cpp declares the same address as AddToLoadingQueue(CResource&)	?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z

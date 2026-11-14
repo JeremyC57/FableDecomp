@@ -1,0 +1,38 @@
+--- a/rebuild/include/engine/CIntelligentPointer.h
++++ b/rebuild/include/engine/CIntelligentPointer.h
+@@ -78,8 +78,17 @@
+     T* operator->()const { return GetPointer(); }
+ #else
+     T* Get() const { return static_cast<T*>(GetPItem()); }             // FableWin ?Get@?$CIntelligentPointer@..@@QBEPAV..@XZ
++#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ARROW_CHECKED_LOCALS
++    // Opt-in (agentC44, row 0x00652FA4 NPlayerGui::CDrawQuickAccessIcons::Draw; FITTED text, flagged): FableWin.pdb
++    // ??C?$CIntelligentPointer@..@@QBEPAV..@XZ is 336 bytes / 92 instructions at /Od in all 17 instances (Get() is 19 / 9): operator->
++    // is not `return Get();` but a body with asserts. The asserts compile away in retail; what stays are its named locals, which
++    // show in the row as c2 symbol records: with one local `this` gets retail's register (priority tie with def), with these two
++    // the x87 operand orders of the flash / d-pad sums (0x0065409E, 0x0065414B) are retail's too. Same bytes as `return Get();`.
++    T* operator->() const { CBaseObject* item = GetPItem(); T* pointer = static_cast<T*>(item); return pointer; }
++#else
+     T* operator->() const { return Get(); }                             // FableWin ??C?$CIntelligentPointer@..@@QBEPAV..@XZ
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+     // Chunk 754 (row 0x00945BD0 `PCookingPot = pot;`): FableWin.pdb ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z, inline in
+     // retail: the item read into a local, then SetPItem (0x00A01B50 then 0x00A01B90; the destination is formed after the read,
+@@ -141,7 +150,7 @@
+ #endif
+ };
+ #pragma pack(pop)
+-FABLE_STATIC_ASSERT(sizeof(CBaseIntelligentPointer)==8);
++FABLE_STATIC_ASSERT_AT(144, sizeof(CBaseIntelligentPointer)==8);
+ // Retail opt-in (Codex pass 17): FableWin 01CD9DD0 original pointer/int
+ // comparison used by IS_THING_ALIVE; the debug-only nonzero-int assertion is absent in retail.
+ #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+@@ -175,7 +184,7 @@
+     T* Get() const { return static_cast<T*>(GetPItem()); }
+     T* operator->() const { return Get(); }
+ };
+-FABLE_STATIC_ASSERT(sizeof(CBaseIntelligentPointer)==8);
++FABLE_STATIC_ASSERT_AT(178, sizeof(CBaseIntelligentPointer)==8);
+ #endif
+ #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+ // Original FableWin02179d3e: compare the two base GetPItem results.

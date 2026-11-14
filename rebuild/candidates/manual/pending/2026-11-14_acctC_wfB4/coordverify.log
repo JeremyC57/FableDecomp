@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00bcc800   WARN RELOC_NAME: ?IsBusy@CVertexBufferBase@@QBE_NXZ -> 00ac20c0 labelled 'CThingFilter_IsValid::operator()'
+00bcc800   WARN RELOC_NAME: ?Sizeof@CVertexBufferBase@@QBEKXZ -> 00ac20d0 labelled 'CThingFilter_IsValid::func_00ac20d0'
+00bcc800   RELOCATION_MATCH PASS   RenderWeaponTrail
+
+WINS: 1
+  00bcc800 RELOCATION_MATCH CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail

@@ -1,0 +1,54 @@
+--- a/rebuild/include/engine/CMatrix3x4.h
++++ b/rebuild/include/engine/CMatrix3x4.h
+@@ -446,5 +446,51 @@
+         return scale;
+     }
+ #endif
++#if defined(FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT) && !defined(FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY)
++    // Retail opt-in (agentC42, rows 0x00772BB0 CTCShop::AddSaleItem / 0x007DE710 CTCWallMount::AttachObject): FableWin.pdb
++    // ?SetInverseOfUniformScaleRotationTranslation@CMatrix3x4@@QAEMABV1@@Z alone (the same text as the FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY
++    // block's, for a TU whose PostMultiply goes through SetMultiply: FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_POSTMULTIPLY). No retail
++    // out-of-line copy; expanded at 0x00772E9C.
++    FABLE_FORCEINLINE float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
++        float scale = 1.0f / (m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13);
++        E11 = m.E11 * scale; E21 = m.E12 * scale; E31 = m.E13 * scale;
++        E12 = m.E21 * scale; E22 = m.E22 * scale; E32 = m.E23 * scale;
++        E13 = m.E31 * scale; E23 = m.E32 * scale; E33 = m.E33 * scale;
++        E41 = -(E11 * m.E41 + E21 * m.E42 + E31 * m.E43);
++        E42 = -(E12 * m.E41 + E22 * m.E42 + E32 * m.E43);
++        E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
++        return scale;
++    }
++#endif
++#if defined(FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT_SCALE_SQUARED) && !defined(FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT) && !defined(FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY)
++    // Retail opt-in (wfB6, rows 0x00772BB0 CTCShop::AddSaleItem / 0x007DE710 CTCWallMount::AttachObject, both matched): FableWin.pdb
++    // ?SetInverseOfUniformScaleRotationTranslation@CMatrix3x4@@QAEMABV1@@Z with the sum of squares in a named local (use INSTEAD of
++    // FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT; same code, one more c2 symbol record). Evidence: retail 0x00772F45 `fld scale ;
++    // fmul [dummyRH.Up.X]` needs the record of `scale` to be created after the one of the first named local of this body (measured
++    // with the c2 operand-sort log, NOTES.md of wfB6); FableWin's debug copy is 123 instructions / 345 bytes against 121 / 339 for the
++    // one-statement text (agentC43's model: a named sum of squares is 122 / 343). Local names are descriptive. No out-of-line copy
++    // in retail; expanded at 0x00772E9C and 0x007DEA4x.
++    FABLE_FORCEINLINE float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
++        float scale_squared = m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13;
++        float scale = 1.0f / scale_squared;
++        E11 = m.E11 * scale; E21 = m.E12 * scale; E31 = m.E13 * scale;
++        E12 = m.E21 * scale; E22 = m.E22 * scale; E32 = m.E23 * scale;
++        E13 = m.E31 * scale; E23 = m.E32 * scale; E33 = m.E33 * scale;
++        E41 = -(E11 * m.E41 + E21 * m.E42 + E31 * m.E43);
++        E42 = -(E12 * m.E41 + E22 * m.E42 + E32 * m.E43);
++        E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
++        return scale;
++    }
++#endif
+ };
++#ifdef FABLE_RETAIL_CMATRIX3X4_SET_RHSET_INLINE
++// Retail opt-in (chunk 850 text re-applied by agentC42, row 0x00772BB0 CTCShop::AddSaleItem): the body of
++// ?Set@CMatrix3x4@@QAEXABVCRightHandedSet@@ABVC3DVector@@@Z (out of line at 0x007767A0 in the CTCShop TU: GetRight, Forward, Up, then
++// the translation), which AddSaleItem expands three times. Force-inline: with plain inline VC7.1 calls it out of line there (2161 v 2585 bytes).
++#include "engine/CRightHandedSet.h"
++FABLE_FORCEINLINE void CMatrix3x4::Set(const CRightHandedSet& orientation,const C3DVector& translation)
++{
++    Set(orientation.GetRight(), orientation.GetForward(), orientation.GetUp(), translation);
++}
++#endif
+ #endif

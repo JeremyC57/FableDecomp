@@ -1,0 +1,54 @@
+--- a/rebuild/include/engine/C2DBoxF.h
++++ b/rebuild/include/engine/C2DBoxF.h
+@@ -6,6 +6,12 @@
+  // Retail opt-in (movie row 0x006286F0): FableWin.pdb ??0C2DBoxF@@QAE@MMMM@Z (debug only: inline in release; 0x006286F0
+  // builds C2DBoxF(0, 0, VIRTUAL_SCREEN_WIDTH, VIRTUAL_SCREEN_HEIGHT) on the stack, four stores, no call).
+  C2DBoxF(float tlx,float tly,float brx,float bry):TLX(tlx),TLY(tly),BRX(brx),BRY(bry){}
++#ifdef FABLE_RETAIL_C2DBOXF_INITIALISE
++ // Retail opt-in (agentC43, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility): FableWin.pdb ?Initialise@C2DBoxF@@QAEXMMMM@Z and ?Initialise@C2DBoxF@@QAEXABV1@@Z
++ // (inline in retail).
++ void Initialise(float tlx,float tly,float brx,float bry){TLX=tlx;TLY=tly;BRX=brx;BRY=bry;}
++ void Initialise(const C2DBoxF& box){TLX=box.TLX;TLY=box.TLY;BRX=box.BRX;BRY=box.BRY;}
++#endif
+ #ifdef FABLE_RETAIL_C2DBOXF_COPY
+  // Nested opt-in (chunk 853, row 0x0050A650 CWorldMap::GetMapNavigationAreaInit): the authored copy constructor, FableWin.pdb
+  // ??0C2DBoxF@@QAE@ABV0@@Z (0x01A664E0; inline in release). Member-wise float copies let VC7.1 build the CThingFilter_InArea copy of
+@@ -54,6 +60,13 @@
+  C2DBoxF(const class C2DVector& centre,float radius);
+  class C2DBoxI ToC2DBoxI() const;                                       // 0x00A55A30
+ #endif
++#ifdef FABLE_RETAIL_C2DBOXF_CORNERPOS
++ // Nested opt-in (wfB6, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility): FableWin.pdb ?GetTLPos@C2DBoxF@@QBE?AVC2DVector@@XZ
++ // and ?GetBRPos@C2DBoxF@@QBE?AVC2DVector@@XZ (inline in retail: the row copies the child box corners into two C2DVector
++ // temporaries, 0x00537D9E..0x00537DAA and 0x00537DC1..0x00537DCA, and passes them to ContainsPoint). Bodies follow the class.
++ class C2DVector GetTLPos() const;
++ class C2DVector GetBRPos() const;
++#endif
+ #endif
+ };
+ #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_CENTRE)
+@@ -77,4 +90,24 @@
+ inline C2DBoxF::C2DBoxF(const C2DVector& tl,const C2DVector& br):TLX(tl.X),TLY(tl.Y),BRX(br.X),BRY(br.Y){}
+ #endif
+ #endif
++#if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_CORNERPOS)
++#include "engine/C2DVector.h"
++inline C2DVector C2DBoxF::GetTLPos() const { return C2DVector(TLX,TLY); }
++inline C2DVector C2DBoxF::GetBRPos() const { return C2DVector(BRX,BRY); }
++#endif
++#if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_CONTAINSPOINT_INLINE)
++// Opt-in (wfB6, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility): ?ContainsPoint@C2DBoxF@@QBE_NABVC2DVector@@@Z is an
++// inline header function in retail whose out-of-line COMDAT copy is 0x00535CD0 (the landed body): the row calls it (not
++// expanded under optimize("s")) and reloads ecx = &window before the second call (0x00537DD1: a COMDAT callee may be replaced, so
++// VC7.1 does not assume it preserves ecx), yet VC7.1 has read its body: it knows the callee neither writes memory nor keeps the box
++// address, so the view-area box is built in place (ConvertX / ConvertY results stored straight into the box, 0x00537B7C..0x00537BE0).
++// With the declaration alone the constructor arguments go through frame temporaries (+18 bytes).
++#include "engine/C2DVector.h"
++inline bool C2DBoxF::ContainsPoint(const C2DVector& point) const
++{
++    if (point.X >= TLX && point.X < BRX && point.Y >= TLY && point.Y < BRY)
++        return true;
++    return false;
++}
++#endif
+ #endif

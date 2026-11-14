@@ -1,0 +1,7 @@
+addr       parity           behav  name
+005ff190   WARN RELOC_NAME: ?GetTeleporterRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ -> 007021f0 labelled 'CTCQuestCard::GetMarkerRegionName'
+005ff190   WARN RELOC_NAME: ?IsVignette@CTCQuestCard@@QBE_NXZ -> 007022e0 labelled 'CTCShotDefinitionBase::CanBeHitByMeleeStrike'
+005ff190   RELOCATION_MATCH PASS   CreateMapMarkers
+
+WINS: 1
+  005ff190 RELOCATION_MATCH CTCInventoryMap::CreateMapMarkers

@@ -1,0 +1,34 @@
+--- a/rebuild/include/engine/CWeaponDef.h
++++ b/rebuild/include/engine/CWeaponDef.h
+@@ -53,7 +53,13 @@
+     float         Damage;                                            // +0x44
+     long          DamageType;                                        // +0x48 EDamageAttribute
+     long          Explosion;                                         // +0x4c
++#ifdef FABLE_RETAIL_CWEAPONDEF_FLOURISHPARTICLES
++    // agentC29 (row 0x00735FD0): Ego_r CObjectAugmentationParticleSet FlourishParticles (44 bytes here: PeriodSecs +0x50, ParticleEffect +0x54,
++    // ParticleEffectToBlendTo +0x58, StartPoint +0x64, EndPoint +0x70 as retail reads them). Needs engine/CObjectAugmentationParticleSet.h.
++    CObjectAugmentationParticleSet FlourishParticles;                // +0x50
++#else
+     unsigned char FlourishParticles[0x2c];                           // +0x50 CObjectAugmentationParticleSet
++#endif
+ #ifdef FABLE_RETAIL_CWEAPONDEF_WEAPONTRAILS
+     // Opt-in (wf20, row 0x00839100): the member's real Ego_r type (struct_layouts_egor.tsv CWeaponDef FlourishSpecialWeaponTrail).
+     CWeaponTrailGraphicSet FlourishSpecialWeaponTrail;               // +0x7c
+@@ -89,12 +95,12 @@
+     CCharString   SheatheFromCombatAnim;                             // +0xdc
+     CCharString   SheatheFromNormalAnim;                             // +0xe0
+ };
+-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Class) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Damage) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Shot) == 0xa0);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CWeaponDef, Class) == 0x2c);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CWeaponDef, Damage) == 0x44);
++FABLE_STATIC_ASSERT_AT(94, offsetof(CWeaponDef, Shot) == 0xa0);
+ #ifdef FABLE_RETAIL_CWEAPONDEF_WEAPONTRAILS
+-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, UseAnalogueLoading) == 0x90);
++FABLE_STATIC_ASSERT_AT(96, offsetof(CWeaponDef, UseAnalogueLoading) == 0x90);
+ #endif
+-FABLE_STATIC_ASSERT(sizeof(CWeaponDef) == 0xe4);
++FABLE_STATIC_ASSERT_AT(98, sizeof(CWeaponDef) == 0xe4);
+ #endif // FABLE_RETAIL_DEF_CLASS_BASE
+ #endif // FABLE_ENGINE_CWEAPONDEF_H

@@ -1,0 +1,6 @@
+address	name	evidence
+007bc38a	NThingShot::CTCShotDefinitionThrowPredictive::InitMovement	Ego_r + FableWin name sets; vtable 0x0123CE9C slot 33
+007ea580	CTCTargeted::GetAllTargetPoints	Ego_r + FableWin name sets; ret 8; 16-byte pair<C3DVector,long> elements; caller 0x00803CC7
+0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	reloc_bindings.tsv (bound by landed rows); read by address at 0x007362C7 / 0x007362D2 in row 0x00735FD0; a label table still says g_NormaliseEpsilon (vland WARN RELOC_NAME)
+00735fd0	CTCCombat::AttemptToStartParticle	Ego_r + FableWin ?AttemptToStartParticle@CTCCombat@@AAEXPAVCThing@@@Z; reloc_bindings 00735fd0
+006823d0	CTCCreatureOpinionOfHero::FrameUpdate	vtable slot 9; Ego_r + FableWin ?FrameUpdate@CTCCreatureOpinionOfHero@@UAEXXZ

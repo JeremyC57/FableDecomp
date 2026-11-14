@@ -1,0 +1,6 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+01436ea0	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	c19a NAME_FIXES (reloc_bindings); row 0x00B8B780 reads +0x114 NoScaleViewTransform through it	g_pEngineCamera (acctB / agentC22 draft of 0x00B8B780)
+01436ea4	?GPEngine@NEngineInternal@@3PAVCEngine@@A	landed sources spell NEngineInternal::GPEngine (DeallocateShadowBuffer callers); row calls CEngine::GetScratchZBufferD24S8 0x00B27EE0 on it	g_pEngine_01436ea4, g_pTextureManager_01436ea4 (reloc_bindings)
+01436e78	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	c19a NAME_FIXES (Anniversary PDB); row reads MipmapSizeMultiplier +0xB0	g_pPrimitiveRenderer typed CEnginePrimitiveRenderer (old draft of 0x00B8B780)
+0143b990	?GTopBitInByteTable@@3PAEA	c19a NAME_FIXES; GFGetTopBitInByte table read 0x00B8BF22	g_highestSetBitTable (old draft of 0x00B8B780)
+00bc9b30	?FindNode@CEngineTreeFilerBase@@AAEPAUCNodeHeader@1@PAU21@PAK@Z	FableWin.pdb name set (private, nested struct CNodeHeader); row 0x00BCC800 calls it for the recursion	?FindNode@CEngineTreeFilerBase@@QAEPAUCNodeHeader@@PAU2@PAK@Z (reloc_bindings, from the local model of 0x00BF2E50), ...PAVCNodeHeader@1@PAV21@PAK@Z (overlay INLINES opt-in declares `class CNodeHeader`)

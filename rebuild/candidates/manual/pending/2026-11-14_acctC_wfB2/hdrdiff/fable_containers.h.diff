@@ -1,0 +1,97 @@
+--- a/rebuild/include/stlport/fable_containers.h
++++ b/rebuild/include/stlport/fable_containers.h
+@@ -364,13 +364,29 @@
+     static void deallocate(void* __p, size_t) { free((char*)__p); }
+ };
+ #endif
++#ifdef FABLE_RETAIL_STLP_MALLOC_ALLOC_ALLOCATE
++// (acctC agentC31) allocation half of STLport's malloc-based __sgi_alloc; a separate class template here so that the existing
++// FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE block above stays untouched (descriptive name: STLport's is __malloc_alloc<0>::allocate).
++template<int __inst> class __malloc_alloc_allocate {
++public:
++    static void* allocate(size_t __n) { void* __result = malloc(__n); return __result; }
++};
++#endif
+ template<class _Tp> class allocator {
+ public:
+     allocator() { }
+     allocator(const allocator&) { }
+     template<class _Tp1> allocator(const allocator<_Tp1>&) { }
+     ~allocator() { }
++#ifdef FABLE_RETAIL_STLP_MALLOC_ALLOC_ALLOCATE
++    // Retail opt-in (acctC agentC31, row 0x00601310 CTCInventoryMap::ConstructQuestsScreenPC): STLport 4.6 stl/_alloc.h
++    // allocator<T>::allocate forwards to __sgi_alloc::allocate(n * sizeof(T)) (the malloc-based __malloc_alloc<0>, body `malloc(n)`),
++    // the mirror of FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE. Same code; the extra inline layer adds to the caller size VC7.1's
++    // inliner scores later sites with.
++    _Tp* allocate(size_t n,const void* =0) { return n != 0 ? (_Tp*)__malloc_alloc_allocate<0>::allocate(n * sizeof(_Tp)) : 0; }
++#else
+     _Tp* allocate(size_t n,const void* =0) { return n?(_Tp*)malloc(n*sizeof(_Tp)):0; }
++#endif
+ #ifdef FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE
+     void deallocate(_Tp* p,size_t n) { if (p != 0) __malloc_alloc<0>::deallocate((void*)p, n * sizeof(_Tp)); }
+ #else
+@@ -446,7 +462,19 @@
+         this->_M_finish=uninitialized_fill_n(this->_M_start,n,value);
+     }
+ #endif
+-#ifdef FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE
++#if defined(FABLE_RETAIL_STLP_VECTOR_SIZECTOR_VISIBLE_NOINLINE)
++    // Per-TU opt-in (acctC agentC12, row 0x005EEFF2 CTCInventoryAbilities::GetMagicListUIComponent; like
++    // FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE): the vector(size_type n) body below, visible but kept out of line, as that TU calls
++    // the COMDAT (vector<EHeroAbility>::vector(size_type), call in the row after `push [n]`). Unlike the declaration-only
++    // FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE, c2 knows the constructor keeps no address of its allocator temporary, which it then homes
++    // in the caller's live argument slot as retail does.
++#ifdef _MSC_VER
++    __declspec(noinline)
++#endif
++    explicit vector(size_type n) : _Vector_base<_Tp,_Alloc>(n,_Alloc()) {
++        this->_M_finish=uninitialized_fill_n(this->_M_start,n,_Tp());
++    }
++#elif defined(FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE)
+     // Per-TU opt-in (chunk 779, row 0x00BEAE50 CWaterPatchMesh::Load; like FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE): STLport's
+     // vector(size_type n) is one inline body, which VC7.1 expanded in some TUs and called as a COMDAT in others; that TU calls
+     // vector<unsigned char>::vector(size_type) 0x00514E20 (??0?$vector@EV?$allocator@E@std@@@std@@QAE@I@Z, bound by the landed
+@@ -936,7 +964,22 @@
+ #endif
+ template<class _Tp,class _Alloc> class _List_base {
+ public:
+-#ifdef FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
++#if defined(FABLE_RETAIL_STLP_LIST_BASE_VISIBLE_NOINLINE)
++    // Per-TU opt-in (acctC agentC12, row 0x005EEFF2 CTCInventoryAbilities::GetMagicListUIComponent; like
++    // FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE): the _List_base constructor / destructor bodies below, visible but kept out of line,
++    // as that TU calls the list<EHeroAbility> COMDATs (??0 0x005F88ED, ??1 0x005F8908). Unlike the declaration-only
++    // FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE, c2 knows the constructor keeps no address of its allocator temporary.
++#ifdef _MSC_VER
++    __declspec(noinline)
++#endif
++    _List_base(const _Alloc&) : _M_node(allocator<_List_node<_Tp> >(),0) {
++        _List_node<_Tp>* n=_M_node.allocate(1);n->_M_next=n;n->_M_prev=n;_M_node._M_data=n;
++    }
++#ifdef _MSC_VER
++    __declspec(noinline)
++#endif
++    ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
++#elif defined(FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE)
+     // Per-TU opt-in (Codex name fix 2026-11-10, list<long>): retail calls the _List_base constructor and destructor COMDATs
+     // out of line (??0?$_List_base@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z 0x0042AB58, ??1.. 0x0042AB73) from the
+     // owning classes' constructors and destructors (NUISystem::CAction 0x0042BE50, CTCInventoryTrade 0x0059EB0C, ...).
+@@ -944,9 +987,19 @@
+     _List_base(const _Alloc&);
+     ~_List_base();
+ #else
++#ifdef FABLE_RETAIL_STLP_LIST_BASE_CONVERT_ALLOCATOR
++    // Retail opt-in (acctC agentC31, row 0x00601310 CTCInventoryMap::ConstructQuestsScreenPC): STLport 4.6 _list.h
++    // `_List_base(const allocator_type& __a) : _M_node(_STLP_CONVERT_ALLOCATOR(__a, _Node), (_Node*)0)`, where for a compiler with
++    // member templates _STLP_CONVERT_ALLOCATOR(__a, _Tp) is `__a` (the node allocator is built by allocator's converting
++    // constructor from the element allocator, not default-constructed). Same code; one more inline layer in the caller size.
++    _List_base(const _Alloc& a) : _M_node(a,(_List_node<_Tp>*)0) {
++        _List_node<_Tp>* n=_M_node.allocate(1);n->_M_next=n;n->_M_prev=n;_M_node._M_data=n;
++    }
++#else
+     _List_base(const _Alloc&) : _M_node(allocator<_List_node<_Tp> >(),0) {
+         _List_node<_Tp>* n=_M_node.allocate(1);n->_M_next=n;n->_M_prev=n;_M_node._M_data=n;
+     }
++#endif
+ #ifdef FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+     // Retail opt-in (Codex pass19): native008fada0 calls0048ca60 base destructor.
+ #ifdef _MSC_VER

@@ -1,0 +1,15 @@
+addr       parity           behav  name
+007bc38a   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007bc38a   RELOCATION_MATCH PASS   InitMovement
+007ea580   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@VC3DVector@@J@std@@PAU12@@std@@YIPAU?$pair@VC3DVector@@J@0@PAU10@00ABU__false_type@0@@Z -> 007ea880 labelled 'std::__uninitialized_copy<std::pair<C3DVector,long>*,std::pair<C3DVector,long>*>'
+007ea580   RELOCATION_MATCH PASS   GetAllTargetPoints
+00735fd0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00735fd0   RELOCATION_MATCH PASS   AttemptToStartParticle
+006823d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006823d0   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 4
+  007bc38a RELOCATION_MATCH NThingShot::CTCShotDefinitionThrowPredictive::InitMovement
+  007ea580 RELOCATION_MATCH CTCTargeted::GetAllTargetPoints
+  00735fd0 RELOCATION_MATCH CTCCombat::AttemptToStartParticle
+  006823d0 RELOCATION_MATCH CTCCreatureOpinionOfHero::FrameUpdate

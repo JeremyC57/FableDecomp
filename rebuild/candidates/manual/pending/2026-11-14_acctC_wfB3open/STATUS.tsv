@@ -1,0 +1,3 @@
+address	grade	bytes	test	grades_used	notes
+0x00BA2350	DIFFER(9632v9632)	9632	none	269	near miss, unchanged source (differ/00ba2350.cpp): 2401/2401 instructions aligned; residue = frame membership of used_blank (+4 on slots +10h..+3Ch) and 13 of 34 SetRenderState expansions (two bits per site); both mechanisms measured by the second agent (NOTES.md "Successor"), not closed
+0x00BA5260	RELOCATION_MATCH (in TU only)	4056	none	1	blocked on 0x00BA2350: matches inside differ/tu_00ba2350_00ba5260.cpp with 0x00BA50A0 / 0x00B9D670 / 0x00B9E5B0 / 0x00B9E750; not addmatched (TU needs the real row-1 body), no test written
