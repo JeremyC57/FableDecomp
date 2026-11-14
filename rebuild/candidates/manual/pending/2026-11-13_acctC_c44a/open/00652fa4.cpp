@@ -1,10 +1,11 @@
 // NPlayerGui::CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info) -- draws the d-pad quick-access HUD: the ring sprites, the guild-seal top ring with its tooltip, the context-sensitive and quick-access item icons with their seal / lamp effects, ability crosses, charge graphics and key tooltips, kills unused effects, and the flash / d-pad middle sprites.
-// Grade: DIFFER(4653v4653) -- retail size, 1524 v 1524 instructions; residue = (1) this/def take each other's register (c2 priority this 655 v def 656; retail this=esi, def=edi), (2) flash sprite X order 0x0065409E + `fst` position 0x006540C3, (3) d-pad sprite Y order 0x00654151. Everything before the flash block is right in the swap-masked diff.
+// Grade: DIFFER(4653v4653) -- retail size, 1524 v 1524 instructions, registers as retail; ONE instruction out of place: flash sprite `fst [ebp-4]` at 0x006540C3 (retail after the 3rd `push ebx`, ours after the 2nd at 0x006540C2). FITTED: operator-> text (FABLE_RETAIL_CINTELLIGENTPOINTER_ARROW_CHECKED_LOCALS), seal spelling `def.GuildSealMainLevelUpOffset + def.DPadRingsPos`, FABLE_FORCEINLINE ToC2DCoordI. EVIDENCED new: GFToScreen (PDB-named identity copy, FableWin size-proven) at every copied sprite position.
 // Leaf: ?Draw@CDrawQuickAccessIcons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00652FA4, 4,653 bytes (ret 4 at 0x006541CE). Frame pointer (`lea ebp,[esp-74h]`), /GS cookie, size TU.
 // Identity: RTTI vtable 0x0125A704 slot 2; Ego_r.pdb ?Draw@CDrawQuickAccessIcons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z.
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ARROW_CHECKED_LOCALS
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CRGBCOLOUR
 #define FABLE_RETAIL_CRGBCOLOUR_CTOR4_INITIALISE
@@ -18,7 +19,6 @@
 #define FABLE_RETAIL_C2DCOORDI_TOFLOAT
 #define FABLE_RETAIL_C2DCOORDI_NOTEQUAL
 #define FABLE_RETAIL_C2DVECTOR_TOC2DCOORDI
-#define FABLE_RETAIL_C2DVECTOR_TOC2DVECTOR
 #define FABLE_RETAIL_CRIGHTHANDEDSET
 #define FABLE_RETAIL_CRIGHTHANDEDSET_CTOR
 #define FABLE_RETAIL_CRIGHTHANDEDSET_RIGHT_COMPONENTS
@@ -120,6 +120,7 @@
 #include "engine/CRightHandedSet.h"
 #include "engine/CIntelligentPointer.h"
 #include "engine/CEnginePrimitive2DSprite.h"
+#include "engine/NPlayerGui_Graphics.h"
 #include "engine/CEnginePrimitiveHandle.h"
 #include "engine/CEnginePrimitivePrepareInfo.h"
 #include "engine/CIEngine.h"
@@ -221,7 +222,7 @@ void CDrawQuickAccessIcons::DrawIcon(const CEnginePrimitivePrepareInfo& info, co
         unsigned char backAlpha = guiAlpha;
         if (back == def->QuickAccessMenuGraphic)
             backAlpha = (unsigned char)(backAlpha * 0.5f);
-        CEnginePrimitive2DSprite sprite(0, C2DVector(position.X, position.Y), (EEngine2DLayer)0x45, back, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
+        CEnginePrimitive2DSprite sprite(0, GFToScreen(position), (EEngine2DLayer)0x45, back, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
             ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha(backAlpha), 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Engine.SetPersistentPrimitive(PrimitiveHandles[7], sprite, 0xc0);
     }
@@ -229,7 +230,7 @@ void CDrawQuickAccessIcons::DrawIcon(const CEnginePrimitivePrepareInfo& info, co
         float iconAlpha = guiAlpha * alpha;
         if (PlayerGui->IsShowSpecialAbilityButtons() && guiAlpha < 0xff)
             iconAlpha = special ? 255.0f : 0.0f;
-        CEnginePrimitive2DSprite sprite(0, C2DVector(position.X, position.Y), (EEngine2DLayer)0x44, icon, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
+        CEnginePrimitive2DSprite sprite(0, GFToScreen(position), (EEngine2DLayer)0x44, icon, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
             ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha((unsigned char)iconAlpha), 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f),
             C2DVector(0.0f, 0.0f));
         info.Engine.SetPersistentPrimitive(handles[index], sprite, 0xc0);
@@ -285,12 +286,12 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
     C2DVector pos = GFAnchorToBottomLeft(ringsPos);
     if (!PlayerGui->IsNormalToSpecial() && !PlayerGui->IsSpecialToNormal() && PlayerGui->IsShowSpecialAbilityButtons()) {
         if (def.DPadRingsFavouriteGraphic > 0) {
-            CEnginePrimitive2DSprite sprite(0, C2DVector(pos), (EEngine2DLayer)0x46, def.DPadRingsFavouriteGraphic, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
+            CEnginePrimitive2DSprite sprite(0, GFToScreen(pos), (EEngine2DLayer)0x46, def.DPadRingsFavouriteGraphic, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
                 ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha((unsigned char)HUDRingAlpha), 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
             info.Engine.SetPersistentPrimitive(PrimitiveHandles[0], sprite, 0xc0);
         }
     } else if (def.DPadRingsGraphic > 0) {
-        CEnginePrimitive2DSprite sprite(0, C2DVector(pos), (EEngine2DLayer)0x46, def.DPadRingsGraphic, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
+        CEnginePrimitive2DSprite sprite(0, GFToScreen(pos), (EEngine2DLayer)0x46, def.DPadRingsGraphic, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
             ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha((unsigned char)HUDRingAlpha), 0xff, 0xff, 0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Engine.SetPersistentPrimitive(PrimitiveHandles[0], sprite, 0xc0);
     }
@@ -313,7 +314,7 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
             alpha = HUDRingAlpha;
         }
         alpha = (long)(PlayerGui->GetGuildSealAlpha() * alpha);
-        CEnginePrimitive2DSprite sprite(0, C2DVector(pos), (EEngine2DLayer)0x46, topGraphic, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
+        CEnginePrimitive2DSprite sprite(0, GFToScreen(pos), (EEngine2DLayer)0x46, topGraphic, 0, ENGINE_PRIMITIVE_BLEND_ALPHA,
             ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha((unsigned char)alpha), 0xff, 0xff, 0xff, 0,
             C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Engine.SetPersistentPrimitive(PrimitiveHandles[1], sprite, 0xc0);
@@ -483,14 +484,14 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
         }
         if (flashGraphic > 0) {
             unsigned char flashAlpha = (unsigned char)(long)(FlashFade.GetFadeInOutAlpha() * 255.0f);
-            CEnginePrimitive2DSprite sprite(0, (GFAnchorToBottomLeft(ringsPos) + def.DPadMiddleOffset).ToC2DVector(), (EEngine2DLayer)0x43, flashGraphic, 0,
+            CEnginePrimitive2DSprite sprite(0, GFToScreen(GFAnchorToBottomLeft(ringsPos) + def.DPadMiddleOffset), (EEngine2DLayer)0x43, flashGraphic, 0,
                 ENGINE_PRIMITIVE_BLEND_ALPHA, ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha(flashAlpha), 0xff, 0xff, 0xff, 0,
                 C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
             info.Engine.SetPersistentPrimitive(PrimitiveHandles[7], sprite, 0xc0);
         }
     }
     if (dpadGraphic > 0) {
-        CEnginePrimitive2DSprite sprite(0, (GFAnchorToBottomLeft(ringsPos) + def.DPadMiddleOffset).ToC2DVector(), (EEngine2DLayer)0x44, dpadGraphic, 0,
+        CEnginePrimitive2DSprite sprite(0, GFToScreen(GFAnchorToBottomLeft(ringsPos) + def.DPadMiddleOffset), (EEngine2DLayer)0x44, dpadGraphic, 0,
             ENGINE_PRIMITIVE_BLEND_ALPHA, ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha(0xff), 0xff, 0xff, 0xff, 0,
             C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Engine.SetPersistentPrimitive(PrimitiveHandles[6], sprite, 0xc0);

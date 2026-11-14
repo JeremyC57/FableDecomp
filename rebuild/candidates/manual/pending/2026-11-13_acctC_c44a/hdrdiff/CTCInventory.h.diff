@@ -1,0 +1,121 @@
+--- a/rebuild/include/engine/CTCInventory.h
++++ b/rebuild/include/engine/CTCInventory.h
+@@ -234,6 +234,12 @@
+ #endif
+ class CTCInventory : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
+ public:
++#ifdef FABLE_RETAIL_CTCINVENTORY_OPENINVENTORY
++    // Retail opt-in (agentC23, row 0x0058578B; first written by the acctB lane): Ego_r.pdb 0x005F4D20 / FableWin.pdb 0x0212841C
++    // ?OpenInventory@CTCInventory@@UAEXXZ, the console inventory's top-level menu (CTCInventory vtable 0x01250DE4 slot 30 = the base
++    // NInventory::CTCInventoryBase::OpenInventory slot; every sibling inventory's slot 30 is its OpenInventory). Declaration only.
++    virtual void OpenInventory();                                   // 0x0058578B
++#endif
+ #ifdef FABLE_RETAIL_CTCINVENTORY_REVERTVIDEOCHANGES
+     // agentQ7 (2026-11-11, row 0x0047E9AE CTCInGameMenu::GlobalUpdate): Ego_r.pdb / FableWin.pdb ?RevertVideoChanges@CTCInventory@@QAEXXZ,
+     // out of line in retail at 0x00582754 (the in-game menu's 15-second video-options timeout calls it). Declaration only.
+@@ -273,6 +279,13 @@
+     static ETCInterfaceType StatGetInterfaceType() { return TCI_INVENTORY; }
+     long GetQuickAccessItemGraphicIndex(long slot) const;            // 0x00581FA4
+ #endif
++#ifdef FABLE_RETAIL_CTCINVENTORY_DPADICONS
++    // Retail opt-in (agentC38, row 0x00652FA4 CDrawQuickAccessIcons::Draw): Ego_r.pdb / FableWin.pdb ?GetQuickAccessItem@CTCInventory@@QBEJJ@Z 0x00581E33,
++    // ?UpdateContextSensitiveItemFades@CTCInventory@@QAEXABVCEnginePrimitivePrepareInfo@@@Z 0x00581E6F, ?GetContextSensitiveItemGraphicIndex@CTCInventory@@QBEJJ@Z 0x00581CFD (landed rows).
++    long GetQuickAccessItem(long slot) const;                        // 0x00581E33
++    void UpdateContextSensitiveItemFades(const CEnginePrimitivePrepareInfo& info);   // 0x00581E6F
++    long GetContextSensitiveItemGraphicIndex(long slot) const;       // 0x00581CFD
++#endif
+ #ifdef FABLE_RETAIL_CTCINVENTORY_ITEMSELECTED
+     // Nested opt-in (chunk 1007, row 0x00583E26): the slot-33 override ?OnItemSelected@CTCInventory@@UAEXJAA_N@Z (Ego_r.pdb /
+     // FableWin.pdb; CTCInventory vtable 0x01250DE4 slot 33). Needs FABLE_RETAIL_CTCINVENTORYBASE_VTABLE.
+@@ -408,14 +421,14 @@
+     virtual NHeroInformationScreens::EScreenType GetScreenType() const;
+ #endif // FABLE_RETAIL_CTCINVENTORY_HISCREEN
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCInventory) == 0x228);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, PTop_Level_List) == 0x218);
++FABLE_STATIC_ASSERT_AT(411, sizeof(CTCInventory) == 0x228);
++FABLE_STATIC_ASSERT_AT(412, offsetof(CTCInventory, PTop_Level_List) == 0x218);
+ #ifdef FABLE_RETAIL_CTCINVENTORY_OPTIONSMENU
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, CurrentOpenMenu) == 0x21c);
++FABLE_STATIC_ASSERT_AT(414, offsetof(CTCInventory, CurrentOpenMenu) == 0x21c);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, QuickAccessItems) == 0x148);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, ItemsMenuEntries) == 0x1fc);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, AssignedIcons) == 0x208);
++FABLE_STATIC_ASSERT_AT(416, offsetof(CTCInventory, QuickAccessItems) == 0x148);
++FABLE_STATIC_ASSERT_AT(417, offsetof(CTCInventory, ItemsMenuEntries) == 0x1fc);
++FABLE_STATIC_ASSERT_AT(418, offsetof(CTCInventory, AssignedIcons) == 0x208);
+ #endif // FABLE_ENGINE_CTCINVENTORY_RETAIL_H
+ #else // generated flattened default (unchanged)
+ #ifndef FABLE_ENGINE_CTCINVENTORY_H
+@@ -542,38 +555,38 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTCInventory) == 0x228);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, ThingToAssign) == 0x134);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, ThingSlotToSwap) == 0x138);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, PComponentSlotToSwap) == 0x13c);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, ScreenToShortcut) == 0x140);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, EditBoxes) == 0x144);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, QuickAccessItems) == 0x148);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, ContextSensitiveItems) == 0x154);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, ContextSensitiveFadeTimes) == 0x160);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, InventoryMainPrimitiveHandles) == 0x16c);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, QuickAccessPrimitiveHandles) == 0x178);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, QuickAccessUnusableIconPrimitiveHandles) == 0x184);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, OldObjectRHSet) == 0x190);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, OldRotationAngle) == 0x1a8);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, CurrentObjectRHSet) == 0x1ac);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, CurrentRotationAngle) == 0x1c4);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, ItemRHSetsApplyTo) == 0x1c8);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, EnableQuickAccessAssign) == 0x1cc);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, EnableQuickAccessRemove) == 0x1cd);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, QuickAccessFlashState) == 0x1ce);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, QuickAccessFlashTimer) == 0x1d0);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, ContextSensitiveUpdate) == 0x1d4);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, NumberOfCSOpinionExpressions) == 0x1d8);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, LastCSOpinionExpression) == 0x1e4);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, LastButOneCSOpinionExpression) == 0x1f0);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, ItemsMenuEntries) == 0x1fc);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, AssignedIcons) == 0x208);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, PMouse_Pointer) == 0x214);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, PTop_Level_List) == 0x218);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, CurrentOpenMenu) == 0x21c);
+-FABLE_STATIC_ASSERT(offsetof(CTCInventory, AccumFadeTime) == 0x220);
++FABLE_STATIC_ASSERT_AT(545, sizeof(CTCInventory) == 0x228);
++FABLE_STATIC_ASSERT_AT(546, offsetof(CTCInventory, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(547, offsetof(CTCInventory, ThingToAssign) == 0x134);
++FABLE_STATIC_ASSERT_AT(548, offsetof(CTCInventory, ThingSlotToSwap) == 0x138);
++FABLE_STATIC_ASSERT_AT(549, offsetof(CTCInventory, PComponentSlotToSwap) == 0x13c);
++FABLE_STATIC_ASSERT_AT(550, offsetof(CTCInventory, ScreenToShortcut) == 0x140);
++FABLE_STATIC_ASSERT_AT(551, offsetof(CTCInventory, EditBoxes) == 0x144);
++FABLE_STATIC_ASSERT_AT(552, offsetof(CTCInventory, QuickAccessItems) == 0x148);
++FABLE_STATIC_ASSERT_AT(553, offsetof(CTCInventory, ContextSensitiveItems) == 0x154);
++FABLE_STATIC_ASSERT_AT(554, offsetof(CTCInventory, ContextSensitiveFadeTimes) == 0x160);
++FABLE_STATIC_ASSERT_AT(555, offsetof(CTCInventory, InventoryMainPrimitiveHandles) == 0x16c);
++FABLE_STATIC_ASSERT_AT(556, offsetof(CTCInventory, QuickAccessPrimitiveHandles) == 0x178);
++FABLE_STATIC_ASSERT_AT(557, offsetof(CTCInventory, QuickAccessUnusableIconPrimitiveHandles) == 0x184);
++FABLE_STATIC_ASSERT_AT(558, offsetof(CTCInventory, OldObjectRHSet) == 0x190);
++FABLE_STATIC_ASSERT_AT(559, offsetof(CTCInventory, OldRotationAngle) == 0x1a8);
++FABLE_STATIC_ASSERT_AT(560, offsetof(CTCInventory, CurrentObjectRHSet) == 0x1ac);
++FABLE_STATIC_ASSERT_AT(561, offsetof(CTCInventory, CurrentRotationAngle) == 0x1c4);
++FABLE_STATIC_ASSERT_AT(562, offsetof(CTCInventory, ItemRHSetsApplyTo) == 0x1c8);
++FABLE_STATIC_ASSERT_AT(563, offsetof(CTCInventory, EnableQuickAccessAssign) == 0x1cc);
++FABLE_STATIC_ASSERT_AT(564, offsetof(CTCInventory, EnableQuickAccessRemove) == 0x1cd);
++FABLE_STATIC_ASSERT_AT(565, offsetof(CTCInventory, QuickAccessFlashState) == 0x1ce);
++FABLE_STATIC_ASSERT_AT(566, offsetof(CTCInventory, QuickAccessFlashTimer) == 0x1d0);
++FABLE_STATIC_ASSERT_AT(567, offsetof(CTCInventory, ContextSensitiveUpdate) == 0x1d4);
++FABLE_STATIC_ASSERT_AT(568, offsetof(CTCInventory, NumberOfCSOpinionExpressions) == 0x1d8);
++FABLE_STATIC_ASSERT_AT(569, offsetof(CTCInventory, LastCSOpinionExpression) == 0x1e4);
++FABLE_STATIC_ASSERT_AT(570, offsetof(CTCInventory, LastButOneCSOpinionExpression) == 0x1f0);
++FABLE_STATIC_ASSERT_AT(571, offsetof(CTCInventory, ItemsMenuEntries) == 0x1fc);
++FABLE_STATIC_ASSERT_AT(572, offsetof(CTCInventory, AssignedIcons) == 0x208);
++FABLE_STATIC_ASSERT_AT(573, offsetof(CTCInventory, PMouse_Pointer) == 0x214);
++FABLE_STATIC_ASSERT_AT(574, offsetof(CTCInventory, PTop_Level_List) == 0x218);
++FABLE_STATIC_ASSERT_AT(575, offsetof(CTCInventory, CurrentOpenMenu) == 0x21c);
++FABLE_STATIC_ASSERT_AT(576, offsetof(CTCInventory, AccumFadeTime) == 0x220);
+ 
+ #endif // FABLE_ENGINE_CTCINVENTORY_H
+ #endif // FABLE_RETAIL_CTCINVENTORY

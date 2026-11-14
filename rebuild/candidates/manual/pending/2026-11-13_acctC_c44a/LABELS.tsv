@@ -1,0 +1,2 @@
+address	name	evidence
+0058807d	?OpenPCInventoryMenu@CTCInventory@@QAEXXZ	Ego_r.pdb + FableWin.pdb name sets; callers 0x0058EA07 (OpenInventoryShortcut) and 0x0062C747 (CWorld::EAOpenPCInventoryMenu); PC_INVENTORY_LIST literal

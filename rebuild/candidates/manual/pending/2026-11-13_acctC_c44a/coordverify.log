@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0058807d   RELOCATION_MATCH PASS   OpenPCInventoryMenu
+
+WINS: 1
+  0058807d RELOCATION_MATCH CTCInventory::OpenPCInventoryMenu
