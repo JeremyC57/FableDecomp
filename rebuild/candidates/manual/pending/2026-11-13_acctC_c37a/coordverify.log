@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0075d580   RELOCATION_MATCH PASS   UpdateCameraParams
+0077b350   WARN RELOC_NAME: ??1CEnginePrimitiveAnimatingMesh@@QAE@XZ -> 00708a30 labelled 'CAnimationInterpolatorOwner_00708a30::~CAnimationInterpolatorOwner_00708a30'
+0077b350   WARN RELOC_NAME: ??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ -> 005bc0d3 labelled '_global::StdList_Dtor_005bc0d3'
+0077b350   RELOCATION_MATCH PASS   OnAppearanceDraw
+
+WINS: 2
+  0075d580 RELOCATION_MATCH CTCCameraPointScriptedSpline::UpdateCameraParams
+  0077b350 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::OnAppearanceDraw

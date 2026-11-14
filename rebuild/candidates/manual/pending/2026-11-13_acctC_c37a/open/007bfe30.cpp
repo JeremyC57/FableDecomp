@@ -1,5 +1,5 @@
 // NThingShot::CTCShotDefinitionBase::UpdateCollision(bool& killed_me) -- sweep the shot's last weapon-trail segment against the hit locations of the solid things in a box around it and report the nearest hit as a collision
-// Grade: DIFFER(1628v1648) -- register allocation (this in edi v ebx, the GetSubDef bool in bl v spilled [esp+12h]), filter-bind stores after the SolidToThing ctor call (retail hoists F1/F2 above it, 0x007C010B), aligned loop head (retail none, 0x007C0162), dist^2 x87 keeps components (0x007C039D), a few spills
+// Grade: DIFFER(1643v1648) -- register permutation only: retail this=ebx, weaponDef.Object held in edi to the final release, zero in ebp, the && result in memory [esp+12h]; ours this=ebp, result in bl, zero in edi, weaponDef.Object reloaded
 // Leaf: ?UpdateCollision@CTCShotDefinitionBase@NThingShot@@MAEXAA_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BFE30, 1648 bytes, thiscall `ret 4`. Identity: Ego_r.pdb ?UpdateCollision@CTCShotDefinitionBase@NThingShot@@MAEXAA_N@Z
 //   (donor 0x007C0E70) + FableWin.pdb; the header's COLLISION opt-in declares it (protected virtual).
@@ -138,7 +138,7 @@ void NThingShot::CTCShotDefinitionBase::UpdateCollision(bool& killed_me)
                     triangle[2] = prev.first;
                     hitLocation = hitLocations->GetPCombatFirstHitLocationIntersectionWithTriangle(triangle, hitPos, hitNormal, 0.25f);
                     if (!hitLocation) {
-                        triangle[0] = last.first;
+                        triangle[0] = last.second;
                         triangle[1] = prev.second;
                         triangle[2] = prev.first;
                         hitLocation = hitLocations->GetPCombatFirstHitLocationIntersectionWithTriangle(triangle, hitPos, hitNormal, 0.25f);

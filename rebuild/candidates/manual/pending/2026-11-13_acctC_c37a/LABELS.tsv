@@ -1,0 +1,8 @@
+address	name	evidence
+0x0075D580	CTCCameraPointScriptedSpline::UpdateCameraParams	Ego_r 0x0076D6E0 + FableWin 0x025C98E0
+0x0075EE70	std::vector<CTCCameraPointScriptedSpline::CKeyCamera>::size	called with ecx = &KeyCameras, unsigned result (landed row)
+0x0077B350	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::OnAppearanceDraw	Ego_r 0x00784BC0 + vtable slot / sibling 0x00727D00
+0x0077B860	std::vector<CEngineTextureDecal>::operator=	called with ecx = &mesh.TextureDecals, arg *draw_info.PTextureDecals (0x0077B5F4)
+0x00708A30	CEnginePrimitiveAnimatingMesh::~CEnginePrimitiveAnimatingMesh	see NAME_FIXES
+0x007EA580	CTCTargeted::GetAllTargetPoints	Ego_r + FableWin; see NOTES
+0x007EAA40	std::vector<std::pair<C3DVector,long>>::_M_insert_overflow	called from the default push_back of 0x007EA580 (0x007EA73C)

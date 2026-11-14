@@ -2,6 +2,7 @@
 // Grade: DIFFER(969v963) -- `this` spilled at entry (retail keeps it in ebp all through and spills the loop-1 index/offset instead); channel desc 3 byte stores v retail 2; position FP order
 // Leaf: ?OnAppearanceDraw@CTCGraphicAppearanceMultipleStaticMeshes@NGraphicAppearance@@UAE_NAAVCTCGraphicAppearance@2@ABVCGraphicAppearanceDrawInfo@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E15C0, 963 bytes, thiscall on the CAGraphicAppearanceComponent subobject (+0x0C), `ret 8`.
+#define FABLE_RETAIL_CENGINEPRIMITIVETHEMECHANNELDESC_INDICES
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -80,8 +81,7 @@ bool CTCGraphicAppearanceMultipleStaticMeshes::OnAppearanceDraw(CTCGraphicAppear
     if (PrimHandles.empty()) {
         for (i = 0; i < PDef->Meshes.size(); ++i)
         {
-            CPrimitive* primitive = tc_appearance.AddPersistentPrimitive(CPrimitive((EPrimitiveType)1, PDef->Meshes[i].Mesh));
-            PrimHandles.push_back(primitive);
+            PrimHandles.push_back(tc_appearance.AddPersistentPrimitive(CPrimitive((EPrimitiveType)1, PDef->Meshes[i].Mesh)));
         }
     } else if (draw_info.ReasonsForDraw == 1) {
         for (unsigned long i = 0; i < PrimHandles.size(); ++i)
@@ -100,10 +100,10 @@ bool CTCGraphicAppearanceMultipleStaticMeshes::OnAppearanceDraw(CTCGraphicAppear
         if (g_LightingChannelDrawFilter >= 0 && channel.ChannelIndex0 != 0)
             continue;
         float fade = fade_distance;
-        if (entry.OverrideRenderFadeDistance)
-            fade = entry.RenderFadeDistance;
+        if (PDef->Meshes[i].OverrideRenderFadeDistance)
+            fade = PDef->Meshes[i].RenderFadeDistance;
         bool bullet_time_affects_cloth = GetParentThing().IsAffectedByBulletTime();
-        CEnginePrimitiveStaticMesh mesh(GetParentThing().GetUniqueID(), entry.Mesh,
+        CEnginePrimitiveStaticMesh mesh(GetParentThing().GetUniqueID(), PDef->Meshes[i].Mesh,
             draw_info.Pos->GetInterpolated(draw_info.Interpolate), draw_info.Orientation->GetInterpolated(draw_info.Interpolate),
             size, true, tc_appearance.GetAlpha(), tc_appearance.GetTintColour(), fade, (EEngineInterpolationSet)0, channel,
             bullet_time_affects_cloth);

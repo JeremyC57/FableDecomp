@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/CCardinalSpline.h
++++ b/rebuild/include/engine/CCardinalSpline.h
+@@ -19,8 +19,12 @@
+  const C3DVector& GetControlPoint(long index)const{return ControlPoints[index];}
+  void SetControlPoint(long index,const C3DVector& point){ControlPoints[index]=point;}
+ #endif
++#ifdef FABLE_RETAIL_CCARDINALSPLINE_GETSPLINEPOSITION
++ // agentC37 (row 0x0075D580): Ego_r.pdb 0x00BAE530 ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z (retail 0x00A567A0). Declaration only.
++ void GetSplinePosition(C3DVector& position,float t)const;            // 0x00A567A0
++#endif
+ private:
+  CArray<C3DVector> ControlPoints;float Tension;bool EndPointsConnected;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CCardinalSpline)==0x14);
++FABLE_STATIC_ASSERT_AT(25, sizeof(CCardinalSpline)==0x14);
+ #endif

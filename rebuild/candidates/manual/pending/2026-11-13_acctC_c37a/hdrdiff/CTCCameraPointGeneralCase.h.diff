@@ -1,0 +1,26 @@
+--- a/rebuild/include/engine/CTCCameraPointGeneralCase.h
++++ b/rebuild/include/engine/CTCCameraPointGeneralCase.h
+@@ -71,6 +71,14 @@
+ private:
+  bool IsAngleValid()const;                                            // 0x0075C530
+ #endif // FABLE_RETAIL_CTCCAMERAPOINTDEFINITIONBASE_VTABLE
++#ifdef FABLE_RETAIL_CTCCAMERAPOINTDEFINITIONBASE_TRANSFORM
++// agentC37 (row 0x0075D580): Ego_r 0x0076AE70 / FableWin 0x024F44E0 ?TransformPosition@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBV2@PBVCRightHandedSet@@@Z
++// (retail 0x0075C420) and Ego_r 0x0076ACC0 / FableWin 0x024F4300 ?TransformVector@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBVCRightHandedSet@@@Z
++// (retail 0x0075C280); both protected. Declarations only.
++protected:
++ class C3DVector TransformPosition(const class C3DVector&,const class C3DVector*,const class CRightHandedSet*)const;   // 0x0075C420
++ class C3DVector TransformVector(const class C3DVector&,const class CRightHandedSet*)const;                            // 0x0075C280
++#endif // FABLE_RETAIL_CTCCAMERAPOINTDEFINITIONBASE_TRANSFORM
+ };
+ class CTCCameraPointShapeActivationBase:public CTCCameraPointDefinitionBase{};
+ class CTCCameraPointGeneralCase:public CTCCameraPointShapeActivationBase {
+@@ -90,6 +98,6 @@
+  bool AllowRightStickZoom,AllowRightStickRotation,AllowZTarget,AutoGoBehind;
+  float AutoGoBehindTime;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCCameraPointDefinitionBase)==64);
+-FABLE_STATIC_ASSERT(sizeof(CTCCameraPointGeneralCase)==84);
++FABLE_STATIC_ASSERT_AT(93, sizeof(CTCCameraPointDefinitionBase)==64);
++FABLE_STATIC_ASSERT_AT(94, sizeof(CTCCameraPointGeneralCase)==84);
+ #endif
