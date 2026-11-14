@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0074af50   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+0074af50   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+0074af50   WARN RELOC_NAME: ?SetGenerator@CTCGeneratedCreature@@QAEXABVCThing@@@Z -> 0074d0d0 labelled '_unattributed::AssignTarget_0074d0d0'
+0074af50   WARN RELOC_NAME: ??1CThingAICreatureInit@@QAE@XZ -> 004fad50 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+0074af50   RELOCATION_MATCH PASS   CreateCreaturesUndead
+
+WINS: 1
+  0074af50 RELOCATION_MATCH CTCCreatureGenerator::CreateCreaturesUndead

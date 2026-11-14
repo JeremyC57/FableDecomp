@@ -1,0 +1,7 @@
+address	name	evidence
+0074af50	?CreateCreaturesUndead@CTCCreatureGenerator@@IAEXPAVCThingCreatureBase@@@Z	Ego_r.pdb + FableWin.pdb; ret 4; caller UpdateUndead
+004fad50	??1CThingAICreatureInit@@QAE@XZ	FableWin.pdb; called on the init local
+0049d910	?IsCreatureGenerationEnabledForGroup@CWorld@@QBE_NK@Z	Ego_r.pdb + FableWin.pdb
+0075d580	?UpdateCameraParams@CTCCameraPointScriptedSpline@@QAEMMAAVC3DVector@@0AAM1AA_NPBV2@PBVCRightHandedSet@@@Z	Ego_r.pdb 0x0076D6E0 + FableWin.pdb 0x025C98E0; ret 0x20
+0074d0d0	?SetGenerator@CTCGeneratedCreature@@QAEXABVCThing@@@Z	FableWin.pdb + Ego_r layout PGenerator +0xC; caller 0x0074B181
+0074dd20	??0CCreatureAction_UndeadIdleUnderground@@QAE@AAVCThingCreatureBase@@@Z	Ego_r.pdb + FableWin.pdb

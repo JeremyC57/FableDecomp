@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0074d0d0	?SetGenerator@CTCGeneratedCreature@@QAEXABVCThing@@@Z	FableWin.pdb name; Ego_r layout CTCGeneratedCreature PGenerator +0xC; caller 0x0074B181 passes ParentThing to the AddTC("CTCGeneratedCreature") result	unattributed AssignTarget_0074d0d0 (CClass_0074d0d0)
+0074dd20	??0CCreatureAction_UndeadIdleUnderground@@QAE@AAVCThingCreatureBase@@@Z	Ego_r.pdb + FableWin.pdb	ctor taking CThingCreatureBase* (landed row model)
+004fad50	??1CThingAICreatureInit@@QAE@XZ	FableWin.pdb name; called on the CThingAICreatureInit local at 0x0074B1F3 / 0x0074B253 / 0x0074B269 (two CCharString members released)	std::_Dest_val<...CRegisteredMusicEntry...> (catalog label of a byte twin)
