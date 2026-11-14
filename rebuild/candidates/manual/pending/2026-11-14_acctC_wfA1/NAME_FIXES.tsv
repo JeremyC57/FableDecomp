@@ -1,0 +1,5 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00c271f0	?Play@CPhysicalPlayer@@QAEXPAUCSoundEventManager@@PAUSPlayDesc@@PAUCSoundEvent@@PAUSEventLevel@@MM@Z (descriptive, kept)	reloc binding of landed caller 0x00C20A20; same object/offsets as landed CCodaPlayback rows 0x00C27550/0x00C276B0 (vtable 0x012B4034)	class named CCodaPlayback in 0x00C27550 / 0x00C27620 / 0x00C276B0 -- one class, two descriptive names: coordinator to pick one
+00c271e0	CPhysicalPlayer::UpdateManagerTime(CSoundEventManager*) (descriptive)	body `mov ecx,[esp+4] ; call 0x00C11700 ; fstp st(0) ; ret 4` = thiscall member calling the manager's double-returning 0x00C11700	landed as global_Consval / Cons_val(Alloc*,Pair*,Pair*) (propagated nonsense)
+00c11700	CSoundEventManager::GetTime() (descriptive, double)	`add ecx,7D8h ; jmp 0x00C25F00` thiscall forwarder	?cons_ctor@@YINPAUPair@@@Z (fastcall, propagated)
+00c35dd0	CODA_SourcePlay(CODASource*, long looping) (landed leaf _CODA_SourcePlay@8)	Play passes (source, m_loopsLeft != 0) after setting the play cursor	_CODA_StopSource@8 in landed 0x00C276B0 (conflicting descriptive names for one address)

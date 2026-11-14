@@ -1,0 +1,5 @@
+address	name	evidence
+00dfca90	NScript::CQ_TraderConflictGoodScript::CBanditExtra::Main	Ego_r ?Main@CBanditExtra@CQ_TraderConflictGoodScript@NScript@@EAEXXZ; vtable 0x012DEE14 slot 1 (landed Alloc)
+006b2ca0	CEnvironment::UpdateSunAndMoonPositions	Ego_r 0x006EE710 / FableWin 0x0244D960 ?UpdateSunAndMoonPositions@CEnvironment@@AAEXXZ; reloc binding from 0x006B3FF0
+006d0830	CTCWife::GlobalUpdate	Ego_r 0x00705510 / FableWin 0x02483170 ?GlobalUpdate@CTCWife@@UAEX_N@Z; vtable 0x0125ED5C slot 26
+00c271f0	CPhysicalPlayer::Play (descriptive)	reloc binding of landed 0x00C20A20

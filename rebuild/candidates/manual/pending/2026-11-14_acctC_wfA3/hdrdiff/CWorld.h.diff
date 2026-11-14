@@ -1,0 +1,285 @@
+--- a/rebuild/include/engine/CWorld.h
++++ b/rebuild/include/engine/CWorld.h
+@@ -307,6 +307,15 @@
+     const CMessageEventManager& GetMessageEventManager()const{return *PMessageEventManager_Data;}
+ #endif
+ #endif
++#ifdef FABLE_RETAIL_CWORLD_ISPERFORMINGREGIONLOADREALLY
++    // agentC30 (row 0x007B57C0): FableWin.pdb ?IsPerformingRegionLoadReally@CWorld@@QBE_NXZ, inline in retail (`mov ecx,[eax+104h] ;
++    // test ecx,ecx` on PeekWorld(), 0x007B58F0): RegionLoadStatus +0x104 non-zero. Body only, no layout change.
++    bool IsPerformingRegionLoadReally() const { return RegionLoadStatus != 0; }
++#endif
++#ifdef FABLE_RETAIL_CWORLD_ISCREATUREGENERATIONENABLEDFORGROUP
++    // agentC36 (row 0x0074AF50): Ego_r.pdb / FableWin.pdb ?IsCreatureGenerationEnabledForGroup@CWorld@@QBE_NK@Z, retail 0x0049D910. Declaration only.
++    bool IsCreatureGenerationEnabledForGroup(unsigned long) const;
++#endif
+ #ifdef FABLE_RETAIL_CWORLD_QUESTCOMPLETIONUI
+     // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): FableWin.pdb ?GetMusicManager@CWorld@@QAEAAVCMusicManager@@XZ
+     // (inline: `call GetWorld ; mov ecx,[eax+6Ch]`, 0x005E7BF1), Ego_r.pdb ?SetAsStarting3DRendering@CWorld@@QAEXXZ (inline: GetWorld,
+@@ -533,7 +542,7 @@
+     bool                        HasInitialisedStartTime;     // +0x190
+     unsigned char               _pad_0x191[0x7];             // +0x191
+ };
+-FABLE_STATIC_ASSERT(sizeof(CWorld) == 0x198);
++FABLE_STATIC_ASSERT_AT(536, sizeof(CWorld) == 0x198);
+ #else // flattened Ego_r layout (the landed default, unchanged)
+ #pragma pack(push, 1)
+ class CWorld {
+@@ -674,137 +683,137 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CWorld) == 0x198);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(677, sizeof(CWorld) == 0x198);
++FABLE_STATIC_ASSERT_AT(678, offsetof(CWorld, __vftable) == 0x0);
+ #endif // FABLE_RETAIL_CWORLD
+ #ifndef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+-FABLE_STATIC_ASSERT(offsetof(CWorld, Component) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PlayerManager) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, DefinitionManager) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PWorldMap_ptr) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PEnvironment_ptr) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PGameTimeManager_ptr) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PThingSearchTools_ptr) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PAtmosProcessor_Data) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PAtmosProcessor_Info) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PGameCamera_ptr) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PGameCameraManager_ptr) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PCurrentGameCamera) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PGameScriptInterface_ptr) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PMainMeshBank_Data) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PMainMeshBank_Info) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PAnimationManager) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PNavigationManager_ptr) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PThingCombatManager_ptr) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PThingManager_ptr) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PFactionManager_ptr) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PScriptInfoManager_Data) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PScriptInfoManager_Info) == 0x5c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PMessageEventManager_Data) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PMessageEventManager_Info) == 0x64);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PBulletTimeManager_ptr) == 0x68);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PMusicManager_Data) == 0x6c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PMusicManager_Info) == 0x70);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, POpinionReactionManager_Data) == 0x74);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, POpinionReactionManager_Info) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PScriptConversationManager_ptr) == 0x7c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, JustLoaded) == 0x80);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, CurrentWorldName_PStringData) == 0x84);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, ConsolePauseAtFrameNumber) == 0x88);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, FrameStarted3DRendering) == 0x8c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, LastUpdateTimeLength) == 0x90);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, LastUpdateTime) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, CountdownTimer) == 0xa0);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, Paused) == 0xa4);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, SlowMotion) == 0xa5);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, ShowDebugText) == 0xa6);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, ShowFPSText) == 0xa7);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, ShowProfileText) == 0xa8);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, InitialActiveQuests) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegisteredQuests) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, ActiveTestQuests) == 0xc4);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, CreatureGenerationDisabledGroups) == 0xd0);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, CreatureGenerationEnabled) == 0xd4);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, TeleportingEnabled) == 0xd5);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, ExperienceSpendingEnabled) == 0xd6);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, SavingEnabled) == 0xd7);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, DontPopulateNextLoadedRegion) == 0xd8);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, HeroSleepingEnabled) == 0xd9);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, MapTableShowQuestCardsOnUsed) == 0xda);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, ScreenToFadeInOnNextRegionChange) == 0xdb);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn) == 0xdc);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, MiniMapEnabled) == 0xdd);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, MiniMapActiveBeforeDisabled) == 0xde);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadDisplayRegionName) == 0xdf);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, GuildMasterMessagesEnabled) == 0xe0);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, SummonerDeathExplosionAffectsHero) == 0xe1);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, WaitingForInventoryTutorialToFinish) == 0xe2);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, HeroInformationScreenModeAfterTutorial) == 0xe4);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, FrameCachedLODCentre) == 0xe8);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_X) == 0xec);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_Y) == 0xf0);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_Z) == 0xf4);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameLoadStatus) == 0xf8);
++FABLE_STATIC_ASSERT_AT(681, offsetof(CWorld, Component) == 0x8);
++FABLE_STATIC_ASSERT_AT(682, offsetof(CWorld, PlayerManager) == 0xc);
++FABLE_STATIC_ASSERT_AT(683, offsetof(CWorld, DefinitionManager) == 0x10);
++FABLE_STATIC_ASSERT_AT(684, offsetof(CWorld, PWorldMap_ptr) == 0x14);
++FABLE_STATIC_ASSERT_AT(685, offsetof(CWorld, PEnvironment_ptr) == 0x18);
++FABLE_STATIC_ASSERT_AT(686, offsetof(CWorld, PGameTimeManager_ptr) == 0x1c);
++FABLE_STATIC_ASSERT_AT(687, offsetof(CWorld, PThingSearchTools_ptr) == 0x20);
++FABLE_STATIC_ASSERT_AT(688, offsetof(CWorld, PAtmosProcessor_Data) == 0x24);
++FABLE_STATIC_ASSERT_AT(689, offsetof(CWorld, PAtmosProcessor_Info) == 0x28);
++FABLE_STATIC_ASSERT_AT(690, offsetof(CWorld, PGameCamera_ptr) == 0x2c);
++FABLE_STATIC_ASSERT_AT(691, offsetof(CWorld, PGameCameraManager_ptr) == 0x30);
++FABLE_STATIC_ASSERT_AT(692, offsetof(CWorld, PCurrentGameCamera) == 0x34);
++FABLE_STATIC_ASSERT_AT(693, offsetof(CWorld, PGameScriptInterface_ptr) == 0x38);
++FABLE_STATIC_ASSERT_AT(694, offsetof(CWorld, PMainMeshBank_Data) == 0x3c);
++FABLE_STATIC_ASSERT_AT(695, offsetof(CWorld, PMainMeshBank_Info) == 0x40);
++FABLE_STATIC_ASSERT_AT(696, offsetof(CWorld, PAnimationManager) == 0x44);
++FABLE_STATIC_ASSERT_AT(697, offsetof(CWorld, PNavigationManager_ptr) == 0x48);
++FABLE_STATIC_ASSERT_AT(698, offsetof(CWorld, PThingCombatManager_ptr) == 0x4c);
++FABLE_STATIC_ASSERT_AT(699, offsetof(CWorld, PThingManager_ptr) == 0x50);
++FABLE_STATIC_ASSERT_AT(700, offsetof(CWorld, PFactionManager_ptr) == 0x54);
++FABLE_STATIC_ASSERT_AT(701, offsetof(CWorld, PScriptInfoManager_Data) == 0x58);
++FABLE_STATIC_ASSERT_AT(702, offsetof(CWorld, PScriptInfoManager_Info) == 0x5c);
++FABLE_STATIC_ASSERT_AT(703, offsetof(CWorld, PMessageEventManager_Data) == 0x60);
++FABLE_STATIC_ASSERT_AT(704, offsetof(CWorld, PMessageEventManager_Info) == 0x64);
++FABLE_STATIC_ASSERT_AT(705, offsetof(CWorld, PBulletTimeManager_ptr) == 0x68);
++FABLE_STATIC_ASSERT_AT(706, offsetof(CWorld, PMusicManager_Data) == 0x6c);
++FABLE_STATIC_ASSERT_AT(707, offsetof(CWorld, PMusicManager_Info) == 0x70);
++FABLE_STATIC_ASSERT_AT(708, offsetof(CWorld, POpinionReactionManager_Data) == 0x74);
++FABLE_STATIC_ASSERT_AT(709, offsetof(CWorld, POpinionReactionManager_Info) == 0x78);
++FABLE_STATIC_ASSERT_AT(710, offsetof(CWorld, PScriptConversationManager_ptr) == 0x7c);
++FABLE_STATIC_ASSERT_AT(711, offsetof(CWorld, JustLoaded) == 0x80);
++FABLE_STATIC_ASSERT_AT(712, offsetof(CWorld, CurrentWorldName_PStringData) == 0x84);
++FABLE_STATIC_ASSERT_AT(713, offsetof(CWorld, ConsolePauseAtFrameNumber) == 0x88);
++FABLE_STATIC_ASSERT_AT(714, offsetof(CWorld, FrameStarted3DRendering) == 0x8c);
++FABLE_STATIC_ASSERT_AT(715, offsetof(CWorld, LastUpdateTimeLength) == 0x90);
++FABLE_STATIC_ASSERT_AT(716, offsetof(CWorld, LastUpdateTime) == 0x98);
++FABLE_STATIC_ASSERT_AT(717, offsetof(CWorld, CountdownTimer) == 0xa0);
++FABLE_STATIC_ASSERT_AT(718, offsetof(CWorld, Paused) == 0xa4);
++FABLE_STATIC_ASSERT_AT(719, offsetof(CWorld, SlowMotion) == 0xa5);
++FABLE_STATIC_ASSERT_AT(720, offsetof(CWorld, ShowDebugText) == 0xa6);
++FABLE_STATIC_ASSERT_AT(721, offsetof(CWorld, ShowFPSText) == 0xa7);
++FABLE_STATIC_ASSERT_AT(722, offsetof(CWorld, ShowProfileText) == 0xa8);
++FABLE_STATIC_ASSERT_AT(723, offsetof(CWorld, InitialActiveQuests) == 0xac);
++FABLE_STATIC_ASSERT_AT(724, offsetof(CWorld, RegisteredQuests) == 0xb8);
++FABLE_STATIC_ASSERT_AT(725, offsetof(CWorld, ActiveTestQuests) == 0xc4);
++FABLE_STATIC_ASSERT_AT(726, offsetof(CWorld, CreatureGenerationDisabledGroups) == 0xd0);
++FABLE_STATIC_ASSERT_AT(727, offsetof(CWorld, CreatureGenerationEnabled) == 0xd4);
++FABLE_STATIC_ASSERT_AT(728, offsetof(CWorld, TeleportingEnabled) == 0xd5);
++FABLE_STATIC_ASSERT_AT(729, offsetof(CWorld, ExperienceSpendingEnabled) == 0xd6);
++FABLE_STATIC_ASSERT_AT(730, offsetof(CWorld, SavingEnabled) == 0xd7);
++FABLE_STATIC_ASSERT_AT(731, offsetof(CWorld, DontPopulateNextLoadedRegion) == 0xd8);
++FABLE_STATIC_ASSERT_AT(732, offsetof(CWorld, HeroSleepingEnabled) == 0xd9);
++FABLE_STATIC_ASSERT_AT(733, offsetof(CWorld, MapTableShowQuestCardsOnUsed) == 0xda);
++FABLE_STATIC_ASSERT_AT(734, offsetof(CWorld, ScreenToFadeInOnNextRegionChange) == 0xdb);
++FABLE_STATIC_ASSERT_AT(735, offsetof(CWorld, DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn) == 0xdc);
++FABLE_STATIC_ASSERT_AT(736, offsetof(CWorld, MiniMapEnabled) == 0xdd);
++FABLE_STATIC_ASSERT_AT(737, offsetof(CWorld, MiniMapActiveBeforeDisabled) == 0xde);
++FABLE_STATIC_ASSERT_AT(738, offsetof(CWorld, RegionLoadDisplayRegionName) == 0xdf);
++FABLE_STATIC_ASSERT_AT(739, offsetof(CWorld, GuildMasterMessagesEnabled) == 0xe0);
++FABLE_STATIC_ASSERT_AT(740, offsetof(CWorld, SummonerDeathExplosionAffectsHero) == 0xe1);
++FABLE_STATIC_ASSERT_AT(741, offsetof(CWorld, WaitingForInventoryTutorialToFinish) == 0xe2);
++FABLE_STATIC_ASSERT_AT(742, offsetof(CWorld, HeroInformationScreenModeAfterTutorial) == 0xe4);
++FABLE_STATIC_ASSERT_AT(743, offsetof(CWorld, FrameCachedLODCentre) == 0xe8);
++FABLE_STATIC_ASSERT_AT(744, offsetof(CWorld, CachedLODCentre_X) == 0xec);
++FABLE_STATIC_ASSERT_AT(745, offsetof(CWorld, CachedLODCentre_Y) == 0xf0);
++FABLE_STATIC_ASSERT_AT(746, offsetof(CWorld, CachedLODCentre_Z) == 0xf4);
++FABLE_STATIC_ASSERT_AT(747, offsetof(CWorld, SaveGameLoadStatus) == 0xf8);
+ #else
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PWorldMap) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PGameCameraManager) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PMainMeshBank) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PFactionManager) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PMessageEventManager) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, POpinionReactionManager) == 0x74);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PScriptConversationManager) == 0x7c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, ConsolePauseAtFrameNumber) == 0x88);
++FABLE_STATIC_ASSERT_AT(749, offsetof(CWorld, PWorldMap) == 0x14);
++FABLE_STATIC_ASSERT_AT(750, offsetof(CWorld, PGameCameraManager) == 0x30);
++FABLE_STATIC_ASSERT_AT(751, offsetof(CWorld, PMainMeshBank) == 0x3c);
++FABLE_STATIC_ASSERT_AT(752, offsetof(CWorld, PFactionManager) == 0x54);
++FABLE_STATIC_ASSERT_AT(753, offsetof(CWorld, PMessageEventManager) == 0x60);
++FABLE_STATIC_ASSERT_AT(754, offsetof(CWorld, POpinionReactionManager) == 0x74);
++FABLE_STATIC_ASSERT_AT(755, offsetof(CWorld, PScriptConversationManager) == 0x7c);
++FABLE_STATIC_ASSERT_AT(756, offsetof(CWorld, ConsolePauseAtFrameNumber) == 0x88);
+ #endif
+ #ifdef FABLE_RETAIL_CWORLD
+-FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGamePathName) == 0xfc);
++FABLE_STATIC_ASSERT_AT(759, offsetof(CWorld, SaveGamePathName) == 0xfc);
+ #else
+-FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGamePathName_PStringData) == 0xfc);
++FABLE_STATIC_ASSERT_AT(761, offsetof(CWorld, SaveGamePathName_PStringData) == 0xfc);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CWorld, AutoSaveLocked) == 0x100);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, SerialisingAboutToLoadHeroState) == 0x101);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, SerialisingHeroState) == 0x102);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, SerialisingNonPersistentQuestItems) == 0x103);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStatus) == 0x104);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartPos_X) == 0x108);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartPos_Y) == 0x10c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartPos_Z) == 0x110);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartAngleXY) == 0x114);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadFollowers) == 0x118);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PreviousRegion) == 0x124);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, NumberOfTimesFreezeControlsModeAddedDuringRegionLoad) == 0x128);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadViaTeleporter) == 0x12c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadViaDoor) == 0x12d);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PutIntoPauseModeOnRegionChange) == 0x12e);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, DisplayMiniMapOnRegionLoad) == 0x12f);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadWaitingForConfirmation) == 0x130);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadScreenFullyFaded) == 0x131);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadScreenWasFadedOut) == 0x132);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, WaitingForResetToFrontEndConfirmation) == 0x133);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentSaveType) == 0x134);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentSaveTypeBeforeManualSave) == 0x138);
++FABLE_STATIC_ASSERT_AT(763, offsetof(CWorld, AutoSaveLocked) == 0x100);
++FABLE_STATIC_ASSERT_AT(764, offsetof(CWorld, SerialisingAboutToLoadHeroState) == 0x101);
++FABLE_STATIC_ASSERT_AT(765, offsetof(CWorld, SerialisingHeroState) == 0x102);
++FABLE_STATIC_ASSERT_AT(766, offsetof(CWorld, SerialisingNonPersistentQuestItems) == 0x103);
++FABLE_STATIC_ASSERT_AT(767, offsetof(CWorld, RegionLoadStatus) == 0x104);
++FABLE_STATIC_ASSERT_AT(768, offsetof(CWorld, RegionLoadStartPos_X) == 0x108);
++FABLE_STATIC_ASSERT_AT(769, offsetof(CWorld, RegionLoadStartPos_Y) == 0x10c);
++FABLE_STATIC_ASSERT_AT(770, offsetof(CWorld, RegionLoadStartPos_Z) == 0x110);
++FABLE_STATIC_ASSERT_AT(771, offsetof(CWorld, RegionLoadStartAngleXY) == 0x114);
++FABLE_STATIC_ASSERT_AT(772, offsetof(CWorld, RegionLoadFollowers) == 0x118);
++FABLE_STATIC_ASSERT_AT(773, offsetof(CWorld, PreviousRegion) == 0x124);
++FABLE_STATIC_ASSERT_AT(774, offsetof(CWorld, NumberOfTimesFreezeControlsModeAddedDuringRegionLoad) == 0x128);
++FABLE_STATIC_ASSERT_AT(775, offsetof(CWorld, RegionLoadViaTeleporter) == 0x12c);
++FABLE_STATIC_ASSERT_AT(776, offsetof(CWorld, RegionLoadViaDoor) == 0x12d);
++FABLE_STATIC_ASSERT_AT(777, offsetof(CWorld, PutIntoPauseModeOnRegionChange) == 0x12e);
++FABLE_STATIC_ASSERT_AT(778, offsetof(CWorld, DisplayMiniMapOnRegionLoad) == 0x12f);
++FABLE_STATIC_ASSERT_AT(779, offsetof(CWorld, RegionLoadWaitingForConfirmation) == 0x130);
++FABLE_STATIC_ASSERT_AT(780, offsetof(CWorld, RegionLoadScreenFullyFaded) == 0x131);
++FABLE_STATIC_ASSERT_AT(781, offsetof(CWorld, RegionLoadScreenWasFadedOut) == 0x132);
++FABLE_STATIC_ASSERT_AT(782, offsetof(CWorld, WaitingForResetToFrontEndConfirmation) == 0x133);
++FABLE_STATIC_ASSERT_AT(783, offsetof(CWorld, MostRecentSaveType) == 0x134);
++FABLE_STATIC_ASSERT_AT(784, offsetof(CWorld, MostRecentSaveTypeBeforeManualSave) == 0x138);
+ #ifdef FABLE_RETAIL_CWORLD
+-FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentManualSaveName) == 0x13c);
++FABLE_STATIC_ASSERT_AT(786, offsetof(CWorld, MostRecentManualSaveName) == 0x13c);
+ #else
+-FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentManualSaveName_PStringData) == 0x13c);
++FABLE_STATIC_ASSERT_AT(788, offsetof(CWorld, MostRecentManualSaveName_PStringData) == 0x13c);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CWorld, AutoSaveCheckPointExists) == 0x140);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerPos) == 0x141);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerAngleXY) == 0x150);
++FABLE_STATIC_ASSERT_AT(790, offsetof(CWorld, AutoSaveCheckPointExists) == 0x140);
++FABLE_STATIC_ASSERT_AT(791, offsetof(CWorld, SaveGameMarkerPos) == 0x141);
++FABLE_STATIC_ASSERT_AT(792, offsetof(CWorld, SaveGameMarkerAngleXY) == 0x150);
+ #ifdef FABLE_RETAIL_CWORLD_TYPED_SAVE
+-FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos) == 0x154);
++FABLE_STATIC_ASSERT_AT(794, offsetof(CWorld, GuildSealRecallPos) == 0x154);
+ #else
+-FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_X) == 0x154);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_Y) == 0x158);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_Z) == 0x15c);
+-#endif
+-FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallAngleXY) == 0x160);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, WeatherMaskingPrimitivesSent) == 0x164);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, WeatherMaskingPrimitiveHandles) == 0x168);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, AtmosBanksWaitingToCopy) == 0x174);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, PlayerSpawnStatus) == 0x178);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, VillagerReactionDebug) == 0x17c);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, StartTime) == 0x180);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, TimePlayed) == 0x188);
+-FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x190);
++FABLE_STATIC_ASSERT_AT(796, offsetof(CWorld, GuildSealRecallPos_X) == 0x154);
++FABLE_STATIC_ASSERT_AT(797, offsetof(CWorld, GuildSealRecallPos_Y) == 0x158);
++FABLE_STATIC_ASSERT_AT(798, offsetof(CWorld, GuildSealRecallPos_Z) == 0x15c);
++#endif
++FABLE_STATIC_ASSERT_AT(800, offsetof(CWorld, GuildSealRecallAngleXY) == 0x160);
++FABLE_STATIC_ASSERT_AT(801, offsetof(CWorld, WeatherMaskingPrimitivesSent) == 0x164);
++FABLE_STATIC_ASSERT_AT(802, offsetof(CWorld, WeatherMaskingPrimitiveHandles) == 0x168);
++FABLE_STATIC_ASSERT_AT(803, offsetof(CWorld, AtmosBanksWaitingToCopy) == 0x174);
++FABLE_STATIC_ASSERT_AT(804, offsetof(CWorld, PlayerSpawnStatus) == 0x178);
++FABLE_STATIC_ASSERT_AT(805, offsetof(CWorld, VillagerReactionDebug) == 0x17c);
++FABLE_STATIC_ASSERT_AT(806, offsetof(CWorld, StartTime) == 0x180);
++FABLE_STATIC_ASSERT_AT(807, offsetof(CWorld, TimePlayed) == 0x188);
++FABLE_STATIC_ASSERT_AT(808, offsetof(CWorld, HasInitialisedStartTime) == 0x190);
+ 
+ #endif // FABLE_ENGINE_CWORLD_H

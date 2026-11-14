@@ -1,0 +1,42 @@
+--- a/rebuild/include/engine/C3DAnimationManager.h
++++ b/rebuild/include/engine/C3DAnimationManager.h
+@@ -54,6 +54,23 @@
+                                const C3DMesh2& mesh);                                                                     // 0x00A9F1D0
+     void CombineBlendedBaseAnimations(const C3DAnimationStateBase& start_state, const C3DAnimationStateBase& end_state, float blend,
+                                       C3DKeyframe* keyframes, unsigned long count, unsigned long depth, const C3DMesh2& mesh);   // 0x00A9F2F0
++#ifdef FABLE_RETAIL_C3DANIMATIONMANAGER_BONETRANSFORM
++    // Nested opt-in (wfA5, rows 0x00AA0FA0 / 0x00AA2110): Ego_r.pdb spellings of the single-bone transforms (public QAE
++    //   ?CalcBoneTransformation@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@ABVC3DMesh2@@KAAVCMatrix3x4@@AAVC3DVector@@@Z 0x00AA0FA0,
++    //   ?CalcBlendedBoneTransformation@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@0MABVC3DMesh2@@KAAVCMatrix3x4@@AAVC3DVector@@@Z 0x00AA2110)
++    // and the private bone-list combiners they call (AAE, landed 0x00AA0C50 / 0x00AA0DC0). Declarations only.
++public:
++    void CalcBoneTransformation(const C3DAnimationBlendState& blend_state, const C3DMesh2& mesh, unsigned long bone,
++                                class CMatrix3x4& transform, C3DVector& scale);                                           // 0x00AA0FA0
++    void CalcBlendedBoneTransformation(const C3DAnimationBlendState& start_blend, const C3DAnimationBlendState& end_blend, float blend,
++                                       const C3DMesh2& mesh, unsigned long bone, class CMatrix3x4& transform, C3DVector& scale);   // 0x00AA2110
++private:
++    void CombineBaseAnimationsBoneList(const C3DAnimationStateBase& state, C3DKeyframe* keyframes, unsigned long count,
++                                       unsigned long depth, const C3DMesh2& mesh, const CArray<unsigned long>& bones);            // 0x00AA0C50
++    void CombineBlendedBaseAnimationsBoneList(const C3DAnimationStateBase& start_state, const C3DAnimationStateBase& end_state, float blend,
++                                              C3DKeyframe* keyframes, unsigned long count, unsigned long depth, const C3DMesh2& mesh,
++                                              const CArray<unsigned long>& bones);                                              // 0x00AA0DC0
++#endif
+ #endif
+ #ifdef FABLE_RETAIL_C3DANIMATIONMANAGER_PEEKMESHBANK
+ public:
+@@ -66,10 +83,10 @@
+     CSimpleMemoryPool       MemoryPool;                                  // +0x14
+     CSimpleMemoryPool       MemoryPool2;                                 // +0x30
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DAnimationManager) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(C3DAnimationManager, MeshBank) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(C3DAnimationManager, BoneIndicesBuffer) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(C3DAnimationManager, MemoryPool) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(C3DAnimationManager, MemoryPool2) == 0x30);
++FABLE_STATIC_ASSERT_AT(69, sizeof(C3DAnimationManager) == 0x4c);
++FABLE_STATIC_ASSERT_AT(70, offsetof(C3DAnimationManager, MeshBank) == 0x4);
++FABLE_STATIC_ASSERT_AT(71, offsetof(C3DAnimationManager, BoneIndicesBuffer) == 0x8);
++FABLE_STATIC_ASSERT_AT(72, offsetof(C3DAnimationManager, MemoryPool) == 0x14);
++FABLE_STATIC_ASSERT_AT(73, offsetof(C3DAnimationManager, MemoryPool2) == 0x30);
+ 
+ #endif // FABLE_ENGINE_C3DANIMATIONMANAGER_H

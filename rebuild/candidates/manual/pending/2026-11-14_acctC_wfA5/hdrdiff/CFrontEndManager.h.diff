@@ -1,0 +1,101 @@
+--- a/rebuild/include/engine/CFrontEndManager.h
++++ b/rebuild/include/engine/CFrontEndManager.h
+@@ -33,6 +33,15 @@
+  long RefreshAvailableSavedGamesForProfile();                                                            // 0x00598463
+ public:
+ #endif
++#ifdef FABLE_RETAIL_CFRONTENDMANAGER_BUILDCOMPONENTS
++ // Opt-in (wfA5, row 0x00598A1C BuildComponents): FableWin.pdb spellings; declarations only (all out of line in retail).
++ void BuildComponents(bool);                                                                             // 0x00598A1C
++ void InitScreenStack(CComponent*);                                                                      // 0x0059672A
++protected:
++ void GetProfileNames(std::vector<CWideString>&);                                                        // 0x005955AB
++ CWideString GenerateAboutMessage() const;                                                               // 0x00594FDB
++ void LoadProfile(const CWideString&);                                                                   // 0x0059899A
++#endif
+ protected:
+  CWideString MediaPlayerErrorString;
+  std::list<CActionParam*> UIActionParams;
+@@ -56,7 +65,7 @@
+  double InstallationPauseStartTime;
+  bool InstallationPaused,FinalInstallationNeverPause;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CFrontEndManager)==224);
++FABLE_STATIC_ASSERT_AT(59, sizeof(CFrontEndManager)==224);
+ }
+ #endif
+ #else
+@@ -101,7 +110,7 @@
+     std::vector<long>        FilePlayTimes;                          // +0x8c
+     unsigned char _pad_0x98[0xe0 - 0x98];                            // +0x98 PScreenToDeactivate .. FinalInstallationNeverPause
+ };
+-FABLE_STATIC_ASSERT(sizeof(CFrontEndManager) == 0xe0);
++FABLE_STATIC_ASSERT_AT(104, sizeof(CFrontEndManager) == 0xe0);
+ }
+ #endif
+ #else
+@@ -163,35 +172,35 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CFrontEndManager) == 0xe0);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, MediaPlayerErrorString_PStringData) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, UIActionParams) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, PGameComponent) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, m_stackScreens) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, m_vComponents) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, m_mapScreens) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, m_pVirtualKeyboard) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, m_bStartNewGame) == 0x64);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, m_vFileTimes) == 0x68);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, FileRegionNames) == 0x74);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, FileRegionMiniMapNames) == 0x80);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, FilePlayTimes) == 0x8c);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, PScreenToDeactivate) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, PScreenToActivate) == 0x9c);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, GoToKeyboard) == 0xa0);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, PScreenToDeactivateForStartGame) == 0xa4);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, PScreenToDeactivateForLoadGame) == 0xa8);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, GameToLoad_PStringData) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, ProfileToDelete_PStringData) == 0xb0);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, BlocksOnUNeeded) == 0xb4);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, BlocksOnTNeeded) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, NumberSaveGames) == 0xbc);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, m_bQuitFromGame) == 0xc0);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, Signatures) == 0xc4);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, InstallationPauseStartTime) == 0xd0);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, InstallationPaused) == 0xd8);
+-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, FinalInstallationNeverPause) == 0xd9);
++FABLE_STATIC_ASSERT_AT(166, sizeof(CFrontEndManager) == 0xe0);
++FABLE_STATIC_ASSERT_AT(167, offsetof(CFrontEndManager, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(168, offsetof(CFrontEndManager, MediaPlayerErrorString_PStringData) == 0x14);
++FABLE_STATIC_ASSERT_AT(169, offsetof(CFrontEndManager, UIActionParams) == 0x18);
++FABLE_STATIC_ASSERT_AT(170, offsetof(CFrontEndManager, PGameComponent) == 0x1c);
++FABLE_STATIC_ASSERT_AT(171, offsetof(CFrontEndManager, m_stackScreens) == 0x20);
++FABLE_STATIC_ASSERT_AT(172, offsetof(CFrontEndManager, m_vComponents) == 0x48);
++FABLE_STATIC_ASSERT_AT(173, offsetof(CFrontEndManager, m_mapScreens) == 0x54);
++FABLE_STATIC_ASSERT_AT(174, offsetof(CFrontEndManager, m_pVirtualKeyboard) == 0x60);
++FABLE_STATIC_ASSERT_AT(175, offsetof(CFrontEndManager, m_bStartNewGame) == 0x64);
++FABLE_STATIC_ASSERT_AT(176, offsetof(CFrontEndManager, m_vFileTimes) == 0x68);
++FABLE_STATIC_ASSERT_AT(177, offsetof(CFrontEndManager, FileRegionNames) == 0x74);
++FABLE_STATIC_ASSERT_AT(178, offsetof(CFrontEndManager, FileRegionMiniMapNames) == 0x80);
++FABLE_STATIC_ASSERT_AT(179, offsetof(CFrontEndManager, FilePlayTimes) == 0x8c);
++FABLE_STATIC_ASSERT_AT(180, offsetof(CFrontEndManager, PScreenToDeactivate) == 0x98);
++FABLE_STATIC_ASSERT_AT(181, offsetof(CFrontEndManager, PScreenToActivate) == 0x9c);
++FABLE_STATIC_ASSERT_AT(182, offsetof(CFrontEndManager, GoToKeyboard) == 0xa0);
++FABLE_STATIC_ASSERT_AT(183, offsetof(CFrontEndManager, PScreenToDeactivateForStartGame) == 0xa4);
++FABLE_STATIC_ASSERT_AT(184, offsetof(CFrontEndManager, PScreenToDeactivateForLoadGame) == 0xa8);
++FABLE_STATIC_ASSERT_AT(185, offsetof(CFrontEndManager, GameToLoad_PStringData) == 0xac);
++FABLE_STATIC_ASSERT_AT(186, offsetof(CFrontEndManager, ProfileToDelete_PStringData) == 0xb0);
++FABLE_STATIC_ASSERT_AT(187, offsetof(CFrontEndManager, BlocksOnUNeeded) == 0xb4);
++FABLE_STATIC_ASSERT_AT(188, offsetof(CFrontEndManager, BlocksOnTNeeded) == 0xb8);
++FABLE_STATIC_ASSERT_AT(189, offsetof(CFrontEndManager, NumberSaveGames) == 0xbc);
++FABLE_STATIC_ASSERT_AT(190, offsetof(CFrontEndManager, m_bQuitFromGame) == 0xc0);
++FABLE_STATIC_ASSERT_AT(191, offsetof(CFrontEndManager, Signatures) == 0xc4);
++FABLE_STATIC_ASSERT_AT(192, offsetof(CFrontEndManager, InstallationPauseStartTime) == 0xd0);
++FABLE_STATIC_ASSERT_AT(193, offsetof(CFrontEndManager, InstallationPaused) == 0xd8);
++FABLE_STATIC_ASSERT_AT(194, offsetof(CFrontEndManager, FinalInstallationNeverPause) == 0xd9);
+ 
+ #endif // FABLE_ENGINE_CFRONTENDMANAGER_H
+ #endif

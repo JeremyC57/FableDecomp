@@ -1,0 +1,29 @@
+--- a/rebuild/include/engine/CQ_TraderConflictGoodScript.h
++++ b/rebuild/include/engine/CQ_TraderConflictGoodScript.h
+@@ -87,5 +87,26 @@
+ }
+ FABLE_STATIC_ASSERT(sizeof(NScript::CQ_TraderConflictGoodScript::CTraderToRescue) == 0x20);
+ #endif // FABLE_RETAIL_CQ_TRADERCONFLICTGOODSCRIPT_TRADERTORESCUE
++#ifdef FABLE_RETAIL_CQ_TRADERCONFLICTGOODSCRIPT_BANDITEXTRA
++// Retail opt-in (wfA1, row 0x00DFCA90 CBanditExtra::Main): NScript::CQ_TraderConflictGoodScript::CBanditExtra (Ego_r.pdb, 28 bytes =
++// the landed Alloc 0x00DFBED0's new size): CEntityScriptBase, ParentClass +0x14 (reference, as CTraderToRescue's; the layout dump
++// renders it as a pointer), PMasterData +0x18. Entity vtable 0x012DEE14 (Alloc): 0 scalar deleting dtor 0x00DFBF80, 1 Main
++// 0x00DFCA90 (Ego_r.pdb ?Main@CBanditExtra@CQ_TraderConflictGoodScript@NScript@@EAEXXZ, private), 3 GetParentScript 0x00DFBF70.
++class CScriptDataBase;
++namespace NScript {
++class CQ_TraderConflictGoodScript::CBanditExtra : public CEntityScriptBase {
++public:
++    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_TraderConflictGoodScript&, CScriptDataBase*, const CScriptThing&);
++    virtual CScriptBase* GetParentScript() const;
++protected:
++    NScript::CQ_TraderConflictGoodScript & ParentClass; // +0x14
++protected:
++    NScript::CQ_SunnyvaleMasterData * PMasterData; // +0x18
++private:
++    virtual void Main();
++};
++}
++FABLE_STATIC_ASSERT(sizeof(NScript::CQ_TraderConflictGoodScript::CBanditExtra) == 0x1c);
++#endif // FABLE_RETAIL_CQ_TRADERCONFLICTGOODSCRIPT_BANDITEXTRA
+ #endif // FABLE_RETAIL_NSCRIPT
+ #endif // FABLE_ENGINE_CQ_TRADERCONFLICTGOODSCRIPT_H

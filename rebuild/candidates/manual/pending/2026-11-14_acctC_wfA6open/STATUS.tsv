@@ -1,0 +1,7 @@
+address	grade	bytes	test	grades_used	notes
+00ade080	DIFFER(2733v2735)	2735	-	135	parked: frame+SSE arm identical; x87 Y-row inner order (z before y) + v0 X row; 43 masked lines
+00c79fd0	DIFFER(2884v2884)	2884	-	21	parked: MMX colouring of s3 (mm1 v mm2) in 4 cases; compiled ivec intrinsics, not asm/lib
+00ae3c30	DIFFER(2278v2310)	2310	-	14	parked: calls equal; ebx=0 constant v this (register allocation), frame 0xC v 0x10
+00bd5c90	DIFFER(2933v2935)	2935	-	35	near_miss: full shared-header port; calls + frame equal; SetRenderState test/or register tie in 3 stage-0 expansions + push scheduling; 79 masked / 144 unmasked lines
+00ba6240	DIFFER(2937v2937)	2937	-	48	near_miss: full shared-header port; calls equal; frame (bool slot) + dead Diffuse=-1 store + small scheduling; 72 masked lines
+

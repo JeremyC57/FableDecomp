@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00dfca90   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00dfca90   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00dfca90 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CBanditExtra::Main

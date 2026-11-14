@@ -1,0 +1,17 @@
+--- a/rebuild/include/engine/C2DBoxI.h
++++ b/rebuild/include/engine/C2DBoxI.h
+@@ -30,6 +30,14 @@
+ // (0x00B55222..0x00B55236: `mov edi,[box+4] ... mov edx,[box+0Ch] ; sub edx,edi`).
+ long GetHeight()const{return BRY-TLY;}
+ #endif
++#ifdef FABLE_RETAIL_C2DBOXI_ACCESSORS
++// Retail opt-in (agentC43, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility): FableWin.pdb ?GetTLX@C2DBoxI@@QBEJXZ, ?GetTLY@C2DBoxI@@QBEJXZ,
++// ?GetBRX@C2DBoxI@@QBEJXZ, ?GetBRY@C2DBoxI@@QBEJXZ (inline in retail: `fild [def+14Ch]` .. `fiadd [def+158h]`, 0x00537B6A..0x00537BD5).
++long GetTLX()const{return TLX;}
++long GetTLY()const{return TLY;}
++long GetBRX()const{return BRX;}
++long GetBRY()const{return BRY;}
++#endif
+ #ifdef FABLE_RETAIL_C2DBOXI_CTORS
+ // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): Ego_r.pdb ??0C2DBoxI@@QAE@JJJJ@Z and
+ // ??0C2DBoxI@@QAE@ABVC2DCoordI@@ABVC2DExtentsI@@@Z, inline (no out-of-line copy bound in Fable.exe).

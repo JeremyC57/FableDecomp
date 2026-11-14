@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00b555a0   WARN RELOC_CONFLICT: ?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA -> 01396dd8 here, 01396de8 in landed 00bbc460
+00b555a0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b555a0   RELOCATION_MATCH PASS   Render
+00598a1c   WARN RELOC_NAME: ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ -> 00406880 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00598a1c   WARN RELOC_NAME: ?SetAcceptButton@CRedefinerList@NUISystem@@QAEXPAVCComponent@2@@Z -> 00556570 labelled '_global::SetMember_dword0x18c_00556570'
+00598a1c   WARN RELOC_NAME: ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z -> 0042abaf labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::list'
+00598a1c   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00598a1c   RELOCATION_MATCH PASS   BuildComponents
+00aa0fa0   RELOCATION_MATCH PASS   CalcBoneTransformation
+00aa2110   RELOCATION_MATCH PASS   CalcBlendedBoneTransformation
+
+WINS: 4
+  00b555a0 RELOCATION_MATCH CEngineWeatherRenderer::Render
+  00598a1c RELOCATION_MATCH NUISystem::CFrontEndManager::BuildComponents
+  00aa0fa0 RELOCATION_MATCH C3DAnimationManager::CalcBoneTransformation
+  00aa2110 RELOCATION_MATCH C3DAnimationManager::CalcBlendedBoneTransformation

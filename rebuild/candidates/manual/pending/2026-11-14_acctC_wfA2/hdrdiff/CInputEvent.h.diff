@@ -1,0 +1,21 @@
+--- a/rebuild/include/engine/CInputEvent.h
++++ b/rebuild/include/engine/CInputEvent.h
+@@ -45,6 +45,11 @@
+     long GetJoystickButton() const;                                      // 0x00A03B90
+     C2DVector GetJoystickPosition() const;                               // 0x00A043A0
+ #endif
++#ifdef FABLE_RETAIL_CINPUTEVENT_GETMOUSEMOVEMENT
++    // Opt-in (wfA2, row 0x0068CB90): Ego_r.pdb / FableWin.pdb ?GetMouseMovement@CInputEvent@@QBE?AVC3DVector@@XZ, out of line in retail
++    // at 0x00A043D0 (landed; hidden result). Declaration only (needs C3DVector declared by the includer).
++    C3DVector GetMouseMovement() const;                                  // 0x00A043D0
++#endif
+ #ifdef FABLE_RETAIL_CINPUTEVENT_JOYSTICK_SETTERS
+     // Retail opt-in (chunk 792, row 0x00AB6E40 CJoystickDX::UpdateEvents): the joystick setters, declarations only (no layout
+     // change). Ego_r.pdb / FableWin.pdb spellings; retail addresses from the event type each one stores (+0x28: 17 position,
+@@ -75,5 +80,5 @@
+     float            CurrentTime;                                        // +0x2C
+     float            StartTime;                                          // +0x30
+ };
+-FABLE_STATIC_ASSERT(sizeof(CInputEvent) == 0x34);
++FABLE_STATIC_ASSERT_AT(78, sizeof(CInputEvent) == 0x34);
+ #endif // FABLE_ENGINE_CINPUTEVENT_H

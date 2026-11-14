@@ -1,0 +1,20 @@
+--- a/rebuild/include/engine/C3DBone2.h
++++ b/rebuild/include/engine/C3DBone2.h
+@@ -19,11 +19,15 @@
+     long GetParent() const { return Parent; }
+     long GetOriginalNoChildren() const { return OriginalNoChildren; }
+ #endif
++#ifdef FABLE_RETAIL_C3DBONE2_GETNAMECRC
++    // Opt-in (wfA5, rows 0x00AA0FA0 / 0x00AA2110): FableWin.pdb ?GetNameCRC@C3DBone2@@QBEKXZ (inline in retail: `mov eax,[bone]`).
++    unsigned long GetNameCRC() const { return NameCRC; }
++#endif
+     unsigned long NameCRC;                               // +0x00
+     long          Parent;                                // +0x04
+     long          OriginalNoChildren;                    // +0x08
+     CMatrix3x4    LocalizationMatrix;                    // +0x0c
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DBone2) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(C3DBone2, LocalizationMatrix) == 0xc);
++FABLE_STATIC_ASSERT_AT(27, sizeof(C3DBone2) == 0x3c);
++FABLE_STATIC_ASSERT_AT(28, offsetof(C3DBone2, LocalizationMatrix) == 0xc);
+ #endif

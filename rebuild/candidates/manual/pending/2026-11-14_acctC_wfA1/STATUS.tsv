@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+00682810	SRC_FAIL(stale draft)	3442	-	1	not re-worked: the earlier DIFFER(3385v3442) draft models CRegion/COpinionDeed/CThingAICreature etc. as local padded structs (forbidden); a port onto shared headers was not started (breadth first, context budget)
+006d0830	DIFFER(2581v2584)	2584	-	~46	parked: wedding = movie-block zero pushes are const-0 refs (diag proves; c2 trace in NOTES); dowry = const-0 piece penalty on ebx (independent); no closer found
+00c271f0	RELOCATION_MATCH	846	PASS	~26	matched (successor): named const-ref to desc->m_position fixed the tail rotation + mid-body ebp save; addmatch + vland PASS
+006b2ca0	DIFFER(908v910)	910	-	~25	open: SetYRotate/SetZRotate + TransformPoint structure found (new opt-in); x87 scheduling residue
+00dfca90	RELOCATION_MATCH	373	PASS	3	matched first grade; addmatch + read-only vland PASS (WARN RELOC_ALIAS _rand import thunk, as landed rows)

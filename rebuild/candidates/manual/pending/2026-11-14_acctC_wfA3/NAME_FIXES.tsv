@@ -1,0 +1,9 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00aba360	?GetCount@C3DMeshFileVerticesChunk@@QBEKXZ	see LABELS.tsv (call site in 0x00ACDB80 + Ego_r name + body offsets)	CShaderPreParser::GetConstantCount (rebuild/src/compiled/00/ab/CShaderPreParser_GetConstantCount_00aba360.cpp)
+00aba370	?GetCount@C3DMeshFileTrianglesChunk@@QBEKXZ	see LABELS.tsv	CWorldMap_DrawGetNoMaps / ?CWorldMap_DrawGetNoMaps@@YIJPAVCWorldMap@@@Z (CWorldMap_DrawGetNoMaps_00aba370.cpp)
+00aba350	?GetCount@C3DMeshFileGroupChunk@@QBEKXZ	see LABELS.tsv	CShaderPreParser::GetConstantCount (CShaderPreParser_GetConstantCount_00aba350.cpp)
+00ab9f60	?GetBoneIndex@C3DMeshFileGroupChunk@@QBEJXZ	see LABELS.tsv	DrawGetEnvironment / _global::GetMember_dword0x2c_00ab9f60 (global_DrawGetEnvironment_00ab9f60.cpp)
+00981410	?AIAction_InteractWith@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingAICreature@@@@VCCharString@@H_N@Z	Ego_r + FableWin name sets, ret 18h	catalog _global::AIAction_InteractWith
+00acdb80	??0COptimisedPrimitive@QuadricOptimiserInternals@@QAE@AAVC3DMeshFilePrimitiveChunk@@@Z	Ego_r name	catalog module COptimisedPrimitive (no namespace)
+00aba350	?GetCount@C3DMeshFileGroupChunk@@QBEKXZ	Ego_r has GetCount and no GetVertexCount for C3DMeshFileGroupChunk	rebuild/oracles/reloc_bindings.tsv binds 00aba350 to ?GetVertexCount@C3DMeshFileGroupChunk@@QBEKXZ (a landed caller spelling)
+00ad7400	??1COptimisedVertex@QuadricOptimiserInternals@@QAE@XZ	reloc_bindings (landed ~COptimisedPrimitive) + Ego_r	catalog label CWound::Kill (CWound_Kill_00ad7400.cpp)

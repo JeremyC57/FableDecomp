@@ -1,0 +1,12 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00598a1c	?BuildComponents@CFrontEndManager@NUISystem@@QAEX_N@Z	FableWin.pdb + caller 0x0042EA62	CFrontEndManager::Init2 (catalog label)
+00406880	?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ	twin 0x0058AF10 + FableWin; folded body	NCreatureMode::CModeBlock::GetAnimFilter (landed label)
+00556570	?SetAcceptButton@CRedefinerList@NUISystem@@QAEXPAVCComponent@2@@Z	twin opt-in FABLE_RETAIL_CREDEFINERLIST_SETACCEPTBUTTON + FableWin	SetMember_dword0x18c_00556570, CObservable::AddExclusiveObserver
+00a45260	?PeekCombinedMorph@C3DSkeletalMorph@@QBE?AV?$CCountedPointer@$$CBVC3DSkeletalMorphTarget@@@@XZ	Ego_r 0x00BA0200 / FableWin 0x0321C960 (const, returns CCountedPointer<const C3DSkeletalMorphTarget>)	landed row spells it non-const returning CCountedPointer<C3DSkeletalMorphTarget>
+00b8d090	?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ	Ego_r 0xA347A0 / FableWin 0x02DC6520 (1-byte `ret`); called 0x00B9B925 from RenderSubPrimitive 0x00B9AC30	landed E2 stub C00b8d090::M / Nop_ret0_00b8d090
+00b8d0a0	?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z	Ego_r 0xA347B0 (`ret 4`); called 0x00B9BB75	landed E2 stub C00b8d0a0::M(int) / Nop_ret4_00b8d0a0
+00989700	?UpdateCameraPos@CShaderRenderManager@@AAEXXZ	Ego_r name set + manifest; PrepareForRender calls it for (flags & 4) && (UpdateFlags & 8); 0x00989760 is the real UpdateAmbient	landed file/body spell UpdateAmbient
+00b990b0	?UpdateBoneMatrixForWindSheer@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXAAVCEngineInternalPrimitiveRepeatedStaticMesh@@PAVC4DVector@@PBEJ@Z	Ego_r	landed class spelling CEnginePrimitiveManagerRepeatedStaticMeshes_Wind (view)
+0x01436E9C	?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A	reloc_bindings (landed 0x00B23EA0) + 18 landed rows spell NEngineInternal::GPLightingManager	g_pEngineLightingManager (landed RenderPrimitive 0x00B9A4A0 and other render rows)
+0x01436EA0	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	reloc_bindings (landed 0x00BCA6B0)	g_pEngineCamera (landed 0x00B9A4A0), g_pLightingManager_01436ea0, g_pEngineCamera_01436ea0
+0x01436E5C	?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A	reloc_bindings (landed 0x00B8D420)	g_pOcclusionManager, g_pRenderer_01436e5c, g_pFrameSource

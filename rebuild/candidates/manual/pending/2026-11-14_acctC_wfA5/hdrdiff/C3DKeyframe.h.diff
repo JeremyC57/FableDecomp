@@ -1,0 +1,13 @@
+--- a/rebuild/include/engine/C3DKeyframe.h
++++ b/rebuild/include/engine/C3DKeyframe.h
+@@ -58,6 +58,10 @@
+  void PostApplyRelativeAnimationAlpha(const C3DKeyframe& other, float alpha);
+  void BlendWith(const C3DKeyframe& other, float t);
+ #endif
++#ifdef FABLE_RETAIL_C3DKEYFRAME_SETPOSITION
++ // Opt-in (wfA5, rows 0x00AA0FA0 / 0x00AA2110): FableWin.pdb ?SetPosition@C3DKeyframe@@QAEXABVC3DVector@@@Z (inline in retail: W = 0 with x, y, z).
++ void SetPosition(const C3DVector& position) { Position.Initialise(position, 0.0f); }
++#endif
+ #ifdef FABLE_RETAIL_C3DKEYFRAME_GETROTATION
+  // Retail opt-in (chunk 2044): FableWin.pdb ?GetRotation@C3DKeyframe@@QBE?AVCQuaternion@@XZ (inline, by value).
+  CQuaternion GetRotation() const { return Rotation; }

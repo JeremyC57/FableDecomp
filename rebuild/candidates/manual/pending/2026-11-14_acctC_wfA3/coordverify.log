@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00dadf80   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00dadf80   RELOCATION_MATCH PASS   Main
+004a0d90   WARN RELOC_CONFLICT: ??0?$vector@DV?$allocator@D@std@@@std@@QAE@I@Z -> 00410f30 here, 00411910 in landed 009ec890
+004a0d90   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+004a0d90   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004a0d90   RELOCATION_MATCH PASS   LoadQuestsFromFile
+00e2f170   RELOCATION_MATCH PASS   SpringAmbush
+
+WINS: 3
+  00dadf80 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::Main
+  004a0d90 RELOCATION_MATCH CWorld::LoadQuestsFromFile
+  00e2f170 RELOCATION_MATCH NScript::CV_AmbushScamScript::SpringAmbush

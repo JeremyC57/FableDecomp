@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+00dce230	DIFFER(2589v2589)	2589	-	24	parked: 6 hunks eax/edx swap in DEFENDING block only (differ/00dce230.cpp)
+0068cb90	RELOCATION_MATCH	2339	PASS	22	matched; addmatch + read-only vland RELOCATION_MATCH PASS (WARN RELOC_NAME 0x00A0D390 catalog label)
+0048e78e	DIFFER(2662v2662)	2662	-	10	parked: re-based onto today's headers (hdr/ opt-ins, README) = 14 hunks, differ/0048e78e.cpp; residue = 0x800 je block split + arm A store order
+00435530	DIFFER(2571v2617)	2617	-	1	untouched (successor too) beyond a baseline grade of the stale draft under ref/hdr_STALE (102 hunks; callee map for the re-author in NOTES.md, frame 0xa4 v 0xcc); draft is a local-model source (needs a rewrite on shared headers)
+00439070	DIFFER(2613v2613)	2613	-	48	parked: re-authored on shared headers (11 new opt-ins, hdr/README.md); 17 hunks all in the gui-lighting colour block (slot permutation of the 3 CRGBFloatColour locals + 4th channel int temp slot) (differ/00439070.cpp)

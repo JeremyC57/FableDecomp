@@ -1,0 +1,13 @@
+--- a/rebuild/include/engine/GFAngles.h
++++ b/rebuild/include/engine/GFAngles.h
+@@ -18,7 +18,9 @@
+ extern float BODY_ANGULAR_VELOCITY_MAX_XY;
+ // Original FableWin 01a824b0 and 01acf220 bodies, debug assertions omitted.
+ inline long FABLE_FASTCALL GFGetSign(float value) { return value<0.0f ? -1 : 1; }
+-#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
++#if defined(FABLE_RETAIL_JACK_STAGE1_UPDATE) || defined(FABLE_RETAIL_GFANGLES_GET_ROUNDED_ANGLE_FORCEINLINE)
++// (FABLE_RETAIL_GFANGLES_GET_ROUNDED_ANGLE_FORCEINLINE, wfA2 row 0x0068CB90: same body, expanded at all eight sites of that row,
++// fmod 0x00BFEB28 called inline at 0x0068CE4C..; inline-budget device, default text unchanged.)
+ FABLE_FORCEINLINE
+ #else
+ inline

@@ -1,0 +1,7 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x01436E24	?g_pEngineEnvironmentDef@@3PBVCEnvironmentDef@@B	reloc_bindings (single binding); no PDB global name found (kept as landed RenderSnow spells it)	-
+0x01436E60	?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A	lane spelling used by 11 landed/pending rows	g_pShadowRenderer_01436e60 (earlier draft)
+0x01436E9C	?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A	lane spelling (37 rows)	g_pEngineLightingManager, g_pLightingManager
+0x01436EA0	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	lane spelling (33 rows)	g_pEngineCamera (earlier 0x00BE0EB0 draft)
+0x01436E80	?GPPrimitiveRenderer@NEngineInternal@@3PAVCEnginePrimitiveRenderer@@A	lane spelling (pending rows); differ/00baa870.cpp respelled	g_pEnginePrimitiveRenderer (acctB draft; reloc_bindings)
+0x01436E5C	?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A	lane spelling (10 pending rows); differ/00baa870.cpp respelled	g_pOcclusionManager (acctB draft), g_pRenderer_01436e5c (reloc_bindings)

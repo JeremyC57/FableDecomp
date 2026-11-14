@@ -1,0 +1,7 @@
+address	name	evidence
+0x00B77370	CEngineWaterRenderer::RenderSeaReflectiveForeground	Ego_r 0x00A25300 + FableWin 0x02D4F430 ?RenderSeaReflectiveForeground@CEngineWaterRenderer@@AAEXM@Z
+0x00B751F0	CEngineWaterRenderer::RenderIceForeground	Ego_r 0x00A23180 + FableWin 0x02D4CF10 ?RenderIceForeground@CEngineWaterRenderer@@AAEXM@Z
+0x00B6DF50	CEngineWaterRenderer::GetIceForegroundVertexShader	Ego_r 0x00A1B5B0 / FableWin 0x02D4CDC0; called by 0x00B751F0
+0x00B6DF90	CEngineWaterRenderer::GetIceForegroundShadowedVertexShader	Ego_r 0x00A1B5E0 / FableWin 0x02D4CE30; called by 0x00B751F0
+0x00B6DFD0	CEngineWaterRenderer::GetIceForegroundColbuffShadowedVertexShader	Ego_r 0x00A1B610 / FableWin 0x02D4CEA0; called by 0x00B751F0
+0x00BAA870	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList	Ego_r/FableWin ?RenderFromSortList@CEnginePrimitiveManagerRepeatedZSprites@@AAEXAAVCEngineInternalPrimitiveRepeatedZSprite@@@Z (acctB proof; object symbol checked by q.py leaf)

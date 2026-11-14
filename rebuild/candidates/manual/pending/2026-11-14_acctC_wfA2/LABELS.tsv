@@ -1,0 +1,5 @@
+address	name	evidence
+0068cb90	CInputProcessControlFreeCamera::ProcessInput	Ego_r/FableWin ?ProcessInput@CInputProcessControlFreeCamera@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z; ret 8, 2 args; RELOCATION_MATCH (task text 'constructor' is wrong)
+00dce230	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Main	Ego_r/FableWin ?Main@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ; entity vtable 0x012DB364 slot 1
+00439070	CPlayerGui::DrawPreparePrimitivesForEngine	Ego_r/FableWin ?DrawPreparePrimitivesForEngine@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z; `ret 4`, 2613 bytes; parked 17 hunks (differ/)
+004376b0	CPlayerGui::SetMoneyAsDisplaying	Ego_r order of the seven Set*AsDisplaying; PMoney +0x2CC

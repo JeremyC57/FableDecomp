@@ -1,0 +1,6 @@
+address	name	evidence
+00598a1c	?BuildComponents@CFrontEndManager@NUISystem@@QAEX_N@Z	FableWin.pdb mangled name + sole caller 0x0042EA62 (landed CNewFrontendGameComponent::Init2 0x0042E98F calls BuildComponents(bool)); catalog label Init2 is wrong
+00b555a0	?Render@CEngineWeatherRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	Ego_r 0x009FB880 + FableWin 0x02D3B660 + vtable 0x012A2434 slot 4
+00aa0fa0	?CalcBoneTransformation@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@ABVC3DMesh2@@KAAVCMatrix3x4@@AAVC3DVector@@@Z	Ego_r 0x00BE5220 + FableWin 0x0337F160 + caller 0x00A89740
+00aa2110	?CalcBlendedBoneTransformation@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@0MABVC3DMesh2@@KAAVCMatrix3x4@@AAVC3DVector@@@Z	Ego_r 0x00BE6570 + FableWin
+00b9ac30	?RenderSubPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	Ego_r 0x00A531E0 + FableWin name + vtable 0x012A3E9C slot 5 (catalog/task text "constructor" is wrong)

@@ -1,0 +1,6 @@
+address	name	evidence
+00ade080	?InitialiseFromOBB@C3DBoundingBox@@QAEXABV1@ABVCMatrix3x4@@@Z	Ego_r 0x00BCFDA0 + FableWin 0x03313830
+00c79fd0	?ResampleStereoMMX@@YAXPBFKKKPAJ1G@Z	reloc_bindings.tsv + landed callers 0x00C70240/0x00C702E0/0x00C70390 (descriptive, libpk has no PDB); catalog label Audio_ConvolveFilter_WithGain wrong
+00ae3c30	?ReadFromFile@CParticleProgram@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z	Ego_r 0x00BF2EE0 + FableWin 0x033351A0
+00bd5c90	?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManagerAnimatedMeshesBase@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z	vtable 0x012A78DC slot 8 + Ego_r 0x00A8AB30 + FableWin 0x02E81680 (not a constructor)
+00ba6240	?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManagerStaticMeshesBase@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z	vtable 0x012A50DC slot 8 + Ego_r 0x00A5D4E0 + FableWin 0x02E9FE30

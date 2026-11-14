@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0068cb90   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+0068cb90   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0068cb90   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068cb90   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 1
+  0068cb90 RELOCATION_MATCH CInputProcessControlFreeCamera::ProcessInput

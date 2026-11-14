@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+00acdb80	RELOCATION_MATCH	2674v2674	PASS	~45+40	MATCHED (successor): shared stlport/fable_map.h set/map/multimap (FABLE_RETAIL_STLP_MAP) replaced the row-local tree models; chunk classes on shared headers with 7 new accessor opt-ins; addmatch + vland WIN
+00981410	DIFFER	2714v2703	-	2+6	PARKED: successor rework: calls equal retail except 4 CDefString conversions (out of line here); IsPosInViewAngle name fix; tail duplicated into both arms; INLINE_LOWERBOUND; still row-local models (shared-header port pending); differ/00981410.cpp
+004a0d90	RELOCATION_MATCH	2733v2733	PASS	4	MATCHED: existing opt-ins TEXT_EQ_NOINLINE + COMPARE_BODY; addmatch + vland WIN (RELOC_CONFLICT vector<char> ctor duplicate COMDAT, see NOTES)
+00e2f170	RELOCATION_MATCH	2781v2781	PASS	9	MATCHED: for(;;NSF) loops + TRetVoid + CCharString("") spawn arg + run_away distance fix; addmatch + vland WIN
+00dadf80	RELOCATION_MATCH	2787v2787	PASS	~40	MATCHED: for(;;NSF) loop + named size count + forced CTimer + /d2inlT65; addmatch + vland WIN

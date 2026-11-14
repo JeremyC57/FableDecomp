@@ -1,0 +1,7 @@
+address	grade	bytes	test	grades_used	notes
+00b77370	DIFFER(2798v2734)	2734	-	22	parked: one inline decision (retail calls ??_GCGraphicFrameData at 0x00B77AE9; ours expands -> bl=0x10 CSE, frame +4); plain-inline Release/ReleaseData probes go out of line
+00b751f0	DIFFER(2722v2722)	2722	-	540	parked: 6 SetTextureUVMode test/or sites + specular load order; total-count windows staggered (per-expansion asserts = pure shift of 7): no count fits all 7 -> structural
+00be0eb0	DIFFER(2889v2889)	2889	-	200	parked: 2 x87 product orders + 1 test/or; 10 dead asserts now size-backed (/Od 394i v FableWin 400i); two-call screen->world (FableWin has no ...ToWorld)
+00bb2540	DIFFER(2726v2905)	2905	-	1	earlier draft regraded only; needs shared-header port (not done)
+00b5a3f0	DIFFER(2923v2916)	2916	-	46	parked: one RMW scheduling site 0x00B5A68C
+00baa870	DIFFER(4575v4600)	4600	-	35	parked: ported to today headers (7 new overlay opt-ins) + PDB faded-shadow guard + C3DVECTOR_INITIALISE_SUB: 39 masked hunks (x87 keep, frame-slot order disp8/32, SetRenderState sites)

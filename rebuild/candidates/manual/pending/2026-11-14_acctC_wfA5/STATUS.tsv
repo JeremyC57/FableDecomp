@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+00b555a0	RELOCATION_MATCH	3832	PASS	~20	matched; addmatch done; vland RELOCATION_MATCH PASS
+00598a1c	RELOCATION_MATCH	4928	PASS	~10	matched; addmatch done; vland RELOCATION_MATCH PASS (real name BuildComponents)
+00aa0fa0	RELOCATION_MATCH	4460	PASS	~70	matched; addmatch done; vland RELOCATION_MATCH PASS
+00aa2110	RELOCATION_MATCH	4556	PASS	~45+~150	matched (successor): row-local keyframes[0].ToMatrix(matrix_a, false) (FITTED); addmatch done; vland RELOCATION_MATCH PASS
+00b9ac30	DIFFER(4229v4229)	4229	-	5+~170	near_miss: 19 hunks, register/operand picks only; differ/00b9ac30.cpp
