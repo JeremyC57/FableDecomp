@@ -147,19 +147,19 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 01221d20	OPEN				never_worked	_gapscan::sub_01221d20
 00dfca90	OPEN				never_worked	NScript::CQ_TraderConflictGoodScript::CBanditExtra::Main
 0058f9bc	MATCHED_STAGED	2012	2026-11-13_acctC_c24a	C24: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCInventory::OpenPCPhotojournal
-007bfe30	IN_PROGRESS			C27	never_worked	CTCShotDefinitionBase::UpdateCollision
-009fde80	IN_PROGRESS			C27	never_worked	CGraphicInfoFrame::CFrameData::BeginLoading
+007bfe30	PARKED	1648	2026-11-13_acctC_c27open	C24: DIFFER(1628v1648), not reworked	never_worked	CTCShotDefinitionBase::UpdateCollision
+009fde80	PARKED	1265	2026-11-13_acctC_c27open	C27: DIFFER(1269v1265); one register decision (retail keeps the header reference in ebx, ours gives it to mipmap_level)	never_worked	CGraphicInfoFrame::CFrameData::BeginLoading
 007c0690	MATCHED_STAGED	1088	2026-11-13_acctC_c25a	C25: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	NThingShot::CTCShotDefinitionBase::Init
 007ef200	MATCHED_STAGED	734	2026-11-13_acctC_c25a	C25: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCarriedActionUseExpression::CTCCarriedActionUseExpression::vfunc_28
-0074e860	IN_PROGRESS			C27	never_worked	CTCContainerRewardHero::GetRewardItems
+0074e860	IN_PROGRESS			C29	never_worked	CTCContainerRewardHero::GetRewardItems
 0072cf40	MATCHED_STAGED	564	2026-11-13_acctC_c25a	C25: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCSpecialAbilities::UseSpecialAbility
-00735fd0	IN_PROGRESS			C27	never_worked	CTCCombat::AttemptToStartParticle
-007e15c0	IN_PROGRESS			C27	never_worked	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0
-006823d0	IN_PROGRESS			C27	never_worked	CTCCreatureOpinionOfHero::FrameUpdate
-00537e70	IN_PROGRESS			C27	never_worked	_global::ContainerUI_HandleMouseInput
-00945060	IN_PROGRESS			C27	never_worked	CAIStateGroup_WorkHammerAnvil::?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ
-006b2ca0	IN_PROGRESS			C27	never_worked	_global::CGameCamera_UpdateViewMatrix
-00944940	IN_PROGRESS			C27	never_worked	CAIStateGroup_WorkSawingWood::?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ
+00735fd0	IN_PROGRESS			C29	never_worked	CTCCombat::AttemptToStartParticle
+007e15c0	IN_PROGRESS			C29	never_worked	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0
+006823d0	PARKED	962	2026-11-13_acctC_c27open	C24 -> C27: DIFFER(960v962); retail shares one slot between the peak value and a GFFloatAbs parameter; only a fitted helper text does it	never_worked	CTCCreatureOpinionOfHero::FrameUpdate
+00537e70	IN_PROGRESS			C29	never_worked	_global::ContainerUI_HandleMouseInput
+00945060	IN_PROGRESS			C29	never_worked	CAIStateGroup_WorkHammerAnvil::?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ
+006b2ca0	IN_PROGRESS			C29	never_worked	_global::CGameCamera_UpdateViewMatrix
+00944940	IN_PROGRESS			C29	never_worked	CAIStateGroup_WorkSawingWood::?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ
 007b57c0	OPEN				never_worked	CTCCarriedActionUseActivateQuest::CTCCarriedActionUseActivateQuest::vfunc_28
 007bc38a	OPEN				never_worked	_global::CTCPhysicsRigidBody_ApplyForceToward
 006a1a00	OPEN				never_worked	CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation

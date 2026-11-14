@@ -1,0 +1,4 @@
+- (0x009FDE80) A big function whose retail keeps a header reference in ebx while ours spills it: a diagnostic that drops ONE later use of the competing variable (loop bound) shows whether the residue is that variable's c2 priority (here: header got ebx back at once).
+- (0x009FDE80) Retail's two unused CCountedPointer<CTexture> copies show up only as count-block (Info) slots and their release at the end: the Data word is dead-stored away but its frame slot remains.
+- (0x006823D0) The peak-in-parameter-slot frame (962v962) is reproduced by a GFFloatAbs that stores through a pointer local, but fwsize rejects that text (14i v FableWin 8i): the coalescing comes from somewhere else in the source; with the FableWin text c2 forwards the and-result into a separate local slot.
+- (0x0074E860) GetRewardItems's empty string literal is the CCharString("") at 0x0122D70E (the tail byte of "...TEXT_G"), not a missing string.
