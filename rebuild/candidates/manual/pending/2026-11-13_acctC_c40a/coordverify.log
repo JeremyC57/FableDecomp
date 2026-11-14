@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00bd2d90   RELOCATION_MATCH PASS   GetBoneTransformations
+007db2e0   RELOCATION_MATCH PASS   NewRound
+00a3e520   MATCH            PASS   StopMusic
+00a3e830   MATCH            PASS   SetMonitorAllowedPostStopTailDurationMS
+00ed14e0   RELOCATION_MATCH PASS   Init
+00bbddd0   RELOCATION_MATCH PASS   RenderPrimitive
+
+WINS: 6
+  00bd2d90 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::GetBoneTransformations
+  007db2e0 RELOCATION_MATCH CTCTavernGameCardBlackjack::NewRound
+  00a3e520 MATCH CSoundManagerLH::StopMusic
+  00a3e830 MATCH CSoundManagerLH::SetMonitorAllowedPostStopTailDurationMS
+  00ed14e0 RELOCATION_MATCH NScript::CV_SingingStonesScript::CSingingStone::Init
+  00bbddd0 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteTrailGroup::RenderPrimitive

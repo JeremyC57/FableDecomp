@@ -1,0 +1,23 @@
+--- a/rebuild/include/engine/CEngineSubPrimitiveBase.h
++++ b/rebuild/include/engine/CEngineSubPrimitiveBase.h
+@@ -7,7 +7,13 @@
+ class CSimpleMemoryPool;
+ class CEngineSubPrimitiveBase:public CBaseClassNonCopyable {
+ public:
++#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_CTOR_OUTOFLINE
++ // Retail opt-in (agentC40, row 0x00BBDDD0): the constructor as a declaration, for a TU that calls the out-of-line copy 0x00B98A50
++ // (landed; `push esi ; mov ecx,eax ; call 0x00B98A50` at 0x00BBE04D) instead of expanding it. Default unchanged.
++ CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase* parent);
++#else
+  CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase* parent):Parent(parent),NextSubPrimitive(0){}
++#endif
+  virtual ~CEngineSubPrimitiveBase();
+  static void* __fastcall operator new(unsigned int size);
+  static void __fastcall operator delete(void*);
+@@ -30,5 +36,5 @@
+ #endif
+  static CSimpleMemoryPool* MemoryPool;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveBase)==24);
++FABLE_STATIC_ASSERT_AT(33, sizeof(CEngineSubPrimitiveBase)==24);
+ #endif

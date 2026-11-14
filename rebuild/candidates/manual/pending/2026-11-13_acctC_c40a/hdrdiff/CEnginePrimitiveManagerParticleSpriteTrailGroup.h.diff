@@ -1,0 +1,58 @@
+--- a/rebuild/include/engine/CEnginePrimitiveManagerParticleSpriteTrailGroup.h
++++ b/rebuild/include/engine/CEnginePrimitiveManagerParticleSpriteTrailGroup.h
+@@ -6,6 +6,28 @@
+ // Retail evidence: 0 trusted landed function(s); reconciliation clean.
+ // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+ // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLESPRITETRAILGROUP
++// Retail opt-in (agentC40, row 0x00BBDDD0 RenderPrimitive): the polymorphic class over the shared CEnginePrimitiveManager base (vptr,
++// SceneList +4, Enable +8), the row's own override declared (Ego_r.pdb / FableWin.pdb
++// ?RenderPrimitive@CEnginePrimitiveManagerParticleSpriteTrailGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z,
++// slot 7); the own members stay the PDB-named opaque blocks of the flattened default below (same offsets, same 0x40 bytes).
++#include <stddef.h>
++#include "rebuild_abi.h"
++#include "engine/CEnginePrimitiveManager.h"
++class CCPPointerInfo;
++class CEnginePrimitiveManagerSpriteTrails;
++class CEnginePrimitiveManagerParticleSpriteTrailGroup : public CEnginePrimitiveManager {
++public:
++    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);   // slot 7 0x00BBDDD0
++    unsigned char                        VertexShadersSpriteTrailPointLights[0xc];  // +0x0c CArray<CVertexShader>
++    unsigned char                        VertexShaderDisplacement[0x8]; // +0x18 CVertexShader
++    unsigned char                        PixelShader[0x8];   // +0x20 CPixelShader
++    unsigned char                        PixelShaderStipple[0x8]; // +0x28 CPixelShader
++    unsigned char                        PixelShaderDisplacement[0x8]; // +0x30 CPixelShader
++    CEnginePrimitiveManagerSpriteTrails* PTrailManager_Data; // +0x38 CCountedPointer<CEnginePrimitiveManagerSpriteTrails>::Data
++    CCPPointerInfo*                      PTrailManager_Info; // +0x3c CCountedPointer<CEnginePrimitiveManagerSpriteTrails>::Info
++};
++#else
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
+@@ -34,16 +56,17 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleSpriteTrailGroup) == 0x40);
++FABLE_STATIC_ASSERT_AT(37, sizeof(CEnginePrimitiveManagerParticleSpriteTrailGroup) == 0x40);
+ #ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLESPRITETRAILGROUP_VIRTUAL_DTOR
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(39, offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, __vftable) == 0x0);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, VertexShadersSpriteTrailPointLights) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, VertexShaderDisplacement) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PixelShader) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PixelShaderStipple) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PixelShaderDisplacement) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PTrailManager_Data) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PTrailManager_Info) == 0x3c);
++FABLE_STATIC_ASSERT_AT(41, offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, VertexShadersSpriteTrailPointLights) == 0xc);
++FABLE_STATIC_ASSERT_AT(42, offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, VertexShaderDisplacement) == 0x18);
++FABLE_STATIC_ASSERT_AT(43, offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PixelShader) == 0x20);
++FABLE_STATIC_ASSERT_AT(44, offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PixelShaderStipple) == 0x28);
++FABLE_STATIC_ASSERT_AT(45, offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PixelShaderDisplacement) == 0x30);
++FABLE_STATIC_ASSERT_AT(46, offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PTrailManager_Data) == 0x38);
++FABLE_STATIC_ASSERT_AT(47, offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PTrailManager_Info) == 0x3c);
+ 
++#endif
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERPARTICLESPRITETRAILGROUP_H

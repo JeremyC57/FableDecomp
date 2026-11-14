@@ -1,0 +1,14 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00564d50",
+    "module": "std::char_traits<char>",
+    "name": "copy",
+    "source_cpp": "// std::char_traits<char>::copy(char* s1, const char* s2, size_t n) -- copy n characters (none when n is 0) and return the destination\n// Leaf: ?copy@?$char_traits@D@std@@SAPADPADPBDI@Z\n// Retail: Fable.exe (TLC, VC7.1) @ 0x00564D50, 42 bytes, two `ret` (0x00564D5C, 0x00564D79). The catalog row 0x00564D5D (29 bytes,\n//   labelled _Copy_impl<CAppearanceModifierGraphics::CEntry*, ...>) is this function's tail after the `jne 0x00564D5D` at 0x00564D56.\n// Name: FableWin.pdb ?copy@?$char_traits@D@std@@SAPADPADPBDI@Z + the STLport 4.6.2 char_traits.h body (zero-length test, memcpy, s1 returned).\n#define FABLE_RETAIL_STLP_CHAR_TRAITS_COPY_OUTOFLINE\n#include \"stlport/fable_string.h\"\n\nchar* __cdecl std::char_traits<char>::copy(char* s1, const char* s2, size_t n)\n{\n    return (n == 0 ? s1 : (char*)memcpy(s1, s2, n * sizeof(char)));\n}\n",
+    "test_cpp": "// Behaviour test for 0x00564D50 std::char_traits<char>::copy: n characters are copied from the source to the destination (all byte\n// counts, including lengths that are not a multiple of four), nothing past n is written, a zero length copies nothing, and the\n// destination pointer is returned in every case.\n#include <cstdio>\n#include <cstring>\nstatic char* copy(char* s1, const char* s2, size_t n) { return (n == 0 ? s1 : (char*)std::memcpy(s1, s2, n * sizeof(char))); }\nstatic int fails = 0;\nstatic void check(bool c, const char* w) { if (!c) { ++fails; std::printf(\"FAIL %s\\n\", w); } }\nint main() {\n    const char src[] = \"ABCDEFGHIJKLMNOP\";\n    for (size_t n = 0; n <= 11; ++n) {\n        char dst[16]; std::memset(dst, '#', sizeof(dst));\n        char* r = copy(dst, src, n);\n        check(r == dst, \"the destination is returned\");\n        check(std::memcmp(dst, src, n) == 0, \"n characters copied\");\n        bool clean = true; for (size_t i = n; i < sizeof(dst); ++i) if (dst[i] != '#') clean = false;\n        check(clean, \"nothing past n is written\");\n    }\n    char keep[4] = { 'k', 'e', 'e', 'p' };\n    check(copy(keep, 0, 0) == keep && std::memcmp(keep, \"keep\", 4) == 0, \"zero length never reads the source\");\n    if (!fails) std::printf(\"00564d50_TEST PASS\\n\");\n    return fails;\n}\n",
+    "pass_pattern": "00564d50_TEST PASS"
+   }
+  ]
+ }
+}

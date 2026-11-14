@@ -1,0 +1,14 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0075C9B0	?GetEvent@CKeyCamera@CTCCameraPointScriptedSpline@@QBE?AVCCharString@@XZ	FableWin.pdb name set (CKeyCamera has GetEvent / SetEvent, no GetEventName)	GetEventName (landed row 0x0075C9B0, returns a local CRetailCharString)
+0x0075C420	?TransformPosition@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBV2@PBVCRightHandedSet@@@Z	Ego_r 0x0076AE70 + FableWin 0x024F44E0 (protected)	QBE (public) in reloc_bindings.tsv / landed 0x0075C420
+0x0075C280	?TransformVector@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBVCRightHandedSet@@@Z	Ego_r 0x0076ACC0 + FableWin 0x024F4300	?TransformVector@CEnvironmentSpellEffectInterface@@... binding (row 0x0075CCB0)
+0x00A567A0	?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z	Ego_r 0x00BAE530 + FableWin 0x0324B730	?GetSplinePosition@CCardinalSpline@@QAEXPAVC3DVector@@M@Z (binding from row 0x007DCFD0)
+0x00708A30	??1CEnginePrimitiveAnimatingMesh@@QAE@XZ	called on the stack CEnginePrimitiveAnimatingMesh right after SetPrimitiveGraphics in 0x0077B350 (ctor 0x007088F0 bound ??0CEnginePrimitiveAnimatingMesh); pairs with ??1CEnginePrimitiveMorphedAnimatingMesh 0x00709B10	CAnimationInterpolatorOwner_00708a30::~CAnimationInterpolatorOwner_00708a30 (label)
+0x005BC0D3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	destroys the local empty std::vector<CEngineTextureMorph> in 0x0077B350 (0x0077B614); binding ??1CTextureMorphVector from 0x00709B10 agrees on the element type	_global::StdList_Dtor_005bc0d3 (label), ??1CMember_005bc0d3, ??1CTextureMorphVector (stand-in class names)
+0x007EA580	?GetAllTargetPoints@CTCTargeted@@QBEXAAV?$vector@U?$pair@VC3DVector@@J@std@@V?$allocator@U?$pair@VC3DVector@@J@std@@@2@@std@@M@Z	Ego_r + FableWin name sets; ret 8; vector<pair<C3DVector,long>> element size 16; callee binding 0x007EA880	_global::CTCTargeted_BuildTargetTrajectory (catalog label)
+0x007DB2E0	?NewRound@CTCTavernGameCardBlackjack@@UAEXXZ	vtable slot 32 of 0x0126F8F4; Ego_r name; base call 0x008F0960	_global::CTCTavernGameCardBase_NewGame
+0x007EA580	?GetAllTargetPoints@CTCTargeted@@QBEXAAV?$vector@U?$pair@VC3DVector@@J@std@@V?$allocator@U?$pair@VC3DVector@@J@std@@@2@@std@@M@Z	Ego_r + FableWin (C37)	_global::CTCTargeted_BuildTargetTrajectory
+0x00A3E520	?StopMusic@CSoundManagerLH@@UAEXK@Z	vtable slot 18; CASoundManager.h	CSoundManagerLH::vfunc_18
+0x00A3E830	?SetMonitorAllowedPostStopTailDurationMS@CSoundManagerLH@@UAEXK@Z	vtable slot 35; CASoundManager.h	CSoundManagerLH::vfunc_35
+0x00564D5D	(tail of 0x00564D50) ?copy@?$char_traits@D@std@@SAPADPADPBDI@Z	jne target inside the 42-byte function 0x00564D50; FableWin name + STLport body	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics::CEntry*>
+0x00875690	??0CGeneralCircle@NCameraModes@@QAE@ABVC3DVector@@00@Z	Ego_r 0x0085BF10 + FableWin 0x029C4380	CGeneralCircle::CGeneralCircle (namespace NCameraModes missing)

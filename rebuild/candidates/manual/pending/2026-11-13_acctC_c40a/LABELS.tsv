@@ -1,0 +1,18 @@
+address	name	evidence
+0x0075D580	CTCCameraPointScriptedSpline::UpdateCameraParams	Ego_r 0x0076D6E0 + FableWin 0x025C98E0
+0x0075EE70	std::vector<CTCCameraPointScriptedSpline::CKeyCamera>::size	called with ecx = &KeyCameras, unsigned result (landed row)
+0x0077B350	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::OnAppearanceDraw	Ego_r 0x00784BC0 + vtable slot / sibling 0x00727D00
+0x0077B860	std::vector<CEngineTextureDecal>::operator=	called with ecx = &mesh.TextureDecals, arg *draw_info.PTextureDecals (0x0077B5F4)
+0x00708A30	CEnginePrimitiveAnimatingMesh::~CEnginePrimitiveAnimatingMesh	see NAME_FIXES
+0x007EA580	CTCTargeted::GetAllTargetPoints	Ego_r + FableWin; see NOTES
+0x007EAA40	std::vector<std::pair<C3DVector,long>>::_M_insert_overflow	called from the default push_back of 0x007EA580 (0x007EA73C)
+0x00BD2D90	CEngineInternalPrimitiveAnimatedMesh::GetBoneTransformations	Ego_r + FableWin ?GetBoneTransformations@CEngineInternalPrimitiveAnimatedMesh@@QAEPBVCMatrix4x4@@XZ
+0x0143B95C	GNoBoneTransformationsCalculated (descriptive)	dword += bone count at 0x00BD304E; no PDB name
+0x007DB2E0	CTCTavernGameCardBlackjack::NewRound	vtable 0x0126F974 = Blackjack vtable slot 32 + Ego_r ?NewRound@CTCTavernGameCardBlackjack@@UAEXXZ + calls base NewRound 0x008F0960
+0x00A3E520	CSoundManagerLH::StopMusic	vtable 0x0129D2C4 slot 18 + CASoundManager.h slot table (Anniversary 360 PDB)
+0x00A3E830	CSoundManagerLH::SetMonitorAllowedPostStopTailDurationMS	vtable slot 35 + CASoundManager.h slot table + ConsoleAudio_ command name
+0x00C0A570	CSoundSystem::GetPlayer (descriptive)	libpk vtable 0x012B1E24 slot 5: mov eax,[ecx+60h]
+0x00ED14E0	NScript::CV_SingingStonesScript::CSingingStone::Init	Ego_r ?Init@CSingingStone@CV_SingingStonesScript@NScript@@EAEXXZ + Ego_r member layout
+0x00BBDDD0	CEnginePrimitiveManagerParticleSpriteTrailGroup::RenderPrimitive	Ego_r + FableWin mangled name; vtable slot 7
+0x00564D50	std::char_traits<char>::copy	FableWin ?copy@?$char_traits@D@std@@SAPADPADPBDI@Z + STLport 4.6.2 char_traits.h body; 0x00564D5D is its tail
+0x00875690	NCameraModes::CGeneralCircle::CGeneralCircle(const C3DVector&, const C3DVector&, const C3DVector&)	Ego_r + FableWin ??0CGeneralCircle@NCameraModes@@QAE@ABVC3DVector@@00@Z; Ego_r layout Origin/Radius/Ei/Ej
