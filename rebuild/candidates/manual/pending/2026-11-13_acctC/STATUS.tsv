@@ -158,17 +158,17 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 006823d0	PARKED	962	2026-11-13_acctC_c27open	C24 -> C27: DIFFER(960v962); retail shares one slot between the peak value and a GFFloatAbs parameter; only a fitted helper text does it	never_worked	CTCCreatureOpinionOfHero::FrameUpdate
 00537e70	RECUT			C29: not a function start; tail of NUISystem::CList::ComputeChildrenVisibility 0x005379F5 (2,102 bytes)	never_worked	_global::ContainerUI_HandleMouseInput
 00945060	MATCHED_STAGED	936	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CAIStateGroup_WorkHammerAnvil::?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ
-006b2ca0	IN_PROGRESS			C32	never_worked	_global::CGameCamera_UpdateViewMatrix
+006b2ca0	IN_PROGRESS			C34 (Fable)	never_worked	_global::CGameCamera_UpdateViewMatrix
 00944940	MATCHED_STAGED	883	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CAIStateGroup_WorkSawingWood::?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ
 007b57c0	MATCHED_STAGED	776	2026-11-13_acctC_c30a	C30: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCarriedActionUseActivateQuest::CTCCarriedActionUseActivateQuest::vfunc_28
-007bc38a	IN_PROGRESS			C32	never_worked	_global::CTCPhysicsRigidBody_ApplyForceToward
-006a1a00	IN_PROGRESS			C32	never_worked	CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation
-0074af50	IN_PROGRESS			C32	never_worked	CTCCreatureGenerator::CreateCreaturesUndead
+007bc38a	IN_PROGRESS			C34 (Fable)	never_worked	_global::CTCPhysicsRigidBody_ApplyForceToward
+006a1a00	IN_PROGRESS		2026-11-13_acctC_c32open	C32 -> C34 (Fable): DIFFER(864v864), 3 hunks + one hidden call target (GetString v operator conversion at the second string site)	never_worked	CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation
+0074af50	IN_PROGRESS			C34 (Fable)	never_worked	CTCCreatureGenerator::CreateCreaturesUndead
 00a5cb90	OPEN				never_worked	CMatrix4x4::AlignedTransformTransposedAssumeW
 00c6f3e0	OPEN				never_worked	_global::CAudioMixer_ProcessChannels_64bit
-00c271f0	IN_PROGRESS			C32	never_worked	_global::CTCInventory_OnItemEquippedHelper
-007fc9d0	IN_PROGRESS			C32	never_worked	CTCKraken::FrameUpdate
-0075d580	IN_PROGRESS			C32	never_worked	CTCCameraPointScriptedSpline::UpdateCameraParams
+00c271f0	IN_PROGRESS			C34 (Fable)	never_worked	_global::CTCInventory_OnItemEquippedHelper
+007fc9d0	IN_PROGRESS		2026-11-13_acctC_c32open	C32 -> C34 (Fable): DIFFER(704v704), 22 frame-offset hunks (frame 0x18 v 0x14)	never_worked	CTCKraken::FrameUpdate
+0075d580	IN_PROGRESS			C34 (Fable)	never_worked	CTCCameraPointScriptedSpline::UpdateCameraParams
 0077b350	OPEN				never_worked	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::vfunc_0
 007ea580	OPEN				never_worked	_global::CTCTargeted_BuildTargetTrajectory
 00875690	OPEN				never_worked	CGeneralCircle::CGeneralCircle

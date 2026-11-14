@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+007aed10	?GetBossPhase@CTCBoss@@QBEJXZ	Ego_r 0x007B0660 precedes IncrementBossPhase (0x007B0670 = retail 0x007AED20); PTCBoss call 0x007FCA94	?GetState@CTCThunderCombat@@QAEJXZ, ?GetPhase@MazeBoss@@QAEJXZ (reloc_bindings)
+007bc38a	?InitMovement@CTCShotDefinitionThrowPredictive@NThingShot@@MAEXXZ	C30: vtable 0x0123CE9C slot 33	catalog _global::CTCPhysicsRigidBody_ApplyForceToward
+00c271f0	CPhysicalPlayer::Play (descriptive, libpk)	C30: only caller CSoundEvent::PlayPhysical 0x00C20AE3	catalog _global::CTCInventory_OnItemEquippedHelper
