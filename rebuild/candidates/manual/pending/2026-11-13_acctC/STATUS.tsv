@@ -7,7 +7,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b783f0	OPEN	9343	2026-11-13_acctC_c19a/open_00b783f0	C8 -> C13 -> C16: DIFFER(9343v9343), 3 residues; quartet needs exactly 2 dead units before the second SetCommonRenderStates expansion; bool-parameter helper ruled out	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
 005f1b10	MATCHED_STAGED	8383	2026-11-13_acctC_c9a	C5 -> C7 -> C9	parked	CTCInventoryAbilities::ConstructPCMagicList
-0058578b	IN_PROGRESS	8081	2026-11-13_acctC_c23open	C33 (Fable), twin method; C23: DIFFER(7948v8081), ported only; real name CTCInventory::OpenInventory; /Os TU, frame 0xE8 v 0xF4	parked	CTCInventory::CTCInventory::vfunc_30
+0058578b	IN_PROGRESS	8081	2026-11-13_acctC_c23open	C23 -> C33 -> C35 (Fable): DIFFER(8070v8081), frame = retail; one colouring decision (top_level in edi) cascades through 331 hunks	parked	CTCInventory::CTCInventory::vfunc_30
 00b4d370	OPEN				parked	CEngineShadowRenderer::UpdateShadowSpace
 00601310	MATCHED_STAGED	6931	2026-11-13_acctC_c31a	C23 -> C26 -> C31 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; inferred STLport texts + 16 fitted named locals (review items)	parked	_global::ConstructQuestsScreen_MainMenu
 00b89c30	PARKED	6431	2026-11-13_acctC_c22open	C22: DIFFER(6431v6431), one hunk; asserts/names no effect (acctB ~900 grades on it)	parked	CEngineScreenEffectOutlineGlow::ApplyOutline
@@ -25,7 +25,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00d45060	OPEN				parked	NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks
 00e20600	OPEN				parked	NScript::CQR_EscortTraderScript::CTraderToEscort::Main
 00502e90	OPEN				parked	CWorldMap::PopulateRegionWithVillagers
-006096e0	IN_PROGRESS			C33 (Fable), twin method; 	parked	CTCInventoryMap::ConstructLogbookListPC
+006096e0	IN_PROGRESS			C35 row 2: extent 12,832 confirmed (ret 4 at 0x0060C8DA + pad + 8-entry table); old draft needs seven opt-ins re-derived before it compiles	parked	CTCInventoryMap::ConstructLogbookListPC
 0061e6d0	MATCHED_STAGED	12356	2026-11-13_acctC_c28a	C23 -> C26 -> C28 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; no device	parked	CTCInventoryQuests::ConstructQuestListPC
 00e4b5b0	OPEN				parked	NScript::CV_BanditTollScript::CTollBandit::Main
 00e3bb70	OPEN				parked	NScript::CV_BordelloScript::CMadame::Main
@@ -112,7 +112,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00981410	OPEN				parked	_global::AIAction_InteractWith
 00acdb80	OPEN				parked	QuadricOptimiserInternals::COptimisedPrimitive::COptimisedPrimitive
 0068cb90	OPEN				parked	CInputProcessControlFreeCamera::CInputProcessControlFreeCamera::ProcessInput
-005f59c7	IN_PROGRESS	2652	2026-11-13_acctC_c12a/open_005f59c7	C33 (Fable), twin method; DIFFER(2649v2652) after C9, C10, C11, C12 (~175 grades); register choice in the final block	parked	CTCInventoryAbilities::ConstructPCExpressionsList
+005f59c7	PARKED	2652	2026-11-13_acctC_c12a/open_005f59c7	C10 -> C12 -> C33: DIFFER(2649v2652); retail tail block references only five candidates (no temporary for PeekComponent(), compare at 0x005F63C0 in another c2 block); source construct unknown	parked	CTCInventoryAbilities::ConstructPCExpressionsList
 00435530	OPEN				parked	CDisplayEngine::DoRender
 00439070	OPEN				parked	CPlayerGui::DrawPreparePrimitivesForEngine
 007de710	OPEN				parked	CTCWallMount::AttachObject

@@ -1,5 +1,5 @@
 // CTCInventory::OpenInventory() -- open the console inventory's top-level menu: clear the pad rumble, fade the music / sound /
-// Grade: DIFFER(7948v8081) 377 hunks -- acctB draft ported to today's overlay (OPENINVENTORY / ISCHILD / JOYSTICKS opt-ins re-applied; QUESTTEXT+QUESTNAME -> today's CTCQUESTCARD_ACCESSORS + _STATGETINTERFACETYPE); residue from the prologue on: frame 0xE8 v 0xF4, top_level esi v edi, TC key consts in edi (/Os TU)
+// Grade: DIFFER(8070v8081) 331 hunks -- agentC33: PDef IsNull guard in the vignette test (+129 bytes, two CDefPointer temporaries as retail 0x00585D46/0x00585F68), GetParentThing().GetCurrentMapNumber() (0x00585B9E order), bool has_quests/break instead of goto; residue = allocator: retail keeps top_level in edi 0x0058591E..0x005873CB, ours splits it (first piece esi, const 0x13 / const -1 pieces take edi)
 // ambient groups out, stop 3D scene rendering, select this hero-information screen, open the base inventory and size its anim
 // box, register the inventory with the UI manager, then build the top-level menu: gold amount, mini map with the region markers,
 // the active quest list (or the "check the guild" text), the five back actions, the map / quests / logbook / skills entries, the
@@ -217,10 +217,10 @@ void CTCInventory::OpenInventory()
     CCountedPointer<CComponent> mini_map_sprite(manager->CreateComponent("UI_MAP_MENU_MINI_MAP_TEMPLATE_SPRITE", false));
     if (mini_map_sprite->GetType() == UI_TYPE_SPRITE)
         static_cast<CSprite*>(mini_map_sprite.Get())->SetGraphicIndex(
-            GetMiniMapGraphic(GetWorldMap().GetRegion(GetWorldMap().GetRegionNumberMapIsIn(ParentThing->GetCurrentMapNumber()))));
+            GetMiniMapGraphic(GetWorldMap().GetRegion(GetWorldMap().GetRegionNumberMapIsIn(GetParentThing().GetCurrentMapNumber()))));
     if (map_tc)
         map_tc->CreateMiniMapMarkers(mini_map.Get(),
-            GetWorldMap().GetRegion(GetWorldMap().GetRegionNumberMapIsIn(ParentThing->GetCurrentMapNumber())));
+            GetWorldMap().GetRegion(GetWorldMap().GetRegionNumberMapIsIn(GetParentThing().GetCurrentMapNumber())));
     mini_map->AddChild(mini_map_sprite);
     top_level->FindChild("UI_MINI_MAP_VIEWPORT")->AddChild(mini_map);
 
@@ -231,26 +231,27 @@ void CTCInventory::OpenInventory()
     long misc_index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex("UI_MISC_THINGS_DEF", 1);
     CGameDefinitionManager::Get().GetDef(misc_index, &misc_def);
 
+    bool has_quests = false;
     for (std::list<CIntelligentPointer<CThing> >::const_iterator it = quests.begin(); it != quests.end(); ++it) {
         if (IS_THING_ALIVE(*it)) {
             const CTCQuestCard* quest_card = 0;
             (*it)->PeekTC(&quest_card);
-            if (quest_card->IsCore() || (quest_card->IsOptional() && !quest_card->GetPDef()->IsVignette))
-                goto quest_list;
+            if (quest_card->IsCore() || (quest_card->IsOptional() && !quest_card->GetPDef().IsNull() && !quest_card->GetPDef()->IsVignette)) {
+                has_quests = true;
+                break;
+            }
         }
     }
-    {
+    if (!has_quests) {
         CCountedPointer<CComponent> text(manager->CreateComponent("UI_TEXT_INSIDE_CONTAINER_TEMPLATE", false));
         description->AddChild(text);
         static_cast<NUISystem::CText*>(text.Get())->SetValue(CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_CHECKGUILD"), true, true);
-    }
-    goto quest_list_done;
-quest_list:
+    } else {
         for (std::list<CIntelligentPointer<CThing> >::const_reverse_iterator it = quests.rbegin(); it != quests.rend(); ++it) {
             if (IS_THING_ALIVE(*it)) {
                 const CTCQuestCard* quest_card = 0;
                 (*it)->PeekTC(&quest_card);
-                bool show = quest_card->IsCore() || (quest_card->IsOptional() && !quest_card->GetPDef()->IsVignette);
+                bool show = quest_card->IsCore() || (quest_card->IsOptional() && !quest_card->GetPDef().IsNull() && !quest_card->GetPDef()->IsVignette);
                 if (show) {
                     CCountedPointer<CComponent> entry;
                     if (quest_card->IsCore())
@@ -269,7 +270,7 @@ quest_list:
                 }
             }
         }
-quest_list_done:
+    }
     CCountedPointer<CComponent> scroll_viewport(manager->CreateComponent("UI_SCROLLING_VIEWPORT_TEXT_AREA", false));
     CViewport* viewport = static_cast<CViewport*>(scroll_viewport.Get());
     viewport->AddFakeChild(description.Get());
