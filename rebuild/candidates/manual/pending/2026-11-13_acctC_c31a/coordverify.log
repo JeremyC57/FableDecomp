@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00601310   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z -> 00429f43 labelled 'CTCMapwho::OnDie'
+00601310   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 00429c53 here, 004291de in landed 00570332
+00601310   RELOCATION_MATCH PASS   ConstructQuestsScreenPC
+
+WINS: 1
+  00601310 RELOCATION_MATCH CTCInventoryMap::ConstructQuestsScreenPC

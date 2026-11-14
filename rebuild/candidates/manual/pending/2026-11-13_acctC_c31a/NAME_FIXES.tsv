@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00429f43	?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z	FableWin PDB name set + stored as the CCPPointerInfo deleter by every inlined CCountedPointer<CAction>(T*) in 0x00601310 (mov [eax+4],0x429F43) + landed 005791e5 binding	?DestroyAction@NUISystem@@YIXPAX@Z (landed 00544c10); ?Destroy_00429f43@@YIXPAX@Z (landed 0042aa29); catalog label CTCMapwho::OnDie

@@ -1,0 +1,4 @@
+address	name	evidence
+00601310	CTCInventoryMap::ConstructQuestsScreenPC	reloc_bindings ?ConstructQuestsScreenPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z + Ego_r and FableWin PDB name sets (catalog label _global::ConstructQuestsScreen_MainMenu is wrong)
+00429f43	CCountedPointer<NUISystem::CAction>::DeleteData	see NAME_FIXES.tsv
+00429c53	CCountedPointer<NUISystem::CComponent>::~CCountedPointer	called at 0x00602E09 as the end-of-scope destructor of pastEntry; vland WARN RELOC_CONFLICT: landed 00570332 binds ??1 to 0x004291DE, which reloc_bindings also names ReleaseData (coordinator: check 00570332)

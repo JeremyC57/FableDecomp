@@ -1,5 +1,16 @@
 // CTCInventoryMap::ConstructQuestsScreenPC(NUISystem::CComponent* screen) -- builds the PC (mouse) quests screen: the PC_QUESTS_MENU list, mouse-movement observe / ignore actions for the screen's and the quest frame's scroll buttons, the current-quests and past-quests menu entries (a branch entry holding the review / past list, or an unavailable plain entry) with their description text, subtitle and ring picture, all added to the menu as scrolling children; returns the menu
-// Grade: DIFFER(6962v6931) -- call list = retail except the pastEntry (S80) destructor: retail calls ??1 0x00429C53 (VC7.1 inline budget: pen 27 at the last dtor needs a+g in (9327,9364], ours 8638), ours expands it; pastEntry then shares the group frame slots (slots +8)
+// Evidence (agentC31; twin = landed 0x005FE090 CTCInventoryMap::ConstructQuestsScreen):
+//   - named `CText* descriptionText` taken after `frame->AddPositionChild(description.Get())`: retail 0x00602972 passes the reloaded
+//     pointer in eax, then keeps it in edi from 0x0060297F for SetValue / AddFakeChild (the twin names it the same way);
+//   - FABLE_RETAIL_CCOUNTEDPOINTER (the (T*) constructor tests the member it stored, as the twin's TU text does): VC7.1 threads
+//     `if (!curList.IsNull())` through the constructor's null arm (retail 0x006027F4 `je 0x006028D0`, 0x00602806 `je 0x006028C7`);
+//   - STLport 4.6 inline layers (same code, they only count in the caller size VC7.1's inliner scores later sites with; retail calls
+//     the LAST end-of-scope ~CCountedPointer<CComponent> 0x00429C53 at 0x00602E09 and expands the six before it):
+//     FABLE_RETAIL_STLP_MALLOC_ALLOC_ALLOCATE (allocator<T>::allocate through __sgi_alloc::allocate), FABLE_RETAIL_STLP_LIST_CONSTRUCT_HELPER
+//     (_M_create_node through _Construct), FABLE_RETAIL_STLP_LIST_BASE_CONVERT_ALLOCATOR (_STLP_CONVERT_ALLOCATOR(__a, _Node) == __a).
+//   - Inferred: the sixteen `new CActionParamULONG` results are named before push_back. No retail byte distinguishes the spelling;
+//     with the three layers above the last destructor's caller size is 9341 and retail's decision needs [9347, 9403) (measured,
+//     NOTES.md); the named locals give 9357. FableWin's /Od body is +151 instructions over the text without them, +119 with them.
 // Leaf: ?ConstructQuestsScreenPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00601310, 6931 bytes, thiscall `ret 4`, esp frame (sub esp,78h), speed TU.
 // Callees: NUISystem::CManager::GetInstance 0x0041E5F2, CManager::CreateComponent 0x0041DB1D, CManager::CreateMenuEntryComponent
@@ -8,9 +19,11 @@
 //   CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CWideString 0x0099B510; CComponent / CList / CText /
 //   CViewport virtuals FindChild 3, AddChild 59, AddActionOnSelected 67, AddActionOnInactive 70, SetName 83, MakeUnavailable 92,
 //   AddPositionChild 124, AddFakeChild 142, SetValue 144, AddScrollingChildAndSetOffsets 152, InitialiseOffsets 156.
-#define FABLE_RETAIL_ASSERT_DEAD_ARM
-#define FABLE_RETAIL_CCOUNTEDPOINTER
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_STLP_MALLOC_ALLOC_ALLOCATE
+#define FABLE_RETAIL_STLP_LIST_BASE_CONVERT_ALLOCATOR
+#define FABLE_RETAIL_STLP_LIST_CONSTRUCT_HELPER
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CTCBASE
@@ -48,14 +61,6 @@ CComponent* CTCInventoryMap::ConstructQuestsScreenPC(CComponent* screen)
     NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     NUISystem::CList* menu = static_cast<NUISystem::CList*>(manager->CreateComponent("PC_QUESTS_MENU", false));
     CComponent* frame = menu->FindChild("PC_UI_FRAME_QUESTS");
-    FABLE_RETAIL_ASSERT(frame);
-    FABLE_RETAIL_ASSERT(frame);
-    FABLE_RETAIL_ASSERT(frame);
-    FABLE_RETAIL_ASSERT(frame);
-    FABLE_RETAIL_ASSERT(frame);
-    FABLE_RETAIL_ASSERT(frame);
-    FABLE_RETAIL_ASSERT(frame);
-    FABLE_RETAIL_ASSERT(frame);
 
     {
         CComponent* up = screen->FindChild("SCROLL_LIST_UP");
@@ -63,21 +68,25 @@ CComponent* CTCInventoryMap::ConstructQuestsScreenPC(CComponent* screen)
         CCountedPointer<CAction> observeUp(new CAction);
         observeUp->ActionType = NUISystem::UI_ACTION_TYPE_OBSERVE_EVENT;
         observeUp->AddParam(up, observeUp);
-        observeUp->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* observeUpParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        observeUp->UIActionParams.push_back(observeUpParam);
         CCountedPointer<CAction> ignoreUp(new CAction);
         ignoreUp->ActionType = NUISystem::UI_ACTION_TYPE_IGNORE_EVENT;
         ignoreUp->AddParam(up, ignoreUp);
-        ignoreUp->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* ignoreUpParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        ignoreUp->UIActionParams.push_back(ignoreUpParam);
         menu->AddActionOnSelected(ignoreUp);
         menu->AddActionOnInactive(observeUp);
         CCountedPointer<CAction> observeDown(new CAction);
         observeDown->ActionType = NUISystem::UI_ACTION_TYPE_OBSERVE_EVENT;
         observeDown->AddParam(down, observeDown);
-        observeDown->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* observeDownParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        observeDown->UIActionParams.push_back(observeDownParam);
         CCountedPointer<CAction> ignoreDown(new CAction);
         ignoreDown->ActionType = NUISystem::UI_ACTION_TYPE_IGNORE_EVENT;
         ignoreDown->AddParam(down, ignoreDown);
-        ignoreDown->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* ignoreDownParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        ignoreDown->UIActionParams.push_back(ignoreDownParam);
         menu->AddActionOnSelected(ignoreDown);
         menu->AddActionOnInactive(observeDown);
     }
@@ -87,21 +96,25 @@ CComponent* CTCInventoryMap::ConstructQuestsScreenPC(CComponent* screen)
         CCountedPointer<CAction> observeUp(new CAction);
         observeUp->ActionType = NUISystem::UI_ACTION_TYPE_OBSERVE_EVENT;
         observeUp->AddParam(up, observeUp);
-        observeUp->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* observeUpParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        observeUp->UIActionParams.push_back(observeUpParam);
         CCountedPointer<CAction> ignoreUp(new CAction);
         ignoreUp->ActionType = NUISystem::UI_ACTION_TYPE_IGNORE_EVENT;
         ignoreUp->AddParam(up, ignoreUp);
-        ignoreUp->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* ignoreUpParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        ignoreUp->UIActionParams.push_back(ignoreUpParam);
         menu->AddActionOnSelected(ignoreUp);
         menu->AddActionOnInactive(observeUp);
         CCountedPointer<CAction> observeDown(new CAction);
         observeDown->ActionType = NUISystem::UI_ACTION_TYPE_OBSERVE_EVENT;
         observeDown->AddParam(down, observeDown);
-        observeDown->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* observeDownParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        observeDown->UIActionParams.push_back(observeDownParam);
         CCountedPointer<CAction> ignoreDown(new CAction);
         ignoreDown->ActionType = NUISystem::UI_ACTION_TYPE_IGNORE_EVENT;
         ignoreDown->AddParam(down, ignoreDown);
-        ignoreDown->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* ignoreDownParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        ignoreDown->UIActionParams.push_back(ignoreDownParam);
         menu->AddActionOnSelected(ignoreDown);
         menu->AddActionOnInactive(observeDown);
     }
@@ -111,21 +124,25 @@ CComponent* CTCInventoryMap::ConstructQuestsScreenPC(CComponent* screen)
         CCountedPointer<CAction> observeUp(new CAction);
         observeUp->ActionType = NUISystem::UI_ACTION_TYPE_OBSERVE_EVENT;
         observeUp->AddParam(up, observeUp);
-        observeUp->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* observeUpParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        observeUp->UIActionParams.push_back(observeUpParam);
         CCountedPointer<CAction> ignoreUp(new CAction);
         ignoreUp->ActionType = NUISystem::UI_ACTION_TYPE_IGNORE_EVENT;
         ignoreUp->AddParam(up, ignoreUp);
-        ignoreUp->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* ignoreUpParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        ignoreUp->UIActionParams.push_back(ignoreUpParam);
         menu->AddActionOnSelected(observeUp);
         menu->AddActionOnInactive(ignoreUp);
         CCountedPointer<CAction> observeDown(new CAction);
         observeDown->ActionType = NUISystem::UI_ACTION_TYPE_OBSERVE_EVENT;
         observeDown->AddParam(down, observeDown);
-        observeDown->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* observeDownParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        observeDown->UIActionParams.push_back(observeDownParam);
         CCountedPointer<CAction> ignoreDown(new CAction);
         ignoreDown->ActionType = NUISystem::UI_ACTION_TYPE_IGNORE_EVENT;
         ignoreDown->AddParam(down, ignoreDown);
-        ignoreDown->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* ignoreDownParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        ignoreDown->UIActionParams.push_back(ignoreDownParam);
         menu->AddActionOnSelected(observeDown);
         menu->AddActionOnInactive(ignoreDown);
     }
@@ -135,21 +152,25 @@ CComponent* CTCInventoryMap::ConstructQuestsScreenPC(CComponent* screen)
         CCountedPointer<CAction> observeUp(new CAction);
         observeUp->ActionType = NUISystem::UI_ACTION_TYPE_OBSERVE_EVENT;
         observeUp->AddParam(up, observeUp);
-        observeUp->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* observeUpParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        observeUp->UIActionParams.push_back(observeUpParam);
         CCountedPointer<CAction> ignoreUp(new CAction);
         ignoreUp->ActionType = NUISystem::UI_ACTION_TYPE_IGNORE_EVENT;
         ignoreUp->AddParam(up, ignoreUp);
-        ignoreUp->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* ignoreUpParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        ignoreUp->UIActionParams.push_back(ignoreUpParam);
         menu->AddActionOnSelected(observeUp);
         menu->AddActionOnInactive(ignoreUp);
         CCountedPointer<CAction> observeDown(new CAction);
         observeDown->ActionType = NUISystem::UI_ACTION_TYPE_OBSERVE_EVENT;
         observeDown->AddParam(down, observeDown);
-        observeDown->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* observeDownParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        observeDown->UIActionParams.push_back(observeDownParam);
         CCountedPointer<CAction> ignoreDown(new CAction);
         ignoreDown->ActionType = NUISystem::UI_ACTION_TYPE_IGNORE_EVENT;
         ignoreDown->AddParam(down, ignoreDown);
-        ignoreDown->UIActionParams.push_back(new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT));
+        CActionParamULONG* ignoreDownParam = new CActionParamULONG(NUISystem::UI_EVENT_MOUSE_MOVEMENT);
+        ignoreDown->UIActionParams.push_back(ignoreDownParam);
         menu->AddActionOnSelected(observeDown);
         menu->AddActionOnInactive(ignoreDown);
     }
@@ -180,8 +201,9 @@ CComponent* CTCInventoryMap::ConstructQuestsScreenPC(CComponent* screen)
     }
     description.Reset(manager->CreateComponent("PC_DESCRIPTION", false));
     frame->AddPositionChild(description.Get());
-    static_cast<NUISystem::CText*>(description.Get())->SetValue(textBank.GetTextBySymbol("TEXT_GUI_MENUGUIDE_QUESTS_CURRENTQUESTS"), true, true);
-    viewport->AddFakeChild(description.Get());
+    NUISystem::CText* descriptionText = static_cast<NUISystem::CText*>(description.Get());
+    descriptionText->SetValue(textBank.GetTextBySymbol("TEXT_GUI_MENUGUIDE_QUESTS_CURRENTQUESTS"), true, true);
+    viewport->AddFakeChild(descriptionText);
     curEntry->AddChild(description);
     subtitle.Reset(manager->CreateComponent("PC_CURRENTQUESTS_SUBTITLE", false));
     frame->AddPositionChild(subtitle.Get());
@@ -200,8 +222,9 @@ CComponent* CTCInventoryMap::ConstructQuestsScreenPC(CComponent* screen)
     }
     description.Reset(manager->CreateComponent("PC_DESCRIPTION", false));
     frame->AddPositionChild(description.Get());
-    static_cast<NUISystem::CText*>(description.Get())->SetValue(textBank.GetTextBySymbol("TEXT_GUI_MENUGUIDE_QUESTS_PASTQUESTS"), true, true);
-    viewport->AddFakeChild(description.Get());
+    descriptionText = static_cast<NUISystem::CText*>(description.Get());
+    descriptionText->SetValue(textBank.GetTextBySymbol("TEXT_GUI_MENUGUIDE_QUESTS_PASTQUESTS"), true, true);
+    viewport->AddFakeChild(descriptionText);
     pastEntry->AddChild(description);
     subtitle.Reset(manager->CreateComponent("PC_PASTQUESTS_SUBTITLE", false));
     frame->AddPositionChild(subtitle.Get());
