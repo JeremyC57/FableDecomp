@@ -1,0 +1,5 @@
+address	name	evidence
+005940d5	std::_Rb_tree<CDateAndTime,std::pair<const CDateAndTime,CWideString>,...>::~_Rb_tree	vland bound symbol of the 0x0058F9BC call (the map<CDateAndTime,CWideString> local's destructor); the landed file label CActiveFile::OnReadFinished / StdList_Dtor is wrong
+00999850	CAFile::ScanNextFile	CAFile.h (Ego_r ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z); db label FindNextFileSequential is descriptive
+007ef200	CTCCarriedActionUseExpression::OnActionUse	rtti-vtables.tsv slot 28 (= OnActionUse, as CTCCarriedActionUseLamp 0x007ECEE0) + Ego_r/FableWin ?OnActionUse@CTCCarriedActionUseExpression@@UAEXAAVCThing@@@Z; catalog vfunc_28 is a placeholder
+007c2d10	CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CFilter_Bind3<CThingFilter_IsNot,(anonymous)::CThingFilter_ShotsToCheckForCollisionWith,CThingFilter_SolidToThing> >	Ego_r 0x007C1C40 template instance name; only caller 0x007C0137

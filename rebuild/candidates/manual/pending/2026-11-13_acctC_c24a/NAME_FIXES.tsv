@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0041a600	?GetPhotojournalDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	landed 0x0041A600 row (FableWin.pdb order) and landed TakeQuickScreenshot 0x0055D180; GetSaveDir is 0x0041A540 (landed GetProfileNames 0x005955AB)	GetSaveDir in rebuild/src/compiled/00/58/CTCInventory_HasScreenshots_00581b33.cpp

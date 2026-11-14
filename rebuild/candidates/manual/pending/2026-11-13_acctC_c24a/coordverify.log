@@ -1,0 +1,8 @@
+addr       parity           behav  name
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/wine/vc71rtm/bin/cl.exe laude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/stage/c24a/lv/00/58/0058f9bc/0058f9bc.cpp
+0058f9bc   WARN RELOC_NAME: ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z -> 00999850 labelled 'CAFile::FindNextFileSequential'
+0058f9bc   WARN RELOC_NAME: ??1?$_Rb_tree@VCDateAndTime@@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@U?$_Select1st@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@@3@U?$less@VCDateAndTime@@@3@V?$allocator@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@@3@@std@@QAE@XZ -> 005940d5 labelled '_global::StdList_Dtor_005940d5'
+0058f9bc   RELOCATION_MATCH["s"] PASS   OpenPCPhotojournal
+
+WINS: 1
+  0058f9bc RELOCATION_MATCH["s"] CTCInventory::OpenPCPhotojournal

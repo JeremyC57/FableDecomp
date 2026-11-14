@@ -1,0 +1,4 @@
+address	name	evidence
+00601310	?ConstructQuestsScreenPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z	Ego_r.pdb 0x00655BC0 + FableWin.pdb 0x020ABAB0 + reloc_bindings.tsv (caller 0x0041E6D3); catalog label ConstructQuestsScreen_MainMenu is wrong
+0058578b	?OpenInventory@CTCInventory@@UAEXXZ	Ego_r.pdb 0x005F4D20 + FableWin.pdb 0x0212841C; CTCInventory vtable 0x01250DE4 slot 30 (base OpenInventory slot); catalog label vfunc_30 is a placeholder
+0061e6d0	?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@3@W4QuestScreenType@@2@Z	acctB draft Leaf line (catalog name agrees)

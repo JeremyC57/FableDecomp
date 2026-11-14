@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00702810	QUEST_PREREQUISITE_RENOWN (enumerator of EQuestCardPrerequisite)	rebuild/include/engine/CQuestCardDef.h: 'Both original PDB enum records: int, sole enumerator zero'	QUEST_CARD_PREREQUISITE_RENOWN_LEVEL (local enum in landed CTCQuestCard_IsActivatable_00702810.cpp); QUEST_CARD_PREREQUISITE_RENOWN (acctB draft of 0x0061E6D0, fixed here)

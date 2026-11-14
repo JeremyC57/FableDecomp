@@ -1,0 +1,6 @@
+# agentC23 LESSONS (one line each)
+- (c2 budget) Dead IL counts for VC7.1's caller-size budget: a FABLE_RETAIL_ASSERT dead arm (`if (0) {...}`) inside an inline accessor adds ~12-18 tuples to the caller's a+g per expanded site (Get x15 sites = +216), though it never changes the callee's own sz (C21). It moves late inline decisions (pen past 9000) with no code change.
+- (0x0061E6D0) A dead-arm ASSERT in CCountedPointer::Get alone reproduces retail's call list (464 calls, 12356 bytes) where the draft needed six `#pragma inline_depth(0)` devices; FableWin Get = default text + exactly one assert unit.
+- (0x0061B610 landed) The same arms break the landed sibling unless its fitted FABLE_RETAIL_STLP_ALLOC_PROXY_REBIND is dropped: budget opt-ins of landed rows are interchangeable with assert arms, so a TU-wide model must be checked on every big row of the TU.
+- (0x00601310) `#pragma inline_depth(0)` around a local's declaration does not reach its scope-end destructor (taken at the closing brace); an inner block + pragma at `return` does, but moves the frame and early code.
+- (tooling) fg.py grades a 7-12 KB row in ~1.2 s here: sweep budget knobs (k row arms) and print one line per grade; a+g per site via tools/inl.sh + tools/ag.py (40 s).

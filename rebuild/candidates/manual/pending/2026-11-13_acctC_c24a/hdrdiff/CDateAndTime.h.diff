@@ -1,0 +1,19 @@
+--- a/rebuild/include/engine/CDateAndTime.h
++++ b/rebuild/include/engine/CDateAndTime.h
+@@ -15,7 +15,16 @@
+ class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;
+ public: CDateAndTime(const _SYSTEMTIME& time); _FILETIME ToFileTime() const;};
+ #elif !defined(FABLE_RETAIL_CDATEANDTIME_CTOR)
++#ifdef FABLE_RETAIL_CDATEANDTIME_LESS
++// Retail opt-in (agentC24, row 0x0058F9BC CTCInventory::OpenPCPhotojournal): Ego_r.pdb / FableWin.pdb ??MCDateAndTime@@QBE_NABV0@@Z,
++// out of line in retail (0x009E9B80; reloc_bindings.tsv), the key compare of the map<CDateAndTime, CWideString> operator[] body
++// (FABLE_RETAIL_STLP_MAP). Declaration only; same layout.
++class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;
++public: bool operator<(const CDateAndTime& other) const;   // 0x009E9B80
++};
++#else
+ class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;};
++#endif
+ #else
+ // Retail opt-in (row 0x00A60D40): ??0CDateAndTime@@QAE@XZ is a real out-of-line ctor (0x009E9AB0) that retail calls.
+ // Also chunk 2013, row 0x00597DF7 CFrontEndManager::GetSavedGameNames: vector<CDateAndTime>::resize 0x0048623F and every empty save
