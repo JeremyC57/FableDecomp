@@ -1,8 +1,7 @@
 // CTCInventoryQuests::ConstructQuestListPC(NUISystem::CComponent* parent, const std::vector<CThing*>& quests, NUISystem::CList* list, QuestScreenType type, NUISystem::CList* frame_list) -- build the PC quest list: one menu entry per quest card (core, optional, vignette order) with its minimap, description text, rewards, boasts and take / delete actions, then the world-map zoom state and region markers
-// Grade: DIFFER(12340v12356) 610 hunks -- acctB draft + enumerator respell + the landed sibling 0x0061B610 opt-in set; keeps the 6 inline_depth(0) devices (466 calls v 464). DIAG twin differ/0061e6d0_diag.cpp: no devices, no REBIND, Get/IsNull dead-arm asserts + 14 row arms = 12356v12356, 464 calls, 599 hunks (frame packing + register residue)
-// Next idea: hand882's line stands (the caller-size consumer of 724..1385 before pop_action, TRACE.md there). New in H40e / H40f: a folded `&& true` in a loop condition or an if halves the static frequency of everything under it with no code -- the six late out-of-line sites the draft forces with inline_depth(0) may be a frequency fact (the boast loop / per-quest loop condition), not a size fact: trace the six sites with tools/inl.sh and try the factor before any device H40j (2 grades): `&& true` on the loops is byte-neutral (1295). H40k (1 grade): baseline 1295, unchanged.
+// Grade: DIFFER(12356v12356) -- retail size, 464/464 calls, frame 0x41C = retail, NO inline-budget device, NO assert, no flag (plain hdr overlay). What closed the budget: `CTCInventoryMap* inventory_map = 0;` at the mini-map site (retail `xor ecx,ecx` before the TC lookup, pointer kept in ecx; the uninitialised local was homed in memory and cost the six inline_depth devices). Residue: frame-slot order (55 of 101 frame symbols off retail slots: tools/fa.sh + fmis.py) and the register choices that follow (agentC26)
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0061E6D0, 12,356 bytes, thiscall `ret 0x14`.
 // Leaf: ?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@3@W4QuestScreenType@@2@Z
-// Inline-budget: #pragma inline_depth(0) round delete_action's CCountedPointer ctor, take_boast_entry, teleport_action, both zoom entries and the state-origin ConvertVector -- retail calls 0x0042AA29 / 0x00429C15 / 0x0042BE50 / 0x0052E580 there once its function-wide inline budget is spent (regime 0: pen ~ sz*(a+g)/18256 above a+g 9000; probe b1x3 reproduces all six with no device)
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #define FABLE_RETAIL_CTCINVENTORYQUESTS_MEMBERS
 #define FABLE_RETAIL_CTCINVENTORYQUESTS_QUESTLIST
@@ -242,7 +241,7 @@ void CTCInventoryQuests::ConstructQuestListPC(CComponent* parent, const std::vec
                 static_cast<CSprite*>(mini_map_sprite.Get())->SetGraphicIndex(GetMiniMapGraphic(*region));
             mini_map->AddChild(mini_map_sprite);
             static_cast<CViewport*>(movie_viewport.Get())->AddFakeChild(mini_map.Get());
-            CTCInventoryMap* inventory_map;
+            CTCInventoryMap* inventory_map = 0;                     // retail zeroes it before the TC lookup (`xor ecx,ecx` 0x0061F0A8) and keeps it in ecx
             GetParentThing().GetTC(TCI_INVENTORY_MAP, &inventory_map);
             inventory_map->CreateMiniMapMarkers(mini_map.Get(), *region);
             AvailableQuests.insert(std::map<CThing*, CComponent*>::value_type(thing, entry.Get()));
@@ -376,24 +375,18 @@ void CTCInventoryQuests::ConstructQuestListPC(CComponent* parent, const std::vec
                         sub_list_as_list->InitialiseOffsets((quest_card->GetPDef()->NumBoasts != 0) + 1);
                         sub_list_as_list->AddScrollingChildAndSetOffsets(take_entry);
                         CAction* delete_action_object = new CAction;
-#pragma inline_depth(0)
                         CCountedPointer<CAction> delete_action(delete_action_object);
-#pragma inline_depth()
                         delete_action->ActionType = UI_ACTION_TYPE_DELETE;
                         delete_action->UIActionParams.push_back(entry.Get());
                         take_entry->AddAction(delete_action);
                         if (quest_card->GetPDef()->NumBoasts != 0) {
                             CWideString take_boast_text = text_bank.GetTextBySymbol("TEXT_GUI_MENU_TAKE_QUEST_BOAST");
-#pragma inline_depth(0)
                             CCountedPointer<CComponent> take_boast_entry(manager->CreateMenuEntryComponent(take_boast_text, 0.0f, 1.0f,
                                                                          "PC_MENU_ENTRY_TEMPLATE", 0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
-#pragma inline_depth()
                             take_boast_entry->AddChild(mini_map);
                             sub_list_as_list->AddScrollingChildAndSetOffsets(take_boast_entry);
                             take_boast_entry->AddAction(take_boast_action);
-#pragma inline_depth(0)
                             CCountedPointer<CAction> teleport_action(new CAction);
-#pragma inline_depth()
                             teleport_action->ActionType = UI_ACTION_TYPE_TELEPORT_TO_BOAST;
                             take_boast_entry->AddAction(teleport_action);
                         }
@@ -407,18 +400,14 @@ void CTCInventoryQuests::ConstructQuestListPC(CComponent* parent, const std::vec
                 }
             } else if (type == QUEST_SCREEN_TYPE_CURRENT) {
                 CWideString zoom_text = text_bank.GetTextBySymbol("TEXT_GUI_MENU_ZOOMED_REGION");
-#pragma inline_depth(0)
                 CCountedPointer<CComponent> zoom_entry(manager->CreateMenuEntryComponent(zoom_text, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
                                                                                      0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
-#pragma inline_depth()
                 sub_list_as_list->AddScrollingChild(zoom_entry);
                 zoom_entry->AddChild(mini_map);
             } else if (type == QUEST_SCREEN_TYPE_OTHER) {
                 CWideString zoom_text = text_bank.GetTextBySymbol("TEXT_GUI_MENU_ZOOMED_REGION");
-#pragma inline_depth(0)
                 CCountedPointer<CComponent> zoom_entry(manager->CreateMenuEntryComponent(zoom_text, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
                                                                                      0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
-#pragma inline_depth()
                 sub_list_as_list->AddScrollingChild(zoom_entry);
                 zoom_entry->AddChild(mini_map);
             }
@@ -428,9 +417,7 @@ void CTCInventoryQuests::ConstructQuestListPC(CComponent* parent, const std::vec
             if (region_number > 0)
                 region_offset = region->GetWorldMapOffset();
             CUIStateDef state_def;
-#pragma inline_depth(0)
             C2DVector origin = CUIScreenUnitConverter::ConvertVector(misc_def->HeroDollFrameTL_PC);
-#pragma inline_depth()
             origin.Y += CManager::GetInstance()->GetUIScale().Y * misc_def->HeroDollFrameEmulateListOffset;
             state_def.Position = misc_def->PCRingCenter - region->GetWorldMapOffset();
             state_def.Position.X *= CManager::GetInstance()->GetUIScale().X;
