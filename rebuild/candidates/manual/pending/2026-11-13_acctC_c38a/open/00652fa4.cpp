@@ -1,5 +1,5 @@
 // NPlayerGui::CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info) -- draws the d-pad quick-access HUD: the ring sprites, the guild-seal top ring with its tooltip, the context-sensitive and quick-access item icons with their seal / lamp effects, ability crosses, charge graphics and key tooltips, kills unused effects, and the flash / d-pad middle sprites.
-// Grade: DIFFER(4654v4653) -- 1524 v 1524 instructions; residue = x87 commutative operand orders of five vector sums (tip X, loop-1 X, loop-2 X, main-seal X/Y, flash/d-pad X/Y), CRGBColour byte-store scheduling at 0x006534BC
+// Grade: DIFFER(4653v4653) -- retail size, 1524 v 1524 instructions; residue = (1) this/def take each other's register (c2 priority this 655 v def 656; retail this=esi, def=edi), (2) flash sprite X order 0x0065409E + `fst` position 0x006540C3, (3) d-pad sprite Y order 0x00654151. Everything before the flash block is right in the swap-masked diff.
 // Leaf: ?Draw@CDrawQuickAccessIcons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00652FA4, 4,653 bytes (ret 4 at 0x006541CE). Frame pointer (`lea ebp,[esp-74h]`), /GS cookie, size TU.
@@ -18,6 +18,7 @@
 #define FABLE_RETAIL_C2DCOORDI_TOFLOAT
 #define FABLE_RETAIL_C2DCOORDI_NOTEQUAL
 #define FABLE_RETAIL_C2DVECTOR_TOC2DCOORDI
+#define FABLE_RETAIL_C2DVECTOR_TOC2DVECTOR
 #define FABLE_RETAIL_CRIGHTHANDEDSET
 #define FABLE_RETAIL_CRIGHTHANDEDSET_CTOR
 #define FABLE_RETAIL_CRIGHTHANDEDSET_RIGHT_COMPONENTS
@@ -326,7 +327,9 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
                     C2DVector anchored = GFAnchorToBottomLeft(tip);
                     C2DVector text;
                     GFACoordToVCoord(anchored, text);
-                    PlayerGui->Draw2DText(text, name, Component->PeekCutSceneMainFont(), CRGBColour(0xff, 0xff, 0xff, ScaleAlpha(0xff)), 0.6f,
+                    unsigned char alpha = ScaleAlpha(0xff);
+                    const CFontBank& font = Component->PeekCutSceneMainFont();
+                    PlayerGui->Draw2DText(text, name, font, CRGBColour(0xff, 0xff, 0xff, alpha), 0.6f,
                                           (EEngine2DLayer)0x49, true);
                 }
             }
@@ -390,7 +393,8 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
         float fade = 1.0f;
         long graphic = inventory->GetQuickAccessItemGraphicIndex(i);
         long slot = (long)def.ContextSensitiveItemButtons.size() + i;
-        const C2DVector& offset = def.QuickAccessItemButtons[i].Offset;
+        const CQuickAccessItemButtonGuiDef& button = def.QuickAccessItemButtons[i];
+        const C2DVector& offset = button.Offset;
         C2DVector pos = GFAnchorToBottomLeft(ringsPos + offset);
         long item = inventory->GetQuickAccessItem(slot);
         CDefPointer<const CThingObjectDef> objDef;
@@ -439,7 +443,7 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
         }
         DrawIcon(info, pos, fade, i, 0, graphic, true);
         if (ChargingButtonIndex == slot)
-            DrawChargeGraphic(info, offset, slot);
+            DrawChargeGraphic(info, button.Offset, slot);
         else if (ChargingButtonIndex == -2)
             DrawChargeGraphic(info, C2DVector(0.0f, 0.0f), -2);
         if (graphic > 0 && CUserProfileManager::Get().IsHUDTooltipEnabled()) {
@@ -456,7 +460,7 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
         }
     }
     if (ChargingButtonIndex != -1) {
-        DrawEffectAtPos(GFAnchorToBottomLeft(ringsPos + def.GuildSealMainLevelUpOffset).ToC2DCoordI(), def.QuickAccessMainGuildSealEffect, 9);
+        DrawEffectAtPos(GFAnchorToBottomLeft(def.GuildSealMainLevelUpOffset + def.DPadRingsPos).ToC2DCoordI(), def.QuickAccessMainGuildSealEffect, 9);
     } else if (Effects[9].GetPItem()) {
         Effects[9]->Kill();
         Effects[9] = 0;
@@ -479,14 +483,14 @@ void CDrawQuickAccessIcons::Draw(const CEnginePrimitivePrepareInfo& info)
         }
         if (flashGraphic > 0) {
             unsigned char flashAlpha = (unsigned char)(long)(FlashFade.GetFadeInOutAlpha() * 255.0f);
-            CEnginePrimitive2DSprite sprite(0, C2DVector(C2DVector(GFAnchorToBottomLeft(ringsPos) + def.DPadMiddleOffset)), (EEngine2DLayer)0x43, flashGraphic, 0,
+            CEnginePrimitive2DSprite sprite(0, (GFAnchorToBottomLeft(ringsPos) + def.DPadMiddleOffset).ToC2DVector(), (EEngine2DLayer)0x43, flashGraphic, 0,
                 ENGINE_PRIMITIVE_BLEND_ALPHA, ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha(flashAlpha), 0xff, 0xff, 0xff, 0,
                 C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
             info.Engine.SetPersistentPrimitive(PrimitiveHandles[7], sprite, 0xc0);
         }
     }
     if (dpadGraphic > 0) {
-        CEnginePrimitive2DSprite sprite(0, C2DVector(C2DVector(GFAnchorToBottomLeft(ringsPos) + def.DPadMiddleOffset)), (EEngine2DLayer)0x44, dpadGraphic, 0,
+        CEnginePrimitive2DSprite sprite(0, (GFAnchorToBottomLeft(ringsPos) + def.DPadMiddleOffset).ToC2DVector(), (EEngine2DLayer)0x44, dpadGraphic, 0,
             ENGINE_PRIMITIVE_BLEND_ALPHA, ENGINE_INTERPOLATION_SET_0, 0.0f, 0.0f, ScaleAlpha(0xff), 0xff, 0xff, 0xff, 0,
             C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Engine.SetPersistentPrimitive(PrimitiveHandles[6], sprite, 0xc0);
