@@ -1,0 +1,39 @@
+--- a/rebuild/include/engine/NUISystem_CUIScreenUnitConverter.h
++++ b/rebuild/include/engine/NUISystem_CUIScreenUnitConverter.h
+@@ -42,6 +42,28 @@
+     // in retail (0x0052E580 is its out-of-line copy, the landed body): the row expands it at its first site (0x0061EA22..0x0061EA8F:
+     // the flag test, then x / 640 * back-buffer width and y / 480 * back-buffer height) and calls 0x0052E580 at its second
+     // (0x00620F0A) once the inline budget is spent. The landed 0x0052E580 body; needs FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE.
++#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR_INLINE_CONVERTXY
++    // Nested opt-in (agentC28, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): the same inline ConvertVector written through
++    // the class's own per-axis converters, Ego_r.pdb / FableWin.pdb ?ConvertX@CUIScreenUnitConverter@NUISystem@@SIMM@Z and ?ConvertY@..@@SIMM@Z
++    // (Ego_r 0x0055ECC6 / 0x0055ECF0, FableWin 0x01E1E0F6 / 0x01E1E12E; static __fastcall float(float)). Evidence: (1) FableWin's debug
++    // ConvertVector is 28 instructions / 81 bytes: this text is 27i / 77b at plain /Od, the direct-global text of the #else branch 29i / 95b
++    // (four absolute float operands FableWin does not have); (2) the out-of-line copy 0x0052E580 compiles to the same retail bytes from
++    // this text; (3) the row: with this text 0x0061E6D0 is RELOCATION_MATCH, with the #else text its last residue is the SIB operand
++    // order at 0x0061FB58 / 0x0061FB5E (c2 symbol-record ids: the two expanded per-axis helpers add folded parameter records with no byte).
++    // ConvertX / ConvertY bodies: Inferred (FableWin 15i / 45b each; this text 13i / 42b at /Od -- the flag test and the two-step divide /
++    // multiply are what the retail copy 0x0052E580 shows; the exact debug text is not pinned).
++    static float __fastcall ConvertX(float x) { if (IsUsingRelativeCoords) { x /= ScreenWidth; x *= BackBufferWidth; } return x; }
++    static float __fastcall ConvertY(float y) { if (IsUsingRelativeCoords) { y /= ScreenHeight; y *= BackBufferHeight; } return y; }
++    static C2DVector __fastcall ConvertVector(C2DVector v)         // 0x0052E580 (out-of-line copy)
++    {
++        C2DVector result = v;
++        if (IsUsingRelativeCoords) {
++            result.X = ConvertX(v.X);
++            result.Y = ConvertY(v.Y);
++        }
++        return result;
++    }
++#else
+     static C2DVector __fastcall ConvertVector(C2DVector v)         // 0x0052E580 (out-of-line copy)
+     {
+         C2DVector result = v;
+@@ -53,6 +75,7 @@
+         }
+         return result;
+     }
++#endif
+ #else
+     static C2DVector __fastcall ConvertVector(C2DVector v);        // 0x0052E580
+ #endif

@@ -9,7 +9,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 005f1b10	MATCHED_STAGED	8383	2026-11-13_acctC_c9a	C5 -> C7 -> C9	parked	CTCInventoryAbilities::ConstructPCMagicList
 0058578b	OPEN	8081	2026-11-13_acctC_c23open	C23: DIFFER(7948v8081), ported only; real name CTCInventory::OpenInventory; /Os TU, frame 0xE8 v 0xF4	parked	CTCInventory::CTCInventory::vfunc_30
 00b4d370	OPEN				parked	CEngineShadowRenderer::UpdateShadowSpace
-00601310	PARKED	6931	2026-11-13_acctC_c23open	C23 -> C26: DIFFER(6958v6931); needs +706..762 caller tuples before the last scope-end destructor; no natural cause known	parked	_global::ConstructQuestsScreen_MainMenu
+00601310	IN_PROGRESS	6931	2026-11-13_acctC_c23open	C31 (Fable): twin-idiom diff first, then re-measure inline decisions; C23 -> C26: DIFFER(6958v6931); needs +706..762 caller tuples before the last scope-end destructor; no natural cause known	parked	_global::ConstructQuestsScreen_MainMenu
 00b89c30	PARKED	6431	2026-11-13_acctC_c22open	C22: DIFFER(6431v6431), one hunk; asserts/names no effect (acctB ~900 grades on it)	parked	CEngineScreenEffectOutlineGlow::ApplyOutline
 00b5ca70	OPEN				parked	CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer
 00651b04	MATCHED_STAGED	5126	2026-11-13_acctC_c2a	C2	parked	CDrawAbilityButtons::Draw
@@ -26,12 +26,12 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00e20600	OPEN				parked	NScript::CQR_EscortTraderScript::CTraderToEscort::Main
 00502e90	OPEN				parked	CWorldMap::PopulateRegionWithVillagers
 006096e0	OPEN				parked	CTCInventoryMap::ConstructLogbookListPC
-0061e6d0	IN_PROGRESS	12356	2026-11-13_acctC_c23open	C23 -> C26 -> C28 (Fable): DIFFER(12356v12356), 464/464 calls, retail frame size, no device (closer: CTCInventoryMap* inventory_map = 0); frame-slot order left (55 of 101 symbols)	parked	CTCInventoryQuests::ConstructQuestListPC
+0061e6d0	MATCHED_STAGED	12356	2026-11-13_acctC_c28a	C23 -> C26 -> C28 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; no device	parked	CTCInventoryQuests::ConstructQuestListPC
 00e4b5b0	OPEN				parked	NScript::CV_BanditTollScript::CTollBandit::Main
 00e3bb70	OPEN				parked	NScript::CV_BordelloScript::CMadame::Main
 00e50fd0	OPEN				parked	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main
 00d973d0	OPEN				parked	NScript::CQ_HobbeCaveScript::CBanditSacrifice::Main
-00603000	IN_PROGRESS	9571	2026-11-13_acctC_c14a/open_00603000	C21 -> C26 -> C28: DIFFER(9571v9571), three hunks. Reset split = static frequency: three no-byte non-returning dead arms before the hero block give retail decisions with the default Reset text and no flag; original construct to be identified (non-returning release assert)	parked	CTCInventoryMap::CreateMiniMapMarkers
+00603000	IN_PROGRESS	9571	2026-11-13_acctC_c14a/open_00603000	C31 (Fable): twin-idiom diff first, then re-measure inline decisions; C21 -> C26 -> C28: DIFFER(9571v9571), three hunks. Reset split = static frequency: three no-byte non-returning dead arms before the hero block give retail decis	parked	CTCInventoryMap::CreateMiniMapMarkers
 00e5fd40	OPEN				parked	NScript::CV_BodyGuardScript::CBodyGuard::Main
 0078fd60	OPEN				parked	CTCDivineWrath::FrameUpdate
 00e33ea0	OPEN				parked	NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main
@@ -53,7 +53,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00dc5f80	OPEN				parked	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main
 00d3d150	OPEN				parked	NScript::CQ_GuildTrainingScript::CAppleGirl::Main
 00a8b990	OPEN				parked	C3DMesh2::InitialiseBones
-005ff190	IN_PROGRESS	4176	2026-11-13_acctC_c14a/open_005ff190	C28 row 3: DIFFER(4128v4176) with default Reset + frequency guards, 133/133 calls, 116 hunks	parked	CTCInventoryMap::CreateMapMarkers
+005ff190	IN_PROGRESS	4176	2026-11-13_acctC_c14a/open_005ff190	C31 (Fable): twin-idiom diff first, then re-measure inline decisions; C28 row 3: DIFFER(4128v4176) with default Reset + frequency guards, 133/133 calls, 116 hunks	parked	CTCInventoryMap::CreateMapMarkers
 00d75060	OPEN				parked	NScript::CQ_HangingTreeGoodScript::FinalRound
 00bafa00	OPEN				parked	CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites::RenderClockPrim
 00931390	OPEN				parked	CAIStateGroup_MinionReactToCriminal::?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ
