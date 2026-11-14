@@ -7,11 +7,11 @@
 struct Vec { float X, Y; };
 struct Box {
     float TLX, TLY, BRX, BRY;
-    bool ContainsPoint(const Vec& p) const { if (p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY) return true; return false; }
+    bool ContainsPoint(const Vec& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }  // 0x00535CD0 text
 };
 static bool g_relative; static float g_backW, g_backH;
-static float ConvertX(float x) { if (g_relative) return x / 640.0f * g_backW; return x; }
-static float ConvertY(float y) { if (g_relative) return y / 480.0f * g_backH; return y; }
+static float ConvertX(float x) { if (g_relative) { float t = x / 640.0f; return t * g_backW; } return x; }  // 0x0052E470 order
+static float ConvertY(float y) { if (g_relative) { float t = y / 480.0f; return t * g_backH; } return y; }  // 0x0052E4D0 order
 enum { EV_MOUSE = 1, EV_LEFT = 2, EV_RIGHT = 3, EV_SELECT = 4, EV_BACK = 5 };
 enum { ST_UNSELECTED = 0, ST_SELECTED = 1, ST_CUSTOM = 16 };
 struct Child {

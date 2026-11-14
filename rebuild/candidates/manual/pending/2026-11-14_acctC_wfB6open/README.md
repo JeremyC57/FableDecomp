@@ -2,7 +2,7 @@
 
 `matched_needs_fixup/` holds three rows that grade RELOCATION_MATCH / test PASS (workflow verifier + coordinator) but break
 lane rules, so they are not in a payload. Do not land them as they are.
-- 0x005379F5 NUISystem::CList::ComputeChildrenVisibility (2,102): depends on inline header bodies of three CALLED callees
+- 0x005379F5: FIXED and staged in ../2026-11-14_acctC_wfB6 (real callee texts).
   (ConvertX 0x0052E470, ConvertY 0x0052E4D0, C2DBoxF::ContainsPoint 0x00535CD0) whose texts do not reproduce their own retail
   copies (ConvertX/Y operand order; ContainsPoint 63v66). Fix: the real texts, then regrade.
 - 0x00772BB0 CTCShop::AddSaleItem (2,585): local models of CTCCreatedEntity / CTCStockItem although engine headers exist;

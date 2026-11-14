@@ -156,7 +156,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00735fd0	MATCHED_STAGED	973	2026-11-14_acctC_wfB5	workflow parked/Fable: match / PASS, verifier + coordinator-verified	never_worked	CTCCombat::AttemptToStartParticle
 007e15c0	PARKED	963	2026-11-14_acctC_wfB5/open	after workflow parked/Fable; C30 -> C37: DIFFER(967v963) (alt 963v963, 15 hunks); one dead byte store (alias analysis) + x87 order	never_worked	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0
 006823d0	MATCHED_STAGED	962	2026-11-14_acctC_wfB5	workflow parked/Fable: match / PASS, verifier + coordinator-verified	never_worked	CTCCreatureOpinionOfHero::FrameUpdate
-005379f5	PARKED	2102	2026-11-14_acctC_wfB6open/matched_needs_fixup	workflow parked/Fable: RELOCATION_MATCH / PASS but breaks lane rules (README there); needs a fix-up pass	parked	NUISystem::CList::ComputeChildrenVisibility
+005379f5	MATCHED_STAGED	2102	2026-11-14_acctC_wfB6	workflow parked/Fable match + fix-up of callee texts; coordinator-verified	parked	NUISystem::CList::ComputeChildrenVisibility
 00945060	MATCHED_STAGED	936	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CAIStateGroup_WorkHammerAnvil::?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ
 006b2ca0	PARKED	910	2026-11-14_acctC_wfA1/open	workflow unworked/Opus: DIFFER(908v910)	never_worked	_global::CGameCamera_UpdateViewMatrix
 00944940	MATCHED_STAGED	883	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CAIStateGroup_WorkSawingWood::?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ

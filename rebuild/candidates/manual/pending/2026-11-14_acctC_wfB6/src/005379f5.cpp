@@ -10,9 +10,15 @@
 // child left the view (IgnoreEvent / ObserveEvent 2..5, ten Update(0.2f) steps each side).
 // What makes it match (wfB6): (1) ContainsPoint, ConvertX and ConvertY are inline header functions whose bodies VC7.1 has read
 // (called, not expanded): the view-area box is then built in place, the ConvertX / ConvertY results stored straight into it
-// (0x00537B7C..0x00537BE0); (2) the child rectangle is a C2DBoxF (16-byte frame slot [ebp-30h], only BRX / BRY stored at
-// [ebp-28h] / [ebp-24h]; the TL corner is forwarded from `position`), its corners handed to ContainsPoint through GetTLPos() /
-// GetBRPos() (FableWin.pdb names).
+// (0x00537B7C..0x00537BE0). The visible bodies are the real ones: each, compiled out of line with its landed row's flags, grades
+// against its own retail copy (ConvertX 0x0052E470 / ConvertY 0x0052E4D0 RELOCATION_MATCH = text of the landed rows
+// global_PhysicsScaleFloatByGameSpeed_0052e470.cpp / global_LengthScaleConversion_0052e4d0.cpp; ContainsPoint 0x00535CD0 MATCH
+// with the PDB bool return, `return a && b && c && d;` -- callers test al). (2) the child rectangle is a C2DBoxF (16-byte frame
+// slot [ebp-30h], only BRX / BRY stored at [ebp-28h] / [ebp-24h]; the TL corner is forwarded from `position`), its corners
+// handed to ContainsPoint as C2DVector temporaries (0x00537D9E..0x00537DAA, 0x00537DC1..0x00537DCA).
+// FITTED (chosen by grading; each is a PDB-named member, the choice among equivalents is not proven): the four-float constructor
+// C2DBoxF(float,float,float,float) (??0C2DBoxF@@QAE@MMMM@Z) for child_box; GetTLPos() / GetBRPos() (?GetTLPos@ / ?GetBRPos@C2DBoxF@@QBE?AVC2DVector@@XZ)
+// as the ContainsPoint arguments rather than C2DVector temporaries built from the members.
 // Pragma: optimize("s", on) (size TU, as the landed CList siblings). Headers: CList retail branch, C2DBoxF retail branch.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_DEF_CLASS_BASE
