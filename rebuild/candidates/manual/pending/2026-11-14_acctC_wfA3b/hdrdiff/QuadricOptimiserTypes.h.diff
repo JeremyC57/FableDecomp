@@ -1,0 +1,75 @@
+--- a/rebuild/include/engine/QuadricOptimiserTypes.h
++++ b/rebuild/include/engine/QuadricOptimiserTypes.h
+@@ -5,6 +5,9 @@
+ #ifdef FABLE_RETAIL_CQUADRIC_GETINVERSEMATRIXPART
+ #include "engine/CMatrix3x4.h"
+ #endif
++#ifdef FABLE_RETAIL_QUADRIC_CUNIQUEVERTEX
++#include "stlport/fable_map.h"
++#endif
+ // Original Ego_r class records; retail three container reductions give native vertex strideB8.
+ namespace QuadricOptimiserInternals {
+ class CQuadric {public:double AA,AB,AC,AD,BB,BC,BD,CC,CD,DD,Weight;void operator+=(const CQuadric&);double EvaluateError(const C3DVector&)const;
+@@ -14,9 +17,33 @@
+  CMatrix3x4 GetInverseMatrixPart()const;
+ #endif
+ };
++#ifdef FABLE_RETAIL_QUADRIC_CUNIQUEVERTEX
++// Retail opt-in (row 0x00ACDB80): Ego_r.pdb CIndexList { set<unsigned long> Indices } and CUniqueVertex { bool Exists; CIndexList
++// VertexIndices, FaceList } with retail 12-byte STLport sets (record 0x1C: landed 0x00AD4C40 / ~COptimisedPrimitive 0x00AD84D0);
++// FableWin.pdb ?AddIndex@CIndexList@QuadricOptimiserInternals@@QAEXK@Z (inline), ~CUniqueVertex 0x00AD4A70 out of line.
++class CIndexList {public:
++ std::set<unsigned long> Indices;
++ void AddIndex(unsigned long index){Indices.insert(index);}
++};
++class CUniqueVertex {public:
++ bool Exists;CIndexList VertexIndices;CIndexList FaceList;
++ ~CUniqueVertex();                                                                                  // 0x00AD4A70
++};
++#endif
+ class COptimisedVertex {public:
+  C3DVector Position,Normal,TextureCoord;CQuadric PositionError;float Cost;
++#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDVERTEX_GROUPS
++ // Retail opt-in (row 0x00ACDB80; needs FABLE_RETAIL_QUADRIC_CUNIQUEVERTEX): Ego_r.pdb COptimisedVertex FaceList is a CIndexList and
++ // Groups a map<unsigned long,float> (same 12-byte retail slots, +0x84 / +0x9C); FableWin.pdb ctor / copy ctor / dtor (retail
++ // 0x00AD7A00 / - / 0x00AD7400, out of line) and the inline ?AddGroup@COptimisedVertex@QuadricOptimiserInternals@@QAEXKM@Z.
++ CIndexList FaceList;bool Exists;unsigned long UniqueIndex,OutputIndex;std::map<unsigned long,float> Groups;unsigned char PairContractions[12];
++ COptimisedVertex();                                                                                // 0x00AD7A00
++ COptimisedVertex(const COptimisedVertex& other);
++ ~COptimisedVertex();                                                                               // 0x00AD7400
++ void AddGroup(unsigned long group,float weight){Groups[group]=weight;}
++#else
+  unsigned char FaceList[12];bool Exists;unsigned long UniqueIndex,OutputIndex;unsigned char Groups[12],PairContractions[12];
++#endif
+  float GetGroupDifference(const COptimisedVertex&)const;
+ };
+ class CSubContraction {public:unsigned long Index1,Index2;};
+@@ -32,18 +59,23 @@
+  // inline in retail (expanded six times in JoinAdjacentFaces; compare order U[0], U[1], U[2]).
+  bool HasUniqueVertex(unsigned long unique_vertex)const{return UniqueVertexIndices[0]==unique_vertex||UniqueVertexIndices[1]==unique_vertex||UniqueVertexIndices[2]==unique_vertex;}
+ #endif
++#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDFACE_CTOR
++ // Retail opt-in (row 0x00ACDB80): FableWin.pdb ??0COptimisedFace@QuadricOptimiserInternals@@QAE@XZ (inline; expanded before the
++ // vector<COptimisedFace>::_M_fill_insert 0x00AD54F0 call in 0x00ACDB80: Exists = true, Segment = -1, Edges[0..2] = -1).
++ COptimisedFace():Exists(true),Segment(-1){Edges[0]=Edges[1]=Edges[2]=-1;}
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(COptimisedFace)==0x48);
++FABLE_STATIC_ASSERT_AT(36, sizeof(COptimisedFace)==0x48);
+ #ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDEDGE
+ // Retail opt-in (row 0x00AC8AE0): Ego_r.pdb COptimisedEdge (16 bytes): FaceA +0, FaceB +4, UniqueVertex1 +8, UniqueVertex2 +0Ch.
+ class COptimisedEdge {public:
+  unsigned long FaceA,FaceB,UniqueVertex1,UniqueVertex2;
+ };
+-FABLE_STATIC_ASSERT(sizeof(COptimisedEdge)==0x10);
++FABLE_STATIC_ASSERT_AT(42, sizeof(COptimisedEdge)==0x10);
+ #endif
+ #endif
+-FABLE_STATIC_ASSERT(sizeof(CQuadric)==0x58);
+-FABLE_STATIC_ASSERT(sizeof(COptimisedVertex)==0xb8);
+-FABLE_STATIC_ASSERT(sizeof(CSubContraction)==8);
++FABLE_STATIC_ASSERT_AT(45, sizeof(CQuadric)==0x58);
++FABLE_STATIC_ASSERT_AT(46, sizeof(COptimisedVertex)==0xb8);
++FABLE_STATIC_ASSERT_AT(47, sizeof(CSubContraction)==8);
+ }
+ #endif

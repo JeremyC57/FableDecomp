@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00ed17d0   RELOCATION_MATCH PASS   Main
+00d4a270   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00ed17d0 RELOCATION_MATCH NScript::CV_SingingStonesScript::CManWithDoorName::Main
+  00d4a270 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CCombatApprentice::Main

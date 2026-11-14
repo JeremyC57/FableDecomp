@@ -1,0 +1,75 @@
+--- a/rebuild/include/engine/COptimisedPrimitive.h
++++ b/rebuild/include/engine/COptimisedPrimitive.h
+@@ -6,6 +6,9 @@
+ #include "stlport/fable_map.h"
+ #include "engine/C3DVector.h"
+ class CChunkedFileChunk;
++#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE_CTOR
++class C3DMeshFilePrimitiveChunk;
++#endif
+ namespace QuadricOptimiserInternals {
+ class CUniqueVertex;class COptimisedVertex;class COptimisedFace;class COptimisedEdge;class CVertexPairContraction;
+ class COptimisationParameters {public:float Scaling,EdgeWeight,EdgeCost,GroupWeight,TextureWeight,TexturePenalty,UnsplitTextureWeight,UnsplitNormalWeight,HighPenalty;unsigned long MaximumBonesPerVertex;};
+@@ -43,6 +46,15 @@
+  void Optimise(float max_cost);                                                                     // 0x00ACD960
+ private:
+ #endif
++#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE_CTOR
++ // Retail opt-in (row 0x00ACDB80): Ego_r.pdb ??0COptimisedPrimitive@QuadricOptimiserInternals@@QAE@AAVC3DMeshFilePrimitiveChunk@@@Z
++ // (public) and FableWin.pdb inline ?GetVertex@COptimisedPrimitive@QuadricOptimiserInternals@@QAEAAVCOptimisedVertex@2@K@Z (fwsize
++ // SAME 12i/28b). Needs the complete COptimisedVertex (engine/QuadricOptimiserTypes.h first). No layout change.
++public:
++ COptimisedPrimitive(C3DMeshFilePrimitiveChunk& chunk);                                             // 0x00ACDB80
++ COptimisedVertex& GetVertex(unsigned long index){return Vertices[index];}
++private:
++#endif
+ };
+ }
+ #else
+@@ -79,26 +91,26 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(COptimisedPrimitive) == 0x84);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, MaterialIndex) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, UniqueVertices) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Vertices) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Faces) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Edges) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, VertexPairContractions) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, SegmentCount) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, SegmentSizes) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, SubChunksToKeep) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_Scaling) == 0x5c);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_EdgeWeight) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_EdgeCost) == 0x64);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_GroupWeight) == 0x68);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_TextureWeight) == 0x6c);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_TexturePenalty) == 0x70);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_UnsplitTextureWeight) == 0x74);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_UnsplitNormalWeight) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_HighPenalty) == 0x7c);
+-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_MaximumBonesPerVertex) == 0x80);
++FABLE_STATIC_ASSERT_AT(82, sizeof(COptimisedPrimitive) == 0x84);
++FABLE_STATIC_ASSERT_AT(83, offsetof(COptimisedPrimitive, MaterialIndex) == 0x0);
++FABLE_STATIC_ASSERT_AT(84, offsetof(COptimisedPrimitive, UniqueVertices) == 0x4);
++FABLE_STATIC_ASSERT_AT(85, offsetof(COptimisedPrimitive, Vertices) == 0x10);
++FABLE_STATIC_ASSERT_AT(86, offsetof(COptimisedPrimitive, Faces) == 0x1c);
++FABLE_STATIC_ASSERT_AT(87, offsetof(COptimisedPrimitive, Edges) == 0x28);
++FABLE_STATIC_ASSERT_AT(88, offsetof(COptimisedPrimitive, VertexPairContractions) == 0x34);
++FABLE_STATIC_ASSERT_AT(89, offsetof(COptimisedPrimitive, SegmentCount) == 0x40);
++FABLE_STATIC_ASSERT_AT(90, offsetof(COptimisedPrimitive, SegmentSizes) == 0x44);
++FABLE_STATIC_ASSERT_AT(91, offsetof(COptimisedPrimitive, SubChunksToKeep) == 0x50);
++FABLE_STATIC_ASSERT_AT(92, offsetof(COptimisedPrimitive, Parameters_Scaling) == 0x5c);
++FABLE_STATIC_ASSERT_AT(93, offsetof(COptimisedPrimitive, Parameters_EdgeWeight) == 0x60);
++FABLE_STATIC_ASSERT_AT(94, offsetof(COptimisedPrimitive, Parameters_EdgeCost) == 0x64);
++FABLE_STATIC_ASSERT_AT(95, offsetof(COptimisedPrimitive, Parameters_GroupWeight) == 0x68);
++FABLE_STATIC_ASSERT_AT(96, offsetof(COptimisedPrimitive, Parameters_TextureWeight) == 0x6c);
++FABLE_STATIC_ASSERT_AT(97, offsetof(COptimisedPrimitive, Parameters_TexturePenalty) == 0x70);
++FABLE_STATIC_ASSERT_AT(98, offsetof(COptimisedPrimitive, Parameters_UnsplitTextureWeight) == 0x74);
++FABLE_STATIC_ASSERT_AT(99, offsetof(COptimisedPrimitive, Parameters_UnsplitNormalWeight) == 0x78);
++FABLE_STATIC_ASSERT_AT(100, offsetof(COptimisedPrimitive, Parameters_HighPenalty) == 0x7c);
++FABLE_STATIC_ASSERT_AT(101, offsetof(COptimisedPrimitive, Parameters_MaximumBonesPerVertex) == 0x80);
+ 
+ #endif
+ #endif // FABLE_ENGINE_COPTIMISEDPRIMITIVE_H

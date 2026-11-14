@@ -1,0 +1,33 @@
+--- a/rebuild/include/engine/CMatrix4x4.h
++++ b/rebuild/include/engine/CMatrix4x4.h
+@@ -78,13 +78,29 @@
+         *this = result;
+     }
+ #endif
++#ifdef FABLE_RETAIL_CMATRIX4X4_COPYTO
++    void CopyTo(class CMatrix3x4& matrix) const;                        // FableWin ?CopyTo@CMatrix4x4@@QBEXAAVCMatrix3x4@@@Z (inline)
++#endif
+     void SetIdentity() {
+         E11=1.0f; E22=1.0f; E33=1.0f; E44=1.0f;
+         E12=0.0f; E13=0.0f; E14=0.0f; E21=0.0f; E23=0.0f; E24=0.0f; E31=0.0f; E32=0.0f; E34=0.0f; E41=0.0f; E42=0.0f; E43=0.0f;
+     }
+ };
+-FABLE_STATIC_ASSERT(sizeof(CMatrix4x4)==64);
++FABLE_STATIC_ASSERT_AT(86, sizeof(CMatrix4x4)==64);
+ #ifdef FABLE_RETAIL_CMATRIX4X4
+ #include "engine/CMatrix4x4AlignedSSE.h"   // the SSE kernels and the inline AlignedSetMultiply body
+ #endif
++#ifdef FABLE_RETAIL_CMATRIX4X4_COPYTO
++// Opt-in (wfA5, rows 0x00AA0FA0 / 0x00AA2110): FableWin.pdb ?CopyTo@CMatrix4x4@@QBEXAAVCMatrix3x4@@@Z (0x0337F090, 155 debug bytes /
++// 55 instructions = twelve element copies; emitted right before CalcBoneTransformation, its first user): the 3x3 part and the
++// translation row copied into a CMatrix3x4 (retail 0x00AA20AE..0x00AA20FB). Defined out of the class: it needs CMatrix3x4.
++#include "engine/CMatrix3x4.h"
++inline void CMatrix4x4::CopyTo(CMatrix3x4& matrix) const
++{
++    matrix.E11 = E11; matrix.E12 = E12; matrix.E13 = E13;
++    matrix.E21 = E21; matrix.E22 = E22; matrix.E23 = E23;
++    matrix.E31 = E31; matrix.E32 = E32; matrix.E33 = E33;
++    matrix.E41 = E41; matrix.E42 = E42; matrix.E43 = E43;
++}
++#endif
+ #endif

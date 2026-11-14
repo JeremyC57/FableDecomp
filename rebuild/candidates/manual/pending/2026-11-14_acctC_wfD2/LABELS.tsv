@@ -1,0 +1,6 @@
+address	name	evidence
+00e27e90	?Main@CGTDI_Maze@CQS_GuardianTrophyDealerInfoScript@NScript@@EAEXXZ	Ego_r + FableWin name sets; CGTDI_Maze vtable slot .rdata 0x012E20A8
+00dc5f80	?Main@CSecretPassageWoman@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ	Ego_r + FableWin name sets; vtable 0x012DA7A4 slot 1 (.rdata 0x012DA7A8) stored by the CSecretPassageWoman ctor (Alloc 0x00DC5E50, reloc_bindings)
+00cfe030	?Main@COracleTablet@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ	Ego_r + FableWin name sets (draft identity)
+00ee57b0	?Main@CTourGuideGuide@CV_TourGuideScript@NScript@@EAEXXZ	Ego_r + FableWin name sets; vtable 0x012F511C slot 1 (landed Alloc 0x00EE4BB0)
+00d75060	?FinalRound@CQ_HangingTreeGoodScript@NScript@@QAEXXZ	Ego_r + FableWin name sets

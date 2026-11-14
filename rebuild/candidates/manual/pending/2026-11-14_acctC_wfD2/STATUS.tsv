@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+00cfe030	DIFFER(3575v3575)	3575	-	~70	near_miss/parked: SIB base/index order at the 2 CreateCreature arms (4 lines); successor +25 grades, no lever
+00e27e90	RELOCATION_MATCH	3595	PASS	~50	matched; addmatch + read-only vland WIN
+00d75060	DIFFER(4041v4044)	4044	-	~60	near_miss (successor): call targets equal; approach-post / spawn-post exit pads swapped (frequency model)
+00ee57b0	RELOCATION_MATCH	4246	PASS	~95	matched (successor): main loop `for (; true; NSF)`; no inline control; addmatch + read-only vland WIN
+00dc5f80	RELOCATION_MATCH	4245	PASS	~20	matched; addmatch + read-only vland WIN

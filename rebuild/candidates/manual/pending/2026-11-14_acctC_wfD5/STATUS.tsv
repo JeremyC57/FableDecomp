@@ -1,0 +1,7 @@
+address	grade	bytes	test	grades_used	notes
+00f3bdd0	RELOCATION_MATCH	2998	PASS	175	matched; FITTED per-arm assignment order; addmatch done
+00a593f0	DIFFER(3032v3027)	3027	-	60	parked: one register web (points._M_start kept in ecx edge loop -> loop 4); slope / post-increment / FableWin iterator fixes in
+009d8cf0	RELOCATION_MATCH	3385	PASS	40	matched; FITTED devices (3 repo SetRenderState opt-ins + Get() re-call + display ref); addmatch done
+009d9c80	RELOCATION_MATCH	3435	PASS	45	matched; Initialise(0,0,0,0) for the alpha window reset; addmatch done
+00678760	RELOCATION_MATCH	3579	PASS	45	matched (successor); class opt-ins + visible noinline COpinionSet ctor + Pyramid scalars + FITTED named float traits; addmatch done, vland WINS
+00531ec0	DIFFER(3523v3642)	3642	-	100	parked: inline decisions; at default T only loop-2 ConvertVector x4 + THIS_INSTANCE dtor differ by call (successor measurements in NOTES)

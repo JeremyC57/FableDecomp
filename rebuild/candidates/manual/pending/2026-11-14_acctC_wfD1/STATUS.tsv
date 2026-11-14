@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+00d82640	RELOCATION_MATCH	3260	PASS	17	matched: landed predicate lever (NOVTABLE + inline_depth(0) round CIsThingAlive ctor/dtor) + Thunder-twin closing idle loop; vland RELOCATION_MATCH PASS; addmatch done
+00eaf810	DIFFER(3021v2945)	2945	-	3+c2prio+4	parked: pause.Game homed spill (register allocation), cascades into 4-byte slot shift and lost cross-jumps
+00d0a830	RELOCATION_MATCH	2720	PASS	28+30	matched: speech-wait terminate checks leave by `goto Terminate` in statement-macro do-while(0) (single in the wait loop, double after it) inside the earlier lane's do-while(0) movie scope; `Terminate: return` at function end under in-body #pragma inline_depth(0) (FITTED; Inline-budget line 2); vland RELOCATION_MATCH PASS; addmatch done
+00dea3f0	RELOCATION_MATCH	3076	PASS	10	matched: predicate lever + generator loop shapes of landed sibling CVictimsBrotherHelper (while first loop, for(;!false;NSF) second loop, TRetVoid returns); shared enum headers (MOVE_TYPE_RUNNING -> ENTITY_MOVE_RUN); vland PASS; addmatch done
+00d7fe90	RELOCATION_MATCH	3148	PASS	30	matched: plain STLport ~vector (fitted template<> decl dropped) + rounds loop while(round<3) + flag /d2inlT57 (working range T57..T64, inline trace evidence); vland PASS; addmatch done (flags)

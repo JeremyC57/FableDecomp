@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00d82640   RELOCATION_MATCH PASS   Main
+00dea3f0   RELOCATION_MATCH PASS   Main
+00d7fe90   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d7fe90   RELOCATION_MATCH PASS   WatchForRoundsInArena
+00d0a830   RELOCATION_MATCH PASS   Main
+
+WINS: 4
+  00d82640 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::CBriarRose::Main
+  00dea3f0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictimsBrother::Main
+  00d7fe90 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::WatchForRoundsInArena
+  00d0a830 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditKing::Main

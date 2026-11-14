@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00b1c880   RELOCATION_MATCH PASS   ReadBinary
+00b1f200   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00b1f200   RELOCATION_MATCH PASS   PreparePrimitives
+00b1e380   RELOCATION_MATCH PASS   DatabaseSerialise
+00b087c0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b087c0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00b087c0   RELOCATION_MATCH PASS   PreparePrimitives
+
+WINS: 4
+  00b1c880 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::ReadBinary
+  00b1f200 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::PreparePrimitives
+  00b1e380 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::DatabaseSerialise
+  00b087c0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::PreparePrimitives

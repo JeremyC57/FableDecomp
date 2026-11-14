@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+00acdb80	RELOCATION_MATCH	2674v2674	PASS	~45+40+2	MATCHED: shared QuadricOptimiserTypes.h / COptimisedPrimitive.h (4 new opt-ins) replace the row-local quadric classes (fix-up 2026-11-14); addmatch + strict-header vland WIN
+00981410	DIFFER	2700v2703	-	2+6+25+~120	PARKED (successor-2): 782 v 782 instructions, 15 structural hunks; differ/00981410.cpp; residue layout / event register / frame (needs the same-TU bodies of AIAction_MoveToThingProximity 0x0097E380 + AIAction_MoveToPos 0x0097EC00, probe/vis1.cpp)
+004a0d90	RELOCATION_MATCH	2733v2733	PASS	4	MATCHED: existing opt-ins TEXT_EQ_NOINLINE + COMPARE_BODY; addmatch + vland WIN (RELOC_CONFLICT vector<char> ctor duplicate COMDAT, see NOTES)
+00e2f170	RELOCATION_MATCH	2781v2781	PASS	9	MATCHED: for(;;NSF) loops + TRetVoid + CCharString("") spawn arg + run_away distance fix; addmatch + vland WIN
+00dadf80	RELOCATION_MATCH	2787v2787	PASS	~40	MATCHED: for(;;NSF) loop + named size count + forced CTimer + /d2inlT65; addmatch + vland WIN

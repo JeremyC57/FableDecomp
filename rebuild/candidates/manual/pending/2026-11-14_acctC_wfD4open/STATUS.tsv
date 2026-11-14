@@ -1,0 +1,7 @@
+address	grade	bytes	test	grades_used	notes
+0049a0b0	DIFFER(2922v2920)	2920	-	37	near-miss: all instructions equal (esp masked); frame 0xb4 v 0xb0 (slot packing of texture / size / debug temps)
+00974aa0	DIFFER(3072v3080)	3080	-	32	parked: ported to shared headers, 2928->3072; facing-block x87 spill, scale-up/fireball blocks, frame 0x808 v 0x80c
+0066cf00	DIFFER(3236v3248)	3248	-	10	parked: frame packing (every slot differs) + x/themeDef register swap
+00715a70	DIFFER(2860v3356)	3356	-	1	parked: baseline graded only; 496 bytes short (focus-case cross-jump)
+006d1e30	SRC_FAIL	3484	-	1	parked: draft needs ~7 header additions against today's headers
+0090d030	DIFFER(3243v3269)	3269	-	1	parked: baseline graded only; local models, needs re-author on shared headers

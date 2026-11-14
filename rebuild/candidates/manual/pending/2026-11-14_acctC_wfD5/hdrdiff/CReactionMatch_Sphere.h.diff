@@ -1,0 +1,46 @@
+--- a/rebuild/include/engine/CReactionMatch_Sphere.h
++++ b/rebuild/include/engine/CReactionMatch_Sphere.h
+@@ -9,6 +9,28 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CREACTIONMATCH_SPHERE_CLASS
++// Retail opt-in (wfD5, row 0x00678760): the polymorphic class. Base engine/CReactionMatch.h; Centre is COpinionSet (needs
++// FABLE_RETAIL_CTCCREATUREOPINIONOFHERO + _SERIALISE). The constructor (Ego_r 0x006ACC90 / FableWin 0x01FF79D0
++// ??0CReactionMatch_Sphere@@QAE@W4EOpinionReactionType@@ABVCOpinionSet@@M@Z) is header inline: retail's copy is the COMDAT
++// 0x0067C2F0 placed after the TU's own functions, called out of line by TransferIn 0x00678B0A, body = the landed
++// CReactionMatchSphere_CReactionMatchSphere_0067c2f0.cpp (base store, vtable 0x0125B7C4, COpinionSet copy 0x00477428,
++// radius * radius). Visible, it tells the caller the centre's address is not kept (0x006789B9 keeps OpinionValues' start in edi).
++#include "engine/CReactionMatch.h"
++#include "engine/CTCCreatureOpinionOfHero.h"
++class CReactionMatch_Sphere : public CReactionMatch {
++public:
++    CReactionMatch_Sphere(EOpinionReactionType type, const COpinionSet& centre, float radius)
++        : CReactionMatch(type), Centre(centre), SqRadius(radius * radius) {}
++    virtual float Match(const COpinionSet& opinions);                  // 0x00700400
++    virtual EReactionMatchType GetMatchType() const;                   // 0x0067C320
++    virtual void TransferBinaryIn(CMemoryDataInputStream& stream);     // 0x00701990
++    virtual void TransferBinaryOut(CDataOutputStream& stream) const;   // 0x007003A0
++    COpinionSet Centre;                                                // +0x08
++    float       SqRadius;                                              // +0x14
++};
++FABLE_STATIC_ASSERT_AT(1001, sizeof(CReactionMatch_Sphere) == 0x18);
++#else
+ #pragma pack(push, 1)
+ struct CReactionMatch_Sphere {
+     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+@@ -18,9 +40,10 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CReactionMatch_Sphere) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_Sphere, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_Sphere, Centre) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_Sphere, SqRadius) == 0x14);
++FABLE_STATIC_ASSERT_AT(21, sizeof(CReactionMatch_Sphere) == 0x18);
++FABLE_STATIC_ASSERT_AT(22, offsetof(CReactionMatch_Sphere, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(23, offsetof(CReactionMatch_Sphere, Centre) == 0x8);
++FABLE_STATIC_ASSERT_AT(24, offsetof(CReactionMatch_Sphere, SqRadius) == 0x14);
+ 
++#endif // FABLE_RETAIL_CREACTIONMATCH_SPHERE_CLASS
+ #endif // FABLE_ENGINE_CREACTIONMATCH_SPHERE_H

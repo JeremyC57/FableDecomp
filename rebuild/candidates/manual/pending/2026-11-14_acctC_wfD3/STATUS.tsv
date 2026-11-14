@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+00d3d150	DIFFER(4252v4252) 10 hunks	4252	draft test only	~18	parked: register pick in two arms (vtable eax v edx)
+00ed17d0	RELOCATION_MATCH	4279	PASS	~25	matched; flags /d2inlT51; addmatch + vland WINS
+00dc4d70	DIFFER(4255v4319) 13 hunks	4319	draft test (not rerun)	~21	parked: const-0 register piece -> pad tail-merge
+00dcfa60	DIFFER(2412v2412) 4 hunks	2412	none	~30	near miss: two scheduler priority ties broken by IL index (DeactivateQuest leas); see NOTES successor section
+00d4a270	RELOCATION_MATCH	9388	PASS	~14	matched (successor): hand-authored; 4 scoped inline_depth(0) around T returns; new opt-in COMBATAPPRENTICE; addmatch + vland WINS

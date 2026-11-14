@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+00b1c880	RELOCATION_MATCH	3266	PASS	2	matched with the earlier draft unchanged on today's headers; addmatch done
+00b1e380	RELOCATION_MATCH	3698	PASS	55	matched (successor): + FABLE_RETAIL_GFROUNDFLOATNEAR_GROUP_PRODUCT / GFUNPACKFLOAT_GROUP_PRODUCT (sibling 0x00B13530 opt-in pair) moved the 81-tuple scheduling cut; addmatch + read-only vland done
+00b1f200	RELOCATION_MATCH	3195	PASS	75	matched (successor): re-authored on shared headers; Flags /d2inlT1156 (Inline-budget: SetPrimitiveInfo); addmatch + read-only vland done
+00b087c0	RELOCATION_MATCH	2967	PASS	150	matched (successor 2): shared-header port + fitted fadeAlpha definition; Flags /d2inlT86; addmatch + read-only vland done
+00b01900	DIFFER(3749v3777)	3777	-	8	successor2: ported to shared headers (+4 opt-ins); 19 hunks; differ/00b01900.cpp

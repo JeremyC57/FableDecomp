@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00c271f0   WARN RELOC_NAME: _CODA_SetSourceEnvelope@8 -> 00c35b30 labelled 'CEngineSubPrimitiveBase::operator_new'
+00c271f0   WARN RELOC_NAME: ?HasLoop@CAudioFormat@@QAEJXZ -> 00c2d8e0 labelled 'CTCTavernGame::IsBetting'
+00c271f0   WARN RELOC_NAME: ?GetLoopStart@CAudioFormat@@QBEKXZ -> 00c2d900 labelled '_global::GetMember_dword0x4_00c2d900'
+00c271f0   WARN RELOC_NAME: ?GetData@CStreamBuffer@@QAEJPAUCSoundEventManager@@@Z -> 00c26240 labelled 'CAnimFilterOfGroup::operator()'
+00c271f0   WARN RELOC_NAME: _CODA_CreateSample@4 -> 00c36080 labelled 'CEngineSubPrimitiveBase::operator_new'
+00c271f0   WARN RELOC_NAME: ?Add@CPlayerList@@QAEXPAUCPhysicalPlayer@@@Z -> 00c21e90 labelled 'NScript::CIsThingAlive::operator()'
+00c271f0   WARN RELOC_NAME: _CODA_SetSourcePosition@8 -> 00c33fd0 labelled 'SetVectorA'
+00c271f0   WARN RELOC_NAME: _CODA_SetSourceRangeCallback@12 -> 00c33f20 labelled '_global::SetRangeOnAcceptingObject'
+00c271f0   WARN RELOC_NAME: _CODA_SetSourcePropertyFCUnlessAccepted@8 -> 00c35f20 labelled '_global::Enable2DSceneRenderingOnRejectingObject'
+00c271f0   WARN RELOC_NAME: ?UpdateManagerTime@CPhysicalPlayer@@QAEXPAUCSoundEventManager@@@Z -> 00c271e0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00c271f0   WARN RELOC_NAME: _CODA_SetSourcePitch@8 -> 00c35b10 labelled '_global::New_c35b10'
+00c271f0   RELOCATION_MATCH PASS   Play
+
+WINS: 1
+  00c271f0 RELOCATION_MATCH CPhysicalPlayer::Play

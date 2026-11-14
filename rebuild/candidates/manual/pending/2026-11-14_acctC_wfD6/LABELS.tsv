@@ -1,0 +1,6 @@
+address	name	evidence
+00b1c880	?ReadBinary@CPSCDecalRenderer@NParticleEngine@@UAEXAAVCDataInputStream@@@Z	FableWin + Ego_r name sets; vtable 0x012A09BC slot 15
+00b1e380	?DatabaseSerialise@CPSCDecalRenderer@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z	FableWin + Ego_r name sets; vtable 0x012A09BC slot 17
+00b1f200	?PreparePrimitives@CPSCDecalRenderer@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	FableWin + Ego_r name sets; vtable 0x012A09BC slot 13
+00b087c0	NParticleEngine::CPSCSingleSprite::PreparePrimitives	FableWin + Ego_r name sets; vtable 0x0129FB84 slot 13; RELOCATION_MATCH
+00aeaab0	NParticleEngine::GetMeshBank	reloc_bindings ?GetMeshBank@NParticleEngine@@YIABVCMeshDataBank@@XZ (called by 0x00B01900)

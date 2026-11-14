@@ -1,0 +1,64 @@
+--- a/rebuild/include/engine/CReactionMatch_AsymmetricPyramid.h
++++ b/rebuild/include/engine/CReactionMatch_AsymmetricPyramid.h
+@@ -8,6 +8,34 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CREACTIONMATCH_ASYMMETRICPYRAMID_CLASS
++// Retail opt-in (wfD5, row 0x00678760 CPersistTraits<std::list<CReactionMatch*> >::TransferIn): the polymorphic class on the base
++// engine/CReactionMatch.h (Ego_r.pdb layout above; same 0x28 bytes), so `new` converts to CReactionMatch* for the reaction list.
++#include "engine/CReactionMatch.h"
++enum EOpinion;                                                         // MS forward enum
++#pragma pack(push, 1)
++class CReactionMatch_AsymmetricPyramid : public CReactionMatch {
++public:
++    // Ego_r 0x006A9560 / FableWin ??0CReactionMatch_AsymmetricPyramid@@QAE@W4EOpinionReactionType@@W4EOpinion@@1MMMMMM@Z; out of line
++    // at 0x00677620 (same TU, landed; called by TransferIn 0x0067920E and by the CReactionMatch_MRPyramid constructor).
++    CReactionMatch_AsymmetricPyramid(EOpinionReactionType type, EOpinion xAxis, EOpinion yAxis, float xMin, float xCentre,
++                                     float xMax, float yMin, float yCentre, float yMax);
++    virtual float Match(const COpinionSet& opinions);
++    virtual EReactionMatchType GetMatchType() const;
++    virtual void TransferBinaryIn(CMemoryDataInputStream& stream);
++    virtual void TransferBinaryOut(CDataOutputStream& stream) const;
++    EOpinion XAxisOpinionType;                                         // +0x08
++    EOpinion YAxisOpinionType;                                         // +0x0c
++    float    XCentre;                                                  // +0x10
++    float    NegInvXRadius;                                            // +0x14
++    float    PosInvXRadius;                                            // +0x18
++    float    YCentre;                                                  // +0x1c
++    float    NegInvYRadius;                                            // +0x20
++    float    PosInvYRadius;                                            // +0x24
++};
++#pragma pack(pop)
++FABLE_STATIC_ASSERT_AT(1001, sizeof(CReactionMatch_AsymmetricPyramid) == 0x28);
++#else
+ #pragma pack(push, 1)
+ struct CReactionMatch_AsymmetricPyramid {
+     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+@@ -23,15 +51,16 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CReactionMatch_AsymmetricPyramid) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_AsymmetricPyramid, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_AsymmetricPyramid, XAxisOpinionType) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_AsymmetricPyramid, YAxisOpinionType) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_AsymmetricPyramid, XCentre) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_AsymmetricPyramid, NegInvXRadius) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_AsymmetricPyramid, PosInvXRadius) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_AsymmetricPyramid, YCentre) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_AsymmetricPyramid, NegInvYRadius) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_AsymmetricPyramid, PosInvYRadius) == 0x24);
++FABLE_STATIC_ASSERT_AT(26, sizeof(CReactionMatch_AsymmetricPyramid) == 0x28);
++FABLE_STATIC_ASSERT_AT(27, offsetof(CReactionMatch_AsymmetricPyramid, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(28, offsetof(CReactionMatch_AsymmetricPyramid, XAxisOpinionType) == 0x8);
++FABLE_STATIC_ASSERT_AT(29, offsetof(CReactionMatch_AsymmetricPyramid, YAxisOpinionType) == 0xc);
++FABLE_STATIC_ASSERT_AT(30, offsetof(CReactionMatch_AsymmetricPyramid, XCentre) == 0x10);
++FABLE_STATIC_ASSERT_AT(31, offsetof(CReactionMatch_AsymmetricPyramid, NegInvXRadius) == 0x14);
++FABLE_STATIC_ASSERT_AT(32, offsetof(CReactionMatch_AsymmetricPyramid, PosInvXRadius) == 0x18);
++FABLE_STATIC_ASSERT_AT(33, offsetof(CReactionMatch_AsymmetricPyramid, YCentre) == 0x1c);
++FABLE_STATIC_ASSERT_AT(34, offsetof(CReactionMatch_AsymmetricPyramid, NegInvYRadius) == 0x20);
++FABLE_STATIC_ASSERT_AT(35, offsetof(CReactionMatch_AsymmetricPyramid, PosInvYRadius) == 0x24);
+ 
++#endif // FABLE_RETAIL_CREACTIONMATCH_ASYMMETRICPYRAMID_CLASS
+ #endif // FABLE_ENGINE_CREACTIONMATCH_ASYMMETRICPYRAMID_H

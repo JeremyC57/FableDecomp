@@ -1,0 +1,2 @@
+address	name	evidence
+0x00A0AA80	?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z	Ego_r + FableWin name sets; header engine/CRenderManagerCore.h; called by 0x009D9C80 (catalog label Forward_SetViewport_via0x3a3c_00a0aa80 is descriptive)

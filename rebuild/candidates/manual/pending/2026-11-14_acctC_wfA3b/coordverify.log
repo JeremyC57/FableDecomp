@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00acdb80   WARN RELOC_NAME: ?GetCount@C3DMeshFileVerticesChunk@@QBEKXZ -> 00aba360 labelled 'CShaderPreParser::GetConstantCount'
+00acdb80   WARN RELOC_NAME: ??1COptimisedVertex@QuadricOptimiserInternals@@QAE@XZ -> 00ad7400 labelled 'CWound::Kill'
+00acdb80   WARN RELOC_NAME: ?_M_fill_insert@?$vector@VCUniqueVertex@QuadricOptimiserInternals@@V?$allocator@VCUniqueVertex@QuadricOptimiserInternals@@@std@@@std@@QAEXPAVCUniqueVertex@QuadricOptimiserInternals@@IABV34@@Z -> 00ad7e80 labelled 'std::std::vector_InsertFillN_Element28'
+00acdb80   WARN RELOC_NAME: ?_M_fill_insert@?$vector@VCOptimisedFace@QuadricOptimiserInternals@@V?$allocator@VCOptimisedFace@QuadricOptimiserInternals@@@std@@@std@@QAEXPAVCOptimisedFace@QuadricOptimiserInternals@@IABV34@@Z -> 00ad54f0 labelled 'std::std::vector_InsertFillN_Element72'
+00acdb80   WARN RELOC_NAME: ?GetBoneIndex@C3DMeshFileGroupChunk@@QBEJXZ -> 00ab9f60 labelled '_global::GetMember_dword0x2c_00ab9f60'
+00acdb80   WARN RELOC_NAME: ?GetCount@C3DMeshFileGroupChunk@@QBEKXZ -> 00aba350 labelled 'CShaderPreParser::GetConstantCount'
+00acdb80   RELOCATION_MATCH PASS   COptimisedPrimitive
+
+WINS: 1
+  00acdb80 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::COptimisedPrimitive

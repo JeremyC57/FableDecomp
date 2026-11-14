@@ -1,0 +1,6 @@
+address	name	evidence
+00d82640	?Main@CBriarRose@CQ_HeroSoulsBriarScript@NScript@@EAEXXZ	Ego_r+FableWin name sets; slot 1 (0x012D42FC) of entity vtable 0x012D42F8 (landed Alloc 0x00D81630)
+00dea3f0	?Main@CVictimsBrother@CQ_RansomVictimScript@NScript@@EAEXXZ	Ego_r+FableWin name sets; slot 1 (0x012DD204) of entity vtable 0x012DD200 (landed Alloc 0x00DE1E60)
+00d7fe90	?WatchForRoundsInArena@CQ_HeroSoulsArenaScript@NScript@@QAEXXZ	Ego_r+FableWin name sets; referenced from landed CQ_HeroSoulsArenaScript::Main 0x00D7C890 (0x00D7D5E9, reloc_bindings)
+00eaf810	?DoAskingHeroToKillAssassin@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ	Ego_r+FableWin name sets; called from CMurderTwistSheriff::Main at 0x00EAF039 (earlier lane); catalog name was truncated
+00d0a830	?Main@CBanditKing@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ	Ego_r+FableWin name sets (Ego_r donor 0x00D0DDD0, FableWin 0x036A1FA0); its one .rdata reference is the CBanditKing entity-vtable slot 0x012C9478

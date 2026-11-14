@@ -1,0 +1,15 @@
+addr       parity           behav  name
+009d8cf0   RELOCATION_MATCH PASS   ClearRenderTarget
+009d9c80   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+009d9c80   WARN RELOC_NAME: ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z -> 00a0aa80 labelled '_global::Forward_SetViewport_via0x3a3c_00a0aa80'
+009d9c80   WARN RELOC_ALIAS: _qsort -> 00bfedca is the import thunk 'MSVCR71.DLL::qsort'
+009d9c80   WARN RELOC_NAME: ?erase@?$vector@VCQuickDrawTriInfo@@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@QAEPAVCQuickDrawTriInfo@@PAV3@0@Z -> 009e15e0 labelled 'TextureCache_MoveAndCleanup'
+009d9c80   RELOCATION_MATCH PASS   DrawBufferedPolys
+00f3bdd0   RELOCATION_MATCH PASS   FillInTriStrip
+00678760   RELOCATION_MATCH PASS   TransferIn
+
+WINS: 4
+  009d8cf0 RELOCATION_MATCH CRenderManager2D::ClearRenderTarget
+  009d9c80 RELOCATION_MATCH CRenderManager2D::DrawBufferedPolys
+  00f3bdd0 RELOCATION_MATCH CTriangleStripifier2::FillInTriStrip
+  00678760 RELOCATION_MATCH CPersistTraits<std::list<CReactionMatch*> >::TransferIn
