@@ -51,5 +51,7 @@ Before accepting a device (inline flag, scoped inline pragma, unused named local
 guard, a fitted named local, dead release asserts) the question is: does the row BYTE MATCH retail, does it BEHAVE THE SAME as
 retail, and is it PORTABLE code. Three yeses: accept it, marked (`// Inline-budget:`, `// Fidelity:`, `// Inferred:`, or FITTED
 in the header comment). Earlier in this lane the coordinator applied a stricter rule (no inline flags, no unused locals);
-READMEs written before 2026-11-14 that call such a construct "not landable" should be read with this test instead. `__asm` in a
-row, stand-in callee bodies, diagnostic builds and local class models where a shared header exists still fail it.
+READMEs written before 2026-11-14 that call such a construct "not landable" should be read with this test instead. Asm has
+extra rules (docs/pipeline/ASM_RULES.md: only where retail used asm; an intrinsic, else a shared-header macro kernel with a
+`FABLE_PORTABLE` twin and a dual-path test; never in a row source) and the same three questions apply to it. Stand-in callee
+bodies, diagnostic builds and local class models where a shared header exists fail the test.
