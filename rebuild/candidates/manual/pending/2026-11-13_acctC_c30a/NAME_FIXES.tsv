@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+007bc38a	?InitMovement@CTCShotDefinitionThrowPredictive@NThingShot@@MAEXXZ	RTTI vtable slot 33 + Ego_r override set	_global::CTCPhysicsRigidBody_ApplyForceToward (catalog)
+00c271f0	?Play@CPhysicalPlayer@@QAEXPAUCSoundEventManager@@PAUSPlayDesc@@PAUCSoundEvent@@PAUSEventLevel@@MM@Z (descriptive)	reloc_bindings + landed caller 0x00C20A20	_global::CTCInventory_OnItemEquippedHelper (catalog, ghidra_out labels forge-autoname4)

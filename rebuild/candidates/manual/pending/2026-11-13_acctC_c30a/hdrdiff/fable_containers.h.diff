@@ -1,0 +1,15 @@
+--- a/rebuild/include/stlport/fable_containers.h
++++ b/rebuild/include/stlport/fable_containers.h
+@@ -510,6 +510,12 @@
+     iterator end() { return this->_M_finish; }
+     const_iterator end() const { return this->_M_finish; }
+     size_type size() const { return size_type(this->_M_finish-this->_M_start); }
++#ifdef FABLE_RETAIL_STLP_VECTOR_AT_OUTOFLINE
++    // agentC29 (row 0x0074E860 CTCContainerRewardHero::GetRewardItems): STLport 4.6 vector::at (`_M_range_check(n)`, i.e. without
++    // exceptions puts("vector") + abort, then `*(begin()+n)`), called out of line in retail: 0x0074CBC0 for vector<CDefIndex> (call at
++    // 0x0074EA59, `push index ; mov ecx,&ObjectFamilies`; byte-identical copy 0x0074D120 in the CTCCreatureGenerator TU). Declaration only.
++    const _Tp& at(size_type n) const;
++#endif
+     bool empty() const { return this->_M_start==this->_M_finish; }
+ #ifdef FABLE_RETAIL_STLP_VECTOR_SWAP_OUTOFLINE
+     // Retail opt-in (chunk 798, row 0x00F0C140 CQ_AmbushTradersScript::PhaseTwo): STLport 4.6 _vector.h swap(_Self&) is one inline

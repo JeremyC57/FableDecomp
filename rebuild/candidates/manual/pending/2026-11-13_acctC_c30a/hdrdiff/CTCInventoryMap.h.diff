@@ -1,0 +1,48 @@
+--- a/rebuild/include/engine/CTCInventoryMap.h
++++ b/rebuild/include/engine/CTCInventoryMap.h
+@@ -49,6 +49,17 @@
+  // arguments). The bound spelling BuildMapMenu is not a PDB name (NAME_FIXES). Declaration only.
+  NUISystem::CComponent* ConstructPCMapList(bool a, bool* b);          // 0x0060EEB0
+ #endif
++#ifdef FABLE_RETAIL_CTCINVENTORYMAP_CONSTRUCTMAPLIST
++ // agentC30 (row 0x007B57C0): Ego_r.pdb ?ConstructMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@_NPA_N@Z, out of line at
++ // 0x0060C900 (`ret 0Ch`; the Ego_r order note above). Declaration only.
++ NUISystem::CComponent* ConstructMapList(NUISystem::CComponent* parent, bool a, bool* b);   // 0x0060C900
++#endif
++#ifdef FABLE_RETAIL_CTCINVENTORYMAP_SETAS
++ // agentC30 (row 0x007B57C0): FableWin.pdb ?SetAsInventoryScreen@CTCInventoryMap@@QAEX_N@Z / ?SetAsOpenedViaGuildSeal@CTCInventoryMap@@QAEX_N@Z,
++ // inline in retail (byte stores to InventoryScreen / OpenedViaGuildSeal, retail +0x240 / +0x241, 0x007B58C8 / 0x007B5A64). No layout change.
++ void SetAsInventoryScreen(bool value) { InventoryScreen = value; }
++ void SetAsOpenedViaGuildSeal(bool value) { OpenedViaGuildSeal = value; }
++#endif
+  void AddLogBookSaveInfo(const CWideString&,const CWideString&,const CWideString&,CHeroLogBook::CHeroLogBookEntry::ECategory);
+  class CUIMiniMapMarker {
+  public: long Region;CCharString UIDefName;C2DVector Position;long DefNameLength,GraphicIndex;float Angle;
+@@ -211,11 +222,11 @@
+ #endif
+ public:
+  static void CheckRetailLayout() {
+-  FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,VisitedRegions)==0x134);
+-  FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,LogBookNameTag)==0x150);
+-  FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,MiniMapMarkers)==0x18c);
+-  FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,SerialisedTeleporterUIDs)==0x200);
+-  FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,RegionsCorrespondances)==0x24c);
++  FABLE_STATIC_ASSERT_AT(214, offsetof(CTCInventoryMap,VisitedRegions)==0x134);
++  FABLE_STATIC_ASSERT_AT(215, offsetof(CTCInventoryMap,LogBookNameTag)==0x150);
++  FABLE_STATIC_ASSERT_AT(216, offsetof(CTCInventoryMap,MiniMapMarkers)==0x18c);
++  FABLE_STATIC_ASSERT_AT(217, offsetof(CTCInventoryMap,SerialisedTeleporterUIDs)==0x200);
++  FABLE_STATIC_ASSERT_AT(218, offsetof(CTCInventoryMap,RegionsCorrespondances)==0x24c);
+  }
+ #ifdef FABLE_RETAIL_CTCINVENTORYMAP_LOGBOOK
+  // Retail opt-in (row 0x00607330): Ego_r.pdb / FableWin.pdb ?ConstructLogbookList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+@@ -250,7 +261,7 @@
+  void CreateMiniMapMarkers(NUISystem::CComponent* pminimap, CRegion& region);
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCInventoryMap)==0x258);
+-FABLE_STATIC_ASSERT(sizeof(CTCInventoryMap::CUIMiniMapMarker)==28);
+-FABLE_STATIC_ASSERT(sizeof(CTCInventoryMap::CUIRegionInfo)==40);
++FABLE_STATIC_ASSERT_AT(253, sizeof(CTCInventoryMap)==0x258);
++FABLE_STATIC_ASSERT_AT(254, sizeof(CTCInventoryMap::CUIMiniMapMarker)==28);
++FABLE_STATIC_ASSERT_AT(255, sizeof(CTCInventoryMap::CUIRegionInfo)==40);
+ #endif

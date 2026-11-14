@@ -1,0 +1,4 @@
+- (0x007B57C0) A def pointer tested right after an out-of-line GetSubDef (result in al ignored) = `GetSubDef(&def); if (!def.IsNull())`; making the GetSubDef template body visible (CDefinitionManager.h) lets VC7.1 keep def.Object in a register across calls.
+- (0x007B57C0) FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION makes GetString noinline; for an expanded `push [TablePos]; mov ecx,GDefStringTable; call 0x009D49B0` use FORCEINLINE_GETSTRING alone + explicit .GetString().
+- (0x007B57C0) A shared failure block reached from several tests (incl. one after an out-param call) matched as nested ifs + a `bool done` flag guarding the reset (VC7.1 threads the flag away); a && chain with a comma expression moved a temp's frame slot.
+- (0x007B57C0) vland RELOC_IDENTITY on LowerBound (const 0x004365B0 v non-const 0x0040F020) = PeekTC with a const pointer v GetTC.
