@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00564d50   MATCH            PASS   copy
+
+WINS: 1
+  00564d50 MATCH std::char_traits<char>::copy

@@ -10157,6 +10157,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00564b20	SPairLongCSecond_0099b720	_unattributed	__thiscall	undefined	2	pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *	0	yes	accepted									
 00564b60	~CTripleCMember_0099eae0_00564b60	_unattributed	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted									
 00564bb0	sub_00564bb0	_global	unknown	undefined	0		0			discovered	gapscan							
+00564d50	copy	std::char_traits<char>	unknown	undefined	0		0			discovered	boundary							
 00564d5d	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics::CEntry*>	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics	__fastcall	CEntry *	4	CEntry *,CEntry *,CEntry *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00565030	allocate	std::allocator<CUnprovenElement_00565030>	unknown	undefined	0		0			discovered	gapscan							
 00565360	_M_throw_out_of_range	std::_String_base<char,std::allocator<char> >	__thiscall	void	1	CTCElectrocutedEffect *	1	yes	accepted									

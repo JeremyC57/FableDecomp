@@ -1,0 +1,17 @@
+--- a/rebuild/include/stlport/fable_string.h
++++ b/rebuild/include/stlport/fable_string.h
+@@ -35,7 +35,14 @@
+     static void assign(char& a,const char& b) { a=b; }
+     static size_t length(const char* p) { return strlen(p); }
+     static int compare(const char* a,const char* b,size_t n) { return memcmp(a,b,n); }
++#ifdef FABLE_RETAIL_STLP_CHAR_TRAITS_COPY_OUTOFLINE
++    // Opt-in (agentC40, row 0x00564D50): FableWin.pdb ?copy@?$char_traits@D@std@@SAPADPADPBDI@Z as a declaration, for the TU that
++    // defines retail's out-of-line copy (STLport 4.6.2 char_traits.h: `return (__n == 0 ? __s1 : (char*)memcpy(__s1, __s2, __n))`,
++    // 0x00564D50 `test ecx,ecx ; jne` + `rep movsd / rep movsb`). Default unchanged.
++    static char* __cdecl copy(char* a,const char* b,size_t n);
++#else
+     static char* copy(char* a,const char* b,size_t n) { return (char*)memmove(a,b,n); }
++#endif
+ #ifdef FABLE_RETAIL_STLP_STRING_FIND
+     // Opt-in (chunk 865, row 0x0083F650 LHHttpHeaders::GetHeader): STLport 4.6.2 char_traits.h eq(), used by the find predicates below.
+     static bool eq(const char& a,const char& b) { return a==b; }

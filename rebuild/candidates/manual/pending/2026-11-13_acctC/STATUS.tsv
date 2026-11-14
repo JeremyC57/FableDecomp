@@ -156,7 +156,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00735fd0	PARKED	973	2026-11-13_acctC_c30a/open	C29 -> C30 -> C36: DIFFER(993v973); exits are return (measured); frame 0x5C v 0x58 open	never_worked	CTCCombat::AttemptToStartParticle
 007e15c0	PARKED	963	2026-11-13_acctC_c37a/open	C30 -> C37: DIFFER(967v963) (alt 963v963, 15 hunks); one dead byte store (alias analysis) + x87 order	never_worked	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0
 006823d0	PARKED	962	2026-11-13_acctC_c27open	C24 -> C27 -> C36: DIFFER(960v962); only fitted helper spellings reach the frame (no such helper in either PDB)	never_worked	CTCCreatureOpinionOfHero::FrameUpdate
-00537e70	RECUT			C29: not a function start; tail of NUISystem::CList::ComputeChildrenVisibility 0x005379F5 (2,102 bytes)	never_worked	_global::ContainerUI_HandleMouseInput
+005379f5	OPEN	2102		re-cut from 00537e70 (not a function start; already MIDSTART in BOUNDS_FIX.tsv). 005379f5 is in the manifest; draft of lane hand726 DIFFER(2126v2102)	parked	NUISystem::CList::ComputeChildrenVisibility
 00945060	MATCHED_STAGED	936	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CAIStateGroup_WorkHammerAnvil::?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ
 006b2ca0	IN_PROGRESS			C42 (Fable)	never_worked	_global::CGameCamera_UpdateViewMatrix
 00944940	MATCHED_STAGED	883	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CAIStateGroup_WorkSawingWood::?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ
@@ -176,7 +176,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00bd2d90	MATCHED_STAGED	721	2026-11-13_acctC_c40a	C40 (Fable): match / PASS, coordinator-verified	never_worked	CEngineInternalPrimitiveAnimatedMesh::GetBoneTransformations
 007db2e0	MATCHED_STAGED	723	2026-11-13_acctC_c40a	C40 (Fable): match / PASS, coordinator-verified	never_worked	_global::CTCTavernGameCardBase_NewGame
 00a3e520	MATCHED_STAGED	24	2026-11-13_acctC_c40a	C40 (Fable): match / PASS, coordinator-verified	never_worked	CSoundManagerLH::CSoundManagerLH::vfunc_18
-00564d5d	RECUT	42	2026-11-13_acctC_c40a/outside_manifest	C40: tail of std::char_traits<char>::copy 0x00564D50 (42 bytes), which grades MATCH / PASS; needs the catalog row re-keyed	never_worked	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics::_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics::CEntry*>
+00564d50	MATCHED_STAGED	42	2026-11-13_acctC_c40b	re-cut from 00564d5d; C40 (Fable): MATCH / PASS, coordinator-verified after the manifest start was added	never_worked	std::char_traits<char>::copy
 00ed14e0	MATCHED_STAGED	512	2026-11-13_acctC_c40a	C40 (Fable): match / PASS, coordinator-verified	never_worked	NScript::CV_SingingStonesScript::CSingingStone::Init
 00bbddd0	MATCHED_STAGED	699	2026-11-13_acctC_c40a	C40 (Fable): match / PASS, coordinator-verified	never_worked	CEnginePrimitiveManagerParticleSpriteTrailGroup::?RenderPrimitive@CEnginePrimitiveManagerParticleSpriteTrailGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z
 00b9e5b0	MATCHED_STAGED	402	2026-11-13_acctC_c19a	C17 bonus support row (not reserved): RELOCATION_MATCH / PASS, coordinator-verified	bonus	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocksIndexBuffer

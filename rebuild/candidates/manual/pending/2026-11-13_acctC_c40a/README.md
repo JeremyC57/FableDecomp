@@ -12,10 +12,8 @@
 Verified by the coordinator with `lane/coordverify.sh` (read-only vland, strict headers): `coordverify.log`.
 
 REVIEW ITEMS:
-- `outside_manifest/`: reserved row 0x00564D5D (29 bytes, catalogued as a `_Copy_impl` instance) is the TAIL of a 42-byte
-  function at 0x00564D50, `std::char_traits<char>::copy` (FableWin name, STLport 4.6.2 body; `jne 0x00564D5D` at 0x00564D56).
-  It grades MATCH with a passing test but vland reports OUTSIDE_MANIFEST: re-key the catalog row to 0x00564D50 / 42 bytes to
-  land it. Needs `FABLE_RETAIL_STLP_CHAR_TRAITS_COPY_OUTOFLINE`.
+- Reserved row 0x00564D5D was re-cut to 0x00564D50 `std::char_traits<char>::copy` (42 bytes, MATCH / PASS): now staged in
+  `2026-11-13_acctC_c40b/`; what was changed in the manifest is in `2026-11-13_acctC/RECUTS.md`.
 - 0x00BD2D90: three named locals (`mesh_pointer`, `animation_manager`, `CMatrix4x4& transform`) are FITTED: VC7.1 orders the
   four x87 products of each matrix element by symbol numbering and a sweep of natural variants found the set that gives
   retail's order. `AlignedPreMultiplyTransposed` (FableWin helper) is force-inlined on byte evidence (precedent:

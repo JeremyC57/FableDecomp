@@ -156,7 +156,7 @@ address	length_estimate	catalog_module	catalog_name	kind	closest_version	note
 00735fd0	976	CTCCombat	AttemptToStartParticle	never_worked		
 007e15c0	976	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0	never_worked		
 006823d0	976	CTCCreatureOpinionOfHero	FrameUpdate	never_worked		
-00537e70	955	_global	ContainerUI_HandleMouseInput	never_worked		
+005379f5	2102	NUISystem::CList	ComputeChildrenVisibility	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand726/differ/005379f5.cpp	re-cut 2026-11-14 from 00537e70 (a MIDSTART fragment, BOUNDS_FIX.tsv); hand726 draft DIFFER(2126v2102)
 00945060	944	CAIStateGroup_WorkHammerAnvil	?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ	never_worked		
 006b2ca0	912	_global	CGameCamera_UpdateViewMatrix	never_worked		
 00944940	912	CAIStateGroup_WorkSawingWood	?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ	never_worked		
@@ -176,6 +176,6 @@ address	length_estimate	catalog_module	catalog_name	kind	closest_version	note
 00bd2d90	736	CEngineInternalPrimitiveAnimatedMesh	GetBoneTransformations	never_worked		
 007db2e0	736	_global	CTCTavernGameCardBase_NewGame	never_worked		
 00a3e520	736	CSoundManagerLH	CSoundManagerLH::vfunc_18	never_worked		
-00564d5d	723	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics::CEntry*>	never_worked		
+00564d50	42	std::char_traits<char>	copy	never_worked		re-cut 2026-11-14 from 00564d5d (the tail after the jne at 00564d56); start added to boundary-starts.tsv
 00ed14e0	720	NScript::CV_SingingStonesScript::CSingingStone	Init	never_worked		
 00bbddd0	704	CEnginePrimitiveManagerParticleSpriteTrailGroup	?RenderPrimitive@CEnginePrimitiveManagerParticleSpriteTrailGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z	never_worked		

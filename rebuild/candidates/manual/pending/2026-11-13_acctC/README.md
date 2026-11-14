@@ -43,3 +43,5 @@ blocked acctB rows and fragments are not in the list.
 folder a matched row is staged in). Owner goal (2026-11-13): every reserved row matched; author agents (Opus, expert brief, large
 budgets) are relaunched as they end. `lane/mkagent.py <agent> <addr>...` builds an agent's work folder and brief from
 `lane/BRIEF_TEMPLATE.md` (scratch paths are filled in at run time; oracles stay in the scratch).
+
+Re-cut rows (two reserved rows that were not function starts) and what the lander must do about them: `RECUTS.md`.
