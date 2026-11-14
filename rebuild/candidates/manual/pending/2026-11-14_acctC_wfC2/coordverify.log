@@ -1,0 +1,9 @@
+addr       parity           behav  name
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/wine/vc71rtm/bin/cl.exe e-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/stage/co2_wfC2/lv/00/f0/00f0fb70/00f0fb70.cpp
+00f0fb70   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00f0fb70   WARN RELOC_NAME: ??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac310 labelled 'CRetailTree_erase009aa830::~CRetailTree_erase009aa830'
+00f0fb70   WARN RELOC_NAME: ?GetMasterData@?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAEPAVCQ_SunnyvaleMasterData@NScript@@XZ -> 00f14250 labelled '_global::GetMember_dword0x44_00f14250'
+00f0fb70   RELOCATION_MATCH["t"] PASS   Main
+
+WINS: 1
+  00f0fb70 RELOCATION_MATCH["t"] NScript::CQ_ArenaScript::Main

@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00CBE09A	??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z	Ego_r.pdb (0x00C9EC04) + FableWin.pdb (0x0359FD38) name sets; engine/CWideScreenMagicPauseEntities.h	??0CWideScreenMagicPauseEntities@@QAE@PAVCGameScriptInterfaceBase@@@Z (landed 0x00CBE09A row, local model in GiveGameInfo 0x00CBF6DC)

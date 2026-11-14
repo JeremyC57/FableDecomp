@@ -1,0 +1,5 @@
+address	name	evidence
+0x00F25840	NScript::CQ_ArenaScript::InitialiseVariables	called at 0x00F0FBF5 right after the objective (draft; not in reloc_bindings)
+0x00F1EC70	NScript::CQ_ArenaScript::AnimateCrowd	draft callee by position (0x00F13B61)
+0x00F1EED0	NScript::CQ_ArenaScript::PlayWave	draft callee by position
+0x00F14250	CLevelScriptBase<NScript::CQ_SunnyvaleMasterData>::GetMasterData (?GetMasterData@?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAEPAVCQ_SunnyvaleMasterData@NScript@@XZ)	body `mov eax,[ecx+44h] ; ret` right after the two jump tables of Main 0x00F0FB70; only caller 0x00F13DB8; FableWin.pdb name set holds the symbol; the matched row binds it there (vland RELOC_NAME warning against the placeholder label _global::GetMember_dword0x44_00f14250)
