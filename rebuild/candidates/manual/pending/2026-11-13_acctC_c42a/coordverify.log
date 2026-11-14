@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a5cb90   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00a5cb90   RELOCATION_MATCH PASS   AlignedTransformTransposedAssumeW
+00c6f3e0   RELOCATION_MATCH PASS   Process
+
+WINS: 2
+  00a5cb90 RELOCATION_MATCH CMatrix4x4::AlignedTransformTransposedAssumeW
+  00c6f3e0 RELOCATION_MATCH CVtable_012b8aa0::Process

@@ -1,0 +1,50 @@
+--- a/rebuild/include/libpk/MixKernelsSIMD.h
++++ b/rebuild/include/libpk/MixKernelsSIMD.h
+@@ -12,6 +12,7 @@
+ //   LIBPK_SSE2 / SSE_CONVERT_INT128_TO_FLOAT[_IN_PLACE]   0x00C6B3A0 / 0x00C6B5D0
+ //   LIBPK_SSE2 / SSE_CONVERT_FLOAT128_TO_INT_IN_PLACE     0x00C6B490
+ //   LIBPK_SSE2_COPY64 / COPY128, LIBPK_MMX_COPY128        0x00C6D630 / 0x00C70A60, 0x00C70040
++//   LIBPK_MMX_COPY64 (agentC42)                            0x00C6F3E0
+ //   LIBPK_SSE_ZERO64 / ZERO128, LIBPK_MMX_ZERO64 / ZERO128 0x00C6D560 / 0x00C70BC0, 0x00C6F300 / 0x00C700D0 0x00C701E0
+ // Retail-asm-helper: LIBPK_MMX_SCALE_ACCUMULATE16_RAMP, LIBPK_MMX_SCALE_ACCUMULATE16, LIBPK_SSE2_SCALE_ACCUMULATE16_RAMP, LIBPK_SSE2_SCALE_ACCUMULATE16, LIBPK_SSE2_SCALE_ACCUMULATE16_RAMP_UNALIGNED, LIBPK_SSE2_SCALE_ACCUMULATE16_UNALIGNED, LIBPK_SSE2_ADD_INT128_BLOCK, LIBPK_SSE2_ACCUMULATE_FLOAT128_BLOCK, LIBPK_SSE2_CONVERT_INT128_TO_FLOAT, LIBPK_SSE_CONVERT_INT128_TO_FLOAT, LIBPK_SSE2_CONVERT_INT128_TO_FLOAT_IN_PLACE, LIBPK_SSE_CONVERT_INT128_TO_FLOAT_IN_PLACE, LIBPK_SSE2_CONVERT_FLOAT128_TO_INT_IN_PLACE, LIBPK_SSE_CONVERT_FLOAT128_TO_INT_IN_PLACE, LIBPK_SSE2_COPY64, LIBPK_SSE2_COPY128, LIBPK_MMX_COPY128, LIBPK_SSE_ZERO64, LIBPK_MMX_ZERO64, LIBPK_SSE_ZERO128, LIBPK_MMX_ZERO128
+ // Retail-asm: 0x00C6AA45 `movq mm7,[gains]` + 0x00C6AA50 `movq mm0,[eax]` + 0x00C6AA53 `pmulhw mm0,mm7` .. `psrad mm1,15 ; paddd
+@@ -154,6 +155,8 @@
+     fable_portable::CopyBytes((dst), (src), 0x80)
+ #define LIBPK_MMX_COPY128(src, dst) \
+     fable_portable::CopyBytes((dst), (src), 0x80)
++#define LIBPK_MMX_COPY64(source, history) \
++    fable_portable::CopyBytes((history), (source), 0x40)
+ #define LIBPK_SSE_ZERO64(history) \
+     fable_portable::ZeroBytes((history), 0x40)
+ #define LIBPK_MMX_ZERO64(history) \
+@@ -574,6 +577,30 @@
+     __asm movq mm7, [esi + 78h] \
+     __asm movq [edi + 78h], mm7 \
+     __asm emms
++// LIBPK_MMX_COPY64 (agentC42, row 0x00C6F3E0 CVtable_012b8aa0::Process): the MMX twin of LIBPK_SSE2_COPY64 -- 0x00C6F69B
++// `mov esi,[esp+14h]` / 0x00C6F69F `mov edi,[esp+18h]` / 0x00C6F6A3 `movq mm0,[esi]` / `movq [edi],mm0` .. 0x00C6F6D8
++// `movq [edi+38h],mm7` / 0x00C6F6DC `emms`: eight load/store pairs on mm0..mm7, both pointers re-read from frame words into
++// esi / edi behind the compiler (it keeps `this` in ebx and has just written the two words).
++#define LIBPK_MMX_COPY64(source, history) \
++    __asm mov esi, source \
++    __asm mov edi, history \
++    __asm movq mm0, [esi] \
++    __asm movq [edi], mm0 \
++    __asm movq mm1, [esi + 8h] \
++    __asm movq [edi + 8h], mm1 \
++    __asm movq mm2, [esi + 10h] \
++    __asm movq [edi + 10h], mm2 \
++    __asm movq mm3, [esi + 18h] \
++    __asm movq [edi + 18h], mm3 \
++    __asm movq mm4, [esi + 20h] \
++    __asm movq [edi + 20h], mm4 \
++    __asm movq mm5, [esi + 28h] \
++    __asm movq [edi + 28h], mm5 \
++    __asm movq mm6, [esi + 30h] \
++    __asm movq [edi + 30h], mm6 \
++    __asm movq mm7, [esi + 38h] \
++    __asm movq [edi + 38h], mm7 \
++    __asm emms
+ #define LIBPK_SSE_ZERO64(history) \
+     __asm mov edi, history \
+     __asm xorps xmm0, xmm0 \

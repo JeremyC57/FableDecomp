@@ -75,7 +75,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 005ac10e	OPEN				parked	CTCInventoryTrade::ConstructActualBuyInventoryPC
 006d1e30	OPEN				parked	CTCWife::FrameUpdate
 00648820	OPEN				parked	CDrawMiniMap::Draw
-00682810	IN_PROGRESS			C42 (Fable)	parked	CTCCreatureOpinionOfHero::InformOfDeed
+00682810	IN_PROGRESS			C43 (Fable); C42 (Fable)	parked	CTCCreatureOpinionOfHero::InformOfDeed
 009d9c80	OPEN				parked	CRenderManager2D::DrawBufferedPolys
 00bc8a60	OPEN				parked	CEnginePrimitiveManagerLines::RenderLine
 009d8cf0	OPEN				parked	CRenderManager2D::ClearRenderTarget
@@ -83,7 +83,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b1c880	OPEN				parked	NParticleEngine::CPSCDecalRenderer::ReadBinary
 00d82640	OPEN				parked	NScript::CQ_HeroSoulsBriarScript::CBriarRose::Main
 0066cf00	OPEN				parked	CRegionMinimap::PopulateRegionMinimap
-007db6a0	IN_PROGRESS			C42 (Fable)	parked	CTCTavernGameCardBlackjack::CardsMainGame
+007db6a0	PARKED	2556	2026-11-13_acctC_c42a/open	C42: DIFFER(2556v2556), two register picks at 0x007DBC83 / 0x007DBC91	parked	CTCTavernGameCardBlackjack::CardsMainGame
 00bb0970	OPEN				parked	CEnginePrimitiveManager2DSprites::?RenderSpritePrim@CEnginePrimitiveManager2DSprites@@MAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z
 00b1f200	OPEN				parked	NParticleEngine::CPSCDecalRenderer::PreparePrimitives
 00d7fe90	OPEN				parked	NScript::CQ_HeroSoulsArenaScript::WatchForRoundsInArena
@@ -115,10 +115,10 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 005f59c7	PARKED	2652	2026-11-13_acctC_c12a/open_005f59c7	C10 -> C12 -> C33: DIFFER(2649v2652); retail tail block references only five candidates (no temporary for PeekComponent(), compare at 0x005F63C0 in another c2 block); source construct unknown	parked	CTCInventoryAbilities::ConstructPCExpressionsList
 00435530	OPEN				parked	CDisplayEngine::DoRender
 00439070	OPEN				parked	CPlayerGui::DrawPreparePrimitivesForEngine
-007de710	IN_PROGRESS			C42 (Fable)	parked	CTCWallMount::AttachObject
-00772bb0	IN_PROGRESS			C42 (Fable)	parked	CTCShop::AddSaleItem
+007de710	IN_PROGRESS	2578	2026-11-13_acctC_c42a/open	C42 -> C43 (Fable): DIFFER(2578v2578), same residue as 00772bb0	parked	CTCWallMount::AttachObject
+00772bb0	IN_PROGRESS	2585	2026-11-13_acctC_c42a/open	C42 -> C43 (Fable): DIFFER(2585v2585), x87 term order in the inlined inverse text	parked	CTCShop::AddSaleItem
 00dce230	OPEN				parked	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Main
-006d0830	IN_PROGRESS			C42 (Fable)	parked	CTCWife::GlobalUpdate
+006d0830	IN_PROGRESS		2026-11-13_acctC_c42a/open	C42 -> C43 (Fable): port unfinished	parked	CTCWife::GlobalUpdate
 00d4a270	OPEN				never_worked	NScript::CQ_GuildTrainingScript::CCombatApprentice::Main
 004804de	OPEN				never_worked	CTCInGameMenu::OpenInGameMenuPC
 0060c900	MATCHED_STAGED	9635	2026-11-13_acctC_c14a	C14; real name CTCInventoryMap::ConstructMapList	never_worked	CTCInventoryMap::CTCInventoryMap::BuildMapTeleportUI
@@ -156,22 +156,22 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00735fd0	PARKED	973	2026-11-13_acctC_c30a/open	C29 -> C30 -> C36: DIFFER(993v973); exits are return (measured); frame 0x5C v 0x58 open	never_worked	CTCCombat::AttemptToStartParticle
 007e15c0	PARKED	963	2026-11-13_acctC_c37a/open	C30 -> C37: DIFFER(967v963) (alt 963v963, 15 hunks); one dead byte store (alias analysis) + x87 order	never_worked	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0
 006823d0	PARKED	962	2026-11-13_acctC_c27open	C24 -> C27 -> C36: DIFFER(960v962); only fitted helper spellings reach the frame (no such helper in either PDB)	never_worked	CTCCreatureOpinionOfHero::FrameUpdate
-005379f5	OPEN	2102		re-cut from 00537e70 (not a function start; already MIDSTART in BOUNDS_FIX.tsv). 005379f5 is in the manifest; draft of lane hand726 DIFFER(2126v2102)	parked	NUISystem::CList::ComputeChildrenVisibility
+005379f5	IN_PROGRESS	2102		C43 (Fable); re-cut from 00537e70 (not a function start; already MIDSTART in BOUNDS_FIX.tsv). 005379f5 is in the manifest; draft of l	parked	NUISystem::CList::ComputeChildrenVisibility
 00945060	MATCHED_STAGED	936	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CAIStateGroup_WorkHammerAnvil::?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ
-006b2ca0	IN_PROGRESS			C42 (Fable)	never_worked	_global::CGameCamera_UpdateViewMatrix
+006b2ca0	IN_PROGRESS			C43 (Fable); C42 (Fable)	never_worked	_global::CGameCamera_UpdateViewMatrix
 00944940	MATCHED_STAGED	883	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CAIStateGroup_WorkSawingWood::?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ
 007b57c0	MATCHED_STAGED	776	2026-11-13_acctC_c30a	C30: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCarriedActionUseActivateQuest::CTCCarriedActionUseActivateQuest::vfunc_28
 007bc38a	PARKED	880	2026-11-13_acctC_c36a/open	C34 -> C36: DIFFER(880v880), one instruction (vtable load v fsubp at 0x007BC64D)	never_worked	_global::CTCPhysicsRigidBody_ApplyForceToward
 006a1a00	MATCHED_STAGED	864	2026-11-13_acctC_c34a	C32 -> C34 (Fable): RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation
 0074af50	MATCHED_STAGED	856	2026-11-13_acctC_c36a	C36 (Fable): RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCreatureGenerator::CreateCreaturesUndead
-00a5cb90	IN_PROGRESS			C42 (Fable)	never_worked	CMatrix4x4::AlignedTransformTransposedAssumeW
-00c6f3e0	IN_PROGRESS			C42 (Fable)	never_worked	_global::CAudioMixer_ProcessChannels_64bit
-00c271f0	IN_PROGRESS			C42 (Fable)	never_worked	_global::CTCInventory_OnItemEquippedHelper
+00a5cb90	MATCHED_STAGED	847	2026-11-13_acctC_c42a	C42 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; new retail-asm kernel + /Zi need owner sign-off	never_worked	CMatrix4x4::AlignedTransformTransposedAssumeW
+00c6f3e0	MATCHED_STAGED	834	2026-11-13_acctC_c42a	C42 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; libpk MMX delay effect, new retail-asm copy kernel needs sign-off	never_worked	_global::CAudioMixer_ProcessChannels_64bit
+00c271f0	IN_PROGRESS			C43 (Fable); C42 (Fable)	never_worked	_global::CTCInventory_OnItemEquippedHelper
 007fc9d0	MATCHED_STAGED	704	2026-11-13_acctC_c34a	C32 -> C34 (Fable): RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCKraken::FrameUpdate
 0075d580	MATCHED_STAGED	809	2026-11-13_acctC_c37a	C37 (Fable): RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCameraPointScriptedSpline::UpdateCameraParams
 0077b350	MATCHED_STAGED	767	2026-11-13_acctC_c37a	C37 (Fable): RELOCATION_MATCH / PASS, coordinator-verified	never_worked	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::vfunc_0
 007ea580	PARKED	457	2026-11-13_acctC_c37a/open	C37 -> C40: DIFFER(457v457), 2 displacement hunks; allocator reload-home choice, no source lever found	never_worked	_global::CTCTargeted_BuildTargetTrajectory
-00875690	IN_PROGRESS			C42 (Fable)	never_worked	CGeneralCircle::CGeneralCircle
+00875690	IN_PROGRESS	762	2026-11-13_acctC_c42a/open	C42 -> C43 (Fable): DIFFER(726v762), identical through 0x008757C5	never_worked	CGeneralCircle::CGeneralCircle
 00a3e830	MATCHED_STAGED	24	2026-11-13_acctC_c40a	C40 (Fable): match / PASS, coordinator-verified	never_worked	CSoundManagerLH::CSoundManagerLH::vfunc_35
 00bd2d90	MATCHED_STAGED	721	2026-11-13_acctC_c40a	C40 (Fable): match / PASS, coordinator-verified	never_worked	CEngineInternalPrimitiveAnimatedMesh::GetBoneTransformations
 007db2e0	MATCHED_STAGED	723	2026-11-13_acctC_c40a	C40 (Fable): match / PASS, coordinator-verified	never_worked	_global::CTCTavernGameCardBase_NewGame

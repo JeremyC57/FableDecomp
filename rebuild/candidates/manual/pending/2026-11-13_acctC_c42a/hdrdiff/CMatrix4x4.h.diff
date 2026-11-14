@@ -1,0 +1,36 @@
+--- a/rebuild/include/engine/CMatrix4x4.h
++++ b/rebuild/include/engine/CMatrix4x4.h
+@@ -54,7 +54,24 @@
+     FABLE_FORCEINLINE
+ #endif
+     void AlignedSetMultiplyTransposed(const CMatrix4x4& a, const CMatrix4x4& b) { AlignedSetMultiply(b, a); }
++#ifdef FABLE_RETAIL_CMATRIX4X4_ALIGNEDPREMULTIPLYTRANSPOSED
++    // Retail opt-in (agentC40, row 0x00BD2D90 CEngineInternalPrimitiveAnimatedMesh::GetBoneTransformations): FableWin.pdb
++    // ?AlignedPreMultiplyTransposed@CMatrix4x4@@QAEXABV1@@Z, inline in retail: an aligned copy of *this (`rep movsd` of 16 words to an
++    // `and esp,-16` frame, 0x00BD2E70), then this = copy * m through AlignedSetMultiplyTransposed (SSE operands eax = copy, edx = m).
++    // Text by FableWin size (30i / 70b): default-construct + assign with the FableWin ??0CMatrix4x4@@QAE@XZ visible
++    // (FABLE_RETAIL_CMATRIX4X4_FROMMATRIX3X4) is 30i / 69b at /Od; copy-initialisation is 28i / 61b. Same retail bytes either way.
++#ifdef FABLE_RETAIL_CMATRIX4X4_ALIGNEDPREMULTIPLYTRANSPOSED_FORCEINLINE
++    FABLE_FORCEINLINE
++#endif
++    void AlignedPreMultiplyTransposed(const CMatrix4x4& m) { __declspec(align(16)) CMatrix4x4 copy; copy = *this; AlignedSetMultiplyTransposed(m, copy); }
++#endif
++#endif
+ #endif
++#ifdef FABLE_RETAIL_CMATRIX4X4_ALIGNEDTRANSFORMTRANSPOSEDASSUMEW
++    // Retail opt-in (agentC42, row 0x00A5CB90): Ego_r.pdb / FableWin.pdb ?AlignedTransformTransposedAssumeW@CMatrix4x4@@QBEXPBVC4DVector@@PAV2@KM@Z
++    // (reloc-bound from CParticleSimulation::ApplyDragging 0x00ADF300): count aligned vectors, SSE kernel of
++    // engine/CMatrix4x4TransformSSE.h four at a time, the inline TransformTransposedAssumeW for the rest.
++    void AlignedTransformTransposedAssumeW(const C4DVector* src, C4DVector* dest, unsigned long count, float w) const;
+ #endif
+ #ifdef FABLE_RETAIL_CMATRIX4X4_FROMMATRIX3X4
+     // Retail opt-in (chunk 2024, row 0x00B4FC40 CEngineShadowRenderer::SetupShadowFuncRenderStates): FableWin.pdb ??0CMatrix4x4@@QAE@XZ
+@@ -83,7 +100,7 @@
+         E12=0.0f; E13=0.0f; E14=0.0f; E21=0.0f; E23=0.0f; E24=0.0f; E31=0.0f; E32=0.0f; E34=0.0f; E41=0.0f; E42=0.0f; E43=0.0f;
+     }
+ };
+-FABLE_STATIC_ASSERT(sizeof(CMatrix4x4)==64);
++FABLE_STATIC_ASSERT_AT(86, sizeof(CMatrix4x4)==64);
+ #ifdef FABLE_RETAIL_CMATRIX4X4
+ #include "engine/CMatrix4x4AlignedSSE.h"   // the SSE kernels and the inline AlignedSetMultiply body
+ #endif

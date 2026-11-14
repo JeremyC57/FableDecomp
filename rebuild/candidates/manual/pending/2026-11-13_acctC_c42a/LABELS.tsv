@@ -1,0 +1,5 @@
+address	name	evidence
+00a5cb90	?AlignedTransformTransposedAssumeW@CMatrix4x4@@QBEXPBVC4DVector@@PAV2@KM@Z	Ego_r + FableWin PDB; reloc_bindings (0x00ADF300)
+00987700	??0CMatrix4x4@@QAE@XZ	FableWin PDB name; vector ctor iterator argument at 0x00A5CBCF with element size 0x40 (ICF-folded empty ctor)
+00c6f3e0	?Process@CVtable_012b8aa0@@UAEXPBFPBQAJ@Z	descriptive (libpk, no PDB): slot 2 of bound vtable ??_7CVtable_012b8aa0@@6B@ 0x012B8AA0; landed sibling 0x00C6D630 names it; catalog label CAudioMixer_ProcessChannels_64bit is wrong
+00875690	??0CGeneralCircle@NCameraModes@@QAE@ABVC3DVector@@00@Z	Ego_r + FableWin PDB (agentC40); catalog module lacks the namespace

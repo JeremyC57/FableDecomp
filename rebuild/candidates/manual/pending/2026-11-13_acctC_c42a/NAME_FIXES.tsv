@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00c6f3e0	?Process@CVtable_012b8aa0@@UAEXPBFPBQAJ@Z	slot 2 of bound vtable 0x012B8AA0; landed sibling 0x00C6D630 comment	_global::CAudioMixer_ProcessChannels_64bit (catalog)
