@@ -7,7 +7,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b783f0	OPEN	9343	2026-11-13_acctC_c19a/open_00b783f0	C8 -> C13 -> C16: DIFFER(9343v9343), 3 residues; quartet needs exactly 2 dead units before the second SetCommonRenderStates expansion; bool-parameter helper ruled out	parked	CEngineWaterRenderer::?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 00795300	OPEN				parked	CTCDivineWrath::FrameUpdate
 005f1b10	MATCHED_STAGED	8383	2026-11-13_acctC_c9a	C5 -> C7 -> C9	parked	CTCInventoryAbilities::ConstructPCMagicList
-0058578b	IN_PROGRESS	8081	2026-11-13_acctC_c23open	C23 -> C33 -> C35 (Fable): DIFFER(8070v8081), frame = retail; one colouring decision (top_level in edi) cascades through 331 hunks	parked	CTCInventory::CTCInventory::vfunc_30
+0058578b	PARKED	8081	2026-11-13_acctC_c23open	C23 -> C33 -> C35 (Fable): structure now retail (DIFFER 8131v8081; 826 instructions line up under a forced-priority lens); needs top_level above style_count by 21 priority points and one count-loop ebx decision; nested scopes spelt with bare braces (fitted)	parked	CTCInventory::CTCInventory::vfunc_30
 00b4d370	OPEN				parked	CEngineShadowRenderer::UpdateShadowSpace
 00601310	MATCHED_STAGED	6931	2026-11-13_acctC_c31a	C23 -> C26 -> C31 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; inferred STLport texts + 16 fitted named locals (review items)	parked	_global::ConstructQuestsScreen_MainMenu
 00b89c30	PARKED	6431	2026-11-13_acctC_c22open	C22: DIFFER(6431v6431), one hunk; asserts/names no effect (acctB ~900 grades on it)	parked	CEngineScreenEffectOutlineGlow::ApplyOutline
@@ -25,7 +25,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00d45060	OPEN				parked	NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks
 00e20600	OPEN				parked	NScript::CQR_EscortTraderScript::CTraderToEscort::Main
 00502e90	OPEN				parked	CWorldMap::PopulateRegionWithVillagers
-006096e0	IN_PROGRESS			C35 row 2: extent 12,832 confirmed (ret 4 at 0x0060C8DA + pad + 8-entry table); old draft needs seven opt-ins re-derived before it compiles	parked	CTCInventoryMap::ConstructLogbookListPC
+006096e0	IN_PROGRESS			C38 (Fable): port the old draft (seven opt-ins gone) then twin method	parked	CTCInventoryMap::ConstructLogbookListPC
 0061e6d0	MATCHED_STAGED	12356	2026-11-13_acctC_c28a	C23 -> C26 -> C28 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; no device	parked	CTCInventoryQuests::ConstructQuestListPC
 00e4b5b0	OPEN				parked	NScript::CV_BanditTollScript::CTollBandit::Main
 00e3bb70	OPEN				parked	NScript::CV_BordelloScript::CMadame::Main
@@ -135,10 +135,10 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00bae2d0	OPEN				never_worked	CEnginePrimitiveManager2DSprites::?RenderSubPrimitive@CEnginePrimitiveManager2DSprites@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
 005eeff2	MATCHED_STAGED	5619	2026-11-13_acctC_c12a	C11 -> C12; CTCInventoryAbilities::GetMagicListUIComponent; /Gr (review item)	never_worked	_gapscan::sub_005eeff2
 00b3cb30	OPEN				never_worked	CEngineResourceManager::CEngineResourceManager
-0058807d	OPEN				never_worked	CTCInventory::OpenPCInventoryMenu
+0058807d	IN_PROGRESS			C38 (Fable)	never_worked	CTCInventory::OpenPCInventoryMenu
 00598a1c	OPEN				never_worked	CFrontEndManager::CFrontEndManager::Init2
 00aa2110	OPEN				never_worked	C3DAnimationManager::CalcBlendedBoneTransformation
-00652fa4	OPEN				never_worked	NPlayerGui::CDrawQuickAccessIcons::Draw
+00652fa4	IN_PROGRESS			C38 (Fable)	never_worked	NPlayerGui::CDrawQuickAccessIcons::Draw
 00aa0fa0	OPEN				never_worked	C3DAnimationManager::CalcBoneTransformation
 00b9ac30	OPEN				never_worked	CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStaticMeshes::RenderSubPrimitive
 00b555a0	OPEN				never_worked	CEngineWeatherRenderer::?Render@CEngineWeatherRenderer@@UAEXABVCEngineComponentRenderParams@@@Z

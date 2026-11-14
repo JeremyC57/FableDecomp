@@ -1,5 +1,5 @@
 // CTCInventory::OpenInventory() -- open the console inventory's top-level menu: clear the pad rumble, fade the music / sound /
-// Grade: DIFFER(8070v8081) 331 hunks -- agentC33: PDef IsNull guard in the vignette test (+129 bytes, two CDefPointer temporaries as retail 0x00585D46/0x00585F68), GetParentThing().GetCurrentMapNumber() (0x00585B9E order), bool has_quests/break instead of goto; residue = allocator: retail keeps top_level in edi 0x0058591E..0x005873CB, ours splits it (first piece esi, const 0x13 / const -1 pieces take edi)
+// Grade: DIFFER(8131v8081) -- agentC35: structure EVIDENCED (count-loop `continue` with its own destructor copy 0x00586890; `if (has_quests) {loop} else {text}` layout 0x00585E62/0x00585ED9; CText* named before AddChild 0x00585E0A; four named x_desc before AddFakeChild 0x00586AE4/6CB1/6E82/704F; nested scopes for augmentation / suit / appearance = FITTED spelling of the EVIDENCED dropped null stores 0x00586A6F..0x00586AA4). Under the diagnostic lens (top_level root priority forced above style_count) the build equals retail instruction for instruction except the count loop 0x0058680C..0x00586ACE and 2 tail loads; residue = register priority: top_level 89 must exceed style_count 109 (which takes edi and triggers the split), then def v const 0 for ebx in the count loop. See NOTES.md.
 // ambient groups out, stop 3D scene rendering, select this hero-information screen, open the base inventory and size its anim
 // box, register the inventory with the UI manager, then build the top-level menu: gold amount, mini map with the region markers,
 // the active quest list (or the "check the guild" text), the five back actions, the map / quests / logbook / skills entries, the
@@ -101,6 +101,7 @@
 #include "engine/CTCInventoryStats.h"
 #include "engine/CTCInventoryItem.h"
 #include "engine/CTCHeroStats.h"
+#include "engine/CTCInventoryWeapons.h"
 #include "engine/CTCQuestCard.h"
 #include "engine/CQuestCardDef.h"
 #include "engine/CQuestManager.h"
@@ -242,11 +243,7 @@ void CTCInventory::OpenInventory()
             }
         }
     }
-    if (!has_quests) {
-        CCountedPointer<CComponent> text(manager->CreateComponent("UI_TEXT_INSIDE_CONTAINER_TEMPLATE", false));
-        description->AddChild(text);
-        static_cast<NUISystem::CText*>(text.Get())->SetValue(CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_CHECKGUILD"), true, true);
-    } else {
+    if (has_quests) {
         for (std::list<CIntelligentPointer<CThing> >::const_reverse_iterator it = quests.rbegin(); it != quests.rend(); ++it) {
             if (IS_THING_ALIVE(*it)) {
                 const CTCQuestCard* quest_card = 0;
@@ -270,6 +267,11 @@ void CTCInventory::OpenInventory()
                 }
             }
         }
+    } else {
+        CCountedPointer<CComponent> text(manager->CreateComponent("UI_TEXT_INSIDE_CONTAINER_TEMPLATE", false));
+        NUISystem::CText* check_guild = static_cast<NUISystem::CText*>(text.Get());
+        description->AddChild(text);
+        check_guild->SetValue(CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_CHECKGUILD"), true, true);
     }
     CCountedPointer<CComponent> scroll_viewport(manager->CreateComponent("UI_SCROLLING_VIEWPORT_TEXT_AREA", false));
     CViewport* viewport = static_cast<CViewport*>(scroll_viewport.Get());
@@ -363,7 +365,7 @@ void CTCInventory::OpenInventory()
             ++item;
     }
     hero->PeekTC(TCI_INVENTORY_WEAPONS, &hero_weapons);
-    ((const NInventory::CTCInventoryBase*)hero_weapons)->GetAllItems(items);
+    hero_weapons->GetAllItems(items);
     if (clothing_tc)
         clothing_tc->GetAllItems(items);
     long weapons_count = 0;
@@ -375,10 +377,11 @@ void CTCInventory::OpenInventory()
     for (unsigned long i = 0; i < items.size(); ++i) {
         CDefPointer<const CThingBaseDef> def;
         GetDefinitionManager().GetDef(items[i].first, &def);
-        CDefPointer<const CAugmentationDef> augmentation;
-        if (!def->GetSubDef(&augmentation)) {
-        CDefPointer<const CHeroSuitDef> suit;
-        CDefPointer<const CAppearanceModifierDef> appearance;
+        {CDefPointer<const CAugmentationDef> augmentation;
+        if (def->GetSubDef(&augmentation))
+            continue;
+        {CDefPointer<const CHeroSuitDef> suit;
+        {CDefPointer<const CAppearanceModifierDef> appearance;
         if (CTCInventoryItem::IsWeapon(items[i].first)) {
             weapons_count += items[i].second;
         } else if (def->GetSubDef(&suit)) {
@@ -412,14 +415,14 @@ void CTCInventory::OpenInventory()
                             facial_hair_count += items[i].second;
                     }
                 }
-            }
-        }
+        }}}}
         }
     }
 
     // weapons
     CComponent* weapons_entry = top_level->FindChild("UI_MENU_ENTRY_WEAPONS");
-    viewport->AddFakeChild(weapons_entry->FindChild("UI_WEAPON_DESC"));
+    CComponent* weapons_desc = weapons_entry->FindChild("UI_WEAPON_DESC");
+    viewport->AddFakeChild(weapons_desc);
     if (weapons_tc && weapons_count > 0) {
         NUISystem::CText* text = static_cast<NUISystem::CText*>(weapons_entry->FindChild("UI_WEAPONS_BUTTON")->FindChild("UI_WEAPONS_TEXT"));
         CWideString label(text->GetValue());
@@ -445,7 +448,8 @@ void CTCInventory::OpenInventory()
     }
     // items
     CComponent* items_entry = top_level->FindChild("UI_MENU_ENTRY_ITEMS");
-    viewport->AddFakeChild(items_entry->FindChild("UI_ITEMS_DESC"));
+    CComponent* items_desc = items_entry->FindChild("UI_ITEMS_DESC");
+    viewport->AddFakeChild(items_desc);
     if (inventory_tc && items_count > 0) {
         NUISystem::CText* text = static_cast<NUISystem::CText*>(items_entry->FindChild("UI_ITEMS_BUTTON")->FindChild("UI_ITEMS_TEXT"));
         CWideString label(text->GetValue());
@@ -471,7 +475,8 @@ void CTCInventory::OpenInventory()
     }
     // clothing
     CComponent* clothing_entry = top_level->FindChild("UI_MENU_ENTRY_CLOTHING");
-    viewport->AddFakeChild(clothing_entry->FindChild("UI_CLOTHING_DESC"));
+    CComponent* clothing_desc = clothing_entry->FindChild("UI_CLOTHING_DESC");
+    viewport->AddFakeChild(clothing_desc);
     if (clothing_tc && clothing_count > 0) {
         NUISystem::CText* text = static_cast<NUISystem::CText*>(clothing_entry->FindChild("UI_CLOTHING_BUTTON")->FindChild("UI_CLOTHING_TEXT"));
         CWideString label(text->GetValue());
@@ -497,7 +502,8 @@ void CTCInventory::OpenInventory()
     }
     // style cards
     CComponent* style_entry = top_level->FindChild("UI_MENU_ENTRY_STYLE_CARDS");
-    viewport->AddFakeChild(style_entry->FindChild("UI_STYLE_CARDS_DESC"));
+    CComponent* style_desc = style_entry->FindChild("UI_STYLE_CARDS_DESC");
+    viewport->AddFakeChild(style_desc);
     long style_count = hair_count + tattoo_count + facial_hair_count;
     if (inventory_tc && style_count > 0) {
         NUISystem::CText* text = static_cast<NUISystem::CText*>(style_entry->FindChild("UI_STYLE_CARDS_BUTTON")->FindChild("UI_STYLE_CARDS_TEXT"));
