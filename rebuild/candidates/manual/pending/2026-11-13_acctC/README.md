@@ -45,3 +45,11 @@ budgets) are relaunched as they end. `lane/mkagent.py <agent> <addr>...` builds 
 `lane/BRIEF_TEMPLATE.md` (scratch paths are filled in at run time; oracles stay in the scratch).
 
 Re-cut rows (two reserved rows that were not function starts) and what the lander must do about them: `RECUTS.md`.
+
+## Acceptance test for devices and fitted spellings (owner, 2026-11-14)
+Before accepting a device (inline flag, scoped inline pragma, unused named locals that re-key a c2 record-count tie, a redundant
+guard, a fitted named local, dead release asserts) the question is: does the row BYTE MATCH retail, does it BEHAVE THE SAME as
+retail, and is it PORTABLE code. Three yeses: accept it, marked (`// Inline-budget:`, `// Fidelity:`, `// Inferred:`, or FITTED
+in the header comment). Earlier in this lane the coordinator applied a stricter rule (no inline flags, no unused locals);
+READMEs written before 2026-11-14 that call such a construct "not landable" should be read with this test instead. `__asm` in a
+row, stand-in callee bodies, diagnostic builds and local class models where a shared header exists still fail it.
