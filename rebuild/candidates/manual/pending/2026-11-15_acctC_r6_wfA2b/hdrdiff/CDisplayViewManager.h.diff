@@ -1,0 +1,34 @@
+--- a/rebuild/include/engine/CDisplayViewManager.h
++++ b/rebuild/include/engine/CDisplayViewManager.h
+@@ -10,17 +10,28 @@
+ 
+ class CCPPointerInfo;
+ struct CViewBase;
++#ifdef FABLE_RETAIL_CDISPLAYVIEWMANAGER_GETCURRENTVIEW
++namespace NDisplayView { class CViewBase; }
++#endif
+ 
+ #pragma pack(push, 1)
+ class CDisplayViewManager {
+ public:
++#ifdef FABLE_RETAIL_CDISPLAYVIEWMANAGER_GETCURRENTVIEW
++    // Opt-in (wfA2, row 0x00435530 CDisplayEngine::DoRender): the Data word typed as its Ego_r.pdb pointee NDisplayView::CViewBase (same
++    // 4 bytes) and Ego_r.pdb / FableWin.pdb ?GetCurrentView@CDisplayViewManager@@QBEPAVCViewBase@NDisplayView@@XZ, inline in retail
++    // (DoRender reads the word +0x00 in place: `mov eax,[esi+0E0h] ; mov ecx,[eax] ; test ecx,ecx`, 0x0043573F).
++    NDisplayView::CViewBase* GetCurrentView() const { return PCurrentView_Data; }
++    NDisplayView::CViewBase* PCurrentView_Data;              // +0x00 CCountedPointer<NDisplayView::CViewBase>::Data
++#else
+     CViewBase*      PCurrentView_Data;                       // +0x00 CCountedPointer<NDisplayView::CViewBase>::Data
++#endif
+     CCPPointerInfo* PCurrentView_Info;                       // +0x04 CCountedPointer<NDisplayView::CViewBase>::Info
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CDisplayViewManager) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayViewManager, PCurrentView_Data) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayViewManager, PCurrentView_Info) == 0x4);
++FABLE_STATIC_ASSERT_AT(22, sizeof(CDisplayViewManager) == 0x8);
++FABLE_STATIC_ASSERT_AT(23, offsetof(CDisplayViewManager, PCurrentView_Data) == 0x0);
++FABLE_STATIC_ASSERT_AT(24, offsetof(CDisplayViewManager, PCurrentView_Info) == 0x4);
+ 
+ #endif // FABLE_ENGINE_CDISPLAYVIEWMANAGER_H

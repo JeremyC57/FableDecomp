@@ -1,0 +1,23 @@
+--- a/rebuild/include/engine/CTCBoastingCrowdControl.h
++++ b/rebuild/include/engine/CTCBoastingCrowdControl.h
+@@ -24,7 +24,13 @@
+  virtual void OnSerialise(CPersistContext&,bool);
+  void Startup();
+  void Shutdown();
++#ifdef FABLE_RETAIL_CTCBOASTINGCROWDCONTROL_ISACTIVE_INLINE
++ // Retail opt-in (acctC wfA1, row 0x00682810 CTCCreatureOpinionOfHero::InformOfDeed): FableWin.pdb ?IsActive@CTCBoastingCrowdControl@@QBE_NXZ
++ // is inline in retail (`mov al,[esi+0Ch] ; test al,al`, 0x00683145). Body under the opt-in; the default keeps the declaration.
++ bool IsActive()const{return Active;}
++#else
+  bool IsActive()const;
++#endif
+  void OnHeroApproachPodiumArea();
+  void OnHeroEnterPodiumArea();
+  void OnHeroLeavePodiumArea();
+@@ -43,5 +49,5 @@
+  virtual ~CTCBoastingCrowdControl();
+  CTCBoastingCrowdControl& operator=(const CTCBoastingCrowdControl&);
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCBoastingCrowdControl)==32);
++FABLE_STATIC_ASSERT_AT(46, sizeof(CTCBoastingCrowdControl)==32);
+ #endif

@@ -1,0 +1,21 @@
+--- a/rebuild/include/engine/CDisplayManager.h
++++ b/rebuild/include/engine/CDisplayManager.h
+@@ -61,6 +61,11 @@
+  void ClearRenderTarget(const CRGBColour&,unsigned long);               // 0x009BE420 ?ClearRenderTarget@CDisplayManager@@QAEXABVCRGBColour@@K@Z
+  bool BeginRender();                                                    // 0x009BEF20 ?BeginRender@CDisplayManager@@QAE_NXZ
+  void EndRender();                                                      // 0x009BEF50 ?EndRender@CDisplayManager@@QAEXXZ
++#ifdef FABLE_RETAIL_CDISPLAYMANAGER_SETGAMMA
++ // Opt-in (wfA2, row 0x00435530 CDisplayEngine::DoRender): Ego_r.pdb ?SetGamma@CDisplayManager@@QAEXM_N@Z, out of line in retail at 0x009BEAA0
++ // (DoRender 0x00435F3A: `push 0 ; push gamma ; mov ecx,GPDisplayManager`). Parameter names descriptive. Declaration only.
++ void SetGamma(float gamma, bool flag);                                 // 0x009BEAA0
++#endif
+  bool SwapScreens();                                                    // 0x009BEEB0 ?SwapScreens@CDisplayManager@@QAE_NXZ
+ #ifdef FABLE_RETAIL_CDISPLAYMANAGER_RENDERTARGET
+  // Retail opt-in (wf20 row 0x00F39730 CSurfaceCompositor::StartComposition): Ego_r.pdb / FableWin.pdb
+@@ -163,5 +168,5 @@
+  CArray<CPixelFormat> BackBufferFormats;CArray<ESurfaceMultisampleType> MultisampleTypes;
+  CBusyResourceManager BusyResourceManager;float Gamma;bool m_bWantHiResScreenShot,m_bTakingScreenShot;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CDisplayManager)==0x2cc);
++FABLE_STATIC_ASSERT_AT(166, sizeof(CDisplayManager)==0x2cc);
+ #endif

@@ -1,0 +1,23 @@
+--- a/rebuild/include/engine/CTCShopKeeper.h
++++ b/rebuild/include/engine/CTCShopKeeper.h
+@@ -13,12 +13,20 @@
+ #ifdef FABLE_RETAIL_CTCSHOPKEEPER_SHOP
+ class CTCShop;                                                           // chunk 795
+ #endif
++#ifdef FABLE_RETAIL_CTCSHOPKEEPER_WITNESSEDCRIME
++class COpinionDeed;
++#endif
+ class CTCShopKeeper : public CTCBase {
+ public:
+ #ifdef FABLE_RETAIL_CTCWIFE_MARRY
+     void DetachFromShop();
+ #endif
+     CThingCreatureBase* GetCustomer() const;                             // 0x00798D80
++#ifdef FABLE_RETAIL_CTCSHOPKEEPER_WITNESSEDCRIME
++    // Retail opt-in (acctC wfA1, row 0x00682810 CTCCreatureOpinionOfHero::InformOfDeed): Ego_r.pdb
++    // ?WitnessedCrime@CTCShopKeeper@@QAEXABVCOpinionDeed@@J@Z, out of line in retail at 0x007993F0 (call 0x006829D9). Declaration only.
++    void WitnessedCrime(const COpinionDeed& deed, long handle);          // 0x007993F0
++#endif
+ #ifdef FABLE_RETAIL_CTCSHOPKEEPER_SHOP
+     // Retail opt-in (chunk 795, row 0x0092FAB0): the interface key (TCI_SHOP_KEEPER, the row's inline GetTC key 0x90) and Ego_r.pdb
+     // ?GetShopTC@CTCShopKeeper@@QBEPAVCTCShop@@XZ (0x00798F50, landed) / ?GetHint@CTCShopKeeper@@QAE?AVCCharString@@XZ (0x00798D30: Ego_r

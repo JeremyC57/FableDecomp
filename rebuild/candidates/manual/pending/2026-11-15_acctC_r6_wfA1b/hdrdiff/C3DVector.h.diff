@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/C3DVector.h
++++ b/rebuild/include/engine/C3DVector.h
+@@ -278,6 +278,12 @@
+ #endif
+ #endif
+ #endif
++#ifdef FABLE_RETAIL_C3DVECTOR_SWAPYZ
++    // Retail opt-in (acctC wfA1, row 0x00C271F0): the libpk audio TUs convert engine (Y-up) vectors to CODA axes out of line --
++    // reloc binding ?SwapYZ@C3DVector@@QBE?AV1@XZ at 0x00C1C070 (landed C3DVector_SwapYZ_00c1c070), called by the landed 0x00C1C280 /
++    // 0x00C27550 and row 0x00C271F0 (call 0x00C2744C, hidden-pointer result). Declaration only.
++    C3DVector SwapYZ() const;                                            // 0x00C1C070
++#endif
+ #if defined(FABLE_RETAIL_C3DVECTOR_LIBPK_OUTOFLINE)
+     // Retail opt-in (chunk 1023, row 0x00C1C460, the libpk listener-space update): the audio library's TUs call the vector members
+     // out of line -- FableWin.pdb ?Cross@C3DVector@@QBE?BV1@ABV1@@Z at 0x00C25860 (landed), the dot product 0x00C256A0 (landed
