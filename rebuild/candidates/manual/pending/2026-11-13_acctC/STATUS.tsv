@@ -41,7 +41,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00cf68c0	MATCHED_STAGED	8070	2026-11-15_acctC_r6_wfE1b	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::Main
 00507c30	MATCHED_STAGED	7661	2026-11-15_acctC_r5_wfE10	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CWorldMap::CWorldMap::LoadFromFile
 00db97a0	MATCHED_STAGED	7013	2026-11-15_acctC_wfE1	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	parked	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::Main
-00d13580	PARKED		2026-11-15_acctC_wfE1/open	after workflow unworked/Opus round 3: near_miss DIFFER(6892v6917); Unchanged at 10 hunks; best source is still differ/00d13580.cpp with /d2inlT76. Retail reloads the string pointer in the non-null arm of com	parked	NScript::CQ_BountyHuntScript::Main
+00d13580	MATCHED_STAGED	6917	2026-11-15_acctC_r6_wfE1g	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	NScript::CQ_BountyHuntScript::Main
 00b03ca0	PARKED		2026-11-15_acctC_wfE8/open	after workflow unworked/Opus round 3: parked DIFFER(6482v6468) /d2inlT1537 /d2inlS15; Re-authored on the matched same-TU sibling CPSCRenderMesh::AddToBoundingSphere 0x00B01900 (wfD6): same preamble, class model and flags, writ	parked	NParticleEngine::CPSCRenderMesh::PreparePrimitives
 00df6010	MATCHED_STAGED	6493	2026-11-15_acctC_r6_wfE1	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	NScript::CQ_TraderConflictEvilScript::Main
 00dcfa60	MATCHED_STAGED	2412	2026-11-15_acctC_wfD3b	parked-rows pass: match / PASS, coordinator-verified, rule-audited	parked	NScript::CQ_OrchardFarmRaidScript::DoCutsceneIfRequired
@@ -154,7 +154,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 0074e860	MATCHED_STAGED	1005	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCContainerRewardHero::GetRewardItems
 0072cf40	MATCHED_STAGED	564	2026-11-13_acctC_c25a	C25: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCSpecialAbilities::UseSpecialAbility
 00735fd0	MATCHED_STAGED	973	2026-11-14_acctC_wfB5	workflow parked/Fable: match / PASS, verifier + coordinator-verified	never_worked	CTCCombat::AttemptToStartParticle
-007e15c0	PARKED	963	2026-11-14_acctC_wfB5/open	after workflow parked/Fable; C30 -> C37: DIFFER(967v963) (alt 963v963, 15 hunks); one dead byte store (alias analysis) + x87 order	never_worked	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0
+007e15c0	MATCHED_STAGED	963	2026-11-15_acctC_r6_wfB5g	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	never_worked	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0
 006823d0	MATCHED_STAGED	962	2026-11-14_acctC_wfB5	workflow parked/Fable: match / PASS, verifier + coordinator-verified	never_worked	CTCCreatureOpinionOfHero::FrameUpdate
 005379f5	MATCHED_STAGED	2102	2026-11-14_acctC_wfB6	workflow parked/Fable match + fix-up of callee texts; coordinator-verified	parked	NUISystem::CList::ComputeChildrenVisibility
 00945060	MATCHED_STAGED	936	2026-11-13_acctC_c29a	C29: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CAIStateGroup_WorkHammerAnvil::?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ
