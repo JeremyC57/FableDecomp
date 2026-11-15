@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00aeaa00	?GetOneOverTickRate@NParticleEngine@@YIMXZ	FableWin.pdb + Ego_r.pdb name sets (next to ?GetTickRate@NParticleEngine@@YIJXZ 0x00AEA9F0); reloc_bindings binds it once	?GetParticleUpdatePeriod@@YAMXZ (0x00AF85E0), ?GetParticleFrameTime_00aeaa00@@YAMXZ (0x00B1B030), ?GetParticleFrameTime@@YAMXZ (0x00B16D50); draft label GetMaxDrawDistance
+00aeaaa0	?GetGraphicBank@NParticleEngine@@YIABVCGraphicDataBank@@XZ	FableWin.pdb + Ego_r.pdb; reloc_bindings (0x00AFCC30)	GFGetPreMainMemoryUsed (hand724 decal PreparePrimitives draft label)
+0129BA3C	?DELTA_NOTIONAL_ZERO@@3MB	reloc_bindings.tsv + Ego_r public + 213 landed rows; ghidra_out/labels_landing_2026-11-11cl.tsv labels it ?g_NormaliseEpsilon@@3MB (vland RELOC_NAME warn)	g_NormaliseEpsilon (label file only)
