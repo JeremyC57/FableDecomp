@@ -20,3 +20,9 @@ unwind-map entry -> FuncInfo -> handler thunk -> the prologue that pushes it). I
 the pass-22 return and its in-house follow-ups in `lessons/codex/`, and the landings through 2026-11-15 in `lessons/landings/`.
 `README_CODEX.md` "Since pass 22" turns the pass-22 landing problems into hard rules: self-contained tests (no test_include/), every
 needed header change in hdr/, checked assert pins, `// Retail-asm:` lines with a `0x` address and an instruction, mangled Leaf lines.
+
+## 2026-11-15: worked in house
+The owner could not run Codex on this package ("i dont have that exe so you will have to continue forward. try hand authoring
+as well as your usual tools"). The reservation stays in force, now for in-house agents: w23T (the 11 test ports), w23F (the 49
+EH funclets) and w23P1 / w23P2 (20 parked rows each, hand-authored). Matches land as ordinary batches; rows still open at the
+end are released.
