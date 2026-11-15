@@ -55,3 +55,71 @@ READMEs written before 2026-11-14 that call such a construct "not landable" shou
 extra rules (docs/pipeline/ASM_RULES.md: only where retail used asm; an intrinsic, else a shared-header macro kernel with a
 `FABLE_PORTABLE` twin and a dual-path test; never in a row source) and the same three questions apply to it. Stand-in callee
 bodies, diagnostic builds and local class models where a shared header exists fail the test.
+
+## LANDING GUIDE for the main-branch account (acctC coordinator, 2026-11-15)
+
+**What is ready.** `STATUS.tsv` in this folder is the ledger (address, state, true_length, staged_in, note). Every row with
+state `MATCHED_STAGED` (103 reserved rows + the bonus support row 0x00B9E5B0 on 2026-11-15) is in the folder named in its
+`staged_in` column, under `rebuild/candidates/manual/pending/`. Each such folder holds `src/<addr>.cpp`, `test/<addr>.cpp`,
+`payload.json` (addmatch format, only the verified rows), `hdrdiff/` (the header changes those rows need, as diffs against
+rebuild/include or `NEW_<file>` for new headers), `coordverify.log` (my read-only vland output), `HDR_README.md` (the
+batch's overlay opt-in list with evidence), `NAME_FIXES.tsv` / `LABELS.tsv` where present, and a `README.md` with the
+review items of each row. Every staged row was byte-verified twice (author + my own read-only strict-header vland) and
+rule-audited by an independent agent.
+
+**What is NOT ready.** Folders whose README says "RULE AUDIT PENDING" (the `2026-11-15_acctC_wf*p` folders: 12 rows that
+byte-match with tests passing, not yet audited) and anything under an `open/`, `*open` or `differ` folder (unmatched
+drafts). Earlier audits rejected about one fresh match in five for rule problems (local class models, stand-in callee
+bodies), so wait until the pending line is replaced. Those rows are not `MATCHED_STAGED` in the ledger.
+
+**This lane never ran `--land`.** Your `verify_and_land.py` run is the real gate. My check was
+`lane/coordverify.sh <agent-dir> <stage-dir> <addr8>...` = vland read-only with `LANDVERIFY_STRICT_HEADERS=1` and a minimal
+overlay made of exactly the headers in `hdrdiff/`.
+
+**Things to get right when landing**
+1. MERGE the header diffs, do not replace files folder by folder. Many batches add opt-ins to the same shared headers
+   (fable_containers.h appears in 47 hand-back folders, C3DVector.h in 23, CVectorMap.h 14, CIVCountedPointer.h 13,
+   CMatrix3x4.h 13, CWorld.h 12, ...). Every change is an additive `FABLE_RETAIL_*` opt-in with the default text untouched;
+   moved asserts are pinned (`FABLE_STATIC_ASSERT_AT`). Later folders' diffs were taken against the repo at that time, so the
+   same opt-in can appear in several folders: take the union. `HDR_README.md` in each folder lists each opt-in with evidence.
+2. `fable_assert.h` is NOT in the repo (10 folders carry it as `NEW_fable_assert.h`; all copies are agentC6's header, and
+   wfC1's copy adds one macro, `FABLE_RETAIL_ASSERT_ARM`). It must land with the rows that use dead release asserts
+   (0x00CBFB7D, 0x00E50FD0, 0x00E3BB70, 0x00BBAC60, 0x00B5CA70 and others: grep `FABLE_RETAIL_ASSERT` in the sources).
+3. Rows with companion headers: 0x0121F86F needs 126 `engine/CAIStateGroup_*.h` overlay headers (one shared opt-in
+   `FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC`); 0x0044C72B needs 69 `FABLE_RETAIL_<CLASS>_ALLOC` opt-ins; 0x00B1C880 /
+   0x00B1F200 / 0x00B1E380 need the new `engine/CPSCDecalRenderer.h`; 0x00678760 needs new `engine/CReactionMatch*.h`.
+4. 0x00CBFB7D RunCutsceneMacro: with a separate overlay DIRECTORY the repo's `fable_definition_table.h` includes the repo's
+   old `fable_string.h` (MSVC searches the including file's folder first) and the row fails with C2011. Once the
+   fable_string.h opt-ins are merged into rebuild/include this cannot happen (see `2026-11-14_acctC_wfC1/README.md`).
+5. Rows with per-row flags carry them in `payload.json` and on a `// Flags:` line (e.g. /Gr, /GS, /EHsc /MD, `/d2inlT<N>`).
+   Inline controls (`/d2inl*`, scoped `#pragma inline_depth`) are marked with an `// Inline-budget:` line (owner decision
+   2026-11-08).
+6. Same-TU callee bodies defined in a row source also emit that callee's symbol in the row object (e.g. 0x00772BB0 defines
+   CMatrix3x4::Set 0x007767A0; 0x007EA580 defines 0x007EA2D0 / 0x007EA2F0 / 0x007EA490): mind duplicate definitions at link.
+7. Re-cuts: `RECUTS.md` in this folder (0x00564D50 re-cut with a boundary start and a BOUNDS_FIX row; 0x00537E70 is a
+   fragment of 0x005379F5). Catalog lengths were wrong for several rows; `true_length` in STATUS.tsv is the proven extent.
+8. Fixes to ALREADY-LANDED rows that my rows prove (details in the folders' `NAME_FIXES.tsv` / READMEs):
+   - `CRenderStateManager::D3DAlphaFuncModeTable` base is 0x01396DD8; landed 0x00BBC460 binds 0x01396DE8 (an element
+     address) and causes RELOC_CONFLICT warnings on 0x00B555A0, 0x00A059E0, 0x00BC04F0 (and pending 0x00BA6240, 0x00B8B780).
+   - Landed 0x0052E470 / 0x0052E4D0 are `NUISystem::CUIScreenUnitConverter::ConvertX` / `ConvertY` (static __fastcall), not
+     Physics_ScaleFloatByGameSpeed / LengthScaleConversion; their globals are that class's static members.
+   - Landed 0x00535CD0 `C2DBoxF::ContainsPoint` returns `bool` (both PDBs), not long (same bytes).
+   - 0x0129BA3C is `?DELTA_NOTIONAL_ZERO@@3MB` (a label set says g_NormaliseEpsilon).
+   - 0x01436E80 = GPPrimitiveRenderer, 0x01436E78 = GPPrimitiveRendererSharedData.
+   - Twin 0x00651B04 (staged in `2026-11-13_acctC_c2a`) should be respelt with `long HUDRingAlpha` to agree with 0x00652FA4.
+   - RELOC_CONFLICT on `_$E2` (0x01221D20, 0x0121F86F) is a per-TU compiler-local name: benign.
+   - 0x004A0D90: vector<char>(unsigned) binds 0x00410F30 here and 0x00411910 in landed 0x009EC890 (byte-identical COMDATs):
+     the lander decides the binding.
+9. Tool gap: the strict-header regex in `verify_and_land.py` (`class Name {`) misses local classes with a base clause or a
+   renamed pad struct; the auditors checked those by hand. The landed `CTCBase::RegisterTCs` 0x004EE23F would itself fail
+   strict mode (75 local classes that have engine headers).
+10. Behaviour tests are standalone models of each function's logic (the lane convention); they do not link the row source.
+
+**Owner review items (landing need not wait, but a rejected item means the row comes back out).** Every README lists its
+rows' FITTED spellings and devices; the heaviest are: 0x00CBFB7D (36 dead asserts with invented conditions + a dead assert
+arm inside the shared-header StartsWith opt-in), 0x00D0A830 (nested `do { } while (0)` wrappers and `goto Terminate`),
+0x00E50FD0 / 0x00E3BB70 (8 identical dead asserts each), 0x00652FA4 (fitted `CIntelligentPointer::operator->` opt-in),
+0x005FF190 (four no-byte loop guards + a force-inline map destructor opt-in), the `/d2inlT<N>` rows, the new asm kernels
+`GF_SSE_MATRIX_ALIGNED_TRANSFORM_TRANSPOSED_ASSUME_W` and `LIBPK_MMX_COPY64` (0x00A5CB90, shared-header kernels with
+FABLE_PORTABLE twins), and FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT_SCALE_SQUARED. The owner's acceptance test is in the
+section above.
