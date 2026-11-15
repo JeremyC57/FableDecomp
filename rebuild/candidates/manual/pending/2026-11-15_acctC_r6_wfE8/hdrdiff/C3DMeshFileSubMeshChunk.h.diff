@@ -1,0 +1,46 @@
+--- a/rebuild/include/engine/C3DMeshFileSubMeshChunk.h
++++ b/rebuild/include/engine/C3DMeshFileSubMeshChunk.h
+@@ -16,6 +16,13 @@
+     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
+     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
+     virtual CChunkedFileChunk* CreateNewInstance() const;
++#ifdef FABLE_RETAIL_C3DMESHFILESUBMESHCHUNK_FINDBONE
++    // Retail opt-in (chunk 857, row 0x00A8B990 C3DMesh2::InitialiseBones): FableWin.pdb ?FindFirstBone@C3DMeshFileSubMeshChunk@@QBE?AV?$
++    // CCountedPointer@$$CBVC3DMeshFileBoneChunk@@@@XZ and ?FindNextBone@..@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileBoneChunk@@@@ABV2@@Z,
++    // the landed const pair 0x00ABA6A0 / 0x00ABA730 (calls at 0x00A8B9BC / 0x00A8BB63 with the hidden result slot pushed).
++    CCountedPointer<const class C3DMeshFileBoneChunk> FindFirstBone() const;                                                    // 0x00ABA6A0
++    CCountedPointer<const class C3DMeshFileBoneChunk> FindNextBone(const CCountedPointer<const class C3DMeshFileBoneChunk>&) const;  // 0x00ABA730
++#endif
+ private:
+     CCharString Name;
+     long SubMeshIndex;
+@@ -23,7 +30,7 @@
+     long FirstChildIndex;
+     long NextSiblingIndex;
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileSubMeshChunk) == 0x40);
++FABLE_STATIC_ASSERT_AT(26, sizeof(C3DMeshFileSubMeshChunk) == 0x40);
+ #endif // FABLE_ENGINE_C3DMESHFILESUBMESHCHUNK_H
+ #else
+ #ifndef FABLE_ENGINE_C3DMESHFILESUBMESHCHUNK_H
+@@ -56,13 +63,13 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileSubMeshChunk) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, Name_PStringData) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, SubMeshIndex) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, ParentIndex) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, FirstChildIndex) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, NextSiblingIndex) == 0x3c);
++FABLE_STATIC_ASSERT_AT(59, sizeof(C3DMeshFileSubMeshChunk) == 0x40);
++FABLE_STATIC_ASSERT_AT(60, offsetof(C3DMeshFileSubMeshChunk, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(61, offsetof(C3DMeshFileSubMeshChunk, Name_PStringData) == 0x2c);
++FABLE_STATIC_ASSERT_AT(62, offsetof(C3DMeshFileSubMeshChunk, SubMeshIndex) == 0x30);
++FABLE_STATIC_ASSERT_AT(63, offsetof(C3DMeshFileSubMeshChunk, ParentIndex) == 0x34);
++FABLE_STATIC_ASSERT_AT(64, offsetof(C3DMeshFileSubMeshChunk, FirstChildIndex) == 0x38);
++FABLE_STATIC_ASSERT_AT(65, offsetof(C3DMeshFileSubMeshChunk, NextSiblingIndex) == 0x3c);
+ 
+ #endif // FABLE_ENGINE_C3DMESHFILESUBMESHCHUNK_H
+ #endif // FABLE_RETAIL_C3DMESHFILESUBMESHCHUNK

@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/NProgressDisplay.h
++++ b/rebuild/include/engine/NProgressDisplay.h
+@@ -8,6 +8,11 @@
+ class CCharString;
+ namespace NProgressDisplay {
+ void FABLE_FASTCALL DisplayProgress(const CCharString& text, float progress, bool flag1, bool flag2);   // 0x009E9F40
++#ifdef FABLE_RETAIL_NPROGRESSDISPLAY_STOPPROGRESS
++// Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb / FableWin.pdb ?StopProgress@NProgressDisplay@@YIX_N0@Z (__fastcall, 0x009E9F20,
++// called at 0x004A507F). Declaration only.
++void FABLE_FASTCALL StopProgress(bool b1, bool b2);                    // 0x009E9F20
++#endif // FABLE_RETAIL_NPROGRESSDISPLAY_STOPPROGRESS
+ #ifdef FABLE_RETAIL_NPROGRESSDISPLAY_STARTPROGRESS
+ // Opt-in (chunk 2052, row 0x004A21F0): Ego_r.pdb / FableWin.pdb ?StartProgress@NProgressDisplay@@YIX_N00000@Z (__fastcall: the first two
+ // bools in cl / dl, four pushed), out of line at 0x009E9EF0. Declaration only.

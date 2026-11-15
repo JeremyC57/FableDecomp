@@ -1,0 +1,34 @@
+--- a/rebuild/include/engine/CFadeInFadeOutBase.h
++++ b/rebuild/include/engine/CFadeInFadeOutBase.h
+@@ -49,17 +49,22 @@
+     // (0x01A65280), inline in retail (the byte Active +0 tested in place). Member function only: no layout change.
+     bool IsActive() const { return Active; }
+ #endif
++#ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_ISCLOSING
++    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?IsClosing@CFadeInFadeOutBase@@QBE_NXZ, inline in retail (the
++    // byte Closing +0x0C tested in place: `mov al,[esi+0C8h]` on the display engine's ScreenFadeOutInfo +0xBC, 0x004A477E). No layout change.
++    bool IsClosing() const { return Closing; }
++#endif // FABLE_RETAIL_CFADEINFADEOUTBASE_ISCLOSING
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CFadeInFadeOutBase) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, Active) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, FadeInTime) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, FadeOutTime) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, Closing) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, Opening) == 0xd);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, OpenTimer) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, CloseTimer) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, ToColour) == 0x18);
++FABLE_STATIC_ASSERT_AT(55, sizeof(CFadeInFadeOutBase) == 0x1c);
++FABLE_STATIC_ASSERT_AT(56, offsetof(CFadeInFadeOutBase, Active) == 0x0);
++FABLE_STATIC_ASSERT_AT(57, offsetof(CFadeInFadeOutBase, FadeInTime) == 0x4);
++FABLE_STATIC_ASSERT_AT(58, offsetof(CFadeInFadeOutBase, FadeOutTime) == 0x8);
++FABLE_STATIC_ASSERT_AT(59, offsetof(CFadeInFadeOutBase, Closing) == 0xc);
++FABLE_STATIC_ASSERT_AT(60, offsetof(CFadeInFadeOutBase, Opening) == 0xd);
++FABLE_STATIC_ASSERT_AT(61, offsetof(CFadeInFadeOutBase, OpenTimer) == 0x10);
++FABLE_STATIC_ASSERT_AT(62, offsetof(CFadeInFadeOutBase, CloseTimer) == 0x14);
++FABLE_STATIC_ASSERT_AT(63, offsetof(CFadeInFadeOutBase, ToColour) == 0x18);
+ 
+ #endif // FABLE_ENGINE_CFADEINFADEOUTBASE_H

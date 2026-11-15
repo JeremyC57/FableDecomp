@@ -52,7 +52,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00ee57b0	MATCHED_STAGED	4246	2026-11-14_acctC_wfD2	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NScript::CV_TourGuideScript::CTourGuideGuide::Main
 00dc5f80	MATCHED_STAGED	4245	2026-11-14_acctC_wfD2	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main
 00d3d150	MATCHED_STAGED	4252	2026-11-15_acctC_wfD3b	parked-rows pass: match / PASS, coordinator-verified, rule-audited	parked	NScript::CQ_GuildTrainingScript::CAppleGirl::Main
-00a8b990	PARKED		2026-11-15_acctC_wfE8/open	after workflow unworked/Opus round 3: near_miss DIFFER(1608v1624) /Gr; Regraded only, unchanged. Register-allocation residue in the bone loop (retail keeps _M_finish in edi and spills Info to [esp+34h]). About 1	parked	C3DMesh2::InitialiseBones
+00a8b990	MATCHED_STAGED	1624	2026-11-15_acctC_r6_wfE8	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	C3DMesh2::InitialiseBones
 005ff190	MATCHED_STAGED	4176	2026-11-14_acctC_wfB2	workflow parked/Fable: match / PASS, verifier + coordinator-verified	parked	CTCInventoryMap::CreateMapMarkers
 00d75060	MATCHED_STAGED	4044	2026-11-15_acctC_wfD2p	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	NScript::CQ_HangingTreeGoodScript::FinalRound
 00bafa00	MATCHED_STAGED	3946	2026-11-15_acctC_r6_wfE5	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites::RenderClockPrim
@@ -102,7 +102,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b5a3f0	MATCHED_STAGED	2916	2026-11-15_acctC_r5_wfA4b	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEngineScreenEffectColourFilter::ApplyColourFilter
 00bb2540	MATCHED_STAGED	2905	2026-11-15_acctC_r5_wfA4b	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEngineClothRenderer::RenderPolygons
 00be0eb0	MATCHED_STAGED	2889	2026-11-15_acctC_r5_wfA4	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEnginePrimitiveManager2DParticleGroup::RenderSubPrimitive
-00c79fd0	PARKED	2884	2026-11-14_acctC_wfA6open	workflow unworked/Opus: DIFFER(2884v2884): MMX register colouring in 4 cases	parked	_global::Audio_ConvolveFilter_WithGain
+00c79fd0	MATCHED_STAGED	2884	2026-11-15_acctC_r6_wfA6	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	_global::Audio_ConvolveFilter_WithGain
 00ade080	PARKED	2735	2026-11-14_acctC_wfA6open	workflow unworked/Opus: DIFFER(2733v2735): x87 order	parked	C3DBoundingBox::InitialiseFromOBB
 00dadf80	MATCHED_STAGED	2787	2026-11-14_acctC_wfA3	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	parked	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::Main
 00e2f170	MATCHED_STAGED	2781	2026-11-14_acctC_wfA3	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	parked	CV_AmbushScamScript::SpringAmbush
@@ -125,7 +125,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b33b50	MATCHED_STAGED	8858	2026-11-15_acctC_wfE7	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	never_worked	CEnginePrimitiveRenderer::CEnginePrimitiveRenderer
 00f1eed0	PARKED		2026-11-15_acctC_wfE3/open	after workflow unworked/Opus round 3: near_miss DIFFER(9253v9262), /d2inlT54, 134 hunks; Measured this session. Calls (ours v retail): ~vector<CScriptThing> 9 v 15, free 27 v 22, delete 19 v 17. Retail calls ~vector at 5 pads: 0x	never_worked	CQ_ArenaScript::PlayWave
 0044c72b	MATCHED_STAGED	8995	2026-11-15_acctC_wfE11fix	workflow unworked/Opus round 3 match + rule fix-up; verifier + coordinator-verified	never_worked	CGameDefinitionManager::InitAndCompile
-004a3740	PARKED		2026-11-15_acctC_wfE11/open	after workflow unworked/Opus round 3: parked SRC_FAIL(draft); Third session: read the whole function and wrote a full draft of all 9 cases from the disassembly (differ/004a3740.cpp, 653 lines), using th	never_worked	CWorld::UpdateRegionLoad
+004a3740	MATCHED_STAGED	8948	2026-11-15_acctC_r6_wfE11	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	never_worked	CWorld::UpdateRegionLoad
 006f5c10	MATCHED_STAGED	8717	2026-11-15_acctC_wfE11p	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	never_worked	_global::StatRegisterClass
 00b69000	MATCHED_STAGED	8358	2026-11-15_acctC_wfE7	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	never_worked	CEnginePrimitiveManagerParticleSpriteGroup::CEnginePrimitiveManagerParticleSpriteGroup
 00a059e0	MATCHED_STAGED	7958	2026-11-15_acctC_wfE7	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	never_worked	CRenderStateManager::SetDefaultRenderStates

@@ -1,0 +1,3 @@
+00c79fd0 _global ResampleStereoMMX ['/GS']
+addr       parity           behav  name
+00c79fd0   RELOCATION_MATCH PASS   ResampleStereoMMX

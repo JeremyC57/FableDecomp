@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/CTCCreatureNavigation.h
++++ b/rebuild/include/engine/CTCCreatureNavigation.h
+@@ -77,6 +77,12 @@
+     bool IsPosNavLineOfSightToPos(const C3DVector& from, const C3DVector& to) const;                       // 0x006CB610
+ #endif
+ #endif
++#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_NEARBYDIRECTED
++public:
++    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb
++    // ?GetNearbyDirectedPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@M0MAAV2@@Z (0x006CB780, called 0x004A4ED3). Declaration only.
++    bool GetNearbyDirectedPosition(const C3DVector& pos, float radius, const C3DVector& direction, float angle, C3DVector& out) const;   // 0x006CB780
++#endif // FABLE_RETAIL_CTCCREATURENAVIGATION_NEARBYDIRECTED
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCCreatureNavigation)==0x60);
++FABLE_STATIC_ASSERT_AT(81, sizeof(CTCCreatureNavigation)==0x60);
+ #endif

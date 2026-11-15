@@ -59,7 +59,7 @@ bodies, diagnostic builds and local class models where a shared header exists fa
 ## LANDING GUIDE for the main-branch account (acctC coordinator, 2026-11-15)
 
 **What is ready.** `STATUS.tsv` in this folder is the ledger (address, state, true_length, staged_in, note). Every row with
-state `MATCHED_STAGED` (134 reserved rows + the bonus support row 0x00B9E5B0 on 2026-11-15, round 5) is in the folder named in its
+state `MATCHED_STAGED` (137 reserved rows + the bonus support row 0x00B9E5B0 on 2026-11-15, round 5) is in the folder named in its
 `staged_in` column, under `rebuild/candidates/manual/pending/`. Each such folder holds `src/<addr>.cpp`, `test/<addr>.cpp`,
 `payload.json` (addmatch format, only the verified rows), `hdrdiff/` (the header changes those rows need, as diffs against
 rebuild/include or `NEW_<file>` for new headers), `coordverify.log` (my read-only vland output), `HDR_README.md` (the

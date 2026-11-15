@@ -1,0 +1,19 @@
+--- a/rebuild/include/engine/CTCRegionFollower.h
++++ b/rebuild/include/engine/CTCRegionFollower.h
+@@ -16,6 +16,16 @@
+ public:
+     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_REGION_FOLLOWER; }
+     bool IsRegionFollower(const CThing* thing) const;                    // 0x006AEB60
++#ifdef FABLE_RETAIL_CTCREGIONFOLLOWER_REGIONLOAD
++    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?IsCreatureFollowingHeroAcrossRegions@CTCRegionFollower@@QBE_NABVCThingAICreature@@@Z
++    // (0x006AEEA0), ?IsCreatureAllowedInRegionAt@CTCRegionFollower@@QBE_NABVCThingAICreature@@ABVC3DVector@@@Z (0x006AEBF0),
++    // ?RemoveFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z (0x006AEBA0), all called; GetFollowers 0x006AEE40 (landed row's name; in no PDB name set:
++    // signature as CTCFollowed::GetFollowers, FableWin ?GetFollowers@CTCFollowed@@QAEXAAV?$vector@PAVCThing@@...; descriptive). Declarations only.
++    void GetFollowers(std::vector<CThing*>&);                            // 0x006AEE40
++    bool IsCreatureFollowingHeroAcrossRegions(const class CThingAICreature&) const;   // 0x006AEEA0
++    bool IsCreatureAllowedInRegionAt(const class CThingAICreature&, const C3DVector&) const;   // 0x006AEBF0
++    void RemoveFollower(CThing&);                                        // 0x006AEBA0
++#endif // FABLE_RETAIL_CTCREGIONFOLLOWER_REGIONLOAD
+ };
+ #endif
+ #endif // FABLE_ENGINE_CTCREGIONFOLLOWER_H

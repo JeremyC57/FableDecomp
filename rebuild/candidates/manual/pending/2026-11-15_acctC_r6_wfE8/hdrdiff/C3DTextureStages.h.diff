@@ -1,0 +1,21 @@
+--- a/rebuild/include/engine/C3DTextureStages.h
++++ b/rebuild/include/engine/C3DTextureStages.h
+@@ -3,11 +3,17 @@
+ #include "rebuild_abi.h"
+ // Original Ego_r sizeof12, fields0/4/8; native00ba48f0 reads both stage indices.
+ class C3DTextureStages {public:long DiffuseTextureStage,BumpTextureStage;bool UseBlankTextures;
++#ifdef FABLE_RETAIL_C3DTEXTURESTAGES_CTOR
++    // Opt-in (chunk 2060 / agentC13, row 0x00BA5260 RenderMeshPrimitive): FableWin.pdb ??0C3DTextureStages@@QAE@XZ (14 debug
++    // instructions), inline in retail: 0x00BA5564 `or eax,-1 ; mov [ebp-40h],eax ; mov [ebp-3Ch],eax` and 0x00BA558B
++    // `mov byte ptr [ebp-38h],0` (both stage indices -1, no blank textures). No layout change.
++    C3DTextureStages():DiffuseTextureStage(-1),BumpTextureStage(-1),UseBlankTextures(false){}
++#endif
+ #ifdef FABLE_RETAIL_C3DTEXTURESTAGES_EQUALS
+     // Retail opt-in (wf8, row 0x00BA4A40): FableWin.pdb ??8C3DTextureStages@@QBE_NABV0@@Z (inline in retail: the row compares
+     // +0 / +4 as dwords and +8 as a byte, 0x00BA4A6B..0x00BA4A80). No layout change.
+     bool operator==(const C3DTextureStages& other) const { return DiffuseTextureStage==other.DiffuseTextureStage && BumpTextureStage==other.BumpTextureStage && UseBlankTextures==other.UseBlankTextures; }
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DTextureStages)==12);
++FABLE_STATIC_ASSERT_AT(12, sizeof(C3DTextureStages)==12);
+ #endif

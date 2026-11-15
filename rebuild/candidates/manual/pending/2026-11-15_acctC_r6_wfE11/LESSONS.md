@@ -1,0 +1,58 @@
+- wfE11/0x0044C72B: a CCharString argument written as a plain literal (implicit conversion to `const CCharString&`) is built BEFORE the other args are pushed (and reuses the earlier temp slot); an explicit `CCharString("..")` arg is built last, after the pushes. Read the ctor position relative to the pushes.
+- wfE11/0x0044C72B: `SymbolPathList = headers` on a vector without FABLE_RETAIL_STLP_VECTOR_ASSIGN compiles to a 3-dword movsd copy (implicit operator=); retail calls vector::operator= -- define the opt-in.
+- wfE11/0x004736C4: a 463-statement def Transfer matched on the first grade from the acctB outline + the repo's whole-class opt-in (FABLE_RETAIL_<CLASS>_CLASS): check for such an opt-in before writing typed members.
+- wfE11/0x006F5C10: in long registration lists the VC7.1 inline budget runs out mid-function (inline then out-of-line COMDAT calls of the same helpers); the CCountedPointer dtor spelled `{ ReleaseData(); }` (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA, one more inline level) put the transition on retail's block; the default dtor moved it 7 blocks later.
+- wfE11/0x006F5C10: the retail CCreatureActionBase branch needs FABLE_RETAIL_BASE_OBJECT once a class-typed static map<.., CCountedPointer<Self>> is declared in it (else sizeof grows by 4: the generated CBaseObject is not polymorphic).
+- wfE11: an int3-free "extent ends on a non-return instruction" row can be a switch jump table placed after the `ret` in the same COMDAT (0x004A3740: 9 dword targets) -- the extent is right.
+- wfE11/0x004804DE: a 11,203-byte PC UI builder matched by hand-porting the landed same-TU console twin (0x004830A1) and adding the PC-only blocks read from the bytes: first grade was within 6 bytes and all-equal frame-masked. Port the twin first.
+- wfE11/0x004804DE: a C2DVector alone at the frame bottom = a named local in the FUNCTION's outer scope (own packer slot); a call temporary or a block-scoped local shares a slot. A one-swap `lea` vs `fsubp` tie closed with a parenthesised `(a * 0.5f) - b` (PAREN tuple).
+- 0x004A3740: q.py prints only the last 3000 chars of a failing cl run; for a big draft use a helper that prints every error by line (tools/ce.py) and map "not a member" errors to header opt-ins mechanically (tools/optin.py) before hand-fixing.
+- 0x004A3740: the Anniversary 4k PDB (S_REGREL32 under the S_GPROC32 of the same method) gives the original local-variable names of big TLC functions in scope order; a cheap first step before authoring.
+- 0x004A3740: in a very long row the HasTC bitset test switches from inline to the out-of-line CBitset test (0x00410DE0) part-way through: the row's own inline budget, not a different spelling.
+- Strict-header registration rows: the lander's SHARED_HEADER_AVAILABLE check is textual (`class Name {` + engine/Name.h); include the headers and add per-class FABLE_RETAIL_<CLASS>_ALLOC opt-ins (`static class CDefClassBase* FABLE_FASTCALL Alloc();`, elaborated so no include); then verify the object's extern symbol set equals the all-local model, because a class without its own Alloc silently binds the base's (0x0044C72B CThingObjectDef -> CThingBaseDef).
+- wfE11/0x006F5C10: per-block "reload Info after dec [Info] + dead zero stores" on a by-const-ref temporary passed to map::insert closes with FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY: the whole insert_unique -> _M_insert chain must be visible for c2 to see the temporary is not captured (insert_unique alone was not enough).
+- c2 caller-size penalty is pen = floor(floor(sz/2)*(a+g)/9000) once a+g > 9000 (c2.dll 0x10742BA5: sar edx,1; imul; mul 0xE90452D5; shr 13). With the inline tracer (agentC15 tools/inl, fields a/g/sz/pen) a call-v-expand transition one block off is a window of N tuples; a dead release assert (device d) adds a small fixed number of front-end tuples to the caller and closed a 2-sided window (block 21 needs +6, block 44 needs -96 relative to a ~pair(){} probe).
+- Compare call TARGETS per insert block (tools/cmpcalls.py): q.py masked a "~pair called" v "~CCountedPointer called" swap that changed only frame offsets in the grade.
+- wfE11/0x004A3740: an 8.9 KB never-compiled draft went SRC_FAIL -> DIFFER in one session by (1) a ce.py that names the header file of each error and prints template-instantiation "ref" lines, (2) a small addopt.py that inserts opt-in blocks into hdr copies and pins asserts, (3) proving each placeholder from the retail call/inline bytes + PDB name lists (inline byte reads map to FableWin-only accessors; vslot numbers from header slot comments). Most "placeholder" names were wrong (IsInventoryOpen was IsInCutscene, SetRegionLoading was PauseMusic, SetPos was ResetPosition, IsInWorld was GetType()==1).
+- wfE11/0x004A3740: per-case byte budgets (jump-table targets retail v the obj's $L labels) localise a whole-function length gap fast; a global "0 kept in ebx / this in esi" register choice can make every case shorter (push ebx v push 0) -- measure that before chasing per-case residue.
+- (0x004A3740) FableWin.exe.signatures.tsv lists the debug build's COMDATs in emission order: the inline helpers right after a row's body
+  (up to the next function of the TU) are the ones FIRST USED by that row -- a free list of the accessors / helpers the original text
+  called (here GFGet2DDistanceSquared and four CWorld accessors no PDB-derived header had).
+- (0x004A3740) A regime-1 row (8.9 KB) whose late HasTC / IS_THING_ALIVE sites are called out of line while ours expands them: dump
+  a+g per decision (tools/inl/an.py prints ag=); if ours never passes 9000 the shortfall (here ~1600 tuples) is the original's dead
+  release asserts. Compare the row's /Od size with FableWin's (11.9 KB v 23.1 KB here) to confirm debug-only code exists.
+- (0x004A3740) Implicit conversions build their temporaries in a different order from explicit `T(x)` arguments: `StartsWith("Prison")`,
+  `PlayUnattachedCriteria("BIG_DOOR...", pos, ...)`, `GetDef("NAME", &p)` construct the string first (retail), the explicit
+  CCharString(...) argument is built after the other arguments.
+- (0x004A3740) `if (p->PeekTC(id,&tc) && (tc->A() || tc->B())) X else Y` (retail's HasTC jns goes straight to Y) -- a separate
+  PeekTC statement before the || both lengthens the live range and lets c2 tail-merge differently.
+- (0x004A3740) Variables only one retail function references (xref) are file statics in the original TU (`static bool G...`); the
+  Anniversary PDB's S_LDATA32 list gives their names (neighbours in the address order confirm), and `static` changes c2's store scheduling.
+- (0x004A3740 s7) q.py prints relocated operands of OUR object as 0 (`push 0`, `mov ecx,[0]`); a register-normalising diff that
+  masks only 0x.. numbers counts every relocation as a hunk (107 "hunks" were ~50 real). Mask all numbers (tools/md3.py) and list
+  register-only mismatches separately (tools/rg.py): they localise the allocation residue to a few cases.
+- (0x004A3740 s7) `v.push_back(T(p))` pushes the ctor's returned eax; retail re-taking the temporary's address after the ctor
+  (`lea eax,[esp+X]; push eax`) is the IMPLICIT conversion `v.push_back(p)` (a named local moves the frame instead).
+- (0x004A3740 s7) A `CT* p = 0; thing->GetTC(id,&p); p->M()` draft calls M with null when the TC is absent; retail's
+  `test [bits],mask; je <past the call>` is `if (thing->HasTC(id)) ((CT&)thing->GetTC(id)).M()` (or `if (GetTC(id,&p)) p->M()`).
+- (0x004A3740 s7) Dead release asserts placed anywhere before the inline sites they budget are byte-neutral (top / spread over
+  five cases / two blocks gave identical objects; condition phero / this / true identical) -- fit the COUNT, then place them freely.
+- (0x004A3740 s7) An unread entry `$T = 0` store anchors c2's constant-0 split piece: with it, the piece reaches every case head
+  of a big switch until each case redefines the register (ours: `xor ebx,ebx` at entry, 20 `push ebx`); removing the flags word
+  removes the piece. Unsolved why retail's entry piece stays immediates with the same store.
+- (0x004A3740 s8) Frame membership first: map ours' /FAs frame symbols to retail offsets over aligned instructions (fmap.py),
+  then compare SLOT GROUPS (tools/pdiff.py), not offsets. A node with conflicts = all nodes is EXPOSED (own slot): retail's own-slot
+  objects tell you which temporaries are exposed (implicit-conversion args of an out-of-line call) and which are not (temporaries
+  of an inlined callee, e.g. CThing::GetTCOfLeafType<T>, are block-scoped).
+- (0x004A3740 s8) The packer orders nodes by size, then IL weight: a join trace (tools/ph/simt.py m:A,B what-if moves) names the
+  weight a local needs; angle_step needing weight 4 = RotateXY(angle_step) written in three arms that c2 cross-jumps into one.
+- (0x004A3740 s8) `Q::Get().M(<call chain>)` with a singleton/CCountedPointer object makes c2 load the object early and keep it
+  in a callee-saved register across the chain; `const CRegion& r = <chain>; if (Q::Get().M(r))` loads it at the call. That one
+  register web also decided the const-0 piece colouring of the whole 9-case switch (20 push ebx -> 6).
+- (0x004A3740 s8) q.py masks call targets: count relocations per symbol in the object (`objdump -dr | grep DISP32 | sort | uniq -c`)
+  to find a callee called out of line in ours but expanded in retail (CThing::HasTC at one site -> HASTC_FORCEINLINE opt-in).
+- (0x004A3740 s8) Two identical calls in `if (a) f(); else if (b && c) f();` are cross-jumped by c2 into one call with a different
+  argument schedule than the single `if (a || (b && c)) f();` (fixed `push eax` / `mov ecx,ebp` order, 0x004A55A4).
+- (0x004A3740 s8) vland rejects (NOT_GENUINE) any source containing the substring `_emit` -- also inside identifiers such as
+  `ptcd_particle_emitter`; and RELOC_IDENTITY (one symbol bound to two retail addresses) means two retail uses are different
+  template instances (list<CThing*> v list<CThingAICreature*>).

@@ -1,0 +1,25 @@
+--- a/rebuild/include/engine/CTCHeroOpinionDeedLog.h
++++ b/rebuild/include/engine/CTCHeroOpinionDeedLog.h
+@@ -59,9 +59,21 @@
+     virtual bool IsComponentSerialisable() const;  // slot 23, 0x006C8D30
+ public:
+ #endif
++#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_PUTWEAPONAWAY
++public:
++    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?PlayerPutWeaponAway@CTCHeroOpinionDeedLog@@QAEXXZ, inferred for 0x006C6010
++    // (called 0x004A49A4 on TCI_HERO_OPINION_DEED_LOG; body clears the deed handle +0x28 when not -1; the only other QAEXXZ is PlayerTakenOutWeapon).
++    void PlayerPutWeaponAway();                                          // 0x006C6010
++#endif // FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_PUTWEAPONAWAY
++#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_TAKENOUTWEAPON
++public:
++    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?PlayerTakenOutWeapon@CTCHeroOpinionDeedLog@@QAEXXZ, inferred for 0x006C6E20
++    // (called 0x004A54EE when CTCCarrying::IsThingCarryingWeapon(hero); its twin PlayerPutWeaponAway 0x006C6010 is called at region unload).
++    void PlayerTakenOutWeapon();                                         // 0x006C6E20
++#endif // FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_TAKENOUTWEAPON
+ };
+ #ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_COMPLETE
+-FABLE_STATIC_ASSERT(sizeof(CTCHeroOpinionDeedLog)==0x34a8);
++FABLE_STATIC_ASSERT_AT(64, sizeof(CTCHeroOpinionDeedLog)==0x34a8);
+ #endif
+ #endif
+ #endif

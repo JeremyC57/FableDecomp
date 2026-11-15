@@ -1,0 +1,28 @@
+--- a/rebuild/include/engine/CHeroCombatDef.h
++++ b/rebuild/include/engine/CHeroCombatDef.h
+@@ -115,15 +115,20 @@
+     unsigned char _pad_0xf0[0x58];
+ #endif
+ #endif
++#ifdef FABLE_RETAIL_CHEROCOMBATDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CHeroCombatDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CHeroCombatDef)==0x148);
+-FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef,MeleeStrikeNumFramesPauseOnHeroStrike)==0xec);
++FABLE_STATIC_ASSERT_AT(119, sizeof(CHeroCombatDef)==0x148);
++FABLE_STATIC_ASSERT_AT(120, offsetof(CHeroCombatDef,MeleeStrikeNumFramesPauseOnHeroStrike)==0xec);
+ #ifdef FABLE_RETAIL_CHEROCOMBATDEF_HEAVYWEAPONS
+-FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef,HeavyWeapons)==0x13c);
++FABLE_STATIC_ASSERT_AT(122, offsetof(CHeroCombatDef,HeavyWeapons)==0x13c);
+ #endif
+ #ifdef FABLE_RETAIL_CHEROCOMBATDEF_RANGED
+-FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef,RangedAccuracyShakeyCursor)==0x60);
+-FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef,RangedAccuracyShakeFractionOfRadius)==0x74);
++FABLE_STATIC_ASSERT_AT(125, offsetof(CHeroCombatDef,RangedAccuracyShakeyCursor)==0x60);
++FABLE_STATIC_ASSERT_AT(126, offsetof(CHeroCombatDef,RangedAccuracyShakeFractionOfRadius)==0x74);
+ #endif
+ 
+ #endif
