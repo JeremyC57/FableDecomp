@@ -27,7 +27,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00502e90	PARKED		2026-11-15_acctC_wfE10/open	after workflow unworked/Opus round 3: parked DIFFER(13933v13622); Ran the C26 inliner trace (tools/inl.sh). Threshold T=74. The servant site expands with score 29; the apprentice gets the step penalty (scor	parked	CWorldMap::PopulateRegionWithVillagers
 006096e0	MATCHED_STAGED	12832	2026-11-13_acctC_c38a	C38 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; one fitted redundant loop guard (review item)	parked	CTCInventoryMap::ConstructLogbookListPC
 0061e6d0	MATCHED_STAGED	12356	2026-11-13_acctC_c28a	C23 -> C26 -> C28 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; no device	parked	CTCInventoryQuests::ConstructQuestListPC
-00e4b5b0	PARKED		2026-11-15_acctC_wfE3/open	after workflow unworked/Opus round 3: parked DIFFER(10594v10594), 162 hunks (variant differ/00e; New measured lead: a c2 frame-packer replay, tools/ph/ph_host.py (15 s trace) plus sim.py, which reproduces our slot partition exactly. Drop	parked	NScript::CV_BanditTollScript::CTollBandit::Main
+00e4b5b0	MATCHED_STAGED	10594	2026-11-15_acctC_r5_wfE3	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	NScript::CV_BanditTollScript::CTollBandit::Main
 00e3bb70	MATCHED_STAGED	10149	2026-11-15_acctC_wfE3fix	workflow unworked/Opus round 3 match + rule fix-up; verifier + coordinator-verified	parked	NScript::CV_BordelloScript::CMadame::Main
 00e50fd0	MATCHED_STAGED	9885	2026-11-15_acctC_wfE3fix	workflow unworked/Opus round 3 match + rule fix-up; verifier + coordinator-verified	parked	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main
 00d973d0	MATCHED_STAGED	9821	2026-11-15_acctC_wfE2p	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	NScript::CQ_HobbeCaveScript::CBanditSacrifice::Main
@@ -147,7 +147,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 01221d20	MATCHED_STAGED	7990	2026-11-15_acctC_wfE12	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	never_worked	_gapscan::sub_01221d20
 00dfca90	MATCHED_STAGED	373	2026-11-14_acctC_wfA1	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	never_worked	NScript::CQ_TraderConflictGoodScript::CBanditExtra::Main
 0058f9bc	MATCHED_STAGED	2012	2026-11-13_acctC_c24a	C24: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCInventory::OpenPCPhotojournal
-007bfe30	PARKED	1648	2026-11-14_acctC_wfB5/open	after workflow parked/Fable; C24 -> C37: DIFFER(1643v1648); register permutation from the prologue	never_worked	CTCShotDefinitionBase::UpdateCollision
+007bfe30	MATCHED_STAGED	1648	2026-11-15_acctC_r5_wfB5	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	never_worked	CTCShotDefinitionBase::UpdateCollision
 009fde80	PARKED	1265	2026-11-14_acctC_wfB5/open	after workflow parked/Fable; C27 -> C37: DIFFER(1269v1265); register priority header v depth, unchanged	never_worked	CGraphicInfoFrame::CFrameData::BeginLoading
 007c0690	MATCHED_STAGED	1088	2026-11-13_acctC_c25a	C25: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	NThingShot::CTCShotDefinitionBase::Init
 007ef200	MATCHED_STAGED	734	2026-11-13_acctC_c25a	C25: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCCarriedActionUseExpression::CTCCarriedActionUseExpression::vfunc_28

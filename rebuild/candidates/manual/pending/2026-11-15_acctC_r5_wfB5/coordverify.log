@@ -1,0 +1,3 @@
+007bfe30 NThingShot::CTCShotDefinitionBase UpdateCollision None
+addr       parity           behav  name
+007bfe30   RELOCATION_MATCH PASS   UpdateCollision

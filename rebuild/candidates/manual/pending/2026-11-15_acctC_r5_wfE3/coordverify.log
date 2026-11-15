@@ -1,0 +1,4 @@
+00e4b5b0 NScript::CV_BanditTollScript::CTollBandit Main None
+addr       parity           behav  name
+00e4b5b0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e4b5b0   RELOCATION_MATCH PASS   Main
