@@ -1,0 +1,5 @@
+# Required same-header size TU
+
+The selected target object is speed optimized. It retains an ordinary248-byte COMDAT for CPersistContext::Transfer<C3DVector>; that copy does not match native004859AD. Compile selected_vector_diagnostic/selected_vector.cpp against the selected row headers with /O2 /Os /Oy- /W3 and link that object before the target. Its genuine explicit instantiation supplies the native153-byte transfer and34-byte vector input. No source specialization or alias is used.
+
+Main independently rebuilt both objects and linked both orders in review/main_00b1a870/link_selection/PROOF.json. Size-first selects all15 target/reachable helper bodies exactly; speed-first selects the rejected248-byte transfer. The diagnostic DLLs deliberately leave external game boundaries unresolved solely to inspect normal COMDAT selection; they were not executed. The26880-case whole-row test is separate. Both source objects and this integration requirement must accompany handoff; neither helper adds assigned-row progress. Return source/build instructions, never diagnostic binaries or retail bytes.

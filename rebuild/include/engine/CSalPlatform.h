@@ -10,7 +10,19 @@ extern "C" __declspec(dllimport) int FABLE_STDCALL QueryPerformanceCounter(_LARG
 #else
 extern "C" int FABLE_STDCALL QueryPerformanceCounter(_LARGE_INTEGER*);
 #endif
+#ifdef FABLE_RETAIL_PASS22_CCODA3D_CREATE
+class CCodaSource;class CSalVoice;
+#endif
 class CSalContext:public CCodaObjectBase {
+#ifdef FABLE_RETAIL_PASS22_CCODA3D_CREATE
+public: int AllocateSw3DVoice(const CCodaSource*,CSalVoice**);
+#endif
+#ifdef FABLE_RETAIL_PASS22_CCODACONTEXT_CREATE
+public: static int Create(const CRESOURCEDESC*,const CPLATFORMDESC*,CSalPlatform**);
+#endif
+#ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
+public: unsigned int GetUpdate()const{return m_ffUpdate;}
+#endif
 private:
  CCodaObjectList m_Hw2DVoices;
  CCodaObjectList m_Hw3DVoices;
@@ -51,4 +63,7 @@ private:
  unsigned int m_nHwVoicesPlaying;
  CSalHw *m_pHw;
 };
+#ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
+extern CSalPlatform* g_pSal;
+#endif
 #endif

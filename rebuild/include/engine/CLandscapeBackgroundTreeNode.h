@@ -11,9 +11,59 @@
 class CEngineLandscapeMap;
 class CLandscapeBackgroundDynamicBuildTemplate;
 struct CLandscapeBackgroundLoadTask;
+#ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_TREE_NODE_PASS22
+class CLandscapeBackgroundSubNodeBase;
+#else
 struct CLandscapeBackgroundSubNodeBase;
+#endif
 struct CLandscapeGPUUpdateTask;
 
+#ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_TREE_NODE_PASS22
+#include "engine/CEngineLandscapeFreeableResource.h"
+#include "engine/CLandscapeBackgroundPatch.h"
+#include "engine/C3DBoundingBox.h"
+#include "engine/C3DBoundingSphere.h"
+class CLandscapeBackgroundTreeNode : public CEngineLandscapeFreeableResource {
+public:
+    struct CLODLoadInfo {
+        long FileBlockPos;
+        long FileBlockSize;
+        long OffsetIntoFileBlock;
+        unsigned char OptimizedBandRemap;
+    };
+    CLandscapeBackgroundPatch* GetPatch() {
+        return SubNode && SubNode->IsPatch() ? static_cast<CLandscapeBackgroundPatch*>(SubNode) : 0;
+    }
+private:
+    void CalculateCameraUpdateThreshold(long current_lod);
+    CLODLoadInfo& GetLodBandInfo(long band) { return LODLoadInfo[band]; }
+public:
+    const CLandscapeBackgroundDynamicBuildTemplate* DynamicBuildTemplate;
+    CLandscapeGPUUpdateTask* GPUUpdateTask;
+    CLODLoadInfo LODLoadInfo[8];
+    long FileBlockPos;
+    long FileBlockSize;
+    long OffsetIntoFileBlock;
+    CLandscapeBackgroundLoadTask* AsyncLoadTask;
+    CLandscapeBackgroundTreeNode* Parent;
+    CLandscapeBackgroundSubNodeBase* SubNode;
+    CEngineLandscapeMap* Map;
+    C3DBoundingBox BoundingBox;
+    C3DBoundingSphere CameraUpdateThreshold;
+    long OcclusionTestHandle;
+    long CreationFlags;
+    unsigned short MapX,MapY,Width,Height;
+    unsigned char FirstBand,FirstNonSplitBand,LastBand;
+    bool TesselationValid,VisibleLastFrame,VisibleLastFrameHasBeenUpdated,HasSubPatchLoadInfo;
+};
+FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundTreeNode::CLODLoadInfo) == 16);
+FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundTreeNode) == 0xE8);
+FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, LODLoadInfo) == 0xC);
+FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, SubNode) == 0xA0);
+FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, BoundingBox) == 0xA8);
+FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, CameraUpdateThreshold) == 0xC0);
+FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, FirstNonSplitBand) == 0xE1);
+#else
 #pragma pack(push, 1)
 class CLandscapeBackgroundTreeNode {
 public:
@@ -49,32 +99,33 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundTreeNode) == 0xf0);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, DynamicBuildTemplate) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, GPUUpdateTask) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, LODLoadInfo) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, FileBlockPos) == 0x94);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, FileBlockSize) == 0x98);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, OffsetIntoFileBlock) == 0x9c);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, AsyncLoadTask) == 0xa0);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, Parent) == 0xa4);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, SubNode) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, Map) == 0xac);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, BoundingBox) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, CameraUpdateThreshold) == 0xc8);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, OcclusionTestHandle) == 0xd8);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, CreationFlags) == 0xdc);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, MapX) == 0xe0);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, MapY) == 0xe2);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, Width) == 0xe4);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, Height) == 0xe6);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, FirstBand) == 0xe8);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, FirstNonSplitBand) == 0xe9);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, LastBand) == 0xea);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, TesselationValid) == 0xeb);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, VisibleLastFrame) == 0xec);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, VisibleLastFrameHasBeenUpdated) == 0xed);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, HasSubPatchLoadInfo) == 0xee);
+FABLE_STATIC_ASSERT_AT(52, sizeof(CLandscapeBackgroundTreeNode) == 0xf0);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CLandscapeBackgroundTreeNode, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CLandscapeBackgroundTreeNode, DynamicBuildTemplate) == 0xc);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CLandscapeBackgroundTreeNode, GPUUpdateTask) == 0x10);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CLandscapeBackgroundTreeNode, LODLoadInfo) == 0x14);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CLandscapeBackgroundTreeNode, FileBlockPos) == 0x94);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CLandscapeBackgroundTreeNode, FileBlockSize) == 0x98);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CLandscapeBackgroundTreeNode, OffsetIntoFileBlock) == 0x9c);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CLandscapeBackgroundTreeNode, AsyncLoadTask) == 0xa0);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CLandscapeBackgroundTreeNode, Parent) == 0xa4);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CLandscapeBackgroundTreeNode, SubNode) == 0xa8);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CLandscapeBackgroundTreeNode, Map) == 0xac);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CLandscapeBackgroundTreeNode, BoundingBox) == 0xb0);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CLandscapeBackgroundTreeNode, CameraUpdateThreshold) == 0xc8);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CLandscapeBackgroundTreeNode, OcclusionTestHandle) == 0xd8);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CLandscapeBackgroundTreeNode, CreationFlags) == 0xdc);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CLandscapeBackgroundTreeNode, MapX) == 0xe0);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CLandscapeBackgroundTreeNode, MapY) == 0xe2);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CLandscapeBackgroundTreeNode, Width) == 0xe4);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CLandscapeBackgroundTreeNode, Height) == 0xe6);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CLandscapeBackgroundTreeNode, FirstBand) == 0xe8);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CLandscapeBackgroundTreeNode, FirstNonSplitBand) == 0xe9);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CLandscapeBackgroundTreeNode, LastBand) == 0xea);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CLandscapeBackgroundTreeNode, TesselationValid) == 0xeb);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CLandscapeBackgroundTreeNode, VisibleLastFrame) == 0xec);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CLandscapeBackgroundTreeNode, VisibleLastFrameHasBeenUpdated) == 0xed);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CLandscapeBackgroundTreeNode, HasSubPatchLoadInfo) == 0xee);
 
+#endif // FABLE_RETAIL_LANDSCAPE_BACKGROUND_TREE_NODE_PASS22
 #endif // FABLE_ENGINE_CLANDSCAPEBACKGROUNDTREENODE_H

@@ -36,8 +36,18 @@ protected: virtual void MixReverbInput(CSalReverb *,CSalSwBuffer &,unsigned int 
 protected: virtual void MixChannel(CSalSwBuffer &,unsigned int ,unsigned int );
 protected: virtual void StartRunOut(CREFTIME );
 private:
+#ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
+ void CalcParams(const CCodaSource*,CREFTIME);
+ bool CalcMultiFuncEnvelope(const _CMULTIFUNCENVELOPE*,bool);
+ void CalcMultiFuncLFO(const _CMULTIFUNCLFO*);
+#endif
  void UpdateMultiFuncLFO(const _CMULTIFUNCLFO*);
 protected:
+#ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
+ void UpdatePlayBuffer(bool);
+ bool CalcLevelEnvelope(const _CLEVELENVELOPE*,bool);
+ bool IsMultiEnvReleased() const {return (m_ffStatus & 0x4000)!=0;}
+#endif
  _CBUFFERDESC m_BufferDesc;
  float m_fMultiEnvPitch;
  float m_fMultiEnvPitchDelta;

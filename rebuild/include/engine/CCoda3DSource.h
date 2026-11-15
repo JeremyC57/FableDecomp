@@ -6,9 +6,15 @@ class CCodaObjectList;
 // Layout: SDK source256->native252; native final commit word472, complete size476.
 class CCoda3DSource:public CCodaSource {
 public:
+#if defined(FABLE_RETAIL_PASS22_CCODACONTEXT_CREATE) && !defined(FABLE_RETAIL_CCODACONTEXT_CREATE3D)
+ CCoda3DSource();
+#endif
 #ifdef FABLE_RETAIL_CCODACONTEXT_CREATE3D
  // SDK empty derived constructor calls the complete source constructor and installs the derived table.
  CCoda3DSource() {}
+ virtual bool Create(unsigned int);
+#endif
+#if defined(FABLE_RETAIL_PASS22_CCODA3D_CREATE) && !defined(FABLE_RETAIL_CCODACONTEXT_CREATE3D)
  virtual bool Create(unsigned int);
 #endif
  virtual ~CCoda3DSource();

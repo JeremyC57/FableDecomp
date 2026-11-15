@@ -1,0 +1,14 @@
+{
+  "status": "RELOCATION_MATCH",
+  "selected_attempt": "main_01_original_dtor",
+  "baseline": "reference/include",
+  "source": "00ad7260.cpp",
+  "flags": [
+    "/Gr"
+  ],
+  "header_profile": "737e38163a4608b9bf4acac452e50128d5259261512ee134f10afa5ab006b1df",
+  "source_dependencies": [],
+  "test_adapter": null,
+  "source_sha256": "3ef45ebb342eb133b1d85cd6f21c810f9254ccdbd7eaf39ad01ead8017a6d991",
+  "test_sha256": "de739a3f2ae405ada7543e913347f074fe55d9d99da374644661592426b491bf"
+}

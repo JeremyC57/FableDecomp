@@ -1,0 +1,14 @@
+{
+  "status": "RELOCATION_MATCH",
+  "selected_attempt": "main_01b_calling_convention_macro",
+  "baseline": "reference/include",
+  "source": "005f8e6d.cpp",
+  "flags": [
+    "/Gr"
+  ],
+  "header_profile": "2cf695f6219e96ea362faaada66689e299e218e8d821d3c298045b9bb67e9ebc",
+  "source_dependencies": [],
+  "test_adapter": null,
+  "source_sha256": "a44639e44579daf1c4dd06703baa386af805dde996bd556fc3978c7e11517906",
+  "test_sha256": "9304ec5c6dc806e670a1d26f7e7e9802b43a4e96dcbd706ba6216c9e3dff31d6"
+}

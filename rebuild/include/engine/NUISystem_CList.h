@@ -94,7 +94,13 @@ protected: std::vector<bool,std::allocator<bool> > ScrollingChildrenVisibility;
 // NUISystem::CList::GPreviousSelected and FableWin.pdb the accessor ?GetPreviousSelected@CList@NUISystem@@SIAAV?$list@PAVCList@NUISystem@@...
 // (the type); ChangeState 0x0053A0A1 walks it, reads its front and calls push_front 0x0053CA3C. Access is unproven
 // (the landed 0x005E41E0 clears it from outside the class), hence public.
+#ifdef FABLE_RETAIL_PASS22_SLIDER_PROCESS_EVENT
+// Both raw PDBs: protected static storage and public original fastcall reference getter.
+protected: static std::list<NUISystem::CList *,std::allocator<NUISystem::CList *> > GPreviousSelected;
+public: static std::list<NUISystem::CList *,std::allocator<NUISystem::CList *> >& FABLE_FASTCALL GetPreviousSelected(){return GPreviousSelected;}
+#else
 public: static std::list<NUISystem::CList *,std::allocator<NUISystem::CList *> > GPreviousSelected;
+#endif
 #ifdef FABLE_RETAIL_CLIST_CLEARPREVIOUSSELECTED
 // Opt-in (agentFAM07): FableWin.pdb ?ClearPreviousSelected@CList@NUISystem@@SIXXZ (public static __fastcall), retail 0x0048573D
 // (`mov ecx, offset GPreviousSelected ; jmp _List_base::clear`, called by CTCQuestCompletionUI::GlobalUpdate 0x005E78F0).
@@ -115,8 +121,8 @@ protected: unsigned char PDefAlphaOffset;
 };
 }
 #ifdef FABLE_RETAIL_CLIST
-FABLE_STATIC_ASSERT(sizeof(NUISystem::CList)==0x1fc);
+FABLE_STATIC_ASSERT_AT(118, sizeof(NUISystem::CList)==0x1fc);
 #else
-FABLE_STATIC_ASSERT(sizeof(NUISystem::CList)==0x200);
+FABLE_STATIC_ASSERT_AT(120, sizeof(NUISystem::CList)==0x200);
 #endif
 #endif

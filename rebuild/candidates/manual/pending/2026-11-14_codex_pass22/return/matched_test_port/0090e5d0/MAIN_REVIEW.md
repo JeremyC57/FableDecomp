@@ -1,0 +1,3 @@
+# Independent main review
+
+1367 target bytes;four called helpers341 bytes;100 relocations;4352 complete target and3300 bounds scenarios. Fresh main RTM13.10.3077 masked-byte comparison and complete VC71 /Od /W3 /GR- plus g++64 C++03 tests passed. Names, source/fixture, extents and helper closure reviewed. Combined53-row/167-header regression preserves all emitted C++ code and relocation names. Corrected worker omission: SheatheWeapons header already existed. Default declarations restored; three original virtual declarations are opt-in. Expanded47-profile preservation audit passed; worker45-profile report retained as superseded receipt. No helpers counted as additional reserved rows.

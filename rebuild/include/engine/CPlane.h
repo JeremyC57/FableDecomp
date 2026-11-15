@@ -6,6 +6,11 @@
 #include "engine/C3DVector.h"
 class CPlane {
 public:
+#ifdef FABLE_RETAIL_CPLANE_THREEPOINT_CONSTRUCTOR_PASS22
+    // Original default and three-point constructors; donor02d78d90 forwards to Initialise.
+    CPlane() { }
+    CPlane(const C3DVector& a,const C3DVector& b,const C3DVector& c) { Initialise(a,b,c); }
+#endif
     C3DVector Normal;       // +0x00
     float Distance;         // +0x0C
 #ifdef FABLE_RETAIL_CPLANE_NORMAL_DISTANCE
@@ -30,5 +35,5 @@ public:
     const C3DVector& GetNormal() const { return Normal; }
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CPlane) == 0x10);
+FABLE_STATIC_ASSERT_AT(33, sizeof(CPlane) == 0x10);
 #endif

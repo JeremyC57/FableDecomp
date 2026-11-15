@@ -229,6 +229,30 @@ template<class T> bool CDefinitionManager::GetDef(const CCharString& type_name, 
 #pragma auto_inline(on)
 #endif
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_PASS22_GETDEF_INDEX_BODY
+// Retail opt-in (Codex pass 22, 0x006B16B0): the genuine called GetDef<CSoundThemeDef> 0x006B25E0
+// uses SetDynamicCast with a reread of the source after releasing the old output. Its 113-byte body is
+// independently verified from this TU; the older assignment-body opt-in is kept unchanged.
+#if defined(_MSC_VER)
+#pragma auto_inline(off)
+template<class T> __declspec(noinline) bool CDefinitionManager::GetDef(const CCharString& type_name, long index, CDefPointer<const T>* out) const
+#else
+template<class T> bool CDefinitionManager::GetDef(const CCharString& type_name, long index, CDefPointer<const T>* out) const
+#endif
+{
+    if (index <= 0)
+        return false;
+    CDefPointer<const CDefClassBase> def = GetPDefFromClassIndex(type_name, index);
+    if (!def.IsNull()) {
+        out->SetDynamicCast(def);
+        return true;
+    }
+    return false;
+}
+#if defined(_MSC_VER)
+#pragma auto_inline(on)
+#endif
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_INLINE
 // Opt-in (chunk 2055, row 0x00821A80 CMap::LoadFromFile): the by-name lookup
 // ??$GetDef@V..@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBV..@@@@@Z EXPANDED in the caller (retail calls

@@ -1,0 +1,2 @@
+assigned_start	assigned_end_exclusive	corrected_start	corrected_end_exclusive	corrected_extent	parent_landed	parent_name	status
+005eaf46	005eb076	005eaf30	005eb076	326	yes	CTCTavernGame::SetStateAfterYesNo	EXTENT_WRONG

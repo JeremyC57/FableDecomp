@@ -8,5 +8,9 @@
 class CExceptionBase {
 public:
     CExceptionBase() { }
+#ifdef FABLE_RETAIL_CWAVELOADER_PASS22_EXCEPTIONS
+    // Both original PDBs prove const-char constructor; four native wave throws have no message-side effect in retail.
+    CExceptionBase(const char*) { }
+#endif
 };
 #endif

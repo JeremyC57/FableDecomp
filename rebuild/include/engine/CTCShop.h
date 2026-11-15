@@ -30,6 +30,14 @@ public:
 #ifdef FABLE_RETAIL_CTCSHOP_CALC_STALL
     bool CalcIsStallLike();
 #endif
+#ifdef FABLE_RETAIL_CTCSHOP_STOCKSTATE
+    // Retail opt-in (Codex pass22,row00927F30): both original PUBLIC/class records.
+    void SetStockState(ESTOCK_STATE);
+#endif
+#ifdef FABLE_RETAIL_CTCSHOP_BUYITEM
+    // Retail opt-in (Codex pass22): original BuyItem name in both PDBs, native00774d20.
+    void BuyItem(long);
+#endif
     void SellItem(long);
 #ifdef FABLE_RETAIL_CTCSHOP_GETSTOCKLIST
     // Retail opt-in (row 0x006CF530 CTCWife::FindAppropriateGift): Ego_r.pdb / FableWin.pdb
@@ -128,6 +136,6 @@ private:
     bool StallLike;
     unsigned long Alarm;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCShop)==0x58);
-FABLE_STATIC_ASSERT(sizeof(CTCShop::GoodsPlace)==36);
+FABLE_STATIC_ASSERT_AT(131, sizeof(CTCShop)==0x58);
+FABLE_STATIC_ASSERT_AT(132, sizeof(CTCShop::GoodsPlace)==36);
 #endif

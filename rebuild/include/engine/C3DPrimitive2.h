@@ -86,6 +86,10 @@ public:
     bool IsDP3Bump()const{return (InitFlags>>1)&1;}
 #endif
 #endif
+#ifdef FABLE_RETAIL_C3DMESH2_LOADBINARY
+ // Retail opt-in (Codex pass22): both-PDB exact public LoadBinary signature and native caller.
+ bool LoadBinary(class CMemoryDataInputStream&,unsigned long,unsigned char**,class CMovableResourceMemoryPool*);
+#endif
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_HIERARCHY
     virtual ~C3DPrimitive2();
     virtual void RelocateData(long,void*,void*,long);
@@ -152,6 +156,14 @@ public:
     bool UploadedFlag;unsigned char VertexStreamFlags;unsigned long InitFlags;
     C3DTextureStages RecordedTextureStages;void* RecordedConstantData;long RecordedFrame;
     unsigned char PartitionedMeshSourceIndexBuffer[12],PartitionTree[8],MirroredTextureVertexIndexList[12];
+
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+#ifndef FABLE_RETAIL_C3DPRIMITIVE2_PARTICLEMESH
+ long GetMaterialIndex()const{return MaterialIndex;}
+#endif
+ bool HasCloth()const{return !ClothPrimitives.empty();}
+#endif
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_PARTICLEMESH
     // Retail opt-in (chunk 2059, row 0x00BC25F0 CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive): the FableWin.pdb inline
     // accessors the row uses (no out-of-line copy in Ego_r.pdb or Fable.exe; FableWin debug sizes: GetMaterialIndex 17b/9i,
@@ -159,6 +171,7 @@ public:
     // assert code; retail reads +0x04 / +0x08 / +0x58 / +0x5C / +0x30 / +0x34 in place, 0x00BC2CCC..0x00BC2F50). Needs the typed buffers
     // of FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER + FABLE_RETAIL_C3DPRIMITIVE2_VERTEXBUFFER.
     long GetMaterialIndex() const { return MaterialIndex; }
+
     long GetRepeatingMeshBatchSize() { return RepeatingMeshReps; }
 #ifndef FABLE_RETAIL_C3DPRIMITIVE2_ANIMATEDBLOCKS
     unsigned long GetVertexCount() const { return VertexCount; }

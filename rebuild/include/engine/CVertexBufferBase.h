@@ -21,7 +21,11 @@ private:
     virtual bool DoIsBusy() const = 0;                                   // slot 3
     virtual unsigned long DoSizeof() const = 0;                          // slot 4
 public:
+#ifdef FABLE_RETAIL_PASS22_CORE_ORIGINAL_BUFFER_ACCESSORS
+    inline IDirect3DVertexBuffer9* GetD3DVertexBuffer() { return PVertexBuffer; }
+#else
     IDirect3DVertexBuffer9* GetD3DVertexBuffer();                        // ?GetD3DVertexBuffer@CVertexBufferBase@@QAEPAUIDirect3DVertexBuffer9@@XZ
+#endif
     unsigned char* Lock(unsigned long offset, unsigned long flags, unsigned long size);   // 0x00AC20A0 ?Lock@CVertexBufferBase@@QAEPAEKKK@Z (DoLock)
     void Unlock();                                                       // 0x00AC20B0 ?Unlock@CVertexBufferBase@@QAEXXZ (DoUnlock)
 #ifdef FABLE_RETAIL_CVERTEXBUFFERBASE_ISBUSY_SIZEOF
@@ -34,7 +38,11 @@ public:
 #endif
     long GetSize() const { return Length; }                              // ?GetSize@CVertexBufferBase@@QBEJXZ, inline (no out-of-line
                                                                          // copy; 0x00B6EDF0 reads Length at +0x08)
+#ifdef FABLE_RETAIL_PASS22_CORE_ORIGINAL_BUFFER_ACCESSORS
+    inline long GetStride() const { return Stride; }
+#else
     long GetStride() const;                                              // ?GetStride@CVertexBufferBase@@QBEJXZ
+#endif
     IDirect3DVertexBuffer9* PVertexBuffer;                               // +0x04
     unsigned long           Length;                                      // +0x08
     EVertexType             Type;                                        // +0x0C

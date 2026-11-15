@@ -1,0 +1,5 @@
+# Independent main acceptance: 00577AC0
+
+Fresh main_review_02 verifies2157target bytes/710instructions,27 actually reachable originalhelpers1114bytes plus a separately exact unreferenced GetOriginalExperience60bytes. Every159 relocation/literal operand checked;29proven bodies,99named sections,70unreferenced sections receive no byte credit. Source emits correct original names; six prior binding corrections are documented inNAME_FIXES and canonicalprotected data access preserved.
+
+Fresh2048 full-target+GetOriginalExperience cases pass VC71/Od/W3/GR-noEH andGCC C++03; main compares both complete authored members verbatim to fixture. Main reran27actual-header ABI assertions. Original callback/create boundary and LowerBound source scope are supported by original PDB/donor records. CSliderAnimator SetPlay restores actual setter/protected flags under one opt-in, old/default140profiles135successful/5preexistingprerequisitefailures remain identical. Merged33 verifies all75 targets and emitted named code/relocation inventories plus custom EH. No helper progress bytes added to function totals.

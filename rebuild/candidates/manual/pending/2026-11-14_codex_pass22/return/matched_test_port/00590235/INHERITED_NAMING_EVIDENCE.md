@@ -1,0 +1,13 @@
+#00590235 evidence
+
+The public thiscall GetItemsListUIComponent(CComponent*) returns CComponent*, proven by both original exact PUBLIC names and complete CTCInventory methods. Native extent00590235..005907A6 is1393 bytes ending ret4; ConstructScreen at005907A6 is a separate5-byte virtual member tail jump, reported in NAME_FIXES but not authored.
+
+All production local class/container stand-ins were replaced by existing shared CTCInventory, NInventory::CTCInventoryBase, CTCInventoryItem, CHairCardDef, CTattooDef, CDefPointer, CCountedPointer, CManager, CList, and real STLport. Original locals and component/cast chain are restored. Native member offsets1FC/208 are the existing shared model; no header additions are needed.
+
+All109 target/helper operands are strictly bound in RELOCATION_AUDIT.json. ConstructItemCategoryList0058F016 was absent from the global binding file under its correct signature: both exact PDB PUBLICs and the original GetItems body's five resolved named calls independently prove this original member; native selected body calls the corresponding1587-byte console category builder five times. LOCAL_RELOC_BINDINGS.json retains this proof. The private TITLE_NAME is CCharString in both raw LDATA32 sets; the original donor procedure references the actual static record selected in LOCAL_RELOC_BINDINGS. The native SetName operand is013B8B4C. Only the anonymous-TU key varies by compile path.
+
+The actual called visible ReleaseData<CComponent>44-byte body independently matches004291DE and its operator-delete binding. Other emitted shared COMDATs are unreferenced by target/helper calls and are explicitly excluded from carried code. No helper match adds target bytes to progress.
+
+Selected target remains DIFFER1393v1393: saved-register allocation and consequent frame references differ. All470 instruction shapes match after register/frame masking. This is a parked source, not a matched function. The full fixture4096 cases passes VC71/Od/W3/GR- without EHsc and GCC64 C++03. It verifies book removal, expression/card filtering, five category vectors in order, all captions/templates/help symbols, usable flag, three UI child ownership counts, and every pointee release including both card-return calls before continue. It uses exact selected target text, actual shared CDefPointer/CCountedPointer, and controlled external contracts.
+
+Final row headers equal merged19 byte-for-byte; no old/new header pairs or merge requests. The attempted genuine category-chain header profile is preserved only in rejected history06/23. All prior drafts, notes and neighbors were read; PROBES lists every new attempt and honest source-family grouping.

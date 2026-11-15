@@ -10,5 +10,9 @@ public:
  virtual ~CCodaObjectBase();
  static void* __cdecl operator new(unsigned int size) { return CodaMalloc(size); }
  static void __cdecl operator delete(void* p) { CodaFree(p); }
+#ifdef FABLE_RETAIL_PASS22_CCODACONTEXT_CREATE
+ static void* __cdecl operator new[](unsigned int size) {return CodaMalloc(size);}
+ static void __cdecl operator delete[](void* p) {CodaFree(p);}
+#endif
 };
 #endif

@@ -1,0 +1,20 @@
+{
+  "address": "005239cd",
+  "input_kind": "never_worked",
+  "status": "EXTENT_WRONG",
+  "attempts": 0,
+  "assigned_extent": 366,
+  "input_label": "CThingDeadCreature_SavePersistentState",
+  "corrected_start": "005239c0",
+  "corrected_end_exclusive": "00523b3b",
+  "corrected_extent": 379,
+  "head_bytes_missing": 13,
+  "parent_name": "CThingManager::RuntimeSaveEntities",
+  "parent_landed": true,
+  "disposition": "ALREADY_LANDED_PARENT",
+  "bounds_proof": "review/sol2_parent_envelopes/005239cd.disasm",
+  "working_status_before_wind_down": "EXTENT_WRONG",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "EXTENT_WRONG",
+  "ready_for_claude_reverification": false
+}

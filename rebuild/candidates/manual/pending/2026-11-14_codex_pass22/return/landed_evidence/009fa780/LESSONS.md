@@ -1,0 +1,3 @@
+- A package best can be an accidentally copied test; verify its Leaf before selecting a full source prior and preserve both.
+- Matching native bytes do not validate a false type: both PDBs show CRenderStateScopedCaptureBlock has no base, despite an old opt-in claiming inheritance.
+- Original vertex hierarchy, original SetRenderState early return, original constructor bodies and original locals leave009FA780's lone bookmark register tie unchanged. Natural private-helper inlining leaves calls and reduces the body; do not hand back that variant.

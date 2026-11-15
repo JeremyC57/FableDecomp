@@ -34,10 +34,15 @@ class CCharString;
 class CWideString;
 class CTCQuestCompletionUI : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_GLOBALUPDATE
+    // Both complete original PDB enum records.
+    enum CompletionType { QUEST_START=0,QUEST_SUCCESS=1,QUEST_FAILURE=2,HERO_DIED=3 };
+#else
 #if defined(_MSC_VER)
     enum CompletionType;
 #else
     enum CompletionType { };
+#endif
 #endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_QUEST_COMPLETION_UI; }
 #ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
@@ -53,11 +58,17 @@ public:
     // Ego_r.pdb / FableWin.pdb ?ActivateReal@CTCQuestCompletionUI@@QAEXXZ (retail 0x005E5F30, called by GlobalUpdate 0x005E7E25).
     void ActivateReal();
 #endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_GLOBALUPDATE
+    virtual void GlobalUpdate(bool paused);
+#endif
     void SaveInitialValues(const CCharString& scriptName);                                                                    // 0x005E4860
     bool IsActive() const { return Active; }                             // FableWin ?IsActive@CTCQuestCompletionUI@@QBE_NXZ
     bool IsQuitting() const { return Quitting; }                         // FableWin ?IsQuitting@CTCQuestCompletionUI@@QBE_NXZ
     bool IsQuittingFadeOut() const { return QuittingFadeOut; }           // FableWin ?IsQuittingFadeOut@CTCQuestCompletionUI@@QBE_NXZ
 private:
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_GLOBALUPDATE
+    bool IsHeroControlledByPlayer() const;
+#endif
 #ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
     // Both original PDBs; native005e7123 passes the component in the one stack argument.
     void GetQuestDescription(NUISystem::CComponent* pcontainer);
@@ -74,7 +85,11 @@ private:
     bool          WaitingForRegionLoad;                                  // +0x1d
     bool          WaitingForPlayerControl;                               // +0x1e
     bool          WaitingForBoastProcessing;                             // +0x1f
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_GLOBALUPDATE
+    CompletionType Completion;
+#else
     long          Completion;                                            // +0x20 CompletionType
+#endif
     unsigned long Frame;                                                 // +0x24
     long          FrameStartedBoastProcessing;                           // +0x28
 #ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
@@ -166,5 +181,5 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCQuestCompletionUI) == 0xd8);
+FABLE_STATIC_ASSERT_AT(169, sizeof(CTCQuestCompletionUI) == 0xd8);
 #endif // FABLE_ENGINE_CTCQUESTCOMPLETIONUI_H

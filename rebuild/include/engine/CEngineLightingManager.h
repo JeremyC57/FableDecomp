@@ -27,6 +27,9 @@
 #include "engine/CEngineComponent.h"
 #include "engine/CEnginePrimitiveThemeChannelDesc.h"
 class C3DBoundingBox;
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_FRAMESTART
+class CEngineCamera;
+#endif
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_LIGHTSINSPHERE
 class C3DBoundingSphere;
 #endif
@@ -79,7 +82,11 @@ struct CEngineLightingManagerSpotlightParams {
 };
 #pragma pack(pop)
 struct CLightingSIMDVarBlock;
-enum ELightingManagerShadowMode { };                                     // Ego_r.pdb enum (enumerator names not recovered)
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SHADOWMODE_ENUM
+#include "engine/ELightingManagerShadowMode.h"
+#else
+enum ELightingManagerShadowMode { };
+#endif                                     // Ego_r.pdb enum (enumerator names not recovered)
 #else
 class CEngineLocalLightArray;
 #endif
@@ -87,6 +94,16 @@ class CEngineLightingManager : public CEnginePrimitiveManager, public CEngineCom
 public:
     // Chunk 731: the constructor (CEngine::Initialise 0x00B26360 news 0x46D0 bytes) and the overrides of the pure CEnginePrimitiveManager
     // slots and CEngineComponent::PeekSceneFilterFlags (Ego_r.pdb / FableWin.pdb spellings).
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_FRAMESTART
+    // Retail opt-in (Codex pass22): both original PDBs, module983; native secondary-base slot012A2240.
+    virtual void FrameStart(const CEngineComponentParams& comp_params);
+    void UpdateShadowScene(const CEngineCamera& camera);
+private:
+    void UpdateShadowedSpotLights();
+    void AddLightsToLookupGrid();
+    void UpdateSIMDVarBlock();
+public:
+#endif
     CEngineLightingManager();                                            // 0x00B482A0 ??0CEngineLightingManager@@QAE@XZ
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_PEEKSUNVECTOR
     // Opt-in (chunk 2048): FableWin.pdb ?PeekSunVector@CEngineLightingManager@@QBEABVC3DVector@@XZ (inline; RenderSunFlare reads +0x18..+0x20).

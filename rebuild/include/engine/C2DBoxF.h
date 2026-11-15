@@ -1,5 +1,8 @@
 #ifndef FABLE_ENGINE_C2DBOXF_H
 #define FABLE_ENGINE_C2DBOXF_H
+#if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_GETEXTENTS)
+#include "engine/C2DExtentsF.h"
+#endif
 // Original public fields and user default constructor from Ego_r TPI.
 class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
 #ifdef FABLE_RETAIL_C2DBOXF
@@ -47,6 +50,11 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
  float GetBRY() const { return BRY; }
  float GetWidth() const { return BRX-TLX; }
  float GetHeight() const { return BRY-TLY; }
+#ifdef FABLE_RETAIL_C2DBOXF_GETEXTENTS
+ // Original FableWin PDB exact GetExtents signature; donor0227D670 calls
+ // GetHeight, GetWidth and the real C2DExtentsF(float,float) value constructor.
+ C2DExtentsF GetExtents() const { return C2DExtentsF(GetWidth(),GetHeight()); }
+#endif
 #if defined(FABLE_RETAIL_C2DBOXF_EXTENTS) || defined(FABLE_RETAIL_C2DBOXF_EXTENTS_DECL)
  // Nested opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): FableWin.pdb ??0C2DBoxF@@QAE@ABVC2DVector@@ABVC2DExtentsF@@@Z
  // (0x018B13C0, the top-left corner and the extents; inline in retail: the loading-screen bar pieces store TLX / TLY and the two

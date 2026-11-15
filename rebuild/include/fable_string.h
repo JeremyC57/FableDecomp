@@ -106,9 +106,10 @@ public:
 #endif
     bool operator==(const CBasicString& other) const { if(StringLength!=other.StringLength)return false; return !Compare(PData,other.PData); }
 #endif
-    // Ego_r 0x0040C910 / FableWin 0x01899D90 ??8?$CBasicString@D@@QBE_NPBD@Z (retail out-of-line copy 0x004115A0; a TU that holds
-    // the template body expands it, 0x009BC120).
-#ifdef FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE
+    // Ego_r 0x0040C910 / FableWin 0x01899D90 ??8?$CBasicString@D@@QBE_NPBD@Z (retail out-of-line copy 0x004115A0; a TU that holds the template body expands it, 0x009BC120).
+#if defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_COMPARE_ZERO)
+    bool operator==(const T* text) const { return Compare(PData,text)==0; }   // Codex pass 22: native 0x004115A0 keeps the original compare-result == 0.
+#elif defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE)
     // Retail opt-in (chunk 780): the quest-script TUs expand CBasicString<char>::operator==(const char*) in place as
     // `call Compare 0x00411570 ; neg eax ; sbb al,al ; inc al` (CV_BeardyBaldyScript::Main 0x00E4FB88..0x00E4FB98, the landed
     // chunk 778 WatchForQuestCardConditions model), i.e. Compare(PData, text) == 0 (FableWin ??8?$CBasicString@D@@QBE_NPBD@Z).
@@ -210,8 +211,7 @@ public:
     CCharString ToCharString() const;                          // ?ToCharString@CWideString@@QBE?AVCCharString@@XZ
 #ifdef FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ
     // Per-TU inline opt-in (chunk 784, row 0x00491AD2; like FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ): the size-optimised
-    // CSubtitleRenderer TU expands both operator== bodies in place (0x00491CF6..0x00491D1B, 0x0049227C..0x004922A7) where the plain
-    // inline operators are called out of line.
+    // CSubtitleRenderer TU expands both operator== bodies in place (0x00491CF6..0x00491D1B, 0x0049227C..0x004922A7) where the plain inline operators are called out of line.
     FABLE_FORCEINLINE
 #endif
     bool operator==(const CWideString& other) const            // inline in retail (FableWin ??8CWideString@@QBE_NABV0@@Z)
@@ -453,7 +453,10 @@ public:
     // Ego_r 0x004037B0 / FableWin 0x0186C770 ?GetAsCharArray@CCharString@@QBEPBDXZ and FableWin 0x01899D30
     // ??8CCharString@@QBE_NPBD@Z, both inline in retail (0x00AE8D50 expands GetAsCharArray: `test; jne; mov eax,offset NullChar; jmp; mov eax,[eax]`;
     // the landed local models spell the same ternary). NullChar is 0x0129AAF4 (static data member per the Ego_r TPI as Codex pass 12 read it).
-#ifdef FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_SELECT
+#if defined(FABLE_RETAIL_PASS22_CCHARSTRING_GETASCHARARRAY_ORIGINAL_IFELSE)
+    // Original FableWin0186C770..0186C796 has both early-return and explicit else-end jumps.
+    const char* GetAsCharArray() const { if(PStringData==0) return &NullChar; else return PStringData->Data.PeekData(); }
+#elif defined(FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_SELECT)
     // Retail opt-in (chunk 848, row 0x009BC120 CPersistContext::TransferVectorOfSubComponentsLoadText): the preset-and-assign spelling
     // of the same inline accessor (the landed CPersistContext::CleanOutLine 0x009BB0D0 models it so: `text = ""; if (PStringData) text =
     // ...`). Where CleanOutLine is expanded inside 0x009BC120 (0x009BC610..0x009BC632) retail indexes the text as [ecx+eax]; the

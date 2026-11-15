@@ -1,0 +1,433 @@
+######## engine_C2DBoxI.h (1 hunks)
+<<<OURS 9 lines
+#ifdef FABLE_RETAIL_C2DBOXI_ACCESSORS
+long GetTLX()const{return TLX;}
+long GetTLY()const{return TLY;}
+long GetBRX()const{return BRX;}
+long GetBRY()const{return BRY;}
+#endif
+#ifdef FABLE_RETAIL_C2DBOXI_CTORS
+|||BASE 1
+#ifdef FABLE_RETAIL_C2DBOXI_CTORS
+===THEIRS 1
+#if defined(FABLE_RETAIL_C2DBOXI_CTORS) || defined(FABLE_RETAIL_C2DBOXI_ORIGINAL_FOUR_COORD_CTOR)
+>>>
+######## engine_C3DPrimitive2.h (1 hunks)
+<<<OURS 8 lines
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_ISDP3BUMP
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_ISDP3BUMP_MASK
+    bool IsDP3Bump()const{return (InitFlags&2)!=0;}
+#else
+    bool IsDP3Bump()const{return (InitFlags>>1)&1;}
+#endif
+#endif
+|||BASE 0
+
+===THEIRS 4
+#ifdef FABLE_RETAIL_C3DMESH2_LOADBINARY
+ bool LoadBinary(class CMemoryDataInputStream&,unsigned long,unsigned char**,class CMovableResourceMemoryPool*);
+#endif
+>>>
+######## engine_C3DVector.h (1 hunks)
+<<<OURS 6 lines
+#ifdef FABLE_RETAIL_C3DVECTOR_CTOR_FORCEINLINE
+    FABLE_FORCEINLINE
+#endif
+|||BASE 0
+
+===THEIRS 4
+#ifdef FABLE_RETAIL_C3DVECTOR_ORIGINAL_COMPONENT_CTOR
+    C3DVector(float x,float y,float z){X=x;Y=y;Z=z;}
+#else
+>>>
+######## engine_C4DVector.h (1 hunks)
+<<<OURS 5 lines
+#ifdef FABLE_RETAIL_C4DVECTOR_INITIALISEFROMCOLOUR
+    inline void InitialiseFromColour(const CRGBFloatColour& colour);
+#endif
+|||BASE 0
+
+===THEIRS 4
+#ifdef FABLE_RETAIL_C4DVECTOR_ORIGINAL_COLOUR_CHAIN
+    inline void InitialiseFromColour(const CRGBFloatColour& colour);
+#endif
+>>>
+######## engine_CDateAndTime.h (1 hunks)
+<<<OURS 10 lines
+#ifdef FABLE_RETAIL_CDATEANDTIME_LESS
+class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;
+public: bool operator<(const CDateAndTime& other) const;   // 0x009E9B80
+};
+#else
+class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;};
+#endif
+|||BASE 1
+class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;};
+===THEIRS 5
+class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;
+#ifdef FABLE_RETAIL_CDATEANDTIME_VALID
+public: bool IsValid() const; // original PDB declaration; native 0x009E9C60
+#endif
+};
+>>>
+######## engine_CEngineCamera.h (1 hunks)
+<<<OURS 4 lines
+#ifdef FABLE_RETAIL_CENGINECAMERA_PEEKWINDOW
+ const C2DBoxF& PeekWindow()const{return CameraDesc.Window;}
+#endif
+|||BASE 0
+
+===THEIRS 4
+#ifdef FABLE_RETAIL_CENGINECAMERA_SHADOWFRUSTRUM_PASS22
+ const CPlane& PeekFrustrumPlane(long plane)const{return FrustrumPlanes[plane];}
+#endif
+>>>
+######## engine_CEnginePrimitive2DViewportManager.h (1 hunks)
+<<<OURS 4 lines
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DVIEWPORTMANAGER_ALPHAMASK
+    const C2DAlphaMaskInfo* GetCurrentAlphaMask(){return &AlphaMaskInfo;}
+#else
+|||BASE 0
+
+===THEIRS 4
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERTEXT_RENDER
+    const C2DAlphaMaskInfo* GetCurrentAlphaMask(){return &AlphaMaskInfo;}
+#else
+>>>
+######## engine_CEnginePrimitiveManagerParticleLineGroup.h (2 hunks)
+<<<OURS 19 lines
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLELINEGROUP_CLASS
+#include "engine/CEnginePrimitiveManager.h"
+#include "engine/CArray.h"
+class CEngineScene;
+class CEnginePrimitiveManagerParticleLineGroup : public CEnginePrimitiveManager {
+public:
+    CEnginePrimitiveManagerParticleLineGroup(CArray<CEngineScene*>& scenes);   // 0x00BC4D90
+    virtual ~CEnginePrimitiveManagerParticleLineGroup();
+    virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);
+    virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;
+    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);
+private:
+    unsigned char Unmodeled_0xc[0x260 - 0xc];
+};
+|||BASE 0
+
+===THEIRS 30
+#ifdef FABLE_RETAIL_PASS22_PARTICLE_LINE_RENDER
+#include "engine/CEngineParticleConstantBlock.h"
+#include "engine/CEnginePrimitiveManager.h"
+#include "engine/CArray.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CVertexBufferWin32.h"
+#include "engine/CIndexBuffer.h"
+class CEnginePrimitiveManagerParticleLineGroup : public CEnginePrimitiveManager {
+public:
+    CEnginePrimitiveManagerParticleLineGroup(CArray<CEngineScene*>&);
+
+    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);
+    virtual void RenderSubPrimitive(CEngineSubPrimitiveBase&,ERenderPassType);
+>>>
+<<<OURS 1 lines
+#endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLELINEGROUP_CLASS
+|||BASE 0
+
+===THEIRS 1
+#endif // FABLE_RETAIL_PASS22_PARTICLE_LINE_RENDER
+>>>
+######## engine_CEnginePrimitiveRenderUtil.h (2 hunks)
+<<<OURS 9 lines
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_DYNAMICVB
+    static unsigned long __fastcall GetDynamicVBUsage();
+    static EVertexBufferPool __fastcall GetDynamicVBPool();
+    static unsigned long __fastcall GetDynamicVBLockFlags();
+#endif
+|||BASE 0
+
+===THEIRS 6
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERTEXT_RENDER
+    const C2DAlphaMaskInfo* GetCurrent2DAlphaMaskInfo();
+    void DisableTextureFiltering(unsigned long);
+    void Set2DAlphaMaskTextureMode(unsigned long,bool,bool);
+#endif
+>>>
+<<<OURS 1 lines
+FABLE_STATIC_ASSERT_AT(110, sizeof(CEnginePrimitiveRenderUtil) == 0x4);
+|||BASE 1
+FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRenderUtil) == 0x4);
+===THEIRS 3
+#endif
+
+FABLE_STATIC_ASSERT_AT(110, sizeof(CEnginePrimitiveRenderUtil) == 0x4);
+>>>
+######## engine_CEnginePrimitiveRenderer.h (1 hunks)
+<<<OURS 33 lines
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_MEMBERS
+private:
+    void AddPrimitiveManager(const CCountedPointer<CEnginePrimitiveManager>& manager);   // 0x00B33AE0
+public:
+    CArray<CCountedPointer<CEnginePrimitiveManager> > PrimitiveManagers;   // +0x274
+    CCountedPointer<CEnginePrimitiveManagerStaticMeshes> StaticMeshManager; // +0x280
+    CCountedPointer<CEnginePrimitiveManagerAnimatedMeshes> AnimatedMeshManager; // +0x288
+    CCountedPointer<CEnginePrimitiveManagerRepeatedStaticMeshes> RepeatedStaticMeshManager; // +0x290
+    CCountedPointer<CEnginePrimitiveManagerRepeatedZSprites> RepeatedZSpriteManager; // +0x298
+    CCountedPointer<CEnginePrimitiveManagerSprites> SpriteManager; // +0x2a0
+    CCountedPointer<CEnginePrimitiveManagerFlareSprites> FlareSpriteManager; // +0x2a8
+    CCountedPointer<CEnginePrimitiveManagerWeaponTrails> WeaponTrailManager; // +0x2b0
+    CCountedPointer<CEnginePrimitiveManagerSpriteTrails> SpriteTrailManager; // +0x2b8
+    CCountedPointer<CEnginePrimitiveManagerLines> LineManager; // +0x2c0
+|||BASE 1
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SCENELIST
+===THEIRS 15
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_PASS22_DRAWDISTANCE
+private:
+    unsigned char _pad_0x274[0x290-0x274];
+    CCountedPointer<CEnginePrimitiveManagerRepeatedStaticMeshes> RepeatedStaticMeshManager;
+    unsigned char _pad_0x298[0x338-0x298];
+    CArray<CEngineScene*> SceneList;
+    unsigned char _pad_0x344[0x350-0x344];
+#elif defined(FABLE_RETAIL_PASS22_STATIC_MESH_RENDER)
+private:
+ unsigned char _pad_0x274[0x2f0-0x274];
+ CCountedPointer<CEngineClothRenderer> ClothRenderer;
+ unsigned char _pad_0x2f8[0x350-0x2f8];
+#elif defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SCENELIST)
+>>>
+######## engine_CEngineSubPrimitiveBase.h (2 hunks)
+<<<OURS 1 lines
+#endif
+|||BASE 0
+
+===THEIRS 6
+ #ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+#else
+#ifndef FABLE_RETAIL_PASS22_PRIMITIVE_IMPLICIT_DESTRUCTORS
+>>>
+<<<OURS 1 lines
+FABLE_STATIC_ASSERT_AT(33, sizeof(CEngineSubPrimitiveBase)==24);
+|||BASE 1
+FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveBase)==24);
+===THEIRS 1
+FABLE_STATIC_ASSERT_AT(33,sizeof(CEngineSubPrimitiveBase)==24);
+>>>
+######## engine_CEngineSubPrimitiveRenderer.h (3 hunks)
+<<<OURS 1 lines
+FABLE_STATIC_ASSERT_AT(47, sizeof(CEngineSubPrimitiveRenderer)==400);
+|||BASE 1
+FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveRenderer)==400);
+===THEIRS 1
+FABLE_STATIC_ASSERT_AT(47,sizeof(CEngineSubPrimitiveRenderer)==400);
+>>>
+<<<OURS 1 lines
+FABLE_STATIC_ASSERT_AT(92, sizeof(CEngineSubPrimitiveRenderer) == 0x190);
+|||BASE 1
+FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveRenderer) == 0x190);
+===THEIRS 1
+FABLE_STATIC_ASSERT_AT(92,sizeof(CEngineSubPrimitiveRenderer) == 0x190);
+>>>
+<<<OURS 8 lines
+FABLE_STATIC_ASSERT_AT(120, sizeof(CEngineSubPrimitiveRenderer) == 0x190);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CEngineSubPrimitiveRenderer, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(122, offsetof(CEngineSubPrimitiveRenderer, MaxSortDistance) == 0x10);
+FABLE_STATIC_ASSERT_AT(123, offsetof(CEngineSubPrimitiveRenderer, SortDistanceMultiplier) == 0x14);
+FABLE_STATIC_ASSERT_AT(124, offsetof(CEngineSubPrimitiveRenderer, SubPrimitiveLists) == 0x18);
+FABLE_STATIC_ASSERT_AT(125, offsetof(CEngineSubPrimitiveRenderer, SortBuffer) == 0x180);
+FABLE_STATIC_ASSERT_AT(126, offsetof(CEngineSubPrimitiveRenderer, EnableSolidPass) == 0x18c);
+FABLE_STATIC_ASSERT_AT(127, offsetof(CEngineSubPrimitiveRenderer, EnableAlphaPass) == 0x18d);
+|||BASE 8
+FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveRenderer) == 0x190);
+FABLE_STATIC_ASSERT(offsetof(CEngineSubPrimitiveRenderer, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CEngineSubPrimitiveRenderer, MaxSortDistance) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CEngineSubPrimitiveRenderer, SortDistanceMultiplier) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CEngineSubPrimitiveRenderer, SubPrimitiveLists) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CEngineSubPrimitiveRenderer, SortBuffer) == 0x180);
+===THEIRS 8
+FABLE_STATIC_ASSERT_AT(120,sizeof(CEngineSubPrimitiveRenderer) == 0x190);
+FABLE_STATIC_ASSERT_AT(121,offsetof(CEngineSubPrimitiveRenderer, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(122,offsetof(CEngineSubPrimitiveRenderer, MaxSortDistance) == 0x10);
+FABLE_STATIC_ASSERT_AT(123,offsetof(CEngineSubPrimitiveRenderer, SortDistanceMultiplier) == 0x14);
+FABLE_STATIC_ASSERT_AT(124,offsetof(CEngineSubPrimitiveRenderer, SubPrimitiveLists) == 0x18);
+FABLE_STATIC_ASSERT_AT(125,offsetof(CEngineSubPrimitiveRenderer, SortBuffer) == 0x180);
+FABLE_STATIC_ASSERT_AT(126,offsetof(CEngineSubPrimitiveRenderer, EnableSolidPass) == 0x18c);
+FABLE_STATIC_ASSERT_AT(127,offsetof(CEngineSubPrimitiveRenderer, EnableAlphaPass) == 0x18d);
+>>>
+######## engine_CEngineSubPrimitiveRepeatedStaticMesh.h (1 hunks)
+<<<OURS 8 lines
+#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEMESHBASE_ACCESSORS
+    float GetScale() const { return static_cast<const CEngineInternalPrimitiveMeshBase*>(Parent)->Scale; }
+    ERenderMode GetRenderMode() const { return RenderMode; }
+    const CEngineInternalPrimitiveMeshBase* PeekParent() const { return static_cast<const CEngineInternalPrimitiveMeshBase*>(Parent); }
+#endif
+|||BASE 0
+
+===THEIRS 9
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+ CEngineSubPrimitiveMeshBase(CEngineInternalPrimitiveBase*,C3DPrimitive2*,ERenderMode,bool);
+#endif
+
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+public:
+#else
+>>>
+######## engine_CEngineVideoOptionsDef.h (1 hunks)
+<<<OURS 1 lines
+FABLE_STATIC_ASSERT_AT(14, sizeof(CEngineVideoOptionsDef) == 0x78);
+|||BASE 1
+FABLE_STATIC_ASSERT(sizeof(CEngineVideoOptionsDef) == 0x78);
+===THEIRS 2
+#endif
+FABLE_STATIC_ASSERT_AT(14, sizeof(CEngineVideoOptionsDef) == 0x78);
+>>>
+######## engine_CGraphicInfo.h (2 hunks)
+<<<OURS 10 lines
+#ifdef FABLE_RETAIL_CGRAPHICINFO_GETWIDTH
+    unsigned long GetWidth() const {return Header.FrameWidth;}
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFO_PEEKGRAPHICHEADER
+    const CGraphicDataBank::CGraphicHeader& PeekGraphicHeader() const {return Header;}
+#endif
+|||BASE 0
+
+===THEIRS 3
+#ifdef FABLE_RETAIL_CGRAPHICINFO_PASS22_SPRITE
+    const CGraphicDataBank::CGraphicHeader& PeekGraphicHeader() const { return Header; }
+#endif
+>>>
+<<<OURS 1 lines
+FABLE_STATIC_ASSERT_AT(121, sizeof(CGraphicInfo)==44);
+|||BASE 1
+FABLE_STATIC_ASSERT(sizeof(CGraphicInfo)==44);
+===THEIRS 9
+FABLE_STATIC_ASSERT_AT(121, sizeof(CGraphicInfo)==44);
+#ifdef FABLE_RETAIL_CGRAPHICINFO_PASS22_SPRITE
+inline unsigned long CGraphicInfoFrame::GetWidth() const { return GraphicInfo->PeekGraphicHeader().FrameWidth; }
+inline unsigned long CGraphicInfoFrame::GetHeight() const { return GraphicInfo->PeekGraphicHeader().FrameHeight; }
+inline bool CGraphicInfoFrame::IsBooleanAlpha() const { unsigned char type=GraphicInfo->PeekGraphicHeader().TransparencyType; return type==2 || type==
+inline bool CGraphicInfoFrame::IsAlpha() const { return GraphicInfo->PeekGraphicHeader().TransparencyType!=0; }
+#endif
+
+>>>
+######## engine_CMatrix3x4.h (1 hunks)
+<<<OURS 10 lines
+#ifdef FABLE_RETAIL_CMATRIX3X4_SET_RHSET_INLINE
+#include "engine/CRightHandedSet.h"
+FABLE_FORCEINLINE void CMatrix3x4::Set(const CRightHandedSet& orientation,const C3DVector& translation)
+{
+    Set(orientation.GetRight(), orientation.GetForward(), orientation.GetUp(), translation);
+}
+#endif
+|||BASE 0
+
+===THEIRS 7
+#ifdef FABLE_RETAIL_CMATRIX3X4_PARTICLE_ADD_SET
+#include "engine/CRightHandedSet.h"
+inline void CMatrix3x4::Set(const CRightHandedSet& rhset,const C3DVector& translate)
+{
+    Set(rhset.GetRight(),rhset.GetForward(),rhset.GetUp(),translate);
+}
+#endif
+>>>
+######## engine_CRGBFloatColour.h (3 hunks)
+<<<OURS 5 lines
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_CTOR4_INITIALISE
+    CRGBFloatColour(float r, float g, float b, float a) { Initialise(r, g, b, a); }
+#else
+|||BASE 0
+
+===THEIRS 7
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_ORIGINAL_FLOAT_CTORS
+    CRGBFloatColour(float r,float g,float b) { Initialise(r,g,b); }
+    void Initialise(float r,float g,float b) { R=r;G=g;B=b;A=1.0f; }
+    CRGBFloatColour(float r,float g,float b,float a) { Initialise(r,g,b,a); }
+    CRGBFloatColour operator*(const CRGBFloatColour& c) const { return CRGBFloatColour(R*c.R,G*c.G,B*c.B,A*c.A); }
+#else
+>>>
+<<<OURS 1 lines
+FABLE_STATIC_ASSERT_AT(131, sizeof(CRGBFloatColour) == 0x10);
+|||BASE 1
+FABLE_STATIC_ASSERT(sizeof(CRGBFloatColour) == 0x10);
+===THEIRS 2
+FABLE_STATIC_ASSERT_AT(131, sizeof(CRGBFloatColour) == 0x10);
+#if !defined(FABLE_RETAIL_CRGBFLOATCOLOUR_ORIGINAL_FLOAT_CTORS)
+>>>
+<<<OURS 4 lines
+#ifdef FABLE_RETAIL_C4DVECTOR_INITIALISEFROMCOLOUR
+inline void C4DVector::InitialiseFromColour(const CRGBFloatColour& colour) { X = colour.R; Y = colour.G; Z = colour.B; W = colour.A; }
+inline C4DVector::C4DVector(const CRGBFloatColour& colour) { InitialiseFromColour(colour); }
+#else
+|||BASE 0
+
+===THEIRS 6
+#ifdef FABLE_RETAIL_C4DVECTOR_ORIGINAL_COLOUR_CHAIN
+inline C4DVector::C4DVector(const CRGBFloatColour& colour) { InitialiseFromColour(colour); }
+inline void C4DVector::InitialiseFromColour(const CRGBFloatColour& colour) {
+    X=colour.GetR();Y=colour.GetG();Z=colour.GetB();W=colour.GetA();
+}
+#else
+>>>
+######## engine_CRenderStateManager.h (1 hunks)
+<<<OURS 1 lines
+FABLE_STATIC_ASSERT_AT(457, sizeof(CRenderStateManager) == 0x3a3c);
+|||BASE 1
+FABLE_STATIC_ASSERT(sizeof(CRenderStateManager) == 0x3a3c);
+===THEIRS 3
+#endif
+
+FABLE_STATIC_ASSERT_AT(457, sizeof(CRenderStateManager) == 0x3a3c);
+>>>
+######## engine_CShaderRenderManager.h (1 hunks)
+<<<OURS 1 lines
+FABLE_STATIC_ASSERT_AT(311, sizeof(CShaderRenderManager) == 0x3e8);
+|||BASE 1
+FABLE_STATIC_ASSERT(sizeof(CShaderRenderManager) == 0x3e8);
+===THEIRS 3
+#endif
+
+FABLE_STATIC_ASSERT_AT(311, sizeof(CShaderRenderManager) == 0x3e8);
+>>>
+######## engine_CTCInventory.h (1 hunks)
+<<<OURS 6 lines
+#ifdef FABLE_RETAIL_CTCINVENTORY_OPENINVENTORY
+    virtual void OpenInventory();                                   // 0x0058578B
+#endif
+|||BASE 0
+
+===THEIRS 4
+#ifdef FABLE_RETAIL_CTCINVENTORY_PASS22_RESETPRIMITIVES
+    void ResetPrimitiveHandles();
+#endif
+>>>
+######## engine_CWorld.h (1 hunks)
+<<<OURS 5 lines
+FABLE_STATIC_ASSERT_AT(790, offsetof(CWorld, AutoSaveCheckPointExists) == 0x140);
+FABLE_STATIC_ASSERT_AT(791, offsetof(CWorld, SaveGameMarkerPos) == 0x141);
+FABLE_STATIC_ASSERT_AT(792, offsetof(CWorld, SaveGameMarkerAngleXY) == 0x150);
+#if defined(FABLE_RETAIL_CWORLD_TYPED_SAVE) || defined(FABLE_RETAIL_CWORLD_GUILDSEALRECALLPOS)
+FABLE_STATIC_ASSERT_AT(794, offsetof(CWorld, GuildSealRecallPos) == 0x154);
+|||BASE 5
+FABLE_STATIC_ASSERT(offsetof(CWorld, AutoSaveCheckPointExists) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerPos) == 0x141);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerAngleXY) == 0x150);
+#ifdef FABLE_RETAIL_CWORLD_TYPED_SAVE
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos) == 0x154);
+===THEIRS 5
+FABLE_STATIC_ASSERT_AT(790, offsetof(CWorld, AutoSaveCheckPointExists) == 0x140);
+FABLE_STATIC_ASSERT_AT(791, offsetof(CWorld, SaveGameMarkerPos) == 0x141);
+FABLE_STATIC_ASSERT_AT(792, offsetof(CWorld, SaveGameMarkerAngleXY) == 0x150);
+#ifdef FABLE_RETAIL_CWORLD_TYPED_SAVE
+FABLE_STATIC_ASSERT_AT(794, offsetof(CWorld, GuildSealRecallPos) == 0x154);
+>>>
+######## stlport_fable_containers.h (1 hunks)
+<<<OURS 9 lines
+#ifdef FABLE_RETAIL_STLP_LIST_BASE_CONVERT_ALLOCATOR
+    _List_base(const _Alloc& a) : _M_node(a,(_List_node<_Tp>*)0) {
+        _List_node<_Tp>* n=_M_node.allocate(1);n->_M_next=n;n->_M_prev=n;_M_node._M_data=n;
+    }
+#else
+|||BASE 0
+
+===THEIRS 4
+#ifdef FABLE_RETAIL_STLP_LIST_CTORS_PASS22
+    FABLE_STLP_NOINLINE
+#endif
+>>>

@@ -1,0 +1,33 @@
+{
+  "address": "0077bec0",
+  "input_kind": "never_worked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 9,
+  "compile_invocations": 24,
+  "assigned_extent": 658,
+  "assigned_name": "?OnAppearanceDraw@CTCGraphicAppearanceStaticMeshFadeOutOnProximity@NGraphicAppearance@@UAE_NAAVCTCGraphicAppearance@2@ABVCGraphicAppearanceDrawInfo@2@@Z",
+  "selected_attempt": "main_review_01",
+  "selected_flags": [
+    "/d2inlT104"
+  ],
+  "retail_size": 658,
+  "object_size": 658,
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "behavior_cases": 17280,
+  "carried_match": [
+    "0077bd70:177",
+    "0042b0a2:162"
+  ],
+  "helper_debts": [],
+  "inferred": "Retail float5.0f literal spelling differs from donor double pool; both native literal operands independently checked",
+  "main_verified": true,
+  "source_sha256": "f9c4066f6c5608bff4d8965a0f24f6ed3c3a4c1bc6e7fa1fd5269a283cc0b69a",
+  "main_test_status": "PASS_VC71_OD_GR_MINUS_AND_GPP03",
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "final_test_sha256": "97b650ed5aa0ba4c4f02eff64734f9ffd30440178e5730ee3dd218c6299b1409",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "residue": "",
+  "ready_for_claude_reverification": true
+}

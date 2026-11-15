@@ -49,9 +49,25 @@ class CEnginePrimitiveManagerParticleDecalGroup;
 class CEnginePrimitiveManagerWeatherMask;
 #endif
 class CEngineInit;
+#ifdef FABLE_RETAIL_PASS22_ANIMATED_MESH_RENDER
+class C3DMeshInfo;
+#endif
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+class CEngineClothRenderer;
+#endif
+
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_STATICMESHMANAGER
 #include "engine/CCountedPointer.h"
 #include "engine/CEnginePrimitiveManagerStaticMeshes.h"
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_PASS22_DRAWDISTANCE
+#include "engine/EEngineVideoOptionQuality.h"
+#include "engine/CEngineVideoOptionsDef.h"
+#include "engine/CEngineScene.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"
+#include "engine/CArray.h"
 #endif
 class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, public CEngineComponent {
 public:
@@ -65,6 +81,20 @@ public:
 #endif
 #ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
     bool GetBlockOnLoad() const {return BlockOnLoad;}
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_PASS22_DRAWDISTANCE
+    // Retail opt-in (Codex pass22): Ego_r009D2DF0/FableWin02DA7E60, native00B32010.
+    void SetDrawDistanceQuality(EEngineVideoOptionQuality, const CEngineVideoOptionsDef&);
+#endif
+
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+ CEngineClothRenderer& GetClothRenderer()const {return *ClothRenderer;}
+#endif
+
+#ifdef FABLE_RETAIL_PASS22_ANIMATED_MESH_RENDER
+// Original two PDBs, donor02E82300 and native00BD71B0; evidence in00bd71cc.
+ float GetBoundingRadiusAnimated(const C3DMeshInfo&,float)const;
 #endif
     CEnginePrimitiveRenderer();                // 0x00B33B50 ??0CEnginePrimitiveRenderer@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
@@ -100,6 +130,20 @@ public:
     float MaxPreloadRadius;                                               // +0x344
     float MinPreloadRadius;                                               // +0x348
     float MaxPreloadMipmapTolerance;                                      // +0x34c
+#elif defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERER_PASS22_DRAWDISTANCE)
+private:
+    // Both PDB member names; native00B3204F/+338 loop and00B32084/+290 read.
+    unsigned char _pad_0x274[0x290-0x274];
+    CCountedPointer<CEnginePrimitiveManagerRepeatedStaticMeshes> RepeatedStaticMeshManager;
+    unsigned char _pad_0x298[0x338-0x298];
+    CArray<CEngineScene*> SceneList;
+    unsigned char _pad_0x344[0x350-0x344];
+#elif defined(FABLE_RETAIL_PASS22_STATIC_MESH_RENDER)
+private:
+ // Both PDBs: original CCountedPointer<CEngineClothRenderer> member; native00BA1861 reads+2F0.
+ unsigned char _pad_0x274[0x2f0-0x274];
+ CCountedPointer<CEngineClothRenderer> ClothRenderer;
+ unsigned char _pad_0x2f8[0x350-0x2f8];
 #elif defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SCENELIST)
     // Nested opt-in (chunk 892, row 0x00B482A0 CEngineLightingManager ctor): Ego_r.pdb SceneList (CArray<CEngineScene*>) at the
     // retail +0x338 (the generated Ego_r model below, retail STLport sizes); every primitive manager's constructor is handed it

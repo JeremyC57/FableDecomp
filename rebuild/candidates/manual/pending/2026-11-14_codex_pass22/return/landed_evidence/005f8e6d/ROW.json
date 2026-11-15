@@ -1,0 +1,27 @@
+{
+  "address": "005f8e6d",
+  "input_kind": "never_worked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 1,
+  "assigned_extent": 34,
+  "input_label": "Unwind@00fbdab0",
+  "compile_invocations": 2,
+  "assigned_name": "??$__pop_heap_aux@PAU?$pair@JW4EHeroAbility@@@std@@U12@V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@std@@YIXPAU?$pair@JW4EHeroAbility@@@0@00V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@Z",
+  "selected_attempt": "main_01b_calling_convention_macro",
+  "object_size": 34,
+  "retail_size": 34,
+  "selected_flags": [
+    "/Gr"
+  ],
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "evidence": "Original STLport source; original PDB specialization types; typed native caller family; exact unique callee binding",
+  "extent_corrected": false,
+  "main_verified": true,
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "final_test_sha256": "9304ec5c6dc806e670a1d26f7e7e9802b43a4e96dcbd706ba6216c9e3dff31d6",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "residue": "",
+  "ready_for_claude_reverification": true
+}

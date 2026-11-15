@@ -77,6 +77,17 @@ public:
 #ifndef FABLE_RETAIL_C3DMESH2_HELPERPOINTS
     unsigned char UnmodelledBase[0x7c];
 #endif
+#ifdef FABLE_RETAIL_C3DMESH2_LOADBINARY
+private:
+    // Retail opt-in (Codex pass22): both original PDBs AAEXKK / AAEXK, native A896A0/A892E0.
+    void InitialisePointers(unsigned long, unsigned long);
+    void InitialiseBoneNamePointers(unsigned long);
+#endif
+
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+ bool ContainsCloth()const{return ClothFlag;}
+#endif
     long MemoryHandle,PrimMemoryHandle,BoneNameMemoryHandle;
     unsigned long MaterialCount;C3DMeshMaterial* Materials;unsigned long PrimitiveCount;C3DPrimitive2* Primitives;
     unsigned long BoneCount;C3DBone2* Bones;C3DKeyframe* BoneKeyframes;unsigned short* BoneNameIndices;char* BoneNameData;unsigned long BoneNameDataSize;
@@ -84,11 +95,14 @@ public:
     // Retail opt-in (chunk 2011, rows 0x00BF12A0 / 0x00BF18B0): FableWin.pdb ?PeekInverseTransform@C3DMesh2@@QBEABVCMatrix3x4@@XZ
     // (inline: InverseTransform +0xB0 read in place, 0x00BF1398 `fmul [eax+0B4h]`), the member typed as Ego_r.pdb's CMatrix3x4.
     const CMatrix3x4& PeekInverseTransform() const { return InverseTransform; }
+
     CMatrix3x4 InverseTransform;CMatrix4x4* BoneSpaceTransforms;bool ClothFlag,LockedFromMemoryRelocation;unsigned long MeshID;
 #else
     unsigned char InverseTransform[48];CMatrix4x4* BoneSpaceTransforms;bool ClothFlag,LockedFromMemoryRelocation;unsigned long MeshID;
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMesh2)==0xec);
-FABLE_STATIC_ASSERT(offsetof(C3DMesh2,Materials)==0x8c);
+FABLE_STATIC_ASSERT_AT(92, sizeof(C3DMesh2)==0xec);
+#ifndef FABLE_RETAIL_C3DMESH2_LOADBINARY
+FABLE_STATIC_ASSERT_AT(93, offsetof(C3DMesh2,Materials)==0x8c);
+#endif
 #endif

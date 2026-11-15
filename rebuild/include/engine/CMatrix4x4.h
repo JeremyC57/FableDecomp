@@ -25,6 +25,20 @@ public:
     float& operator()(int row,int column) { return Data[row][column]; }
     const float operator()(int row,int column) const { return Data[row][column]; }
 #endif
+#ifdef FABLE_RETAIL_CMATRIX4X4_SHADOW_PERSPECTIVE_PASS22
+    // Original donor02d797f0 procedure locals x/y/z/w; method signature in both PDBs.
+#ifndef FABLE_RETAIL_CMATRIX4X4_FROMMATRIX3X4
+    CMatrix4x4() { }
+#endif
+    void SetInverse(const CMatrix4x4&);
+    void PerspectiveTransformPoint(C3DVector& point) {
+        float x=point.X*E11+point.Y*E21+point.Z*E31+E41;
+        float y=point.X*E12+point.Y*E22+point.Z*E32+E42;
+        float z=point.X*E13+point.Y*E23+point.Z*E33+E43;
+        float w=point.X*E14+point.Y*E24+point.Z*E34+E44;
+        point.X=x/w;point.Y=y/w;point.Z=z/w;
+    }
+#endif
     float SetInverseOfUniformScaleRotationTranslation(const CMatrix4x4&);
     FABLE_FORCEINLINE void TransformTransposedAssumeW(const C4DVector& src,C4DVector& dest,float w) const {
         C4DVector vect=src;

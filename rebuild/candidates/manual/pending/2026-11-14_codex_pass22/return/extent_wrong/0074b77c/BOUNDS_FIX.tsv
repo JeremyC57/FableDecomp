@@ -1,0 +1,2 @@
+assigned_start	assigned_end_exclusive	corrected_start	corrected_end_exclusive	corrected_extent	parent_landed	parent_name	status
+0074b77c	0074b8fb	0074b770	0074b8fb	395	yes	CTCCreatureGenerator::InitialiseCreatureGenerator	EXTENT_WRONG

@@ -25,6 +25,10 @@ public:
     CItem(const CItem&);
     ~CItem();
     CItem& operator=(const CItem&);
+#ifdef FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
+    bool IsSlotEmpty() const { return NumberOfItems == 0; }
+    void GetItemThings(std::vector<std::pair<long,long> >&) const;
+#endif
     long ItemType;                                      // +0x00
     long NumberOfItems;                                 // +0x04
     CCountedPointer<CPerItemData> PPerItemData;         // +0x08
@@ -56,6 +60,9 @@ public:
 };
 }
 #endif
+#ifdef FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
+#include "engine/CCategory.h"
+#endif
 // Layout: original donor328, native304 after the six vector reductions.
 // Every original data member is retained; unused composite fields keep their
 // original names and complete native storage. Native map secondary base is130.
@@ -71,6 +78,26 @@ namespace NInventory { class CItem; }
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_DRAWTEXT
 class C2DVector; class CWideString; class CFontBank; class CRGBColour;
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_ORIGINAL_COMPLETE_METHODS_PASS22
+class C2DBoxF;
+class C2DVector;
+class CEnginePrimitivePrepareInfo;
+class CFontBank;
+class CGraphicDataBank;
+class CInventoryDef;
+class CPersistContext;
+class CQuestCardDef;
+class CRGBColour;
+class CRegion;
+class CTCQuestCard;
+class CThing;
+class CWideString;
+namespace NInventory { class CCategory; class CItem; class CPerItemData;
+enum EInventoryIdentifier { INVENTORY_IDENTIFIER_NONE=0, INVENTORY_IDENTIFIER_INVENTORY=1, INVENTORY_IDENTIFIER_CLOTHING=2, INVENTORY_IDENTIFIER_WEAPONS=3, INVENTORY_IDENTIFIER_ABILITIES=4, INVENTORY_IDENTIFIER_MAP=5, INVENTORY_IDENTIFIER_MAGIC=6, INVENTORY_IDENTIFIER_STATS=7, INVENTORY_IDENTIFIER_EXPERIENCE=8, INVENTORY_IDENTIFIER_TRADE=9, INVENTORY_IDENTIFIER_AUGMENT=10, INVENTORY_IDENTIFIER_QUEST_SELECT=11, INVENTORY_IDENTIFIER_QUEST_REVIEW=12, INVENTORY_IDENTIFIER_MAX_IDENTIFIERS=13 };
+enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_NONE=0, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_STRENGTH=1, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_SKILL=2, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_WILL_WEAPON_MAGIC=3, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_WILL_ABILITY_MAGIC=4, INVENTORY_CATEGORY_IDENTIFIER_EXPERIENCE_WILL_PURE_MAGIC=5, INVENTORY_CATEGORY_IDENTIFIER_MAP_WORLD_MAP=6, INVENTORY_CATEGORY_IDENTIFIER_MAP_REGIONS=7, INVENTORY_CATEGORY_IDENTIFIER_MAP_QUESTS=8, INVENTORY_CATEGORY_IDENTIFIER_MAP_TELEPORTS=9, INVENTORY_CATEGORY_IDENTIFIER_MAP_HOUSES=10, INVENTORY_CATEGORY_IDENTIFIER_TRADE_BUY=11, INVENTORY_CATEGORY_IDENTIFIER_TRADE_SELL=12, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_FLAME=13, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_EXTRA_DAMAGE=14, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_SILVER=15, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_LIGHTNING=16, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_DIAMOND=17, INVENTORY_CATEGORY_IDENTIFIER_AUGMENT_ADD_SLOT=18, INVENTORY_CATEGORY_MAX_IDENTIFIERS=19 };
+enum ETextLayout { INVENTORY_TEXT_LAYOUT_LEFT=0, INVENTORY_TEXT_LAYOUT_CENTRE=1, INVENTORY_TEXT_LAYOUT_RIGHT=2, INVENTORY_TEXT_LAYOUT__MAX=3 };
+}
+#endif
 namespace NInventory {
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED
 class CCategory;
@@ -83,6 +110,187 @@ class CCategory;
 enum ETextLayout { TEXT_LAYOUT_LEFT = 0, TEXT_LAYOUT_CENTRE = 1, TEXT_LAYOUT_RIGHT = 2 };
 #endif
 class CTCInventoryBase : public CTCBase {
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_ORIGINAL_COMPLETE_METHODS_PASS22
+// Full actual real method signatures/access/kinds from both original TPI211-member records.
+// Generated copy/assignment and pseudo closures stay implicit. Recorded overload order is a hypothesis.
+public:
+ enum EInventorySelectionState { INVENTORY_SELECTION_STATE_CATEGORIES=0,INVENTORY_SELECTION_STATE_ITEMS=1,INVENTORY_SELECTION_STATE_MAX_STATES=2 };
+ enum ESelectionState { SELECTION_STATE_NONE=0,SELECTION_STATE_OFF=1,SELECTION_STATE_ON=2,SELECTION_STATE_SEL=3,SELECTION_STATE_MAX=4 };
+ class InventoryScrollbar;
+ CTCInventoryBase(CThing&);
+ virtual ~CTCInventoryBase();
+ virtual void OnCreate();
+ virtual void InitialActivate();
+ virtual void OnInitialActivate();
+ virtual void GlobalUpdate(bool);
+ virtual void OnKill();
+ virtual void Copy(const CTCBase&);
+ virtual bool IsComponentSerialisable() const;
+ void Draw(const CEnginePrimitivePrepareInfo&,bool);
+ void DrawInventoryButtonText(const CEnginePrimitivePrepareInfo&);
+ void DrawInventoryText(C2DVector,const CFontBank&,const CWideString&,NInventory::ETextLayout,const CRGBColour&,bool);
+ void ResetInventoryAnim(long);
+ virtual void UpdateMenuScrollButtonsCategory();
+ virtual void UpdateMenuScrollButtonsItem();
+ void UpdateMenuDisplayList(std::vector<long,std::allocator<long> >&,long,long);
+ void UpdateInventoryAnim();
+ void UpdateInventoryAnimXAxis();
+ void UpdateInventoryAnimZAxis();
+ void SetInventoryAnimRenderBox(const C2DBoxF&);
+ void SetInventoryAnimThing(long);
+ static void FABLE_FASTCALL Draw2DText(const C2DVector&,const CWideString&,const CFontBank&,const CRGBColour&,float,bool);
+ virtual void OpenInventory();
+ virtual void CloseInventory();
+ virtual void AddCloseInventoryEvent();
+ void SelectNextCategory();
+ void SelectPreviousCategory();
+ void HighlightNextItem();
+ void HighlightPreviousItem();
+ void SelectHighlightedItem(bool&);
+ virtual void OnItemSelected(long,bool&)=0;
+ virtual void OnItemSelectedInHand(CThing&,bool&);
+ virtual void OnItemDeselected(long,bool&);
+ virtual void OnItemHighlighted(long);
+ virtual void OnChangeCategory();
+ virtual void ProcessInventoryInputUp();
+ virtual void ProcessInventoryInputDown();
+ virtual void ProcessInventoryInputLeft();
+ virtual void ProcessInventoryInputRight();
+ void GetRightStickPosition(C2DVector&);
+ void ProcessInventoryScreenIncrement();
+ void ProcessInventoryScreenDecrement();
+ bool IsTrackingSelectedItems() const;
+ bool IsInventoryOpen() const;
+ virtual float GetInitialCategoryRepeatDelay() const;
+ virtual float GetContinuedCategoryRepeatDelay() const;
+ virtual float GetInitialItemRepeatDelay() const;
+ virtual float GetContinuedItemRepeatDelay() const;
+ long GetNumberOfItemsOfTypeInInventory(long) const;
+ bool IsSpaceInInventoryForItem(long) const;
+ long GetAmountOfItemsContainable(long) const;
+ long GetMaxItemsToDisplay() const;
+ long GetMaxCategoriesToDisplay() const;
+ NInventory::CCategory * GetSelectedCategory();
+ const CGraphicDataBank& GetGraphicManager() const;
+ virtual void SetInventorySelectionState(NInventory::CTCInventoryBase::EInventorySelectionState);
+ NInventory::CTCInventoryBase::EInventorySelectionState GetInventorySelectionState() const;
+ long GetSelectedCategoryIndex() const;
+ void SetSelectedCategoryIndex(long);
+ long GetSelectedCategoryHighlightedItemMax() const;
+ long GetUniqueItemCountInSelectedCategory() const;
+ virtual CThing * GetItemOfTypeInInventory(long);
+ CThing * GetResurrectionItemInInventory();
+ long GetCategoryCount() const;
+ NInventory::CCategory * GetCategoryWithIndex(long);
+ NInventory::CCategory * GetCategoryWithIdentifier(NInventory::EInventoryCategoryIdentifier);
+ void GetCategoryNameWithIndex(long,CWideString&) const;
+ long GetSelectedCategoryCurrentItemIndex();
+ long GetInventoryName() const;
+ NInventory::EInventoryIdentifier GetInventoryIdentifier() const;
+ CWideString GetInventoryText(long) const;
+ NInventory::CCategory * GetCategoryWithAssociationThing(CThing *);
+ virtual bool GetInventoryShoppingValidity();
+ virtual bool GetInventoryGuildValidity();
+ virtual void ProcessButtonAPressed();
+ virtual void ProcessButtonBPressed();
+ virtual void ProcessButtonXPressed();
+ virtual void ProcessButtonYPressed();
+ virtual void ProcessButtonAHeld();
+ virtual void ProcessButtonBHeld();
+ virtual void ProcessButtonXHeld();
+ virtual void ProcessButtonYHeld();
+ virtual void ProcessButtonAReleased();
+ virtual void ProcessButtonBReleased();
+ virtual void ProcessButtonXReleased();
+ virtual void ProcessButtonYReleased();
+ virtual void ProcessDPadUpReleased();
+ virtual void ProcessDPadDownReleased();
+ virtual void ProcessDPadLeftReleased();
+ virtual void ProcessDPadRightReleased();
+ virtual void ProcessButtonWhitePressed();
+ virtual void ProcessButtonWhiteReleased();
+ virtual void ProcessTradeAction();
+ virtual void ProcessAugmentAction();
+ virtual bool ProcessQuestActivateAction();
+ virtual void IncrementQuestCardItemSelection();
+ virtual void DecrementQuestCardItemSelection();
+ long GetNumberOfSlotsForCategory(long) const;
+ void GetAllItems(std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > >&) const;
+ void ConfiscateAllItems();
+ void ConfiscateAllItemsOfType(long);
+ virtual void ReturnAllConfiscatedItems();
+ virtual void RemoveAllConfiscatedItems();
+ void UpdateLayout();
+ virtual bool GetIsEnabled() const;
+ virtual CWideString GetCategoryNameFromAssociation(CThing *) const;
+ virtual NUISystem::CComponent * ConstructScreen(NUISystem::CComponent *);
+ virtual void GetItemDescription(CWideString&,long,bool) const;
+protected:
+ void RemoveItemFromInventory(CThing&);
+public:
+ virtual void RemoveItemFromInventory(long,long);
+protected:
+ virtual bool AddItemToInventory(CThing&,bool,bool,long,bool);
+public:
+ virtual bool AddItemToInventory(long,long,bool,bool,long,bool);
+ virtual std::vector<NUISystem::CComponent *,std::allocator<NUISystem::CComponent *> >& GetComponents();
+ long GetBoughtPrice(long) const;
+ unsigned long GetMiniMapGraphic(CRegion&) const;
+ void SetQuestPersistFlagForAllItems(bool);
+ void IncrementQuestPersistentRefCountForNonPersistentItems();
+ void ResetQuestPersistentRefCountForNonPersistentItems();
+ const NInventory::CPerItemData * GetPerItemDataForItem(long) const;
+ CThing * GetBuildingThing() const;
+ void SetBuildingThing(CThing *);
+ float GetBestFishWeight(long) const;
+ void CaptureBackBufferToTexture();
+ void RenderUIBackdropQuad(float);
+protected:
+ virtual void OnSerialise(CPersistContext&,bool);
+ virtual void OnItemReturnedToInventory(CThing&);
+ void GetAllInventoryItemsOfType(long,std::vector<NInventory::CItem,std::allocator<NInventory::CItem> >&) const;
+ CWideString GetPrerequisitesString(CDefPointer<CQuestCardDef const >);
+ CWideString GetPrerequisitesString(CTCQuestCard *);
+ void UpdateItemStatsForThing(const CThing&);
+ virtual void OnItemAdded(long,bool,bool);
+ void AddCategory(NInventory::CTCInventoryBase *,long,CThing *);
+ long GetHighlightedItem() const;
+ void GetAllSelectedItems(std::vector<long,std::allocator<long> >&) const;
+ bool IsItemSelected(long) const;
+ void SetQuestPersistentFlagForItems(bool);
+ void UpdateNonQuestPersistentRefCountForItems(bool);
+ CThing * CreateInventoryObject(long);
+ CDefPointer<CInventoryDef const > GetPDef() const;
+ void SetPDef(long);
+ void SelectItemWithDefIndex(long);
+ void DeselectAll();
+ bool IsDying() const;
+ void SetNumberOfSelectedItemOwned(long);
+ void SetCanItemBeQuickAssigned(long);
+ bool GetCanItemBeQuickAssigned();
+ void SetCanItemBeUsed(long);
+ bool GetCanItemBeUsed();
+private:
+ void UpdateOpenPercentage();
+ void PlayInventoryMovementSound() const;
+ void PlayInventoryNoMovementSound() const;
+protected:
+ virtual void ConfiscateItems(const std::vector<NInventory::CItem,std::allocator<NInventory::CItem> >&);
+private:
+ void GetAllNonEmptyInventoryItems(std::vector<NInventory::CItem,std::allocator<NInventory::CItem> >&,bool) const;
+ void InitialiseInventoryWithItems(const std::vector<NInventory::CItem,std::allocator<NInventory::CItem> >&);
+ bool AddInventoryItem(const NInventory::CItem&);
+#else
+
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_PASS22_DTOR
+// Ego_r00622F92 / FableWin02364804; native005C00A0, kept out of line.
+public: virtual ~CTCInventoryBase();
+ virtual void InitialActivate(); // native005BF9E3, both PDBs
+ virtual void Copy(const CTCBase&); // native005BFB96, both PDBs
+ virtual void OnKill(); // native005BC9C8, both PDBs
+ virtual bool IsComponentSerialisable() const; // native004E7D3B, FableWin01B9B86F
+
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_DRAWTEXT
  // Same opt-in: Ego_r.pdb 0x0061F9FC ?Draw2DText@CTCInventoryBase@NInventory@@SIXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@M_N@Z
@@ -277,10 +485,18 @@ public:
  virtual NUISystem::CComponent* ConstructScreen(NUISystem::CComponent* parent);             // 77 0x0057A233 (xor eax,eax ; ret 4)
  virtual void GetItemDescription(CWideString& text, long itemDefIndex, bool a) const;       // 78 0x005BC6B3
  virtual void RemoveItemFromInventory(long itemDefIndex, long count);                       // 79 0x005BF3C6 (Trade 0x0059C747)
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_PASS22_DTOR
+// VC7.1 reverses this overload group; native slots80/81 are index then thing.
+protected:
+ virtual bool AddItemToInventory(CThing& item,bool a,bool b,long c,bool d);
+public:
+ virtual bool AddItemToInventory(long itemDefIndex,long count,bool a,bool b,long c,bool d);
+#else
  virtual bool AddItemToInventory(long itemDefIndex, long count, bool a, bool b, long c, bool d);   // 80 0x005BF654 (Trade 0x0059C6DD)
 protected:
  virtual bool AddItemToInventory(CThing& item, bool a, bool b, long c, bool d);             // 81 0x005BF32D (Trade 0x0059C710)
 public:
+#endif
  virtual std::vector<NUISystem::CComponent*>& GetComponents();                              // 82 0x004E7D62 (lea eax,[ecx+0Ch])
 protected:
  virtual void OnItemReturnedToInventory(CThing& item);                                      // 83 0x005BF4ED
@@ -288,13 +504,14 @@ protected:
  virtual void ConfiscateItems(const std::vector<CItem>& items);                             // 85 0x005BFB01
 public:
 #endif
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE
  // Retail opt-in (chunk 735, row 0x00577AC0 CTCInventoryExperience::OpenInventoryInternalPC): Ego_r.pdb
  // ?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ (public virtual, out of line at 0x005BD4EA; the row calls it qualified)
  // and the Components member typed as its PDB vector<NUISystem::CComponent*> (STLport 12 bytes; push_back(const T&) out of
  // line at 0x00486024, as the landed CTCInventoryTrade::OpenInventoryPC 0x005AE86B also calls it).
 public:
-#ifndef FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
+#if !defined(FABLE_RETAIL_CTCINVENTORYBASE_VTABLE) && !defined(FABLE_RETAIL_CTCINVENTORYBASE_ORIGINAL_COMPLETE_METHODS_PASS22)
  virtual void OpenInventory();
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_ANIMBOX
@@ -309,7 +526,11 @@ protected:
 #endif
  bool FirstRenderFrame;
  EInventorySelectionState InventorySelectionState;
+#ifdef FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
+ std::vector<CCategory> Categories;
+#else
  unsigned char Categories[12];
+#endif
  long HighlightedItemNumOwned,HighlightedItemMaxOwned;
  bool CanItemBeQuickAssigned,CanItemBeUsed;
  ESelectionState MenuArrowHighlightsCategoryUp,MenuArrowHighlightsCategoryDn;
@@ -342,7 +563,7 @@ private:
  unsigned char MenuDisplayListItem[12],MenuDisplayListCategory[12];
  std::vector<CItem> ConfiscatedItems;
 public:
-#ifndef FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
+#if !defined(FABLE_RETAIL_CTCINVENTORYBASE_VTABLE) && !defined(FABLE_RETAIL_CTCINVENTORYBASE_ORIGINAL_COMPLETE_METHODS_PASS22)
  virtual void RemoveAllConfiscatedItems();                 // slot 74, 0x005BF969 (Ego_r.pdb UAEXXZ)
 #endif
 private:

@@ -1,0 +1,53 @@
+{
+  "address": "00dd5a60",
+  "input_kind": "parked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 2,
+  "assigned_extent": 2250,
+  "input_label": "NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner::Main",
+  "baseline_status": "DIFFER",
+  "baseline_result": "/workspace/work/codex_pass22_20261114/history/00dd5a60/baseline_package/RESULT.json",
+  "owner": "sol_pass22_new_rows",
+  "source_written": true,
+  "full_function_source_strategies": 2,
+  "selected_attempt": "main_review_01",
+  "worker_match_state": "INDEPENDENT_TARGET_AND_CALLED_HELPERS_MATCH",
+  "worker_test_state": "VC71_OD_W3_GR_MINUS_AND_GPP64_CPP03_PASS",
+  "baseline_is_strategy": false,
+  "diagnostic_control_runs": 2,
+  "source_sha256": "7197d1f055c7e5271178c98a65a4739b018032bd0801f7e90bb6cb5a1b6832a6",
+  "test_sha256": "8a04e95fa050df6461a87fb446486035265a93ebfb2832b82f80862c81b3a386",
+  "retail_size": 2250,
+  "object_size": 2250,
+  "flags": [],
+  "code_data_relocations": 102,
+  "portable_target_scenarios": 98304,
+  "helper_debts": [],
+  "called_helpers": [
+    {
+      "address": "004aa840",
+      "size": 66
+    },
+    {
+      "address": "00cd4470",
+      "size": 20
+    }
+  ],
+  "unreferenced_shared_comdats_not_landed": 8,
+  "metadata_only_regrades": 1,
+  "worker_selected_attempt": "sol2_03_final_metadata_header_contract",
+  "main_verified": true,
+  "assigned_name": "NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner::Main",
+  "selected_flags": [],
+  "main_audit": "history/00dd5a60/main_review_01/MAIN_AUDIT.json",
+  "main_compiler_invocations": 1,
+  "main_combined_header_audit": "review/MERGED_AUDIT_13.json",
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "final_test_sha256": "8a04e95fa050df6461a87fb446486035265a93ebfb2832b82f80862c81b3a386",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "residue": "",
+  "ready_for_claude_reverification": true
+}

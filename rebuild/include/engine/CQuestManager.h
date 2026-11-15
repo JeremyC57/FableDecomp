@@ -231,6 +231,11 @@ public:
 #endif
     void GetAcceptedBoastsForScript(const CCharString&,std::list<CBoast>&)const;
 #endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_PODIUM
+    // Both original complete classes and module309 named calls; accessors expanded in00813D00.
+    unsigned long GetFrameBoastsLastUpdated()const{return FrameBoastsLastUpdated;}
+    const std::list<CBoast>& GetBoasts()const{return Boasts;}
+#endif
     const std::list<CIntelligentPointer<CThing> >& GetActiveQuestCards() const { return ActiveQuestCards; }
     const std::list<CIntelligentPointer<CThing> >& GetCompletedQuestCards() const { return CompletedQuestCards; }
     // Ego_r.pdb / FableWin.pdb ?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z (retail 0x004B05C0).

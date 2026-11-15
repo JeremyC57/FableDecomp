@@ -15,6 +15,12 @@
 #include "engine/C3DVector.h"
 #include "engine/CArray.h"
 #include "engine/CVertexShader.h"
+#ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_PASS22_FLAREBUFFER
+#include "engine/CCountedPointer.h"
+#include "engine/CVertexBufferWin32.h"
+#include "engine/CIndexBuffer.h"
+#include "engine/CPixelShader.h"
+#endif
 #endif
 class CEngineInit;
 class CEngineOcclusionManager : public CEngineComponent {
@@ -66,6 +72,17 @@ private:
     COccluderEntry  EntriesBuffer2[8192];                            // +0x14024
     CArray<COccluderFlareEntry> FlareTests;                          // +0x24024
     CArray<COccluderFlareEntry> PrevFrameFlareTests;                 // +0x24030
+#ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_PASS22_FLAREBUFFER
+    // Both complete PDB classes; native constructor/destructor and00B8DCD0 strides.
+    std::vector<std::pair<unsigned long,unsigned long> > HandleMapper;
+    std::vector<std::pair<unsigned long,unsigned long> > PrevFrameHandleMapper;
+    std::vector<std::pair<unsigned long,CCountedPointer<CVertexBufferWin32> > > FlareVertexBuffers;
+    CVertexShader VertexShaderFlareTest;
+    CVertexBufferWin32 UnitBoxVB;
+    CIndexBuffer UnitBoxIB;
+    CVertexShader OcclusionBoxVShader;
+    CPixelShader OcclusionBoxPixelShader;
+#else
     unsigned char   HandleMapper[0xc];                               // +0x2403c vector<pair<unsigned long,unsigned long> >
     unsigned char   PrevFrameHandleMapper[0xc];                      // +0x24048 vector<pair<unsigned long,unsigned long> >
     unsigned char   FlareVertexBuffers[0xc];                         // +0x24054 vector<pair<unsigned long,CCountedPointer<CVertexBufferWin32> > >
@@ -74,6 +91,7 @@ private:
     unsigned char   UnitBoxIB[0x14];                                 // +0x2409c CIndexBuffer
     unsigned char   OcclusionBoxVShader[0x8];                        // +0x240b0 CVertexShader
     unsigned char   OcclusionBoxPixelShader[0x8];                    // +0x240b8 CPixelShader
+#endif
 #else
 private:
     unsigned char _pad_0xc[0x240b4];            // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)

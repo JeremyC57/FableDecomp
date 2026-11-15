@@ -1,0 +1,23 @@
+address	codex_symbol	already_queued
+0x0042ABAF	??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z	??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z
+0x00485D25	?clear@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ	_unattributed::ApplyPair_00485d25 (landed name) | _unattributed::ApplyPair_00485d25 (unattributed_ApplyPair00485d25_00485d25.cpp)
+0x004C10E0	?GetStaticFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@XZ	landed/bound label wrong (GetHeadPosition)
+0x0099F1F0	?Sprintf@CCharString@@QAAXPBDZZ	?Format@CCharString@@QAAXPBDZZ, ?Format@CCharStringFmt@@QAAXPBDZZ
+0x00AADD80	??0?$vector@FV?$allocator@F@std@@@std@@QAE@I@Z	??0?$vector@G (landed leaf of 0x00AADD80); ??0?$CArray@F@@QAE@K@Z (landed 0x00AAD5D0 CWaveFile::ConvertToMono)
+0x00AADE80	??4?$vector@FV?$allocator@F@std@@@std@@QAEAAV01@ABV01@@Z	??4?$vector@G (landed leaf of 0x00AADE80); ??4?$CArray@F@@QAEAAV0@ABV0@@Z (landed 0x00AAD5D0)
+0x00C10940	??1logic_error@std@@UAE@XZ	? | ??1CCardPositionsDef@@UAE@XZ
+0x00C28380	?GetPointerFromHandle@CHandleBasedMemoryPool_012b4098@@QAEPAXJ@Z	?GetPointerFromHandle@CHandleBasedMemoryPool@@QAEPAXJ@Z
+0x00C59C60	?UpdatePitchLFO@CSalBaseVoice@@IAEXPBU_CPITCHLFO@@@Z	?SetVibrato@CCodaVoice@@QAEXPBUSVibratoParams@@@Z | ?SetVibrato@CCodaVoice@@QAEXPBUSVibratoParams@@@Z (CODA descriptive, 31 landed CCodaVoice siblings) -- stale binding ?ApplyStageTransform@CMaterialState_00c59fc0 from caller 0x00C59FC0 replaced at landing (the caller already emitted SetVibrato)
+0x00C5A700	?CalcMultiFuncEnvelope@CSalSwBaseVoice@@AAE_NPBU_CMULTIFUNCENVELOPE@@_N@Z	PROPOSAL ?UpdatePitchEnvelopeStages@CCodaVoice@@QAE_NPBUSPitchEnvelopeParams@@_N@Z
+0x00C5CA60	?CalcParams@CSalSw2DVoice@@QAEXPBVCCoda2DSource@@I@Z	PROPOSAL ?ApplyParameters@CSoftwareVoice@@QAEXPBVCSampleBuffer@@K@Z
+0x00C6B240	?FtoL@@YAJM@Z	?sal_round@@YAHM@Z
+0x00C783F0	?Translate@CFloatReverbParameterTranslator@@QAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z	?Configure@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z
+0x01375CD4	?DefaultBackBufferWidth@CUIScreenUnitConverter@NUISystem@@0MA	?ScreenWidth@CUIScreenUnitConverter@NUISystem@@2MA
+0x01375CD8	?DefaultBackBufferHeight@CUIScreenUnitConverter@NUISystem@@0MA	?ScreenHeight@CUIScreenUnitConverter@NUISystem@@2MA
+0x013B8768	?IsUsingRelativeCoords@CUIScreenUnitConverter@NUISystem@@0_NA	?IsUsingRelativeCoords@CUIScreenUnitConverter@NUISystem@@2_NA
+0x013B876C	?BackBufferWidth@CUIScreenUnitConverter@NUISystem@@0MA	?BackBufferWidth@CUIScreenUnitConverter@NUISystem@@2MA
+0x013B8770	?BackBufferHeight@CUIScreenUnitConverter@NUISystem@@0MA	?BackBufferHeight@CUIScreenUnitConverter@NUISystem@@2MA
+0x01436E38	?GPScreenEffectDisplacementRenderer@NEngineInternal@@3PAVCEngineScreenEffectDisplacementRenderer@@A	(global) CEngineScreenEffectDisplacementRenderer* -- no PDB data name; this chunk uses ?g_pDisplacementRenderer_01436e38@@3PAVCEngineScreenEffectDisplacementRenderer@@A | g_pDisplacementRenderer_01436e38 | one global, three bound names: g_pEngineSettings_01436e38 / g_pDisplacementRenderer_01436e38 / g_pShadowRenderer
+0x01436E3C	?GPScreenEffectOutlineGlow@NEngineInternal@@3PAVCEngineScreenEffectOutlineGlow@@A	?GPScreenEffectOutlineGlow@NEngineInternal@@3PAVCEngineScreenEffectOutlineGlow@@A (NEngineInternal::GPScreenEffectOutlineGlow) | ?g_pEngineScreenEffectOutlineGlow@@3PAVCEngineScreenEffectOutlineGlow@@A | CEngineScreenEffectOutlineGlow global (OutlineGlowScaleFactor at +0x1bc); landed 0x00B33010 binds it as g_pWaterRenderer; no PDB data name
+0x01436EA8	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	g_pLandscapeRenderer | g_pLandscapeRenderer (descriptive; type CEngineLandscapeRenderer*)
+0x0143BC2C	?g_pSal@@3PAVCSalPlatform@@A	?

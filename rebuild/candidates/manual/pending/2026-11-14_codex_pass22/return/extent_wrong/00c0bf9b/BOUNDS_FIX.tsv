@@ -1,0 +1,2 @@
+address	status	actual_start	actual_end_exclusive	actual_length	detail
+00c0bf9b	EXTENT_WRONG	00c0bf90	00c0bfde	78	Starts11bytes into already-landed CString::AllocCopy; flags consumed atBF9E originate from add atBF99

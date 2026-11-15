@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00743600   RELOCATION_MATCH PASS   ~CModeGuildmasterPowerUpShield
+00750e30   RELOCATION_MATCH PASS   FrameUpdate
+00779ef0   RELOCATION_MATCH PASS   OnInitialActivate
+007c4430   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007c4430   RELOCATION_MATCH TCC_FAIL StartHealingEffect
+008e3a20   RELOCATION_MATCH PASS   ~CModeScorpionKingVulnerable
+
+WINS: 4
+  00743600 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpShield::??1CModeGuildmasterPowerUpShield@NCreatureMode@@UAE@XZ
+  00750e30 RELOCATION_MATCH CTCExplodingObject::?FrameUpdate@CTCExplodingObject@@UAEXXZ
+  00779ef0 RELOCATION_MATCH CTCDExperienceOrb::?OnInitialActivate@CTCDExperienceOrb@@UAEXXZ
+  008e3a20 RELOCATION_MATCH NCreatureMode::CModeScorpionKingVulnerable::??1CModeScorpionKingVulnerable@NCreatureMode@@UAE@XZ
+rc=0

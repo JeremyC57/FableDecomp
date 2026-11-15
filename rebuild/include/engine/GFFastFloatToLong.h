@@ -1,3 +1,5 @@
+// Retail-asm: Pass22 parent00BA1140 00BA1701 fld dword ptr [esp+40h];00BA1705 mov edx,[esp+64h];00BA1709 fistp dword ptr [edx].
+// Per-site30 C++ and10 intrinsic RTM grades plus QIfist diagnostic:00ba115c/ROUNDING_ATTEMPTS.md.
 // GFFastFloatToLong(float) -- round a float to a long with the x87 rounding mode (round to nearest, ties to even, by
 // default), storing through a pointer to the result: the engine's pointer-out inline-assembly float-to-long, expanded in
 // place by every caller.
@@ -42,6 +44,21 @@ FABLE_FORCEINLINE long __fastcall GFFastFloatToLong(float value)
     __asm fistp dword ptr [edx]
     return result;
 }
+#endif
+
+
+#ifdef FABLE_RETAIL_GFFASTFLOATTOLONG_PARTICLE_MACRO
+// Retail-asm-helper: GFFastFloatToLong (PDB ?GFFastFloatToLong@@YIJM@Z).
+// Retail-asm: 00B0CBC8 fld[esp+14h],00B0CBCC mov edx,[esp+10h],00B0CBD0 fistp dword[edx];
+// 00B0D308 fld[esp+54h],00B0D30C mov edx,[esp+0Ch],00B0D310 fistp dword[edx].
+// Per-site 30 plain C++ and 10 intrinsic full-target grades: rows/00b0cad0/ROUNDING_ATTEMPTS.md.
+// The macro and original named forced helper both match; canonical ladder selects the macro first.
+// Nearest-even x87 mode, masked invalid operation; invalid input gives the signed32 indefinite value.
+#ifdef FABLE_PORTABLE
+#define GF_FAST_FLOAT_TO_LONG(destination_pointer,input_value) do { *(destination_pointer)=fable_portable::X87FistpNear(input_value); } while(0)
+#else
+#define GF_FAST_FLOAT_TO_LONG(destination_pointer,input_value) do { __asm { fld input_value } __asm { mov edx,destination_pointer } __asm { fistp dword ptr [edx] } } while(0)
+#endif
 #endif
 
 #endif  // FABLE_ENGINE_GFFASTFLOATTOLONG_H

@@ -18,8 +18,13 @@ public:
     float MaxValue;                                     // +0x0c
     float a;                                            // +0x10
     float Overall;                                      // +0x14
+#ifdef FABLE_RETAIL_CSLIDERANIMATOR_ORIGINAL_SETPLAY_PASS22
+    // Original both-PDB public setter; original Play/Finished are protected.
+    void SetPlay(bool play) { Play = play; }
+protected:
+#endif
     bool Play;                                          // +0x18
     bool Finished;                                      // +0x19
 };
-FABLE_STATIC_ASSERT(sizeof(CSliderAnimator) == 0x1c);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CSliderAnimator) == 0x1c);
 #endif

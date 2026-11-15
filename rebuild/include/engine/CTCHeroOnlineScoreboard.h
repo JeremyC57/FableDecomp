@@ -7,6 +7,12 @@
 // name sets, so none are declared). UpdateScoreForActivity is out of line in retail at 0x0055F3B0 (`ret 0Ch`). Members opaque
 // (Ego_r.pdb 0x88 bytes with Dinkumware containers; the retail size is not needed here).
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_NETWORK
+#include "stlport/fable_string.h"
+#include "boost/scoped_ptr.h"
+#include "engine/LHHttp2.h"
+#include "engine/CUserProfileManager.h"
+#endif
 #include "engine/ETCInterfaceType.h"
 #ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_MEMBERS
 #include "fable_string.h"
@@ -16,9 +22,18 @@
 class CTexture;
 namespace NUISystem { class CComponent; }
 #endif
+#if defined(FABLE_RETAIL_CTCHEROONLINESCOREBOARD_NETWORK) && !defined(FABLE_RETAIL_CTCHEROONLINESCOREBOARD_MEMBERS)
+#error "Scoreboard NETWORK requires its original MEMBERS layout"
+#endif
 class CTCHeroOnlineScoreboard : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_NETWORK
+    // Exact original enumerators from both PDB field-list records.
+    enum EOnlineScoreboardActivity { OSA_MURDERS=0, OSA_DECAPITATIONS=1, OSA_MULTIPLIER=2, OSA_EXPERIENCE=3, OSA_CHICKEN_KICK_DISTANCE=4, OSA_WEALTH=5, OSA_SEXUAL_ENCOUNTERS=6, OSA_BIGGEST_FISH=7, OSA_ARCHERY_SCORE=8, OSA_SPOUSES=9, OSA_TEMPLE_CONTRIBUTION=10, OSA_ADMIRERS=11, OSA_WEDDINGS=12, OSA_DIVORCES=13, OSA_TIMES_WIDOWED=14, OSA_PUKINGS=15, OSA_RENT_COLLECTED=16, OSA_HIGH_SCORE_CHICKEN_KICK=17, OSA_HIGH_SCORE_PAIRS=18, OSA_HIGH_SCORE_CARD_SORTING=19, OSA_HIGH_SCORE_GUESS_THE_ADDITION=20, OSA_HIGH_SCORE_ORACLE_MINIGAME=21, OSA_HIGH_SCORE_COIN_GOLF_OV=22, OSA_HIGH_SCORE_COIN_GOLF_SS=23, OSA_HIGH_SCORE_BLACKJACK=24, OSA_HIGH_SCORE_HAPENNY=25, OSA_SUCCESSIVE_WINS_PAIRS=26, OSA_SUCCESSIVE_WINS_CARD_SORTING=27, OSA_SUCCESSIVE_WINS_GUESS_THE_ADDITION=28, OSA_SUCCESSIVE_WINS_ORACLE_MINIGAME=29, OSA_SUCCESSIVE_WINS_COIN_GOLF_OV=30, OSA_SUCCESSIVE_WINS_COIN_GOLF_SS=31, OSA_SUCCESSIVE_WINS_BLACKJACK=32, OSA_SUCCESSIVE_WINS_HAPENNY=33, OSA_CRIMES_REPORTED=34, OSA_TOTAL_FINES=35, OSA_TOTAL_FINES_PAID=36, OSA_BRIBES=37, OSA_BIGGEST_FISH_IN_COMPETITION=38, OSA_NUM_ACTIVITIES=39 };
+    enum ENetworkSuccess { ENS_SUCCESS=1000, ENS_FAILURE=1001, ENS_PENDING=1002 };
+#else
     enum EOnlineScoreboardActivity { };
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_ONLINE_SCOREBOARD; }
     void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool flag);   // 0x0055F3B0
 #ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_MEMBERS
@@ -28,6 +43,9 @@ public:
     // ScoreboardState +0x50, TaskState +0x54, PScoreboardScreen +0x58, PClanMenuEntry +0x5C, PConnectingMessage +0x60,
     // PConnectingMessage1 +0x64 -- and the nested Ego_r.pdb classes CActivity / CClanInfo / CClanMember. Needs FABLE_RETAIL_CTCBASE,
     // FABLE_RETAIL_CCHARSTRING / FABLE_RETAIL_CWIDESTRING and FABLE_RETAIL_CCOUNTEDPOINTER. Member functions: declarations only.
+#ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_ORIGINAL_ALIASES_PASS22
+    typedef float TActivityScore;
+#endif
     class CActivity { public:                                       // CTCHeroOnlineScoreboard::CActivity (Ego_r.pdb, 0x10)
         CCharString   Name;                                         // +0x00
         CCharString   Description;                                  // +0x04
@@ -49,7 +67,17 @@ public:
         CWideString Description;                                    // +0x08
         bool operator==(const CWideString& name) { return Name == name; }
     };
+#ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_ORIGINAL_ALIASES_PASS22
+    typedef std::pair<TActivityScore,CWideString> TOnlineSingleScore;
+    typedef std::vector<TOnlineSingleScore> TOnlineTopScoresInSingleEvent;
+    typedef std::map<EOnlineScoreboardActivity,TOnlineTopScoresInSingleEvent> TOnlineScoreboard;
+    typedef std::map<EOnlineScoreboardActivity,TActivityScore> TLocalScoreboard;
+#endif
+#ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_NETWORK
+    boost::scoped_ptr<LHNetworkLib::LHHttp2> PHttp;
+#else
     void*                                       PHttp;              // +0x0C scoped_ptr<LHNetworkLib::LHHttp2>
+#endif
     std::map<long, CCountedPointer<CTexture> >  PictureCache;       // +0x10
     std::map<EOnlineScoreboardActivity, float>  LocalScoreboard;    // +0x1C
     std::vector<CActivity>                      ActivityInfo;       // +0x28
@@ -67,6 +95,15 @@ public:
     bool IsScoreboardEmpty();                                       // 0x0055E7F0
     void DisplayErrorMessage(const CWideString& text);              // 0x0055EF00
 private:
+#ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_NETWORK
+    ENetworkSuccess ResetAndOpenHTTPAndPrepareRequest(const std::string&,const CCharString&,bool);
+    ENetworkSuccess UpdateTransaction();
+    int GetDecryptedDocument(std::vector<std::string>&,const CCharString&);
+    ENetworkSuccess DownloadScoreboardForSelectedClan();
+    CCharString GetGameIdent() { return CCharString("Fable1.5\r\nVersion 1\r\n"); }
+    CCharString GetCDKey() { return CCharString("THIS-ISMY-VALI-DCDK-EYOH-YESI-TISM"); }
+    CCharString GetSignedInUserName() { return CUserProfileManager::Get().GetScoreboardUserName().ToCharString(); }
+#endif
     CCharString ActivityEnumToCharString(const EOnlineScoreboardActivity& activity);   // 0x0055E7C0
     CCountedPointer<CTexture> GetCachedImage(const CWideString& folder, long id);     // 0x0055FC90
     void DisplayScoreboardGUI();

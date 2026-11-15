@@ -48,7 +48,7 @@ namespace NGraphicAppearance { class CTCGraphicAppearance; }
 // FableWin GetTC<T> debug instantiations name this checked-cast template;
 // the release path is the identity-adjusted static cast observed in native lookups.
 #include "engine/GFDebugPDynamicCast.h"
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_CTCHEALLIFE_START_ORIGINAL)
 // Original donor024CFED8 instantiates this checked cast; debug checks vanish in retail.
 template<class From,class To> inline To* FABLE_FASTCALL GFDebugDynamicCast(From* value,To*) { return static_cast<To*>(value); }
 #endif
@@ -458,6 +458,10 @@ public:
     }
     const CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
     const C3DVector& GetPos() const;
+#ifdef FABLE_RETAIL_CTHING_PASS22_GRAPHICBANK
+    // Retail opt-in (Codex pass22): both PDBs PeekGraphicBank, native0x004C7D90.
+    const class CGraphicDataBank* PeekGraphicBank() const;
+#endif
     C3DVector GetPhysPos() const;
 #ifdef FABLE_RETAIL_CTHING
     // Retail opt-in (2026-11-03, row 0x005EB9E0): the public non-virtual SetAsRenderedThisFrame 0x004C7590 (Ego_r.pdb / FableWin.pdb
@@ -700,6 +704,6 @@ public:
     static void __fastcall SetCurrentThingManager(CThingManager& thing_manager);   // 0x004C74F0
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CThing)==0x98);
+FABLE_STATIC_ASSERT_AT(703, sizeof(CThing)==0x98);
 
 #endif

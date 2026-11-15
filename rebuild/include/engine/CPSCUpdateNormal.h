@@ -10,6 +10,9 @@ namespace NParticleEngine {
 class CParticleEmitter;
 class CPSCUpdateNormal:public CPSCBase {
 public:
+#ifdef FABLE_RETAIL_CPSCUPDATENORMAL_UPDATE_ADD
+ virtual void UpdateAddParticle(CParticleSystem&,const CParticleUpdateParameters<unsigned long,unsigned long>&,C3DVector,C3DVector,float);
+#endif
  virtual void Update(CParticleSystem&,const CParticleUpdateParameters<unsigned long,unsigned long>&,bool&);
 protected:
  float GetCurrentFadeValue()const;
@@ -60,5 +63,5 @@ protected:
     std::list<CIntelligentPointer<CParticleEmitter> > DecalEmitterList;   // +0x9c
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CPSCUpdateNormal)==0xa0);
+FABLE_STATIC_ASSERT_AT(63, sizeof(NParticleEngine::CPSCUpdateNormal)==0xa0);
 #endif

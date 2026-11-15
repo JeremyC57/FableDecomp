@@ -5,6 +5,9 @@
 class CCodaListener:public CCodaObject {
 public:
  virtual ~CCodaListener();
+#ifdef FABLE_RETAIL_PASS22_CCODACONTEXT_CREATE
+ CCodaListener();
+#endif
  void Commit();
  static unsigned int GetCommit(){return m_ffCommit;}
  static void ClearCommit(){m_ffCommit=0;}

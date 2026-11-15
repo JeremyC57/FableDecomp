@@ -27,6 +27,11 @@ class CEngineLocalLightArray; class CTexture;
 #endif
 class CEngineClothRenderer : public CEnginePrimitiveRenderUtil {
 public:
+
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+ bool GetEnable()const{return EnableCloth;}
+#endif
     CEngineClothRenderer();
     virtual ~CEngineClothRenderer();
     virtual void FrameStart();

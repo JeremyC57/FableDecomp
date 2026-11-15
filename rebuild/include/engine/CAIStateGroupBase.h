@@ -179,6 +179,10 @@ protected:
 #if defined(FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD) && !(defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH))
     CWorld& GetWorld() const;
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_INTERACTWITH
+    // Retail opt-in (Codex pass22,row0090E5D0): both exact original PUBLICs and method types.
+    EAIActionReturn AIAction_InteractWith(EAIActionRepeat,CIntelligentPointer<CThingAICreature>,CCharString,int,bool);
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
     // Nested opt-in (chunk 755, row 0x0090C540): Ego_r.pdb protected AI action members (retail 0x0097E380 / 0x0097D6F0; Ego_r
     // 0x008491B0 / 0x008484A0 manglings), declarations only. The three enums are MS forward enums (the row defines the

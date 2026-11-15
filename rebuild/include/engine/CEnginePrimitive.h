@@ -19,7 +19,7 @@ public:
         :Type(type),InterpolationSet(interpolation_set){}
 #else
 protected:
-#ifdef FABLE_RETAIL_STEALTH_DRAW
+#if defined(FABLE_RETAIL_STEALTH_DRAW) || defined(FABLE_RETAIL_CTEXT_DRAW_PRIMITIVE_BODIES)
 public:
     CEnginePrimitive(EEnginePrimitiveType type,unsigned __int64 id,EEngineInterpolationSet interpolation_set):Type(type),InterpolationSet(interpolation_set){}
 protected:

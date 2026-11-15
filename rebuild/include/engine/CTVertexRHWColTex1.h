@@ -5,6 +5,20 @@
 // U1 +0x14, V1 +0x18; the CTVertexRHWColTex1 wrapper (CGenericVertex<...>) adds no data. Retail 0x009FA780 fills four of them with a
 // 0x1C stride (DrawAsIndexedTris stride 1Ch) and never writes DiffuseColour.
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CTVERTEXRHWCOLTEX1_ORIGINAL_BASE
+class CTVertexRHWColTex1Base {
+public:
+    float         X;                            // +0x00
+    float         Y;                            // +0x04
+    float         Z;                            // +0x08
+    float         RHW;                          // +0x0c
+    unsigned long DiffuseColour;                // +0x10
+    float         U1;                           // +0x14
+    float         V1;                           // +0x18
+};
+#include "engine/CGenericVertex.h"
+class CTVertexRHWColTex1 : public CGenericVertex<CTVertexRHWColTex1Base> {};
+#else
 class CTVertexRHWColTex1 {
 public:
     float         X;                            // +0x00
@@ -15,5 +29,6 @@ public:
     float         U1;                           // +0x14
     float         V1;                           // +0x18
 };
-FABLE_STATIC_ASSERT(sizeof(CTVertexRHWColTex1) == 0x1c);
+#endif
+FABLE_STATIC_ASSERT_AT(18, sizeof(CTVertexRHWColTex1) == 0x1c);
 #endif // FABLE_ENGINE_CTVERTEXRHWCOLTEX1_H

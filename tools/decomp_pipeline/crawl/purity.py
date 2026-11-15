@@ -70,6 +70,8 @@ import re
 from pathlib import Path
 
 MARKERS = ("_emit", "__declspec(naked)", "declspec(naked)", "__asm")
+# `_emit` as a token, not inside an identifier (row 0x007C4430's local `ptc_emitter` is plain C++).
+_EMIT = re.compile(r"(?<![A-Za-z0-9_])_emit(?![A-Za-z0-9_])")
 RETAIL_ASM_TAG = "// Retail-asm:"
 RETAIL_ASM_MAX = None   # no cap (owner, 2026-10-27); kept for callers that import the name
 _EXIT = re.compile(r"^\s*(ret|retn|retf|iret|iretd)\b", re.I)
@@ -92,7 +94,7 @@ def _evidence(text):
 
 
 def _retail_asm(text):
-    if RETAIL_ASM_TAG not in text or "_emit" in text or "naked" in text:
+    if RETAIL_ASM_TAG not in text or _EMIT.search(text) or "naked" in text:
         return False
     ins = _asm_instructions(text)
     if not ins or any(_EXIT.match(i) for i in ins):
@@ -115,7 +117,7 @@ def _toolchain_library(text):
     """A documentation stub for library bytes: the proof line, declarations only, no machine code."""
     if not _TOOLCHAIN_CLAIM.search(text):
         return False
-    if any(m in text for m in ("_emit", "naked", "__asm")):
+    if _EMIT.search(text) or any(m in text for m in ("naked", "__asm")):
         return False
     code = re.sub(r"/\*.*?\*/", "", text, flags=re.S)
     code = re.sub(r"//[^\n]*", "", code)
@@ -215,7 +217,7 @@ def _helper_grade(text, dirs=None):
 def classify(text, include_dirs=None):
     if (TOOLCHAIN_LIBRARY_TAG in text or VENDOR_LIBRARY_TAG in text) and _toolchain_library(text):
         return "toolchain_library"
-    if "_emit" in text:
+    if _EMIT.search(text):
         return "emit_bake"
     if "naked" in text or "__asm" in text:
         # 2026-11-05 (docs/pipeline/ASM_RULES.md rule 5): no `__asm` in a row source; a row reaches retail asm only by calling a

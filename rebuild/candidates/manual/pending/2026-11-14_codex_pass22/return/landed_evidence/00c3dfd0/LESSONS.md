@@ -1,0 +1,4 @@
+- (0x00C3DFD0) Original four new[] resource types plus natural /EHsc reproduce the entire642-byte context creation body; old hero/mesh labels and flags parameter guesses were wrong.
+- (0x00C3DFD0) Audit all compiler EH sections and maps: four11-byte cleanup funclets, handler10, map/FuncInfo60 and all4vector-deleting companions match, including internal relocations.
+- (0x00C3DFD0) __except_list is the CRT FS:[0] offset. A display-only fake address in the disassembler must not be mistaken for an instruction residue; explicitly verify both raw operands are zero.
+- (0x00C3DFD0) SDK debug resource types are four base bytes larger than native, while context is twelve; prove fields and sizes individually rather than importing debug sizeof.

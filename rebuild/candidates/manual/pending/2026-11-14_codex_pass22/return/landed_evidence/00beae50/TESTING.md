@@ -1,0 +1,10 @@
+# 00BEAE50 validation
+
+The complete production SetTargetVertexDepth and Load definitions are included verbatim, not an unpack-only replacement. Corrected tests pass1792 scenarios each under VC71 RTM /Od /W3 without /EHsc and GCC64 C++03 -O0 -Wall -Wextra. Exact success output is `00beae50_TEST PASS`; hashes and stdout are in TEST_RESULTS.json.
+
+896 success and896 allocation-failure scenarios cover16 signed water-type inputs,8 seeded datasets,7 source-chunk sizes, all289 vertices/all12 shore floats, signed-depth extrema and clamping, native finite float payloads, allocation arguments/owner/usage, complete stream consumption, early failure at byte8, Lock/Unlock, compressed/uncompressed array lifetime order, and the decompressor input/output contract.258944 decoded vertices are checked per compiler. The external range decompressor is a recording contract double that copies prepared decoded data; its compression algorithm is not claimed tested. Full independent range helper source visibility was tried and rejected.
+
+All40 target symbol relocations resolve; the main remains193 masked differing bytes across32 code hunks. The called vector constructor is77 bytes exact with its exact malloc target.11 type sizes/24 member offsets and physical enum/depth-scale values pass VC layout checks. All old branches of the5 owned header changes are lexically identical with the new feature off, modulo individually pinned old assertion lines;224 concrete old/default preprocessing profiles also match.19 old assertions are pinned and the new enum header is empty without the new feature. No main-byte match is claimed.
+
+
+Continuation: target isnowfull1592maskedexactincludingtable, andcalledconstructor77isstillindependentlyexact. Fresh1792casespercompilerexecuteactualproductionReadbranchinsidefixtureinstrumentationplusverbatimwholeloader/depthhelper. Completefixture/source/hashreceiptsinTEST_BODY_PROOF.jsonandTEST_RESULTS.json. CurrentsharedABI11sizes24offsets/physicalenumand38800100depthbits;two-original-PDBproofsandconst/basechecksadded. Fresh162accepted33old/defaultprofilesPASS. Originaldecompressor/finite-payloadtestlimitsaboveapply.

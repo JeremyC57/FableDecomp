@@ -1,0 +1,77 @@
+address	reserved_as	module	name	length	flags	grade	test
+00409fd0	00409fd0	CUserProfileManager	SaveGameState	1892		RELOCATION_MATCH	PASS
+0040c790	0040c790	CUserProfileManager	SetDefaultValues	1284		RELOCATION_MATCH	PASS
+0047e196	0047e196	CTCInGameMenu	SaveGame	1211	/O1 /Oy-	RELOCATION_MATCH	PASS
+0053f1c0	0053f1c0	NUISystem::CScrollingViewport	Update	1601		RELOCATION_MATCH	PASS
+0054ac90	0054ac90	NUISystem::CSlider	ProcessEvent	1454	/d2inlT256	RELOCATION_MATCH	PASS
+00563480	00563480	CTCHeroOnlineScoreboard	DownloadScoreboardForSelectedClan	1178	/Gr	RELOCATION_MATCH	PASS
+00577ac0	00577ac0	CTCInventoryExperience	OpenInventoryInternalPC	2157		RELOCATION_MATCH	PASS
+0058771c	0058771c	CTCInventory	ResetPrimitiveHandles	45		RELOCATION_MATCH	PASS
+005a6769	005a6769	CTCInventoryTrade	ConstructNormalShopListPC	1336		RELOCATION_MATCH	PASS
+005aecc0	005aecc0	CTCInventoryTrade	SellItem	2446		RELOCATION_MATCH	PASS
+005e78f0	005e78f0	CTCQuestCompletionUI	GlobalUpdate	2340		RELOCATION_MATCH	PASS
+005f8e6d	005f8e6d	std	__pop_heap_aux	34	/Gr	RELOCATION_MATCH	PASS
+005f8e8f	005f8e8f	std	__pop_heap_aux	34	/Gr	RELOCATION_MATCH	PASS
+006a5d90	006a5d90	CThingPhysical	ConstructFromLevelScript	1268	/d2inlS29	RELOCATION_MATCH	PASS
+006b16b0	006b16b0	CAtmosProcess	RegisterAtmosPalette	581		RELOCATION_MATCH	PASS
+006b9610	006b9610	CFactionManager	LoadGameState	451		RELOCATION_MATCH	PASS
+006bdc60	006bdc60	CMusicManager	Update	492		RELOCATION_MATCH	PASS
+006c9c60	006c9c60	CPersistContext	Transfer	106		RELOCATION_MATCH	PASS
+006ec850	006ec850	CDefendingCombatantInfo::CCombatWheel	Init	1606		RELOCATION_MATCH	PASS
+0072dbe0	0072dbe0	CTCInventoryMagic	~CTCInventoryMagic	91		RELOCATION_MATCH	PASS
+0072dc40	0072dc40	CTCInventoryMagic	CloseInventory	35		RELOCATION_MATCH	PASS
+00743600	00743600	NCreatureMode::CModeGuildmasterPowerUpShield	~CModeGuildmasterPowerUpShield	121		RELOCATION_MATCH	PASS
+0074bc20	0074bc30	CTCCreatureGenerator	DrawDebugInfo	1290	/d2inlT62	RELOCATION_MATCH	PASS
+00750e30	00750e30	CTCExplodingObject	FrameUpdate	501		RELOCATION_MATCH	PASS
+00779ef0	00779ef0	CTCDExperienceOrb	OnInitialActivate	567		RELOCATION_MATCH	PASS
+0077bec0	0077bec0	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity	OnAppearanceDraw	658	/d2inlT104	RELOCATION_MATCH	PASS
+0077c4d0	0077c4d0	NGraphicAppearance::CTCGraphicAppearanceSprite	OnAppearanceDraw	611		RELOCATION_MATCH	PASS
+007a6760	007a6760	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh	OnAppearanceDraw	645		RELOCATION_MATCH	PASS
+007c36a0	007c36a0	CTCDrainLife	FrameUpdate	606		RELOCATION_MATCH	PASS
+007ccf50	007ccf50	CTCMultiStrike	ApplyEffectOnWeapon	1088	/Gr	RELOCATION_MATCH	PASS
+007eff80	007eff80	CTCCarriedActionUseFishingRod	IsThingAbleToFish	619		RELOCATION_MATCH	PASS
+008e3a20	008e3a20	NCreatureMode::CModeScorpionKingVulnerable	~CModeScorpionKingVulnerable	115		RELOCATION_MATCH	PASS
+009a3c20	009a3c20	CStreamingFontBank	CStreamingFontBank	1298		RELOCATION_MATCH	PASS
+009df730	009df730	CStateBlockFunctionAlphaAdditive	Apply	1633		RELOCATION_MATCH	PASS
+009dfda0	009dfda0	CStateBlockFunctionAlphaMultiply	Apply	1633		RELOCATION_MATCH	PASS
+009e0410	009e0410	CStateBlockFunctionAlphaBoolean	Apply	1738		RELOCATION_MATCH	PASS
+009e0ae0	009e0ae0	CStateBlockFunctionAlphaText	Apply	1635		RELOCATION_MATCH	PASS
+009fa780	009fa780	CTexture	BltToRenderTargetWithGPU	2028	/GS	RELOCATION_MATCH	PASS
+00a495f0	00a495f0	CLipSyncSampleData	ReadFromFile	1261	/Gr	RELOCATION_MATCH	PASS
+00a8ad40	00a8ad40	C3DMesh2	LoadBinary	1621		RELOCATION_MATCH	PASS
+00aad650	00aad650	CWaveLoader	LoadWaveFile	1575		RELOCATION_MATCH	PASS
+00ad7260	00ad7260	QuadricOptimiserInternals::COptimisedSubMesh	~COptimisedSubMesh	81	/Gr	RELOCATION_MATCH	PASS
+00ae1bc0	00ae1bc0	CParticleSimulation	ReadFromFile	1158		RELOCATION_MATCH	PASS
+00ae3510	00ae3510	CParticleProgram	ClearGroups	55		RELOCATION_MATCH	PASS
+00af7b00	00af7b00	NParticleEngine::CParticle	ClearAll	55		RELOCATION_MATCH	PASS
+00af7c50	00af7c50	NParticleEngine::CDecal	ClearAll	37		RELOCATION_MATCH	PASS
+00b0cad0	00b0cad0	NParticleEngine::CPSCUpdateNormal	UpdateAddParticle	2191	/d2inlT400	RELOCATION_MATCH	PASS
+00b1a870	00b1a870	NParticleEngine::CPSCLight	DatabaseSerialise	1310		RELOCATION_MATCH	PASS
+00b32010	00b32010	CEnginePrimitiveRenderer	SetDrawDistanceQuality	134		RELOCATION_MATCH	PASS
+00b46c80	00b46c80	CEngineLightingManager	UpdateGlobalLightingStates	1531		RELOCATION_MATCH	PASS
+00b484b0	00b484b0	CEngineLightingManager	FrameStart	1177		RELOCATION_MATCH	PASS
+00b4bcc0	00b4bcc0	CEngineShadowRenderer	CalcClipVolume	2179	/d2inlT81	RELOCATION_MATCH	PASS
+00b4c550	00b4c550	CEngineShadowRenderer	CalcSpotLightClipVolume	2242	/d2inlT81	RELOCATION_MATCH	PASS
+00b6e890	00b6e890	CEngineWaterRenderer	RenderBumpMap	1371		RELOCATION_MATCH	PASS
+00b761d0	00b761d0	CEngineWaterRenderer	RenderForeground	2531		RELOCATION_MATCH	PASS
+00b98e10	00b98e10	CEnginePrimitiveManagerRepeatedStaticMeshes	ClipSubSectionsSIMD	664		RELOCATION_MATCH	PASS
+00ba1140	00ba115c	CEnginePrimitiveManagerStaticMeshesBase	RenderPrimitive	2344	/d2inlT256	RELOCATION_MATCH	PASS
+00bc3f30	00bc3f3d	CEnginePrimitiveManagerParticleLineGroup	RenderSubPrimitive	3357	/d2inlT512	RELOCATION_MATCH	PASS
+00bc6db0	00bc6db0	CEnginePrimitiveManagerText	RenderSubPrimitive	2217		RELOCATION_MATCH	PASS
+00bd71b0	00bd71cc	CEnginePrimitiveManagerAnimatedMeshesBase	RenderPrimitive	2116	/d2inlT256	RELOCATION_MATCH	PASS
+00beae50	00beae50	CWaterPatchMesh	Load	1592		RELOCATION_MATCH	PASS
+00befd90	00befd90	CEnginePrimitiveRenderUtil	SetupOutlineSmoothStencilStates	1100		RELOCATION_MATCH	PASS
+00bf7bc0	00bf7bc0	CLandscapeBackgroundTreeNode	CalculateCameraUpdateThreshold	546	/d2inlT282	RELOCATION_MATCH	PASS
+00c26260	00c26260	CStreamBuffer	GetPoolData	22		RELOCATION_MATCH	PASS
+00c29dc0	00c29dc0	CSoundEventGroup	GetPositionFlag	8		MATCH	PASS
+00c32fa0	00c32fa0	CDefaultAudioFile	Close	26		RELOCATION_MATCH	PASS
+00c3dfd0	00c3dfd0	CCodaContext	Create	642	/EHsc	RELOCATION_MATCH	PASS
+00c41060	00c41060	CCoda3DSource	Create	621		RELOCATION_MATCH	PASS
+00c5acb0	00c5acb0	CSalSwBaseVoice	CalcParams	662	/Oi	RELOCATION_MATCH	PASS
+00c5e0c0	00c5e0c0	CSalKsPin	SetConnectionState	22		RELOCATION_MATCH	PASS
+00c6b050	00c6b050	CFloatReverbEngine	Create	490		RELOCATION_MATCH	PASS
+00dd5a60	00dd5a60	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner	Main	2250		RELOCATION_MATCH	PASS
+00e4aa00	00e4aa00	NScript::CV_BanditTollScript::CBanditLeader	Main	1356	/d2inlT200	RELOCATION_MATCH	PASS
+00e95770	00e95770	NScript::CV_HauntedHouseScript::CM_UndeadHere	Main	1144		RELOCATION_MATCH	PASS
+01214fe0	01214fe0	_global	Unwind01214fe0	21	/EHsc	RELOCATION_MATCH	PASS
+01215000	01215000	_global	Unwind01215000	21	/EHsc	RELOCATION_MATCH	PASS

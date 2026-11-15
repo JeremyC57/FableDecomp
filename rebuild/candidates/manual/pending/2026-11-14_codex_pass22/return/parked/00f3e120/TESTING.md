@@ -1,0 +1,33 @@
+# Current preferred main179 — 2026-11-15
+
+Main179 consolidates original in-class overflow definitions, the authentic resize→insert→fill forwarding chain, and protected _M_allocate_and_copy placement. It also corrects the comment documenting four original root locals. The root remains UNMATCHED with exactly the same eight byte differences as171; no function/byte credit is added.
+
+Fresh179 validation:194 compatibility profiles and native ABI pass. All25 actual reached bodies and symbolic relocations are identical171, so171 runtime test results below remain applicable by code equivalence; they were NOT rerun or relabelled as179 executions. Among emitted unused bodies, one57-byte allocate-copy specialization has its proven public-to-protected spelling corrected with unchanged bytes/relocations, and two real insert overloads are5-byte tail jumps to the same fill implementations. Exact independent review: review/joint_f3_b/MAIN179_CONSOLIDATED_OBJECT_GRAPH_AND_NAME_REVIEW.json. Header/ABI/equivalence: review/joint_f3_a/validation179/VALIDATION_SUMMARY.json. The three boolean helper body debts remain unchanged.
+
+# Current main171 validation — 2026-11-15
+
+Preferred source is main_joint171_original_model_preserve_assert17. It carries the complete original CArray/CTriangleStripifier2 declarations, original user-written special members, and const-reference CBaseClassNonCopyable assignment signature. The original default assertion identity17 is pinned. All prior sources and tests are preserved.
+
+The root remains UNMATCHED:1411/native1411 bytes,465 instructions, eight differing bytes in two reload pairs. Independent comparison preserves all357 nondebug code/data/relocation entries and177 named text bodies against133. Actual recursive graph:25 native-mapped bodies,21 whole exact; all30 root operand sites plus92 exact-helper sites verified. Five actual engine helpers total4059 exact bytes. Three body debts remain: boolctor82/native49, boolfill268/native287, booloverflow201/native177. No match credit from separate or unreachable helpers.
+
+Fresh root behavior:16800 scenarios and176006 score calls per compiler. Fresh six-production-method behavior:840 meshes,16896 independent BFS starts,2048 cache cases,17736 mask/score checks per compiler. Both VC71 /Od /W3 /GR- without /EHsc and GCC64 C++03 pass. Root contracts and portable container adapters are explicit test scaffolding; these tests do not prove native code equivalence.
+
+Fresh actual production CArray headers, with all13 source defines, pass10098 ushort insertion/copy/assignment cases,1950 bool cases and25 non-POD/nested lifetime iterations per compiler. A separate native ABI fixture checks11 sizes,21 offsets,Generate vtable slot1,and original const assignment result.194 paired old/default/accepted-row preprocessing profiles pass; this is compatibility checking, not a fresh87-row machine-code regression. Accepted global overlay45 is unchanged. Initial GCC fixture compile missing test-only Microsoft keyword aliases is preserved and separately recorded; corrected invocation passes.
+
+Evidence: review/joint_f3_main/main171_validation/BEHAVIOR_RESULT.json; review/joint_f3_a/validation171/VALIDATION_SUMMARY.json; review/joint_f3_b/MAIN171_FULL_OBJECT_AND_DFS_REVIEW.json. Selection receipt: review/joint_f3_main/main171_validation/ADOPTION/ADOPTION.json.
+
+Historical notes below describe earlier selections only.
+
+# Current 00F3E120 validation
+
+Selected continuation80, merged38 headers plus three owned additions. The whole target is1411 bytes/465 instructions with eight differing bytes: independent four-byte EDI/EBX load swaps at369/373 and677/681. This is not a target match or accepted row.
+
+All five actual engine helpers match together: BuildRings1947, BuildCacheOptimizedVertexList853, CalcSectionPolyMask683, CalcSectionScore333 and StripUnusedVerts243. Recursive code/operand audit80 maps23 functions,20 exact and122 operands. Native bool constructor49 versus emitted82 and bool fill-insert287 versus emitted268 remain explicit body debts. Separate genuine vendor profiles prove individual constructor/base/copy COMDATs, never the whole current closure. No unused emitted body is credited.
+
+The selector body is unchanged since33 and passes16800 scenarios/176006 score calls each under VC71 /Od /W3 without /EHsc and GCC03. The actual six-method fixture, bound by helper-body SHA480691a5eec1f9620c70e6e702b75c3f6cb4e9f63be9de1f95745f8e2ef6b0bd, passes840 meshes/16896 independent BFS starts/2048 future-cache cases/17736 mask and score checks on both compilers. Its reference topology/BFS/triangle-scan/cache oracles are independent of the production loops. Container representations in that fixture are behavioral fixtures; native ABI is separately checked.
+
+A further fixture uses the actual final shared CArray/STLport headers directly:10098 ushort insertion/copy/assignment cases cover capacity reuse and growth, empty ranges, prefix/middle/suffix values and self-assignment;1950 boolean cases exercise the actual flat bool getter/fill chain;25 non-POD and nested-array cases require all tracked object lifetimes to balance. Both VC71 /Od /W3 /GR- without /EHsc and GCC03 pass. Fixture SHA521164b148992025299acfaead450f378809b6cdd5a81a11e60c85d494789a31. GCC erases only Microsoft calling-convention annotations and maps __int64 to long long; no production source differs. The first GCC invocation omitted __cdecl/__stdcall compatibility definitions and failed before running; the corrected invocation passes.
+
+Final header proof preserves literal old/default text in all three owned files, has no moved static assertions, and passes105 old/default preprocessing profiles. VC71 native ABI checks11 sizes,21 container member offsets and original virtual slot1. Original labels, parameter names, raw local scopes and C13 line tables are retained in continue_b. The final candidate carries no force-inline or per-site pragma experiment; all rejected variants remain immutable history. No game bytes or runtime/compiler binaries are handback content.
+
+Source84 original-order fixture refreshed 2026-11-15: generator now extracts from the earliest of all six genuine definitions. Both VC71 /Od /W3 /GR- WITHOUT /EHsc and GCC64 C++03 /O2 PASS840mesh cases,16896independentBFS starts,2048cache cases,17736mask-score checks. New complete ordered bodySHA 9807fba472108fd311c46e441d4b5b65975686e06c900b5fed38022496ebd234; fixtureSHA e615a09cd4011d239e87d56d35aad69df16edfe7b5bafcb591aac5f526ee07e7. Older source80 fixture/VC result retained with.source80 suffix. Main root remains DIFFER; these are semantic tests, not byte-match credit.

@@ -35,8 +35,20 @@ public:
 #ifdef FABLE_RETAIL_CGRAPHICFRAME_FLOATTL
     // Opt-in (row 0x00BBF4A0): FableWin.pdb ?GetFloatTLX@CGraphicFrameData@@QBEMXZ / ?GetFloatTLY@..@@QBEMXZ (the 16-bit texel offset scaled
     // by 1/32767, 0x0129C81C), inline in retail (0x00BC01C9..0x00BC0200).
+#ifdef FABLE_RETAIL_CGRAPHICFRAMEDATA_NATIVE_FLOAT_TL_DIVISION_PASS22
+    // Same actual direct quotient/no-local method; native uses a float reciprocal,
+    // while the later donor's divisor is double. Preserve native precision.
+    float GetFloatTLX() const { return TLX / 32767.0f; }
+    float GetFloatTLY() const { return TLY / 32767.0f; }
+#elif defined(FABLE_RETAIL_CGRAPHICFRAMEDATA_ORIGINAL_FLOAT_TL_DIVISION_PASS22)
+    // FableWin02D128D0/02D12AB0: unsigned16 conversion, FDIV double32767.0,
+    // float return; no invented local floats or reciprocal rewrite.
+    float GetFloatTLX() const { return TLX / 32767.0; }
+    float GetFloatTLY() const { return TLY / 32767.0; }
+#else
     float GetFloatTLX() const { float tlx = TLX; float result = tlx * (1.0f / 32767.0f); return result; }
     float GetFloatTLY() const { float tly = TLY; float result = tly * (1.0f / 32767.0f); return result; }
+#endif
 #endif
     // Ego_r.pdb non-virtual ??1CGraphicFrameData@@QAE@XZ (the landed ~CEngineSurfaceCompositionManager 0x00B2D1B0 model): IsInitialised
     // (bit 4 of +0x1A) -> Uninitialise 0x009FCBA0, then the PTexture counted pointer; FableWin.pdb ?AddReference@CGraphicFrameData@@QAEXXZ.

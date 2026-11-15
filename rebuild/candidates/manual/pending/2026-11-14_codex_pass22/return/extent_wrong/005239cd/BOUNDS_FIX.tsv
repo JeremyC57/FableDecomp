@@ -1,0 +1,2 @@
+assigned_start	assigned_end_exclusive	corrected_start	corrected_end_exclusive	corrected_extent	parent_landed	parent_name	status
+005239cd	00523b3b	005239c0	00523b3b	379	yes	CThingManager::RuntimeSaveEntities	EXTENT_WRONG

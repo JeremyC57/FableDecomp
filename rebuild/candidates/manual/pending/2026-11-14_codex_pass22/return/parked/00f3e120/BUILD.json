@@ -1,0 +1,15 @@
+{
+  "status": "PARKED",
+  "selected_attempt": "main_joint179_original_vendor_scope_chain",
+  "baseline": "reference/include",
+  "source": "00f3e120.cpp",
+  "flags": [
+    "/Gr",
+    "/d2inlT70"
+  ],
+  "header_profile": "e957ebc72eaf4ba6a9becedfae21e1b09cc623ce560fb3406dc0fffc2c36bb35",
+  "source_dependencies": [],
+  "test_adapter": null,
+  "source_sha256": "76bee788878e2a4375a7fbb850b8faa41029c5de740b6fc59994cd4c451b77d7",
+  "test_sha256": "93104698f73d70e3eed554c0a44215826973f1d0b0a8d8b9d15a3282e705ec13"
+}

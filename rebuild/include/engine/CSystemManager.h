@@ -68,6 +68,10 @@ public:
  bool IsMouseButton0Pressed(); bool IsMouseButton1Pressed(); bool IsMouseButton2Pressed();
  bool IsMouseButton3Pressed(); bool IsMouseButton4Pressed();
 #endif
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER_CRITICALDISPLAY
+// Both exact original PUBLICs/class records; actual native009A4ED0.
+void DisplayCriticalMessage(const char*);
+#endif
 CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
 #ifdef FABLE_RETAIL_CSYSTEMMANAGER
 // Ego_r.pdb + FableWin.pdb ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ (0x009A6460; GFPlayFullScreenXBoxMovie loops
@@ -80,6 +84,11 @@ CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
 // retail (Run 0x0042F04A reads ForceMusicPlay +0x16C and ForceMusicPlayOffset +0x170 in place, then stores 0.0f and false). Bodies FITTED.
  bool GetForceMusicPlay(float& offset) const { offset = ForceMusicPlayOffset; return ForceMusicPlay; }
  void ResetForceMusicPlay() { ForceMusicPlayOffset = 0.0f; ForceMusicPlay = false; }
+#endif
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER_PASS22_FORCEMUSICPLAY
+ // Retail opt-in (Codex pass 22): PDB accessors, native0x006BDC90 stores the flag before clearing its playback offset.
+ bool GetForceMusicPlay(float& offset) const { offset = ForceMusicPlayOffset; return ForceMusicPlay; }
+ void ResetForceMusicPlay() { ForceMusicPlay = false; ForceMusicPlayOffset = 0.0f; }
 #endif
 // Chunk 749 (the CText destructor TU of rows 0x00550010 / 0x00550020): Ego_r.pdb ?GetFontManager@CSystemManager@@QAEPAVCFontManager@@XZ,
 // inline in retail (~CText 0x0054F6E0 reads PFontManager +0x84 in place).
@@ -97,6 +106,6 @@ CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
  bool HasInputFocus();
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CSystemManager)==0x180);
+FABLE_STATIC_ASSERT_AT(100, sizeof(CSystemManager)==0x180);
 CSystemManager* __fastcall GFGetSystemManager();
 #endif

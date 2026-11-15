@@ -1,0 +1,14 @@
+{
+  "status": "RELOCATION_MATCH",
+  "selected_attempt": "main_01_stlport_original",
+  "baseline": "reference/include",
+  "source": "005f8e8f.cpp",
+  "flags": [
+    "/Gr"
+  ],
+  "header_profile": "2cf695f6219e96ea362faaada66689e299e218e8d821d3c298045b9bb67e9ebc",
+  "source_dependencies": [],
+  "test_adapter": null,
+  "source_sha256": "f3891cd93439e13f6df5f7224d80115093ea03392096375dd3ff1e999a8491e5",
+  "test_sha256": "e51f79135a6b5c28aa20838ade2db1e4573beb56bbb7915a55385abff2e36e2d"
+}

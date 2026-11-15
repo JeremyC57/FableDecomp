@@ -1,0 +1,5 @@
+#pragma once
+class CWideString;class CASuspendableProcess{};struct CFileInformation{};
+enum FileAccessType {FILE_ACCESS_NULL=0,FILE_ACCESS_READ=1,FILE_ACCESS_READ_WRITE=2,FILE_ACCESS_READ_WRITE_CREATE=3,FILE_ACCESS_CREATE=4};
+class CBaseClassNonCopyable {protected:CBaseClassNonCopyable();virtual~CBaseClassNonCopyable();};
+class CAFile:public CBaseClassNonCopyable {public:int TestID;CAFile();static void __fastcall SplitPath(const CWideString&,CWideString*,CWideString*,CWideString*,CWideString*);static bool __fastcall PathExists(const CWideString&);virtual void Open(const CWideString&,FileAccessType,unsigned long)=0;virtual void Close()=0;virtual void Read(void*,long,CASuspendableProcess*)=0;virtual void Write(const void*,long,CASuspendableProcess*)=0;virtual void SetPosition(long)=0;virtual void MovePosition(long)=0;virtual long GetPosition()const=0;virtual void SetLength(long)=0;virtual long GetLength()const=0;virtual bool IsOpen()const=0;virtual CWideString GetPathname()const=0;virtual bool IsIOFinished()const{return true;}virtual long GetAlignment()const{return 1;}virtual CAFile*Clone()const=0;virtual CFileInformation GetFileInformation()=0;};

@@ -118,6 +118,10 @@ public:
         CArray<float>         TextureIDToMinPatchDistanceSquared;        // +0x0c
         CArray<unsigned char> CurrentTextureLODLevels;                   // +0x18
     };
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_PASS22_LODBAND
+    // FableWin original02DE53C0 and retail00BF7D57: no bounds check in release.
+    float GetLODZBandZ(long band) { return LODZBandsZ[band]; }
+#endif
     CEngineLandscapeRenderer(const CEngineMemoryInit& init);             // ??0CEngineLandscapeRenderer@@QAE@ABVCEngineMemoryInit@@@Z
     virtual ~CEngineLandscapeRenderer();                                 // ??1CEngineLandscapeRenderer@@UAE@XZ 0x00B67920
     virtual unsigned long PeekSceneFilterFlags() const;                  // ?PeekSceneFilterFlags@CEngineLandscapeRenderer@@UBEKXZ (chunk 731)
@@ -204,6 +208,10 @@ public:
     CArray<CTVertexLandscapeBackground> TesselationOverflowVertexBuffer; // +0x660
     CLandscapePatchTesselator      Tesselator;                           // +0x66c
     CFastForegroundTextureLoadInfo FastForegroundTextureLoadInfo;        // +0x68c
+#ifdef FABLE_RETAIL_PASS22_WATER_PATCH_LOAD
+    // Original public accessor to the private memory-manager member.
+    CEngineLandscapeMemoryManager* GetMemoryManager() { return MemoryManager; }
+#endif
     CEngineLandscapeMemoryManager* MemoryManager;                        // +0x6b0
 };
 FABLE_STATIC_ASSERT_AT(188, sizeof(CEngineLandscapeRenderer) == 0x6b4);

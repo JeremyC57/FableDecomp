@@ -38,10 +38,15 @@ long GetTLY()const{return TLY;}
 long GetBRX()const{return BRX;}
 long GetBRY()const{return BRY;}
 #endif
-#ifdef FABLE_RETAIL_C2DBOXI_CTORS
+#if defined(FABLE_RETAIL_C2DBOXI_CTORS) || defined(FABLE_RETAIL_C2DBOXI_ORIGINAL_FOUR_COORD_CTOR)
 // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): Ego_r.pdb ??0C2DBoxI@@QAE@JJJJ@Z and
 // ??0C2DBoxI@@QAE@ABVC2DCoordI@@ABVC2DExtentsI@@@Z, inline (no out-of-line copy bound in Fable.exe).
+#ifdef FABLE_RETAIL_C2DBOXI_ORIGINAL_FOUR_COORD_CTOR
+// Original donor01B377C0: direct member stores, with no Initialise call.
+C2DBoxI(long tlx,long tly,long brx,long bry):TLX(tlx),TLY(tly),BRX(brx),BRY(bry){}
+#else
 C2DBoxI(long tlx,long tly,long brx,long bry){Initialise(tlx,tly,brx,bry);}
+#endif
 C2DBoxI(const C2DCoordI& tl,const C2DExtentsI& extents){Initialise(tl.X,tl.Y,tl.X+extents.X,tl.Y+extents.Y);}
 #endif
 #ifdef FABLE_RETAIL_C2DBOXI

@@ -75,6 +75,10 @@ public:
     bool IsDebugProfile() const;                                         // 0x00407030 (ICF-folded `return false` body)
 #endif
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETSAVESLOT
+    // Ego_r / FableWin original public thiscall signature; native SaveGame 0x0047E2CA calls 0x0040BC50.
+    void SetSaveSlotFileName(long slot, const CWideString& name);
+#endif
     void ProcessPendingTutorials();                                      // 0x0040BB30
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
     // Opt-in (chunk 2003, row 0x00598463 CFrontEndManager::RefreshAvailableSavedGamesForProfile): Ego_r.pdb / FableWin.pdb spellings,

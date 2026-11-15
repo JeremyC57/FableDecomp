@@ -1,0 +1,1 @@
+00B4C550: the genuine x/y/z/w PerspectiveTransformPoint body and minimal row /d2inlT81 solve the clip-volume sibling on its first current-header rebase; T80 retains a723-byte called-kernel body. The complete receiver copy includes old unused planes and the retained caster sphere, which the behavior fixture must check.

@@ -1,0 +1,7 @@
+# Required original-library component
+
+Compile the provided unmodified original STLport source wrapper with `build_vendor_global.py` after sourcing the task env. It builds only the real standard-library global `_Rb_global<bool>::_M_decrement` at `/O2 /Os /Oy /W3`. Its57 bytes are raw native exact. Preserve `third_party/STLport-4.6.2/SOURCE_MANIFEST.json` and original notices.
+
+Link `vendor_global/StlportTreeGlobals.obj` before the loader object. This is required ordinary COMDAT selection: the speed TU retains a64-byte body, while the selected native library TU is57. Both use the same canonical C++ symbol and normal ANY selection. `prove_library_selection.py sol20_final_owned_headers` checks the actual link maps and resulting PE bytes in both orders; `test_vendor_tree.py` makes and executes a fully resolved vendor-first test using the actual native57-byte helper. No binary object or diagnostic DLL belongs in the handback.
+
+The existing source implementation at pass9 compiled/00/42/stdRbglobalbool_Mdecrement_004294e2.cpp independently identifies the native size-TU profile. Its old pragma is not adopted. No new standard-library spelling or application ABI is invented. Only one vendor function is instantiated so that unrelated library globals cannot be overridden by this component. The target's26-body/99-relocation audit requires this library-first selection and should not be reported independently of it.

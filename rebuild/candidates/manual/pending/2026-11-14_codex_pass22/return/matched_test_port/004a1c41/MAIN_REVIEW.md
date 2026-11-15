@@ -1,0 +1,8 @@
+# Main review — 004A1C41
+Accepted as the compiler-produced exception handler from the already verified CWorld::Load parent, with an explicit extent correction: handler69bytes, followed by8bytes of actual parent cleanup. The assigned77-byte span is completely covered. These77bytes overlap the parent and add zero distinct matched bytes.
+
+Fresh main_review_01 uses the unmodified RTM compiler and accepted merged34 headers. Independent main audit compares every non-debug section of the fresh object with the accepted parent:49 code/data sections and every relocation symbol or compiler-local target agree. The complete1129-byte parent and69/8/77 views match retail with relocation operands masked. The native handler table, exception type descriptor, catch frame displacement and continuation are independently checked. The full graph audit covers127 code/data/EH/callback edges, including the exact30-byte disk destructor and10-byte EH thunk.
+
+Fresh main behavioral tests pass1024scenarios on VC7.1 and GCC C++03, including512catch paths per compiler. The test prints004a1c41_TEST PASS and contains the original parent bodies verbatim; only the parent test's success marker changes.
+
+The generic zero-offset-leaf comparator cannot represent a local label inside a parent section. Its original LEAF_REVIEW_REQUIRED receipt is retained as GENERIC_COMPILE_RESULT.json. The parent-aware comparator grade_funclet.py provides explicit physical offsets and separate handler/continuation lengths. It never modifies compiler bytes or COFF metadata. Use ROW.json grading_entrypoint for future grading. Leaf $L9360 is the real compiler-generated symbol for this wrapper compilation, not a newly invented external name.

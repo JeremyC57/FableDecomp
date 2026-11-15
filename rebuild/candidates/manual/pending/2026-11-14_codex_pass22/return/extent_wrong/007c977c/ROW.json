@@ -1,0 +1,21 @@
+{
+  "address": "007c977c",
+  "input_kind": "never_worked",
+  "status": "EXTENT_WRONG",
+  "attempts": 0,
+  "assigned_extent": 288,
+  "input_label": "CTCCreatureGeneratorCreator::OnSerialise",
+  "assigned_name": "CTCCreatureGeneratorCreator::OnSerialise",
+  "selected_attempt": null,
+  "test_status": "NOT_APPLICABLE boundary correction;no source authored",
+  "helper_debts": [],
+  "source_strategies": 0,
+  "compile_invocations": 0,
+  "actual_start": "007c9770",
+  "actual_extent": 300,
+  "already_landed": true,
+  "working_status_before_wind_down": "EXTENT_WRONG",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "EXTENT_WRONG",
+  "ready_for_claude_reverification": false
+}

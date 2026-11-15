@@ -56,8 +56,45 @@ public:
     CCPPointerInfo(unsigned long refCount, void (FABLE_FASTCALL* deleteFunc)(void*), void* data)
         : RefCount(refCount), DeleteFunc(deleteFunc), Data(data) { }     // FableWin.pdb ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
 };
-FABLE_STATIC_ASSERT(sizeof(CCPPointerInfo) == 0xc);
+FABLE_STATIC_ASSERT_AT(59, sizeof(CCPPointerInfo) == 0xc);
 
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_ORIGINAL_COMPLETE_MEMBERS_PASS22
+// All real instantiated member signatures from both PDB23-member records.
+// Recorded group/field order is a reconstruction hypothesis, not textual source proof.
+// Uninstantiated converting member templates are not inferred absent in original generic source.
+template <class T> class CCountedPointer {
+public:
+ typedef T element_type;
+ CCountedPointer(const CCountedPointer& other) : Data(other.Data),Info(other.Info) { if(Info) ++Info->RefCount; }
+ CCountedPointer(T* data);
+ CCountedPointer() : Data(0),Info(0) { }
+ ~CCountedPointer() { ReleaseData(); }
+ T& operator*() const { return *Data; }
+ T* operator->() const { return Data; }
+ CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data,other.Info); return *this; }
+ bool IsNull() const { return Data==0; }
+ T* Get() const { return Data; }
+ void Reset(T* data);
+ void Swap(CCountedPointer& other);
+ unsigned long GetReferenceCount() const;
+ T* get() const { return Data; }
+ void reset(T* data);
+ void ReleaseData() {
+  if(Info) {
+   --Info->RefCount;
+   if(Info->RefCount==0) { Info->DeleteFunc(Info->Data); delete Info; }
+  }
+  Data=0;
+  Info=0;
+ }
+ void ShareData(T* data,CCPPointerInfo* info);
+ static void FABLE_FASTCALL DeleteData(void* data);
+ static void FABLE_FASTCALL DeleteNull(void* data);
+ void Validate() const;
+ T* Data;
+ CCPPointerInfo* Info;
+};
+#else
 template <class T> class CCountedPointer {
 public:
     T* Data;                                                             // +0x0
@@ -139,11 +176,19 @@ public:
         Info = 0;
     }
 #endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_ASSIGN_DECL_ONLY
+    // Retail opt-in (Pass22, whole parent00D29880): native00D29C17 calls the
+    // original CCountedPointer<CScriptGameResourceObjectScriptedThingBase>
+    // assignment COMDAT008AB1E0 after expanding its enclosing implicit assignment.
+    // Both PDBs identify this member; default inline body remains unchanged below.
+    CCountedPointer& operator=(const CCountedPointer& other);
+#else
     CCountedPointer& operator=(const CCountedPointer& other)
     {
         ShareData(other.Data, other.Info);
         return *this;
     }
+#endif
     template <class U> CCountedPointer& operator=(const CCountedPointer<U>& other)
     {
         ShareData(other.Data, other.Info);
@@ -263,4 +308,5 @@ public:
     static void FABLE_FASTCALL DeleteData(void* data) { delete static_cast<T*>(data); }                    // per-T deleter, address stored in the count block
 };
 
+#endif
 #endif // FABLE_ENGINE_CCOUNTEDPOINTER_H

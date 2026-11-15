@@ -40,10 +40,13 @@ public:
     EActionType ActionType;                                                 // +0x00
     std::list<CActionParam*> UIActionParams;                                // +0x04
     std::list<long> ThingActionParams;                                      // +0x08
+#ifdef FABLE_RETAIL_PASS22_SLIDER_PROCESS_EVENT
+protected:
+#endif
     bool Valid;                                                             // +0x0c
 };
 }
 #ifdef FABLE_RETAIL_STLP_LIST
-FABLE_STATIC_ASSERT(sizeof(NUISystem::CAction) == 0x10);
+FABLE_STATIC_ASSERT_AT(47, sizeof(NUISystem::CAction) == 0x10);
 #endif
 #endif // FABLE_ENGINE_NUISYSTEM_CACTION_H

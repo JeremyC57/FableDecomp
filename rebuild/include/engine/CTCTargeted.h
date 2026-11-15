@@ -16,6 +16,12 @@
 class CTargetingDef;
 enum ETargetingType;                                                     // MS forward enum (the row defines the enumerators it uses)
 class CTCTargeted : public CTCBase {
+#ifdef FABLE_RETAIL_CTCTARGETED_PASS22_TARGETABLE
+public:
+    // Both original PDBs and native007EA280.
+    bool IsTargetable()const;
+#endif
+
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_TARGETED; }
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST

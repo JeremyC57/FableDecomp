@@ -12,7 +12,16 @@ public:
     // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?ResetDimensions@CUIScreenUnitConverter@NUISystem@@SIXXZ, retail 0x0040F0E0 (landed). Declaration only.
     static void __fastcall ResetDimensions();                // 0x0040F0E0
 #endif
-#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE
+#if defined(FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS)
+    // Both original complete types, exact private PUBLICs and GDATA32 declarations.
+private:
+    static bool IsUsingRelativeCoords;
+    static float BackBufferWidth, BackBufferHeight;
+    static float DefaultBackBufferWidth, DefaultBackBufferHeight;
+public:
+    static float __fastcall GetBackBufferWidth() { if (IsUsingRelativeCoords) return BackBufferWidth; return DefaultBackBufferWidth; }
+    static float __fastcall GetBackBufferHeight() { if (IsUsingRelativeCoords) return BackBufferHeight; return DefaultBackBufferHeight; }
+#elif defined(FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE)
     // Chunk 749 (rows 0x0054EF00 CText::Draw / 0x005502E0 CMesh::Draw): the two getters are inline header functions -- the
     // Draw rows expand them in place (`cmp byte [13B8768h],0 ; je ; fld [13B876Ch] / fld [1375CD4h]`), the out-of-line
     // COMDAT copies are 0x0041CC14 / 0x0041CC2B. Data symbols: the established spellings of the landed rows 0x004299A8 /
@@ -106,9 +115,17 @@ public:
     {
         C2DVector result = v;
         if (IsUsingRelativeCoords) {
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS
+            result.X = v.X / DefaultBackBufferWidth;
+#else
             result.X = v.X / ScreenWidth;
+#endif
             result.X *= BackBufferWidth;
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS
+            result.Y = v.Y / DefaultBackBufferHeight;
+#else
             result.Y = v.Y / ScreenHeight;
+#endif
             result.Y *= BackBufferHeight;
         }
         return result;

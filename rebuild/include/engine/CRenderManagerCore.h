@@ -30,6 +30,11 @@
 #include "rebuild_abi.h"
 #include "engine/CRenderStateManager.h"
 #include "engine/IDirect3DDevice9.h"
+#if (defined(FABLE_RETAIL_PASS22_CORE_COMPLETE_ORIGINAL_DECLARATION) || defined(FABLE_RETAIL_PASS22_CORE_ORIGINAL_TEXTURE_BINDING)) && !defined(_HRESULT_DEFINED)
+// Original SDK HRESULT alias (VC71 strsafe.h/intsafe.h).
+#define _HRESULT_DEFINED
+typedef long HRESULT;
+#endif
 #include "engine/CTexture.h"
 #include "engine/CIndexBuffer.h"
 #include "engine/CVertexBufferWin32.h"
@@ -41,6 +46,264 @@ class C2DBoxI;
 class CDisplayManager;
 class CVolumeTexture;
 class CMatrix3x4;
+#ifdef FABLE_RETAIL_PASS22_CORE_COMPLETE_ORIGINAL_DECLARATION
+// User declarations reconstructed in original PDB field-list order; generated special members remain implicit.
+// Complete user method declarations in original order; reached release bodies retained.
+class C2DBoxF;
+class C2DBoxI;
+class C3DVector;
+class CDisplayManager;
+class CMatrix3x4;
+class CRGBColour;
+class CTexture;
+class CVolumeTexture;
+struct IDirect3DDevice9;
+struct IDirect3DResource9;
+struct _D3DMATRIX;
+enum EPrimitiveType;
+class CRenderManagerCore : public CRenderStateManager {
+public:
+    CRenderManagerCore(CDisplayManager &, unsigned long);
+public:
+    virtual ~CRenderManagerCore();
+public:
+    void Init(IDirect3DDevice9 *);
+public:
+    void Uninit();
+public:
+    void EnableFixedFunctionPipeline(bool);
+public:
+    bool BeginRender();
+public:
+    void EndRender();
+public:
+    void DrawCurrentBuffersAsTris(unsigned long, unsigned long);
+public:
+    void DrawCurrentBuffersAsTris(const CTexture * *, unsigned long, unsigned long, unsigned long);
+public:
+    void DrawCurrentBuffersAsIndexedTris(unsigned long, unsigned long, unsigned long, unsigned long);
+public:
+    void DrawCurrentBuffersAsIndexedTris(const CTexture * *, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long);
+public:
+    void DrawAsIndexedTris(const void *, long, long, void *, long);
+public:
+    void DrawAsIndexedTris(const CTexture * *, unsigned long, const void *, long, long, void *, long);
+public:
+    void DrawCurrentBuffersNonIndexed(const CTexture * *, unsigned long, unsigned long, unsigned long, EPrimitiveType);
+public:
+    void DrawCurrentBuffersIndexed(unsigned long, unsigned long, unsigned long, unsigned long);
+public:
+    void DrawCurrentBuffersIndexed(const CTexture * *, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long);
+public:
+    void DrawCurrentBuffersAsTriFan(long, long);
+public:
+    void DrawCurrentBuffersAsPointList(long, long);
+public:
+FABLE_FORCEINLINE void SelectIndexBuffer(CIndexBuffer* index_buffer, unsigned long base_vertex_index)
+    {
+        PSelectedIndexBuffer = index_buffer;
+        if (index_buffer) {
+            HRESULT hr = PD3DDevice->SetIndices(index_buffer->GetD3DIndexBuffer());
+        } else {
+            HRESULT hr = PD3DDevice->SetIndices(0);
+        }
+    }
+public:
+FABLE_FORCEINLINE void SelectVertexBuffer(unsigned long stream_number, CVertexBufferWin32* vertex_buffer)
+    {
+        if (vertex_buffer) {
+            HRESULT hr = PD3DDevice->SetStreamSource(stream_number, vertex_buffer->GetD3DVertexBuffer(), 0, vertex_buffer->GetStride());
+        } else {
+            HRESULT hr = PD3DDevice->SetStreamSource(stream_number, 0, 0, 0);
+        }
+    }
+public:
+    void SetVertexFormat(unsigned long);
+public:
+    void DiscardTextureManagerBytes(unsigned long);
+public:
+    void ResetTextures();
+public:
+void SetTextureEnable(bool enable) { TexturesEnabled = enable; }
+public:
+#ifdef FABLE_RETAIL_PASS22_CORE_ORIGINAL_TEXTURE_BINDING
+FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* handle)
+    {
+        AttachD3DTextureToStage(stage, handle ? (IDirect3DBaseTexture9*)handle->GetD3DTexture() : 0);
+    }
+#else
+FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* texture)
+    {
+        AttachD3DTextureToStage(stage, texture ? (IDirect3DBaseTexture9*)texture->PD3DTexture : 0);
+    }
+#endif
+public:
+    void AttachVolumeTextureToStage(long, const CVolumeTexture *);
+public:
+    void SetTextureAsSelected(long, const CTexture *);
+public:
+    void SetVWindow(const C2DBoxF &);
+public:
+    void SetAWindow(const C2DBoxF &);
+public:
+    void SetAWindow(const C2DBoxI &);
+public:
+    const C2DBoxF & GetCurrentAWindow() const;
+public:
+    const C2DBoxI & GetCurrentAWindowInt() const;
+public:
+    void SetViewTransform(const CMatrix3x4 &);
+public:
+    void SetWorldTransform(unsigned long, const CMatrix3x4 &);
+public:
+    void SetWorldTransform(const CMatrix3x4 &);
+public:
+    void SetTextureTransform(unsigned long, const CMatrix3x4 &);
+public:
+    void SetPerspectiveTransform(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float);
+public:
+    void SetPerspectiveTransform(float, float, float, float);
+public:
+    void SetDirectionalLight(long, const CRGBColour &, const CRGBColour &, const C3DVector &);
+public:
+    void SetPointLight(long, const CRGBColour &, const CRGBColour &, const C3DVector &, float, float, float, float);
+public:
+    void SetMaterial(const CRGBColour &, const CRGBColour &);
+public:
+    void SetGamma(float);
+public:
+    void EnableXBoxShaderConstants(bool);
+public:
+    void OnPostViewportChanged();
+public:
+    void WaitWhileResourceIsBusy(IDirect3DResource9 *, float);
+public:
+    void WaitWhileGPUIsBusy();
+public:
+    unsigned long GetMaxSimultaneousTextures() const;
+public:
+    unsigned long GetMaxTextureBlendStages() const;
+public:
+    unsigned long GetMaxTextureWidth() const;
+public:
+    unsigned long GetMaxTextureHeight() const;
+public:
+    unsigned long GetMaxVertexBlendMatrices() const;
+public:
+    unsigned long GetMaxVertexBlendMatricesSoftware() const;
+public:
+    unsigned long GetNoZSortedPolys() const;
+public:
+    unsigned long GetNoPolys() const;
+public:
+    unsigned long GetNoNonZSortedPolys() const;
+public:
+    unsigned long GetNoRenderStateChanges() const;
+public:
+    unsigned long GetNoVerticesDrawn() const;
+public:
+    unsigned long GetNoTrisDrawn() const;
+public:
+    unsigned long GetNoDrawPrimCalls() const;
+public:
+    unsigned long GetNoTrisPerSecond() const;
+public:
+CDisplayManager& GetDisplayManager() { return *DisplayManager; }
+public:
+    void FlushRender();
+public:
+    void CheckBufferedTextures();
+public:
+    bool IsRendering();
+private:
+    void SetD3DMatrix(_D3DMATRIX &, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float);
+private:
+#ifdef FABLE_RETAIL_PASS22_CORE_ORIGINAL_TEXTURE_BINDING
+FABLE_FORCEINLINE void AttachD3DTextureToStage(long stage, IDirect3DBaseTexture9* d3d_texture)
+    {
+        if (CurrentlySelectedTextures[stage] != d3d_texture) {
+            CurrentlySelectedTextures[stage] = d3d_texture;
+            HRESULT ddrval = PD3DDevice->SetTexture(stage, d3d_texture);
+        }
+        if (TextureStagesInUse < stage + 1)
+            TextureStagesInUse = stage + 1;
+    }
+#else
+FABLE_FORCEINLINE void AttachD3DTextureToStage(long stage, IDirect3DBaseTexture9* texture)
+    {
+        if (CurrentlySelectedTextures[stage] != texture) {
+            CurrentlySelectedTextures[stage] = texture;
+            PD3DDevice->SetTexture(stage, texture);
+        }
+        if (TextureStagesInUse < stage + 1)
+            TextureStagesInUse = stage + 1;
+    }
+#endif
+public:
+CDisplayManager* DisplayManager;
+public:
+float LastRenderEndTime;
+public:
+long NoTrisPerSecond;
+public:
+long ScreenPixelFormat_FormatIndex;
+public:
+unsigned char SystemFont[0x8];
+public:
+bool Rendering;
+public:
+bool ResolutionReinit;
+public:
+bool ResolutionSet;
+public:
+bool TexturesEnabled;
+public:
+unsigned char D3DDeviceCaps[0x130];
+public:
+unsigned char D3DDeviceSoftwareCaps[0x130];
+public:
+long TextureStagesInUse;
+public:
+unsigned long NoZSortedPolys;
+public:
+unsigned long NoNonZSortedPolys;
+public:
+unsigned long NoRenderStateChanges;
+public:
+unsigned long NoPolys;
+public:
+long HighestMipmapToRender;
+public:
+long NoTrisDrawn;
+public:
+long NoVerticesDrawn;
+public:
+long NoDrawPrimCalls;
+public:
+unsigned long NoLastFrameZSortedPolys;
+public:
+unsigned long NoLastFrameNonZSortedPolys;
+public:
+unsigned long NoLastFramePolys;
+public:
+unsigned long NoLastFrameUncachedTextureUploads;
+public:
+unsigned long NoLastFrameCachedTextureUploads;
+public:
+IDirect3DDevice9* PD3DDevice;
+public:
+CIndexBuffer* PSelectedIndexBuffer;
+public:
+unsigned long CurrentVertexFormat;
+public:
+bool XBoxShaderConstantsEnabled;
+public:
+bool FixedFunctionPipelineEnabled;
+public:
+IDirect3DBaseTexture9* CurrentlySelectedTextures[8];
+};
+
+#else
 class CRenderManagerCore : public CRenderStateManager {
 public:
     // The rest of the PDB interface (Ego_r.pdb / FableWin.pdb declarations, as Codex pass 13 cited them for 0x009DA9F0).
@@ -92,10 +355,17 @@ public:
     // The expanded form is the per-TU opt-in FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS (the expanded-here / called-there
     // split, as FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE); without it the TU sees the declaration and calls the copy.
 #ifdef FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS
-    FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* texture)
+    #ifdef FABLE_RETAIL_PASS22_CORE_ORIGINAL_TEXTURE_BINDING
+FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* handle)
+    {
+        AttachD3DTextureToStage(stage, handle ? (IDirect3DBaseTexture9*)handle->GetD3DTexture() : 0);
+    }
+#else
+FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* texture)
     {
         AttachD3DTextureToStage(stage, texture ? (IDirect3DBaseTexture9*)texture->PD3DTexture : 0);
     }
+#endif
 #else
     void AttachTextureToStage(long stage, const CTexture* texture);      // 0x009A0CF0
 #endif
@@ -150,7 +420,18 @@ public:
 private:
     // ?AttachD3DTextureToStage@CRenderManagerCore@@AAEXJPAUIDirect3DBaseTexture9@@@Z: device call only on a change; the
     // stage-in-use high-water mark always.
-    FABLE_FORCEINLINE void AttachD3DTextureToStage(long stage, IDirect3DBaseTexture9* texture)
+    #ifdef FABLE_RETAIL_PASS22_CORE_ORIGINAL_TEXTURE_BINDING
+FABLE_FORCEINLINE void AttachD3DTextureToStage(long stage, IDirect3DBaseTexture9* d3d_texture)
+    {
+        if (CurrentlySelectedTextures[stage] != d3d_texture) {
+            CurrentlySelectedTextures[stage] = d3d_texture;
+            HRESULT ddrval = PD3DDevice->SetTexture(stage, d3d_texture);
+        }
+        if (TextureStagesInUse < stage + 1)
+            TextureStagesInUse = stage + 1;
+    }
+#else
+FABLE_FORCEINLINE void AttachD3DTextureToStage(long stage, IDirect3DBaseTexture9* texture)
     {
         if (CurrentlySelectedTextures[stage] != texture) {
             CurrentlySelectedTextures[stage] = texture;
@@ -159,6 +440,7 @@ private:
         if (TextureStagesInUse < stage + 1)
             TextureStagesInUse = stage + 1;
     }
+#endif
 public:
     CDisplayManager*       DisplayManager;                               // +0x3a3c
     float                  LastRenderEndTime;                            // +0x3a40
@@ -198,12 +480,14 @@ public:
     bool                   FixedFunctionPipelineEnabled;                 // +0x3cfd
     IDirect3DBaseTexture9* CurrentlySelectedTextures[8];                 // +0x3d00
 };
-FABLE_STATIC_ASSERT(sizeof(CRenderManagerCore) == 0x3d20);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, DisplayManager) == 0x3a3c);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, TextureStagesInUse) == 0x3cb8);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, PD3DDevice) == 0x3cf0);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, PSelectedIndexBuffer) == 0x3cf4);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, CurrentlySelectedTextures) == 0x3d00);
+#endif
+
+FABLE_STATIC_ASSERT_AT(201, sizeof(CRenderManagerCore) == 0x3d20);
+FABLE_STATIC_ASSERT_AT(202, offsetof(CRenderManagerCore, DisplayManager) == 0x3a3c);
+FABLE_STATIC_ASSERT_AT(203, offsetof(CRenderManagerCore, TextureStagesInUse) == 0x3cb8);
+FABLE_STATIC_ASSERT_AT(204, offsetof(CRenderManagerCore, PD3DDevice) == 0x3cf0);
+FABLE_STATIC_ASSERT_AT(205, offsetof(CRenderManagerCore, PSelectedIndexBuffer) == 0x3cf4);
+FABLE_STATIC_ASSERT_AT(206, offsetof(CRenderManagerCore, CurrentlySelectedTextures) == 0x3d00);
 #else // flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CRenderManagerCore = 0x3d20.
@@ -3982,39 +4266,39 @@ struct CRenderManagerCore {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CRenderManagerCore) == 0x3d20);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, DisplayManager) == 0x3a3c);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, LastRenderEndTime) == 0x3a40);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoTrisPerSecond) == 0x3a44);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, ScreenPixelFormat_FormatIndex) == 0x3a48);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, SystemFont) == 0x3a4c);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, Rendering) == 0x3a54);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, ResolutionReinit) == 0x3a55);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, ResolutionSet) == 0x3a56);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, TexturesEnabled) == 0x3a57);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, D3DDeviceCaps) == 0x3a58);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, D3DDeviceSoftwareCaps) == 0x3b88);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, TextureStagesInUse) == 0x3cb8);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoZSortedPolys) == 0x3cbc);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoNonZSortedPolys) == 0x3cc0);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoRenderStateChanges) == 0x3cc4);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoPolys) == 0x3cc8);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, HighestMipmapToRender) == 0x3ccc);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoTrisDrawn) == 0x3cd0);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoVerticesDrawn) == 0x3cd4);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoDrawPrimCalls) == 0x3cd8);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoLastFrameZSortedPolys) == 0x3cdc);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoLastFrameNonZSortedPolys) == 0x3ce0);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoLastFramePolys) == 0x3ce4);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoLastFrameUncachedTextureUploads) == 0x3ce8);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoLastFrameCachedTextureUploads) == 0x3cec);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, PD3DDevice) == 0x3cf0);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, PSelectedIndexBuffer) == 0x3cf4);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, CurrentVertexFormat) == 0x3cf8);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, XBoxShaderConstantsEnabled) == 0x3cfc);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, FixedFunctionPipelineEnabled) == 0x3cfd);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, CurrentlySelectedTextures) == 0x3d00);
+FABLE_STATIC_ASSERT_AT(3985, sizeof(CRenderManagerCore) == 0x3d20);
+FABLE_STATIC_ASSERT_AT(3986, offsetof(CRenderManagerCore, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(3987, offsetof(CRenderManagerCore, DisplayManager) == 0x3a3c);
+FABLE_STATIC_ASSERT_AT(3988, offsetof(CRenderManagerCore, LastRenderEndTime) == 0x3a40);
+FABLE_STATIC_ASSERT_AT(3989, offsetof(CRenderManagerCore, NoTrisPerSecond) == 0x3a44);
+FABLE_STATIC_ASSERT_AT(3990, offsetof(CRenderManagerCore, ScreenPixelFormat_FormatIndex) == 0x3a48);
+FABLE_STATIC_ASSERT_AT(3991, offsetof(CRenderManagerCore, SystemFont) == 0x3a4c);
+FABLE_STATIC_ASSERT_AT(3992, offsetof(CRenderManagerCore, Rendering) == 0x3a54);
+FABLE_STATIC_ASSERT_AT(3993, offsetof(CRenderManagerCore, ResolutionReinit) == 0x3a55);
+FABLE_STATIC_ASSERT_AT(3994, offsetof(CRenderManagerCore, ResolutionSet) == 0x3a56);
+FABLE_STATIC_ASSERT_AT(3995, offsetof(CRenderManagerCore, TexturesEnabled) == 0x3a57);
+FABLE_STATIC_ASSERT_AT(3996, offsetof(CRenderManagerCore, D3DDeviceCaps) == 0x3a58);
+FABLE_STATIC_ASSERT_AT(3997, offsetof(CRenderManagerCore, D3DDeviceSoftwareCaps) == 0x3b88);
+FABLE_STATIC_ASSERT_AT(3998, offsetof(CRenderManagerCore, TextureStagesInUse) == 0x3cb8);
+FABLE_STATIC_ASSERT_AT(3999, offsetof(CRenderManagerCore, NoZSortedPolys) == 0x3cbc);
+FABLE_STATIC_ASSERT_AT(4000, offsetof(CRenderManagerCore, NoNonZSortedPolys) == 0x3cc0);
+FABLE_STATIC_ASSERT_AT(4001, offsetof(CRenderManagerCore, NoRenderStateChanges) == 0x3cc4);
+FABLE_STATIC_ASSERT_AT(4002, offsetof(CRenderManagerCore, NoPolys) == 0x3cc8);
+FABLE_STATIC_ASSERT_AT(4003, offsetof(CRenderManagerCore, HighestMipmapToRender) == 0x3ccc);
+FABLE_STATIC_ASSERT_AT(4004, offsetof(CRenderManagerCore, NoTrisDrawn) == 0x3cd0);
+FABLE_STATIC_ASSERT_AT(4005, offsetof(CRenderManagerCore, NoVerticesDrawn) == 0x3cd4);
+FABLE_STATIC_ASSERT_AT(4006, offsetof(CRenderManagerCore, NoDrawPrimCalls) == 0x3cd8);
+FABLE_STATIC_ASSERT_AT(4007, offsetof(CRenderManagerCore, NoLastFrameZSortedPolys) == 0x3cdc);
+FABLE_STATIC_ASSERT_AT(4008, offsetof(CRenderManagerCore, NoLastFrameNonZSortedPolys) == 0x3ce0);
+FABLE_STATIC_ASSERT_AT(4009, offsetof(CRenderManagerCore, NoLastFramePolys) == 0x3ce4);
+FABLE_STATIC_ASSERT_AT(4010, offsetof(CRenderManagerCore, NoLastFrameUncachedTextureUploads) == 0x3ce8);
+FABLE_STATIC_ASSERT_AT(4011, offsetof(CRenderManagerCore, NoLastFrameCachedTextureUploads) == 0x3cec);
+FABLE_STATIC_ASSERT_AT(4012, offsetof(CRenderManagerCore, PD3DDevice) == 0x3cf0);
+FABLE_STATIC_ASSERT_AT(4013, offsetof(CRenderManagerCore, PSelectedIndexBuffer) == 0x3cf4);
+FABLE_STATIC_ASSERT_AT(4014, offsetof(CRenderManagerCore, CurrentVertexFormat) == 0x3cf8);
+FABLE_STATIC_ASSERT_AT(4015, offsetof(CRenderManagerCore, XBoxShaderConstantsEnabled) == 0x3cfc);
+FABLE_STATIC_ASSERT_AT(4016, offsetof(CRenderManagerCore, FixedFunctionPipelineEnabled) == 0x3cfd);
+FABLE_STATIC_ASSERT_AT(4017, offsetof(CRenderManagerCore, CurrentlySelectedTextures) == 0x3d00);
 
 #endif // FABLE_RETAIL_CRENDERMANAGERCORE
 

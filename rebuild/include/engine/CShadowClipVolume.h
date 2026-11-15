@@ -23,6 +23,11 @@ public:
     long              ClipPlaneCount;                                    // +0x80
     C3DBoundingSphere BoundingSphere;                                    // +0x84
     bool              ClipToSphere;                                      // +0x94
+
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+ bool ClipSphere(const C3DVector&,float)const;
+#endif
     void Reset()
     {
         ClipPlaneCount = 0;
@@ -63,7 +68,7 @@ public:
     }
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CShadowClipVolume) == 0x98);
-FABLE_STATIC_ASSERT(offsetof(CShadowClipVolume, ClipPlaneCount) == 0x80);
-FABLE_STATIC_ASSERT(offsetof(CShadowClipVolume, ClipToSphere) == 0x94);
+FABLE_STATIC_ASSERT_AT(66, sizeof(CShadowClipVolume) == 0x98);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CShadowClipVolume, ClipPlaneCount) == 0x80);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CShadowClipVolume, ClipToSphere) == 0x94);
 #endif // FABLE_ENGINE_CSHADOWCLIPVOLUME_H

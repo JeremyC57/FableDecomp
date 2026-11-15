@@ -1,0 +1,2 @@
+- 00B46C80: a same-size ambient scratch/assignment permutation vanished when the original Interpolate and GFSqr/GFRoot/GetR/G/B calls and original locals were restored. A shared-header port alone was inert; the original helper expression tree matters even when every operation had been flattened equivalently.
+- 00B46C80: original PDB types expose omitted pure ConvertToGenericLight and the actual SIMD struct key/272byte complete layout. Keep the implicit destructor chain; the target calls only the original base destructor.

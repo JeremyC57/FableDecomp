@@ -57,7 +57,7 @@ public:
     {return (current_val*weight+new_val)/(weight+1.0f);}
 #endif
 #endif
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_NCAMERAMODES_CTOOLS_PASS22_LOS) // Retail opt-in (Codex pass22): both original PDB enum/signature; native00877C40.
     enum ELOSTest { TEST_THINGS=1,TEST_LANDSCAPE=2,TEST_THEMES=4,TEST_CREATURES=8,TEST_PASSABILITY=16,TEST_ALL_BUT_CREATURES=7,TEST_ALL=15 };
     bool IsLineOfSight(const C3DVector&,const C3DVector&,C3DVector&,C3DVector&,float&,const CThing**,ELOSTest,bool)const;
 #else

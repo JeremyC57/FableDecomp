@@ -30,7 +30,11 @@ class CInventoryItemDef;
 class CDefPointeeBase;
 namespace NInventory { class CTCInventoryBase; }
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
-enum EUIInventoryCategory;                                   // MS forward enum: the PDBs keep no enumerator spellings
+#ifdef FABLE_RETAIL_PASS22_INVENTORY_ITEMS_ORIGINAL_ENUM
+#include "engine/EUIInventoryCategory.h"
+#else
+enum EUIInventoryCategory;                                   // Legacy forward declaration, original enum exists in both PDBs.
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_USEBUTTONACTION
 enum EInventoryActionType;                                  // MS forward enum (no enumerator spellings in the PDBs)

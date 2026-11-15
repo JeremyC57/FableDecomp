@@ -155,6 +155,10 @@ public:
     unsigned char _pad_after_base[0xd0 - sizeof(CTCBase)];
 #endif
     long NumBoastsCompleted;                                             // +0xd0
+#ifdef FABLE_RETAIL_CTCHEROSTATS_BOASTS_COMPLETED_ACCESSORS
+    long GetNumBoastsCompleted()const{return NumBoastsCompleted;}
+    void SetNumBoastsCompleted(long val){NumBoastsCompleted=val;}
+#endif
     unsigned char _pad_0xd4[0x1dc - 0xd4];
 #elif defined(FABLE_RETAIL_CTCHEROSTATS_BRIBE)
     // Retail opt-in (chunk 795, row 0x0092FAB0 CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoInteraction): Money +0x3C (the

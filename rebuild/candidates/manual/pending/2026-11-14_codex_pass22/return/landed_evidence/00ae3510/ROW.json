@@ -1,0 +1,23 @@
+{
+  "address": "00ae3510",
+  "input_kind": "never_worked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 1,
+  "assigned_extent": 55,
+  "input_label": "Unwind@00fbdab0",
+  "assigned_name": "?ClearGroups@CParticleProgram@@QAEXXZ",
+  "selected_attempt": "main_01_original_clear_groups",
+  "object_size": 55,
+  "retail_size": 55,
+  "selected_flags": [],
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "evidence": "Both PDB exact names, FableWin body03336e90, original group member records, native group offsets and exact range-erase calls.",
+  "main_verified": true,
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "final_test_sha256": "b5897c6495a37e64cce1b902e25e760984c06081aef00d456b4a39e89602075d",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "residue": "",
+  "ready_for_claude_reverification": true
+}

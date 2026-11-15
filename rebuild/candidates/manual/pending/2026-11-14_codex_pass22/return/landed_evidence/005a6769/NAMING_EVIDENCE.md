@@ -1,0 +1,15 @@
+# 005A6769 evidence
+
+Identity is the original public thiscall CTCInventoryTrade::ConstructNormalShopListPC taking two const vector<pair<long,long> >& arguments and returning NUISystem::CComponent*. Both exact PDB PUBLIC names and both complete method descriptors agree (NAME_AUDIT.json and Ego_r/FableWin_TYPES.json). Native starts immediately after the named ConstructActualWantedInventoryPC return005A6768, ends with ret8 at005A6C9E, and the next whole function begins005A6CA1. The assigned1336-byte extent is correct; no funclet or neighboring body is included.
+
+Every original direct callee name is present in both PDB name sets; the protected static PMainGameComponent is independently present in both raw PUBLIC streams. All78 actual relocated operands, their COFF addends, canonical exact symbols, and actual retail addresses are checked in RELOCATION_AUDIT.json. All string literals match the actual native target contents. The two original CVectorMap LowerBound methods use native STLport4.6 pointer iterators (the later debug builds expose their newer iterator class ABI), and both complete60-byte native methods match independently. No address gets two spellings.
+
+The original shared CThingPlayerCreature inheritance chain replaces the old empty local derived stand-in. Original GetTC/Find/cast bodies, the discarded buy-shop lookup, the discarded CList cast, and original local names are restored from ORIGINAL_LOCALS.json and DONOR.disasm. The ordinary clothes/items counter references are a natural source choice that preserves member-backed updates and the native sum order; they are not claimed to be proven original local spellings. No invented engine class or callee is used.
+
+Both original type records independently prove FindChild(CCharString) at virtual offset12 and SetValue(const CWideString&,bool,bool) at576 (INDIRECT_ABI_AUDIT.json); the native target's nine indirect calls use those exact offsets/signatures.
+
+The final helper specialization source is the genuine shared LowerBound algorithm, compiled before the target-specific size/frame pragmas. Merely using the generic instantiation emitted64-byte frame versions; sol17/18 preserve that rejected carried-helper result. Final sol20 carries exactly the target1336 and two helpers60+60. Unreferenced COMDATs are explicitly excluded, with no native addresses assigned to them.
+
+The fixture includes exact selected target and helper text with controlled external interfaces. It checks4096 complete target scenarios, all nine counters, three full captions, and short-circuit call counts, plus3264 sorted-map key/size cases through both real LowerBound overloads. VC71 /Od /W3 /GR- without /EHsc and GCC64 C++03 both pass. Test ABI adapter only retains host pointer/long widths; production headers are unchanged.
+
+There are no row-owned header changes: the row overlay is byte-identical to verified merged14. HEADER_CONTRACT.json proves default and every old profile preservation through exact file identity. No global union merge is requested.

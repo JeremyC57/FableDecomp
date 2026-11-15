@@ -1,0 +1,5 @@
+# 0x007C36A0 whole-function boundary correction
+
+Authorized manifest extent659 reaches0x007C3933. Native FrameUpdate actually ends with ret at0x007C38FD, giving exact head606 (0x25E) bytes. The following INT3 bytes38FE/38FF separate an unrelated tiny function007C3900..007C390A; further functions begin007C3910,007C3920 and007C3930. They are separate constructor/accessor-shaped procedures and all have their own returns/separators. No FrameUpdate edge enters any tail function. Native FrameUpdate's sole two top arms and all branch targets stay within007C36A0..007C38FD. Both original PDBs identify FrameUpdate separately from template constructors/accessors. Original module352 procedure and scope records saved in ORIGINAL_LOCALS.json.
+
+The selected grade uses --length606 (space-separated CLI --length 606) to return only the genuine whole target. No tail function, int3 or padding is fabricated or used to inflate the match. RETAIL.disasm retains the original assigned659 for boundary inspection; compilation history stores private retail/object evidence, excluded from return.

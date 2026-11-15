@@ -1,0 +1,13 @@
+# Main review: 00B761D0 — accepted locally
+
+Main independently rebuilt CEngineWaterRenderer::RenderForeground with RTM VC7.1:2531bytes/715instructions exactly match after relocation masking. Its only reachable emitted helper is the original102-byte std::vector<CPreTransposedBoneMatrix>::resize, also exact. All88operands/addends/literals and whole target boundary were independently checked. The remaining68unreferenced named COMDATs receive no native-address or matching claim.
+
+Main inspected original naming evidence, including the mutable GPEnvironmentDef pointer-to-const PUBLIC/GDATA type and20NAME_FIXES entries. Original noargument RestoreCaptureBlock agrees with Ego_r and native ABI; the later FableWin void* signature is explicitly a later revision. Exact original shared headers and real helper chains replace the earlier local projections. Five forced-inline original helpers have retained owner-ladder evidence; final compiler flags are base only.
+
+Main compared allseven authored definitions literally with the behavior fixture and reran16384complete cases plus96getter cases under VC7.1 /Od /W3 /GR- without EH and GCC64C++03. The fixture checks resource loading/failure cleanup, references, four texture stages/caches, eight UV states with capture/dirty restoration, swell/Fresnel constants, four matrices, shader/index selection, and zero through four patches with both draws in exact call order. Finite inputs use exactly representable values; main replaced the old1e20f saturation sample by1048576.0f. NaN checks cover classification, not payload. External engine interfaces are controlled fixtures, not full-game integration.
+
+Main reran56native ABI checks and139old/default preprocessing profiles:134successful,5explicitly disclosed identical prerequisite failures. Two reviewed old/new header pairs merge into baseline31. All71accepted targets and every emitted named C++ code/relocation inventory match their selected receipts. Allcustom EHparent/funclet/data/binding graphs pass on31 too. An ENOSPC header-staging failure occurred before anycompilerinvocation; its partial snapshot is preserved, immutable identical headers deduplicated, and the remaining regression resumed successfully.
+
+No commit or push; all changes are local. Worker and independent main histories retained.
+
+Main follow-up: both original raw PDBs prove scoped capture has no base or fields. Removed the incorrect inherited opt-in, used existing original standalone type, and rebuilt main_review_02_original_empty_capture: 2531+102 bytes still exact, all88 bindings and complete authored-body fixture audit PASS. Reran16384 target+96getter cases on both compilers with standalone capture fixture:PASS. No shared header changed. Prior review remains archived.

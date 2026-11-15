@@ -15,6 +15,10 @@ class CSalKsPin:public CSalFile {
 public:
  virtual ~CSalKsPin();
  bool SetConnectionState(KSSTATE);
+#ifdef FABLE_RETAIL_CSAL_KS_PIN_PASS22_PROPERTIES
+ // Retail opt-in (Codex pass22): original GameCODA SDK symbol and native00C5E050 agree.
+ bool SetProperty(const GUID&,unsigned long,void*,unsigned long);
+#endif
 };
 class CSalEvent {
 public:

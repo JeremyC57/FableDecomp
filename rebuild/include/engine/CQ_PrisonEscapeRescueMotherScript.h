@@ -77,4 +77,30 @@ protected:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture) == 0x20);
 #endif
+#ifdef FABLE_RETAIL_CQ_PRISONESCAPERESCUEMOTHERSCRIPT_PRISONER
+// Retail opt-in (Codex pass 22, row00DD5A60): both complete original PDB records
+// prove the 0x14-byte base, ParentClass reference+0x14, PMasterData+0x18 and
+// private ReleasedAndFollowing+0x1c; total native size0x20.
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_PrisonEscapeRescueMotherScript::CPrisoner : public CEntityScriptBase {
+public:
+    typedef CQ_PrisonEscapeRescueMotherScript TParentClass;
+    CPrisoner(CQ_PrisonEscapeRescueMotherScript&, CScriptDataBase*, const CScriptThing&);
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_PrisonEscapeRescueMotherScript&, CScriptDataBase*, const CScriptThing&);
+    virtual CScriptBase* GetParentScript() const;
+    CQ_SunnyvaleMasterData* GetMasterData();
+protected:
+    CQ_PrisonEscapeRescueMotherScript& ParentClass;
+    CQ_SunnyvaleMasterData* PMasterData;
+private:
+    bool ReleasedAndFollowing;
+    virtual void Init();
+    virtual void OnPersist(CPersistContext&);
+    virtual void Main();
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner) == 0x20);
+#endif
+
 #endif

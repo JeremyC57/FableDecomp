@@ -9,6 +9,9 @@
 // (STLport 12-byte vectors; the Ego_r layout's +0x98 .. +0xB0 sits 0x20 higher), ?VerifySignatureCached@CTCInGameMenu@@QAE_NABVCWideString@@@Z
 // (0x0047ED0A, landed) and the private ?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z (Ego_r + FableWin).
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVEGAME
+#include "engine/CDateAndTime.h"
+#endif
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
 #ifdef FABLE_RETAIL_CTCINGAMEMENU_OPENMENU
@@ -21,6 +24,9 @@ namespace NUISystem { class CComponent; class CYesNo; }
 #ifndef FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD
 #error "CTCInGameMenu.h: FABLE_RETAIL_CTCINGAMEMENU_VIDEODIALOGS needs FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD (the native member layout)"
 #endif
+#endif
+#if defined(FABLE_RETAIL_CTCINGAMEMENU_SAVEGAME) && (!defined(FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD) || !defined(FABLE_RETAIL_CTCINGAMEMENU_VIDEODIALOGS))
+#error "CTCInGameMenu SaveGame needs the SAVELOAD and VIDEODIALOGS layouts"
 #endif
 class CTCInGameMenu : public CTCBase {
 public:
@@ -67,10 +73,16 @@ private:
     void AddRegionAndTimeInfo(const CWideString&);                   // 0x0047F58B
     bool          InGameMenuOpen;                                    // +0x0c
 #ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD
-#ifdef FABLE_RETAIL_CTCINGAMEMENU_OPENMENU
+#if defined(FABLE_RETAIL_CTCINGAMEMENU_OPENMENU) || defined(FABLE_RETAIL_CTCINGAMEMENU_SAVEGAME)
     unsigned char _pad_0x0d[0x28 - 0x0d];
     std::vector<CWideString> FileNames;                              // +0x28
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVEGAME
+    // Ego_r / FableWin original member; STLport vector is twelve bytes in retail.
+    std::vector<CDateAndTime> FileTimes;                              // +0x34
+    unsigned char _pad_0x40[0x58 - 0x40];
+#else
     unsigned char _pad_0x34[0x58 - 0x34];                            // +0x34 FileTimes, PrimitiveHandles, MenuPrimitiveHandles
+#endif
 #else
     unsigned char _pad_0x0d[0x58 - 0x0d];
 #endif
@@ -86,7 +98,12 @@ private:
     std::vector<long>        FilePlayTimes;                          // +0x90
 #ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD
 #ifdef FABLE_RETAIL_CTCINGAMEMENU_VIDEODIALOGS
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVEGAME
+    unsigned char _pad_0x9c[0xac - 0x9c];
+    NUISystem::CYesNo* m_pOKDialog;                                  // +0xac
+#else
     unsigned char _pad_0x9c[0xb0 - 0x9c];
+#endif
     NUISystem::CYesNo* PVideoOptionsNotAcceptedDialog;                // +0xb0
     NUISystem::CYesNo* PVideoOptionsChangedDialog;                    // +0xb4
 #else
@@ -124,7 +141,7 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCInGameMenu) == 0xf8);
+FABLE_STATIC_ASSERT_AT(127, sizeof(CTCInGameMenu) == 0xf8);
 #endif
 #else
 #ifndef FABLE_ENGINE_CTCINGAMEMENU_H
@@ -189,41 +206,41 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCInGameMenu) == 0xf8);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, field4) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, InGameMenuOpen) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, PDef_Object) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, GlobalDefIndex) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, ActiveScreen) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, ItemCount) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, ItemHighlightIndex) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, ItemTopIndex) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, FileNames) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, FileTimes) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, PrimitiveHandles) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, MenuPrimitiveHandles) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, Components) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, LoadGameIndex) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, CurStartPauseTime) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, AccumulativePausedTime) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, FileRegionNames) == 0x78);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, FileRegionMiniMapNames) == 0x84);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, FilePlayTimes) == 0x90);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, LastRenderTime) == 0xa0);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, OpenInventory) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, m_pOKDialog) == 0xac);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, PVideoOptionsNotAcceptedDialog) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, PVideoOptionsChangedDialog) == 0xb4);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, SaveGameToLoad) == 0xb8);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, VideoChangesTimer) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, SaveGameIndex) == 0xc8);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, FramesToWaitToSave) == 0xcc);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, PSaveInProgress) == 0xd0);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, SaveInProgressTime) == 0xd8);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, Signatures) == 0xe0);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, PMousePointer) == 0xec);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, PYesNo) == 0xf0);
+FABLE_STATIC_ASSERT_AT(192, sizeof(CTCInGameMenu) == 0xf8);
+FABLE_STATIC_ASSERT_AT(193, offsetof(CTCInGameMenu, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(194, offsetof(CTCInGameMenu, field4) == 0x4);
+FABLE_STATIC_ASSERT_AT(195, offsetof(CTCInGameMenu, InGameMenuOpen) == 0xc);
+FABLE_STATIC_ASSERT_AT(196, offsetof(CTCInGameMenu, PDef_Object) == 0x10);
+FABLE_STATIC_ASSERT_AT(197, offsetof(CTCInGameMenu, GlobalDefIndex) == 0x14);
+FABLE_STATIC_ASSERT_AT(198, offsetof(CTCInGameMenu, ActiveScreen) == 0x18);
+FABLE_STATIC_ASSERT_AT(199, offsetof(CTCInGameMenu, ItemCount) == 0x1c);
+FABLE_STATIC_ASSERT_AT(200, offsetof(CTCInGameMenu, ItemHighlightIndex) == 0x20);
+FABLE_STATIC_ASSERT_AT(201, offsetof(CTCInGameMenu, ItemTopIndex) == 0x24);
+FABLE_STATIC_ASSERT_AT(202, offsetof(CTCInGameMenu, FileNames) == 0x28);
+FABLE_STATIC_ASSERT_AT(203, offsetof(CTCInGameMenu, FileTimes) == 0x34);
+FABLE_STATIC_ASSERT_AT(204, offsetof(CTCInGameMenu, PrimitiveHandles) == 0x40);
+FABLE_STATIC_ASSERT_AT(205, offsetof(CTCInGameMenu, MenuPrimitiveHandles) == 0x4c);
+FABLE_STATIC_ASSERT_AT(206, offsetof(CTCInGameMenu, Components) == 0x58);
+FABLE_STATIC_ASSERT_AT(207, offsetof(CTCInGameMenu, LoadGameIndex) == 0x64);
+FABLE_STATIC_ASSERT_AT(208, offsetof(CTCInGameMenu, CurStartPauseTime) == 0x68);
+FABLE_STATIC_ASSERT_AT(209, offsetof(CTCInGameMenu, AccumulativePausedTime) == 0x70);
+FABLE_STATIC_ASSERT_AT(210, offsetof(CTCInGameMenu, FileRegionNames) == 0x78);
+FABLE_STATIC_ASSERT_AT(211, offsetof(CTCInGameMenu, FileRegionMiniMapNames) == 0x84);
+FABLE_STATIC_ASSERT_AT(212, offsetof(CTCInGameMenu, FilePlayTimes) == 0x90);
+FABLE_STATIC_ASSERT_AT(213, offsetof(CTCInGameMenu, LastRenderTime) == 0xa0);
+FABLE_STATIC_ASSERT_AT(214, offsetof(CTCInGameMenu, OpenInventory) == 0xa8);
+FABLE_STATIC_ASSERT_AT(215, offsetof(CTCInGameMenu, m_pOKDialog) == 0xac);
+FABLE_STATIC_ASSERT_AT(216, offsetof(CTCInGameMenu, PVideoOptionsNotAcceptedDialog) == 0xb0);
+FABLE_STATIC_ASSERT_AT(217, offsetof(CTCInGameMenu, PVideoOptionsChangedDialog) == 0xb4);
+FABLE_STATIC_ASSERT_AT(218, offsetof(CTCInGameMenu, SaveGameToLoad) == 0xb8);
+FABLE_STATIC_ASSERT_AT(219, offsetof(CTCInGameMenu, VideoChangesTimer) == 0xc0);
+FABLE_STATIC_ASSERT_AT(220, offsetof(CTCInGameMenu, SaveGameIndex) == 0xc8);
+FABLE_STATIC_ASSERT_AT(221, offsetof(CTCInGameMenu, FramesToWaitToSave) == 0xcc);
+FABLE_STATIC_ASSERT_AT(222, offsetof(CTCInGameMenu, PSaveInProgress) == 0xd0);
+FABLE_STATIC_ASSERT_AT(223, offsetof(CTCInGameMenu, SaveInProgressTime) == 0xd8);
+FABLE_STATIC_ASSERT_AT(224, offsetof(CTCInGameMenu, Signatures) == 0xe0);
+FABLE_STATIC_ASSERT_AT(225, offsetof(CTCInGameMenu, PMousePointer) == 0xec);
+FABLE_STATIC_ASSERT_AT(226, offsetof(CTCInGameMenu, PYesNo) == 0xf0);
 
 #endif // FABLE_ENGINE_CTCINGAMEMENU_H
 #endif

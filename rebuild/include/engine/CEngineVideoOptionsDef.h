@@ -6,6 +6,25 @@
 // CDefPointer<const CEngineVideoOptionsDef> and publishes the raw pointer. Own members are not modelled yet (one opaque block after the packed
 // 0x25-byte CDefClassBase; the quarantined generated model engine/_quarantine/CEngineVideoOptionsDef.h lists the Ego_r names).
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CENGINEVIDEOOPTIONSDEF_PASS22_FIELDS
+// Retail opt-in (Codex pass22): native RTTI proves CParentDefClassBase, not CDefClassBase.
+// Both PDBs name the fields; native00B32010 reads +48..60 and +73; native size78.
+#include "engine/CParentDefClassBase.h"
+class CEngineVideoOptionsDef : public CParentDefClassBase {
+public:
+    long HiresTextureMemory;
+    float LODErrorTolerance, CharacterLODErrorTolerance;
+    float DrawDistanceMultiplier, DrawDistanceMinimum, DrawDistanceMaximum;
+    float RepeatedMeshDrawDistanceFactor;
+    float MinimumZSpriteAsMeshDistance, MaximumZSpriteAsMeshDistance;
+    float ZSpriteDrawDistanceMultiplier;
+    long ShadowBufferSize;
+    float ShadowDistanceScale;
+    bool Enable2DDisplacement, Enable3DDisplacement, EnableGlow, EnableRadialBlur;
+    bool EnableWaterReflection, EnableWeatherEffects, EnableColourFilter, EnableRepeatedMeshes;
+    float WeatherDensity;
+};
+#else
 #include "engine/CDefClassBase.h"
 class CEngineVideoOptionsDef : public CDefClassBase {
 #ifdef FABLE_RETAIL_CENGINEVIDEOOPTIONSDEF_HIRESTEXTUREMEMORY
@@ -27,5 +46,6 @@ private:
 public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 #endif
 };
+#endif
 FABLE_STATIC_ASSERT_AT(14, sizeof(CEngineVideoOptionsDef) == 0x78);
 #endif // FABLE_ENGINE_CENGINEVIDEOOPTIONSDEF_H

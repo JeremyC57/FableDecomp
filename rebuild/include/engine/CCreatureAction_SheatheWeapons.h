@@ -12,8 +12,14 @@ class CThingCreatureBase;
 class CCreatureAction_SheatheWeapons : public CCombatActionBase {
 public:
     CCreatureAction_SheatheWeapons(CThingCreatureBase& creature);        // 0x008CC370
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GOSSIP
+    // Retail opt-in (Codex pass22,row0090E5D0): both original complete class records.
+    virtual void Initialise();
+    virtual void PerformAction();
+    virtual CCreatureActionBase* Clone() const;
+#endif
 private:
     bool PlayedSound;                                                    // +0x114
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SheatheWeapons) == 0x118);
+FABLE_STATIC_ASSERT_AT(18, sizeof(CCreatureAction_SheatheWeapons) == 0x118);
 #endif // FABLE_ENGINE_CCREATUREACTION_SHEATHEWEAPONS_H

@@ -28,6 +28,10 @@ class C3DVector;
 class C3DMeshStats: public CMovableResource {
 public:
  bool HasDummyObject(unsigned long)const;
+#ifdef FABLE_RETAIL_C3DMESHSTATS_LOADBINARY
+ // Retail opt-in (Codex pass22): both PDB public reference signature, native A2F2D0.
+ bool LoadBinary(class CMemoryDataInputStream&);
+#endif
 #ifdef FABLE_RETAIL_C3DMESHSTATS_MESHGENERATORS
  // Retail opt-in (wf22, row 0x00A24520): Ego_r.pdb ?InitialiseMeshGenerators@C3DMeshStats@@QAEXABVCMeshDataBank@@ABVCCharString@@@Z
  // (retail 0x00A2EC40, landed). Declaration only.
@@ -60,7 +64,11 @@ public:
  const C3DGeneratorObject* GetMeshGeneratorsBegin()const{return MeshGenerators.begin();}
  const C3DGeneratorObject* GetMeshGeneratorsEnd()const{return MeshGenerators.end();}
 #endif
+#ifdef FABLE_RETAIL_C3DMESHSTATS_LOADBINARY
+protected: // Both original PDBs protect the stats data range; native first field +4.
+#else
 private:
+#endif
  CMovableResourceMemoryPool* MemoryPool;
  long StatsMemoryHandle;
  CCharString Name;

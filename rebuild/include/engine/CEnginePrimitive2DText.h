@@ -18,7 +18,11 @@ class CFontBank;
 enum EEngine2DLayer;
 class CEnginePrimitive2DText : public CEnginePrimitive {
 public:
+#ifdef FABLE_RETAIL_CTEXT_DRAW_PRIMITIVE_BODIES
+    CEnginePrimitive2DText() : CEnginePrimitive((EEnginePrimitiveType)0x27, 0, (EEngineInterpolationSet)0) { }
+#else
     CEnginePrimitive2DText() : CEnginePrimitive((EEnginePrimitiveType)0x27, (EEngineInterpolationSet)0) { }
+#endif
     CEnginePrimitive2DText(unsigned __int64, const C2DVector&, EEngine2DLayer, float, const CWideString&, const CFontBank&,
                            const CRGBColour&, EEngineInterpolationSet);                 // 0x00543910
     CEnginePrimitive2DText(const CEnginePrimitive2DText&);                              // 0x00655048
@@ -28,7 +32,11 @@ public:
     float Scale;                                                                         // +0x1c
     CRGBColour Colour;                                                                   // +0x20
     CWideString Text;                                                                    // +0x24
+#ifdef FABLE_RETAIL_CTEXT_DRAW_PRIMITIVE_BODIES
+    const CFontBank* PFont; // Both original complete PDB records: const-pointee pointer.
+#else
     CFontBank* PFont;                                                                    // +0x28
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitive2DText) == 0x2c);
+FABLE_STATIC_ASSERT_AT(33, sizeof(CEnginePrimitive2DText) == 0x2c);
 #endif

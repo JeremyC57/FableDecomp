@@ -20,6 +20,9 @@ public:
     // SetOrientation is destroyed by a direct ~CBaseClass 0x0099A2E0 call with no vptr store (0x00AEB80D), which a user-declared
     // `{ }` keeps (`mov [esp+10h],offset vftable`).
 #endif
+#ifdef FABLE_RETAIL_C3DORIENTATIONINTERPOLATOR_PASS22_GETINTERPOLATED
+    CRightHandedSet GetInterpolated(float interp)const{return StartOrientation.Interpolate(EndOrientation,interp);}
+#endif
     CRightHandedSet StartOrientation;                                    // +0x04
     CRightHandedSet EndOrientation;                                      // +0x1c
 #ifdef FABLE_RETAIL_C3DORIENTATIONINTERPOLATOR_GETINTERPOLATED

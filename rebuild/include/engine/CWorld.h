@@ -179,6 +179,10 @@ public:
     // SaveHeroStateInternal 0x004A00E0 (?SaveHeroStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z, landed), AutoSaveRegionLeaving
     // 0x004A0180 (?AutoSaveRegionLeaving@CWorld@@QAE_NXZ, landed), AutoLoadRegionLeaving 0x004A34F0. Declarations only.
     void SaveGameState(const CWideString& name, bool a, bool b);                 // 0x004A05C0
+#ifdef FABLE_RETAIL_CWORLD_SAVEDISKSPACE
+    // Ego_r / FableWin original public const-thiscall signature; SaveGame native call to 0x0049D4B0.
+    bool IsDiskSpaceForSaveGame() const;
+#endif
     void SaveGameStateManual(const CWideString& name);                           // 0x004A0780
     bool AutoSaveRegionLeaving();                                                // 0x004A0180
     bool AutoLoadRegionLeaving();                                                // 0x004A34F0
@@ -433,6 +437,14 @@ public:
     CWideString GetPathNameForFileName(const CWideString& fileName) const;   // 0x0049EF50 ?GetPathNameForFileName@CWorld@@QBE?AVCWideString@@ABV2@@Z
     bool LoadGameState(const CWideString& name, bool loadNow);  // 0x004A3200 ?LoadGameState@CWorld@@QAE_NABVCWideString@@_N@Z
     bool AutoLoadRespawn();                                      // 0x004A5E90 ?AutoLoadRespawn@CWorld@@QAE_NXZ
+#ifdef FABLE_RETAIL_CWORLD_LOAD_ORIGINAL
+    // Both original exact member types and module560 named calls.
+    void Load(const CWideString&);
+    CWideString ConvertWorldToStaticMapPath(const CWideString&)const;
+    static CWideString FABLE_FASTCALL ConvertWorldToQuestPath(const CWideString&);
+    CWideString ConvertWorldToLevelWADPath(const CWideString&)const;
+    void GenerateOfflineDataForWorld(const CWideString&);
+#endif
     // Chunk 734 (row 0x004A0D90): ?LoadQuestsFromFile@CWorld@@QAEXAAVCAFile@@_N@Z and ?ClearRegisteredQuests@CWorld@@QAEXXZ (QAE in both PDBs).
     void LoadQuestsFromFile(CAFile& file, bool clearRegisteredQuests);   // 0x004A0D90
     void ClearRegisteredQuests();                                // 0x004A08D0
@@ -461,7 +473,9 @@ protected:
     // ?Load@CWorld@@QAEXABVCWideString@@@Z (0x004A1840) and ?ActivateWorld@CWorld@@QAEX_N@Z (0x0049F180, landed). Declarations only.
 public:
     void PrepareForLoad();                                       // 0x004A0220
+#ifndef FABLE_RETAIL_CWORLD_LOAD_ORIGINAL
     void Load(const CWideString& fileName);                      // 0x004A1840
+#endif
     void ActivateWorld(bool b);                                  // 0x0049F180
 protected:
 #endif
@@ -471,7 +485,14 @@ private:
     // descriptive name, as the landed GetFrame 0x0049D870.
     static long Frame;                                           // 0x013B89BC
 public:
+#ifdef FABLE_RETAIL_CWORLD_LOAD_ORIGINAL
+protected:
+    // Both original complete classes: reference at+8; old/default pointer model preserved.
+    CMainGameComponent& Component;
+public:
+#else
     CMainGameComponent*         Component;                   // +0x08
+#endif
     CPlayerManager*             PlayerManager;               // +0x0c
     CGameDefinitionManager*     DefinitionManager;           // +0x10
 #ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS

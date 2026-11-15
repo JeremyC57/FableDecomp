@@ -31,6 +31,11 @@ public:
     static void* __fastcall operator new(unsigned int);
     static void __fastcall operator delete(void*);
     float GetInterpolatedLifetimerInSeconds(float) const;
+#ifdef FABLE_RETAIL_CDECAL_PASS22_CLEARALL
+    // Retail opt-in (Codex pass 22): FableWin ClearAll and the native two-container clear.
+    // This row defines the original public method out of line; earlier opt-ins are unchanged.
+    void ClearAll();
+#endif
 #ifdef FABLE_RETAIL_CDECAL_CLEAR
     // Opt-in (row 0x00AF5430 CParticleSystem::ClearDecal): FableWin.pdb accessors, all inline in retail (no retail copies):
     // ?GetParentHandle@CDecal@NParticleEngine@@QBE_NJAAVCEnginePrimitiveHandle@@@Z, ?GetPrimID@CDecal@NParticleEngine@@QBE_NJJAAJ@Z,

@@ -10,7 +10,13 @@ class CEngineSubPrimitiveBoundingBox : public CEngineSubPrimitiveBase {
 public:
     CEngineSubPrimitiveBoundingBox(CEngineInternalPrimitiveOcclusionBase* parent)
         : CEngineSubPrimitiveBase(reinterpret_cast<CEngineInternalPrimitiveBase*>(parent)) { }
-    virtual ~CEngineSubPrimitiveBoundingBox();
+    #ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+ // Original FableWin module904 dtor has no own work; only the real base dtor call.
+ // Evidence: SUBPRIMITIVE_DTOR_LOCALS.json; donor02E831E0/02E83240; retail deleting dtor00B9C130.
+ // Implicit virtual destructor: native00B9C130 forwards straight to the real base.
+#else
+ virtual ~CEngineSubPrimitiveBoundingBox();
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveBoundingBox) == 0x18);
+FABLE_STATIC_ASSERT_AT(15,sizeof(CEngineSubPrimitiveBoundingBox) == 0x18);
 #endif

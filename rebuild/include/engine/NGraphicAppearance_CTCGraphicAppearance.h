@@ -105,6 +105,10 @@ protected:
  signed char ByPassColorFilter;
 public:
  const CEngineGraphic& GetMainGraphic()const{return MainGraphic;}
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_PASS22_SPRITE
+ // Retail opt-in (Codex pass22): original FableWin0263dc70, native byte+0x59 bit0.
+ bool IsSelfIlluminating() const { return SelfIlluminating != 0; }
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETPRIMITIVE
  // Opt-in (row 0x004BD6E0): Ego_r.pdb ?SetPrimitive@CTCGraphicAppearance@NGraphicAppearance@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC3DPositionInterpolator@@ABVC3DOrientationInterpolator@@@Z
  // (protected, out of line at 0x004BD6E0) and the protected inline GetUpdatePrimitiveReasons() const (0x004BD7BC: `mov eax,4` when no
@@ -160,6 +164,9 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FLARE
     // Retail opt-in (Codex pass20): both PDBs and donor0222b060 call sequence.
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_PASS22_PROXIMITY
+    void RefreshPrimitivePos(CPrimitive*,const C3DPositionInterpolator&,const C3DOrientationInterpolator&);
+#endif
     float GetFadeDistance() const;
     CPrimitive* AddPersistentPrimitive(const CPrimitive&);
     void SetPrimitiveGraphics(CPrimitive*,const CEnginePrimitive&,unsigned short);
@@ -183,6 +190,10 @@ public:
     CIVCountedPointer<CEngineMeshEffect> GetPMeshEffect();       // 0x004BCF50
     void RefreshPrimitiveAnimationAndPos(CPrimitive* primitive, const C3DAnimationInterpolator& anim, const C3DPositionInterpolator& pos,
                                          const C3DOrientationInterpolator& orientation);   // 0x004BCFE0
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_PASS22_STATICFOCAL
+    // Both original PDBs and native004C10E0; original const value result.
+    C3DVector GetStaticFocalPos()const;
 #endif
     C3DVector GetFocalPos(float time) const;                 // 0x004C1060
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPERNAMES

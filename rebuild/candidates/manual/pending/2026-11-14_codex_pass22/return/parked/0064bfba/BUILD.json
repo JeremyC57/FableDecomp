@@ -1,0 +1,14 @@
+{
+  "status": "PARKED",
+  "selected_attempt": "main_joint12_current_colour_copy_inline",
+  "baseline": "reference/include",
+  "source": "0064bfba.cpp",
+  "flags": [
+    "/Gr"
+  ],
+  "header_profile": "9cf8dff291dfffbd54532dfa94819186b544552452c7d08ce3d137c0d1df7441",
+  "source_dependencies": [],
+  "test_adapter": null,
+  "source_sha256": "d63159e01cb74f08d4f2dabdb78a497dee6ebd7aeae028be2150ab4b55a567d6",
+  "test_sha256": "fbc42ddb7ff9185316d40078968ca44b2e876906956ee10419f0758b6f0d76dd"
+}

@@ -576,5 +576,11 @@ FABLE_FORCEINLINE void CMatrix3x4::Set(const CRightHandedSet& orientation,const 
 {
     Set(orientation.GetRight(), orientation.GetForward(), orientation.GetUp(), translation);
 }
+#elif defined(FABLE_RETAIL_CMATRIX3X4_PARTICLE_ADD_SET)
+#include "engine/CRightHandedSet.h"
+inline void CMatrix3x4::Set(const CRightHandedSet& rhset,const C3DVector& translate)
+{
+    Set(rhset.GetRight(),rhset.GetForward(),rhset.GetUp(),translate);
+}
 #endif
 #endif

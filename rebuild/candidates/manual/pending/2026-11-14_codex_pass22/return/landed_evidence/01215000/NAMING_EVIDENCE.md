@@ -1,0 +1,13 @@
+# Compiler-generated EH section for CCodaContext::Create3DSource
+
+The assigned21-byte span contains two entry points: unwind cleanup01215000..0121500B (11bytes), and frame handler0121500B..01215015 (10bytes). This is exactly the complete associated `.text$x` section emitted by VC7.1 for the original already-landed parent00C3DB80, CCodaContext::Create3DSource. It is NOT one standalone21-byte C++ function. BOUNDS_FIX.tsv records both boundaries; the source includes the parent as README_CODEX.md requires rather than authoring a synthetic funclet.
+
+Parent identity: original legally distributed GameCODA2.10 SDK CodaContext.obj CodeView/public symbol `?Create3DSource@CCodaContext@@QAEPAVCCoda3DSource@@I@Z`, original factory control flow and native335-byte parent; supplied landed_sources.tsv and pass20 source receipt agree. Native parent immediate00C3DB89 references handler0121500B. FuncInfo0136F1D8 points to unwind table0136F1D0, whose action is01215000. The allocator-failure/constructor-throw cleanup is inherited `??3CCodaObjectBase@@SAXPAX@Z` at00C33100, independently a native5-byte jump to CodaFree00C3C370 and the original SDK class member. No fabricated CombatAction or HeroStats label is reused. See PARENT_NAMING_EVIDENCE.md and retained exact SDK symbol inventory for all parent callees/globals/layouts.
+
+The selected Leaf `.text$x` denotes the single complete associated compiler section. Its internal unwind `$L` label is compiler-generated, not an original source name; frame handler has exact generated name `__ehhandler$?Create3DSource@CCodaContext@@QAEPAVCCoda3DSource@@I@Z`. Audit validates the parent association, all21 section bytes, all335parentbytes,36EH-data bytes and25combined operands (20parent+3EHcode+2EHdata), including frame handler00BFEB34 and every data/cleanup pointer.
+
+The standalone pasted-parent behavior fixture passes46080 factory traces plus an actual throwing-constructor case on both VC71 /Od/W3/GR-/EHsc and GCC64C++03. The throwing case requires exactly one class deallocation and exception propagation. No byte payload, fake callee, handwritten cleanup routine, new shared header, or inline-control change was needed.
+
+For progress this contributes one matched reserved row and21assignedbytes, including both generated entry points. Parent335bytes are only revalidated dependencies and do not count again. Landing may split the two catalog entries while retaining the same original parent source.
+
+Current main re-review additionally compiles the guarded fixture without /EHsc as required. The separate extra /EHsc run retains constructor-cleanup coverage; both records pin the same current fixture hash.

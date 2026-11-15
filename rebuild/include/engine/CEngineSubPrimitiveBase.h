@@ -14,7 +14,15 @@ public:
 #else
  CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase* parent):Parent(parent),NextSubPrimitive(0){}
 #endif
+ #ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+ // Original FableWin module904 dtor has no own work; only the real base dtor call.
+ // Evidence: SUBPRIMITIVE_DTOR_LOCALS.json; donor02E831E0/02E83240; retail deleting dtor00B9C130.
+ // Implicit virtual destructor: native00B9C130 forwards straight to the real base.
+#else
+#ifndef FABLE_RETAIL_PASS22_PRIMITIVE_IMPLICIT_DESTRUCTORS
  virtual ~CEngineSubPrimitiveBase();
+#endif
+#endif
  static void* __fastcall operator new(unsigned int size);
  static void __fastcall operator delete(void*);
 #ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_PARENTBASE

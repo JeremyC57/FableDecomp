@@ -20,6 +20,13 @@
 #include "fable_string.h"
 #include "engine/C2DExtentsF.h"
 class C3DVector; class CRGBColour; class CTexture; class CFontManager;
+#ifdef FABLE_RETAIL_PASS22_STREAMING_FONT_CTOR
+#ifdef _MSC_VER
+typedef __wchar_t FableFontWideChar; // Original PB_W public ABI, UTF16 storage.
+#else
+typedef unsigned short FableFontWideChar;
+#endif
+#endif
 float __fastcall GFAXToVX(float x);                                      // 0x009E1DA0
 float __fastcall GFAYToVY(float y);                                      // 0x009E1DD0
 #ifdef FABLE_RETAIL_CFONTBANK_BASE
@@ -32,8 +39,16 @@ class CFontBank : public CBaseClassNonCopyable {
 class CFontBank {
 #endif
 public:
+#ifdef FABLE_RETAIL_PASS22_STREAMING_FONT_CTOR
+    // Original 009A4140: real base then Name; no own fields initialized.
+    CFontBank():CBaseClassNonCopyable(),Name() {}
+#endif
     virtual ~CFontBank();                                                // slot 0 (??_G 0x009A0B30)
-    virtual C2DExtentsF GetStringExtents(const wchar_t* text, bool) const = 0;   // slot 1
+#ifdef FABLE_RETAIL_PASS22_STREAMING_FONT_CTOR
+    virtual C2DExtentsF GetStringExtents(const FableFontWideChar* text, bool) const = 0;
+#else
+    virtual C2DExtentsF GetStringExtents(const wchar_t* text, bool) const = 0;
+#endif   // slot 1
     virtual float GetFontMaxHeight() const = 0;                          // slot 2
     // Default arguments (2026-11-03 landing b, Codex pass 13 row 0x009DA9F0): Render2DDrawList calls PrepareToRender() and the
     // five-argument Render through the vtable with `true` / a null texture pushed (no forwarding helper exists in either PDB).
@@ -65,7 +80,11 @@ public:
 #else
     C2DExtentsF GetVStringExtents(const CWideString& text) const
     {
+        #ifdef FABLE_RETAIL_PASS22_STREAMING_FONT_CTOR
+        C2DExtentsF extents = GetStringExtents(reinterpret_cast<const FableFontWideChar*>(text.GetAsCharArray()), false);
+#else
         C2DExtentsF extents = GetStringExtents(text.GetAsCharArray(), false);
+#endif
         extents.X = GFAXToVX(extents.X);
         extents.Y = GFAYToVY(extents.Y);
         return extents;

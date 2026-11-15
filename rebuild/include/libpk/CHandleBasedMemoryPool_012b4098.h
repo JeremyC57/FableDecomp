@@ -28,6 +28,10 @@ struct CHeader {                                // CHandleBasedMemoryPool_012b40
     CHeader*       NextContiguous;              // +0x1c
 };
 
+#ifdef FABLE_RETAIL_LIBPK_HANDLEINFO_DINKUMWARE
+// Original VC7.1 standard header, supplied by the RTM compiler distribution.
+#include <vector>
+#else
 namespace std {
 template<class _Ty> class allocator { };
 
@@ -54,11 +58,43 @@ public:
 };
 }
 
+#endif // existing compact declaration branch
+
 class CHandleBasedMemoryPool_012b4098 {
 public:
+#ifdef FABLE_RETAIL_LIBPK_HANDLEINFO_DINKUMWARE
+    // Retail opt-in (Codex pass22): original both-PDB nested types plus native
+    // pool allocation/free and C298D0's four-byte non-scalar element operations.
+    // Existing owner-approved libpk identity retained; default branch untouched.
+    class CHeader {
+    public:
+        CHeader();
+        unsigned char* GetDataPointer();
+        bool IsAllocated() const;
+        long GetPaddedSize() const;
+        void* Resource;
+        long Handle;
+        long Size;
+        short Padding;
+        unsigned char Status;
+        unsigned char Locked;
+        CHeader** RefAvailable;
+        CHeader* NextAvailable;
+        CHeader* PrevContiguous;
+        CHeader* NextContiguous;
+    };
+    class CHandleInfo {
+    public:
+        CHandleInfo();
+        union { CHeader* Header; long NextUnusedHandle; };
+    };
+#endif
     virtual void MoveResource(void* resource, long handle, void* from, void* to, unsigned long size);   // slot 0
     virtual int  CanMoveResource(void* resource, long handle);                                        // slot 1
     virtual void ValidateResource(void* resource);                                                    // slot 2
+#ifdef FABLE_RETAIL_LIBPK_STREAM_BUFFER_PASS22
+    void* GetPointerFromHandle(long handle); // Existing binding and native00C28380.
+#endif
     void*                 Buffer;               // +0x04
     void*                 UnalignedBuffer;      // +0x08
     long                  PoolSize;             // +0x0c
@@ -70,7 +106,11 @@ public:
     void*                 m_defaultHandler;     // +0x34 embedded default handler (one vptr)
     void*                 FailureHandler;       // +0x38
     CHeader*              FreeLists[256];       // +0x3c
+#ifdef FABLE_RETAIL_LIBPK_HANDLEINFO_DINKUMWARE
+    std::vector<CHandleInfo> Handles;
+#else
     std::vector<CHeader*> Handles;              // +0x43c
+#endif
     long                  FirstUnusedHandle;    // +0x44c
 protected:
     void  InternalSetResource(long handle, void* resource);   // 0x00C28540

@@ -32,6 +32,7 @@
 #error engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it
 #else
 #include "rebuild_abi.h"
+#include "fable_compiler.h"
 #include "engine/CDefPointeeBase.h"
 #if defined(_MSC_VER)
 #define FABLE_DEFPTR_INLINE __forceinline
@@ -41,6 +42,33 @@
 
 enum ENullDef { NULL_DEF };                                          // W4ENullDef@@ (global); enumerator name unproven
 
+#ifdef FABLE_RETAIL_CDEFPOINTER_ORIGINAL_COMPLETE_MEMBERS_PASS22
+// Both original instantiated class records17 members; generated closures omitted.
+// Inline-budget: retains existing retail CDefPointer policy. Plain-inline original chain
+// and S100/200/400/800 trials a41..45 gave1342bytes/50loose hunks versusnative1393.
+// No Assign helper appears in those records. Uninstantiated member-template absence is not inferred.
+template <class T> class CDefPointer {
+public:
+ FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if(Object) Object->AddRef(); }
+ CDefPointer(T* object);
+ FABLE_FORCEINLINE CDefPointer(ENullDef = NULL_DEF) : Object(0) { }
+ FABLE_FORCEINLINE ~CDefPointer() { Release(); }
+ T& operator*() const;
+ T* operator->() const;
+ CDefPointer& operator=(const CDefPointer& other);
+ bool IsNull() const { return Object==0; }
+ T* Get() const;
+ void Reset(T* object);
+ void Swap(CDefPointer& other);
+ FABLE_FORCEINLINE void Release() {
+  if(Object) { Object->Release(); Object=0; }
+ }
+ unsigned long GetRefCount() const;
+ CDefPointeeBase* InternalGetObject() const;
+private:
+ CDefPointeeBase* Object;
+};
+#else
 template <class T> class CDefPointer {
 public:
     FABLE_DEFPTR_INLINE CDefPointer(ENullDef = NULL_DEF) : Object(0) {}             // ??0..QAE@W4ENullDef@@@Z
@@ -177,7 +205,8 @@ private:
         }
     }
 };
-FABLE_STATIC_ASSERT(sizeof(CDefPointer<CDefPointeeBase>) == 0x4);
+#endif
+FABLE_STATIC_ASSERT_AT(180, sizeof(CDefPointer<CDefPointeeBase>) == 0x4);
 
 #endif // FABLE_RETAIL_DEF_CLASS_BASE
 #endif // FABLE_ENGINE_CDEFPOINTER_H

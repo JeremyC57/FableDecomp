@@ -1,0 +1,4 @@
+rows checked 56291 -> differing lines in $S/c22/equiv.tsv
+rc=0
+rerun of 791 rows (780 were include-path errors from the scratch tree; ../src linked): 11 differ
+after the two line fixes: 1 differs (0x00CBFB7D, only __FILE__ text of the scratch tree path)

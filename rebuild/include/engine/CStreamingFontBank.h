@@ -17,13 +17,25 @@
 // and offsets, the same in retail (the landed ~CStreamingFontBank 0x009A1090 reads glyphBankCache +0x14, GlyphBankMemory +0x28,
 // fontIndex +0x302C, PTexture +0x3030).
 #include "engine/CFontBank.h"
+#ifdef FABLE_RETAIL_PASS22_STREAMING_FONT_CTOR
+#include "engine/CStreamingGlyph.h"
+#endif
 class CStreamingFontDataBank;
 class CTexture;
 struct GlyphBank;
 class CStreamingFontBank : public CFontBank {                            // vtable 0x0129AB54
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERTEXT_RENDER
+    // Both original TPI records and donor Getter; native013c5a7c.
+    static bool FABLE_FASTCALL GetUseFixedFunction(){return UseFixedFunction;}
+    static void FABLE_FASTCALL SetAlphaMaskUVs(const class C2DVector&,const class C2DVector&);
+#endif
     virtual ~CStreamingFontBank();                                       // slot 0 (??_G 0x009A4E40, ??1 0x009A1090)
-    virtual C2DExtentsF GetStringExtents(const wchar_t* text, bool) const;   // slot 1 0x009A14E0
+#ifdef FABLE_RETAIL_PASS22_STREAMING_FONT_CTOR
+    virtual C2DExtentsF GetStringExtents(const FableFontWideChar* text, bool) const;
+#else
+    virtual C2DExtentsF GetStringExtents(const wchar_t* text, bool) const;
+#endif   // slot 1 0x009A14E0
     virtual float GetFontMaxHeight() const;                              // slot 2 0x009A0EA0
     virtual void PrepareToRender(bool = true) const;                     // slot 3 0x009A1720
     virtual bool Preload(const CWideString& text, bool) const;           // slot 4 0x009A2000
@@ -46,6 +58,13 @@ public:
     static class C2DVector AlphaMaskUVAdd;
 #endif
 protected:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERTEXT_RENDER
+    static bool UseFixedFunction;
+#endif
+#ifdef FABLE_RETAIL_PASS22_STREAMING_FONT_CTOR
+    // Original protected nested type, Ego_r TPI0x61FEE.
+    struct GlyphBank { unsigned short FirstGlyph,NoGlyphs; CStreamingGlyph Glyphs[64]; };
+#endif
     CStreamingFontDataBank* data_bank;                                   // +0x10
     GlyphBank*              glyphBankCache;                              // +0x14
     unsigned long           glyphBankCacheIndex;                         // +0x18
@@ -53,7 +72,11 @@ protected:
     long                    Weight;                                      // +0x20
     bool                    Italics;                                     // +0x24
     void*                   GlyphBankMemory;                             // +0x28
-    void*                   GlyphBanks[1024];                            // +0x2c
+#ifdef FABLE_RETAIL_PASS22_STREAMING_FONT_CTOR
+    const void*             GlyphBanks[1024]; // Original pointer-to-const-void array.
+#else
+    void*                   GlyphBanks[1024];
+#endif                            // +0x2c
     unsigned long           GlyphFlags[2048];                            // +0x102c
     unsigned long           fontIndex;                                   // +0x302c
     CTexture*               PTexture;                                    // +0x3030
@@ -78,7 +101,11 @@ struct CStreamingFontBank {
     bool                    Italics;                         // +0x24
     unsigned char           _pad_0x25[0x3];                  // +0x25
     void*                   GlyphBankMemory;                 // +0x28
-    void*                   GlyphBanks[1024];                // +0x2c
+#ifdef FABLE_RETAIL_PASS22_STREAMING_FONT_CTOR
+    const void*             GlyphBanks[1024]; // Original pointer-to-const-void array.
+#else
+    void*                   GlyphBanks[1024];
+#endif                // +0x2c
     unsigned long           GlyphFlags[2048];                // +0x102c
     unsigned long           fontIndex;                       // +0x302c
     CTexture*               PTexture;                        // +0x3030

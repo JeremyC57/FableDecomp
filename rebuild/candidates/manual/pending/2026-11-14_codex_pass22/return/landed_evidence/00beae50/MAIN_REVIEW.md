@@ -1,0 +1,7 @@
+# Independent main acceptance: 00BEAE50
+
+Fresh main_review_01 verifies1592full assigned bytes (1556code/522instructions+36switchtable). All40rootrelocations/9case entries are independently resolved at exactlymatching native/object instruction sites. Actual vector(n) constructor77bytes andits malloc binding match.37namedsections inventoried,1called helper, no helper/EH debt. Generic disassembly hunk counters include switchdata and are not the byte metric.
+
+Fresh1792fulltarget scenarios pass VC71/Od/W3/GR-noEH and64-bitGCC C++03. Target and original depth helper copied verbatim; fixture now executes actual recovered Readbody. Native depth constant2/32767 has bits38800100, not old donor1/16384. Main reran11sizes24offsets and compiled signed-enum/depthbits proofs, plus constMap/Offset pointer-to-member assignments and generic base conversions. Original full class identities/fields/enums independently recovered inboth rawPDBs; retail layout differences documented.
+
+Five owned headers merged into34, reusing alreadyacceptedReadscopeheader. All76accepted targets and every emitted named code+relocation inventory unchanged, customEH auditsPASS.162old/defaultheader profilesPASS. Controlled revert of Readguard withoriginalnames reproduces exactlyall193old different bytes; scope is causal. Parent main review/readscope finding documented under00AE1BC0. No commit/push. Worker pending-review comment in immutable authored source is superseded by this receipt andROW.json.

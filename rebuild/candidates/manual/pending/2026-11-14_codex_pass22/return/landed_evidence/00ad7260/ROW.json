@@ -1,0 +1,26 @@
+{
+  "address": "00ad7260",
+  "input_kind": "never_worked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 1,
+  "assigned_extent": 81,
+  "input_label": "Catch@0040d88c",
+  "compile_invocations": 1,
+  "assigned_name": "??1COptimisedSubMesh@QuadricOptimiserInternals@@QAE@XZ",
+  "selected_attempt": "main_01_original_dtor",
+  "object_size": 81,
+  "retail_size": 81,
+  "selected_flags": [
+    "/Gr"
+  ],
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "evidence": "Both original PDB names, original donor destructor and native same-layout arrays",
+  "main_verified": true,
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "final_test_sha256": "de739a3f2ae405ada7543e913347f074fe55d9d99da374644661592426b491bf",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "residue": "",
+  "ready_for_claude_reverification": true
+}

@@ -1,0 +1,14 @@
+{
+  "status": "RELOCATION_MATCH",
+  "selected_attempt": "continue_b111_final_implicit_primitive_destructors",
+  "baseline": "reference/include",
+  "source": "00bc3f3d.cpp",
+  "flags": [
+    "/d2inlT512"
+  ],
+  "header_profile": "dc484b88cb23a82b9215daba7049ff239e1279a74ab9b9baecfe8621ad9711a5",
+  "source_dependencies": [],
+  "test_adapter": null,
+  "source_sha256": "69e4ae18140dc94584b11a4623424813bab7ce2c013716ef608e1d0f1ce92d71",
+  "test_sha256": "47a6dd4b70c24b751a297ff4c67f111e801fa1cc6b00b4c4462a05d84383784f"
+}

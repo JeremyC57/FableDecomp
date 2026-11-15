@@ -1,0 +1,32 @@
+{
+  "address": "007c36a0",
+  "input_kind": "never_worked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 2,
+  "compile_invocations": 4,
+  "assigned_extent": 659,
+  "extent_override": 606,
+  "bounds_evidence": "BOUNDS_FIX.md",
+  "assigned_name": "?FrameUpdate@CTCDrainLife@@UAEXXZ",
+  "selected_attempt": "main_review_01",
+  "selected_flags": [],
+  "retail_size": 606,
+  "object_size": 606,
+  "behavior_cases": 340,
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "helper_debts": [],
+  "carried_match": [
+    "007c3c20:581",
+    "005c05c0:21",
+    "006f09d0:62"
+  ],
+  "main_verified": true,
+  "main_review": "Independent main RTM606/606,3helper bodies664bytes/35relocs,340full VC/GCCcases,17old/default header profiles and corrected606extent checked.",
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "final_test_sha256": "ef4b62c288397076ddcc8339cedaed34794e6284924fa2533041c822587f4bf2",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "residue": "",
+  "ready_for_claude_reverification": true
+}

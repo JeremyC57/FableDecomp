@@ -1,0 +1,3 @@
+# Independent main review
+
+2250 target bytes;86 bytes of two called destructors;102 relocations;79 callback words;98304 complete behavior cases. Fresh main RTM13.10.3077 build and exact masked comparison passed, as did full VC71 /Od /W3 /GR- and g++64 C++03 fixture runs. Source, fixture, original names/locals, full extents and call binding evidence reviewed. Actual COFF weak aliases, callback ordinals/RTTI and whole emitted called helpers rechecked from main object. The combined47-row/143-header regression preserves every emitted C++ code section and relocation name. No helpers counted as additional reserved rows.

@@ -77,6 +77,12 @@ private:
     void RenderSeaBackground(float time);                                // ?RenderSeaBackground@CEngineWaterRenderer@@AAEXM@Z
     void RenderEnvironmentMap();                                         // ?RenderEnvironmentMap@CEngineWaterRenderer@@AAEXXZ
     void RenderIceForeground(float time);                                // ?RenderIceForeground@CEngineWaterRenderer@@AAEXM@Z
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_FOREGROUND_BODIES_PASS22
+    // Both original private method descriptors and actual donor helper calls.
+    bool SetForegroundTexturesAndUVModes();
+    void SetupForegroundShaderConstantsAndFog();
+    void SetupFresnelPixelShaderConstants();
+#endif
     void RenderForeground(float time);                                   // ?RenderForeground@CEngineWaterRenderer@@AAEXM@Z
     void RenderSeaReflectiveForeground(float time);                      // ?RenderSeaReflectiveForeground@CEngineWaterRenderer@@AAEXM@Z
 #ifdef FABLE_RETAIL_CENGINEWATERRENDERER_CREATEDYNAMICTEXTURES

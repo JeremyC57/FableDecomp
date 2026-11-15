@@ -1,0 +1,12 @@
+{
+  "status": "PARKED",
+  "selected_attempt": "main72_original_state_guard_and_formals_preserve_defaults",
+  "baseline": "reference/include",
+  "source": "00bf0b20.cpp",
+  "flags": [],
+  "header_profile": "156ba3b8cbac4d168c6e299de43df83e0215a5750d623fd13a65f20126b79e59",
+  "source_dependencies": [],
+  "test_adapter": null,
+  "source_sha256": "81c1810e6ccd469db3b7dc6def5e91374d966d8b7da35629d1d2fafd92a560fc",
+  "test_sha256": "315273b9b25e04d79803a902124cd204bef3e75035ac7d7e49161ef28ae7d481"
+}

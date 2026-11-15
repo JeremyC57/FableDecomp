@@ -1,6 +1,9 @@
 #ifndef FABLE_CODA_CAPS_H
 #define FABLE_CODA_CAPS_H
 #include "engine/CODA_PlatformTypes.h"
+#ifdef FABLE_RETAIL_PASS22_CCODA3D_CREATE
+#define C_CAPS_REVERB (0x00000080)
+#endif
 struct _CSWMIXERCAPS {
  unsigned int nSamplesPerSec;
  unsigned int nMinFrameSamples;

@@ -17,9 +17,14 @@
 #include "engine/CMovableResource.h"
 
 class CLandscapeBackgroundSubNodeBase : public CMovableResource {
+#ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_BASE_PASS22_ISPATCH
+public:
+    // Both PDBs: introducing pure virtual at byte slot16, native00BF7D08.
+    virtual bool IsPatch() = 0;
+#endif
 };
 
-FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundSubNodeBase) == 0x4);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CLandscapeBackgroundSubNodeBase) == 0x4);
 #else // FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_BASE
 #pragma pack(push, 1)
 struct CLandscapeBackgroundSubNodeBase {
@@ -27,8 +32,8 @@ struct CLandscapeBackgroundSubNodeBase {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundSubNodeBase) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundSubNodeBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CLandscapeBackgroundSubNodeBase) == 0x4);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CLandscapeBackgroundSubNodeBase, __vftable) == 0x0);
 #endif // FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_BASE
 
 #endif // FABLE_ENGINE_CLANDSCAPEBACKGROUNDSUBNODEBASE_H

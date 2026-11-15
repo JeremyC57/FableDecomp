@@ -115,6 +115,11 @@ public:
 #ifdef FABLE_RETAIL_CGRAPHICINFO_SPRITE
     unsigned long GetWidth()const;
     unsigned long GetHeight()const;
+#ifdef FABLE_RETAIL_CGRAPHICINFO_PASS22_SPRITE
+    // Retail opt-in (Codex pass22): original FableWin0263de40/0263dc90 and native header TransparencyType tests.
+    bool IsBooleanAlpha() const;
+    bool IsAlpha() const;
+#endif
 #endif
     bool GetTexture(const CTexture**,unsigned long,unsigned long) const;
     const CTexture* GetBlankTexture() const; // native009fd3f0

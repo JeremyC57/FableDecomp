@@ -4,7 +4,9 @@
 #ifdef FABLE_RETAIL_CQUATERNION_PARTICLE_UPDATE
 #include "engine/CRightHandedSet.h"
 #endif
+#ifndef FABLE_RETAIL_CQUATERNION_PARTICLE_ADD_SHARED_SQUARE
 inline float FABLE_FASTCALL GFSqr(float value){return value*value;}
+#endif
 #ifdef FABLE_RETAIL_CQUATERNION_MATRIX4
 #include "engine/CMatrix4x4.h"
 #endif
@@ -15,11 +17,18 @@ class CQuaternion {
 public:
  float X,Y,Z,W;
  CQuaternion(){}
+#ifdef FABLE_RETAIL_CQUATERNION_PARTICLE_ADD
+ CQuaternion operator*(const CQuaternion& q)const;
+#endif
 #ifdef FABLE_RETAIL_CQUATERNION_PARTICLE_UPDATE
  // Both original PDB signatures; native A88C10/A88DE0, donor Update call sites.
  void ToRightHandedSet(CRightHandedSet& dest)const {
   float d=GFSqr(X)+GFSqr(Y)+GFSqr(Z)+GFSqr(W);
+#ifdef FABLE_RETAIL_CQUATERNION_PARTICLE_ADD_FLOAT_SCALE
+  float s=(d!=0.0f)?2.0f/d:1.0f;
+#else
   float s=(d!=0.0f)?2.0/d:1.0;
+#endif
   float xs=X*s,ys=Y*s,zs=Z*s;
   float wx=W*xs,wy=W*ys,wz=W*zs;
   float xx=X*xs,xy=X*ys,xz=X*zs;

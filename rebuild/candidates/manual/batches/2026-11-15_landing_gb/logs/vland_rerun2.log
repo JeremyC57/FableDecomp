@@ -1,0 +1,31 @@
+addr       parity           behav  name
+00b484b0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b484b0   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b484b0   RELOCATION_MATCH PASS   FrameStart
+00b98e10   RELOCATION_MATCH PASS   ClipSubSectionsSIMD
+00ba1140   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00ba1140   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00ba1140   WARN RELOC_NAME: ?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z -> 00a23c50 labelled '_global::Nop_ret4_00a23c50'
+00ba1140   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00ba1140   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00ba1140   RELOCATION_MATCH PASS   RenderPrimitive
+00bd71b0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00bd71b0   WARN RELOC_NAME: ?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z -> 00a23c50 labelled '_global::Nop_ret4_00a23c50'
+00bd71b0   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00bd71b0   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00bd71b0   RELOCATION_MATCH PASS   RenderPrimitive
+00bf7bc0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00bf7bc0   RELOCATION_MATCH PASS   CalculateCameraUpdateThreshold
+00c6b050   WARN RELOC_NAME: ?Create@CFloatReverbParameterTranslator@@QAEXPAVCFloatReverbConstants@@@Z -> 00c77780 labelled '_global::SetMember_dword0x28_00c77780'
+00c6b050   WARN RELOC_NAME: ?Create@CFloatReverbDspEngine@@QAE_NPAVCFloatReverbConstants@@@Z -> 00c6a8b0 labelled 'NScript::CQ_GuildTrainingSkillScript::BeginScript'
+00c6b050   WARN RELOC_NAME: ??0CHLRvbParams@@QAE@XZ -> 00c6adb0 labelled 'CReverbSettings00c6adb0::SetDefaults'
+00c6b050   WARN RELOC_NAME: ?Translate@CFloatReverbParameterTranslator@@QAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z -> 00c783f0 labelled 'CEffectPart260::Configure'
+00c6b050   RELOCATION_MATCH PASS   Create
+
+WINS: 6
+  00b484b0 RELOCATION_MATCH CEngineLightingManager::?FrameStart@CEngineLightingManager@@UAEXABVCEngineComponentParams@@@Z
+  00b98e10 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::?ClipSubSectionsSIMD@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXPBUCSubsectionElement@NEnginePrimitiveManagerRepeatedStaticMeshes@@KAAPAUCClipListElement@1@@Z
+  00ba1140 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::?RenderPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z
+  00bd71b0 RELOCATION_MATCH CEnginePrimitiveManagerAnimatedMeshesBase::?RenderPrimitive@CEnginePrimitiveManagerAnimatedMeshesBase@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z
+  00bf7bc0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?CalculateCameraUpdateThreshold@CLandscapeBackgroundTreeNode@@AAEXJ@Z
+  00c6b050 RELOCATION_MATCH CFloatReverbEngine::?Create@CFloatReverbEngine@@QAE_NPAVCReverbConstants@@@Z

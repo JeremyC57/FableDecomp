@@ -1,0 +1,36 @@
+# 00927F30 probes
+
+Whole original CAIStateGroup_SetupWares::Update occupies00927F30..00928463 (1331 bytes), ending plain ret at00928462. Both original exact PUBLIC/class records and native RTTI/vtable slot12 independently prove the identity. All four full source priors, six neighbors and complete row notes/lessons/status were read before source. Best is byte-identical to the Q7 prior. Historical LowerBound/GetSubDef stand-ins and local container/action/owner models are not returned.
+
+Baseline_package is1331/1331,444/444instructions, seven strict hunks, first raw difference160. A baseline is not a strategy.
+
+## Actual target source strategies
+
+1. sol2_01_original_types_locals_actions reconstructs the whole function on shared headers and original types/scopes. Module690 Debug\ai_state_group_setup_wares.obj, original02C64B70/2415, proves tc_shop/tc_shopkeeper, tc_thing_owner, objects const-list reference/object_it const iterator, created, stock_item const definition handle, best_dist/ret/best/nav_route_calculated, inner i iterator and signed n/movement/ret/nav_route_calculated in the opening branch. The supposed retry count is original EMovementType (walking3/running5), not a count. The original actions are ShopkeeperPutAway and ShopkeeperGetOut, not AddRealObjectToInventory/PlaceSaleItem. GoodsPlace contains pos and complete CRightHandedSet rhset. Restore actual IS_THING_ALIVE, GetTC<CTCCreatedEntity>, HasBaseDef, PeekBaseDef, typed GetSubDef and all original action signatures. After compilation-context corrections this gives1347 versus1331,445/444instructions, just one extra derived GetOut vtable store during destruction. The historical reached-byte and movement-register residues are gone.
+2. sol2_02_original_implicit_getout_destructor removes the user-provided empty GetOut destructor and uses the original implicit destructor over its real POD fields/base. This removes the spurious vtable store and related branch growth. Exact1331/1331, all444instructions. No new inline device or row flag is used.
+
+## Compilation diagnostics (not source strategies)
+
+sol2_01 had a missing prerequisite C3DVector include for existing AI action declarations. sol2_01b completed that include and pinned both old CTCShop assertions, then exposed a missing existing CDefinitionManager/CResourceList opt-in required by the real GetSubDef definition. sol2_01c supplies that existing compilation context. These are diagnostics inside strategy1, not independent approaches.
+
+The first recursive audit found LowerBound exact60, but ordinary emitted GetSubDef182 versus native162 and IS_THING_DEAD39 versus native36 (EAX rather than AL bool result). Main alone was not accepted.
+
+sol2_03 scoped size optimization/frame-pointer settings around generic helper definitions; sol2_03b added explicit generic instantiations there. Both were inert: VC71 ignores that pragma context for generic instantiation. Main remained exact but helper debts remained. These are optimization/instantiation diagnostics, not independent source strategies.
+
+## Real helper visibility and body recovery
+
+FamilyA restores actual externally supplied instantiations. sol2_04 used an explicit GetSubDef specialization declaration and triggered a VC71 empty-object/no-diagnostic compile failure; that failed declaration form is not a new strategy. sol2_04b uses generic original declarations only for GetSubDef and IS_THING_DEAD, avoiding the compiler failure. GetSubDef's out pointer then escapes, and Main grows1395/1331 with a108-byte frame. This establishes that the real GetSubDef body must remain visible at this site. sol2_05 keeps its complete real shared definition visible while declaring the original external IS_THING_DEAD instantiation; Main is exactly1331 again, the39-byte unused wrong helper disappears, and only the182-byte real GetSubDef debt remains. These related boundary tests are one family, not three approaches. Native IS_THING_DEAD005CC1B0..005CC1D4 is already an external instantiation, exact original template name present in both PDBs and canonical binding; no body is newly landed.
+
+FamilyB, sol2_06, writes the real CStockItemDef specialization with exactly the shared generic GetSubDef behavior under guarded native size optimization and frame pointer. The specialization is a concrete member body, so VC71 honors the settings. It independently matches the entire native0059350C..005935AE,162 bytes including its frame, conversion, both release sites, pointer assignment and true/false returns. Main stays exact. This is a real existing function with its complete original behavior, not a stand-in or allocator device. The matching native source's external compilation settings explain why the generic speed-compiled copy did not match.
+
+sol2_07 updates only exact extent comments, then regrades the final shared-header tree. It is metadata verification, not another strategy. Counts are conservative: two target source strategies and two helper source families; compiler/flag/instantiation reruns are distinct diagnostics only.
+
+## Final proof
+
+The recursively carried closure is Main1331 + LowerBound60 + GetSubDef162 =1553 exact bytes. All51 code/data relocations bind independently. Eight canonical binding omissions/type mistakes are independently proved using original named caller graphs, both original PUBLIC/class sources, native ABI/field checks, and native constructor RTTI. No reached vtable-data relocation exists.91 other shared code COMDATs are explicitly listed as unreferenced by the actual target/helper closure and not landed, with no native address assigned.
+
+Standalone tests contain the full production Main, actual specialized GetSubDef body and exact full shared LowerBound body verbatim. Actual shared CDefPointer.h is used over a controlled pointee callee; actual C3DVector/CRightHandedSet/enum headers are used.4096 full calls cover open/closed/invalid shops, no/unequal places/items, null/dead/ineligible objects, absent definitions, successful null manager results, nearest ties/empty places, action failures, late dead/null handles, movement modes, rhset/item identities, ignored PerformAction results, stock transitions and balanced actions/definitions.12 direct helper cases additionally cover missing info preserving an existing out handle and null/new/same-object manager results.3300 LowerBound cases include duplicates and empty ranges backed by a real33-element array, compared with independent linear search. VC71 /Od /W3 /GR- without /EHsc and g++64 C++03 print exact00927f30_TEST PASS.
+
+The first fixture build exposed VC71's std::_cpp_min naming; a fixture-only std::min adapter forwards to that actual implementation. This is a compiler-fixture diagnostic, not a source probe. Later fixture completion added direct same-object/empty-range checks and invalidated intelligent pointers during actions; all final tests pass. Final test metadata/hash are in PORTABLE_TWINS.json.
+
+Two existing headers gain independent opt-ins, three new headers model complete original classes,20 old/default preprocessing profiles agree and two old CTCShop assertions are pinned. No helper debt remains. No new packing, special expansion flag or allocator control was introduced.

@@ -62,6 +62,11 @@ class CEngineInit;
 class CEngineMemoryInit;
 class CEngineResourceManager : public CEngineComponent, public CAsyncLoadingProcessCallback {
 public:
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_SEAMIDGROUND
+    // Original PDB member, donor02C85C70; disabled original water texture path.
+    const class CGraphicInfoFrame* GetTerrainTexture(long index);
+    const CGraphicDataBank* PeekTerrainBank() const;
+#endif
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_EXTERNALTEXTURES
     // Nested opt-in (agentNF24, Part 2 rows 0x00B3E6E0 / 0x00B3E750 / 0x00B3E8D0 / 0x00B3E990 / 0x00B3E9D0, the
     // map<CTexture*, CExternalTextureAllocationInfo> ExternalTexturesAllocatedFromEnginePools members): Ego_r.pdb struct (U key, FableWin

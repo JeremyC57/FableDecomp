@@ -11,10 +11,18 @@
 #include "rebuild_abi.h"
 #include "fable_string.h"
 #include "engine/CSubDefClassBase.h"
+#ifdef FABLE_RETAIL_CENTITYSOUNDDEF_PASS22_SOUNDMAP
+#include "engine/CSoundMap.h"
+#endif
 class CEntitySoundDef : public CSubDefClassBase {
 public:
     static CCharString FABLE_FASTCALL StatGetTypeName() { return CCharString("CEntitySoundDef", -1); }
+#ifdef FABLE_RETAIL_CENTITYSOUNDDEF_PASS22_SOUNDMAP
+    // Retail opt-in (Codex pass22): original CSoundMap type, native+0x28, no layout change.
+    CSoundMap SoundMap;
+#else
     unsigned long SoundMap[0x20 / 4];                                    // +0x28 CSoundMap (retail 0x20 bytes, opaque)
+#endif
     CCharString SoundIdentifier;                                         // +0x48
     float VoicePitchOverride;                                            // +0x4C
     long AnimCriteriaClipDistance;                                       // +0x50

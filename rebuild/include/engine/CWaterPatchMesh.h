@@ -48,7 +48,11 @@ public:
     void Render(long triangleCount) const;                               // 0x00BEACA0
     void Save(CDataOutputStream& stream);
     const CEngineLandscapeMap* Map;                                      // +0x04
-    C2DCoordI                  Offset;                                   // +0x08
+#ifdef FABLE_RETAIL_PASS22_WATER_PATCH_LOAD
+    const C2DCoordI            Offset;
+#else
+    C2DCoordI                  Offset;
+#endif                                   // +0x08
     CVertexBufferWin32*        VertexBuffer;                             // +0x10
     CVertexHeightData*         VertexHeightData;                         // +0x14
     float                      WaterBodySpan;                            // +0x18
@@ -63,13 +67,13 @@ private:
     void SetTargetVertexDepth(CTVertexWaterForeground& vertex, short depth);   // ?SetTargetVertexDepth@CWaterPatchMesh@@AAEXAAVCTVertexWaterForeground@@F@Z (inline, 0x00BEB307)
 };
 
-FABLE_STATIC_ASSERT(sizeof(CWaterPatchMesh) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, Map) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, Offset) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, VertexBuffer) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, VertexHeightData) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, WaterBodySpan) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, WaterType) == 0x1c);
+FABLE_STATIC_ASSERT_AT(66, sizeof(CWaterPatchMesh) == 0x20);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CWaterPatchMesh, Map) == 0x4);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CWaterPatchMesh, Offset) == 0x8);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CWaterPatchMesh, VertexBuffer) == 0x10);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CWaterPatchMesh, VertexHeightData) == 0x14);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CWaterPatchMesh, WaterBodySpan) == 0x18);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CWaterPatchMesh, WaterType) == 0x1c);
 
 #endif // FABLE_ENGINE_CWATERPATCHMESH_H
 #else // flattened Ego_r layout (the landed default, unchanged)
@@ -101,15 +105,15 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CWaterPatchMesh) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, Map) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, Offset_X) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, Offset_Y) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, VertexBuffer) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, VertexHeightData) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, WaterBodySpan) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, WaterType) == 0x1c);
+FABLE_STATIC_ASSERT_AT(104, sizeof(CWaterPatchMesh) == 0x20);
+FABLE_STATIC_ASSERT_AT(105, offsetof(CWaterPatchMesh, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(106, offsetof(CWaterPatchMesh, Map) == 0x4);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CWaterPatchMesh, Offset_X) == 0x8);
+FABLE_STATIC_ASSERT_AT(108, offsetof(CWaterPatchMesh, Offset_Y) == 0xc);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CWaterPatchMesh, VertexBuffer) == 0x10);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CWaterPatchMesh, VertexHeightData) == 0x14);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CWaterPatchMesh, WaterBodySpan) == 0x18);
+FABLE_STATIC_ASSERT_AT(112, offsetof(CWaterPatchMesh, WaterType) == 0x1c);
 
 #endif // FABLE_ENGINE_CWATERPATCHMESH_H
 

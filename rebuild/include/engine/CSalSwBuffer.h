@@ -3,6 +3,9 @@
 #include "engine/CCodaObjectBase.h"
 class CSalSwBuffer:public CCodaObjectBase{
 public: virtual ~CSalSwBuffer();
+#ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
+ bool IsCreated() const { return m_pvBuffer != 0; }
+#endif
 private:
  void * m_pvBuffer;
  unsigned int m_nObjects;

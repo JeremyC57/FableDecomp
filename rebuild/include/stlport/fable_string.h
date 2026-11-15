@@ -12,6 +12,31 @@
 #pragma intrinsic(strlen,memcmp,memcpy,memset)
 #endif
 namespace std {
+#ifdef FABLE_RETAIL_STLP_STRING_SCOREBOARD
+// Authenticated original STLport4.5.2 string/type_traits/iterator dispatch, provenance
+// /workspace/work/pass11_100_20261102/reference/scoreboard_stl45/SOURCE.json.
+template<class T> struct _Is_integer { typedef __false_type _Integral; };
+template<> struct _Is_integer<bool> { typedef __true_type _Integral; };
+template<> struct _Is_integer<char> { typedef __true_type _Integral; };
+template<> struct _Is_integer<signed char> { typedef __true_type _Integral; };
+template<> struct _Is_integer<unsigned char> { typedef __true_type _Integral; };
+template<> struct _Is_integer<short> { typedef __true_type _Integral; };
+template<> struct _Is_integer<unsigned short> { typedef __true_type _Integral; };
+template<> struct _Is_integer<int> { typedef __true_type _Integral; };
+template<> struct _Is_integer<unsigned int> { typedef __true_type _Integral; };
+template<> struct _Is_integer<long> { typedef __true_type _Integral; };
+template<> struct _Is_integer<unsigned long> { typedef __true_type _Integral; };
+template<> struct _Is_integer<__int64> { typedef __true_type _Integral; };
+template<> struct _Is_integer<unsigned __int64> { typedef __true_type _Integral; };
+#if !defined(_MSC_VER) || defined(_NATIVE_WCHAR_T_DEFINED)
+template<> struct _Is_integer<wchar_t> { typedef __true_type _Integral; };
+#endif
+template<class I> inline typename iterator_traits<I>::difference_type
+__distance(const I& first,const I& last,const random_access_iterator_tag&) { return last-first; }
+template<class I> inline typename iterator_traits<I>::difference_type
+distance(const I& first,const I& last) { return __distance(first,last,typename iterator_traits<I>::iterator_category()); }
+#endif
+
 // Authentic STLport4.6.2 char_traits.h125..150,207..209; native403c60.
 template<class C,class I> class __char_traits_base {
 public:static int __cdecl compare(const C*,const C*,size_t);
@@ -68,9 +93,65 @@ template<class _Traits> struct _Eq_char_bound {
     _Eq_char_bound(char_type c) : __val(c) { }
     bool operator()(const char_type& c) const { return _Traits::eq(c,__val); }
 };
+#ifdef FABLE_RETAIL_PASS22_SCOREBOARD_ORIGINAL_SEARCH
+// Actual STLport4.6.2 _algobase.c205..263; debug-only checks removed.
+template <class _ForwardIter1, class _ForwardIter2, class _BinaryPred>
+_ForwardIter1 __fastcall search(_ForwardIter1 __first1, _ForwardIter1 __last1,
+                     _ForwardIter2 __first2, _ForwardIter2 __last2,
+                     _BinaryPred  __predicate) 
+{
+    // Test for empty ranges
+    if (__first1 == __last1 || __first2 == __last2)
+      return __first1;
+
+  // Test for a pattern of length 1.
+  _ForwardIter2 __tmp(__first2);
+  ++__tmp;
+  if (__tmp == __last2) {
+    while (__first1 != __last1 && !__predicate(*__first1, *__first2))
+      ++__first1;
+    return __first1;    
+  }
+  
+  // General case.
+
+  _ForwardIter2 __p1, __p;
+
+  __p1 = __first2; ++__p1;
+
+  //  _ForwardIter1 __current = __first1;
+
+  while (__first1 != __last1) {
+    while (__first1 != __last1) {
+      if (__predicate(*__first1, *__first2))
+        break;
+      ++__first1;
+    }
+    while (__first1 != __last1 && !__predicate(*__first1, *__first2))
+      ++__first1;
+    if (__first1 == __last1)
+      return __last1;
+
+    __p = __p1;
+    _ForwardIter1 __current = __first1; 
+    if (++__current == __last1) return __last1;
+
+    while (__predicate(*__current, *__p)) {
+      if (++__p == __last2)
+        return __first1;
+      if (++__current == __last1)
+        return __last1;
+    }
+
+    ++__first1;
+  }
+  return __first1;
+}
+#else
 template<class _ForwardIter1,class _ForwardIter2,class _BinaryPred>
 _ForwardIter1 __fastcall search(_ForwardIter1 first1,_ForwardIter1 last1,_ForwardIter2 first2,_ForwardIter2 last2,
                                 _BinaryPred predicate);                                               // 0x00567120
+#endif
 #pragma auto_inline(off)
 template<class _RandomAccessIter,class _Predicate>
 _RandomAccessIter __fastcall __find_if(_RandomAccessIter first,_RandomAccessIter last,_Predicate pred,
@@ -147,6 +228,9 @@ template<class C,class Traits=char_traits<C>,class A=allocator<C> >
 class basic_string:protected _String_base<C,A> {
     typedef basic_string<C,Traits,A> _Self;
     typedef _String_base<C,A> _Base;
+#ifdef FABLE_RETAIL_STLP_STRING_SCOREBOARD
+    typedef typename _Is_integer<C>::_Integral _Char_Is_Integral;
+#endif
 public:
     typedef C* iterator;
     typedef const C* const_iterator;
@@ -161,9 +245,19 @@ public:
     basic_string(const C* s,const A& a=A());
     basic_string(const _Self& s);
     basic_string(_Reserve_t,size_t n,const A& a=A()):_Base(a,n+1) { _M_terminate_string(); }
-    template<class I> basic_string(I f,I l,const A& a=A()):_Base(a) { _M_range_initialize(f,l); }
+    template<class I> basic_string(I f,I l,const A& a=A()):_Base(a) {
+#ifdef FABLE_RETAIL_STLP_STRING_SCOREBOARD
+        typedef typename _Is_integer<I>::_Integral _Integral;
+        _M_initialize_dispatch(f,l,_Integral());
+#else
+        _M_range_initialize(f,l);
+#endif
+    }
     ~basic_string() { _Destroy(this->_M_start,this->_M_finish+1); }
     size_type size() const { return this->_M_finish-this->_M_start; }
+#ifdef FABLE_RETAIL_PASS22_SCOREBOARD_ORIGINAL_EXPLODE
+    size_type length() const { return size(); }
+#endif
     size_type capacity() const { return this->_M_end_of_storage._M_data-this->_M_start-1; }
     size_type max_size() const { return _Base::max_size(); }
     const C* c_str() const { return this->_M_start; }
@@ -186,6 +280,9 @@ public:
     _Self& operator+=(C c) { push_back(c);return *this; }
 #ifdef FABLE_RETAIL_STLP_STRING_FIND
     // Opt-in (chunk 865): STLport 4.6.2 _string.h find(const C*, pos) / find_first_not_of(const C*, pos) and their _string.c bodies.
+#ifdef FABLE_RETAIL_PASS22_SCOREBOARD_ORIGINAL_EXPLODE
+    size_type find(const _Self& s,size_type pos=0) const { return find(s._M_start,pos,s.size()); }
+#endif
     size_type find(const C* s,size_type pos=0) const { return find(s,pos,Traits::length(s)); }
     size_type find(const C* s,size_type pos,size_type n) const {
         if(pos+n>size()) return npos;
@@ -209,14 +306,37 @@ public:
         _M_construct_null(this->_M_finish+1);Traits::assign(*this->_M_finish,c);++this->_M_finish;
     }
 private:
+#ifdef FABLE_RETAIL_STLP_STRING_SCOREBOARD
+    void _M_construct_null_aux(C* p,const __false_type&) { _Construct(p); }
+    void _M_construct_null_aux(C* p,const __true_type&) { *p=0; }
+    void _M_construct_null(C* p) { _M_construct_null_aux(p,_Char_Is_Integral()); }
+    void _M_terminate_string_aux(const __false_type&) { _M_construct_null(this->_M_finish); }
+    void _M_terminate_string_aux(const __true_type&) { *this->_M_finish=0; }
+    void _M_terminate_string() { _M_terminate_string_aux(_Char_Is_Integral()); }
+    template<class I> void _M_initialize_dispatch(I n,I x,const __true_type&) {
+        this->_M_allocate_block(n+1);this->_M_finish=uninitialized_fill_n(this->_M_start,n,x);_M_terminate_string();
+    }
+    template<class I> void _M_initialize_dispatch(I f,I l,const __false_type&) { _M_range_initialize(f,l); }
+#else
     void _M_construct_null(C* p) { *p=C(); }
     void _M_terminate_string() { _M_construct_null(this->_M_finish); }
+#endif
     template<class I> void _M_range_initialize(I f,I l,const forward_iterator_tag&) {
+#ifdef FABLE_RETAIL_STLP_STRING_SCOREBOARD
+        difference_type n=distance(f,l);
+#else
         difference_type n=l-f;
+#endif
         this->_M_allocate_block(n+1);
         this->_M_finish=uninitialized_copy(f,l,this->_M_start);_M_terminate_string();
     }
-    template<class I> void _M_range_initialize(I f,I l) { _M_range_initialize(f,l,forward_iterator_tag()); }
+    template<class I> void _M_range_initialize(I f,I l) {
+#ifdef FABLE_RETAIL_STLP_STRING_SCOREBOARD
+        _M_range_initialize(f,l,typename iterator_traits<I>::iterator_category());
+#else
+        _M_range_initialize(f,l,forward_iterator_tag());
+#endif
+    }
     template<class I> _Self& _M_assign_dispatch(I f,I l,const __false_type&);
     template<class I> _Self& append(I f,I l,const forward_iterator_tag&);
     template<class I> _Self& _M_append_dispatch(I f,I l,const __false_type&) { return append(f,l,forward_iterator_tag()); }
@@ -236,10 +356,15 @@ __cdecl
 operator==(const basic_string<C,T,A>& x,const basic_string<C,T,A>& y) {
     return x.size()==y.size()&&T::compare(x.data(),y.data(),x.size())==0;
 }
-template<class C,class T,class A> inline bool operator==(const basic_string<C,T,A>& s,const C* c) {
+#ifdef FABLE_RETAIL_PASS22_SCOREBOARD_ORIGINAL_EXPLODE
+#define FABLE_SCOREBOARD_STLP_CALL __cdecl
+#else
+#define FABLE_SCOREBOARD_STLP_CALL
+#endif
+template<class C,class T,class A> inline bool FABLE_SCOREBOARD_STLP_CALL operator==(const basic_string<C,T,A>& s,const C* c) {
     size_t n=T::length(c);return s.size()==n&&T::compare(s.data(),c,n)==0;
 }
-template<class C,class T,class A> inline bool operator!=(const basic_string<C,T,A>& s,const C* c) { return !(s==c); }
+template<class C,class T,class A> inline bool FABLE_SCOREBOARD_STLP_CALL operator!=(const basic_string<C,T,A>& s,const C* c) { return !(s==c); }
 template<class C,class T,class A> basic_string<C,T,A> operator+(const C*,const basic_string<C,T,A>&);
 template<class C,class T,class A> basic_string<C,T,A> operator+(const basic_string<C,T,A>&,const C*);
 typedef basic_string<char> string;

@@ -1,0 +1,1 @@
+01214FE0: Identify the whole compiler-associated EH section before authoring. Original Create2DSource pool/dynamic allocation body emits both11-bytecleanup and10-bytehandler; class-specific delete and original derived ctor are essential. No synthetic funclet needed.

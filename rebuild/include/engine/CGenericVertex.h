@@ -54,4 +54,8 @@ template<class Base> inline void CGenericVertex<Base>::SetU1(float u) { this->U1
 template<class Base> inline void CGenericVertex<Base>::SetV1(float v) { this->V1 = v; }
 template<class Base> inline void CGenericVertex<Base>::SetU1V1(float u, float v) { this->U1 = u; this->V1 = v; }
 #endif
+#if defined(FABLE_RETAIL_CGENERICVERTEX_PASS22_SETU1V1) && !defined(FABLE_RETAIL_CGENERICVERTEX_INLINE)
+// Original donor SetU1V1 call02DC689E; native final two zero stores00B8DEAB..00B8DEB1.
+template<class Base> inline void CGenericVertex<Base>::SetU1V1(float u,float v){this->U1=u;this->V1=v;}
+#endif
 #endif

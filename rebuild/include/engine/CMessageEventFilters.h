@@ -107,6 +107,10 @@ class CThingFilter_In2DRange
 #endif
 {
 public:
+#ifdef FABLE_RETAIL_CTHINGFILTER_IN2DRANGE_CTOR
+    // Retail opt-in (Codex pass22,row0090E5D0): original02B659D8 constructor call and both class records.
+    CThingFilter_In2DRange(const C3DVector& pos,float range):Pos(pos),Range(range){}
+#endif
     bool operator()(const CThing& thing) const;                          // 0x006A76B0
 private:
     C3DVector Pos;                                                       // +0x00

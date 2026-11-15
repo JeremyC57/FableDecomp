@@ -1,0 +1,16 @@
+{
+  "status": "RELOCATION_MATCH",
+  "selected_attempt": "main03_source_metadata",
+  "baseline": "reference/include",
+  "source": "01214fe0.cpp",
+  "flags": [
+    "/EHsc"
+  ],
+  "header_profile": "61be14fa43995d416382111da428c4b3fc31879123a40782111c42a639c10547",
+  "source_dependencies": [
+    "parent_00c3da60.cpp"
+  ],
+  "test_adapter": null,
+  "source_sha256": "20fe240a926f9bcddde5d48b222fd546990918ad3e5f0c86c689963c1d5ca80c",
+  "test_sha256": "cae9055ee3227b48b0c9c00c7de90f938db4772c67191b5470289d7795bf5e15"
+}

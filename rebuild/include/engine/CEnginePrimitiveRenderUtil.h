@@ -59,6 +59,138 @@ class CEngineMeshEffectOutline;
 class C3DVector;
 class CEngineLocalLightArray;
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERTEXT_RENDER
+class C2DAlphaMaskInfo;
+#endif
+#ifdef FABLE_RETAIL_PASS22_RENDERUTIL_COMPLETE_ORIGINAL_DECLARATION
+// User declarations reconstructed in original PDB field-list order; generated special members remain implicit.
+class C2DAlphaMaskInfo;
+class C2DBoxF;
+class C3DTextureStages;
+class C3DVector;
+class CEngineCamera;
+class CEngineInternalPrimitiveAnimatedMesh;
+class CEngineInternalPrimitiveStaticMesh;
+class CEngineLocalLightArray;
+class CEngineMeshEffect;
+class CEngineMeshEffectOutline;
+class CEnginePrimitiveThemeChannelDesc;
+class CMatrix3x4;
+class CPixelShader;
+class CRGBColour;
+class CRGBFloatColour;
+class CStateBlockFunctionBase;
+class CVertexShader;
+enum EEngineOcclusionLayer;
+enum EEnginePrimitiveBlendMode;
+enum EEnginePrimitiveBlendOp;
+enum EIndexBufferPool;
+enum ERenderPassType;
+enum EVertexBufferPool;
+class CEnginePrimitiveRenderUtil : public CBaseClassNonCopyable {
+public:
+    static CEngineCamera & __fastcall GetCurrentCamera();
+    static EEngineOcclusionLayer __fastcall GetCurrentOcclusionLayer();
+    static float __fastcall GetLODErrorTolerance();
+    static float __fastcall GetCharacterLODErrorTolerance();
+    static float __fastcall GetLODVirtualScreenSize();
+    static float __fastcall GetLODVirtualScreenSizeFOVAdjusted();
+    static float __fastcall GetMipmapSizeMultiplier();
+    static long __fastcall GetPreloadMipmapTolerance();
+    static long __fastcall GetPreloadMipmapMaxSize();
+    static bool __fastcall GetOcclusionEnable();
+    static bool __fastcall GetOcclusionHierarchyEnable();
+    static bool __fastcall GetBumpMappingEnable();
+    static bool __fastcall GetMirroredTextureHighlightEnabled();
+    static long __fastcall GetLODForced();
+    static unsigned long __fastcall GetGlobalPrimitiveInitFlags();
+    static unsigned long __fastcall GetDynamicVBUsage();
+    static EVertexBufferPool __fastcall GetDynamicVBPool();
+    static unsigned long __fastcall GetDynamicVBLockFlags();
+    static unsigned long __fastcall GetDynamicIBUsage();
+    static EIndexBufferPool __fastcall GetDynamicIBPool();
+    static unsigned long __fastcall GetDynamicIBLockFlags();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseOnly();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseColourTextureDiffuseAlpha();
+    static const CPixelShader & __fastcall GetPixelShaderOutlineSmoothFill();
+    static const CPixelShader & __fastcall GetPixelShaderOutlineSmoothFillAlpha();
+    static const CPixelShader & __fastcall GetPixelShaderOutlineSmoothFillDP3();
+    static const CPixelShader & __fastcall GetPixelShaderOutlineSmoothFillDP3Alpha();
+    static const CPixelShader & __fastcall GetPixelShaderTextureOnly();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuse();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseFog();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseEnvFog();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseEnvBumpFog();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseDP3BumpFog();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseFogShadow();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseFogShadowOutputFactor();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseEnvFogShadow();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseEnvBumpFogShadow();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseDP3BumpFogShadow();
+    static const CPixelShader & __fastcall GetPixelShaderDiffuseDP3BumpFogShadowOutputFactor();
+    static const CPixelShader & __fastcall GetPixelShaderShadowBufferRender();
+    static const CPixelShader & __fastcall GetPixelShaderShadowBufferRenderAlpha();
+    static const CPixelShader & __fastcall GetPixelShader2DDiffuseOnly(EEnginePrimitiveBlendMode);
+    static const CPixelShader & __fastcall GetPixelShader2DTextureOnly(EEnginePrimitiveBlendMode);
+    static const CPixelShader & __fastcall GetPixelShader2DDiffuse(EEnginePrimitiveBlendMode);
+    static const CPixelShader & __fastcall GetPixelShader2DDiffuseEnv(EEnginePrimitiveBlendMode);
+    static const CPixelShader & __fastcall GetPixelShader2DDiffuseEnvBump(EEnginePrimitiveBlendMode);
+    static const CPixelShader & __fastcall GetPixelShader2DDiffuseDP3Bump(EEnginePrimitiveBlendMode);
+    static float __fastcall CalcDistanceFromCamera(const CMatrix3x4 &);
+    static float __fastcall CalcDistanceFromCamera(const C3DVector &);
+    static float __fastcall CalcDistanceFromCameraSquared(const CMatrix3x4 &);
+    static float __fastcall CalcDistanceFromCameraSquared(const C3DVector &);
+    static bool __fastcall GetBoundingSphereViewEnabled();
+    static bool __fastcall GetBoundingBoxViewEnabled();
+    static long __fastcall GetShowMeshInfo();
+    static bool __fastcall GetShowPreloadColours();
+    static long __fastcall GetShowVisibilityInfo();
+    static long __fastcall GetShowSilhouettes();
+    static bool __fastcall GetBoneViewEnabled();
+    static bool __fastcall GetShow2DBoundingRect();
+    static bool __fastcall GetShow2DBoundingSphere();
+    static bool __fastcall GetShowUser2DBoundingSphere();
+    static bool __fastcall GetShow2DRotationPos();
+    static bool __fastcall GetVisibilityRatiosUpdate();
+    static bool __fastcall GetVisibilityRatiosValid();
+    void AddGeneratedObjects(const CEngineInternalPrimitiveAnimatedMesh &, const CMatrix3x4 &);
+    void AddGeneratedObjects(const CEngineInternalPrimitiveStaticMesh &);
+    static CEngineLocalLightArray * __fastcall FindLocalLights(const C3DVector &, float, CEnginePrimitiveThemeChannelDesc);
+    static void __fastcall SetupLocalLights(const CEngineLocalLightArray &);
+    static void __fastcall SetWorldTransform(const CMatrix3x4 &);
+    static void __fastcall ApplyVertexShader(const CVertexShader &);
+    static void __fastcall ApplyPixelShader(const CPixelShader &);
+    static void __fastcall ApplyPixelShaderIfXbox(const CPixelShader &);
+    static void __fastcall ApplyStateBlockIfPC(CStateBlockFunctionBase *);
+    static void __fastcall FailIfXbox();
+    static void __fastcall FailIfPC();
+    static void __fastcall SetTextureFactor(const CRGBFloatColour &);
+    unsigned long CalculateSubPrimitiveRenderFlags(bool, bool, bool, unsigned long, bool);
+    unsigned long CalculateSubPrimitiveRenderFlags2D(bool, bool, unsigned long);
+    void SetupAlphaBlendingStatesFromRenderFlags(unsigned long, ERenderPassType, unsigned char, unsigned char);
+    bool SetupAlphaBlendingStatesFromBlendMode(EEnginePrimitiveBlendMode);
+    void SetupAlphaBlendingStatesFromBlendMode(EEnginePrimitiveBlendMode, unsigned long, unsigned long &);
+    void SetupOverlayAlphaBlendingStates(unsigned long, CRGBColour);
+    void SetupBlendOpState(EEnginePrimitiveBlendOp);
+    void SetupOutlineStencilMask(unsigned long &, unsigned long &, const CEngineMeshEffectOutline &, unsigned long, ERenderPassType);
+    void SetupColourFilterStencilMask(unsigned long &, unsigned long &);
+    void SetupBlankTextures(C3DTextureStages &, bool);
+    void SetupDiffuseShading(bool, const CRGBColour &);
+    void SetupDiffuseShading(bool, unsigned long, unsigned long);
+    void Setup2DDiffuseShading(bool, unsigned long, unsigned long, EEnginePrimitiveBlendMode);
+    void Set2DAlphaMaskTextureMode(unsigned long, bool, bool);
+    void DisableTextureFiltering(unsigned long);
+    const C2DAlphaMaskInfo * GetCurrent2DAlphaMaskInfo();
+    bool ClipScreenSpaceRectToViewport(C2DBoxF &);
+    void SetupStencilMask(const CEngineMeshEffect *, unsigned long, ERenderPassType);
+    void SetupOutlineSmoothStencilStates(const CEngineMeshEffectOutline &, float);
+    void SetupOutlineSmoothAlphaStencilMaskStates(const CEngineMeshEffectOutline &);
+    void SetupOutlineSmoothFillStates(const CEngineMeshEffectOutline &, float, bool, long);
+    void SetupOutlineStencilStates(const CEngineMeshEffectOutline &, float);
+    void SetupOutlineFillStates(const CEngineMeshEffectOutline &, float);
+};
+
+#else
 class CEnginePrimitiveRenderUtil : public CBaseClassNonCopyable {
 public:
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_DYNAMICVB
@@ -70,12 +202,22 @@ public:
     static EVertexBufferPool __fastcall GetDynamicVBPool();
     static unsigned long __fastcall GetDynamicVBLockFlags();
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERTEXT_RENDER
+    // Original FableWin bodies02e74030/90/e0 and both PDB class records.
+    const C2DAlphaMaskInfo* GetCurrent2DAlphaMaskInfo();
+    void DisableTextureFiltering(unsigned long);
+    void Set2DAlphaMaskTextureMode(unsigned long,bool,bool);
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_DISTANCE
  static float __fastcall CalcDistanceFromCamera(const C3DVector&);
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_DISTANCE_SQUARED
  // Nested opt-in (chunk 2032): FableWin.pdb ?CalcDistanceFromCameraSquared@CEnginePrimitiveRenderUtil@@SIMABVC3DVector@@@Z (inline; the row defines the body).
  static float __fastcall CalcDistanceFromCameraSquared(const C3DVector&);
 #endif
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_PASS22_SMOOTHSTENCIL
+    // Both PDBs; donor02EEE7C0; native00BEFD90. Original public non-static thiscall.
+    void SetupOutlineSmoothStencilStates(const CEngineMeshEffectOutline& effect, float mesh_scale);
 #endif
     CEnginePrimitiveRenderUtil() { }                                     // ??0CEnginePrimitiveRenderUtil@@QAE@XZ
     virtual ~CEnginePrimitiveRenderUtil();                               // slot 0  ??1CEnginePrimitiveRenderUtil@@UAE@XZ
@@ -231,6 +373,11 @@ public:
     // Overlay opt-in (chunk 2011): Ego_r.pdb / FableWin.pdb ?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveStaticMesh@@@Z
     // (retail 0x00BF12A0, `ret 4`) and ?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z
     // (retail 0x00BF18B0, `ret 8`): non-static members that never read `this` (Ego_r donor order 0x00AA9420 < 0x00AA99E0 = retail order).
+
+#ifdef FABLE_RETAIL_PASS22_ANIMATED_MESH_RENDER
+// Original two PDBs, donor02E82300 and native00BD71B0; evidence in00bd71cc.
+ static bool FABLE_FASTCALL GetBoneViewEnabled();
+#endif
     void AddGeneratedObjects(const CEngineInternalPrimitiveStaticMesh& primitive);
     void AddGeneratedObjects(const CEngineInternalPrimitiveAnimatedMesh& primitive, const CMatrix3x4& object_transform);
 #endif
@@ -265,6 +412,8 @@ public:
     static long __fastcall GetShowSilhouettes();
 #endif
 };
+#endif
+
 FABLE_STATIC_ASSERT_AT(110, sizeof(CEnginePrimitiveRenderUtil) == 0x4);
 
 #endif // FABLE_ENGINE_CENGINEPRIMITIVERENDERUTIL_H

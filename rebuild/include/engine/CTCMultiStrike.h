@@ -21,12 +21,58 @@ class CThing;
 #include "engine/CIntelligentPointer.h"
 #include "stlport/fable_containers.h"
 class CSpecialAbilitiesMultiStrikeDef;
-#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_PASS22_MULTI_STRIKE_WEAPON)
 namespace NHitLocations {class CHitLocation;}
 #else
 class CHitLocation;
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTCMULTISTRIKE_ORIGINAL_DECLARATIONS_PASS22
+// Both original PDB full field lists agree on these declarations, access and order.
+// Evidence: rows/007ccf50/ORIGINAL_TYPES.json, CTCMultiStrike in both builds.
+class CHitParameters;
+class CTCMultiStrike : public CTCBase {
+public:
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_MULTI_STRIKE; }
+    virtual ETCInterfaceType GetInterfaceType() const;
+    static CTCBase* __fastcall Alloc(CThing&);
+    static CCharString __fastcall StatGetClassTypeName();
+    virtual CCharString GetClassTypeName() const;
+    CTCMultiStrike(CThing&);
+    virtual ~CTCMultiStrike();
+    virtual bool HasFrameUpdate() const;
+    virtual void FrameUpdate();
+    virtual void OnKill();
+    virtual void OnRemove();
+    float GetPerHitDamageMultiplier() const;
+    void StartMultiHit(const CHitParameters&,CThing*);
+    void SetAICasting(long);
+    bool IsStrikeStarted() const;
+    void ApplyEffectOnWeapon(CThing*);
+    void RemoveEffectOnWeapon(CThing*);
+    bool IsLastHit() const;
+    void CancelForCutscene();
+    void CancelMove();
+private:
+    void FinalCleanup();
+    CDefPointer<const CSpecialAbilitiesMultiStrikeDef> PDef;                 // +0x0C
+    long SpellLevel;                                                         // +0x10
+    bool StrikeStarted;                                                      // +0x14
+    long DelayTimer;                                                         // +0x18
+    long NumHits;                                                            // +0x1C
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_PASS22_MULTI_STRIKE_WEAPON)
+    NHitLocations::CHitLocation* PHitLocation;
+#else
+    CHitLocation* PHitLocation;
+#endif                                              // +0x20
+    CIntelligentPointer<CThing> PWeapon;                                     // +0x24
+    C3DVector PointOfHit;                                                    // +0x2C
+    C3DVector HitDirection;                                                  // +0x38
+    CIntelligentPointer<CThing> PTarget;                                     // +0x44
+    std::vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing> > > ParticleEffects;   // +0x4C
+
+};
+#else
 class CTCMultiStrike : public CTCBase {
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 public:
@@ -39,7 +85,7 @@ public:
     void RemoveEffectOnWeapon(CThing* weapon);               // 0x007CC9E0
 #ifdef FABLE_RETAIL_CTCMULTISTRIKE_MEMBERS
     CTCMultiStrike(CThing& thing);                           // 0x007CD390
-#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_PASS22_MULTI_STRIKE_WEAPON)
 private:
 #endif
     CDefPointer<const CSpecialAbilitiesMultiStrikeDef> PDef;                 // +0x0C
@@ -47,7 +93,7 @@ private:
     bool StrikeStarted;                                                      // +0x14
     long DelayTimer;                                                         // +0x18
     long NumHits;                                                            // +0x1C
-#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_PASS22_MULTI_STRIKE_WEAPON)
     NHitLocations::CHitLocation* PHitLocation;
 #else
     CHitLocation* PHitLocation;
@@ -74,4 +120,6 @@ private:
 public:
 #endif // FABLE_RETAIL_CTCMULTISTRIKE_VSLOTS2
 };
+#endif
+
 #endif // FABLE_ENGINE_CTCMULTISTRIKE_H

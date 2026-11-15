@@ -1,0 +1,5 @@
+# FrameStart scheduling and identities
+
+The complete shared-header rebase preserved the old1177-byte near-match while correcting every fabricated environment/global/camera model. Original module locals identify const environment reference params and signed channel, and donor calls one-argument resize. Real CalculateFogTransformMatrix through CMatrix3x4::PreMultiply matches306bytes independently and exposes original call-preservation facts. The existing fully grouped Newton expression finally places resize's temporary lea/push at retail positions; two shallower groupings did not. No non-rounding low-level code or scheduler flag was necessary. Do not call the camera+114 member inverse-view: it is PeekNonHomogenousViewTransform/NoScaleViewTransform.
+
+Combined-header review: merged10 already carries the real CEngineScene header from another accepted row. Reused that header and added the proven RenderEntireScene declaration, retaining its existing layout, method and size assertion. No duplicate class model is returned.

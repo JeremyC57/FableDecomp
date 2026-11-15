@@ -1,0 +1,4 @@
+- (0x00C5ACB0) GameCODA original release/debug COFF can prove every instruction and relocation of a mislabelled whole row despite version-specific member offsets and vtable slots; do not import donor sizes blindly.
+- (0x00C5ACB0) Native source status+10 is original IsLooping, not capabilities+0c. A one-byte size residue can conceal a semantic field error.
+- (0x00C5ACB0) Original typed Get3D/Get2D result locals before downstream calls place flags pushes after the virtual source type check; -1.0f preserves the original32-bit log-divisor constant.
+- (0x00C5ACB0) Check default preprocessing text after adding a forward declaration: even harmless new tokens belong behind the new opt-in when preserving old profiles.

@@ -13,6 +13,9 @@ public: unsigned long SpecularColour;
 public: float U1;
 public: float V1;
 };
+#ifdef FABLE_RETAIL_CTVERTEXRHWCOLTEX1_ORIGINAL_BASE
+#include "engine/CGenericVertex.h"
+#else
 template<class T> class CGenericVertex:public T {
 public: void SetX(float);
 public: void SetY(float);
@@ -43,6 +46,7 @@ public: float GetBlendingWeight(unsigned long) const;
 public: unsigned long GetBlendingIndex(unsigned long) const;
 public: void SetRHWFromZ();
 };
+#endif
 class CTVertexRHWColSpecTex1:public CGenericVertex<CTVertexRHWColSpecTex1Base> {};
 #ifdef FABLE_RETAIL_CGENERICVERTEX_SETRHWFROMZ
 // Retail opt-in (chunk Q20, row 0x009DDC60 CRenderManager2D::Draw2DBoxWithZ): FableWin.pdb
@@ -61,5 +65,5 @@ template<class T> FABLE_FORCEINLINE void CGenericVertex<T>::SetRHWFromZ()
         this->RHW = 1.0f / this->Z;
 }
 #endif
-FABLE_STATIC_ASSERT(sizeof(CTVertexRHWColSpecTex1)==32);
+FABLE_STATIC_ASSERT_AT(64, sizeof(CTVertexRHWColSpecTex1)==32);
 #endif

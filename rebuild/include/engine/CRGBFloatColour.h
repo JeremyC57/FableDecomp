@@ -25,6 +25,12 @@ public:
     // Opt-in (agentC20, row 0x00BA2350): FableWin.pdb ??0CRGBFloatColour@@QAE@MMMM@Z is 22 debug instructions / 52 bytes = the four arguments
     // passed on to Initialise (the member-initialiser form is 20 / 51).
     CRGBFloatColour(float r, float g, float b, float a) { Initialise(r, g, b, a); }
+#elif defined(FABLE_RETAIL_CRGBFLOATCOLOUR_ORIGINAL_FLOAT_CTORS)
+    // Original constructor chains: donor021AA550/01A3BF60.
+    CRGBFloatColour(float r,float g,float b) { Initialise(r,g,b); }
+    void Initialise(float r,float g,float b) { R=r;G=g;B=b;A=1.0f; }
+    CRGBFloatColour(float r,float g,float b,float a) { Initialise(r,g,b,a); }
+    CRGBFloatColour operator*(const CRGBFloatColour& c) const { return CRGBFloatColour(R*c.R,G*c.G,B*c.B,A*c.A); }
 #else
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
 #endif
@@ -37,6 +43,18 @@ public:
 #endif
     // ??0CRGBFloatColour@@QAE@ABVCRGBColour@@@Z (inline; chunk 723c, RenderSingleSprite 0x00BC04F0): each byte channel times
     // 1/255 (the float pool 0x01231724), R, G, B, A in member order.
+#if defined(FABLE_RETAIL_PASS22_RGBFLOAT_ORIGINAL_BYTE_DIVISION) || defined(FABLE_RETAIL_PASS22_RGBFLOAT_NATIVE_BYTE_DIVISION)
+    // Original141-byte constructor calls Initialise; only native divisor precision differs from later donor.
+    void Initialise(float r,float g,float b,float a) { R=r;G=g;B=b;A=a; }
+    FABLE_FORCEINLINE CRGBFloatColour(const CRGBColour& colour)
+    {
+#ifdef FABLE_RETAIL_PASS22_RGBFLOAT_NATIVE_BYTE_DIVISION
+        Initialise(colour.R/255.0f,colour.G/255.0f,colour.B/255.0f,colour.A/255.0f);
+#else
+        Initialise(colour.R/255.0,colour.G/255.0,colour.B/255.0,colour.A/255.0);
+#endif
+    }
+#else
 #ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_INITIALISE_CTOR
     // Retail opt-in (chunk 2006, row 0x00550DC0 NUISystem::CTable::Draw): the same constructor written through Initialise, so the
     // four channel conversions are the call's arguments, evaluated right to left (A, B, G, R: 0x00550EA8..0x00550F53).
@@ -49,6 +67,7 @@ public:
     FABLE_FORCEINLINE CRGBFloatColour(const CRGBColour& colour)
         : R(colour.R * (1.0f / 255.0f)), G(colour.G * (1.0f / 255.0f)), B(colour.B * (1.0f / 255.0f)), A(colour.A * (1.0f / 255.0f)) { }
     void Initialise(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }
+#endif
 #endif
     CRGBFloatColour& operator*=(const CRGBFloatColour& other) { R *= other.R; G *= other.G; B *= other.B; A *= other.A; return *this; }
 #ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_SCALE
@@ -168,14 +187,21 @@ public:
     float A;                                                             // +0x0c
 };
 FABLE_STATIC_ASSERT_AT(131, sizeof(CRGBFloatColour) == 0x10);
+#if !defined(FABLE_RETAIL_CRGBFLOATCOLOUR_ORIGINAL_FLOAT_CTORS)
 inline CRGBFloatColour operator*(const CRGBFloatColour& a, const CRGBFloatColour& b)
 {
     return CRGBFloatColour(a.R * b.R, a.G * b.G, a.B * b.B, a.A * b.A);
 }
+#endif
 // (C4DVector.h must have been read with FABLE_RETAIL_C4DVECTOR: the retail headers that include it define the macro first.)
 #ifdef FABLE_RETAIL_C4DVECTOR_INITIALISEFROMCOLOUR
 inline void C4DVector::InitialiseFromColour(const CRGBFloatColour& colour) { X = colour.R; Y = colour.G; Z = colour.B; W = colour.A; }
 inline C4DVector::C4DVector(const CRGBFloatColour& colour) { InitialiseFromColour(colour); }
+#elif defined(FABLE_RETAIL_C4DVECTOR_ORIGINAL_COLOUR_CHAIN)
+inline C4DVector::C4DVector(const CRGBFloatColour& colour) { InitialiseFromColour(colour); }
+inline void C4DVector::InitialiseFromColour(const CRGBFloatColour& colour) {
+    X=colour.GetR();Y=colour.GetG();Z=colour.GetB();W=colour.GetA();
+}
 #else
 inline C4DVector::C4DVector(const CRGBFloatColour& colour) : X(colour.R), Y(colour.G), Z(colour.B), W(colour.A) { }
 #endif

@@ -8,6 +8,11 @@
 #include "engine/CExceptionBase.h"
 class CWaveFileException : public CExceptionBase {
 public:
+#ifdef FABLE_RETAIL_CWAVELOADER_PASS22_EXCEPTIONS
+    // Original FableWin033FF5C0 forwards the message to CExceptionBase; native release expands an empty body.
+    CWaveFileException(const char* message) : CExceptionBase(message) { }
+#else
     CWaveFileException() { }
+#endif
 };
 #endif

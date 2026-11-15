@@ -1,0 +1,1 @@
+005A6769: ordinary references for the clothes/items wanted counters preserve native commutative sum order; authentic player inheritance and original lookup/cast chains remove stand-ins. External CVectorMap template copies require explicit original specialization bodies before target frame/size pragmas to carry their real60-byte profiles.

@@ -1,0 +1,6 @@
+- Reconstruct the complete original particle helper chain before treating a seed-register mismatch as allocator noise: here the retail ebp seed and instruction count return after shared-model rebase and genuine helper recovery.
+- Diagnose the actual inline sites. Natural/T200/T400 separately expose the three large helpers; T400 expands them without adding new forced bodies.
+- A matrix helper can match independently while its inlined caller still schedules a stack argument differently. Here one early push changes a displacement across128 and grows the target3bytes; same instruction count is not a match.
+- Distinguish original formal-name restoration from structural source families. Five such corrections here are preserved but add zero to the12-family count.
+
+- A source-level cached value can be mathematically identical yet change VC7.1 frame density: the original fixed-X rotation reads InitialRotationX again after storing initial_angle. Using initial_angle for that call added a reference and moved its shared scalar slot ahead of the movement vector. Restore the actual donor operand before shaping lifetimes. Uniform cross-component parentheses independently close the matrix scheduling-region cut.

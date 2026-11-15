@@ -1,0 +1,13 @@
+# 005AECC0 identity and evidence
+
+SellItem is original public thiscall CTCInventoryTrade::SellItem(NUISystem::CComponent*,long), confirmed in both PDB PUBLIC and owner/member records, the native caller0041F651 and full2446-byte body. The final native ret ends005AF64E immediately before BuyItem. No extent correction or EH fragment is needed.
+
+NAME_PROOF.json proves43 original engine symbols in both raw PDB PUBLIC streams and four original anonymous-namespace SUBTITLE objects in both module-local data streams. Native operands and literal bytes independently pin every actual address (RELOCATION_AUDIT.json). Exact original MENU_TYPE_CLOTHING/WEAPONS/ITEMS names and0/1/2 values come from both enum field lists. NAME_FIXES.tsv records incorrect historical bindings without mutating the shared source dictionary. Anonymous namespace hashes identify compiler translation units and are not semantic renames.
+
+Original STLport4.6.2 template algorithms, member spellings and pointer-iterator ABI are used rather than later donor library names. Owning class types are proven by both original owner records. All35 statically reachable emitted helper bodies are byte-matched recursively against their native extents, including GetMenuBranchFromDefIndex, CDeletion/list lifecycle and both60-byte LowerBound overloads. Every287 actual relocated operand is audited, including all literal bytes and COFF addends. One native symbol address has one exact mangled spelling. The154-section emitted inventory explicitly distinguishes118 unreferenced COMDATs without native-address claims.
+
+Both original records prove FindChild(CCharString), FindFirstChildOfType(EType), and SetValue(const CWideString&,bool,bool) virtual offsets12,36,576. INDIRECT_ABI_AUDIT.json stores these descriptors. LAYOUT_PROOF.json verifies18 native sizes/offsets/enumerator values under VC71; CCountedPointer is8bytes (Data+Info).
+
+The fixture contains exact complete production target text, controlled external behavior and host container/string models.4096 complete scenarios check stock depletion, three menu categories, optional text/arrow/gold paths, caption values, shop/hero/inventory updates, short-circuit lookups, existing/new buy rows and lists, and final refresh/event effects. Both VC71 /Od /W3 /GR- without /EHsc and GCC64 C++03 pass. This tests target behavior; independently matched helpers are not replaced in the production source.
+
+Four row-owned header additions are opt-in only; old/new pairs and patches are in header_changes. Final grade is against merged_headers_27 plus these additions.130 effective baseline/current profiles preprocess identically, and five prerequisite failures are explicitly disclosed. Full combined accepted-row regression remains the main review gate.

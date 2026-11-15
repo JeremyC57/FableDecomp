@@ -41,6 +41,10 @@ public:
  // Opt-in (bwf2, row 0x00BA2350): FableWin.pdb ?PeekWindow@CEngineCamera@@QBEABVC2DBoxF@@XZ (9 debug instructions), inline.
  const C2DBoxF& PeekWindow()const{return CameraDesc.Window;}
 #endif
+#ifdef FABLE_RETAIL_CENGINECAMERA_SHADOWFRUSTRUM_PASS22
+ // Original FableWin02d76ff0 member; identical owner/signature in the complete TPI.
+ const CPlane& PeekFrustrumPlane(long plane)const{return FrustrumPlanes[plane];}
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_CLIPBOX
  // Retail opt-in (chunk 2037, CEngineWeatherRenderer::ClipBoxToCamera 0x00B51F60 in the RenderRain / RenderSnow TU): Ego_r.pdb
  // ?ClipBox@CEngineCamera@@QBE_NABVCMatrix3x4@@@Z, retail 0x00B30610 (called at 0x00B52066 with the box matrix, `test al,al`).

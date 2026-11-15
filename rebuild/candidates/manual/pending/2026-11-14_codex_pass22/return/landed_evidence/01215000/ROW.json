@@ -1,0 +1,54 @@
+{
+  "address": "01215000",
+  "input_kind": "never_worked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 1,
+  "assigned_extent": 21,
+  "input_label": "Unwind@01215000",
+  "owner": "main",
+  "review_note": "Complete compiler-associated EH section, parent, EH tables, relocation identities and default/no-EH plus extra EH behavior builds checked.",
+  "source_dependencies": [
+    "parent_00c3db80.cpp"
+  ],
+  "selected_attempt": "main03_source_metadata",
+  "assigned_name": "CCodaContext::Create3DSource",
+  "classification": "compiler_generated_eh_bundle",
+  "component_extents": [
+    {
+      "kind": "unwind_cleanup",
+      "start": "01215000",
+      "end": "0121500b",
+      "length": 11
+    },
+    {
+      "kind": "frame_handler",
+      "start": "0121500b",
+      "end": "01215015",
+      "length": 10
+    }
+  ],
+  "selected_flags": [
+    "/EHsc"
+  ],
+  "object_size": 21,
+  "retail_size": 21,
+  "extent_note": "Two entry points in complete compiler-associated section; not a single function",
+  "dependency_parent": "00c3db80",
+  "parent_landed": true,
+  "main_verified": true,
+  "main_audit": "history/01215000/main03_source_metadata/MAIN_AUDIT.json",
+  "main_combined_header_audit": "review/MERGED_AUDIT_24.json",
+  "source_sha256": "87688e42c094bf0749aaf5b2944940f60913e00da894a67c6046c6fc0365010e",
+  "test_sha256": "77e93da2cae702a379b59b13a42eccb7f7137dfd0033a3c90d7a16b3829616a1",
+  "residue": "",
+  "behavior_cases": 46080,
+  "exception_cases": 1,
+  "main_compiler_invocations": 3,
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "final_test_sha256": "77e93da2cae702a379b59b13a42eccb7f7137dfd0033a3c90d7a16b3829616a1",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "ready_for_claude_reverification": true
+}

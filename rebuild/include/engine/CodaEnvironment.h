@@ -38,7 +38,7 @@ typedef struct _CENVIRONMENT                        /* Environment parameters   
     int     iAirAbsorptionHF;                       /* Air absorption in mB/unit                    */
 }
 CENVIRONMENT;
-#ifdef FABLE_RETAIL_CCODACONTEXT_PROCESS
+#if defined(FABLE_RETAIL_CCODACONTEXT_PROCESS) || defined(FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS) || defined(FABLE_RETAIL_PASS22_CCODACONTEXT_CREATE) || defined(FABLE_RETAIL_PASS22_CCODA3D_CREATE)
 #include "engine/CCodaObject.h"
 #else
 class CCodaObject:public CCodaObjectBase {
@@ -53,6 +53,9 @@ class CSalReverb;
 class CCodaEnvironment:public CCodaObject {
 public:
  virtual ~CCodaEnvironment();
+#ifdef FABLE_RETAIL_PASS22_CCODACONTEXT_CREATE
+ CCodaEnvironment();
+#endif
 #ifdef FABLE_RETAIL_CCODACONTEXT_PROCESS
  void Commit();
  void Process();

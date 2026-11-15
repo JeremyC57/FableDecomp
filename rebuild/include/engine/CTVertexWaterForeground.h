@@ -17,9 +17,14 @@ public:
     float          ShoreUCoord;                                          // +0x10
     float          ShoreLookUpArray[12];                                 // +0x14
 };
+#ifdef FABLE_RETAIL_PASS22_WATER_PATCH_LOAD
+#include "engine/CGenericVertex.h"
+class CTVertexWaterForeground : public CGenericVertex<CTVertexWaterForegroundBase> {
+#else
 class CTVertexWaterForeground : public CTVertexWaterForegroundBase {
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTVertexWaterForeground) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CTVertexWaterForegroundBase, Depth) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTVertexWaterForegroundBase, ShoreLookUpArray) == 0x14);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CTVertexWaterForeground) == 0x44);
+FABLE_STATIC_ASSERT_AT(23, offsetof(CTVertexWaterForegroundBase, Depth) == 0xc);
+FABLE_STATIC_ASSERT_AT(24, offsetof(CTVertexWaterForegroundBase, ShoreLookUpArray) == 0x14);
 #endif // FABLE_ENGINE_CTVERTEXWATERFOREGROUND_H

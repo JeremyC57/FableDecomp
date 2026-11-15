@@ -10,8 +10,12 @@
 
 class CDefPointeeBase : public CResource {
 public:
+#ifdef FABLE_RETAIL_DEFINITION_ORIGINAL_USER_CONSTRUCTORS_PASS22
+    // Both original PDBs: user default constructor attr0x3.
+    CDefPointeeBase();
+#endif
     virtual ~CDefPointeeBase() { }                                       // slot 0  0x0042D9A0 (scalar deleting; inline dtor)
 };
-FABLE_STATIC_ASSERT(sizeof(CDefPointeeBase) == 0x1c);
+FABLE_STATIC_ASSERT_AT(15, sizeof(CDefPointeeBase) == 0x1c);
 
 #endif // FABLE_ENGINE_CDEFPOINTEEBASE_H

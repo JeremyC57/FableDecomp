@@ -23,8 +23,9 @@ public:
     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);
     virtual void Render2DPrimitive(CEngineInternalPrimitiveBase&,CEngineSubPrimitiveChain&,ESubPrimitiveType);
     virtual void RenderSubPrimitive(CEngineSubPrimitiveBase&,ERenderPassType);
-#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DVIEWPORTMANAGER_ALPHAMASK
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVE2DVIEWPORTMANAGER_ALPHAMASK) || defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGERTEXT_RENDER)
     // Opt-in (bwf2, row 0x00BA2350): FableWin.pdb ?GetCurrentAlphaMask@CEnginePrimitive2DViewportManager@@QAEPBVC2DAlphaMaskInfo@@XZ (9 debug instructions), inline.
+    // Both original PDBs and native00bc70f7: return AlphaMaskInfo at0c.
     const C2DAlphaMaskInfo* GetCurrentAlphaMask(){return &AlphaMaskInfo;}
 #else
     const C2DAlphaMaskInfo* GetCurrentAlphaMask();

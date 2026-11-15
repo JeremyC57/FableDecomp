@@ -23,7 +23,17 @@ public:
     ERenderMode GetRenderMode() const { return RenderMode; }
     const CEngineInternalPrimitiveMeshBase* PeekParent() const { return static_cast<const CEngineInternalPrimitiveMeshBase*>(Parent); }
 #endif
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+ CEngineSubPrimitiveMeshBase(CEngineInternalPrimitiveBase*,C3DPrimitive2*,ERenderMode,bool);
+#endif
+
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Both original PDB field lists: MeshPrimitive/RenderMode/IsCloth are public.
+public:
+#else
 protected:
+#endif
     C3DPrimitive2* MeshPrimitive;                                        // +0x18
     ERenderMode    RenderMode;                                           // +0x1c
     bool           IsCloth;                                              // +0x20

@@ -1,3 +1,5 @@
+// Retail-asm: Pass22 parent00BA1140 00BA1606 fld dword ptr [esp+20h];00BA160A fistp dword ptr [esp+38h].
+// Per-site30 C++ and10 intrinsic RTM grades plus QIfist diagnostic:00ba115c/ROUNDING_ATTEMPTS.md.
 // GFFloatToLongNear(float) -- round a float to a long with the x87 rounding mode (round to nearest, ties to even, by
 // default): the engine's two-instruction inline-assembly float-to-long, expanded in place by every caller.
 // Identity: FableWin.pdb ?GFFloatToLongNear@@YIJM@Z (__fastcall, out of line only in the debug build: 19 bytes / 9

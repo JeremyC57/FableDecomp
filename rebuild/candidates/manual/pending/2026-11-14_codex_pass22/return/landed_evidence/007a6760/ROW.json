@@ -1,0 +1,28 @@
+{
+  "address": "007a6760",
+  "input_kind": "never_worked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 1,
+  "compile_invocations": 1,
+  "assigned_extent": 645,
+  "assigned_name": "?OnAppearanceDraw@CTCGraphicAppearanceReplaceableMesh@NGraphicAppearance@@UAE_NAAVCTCGraphicAppearance@2@ABVCGraphicAppearanceDrawInfo@2@@Z",
+  "selected_attempt": "main_review_01",
+  "selected_flags": [],
+  "retail_size": 645,
+  "object_size": 645,
+  "behavior_cases": 768,
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "carried_match": [
+    "0077bd70:177"
+  ],
+  "helper_debts": [],
+  "main_verified": true,
+  "main_test_status": "PASS_VC71_OD_GR_MINUS_AND_GPP03",
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "final_test_sha256": "ba5554cd3ec8ccf69b51ac81746c7bdf2243e851b5557a5d13ae77a387fcc914",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "residue": "",
+  "ready_for_claude_reverification": true
+}

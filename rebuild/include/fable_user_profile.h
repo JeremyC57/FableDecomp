@@ -18,6 +18,14 @@
 // expands them; other callers call the COMDAT copies).
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CDeviceResetCallback.h"
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASS22_DEFAULTS
+#include "stlport/fable_deque.h"
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASS22_STATE
+#include "engine/CActionInputControl.h"
+class CAFile;
+#endif
+enum ETutorialCategory { };
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VIDEODEFAULTS
 #include "engine/CDisplayModeDesc.h"
 #include "stlport/fable_containers.h"
@@ -69,6 +77,15 @@ private:
     void ClampAntialiasing(unsigned long& antialiasing, long maxAntialiasing);   // 0x00409140
     void ClampResolution(unsigned long& resolution, long maxWidth);      // 0x00406D90
     void ClampRefreshRate(unsigned long& refreshRate, long maxRefreshRate);   // 0x004069A0
+public:
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASS22_DEFAULTS
+    void ResetAssignedInputs(); // Ego_r/FableWin QAEXXZ, retail004085F0
+protected:
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASS22_STATE
+    void SaveGameState(CAFile&); // Ego_r/FableWin IAEXAAVCAFile@@@Z,00409FD0
+#endif
+    void ApplyVideoValues(); // Ego_r/FableWin IAEXXZ, retail0040A7F0
 public:
 #endif
     void SetDefaultValues();                                             // 0x0040C790 (Ego_r / FableWin ?SetDefaultValues@CUserProfileManager@@QAEXXZ)
@@ -135,14 +152,32 @@ private:
     bool          VerticalSyncEnabled;                                   // +0x50
     bool          StereoReversed;                                        // +0x51
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VIDEODEFAULTS
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASS22_DEFAULTS
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASS22_STATE
+    unsigned char _pad_defaults_52[2];
+    std::vector<CActionInputControl> AssignedInputsPassive; //+54
+    std::vector<CActionInputControl> AssignedInputsAggressive; //+60
+#else
+    unsigned char _pad_defaults_52[0x6c-0x52];
+#endif
+    bool ShowTargetingStatus; // Ego_r+0x74 minus two vector-size differences
+    unsigned char _pad_defaults_6d[3];
+#else
     unsigned char _pad_0x52[0x70 - 0x52];                                // +0x52 padding, +0x54 AssignedInputsPassive/Aggressive, +0x6C ShowTargetingStatus (opaque)
+#endif
     float         EffectsDetail;                                         // +0x70 (Ego_r.pdb +0x78)
     unsigned long ScreenAspectRatio;                                     // +0x74 (Ego_r.pdb +0x7C)
     bool          NewProfileToUseWASD;                                   // +0x78
     bool          CameraResetting;                                       // +0x79
     float         CameraSensitivity;                                     // +0x7C
     std::vector<CDisplayModeDesc> DisplayModes;                          // +0x80 (Ego_r.pdb +0x88)
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASS22_DEFAULTS
+    std::vector<ETutorialCategory> GivenTutorialCategories; // +0x8c
+    std::queue<ETutorialCategory> PendingTutorialCategories; // +0x98, STLport deque0x28
+    std::vector<CWideString> SaveGameNames; // +0xc0
+#else
     unsigned char _pad_0x8c[0xcc - 0x8c];                                // GivenTutorialCategories .. SaveGameNames (opaque)
+#endif
 #else
     unsigned char _pad_0x52[0xcc - 0x52];                                // +0x52 padding, +0x54 AssignedInputsPassive .. SaveGameNames (opaque)
 #endif
@@ -170,15 +205,29 @@ private:
     unsigned long AntialiasingNewProfile;                                // +0xF4
     float         TextureDetailNewProfile;                               // +0xF8
     float         ShadowDetailNewProfile;                                // +0xFC
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASS22_DEFAULTS
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASS22_STATE
+    unsigned char _pad_defaults_100[0x110-0x100];
+    CWideString ScoreBoardUserName; //+110
+    CWideString ScoreBoardPassword; //+114
+    CWideString ScoreBoardProxyIp; //+118
+#else
+    unsigned char _pad_defaults_100[0x11c-0x100];
+#endif
+    long ScoreBoardProxyPort; // Ego_r+0x120 minus4, retail+0x11c
+    long ScoreBoardServerPort; // retail+0x120
+    unsigned char _pad_defaults_124[0x140-0x124];
+#else
     unsigned char _pad_0x100[0x140 - 0x100];                             // +0x100 MeshDetailNewProfile .. (opaque)
+#endif
 public:
     static void CheckRetailLayout() {
-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,UseNewProfileValues)==0x0c);
-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,DialogueVolume)==0x2c);
-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,StereoReversed)==0x51);
-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,SubtitlingEnabledNewProfile)==0xcd);
-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,SoundVolumeNewProfile)==0xe4);
-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,ShadowDetailNewProfile)==0xfc);
+        FABLE_STATIC_ASSERT_AT(176, offsetof(CUserProfileManager,UseNewProfileValues)==0x0c);
+        FABLE_STATIC_ASSERT_AT(177, offsetof(CUserProfileManager,DialogueVolume)==0x2c);
+        FABLE_STATIC_ASSERT_AT(178, offsetof(CUserProfileManager,StereoReversed)==0x51);
+        FABLE_STATIC_ASSERT_AT(179, offsetof(CUserProfileManager,SubtitlingEnabledNewProfile)==0xcd);
+        FABLE_STATIC_ASSERT_AT(180, offsetof(CUserProfileManager,SoundVolumeNewProfile)==0xe4);
+        FABLE_STATIC_ASSERT_AT(181, offsetof(CUserProfileManager,ShadowDetailNewProfile)==0xfc);
     }
 };
 #else
@@ -223,5 +272,5 @@ struct CUserProfileManagerSingleton
 extern CCountedUserProfileManager
     g_CUserProfileManagerSingleton_013B7D4C;
 
-FABLE_STATIC_ASSERT(sizeof(CUserProfileManager) == 0x140);
-FABLE_STATIC_ASSERT(sizeof(CCountedUserProfileManager) == 0x08);
+FABLE_STATIC_ASSERT_AT(226, sizeof(CUserProfileManager) == 0x140);
+FABLE_STATIC_ASSERT_AT(227, sizeof(CCountedUserProfileManager) == 0x08);

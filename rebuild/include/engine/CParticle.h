@@ -7,7 +7,7 @@
 #include "engine/CEnginePrimitiveHandle.h"
 #include "boost/scoped_ptr.h"
 #include <string.h>
-#ifdef FABLE_RETAIL_CPARTICLE_SPRITE
+#if defined(FABLE_RETAIL_CPARTICLE_SPRITE) || defined(FABLE_RETAIL_CPARTICLE_UPDATE_ADD)
 #include "engine/GFFastFloatToLong.h"
 #include "engine/GFFloatToLongCeil.h"
 #endif
@@ -26,6 +26,18 @@ class CParticle:public CBaseClassNonCopyable {
 public:
  virtual void Delete();
  virtual ~CParticle();
+#ifdef FABLE_RETAIL_CPARTICLE_UPDATE_ADD
+ // Original both-PDB members and donor02F42CD0..02F42E86.
+ void SetClosestAttractorDistance(float distance){ClosestAttractorDistance=distance;}
+ void SetMaxLife(short life){MaxLife=life?life:1;}
+ void SetLifetimer(short lifetimer){Lifetimer=lifetimer;}
+ void SetCreationTime(float t){float f=t*255.0f;long i;long* i_ptr=&i;GF_FAST_FLOAT_TO_LONG(i_ptr,f);CreationTime=(unsigned char)i;}
+ void SetAngle(float angle){Angle=angle;}
+ void SetAngleChange(float change){float f=change*63.5f;long i;long* i_ptr=&i;GF_FAST_FLOAT_TO_LONG(i_ptr,f);AngleChange=(signed char)i;}
+ void SetFlickerIndex(unsigned char index){FlickerIndex=index;}
+ void SetFlickerTimeOffset(unsigned char offset){FlickerTimeOffset=offset;}
+ void Activate(){Active=true;for(unsigned long c1=1;c1<4;++c1)PositionBuffer[c1]=PositionBuffer[0];}
+#endif
  bool IsActive()const{return Active;}
     const C3DVector& GetPosition() const { return PositionBuffer[0]; }
     void SetPosition(const C3DVector& position) { memmove(&PositionBuffer[1], &PositionBuffer[0], sizeof(C3DVector) * 3); PositionBuffer[0] = position; }
@@ -110,6 +122,11 @@ public:
         ParentHandleList[list] = parent;
     }
 #endif
+#ifdef FABLE_RETAIL_CPARTICLE_PASS22_CLEARALL
+    // Retail opt-in (Codex pass 22): FableWin ClearAll and the native two-container clear.
+    // This row defines the original public method out of line; earlier opt-ins are unchanged.
+    void ClearAll();
+#endif
 #ifdef FABLE_RETAIL_CPARTICLE_CLEARPARTICLE
     // Opt-in (row 0x00AF5090 CParticleSystem::ClearParticle): FableWin.pdb accessors, inline in retail (debug COMDATs 0x02F18DA0..
     // 0x02F18ED0, same instruction counts as the CDecal twins of FABLE_RETAIL_CDECAL_CLEAR): ?GetParentHandle@CParticle@NParticleEngine@@
@@ -145,5 +162,5 @@ private:
  CArray<CEnginePrimitiveHandle> ParentHandleList;
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CParticle)==0x9c);
+FABLE_STATIC_ASSERT_AT(148, sizeof(NParticleEngine::CParticle)==0x9c);
 #endif

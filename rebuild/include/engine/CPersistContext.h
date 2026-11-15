@@ -410,6 +410,42 @@ template<class V,class K> void CPersistContext::TransferMap(std::map<K,V,std::le
 #include "engine/CDataOutputStream.h"
 #include "engine/CPersistTraits.h"
 #include "engine/CPersistContext_TransferableComponent.h"
+#ifdef FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE
+template<class T> void CPersistContext::Transfer(const char* name,T& value,const T& defaultValue)
+{
+    CheckCRC(name);
+    CPersistTraits<T> traits;
+    switch (Mode) {
+    case MODE_CLEAR:
+        value = defaultValue;
+        return;
+    case MODE_SAVE_BINARY: {
+        traits.TransferBinaryOut(*PSaveStream, value);
+        return;
+    }
+    case MODE_LOAD_BINARY: {
+        traits.TransferBinaryIn(*PLoadStream, value);
+        return;
+    }
+    case MODE_SAVE_TEXT: {
+        CPersistContext_TransferableComponent<T> item(value);
+        TransferObjectSaveText(name, item);
+        return;
+    }
+    case MODE_LOAD_TEXT: {
+        if (UseDefaults)
+            value = defaultValue;
+        CPersistContext_TransferableComponent<T> item(value);
+        TransferObjectLoadText(name, item);
+        return;
+    }
+#ifdef _MSC_VER
+    default:
+        __assume(0);
+#endif
+    }
+}
+#else
 template<class T> void CPersistContext::Transfer(const char* name,T& value,const T& defaultValue)
 {
     CheckCRC(name);
@@ -445,4 +481,6 @@ template<class T> void CPersistContext::Transfer(const char* name,T& value,const
 #endif
     }
 }
+#endif
+
 #endif

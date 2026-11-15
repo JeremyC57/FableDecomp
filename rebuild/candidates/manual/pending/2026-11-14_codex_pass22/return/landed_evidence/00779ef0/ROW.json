@@ -1,0 +1,33 @@
+{
+  "address": "00779ef0",
+  "input_kind": "never_worked",
+  "status": "RELOCATION_MATCH",
+  "reconstruction_kind": "retail_asm_existing_shared_helper",
+  "attempts": 3,
+  "compile_invocations": 6,
+  "assigned_extent": 567,
+  "input_label": "CTCObjectView_InitializeWillPowerDisplay",
+  "assigned_name": "?OnInitialActivate@CTCDExperienceOrb@@UAEXXZ",
+  "selected_attempt": "main_review_01",
+  "retail_size": 567,
+  "object_size": 567,
+  "selected_flags": [],
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "rounding_dual_test": "PASS_VC71_NATIVE_VS_PORTABLE_20000_INPUTS_AND_GPP03",
+  "helper_debts": [],
+  "carried_match": [
+    "00779b90:79",
+    "0077ac20:182",
+    "0065f604:162"
+  ],
+  "evidence": "Both PDBs/native vtable, original donor rend and Ceil calls, thirty relocated operands audited",
+  "main_verified": true,
+  "main_review": "Independent RTM567+79+182+162 byte matches,30 relocation bindings,864 full-body VC71/GCC64 cases; test distances changed to exact binary fractions; production optimize controls now MSVC-guarded; header default proof.",
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "final_test_sha256": "19f80711aaafdc9c30359bb9f9bac9872a96840db70630b8a584b9ffeef7d3e2",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "residue": "",
+  "ready_for_claude_reverification": true
+}

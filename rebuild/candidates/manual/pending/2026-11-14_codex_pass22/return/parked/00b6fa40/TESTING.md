@@ -1,0 +1,5 @@
+# Main behavior verification
+
+The entire selected target and both genuine member helper bodies are pasted verbatim into the standalone fixture.16384 cases independently vary256 state patterns,8 texture-cache patterns,4 texture/value variants and both high/low water paths. Checks cover texture binding/nulls, all6 UV states, both shader choices, exact constants with dyadic input values, environment versus diffuse lookup, both list identities and interpolation argument, blend/test disabling between draws, capture restoration, dirty queue order and untouched states/constant slots. Original0.8/0.4 literal constants are retained in low-end behavior. The constant-disabled alternate resource path must never execute. Renderer/shader boundaries are controlled semantic fixtures; this is not a whole-engine or hardware GPU test.
+
+Fresh VC71 RTM /Od /W3 /GR- without /EHsc and GCC64 C++03 both print exactly00b6fa40_TEST PASS. These tests establish behavior coverage; they do not change the unresolved3instruction-line/2019-byte compiler residue into a match.

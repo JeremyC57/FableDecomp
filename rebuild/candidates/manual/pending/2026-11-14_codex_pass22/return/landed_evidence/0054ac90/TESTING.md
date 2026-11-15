@@ -1,0 +1,15 @@
+# 0054AC90 complete-body validation
+
+Entire selected ProcessEvent body is injected verbatim by make_test.py, bound by TEST_BODY_SHA256.txt. VC71 RTM /Od /W3 without /EHsc and GCC64 C++03 -O0 -Wall -Wextra both pass58400 scenarios/69816 Action calls each, exact success0054ac90_TEST PASS. Dispatch goes through the Observer base of an MI mock; actual production-header physical layout/virtual slots have separate native VC proof.
+
+57600 stepping cases combine both directions, ten values (negative/positive/out-of-range/signedzero/Inf/NaN), ten steps (positive/negative/zero/epsilon-ULP/epsilon/epsilon+ULP/Inf/NaN), four Y states includingInf/NaN, both Move states, null/unobserved/observed accept buttons, zero/one/three actions, and four callbacks: no change, append real counted action, clear vector, change Value.X after first dispatch. Checks cover dynamic bounds/base/current-value reloads, complete callback order, float updates/extra parameter preservation, pre/post Move, sound, BGR/alpha255/.2f/false, counted lifetimes and def references. Chosen binary32 inputs/finite-double oracle are not a claim of arbitrary FPU exceptions/NaN payload identity.
+
+800 completion/default cases cover BACK/SELECT and eight ignored events, previous depths0..4, null/present action lists, zero..three actions, both Move states. Checks include6/pop/3/RemoveObserver ordering, preserved list identities, sound/change/action sequence, unchanged fields/parameters, singleton/count/ref balances. Original mouse movement event25 is used.
+
+Fixtures record contracts of actual external methods and standard containers; their external Action/sound/animation/profile/allocator algorithms are not claimed reconstructed. Def baseline reference1 stays alive during sound and balances after; last-reference Delete remains audited shared slot1 contract, not a claim of arbitrary manager lifetime coverage.64-bit host behavior is separate from native ABI.
+
+Fixture-only corrections: initial mouse enum30 corrected to25. First VC oracle compact floating boolean misclassified Y-NaN while production dispatched correctly; final independent oracle classifies IEEE exponent bits before finite comparison. Initial fixture0054ac90_test.initial.cpp.txt retained. Production/body SHA never changed for fixture fixes. GCC warnings: genuine switch intentionally omits ignored enum values; compact fixture indentation warns without /WX. No asm/intrinsic/EHsc/force in test.
+
+Main remains22 masked differing bytes: no match/target-byte contribution. All35 relocations/table bytes exact. Four old header branches/21 pp profiles/four pins,14 sizes/24 offsets/11 slots/two bases pass. Compiler binaries stay local, excluded handback.
+
+Worker B current result supersedes the former22-byte residue: target1454-byte envelope masked exact with35 exact relocation operands. Fresh whole-body fixture uses recovered inequality chain/count/pparam/unrounded clamps, still passes58400scenarios and69816dispatches on both compilers; authoritative TEST_RESULT.json includes /GR- and exact complete output. Current ABI proof rerun on accepted32 plusfour owned headers.

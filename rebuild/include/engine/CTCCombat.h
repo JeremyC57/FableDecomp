@@ -26,6 +26,10 @@ void SetStruck(const NHitLocations::CHitLocation&,CHitParameters&);void OnHit(co
 public:
  static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_COMBAT; }
  bool IsAbleToBeKnockedDown() const;
+#ifdef FABLE_RETAIL_CTCCOMBAT_PASS22_UNSHEATHING
+ // FableWin0240E270 named accessor; retail006EC929 reads UnsheathingWeaponType+0x6c.
+ EUnsheatheWeaponType GetUnsheathingWeaponType()const{return UnsheathingWeaponType;}
+#endif
 #ifdef FABLE_RETAIL_CTCCOMBAT_WEAPONTRAIL
  // Row 0x00839100: Ego_r ?IsMeleeFlourishValid@CTCCombat@@QBE_NXZ (retail 0x00733EE0, landed) and FableWin
  // ?GetIsInMiddleOfFlourishAction@CTCCombat@@QBE_NXZ (inline: the caller reads +0x94 in place). No layout change.

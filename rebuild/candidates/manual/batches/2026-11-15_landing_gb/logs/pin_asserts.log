@@ -1,0 +1,190 @@
+fable_user_profile.h                               pinned 0
+stlport/fable_deque.h                              pinned 0
+stlport/fable_containers.h                         pinned 0
+stlport/fable_string.h                             pinned 0
+stlport/fable_map.h                                pinned 0
+stlport/fable_algorithm.h                          pinned 0
+engine/CPlane.h                                    pinned 0
+engine/CSalPlatform.h                              pinned 0
+engine/CTCShop.h                                   pinned 0
+engine/CSalOutputKS.h                              pinned 0
+engine/CEngineInternalPrimitiveBase.h              pinned 0
+engine/CTCInventory.h                              pinned 0
+engine/CGenericVertex.h                            pinned 0
+engine/CCodaObject.h                               pinned 0
+engine/CCodaSource.h                               pinned 0
+engine/NHeroInformationScreens_CBase.h             pinned 0
+engine/CTCInGameMenu.h                             pinned 0
+engine/CEngineInternalPrimitiveMorphedStaticMesh.h pinned 0
+engine/CSliderAnimator.h                           pinned 0
+engine/CTCHeroOnlineScoreboard.h                   pinned 0
+engine/CCRC.h                                      pinned 0
+engine/CRightHandedSet.h                           pinned 0
+engine/CEngineLandscapeRenderer.h                  pinned 0
+engine/CTVertexWaterForeground.h                   pinned 0
+engine/CEngineWaterRenderer.h                      pinned 0
+engine/C3DPrimitive2.h                             pinned 0
+engine/CWaveFileException.h                        pinned 0
+engine/CScopedVertexShaderConstantLayout.h         pinned 0
+engine/CCategory.h                                 pinned 0
+   !! line 67: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(CCategory)==44);
+engine/C3DMeshStats.h                              pinned 0
+engine/CTCMultiStrike.h                            pinned 0
+engine/CEngineLightingManager.h                    pinned 0
+engine/CEngineSubPrimitiveRenderer.h               pinned 0
+engine/CTVertexRHWColTex1.h                        pinned 0
+engine/CIndexBuffer.h                              pinned 0
+engine/CCountedPointer.h                           pinned 0
+engine/CDecal.h                                    pinned 0
+engine/CCodaContext.h                              pinned 0
+engine/CRenderManagerCore.h                        pinned 0
+engine/CTCSolidToThing.h                           pinned 0
+   !! line 47: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(CTCSolidToThing)==0x18);
+engine/CSalSwBaseVoice.h                           pinned 0
+engine/NGraphicAppearance_CPrimitive.h             pinned 0
+engine/CEnginePrimitiveManagerParticleLineGroup.h  pinned 0
+   !! line 50: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleLineGroup)==0x260);
+engine/NUISystem_CAction.h                         pinned 0
+engine/CCreatureAction_SheatheWeapons.h            pinned 0
+engine/CEnginePrimitiveManagerAnimatedMeshesBase.h pinned 0
+engine/CUserProfileManager.h                       pinned 0
+engine/C3DBoundingBox.h                            pinned 0
+engine/CAIStateGroup_MinionGossip.h                pinned 0
+   !! line 28: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionGossip)==0x24);
+engine/NCameraModes_CTools.h                       pinned 0
+engine/CMessageEventFilters.h                      pinned 0
+engine/CodaEnvironment.h                           pinned 0
+engine/C3DMeshMaterial.h                           pinned 0
+engine/CExceptionBase.h                            pinned 0
+engine/ThingAlive.h                                pinned 0
+engine/CEngineClothRenderer.h                      pinned 0
+engine/C3DOrientationInterpolator.h                pinned 0
+engine/NUISystem_CSlider.h                         pinned 0
+engine/CLandscapeBackgroundSubNodeBase.h           pinned 0
+engine/CTCDExperienceOrb.h                         pinned 0
+engine/C3DMesh2.h                                  pinned 0
+engine/CEngineInternalPrimitiveParticleGroup.h     pinned 0
+engine/CEngineCamera.h                             pinned 0
+engine/CEngineSubPrimitiveBoundingBox.h            pinned 0
+engine/CEngineVideoOptionsDef.h                    pinned 0
+engine/CGraphicFrame.h                             pinned 0
+engine/NCreatureMode_CModeScorpionKingVulnerable.h pinned 0
+engine/CHandleBasedMemoryPool.h                    pinned 0
+engine/NCreatureMode_CModeGuildmasterPowerUpShield.h pinned 0
+engine/CSystemManager.h                            pinned 0
+engine/CEngineMeshEffect.h                         pinned 0
+engine/GFFloatToLongNear.h                         pinned 0
+engine/CSalVoice.h                                 pinned 0
+engine/CGraphicInfo.h                              pinned 0
+engine/CTCInventoryTrade.h                         pinned 0
+engine/C2DBoxI.h                                   pinned 0
+engine/CAIStateGroup_BanditGossip.h                pinned 0
+   !! line 19: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BanditGossip)==0x28);
+engine/CPersistTraits.h                            pinned 0
+engine/CIVCountedPointeeBase.h                     pinned 0
+engine/NUISystem_CList.h                           pinned 0
+engine/CTCQuestCompletionUI.h                      pinned 0
+engine/CThingSearchTools.h                         pinned 0
+engine/CRGBFloatColour.h                           pinned 0
+engine/CQuaternion.h                               pinned 0
+engine/CCoda3DSource.h                             pinned 0
+engine/CQ_PrisonEscapeRescueMotherScript.h         pinned 0
+   !! line 103: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner
+engine/_quarantine/CEngineInternalPrimitiveParticleLineGroup.h pinned 0
+   !! line 18: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveParticleLineGroup)==0xbc);
+engine/_quarantine/CEngineInternalPrimitiveParticleLine.h pinned 0
+   !! line 18: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveParticleLine)==0x68);
+engine/CMainGameComponent.h                        pinned 0
+engine/NGraphicAppearance_CTCGraphicAppearance.h   pinned 0
+engine/CGraphicInfoFrame.h                         pinned 0
+engine/CEngineOcclusionManager.h                   pinned 0
+engine/CWorldMap.h                                 pinned 0
+engine/CEnginePrimitiveManagerParticleMeshGroup.h  pinned 1
+engine/CEnginePrimitiveRendererSharedData.h        pinned 0
+engine/CEngineResourceManager.h                    pinned 0
+engine/CQuestManager.h                             pinned 0
+engine/NUISystem_CUIScreenUnitConverter.h          pinned 0
+engine/CWaterPatchMesh.h                           pinned 0
+engine/CDefPointer.h                               pinned 0
+engine/C2DBoxF.h                                   pinned 0
+engine/CLipSyncSampleData.h                        pinned 0
+   !! line 24: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(CLipSyncSampleData)==16);
+engine/CCodaListener.h                             pinned 0
+engine/CEnginePrimitiveRenderUtil.h                pinned 0
+engine/CModeStandBase.h                            pinned 0
+engine/CEnginePrimitiveLine.h                      pinned 0
+engine/CPSCUpdateNormal.h                          pinned 0
+engine/CDefendingCombatantInfo.h                   pinned 0
+engine/CVectorMap.h                                pinned 0
+engine/CMatrix4x4.h                                pinned 0
+engine/CEngineInternalPrimitiveAnimatedMesh.h      pinned 0
+engine/CodaCaps.h                                  pinned 0
+engine/CLandscapeBackgroundTreeNode.h              pinned 0
+   !! line 59: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundTreeNode::CLODLoadInfo) == 16);
+   !! line 60: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundTreeNode) == 0xE8);
+   !! line 61: new or changed assert, not pinned: FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, LODLoadInfo) == 0xC);
+   !! line 62: new or changed assert, not pinned: FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, SubNode) == 0xA0);
+   !! line 63: new or changed assert, not pinned: FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, BoundingBox) == 0xA8)
+   !! line 64: new or changed assert, not pinned: FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, CameraUpdateThreshold
+   !! line 65: new or changed assert, not pinned: FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, FirstNonSplitBand) ==
+engine/CV_HauntedHouseScript.h                     pinned 0
+   !! line 87: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(NScript::CV_HauntedHouseScript::CM_UndeadHere) == 0x2
+engine/C3DPositionInterpolator.h                   pinned 0
+engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h pinned 0
+engine/CPersistContext.h                           pinned 0
+engine/C4DVector.h                                 pinned 0
+engine/CEngineRenderEnums.h                        pinned 0
+engine/CShadowClipVolume.h                         pinned 0
+engine/CCodaObjectBase.h                           pinned 0
+engine/CEnginePrimitiveManagerParticleSpriteGroup.h pinned 0
+engine/CAIStateGroupBase.h                         pinned 0
+engine/CDateAndTime.h                              pinned 0
+engine/CVertexBufferBase.h                         pinned 0
+engine/CEngineInternalPrimitiveMeshBase.h          pinned 0
+engine/CEnginePrimitive2DViewportManager.h         pinned 0
+engine/KernelStreaming.h                           pinned 0
+engine/CDefPointeeBase.h                           pinned 0
+engine/CStreamingFontBank.h                        pinned 0
+engine/CTCTargeted.h                               pinned 0
+engine/CCodaVector.h                               pinned 0
+engine/GFFastFloatToLong.h                         pinned 0
+engine/C2DVector.h                                 pinned 0
+engine/CIntelligentPointer.h                       pinned 0
+engine/C3DVector.h                                 pinned 0
+engine/CEnginePrimitive2DText.h                    pinned 0
+engine/CTCBoastingPosition.h                       pinned 0
+   !! line 36: new or changed assert, not pinned: FABLE_STATIC_ASSERT(sizeof(CTCBoastingPosition)==0x38);
+engine/CParticleProgram.h                          pinned 0
+engine/CRenderStateManager.h                       pinned 0
+engine/CEngineShadowRenderer.h                     pinned 0
+engine/CTCMapwho.h                                 pinned 0
+engine/CSalSwBuffer.h                              pinned 0
+engine/CEnginePrimitiveText.h                      pinned 0
+engine/CShaderRenderManager.h                      pinned 0
+engine/NInventory_CTCInventoryBase.h               pinned 0
+engine/CDefClassBase.h                             pinned 0
+engine/CThing.h                                    pinned 0
+engine/CEnginePrimitiveManager.h                   pinned 0
+engine/CEnginePrimitiveTypeInfo.h                  pinned 0
+engine/LHHttp2.h                                   pinned 0
+engine/CTCInventoryItem.h                          pinned 0
+engine/CEnginePrimitive.h                          pinned 0
+engine/CEntitySoundDef.h                           pinned 0
+engine/CEnginePrimitiveRenderer.h                  pinned 0
+engine/CWorld.h                                    pinned 0
+engine/CFontBank.h                                 pinned 0
+engine/CEngineSubPrimitiveBase.h                   pinned 0
+engine/CEngineSubPrimitiveRepeatedStaticMesh.h     pinned 0
+engine/CTVertexRHWColSpecTex1.h                    pinned 0
+engine/CTCCombat.h                                 pinned 0
+engine/CSalBaseVoice.h                             pinned 0
+engine/CTCHeroStats.h                              pinned 0
+engine/CDefinitionManager.h                        pinned 0
+engine/CEnginePrimitiveManagerMeshBase.h           pinned 0
+engine/CParticle.h                                 pinned 0
+engine/CMatrix3x4.h                                pinned 0
+engine/CThingFilter_IsValidGossipee.h              pinned 0
+engine/CDataInputStream.h                          pinned 0
+libpk/CHandleBasedMemoryPool_012b4098.h            pinned 0
+fable_string.h                                     pinned 0
+total pinned 1

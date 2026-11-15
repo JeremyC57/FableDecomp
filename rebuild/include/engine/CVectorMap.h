@@ -26,6 +26,10 @@ public:
     CVectorMap() : Dirty(false) { }
 #endif
     iterator LowerBound(const K&);
+#ifdef FABLE_RETAIL_CVECTORMAP_PODIUM_UPPERBOUND
+    // Both original non-const UpperBound methods; native008146A0 and original module309.
+    iterator UpperBound(const K&);
+#endif
     const_iterator LowerBound(const K&) const;
 #ifdef FABLE_RETAIL_CVECTORMAP_UPPERBOUND
     // Chunk 754 (row 0x009AD5F0 CDefinitionManager::DecompressDefinitionData): the const UpperBound, out of line in retail
@@ -212,6 +216,21 @@ __declspec(noinline) typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K
         long half=count/2;
         iterator middle=first+half;
         if(middle->first<key) { first=middle+1; count-=half+1; }
+        else count=half;
+    }
+    return first;
+}
+#endif
+#ifdef FABLE_RETAIL_CVECTORMAP_PODIUM_UPPERBOUND
+template<class K,class V,class CompareType>
+typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::UpperBound(const K& key)
+{
+    iterator first=this->begin();
+    long count=this->end()-first;
+    while(count>0){
+        long half=count/2;
+        iterator middle=first+half;
+        if(!(key<middle->first)){first=++middle;count-=half+1;}
         else count=half;
     }
     return first;

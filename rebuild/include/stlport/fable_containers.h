@@ -14,7 +14,7 @@
 #ifdef FABLE_RETAIL_STLP_UNINIT_FILL_N_FORCEINLINE
 #include "fable_compiler.h"
 #endif
-#if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP) || defined(FABLE_RETAIL_STLP_LIST_SORT)
+#if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP) || defined(FABLE_RETAIL_STLP_LIST_SORT) || defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
 #ifdef _MSC_VER
 #define FABLE_STLP_NOINLINE __declspec(noinline)
 #define FABLE_STLP_FASTCALL __fastcall
@@ -138,7 +138,12 @@ template<class I,class T> inline void fill(I begin,I last,const T& x) { I first=
 #else
 template<class I,class T> inline void fill(I first,I last,const T& x) { for(;first!=last;++first) *first=x; }
 #endif
+#ifdef FABLE_RETAIL_STLP_FILL_N_FASTCALL
+// Original STLport generic fill_n; native pointer instance 0x0048514C receives first/count in ECX/EDX.
+template<class I,class N,class T> inline I FABLE_FASTCALL fill_n(I first,N n,const T& x) { for(;n>0;--n,++first) *first=x;return first; }
+#else
 template<class I,class N,class T> inline I fill_n(I first,N n,const T& x) { for(;n>0;--n,++first) *first=x;return first; }
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_RANGE_INSERT
 // (row 0x00523CF0 opt-in) STLport 4.6 _algobase.h __copy for input iterators (the tree-iterator copy of _M_range_insert), and
 // declarations of the _iterator_base.h distance / advance defined further down.
@@ -157,30 +162,51 @@ template<class I,class O,class D> inline O __fastcall __copy(I first,I last,O re
 #endif
     for(D n=last-first;n>0;--n) { *result=*first;++first;++result; } return result;
 }
+#ifdef FABLE_RETAIL_STLP_COPY_TRIVIAL_OUTOFLINE
+// Original Ego_r / FableWin ?__copy_trivial@std@@YIPAXPBX0PAX@Z, native 0x00405BA0.
+void* FABLE_FASTCALL __copy_trivial(const void* first,const void* last,void* result);
+#else
 inline void* __copy_trivial(const void* first,const void* last,void* result) {
     return last==first?result:(char*)memmove(result,first,(const char*)last-(const char*)first)+((const char*)last-(const char*)first);
 }
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#endif
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
 #else
 template<class Input,class Output> inline Output __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
 #endif
     return __copy(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);
 }
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
 #else
 template<class Input,class Output> inline Output __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
 #endif
     return (Output)__copy_trivial(first,last,result);
 }
+#ifdef FABLE_RETAIL_PASS22_SCOREBOARD_COPY_BACKWARD_ORIGINAL
+// Actual STLport4.6.2 _algobase.h182..185 and224..226, including empty-range guard.
+inline void* __copy_trivial_backward(const void* __first,const void* __last,void* __result) {
+    const ptrdiff_t _Num=(const char*)__last-(const char*)__first;
+    return (_Num>0)?memmove((char*)__result-_Num,__first,_Num):__result;
+}
+template<class I,class O> inline O __copy_backward_ptrs(I __first,I __last,O __result,const __true_type&) {
+    return (O)__copy_trivial_backward(__first,__last,__result);
+}
+#else
 template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T* result,const __true_type&) {
     ptrdiff_t n=last-first;return (T*)memmove(result-n,first,n*sizeof(T));
 }
+#endif
 #ifdef FABLE_RETAIL_STLP_RANDOM_ACCESS_COPY_BACKWARD
 // Retail opt-in (Codex 2026-11-09): STLport4.6.2 _algobase.h lines170-180,220-222.
 // Pointer iterators dispatch to the counted random-access loop, not the bidirectional loop.
+#ifdef FABLE_RETAIL_STLP_PASS22_COPY_BACKWARD_FASTCALL
+// Actual native00B8EF60 has first/last in ECX/EDX andRET12; original STLport loop.
+template<class R,class B,class D> inline B FABLE_FASTCALL __copy_backward(R first,R last,B result,const random_access_iterator_tag&,D*) {
+#else
 template<class R,class B,class D> inline B __copy_backward(R first,R last,B result,const random_access_iterator_tag&,D*) {
+#endif
     for(D n=last-first;n>0;--n) *--result=*--last;
     return result;
 }
@@ -193,7 +219,7 @@ template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T*
 }
 #endif
 // _construct.h
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class T,class U> inline void FABLE_FASTCALL _Construct(T* p,const U& v) { new(p) T(v); }
 template<class T> inline void FABLE_FASTCALL _Destroy(T* p) { p->~T(); }
 inline void FABLE_FASTCALL _Destroy(char*,char*) { }
@@ -238,7 +264,7 @@ template<class I> inline void FABLE_FASTCALL __destroy_aux(I first,I last,const 
 // (Spelled __fastcall under _MSC_VER: rebuild_abi.h may not be included yet when this header comes first.)
 template<class I> inline void __fastcall __destroy_aux(I first,I last,const __false_type&) {
 #else
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class I> inline void FABLE_FASTCALL __destroy_aux(I first,I last,const __false_type&) {
 #else
 template<class I> inline void __destroy_aux(I first,I last,const __false_type&) {
@@ -248,7 +274,7 @@ template<class I> inline void __destroy_aux(I first,I last,const __false_type&) 
     for(;first!=last;++first) _Destroy(&*first);
 }
 #endif
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class I> inline void FABLE_FASTCALL __destroy_aux(I,I,const __true_type&) { }
 #else
 template<class I> inline void __destroy_aux(I,I,const __true_type&) { }
@@ -257,7 +283,7 @@ template<class I> inline void __destroy_aux(I,I,const __true_type&) { }
 // Inline-budget: native helpers expand this original destruction dispatch wrapper.
 template<class I,class T> FABLE_FORCEINLINE void __destroy(I first,I last,T*) {
 #else
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class I,class T> inline void FABLE_FASTCALL __destroy(I first,I last,T*) {
 #else
 template<class I,class T> inline void __destroy(I first,I last,T*) {
@@ -270,7 +296,7 @@ template<class I,class T> inline void __destroy(I first,I last,T*) {
 // Inline-budget: native helpers expand this original destruction dispatch wrapper.
 template<class I> FABLE_FORCEINLINE void _Destroy(I first,I last) {
 #else
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class I> inline void FABLE_FASTCALL _Destroy(I first,I last) {
 #else
 template<class I> inline void _Destroy(I first,I last) {
@@ -302,7 +328,7 @@ template<class I,class O> O __uninitialized_copy(I first,I last,O result,const _
 // Native 00769930/007698c0 take first/last in ecx/edx and result/tag on the stack.
 template<class I,class O> inline O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
 #else
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class I,class O> inline O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
 #else
 template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,const __false_type&) {
@@ -311,7 +337,7 @@ template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,
     O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
 }
 #endif
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class T> inline T* FABLE_FASTCALL __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
 #else
 template<class T> inline T* __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
@@ -342,7 +368,12 @@ template<class I,class N,class T> FABLE_FORCEINLINE I __uninitialized_fill_n(I f
     I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
 }
 #else
+#ifdef FABLE_RETAIL_STLP_PASS22_FLARE_ABI
+// Native00B8EE20 has first/count in ECX/EDX and value/tag on stack,RET8.
+template<class I,class N,class T> inline I FABLE_FASTCALL __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+#else
 template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+#endif
     I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
 }
 #endif
@@ -445,6 +476,33 @@ public:
     typedef _Tp value_type;
     typedef size_t size_type;
     typedef typename __type_traits<_Tp>::has_trivial_assignment_operator _IsPODType;
+#ifdef FABLE_RETAIL_PASS22_SCOREBOARD_ORIGINAL_OVERFLOW_SCOPE
+protected:
+    // Original STLport4.6.2 _vector.h lines125..168: these are in-class members.
+    void _M_insert_overflow(iterator __position,const _Tp& __x,const __false_type&,size_type __fill_len,bool __atend) {
+        const size_type __old_size=size();
+        const size_type __len=__old_size+(max)(__old_size,__fill_len);
+        _Tp* __new_start=this->_M_end_of_storage.allocate(__len);
+        _Tp* __new_finish=__new_start;
+        {
+        __new_finish=__uninitialized_copy(this->_M_start,__position,__new_start,__false_type());
+        if(__fill_len==1) {_Construct(__new_finish,__x);++__new_finish;}
+        else __new_finish=__uninitialized_fill_n(__new_finish,__fill_len,__x,__false_type());
+        if(!__atend) __new_finish=__uninitialized_copy(__position,this->_M_finish,__new_finish,__false_type());
+        }
+        _M_clear();_M_set(__new_start,__new_finish,__new_start+__len);
+    }
+    void _M_insert_overflow(iterator __position,const _Tp& __x,const __true_type&,size_type __fill_len,bool __atend) {
+        const size_type __old_size=size();
+        const size_type __len=__old_size+(max)(__old_size,__fill_len);
+        _Tp* __new_start=this->_M_end_of_storage.allocate(__len);
+        _Tp* __new_finish=(_Tp*)__copy_trivial(this->_M_start,__position,__new_start);
+        __new_finish=fill_n(__new_finish,__fill_len,__x);
+        if(!__atend) __new_finish=(_Tp*)__copy_trivial(__position,this->_M_finish,__new_finish);
+        _M_clear();_M_set(__new_start,__new_finish,__new_start+__len);
+    }
+public:
+#endif
     explicit vector(const _Alloc& a=_Alloc()) : _Vector_base<_Tp,_Alloc>(a) { }
 #if defined(FABLE_RETAIL_STLP_VECTOR_FILL_NOINLINE) && defined(_MSC_VER)
     // Per-TU opt-in (row 0x0070CE10 CAnimSet::UpdateDistanceMoved): the fill constructor's body is visible to the TU but called
@@ -479,7 +537,16 @@ public:
     // vector(size_type n) is one inline body, which VC7.1 expanded in some TUs and called as a COMDAT in others; that TU calls
     // vector<unsigned char>::vector(size_type) 0x00514E20 (??0?$vector@EV?$allocator@E@std@@@std@@QAE@I@Z, bound by the landed
     // 0x00996610) for both CArray<unsigned char> locals (0x00BEAFDF, 0x00BEAFE9). A declaration only here, so the row calls it.
+#ifdef FABLE_RETAIL_PASS22_WATER_PATCH_LOAD
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+    explicit vector(size_type n) : _Vector_base<_Tp,_Alloc>(n,_Alloc()) {
+        this->_M_finish=uninitialized_fill_n(this->_M_start,n,_Tp());
+    }
+#else
     explicit vector(size_type n);
+#endif
 #else
     explicit vector(size_type n) : _Vector_base<_Tp,_Alloc>(n,_Alloc()) {
         this->_M_finish=uninitialized_fill_n(this->_M_start,n,_Tp());
@@ -494,7 +561,7 @@ public:
     // (0x008A838C `mov ebp,[esp+18h] ; mov edi,[esp+14h]`, never reloaded).
     vector(const vector& x);
 #else
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
     FABLE_FORCEINLINE vector(const vector& x) : _Vector_base<_Tp,_Alloc>(x.size(),x.get_allocator()) {
 #else
     vector(const vector& x) : _Vector_base<_Tp,_Alloc>(x.size(),x.get_allocator()) {
@@ -562,7 +629,14 @@ public:
     // (chunk 849) STLport 4.6 _vector.h swap(_Self&): three _STLP_STD::swap calls, inline (0x00AE2E20 expands it).
     void swap(vector& x) { std::swap(this->_M_start,x._M_start); std::swap(this->_M_finish,x._M_finish); std::swap(this->_M_end_of_storage,x._M_end_of_storage); }
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_ORIGINAL_FRONT_PASS22
+    // STLport4.6.2 _vector.h190..191; original CArray<unsigned char>::GetAsCArray
+    // FableWin01AB9542 calls nonconst front, then returns its address.
+    _Tp& front() { return *begin(); }
+    const _Tp& front() const { return *begin(); }
+#else
     _Tp& front() { return *this->_M_start; }
+#endif
     _Tp& back() { return *(end()-1); }
     const _Tp& back() const { return *(end()-1); }
     void pop_back() { --this->_M_finish; _Destroy(this->_M_finish); }
@@ -679,7 +753,13 @@ public:
 #else
     void resize(size_type n) { resize(n,_Tp()); }
 #endif
+#ifdef FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE
+protected: // Original Ego_r/FableWin _M_fill_insert access; native0075BB00 is IAEX.
+#endif
     void _M_fill_insert(iterator position,size_type n,const _Tp& x);
+#ifdef FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE
+public:
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_RANGE_INSERT
     // Per-TU opt-in (row 0x00523CF0, for the same-TU CThingManager::SaveEntitiesToScript / SaveEntitiesBinary bodies): STLport 4.6
     // _vector.h `insert(iterator __pos, _InputIterator __first, _InputIterator __last)` -> _M_insert_dispatch -> _M_range_insert(...,
@@ -728,8 +808,10 @@ public:
     void reserve(size_type n);
 #endif
 protected:
+#ifndef FABLE_RETAIL_PASS22_SCOREBOARD_ORIGINAL_OVERFLOW_SCOPE
     void _M_insert_overflow(iterator position,const _Tp& x,const __false_type&,size_type fillLength,bool atEnd);
     void _M_insert_overflow(iterator position,const _Tp& x,const __true_type&,size_type fillLength,bool atEnd);
+#endif
     void _M_clear() {
         _Destroy(this->_M_start,this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start,this->_M_end_of_storage._M_data-this->_M_start);
@@ -785,6 +867,7 @@ vector<_Tp,_Alloc>::vector(const vector<_Tp,_Alloc>& x) : _Vector_base<_Tp,_Allo
 #else
 #define FABLE_STLP_OVERFLOW_OUTOFLINE
 #endif
+#ifndef FABLE_RETAIL_PASS22_SCOREBOARD_ORIGINAL_OVERFLOW_SCOPE
 template<class _Tp,class _Alloc> FABLE_STLP_OVERFLOW_OUTOFLINE void vector<_Tp,_Alloc>::_M_insert_overflow(iterator position,const _Tp& x,const __false_type&,size_type fillLength,bool atEnd) {
     const size_type oldSize=size();const size_type len=oldSize+(max)(oldSize,fillLength);
     _Tp* newStart=this->_M_end_of_storage.allocate(len);_Tp* newFinish=newStart;
@@ -802,6 +885,7 @@ template<class _Tp,class _Alloc> FABLE_STLP_OVERFLOW_OUTOFLINE void vector<_Tp,_
     if(!atEnd) newFinish=(_Tp*)__copy_trivial(position,this->_M_finish,newFinish);
     _M_clear();_M_set(newStart,newFinish,newStart+len);
 }
+#endif
 #endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_RESERVE
 // Retail opt-in (chunk 857, row 0x00AC8C80 COptimisedPrimitive::ComputeVertexCost): STLport 4.6 stl/_vector.c reserve, the body the
@@ -1008,6 +1092,10 @@ public:
         _List_node<_Tp>* n=_M_node.allocate(1);n->_M_next=n;n->_M_prev=n;_M_node._M_data=n;
     }
 #else
+#ifdef FABLE_RETAIL_STLP_LIST_CTORS_PASS22
+    // Retail opt-in (Codex pass22): original list-base constructor is called by native0042bed4.
+    FABLE_STLP_NOINLINE
+#endif
     _List_base(const _Alloc&) : _M_node(allocator<_List_node<_Tp> >(),0) {
         _List_node<_Tp>* n=_M_node.allocate(1);n->_M_next=n;n->_M_prev=n;_M_node._M_data=n;
     }
@@ -1095,6 +1183,9 @@ public:
     typedef _List_iterator<_Tp,_Nonconst_traits<_Tp> > iterator;
     typedef _List_iterator<_Tp,_Const_traits<_Tp> > const_iterator;
     explicit list(const _Alloc& a=_Alloc()) : _List_base<_Tp,_Alloc>(a) { }
+#ifdef FABLE_RETAIL_STLP_LIST_CTORS_PASS22
+    FABLE_STLP_NOINLINE
+#endif
     list(const list& x):_List_base<_Tp,_Alloc>(x.get_allocator()) { insert(begin(),x.begin(),x.end()); }
 #ifdef FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
     // Per-TU opt-in (chunk 892, row 0x005A887D CTCInventoryTrade::RefreshBuyPossibilityPC): STLport's inline destructor, kept out of
@@ -1574,6 +1665,19 @@ void FABLE_STLP_FASTCALL __introsort_loop(_RandomAccessIter __first,_RandomAcces
         __introsort_loop(__cut,__last,(_Tp*)0,__depth_limit,__comp);
         __last=__cut;
     }
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22
+// Original STLport 4.6 _heap.c comparator overload, with its out-of-line callee.
+// Native callers 005F9B1E/005F9B5A and original PDB template types establish the specializations.
+template<class _RandomAccessIterator,class _Tp,class _Compare,class _Distance>
+void FABLE_STLP_FASTCALL __pop_heap(_RandomAccessIterator first,_RandomAccessIterator last,
+                                  _RandomAccessIterator result,_Tp val,_Compare comp,_Distance*);
+template<class _RandomAccessIterator,class _Tp,class _Compare>
+inline void FABLE_STLP_FASTCALL __pop_heap_aux(_RandomAccessIterator __first,
+                 _RandomAccessIterator __last,_Tp*,_Compare __comp) {
+    __pop_heap(__first,__last-1,__last-1,_Tp(*(__last-1)),__comp,
+               (typename iterator_traits<_RandomAccessIterator>::difference_type*)0);
 }
 #endif
 #ifdef FABLE_RETAIL_STLP_HEAP

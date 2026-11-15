@@ -17,6 +17,11 @@ template<class K,class V,class C> class CVectorMap;
 class CEnginePrimitiveManagerMeshBase : public CEnginePrimitiveManagerOcclusionBase {
 public:
     virtual ~CEnginePrimitiveManagerMeshBase();
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+ static ERenderMode FABLE_FASTCALL GetAppropriateRenderMode(const C3DMeshMaterial*,unsigned long,unsigned long);
+#endif
+
 public:
     CEnginePrimitiveManagerMeshBase(const CEnginePrimitiveManagerMeshBase&);
     CEnginePrimitiveManagerMeshBase(CArray<CEngineScene *>&);

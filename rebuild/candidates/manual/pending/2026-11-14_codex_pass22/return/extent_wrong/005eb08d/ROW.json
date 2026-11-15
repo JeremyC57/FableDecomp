@@ -1,0 +1,20 @@
+{
+  "address": "005eb08d",
+  "input_kind": "never_worked",
+  "status": "EXTENT_WRONG",
+  "attempts": 0,
+  "assigned_extent": 243,
+  "input_label": "CTCInventoryMap::SetStateAfterOK_mid",
+  "corrected_start": "005eb080",
+  "corrected_end_exclusive": "005eb180",
+  "corrected_extent": 256,
+  "head_bytes_missing": 13,
+  "parent_name": "CTCTavernGame::SetStateAfterOK",
+  "parent_landed": true,
+  "disposition": "ALREADY_LANDED_PARENT",
+  "bounds_proof": "review/sol2_parent_envelopes/005eb08d.disasm",
+  "working_status_before_wind_down": "EXTENT_WRONG",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "EXTENT_WRONG",
+  "ready_for_claude_reverification": false
+}

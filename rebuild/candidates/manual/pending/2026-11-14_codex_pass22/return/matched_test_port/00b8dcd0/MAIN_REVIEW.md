@@ -1,0 +1,3 @@
+# Independent main review
+
+Target639/639 and11helpers1206bytes independently compiled with13.10.3077 and matched after operand relocation masking. All42relocations independently checked; exact anonymous namespace instantiation signature documented (only compiler generated TU hex normalized). Behavior tests rerun under VC71/Od/W3/GR- and64-bit g++C++03, exact PASS output. Target body and full fixture manually reviewed. Existing40-spelling conversion ladder receipts reviewed; unchanged original Near helper and portable twin tested. Combined45-row header regression passed with141headers, all emitted C++ sections/relocation names unchanged. No helper counted as extra reserved function.

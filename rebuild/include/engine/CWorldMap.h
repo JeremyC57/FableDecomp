@@ -35,6 +35,13 @@ public:
     // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0CWorldMap@@QAE@ABVCMainGameComponent@@AAVCWorld@@ABVC2DBoxI@@K@Z, retail 0x005066E0. Declaration only.
     CWorldMap(const CMainGameComponent& component, CWorld& world, const C2DBoxI& area, unsigned long levels);   // 0x005066E0
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_WORLDLOAD
+    // Both original complete class records and actual original caller chain.
+    CCountedPointer<CLevelLoader> GetLevelLoader()const{return PLevelLoader;}
+    void CreateStaticMaps(const CWideString&,class CIEngine&);
+    void CreateWorldLevelWad(const CWideString&,const CWideString&);
+    void SetAsUsingWAD(const CWideString&);
+#endif
     virtual ~CWorldMap();
     virtual void DeleteAllLevels();
     virtual void DeleteAllRegions();
@@ -102,6 +109,10 @@ public:
     // ?SetPlayerPos@CWorldMap@@QAEXJABVC3DVector@@W4ELoadType@1@@Z, out of line in retail at 0x005063E0 (`ret 0Ch`). Declaration only.
     void SetPlayerPos(long playerNumber, const C3DVector& pos, ELoadType loadType);   // 0x005063E0
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_PASS22_SOUNDTHEME
+    // Retail opt-in (Codex pass 22): Ego_r/PDB member and native0x0063A6E0, called from CMusicManager::Update.
+    long GetBlockValue(const C2DCoordI& block);
+#endif
     long GetRegionNumberMapIsIn(long)const;
     void GenerateRegionConnectivityGraph();
     unsigned long GetMapUID(long map) const;                 // 0x004FCE00 ?GetMapUID@CWorldMap@@QBEKJ@Z
@@ -129,6 +140,10 @@ public:
     bool IsPosInMap(const C3DVector&) const;
     bool IsPosPassable(const C2DCoordI&) const;
     float GetGroundSizeZAt(const C3DVector&) const;
+#ifdef FABLE_RETAIL_CWORLDMAP_PASS22_WATERHEIGHT
+    // Both original PDBs and native0063A420.
+    float GetWaterSizeZAt(const C3DVector&)const;
+#endif
 protected:
     class CPlayerPositionInfo;
     void UnloadRegion(long,bool);

@@ -1,0 +1,7 @@
+- 00B1A870: visible REAL CPersistContext transfer body removes a redundant bool load; assignment microvariants did not.
+- 00B1A870: full original traits specialisations matter: bool/float/class writers have const-reference signatures, not generic long casts.
+- 00B1A870: function-scoped traits plus return arms restores original string cleanup and exact helper code.
+- 00B1A870: bool binary read normalizes ReadUBYTE with ReadEBOOL; raw memcpy into bool is incomplete. Integral ReadSLONG layer also selects exact duplicate-return destinations.
+- 00B1A870: final donor vector16 versus native12 changes CPSCLight size112→108 without shifting previous members. Native Alloc0x6C proves it.
+- 00B1A870: ordinary template COMDATs can differ across speed and size/frame-pointer TUs. Same-header153 native reproduction proves selected vector instance; do not falsely claim current248 equal or force row flags.
+- 00B1A870: audit vtable-entry relocations and private/protected signatures too; vector::_M_fill_insert is protected IAEX.

@@ -1,0 +1,3 @@
+# Independent main review
+
+1372 target bytes including integral switch table; four called helpers273 bytes;35 relocations including all5 internal table/case fixups;16384 target cases plus9900 bounds and528 push calls. Fresh main RTM13.10.3077 build and masked-byte comparison passed, with full VC71 /Od /W3 /GR- and g++64 C++03 tests. Names, extents, source/fixture and reached helper closure reviewed. Combined51-row/156-header regression preserves all emitted C++ code and relocation names. Removed unnecessary new UpperBound noinline annotation; ordinary C++ retains all exact bodies. Internal switch table labels match their actual same-section offsets, not just masked values. No helper counted as another reserved row.

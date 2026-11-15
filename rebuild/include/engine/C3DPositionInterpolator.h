@@ -17,9 +17,13 @@ public:
  C3DPositionInterpolator();
  C3DPositionInterpolator(const C3DVector& startPosition,const C3DVector& endPosition);
  virtual ~C3DPositionInterpolator();
+#ifdef FABLE_RETAIL_C3DPOSITIONINTERPOLATOR_PASS22_GETINTERPOLATED
+ // Retail opt-in (Codex pass22): both PDB GetInterpolated(float) const; native0x0077C67F..0x0077C6F7.
+ C3DVector GetInterpolated(float interp) const { return StartPosition.Interpolate(EndPosition,interp); }
+#endif
  C3DVector StartPosition;
  C3DVector EndPosition;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DPositionInterpolator)==28);
+FABLE_STATIC_ASSERT_AT(23, sizeof(C3DPositionInterpolator)==28);
 #endif
 #endif

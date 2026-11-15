@@ -1,6 +1,11 @@
 #ifndef FABLE_ENGINE_CRENDERSTATEMANAGER_H
 #define FABLE_ENGINE_CRENDERSTATEMANAGER_H
 #include "fable_compiler.h"
+#ifdef FABLE_RETAIL_PASS22_RENDERSTATE_ORIGINAL_CPP_INLINE
+#define FABLE_PASS22_RENDERSTATE_INLINE inline
+#else
+#define FABLE_PASS22_RENDERSTATE_INLINE FABLE_FORCEINLINE
+#endif
 #ifdef FABLE_RETAIL_CRENDERSTATEMANAGER
 // Retail branch: one model (merged 2026-11-03 from chunk 723b/723c, the water / sprite render passes, and Codex pass 13, row
 // 0x009DA9F0 CRenderManager2D::Render2DDrawList; Codex's FABLE_RETAIL_RENDER2D_TYPES model and its FABLE_RETAIL_RENDERSTATE_EXPAND_SET
@@ -29,6 +34,388 @@ enum _D3DRENDERSTATETYPE;                                                // d3d9
 enum _D3DTEXTURESTAGESTATETYPE;
 enum _D3DSAMPLERSTATETYPE;
 
+#ifdef FABLE_RETAIL_PASS22_RENDERSTATE_ORIGINAL_METHOD_ORDER
+// User declarations reconstructed in original PDB field-list order; generated special members remain implicit.
+class CRenderStateManager : public CBaseClassNonCopyable {
+public:
+CRenderStateManager(unsigned long initFlags);
+public:
+virtual ~CRenderStateManager();
+public:
+void Init(IDirect3DDevice9* device);
+public:
+void RealiseRenderState();
+public:
+void SetDefaultRenderStates();
+public:
+void ForceResendRenderStatesToHardware();
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetPolyShadeMode(POLY_SHADE_MODE mode) { SetRenderState(D3DPolyShadeModeTable[mode], DeviceState.PolyShadeMode); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetPolyFillMode(POLY_FILL_MODE mode) { SetRenderState(D3DPolyFillModeTable[mode], DeviceState.PolyFillMode); }
+public:
+void SetColourWriteEnable(bool,bool,bool,bool);
+public:
+void SetColourWriteEnable(bool);
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetZBufferWriteEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.ZBufferWriteEnable); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetZBufferTestFunc(ZBUFFER_FUNC func) { SetRenderState(D3DZBufferFuncModeTable[func], DeviceState.ZBufferFunc); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetZBufferEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.ZBufferEnable); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetPolyCullMode(POLY_CULL_MODE mode) { SetRenderState(D3DPolyCullModeTable[mode], DeviceState.PolyCullMode); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetSourceAlphaBlendMode(ALPHA_BLEND_MODE mode) { SetRenderState(D3DAlphaBlendModeTable[mode], DeviceState.SourceAlphaBlendMode); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetDestAlphaBlendMode(ALPHA_BLEND_MODE mode) { SetRenderState(D3DAlphaBlendModeTable[mode], DeviceState.DestAlphaBlendMode); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetAlphaBlendEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.AlphaBlendEnable); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetAlphaTestEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.AlphaTestEnable); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetAlphaTestFunc(ALPHA_TEST_FUNC func) { SetRenderState(D3DAlphaFuncModeTable[func], DeviceState.AlphaTestFunc); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetAlphaRef(unsigned long ref) { SetRenderState(ref, DeviceState.AlphaRef); }
+public:
+void SetVertexBlending(VERTEX_BLEND_MODE);
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetFogEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.FogEnable); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetDitherEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.DitherEnable); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetFogStart(float start) { SetRenderState(*(unsigned long*)&start, DeviceState.FogStart); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetFogEnd(float end) { SetRenderState(*(unsigned long*)&end, DeviceState.FogEnd); }
+public:
+void SetFogDensity(float);
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetFogColour(unsigned long colour) { SetRenderState(colour, DeviceState.FogColour); }
+public:
+void SetFogMode(FOG_MODE);
+public:
+void SetFogVertexMode(FOG_MODE);
+public:
+void SetTextureFactor(unsigned long);
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetSpecularEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.SpecularEnable); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetLightingEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.LightingEnable); }
+public:
+void SetNormalizeNormals(bool);
+public:
+void SetAmbientMaterialColourSource(MATERIAL_COLOUR_SOURCE);
+public:
+void SetDiffuseMaterialColourSource(MATERIAL_COLOUR_SOURCE);
+public:
+void SetSpecularMaterialColourSource(MATERIAL_COLOUR_SOURCE);
+public:
+void SetPointSpriteEnable(bool);
+public:
+void SetPointScaleEnable(bool);
+public:
+void SetPointSize(float);
+public:
+void SetPointSizeMin(float);
+public:
+void SetPointSizeMax(float);
+public:
+void SetPointScaleConstantFactor(float);
+public:
+void SetPointScaleDistanceFactor(float);
+public:
+void SetPointScaleDistanceSqrFactor(float);
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetBlendOp(BLEND_OP blend_op) { SetRenderState(D3DBlendOpModeTable[blend_op], DeviceState.BlendOpMode); }
+public:
+void SetTextureCoordWrapUVW(long,bool,bool,bool);
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureMipMapMode(long stage, TEXTURE_MIPMAP_MODE mode) { SetRenderState(D3DTextureMipMapModeTable[mode], DeviceState.TextureMipMapMode[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureUVModeU(long stage, TEXTURE_UV_MODE mode) { SetRenderState(D3DTextureUVModeTable[mode], DeviceState.TextureUVModeU[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureUVModeV(long stage, TEXTURE_UV_MODE mode) { SetRenderState(D3DTextureUVModeTable[mode], DeviceState.TextureUVModeV[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureUVModeW(long stage, TEXTURE_UV_MODE mode) { SetRenderState(D3DTextureUVModeTable[mode], DeviceState.TextureUVModeW[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureFilterModeMag(long stage, TEXTURE_FILTER_MODE mode) { SetRenderState(D3DTextureFilterModeTable[mode], DeviceState.TextureFilterModeMag[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureFilterModeMin(long stage, TEXTURE_FILTER_MODE mode) { SetRenderState(D3DTextureFilterModeTable[mode], DeviceState.TextureFilterModeMin[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureMipmapLODBias(long stage, float bias) { SetRenderState(*(unsigned long*)&bias, DeviceState.TextureMipmapLODBias[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureOperation(long stage, TEXTURE_OP_MODE mode) { SetRenderState(D3DTextureOperationModeTable[mode], DeviceState.TextureOperation[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureAlphaOperation(long stage, TEXTURE_OP_MODE mode) { SetRenderState(D3DTextureOperationModeTable[mode], DeviceState.TextureAlphaOperation[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureArgument1(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureArgument1[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureArgument2(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureArgument2[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureAlphaArgument1(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureAlphaArgument1[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureAlphaArgument2(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureAlphaArgument2[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureMaxAnisotropy(long stage, long anisotropy) { SetRenderState(anisotropy, DeviceState.TextureMaxAnisotropy[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureCoordIndex(long stage, long index) { SetRenderState(index, DeviceState.TextureCoordIndex[stage]); }
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetTextureTransformMode(long stage, TEXTURE_TRANSFORM_MODE mode) { SetRenderState(D3DTextureTransformModeTable[mode], DeviceState.TextureTransformMode[stage]); }
+public:
+void SetTextureBorderColour(long,unsigned long);
+public:
+void SetTextureBumpEnvMatrix(long,float,float,float,float);
+public:
+void SetStencilEnable(bool);
+public:
+void SetStencilOpFail(STENCIL_OP_MODE);
+public:
+void SetStencilOpZFail(STENCIL_OP_MODE);
+public:
+void SetStencilOpPass(STENCIL_OP_MODE);
+public:
+void SetStencilFunc(STENCIL_FUNC);
+public:
+void SetStencilRef(unsigned long);
+public:
+void SetStencilMask(unsigned long);
+public:
+void SetStencilWriteMask(unsigned long);
+public:
+void SetDepthOffset(float);
+public:
+void SetSlopeScaledDepthOffset(float);
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void SetClippingEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.ClippingEnable); }
+public:
+void SetSoftwareVertexProcessing(bool);
+public:
+void SetShadowFunc(SHADOW_FUNC);
+public:
+void SetSolidOffsetEnable(bool);
+public:
+bool IsSoftwareProcessingEnabled();
+public:
+void SetStippleEnable(bool);
+public:
+void SetStipplePattern(unsigned long *);
+public:
+void SetMultiSampleMode(MULTI_SAMPLE_MODE);
+public:
+void SetMultiSampleModeRenderTarget(MULTI_SAMPLE_MODE);
+public:
+void SetTextureColourSign(long,TEXTURE_COLOUR_SIGN);
+public:
+void SetBlendColour(unsigned long);
+public:
+FABLE_PASS22_RENDERSTATE_INLINE void StartCaptureBlock(void* block)
+    {
+        StateStack[StateStackSize++].State = &BookmarkDummyState;
+        CurrentBookmarkMask <<= 1;
+    }
+public:
+void RestoreCaptureBlock();
+public:
+enum { STATE_STACK_SIZE=1024, STATE_UPDATE_LIST_SIZE=256 };
+public:
+struct CStateInfo {
+        enum STATE_TYPE { STATE_TYPE_NULL=0, STATE_TYPE_RENDER_STATE=1, STATE_TYPE_TEXTURE_STAGE_STATE=2, STATE_TYPE_SAMPLER_STAGE_STATE=3, STATE_TYPE_BOOKMARK=4 };
+        CStateInfo();
+        unsigned long CurrentState;
+        unsigned long DesiredState;
+        unsigned long BookmarkMask;
+        union {
+            _D3DTEXTURESTAGESTATETYPE TextureStageStateParam;
+            _D3DRENDERSTATETYPE RenderStateParam;
+            _D3DSAMPLERSTATETYPE SamplerStageStateParam;
+        };
+        bool DirtyListFlag;
+        unsigned char StateType;
+        unsigned char TextureStage;
+    };
+private:
+FABLE_PASS22_RENDERSTATE_INLINE void SetRenderState(unsigned long value,CStateInfo& state_info)
+    {
+        if(state_info.DesiredState==value) return;
+        if((state_info.BookmarkMask & CurrentBookmarkMask)==0) {
+            state_info.BookmarkMask|=CurrentBookmarkMask;
+            StateStack[StateStackSize].State=&state_info;
+            StateStack[StateStackSize].Value=state_info.DesiredState;
+            ++StateStackSize;
+        }
+        state_info.DesiredState=value;
+        AddStateToUpdateList(state_info);
+    }
+private:
+FABLE_PASS22_RENDERSTATE_INLINE void AddStateToUpdateList(CStateInfo& state_info)
+    {
+        if(!state_info.DirtyListFlag) {
+            state_info.DirtyListFlag=true;
+            StateUpdateList[StateUpdateListSize]=&state_info;
+            ++StateUpdateListSize;
+        }
+    }
+private:
+void SetupRenderStates();
+private:
+void SetupRenderState(CStateInfo &,_D3DRENDERSTATETYPE);
+private:
+void SetupTextureStageState(CStateInfo &,_D3DTEXTURESTAGESTATETYPE,long);
+private:
+void SetupSamplerStageState(CStateInfo &,_D3DSAMPLERSTATETYPE,long);
+private:
+void CheckDeviceStateMatchesCache();
+private:
+IDirect3DDevice9* PD3DDevice;
+private:
+static unsigned long D3DTextureUVModeTable[4];
+private:
+static unsigned long D3DTextureFilterModeTable[3];
+private:
+static unsigned long D3DTextureMipMapModeTable[3];
+private:
+static unsigned long D3DTextureOperationModeTable[24];
+private:
+static unsigned long D3DTextureArgumentModeTable[20];
+private:
+static unsigned long D3DStencilOperationModeTable[8];
+private:
+static unsigned long D3DPolyShadeModeTable[2];
+private:
+static unsigned long D3DPolyFillModeTable[3];
+private:
+static unsigned long D3DPolyCullModeTable[3];
+private:
+static unsigned long D3DAlphaBlendModeTable[13];
+private:
+static unsigned long D3DAlphaFuncModeTable[8];
+private:
+static unsigned long D3DZBufferFuncModeTable[8];
+private:
+static unsigned long D3DStencilFuncModeTable[8];
+private:
+static unsigned long D3DVertexBlendModeTable[4];
+private:
+static unsigned long D3DShadowFuncModeTable[8];
+private:
+static unsigned long D3DTextureTransformModeTable[10];
+private:
+static unsigned long D3DMaterialColourSourceTable[3];
+private:
+static unsigned long D3DFogTableMode[4];
+private:
+static unsigned long D3DBlendOpModeTable[5];
+private:
+static _D3DRENDERSTATETYPE D3DTextureCoordWrapStageTable[8];
+public:
+class CDeviceState {
+    public:
+        CStateInfo PolyShadeMode;
+        CStateInfo PolyFillMode;
+        CStateInfo ColourWriteEnable;
+        CStateInfo ZBufferWriteEnable;
+        CStateInfo ZBufferEnable;
+        CStateInfo ZBufferFunc;
+        CStateInfo PolyCullMode;
+        CStateInfo AlphaTestFunc;
+        CStateInfo AlphaBlendEnable;
+        CStateInfo AlphaTestEnable;
+        CStateInfo AlphaRef;
+        CStateInfo VertexBlendMode;
+        CStateInfo SoftwareVertexProcessing;
+        CStateInfo SourceAlphaBlendMode;
+        CStateInfo DestAlphaBlendMode;
+        CStateInfo FogEnable;
+        CStateInfo FogColour;
+        CStateInfo FogStart;
+        CStateInfo FogEnd;
+        CStateInfo FogDensity;
+        CStateInfo FogMode;
+        CStateInfo FogVertexMode;
+        CStateInfo TextureFactor;
+        CStateInfo SpecularEnable;
+        CStateInfo AntialiasingOn;
+        CStateInfo DitherEnable;
+        CStateInfo ClippingEnable;
+        CStateInfo LightingEnable;
+        CStateInfo NormalizeNormals;
+        CStateInfo AmbientMaterialColourSource;
+        CStateInfo DiffuseMaterialColourSource;
+        CStateInfo SpecularMaterialColourSource;
+        CStateInfo PointSpriteEnable;
+        CStateInfo PointScaleEnable;
+        CStateInfo PointSize;
+        CStateInfo PointSizeMin;
+        CStateInfo PointSizeMax;
+        CStateInfo PointScaleConstantFactor;
+        CStateInfo PointScaleDistanceFactor;
+        CStateInfo PointScaleDistanceSqrFactor;
+        CStateInfo ShadowFunc;
+        CStateInfo SolidOffsetEnable;
+        CStateInfo DepthOffset;
+        CStateInfo DepthOffsetSlope;
+        CStateInfo StencilEnable;
+        CStateInfo StencilOpFail;
+        CStateInfo StencilOpZFail;
+        CStateInfo StencilOpPass;
+        CStateInfo StencilFunc;
+        CStateInfo StencilRef;
+        CStateInfo StencilMask;
+        CStateInfo StencilWriteMask;
+        CStateInfo StippleEnable;
+        CStateInfo BlendOpMode;
+        CStateInfo BlendColour;
+        CStateInfo TextureCoordWrapMode[8];
+        CStateInfo TextureMaxAnisotropy[8];
+        CStateInfo TextureMipmapLODBias[8];
+        CStateInfo TextureMipMapMode[8];
+        CStateInfo TextureUVModeU[8];
+        CStateInfo TextureUVModeV[8];
+        CStateInfo TextureUVModeW[8];
+        CStateInfo TextureFilterModeMin[8];
+        CStateInfo TextureFilterModeMag[8];
+        CStateInfo TextureOperation[8];
+        CStateInfo TextureAlphaOperation[8];
+        CStateInfo TextureArgument1[8];
+        CStateInfo TextureArgument2[8];
+        CStateInfo TextureAlphaArgument1[8];
+        CStateInfo TextureAlphaArgument2[8];
+        CStateInfo TextureCoordIndex[8];
+        CStateInfo TextureTransformMode[8];
+        CStateInfo TextureBorderColour[8];
+        CStateInfo TextureBumpEnvMat00[8];
+        CStateInfo TextureBumpEnvMat01[8];
+        CStateInfo TextureBumpEnvMat10[8];
+        CStateInfo TextureBumpEnvMat11[8];
+    };
+public:
+struct CStateStackElement {
+        CStateInfo* State;
+        unsigned long Value;
+    };
+private:
+CStateStackElement StateStack[STATE_STACK_SIZE];
+private:
+CStateInfo* StateUpdateList[STATE_UPDATE_LIST_SIZE];
+private:
+CStateInfo* AllStatesList[256];
+private:
+long StateStackSize;
+private:
+long StateUpdateListSize;
+private:
+long AllStatesListSize;
+private:
+unsigned long CurrentBookmarkMask;
+private:
+CDeviceState DeviceState;
+private:
+CStateInfo BookmarkDummyState;
+private:
+unsigned long InitFlags;
+};
+
+#else
 class CRenderStateManager : public CBaseClassNonCopyable {
 public:
     struct CStateInfo {                                                  // 0x14 bytes (Ego_r.pdb)
@@ -460,6 +847,8 @@ private:
     CStateInfo         BookmarkDummyState;                               // +0x3a24
     unsigned long      InitFlags;                                        // +0x3a38
 };
+#endif
+
 FABLE_STATIC_ASSERT_AT(457, sizeof(CRenderStateManager) == 0x3a3c);
 #else // generated flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
@@ -507,3 +896,5 @@ FABLE_STATIC_ASSERT_AT(500, offsetof(CRenderStateManager, InitFlags) == 0x3a38);
 
 #endif // FABLE_RETAIL_CRENDERSTATEMANAGER
 #endif // FABLE_ENGINE_CRENDERSTATEMANAGER_H
+
+#undef FABLE_PASS22_RENDERSTATE_INLINE

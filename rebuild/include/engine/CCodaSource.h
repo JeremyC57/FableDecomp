@@ -7,6 +7,9 @@
 // Layout: native+0c caps,+10 status,+50 voice,+54 queue,+78 buffer;
 // SDK release object agrees, debug adds only the base diagnostic word.
 class CCoda3DSource;
+#if defined(FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS) || defined(FABLE_RETAIL_CCODACONTEXT_CREATE2D)
+class CCoda2DSource;
+#endif
 class CCodaSource:public CCodaObject {
 public:
 #ifdef FABLE_RETAIL_CCODACONTEXT_CREATE3D
@@ -14,15 +17,35 @@ public:
 #endif
  virtual ~CCodaSource();
 #ifndef FABLE_RETAIL_CCODACONTEXT_PROCESS
+ #ifndef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
+ #ifndef FABLE_RETAIL_PASS22_CCODA3D_CREATE
  virtual bool IsSource()const;
+ #endif
+ #if defined(FABLE_RETAIL_PASS22_CCODACONTEXT_CREATE) || defined(FABLE_RETAIL_PASS22_CCODA3D_CREATE)
+ CCoda3DSource* Get3D()const;
+ #endif
+ #else
+ public:
+ const CODASOURCE& GetParams()const{return m_Params;}
+ bool IsLooping()const{return (m_ffStatus & 0x100)!=0;}
+ CCoda3DSource* Get3D()const;
+ CCoda2DSource* Get2D()const{return Is3D()?0:(CCoda2DSource*)this;}
+ #endif
 #else
  void Process(CREFTIME);
  bool IsPlaying()const{return (m_ffStatus&0x217)!=0;}
  CCoda3DSource* Get3D()const;
 #endif
+#if defined(FABLE_RETAIL_CCODACONTEXT_CREATE2D) && (!defined(FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS) || defined(FABLE_RETAIL_CCODACONTEXT_PROCESS))
+ // Retail opt-in (Codex pass22): original const Get2D identity and native Is3D query.
+ CCoda2DSource* Get2D()const;
+#endif
  virtual bool Is3D()const;
  virtual bool IsCreated()const;
  virtual bool Create(unsigned int);
+#ifdef FABLE_RETAIL_PASS22_CCODA3D_CREATE
+ virtual void Release();
+#endif
  bool IsBufferSet()const{return m_pBuffer!=0 || (m_Queue.IsCreated() && !m_Queue.IsEmpty());}
  // Native Play returns its voice-acquisition error or zero; SDK2.10 changed this return to void.
  int Play(bool bLooping);

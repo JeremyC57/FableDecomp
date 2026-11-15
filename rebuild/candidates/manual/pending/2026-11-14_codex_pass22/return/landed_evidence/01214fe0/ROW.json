@@ -1,0 +1,52 @@
+{
+  "address": "01214fe0",
+  "input_kind": "never_worked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 1,
+  "assigned_extent": 21,
+  "input_label": "Unwind@01214fe0",
+  "owner": "main",
+  "review_note": "Main recompiled full parent/EH bundle and checked20relocations,32default profiles, required no-EH VC/GCC fixture, extraVC EHcleanup and all63merged regressions.",
+  "source_dependencies": [
+    "parent_00c3da60.cpp"
+  ],
+  "assigned_name": "CCodaContext::Create2DSource",
+  "classification": "compiler_generated_eh_bundle",
+  "dependency_parent": "00c3da60",
+  "parent_landed": false,
+  "selected_attempt": "main03_source_metadata",
+  "selected_flags": [
+    "/EHsc"
+  ],
+  "object_size": 21,
+  "retail_size": 21,
+  "component_extents": [
+    {
+      "kind": "unwind_cleanup",
+      "start": "01214fe0",
+      "end": "01214feb",
+      "length": 11
+    },
+    {
+      "kind": "frame_handler",
+      "start": "01214feb",
+      "end": "01214ff5",
+      "length": 10
+    }
+  ],
+  "behavior_cases": 2880,
+  "exception_cases": 1,
+  "source_sha256": "20fe240a926f9bcddde5d48b222fd546990918ad3e5f0c86c689963c1d5ca80c",
+  "test_sha256": "cae9055ee3227b48b0c9c00c7de90f938db4772c67191b5470289d7795bf5e15",
+  "main_audit": "history/01214fe0/main03_source_metadata/MAIN_AUDIT.json",
+  "main_verified": true,
+  "main_combined_header_audit": "review/MERGED_AUDIT_24.json",
+  "residue": "",
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "final_test_sha256": "cae9055ee3227b48b0c9c00c7de90f938db4772c67191b5470289d7795bf5e15",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "ready_for_claude_reverification": true
+}

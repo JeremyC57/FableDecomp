@@ -17,6 +17,10 @@ public:
  CEngineSubPrimitiveRenderer();
  virtual unsigned long PeekSceneFilterFlags()const;
  void AddSubPrimitive(CEngineSubPrimitiveBase*,float,unsigned char,unsigned long,CEnginePrimitiveManager*);
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+ // Both PDB types and original forwarder02E833D0/native00BA19FE.
+ void AddSubPrimitive(CEngineSubPrimitiveBase*,float,unsigned char,unsigned long,CEnginePrimitiveManager*,CEngineSubPrimitiveChain&);
+#endif
 #ifdef FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_ADDTYPED
  // Nested opt-in (chunk 1014, row 0x00B84720): FableWin.pdb ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@
  // PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z (FableWin 0x02DB2510, right after ??0CSortElement@...@QAE@KPAVCEngineSubPrimitiveBase@@@Z

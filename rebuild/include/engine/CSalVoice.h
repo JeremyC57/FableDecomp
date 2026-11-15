@@ -5,12 +5,22 @@
 #include "engine/CodaSourceTypes.h"
 class CCodaSource;struct _GUID;
 class CSalVoice:public CCodaObject {
+#ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
+public:
+ virtual int Create(const CCodaSource *);
+ virtual int SetBuffer(const CCodaSource *);
+ virtual void Release();
+ virtual bool IsSoftware() const;
+ virtual bool Is3D() const;
+ virtual bool IsCreated() const;
+#else
 public: virtual int Create(const CCodaSource *);
 public: virtual int SetBuffer(const CCodaSource *);
 public: virtual bool IsVoice() const;
 public: virtual bool IsSoftware() const;
 public: virtual bool Is3D() const;
 public: virtual void Release();
+#endif
 public: virtual unsigned int PlayBuffer(const CCodaSource *);
 public: virtual unsigned int PlayQueue(CCodaSource *,CREFTIME );
 public: virtual unsigned int Update(CCodaSource *,CREFTIME );

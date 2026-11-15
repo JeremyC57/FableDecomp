@@ -23,7 +23,9 @@ enum ESubPrimitiveType;
 class CEnginePrimitiveManager : public CEnginePrimitiveRenderUtil {
 public:
     CEnginePrimitiveManager(CArray<CEngineScene*>& scenes);              // 0x00BACDB0
+#ifndef FABLE_RETAIL_PASS22_PRIMITIVE_IMPLICIT_DESTRUCTORS
     virtual ~CEnginePrimitiveManager();                                  // slot 0
+#endif
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type) = 0;            // slot 1
     virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const = 0;                               // slot 2
     virtual void FrameStart();                                                                                // slot 3
@@ -49,12 +51,23 @@ public:
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_SUBPRIMITIVE
 protected:
  void AddSubPrimitive(CEngineSubPrimitiveBase*,float,unsigned char,unsigned long);
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+ void AddSubPrimitive(CEngineSubPrimitiveBase*,float,unsigned char,unsigned long,CEngineSubPrimitiveChain&);
+ void AddBoundingVolume(CEngineSubPrimitiveBase*,float);
+#endif
+
 public:
  bool GetEnable()const{return Enable;}
 #else
     bool GetEnable() const;
 #endif                                              // ?GetEnable@CEnginePrimitiveManager@@QBE_NXZ
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_PASS22_SETENABLE
+    // Retail opt-in (Codex pass22): FableWin02DA8010, native00B3208F writes Enable+8.
+    void SetEnable(bool enable) { Enable = enable; }
+#else
     void SetEnable(bool enable);
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_BLOCKONLOAD
 // Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): Ego_r.pdb / FableWin.pdb
     // ?GetBlockOnLoad@CEnginePrimitiveManager@@SI_NXZ (inline: unreferenced COMDAT 0x00B98C10 reads g_pEnginePrimitiveRenderer +0x04).
@@ -70,6 +83,6 @@ private:
 #endif                                    // +0x04
     bool                   Enable;                                       // +0x08
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManager) == 0xC);
+FABLE_STATIC_ASSERT_AT(73, sizeof(CEnginePrimitiveManager) == 0xC);
 
 #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGER_H

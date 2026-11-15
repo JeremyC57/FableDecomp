@@ -19,6 +19,16 @@ protected: virtual void InitPlay();
 protected: virtual void SetPlayBuffer(const CSalBuffer &,bool );
 protected:
  static int FABLE_CDECL TimeToFrames(float);
+#ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
+ bool IsStarting() const { return (m_ffStatus & 1) != 0; }
+ bool IsReleasingEnvelopes() const { return (m_ffParams & 0x200) != 0; }
+ bool IsLevelEnvReleased() const { return (m_ffStatus & 0x40) != 0; }
+ bool CalcLevelEnvelope(const _CLEVELENVELOPE*,bool);
+ void UpdatePitchLFO(const _CPITCHLFO*);
+ void CalcPitchLFO(const _CPITCHLFO*);
+ static float FABLE_CDECL CalcExpDelta(float,float);
+ static float FABLE_CDECL CalcPitchDelta(float,float,float);
+#endif
  const CSalBuffer *m_pcBuffer;
  CREFTIME m_rtBufferPlay;
  CREFTIME m_rtStop;

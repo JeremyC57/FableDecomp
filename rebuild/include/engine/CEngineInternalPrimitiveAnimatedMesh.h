@@ -21,6 +21,12 @@
 class C3DMesh2;
 class CEngineInternalPrimitiveAnimatedMesh:public CEngineInternalPrimitiveMeshBase {
 public:
+
+#ifdef FABLE_RETAIL_PASS22_ANIMATED_MESH_RENDER
+// Original two PDBs, donor02E82300 and native00BD71B0; evidence in00bd71cc.
+ CEngineRenderInfoAnimatedMesh* GetRenderInfo(){return &RenderInfo;}
+ bool SetupMesh(float,float);
+#endif
  virtual void CalcInterpolatedObjectTransform(CMatrix3x4&,float,bool)const;
  virtual void InitialiseSimulation(const C3DMeshInfo*,const C3DMesh2&);
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_BONESCALINGS

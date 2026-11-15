@@ -6,6 +6,9 @@
 #include "engine/CIntelligentPointer.h"
 #include "engine/CDefPointer.h"
 class CThingCreatureBase;class CThing;class CAttackPatternDef;
+#ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PASS22_INIT
+class CCombatManager;class CWorldMap;class CCombatTypeDef;class CAttackingCombatantInfo;
+#endif
 class CDefendingCombatantInfo {
 public:
 #ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PRONG
@@ -18,7 +21,16 @@ public:
 #else
  class CProng;
 #endif
+#ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PASS22_INIT
+ class CCombatWheel;
+#endif
  class CCombatRing {public:
+#ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PASS22_INIT
+  // Ego_r00711D10 / FableWin024113C0, retail006E8B60.
+  void Reset();
+  // Both PDBs: const world/wheel, mutable attacker map; retail006EBF70.
+  void AssignAttackersToRing(const CWorldMap&,const CCombatWheel&,std::map<CThingCreatureBase*,CAttackingCombatantInfo*>&,const CThingCreatureBase&);
+#endif
 #ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_WHEEL
   // Retail opt-in (chunk 1020, row 0x006E94D0 CCombatManager::IsCreatureInAttackRingSector): Ego_r.pdb / FableWin.pdb
   // ?GetAttackerProng@CCombatRing@CDefendingCombatantInfo@@QBEPBVCProng@2@ABVCThingCreatureBase@@@Z (0x006E87D0),
@@ -30,6 +42,12 @@ public:
 #endif
   float RotationAngle;float DeltaRotation;long Index;float RingThickness;std::vector<CProng> Prongs;};
  class CCombatWheel {public:
+#ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PASS22_INIT
+  // Ego_r007115A0 / FableWin024111A0; expanded in retail006EC850.
+  CCombatRing* GetRing(long index){if(index>=0 && (unsigned long)index<CombatRings.size())return &CombatRings[index];return 0;}
+  CCombatRing& AddRing(const CCombatTypeDef&); //006EC7D0
+  void Init(CCombatManager&,CWorldMap&,const std::map<CThingCreatureBase*,CAttackingCombatantInfo*>&,const CThingCreatureBase&);
+#endif
 #ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_WHEEL
   // (same opt-in) ?GetRing@CCombatWheel@CDefendingCombatantInfo@@QBEPBVCCombatRing@2@J@Z (0x006E8520) and
   // ?GetRingRadius@..@@QBEMJ@Z (0x006E8850), out of line in retail. Declarations only.
@@ -41,8 +59,8 @@ public:
  C3DVector LastVictimWheelUpdatePos;long LastWheelUpdateWorldFrame;CIntelligentPointer<CThing> PLastAttacker;
  CDefPointer<const CAttackPatternDef> PAttackPattern;long AttackPatternIndex;long FrameForNextInstruction;
 };
-FABLE_STATIC_ASSERT(sizeof(CDefendingCombatantInfo)==0x3c);
+FABLE_STATIC_ASSERT_AT(44, sizeof(CDefendingCombatantInfo)==0x3c);
 #ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PRONG
-FABLE_STATIC_ASSERT(sizeof(CDefendingCombatantInfo::CProng)==0x1c);
+FABLE_STATIC_ASSERT_AT(46, sizeof(CDefendingCombatantInfo::CProng)==0x1c);
 #endif
 #endif

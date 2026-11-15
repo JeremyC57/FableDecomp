@@ -1,0 +1,3 @@
+# Independent main review
+
+1127 target bytes; two called descriptor helpers205 bytes;30 relocations;283392 target cases plus90136 rounding cases. Fresh main RTM13.10.3077 build and masked-byte comparison passed, with full VC71 /Od /W3 /GR- and g++64 C++03 tests. Names, extents, source/fixture and reached helper closure reviewed. Combined51-row/156-header regression preserves all emitted C++ code and relocation names. Existing original shared rounding helper and required30C++/10intrinsic eligibility ladder reviewed; full fixture separately checks native/portable rounding against an independent IEEE oracle. No helper counted as another reserved row.

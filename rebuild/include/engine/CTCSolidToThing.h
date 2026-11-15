@@ -11,6 +11,10 @@
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
 class CThing;
+#ifdef FABLE_RETAIL_CTCSOLIDTOTHING_ORIGINAL_MEMBERS
+#include "engine/CIntelligentPointer.h"
+#include "stlport/fable_containers.h"
+#endif
 class CTCSolidToThing : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SOLID_TO_THING; }
@@ -33,6 +37,14 @@ public:
     virtual bool HasFrameUpdate() const;  // slot 8, 0x00771020
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCSOLIDTOTHING_ORIGINAL_MEMBERS
+private:
+    // Both original classes: actual vector at0xc; native12-byte container, full size0x18.
+    std::vector<CIntelligentPointer<const CThing> > NotSolidToThings;
+#endif
 };
+#ifdef FABLE_RETAIL_CTCSOLIDTOTHING_ORIGINAL_MEMBERS
+FABLE_STATIC_ASSERT(sizeof(CTCSolidToThing)==0x18);
+#endif
 #endif
 #endif // FABLE_ENGINE_CTCSOLIDTOTHING_H

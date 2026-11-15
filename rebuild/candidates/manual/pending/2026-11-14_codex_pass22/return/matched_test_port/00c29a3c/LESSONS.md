@@ -1,0 +1,1 @@
+00C29A3C: cut the complete original C298D0 vector parent; the catch label was inside it. Unmodified RTM Dinkumware vector gives542bytes exactly. Native imported std::string/exception constructors reveal /MD; it closes the entire error-helper graph and EH tables. Verify the standard-header version too: the old harness had a VC6 vector despite the RTM compiler binary.

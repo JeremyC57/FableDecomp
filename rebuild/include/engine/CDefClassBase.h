@@ -39,6 +39,11 @@ template <class K, class V, class C> class CVectorMap;
 template <class T> class CDefPointer;
 #pragma pack(push, 1)
 class CDefClassBase : public CDefPointeeBase {
+#ifdef FABLE_RETAIL_DEFINITION_ORIGINAL_USER_CONSTRUCTORS_PASS22
+private:
+    // Both original PDBs: user private default constructor attr0x1.
+    CDefClassBase();
+#endif
 public:
     class CSubDefInfo {                                                  // Ego_r.pdb CSubDefInfo, 8 bytes
     public:
@@ -117,8 +122,8 @@ public:
     unsigned char       DefaultValsApplied : 1;
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CDefClassBase) == 0x25);
-FABLE_STATIC_ASSERT(offsetof(CDefClassBase, PDefManager) == 0x1c);
+FABLE_STATIC_ASSERT_AT(120, sizeof(CDefClassBase) == 0x25);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CDefClassBase, PDefManager) == 0x1c);
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -136,11 +141,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CDefClassBase) == 0x25);
-FABLE_STATIC_ASSERT(offsetof(CDefClassBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CDefClassBase, PDefManager) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CDefClassBase, GlobalIndex) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CDefClassBase, DefaultValsApplied) == 0x24);
+FABLE_STATIC_ASSERT_AT(139, sizeof(CDefClassBase) == 0x25);
+FABLE_STATIC_ASSERT_AT(140, offsetof(CDefClassBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(141, offsetof(CDefClassBase, PDefManager) == 0x1c);
+FABLE_STATIC_ASSERT_AT(142, offsetof(CDefClassBase, GlobalIndex) == 0x20);
+FABLE_STATIC_ASSERT_AT(143, offsetof(CDefClassBase, DefaultValsApplied) == 0x24);
 
 #endif // FABLE_RETAIL_DEF_CLASS_BASE
 

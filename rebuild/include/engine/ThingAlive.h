@@ -4,7 +4,12 @@
 // Retail opt-in (Codex pass 17): original IS_THING_ALIVE<T>(const T&),
 // FableWin instantiation 01CCA150 called by the donor IsRunnable.
 #ifdef FABLE_RETAIL_IS_THING_ALIVE
+#ifdef FABLE_RETAIL_IS_THING_DEAD_DECL_ONLY
+// Retail opt-in (Codex pass22,row00927F30): original externally provided instantiation.
+template<class T> bool FABLE_FASTCALL IS_THING_DEAD(const T&);
+#else
 template<class T> inline bool FABLE_FASTCALL IS_THING_DEAD(const T& thing) {return thing==0||thing->IsDead();}
+#endif
 #if defined(FABLE_RETAIL_IS_THING_ALIVE_NOINLINE) && defined(_MSC_VER)
 // Per-TU opt-in (chunk 1021, row 0x0076D2F0 CTCEnemy::AreThingsEnemies): the same body kept out of line, as that TU calls the
 // IS_THING_ALIVE<const CThingPlayerCreature*> COMDAT 0x0043DBF0 (`lea ecx,[esp+1Ch] ; call 0x0043DBF0`, 0x0076D3C2). The visible

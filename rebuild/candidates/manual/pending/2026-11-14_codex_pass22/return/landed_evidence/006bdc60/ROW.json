@@ -1,0 +1,29 @@
+{
+  "address": "006bdc60",
+  "input_kind": "never_worked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 2,
+  "compile_invocations": 3,
+  "assigned_extent": 492,
+  "input_label": "Environment_UpdateMusicForRegion",
+  "assigned_name": "?Update@CMusicManager@@QAEXXZ",
+  "selected_attempt": "main_review_01",
+  "retail_size": 492,
+  "object_size": 492,
+  "selected_flags": [],
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "helper_debts": [],
+  "carried_match": [
+    "006b25e0:113"
+  ],
+  "evidence": "Both PDB names and actual native targets, donor Reset statement order, all22 relocations independently audited",
+  "main_verified": true,
+  "main_review": "Independent VC71 rebuild,605 target/helper bytes,22 relocation bindings,2304 full-body cases on VC71 and GCC; default-header proof",
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "final_test_sha256": "70453a2c92d2797efb677cfa8c29d4c6edf2e7e3f67b52f2a9e7d9b5a3b5a76c",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "residue": "",
+  "ready_for_claude_reverification": true
+}

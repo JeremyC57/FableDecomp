@@ -30,6 +30,9 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
     // native member callers 00723753 and 007599b3.
     float GetAngleXZ() const;
 #endif
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_PASS22_INTERPOLATE
+    CRightHandedSet Interpolate(const CRightHandedSet&,float)const;
+#endif
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?SetForward@CRightHandedSet@@QAEXABVC3DVector@@@Z / ?SetUp@...@QAEXABVC3DVector@@@Z
     // (inline) and ?MakePerpendicular@CRightHandedSet@@QAEXXZ (out of line at 0x00A22E10, landed users 0x00B9DFC0 / 0x00BD2BC0).
 #ifdef FABLE_RETAIL_CRIGHTHANDEDSET_SET

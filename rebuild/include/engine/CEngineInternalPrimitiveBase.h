@@ -68,6 +68,11 @@ public:
  // Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): FableWin.pdb
  // ?IsPersistent@CEngineInternalPrimitiveBase@@QBE_NXZ (no Ego_r.pdb or Fable.exe copy; 0x00B9A528 `test byte ptr [ebx+34h],2` = NonPersistent).
  bool IsPersistent()const{return !NonPersistent;}
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+ unsigned char GetAlphaIncludingDistanceFade(float);
+#endif
+
 #endif
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_GETALPHAINCLUDINGDISTANCEFADE
  // Retail opt-in (agentC40, row 0x00BBDDD0 CEnginePrimitiveManagerParticleSpriteTrailGroup::RenderPrimitive): FableWin.pdb

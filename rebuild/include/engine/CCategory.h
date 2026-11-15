@@ -39,3 +39,32 @@ FABLE_STATIC_ASSERT(offsetof(CCategory, Selected) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CCategory, DisplayItems) == 0x29);
 
 #endif // FABLE_ENGINE_CCATEGORY_H
+
+#ifdef FABLE_RETAIL_INVENTORY_ORIGINAL_ALL_ITEMS_CHAIN_PASS22
+#ifndef FABLE_RETAIL_INVENTORY_ORIGINAL_CCATEGORY_DEFINED_PASS22
+#define FABLE_RETAIL_INVENTORY_ORIGINAL_CCATEGORY_DEFINED_PASS22
+// Both original PDBs: complete NInventory::CCategory member set. Retail005BF496
+// strides44; its ItemsInCategory vector loses four bytes versus Ego_r's16-byte vector.
+#include "engine/CIntelligentPointer.h"
+#include "engine/CDefPointer.h"
+#include "stlport/fable_containers.h"
+class CInventoryCategoryDef;
+namespace NInventory {
+class CItem;
+class CTCInventoryBase;
+class CCategory {
+protected:
+ CIntelligentPointer<CThing> PAssociatedThing;
+private:
+ std::vector<CItem> ItemsInCategory;
+ CDefPointer<const CInventoryCategoryDef> PDef;
+ CTCInventoryBase* PInventory;
+ long GlobalDefIndex,SelectedItemIndex,HighlightedItemIndex;
+ bool Selected,DisplayItems;
+public:
+ void GetAllItemsInCategory(std::vector<std::pair<long,long> >&) const;
+};
+FABLE_STATIC_ASSERT(sizeof(CCategory)==44);
+}
+#endif
+#endif

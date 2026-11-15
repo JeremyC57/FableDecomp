@@ -131,12 +131,17 @@ virtual ~CHandleBasedMemoryPool();
 void Defragment();
 #endif
 void * GetPointerFromHandle(long);
+#ifdef FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL_LOCK
+// Retail opt-in (Codex pass22): both original PDB public methods, native A026F0/A02710.
+void Lock(long);
+void Unlock(long);
+#endif
 protected:
 virtual void MoveResource(void *,long,void *,void *,unsigned long);
 virtual bool CanMoveResource(void *,long);
 virtual void ValidateResource(void *);
 private:unsigned char Buffer[0x460];};
-FABLE_STATIC_ASSERT(sizeof(CHandleBasedMemoryPool)==0x464);
+FABLE_STATIC_ASSERT_AT(139, sizeof(CHandleBasedMemoryPool)==0x464);
 #endif
 #else
 #ifndef FABLE_ENGINE_CHANDLEBASEDMEMORYPOOL_H
@@ -188,34 +193,34 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CHandleBasedMemoryPool) == 0x464);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, Buffer) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, UnalignedBuffer) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, PoolSize) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, AllocatedSize) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, NumAllocations) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, LockCount) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, LargestFreeArea) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, MemoryFlags) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, MultiThreaded) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, ShutdownFlag) == 0x25);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, EnableDefrag) == 0x26);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, EnableFullDefragIfPartialFails) == 0x27);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, MaxFreeSizeBeforeDefrag) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, MaxFreeSizeBeforeFailure) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, MaxBlocksToTryOnPartialDefrag) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, FailureHandler) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, FreeLists) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, Handles) == 0x438);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, FirstUnusedHandle) == 0x444);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, Name_PStringData) == 0x448);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, CriticalSection_DebugInfo) == 0x44c);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, CriticalSection_LockCount) == 0x450);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, CriticalSection_RecursionCount) == 0x454);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, CriticalSection_OwningThread) == 0x458);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, CriticalSection_LockSemaphore) == 0x45c);
-FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, CriticalSection_SpinCount) == 0x460);
+FABLE_STATIC_ASSERT_AT(191, sizeof(CHandleBasedMemoryPool) == 0x464);
+FABLE_STATIC_ASSERT_AT(192, offsetof(CHandleBasedMemoryPool, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(193, offsetof(CHandleBasedMemoryPool, Buffer) == 0x4);
+FABLE_STATIC_ASSERT_AT(194, offsetof(CHandleBasedMemoryPool, UnalignedBuffer) == 0x8);
+FABLE_STATIC_ASSERT_AT(195, offsetof(CHandleBasedMemoryPool, PoolSize) == 0xc);
+FABLE_STATIC_ASSERT_AT(196, offsetof(CHandleBasedMemoryPool, AllocatedSize) == 0x10);
+FABLE_STATIC_ASSERT_AT(197, offsetof(CHandleBasedMemoryPool, NumAllocations) == 0x14);
+FABLE_STATIC_ASSERT_AT(198, offsetof(CHandleBasedMemoryPool, LockCount) == 0x18);
+FABLE_STATIC_ASSERT_AT(199, offsetof(CHandleBasedMemoryPool, LargestFreeArea) == 0x1c);
+FABLE_STATIC_ASSERT_AT(200, offsetof(CHandleBasedMemoryPool, MemoryFlags) == 0x20);
+FABLE_STATIC_ASSERT_AT(201, offsetof(CHandleBasedMemoryPool, MultiThreaded) == 0x24);
+FABLE_STATIC_ASSERT_AT(202, offsetof(CHandleBasedMemoryPool, ShutdownFlag) == 0x25);
+FABLE_STATIC_ASSERT_AT(203, offsetof(CHandleBasedMemoryPool, EnableDefrag) == 0x26);
+FABLE_STATIC_ASSERT_AT(204, offsetof(CHandleBasedMemoryPool, EnableFullDefragIfPartialFails) == 0x27);
+FABLE_STATIC_ASSERT_AT(205, offsetof(CHandleBasedMemoryPool, MaxFreeSizeBeforeDefrag) == 0x28);
+FABLE_STATIC_ASSERT_AT(206, offsetof(CHandleBasedMemoryPool, MaxFreeSizeBeforeFailure) == 0x2c);
+FABLE_STATIC_ASSERT_AT(207, offsetof(CHandleBasedMemoryPool, MaxBlocksToTryOnPartialDefrag) == 0x30);
+FABLE_STATIC_ASSERT_AT(208, offsetof(CHandleBasedMemoryPool, FailureHandler) == 0x34);
+FABLE_STATIC_ASSERT_AT(209, offsetof(CHandleBasedMemoryPool, FreeLists) == 0x38);
+FABLE_STATIC_ASSERT_AT(210, offsetof(CHandleBasedMemoryPool, Handles) == 0x438);
+FABLE_STATIC_ASSERT_AT(211, offsetof(CHandleBasedMemoryPool, FirstUnusedHandle) == 0x444);
+FABLE_STATIC_ASSERT_AT(212, offsetof(CHandleBasedMemoryPool, Name_PStringData) == 0x448);
+FABLE_STATIC_ASSERT_AT(213, offsetof(CHandleBasedMemoryPool, CriticalSection_DebugInfo) == 0x44c);
+FABLE_STATIC_ASSERT_AT(214, offsetof(CHandleBasedMemoryPool, CriticalSection_LockCount) == 0x450);
+FABLE_STATIC_ASSERT_AT(215, offsetof(CHandleBasedMemoryPool, CriticalSection_RecursionCount) == 0x454);
+FABLE_STATIC_ASSERT_AT(216, offsetof(CHandleBasedMemoryPool, CriticalSection_OwningThread) == 0x458);
+FABLE_STATIC_ASSERT_AT(217, offsetof(CHandleBasedMemoryPool, CriticalSection_LockSemaphore) == 0x45c);
+FABLE_STATIC_ASSERT_AT(218, offsetof(CHandleBasedMemoryPool, CriticalSection_SpinCount) == 0x460);
 
 #endif // FABLE_ENGINE_CHANDLEBASEDMEMORYPOOL_H
 

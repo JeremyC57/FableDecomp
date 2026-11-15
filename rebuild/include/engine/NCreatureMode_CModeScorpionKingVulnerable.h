@@ -20,7 +20,9 @@ public:
     static CTCCreatureModeManager::CModeBase* __fastcall Alloc(CThing& owner);
 #endif
     CModeScorpionKingVulnerable(CThing& thing);                          // 0x008D8120
+#ifndef FABLE_RETAIL_CMODESCORPIONKINGVULNERABLE_PASS22_IMPLICIT_DTOR
     virtual ~CModeScorpionKingVulnerable();
+#endif
     virtual unsigned long GetType() const;
     virtual void AnimUpdate(CAnimateThing& animation);
     virtual void FrameUpdate();                                          // 0x008E0A10
@@ -46,11 +48,11 @@ private:
     static void CheckRetailLayout();
 };
 inline void CModeScorpionKingVulnerable::CheckRetailLayout() {
-    FABLE_STATIC_ASSERT(sizeof(CModeScorpionKingVulnerable) == 0xb8);
-    FABLE_STATIC_ASSERT(offsetof(CModeScorpionKingVulnerable, PCreature) == 0x78);
-    FABLE_STATIC_ASSERT(offsetof(CModeScorpionKingVulnerable, PTarget) == 0x7d);
-    FABLE_STATIC_ASSERT(offsetof(CModeScorpionKingVulnerable, FrameCount) == 0xa4);
-    FABLE_STATIC_ASSERT(offsetof(CModeScorpionKingVulnerable, TailCurlFinished) == 0xb4);
+    FABLE_STATIC_ASSERT_AT(49, sizeof(CModeScorpionKingVulnerable) == 0xb8);
+    FABLE_STATIC_ASSERT_AT(50, offsetof(CModeScorpionKingVulnerable, PCreature) == 0x78);
+    FABLE_STATIC_ASSERT_AT(51, offsetof(CModeScorpionKingVulnerable, PTarget) == 0x7d);
+    FABLE_STATIC_ASSERT_AT(52, offsetof(CModeScorpionKingVulnerable, FrameCount) == 0xa4);
+    FABLE_STATIC_ASSERT_AT(53, offsetof(CModeScorpionKingVulnerable, TailCurlFinished) == 0xb4);
 }
 }
 #endif

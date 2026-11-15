@@ -43,9 +43,25 @@ public:
         // Per-TU opt-in (chunk Q6, row 0x00E95770 CM_UndeadHere::Main): the Ego_r.pdb members (struct_layouts_egor.tsv CM_UndeadHere,
         // 32 bytes: ParentClass +0x14, PMasterData +0x18, Counter +0x1c) and the private Main override (slot 1,
         // ?Main@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ, both PDBs). Appends members after the base: no change elsewhere.
+#ifdef FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS
+        typedef CV_HauntedHouseScript TParentClass;
+        CM_UndeadHere(CV_HauntedHouseScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+        CQ_SunnyvaleMasterData* GetMasterData();
+    private:
+        virtual void Init();
+    protected:
+        // Both complete original class records: reference at14, protected data18,
+        // private native signed32 counter1c. Existing pointer-view path retained.
+        CV_HauntedHouseScript& ParentClass;
+        CQ_SunnyvaleMasterData* PMasterData;
+    private:
+        long Counter;
+#else
         CV_HauntedHouseScript*  ParentClass;                             // +0x14
         CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
         long                    Counter;                                 // +0x1c
+#endif
     private:
         virtual void Main();                                             // 0x00E95770 (slot 1)
     public:
@@ -65,7 +81,11 @@ public:
     };
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_HauntedHouseScript) == 0x5C);
+FABLE_STATIC_ASSERT_AT(68, sizeof(NScript::CV_HauntedHouseScript) == 0x5C);
+
+#if defined(FABLE_RETAIL_CM_UNDEADHERE_MAIN) && defined(FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS)
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_HauntedHouseScript::CM_UndeadHere) == 0x20);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_HAUNTEDHOUSESCRIPT_H

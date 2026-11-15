@@ -1,4 +1,4 @@
-#ifdef FABLE_RETAIL_EXPRESSION_FRAME
+#if defined(FABLE_RETAIL_EXPRESSION_FRAME) || defined(FABLE_RETAIL_CTCINVENTORY_ORIGINAL_COMPLETE_CLASS_PASS22)
 #ifndef FABLE_ENGINE_CTCINVENTORY_RETAIL_H
 #define FABLE_ENGINE_CTCINVENTORY_RETAIL_H
 #include "engine/NInventory_CTCInventoryBase.h"
@@ -8,6 +8,9 @@
 #include "engine/CDefPointer.h"
 #include "engine/CRightHandedSet.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CTCINVENTORY_ORIGINAL_COMPLETE_CLASS_PASS22
+#include "stlport/fable_map.h"
+#endif
 class CInventoryItemDef;class CFadeInFadeOutBase;class CEnginePrimitiveHandle;class CEnginePrimitivePrepareInfo;class CPersistContext;class CCharString;class CWideString;
 namespace NUISystem{class CComponent;class CList;class CEditBox;}
 #ifdef _MSC_VER
@@ -24,6 +27,9 @@ enum CURRENT_OPEN_MENU;
 enum CURRENT_OPEN_MENU{};
 #endif
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORY_ORIGINAL_COMPLETE_CLASS_PASS22
+ typedef std::map<long,long> TMapOfDefIndexToCount;
+#endif
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_INVENTORY;}
  virtual ETCInterfaceType GetInterfaceType() const;
  static CTCBase * FABLE_FASTCALL Alloc(CThing & p0);
@@ -32,7 +38,9 @@ public:
  static const CCharString & FABLE_FASTCALL GetItemDescriptionString();
  static const CCharString & FABLE_FASTCALL GetItemNameTableString();
  static const CCharString & FABLE_FASTCALL GetItemIconString();
+#ifndef FABLE_RETAIL_CTCINVENTORY_IMPLICIT_GENERATED_SPECIALS_PASS22
  CTCInventory(const CTCInventory & p0);
+#endif
  CTCInventory(CThing & p0);
  virtual ~CTCInventory();
  virtual void OnKill();
@@ -203,9 +211,11 @@ private:
  CTCInventory::CURRENT_OPEN_MENU CurrentOpenMenu;
  float AccumFadeTime;
 public:
+#ifndef FABLE_RETAIL_CTCINVENTORY_IMPLICIT_GENERATED_SPECIALS_PASS22
  CTCInventory & operator=(const CTCInventory & p0);
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCInventory)==552);
+FABLE_STATIC_ASSERT_AT(208, sizeof(CTCInventory)==552);
 #endif
 #else
 #ifdef FABLE_RETAIL_CTCINVENTORY
@@ -223,6 +233,9 @@ FABLE_STATIC_ASSERT(sizeof(CTCInventory)==552);
 #include "rebuild_abi.h"
 #include "engine/NInventory_CTCInventoryBase.h"
 #include "engine/NHeroInformationScreens_CBase.h"
+#ifdef FABLE_RETAIL_CTCINVENTORY_PASS22_RESETPRIMITIVES
+#include "engine/CEnginePrimitiveHandle.h"
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_QUICKACCESS
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"
@@ -239,6 +252,10 @@ public:
     // ?OpenInventory@CTCInventory@@UAEXXZ, the console inventory's top-level menu (CTCInventory vtable 0x01250DE4 slot 30 = the base
     // NInventory::CTCInventoryBase::OpenInventory slot; every sibling inventory's slot 30 is its OpenInventory). Declaration only.
     virtual void OpenInventory();                                   // 0x0058578B
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_PASS22_RESETPRIMITIVES
+    // Both PDBs; donor0212E959 and native0058771C clear the main handle array.
+    void ResetPrimitiveHandles();
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_REVERTVIDEOCHANGES
     // agentQ7 (2026-11-11, row 0x0047E9AE CTCInGameMenu::GlobalUpdate): Ego_r.pdb / FableWin.pdb ?RevertVideoChanges@CTCInventory@@QAEXXZ,
@@ -360,7 +377,11 @@ public:
 #endif
     unsigned char ContextSensitiveItems[0xc];                // +0x154 vector<long,std::allocator<long>_>
     unsigned char ContextSensitiveFadeTimes[0xc];            // +0x160 vector<CFadeInFadeOutBase,std::allocator<CFadeInFadeOutBase>_>
+#ifdef FABLE_RETAIL_CTCINVENTORY_PASS22_RESETPRIMITIVES
+    std::vector<CEnginePrimitiveHandle> InventoryMainPrimitiveHandles; // native+0x16c; Ego_r+0x198
+#else
     unsigned char InventoryMainPrimitiveHandles[0xc];        // +0x16c vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+#endif
     unsigned char QuickAccessPrimitiveHandles[0xc];          // +0x178 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char QuickAccessUnusableIconPrimitiveHandles[0xc];  // +0x184 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char OldObjectRHSet[0x18];                      // +0x190 CRightHandedSet
@@ -526,7 +547,11 @@ public:
     unsigned char QuickAccessItems[0xc];                     // +0x148 vector<long,std::allocator<long>_>
     unsigned char ContextSensitiveItems[0xc];                // +0x154 vector<long,std::allocator<long>_>
     unsigned char ContextSensitiveFadeTimes[0xc];            // +0x160 vector<CFadeInFadeOutBase,std::allocator<CFadeInFadeOutBase>_>
+#ifdef FABLE_RETAIL_CTCINVENTORY_PASS22_RESETPRIMITIVES
+    std::vector<CEnginePrimitiveHandle> InventoryMainPrimitiveHandles; // native+0x16c; Ego_r+0x198
+#else
     unsigned char InventoryMainPrimitiveHandles[0xc];        // +0x16c vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+#endif
     unsigned char QuickAccessPrimitiveHandles[0xc];          // +0x178 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char QuickAccessUnusableIconPrimitiveHandles[0xc];  // +0x184 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char OldObjectRHSet[0x18];                      // +0x190 CRightHandedSet

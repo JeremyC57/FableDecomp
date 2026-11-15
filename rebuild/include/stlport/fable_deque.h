@@ -57,6 +57,13 @@ protected:
 template<class T,class A=allocator<T> >class deque:protected _Deque_base<T,A> {
 public:
  typedef T value_type;typedef size_t size_type;typedef T& reference;typedef const T& const_reference;
+#ifdef FABLE_RETAIL_STLP_DEQUE_PASS22_POP
+ bool empty()const{return this->_M_finish._M_cur==this->_M_start._M_cur;}
+ void pop_front(){
+  if(this->_M_start._M_cur!=this->_M_start._M_last-1){_Destroy(this->_M_start._M_cur);++this->_M_start._M_cur;}
+  else {_Destroy(this->_M_start._M_cur);this->_M_map_size.deallocate(this->_M_start._M_first,this->buffer_size());this->_M_start._M_set_node(this->_M_start._M_node+1);this->_M_start._M_cur=this->_M_start._M_first;}
+ } // STLport4.6 _deque.h / _deque.c, expanded in0040C790
+#endif
  deque():_Deque_base<T,A>(A(),0){}
  ~deque(){std::_Destroy(this->_M_start,this->_M_finish);}
 #if defined(FABLE_RETAIL_STLP_DEQUE_PUSH_BACK_OUTOFLINE) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
@@ -109,6 +116,10 @@ template<class T,class A> void deque<T,A>::_M_push_back_aux_v(const value_type& 
 template<class T,class Sequence=deque<T> >class queue {
 public:
  typedef typename Sequence::value_type value_type;
+#ifdef FABLE_RETAIL_STLP_DEQUE_PASS22_POP
+ bool empty()const{return c.empty();}
+ void pop(){c.pop_front();}
+#endif
  void push(const value_type& x){c.push_back(x);}
 protected:
  Sequence c;

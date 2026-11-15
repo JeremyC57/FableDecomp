@@ -13,6 +13,9 @@
 // hidden result). Declarations only; the caller completes _SYSTEMTIME / _FILETIME.
 struct _SYSTEMTIME; struct _FILETIME;
 class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;
+#ifdef FABLE_RETAIL_CDATEANDTIME_VALID
+public: bool IsValid() const; // original PDB declaration; native 0x009E9C60
+#endif
 public: CDateAndTime(const _SYSTEMTIME& time); _FILETIME ToFileTime() const;};
 #elif !defined(FABLE_RETAIL_CDATEANDTIME_CTOR)
 #ifdef FABLE_RETAIL_CDATEANDTIME_LESS
@@ -20,7 +23,14 @@ public: CDateAndTime(const _SYSTEMTIME& time); _FILETIME ToFileTime() const;};
 // out of line in retail (0x009E9B80; reloc_bindings.tsv), the key compare of the map<CDateAndTime, CWideString> operator[] body
 // (FABLE_RETAIL_STLP_MAP). Declaration only; same layout.
 class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;
+#ifdef FABLE_RETAIL_CDATEANDTIME_VALID
+public: bool IsValid() const; // Codex pass 22: original PDB declaration; native 0x009E9C60
+#endif
 public: bool operator<(const CDateAndTime& other) const;   // 0x009E9B80
+};
+#elif defined(FABLE_RETAIL_CDATEANDTIME_VALID)
+class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;
+public: bool IsValid() const; // original PDB declaration; native 0x009E9C60
 };
 #else
 class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;};
@@ -30,6 +40,9 @@ class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Seco
 // Also chunk 2013, row 0x00597DF7 CFrontEndManager::GetSavedGameNames: vector<CDateAndTime>::resize 0x0048623F and every empty save
 // slot call it. Same layout; the copy stays the implicit one.
 class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Second,Millisecond;
+#ifdef FABLE_RETAIL_CDATEANDTIME_VALID
+public: bool IsValid() const; // original PDB declaration; native 0x009E9C60
+#endif
 public: CDateAndTime();
 #ifdef FABLE_RETAIL_CDATEANDTIME_TOFILETIME
 // Nested opt-in (chunk 2013, row 0x00595CC1): Ego_r.pdb / FableWin.pdb ?ToFileTime@CDateAndTime@@QBE?AU_FILETIME@@XZ, out of line in

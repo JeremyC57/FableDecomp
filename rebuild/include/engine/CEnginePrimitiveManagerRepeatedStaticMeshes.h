@@ -7,7 +7,7 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
-#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES) || defined(FABLE_RETAIL_PASS22_REPEATED_MESH_CLIP_SIMD)
 // Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): RTTI .?AVCEnginePrimitiveManagerRepeatedStaticMeshes@@
 // : CEnginePrimitiveManagerMeshBase : CEnginePrimitiveManagerOcclusionBase : CEnginePrimitiveManager : CEnginePrimitiveRenderUtil (vtable
 // 0x012A3E9C; RenderPrimitive = slot 7, 0x00B9A4A0); own members from +0x20 with their Ego_r.pdb names and types (sizeof 0x94, = retail:
@@ -15,6 +15,11 @@
 #include "engine/CEnginePrimitiveManagerMeshBase.h"
 #include "engine/CVertexShader.h"
 #include "engine/CPixelShader.h"
+#ifdef FABLE_RETAIL_PASS22_REPEATED_MESH_CLIP_SIMD
+#include "engine/RepeatedStaticMeshSubsection.h"
+#include "engine/C4DVector.h"
+#include "engine/CRGBFloatColour.h"
+#endif
 struct CSIMDVariableBlock;
 class CEnginePrimitiveManagerRepeatedStaticMeshes : public CEnginePrimitiveManagerMeshBase {
 public:
@@ -27,6 +32,39 @@ public:
 #endif
     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& primitive, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);   // slot 7, 0x00B9A4A0
 private:
+#ifdef FABLE_RETAIL_PASS22_REPEATED_MESH_CLIP_SIMD
+    // Original Ego_r TPI nested types; native manager+90 and aligned four-lane clipping data.
+    struct CClipListElement { unsigned char Start,Size; };
+    struct CSIMDVariableBlock {
+        float NormalX[32];
+        float NormalY[32];
+        float NormalZ[32];
+        float PosX[32];
+        float PosY[32];
+        float PosZ[32];
+        C4DVector ObjectMatricies[32];
+        C4DVector ObjectOffsets[32];
+        CRGBFloatColour Colour[32];
+        CRGBFloatColour MainLightColour[32];
+        float CameraPosX[4];
+        float CameraPosY[4];
+        float CameraPosZ[4];
+        float CameraClipPlaneLeftX[4];
+        float CameraClipPlaneLeftY[4];
+        float CameraClipPlaneLeftZ[4];
+        float CameraClipPlaneRightX[4];
+        float CameraClipPlaneRightY[4];
+        float CameraClipPlaneRightZ[4];
+        float CameraClipPlaneTopX[4];
+        float CameraClipPlaneTopY[4];
+        float CameraClipPlaneTopZ[4];
+        float CameraClipPlaneBottomX[4];
+        float CameraClipPlaneBottomY[4];
+        float CameraClipPlaneBottomZ[4];
+        float FadeDistance[4];
+    };
+    void ClipSubSectionsSIMD(const NEnginePrimitiveManagerRepeatedStaticMeshes::CSubsectionElement*,unsigned long,CClipListElement*&);
+#endif
     CPixelShader        PixelShader;                                     // +0x20
     CVertexShader       VertexShader;                                    // +0x28
     CPixelShader        PixelShaderStippleAlpha;                         // +0x30

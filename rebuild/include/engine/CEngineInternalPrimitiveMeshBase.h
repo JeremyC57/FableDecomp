@@ -22,6 +22,11 @@ public:
  CEngineInternalPrimitiveMeshBase(long type,unsigned long mask):CEngineInternalPrimitiveOcclusionBase(type,mask),MeshInfo(0){}
 #endif
  virtual ~CEngineInternalPrimitiveMeshBase();
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+ bool IsSimulationRunning(unsigned long)const;
+#endif
+
  virtual const CEngineRenderInfoMeshBase* PeekRenderInfoMeshBase()const=0;
  virtual bool GetTransformFrameStart(CMatrix3x4&)const;
  virtual bool GetTransformFrameEnd(CMatrix3x4&)const;
@@ -51,5 +56,5 @@ public:
  static void FABLE_FASTCALL CollectStats(const C3DMeshInfo& mesh_info,std::map<unsigned long,unsigned long>& stats,EEnginePrimitiveStatIndex stat_index,unsigned long flags);
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveMeshBase)==112);
+FABLE_STATIC_ASSERT_AT(54, sizeof(CEngineInternalPrimitiveMeshBase)==112);
 #endif

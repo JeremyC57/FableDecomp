@@ -28,6 +28,23 @@ public:
     unsigned long GetLength() const { return StreamSize; }
     virtual unsigned long GetPosition() const { return StreamPos; }
     virtual void SetPosition(unsigned long);
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_ORIGINAL_READ_SCOPE
+    // Retail opt-in (Codex pass22): original FableWin module548 Read locals dst,
+    // no_bytes and overflow_check; donor01876B85 guards the whole body with >0,
+    // and01876CCF exits only the invalid-position arm. Updates01876F43..6D.
+    FABLE_FORCEINLINE void Read(void* dst,long no_bytes) {
+        if(no_bytes>0) {
+            __int64 overflow_check=(__int64)(StreamPos+no_bytes);
+            if(overflow_check<0 || overflow_check>0x7fffffff)return;
+            if(no_bytes<=SourceChunkBytesRemaining) {
+                memcpy(dst,CurrentSourcePtr,no_bytes);
+                CurrentSourcePtr+=no_bytes;
+                SourceChunkBytesRemaining-=no_bytes;
+                StreamPos+=no_bytes;
+            } else ReadWithSrcChunkOverflow((unsigned char*)dst,no_bytes);
+        }
+    }
+#else
     FABLE_FORCEINLINE void Read(void* buffer,long size) {
         if(size<=0)return;
         __int64 newPosition=(__int64)(StreamPos+size);
@@ -39,6 +56,7 @@ public:
             StreamPos+=size;
         } else ReadWithSrcChunkOverflow((unsigned char*)buffer,size);
     }
+#endif
     template<class T> FABLE_FORCEINLINE T ReadType() { T val; Read(&val,sizeof(T)); return val; }
     FABLE_FORCEINLINE unsigned long ReadULONG() { return ReadType<unsigned long>(); }
     FABLE_FORCEINLINE long ReadSLONG() { return ReadType<long>(); }

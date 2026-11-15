@@ -37,6 +37,11 @@ public:
     // FableWin.pdb ?RenderPrimitiveBlocks@..@@QAEXAAVC3DPrimitive2@@PBVCMatrix4x4@@@Z (13 debug instr; inline, forwards to the IndexBuffer form).
     void RenderPrimitiveBlocks(C3DPrimitive2& primitive, const CMatrix4x4* bone_transforms);
 private:
+#ifdef FABLE_RETAIL_PASS22_ANIMATED_MESH_RENDER
+// Original two PDBs, donor02E82300 and native00BD71B0; evidence in00bd71cc.
+ void RenderDebugBoneHierarchy(CEngineInternalPrimitiveAnimatedMesh&);
+#endif
+
     // ?RenderPrimitiveBlocksIndexBuffer@..@@AAEXAAVC3DPrimitive2@@PBVCMatrix4x4@@@Z (FableWin.pdb; manifest label at retail 0x00BCFB00, `ret 8`).
     void RenderPrimitiveBlocksIndexBuffer(C3DPrimitive2& primitive, const CMatrix4x4* bone_transforms);    // 0x00BCFB00
     void RenderPrimitiveBlocksPushBuffer(C3DPrimitive2& primitive, const CMatrix4x4* bone_transforms);     // FableWin 7 instr (Xbox stub)
@@ -102,7 +107,7 @@ private:
     float          TextureOverlayFadeDistandeFactor;                         // +0x32c (sic, PDB spelling)
     CPreTransposedBoneMatrix BoneMatrixBuffer[18];                           // +0x330
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerAnimatedMeshesBase) == 0x690);
+FABLE_STATIC_ASSERT_AT(105, sizeof(CEnginePrimitiveManagerAnimatedMeshesBase) == 0x690);
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERANIMATEDMESHESBASE_HELPERS
 // Bodies (chunk 4010 scout): texts FITTED to the FableWin.pdb debug sizes with plain VC7.1 /Od (scout/fw_palskin.cpp, fw_helpers.cpp):
 // SAME = ApplyVertexShader 12/30, ApplyPalSkinVertexShader 23/68 (ternary local), Env 20/60 + SpotLight 20/63 (local copy, if-clamp),

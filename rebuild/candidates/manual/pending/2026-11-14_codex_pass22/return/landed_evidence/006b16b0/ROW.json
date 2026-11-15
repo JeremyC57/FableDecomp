@@ -1,0 +1,28 @@
+{
+  "address": "006b16b0",
+  "input_kind": "never_worked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 2,
+  "compile_invocations": 4,
+  "assigned_extent": 581,
+  "input_label": "SoundTheme_LoadDefinitions",
+  "assigned_name": "?RegisterAtmosPalette@CAtmosProcess@@QAEXXZ",
+  "selected_attempt": "main_review_01",
+  "retail_size": 581,
+  "object_size": 581,
+  "selected_flags": [],
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "helper_debts": [],
+  "carried_match": [
+    "006b25e0:113"
+  ],
+  "evidence": "Both PDB name sets, original class records, native constructor caller, all29 relocations independently audited",
+  "main_verified": true,
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "final_test_sha256": "3d95bccadab4b8d0d156bbeb42eb99e6c528ea5b138578dee90c203e366ab18f",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "residue": "",
+  "ready_for_claude_reverification": true
+}

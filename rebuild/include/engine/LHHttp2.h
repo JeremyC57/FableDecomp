@@ -73,6 +73,11 @@ public:
 #ifdef FABLE_RETAIL_LHHTTP2_SCOREBOARD
     // Nested opt-in (chunk 777, row 0x0055F710): the members CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest calls, all
     // out of line in retail and landed; Ego_r.pdb + FableWin.pdb spellings (the PDBs' Dinkumware `U?$char_traits` becomes STLport `V`).
+#ifdef FABLE_RETAIL_LHHTTP2_DOCUMENT
+    // Both PDB PUBLIC signatures, native 0x0083EA70 / 0x0083EAA0.
+    unsigned long GetDocumentSize();
+    LH_HTTP_STATUS GetDocument(char* buffer);
+#endif
     LHHttp2();                                                           // 0x00840F50 ??0LHHttp2@LHNetworkLib@@QAE@XZ
     ~LHHttp2();                                                          // 0x008410D0 ??1LHHttp2@LHNetworkLib@@QAE@XZ
     void SetProxySettings(const std::string&,unsigned short);            // 0x0083F870
@@ -155,34 +160,34 @@ struct LHHttp2 {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(LHHttp2) == 0x10a8);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, Host) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, Hostname) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, Port) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, PreparedRequest) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, RequestBytesSent) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, RequestLength) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, MyHeaders) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, ReceivedHeaders) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, TimeOutValue) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, ActionStartTime) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, ActionStarted) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, CurrentAction) == 0x62);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, CurrDownSize) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, Forwardings) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, CurrForwarding) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, CurrentHeaderPart) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, CurrentHeaderPos) == 0x870);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, ProxyHost) == 0x874);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, ProxyPort) == 0x880);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, DocumentParts) == 0x884);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, DocumentEncoding) == 0x890);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, DocumentEstimatedLength) == 0x894);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, DocumentLength) == 0x898);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, CurrentDocumentPart) == 0x89c);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, CurrentDocumentPos) == 0x109c);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, InChunkMode) == 0x10a0);
-FABLE_STATIC_ASSERT(offsetof(LHHttp2, CurrentDocumentChunk) == 0x10a4);
+FABLE_STATIC_ASSERT_AT(158, sizeof(LHHttp2) == 0x10a8);
+FABLE_STATIC_ASSERT_AT(159, offsetof(LHHttp2, Host) == 0x0);
+FABLE_STATIC_ASSERT_AT(160, offsetof(LHHttp2, Hostname) == 0x4);
+FABLE_STATIC_ASSERT_AT(161, offsetof(LHHttp2, Port) == 0x10);
+FABLE_STATIC_ASSERT_AT(162, offsetof(LHHttp2, PreparedRequest) == 0x14);
+FABLE_STATIC_ASSERT_AT(163, offsetof(LHHttp2, RequestBytesSent) == 0x20);
+FABLE_STATIC_ASSERT_AT(164, offsetof(LHHttp2, RequestLength) == 0x24);
+FABLE_STATIC_ASSERT_AT(165, offsetof(LHHttp2, MyHeaders) == 0x28);
+FABLE_STATIC_ASSERT_AT(166, offsetof(LHHttp2, ReceivedHeaders) == 0x40);
+FABLE_STATIC_ASSERT_AT(167, offsetof(LHHttp2, TimeOutValue) == 0x58);
+FABLE_STATIC_ASSERT_AT(168, offsetof(LHHttp2, ActionStartTime) == 0x5c);
+FABLE_STATIC_ASSERT_AT(169, offsetof(LHHttp2, ActionStarted) == 0x60);
+FABLE_STATIC_ASSERT_AT(170, offsetof(LHHttp2, CurrentAction) == 0x62);
+FABLE_STATIC_ASSERT_AT(171, offsetof(LHHttp2, CurrDownSize) == 0x64);
+FABLE_STATIC_ASSERT_AT(172, offsetof(LHHttp2, Forwardings) == 0x68);
+FABLE_STATIC_ASSERT_AT(173, offsetof(LHHttp2, CurrForwarding) == 0x6c);
+FABLE_STATIC_ASSERT_AT(174, offsetof(LHHttp2, CurrentHeaderPart) == 0x70);
+FABLE_STATIC_ASSERT_AT(175, offsetof(LHHttp2, CurrentHeaderPos) == 0x870);
+FABLE_STATIC_ASSERT_AT(176, offsetof(LHHttp2, ProxyHost) == 0x874);
+FABLE_STATIC_ASSERT_AT(177, offsetof(LHHttp2, ProxyPort) == 0x880);
+FABLE_STATIC_ASSERT_AT(178, offsetof(LHHttp2, DocumentParts) == 0x884);
+FABLE_STATIC_ASSERT_AT(179, offsetof(LHHttp2, DocumentEncoding) == 0x890);
+FABLE_STATIC_ASSERT_AT(180, offsetof(LHHttp2, DocumentEstimatedLength) == 0x894);
+FABLE_STATIC_ASSERT_AT(181, offsetof(LHHttp2, DocumentLength) == 0x898);
+FABLE_STATIC_ASSERT_AT(182, offsetof(LHHttp2, CurrentDocumentPart) == 0x89c);
+FABLE_STATIC_ASSERT_AT(183, offsetof(LHHttp2, CurrentDocumentPos) == 0x109c);
+FABLE_STATIC_ASSERT_AT(184, offsetof(LHHttp2, InChunkMode) == 0x10a0);
+FABLE_STATIC_ASSERT_AT(185, offsetof(LHHttp2, CurrentDocumentChunk) == 0x10a4);
 
 #endif // FABLE_ENGINE_LHHTTP2_H
 

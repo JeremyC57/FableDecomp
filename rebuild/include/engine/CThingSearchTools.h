@@ -459,7 +459,7 @@ public:
 #endif
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CThingSearchTools)==0x18);
+FABLE_STATIC_ASSERT_AT(462, sizeof(CThingSearchTools)==0x18);
 #ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY
 template<class Filter,class Compare,class T>
 bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area,const Filter& filter,const Compare& compare,T** out)const{
@@ -510,7 +510,11 @@ __declspec(noinline) bool CThingSearchTools::GetPFirstThingInRoughArea(const C2D
  std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
  GetAllThingMapsInArea(area,maps);
  ++NoLookups;NoThingsScanned=0;++SearchID;
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_PASS22_FIRST_THISEND
+ for(std::vector<NThingMap::CThingMap*>::const_iterator it=maps.begin();it!=AreaMaps.end();++it){
+#else
  for(std::vector<NThingMap::CThingMap*>::const_iterator it=maps.begin();it!=maps.end();++it){
+#endif
   const NThingMap::CThingMap& map=**it;
   C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
   for(long layer=0;layer<NThingMap::MaxLayers;++layer){
@@ -518,7 +522,11 @@ __declspec(noinline) bool CThingSearchTools::GetPFirstThingInRoughArea(const C2D
    C2DBoxI cells(local.TLX>>shift,local.TLY>>shift,((local.BRX-1)>>shift)+1,((local.BRY-1)>>shift)+1);
    if(cells.BRX-cells.TLX==0||cells.BRY-cells.TLY==0)continue;
    for(long y=cells.TLY;y<cells.BRY;++y){
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_PASS22_FIRST_PEEKCELL
+    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#else
     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+#endif
     for(long x=cells.TLX;x<cells.BRX;++x,++cell){
      for(const NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext){
       CTCMapwho* who=node->PMapwho;
@@ -561,11 +569,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CThingSearchTools) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CThingSearchTools, WorldMap) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CThingSearchTools, PThingMapManager) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CThingSearchTools, ThingManager) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CThingSearchTools, AreaMaps) == 0xc);
+FABLE_STATIC_ASSERT_AT(564, sizeof(CThingSearchTools) == 0x18);
+FABLE_STATIC_ASSERT_AT(565, offsetof(CThingSearchTools, WorldMap) == 0x0);
+FABLE_STATIC_ASSERT_AT(566, offsetof(CThingSearchTools, PThingMapManager) == 0x4);
+FABLE_STATIC_ASSERT_AT(567, offsetof(CThingSearchTools, ThingManager) == 0x8);
+FABLE_STATIC_ASSERT_AT(568, offsetof(CThingSearchTools, AreaMaps) == 0xc);
 
 #endif // FABLE_RETAIL_CTHINGSEARCHTOOLS
 #endif // FABLE_ENGINE_CTHINGSEARCHTOOLS_H

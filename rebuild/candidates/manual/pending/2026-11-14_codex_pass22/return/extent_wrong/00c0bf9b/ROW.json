@@ -1,0 +1,30 @@
+{
+  "address": "00c0bf9b",
+  "input_kind": "never_worked",
+  "status": "EXTENT_WRONG",
+  "attempts": 0,
+  "assigned_extent": 67,
+  "input_label": "CCharString_CopyRange_FromOffset",
+  "actual_start": "00c0bf90",
+  "actual_extent": 78,
+  "already_landed": true,
+  "compile_invocations": 0,
+  "main_reviewed": true,
+  "extent_evidence": {
+    "address": "00c0bf9b",
+    "status": "EXTENT_WRONG",
+    "reason": "mid-function start inside already-landed CString::AllocCopy",
+    "actual_start": "00c0bf90",
+    "actual_end_exclusive": "00c0bfde",
+    "actual_length": 78,
+    "entry_delta": 11,
+    "assigned_length": 67,
+    "canonical_leaf": "?AllocCopy@CString@@QBEXAAV1@HHH@Z",
+    "source": "/workspace/work/codex_pass22_20261114/input/fabledecomp_codex_pass22_2026-11-14/rows/00c0bf9b/neighbours/CString_AllocCopy_00c0bf90.cpp",
+    "new_function_authored": false
+  },
+  "working_status_before_wind_down": "EXTENT_WRONG",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "EXTENT_WRONG",
+  "ready_for_claude_reverification": false
+}

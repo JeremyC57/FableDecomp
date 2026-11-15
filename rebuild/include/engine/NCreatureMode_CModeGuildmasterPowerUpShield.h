@@ -21,7 +21,13 @@ public:
 #endif
     CModeGuildmasterPowerUpShield(CThing& thing);
     CModeGuildmasterPowerUpShield(CThing& thing, float time);
+#ifdef FABLE_RETAIL_CMODEGUILDMASTERPOWERUPSHIELD_PASS22_IMPLICIT_DTOR
+    // Retail opt-in (Codex pass22): no leading vptr store at00743600; implicit destructor.
+    // Native012685F0 slot4 / FableWin024BEBF0 prove this filter override.
+    virtual const CAnimFilterBase& GetAnimFilter() const;
+#else
     virtual ~CModeGuildmasterPowerUpShield();
+#endif
     virtual unsigned long GetType() const;
     virtual void FrameUpdate();                                          // 0x008E20F0
     virtual void OnActivate();                                           // 0x008E0060
@@ -34,9 +40,9 @@ private:
     static void CheckRetailLayout();
 };
 inline void CModeGuildmasterPowerUpShield::CheckRetailLayout() {
-    FABLE_STATIC_ASSERT(sizeof(CModeGuildmasterPowerUpShield) == 0x90);
-    FABLE_STATIC_ASSERT(offsetof(CModeGuildmasterPowerUpShield, Timer) == 0x74);
-    FABLE_STATIC_ASSERT(offsetof(CModeGuildmasterPowerUpShield, Guards) == 0x84);
+    FABLE_STATIC_ASSERT_AT(37, sizeof(CModeGuildmasterPowerUpShield) == 0x90);
+    FABLE_STATIC_ASSERT_AT(38, offsetof(CModeGuildmasterPowerUpShield, Timer) == 0x74);
+    FABLE_STATIC_ASSERT_AT(39, offsetof(CModeGuildmasterPowerUpShield, Guards) == 0x84);
 }
 class CModeGuildmasterPowerUpSpeed : public CModeStandBase {
 public:
@@ -59,8 +65,8 @@ private:
     static void CheckRetailLayout();
 };
 inline void CModeGuildmasterPowerUpSpeed::CheckRetailLayout() {
-    FABLE_STATIC_ASSERT(sizeof(CModeGuildmasterPowerUpSpeed) == 0x90);
-    FABLE_STATIC_ASSERT(offsetof(CModeGuildmasterPowerUpSpeed, Guards) == 0x84);
+    FABLE_STATIC_ASSERT_AT(62, sizeof(CModeGuildmasterPowerUpSpeed) == 0x90);
+    FABLE_STATIC_ASSERT_AT(63, offsetof(CModeGuildmasterPowerUpSpeed, Guards) == 0x84);
 }
 }
 #endif

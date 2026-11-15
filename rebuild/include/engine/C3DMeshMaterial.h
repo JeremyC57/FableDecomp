@@ -4,6 +4,10 @@
 // PDB complete48-byte object. The unnamed first word and IV-counted filenames handle retain their storage.
 class C3DMeshMaterial {
 public:
+#ifdef FABLE_RETAIL_C3DMESH2_LOADBINARY
+ // Retail opt-in (Codex pass22): both-PDB exact public LoadBinary signature and native caller.
+ void LoadBinary(class CMemoryDataInputStream&,const class CGraphicDataBank*);
+#endif
 #if defined(FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS) || defined(FABLE_RETAIL_C3DMESHMATERIAL_MAPBANKINDICES)
     unsigned long GetDiffuseMapBankIndex() const{return DiffuseMapBankIndex;}
     unsigned long GetBumpMapBankIndex() const{return BumpMapBankIndex;}

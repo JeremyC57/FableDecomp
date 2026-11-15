@@ -40,6 +40,65 @@ public:
     void TransferOut(CPersistContext& context,CCharString& out,const T& value);
 #endif
 };
+#ifdef FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE
+// Full original specialisations, Ego_r TPI0xD74E/0xC4DE/0xF77B.
+#include "engine/CRGBColour.h"
+template<> class CPersistTraits<bool> {public:
+    bool DefaultVal;
+    CPersistTraits():DefaultVal() {}
+    ~CPersistTraits() {}
+    bool TransferBinaryIn(CMemoryDataInputStream&);
+    void TransferBinaryIn(CMemoryDataInputStream&,bool&);
+    void TransferBinaryOut(CDataOutputStream&,const bool&);
+    bool TransferIn(CPersistContext&,CStringParser&);
+    void TransferIn(CPersistContext&,CStringParser&,bool&);
+    void TransferOut(CPersistContext&,CCharString&,const bool&);
+};
+template<> class CPersistTraits<float> {public:
+    float DefaultVal;
+    CPersistTraits():DefaultVal() {}
+    ~CPersistTraits() {}
+    float TransferBinaryIn(CMemoryDataInputStream&);
+    void TransferBinaryIn(CMemoryDataInputStream&,float&);
+    void TransferBinaryOut(CDataOutputStream&,const float&);
+    float TransferIn(CPersistContext&,CStringParser&);
+    void TransferIn(CPersistContext&,CStringParser&,float&);
+    void TransferOut(CPersistContext&,CCharString&,const float&);
+};
+template<> class CPersistTraits<CRGBColour> {public:
+    CRGBColour DefaultVal;
+    CPersistTraits():DefaultVal() {}
+    ~CPersistTraits() {}
+    CRGBColour TransferBinaryIn(CMemoryDataInputStream&);
+    void TransferBinaryIn(CMemoryDataInputStream&,CRGBColour&);
+    void TransferBinaryOut(CDataOutputStream&,const CRGBColour&);
+    CRGBColour TransferIn(CPersistContext&,CStringParser&);
+    void TransferIn(CPersistContext&,CStringParser&,CRGBColour&);
+    void TransferOut(CPersistContext&,CCharString&,const CRGBColour&);
+};
+template<> class CPersistTraits<CCharString> {public:
+    CCharString DefaultVal;
+    CPersistTraits():DefaultVal() {}
+    ~CPersistTraits() {}
+    CCharString TransferBinaryIn(CMemoryDataInputStream&);
+    void TransferBinaryIn(CMemoryDataInputStream&,CCharString&);
+    void TransferBinaryOut(CDataOutputStream&,const CCharString&);
+    CCharString TransferIn(CPersistContext&,CStringParser&);
+    void TransferIn(CPersistContext&,CStringParser&,CCharString&);
+    void TransferOut(CPersistContext&,CCharString&,const CCharString&);
+};
+#endif
+#ifdef FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE
+#include "engine/CMemoryDataInputStream.h"
+inline void CPersistTraits<bool>::TransferBinaryIn(CMemoryDataInputStream& is,bool& value) {value=is.ReadEBOOL();}
+inline void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream& is,float& value) {float temp;is.Read(&temp,sizeof(temp));value=temp;}
+inline void CPersistTraits<CRGBColour>::TransferBinaryIn(CMemoryDataInputStream& is,CRGBColour& value) {value=is.ReadColour();}
+inline void CPersistTraits<CCharString>::TransferBinaryIn(CMemoryDataInputStream& is,CCharString& value) {value=is.ReadNullTerminatedString();}
+inline void CPersistTraits<bool>::TransferBinaryOut(CDataOutputStream& os,const bool& value) {os.WriteEBOOL(value);}
+inline void CPersistTraits<float>::TransferBinaryOut(CDataOutputStream& os,const float& value) {os.WriteFloat(value);}
+inline void CPersistTraits<CRGBColour>::TransferBinaryOut(CDataOutputStream& os,const CRGBColour& value) {os.WriteColour(value);}
+inline void CPersistTraits<CCharString>::TransferBinaryOut(CDataOutputStream& os,const CCharString& value) {os.WriteNullTerminatedString(value);}
+#endif
 #ifdef FABLE_RETAIL_CPERSISTTRAITS_TRANSFEROUT
 // The generic body (retail 0x005D8185 for unsigned long, a size-TU frame; 0x005CC6C0 for long): the value converted to a long and written
 // through CPersistTraitsSLONG::TransferOut 0x009E2560. Visible to the includer, which then knows the call never reads the empty traits
@@ -100,7 +159,9 @@ public:
     void TransferIn(CPersistContext&,CStringParser&,bool&);
 };
 #else
+#ifndef FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE
 template<> void CPersistTraits<bool>::TransferIn(CPersistContext&,CStringParser&,bool&);
+#endif
 #endif
 #ifdef FABLE_RETAIL_CPERSISTTRAITS_BOOL_BINARYOUT
 // Retail opt-in (chunk 1018, row 0x0067E290): FableWin.pdb ?TransferBinaryOut@?$CPersistTraits@_N@@QAEXAAVCDataOutputStream@@AB_N@Z (the PDB
@@ -116,9 +177,14 @@ template<> inline void CPersistTraits<bool>::TransferBinaryOut(CDataOutputStream
 // for both). Needs FABLE_RETAIL_CDATAINPUTSTREAM.
 #include "engine/CMemoryDataInputStream.h"
 template<class T> void CPersistTraits<T>::TransferBinaryIn(CMemoryDataInputStream& is,T& val) {
+#ifdef FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE
+    long tval=is.ReadSLONG();
+    val=(T)tval;
+#else
     T tval;
     is.Read(&tval,sizeof(T));
     val=tval;
+#endif
 }
 #endif
 #ifdef FABLE_RETAIL_CPERSISTTRAITS_CCHARSTRING_BINARYIN
@@ -212,6 +278,12 @@ public:
 template<> class CPersistTraits<C3DVector> {
 public:
     C3DVector DefaultVal;
+#ifdef FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE
+    // Original Ego_r TPI0x14385, declaration-only methods needed by the real transfer template.
+    void TransferBinaryIn(CMemoryDataInputStream&,C3DVector&);
+    void TransferBinaryOut(CDataOutputStream&,const C3DVector&);
+    void TransferOut(CPersistContext&,CCharString&,const C3DVector&);
+#endif
     CPersistTraits() : DefaultVal(0.0f,0.0f,0.0f) { }
     void TransferIn(CPersistContext&,CStringParser&,C3DVector&);
 };
@@ -284,4 +356,10 @@ template<class T> void FABLE_FASTCALL GFSerialiseVectorBinaryIn(CMemoryDataInput
         traits.TransferBinaryIn(is,vec[i]);
 }
 #endif
+#endif
+
+#if defined(FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE) && !defined(FABLE_PASS22_CPSCLIGHT_VECTOR_TRAITS_BODY)
+#define FABLE_PASS22_CPSCLIGHT_VECTOR_TRAITS_BODY
+inline void CPersistTraits<C3DVector>::TransferBinaryIn(CMemoryDataInputStream& is,C3DVector& value) {value=is.Read3DVector();}
+inline void CPersistTraits<C3DVector>::TransferBinaryOut(CDataOutputStream& os,const C3DVector& value) {os.Write3DVector(value);}
 #endif

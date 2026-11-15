@@ -28,7 +28,7 @@ class CDisplayEngine;                               // agentNF14: PeekDisplayEng
 namespace NGameText { class CDataBank; }
 class CFontBank;
 #endif
-#if defined(FABLE_RETAIL_CMAINGAMECOMPONENT_MAINFONT)||defined(FABLE_RETAIL_STEALTH_DRAW)
+#if defined(FABLE_RETAIL_CMAINGAMECOMPONENT_MAINFONT)||defined(FABLE_RETAIL_STEALTH_DRAW)||defined(FABLE_RETAIL_PASS22_CREATURE_GENERATOR_DEBUG)
 #include "engine/CCountedPointer.h"
 class CFontBank;
 #endif
@@ -128,7 +128,7 @@ protected:
     unsigned long NoRenderFramesSinceLastGameUpdate; // +0x16138
     unsigned long WorldSeed;                        // +0x1613C
     unsigned long LocalSeed;                        // +0x16140
-#ifdef FABLE_RETAIL_STEALTH_DRAW
+#if defined(FABLE_RETAIL_STEALTH_DRAW) || defined(FABLE_RETAIL_PASS22_CREATURE_GENERATOR_DEBUG)
     CCountedPointer<CFontBank> PDebugFont;
 #else
     unsigned char PDebugFont[8];
@@ -207,7 +207,7 @@ protected:
     void AddEventPackageSetToSave(const CGameEventPackageSet* event_package_set);   // 0x004161A7
 public:
 #endif
-#ifdef FABLE_RETAIL_STEALTH_DRAW
+#if defined(FABLE_RETAIL_STEALTH_DRAW) || defined(FABLE_RETAIL_PASS22_CREATURE_GENERATOR_DEBUG)
     const CFontBank& PeekDebugFont()const{return *PDebugFont;}
 #endif
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }

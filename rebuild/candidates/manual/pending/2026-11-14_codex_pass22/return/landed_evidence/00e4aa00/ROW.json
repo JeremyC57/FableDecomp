@@ -1,0 +1,40 @@
+{
+  "address": "00e4aa00",
+  "input_kind": "parked",
+  "status": "RELOCATION_MATCH",
+  "attempts": 15,
+  "assigned_extent": 1356,
+  "input_label": "NScript::CV_BanditTollScript::CBanditLeader::Main",
+  "baseline_status": "DIFFER",
+  "baseline_result": "/workspace/work/codex_pass22_20261114/history/00e4aa00/baseline_package/RESULT.json",
+  "assigned_name": "?Main@CBanditLeader@CV_BanditTollScript@NScript@@EAEXXZ",
+  "selected_attempt": "main_review_01",
+  "object_size": 1356,
+  "retail_size": 1356,
+  "selected_flags": [
+    "/d2inlT200"
+  ],
+  "source_strategies": 15,
+  "selected_header_changes": 0,
+  "test_status": "PASS_FRESH_VC71_OD_W3_GR_MINUS_NO_EH_AND_GCC64_CXX03",
+  "behavior_scenarios": 10240,
+  "direct_called_helper_debts": [],
+  "unselected_weak_comdat_differences": [
+    {
+      "symbol": "??_GCIsThingAlive@NScript@@UAEPAXI@Z",
+      "object_size": 30,
+      "native_size": 45,
+      "native_address": "00cdf160",
+      "note": "Not claimed as matched or separately submitted; see COMDAT_SELECTION.md"
+    }
+  ],
+  "main_verified": true,
+  "compile_invocations": 18,
+  "working_status_before_wind_down": "RELOCATION_MATCH",
+  "selection_authority": "STATUS.tsv plus BUILD.json and selected compiled source; historical progress fields are retained for traceability.",
+  "grade": "RELOCATION_MATCH",
+  "final_test_sha256": "ed7e8f3933b8d748543baed171661dc0649faad4159ecb2470d0434f0b3f6cc0",
+  "final_test_receipt": "validation/FINAL_BEHAVIOR_TESTS.json",
+  "residue": "",
+  "ready_for_claude_reverification": true
+}

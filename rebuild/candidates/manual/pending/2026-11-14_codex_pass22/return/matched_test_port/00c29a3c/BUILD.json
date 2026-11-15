@@ -1,0 +1,16 @@
+{
+  "status": "RELOCATION_MATCH",
+  "selected_attempt": "main03_preserve_prior_shared_profile",
+  "baseline": "reference/include",
+  "source": "00c29a3c.cpp",
+  "flags": [
+    "/EHsc",
+    "/Gr",
+    "/MD"
+  ],
+  "header_profile": "81b33cdf37818be487db25a9611bab3af1daf21c051d72b8bc478f731f6bb4fd",
+  "source_dependencies": [],
+  "test_adapter": null,
+  "source_sha256": "8f80b51483c34ee775dab35029f65d7a58c1fec74f438107bc47809dcdde408d",
+  "test_sha256": "f9a81cf9ad010c8b9f6244d4874fba813eaebc9ff8217bdb32c1a43b50d9273f"
+}

@@ -28,7 +28,14 @@ public:
     virtual ~CIVCountedPointeeBase() { }                                 // slot 0  0x004664E0 (scalar deleting; inline dtor)
     virtual void Delete() const;                                         // slot 1  0x0042D930
     void AddRef() const { ++IVRefCount; }                                // FableWin.pdb ?AddRef@CIVCountedPointeeBase@@QBEXXZ (inline)
-#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT
+#if defined(FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_ORIGINAL_SCOPES_PASS22)
+    // Actual FableWin018727C0..018727FC: decrement statement, separate member test, explicit else return.
+    long Release() const {
+        --IVRefCount;
+        if(IVRefCount==0) { Delete(); return 0; }
+        else { return IVRefCount; }
+    }
+#elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT)
     // Nested opt-in (chunk 2048, row 0x00B64FA0 RenderClouds): the release that deletes the pointee itself, the new count held in a
     // named local. FableWin.pdb ?Release@CIVCountedPointeeBase@@QBEJXZ (0x018727C0) is 24 debug instructions / 58 bytes; plain VC7.1
     // /Od of this text gives 24 / 61 (instruction count SAME; /opt/fable_lane/tools/fwsize.py), the RELEASE_DELETES text 23 / 56 and
@@ -45,7 +52,7 @@ public:
     long GetRefCount() const { return IVRefCount; }                      // FableWin.pdb ?GetRefCount@CIVCountedPointeeBase@@QBEJXZ (inline)
     mutable unsigned long IVRefCount;                                    // +0x04 (mutable: the const accessors count; see above)
 };
-FABLE_STATIC_ASSERT(sizeof(CIVCountedPointeeBase) == 0x8);
+FABLE_STATIC_ASSERT_AT(48, sizeof(CIVCountedPointeeBase) == 0x8);
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -58,9 +65,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CIVCountedPointeeBase) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
+FABLE_STATIC_ASSERT_AT(61, sizeof(CIVCountedPointeeBase) == 0x8);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CIVCountedPointeeBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 
 #endif // FABLE_RETAIL_DEF_CLASS_BASE
 

@@ -1,0 +1,4 @@
+- (0x00C6B050) Original SDK COFF can identify a wrong hero-stats label and provide exact whole490byte proof; preserve all original nested types, not old descriptive padding.
+- (0x00C6B050) The biased FtoL operation is nearest/ties-even followed by negative adjustment, not ordinary truncation at exact odd integer inputs; test those cases.
+- (0x00C6B050) Existing FtoL function projection matches490; caller-local macro projection changes loop homes/registers and adds7bytes. Both existing helper forms were checked without authoring new asm.
+- (0x00C6B050) Function-local static lexical ordinals differ between original release/debug/current compiles; preserve actual owner/identifier/content and raw private symbols, without inventing source scopes or public aliases.

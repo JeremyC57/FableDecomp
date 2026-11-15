@@ -70,7 +70,7 @@ FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long 
 #endif
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER
-#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+#if defined(FABLE_RETAIL_JACK_STAGE1_UPDATE) || defined(FABLE_RETAIL_C3DVECTOR_SQUARE_ORIGINAL_FORMAL)
 inline float FABLE_FASTCALL GFSqr(float n){return n*n;}
 #else
 inline float FABLE_FASTCALL GFSqr(float value){return value*value;}
@@ -133,6 +133,10 @@ public:
     void Clear() { X=Y=Z=0.0f; }
 #endif
     C3DVector() {}
+#ifdef FABLE_RETAIL_C3DVECTOR_ORIGINAL_COMPONENT_CTOR
+    // Original donor018A0BE0 direct X/Y/Z stores; no Initialise call.
+    C3DVector(float x,float y,float z){X=x;Y=y;Z=z;}
+#else
 #ifdef FABLE_RETAIL_C3DVECTOR_CTOR_FORCEINLINE
     // Per-TU opt-in (row 0x00CBFB7D RunCutsceneMacro; hand885 text): ??0C3DVector@@QAE@MMM@Z has no out-of-line copy in Fable.exe
     // (rebuild/oracles/reloc_bindings.tsv) or in the Ego_r.pdb name set, and retail expands it at all 30 sites of that 74 KB
@@ -140,6 +144,11 @@ public:
     FABLE_FORCEINLINE
 #endif
     C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
+#endif
+#ifdef FABLE_RETAIL_C3DVECTOR_ORIGINAL_COPY_FORMAL
+    // Original donor018BFF40 and BPREL record p.
+    C3DVector(const C3DVector& p){X=p.X;Y=p.Y;Z=p.Z;}
+#else
     #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
     C3DVector(const C3DVector& p){X=p.X;Y=p.Y;Z=p.Z;}
@@ -155,6 +164,7 @@ public:
     FABLE_FORCEINLINE
 #endif
     C3DVector(const C3DVector& other):X(other.X),Y(other.Y),Z(other.Z){}
+#endif
 #endif
 #endif
     FABLE_VECTOR_INLINE void Initialise(float x,float y,float z){X=x;Y=y;Z=z;}
@@ -213,6 +223,13 @@ public:
     // Chunk 734 (row 0x004A1CB0): FableWin.pdb ??GC3DVector@@QBE?BV0@XZ (unary minus; no out-of-line copy in retail).
     FABLE_VECTOR_INLINE const C3DVector operator-()const{return C3DVector(-X,-Y,-Z);}
     // FableWin.pdb ??TC3DVector@@QBE?BV0@ABV0@@Z (cross product; debug copy 0x01B40A20 right after GetRight 0x01B409F0, expanded in 0x004A1CB0).
+#ifdef FABLE_RETAIL_C3DVECTOR_ORIGINAL_GROUPED_CROSS_PASS22
+    FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& vector)const{return C3DVector((Y*vector.Z-Z*vector.Y),(Z*vector.X-X*vector.Z),(X*vector.Y-Y*vector.X));}
+#else
+#ifdef FABLE_RETAIL_C3DVECTOR_CROSS_ORIGINAL_FORMAL
+    // Both PDB operator^ signature; original donor01B40A20 parameter vector.
+    FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& vector)const{return C3DVector(Y*vector.Z-Z*vector.Y,Z*vector.X-X*vector.Z,X*vector.Y-Y*vector.X);}
+#else
 #ifdef FABLE_RETAIL_C3DVECTOR_CROSS_XZ_GROUP
     // Retail opt-in (row 0x0075A7A0 CTCPhysicsRigidBody::ResolveCollisions): the X and Z cross-product components parenthesised, Y
     // bare. Same arithmetic and instructions as the default; the two no-code PAREN tuples move VC7.1's scheduling-region cut so the
@@ -239,6 +256,8 @@ public:
     FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& other)const{return C3DVector(Y*other.Z-Z*other.Y,Z*other.X-X*other.Z,X*other.Y-Y*other.X);}
 #endif
 #endif // FABLE_RETAIL_C3DVECTOR_CROSS_XZ_GROUP
+#endif
+#endif
 #endif
     FABLE_VECTOR_INLINE bool operator==(const C3DVector& other)const{return X==other.X&&Y==other.Y&&Z==other.Z;}
 #ifdef FABLE_RETAIL_C3DVECTOR
@@ -499,6 +518,10 @@ public:
     // Chunk 732 (row 0x006AABE0): FableWin.pdb ?IsNonZero@C3DVector@@QBE_NXZ (debug copy 0x01B4F100; no Ego_r.pdb copy, expanded in
     // retail). Body from the row's bytes (0x006AAE00: X, Z, Y loaded in source order, then `> DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO`);
     // GetSquaredMagnitude's one-line sum cannot be reused (it loads Z, Y, X there, and 0x00AE0710 needs that one-line form).
+#ifdef FABLE_RETAIL_C3DVECTOR_ISNONZERO_ORIGINAL_YXZ
+    // Original donor01B4F100: Y square, X square, Z square, then the threshold.
+    FABLE_VECTOR_INLINE bool IsNonZero()const{return Y*Y+X*X+Z*Z>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#else
 #ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_UNPAREN
     // (same opt-in, see Normalise above)
     FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=X*X;squared+=Z*Z+Y*Y;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
@@ -522,6 +545,7 @@ public:
     FABLE_VECTOR_INLINE bool IsNonZero()const{const float& x=X;const float& y=Y;const float& z=Z;return y*y+x*x+z*z>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
 #else
     FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=X*X;squared+=Z*Z;squared+=Y*Y;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#endif
 #endif
 #endif
 #endif

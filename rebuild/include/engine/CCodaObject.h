@@ -7,7 +7,7 @@
 class CCodaObject:public CCodaObjectBase {
 public:
  virtual ~CCodaObject();
-#ifndef FABLE_RETAIL_CCODACONTEXT_PROCESS
+#if !defined(FABLE_RETAIL_CCODACONTEXT_PROCESS) && !defined(FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS) && !defined(FABLE_RETAIL_PASS22_CCODA3D_CREATE)
  virtual bool IsBuffer()const;
  virtual bool IsContext()const;
  virtual bool IsCreated()const;
@@ -17,7 +17,7 @@ public:
  virtual bool IsSource()const;
  virtual bool IsReverb()const;
  virtual bool IsVoice()const;
-#else
+#elif defined(FABLE_RETAIL_CCODACONTEXT_PROCESS)
  CCodaObject* GetNext()const{return m_pNext;}
 #endif
 private:CCodaObject* m_pPrev;CCodaObject* m_pNext;

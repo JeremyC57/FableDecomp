@@ -19,6 +19,11 @@ enum EIndexBufferPool;
 #endif
 class CEnginePrimitiveRendererSharedData : public CBaseClassNonCopyable {
 public:
+
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+ float GetDrawDistanceFactor(){return DrawDistanceFactor;}
+#endif
     EEngineOcclusionLayer GetCurrentOcclusionLayer() { return CurrentOcclusionLayer; }   // ?GetCurrentOcclusionLayer@CEnginePrimitiveRendererSharedData@@QAE?AW4EEngineOcclusionLayer@@XZ
     bool GetOcclusionEnable() { return OcclusionEnable; }                               // ?GetOcclusionEnable@CEnginePrimitiveRendererSharedData@@QAE_NXZ
     float GetRepeatedMeshDrawDistanceFactor() { return RepeatedMeshDrawDistanceFactor; } // ?GetRepeatedMeshDrawDistanceFactor@CEnginePrimitiveRendererSharedData@@QAEMXZ

@@ -6,6 +6,30 @@
 // One model for every translation unit (Codex pass 11 consolidation).
 // Genuine names, class keys, inheritance and full native three-word tree storage.
 namespace std {
+#ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
+// Original STLport type_traits.h283..350,389..404 compatibility default-construction path.
+template<class T>struct _Is_integer{typedef __false_type _Integral;};
+#define FABLE_PASS22_STLP_INTEGER(T) template<>struct _Is_integer<T>{typedef __true_type _Integral;};
+FABLE_PASS22_STLP_INTEGER(bool)
+FABLE_PASS22_STLP_INTEGER(char)
+FABLE_PASS22_STLP_INTEGER(signed char)
+FABLE_PASS22_STLP_INTEGER(unsigned char)
+FABLE_PASS22_STLP_INTEGER(short)
+FABLE_PASS22_STLP_INTEGER(unsigned short)
+FABLE_PASS22_STLP_INTEGER(int)
+FABLE_PASS22_STLP_INTEGER(unsigned int)
+FABLE_PASS22_STLP_INTEGER(long)
+FABLE_PASS22_STLP_INTEGER(unsigned long)
+FABLE_PASS22_STLP_INTEGER(__int64)
+FABLE_PASS22_STLP_INTEGER(unsigned __int64)
+#if !defined(_MSC_VER) || defined(_NATIVE_WCHAR_T_DEFINED)
+FABLE_PASS22_STLP_INTEGER(wchar_t)
+#endif
+#undef FABLE_PASS22_STLP_INTEGER
+template<class T>inline T __default_constructed_aux(T*,const __false_type&){return T();}
+template<class T>inline T __default_constructed_aux(T*,const __true_type&){return T(0);}
+template<class T>inline T __default_constructed(T*p){typedef typename _Is_integer<T>::_Integral Integral;return __default_constructed_aux(p,Integral());}
+#endif
 template<class P> struct _Select1st:public unary_function<P,typename P::first_type>{const typename P::first_type& operator()(const P& p)const{return p.first;}};
 typedef bool _Rb_tree_Color_type;
 struct _Rb_tree_node_base {
@@ -16,6 +40,9 @@ struct _Rb_tree_node_base {
 };
 template<class V> struct _Rb_tree_node:public _Rb_tree_node_base { V _M_value_field; };
 template<class Dummy> class _Rb_global {
+#ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
+public:
+#endif
     typedef _Rb_tree_node_base* _Base_ptr;
 public:
     static void __cdecl _Rebalance(_Rb_tree_node_base*,_Rb_tree_node_base*&);
@@ -24,6 +51,9 @@ public:
     // out of line (0x0042A34E, landed ?_Rebalance_for_erase@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@AAPAU32@11@Z).
     static _Rb_tree_node_base* __cdecl _Rebalance_for_erase(_Rb_tree_node_base*,_Rb_tree_node_base*&,_Rb_tree_node_base*&,_Rb_tree_node_base*&);
 #endif
+#ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
+    static _Rb_tree_node_base* __cdecl _M_decrement(_Rb_tree_node_base* _M_node);
+#else
     static _Rb_tree_node_base* __cdecl _M_decrement(_Rb_tree_node_base* _M_node) {
   if (_M_node->_M_color == false && _M_node->_M_parent->_M_parent == _M_node)
     _M_node = _M_node->_M_right;
@@ -43,6 +73,7 @@ public:
   }
   return _M_node;
 }
+#endif
     static _Rb_tree_node_base* __cdecl _M_increment(_Rb_tree_node_base* node) {
         if(node->_M_right!=0) {
             node=node->_M_right;
@@ -55,6 +86,29 @@ public:
         return node;
     }
 };
+#ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
+// Original _tree.c272: the global template member is defined out of class.
+template<class Dummy> _Rb_tree_node_base* __cdecl _Rb_global<Dummy>::_M_decrement(_Rb_tree_node_base* _M_node)
+{
+  if (_M_node->_M_color == false && _M_node->_M_parent->_M_parent == _M_node)
+    _M_node = _M_node->_M_right;
+  else if (_M_node->_M_left != 0) {
+    _Base_ptr __y = _M_node->_M_left;
+    while (__y->_M_right != 0)
+      __y = __y->_M_right;
+    _M_node = __y;
+  }
+  else {
+    _Base_ptr __y = _M_node->_M_parent;
+    while (_M_node == __y->_M_left) {
+      _M_node = __y;
+      __y = __y->_M_parent;
+    }
+    _M_node = __y;
+  }
+  return _M_node;
+}
+#endif
 typedef _Rb_global<bool> _Rb_global_inst;
 struct _Rb_tree_base_iterator {
     _Rb_tree_node_base* _M_node;
@@ -141,10 +195,16 @@ public:
     const_iterator begin()const{return const_iterator(static_cast<_Rb_tree_node<V>*>(this->_M_header._M_data->_M_left));}
     iterator end(){return iterator(this->_M_header._M_data);}
 private:
+#ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+#else
 #if defined(FABLE_RETAIL_STLP_TREE_MERASE_NOINLINE) && defined(_MSC_VER)
     // Per-TU opt-in (row 0x004BD6E0 CTCGraphicAppearance::SetPrimitive): STLport's recursive _M_erase, visible but called out of line
     // (retail 0x004BD995 `call 0x004ABA70`, the set<CCharString> COMDAT); VC7.1 otherwise expands one level of the recursion in place.
     __declspec(noinline)
+#endif
 #endif
     void _M_erase(_Rb_tree_node<V>*);
 public:
@@ -246,8 +306,22 @@ public:
     // 0x004B9C10 (landed) and erase(const key_type&) is `equal_range ; distance ; erase(first, last)`. Replaces the expanded walks
     // of the default path and of FABLE_RETAIL_STLP_TREE_ERASE_KEY for this TU (do not define both).
 private:
+#ifdef FABLE_RETAIL_STLP_TREE_BOUNDS_BODY_PASS22
+    // Retail opt-in (Codex pass22): original STLport _tree.c lower/upper walks, same visible bodies as the native TU.
+    _Rb_tree_node_base* _M_lower_bound(const K& key) const {
+        _Link_type y=this->_M_header._M_data,x=_M_root();
+        while(x!=0) { if(!_M_key_compare(_S_key(x),key)) {y=x;x=_S_left(x);} else x=_S_right(x); }
+        return y;
+    }
+    _Rb_tree_node_base* _M_upper_bound(const K& key) const {
+        _Link_type y=this->_M_header._M_data,x=_M_root();
+        while(x!=0) { if(_M_key_compare(key,_S_key(x))) {y=x;x=_S_left(x);} else x=_S_right(x); }
+        return y;
+    }
+#else
     _Rb_tree_node_base* _M_lower_bound(const K& key) const;
     _Rb_tree_node_base* _M_upper_bound(const K& key) const;
+#endif
 public:
     iterator lower_bound(const K& key) { return iterator(static_cast<_Link_type>(_M_lower_bound(key))); }
     const_iterator lower_bound(const K& key) const { return const_iterator(static_cast<_Link_type>(_M_lower_bound(key))); }
@@ -392,6 +466,19 @@ public:
     }
 #endif
 };
+#ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
+// Original STLport4.6.2 _tree.c lines633..646, actual reference-returning child accessors.
+template<class K,class V,class KeyOfValue,class Compare,class A>
+void _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_erase(_Rb_tree_node<V>* x) {
+    while(x!=0) {
+        _M_erase(_S_right(x));
+        _Link_type y=_S_left(x);
+        std::_Destroy(&x->_M_value_field);
+        this->_M_header.deallocate(x,1);
+        x=y;
+    }
+}
+#else
 template<class K,class V,class KeyOfValue,class Compare,class A>
 void _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_erase(_Rb_tree_node<V>* x) {
     while(x!=0) {
@@ -402,6 +489,7 @@ void _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_erase(_Rb_tree_node<V>* x) {
         x=y;
     }
 }
+#endif
 #ifdef FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
 // STLport 4.6.2 stl/_tree.c 345-383, including complete node construction.
 template<class K,class V,class KeyOfValue,class Compare,class A>
@@ -444,7 +532,11 @@ pair<_Rb_tree_iterator<V,_Nonconst_traits<V> >,bool> _Rb_tree<K,V,KeyOfValue,Com
     iterator j=iterator(y);
     if(comp)
         if(j==begin()) return pair<iterator,bool>(_M_insert(y,y,v),true);
+#ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
+        else j._M_node=_Rb_global_inst::_M_decrement(j._M_node);
+#else
         else --j;
+#endif
     if(_M_key_compare(_S_key(j._M_node),KeyOfValue()(v)))
         return pair<iterator,bool>(_M_insert(x,y,v),true);
     return pair<iterator,bool>(j,false);
@@ -547,6 +639,10 @@ public:
     // Retail branch (pass 12 header wave, 0x00E0A820): STLport 4.6 _map.h declares the no-argument constructor separately
     // (`map() : _M_t(_Compare(), allocator_type()) {}` and `explicit map(const _Compare&, const allocator_type& = ...)`), so a
     // default-constructed local passes no argument temporaries: retail calls ??0?$map@...@QAE@XZ (0x00CDBF70) with only `this`.
+#ifdef FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY
+    // Actual original nonvirtual destructor COMDAT00CDBFB0, called by00D29880.
+    ~map();
+#endif
     map():_M_t(Compare(),A()){}
     explicit map(const Compare& c,const A& a=A()):_M_t(c,a){}
 #else
@@ -566,11 +662,21 @@ public:
     // but the visible body lets it see that the key temporary is only read, so it hoists the loop-invariant key stores
     // (NUISystem::CList::ChangeState 0x0053A0A1) and schedules each key store right before its call (CList::ScrollUp
     // 0x005385AE / ScrollDown 0x005392FC). Regraded: 0x00E0A820 (the only landed FABLE_RETAIL_STLP_MAP user) stays matched.
+#ifdef FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+    // Retail opt-in (Pass22,00D29880): actual map index COMDAT00CD3D2E
+    // is called; its complete STLport instantiation is external to this TU.
+    V& operator[](const K&);
+#else
     V& operator[](const K& k) {
         iterator i=lower_bound(k);
+#ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
+        if(i==end() || key_comp()(k,(*i).first)) i=insert(i,value_type(k,__default_constructed((V*)0)));
+#else
         if(i==end() || key_comp()(k,(*i).first)) i=insert(i,value_type(k,V()));
+#endif
         return (*i).second;
     }
+#endif
 #else
     V& operator[](const K&);
 #endif
@@ -680,6 +786,14 @@ private:
     _Rep_type _M_t;
 public:
     typedef typename _Rep_type::iterator iterator;
+#ifdef FABLE_RETAIL_STLP_MULTIMAP_PASS22_ATMOS_ITERATION
+    // Retail opt-in (Codex pass 22): STLport 4.6 _multimap.h const iteration, 0x006B17BB..0x006B1862.
+    typedef typename _Rep_type::const_iterator const_iterator;
+    const_iterator begin() const { return _M_t.begin(); }
+#ifndef FABLE_RETAIL_STLP_MULTIMAP_CONSTFIND
+    const_iterator end() const { return _M_t.end(); }
+#endif
+#endif
     multimap():_M_t(Compare(),A()){}
     iterator insert(const value_type& x){return _M_t.insert_equal(x);}
     void clear(){_M_t.clear();}

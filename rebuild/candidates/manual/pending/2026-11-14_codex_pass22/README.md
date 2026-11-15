@@ -1,5 +1,16 @@
 # Codex pass 22 reservation (2026-11-14, owner): 100 rows handed to Codex
 
+**Returned and released 2026-11-15 (owner):** Codex's hand-back is in `return/` (START_HERE_CLAUDE.md, STATUS.tsv: 87 RELOCATION_MATCH,
+6 PARKED, 7 EXTENT_WRONG). 76 rows landed in landing gb (`../../batches/2026-11-15_landing_gb/`). `RESERVED.tsv` is renamed
+`RELEASED.tsv`, so the remaining rows are back in the normal pool (UNMATCHED_ROWS.tsv points at their files here):
+- `return/matched_test_port/`: 11 rows Codex matched but not landable yet: 9 whose behaviour tests use a per-test `test_include/`
+  directory the repo harness lacks (port the test, then land), the catch funclet 0x004A1C41 inside one of them, and 0x00C29A3C
+  (Dinkumware `vector::_Insert_n`, needs the vendor STL include order).
+- `return/parked/`: the 6 PARKED rows with Codex's closest source, test and probe notes.
+- `return/extent_wrong/`: the 7 EXTENT_WRONG reservations (interiors of landed functions; BOUNDS_FIX.tsv).
+- `return/landed_evidence/`: naming and probe notes of the 76 landed rows. Name fixes held for review:
+  `return/NAME_FIXES_CONFLICTS_WITH_QUEUE.tsv`.
+
 `RESERVED.tsv` lists them. They are off-limits to every other lane until this list is released (renamed `RELEASED.tsv`).
 None overlaps the acctC reservation (`../2026-11-13_acctC/RESERVED.tsv`).
 

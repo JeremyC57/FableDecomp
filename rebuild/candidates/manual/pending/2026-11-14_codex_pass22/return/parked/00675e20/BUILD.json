@@ -1,0 +1,12 @@
+{
+  "status": "PARKED",
+  "selected_attempt": "main75_correct_original_types_primary",
+  "baseline": "reference/include",
+  "source": "00675e20.cpp",
+  "flags": [],
+  "header_profile": "c899049f708f3643062603ba54f1fc39e7581cbbf45373e7a1e54d4f66a9c47a",
+  "source_dependencies": [],
+  "test_adapter": "test_include",
+  "source_sha256": "f6014a22847e4a20928d493f96fe0725d08cf3898e1c22a7652677ab23d4ad88",
+  "test_sha256": "c46bdcc65cd09677d7ce8de28cd884fab201bc8f6776e632e74a95851476fb4b"
+}

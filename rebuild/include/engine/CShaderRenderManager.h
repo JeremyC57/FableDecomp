@@ -70,6 +70,389 @@ class CVertexShader;
 class CVertexBufferWin32;
 class CIndexBuffer;
 
+#ifdef FABLE_RETAIL_PASS22_SHADER_ORIGINAL_METHOD_ORDER
+// User declarations reconstructed in original PDB field-list order; generated special members remain implicit.
+class CShaderRenderManager : public CBaseClassNonCopyable {
+public:
+CShaderRenderManager();
+public:
+virtual ~CShaderRenderManager();
+public:
+static CShaderRenderManager& __fastcall Get() { return SingletonInstance; }
+public:
+void Initialise(CRenderManager* render_manager, IDirect3DDevice9* d3ddevice);
+public:
+void Uninitialise();
+public:
+void ResetStats();
+public:
+void GetStatsText(CCharString&, unsigned long);
+public:
+void SetVertexShaderConstantLayout(long index);
+public:
+long PeekVertexShaderConstantLayout() { return CurrentVSConstantLayoutIndex; }
+public:
+void SetVertexShadersEnable(bool enable, bool* old) { if (old) *old = VertexShadersEnabled; if (enable != VertexShadersEnabled) { if (enable) EnableVertexShaders(); else DisableVertexShaders(); } }
+public:
+void EnableVertexShaders();
+public:
+void ApplyVertexShader(const CVertexShader& shader, bool force);
+public:
+void DisableVertexShaders();
+public:
+void SetPixelShadersEnable(bool enable, bool* old) { if (old) *old = PixelShadersEnabled; if (enable != PixelShadersEnabled) { if (enable) EnablePixelShaders(); else DisablePixelShaders(); } }
+public:
+void EnablePixelShaders();
+public:
+void ApplyPixelShader(const CPixelShader& shader);
+public:
+void DisablePixelShaders();
+public:
+bool GetPixelShadersEnabled() const;
+public:
+bool GetVertexShadersEnabled() const;
+public:
+bool IsFixedFunctionVertexMode() const;
+public:
+FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
+    {
+        if (UpdateFlags & UPDATE_FLAG_RESERVED_VS_PRESETS)
+            SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetAsCArray(),
+                           CurrentVSConstantLayout->ReservedPresets.size());
+        if (UpdateFlags & UPDATE_FLAG_PIXEL_SHADER)
+            UpdatePixelShader();
+        if (UpdateFlags & UPDATE_FLAG_PIXEL_SHADER_CONSTANTS)
+            UpdatePixelShaderConstants();
+        if ((flags & 0x400) && (UpdateFlags & UPDATE_FLAG_BONE_TRANSFORM))
+            UpdateBoneTransform();
+        if (flags & 0x40) {
+            if (UpdateFlags & UPDATE_FLAG_WORLD_SPACE_TEXTURE_TRANSFORM)
+                UpdateWorldSpaceTextureTransform();
+        } else if (flags & 0x80) {
+            if (UpdateFlags & UPDATE_FLAG_OBJECT_SPACE_TEXTURE_TRANSFORM)
+                UpdateObjectSpaceTextureTransform();
+        }
+        if (flags & 0x200) {
+            if (UpdateFlags & UPDATE_FLAG_WORLD_SPACE_FOG_TRANSFORM)
+                UpdateWorldSpaceFogTransform();
+        } else if (flags & 0x100) {
+            if (UpdateFlags & UPDATE_FLAG_OBJECT_SPACE_FOG_TRANSFORM)
+                UpdateObjectSpaceFogTransform();
+        }
+        if (UpdateFlags & UPDATE_FLAG_AMBIENT)
+            UpdateAmbient();
+        if (UpdateFlags & UPDATE_FLAG_FOG_COLOUR)
+            UpdateFogColour();
+        if (UpdateFlags & UPDATE_FLAG_LIGHT_GLOBALS)
+            UpdateLightGlobals();
+        if (flags & 8) {
+            if (UpdateFlags & UPDATE_FLAG_OBJECT_SPACE_LIGHTING)
+                UpdateObjectSpaceLighting(flags);
+        } else if (flags & 0x10) {
+            if (UpdateFlags & UPDATE_FLAG_WORLD_SPACE_LIGHTING)
+                UpdateWorldSpaceLighting();
+        }
+        if ((flags & 0x20) && (UpdateFlags & UPDATE_FLAG_LOCALISED_SPHERE_MAPPING))
+            UpdateLocalisedSphereMapping();
+        if (!(flags & 1) && !WorldMatrixIsIdentity)
+            ResetWorldTransform();
+        if (UpdateFlags & UPDATE_FLAG_COMBINED_PROJECTION_TRANSFORM)
+            UpdateCombinedProjectionTransform();
+        if ((flags & 4) && (UpdateFlags & UPDATE_FLAG_CAMERA_POS))
+            UpdateCameraPos();
+    }
+public:
+void SelectVertexBuffer(CVertexBufferWin32& buffer);
+public:
+void DrawBuffersIndexed(const CTexture**, unsigned long, CVertexBufferWin32&, unsigned long, unsigned long, CIndexBuffer&, unsigned long, unsigned long, EPrimitiveType);
+public:
+void DrawBuffersIndexed(const CTexture**, unsigned long, unsigned long, unsigned long, CIndexBuffer&, unsigned long, unsigned long, EPrimitiveType);
+public:
+void DrawBuffersIndexed(CVertexBufferWin32&, unsigned long, unsigned long, CIndexBuffer&, unsigned long, unsigned long, EPrimitiveType);
+public:
+void DrawBuffersIndexed(unsigned long, unsigned long, CIndexBuffer&, unsigned long, unsigned long, EPrimitiveType);
+public:
+void DrawBuffersNonIndexed(const CTexture**, unsigned long, CVertexBufferWin32&, unsigned long, unsigned long, EPrimitiveType);
+public:
+void DrawBuffersNonIndexed(CVertexBufferWin32&, unsigned long, unsigned long, EPrimitiveType);
+public:
+void SetWorldTransform(const CMatrix3x4& matrix);
+public:
+void ResetWorldTransform();
+public:
+void SetBoneTransform(unsigned long index, const CMatrix3x4& matrix);
+public:
+void SetBoneTransformTransposed(unsigned long, const CMatrix4x4&);
+public:
+void SetBoneTransforms(long, long, const CPreTransposedBoneMatrix*);
+public:
+void SetViewTransform(const CMatrix3x4&);
+public:
+void SetCameraPos(const C3DVector&);
+public:
+void SetProjectionTransform(const CMatrix4x4&);
+public:
+void SetProjectionTransform(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float);
+public:
+void SetProjectionTransform(float, float, float, float);
+public:
+void SetTextureTransform(unsigned long stage, const CMatrix3x4& matrix);
+public:
+void SetTextureTransformCount(long count);
+public:
+void SetFogTransform(const C4DVector& transform);
+public:
+void SetXBoxUserVertexShaderConstant(long, const CRGBFloatColour&);
+public:
+FABLE_FORCEINLINE void SetBoneMatrixCount(long count)
+    {
+        BoneMatrices.resize(count, CPreTransposedBoneMatrix());
+    }
+public:
+void SetShadowTextureTransform(const CMatrix4x4&);
+public:
+void SetShadowFadeTransform(const C4DVector&);
+public:
+void SetShadowFadeFactors(float, float, float);
+public:
+void SetShadowSpotLightFallloffParameters(const CMatrix3x4&, float, float, const CRGBFloatColour&);
+public:
+void ResetLight(unsigned long);
+public:
+void InitialiseLight(unsigned long, const CShaderGenericLight&);
+public:
+void InitialiseLight(unsigned long, const CShaderLight&);
+public:
+void SetLightGlobal(unsigned long, const C4DVector&);
+public:
+void SetPixelShaderConstant(const CCharString&, const C4DVector&);
+public:
+FABLE_FORCEINLINE void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
+    {
+        *(PSConstTable.begin() + index) = value;
+        UpdateFlags |= 2;
+    }
+public:
+long GetPixelShaderConstantTableIndex(const CCharString&);
+public:
+void SetAmbientColour(const CRGBFloatColour&);
+public:
+void SetFogColour(const CRGBFloatColour&);
+public:
+void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);
+public:
+void SetUserVertexShaderConstant(unsigned long index, const C4DVector& value);
+public:
+void SetUserVertexShaderConstant(unsigned long index, const C3DVector& value, float w);
+public:
+void SetUserVertexShaderConstant(unsigned long index, const CRGBFloatColour& value);
+public:
+void SetPosCompressionVertexShaderConstant(float, float, float, float, float, float, float, float);
+public:
+void SetPosCompressionVertexShaderConstant(float, float, float, float, float, float);
+public:
+void SetUVCompressionVertexShaderConstant(float, float, float, float);
+public:
+void SetUserVertexShaderConstants(unsigned long index, long count, float* values);
+public:
+unsigned long GetMaxUserVertexShaderConstants() const;
+public:
+void SetVertexShaderConstantsDirect(unsigned long, const void*, unsigned long);
+public:
+bool GetSoftwareVertexShaderEnable() const;
+public:
+bool GetSoftwareFixedFunctionEnable() const;
+public:
+void SetSoftwareVertexShaderEnable(bool);
+public:
+void SetSoftwareFixedFunctionEnable(bool);
+public:
+CCountedPointer<CShaderResource> CreateResource();
+public:
+CVertexShader GetFixedFunctionVertexShader(EVertexType);
+public:
+IDirect3DDevice9* GetD3DDevice();
+public:
+long GetMaximumLights();
+public:
+void RegisterVertexShaderConstantLayout(long index, const CVertexShaderConstantLayout* layout);
+public:
+void UnregisterVertexShaderConstantLayouts();
+public:
+void OnPostViewportChanged();
+public:
+void SetMultisampleViewportScale(float);
+private:
+unsigned long CreateFixedFunctionVertexShader(const unsigned long*);
+private:
+CPixelShader CreatePixelShader(const CArray<unsigned long>&, const CArray<CCharString>&, const CCharString&);
+public:
+enum { MAX_SOFTWARE_LIGHTS=16, MAX_HARDWARE_LIGHTS=6, MAX_TEXTURE_TRANSFORMS=1 };
+public:
+enum { UPDATE_FLAG_PIXEL_SHADER=1, UPDATE_FLAG_PIXEL_SHADER_CONSTANTS=2, UPDATE_FLAG_RESERVED_VS_PRESETS=4, UPDATE_FLAG_AMBIENT=4, UPDATE_FLAG_CAMERA_POS=8, UPDATE_FLAG_WORLD_TRANSFORM=16, UPDATE_FLAG_BONE_TRANSFORM=32, UPDATE_FLAG_PIXEL_CONSTANTS=64, UPDATE_FLAG_COMBINED_PROJECTION_TRANSFORM=128, UPDATE_FLAG_OBJECT_SPACE_LIGHTING=256, UPDATE_FLAG_WORLD_SPACE_LIGHTING=512, UPDATE_FLAG_LIGHT_GLOBALS=1024, UPDATE_FLAG_OBJECT_SPACE_TEXTURE_TRANSFORM=2048, UPDATE_FLAG_WORLD_SPACE_TEXTURE_TRANSFORM=4096, UPDATE_FLAG_WORLD_SPACE_FOG_TRANSFORM=8192, UPDATE_FLAG_OBJECT_SPACE_FOG_TRANSFORM=16384, UPDATE_FLAG_LOCALISED_SPHERE_MAPPING=32768, UPDATE_FLAG_SREEN_SPACE_TRANSFORM=65536, UPDATE_FLAG_FOG_COLOUR=131072 };
+public:
+enum { UPDATE_FLAGS_WORLD_MATRIX_DEPENDANTS=51600, UPDATE_FLAGS_HW_LIGHTING=1792 };
+public:
+class CLightInfo { public: CShaderGenericLight Light; bool IsEnabled; bool UpdateFlag; };
+private:
+void UpdatePixelShader();
+private:
+void UpdatePixelShaderConstants();
+private:
+void UpdateAmbient();
+private:
+void UpdateFogColour();
+private:
+void UpdateWorldTransform();
+private:
+void UpdateBoneTransform();
+private:
+void UpdateCombinedProjectionTransform();
+private:
+void UpdateObjectSpaceLighting(unsigned long flags);
+private:
+void UpdateWorldSpaceLighting();
+private:
+void UpdateLightGlobals();
+private:
+void UpdateObjectSpaceTextureTransform();
+private:
+void UpdateWorldSpaceTextureTransform();
+private:
+void UpdateObjectSpaceFogTransform();
+private:
+void UpdateWorldSpaceFogTransform();
+private:
+void UpdateLocalisedSphereMapping();
+private:
+void UpdateCameraPos();
+private:
+void UpdateScreenSpaceTransform();
+private:
+void SetVSVectorAsColour(const CRGBColour&, float*);
+private:
+void SetVSColourConstant(long, const CRGBFloatColour&, float);
+private:
+void SetVSColourConstant(long, const CRGBFloatColour&);
+private:
+void SetVSVectorConstant(long, const C4DVector&);
+private:
+void SetVSVectorConstant(long, const C3DVector&, float);
+private:
+void SetVSConstant(long, float, float, float, float);
+private:
+void SetVSConstants(long reg, const void* data, unsigned long count);
+private:
+void SetVSMatrixConstantTransposed(long, const CMatrix4x4&, unsigned long);
+private:
+void SetVSMatrixConstantTransposed(long, const CMatrix3x4&, unsigned long);
+private:
+void SetPSConstants(unsigned long, const void*, unsigned long);
+private:
+void SetD3DMatrix(_D3DMATRIX&, const CMatrix3x4&);
+private:
+void SetD3DMatrix(_D3DMATRIX&, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float);
+private:
+CVertexShaderConstant MultiplyMatrixColumn(const CVertexShaderConstant&, const CMatrix3x4&);
+private:
+void AllocateLights(unsigned long, unsigned long);
+private:
+CVertexShaderConstantLayout* CurrentVSConstantLayout;
+private:
+long CurrentVSConstantLayoutIndex;
+private:
+CArray<const CVertexShaderConstantLayout*> VertexShaderConstantLayouts;
+private:
+CVertexShaderConstantLayout NullConstantLayout;
+private:
+CLightInfo* Lights;
+private:
+C4DVector* LightBuffer;
+private:
+unsigned long LightCount;
+private:
+unsigned long AllocatedLights;
+private:
+unsigned long AllocatedLightSize;
+private:
+CSimpleMemoryPool LightPool;
+private:
+CArray<C4DVector> LightGlobals;
+private:
+CArray<C4DVector> LightAttenuations;
+private:
+CRGBFloatColour AmbientColour;
+private:
+CRGBFloatColour FogColour;
+private:
+CRGBColour TextureFactor;
+private:
+CRenderManager* RenderManager;
+private:
+IDirect3DDevice9* D3DDevice;
+private:
+IDirect3DVertexShader9* CurrentVertexShader;
+private:
+IDirect3DVertexDeclaration9* CurrentVertexShaderVertexDeclairation;
+private:
+CPixelShader CurrentPixelShader;
+private:
+bool WorldMatrixIsIdentity;
+private:
+unsigned char _pad_0x1e9[0x7];
+private:
+CMatrix4x4 WorldMatrix;
+private:
+CMatrix4x4 ViewMatrix;
+private:
+CMatrix4x4 ProjectionMatrix;
+private:
+CMatrix4x4 ViewProjectionMatrix;
+private:
+CMatrix4x4 CombinedProjectionMatrix;
+private:
+CMatrix4x4 TextureTransforms[1];
+private:
+C4DVector FogTransform;
+private:
+C3DVector CameraPos;
+private:
+long TextureTransformCount;
+private:
+bool VertexShadersEnabled;
+private:
+bool PixelShadersEnabled;
+private:
+bool SWLightingEnable;
+private:
+bool SoftwareVertexShaderEnable;
+private:
+bool SoftwareFixedFunctionEnable;
+private:
+bool FixedFunctionVertexMode;
+private:
+float MultisampleViewPortScale;
+private:
+CArray<CTexture>* CycleTextures;
+private:
+unsigned long NextCycleTexture;
+private:
+unsigned long CycleTextureStage;
+private:
+CArray<CCountedPointer<CShaderResource> > ResourceManagers;
+private:
+CIndexedArray<CCharString> PSConstNames;
+private:
+CArray<C4DVector> PSConstTable;
+private:
+unsigned long UpdateFlags;
+private:
+CArray<CPreTransposedBoneMatrix> BoneMatrices;
+private:
+static CShaderRenderManager SingletonInstance;
+};
+
+#else
 class CShaderRenderManager : public CBaseClassNonCopyable {
 public:
     // ?CLightInfo@CShaderRenderManager: the light record (0x38 bytes: CShaderGenericLight 0x34, IsEnabled +0x34, UpdateFlag +0x35).
@@ -324,6 +707,8 @@ private:
     unsigned long                  UpdateFlags;                          // +0x3d8
     CArray<CPreTransposedBoneMatrix> BoneMatrices;                       // +0x3dc
 };
+#endif
+
 FABLE_STATIC_ASSERT_AT(311, sizeof(CShaderRenderManager) == 0x3e8);
 
 #ifdef FABLE_RETAIL_CSHADERRENDERMANAGER_INLINE_BLOCKDRAW

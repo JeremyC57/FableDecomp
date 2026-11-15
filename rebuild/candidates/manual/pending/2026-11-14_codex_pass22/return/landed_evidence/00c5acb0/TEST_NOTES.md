@@ -1,0 +1,9 @@
+# 0x00C5ACB0 behavior test
+
+The complete production CalcParams definition is pasted verbatim. TEST_BODY_SHA256.txt records its exact text hash; source header/comment-only final regrade does not alter that body. Fixture declarations project used storage and public access for testing; external engine calculations, InitParams, platform updates and 2D/3D calls are recording doubles. It does not claim native ABI/layout or implement an audio mixer.
+
+Both VC71 RTM `/Od /W3` **without /EHsc** and GCC64 `-std=c++03 -O0 -Wall -Wextra` pass8192 deterministic scenarios. The fixture checks dependency receiver/pointer and bool/flag arguments, event order, untouched flags, release-delta stores and frame conversion, and both derived dispatch targets including null source subtype results. Coverage includes all16 starting/release-due/voice3D/source3D combinations; additional independently mixed flags exercise absent/present level/multi envelopes, pitch/cutoff/both/neither, both LFOs, play-buffer existence/looping, local/platform update demand, already-released stage bits and helper update results. Signed64-bit scheduling cases straddle0, -1 and positive/negative2^32 with equal and neighbouring low halves.
+
+Math doubles return positive finite deltas0.5; current scale10 or100 yields safely interior frame truncations3/6. This checks the production log/convert expressions with float overload differences across compilers without asserting domain-error/NaN/infinite/out-of-int-range behavior or original audio helper numerics. Compiler-generated __ftol2 is the ordinary C++ cast path; no asm helper or portable twin is introduced.
+
+Initial fixture development corrected its own expected log sign by choosing scales>1 and mixed the PRNG's low bits to ensure all declared combinations execute. Production source was unchanged. Tests are independent of byte matching and do not compare retail bytes.

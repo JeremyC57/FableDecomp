@@ -41,7 +41,11 @@ public:
     void SetMin(float);
 protected:
     virtual void GetValueFromProfile();                                  // slot 150
+#ifdef FABLE_RETAIL_PASS22_SLIDER_PROCESS_EVENT
+protected:
+#else
 public:
+#endif
     C2DVector Dimensions;                                                // +0x184
     C2DVector Min;                                                       // +0x18c
     C2DVector Max;                                                       // +0x194
@@ -60,5 +64,5 @@ public:
     CComponent* PAcceptButton;                                           // +0x1e8
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NUISystem::CSlider) == 0x1ec);
+FABLE_STATIC_ASSERT_AT(63, sizeof(NUISystem::CSlider) == 0x1ec);
 #endif

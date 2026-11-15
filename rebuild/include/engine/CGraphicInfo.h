@@ -52,7 +52,7 @@ public:
     // (FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT). FITTED: which header word GetWidth returns is taken from the retail read.
     unsigned long GetWidth() const {return Header.FrameWidth;}
 #endif
-#ifdef FABLE_RETAIL_CGRAPHICINFO_PEEKGRAPHICHEADER
+#if defined(FABLE_RETAIL_CGRAPHICINFO_PEEKGRAPHICHEADER) || defined(FABLE_RETAIL_CGRAPHICINFO_PASS22_SPRITE)
     // agentC27 (row 0x009FDE80): FableWin.pdb ?PeekGraphicHeader@CGraphicInfo@@QBEABVCGraphicHeader@CGraphicDataBank@@XZ (inline). No layout change.
     const CGraphicDataBank::CGraphicHeader& PeekGraphicHeader() const {return Header;}
 #endif
@@ -129,6 +129,14 @@ private:
     CGraphicInfoFrame* Frames;
 };
 FABLE_STATIC_ASSERT_AT(121, sizeof(CGraphicInfo)==44);
+#ifdef FABLE_RETAIL_CGRAPHICINFO_PASS22_SPRITE
+// Retail opt-in (Codex pass22): exact original header accessors, native0x0077C59C..0x0077C608.
+inline unsigned long CGraphicInfoFrame::GetWidth() const { return GraphicInfo->PeekGraphicHeader().FrameWidth; }
+inline unsigned long CGraphicInfoFrame::GetHeight() const { return GraphicInfo->PeekGraphicHeader().FrameHeight; }
+inline bool CGraphicInfoFrame::IsBooleanAlpha() const { unsigned char type=GraphicInfo->PeekGraphicHeader().TransparencyType; return type==2 || type==4; }
+inline bool CGraphicInfoFrame::IsAlpha() const { return GraphicInfo->PeekGraphicHeader().TransparencyType!=0; }
+#endif
+
 #ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
 // FableWin.pdb ?GetTextureType@CGraphicInfoFrame@@QBE?AW4ETextureType@CGraphicDataBank@@XZ (inline: GraphicInfo +0xC, then +0x1C).
 inline CGraphicDataBank::ETextureType CGraphicInfoFrame::GetTextureType() const {return GraphicInfo->GetTextureType();}

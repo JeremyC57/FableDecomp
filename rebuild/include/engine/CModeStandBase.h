@@ -31,6 +31,14 @@ public:
 #ifdef FABLE_RETAIL_CMODESTANDBASE_DEACTIVATE
     virtual void OnDeactivate();
 #endif
+#ifdef FABLE_RETAIL_CMODESTANDBASE_PASS22_VTABLE
+    // Retail opt-in (Codex pass22): native slots7/9 at 00861900/0073DA00;
+    // FableWin 0283DC30/01DD6510, Ego_r 00816080 and donor body shapes.
+    // Native slot2 00862EC0; Ego_r00817670/FableWin0283F510.
+    virtual void AnimUpdate(CAnimateThing& animation);
+    virtual float GetMovementSpeed(const C3DVector&, const C3DVector&, EMovementType) const;
+    virtual bool IsAllowingPlayerSpecialMovementMoves() const;
+#endif
     virtual ~CModeStandBase();                                           // 0x0073D860 ??1CModeStandBase@@UAE@XZ
     long        IdleCounter;                                             // +0x1c
     long        FramesToKeepUpdatingMovement;                            // +0x20
@@ -46,10 +54,10 @@ public:
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PRunAnimation;       // +0x58
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PSprintAnimation;    // +0x60
 };
-FABLE_STATIC_ASSERT(sizeof(CModeStandBase) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, IdleCounter) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PoseAnimName) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PSprintAnimation) == 0x60);
+FABLE_STATIC_ASSERT_AT(49, sizeof(CModeStandBase) == 0x68);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CModeStandBase, IdleCounter) == 0x1c);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CModeStandBase, PoseAnimName) == 0x34);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CModeStandBase, PSprintAnimation) == 0x60);
 #else // flattened Ego_r layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -90,27 +98,27 @@ struct CModeStandBase {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CModeStandBase) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, IdleCounter) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, FramesToKeepUpdatingMovement) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, ForceAddNewAnims) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, MaxRunSpeed) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, MaxJogSpeed) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, MaxWalkSpeed) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PoseAnimName_PStringData) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PStandAnimation_Data) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PStandAnimation_Info) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PSlowWalkAnimation_Data) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PSlowWalkAnimation_Info) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PWalkAnimation_Data) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PWalkAnimation_Info) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PJogAnimation_Data) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PJogAnimation_Info) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PRunAnimation_Data) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PRunAnimation_Info) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PSprintAnimation_Data) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PSprintAnimation_Info) == 0x64);
+FABLE_STATIC_ASSERT_AT(93, sizeof(CModeStandBase) == 0x68);
+FABLE_STATIC_ASSERT_AT(94, offsetof(CModeStandBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(95, offsetof(CModeStandBase, IdleCounter) == 0x1c);
+FABLE_STATIC_ASSERT_AT(96, offsetof(CModeStandBase, FramesToKeepUpdatingMovement) == 0x20);
+FABLE_STATIC_ASSERT_AT(97, offsetof(CModeStandBase, ForceAddNewAnims) == 0x24);
+FABLE_STATIC_ASSERT_AT(98, offsetof(CModeStandBase, MaxRunSpeed) == 0x28);
+FABLE_STATIC_ASSERT_AT(99, offsetof(CModeStandBase, MaxJogSpeed) == 0x2c);
+FABLE_STATIC_ASSERT_AT(100, offsetof(CModeStandBase, MaxWalkSpeed) == 0x30);
+FABLE_STATIC_ASSERT_AT(101, offsetof(CModeStandBase, PoseAnimName_PStringData) == 0x34);
+FABLE_STATIC_ASSERT_AT(102, offsetof(CModeStandBase, PStandAnimation_Data) == 0x38);
+FABLE_STATIC_ASSERT_AT(103, offsetof(CModeStandBase, PStandAnimation_Info) == 0x3c);
+FABLE_STATIC_ASSERT_AT(104, offsetof(CModeStandBase, PSlowWalkAnimation_Data) == 0x40);
+FABLE_STATIC_ASSERT_AT(105, offsetof(CModeStandBase, PSlowWalkAnimation_Info) == 0x44);
+FABLE_STATIC_ASSERT_AT(106, offsetof(CModeStandBase, PWalkAnimation_Data) == 0x48);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CModeStandBase, PWalkAnimation_Info) == 0x4c);
+FABLE_STATIC_ASSERT_AT(108, offsetof(CModeStandBase, PJogAnimation_Data) == 0x50);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CModeStandBase, PJogAnimation_Info) == 0x54);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CModeStandBase, PRunAnimation_Data) == 0x58);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CModeStandBase, PRunAnimation_Info) == 0x5c);
+FABLE_STATIC_ASSERT_AT(112, offsetof(CModeStandBase, PSprintAnimation_Data) == 0x60);
+FABLE_STATIC_ASSERT_AT(113, offsetof(CModeStandBase, PSprintAnimation_Info) == 0x64);
 
 #endif // FABLE_RETAIL_CMODESTANDBASE
 

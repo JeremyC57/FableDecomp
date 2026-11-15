@@ -1,0 +1,5 @@
+#ifndef FABLE_ENGINE_EVERTEXBUFFERPOOL_H
+#define FABLE_ENGINE_EVERTEXBUFFERPOOL_H
+// Both original PDB enum records: Ego_r0x2D72, FableWin0x22CB.
+enum EVertexBufferPool {VB_POOL_DEFAULT=0,VB_POOL_MANAGED=1,VB_POOL_SYSTEM_MEM=2};
+#endif

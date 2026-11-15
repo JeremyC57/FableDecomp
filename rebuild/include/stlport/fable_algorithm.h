@@ -139,6 +139,46 @@ template<class It,class T> __declspec(noinline) It FABLE_FASTCALL find(It first,
 // the stack, `ret 4`). Declaration only: callers only relocate to the instantiation.
 template <class _InputIter, class _Tp> _InputIter FABLE_FASTCALL find(_InputIter __first, _InputIter __last, const _Tp& __val);
 #endif
+#ifdef FABLE_RETAIL_STLP_PASS22_LOWER_BOUND_COMPARE
+// STLport4.6.2 _algo.h:500..505, actual generic comparer overload. The original
+// MapperPred has matching FableWin lower_bound calls; retail calls__lower_bound.
+#ifdef FABLE_RETAIL_STLP_PASS22_LOWER_BOUND_BODY
+// Original STLport4.6.2 _iterator_base.h random-access distance/advance dispatch.
+template<class I> inline typename iterator_traits<I>::difference_type __distance(const I& a,const I& b,const random_access_iterator_tag&){return b-a;}
+#ifndef FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE
+template<class I> inline ptrdiff_t distance(const I& a,const I& b){return __distance(a,b,typename iterator_traits<I>::iterator_category());}
+#endif
+template<class I,class D> inline void __advance(I& i,D n,const random_access_iterator_tag&){i+=n;}
+#ifndef FABLE_RETAIL_STLP_ADVANCE
+template<class I,class D> inline void advance(I& i,D n){__advance(i,n,typename iterator_traits<I>::iterator_category());}
+#endif
+// Original STLport4.6.2 stl/_algobase.c:363..387, body visible as original TU.
+template<class _ForwardIter,class _Tp,class _Compare,class _Distance>
+_ForwardIter FABLE_FASTCALL __lower_bound(_ForwardIter first,_ForwardIter last,const _Tp& value,_Compare comp,_Distance*){
+    _Distance len=distance(first,last);
+    _Distance half;
+    _ForwardIter middle;
+    while(len>0){
+        half=len>>1;
+        middle=first;
+        advance(middle,half);
+        if(comp(*middle,value)){
+            first=middle;
+            ++first;
+            len=len-half-1;
+        }else len=half;
+    }
+    return first;
+}
+#else
+template<class _ForwardIter,class _Tp,class _Compare,class _Distance>
+_ForwardIter FABLE_FASTCALL __lower_bound(_ForwardIter,_ForwardIter,const _Tp&,_Compare,_Distance*);
+#endif
+template<class _ForwardIter,class _Tp,class _Compare>
+inline _ForwardIter FABLE_FASTCALL lower_bound(_ForwardIter first,_ForwardIter last,const _Tp& value,_Compare comp){
+    return __lower_bound(first,last,value,comp,(ptrdiff_t*)0);
+}
+#endif
 #ifdef FABLE_RETAIL_STLP_LOWER_BOUND
 // Retail opt-in (chunk 1021, row 0x006B3E60 CEnvironment::SetWeightedThemes): STLport 4.6 _algo.h `lower_bound(first, last, val)`,
 // a `__fastcall` COMDAT in retail (lower_bound<pair<long, float>*, pair<long, float> > 0x006B5A50, landed: first in ecx, last in

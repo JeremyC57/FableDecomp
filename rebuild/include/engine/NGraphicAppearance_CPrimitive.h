@@ -2,7 +2,10 @@
 #define FABLE_ENGINE_NGRAPHICAPPEARANCE_CPRIMITIVE_H
 #include "engine/CEnginePrimitiveHandle.h"
 namespace NGraphicAppearance {
-#ifdef _MSC_VER
+#ifdef FABLE_RETAIL_NGRAPHICAPPEARANCE_PASS22_PRIMITIVETYPE
+// Retail opt-in (Codex pass22): original Ego_r TPI0x2795e and FableWin enum.
+enum EPrimitiveType { GAPT_NONE=0,GAPT_STATIC_MESH=1,GAPT_ANIMATING_MESH=2,GAPT_MISC=3 };
+#elif defined(_MSC_VER)
 enum EPrimitiveType;
 #else
 enum EPrimitiveType {};
@@ -17,5 +20,5 @@ public:
  ~CPrimitive();
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NGraphicAppearance::CPrimitive)==16);
+FABLE_STATIC_ASSERT_AT(20, sizeof(NGraphicAppearance::CPrimitive)==16);
 #endif

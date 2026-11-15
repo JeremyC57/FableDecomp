@@ -1,0 +1,3 @@
+# Independent main review
+
+1129 target bytes; disk destructor30 and EH thunk10;105 code/data relocations plus6 EH and16 callback edges;1024 complete success/failure scenarios. Fresh main RTM13.10.3077 masked-byte comparison and complete VC71 /Od /W3 /GR- plus g++64 C++03 tests passed. Names, source/fixture, extents and helper closure reviewed. Combined53-row/167-header regression preserves all emitted C++ code and relocation names. Complete80-byte EH graph and32-byte original exception descriptor independently checked with every catch/continuation edge. No helpers counted as additional reserved rows.

@@ -1,0 +1,1 @@
+00B4BCC0: original PerspectiveTransformPoint x/y/z/w body plus plain inline and minimal row /d2inlT81 closes a former2179-byte scheduling miss. Reconstruct missing shared-header members before trusting old scheduling diagnoses; preserve original locals/scopes from raw donor procedure records.

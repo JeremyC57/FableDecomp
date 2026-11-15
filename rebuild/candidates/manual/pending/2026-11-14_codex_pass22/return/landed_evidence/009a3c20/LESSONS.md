@@ -1,0 +1,7 @@
+- 009A3C20: rawPDB retains CArray<char> data_buffer and unsignedlong BankOffsets, not old guessed unsigned-byte/signed-offset locals; use actual STLP_FILL_CHAR to recover native memset path.
+- 009A3C20: nested GlyphBank ownership and original private cache globals/types can be recovered even when older notes said no data names.
+- 009A3C20: PDB pointerattributes0x840A retain const POINTER qualifiers; cache entries/next links are constpointers, separate from const pointee.
+- 009A3C20: default VC wchar_t emits PBG; actual PB_W public ABI needs guarded builtin __wchar_t, while portable UTF16 storage uses unsignedshort.
+- 009A3C20:29source strategies plus one proven-neighborflag did not close counter allocation. Record this as unresolved, never claim impossible or successful compiler tracing from connection-timeout logs.
+- 009A3C20: source-level no-code loop variants can lower hunk count while increasing masked-byte differences; compare both(53best versus54/55).
+- Workspace: exactSHA hardlink dedup is safe for immutable history/frozen review files only; keep active row files separate and record every alias. No evidence deletion needed after ENOSPC.

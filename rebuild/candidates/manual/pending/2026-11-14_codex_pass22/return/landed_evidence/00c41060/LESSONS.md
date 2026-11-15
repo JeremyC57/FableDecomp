@@ -1,0 +1,3 @@
+- (0x00C41060) Official SDK Create differs from TLC by only a Release virtual slot; recover the real version-specific interface rather than propagate the hero/camera labels.
+- (0x00C41060) Constructors alone did not repair vector copies; the actual emitted25byte componentwise operator= body did, removing pointer/register webs.
+- (0x00C41060) Correct external visibility of the existing SetError call plus grouping fMacroFx with other gains restores the exact tail lifetime and621bytes, with no scheduler devices.
