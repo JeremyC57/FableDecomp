@@ -86,6 +86,16 @@ overlay made of exactly the headers in `hdrdiff/`.
 2. `fable_assert.h` is NOT in the repo (10 folders carry it as `NEW_fable_assert.h`; all copies are agentC6's header, and
    wfC1's copy adds one macro, `FABLE_RETAIL_ASSERT_ARM`). It must land with the rows that use dead release asserts
    (0x00CBFB7D, 0x00E50FD0, 0x00E3BB70, 0x00BBAC60, 0x00B5CA70 and others: grep `FABLE_RETAIL_ASSERT` in the sources).
+   **Owner decision (2026-11-15): dead asserts stay as they are, provided each row carries a note saying why they are
+   there.** Every staged source that uses `FABLE_RETAIL_ASSERT` has that note in its header comment (an `// Inferred:` line,
+   or for 0x00BA5260 the header paragraph on its 18 + 1 asserts). Why they are there, in general: the debug build expands
+   Lionhead's ASSERT to a real check; retail carries no assert code, but the release macro left a dead branch the compiler
+   still saw before deleting it, and that dead code feeds VC7.1's ordering and inline-size decisions. A lab run on
+   2026-11-15 (21 assert-using rows, independently re-run) ruled out the forms that vanish in preprocessing (`((void)0)`,
+   `sizeof`), `__assume`, a stub call and `if (0 && (c)) {}`: only the debug body behind `if (0)` inside `do { } while (0)`
+   matches broadly (20 of 21; 0x00CBFB7D also needs the unwrapped `FABLE_RETAIL_ASSERT_ARM`). Counts and conditions are
+   inferred, not recovered: our macro is lighter than the original, so a row can need more copies than the function really
+   had (0x004A3740: 79..87 identical copies with this macro, 35..38 with a full-debug-text form; only the total matters).
 3. Rows with companion headers: 0x0121F86F needs 126 `engine/CAIStateGroup_*.h` overlay headers (one shared opt-in
    `FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC`); 0x0044C72B needs 69 `FABLE_RETAIL_<CLASS>_ALLOC` opt-ins; 0x00B1C880 /
    0x00B1F200 / 0x00B1E380 need the new `engine/CPSCDecalRenderer.h`; 0x00678760 needs new `engine/CReactionMatch*.h`.
