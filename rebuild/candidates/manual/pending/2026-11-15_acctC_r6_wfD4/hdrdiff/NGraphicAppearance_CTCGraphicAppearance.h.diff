@@ -1,0 +1,22 @@
+--- a/rebuild/include/engine/NGraphicAppearance_CTCGraphicAppearance.h
++++ b/rebuild/include/engine/NGraphicAppearance_CTCGraphicAppearance.h
+@@ -164,6 +164,11 @@
+     CPrimitive* AddPersistentPrimitive(const CPrimitive&);
+     void SetPrimitiveGraphics(CPrimitive*,const CEnginePrimitive&,unsigned short);
+ #endif
++#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_REFRESHPRIMITIVEPOS
++    // agentC30 (row 0x007E15C0): Ego_r.pdb ?RefreshPrimitivePos@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCPrimitive@2@ABVC3DPositionInterpolator@@ABVC3DOrientationInterpolator@@@Z,
++    // out of line at 0x004BC340 (landed row). A declaration only.
++    void RefreshPrimitivePos(CPrimitive*, const C3DPositionInterpolator&, const C3DOrientationInterpolator&);
++#endif
+ #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_RANDOMMORPH
+     // Nested opt-in (row 0x00727D00 CTCRandomAppearanceMorph::OnAppearanceDraw; needs _MOVEMENT and _FLARE; GetFullScale 0x004BBFF0
+     // comes from _FULLSCALE): Ego_r.pdb ?GetAlpha@..@@QBEEXZ (inline in retail: `mov dl,[esi+5Ah]`), ?GetTintColour@..@@QBE?BVCRGBColour@@XZ
+@@ -296,6 +301,6 @@
+ };
+ }
+ #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
+-FABLE_STATIC_ASSERT(sizeof(NGraphicAppearance::CTCGraphicAppearance)==0x5c);
++FABLE_STATIC_ASSERT_AT(299, sizeof(NGraphicAppearance::CTCGraphicAppearance)==0x5c);
+ #endif
+ #endif

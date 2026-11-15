@@ -1,0 +1,18 @@
+--- a/rebuild/include/engine/CRenderStateCaptureBlock.h
++++ b/rebuild/include/engine/CRenderStateCaptureBlock.h
+@@ -21,7 +21,15 @@
+     CRenderStateCaptureBlock() : Open(false) { }
+     ~CRenderStateCaptureBlock() { if (Open) Restore(); }
+     void Capture() { StateManager->StartCaptureBlock(this); Open = true; }
++#ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_RESTORE_OPEN_FIRST
++    // Nested opt-in (agentC8, row 0x00B783F0 CEngineWaterRenderer::Render): Open cleared before the RestoreCaptureBlock call -- retail
++    // 0x00B7911F..0x00B7912A `mov ecx,[StateManager] ; mov byte ptr [esp+24h],0 ; call 0x00A05840` (the block's address has escaped
++    // through StartCaptureBlock(this), so VC7.1 cannot move the store above the call: the source order is store first), as the
++    // INLINE_DTOR opt-in's `Open = false; StateManager->RestoreCaptureBlock();`.
++    void Restore() { Open = false; StateManager->RestoreCaptureBlock(); }
++#else
+     void Restore() { StateManager->RestoreCaptureBlock(); Open = false; }
++#endif
+     static void __fastcall SetStateManager(CRenderStateManager* manager);
+ private:
+     bool Open;

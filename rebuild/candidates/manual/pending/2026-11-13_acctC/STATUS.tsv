@@ -73,7 +73,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b70a90	MATCHED_STAGED	3567	2026-11-15_acctC_r5_wfE6	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEngineWaterRenderer::RenderEnvironmentMap
 00bb30a0	MATCHED_STAGED	3538	2026-11-13_acctC_c19a	C6 -> C8; shared helper texts + 1 assert + 5 named values (fitted set, review item)	parked	CEngineClothRenderer::Render2DClothPrimitive
 005ac10e	PARKED		2026-11-15_acctC_wfE9/open	after workflow unworked/Opus round 3: near_miss DIFFER(3538v3532); 4 hunks, unchanged. Measured with c2prio --trace: the begin() local #6 (2 refs) is checked for copy forwarding (0x107820b7) and refused. It 	parked	CTCInventoryTrade::ConstructActualBuyInventoryPC
-006d1e30	PARKED		2026-11-14_acctC_wfD4open	after workflow unworked/Opus round 2: SRC_FAIL parked: draft needs ~7 header additions against today's headers	parked	CTCWife::FrameUpdate
+006d1e30	MATCHED_STAGED	3484	2026-11-15_acctC_r6_wfD4	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CTCWife::FrameUpdate
 00648820	PARKED		2026-11-15_acctC_wfE9/open	after workflow unworked/Opus round 3: parked DIFFER(3419v3464); Not reworked in this run: I put the effort into the twins and 0x00931390. It still needs a full port from the local C2DVector / C2DBoxF / CT	parked	CDrawMiniMap::Draw
 00682810	PARKED	3442	2026-11-14_acctC_wfA1b/open	after workflow unworked/Opus round 2: DIFFER(3439v3442) 3442 - ~170 near-miss: 40 masked hunks, register allocation only (equal call list 120/120, dup site right); closers: one early return for the deed log (	parked	CTCCreatureOpinionOfHero::InformOfDeed
 009d9c80	MATCHED_STAGED	3435	2026-11-14_acctC_wfD5	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	CRenderManager2D::DrawBufferedPolys
@@ -82,14 +82,14 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00715a70	PARKED		2026-11-14_acctC_wfD4open	after workflow unworked/Opus round 2: DIFFER(2860v3356) parked: baseline graded only; 496 bytes short (focus-case cross-jump)	parked	NTCScriptedControl::CActionTalkBase::SetUpCamera
 00b1c880	MATCHED_STAGED	3266	2026-11-14_acctC_wfD6	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NParticleEngine::CPSCDecalRenderer::ReadBinary
 00d82640	MATCHED_STAGED	3260	2026-11-14_acctC_wfD1	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NScript::CQ_HeroSoulsBriarScript::CBriarRose::Main
-0066cf00	PARKED		2026-11-14_acctC_wfD4open	after workflow unworked/Opus round 2: DIFFER(3236v3248) parked: frame packing (every slot differs) + x/themeDef register swap	parked	CRegionMinimap::PopulateRegionMinimap
+0066cf00	MATCHED_STAGED	3248	2026-11-15_acctC_r6_wfD4	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CRegionMinimap::PopulateRegionMinimap
 007db6a0	MATCHED_STAGED	2556	2026-11-15_acctC_wfB6p	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CTCTavernGameCardBlackjack::CardsMainGame
 00bb0970	MATCHED_STAGED	3202	2026-11-15_acctC_r5_wfE5	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEnginePrimitiveManager2DSprites::?RenderSpritePrim@CEnginePrimitiveManager2DSprites@@MAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z
 00b1f200	MATCHED_STAGED	3195	2026-11-14_acctC_wfD6	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NParticleEngine::CPSCDecalRenderer::PreparePrimitives
 00d7fe90	MATCHED_STAGED	3148	2026-11-14_acctC_wfD1	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NScript::CQ_HeroSoulsArenaScript::WatchForRoundsInArena
 00b6edf0	MATCHED_STAGED	3144	2026-11-15_acctC_r5_wfE6	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEngineWaterRenderer::BuildConstantBuffers
 00dea3f0	MATCHED_STAGED	3076	2026-11-14_acctC_wfD1	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NScript::CQ_RansomVictimScript::CVictimsBrother::Main
-00974aa0	PARKED		2026-11-14_acctC_wfD4open	after workflow unworked/Opus round 2: DIFFER(3072v3080) parked: ported to shared headers, 2928->3072; facing-block x87 spill, scale-up/fireball blocks, frame 0x808 v 0x80c	parked	CAIStateGroup_JackOfBladesStage2::Update
+00974aa0	MATCHED_STAGED	3080	2026-11-15_acctC_r6_wfD4	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CAIStateGroup_JackOfBladesStage2::Update
 00a593f0	MATCHED_STAGED	3027	2026-11-15_acctC_wfD5p	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	NBBBMaths::CCylinder::GetFirstIntersectionWithTriangle
 00f3bdd0	MATCHED_STAGED	2998	2026-11-14_acctC_wfD5	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	CTriangleStripifier2::FillInTriStrip
 0049a0b0	MATCHED_STAGED	2920	2026-11-15_acctC_wfD4b	parked-rows pass: match / PASS, coordinator-verified, rule-audited	parked	CProgressDisplay::InitialiseTextures
@@ -108,7 +108,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00e2f170	MATCHED_STAGED	2781	2026-11-14_acctC_wfA3	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	parked	CV_AmbushScamScript::SpringAmbush
 004a0d90	MATCHED_STAGED	2733	2026-11-14_acctC_wfA3	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	parked	CWorld::LoadQuestsFromFile
 00b77370	PARKED	2734	2026-11-14_acctC_wfA4open	workflow unworked/Opus: DIFFER(2798v2734): one inline decision at 0x00B77AE9	parked	CEngineWaterRenderer::RenderSeaReflectiveForeground
-00b751f0	PARKED	2722	2026-11-14_acctC_wfA4open	workflow unworked/Opus: DIFFER(2722v2722): six test/or operand-order sites	parked	CEngineWaterRenderer::RenderIceForeground
+00b751f0	MATCHED_STAGED	2722	2026-11-15_acctC_r6_wfA4	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEngineWaterRenderer::RenderIceForeground
 00981410	PARKED	2703	2026-11-14_acctC_wfA3b/open	after workflow unworked/Opus round 2: DIFFER 2700v2703 - 2+6+25+~120 PARKED (successor-2): 782 v 782 instructions, 15 structural hunks; differ/00981410.cpp; residue layout / event register / frame (needs the 	parked	_global::AIAction_InteractWith
 00acdb80	MATCHED_STAGED	2674	2026-11-14_acctC_wfA3b	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	QuadricOptimiserInternals::COptimisedPrimitive::COptimisedPrimitive
 0068cb90	MATCHED_STAGED	2339	2026-11-14_acctC_wfA2	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	parked	CInputProcessControlFreeCamera::CInputProcessControlFreeCamera::ProcessInput
