@@ -20,7 +20,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00ba5260	PARKED	4056	2026-11-14_acctC_wfB3open	after workflow parked/Fable; RELOCATION_MATCH inside the TU (C19, C20) but the TU needs the real 00ba2350 body; lands with it; test not written	parked	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitive
 00bcc800	MATCHED_STAGED	3205	2026-11-14_acctC_wfB4	workflow parked/Fable: match / PASS, verifier + coordinator-verified	parked	CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
 0048e78e	PARKED	2662	2026-11-14_acctC_wfA2/open	workflow unworked/Opus: DIFFER(2662v2662), 14 hunks	parked	CSubtitleRenderer::DrawButtonGraphics
-00cbfb7d	IN_PROGRESS	74778		workflow big-rows/Fable batch wfC1; earlier lane draft DIFFER(74846v74778), 96.7% of instructions equal	parked	_global::RunCutsceneMacro
+00cbfb7d	MATCHED_STAGED	74778	2026-11-14_acctC_wfC1	workflow big rows/Fable: match / PASS, verifier + coordinator-verified, shared-header fix-up done	parked	_global::RunCutsceneMacro
 00f0fb70	MATCHED_STAGED	18144	2026-11-14_acctC_wfC2	workflow big rows/Fable: match / PASS, verifier + coordinator-verified	parked	NScript::CQ_ArenaScript::Main
 00d45060	IN_PROGRESS			workflow unworked/Opus round 3 batch wfE4	parked	NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks
 00e20600	IN_PROGRESS			workflow unworked/Opus round 3 batch wfE4	parked	NScript::CQR_EscortTraderScript::CTraderToEscort::Main

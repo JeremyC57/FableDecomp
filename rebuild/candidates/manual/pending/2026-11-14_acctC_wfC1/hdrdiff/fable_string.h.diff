@@ -1,0 +1,56 @@
+--- a/rebuild/include/fable_string.h
++++ b/rebuild/include/fable_string.h
+@@ -1,5 +1,8 @@
+ #pragma once
+ #include "fable_compiler.h"
++#ifdef FABLE_RETAIL_CCHARSTRING_STARTSWITH_ASSERT
++#include "fable_assert.h"
++#endif
+ 
+ #include <stddef.h>
+ 
+@@ -392,6 +395,16 @@
+     bool operator!=(const char*) const;
+     const CCharString& operator+=(const char*);
+     const CCharString& operator+=(const CCharString&);
++#ifdef FABLE_RETAIL_CCHARSTRING_APPEND_CHAR
++    // Retail opt-in (row 0x00CBFB7D RunCutsceneMacro): Ego_r.pdb / FableWin.pdb ??YCCharString@@QAEABV0@D@Z, out of line in retail at
++    // 0x0099F180 (the macro parser appends one character: movsx eax,byte ptr [..] ; push eax ; call). Declaration only.
++    const CCharString& operator+=(char);                       // 0x0099F180
++#endif
++#ifdef FABLE_RETAIL_CCHARSTRING_APPEND_COUNT
++    // Retail opt-in (row 0x00CBFB7D RunCutsceneMacro, SetLightScene verb): Ego_r.pdb / FableWin.pdb ?Append@CCharString@@QAEXDK@Z, out
++    // of line in retail at 0x0099F3B0 (operator+=(char) 0x0099F180 calls the same helper with count 1). Declaration only.
++    void Append(char c, unsigned long count);                  // 0x0099F3B0
++#endif
+     // Inline in retail (no out-of-line copy is bound): ?GetLength@CCharString@@QBEJXZ (Ego_r + FableWin), ?IsEmpty@CCharString@@QBE_NXZ
+     // (FableWin 0x01D34B90); 0x00522720 tests '!PStringData || !StringLength' in place.
+     // GetLength: the null test as `PStringData==0 ? 0 : ...` lets VC7.1 reuse the zero CPU location (0x00E5EBD0 `test; je; mov eax,[eax+4];
+@@ -408,6 +421,15 @@
+     // __forceinline: the size-optimised CSubtitleRenderer TU expands it in place where a plain inline body is called out of line.
+     FABLE_FORCEINLINE bool StartsWith(const CCharString& prefix) const { return strncmp(GetAsCharArray(),prefix.GetAsCharArray(),prefix.GetLength())==0; }
+ #endif
++#if defined(FABLE_RETAIL_CCHARSTRING_STARTSWITH_ASSERT) && !defined(FABLE_RETAIL_CCHARSTRING_STARTSWITH)
++    // Retail opt-in (wfC1 G1, row 0x00CBFB7D RunCutsceneMacro): StartsWith with one dead release-ASSERT arm (fable_assert.h; no bytes).
++    // __forceinline is EVIDENCED: a plain inline body is 65 bytes and prices at 121..124 against the limit 15 at the verb tests
++    // (0x00CC04FA..), which retail expands 185 times. The dead arm is FITTED: retail's call / expand split along the row (GetLength
++    // called from 0x00CC0510, iterator== called at 0x00CC8407, vector ctors called at 0x00CD0DA4 / 0x00CD0E20 / 0x00CD0F3B, all
++    // vector<CScriptThing>::size() expanded) needs 11..16 more caller tuples per StartsWith expansion; FableWin's debug body
++    // (21 instructions / 56 bytes) holds no assert, so the true carrier of this dead IL is unknown.
++    FABLE_FORCEINLINE bool StartsWith(const CCharString& prefix) const { FABLE_RETAIL_ASSERT_ARM(PStringData != 0); return strncmp(GetAsCharArray(),prefix.GetAsCharArray(),prefix.GetLength())==0; }
++#endif
+ #ifdef FABLE_RETAIL_CCHARSTRING_STARTSWITHCASEINSENSITIVE
+     // Retail opt-in (w22 wf16 row 0x007E8590 CTCOwnedEntity::SetPOwner): FableWin.pdb ?StartsWithCaseInsensitive@CCharString@@QBE_NABV1@@Z
+     // (no Ego_r / retail out-of-line copy), inline in retail: 0x007E8789..0x007E87C6 the prefix data / length from one null test, this
+@@ -562,7 +584,7 @@
+ extern fable_i32 g_CCharStringInstanceCount_013BD800;
+ extern wchar_t g_FableEmptyWideString_0129A8E0[1];
+ 
+-FABLE_STATIC_ASSERT(sizeof(CWideStringData) == 0x10);
+-FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
+-FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
+-FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
++FABLE_STATIC_ASSERT_AT(565, sizeof(CWideStringData) == 0x10);
++FABLE_STATIC_ASSERT_AT(566, sizeof(CCharStringData) == 0x11);
++FABLE_STATIC_ASSERT_AT(567, sizeof(CWideString) == 0x04);
++FABLE_STATIC_ASSERT_AT(568, sizeof(CCharString) == 0x04);

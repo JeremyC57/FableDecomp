@@ -1,0 +1,26 @@
+--- a/rebuild/include/engine/CRGBColour.h
++++ b/rebuild/include/engine/CRGBColour.h
+@@ -16,6 +16,11 @@
+     // like the three-channel constructor below; the member-store body is 20i/51b. Same release bytes, one more inline layer.
+     CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Initialise(r,g,b,a); }
+ #else
++#ifdef FABLE_RETAIL_CRGBCOLOUR_CTOR_FORCEINLINE
++    // Per-TU opt-in (row 0x00CBFB7D RunCutsceneMacro; hand885 text): ??0CRGBColour@@QAE@EEEE@Z has no out-of-line copy in Fable.exe
++    // or the Ego_r.pdb name set; retail stores R, G, B, A in place at all six sites of that 74 KB function.
++    FABLE_FORCEINLINE
++#endif
+     CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
+ #endif
+ #ifdef FABLE_RETAIL_CRGBCOLOUR
+@@ -39,6 +44,11 @@
+     // __forceinline user copy ctor".
+     FABLE_FORCEINLINE CRGBColour(const CRGBColour& colour) { R=colour.R; G=colour.G; B=colour.B; A=colour.A; }
+ #else
++#ifdef FABLE_RETAIL_CRGBCOLOUR_CTOR_FORCEINLINE
++    // (same opt-in) the copy constructor: retail copies a by-value CRGBColour byte by byte in place, R G B then A
++    // (0x00CD0C57..0x00CD0C6D, FadeScreenOut's argument).
++    FABLE_FORCEINLINE
++#endif
+     CRGBColour(const CRGBColour& colour) { R=colour.R; G=colour.G; B=colour.B; A=colour.A; }
+ #endif
+ #ifdef FABLE_RETAIL_CRGBCOLOUR_GETASINT

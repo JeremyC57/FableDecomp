@@ -1,0 +1,33 @@
+addr       parity           behav  name
+00cbfb7d   WARN RELOC_NAME: __chkstk -> 00bfea30 labelled '__chkstk'
+00cbfb7d   WARN RELOC_NAME: ??0?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@QAE@XZ -> 004ad460 labelled 'std::_Rb_tree<T_node0x14_004ad460>::_Rb_tree'
+00cbfb7d   WARN RELOC_NAME: ?GFGetPDefinitionManager@@YAPAVCDefinitionManager@@XZ -> 00cd3ef0 labelled '_global::GetGlobal_0143e920_00cd3ef0'
+00cbfb7d   WARN RELOC_NAME: ??_H@YGXPAXIHP6EPAX0@Z@Z -> 004038c0 labelled '`vector_constructor_iterator''
+00cbfb7d   WARN RELOC_NAME: ?GetAsCharArray@CCharString@@QBEPBDXZ -> 00403a10 labelled 'CCharString::operator_char_const*'
+00cbfb7d   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00cbfb7d   WARN RELOC_NAME: ?find@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@2@ABVCCharString@@@Z -> 00cd3187 labelled 'CRegion::SetMiniMapRegionExitTextOffsetX'
+00cbfb7d   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00cbfb7d   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+00cbfb7d   WARN RELOC_NAME: ?find@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@2@ABVCCharString@@@Z -> 009ef360 labelled 'CRegion::SetMiniMapRegionExitTextOffsetX'
+00cbfb7d   WARN RELOC_NAME: ?find@?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@J@std@@@2@@2@ABVCCharString@@@Z -> 00515700 labelled 'CRegion::SetMiniMapRegionExitTextOffsetX'
+00cbfb7d   WARN RELOC_NAME: ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z -> 0041c820 labelled 'CPixelFormat::IsEquivalent'
+00cbfb7d   WARN RELOC_NAME: ?GetBestThingFromMarkerList@@YI?AVCScriptThing@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@ABV1@1_N@Z -> 00cbf13c labelled 'FindNearestEntity_ByDirection'
+00cbfb7d   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00cbfb7d   WARN RELOC_NAME: ?clear@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ -> 008ad5c0 labelled 'SetStaticCast_NUISystem::CComponent_'
+00cbfb7d   WARN RELOC_NAME: ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@@Z -> 00414de0 labelled 'CIndexBuffer::CIndexBuffer'
+00cbfb7d   WARN RELOC_NAME: ?clear@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXXZ -> 00485fe8 labelled '_unattributed::ApplyPair_00485fe8'
+00cbfb7d   WARN RELOC_NAME: ??0?$vector@UCScreenFilterSThingByPass@@V?$allocator@UCScreenFilterSThingByPass@@@std@@@std@@QAE@ABV?$allocator@UCScreenFilterSThingByPass@@@1@@Z -> 00cd2d28 labelled 'CIndexBuffer::CIndexBuffer'
+00cbfb7d   WARN RELOC_NAME: ??0?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@ABV?$allocator@VCScriptThing@@@1@@Z -> 008ac5a0 labelled 'CIndexBuffer::CIndexBuffer'
+00cbfb7d   WARN RELOC_NAME: ??1?$vector@UCScreenFilterSThingByPass@@V?$allocator@UCScreenFilterSThingByPass@@@std@@@std@@QAE@XZ -> 00cd3c8b labelled '_global::StdList_Dtor_00cd3c8b'
+00cbfb7d   WARN RELOC_NAME: ?begin@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@2@XZ -> 00cd2790 labelled 'operator--'
+00cbfb7d   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@std@@QAEAAU01@XZ -> 00cd2410 labelled '_global::RbTreeIterator_PreIncrement_00cd2410'
+00cbfb7d   WARN RELOC_NAME: ??1?$vector@JV?$allocator@J@std@@@std@@QAE@XZ -> 00cd2d0b labelled '_unattributed::ReleaseFirstMember_00cd2d0b'
+00cbfb7d   WARN RELOC_NAME: ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@QAE@XZ -> 007adb50 labelled 'CRetailTree_erase007acc50::~CRetailTree_erase007acc50'
+00cbfb7d   WARN RELOC_NAME: ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE@XZ -> 004302cd labelled 'std::list<T_004302cd>::~list'
+00cbfb7d   WARN RELOC_NAME: ??1?$vector@MV?$allocator@M@std@@@std@@QAE@XZ -> 0041971e labelled '_unattributed::ReleaseFirstMember_0041971e'
+00cbfb7d   WARN RELOC_NAME: ??1?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@XZ -> 004dcfbb labelled '_unattributed::ReleaseFirstMember_004dcfbb'
+00cbfb7d   WARN RELOC_NAME: ??1?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@QAE@XZ -> 004ac8f0 labelled 'CRetailTree_erase004aba70::~CRetailTree_erase004aba70'
+00cbfb7d   RELOCATION_MATCH PASS   RunCutsceneMacro
+
+WINS: 1
+  00cbfb7d RELOCATION_MATCH _global::RunCutsceneMacro

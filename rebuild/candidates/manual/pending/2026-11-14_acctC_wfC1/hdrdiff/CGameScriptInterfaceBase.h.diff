@@ -1,0 +1,27 @@
+--- a/rebuild/include/engine/CGameScriptInterfaceBase.h
++++ b/rebuild/include/engine/CGameScriptInterfaceBase.h
+@@ -398,7 +398,15 @@
+     virtual bool IsScreenFadingOut() const = 0;                                                          // 375 0x0088E4D0
+     virtual void Pause(float) const = 0;                                                                 // 376 0x0088E4F0
+     virtual void EndCutFade() = 0;                                                                       // 377 0x0088E520
++#ifdef FABLE_RETAIL_GSIBASE_ENDLETTERBOX_PUBLIC
++    // Retail opt-in (row 0x00CBFB7D RunCutsceneMacro; hand885 text): the cutscene verb `Fullscreen` calls slot 378 through the
++    // CGameScriptInterfaceBase* pDSTGame (0x00CD06CD `call [eax+5E8h]`), so the base declares it callable there; only the
++    // CGameScriptInterface override is protected (FableWin ?EndLetterBox@CGameScriptInterface@@MAEXXZ). Access only: no
++    // layout, slot or mangling change.
++    virtual void EndLetterBox() = 0;                                                                     // 378 0x006E7290
++#else
+     protected: virtual void EndLetterBox() = 0; public:                                                  // 378 0x006E7290
++#endif
+     virtual void PauseAllNonScriptedEntities(bool) = 0;                                                  // 379 0x00890AB0
+     virtual void PauseAllEntities(bool) = 0;                                                             // 380 0x00890B00
+     virtual void SetAllowScreenFadingOnNextRegionChange(bool) = 0;                                       // 381 0x0088E910
+@@ -938,7 +946,7 @@
+     virtual void AddGossipFactions(CCharString, CCharString) = 0;                                        // 916 0x008AA550
+     virtual void AddGossipFactions(CCharString) = 0;                                                     // 915 0x008AA590
+ };
+-FABLE_STATIC_ASSERT(sizeof(CGameScriptInterfaceBase) == 0x4);
++FABLE_STATIC_ASSERT_AT(941, sizeof(CGameScriptInterfaceBase) == 0x4);
+ 
+ #endif // FABLE_RETAIL_NSCRIPT
+ #endif // FABLE_ENGINE_CGAMESCRIPTINTERFACEBASE_H

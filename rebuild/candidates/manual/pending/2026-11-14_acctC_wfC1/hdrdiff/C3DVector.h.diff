@@ -1,0 +1,26 @@
+--- a/rebuild/include/engine/C3DVector.h
++++ b/rebuild/include/engine/C3DVector.h
+@@ -133,6 +133,12 @@
+     void Clear() { X=Y=Z=0.0f; }
+ #endif
+     C3DVector() {}
++#ifdef FABLE_RETAIL_C3DVECTOR_CTOR_FORCEINLINE
++    // Per-TU opt-in (row 0x00CBFB7D RunCutsceneMacro; hand885 text): ??0C3DVector@@QAE@MMM@Z has no out-of-line copy in Fable.exe
++    // (rebuild/oracles/reloc_bindings.tsv) or in the Ego_r.pdb name set, and retail expands it at all 30 sites of that 74 KB
++    // function, where the plain inline body is called out of line once the function's inline budget is spent.
++    FABLE_FORCEINLINE
++#endif
+     C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
+     #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+ #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+@@ -144,6 +150,10 @@
+ #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+     C3DVector(const C3DVector& p){X=p.X;Y=p.Y;Z=p.Z;}
+ #else
++#ifdef FABLE_RETAIL_C3DVECTOR_CTOR_FORCEINLINE
++    // (same opt-in) ??0C3DVector@@QAE@ABV0@@Z: no out-of-line copy in Fable.exe or Ego_r.pdb either; retail copies by value in place.
++    FABLE_FORCEINLINE
++#endif
+     C3DVector(const C3DVector& other):X(other.X),Y(other.Y),Z(other.Z){}
+ #endif
+ #endif
