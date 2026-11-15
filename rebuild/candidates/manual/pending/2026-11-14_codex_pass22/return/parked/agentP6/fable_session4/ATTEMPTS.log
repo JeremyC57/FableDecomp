@@ -1,0 +1,84 @@
+# agentP6G attempts (0x00F3E120). name | change | grade
+base_pdb_order | coordinator base, PDB order | DIFFER(1411v1411) difflines=4 ninsn=465/465
+base_u1 | coordinator base u1 | DIFFER(1411v1411) difflines=3 ninsn=465/465
+a1 | one function-scope float score | DIFFER(1411v1411) difflines=4 ninsn=465/465
+a2 | one function-scope start_vert | DIFFER(1411v1411) difflines=24 ninsn=465/465
+a3 | const float score | DIFFER(1411v1411) difflines=4 ninsn=465/465
+a4 | perfect test on score | DIFFER(1411v1411) difflines=215 ninsn=465/465
+b1 | phase 3 nested in phase 2 if | DIFFER(1411v1411) difflines=4 ninsn=465/465
+b2 | early return after phase 1 when scored | DIFFER(1411v1411) difflines=44 ninsn=465/465
+b3 | phase 3 positive test returns | DIFFER(1411v1411) difflines=4 ninsn=465/465
+b4 | phase 3 size() > 0 returns | DIFFER(1410v1411) difflines=18 ninsn=465/466
+b5 | !best_score for both zero tests | DIFFER(1411v1411) difflines=4 ninsn=465/465
+b6 | best_score == 0 int literal | DIFFER(1411v1411) difflines=4 ninsn=465/465
+b7 | best_score == 0.0 double literal | DIFFER(1411v1411) difflines=32 ninsn=465/465
+b8 | float best_score = 0 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+b9 | 1e30 double literal compare | DIFFER(1411v1411) difflines=8 ninsn=465/465
+b10 | start_surround_vert defined first | DIFFER(1411v1411) difflines=32 ninsn=465/465
+b11 | id declared in for-init inside own scope | DIFFER(1411v1411) difflines=4 ninsn=465/465
+b12 | phase 2 body wrapped in positive if | DIFFER(1411v1411) difflines=4 ninsn=465/465
+e1 | EXPERIMENT (not neutral): extra float web in phase 3 | DIFFER(1443v1411) difflines=38 ninsn=465/479
+e2 | EXPERIMENT (not neutral): third score web in phase 3 | DIFFER(1443v1411) difflines=442 ninsn=465/476
+r1 | EXPERIMENT: dummy function with 1 parameters before the row function | DIFFER(1411v1411) difflines=4 ninsn=465/465
+r2 | EXPERIMENT: dummy function with 2 parameters before the row function | DIFFER(1411v1411) difflines=4 ninsn=465/465
+r3 | EXPERIMENT: dummy function with 3 parameters before the row function | DIFFER(1411v1411) difflines=4 ninsn=465/465
+r5 | EXPERIMENT: dummy function with 5 parameters before the row function | DIFFER(1411v1411) difflines=4 ninsn=465/465
+r8 | EXPERIMENT: dummy function with 8 parameters before the row function | DIFFER(1411v1411) difflines=4 ninsn=465/465
+r13 | EXPERIMENT: dummy function with 13 parameters before the row function | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr  | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr /d2inlT60 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr /d2inlT66 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr /d2inlT68 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr /d2inlT69 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr /d2inlT71 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr /d2inlT72 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr /d2inlT73 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr /d2inlT76 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr /d2inlT80 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr /d2inlT90 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+fl | PDB base with flags /Gr /d2inlT120 | DIFFER(1411v1411) difflines=4 ninsn=465/465
+p1p | REGION-prologue (pdb base) size through a named const CArray reference | DIFFER(1411v1411) difflines=4 ninsn=465/465
+p1u | REGION-prologue (u1 base) size through a named const CArray reference | DIFFER(1411v1411) difflines=3 ninsn=465/465
+p2p | REGION-prologue (pdb base) size read into an unsigned temporary first | DIFFER(1411v1411) difflines=4 ninsn=465/465
+p2u | REGION-prologue (u1 base) size read into an unsigned temporary first | DIFFER(1411v1411) difflines=3 ninsn=465/465
+p3p | REGION-prologue (pdb base) all three declared bare, three assignment statements c,s,b | DIFFER(1411v1411) difflines=4 ninsn=465/465
+p4p | REGION-prologue (pdb base) initialisers in their own scope | DIFFER(1411v1411) difflines=4 ninsn=465/465
+p4u | REGION-prologue (u1 base) initialisers in their own scope | DIFFER(1411v1411) difflines=3 ninsn=465/465
+p5p | REGION-prologue (pdb base) score and vertex as one comma statement | DIFFER(1411v1411) difflines=4 ninsn=465/465
+p5u | REGION-prologue (u1 base) score and vertex as one comma statement | DIFFER(1411v1411) difflines=3 ninsn=465/465
+p6p | REGION-prologue (pdb base) constructor-style initialisers | DIFFER(1411v1411) difflines=4 ninsn=465/465
+p7p | REGION-prologue (pdb base) size as end() - begin() | DIFFER(1411v1411) difflines=4 ninsn=465/465
+p7u | REGION-prologue (u1 base) size as end() - begin() | DIFFER(1411v1411) difflines=3 ninsn=465/465
+p8u | REGION-prologue (u1 base) vertex_count assigned in the for-init of phase 1 | SRC_FAIL flags= ['/Gr', '/d2inlT70']
+p9p | REGION-prologue (pdb base) score and vertex initialised by chained assignment through a long zero/minus-one pair | DIFFER(1411v1411) difflines=6 ninsn=465/465
+p9u | REGION-prologue (u1 base) score and vertex initialised by chained assignment through a long zero/minus-one pair | DIFFER(1411v1411) difflines=2 ninsn=465/465
+p10p | REGION-prologue (pdb base) best_start_vert first then count then score (b,c,s) | DIFFER(1411v1411) difflines=3 ninsn=465/465
+p11p | REGION-prologue (pdb base) redundant second -1 store after the count (first store read by nothing) | DIFFER(1411v1411) difflines=4 ninsn=465/465
+p12p | REGION-prologue (pdb base) size cast to long explicitly; score from integer zero | DIFFER(1411v1411) difflines=4 ninsn=465/465
+p12u | REGION-prologue (u1 base) size cast to long explicitly; score from integer zero | DIFFER(1411v1411) difflines=3 ninsn=465/465
+p13u | REGION-prologue (u1 base) count declared const after the two results (PDB order broken on purpose) | DIFFER(1411v1411) difflines=3 ninsn=465/465
+p14p | REGION-prologue (pdb base) count through a conditional that folds: size() of a reference temp via static_cast base | DIFFER(1411v1411) difflines=4 ninsn=465/465
+p14u | REGION-prologue (u1 base) count through a conditional that folds: size() of a reference temp via static_cast base | DIFFER(1411v1411) difflines=3 ninsn=465/465
+q1 | REGION-reload1 closed-fan test reversed operands | DIFFER(1411v1411) difflines=5 ninsn=465/465
+q2 | REGION-reload1 open fan breaks first, closed fan falls to the goto | DIFFER(1411v1411) difflines=4 ninsn=465/465
+q3 | REGION-reload1 closed-fan goto with braces and else break | DIFFER(1411v1411) difflines=4 ninsn=465/465
+q4 | REGION-reload1 four arrays declared before BuildRings in phase 1 as in the fallback | DIFFER(1411v1411) difflines=19 ninsn=465/465
+q5 | REGION-reload1 calls through this-> in the scoring block | DIFFER(1411v1411) difflines=4 ninsn=465/465
+q6 | REGION-reload1 scoring block opened by a start-vertex copy local | DIFFER(1411v1411) difflines=4 ninsn=465/465
+q7 | REGION-reload1 vertex list and score in an inner scope of the scoring block | DIFFER(1395v1411) difflines=301 ninsn=465/461
+q8 | REGION-reload1 fan walk in its own scope before the scoring scope | DIFFER(1411v1411) difflines=4 ninsn=465/465
+q9 | REGION-reload1 walk loops as while with explicit increments | DIFFER(1411v1411) difflines=4 ninsn=465/465
+r1 | REGION-reload2 skip label on an empty statement | DIFFER(1411v1411) difflines=4 ninsn=465/465
+r2 | REGION-reload2 explicit continue closes the scoring block, label after it | DIFFER(1411v1411) difflines=450 ninsn=465/463
+r3 | REGION-reload2 perfect-score exit by goto to a label after the loop | DIFFER(1411v1411) difflines=4 ninsn=465/465
+r4 | REGION-reload2 perfect test nested in the improvement test | DIFFER(1443v1411) difflines=294 ninsn=465/468
+r5 | REGION-reload2 score update vertex first | DIFFER(1411v1411) difflines=4 ninsn=465/465
+r6 | REGION-reload2 perfect test negated with continue | DIFFER(1411v1411) difflines=450 ninsn=465/463
+r7 | REGION-reload2 score update as else-if chain with the perfect test | DIFFER(1411v1411) difflines=4 ninsn=465/465
+r8 | REGION-reload2 label inside the loop tail followed by the for increment only (no statement after scope) via if(1) | DIFFER(1411v1411) difflines=4 ninsn=465/465
+f1 | REGION-reload2 phase-1 score through a functional float cast | DIFFER(1411v1411) difflines=4 ninsn=465/465
+f6 | REGION-reload2 phase-1 score assigned inside the comparison | DIFFER(1411v1411) difflines=4 ninsn=465/465
+f7 | REGION-reload2 phase-1 score held as double | DIFFER(1427v1411) difflines=298 ninsn=465/469
+f8 | REGION-reload2 both phases score held as double | DIFFER(1428v1411) difflines=300 ninsn=465/470
+f9 | REGION-reload2 phase-1 improvement test as !(score <= best_score) | DIFFER(1411v1411) difflines=5 ninsn=465/465
+f10 | REGION-reload2 phase-1 perfect test against a named float local constant | DIFFER(1411v1411) difflines=4 ninsn=465/465

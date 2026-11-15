@@ -50,3 +50,16 @@ Environment: the first wine cl.exe run in a fresh container can hang (wineserver
   round-0 ids from the freed constants (0x2aaaaaab id 1, -1 id 2), two split passes that each reverse the order of `this` and
   the map. One flip anywhere fixes both reloads; HAND-15 (`return -1;` in phase 3) proves it (every byte to 0x00F3E695 equal)
   but adds its own `or eax,-1` return path. The coordinator's nine extra probes are at the end of the same log.
+
+## Fable session 4 + coordinator probes (2026-11-15): 0x00F3E120 still not matched
+- Two bases (`fable_session4/`): `base_pdb_order.cpp` (PDB declaration order; prologue right, both reload pairs swapped, 4 lines)
+  and `base_u1.cpp` (`long vertex_count;` assigned after the two initialisers: reloads right, the three prologue stores in the wrong
+  order, 3 lines). The prologue stores tie at scheduler priority 0xc00 and come out in IL order; retail's order also keeps the
+  `this` spill first, so retail's IL order is count, score, vertex and only the reload pair is open.
+- Measured chain: c2 numbers constants in forward tuple order; immediate-only constants (0x2aaaaaab, -1) are freed at round 0 in
+  hash order and `this` / vertex_link_map take their records; split rounds pop in ascending record id; the phase-1 `start_vert`
+  record (#12) goes to the lower of `this` / vertex_link_map, the other gets #72, and the reloads follow piece ids.
+- 83 hand-written grades by agentP6G (region rewrites of the prologue and both reload sites tagged in ATTEMPTS.log) and about 40
+  coordinator probes (`fable_session/ATTEMPTS_session3.log`): every byte-neutral spelling canonicalises to the same IL. Levers left:
+  a use of -1 or 0x2aaaaaab the constant walk sees but that leaves no bytes, or an extra float/integer candidate without code. The
+  debug build's body (FableWin.exe) would settle both; it is not in this container.
