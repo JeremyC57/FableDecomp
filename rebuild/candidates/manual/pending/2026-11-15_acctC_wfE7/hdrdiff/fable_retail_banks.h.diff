@@ -1,0 +1,63 @@
+--- a/rebuild/include/fable_retail_banks.h
++++ b/rebuild/include/fable_retail_banks.h
+@@ -99,6 +99,11 @@
+     CWideString GetRetailHeaderFilePath(const CCharString& bankHandle) const;   // 0x009A7ED0
+ #endif
+     void Close();
++#ifdef FABLE_RETAIL_CBANKFILEMANAGER_ISUSINGRETAILBANKS
++    // Retail opt-in (wfE7, row 0x00B3CB30): FableWin.pdb ?IsUsingRetailBanks@CBankFileManager@@QBE_NXZ (0x02DD27A0; no Ego_r.pdb or Fable.exe
++    // copy: inline, the CEngineResourceManager ctor tests the byte UsingRetailBanks +0x14 = 0x013CA7B0 in place, 0x00B3CD56).
++    bool IsUsingRetailBanks() const { return UsingRetailBanks; }
++#endif
+ private:
+     bool ReadQuotedString(CCharString& text, CDataInputStream& stream);   // 0x009A77D0
+ protected:
+@@ -110,7 +115,7 @@
+     unsigned char CreatedRetailBanks[0x0C];                              // +0x28 std::set<CWideString>
+     unsigned long FileVersion;                                           // +0x34
+ };
+-FABLE_STATIC_ASSERT(sizeof(CBankFileManager::CBankInfo) == 0x14);
++FABLE_STATIC_ASSERT_AT(113, sizeof(CBankFileManager::CBankInfo) == 0x14);
+ #ifdef FABLE_RETAIL_CBANKFILEMANAGER_HEADERPATHS
+ // (same opt-in) the manager singleton NBankFileManager::GBankFileManager at 0x013CA79C: both PDBs name its
+ // "NBankFileManager::`dynamic initializer for 'GBankFileManager''" and atexit destructor.
+@@ -157,18 +162,18 @@
+     };
+ }
+ 
+-FABLE_STATIC_ASSERT(sizeof(NBankFileManager::CContainedBank) == 0x14);
+-FABLE_STATIC_ASSERT(sizeof(NBankFileManager::CContainedBankMap) == 0x0C);
+-FABLE_STATIC_ASSERT(sizeof(NBankFileManager::CRetailBank) == 0x28);
+-FABLE_STATIC_ASSERT(
++FABLE_STATIC_ASSERT_AT(160, sizeof(NBankFileManager::CContainedBank) == 0x14);
++FABLE_STATIC_ASSERT_AT(161, sizeof(NBankFileManager::CContainedBankMap) == 0x0C);
++FABLE_STATIC_ASSERT_AT(162, sizeof(NBankFileManager::CRetailBank) == 0x28);
++FABLE_STATIC_ASSERT_AT(163, 
+     offsetof(NBankFileManager::CRetailBank, diskFile_) == 0x04);
+-FABLE_STATIC_ASSERT(
++FABLE_STATIC_ASSERT_AT(165, 
+     offsetof(NBankFileManager::CRetailBank, threadedFile_) == 0x0C);
+-FABLE_STATIC_ASSERT(
++FABLE_STATIC_ASSERT_AT(167, 
+     offsetof(NBankFileManager::CRetailBank, useDma_) == 0x14);
+-FABLE_STATIC_ASSERT(
++FABLE_STATIC_ASSERT_AT(169, 
+     offsetof(NBankFileManager::CRetailBank, containedBanksHead_) == 0x18);
+-FABLE_STATIC_ASSERT(
++FABLE_STATIC_ASSERT_AT(171, 
+     offsetof(NBankFileManager::CRetailBank, filePathStorage_) == 0x24);
+ 
+ class CBankFileManager
+@@ -196,9 +201,9 @@
+     fable_u32 retailBankVersion_;
+ };
+ 
+-FABLE_STATIC_ASSERT(sizeof(CBankFileManager::CBankInfo) == 0x14);
+-FABLE_STATIC_ASSERT(
++FABLE_STATIC_ASSERT_AT(199, sizeof(CBankFileManager::CBankInfo) == 0x14);
++FABLE_STATIC_ASSERT_AT(200, 
+     offsetof(CBankFileManager, basePathStorage_) == 0x24);
+-FABLE_STATIC_ASSERT(
++FABLE_STATIC_ASSERT_AT(202, 
+     offsetof(CBankFileManager, retailBankVersion_) == 0x34);
+ #endif // FABLE_RETAIL_CBANKFILEMANAGER

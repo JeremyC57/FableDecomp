@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+004736c4	RELOCATION_MATCH	6498	PASS	1	matched first grade; addmatch done; vland 0 RELOC_IDENTITY
+0044c72b	RELOCATION_MATCH	8995	PASS	5	matched; addmatch done; vland 0 RELOC_IDENTITY, 81 SHARED_HEADER_AVAILABLE warns (local Alloc-holder classes, RegisterTCs idiom)
+006f5c10	DIFFER(9096v8717)	8717	-	~25	parked: alias/reload residue in blocks 1-19 (see NOTES); name proven CCreatureActionBase::StatRegisterClass
+004a3740	SRC_FAIL(draft)	8948	-	2	full structural draft differ/004a3740.cpp (all cases, from the disassembly); not compiling yet: ~45 callee/member declarations to wire (work/ur_missing_members.txt)
+004804de	RELOCATION_MATCH	11203	PASS	~35	matched; addmatch done; vland 0 RELOC_IDENTITY (RELOC_NAME warns as the twin)

@@ -1,0 +1,3 @@
+address	grade	bytes	test	grades_used	notes
+00d45060	RELOCATION_MATCH	3439	PASS	~45	matched: /d2inlT53 (window T53..T60), main loop for(;;NSF){if(T)return;}, 2nd re-friend loop while (FITTED); addmatch + read-only vland clean (RELOC_NAME warn only: ~_Rb_tree at ICF-folded 0x00CDBFB0)
+00e20600	DIFFER(14510v14510)	14510	-	~325	near_miss: differ/00e20600.cpp 47 hunks; (a) predicate prologue proven unreachable with one c2 threshold (T_Main 62..63 v retail COMDAT 0x00E241B0 needing T>=64, temps needing >=79); (b) bonus arm-2 regs; (c) exit-9 frequency (retail TotallyLost block colder by 0.53..0.71); (d) alignment

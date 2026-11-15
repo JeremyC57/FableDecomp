@@ -1,0 +1,5 @@
+address	name	evidence
+0139b6e4	g_spriteRenderEnabled_0139b6e4	DESCRIPTIVE: the long RenderSingleSprite 0x00BC04F0 tests first (0x00BC04F3); no PDB/string name found; sibling 0x0139B6E0 is the landed g_particleSpriteRenderEnabled_0139b6e0
+00bae2d0	?RenderSubPrimitive@CEnginePrimitiveManager2DSprites@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	Ego_r + FableWin name sets; vtable 0x012A5664 slot 5 (vtw.py)
+0139bac8	CEnginePrimitiveManagerLines::RenderLine::indices (function-local static, DESCRIPTIVE)	only reference 0x00BC96EA (push imm, DrawAsIndexedTris index list), .data {0,1,3,0,3,2}; no PDB static-local name found
+00bc8a60	?RenderLine@CEnginePrimitiveManagerLines@@QAEXABVCEngineInternalPrimitiveLine@@@Z	Ego_r 0x00A7E160 + FableWin 0x02EC0060 name sets; reloc_bindings (called by landed RenderPrimitive 0x00BC9800)

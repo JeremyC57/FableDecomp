@@ -1,0 +1,12 @@
+address	name	evidence
+0x00DB97A0	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::Main	Ego_r.pdb + FableWin.pdb ?Main@CNOVI_Theresa@CQ_NewOakValeIntroScript@NScript@@EAEXXZ; slot 1 of entity vtable 0x012D83A4 (Alloc 0x00DAC420)
+0x00D15090	NScript::CQ_BountyHuntScript::WatchForQuestFailure	Ego_r + FableWin QAEXXZ name sets; functor stored by Main 0x00D13580 with thread name "WatchForQuestFailure"
+0x00D150F0	NScript::CQ_BountyHuntScript::WatchForQuestSuccess	same, thread name "WatchForQuestSuccess"
+0x00D151D0	NScript::CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor	same, thread name "WatchForEnableFisherCreekHutDoor"
+0x00D17340	NScript::CQ_BountyHuntScript::WatchForAllGruntsKilled	Ego_r + FableWin name sets; functor stored by Main
+0x00D15170	NScript::CQ_BountyHuntScript::TeleportData::operator=	Ego_r ??4TeleportData@CQ_BountyHuntScript@NScript@@; called by Main for teleport = TeleportInfo[i]
+0x00D15940	NScript::CQ_BountyHuntScript::CBH_GangGrunt::Alloc	Ego_r + FableWin ?Alloc@CBH_GangGrunt@...; bound by Main with "BH_GangGrunt"
+0x00D153F0	NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn::Alloc	Ego_r + FableWin ?Alloc@CBH_GangGruntSpawn@...; bound by Main with "BH_GangGruntSpawn"
+0x00DF7980	NScript::CQ_TraderConflictEvilScript::WatchTimeLimit	Ego_r + FableWin QAEXXZ; functor stored by Main 0x00DF6612 with "WatchTimeLimit"
+0x00DF9B80	NScript::CQ_TraderConflictEvilScript::PlayCutscene	FableWin ?PlayCutscene@CQ_TraderConflictEvilScript@NScript@@QAEXVCCharString@@@Z; called by Main with CS_TRADERCON_* strings
+0x00DF9E00	NScript::CQ_TraderConflictEvilScript::UpdateLiveEnemies	Ego_r + FableWin QAEXXZ; called by Main (draft)

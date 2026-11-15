@@ -1,0 +1,7 @@
+address	grade	bytes	test	grades_used	notes
+00b03ca0	DIFFER(6482v6468)	6468	-	19	/d2inlT1537 /d2inlS15; ported to shared particle overlay (wfD6 0x00B01900 model); calls equal except GetRight out of line in retail; FITTED CRGBColour out-of-line default ctor opt-in for the ??_H arrays; parked
+00b10b10	DIFFER(4280v4276)	4276	-	23	/d2inlT170; const-ref unit helper + in-place TransformVector closed 100 bytes; residue: case-2 random-vector copies via returned pointer + slots; still uses the landed siblings' local class models (shared engine/CPSCEmitterGeneric.h is a layout-only header)
+00a8b990	DIFFER(1608v1624)	1624	-	7	ported to shared headers; register-allocation residue in bone loop (chunk 864's); parked
+00a91640	DIFFER(4330v4344)	4344	-	38	C3DPrimitive2::InitialiseFromMeshFileData; successor: struct diff 93->6; residue frame 0x9C v 0xA0 + 2 register picks
+00a2f740	DIFFER(3048v3051)	3051	-	22	/Gr; ported onto today headers (new C3DMeshFile/C3DHelperPoint/CPreAllocVectorMap + opt-ins); calls equal; zero-in-esi v ebx RA residue, frame 0x174 v 0x170
+00aca830	DIFFER(7240v7256)	7256	-	52	/Gr; hand-authored on shared headers; equal calls/blocks, register/slot + one x87-order residue

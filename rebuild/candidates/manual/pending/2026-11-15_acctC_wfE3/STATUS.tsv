@@ -1,0 +1,5 @@
+address	grade	bytes	test	grades_used	notes
+00e50fd0	RELOCATION_MATCH	9885	PASS	~60	matched wfE3#3: Inferred compiled-out check (32 cond. temps -> retail's 2nd flags word); vland RELOCATION_MATCH PASS; addmatch done; FITTED wording -> coordinator decision
+00e3bb70	RELOCATION_MATCH	10149	PASS	~60	matched wfE3#3 (/d2inlT69): Inferred compiled-out check (exactly 32 cond. temps before the attacked tests); vland RELOCATION_MATCH PASS; addmatch done; FITTED wording -> coordinator decision
+00e4b5b0	DIFFER(10594v10594)	10594	-	~25	parked: frame-slot partition; packer replay (tools/ph) shows the lever = warn_timer/nearest block scoping; tb6 variant 132 hunks 10610 (see NOTES)
+00f1eed0	DIFFER(9253v9262)	9262	-	~46	hand draft; /d2inlT54 + 4 scoped ctor regions; residue = counter-loop block layout + CRGBColour ctor + one CTimer exit; succ: ~vector still expanded where retail calls (ct.sh)

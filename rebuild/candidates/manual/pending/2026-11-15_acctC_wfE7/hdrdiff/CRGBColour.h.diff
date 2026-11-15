@@ -1,0 +1,18 @@
+--- a/rebuild/include/engine/CRGBColour.h
++++ b/rebuild/include/engine/CRGBColour.h
+@@ -17,6 +17,15 @@
+     CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Initialise(r,g,b,a); }
+ #else
+     CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
++#ifdef FABLE_RETAIL_CRGBCOLOUR_SETCHANNEL
++    // Opt-in (chunk 4010, row 0x00BD3070 RenderMeshPrimitive): FableWin.pdb ?SetR / ?SetG / ?SetB / ?SetA@CRGBColour@@QAEXE@Z (debug COMDATs
++    // of 10 instructions = one member store; no Ego_r.pdb or Fable.exe copy). The row sets the tint's alpha from the sub-primitive before
++    // the float conversion (0x00BD4DE5 `mov al,[ecx+8]` .. 0x00BD4DFF `movzx eax,al`).
++    void SetR(unsigned char r) { R = r; }
++    void SetG(unsigned char g) { G = g; }
++    void SetB(unsigned char b) { B = b; }
++    void SetA(unsigned char a) { A = a; }
++#endif
+ #endif
+ #ifdef FABLE_RETAIL_CRGBCOLOUR
+     // Retail opt-in (chunk 724): the PDB's Initialise(r, g, b, a) (?Initialise@CRGBColour@@QAEXEEEE@Z) and the copy constructor

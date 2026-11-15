@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00bbac60   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00bbac60   RELOCATION_MATCH PASS   RenderLandscapeDecal
+00bc04f0   WARN RELOC_CONFLICT: ?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA -> 01396dd8 here, 01396de8 in landed 00bbc460
+00bc04f0   RELOCATION_MATCH PASS   RenderSingleSprite
+00bae2d0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00bae2d0   RELOCATION_MATCH PASS   RenderSubPrimitive
+
+WINS: 3
+  00bbac60 RELOCATION_MATCH CEnginePrimitiveManagerDecal::RenderLandscapeDecal
+  00bc04f0 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSprite
+  00bae2d0 RELOCATION_MATCH CEnginePrimitiveManager2DSprites::RenderSubPrimitive

@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/CAFile.h
++++ b/rebuild/include/engine/CAFile.h
+@@ -38,6 +38,11 @@
+     static void __fastcall SplitPath(const CCharString&,CCharString*,CCharString*,CCharString*,CCharString*);
+     static bool __fastcall PathExists(const CWideString&);
+     static bool __fastcall IsPathFile(const CWideString&);
++#ifdef FABLE_RETAIL_CAFILE_CONVERTDIRECTORYANDFILENAMETOPATH
++    // Retail opt-in (wfE7, row 0x00B3CB30): Ego_r.pdb / FableWin.pdb ?ConvertDirectoryAndFilenameToPath@CAFile@@SI?AVCWideString@@ABV2@0@Z
++    // (retail 0x009979E0, landed; static __fastcall, hidden result). Declaration only.
++    static CWideString __fastcall ConvertDirectoryAndFilenameToPath(const CWideString& directory, const CWideString& filename);   // 0x009979E0
++#endif
+ #ifdef FABLE_RETAIL_CAFILE_ISROOMFORFILE
+     // Opt-in (wf19, row 0x0055D180; chunk 2052, row 0x0049F4C0): Ego_r.pdb / FableWin.pdb ?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z (retail 0x00999AB0; the
+     // byte count in ecx, the path in edx). Declaration only.

@@ -1,0 +1,5 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00AA7FF0	?FindNextSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@ABV?$CCountedPointer@$$CBVCChunkedFileChunk@@@@@Z	same	non-const FindNextSubChunkOfType
+0x00A93A60	?DeleteData@?$CCountedPointer@VC3DClothPrimitive@@@@SIXPAX@Z	stored as the cloth count block DeleteFunc at 0xA92298	gapscan DeleteIfSet
+0x00AC4F20	?GetCount@CMirroredTextureHighlightsChunk@@QBEKXZ	called on the MTEH chunk at 0xA92464 (ICF fold)	CClass_00ac4f20::GetCount_00ac4f20
+0x004A9CB0	?_M_erase@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@AAEXPAU?$_Rb_tree_node@J@2@@Z	recursive call inside the inlined ~set<long> at 0x00ACBE0x (row 0x00ACA830; acctB dossier); reloc_bindings already carries this spelling among others	CTreeOwner_004a9cb0::FreeTree_CTreeOwner_004a9cb0 (landed file unattributed_FreeTreeCTreeOwner004a9cb0_004a9cb0.cpp), CRetailTree_erase004a9cb0::Erase, Tree::Erase, CLongTree::_M_erase

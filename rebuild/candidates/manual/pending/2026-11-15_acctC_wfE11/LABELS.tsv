@@ -1,0 +1,6 @@
+address	name	evidence
+0x004736C4	?Transfer@CPlayerGuiDef@@UAEXAAVCPersistContext@@@Z	vtable 0x012352DC slot 18; Ego_r.pdb + FableWin.pdb name sets
+0x0044C72B	?InitAndCompile@CGameDefinitionManager@@UAEXXZ	vtable 0x01232C24 slot 2; Ego_r.pdb + FableWin.pdb
+0x006F5C10	?StatRegisterClass@CCreatureActionBase@@SIXXZ	Ego_r.pdb 0x0071BCF0 + FableWin.pdb 0x023ED150; header CCreatureActionBase.h STATREGISTER opt-in; caller CWorld::Init 0x004A7601; body fills RegisteredActions
+0x004A3740	?UpdateRegionLoad@CWorld@@IAEXXZ	Ego_r.pdb 0x004ACFB0 + FableWin.pdb 0x01B47E70; caller 0x004A5BFB
+0x004804DE	?OpenInGameMenuPC@CTCInGameMenu@@QAEXPAVCComponent@NUISystem@@0@Z	Ego_r.pdb 0x0048CD2B + FableWin.pdb 0x01AB1A2F; ret 8; caller 0x0058B638

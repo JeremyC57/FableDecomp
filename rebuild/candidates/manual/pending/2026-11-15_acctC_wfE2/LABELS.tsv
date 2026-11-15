@@ -1,0 +1,5 @@
+address	name	evidence
+00e33ea0	?Main@CAC_Owner@CV_ArcheryCompetitionScript@NScript@@EAEXXZ	vtable 0x012E30FC + Ego_r 0x00E83BB0 + FableWin 0x039381B0
+00d0f640	?CheckForSecondAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ	Ego_r 0x00D13E10 + reloc_bindings + landed Main 0x00D038E0 thread
+00e5fd40	?Main@CBodyGuard@CV_BodyGuardScript@NScript@@EAEXXZ	draft identity (vtable + Ego_r name set); leaf confirmed by grading
+00d973d0	?Main@CBanditSacrifice@CQ_HobbeCaveScript@NScript@@EAEXXZ	draft identity (vtable + Ego_r name set); leaf confirmed by grading

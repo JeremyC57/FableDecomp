@@ -1,0 +1,7 @@
+address	grade	bytes	test	grades_used	notes
+00b6edf0	DIFFER(3144v3144)	3144	-	35	parked: vertex-store order is per-vertex (cross-vertex latency-0 store chain); v1 Y-first needs IL/prio change (DAG measured)
+00b70a90	DIFFER(3567v3567)	3567	-	~385	parked: OR-destination register pick in the last two bookmark blocks (retail MMMMMMMTM v ours MMMMMMMMT); comparator ids measured
+00b73760	RELOCATION_MATCH	6799	PASS	2	matched; addmatch + vland clean
+00b5ca70	RELOCATION_MATCH	5748	PASS	~330	matched (wfE6-3): GetRotationVector static helper + pow(float,float) + FITTED length0 uniform taps + 3 repo SetRenderState opt-ins + 8 Inferred dead asserts; addmatch + vland clean
+00b4d370	DIFFER(7160v7176)	7176	-	1	ported (acctB best), frame 0x3b4 v 0x3d0
+00b783f0	DIFFER(9343v9343)	9343	-	~270	near_miss: 1 real hunk (0x00B79938 register pick) after 6 unused locals + 6 dead asserts closed quartet + pair (rulers; see NOTES)

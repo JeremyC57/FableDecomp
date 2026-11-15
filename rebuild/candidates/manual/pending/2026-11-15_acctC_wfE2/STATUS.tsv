@@ -1,0 +1,5 @@
+address	grade	bytes	test	grades_used	notes
+00d0f640	RELOCATION_MATCH	2101	PASS	~40	matched (successor); vland WIN; addmatch done; flags /d2inlT59
+00e33ea0	RELOCATION_MATCH	9228	PASS	7	matched; vland WIN; addmatch done
+00e5fd40	RELOCATION_MATCH	9381	PASS	~28	matched (third author): shared `bool commented` for the anger tail; vland WIN; addmatch done; no flags
+00d973d0	DIFFER(9821v9821)	9821	-	~45	near miss: 43 frame-slot hunks only (letOut packed after Nymph HIT temp; needs w>=3 at packing); third author measured isets + 9 spellings, unchanged

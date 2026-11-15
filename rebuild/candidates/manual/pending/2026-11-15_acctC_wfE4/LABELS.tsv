@@ -1,0 +1,3 @@
+address	name	evidence
+00d45060	NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks	Ego_r+FableWin ?CheckFriendlyAttacks@CQ_GuildTrainingScript@NScript@@QAEXXZ; spawned by Main 0x00D3BC60 (reloc_bindings)
+00e20600	NScript::CQR_EscortTraderScript::CTraderToEscort::Main	Ego_r+FableWin ?Main@CTraderToEscort@CQR_EscortTraderScript@NScript@@EAEXXZ; slot 1 of vtable 0x012E151C stored by Alloc 0x00E1E7A0

@@ -1,0 +1,4 @@
+address	name	evidence
+0x00F1EED0	?PlayWave@CQ_ArenaScript@NScript@@QAEXXZ	Ego_r 0x00CF07F0 + FableWin 0x0364F420 name sets; matched Arena Main 0x00F0FB70 calls it at 0x00F13609 as PlayWave()
+00e3bb70	NScript::CV_BordelloScript::CMadame::Main	vtable 0x012E3AAC slot 1 (Alloc 0x00E3AAB0) + Ego_r/FableWin ?Main@CMadame@CV_BordelloScript@NScript@@EAEXXZ; RELOCATION_MATCH wfE3 #3
+00e50fd0	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main	vtable 0x012E5AEC slot 1 (Alloc 0x00E507E0) + Ego_r/FableWin ?Main@CBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@EAEXXZ; RELOCATION_MATCH wfE3 #3

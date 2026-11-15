@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00795300	?FrameUpdate@CTCUnholyPower@@UAEXXZ	rtti-vtables CTCUnholyPower 0x0126BFDC slot 9 -> 0x00795300 (CTCDivineWrath slot 9 = 0x0078FD60); Ego_r.pdb name; acctB dossier	CTCDivineWrath::FrameUpdate (catalog label)
+0051e2f0	?ActivateThings@CThingManager@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	Ego_r.pdb; landed row CThingManager_ActivateThings_0051e2f0.cpp; reloc_bindings caller 0x005223F0	InitialiseLoadedThings (H40g draft, descriptive)
+0x00410F30	??0?$CArray@D@@QAE@I@Z (CArray<char>::CArray(unsigned int))	probable: Ego_r.pdb name; retail has three distinct 77-byte 1-byte size ctors, vector<char>(I) is bound to 0x00411910 and vector<unsigned char>(I) to 0x00514E20; callers 0x00507C30 / 0x004A0D90 use it as a text buffer	??0?$vector@CV?$allocator@C@std@@@std@@QAE@I@Z (landed descriptive leaf, "element type not proven")

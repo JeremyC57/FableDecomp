@@ -1,0 +1,19 @@
+address	name	evidence
+00b3cb30	CEngineResourceManager::CEngineResourceManager	Ego_r/FableWin ??0CEngineResourceManager@@QAE@ABVCEngineInit@@ABVCEngineMemoryInit@@@Z; vtables stored; sole caller CEngine::Initialise
+0129d6b0	g_DeclarationStatic	descriptive (no PDB name): D3DVERTEXELEMENT9 array passed for SHADERS_STATIC
+0129d6d0	g_DeclarationPosColTex1	descriptive: SHADERS_POS_COL_TEX1 / SKY / POINT_SPRITE1 / PARTICLE_SPRITE_TRAIL
+0129d748	g_DeclarationVertexPos	descriptive: SHADERS_VERTEX_POS
+0129d788	g_DeclarationDebugging	descriptive: SHADERS_DEBUGGING
+0129d8c0	g_DeclarationRepeatedMesh	descriptive: SHADERS_REPEATED_MESH / MESH_GROUP
+0129d8e8	g_DeclarationZSprite	descriptive
+0129d900	g_DeclarationWeather	descriptive
+0129d920	g_DeclarationDecalGroup	descriptive
+0129d940	g_DeclarationSpriteGroup	descriptive
+0129d958	g_DeclarationLandscapeBackground	descriptive
+0129d980	g_DeclarationLandscapeForeground	descriptive
+0129d9a8	g_DeclarationWaterForeground	descriptive
+0129d9e8	g_DeclarationWaterBackground	descriptive
+0129da18	g_DeclarationSeaBackground	descriptive
+0129da28	g_DeclarationText	descriptive
+00b69000	CEngineLandscapeRenderer::CEngineLandscapeRenderer	vtable 0x012A2B54; Ego_r/FableWin ??0CEngineLandscapeRenderer@@QAE@ABVCEngineMemoryInit@@@Z; catalog label CEnginePrimitiveManagerParticleSpriteGroup ctor is wrong
+00a059e0	CRenderStateManager::SetDefaultRenderStates	FableWin.pdb ?SetDefaultRenderStates@CRenderStateManager@@QAEXXZ (0x030EFD60); caller Init 0x00A07900; 78 SetRenderState expansions over DeviceState

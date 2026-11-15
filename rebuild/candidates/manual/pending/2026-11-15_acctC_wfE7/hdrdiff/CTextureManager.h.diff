@@ -1,0 +1,67 @@
+--- a/rebuild/include/engine/CTextureManager.h
++++ b/rebuild/include/engine/CTextureManager.h
+@@ -40,6 +40,26 @@
+     unsigned char Textures[0xc];                                         // +0x48 CArray<CIVCountedPointer<CManagedTextureData> >
+ };
+ #endif
++#ifdef FABLE_RETAIL_CTEXTUREMANAGER_INITIALISE
++// Retail opt-in (wfE7, row 0x00B3CB30 CEngineResourceManager::CEngineResourceManager): Ego_r.pdb CTextureManagerPoolInfo (20 bytes:
++// Width +0, Height +4, PixelFormat +8, UseMipmaps +0xC, Count +0x10; struct_layouts_egor.tsv) with its FableWin.pdb inline ctor
++// ??0CTextureManagerPoolInfo@@QAE@VCPixelFormat@@KKK_N@Z (the format by value first), and Ego_r.pdb
++// ?Initialise@CTextureManager@@QAEXABV?$CArray@VCTextureManagerPoolInfo@@@@@Z (retail 0x00A6AAA0). Needs engine/CPixelFormat.h
++// (FABLE_RETAIL_CPIXELFORMAT) and engine/CArray.h.
++#include "engine/CPixelFormat.h"
++#include "engine/CArray.h"
++class CTextureManagerPoolInfo {
++public:
++    unsigned long Width;                                                 // +0x00
++    unsigned long Height;                                                // +0x04
++    CPixelFormat  PixelFormat;                                           // +0x08
++    bool          UseMipmaps;                                            // +0x0C
++    unsigned long Count;                                                 // +0x10
++    CTextureManagerPoolInfo() { }
++    CTextureManagerPoolInfo(CPixelFormat pixel_format, unsigned long width, unsigned long height, unsigned long count, bool use_mipmaps)
++        : Width(width), Height(height), PixelFormat(pixel_format), UseMipmaps(use_mipmaps), Count(count) { }
++};
++#endif
+ #pragma pack(push, 1)
+ #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+ class CGraphicFrame;class CManagedTexture;
+@@ -58,6 +78,10 @@
+     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+ #endif
+     bool          Initialised;                               // +0x04
++#ifdef FABLE_RETAIL_CTEXTUREMANAGER_INITIALISE
++    void Initialise(const CArray<CTextureManagerPoolInfo>& pools);       // 0x00A6AAA0
++    bool IsInitialised() const { return Initialised; }                   // FableWin.pdb ?IsInitialised@CTextureManager@@QBE_NXZ (inline: `cmp byte [eax+4]`)
++#endif
+     unsigned char _pad_0x05[0x3];                            // +0x05
+     unsigned long PoolCount;                                 // +0x08
+     unsigned long PreallocSizes[16];                         // +0x0c
+@@ -83,17 +107,17 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTextureManager) == 0x5d4);
++FABLE_STATIC_ASSERT_AT(86, sizeof(CTextureManager) == 0x5d4);
+ #ifndef FABLE_RETAIL_CTEXTUREMANAGER_VIRTUAL_DTOR
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(88, offsetof(CTextureManager, __vftable) == 0x0);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, Initialised) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, PoolCount) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, PreallocSizes) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, PreallocPools) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, FailedAllocations) == 0x58c);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, BufferSize) == 0x5cc);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, TextureBuffer) == 0x5d0);
++FABLE_STATIC_ASSERT_AT(90, offsetof(CTextureManager, Initialised) == 0x4);
++FABLE_STATIC_ASSERT_AT(91, offsetof(CTextureManager, PoolCount) == 0x8);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CTextureManager, PreallocSizes) == 0xc);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CTextureManager, PreallocPools) == 0x4c);
++FABLE_STATIC_ASSERT_AT(94, offsetof(CTextureManager, FailedAllocations) == 0x58c);
++FABLE_STATIC_ASSERT_AT(95, offsetof(CTextureManager, BufferSize) == 0x5cc);
++FABLE_STATIC_ASSERT_AT(96, offsetof(CTextureManager, TextureBuffer) == 0x5d0);
+ #endif // FABLE_RETAIL_CTEXTUREMANAGER_CLASS
+ 
+ #endif // FABLE_ENGINE_CTEXTUREMANAGER_H

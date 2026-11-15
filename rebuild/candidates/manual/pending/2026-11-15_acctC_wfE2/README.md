@@ -1,0 +1,27 @@
+# acctC workflow hand-back wfE2 (unworked rows round 3, 2026-11-15)
+
+| address | name | bytes | grade | test |
+|---|---|---|---|---|
+| 0x00E33EA0 | NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main | 9,228 | RELOCATION_MATCH | PASS |
+| 0x00D0F640 | NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaMassacre | 2,101 | RELOCATION_MATCH (`/d2inlT59`) | PASS |
+| 0x00E5FD40 | NScript::CV_BodyGuardScript::CBodyGuard::Main | 9,381 | RELOCATION_MATCH | PASS |
+
+Verified twice (workflow verifier + coordinator, `coordverify.log`). The verifier's audit of each row follows; review items are for the owner / landing account.
+
+`open/` holds the best drafts of the batch's unmatched rows (full residues in NOTES.md):
+- 0x00D973D0: near_miss, DIFFER(9821v9821). Equal length, and every instruction matches once relocations are masked. All 43 hunks are frame-slot offsets: ours puts letOut in F2F / slot1, retail puts it in F13 / slot0, and that also moves slot1 and seh_me. The interference probe (pk.py --iset) shows letO
+
+## 0x00E33EA0
+Verifier audit: none. Review item: a scoped `#pragma inline_depth(0)`...`#pragma inline_depth()` around the row-local CIsThingAlive ctor and the CSpawnedFunc1<CV_ArcheryCompetitionScript,CScriptThing> ctor specialization. It has an Inline-budget marker on line 2 that cites retail evidence: the nested CScriptThing copy 0x004ABE90 is called at 0x00E33EC8 and 0x00E33F8B, and the Me copy is expanded at 0x00E33F13..38. It follows the landed idiom of 0x00E2FF00 and 0x00E27E90, and the CSpawnedFunc1 ctor text matches landed siblings (e.g. 0x00ED5F50). No flags. No __asm/naked/_emit/volatile, no if(0), no unused locals, no ^class/^struct in the source. The visible inline bodies (GetPos, CTimer::GetTime/operator=, CIsThingAlive ctor) are landed-idiom text. Header change: additive FABLE_RETAIL_CV_ARCHERYCOMPETITIONSCRIPT_OWNERMAIN only (decls ResetRandomSpeechTime/WatchForAttack/DoTimesUp plus CAC_Owner::GetRandomSpeech, with Ego_r/FableWin names, listed in hdr/README.md line 103). The two sizeof asserts moved and are pinned FABLE_STATIC_ASSERT_AT(150/151). vland warnings: RELOC_NAME (CDefString::operator CCharString 0x00415D70 label) and RELOC_ALIAS (_rand import thunk 0x00BFEB16); no RELOC_IDENTITY, RELOC_CONFLICT or OUTSIDE_MANIFEST. The test is a real 9-scenario state model (high score, too poor, magic DQ, shot DQ, prize tiers, random speech, attacked).
+
+Fitted items: FITTED: the per-prize index local `{ unsigned long idx = rand() % X.size(); GiveHeroObject(X[idx]...) }` spelling. It reproduces the evaluation order retail shows (pGlobalScriptDef reloaded after rand at 0x00E35BF0). Marked in the source line 11 and NOTES.md line 30.
+
+## 0x00D0F640
+Verifier audit: none. Review items, all inline-budget devices with an Inline-budget marker on line 2: (1) per-row flag `// Flags: /d2inlT59`, with the smallest-N reasoning stated (T58 calls the followers-loop exits that retail expands; T62 expands the map dtor; the shared retail chain is 0x00D0FE39); (2) FABLE_FORCEINLINE on the row-local empty ~CScriptThing body (the 605-file landed idiom); (3) one scoped `#pragma inline_depth(0)`/`()` around the Gate3Guard RemoveThing statement, because retail calls ~CScriptThing at 0x00D0FC0B. No __asm/naked/_emit/volatile, no if(0), no dead locals, no ^class/^struct. Header use is repo opt-ins only (no header change by this row). vland warning: RELOC_NAME only (Rb_tree dtor vs label at 0x00CDBFB0); no RELOC_IDENTITY, RELOC_CONFLICT or OUTSIDE_MANIFEST. The test is a real model with 5 scenarios (quota reached with bandits, late level load, gate opened elsewhere, termination, quota 0).
+
+Fitted items: FITTED: the bandit loop spelled `unsigned long i = 0; while (i < AllBandits.size()) { ...; i++; }` instead of `for`. It gives the same rotated code but changes the block frequency, so the leader-block vector dtors are called as in retail. Marked in the source line 3 and NOTES.md lines 97-99. EVIDENCED: the main-loop idiom from sibling 0x00D0A830, and the post-loop T with an unused result at 0x00D0F9C1.
+
+## 0x00E5FD40
+Verifier audit: none. No flags or pragmas. No __asm/naked/_emit/volatile, no if(0). The only ^class line is a forward declaration (`class CScriptGameResourceObjectMovieBase;`), not a local model. The visible inline bodies (empty ~CScriptThing, CTimer ctor/dtor/operator=/GetTime, CScriptThing::operator==, CIsThingAlive ctor) all match landed-row text (103-605 landed files each). Review item: `CCharString unusedText;` at line 87 is an unused local and is not marked in the header comment. It is byte-evidenced, not a dead-local device: CCharString::CCharString() 0x0099E4B0 is out of line, and retail calls it at 0x00E5FE0A right after the EntityTeleportToHeroPosition vcall. The first author's draft has the same local, and the name is descriptive. Header use is repo opt-ins only (FABLE_RETAIL_CV_BODYGUARDSCRIPT_CBODYGUARD_MAIN is already in the repo header; no hdrdiff for this row). vland warning: RELOC_NAME only (CCharString::operator const char* label 0x0099E4C0); no RELOC_IDENTITY, RELOC_CONFLICT or OUTSIDE_MANIFEST. The test is a real 7-scenario state model (anger chain spoken/unspoken, beyond HIGH, health states, summoners/state groups, made redundant).
+
+Fitted items: No FITTED marks. EVIDENCED: the shared `bool commented` anger tail (one retail copy at 0x00E610AF; cross-jumps into 0x00E61176; scheduling tell `mov bl,al` before or after `lea ecx`); the main loop `for (; !false; NSF)` from sibling 0x00D0A830.

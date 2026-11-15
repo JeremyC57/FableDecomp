@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+007a1b20	DIFFER(2828v2840)	2840	-	45+20+11	near_miss: decap-copy x87 fst/fstp (squares Z,Y,X) + loop pad; dead locals and IsNonZero/Normalise opt-in sweeps no effect
+00507c30	DIFFER(7661v7661)	7661	-	10+16+22	near_miss: one swapped reload pair 0x00509395; names change c2 ids (Xbox-PDB names tried), dead locals / param names no effect
+00502e90	DIFFER(13933v13622)	13622	-	20+9+12	parked: inline-budget; trace model measured (inl.sh): variable listCreatures gives retail R R / P O P at those sites but ctor/SetHomeBuilding sites then expand; retail g larger (helper IL) + female price differs
+00795300	DIFFER(9472v9268)	9268	-	8+16	parked: CTCUnholyPower::FrameUpdate; zero register now late (ROUGHAREABODY visible); open: 2nd cancel arm must call GetString 0x00415DD0, then tail merge / frame
+0078fd60	DIFFER(9472v9268)	9268	-	1+1	parked: twin of 0x00795300, same source and grade

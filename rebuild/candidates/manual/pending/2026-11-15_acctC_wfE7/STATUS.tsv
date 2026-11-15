@@ -1,0 +1,7 @@
+address	grade	bytes	test	grades_used	notes
+00b3cb30	RELOCATION_MATCH	5399	PASS	16	matched; addmatch + read-only vland done (2 RELOC_NAME warns = NAME_FIXES)
+00b69000	RELOCATION_MATCH	8358	PASS	10	matched; REAL NAME CEngineLandscapeRenderer::CEngineLandscapeRenderer(const CEngineMemoryInit&) (catalog label wrong); addmatch + vland clean
+00b33b50	RELOCATION_MATCH	8858	PASS	9	matched; addmatch + vland (4 RELOC_NAME = NAME_FIXES)
+00a059e0	RELOCATION_MATCH	7958	PASS	~130	matched (third author): TF direct SetRenderState + named local in SetPointSizeMin/Max (both FITTED), setters FABLE_FORCEINLINE in the row TU (no flag); addmatch + vland PASS
+00bd3070	DIFFER(11272v11288)	11288	-	10	parked: stale draft ported (306 hunks); shared ApplyPixelShader tail 0x00BD3E16 not cross-jumped (GPShaderRenderManager load hoisted above the argument push), frame 0xE4 v 0xE0; differ/00bd3070.cpp
+

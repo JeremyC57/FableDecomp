@@ -1,0 +1,32 @@
+--- a/rebuild/include/engine/CEnginePrimitive2DViewportManager.h
++++ b/rebuild/include/engine/CEnginePrimitive2DViewportManager.h
+@@ -23,10 +23,15 @@
+     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);
+     virtual void Render2DPrimitive(CEngineInternalPrimitiveBase&,CEngineSubPrimitiveChain&,ESubPrimitiveType);
+     virtual void RenderSubPrimitive(CEngineSubPrimitiveBase&,ERenderPassType);
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DVIEWPORTMANAGER_ALPHAMASK
++    // Opt-in (bwf2, row 0x00BA2350): FableWin.pdb ?GetCurrentAlphaMask@CEnginePrimitive2DViewportManager@@QAEPBVC2DAlphaMaskInfo@@XZ (9 debug instructions), inline.
++    const C2DAlphaMaskInfo* GetCurrentAlphaMask(){return &AlphaMaskInfo;}
++#else
+     const C2DAlphaMaskInfo* GetCurrentAlphaMask();
++#endif
+     C2DAlphaMaskInfo AlphaMaskInfo;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitive2DViewportManager)==0x38);
++FABLE_STATIC_ASSERT_AT(29, sizeof(CEnginePrimitive2DViewportManager)==0x38);
+ #else
+ #pragma pack(push, 1)
+ class CEnginePrimitive2DViewportManager {
+@@ -38,9 +43,9 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitive2DViewportManager) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitive2DViewportManager, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitive2DViewportManager, AlphaMaskInfo) == 0xc);
++FABLE_STATIC_ASSERT_AT(41, sizeof(CEnginePrimitive2DViewportManager) == 0x38);
++FABLE_STATIC_ASSERT_AT(42, offsetof(CEnginePrimitive2DViewportManager, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(43, offsetof(CEnginePrimitive2DViewportManager, AlphaMaskInfo) == 0xc);
+ 
+ #endif
+ 

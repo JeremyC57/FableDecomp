@@ -1,0 +1,17 @@
+addr       parity           behav  name
+  WARN leaf "`dynamic initializer for 'EventDispatch'' (object symbol _$E1 of its TU)" matches no symbol in 0121b9b0.obj; graded the largest function
+  WARN leaf "`dynamic initializer for 'EventDispatch'' (object symbol _$E1 of its TU)" matches no symbol in 0121b9b0.obj; graded the largest function
+0121b9b0   WARN RELOC_NAME: ?EAPlayerRespawn@CWorld@@QAEXPBVCGameEvent@@@Z -> 006294a0 labelled 'CRenderManager2D::AddLineToDrawBuffer'
+0121b9b0   RELOCATION_MATCH PASS   `dynamic initializer for 'EventDispatch'' (object symbol _$E1 of its TU)
+  WARN leaf "`dynamic initializer for 'Behaviours'' (object symbol _$E1 of its TU)" matches no symbol in 01221d20.obj; graded the largest function
+  WARN leaf "`dynamic initializer for 'Behaviours'' (object symbol _$E1 of its TU)" matches no symbol in 01221d20.obj; graded the largest function
+01221d20   WARN RELOC_NAME: ?CommentToSelfIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ -> 00984b40 labelled 'CCombatAction_GenericStrikeResponseBase::IsOverrideableByActionOfSamePriority'
+01221d20   WARN RELOC_NAME: ?FollowCloseUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ -> 00985420 labelled '_unattributed::CallWith2_00985420'
+01221d20   WARN RELOC_NAME: ?FollowFarUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ -> 00985430 labelled '_unattributed::CallWith2_00985430'
+01221d20   WARN RELOC_CONFLICT: _$E2 -> 0122a460 here, 01228930 in landed 01219f00
+01221d20   WARN RELOC_NAME: _$E2 -> 0122a460 labelled 'CFontBankStateBlock::CreateCRC'
+01221d20   RELOCATION_MATCH PASS   `dynamic initializer for 'Behaviours'' (object symbol _$E1 of its TU)
+
+WINS: 2
+  0121b9b0 RELOCATION_MATCH CMainGameComponent::`dynamic initializer for 'EventDispatch'' (object symbol _$E1 of its TU)
+  01221d20 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::`dynamic initializer for 'Behaviours'' (object symbol _$E1 of its TU)

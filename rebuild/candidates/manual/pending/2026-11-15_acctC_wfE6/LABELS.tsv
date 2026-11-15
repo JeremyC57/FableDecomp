@@ -1,0 +1,5 @@
+address	name	evidence
+00b73760	??0CEngineWaterRenderer@@QAE@ABVCEngineInit@@@Z	Ego_r + FableWin; matched row
+00b6edf0	?BuildConstantBuffers@CEngineWaterRenderer@@AAEXXZ	Ego_r + FableWin; sole caller the ctor
+00b70a90	?RenderEnvironmentMap@CEngineWaterRenderer@@AAEXXZ	Ego_r + FableWin
+00b5bd10	GetRotationVector	static helper of the radial-blur TU: Ego_r.pdb 0x00A0DD00 and FableWin.pdb 0x02D20240 (undecorated S_LPROC32), both right after OnReleaseDefaultPoolResources as retail 0x00B5BD00 -> 0x00B5BD10; body fld/fcos/fstp [eax], fld/fsin/fstp [ecx], ret 4 = cos -> *pX, sin -> *pY; uncalled in retail (every call inlined into CaptureBackBuffer 0x00B5CA70)

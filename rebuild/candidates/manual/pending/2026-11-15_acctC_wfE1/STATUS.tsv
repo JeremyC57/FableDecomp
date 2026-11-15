@@ -1,0 +1,5 @@
+address	grade	bytes	test	grades_used	notes
+00d13580	DIFFER(6892v6917)	6917	-	53	best differ/00d13580.cpp (/d2inlT76); 10 hunks: CCharString==text arm reloads at 0x00D14858..
+00df6010	DIFFER(6477v6493)	6493	-	75	best differ/00df6010.cpp /d2inlT72: calls equal, 13 hunks: 6 SIB flips + GiveThing allocator block (see NOTES wfE1c)
+00db97a0	RELOCATION_MATCH	7013	PASS	60	matched; addmatch done; vland clean
+00cf68c0	DIFFER(8150v8070)	8070	-	7	differ/00cf68c0.cpp unchanged; outline near-equal, 2 movie-dtor scope-end sites called (sc>130) + seh_me pad placement

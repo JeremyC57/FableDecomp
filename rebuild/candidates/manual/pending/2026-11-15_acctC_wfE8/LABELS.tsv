@@ -1,0 +1,5 @@
+address	name	evidence
+00a91640	C3DPrimitive2::InitialiseFromMeshFileData	Ego_r.pdb ?InitialiseFromMeshFileData@C3DPrimitive2@@QAE_NABVC3DMeshFilePrimitiveChunk@@_NKKAAVCScopedMemoryHandle@@@Z (bwf1 dossier: Ego_r donor order + body reads the C3DPrimitive2 loader members); catalog label _gapscan::sub_00a91640
+0x00ACA830	?Initialise@COptimisedPrimitive@QuadricOptimiserInternals@@QAEXABVCOptimisationParameters@2@@Z	Ego_r.pdb 0x00C64040 + FableWin.pdb 0x034C32F0 name sets; sole caller COptimisedMesh::Initialise 0x00ACD54F
+00a2f740	C3DMeshStats::InitialiseFromFileData	Ego_r + FableWin ?InitialiseFromFileData@C3DMeshStats@@QAE_NABVCCharString@@ABVC3DMeshFile@@_NPAVCMovableResourceMemoryPool@@@Z; callees PackNames 0x00A2EEF0 / AllocateBuffers 0x00A2E760
+00b03ca0	NParticleEngine::CPSCRenderMesh::PreparePrimitives	vtable 0x0129F96C slot 13; FableWin ?PreparePrimitives@CPSCRenderMesh@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@..@Z

@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00d45060   WARN RELOC_NAME: ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAE@XZ -> 00cdbfb0 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map'
+00d45060   RELOCATION_MATCH PASS   CheckFriendlyAttacks
+
+WINS: 1
+  00d45060 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks

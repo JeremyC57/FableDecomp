@@ -1,0 +1,3 @@
+address	name	evidence
+0079f730	?AllChildrenInactive@CLightningBeam@CTCWillLightning@@QAE_NXZ	Ego_r.pdb name; only bool-returning beam method called in state 4 of 0x007A1B20
+0079f970	?UpdatePositions@CLightningBeam@CTCWillLightning@@QAEXXZ	Ego_r.pdb name; called once per frame before the particle update in 0x007A1B20

@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00e33ea0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00e33ea0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e33ea0   RELOCATION_MATCH PASS   Main
+00d0f640   WARN RELOC_NAME: ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAE@XZ -> 00cdbfb0 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map'
+00d0f640   RELOCATION_MATCH PASS   CheckForSecondAreaMassacre
+00e5fd40   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00e5fd40   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00e33ea0 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main
+  00d0f640 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaMassacre
+  00e5fd40 RELOCATION_MATCH NScript::CV_BodyGuardScript::CBodyGuard::Main

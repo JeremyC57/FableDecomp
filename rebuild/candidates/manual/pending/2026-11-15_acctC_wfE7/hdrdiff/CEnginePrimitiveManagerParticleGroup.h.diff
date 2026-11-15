@@ -1,0 +1,24 @@
+--- a/rebuild/include/engine/CEnginePrimitiveManagerParticleGroup.h
++++ b/rebuild/include/engine/CEnginePrimitiveManagerParticleGroup.h
+@@ -14,6 +14,14 @@
+ #pragma pack(push, 1)
+ class CEnginePrimitiveManagerParticleGroup : public CEnginePrimitiveManager {
+ public:
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEGROUP_CTOR
++    // Retail opt-in (wfE7, row 0x00B33B50): ??0CEnginePrimitiveManagerParticleGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z (retail 0x00BBBF40,
++    // `new` of 0x28) and the three CEnginePrimitiveManager pure-virtual overrides (Ego_r.pdb names). Declarations only.
++    CEnginePrimitiveManagerParticleGroup(CArray<CEngineScene*>& scenes);   // 0x00BBBF40
++    virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);
++    virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;
++    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);
++#endif
+     long SetUpPointLights();                                             // 0x00BBC0B0
+     void SetupPixelShader(unsigned long index, const CPixelShader& stipple, const CPixelShader& normal);   // 0x00BBCC70
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEGROUP_GETREADZBUFFER
+@@ -35,5 +43,5 @@
+     unsigned char _pad_0x25[3];                                          // +0x25
+ };
+ #pragma pack(pop)
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleGroup) == 0x28);
++FABLE_STATIC_ASSERT_AT(38, sizeof(CEnginePrimitiveManagerParticleGroup) == 0x28);
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERPARTICLEGROUP_H

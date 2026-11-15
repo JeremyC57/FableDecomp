@@ -1,0 +1,7 @@
+address	grade	bytes	test	grades_used	notes
+00648820	DIFFER(3419v3464)	3464	-	1	stale draft regraded; local models; frame 0x324v0x334
+005ac10e	DIFFER(3538v3532)	3532	-	42	begin-local #6 coloured eax before it (not copy-forwarded, c2prio --trace) + empty() operand order; 3rd author: RELEASE_POINTEE no move
+005a4cdd	DIFFER(3664v3668)	3668	-	52	loop-2 head not threaded; guard form (probe/005a4cdd_g0_guard.cpp, d2 do-while) = retail flow, begin local #9 prio 14/20 v it 10/13 (c2prio); index placement / shared it / RELEASE_POINTEE no
+009a25d0	RELOCATION_MATCH	3722	PASS	40	matched (successor): vertical-centring behaviour fix + cell order + shared CRGBColour/CShaderRenderManager; addmatch + vland done; CFontManagerView local view still open (NOTES)
+00879900	BLOCKED	3415	-	2	needs shared CCameraModeDef.h + NCameraModes_CProjectileWeapon.h (proposal in probe/hdr_proposed) + 2 decls
+00931390	DIFFER(3836v3863)	3863	-	5	lead: CVECTORMAP_INLINE_LOWERBOUND -> 165 hunks (probe/00931390_inlinelb.cpp); site-1 LowerBound expanded (score 71<74) where retail calls; loop alignment shows ours over-weights frequency; port to engine/ headers still needed

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b73760   RELOCATION_MATCH PASS   CEngineWaterRenderer
+
+WINS: 1
+  00b73760 RELOCATION_MATCH CEngineWaterRenderer::CEngineWaterRenderer

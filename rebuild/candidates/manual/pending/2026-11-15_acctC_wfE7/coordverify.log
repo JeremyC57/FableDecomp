@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00b3cb30   WARN RELOC_NAME: ?SetTextureBank@CMeshDataBank@@QAEXPBVCGraphicDataBank@@@Z -> 00a23b50 labelled '_global::SetMember_dword0x3d4_00a23b50'
+00b3cb30   WARN RELOC_NAME: ?PeekVideoOptionsDef@CEngine@@QAEABVCEngineVideoOptionsDef@@W4EEngineVideoOptionQuality@@@Z -> 00b244f0 labelled 'CTextureManager::GetPoolTextureSize'
+00b3cb30   RELOCATION_MATCH PASS   CEngineResourceManager
+00b69000   RELOCATION_MATCH PASS   CEngineLandscapeRenderer
+00b33b50   WARN RELOC_NAME: ?SetSoftwareVertexShaderEnable@CShaderRenderManager@@QAEX_N@Z -> 009886f0 labelled '_global::SetMember_byte0x393_009886f0'
+00b33b50   WARN RELOC_NAME: ?SetSoftwareFixedFunctionEnable@CShaderRenderManager@@QAEX_N@Z -> 00988700 labelled '_global::SetMember_byte0x394_00988700'
+00b33b50   WARN RELOC_NAME: ?SetDP3BumpEnable@CMeshDataBank@@QAEX_N@Z -> 00a23b60 labelled '_global::SetMember_byte0x3d8_00a23b60'
+00b33b50   WARN RELOC_NAME: ?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z -> 00bacd80 labelled '_global::Nop_ret4_00bacd80'
+00b33b50   RELOCATION_MATCH PASS   CEnginePrimitiveRenderer
+00a059e0   WARN RELOC_CONFLICT: ?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA -> 01396dd8 here, 01396de8 in landed 00bbc460
+00a059e0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00a059e0   RELOCATION_MATCH PASS   SetDefaultRenderStates
+
+WINS: 4
+  00b3cb30 RELOCATION_MATCH CEngineResourceManager::CEngineResourceManager
+  00b69000 RELOCATION_MATCH CEngineLandscapeRenderer::CEngineLandscapeRenderer
+  00b33b50 RELOCATION_MATCH CEnginePrimitiveRenderer::CEnginePrimitiveRenderer
+  00a059e0 RELOCATION_MATCH CRenderStateManager::SetDefaultRenderStates

@@ -1,0 +1,8 @@
+address	grade	bytes	test	grades_used	notes
+00bbac60	RELOCATION_MATCH	3743	PASS	~45	matched; addmatch + vland clean
+00bca950	DIFFER(3757v3749)	3749	-	~60	near_miss 9 hunks (successor: vertex_count before transform, first_step before current): CSE-v-rematerialise of points-1 + tangent IV pick + 3 pads; third author: regraded unchanged, parked on sight
+00bb0970	DIFFER(3170v3202)	3202	-	3	re-ported only; local frame models; frame 0x80 v 0x74 (plain-temp UV form: 0x6c, 3269 bytes); class model now settled (2DSPRITES_MEMBERS + new sub-primitive headers); re-author map in NOTES.md; third author: not re-authored (RenderLine first); dependency bindings added to NOTES map
+00bc8a60	DIFFER(3394v3416)	3416	-	~35	re-authored on shared headers (third author): 136 -> 46 masked hunks; frame 0xd0 v 0xc4, x87 term order, GetFrame cross-jump
+00bc04f0	RELOCATION_MATCH	3751	PASS	~25	matched (/d2inlT79 + FITTED SETRENDERSTATE_DESIRED+BOOKMARK); addmatch + vland clean
+00bafa00	DIFFER(3905v3946)	3946	-	1	re-ported only; local models; class model now settled (same as 00bb0970); not re-authored; third author: not re-authored (RenderLine first); dependency bindings added to NOTES map
+00bae2d0	RELOCATION_MATCH	5892	PASS	~16	matched (successor; hand-authored from the disassembly, new 2DSprites class model); addmatch + vland clean
