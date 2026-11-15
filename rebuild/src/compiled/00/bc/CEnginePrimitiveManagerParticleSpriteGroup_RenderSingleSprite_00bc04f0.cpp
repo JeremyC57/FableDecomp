@@ -1,9 +1,9 @@
 // CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSprite(CEngineSubPrimitiveBase& sub, ERenderPassType pass) -- draw one particle sprite: bind its bank frame's texture inside a render-state capture block, pick the blend / alpha-test states and the vertex / pixel shaders for the pass, upload the billboard axes and the sprite constants, draw the 2-triangle quad, then restore
-// Leaf: ?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
-// Flags: /d2inlT79
 // Inline-budget: /d2inlT79 (smallest; T78 grades 3710v3751, T76 3673, default 3626) -- at the default threshold VC7.1 calls the inline
 //   CGraphicDataBank::PeekGraphic and CRenderStateScopedCaptureBlock() out of line (retail expands both: 0x00BC053C..0x00BC0574 and
 //   0x00BC0591..0x00BC05BD); every other site is expanded already. Same inline-budget class as the landed decal-group row 0x00BB8EF0 (/d2inlT189).
+// Leaf: ?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
+// Flags: /d2inlT79
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BC04F0, 3751 bytes, `ret 8`. Identity: Ego_r.pdb / FableWin.pdb (0x02EB58B0, the particle-sprite-group
 //   TU of the landed sibling 0x00BBF4A0 RenderSubPrimitive, whose helper texts / opt-ins this row reuses).
 // Retail-asm: 0x00BC10C5..0x00BC10CD `fld [esp+1Ch] ; fistp dword ptr [esp+48h] ; fild dword ptr [esp+48h]` and 0x00BC1118..0x00BC1120 (same) --

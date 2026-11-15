@@ -1,9 +1,9 @@
 // NParticleEngine::CPSCDecalRenderer::PreparePrimitives(const float, const CEnginePrimitivePrepareInfo&, CParticleSystem&, const CParticleUpdateParameters<unsigned long, unsigned long>&, CEnginePrimitiveHandle&) -- refresh the landscape / mesh decal group primitives and set or add one decal primitive per live decal (clearing dead decals)
-// Grade: RELOCATION_MATCH
-// Flags: /d2inlT1156
 // Inline-budget: /d2inlT1156 -- inline CDecal::SetPrimitiveInfo is expanded at retail 0x00B1FD55..0x00B1FE40; at the default budget (and at
 //   T1155) VC7.1 calls it; 1156 is the smallest total budget that expands it, nothing else changes (the twin CPSCRenderSprite::PreparePrimitives
 //   0x00AFCC30 carries /d2inlT1537 /d2inlS15 for the same CParticle helper).
+// Grade: RELOCATION_MATCH
+// Flags: /d2inlT1156
 // Leaf: ?PreparePrimitives@CPSCDecalRenderer@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
 // Retail: 0x00B1F200, 3195 bytes, thiscall, `ret 14h`; vtable 0x012A09BC slot 13 (FableWin / Ego_r name sets).
 // Retail-asm: bare dword rounding `fistp dword ptr` at 0x00B1F276 (GFUnpackFloat), 0x00B1F904 (GFFloatToLongNear), 0x00B1F9A9 / 0x00B1FA1A

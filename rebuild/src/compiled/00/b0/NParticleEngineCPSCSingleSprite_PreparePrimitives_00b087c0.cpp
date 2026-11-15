@@ -1,8 +1,8 @@
 // NParticleEngine::CPSCSingleSprite::PreparePrimitives(const float time, const CEnginePrimitivePrepareInfo& info, CParticleSystem& system, const CParticleUpdateParameters<unsigned long, unsigned long>& params, CEnginePrimitiveHandle& handle) -- vtable slot 13: set the sprite child primitives (one, or NoCrossedSprites rotated copies) and the trail child primitive for this frame
-// Grade: RELOCATION_MATCH
-// Flags: /d2inlT86
 // Inline-budget: /d2inlT86 -- CParticleUpdateParameters::GetUpdateParam (and its Find) is expanded in retail at 0x00B08B50..0x00B08B9B; at the
 //   default budget VC7.1 calls it; T86 is the smallest that expands it (T85 calls it); nothing else changes (twin 0x00AFCC30 carries /d2inlT1537 /d2inlS15).
+// Grade: RELOCATION_MATCH
+// Flags: /d2inlT86
 // Leaf: ?PreparePrimitives@CPSCSingleSprite@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B087C0, 2967 bytes, thiscall, ebp frame, `ret 14h`; vtable 0x0129FB84 slot 13 (FableWin / Ego_r name sets).
 // Callees: SetTrailPositionsFromSpline 0x00B08250 (protected, landed), GetTickRate 0x00AEA9F0, _CIfmod, CPSCSplineBase::GetPointAtIndex 0x00B219A0,

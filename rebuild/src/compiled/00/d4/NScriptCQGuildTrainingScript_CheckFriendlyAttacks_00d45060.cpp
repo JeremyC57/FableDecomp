@@ -1,10 +1,10 @@
 // NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks() -- the Guild guard thread: make every creature but the sparrows, Whisper and the maze rival friends with everything and unkillable; then each frame (re-applying that whenever the hero comes back into the Guild complex) watch for the hero hitting a friend with bare hands, a melee or a ranged weapon inside the complex, other than the rival in the maze: the first three times speak the next guild-seal warning, the fourth time (unless a skill or will test is running, which it waits out) play CS_GUILD_BADHERO with the fourth warning, then reset the warnings
-// Flags: /d2inlT53
 // Inline-budget: per-row flag /d2inlT53 -- c2 inline trace (default threshold): retail CALLS ~vector<CScriptThing> 0x008AC970 /
 //   ~CScriptThing 0x004AA840 at the first-loop friend-block exit (0x00D451D7, site score 69 / 65), the pre-wait exit 0x00D45463 (62)
 //   and the two warning-branch exits 0x00D45813 / 0x00D45938 (72 / 72), all of which the default threshold expands, while it
 //   EXPANDS every site scoring <= 52 (first-loop exits 0x00D450E2 / 0x00D45237, the loop-head pads 0x00D45CEE / 0x00D45D15, the
 //   0x00D457FA pad). Window T53..T60 matches (T52 and T62 differ: the _Rb_tree dtor of mymap scores 60); T53 is the smallest.
+// Flags: /d2inlT53
 // Leaf: ?CheckFriendlyAttacks@CQ_GuildTrainingScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D45060, 3439 bytes (0x00D45060..0x00D45DCE `ret`; 0x00D45DD0 is the next spawned thread),
 //   thiscall, no EH frame.

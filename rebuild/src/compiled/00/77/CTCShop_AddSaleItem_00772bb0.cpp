@@ -1,11 +1,11 @@
 // CTCShop::AddSaleItem(long, const CTCShop::GoodsPlace&) -- create the goods object at a sale place, line its COUNTER_PLACEMENT dummy up with the place, freeze it, mark it created and owned by the shop's thing, and put it on sale
-// Leaf: ?AddSaleItem@CTCShop@@QAEXJABUGoodsPlace@1@@Z
-// Flags: /d2inlT116
 // Inline-budget: /d2inlT116 -- CMatrix3x4::Set(const CRightHandedSet&, const C3DVector&), defined above the row with the landed
 //   0x007767A0 text (out of line in this TU: 0x007767A0 sits among the CTCShop TU's GoodsPlace / CShopItem instantiations and has
 //   no callers), expanded at all three sites (object, dummy, place matrices); at the default threshold VC7.1 calls it three times
 //   (DIFFER 2163v2585), /d2inlT115 likewise, /d2inlT116 is the smallest N that matches (116..400 all match). Replaces the
 //   force-inline header text FABLE_RETAIL_CMATRIX3X4_SET_RHSET_INLINE (same body; no longer used by this row).
+// Leaf: ?AddSaleItem@CTCShop@@QAEXJABUGoodsPlace@1@@Z
+// Flags: /d2inlT116
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00772BB0, 2585 bytes, `ret 8`.
 // Identity: Ego_r.pdb ?AddSaleItem@CTCShop@@QAEXJABUGoodsPlace@1@@Z (engine/CTCShop.h declares it); caller the landed
 //   CCreatureActionShopkeeperGetOut::PerformAction 0x00842D40 (TCShop->AddSaleItem(Goods, place)); literals 0x0126A920
