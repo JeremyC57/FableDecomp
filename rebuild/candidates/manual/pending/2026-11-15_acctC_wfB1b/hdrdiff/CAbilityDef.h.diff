@@ -1,0 +1,37 @@
+--- a/rebuild/include/engine/_quarantine/CAbilityDef.h
++++ b/rebuild/include/engine/_quarantine/CAbilityDef.h
+@@ -8,6 +8,21 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CABILITYDEF_SUBDEF
++// Retail opt-in (agentC38, row 0x00652FA4 CDrawQuickAccessIcons::Draw): the real class shape -- Ego_r.pdb CAbilityDef : CSubDefClassBase
++// with `EHeroAbility Ability` (+0x28), so CDefPointer<const CAbilityDef> / CDefClassBase::GetSubDef<CAbilityDef> 0x005936C2 compile.
++#include "engine/CSubDefClassBase.h"
++#include "engine/EHeroAbility.h"
++class CAbilityDef : public CSubDefClassBase {
++public:
++#ifdef FABLE_RETAIL_CABILITYDEF_STATGETTYPENAME
++    // Nested opt-in (agentC39, row 0x00652FA4): Ego_r.pdb / FableWin.pdb ?StatGetTypeName@CAbilityDef@@SI?AVCCharString@@XZ (inline; the
++    // class-name key of the same-TU CDefClassBase::GetSubDef<CAbilityDef> 0x005936C2, text of the landed row). The includer includes fable_string.h.
++    static CCharString __fastcall StatGetTypeName() { return CCharString("CAbilityDef", -1); }
++#endif
++    EHeroAbility  Ability;                                   // +0x28
++};
++#else
+ #pragma pack(push, 1)
+ class CAbilityDef {
+ public:
+@@ -25,8 +40,9 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CAbilityDef) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CAbilityDef, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CAbilityDef, Ability) == 0x28);
++FABLE_STATIC_ASSERT_AT(28, sizeof(CAbilityDef) == 0x2c);
++FABLE_STATIC_ASSERT_AT(29, offsetof(CAbilityDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(30, offsetof(CAbilityDef, Ability) == 0x28);
++#endif
+ 
+ #endif // FABLE_ENGINE_CABILITYDEF_H

@@ -1,0 +1,71 @@
+--- a/rebuild/include/engine/CGamePlayerInterface.h
++++ b/rebuild/include/engine/CGamePlayerInterface.h
+@@ -106,6 +106,9 @@
+ class CDefPointeeBase;
+ class CMainGameComponent;
+ class CPlayerManager;
++#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_GETACTIONNAME
++class CActionInputControl; class CWideString;
++#endif
+ 
+ #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE
+ enum EGameAction;                                            // MS forward enums (as engine/fable_nscript_forward.h)
+@@ -117,6 +120,11 @@
+ #pragma pack(push, 1)
+ class CGamePlayerInterface {
+ public:
++#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_GETACTIONNAME
++    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?GetActionName@CGamePlayerInterface@@SI_NABVCActionInputControl@@AAVCWideString@@_N@Z
++    // (static __fastcall, retail 0x00446720: ecx = control, edx = name, the bool on the stack). Declaration only.
++    static bool FABLE_FASTCALL GetActionName(const CActionInputControl& control, CWideString& name, bool short_name);   // 0x00446720
++#endif
+ #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_TOGGLE_ZTARGET
+     bool IsToggleZTarget() const;
+ #endif
+@@ -618,26 +626,26 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CGamePlayerInterface) == 0x898);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, Component) == 0x6f8);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PlayerManager) == 0x6fc);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PacketSave) == 0x700);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PacketLoad) == 0x701);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PacketFile) == 0x704);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, InputEventIsLoaded) == 0x720);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, LoadedInputEvent) == 0x724);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, Suspended) == 0x79c);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PControlsDef_Object) == 0x7a0);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, ControlsDefIndex) == 0x7a4);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, Controls) == 0x7a8);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, AssignableSpecialMoveButtons) == 0x7b8);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, QuickAccessItemButtons) == 0x7c4);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, ContextSensitiveItemButtons) == 0x7d0);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, CurrentQueuedProcessedInputNo) == 0x7dc);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, CurrentProcessedInput) == 0x7e0);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, CurrentEventInProcessedInput) == 0x890);
+-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, HasCalledInputUpdateThisFrame) == 0x894);
++FABLE_STATIC_ASSERT_AT(621, sizeof(CGamePlayerInterface) == 0x898);
++FABLE_STATIC_ASSERT_AT(622, offsetof(CGamePlayerInterface, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(623, offsetof(CGamePlayerInterface, Component) == 0x6f8);
++FABLE_STATIC_ASSERT_AT(624, offsetof(CGamePlayerInterface, PlayerManager) == 0x6fc);
++FABLE_STATIC_ASSERT_AT(625, offsetof(CGamePlayerInterface, PacketSave) == 0x700);
++FABLE_STATIC_ASSERT_AT(626, offsetof(CGamePlayerInterface, PacketLoad) == 0x701);
++FABLE_STATIC_ASSERT_AT(627, offsetof(CGamePlayerInterface, PacketFile) == 0x704);
++FABLE_STATIC_ASSERT_AT(628, offsetof(CGamePlayerInterface, InputEventIsLoaded) == 0x720);
++FABLE_STATIC_ASSERT_AT(629, offsetof(CGamePlayerInterface, LoadedInputEvent) == 0x724);
++FABLE_STATIC_ASSERT_AT(630, offsetof(CGamePlayerInterface, Suspended) == 0x79c);
++FABLE_STATIC_ASSERT_AT(631, offsetof(CGamePlayerInterface, PControlsDef_Object) == 0x7a0);
++FABLE_STATIC_ASSERT_AT(632, offsetof(CGamePlayerInterface, ControlsDefIndex) == 0x7a4);
++FABLE_STATIC_ASSERT_AT(633, offsetof(CGamePlayerInterface, Controls) == 0x7a8);
++FABLE_STATIC_ASSERT_AT(634, offsetof(CGamePlayerInterface, AssignableSpecialMoveButtons) == 0x7b8);
++FABLE_STATIC_ASSERT_AT(635, offsetof(CGamePlayerInterface, QuickAccessItemButtons) == 0x7c4);
++FABLE_STATIC_ASSERT_AT(636, offsetof(CGamePlayerInterface, ContextSensitiveItemButtons) == 0x7d0);
++FABLE_STATIC_ASSERT_AT(637, offsetof(CGamePlayerInterface, CurrentQueuedProcessedInputNo) == 0x7dc);
++FABLE_STATIC_ASSERT_AT(638, offsetof(CGamePlayerInterface, CurrentProcessedInput) == 0x7e0);
++FABLE_STATIC_ASSERT_AT(639, offsetof(CGamePlayerInterface, CurrentEventInProcessedInput) == 0x890);
++FABLE_STATIC_ASSERT_AT(640, offsetof(CGamePlayerInterface, HasCalledInputUpdateThisFrame) == 0x894);
+ 
+ #endif // FABLE_ENGINE_CGAMEPLAYERINTERFACE_H
+ 

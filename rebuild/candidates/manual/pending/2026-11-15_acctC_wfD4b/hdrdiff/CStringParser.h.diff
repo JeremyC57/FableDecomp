@@ -1,0 +1,48 @@
+--- a/rebuild/include/engine/CStringParser.h
++++ b/rebuild/include/engine/CStringParser.h
+@@ -26,6 +26,11 @@
+ #else
+     CStringParser(const CCharString&,void (__fastcall*)(const CCharString&)=0,const CCharString& filename=CCharString(""),long baseLineOffset=0);
+ #endif
++#ifdef FABLE_RETAIL_CSTRINGPARSER_DTOR_OUTOFLINE
++    // Per-TU opt-in (wfD4, row 0x0049A0B0 CProgressDisplay::InitialiseTextures): Ego_r.pdb / FableWin.pdb ??1CStringParser@@UAE@XZ, out of line
++    // in retail (COMDAT 0x004047A0, landed; called at 0x0049A9F5 for the parser local) where the implicit destructor would expand. Declaration only.
++    virtual ~CStringParser();                                            // 0x004047A0
++#endif
+ #ifdef FABLE_RETAIL_CSTRINGPARSER_SKIPUNTILWHITESPACE
+     // Opt-in (chunk 2010, row 0x005248B0): Ego_r.pdb ?SkipUntilWhitespace@CStringParser@@QAEJXZ, retail 0x009B9CE0 (bound by the landed
+     // 0x009BA4A0 ReadAsStringUntilWhitespace). Declaration only.
+@@ -141,7 +146,7 @@
+     void (__fastcall *ErrorCallback)(const CCharString&);
+     CCursorPos CursorPos;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CStringParser)==0x28);
++FABLE_STATIC_ASSERT_AT(144, sizeof(CStringParser)==0x28);
+ #ifdef FABLE_RETAIL_CSTRINGPARSER_INIT_STRING_INLINE
+ inline void CStringParser::Init(const CCharString& string,void (__fastcall* errorCallback)(const CCharString&),const CCharString& filename,long baseLineOffset)
+ {
+@@ -179,15 +184,15 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CStringParser) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CStringParser, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CStringParser, String) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CStringParser, BaseLineOffset) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CStringParser, Filename_PStringData) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CStringParser, TempCharString_PStringData) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CStringParser, Comments) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CStringParser, ErrorCallback) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CStringParser, CursorPos) == 0x1c);
++FABLE_STATIC_ASSERT_AT(182, sizeof(CStringParser) == 0x28);
++FABLE_STATIC_ASSERT_AT(183, offsetof(CStringParser, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(184, offsetof(CStringParser, String) == 0x4);
++FABLE_STATIC_ASSERT_AT(185, offsetof(CStringParser, BaseLineOffset) == 0x8);
++FABLE_STATIC_ASSERT_AT(186, offsetof(CStringParser, Filename_PStringData) == 0xc);
++FABLE_STATIC_ASSERT_AT(187, offsetof(CStringParser, TempCharString_PStringData) == 0x10);
++FABLE_STATIC_ASSERT_AT(188, offsetof(CStringParser, Comments) == 0x14);
++FABLE_STATIC_ASSERT_AT(189, offsetof(CStringParser, ErrorCallback) == 0x18);
++FABLE_STATIC_ASSERT_AT(190, offsetof(CStringParser, CursorPos) == 0x1c);
+ 
+ #endif // FABLE_ENGINE_CSTRINGPARSER_H
+ 

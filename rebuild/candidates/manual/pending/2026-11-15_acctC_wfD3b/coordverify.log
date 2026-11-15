@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00dcfa60   RELOCATION_MATCH PASS   DoCutsceneIfRequired
+00dc4d70   RELOCATION_MATCH PASS   Main
+00d3d150   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00dcfa60 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::DoCutsceneIfRequired
+  00dc4d70 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan::Main
+  00d3d150 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CAppleGirl::Main

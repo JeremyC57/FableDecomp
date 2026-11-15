@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0049a0b0   WARN RELOC_NAME: ?LongToWideString@@YI?AVCWideString@@J@Z -> 00405f00 labelled '_global::GFIntToWideString'
+0049a0b0   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+0049a0b0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0049a0b0   RELOCATION_MATCH PASS   InitialiseTextures
+
+WINS: 1
+  0049a0b0 RELOCATION_MATCH CProgressDisplay::InitialiseTextures

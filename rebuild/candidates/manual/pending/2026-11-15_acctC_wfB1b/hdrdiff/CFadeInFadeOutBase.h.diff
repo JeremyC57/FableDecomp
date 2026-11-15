@@ -1,0 +1,39 @@
+--- a/rebuild/include/engine/CFadeInFadeOutBase.h
++++ b/rebuild/include/engine/CFadeInFadeOutBase.h
+@@ -49,17 +49,27 @@
+     // (0x01A65280), inline in retail (the byte Active +0 tested in place). Member function only: no layout change.
+     bool IsActive() const { return Active; }
+ #endif
++#ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_DECLS
++    // Retail opt-in (agentC38, row 0x00652FA4; exclusive with FABLE_RETAIL_CFADEINFADEOUTBASE_OPEN; the includer has CRGBColour): the
++    // out-of-line members as that row calls them -- Ego_r.pdb / FableWin.pdb ?Open@CFadeInFadeOutBase@@QAEXMMVCRGBColour@@@Z 0x00434840,
++    // ?Update@..QAEXM@Z 0x00434870, ?IsOpen@..QBE_NXZ 0x0048DA30, ?GetFadeInOutAlpha@..QBEMXZ 0x004348D0; Close() inline (FableWin).
++    void Open(float fade_in_time, float fade_out_time, CRGBColour to_colour);
++    void Update(float time_delta);
++    bool IsOpen() const;
++    float GetFadeInOutAlpha() const;
++    void Close() { Opening = false; Closing = true; }
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CFadeInFadeOutBase) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, Active) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, FadeInTime) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, FadeOutTime) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, Closing) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, Opening) == 0xd);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, OpenTimer) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, CloseTimer) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CFadeInFadeOutBase, ToColour) == 0x18);
++FABLE_STATIC_ASSERT_AT(55, sizeof(CFadeInFadeOutBase) == 0x1c);
++FABLE_STATIC_ASSERT_AT(56, offsetof(CFadeInFadeOutBase, Active) == 0x0);
++FABLE_STATIC_ASSERT_AT(57, offsetof(CFadeInFadeOutBase, FadeInTime) == 0x4);
++FABLE_STATIC_ASSERT_AT(58, offsetof(CFadeInFadeOutBase, FadeOutTime) == 0x8);
++FABLE_STATIC_ASSERT_AT(59, offsetof(CFadeInFadeOutBase, Closing) == 0xc);
++FABLE_STATIC_ASSERT_AT(60, offsetof(CFadeInFadeOutBase, Opening) == 0xd);
++FABLE_STATIC_ASSERT_AT(61, offsetof(CFadeInFadeOutBase, OpenTimer) == 0x10);
++FABLE_STATIC_ASSERT_AT(62, offsetof(CFadeInFadeOutBase, CloseTimer) == 0x14);
++FABLE_STATIC_ASSERT_AT(63, offsetof(CFadeInFadeOutBase, ToColour) == 0x18);
+ 
+ #endif // FABLE_ENGINE_CFADEINFADEOUTBASE_H

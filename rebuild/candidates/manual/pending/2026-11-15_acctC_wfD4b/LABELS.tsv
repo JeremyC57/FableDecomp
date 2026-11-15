@@ -1,0 +1,8 @@
+address	name	evidence
+00971B00	?IsStillRunnable@CAIStateGroup_JackOfBladesBase@@IAE_NXZ	Ego_r donor 0x00996980 + FableWin 0x02BE5100; called 0x009755DA, 0x00975601
+00973900	?SummonPillarsOld@CAIStateGroup_JackOfBladesBase@@IAEXXZ	Ego_r donor 0x00998A00; called 0x00975040
+0066CA70	?ValidateRegionMinimapPosition@CRegionMinimap@@QBEXABVC2DCoordI@@J@Z	Ego_r donor 0x006A1760 (between IlluminateRegionMinimapTheme and LoadRegionMinimapTGAFile, same order in retail 0x0066C900 < 0x0066CA70 < 0x0066CA80); body `ret 8` = empty release validator (two stack arguments)
+0066CBC0	?SetRegionMinimapThemeValue@CRegionMinimap@@QAEXABVC2DCoordI@@W4RegionMinimapTheme@1@@Z	Ego_r donor 0x006A18D0 (after InitialiseTexture, PDB order); body stores the second argument to cells[size * pos.Y + pos.X].eTheme, `ret 8`; header text compiles to these bytes (probe p11/s1.cpp listing)
+0066CBE0	?GetRegionMinimapThemeValue@CRegionMinimap@@QBE?AW4RegionMinimapTheme@1@ABVC2DCoordI@@@Z	Ego_r donor 0x006A18F0; body loads cells[..].eTheme, `ret 4`
+0066CC00	?SetRegionMinimapThemeLighting@CRegionMinimap@@QAEXABVC2DCoordI@@M@Z	Ego_r donor 0x006A1910; body `fld [esp+8]` ... `fstp [cells + idx*8 + 4]`, `ret 8`
+0066CC20	?GetRegionMinimapThemeLighting@CRegionMinimap@@QBEMABVC2DCoordI@@@Z	Ego_r donor 0x006A1930; body `fld [cells + idx*8 + 4]`, `ret 4`

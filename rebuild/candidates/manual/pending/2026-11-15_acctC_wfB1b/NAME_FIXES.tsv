@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0058578b	?OpenInventory@CTCInventory@@UAEXXZ	Ego_r.pdb 0x005F4D20 + FableWin.pdb name sets; RTTI vtable 0x01250DE4 slot 30	CTCInventory::vfunc_30 (catalogue label)

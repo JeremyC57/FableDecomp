@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/CDefString.h
++++ b/rebuild/include/engine/CDefString.h
+@@ -88,6 +88,13 @@
+  // line in retail at 0x005B3440 (the def name returned by CThing::GetDefName compared with a literal). Declaration only.
+  bool operator==(const char* text) const;                               // 0x005B3440
+ #endif
++#ifdef FABLE_RETAIL_CDEFSTRING_INLINE_EQ
++ // Per-TU visibility opt-in (agentC14, row 0x00603000 CTCInventoryMap::CreateMiniMapMarkers; first found by chunk 729): FableWin.pdb
++ // ??8CDefString@@QBE_NPBD@Z with the text of its landed out-of-line copy 0x005B3440. CreateMiniMapMarkers expands it against a
++ // literal (GetStringAsCharArray 0x009D49F0 on GDefStringTable at 0x006045F9, then `mov ecx,1Ch ; repe cmpsb`). The includer
++ // includes <string.h>.
++ bool operator==(const char* text)const{return strcmp(GDefStringTable.GetStringAsCharArray(TablePos),text)==0;}
++#endif
+ #ifdef FABLE_RETAIL_CDEFSTRING_SETDEFAULTSTRING
+  // Retail opt-in (chunk 1025, row 0x0062FE60 NUISystem::CUIDef::CUIDef): the PDB symbol in ghidra_out (function table)
+  // ?SetDefaultString@CDefString@@QAEXABVCCharString@@@Z, out of line in retail at 0x009D5080. Declaration only.

@@ -1,0 +1,2 @@
+address	name	evidence
+0058578b	CTCInventory::OpenInventory	Ego_r 0x005F4D20 + FableWin ?OpenInventory@CTCInventory@@UAEXXZ; vtable 0x01250DE4 slot 30 (catalogue: vfunc_30)

@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00652fa4   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00652fa4   WARN RELOC_NAME: ?GetGuildSealAlpha@CPlayerGui@@QBEMXZ -> 00437820 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00652fa4   WARN RELOC_NAME: ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z -> 0072c430 labelled 'CTCSpecialAbilities::GetAbilityAvailability'
+00652fa4   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z -> 0065533c labelled '_global::CIntelligentPointer_Assign_0065533c'
+00652fa4   WARN RELOC_NAME: ??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00652fa4   RELOCATION_MATCH PASS   Draw
+0058578b   WARN RELOC_NAME: ?GetMainPlayerJoystickDeviceNumber@CPlayerManager@@QBEJXZ -> 00449980 labelled 'Catch@0042ae0a'
+0058578b   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0058578b   WARN RELOC_NAME: ?SelectScreenOfType@CManager@NHeroInformationScreens@@QAEXW4EScreenType@2@@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+0058578b   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+0058578b   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+0058578b   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0058578b   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0058578b   RELOCATION_MATCH PASS   OpenInventory
+
+WINS: 2
+  00652fa4 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::Draw
+  0058578b RELOCATION_MATCH CTCInventory::OpenInventory

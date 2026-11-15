@@ -1,0 +1,7 @@
+address	name	evidence
+0x00D3D150	NScript::CQ_GuildTrainingScript::CAppleGirl::Main	Ego_r + FableWin ?Main@CAppleGirl@CQ_GuildTrainingScript@NScript@@EAEXXZ; entity vtable 0x012CD7E8 slot 1 (landed Alloc 0x00D3D060)
+0x00ED17D0	NScript::CV_SingingStonesScript::CManWithDoorName::Main	Ego_r + FableWin ?Main@CManWithDoorName@CV_SingingStonesScript@NScript@@EAEXXZ; entity vtable 0x012F2C98 slot 1 (Alloc 0x00ED16E0)
+0x00DC4D70	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan::Main	Ego_r + FableWin ?Main@CSecretPassageMan@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ; entity vtable 0x012DA6A8 slot 1 (Alloc 0x00DC4C40)
+0x00DCFA60	NScript::CQ_OrchardFarmRaidScript::DoCutsceneIfRequired	Ego_r + FableWin ?DoCutsceneIfRequired@CQ_OrchardFarmRaidScript@NScript@@QAEXXZ
+0x00D4A270	NScript::CQ_GuildTrainingScript::CCombatApprentice::Main	Ego_r + FableWin ?Main@CCombatApprentice@CQ_GuildTrainingScript@NScript@@EAEXXZ (Ego_r donor 0x00D5CDB0); landed siblings Alloc 0x00D41A30 / Init 0x00D41AE0
+00d4a270	NScript::CQ_GuildTrainingScript::CCombatApprentice::Main	Ego_r + FableWin ?Main@CCombatApprentice@CQ_GuildTrainingScript@NScript@@EAEXXZ; vtable 0x012CE094 slot 1
