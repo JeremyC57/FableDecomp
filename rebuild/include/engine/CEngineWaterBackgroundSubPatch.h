@@ -18,8 +18,15 @@ class CVertexBufferWin32;
 enum EWaterType { WATER_TYPE_NONE = 0 };                    // W4EWaterType@@ (enumerators unproven)
 #endif
 #endif
+#ifdef FABLE_RETAIL_WATER_OCCLUSION_ORIGINAL_CHAIN_PASS22
+#include "engine/CMovableResource.h"
+#endif
 #pragma pack(push, 1)
-class CEngineWaterBackgroundSubPatch {
+class CEngineWaterBackgroundSubPatch
+#ifdef FABLE_RETAIL_WATER_OCCLUSION_ORIGINAL_CHAIN_PASS22
+    : public CMovableResource
+#endif
+{
 public:
 #ifdef FABLE_RETAIL_CENGINEWATERBACKGROUNDSUBPATCH_ACCESSORS
     // Opt-in (wf3, row 0x00BE7BE0): FableWin.pdb ?IsSea@CEngineWaterBackgroundSubPatch@@QBE?B_NXZ and
@@ -29,7 +36,19 @@ public:
     const bool IsSea() const { return WaterType == 3 || WaterType == 4 || WaterType == 5; }
     bool IsEmpty() const { return !(PolyCount > 0); }
 #endif
+#ifdef FABLE_RETAIL_WATER_OCCLUSION_ORIGINAL_CHAIN_PASS22
+    // Both full PDB types and donor02D4EC80..02D4ED81, native fields +48..5c.
+    unsigned short PeekWidth() const { return Width; }
+    unsigned short PeekHeight() const { return Height; }
+    float PeekDepth() const { return MaxZ-MinZ; }
+    long PeekWorldX() const { return MapX; }
+    long PeekWorldY() const { return MapY; }
+    float PeekWorldZ() const { return MinZ; }
+    void SetOcclusionID(long id) { OcclusionID=id; }
+    unsigned long GetOcclusionID() { return OcclusionID; }
+#else
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     CEngineLandscapeMap* Map;                                // +0x04
     CIndexBuffer*        IndexBuffer;                        // +0x08
     CVertexBufferWin32*  VertexBuffer;                       // +0x0c
@@ -57,25 +76,27 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CEngineWaterBackgroundSubPatch) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, Map) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, IndexBuffer) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, VertexBuffer) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, BridgeIndexBuffers) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, BridgeVertexBuffers) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, PolyCount) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, VertexCount) == 0x32);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, BridgePolyCount) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, RenderBlended) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, WaterType) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, DeletableBuffers) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, OcclusionID) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, MapX) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, MapY) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, Width) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, Height) == 0x56);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, MinZ) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, MaxZ) == 0x5c);
+FABLE_STATIC_ASSERT_AT(60, sizeof(CEngineWaterBackgroundSubPatch) == 0x60);
+#ifndef FABLE_RETAIL_WATER_OCCLUSION_ORIGINAL_CHAIN_PASS22
+FABLE_STATIC_ASSERT_AT(61, offsetof(CEngineWaterBackgroundSubPatch, __vftable) == 0x0);
+#endif
+FABLE_STATIC_ASSERT_AT(62, offsetof(CEngineWaterBackgroundSubPatch, Map) == 0x4);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CEngineWaterBackgroundSubPatch, IndexBuffer) == 0x8);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CEngineWaterBackgroundSubPatch, VertexBuffer) == 0xc);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CEngineWaterBackgroundSubPatch, BridgeIndexBuffers) == 0x10);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CEngineWaterBackgroundSubPatch, BridgeVertexBuffers) == 0x20);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CEngineWaterBackgroundSubPatch, PolyCount) == 0x30);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CEngineWaterBackgroundSubPatch, VertexCount) == 0x32);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CEngineWaterBackgroundSubPatch, BridgePolyCount) == 0x34);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CEngineWaterBackgroundSubPatch, RenderBlended) == 0x3c);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CEngineWaterBackgroundSubPatch, WaterType) == 0x40);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CEngineWaterBackgroundSubPatch, DeletableBuffers) == 0x44);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CEngineWaterBackgroundSubPatch, OcclusionID) == 0x48);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CEngineWaterBackgroundSubPatch, MapX) == 0x4c);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CEngineWaterBackgroundSubPatch, MapY) == 0x50);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CEngineWaterBackgroundSubPatch, Width) == 0x54);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CEngineWaterBackgroundSubPatch, Height) == 0x56);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CEngineWaterBackgroundSubPatch, MinZ) == 0x58);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CEngineWaterBackgroundSubPatch, MaxZ) == 0x5c);
 
 #endif // FABLE_ENGINE_CENGINEWATERBACKGROUNDSUBPATCH_H

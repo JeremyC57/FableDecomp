@@ -30,6 +30,10 @@
 // Landed rows (e.g. NUISystemCSlider_GetValueFromProfile_0054bbb0.cpp) declare the same Get locally.
 class CUserProfileManager {
 public:
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_ORIGINAL_TARGETING_QUERY
+    // Retail opt-in (Codex pass22): both original TPI method records; donor020FF164 selects these two fields.
+    bool GetShowTargetingStatus() const { return UseNewProfileValues ? ShowTargetingStatusNewProfile : ShowTargetingStatus; }
+#endif
     static CUserProfileManager& __fastcall Get();                         // 0x0040D2A0
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VIRTUAL_DTOR
     // Retail opt-in (agentFAM10, 2026-11-12, row 0x0040D830 CCountedPointer<CUserProfileManager>::DeleteData): the class is polymorphic

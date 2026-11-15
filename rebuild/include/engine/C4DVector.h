@@ -25,12 +25,20 @@ public:
     // ??0C4DVector@@QAE@ABVCRGBFloatColour@@@Z (X=R, Y=G, Z=B, W=A; defined in engine/CRGBFloatColour.h),
     // ?Initialise@C4DVector@@QAEXMMMM@Z and ??DC4DVector@@QBE?BV0@M@Z (component-wise scale; CShaderRenderManager::
     // UpdateObjectSpaceLighting 0x00989CB0 scales the attenuation pairs), all inline in retail (no out-of-line copy).
+#ifdef FABLE_RETAIL_PASS22_WATER_ORIGINAL_COPY_COLOUR_FORMALS
+    inline C4DVector(const CRGBFloatColour& col);
+#else
     inline C4DVector(const CRGBFloatColour& colour);
+#endif
 #if defined(FABLE_RETAIL_C4DVECTOR_INITIALISEFROMCOLOUR) || defined(FABLE_RETAIL_C4DVECTOR_ORIGINAL_COLOUR_CHAIN)
     // Opt-in (agentC20, row 0x00BA2350): FableWin.pdb ?InitialiseFromColour@C4DVector@@QAEXABVCRGBFloatColour@@@Z (23 debug instructions = four member
     // copies); FableWin's ??0C4DVector@@QAE@ABVCRGBFloatColour@@@Z is 12 instructions / 28 bytes = this one call. Body in engine/CRGBFloatColour.h.
     // Original PDB member; donor02CFBD70 invokes GetR/G/B/A in this order.
+#ifdef FABLE_RETAIL_PASS22_WATER_ORIGINAL_COPY_COLOUR_FORMALS
+    inline void InitialiseFromColour(const CRGBFloatColour& col);
+#else
     inline void InitialiseFromColour(const CRGBFloatColour& colour);
+#endif
 #endif
     void Initialise(float x, float y, float z, float w) { X = x; Y = y; Z = z; W = w; }
 #if defined(FABLE_RETAIL_C4DVECTOR_NAMED_RESULT) || defined(FABLE_RETAIL_C4DVECTOR_NAMED_SCALE)

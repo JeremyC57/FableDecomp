@@ -14,9 +14,14 @@
 #include "engine/CIntelligentPointer.h"
 #include "engine/CRGBColour.h"
 class CThing; class CEnginePrimitivePrepareInfo;
+#ifdef FABLE_RETAIL_NPLAYERGUI_HIGHLIGHT_ORIGINAL_NAMES
+// Retail opt-in (Codex pass22): both complete TPI enum records, actual Draw stores and table indices.
+enum EHighlightingCursorType { CURSOR_TYPE_NONE=0, CURSOR_TYPE_USABLE=1, CURSOR_TYPE_ENEMY=2, CURSOR_TYPE_ALLY=3, CURSOR_TYPE_HAS_INFORMATION=4, MAX_NO_CURSOR_TYPES=5 };
+#endif
 namespace NPlayerGui {
 // EHighlightingCursorType: Ego_r.pdb names the type (the CursorType member) but no PDB on disk lists its enumerators; the values are
 // the row's (0 none, 1 use, 2 attack, 3 talk, 4 talk-with-interest). PLACEHOLDER spellings, flagged for the naming queue.
+ #ifndef FABLE_RETAIL_NPLAYERGUI_HIGHLIGHT_ORIGINAL_NAMES
 enum EHighlightingCursorType {
     HIGHLIGHTING_CURSOR_NONE = 0,
     HIGHLIGHTING_CURSOR_USE = 1,
@@ -24,6 +29,24 @@ enum EHighlightingCursorType {
     HIGHLIGHTING_CURSOR_TALK = 3,
     HIGHLIGHTING_CURSOR_INTEREST = 4
 };
+#endif
+#ifdef FABLE_RETAIL_NPLAYERGUI_CURSOR_ORIGINAL_DECLARATIONS_PASS22
+class CDrawHighlightingTargetingCursor : public CDrawBase {
+public:
+    CDrawHighlightingTargetingCursor(CPlayerGui&,std::vector<CDrawBase*>&);
+    void Draw(const CEnginePrimitivePrepareInfo& info);                  // 0x0064BFBA ?Draw@CDrawHighlightingTargetingCursor@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+    void Clear();
+    CThing* GetPTargetedThing() const;
+private:
+    CIntelligentPointer<CThing> PTargetedThing;                          // +0x28
+    CRGBColour                  CurrentColour;                           // +0x30
+    float                       CurrentWidthScreenSpace;                 // +0x34
+    float                       CurrentWidthWorldSpace;                  // +0x38
+    long                        CurrentFadeStep;                         // +0x3c
+    long                        Width;                                   // +0x40
+    EHighlightingCursorType     CursorType;                              // +0x44
+};
+#else
 class CDrawHighlightingTargetingCursor : public CDrawBase {
 public:
     void Draw(const CEnginePrimitivePrepareInfo& info);                  // 0x0064BFBA ?Draw@CDrawHighlightingTargetingCursor@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
@@ -36,6 +59,8 @@ private:
     long                        Width;                                   // +0x40
     EHighlightingCursorType     CursorType;                              // +0x44
 };
+#endif
+
 }
-FABLE_STATIC_ASSERT(sizeof(NPlayerGui::CDrawHighlightingTargetingCursor) == 0x48);
+FABLE_STATIC_ASSERT_AT(40, sizeof(NPlayerGui::CDrawHighlightingTargetingCursor) == 0x48);
 #endif

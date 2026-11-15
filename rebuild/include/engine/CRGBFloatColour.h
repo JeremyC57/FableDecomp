@@ -18,6 +18,46 @@
 #ifdef FABLE_RETAIL_CRGBFLOATCOLOUR
 #include "engine/GFFloatToLongNear.h"
 #endif
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
+class C3DVector;
+// Both original TPI34-member records; user constructors, implicit generated operations.
+class CRGBFloatColour {
+public:
+    float R,G,B,A;
+    CRGBFloatColour() { }
+    CRGBFloatColour(float r,float g,float b) { Initialise(r,g,b); }
+    CRGBFloatColour(float r,float g,float b,float a) { Initialise(r,g,b,a); }
+    FABLE_FORCEINLINE CRGBFloatColour(const CRGBColour& colour) {
+        Initialise(colour.R*(1.0f/255.0f),colour.G*(1.0f/255.0f),colour.B*(1.0f/255.0f),colour.A*(1.0f/255.0f));
+    }
+    CRGBFloatColour(const C3DVector&);
+    operator CRGBColour() const;
+    operator C3DVector() const;
+    unsigned long GetTRGBALong() const;
+    CRGBColour GetRGBColour() const;
+    CRGBColour GetRGBColourClamped() const;
+    void Initialise(float r,float g,float b) { R=r;G=g;B=b;A=1.0f; }
+    void Initialise(float r,float g,float b,float a) { R=r;G=g;B=b;A=a; }
+    void SetR(float);
+    void SetG(float);
+    void SetB(float);
+    void SetA(float);
+    float GetR() const;
+    float GetG() const;
+    float GetB() const;
+    float GetA() const;
+    CRGBFloatColour& operator+=(const CRGBFloatColour&);
+    CRGBFloatColour& operator-=(const CRGBFloatColour&);
+    CRGBFloatColour& operator*=(float);
+    CRGBFloatColour& operator*=(const CRGBFloatColour&);
+    void Clamp();
+    CRGBFloatColour operator+(const CRGBFloatColour&) const;
+    CRGBFloatColour operator-(const CRGBFloatColour&) const;
+    CRGBFloatColour operator*(float) const;
+    CRGBFloatColour operator*(const CRGBFloatColour&) const;
+    CRGBFloatColour Interpolate(const CRGBFloatColour&,float) const;
+};
+#else
 class CRGBFloatColour {
 public:
     CRGBFloatColour() { }
@@ -30,7 +70,11 @@ public:
     CRGBFloatColour(float r,float g,float b) { Initialise(r,g,b); }
     void Initialise(float r,float g,float b) { R=r;G=g;B=b;A=1.0f; }
     CRGBFloatColour(float r,float g,float b,float a) { Initialise(r,g,b,a); }
+#ifdef FABLE_RETAIL_PASS22_WATER_ORIGINAL_COPY_COLOUR_FORMALS
+    CRGBFloatColour operator*(const CRGBFloatColour& col) const { return CRGBFloatColour(R*col.R,G*col.G,B*col.B,A*col.A); }
+#else
     CRGBFloatColour operator*(const CRGBFloatColour& c) const { return CRGBFloatColour(R*c.R,G*c.G,B*c.B,A*c.A); }
+#endif
 #else
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
 #endif
@@ -186,22 +230,33 @@ public:
     float B;                                                             // +0x08
     float A;                                                             // +0x0c
 };
+#endif
 FABLE_STATIC_ASSERT_AT(131, sizeof(CRGBFloatColour) == 0x10);
 #if !defined(FABLE_RETAIL_CRGBFLOATCOLOUR_ORIGINAL_FLOAT_CTORS)
+#ifndef FABLE_RETAIL_CRGBFLOATCOLOUR_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
 inline CRGBFloatColour operator*(const CRGBFloatColour& a, const CRGBFloatColour& b)
 {
     return CRGBFloatColour(a.R * b.R, a.G * b.G, a.B * b.B, a.A * b.A);
 }
+#endif
 #endif
 // (C4DVector.h must have been read with FABLE_RETAIL_C4DVECTOR: the retail headers that include it define the macro first.)
 #ifdef FABLE_RETAIL_C4DVECTOR_INITIALISEFROMCOLOUR
 inline void C4DVector::InitialiseFromColour(const CRGBFloatColour& colour) { X = colour.R; Y = colour.G; Z = colour.B; W = colour.A; }
 inline C4DVector::C4DVector(const CRGBFloatColour& colour) { InitialiseFromColour(colour); }
 #elif defined(FABLE_RETAIL_C4DVECTOR_ORIGINAL_COLOUR_CHAIN)
+#ifdef FABLE_RETAIL_PASS22_WATER_ORIGINAL_COPY_COLOUR_FORMALS
+inline C4DVector::C4DVector(const CRGBFloatColour& col) { InitialiseFromColour(col); }
+inline void C4DVector::InitialiseFromColour(const CRGBFloatColour& col) {
+    X=col.GetR();Y=col.GetG();Z=col.GetB();W=col.GetA();
+}
+#else
 inline C4DVector::C4DVector(const CRGBFloatColour& colour) { InitialiseFromColour(colour); }
 inline void C4DVector::InitialiseFromColour(const CRGBFloatColour& colour) {
     X=colour.GetR();Y=colour.GetG();Z=colour.GetB();W=colour.GetA();
 }
+#endif
+
 #else
 inline C4DVector::C4DVector(const CRGBFloatColour& colour) : X(colour.R), Y(colour.G), Z(colour.B), W(colour.A) { }
 #endif

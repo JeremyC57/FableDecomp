@@ -5,10 +5,54 @@
 // operators returning T& and const T&, the (n) and (n, value) constructors, GetAsCArray over a private zero-size array.
 #include "stlport/fable_containers.h"
 #include "fable_compiler.h"
+#ifdef FABLE_RETAIL_CARRAY_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
+// Both original TPI records:23 real methods, generated assignment omitted.
+// Inverse LF_METHOD overload groups: measured VC71 reversal supports this
+// reconstruction hypothesis; original textual source order is not proven.
 template<class T> class CArray : public std::vector<T> {
 public:
+ CArray() : std::vector<T>() { }
+ explicit CArray(unsigned int n) : std::vector<T>(n) { }
+ CArray(unsigned int n,const T& t) : std::vector<T>(n,t) { }
+ CArray(const CArray& a) : std::vector<T>(a) { }
+ ~CArray() { }
+ typename std::vector<T>::reference At(unsigned int index);
+ typename std::vector<T>::const_reference At(unsigned int index) const;
+ typename std::vector<T>::reference operator[](unsigned int index) { return std::vector<T>::operator[](index); }
+ typename std::vector<T>::const_reference operator[](unsigned int index) const {
+  return const_cast<std::vector<T>*>(static_cast<const std::vector<T>*>(this))->operator[](index);
+ }
+ typename std::vector<T>::iterator Find(const T& value);
+ typename std::vector<T>::const_iterator Find(const T& value) const;
+ void push_back(const T& _Val) { std::vector<T>::push_back(_Val); }
+ void push_back() { T element; push_back(element); }
+ void Append(const CArray& other);
+ T* GetAsCArray();
+ const T* GetAsCArray() const;
+ const T* PeekAsCArray() const;
+ unsigned int GetByteSize() const;
+ void DeallocateMemory();
+ void DeallocateUnusedMemory();
+ unsigned long Sizeof() const;
+private:
+ T* GetZeroSizeArray();
+ const T* GetZeroSizeArray() const;
+};
+#else
+template<class T> class CArray : public std::vector<T> {
+public:
+#ifdef FABLE_RETAIL_CARRAY_ORIGINAL_USER_SPECIAL_MEMBERS_PASS22
+    // Both original PDBs: user-written copy ctor/dtor attr0x3; assignment generated0x103.
+    // FableWin033264B0 forwards copy to vector;02C89C80/01CA07F0 only call base dtor.
+    CArray(const CArray& other) : std::vector<T>(other) { }
+    ~CArray() { }
+#endif
     CArray() : std::vector<T>() { }
-#ifdef FABLE_RETAIL_CARRAY_AT
+#ifdef FABLE_RETAIL_CARRAY_ORIGINAL_AT_VECTOR_INDEX_PASS22
+    // Both original types expose these At overloads; original02CFC49A calls vector::operator[].
+    T& At(unsigned int index) { return std::vector<T>::operator[](index); }
+    const T& At(unsigned int index) const { return std::vector<T>::operator[](index); }
+#elif defined(FABLE_RETAIL_CARRAY_AT)
     // FableWin original At(T) called by02ebbf70; same index access as operator[].
     T& At(unsigned int i){return *(this->begin()+i);}
 #endif
@@ -30,7 +74,18 @@ public:
     explicit CArray(unsigned int n) : std::vector<T>(n,T()) { }
 #endif
     CArray(unsigned int n,const T& x) : std::vector<T>(n,x) { }
-#ifdef FABLE_RETAIL_CARRAY
+#ifdef FABLE_RETAIL_CARRAY_ORIGINAL_INDEX_VECTOR_CHAIN_PASS22
+    // Original CArray<CGraphicInfo>::operator[]01D2F450 release tail calls vector::operator[].
+    T& operator[](unsigned int index) { return std::vector<T>::operator[](index); }
+    const T& operator[](unsigned int index) const { return std::vector<T>::operator[](index); }
+#elif defined(FABLE_RETAIL_CARRAY_ORIGINAL_INDEX_BASE_PASS22)
+    // The actual original const CArray indexer calls the mutable vector indexer
+    // (FableWin02e54e33,02f1a9f3,01a71595); release omits its bounds assertion.
+    typename std::vector<T>::reference operator[](unsigned int index) { return std::vector<T>::operator[](index); }
+    typename std::vector<T>::const_reference operator[](unsigned int index) const {
+        return const_cast<std::vector<T>*>(static_cast<const std::vector<T>*>(this))->operator[](index);
+    }
+#elif defined(FABLE_RETAIL_CARRAY)
     // Retail opt-in (chunk 723, row 0x00BC14E0): the index operators go through begin() like STLport's vector::operator[]; the
     // element offset then folds into the addressing mode of the inlined CVertexShader::operator= (`[esi+0Ch]`), where the
     // `_M_start[i]` form materialises the element address first (`add esi,8`).
@@ -79,4 +134,5 @@ public:
 private:
     T* GetZeroSizeArray() { return (T*)this; }
 };
+#endif
 #endif

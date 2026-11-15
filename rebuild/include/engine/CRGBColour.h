@@ -3,6 +3,40 @@
 #include "rebuild_abi.h"
 #include "fable_compiler.h"
 // Layout: original PDB class V, sizeof4; native B,G,R,A at0,1,2,3.
+#ifdef FABLE_RETAIL_CRGBCOLOUR_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
+// Both original TPI records,27 members. C13ctors36..39/Initialise41.
+class CRGBALong;
+class CRGBColour {
+public:
+    union {
+        struct { unsigned char B,G,R,A; };
+        unsigned long IntValue;
+    };
+    CRGBColour() { }
+    CRGBColour(unsigned char r,unsigned char g,unsigned char b) { Initialise(r,g,b,255); }
+    CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Initialise(r,g,b,a); }
+    CRGBColour(const CRGBColour& colour) { Initialise(colour.R,colour.G,colour.B,colour.A); }
+    void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r;G=g;B=b;A=a; }
+    void SetR(unsigned char);
+    void SetG(unsigned char);
+    void SetB(unsigned char);
+    void SetA(unsigned char);
+    unsigned char GetR() const { return R; }
+    unsigned char GetG() const { return G; }
+    unsigned char GetB() const { return B; }
+    unsigned char GetA() const { return A; }
+    void SetFromInt(unsigned long);
+    void SetD3DCOLOR(unsigned long);
+    unsigned long GetAsInt() const;
+    unsigned long GetD3DCOLOR() const;
+    CRGBALong GetRGBALong() const;
+    CRGBColour Interpolate(CRGBColour,float) const;
+    void Roll(long,long,long,long);
+    bool operator==(const CRGBColour&) const;
+    bool operator!=(const CRGBColour&) const;
+    // No generated copy assignment or destructor is redeclared.
+};
+#else
 class CRGBColour {
 public:
     union {
@@ -38,7 +72,12 @@ public:
     // retail emits where a CRGBColour is passed by value (CPSCDecalRenderer::InterpolateTo 0x00B1BDA0 into
     // GFGetInterpolatedColour; GOTCHAS: the landed rows spell the setter `Set`, which neither PDB has).
     void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
+#ifdef FABLE_RETAIL_CRGBCOLOUR_CURSOR_COPY_INLINE_PASS22
+    // Native0064BFBA expands both fade-colour copies; ordinary size budget also expands unrelated native calls.
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& colour) { Initialise(colour.R,colour.G,colour.B,colour.A); }
+#else
     CRGBColour(const CRGBColour& colour) { Initialise(colour.R,colour.G,colour.B,colour.A); }
+#endif
     // Codex pass 13 (rows 0x00EEDC20 / 0x00E8BEF0): FableWin ??0CRGBColour@@QAE@EEE@Z, inline in retail (R, G, B then A = 0xFF stored
     // in order through Initialise).
     CRGBColour(unsigned char r,unsigned char g,unsigned char b) { Initialise(r,g,b,255); }
@@ -78,5 +117,6 @@ public:
     unsigned char GetB() const { return B; }
     unsigned char GetA() const { return A; }
 };
+#endif
 FABLE_STATIC_ASSERT_AT(65, sizeof(CRGBColour)==4);
 #endif

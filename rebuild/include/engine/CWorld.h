@@ -595,6 +595,10 @@ public:
     bool                        DontPopulateNextLoadedRegion; // +0xd8
     bool                        HeroSleepingEnabled;         // +0xd9
     bool                        MapTableShowQuestCardsOnUsed; // +0xda
+#ifdef FABLE_RETAIL_CWORLD_MAP_TABLE_QUERY
+    // Both original PDB records and donor020FE4E3; native0064C2B4 reads +DA.
+    bool IsMapTableToShowQuestCardsWhenUsed() const { return MapTableShowQuestCardsOnUsed; }
+#endif
     bool                        ScreenToFadeInOnNextRegionChange; // +0xdb
     bool                        DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn; // +0xdc
     bool                        MiniMapEnabled;              // +0xdd
@@ -727,6 +731,10 @@ public:
     bool                        DontPopulateNextLoadedRegion; // +0xd8
     bool                        HeroSleepingEnabled;         // +0xd9
     bool                        MapTableShowQuestCardsOnUsed; // +0xda
+#ifdef FABLE_RETAIL_CWORLD_MAP_TABLE_QUERY
+    // Both original PDB records and donor020FE4E3; native0064C2B4 reads +DA.
+    bool IsMapTableToShowQuestCardsWhenUsed() const { return MapTableShowQuestCardsOnUsed; }
+#endif
     bool                        ScreenToFadeInOnNextRegionChange; // +0xdb
     bool                        DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn; // +0xdc
     bool                        MiniMapEnabled;              // +0xdd

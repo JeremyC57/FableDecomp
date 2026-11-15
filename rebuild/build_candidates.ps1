@@ -397419,6 +397419,22 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '01215000_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b6fa40'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b6/CEngineWaterRenderer_RenderSeaMidground_00b6fa40.cpp'
+        TestSource = '00/b6/CEngineWaterRenderer_RenderSeaMidground_00b6fa40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT128'
+        PassPattern = '00b6fa40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b70230'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_RenderSeaBackground_00b70230.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_RenderSeaBackground_00b70230_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT128'
+        PassPattern = '00b70230_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

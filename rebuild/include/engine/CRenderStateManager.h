@@ -208,11 +208,21 @@ void SetTextureColourSign(long,TEXTURE_COLOUR_SIGN);
 public:
 void SetBlendColour(unsigned long);
 public:
+#ifdef FABLE_RETAIL_PASS22_STATE_ORIGINAL_CAPTURE_STORE_SEQUENCE
+// Original018B2101 store, debug block-id store omitted,018B211B..2A increment,018B2248 shift.
+FABLE_PASS22_RENDERSTATE_INLINE void StartCaptureBlock(void* block_id)
+    {
+        StateStack[StateStackSize].State = &BookmarkDummyState;
+        ++StateStackSize;
+        CurrentBookmarkMask <<= 1;
+    }
+#else
 FABLE_PASS22_RENDERSTATE_INLINE void StartCaptureBlock(void* block)
     {
         StateStack[StateStackSize++].State = &BookmarkDummyState;
         CurrentBookmarkMask <<= 1;
     }
+#endif
 public:
 void RestoreCaptureBlock();
 public:
@@ -538,7 +548,11 @@ public:
     FABLE_FORCEINLINE void SetPolyCullMode(POLY_CULL_MODE mode) { SetRenderState(D3DPolyCullModeTable[mode], DeviceState.PolyCullMode); }
     FABLE_FORCEINLINE void SetPolyFillMode(POLY_FILL_MODE mode) { SetRenderState(D3DPolyFillModeTable[mode], DeviceState.PolyFillMode); }
     FABLE_FORCEINLINE void SetPolyShadeMode(POLY_SHADE_MODE mode) { SetRenderState(D3DPolyShadeModeTable[mode], DeviceState.PolyShadeMode); }
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_ORIGINAL_FORMALS_PASS22
+    FABLE_FORCEINLINE void SetZBufferWriteEnable(bool enabled) { SetRenderState(enabled ? 1 : 0, DeviceState.ZBufferWriteEnable); }
+#else
     FABLE_FORCEINLINE void SetZBufferWriteEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.ZBufferWriteEnable); }
+#endif
     FABLE_FORCEINLINE void SetZBufferEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.ZBufferEnable); }
     FABLE_FORCEINLINE void SetZBufferTestFunc(ZBUFFER_FUNC func) { SetRenderState(D3DZBufferFuncModeTable[func], DeviceState.ZBufferFunc); }
     FABLE_FORCEINLINE void SetAlphaBlendEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.AlphaBlendEnable); }
@@ -665,8 +679,16 @@ public:
     // no out-of-line copy in retail Fable.exe: both rows expand them into SetRenderState on StencilEnable +0x370 (0x00B5AB01, value 1),
     // StencilFunc +0x3C0 (0x00B5AB6D, D3DStencilFuncModeTable 0x01396E18 [STENCIL_FUNC_EQUAL] = D3DCMP_EQUAL), StencilMask +0x3E8
     // (0x00B5ABDA, immediate 2) and StencilRef +0x3D4 (0x00B5AC46, immediate 0). The default branch keeps the declarations.
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_ORIGINAL_FORMALS_PASS22
+    FABLE_FORCEINLINE void SetStencilEnable(bool on) { SetRenderState(on ? 1 : 0, DeviceState.StencilEnable); }
+#else
     FABLE_FORCEINLINE void SetStencilEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.StencilEnable); }
+#endif
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_ORIGINAL_FORMALS_PASS22
+    FABLE_FORCEINLINE void SetStencilFunc(STENCIL_FUNC mode) { SetRenderState(D3DStencilFuncModeTable[mode], DeviceState.StencilFunc); }
+#else
     FABLE_FORCEINLINE void SetStencilFunc(STENCIL_FUNC func) { SetRenderState(D3DStencilFuncModeTable[func], DeviceState.StencilFunc); }
+#endif
     FABLE_FORCEINLINE void SetStencilRef(unsigned long ref) { SetRenderState(ref, DeviceState.StencilRef); }
     FABLE_FORCEINLINE void SetStencilMask(unsigned long mask) { SetRenderState(mask, DeviceState.StencilMask); }
 #ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_DISPLACEMENT_INLINE
@@ -753,6 +775,21 @@ private:
     static _D3DRENDERSTATETYPE D3DTextureCoordWrapStageTable[8];
     // ?SetRenderState@CRenderStateManager@@AAEXKAAUCStateInfo@1@@Z: skip an unchanged value; otherwise bookmark the old value once per
     // capture block (the state's mask bit), store the new one and queue the state for RealiseRenderState.
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_ORIGINAL_FORMALS_PASS22
+// Original donor guard and formal names; outline-only alternative preserves existing profiles.
+    FABLE_FORCEINLINE void SetRenderState(unsigned long value, CStateInfo& state_info)
+    {
+        if (state_info.DesiredState == value) return;
+        if ((state_info.BookmarkMask & CurrentBookmarkMask) == 0) {
+            state_info.BookmarkMask |= CurrentBookmarkMask;
+            StateStack[StateStackSize].State = &state_info;
+            StateStack[StateStackSize].Value = state_info.DesiredState;
+            ++StateStackSize;
+        }
+        state_info.DesiredState = value;
+        AddStateToUpdateList(state_info);
+    }
+#else
 #ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_EARLY_RETURN
     FABLE_FORCEINLINE void SetRenderState(unsigned long value, CStateInfo& state_info)
     {
@@ -811,6 +848,18 @@ private:
         }
     }
 #endif
+#endif
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_ORIGINAL_FORMALS_PASS22
+    // Actual FableWin formal name; no fitted local snapshot.
+    FABLE_FORCEINLINE void AddStateToUpdateList(CStateInfo& state_info)
+    {
+        if (!state_info.DirtyListFlag) {
+            state_info.DirtyListFlag = true;
+            StateUpdateList[StateUpdateListSize] = &state_info;
+            ++StateUpdateListSize;
+        }
+    }
+#else
     // ?AddStateToUpdateList@CRenderStateManager@@AAEXAAUCStateInfo@1@@Z
     FABLE_FORCEINLINE void AddStateToUpdateList(CStateInfo& state)
     {
@@ -829,6 +878,7 @@ private:
             ++StateUpdateListSize;
         }
     }
+#endif
     void SetupRenderStates();
     void SetupRenderState(CStateInfo &,_D3DRENDERSTATETYPE);
     void SetupTextureStageState(CStateInfo &,_D3DTEXTURESTAGESTATETYPE,long);

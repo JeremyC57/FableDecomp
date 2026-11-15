@@ -12,8 +12,12 @@ protected:
     virtual ~CBaseClassNonCopyable();                                    // slot 0
 private:
     CBaseClassNonCopyable(const CBaseClassNonCopyable&);
+#ifdef FABLE_RETAIL_CBASECLASSNONCOPYABLE_ORIGINAL_ASSIGNMENT_RESULT_PASS22
+    const CBaseClassNonCopyable& operator=(const CBaseClassNonCopyable&);
+#else
     CBaseClassNonCopyable& operator=(const CBaseClassNonCopyable&);
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CBaseClassNonCopyable) == 0x4);
+FABLE_STATIC_ASSERT_AT(17, sizeof(CBaseClassNonCopyable) == 0x4);
 
 #endif // FABLE_ENGINE_CBASECLASSNONCOPYABLE_H

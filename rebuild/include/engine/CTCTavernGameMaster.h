@@ -13,10 +13,14 @@ class CTCTavernGame;
 class CTCTavernGameMaster : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_TAVERN_GAME_MASTER; }
+#ifdef FABLE_RETAIL_CTCTAVERNGAMEMASTER_GETGAME
+    // Retail opt-in (Codex pass22): both PDBs GetGame is public non-const, donor Draw reads the protected TavernGame pointer.
+    CTCTavernGame* GetGame() { return TavernGame; }
+#endif
     CTCTavernGame* GetTavernGame() const { return TavernGame; }         // PLACEHOLDER accessor name (inline member read in the row)
 private:
     CTCTavernGame* TavernGame;                                           // +0x0c
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CTCTavernGameMaster) == 0x10);
+FABLE_STATIC_ASSERT_AT(21, sizeof(CTCTavernGameMaster) == 0x10);
 #endif

@@ -9,8 +9,10 @@ class CManagedTextureOwner : public CResource {
 #ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
 public:
     virtual void ReleaseTexture()=0;
+#ifndef FABLE_RETAIL_PASS22_RESOURCE_ORIGINAL_SPECIAL_MEMBERS
     virtual ~CManagedTextureOwner();
 #endif
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CManagedTextureOwner) == 0x1c);
+FABLE_STATIC_ASSERT_AT(15, sizeof(CManagedTextureOwner) == 0x1c);
 #endif // FABLE_ENGINE_CMANAGEDTEXTUREOWNER_H

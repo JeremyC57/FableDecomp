@@ -31,7 +31,12 @@ class CTexture;
 #pragma pack(push, 1)
 class CGraphicFrameData {
 public:
+#ifdef FABLE_RETAIL_CGRAPHICFRAMEDATA_ORIGINAL_TEXTURE_GET_PASS22
+    // Original0207B087 calls CCountedPointer<CTexture>::Get, resolved01D2F2C0.
+    CTexture* GetTexture() const { return PTexture.Get(); }
+#else
     CTexture* GetTexture() const { return PTexture.Data; }
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICFRAME_FLOATTL
     // Opt-in (row 0x00BBF4A0): FableWin.pdb ?GetFloatTLX@CGraphicFrameData@@QBEMXZ / ?GetFloatTLY@..@@QBEMXZ (the 16-bit texel offset scaled
     // by 1/32767, 0x0129C81C), inline in retail (0x00BC01C9..0x00BC0200).
@@ -91,7 +96,11 @@ public:
     // 0x00B2EEC0) and ??4CGraphicFrame@@QAEABV0@ABV0@@Z (retail COMDAT 0x0041C0E0, no self test; expanded at 0x00B2D719..0x00B2D77B).
     // FableWin.pdb ??0CGraphicFrame@@QAE@ABV0@@Z / ??1CGraphicFrame@@QAE@XZ: share with a reference; release (the vector element destructor
     // in the retail __destroy_aux 0x00B2EFB0: `if (data) { if (--count == 0) delete data; FrameData = 0; }`).
+#ifdef FABLE_RETAIL_PASS22_WATER_ORIGINAL_COPY_COLOUR_FORMALS
+    CGraphicFrame(const CGraphicFrame& src) : FrameData(src.FrameData) { if (FrameData) FrameData->AddReference(); }
+#else
     CGraphicFrame(const CGraphicFrame& other) : FrameData(other.FrameData) { if (FrameData) FrameData->AddReference(); }
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICFRAME_DTOR_FORCEINLINE
     // Retail opt-in (chunk 2031, rows 0x00B54E30 / 0x00B65A20): FableWin.pdb ??1CGraphicFrame@@QAE@XZ with the release in its own body,
     // FABLE_FORCEINLINE (owner 2026-11-01 rule: no retail out-of-line ??1CGraphicFrame; the ??_G 0x00B2ED60 expands it). Evidence that the
@@ -138,6 +147,17 @@ public:
     }
     // operator= is FABLE_FORCEINLINE (owner 2026-11-01 rule): no Ego_r.pdb copy, retail's out-of-line copy 0x0041C0E0 has no caller, and
     // plain `inline` leaves it called once Release is expanded into it (c1 101, score 115..127 at f 0.35..0.5; UpdateDiskCacheTexture).
+#ifdef FABLE_RETAIL_PASS22_WATER_ORIGINAL_COPY_COLOUR_FORMALS
+    FABLE_FORCEINLINE const CGraphicFrame& operator=(const CGraphicFrame& src)
+    {
+        if (FrameData)
+            FrameData->Release();
+        FrameData = src.FrameData;
+        if (FrameData)
+            FrameData->AddReference();
+        return *this;
+    }
+#else
     FABLE_FORCEINLINE const CGraphicFrame& operator=(const CGraphicFrame& other)
     {
         if (FrameData)
@@ -147,6 +167,8 @@ public:
             FrameData->AddReference();
         return *this;
     }
+#endif
+
 #endif
     CGraphicFrameData* FrameData;                            // +0x00
 #ifdef FABLE_RETAIL_CGRAPHICFRAME_CTOR

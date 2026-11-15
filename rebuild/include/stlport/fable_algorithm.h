@@ -34,7 +34,25 @@
 // functor result returned by value: `lea ecx,<dead slot> ; mov edx,begin ; push pfn ; push end ; call`). Declaration only for
 // for_each: the retail instantiation is a separate COMDAT, callers only relocate to it.
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_STLP_MEM_FUN_REF_ORIGINAL_PASS22
+#include "stlport/fable_containers.h"
+#endif
 namespace std {
+#ifdef FABLE_RETAIL_STLP_MEM_FUN_REF_ORIGINAL_PASS22
+// Retail opt-in (Codex pass22 cursor): authentic STLport4.6.2 _function_adaptors.h433..441,746..747.
+// Original empty unary_function base, member typedef and member/formal names.
+template <class _Ret, class _Tp>
+class mem_fun_ref_t : public unary_function<_Tp,_Ret> {
+  typedef _Ret (_Tp::*__fun_type)(void);
+public:
+  explicit mem_fun_ref_t(__fun_type __pf) : _M_f(__pf) {}
+  _Ret operator()(_Tp& __r) const { return (__r.*_M_f)(); }
+private:
+  __fun_type _M_f;
+};
+template <class _Result, class _Tp> inline mem_fun_ref_t<_Result, _Tp>
+mem_fun_ref(_Result (_Tp::*__f)()) { return mem_fun_ref_t<_Result,_Tp>(__f); }
+#else
 template <class R, class T> class mem_fun_ref_t {
 public:
     explicit mem_fun_ref_t(R (T::*pfn)()) : m_pfn(pfn) {}
@@ -46,6 +64,7 @@ template <class R, class T> inline mem_fun_ref_t<R, T> mem_fun_ref(R (T::*pfn)()
 {
     return mem_fun_ref_t<R, T>(pfn);
 }
+#endif
 #ifdef FABLE_RETAIL_STLP_FOR_EACH_BODY
 // Retail opt-in (chunk 1018, row 0x0067E290 CDegradableDef::Transfer): STLport 4.6 _algo.h for_each with its body visible, which that
 // TU expands in place (0x0067E37F..0x0067E398: the CSetEngineGraphicType functor's byte store in a `cmp eax,edi ; jne` loop).

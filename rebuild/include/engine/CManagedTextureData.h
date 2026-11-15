@@ -7,7 +7,12 @@ class CManagedTextureOwner;class CTexture;class CVolumeTexture;
 struct IDirect3DTexture9;
 class CManagedTextureData : public CResource {
 public:
+#ifdef FABLE_RETAIL_PASS22_RESOURCE_ORIGINAL_SPECIAL_MEMBERS
+    CManagedTextureData();
+#endif
+#ifndef FABLE_RETAIL_PASS22_RESOURCE_ORIGINAL_SPECIAL_MEMBERS
     virtual ~CManagedTextureData();
+#endif
 #ifdef FABLE_RETAIL_CTEXTUREMANAGER_ALLOCATETEXTURE
     // Chunk Q28 (row 0x00A69B70): FableWin.pdb ?SetOwner@CManagedTextureData@@QAEXPAVCManagedTextureOwner@@@Z (inline in retail: the
     // `mov [ebx+30h],ecx` store at 0x00A69BD8) and Ego_r.pdb / FableWin.pdb ?CreateTexture@CManagedTextureData@@QAE_NKKJABVCPixelFormat@@@Z

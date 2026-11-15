@@ -17,6 +17,41 @@
 #include "rebuild_abi.h"
 #include "engine/CIVCountedPointeeBase.h"
 #include "engine/CRGBColour.h"
+#ifdef FABLE_RETAIL_CENGINEMESHEFFECT_ORIGINAL_DECLARATIONS_PASS22
+// Both original TPI records; generated copy/dtor/assignment members remain implicit.
+enum EEngineMeshEffect { MESH_EFFECT_OUTLINE_SMOOTH=0,MESH_EFFECT_OUTLINE=1,MESH_EFFECT_DISTANCE_FADE=2 };
+class CEngineMeshEffect : public CIVCountedPointeeBase {
+public:
+    EEngineMeshEffect GetEffect() const;
+protected:
+    CEngineMeshEffect(EEngineMeshEffect);
+    EEngineMeshEffect MeshEffect;
+};
+class CEngineMeshEffectOutlineBase : public CEngineMeshEffect {
+public:
+    CEngineMeshEffectOutlineBase(float,float,const CRGBColour&,unsigned char,EEngineMeshEffect,long,long);
+    CEngineMeshEffectOutlineBase(EEngineMeshEffect);
+    float WidthWorldSpace;
+    float WidthScreenSpace;
+    CRGBColour Colour;
+    unsigned char StencilBit;
+    unsigned char TextureAlphaRef;
+    unsigned char TextureAlphaBias;
+};
+class CEngineMeshEffectOutline : public CEngineMeshEffectOutlineBase {
+public:
+    CEngineMeshEffectOutline();
+    CEngineMeshEffectOutline(float,float,const CRGBColour&,unsigned char);
+};
+#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+// Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
+class CEngineMeshEffectDistanceFade:public CEngineMeshEffect {
+public:
+ float GetAlphaAtDistance(float)const;
+ float NearClipDistance,NearFadeDistance,FarFadeDistance,FarClipDistance;
+};
+#endif
+#else
 #ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
 enum EEngineMeshEffect { MESH_EFFECT_OUTLINE_SMOOTH=0,MESH_EFFECT_OUTLINE=1,MESH_EFFECT_DISTANCE_FADE=2 };
 #else
@@ -50,6 +85,7 @@ public:
 };
 class CEngineMeshEffectOutline : public CEngineMeshEffectOutlineBase {
 };
+#endif
 #ifdef FABLE_RETAIL_CENGINEMESHEFFECT_OUTLINESMOOTH
 // Nested opt-in (agentNF11, row 0x004C04C0 CTCGraphicAppearance::SetAsHighlighted): the smooth outline effect (RTTI
 // .?AVCEngineMeshEffectOutlineSmooth@@; `new` 0x1C bytes = the outline base). Ego_r.pdb / FableWin.pdb constructor

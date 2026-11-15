@@ -69,6 +69,16 @@ template<class T> struct iterator_traits<T*> {
     typedef T* pointer;
     typedef T& reference;
 };
+#ifdef FABLE_RETAIL_STLP_ORIGINAL_COPY_DISPATCH_PASS22
+// Original iterator_traits<const _Tp*> removes const from value_type.
+template<class T> struct iterator_traits<const T*> {
+    typedef random_access_iterator_tag iterator_category;
+    typedef T value_type;
+    typedef ptrdiff_t difference_type;
+    typedef const T* pointer;
+    typedef const T& reference;
+};
+#endif
 template<class T> struct __type_traits {
     typedef __false_type has_trivial_default_constructor;
     typedef __false_type has_trivial_copy_constructor;
@@ -114,6 +124,27 @@ template<class T> inline const T& (FABLE_FASTCALL max)(const T& a,const T& b) { 
 template<class T> inline const T& (max)(const T& a,const T& b) { return a<b?b:a; }
 #endif
 template<class T> inline const T& (min)(const T& a,const T& b) { return b<a?b:a; }
+#ifdef FABLE_RETAIL_STLP_ORIGINAL_COPY_DISPATCH_PASS22
+// Original STLport4.6.2 type_traits.h pointer/copy dispatch, partial-specialization path.
+template<int _Is> struct __bool2type { typedef __false_type _Ret; };
+template<> struct __bool2type<1> { typedef __true_type _Ret; };
+template<> struct __bool2type<0> { typedef __false_type _Ret; };
+template<class _P1,class _P2,class _P3> struct _Land3 { typedef __false_type _Ret; };
+template<> struct _Land3<__true_type,__true_type,__true_type> { typedef __true_type _Ret; };
+template<class _Tp1,class _Tp2> struct _IsSame { enum { _Ret=0 }; };
+template<class _Tp> struct _IsSame<_Tp,_Tp> { enum { _Ret=1 }; };
+template<class _Tp1,class _Tp2> struct _BothPtrType { static __false_type _Ret() { return __false_type(); } };
+template<class _Tp1,class _Tp2> struct _BothPtrType<_Tp1*,_Tp2*> { static __true_type _Ret() { return __true_type(); } };
+template<class _Tp1,class _Tp2> struct _OKToMemCpy {
+    enum { _Same=_IsSame<_Tp1,_Tp2>::_Ret };
+    typedef typename __type_traits<_Tp1>::has_trivial_assignment_operator _Tr1;
+    typedef typename __type_traits<_Tp2>::has_trivial_assignment_operator _Tr2;
+    typedef typename __bool2type<_Same>::_Ret _Tr3;
+    typedef typename _Land3<_Tr1,_Tr2,_Tr3>::_Ret _Type;
+    static _Type _Ret() { return _Type(); }
+};
+template<class _Tp1,class _Tp2> inline _OKToMemCpy<_Tp1,_Tp2> _IsOKToMemCpy(_Tp1*,_Tp2*) { return _OKToMemCpy<_Tp1,_Tp2>(); }
+#endif
 // _algobase.h
 inline void fill(unsigned char* first,unsigned char* last,const unsigned char& value) {
     unsigned char tmp=value;memset(first,tmp,last-first);
@@ -184,7 +215,16 @@ template<class Input,class Output> inline Output __copy_ptrs(Input first,Input l
 #endif
     return (Output)__copy_trivial(first,last,result);
 }
-#ifdef FABLE_RETAIL_PASS22_SCOREBOARD_COPY_BACKWARD_ORIGINAL
+#ifdef FABLE_RETAIL_STLP_ORIGINAL_COPY_DISPATCH_PASS22
+// Original _algobase.h __copy_aux; preserve the actual type/tag call chain.
+template<class I,class O> inline O __copy_aux(I first,I last,O result,const __true_type&) {
+    return __copy_ptrs(first,last,result,_IsOKToMemCpy((typename iterator_traits<I>::value_type*)0,(typename iterator_traits<O>::value_type*)0)._Ret());
+}
+template<class I,class O> inline O __copy_aux(I first,I last,O result,const __false_type&) {
+    return __copy(first,last,result,typename iterator_traits<I>::iterator_category(),(typename iterator_traits<I>::difference_type*)0);
+}
+#endif
+#if defined(FABLE_RETAIL_PASS22_SCOREBOARD_COPY_BACKWARD_ORIGINAL) || defined(FABLE_RETAIL_STLP_ORIGINAL_COPY_TRIVIAL_BACKWARD_PASS22)
 // Actual STLport4.6.2 _algobase.h182..185 and224..226, including empty-range guard.
 inline void* __copy_trivial_backward(const void* __first,const void* __last,void* __result) {
     const ptrdiff_t _Num=(const char*)__last-(const char*)__first;
@@ -337,6 +377,16 @@ template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,
     O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_ORIGINAL_TRUE_UNINIT_COPY_PASS22
+// Original _uninitialized.h's two-iterator true-tag signature and pointer dispatch.
+template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,const __true_type&) {
+#ifdef FABLE_RETAIL_STLP_ORIGINAL_COPY_DISPATCH_PASS22
+    return __copy_aux(first,last,result,_BothPtrType<I,O>::_Ret());
+#else
+    return __copy_ptrs(first,last,result,__true_type());
+#endif
+}
+#else
 #if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class T> inline T* FABLE_FASTCALL __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
 #else
@@ -344,6 +394,7 @@ template<class T> inline T* __uninitialized_copy(const T* first,const T* last,T*
 #endif
     return (T*)__copy_trivial(first,last,result);
 }
+#endif
 #ifdef FABLE_STLP_OUTOFLINE_UNINIT_FILL_N
 // Opt-in (2026-11-03, chunk 719 row 0x00501150): the retail TU keeps this instantiation out of line as a __fastcall COMDAT
 // (0x00513570 ??$__uninitialized_fill_n@PAVCLevelFiles@CObject@CLevelLoader@@IV123@@std@@YI...ABU__false_type@0@@Z, called
@@ -474,6 +525,11 @@ public:
     typedef _Tp* iterator;
     typedef const _Tp* const_iterator;
     typedef _Tp value_type;
+#ifdef FABLE_RETAIL_CARRAY_ORIGINAL_INDEX_BASE_PASS22
+    // Real vector reference aliases also preserve CArray<bool>'s donor API.
+    typedef _Tp& reference;
+    typedef const _Tp& const_reference;
+#endif
     typedef size_t size_type;
     typedef typename __type_traits<_Tp>::has_trivial_assignment_operator _IsPODType;
 #ifdef FABLE_RETAIL_PASS22_SCOREBOARD_ORIGINAL_OVERFLOW_SCOPE
@@ -593,11 +649,13 @@ public:
     // the call (retail 0x00B15840 `mov ebx,[esp+14h]` ... 0x00B1587C `test ebx,ebx; push ebx; call free`; declaration-only: reloaded, 3784v3779).
     vector& operator=(const vector& x);
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data-this->_M_start); }
+#ifndef FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_ORIGINAL_SCOPE_PASS22
     template <class _ForwardIter> _Tp* _M_allocate_and_copy(size_type n,_ForwardIter first,_ForwardIter last) {
         _Tp* result=this->_M_end_of_storage.allocate(n);
         __uninitialized_copy(first,last,result,_IsPODType());
         return result;
     }
+#endif
 #endif
     _Alloc get_allocator() const { return _Alloc(this->_M_end_of_storage); }
     iterator begin() { return this->_M_start; }
@@ -647,6 +705,9 @@ public:
     // &config.AngularVelocity in ebx / ebp (0x0075A7CB / 0x0075A7CE): 729 v 726 bytes. Body only: no layout change.
     _Tp& operator[](size_type n) { return *(this->_M_start+n); }
     const _Tp& operator[](size_type n) const { return *(this->_M_start+n); }
+#elif defined(FABLE_RETAIL_CARRAY_ORIGINAL_INDEX_BASE_PASS22)
+    reference operator[](size_type __n) { return *(begin()+__n); }
+    const_reference operator[](size_type __n) const { return *(begin()+__n); }
 #else
     _Tp& operator[](size_type n) { return *(begin()+n); }
     const _Tp& operator[](size_type n) const { return *(begin()+n); }
@@ -723,6 +784,10 @@ public:
 #else
     void clear() { erase(begin(),end()); }
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_ORIGINAL_RESIZE_INSERT_CHAIN_PASS22
+    // Authenticated4.5.2 _vector.h459..460;4.6.2 has the same public forwarding overload.
+    void insert(iterator __pos,size_type __n,const _Tp& __x) { _M_fill_insert(__pos,__n,__x); }
+#endif
     // Retail takes the value by const reference (STLport 4.5.2 form; 0x004428F0 resize<long> forwards the pointer to
     // _M_fill_insert, which dereferences it); FableWin.pdb's later build passes it by value.
 #ifdef FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
@@ -732,9 +797,17 @@ public:
     // the char() temporary in a dead argument slot. The body is visible (STLport's own) but kept out of line, as in the retail TU:
     // VC7.1 then knows resize does not keep the vector's address, holds the start in a CPU location across the later calls and reuses
     // the vector's frame slot (0x0055FA79 `mov edi,[esp+28h]` ... 0x0055FB34 `push edi; call free`); declaration-only re-reads it.
+#ifdef FABLE_RETAIL_STLP_VECTOR_ORIGINAL_RESIZE_INSERT_CHAIN_PASS22
+    __declspec(noinline) void resize(size_type n,const _Tp& x) {if(n<size())erase(begin()+n,end());else insert(end(),n-size(),x);}
+#else
     __declspec(noinline) void resize(size_type n,const _Tp& x) {if(n<size())erase(begin()+n,end());else _M_fill_insert(end(),n-size(),x);}
+#endif
+#else
+#ifdef FABLE_RETAIL_STLP_VECTOR_ORIGINAL_RESIZE_INSERT_CHAIN_PASS22
+    void resize(size_type n,const _Tp& x) {if(n<size())erase(begin()+n,end());else insert(end(),n-size(),x);}
 #else
     void resize(size_type n,const _Tp& x) {if(n<size())erase(begin()+n,end());else _M_fill_insert(end(),n-size(),x);}
+#endif
 #endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
     // Retail opt-in (Codex 2026-11-09): native00443f90 is the one-argument
@@ -819,6 +892,14 @@ protected:
     void _M_set(iterator s,iterator f,iterator e) {
         this->_M_start=s;this->_M_finish=f;this->_M_end_of_storage._M_data=e;
     }
+#if defined(FABLE_RETAIL_STLP_VECTOR_C) && defined(FABLE_RETAIL_STLP_VECTOR_ALLOCATE_COPY_ORIGINAL_SCOPE_PASS22)
+    // Authenticated STLport4.6.2 _vector.h491..525: protected, in-class, after _M_clear/_M_set.
+    template <class _ForwardIter> _Tp* _M_allocate_and_copy(size_type n,_ForwardIter first,_ForwardIter last) {
+        _Tp* result=this->_M_end_of_storage.allocate(n);
+        __uninitialized_copy(first,last,result,_IsPODType());
+        return result;
+    }
+#endif
 };
 // _vector.c: the growth paths are out-of-class, non-inline template members.
 #ifdef FABLE_RETAIL_STLP_VECTOR_C

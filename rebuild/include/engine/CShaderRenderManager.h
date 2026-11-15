@@ -227,11 +227,21 @@ void SetLightGlobal(unsigned long, const C4DVector&);
 public:
 void SetPixelShaderConstant(const CCharString&, const C4DVector&);
 public:
+#ifdef FABLE_RETAIL_PASS22_SHADER_ORIGINAL_PIXEL_CONSTANT_AT
+// Actual02CFC170 uses table_index and calls CArray::At, not begin or operator[] directly.
+FABLE_FORCEINLINE void SetPixelShaderConstant(unsigned long table_index, const C4DVector& value)
+    {
+        PSConstTable.At(table_index) = value;
+        UpdateFlags |= 2;
+    }
+#else
 FABLE_FORCEINLINE void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
     {
         *(PSConstTable.begin() + index) = value;
         UpdateFlags |= 2;
     }
+#endif
+
 public:
 long GetPixelShaderConstantTableIndex(const CCharString&);
 public:
@@ -558,7 +568,15 @@ public:
 
     // ?SetPixelShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z (inline): copy the value into the constant table and mark
     // the pixel constants dirty (update flag 2).
-    FABLE_FORCEINLINE void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
+    #ifdef FABLE_RETAIL_PASS22_SHADER_ORIGINAL_PIXEL_CONSTANT_AT
+// Actual02CFC170 uses table_index and calls CArray::At, not begin or operator[] directly.
+FABLE_FORCEINLINE void SetPixelShaderConstant(unsigned long table_index, const C4DVector& value)
+    {
+        PSConstTable.At(table_index) = value;
+        UpdateFlags |= 2;
+    }
+#else
+FABLE_FORCEINLINE void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
     {
 #ifdef FABLE_RETAIL_CSHADERRENDERMANAGER_PSCONST_INDEX
         // Opt-in (chunk 2048): FableWin.pdb's debug copy is 28 instructions / 79 bytes = the CArray subscript (plain VC7.1 /Od of this
@@ -569,6 +587,8 @@ public:
 #endif
         UpdateFlags |= 2;
     }
+#endif
+
     // ?SetBoneMatrixCount@CShaderRenderManager@@QAEXJ@Z (inline): size the bone-matrix table (STLport vector::resize, out of line).
     FABLE_FORCEINLINE void SetBoneMatrixCount(long count)
     {

@@ -66,14 +66,33 @@ enum EEngineInterpolationSet {
     ENGINE_INTERPOLATION_SET_DEFAULT=0
 };
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_HIGHLIGHT_BODY
+#ifdef _MSC_VER
+typedef unsigned __int64 SpriteUniqueId;
+#else
+typedef unsigned long long SpriteUniqueId;
+#endif
+#endif
 class CEnginePrimitive2DSprite : public CEnginePrimitive {
 public:
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS
     // Retail opt-in (Codex 2026-11-09): both PDBs retain enum parameter types;
     // native0041beb0 takes a box,00493ac2 takes a position. Same16 arguments.
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_HIGHLIGHT_BODY
+// Retail opt-in (Codex pass22): original constructor composition from both PDBs and donor01A662C6.
+CEnginePrimitive2DSprite(SpriteUniqueId uid,const C2DBoxF& clip_box,EEngine2DLayer layer,
+ unsigned long bank_index,unsigned long frame,EEnginePrimitiveBlendMode blend_mode,EEngineInterpolationSet interp_set,
+ float start_angle,float end_angle,unsigned char alpha,unsigned char r,unsigned char g,unsigned char b,
+ unsigned long sprite_2d_flags,const C2DVector& uv_offsets_start=C2DVector(0.0f,0.0f),const C2DVector& uv_offsets_end=C2DVector(0.0f,0.0f))
+ :CEnginePrimitive((EEnginePrimitiveType)0x22,uid,interp_set),ClipBox(clip_box),Layer(layer),BankIndex(bank_index),Frame(frame),
+ StartAngle(start_angle),EndAngle(end_angle),BlendMode(blend_mode),Colour(r,g,b,alpha),ClipBoxIsPos(false),Flags(sprite_2d_flags),
+ Texture(0),UVOffsetsStart(uv_offsets_start),UVOffsetsEnd(uv_offsets_end)
+{}
+#else
     CEnginePrimitive2DSprite(unsigned __int64,const C2DBoxF&,EEngine2DLayer,unsigned long,unsigned long,
         EEnginePrimitiveBlendMode,EEngineInterpolationSet,float,float,unsigned char,unsigned char,unsigned char,unsigned char,
         unsigned long,const C2DVector&,const C2DVector&);
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_CRIME_CTOR
     // Retail opt-in (Codex pass20): original FW01a663fc; all fields and input reads retained.
     CEnginePrimitive2DSprite(unsigned __int64 id,const C2DVector&pos,EEngine2DLayer layer,unsigned long bank,unsigned long frame,
@@ -114,5 +133,5 @@ public:
     C2DVector UVOffsetsStart;                                                             // +0x44
     C2DVector UVOffsetsEnd;                                                               // +0x4c
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitive2DSprite) == 0x54);
+FABLE_STATIC_ASSERT_AT(117, sizeof(CEnginePrimitive2DSprite) == 0x54);
 #endif

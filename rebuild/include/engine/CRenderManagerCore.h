@@ -35,6 +35,9 @@
 #define _HRESULT_DEFINED
 typedef long HRESULT;
 #endif
+#ifdef FABLE_RETAIL_PASS22_D3D_TEXTURE_ORIGINAL_BASES
+#include "engine/Direct3DTexture9.h"
+#endif
 #include "engine/CTexture.h"
 #include "engine/CIndexBuffer.h"
 #include "engine/CVertexBufferWin32.h"
@@ -129,7 +132,11 @@ public:
 #ifdef FABLE_RETAIL_PASS22_CORE_ORIGINAL_TEXTURE_BINDING
 FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* handle)
     {
+#ifdef FABLE_RETAIL_PASS22_D3D_TEXTURE_ORIGINAL_BASES
+        AttachD3DTextureToStage(stage, handle ? handle->GetD3DTexture() : 0);
+#else
         AttachD3DTextureToStage(stage, handle ? (IDirect3DBaseTexture9*)handle->GetD3DTexture() : 0);
+#endif
     }
 #else
 FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* texture)
@@ -358,7 +365,11 @@ public:
     #ifdef FABLE_RETAIL_PASS22_CORE_ORIGINAL_TEXTURE_BINDING
 FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* handle)
     {
+#ifdef FABLE_RETAIL_PASS22_D3D_TEXTURE_ORIGINAL_BASES
+        AttachD3DTextureToStage(stage, handle ? handle->GetD3DTexture() : 0);
+#else
         AttachD3DTextureToStage(stage, handle ? (IDirect3DBaseTexture9*)handle->GetD3DTexture() : 0);
+#endif
     }
 #else
 FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* texture)

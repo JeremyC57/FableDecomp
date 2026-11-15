@@ -92,6 +92,10 @@ class CEngineLocalLightArray;
 #endif
 class CEngineLightingManager : public CEnginePrimitiveManager, public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_PEEKGLOBALDIFFUSE
+    // Original public const reference accessor, donor02CA1E00; native reads first ThemeChannel.
+    const CRGBFloatColour& PeekGlobalDiffuseColour() const { return ThemeChannels[0].DiffuseColour; }
+#endif
     // Chunk 731: the constructor (CEngine::Initialise 0x00B26360 news 0x46D0 bytes) and the overrides of the pure CEnginePrimitiveManager
     // slots and CEngineComponent::PeekSceneFilterFlags (Ego_r.pdb / FableWin.pdb spellings).
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_FRAMESTART

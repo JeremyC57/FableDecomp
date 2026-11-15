@@ -23,6 +23,9 @@
 #endif
 #endif
 class CEngineInit;
+#ifdef FABLE_RETAIL_WATER_OCCLUSION_ORIGINAL_CHAIN_PASS22
+class CMatrix3x4;
+#endif
 class CEngineOcclusionManager : public CEngineComponent {
 public:
     CEngineOcclusionManager();                 // 0x00B8D780 ??0CEngineOcclusionManager@@QAE@XZ
@@ -49,7 +52,13 @@ public:
     // ?FrameEnd@CEngineOcclusionManager@@UAEXABVCEngineComponentParams@@@Z, ?SelectFlareTestVertexBuffer@CEngineOcclusionManager@@AAEXK@Z).
     // Containers whose element types no row reads yet stay opaque (their real type in the comment). Same size.
     struct COccluderSlot { long EntryIndex; unsigned long Frame; };
-    struct COccluderEntry { unsigned long PixelCount; unsigned long SlotID : 30; unsigned long Completed : 1; unsigned long Testing : 1; };
+    struct COccluderEntry {
+#ifdef FABLE_RETAIL_WATER_OCCLUSION_ORIGINAL_CHAIN_PASS22
+        // Both original types and donor02CDD6B0: zero every original field.
+        COccluderEntry():PixelCount(0),SlotID(0),Completed(0),Testing(0) {}
+#endif
+        unsigned long PixelCount; unsigned long SlotID : 30; unsigned long Completed : 1; unsigned long Testing : 1;
+    };
     struct COccluderFlareEntry {
         C3DVector     Position;                 // +0x00
         float         Radius;                   // +0x0c
@@ -57,6 +66,23 @@ public:
         unsigned long MaxPixelCount;            // +0x14
         unsigned long OccluderHandle;           // +0x18
     };
+#ifdef FABLE_RETAIL_WATER_OCCLUSION_ORIGINAL_CHAIN_PASS22
+    // Both PDB exact PUBLIC names plus donor02D4E9D0/native00B6E260 call chain.
+    unsigned long GetResult(unsigned long handle,bool prev_frame);
+    unsigned long GetPrevFrameResult(unsigned long handle) { return GetResult(handle,true); }
+    void StartOcclusionTest();
+    void EndOcclusionTest(unsigned long handle);
+    unsigned long RenderOcclusionBox(const CMatrix3x4& matrix);
+    unsigned long AllocateOccluderHandle() {
+        if (EntriesSize<8192) {
+            unsigned long handle=EntriesSize;
+            Entries[handle]=COccluderEntry();
+            ++EntriesSize;
+            return handle;
+        }
+        return (unsigned long)-1;
+    }
+#endif
     virtual void FrameStart(const CEngineComponentParams& params);   // 0x00B8DBE0
     virtual void FrameEnd(const CEngineComponentParams& params);     // 0x00B8DF50
 private:

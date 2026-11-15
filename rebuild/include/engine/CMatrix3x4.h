@@ -15,6 +15,9 @@
 // FableWin.pdb ??$SWAP@M@@YIXAAM0@Z (0x025C2DA0, 18 debug instructions): Lionhead's by-reference __fastcall swap template.
 template<class T> inline void FABLE_FASTCALL SWAP(T& a, T& b) { T temp = a; a = b; b = temp; }
 #endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_ENUM_CTOR
+#include "engine/EMatrix34Init.h"
+#endif
 class CMatrix3x4 {
 public:
 #ifdef FABLE_RETAIL_CMATRIX3X4_DATA_UNION
@@ -27,6 +30,17 @@ public:
     float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
 #endif
     CMatrix3x4() { }
+#ifdef FABLE_RETAIL_CMATRIX3X4_ENUM_CTOR
+    // Original EMatrix34Init constructor, donor01B40AD0, expanded in00B707xx.
+    CMatrix3x4(EMatrix34Init init) {
+        if(init==MATRIX34_INIT_ZERO) {
+            E11=E22=E33=E12=E13=E21=E23=E31=E32=E41=E42=E43=0.0f;
+        } else {
+            E12=E13=E21=E23=E31=E32=E41=E42=E43=0.0f;
+            E11=E22=E33=1.0f;
+        }
+    }
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_OPERATOR_MUL_VECTOR
     // Retail opt-in (row 0x0075A7A0 CTCPhysicsRigidBody::ResolveCollisions): Ego_r.pdb / FableWin.pdb
     // ??DCMatrix3x4@@QBE?AVC3DVector@@ABV1@@Z, out of line in retail at 0x00A56530 (landed: the 3x3 part times the vector, result by

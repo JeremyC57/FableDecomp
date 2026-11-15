@@ -2,6 +2,34 @@
 #define FABLE_CTRIANGLESTRIPIFIER2_H
 #include "engine/CArray.h"
 class C3DTriangle2;
+#ifdef FABLE_RETAIL_PASS22_TRIANGLE_ORIGINAL_COMPLETE_DECLARATIONS
+// Opt-in (Codex pass 22, row 0x00F3E120): complete original signatures; inverse overload-group order is supported
+// by measured VC71 LF_METHODLIST emission, not literal textual source proof.
+// Generated constructors, destructors and assignments stay implicit.
+#include "engine/CBaseClassNonCopyable.h"
+class CTriangleStripifierBase : public CBaseClassNonCopyable {
+public:
+ virtual void GenerateTriangleListAndStrip(const CArray<C3DTriangle2>&,CArray<C3DTriangle2>&,CArray<unsigned short>&)=0;
+};
+class CTriangleStripifier2 : public CTriangleStripifierBase {
+public:
+ virtual void GenerateTriangleListAndStrip(const CArray<C3DTriangle2>&,CArray<C3DTriangle2>&,CArray<unsigned short>&);
+ void GenerateTriangleListAndStrip(CArray<unsigned short>&,CArray<unsigned short>&,CArray<unsigned short>&);
+ void ReorderTriangleListInPlace(unsigned short *,long);
+private:
+ void BuildVertexAndPolyMaps(const CArray<unsigned short>&,CArray<CArray<long> >&,CArray<CArray<unsigned short> >&);
+ void GetMeshIslandSubsection(const CArray<unsigned short>&,const CArray<bool>&,const CArray<CArray<long> >&,CArray<unsigned short>&,CArray<long>&);
+ void BuildRings(long,const CArray<unsigned short>&,const CArray<CArray<long> >&,const CArray<CArray<unsigned short> >&,CArray<unsigned short>&,CArray<unsigned short>&,CArray<CArray<unsigned short> >&);
+ void BuildCacheOptimizedVertexList(const CArray<unsigned short>&,const CArray<CArray<long> >&,const CArray<CArray<unsigned short> >&,const CArray<unsigned short>&,const CArray<CArray<unsigned short> >&,CArray<unsigned short>&);
+ long CalcSectionPolyMask(const CArray<unsigned short>&,const CArray<CArray<long> >&,const CArray<unsigned short>&,CArray<bool>&);
+ float CalcSectionScore(const CArray<unsigned short>&,const CArray<unsigned short>&,const CArray<CArray<long> >&);
+ long FindBestStartVertex(const CArray<unsigned short>&,const CArray<CArray<long> >&,const CArray<CArray<unsigned short> >&);
+ void FillInPolygons(const CArray<unsigned short>&,const CArray<CArray<long> >&,const CArray<unsigned short>&,const CArray<bool>&,CArray<long>&,CArray<unsigned short>&,bool);
+ void FillInTriStrip(const CArray<unsigned short>&,const CArray<CArray<long> >&,const CArray<unsigned short>&,const CArray<bool>&,CArray<unsigned short>&,bool,bool&);
+ void CheckForReshadedVerts(CArray<unsigned short>&);
+ void StripUnusedVerts(CArray<unsigned short>&,const CArray<CArray<long> >&,const CArray<bool>&);
+};
+#else
 // Layout: original PDB base and derived records each have size four, no data.
 class CTriangleStripifierBase{
 public:
@@ -39,4 +67,5 @@ private:
  long FindBestStartVertex(const CArray<unsigned short>&,const CArray<CArray<long> >&,const CArray<CArray<unsigned short> >&);
 #endif
 };
+#endif
 #endif

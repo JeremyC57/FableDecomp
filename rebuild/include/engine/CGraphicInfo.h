@@ -9,6 +9,9 @@
 #include "engine/CGraphicInfoFrame.h"
 class CGraphicInfo {
 public:
+#ifdef FABLE_RETAIL_PASS22_RESOURCE_ORIGINAL_SPECIAL_MEMBERS
+    ~CGraphicInfo();
+#endif
     const CGraphicInfoFrame* PeekInfoFrame(unsigned long index) const { return Frames + index; }
     const CGraphicDataBank::CGraphicHeader& PeekGraphicHeader() const { return Header; }
 #ifdef FABLE_RETAIL_CGRAPHICINFO_GETFRAMECOUNT
@@ -24,7 +27,7 @@ private:
     long                             Index;                  // +0x24
     CGraphicInfoFrame*               Frames;                 // +0x28
 };
-FABLE_STATIC_ASSERT(sizeof(CGraphicInfo)==44);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CGraphicInfo)==44);
 inline const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) const
 {
     return index < GraphicList.size() ? &GraphicList[index] : 0;
@@ -187,6 +190,24 @@ inline CGraphicDataBank* CGraphicInfoFrame::GetBank() const { return GraphicInfo
 #else
 inline CGraphicDataBank* CGraphicInfoFrame::GetBank() const { return GraphicInfo->GetBank(); }
 #endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_ORIGINAL_TOUCHFRAME_POINTER_GUARD_PASS22
+// Original01D2DDEE Get pointer result tested before all touch/cache accesses.
+FABLE_FORCEINLINE void CGraphicInfoFrame::TouchFrame(unsigned long mipmap_level) const
+{
+    if (Data.Get()) {
+
+        if (Data->TouchedFrame != GetBank()->GetCurrentFrame() || mipmap_level <= (unsigned long)Data->TouchedMipmapLevel) {
+            Data->TouchedFrame = GetBank()->GetCurrentFrame();
+            Data->ManagedTexture.TouchTexture();
+            if (mipmap_level <= (unsigned long)Data->CurrentMipmapLevel)
+                Data->TouchResource();
+            if ((unsigned long)Data->TouchedMipmapLevel > mipmap_level)
+                Data->TouchedMipmapLevel = (signed char)mipmap_level;
+        }
+
+    }
+}
+#else
 FABLE_FORCEINLINE void CGraphicInfoFrame::TouchFrame(unsigned long mipmap_level) const
 {
     if (Data->TouchedFrame != GetBank()->GetCurrentFrame() || mipmap_level <= (unsigned long)Data->TouchedMipmapLevel) {
@@ -199,8 +220,87 @@ FABLE_FORCEINLINE void CGraphicInfoFrame::TouchFrame(unsigned long mipmap_level)
     }
 }
 #endif
+
+#endif
 // GetFrame: the control flow of the landed out-of-line copy 0x0041C260 (uncalled COMDAT) and of the landed CGraphicInfo::GetFrame 0x009FF8D0
 // that expands it.
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_ORIGINAL_GETFRAME_POINTER_GUARD_PASS22
+// Full original01D2DAD0 begins Data.Get pointer test; original dest/get_flags formals.
+FABLE_FORCEINLINE bool CGraphicInfoFrame::GetFrame(CGraphicFrame& dest, unsigned long mipmap_level, unsigned long get_flags) const
+{
+    if (Data.Get()) {
+        if (Data->Frame.IsInitialised()) {
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_TOUCHFRAME
+            if (!(get_flags & 8))
+                TouchFrame(mipmap_level);
+#else
+            if (!(get_flags & 8)) {
+                if (Data->TouchedFrame != GraphicInfo->GetBank()->GetCurrentFrame() || mipmap_level <= (unsigned long)Data->TouchedMipmapLevel) {
+                    Data->TouchedFrame = GraphicInfo->GetBank()->GetCurrentFrame();
+                    Data->ManagedTexture.TouchTexture();
+                    if (mipmap_level <= (unsigned long)Data->CurrentMipmapLevel)
+                        Data->TouchResource();
+                    if ((unsigned long)Data->TouchedMipmapLevel > mipmap_level)
+                        Data->TouchedMipmapLevel = (signed char)mipmap_level;
+                }
+            }
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME_EARLYRETURN
+            // Nested opt-in (chunk 2048, session 4): the loaded level returned first, then the finer-level request. FableWin.pdb
+            // ?GetFrame@CGraphicInfoFrame@@QBE_NAAVCGraphicFrame@@KK@Z is 146 debug instructions / 461 bytes (/EHsc); plain VC7.1
+            // /Od /EHsc of this text gives 146 / 462, the if / else text 147 / 464 (its dead join jump). Same semantics.
+            if (mipmap_level >= (unsigned long)Data->CurrentMipmapLevel) {
+                dest = Data->Frame;
+                return true;
+            }
+            Data->BeginLoading(mipmap_level, get_flags);
+#ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING
+            if (!(get_flags & 16) || !Data->IsLoading()) {
+#else
+            if (!(get_flags & 16) || !Data->FileData.Get()) {
+#endif
+                dest = Data->Frame;
+                return true;
+            }
+#else
+            if (mipmap_level < (unsigned long)Data->CurrentMipmapLevel) {
+                Data->BeginLoading(mipmap_level, get_flags);
+#ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING
+                if (!(get_flags & 16) || !Data->IsLoading()) {
+#else
+                if (!(get_flags & 16) || !Data->FileData.Get()) {
+#endif
+                    dest = Data->Frame;
+                    return true;
+                }
+            } else {
+                dest = Data->Frame;
+                return true;
+            }
+#endif
+        }
+        Data->BeginLoading(mipmap_level, get_flags);
+    } else {
+        if (get_flags & 4)
+            return false;
+        Data.Reset(new CFrameData(this));
+        Data->BeginLoading(mipmap_level, get_flags);
+    }
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_ORIGINAL_FORCED_SUCCESS_SCOPE_PASS22
+    // Original01D2DC57..8F: both failure edges join final false return.
+    if ((get_flags & 1) && InternalGetFrameForcedLoading(get_flags)) {
+        dest = Data->Frame;
+        return true;
+    }
+    return false;
+#else
+    if (!(get_flags & 1) || !InternalGetFrameForcedLoading(get_flags))
+        return false;
+    dest = Data->Frame;
+    return true;
+#endif
+}
+#else
 FABLE_FORCEINLINE bool CGraphicInfoFrame::GetFrame(CGraphicFrame& frame, unsigned long mipmap_level, unsigned long flags) const
 {
     if (!Data.IsNull()) {
@@ -266,6 +366,8 @@ FABLE_FORCEINLINE bool CGraphicInfoFrame::GetFrame(CGraphicFrame& frame, unsigne
     frame = Data->Frame;
     return true;
 }
+#endif
+
 #endif
 #ifdef FABLE_RETAIL_CGRAPHICDATABANK_PEEKGRAPHIC
 // Retail opt-in (chunk 2045, row 0x00BB8EF0): FableWin.pdb ?PeekGraphic@CGraphicDataBank@@QBEPBVCGraphicInfo@@K@Z (donor 0x01D2D7A0), inline in

@@ -11,13 +11,46 @@
 #include "engine/CEnginePrimitiveHandle.h"
 #endif
 class CPlayerGui; class CPlayerManager; class CWorld; class CMainGameComponent; class CGraphicDataBank; class CEnginePrimitiveHandle;
-#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CLEAREFFECTS
+#if defined(FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CLEAREFFECTS) || defined(FABLE_RETAIL_NPLAYERGUI_CURSOR_ORIGINAL_DECLARATIONS_PASS22)
 template<class T> class CIntelligentPointer;
 namespace NParticleEngine { class CParticleEmitter; }
 #endif
+#if defined(FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_ORIGINAL_GETPLAYER) || defined(FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_ORIGINAL_REFERENCES)
+#include "engine/CPlayerManager.h"
+#endif
 namespace NPlayerGui {
+#ifdef FABLE_RETAIL_NPLAYERGUI_CURSOR_ORIGINAL_DECLARATIONS_PASS22
+// Both original PDB field lists agree on user methods, generated specials, and virtual slots.
 class CDrawBase {
 public:
+    CDrawBase(CPlayerGui&,std::vector<CDrawBase*>&);
+    bool IsDrawing() const { return Drawing; }
+    void SetAsDrawing(bool drawing) { Drawing=drawing; }
+    static void FABLE_FASTCALL ClearEffects(std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> >&);
+    virtual void ClearPrimitivesIfNecessary();
+    virtual void ClearPrimitives();
+    unsigned char ScaleAlpha(unsigned char) const;
+    const CPlayer& GetPlayer() const;
+    CPlayer& GetPlayer() { return PlayerManager.GetMainPlayer(); }
+protected:
+    CPlayerGui& PlayerGui;
+    CPlayerManager& PlayerManager;
+    CWorld& World;
+    const CMainGameComponent& Component;
+    const CGraphicDataBank& Bank;
+    bool Drawing;
+    std::vector<CEnginePrimitiveHandle> PrimitiveHandles;
+};
+#else
+class CDrawBase {
+public:
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_ORIGINAL_REFERENCES
+    // Both original PDBs: PlayerManager is a reference, and GetPlayer calls its non-const overload.
+    CPlayer& GetPlayer() { return PlayerManager.GetMainPlayer(); }
+#elif defined(FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_ORIGINAL_GETPLAYER)
+    // Retail opt-in (Codex pass22): both PDB overloads and native00643D7C tail-call00449970.
+    CPlayer& GetPlayer() { return PlayerManager->GetMainPlayer(); }
+#endif
 #ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CTOR
     // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): Ego_r.pdb / FableWin.pdb
     // ??0CDrawBase@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z,
@@ -60,11 +93,20 @@ public:
     static void FABLE_FASTCALL ClearEffects(std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> >& effects);   // 0x006445BA
 #endif
 protected:
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_ORIGINAL_REFERENCES
+    // Both original TPI field lists: references at04/08/0c/10/14, last two reference const objects.
+    CPlayerGui& PlayerGui;
+    CPlayerManager& PlayerManager;
+    CWorld& World;
+    const CMainGameComponent& Component;
+    const CGraphicDataBank& Bank;
+#else
     CPlayerGui* PlayerGui;                                               // +0x04
     CPlayerManager* PlayerManager;                                       // +0x08
     CWorld* World;                                                       // +0x0c
     CMainGameComponent* Component;                                       // +0x10
     CGraphicDataBank* Bank;                                              // +0x14
+#endif
     bool Drawing;                                                        // +0x18
 #ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_HANDLES
     std::vector<CEnginePrimitiveHandle> PrimitiveHandles;                // +0x1c vector<CEnginePrimitiveHandle> (12 bytes, 8-byte elements)
@@ -72,6 +114,8 @@ protected:
     std::vector<CEnginePrimitiveHandle*> PrimitiveHandles;               // +0x1c vector<CEnginePrimitiveHandle> (12 bytes; element type opaque here)
 #endif
 };
+#endif
+
 }
-FABLE_STATIC_ASSERT(sizeof(NPlayerGui::CDrawBase) == 0x28);
+FABLE_STATIC_ASSERT_AT(76, sizeof(NPlayerGui::CDrawBase) == 0x28);
 #endif

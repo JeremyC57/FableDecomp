@@ -2,6 +2,19 @@
 #define FABLE_ENGINE_C2DEXTENTSI_H
 #include "fable_compiler.h"
 // Original public fields and user default constructor from Ego_r TPI.
+#ifdef FABLE_RETAIL_C2DEXTENTSI_ORIGINAL_CTOR_BODIES_PASS22
+// Both raw PDBs prove all four user methods and X/Y offsets; FableWin0187A400/430
+// stores directly in both constructors, without an Initialise call.
+class C2DExtentsI {
+public:
+    long X,Y;
+    // Original FableWin C13 lib_extents.hpp13/14/15; copy formal p from procedure records.
+    C2DExtentsI(){}
+    C2DExtentsI(long x,long y):X(x),Y(y){}
+    C2DExtentsI(const C2DExtentsI& p):X(p.X),Y(p.Y){}
+    void Initialise(long x,long y){X=x;Y=y;}
+};
+#else
 class C2DExtentsI { public: long X,Y; C2DExtentsI() {}
 #ifdef FABLE_RETAIL_C2DEXTENTSI_FORCEINLINE_CTOR
  // Per-TU inline opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): expanded in place at 0x004266EC (LOAD_PHOTO, the 512x512
@@ -20,4 +33,6 @@ class C2DExtentsI { public: long X,Y; C2DExtentsI() {}
  C2DExtentsI(long x,long y):X(x),Y(y){}
 #endif
 };
+#endif
+
 #endif

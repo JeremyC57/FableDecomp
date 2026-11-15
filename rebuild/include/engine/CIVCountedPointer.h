@@ -64,7 +64,18 @@ public:
     // CMapFilenames (IVRefCount 1 from its constructor) is stored after the release with no AddRef (0x00AC5A86 / 0x00AC5F16:
     // `mov [edi+0x34],ebp` right after the release block, no `inc [ebp+4]`). The AddRef of the branch below is unproven
     // (its only landed users pass 0).
-#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_FORCEINLINE
+#if defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_ORIGINAL_CASTTOBASE_PASS22)
+    // Original Reset01D2F9B0 calls CastToBase01D2FBD0; raw local is const_base.
+    // Native keeps the one base-pointer field; later donor has a second typed field.
+    void Reset(T* data) { Release(); Object = CastToBase(data); }
+private:
+    CIVCountedPointeeBase* CastToBase(T* object)
+    {
+        const CIVCountedPointeeBase* const_base = object;
+        return const_cast<CIVCountedPointeeBase*>(const_base);
+    }
+public:
+#elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_FORCEINLINE)
     // Nested opt-in (chunk Q31, row 0x00A69B70 CTextureManager::AllocateTexture): the same adopting body forced inline. Retail
     // expands it there (0x00A69BDB..0x00A69BF3: release, then the store); VC7.1's inline budget leaves the plain body a call in that
     // caller (a toy with the same body inlines it, the AllocateTexture shape does not). The caller AddRefs through operator->.

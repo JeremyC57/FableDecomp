@@ -17,8 +17,14 @@ class CTCBattleCharge : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_BATTLE_CHARGE; }
     // PLACEHOLDER accessor names (no PDB on disk lists a getter; the row reads the members as inline tests):
+#ifdef FABLE_RETAIL_CTCBATTLECHARGE_HIGHLIGHT_NAMES
+    // Retail opt-in (Codex pass22): both PDB records and donor Draw calls. Pointer return is not a handle reference.
+    CThing* GetPTarget() const { return PTarget.Get(); }
+    bool IsBattleChargeZTargetting() const { return IsZTargetting; }
+#else
     const CIntelligentPointer<CThing>& GetPTarget() const { return PTarget; }
     bool GetIsZTargetting() const { return IsZTargetting; }
+#endif
 #ifdef FABLE_RETAIL_CTCBATTLECHARGE_VSLOTS
 // agentFAM04 (2026-11-11): retail virtuals and the private cleanup they share (Ego_r.pdb / FableWin.pdb spellings;
 // TLC vtable slots aligned with the Xbox 360 Test PDB order). Declarations only (no layout change).
@@ -35,6 +41,6 @@ private:
     unsigned char _unmodelled_0x89[0x94 - 0x89];                         // +0x89 .. +0x93
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CTCBattleCharge) == 0x94);
+FABLE_STATIC_ASSERT_AT(38, sizeof(CTCBattleCharge) == 0x94);
 // IsZTargetting at +0x88: 0x0C + 8 (PTarget) + (0x88 - 0x14) (opaque run); private, so no offsetof assert (VC7.1 refuses it).
 #endif

@@ -221,6 +221,11 @@ public:
     void SetAsHighlighted(float widthWorldSpace, float widthScreenSpace, const CRGBColour& colour, bool, bool,
                           EAppearanceMeshEffectPriority priority, void* owner);   // 0x004C04C0
     void ClearMeshEffect(void* owner);                        // 0x004BFFC0
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_ORIGINAL_CURSOR_HELPERS
+    // Both original TPI records; donor01D07EF0 forwards key to01D06DF0; native004BFFC0 remains the external callee.
+    void ClearHighlighted(void* key) { ClearMeshEffect(key); }
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_GRAPHIC_APPEARANCE_NEW; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MESHEFFECT
     // Nested opt-in (agentNF11, row 0x004C04C0 SetAsHighlighted; needs FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT): FableWin.pdb
@@ -261,7 +266,9 @@ private:
 #endif
 #ifdef FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE
 public:
+#ifndef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_ORIGINAL_CURSOR_HELPERS
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_GRAPHIC_APPEARANCE_NEW;}
+#endif
     void SetAsChanged(unsigned long); // Original both PDBs, native004bf9e0.
 #endif
 public:

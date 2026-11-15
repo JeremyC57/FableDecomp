@@ -1,0 +1,1 @@
+rows checked 56367 -> differing lines in $S/p6snap/equiv.tsv

@@ -49,7 +49,347 @@ class CEngineComponentRenderParams;
 class CEngineVideoOptionsDef;
 class CTVertexWaterBackground { public: unsigned char Bytes[0x38]; };   // GetSizeOfVertex 0x00B7EC30 returns 0x38 (layout not modelled)
 class CTVertexSeaBackground { public: unsigned char Bytes[0xc]; };      // GetSizeOfVertex 0x00B7ECE0 returns 0xC (layout not modelled)
+#ifdef FABLE_RETAIL_PASS22_WATER_ORIGINAL_COMPLETE_OWNER
+// Both original PDB signatures agree; compgenx methods stay implicit.
+// Field-list order is a reconstruction hypothesis, not proof of textual source order.
+#include "engine/EWaterArrayIndexAliases.h"
+class CMovableResource;
+class CEngineLandscapeMap;
+class CDataInputStream;
+class CMemoryDataInputStream;
+class CMemoryDataOutputStream;
+class CDataOutputStream;
+class CWaterPatchDescriptors;
+class C2DBoxI;
+class CWaterMemoryStats;
+class CRenderTarget;
+class CSurface;
 class CEngineWaterRenderer : public CEngineComponent {
+public:
+    CEngineWaterRenderer(const CEngineInit &);
+public:
+    virtual ~CEngineWaterRenderer();
+public:
+    virtual void FrameStart(const CEngineComponentParams &);
+public:
+    virtual void FrameEnd(const CEngineComponentParams &);
+public:
+    virtual void Render(const CEngineComponentRenderParams &);
+public:
+    virtual void WorldFrameUpdate(bool);
+public:
+    virtual unsigned long PeekSceneFilterFlags() const;
+public:
+    virtual bool SetEffectQuality(const CEngineVideoOptionsDef &);
+public:
+    virtual CCharString GetConsoleEnableFunctionName();
+public:
+    CWaterPatchMesh * LoadPatch(CMovableResource *, const CEngineLandscapeMap *, CDataInputStream &);
+public:
+    void LoadSea(CMemoryDataInputStream &);
+public:
+    void ReleaseSeaBuffers();
+public:
+    void LoadNonPatchData(CMemoryDataInputStream &, CMemoryDataInputStream &);
+public:
+    void AddForegroundWaterPatchToRenderList(CWaterPatchMesh *, C3DBoundingBox &);
+public:
+    void AddMidgroundSeaPatchToRenderList(CEngineWaterBackgroundSubPatch *, bool);
+public:
+    void AddBackgroundWaterPatchToRenderList(CEngineWaterBackgroundSubPatch *, bool);
+public:
+    void DeleteForegroundPatch(CWaterPatchMesh * *);
+public:
+    CWaterPatchTesselatorBase<CTVertexWaterBackground> & GetTesselator();
+public:
+    CWaterPatchTesselatorBase<CTVertexSeaBackground> & GetSeaTesselator();
+public:
+    CWaterMemoryStats GetMemoryStats();
+public:
+    void SetSeaBodyToRender(CCharString);
+public:
+    void OpenStaticMapForUse(CStaticMapBankFile *, CCharString);
+public:
+    void CloseStaticMap();
+public:
+    CWaterPatchMesh * AddForegroundPatch(CMovableResource *, const CEngineLandscapeMap *, const long, const long, const CWaterPatchDescriptors &);
+public:
+    void SavePatch(CDataOutputStream &, CWaterPatchMesh *);
+public:
+    void BuildAndSaveSea(const CArray<C2DBoxI> &, CMemoryDataOutputStream &, CMemoryDataOutputStream &);
+public:
+    void BuildAndSaveSea(const CArray<C2DBoxI> &, CStaticMapBankFile &, long, CCharString);
+public:
+    bool SeaMapNeedsUpdate(const CArray<C2DBoxI> &, CMemoryDataInputStream &);
+public:
+    bool NonPatchDataNeedsUpdate(CMemoryDataInputStream &);
+public:
+    void BuildAndSaveNonPatchData(CMemoryDataOutputStream &, CMemoryDataOutputStream &);
+public:
+    void BuildAndSaveNonPatchData(CStaticMapBankFile &, long);
+public:
+    void CreateWaterGenerator();
+public:
+    void DestroyWaterGenerator();
+public:
+    CWaterGenerator * GetWaterGenerator();
+private:
+    bool SetBackgroundTexturesAndUVModes();
+private:
+    bool SetForegroundTexturesAndUVModes();
+private:
+    bool SetIceBackgroundTexturesAndUVModes();
+private:
+    bool SetIceForegroundTexturesAndUVModes(bool);
+private:
+    bool SetSeaNonReflectiveForegroundTexturesAndUVModes();
+private:
+    bool SetSeaReflectiveForegroundTexturesAndUVModes();
+private:
+    bool SetSeaMidgroundTexturesAndUVModes();
+private:
+    bool SetSeaBackgroundTexturesAndUVModes();
+private:
+    void SetupBumpMapShaderConstants();
+private:
+    void SetupForegroundShaderConstantsAndFog();
+private:
+    void SetupBackgroundShaderConstantsAndFog();
+private:
+    void SetupIceForegroundShaderConstantsAndFog();
+private:
+    void SetupIceBackgroundShaderConstantsAndFog();
+private:
+    void SetupSeaReflectiveForegroundShaderConstantsAndFog();
+private:
+    void SetupSeaNonReflectiveForegroundShaderConstantsAndFog();
+private:
+    void SetupSeaMidgroundShaderConstantsAndFog();
+private:
+    void SetupSeaBackgroundShaderConstantsAndFog();
+private:
+    void SetupFresnelPixelShaderConstants();
+private:
+    void SetupSpecularPixelShaderConstants();
+private:
+    void SetCommonRenderStates();
+private:
+    void RenderForeground(const float);
+private:
+    void RenderBackground(const float);
+private:
+    void RenderIceForeground(const float);
+private:
+    void RenderIceBackground(const float);
+private:
+    void RenderSea(const float);
+private:
+    void RenderSeaReflectiveForeground(const float);
+private:
+    void RenderSeaNonReflectiveForeground(const float);
+private:
+    void RenderSeaMidground(const float);
+private:
+    void RenderSeaBackground(const float);
+private:
+    void RenderBackgroundPatch(CEngineWaterBackgroundSubPatch *);
+private:
+    void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch *> &, const float);
+private:
+    void RenderEnvironmentMap();
+private:
+    void RenderBumpMap(EWaterArrayIndexAliases);
+private:
+    void RenderIceBumpMap();
+private:
+    void BuildConstantBuffers();
+private:
+    void DeleteConstantBuffers();
+private:
+    void InitialiseDynamicTextures();
+private:
+    void UninitialiseDynamicTextures();
+private:
+    bool CreateDynamicTextures(const bool, const bool, const bool);
+private:
+    void FinishUsingDynamicTextures();
+private:
+    void LoadCompressedBuffer(CMemoryDataInputStream &, CVertexBufferWin32 &, long *);
+private:
+    void LoadCompressedBuffer(CMemoryDataInputStream &, CIndexBuffer &, long *);
+private:
+    void SaveBufferCompressed(CMemoryDataOutputStream &, CVertexBufferWin32 &);
+private:
+    void SaveBufferCompressed(CMemoryDataOutputStream &, CIndexBuffer &, long);
+private:
+    void SetRenderTargetToSurface(CRenderTarget &, const CSurface &);
+private:
+    bool ProcessSeaLoading();
+public:
+    CIndexBuffer         ForegroundIndexBuffers;                         // +0x00c
+public:
+    CIndexBuffer         ForegroundTextureIndexBuffers;                  // +0x020
+public:
+    CVertexBufferWin32   ForegroundTextureVertexBuffers;                 // +0x034
+public:
+    CIndexBuffer         SeaBackgroundIndexBuffer;                       // +0x068
+public:
+    CVertexBufferWin32   SeaBackgroundVertexBuffer;                      // +0x07c
+public:
+    long                 SeaBackgroundVertexCount;                       // +0x0b0
+public:
+    long                 SeaBackgroundPolyCount;                         // +0x0b4
+public:
+    long                 WaterForegroundPolyCount;                       // +0x0b8
+public:
+    CVertexShader        SeaBackgroundVertexShader;                      // +0x0bc
+public:
+    CPixelShader         SeaBackgroundPixelShader;                       // +0x0c4
+public:
+    CVertexShader        SeaForegroundReflectiveVertexShader;            // +0x0cc
+public:
+    CPixelShader         SeaForegroundReflectivePixelShader;             // +0x0d4
+public:
+    CVertexShader        SeaForegroundNonReflectiveVertexShader;         // +0x0dc
+public:
+    CPixelShader         SeaForegroundNonReflectivePixelShader;          // +0x0e4
+public:
+    CVertexShader        ForegroundVertexShader;                         // +0x0ec
+public:
+    CPixelShader         ForegroundPixelShader;                          // +0x0f4
+public:
+    CPixelShader         RefractionForegroundPixelShader;                // +0x0fc
+public:
+    CVertexShader        BackgroundVertexShader;                         // +0x104
+public:
+    CPixelShader         BackgroundPixelShader;                          // +0x10c
+public:
+    CVertexShader        SeaBackgroundLowEndVertexShader;                // +0x114
+public:
+    CVertexShader        WaterBackgroundLowEndVertexShader;              // +0x11c
+public:
+    CPixelShader         WaterLowEndPixelShader;                         // +0x124
+private:
+    CVertexShader & GetIceForegroundVertexShader(long);
+private:
+    CVertexShader & GetIceForegroundShadowedVertexShader(long);
+private:
+    CVertexShader & GetIceForegroundColbuffShadowedVertexShader(long);
+public:
+    CArray<CVertexShader> IceForegroundVertexShader;                     // +0x12c
+public:
+    CArray<CVertexShader> IceForegroundShadowedVertexShader;             // +0x138
+public:
+    CArray<CVertexShader> IceForegroundColbuffShadowedVertexShader;      // +0x144
+public:
+    CVertexShader        IceBackgroundVertexShader;                      // +0x150
+public:
+    CPixelShader         IceForegroundPixelShader;                       // +0x158
+public:
+    CPixelShader         IceForegroundShadowedPixelShader;               // +0x160
+public:
+    CPixelShader         IceForegroundColbuffShadowedPixelShader;        // +0x168
+public:
+    CPixelShader         IceBackgroundPixelShader;                       // +0x170
+public:
+    CVertexShader        BumpmapVertexShader;                            // +0x178
+public:
+    CPixelShader         BumpmapPixelShader;                             // +0x180
+public:
+    CVertexShader        IceBumpmapVertexShader;                         // +0x188
+public:
+    CPixelShader         IceBumpmapPixelShader;                          // +0x190
+public:
+    CVertexShader        BumpmapRainVertexShader;                        // +0x198
+public:
+    CPixelShader         BumpmapRainPixelShader;                         // +0x1a0
+public:
+    CVertexShader        EnvironmentMapVertexShader;                     // +0x1a8
+public:
+    CPixelShader         EnvironmentMapPixelShader;                      // +0x1b0
+public:
+    CVertexShader        SkyMapVertexShader;                             // +0x1b8
+public:
+    CPixelShader         SkyMapPixelShader;                              // +0x1c0
+public:
+    CVertexShader        EnvMapOverlayVertexShader;                      // +0x1c8
+public:
+    CPixelShader         EnvMapOverlayPixelShader;                       // +0x1d0
+public:
+    long                 DynamicTexturePageHandle;                       // +0x1d8
+public:
+    long                 EnvironmentMapHandle;                           // +0x1dc
+public:
+    CTexture*            EnvironmentMap;                                 // +0x1e0
+public:
+    long                 SeaBumpMapHandle;                               // +0x1e4
+public:
+    CTexture*            SeaBumpMap;                                     // +0x1e8
+public:
+    long                 WaterBumpMapHandle;                             // +0x1ec
+public:
+    CTexture*            WaterBumpMap;                                   // +0x1f0
+public:
+    long                 IceBumpMapHandle;                               // +0x1f4
+public:
+    CTexture*            IceBumpMap;                                     // +0x1f8
+public:
+    CArray<CWaterPatchMesh*> ForegroundRenderList;                       // +0x1fc
+public:
+    CArray<CEngineWaterBackgroundSubPatch*> BackgroundRenderList;        // +0x208
+public:
+    CArray<CEngineWaterBackgroundSubPatch*> AlphaedBackgroundRenderList; // +0x214
+public:
+    CArray<std::pair<C3DBoundingBox, CWaterPatchMesh*> > IceForegroundRenderList;   // +0x220
+public:
+    CArray<CEngineWaterBackgroundSubPatch*> IceBackgroundRenderList;     // +0x22c
+public:
+    CArray<CEngineWaterBackgroundSubPatch*> IceAlphaedBackgroundRenderList;   // +0x238
+public:
+    CArray<CWaterPatchMesh*> SeaReflectiveForegroundRenderList;          // +0x244
+public:
+    CArray<CWaterPatchMesh*> SeaNonReflectiveForegroundRenderList;       // +0x250
+public:
+    CArray<CEngineWaterBackgroundSubPatch*> SeaMidgroundRenderList;      // +0x25c
+public:
+    CArray<CEngineWaterBackgroundSubPatch*> SeaAlphaedMidgroundRenderList;   // +0x268
+public:
+    bool                 HighendWaterEnabled;                            // +0x274
+public:
+    bool                 HighendWaterSupported;                          // +0x275
+public:
+    bool                 HaveBackgroundSea;                              // +0x276
+public:
+    CCharString          LoadedOrLoadingSeaBodyID;                       // +0x278
+public:
+    CCharString          RequestedSeaBodyID;                             // +0x27c
+public:
+    CEngineWaterSettings Settings;                                       // +0x280
+public:
+    CWaterPatchTesselatorBase<CTVertexWaterBackground> Tesselator;       // +0x564
+public:
+    CWaterPatchTesselatorBase<CTVertexSeaBackground> SeaTesselator;      // +0x584
+public:
+    CWaterGenerator*     WaterGenerator;                                 // +0x5a4
+public:
+    CStaticMapBankFile*  StaticMapBankFile;                              // +0x5a8
+public:
+    CCharString          StaticMapSeaEntryPrefix;                        // +0x5ac
+public:
+    CCountedPointer<CBankFileAsyncEntry> LoadingSeaEntry;                // +0x5b0
+public:
+    CCountedPointer<CBankFileAsyncData> LoadingSea;                      // +0x5b8
+public:
+    float                WaterBumpFactor;                                // +0x5c0
+};
+#else
+class CEngineWaterRenderer : public CEngineComponent {
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_SEAMIDGROUND_BODIES
+private:
+    bool SetSeaMidgroundTexturesAndUVModes();
+    void SetupSeaMidgroundShaderConstantsAndFog();
+#endif
+
 public:
     CEngineWaterRenderer(const CEngineInit& init);                       // ??0CEngineWaterRenderer@@QAE@ABVCEngineInit@@@Z
     virtual ~CEngineWaterRenderer();                                     // slot 0 (??_G 0x00B7EE60; ??1 0x00B71880)
@@ -74,6 +414,11 @@ private:
     void DeleteConstantBuffers();                                        // 0x00B6D4B0 ?DeleteConstantBuffers@CEngineWaterRenderer@@AAEXXZ
     void UninitialiseDynamicTextures();                                  // ?UninitialiseDynamicTextures@CEngineWaterRenderer@@AAEXXZ
     void FinishUsingDynamicTextures();                                   // 0x00B6D630 ?FinishUsingDynamicTextures@CEngineWaterRenderer@@AAEXXZ
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_SEABACKGROUND_BODIES
+    // Original PDB private members, expanded in native00B70230.
+    bool SetSeaBackgroundTexturesAndUVModes();
+    void SetupSeaBackgroundShaderConstantsAndFog();
+#endif
     void RenderSeaBackground(float time);                                // ?RenderSeaBackground@CEngineWaterRenderer@@AAEXM@Z
     void RenderEnvironmentMap();                                         // ?RenderEnvironmentMap@CEngineWaterRenderer@@AAEXXZ
     void RenderIceForeground(float time);                                // ?RenderIceForeground@CEngineWaterRenderer@@AAEXM@Z
@@ -99,6 +444,9 @@ private:
     // Opt-in (chunk 892, row 0x00B6FA40): Ego_r.pdb / FableWin.pdb ?RenderSeaMidground@CEngineWaterRenderer@@AAEXM@Z and
     // ?RenderBackgroundList@CEngineWaterRenderer@@AAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z (landed 0x00B6E260).
     void RenderSeaMidground(float time);                                 // 0x00B6FA40
+#ifdef FABLE_RETAIL_WATER_OCCLUSION_ORIGINAL_CHAIN_PASS22
+    void RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch);
+#endif
     void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time);   // 0x00B6E260
 #endif
 #ifdef FABLE_RETAIL_CENGINEWATERRENDERER_RENDER
@@ -192,6 +540,8 @@ public:
     CCountedPointer<CBankFileAsyncData> LoadingSea;                      // +0x5b8
     float                WaterBumpFactor;                                // +0x5c0
 };
+#endif
+
 #ifdef FABLE_RETAIL_CENGINEWATERRENDERER_ADDTORENDERLIST
 // Opt-in bodies (wf3, row 0x00BE7BE0; names FableWin.pdb). Retail also holds an out-of-line copy of each, unreferenced and not in
 // the manifest: 0x00BE9030 (sea helper, `ret 8`) and 0x00BE9080 (background helper with the sea helper expanded in it, `ret 8`);

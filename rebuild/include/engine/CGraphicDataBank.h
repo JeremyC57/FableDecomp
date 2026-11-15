@@ -15,6 +15,85 @@ class CManagedTexture;
 #ifdef FABLE_RETAIL_CGRAPHICDATABANK_LOADGRAPHICFRAME
 class CManagedTexture;class CBankFileAsyncData;
 #endif
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_ORIGINAL_METHODS_PASS22
+class CGraphicDataBankInit; class CAFile; class CTGAToRGBAGraphicInfo; class C2DBoxI;
+class CPixelFormat; class CManagedTexture; class CBankFileAsyncData;
+// Both raw PDBs prove signatures and user/generated classification.
+// The recorded method sequence is a reconstruction hypothesis, not proof of source order.
+class CGraphicDataBank : public CBankFileAsync, public CResourceBank {
+public:
+    class CGraphicHeader;
+    enum ETextureType {TEXTURE_TYPE_OPAQUE=0,TEXTURE_TYPE_ALPHA=1,TEXTURE_TYPE_BOOLEAN_ALPHA=2,TEXTURE_TYPE_INTERPOLATED_ALPHA=3,TEXTURE_TYPE_BUMP=4,TEXTURE_TYPE_BUMP_ALPHA=5,TEXTURE_TYPE_UNCOMPRESSED_OPAQUE=6,TEXTURE_TYPE_UNCOMPRESSED_ALPHA=7,TEXTURE_TYPE_UNCOMPRESSED_BUMP=8,TEXTURE_TYPE_UNCOMPRESSED_BUMP_ALPHA=9,TEXTURE_TYPE_SIGNED=10,TEXTURE_TYPE_COUNT=11};
+    CGraphicDataBank();
+    virtual ~CGraphicDataBank();
+    void Initialise(const CGraphicDataBankInit&);
+    void Uninitialise();
+    const CGraphicInfo* PeekGraphic(unsigned long) const;
+    const CGraphicInfoFrame* PeekGraphicInfoFrame(unsigned long, unsigned long) const;
+    bool GetGraphicFrameMipmap(CGraphicFrame&, unsigned long, unsigned long, long, unsigned long) const;
+    bool GetVolumeTexture(CVolumeTexture**, unsigned long, unsigned long) const;
+    void FrameEnd();
+    void ChangeScene();
+    const CTextureManager& PeekTextureManager() const;
+    CTextureManager& GetTextureManager();
+    CCountedPointer<CTextureManager> GetPTextureManager();
+    void SetTextureManager(const CCountedPointer<CTextureManager>&);
+    unsigned long GetUnloadFrameDelay() const;
+    void SetUnloadFrameDelay(unsigned long);
+    unsigned long GetReduceSizeFrameDelay() const;
+    void SetReduceSizeFrameDelay(unsigned long);
+    unsigned long GetTexturePointersValidForFrames() const;
+    void SetTexturePointersValidForFrames(unsigned long);
+    bool GetFreezeGraphics() const;
+    void SetFreezeGraphics(bool);
+    virtual unsigned long GetNoFramesInGraphic(unsigned long) const;
+    virtual unsigned long GetGraphicFrameWidth(unsigned long, unsigned long) const;
+    virtual unsigned long GetGraphicFrameHeight(unsigned long, unsigned long) const;
+    virtual unsigned long GetGraphicMaxWidth(unsigned long) const;
+    virtual unsigned long GetGraphicMaxHeight(unsigned long) const;
+    virtual bool IsUsingSurfaces() const;
+    unsigned long Sizeof() const;
+    virtual void Close();
+    CPixelFormat GetPixelFormat(ETextureType) const;
+    const CTexture* GetBlankTexture(ETextureType) const;
+protected:
+    virtual unsigned long GetDataFormatVersion();
+    virtual void NotifyBankSize(unsigned long, const CArray<CBankFileDataTypeCount>&);
+    virtual void NotifyBankOpened();
+    virtual void NotifyEntryUpdated(unsigned long, unsigned long, const CArray<char>&);
+    virtual void NotifyEntryAdded(unsigned long, unsigned long, const CArray<char>&);
+    virtual void NotifyEntryRemoved(unsigned long);
+    virtual void PrepareDataForInclusion(unsigned long, const CArray<CCharString>&, unsigned long, const CCountedPointer<CBankStateBlock>, CDataOutputStream&, CDataOutputStream&);
+private:
+    void CloseGraphics();
+    void InitFrames();
+    void InitCompression();
+    static void FABLE_FASTCALL ReadGraphicHeader(CGraphicHeader&, CDataInputStream&);
+    static void FABLE_FASTCALL WriteGraphicHeader(const CGraphicHeader&, CDataOutputStream&);
+    static void FABLE_FASTCALL WriteMipmapLevel(unsigned long, bool, const void*, unsigned long, CDataOutputStream&, CGraphicHeader&);
+    ETextureType GetTextureType(const CGraphicHeader&, bool) const;
+    bool LoadGraphicFrame(CGraphicFrame&, CManagedTexture&, CBankFileAsyncData&, CGraphicInfo*, bool, unsigned long, ETextureType, bool);
+    bool LoadVolumeGraphic(CManagedTexture&, CBankFileAsyncData&, const CGraphicHeader&, bool, unsigned long, bool);
+    void PostTextureUpload(CTexture&);
+    void UpdateAvailableMemory();
+private:
+    CArray<CGraphicInfo> GraphicList;
+    CArray<CGraphicInfoFrame> GraphicFrameBuffer;
+    bool Initialised;
+    unsigned char StateBlock[100]; // CGraphicBankStateBlock
+    long TextureSizeWarningMaxWidth,TextureSizeWarningMaxHeight;
+    unsigned long UnloadFrameDelay,ReduceSizeFrameDelay,TexturePointersValidForFrames;
+    long MinAvailablePreloadMemory,AvailableMemory;
+    bool FreezeGraphics;
+    CCountedPointer<CTextureManager> TextureManager;
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_LOADGRAPHICFRAME
+    CPixelFormat PixelFormats[11];  // +0x288 (chunk 2004: typed, same 44 bytes; LoadGraphicFrame copies PixelFormats[type], 0x009FED57)
+#else
+    unsigned char PixelFormats[44]; // CPixelFormat[11]
+#endif
+    CTexture BlankTextures[11];
+};
+#else
 class CGraphicDataBank : public CBankFileAsync, public CResourceBank {
 public:
     class CGraphicHeader;
@@ -89,6 +168,7 @@ private:
 #endif
     CTexture BlankTextures[11];
 };
+#endif
 FABLE_STATIC_ASSERT_AT(82, sizeof(CGraphicDataBank)==0x30c);
 #if defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT) || defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE) || defined(FABLE_RETAIL_CGRAPHICINFO_SPRITE)
 // Layout: original PDB nested class,28 bytes; native009fd700 copies7 words.
