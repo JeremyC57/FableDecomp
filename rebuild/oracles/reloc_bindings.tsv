@@ -41337,3 +41337,10 @@ __GUID_1d58c920_ac9b_11cf_a5d6_28db04c10000	012b90d8	00c5e0c0
 ?colour@?6??SetupSeaBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ@4VCRGBFloatColour@@A	01437864	00b70230
 ?light_dot@?6??SetupSeaBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ@4VC4DVector@@A	01437874	00b70230
 _mip	0139a838	00b70230
+??$GFSerialiseVectorBinaryIn@VCDefString@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z	00465852	00675e20
+??$GFSerialiseVectorBinaryOut@VCDefString@@@@YIXAAVCDataOutputStream@@AAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z	00465820	00675e20
+??$Transfer@VCRandomAppearanceMorph@@@CPersistContext@@QAEXAAVCRandomAppearanceMorph@@@Z	00676740	00675e20
+?TransferBinaryIn@CExpressionSet@@QAEXAAVCMemoryDataInputStream@@@Z	0086f680	00675e20
+?TransferBinaryIn@CWoundMorphs@@QAEXAAVCMemoryDataInputStream@@@Z	00757990	00675e20
+?TransferBinaryOut@CExpressionSet@@QBEXAAVCDataOutputStream@@@Z	0086f590	00675e20
+?TransferBinaryOut@CWoundMorphs@@QBEXAAVCDataOutputStream@@@Z	00757500	00675e20

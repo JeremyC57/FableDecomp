@@ -397442,6 +397442,13 @@ $catalog = @(
         TestSource = '00/bf/CEnginePrimitiveRenderUtil_SetupOutlineStencilStates_00bf0b20_test.cpp'
         PassPattern = '00bf0b20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00675e20'
+        Module = 'CCreatureDef'
+        Source = '00/67/CCreatureDef_Transfer_00675e20.cpp'
+        TestSource = '00/67/CCreatureDef_Transfer_00675e20_test.cpp'
+        PassPattern = '00675e20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

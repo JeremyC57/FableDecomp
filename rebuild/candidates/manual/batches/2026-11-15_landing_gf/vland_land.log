@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00675e20   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@JVCCharString@@U?$less@VCCharString@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z -> 004314c8 labelled 'GFSerialiseMapBinaryOut<long, CCharString, std::less<CCharString>>'
+00675e20   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@MW4EHeroTrainableStatType@@U?$less@W4EHeroTrainableStatType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EHeroTrainableStatType@@MU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@@std@@@Z -> 00466848 labelled '_global::WriteState_00466848'
+00675e20   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@MW4EHeroTrainableStatType@@U?$less@W4EHeroTrainableStatType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EHeroTrainableStatType@@MU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@@std@@@Z -> 00466889 labelled 'GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>'
+00675e20   RELOCATION_MATCH PASS   Transfer
+
+WINS: 1
+  00675e20 RELOCATION_MATCH CCreatureDef::?Transfer@CCreatureDef@@UAEXAAVCPersistContext@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCreatureDef_Transfer_00675e20
