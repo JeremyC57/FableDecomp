@@ -17,10 +17,15 @@ public:
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
+#ifdef FABLE_RETAIL_C3DMESHFILEUNIQUEVERTICESCHUNK_GETUNIQUEVERTEXINDEX
+    // Opt-in (wfA3, row 0x00ACDB80): FableWin's inline ?GetUniqueVertexIndex@C3DMeshFileUniqueVerticesChunk@@QBEKK@Z (absent
+    // from Ego_r = always inlined; retail 0x00ACDDCE indexes the list's start directly).
+    unsigned long GetUniqueVertexIndex(unsigned long index) const { return UniqueVerticesList[index]; }
+#endif
 private:
     CArray<unsigned long> UniqueVerticesList;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileUniqueVerticesChunk) == 0x1C);
+FABLE_STATIC_ASSERT_AT(23, sizeof(C3DMeshFileUniqueVerticesChunk) == 0x1C);
 #endif // FABLE_ENGINE_C3DMESHFILEUNIQUEVERTICESCHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILEUNIQUEVERTICESCHUNK_H
@@ -45,9 +50,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileUniqueVerticesChunk) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileUniqueVerticesChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileUniqueVerticesChunk, UniqueVerticesList) == 0x10);
+FABLE_STATIC_ASSERT_AT(48, sizeof(C3DMeshFileUniqueVerticesChunk) == 0x1c);
+FABLE_STATIC_ASSERT_AT(49, offsetof(C3DMeshFileUniqueVerticesChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(50, offsetof(C3DMeshFileUniqueVerticesChunk, UniqueVerticesList) == 0x10);
 
 #endif // FABLE_ENGINE_C3DMESHFILEUNIQUEVERTICESCHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILEUNIQUEVERTICESCHUNK

@@ -44,30 +44,35 @@ public:
     bool          AddsDrunkenness;                           // +0x6c
     unsigned char _pad_0x6d[0x3];                            // +0x6d
     float         AlcoholicStrength;                         // +0x70
+#ifdef FABLE_RETAIL_CBONUSITEMDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CBonusItemDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CBonusItemDef) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, HealthModifier) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, AddsFatness) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, StaminaModifier) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, SecondsToApplyHealthIncreaseOver) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, WillExperience) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, SkillExperience) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, StrengthExperience) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, MoralityChange) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, AgreeablenessChange) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, AttractivenessChange) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, ScarinessChange) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, MaxHealthIncrease) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, MaxStaminaIncrease) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, ChangeTimeOfDayToDay) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, ChangeTimeOfDayToNight) == 0x5d);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, SpeedMultiplier) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, SecondsForSpeedMultiplierToLast) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, ParticleEffect) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, AddsDrunkenness) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, AlcoholicStrength) == 0x70);
+FABLE_STATIC_ASSERT_AT(50, sizeof(CBonusItemDef) == 0x74);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CBonusItemDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CBonusItemDef, HealthModifier) == 0x28);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CBonusItemDef, AddsFatness) == 0x2c);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CBonusItemDef, StaminaModifier) == 0x30);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CBonusItemDef, SecondsToApplyHealthIncreaseOver) == 0x34);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CBonusItemDef, WillExperience) == 0x38);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CBonusItemDef, SkillExperience) == 0x3c);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CBonusItemDef, StrengthExperience) == 0x40);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CBonusItemDef, MoralityChange) == 0x44);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CBonusItemDef, AgreeablenessChange) == 0x48);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CBonusItemDef, AttractivenessChange) == 0x4c);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CBonusItemDef, ScarinessChange) == 0x50);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CBonusItemDef, MaxHealthIncrease) == 0x54);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CBonusItemDef, MaxStaminaIncrease) == 0x58);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CBonusItemDef, ChangeTimeOfDayToDay) == 0x5c);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CBonusItemDef, ChangeTimeOfDayToNight) == 0x5d);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CBonusItemDef, SpeedMultiplier) == 0x60);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CBonusItemDef, SecondsForSpeedMultiplierToLast) == 0x64);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CBonusItemDef, ParticleEffect) == 0x68);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CBonusItemDef, AddsDrunkenness) == 0x6c);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CBonusItemDef, AlcoholicStrength) == 0x70);
 
 #endif // FABLE_ENGINE_CBONUSITEMDEF_H

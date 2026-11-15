@@ -8,6 +8,32 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CREACTIONMATCH_MRPYRAMID_CLASS
+// Retail opt-in (wfD5, row 0x00678760): the polymorphic class on engine/CReactionMatch_AsymmetricPyramid.h (needs
+// FABLE_RETAIL_CREACTIONMATCH_ASYMMETRICPYRAMID_CLASS), as the landed CReactionMatch_MoralityRenownBlob constructor 0x00677760 models
+// it: the inline constructor passes axes 0 / 1 to the pyramid constructor 0x00677620 and stores the three shifts; GetMatchType
+// 0x00677740 (landed). Ego_r.pdb layout above, same 0x34 bytes.
+#include "engine/CReactionMatch_AsymmetricPyramid.h"
+#pragma pack(push, 1)
+class CReactionMatch_MRPyramid : public CReactionMatch_AsymmetricPyramid {
+public:
+    CReactionMatch_MRPyramid(EOpinionReactionType type, float xMin, float xCentre, float xMax, float yMin, float yCentre,
+                             float yMax, float scarinessShift, float agreeablenessShift, float attractivenessShift)
+        : CReactionMatch_AsymmetricPyramid(type, (EOpinion)0, (EOpinion)1, xMin, xCentre, xMax, yMin, yCentre, yMax),
+          ScarinessShift(scarinessShift), AgreeablenessShift(agreeablenessShift), AttractivenessShift(attractivenessShift)
+    {
+    }
+    virtual float Match(const COpinionSet& opinions);
+    virtual EReactionMatchType GetMatchType() const;
+    virtual void TransferBinaryIn(CMemoryDataInputStream& stream);
+    virtual void TransferBinaryOut(CDataOutputStream& stream) const;
+    float ScarinessShift;                                              // +0x28
+    float AgreeablenessShift;                                          // +0x2c
+    float AttractivenessShift;                                         // +0x30
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CReactionMatch_MRPyramid) == 0x34);
+#else
 #pragma pack(push, 1)
 struct CReactionMatch_MRPyramid {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -26,10 +52,11 @@ struct CReactionMatch_MRPyramid {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CReactionMatch_MRPyramid) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_MRPyramid, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_MRPyramid, ScarinessShift) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_MRPyramid, AgreeablenessShift) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_MRPyramid, AttractivenessShift) == 0x30);
+FABLE_STATIC_ASSERT_AT(29, sizeof(CReactionMatch_MRPyramid) == 0x34);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CReactionMatch_MRPyramid, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CReactionMatch_MRPyramid, ScarinessShift) == 0x28);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CReactionMatch_MRPyramid, AgreeablenessShift) == 0x2c);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CReactionMatch_MRPyramid, AttractivenessShift) == 0x30);
 
+#endif // FABLE_RETAIL_CREACTIONMATCH_MRPYRAMID_CLASS
 #endif // FABLE_ENGINE_CREACTIONMATCH_MRPYRAMID_H

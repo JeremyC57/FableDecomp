@@ -30,6 +30,17 @@ public:
     // Retail opt-in (chunk F2, row 0x009D5BF0): Ego_r.pdb / FableWin.pdb ?HandleFailedAllocation@CBankFileAsync@@QAE_NXZ. Declaration only.
     bool HandleFailedAllocation();                                       // 0x009D5BF0
 #endif
+#ifdef FABLE_RETAIL_CBANKFILEASYNC_SETLOADINGMEMORY
+    // Retail opt-in (wfE7, row 0x00B3CB30): Ego_r.pdb / FableWin.pdb ?SetLoadingMemoryPool@CBankFileAsync@@QAEXV?$CCountedPointer@VCMovableResourceMemoryPool@@@@@Z
+    // (retail 0x00B3E820) and ?SetLoadingMemoryFailureHandler@CBankFileAsync@@QAEXV?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@@Z
+    // (0x009D66A0), the counted pointers passed by value. Declarations only.
+    void SetLoadingMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool);                        // 0x00B3E820
+    void SetLoadingMemoryFailureHandler(CCountedPointer<CLoadingMemoryFailureHandler> handler);        // 0x009D66A0
+#endif
+#ifdef FABLE_RETAIL_CBANKFILEASYNC_CREATEENTRY
+    // agentC27 (row 0x009FDE80): Ego_r.pdb ?CreateEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z, retail 0x009D58D0.
+    CCountedPointer<class CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0
+#endif
 private:
     CCountedPointer<CThreadedFile> ThreadedFile;
     CCountedPointer<CMovableResourceMemoryPool> LoadingMemoryPool;
@@ -51,6 +62,6 @@ private:
     unsigned char CriticalSection[24]; // SDK _RTL_CRITICAL_SECTION, retained opaque
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CBankFileAsync)==0x164);
+FABLE_STATIC_ASSERT_AT(54, sizeof(CBankFileAsync)==0x164);
 #endif
 #endif

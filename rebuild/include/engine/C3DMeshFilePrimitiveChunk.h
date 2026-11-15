@@ -8,6 +8,9 @@
 #include "rebuild_abi.h"
 #include "engine/CChunkedFileSuperChunk.h"
 #include "engine/CArray.h"
+#ifdef FABLE_RETAIL_C3DMESHFILEPRIMITIVECHUNK_ACCESSORS
+class C3DMeshFileVerticesChunk;class C3DMeshFileUniqueVerticesChunk;class C3DMeshFileTrianglesChunk;class C3DMeshFileGroupChunk;
+#endif
 class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk {
 public:
     C3DMeshFilePrimitiveChunk();
@@ -15,10 +18,23 @@ public:
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
+#ifdef FABLE_RETAIL_C3DMESHFILEPRIMITIVECHUNK_ACCESSORS
+    // Opt-in (wfA3, row 0x00ACDB80 COptimisedPrimitive ctor): Ego_r.pdb accessors (landed rows PeekVertices 0x00ABAFE0,
+    // HasUniqueVertices 0x00ABB610, PeekUniqueVertices 0x00ABB720, PeekTriangles 0x00ABB100, FindFirstGroup 0x00ABB7B0,
+    // FindNextGroup 0x00ABB840) and FableWin.pdb's inline ?GetMaterialIndex@C3DMeshFilePrimitiveChunk@@QBEJK@Z (30 debug bytes,
+    // absent from Ego_r = always inlined; retail 0x00ACDBE9 reads MaterialIndices' start directly).
+    long GetMaterialIndex(unsigned long index) const { return MaterialIndices[index]; }
+    CCountedPointer<const C3DMeshFileVerticesChunk> PeekVertices() const;
+    bool HasUniqueVertices() const;
+    CCountedPointer<const C3DMeshFileUniqueVerticesChunk> PeekUniqueVertices() const;
+    CCountedPointer<const C3DMeshFileTrianglesChunk> PeekTriangles() const;
+    CCountedPointer<C3DMeshFileGroupChunk> FindFirstGroup();
+    CCountedPointer<C3DMeshFileGroupChunk> FindNextGroup(const CCountedPointer<const C3DMeshFileGroupChunk>&);
+#endif
 private:
     CArray<long> MaterialIndices;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFilePrimitiveChunk) == 0x38);
+FABLE_STATIC_ASSERT_AT(21, sizeof(C3DMeshFilePrimitiveChunk) == 0x38);
 #endif // FABLE_ENGINE_C3DMESHFILEPRIMITIVECHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILEPRIMITIVECHUNK_H
@@ -45,9 +61,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFilePrimitiveChunk) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFilePrimitiveChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFilePrimitiveChunk, MaterialIndices) == 0x2c);
+FABLE_STATIC_ASSERT_AT(48, sizeof(C3DMeshFilePrimitiveChunk) == 0x38);
+FABLE_STATIC_ASSERT_AT(49, offsetof(C3DMeshFilePrimitiveChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(50, offsetof(C3DMeshFilePrimitiveChunk, MaterialIndices) == 0x2c);
 
 #endif // FABLE_ENGINE_C3DMESHFILEPRIMITIVECHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILEPRIMITIVECHUNK

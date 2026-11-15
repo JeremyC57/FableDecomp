@@ -15,6 +15,9 @@ class CTCWallMount : public CTCBase {
 public:
     CThing* GetObjectAttached();                                         // 0x007DE4E0
     const CThing* PeekObjectAttached() const;                            // 0x007DE4F0
+#ifdef FABLE_RETAIL_CTCWALLMOUNT_ATTACHOBJECT
+    bool AttachObject(CThing& object, long boughtForAmount);              // 0x007DE710 ?AttachObject@CTCWallMount@@QAE_NAAVCThing@@J@Z
+#endif
 protected:
     long BoughtForAmount;                                                // +0x0c
     CIntelligentPointer<CThing> Trophy;                                  // +0x10
@@ -27,5 +30,5 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCWallMount) == 0x20);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CTCWallMount) == 0x20);
 #endif

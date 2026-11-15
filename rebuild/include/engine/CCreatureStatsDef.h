@@ -35,20 +35,25 @@ public:
     float         Speed;                                     // +0x3c
     float         Dexterity;                                 // +0x40
     float         StrengthDamageMultiplier;                  // +0x44
+#ifdef FABLE_RETAIL_CCREATURESTATSDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CCreatureStatsDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureStatsDef) == 0x48);
+FABLE_STATIC_ASSERT_AT(41, sizeof(CCreatureStatsDef) == 0x48);
 #ifndef FABLE_RETAIL_CCREATURESTATSDEF_VIRTUAL_DTOR
-FABLE_STATIC_ASSERT(offsetof(CCreatureStatsDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CCreatureStatsDef, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CCreatureStatsDef, MoralityForKill) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCreatureStatsDef, MoralityForPunch) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureStatsDef, MoralityForWeaponHit) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CCreatureStatsDef, ExperienceWorth) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CCreatureStatsDef, RenownWorth) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CCreatureStatsDef, Speed) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureStatsDef, Dexterity) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CCreatureStatsDef, StrengthDamageMultiplier) == 0x44);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CCreatureStatsDef, MoralityForKill) == 0x28);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CCreatureStatsDef, MoralityForPunch) == 0x2c);
+FABLE_STATIC_ASSERT_AT(47, offsetof(CCreatureStatsDef, MoralityForWeaponHit) == 0x30);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CCreatureStatsDef, ExperienceWorth) == 0x34);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CCreatureStatsDef, RenownWorth) == 0x38);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CCreatureStatsDef, Speed) == 0x3c);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CCreatureStatsDef, Dexterity) == 0x40);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CCreatureStatsDef, StrengthDamageMultiplier) == 0x44);
 
 #endif // FABLE_ENGINE_CCREATURESTATSDEF_H

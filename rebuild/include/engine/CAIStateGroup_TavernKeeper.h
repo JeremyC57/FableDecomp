@@ -41,7 +41,13 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_TavernKeeper)==0x68);
 class CMessageEvent;
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_TavernKeeper {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     unsigned char  _pad_0x08[0x4];                           // +0x08
@@ -62,20 +68,20 @@ struct CAIStateGroup_TavernKeeper {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_TavernKeeper) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PJug) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PBar) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PPub) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PPayee) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugActionPointIndex) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugPos_X) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugPos_Y) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugPos_Z) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugRHSet) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugSlot) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, AverageWalkSpeed) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PaymentRequestMessage) == 0x64);
+FABLE_STATIC_ASSERT_AT(65, sizeof(CAIStateGroup_TavernKeeper) == 0x68);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CAIStateGroup_TavernKeeper, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CAIStateGroup_TavernKeeper, PJug) == 0x14);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CAIStateGroup_TavernKeeper, PBar) == 0x1c);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CAIStateGroup_TavernKeeper, PPub) == 0x24);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CAIStateGroup_TavernKeeper, PPayee) == 0x2c);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CAIStateGroup_TavernKeeper, JugActionPointIndex) == 0x34);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CAIStateGroup_TavernKeeper, JugPos_X) == 0x38);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CAIStateGroup_TavernKeeper, JugPos_Y) == 0x3c);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CAIStateGroup_TavernKeeper, JugPos_Z) == 0x40);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CAIStateGroup_TavernKeeper, JugRHSet) == 0x44);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CAIStateGroup_TavernKeeper, JugSlot) == 0x5c);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CAIStateGroup_TavernKeeper, AverageWalkSpeed) == 0x60);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CAIStateGroup_TavernKeeper, PaymentRequestMessage) == 0x64);
 
 #endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_TAVERNKEEPER_H

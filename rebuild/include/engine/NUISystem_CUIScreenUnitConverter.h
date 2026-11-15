@@ -29,6 +29,44 @@ public:
     static float __fastcall GetBackBufferWidth();      // 0x0041CC14
     static float __fastcall GetBackBufferHeight();     // 0x0041CC2B
 #endif
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_CONVERTXY
+    // Retail opt-in (agentC43, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility): FableWin.pdb ?ConvertX@CUIScreenUnitConverter@NUISystem@@SIMM@Z /
+    // ?ConvertY@CUIScreenUnitConverter@NUISystem@@SIMM@Z, out of line at 0x0052E470 / 0x0052E4D0 (static __fastcall, one float on the
+    // stack; x / ScreenWidth * BackBufferWidth when IsUsingRelativeCoords). Declarations only: the row TU defines them ahead of the row
+    // (same TU in retail), needs FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE for the static data members.
+    static float __fastcall ConvertX(float x);         // 0x0052E470
+    static float __fastcall ConvertY(float y);         // 0x0052E4D0
+#endif
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_CONVERTXY_INLINE
+    // Retail opt-in (wfB6, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility; use INSTEAD of
+    // FABLE_RETAIL_CUISCREENUNITCONVERTER_CONVERTXY, which only declares them): FableWin.pdb ?ConvertX@CUIScreenUnitConverter@NUISystem@@SIMM@Z /
+    // ?ConvertY@CUIScreenUnitConverter@NUISystem@@SIMM@Z as inline header functions like GetBackBufferWidth / ConvertVector above
+    // (out-of-line copies 0x0052E470 / 0x0052E4D0). The row calls them (not expanded under optimize("s")) but VC7.1 has read the
+    // bodies: it knows they write no memory, so the def fetches of the next argument are loaded after the call (0x00537B79..0x00537BDB).
+    // With declarations alone the row is 18 bytes longer. Needs FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE (static data).
+    // Bodies: the real texts -- the landed rows' bodies (named quotient, then the multiply: `fld x; fdiv ScreenWidth; fmul
+    // BackBufferWidth`); compiled out of line (default flags, probe address-of) they grade RELOCATION_MATCH against 0x0052E470 /
+    // 0x0052E4D0 (wfB6 fix-up 2026-11-14; the earlier one-expression text `x / ScreenWidth * BackBufferWidth` was reassociated by
+    // VC7.1 into `fld BackBufferWidth; fdiv ScreenWidth; fmul x`, a different result: DIFFER(35v35)).
+    static float __fastcall ConvertX(float x)     // 0x0052E470 (out-of-line copy; landed body global_PhysicsScaleFloatByGameSpeed_0052e470.cpp)
+    {
+        if (IsUsingRelativeCoords)
+        {
+            float t = x / ScreenWidth;
+            return t * BackBufferWidth;
+        }
+        return x;
+    }
+    static float __fastcall ConvertY(float y)     // 0x0052E4D0 (out-of-line copy; landed body global_LengthScaleConversion_0052e4d0.cpp)
+    {
+        if (IsUsingRelativeCoords)
+        {
+            float t = y / ScreenHeight;
+            return t * BackBufferHeight;
+        }
+        return y;
+    }
+#endif
 #ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR
     // Retail opt-in (chunk 840, row 0x0052EA30 CComponent::ChangePositionDelta): the two out-of-line vector converters, static
     // __fastcall with a by-value C2DVector argument (user copy ctor, built in its stack slot) and a hidden C2DVector result in ecx.
@@ -42,6 +80,28 @@ public:
     // in retail (0x0052E580 is its out-of-line copy, the landed body): the row expands it at its first site (0x0061EA22..0x0061EA8F:
     // the flag test, then x / 640 * back-buffer width and y / 480 * back-buffer height) and calls 0x0052E580 at its second
     // (0x00620F0A) once the inline budget is spent. The landed 0x0052E580 body; needs FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE.
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR_INLINE_CONVERTXY
+    // Nested opt-in (agentC28, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): the same inline ConvertVector written through
+    // the class's own per-axis converters, Ego_r.pdb / FableWin.pdb ?ConvertX@CUIScreenUnitConverter@NUISystem@@SIMM@Z and ?ConvertY@..@@SIMM@Z
+    // (Ego_r 0x0055ECC6 / 0x0055ECF0, FableWin 0x01E1E0F6 / 0x01E1E12E; static __fastcall float(float)). Evidence: (1) FableWin's debug
+    // ConvertVector is 28 instructions / 81 bytes: this text is 27i / 77b at plain /Od, the direct-global text of the #else branch 29i / 95b
+    // (four absolute float operands FableWin does not have); (2) the out-of-line copy 0x0052E580 compiles to the same retail bytes from
+    // this text; (3) the row: with this text 0x0061E6D0 is RELOCATION_MATCH, with the #else text its last residue is the SIB operand
+    // order at 0x0061FB58 / 0x0061FB5E (c2 symbol-record ids: the two expanded per-axis helpers add folded parameter records with no byte).
+    // ConvertX / ConvertY bodies: Inferred (FableWin 15i / 45b each; this text 13i / 42b at /Od -- the flag test and the two-step divide /
+    // multiply are what the retail copy 0x0052E580 shows; the exact debug text is not pinned).
+    static float __fastcall ConvertX(float x) { if (IsUsingRelativeCoords) { x /= ScreenWidth; x *= BackBufferWidth; } return x; }
+    static float __fastcall ConvertY(float y) { if (IsUsingRelativeCoords) { y /= ScreenHeight; y *= BackBufferHeight; } return y; }
+    static C2DVector __fastcall ConvertVector(C2DVector v)         // 0x0052E580 (out-of-line copy)
+    {
+        C2DVector result = v;
+        if (IsUsingRelativeCoords) {
+            result.X = ConvertX(v.X);
+            result.Y = ConvertY(v.Y);
+        }
+        return result;
+    }
+#else
     static C2DVector __fastcall ConvertVector(C2DVector v)         // 0x0052E580 (out-of-line copy)
     {
         C2DVector result = v;
@@ -53,6 +113,7 @@ public:
         }
         return result;
     }
+#endif
 #else
     static C2DVector __fastcall ConvertVector(C2DVector v);        // 0x0052E580
 #endif

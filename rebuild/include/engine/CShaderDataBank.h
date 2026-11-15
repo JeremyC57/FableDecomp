@@ -6,6 +6,24 @@
 // Retail evidence: 1 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CSHADERDATABANK_CTOR
+// Retail opt-in (wfE7, row 0x00B3CB30): the retail class, RTTI CShaderDataBank : CBankFile (ghidra_out/rtti_bases.tsv; vtable
+// 0x0129D644), retail sizeof 0x128 (the CEngineResourceManager ctor 0x00B3CBB1 steps its VShaderBanks[27] by 0x128; ShaderBankPixel
+// +0x2898). Ego_r.pdb / FableWin.pdb ??0CShaderDataBank@@QAE@XZ (retail 0x00A62020). The bank's own bytes stay opaque. Needs the
+// polymorphic CBankFile (FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS).
+#include "engine/CBankFile.h"
+class CShaderDataBank : public CBankFile {
+public:
+    CShaderDataBank();                                                   // 0x00A62020
+    virtual ~CShaderDataBank();                                          // 0x00A620D0
+protected:
+    virtual unsigned long GetDataFormatVersion();                        // Ego_r.pdb ?GetDataFormatVersion@..@@MAEKXZ (the CBankFile pure virtual)
+public:
+private:
+    unsigned char Unmodeled_0x110[0x128 - 0x110];
+};
+FABLE_STATIC_ASSERT(sizeof(CShaderDataBank) == 0x128);
+#else
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -66,12 +84,13 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CShaderDataBank) == 0x13c);
-FABLE_STATIC_ASSERT(offsetof(CShaderDataBank, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CShaderDataBank, Shaders) == 0x110);
-FABLE_STATIC_ASSERT(offsetof(CShaderDataBank, ShaderPreParser) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CShaderDataBank, EntryParserStates) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CShaderDataBank, IntermediateFileFolder_PStringData) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CShaderDataBank, StateBlock) == 0x130);
+FABLE_STATIC_ASSERT_AT(69, sizeof(CShaderDataBank) == 0x13c);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CShaderDataBank, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CShaderDataBank, Shaders) == 0x110);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CShaderDataBank, ShaderPreParser) == 0x11c);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CShaderDataBank, EntryParserStates) == 0x120);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CShaderDataBank, IntermediateFileFolder_PStringData) == 0x12c);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CShaderDataBank, StateBlock) == 0x130);
 
+#endif // FABLE_RETAIL_CSHADERDATABANK_CTOR
 #endif // FABLE_ENGINE_CSHADERDATABANK_H

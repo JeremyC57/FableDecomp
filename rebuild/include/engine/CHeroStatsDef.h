@@ -67,6 +67,11 @@ public:
     unsigned char MaxStaminaPointsPerMagicPowerLevel[0xc];       // +0x114 vector<long>
     unsigned char SoundDistanceMultiplierPerStealthLevel[0xc];   // +0x120 vector<float>
     unsigned char VisibilityMultiplierPerStealthLevel[0xc];      // +0x12c vector<float>
+#ifdef FABLE_RETAIL_CHEROSTATSDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CHeroStatsDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CHeroStatsDef) == 0x138);
+FABLE_STATIC_ASSERT_AT(71, sizeof(CHeroStatsDef) == 0x138);
 #endif

@@ -37,9 +37,14 @@ public:
     float FadeOutGraphicNearRenderFadeDistance;
     float FadeOutGraphicNearRenderClipDistance;
 #endif
+#ifdef FABLE_RETAIL_CAPPEARANCEDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CAppearanceDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #pragma pack(pop)
 #ifdef FABLE_RETAIL_CAPPEARANCEDEF_COMPLETE
-FABLE_STATIC_ASSERT(sizeof(CAppearanceDef)==120);
+FABLE_STATIC_ASSERT_AT(43, sizeof(CAppearanceDef)==120);
 #endif
 #endif // FABLE_ENGINE_CAPPEARANCEDEF_H

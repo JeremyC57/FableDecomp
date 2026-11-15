@@ -10,7 +10,13 @@
 #include "engine/CIntelligentPointer.h"
 class CThingCreatureBase;
 class CMessageEvent;
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 class CAIStateGroup_SellToBuyer : public CAIStateGroup_WorkBase<CAIStateGroupBase> {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+public: static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc(); private:
+#endif
 public:
     virtual void Cleanup();                                              // slot 9  0x0094BF50
     virtual bool IsRunnable();                                           // slot 11 0x0094C010

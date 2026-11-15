@@ -21,9 +21,14 @@ public:
     const C3DTriangle2* GetList() const;            // 0x00ABC440 (Ego_r ?GetList@C3DMeshFileTrianglesChunk@@QBEPBVC3DTriangle2@@XZ)
     unsigned long GetCount() const;                 // 0x00ABA370 (Ego_r ?GetCount@C3DMeshFileTrianglesChunk@@QBEKXZ)
 #endif
+#ifdef FABLE_RETAIL_C3DMESHFILETRIANGLESCHUNK_PEEKTRIANGLE
+    // Opt-in (wfA3, row 0x00ACDB80): FableWin's inline ?PeekTriangle@C3DMeshFileTrianglesChunk@@QBEABVC3DTriangle2@@K@Z (28 debug
+    // bytes = one CArray index call; absent from Ego_r = always inlined).
+    const C3DTriangle2& PeekTriangle(unsigned long index) const { return TriangleList[index]; }
+#endif
     CArray<C3DTriangle2> TriangleList;              // +0x2C
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileTrianglesChunk) == 0x38);
+FABLE_STATIC_ASSERT_AT(26, sizeof(C3DMeshFileTrianglesChunk) == 0x38);
 #endif // FABLE_ENGINE_C3DMESHFILETRIANGLESCHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILETRIANGLESCHUNK_H
@@ -50,9 +55,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileTrianglesChunk) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileTrianglesChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileTrianglesChunk, TriangleList) == 0x2c);
+FABLE_STATIC_ASSERT_AT(53, sizeof(C3DMeshFileTrianglesChunk) == 0x38);
+FABLE_STATIC_ASSERT_AT(54, offsetof(C3DMeshFileTrianglesChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(55, offsetof(C3DMeshFileTrianglesChunk, TriangleList) == 0x2c);
 
 #endif // FABLE_ENGINE_C3DMESHFILETRIANGLESCHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILETRIANGLESCHUNK

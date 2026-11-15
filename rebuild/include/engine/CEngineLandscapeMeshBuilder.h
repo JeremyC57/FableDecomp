@@ -12,6 +12,11 @@ enum LANDSCAPE_TEXTURE_MAPPING_DIRECTION { };                         // W4LANDS
 #endif
 class CEngineLandscapeMeshBuilder : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_CENGINELANDSCAPEMESHBUILDER_CTOR
+    // Retail opt-in (wfE7, row 0x00B69000): Ego_r.pdb / FableWin.pdb ??0CEngineLandscapeMeshBuilder@@QAE@XZ (retail 0x00BE32A0, called by
+    // the CEngineLandscapeRenderer ctor). Declaration only.
+    CEngineLandscapeMeshBuilder();                                       // 0x00BE32A0
+#endif
     virtual ~CEngineLandscapeMeshBuilder();                              // 0x00BE2B20
 #ifdef FABLE_RETAIL_CENGINELANDSCAPEMESHBUILDER_MAPPINGBLEND
     // Retail opt-in (chunk 1023, row 0x00B67270 CEngineLandscapeRenderer::BuildBlendingTables): Ego_r.pdb
@@ -21,6 +26,6 @@ public:
 #endif
     CIndexBuffer* SharedIndexBuffers[17][17];                            // +0x04
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineLandscapeMeshBuilder) == 0x488);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CEngineLandscapeMeshBuilder) == 0x488);
 
 #endif // FABLE_ENGINE_CENGINELANDSCAPEMESHBUILDER_H

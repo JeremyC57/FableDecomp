@@ -27,13 +27,23 @@ public:
     float ApproxMaxMeshHeight;                                   // +0x64
     unsigned char DefaultScriptName[4];                          // +0x68 CDefString
     unsigned char DefaultScriptData[4];                          // +0x6C CDefString
+#ifdef FABLE_RETAIL_CTHINGBASEDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CThingBaseDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #else
 class CThingBaseDef : public CParentDefClassBase {
     unsigned char _pad_0x39[0x37];
+#ifdef FABLE_RETAIL_CTHINGBASEDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CThingBaseDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #endif
-FABLE_STATIC_ASSERT(sizeof(CThingBaseDef)==0x70);
+FABLE_STATIC_ASSERT_AT(36, sizeof(CThingBaseDef)==0x70);
 #ifdef FABLE_RETAIL_CTHING
 // Retail opt-in (2026-11-03, row 0x005EB9E0): the body of CThing::PeekBaseDef (declared in engine/CThing.h; Ego_r.pdb
 // ?PeekBaseDef@CThing@@QBEABVCThingBaseDef@@XZ, inline in retail: CTCTavernGame::FrameUpdate reads PBaseDef +0x70 in place,

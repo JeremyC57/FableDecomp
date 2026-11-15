@@ -16,7 +16,21 @@ public:
     // like the three-channel constructor below; the member-store body is 20i/51b. Same release bytes, one more inline layer.
     CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Initialise(r,g,b,a); }
 #else
+#ifdef FABLE_RETAIL_CRGBCOLOUR_CTOR_FORCEINLINE
+    // Per-TU opt-in (row 0x00CBFB7D RunCutsceneMacro; hand885 text): ??0CRGBColour@@QAE@EEEE@Z has no out-of-line copy in Fable.exe
+    // or the Ego_r.pdb name set; retail stores R, G, B, A in place at all six sites of that 74 KB function.
+    FABLE_FORCEINLINE
+#endif
     CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
+#ifdef FABLE_RETAIL_CRGBCOLOUR_SETCHANNEL
+    // Opt-in (chunk 4010, row 0x00BD3070 RenderMeshPrimitive): FableWin.pdb ?SetR / ?SetG / ?SetB / ?SetA@CRGBColour@@QAEXE@Z (debug COMDATs
+    // of 10 instructions = one member store; no Ego_r.pdb or Fable.exe copy). The row sets the tint's alpha from the sub-primitive before
+    // the float conversion (0x00BD4DE5 `mov al,[ecx+8]` .. 0x00BD4DFF `movzx eax,al`).
+    void SetR(unsigned char r) { R = r; }
+    void SetG(unsigned char g) { G = g; }
+    void SetB(unsigned char b) { B = b; }
+    void SetA(unsigned char a) { A = a; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CRGBCOLOUR
     // Retail opt-in (chunk 724): the PDB's Initialise(r, g, b, a) (?Initialise@CRGBColour@@QAEXEEEE@Z) and the copy constructor
@@ -39,6 +53,11 @@ public:
     // __forceinline user copy ctor".
     FABLE_FORCEINLINE CRGBColour(const CRGBColour& colour) { R=colour.R; G=colour.G; B=colour.B; A=colour.A; }
 #else
+#ifdef FABLE_RETAIL_CRGBCOLOUR_CTOR_FORCEINLINE
+    // (same opt-in) the copy constructor: retail copies a by-value CRGBColour byte by byte in place, R G B then A
+    // (0x00CD0C57..0x00CD0C6D, FadeScreenOut's argument).
+    FABLE_FORCEINLINE
+#endif
     CRGBColour(const CRGBColour& colour) { R=colour.R; G=colour.G; B=colour.B; A=colour.A; }
 #endif
 #ifdef FABLE_RETAIL_CRGBCOLOUR_GETASINT

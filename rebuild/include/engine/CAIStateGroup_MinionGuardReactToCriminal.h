@@ -9,7 +9,13 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_MinionGuardReactToCriminal {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -25,14 +31,14 @@ struct CAIStateGroup_MinionGuardReactToCriminal {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionGuardReactToCriminal) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PHero) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_X) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_Y) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_Z) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, WarningsGiven) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, FrameWarningStarted) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, DeedLastWarnedAbout) == 0x30);
+FABLE_STATIC_ASSERT_AT(28, sizeof(CAIStateGroup_MinionGuardReactToCriminal) == 0x34);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_MinionGuardReactToCriminal, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_MinionGuardReactToCriminal, PHero) == 0x14);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_X) == 0x1c);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_Y) == 0x20);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_Z) == 0x24);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_MinionGuardReactToCriminal, WarningsGiven) == 0x28);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CAIStateGroup_MinionGuardReactToCriminal, FrameWarningStarted) == 0x2c);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CAIStateGroup_MinionGuardReactToCriminal, DeedLastWarnedAbout) == 0x30);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONGUARDREACTTOCRIMINAL_H

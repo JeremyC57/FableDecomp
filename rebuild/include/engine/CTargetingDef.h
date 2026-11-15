@@ -61,6 +61,11 @@ public:
         FABLE_STATIC_ASSERT(offsetof(CTargetingDef, TargetingRanges) == 0x74);
         FABLE_STATIC_ASSERT(offsetof(CTargetingDef, PreferPlayerWeight) == 0x80);
     }
+#ifdef FABLE_RETAIL_CTARGETINGDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CTargetingDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTargetingDef) == 0x90);
+FABLE_STATIC_ASSERT_AT(65, sizeof(CTargetingDef) == 0x90);
 #endif // FABLE_ENGINE_CTARGETINGDEF_H

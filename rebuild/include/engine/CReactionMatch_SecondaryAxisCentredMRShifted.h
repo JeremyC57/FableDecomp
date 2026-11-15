@@ -8,6 +8,33 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CREACTIONMATCH_SECONDARYAXISCENTREDMRSHIFTED_CLASS
+// Retail opt-in (wfD5, row 0x00678760 CPersistTraits<std::list<CReactionMatch*> >::TransferIn): the polymorphic class on the base
+// engine/CReactionMatch.h (Ego_r.pdb layout above; same 0x24 bytes), so `new` converts to CReactionMatch* for the reaction list.
+#include "engine/CReactionMatch.h"
+enum EOpinion;                                                         // MS forward enum
+#pragma pack(push, 1)
+class CReactionMatch_SecondaryAxisCentredMRShifted : public CReactionMatch {
+public:
+    // Ego_r 0x006A9510 / FableWin ??0CReactionMatch_SecondaryAxisCentredMRShifted@@QAE@W4EOpinionReactionType@@W4EOpinion@@MMMMMM@Z;
+    // out of line at 0x006775B0 (same TU, landed; called by TransferIn 0x006794BD).
+    CReactionMatch_SecondaryAxisCentredMRShifted(EOpinionReactionType type, EOpinion axis, float centre, float radius,
+                                                 float mShiftZero, float mShiftWeight, float rShiftZero, float rShiftWeight);
+    virtual float Match(const COpinionSet& opinions);
+    virtual EReactionMatchType GetMatchType() const;
+    virtual void TransferBinaryIn(CMemoryDataInputStream& stream);
+    virtual void TransferBinaryOut(CDataOutputStream& stream) const;
+    EOpinion Axis;                                                     // +0x08
+    float    CentreOnAxis;                                             // +0x0c
+    float    RadiusOnAxis;                                             // +0x10
+    float    MShiftZero;                                               // +0x14
+    float    MShiftWeight;                                             // +0x18
+    float    RShiftZero;                                               // +0x1c
+    float    RShiftWeight;                                             // +0x20
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CReactionMatch_SecondaryAxisCentredMRShifted) == 0x24);
+#else
 #pragma pack(push, 1)
 struct CReactionMatch_SecondaryAxisCentredMRShifted {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -22,14 +49,15 @@ struct CReactionMatch_SecondaryAxisCentredMRShifted {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CReactionMatch_SecondaryAxisCentredMRShifted) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, Axis) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, CentreOnAxis) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, RadiusOnAxis) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, MShiftZero) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, MShiftWeight) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, RShiftZero) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, RShiftWeight) == 0x20);
+FABLE_STATIC_ASSERT_AT(25, sizeof(CReactionMatch_SecondaryAxisCentredMRShifted) == 0x24);
+FABLE_STATIC_ASSERT_AT(26, offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(27, offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, Axis) == 0x8);
+FABLE_STATIC_ASSERT_AT(28, offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, CentreOnAxis) == 0xc);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, RadiusOnAxis) == 0x10);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, MShiftZero) == 0x14);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, MShiftWeight) == 0x18);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, RShiftZero) == 0x1c);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CReactionMatch_SecondaryAxisCentredMRShifted, RShiftWeight) == 0x20);
 
+#endif // FABLE_RETAIL_CREACTIONMATCH_SECONDARYAXISCENTREDMRSHIFTED_CLASS
 #endif // FABLE_ENGINE_CREACTIONMATCH_SECONDARYAXISCENTREDMRSHIFTED_H

@@ -33,7 +33,13 @@ protected:
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_StealStealableItem) == 0x3c);
 #else
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_StealStealableItem {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -52,16 +58,16 @@ struct CAIStateGroup_StealStealableItem {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_StealStealableItem) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, PStealableItem) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, PEscapePoint) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, PPreviouslyCarriedItem) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, ActionPointIndex) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, GotActionPoint) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, ReachedDestination) == 0x31);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, PickUpActionID) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, NeedsCleanup) == 0x38);
+FABLE_STATIC_ASSERT_AT(55, sizeof(CAIStateGroup_StealStealableItem) == 0x3c);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CAIStateGroup_StealStealableItem, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CAIStateGroup_StealStealableItem, PStealableItem) == 0x14);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CAIStateGroup_StealStealableItem, PEscapePoint) == 0x1c);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CAIStateGroup_StealStealableItem, PPreviouslyCarriedItem) == 0x24);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CAIStateGroup_StealStealableItem, ActionPointIndex) == 0x2c);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CAIStateGroup_StealStealableItem, GotActionPoint) == 0x30);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CAIStateGroup_StealStealableItem, ReachedDestination) == 0x31);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CAIStateGroup_StealStealableItem, PickUpActionID) == 0x34);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CAIStateGroup_StealStealableItem, NeedsCleanup) == 0x38);
 #endif // retail branch
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_STEALSTEALABLEITEM_H

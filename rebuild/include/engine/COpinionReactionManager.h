@@ -48,6 +48,12 @@ public:
     // `lea ecx,[eax+714h]` itself, 0x009609CA). No layout change.
     const CThing* PeekThingOpinionSource() const { return PThingOpinionSource.Get(); }
 #endif
+#ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_HEROSTATS
+    // Opt-in (chunk 4006, rows 0x005D1F0C / 0x005CE0E6): Ego_r.pdb / FableWin.pdb
+    // ?GetHeroStatsInOpinionFormat@COpinionReactionManager@@QBEMW4EOpinion@@@Z, out of line at 0x007009D0 (landed). The includer
+    // declares `enum EOpinion` (no shared header carries its enumerators yet). Declaration only.
+    float GetHeroStatsInOpinionFormat(EOpinion opinion) const;           // 0x007009D0
+#endif
 private:
     CDefPointer<const COpinionReactionManagerDef> PDef;                  // +0x000
     CWorld* World;                                                       // +0x004
@@ -68,5 +74,5 @@ private:
     std::list<CIntelligentPointer<const CThing> > OpinionSourcesList;    // +0x71c
     CIntelligentPointer<const CThingAICreature> DebugCreature;           // +0x720
 };
-FABLE_STATIC_ASSERT(sizeof(COpinionReactionManager) == 0x728);
+FABLE_STATIC_ASSERT_AT(71, sizeof(COpinionReactionManager) == 0x728);
 #endif

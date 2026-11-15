@@ -17,13 +17,17 @@ virtual CChunkedFileSuperChunk* GetAsSuperChunk();
 void RegisterSubChunkType(const CCountedPointer<CChunkedFileChunk>&);   // 0x00AA87E0 (FableWin QAE; chunk 725b)
 CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char*);
 const CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char*) const;
+#ifdef FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK_FINDNEXTSUBCHUNKOFTYPE
+// Opt-in (wfA3, row 0x00ACDB80 COptimisedPrimitive ctor): retail 0x00AA8190 (reloc_bindings; Ego_r name), the CLTH loop's call 0x00ACE4AF.
+CCountedPointer<CChunkedFileChunk> FindNextSubChunkOfType(const CCountedPointer<const CChunkedFileChunk>&);
+#endif
 virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
 virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
 virtual CChunkedFileChunk* CreateNewInstance() const=0;
 protected:
 virtual CChunkedFileChunk* InitNewInstance(CChunkedFileChunk*) const;
 private:unsigned char SubChunks[12],RegisteredSubChunkTypes[12];unsigned long CurrentChunkIndex;};
-FABLE_STATIC_ASSERT(sizeof(CChunkedFileSuperChunk)==0x2c);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CChunkedFileSuperChunk)==0x2c);
 #endif
 #else
 #ifndef FABLE_ENGINE_CCHUNKEDFILESUPERCHUNK_H
@@ -50,11 +54,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CChunkedFileSuperChunk) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CChunkedFileSuperChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CChunkedFileSuperChunk, SubChunks) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CChunkedFileSuperChunk, RegisteredSubChunkTypes) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CChunkedFileSuperChunk, CurrentChunkIndex) == 0x28);
+FABLE_STATIC_ASSERT_AT(53, sizeof(CChunkedFileSuperChunk) == 0x2c);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CChunkedFileSuperChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CChunkedFileSuperChunk, SubChunks) == 0x10);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CChunkedFileSuperChunk, RegisteredSubChunkTypes) == 0x1c);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CChunkedFileSuperChunk, CurrentChunkIndex) == 0x28);
 
 #endif // FABLE_ENGINE_CCHUNKEDFILESUPERCHUNK_H
 

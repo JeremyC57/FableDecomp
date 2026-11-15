@@ -53,7 +53,13 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, ForceOpenBuilding
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_MinionReactToCrime {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -67,13 +73,13 @@ struct CAIStateGroup_MinionReactToCrime {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionReactToCrime) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, OpinionDeedHandle) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, GuardTold) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, AllowDuplicateReactToCrime) == 0x19);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, DeedMaskApplied) == 0x1a);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, ForceOpenBuilding) == 0x1b);
+FABLE_STATIC_ASSERT_AT(70, sizeof(CAIStateGroup_MinionReactToCrime) == 0x24);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CAIStateGroup_MinionReactToCrime, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CAIStateGroup_MinionReactToCrime, OpinionDeedHandle) == 0x14);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CAIStateGroup_MinionReactToCrime, GuardTold) == 0x18);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CAIStateGroup_MinionReactToCrime, AllowDuplicateReactToCrime) == 0x19);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CAIStateGroup_MinionReactToCrime, DeedMaskApplied) == 0x1a);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CAIStateGroup_MinionReactToCrime, ForceOpenBuilding) == 0x1b);
 #endif
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONREACTTOCRIME_H

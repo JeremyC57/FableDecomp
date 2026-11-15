@@ -12,8 +12,13 @@ public:
     CEngineGraphic Graphic;                                              // +0x70
     ESwitchTriggerType TriggerType;                                      // +0x80
     unsigned long Properties;                                            // +0x84
+#ifdef FABLE_RETAIL_CTHINGMARKERDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CThingMarkerDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #ifdef FABLE_RETAIL_CTHINGBASEDEF
-FABLE_STATIC_ASSERT(sizeof(CThingMarkerDef)==0x88);
+FABLE_STATIC_ASSERT_AT(17, sizeof(CThingMarkerDef)==0x88);
 #endif
 #endif

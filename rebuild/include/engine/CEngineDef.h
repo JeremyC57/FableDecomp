@@ -8,7 +8,17 @@
 #include "rebuild_abi.h"
 #include "engine/CDefClassBase.h"
 class CEngineDef : public CDefClassBase {
-#ifdef FABLE_RETAIL_CENGINEDEF_FOV_2D
+#if defined(FABLE_RETAIL_CENGINEDEF_LODERRORTOLERANCE) && !defined(FABLE_RETAIL_CENGINEDEF_FOV_2D)
+    // Opt-in (wfE7, row 0x00B33B50): Ego_r.pdb CEngineDef::LODErrorTolerance / CharacterLODErrorTolerance (+0x40 / +0x44 there, retail
+    // +0x3C / +0x40: the -4 container shift as FOV_2D), read by the CEnginePrimitiveRenderer ctor (0x00B35CF2 / 0x00B35D02).
+private:
+    unsigned char _pad_0x25[0x3c - 0x25];
+public:
+    float LODErrorTolerance;                                             // +0x3c
+    float CharacterLODErrorTolerance;                                    // +0x40
+private:
+    unsigned char _pad_0x44[0x80 - 0x44];
+#elif defined(FABLE_RETAIL_CENGINEDEF_FOV_2D)
     // Opt-in (wf21, row 0x00B4AC10): Ego_r.pdb CEngineDef::FOV_2D (+0x60 there, retail +0x5c: the -4 container shift), read by the 2D renderer ctor.
 private:
     unsigned char _pad_0x25[0x37];                                       // +0x25 members not modelled yet
@@ -20,6 +30,11 @@ private:
 private:
     unsigned char _pad_0x25[0x5b];                                       // +0x25 members not modelled yet
 #endif
+#ifdef FABLE_RETAIL_CENGINEDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CEngineDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineDef) == 0x80);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CEngineDef) == 0x80);
 #endif // FABLE_ENGINE_CENGINEDEF_H

@@ -21,5 +21,10 @@ public:
     std::vector<long,std::allocator<long> > NumHits;                             // +0x78
     std::vector<float,std::allocator<float> > PerHitDamagerMultiplier;           // +0x84
     std::vector<CCharString,std::allocator<CCharString> > AttachmentPoint;       // +0x90
+#ifdef FABLE_RETAIL_CSPECIALABILITIESMULTISTRIKEDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CSpecialAbilitiesMultiStrikeDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #endif

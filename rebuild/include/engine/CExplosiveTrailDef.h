@@ -30,19 +30,24 @@ public:
     float         DegreesMaxTurnTowardsTargetPerTrap;        // +0x40
     float         FractionOfLifetimeToTurnTowardsTarget;     // +0x44
     float         SecondsIcicleAttackTargetPositionPredictionTime; // +0x48
+#ifdef FABLE_RETAIL_CEXPLOSIVETRAILDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CExplosiveTrailDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CExplosiveTrailDef) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CExplosiveTrailDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CExplosiveTrailDef, TrapDefIndex) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CExplosiveTrailDef, SecondsBetweenTraps) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CExplosiveTrailDef, DistanceBetweenTraps) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CExplosiveTrailDef, SecondsForTrapPersistance) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CExplosiveTrailDef, SecondsTrailLifetime) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CExplosiveTrailDef, DistanceForLateralDeviation) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CExplosiveTrailDef, DegreesMaxTurnTowardsTargetPerTrap) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CExplosiveTrailDef, FractionOfLifetimeToTurnTowardsTarget) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CExplosiveTrailDef, SecondsIcicleAttackTargetPositionPredictionTime) == 0x48);
+FABLE_STATIC_ASSERT_AT(36, sizeof(CExplosiveTrailDef) == 0x4c);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CExplosiveTrailDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CExplosiveTrailDef, TrapDefIndex) == 0x28);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CExplosiveTrailDef, SecondsBetweenTraps) == 0x2c);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CExplosiveTrailDef, DistanceBetweenTraps) == 0x30);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CExplosiveTrailDef, SecondsForTrapPersistance) == 0x34);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CExplosiveTrailDef, SecondsTrailLifetime) == 0x38);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CExplosiveTrailDef, DistanceForLateralDeviation) == 0x3c);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CExplosiveTrailDef, DegreesMaxTurnTowardsTargetPerTrap) == 0x40);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CExplosiveTrailDef, FractionOfLifetimeToTurnTowardsTarget) == 0x44);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CExplosiveTrailDef, SecondsIcicleAttackTargetPositionPredictionTime) == 0x48);
 
 #endif // FABLE_ENGINE_CEXPLOSIVETRAILDEF_H

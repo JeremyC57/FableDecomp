@@ -428,6 +428,11 @@ public:
     CInventoryDef& operator=(const CInventoryDef& other);     // 0x0045A159
 #endif
 #endif
+#ifdef FABLE_RETAIL_CINVENTORYDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CInventoryDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 FABLE_STATIC_ASSERT_AT(817, offsetof(CInventoryDef, InitialCategoryMovementRepeatDelay) == 0x3C);
 FABLE_STATIC_ASSERT_AT(818, offsetof(CInventoryDef, InitialInventoryClothingItems) == 0x5C);

@@ -15,7 +15,15 @@ class CTesselationData;
 enum LANDSCAPE_EDGE_STRIP_SIDE;                                          // MS forward enum
 class CLandscapeTesselatorBase {
 public:
+#ifdef FABLE_RETAIL_CLANDSCAPETESSELATORBASE_INLINE_CTOR
+    // Retail opt-in (wfE6, row 0x00B73760): Ego_r.pdb ??0CLandscapeTesselatorBase@@QAE@XZ is the implicit ctor, expanded in place by the
+    // CEngineWaterRenderer ctor (0x00B73A54: BridgeIndexBuffer zeros, the base vtable store dead); no out-of-line copy in retail.
+    // Retail opt-in (wfE7, row 0x00B69000): ??0CLandscapeTesselatorBase@@QAE@XZ inline in retail (the CEngineLandscapeRenderer ctor zeroes
+    // BridgeIndexBuffer at +0x670..+0x678 in place and leaves Data +0x67C unset; the base vtable store is dead under the derived one).
+    CLandscapeTesselatorBase() { }
+#else
     CLandscapeTesselatorBase();                                          // ??0CLandscapeTesselatorBase@@QAE@XZ
+#endif
     bool TesselatePatch(CTesselationData* data, CMovableResource* owner);   // ?TesselatePatch@CLandscapeTesselatorBase@@QAE_NPAVCTesselationData@@PAVCMovableResource@@@Z
 protected:
     void AddPoly(long a, long b, long c);                                // ?AddPoly@CLandscapeTesselatorBase@@IAEXJJJ@Z
@@ -34,6 +42,6 @@ public:
     CArray<unsigned short> BridgeIndexBuffer;                            // +0x04
     CTesselationData*      Data;                                         // +0x10
 };
-FABLE_STATIC_ASSERT(sizeof(CLandscapeTesselatorBase) == 0x14);
+FABLE_STATIC_ASSERT_AT(37, sizeof(CLandscapeTesselatorBase) == 0x14);
 
 #endif // FABLE_ENGINE_CLANDSCAPETESSELATORBASE_H

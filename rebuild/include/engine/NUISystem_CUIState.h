@@ -10,7 +10,12 @@ class CUIStateDef;
 class CUIState {
 public:
     CUIState();
+#ifndef FABLE_RETAIL_CUISTATE_IMPLICIT_COPY
     CUIState(const CUIState&);
+#endif
+    // FABLE_RETAIL_CUISTATE_IMPLICIT_COPY (agent4008, row 0x0060EEB0 ConstructPCMapList): the copy constructor is the implicit
+    // member-wise one. Retail copies the state into the pair<const unsigned long, CUIState> member by member with no call
+    // (0x00611349..0x0061140C: StateChangeFlag, StateChangeType, Position, Zoom, the four Colour bytes, UpdateTime, LinearChange).
     CUIState(const CUIStateDef&);
     bool operator==(const CUIState&) const;
     unsigned long StateChangeFlag; // +00
@@ -21,6 +26,6 @@ public:
     float UpdateTime; // +1c
     bool LinearChange; // +20
 };
-FABLE_STATIC_ASSERT(sizeof(CUIState)==0x24);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CUIState)==0x24);
 }
 #endif

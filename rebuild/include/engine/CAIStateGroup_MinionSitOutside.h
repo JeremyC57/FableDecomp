@@ -9,7 +9,13 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_MinionSitOutside {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -30,8 +36,8 @@ struct CAIStateGroup_MinionSitOutside {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionSitOutside) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionSitOutside, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionSitOutside, FrameToStopSitting) == 0x40);
+FABLE_STATIC_ASSERT_AT(33, sizeof(CAIStateGroup_MinionSitOutside) == 0x44);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_MinionSitOutside, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CAIStateGroup_MinionSitOutside, FrameToStopSitting) == 0x40);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONSITOUTSIDE_H

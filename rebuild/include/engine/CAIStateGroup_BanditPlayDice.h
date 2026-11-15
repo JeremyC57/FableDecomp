@@ -44,7 +44,13 @@ class CTCDiceGame;
 class CTCExclusiveUse;
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_BanditPlayDice {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -59,13 +65,13 @@ struct CAIStateGroup_BanditPlayDice {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BanditPlayDice) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, DiceGamePosition) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, DiceGame) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, FrameToInitiate) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, FrameToJoin) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, WasCarryingWeapon) == 0x24);
+FABLE_STATIC_ASSERT_AT(62, sizeof(CAIStateGroup_BanditPlayDice) == 0x28);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CAIStateGroup_BanditPlayDice, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CAIStateGroup_BanditPlayDice, DiceGamePosition) == 0x14);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CAIStateGroup_BanditPlayDice, DiceGame) == 0x18);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CAIStateGroup_BanditPlayDice, FrameToInitiate) == 0x1c);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CAIStateGroup_BanditPlayDice, FrameToJoin) == 0x20);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CAIStateGroup_BanditPlayDice, WasCarryingWeapon) == 0x24);
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_BANDITPLAYDICE
 #endif // FABLE_ENGINE_CAISTATEGROUP_BANDITPLAYDICE_H

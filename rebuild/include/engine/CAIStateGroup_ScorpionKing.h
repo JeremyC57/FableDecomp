@@ -52,7 +52,13 @@ protected:
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_ScorpionKing {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -69,15 +75,15 @@ struct CAIStateGroup_ScorpionKing {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_ScorpionKing) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ScorpionKing, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ScorpionKing, PArenaCentre) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ScorpionKing, TrapThings) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ScorpionKing, bIsRangeAttack) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ScorpionKing, ChargeCount) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ScorpionKing, PEnemy) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ScorpionKing, EnemyKnockDownFrame) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ScorpionKing, HealthAtLastTailStrike) == 0x3c);
+FABLE_STATIC_ASSERT_AT(72, sizeof(CAIStateGroup_ScorpionKing) == 0x40);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CAIStateGroup_ScorpionKing, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CAIStateGroup_ScorpionKing, PArenaCentre) == 0x14);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CAIStateGroup_ScorpionKing, TrapThings) == 0x1c);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CAIStateGroup_ScorpionKing, bIsRangeAttack) == 0x28);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CAIStateGroup_ScorpionKing, ChargeCount) == 0x2c);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CAIStateGroup_ScorpionKing, PEnemy) == 0x30);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CAIStateGroup_ScorpionKing, EnemyKnockDownFrame) == 0x38);
+FABLE_STATIC_ASSERT_AT(80, offsetof(CAIStateGroup_ScorpionKing, HealthAtLastTailStrike) == 0x3c);
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_SCORPIONKING
 #endif // FABLE_ENGINE_CAISTATEGROUP_SCORPIONKING_H

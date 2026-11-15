@@ -29,6 +29,11 @@ public:
     float TwinkleMin;                                                    // +0x6C
     float TwinkleMax;                                                    // +0x70
     std::vector<CLensFlareElementDef> FlareElements;                     // +0x74
+#ifdef FABLE_RETAIL_CSKYDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CSkyDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #endif
 #endif

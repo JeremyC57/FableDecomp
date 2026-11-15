@@ -35,24 +35,29 @@ public:
     long          IcicleAssaultWarningFXIndex;               // +0x54
     long          IcicleAssaultTrapIndex;                    // +0x58
     float         IceTrailDistanceLimit;                     // +0x5c
+#ifdef FABLE_RETAIL_CSNOWTROLLDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CSnowTrollDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSnowTrollDef) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, IcicleAttackIndex) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, SecondsIcicleAttackTargetPositionPredictionTime) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, DistancePoundGroundRange) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, SecondsForIcicleAssault) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, SecondsLeadIntoIcicles) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, SecondsBetweenIcicles) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, SecondsBetweenWarningFXAndTrigger) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, SecondsForTrapToRemain) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, DistanceRange) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, DistanceAroundTarget) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, DistanceExclusionAroundIcicles) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, IcicleAssaultWarningFXIndex) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, IcicleAssaultTrapIndex) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, IceTrailDistanceLimit) == 0x5c);
+FABLE_STATIC_ASSERT_AT(41, sizeof(CSnowTrollDef) == 0x60);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CSnowTrollDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CSnowTrollDef, IcicleAttackIndex) == 0x28);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CSnowTrollDef, SecondsIcicleAttackTargetPositionPredictionTime) == 0x2c);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CSnowTrollDef, DistancePoundGroundRange) == 0x30);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CSnowTrollDef, SecondsForIcicleAssault) == 0x34);
+FABLE_STATIC_ASSERT_AT(47, offsetof(CSnowTrollDef, SecondsLeadIntoIcicles) == 0x38);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CSnowTrollDef, SecondsBetweenIcicles) == 0x3c);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CSnowTrollDef, SecondsBetweenWarningFXAndTrigger) == 0x40);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CSnowTrollDef, SecondsForTrapToRemain) == 0x44);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CSnowTrollDef, DistanceRange) == 0x48);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CSnowTrollDef, DistanceAroundTarget) == 0x4c);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CSnowTrollDef, DistanceExclusionAroundIcicles) == 0x50);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CSnowTrollDef, IcicleAssaultWarningFXIndex) == 0x54);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CSnowTrollDef, IcicleAssaultTrapIndex) == 0x58);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CSnowTrollDef, IceTrailDistanceLimit) == 0x5c);
 
 #endif // FABLE_ENGINE_CSNOWTROLLDEF_H

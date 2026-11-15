@@ -22,6 +22,12 @@ class CAction;
 class CUIDef;
 class CUIState;
 class CDeletion;
+#ifdef FABLE_RETAIL_NUISYSTEM_CCOMPONENT_MEMBERS
+}
+#include "stlport/fable_map.h"
+#include "engine/NUISystem_CDeletion.h"
+namespace NUISystem {
+#endif
 // Layout: original public polymorphic base, native primary size4.
 class CUIInterface {
 public:
@@ -63,6 +69,11 @@ public:
 };
 // Layout: complete native0x134. PDB fields checked against ctor005334a0;
 // real bases at+0,+4,+18. Unused composites retain their original storage.
+// Retail opt-in (chunk 862, row 0x00531EC0 NUISystem::CComponent::Update): FABLE_RETAIL_NUISYSTEM_CCOMPONENT_MEMBERS types two of
+// the opaque members the row walks: Deletion (+0xd4, NUISystem::CDeletion {Method, list<CComponent*> AssociatedParents}, Ego_r.pdb
+// member type; Update reads (*it)->Deletion.Method at [ecx+0xd4]) and PositionChildren (+0x11c, STLport set<CComponent*>: Update
+// iterates it from the header's _M_left with the expanded _M_increment, retail 0x00531EFC / 0x0053219B). Same sizes as the
+// opaque arrays (8 / 12), so the default path and every landed includer are unchanged. Needs FABLE_RETAIL_STLP_SET for begin()/end().
 class CComponent : public CUIInterface, public CObserver, public CActionParam {
 public:
     CComponent(long);
@@ -230,7 +241,11 @@ protected:
     std::vector<CCountedPointer<NUISystem::CComponent>,std::allocator<CCountedPointer<NUISystem::CComponent> > > ChildrenToDelete; // +bc
     NUISystem::CComponent * PParent; // +c8
     C2DVector Size; // +cc
+#ifdef FABLE_RETAIL_NUISYSTEM_CCOMPONENT_MEMBERS
+    NUISystem::CDeletion Deletion; // +d4
+#else
     unsigned char Deletion[8]; // NUISystem::CDeletion +d4
+#endif
     NUISystem::CComponent * PParentViewport; // +dc
     unsigned char ActionsIAmParamOf[4]; // std::list<CCountedPointer<NUISystem::CAction>,std::allocator<CCountedPointer<NUISystem::CAction> > > +e0
     std::vector<unsigned long,std::allocator<unsigned long> > ShapeChildren; // +e4
@@ -240,7 +255,11 @@ protected:
     C2DVector RelativeRenderZoom; // +108
     C2DVector RelativeParentZoom; // +110
     NUISystem::CComponent * PPositionParent; // +118
+#ifdef FABLE_RETAIL_NUISYSTEM_CCOMPONENT_MEMBERS
+    std::set<NUISystem::CComponent *> PositionChildren; // +11c
+#else
     unsigned char PositionChildren[12]; // std::set<NUISystem::CComponent *,std::less<NUISystem::CComponent *>,std::allocator<NUISystem::CComponent *> > +11c
+#endif
     std::list<CCountedPointer<NUISystem::CAction>,std::allocator<CCountedPointer<NUISystem::CAction> > > * PActionsOnDestruction; // +128
     unsigned char Flags; // +12c
     unsigned char Type; // +12d
@@ -248,9 +267,9 @@ protected:
     char Layer; // +12f
     long DefIndex; // +130
 };
-FABLE_STATIC_ASSERT(sizeof(CUIInterface)==4);
-FABLE_STATIC_ASSERT(sizeof(CObserver)==20);
-FABLE_STATIC_ASSERT(sizeof(CActionParam)==8);
-FABLE_STATIC_ASSERT(sizeof(CComponent)==0x134);
+FABLE_STATIC_ASSERT_AT(251, sizeof(CUIInterface)==4);
+FABLE_STATIC_ASSERT_AT(252, sizeof(CObserver)==20);
+FABLE_STATIC_ASSERT_AT(253, sizeof(CActionParam)==8);
+FABLE_STATIC_ASSERT_AT(254, sizeof(CComponent)==0x134);
 }
 #endif

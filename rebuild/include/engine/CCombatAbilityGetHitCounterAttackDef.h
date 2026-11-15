@@ -2,5 +2,11 @@
 #define FABLE_ENGINE_CCOMBATABILITYGETHITCOUNTERATTACKDEF_H
 // Original PDB type and retail layout evidence: Codex pass 11 row 0x007355F0 NAMING_EVIDENCE.md.
 #include "engine/CCombatAbilityAttackBase.h"
+#ifdef FABLE_RETAIL_CCOMBATABILITYGETHITCOUNTERATTACKDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CCombatAbilityGetHitCounterAttackDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+class CCombatAbilityGetHitCounterAttackDef:public CCombatAbilityAttackBase {public: static class CDefClassBase* FABLE_FASTCALL Alloc();};
+#else
 class CCombatAbilityGetHitCounterAttackDef:public CCombatAbilityAttackBase {};
+#endif
 #endif

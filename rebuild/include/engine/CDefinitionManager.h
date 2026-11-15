@@ -37,6 +37,11 @@ public:
     // out of line in retail at 0x009B0AC0 (landed); called 111 times by RegisterTCs on CGameDefinitionManager::Get(). Declaration only.
     void AddDefClass(const class CDefClassInit& init);                 // 0x009B0AC0
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_COMPILE
+    // Retail opt-in (wfE11, row 0x0044C72B CGameDefinitionManager::InitAndCompile): Ego_r.pdb / FableWin.pdb
+    // ?Compile@CDefinitionManager@@QAEXXZ, out of line in retail at 0x009B08C0 (landed). Declaration only, no layout change.
+    void Compile();                                                     // 0x009B08C0
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_COMPILEDDEFDIR
     // agentFAM09 opt-in (row 0x01224050, its dynamic initializer): Ego_r.pdb / FableWin.pdb `dynamic initializer for
     // 'CDefinitionManager::CompiledDefDirectory'' (default CWideString at 0x013CA7DC; the static setter
@@ -124,7 +129,14 @@ protected:
     void LoadDef(unsigned long index) const;                             // 0x009AD6E0
 #endif
     unsigned char PDefTypeDebugInfoMap[4];
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_PATHLISTS
+    // Retail opt-in (wfE11, row 0x0044C72B CGameDefinitionManager::InitAndCompile): Ego_r.pdb CDefinitionManager SymbolPathList /
+    // CompilePathList are std::vector<CWideString> (retail 12-byte STLport vectors +0x40 / +0x4C); InitAndCompile assigns them with
+    // vector<CWideString>::operator= 0x00433DF0 (ecx = this+0x40 / this+0x4C). Include fable_string.h and stlport/fable_containers.h first.
+    std::vector<CWideString> SymbolPathList,CompilePathList;
+#else
     unsigned char SymbolPathList[12],CompilePathList[12];
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF
     CCountedPointer<CSymbolMap> PSymbolMap,PDefinitionSymbolMap;
 #else
@@ -143,7 +155,7 @@ protected:
     unsigned char _pad_0xc1[3];
     unsigned char RecompiledDefs[12];
 };
-FABLE_STATIC_ASSERT(sizeof(CDefinitionManager)==0xd0);
+FABLE_STATIC_ASSERT_AT(146, sizeof(CDefinitionManager)==0xd0);
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATESUBDEF
 // ?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z (Ego_r.pdb / FableWin.pdb): make sure the
 // def is loaded, then hand out a counted copy of its record's handle (retail 0x009ADBE5..0x009ADBFF inside InstantiateSubDef).
@@ -333,27 +345,27 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CDefinitionManager) == 0xd0);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, m_classArray) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PDefTypeDebugInfoMap) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, SymbolPathList) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CompilePathList) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PSymbolMap_Data) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PSymbolMap_Info) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PDefinitionSymbolMap_Data) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PDefinitionSymbolMap_Info) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, NameCRCToIndexMap) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, DefClassInfo) == 0x78);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CompressedDefData) == 0x88);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CompressedOffsets) == 0x94);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, InstantiatedDefs) == 0xa4);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, ErrorCallback) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CurrentFilename_PStringData) == 0xb4);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CompiledFileName_PStringData) == 0xb8);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, DependencyCheckCRC) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, UseSafeBinaryFormat) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, RecompiledDefs) == 0xc4);
+FABLE_STATIC_ASSERT_AT(336, sizeof(CDefinitionManager) == 0xd0);
+FABLE_STATIC_ASSERT_AT(337, offsetof(CDefinitionManager, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(338, offsetof(CDefinitionManager, m_classArray) == 0x18);
+FABLE_STATIC_ASSERT_AT(339, offsetof(CDefinitionManager, PDefTypeDebugInfoMap) == 0x3c);
+FABLE_STATIC_ASSERT_AT(340, offsetof(CDefinitionManager, SymbolPathList) == 0x40);
+FABLE_STATIC_ASSERT_AT(341, offsetof(CDefinitionManager, CompilePathList) == 0x4c);
+FABLE_STATIC_ASSERT_AT(342, offsetof(CDefinitionManager, PSymbolMap_Data) == 0x58);
+FABLE_STATIC_ASSERT_AT(343, offsetof(CDefinitionManager, PSymbolMap_Info) == 0x5c);
+FABLE_STATIC_ASSERT_AT(344, offsetof(CDefinitionManager, PDefinitionSymbolMap_Data) == 0x60);
+FABLE_STATIC_ASSERT_AT(345, offsetof(CDefinitionManager, PDefinitionSymbolMap_Info) == 0x64);
+FABLE_STATIC_ASSERT_AT(346, offsetof(CDefinitionManager, NameCRCToIndexMap) == 0x68);
+FABLE_STATIC_ASSERT_AT(347, offsetof(CDefinitionManager, DefClassInfo) == 0x78);
+FABLE_STATIC_ASSERT_AT(348, offsetof(CDefinitionManager, CompressedDefData) == 0x88);
+FABLE_STATIC_ASSERT_AT(349, offsetof(CDefinitionManager, CompressedOffsets) == 0x94);
+FABLE_STATIC_ASSERT_AT(350, offsetof(CDefinitionManager, InstantiatedDefs) == 0xa4);
+FABLE_STATIC_ASSERT_AT(351, offsetof(CDefinitionManager, ErrorCallback) == 0xb0);
+FABLE_STATIC_ASSERT_AT(352, offsetof(CDefinitionManager, CurrentFilename_PStringData) == 0xb4);
+FABLE_STATIC_ASSERT_AT(353, offsetof(CDefinitionManager, CompiledFileName_PStringData) == 0xb8);
+FABLE_STATIC_ASSERT_AT(354, offsetof(CDefinitionManager, DependencyCheckCRC) == 0xbc);
+FABLE_STATIC_ASSERT_AT(355, offsetof(CDefinitionManager, UseSafeBinaryFormat) == 0xc0);
+FABLE_STATIC_ASSERT_AT(356, offsetof(CDefinitionManager, RecompiledDefs) == 0xc4);
 
 #endif // FABLE_RETAIL_CDEFINITIONMANAGER
 #endif // FABLE_ENGINE_CDEFINITIONMANAGER_H

@@ -37,7 +37,12 @@ public:
     // Retail opt-in (wf1, row 0x00A114B0 CPhysicsMeshObject::SetPositionMatrix): FableWin.pdb ?SetIdentity@CMatrix3x4@@QAEXXZ (inline in
     // retail, no out-of-line copy): the nine zeros as one chained assignment (retail stores them last to first, E43..E12,
     // 0x00A114F8..0x00A11512), then the diagonal (E33, E22, E11, 0x00A1151A..0x00A11520). Body only: no layout change.
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETIDENTITY_SEPARATE
+    // Opt-in (row 0x00B8B780): FableWin.pdb ?SetIdentity@CMatrix3x4@@QAEXXZ debug size 106 (43 instructions) = twelve separate stores.
+    FABLE_FORCEINLINE void SetIdentity() { E43=0.0f; E42=0.0f; E41=0.0f; E32=0.0f; E31=0.0f; E23=0.0f; E21=0.0f; E13=0.0f; E12=0.0f; E33=1.0f; E22=1.0f; E11=1.0f; }
+#else
     FABLE_FORCEINLINE void SetIdentity() { E12=E13=E21=E23=E31=E32=E41=E42=E43=0.0f; E11=E22=E33=1.0f; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETSCALE
     // Retail opt-in (chunk 2030, row 0x00BE9920 the CEngineWaterSettings constructor): FableWin.pdb ?SetScale@CMatrix3x4@@QAEXM@Z (debug
@@ -68,6 +73,10 @@ public:
     void SetTranslateOnly(const C3DVector& translation) { SetTranslateOnly(translation.X,translation.Y,translation.Z); }
 #else
     void SetTranslateOnly(const C3DVector& translation) { E41=translation.X; E42=translation.Y; E43=translation.Z; }
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATEONLY_FLOATS
+    // FableWin.pdb ?SetTranslateOnly@CMatrix3x4@@QAEXMMM@Z (0x02D78EA0, in the shadow-renderer TU's COMDAT cluster; fwsize SAME 16i/40b).
+    void SetTranslateOnly(float x, float y, float z) { E41=x; E42=y; E43=z; }
+#endif
 #endif
 #endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY
@@ -247,7 +256,17 @@ public:
     // __forceinline (owner 2026-11-01 helper rule): retail expands it in place in both PreparePrimitives rows and Fable.exe has no
     // out-of-line ?TransformPoint@CMatrix3x4@@QBEXAAVC3DVector@@@Z (the catalog has none; only the debug PDBs carry a copy); with
     // plain inline VC7.1 calls it out of line twice in 0x00B19C60 (landing 2026-11-03h probe).
-#if defined(FABLE_RETAIL_CPARTICLE_SPRITE) || defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_LTR)
+#if defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_GROUPED_XZY)
+    // Nested opt-in (wfA6, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB; FITTED grouping): the x87 arm's centre transform
+    // 0x00ADE6xx sums the X row as (x*E11 + z*E31) + y*E21 + E41 and the Y / Z rows with x last; this grouping is the one that
+    // reproduces it (flat sums are reordered by VC7.1 whatever their source order). Body only: default path unchanged.
+    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+        const float xx=point.X,yy=point.Y,zz=point.Z;
+        point.X=(xx*E11+zz*E31)+yy*E21+E41;
+        point.Y=xx*E12+(yy*E22+zz*E32)+E42;
+        point.Z=xx*E13+(yy*E23+zz*E33)+E43;
+    }
+#elif defined(FABLE_RETAIL_CPARTICLE_SPRITE) || defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_LTR)
     // Donor024543E0: original non-incremental left-associated coordinate sums.
     // FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_LTR (chunk 3001, row 0x00A12EE0): the same plain left-to-right rows E1k*x + E2k*y + E3k*z + E4k.
     FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
@@ -279,6 +298,19 @@ public:
         point.X=E11*xx+(E21*yy+E31*zz)+E41;
         point.Y=E12*xx+E22*yy+E32*zz+E42;
         point.Z=E13*xx+E23*yy+E33*zz+E43;
+    }
+#elif defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_XZY)
+    // Nested opt-in (row 0x00B4D370 CEngineShadowRenderer::UpdateShadowSpace): X as the default parenthesised expression, Y and Z as
+    // single left-to-right sums in x, z, y order. Retail expands it on the five frustum corners in place (0x00B4D654.., every row one
+    // expression: `X*E11 , Z*E31 , Y*E21`, `E12*X , Z*E32 , Y*E22`, `E23*Y , E13*X , Z*E33`) and on the 26 grid points (0x00B4DB00..,
+    // X row `E31*z , E21*y , E11*x`); the accumulating default stores the frustum rows term by term. Body only: default path unchanged.
+    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+        const float xx=point.X;
+        const float yy=point.Y;
+        const float zz=point.Z;
+        point.X=E11*xx+(E21*yy+E31*zz)+E41;
+        point.Y=E12*xx+E32*zz+E22*yy+E42;
+        point.Z=E13*xx+E33*zz+E23*yy+E43;
     }
 #elif defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_ZYX_SUMS)
     // Nested opt-in (wf3, row 0x00A89740 C3DMesh2::GetHelperPointPositionAnimated): all three rows as plain left-to-right sums in
@@ -329,6 +361,14 @@ public:
         const float xx=v.X;
         const float yy=v.Y;
         const float zz=v.Z;
+#if defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_GROUPED_XZY)
+        // Nested opt-in (wfA6, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB; FITTED grouping): the four half-extent transforms
+        // 0x00ADE25x..0x00ADE36x sum X as (x*E11 + z*E31) + y*E21 and Y / Z with x last (`fld st(2) ; fmul [eax+4] ; faddp`,
+        // `fxch ; fmul [eax+8] ; faddp`). Body only: the default and the other opt-ins are unchanged.
+        v.X=(xx*E11+zz*E31)+yy*E21;
+        v.Y=xx*E12+(yy*E22+zz*E32);
+        v.Z=xx*E13+(yy*E23+zz*E33);
+#else
 #ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_GROUPED_X
         // Nested opt-in (chunk 2014 / 3010, row 0x00A4E300 C3DAnimation2::GetDeltaMovement): the X row grouped like TransformPoint's
         // (`E11*x+(E21*y+E31*z)`): GetDeltaMovement 0x00A4E8A5..0x00A4E8BC adds zz*E31 + yy*E21 first and xx*E11 last (the ungrouped
@@ -339,6 +379,7 @@ public:
 #endif
         v.Y=xx*E12+yy*E22+zz*E32;
         v.Z=xx*E13+yy*E23+zz*E33;
+#endif
     }
 #endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMPLANE
@@ -414,6 +455,49 @@ public:
         destination.Z+=E43;
     }
 #endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_BILLBOARD
+    // Opt-in (row 0x00B8B780 CEngineBillboardGenerator::RenderBillboard): FableWin.pdb ?SetTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z,
+    // ?SetMultiplyNoTranslation@CMatrix3x4@@QAEXABV1@0@Z and ?GetTranslation@CMatrix3x4@@QBE?AVC3DVector@@XZ, inline (no retail copy).
+    FABLE_FORCEINLINE void SetTranslate(const C3DVector& t) {
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATE_FULL
+        E11=1.0f; E12=0.0f; E13=0.0f; E21=0.0f; E22=1.0f; E23=0.0f; E31=0.0f; E32=0.0f; E33=1.0f;
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATE_IDENTITY
+        // Nested opt-in (agentC22, row 0x00B8B780): FableWin.pdb ?SetTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z is 21 /Od instructions /
+        // 56 bytes = a SetIdentity() call plus the three translation stores (?SetTranslate@CMatrix3x4@@QAEXMMM@Z 18i/48b = the same call
+        // plus three stores of the arguments; ?SetTranslateOnly@CMatrix3x4@@QAEXMMM@Z, the stores alone, 16i/40b).
+        SetIdentity();
+#endif
+        E41=t.X; E42=t.Y; E43=t.Z;
+    }
+    FABLE_FORCEINLINE void SetMultiplyNoTranslation(const CMatrix3x4& a, const CMatrix3x4& b) {
+        E11 = a.E11 * b.E11 + a.E12 * b.E21 + a.E13 * b.E31;
+        E12 = a.E11 * b.E12 + a.E12 * b.E22 + a.E13 * b.E32;
+        E13 = a.E11 * b.E13 + a.E12 * b.E23 + a.E13 * b.E33;
+        E21 = a.E21 * b.E11 + a.E22 * b.E21 + a.E23 * b.E31;
+        E22 = a.E21 * b.E12 + a.E22 * b.E22 + a.E23 * b.E32;
+        E23 = a.E21 * b.E13 + a.E22 * b.E23 + a.E23 * b.E33;
+        E31 = a.E31 * b.E11 + a.E32 * b.E21 + a.E33 * b.E31;
+        E32 = a.E31 * b.E12 + a.E32 * b.E22 + a.E33 * b.E32;
+        E33 = a.E31 * b.E13 + a.E32 * b.E23 + a.E33 * b.E33;
+        E41 = a.E41 * b.E11 + a.E42 * b.E21 + a.E43 * b.E31;
+        E42 = a.E41 * b.E12 + a.E42 * b.E22 + a.E43 * b.E32;
+        E43 = a.E41 * b.E13 + a.E42 * b.E23 + a.E43 * b.E33;
+    }
+#ifdef FABLE_RETAIL_CMATRIX3X4_GETTRANSLATION_NAMED
+    C3DVector GetTranslation() const { C3DVector translation(E41, E42, E43); return translation; }
+#else
+    C3DVector GetTranslation() const { return C3DVector(E41, E42, E43); }
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_POSTSCALE3
+    // FableWin.pdb ?PostScale@CMatrix3x4@@QAEXMMM@Z (inline, debug size 191 = the one-float PostScale): column k scaled by its factor.
+    FABLE_FORCEINLINE void PostScale(float x, float y, float z) {
+        E11*=x; E21*=x; E31*=x; E41*=x;
+        E12*=y; E22*=y; E32*=y; E42*=y;
+        E13*=z; E23*=z; E33*=z; E43*=z;
+    }
+#endif
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY
     // Retail opt-in (chunk 794, row 0x007DE710 CTCWallMount::AttachObject): FableWin.pdb ?PostMultiply@CMatrix3x4@@QAEXABV1@@Z (this =
     // this * matrix; the landed out-of-line copy 0x00C1CF20 gives the k-order sums) and
@@ -446,5 +530,51 @@ public:
         return scale;
     }
 #endif
+#if defined(FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT) && !defined(FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY)
+    // Retail opt-in (agentC42, rows 0x00772BB0 CTCShop::AddSaleItem / 0x007DE710 CTCWallMount::AttachObject): FableWin.pdb
+    // ?SetInverseOfUniformScaleRotationTranslation@CMatrix3x4@@QAEMABV1@@Z alone (the same text as the FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY
+    // block's, for a TU whose PostMultiply goes through SetMultiply: FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_POSTMULTIPLY). No retail
+    // out-of-line copy; expanded at 0x00772E9C.
+    FABLE_FORCEINLINE float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
+        float scale = 1.0f / (m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13);
+        E11 = m.E11 * scale; E21 = m.E12 * scale; E31 = m.E13 * scale;
+        E12 = m.E21 * scale; E22 = m.E22 * scale; E32 = m.E23 * scale;
+        E13 = m.E31 * scale; E23 = m.E32 * scale; E33 = m.E33 * scale;
+        E41 = -(E11 * m.E41 + E21 * m.E42 + E31 * m.E43);
+        E42 = -(E12 * m.E41 + E22 * m.E42 + E32 * m.E43);
+        E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
+        return scale;
+    }
+#endif
+#if defined(FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT_SCALE_SQUARED) && !defined(FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT) && !defined(FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY)
+    // Retail opt-in (wfB6, rows 0x00772BB0 CTCShop::AddSaleItem / 0x007DE710 CTCWallMount::AttachObject, both matched): FableWin.pdb
+    // ?SetInverseOfUniformScaleRotationTranslation@CMatrix3x4@@QAEMABV1@@Z with the sum of squares in a named local (use INSTEAD of
+    // FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT; same code, one more c2 symbol record). Evidence: retail 0x00772F45 `fld scale ;
+    // fmul [dummyRH.Up.X]` needs the record of `scale` to be created after the one of the first named local of this body (measured
+    // with the c2 operand-sort log, NOTES.md of wfB6); FableWin's debug copy is 123 instructions / 345 bytes against 121 / 339 for the
+    // one-statement text (agentC43's model: a named sum of squares is 122 / 343). Local names are descriptive. No out-of-line copy
+    // in retail; expanded at 0x00772E9C and 0x007DEA4x.
+    FABLE_FORCEINLINE float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
+        float scale_squared = m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13;
+        float scale = 1.0f / scale_squared;
+        E11 = m.E11 * scale; E21 = m.E12 * scale; E31 = m.E13 * scale;
+        E12 = m.E21 * scale; E22 = m.E22 * scale; E32 = m.E23 * scale;
+        E13 = m.E31 * scale; E23 = m.E32 * scale; E33 = m.E33 * scale;
+        E41 = -(E11 * m.E41 + E21 * m.E42 + E31 * m.E43);
+        E42 = -(E12 * m.E41 + E22 * m.E42 + E32 * m.E43);
+        E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
+        return scale;
+    }
+#endif
 };
+#ifdef FABLE_RETAIL_CMATRIX3X4_SET_RHSET_INLINE
+// Retail opt-in (chunk 850 text re-applied by agentC42, row 0x00772BB0 CTCShop::AddSaleItem): the body of
+// ?Set@CMatrix3x4@@QAEXABVCRightHandedSet@@ABVC3DVector@@@Z (out of line at 0x007767A0 in the CTCShop TU: GetRight, Forward, Up, then
+// the translation), which AddSaleItem expands three times. Force-inline: with plain inline VC7.1 calls it out of line there (2161 v 2585 bytes).
+#include "engine/CRightHandedSet.h"
+FABLE_FORCEINLINE void CMatrix3x4::Set(const CRightHandedSet& orientation,const C3DVector& translation)
+{
+    Set(orientation.GetRight(), orientation.GetForward(), orientation.GetUp(), translation);
+}
+#endif
 #endif

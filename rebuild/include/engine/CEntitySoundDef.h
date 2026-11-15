@@ -18,5 +18,10 @@ public:
     CCharString SoundIdentifier;                                         // +0x48
     float VoicePitchOverride;                                            // +0x4C
     long AnimCriteriaClipDistance;                                       // +0x50
+#ifdef FABLE_RETAIL_CENTITYSOUNDDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CEntitySoundDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #endif

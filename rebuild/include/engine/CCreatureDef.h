@@ -85,8 +85,13 @@ public:
     bool Short,FlashOnHit,PickPocketable,ChildThatCanRegionFollow;
     bool AllowedInProtectedTowns,UseActualHitPosForHitEffects;
     unsigned char _pad_0xce[0x1a];
+#ifdef FABLE_RETAIL_CCREATUREDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CCreatureDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureDef)==0xe8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureDef,FlashOnHit)==0xc9);
+FABLE_STATIC_ASSERT_AT(89, sizeof(CCreatureDef)==0xe8);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CCreatureDef,FlashOnHit)==0xc9);
 
 #endif

@@ -133,6 +133,12 @@ public:
     void Clear() { X=Y=Z=0.0f; }
 #endif
     C3DVector() {}
+#ifdef FABLE_RETAIL_C3DVECTOR_CTOR_FORCEINLINE
+    // Per-TU opt-in (row 0x00CBFB7D RunCutsceneMacro; hand885 text): ??0C3DVector@@QAE@MMM@Z has no out-of-line copy in Fable.exe
+    // (rebuild/oracles/reloc_bindings.tsv) or in the Ego_r.pdb name set, and retail expands it at all 30 sites of that 74 KB
+    // function, where the plain inline body is called out of line once the function's inline budget is spent.
+    FABLE_FORCEINLINE
+#endif
     C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
     #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
@@ -144,14 +150,29 @@ public:
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
     C3DVector(const C3DVector& p){X=p.X;Y=p.Y;Z=p.Z;}
 #else
+#ifdef FABLE_RETAIL_C3DVECTOR_CTOR_FORCEINLINE
+    // (same opt-in) ??0C3DVector@@QAE@ABV0@@Z: no out-of-line copy in Fable.exe or Ego_r.pdb either; retail copies by value in place.
+    FABLE_FORCEINLINE
+#endif
     C3DVector(const C3DVector& other):X(other.X),Y(other.Y),Z(other.Z){}
 #endif
 #endif
     FABLE_VECTOR_INLINE void Initialise(float x,float y,float z){X=x;Y=y;Z=z;}
+#if defined(FABLE_RETAIL_C3DVECTOR_INITIALISE_SUB)
+    // Retail opt-in (agentC17; rows 0x00BA5260 RenderMeshPrimitive, 0x00BB30A0 / 0x00BB3E80 cloth): a default-constructed named result
+    // filled through Initialise. FableWin.pdb ??GC3DVector@@QBE?BV0@ABV0@@Z debug copy 34i; this text gives 34i at /Od (the named-ctor
+    // form 32i, `return C3DVector(...)` 28i). Replaces the overlay-only FABLE_RETAIL_C3DVECTOR_NAMED_RESULT_SUB (no debug-build evidence).
+    FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{C3DVector result;result.Initialise(X-other.X,Y-other.Y,Z-other.Z);return result;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NAMED_RESULT_SUB)
+    // Retail opt-in (chunk 2060, row 0x00BA5260 RenderMeshPrimitive; agentC2 row 0x00BB3E80): the named-result text (as C2DVector's
+    // FableWin operators). FableWin.pdb ??GC3DVector@@QBE?BV0@ABV0@@Z debug copy is 34i/90b; `return C3DVector(...)` is 28i/70b at /Od.
+    FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{C3DVector result(X-other.X,Y-other.Y,Z-other.Z);return result;}
+#else
 #ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector((X-other.X),(Y-other.Y),Z-other.Z);}
 #else
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector(X-other.X,Y-other.Y,Z-other.Z);}
+#endif
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR_ADD_XY_GROUP
     // Original addition signature and scalar components, donor018C0B60.
@@ -180,7 +201,13 @@ public:
 #ifdef FABLE_RETAIL_C3DVECTOR_GETSCALED
     // Retail opt-in (wf3, row 0x00A89740 C3DMesh2::GetHelperPointPositionAnimated): FableWin.pdb ?GetScaled@C3DVector@@QBE?BV1@ABV1@@Z
     // (componentwise product; no out-of-line copy in retail, expanded at 0x00A8981C: `fld this.k ; fmul scale.k` per axis).
+#ifdef FABLE_RETAIL_C3DVECTOR_GETSCALED_NAMED_RESULT
+    // Nested opt-in (wfA5, rows 0x00AA0FA0 / 0x00AA2110): the FableWin.pdb ?GetScaled@C3DVector@@QBE?BV1@ABV1@@Z text: a named result
+    // (FableWin debug 34i/90b = VC7.1 /Od of this body; the one-expression body is 28i/70b). Release bytes unchanged.
+    FABLE_VECTOR_INLINE const C3DVector GetScaled(const C3DVector& scale)const{C3DVector result(X*scale.X,Y*scale.Y,Z*scale.Z);return result;}
+#else
     FABLE_VECTOR_INLINE const C3DVector GetScaled(const C3DVector& scale)const{return C3DVector(X*scale.X,Y*scale.Y,Z*scale.Z);}
+#endif
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR
     // Chunk 734 (row 0x004A1CB0): FableWin.pdb ??GC3DVector@@QBE?BV0@XZ (unary minus; no out-of-line copy in retail).
@@ -278,6 +305,12 @@ public:
 #endif
 #endif
 #endif
+#ifdef FABLE_RETAIL_C3DVECTOR_SWAPYZ
+    // Retail opt-in (acctC wfA1, row 0x00C271F0): the libpk audio TUs convert engine (Y-up) vectors to CODA axes out of line --
+    // reloc binding ?SwapYZ@C3DVector@@QBE?AV1@XZ at 0x00C1C070 (landed C3DVector_SwapYZ_00c1c070), called by the landed 0x00C1C280 /
+    // 0x00C27550 and row 0x00C271F0 (call 0x00C2744C, hidden-pointer result). Declaration only.
+    C3DVector SwapYZ() const;                                            // 0x00C1C070
+#endif
 #if defined(FABLE_RETAIL_C3DVECTOR_LIBPK_OUTOFLINE)
     // Retail opt-in (chunk 1023, row 0x00C1C460, the libpk listener-space update): the audio library's TUs call the vector members
     // out of line -- FableWin.pdb ?Cross@C3DVector@@QBE?BV1@ABV1@@Z at 0x00C25860 (landed), the dot product 0x00C256A0 (landed
@@ -307,7 +340,15 @@ public:
     // Original FableWin01d99fb0 and both PDB signatures; named squared sum.
     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return (float)sqrt(magnitude);}
 #endif
-#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_XY_THEN_Z)
+#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQUARED_LOCAL)
+    // Retail opt-in (row 0x00B4D370): FableWin ?GetMagnitude@C3DVector@@QBEMXZ text (26i / 66b at /Od, fwsize SAME): the sum in a named
+    // local, then sqrtf (as the C2DVector FABLE_RETAIL_C2DVECTOR_MAGNITUDE_SQUARED_LOCAL opt-in).
+    FABLE_VECTOR_INLINE float GetMagnitude()const{float squared=X*X+Y*Y+Z*Z;return sqrtf(squared);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_NAMED_SQUARED)
+    // Retail opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): the named squared sum in X, Z, Y order (retail 0x00BA547A..
+    // 0x00BA548C squares X, then Z, then Y). FableWin.pdb ?GetMagnitude@C3DVector@@QBEMXZ is 26i/66b.
+    FABLE_VECTOR_INLINE float GetMagnitude()const{float squared=X*X+Z*Z+Y*Y;return (float)sqrt(squared);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_XY_THEN_Z)
     // Retail opt-in (chunk 2053, row 0x0087F3A0): a named squared sum, X/Y pair first. FableWin.pdb ?GetMagnitude@C3DVector@@QBEMXZ
     // debug copy 0x01B52910 is 26i/66b (same signature hash as GetAccurateMagnitude 0x01D99FB0); this text is 26i/66b at plain /Od
     // (fwsize SAME). The unparenthesised `X*X+Y*Y+Z*Z` (same /Od bytes) grades DIFFER in the row (md.py 710 equal). Body only.

@@ -16,6 +16,12 @@ class C2DExtentsI; class CPixelFormat; class CTexture; class CSurface;
 #endif
 class CGPUScratchBufferTextureManager {
 public:
+#ifdef FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_CTOR
+    // Retail opt-in (wfE7, row 0x00B3CB30): Ego_r.pdb / FableWin.pdb ??0CGPUScratchBufferTextureManager@@QAE@XZ (retail 0x00F37520) and
+    // ?AddScratchPool@CGPUScratchBufferTextureManager@@QAEJJ@Z (retail 0x00F370C0), called by the CEngineResourceManager ctor. Declarations only.
+    CGPUScratchBufferTextureManager();                                   // 0x00F37520
+    long AddScratchPool(long size);                                      // 0x00F370C0
+#endif
     bool BeginShutdown();                                    // 0x00F37170
 #ifdef FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_TEXTURES
     long AllocteMemoryPage(long size, bool is_render_target);                                            // 0x00F37660
@@ -33,5 +39,5 @@ public:
 private:
     unsigned char Unmodeled_0x00[0x44];
 };
-FABLE_STATIC_ASSERT(sizeof(CGPUScratchBufferTextureManager) == 0x44);
+FABLE_STATIC_ASSERT_AT(36, sizeof(CGPUScratchBufferTextureManager) == 0x44);
 #endif // FABLE_ENGINE_CGPUSCRATCHBUFFERTEXTUREMANAGER_H

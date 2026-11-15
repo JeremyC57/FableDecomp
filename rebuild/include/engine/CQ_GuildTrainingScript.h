@@ -176,4 +176,28 @@ private:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest) == 0x20);
 #endif
+#if defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_COMBATAPPRENTICE) && defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN)
+// Retail opt-in (wfD3, row 0x00D4A270): the combat apprentice entity script (needs FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN for the
+// nested declaration). Ego_r.pdb layout (struct_layouts_egor.tsv; entity offsets equal retail's): CCombatApprentice 36 bytes,
+// ParentClass +0x14, PMasterData +0x18, WaitingForFight +0x1c, BadHit +0x20; the landed Alloc 0x00D41A30 allocates 0x24 and the
+// landed Init 0x00D41AE0 stores WaitingForFight = true. Entity vtable 0x012CE094: 0 scalar deleting dtor 0x00D41AF0, 1 Main
+// 0x00D4A270, 2 Init 0x00D41AE0, 3 GetParentScript 0x00D41AD0, 4-6 the CEntityScriptBase defaults (dw dump); Main / Init private
+// (Ego_r.pdb / FableWin.pdb ?Main@CCombatApprentice@CQ_GuildTrainingScript@NScript@@EAEXXZ).
+namespace NScript {
+class CQ_GuildTrainingScript::CCombatApprentice : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_GuildTrainingScript&, CScriptDataBase*, const CScriptThing&); // 0x00D41A30
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D41AD0
+private:
+    virtual void Main();                                                 // 0x00D4A270
+    virtual void Init();                                                 // 0x00D41AE0
+protected:
+    CQ_GuildTrainingScript& ParentClass;                                 // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    bool WaitingForFight;                                                // +0x1c
+    long BadHit;                                                         // +0x20
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CCombatApprentice) == 0x24);
+#endif
 #endif

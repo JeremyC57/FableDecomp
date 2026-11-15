@@ -34,4 +34,10 @@ protected:
 };
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_GoToBed)==96);
 #endif
+#if defined(FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC) && !defined(FABLE_RETAIL_CAISTATEGROUP_GOTOBED)
+// Without the retail model: the class's static registry entry points only (no layout).
+#include "rebuild_abi.h"
+class CCharString; class CAIStateGroupBase;
+class CAIStateGroup_GoToBed { public: static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc(); };
+#endif
 #endif

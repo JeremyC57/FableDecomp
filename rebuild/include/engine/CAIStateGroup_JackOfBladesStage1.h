@@ -3,7 +3,13 @@
 #include "engine/CAIStateGroup_JackOfBladesBase.h"
 class C3DVector;
 // Original complete Ego_r type, native base size4c and remaining original members.
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 class CAIStateGroup_JackOfBladesStage1:public CAIStateGroup_JackOfBladesBase {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+public: static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc(); private:
+#endif
 #ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
 public:virtual void Update();
 protected:
@@ -27,5 +33,5 @@ protected:
  CIntelligentPointer<CThing> PObstruction,PShieldThing;
  bool GetRushToPosForLunge(C3DVector& rush_to_pos);
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_JackOfBladesStage1)==0x64);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CAIStateGroup_JackOfBladesStage1)==0x64);
 #endif

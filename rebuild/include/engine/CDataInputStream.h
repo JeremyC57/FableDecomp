@@ -89,6 +89,11 @@ public:
 #endif
     bool IsEOF() const { return StreamPos == GetLength(); }
 #endif
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_COPYTO
+    // Opt-in (wfA6, row 0x00AE3C30 CParticleProgram::ReadFromFile): Ego_r.pdb ?CopyTo@CDataInputStream@@QAEXAAVCDataOutputStream@@K@Z,
+    // out of line in retail (0x009964E0; the reader passes its Constraints memory stream and the byte count just read). Decl only.
+    void CopyTo(class CDataOutputStream& out, unsigned long length);  // 0x009964E0
+#endif
     virtual void ReadCompressed(void*,long);
     virtual void ReadZlibCompressed(void*,long);
     virtual CCharString ReadNullTerminatedString();
@@ -118,7 +123,7 @@ private:
     unsigned long SourceChunkStreamPos;
     long SourceChunkBytesRemaining;
 };
-FABLE_STATIC_ASSERT(sizeof(CDataInputStream)==0x18);
+FABLE_STATIC_ASSERT_AT(121, sizeof(CDataInputStream)==0x18);
 #endif
 #else
 #ifndef FABLE_ENGINE_CDATAINPUTSTREAM_H
@@ -148,13 +153,13 @@ private:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CDataInputStream) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CDataInputStream, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CDataInputStream, StreamPos) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CDataInputStream, StreamSize) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CDataInputStream, CurrentSourcePtr) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CDataInputStream, SourceChunkStreamPos) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CDataInputStream, SourceChunkBytesRemaining) == 0x14);
+FABLE_STATIC_ASSERT_AT(151, sizeof(CDataInputStream) == 0x18);
+FABLE_STATIC_ASSERT_AT(152, offsetof(CDataInputStream, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(153, offsetof(CDataInputStream, StreamPos) == 0x4);
+FABLE_STATIC_ASSERT_AT(154, offsetof(CDataInputStream, StreamSize) == 0x8);
+FABLE_STATIC_ASSERT_AT(155, offsetof(CDataInputStream, CurrentSourcePtr) == 0xc);
+FABLE_STATIC_ASSERT_AT(156, offsetof(CDataInputStream, SourceChunkStreamPos) == 0x10);
+FABLE_STATIC_ASSERT_AT(157, offsetof(CDataInputStream, SourceChunkBytesRemaining) == 0x14);
 
 #endif // FABLE_ENGINE_CDATAINPUTSTREAM_H
 

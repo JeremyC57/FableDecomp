@@ -7,11 +7,17 @@
 #include "rebuild_abi.h"
 #include "engine/C3DVector.h"
 #include "engine/CAIStateGroupBase.h"
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 class CAIStateGroup_OnHeroPush : public CAIStateGroupBase {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+public: static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc(); private:
+#endif
 public:
     virtual void Update();                                               // 0x0092B900
 private:
     C3DVector PushDir;                                                   // +0x14
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_OnHeroPush) == 0x20);
+FABLE_STATIC_ASSERT_AT(16, sizeof(CAIStateGroup_OnHeroPush) == 0x20);
 #endif

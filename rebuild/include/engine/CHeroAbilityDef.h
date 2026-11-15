@@ -22,6 +22,11 @@ class CHeroAbilityDef : public CParentDefClassBase { public:
     float MoralityCostFactor;
     bool Aggressive;
     unsigned int DummyObject[1]; // Opaque CDefIndex member, preserved at+0x98.
+#ifdef FABLE_RETAIL_CHEROABILITYDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CHeroAbilityDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CHeroAbilityDef)==0x9c);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CHeroAbilityDef)==0x9c);
 #endif

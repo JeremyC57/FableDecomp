@@ -158,6 +158,10 @@ private:
     bool UploadToTexture(CGraphicFrame&,CManagedTexture&,CBankFileAsyncData&,unsigned long,bool) const;
 #endif
     bool InternalGetFrameForcedLoading(unsigned long) const; // native009ff6b0
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETINDEX
+    // agentC27 (row 0x009FDE80): FableWin.pdb ?GetIndex@CGraphicInfoFrame@@ABEKXZ (private, inline: the graphic's bank index). No layout change.
+    unsigned long GetIndex() const;
+#endif
     unsigned short FrameNum;
     signed char SmallMipmapLevel;
     mutable CIVCountedPointer<CFrameData> Data;
@@ -215,8 +219,8 @@ private:
     unsigned long TouchedFrame;
     const CGraphicInfoFrame* GraphicInfoFrame;
 };
-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame)==0x10);
-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame::CFrameData)==0x44);
+FABLE_STATIC_ASSERT_AT(218, sizeof(CGraphicInfoFrame)==0x10);
+FABLE_STATIC_ASSERT_AT(219, sizeof(CGraphicInfoFrame::CFrameData)==0x44);
 
 #else
 // New header (chunk 767, row 0x009FD4D0 CGraphicInfoFrame::CFrameData::ResetDebugMemoryInUse). Retail RTTI .?AVCGraphicInfoFrame@@ :
@@ -253,7 +257,7 @@ private:
     unsigned long      TouchedFrame;                         // +0x3c
     CGraphicInfoFrame* GraphicInfoFrame;                     // +0x40
 };
-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame) == 0x10);
-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame::CFrameData) == 0x44);
+FABLE_STATIC_ASSERT_AT(256, sizeof(CGraphicInfoFrame) == 0x10);
+FABLE_STATIC_ASSERT_AT(257, sizeof(CGraphicInfoFrame::CFrameData) == 0x44);
 #endif
 #endif // FABLE_ENGINE_CGRAPHICINFOFRAME_H

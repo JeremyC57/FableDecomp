@@ -60,7 +60,14 @@ struct CLandscapeTheme {                                                 // Ego_
 class CEngineLandscapeRenderer : public CEngineComponent {
 public:
     struct CLandscapeSettings {                                          // Ego_r.pdb, 0x4c bytes
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_CTOR
+        // Retail opt-in (wfE7, row 0x00B69000): FableWin.pdb ??0CLandscapeSettings@CEngineLandscapeRenderer@@QAE@XZ (/Od 14 instructions:
+        // prologue / epilogue + the two C4DVector member ctors = an empty body; no Ego_r.pdb or Fable.exe copy: inline, the renderer ctor
+        // sets every field in its own body, 0x00B6926A..0x00B692F9).
+        CLandscapeSettings() { }
+#else
         CLandscapeSettings();                                            // ??0CLandscapeSettings@CEngineLandscapeRenderer@@QAE@XZ
+#endif
         float         MeshDetailLevel;                                   // +0x00
         float         ProceduralTextureDetail;                           // +0x04
         bool          DrawForeground;                                    // +0x08
@@ -100,7 +107,13 @@ public:
     };
     class CFastForegroundTextureLoadInfo {                               // Ego_r.pdb; retail 0x24 (three 12-byte CArrays)
     public:
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_CTOR
+        // (same opt-in) FableWin.pdb ??0CFastForegroundTextureLoadInfo@CEngineLandscapeRenderer@@QAE@XZ, inline in retail (the three CArrays
+        // zeroed in place, 0x00B69232..0x00B69262): the default member ctors only.
+        CFastForegroundTextureLoadInfo() { }
+#else
         CFastForegroundTextureLoadInfo();                                // ??0CFastForegroundTextureLoadInfo@CEngineLandscapeRenderer@@QAE@XZ
+#endif
         CArray<unsigned long> TexturesUsedThisFrame;                     // +0x00
         CArray<float>         TextureIDToMinPatchDistanceSquared;        // +0x0c
         CArray<unsigned char> CurrentTextureLODLevels;                   // +0x18
@@ -114,6 +127,14 @@ public:
     // Settings.ForegroundFadeStart, 0x00BEA696 / 0x00BEA69F `fld [eax+62Ch]` / `[eax+638h]` = BackgroundFadeTransform X / W), with the two
     // fade transforms typed C4DVector (Ego_r.pdb CLandscapeSettings). Same size.
     const CLandscapeSettings& GetSettings() { return Settings; }
+#endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_CTOR
+    // (same opt-in) Ego_r.pdb / FableWin.pdb ?CalcForegroundFadeFactors@CEngineLandscapeRenderer@@QAEXXZ (0x00B671E0, landed) and the private
+    // ?BuildThemes@CEngineLandscapeRenderer@@AAEXXZ (0x00B687D0, landed), called by the ctor. Declarations only.
+    void CalcForegroundFadeFactors();                                    // 0x00B671E0
+private:
+    void BuildThemes();                                                  // 0x00B687D0
+public:
 #endif
 #ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_BLENDTABLES
     // Retail opt-in (chunk 1023, row 0x00B67270): Ego_r.pdb ?BuildBlendingTables@CEngineLandscapeRenderer@@AAEXXZ (private; the
@@ -185,17 +206,17 @@ public:
     CFastForegroundTextureLoadInfo FastForegroundTextureLoadInfo;        // +0x68c
     CEngineLandscapeMemoryManager* MemoryManager;                        // +0x6b0
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineLandscapeRenderer) == 0x6b4);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MeshBuilder) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, LODZBandsZ) == 0x498);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, BackgroundVertexShader) == 0x4c4);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundShadowedVertexShaders) == 0x544);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBasePatchIndexBuffer) == 0x5a8);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBlendTables) == 0x5bc);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, Settings) == 0x608);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, Tesselator) == 0x66c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, FastForegroundTextureLoadInfo) == 0x68c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MemoryManager) == 0x6b0);
+FABLE_STATIC_ASSERT_AT(188, sizeof(CEngineLandscapeRenderer) == 0x6b4);
+FABLE_STATIC_ASSERT_AT(189, offsetof(CEngineLandscapeRenderer, MeshBuilder) == 0x10);
+FABLE_STATIC_ASSERT_AT(190, offsetof(CEngineLandscapeRenderer, LODZBandsZ) == 0x498);
+FABLE_STATIC_ASSERT_AT(191, offsetof(CEngineLandscapeRenderer, BackgroundVertexShader) == 0x4c4);
+FABLE_STATIC_ASSERT_AT(192, offsetof(CEngineLandscapeRenderer, ForegroundShadowedVertexShaders) == 0x544);
+FABLE_STATIC_ASSERT_AT(193, offsetof(CEngineLandscapeRenderer, ForegroundBasePatchIndexBuffer) == 0x5a8);
+FABLE_STATIC_ASSERT_AT(194, offsetof(CEngineLandscapeRenderer, ForegroundBlendTables) == 0x5bc);
+FABLE_STATIC_ASSERT_AT(195, offsetof(CEngineLandscapeRenderer, Settings) == 0x608);
+FABLE_STATIC_ASSERT_AT(196, offsetof(CEngineLandscapeRenderer, Tesselator) == 0x66c);
+FABLE_STATIC_ASSERT_AT(197, offsetof(CEngineLandscapeRenderer, FastForegroundTextureLoadInfo) == 0x68c);
+FABLE_STATIC_ASSERT_AT(198, offsetof(CEngineLandscapeRenderer, MemoryManager) == 0x6b0);
 #else // flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngineLandscapeRenderer = 0xf5c.
@@ -262,50 +283,50 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CEngineLandscapeRenderer) == 0x6b4);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, GPUUpdateQueue) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MeshBuilder) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, LODZBandsZ) == 0x498);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, LandscapeThemes) == 0x4b8);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, BackgroundVertexShader) == 0x4c4);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, BackgroundAlphaVertexShader) == 0x4cc);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBlackoutVertexShader) == 0x4d4);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundVertexShaders) == 0x4dc);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundSpotLightVertexShaders) == 0x4e8);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundDepthBufferShadowedVertexShaders) == 0x4f4);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBumpDepthBufferShadowedVertexShaders) == 0x500);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundSpotDepthBufferShadowedVertexShaders) == 0x50c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ProcTextureVertexShader) == 0x518);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundColourBufferShadowedVertexShaders) == 0x520);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBumpColourBufferShadowedVertexShaders) == 0x52c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundSpotColourBufferShadowedVertexShaders) == 0x538);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundShadowedVertexShaders) == 0x544);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBumpShadowedVertexShaders) == 0x548);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundSpotShadowedVertexShaders) == 0x54c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ShadowProjectionVertexShader) == 0x550);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ShadowRenderVertexShader) == 0x558);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, BackgroundPixelShader) == 0x560);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundPixelShader) == 0x568);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBlackoutPixelShader) == 0x570);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundDepthBufferShadowedPixelShader) == 0x578);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBumpDepthBufferShadowedPixelShader) == 0x580);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundColourBufferShadowedPixelShader) == 0x588);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBumpColourBufferShadowedPixelShader) == 0x590);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ProcTexturePixelShader) == 0x598);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundShadowedPixelShader) == 0x5a0);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBumpShadowedPixelShader) == 0x5a4);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBasePatchIndexBuffer) == 0x5a8);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBlendTables) == 0x5bc);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, SortedSubPatchList) == 0x5e4);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, BackgroundLoadingOcclusionTests) == 0x5f0);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, FreeBackgroundLoadingOcclusionHandles) == 0x5fc);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, Settings) == 0x608);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, TesselationOverflowIndexBuffer) == 0x654);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, TesselationOverflowVertexBuffer) == 0x660);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, Tesselator) == 0x66c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, FastForegroundTextureLoadInfo) == 0x68c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MemoryManager) == 0x6b0);
+FABLE_STATIC_ASSERT_AT(265, sizeof(CEngineLandscapeRenderer) == 0x6b4);
+FABLE_STATIC_ASSERT_AT(266, offsetof(CEngineLandscapeRenderer, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(267, offsetof(CEngineLandscapeRenderer, GPUUpdateQueue) == 0xc);
+FABLE_STATIC_ASSERT_AT(268, offsetof(CEngineLandscapeRenderer, MeshBuilder) == 0x14);
+FABLE_STATIC_ASSERT_AT(269, offsetof(CEngineLandscapeRenderer, LODZBandsZ) == 0x498);
+FABLE_STATIC_ASSERT_AT(270, offsetof(CEngineLandscapeRenderer, LandscapeThemes) == 0x4b8);
+FABLE_STATIC_ASSERT_AT(271, offsetof(CEngineLandscapeRenderer, BackgroundVertexShader) == 0x4c4);
+FABLE_STATIC_ASSERT_AT(272, offsetof(CEngineLandscapeRenderer, BackgroundAlphaVertexShader) == 0x4cc);
+FABLE_STATIC_ASSERT_AT(273, offsetof(CEngineLandscapeRenderer, ForegroundBlackoutVertexShader) == 0x4d4);
+FABLE_STATIC_ASSERT_AT(274, offsetof(CEngineLandscapeRenderer, ForegroundVertexShaders) == 0x4dc);
+FABLE_STATIC_ASSERT_AT(275, offsetof(CEngineLandscapeRenderer, ForegroundSpotLightVertexShaders) == 0x4e8);
+FABLE_STATIC_ASSERT_AT(276, offsetof(CEngineLandscapeRenderer, ForegroundDepthBufferShadowedVertexShaders) == 0x4f4);
+FABLE_STATIC_ASSERT_AT(277, offsetof(CEngineLandscapeRenderer, ForegroundBumpDepthBufferShadowedVertexShaders) == 0x500);
+FABLE_STATIC_ASSERT_AT(278, offsetof(CEngineLandscapeRenderer, ForegroundSpotDepthBufferShadowedVertexShaders) == 0x50c);
+FABLE_STATIC_ASSERT_AT(279, offsetof(CEngineLandscapeRenderer, ProcTextureVertexShader) == 0x518);
+FABLE_STATIC_ASSERT_AT(280, offsetof(CEngineLandscapeRenderer, ForegroundColourBufferShadowedVertexShaders) == 0x520);
+FABLE_STATIC_ASSERT_AT(281, offsetof(CEngineLandscapeRenderer, ForegroundBumpColourBufferShadowedVertexShaders) == 0x52c);
+FABLE_STATIC_ASSERT_AT(282, offsetof(CEngineLandscapeRenderer, ForegroundSpotColourBufferShadowedVertexShaders) == 0x538);
+FABLE_STATIC_ASSERT_AT(283, offsetof(CEngineLandscapeRenderer, ForegroundShadowedVertexShaders) == 0x544);
+FABLE_STATIC_ASSERT_AT(284, offsetof(CEngineLandscapeRenderer, ForegroundBumpShadowedVertexShaders) == 0x548);
+FABLE_STATIC_ASSERT_AT(285, offsetof(CEngineLandscapeRenderer, ForegroundSpotShadowedVertexShaders) == 0x54c);
+FABLE_STATIC_ASSERT_AT(286, offsetof(CEngineLandscapeRenderer, ShadowProjectionVertexShader) == 0x550);
+FABLE_STATIC_ASSERT_AT(287, offsetof(CEngineLandscapeRenderer, ShadowRenderVertexShader) == 0x558);
+FABLE_STATIC_ASSERT_AT(288, offsetof(CEngineLandscapeRenderer, BackgroundPixelShader) == 0x560);
+FABLE_STATIC_ASSERT_AT(289, offsetof(CEngineLandscapeRenderer, ForegroundPixelShader) == 0x568);
+FABLE_STATIC_ASSERT_AT(290, offsetof(CEngineLandscapeRenderer, ForegroundBlackoutPixelShader) == 0x570);
+FABLE_STATIC_ASSERT_AT(291, offsetof(CEngineLandscapeRenderer, ForegroundDepthBufferShadowedPixelShader) == 0x578);
+FABLE_STATIC_ASSERT_AT(292, offsetof(CEngineLandscapeRenderer, ForegroundBumpDepthBufferShadowedPixelShader) == 0x580);
+FABLE_STATIC_ASSERT_AT(293, offsetof(CEngineLandscapeRenderer, ForegroundColourBufferShadowedPixelShader) == 0x588);
+FABLE_STATIC_ASSERT_AT(294, offsetof(CEngineLandscapeRenderer, ForegroundBumpColourBufferShadowedPixelShader) == 0x590);
+FABLE_STATIC_ASSERT_AT(295, offsetof(CEngineLandscapeRenderer, ProcTexturePixelShader) == 0x598);
+FABLE_STATIC_ASSERT_AT(296, offsetof(CEngineLandscapeRenderer, ForegroundShadowedPixelShader) == 0x5a0);
+FABLE_STATIC_ASSERT_AT(297, offsetof(CEngineLandscapeRenderer, ForegroundBumpShadowedPixelShader) == 0x5a4);
+FABLE_STATIC_ASSERT_AT(298, offsetof(CEngineLandscapeRenderer, ForegroundBasePatchIndexBuffer) == 0x5a8);
+FABLE_STATIC_ASSERT_AT(299, offsetof(CEngineLandscapeRenderer, ForegroundBlendTables) == 0x5bc);
+FABLE_STATIC_ASSERT_AT(300, offsetof(CEngineLandscapeRenderer, SortedSubPatchList) == 0x5e4);
+FABLE_STATIC_ASSERT_AT(301, offsetof(CEngineLandscapeRenderer, BackgroundLoadingOcclusionTests) == 0x5f0);
+FABLE_STATIC_ASSERT_AT(302, offsetof(CEngineLandscapeRenderer, FreeBackgroundLoadingOcclusionHandles) == 0x5fc);
+FABLE_STATIC_ASSERT_AT(303, offsetof(CEngineLandscapeRenderer, Settings) == 0x608);
+FABLE_STATIC_ASSERT_AT(304, offsetof(CEngineLandscapeRenderer, TesselationOverflowIndexBuffer) == 0x654);
+FABLE_STATIC_ASSERT_AT(305, offsetof(CEngineLandscapeRenderer, TesselationOverflowVertexBuffer) == 0x660);
+FABLE_STATIC_ASSERT_AT(306, offsetof(CEngineLandscapeRenderer, Tesselator) == 0x66c);
+FABLE_STATIC_ASSERT_AT(307, offsetof(CEngineLandscapeRenderer, FastForegroundTextureLoadInfo) == 0x68c);
+FABLE_STATIC_ASSERT_AT(308, offsetof(CEngineLandscapeRenderer, MemoryManager) == 0x6b0);
 #endif // FABLE_RETAIL_CENGINELANDSCAPERENDERER
 
 #endif // FABLE_ENGINE_CENGINELANDSCAPERENDERER_H

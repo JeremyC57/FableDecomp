@@ -24,7 +24,13 @@ protected:
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeTutorialBattleTeleport) == 0x30);
 #else
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_MazeTutorialBattleTeleport {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -40,12 +46,12 @@ struct CAIStateGroup_MazeTutorialBattleTeleport {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeTutorialBattleTeleport) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeTutorialBattleTeleport, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeTutorialBattleTeleport, FrameOfLastTeleport) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeTutorialBattleTeleport, LastTeleportPos_X) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeTutorialBattleTeleport, LastTeleportPos_Y) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeTutorialBattleTeleport, LastTeleportPos_Z) == 0x2c);
+FABLE_STATIC_ASSERT_AT(43, sizeof(CAIStateGroup_MazeTutorialBattleTeleport) == 0x30);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CAIStateGroup_MazeTutorialBattleTeleport, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CAIStateGroup_MazeTutorialBattleTeleport, FrameOfLastTeleport) == 0x20);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CAIStateGroup_MazeTutorialBattleTeleport, LastTeleportPos_X) == 0x24);
+FABLE_STATIC_ASSERT_AT(47, offsetof(CAIStateGroup_MazeTutorialBattleTeleport, LastTeleportPos_Y) == 0x28);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CAIStateGroup_MazeTutorialBattleTeleport, LastTeleportPos_Z) == 0x2c);
 
 #endif // opt-in
 #endif // FABLE_ENGINE_CAISTATEGROUP_MAZETUTORIALBATTLETELEPORT_H

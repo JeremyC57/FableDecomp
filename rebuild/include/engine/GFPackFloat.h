@@ -23,6 +23,12 @@ FABLE_FORCEINLINE float __fastcall GFRoundFloatNear(float value, long places)
         scale *= 10.0f;
 #ifdef FABLE_RETAIL_GFROUNDFLOATNEAR_GROUP_PRODUCT
     return GFFloatToLongNear((value * scale)) / scale;
+#elif defined(FABLE_RETAIL_GFROUNDFLOATNEAR_GROUP_QUOTIENT)
+    // Opt-in (chunk 4006 / acctC agentC1, rows 0x005D1F0C / 0x005CE0E6 CTCInventoryStats::ConstructPersonalityListPC /
+    // ConstructPersonalityList): the return expression grouped as a whole. Same bytes for the helper and each expansion; the
+    // no-code PAREN tuple after the divide moves the scheduler's 81-tuple region cuts of the long caller to retail's (row 1: the
+    // MONEY-title bank load 0x005D52F9 / 0x005D5A40; the default body gives 5611 / 5617 instructions, GROUP_PRODUCT 5616 / 5617).
+    return (GFFloatToLongNear(value * scale) / scale);
 #else
     return GFFloatToLongNear(value * scale) / scale;
 #endif

@@ -5,6 +5,12 @@
 #include "engine/CVertexShader.h"
 #include "engine/CCountedPointer.h"
 class C3DMesh2;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_OCCLUSIONTEST
+class CEngineInternalPrimitiveOcclusionBase;
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_PREPAREOCCLUSIONTEST
+class CEngineInternalPrimitiveOcclusionBase;
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_SILHOUETTE
 class CEngineInternalPrimitiveOcclusionBase;
 class CRGBColour;
@@ -17,6 +23,20 @@ public:
 public:
     CEnginePrimitiveManagerOcclusionBase(const CEnginePrimitiveManagerOcclusionBase&);
     CEnginePrimitiveManagerOcclusionBase(CArray<CEngineScene *>&);
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_OCCLUSIONTEST
+    // Opt-in (chunk 4010 scout, row 0x00BD3070): Ego_r.pdb / FableWin.pdb protected
+    // ?PrepareOcclusionTest@CEnginePrimitiveManagerOcclusionBase@@IAEXAAVCEngineInternalPrimitiveOcclusionBase@@W4ERenderPassType@@AAK@Z
+    // (retail 0x00B905A0, manifest label; call 0x00BD54A9 pushes &test_id, pass, primitive; the row then tests test_id != -1). Declaration.
+protected:
+    void PrepareOcclusionTest(CEngineInternalPrimitiveOcclusionBase& primitive, ERenderPassType pass, unsigned long& test_id);   // 0x00B905A0
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_PREPAREOCCLUSIONTEST
+protected:
+    // Opt-in (chunk 2060, row 0x00BA5260): Ego_r.pdb / FableWin.pdb
+    // ?PrepareOcclusionTest@CEnginePrimitiveManagerOcclusionBase@@IAEXAAVCEngineInternalPrimitiveOcclusionBase@@W4ERenderPassType@@AAK@Z
+    // (protected; retail 0x00B905A0, manifest label agrees). Declaration only.
+    void PrepareOcclusionTest(CEngineInternalPrimitiveOcclusionBase& primitive, ERenderPassType pass, unsigned long& query);   // 0x00B905A0
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_RENDERUNTEXTURED
     // Retail opt-in (wf8, row 0x00B903D0): Ego_r.pdb / FableWin.pdb
     // ?RenderUntexturedStaticMeshPrimitive@CEnginePrimitiveManagerOcclusionBase@@AAEXPAVC3DPrimitive2@@ABVCMatrix3x4@@@Z (private).
@@ -37,6 +57,6 @@ private:
     CCountedPointer<const C3DMesh2> UnitBox;
     float SilhouetteTreshold;
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerOcclusionBase)==0x20);
+FABLE_STATIC_ASSERT_AT(40, sizeof(CEnginePrimitiveManagerOcclusionBase)==0x20);
 #endif
 #endif

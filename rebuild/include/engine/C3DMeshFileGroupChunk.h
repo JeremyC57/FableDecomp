@@ -18,11 +18,18 @@ public:
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
+#ifdef FABLE_RETAIL_C3DMESHFILEGROUPCHUNK_ACCESSORS
+    // Opt-in (wfA3, row 0x00ACDB80): Ego_r ?GetBoneIndex@C3DMeshFileGroupChunk@@QBEJXZ (0x00AB9F60), ?GetCount@...@@QBEKXZ
+    // (0x00ABA350), ?GetList@...@@QBEPBVC3DVertexBlend2@@XZ const form (0x00ABC370); retail calls 0x00ACE186 / 0x00ACE193 / 0x00ACE1A0.
+    long GetBoneIndex() const;
+    unsigned long GetCount() const;
+    const C3DVertexBlend2* GetList() const;
+#endif
 private:
     long BoneIndex;
     CArray<C3DVertexBlend2> VertexList;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileGroupChunk) == 0x3C);
+FABLE_STATIC_ASSERT_AT(25, sizeof(C3DMeshFileGroupChunk) == 0x3C);
 #endif // FABLE_ENGINE_C3DMESHFILEGROUPCHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILEGROUPCHUNK_H
@@ -50,10 +57,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileGroupChunk) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileGroupChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileGroupChunk, BoneIndex) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileGroupChunk, VertexList) == 0x30);
+FABLE_STATIC_ASSERT_AT(53, sizeof(C3DMeshFileGroupChunk) == 0x3c);
+FABLE_STATIC_ASSERT_AT(54, offsetof(C3DMeshFileGroupChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(55, offsetof(C3DMeshFileGroupChunk, BoneIndex) == 0x2c);
+FABLE_STATIC_ASSERT_AT(56, offsetof(C3DMeshFileGroupChunk, VertexList) == 0x30);
 
 #endif // FABLE_ENGINE_C3DMESHFILEGROUPCHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILEGROUPCHUNK

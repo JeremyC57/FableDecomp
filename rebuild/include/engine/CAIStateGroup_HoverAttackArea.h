@@ -9,7 +9,13 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_HoverAttackArea {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -23,10 +29,10 @@ struct CAIStateGroup_HoverAttackArea {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverAttackArea) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverAttackArea, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverAttackArea, StartPos_X) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverAttackArea, StartPos_Y) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverAttackArea, StartPos_Z) == 0x24);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CAIStateGroup_HoverAttackArea) == 0x28);
+FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_HoverAttackArea, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(28, offsetof(CAIStateGroup_HoverAttackArea, StartPos_X) == 0x1c);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_HoverAttackArea, StartPos_Y) == 0x20);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_HoverAttackArea, StartPos_Z) == 0x24);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_HOVERATTACKAREA_H

@@ -15,6 +15,39 @@
 #include "engine/CArray.h"
 class CEngineScene;
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_MEMBERS
+// Retail opt-in (wfE7, row 0x00B33B50 CEnginePrimitiveRenderer::CEnginePrimitiveRenderer): the own members typed with their Ego_r.pdb
+// names / types in Ego_r order at the retail offsets (STLport 12-byte CArray; the ctor zeroes +0x274..+0x340 in this order, the landed
+// dtor 0x00B33520 releases them in reverse) and the private ?AddPrimitiveManager@CEnginePrimitiveRenderer@@AAEXABV?$CCountedPointer@VCEnginePrimitiveManager@@@@@Z
+// (0x00B33AE0, landed). Takes precedence over _SCENELIST / _STATICMESHMANAGER (same offsets).
+#include "engine/CArray.h"
+#include "engine/CCountedPointer.h"
+class CEngineScene;
+class CEnginePrimitiveManager;
+class CEnginePrimitiveManagerStaticMeshes;
+class CEnginePrimitiveManagerAnimatedMeshes;
+class CEnginePrimitiveManagerRepeatedStaticMeshes;
+class CEnginePrimitiveManagerRepeatedZSprites;
+class CEnginePrimitiveManagerSprites;
+class CEnginePrimitiveManagerFlareSprites;
+class CEnginePrimitiveManagerWeaponTrails;
+class CEnginePrimitiveManagerSpriteTrails;
+class CEnginePrimitiveManagerLines;
+class CEnginePrimitiveManagerText;
+class CEnginePrimitiveManagerGameMeshes;
+class CEnginePrimitiveOcclusionGroupManager;
+class CEnginePrimitiveGroupManager;
+class CEnginePrimitiveChangerManager;
+class CEngineClothRenderer;
+class CEnginePrimitiveManagerParticleLineGroup;
+class CEnginePrimitiveManagerParticleMeshGroup;
+class CEnginePrimitiveManagerParticleSpriteGroup;
+class CEnginePrimitiveManagerParticleSpriteTrailGroup;
+class CEnginePrimitiveManagerParticleGroup;
+class CEnginePrimitiveManagerDecal;
+class CEnginePrimitiveManagerParticleDecalGroup;
+class CEnginePrimitiveManagerWeatherMask;
+#endif
 class CEngineInit;
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_STATICMESHMANAGER
 #include "engine/CCountedPointer.h"
@@ -35,7 +68,39 @@ public:
 #endif
     CEnginePrimitiveRenderer();                // 0x00B33B50 ??0CEnginePrimitiveRenderer@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
-#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SCENELIST
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_MEMBERS
+private:
+    void AddPrimitiveManager(const CCountedPointer<CEnginePrimitiveManager>& manager);   // 0x00B33AE0
+public:
+    CArray<CCountedPointer<CEnginePrimitiveManager> > PrimitiveManagers;   // +0x274
+    CCountedPointer<CEnginePrimitiveManagerStaticMeshes> StaticMeshManager; // +0x280
+    CCountedPointer<CEnginePrimitiveManagerAnimatedMeshes> AnimatedMeshManager; // +0x288
+    CCountedPointer<CEnginePrimitiveManagerRepeatedStaticMeshes> RepeatedStaticMeshManager; // +0x290
+    CCountedPointer<CEnginePrimitiveManagerRepeatedZSprites> RepeatedZSpriteManager; // +0x298
+    CCountedPointer<CEnginePrimitiveManagerSprites> SpriteManager; // +0x2a0
+    CCountedPointer<CEnginePrimitiveManagerFlareSprites> FlareSpriteManager; // +0x2a8
+    CCountedPointer<CEnginePrimitiveManagerWeaponTrails> WeaponTrailManager; // +0x2b0
+    CCountedPointer<CEnginePrimitiveManagerSpriteTrails> SpriteTrailManager; // +0x2b8
+    CCountedPointer<CEnginePrimitiveManagerLines> LineManager; // +0x2c0
+    CCountedPointer<CEnginePrimitiveManagerText> TextManager;  // +0x2c8
+    CCountedPointer<CEnginePrimitiveManagerGameMeshes> GameMeshManager; // +0x2d0
+    CCountedPointer<CEnginePrimitiveOcclusionGroupManager> OcclusionGroupManager; // +0x2d8
+    CCountedPointer<CEnginePrimitiveGroupManager> PrimitiveGroupManager; // +0x2e0
+    CCountedPointer<CEnginePrimitiveChangerManager> PrimitiveChangerManager; // +0x2e8
+    CCountedPointer<CEngineClothRenderer> ClothRenderer;       // +0x2f0
+    CCountedPointer<CEnginePrimitiveManagerParticleLineGroup> ParticleLineGroupManager; // +0x2f8
+    CCountedPointer<CEnginePrimitiveManagerParticleMeshGroup> ParticleMeshGroupManager; // +0x300
+    CCountedPointer<CEnginePrimitiveManagerParticleSpriteGroup> ParticleSpriteGroupManager; // +0x308
+    CCountedPointer<CEnginePrimitiveManagerParticleSpriteTrailGroup> ParticleSpriteTrailGroupManager; // +0x310
+    CCountedPointer<CEnginePrimitiveManagerParticleGroup> ParticleGroupManager; // +0x318
+    CCountedPointer<CEnginePrimitiveManagerDecal> DecalManager; // +0x320
+    CCountedPointer<CEnginePrimitiveManagerParticleDecalGroup> DecalGroupManager; // +0x328
+    CCountedPointer<CEnginePrimitiveManagerWeatherMask> WeatherMaskManager; // +0x330
+    CArray<CEngineScene*> SceneList;                                      // +0x338
+    float MaxPreloadRadius;                                               // +0x344
+    float MinPreloadRadius;                                               // +0x348
+    float MaxPreloadMipmapTolerance;                                      // +0x34c
+#elif defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SCENELIST)
     // Nested opt-in (chunk 892, row 0x00B482A0 CEngineLightingManager ctor): Ego_r.pdb SceneList (CArray<CEngineScene*>) at the
     // retail +0x338 (the generated Ego_r model below, retail STLport sizes); every primitive manager's constructor is handed it
     // (0x00B482AC `add eax,338h ; push eax` before CEnginePrimitiveManager::CEnginePrimitiveManager 0x00BACDB0).
@@ -62,7 +127,7 @@ private:
     unsigned char _pad_0x274[0xdc];             // +0x274 members not modelled yet (Ego_r.pdb names; retail STLport sizes)
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRenderer) == 0x350);
+FABLE_STATIC_ASSERT_AT(65, sizeof(CEnginePrimitiveRenderer) == 0x350);
 #else // generated flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEnginePrimitiveRenderer = 0x358.
@@ -320,59 +385,59 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRenderer) == 0x350);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, PrimitiveManagers) == 0x274);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, StaticMeshManager_Data) == 0x280);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, StaticMeshManager_Info) == 0x284);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, AnimatedMeshManager_Data) == 0x288);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, AnimatedMeshManager_Info) == 0x28c);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, RepeatedStaticMeshManager_Data) == 0x290);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, RepeatedStaticMeshManager_Info) == 0x294);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, RepeatedZSpriteManager_Data) == 0x298);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, RepeatedZSpriteManager_Info) == 0x29c);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, SpriteManager_Data) == 0x2a0);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, SpriteManager_Info) == 0x2a4);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, FlareSpriteManager_Data) == 0x2a8);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, FlareSpriteManager_Info) == 0x2ac);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, WeaponTrailManager_Data) == 0x2b0);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, WeaponTrailManager_Info) == 0x2b4);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, SpriteTrailManager_Data) == 0x2b8);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, SpriteTrailManager_Info) == 0x2bc);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, LineManager_Data) == 0x2c0);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, LineManager_Info) == 0x2c4);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, TextManager_Data) == 0x2c8);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, TextManager_Info) == 0x2cc);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, GameMeshManager_Data) == 0x2d0);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, GameMeshManager_Info) == 0x2d4);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, OcclusionGroupManager_Data) == 0x2d8);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, OcclusionGroupManager_Info) == 0x2dc);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, PrimitiveGroupManager_Data) == 0x2e0);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, PrimitiveGroupManager_Info) == 0x2e4);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, PrimitiveChangerManager_Data) == 0x2e8);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, PrimitiveChangerManager_Info) == 0x2ec);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ClothRenderer_Data) == 0x2f0);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ClothRenderer_Info) == 0x2f4);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ParticleLineGroupManager_Data) == 0x2f8);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ParticleLineGroupManager_Info) == 0x2fc);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ParticleMeshGroupManager_Data) == 0x300);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ParticleMeshGroupManager_Info) == 0x304);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ParticleSpriteGroupManager_Data) == 0x308);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ParticleSpriteGroupManager_Info) == 0x30c);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ParticleSpriteTrailGroupManager_Data) == 0x310);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ParticleSpriteTrailGroupManager_Info) == 0x314);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ParticleGroupManager_Data) == 0x318);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, ParticleGroupManager_Info) == 0x31c);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, DecalManager_Data) == 0x320);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, DecalManager_Info) == 0x324);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, DecalGroupManager_Data) == 0x328);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, DecalGroupManager_Info) == 0x32c);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, WeatherMaskManager_Data) == 0x330);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, WeatherMaskManager_Info) == 0x334);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, SceneList) == 0x338);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, MaxPreloadRadius) == 0x344);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, MinPreloadRadius) == 0x348);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, MaxPreloadMipmapTolerance) == 0x34c);
+FABLE_STATIC_ASSERT_AT(323, sizeof(CEnginePrimitiveRenderer) == 0x350);
+FABLE_STATIC_ASSERT_AT(324, offsetof(CEnginePrimitiveRenderer, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(325, offsetof(CEnginePrimitiveRenderer, PrimitiveManagers) == 0x274);
+FABLE_STATIC_ASSERT_AT(326, offsetof(CEnginePrimitiveRenderer, StaticMeshManager_Data) == 0x280);
+FABLE_STATIC_ASSERT_AT(327, offsetof(CEnginePrimitiveRenderer, StaticMeshManager_Info) == 0x284);
+FABLE_STATIC_ASSERT_AT(328, offsetof(CEnginePrimitiveRenderer, AnimatedMeshManager_Data) == 0x288);
+FABLE_STATIC_ASSERT_AT(329, offsetof(CEnginePrimitiveRenderer, AnimatedMeshManager_Info) == 0x28c);
+FABLE_STATIC_ASSERT_AT(330, offsetof(CEnginePrimitiveRenderer, RepeatedStaticMeshManager_Data) == 0x290);
+FABLE_STATIC_ASSERT_AT(331, offsetof(CEnginePrimitiveRenderer, RepeatedStaticMeshManager_Info) == 0x294);
+FABLE_STATIC_ASSERT_AT(332, offsetof(CEnginePrimitiveRenderer, RepeatedZSpriteManager_Data) == 0x298);
+FABLE_STATIC_ASSERT_AT(333, offsetof(CEnginePrimitiveRenderer, RepeatedZSpriteManager_Info) == 0x29c);
+FABLE_STATIC_ASSERT_AT(334, offsetof(CEnginePrimitiveRenderer, SpriteManager_Data) == 0x2a0);
+FABLE_STATIC_ASSERT_AT(335, offsetof(CEnginePrimitiveRenderer, SpriteManager_Info) == 0x2a4);
+FABLE_STATIC_ASSERT_AT(336, offsetof(CEnginePrimitiveRenderer, FlareSpriteManager_Data) == 0x2a8);
+FABLE_STATIC_ASSERT_AT(337, offsetof(CEnginePrimitiveRenderer, FlareSpriteManager_Info) == 0x2ac);
+FABLE_STATIC_ASSERT_AT(338, offsetof(CEnginePrimitiveRenderer, WeaponTrailManager_Data) == 0x2b0);
+FABLE_STATIC_ASSERT_AT(339, offsetof(CEnginePrimitiveRenderer, WeaponTrailManager_Info) == 0x2b4);
+FABLE_STATIC_ASSERT_AT(340, offsetof(CEnginePrimitiveRenderer, SpriteTrailManager_Data) == 0x2b8);
+FABLE_STATIC_ASSERT_AT(341, offsetof(CEnginePrimitiveRenderer, SpriteTrailManager_Info) == 0x2bc);
+FABLE_STATIC_ASSERT_AT(342, offsetof(CEnginePrimitiveRenderer, LineManager_Data) == 0x2c0);
+FABLE_STATIC_ASSERT_AT(343, offsetof(CEnginePrimitiveRenderer, LineManager_Info) == 0x2c4);
+FABLE_STATIC_ASSERT_AT(344, offsetof(CEnginePrimitiveRenderer, TextManager_Data) == 0x2c8);
+FABLE_STATIC_ASSERT_AT(345, offsetof(CEnginePrimitiveRenderer, TextManager_Info) == 0x2cc);
+FABLE_STATIC_ASSERT_AT(346, offsetof(CEnginePrimitiveRenderer, GameMeshManager_Data) == 0x2d0);
+FABLE_STATIC_ASSERT_AT(347, offsetof(CEnginePrimitiveRenderer, GameMeshManager_Info) == 0x2d4);
+FABLE_STATIC_ASSERT_AT(348, offsetof(CEnginePrimitiveRenderer, OcclusionGroupManager_Data) == 0x2d8);
+FABLE_STATIC_ASSERT_AT(349, offsetof(CEnginePrimitiveRenderer, OcclusionGroupManager_Info) == 0x2dc);
+FABLE_STATIC_ASSERT_AT(350, offsetof(CEnginePrimitiveRenderer, PrimitiveGroupManager_Data) == 0x2e0);
+FABLE_STATIC_ASSERT_AT(351, offsetof(CEnginePrimitiveRenderer, PrimitiveGroupManager_Info) == 0x2e4);
+FABLE_STATIC_ASSERT_AT(352, offsetof(CEnginePrimitiveRenderer, PrimitiveChangerManager_Data) == 0x2e8);
+FABLE_STATIC_ASSERT_AT(353, offsetof(CEnginePrimitiveRenderer, PrimitiveChangerManager_Info) == 0x2ec);
+FABLE_STATIC_ASSERT_AT(354, offsetof(CEnginePrimitiveRenderer, ClothRenderer_Data) == 0x2f0);
+FABLE_STATIC_ASSERT_AT(355, offsetof(CEnginePrimitiveRenderer, ClothRenderer_Info) == 0x2f4);
+FABLE_STATIC_ASSERT_AT(356, offsetof(CEnginePrimitiveRenderer, ParticleLineGroupManager_Data) == 0x2f8);
+FABLE_STATIC_ASSERT_AT(357, offsetof(CEnginePrimitiveRenderer, ParticleLineGroupManager_Info) == 0x2fc);
+FABLE_STATIC_ASSERT_AT(358, offsetof(CEnginePrimitiveRenderer, ParticleMeshGroupManager_Data) == 0x300);
+FABLE_STATIC_ASSERT_AT(359, offsetof(CEnginePrimitiveRenderer, ParticleMeshGroupManager_Info) == 0x304);
+FABLE_STATIC_ASSERT_AT(360, offsetof(CEnginePrimitiveRenderer, ParticleSpriteGroupManager_Data) == 0x308);
+FABLE_STATIC_ASSERT_AT(361, offsetof(CEnginePrimitiveRenderer, ParticleSpriteGroupManager_Info) == 0x30c);
+FABLE_STATIC_ASSERT_AT(362, offsetof(CEnginePrimitiveRenderer, ParticleSpriteTrailGroupManager_Data) == 0x310);
+FABLE_STATIC_ASSERT_AT(363, offsetof(CEnginePrimitiveRenderer, ParticleSpriteTrailGroupManager_Info) == 0x314);
+FABLE_STATIC_ASSERT_AT(364, offsetof(CEnginePrimitiveRenderer, ParticleGroupManager_Data) == 0x318);
+FABLE_STATIC_ASSERT_AT(365, offsetof(CEnginePrimitiveRenderer, ParticleGroupManager_Info) == 0x31c);
+FABLE_STATIC_ASSERT_AT(366, offsetof(CEnginePrimitiveRenderer, DecalManager_Data) == 0x320);
+FABLE_STATIC_ASSERT_AT(367, offsetof(CEnginePrimitiveRenderer, DecalManager_Info) == 0x324);
+FABLE_STATIC_ASSERT_AT(368, offsetof(CEnginePrimitiveRenderer, DecalGroupManager_Data) == 0x328);
+FABLE_STATIC_ASSERT_AT(369, offsetof(CEnginePrimitiveRenderer, DecalGroupManager_Info) == 0x32c);
+FABLE_STATIC_ASSERT_AT(370, offsetof(CEnginePrimitiveRenderer, WeatherMaskManager_Data) == 0x330);
+FABLE_STATIC_ASSERT_AT(371, offsetof(CEnginePrimitiveRenderer, WeatherMaskManager_Info) == 0x334);
+FABLE_STATIC_ASSERT_AT(372, offsetof(CEnginePrimitiveRenderer, SceneList) == 0x338);
+FABLE_STATIC_ASSERT_AT(373, offsetof(CEnginePrimitiveRenderer, MaxPreloadRadius) == 0x344);
+FABLE_STATIC_ASSERT_AT(374, offsetof(CEnginePrimitiveRenderer, MinPreloadRadius) == 0x348);
+FABLE_STATIC_ASSERT_AT(375, offsetof(CEnginePrimitiveRenderer, MaxPreloadMipmapTolerance) == 0x34c);
 
 #endif // FABLE_RETAIL_CENGINEPRIMITIVERENDERER
 #endif // FABLE_ENGINE_CENGINEPRIMITIVERENDERER_H

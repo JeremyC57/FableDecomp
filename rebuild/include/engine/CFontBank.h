@@ -59,6 +59,10 @@ public:
     long GetFontHeight()const{return (long)FontHeight;}
 #endif
     float GetVFontMaxHeight() const { return GFAYToVY(GetFontMaxHeight()); }
+#ifdef FABLE_RETAIL_CFONTBANK_VSTRINGEXTENTS_OUTOFLINE
+    // Opt-in (bwf1 / agentC2, row 0x00651B04): out of line in this TU (call 0x00437210, Ego_r.pdb keeps it out of line). Declaration only.
+    C2DExtentsF GetVStringExtents(const CWideString& text) const;       // 0x00437210
+#else
     C2DExtentsF GetVStringExtents(const CWideString& text) const
     {
         C2DExtentsF extents = GetStringExtents(text.GetAsCharArray(), false);
@@ -66,12 +70,13 @@ public:
         extents.Y = GFAYToVY(extents.Y);
         return extents;
     }
+#endif
 protected:
     unsigned long FontHeight;                                            // +0x04
     CCharString Name;                                                    // +0x08
     CFontManager* PManager;                                              // +0x0C
 };
-FABLE_STATIC_ASSERT(sizeof(CFontBank) == 0x10);
+FABLE_STATIC_ASSERT_AT(74, sizeof(CFontBank) == 0x10);
 #else
 class CCharStringData;
 class CFontManager;
@@ -86,11 +91,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CFontBank) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CFontBank, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CFontBank, FontHeight) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CFontBank, Name_PStringData) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CFontBank, PManager) == 0xc);
+FABLE_STATIC_ASSERT_AT(89, sizeof(CFontBank) == 0x10);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CFontBank, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(91, offsetof(CFontBank, FontHeight) == 0x4);
+FABLE_STATIC_ASSERT_AT(92, offsetof(CFontBank, Name_PStringData) == 0x8);
+FABLE_STATIC_ASSERT_AT(93, offsetof(CFontBank, PManager) == 0xc);
 #endif // FABLE_RETAIL_CFONTBANK
 
 #endif // FABLE_ENGINE_CFONTBANK_H

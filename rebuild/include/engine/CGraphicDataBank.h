@@ -45,6 +45,16 @@ public:
     const CGraphicInfo* PeekGraphic(unsigned long) const;
     const CGraphicInfoFrame* PeekGraphicInfoFrame(unsigned long,unsigned long) const;
     const CTexture* GetBlankTexture(ETextureType) const; // native009fd150
+#if defined(FABLE_RETAIL_CGRAPHICDATABANK_TEXTUREMANAGERACCESS) || defined(FABLE_RETAIL_CGRAPHICDATABANK_GETPIXELFORMAT)
+    // agentC27 (row 0x009FDE80): FableWin.pdb ?GetPixelFormat@CGraphicDataBank@@QBE?AVCPixelFormat@@W4ETextureType@1@@Z (34 debug bytes)
+    // and ?GetTextureManager@CGraphicDataBank@@QAEAAVCTextureManager@@XZ (25), inline in retail (0x009FDFC1..0x009FDFCD). No layout change.
+    // Retail opt-in (wfE7, row 0x00B3CB30; needs FABLE_RETAIL_CGRAPHICDATABANK_LOADGRAPHICFRAME for the typed PixelFormats): Ego_r.pdb /
+    // FableWin.pdb ?GetPixelFormat@CGraphicDataBank@@QBE?AVCPixelFormat@@W4ETextureType@1@@Z (by value; the surface-composition opt-in's body)
+    // and ?GetTextureManager@CGraphicDataBank@@QAEAAVCTextureManager@@XZ, both inline in retail (the CEngineResourceManager ctor reads
+    // PixelFormats[7] +0x2A4 / [6] +0x2A0 and TextureManager.Data +0x280 in place, 0x00B3DA59 / 0x00B3DBB5).
+    CPixelFormat GetPixelFormat(ETextureType type) const { return PixelFormats[type]; }
+    CTextureManager& GetTextureManager() { return *TextureManager; }
+#endif
 private:
 #ifdef FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
     // Retail opt-in (wf12, row 0x009FF220): Ego_r.pdb private ?LoadVolumeGraphic@CGraphicDataBank@@AAE_NAAVCManagedTexture@@AAVCBankFileAsyncData@@ABVCGraphicHeader@1@_NK3@Z
@@ -72,14 +82,14 @@ private:
     long MinAvailablePreloadMemory,AvailableMemory;
     bool FreezeGraphics;
     CCountedPointer<CTextureManager> TextureManager;
-#ifdef FABLE_RETAIL_CGRAPHICDATABANK_LOADGRAPHICFRAME
+#if defined(FABLE_RETAIL_CGRAPHICDATABANK_LOADGRAPHICFRAME) || defined(FABLE_RETAIL_CGRAPHICDATABANK_GETPIXELFORMAT)
     CPixelFormat PixelFormats[11];  // +0x288 (chunk 2004: typed, same 44 bytes; LoadGraphicFrame copies PixelFormats[type], 0x009FED57)
 #else
     unsigned char PixelFormats[44]; // CPixelFormat[11]
 #endif
     CTexture BlankTextures[11];
 };
-FABLE_STATIC_ASSERT(sizeof(CGraphicDataBank)==0x30c);
+FABLE_STATIC_ASSERT_AT(82, sizeof(CGraphicDataBank)==0x30c);
 #if defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT) || defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE) || defined(FABLE_RETAIL_CGRAPHICINFO_SPRITE)
 // Layout: original PDB nested class,28 bytes; native009fd700 copies7 words.
 class CGraphicDataBank::CGraphicHeader {
@@ -92,7 +102,7 @@ public:
   for(unsigned long c_mipmap=0;c_mipmap<1;++c_mipmap) CompressedMipmapSizes[c_mipmap]=0;
  }
 };
-FABLE_STATIC_ASSERT(sizeof(CGraphicDataBank::CGraphicHeader)==28);
+FABLE_STATIC_ASSERT_AT(95, sizeof(CGraphicDataBank::CGraphicHeader)==28);
 #endif
 
 #else
@@ -193,6 +203,6 @@ private:
 #endif
 };
 #endif
-FABLE_STATIC_ASSERT(sizeof(CGraphicDataBank) == 0x30c);
+FABLE_STATIC_ASSERT_AT(196, sizeof(CGraphicDataBank) == 0x30c);
 #endif
 #endif // FABLE_ENGINE_CGRAPHICDATABANK_H

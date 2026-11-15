@@ -3,7 +3,7 @@
 // Overlay header (chunk 1009b): there is no promoted engine/CTCHeroMorph.h (the generated flattened layout sits in
 // engine/_quarantine/ with a reconciliation conflict). This file only carries a retail opt-in; without it the class is
 // forward-declared.
-#if defined(FABLE_RETAIL_CTCHEROMORPH) || defined(FABLE_RETAIL_CTCHEROMORPH_TATTOOTHINGS)
+#if defined(FABLE_RETAIL_CTCHEROMORPH) || defined(FABLE_RETAIL_CTCHEROMORPH_TATTOOTHINGS) || defined(FABLE_RETAIL_CTCHEROMORPH_TATTOONAMES)
 // Retail opt-in (chunk 1009b, row 0x0059FC17 CTCInventoryTrade::AlreadyHaveSpecial): the hero's morph component as the trade
 // screen reaches it. RTTI .?AVCTCHeroMorph@@ : CTCAppearanceMorphBase : CTCBase (ghidra_out/rtti_bases.tsv); no
 // CTCAppearanceMorphBase header exists, so the class derives CTCBase directly (both single-inheritance at offset 0). The GetTC key
@@ -18,6 +18,9 @@
 #include "engine/CTattooDef.h"
 #include "stlport/fable_containers.h"
 class CThingBaseDef;
+#ifdef FABLE_RETAIL_CTCHEROMORPH_TATTOONAMES
+class CWideString;
+#endif
 class CTCHeroMorph : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_APPEARANCE_MORPH; }
@@ -32,6 +35,12 @@ public:
     // mov ecx,morph ; call 0x0071DE20`, 0x006D1691). The class block above with this opt-in alone gives the interface key only.
     // Declaration only.
     void GetTattooThings(std::vector<CDefPointer<const CThingBaseDef> >& tattoos) const;   // 0x0071DE20
+#endif
+#ifdef FABLE_RETAIL_CTCHEROMORPH_TATTOONAMES
+    // Nested opt-in (chunk 4006 / acctC agentC1, rows 0x005D1F0C / 0x005CE0E6 CTCInventoryStats::ConstructPersonalityListPC /
+    // ConstructPersonalityList): Ego_r.pdb / FableWin.pdb ?GetTattooNames@CTCHeroMorph@@QAEXAAV?$vector@VCWideString@@V?$allocator@
+    // VCWideString@@@std@@@std@@@Z (non-const), out of line at 0x0071CE80 (landed). Declaration only.
+    void GetTattooNames(std::vector<CWideString>& names);                // 0x0071CE80
 #endif
 };
 #else

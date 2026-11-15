@@ -14,6 +14,12 @@ class CGlobalDef;
 #ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_ENVIRONMENTDEF
 class CEnvironmentDef;
 #endif
+#ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_DEFPOINTERS
+class CGlobalDef;
+class CEngineDef;
+class CEnvironmentDef;
+class CHeroStatsDef;
+#endif
 class CGameDefinitionManager : public CDefinitionManager {
 public:
     static CGameDefinitionManager& __fastcall Get();
@@ -27,6 +33,17 @@ public:
     // Original FW01aa0c60 returns *CDefPointer<const CGlobalDef> at donor118/nativeD0.
     const CGlobalDef& PeekGlobalDef()const{return *PGlobalDef;}
 #endif
+#ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_DEFPOINTERS
+    // Retail opt-in (wfE11, row 0x0044C72B CGameDefinitionManager::InitAndCompile): the four cached def pointers d0..dc the native
+    // ctor 0x0044C6C2 zeroes, typed CDefPointer<const T> as InitAndCompile fills them through CDefinitionManager::GetDef<T>(name, 1, &p)
+    // (0x0044E98D GetDef<CGlobalDef> 0x0043FEB0 +0xD0, GetDef<CEngineDef> 0x00430096 +0xD4, GetDef<CEnvironmentDef> 0x00451354 +0xD8,
+    // GetDef<CHeroStatsDef> 0x004513B9 +0xDC). Names descriptive (both manager records are forward-only). No layout change.
+public:
+    CDefPointer<const CGlobalDef> PGlobalDef;                           // +0xd0 (descriptive name)
+    CDefPointer<const CEngineDef> PEngineDef;                           // +0xd4 (descriptive name)
+    CDefPointer<const CEnvironmentDef> PEnvironmentDef;                 // +0xd8 (descriptive name)
+    CDefPointer<const CHeroStatsDef> PHeroStatsDef;                     // +0xdc (descriptive name)
+#else
 #ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_HEROSTATSDEF
     // Nested opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): the hero-stats definition the native ctor zeroes in the d0..dc block,
     // read at +0xDC by CTCHeroStats::ApplyPenaltyForDeath 0x0057DE14 (landed) and by OnHit (`mov edx,[eax+0DCh]` off PeekDefinitionManager).
@@ -78,6 +95,7 @@ private:
     unsigned char _pad_0xd0[16];
 #endif
 #endif
+#endif // FABLE_RETAIL_CGAMEDEFINITIONMANAGER_DEFPOINTERS
 };
-FABLE_STATIC_ASSERT(sizeof(CGameDefinitionManager)==0xe0);
+FABLE_STATIC_ASSERT_AT(82, sizeof(CGameDefinitionManager)==0xe0);
 #endif

@@ -38,4 +38,10 @@ protected:
 };
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_DeedReactionRoot) == 0x38);
 #endif
+#if defined(FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC) && !defined(FABLE_RETAIL_CAISTATEGROUP_DEEDREACTIONROOT)
+// Without the retail model: the class's static registry entry points only (no layout).
+#include "rebuild_abi.h"
+class CCharString; class CAIStateGroupBase;
+class CAIStateGroup_DeedReactionRoot { public: static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc(); };
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_DEEDREACTIONROOT_H

@@ -103,6 +103,23 @@ public:
     long GetMaxSaveSlots() const;                                                     // 0x004067B0
     const CWideString& GetSaveSlotFileName(long) const;                               // 0x00407360
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_HUDTOOLTIP
+    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?GetAssignedInputForAction@CUserProfileManager@@QAE_NW4EGameAction@@_NPAVCActionInputControl@@@Z
+    // (0x00408C90) and FableWin.pdb ?IsHUDTooltipEnabled@CUserProfileManager@@QBE_NXZ (inline: `cmp byte [eax+0Ch] ; [eax+0D9h] / [eax+19h]`);
+    // HUDTooltipEnabled +0x19 (Ego_r, before the first vector) and HUDTooltipEnabledNewProfile +0xD9 (Ego_r 0xDD - 4). Own pads.
+    bool GetAssignedInputForAction(EGameAction action, bool passive, CActionInputControl* control);   // 0x00408C90
+    bool IsHUDTooltipEnabled() const { return UseNewProfileValues ? HUDTooltipEnabledNewProfile : HUDTooltipEnabled; }
+    unsigned char _pad_ht_0x00[0xc];                                     // vptr, CBaseClass, ProfileName
+    bool UseNewProfileValues;                                            // +0x0c
+    unsigned char _pad_ht_0x0d[0x19 - 0xd];
+    bool HUDTooltipEnabled;                                              // +0x19
+    unsigned char _pad_ht_0x1a[0xd9 - 0x1a];
+    bool HUDTooltipEnabledNewProfile;                                    // +0xd9
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_CONTEXTITEMINPUT
+    // Retail opt-in (agentC38, row 0x00652FA4): Ego_r.pdb ?GetAssignedInputForContextSensitiveItemAction@CUserProfileManager@@QAE_NW4EGameAction@@_NJAAVCActionInputControl@@@Z (0x00408F50, landed).
+    bool GetAssignedInputForContextSensitiveItemAction(EGameAction action, bool passive, long slot, CActionInputControl& control);   // 0x00408F50
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS
     // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): the option setters the UI actions call, out of line in
     // retail, FableWin.pdb / Ego_r.pdb spellings (?SetGamma@CUserProfileManager@@QAEXM_N@Z ...; the second bool is "use the new

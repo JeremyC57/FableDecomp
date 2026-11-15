@@ -26,14 +26,19 @@ public:
     bool          IgnoreActionPoints;                        // +0x2d
     unsigned char _pad_0x2e[0x2];                            // +0x2e
     unsigned char TutorialCategory[0x4];                     // +0x30 ETutorialCategory
+#ifdef FABLE_RETAIL_CACTIONUSEDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CActionUseDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CActionUseDef) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CActionUseDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CActionUseDef, AnimationGroup_TablePos) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CActionUseDef, SnapToActionPoint) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CActionUseDef, IgnoreActionPoints) == 0x2d);
-FABLE_STATIC_ASSERT(offsetof(CActionUseDef, TutorialCategory) == 0x30);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CActionUseDef) == 0x34);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CActionUseDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CActionUseDef, AnimationGroup_TablePos) == 0x28);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CActionUseDef, SnapToActionPoint) == 0x2c);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CActionUseDef, IgnoreActionPoints) == 0x2d);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CActionUseDef, TutorialCategory) == 0x30);
 
 #endif // FABLE_ENGINE_CACTIONUSEDEF_H

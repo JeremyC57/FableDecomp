@@ -54,39 +54,44 @@ public:
     unsigned char ManaDamage[0xc];                           // +0x138 vector<float,std::allocator<float>_>
     bool          ShieldCoversCarriedItems;                  // +0x144
     unsigned char _pad_0x145[0x3];                           // +0x145
+#ifdef FABLE_RETAIL_CSPECIALABILITIESPHYSICALSHIELDDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CSpecialAbilitiesPhysicalShieldDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSpecialAbilitiesPhysicalShieldDef) == 0x148);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, InitSound_TablePos) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, PowerUpSound) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, CastSound_TablePos) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, LoopingSound) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, EndSound_TablePos) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, Health) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, LevelUpTimings) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, CamDist) == 0x80);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, CamHeight) == 0x90);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, CamFOV) == 0xa0);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, CamSwitchTime) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, CastCamDist) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, CastCamHeight) == 0xc4);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, CastCamFOV) == 0xc8);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, CastCamSwitchTime) == 0xcc);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, MinWidth) == 0xd0);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, MaxWidth) == 0xd4);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, BeenHitExtraWidth) == 0xe0);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, BeenHitFadeOffTimeSecs) == 0xe4);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, WobbleRate) == 0xe8);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorStartLevel1) == 0xec);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorStartLevel2) == 0xf8);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorStartLevel3) == 0x104);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorStartLevel4) == 0x110);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorEnd) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorHit) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, FadeOutPhysicalShieldTimeSecs) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, ManaDamage) == 0x138);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesPhysicalShieldDef, ShieldCoversCarriedItems) == 0x144);
+FABLE_STATIC_ASSERT_AT(60, sizeof(CSpecialAbilitiesPhysicalShieldDef) == 0x148);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CSpecialAbilitiesPhysicalShieldDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CSpecialAbilitiesPhysicalShieldDef, InitSound_TablePos) == 0x3c);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CSpecialAbilitiesPhysicalShieldDef, PowerUpSound) == 0x40);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CSpecialAbilitiesPhysicalShieldDef, CastSound_TablePos) == 0x4c);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CSpecialAbilitiesPhysicalShieldDef, LoopingSound) == 0x50);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CSpecialAbilitiesPhysicalShieldDef, EndSound_TablePos) == 0x60);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CSpecialAbilitiesPhysicalShieldDef, Health) == 0x64);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CSpecialAbilitiesPhysicalShieldDef, LevelUpTimings) == 0x74);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CSpecialAbilitiesPhysicalShieldDef, CamDist) == 0x80);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CSpecialAbilitiesPhysicalShieldDef, CamHeight) == 0x90);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CSpecialAbilitiesPhysicalShieldDef, CamFOV) == 0xa0);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CSpecialAbilitiesPhysicalShieldDef, CamSwitchTime) == 0xb0);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CSpecialAbilitiesPhysicalShieldDef, CastCamDist) == 0xc0);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CSpecialAbilitiesPhysicalShieldDef, CastCamHeight) == 0xc4);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CSpecialAbilitiesPhysicalShieldDef, CastCamFOV) == 0xc8);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CSpecialAbilitiesPhysicalShieldDef, CastCamSwitchTime) == 0xcc);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CSpecialAbilitiesPhysicalShieldDef, MinWidth) == 0xd0);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CSpecialAbilitiesPhysicalShieldDef, MaxWidth) == 0xd4);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CSpecialAbilitiesPhysicalShieldDef, BeenHitExtraWidth) == 0xe0);
+FABLE_STATIC_ASSERT_AT(80, offsetof(CSpecialAbilitiesPhysicalShieldDef, BeenHitFadeOffTimeSecs) == 0xe4);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CSpecialAbilitiesPhysicalShieldDef, WobbleRate) == 0xe8);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorStartLevel1) == 0xec);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorStartLevel2) == 0xf8);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorStartLevel3) == 0x104);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorStartLevel4) == 0x110);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorEnd) == 0x11c);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CSpecialAbilitiesPhysicalShieldDef, ColorHit) == 0x128);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CSpecialAbilitiesPhysicalShieldDef, FadeOutPhysicalShieldTimeSecs) == 0x134);
+FABLE_STATIC_ASSERT_AT(89, offsetof(CSpecialAbilitiesPhysicalShieldDef, ManaDamage) == 0x138);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CSpecialAbilitiesPhysicalShieldDef, ShieldCoversCarriedItems) == 0x144);
 
 #endif // FABLE_ENGINE_CSPECIALABILITIESPHYSICALSHIELDDEF_H

@@ -9,7 +9,13 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_SitInPub {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -27,8 +33,8 @@ struct CAIStateGroup_SitInPub {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SitInPub) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SitInPub, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SitInPub, PBuilding) == 0x34);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CAIStateGroup_SitInPub) == 0x3c);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CAIStateGroup_SitInPub, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CAIStateGroup_SitInPub, PBuilding) == 0x34);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_SITINPUB_H

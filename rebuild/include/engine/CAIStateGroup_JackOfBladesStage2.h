@@ -10,7 +10,13 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_JackOfBladesStage2 {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -29,8 +35,8 @@ struct CAIStateGroup_JackOfBladesStage2 {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_JackOfBladesStage2) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesStage2, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesStage2, PCutsceneLookAtMarker) == 0x4c);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CAIStateGroup_JackOfBladesStage2) == 0x54);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_JackOfBladesStage2, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_JackOfBladesStage2, PCutsceneLookAtMarker) == 0x4c);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_JACKOFBLADESSTAGE2_H

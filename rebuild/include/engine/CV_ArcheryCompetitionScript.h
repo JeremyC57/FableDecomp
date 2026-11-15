@@ -25,6 +25,13 @@ public:
 #ifdef FABLE_RETAIL_CV_ARCHERYCOMPETITIONSCRIPT_DOCOUNTDOWN
     void DoCountDown(long);
 #endif
+#ifdef FABLE_RETAIL_CV_ARCHERYCOMPETITIONSCRIPT_OWNERMAIN
+    // wfE2 (row 0x00E33EA0 CAC_Owner::Main): Ego_r.pdb / FableWin.pdb ?ResetRandomSpeechTime@...@QAEXXZ (0x00E337C0, landed),
+    // ?WatchForAttack@...@QAEXVCScriptThing@@@Z, ?DoTimesUp@...@QAEXABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z.
+    void ResetRandomSpeechTime();
+    void WatchForAttack(CScriptThing);
+    void DoTimesUp(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&);
+#endif
 
     long Score; // +0x48
     bool IsOwnerDead; // +0x4c
@@ -127,6 +134,10 @@ public:
         virtual void OnPredicateFail();
     private:
         virtual void Main();
+#ifdef FABLE_RETAIL_CV_ARCHERYCOMPETITIONSCRIPT_OWNERMAIN
+    private:
+        CCharString GetRandomSpeech();   // Ego_r.pdb ?GetRandomSpeech@CAC_Owner@CV_ArcheryCompetitionScript@NScript@@AAE?AVCCharString@@XZ
+#endif
     };
     class CAC_HighScorePost : public CEntityScriptBase {
     public:
@@ -147,6 +158,6 @@ public:
     };
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_ArcheryCompetitionScript) == 0xa4);
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_ArcheryCompetitionScript::CAC_DummyMoving) == 0x24);
+FABLE_STATIC_ASSERT_AT(150, sizeof(NScript::CV_ArcheryCompetitionScript) == 0xa4);
+FABLE_STATIC_ASSERT_AT(151, sizeof(NScript::CV_ArcheryCompetitionScript::CAC_DummyMoving) == 0x24);
 #endif

@@ -31,7 +31,13 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CarryCrateAndFollow) == 0x38);
 #else
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_CarryCrateAndFollow {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -47,14 +53,14 @@ struct CAIStateGroup_CarryCrateAndFollow {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CarryCrateAndFollow) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CarryCrateAndFollow, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CarryCrateAndFollow, PCrate) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CarryCrateAndFollow, PPreviouslyCarriedItem) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CarryCrateAndFollow, PThingToFollow) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CarryCrateAndFollow, GotActionPoint) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CarryCrateAndFollow, ActionPointIndex) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CarryCrateAndFollow, PickUpActionID) == 0x34);
+FABLE_STATIC_ASSERT_AT(50, sizeof(CAIStateGroup_CarryCrateAndFollow) == 0x38);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CAIStateGroup_CarryCrateAndFollow, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CAIStateGroup_CarryCrateAndFollow, PCrate) == 0x14);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CAIStateGroup_CarryCrateAndFollow, PPreviouslyCarriedItem) == 0x1c);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CAIStateGroup_CarryCrateAndFollow, PThingToFollow) == 0x24);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CAIStateGroup_CarryCrateAndFollow, GotActionPoint) == 0x2c);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CAIStateGroup_CarryCrateAndFollow, ActionPointIndex) == 0x30);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CAIStateGroup_CarryCrateAndFollow, PickUpActionID) == 0x34);
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_CARRYCRATEANDFOLLOW
 #endif // FABLE_ENGINE_CAISTATEGROUP_CARRYCRATEANDFOLLOW_H

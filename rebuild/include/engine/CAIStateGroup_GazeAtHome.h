@@ -9,15 +9,21 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_GazeAtHome {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     long          f4;                                        // +0x04 retail-only long (previous header)
     unsigned char _pad_0x08[0x28];                           // +0x08
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_GazeAtHome) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_GazeAtHome, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_GazeAtHome, f4) == 0x4);
+FABLE_STATIC_ASSERT_AT(19, sizeof(CAIStateGroup_GazeAtHome) == 0x30);
+FABLE_STATIC_ASSERT_AT(20, offsetof(CAIStateGroup_GazeAtHome, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(21, offsetof(CAIStateGroup_GazeAtHome, f4) == 0x4);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_GAZEATHOME_H

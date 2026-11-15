@@ -60,11 +60,22 @@ class CGameEvent;
 #include "engine/CNetworkClient.h"
 class CWorld; class CDisplayEngine; class CGameEventPackage; class CGameEventPackageSet;
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTDISPATCH
+class CGameEventDispatch;
+#endif
 class CMainGameComponent : public CGameComponent {
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INITSOUND
 protected:
     // Retail opt-in (Codex 2026-11-10): both PDB InitSound names and native00417a58/caller00418886.
     void InitSound();
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTDISPATCH
+protected:
+    // agentE12 (row 0x0121B9B0): the game-event dispatch table, one CGameEventDispatch per event type (87 = NO_GAME_EVENTS), at
+    // 0x013B9288 (read by CWorld::GetEventDispatchTableEntry 0x0049D8E0 / ProcessEvent 0x0049D980). Ego_r.pdb and FableWin.pdb name
+    // its initializer `dynamic initializer for 'CMainGameComponent::EventDispatch'' (retail 0x0121B9B0); the Anniversary PDB
+    // (WellingtonGame-Xbox360-Test) gives the member: LF_STMEMBER EventDispatch, protected, const CGameEventDispatch[5568 bytes].
+    static const CGameEventDispatch EventDispatch[87];
 #endif
 protected:
     static CMainGameComponent* PMainGameComponent;
@@ -340,5 +351,5 @@ public:
     virtual bool IsEditorActive() const;                // slot 9 0x004197B0
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CMainGameComponent)==0x161E8);
+FABLE_STATIC_ASSERT_AT(343, sizeof(CMainGameComponent)==0x161E8);
 #endif

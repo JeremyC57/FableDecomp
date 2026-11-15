@@ -23,6 +23,11 @@ public:
     // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?SetLoadFontGlyphsAsynchronously@CFontManager@@QAEX_N@Z, inline in retail (Run 0x0042EFB6 stores the
     // byte +0x38 in place: Ego_r LoadFontGlyphsAsynchronously +0x3C, the CArray 4 bytes smaller in retail).
     void SetLoadFontGlyphsAsynchronously(bool async) { LoadFontGlyphsAsynchronously = async; }
+#ifdef FABLE_RETAIL_CFONTMANAGER_GETASYNC
+    // Opt-in (wfE9, row 0x009A25D0 CStreamingFontBank::Render): Ego_r.pdb ?GetLoadFontGlyphsAsynchronously@CFontManager@@QBE_NXZ, inline in retail
+    // (0x009A25E2..0x009A25ED: GFGetSystemManager, PFontManager +0x84, byte +0x38 in place). Needs FABLE_RETAIL_CFONTMANAGER_ASYNC.
+    bool GetLoadFontGlyphsAsynchronously() const { return LoadFontGlyphsAsynchronously; }
+#endif
 private:
     unsigned char _pad_0x00[0x38];                                       // +0x00 vptr .. NumberAsyncGlyphsPending
     bool LoadFontGlyphsAsynchronously;                                   // +0x38

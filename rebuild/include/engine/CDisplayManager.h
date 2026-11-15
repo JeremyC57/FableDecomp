@@ -12,6 +12,9 @@
 #include "engine/ESurfaceMultisampleType.h"
 #include "engine/CArray.h"
 #include "engine/CBusyResourceManager.h"
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_GETRENDERTARGET
+#include "engine/CRenderTarget.h"
+#endif
 class CSystemManager;class CRenderManager;class CVsyncCallbackTimer;class CDeviceResetCallback;
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER
 class CRGBColour;
@@ -29,6 +32,10 @@ public:
  CDisplayManager(CSystemManager&);
  virtual ~CDisplayManager();
  bool GetBestAlphaTextureFormat(unsigned long,CPixelFormat&);
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_VERTEXSHADERVERSION
+ // Opt-in (wfE7, row 0x00B33B50): Ego_r.pdb / FableWin.pdb ?GetVertexShaderVersion@CDisplayManager@@QBEKXZ (retail 0x009BEDE0, landed). Declaration only.
+ unsigned long GetVertexShaderVersion() const;                         // 0x009BEDE0
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER_PIXELSHADERVERSION
  // Opt-in (row 0x00BB5040 CEngineClothRenderer ctor): Ego_r.pdb / FableWin.pdb ?GetPixelShaderVersion@CDisplayManager@@QBEKXZ
  // (landed 0x009BEE00; the ctor compares it unsigned against 1400 = ps_1_4).
@@ -105,6 +112,11 @@ public:
  bool SetRenderTargetAsBackScreen();                                    // 0x009BF220
  #endif
  #endif
+ #ifdef FABLE_RETAIL_CDISPLAYMANAGER_GETRENDERTARGET
+ // Retail opt-in (row 0x00B89C30 ApplyOutline): FableWin.pdb ?GetRenderTarget@CDisplayManager@@QAE?AVCRenderTarget@@XZ (debug only, inline
+ // in release: 0x00B89CA5 calls ??0CRenderTarget@@QAE@AAVCSurface@@0@Z 0x00A10DC0 on RenderTargetSurface +0xC / RenderTargetDepthBuffer +0x1C).
+ CRenderTarget GetRenderTarget(){return CRenderTarget(RenderTargetSurface,RenderTargetDepthBuffer);}
+ #endif
  #ifdef FABLE_RETAIL_CDISPLAYMANAGER_PEEKBACKBUFFERRESOLUTION
  // Nested opt-in (chunk 2030, row 0x00BEA110 CEngineWaterSettings::UpdateConstants): FableWin.pdb
  // ?PeekBackBufferResolution@CDisplayManager@@QBEABVC2DExtentsI@@XZ (debug only, inline in release: 0x00BEA52C..0x00BEA54B copies
@@ -163,5 +175,5 @@ private:
  CArray<CPixelFormat> BackBufferFormats;CArray<ESurfaceMultisampleType> MultisampleTypes;
  CBusyResourceManager BusyResourceManager;float Gamma;bool m_bWantHiResScreenShot,m_bTakingScreenShot;
 };
-FABLE_STATIC_ASSERT(sizeof(CDisplayManager)==0x2cc);
+FABLE_STATIC_ASSERT_AT(166, sizeof(CDisplayManager)==0x2cc);
 #endif

@@ -12,6 +12,10 @@
 // Opt-in (wf21, row 0x00B4AC10): the class over its RTTI base CEnginePrimitiveManager (0xc bytes), constructor
 // ??0CEnginePrimitiveManager2DSprites@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z 0x00BAD040 (Ego_r.pdb / FableWin.pdb). Own members opaque.
 #include "engine/CEnginePrimitiveManager.h"
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DSPRITES_MEMBERS
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#endif
 class CEnginePrimitiveManager2DSprites : public CEnginePrimitiveManager {
 public:
     CEnginePrimitiveManager2DSprites(CArray<CEngineScene*>& scenes);     // 0x00BAD040
@@ -19,10 +23,29 @@ public:
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);
     virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;
     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DSPRITES_MEMBERS
+    // Nested opt-in (wfE5, rows 0x00BAE2D0 / 0x00BB0970 / 0x00BAFA00): the render virtuals and the own members, Ego_r.pdb names and
+    // offsets (struct_layouts_egor.tsv: VertexShader2DSprite +0x0c, VertexShader2DClockSprite +0x14, PixelShader2DClockSprite +0x1c,
+    // PixelShader2DClockSpriteAdditive +0x24, Indices[6] +0x2c). Vtable 0x012A5664: slot 5 RenderSubPrimitive 0x00BAE2D0, slot 10
+    // Render2DPrimitive 0x00BACED0, slot 13 RenderClockPrim 0x00BAFA00, slot 14 RenderSpritePrim 0x00BB0970 (protected, `MAE` in
+    // ?RenderClockPrim@ / ?RenderSpritePrim@CEnginePrimitiveManager2DSprites@@MAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z).
+    virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& sub, ERenderPassType pass);
+    virtual void Render2DPrimitive(CEngineInternalPrimitiveBase& prim, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type);
+protected:
+    virtual void RenderClockPrim(CEngineInternalPrimitiveBase& prim, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type);
+    virtual void RenderSpritePrim(CEngineInternalPrimitiveBase& prim, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type);
+private:
+    CVertexShader  VertexShader2DSprite;                                 // +0x0c
+    CVertexShader  VertexShader2DClockSprite;                            // +0x14
+    CPixelShader   PixelShader2DClockSprite;                             // +0x1c
+    CPixelShader   PixelShader2DClockSpriteAdditive;                     // +0x24
+    unsigned short Indices[6];                                           // +0x2c
+#else
 private:
     unsigned char _pad_0x0c[0x2c];                                       // +0x0c own members (see the generated layout)
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManager2DSprites) == 0x38);
+FABLE_STATIC_ASSERT_AT(25, sizeof(CEnginePrimitiveManager2DSprites) == 0x38);
 #else
 #pragma pack(push, 1)
 class CEnginePrimitiveManager2DSprites {
@@ -45,16 +68,16 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManager2DSprites) == 0x38);
+FABLE_STATIC_ASSERT_AT(48, sizeof(CEnginePrimitiveManager2DSprites) == 0x38);
 #ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DSPRITES_VIRTUAL_DTOR
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DSprites, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CEnginePrimitiveManager2DSprites, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DSprites, active) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DSprites, VertexShader2DSprite) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DSprites, VertexShader2DClockSprite) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DSprites, PixelShader2DClockSprite) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DSprites, PixelShader2DClockSpriteAdditive) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DSprites, Indices) == 0x2c);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CEnginePrimitiveManager2DSprites, active) == 0x8);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CEnginePrimitiveManager2DSprites, VertexShader2DSprite) == 0xc);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CEnginePrimitiveManager2DSprites, VertexShader2DClockSprite) == 0x14);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CEnginePrimitiveManager2DSprites, PixelShader2DClockSprite) == 0x1c);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CEnginePrimitiveManager2DSprites, PixelShader2DClockSpriteAdditive) == 0x24);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CEnginePrimitiveManager2DSprites, Indices) == 0x2c);
 #endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DSPRITES_MANAGER
 
 #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGER2DSPRITES_H

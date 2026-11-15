@@ -10,14 +10,17 @@
 // CurrentFilePackageIndex +0x58, TimeStamp +0x5C, PackageFile +0x60, NoUpdates +0x7C at STLport sizes; only the total is
 // read back by retail code here) are kept opaque.
 #include "engine/CBaseClass.h"
-#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CINPUTMANAGER_JOYSTICKS)
 #include "engine/CCountedPointer.h"
 #include "engine/CJoystick.h"
 #include "stlport/fable_containers.h"
 #endif
 class CInputEvent; class CInputEventScanInfo;
+#ifdef FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE
+#include "engine/CInputEvent.h"
+#endif
 class CInputManager : public CBaseClass {
-#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CINPUTMANAGER_JOYSTICKS)
 public:
 CJoystick& GetJoystick(long n){return *PJoysticks[n];}
 #endif
@@ -31,12 +34,16 @@ public:
     // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb / FableWin.pdb ?ClearEvents@CInputManager@@QAEXXZ, out of line in retail (0x009F5540). Declaration only.
     void ClearEvents();                                                  // 0x009F5540
 #endif
+#ifdef FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE
+    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?IsJoystickEventInQueue@CInputManager@@QAE_NW4EInputEventType@@JPAVCInputEvent@@J@Z (0x009F4C60).
+    bool IsJoystickEventInQueue(EInputEventType type, long button, CInputEvent* event, long device);   // 0x009F4C60
+#endif
 #ifdef FABLE_RETAIL_CINPUTMANAGER_EVENTSCANEND
     // Retail opt-in (chunk 791, row 0x004963A0 CFrontendGameComponent::Input): Ego_r.pdb / FableWin.pdb
     // ?EventScanEnd@CInputManager@@QBEXAAVCInputEventScanInfo@@@Z (0x009F4AC0), called after every EventScanStart / Next loop.
     void EventScanEnd(CInputEventScanInfo&) const;                       // 0x009F4AC0
 #endif
-#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CINPUTMANAGER_JOYSTICKS)
 protected:
     unsigned char _pad_0x04[0x2c-4];
     std::vector<CCountedPointer<CJoystick> > PJoysticks;
@@ -57,5 +64,8 @@ private:
     unsigned char _pad_0x04[0x80 - 0x04];                                // +0x04 data members (opaque, see above)
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CInputManager) == 0x80);
+FABLE_STATIC_ASSERT_AT(60, sizeof(CInputManager) == 0x80);
+#ifdef FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE
+extern CInputManager* PInputManager;                                    // 0x013B8388 ?PInputManager@@3PAVCInputManager@@A
+#endif
 #endif // FABLE_ENGINE_CINPUTMANAGER_H

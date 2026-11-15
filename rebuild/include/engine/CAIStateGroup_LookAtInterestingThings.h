@@ -34,7 +34,13 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_LookAtInterestingThings)==24);
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_LookAtInterestingThings {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -44,9 +50,9 @@ struct CAIStateGroup_LookAtInterestingThings {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_LookAtInterestingThings) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_LookAtInterestingThings, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_LookAtInterestingThings, FrameToLook) == 0x14);
+FABLE_STATIC_ASSERT_AT(47, sizeof(CAIStateGroup_LookAtInterestingThings) == 0x18);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CAIStateGroup_LookAtInterestingThings, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CAIStateGroup_LookAtInterestingThings, FrameToLook) == 0x14);
 
 #endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_LOOKATINTERESTINGTHINGS_H

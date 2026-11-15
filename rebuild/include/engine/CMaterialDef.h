@@ -12,8 +12,13 @@ class CMaterialDef:public CParentDefClassBase {public:
  bool DeflectAllHits,IsDiggable;
  std::vector<long> SlideFootParticleEffect,SwordHitParticleEffect,KnockdownHitFloorParticleEffect,WindBlowDustEffect,BerserkedSwordHitParticleEffect;
  std::map<long,CBlendedParticleEffectSet> BlendedSwordHitEffects;
+#ifdef FABLE_RETAIL_CMATERIALDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CMaterialDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 // Layout: original parent base, native OnHit reads +44/+48; six STL containers contract by4bytes.
-FABLE_STATIC_ASSERT(offsetof(CMaterialDef,OnHitRumbleLevel)==0x44);
-FABLE_STATIC_ASSERT(sizeof(CMaterialDef)==0x98);
+FABLE_STATIC_ASSERT_AT(17, offsetof(CMaterialDef,OnHitRumbleLevel)==0x44);
+FABLE_STATIC_ASSERT_AT(18, sizeof(CMaterialDef)==0x98);
 #endif

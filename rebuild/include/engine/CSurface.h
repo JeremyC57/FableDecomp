@@ -116,6 +116,10 @@ public:
  // pointer). Needs CPixelFormat complete (engine/CPixelFormat.h) before the include.
  CPixelFormat GetPixelFormat() const;
 #endif
+#ifdef FABLE_RETAIL_CSURFACE_CLEARCOLOUR
+ // Retail opt-in (wfE7, row 0x00B3CB30): Ego_r.pdb / FableWin.pdb ?Clear@CSurface@@QAEXABVCRGBColour@@@Z (retail 0x009F3FF0). Declaration only.
+ void Clear(const class CRGBColour& colour);                          // 0x009F3FF0
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_CLEAR
  // Retail opt-in (Codex pass 17): original SDK interface and PDB methods, complete native fields unchanged.
  CSurfaceLockedRect Lock(unsigned long);
@@ -174,11 +178,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSurface) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CSurface, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSurface, PD3DSurface) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CSurface, AllocationSource) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CSurface, PAllocatedMemory) == 0xc);
+FABLE_STATIC_ASSERT_AT(177, sizeof(CSurface) == 0x10);
+FABLE_STATIC_ASSERT_AT(178, offsetof(CSurface, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(179, offsetof(CSurface, PD3DSurface) == 0x4);
+FABLE_STATIC_ASSERT_AT(180, offsetof(CSurface, AllocationSource) == 0x8);
+FABLE_STATIC_ASSERT_AT(181, offsetof(CSurface, PAllocatedMemory) == 0xc);
 
 #endif // FABLE_ENGINE_CSURFACE_H
 

@@ -25,13 +25,18 @@ public:
     unsigned char _pad_0x26[0x2];                            // +0x26
     long          ReplacementObject_Val;                     // +0x28 CDefIndex::Val
     long          SmashParticleEmitter;                      // +0x2c
+#ifdef FABLE_RETAIL_CSMASHABLEDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CSmashableDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSmashableDef) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CSmashableDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSmashableDef, Smashable) == 0x25);
-FABLE_STATIC_ASSERT(offsetof(CSmashableDef, ReplacementObject_Val) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CSmashableDef, SmashParticleEmitter) == 0x2c);
+FABLE_STATIC_ASSERT_AT(31, sizeof(CSmashableDef) == 0x30);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CSmashableDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CSmashableDef, Smashable) == 0x25);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CSmashableDef, ReplacementObject_Val) == 0x28);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CSmashableDef, SmashParticleEmitter) == 0x2c);
 
 #endif // FABLE_ENGINE_CSMASHABLEDEF_H

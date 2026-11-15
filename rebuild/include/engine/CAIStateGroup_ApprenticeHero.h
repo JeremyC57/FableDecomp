@@ -72,7 +72,13 @@ class CThingAICreature;
 class CThingGameObject;
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
 struct CAIStateGroup_ApprenticeHero {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char     _pad_0x04[0x4];                        // +0x04
     unsigned char     _pad_0x08[0x4];                        // +0x08
@@ -90,16 +96,16 @@ struct CAIStateGroup_ApprenticeHero {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_ApprenticeHero) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, NextFramePractice) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, PDummy) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Action) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, PracticeOpponent) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Interaction_PStringData) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, NumFights) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Submissive) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Critical) == 0x2d);
+FABLE_STATIC_ASSERT_AT(93, sizeof(CAIStateGroup_ApprenticeHero) == 0x30);
+FABLE_STATIC_ASSERT_AT(94, offsetof(CAIStateGroup_ApprenticeHero, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(95, offsetof(CAIStateGroup_ApprenticeHero, NextFramePractice) == 0x14);
+FABLE_STATIC_ASSERT_AT(96, offsetof(CAIStateGroup_ApprenticeHero, PDummy) == 0x18);
+FABLE_STATIC_ASSERT_AT(97, offsetof(CAIStateGroup_ApprenticeHero, Action) == 0x1c);
+FABLE_STATIC_ASSERT_AT(98, offsetof(CAIStateGroup_ApprenticeHero, PracticeOpponent) == 0x20);
+FABLE_STATIC_ASSERT_AT(99, offsetof(CAIStateGroup_ApprenticeHero, Interaction_PStringData) == 0x24);
+FABLE_STATIC_ASSERT_AT(100, offsetof(CAIStateGroup_ApprenticeHero, NumFights) == 0x28);
+FABLE_STATIC_ASSERT_AT(101, offsetof(CAIStateGroup_ApprenticeHero, Submissive) == 0x2c);
+FABLE_STATIC_ASSERT_AT(102, offsetof(CAIStateGroup_ApprenticeHero, Critical) == 0x2d);
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO
 

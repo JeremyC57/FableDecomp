@@ -17,5 +17,10 @@ public:
     long                Lifespan;                                        // +0x44
     EReactionSpeechType ReactionSpeechType;                              // +0x48
     EMessageEventType   Type;                                            // +0x4c
+#ifdef FABLE_RETAIL_CMESSAGEEVENTDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CMessageEventDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
 };
 #endif
