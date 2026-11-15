@@ -1,0 +1,39 @@
+--- a/rebuild/include/engine/NPlayerGui_CDrawQuestInfo.h
++++ b/rebuild/include/engine/NPlayerGui_CDrawQuestInfo.h
+@@ -115,7 +115,24 @@
+     void UpdateMiniGame(float percentage, long value, long maxValue);   // 0x00644EFD
+     void UpdateMiniGame(const CRGBColour& colour);                       // 0x00644F85
+ #endif
++#ifdef FABLE_RETAIL_CDRAWQUESTINFO_MINIGAMETYPE
++    // Opt-in (chunk 2056 scout, row 0x0048E78E CSubtitleRenderer::DrawButtonGraphics): Ego_r.pdb / FableWin.pdb
++    // ?GetMiniGameType@CDrawQuestInfo@NPlayerGui@@QBE?AW4EMiniGameType@@XZ (public const), out of line in retail at 0x00644D54 (the row:
++    // `mov ecx,[PlayerGui+1C8h] ; call 0x00644D54 ; cmp eax,1`, 0x0048F081..0x0048F09A; also DrawButtonText 0x0048FE2D). Declaration only.
++public:
++    EMiniGameType GetMiniGameType() const;                               // 0x00644D54
++#endif
++private:
++#ifdef FABLE_RETAIL_CDRAWQUESTINFO_DRAW
++    // Retail opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): Ego_r.pdb / FableWin.pdb
++    // ?Draw@CDrawQuestInfo@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@_N@Z (retail 0x00654438, landed) and
++    // ?DrawMiniGameInfo@CDrawQuestInfo@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z (retail 0x0064D404), both called out of line on
++    // PDrawQuestInfo +0x1C8. Declarations only: no layout change.
++public:
++    void Draw(const CEnginePrimitivePrepareInfo& info, bool);            // 0x00654438
++    void DrawMiniGameInfo(const CEnginePrimitivePrepareInfo& info);      // 0x0064D404
+ private:
++#endif
+ #ifdef FABLE_RETAIL_CDRAWQUESTINFO_ADDELEMENT
+     void AddElement(CCountedPointer<CQuestInfoElement> pelement);
+ #endif
+@@ -128,8 +145,8 @@
+     CWideString Name,Text;
+     std::list<CCountedPointer<CQuestInfoElement> > Elements;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CDrawQuestInfo::CQuestInfoElementMiniGameBar)==0x40);
+-FABLE_STATIC_ASSERT(sizeof(CDrawQuestInfo::CQuestInfoElementBar)==0x58);
+-FABLE_STATIC_ASSERT(sizeof(CDrawQuestInfo)==0x5c);
++FABLE_STATIC_ASSERT_AT(131, sizeof(CDrawQuestInfo::CQuestInfoElementMiniGameBar)==0x40);
++FABLE_STATIC_ASSERT_AT(132, sizeof(CDrawQuestInfo::CQuestInfoElementBar)==0x58);
++FABLE_STATIC_ASSERT_AT(133, sizeof(CDrawQuestInfo)==0x5c);
+ }
+ #endif

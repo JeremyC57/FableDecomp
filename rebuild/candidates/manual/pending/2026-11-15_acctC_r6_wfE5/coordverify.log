@@ -1,0 +1,5 @@
+00bafa00 CEnginePrimitiveManager2DSprites RenderClockPrim ['/d2inlS18']
+addr       parity           behav  name
+00bafa00   WARN RELOC_CONFLICT: ??0CEngineSubPrimitive2DClockSprite@@QAE@PAVCEngineInternalPrimitive2DClockSprite@@@Z -> 00bb1780 here, 00686800 in landed 004d2ddb
+00bafa00   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00bafa00   RELOCATION_MATCH PASS   RenderClockPrim

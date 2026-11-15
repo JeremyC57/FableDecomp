@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/CCamera.h
++++ b/rebuild/include/engine/CCamera.h
+@@ -62,6 +62,13 @@
+     // 0x00A0C1B0 (the sibling of the landed ?MoveForward@CCamera@@QAEXM@Z 0x00A0C250). Declaration only.
+     void MoveSideways(float distance);                                   // 0x00A0C1B0
+ #endif
++#ifdef FABLE_RETAIL_CCAMERA_MOVEFORWARD_MOVE
++    // Opt-in (wfA2, row 0x0068CB90 CInputProcessControlFreeCamera::ProcessInput): Ego_r.pdb / FableWin.pdb ?MoveForward@CCamera@@QAEXM@Z,
++    // out of line in retail at 0x00A0C250 (landed), and the FableWin.pdb-only inline ?Move@CCamera@@QAEXABVC3DVector@@@Z (0x021E2CD0;
++    // no Ego_r.pdb / retail copy: expanded; retail adds the offset into WorldPosition +0x00/+0x04/+0x08 in place, 0x0068CC6A..).
++    void MoveForward(float distance);                                    // 0x00A0C250
++    void Move(const C3DVector& offset) { WorldPosition += offset; }
++#endif
+     const C3DVector& PeekWorldPos() const { return WorldPosition; }
+     const C3DVector& PeekViewDirection() const { return RHSet.GetForward(); }
+ private:
