@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0064bfba   WARN RELOC_NAME: ??$?9VCThing@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThing@@@@@Z -> 005cbdd2 labelled 'operator!=<CThing>'
+0064bfba   WARN RELOC_CONFLICT: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z -> 004bffc0 here, 004bfe20 in landed 004bff60
+0064bfba   WARN RELOC_NAME: ?GetHasInformation@CThingAICreature@@QBE_NXZ -> 008300d0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+0064bfba   RELOCATION_MATCH PASS   Draw
+
+WINS: 1
+  0064bfba RELOCATION_MATCH NPlayerGui::CDrawHighlightingTargetingCursor::?Draw@CDrawHighlightingTargetingCursor@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NPlayerGuiCDrawHighlightingTargetingCursor_Draw_0064bfba

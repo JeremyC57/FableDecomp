@@ -397449,6 +397449,14 @@ $catalog = @(
         TestSource = '00/67/CCreatureDef_Transfer_00675e20_test.cpp'
         PassPattern = '00675e20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0064bfba'
+        Module = 'NPlayerGui::CDrawHighlightingTargetingCursor'
+        Source = '00/64/NPlayerGuiCDrawHighlightingTargetingCursor_Draw_0064bfba.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawHighlightingTargetingCursor_Draw_0064bfba_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0064bfba_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

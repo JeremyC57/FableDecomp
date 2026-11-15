@@ -185,7 +185,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0064ae80	CDrawAbilityButtons	DrawAbilityButton	812	reserved (pass23, parked)	DIFFER(812v812)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0064ae80.cpp	original
 0064b1ac	CDrawAbilityButtons	UpdateWeaponAbilities	1045	parked	DIFFER(1058v1045)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064b1ac.cpp	original
 0064b8b3	CDrawTargetInfo	Draw	1426	parked	DIFFER(11v1426)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064b8b3.cpp	original
-0064bfba	CDrawHighlightingTargetingCursor	Draw	2223	parked	Codex pass 22: 2217vs2223bytes;4disassembly difference regions around height/dimension call order.	11	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/parked/agentP6/0064bfba.cpp	original
 0064ccb3	CDrawStamina	Draw	1526	parked	DIFFER(11v1526)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064ccb3.cpp	original
 0064d404	CDrawQuestInfo	DrawMiniGameInfo	399	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(178v399)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064d404.cpp	original
 0064d7a6	CDrawQuickAccessIcons	DrawChargeGraphic	388	parked	DIFFER(393v388)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand522/differ/0064d7a6.cpp	original
