@@ -1407,7 +1407,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00f3cf50	CTriangleStripifier2	CalcSectionPolyMask	688	parked	DIFFER(679v683)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand584/differ/00f3cf50.cpp	original
 00f3d200	CTriangleStripifier2	CheckForReshadedVerts	288	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand580/differ/00f3d200.cpp	original
 00f3d980	CTriangleStripifier2	BuildRings	1952	parked	DIFFER(2301v1947)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/src/00f3d980.cpp	original
-00f3e120	CTriangleStripifier2	FindBestStartVertex	1424	parked	Codex pass 22: 8unmasked rootbytes: two pairs of loads reversed; also3reached bool-container body debts.	2	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/parked/agentP6/00f3e120.cpp	original
+00f3e120	CTriangleStripifier2	FindBestStartVertex	1411	parked	DIFFER(1411v1411) 4 lines: reload pairs 0x00F3E291 / 0x00F3E3C5 swapped (this v vertex_to_poly_map piece ids); parked 2026-11-15 after 4 sessions, about 120 hand probes, chain measured -- see fable_session4/ and README	6	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/parked/agentP6/fable_session4/base_pdb_order.cpp	original
 00f3e6b0	_global	CTriangleStripifier2_ProcessTriangles	928	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand570/differ/00f3e6b0.cpp	original
 00f3ea50	_global	GenerateTriangleListAndStrip	2384	parked	DIFFER(2603v2379)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/src/00f3ea50.cpp	original
 00f3fbe0	CFrameData	ReleaseTexture	24	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ1/differ/00f3fbe0.cpp	original
