@@ -1,0 +1,105 @@
+address	module	name	length	flags	staged_in
+00cbfb7d	_global	RunCutsceneMacro	74778		2026-11-14_acctC_wfC1
+00f0fb70	NScript::CQ_ArenaScript	Main	18144		2026-11-14_acctC_wfC2
+005d1f0c	CTCInventoryStats	ConstructPersonalityListPC	17873		2026-11-13_acctC_c1a
+005ce0e6	CTCInventoryStats	ConstructPersonalityList	15910		2026-11-13_acctC_c1a
+006096e0	CTCInventoryMap	ConstructLogbookListPC	12832		2026-11-13_acctC_c38a
+0061e6d0	CTCInventoryQuests	ConstructQuestListPC	12356		2026-11-13_acctC_c28a
+004804de	CTCInGameMenu	OpenInGameMenuPC	11203		2026-11-15_acctC_wfE11
+0060eeb0	CTCInventoryMap	ConstructPCMapList	10254		2026-11-13_acctC_c14a
+00e3bb70	NScript::CV_BordelloScript::CMadame	Main	10149	/d2inlT69	2026-11-15_acctC_wfE3fix
+00e50fd0	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan	Main	9885		2026-11-15_acctC_wfE3fix
+0060c900	CTCInventoryMap	ConstructMapList	9635		2026-11-13_acctC_c14a
+0121b9b0	CMainGameComponent	`dynamic initializer for 'EventDispatch'' (object symbol _$E1 of its TU)	9567		2026-11-15_acctC_wfE12
+00d4a270	NScript::CQ_GuildTrainingScript::CCombatApprentice	Main	9388		2026-11-14_acctC_wfD3
+00e5fd40	NScript::CV_BodyGuardScript::CBodyGuard	Main	9381		2026-11-15_acctC_wfE2
+00e33ea0	NScript::CV_ArcheryCompetitionScript::CAC_Owner	Main	9228		2026-11-15_acctC_wfE2
+0044c72b	CGameDefinitionManager	InitAndCompile	8995		2026-11-15_acctC_wfE11fix
+00b33b50	CEnginePrimitiveRenderer	CEnginePrimitiveRenderer	8858		2026-11-15_acctC_wfE7
+005f1b10	CTCInventoryAbilities	ConstructPCMagicList	8383		2026-11-13_acctC_c9a
+00b69000	CEngineLandscapeRenderer	CEngineLandscapeRenderer	8358		2026-11-15_acctC_wfE7
+0121f86f	CAIBrain	`dynamic initializer for 'StateGroupInfo'' (object symbol _$E1 of its TU)	8142		2026-11-15_acctC_wfE12fix
+0058578b	CTCInventory	OpenInventory	8081		2026-11-15_acctC_wfB1b
+01221d20	CAIStateGroup_OpinionReactionRoot	`dynamic initializer for 'Behaviours'' (object symbol _$E1 of its TU)	7990		2026-11-15_acctC_wfE12
+00a059e0	CRenderStateManager	SetDefaultRenderStates	7958		2026-11-15_acctC_wfE7
+00db97a0	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa	Main	7013		2026-11-15_acctC_wfE1
+00601310	CTCInventoryMap	ConstructQuestsScreenPC	6931		2026-11-13_acctC_c31a
+00b73760	CEngineWaterRenderer	CEngineWaterRenderer	6799		2026-11-15_acctC_wfE6
+004736c4	CPlayerGuiDef	?Transfer@CPlayerGuiDef@@UAEXAAVCPersistContext@@@Z	6498		2026-11-15_acctC_wfE11
+00bae2d0	CEnginePrimitiveManager2DSprites	RenderSubPrimitive	5892		2026-11-15_acctC_wfE5
+00b5ca70	CEngineScreenEffectRadialBlurRenderer	CaptureBackBuffer	5748		2026-11-15_acctC_wfE6fix
+005eeff2	CTCInventoryAbilities	GetMagicListUIComponent	5619	/Gr	2026-11-13_acctC_c12a
+00b3cb30	CEngineResourceManager	CEngineResourceManager	5399		2026-11-15_acctC_wfE7
+00651b04	NPlayerGui::CDrawAbilityButtons	Draw	5126		2026-11-13_acctC_c2a
+0058807d	CTCInventory	OpenPCInventoryMenu	4997		2026-11-13_acctC_c44a
+00598a1c	NUISystem::CFrontEndManager	BuildComponents	4928		2026-11-14_acctC_wfA5
+00652fa4	NPlayerGui::CDrawQuickAccessIcons	Draw	4653	/GS	2026-11-15_acctC_wfB1b
+00aa2110	C3DAnimationManager	CalcBlendedBoneTransformation	4556		2026-11-14_acctC_wfA5
+00bb3e80	CEngineClothRenderer	RenderClothPrimitive	4540		2026-11-13_acctC_c19a
+00aa0fa0	C3DAnimationManager	CalcBoneTransformation	4460		2026-11-14_acctC_wfA5
+00dc4d70	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan	Main	4319		2026-11-15_acctC_wfD3b
+00ed17d0	NScript::CV_SingingStonesScript::CManWithDoorName	Main	4279	/d2inlT51	2026-11-14_acctC_wfD3
+00d3d150	NScript::CQ_GuildTrainingScript::CAppleGirl	Main	4252		2026-11-15_acctC_wfD3b
+00ee57b0	NScript::CV_TourGuideScript::CTourGuideGuide	Main	4246		2026-11-14_acctC_wfD2
+00dc5f80	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman	Main	4245		2026-11-14_acctC_wfD2
+005ff190	CTCInventoryMap	CreateMapMarkers	4176		2026-11-14_acctC_wfB2
+00b555a0	CEngineWeatherRenderer	Render	3832		2026-11-14_acctC_wfA5
+00bc04f0	CEnginePrimitiveManagerParticleSpriteGroup	RenderSingleSprite	3751	/d2inlT79	2026-11-15_acctC_wfE5
+00bbac60	CEnginePrimitiveManagerDecal	RenderLandscapeDecal	3743		2026-11-15_acctC_wfE5
+009a25d0	CStreamingFontBank	Render	3722		2026-11-15_acctC_wfE9fix
+00b1e380	NParticleEngine::CPSCDecalRenderer	DatabaseSerialise	3698		2026-11-14_acctC_wfD6
+00e27e90	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze	Main	3595		2026-11-14_acctC_wfD2
+00678760	CPersistTraits<std::list<CReactionMatch*> >	TransferIn	3579		2026-11-14_acctC_wfD5
+00bb30a0	CEngineClothRenderer	Render2DClothPrimitive	3538		2026-11-13_acctC_c19a
+00d45060	NScript::CQ_GuildTrainingScript	CheckFriendlyAttacks	3439	/d2inlT53	2026-11-15_acctC_wfE4
+009d9c80	CRenderManager2D	DrawBufferedPolys	3435		2026-11-14_acctC_wfD5
+009d8cf0	CRenderManager2D	ClearRenderTarget	3385	/GS	2026-11-14_acctC_wfD5
+00b1c880	NParticleEngine::CPSCDecalRenderer	ReadBinary	3266		2026-11-14_acctC_wfD6
+00d82640	NScript::CQ_HeroSoulsBriarScript::CBriarRose	Main	3260		2026-11-14_acctC_wfD1
+00bcc800	CEnginePrimitiveManagerWeaponTrails	RenderWeaponTrail	3205		2026-11-14_acctC_wfB4
+00b1f200	NParticleEngine::CPSCDecalRenderer	PreparePrimitives	3195	/d2inlT1156	2026-11-14_acctC_wfD6
+00d7fe90	NScript::CQ_HeroSoulsArenaScript	WatchForRoundsInArena	3148	/d2inlT57	2026-11-14_acctC_wfD1
+00dea3f0	NScript::CQ_RansomVictimScript::CVictimsBrother	Main	3076		2026-11-14_acctC_wfD1
+00f3bdd0	CTriangleStripifier2	FillInTriStrip	2998		2026-11-14_acctC_wfD5
+00b087c0	NParticleEngine::CPSCSingleSprite	PreparePrimitives	2967	/d2inlT86	2026-11-14_acctC_wfD6
+0049a0b0	CProgressDisplay	InitialiseTextures	2920		2026-11-15_acctC_wfD4b
+00dadf80	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager	Main	2787	/d2inlT65	2026-11-14_acctC_wfA3
+00e2f170	NScript::CV_AmbushScamScript	SpringAmbush	2781		2026-11-14_acctC_wfA3
+004a0d90	CWorld	LoadQuestsFromFile	2733		2026-11-14_acctC_wfA3
+00d0a830	NScript::CQ_BanditCampBossBattleScript::CBanditKing	Main	2720		2026-11-14_acctC_wfD1
+00acdb80	QuadricOptimiserInternals::COptimisedPrimitive	COptimisedPrimitive	2674	/Gr	2026-11-14_acctC_wfA3b
+00772bb0	CTCShop	AddSaleItem	2585	/d2inlT116	2026-11-14_acctC_wfB7
+007de710	CTCWallMount	AttachObject	2578		2026-11-14_acctC_wfB7
+00dcfa60	NScript::CQ_OrchardFarmRaidScript	DoCutsceneIfRequired	2412		2026-11-15_acctC_wfD3b
+0068cb90	CInputProcessControlFreeCamera	ProcessInput	2339		2026-11-14_acctC_wfA2
+005379f5	NUISystem::CList	ComputeChildrenVisibility	2102		2026-11-14_acctC_wfB6
+00d0f640	NScript::CQ_BanditCampBossBattleScript	CheckForSecondAreaMassacre	2101	/d2inlT59	2026-11-15_acctC_wfE2
+0058f9bc	CTCInventory	OpenPCPhotojournal	2012	/GS	2026-11-13_acctC_c24a
+007c0690	NThingShot::CTCShotDefinitionBase	Init	1088		2026-11-13_acctC_c25a
+0074e860	CTCContainerRewardHero	GetRewardItems	1005		2026-11-13_acctC_c29a
+00735fd0	CTCCombat	AttemptToStartParticle	973		2026-11-14_acctC_wfB5
+006823d0	CTCCreatureOpinionOfHero	FrameUpdate	962		2026-11-14_acctC_wfB5
+00945060	CAIStateGroup_WorkHammerAnvil	Update	936		2026-11-13_acctC_c29a
+00944940	CAIStateGroup_WorkSawingWood	Update	883		2026-11-13_acctC_c29a
+007bc38a	NThingShot::CTCShotDefinitionThrowPredictive	InitMovement	880		2026-11-14_acctC_wfB5
+006a1a00	CTCCarrying	GetCarriedThingInterpolatedPosAndOrientation	864		2026-11-13_acctC_c34a
+0074af50	CTCCreatureGenerator	CreateCreaturesUndead	856		2026-11-13_acctC_c36a
+00a5cb90	CMatrix4x4	AlignedTransformTransposedAssumeW	847	/Zi	2026-11-13_acctC_c42a
+00c271f0	CPhysicalPlayer	Play	846	/EHsc /MD	2026-11-14_acctC_wfA1b
+00c6f3e0	CVtable_012b8aa0	Process	834	/GS	2026-11-13_acctC_c42a
+0075d580	CTCCameraPointScriptedSpline	UpdateCameraParams	809		2026-11-13_acctC_c37a
+007b57c0	CTCCarriedActionUseActivateQuest	OnActionUse	776	/GS	2026-11-13_acctC_c30a
+0077b350	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	OnAppearanceDraw	767		2026-11-13_acctC_c37a
+007ef200	CTCCarriedActionUseExpression	OnActionUse	734	/GS	2026-11-13_acctC_c25a
+007db2e0	CTCTavernGameCardBlackjack	NewRound	723		2026-11-13_acctC_c40a
+00bd2d90	CEngineInternalPrimitiveAnimatedMesh	GetBoneTransformations	721		2026-11-13_acctC_c40a
+007fc9d0	CTCKraken	FrameUpdate	704		2026-11-13_acctC_c34a
+00bbddd0	CEnginePrimitiveManagerParticleSpriteTrailGroup	RenderPrimitive	699		2026-11-13_acctC_c40a
+0072cf40	CTCSpecialAbilities	UseSpecialAbility	564		2026-11-13_acctC_c25a
+00ed14e0	NScript::CV_SingingStonesScript::CSingingStone	Init	512		2026-11-13_acctC_c40a
+007ea580	CTCTargeted	GetAllTargetPoints	457		2026-11-14_acctC_wfB5
+00b9e5b0	CEnginePrimitiveManagerStaticMeshesBase	RenderMeshPrimitiveBlocksIndexBuffer	402		2026-11-13_acctC_c19a
+00dfca90	NScript::CQ_TraderConflictGoodScript::CBanditExtra	Main	373		2026-11-14_acctC_wfA1
+00564d50	std::char_traits<char>	copy	42		2026-11-13_acctC_c40b
+00a3e520	CSoundManagerLH	StopMusic	24		2026-11-13_acctC_c40a
+00a3e830	CSoundManagerLH	SetMonitorAllowedPostStopTailDurationMS	24		2026-11-13_acctC_c40a

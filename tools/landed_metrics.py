@@ -40,6 +40,9 @@ import csv
 import json
 import re
 import sys
+
+# Oracle rows hold a function's bytes as hex; RunCutsceneMacro (74,778 bytes) exceeds the csv module's 128 KiB default field limit.
+csv.field_size_limit(sys.maxsize)
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]

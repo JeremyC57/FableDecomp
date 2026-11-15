@@ -1,0 +1,140 @@
+[
+ [
+  "engine/C2DVector.h",
+  "2026-11-15_acctC_wfE6fix",
+  [
+   "#else",
+   "// Nested opt-in (row 0x00B4D370): the FableWin text of ?GetMagnitude@C2DVector@@QBEMXZ (21i / 52b at /Od, fwsize SAME): the sum",
+   "// in a named local, then sqrtf.",
+   "COND:FABLE_RETAIL_C2DVECTOR_MAGNITUDE_SQUARED_LOCAL"
+  ]
+ ],
+ [
+  "engine/CBankFileAsync.h",
+  "2026-11-14_acctC_wfD6",
+  [
+   "// agentC27 (row 0x009FDE80): Ego_r.pdb ?CreateEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z, retail 0x009D58D0.",
+   "CCountedPointer<class CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0",
+   "COND:FABLE_RETAIL_CBANKFILEASYNC_CREATEENTRY"
+  ]
+ ],
+ [
+  "engine/CEnginePrimitiveManagerParticleSpriteTrailGroup.h",
+  "2026-11-15_acctC_wfE7",
+  [
+   "#endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLESPRITETRAILGROUP_CLASS",
+   "#include \"engine/CArray.h\"",
+   "#include \"engine/CCountedPointer.h\"",
+   "// CEnginePrimitiveManager (ghidra_out/rtti_bases.tsv), sizeof 0x40 (the ctor's `new` size); Ego_r.pdb / FableWin.pdb ??0CEnginePrimitiveManagerParticleSpriteTrailGroup ctor (retail 0x00BBEAF0, called by the CEnginePrimitiveRenderer ctor); the three CEnginePrimitiveManager"
+  ]
+ ],
+ [
+  "engine/CEnginePrimitiveRenderUtil.h",
+  "2026-11-15_acctC_wfE5",
+  [
+   "// (expanded twice, 0x00BAEA60 / 0x00BAF4B9 and 0x00BAECD7 / 0x00BAF6EE); the including row defines the bodies.",
+   "// (static fastcall; no Ego_r.pdb or Fable.exe copy: the row calls SetupShaderPointLights 0x00B44F20 directly). Body in the including row.",
+   "// 02e972e0 ?Setup2DDiffuseShading@CEnginePrimitiveRenderUtil@@QAEX_NKKW4EEnginePrimitiveBlendMode@@@Z, 02e973b0",
+   "// ?GetPixelShader2DDiffuseOnly@CEnginePrimitiveRenderUtil@@SIABVCPixelShader@@W4EEnginePrimitiveBlendMode@@@Z). No retail copy"
+  ]
+ ],
+ [
+  "engine/CEngineVideoOptionsDef.h",
+  "2026-11-15_acctC_wfE11fix",
+  [
+   "// ?Alloc@CEngineVideoOptionsDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.",
+   "// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator",
+   "COND:FABLE_RETAIL_CENGINEVIDEOOPTIONSDEF_ALLOC",
+   "public: static class CDefClassBase* FABLE_FASTCALL Alloc();"
+  ]
+ ],
+ [
+  "engine/CGraphicDataBank.h",
+  "2026-11-14_acctC_wfD6",
+  [
+   "// agentC27 (row 0x009FDE80): FableWin.pdb ?GetPixelFormat@CGraphicDataBank@@QBE?AVCPixelFormat@@W4ETextureType@1@@Z (34 debug bytes)",
+   "// and ?GetTextureManager@CGraphicDataBank@@QAEAAVCTextureManager@@XZ (25), inline in retail (0x009FDFC1..0x009FDFCD). No layout change.",
+   "COND:FABLE_RETAIL_CGRAPHICDATABANK_GETPIXELFORMAT",
+   "COND:FABLE_RETAIL_CGRAPHICDATABANK_GETPIXELFORMAT"
+  ]
+ ],
+ [
+  "engine/CLandscapeTesselatorBase.h",
+  "2026-11-15_acctC_wfE6",
+  [
+   "// CEngineWaterRenderer ctor (0x00B73A54: BridgeIndexBuffer zeros, the base vtable store dead); no out-of-line copy in retail.",
+   "// Retail opt-in (wfE6, row 0x00B73760): Ego_r.pdb ??0CLandscapeTesselatorBase@@QAE@XZ is the implicit ctor, expanded in place by the"
+  ]
+ ],
+ [
+  "engine/CMatrix3x4.h",
+  "2026-11-14_acctC_wfD6",
+  [
+   "// 0x00ADE25x..0x00ADE36x sum X as (x*E11 + z*E31) + y*E21 and Y / Z with x last (`fld st(2) ; fmul [eax+4] ; faddp`,",
+   "// 0x00ADE6xx sums the X row as (x*E11 + z*E31) + y*E21 + E41 and the Y / Z rows with x last; this grouping is the one that",
+   "// Nested opt-in (wfA6, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB; FITTED grouping): the four half-extent transforms",
+   "// Nested opt-in (wfA6, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB; FITTED grouping): the x87 arm's centre transform"
+  ]
+ ],
+ [
+  "engine/CMatrix4x4.h",
+  "2026-11-14_acctC_wfD5",
+  [
+   "#include \"engine/CMatrix3x4.h\"",
+   "// 55 instructions = twelve element copies; emitted right before CalcBoneTransformation, its first user): the 3x3 part and the",
+   "// Opt-in (wfA5, rows 0x00AA0FA0 / 0x00AA2110): FableWin.pdb ?CopyTo@CMatrix4x4@@QBEXAAVCMatrix3x4@@@Z (0x0337F090, 155 debug bytes /",
+   "// translation row copied into a CMatrix3x4 (retail 0x00AA20AE..0x00AA20FB). Defined out of the class: it needs CMatrix3x4."
+  ]
+ ],
+ [
+  "engine/CMatrix4x4.h",
+  "2026-11-14_acctC_wfA5",
+  [
+   "#include \"engine/CMatrix3x4.h\"",
+   "// 55 instructions = twelve element copies; emitted right before CalcBoneTransformation, its first user): the 3x3 part and the",
+   "// Opt-in (wfA5, rows 0x00AA0FA0 / 0x00AA2110): FableWin.pdb ?CopyTo@CMatrix4x4@@QBEXAAVCMatrix3x4@@@Z (0x0337F090, 155 debug bytes /",
+   "// translation row copied into a CMatrix3x4 (retail 0x00AA20AE..0x00AA20FB). Defined out of the class: it needs CMatrix3x4."
+  ]
+ ],
+ [
+  "engine/CTCCreatureOpinionOfHero.h",
+  "2026-11-14_acctC_wfB5",
+  [
+   "// ??ACOpinionSet@@QBEMJ@Z, the public index operators (no out-of-line copy in Ego_r.pdb or Fable.exe). Retail loads the index",
+   "// Retail opt-in (wfB5, row 0x006823D0 CTCCreatureOpinionOfHero::FrameUpdate): FableWin.pdb ??ACOpinionSet@@QAEAAMJ@Z /",
+   "// argument before the array base at every site (`mov edx,[esi+8] ; fld [esi+18h] ; mov eax,[ebp+48h]`, 0x006825DE). No layout change.",
+   "COND:FABLE_RETAIL_COPINIONSET_INDEX"
+  ]
+ ],
+ [
+  "engine/CTCHeroStats.h",
+  "2026-11-15_acctC_wfB1b",
+  [
+   "// FITTED body (acctC agentC1): the value passes through a named local. Retail 0x005D4698 / 0x005D00AB `lea edx,[eax+ecx]` (houses"
+  ]
+ ],
+ [
+  "engine/CTCHeroStats.h",
+  "2026-11-13_acctC_c28a",
+  [
+   "// FITTED body (acctC agentC1): the value passes through a named local. Retail 0x005D4698 / 0x005D00AB `lea edx,[eax+ecx]` (houses"
+  ]
+ ],
+ [
+  "engine/CTCHeroStats.h",
+  "2026-11-13_acctC_c44a",
+  [
+   "// FITTED body (acctC agentC1): the value passes through a named local. Retail 0x005D4698 / 0x005D00AB `lea edx,[eax+ecx]` (houses"
+  ]
+ ],
+ [
+  "engine/CTCInventoryMap.h",
+  "2026-11-13_acctC_c30a",
+  [
+   "// 0x0060C900 (`ret 0Ch`; the Ego_r order note above). Declaration only.",
+   "// agentC30 (row 0x007B57C0): Ego_r.pdb ?ConstructMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@_NPA_N@Z, out of line at",
+   "// agentC30 (row 0x007B57C0): FableWin.pdb ?SetAsInventoryScreen@CTCInventoryMap@@QAEX_N@Z / ?SetAsOpenedViaGuildSeal@CTCInventoryMap@@QAEX_N@Z,",
+   "// inline in retail (byte stores to InventoryScreen / OpenedViaGuildSeal, retail +0x240 / +0x241, 0x007B58C8 / 0x007B5A64). No layout change."
+  ]
+ ]
+]

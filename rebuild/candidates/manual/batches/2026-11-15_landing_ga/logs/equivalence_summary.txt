@@ -1,0 +1,2 @@
+rows checked 56187 -> differing lines in $S/lc/equiv.tsv
+rc=0
