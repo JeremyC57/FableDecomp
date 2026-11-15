@@ -1,5 +1,5 @@
 // _global::RunCutsceneMacro(const CCharString& name, map<CCharString, CScriptGameResourceObjectScriptedThingBase>& actors, map<CCharString, bool>* flags, map<CCharString, CCharString>* substitutions, bool setup, bool skippable) -- run a cutscene def's macro: one ASCII `[Actor].Verb arg,arg,...` line per frame step, dispatched by a strncmp verb chain
-// Devices (all marked where they stand): 36 dead release asserts (FABLE_RETAIL_ASSERT( occurs 36 times = grep -c 'FABLE_RETAIL_ASSERT('; `// Inferred:` block above RunCutsceneMacro; invented conditions, count and places FITTED), FABLE_RETAIL_CCHARSTRING_STARTSWITH_ASSERT (overlay fable_string.h: one dead FABLE_RETAIL_ASSERT_ARM arm in StartsWith; FITTED carrier of the caller-size budget, forceinline EVIDENCED), row-local inline CSPositionY (descriptive name; FITTED carrier of an EVIDENCED x87 order), FITTED named locals `fraction = 0.0f` (.SlideTeleport / SlideTeleport; value is a dead store), `offset` (CameraFOVLookBetweenPos) and hoisted `frames` (CrowdAnimate), descriptive globals g_CutsceneSoundFrame (0x013B83C8) / g_CutsceneMusicOverridden (0x0143E8FD), header opt-ins FABLE_RETAIL_C3DVECTOR_CTOR_FORCEINLINE / FABLE_RETAIL_CRGBCOLOUR_CTOR_FORCEINLINE. CCutsceneDef from the shared engine/CCutsceneDef.h. No flag, no inline pragma.
+// Inline-budget: FABLE_FORCEINLINE header twins, each measured here (without it): FABLE_RETAIL_C3DVECTOR_CTOR_FORCEINLINE (DIFFER 75282v74778), FABLE_RETAIL_CRGBCOLOUR_CTOR_FORCEINLINE (74672v74778), FABLE_RETAIL_CCHARSTRING_FORCEINLINE_EQUALSCI (73965v74778), FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ (74452v74778), StartsWith forced inside the STARTSWITH_ASSERT opt-in (EVIDENCED, fable_string.h); the caller-size budget those sites share is set by the dead asserts below. Devices (all marked where they stand): 36 dead release asserts (FABLE_RETAIL_ASSERT( occurs 36 times = grep -c 'FABLE_RETAIL_ASSERT('; `// Inferred:` block above RunCutsceneMacro; conditions INFERRED as facts the verb code relies on, count and places FITTED), FABLE_RETAIL_CCHARSTRING_STARTSWITH_ASSERT (fable_string.h: one dead FABLE_RETAIL_ASSERT_ARM arm in StartsWith, the non-empty-prefix check `prefix.PStringData != 0`; FITTED carrier of the caller-size budget, FableWin's later debug StartsWith has no assert; forceinline EVIDENCED), row-local inline CSPositionY (descriptive name; FITTED carrier of an EVIDENCED x87 order), FITTED named locals `fraction = 0.0f` (.SlideTeleport / SlideTeleport; value is a dead store), `offset` (CameraFOVLookBetweenPos) and hoisted `frames` (CrowdAnimate), descriptive globals g_CutsceneSoundFrame (0x013B83C8) / g_CutsceneMusicOverridden (0x0143E8FD), header opt-ins FABLE_RETAIL_C3DVECTOR_CTOR_FORCEINLINE / FABLE_RETAIL_CRGBCOLOUR_CTOR_FORCEINLINE. CCutsceneDef from the shared engine/CCutsceneDef.h. No flag, no inline pragma.
 // Matched by wfC1 (rounds 0-2): RELOCATION_MATCH, 74,778 bytes, 20,435 instructions, 4,068 calls, frame 0x18DC.
 #pragma optimize("s", on)
 // Leaf: ?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z
@@ -220,10 +220,18 @@ bool __fastcall IS_THING_ALIVE(const T& thing)
 // SlideTeleport (0x00CC5C25) names all three. Only `start` goes through the helper: `end.Y` stays named in the caller, which keeps
 // two more c2 auto records than a two-argument helper (measured; CrowdAnimate's `random` then opens its record batch, 0x00CCE8EA).
 static inline float CSPositionY(const C3DVector& position) { return position.Y; }
-// Inferred: 36 dead release asserts (FABLE_RETAIL_ASSERT, fable_assert.h; they emit no bytes and cannot change behaviour). Rule:
-// one range assert on each parsed magnitude parameter (time, radius, distance, speed, count; not on signed offsets / colours) of the
-// verbs GiveHeroMorality .. CameraFOVLookBetweenPos (16), and in the Crowd* verbs `i < count` after each member name (13) plus one on
-// each time / speed parameter (7). Count and places are FITTED to three measured c2 facts of retail:
+// Inferred: 36 dead release asserts (FABLE_RETAIL_ASSERT, fable_assert.h; they emit no bytes and cannot change behaviour). Their
+// texts are not known: FableWin.exe is not on this machine, and ghidra_out holds the retail decomp (runcutscenemacro_full.c) and the
+// verb names (runcutscene_string_literals.txt) but no debug-build text of this function. Each condition states a fact the verb code
+// relies on, in the shape the budget needs (one local against a constant or another local, 18 dead tuples each):
+//   - a parsed magnitude is not negative (16: time, radius, seconds, frames, distance, speed, phase, delay, interval, duration) or
+//     not zero where a zero line would do nothing (GiveHeroMorality, GiveGold), and a parsed CrowdMove proximity is positive;
+//   - CacheMusic / PlayMusic: the music-set symbol is a set or -1 (GetSymbolSLONG's not-found value, which the next line tests);
+//   - CrowdAnimate / CrowdCombatAnimate: the member list is not empty (`rand() % memberCount` divides by it; the animate-for-time
+//     branches also check totalTime > 0);
+//   - in the other Crowd* member loops, the member index is below the crowd size CrowdCreate registered (11, incl. the round-robin
+//     index of CrowdTeleportRipple), which is what makes `actors[name + index]` find a member.
+// Count and places are FITTED to three measured c2 facts of retail:
 //   - caller size (inline budget): CCharString::GetLength expanded at 0x00CC03EA and called from 0x00CC0510 on needs about 595..695
 //     more caller tuples than the plain row; 36 asserts = 648 (c2 inline trace: margins +47 / -53 tuples, i.e. 34..38 asserts);
 //   - record ids (an x87 commutative operand order is the descending order of record id mod 2048): 0x00CCB3C6 `fld offsetX ; fadd
@@ -1835,14 +1843,14 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                 } else if (command.StartsWith("CacheMusic")) {
                     if (params[0].GetLength()) {
                         long musicType = g_pMusicTypeSymbolMap->GetSymbolSLONG(params[0]);
-                        FABLE_RETAIL_ASSERT(musicType >= 0);
+                        FABLE_RETAIL_ASSERT(musicType >= -1);
                         if (musicType != -1)
                             pDSTGame->CacheMusicSet((EMusicSetType)musicType);
                     }
                 } else if (command.StartsWith("PlayMusic")) {
                     if (params[0].GetLength()) {
                         long musicType = g_pMusicTypeSymbolMap->GetSymbolSLONG(params[0]);
-                        FABLE_RETAIL_ASSERT(musicType >= 0);
+                        FABLE_RETAIL_ASSERT(musicType >= -1);
                         if (musicType != -1) {
                             pDSTGame->OverrideMusic((EMusicSetType)musicType, true, false);
                             stopMusicAtEnd = !IsFalse(params[1]);
@@ -2576,9 +2584,9 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                             CScriptGameResourceObjectScriptedThingBase member;
                             long count = crowdSizes[params[0]];
                             float proximity = 1.0f;
-                            FABLE_RETAIL_ASSERT(proximity > 0.0f);
                             if (params[2].GetLength())
                                 proximity = GFCharStringToFloat(params[2]);
+                            FABLE_RETAIL_ASSERT(proximity > 0.0f);
                             EScriptEntityMoveType moveType;
                             if (params[3] == "SNEAK")
                                 moveType = (EScriptEntityMoveType)2;
@@ -2656,12 +2664,12 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                                 std::vector<CScriptGameResourceObjectScriptedThingBase> members;
                                 for (long i = 0; i < count; ++i) {
                                     CCharString memberName = params[0] + GFIntToCharString(i);
-                                    FABLE_RETAIL_ASSERT(i < count);
                                     member = actors[memberName];
                                     if (member.IsValid())
                                         members.push_back(member);
                                 }
                                 long memberCount = members.size();
+                                FABLE_RETAIL_ASSERT(memberCount > 0);
                                 long played = 1;
                                 long index = 0;
                                 bool sequential = false;
@@ -2751,12 +2759,12 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                                 long count = crowdSizes[params[0]];
                                 for (long i = 0; i < count; ++i) {
                                     CCharString memberName = params[0] + GFIntToCharString(i);
-                                    FABLE_RETAIL_ASSERT(i < count);
                                     member = actors[memberName];
                                     if (member.IsValid())
                                         members.push_back(member);
                                 }
                                 long memberCount = members.size();
+                                FABLE_RETAIL_ASSERT(memberCount > 0);
                                 float random = 0.0f;
                                 float time = 0.0f;
                                 if (duration < 0.05f)

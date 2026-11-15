@@ -8,6 +8,9 @@
 #include "fable_compiler.h"
 #endif
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ARROW_ASSERTED_BODY
+#include "fable_assert.h"   // operator->'s release ASSERT (below)
+#endif
 class CBaseObject;
 class CBaseObjectPointer;
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -78,7 +81,17 @@ public:
     T* operator->()const { return GetPointer(); }
 #else
     T* Get() const { return static_cast<T*>(GetPItem()); }             // FableWin ?Get@?$CIntelligentPointer@..@@QBEPAV..@XZ
-#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ARROW_CHECKED_LOCALS
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ARROW_ASSERTED_BODY
+    // Opt-in (agentR w22, 2026-11-15, row 0x00652FA4 NPlayerGui::CDrawQuickAccessIcons::Draw; replaces the FITTED ARROW_CHECKED_LOCALS
+    // text there): the debug body with its one assert. FableWin.pdb ??C?$CIntelligentPointer@..@@QBEPAV..@XZ is 336 bytes / 92 instructions
+    // at /Od in 25 instances (319 / 91 in two), Get() / GetPointer() 19 / 9 (54; 17 / 8 in 12). VC7.1 /Od (calibrated: it gives Get / GetPointer
+    // exactly 19 / 9) puts a body with ONE Lionhead ASSERT at 249..263 bytes / 73..77 instructions and one with two at 446 / 130, so the
+    // debug operator-> holds exactly one assert. In the release build the assert compiles away (FABLE_RETAIL_ASSERT, fable_assert.h:
+    // nothing, or the dead arm under FABLE_RETAIL_ASSERT_DEAD_ARM; Draw grades the same either way). What stays are the two named
+    // locals: every Draw spelling with fewer (`return Get();`, one local, the cast or Get() inside the assert) grades DIFFER(4653v4653).
+    // Same bytes as `return Get();` wherever c2's record numbering does not matter.
+    T* operator->() const { CBaseObject* item = GetPItem(); T* pointer = static_cast<T*>(item); FABLE_RETAIL_ASSERT(pointer); return pointer; }
+#elif defined(FABLE_RETAIL_CINTELLIGENTPOINTER_ARROW_CHECKED_LOCALS)
     // Opt-in (agentC44, row 0x00652FA4 NPlayerGui::CDrawQuickAccessIcons::Draw; FITTED text, flagged): FableWin.pdb
     // ??C?$CIntelligentPointer@..@@QBEPAV..@XZ is 336 bytes / 92 instructions at /Od in all 17 instances (Get() is 19 / 9): operator->
     // is not `return Get();` but a body with asserts. The asserts compile away in retail; what stays are its named locals, which

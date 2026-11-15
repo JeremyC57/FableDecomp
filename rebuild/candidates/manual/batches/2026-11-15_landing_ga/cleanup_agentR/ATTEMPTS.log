@@ -1,0 +1,89 @@
+# ATTEMPTS.log -- agentR (w22), 2026-11-15. Grader: rg1.sh / q.py (catalog oracle). One compile at a time.
+## 0x00D0A830 CBanditKing::Main (bk/)
+base (landed)                                   RELOCATION_MATCH
+m0  named macros BK_T / BK_T_AFTER_WAIT, same tokens   RELOCATION_MATCH (cpp -P token stream identical to landed)
+p1  BK_T + BK_SAY statement macro (do/while round the whole speak block), movie do-scope  RELOCATION_MATCH, .text bytes+relocs identical to landed
+p2  p1 with plain-brace movie scope              DIFFER(2704v2720)
+p3  p1 with unwrapped BK_T (if .. goto)         DIFFER(2704v2720)
+p1e1 p1 without the inline_depth pragma          DIFFER(2812v2720)
+p1e2 p1, `Terminate: ;` implicit end, no pragma  DIFFER(2812v2720)
+p1e1 + /d2inlT40,42 2688 | T44..52 2736 | T54..60 2760 | T65..100 2812   no match
+p1e1 + /d2inlS5..9 2812 | S10..14 2880            no match
+final/00d0a830.cpp (p1 + comments)               RELOCATION_MATCH, .text identical to landed; test PASS (g++ -std=c++03)
+## 0x00652FA4 CDrawQuickAccessIcons::Draw (qa/; probe overlay qa/probe with ARROW_PROBE_BODY)
+od/od.cpp VC7.1 /Od calibration: Get / GetPointer 19b/9i (FableWin 19/9); one ASSERT body 249..263b / 73..77i; two asserts 446..462b / 130..134i; FableWin operator-> 336b/92i (25), 319/91 (2) -> one assert
+a0  item=GetPItem(); pointer=static_cast(item); return pointer   (landed fitted)   RELOCATION_MATCH
+a00 return Get();                                                  DIFFER(4653v4653)
+a01 T* pointer = Get(); return pointer;                            DIFFER(4653v4653)
+a1  T* pointer = Get(); ASSERT(pointer); return pointer;           DIFFER(4653v4653)
+a2  item; ASSERT(item); pointer = cast; return pointer             RELOCATION_MATCH
+a3  item; ASSERT(item); return static_cast(item)                   DIFFER(4653v4653)
+a4  pointer = static_cast(GetPItem()); ASSERT(pointer); return     DIFFER(4653v4653)
+a5  ASSERT(Get()); return Get();                                   DIFFER(4653v4653)
+a6  T* pointer = Get(); ASSERT(pointer != 0); return pointer;      DIFFER(4653v4653)
+a7  ASSERT(GetPItem() != 0); return Get();                         DIFFER(4653v4653)
+a9  item; pointer = cast; ASSERT(pointer); return pointer          RELOCATION_MATCH (dead arm), RELOCATION_MATCH (a9n, assert compiled out)
+a10 item; pointer = cast; ASSERT(pointer != 0); return pointer     RELOCATION_MATCH
+a11 item; pointer = GFDebugPDynamicCast(item,(T*)0); ASSERT; ret   DIFFER(4653v4653)
+final/00652fa4.cpp + hdr/engine/CIntelligentPointer.h (new opt-in ARROW_ASSERTED_BODY = a9, no dead arm)  RELOCATION_MATCH; object code+data identical to landed ($L labels normalised); test PASS
+hdrcheck2 on hdr/: default and every single opt-in same; CINTELLIGENTPOINTER+ARROW_CHECKED_LOCALS / +GET_ORIGINAL_CHAIN same
+## 0x005FF190 CTCInventoryMap::CreateMapMarkers (mm/)
+base (landed: 4 guards + FORCEINLINE_DTOR)  RELOCATION_MATCH
+f0 plain for x4 (dtor) DIFFER(4612v4176); w0 while x4 (dtor) DIFFER(4164v4176); g1 guards nodtor DIFFER(4084v4176); f1 nodtor 4488; w1 nodtor 4044
+sweep: 81 per-loop g/f/w combinations x {forced dtor, none} = 162 grades: only gggg+dtor RELOCATION_MATCH (ggwf+dtor 4176v4176 DIFFER); histogram in mm/sweep.txt
+e1 cards guards -> if (!cards.empty()) (x3)       RELOCATION_MATCH
+e2 e1 + regions guard if (!regions.empty())    DIFFER(4192v4176)
+e5 regions guard !regions.empty() only          DIFFER(4192v4176)
+e6/e7/e8/e10/e11 regions guard size()>0 / !=0 / size(), decl variants  DIFFER(4192v4176) each
+e12 e1 + 'unsigned long i = 0;' (guard i < regions.size())   RELOCATION_MATCH
+e9 e1 with iterators in the for-init               DIFFER(4176v4176)
+d1 e12 without FORCEINLINE_DTOR (implicit ~map)  DIFFER(4084v4176)
+d2 e12 + forced ~_Rb_tree (STLport member), no ~map  DIFFER(4084v4176)
+d3 e12 + plain user-declared ~map() {}          RELOCATION_MATCH
+d4 e12 + plain explicit-inline ~_Rb_tree          DIFFER(4084v4176)
+006172b0 (~map COMDAT) graded from base/d1/d3/x2/x3 sources: RELOCATION_MATCH each (not discriminating)
+x1 d1 + template class std::map<long,pair<long,long> >; before the row  DIFFER(4084v4176)
+x2 d1 + earlier fn calling quests->~map()       RELOCATION_MATCH
+x3 x2 under auto_inline(on)                     RELOCATION_MATCH
+x4 d1 + earlier fn with a local map              RELOCATION_MATCH
+x5 d1 + the x2 function AFTER the row           DIFFER(4084v4176)
+x7 d1 + earlier UNUSED inline fn with a local map (no symbol)  RELOCATION_MATCH, leaf bytes+relocs identical to landed
+x8 static unused (no symbol)  RELOCATION_MATCH; x9 anonymous-namespace (symbol kept)  RELOCATION_MATCH
+final/005ff190.cpp (= x7 + comments)  RELOCATION_MATCH, leaf identical to landed; test PASS
+## 0x00E50FD0 BeardyBaldyMan::Main (bb/)
+u0 no asserts  DIFFER(9869v9885)
+u1 check sehMe.IsValid() && GetScriptThing()==Me at BB_SPEAK top (24) + end of BB_START_SCRIPTING (6) = 30  RELOCATION_MATCH, leaf identical
+u2 same, check inside the health test before Speak  RELOCATION_MATCH, leaf identical
+u3 BB_SPEAK only (24)  DIFFER(9869v9885); u4 BB_START_SCRIPTING only (6)  DIFFER(9869v9885)
+final/00e50fd0.cpp = u1 + comments  RELOCATION_MATCH, leaf identical; test PASS
+## 0x00E3BB70 CMadame::Main (md/)
+v0 no asserts  DIFFER(10133v10149); v1 per-speech check in MD_SAY  DIFFER(10156v10149)
+t1 8 distinct asserts (handles, house, 20 text keys in 4s)  RELOCATION_MATCH
+t2 handle(4) + house(2) + every fixed line per scene (26) = 32  RELOCATION_MATCH, leaf identical
+t3 t2 + seh_Madam check (36)  DIFFER(10153v10149); t4 t2 without the house check (30)  DIFFER(10155v10149)
+final/00e3bb70.cpp = t2 + comments  RELOCATION_MATCH (/d2inlT69), leaf identical; test PASS
+## 0x00CBFB7D RunCutsceneMacro (rc/; overlay rc/ovl then hdr_test/ for the fable_string.h arm)
+search: FableWin.exe not on this machine; ghidra_out has the retail decomp (runcutscenemacro_full.c) + verb literals, no debug text; acctC notes: none quote assert texts
+m1 musicType >= 0 -> musicType >= -1 (x2, CacheMusic / PlayMusic; -1 = GetSymbolSLONG not-found, tested next line)   RELOCATION_MATCH
+m2 CrowdMove proximity assert moved after its parse (was before)                         RELOCATION_MATCH
+m3 CrowdAnimate member loop: `i < count` -> FABLE_RETAIL_ASSERT(memberCount > 0) after `long memberCount = members.size();`  RELOCATION_MATCH
+m4 same in CrowdCombatAnimate                                                             RELOCATION_MATCH
+s0 fable_string.h STARTSWITH_ASSERT arm `PStringData != 0` -> `prefix.PStringData != 0` (same line)   RELOCATION_MATCH
+m5 m1..m4 + s0                                                                            RELOCATION_MATCH, leaf bytes+relocs identical (25050 lines)
+broken-overlay control (fable_string.h overlay with a syntax error)                       SRC_FAIL (overlay is in effect)
+first overlay without the root includers of fable_string.h                                SRC_FAIL C2011 CWideStringData (bare include -> repo copy) -> hdr_test/
+nf device checks, each force removed alone: C3DVECTOR_CTOR 75282v74778, CRGBCOLOUR_CTOR 74672v74778, EQUALSCI 73965v74778, TEXT_EQ 74452v74778 (all needed)
+assert count window: the landed row's c2 inline-trace measurement (margins +47/-53 tuples = 34..38 asserts) kept; count 36 unchanged
+final/00cbfb7d.cpp = m5 + rewritten Inferred block / line 2   RELOCATION_MATCH, leaf identical; test PASS
+## device / mark audit (all rows)
+00d0a830 fi: GetTime FABLE_FORCEINLINE -> plain inline: leaf identical (inert, removed); WIDESCREEN / MOVIEBASE FORCEINLINE_CTOR defines removed: leaf identical (inert, removed); CTimer::operator= plain inline: DIFFER(2704v2720) (kept, now on line 2)
+00652fa4: CLEAR_FORCEINLINE off 4606v4653; RESET off 4638v4653; RELEASE off 4639v4653; ISNONZERO off: Draw identical, carried DrawEffectAtPos 0x0064546F 389v406 (kept, now on line 2); auto_inline(off) round carried bodies: each carried body RELOCATION_MATCH at its own address
+00e50fd0 dv: GetTime forced -> plain inline: leaf identical (removed); WIDESCREEN ctor force off: DIFFER(9803v9885) (kept, now on the Inline-budget line)
+00e3bb70 dv: operator= / GetTime plain inline: DIFFER(10149v10149) each (kept); WIDESCREEN ctor force off: DIFFER(10179v10149) (kept, now on line 2)
+005ff190 ai1..ai3: every #pragma auto_inline removed (round GetDef<T> and round the row): leaf identical (inert, removed)
+005ff190 n1: stand-in renamed CountRegionQuests -> DefineRegionQuestMapDestructor (made-up name says what it does)  RELOCATION_MATCH, leaf identical
+## cross-row
+hdrcheck2 hdr/: default + every single opt-in same; CINTELLIGENTPOINTER + ARROW_CHECKED_LOCALS / + GET_ORIGINAL_CHAIN same
+lc2.sh (landed source, repo headers vs final, FABLE_HDR_OVERLAY=hdr_test; absolute paths): all six IDENTICAL leaf bytes+relocs (943 / 1691 / 1501 / 3329 / 3314 / 25050 lines)
+vland.py dry run (payload of the six finals + landed tests, landing ga oracle, --recheck-landed, FABLE_HDR_OVERLAY=hdr_test): WINS 6/6 RELOCATION_MATCH, behaviour PASS; warnings only pre-existing RELOC_NAME labels + RELOC_ALIAS import thunks (vl/vland.log)
+g++ -std=c++03 behaviour tests: PASS (6/6); 64-bit g++ -fsyntax-only of each row: no error the landed row does not already have

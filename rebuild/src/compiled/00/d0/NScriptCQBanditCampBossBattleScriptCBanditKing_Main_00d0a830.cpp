@@ -1,21 +1,24 @@
 // NScript::CQ_BanditCampBossBattleScript::CBanditKing::Main() -- Twinblade's boss-fight script: set the bandit-camp objective and minimap marker, taunt the hero at three-quarter and half health until the fight is over, then lie in the defeated pose begging every ten seconds; when the hero hits him again play the "over" line, turn him into a killable enemy of the hero with a health bar and track his health until he dies
-// Inline-budget: in-body #pragma inline_depth(0) ... inline_depth() round the one `Terminate: return` statement -- the speech-wait terminate exits destroy the movie EXPANDED (0x00D0B27A: call 0x006E7AB0 ; GROBase vtable store ; call 0x0099A430) and then CALL ~CTimer 0x00CD4470 / ~seh_me 0x007E74D0 / ~CTimer (shared tail 0x00D0B297), the only such site in the whole exe (scan of every expanded movie dtor). c2 scores a callee per site as c*g(f) and the implicit movie dtor costs more than ~CTimer (c 19 v 14), so no threshold (/d2inlT, /d2inlS sweeps) splits them inside ONE return statement: the movie must be destroyed at a hot statement and the timers at a cold one.
+// Inline-budget: in-body #pragma inline_depth(0) ... inline_depth() round the one `Terminate: return` statement -- the speech-wait terminate exits destroy the movie EXPANDED (0x00D0B27A: call 0x006E7AB0 ; GROBase vtable store ; call 0x0099A430) and then CALL ~CTimer 0x00CD4470 / ~seh_me 0x007E74D0 / ~CTimer (shared tail 0x00D0B297), the only such site in the whole exe (scan of every expanded movie dtor). c2 scores a callee per site as c*g(f) and the implicit movie dtor costs more than ~CTimer (c 19 v 14), so no threshold splits them inside ONE return statement: the movie is destroyed at the BK_T jump and the timers at the Terminate return, which the gotos make hot (without the pragma ~CTimer expands there and the return cross-jumps into the expanded-timer exit 0x00D0B227: 2812v2720; /d2inlT40..100 and /d2inlS5..14 sweeps on that source: no match). Also FABLE_FORCEINLINE on the row-local CTimer::operator=(long): retail expands every timer store (the pDSTGame SetTimer vtable call, no CTimer call); plain inline DIFFER(2704v2720). GetTime and the pause / movie ctor opt-ins (FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_ / CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_FORCEINLINE_CTOR) are not forced: the leaf is byte-identical without them (agentR w22).
 // Leaf: ?Main@CBanditKing@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D0A830, 2720 bytes incl. the 5-entry BegCount jump table after the last ret (0x00D0B2BC..), thiscall, no EH frame.
 // Identity: Ego_r.pdb / FableWin.pdb ?Main@CBanditKing@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ (private virtual); its one .rdata reference is the CBanditKing entity-vtable slot at 0x012C9478.
-// FITTED (all chosen by grading; behaviour identical to plain returns): (1) one do { } while (0) as the speech-movie scope (earlier lane,
-//   CEndGameScythe-style frequency lever); (2) the two speech-wait terminate checks leave through `goto Terminate` (the scope exit destroys
-//   the pause object and the movie at the goto, where c2 sees a hot block) wrapped in the statement-macro do-while(0) -- once inside the
-//   IsPerformingScriptTask loop, twice after it (one wrapper gives f 0.0183 there, below the movie dtor's 0.047 break-even; two give the
-//   expansion); (3) `Terminate: return` at the end of the function under inline_depth(0), so the shared cold tail calls ~CTimer / ~seh_me
-//   as retail (without the pragma that return is hot and cross-jumps into the expanded-timer exit 0x00D0B227). Without (1) or with a
-//   single wrapper on the second check: 2676 / 2704 bytes; the plain-return source is 2700v2720 (movie dtor called at 0x00D0B27A).
+// Shape (all measured by grading; behaviour identical to plain returns):
+//   (1) BK_T, the speech-wait terminate check, is a statement macro (do { } while (0)) that leaves through `goto Terminate`: the jump
+//       leaves the movie scope, so the pause object and the movie are destroyed at the jump (a hot block, movie dtor expanded at
+//       0x00D0B27A) and the function's `Terminate: return` destroys BegTimer / seh_me / TauntTimer (the shared tail 0x00D0B297, all
+//       three called). A plain `return` there destroys all five in one statement, where c2 cannot expand the dearer movie dtor and call
+//       the cheaper ~CTimer (plain-return source: 2700v2720, movie dtor called).
+//   (2) BK_SAY, the speak-and-wait block, is a statement macro (do { } while (0) round `if (GetHealth > 0) { Speak; wait; T; }`), the
+//       idiom of the landed CEndGameScythe::Main 0x00D2ED20. It replaces the earlier hand-nested `do { do { T } while (0); } while (0)`
+//       after the wait loop (same objects, cpp -P token streams differ only by that one do/brace pair moving).
+//   (3) the movie scope is a do { } while (0) block (FITTED, retail's construct unproven): plain braces grade DIFFER(2704v2720).
+//   Measured alternatives: unwrapped BK_T 2704; no pragma 2812 (also with an implicit end `Terminate: ;`); per-row /d2inlT40..100 and
+//   /d2inlS5..14 on the pragma-free source: none matches (2688..2880), so the scoped pragma (Inline-budget line) is the least device.
 // Callees: CTimer ctor 0x00CD4450 / dtor 0x00CD4470 (GetTime / operator= expanded through pDSTGame 0x0143E8F8), movie PImp dtor
 //   CCountedPointer<CScriptGameResourceObjectMovieBase>::~ 0x006E7AB0 (out of line, as the landed movie rows), ~CBaseObject 0x0099A430,
 //   ~CScriptGameResourceObjectScriptedThingBase 0x007E74D0, IsActiveThreadTerminating 0x00F35B30, SetPredicate (CIsThingAlive).
 #include "fable_compiler.h"
-#define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
-#define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -50,8 +53,22 @@ extern CGameScriptInterfaceBase* pDSTGame;
 inline CTimer::CTimer():TimerIndex(pDSTGame->RegisterTimer()) {}
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
-FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 
+// BK_T: the terminate check of the speech wait. It leaves the movie scope through the function's Terminate exit (header item 1).
+#define BK_T do { if(IsActiveThreadTerminating()) goto Terminate; } while (0)
+// BK_SAY: say a line and wait for it (only while the speaker has health), as one statement (header item 2).
+#define BK_SAY(text) \
+    do { \
+        if(Game->GetHealth(seh_me.GetScriptThing())>0.0f) { \
+            seh_me.Speak(Game->GetHero(),text,GROUP_SELECT_NONE,false,true,false); \
+            while(seh_me.IsPerformingScriptTask()) { \
+                Game->NewScriptFrame(); \
+                BK_T; \
+            } \
+            BK_T; \
+        } \
+    } while (0)
 void NScript::CQ_BanditCampBossBattleScript::CBanditKing::Main()
 {
     TRetVoid _Fail_Val;
@@ -133,19 +150,12 @@ void NScript::CQ_BanditCampBossBattleScript::CBanditKing::Main()
         }
         if(Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(HERO_ABILITY_HEAL_LIFE_SPELL,"SCRIPT_NAME_HERO"))) {
             if(IsActiveThreadTerminating()) return _Fail_Val.Return();
-            do {
+            do {   // the speech movie's scope (header item 3): movie and pause end before the health bar
                 CScriptGameResourceObjectMovieBase speech_movie;
                 Game->StartMovieSequence("",speech_movie);
                 CWideScreenMagicPauseEntities PauseMyEntitiesPlease(*Game);
                 seh_me.ClearAllActionsIncludingLoopingAnimations();
-                if(Game->GetHealth(seh_me.GetScriptThing())>0.0f) {
-                    seh_me.Speak(Game->GetHero(),"TEXT_QST_009_TWINBLADE_OVER",GROUP_SELECT_NONE,false,true,false);
-                    while(seh_me.IsPerformingScriptTask()) {
-                        Game->NewScriptFrame();
-                        do { if(IsActiveThreadTerminating()) goto Terminate; } while (0);
-                    }
-                    do { do { if(IsActiveThreadTerminating()) goto Terminate; } while (0); } while (0);
-                }
+                BK_SAY("TEXT_QST_009_TWINBLADE_OVER");
                 ParentClass.TwinBladeAttacked=true;
                 ParentClass.AngryBanditNeeded=4;
                 if(seh_me.IsValid()) seh_me.Release();
@@ -162,8 +172,8 @@ void NScript::CQ_BanditCampBossBattleScript::CBanditKing::Main()
             }
         }
     }
-Terminate:
-#pragma inline_depth(0)
+Terminate:   // reached only from BK_T (the main loop never ends)
+#pragma inline_depth(0)   // Inline-budget (line 2): ~CTimer called here, as retail's shared tail 0x00D0B297
     return _Fail_Val.Return();
 #pragma inline_depth()
 }

@@ -1,8 +1,8 @@
 // NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main() -- Beardy Baldy in Bowerstone South: start the parent's WatchForAttack thread, then each frame scold the hero when attacked or say a random line when the speech timer runs out, and walk the hairdo / beard / moustache phases when talked to; when the quest is complete give the experience, run to the exit marker and fade out
-// Grade: RELOCATION_MATCH (9885v9885) -- wfE3 #3. Main loop `for (; !false; Game->NewScriptFrame()) { T-return; ... }` (the CV_SwordInTheStone crowd twin 0x00ED5F50 shape): every ctor / dtor call-or-expand decision is retail's with no flag; one scoped inline_depth(0) region round the row-local CSpawnedFunc1 ctor specialization (Inline-budget line below). The last residue (retail's second entry zero store 0x00E50FE8 `mov [esp+34h],ebp` into the flags-home word, which moved the coalesced temp slot +0x34 -> +0x48 and three alignment fillers) is closed by the dead release asserts below (Inferred line).
-// Inferred: 8 dead release asserts (FABLE_RETAIL_ASSERT, overlay fable_assert.h, FABLE_RETAIL_ASSERT_DEAD_ARM) right after the AddSpawnedFunction statement, holding 32 conditional temporaries (4 CScriptThing temporaries after the `||` of each). The COUNT window and the position are EVIDENCED, the assert conditions are INFERRED/FITTED (retail emits no byte for them). VC7.1 numbers a conditional-temporary flag bit for every temporary created right of `&&` / `||` even inside the dead `if (0)` arm of the release assert, opens a second flags word once 32 bits are numbered, and c2 deletes the dead arm leaving only that word's entry `$T = 0` = retail's second entry store 0x00E50FE8 `mov [esp+34h],ebp`. Retail's first word is the ebx flags of the AddSpawnedFunction new-expression (bits 1,2,4, home store 0x00E50FDF from ebx), so the dead bits come after that statement: measured (row-local dead-test form) 29 DIFFER, 30 / 31 / 32 / 35 RELOCATION_MATCH after it; before it the two entry stores swap. Asserts without a conditional temporary number no bits (40 x FABLE_RETAIL_ASSERT(x.IsValid()) leaves DIFFER 9869v9885). Under FABLE_PORTABLE / other compilers the asserts are ((void)0); they cannot change behaviour.
+// Grade: RELOCATION_MATCH (9885v9885) -- wfE3 #3. Main loop `for (; !false; Game->NewScriptFrame()) { T-return; ... }` (the CV_SwordInTheStone crowd twin 0x00ED5F50 shape): every ctor / dtor call-or-expand decision is retail's with no flag; one scoped inline_depth(0) region round the row-local CSpawnedFunc1 ctor specialization (Inline-budget line below). The last residue (retail's second entry zero store 0x00E50FE8 `mov [esp+34h],ebp` into the flags-home word, which moved the coalesced temp slot +0x34 -> +0x48 and three alignment fillers) is closed by the dead release asserts in BB_START_SCRIPTING / BB_SPEAK (Inferred line 3).
+// Inferred: the debug build's per-use check that the scripted-thing handle drives this entity, compiled out (FABLE_RETAIL_ASSERT, fable_assert.h, FABLE_RETAIL_ASSERT_DEAD_ARM): `sehMe.IsValid() && sehMe.GetScriptThing() == Me` at the end of BB_START_SCRIPTING (6 uses) and before each BB_SPEAK (24 uses; every one follows a BB_START_SCRIPTING with no Release between). Its wording and places are INFERRED (no FableWin text exists here: FableWin.exe is not on this machine, ghidra_out holds no decomp of this function); what the retail bytes EVIDENCE is the count window: 30..35 conditional temporaries (one GetScriptThing result per check, 30 here) after the AddSpawnedFunction statement. VC7.1 numbers a conditional-temporary flag bit for every temporary created right of `&&` / `||` even inside the dead `if (0)` arm of the release assert, opens a second flags word once 32 bits are numbered, and c2 deletes the dead arm leaving only that word's entry `$T = 0` = retail's second entry store 0x00E50FE8 `mov [esp+34h],ebp`. Retail's first word is the ebx flags of the AddSpawnedFunction new-expression (bits 1,2,4, home store 0x00E50FDF from ebx), so the dead bits come after that statement: measured (row-local dead-test form) 29 DIFFER, 30 / 31 / 32 / 35 RELOCATION_MATCH after it; before it the two entry stores swap; the same check in BB_SPEAK only (24) or BB_START_SCRIPTING only (6): DIFFER 9869v9885. Asserts without a conditional temporary number no bits (40 x FABLE_RETAIL_ASSERT(x.IsValid()) leaves DIFFER 9869v9885). Under FABLE_PORTABLE / other compilers the asserts are ((void)0); they cannot change behaviour.
 // Leaf: ?Main@CBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@EAEXXZ
-// Inline-budget: scoped `#pragma inline_depth(0)` ... `#pragma inline_depth()` round the explicit specialization of the CSpawnedFunc1<CV_BeardyBaldyScript,CScriptThing> ctor (same symbol and body as the primary; VC7.1 instantiates class-template member bodies at the end of the TU, so a pragma round the template itself is ignored) -- keeps the by-value CScriptThing parameter's dtor out of line inside the expanded functor ctor as retail does (copy ctor 0x004ABE90 at 0x00E51090, ~CScriptThing call 0x004AA840 at 0x00E51099); without the region, or without the specialization: DIFFER 9854v9885. Same idiom in landed CUndeadFellow::Main 0x00EF87D0 (rebuild/src/compiled/00/ef/...CUndeadFellow_Main_00ef87d0.cpp).
+// Inline-budget: scoped `#pragma inline_depth(0)` ... `#pragma inline_depth()` round the explicit specialization of the CSpawnedFunc1<CV_BeardyBaldyScript,CScriptThing> ctor (same symbol and body as the primary; VC7.1 instantiates class-template member bodies at the end of the TU, so a pragma round the template itself is ignored) -- keeps the by-value CScriptThing parameter's dtor out of line inside the expanded functor ctor as retail does (copy ctor 0x004ABE90 at 0x00E51090, ~CScriptThing call 0x004AA840 at 0x00E51099); without the region, or without the specialization: DIFFER 9854v9885. Same idiom in landed CUndeadFellow::Main 0x00EF87D0 (rebuild/src/compiled/00/ef/...CUndeadFellow_Main_00ef87d0.cpp). Also FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR (the header's forced pause-entities ctor, expanded at every movie block as in the 14 Codex pass 13 NScript TUs): without it DIFFER 9803v9885. CTimer::GetTime is plain inline (forcing it: identical leaf).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E50FD0, 9885 bytes, thiscall, plain `ret`, no EH frame.
 // Identity (proven): slot 1 (Main) of the CBB_BeardyBaldyMan entity vtable 0x012E5AEC stored by Alloc 0x00E507E0; Ego_r.pdb and FableWin.pdb ?Main@CBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@EAEXXZ. Locals: Anniversary PDB names (regionName, sehMe, randomSpeech, speech_movie, Exit).
 #define FABLE_RETAIL_CPREDICATEBASE_NOVTABLE
@@ -43,14 +43,16 @@ enum EScriptEntityMoveType { ENTITY_MOVE_WALK=0, ENTITY_MOVE_RUN=1, ENTITY_MOVE_
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A
 extern CDefPointer<const CScriptDef> pGlobalScriptDef;   // 0x0143E90C
 inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
-FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 // SPEECH: the generated "say a line and wait for it" block (T-check at its end, after the WAIT loop).
 // Inline-budget (see header): the functor ctor specialization under inline_depth(0), as in landed CUndeadFellow::Main 0x00EF87D0.
 #pragma inline_depth(0)
 template<> FABLE_FORCEINLINE CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScriptThing>::CSpawnedFunc1(const CCharString& name, unsigned long id, NScript::CV_BeardyBaldyScript* pclass, void (NScript::CV_BeardyBaldyScript::*func)(CScriptThing), CScriptThing par1)
     : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) { }
 #pragma inline_depth()
+// BB_SPEAK and BB_START_SCRIPTING carry the Inferred handle check (header line 3).
 #define BB_SPEAK(text, group) \
+    FABLE_RETAIL_ASSERT(sehMe.IsValid() && sehMe.GetScriptThing() == Me); \
     if (Game->GetHealth(sehMe.GetScriptThing()) > 0.0f) { \
         sehMe.Speak(Game->GetHero(), text, group, false, true, false); \
         while (sehMe.IsPerformingScriptTask()) { \
@@ -66,7 +68,8 @@ template<> FABLE_FORCEINLINE CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScript
         Game->NewScriptFrame(); \
         BB_T; \
     } \
-    BB_T
+    BB_T; \
+    FABLE_RETAIL_ASSERT(sehMe.IsValid() && sehMe.GetScriptThing() == Me)
 
 void NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main()
 {
@@ -74,15 +77,6 @@ void NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main()
     CScriptGameResourceObjectScriptedThingBase sehMe;
     CCharString regionName;
     ParentClass.AddSpawnedFunction(new CSpawnedFunc1<CV_BeardyBaldyScript,CScriptThing>(CCharString("ParentClass.")+CCharString("WatchForAttack"),0,&ParentClass,&CV_BeardyBaldyScript::WatchForAttack,Me),CCharString(""));
-    // Inferred: 8 dead release asserts = 32 conditional temporaries (see header).
-    FABLE_RETAIL_ASSERT(!sehMe.IsValid() || (sehMe.GetScriptThing() == Me && sehMe.GetScriptThing() != Game->GetHero() && !sehMe.GetScriptThing().IsNull() && sehMe.GetScriptThing().IsAlive()));
-    FABLE_RETAIL_ASSERT(!sehMe.IsValid() || (sehMe.GetScriptThing() == Me && sehMe.GetScriptThing() != Game->GetHero() && !sehMe.GetScriptThing().IsNull() && sehMe.GetScriptThing().IsAlive()));
-    FABLE_RETAIL_ASSERT(!sehMe.IsValid() || (sehMe.GetScriptThing() == Me && sehMe.GetScriptThing() != Game->GetHero() && !sehMe.GetScriptThing().IsNull() && sehMe.GetScriptThing().IsAlive()));
-    FABLE_RETAIL_ASSERT(!sehMe.IsValid() || (sehMe.GetScriptThing() == Me && sehMe.GetScriptThing() != Game->GetHero() && !sehMe.GetScriptThing().IsNull() && sehMe.GetScriptThing().IsAlive()));
-    FABLE_RETAIL_ASSERT(!sehMe.IsValid() || (sehMe.GetScriptThing() == Me && sehMe.GetScriptThing() != Game->GetHero() && !sehMe.GetScriptThing().IsNull() && sehMe.GetScriptThing().IsAlive()));
-    FABLE_RETAIL_ASSERT(!sehMe.IsValid() || (sehMe.GetScriptThing() == Me && sehMe.GetScriptThing() != Game->GetHero() && !sehMe.GetScriptThing().IsNull() && sehMe.GetScriptThing().IsAlive()));
-    FABLE_RETAIL_ASSERT(!sehMe.IsValid() || (sehMe.GetScriptThing() == Me && sehMe.GetScriptThing() != Game->GetHero() && !sehMe.GetScriptThing().IsNull() && sehMe.GetScriptThing().IsAlive()));
-    FABLE_RETAIL_ASSERT(!sehMe.IsValid() || (sehMe.GetScriptThing() == Me && sehMe.GetScriptThing() != Game->GetHero() && !sehMe.GetScriptThing().IsNull() && sehMe.GetScriptThing().IsAlive()));
     for (; !false; Game->NewScriptFrame()) {
         BB_T;
         if (ParentClass.AttackedByHero) {

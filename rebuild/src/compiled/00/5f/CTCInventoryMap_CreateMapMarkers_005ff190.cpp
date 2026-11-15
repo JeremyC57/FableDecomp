@@ -18,17 +18,28 @@
 //  - the unused `teleporterRegion` copy (retail builds and destroys it, 0x005FF3A8 / 0x005FF5E0) and the unused `worldMap` reference
 //    (retail calls PeekWorld / PeekWorldMap and drops the result, 0x005FFCF7..0x005FFD00);
 //  - no FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_SUB: retail stores X before it computes Y at 0x005FFCAF.
-// FITTED (coordinator decision, same device as the landed 0x00607330 / matched 0x006096E0): four loop-entry tests that c2 folds into
-//   each loop's own entry test (no bytes): `i = 0; if (i < regions.size()) for (; ...)` on the first regions loop and the iterator
-//   declared first + `if (it != cards.end()) for (; ...)` on the three cards loops. They halve those loops' static frequency and cut
-//   the `for` leak from 5 to 3; only then does VC7.1 call CCountedPointer<CComponent>::Reset at the seven retail sites (0x005FF208,
-//   0x005FF454, 0x005FF4E2, 0x005FF571, 0x005FF978, 0x005FF9B3, 0x005FF9E1) and expand it at 0x005FF8EC and 0x005FFD4B. Without them the
-//   row is DIFFER(4612v4176) with 133/138 calls. The same split is also reached with plain `for` loops and five no-byte
-//   `if (!(c)) __assume(0);` statements (two at the top, one after each GetTC): DIFFER(4176v4176), 2 real hunks, not pursued.
+// Inferred: loop entry tests, their presence MEASURED, their spelling inferred (they halve the loops' static frequency and cut the `for` leak from 5 to 3; only then does VC7.1 call
+//   CCountedPointer<CComponent>::Reset at the seven retail sites 0x005FF208, 0x005FF454, 0x005FF4E2, 0x005FF571, 0x005FF978,
+//   0x005FF9B3, 0x005FF9E1 and expand it at 0x005FF8EC and 0x005FFD4B; no bytes of their own, c2 folds each into its loop's test):
+//   - the three cards loops: `if (!cards.empty())` -- STLport's list::empty() is the same `_M_next == _M_node` test as
+//     `begin() != end()` (the landed text was `if (it != cards.end())`; identical leaf bytes). The iterator stays declared with the
+//     list (in the for-init: DIFFER 4176v4176).
+//   - the regions loop (least usual spelling) `unsigned long i = 0; if (i < regions.size()) for (; i < regions.size(); ++i)` -- the guard must be the
+//     loop's own condition: `!regions.empty()`, `regions.size() > 0`, `!= 0`, `regions.size()` each add a separate test (DIFFER 4192v4176);
+//     plain `for` / `while` loops (all 81 per-loop for / while / guard combinations, with and without the destructor below): no match.
+// STLport map destructor: STLport 4.6 declares no ~map (checked in the 4.5.3, 4.6, 4.6.1 and 4.6.2 _map.h); the implicit one runs
+//   ~_Rb_tree() { clear(); } and ~_Rb_tree_base. Retail expands it at the end (0x00600136..0x0060019D: clear with one _M_erase level
+//   in place, call 0x00613CE0, two frees). Measured VC7.1 rule: a call site expands an implicit destructor only when the TU has already
+//   defined it in an EARLIER function (an unused inline one is enough; the same function after this row: DIFFER 4084v4176, called). So
+//   retail's TU defined ~map<long, pair<long, long> > before this function (which function is unknown); the unused inline
+//   DefineRegionQuestMapDestructor below stands for that earlier use (descriptive name, emits no code). The landed FABLE_RETAIL_STLP_MAP_FORCEINLINE_DTOR
+//   (a forced user-declared ~map() {}, not STLport text) is no longer needed; a plain user-declared ~map() {} matches too.
+// The landed `#pragma auto_inline(off)` regions round the same-TU GetDef<T> body and round this function are gone: without them the
+//   leaf is byte-identical (GetDef stays a call, 0x0042B312), so they were no device at all.
 // Leaf: ?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z
 // Retail: 0x005FF190, 4176 bytes (code to 0x006001CB `ret 8`, `mov edi,edi` pad, switch jump table 0x006001D0..0x006001DF)
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
-#define FABLE_RETAIL_STLP_MAP_FORCEINLINE_DTOR
+
 #define FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
@@ -148,7 +159,6 @@
 #include "engine/CTCInventoryMap.h"
 
 using namespace NUISystem;
-#pragma auto_inline(off)
 // Same-TU body of CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*) (retail calls the instance 0x0042B312; as the landed
 // CTCInventoryMap::ConstructRegionDescriptionShops 0x006001E0): VC7.1 then sees the def pointer is not captured.
 template<class T> bool CDefinitionManager::GetDef(long index,CDefPointer<const T>* result)const {
@@ -157,8 +167,8 @@ template<class T> bool CDefinitionManager::GetDef(long index,CDefPointer<const T
     if(!definition.IsNull()) { result->SetDynamicCast(definition);return true; }
     return false;
 }
-#pragma auto_inline(on)
-#pragma auto_inline(off)
+// The TU's earlier use of the implicit std::map<long, std::pair<long, long> >::~map (see the header; never called).
+inline void DefineRegionQuestMapDestructor() { std::map<long, std::pair<long, long> > counts; }
 void CTCInventoryMap::CreateMapMarkers(NUISystem::CComponent* parent, std::vector<CRegion>& regions)
 {
     NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
@@ -174,14 +184,13 @@ void CTCInventoryMap::CreateMapMarkers(NUISystem::CComponent* parent, std::vecto
             heroMarker->SetAngle(1.0f - physics->GetFacingAngleXY());
         parent->AddChild(marker);
     }
-    unsigned long i;
-    i = 0;
+    unsigned long i = 0;
     if (i < regions.size())
     for (; i < regions.size(); ++i) {
         const CCharString& regionName = regions[i].GetName();
         std::list<CIntelligentPointer<CThing> > cards = CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().GetActiveQuestCards();
         std::list<CIntelligentPointer<CThing> >::iterator it = cards.begin();
-        if (it != cards.end())
+        if (!cards.empty())
         for (; it != cards.end(); ++it) {
             CTCQuestCard* card;
             (*it)->GetTC(&card);
@@ -206,7 +215,7 @@ void CTCInventoryMap::CreateMapMarkers(NUISystem::CComponent* parent, std::vecto
     std::map<long, std::pair<long, long> > regionQuests;
     std::list<CIntelligentPointer<CThing> > cards = CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().GetActiveQuestCards();
     std::list<CIntelligentPointer<CThing> >::iterator it = cards.begin();
-    if (it != cards.end())
+    if (!cards.empty())
     for (; it != cards.end(); ++it) {
         CTCQuestCard* card;
         (*it)->GetTC(&card);
@@ -220,7 +229,7 @@ void CTCInventoryMap::CreateMapMarkers(NUISystem::CComponent* parent, std::vecto
         }
     }
     std::list<CIntelligentPointer<CThing> >::iterator it2 = cards.begin();
-    if (it2 != cards.end())
+    if (!cards.empty())
     for (; it2 != cards.end(); ++it2) {
         CTCQuestCard* card;
         (*it2)->GetTC(&card);
@@ -280,4 +289,3 @@ void CTCInventoryMap::CreateMapMarkers(NUISystem::CComponent* parent, std::vecto
         }
     }
 }
-#pragma auto_inline(on)

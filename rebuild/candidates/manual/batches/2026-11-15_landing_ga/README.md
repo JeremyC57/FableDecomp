@@ -54,3 +54,20 @@ wrappers and `goto Terminate`), 0x00E50FD0 / 0x00E3BB70 (8 identical dead assert
 `LIBPK_MMX_COPY64` (0x00A5CB90; shared-header kernels with FABLE_PORTABLE twins), FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT_SCALE_SQUARED.
 `fable_assert.h` uses MSVC spellings (`__declspec(dllimport)`, `__debugbreak`) only under FABLE_RETAIL_ASSERT_DEAD_ARM and never
 under FABLE_PORTABLE. Two duplicated opt-in pairs (above) can be folded into one name each.
+
+## Follow-up 2026-11-15: fitted constructs cleaned (agentR; `cleanup_agentR/`)
+Six owner review items above are rewritten; each still RELOCATION_MATCH with its behaviour test PASS (`cleanup_agentR/vland_recheck.log`),
+and the whole-tree equivalence check shows only 0x00652FA4 and 0x00CBFB7D see changed header input.
+- 0x00D0A830 CBanditKing::Main: the nested `do { } while (0)` wrappers become two named statement macros (BK_T, BK_SAY, the landed
+  CEndGameScythe::Main idiom); the inert GetTime and constructor forces are dropped. `goto Terminate` and the scoped
+  `#pragma inline_depth(0)` stay (measured: 2700 / 2812 bytes without them; no `/d2inl` flag matches), the movie scope stays FITTED.
+- 0x00CBFB7D RunCutsceneMacro: still 36 dead asserts (34..38 fit the inline budget), with conditions corrected to facts the code
+  relies on (`musicType >= -1`, `memberCount > 0` before `rand() % memberCount`); line 2 is a measured Inline-budget line. StartsWith's
+  dead arm checks `prefix.PStringData != 0` (fable_string.h, same line count).
+- 0x00E50FD0 / 0x00E3BB70: the 8 identical asserts become natural set-up checks (speech handle, BordelloHouse, TextEntryExists),
+  all marked `// Inferred:`; the dead-temporary counts are measured (30 and 32).
+- 0x00652FA4: new opt-in FABLE_RETAIL_CINTELLIGENTPOINTER_ARROW_ASSERTED_BODY gives `operator->` FableWin's debug body (one assert;
+  FableWin.pdb size 336 bytes / 92 instructions, VC7.1 /Od calibration); ARROW_CHECKED_LOCALS is unchanged as the `#elif` branch.
+- 0x005FF190: the loop guards are `if (!cards.empty())` and one regions guard (only spellings of 162 that match, marked Inferred);
+  the forced `~map` is gone -- an unused inline that defines the implicit map destructor earlier in the TU (descriptive name
+  DefineRegionQuestMapDestructor) gives retail's expansion; both `#pragma auto_inline` regions are removed.

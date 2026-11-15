@@ -423,12 +423,12 @@ public:
 #endif
 #if defined(FABLE_RETAIL_CCHARSTRING_STARTSWITH_ASSERT) && !defined(FABLE_RETAIL_CCHARSTRING_STARTSWITH)
     // Retail opt-in (wfC1 G1, row 0x00CBFB7D RunCutsceneMacro): StartsWith with one dead release-ASSERT arm (fable_assert.h; no bytes).
-    // __forceinline is EVIDENCED: a plain inline body is 65 bytes and prices at 121..124 against the limit 15 at the verb tests
-    // (0x00CC04FA..), which retail expands 185 times. The dead arm is FITTED: retail's call / expand split along the row (GetLength
-    // called from 0x00CC0510, iterator== called at 0x00CC8407, vector ctors called at 0x00CD0DA4 / 0x00CD0E20 / 0x00CD0F3B, all
-    // vector<CScriptThing>::size() expanded) needs 11..16 more caller tuples per StartsWith expansion; FableWin's debug body
-    // (21 instructions / 56 bytes) holds no assert, so the true carrier of this dead IL is unknown.
-    FABLE_FORCEINLINE bool StartsWith(const CCharString& prefix) const { FABLE_RETAIL_ASSERT_ARM(PStringData != 0); return strncmp(GetAsCharArray(),prefix.GetAsCharArray(),prefix.GetLength())==0; }
+    // __forceinline is EVIDENCED: a plain inline body is 65 bytes and prices at 121..124 against the limit 15 at the verb tests (0x00CC04FA..),
+    // which retail expands 185 times. The dead arm is FITTED: retail's call / expand split (GetLength called from 0x00CC0510, iterator== at
+    // 0x00CC8407, vector ctors at 0x00CD0DA4 / 0x00CD0E20 / 0x00CD0F3B, every vector<CScriptThing>::size() expanded) needs 11..16 more caller
+    // tuples per StartsWith expansion; FableWin's (later) debug body (21 i / 56 b) has no assert, so the true carrier is unknown. Its check
+    // (Inferred, agentR w22): a non-empty prefix (an empty one matches every string; GetAsCharArray maps a null string to NullChar).
+    FABLE_FORCEINLINE bool StartsWith(const CCharString& prefix) const { FABLE_RETAIL_ASSERT_ARM(prefix.PStringData != 0); return strncmp(GetAsCharArray(),prefix.GetAsCharArray(),prefix.GetLength())==0; }
 #endif
 #ifdef FABLE_RETAIL_CCHARSTRING_STARTSWITHCASEINSENSITIVE
     // Retail opt-in (w22 wf16 row 0x007E8590 CTCOwnedEntity::SetPOwner): FableWin.pdb ?StartsWithCaseInsensitive@CCharString@@QBE_NABV1@@Z
