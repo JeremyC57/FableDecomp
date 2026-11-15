@@ -1,0 +1,65 @@
+--- a/rebuild/include/engine/CStreamingFontBank.h
++++ b/rebuild/include/engine/CStreamingFontBank.h
+@@ -33,6 +33,18 @@
+     // (also in FableWin.pdb), the constructor that reads the font entry `index` of the data bank.
+     CStreamingFontBank(CStreamingFontDataBank* bank, unsigned long index);   // 0x009A3C20
+ #endif
++#ifdef FABLE_RETAIL_CSTREAMINGFONTBANK_GLYPHLOOKUP
++protected:
++    // Chunk 792/793 (row 0x009A25D0 Render): Ego_r.pdb ?GlyphLookup@CStreamingFontBank@@IBEPAUCStreamingGlyphLookup@@G@Z, out of line
++    // at 0x009A1140 (protected const, the 16-bit character).
++    struct CStreamingGlyphLookup* GlyphLookup(unsigned short character) const;
++public:
++    // Chunk 793: Ego_r.pdb `dynamic initializer for 'CStreamingFontBank::AlphaMaskUVMul'` / `...AlphaMaskUVAdd'` (static C2DVector
++    // members, Mul initialised first); retail 0x013CA2F8 (Mul: Render multiplies by it) and 0x013CA300 (Add: Render adds it), both
++    // written by SetAlphaMaskUVs 0x009A0EC0. Access is not in the PDB name set: public is an assumption.
++    static class C2DVector AlphaMaskUVMul;
++    static class C2DVector AlphaMaskUVAdd;
++#endif
+ protected:
+     CStreamingFontDataBank* data_bank;                                   // +0x10
+     GlyphBank*              glyphBankCache;                              // +0x14
+@@ -46,7 +58,7 @@
+     unsigned long           fontIndex;                                   // +0x302c
+     CTexture*               PTexture;                                    // +0x3030
+ };
+-FABLE_STATIC_ASSERT(sizeof(CStreamingFontBank) == 0x3034);
++FABLE_STATIC_ASSERT_AT(49, sizeof(CStreamingFontBank) == 0x3034);
+ #else
+ class CStreamingFontDataBank;
+ class CTexture;
+@@ -73,20 +85,20 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CStreamingFontBank) == 0x3034);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, m_maxHeight) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, data_bank) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, glyphBankCache) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, glyphBankCacheIndex) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, MaxHeight) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, Weight) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, Italics) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, GlyphBankMemory) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, GlyphBanks) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, GlyphFlags) == 0x102c);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, fontIndex) == 0x302c);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, PTexture) == 0x3030);
++FABLE_STATIC_ASSERT_AT(76, sizeof(CStreamingFontBank) == 0x3034);
++FABLE_STATIC_ASSERT_AT(77, offsetof(CStreamingFontBank, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(78, offsetof(CStreamingFontBank, m_maxHeight) == 0x4);
++FABLE_STATIC_ASSERT_AT(79, offsetof(CStreamingFontBank, data_bank) == 0x10);
++FABLE_STATIC_ASSERT_AT(80, offsetof(CStreamingFontBank, glyphBankCache) == 0x14);
++FABLE_STATIC_ASSERT_AT(81, offsetof(CStreamingFontBank, glyphBankCacheIndex) == 0x18);
++FABLE_STATIC_ASSERT_AT(82, offsetof(CStreamingFontBank, MaxHeight) == 0x1c);
++FABLE_STATIC_ASSERT_AT(83, offsetof(CStreamingFontBank, Weight) == 0x20);
++FABLE_STATIC_ASSERT_AT(84, offsetof(CStreamingFontBank, Italics) == 0x24);
++FABLE_STATIC_ASSERT_AT(85, offsetof(CStreamingFontBank, GlyphBankMemory) == 0x28);
++FABLE_STATIC_ASSERT_AT(86, offsetof(CStreamingFontBank, GlyphBanks) == 0x2c);
++FABLE_STATIC_ASSERT_AT(87, offsetof(CStreamingFontBank, GlyphFlags) == 0x102c);
++FABLE_STATIC_ASSERT_AT(88, offsetof(CStreamingFontBank, fontIndex) == 0x302c);
++FABLE_STATIC_ASSERT_AT(89, offsetof(CStreamingFontBank, PTexture) == 0x3030);
+ #endif // FABLE_RETAIL_CSTREAMINGFONTBANK
+ 
+ #endif // FABLE_ENGINE_CSTREAMINGFONTBANK_H

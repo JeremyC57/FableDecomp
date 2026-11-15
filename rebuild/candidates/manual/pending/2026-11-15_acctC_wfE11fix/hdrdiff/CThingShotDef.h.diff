@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/CThingShotDef.h
++++ b/rebuild/include/engine/CThingShotDef.h
+@@ -57,6 +57,11 @@
+     bool          DoesExplosionDamageCaster;                 // +0xa9
+     bool          CanHitRollingTargets;                      // +0xaa
+     bool          PreventSlidingOnCollision;                 // +0xab
++#ifdef FABLE_RETAIL_CTHINGSHOTDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CThingShotDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CThingShotDef)==0xac);
++FABLE_STATIC_ASSERT_AT(61, sizeof(CThingShotDef)==0xac);
+ #endif

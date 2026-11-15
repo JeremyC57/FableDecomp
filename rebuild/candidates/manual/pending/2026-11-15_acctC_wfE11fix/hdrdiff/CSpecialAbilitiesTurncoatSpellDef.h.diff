@@ -1,0 +1,13 @@
+--- a/rebuild/include/engine/CSpecialAbilitiesTurncoatSpellDef.h
++++ b/rebuild/include/engine/CSpecialAbilitiesTurncoatSpellDef.h
+@@ -18,5 +18,10 @@
+     std::vector<float,std::allocator<float> > TurncoatTime;                      // +0x54
+     std::vector<float,std::allocator<float> > TurncoatRange;                     // +0x60
+     std::vector<float,std::allocator<float> > TurncoatXPUpEveryNSecs;            // +0x6C
++#ifdef FABLE_RETAIL_CSPECIALABILITIESTURNCOATSPELLDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CSpecialAbilitiesTurncoatSpellDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+ #endif

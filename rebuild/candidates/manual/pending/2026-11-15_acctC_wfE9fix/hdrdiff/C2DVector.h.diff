@@ -1,0 +1,32 @@
+--- a/rebuild/include/engine/C2DVector.h
++++ b/rebuild/include/engine/C2DVector.h
+@@ -85,6 +85,20 @@
+     // Y then X, adds, and runs fsqrt through the float overload (`fsqrt ; fstp st(2) ; fstp st(0)`, the dead difference
+     // vector popped under the result), which `(float)sqrt(X*X+Y*Y)` does not give (it stores before popping).
+     float GetMagnitude() const { return sqrtf(X*X+Y*Y); }
++#ifdef FABLE_RETAIL_C2DVECTOR_TOC2DCOORDI
++    // Opt-in (agentC39, row 0x00652FA4 CDrawQuickAccessIcons::Draw): Ego_r.pdb / FableWin.pdb ?ToC2DCoordI@C2DVector@@QBE?AVC2DCoordI@@XZ,
++    // expanded in retail's size-optimised CDrawQuickAccessIcons::Draw (0x00653F29: `fld [eax] ; mov [this],eax ; call _ftol2 ; ... ;
++    // fld [eax+4] ; call _ftol2` on the returned GFAnchorToBottomLeft temporary), where VC7.1 calls a plain-inline copy out of line
++    // (c2 inline trace: size 37, largest expanded callee 29) -> FABLE_FORCEINLINE. Text = FableWin /Od size (18i/47b). Defined after
++    // the class (needs the complete C2DCoordI).
++    class C2DCoordI ToC2DCoordI() const;
++#endif
++#ifdef FABLE_RETAIL_C2DVECTOR_TOC2DVECTOR
++    // Opt-in (agentC41, row 0x00652FA4 CDrawQuickAccessIcons::Draw): Ego_r.pdb / FableWin.pdb ?ToC2DVector@C2DVector@@QBE?AV1@XZ, the
++    // by-value copy of the vector (sibling of ToC2DCoordI). Retail's flash / d-pad sprite positions are a sum computed X then Y,
++    // copied (`fld st(1) ; fstp [copy.X] ; fst [copy.Y]`) with the sum's own stores dead (0x006540BB, 0x00654161).
++    C2DVector ToC2DVector() const { return *this; }
++#endif
+     // Chunk 752 (row 0x0054AC90 CSlider::ProcessEvent): Ego_r.pdb ??8C2DVector@@QBE_NABV0@@Z, the epsilon compare against
+     // ?DELTA_NOTIONAL_ZERO@@3MB 0x0129BA3C (`fld [a.X] ; fsub [b.X] ; fabs ; fcomp [129BA3Ch] ; test ah,41h ; jp`, then the Y test),
+     // `<=` per component as the landed ~CSlider 0x0054B360 proved. __forceinline: retail expands it at every site, including the
+@@ -158,4 +172,8 @@
+     C2DVector operator-(const C2DVector& vector) const { return C2DVector(X-vector.X,Y-vector.Y); }
+ };
+ #endif
++#if defined(FABLE_RETAIL_C2DVECTOR) && defined(FABLE_RETAIL_C2DVECTOR_TOC2DCOORDI)
++#include "engine/C2DCoordI.h"
++FABLE_FORCEINLINE C2DCoordI C2DVector::ToC2DCoordI() const { return C2DCoordI((long)X, (long)Y); }
++#endif
+ #endif

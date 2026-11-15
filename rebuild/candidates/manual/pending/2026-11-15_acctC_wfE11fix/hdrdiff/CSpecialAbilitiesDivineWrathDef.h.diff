@@ -1,0 +1,13 @@
+--- a/rebuild/include/engine/CSpecialAbilitiesDivineWrathDef.h
++++ b/rebuild/include/engine/CSpecialAbilitiesDivineWrathDef.h
+@@ -34,5 +34,10 @@
+     std::vector<float,std::allocator<float> > DamageTakenMultiplier;             // +0xE8
+     float SmallRingRadius;                                                       // +0xF4
+     float LargeRingRadius;                                                       // +0xF8
++#ifdef FABLE_RETAIL_CSPECIALABILITIESDIVINEWRATHDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CSpecialAbilitiesDivineWrathDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+ #endif

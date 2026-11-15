@@ -1,0 +1,33 @@
+--- a/rebuild/include/engine/CAIStateGroup_RangedCombatUsePreferredFirePoint.h
++++ b/rebuild/include/engine/CAIStateGroup_RangedCombatUsePreferredFirePoint.h
+@@ -25,7 +25,13 @@
+ #include "rebuild_abi.h"
+ 
+ #pragma pack(push, 1)
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++class CCharString; class CAIStateGroupBase;
++#endif
+ struct CAIStateGroup_RangedCombatUsePreferredFirePoint {
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
++#endif
+     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+     unsigned char _pad_0x04[0x4];                            // +0x04
+     unsigned char _pad_0x08[0x4];                            // +0x08
+@@ -37,11 +43,11 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_RangedCombatUsePreferredFirePoint) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PEnemy) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PFirePoint) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, TimeOutCounter) == 0x24);
++FABLE_STATIC_ASSERT_AT(40, sizeof(CAIStateGroup_RangedCombatUsePreferredFirePoint) == 0x28);
++FABLE_STATIC_ASSERT_AT(41, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(42, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PEnemy) == 0x14);
++FABLE_STATIC_ASSERT_AT(43, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PFirePoint) == 0x1c);
++FABLE_STATIC_ASSERT_AT(44, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, TimeOutCounter) == 0x24);
+ 
+ #endif // retail model
+ #endif // FABLE_ENGINE_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_H

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00b5ca70   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b5ca70   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b5ca70   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00b5ca70   RELOCATION_MATCH PASS   CaptureBackBuffer
+
+WINS: 1
+  00b5ca70 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer

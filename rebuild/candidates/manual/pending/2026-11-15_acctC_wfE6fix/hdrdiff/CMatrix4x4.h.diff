@@ -1,0 +1,66 @@
+--- a/rebuild/include/engine/CMatrix4x4.h
++++ b/rebuild/include/engine/CMatrix4x4.h
+@@ -11,6 +11,9 @@
+ #ifdef FABLE_RETAIL_CMATRIX4X4_FROMMATRIX3X4
+ #include "engine/CMatrix3x4.h"
+ #endif
++#ifdef FABLE_RETAIL_CMATRIX4X4_SHADOWSPACE
++enum EMatrix34Init { MATRIX34_INIT_IDENTITY };
++#endif
+ class CMatrix4x4 {
+ public:
+     union {
+@@ -78,12 +81,52 @@
+         *this = result;
+     }
+ #endif
++#ifdef FABLE_RETAIL_CMATRIX4X4_SHADOWSPACE
++    // Retail opt-in (row 0x00B4D370 CEngineShadowRenderer::UpdateShadowSpace): FableWin.pdb ??0CMatrix4x4@@QAE@W4EMatrix34Init@@@Z
++    // (0x02D79310), ?Initialise@CMatrix4x4@@QAEXMMMMMMMMMMMMMMMM@Z (0x02D795F0), ?PerspectiveTransformPoint@CMatrix4x4@@QAEXAAVC3DVector@@@Z
++    // (0x02D797F0), ?PostTranslate@CMatrix4x4@@QAEXABVC3DVector@@@Z (0x02D79920), ?PostScale@CMatrix4x4@@QAEXABVC3DVector@@@Z (0x02D79A10):
++    // all expanded in place in retail (no out-of-line copies).
++    FABLE_FORCEINLINE CMatrix4x4(EMatrix34Init) {
++        for (long j = 0; j < 4; ++j)
++            for (long i = 0; i < 4; ++i)
++                Data[i][j] = (i == j) ? 1.0f : 0.0f;
++    }
++    FABLE_FORCEINLINE void Initialise(float e11,float e12,float e13,float e14,float e21,float e22,float e23,float e24,
++                                      float e31,float e32,float e33,float e34,float e41,float e42,float e43,float e44) {
++        E11=e11; E12=e12; E13=e13; E14=e14; E21=e21; E22=e22; E23=e23; E24=e24;
++        E31=e31; E32=e32; E33=e33; E34=e34; E41=e41; E42=e42; E43=e43; E44=e44;
++    }
++    FABLE_FORCEINLINE void PerspectiveTransformPoint(C3DVector& point) {
++        // FableWin 0x02D797F0 text (fwsize SAME, 87i / 241b at /Od): the four row sums from the point, then the divisions.
++        const float x = point.X * E11 + point.Y * E21 + point.Z * E31 + E41;
++        const float y = point.X * E12 + point.Y * E22 + point.Z * E32 + E42;
++        const float z = point.X * E13 + point.Y * E23 + point.Z * E33 + E43;
++        const float w = point.X * E14 + point.Y * E24 + point.Z * E34 + E44;
++        point.X = x / w;
++        point.Y = y / w;
++        point.Z = z / w;
++    }
++    FABLE_FORCEINLINE void PostTranslate(const C3DVector& translation) {
++        for (int i = 0; i < 4; ++i) {
++            Data[i][0] += Data[i][3] * translation.X;
++            Data[i][1] += Data[i][3] * translation.Y;
++            Data[i][2] += Data[i][3] * translation.Z;
++        }
++    }
++    FABLE_FORCEINLINE void PostScale(const C3DVector& scale) {
++        for (int i = 0; i < 4; ++i) {
++            Data[i][0] *= scale.X;
++            Data[i][1] *= scale.Y;
++            Data[i][2] *= scale.Z;
++        }
++    }
++#endif
+     void SetIdentity() {
+         E11=1.0f; E22=1.0f; E33=1.0f; E44=1.0f;
+         E12=0.0f; E13=0.0f; E14=0.0f; E21=0.0f; E23=0.0f; E24=0.0f; E31=0.0f; E32=0.0f; E34=0.0f; E41=0.0f; E42=0.0f; E43=0.0f;
+     }
+ };
+-FABLE_STATIC_ASSERT(sizeof(CMatrix4x4)==64);
++FABLE_STATIC_ASSERT_AT(86, sizeof(CMatrix4x4)==64);
+ #ifdef FABLE_RETAIL_CMATRIX4X4
+ #include "engine/CMatrix4x4AlignedSSE.h"   // the SSE kernels and the inline AlignedSetMultiply body
+ #endif

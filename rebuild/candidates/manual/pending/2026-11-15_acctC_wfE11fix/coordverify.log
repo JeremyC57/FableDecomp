@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0044c72b   RELOCATION_MATCH PASS   InitAndCompile
+
+WINS: 1
+  0044c72b RELOCATION_MATCH CGameDefinitionManager::InitAndCompile

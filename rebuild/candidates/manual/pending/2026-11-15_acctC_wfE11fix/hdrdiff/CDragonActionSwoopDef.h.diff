@@ -1,0 +1,50 @@
+--- a/rebuild/include/engine/CDragonActionSwoopDef.h
++++ b/rebuild/include/engine/CDragonActionSwoopDef.h
+@@ -36,25 +36,30 @@
+     float         ExplosionLineProjectionAngle;              // +0x58
+     long          FramesBetweenExplosions;                   // +0x5c
+     float         WindSpeed;                                 // +0x60
++#ifdef FABLE_RETAIL_CDRAGONACTIONSWOOPDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CDragonActionSwoopDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CDragonActionSwoopDef) == 0x64);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, IntoDelay) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, OutOfDelay) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, Distance) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MidPointsControlOffset) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, StartHeight) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MidHeight) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, EndHeight) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, FlightSpeed) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MaxSplineProgressForSplineAdjustment) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MaxSplineProgressForBurninationEffect) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MinSplineProgressForWingFlap) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MaxExplosionRange) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, ExplosionLineProjectionAngle) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, FramesBetweenExplosions) == 0x5c);
+-FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, WindSpeed) == 0x60);
++FABLE_STATIC_ASSERT_AT(42, sizeof(CDragonActionSwoopDef) == 0x64);
++FABLE_STATIC_ASSERT_AT(43, offsetof(CDragonActionSwoopDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(44, offsetof(CDragonActionSwoopDef, IntoDelay) == 0x28);
++FABLE_STATIC_ASSERT_AT(45, offsetof(CDragonActionSwoopDef, OutOfDelay) == 0x2c);
++FABLE_STATIC_ASSERT_AT(46, offsetof(CDragonActionSwoopDef, Distance) == 0x30);
++FABLE_STATIC_ASSERT_AT(47, offsetof(CDragonActionSwoopDef, MidPointsControlOffset) == 0x34);
++FABLE_STATIC_ASSERT_AT(48, offsetof(CDragonActionSwoopDef, StartHeight) == 0x38);
++FABLE_STATIC_ASSERT_AT(49, offsetof(CDragonActionSwoopDef, MidHeight) == 0x3c);
++FABLE_STATIC_ASSERT_AT(50, offsetof(CDragonActionSwoopDef, EndHeight) == 0x40);
++FABLE_STATIC_ASSERT_AT(51, offsetof(CDragonActionSwoopDef, FlightSpeed) == 0x44);
++FABLE_STATIC_ASSERT_AT(52, offsetof(CDragonActionSwoopDef, MaxSplineProgressForSplineAdjustment) == 0x48);
++FABLE_STATIC_ASSERT_AT(53, offsetof(CDragonActionSwoopDef, MaxSplineProgressForBurninationEffect) == 0x4c);
++FABLE_STATIC_ASSERT_AT(54, offsetof(CDragonActionSwoopDef, MinSplineProgressForWingFlap) == 0x50);
++FABLE_STATIC_ASSERT_AT(55, offsetof(CDragonActionSwoopDef, MaxExplosionRange) == 0x54);
++FABLE_STATIC_ASSERT_AT(56, offsetof(CDragonActionSwoopDef, ExplosionLineProjectionAngle) == 0x58);
++FABLE_STATIC_ASSERT_AT(57, offsetof(CDragonActionSwoopDef, FramesBetweenExplosions) == 0x5c);
++FABLE_STATIC_ASSERT_AT(58, offsetof(CDragonActionSwoopDef, WindSpeed) == 0x60);
+ 
+ #endif // FABLE_ENGINE_CDRAGONACTIONSWOOPDEF_H

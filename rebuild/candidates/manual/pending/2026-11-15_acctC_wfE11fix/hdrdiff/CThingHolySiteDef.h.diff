@@ -1,0 +1,17 @@
+--- a/rebuild/include/engine/CThingHolySiteDef.h
++++ b/rebuild/include/engine/CThingHolySiteDef.h
+@@ -10,8 +10,13 @@
+ public:
+     CEngineGraphic Graphic;                                              // +0x70
+     bool PlayerStart;                                                    // +0x7E
++#ifdef FABLE_RETAIL_CTHINGHOLYSITEDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CThingHolySiteDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+ #ifdef FABLE_RETAIL_CTHINGBASEDEF
+-FABLE_STATIC_ASSERT(sizeof(CThingHolySiteDef)==0x80);                // the typed (4-aligned) retail CThingBaseDef; the opaque one is 1-aligned
++FABLE_STATIC_ASSERT_AT(15, sizeof(CThingHolySiteDef)==0x80);                // the typed (4-aligned) retail CThingBaseDef; the opaque one is 1-aligned
+ #endif
+ #endif

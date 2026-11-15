@@ -1,0 +1,25 @@
+--- a/rebuild/include/engine/CAIStateGroup_BanditPlot.h
++++ b/rebuild/include/engine/CAIStateGroup_BanditPlot.h
+@@ -20,14 +20,20 @@
+ #include "rebuild_abi.h"
+ 
+ #pragma pack(push, 1)
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++class CCharString; class CAIStateGroupBase;
++#endif
+ struct CAIStateGroup_BanditPlot {
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
++#endif
+     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+     unsigned char _base_0x04[0x24];                          // +0x04 flattened base-class subobject(s)
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BanditPlot) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlot, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(29, sizeof(CAIStateGroup_BanditPlot) == 0x28);
++FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_BanditPlot, __vftable) == 0x0);
+ 
+ #endif // FABLE_RETAIL_CAISTATEGROUP_BANDITPLOT
+ #endif // FABLE_ENGINE_CAISTATEGROUP_BANDITPLOT_H

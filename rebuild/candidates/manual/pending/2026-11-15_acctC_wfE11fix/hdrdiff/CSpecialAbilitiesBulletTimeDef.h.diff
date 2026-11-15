@@ -1,0 +1,13 @@
+--- a/rebuild/include/engine/CSpecialAbilitiesBulletTimeDef.h
++++ b/rebuild/include/engine/CSpecialAbilitiesBulletTimeDef.h
+@@ -54,5 +54,10 @@
+     std::vector<float,std::allocator<float> > ScreenFilterTintB;
+     float ScreenFilterFadeInSecs;
+     float ScreenFilterFadeOutSecs;
++#ifdef FABLE_RETAIL_CSPECIALABILITIESBULLETTIMEDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CSpecialAbilitiesBulletTimeDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+ #endif

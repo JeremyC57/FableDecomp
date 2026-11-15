@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/CEngineVideoOptionsDef.h
++++ b/rebuild/include/engine/CEngineVideoOptionsDef.h
+@@ -10,6 +10,11 @@
+ class CEngineVideoOptionsDef : public CDefClassBase {
+ private:
+     unsigned char _pad_0x25[0x53];                                       // +0x25 members not modelled yet
++#ifdef FABLE_RETAIL_CENGINEVIDEOOPTIONSDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CEngineVideoOptionsDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineVideoOptionsDef) == 0x78);
++FABLE_STATIC_ASSERT_AT(14, sizeof(CEngineVideoOptionsDef) == 0x78);
+ #endif // FABLE_ENGINE_CENGINEVIDEOOPTIONSDEF_H

@@ -1,0 +1,17 @@
+--- a/rebuild/include/engine/C3DVector.h
++++ b/rebuild/include/engine/C3DVector.h
+@@ -180,8 +180,14 @@
+ #ifdef FABLE_RETAIL_C3DVECTOR_GETSCALED
+     // Retail opt-in (wf3, row 0x00A89740 C3DMesh2::GetHelperPointPositionAnimated): FableWin.pdb ?GetScaled@C3DVector@@QBE?BV1@ABV1@@Z
+     // (componentwise product; no out-of-line copy in retail, expanded at 0x00A8981C: `fld this.k ; fmul scale.k` per axis).
++#ifdef FABLE_RETAIL_C3DVECTOR_GETSCALED_NAMED_RESULT
++    // Nested opt-in (wfA5, rows 0x00AA0FA0 / 0x00AA2110): the FableWin.pdb ?GetScaled@C3DVector@@QBE?BV1@ABV1@@Z text: a named result
++    // (FableWin debug 34i/90b = VC7.1 /Od of this body; the one-expression body is 28i/70b). Release bytes unchanged.
++    FABLE_VECTOR_INLINE const C3DVector GetScaled(const C3DVector& scale)const{C3DVector result(X*scale.X,Y*scale.Y,Z*scale.Z);return result;}
++#else
+     FABLE_VECTOR_INLINE const C3DVector GetScaled(const C3DVector& scale)const{return C3DVector(X*scale.X,Y*scale.Y,Z*scale.Z);}
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_C3DVECTOR
+     // Chunk 734 (row 0x004A1CB0): FableWin.pdb ??GC3DVector@@QBE?BV0@XZ (unary minus; no out-of-line copy in retail).
+     FABLE_VECTOR_INLINE const C3DVector operator-()const{return C3DVector(-X,-Y,-Z);}

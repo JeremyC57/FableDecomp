@@ -1,0 +1,46 @@
+--- a/rebuild/include/engine/CSummonerDef.h
++++ b/rebuild/include/engine/CSummonerDef.h
+@@ -34,23 +34,28 @@
+     long          LightningOrb;                              // +0x50
+     long          LightningOrbAttackFireheart;               // +0x54
+     float         LightningOrbLifeSeconds;                   // +0x58
++#ifdef FABLE_RETAIL_CSUMMONERDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CSummonerDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CSummonerDef) == 0x5c);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningRangeForAutomaticUse) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningPercentChanceForRandomUse) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningPercentChanceForBoastUse) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningRandomChanceTestSeconds) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningSecondsToWaitBeforeReuse) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, ChargeRangeNear) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, ChargeRangeFar) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, ChargeRangeAttackInterrupt) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, ChargeSecondsToWaitBeforeReuse) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, SummonerDeathExplosion) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningOrb) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningOrbAttackFireheart) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningOrbLifeSeconds) == 0x58);
++FABLE_STATIC_ASSERT_AT(40, sizeof(CSummonerDef) == 0x5c);
++FABLE_STATIC_ASSERT_AT(41, offsetof(CSummonerDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(42, offsetof(CSummonerDef, LightningRangeForAutomaticUse) == 0x28);
++FABLE_STATIC_ASSERT_AT(43, offsetof(CSummonerDef, LightningPercentChanceForRandomUse) == 0x2c);
++FABLE_STATIC_ASSERT_AT(44, offsetof(CSummonerDef, LightningPercentChanceForBoastUse) == 0x30);
++FABLE_STATIC_ASSERT_AT(45, offsetof(CSummonerDef, LightningRandomChanceTestSeconds) == 0x34);
++FABLE_STATIC_ASSERT_AT(46, offsetof(CSummonerDef, LightningSecondsToWaitBeforeReuse) == 0x38);
++FABLE_STATIC_ASSERT_AT(47, offsetof(CSummonerDef, ChargeRangeNear) == 0x3c);
++FABLE_STATIC_ASSERT_AT(48, offsetof(CSummonerDef, ChargeRangeFar) == 0x40);
++FABLE_STATIC_ASSERT_AT(49, offsetof(CSummonerDef, ChargeRangeAttackInterrupt) == 0x44);
++FABLE_STATIC_ASSERT_AT(50, offsetof(CSummonerDef, ChargeSecondsToWaitBeforeReuse) == 0x48);
++FABLE_STATIC_ASSERT_AT(51, offsetof(CSummonerDef, SummonerDeathExplosion) == 0x4c);
++FABLE_STATIC_ASSERT_AT(52, offsetof(CSummonerDef, LightningOrb) == 0x50);
++FABLE_STATIC_ASSERT_AT(53, offsetof(CSummonerDef, LightningOrbAttackFireheart) == 0x54);
++FABLE_STATIC_ASSERT_AT(54, offsetof(CSummonerDef, LightningOrbLifeSeconds) == 0x58);
+ 
+ #endif // FABLE_ENGINE_CSUMMONERDEF_H

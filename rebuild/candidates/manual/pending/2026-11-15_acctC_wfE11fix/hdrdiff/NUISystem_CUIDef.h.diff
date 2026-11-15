@@ -1,0 +1,66 @@
+--- a/rebuild/include/engine/NUISystem_CUIDef.h
++++ b/rebuild/include/engine/NUISystem_CUIDef.h
+@@ -137,22 +137,27 @@
+     bool UseViewArea; // +0x220
+     bool PCStyle; // +0x221
+     EEngineSprite2DFlag Sprite2DFlag; // +0x224
++#ifdef FABLE_RETAIL_CUIDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CUIDef@NUISystem@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CUIDef)==0x228);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,Type)==0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,PositionOffset)==0x142);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,ParentStatePrerequisite)==0x160);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,SliderLeft)==0x18c);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,EditBoxCharLimit)==0x1d0);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,SwappingStates)==0x1e0);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,Alignement)==0x1fc);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,HoveredState)==0x204);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,LeftClickedState)==0x20c);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,ViewArea)==0x14c);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,Sprite2DFlag)==0x224);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,ActionOnLeftClicked)==0xe0);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,InputDelay)==0x184);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,MovieFilename)==0x1d8);
++FABLE_STATIC_ASSERT_AT(141, sizeof(CUIDef)==0x228);
++FABLE_STATIC_ASSERT_AT(142, offsetof(CUIDef,Type)==0x3c);
++FABLE_STATIC_ASSERT_AT(143, offsetof(CUIDef,PositionOffset)==0x142);
++FABLE_STATIC_ASSERT_AT(144, offsetof(CUIDef,ParentStatePrerequisite)==0x160);
++FABLE_STATIC_ASSERT_AT(145, offsetof(CUIDef,SliderLeft)==0x18c);
++FABLE_STATIC_ASSERT_AT(146, offsetof(CUIDef,EditBoxCharLimit)==0x1d0);
++FABLE_STATIC_ASSERT_AT(147, offsetof(CUIDef,SwappingStates)==0x1e0);
++FABLE_STATIC_ASSERT_AT(148, offsetof(CUIDef,Alignement)==0x1fc);
++FABLE_STATIC_ASSERT_AT(149, offsetof(CUIDef,HoveredState)==0x204);
++FABLE_STATIC_ASSERT_AT(150, offsetof(CUIDef,LeftClickedState)==0x20c);
++FABLE_STATIC_ASSERT_AT(151, offsetof(CUIDef,ViewArea)==0x14c);
++FABLE_STATIC_ASSERT_AT(152, offsetof(CUIDef,Sprite2DFlag)==0x224);
++FABLE_STATIC_ASSERT_AT(153, offsetof(CUIDef,ActionOnLeftClicked)==0xe0);
++FABLE_STATIC_ASSERT_AT(154, offsetof(CUIDef,InputDelay)==0x184);
++FABLE_STATIC_ASSERT_AT(155, offsetof(CUIDef,MovieFilename)==0x1d8);
+ }
+ #else
+ #include "engine/CDefString.h"
+@@ -276,11 +281,16 @@
+     bool PCStyle; // +0x221
+     unsigned char _pad_222[2];
+     unsigned char Sprite2DFlag[4]; // EEngineSprite2DFlag // +0x224
++#ifdef FABLE_RETAIL_CUIDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CUIDef@NUISystem@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CUIDef)==0x228);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,ActionOnLeftClicked)==0xe0);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,InputDelay)==0x184);
+-FABLE_STATIC_ASSERT(offsetof(CUIDef,MovieFilename)==0x1d8);
++FABLE_STATIC_ASSERT_AT(280, sizeof(CUIDef)==0x228);
++FABLE_STATIC_ASSERT_AT(281, offsetof(CUIDef,ActionOnLeftClicked)==0xe0);
++FABLE_STATIC_ASSERT_AT(282, offsetof(CUIDef,InputDelay)==0x184);
++FABLE_STATIC_ASSERT_AT(283, offsetof(CUIDef,MovieFilename)==0x1d8);
+ }
+ #endif
+ #endif

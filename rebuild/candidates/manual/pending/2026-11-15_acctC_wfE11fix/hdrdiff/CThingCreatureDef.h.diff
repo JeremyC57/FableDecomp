@@ -1,0 +1,26 @@
+--- a/rebuild/include/engine/CThingCreatureDef.h
++++ b/rebuild/include/engine/CThingCreatureDef.h
+@@ -87,13 +87,18 @@
+     bool IsInvulnerableDuringGenericResponse:1;
+     bool IsPushedByExplosions:1;
+     unsigned char _pad_0x14a[2];
++#ifdef FABLE_RETAIL_CTHINGCREATUREDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CThingCreatureDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CThingCreatureDef)==0x14c);
++FABLE_STATIC_ASSERT_AT(91, sizeof(CThingCreatureDef)==0x14c);
+ #ifdef FABLE_RETAIL_CTHINGCREATUREDEF_MEMBERS
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef,MaxWalkingSpeed)==0x90);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef,BrainDef)==0xe8);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef,CombatTypeDef)==0x124);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef,LeaderTypeDef)==0x13c);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CThingCreatureDef,MaxWalkingSpeed)==0x90);
++FABLE_STATIC_ASSERT_AT(94, offsetof(CThingCreatureDef,BrainDef)==0xe8);
++FABLE_STATIC_ASSERT_AT(95, offsetof(CThingCreatureDef,CombatTypeDef)==0x124);
++FABLE_STATIC_ASSERT_AT(96, offsetof(CThingCreatureDef,LeaderTypeDef)==0x13c);
+ #endif
+ // CThingCreatureBase::PeekDefinition (inline, FableWin-only): defined here when engine/CThingCreatureBase.h came first.
+ #if defined(FABLE_ENGINE_CTHINGCREATUREBASE_H) && defined(FABLE_RETAIL_CTHINGCREATUREBASE)

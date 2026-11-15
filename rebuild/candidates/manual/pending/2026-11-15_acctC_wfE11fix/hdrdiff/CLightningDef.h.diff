@@ -1,0 +1,21 @@
+--- a/rebuild/include/engine/CLightningDef.h
++++ b/rebuild/include/engine/CLightningDef.h
+@@ -23,9 +23,14 @@
+     float DamagePeriod;                                          // +0x4c
+     float DamagePerCycle;                                        // +0x50
+     long  NodeDefIndex;                                          // +0x54
++#ifdef FABLE_RETAIL_CLIGHTNINGDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CLightningDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(offsetof(CLightningDef, Range) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CLightningDef, DamagePeriod) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CLightningDef, NodeDefIndex) == 0x54);
+-FABLE_STATIC_ASSERT(sizeof(CLightningDef) == 0x58);
++FABLE_STATIC_ASSERT_AT(27, offsetof(CLightningDef, Range) == 0x3c);
++FABLE_STATIC_ASSERT_AT(28, offsetof(CLightningDef, DamagePeriod) == 0x4c);
++FABLE_STATIC_ASSERT_AT(29, offsetof(CLightningDef, NodeDefIndex) == 0x54);
++FABLE_STATIC_ASSERT_AT(30, sizeof(CLightningDef) == 0x58);
+ #endif

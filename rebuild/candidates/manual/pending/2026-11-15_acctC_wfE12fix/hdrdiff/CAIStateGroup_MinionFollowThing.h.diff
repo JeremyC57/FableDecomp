@@ -1,0 +1,40 @@
+--- a/rebuild/include/engine/CAIStateGroup_MinionFollowThing.h
++++ b/rebuild/include/engine/CAIStateGroup_MinionFollowThing.h
+@@ -9,7 +9,13 @@
+ #include "rebuild_abi.h"
+ 
+ #pragma pack(push, 1)
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++class CCharString; class CAIStateGroupBase;
++#endif
+ struct CAIStateGroup_MinionFollowThing {
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
++#endif
+     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+     unsigned char _pad_0x04[0x4];                            // +0x04
+     unsigned char _pad_0x08[0x4];                            // +0x08
+@@ -25,14 +31,14 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionFollowThing) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionFollowThing, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionFollowThing, PFollowee) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionFollowThing, FollowDistance) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionFollowThing, AvoidDynamicObstacles) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionFollowThing, PreviousPushableByHero) == 0x21);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionFollowThing, ExpressionUsed) == 0x22);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionFollowThing, FollowerAdded) == 0x23);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionFollowThing, CurrentMovementType) == 0x24);
++FABLE_STATIC_ASSERT_AT(28, sizeof(CAIStateGroup_MinionFollowThing) == 0x28);
++FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_MinionFollowThing, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_MinionFollowThing, PFollowee) == 0x14);
++FABLE_STATIC_ASSERT_AT(31, offsetof(CAIStateGroup_MinionFollowThing, FollowDistance) == 0x1c);
++FABLE_STATIC_ASSERT_AT(32, offsetof(CAIStateGroup_MinionFollowThing, AvoidDynamicObstacles) == 0x20);
++FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_MinionFollowThing, PreviousPushableByHero) == 0x21);
++FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_MinionFollowThing, ExpressionUsed) == 0x22);
++FABLE_STATIC_ASSERT_AT(35, offsetof(CAIStateGroup_MinionFollowThing, FollowerAdded) == 0x23);
++FABLE_STATIC_ASSERT_AT(36, offsetof(CAIStateGroup_MinionFollowThing, CurrentMovementType) == 0x24);
+ 
+ #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONFOLLOWTHING_H

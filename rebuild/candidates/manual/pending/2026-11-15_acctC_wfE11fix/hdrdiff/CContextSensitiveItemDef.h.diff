@@ -1,0 +1,30 @@
+--- a/rebuild/include/engine/CContextSensitiveItemDef.h
++++ b/rebuild/include/engine/CContextSensitiveItemDef.h
+@@ -26,15 +26,20 @@
+     long          SlotIndex;                                 // +0x30
+     long          ExtraData1;                                // +0x34
+     long          ExtraData2;                                // +0x38
++#ifdef FABLE_RETAIL_CCONTEXTSENSITIVEITEMDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CContextSensitiveItemDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CContextSensitiveItemDef) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CContextSensitiveItemDef, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CContextSensitiveItemDef, Type) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CContextSensitiveItemDef, Priority) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CContextSensitiveItemDef, SlotIndex) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CContextSensitiveItemDef, ExtraData1) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CContextSensitiveItemDef, ExtraData2) == 0x38);
++FABLE_STATIC_ASSERT_AT(32, sizeof(CContextSensitiveItemDef) == 0x3c);
++FABLE_STATIC_ASSERT_AT(33, offsetof(CContextSensitiveItemDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(34, offsetof(CContextSensitiveItemDef, Type) == 0x28);
++FABLE_STATIC_ASSERT_AT(35, offsetof(CContextSensitiveItemDef, Priority) == 0x2c);
++FABLE_STATIC_ASSERT_AT(36, offsetof(CContextSensitiveItemDef, SlotIndex) == 0x30);
++FABLE_STATIC_ASSERT_AT(37, offsetof(CContextSensitiveItemDef, ExtraData1) == 0x34);
++FABLE_STATIC_ASSERT_AT(38, offsetof(CContextSensitiveItemDef, ExtraData2) == 0x38);
+ 
+ #endif // FABLE_ENGINE_CCONTEXTSENSITIVEITEMDEF_H

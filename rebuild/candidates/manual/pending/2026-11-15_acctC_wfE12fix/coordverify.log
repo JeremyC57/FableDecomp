@@ -1,0 +1,20 @@
+addr       parity           behav  name
+  WARN leaf "`dynamic initializer for 'StateGroupInfo'' (object symbol _$E1 of its TU)" matches no symbol in 0121f86f.obj; graded the largest function
+  WARN leaf "`dynamic initializer for 'StateGroupInfo'' (object symbol _$E1 of its TU)" matches no symbol in 0121f86f.obj; graded the largest function
+0121f86f   WARN RELOC_NAME: ?GetName@CAIStateGroup_PerformAction@@SI?AVCCharString@@XZ -> 008fd46b labelled '_global::MakeCCharString_SG_PERFORM_ACTION_008fd46b'
+0121f86f   WARN RELOC_NAME: ?GetName@CAIStateGroup_MinionReactToCorpse@@SI?AVCCharString@@XZ -> 008fd4bc labelled '_global::MakeCCharString_SG_MINION_REACT_TO_CORPSE_008fd4bc'
+0121f86f   WARN RELOC_NAME: ?GetName@CAIStateGroup_ButterflyWander@@SI?AVCCharString@@XZ -> 008fd7d9 labelled '_global::MakeCCharString_SG_BUTTERFLY_WANDER_008fd7d9'
+0121f86f   WARN RELOC_NAME: ?GetName@CAIStateGroup_VillageTaskPatrol@@SI?AVCCharString@@XZ -> 008fd923 labelled '_global::MakeCCharString_SG_VILLAGE_TASK_PATROL_008fd923'
+0121f86f   WARN RELOC_NAME: ?GetName@CAIStateGroup_VillageTaskPickCrops@@SI?AVCCharString@@XZ -> 008fd94e labelled '_global::MakeCCharString_SG_VILLAGE_TASK_PICK_CROPS_008fd94e'
+0121f86f   WARN RELOC_NAME: ?GetName@CAIStateGroup_PrepareMeal@@SI?AVCCharString@@XZ -> 008fdba2 labelled 'CAIStateGroupNameTag::ctor_SG_PREPARE_MEAL'
+0121f86f   WARN RELOC_NAME: ?GetName@CAIStateGroup_GazeAtHome@@SI?AVCCharString@@XZ -> 008fdbf4 labelled 'CAIStateGroupNameTag::ctor_SG_GAZE_AT_HOME'
+0121f86f   WARN RELOC_NAME: ?GetName@CAIStateGroup_GazeOutside@@SI?AVCCharString@@XZ -> 008fdbcb labelled 'CAIStateGroupNameTag::ctor_SG_GAZE_OUTSIDE'
+0121f86f   WARN RELOC_NAME: ?GetName@CAIStateGroup_MinionHawkingFromStall@@SI?AVCCharString@@XZ -> 008fdd10 labelled 'CAIStateGroupNameTag::ctor_SG_MINION_HAWKING_FROM_STALL'
+0121f86f   WARN RELOC_NAME: ?GetName@CAIStateGroup_HoverAttack@@SI?AVCCharString@@XZ -> 008fe14d labelled '_global::MakeCCharString_SG_HOVER_ATTACK_008fe14d'
+0121f86f   WARN RELOC_NAME: ?GetName@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@SI?AVCCharString@@XZ -> 008fe019 labelled '_global::MakeCCharString_SG_MINION_BEHAVIOUR_PODIUM_EMOTE_NEUTRAL_008fe019'
+0121f86f   WARN RELOC_CONFLICT: _$E2 -> 0122a20a here, 01228930 in landed 01219f00
+0121f86f   WARN RELOC_NAME: _$E2 -> 0122a20a labelled 'CAIBrain::DestroyStateGroupInfo'
+0121f86f   RELOCATION_MATCH PASS   `dynamic initializer for 'StateGroupInfo'' (object symbol _$E1 of its TU)
+
+WINS: 1
+  0121f86f RELOCATION_MATCH CAIBrain::`dynamic initializer for 'StateGroupInfo'' (object symbol _$E1 of its TU)

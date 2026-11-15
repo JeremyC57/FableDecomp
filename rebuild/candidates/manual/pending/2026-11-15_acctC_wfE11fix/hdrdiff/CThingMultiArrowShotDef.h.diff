@@ -1,0 +1,58 @@
+--- a/rebuild/include/engine/CThingMultiArrowShotDef.h
++++ b/rebuild/include/engine/CThingMultiArrowShotDef.h
+@@ -7,8 +7,13 @@
+  static CCharString FABLE_FASTCALL StatGetTypeName(){return CCharString("CThingMultiArrowShotDef",-1);}
+  float AccelerationScalar,MaxDistance,MaxAngle,TimeToReachTarget,MaxAngleToTurnDegs;
+  long MultiArrowWeaponTrail,MultiArrowHitEffect,MultiArrowTrailEffect;float MultiArrowSpeed;bool MultiArrowDeflectionByMelee;float MultiArrowHitEffectPercentage;
++#ifdef FABLE_RETAIL_CTHINGMULTIARROWSHOTDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CThingMultiArrowShotDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CThingMultiArrowShotDef)==84);
++FABLE_STATIC_ASSERT_AT(11, sizeof(CThingMultiArrowShotDef)==84);
+ #endif
+ #else
+ #ifndef FABLE_ENGINE_CTHINGMULTIARROWSHOTDEF_H
+@@ -46,22 +51,27 @@
+     bool          MultiArrowDeflectionByMelee;               // +0x4c
+     unsigned char _pad_0x4d[0x3];                            // +0x4d
+     float         MultiArrowHitEffectPercentage;             // +0x50
++#ifdef FABLE_RETAIL_CTHINGMULTIARROWSHOTDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CThingMultiArrowShotDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CThingMultiArrowShotDef) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, AccelerationScalar) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, MaxDistance) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, MaxAngle) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, TimeToReachTarget) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, MaxAngleToTurnDegs) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, MultiArrowWeaponTrail) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, MultiArrowHitEffect) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, MultiArrowTrailEffect) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, MultiArrowSpeed) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, MultiArrowDeflectionByMelee) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CThingMultiArrowShotDef, MultiArrowHitEffectPercentage) == 0x50);
++FABLE_STATIC_ASSERT_AT(52, sizeof(CThingMultiArrowShotDef) == 0x54);
++FABLE_STATIC_ASSERT_AT(53, offsetof(CThingMultiArrowShotDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(54, offsetof(CThingMultiArrowShotDef, AccelerationScalar) == 0x28);
++FABLE_STATIC_ASSERT_AT(55, offsetof(CThingMultiArrowShotDef, MaxDistance) == 0x2c);
++FABLE_STATIC_ASSERT_AT(56, offsetof(CThingMultiArrowShotDef, MaxAngle) == 0x30);
++FABLE_STATIC_ASSERT_AT(57, offsetof(CThingMultiArrowShotDef, TimeToReachTarget) == 0x34);
++FABLE_STATIC_ASSERT_AT(58, offsetof(CThingMultiArrowShotDef, MaxAngleToTurnDegs) == 0x38);
++FABLE_STATIC_ASSERT_AT(59, offsetof(CThingMultiArrowShotDef, MultiArrowWeaponTrail) == 0x3c);
++FABLE_STATIC_ASSERT_AT(60, offsetof(CThingMultiArrowShotDef, MultiArrowHitEffect) == 0x40);
++FABLE_STATIC_ASSERT_AT(61, offsetof(CThingMultiArrowShotDef, MultiArrowTrailEffect) == 0x44);
++FABLE_STATIC_ASSERT_AT(62, offsetof(CThingMultiArrowShotDef, MultiArrowSpeed) == 0x48);
++FABLE_STATIC_ASSERT_AT(63, offsetof(CThingMultiArrowShotDef, MultiArrowDeflectionByMelee) == 0x4c);
++FABLE_STATIC_ASSERT_AT(64, offsetof(CThingMultiArrowShotDef, MultiArrowHitEffectPercentage) == 0x50);
+ 
+ #endif // FABLE_ENGINE_CTHINGMULTIARROWSHOTDEF_H
+ 

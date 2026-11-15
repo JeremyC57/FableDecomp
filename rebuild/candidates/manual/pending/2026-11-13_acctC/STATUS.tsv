@@ -11,7 +11,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b4d370	PARKED		2026-11-15_acctC_wfE6/open	after workflow unworked/Opus round 3: parked DIFFER(7160v7176); Not reopened: no measured lead. Residue: frame 0x3B4 v 0x3D0, x87 operand order, the corner pass's common subexpressions. Checked the Ego_r 	parked	CEngineShadowRenderer::UpdateShadowSpace
 00601310	MATCHED_STAGED	6931	2026-11-13_acctC_c31a	C23 -> C26 -> C31 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; inferred STLport texts + 16 fitted named locals (review items)	parked	_global::ConstructQuestsScreen_MainMenu
 00b89c30	PARKED	6431	2026-11-14_acctC_wfB4/open	after workflow parked/Fable; C22: DIFFER(6431v6431), one hunk; asserts/names no effect (acctB ~900 grades on it)	parked	CEngineScreenEffectOutlineGlow::ApplyOutline
-00b5ca70	IN_PROGRESS			round 3 match with a rule problem; fix-up workflow running	parked	CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer
+00b5ca70	MATCHED_STAGED	5748	2026-11-15_acctC_wfE6fix	workflow unworked/Opus round 3 match + rule fix-up; verifier + coordinator-verified	parked	CEngineScreenEffectRadialBlurRenderer::CaptureBackBuffer
 00651b04	MATCHED_STAGED	5126	2026-11-13_acctC_c2a	C2	parked	CDrawAbilityButtons::Draw
 00baa870	PARKED	4600	2026-11-14_acctC_wfA4open	workflow unworked/Opus: DIFFER(4575v4600)	parked	CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList
 00bb3e80	MATCHED_STAGED	4540	2026-11-13_acctC_c19a	C2 -> C3 -> C6 -> C8; 11 inferred release asserts (fitted count, review item)	parked	CEngineClothRenderer::RenderClothPrimitive
@@ -28,8 +28,8 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 006096e0	MATCHED_STAGED	12832	2026-11-13_acctC_c38a	C38 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; one fitted redundant loop guard (review item)	parked	CTCInventoryMap::ConstructLogbookListPC
 0061e6d0	MATCHED_STAGED	12356	2026-11-13_acctC_c28a	C23 -> C26 -> C28 (Fable): RELOCATION_MATCH / PASS, coordinator-verified; no device	parked	CTCInventoryQuests::ConstructQuestListPC
 00e4b5b0	PARKED		2026-11-15_acctC_wfE3/open	after workflow unworked/Opus round 3: parked DIFFER(10594v10594), 162 hunks (variant differ/00e; New measured lead: a c2 frame-packer replay, tools/ph/ph_host.py (15 s trace) plus sim.py, which reproduces our slot partition exactly. Drop	parked	NScript::CV_BanditTollScript::CTollBandit::Main
-00e3bb70	IN_PROGRESS			round 3 match with a rule problem; fix-up workflow running	parked	NScript::CV_BordelloScript::CMadame::Main
-00e50fd0	IN_PROGRESS			round 3 match with a rule problem; fix-up workflow running	parked	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main
+00e3bb70	MATCHED_STAGED	10149	2026-11-15_acctC_wfE3fix	workflow unworked/Opus round 3 match + rule fix-up; verifier + coordinator-verified	parked	NScript::CV_BordelloScript::CMadame::Main
+00e50fd0	MATCHED_STAGED	9885	2026-11-15_acctC_wfE3fix	workflow unworked/Opus round 3 match + rule fix-up; verifier + coordinator-verified	parked	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main
 00d973d0	PARKED		2026-11-15_acctC_wfE2/open	after workflow unworked/Opus round 3: near_miss DIFFER(9821v9821); Equal length, and every instruction matches once relocations are masked. All 43 hunks are frame-slot offsets: ours puts letOut in F2F / slot	parked	NScript::CQ_HobbeCaveScript::CBanditSacrifice::Main
 00603000	PARKED	9571	2026-11-14_acctC_wfB2/open	after workflow parked/Fable; C15..C31: DIFFER(9571v9571) only under DIAG guards; the evidenced GetParentThing() spelling closes 0x006031D7 but exposes 92 allocation hunks; Reset<C	parked	CTCInventoryMap::CreateMiniMapMarkers
 00e5fd40	MATCHED_STAGED	9381	2026-11-15_acctC_wfE2	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	parked	NScript::CV_BodyGuardScript::CBodyGuard::Main
@@ -62,7 +62,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00bca950	PARKED		2026-11-15_acctC_wfE5/open	after workflow unworked/Opus round 3: near_miss DIFFER(3757v3749); Regraded unchanged, from differ/00bca950.cpp. Residue: at 0x00BCAA4F ours copies the CSE'd points-1 with `mov eax,ecx` where retail recomput	parked	CEnginePrimitiveManagerSpriteTrails::RenderSpriteTrail
 00bc04f0	MATCHED_STAGED	3751	2026-11-15_acctC_wfE5	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	parked	CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSprite
 00bbac60	MATCHED_STAGED	3743	2026-11-15_acctC_wfE5	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	parked	CEnginePrimitiveManagerDecal::RenderLandscapeDecal
-009a25d0	IN_PROGRESS			round 3 match with a rule problem; fix-up workflow running	parked	CStreamingFontBank::Render
+009a25d0	MATCHED_STAGED	3722	2026-11-15_acctC_wfE9fix	workflow unworked/Opus round 3 match + rule fix-up; verifier + coordinator-verified	parked	CStreamingFontBank::Render
 00b1e380	MATCHED_STAGED	3698	2026-11-14_acctC_wfD6	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NParticleEngine::CPSCDecalRenderer::DatabaseSerialise
 0090d030	PARKED		2026-11-14_acctC_wfD4open	after workflow unworked/Opus round 2: DIFFER(3243v3269) parked: baseline graded only; local models, needs re-author on shared headers	parked	CAIStateGroup_MinionGossip::?Update@CAIStateGroup_MinionGossip@@MAEXXZ
 005a4cdd	PARKED		2026-11-15_acctC_wfE9/open	after workflow unworked/Opus round 3: near_miss DIFFER(3664v3668); 1 hunk at 0x005A4E49 (loop 2's entry test is not threaded past loop 3). New probes: moving `long index = 0` before loop 2 (3 placements) giv	parked	CTCInventoryTrade::ConstructActualSellInventoryPC
@@ -124,7 +124,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 0060c900	MATCHED_STAGED	9635	2026-11-13_acctC_c14a	C14; real name CTCInventoryMap::ConstructMapList	never_worked	CTCInventoryMap::CTCInventoryMap::BuildMapTeleportUI
 00b33b50	MATCHED_STAGED	8858	2026-11-15_acctC_wfE7	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	never_worked	CEnginePrimitiveRenderer::CEnginePrimitiveRenderer
 00f1eed0	PARKED		2026-11-15_acctC_wfE3/open	after workflow unworked/Opus round 3: near_miss DIFFER(9253v9262), /d2inlT54, 134 hunks; Measured this session. Calls (ours v retail): ~vector<CScriptThing> 9 v 15, free 27 v 22, delete 19 v 17. Retail calls ~vector at 5 pads: 0x	never_worked	CQ_ArenaScript::PlayWave
-0044c72b	IN_PROGRESS			round 3 match with a rule problem; fix-up workflow running	never_worked	CGameDefinitionManager::InitAndCompile
+0044c72b	MATCHED_STAGED	8995	2026-11-15_acctC_wfE11fix	workflow unworked/Opus round 3 match + rule fix-up; verifier + coordinator-verified	never_worked	CGameDefinitionManager::InitAndCompile
 004a3740	PARKED		2026-11-15_acctC_wfE11/open	after workflow unworked/Opus round 3: parked SRC_FAIL(draft); Third session: read the whole function and wrote a full draft of all 9 cases from the disassembly (differ/004a3740.cpp, 653 lines), using th	never_worked	CWorld::UpdateRegionLoad
 006f5c10	PARKED		2026-11-15_acctC_wfE11/open	after workflow unworked/Opus round 3: parked DIFFER(9096v8717); Parked by the first agent after ~25 grades. Residue is a reload / alias difference in blocks 1-19 (frame 0x30 v 0x2C). Name proven: the cata	never_worked	_global::StatRegisterClass
 00b69000	MATCHED_STAGED	8358	2026-11-15_acctC_wfE7	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	never_worked	CEnginePrimitiveManagerParticleSpriteGroup::CEnginePrimitiveManagerParticleSpriteGroup
@@ -143,7 +143,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00b9ac30	PARKED	4229	2026-11-14_acctC_wfA5/open	workflow unworked/Opus: draft with a few compile items left	never_worked	CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStaticMeshes::RenderSubPrimitive
 00b555a0	MATCHED_STAGED	3832	2026-11-14_acctC_wfA5	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	never_worked	CEngineWeatherRenderer::?Render@CEngineWeatherRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 0121b9b0	MATCHED_STAGED	9567	2026-11-15_acctC_wfE12	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	never_worked	_gapscan::sub_0121b9b0
-0121f86f	IN_PROGRESS			round 3 match with a rule problem; fix-up workflow running	never_worked	_global::ParticleEngine_ModuleInit
+0121f86f	MATCHED_STAGED	8142	2026-11-15_acctC_wfE12fix	workflow unworked/Opus round 3 match + rule fix-up; verifier + coordinator-verified	never_worked	_global::ParticleEngine_ModuleInit
 01221d20	MATCHED_STAGED	7990	2026-11-15_acctC_wfE12	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	never_worked	_gapscan::sub_01221d20
 00dfca90	MATCHED_STAGED	373	2026-11-14_acctC_wfA1	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	never_worked	NScript::CQ_TraderConflictGoodScript::CBanditExtra::Main
 0058f9bc	MATCHED_STAGED	2012	2026-11-13_acctC_c24a	C24: RELOCATION_MATCH / PASS, coordinator-verified	never_worked	CTCInventory::OpenPCPhotojournal

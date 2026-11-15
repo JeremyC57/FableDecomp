@@ -1,0 +1,145 @@
+--- a/rebuild/include/engine/CAIStateGroup_OpinionReactionRoot.h
++++ b/rebuild/include/engine/CAIStateGroup_OpinionReactionRoot.h
+@@ -12,7 +12,16 @@
+ class CThing;
+ 
+ #pragma pack(push, 1)
++#ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_BEHAVIOURS
++class COpinionReactionBehaviour;
++#endif
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++class CCharString; class CAIStateGroupBase;
++#endif
+ class CAIStateGroup_OpinionReactionRoot {
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++public: static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc(); private:
++#endif
+ public:
+     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+     unsigned char _pad_0x04[0x4];                            // +0x04
+@@ -32,21 +41,112 @@
+     float         ExtraDataFloat;                            // +0x8c
+     float         ExtraDataSLONG;                            // +0x90
+     CThing*       ExtraDataPThing;                           // +0x94
++#ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_BEHAVIOURS
++    // agentE12 (row 0x01221D20, the dynamic initializer of Behaviours): the reaction handlers the Behaviours table names, Ego_r.pdb
++    // and FableWin.pdb ?<Name>@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ (private bool), and the table itself (Anniversary PDB
++    // LF_STMEMBER Behaviours, private, const COpinionReactionBehaviour[79]; 0x013BB748). Declarations only, no layout change.
++private:
++    bool HeroImitationPlayIsRunnable();                     // 0x00982DD0
++    bool HideUpdate();                                      // 0x00982DF0
++    bool OfferGiftFriendlyUpdate();                         // 0x00982E10
++    bool OfferGiftWorshipUpdate();                          // 0x00982E60
++    bool WifeFeelingLoveUpdate();                           // 0x00982FD0
++    bool WifeGeneralLoveUpdate();                           // 0x00982FE0
++    bool WifeToHerselfLoveUpdate();                         // 0x00982FF0
++    bool WifeFeelingLikeUpdate();                           // 0x00983000
++    bool WifeGeneralLikeUpdate();                           // 0x00983010
++    bool WifeToHerselfLikeUpdate();                         // 0x00983020
++    bool WifeFeelingNeutralUpdate();                        // 0x00983030
++    bool WifeGeneralNeutralUpdate();                        // 0x00983040
++    bool WifeToHerselfNeutralUpdate();                      // 0x00983050
++    bool WifeFeelingDislikeUpdate();                        // 0x00983060
++    bool WifeGeneralDislikeUpdate();                        // 0x00983070
++    bool WifeToHerselfDislikeUpdate();                      // 0x00983080
++    bool WifeFeelingHateUpdate();                           // 0x00983090
++    bool WifeGeneralHateUpdate();                           // 0x009830A0
++    bool WifeToHerselfHateUpdate();                         // 0x009830B0
++    bool AngryPointUpdate();                                // 0x00983110
++    bool BackAwayIsRunnable();                              // 0x009831F0
++    bool BellyLaughUpdate();                                // 0x00983250
++    bool BooIsRunnable();                                   // 0x00983330
++    bool BooUpdate();                                       // 0x00983390
++    bool BowingLargeUpdate();                               // 0x00983470
++    bool BowingSmallUpdate();                               // 0x00983550
++    bool CallingChildrenUpdate();                           // 0x00983630
++    bool CheerLargeIsRunnable();                            // 0x00983710
++    bool CheerLargeUpdate();                                // 0x00983770
++    bool CheerSmallUpdate();                                // 0x00983940
++    bool ClapLargeUpdate();                                 // 0x00983A20
++    bool ClapSmallUpdate();                                 // 0x00983B00
++    bool CowerUpdate();                                     // 0x00983BE0
++    bool DismissUpdate();                                   // 0x00983D30
++    bool FollowCloseIsRunnable();                           // 0x00983E60
++    bool FollowFarIsRunnable();                             // 0x00983EC0
++    bool FriendlyGreetUpdate();                             // 0x00983F20
++    bool GetOutUpdate();                                    // 0x009840B0
++    bool GrovelLargeUpdate();                               // 0x00984190
++    bool GrovelSmallUpdate();                               // 0x00984270
++    bool PickFightUpdate();                                 // 0x00984350
++    bool PointIsRunnable();                                 // 0x00984430
++    bool PointLaughUpdate();                                // 0x00984490
++    bool RespectfulGreetIsRunnable();                       // 0x00984570
++    bool RespectfulGreetUpdate();                           // 0x009845D0
++    bool ShakeFistUpdate();                                 // 0x009846C0
++    bool ShoutAweIsRunnable();                              // 0x009847A0
++    bool SniggerUpdate();                                   // 0x00984800
++    bool ThumbsDownIsRunnable();                            // 0x009848E0
++    bool ThumbsDownUpdate();                                // 0x00984940
++    bool WatchUpdate();                                     // 0x00984A20
++    bool CommentAtHeroIsRunnable();                         // 0x00984B00
++    bool CommentToSelfIsRunnable();                         // 0x00984B40
++    bool CommentAboutHeroUpdate();                          // 0x00984BE0
++    bool CommentAtHeroUpdate();                             // 0x00984C70
++    bool CommentToSelfUpdate();                             // 0x00984D00
++    bool FleeIsRunnable();                                  // 0x00984D90
++    bool FleeUpdate();                                      // 0x00984F60
++    bool FollowCloseUpdate();                               // 0x00985420
++    bool FollowFarUpdate();                                 // 0x00985430
++    bool HeroImitationPlayUpdate();                         // 0x00985440
++    bool HeroTitleAtHeroIsRunnable();                       // 0x009856C0
++    bool HeroTitleAtHeroUpdate();                           // 0x009857D0
++    bool HeroTitleToSelfIsRunnable();                       // 0x00985890
++    bool HeroTitleToSelfUpdate();                           // 0x009859A0
++    bool MarriageCommentUpdate();                           // 0x00985A60
++    bool ShoutAweUpdate();                                  // 0x00985D50
++    bool WifeClothingIsRunnable();                          // 0x00985E90
++    bool WifeNotWhileJustMarriedIsRunnable();               // 0x00985EF0
++    bool WifeClothingLoveUpdate();                          // 0x00986010
++    bool WifeClothingLikeUpdate();                          // 0x00986020
++    bool WifeClothingNeutralUpdate();                       // 0x00986030
++    bool WifeClothingDislikeUpdate();                       // 0x00986040
++    bool WifeClothingHateUpdate();                          // 0x00986050
++    bool WifeJustMarriedIsRunnable();                       // 0x00986060
++    bool WifeJustMarriedUpdate();                           // 0x009860C0
++    bool WifeGiftWantedIsRunnable();                        // 0x00986140
++    bool WifeGiftWantedUpdate();                            // 0x00986190
++    bool CallingChildrenIsRunnable();                       // 0x00986210
++    bool CommentAboutHeroIsRunnable();                      // 0x009863E0
++    bool MarriageCommentIsRunnable();                       // 0x00986510
++    bool PointUpdate();                                     // 0x009866C0
++    bool BackAwayUpdate();                                  // 0x00986830
++    static const COpinionReactionBehaviour Behaviours[79];   // 0x013BB748
++public:
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_OpinionReactionRoot) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, PTCTalk) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, CurrentReactionType) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, ReactionFlags) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, ThingReactingTo) == 0x6b);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, CurrentUpdateFunc) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, LastRunWasTryAndLook) == 0x88);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, ReactingToPlayer) == 0x89);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, AllowSpeechOnNonPureAISpeaker) == 0x8a);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, ExtraDataFloat) == 0x8c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, ExtraDataSLONG) == 0x90);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, ExtraDataPThing) == 0x94);
++FABLE_STATIC_ASSERT_AT(38, sizeof(CAIStateGroup_OpinionReactionRoot) == 0x98);
++FABLE_STATIC_ASSERT_AT(39, offsetof(CAIStateGroup_OpinionReactionRoot, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(40, offsetof(CAIStateGroup_OpinionReactionRoot, PTCTalk) == 0x14);
++FABLE_STATIC_ASSERT_AT(41, offsetof(CAIStateGroup_OpinionReactionRoot, CurrentReactionType) == 0x18);
++FABLE_STATIC_ASSERT_AT(42, offsetof(CAIStateGroup_OpinionReactionRoot, ReactionFlags) == 0x1c);
++FABLE_STATIC_ASSERT_AT(43, offsetof(CAIStateGroup_OpinionReactionRoot, ThingReactingTo) == 0x6b);
++FABLE_STATIC_ASSERT_AT(44, offsetof(CAIStateGroup_OpinionReactionRoot, CurrentUpdateFunc) == 0x78);
++FABLE_STATIC_ASSERT_AT(45, offsetof(CAIStateGroup_OpinionReactionRoot, LastRunWasTryAndLook) == 0x88);
++FABLE_STATIC_ASSERT_AT(46, offsetof(CAIStateGroup_OpinionReactionRoot, ReactingToPlayer) == 0x89);
++FABLE_STATIC_ASSERT_AT(47, offsetof(CAIStateGroup_OpinionReactionRoot, AllowSpeechOnNonPureAISpeaker) == 0x8a);
++FABLE_STATIC_ASSERT_AT(48, offsetof(CAIStateGroup_OpinionReactionRoot, ExtraDataFloat) == 0x8c);
++FABLE_STATIC_ASSERT_AT(49, offsetof(CAIStateGroup_OpinionReactionRoot, ExtraDataSLONG) == 0x90);
++FABLE_STATIC_ASSERT_AT(50, offsetof(CAIStateGroup_OpinionReactionRoot, ExtraDataPThing) == 0x94);
+ 
+ #endif // FABLE_ENGINE_CAISTATEGROUP_OPINIONREACTIONROOT_H

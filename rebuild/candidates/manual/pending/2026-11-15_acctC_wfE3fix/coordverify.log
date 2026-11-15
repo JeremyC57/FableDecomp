@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00e50fd0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00e50fd0   WARN RELOC_NAME: ?IsHeroWearingAnyBeard@CV_BeardyBaldyScript@NScript@@QAE_NXZ -> 00e53670 labelled 'NScript::CV_BeardyBaldyScript::IsHeroWearingBeard'
+00e50fd0   RELOCATION_MATCH PASS   Main
+00e3bb70   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00e3bb70   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00e50fd0 RELOCATION_MATCH NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main
+  00e3bb70 RELOCATION_MATCH NScript::CV_BordelloScript::CMadame::Main

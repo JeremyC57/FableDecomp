@@ -1,0 +1,43 @@
+--- a/rebuild/include/engine/CBriarRoseDef.h
++++ b/rebuild/include/engine/CBriarRoseDef.h
+@@ -63,22 +63,27 @@
+     float         SecondsBetweenWillUse;                     // +0x48
+     float         SecondsBetweenTeleportAway;                // +0x4c
+     float         DistanceForcePushThreshold;                // +0x50
++#ifdef FABLE_RETAIL_CBRIARROSEDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CBriarRoseDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CBriarRoseDef) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, SecondsToTeleport) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, SecondsToBeIntangible) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, SecondsToChargeDrainLife) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, GuranteedImpostersHitBeforeAllowedToHitBriar) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, NumberOfHitsToKillImposters) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, EnvironmentThemeForIntangibleMode) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, SecondsForIntangibleEnvironmentThemeTransitionIn) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, SecondsForIntangibleEnvironmentThemeTransitionOut) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, SecondsBetweenWillUse) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, SecondsBetweenTeleportAway) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, DistanceForcePushThreshold) == 0x50);
++FABLE_STATIC_ASSERT_AT(69, sizeof(CBriarRoseDef) == 0x54);
++FABLE_STATIC_ASSERT_AT(70, offsetof(CBriarRoseDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(71, offsetof(CBriarRoseDef, SecondsToTeleport) == 0x28);
++FABLE_STATIC_ASSERT_AT(72, offsetof(CBriarRoseDef, SecondsToBeIntangible) == 0x2c);
++FABLE_STATIC_ASSERT_AT(73, offsetof(CBriarRoseDef, SecondsToChargeDrainLife) == 0x30);
++FABLE_STATIC_ASSERT_AT(74, offsetof(CBriarRoseDef, GuranteedImpostersHitBeforeAllowedToHitBriar) == 0x34);
++FABLE_STATIC_ASSERT_AT(75, offsetof(CBriarRoseDef, NumberOfHitsToKillImposters) == 0x38);
++FABLE_STATIC_ASSERT_AT(76, offsetof(CBriarRoseDef, EnvironmentThemeForIntangibleMode) == 0x3c);
++FABLE_STATIC_ASSERT_AT(77, offsetof(CBriarRoseDef, SecondsForIntangibleEnvironmentThemeTransitionIn) == 0x40);
++FABLE_STATIC_ASSERT_AT(78, offsetof(CBriarRoseDef, SecondsForIntangibleEnvironmentThemeTransitionOut) == 0x44);
++FABLE_STATIC_ASSERT_AT(79, offsetof(CBriarRoseDef, SecondsBetweenWillUse) == 0x48);
++FABLE_STATIC_ASSERT_AT(80, offsetof(CBriarRoseDef, SecondsBetweenTeleportAway) == 0x4c);
++FABLE_STATIC_ASSERT_AT(81, offsetof(CBriarRoseDef, DistanceForcePushThreshold) == 0x50);
+ 
+ #endif // FABLE_ENGINE_CBRIARROSEDEF_H
+ 

@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/CEngineDef.h
++++ b/rebuild/include/engine/CEngineDef.h
+@@ -20,6 +20,11 @@
+ private:
+     unsigned char _pad_0x25[0x5b];                                       // +0x25 members not modelled yet
+ #endif
++#ifdef FABLE_RETAIL_CENGINEDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CEngineDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineDef) == 0x80);
++FABLE_STATIC_ASSERT_AT(24, sizeof(CEngineDef) == 0x80);
+ #endif // FABLE_ENGINE_CENGINEDEF_H

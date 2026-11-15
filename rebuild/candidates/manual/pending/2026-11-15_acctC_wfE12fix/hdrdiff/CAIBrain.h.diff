@@ -1,0 +1,76 @@
+--- a/rebuild/include/engine/CAIBrain.h
++++ b/rebuild/include/engine/CAIBrain.h
+@@ -28,6 +28,9 @@
+ #include "engine/CSuspendableProcessMicrothread.h"
+ #endif
+ #pragma pack(push, 1)
++#ifdef FABLE_RETAIL_CAIBRAIN_STATEGROUPINFO
++class CAIStateGroupInfo;
++#endif
+ class CAIBrain
+ #ifdef FABLE_RETAIL_CAIBRAIN_SUSPENDABLE_BASE
+  : public CSuspendableProcessMicrothread
+@@ -105,36 +108,43 @@
+     CBrainUpdateZone*   PCurrentUpdateZone;                  // +0xa0
+     bool                OnKillCalled;                        // +0xa4
+     unsigned char       _pad_0xa5[0x3];                      // +0xa5
++#ifdef FABLE_RETAIL_CAIBRAIN_STATEGROUPINFO
++    // agentE12 (row 0x0121F86F, its dynamic initializer): the state-group registration table, Ego_r.pdb / FableWin.pdb
++    // `dynamic initializer for 'CAIBrain::StateGroupInfo'' / `dynamic atexit destructor for ...'; Anniversary PDB LF_STMEMBER
++    // StateGroupInfo, private, const CAIStateGroupInfo[] (declared without a bound). 0x013BB008, 203 entries. No layout change.
++private:
++    static const CAIStateGroupInfo StateGroupInfo[];
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CAIBrain) == 0xa8);
++FABLE_STATIC_ASSERT_AT(111, sizeof(CAIBrain) == 0xa8);
+ #ifndef FABLE_RETAIL_CAIBRAIN_SUSPENDABLE_BASE
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(113, offsetof(CAIBrain, __vftable) == 0x0);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, Component) == 0x14);
++FABLE_STATIC_ASSERT_AT(115, offsetof(CAIBrain, Component) == 0x14);
+ #ifndef FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, Creature) == 0x18);
++FABLE_STATIC_ASSERT_AT(117, offsetof(CAIBrain, Creature) == 0x18);
+ #endif
+ #if defined(FABLE_RETAIL_CAIBRAIN_GETCREATURE) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE) && defined(FABLE_ENGINE_CAISTATEGROUPBASE_H)
+ // FableWin.pdb ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ (inline in retail), defined once both classes are complete.
+ inline CThingAICreature& CAIStateGroupBase::GetCreature() const { return PBrain->GetCreature(); }
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, ThingManager) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, PlayerManager) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, World) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, StateGroupList) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, PActiveStateGroup) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, PLastStateGroup) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, PPendingStateGroup) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, Output) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, OutputValid) == 0x8c);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, UpdatingStateGroup) == 0x8d);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, StateGroupUpdated) == 0x8e);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, InitialisedCreaturePosition) == 0x8f);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, PBrainDef_Object) == 0x90);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, UpdateZones) == 0x94);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, PCurrentUpdateZone) == 0xa0);
+-FABLE_STATIC_ASSERT(offsetof(CAIBrain, OnKillCalled) == 0xa4);
++FABLE_STATIC_ASSERT_AT(123, offsetof(CAIBrain, ThingManager) == 0x1c);
++FABLE_STATIC_ASSERT_AT(124, offsetof(CAIBrain, PlayerManager) == 0x20);
++FABLE_STATIC_ASSERT_AT(125, offsetof(CAIBrain, World) == 0x24);
++FABLE_STATIC_ASSERT_AT(126, offsetof(CAIBrain, StateGroupList) == 0x28);
++FABLE_STATIC_ASSERT_AT(127, offsetof(CAIBrain, PActiveStateGroup) == 0x38);
++FABLE_STATIC_ASSERT_AT(128, offsetof(CAIBrain, PLastStateGroup) == 0x3c);
++FABLE_STATIC_ASSERT_AT(129, offsetof(CAIBrain, PPendingStateGroup) == 0x40);
++FABLE_STATIC_ASSERT_AT(130, offsetof(CAIBrain, Output) == 0x44);
++FABLE_STATIC_ASSERT_AT(131, offsetof(CAIBrain, OutputValid) == 0x8c);
++FABLE_STATIC_ASSERT_AT(132, offsetof(CAIBrain, UpdatingStateGroup) == 0x8d);
++FABLE_STATIC_ASSERT_AT(133, offsetof(CAIBrain, StateGroupUpdated) == 0x8e);
++FABLE_STATIC_ASSERT_AT(134, offsetof(CAIBrain, InitialisedCreaturePosition) == 0x8f);
++FABLE_STATIC_ASSERT_AT(135, offsetof(CAIBrain, PBrainDef_Object) == 0x90);
++FABLE_STATIC_ASSERT_AT(136, offsetof(CAIBrain, UpdateZones) == 0x94);
++FABLE_STATIC_ASSERT_AT(137, offsetof(CAIBrain, PCurrentUpdateZone) == 0xa0);
++FABLE_STATIC_ASSERT_AT(138, offsetof(CAIBrain, OnKillCalled) == 0xa4);
+ 
+ #endif // FABLE_ENGINE_CAIBRAIN_H

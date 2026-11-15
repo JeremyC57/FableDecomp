@@ -1,0 +1,17 @@
+--- a/rebuild/include/engine/CThingBuildingDef.h
++++ b/rebuild/include/engine/CThingBuildingDef.h
+@@ -25,8 +25,13 @@
+     float OutsideOcclusionLevel;                                         // +0x98
+     long CameraManagerSetIndex;                                          // +0x9C
+     bool UseHighDetailQuadTree:1, IsSelfIlluminating:1, IsPartOfHeroGuild:1, HasWeatherMask:1;   // +0xA0
++#ifdef FABLE_RETAIL_CTHINGBUILDINGDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CThingBuildingDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CThingBuildingDef)==0xa4);
++FABLE_STATIC_ASSERT_AT(29, sizeof(CThingBuildingDef)==0xa4);
+ #else
+ #include "engine/_quarantine/CThingBuildingDef.h"
+ #endif

@@ -1,0 +1,23 @@
+--- a/rebuild/include/engine/CAIStateGroup_VillageTaskHorn.h
++++ b/rebuild/include/engine/CAIStateGroup_VillageTaskHorn.h
+@@ -6,7 +6,13 @@
+ // 0x00940960, vtable slot 12). Spelled as the sibling engine/CAIStateGroup_VillageTaskTorch.h.
+ #include "engine/CAIStateGroupBase.h"
+ class CTCVillageMember; class CVillageTaskHorn;
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++class CCharString; class CAIStateGroupBase;
++#endif
+ class CAIStateGroup_VillageTaskHorn:public CAIStateGroupBase {
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++public: static CCharString FABLE_FASTCALL GetName(); private:
++#endif
+ public:
+  virtual void Initialise(CAIBrain & p0, CThingAICreature & p1, long p2, EScriptAIPriority p3, const CCharString & p4);
+  virtual void Update();
+@@ -20,5 +26,5 @@
+  CAIStateGroup_VillageTaskHorn();
+  virtual ~CAIStateGroup_VillageTaskHorn();
+ };
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_VillageTaskHorn)==32);
++FABLE_STATIC_ASSERT_AT(23, sizeof(CAIStateGroup_VillageTaskHorn)==32);
+ #endif

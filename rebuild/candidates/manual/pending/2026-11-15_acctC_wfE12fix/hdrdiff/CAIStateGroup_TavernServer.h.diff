@@ -1,0 +1,65 @@
+--- a/rebuild/include/engine/CAIStateGroup_TavernServer.h
++++ b/rebuild/include/engine/CAIStateGroup_TavernServer.h
+@@ -57,7 +57,13 @@
+ #include "rebuild_abi.h"
+ 
+ #pragma pack(push, 1)
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++class CCharString; class CAIStateGroupBase;
++#endif
+ struct CAIStateGroup_TavernServer {
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
++#endif
+     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+     unsigned char _pad_0x04[0x4];                            // +0x04
+     unsigned char _pad_0x08[0x4];                            // +0x08
+@@ -85,27 +91,27 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_TavernServer) == 0x9c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, PJug) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, PBar) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, PTable) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, PTankard) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, PPub) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, JugIndex) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ServingActionPointIndex) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ServingPos_X) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ServingPos_Y) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ServingPos_Z) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ServingRHSet) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, BarActionPointIndex) == 0x68);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, BarPos_X) == 0x6c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, BarPos_Y) == 0x70);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, BarPos_Z) == 0x74);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, BarRHSet) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ActionPointIndex) == 0x90);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, SeatIndex) == 0x94);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, AverageWalkSpeed) == 0x98);
++FABLE_STATIC_ASSERT_AT(88, sizeof(CAIStateGroup_TavernServer) == 0x9c);
++FABLE_STATIC_ASSERT_AT(89, offsetof(CAIStateGroup_TavernServer, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(90, offsetof(CAIStateGroup_TavernServer, PJug) == 0x14);
++FABLE_STATIC_ASSERT_AT(91, offsetof(CAIStateGroup_TavernServer, PBar) == 0x1c);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CAIStateGroup_TavernServer, PTable) == 0x24);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CAIStateGroup_TavernServer, PTankard) == 0x2c);
++FABLE_STATIC_ASSERT_AT(94, offsetof(CAIStateGroup_TavernServer, PPub) == 0x34);
++FABLE_STATIC_ASSERT_AT(95, offsetof(CAIStateGroup_TavernServer, JugIndex) == 0x3c);
++FABLE_STATIC_ASSERT_AT(96, offsetof(CAIStateGroup_TavernServer, ServingActionPointIndex) == 0x40);
++FABLE_STATIC_ASSERT_AT(97, offsetof(CAIStateGroup_TavernServer, ServingPos_X) == 0x44);
++FABLE_STATIC_ASSERT_AT(98, offsetof(CAIStateGroup_TavernServer, ServingPos_Y) == 0x48);
++FABLE_STATIC_ASSERT_AT(99, offsetof(CAIStateGroup_TavernServer, ServingPos_Z) == 0x4c);
++FABLE_STATIC_ASSERT_AT(100, offsetof(CAIStateGroup_TavernServer, ServingRHSet) == 0x50);
++FABLE_STATIC_ASSERT_AT(101, offsetof(CAIStateGroup_TavernServer, BarActionPointIndex) == 0x68);
++FABLE_STATIC_ASSERT_AT(102, offsetof(CAIStateGroup_TavernServer, BarPos_X) == 0x6c);
++FABLE_STATIC_ASSERT_AT(103, offsetof(CAIStateGroup_TavernServer, BarPos_Y) == 0x70);
++FABLE_STATIC_ASSERT_AT(104, offsetof(CAIStateGroup_TavernServer, BarPos_Z) == 0x74);
++FABLE_STATIC_ASSERT_AT(105, offsetof(CAIStateGroup_TavernServer, BarRHSet) == 0x78);
++FABLE_STATIC_ASSERT_AT(106, offsetof(CAIStateGroup_TavernServer, ActionPointIndex) == 0x90);
++FABLE_STATIC_ASSERT_AT(107, offsetof(CAIStateGroup_TavernServer, SeatIndex) == 0x94);
++FABLE_STATIC_ASSERT_AT(108, offsetof(CAIStateGroup_TavernServer, AverageWalkSpeed) == 0x98);
+ 
+ #endif
+ #endif // FABLE_ENGINE_CAISTATEGROUP_TAVERNSERVER_H

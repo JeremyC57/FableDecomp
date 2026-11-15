@@ -1,0 +1,56 @@
+--- a/rebuild/include/engine/CAugmentationDef.h
++++ b/rebuild/include/engine/CAugmentationDef.h
+@@ -58,9 +58,14 @@
+     long          HealthToAddPerIncrease;                    // +0x40
+     float         FrequencyToAddStaminaInSeconds;            // +0x44
+     long          StaminaToAddPerIncrease;                   // +0x48
++#ifdef FABLE_RETAIL_CAUGMENTATIONDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CAugmentationDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CAugmentationDef) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, Type) == 0x2c);
++FABLE_STATIC_ASSERT_AT(62, sizeof(CAugmentationDef) == 0x4c);
++FABLE_STATIC_ASSERT_AT(63, offsetof(CAugmentationDef, Type) == 0x2c);
+ #else
+ #pragma pack(push, 1)
+ class CAugmentationDef {
+@@ -84,20 +89,25 @@
+     long          HealthToAddPerIncrease;                    // +0x40
+     float         FrequencyToAddStaminaInSeconds;            // +0x44
+     long          StaminaToAddPerIncrease;                   // +0x48
++#ifdef FABLE_RETAIL_CAUGMENTATIONDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CAugmentationDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CAugmentationDef) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, Name) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, Type) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, InventoryGraphic) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, DamageMultiplier) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, ExperienceMultiplier) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, FrequencyToAddHealthInSeconds) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, HealthToAddPerIncrease) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, FrequencyToAddStaminaInSeconds) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, StaminaToAddPerIncrease) == 0x48);
++FABLE_STATIC_ASSERT_AT(90, sizeof(CAugmentationDef) == 0x4c);
++FABLE_STATIC_ASSERT_AT(91, offsetof(CAugmentationDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CAugmentationDef, Name) == 0x28);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CAugmentationDef, Type) == 0x2c);
++FABLE_STATIC_ASSERT_AT(94, offsetof(CAugmentationDef, InventoryGraphic) == 0x30);
++FABLE_STATIC_ASSERT_AT(95, offsetof(CAugmentationDef, DamageMultiplier) == 0x34);
++FABLE_STATIC_ASSERT_AT(96, offsetof(CAugmentationDef, ExperienceMultiplier) == 0x38);
++FABLE_STATIC_ASSERT_AT(97, offsetof(CAugmentationDef, FrequencyToAddHealthInSeconds) == 0x3c);
++FABLE_STATIC_ASSERT_AT(98, offsetof(CAugmentationDef, HealthToAddPerIncrease) == 0x40);
++FABLE_STATIC_ASSERT_AT(99, offsetof(CAugmentationDef, FrequencyToAddStaminaInSeconds) == 0x44);
++FABLE_STATIC_ASSERT_AT(100, offsetof(CAugmentationDef, StaminaToAddPerIncrease) == 0x48);
+ 
+ #endif // FABLE_RETAIL_CAUGMENTATIONDEF
+ 
