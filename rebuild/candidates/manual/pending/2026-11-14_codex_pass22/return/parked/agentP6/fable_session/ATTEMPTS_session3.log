@@ -1,0 +1,54 @@
+==== session 3 (owner: hand-author whole regions) ====
+-- 0x0064BFBA, whole border block rewritten by hand (work/hand/h<n>_0064bfba.cpp) --
+micro/o20 scaled-height helpers (bank member, free functions, cursor member)   not inlined in size mode -> calls
+HAND-1 extents bound once (`const C2DExtentsI& screen`) and used by all six lines            DIFFER(2149v2223) 191
+HAND-2 bank max width / height read into unsigned locals first, each axis its own statement  DIFFER(2217v2223) 179
+HAND-3 screen factor first, float reciprocal `* (1.0f / 640.0f)`                             DIFFER(2217v2223) 161
+HAND-4 floats declared first, height through an `unsigned long pixel_height` local           DIFFER(2217v2223) 161
+HAND-5 `const long& border_graphic = gui_def.TargetingBorderLeftGraphic;` used by both bank queries   RELOCATION_MATCH
+HAND-6 `const CGraphicDataBank& bank = Bank;` for the block                                  DIFFER(2216v2223) 161
+final/0064bfba.cpp (HAND-5 + comment), test body mirrored   vland dry run (strict headers) RELOCATION_MATCH + PASS
+  (vland also prints WARN RELOC_CONFLICT for ClearMeshEffect -> 004bffc0 v landed 004bfe20; from the unchanged part of the source)
+-- 0x00F3E120, whole function rewritten by hand on the PDB local order (work/hand/h<n>_00f3e120.cpp) --
+HAND-7  start vertex's link list by reference (first entry and walk bound)                 DIFFER(1411v1411) 441
+HAND-8  surrounding vertex's polygon list by reference inside the walk                      DIFFER(1411v1411) 426
+HAND-9  phase-1 guard through `const CArray<long>& start_polys`                             DIFFER(1411v1411) 4 (byte-neutral)
+HAND-10 score update writes best_start_vert before best_score in both phases                DIFFER(1411v1411) 4 (byte-neutral)
+HAND-11 while loop, function-scope counter, open_fan flag instead of the goto               DIFFER(1446v1411) 459
+HAND-12 INVALID_START_VERT static const + link and polygon references                       DIFFER(1411v1411) 441
+HAND-13 fallback phases bounded by vertex_to_poly_map.size()                                DIFFER(1476v1411) 366
+HAND-14 last phase entered on `best_start_vert == -1`                                       DIFFER(1393v1411) 430
+HAND-15 last phase ends with `return -1;`                                                   DIFFER(1424v1411) 11: every byte up to 0x00F3E695 is retail's
+        (both reloads fixed with the PDB order); the only residue is the extra `or eax,-1` return path
+HAND-16 last phase as a while scan with one test after it                                   DIFFER(1429v1411) 13
+HAND-17 last phase through `long first_used_vert = -1;`                                     DIFFER(1430v1411) 9
+HAND-18 last phase resets best_start_vert = -1 and breaks                                   DIFFER(1449v1411) 56
+HAND-19 `return best_start_vert != -1 ? best_start_vert : -1;`                              DIFFER(1418v1411) 9
+HAND-20 last guard `best_score == 0.0f && best_start_vert == -1`                            DIFFER(1427v1411) 42
+HAND-21 / 22 / 23 guard reference in phase 2 / phase 3 / all three                          4 / 4 / 4 (byte-neutral)
+HAND-24 `start_links[0]` through a reference ; HAND-26 `const unsigned short& first_link`   4 / 4 (byte-neutral)
+HAND-25 link reference for [0] and the walk bound                                           DIFFER(1411v1411) 413
+c2 trace (tools/sched/tfree2.py + showfree.py), the whole chain behind the two reloads:
+  round 0: `this` and vertex_link_map take the records of the freed constants (0x2aaaaaab id1, -1 id2): csb this=2, link=1.
+  first split pass (pieces made in ascending id order, popping the free list): the top two records are the dropped single-use
+    constants 4 (id7, top) and 2 (id5) (dropped at 0x107891E4, use count 1): link(1) -> 7, this(2) -> 5.
+  second split pass (ascending again): this(5) -> #12, link(7) -> #72. Retail needs this -> #72, i.e. ONE order flip in the chain:
+    -1 or 0x2aaaaaab kept in round 0 (HAND-15: -1 seen twice -> kept -> fixed), or exactly one of the constants 2 / 4 dropped, or
+    one of this / vertex_link_map not split in the first pass.
+KEPT: start/00f3e120.cpp, DIFFER(1411v1411) 2 lines. Not matched.
+
+-- coordinator, hand probes on the PDB-order base (HAND-15 without `return -1;`: reloads 0x00F3E291/0x00F3E3C5 swapped, 4 lines) --
+v1 `__assume(best_start_vert == -1);` at the head of phase 3                 1439 bytes, 437 lines (forwarding changes)
+v2 FABLE_RETAIL_ASSERT(best_start_vert != -1 || vertex_count == 0) dead arm  4 lines (pruned before the walk)
+v3 `__assume(best_start_vert == -1);` after the declaration                  4 lines
+v4 `__assume(best_score != 0.0f || best_start_vert == -1);` before return    4 lines
+v5 `__assume(best_start_vert == -1);` after the phase-3 loop                 1429 bytes, 431 lines
+declaration orders: B,C,F 3 / B,F,C 2 (= start) / F,B,C 3 / F,C,B 6 / C,B,F 6: the prologue stores follow source order and the
+  reloads follow the constant walk order, so no order of the three declarations gives both
+m1a `.empty()` in phase 2 (145) ; m1b in phase 3 (1405 bytes, 19) ; m2 `const long vertex_count` (4) ; m6a `~0L` / m6b
+  `(long)0xffffffffUL` (4: same constant) ; m7 phase-3 guard `&& vertex_count > 0` (1415, 25) ; m8 `return best_start_vert = start_vert;` (4)
+m4 phase 3 `best_start_vert = start_vert; break;` 1411 bytes, same instructions, 39 lines (frame slots move; reloads still swapped)
+Constant records on the base (cnt.sh): 0:c55 2:c1 3:c3 4:c1 0xc:c7 0x2aaaaaab:c0:id1 0xfffffffc:c3 0xffffffff:c0:id2.
+Theory for a zero-byte fix: an extra immediate-only constant created AFTER -1 in hash bucket 44..63 (value & 0x3F) is pushed
+between 0x2aaaaaab and -1, so `this` keeps -1's record (id 2) and the map gets the newer one (id > 2); retail has no such
+immediate, so it must come from a tuple that c2 removes after the walk. None found yet.

@@ -43,3 +43,10 @@ Environment: the first wine cl.exe run in a fresh container can hang (wineserver
 - 0x0064BFBA (6 bytes short): `micro/o15.cpp` reproduces retail's exact sequence only with BOTH an inline accessor yielding the
   receiver AND an inline reference pass-through of the extents temporary; no PDB-named inline does either. Next: read the debug
   donor's call order at FableWin 0x020FEA1D / 0x020FEA77 (FableWin.exe is not in this container).
+
+## Fable session 3 (2026-11-15, hand-authoring): 0x0064BFBA matched (landing gg); 0x00F3E120 still 2 lines
+- 0x0064BFBA: HAND-5 of six whole-block rewrites, the left border graphic index named once by `const long&`; landed as landing gg.
+- 0x00F3E120: 20 hand rewrites (`fable_session/hand/`, `ATTEMPTS_session3.log`). The chain behind the two reloads is measured:
+  round-0 ids from the freed constants (0x2aaaaaab id 1, -1 id 2), two split passes that each reverse the order of `this` and
+  the map. One flip anywhere fixes both reloads; HAND-15 (`return -1;` in phase 3) proves it (every byte to 0x00F3E695 equal)
+  but adds its own `or eax,-1` return path. The coordinator's nine extra probes are at the end of the same log.

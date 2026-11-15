@@ -1,4 +1,4 @@
-P = "$S/w22/agentP6F/tools/sched/"
+P = "/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentP6F/tools/sched/"
 exec(open(P + "common.py").read())
 TARGET = cfg.get("target", "FindBestStartVertex")
 def on_cmp():
