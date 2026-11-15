@@ -1,0 +1,4 @@
+00bd5c90 CEnginePrimitiveManagerAnimatedMeshesBase RenderPrimitiveToShadowBuffer None
+addr       parity           behav  name
+00bd5c90   WARN RELOC_CONFLICT: ?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA -> 01396dd8 here, 01396de8 in landed 00bbc460
+00bd5c90   RELOCATION_MATCH PASS   RenderPrimitiveToShadowBuffer

@@ -1,0 +1,21 @@
+--- a/rebuild/include/engine/CTCSoundPlayer.h
++++ b/rebuild/include/engine/CTCSoundPlayer.h
+@@ -26,6 +26,11 @@
+     void StopAttachedSound(unsigned long); // Both original PDBs; native0066add0.
+ #endif
+     unsigned long PlayAttachedCriteria(const CCharString&,bool,bool,bool,long);
++#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYUNATTACHEDCRITERIA
++    // agent wfE10 (row 0x007A1B20): Ego_r.pdb / FableWin.pdb ?PlayUnattachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@ABVC3DVector@@_N2@Z,
++    // out of line in retail at 0x0066BDF0 (reloc_bindings). Declaration only; include engine/C3DVector.h first.
++    unsigned long PlayUnattachedCriteria(const CCharString& criteria, const C3DVector& position, bool loop, bool p3);   // 0x0066BDF0
++#endif
+ #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_RELEASELOOPINGSOUND
+     // Nested opt-in (chunk Q25, row 0x00847520): Ego_r.pdb / FableWin.pdb ?ReleaseAttachedLoopingSound@CTCSoundPlayer@@QAEXK@Z, out of
+     // line in retail at 0x0066AD90. Declaration only.
+@@ -89,5 +94,5 @@
+ public:
+ #endif // FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS3
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCSoundPlayer)==36);
++FABLE_STATIC_ASSERT_AT(92, sizeof(CTCSoundPlayer)==36);
+ #endif

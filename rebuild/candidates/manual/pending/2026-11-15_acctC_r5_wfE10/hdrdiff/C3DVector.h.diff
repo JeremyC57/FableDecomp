@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/C3DVector.h
++++ b/rebuild/include/engine/C3DVector.h
+@@ -148,7 +148,11 @@
+ #endif
+ #endif
+     FABLE_VECTOR_INLINE void Initialise(float x,float y,float z){X=x;Y=y;Z=z;}
+-#ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP
++#if defined(FABLE_RETAIL_C3DVECTOR_SUBTRACT_NAMED_RESULT)
++    // Retail opt-in (row 0x00795300): FableWin.pdb ??GC3DVector@@QBE?BV0@ABV0@@Z is 34i/90b at /Od, the named-result form
++    // (`return C3DVector(...)` is 28i/70b); same release code, one more inline layer (copy constructor) per use.
++    FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{C3DVector result(X-other.X,Y-other.Y,Z-other.Z);return result;}
++#elif defined(FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP)
+     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector((X-other.X),(Y-other.Y),Z-other.Z);}
+ #else
+     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector(X-other.X,Y-other.Y,Z-other.Z);}

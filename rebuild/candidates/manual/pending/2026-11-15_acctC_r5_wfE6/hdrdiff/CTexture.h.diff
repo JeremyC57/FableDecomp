@@ -1,0 +1,37 @@
+--- a/rebuild/include/engine/CTexture.h
++++ b/rebuild/include/engine/CTexture.h
+@@ -81,6 +81,10 @@
+     bool IsValid() const { return PD3DTexture != 0; }
+     IDirect3DTexture9* GetD3DTexture() const { return PD3DTexture; }
+     C2DExtentsI GetDimensions(unsigned long mipmapLevel) const;
++#ifdef FABLE_RETAIL_CTEXTURE_GETNOLEVELS
++    // Opt-in (row 0x00B8B780): Ego_r.pdb / FableWin.pdb ?GetNoLevels@CTexture@@QBEJXZ (out of line, 0x009F9DF0). Declaration only.
++    long GetNoLevels() const;                                            // 0x009F9DF0
++#endif
+ #ifdef FABLE_RETAIL_CTEXTURE_WATERDYNAMIC
+ #ifndef FABLE_RETAIL_CTEXTURE_LEVELS
+     // Opt-in (bwf2, row 0x00B72180): Ego_r.pdb / FableWin.pdb ?GetNoLevels@CTexture@@QBEJXZ (0x009F9DF0), ?GenerateMipmapsWithGPU@CTexture@@QAEXXZ
+@@ -103,7 +107,7 @@
+     unsigned long      ByteLength : 28;                                  // +0x04 bits 0..27
+     unsigned long      AllocationSource : 4;                             // +0x04 bits 28..31
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTexture) == 0x8);
++FABLE_STATIC_ASSERT_AT(106, sizeof(CTexture) == 0x8);
+ #else // flattened Ego_r layout (the landed default, unchanged)
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+@@ -119,10 +123,10 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTexture) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CTexture, PD3DTexture) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CTexture, ByteLength) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CTexture, AllocationSource) == 0x7);
++FABLE_STATIC_ASSERT_AT(122, sizeof(CTexture) == 0x8);
++FABLE_STATIC_ASSERT_AT(123, offsetof(CTexture, PD3DTexture) == 0x0);
++FABLE_STATIC_ASSERT_AT(124, offsetof(CTexture, ByteLength) == 0x4);
++FABLE_STATIC_ASSERT_AT(125, offsetof(CTexture, AllocationSource) == 0x7);
+ 
+ #endif // FABLE_RETAIL_CTEXTURE
+ 

@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/C3DOrientationInterpolator.h
++++ b/rebuild/include/engine/C3DOrientationInterpolator.h
+@@ -22,6 +22,12 @@
+ #endif
+     CRightHandedSet StartOrientation;                                    // +0x04
+     CRightHandedSet EndOrientation;                                      // +0x1c
++#ifdef FABLE_RETAIL_C3DORIENTATIONINTERPOLATOR_GETINTERPOLATED
++    // agentC30 (row 0x007E15C0): FableWin.pdb ?GetInterpolated@C3DOrientationInterpolator@@QBE?AVCRightHandedSet@@M@Z, expanded in
++    // retail (0x007E17C1..0x007E17E1: CRightHandedSet::Interpolate 0x00A23190 on StartOrientation with EndOrientation). Needs
++    // FABLE_RETAIL_CRIGHTHANDEDSET_INTERPOLATE.
++    CRightHandedSet GetInterpolated(float t) const { return StartOrientation.Interpolate(EndOrientation, t); }
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DOrientationInterpolator) == 0x34);
++FABLE_STATIC_ASSERT_AT(26, sizeof(C3DOrientationInterpolator) == 0x34);
+ #endif

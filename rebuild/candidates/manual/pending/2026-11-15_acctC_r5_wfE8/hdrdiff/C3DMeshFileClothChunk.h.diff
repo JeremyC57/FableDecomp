@@ -1,0 +1,40 @@
+--- a/rebuild/include/engine/C3DMeshFileClothChunk.h
++++ b/rebuild/include/engine/C3DMeshFileClothChunk.h
+@@ -17,13 +17,17 @@
+     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
+     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
+     virtual CChunkedFileChunk* CreateNewInstance() const;
++#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
++public:
++    static const char* FABLE_FASTCALL GetStaticChunkType() { return "CLTH"; }   // FableWin ?GetStaticChunkType@C3DMeshFileClothChunk@@SIPBDXZ
++#endif
+ private:
+     CCharString Name;
+     long MaterialIndex;
+     CCharString ParticleCode;
+     CArray<char> CompiledCode;
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileClothChunk) == 0x44);
++FABLE_STATIC_ASSERT_AT(26, sizeof(C3DMeshFileClothChunk) == 0x44);
+ #endif // FABLE_ENGINE_C3DMESHFILECLOTHCHUNK_H
+ #else
+ #ifndef FABLE_ENGINE_C3DMESHFILECLOTHCHUNK_H
+@@ -55,12 +59,12 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileClothChunk) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileClothChunk, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileClothChunk, Name_PStringData) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileClothChunk, MaterialIndex) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileClothChunk, ParticleCode_PStringData) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileClothChunk, CompiledCode) == 0x38);
++FABLE_STATIC_ASSERT_AT(58, sizeof(C3DMeshFileClothChunk) == 0x44);
++FABLE_STATIC_ASSERT_AT(59, offsetof(C3DMeshFileClothChunk, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(60, offsetof(C3DMeshFileClothChunk, Name_PStringData) == 0x2c);
++FABLE_STATIC_ASSERT_AT(61, offsetof(C3DMeshFileClothChunk, MaterialIndex) == 0x30);
++FABLE_STATIC_ASSERT_AT(62, offsetof(C3DMeshFileClothChunk, ParticleCode_PStringData) == 0x34);
++FABLE_STATIC_ASSERT_AT(63, offsetof(C3DMeshFileClothChunk, CompiledCode) == 0x38);
+ 
+ #endif // FABLE_ENGINE_C3DMESHFILECLOTHCHUNK_H
+ #endif // FABLE_RETAIL_C3DMESHFILECLOTHCHUNK

@@ -1,0 +1,6 @@
+00b70a90 CEngineWaterRenderer RenderEnvironmentMap None
+00b6edf0 CEngineWaterRenderer BuildConstantBuffers None
+addr       parity           behav  name
+00b70a90   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00b70a90   RELOCATION_MATCH PASS   RenderEnvironmentMap
+00b6edf0   RELOCATION_MATCH PASS   BuildConstantBuffers

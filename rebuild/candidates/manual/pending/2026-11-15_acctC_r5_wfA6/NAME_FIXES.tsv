@@ -1,0 +1,6 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00c79fd0	?ResampleStereoMMX@@YAXPBFKKKPAJ1G@Z	reloc_bindings.tsv + landed callers	Audio_ConvolveFilter_WithGain (catalog label)
+00bd5c90	?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManagerAnimatedMeshesBase@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z	vtable slot 8 + Ego_r/FableWin	'CEnginePrimitiveManagerAnimatedMeshesBase constructor' (batch task text)
+00989ab0	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z	Ego_r.pdb 0x00AE6300 + FableWin.pdb 0x03034C80 + reloc_bindings + engine/CShaderRenderManager.h decl	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXJPBVC4DVector@@@Z (landed row Leaf)
+01436e60	?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A	WellingtonGame PDB globals NEngineInternal::GPShadowRenderer + wfB3 TU file	g_pEngineShadowRenderer, g_pShadowRenderer_01436e60
+01436ea0	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	WellingtonGame PDB globals NEngineInternal::GPCamera + wfB3 TU file	g_pEngineCamera, g_pEngineCamera_01436ea0

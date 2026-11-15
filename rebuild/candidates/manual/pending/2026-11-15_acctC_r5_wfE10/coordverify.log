@@ -1,0 +1,7 @@
+00507c30 CWorldMap LoadFromFile None
+007a1b20 CTCWillLightning::CLightningBeam FrameUpdate None
+addr       parity           behav  name
+00507c30   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+00507c30   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00507c30   RELOCATION_MATCH PASS   LoadFromFile
+007a1b20   RELOCATION_MATCH PASS   FrameUpdate
