@@ -22,3 +22,15 @@ vland dry runs, strict headers:
 - 0x00675E20: a one-arm micro-TU rotates scratch registers from the first arm in every variant; retail's first arms look like allocator
   candidates. Next: hook c2's expression-temp routine 0x10775ACC.
 - 0x0064BFBA: both PDBs give C2DExtentsI only constructors and Initialise, so no accessor spelling exists.
+
+## Fable-model session (agentP6F; `fable_session/`)
+0x00BF0B20 matched and landed (landing ge). Still open, with the causes narrowed further:
+- 0x00F3E120: `best_start_vert = 5` in place of -1 leaves only the immediate differing, so the constant-record free order is the whole
+  residue. c2 builds the constant table in tuple order (0x1077D560) and frees a constant used once outside a loop; retail needs a
+  second byte-free use of -1, or a single-use non-loop constant in buckets 44..63 after it. The -4 guards are inside loops.
+  Next: the c2 pass that deletes a constant-carrying tuple after that walk.
+- 0x0064BFBA: micro TUs give the rule: an operand that is exactly `*(call)` is called first, `*(call + 4)` (`.Y`) evaluates the left call
+  first unless that call's argument is constant; retail's argument is `[ebx+0x7d0]`. Next: trace c2's tree ordering on micro/o6.cpp.
+- 0x00675E20: retail's first five stream temps (0x00675E43..0x00675E8D) are non-rotation assignments (eax), ours rotation temps; c2
+  -ZI pseudo-tuples and /Zi /Z7 /Zd /GX ruled out. Next: hook 0x10775ACC on a class-type-arm micro TU.
+Environment: the first wine cl.exe run in a fresh container can hang (wineserver inherits the capture pipe); stop it and rerun.
