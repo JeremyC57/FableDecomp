@@ -34,3 +34,12 @@ vland dry runs, strict headers:
 - 0x00675E20: retail's first five stream temps (0x00675E43..0x00675E8D) are non-rotation assignments (eax), ours rotation temps; c2
   -ZI pseudo-tuples and /Zi /Z7 /Zd /GX ruled out. Next: hook 0x10775ACC on a class-type-arm micro TU.
 Environment: the first wine cl.exe run in a fresh container can hang (wineserver inherits the capture pipe); stop it and rerun.
+
+## Fable-model session 2
+0x00675E20 matched and landed (landing gf: the existing NODEFAULT TransferVector opt-in). Still open:
+- 0x00F3E120 (2 lines): no source construct found that adds a constant use which survives to c2's constant walk and then vanishes;
+  across this TU the only constant that is freed and leaves no immediate is 0. Next: diff c2's tuple list between the walk
+  (0x1077D560) and emission on a function from another TU where a non-zero constant vanishes, to name the pass.
+- 0x0064BFBA (6 bytes short): `micro/o15.cpp` reproduces retail's exact sequence only with BOTH an inline accessor yielding the
+  receiver AND an inline reference pass-through of the extents temporary; no PDB-named inline does either. Next: read the debug
+  donor's call order at FableWin 0x020FEA1D / 0x020FEA77 (FableWin.exe is not in this container).
