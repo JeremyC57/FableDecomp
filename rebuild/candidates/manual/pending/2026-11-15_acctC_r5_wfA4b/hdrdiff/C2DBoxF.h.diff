@@ -1,0 +1,18 @@
+--- a/rebuild/include/engine/C2DBoxF.h
++++ b/rebuild/include/engine/C2DBoxF.h
+@@ -39,8 +39,15 @@
+  float GetTLY() const { return TLY; }
+  float GetBRX() const { return BRX; }
+  float GetBRY() const { return BRY; }
++#if defined(FABLE_RETAIL_C2DBOXF_EXTENT_NAMED)
++ // Overlay opt-in (wfA4, row 0x00BAA870): FableWin ?GetWidth@C2DBoxF@@QBEMXZ / ?GetHeight@C2DBoxF@@QBEMXZ are 13i/30b and 13i/31b at /Od,
++ // two instructions more than the one-expression body (11i/22b): the difference stored in a named local and returned.
++ float GetWidth() const { float width=BRX-TLX; return width; }
++ float GetHeight() const { float height=BRY-TLY; return height; }
++#else
+  float GetWidth() const { return BRX-TLX; }
+  float GetHeight() const { return BRY-TLY; }
++#endif
+ #if defined(FABLE_RETAIL_C2DBOXF_EXTENTS) || defined(FABLE_RETAIL_C2DBOXF_EXTENTS_DECL)
+  // Nested opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): FableWin.pdb ??0C2DBoxF@@QAE@ABVC2DVector@@ABVC2DExtentsF@@@Z
+  // (0x018B13C0, the top-left corner and the extents; inline in retail: the loading-screen bar pieces store TLX / TLY and the two

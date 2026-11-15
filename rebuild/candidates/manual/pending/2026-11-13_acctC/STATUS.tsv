@@ -99,8 +99,8 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00ae3c30	PARKED	2310	2026-11-14_acctC_wfA6open	workflow unworked/Opus: DIFFER(2278v2310): register allocation	parked	CParticleProgram::ReadFromFile
 00bd5c90	MATCHED_STAGED	2935	2026-11-15_acctC_r5_wfA6	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEnginePrimitiveManagerAnimatedMeshesBase::CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveToShadowBuffer
 00ba6240	MATCHED_STAGED	2937	2026-11-15_acctC_wfA6p	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEnginePrimitiveManagerStaticMeshesBase::?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManagerStaticMeshesBase@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z
-00b5a3f0	PARKED	2916	2026-11-14_acctC_wfA4open	workflow unworked/Opus: DIFFER(2923v2916): one scheduling site	parked	CEngineScreenEffectColourFilter::ApplyColourFilter
-00bb2540	PARKED	2905	2026-11-14_acctC_wfA4open	workflow unworked/Opus: DIFFER(2726v2905); needs port	parked	CEngineClothRenderer::RenderPolygons
+00b5a3f0	MATCHED_STAGED	2916	2026-11-15_acctC_r5_wfA4b	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEngineScreenEffectColourFilter::ApplyColourFilter
+00bb2540	MATCHED_STAGED	2905	2026-11-15_acctC_r5_wfA4b	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEngineClothRenderer::RenderPolygons
 00be0eb0	MATCHED_STAGED	2889	2026-11-15_acctC_r5_wfA4	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEnginePrimitiveManager2DParticleGroup::RenderSubPrimitive
 00c79fd0	PARKED	2884	2026-11-14_acctC_wfA6open	workflow unworked/Opus: DIFFER(2884v2884): MMX register colouring in 4 cases	parked	_global::Audio_ConvolveFilter_WithGain
 00ade080	PARKED	2735	2026-11-14_acctC_wfA6open	workflow unworked/Opus: DIFFER(2733v2735): x87 order	parked	C3DBoundingBox::InitialiseFromOBB

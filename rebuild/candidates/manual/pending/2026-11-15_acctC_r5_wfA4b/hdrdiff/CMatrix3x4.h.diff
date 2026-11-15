@@ -1,0 +1,125 @@
+--- a/rebuild/include/engine/CMatrix3x4.h
++++ b/rebuild/include/engine/CMatrix3x4.h
+@@ -27,6 +27,22 @@
+     float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
+ #endif
+     CMatrix3x4() { }
++#ifdef FABLE_RETAIL_CMATRIX3X4_POSTSCALE_XYZ
++    // Overlay opt-in (row 0x00BAA870): FableWin.pdb inlines ?PostScale@CMatrix3x4@@QAEXMMM@Z and ?PostTranslate@CMatrix3x4@@QAEXMMM@Z
++    // (no Ego_r.pdb or Fable.exe copy; 0x00BAAB36..0x00BAAC00 scale the columns x, y, z in that order after evaluating the
++    // arguments right to left).
++    FABLE_FORCEINLINE void PostScale(float x,float y,float z) {
++        E11*=x; E21*=x; E31*=x; E41*=x;
++        E12*=y; E22*=y; E32*=y; E42*=y;
++        E13*=z; E23*=z; E33*=z; E43*=z;
++    }
++    FABLE_FORCEINLINE void PostTranslate(float x,float y,float z) { E41+=x; E42+=y; E43+=z; }
++    FABLE_FORCEINLINE void PostScale(const C3DVector& scale) {
++        E11*=scale.X; E21*=scale.X; E31*=scale.X; E41*=scale.X;
++        E12*=scale.Y; E22*=scale.Y; E32*=scale.Y; E42*=scale.Y;
++        E13*=scale.Z; E23*=scale.Z; E33*=scale.Z; E43*=scale.Z;
++    }
++#endif
+ #ifdef FABLE_RETAIL_CMATRIX3X4_OPERATOR_MUL_VECTOR
+     // Retail opt-in (row 0x0075A7A0 CTCPhysicsRigidBody::ResolveCollisions): Ego_r.pdb / FableWin.pdb
+     // ??DCMatrix3x4@@QBE?AVC3DVector@@ABV1@@Z, out of line in retail at 0x00A56530 (landed: the 3x3 part times the vector, result by
+@@ -37,8 +53,13 @@
+     // Retail opt-in (wf1, row 0x00A114B0 CPhysicsMeshObject::SetPositionMatrix): FableWin.pdb ?SetIdentity@CMatrix3x4@@QAEXXZ (inline in
+     // retail, no out-of-line copy): the nine zeros as one chained assignment (retail stores them last to first, E43..E12,
+     // 0x00A114F8..0x00A11512), then the diagonal (E33, E22, E11, 0x00A1151A..0x00A11520). Body only: no layout change.
++#ifdef FABLE_RETAIL_CMATRIX3X4_SETIDENTITY_SEPARATE
++    // Opt-in (row 0x00B8B780): FableWin.pdb ?SetIdentity@CMatrix3x4@@QAEXXZ debug size 106 (43 instructions) = twelve separate stores.
++    FABLE_FORCEINLINE void SetIdentity() { E43=0.0f; E42=0.0f; E41=0.0f; E32=0.0f; E31=0.0f; E23=0.0f; E21=0.0f; E13=0.0f; E12=0.0f; E33=1.0f; E22=1.0f; E11=1.0f; }
++#else
+     FABLE_FORCEINLINE void SetIdentity() { E12=E13=E21=E23=E31=E32=E41=E42=E43=0.0f; E11=E22=E33=1.0f; }
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_CMATRIX3X4_SETSCALE
+     // Retail opt-in (chunk 2030, row 0x00BE9920 the CEngineWaterSettings constructor): FableWin.pdb ?SetScale@CMatrix3x4@@QAEXM@Z (debug
+     // only, inline in release): the nine off-diagonal / translation entries cleared in one chained assignment (stored E43 first) and the
+@@ -341,6 +362,35 @@
+         v.Z=xx*E13+yy*E23+zz*E33;
+     }
+ #endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_SOURCE_DEST
++    // Overlay opt-in (wfA4, row 0x00BAA870 CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList): FableWin.pdb
++    // ?TransformVector@CMatrix3x4@@QBEXABVC3DVector@@AAV2@@Z (debug copy 146 bytes / 55 instructions; no Ego_r.pdb or Fable.exe
++    // out-of-line copy): the rotation part from a source into a destination, one row sum per component. The row writes its texture
++    // translation through it (0x00BAAADC..0x00BAAB34: three row sums of the negated sphere centre kept on the x87 stack, stored
++    // straight into E41 / E42 / E43). FABLE_FORCEINLINE per the owner's 2026-11-01 helper rule. Default path unchanged.
++    FABLE_FORCEINLINE void TransformVector(const C3DVector& pSource,C3DVector& destination) const {
++        destination.X=E11*pSource.X+E21*pSource.Y+E31*pSource.Z;
++        destination.Y=E12*pSource.X+E22*pSource.Y+E32*pSource.Z;
++        destination.Z=E13*pSource.X+E23*pSource.Y+E33*pSource.Z;
++    }
++#endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_PRETRANSLATE
++    // Overlay opt-in (wfA4, row 0x00BAA870): FableWin.pdb ?PreTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z (debug copy 165 bytes /
++    // 61 instructions, the size of the three-row TransformPoint(source, destination); no Ego_r.pdb or Fable.exe out-of-line copy):
++    // the translation applied before the matrix, E4k += t . column k. After SetTranslateOnly(0,0,0) on a copied view matrix (the
++    // sibling 0x00B8B780 idiom) VC7.1 folds the zero terms and drops the dead stores: 0x00BAAADC..0x00BAAB34. Default path unchanged.
++    FABLE_FORCEINLINE void PreTranslate(const C3DVector& t) {
++#ifdef FABLE_RETAIL_CMATRIX3X4_PRETRANSLATE_ACCUMULATE
++        E41+=E11*t.X+E21*t.Y+E31*t.Z;
++        E42+=E12*t.X+E22*t.Y+E32*t.Z;
++        E43+=E13*t.X+E23*t.Y+E33*t.Z;
++#else
++        E41=E11*t.X+E21*t.Y+E31*t.Z+E41;
++        E42=E12*t.X+E22*t.Y+E32*t.Z+E42;
++        E43=E13*t.X+E23*t.Y+E33*t.Z+E43;
++#endif
++    }
++#endif
+ #ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMPLANE
+     // Retail opt-in (chunk 3001 / 3020, row 0x00A12EE0 CPhysicsMeshObject::GetNavigationLevelVolumes): FableWin.pdb
+     // ?TransformPlane@CMatrix3x4@@QBEXAAVCPlane@@@Z (0x031D2030, 48i/139b at /Od, the FIRST COMDAT FableWin emits after
+@@ -414,6 +464,49 @@
+         destination.Z+=E43;
+     }
+ #endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_BILLBOARD
++    // Opt-in (row 0x00B8B780 CEngineBillboardGenerator::RenderBillboard): FableWin.pdb ?SetTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z,
++    // ?SetMultiplyNoTranslation@CMatrix3x4@@QAEXABV1@0@Z and ?GetTranslation@CMatrix3x4@@QBE?AVC3DVector@@XZ, inline (no retail copy).
++    FABLE_FORCEINLINE void SetTranslate(const C3DVector& t) {
++#ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATE_FULL
++        E11=1.0f; E12=0.0f; E13=0.0f; E21=0.0f; E22=1.0f; E23=0.0f; E31=0.0f; E32=0.0f; E33=1.0f;
++#endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATE_IDENTITY
++        // Nested opt-in (agentC22, row 0x00B8B780): FableWin.pdb ?SetTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z is 21 /Od instructions /
++        // 56 bytes = a SetIdentity() call plus the three translation stores (?SetTranslate@CMatrix3x4@@QAEXMMM@Z 18i/48b = the same call
++        // plus three stores of the arguments; ?SetTranslateOnly@CMatrix3x4@@QAEXMMM@Z, the stores alone, 16i/40b).
++        SetIdentity();
++#endif
++        E41=t.X; E42=t.Y; E43=t.Z;
++    }
++    FABLE_FORCEINLINE void SetMultiplyNoTranslation(const CMatrix3x4& a, const CMatrix3x4& b) {
++        E11 = a.E11 * b.E11 + a.E12 * b.E21 + a.E13 * b.E31;
++        E12 = a.E11 * b.E12 + a.E12 * b.E22 + a.E13 * b.E32;
++        E13 = a.E11 * b.E13 + a.E12 * b.E23 + a.E13 * b.E33;
++        E21 = a.E21 * b.E11 + a.E22 * b.E21 + a.E23 * b.E31;
++        E22 = a.E21 * b.E12 + a.E22 * b.E22 + a.E23 * b.E32;
++        E23 = a.E21 * b.E13 + a.E22 * b.E23 + a.E23 * b.E33;
++        E31 = a.E31 * b.E11 + a.E32 * b.E21 + a.E33 * b.E31;
++        E32 = a.E31 * b.E12 + a.E32 * b.E22 + a.E33 * b.E32;
++        E33 = a.E31 * b.E13 + a.E32 * b.E23 + a.E33 * b.E33;
++        E41 = a.E41 * b.E11 + a.E42 * b.E21 + a.E43 * b.E31;
++        E42 = a.E41 * b.E12 + a.E42 * b.E22 + a.E43 * b.E32;
++        E43 = a.E41 * b.E13 + a.E42 * b.E23 + a.E43 * b.E33;
++    }
++#ifdef FABLE_RETAIL_CMATRIX3X4_GETTRANSLATION_NAMED
++    C3DVector GetTranslation() const { C3DVector translation(E41, E42, E43); return translation; }
++#else
++    C3DVector GetTranslation() const { return C3DVector(E41, E42, E43); }
++#endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_POSTSCALE3
++    // FableWin.pdb ?PostScale@CMatrix3x4@@QAEXMMM@Z (inline, debug size 191 = the one-float PostScale): column k scaled by its factor.
++    FABLE_FORCEINLINE void PostScale(float x, float y, float z) {
++        E11*=x; E21*=x; E31*=x; E41*=x;
++        E12*=y; E22*=y; E32*=y; E42*=y;
++        E13*=z; E23*=z; E33*=z; E43*=z;
++    }
++#endif
++#endif
+ #ifdef FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY
+     // Retail opt-in (chunk 794, row 0x007DE710 CTCWallMount::AttachObject): FableWin.pdb ?PostMultiply@CMatrix3x4@@QAEXABV1@@Z (this =
+     // this * matrix; the landed out-of-line copy 0x00C1CF20 gives the k-order sums) and
