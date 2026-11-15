@@ -397435,6 +397435,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT128'
         PassPattern = '00b70230_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00bf0b20'
+        Module = 'CEnginePrimitiveRenderUtil'
+        Source = '00/bf/CEnginePrimitiveRenderUtil_SetupOutlineStencilStates_00bf0b20.cpp'
+        TestSource = '00/bf/CEnginePrimitiveRenderUtil_SetupOutlineStencilStates_00bf0b20_test.cpp'
+        PassPattern = '00bf0b20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
