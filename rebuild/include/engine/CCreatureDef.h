@@ -12,6 +12,66 @@
 #include "engine/CCountedPointer.h"
 class CCreatureStatsDef;
 #endif
+#ifdef FABLE_RETAIL_CCREATUREDEF_TRANSFER
+// Retail opt-in (Codex pass 22): original PDB members, four reduced STLport containers; retail00675e20 addresses +28..e4.
+#include "engine/CCountedPointer.h"
+#include "engine/CDefString.h"
+#include "engine/CFloatRange.h"
+#include "engine/CHeroAbilityStatWeight.h"
+#include "stlport/fable_map.h"
+class CWoundMorphs;
+class CRandomAppearanceMorph;
+class CExpressionSet;
+class CCreatureStatsDef;
+class CCreatureDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext& context);
+    unsigned char _pad_0x25[3];
+#ifdef FABLE_RETAIL_CPERSIST_ORIGINAL_CLASS_TYPES_PASS22
+protected:
+#endif
+    CCountedPointer<CWoundMorphs>           PWoundMorphs;            // +0x28
+    CCountedPointer<CRandomAppearanceMorph> PRandomAppearanceMorph;  // +0x30
+    CCountedPointer<CExpressionSet>         PExpressions;            // +0x38
+    CCountedPointer<CCreatureStatsDef>      PStats;                  // +0x40
+#ifdef FABLE_RETAIL_CPERSIST_ORIGINAL_CLASS_TYPES_PASS22
+public:
+#endif
+    std::vector<long>       InitialActions;                                // +0x48
+    std::vector<long>       InitialAppearanceModifiers;                    // +0x54
+    std::map<CCharString,long>    PhonemeAnim;                                   // +0x60
+    std::vector<CDefString>  DialogueVoices;                                // +0x6c
+    long Inventory;                                                  // +0x78
+    long ClothingInventory;                                          // +0x7c
+    long WeaponsInventory;                                           // +0x80
+    long HeroAbilitiesScreenInventory;                               // +0x84
+    long QuestCardScreenInventory;                                   // +0x88
+    long MapScreenInventory;                                         // +0x8c
+    long StatsScreenInventory;                                       // +0x90
+    long MagicScreenInventory;                                       // +0x94
+    long ExperienceScreenInventory;                                  // +0x98
+    long TradeScreenInventory;                                       // +0x9c
+    long AugmentScreenInventory;                                     // +0xa0
+    long QuestsScreenInventory;                                      // +0xa4
+    long InGameMenuScreen;                                           // +0xa8
+    unsigned long CreatureGroup;                                     // +0xac
+    CDefString BattleCrySound;                                       // +0xb0
+    long OpinionSourceDef;                                           // +0xb4
+    long RespawnWaitInDaysMin;                                       // +0xb8
+    long RespawnWaitInDaysMax;                                       // +0xbc
+    long RespawnWaitInFramesMin;                                     // +0xc0
+    long RespawnWaitInFramesMax;                                     // +0xc4
+    bool Short;                                                      // +0xc8
+    bool FlashOnHit;                                                 // +0xc9
+    bool PickPocketable;                                             // +0xca
+    bool ChildThatCanRegionFollow;                                   // +0xcb
+    bool AllowedInProtectedTowns;                                    // +0xcc
+    bool UseActualHitPosForHitEffects;                               // +0xcd
+    CHeroAbilityStatWeight RadiusWeight;                             // +0xd0
+    CFloatRange RadiusSpread;                                        // +0xdc
+    bool AGhostIsWhatIBe;                                            // +0xe4
+};
+#else
 class CCreatureDef : public CSubDefClassBase {
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 public:const CCreatureStatsDef& GetStatsDef()const{return *PStats;}
@@ -91,6 +151,7 @@ public:
 public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 #endif
 };
+#endif
 FABLE_STATIC_ASSERT_AT(89, sizeof(CCreatureDef)==0xe8);
 FABLE_STATIC_ASSERT_AT(90, offsetof(CCreatureDef,FlashOnHit)==0xc9);
 

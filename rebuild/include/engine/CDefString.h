@@ -3,6 +3,9 @@
 #include "fable_compiler.h"
 // Ego_r TPI CDefString class, size4, private TablePos+0; native parent-def
 // constructors initialise this member at +25 to -1.
+#ifdef FABLE_RETAIL_CCREATUREDEF_TRANSFER
+#include "engine/CDataOutputStream.h"
+#endif
 class CCharString;
 #ifdef FABLE_RETAIL_CDEFSTRING_TRANSFER
 class CDataInputStream;
@@ -16,6 +19,9 @@ class CWideString;
 #include "fable_definition_table.h"
 class CDefString {
 public:
+#ifdef FABLE_RETAIL_CCREATUREDEF_TRANSFER
+    void TransferBinaryOut(CDataOutputStream& os) const { os.WriteSLONG(TablePos); }
+#endif
 #ifdef FABLE_RETAIL_EXPRESSION_FRAME
  bool operator!=(const char*)const;
 #endif

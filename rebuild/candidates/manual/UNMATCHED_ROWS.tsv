@@ -185,7 +185,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0064ae80	CDrawAbilityButtons	DrawAbilityButton	812	parked	DIFFER(812v812)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0064ae80.cpp	original
 0064b1ac	CDrawAbilityButtons	UpdateWeaponAbilities	1045	parked	DIFFER(1058v1045)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064b1ac.cpp	original
 0064b8b3	CDrawTargetInfo	Draw	1426	parked	DIFFER(11v1426)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064b8b3.cpp	original
-0064bfba	CDrawHighlightingTargetingCursor	Draw	2223	parked	Codex pass 22: 2217vs2223bytes;4disassembly difference regions around height/dimension call order.	11	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/parked/0064bfba/0064bfba.cpp	original
+0064bfba	CDrawHighlightingTargetingCursor	Draw	2223	parked	Codex pass 22: 2217vs2223bytes;4disassembly difference regions around height/dimension call order.	11	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/parked/agentP6/0064bfba.cpp	original
 0064ccb3	CDrawStamina	Draw	1526	parked	DIFFER(11v1526)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064ccb3.cpp	original
 0064d404	CDrawQuestInfo	DrawMiniGameInfo	399	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(178v399)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064d404.cpp	original
 0064d7a6	CDrawQuickAccessIcons	DrawChargeGraphic	388	parked	DIFFER(393v388)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand522/differ/0064d7a6.cpp	original
@@ -213,7 +213,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0066cf00	CRegionMinimap	PopulateRegionMinimap	3248	reserved (acctC, parked)	DIFFER(3252v3248)	13	rebuild/candidates/manual/pending/2026-11-07_linux_hand827/differ/0066cf00.cpp	original
 00670820	CTCCoopSpirit	UpdateMovement	496	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand682/differ/00670820.cpp	original
 00671600	CThingCreatureDef	Transfer	1456	parked	DIFFER(1449v1450)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand773/differ/00671600.cpp	original
-00675e20	CCreatureDef	CCreatureDef::Transfer	1920	parked	Codex pass 22: 184unmasked positions in1912equal-length bytes;34disassembly regions; scratch selection.	4	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/parked/00675e20/00675e20.cpp	original
+00675e20	CCreatureDef	CCreatureDef::Transfer	1920	parked	Codex pass 22: 184unmasked positions in1912equal-length bytes;34disassembly regions; scratch selection.	4	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/parked/agentP6/00675e20.cpp	original
 00677970	CPersistTraits<CReactionFrequencyTraitsArray>	TransferIn	2272	parked	DIFFER(2273v2272)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00677970.cpp	original
 0067c520	CBlurredAttitudesDef	`scalar deleting destructor'	80	parked	DIFFER(46v70)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand514/differ/0067c520.cpp	original
 0067e290	CDegradableDef	CDegradableDef::Transfer	592	parked	DIFFER(273v273)	9	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0067e290.cpp	original
@@ -1162,7 +1162,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00becde0	CRandomAppearanceMorph	CRandomAppearanceMorph::UpdateMorphArray	560	parked	DIFFER(340v346)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00becde0.cpp	original
 00bee070	_global	__pop_heap<pair<long,CCompositeSurfaceInfo> >	208	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(206v206)	1	rebuild/candidates/manual/pending/2026-10-19_linux_hand194/differ/00bee070.cpp	original
 00bf0740	CEnginePrimitiveRenderUtil	SetupOutlineStencilStates	992	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand648/differ/00bf0740.cpp	original
-00bf0b20	CEnginePrimitiveRenderUtil	SetupOutlineStencilStates	1296	parked	Codex pass 22: 8unmasked bytes: one blue-channel load is scheduled differently.	4	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/parked/00bf0b20/00bf0b20.cpp	original
+00bf0b20	CEnginePrimitiveRenderUtil	SetupOutlineStencilStates	1296	parked	Codex pass 22: 8unmasked bytes: one blue-channel load is scheduled differently.	4	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/parked/agentP6/00bf0b20.cpp	original
 00bf1ee0	CEnginePrimitiveRenderUtil	SetupOverlayAlphaBlendingStates	864	parked	DIFFER(837v855)	1	rebuild/candidates/manual/pending/2026-10-22_linux_hand286/differ/00bf1ee0.cpp	original
 00bf2240	CEnginePrimitiveRenderUtil	SetupOutlineSmoothFillStates	1600	parked	DIFFER(1595v1589)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand317/differ/00bf2240.cpp	original
 00bf2980	_gapscan	sub_00bf2980	96	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand493/differ/00bf2980.cpp	gapscan/boundary
@@ -1410,7 +1410,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00f3cf50	CTriangleStripifier2	CalcSectionPolyMask	688	parked	DIFFER(679v683)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand584/differ/00f3cf50.cpp	original
 00f3d200	CTriangleStripifier2	CheckForReshadedVerts	288	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand580/differ/00f3d200.cpp	original
 00f3d980	CTriangleStripifier2	BuildRings	1952	parked	DIFFER(2301v1947)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/src/00f3d980.cpp	original
-00f3e120	CTriangleStripifier2	FindBestStartVertex	1424	parked	Codex pass 22: 8unmasked rootbytes: two pairs of loads reversed; also3reached bool-container body debts.	2	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/parked/00f3e120/00f3e120.cpp	original
+00f3e120	CTriangleStripifier2	FindBestStartVertex	1424	parked	Codex pass 22: 8unmasked rootbytes: two pairs of loads reversed; also3reached bool-container body debts.	2	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/parked/agentP6/00f3e120.cpp	original
 00f3e6b0	_global	CTriangleStripifier2_ProcessTriangles	928	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand570/differ/00f3e6b0.cpp	original
 00f3ea50	_global	GenerateTriangleListAndStrip	2384	parked	DIFFER(2603v2379)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/src/00f3ea50.cpp	original
 00f3fbe0	CFrameData	ReleaseTexture	24	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ1/differ/00f3fbe0.cpp	original

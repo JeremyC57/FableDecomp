@@ -97,6 +97,9 @@ public:
     void SetAsSingleTransfer() { SingleTransfer=true; }
 #endif
     template<class T> void Transfer(T&);
+#ifdef FABLE_RETAIL_CCREATUREDEF_TRANSFER
+    template<class T> void TransferSubComponent(T& value) { CheckCRC(""); value.Transfer(*this); }
+#endif
 #ifdef FABLE_RETAIL_CPERSISTCONTEXT_NAMED_DEFAULTS
     // Retail opt-in (chunk 802, row 0x007ABBD0 CTCAIScratchpad::OnSerialise): Ego_r.pdb 0x0040D2E0 / FableWin.pdb 0x018951E0
     // ??$Transfer@J@CPersistContext@@QAEXPBDAAJ@Z (and the CCharString twin 0x0040DAD0 / 0x01895D30) is inline in retail: the
@@ -151,7 +154,7 @@ protected:
     CMemoryDataInputStream* PLoadStream;
     CDataOutputStream* PSaveStream;
 };
-FABLE_STATIC_ASSERT(sizeof(CPersistContext)==44);
+FABLE_STATIC_ASSERT_AT(154, sizeof(CPersistContext)==44);
 #ifdef FABLE_RETAIL_GFSERIALISEMAPBINARY_DECL
 // Retail opt-in (chunk 1020, row 0x005D8978 TransferMap<long,unsigned long>): the two global map serialisers the binary modes call
 // out of line (__fastcall: stream in ecx, map in edx), Ego_r.pdb / FableWin.pdb
@@ -323,6 +326,7 @@ template<class T> inline T FABLE_FASTCALL CPersistContext::GetDefaultVal() { CPe
 #include "engine/CPersistTraits.h"
 template<class T> void FABLE_FASTCALL GFSerialiseVectorBinaryIn(CMemoryDataInputStream&,std::vector<T,std::allocator<T> >&);
 template<class T> void FABLE_FASTCALL GFSerialiseVectorBinaryOut(CDataOutputStream&,std::vector<T,std::allocator<T> >&);
+#ifndef FABLE_RETAIL_CCREATUREDEF_TRANSFER
 template<class T> void CPersistContext::Transfer(T& value)
 {
     CheckCRC("");
@@ -336,6 +340,7 @@ template<class T> void CPersistContext::Transfer(T& value)
         break;
     }
 }
+#endif
 template<class T> void CPersistContext::TransferVector(std::vector<T,std::allocator<T> >& value)
 {
     CheckCRC("");

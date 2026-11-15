@@ -40,6 +40,56 @@ public:
     void TransferOut(CPersistContext& context,CCharString& out,const T& value);
 #endif
 };
+#ifdef FABLE_RETAIL_CCREATUREDEF_TRANSFER
+#include "engine/CMemoryDataInputStream.h"
+#include "engine/CWoundMorphs.h"
+#include "engine/CExpressionSet.h"
+#include "engine/CDefString.h"
+template<> class CPersistTraits<CWoundMorphs> {
+public:
+    CWoundMorphs DefaultVal;
+    CPersistTraits():DefaultVal() {}
+    ~CPersistTraits() {}
+    void TransferBinaryIn(CMemoryDataInputStream& is,CWoundMorphs& value) { value.TransferBinaryIn(is); }
+    void TransferBinaryOut(CDataOutputStream& os,const CWoundMorphs& value) { value.TransferBinaryOut(os); }
+};
+template<> class CPersistTraits<CExpressionSet> {
+public:
+    CExpressionSet DefaultVal;
+    CPersistTraits():DefaultVal() {}
+    ~CPersistTraits() {}
+    void TransferBinaryIn(CMemoryDataInputStream& is,CExpressionSet& value) { value.TransferBinaryIn(is); }
+    void TransferBinaryOut(CDataOutputStream& os,const CExpressionSet& value) { value.TransferBinaryOut(os); }
+};
+template<> class CPersistTraits<CDefString> {
+public:
+    CDefString DefaultVal;
+    void TransferBinaryIn(CMemoryDataInputStream& is,CDefString& value) { value.TransferBinaryIn(is); }
+    void TransferBinaryOut(CDataOutputStream& os,const CDefString& value) { value.TransferBinaryOut(os); }
+};
+#endif
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_CREATURE_FULL_TYPES_PASS22
+// Both raw TPI class records: complete native DefaultVal plus original binary signatures.
+#include "engine/CRandomAppearanceMorph.h"
+#include "engine/CFloatRange.h"
+template<> class CPersistTraits<CRandomAppearanceMorph> {
+public:
+ CRandomAppearanceMorph DefaultVal;
+ CPersistTraits():DefaultVal() {}
+ // Inline-budget: native00676764/006767A3/006767E2 expand this wrapper and the actual member destructor; plain wrapper remained a call.
+ FABLE_FORCEINLINE ~CPersistTraits() {}
+ void TransferBinaryIn(CMemoryDataInputStream& is,CRandomAppearanceMorph& value) {value.TransferBinaryIn(is);}
+ void TransferBinaryOut(CDataOutputStream& os,const CRandomAppearanceMorph& value) {value.TransferBinaryOut(os);}
+};
+template<> class CPersistTraits<CFloatRange> {
+public:
+ CFloatRange DefaultVal;
+ CPersistTraits():DefaultVal() {}
+ ~CPersistTraits() {}
+ void TransferBinaryIn(CMemoryDataInputStream&,CFloatRange&);
+ void TransferBinaryOut(CDataOutputStream& os,const CFloatRange& value) {os.WriteFloat(value.LowValue);os.WriteFloat(value.HighValue);}
+};
+#endif
 #ifdef FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE
 // Full original specialisations, Ego_r TPI0xD74E/0xC4DE/0xF77B.
 #include "engine/CRGBColour.h"

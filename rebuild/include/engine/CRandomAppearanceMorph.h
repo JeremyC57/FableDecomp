@@ -4,11 +4,20 @@
 #include "engine/CArray.h"
 #include "engine/CVectorMap.h"
 #include "engine/CDefString.h"
-#ifdef FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_TRANSFERBINARYIN
+#if defined(FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_TRANSFERBINARYIN) || defined(FABLE_RETAIL_CPERSISTTRAITS_CREATURE_FULL_TYPES_PASS22)
 class CMemoryDataInputStream;
+#endif
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_CREATURE_FULL_TYPES_PASS22
+class CDataOutputStream;
 #endif
 class CRandomAppearanceMorph {
 public:
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_CREATURE_FULL_TYPES_PASS22
+ // Inline-budget: native00676740 expands automatic destruction on all three return paths; plain in-class body remains called.
+ FABLE_FORCEINLINE ~CRandomAppearanceMorph() {}
+ CRandomAppearanceMorph(); // Original ctor, native0086C4D0; initializes real arrays and resizes two to3.
+ void TransferBinaryOut(CDataOutputStream&) const; // Original0086B6D0
+#endif
  class CTextureMorph { public: unsigned long NewTexture; unsigned long GroupID; };
  typedef CVectorMap<unsigned long,CTextureMorph> TTextureMorphMap;
  class CBodyPartMesh { public:
@@ -34,7 +43,7 @@ public:
   CArray<CMorphSetSkeletalMorph> SkeletalMorphs;
   CArray<CMorphSetTextureMorph> GeneralTextureMorphs;
  };
-#ifdef FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_TRANSFERBINARYIN
+#if defined(FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_TRANSFERBINARYIN) || defined(FABLE_RETAIL_CPERSISTTRAITS_CREATURE_FULL_TYPES_PASS22)
  // Opt-in (chunk Q7, row 0x0086BFB0): Ego_r.pdb ?TransferBinaryIn@CRandomAppearanceMorph@@QAEXAAVCMemoryDataInputStream@@@Z.
  void TransferBinaryIn(CMemoryDataInputStream& stream);
 #endif

@@ -7,8 +7,12 @@
 #include "rebuild_abi.h"
 class CFloatRange {
 public:
+#ifdef FABLE_RETAIL_CFLOATRANGE_ORIGINAL_CTOR_PASS22
+ // Actual FableWin0191A3E9: two distinct fldz/fstp member initializations.
+ CFloatRange():HighValue(0.0f),LowValue(0.0f) {}
+#endif
     float HighValue;                                            // +0x00
     float LowValue;                                             // +0x04
 };
-FABLE_STATIC_ASSERT(sizeof(CFloatRange) == 0x8);
+FABLE_STATIC_ASSERT_AT(13, sizeof(CFloatRange) == 0x8);
 #endif // FABLE_ENGINE_CFLOATRANGE_H

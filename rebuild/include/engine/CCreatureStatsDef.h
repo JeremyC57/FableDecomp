@@ -9,6 +9,22 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CCREATUREDEF_TRANSFER
+#include "engine/CSubDefClassBase.h"
+class CCreatureStatsDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);
+    unsigned char _pad_0x25[3];
+    long          MoralityForKill;                           // +0x28
+    long          MoralityForPunch;                          // +0x2c
+    long          MoralityForWeaponHit;                      // +0x30
+    long          ExperienceWorth;                           // +0x34
+    long          RenownWorth;                               // +0x38
+    float         Speed;                                     // +0x3c
+    float         Dexterity;                                 // +0x40
+    float         StrengthDamageMultiplier;                  // +0x44
+};
+#else
 class CCreatureStatsDef {
 public:
 #ifdef FABLE_RETAIL_CCREATURESTATSDEF_VIRTUAL_DTOR
@@ -41,10 +57,11 @@ public:
 public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 #endif
 };
+#endif
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT_AT(41, sizeof(CCreatureStatsDef) == 0x48);
-#ifndef FABLE_RETAIL_CCREATURESTATSDEF_VIRTUAL_DTOR
+#if !defined(FABLE_RETAIL_CCREATURESTATSDEF_VIRTUAL_DTOR) && !defined(FABLE_RETAIL_CCREATUREDEF_TRANSFER)
 FABLE_STATIC_ASSERT_AT(43, offsetof(CCreatureStatsDef, __vftable) == 0x0);
 #endif
 FABLE_STATIC_ASSERT_AT(45, offsetof(CCreatureStatsDef, MoralityForKill) == 0x28);
