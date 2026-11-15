@@ -1,0 +1,100 @@
+004a1840	1129	test_port	RELOCATION_MATCH (Codex pass 22)	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/004a1840
+004a1c41	77	test_port	RELOCATION_MATCH (Codex pass 22)	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/004a1c41
+0054ef00	1127	test_port	RELOCATION_MATCH (Codex pass 22)	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/0054ef00
+00590235	1393	test_port	RELOCATION_MATCH (Codex pass 22)	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00590235
+007c4430	1952	test_port	RELOCATION_MATCH (Codex pass 22)	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/007c4430
+00813d00	1372	test_port	RELOCATION_MATCH (Codex pass 22)	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00813d00
+0090e5d0	1367	test_port	RELOCATION_MATCH (Codex pass 22)	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/0090e5d0
+00927f30	1331	test_port	RELOCATION_MATCH (Codex pass 22)	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00927f30
+00b8dcd0	639	test_port	RELOCATION_MATCH (Codex pass 22)	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00b8dcd0
+00c29a3c	542	test_port	RELOCATION_MATCH (Codex pass 22)	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00c29a3c
+00d2988b	1319	test_port	RELOCATION_MATCH (Codex pass 22)	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00d2988b
+00683c10	1085	parked	DIFFER(1085v1085)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00683c10.cpp
+00659800	1074	parked	DIFFER(1074v1074)	rebuild/candidates/manual/pending/2026-11-03_linux_hand720/round5/differ/00659800.cpp
+009482a0	1072	parked	DIFFER(1072v1072)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/009482a0.cpp
+00b47bc0	1028	parked	DIFFER(1028v1028)	rebuild/candidates/manual/pending/2026-11-03_linux_hand721/round3/probe/00b47bc0.cpp
+00972f30	1026	parked	DIFFER(1026v1026)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00972f30.cpp
+0063d0a0	1017	parked	DIFFER(1017v1017)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/0063d0a0.cpp
+0063d4a0	1017	parked	DIFFER(1017v1017)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/0063d4a0.cpp
+007d00f0	1016	parked	DIFFER(1016v1016)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/007d00f0.cpp
+0089c910	1016	parked	DIFFER(1016v1016)	rebuild/candidates/manual/pending/2026-11-10_linux_hand1012c/differ/0089c910.cpp
+009af7a0	1007	parked	DIFFER(1007v1007)	rebuild/candidates/manual/pending/2026-11-12_linux_handQ24/differ/009af7a0.cpp
+00a1ceb0	992	parked	DIFFER(992v992)	rebuild/candidates/manual/pending/2026-11-03_linux_hand721/round4/differ/00a1ceb0.cpp
+00b17030	991	parked	DIFFER(991v991)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00b17030.cpp
+00650e98	987	parked	DIFFER(987v987)	rebuild/candidates/manual/pending/2026-10-24_linux_hand471/differ/00650e98.cpp
+00a89e40	986	parked	DIFFER(986v986)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00a89e40.cpp
+00a8a5f0	981	parked	DIFFER(981v981)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00a8a5f0.cpp
+00a89a70	970	parked	DIFFER(970v970)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00a89a70.cpp
+00a8a220	965	parked	DIFFER(965v965)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00a8a220.cpp
+0095bcf0	948	parked	DIFFER(948v948)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/0095bcf0.cpp
+0079c880	933	parked	DIFFER(933v933)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/0079c880.cpp
+00b4a700	926	parked	DIFFER(926v926)	rebuild/candidates/manual/pending/2026-11-12_linux_handQ24/differ/00b4a700.cpp
+00934410	922	parked	DIFFER(922v922)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00934410.cpp
+0064a639	911	parked	DIFFER(911v911)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/0064a639.cpp
+0064e978	910	parked	DIFFER(910v910)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0064e978.cpp
+007daef0	904	parked	DIFFER(904v904)	rebuild/candidates/manual/pending/2026-11-12_linux_handQ21/differ/007daef0.cpp
+009ddc60	899	parked	DIFFER(899v899)	rebuild/candidates/manual/pending/2026-11-12_linux_handQ20/differ/009ddc60.cpp
+00aeeba0	890	parked	DIFFER(890v890)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00aeeba0.cpp
+0057df85	876	parked	DIFFER(876v876)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/0057df85.cpp
+00915350	867	parked	DIFFER(867v867)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00915350.cpp
+007ce7a0	863	parked	DIFFER(863v863)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/007ce7a0.cpp
+00a1a7e0	862	parked	DIFFER(862v862)	rebuild/candidates/manual/pending/2026-11-03_linux_hand721/differ/00a1a7e0.cpp
+0085c470	857	parked	DIFFER(857v857)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0085c470.cpp
+006e99b0	852	parked	DIFFER(852v852)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/006e99b0.cpp
+00b202d0	850	parked	DIFFER(850v850)	rebuild/candidates/manual/pending/2026-10-27_linux_hand686/differ/00b202d0.cpp
+00646f67	843	parked	DIFFER(843v843)	rebuild/candidates/manual/pending/2026-11-12_linux_handWF22/differ/00646f67.cpp
+00a177a0	840	parked	DIFFER(840v840)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00a177a0.cpp
+00c74510	828	parked	DIFFER(828v828)	rebuild/candidates/manual/pending/2026-10-27_linux_hand684/differ/00c74510.cpp
+00a17f80	818	parked	DIFFER(818v818)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a17f80.cpp
+00a1d290	817	parked	DIFFER(817v817)	rebuild/candidates/manual/pending/2026-11-12_linux_handQ23/differ/00a1d290.cpp
+0064ae80	812	parked	DIFFER(812v812)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0064ae80.cpp
+007bcf7f	808	parked	DIFFER(808v808)	rebuild/candidates/manual/pending/2026-11-12_linux_handQ20/differ/007bcf7f.cpp
+012152d0	18	never_worked		
+01216410	18	never_worked		
+01216ce0	18	never_worked		
+01216e00	18	never_worked		
+01216e20	18	never_worked		
+01216e40	18	never_worked		
+012150a1	21	never_worked		
+01211e82	21	never_worked		
+01213bb0	24	never_worked		
+012152b8	24	never_worked		
+0121679f	24	never_worked		
+012117ad	21	never_worked		
+01211dfe	21	never_worked		
+01212472	21	never_worked		
+012139f6	21	never_worked		
+0121524b	21	never_worked		
+01210e95	18	never_worked		
+012114f4	18	never_worked		
+0121154e	18	never_worked		
+01213c1a	18	never_worked		
+01214130	18	never_worked		
+01215b88	18	never_worked		
+01215d7a	18	never_worked		
+01215d9e	18	never_worked		
+00c53400	3	never_worked		
+008f92ef	14	never_worked		
+01215280	14	never_worked		
+0121528e	14	never_worked		
+0121529c	14	never_worked		
+012152aa	14	never_worked		
+0121676d	14	never_worked		
+01216786	14	never_worked		
+00c29a30	12	never_worked		
+01211de8	11	never_worked		
+01211df3	11	never_worked		
+012139eb	11	never_worked		
+01215080	11	never_worked		
+0121508b	11	never_worked		
+01215096	11	never_worked		
+01215240	11	never_worked		
+01216762	11	never_worked		
+0121677b	11	never_worked		
+01216794	11	never_worked		
+012117a5	8	never_worked		
+012139db	8	never_worked		
+012139e3	8	never_worked		
+01213ba0	8	never_worked		
+01213ba8	8	never_worked		
+01215b80	8	never_worked		

@@ -1,0 +1,101 @@
+address	length_estimate	catalog_module	catalog_name	kind	closest_version	note
+004a1840	1129	CWorld	Load	test_port	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/004a1840	RELOCATION_MATCH (Codex pass 22)
+004a1c41	77	_global	Catch@004a1c41	test_port	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/004a1c41	RELOCATION_MATCH (Codex pass 22)
+0054ef00	1127	NUISystem::CText	Draw	test_port	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/0054ef00	RELOCATION_MATCH (Codex pass 22)
+00590235	1393	CTCInventory	GetItemsListUIComponent	test_port	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00590235	RELOCATION_MATCH (Codex pass 22)
+007c4430	1952	CTCHealLife	StartHealingEffect	test_port	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/007c4430	RELOCATION_MATCH (Codex pass 22)
+00813d00	1372	CTCBoastingPodium	FrameUpdate	test_port	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00813d00	RELOCATION_MATCH (Codex pass 22)
+0090e5d0	1367	CAIStateGroup_BanditGossip	?Update@CAIStateGroup_BanditGossip@@MAEXXZ	test_port	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/0090e5d0	RELOCATION_MATCH (Codex pass 22)
+00927f30	1331	CAIStateGroup_SetupWares	CAIStateGroup_SetupWares::Update	test_port	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00927f30	RELOCATION_MATCH (Codex pass 22)
+00b8dcd0	639	CEngineOcclusionManager	SelectFlareTestVertexBuffer	test_port	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00b8dcd0	RELOCATION_MATCH (Codex pass 22)
+00c29a3c	542	_global	Catch@00c29a3c	test_port	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00c29a3c	RELOCATION_MATCH (Codex pass 22)
+00d2988b	1319	CHookCoastTeleporter	Main	test_port	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00d2988b	RELOCATION_MATCH (Codex pass 22)
+00683c10	1085	CTCCreatureOpinionOfHero	GetGreetDialogueGroupIndex	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00683c10.cpp	DIFFER(1085v1085)
+00659800	1074	CTCVillage	CalculateSecuritySweepTasks	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand720/round5/differ/00659800.cpp	DIFFER(1074v1074)
+009482a0	1072	CAIStateGroup_GoToPub	GetSeat	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/009482a0.cpp	DIFFER(1072v1072)
+00b47bc0	1028	CEngineLightingManager	UpdateShadowedSpotLights	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand721/round3/probe/00b47bc0.cpp	DIFFER(1028v1028)
+00972f30	1026	CAIStateGroup_JackOfBladesStage2	?SetupArena@CAIStateGroup_JackOfBladesStage2@@MAEXXZ	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00972f30.cpp	DIFFER(1026v1026)
+0063d0a0	1017	CWorldMap	FindGroundCollisionPointWithinCell	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/0063d0a0.cpp	DIFFER(1017v1017)
+0063d4a0	1017	CWorldMap	FindThemeCollisionPointWithinCell	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/0063d4a0.cpp	DIFFER(1017v1017)
+007d00f0	1016	CTCTavernGameShoveHaPenny	FrameUpdate	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/007d00f0.cpp	DIFFER(1016v1016)
+0089c910	1016	CGameScriptInterface	CanThingBe_Sensed_ByOtherThing	parked	rebuild/candidates/manual/pending/2026-11-10_linux_hand1012c/differ/0089c910.cpp	DIFFER(1016v1016)
+009af7a0	1007	CDefinitionManager	SaveBinaryDefinitions	parked	rebuild/candidates/manual/pending/2026-11-12_linux_handQ24/differ/009af7a0.cpp	DIFFER(1007v1007)
+00a1ceb0	992	CNavigatorAStar	Initialise	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand721/round4/differ/00a1ceb0.cpp	DIFFER(992v992)
+00b17030	991	CPSCOrbit	DatabaseSerialise	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00b17030.cpp	DIFFER(991v991)
+00650e98	987	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick::vfunc_0	parked	rebuild/candidates/manual/pending/2026-10-24_linux_hand471/differ/00650e98.cpp	DIFFER(987v987)
+00a89e40	986	C3DMesh2	?GetDummyObjectPositionAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAV2@ABVC3DAnimationBlendState@@2MAAVC3DAnimationManager@@_N@Z	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00a89e40.cpp	DIFFER(986v986)
+00a8a5f0	981	C3DMesh2	?GetDummyObjectTransformAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAVCMatrix3x4@@ABVC3DAnimationBlendState@@2MAAVC3DAnimationManager@@_N@Z	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00a8a5f0.cpp	DIFFER(981v981)
+00a89a70	970	C3DMesh2	?GetDummyObjectPositionAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAV2@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@_N@Z	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00a89a70.cpp	DIFFER(970v970)
+00a8a220	965	C3DMesh2	?GetDummyObjectTransformAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAVCMatrix3x4@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@_N@Z	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00a8a220.cpp	DIFFER(965v965)
+0095bcf0	948	CAIStateGroup_HoverHornetQueen	Attack	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/0095bcf0.cpp	DIFFER(948v948)
+0079c880	933	CTCBulletTime	FrameUpdate	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/0079c880.cpp	DIFFER(933v933)
+00b4a700	926	CEnginePrimitiveRenderer2D	?Render@CEnginePrimitiveRenderer2D@@UAEXABVCEngineComponentRenderParams@@@Z	parked	rebuild/candidates/manual/pending/2026-11-12_linux_handQ24/differ/00b4a700.cpp	DIFFER(926v926)
+00934410	922	CAIStateGroup_MinionKidGroupTag	EvadeTarget	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00934410.cpp	DIFFER(922v922)
+0064a639	911	CDrawGuildSeal	Draw	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/0064a639.cpp	DIFFER(911v911)
+0064e978	910	CDrawReceivedItems	Draw	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0064e978.cpp	DIFFER(910v910)
+007daef0	904	CTCTavernGameCardBlackjack	DealCard	parked	rebuild/candidates/manual/pending/2026-11-12_linux_handQ21/differ/007daef0.cpp	DIFFER(904v904)
+009ddc60	899	CRenderManager2D	Draw2DBoxWithZ	parked	rebuild/candidates/manual/pending/2026-11-12_linux_handQ20/differ/009ddc60.cpp	DIFFER(899v899)
+00aeeba0	890	CParticleEmitter	StartFrame	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00aeeba0.cpp	DIFFER(890v890)
+0057df85	876	CTCHeroStats	KickHeroToMostRecentSafeRegion	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/0057df85.cpp	DIFFER(876v876)
+00915350	867	CAIStateGroup_KidHurtSelfRunToMother	CAIStateGroup_KidHurtSelfRunToMother::Update	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ6/differ/00915350.cpp	DIFFER(867v867)
+007ce7a0	863	CTCElectrocutedEffect	Reset	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/007ce7a0.cpp	DIFFER(863v863)
+00a1a7e0	862	CNavigatorAStar	GetIntersectionPointsBetweenNodes	parked	rebuild/candidates/manual/pending/2026-11-03_linux_hand721/differ/00a1a7e0.cpp	DIFFER(862v862)
+0085c470	857	CMoveOnCylinder	Update	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0085c470.cpp	DIFFER(857v857)
+006e99b0	852	CCombatManager	GetDefenderZone	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/006e99b0.cpp	DIFFER(852v852)
+00b202d0	850	NParticleEngine::CPSCSplineBase::CSplinePosParamData	TransformPosToMaintainShape	parked	rebuild/candidates/manual/pending/2026-10-27_linux_hand686/differ/00b202d0.cpp	DIFFER(850v850)
+00646f67	843	CDrawExperience	Draw	parked	rebuild/candidates/manual/pending/2026-11-12_linux_handWF22/differ/00646f67.cpp	DIFFER(843v843)
+00a177a0	840	CPhysicsMesh	GetPointIntersectionFromToUsingSegmentation	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00a177a0.cpp	DIFFER(840v840)
+00c74510	828	CDspGain	ApplyRamps	parked	rebuild/candidates/manual/pending/2026-10-27_linux_hand684/differ/00c74510.cpp	DIFFER(828v828)
+00a17f80	818	CPhysicsMesh	GetPointIntersectionFromToUsingFullCollision	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a17f80.cpp	DIFFER(818v818)
+00a1d290	817	CNavigatorAStar	CalculateRoute	parked	rebuild/candidates/manual/pending/2026-11-12_linux_handQ23/differ/00a1d290.cpp	DIFFER(817v817)
+0064ae80	812	CDrawAbilityButtons	DrawAbilityButton	parked	rebuild/candidates/manual/pending/2026-11-11_linux_handQ7/differ/0064ae80.cpp	DIFFER(812v812)
+007bcf7f	808	CTCShotDefinitionMultiArrow	InitMovement	parked	rebuild/candidates/manual/pending/2026-11-12_linux_handQ20/differ/007bcf7f.cpp	DIFFER(808v808)
+012152d0	18	_global	Unwind@012152d0	never_worked		no draft
+01216410	18	_global	Unwind@01216410	never_worked		no draft
+01216ce0	18	_global	Unwind@01216ce0	never_worked		no draft
+01216e00	18	_global	Unwind@01216e00	never_worked		no draft
+01216e20	18	_global	Unwind@01216e20	never_worked		no draft
+01216e40	18	_global	Unwind@01216e40	never_worked		no draft
+012150a1	21	_global	Unwind@012150a1	never_worked		no draft
+01211e82	21	_global	Unwind@01211e82	never_worked		no draft
+01213bb0	24	_global	Unwind@01213bb0	never_worked		no draft
+012152b8	24	_global	Unwind@012152b8	never_worked		no draft
+0121679f	24	_global	Unwind@0121679f	never_worked		no draft
+012117ad	21	_global	Unwind@012117ad	never_worked		no draft
+01211dfe	21	_global	Unwind@01211dfe	never_worked		no draft
+01212472	21	_global	Unwind@01212472	never_worked		no draft
+012139f6	21	_global	Unwind@012139f6	never_worked		no draft
+0121524b	21	_global	Unwind@0121524b	never_worked		no draft
+01210e95	18	_global	Unwind@01210e95	never_worked		no draft
+012114f4	18	_global	Unwind@012114f4	never_worked		no draft
+0121154e	18	_global	Unwind@0121154e	never_worked		no draft
+01213c1a	18	_global	Unwind@01213c1a	never_worked		no draft
+01214130	18	_global	Unwind@01214130	never_worked		no draft
+01215b88	18	_global	Unwind@01215b88	never_worked		no draft
+01215d7a	18	_global	Unwind@01215d7a	never_worked		no draft
+01215d9e	18	_global	Unwind@01215d9e	never_worked		no draft
+00c53400	3	_gapscan	sub_00c53400	never_worked		no draft
+008f92ef	14	_global	Catch@008f92ef	never_worked		no draft
+01215280	14	_global	Unwind@01215280	never_worked		no draft
+0121528e	14	_global	Unwind@0121528e	never_worked		no draft
+0121529c	14	_global	Unwind@0121529c	never_worked		no draft
+012152aa	14	_global	Unwind@012152aa	never_worked		no draft
+0121676d	14	_global	Unwind@0121676d	never_worked		no draft
+01216786	14	_global	Unwind@01216786	never_worked		no draft
+00c29a30	12	_global	Catch@00c29a30	never_worked		no draft
+01211de8	11	_global	Unwind@01211de8	never_worked		no draft
+01211df3	11	_global	Unwind@01211df3	never_worked		no draft
+012139eb	11	_global	Unwind@012139eb	never_worked		no draft
+01215080	11	_global	Unwind@01215080	never_worked		no draft
+0121508b	11	_global	Unwind@0121508b	never_worked		no draft
+01215096	11	_global	Unwind@01215096	never_worked		no draft
+01215240	11	_global	Unwind@01215240	never_worked		no draft
+01216762	11	_global	Unwind@01216762	never_worked		no draft
+0121677b	11	_global	Unwind@0121677b	never_worked		no draft
+01216794	11	_global	Unwind@01216794	never_worked		no draft
+012117a5	8	_global	Unwind@012117a5	never_worked		no draft
+012139db	8	_global	Unwind@012139db	never_worked		no draft
+012139e3	8	_global	Unwind@012139e3	never_worked		no draft
+01213ba0	8	_global	Unwind@01213ba0	never_worked		no draft
+01213ba8	8	_global	Unwind@01213ba8	never_worked		no draft
+01215b80	8	_global	Unwind@01215b80	never_worked		no draft
