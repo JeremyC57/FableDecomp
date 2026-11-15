@@ -36609,7 +36609,7 @@ _g_emptyWideStringData	0129a8e0	0099bdb0
 ?g_renderStateDefault_01396dd0@@3KA	01396dd0	00bad2e0
 ?GetLightsInSphereFast@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingSphere@@JABVCEnginePrimitiveThemeChannelDesc@@@Z	00b46b90	00bbc0b0
 ?SetupShaderPointLights@CEngineLightingManager@@QAEXPAVCEngineLocalLightArray@@@Z	00b44f20	00bbc0b0
-?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA	01396de8	00bbc460
+?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA	01396dd8	00bbc460
 ?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z	00bbc130	00bbc460
 ??0CEngineSubPrimitiveAnimatedMesh@@QAE@PAVCEngineInternalPrimitive2DAnimatedMesh@@PAUCSubMesh@@J_N@Z	00bce740	00bd1f70
 ?AddGeneratedObjects@CEnginePrimitiveManager2DAnimatedMeshes@@QAEXPAVCEngineInternalPrimitive2DAnimatedMesh@@PAVCMatrix3x4@@@Z	00bf18b0	00bd1f70
@@ -41174,3 +41174,6 @@ _CODA_SourceSetPlayCursor@8	00c35e30	00c271f0
 ?_M_insert_overflow@?$vector@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@V?$allocator@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@@2@@std@@IAEXPAV?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z	007dc9a0	007db2e0
 ?erase@?$vector@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@V?$allocator@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@@2@@std@@QAEPAV?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@2@PAV32@0@Z	007dc8d0	007db2e0
 ??0CEngineSubPrimitiveBase@@QAE@PAVCEngineInternalPrimitiveBase@@@Z	00b98a50	00bbddd0
+?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA	01396dd8	00a059e0
+?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA	01396dd8	00b555a0
+?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA	01396dd8	00bc04f0
