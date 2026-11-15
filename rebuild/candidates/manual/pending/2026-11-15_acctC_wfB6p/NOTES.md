@@ -128,3 +128,43 @@
   statements would reproduce it -- the only C++ way is a temporary bound to a const reference (h5 tried with constructor
   temporaries: 726); not tried: a const reference bound to a C2DVector returned by an inline C2DVector OPERATOR (e.g. a
   NAMED_RESULT operator- / operator+ of C2DVector; cr1 = `const C2DVector& c = C2DVector(...) * 1.0f` with the NAMED_RESULT_MUL opt-in: 726, scalarized), and c2prio --trace for the x87 class (the tool prints only integer colouring).
+## 0x00875690 CGeneralCircle -- fourth agent (2026-11-15): still PARKED DIFFER(726v762), differ/ unchanged; ~32 grades (tmp/gv_*.cpp, tmp/r_*.cpp, tools/gv.sh, tools/rep.sh, fw/fwr.sh, fw/fwdis.py)
+- New free oracle: FableWin /Od size of the ROW (fw/fwr.sh = fwsize with /EHsc, row regex): FableWin 215i/702b; the differ text is 180i/576b (+35i).
+  All earlier probes measured (fw/fwr.sh over tmp/gc*, tmp/00875690_*): none at 215i; closest by count are by-value helper texts
+  (bv1 218i/650b, early1/late1 212i/642b) but their bytes stay ~60 short. An assert is ~60..87 /Od instructions, so +35 is not one assert.
+- Re-reading of retail: EVERY C2DVector construction in retail keeps a copy apart from its source values: c.X [10] v dot1 [1c],
+  c.Y [14] v dot2 (stack), b.X [28] v len (stack), and also centre: `fld [1c] ; fld st(1)` at the start of the Origin statement
+  load centre.X / centre.Y copies used only by Radius, while Origin reads u from [1c] and v from the stack. Ours coalesces all three.
+  Reading: in retail b, c and centre behave as memory (not scalar-replaced) objects with store-to-load forwarding (b.Y's store is
+  dead and its loads become the 0.0f constant), as the two (c - a) operator- temporaries do in both builds.
+- No change / worse (all DIFFER): named floats + objects used side by side (712); by-value / const-ref inline circumcentre helpers
+  with the half-squares inside (724 / 728 / 716; the by-value one is not inlined: called); centre spellings (copy-init 726, block
+  copy 756, Origin from u/v 726, Radius from a temporary 726); C3DVector(...).ToC2DVector() for b / c / centre (726, TO2D opt-in);
+  named num / den (722); double u (738); C3DVector b / c with GetSquaredMagnitude (728); b.GetSquaredMagnitude (728: 0*0 not folded);
+  array + references (770); float pointers into b / c (726); C2DVector without #pragma pack (diagnostic overlay copy: 726, identical);
+  /Op (972, wrong from the first instruction).
+- Not tried: a local CCircle (engine CCircle layout Centre/Radius; FableWin has ??0CCircle@@QAE@XZ, ?Set@CCircle@@QAEXABVC2DVector@@M@Z,
+  ?GetRadius@CCircle@@QBEMXZ) holding the centre; the frame-packer replay (wfE3 ph tools) to explain why retail's 4-byte homes sit
+  BELOW ab [34] / normal [40] / in_plane [4c] while ours put ab at [1c] (retail has 9 dwords under ab, ours 3).
+## 0x00875690 CGeneralCircle -- fifth agent (2026-11-15): still PARKED DIFFER(726v762), differ/ unchanged; ~60 grades (tools/ga.sh whole-body variants, tools/bd.sh built-listing diff, tools/sy.sh frame-symbol map from a /FAs listing, tools/mic.sh mini-TU listings; probe-only headers moved to probe/hdr_wfB6_5th/)
+- Frame map from the /FAs listing (sy.sh): ours _c$ -72 (c.X only; b and centre have NO home), _ab$ -60, _normal$ -48, _in_plane$ -36, $T temps -24/-12/-72.
+  Retail: ab -36, normal -24, in_plane -12 (named vectors at the TOP), all temporaries and the 2-D objects in the 9 dwords below
+  (c = [10..17], b = [28..2f] sharing the dead first (c - a) $T at [28..33], u at [1c]).
+- Mechanism measured (mic2/m1.cpp mini TU): the copies in the matched (c - a) region are CSE copies (one subtraction value `tv`, two
+  $T operator- temporaries); VC7.1 CSE is statement-local: duplicated expressions across statements (x1/x2 864/890) or across the
+  declarators of one declaration (m1 822) are NOT merged. So retail's c.X / c.Y / b.X / centre copies are not CSE copies of any spelling tried.
+- No change or worse (all DIFFER): dead FABLE_RETAIL_ASSERT arms at 4 places (726/728/726/722; a dead `if (0)` does not stop copy
+  propagation); k = 1..7 unused floats and 2/6/12 dead C3DVector copies (726: removed early); #pragma optimize g off (1232), a/w on,
+  p off (726); C2DVECTOR_FORCEINLINE_CTOR (726); C3DVector b(len,0,0) / c(x,y,0) (724, still only c homed); `const float&` bound to
+  len / x / y temporaries (the same-TU CIsSwitchValid idiom) in 7 mixes (712; 730 for x only + c.GetSquaredMagnitude); Dot /
+  GetMagnitude / subtract text opt-ins DOT_XY_THEN_Z (FableWin Dot 23i = this text), DOT_GROUPED, DOT_ORDERED_YXZ/ZYX/XYZ,
+  MAGNITUDE_XY_THEN_Z, MAGNITUDE_SQRTF, SUBTRACT_XY_GROUP (724..726); centre declared before Origin and used only by Radius, Origin
+  from u / v (o1..o3, 726: copies still propagated).
+- CCircle (Ego_r layout; FableWin ?Set@CCircle@@QAEXABVC2DVector@@M@Z 16i = `Centre = centre; Radius = radius;`, probe opt-in
+  FABLE_RETAIL_CCIRCLE_SET in probe/hdr_wfB6_5th/CCircle.h, NOT in hdr/): cc1 (`C2DVector centre(u, v); CCircle circle;
+  circle.Set(centre, centre.GetMagnitude()); Origin from circle.Centre; Radius = circle.GetRadius();`) is the first LENGTH-EXACT
+  text (762v762) but 47 hunks: the bitwise Centre copy adds int copies after v and the 3-D front part re-packs (ab at [28]); the
+  2-D solve is still coalesced. cc2..cc4: 740 / 740 / 766. Not the original structure; recorded only as a data point.
+- Reading for the next agent: retail behaves as if IL copy propagation never touched the C2DVector field copies (every ctor copy
+  keeps its own home or x87 copy; constants still propagate: b.Y). Nothing in source spelling, inline texts, pragmas or dead IL
+  reproduced that; the remaining untried level is a c2 trace of the copy-propagation pass itself (why `c.X = x` is rejected).

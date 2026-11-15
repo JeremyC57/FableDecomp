@@ -237,3 +237,40 @@ engine/CCreatureAction_SummonerFlameSlice.h	FABLE_RETAIL_CCREATUREACTION_SUMMONE
 engine/CCreatureAction_SummonerUnsheatheStrike.h	FABLE_RETAIL_CCREATUREACTION_SUMMONERUNSHEATHESTRIKE_PROTOTYPE	new first branch: polymorphic `class CCreatureAction_SummonerUnsheatheStrike : public CCreatureAction_UnsheatheWeapons` with the default ctor `new CCreatureAction_SummonerUnsheatheStrike` calls (out of line at 0x008CBEE0) and the members the operator-new size 0x118 needs; the existing branches follow under #else unchanged; moved asserts pinned by pin_asserts.py	retail 0x006F5C10 insert block (push size; ctor call or inline base-ctor + vtable store), RTTI base, header sizeof
 engine/CCreatureAction_SummonerStrike.h	FABLE_RETAIL_CCREATUREACTION_SUMMONERSTRIKE_PROTOTYPE	new first branch: polymorphic `class CCreatureAction_SummonerStrike : public CCombatActionBase` with the default ctor `new CCreatureAction_SummonerStrike` calls (inline (base ctor call + vtable store expanded in the caller)) and the members the operator-new size 0x114 needs; the existing branches follow under #else unchanged; moved asserts pinned by pin_asserts.py	retail 0x006F5C10 insert block (push size; ctor call or inline base-ctor + vtable store), RTTI base, header sizeof
 engine/CCreatureAction_SummonerDie.h	FABLE_RETAIL_CCREATUREACTION_SUMMONERDIE_PROTOTYPE	new first branch: polymorphic `class CCreatureAction_SummonerDie : public CCombatActionBase` with the default ctor `new CCreatureAction_SummonerDie` calls (inline (base ctor call + vtable store expanded in the caller)) and the members the operator-new size 0x114 needs; the existing branches follow under #else unchanged; moved asserts pinned by pin_asserts.py	retail 0x006F5C10 insert block (push size; ctor call or inline base-ctor + vtable store), RTTI base, header sizeof
+# --- wfE11 fifth session (row 0x004A3740 CWorld::UpdateRegionLoad; draft only, row not matched; evidence in each block's comment) ---
+engine/CWorld.h	FABLE_RETAIL_CWORLD_TYPED_REGIONLOAD	RegionLoadStartPos C3DVector +0x108, RegionLoadFollowers vector<CIntelligentPointer<CThing> > +0x118 (Ego_r types); asserts guarded; also the CurrentWorldName assert (line ~744) guarded for FABLE_RETAIL_CWORLD_TYPED_SAVE (that combo did not compile)	0x004A37E4 lea [ebp+108h]; push_back 0x004AD520
+engine/CWorld.h	FABLE_RETAIL_CWORLD_UPDATEREGIONLOAD_CALLEES	SetGuildSealRecallPos/AngleXY, SetSaveGameMarkerPos, IsDisplayingMiniMapOnRegionLoad, DisplayCollectableRentInformation decls	Ego_r names; retail call sites
+engine/CFadeInFadeOutBase.h	FABLE_RETAIL_CFADEINFADEOUTBASE_ISCLOSING	IsClosing inline	FableWin; 0x004A477E
+engine/CDisplayEngine.h	FABLE_RETAIL_CDISPLAYENGINE_REGIONLOADFADE	IsScreenFullyFadedOut (0x004A9210), EndScreenFadeOut, IsScreenFadeOutClosing, IsScreenFadeOutLockFlagSet	FableWin; bytes
+engine/CSubtitleRenderer.h	FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT_CHAR4	4-caption char SetText 0x00492FB4	Ego_r ..ABVCCharString@@111KM_N2@Z
+engine/CSubtitleRenderer.h	FABLE_RETAIL_CSUBTITLERENDERER_ISGAMEPAUSEDFLAGSET	IsGamePausedFlagSet (PausedGame +0xDC)	FableWin; 0x004A3FBD
+engine/CThing.h	FABLE_RETAIL_CTHING_REGIONLOAD_TCS	RemoveTC (guarded vs STATEACCESS), template GetTCDriver<T>(T**) decl	Ego_r; 0x004A3B33 / 0x004ACB50
+engine/CThing.h	FABLE_RETAIL_CTHING_STATGETTYPE	static StatGetType() = 15	FableWin ?StatGetType@CThing@@SIJXZ; InitThingTypes type 15 "THING"
+engine/CTCHero.h	FABLE_RETAIL_CTCHERO_TELEPORTPARTICLE / _USEOVERRIDES	SetTeleportParticle 0x004AB270; SetWeaponsAsUsable 0x006CA380 + inline IsWeaponUseOverridden/IsWillUseOverridden/SetWillAsUsable	Ego_r/FableWin; bytes
+engine/CTCRegionFollower.h	FABLE_RETAIL_CTCREGIONFOLLOWER_REGIONLOAD	GetFollowers (descriptive sig), IsCreatureFollowingHeroAcrossRegions, IsCreatureAllowedInRegionAt, RemoveFollower	Ego_r
+engine/CTCTargetingPlayer.h	FABLE_RETAIL_CTCTARGETINGPLAYER_FORCENOTARGET	StatGetClassTypeName, ForceToHaveNoTarget (+0x3D)	FableWin; 0x004A3E42 / 0x004A3EA2
+engine/CThingCreatureBase.h	FABLE_RETAIL_CTHINGCREATUREBASE_ISFOLLOWINGTELEPORTERS	IsFollowingHeroThroughTeleporters	FableWin; +0x15C&0x40
+engine/CTCTrophy.h	FABLE_RETAIL_CTCTROPHY_ISMINIGAMEINPROGRESS	IsMiniGameInProgress	FableWin; +0x14
+engine/CWorldMap.h	FABLE_RETAIL_CWORLDMAP_SETSOUNDTHEMESDISABLED / _MOVEPLAYERPOS	SetSoundThemesDisabled; StartMovePlayerPos/EndMovePlayerPos/IsLoadingAnyMap	FableWin/Ego_r; calls
+engine/CTCInventoryMap.h	FABLE_RETAIL_CTCINVENTORYMAP_ISOPENEDVIAGUILDSEAL / _RESETWORLDMAPDISPLAY	IsOpenedViaGuildSeal (+0x241); ResetWorldMapDisplay 0x005FAA30	FableWin/Ego_r
+engine/CQuestManager.h	FABLE_RETAIL_CQUESTMANAGER_ANYQUEST_LOCKSTART	IsAnyQuestActive 0x004B1080, IsRegionStartOfRegionLockingMode 0x004B11A0	Ego_r + donor order
+engine/CPlayerGui.h	FABLE_RETAIL_CPLAYERGUI_MINIMAPREGIONLOAD	SetMiniMapRegion, IsMiniMapFinishedOpening/Closing	Ego_r/FableWin; naming wave 1
+engine/NHeroInformationScreens_CManager.h	FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGIONLOAD	RemoveAllPlayerModes, Close, IsOpen (+0x34 byte, descriptive member Open; LAYOUT without CTOR)	Ego_r/FableWin
+engine/NProgressDisplay.h	FABLE_RETAIL_NPROGRESSDISPLAY_STOPPROGRESS	StopProgress 0x009E9F20	Ego_r
+engine/CThingAICreature.h	FABLE_RETAIL_CTHINGAICREATURE_REGIONLOAD	ForceAIReset decl, IsRegionFollowingOverriddenFromScript inline	Ego_r/FableWin
+engine/CTCHeroExperience.h	FABLE_RETAIL_CTCHEROEXPERIENCE_ONREGIONLOAD	OnRegionLoad 0x006D7570	Ego_r
+engine/CTCHeroOpinionDeedLog.h	FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_PUTWEAPONAWAY / _TAKENOUTWEAPON	PlayerPutWeaponAway 0x006C6010 / PlayerTakenOutWeapon 0x006C6E20 (INFERRED: one source)	Ego_r names; call context
+engine/CTCWife.h	FABLE_RETAIL_CTCWIFE_ONHERORETURNTOREGION	OnHeroReturnToRegion 0x006CED30	Ego_r
+engine/CGameCameraManager.h	FABLE_RETAIL_CGAMECAMERAMANAGER_RESETCAMERA	ResetCamera 0x0069A990 (inside the _FULL branch)	Ego_r
+engine/CTCCreatureNavigation.h	FABLE_RETAIL_CTCCREATURENAVIGATION_NEARBYDIRECTED	GetNearbyDirectedPosition 0x006CB780	Ego_r
+engine/CThingPlayerCreature.h	FABLE_RETAIL_CTHINGPLAYERCREATURE_ONREGIONCHANGE	OnRegionChange 0x006AA100	Ego_r
+engine/CTCSoundPlayer.h	FABLE_RETAIL_CTCSOUNDPLAYER_PLAYUNATTACHEDCRITERIA	PlayUnattachedCriteria 0x0066BDF0	Ego_r
+NEW HEADERS (retail opt-in only, no repo header existed): engine/CTCFadeOutAndIn.h (FABLE_RETAIL_CTCFADEOUTANDIN), CTCRegionDisplay.h, CTCTrespasser.h, CTCAppearanceMorphBase.h, CTCHeroRememberCrimes.h, CAsyncLoadingMemoryPool.h -- each documents its Ego_r layout / names and the retail sites.
+- engine/CWorld.h FABLE_RETAIL_CWORLD_REGIONLOAD_ACCESSORS (wfE11 sixth session, row 0x004A3740): inline IsTeleportingEnabled /
+  IsRegionLoadToDisplayRegionName / IsScreenToFadeInOnNextRegionChange / SetScreenToFadeInOnNextRegionChange (FableWin.pdb names, no
+  Ego_r copy; FableWin COMDATs 0x01B4EFF0..0x01B4F050 right after UpdateRegionLoad). Inserted before FABLE_RETAIL_CWORLD_SETKICKPOS;
+  no assert moved (addopt.py pinned 0). Matched rows regraded: all four still RELOCATION_MATCH.
+- engine/C2DVector.h FABLE_RETAIL_C2DVECTOR_GFGET2DDISTANCESQUARED (wfE11 sixth session, row 0x004A3740): new copy of the repo header +
+  inline __fastcall GFGet2DDistanceSquared(const C2DVector&, const C2DVector&) after the FROM3D body (FableWin.pdb
+  ?GFGet2DDistanceSquared@@YIMABVC2DVector@@0@Z, COMDAT 0x01B4F090 64b/25i; no Ego_r copy). Body FITTED to 0x004A44C5..0x004A450F
+  (pos2-pos1, dy*dy then += dx*dx; /Od 24i/62b). Default text untouched.

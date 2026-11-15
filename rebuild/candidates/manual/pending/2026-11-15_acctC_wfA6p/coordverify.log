@@ -1,10 +1,4 @@
+00ba6240 CEnginePrimitiveManagerStaticMeshesBase RenderPrimitiveToShadowBuffer None
 addr       parity           behav  name
-00ba6240   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
-00ba6240   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
-00ba6240   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
 00ba6240   WARN RELOC_CONFLICT: ?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA -> 01396dd8 here, 01396de8 in landed 00bbc460
-00ba6240   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
 00ba6240   RELOCATION_MATCH PASS   RenderPrimitiveToShadowBuffer
-
-WINS: 1
-  00ba6240 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::RenderPrimitiveToShadowBuffer

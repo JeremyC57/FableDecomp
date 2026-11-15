@@ -172,3 +172,136 @@
   before re-porting; the earlier "retail shares no slots" note is wrong (CWideString slots ARE shared).
 - Name: 0x00435530 = ?DoRender@CDisplayEngine@@IAEXPBVCInterpolationInfo@@_N1@Z (protected); 0x00435F70 (landed as a DoRender
   forwarder) is the public Render wrapper (NAME_FIXES.tsv).
+
+## 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine -- RELOCATION_MATCH, test PASS, addmatch + read-only vland PASS (successor 4; src/, test/)
+- What closed the last hunk (0x00439943 GetHeight C2DExtentsI temp, 0x24 v retail 0x14): pos is passed by reference to the sprite ctor
+  0x0043FA20, an out-of-line COMDAT of THIS TU (FableWin 0x01A7E8F0 beside the row). With the ctor's body visible c2 sees pos is not
+  captured, so pos no longer conflicts with every temp of its block and the GetHeight temp joins pos's slot. Diagnostic first:
+  `__declspec(noinline)` on a visible body (probe/s4/hdrN) gave RELOCATION_MATCH with both accessors in pos's initializer (c2d), 9 hunks
+  with the separate `height` statement (c0d). Then: the body under a new opt-in FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_TEXTURE_POS_CTOR_BODY
+  (out-of-class inline after the class; text grades MATCH against 0x0043FA20 alone: probe/s4/ctor.cpp) + `// Flags: /d2inlT63`
+  (Inline-budget: at the default 74 and at 64 c2 expands the ctor (2692 bytes), at 63 it calls it, at <= 62 other callees stop expanding
+  (2422) -- the only N that matches). /d2inlS5..12 no effect. Also needed: FABLE_RETAIL_CENGINEPRIMITIVE_ID_CTOR, C2DBOXF, C2DBOXF_CORNERS.
+- Kept: the FITTED drawHud else-if chain (with the visible ctor the || spellings still grade 16 / 20 hunks at T63). Not it (this session):
+  k = 1..7 unused int locals at function top or in the TGA block (no change, 14 grades); const C2DVector& pos bound to a temporary (same as
+  named; G2 form 6 hunks); pos declared in an outer block and assigned (copy costs 14 bytes, 13-56 hunks).
+- Local class models: the NPlayerGui illustrators without a header are declared in the row (as before). engine/CDrawMiniMap.h exists but is a
+  generated, flattened GLOBAL `struct CDrawMiniMap` (no namespace, no methods), which cannot express NPlayerGui::CDrawMiniMap's members; the
+  landed siblings 0x0064E83F / 0x0064401C / 0x00644660 also declare NPlayerGui::CDrawMiniMap locally. Coordinator: confirm.
+- Test links the ROW OBJECT: fake vtables (CIEngine slots 23 / 67, CGameScriptInterface slot 395), raw object storage, 5 calls covering gamma
+  on call 2, profile alpha, lighting colours, timer set choice, illustrator clearing, subtitle / fade / letterbox, the drawHud chain order, the
+  first-person minigame cursor, ClearEffects conditions, the centred debug sprite. Mutants (unconditional health ClearEffects; always the
+  Current timer set) FAIL.
+- vland: WARN RELOC_CONFLICT ?SetCrimeAsDisplaying -> 0x00437770 here, 0x004376B0 in landed 0x00775B40. 0x004376B0 reads PMoney +0x2CC
+  (SetMoneyAsDisplaying), 0x00437770 reads PCrime +0x2EC; Ego_r spacing 0x0044A350 / 0x0044A410 = retail spacing 0xC0. The landed caller
+  0x00775B40 should call SetMoneyAsDisplaying (NAME_FIXES.tsv line for 0x004376B0 covers it).
+
+## 0x0048E78E (successor 4) -- still 14 fg hunks = 2 real regions (fg's immediate-zero false hunks on `cmp byte [x],0` inflate the count)
+- New level tried: callee body visibility. FableWin places BOTH sprite ctors as COMDATs in this TU (0x01A662C6 box / 0x01A663FC pos,
+  beside DrawButtonText 0x01A665C5 / DrawButtonGraphics 0x01A67310). Proved texts: CRIME_CTOR body = RELOCATION_MATCH v 0x00493AC2 (pos);
+  a box-ctor body (same style, ClipBox(box), ClipBoxIsPos(false), Texture(0)) MATCHes 0x0041BEB0 with FABLE_RETAIL_C2DBOXF_COPY (probe/s5/
+  hdrB, ctors3.cpp). In this /Os TU neither body is expanded (length unchanged), but the grade is unchanged too: base 14, single-block
+  s1/s2/s3 23/24/23 (probe/s5/v*.cpp) -- the boxes' capture is not what drives the flags/InCutscene colouring here.
+- Moving the bools / layer into the inner (box3) block is SRC_FAIL (they are used after it). No measured lead left; parked.
+
+## 0x00435530 CDisplayEngine::DoRender (successor 4) -- not re-authored (budget went to closing 0x00439070); port plan + measurements
+- Draft (probe/d1/base.cpp, local models) still DIFFER(2571v2617), frame 0xa4 v retail 0xcc; frame-masked struct diff (C44 sd.py) 121 hunks,
+  most are esp offsets (frame +0x28 also turns disp8 into disp32: a large part of the 46-byte length gap). efm.py (tmp/pk_dr0.asm): retail
+  _info at +48 v ours +8 (the 0x28 frame gap); retail centre -72 (own low-density slot near televisionArea -88 / camera -16), ours -148
+  (shared with a temp). Lesson from 0x00439070 applies in reverse: retail's extra slots = named locals that conflict with every temp of
+  their block because their address escapes to an out-of-line callee (centre -> GetDebugCentre hidden return / filter ctor; things ->
+  GetAllThingsInRoughArea 0x00436D60, a template COMDAT of THIS TU -- its body may be visible in retail).
+- Shared-header coverage (grep of today's headers + hdr/): CDisplayEngine has InitialFadeReadynessCount / InitialFadeActive /
+  ScreenFadeDuration / TimeSinceFadeStarted / PViewManager / DrawGame / Frame / World but NOT SetAboutToRun 0x00434CD0, EndScreenFadeOut
+  0x00434C90, RenderHeroDrunkenness 0x00435070 (+ the 0x00435000 callee: the draft's "RenderHeroFuckShit" is unproven; reloc_bindings
+  says ?GiveGold@CTCHeroMoney, a catalog label -- PROVE); CCamera ctor present; CRenderManager*.h: check CRenderManagerCore /
+  CRenderManager2D for SetFogEnable, SetVWindow 0x00A0B560, ClearRenderTarget 0x009D8CF0, Draw3DScaledText (hdr opt-in exists), Draw2DText
+  0x009DD8F0, SetTextureMipMapMode, DrawBufferedPolys 0x009D9C80, Render2DDrawList 0x009DA9F0; CDisplayManager has the television area /
+  Begin / End / SwapScreens, not SetGamma 0x009BEAA0; CEngineManager lacks OnRender 0x00640500; NUISystem::CManager complete; CInputManager
+  lacks the +0x38 Paused byte; CSystemManager has Debug + GFGetSystemManager; CPlayer has DrawFreeCamDebug / GetCurrentMode, not Active;
+  CWorld lacks GetDebugCentre; CThingSearchTools has GetAllThingsInRoughArea; CDefStringTable has GetString, not the GDefStringTable
+  global; CSurface lacks SaveAsTGA 0x009F4590; CConsole has NO header (a local declaration is allowed; ctor 0x009ECD80, Render 0x009EA550);
+  CSubtitleRenderer has IsWaitingForClickPast.
+- Globals: reloc_bindings names for the draft's placeholders are catalog-quality (g_LightsDrawnThisFrame 0x013BA85C, g_b13B860C, g_b13B8629,
+  g_RenderFrame_013b7d70, GPInputManager 0x013B8388, g_pGlobalGui 0x013B8790, g_pConsole 0x013CAA40, FableFullBuildVersion 0x013B85E0);
+  0x013B8A0C / 0x013B8A10 / 0x013B86EB / 0x013B86E7 / 0x01375455 / 0x013B862C / 0x01375720 unbound. Each needs a PDB/FSE/string proof or a
+  descriptive name per the 2026-11-10 rule.
+- Next: port onto those headers (about 15 additive opt-ins), then test the capture hypothesis above (define the 0x00436D60 template body
+  above the row; GetDebugCentre declared returning C3DVector by value).
+
+## 0x0048E78E CSubtitleRenderer::DrawButtonGraphics -- RELOCATION_MATCH, test PASS, addmatch + read-only vland PASS (wfA2-5; src/, test/)
+- Start: the re-based acctB draft (14 fg hunks = 2 real regions). Two facts closed it, in ~45 grades:
+  1. SAME-TU CALLEE BODIES. Retail compiles IsCutsceneSkippable 0x0048DE44, GetTextWidthFromText 0x0048E062 and IsTextReadyForClickPast
+     0x0048E072 earlier in this TU; VC7.1 then knows they clobber only eax/edx (ecx kept), which changes the caller's candidate set /
+     priorities. Defining their landed texts above the row under `#pragma auto_inline(off)` made retail's natural one-block shape
+     (`if (IsFlagSet(0x800)) layer = M2;` AFTER box3; the old FITTED early placement is gone) colour flags=ecx, InCutscene=al, 0x45=edx:
+     14 -> 10 hunks (only the IsCutsceneSkippable + IsTextReadyForClickPast pair matters; IsOpen / GetTextWidthFromText bodies alone change
+     nothing). IsCutsceneSkippable on shared headers: `CMainGameComponent::Get()->PeekWorld().IsPerformingRegionLoadReally()` (needs
+     FABLE_RETAIL_CWORLD + the existing ..._ISPERFORMINGREGIONLOADREALLY opt-in; FableWin COMDAT 0x01A652B5 right after IsCutsceneSkippable
+     0x01A6519F; the landed local model called it g_pGameComponent->m_pDisplayEngine->m_busy, but +0x24 is PWorld and +0x104 RegionLoadStatus),
+     timer tests raw `.Active` / `.Opening` as the landed text. All three grade RELOCATION_MATCH v their retail addresses from src/.
+  2. BOX-SPRITE CTOR BODY VISIBLE (new opt-in FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_BOX_CTOR_BODY; text MATCH v 0x0041BEB0 alone,
+     probe/w2/boxctor.cpp; FableWin places the COMDAT at 0x01A662C6 in this TU). With it, arm A in retail's natural order
+     TLX,TLY,BRX,BRY gets both offset addresses CSE'd (lea eax 5FC / lea ecx 600) -> RELOCATION_MATCH. The position ctor body
+     (..._CRIME_CTOR, v 0x00493AC2) is defined too (FableWin COMDAT 0x01A663FC, same TU); it alone does not close arm A.
+- Defines added v the draft: C2DBOXF_COPY, CENGINEPRIMITIVE2DSPRITE_BOX_CTOR_BODY, ..._CRIME_CTOR, CENGINEPRIMITIVE_ID_CTOR, CWORLD,
+  CWORLD_ISPERFORMINGREGIONLOADREALLY. No flags. FITTED (kept from the draft): the two bare blocks (box1..return, box3..arms).
+- Test: links the row object; 30-odd checks over 7 scenarios (flag 4 / 0x800 / in-box Y / paused set, timer open/close, action mode,
+  in-cutscene + IsCutsceneSkippable branches incl. region load and skip prompt, flag 2 ready / 0x48, last arm, override tail +
+  fishing clamp). Mutant (no layer M2, no gap for button 3) fails 2 checks. Private member called via `/alternatename`.
+- Names: 0x0048E062 is GetTextWidthFromText (landed as global operator_new), 0x0048E072 IsTextReadyForClickPast (reloc_bindings says
+  IsTextFullyShown): NAME_FIXES.tsv.
+
+## 0x00435530 CDisplayEngine::DoRender (wfA2-5) -- parked again; local-model draft improved, shared-header port still the job
+- New best differ/00435530.cpp (= probe/dr/t4.cpp, still local models): DIFFER(2587v2617), fg 109 hunks but 64 STRUCTURAL hunks
+  (tools/mdiff.py <q.txt>: mnemonics with all numbers masked) v 102 for the old draft (kept as probe/dr/differ_prev.cpp).
+- Fact 1 (EVIDENCED, retail 0x00435962..0x00435A0F): the debug-map loop draws each nearby thing's DEF NAME, not a track-node name:
+  `things[i]` +0x70 is CThing::PBaseDef (CDefPointer<const CThingBaseDef>, null-tested = HasBaseDef), the virtual is CDefClassBase slot 10
+  `CDefString GetInstantiationName() const` (hidden return slot), then GDefStringTable.GetString(TablePos) (0x009D49B0, ecx=0x013CA828),
+  CCharString::ToWideString 0x0099E480 straight into the by-value CWideString argument slot (`push ecx ; mov ebp,esp` reservation), then
+  ~CCharString 0x0099EAE0 BEFORE the GFAYToVY / 0.7f / position arguments: that is an INLINED `CDefString::ToWideString() const { return
+  GetString().ToWideString(); }` (engine/CDefString.h has it declaration-only, out of line 0x00415D90 elsewhere) -> needs an inline-body
+  opt-in in the port. With it the whole argument order of Draw3DScaledText matches.
+- Fact 2: CWorld vtable +0x34 is slot 13 PeekWorldMap() const (engine/CWorld.h list), and retail evaluates the map manager OBJECT before
+  pushing DebugDraw's arguments: spelled through the inline accessor CWorldMap::GetThingMapManager() (engine/CWorldMap.h) the order matches
+  (a raw member chain pushes the level first). Lesson: header accessor texts decide FE evaluation order -> port onto engine/*.h first.
+- Not it: defining CFadeInFadeOutBase::Update / GetFadeInOutAlpha (COMDATs 0x00434870 / 0x004348D0 are in this TU's run) and
+  EndScreenFadeOut 0x00434C90 (clobbers eax only) above the row under auto_inline(off): grade unchanged (f1/f2/t3). 0x00435000 calls
+  external code (no register gain).
+- Remaining structural hunks (mdiff on tmp/q_dr4.txt): the three Draw2DText blocks (retail builds the position / colour after the text
+  temporaries, 0x00435A5C / 0x00435B95), the FramesBehind block (0x00435AB9: retail tests a pointer `mov ecx,[eax+N] ; test ecx,ecx ; je ;
+  mov ebp,ecx`), the console block (0x00435C66..0x00435C9F: GFAYToVY / font height order), screenshot loops (0x00435E29..0x00435F3F: a
+  `dec dword [N]` = `--g_ScreenshotCount` in memory), plus the whole-function zero-register / ebp-edi permutation and the 0x24-byte frame
+  gap (retail keeps centre +0x6C and the C2DBoxI box at +0x1C: no slot sharing between them).
+
+## 0x00435530 CDisplayEngine::DoRender (wfA2-6) -- shared-header PORT done: DIFFER(2617v2617), equal length, frame 0xcc, fg 31 hunks (scheduling only)
+- differ/00435530.cpp (= probe/p1/k1.cpp) is on engine/*.h + overlay opt-ins (hdr/README.md "wfA2-6"); local declarations only for classes
+  with NO header (NDisplayView::CViewBase, CProfileManager, CConsole). `// Flags: /d2inlT66` (Inline-budget: GFIntToWideString expanded at
+  FramesBehind + wishworldshot, CALLED at the movie-shot branch 0x00435D9D; default T74 expands all three, T66..T63 match).
+- What closed the structure (each measured): CWorld slot 5 is GetCurrentRenderCamera(const CInterpolationInfo&) const returning a CCamera
+  (0x38 bytes at frame 0x6C; the old "centre" was its WorldPosition); MainWindow.Initialise(0,0,W,H) (C2DBOXF_INITIALISE; +edi CSE);
+  no C2DBOXF_COPY; loop index `long i` (fimul) with `unsigned long count`; named `const CThing* thing = things[i]` (PBaseDef CSE);
+  FramesBehind text `L"Frames behind " + GFIntToWideString(DebugNoFramesUnableToRender)` inside the Draw2DText call; build version with a
+  named `CRGBColour colour` + `const CFontBank& font = PeekMainFont()`; `World->` (not PeekWorld()) in the map block; the filter as a
+  TEMPORARY in the GetAllThingsInRoughArea call (a named filter lives through the loop and blocks retail's slot sharing: packer probe
+  tools/pki.sh FUNC=DoRender); OldGammaRamp != GammaRamp; GetBackBuffer() (+0x2C) for the screenshot surface; (H * 5.0) / 12.0 (two fmuls);
+  0.45f (retail constant 0x012316F8 = (double)0.45f).
+- Remaining (fg): x87 fstp placement in Draw3DScaledText / Draw2DText position building, `mov ecx,[esi+8]` vs fld order, loop latch reload
+  order, `xor eax,eax` vs `sar edi,2` order at 0x00435951. All register choices and slots match.
+- (wfA2-6, later) Best now differ/00435530.cpp: mdiff 6 / fg 6 real hunks (fg shows 6 more false zero-immediate hunks). Added since k1:
+  implicit double->float conversions in every C2DVector / C3DVector / C2DBoxF argument (NO `(float)` casts: the casts reorder fld vs the
+  Component load and fstp vs `push lit` in every text block -- 23 -> 10 hunks); build version spelled
+  `C2DVector(VIRTUAL_SCREEN_WIDTH * 0.1, VIRTUAL_SCREEN_HEIGHT - 2.0 * PeekMainFont().GetVFontMaxHeight())` with PeekMainFont() and a TEMP
+  colour (CFontBank::GetVFontMaxHeight is the header's inline GFAYToVY(GetFontMaxHeight()); same bytes as named colour/font/height locals,
+  so the named version was dropped); `long i = 0;` before `count` (FITTED, entry order); /d2inlT63 (range T61..T66 all equal).
+- Residue tried and NOT it (all still 6): latch -- i++ / != / unsigned cast compare, `const unsigned long count`, `long i` before things or
+  before the camera (worse), `for (unsigned long count = ...; i < count; ++i)`, count declared then assigned, `continue` form, Y spelled
+  i * GFAYToVY(16) / (float)i / swapped addends, thing via *(begin()+i) / non-const, k = 1..7 unused named locals at the function top or
+  before the loop (no byte change at all), the visible noinline GetAllThingsInRoughArea body (..._ROUGHAREABODY: no change).
+  Build block -- 2.0f / *2 / *2.0 / h+h / -2.0*h+H, double or const height, named font pointer, const colour, colour after font,
+  GetVFontMaxHeight via a named font, 0.1*W. c2prio (tools/c2prio_f.py, tmp/c2p.txt): i = candidate id 25 (prio 36, split, eax piece),
+  things._M_start = local id 23 (prio 46, edx); retail reloads i first -> i must sort before the begin web (more refs on i or fewer on begin).
+- Next ideas: (1) the wfB1 x87 slot-template rule (lessons/LESSONS_wfB*.md: a one-instruction difference in the integer stream when the
+  stores are placed; find a statement fact of the build block that adds an instruction that later disappears); (2) for the latch, make the
+  begin web lighter / i heavier with a natural spelling (e.g. the vector freed by an explicit clear, or a second use of i); (3) behaviour test
+  is NOT written yet (test/00435530.cpp needed once it matches: ~45 stub callees, see tmp/relocs.txt for the exact symbol list).

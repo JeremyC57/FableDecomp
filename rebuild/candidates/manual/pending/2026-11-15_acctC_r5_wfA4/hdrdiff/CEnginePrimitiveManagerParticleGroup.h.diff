@@ -1,0 +1,27 @@
+--- a/rebuild/include/engine/CEnginePrimitiveManagerParticleGroup.h
++++ b/rebuild/include/engine/CEnginePrimitiveManagerParticleGroup.h
+@@ -21,7 +21,17 @@
+     // after CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive: first user), inline in retail (0x00BC2681 reads +0x21 in place).
+     bool GetReadZBuffer() { return ReadZBuffer; }
+ #endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEGROUP_RENDER
++    // Opt-in (wfA4, row 0x00BE0EB0 CEnginePrimitiveManager2DParticleGroup::RenderSubPrimitive): Ego_r.pdb / FableWin.pdb
++    // ?RenderSubPrimitive@CEnginePrimitiveManagerParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z (slot 5, 0x00BBC460) and
++    // the protected ?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z
++    // (0x00BBC130); the data protected for the derived 2D manager (0x00BE0EB0 writes PointLightsSet .. WriteZBuffer in place).
++    virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& sub, ERenderPassType pass);           // 0x00BBC460
++protected:
++    void RenderSubPrimGroups(CEngineInternalPrimitiveBase& primitive, ERenderPassType pass, const class CMatrix3x4& transform);   // 0x00BBC130
++#else
+ private:
++#endif
+     bool          PointLightsSet;                                        // +0x0c
+     signed char   PointLightCount;                                       // +0x0d
+     C3DVector     CurrentWorldPos;                                       // +0x0e
+@@ -35,5 +45,5 @@
+     unsigned char _pad_0x25[3];                                          // +0x25
+ };
+ #pragma pack(pop)
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleGroup) == 0x28);
++FABLE_STATIC_ASSERT_AT(38, sizeof(CEnginePrimitiveManagerParticleGroup) == 0x28);
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERPARTICLEGROUP_H

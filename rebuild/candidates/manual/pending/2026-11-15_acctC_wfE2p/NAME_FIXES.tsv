@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00e337c0	?ResetRandomSpeechTime@CV_ArcheryCompetitionScript@NScript@@QAEXXZ	landed row NScriptCVArcheryCompetitionScript_ResetRandomSpeechTime_00e337c0.cpp leaf + Ego_r/FableWin name sets (CV_ArcheryCompetitionScript method); called from CAC_Owner::Main 0x00E33EA0 and CAC_Owner::Init 0x00E33720 on ParentClass	?ResetRandomSpeechTime@CQ_AmbushTradersScript@@QAEXXZ (reloc_bindings, landed CAC_Owner::Init 0x00E33720 local declaration)

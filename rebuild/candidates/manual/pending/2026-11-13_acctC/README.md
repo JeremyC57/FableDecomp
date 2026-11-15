@@ -59,7 +59,7 @@ bodies, diagnostic builds and local class models where a shared header exists fa
 ## LANDING GUIDE for the main-branch account (acctC coordinator, 2026-11-15)
 
 **What is ready.** `STATUS.tsv` in this folder is the ledger (address, state, true_length, staged_in, note). Every row with
-state `MATCHED_STAGED` (103 reserved rows + the bonus support row 0x00B9E5B0 on 2026-11-15) is in the folder named in its
+state `MATCHED_STAGED` (120 reserved rows + the bonus support row 0x00B9E5B0 on 2026-11-15, round 5) is in the folder named in its
 `staged_in` column, under `rebuild/candidates/manual/pending/`. Each such folder holds `src/<addr>.cpp`, `test/<addr>.cpp`,
 `payload.json` (addmatch format, only the verified rows), `hdrdiff/` (the header changes those rows need, as diffs against
 rebuild/include or `NEW_<file>` for new headers), `coordverify.log` (my read-only vland output), `HDR_README.md` (the
@@ -67,10 +67,12 @@ batch's overlay opt-in list with evidence), `NAME_FIXES.tsv` / `LABELS.tsv` wher
 review items of each row. Every staged row was byte-verified twice (author + my own read-only strict-header vland) and
 rule-audited by an independent agent.
 
-**What is NOT ready.** Folders whose README says "RULE AUDIT PENDING" (the `2026-11-15_acctC_wf*p` folders: 12 rows that
-byte-match with tests passing, not yet audited) and anything under an `open/`, `*open` or `differ` folder (unmatched
+**What is NOT ready.** Folders whose README says "RULE AUDIT PENDING" (none at the moment: the twelve `2026-11-15_acctC_wf*p` rows were audited in round 5 and their
+READMEs now say "RULE AUDIT DONE" with the review items) and anything under an `open/`, `*open` or `differ` folder (unmatched
 drafts). Earlier audits rejected about one fresh match in five for rule problems (local class models, stand-in callee
-bodies), so wait until the pending line is replaced. Those rows are not `MATCHED_STAGED` in the ledger.
+bodies), so wait until the pending line is replaced. Those rows are not `MATCHED_STAGED` in the ledger. Four byte-matching rows are held back for rule fix-ups
+(0x00439070 local CDrawMiniMap model, 0x00531EC0 `__assume` macro, 0x00B89C30 invented forwarder, 0x00DF6010 224 unused
+locals): do not take them from the batch scratch.
 
 **This lane never ran `--land`.** Your `verify_and_land.py` run is the real gate. My check was
 `lane/coordverify.sh <agent-dir> <stage-dir> <addr8>...` = vland read-only with `LANDVERIFY_STRICT_HEADERS=1` and a minimal

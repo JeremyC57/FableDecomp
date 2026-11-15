@@ -224,3 +224,21 @@
     statements before them, not after.
 - Not tried / next level: c2's own candidate ids at that site (hand892 tools/c2prio_op.py + c2dbg.py breakpoint harness) to find which
   record makes X and Y differ in retail; a header-level C2DVector operator+ text change would move loops 1/2 (they match now).
+## 0x00531EC0 CComponent::Update -- fifth pass (wfD5 successor 4): RELOCATION_MATCH (src/00531ec0.cpp)
+- Step 1 (EVIDENCED): the existing opt-in FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR_INLINE_CONVERTXY (agentC28, matched row 0x0061E6D0; block
+  copied verbatim into hdr/engine/NUISystem_CUIScreenUnitConverter.h, nested inside VECTOR_INLINE). ConvertVector is expanded only in loop 3;
+  the per-axis helpers add c2 records there: the 0x005329E8 X pair became right, the next loop-3 pair 0x00532B58 (`Position +
+  RelativeParentPosition`, retail fld [esi+100h] first) became the one hunk.
+- Measurement that found the closer (diagnostic only, never in a source): an inline probe with n dead locals (each = one inline-time c2 record)
+  placed (a) before loop 3: only n = 7 / 15 match (period 8); (b) right after the 0x005329E8 statement: EVERY n = 1..7 matches; (c) inside
+  B's own block: fixes B's X but breaks its Y (0x00532B6B). Inline member calls in an assert condition count one record each (size(), empty()).
+  So retail has 1..7 more inline records between the two loop-3 sums than ours; function-level named locals (dead `long u = 0`) shift ALL loops.
+- Closer (device d, count unchanged = 3): the third FABLE_RETAIL_ASSERT_ASSUME moved from before loop 3 into loop 3, between the
+  `ParentPosition + Position` sum and the `ChildrenToDelete[i]->SetParentPosition(position)` call, with the condition `i < ChildrenToDelete.size()`
+  (bounds check of the subscript; its size() expansion is the record). Same grade after that call, and with `ChildrenToDelete.size() < 1000`;
+  before the sum / at the loop-3 top it does NOT match. Without CONVERTXY no assert placement matched (nocxy_midA: 0x005329E8 wrong).
+- Tools: tools/hq.py (q.py + differing addresses, one line per variant), tools/lk/flip.py / ties.py (c2 operand-sort log diffs; the 2-operand
+  operator+ X pairs never tie: their keys are the inline this/o parameter records, so swapping the source operands swaps the roles, not the keys).
+- Dead ends this pass: ConvertX/ConvertY body texts (named locals fold away: no change), ConvertVector texts (v1..v9: other inline decisions or
+  same), CDELETION opt-ins, NAMED_RESULT_ADD / FORCEINLINE_CTOR, list find via iterator_traits (no change), a CCountedPointer::operator-> named
+  local (moves loops 2/3), k = 1..15 dead locals x 5 assert sets (period 8; best 2 hunks), CV wrapper compiled before the row (no change).

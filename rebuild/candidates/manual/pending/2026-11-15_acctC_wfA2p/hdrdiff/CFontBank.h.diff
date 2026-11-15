@@ -1,0 +1,41 @@
+--- a/rebuild/include/engine/CFontBank.h
++++ b/rebuild/include/engine/CFontBank.h
+@@ -58,6 +58,12 @@
+     // Retail opt-in (Codex2026-11-10): FableWin018aee90 and raw return type signed long.
+     long GetFontHeight()const{return (long)FontHeight;}
+ #endif
++#ifdef FABLE_RETAIL_CFONTBANK_VSTRINGWIDTH
++    // Opt-in (chunk 2056 scout, row 0x0048E78E via CSubtitleRenderer::GetTextWidthFromText 0x0048E062): Ego_r.pdb / FableWin.pdb
++    // ?GetVStringWidth@CFontBank@@QBEMABVCWideString@@@Z, out of line in retail at 0x0043E4D0 (0x0048E06A `call`; the landed
++    // NPlayerGui::CStatBar::DrawStatBoxWithText 0x00646A46 calls it too). Declaration only.
++    float GetVStringWidth(const CWideString& text) const;                // 0x0043E4D0
++#endif
+     float GetVFontMaxHeight() const { return GFAYToVY(GetFontMaxHeight()); }
+     C2DExtentsF GetVStringExtents(const CWideString& text) const
+     {
+@@ -71,7 +77,7 @@
+     CCharString Name;                                                    // +0x08
+     CFontManager* PManager;                                              // +0x0C
+ };
+-FABLE_STATIC_ASSERT(sizeof(CFontBank) == 0x10);
++FABLE_STATIC_ASSERT_AT(74, sizeof(CFontBank) == 0x10);
+ #else
+ class CCharStringData;
+ class CFontManager;
+@@ -86,11 +92,11 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CFontBank) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CFontBank, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CFontBank, FontHeight) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CFontBank, Name_PStringData) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CFontBank, PManager) == 0xc);
++FABLE_STATIC_ASSERT_AT(89, sizeof(CFontBank) == 0x10);
++FABLE_STATIC_ASSERT_AT(90, offsetof(CFontBank, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(91, offsetof(CFontBank, FontHeight) == 0x4);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CFontBank, Name_PStringData) == 0x8);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CFontBank, PManager) == 0xc);
+ #endif // FABLE_RETAIL_CFONTBANK
+ 
+ #endif // FABLE_ENGINE_CFONTBANK_H

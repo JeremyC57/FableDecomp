@@ -1,0 +1,3 @@
+00bb0970 CEnginePrimitiveManager2DSprites RenderSpritePrim None
+addr       parity           behav  name
+00bb0970   RELOCATION_MATCH PASS   RenderSpritePrim

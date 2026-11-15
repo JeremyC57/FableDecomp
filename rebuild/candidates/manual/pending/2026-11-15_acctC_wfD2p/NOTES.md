@@ -203,3 +203,35 @@
   Under the measured loop model a counted `for` spawn loop gives s6 = 2.5 c4 > s3 = 2 c4 (while approach) and a `while` gives s6 = c4 / 4 < s4: neither ordering
   is retail's, and inline flags cannot fix it (s0 temp 85 < s6 124 for every T). The missing fact is a source shape that raises s6 alone (not s5) by ~4x
   without exceeding s3; not found. Next successor: look for a generator macro whose post-loop check sits in a one-trip loop / goto exit of its own.
+
+### 0x00D75060 -- SUCCESSOR 4 (wfD2, Opus, ~30 inline traces + 3 grades): loop-model map completed, still PARKED (best stays differ/00d75060.cpp, 4041v4044)
+- tools/ffq.sh (new): one trace -> f and decision of every STB-pad group (s3, s4, s5, s6, final loop ...) plus the in-loop FreedomFighter dtor (FF);
+  tools/batch.sh runs a list of tmp/v/<tag>.cpp variants sequentially into tmp/batch.out (~30 s each). Variants kept in tmp/v/.
+- Measured (c' = flow after s4 = 0.4688): `while (n < 4)` / do-while / goto loop: s5 0.2344, FF 4.22 (body x18, hot), s6 0.1172. Counted
+  `for (init; cond; inc)` (any bound, `!=`, `<=`, n declared outside, n2/n10, `if (!T) {..} else return`, `{..; continue;} return;`, do-while(0)-wrapped T's,
+  ref-bound FF): s5 = FF = s6 = 2.5 c' EXACTLY (all three tie for every spelling). `for (n = 0; ; ) {..; if (++n >= 4) break; }` / `while (true)` + bottom break:
+  FF cold (= s5 = c'/2 or c'/3) but s6 <= s5 AND c2 emits a 17th T call (4073 bytes) -- not retail's shape. `for (;; ++n)` + break: s5 5c', FF 2.5c', s6 1.25c'.
+- Retail needs f(s6) > f(s4), f(s5), f(FF), f(s0 temp = 0.25) (S/B expanded, V called at s6 only). Every loop family above gives s6 <= s5 or s6 = FF, so the
+  missing fact is NOT a loop spelling of the spawn loop. Approach-loop shapes measured: while (s3 0.9375 / s4 0.4688), `for(;;){if(dist){T;break;}NSF;T}` (same
+  values), while(true)+top break (0.625 / 0.625), guard-if + do-while (0.4688 / 0.703): none is return-dominant, so s4 < 0.40 with s3 >= 0.59 also has no spelling.
+- Devices: dead release asserts (FABLE_RETAIL_ASSERT, in the spawn body or before s6) change NO frequency (D1..D3 identical to base). Wrapping every T check in
+  `do { } while (0)` changes the model drastically (wrapped in-loop returns stop draining the loop: W5a gives s6 = 0.4688 exactly right, but s4 0.9375, s5/FF 4.2, final
+  loop sites expanded) -- not a landed idiom and a dead structure, not acceptable. The /d2inlT125 + regions route is blocked by the s0 full-expression temporary
+  (op= / GetPos must stay inline in the same statement; inline_depth(0) kills them; hoisting GetPos reorders the CCharString ctors).
+- Next (if anyone reopens): the frequency facts say retail's FF / s5 / s0-temp are colder than s6 by a construct none of the families above has; compare with a
+  landed row of ANOTHER script whose post-loop T pad is expanded while its in-loop scope-end dtor is called (search retail for `call 0x4aa840; inc; cmp; jl` followed
+  by a `je` + fall-through expanded pad) and copy that row's loop text.
+
+### 0x00D75060 -- MATCHED (successor 4 continued): RELOCATION_MATCH, test PASS, addmatch + read-only vland WIN (src/00d75060.cpp, test/00d75060.cpp)
+- What closed it (all decisions were frequency facts): (1) docs/pipeline/INLINE_DEPTH_REVISIT.md lever 2/3 -- the statement macro
+  `do { if (IsActiveThreadTerminating()) return; } while (0);` on the approach-loop terminate check (s3) and the spawn-loop check (s5): a wrapped
+  in-loop return does not drain its loop in c2's model, so the post-spawn check s6 gets f 0.4688 = retail's pad (STB / CScriptThing expanded at score 69,
+  ~vector called at 74, default threshold, no flag). (2) the spawn loop `do { ... } while (++n < 4);` -- EVIDENCED by retail destroying FreedomFighter
+  (0x00D75A92) BEFORE `inc ebp` (a `while` with `++n;` in the body schedules the inc before the dtor call). (3) three scoped `#pragma inline_depth(0)`
+  regions (device b, `// Inline-budget:` lines): the post-approach check (s4, f 0.94 hot after the wrap), the wrapped s5 check, and the spawn-loop scope end
+  (FreedomFighter dtor); each one necessary (4361 / 4361 / 4076 without it). Wrapping s6 too is a no-op (removed); the A11 `while (true) { if (dist) { T; break; } ... }`
+  approach also fixes the decisions but moves the guard-loop pad (layout, 4050v4044) -- not used.
+- Devices for the coordinator: 2 wrapped terminate checks (FITTED, lever 3 precedent, retail construct unproven), 3 inline_depth regions, `CScriptThing&` bound to
+  returned temporaries for Executioner / Boss / Nearest (MSVC extension, needed for the virtual IsAlive calls; landed precedent 0x00CE0920). vland WARN RELOC_ALIAS
+  `_rand` -> import thunk 0x00BFEB16 (same as landed 0x00D26E60).
+- The old best sources (differ/00d75060*.cpp) moved to tmp/old_differ/.

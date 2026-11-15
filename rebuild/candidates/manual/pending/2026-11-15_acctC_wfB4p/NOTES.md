@@ -1,4 +1,4 @@
-# wfB4 NOTES (author agents, 2026-11-14/15) -- three render rows; 0x00BCC800 MATCHED (second agent); 0x00B8B780 MATCHED (fourth agent, 4 dead asserts); 0x00B89C30 parked
+# wfB4 NOTES (author agents, 2026-11-14/15) -- three render rows; 0x00BCC800 MATCHED (second agent); 0x00B8B780 MATCHED (fourth agent, 4 dead asserts); 0x00B89C30 RELOCATION_MATCH with FITTED devices (fifth agent; coordinator decision)
 
 ## Shared finding (rows 1 and 2): how VC7.1 picks the bookmark-test operand order, and a 3-minute tool that prints the numbers
 - Tool (no new hook machinery: agentC20's sched2/host.py + the repo's c2probe/c2dbg): `k/run.sh k/cmp.py <src> <out.json>` breaks on c2's
@@ -249,3 +249,24 @@
 
 ## Names
 - No made-up names added. Respelled in differ/00b8b780.cpp to the PDB spellings used by the c19a hand-back (NAME_FIXES.tsv).
+
+### 0x00B89C30 -- fifth agent (2026-11-15): RELOCATION_MATCH, test PASS, vland PASS, addmatch done -- WITH FITTED DEVICES (coordinator decides)
+- src/00b89c30.cpp = the natural text v1 (`OldRenderTarget = NEngineInternal::GPDisplayManager->GetRenderTarget();`, no fitted block) plus
+  (1) `static FABLE_FORCEINLINE void SetCompositeAlphaRef(unsigned long ref) { NEngineInternal::GPRenderManager->SetAlphaRef(ref); }` called as
+  `SetCompositeAlphaRef(1);` (INVENTED helper, descriptive name, found in no PDB: the third agent's iPE_2 closing condition made static and named) and
+  (2) `long unused1 = 0; long unused2 = 0;` after the shaders object (device c, `// Fidelity:`; window measured on this source: k = 0 / 1 one block late
+  (final CCCCSSSSS / CCCCSSCSS), k = 3 no swap; only k = 2 matches). Test: test/00b89c30.cpp (host model, 3 scenarios). No header change, flags none.
+- Why a forwarding inline is the only lever found (measured again, ~70 grades, w6/): the SetAlphaRef block needs ONE more value copy alive during its
+  SetRenderState expansion. Things that do it: an enclosing inline with a parameter (row-local), or a local copy INSIDE SetAlphaRef's body
+  (probe/hdrP_setalpharef: `const unsigned long value = ref;` or non-const, with k = 2 rulers = RELOCATION_MATCH; but fwsize 16i/43b v FableWin 14i/34b,
+  and FableWin's six K-setters SetAlphaRef / SetStencilRef / SetStencilMask / SetStencilWriteMask / SetFogColour / SetTextureFactor are all 14i/34b:
+  the header local contradicts the debug build, so it was NOT used). Things that do not: plain `inline` SetAlphaRef (changes code), (unsigned long) cast,
+  `ref + 0`, `this->`, a local CStateInfo& , `ref ? ref : 0`, const parameter, a static_cast<CRenderStateManager*> / qualified call, an inline accessor for
+  the object pointer, 1.0f / 1.0 arguments, a 2- or 3-parameter alpha-test helper wrapping Enable/Func/Ref (jumps to the no-swap regime), forwarding
+  layers around PrepareForRender in the middle region (p unchanged), the const-layout / GetAsCArray / STLport front() = *begin() texts x k = 0..16
+  (shift the final run and the regime break together: p = 6 never appears), /GS /Ob1 /G6 /Ot /Gy, #pragma inline_depth(3..16).
+- FOR THE COORDINATOR: accept or reject the invented SetCompositeAlphaRef. It passes the owner's three questions (byte match, same behaviour, portable),
+  is not a stand-in for any retail callee (retail calls nothing there), and lives in the row source, not a shared header; but no PDB has such a function
+  (FableWin's TU list is complete for this TU and shows none). If rejected, the row goes back to DIFFER(6431v6431) with differ/00b89c30.cpp.
+- Probe-only overlays (never hand in): probe/hdrC_const_frontbegin (const layout + GetAsCArray const + STLport front() *begin() opt-ins),
+  probe/hdrP_setalpharef (SetAlphaRef body variants under PROBE_AR_*).

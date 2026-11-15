@@ -1,0 +1,30 @@
+--- a/rebuild/include/engine/CEngineSubPrimitiveBase.h
++++ b/rebuild/include/engine/CEngineSubPrimitiveBase.h
+@@ -17,7 +17,20 @@
+  CEngineInternalPrimitiveBase* GetParentBase() { return Parent; }
+  const CEngineInternalPrimitiveBase* PeekParentBase() const { return Parent; }
+ #endif
++#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_ACCESSORS
++ // Opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): FableWin.pdb inline accessors ?PeekRenderFlags@CEngineSubPrimitiveBase@@QBEKXZ,
++ // ?PeekAlpha@CEngineSubPrimitiveBase@@QBEEXZ, ?GetParentBase@ / ?PeekParentBase@ (9 debug instructions each = one member read); the data
++ // are protected for the derived sub-primitives (FableWin ?GetParent@CEngineSubPrimitiveStaticMesh@@ is 9 instructions too).
++ unsigned long PeekRenderFlags()const{return RenderFlags;}
++ unsigned char PeekAlpha()const{return Alpha;}
++#ifndef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_PARENTBASE
++ CEngineInternalPrimitiveBase* GetParentBase(){return Parent;}
++ const CEngineInternalPrimitiveBase* PeekParentBase()const{return Parent;}
++#endif
++protected:
++#else
+ private:
++#endif
+  unsigned long RenderFlags;
+  unsigned char Alpha;
+  CEngineInternalPrimitiveBase* Parent;
+@@ -30,5 +43,5 @@
+ #endif
+  static CSimpleMemoryPool* MemoryPool;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveBase)==24);
++FABLE_STATIC_ASSERT_AT(33, sizeof(CEngineSubPrimitiveBase)==24);
+ #endif

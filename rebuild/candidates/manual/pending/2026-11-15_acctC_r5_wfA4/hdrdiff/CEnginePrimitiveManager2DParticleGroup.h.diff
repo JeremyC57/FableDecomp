@@ -1,0 +1,44 @@
+--- a/rebuild/include/engine/CEnginePrimitiveManager2DParticleGroup.h
++++ b/rebuild/include/engine/CEnginePrimitiveManager2DParticleGroup.h
+@@ -8,7 +8,19 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
+-#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_MANAGER
++#if defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_RENDER)
++// Opt-in (wfA4, row 0x00BE0EB0): the typed class on the shared CEnginePrimitiveManagerParticleGroup.h (its _RENDER opt-in); Ego_r.pdb / FableWin.pdb
++// ?RenderSubPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z (slot 5 of vtable 0x012A22D0).
++#ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEGROUP_RENDER
++#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEGROUP_RENDER
++#endif
++#include "engine/CEnginePrimitiveManagerParticleGroup.h"
++class CEnginePrimitiveManager2DParticleGroup : public CEnginePrimitiveManagerParticleGroup {
++public:
++    virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& sub, ERenderPassType pass);           // 0x00BE0EB0
++};
++FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManager2DParticleGroup) == 0x28);
++#elif defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_MANAGER)
+ // Opt-in (wf21, row 0x00B4AC10): RTTI CEnginePrimitiveManager2DParticleGroup (vtable 0x012A22D0) : CEnginePrimitiveManagerParticleGroup
+ // : CEnginePrimitiveManager. The base constructor ??0CEnginePrimitiveManagerParticleGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z is
+ // out of line (0x00BBBF40); the derived constructor is FableWin.pdb ??0CEnginePrimitiveManager2DParticleGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z
+@@ -29,7 +41,7 @@
+     CEnginePrimitiveManager2DParticleGroup(CArray<CEngineScene*>& scenes) : CEnginePrimitiveManagerParticleGroup(scenes) { }
+     virtual ~CEnginePrimitiveManager2DParticleGroup();
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManager2DParticleGroup) == 0x28);
++FABLE_STATIC_ASSERT_AT(32, sizeof(CEnginePrimitiveManager2DParticleGroup) == 0x28);
+ #else
+ #pragma pack(push, 1)
+ class CEnginePrimitiveManager2DParticleGroup {
+@@ -45,9 +57,9 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManager2DParticleGroup) == 0x28);
++FABLE_STATIC_ASSERT_AT(48, sizeof(CEnginePrimitiveManager2DParticleGroup) == 0x28);
+ #ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_VIRTUAL_DTOR
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DParticleGroup, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(50, offsetof(CEnginePrimitiveManager2DParticleGroup, __vftable) == 0x0);
+ #endif
+ #endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_MANAGER
+ 

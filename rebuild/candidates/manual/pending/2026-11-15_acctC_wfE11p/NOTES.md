@@ -195,3 +195,130 @@
   slot 0x40 = a GetMapNumberAt(const C3DVector&) overload per engine/CWorldMap.h virtual list -- count slots, do not invent names).
 - For the inline budget of this row later: the c2 caller-size penalty is pen = floor(floor(sz/2)*(a+g)/9000) past a+g 9000
   (see 0x006F5C10 notes); the HasTC inline -> out-of-line switch at ~0x004A5000 is that budget.
+
+### 0x004A3740 fifth session (wfE11 successor) -- SRC_FAIL -> DIFFER(8624v8948): the draft COMPILES
+- Work file v/ur3.cpp == differ/004a3740.cpp. tools/ce.py now prints header-file errors with their file name and the x.cpp line of
+  template instantiations ("ref"); tools/addopt.py <Class> <OPT> - [anchor-regex] inserts an opt-in block into hdr/engine/<Class>.h
+  (copies the repo header first, anchors searched from the class line) and pins moved asserts; tools/rep.py does batch replacements.
+- Identities proven this session (two sources each: retail call/inline bytes + Ego_r/FableWin name set; see the opt-in comments):
+  CSubtitleRenderer::IsInCutscene (+0xDE, was "IsInventoryOpen"), SetText 4-caption char overload 0x00492FB4, IsGamePausedFlagSet (+0xDC);
+  CMainGameComponent::PeekMainFont (+0x1614C); CWorldMap::GetMapNumberAt(const C3DVector&) slot 16, SetSoundThemesDisabled (+0x4C),
+  StartMovePlayerPos 0x00502500 / EndMovePlayerPos 0x005064B0 / IsLoadingAnyMap 0x004FB4A0, Update (slot 27, +0x6C);
+  CDisplayEngine IsScreenFadeOut (+0xBC), IsScreenFullyFadedOut 0x004A9210 (out of line), IsScreenFadeOutClosing (+0xC8),
+  IsScreenFadeOutLockFlagSet (+0xD8), EndScreenFadeOut 0x00434C90, Get3DEngine; CIEngine::Enable3DSceneRendering (slot 76 +0x130);
+  message types 0x10 CONVERSATION_ANSWER_YES_OR_NO, 0x28 REGION_PREUNLOAD, 0x3C TELEPORTER_USED; CTCFadeOutAndIn (new header:
+  FadeOut 0x006C3B70, FadeIn 0x006C3BD0, AddThingToFade 0x006C3DF0, IsFading COMDAT 0x0049D310); CTCRegionDisplay (new header);
+  CTCRegionFollower GetFollowers/IsCreatureFollowingHeroAcrossRegions/IsCreatureAllowedInRegionAt(const CThingAICreature&,...)/RemoveFollower;
+  CTCTargetingPlayer::StatGetClassTypeName + ForceToHaveNoTarget (+0x3D) -- the "HasTC<CTCTargetingPlayer>" site is HasTC(8) + GetTC(8) +
+  class-name compare (GETTC non-const LowerBound, not PeekTC); CThingCreatureBase::IsFollowingHeroThroughTeleporters (+0x15C&0x40);
+  CClass::GetType()==1 (was "IsInWorld"); CThing::GetCurrentMapNumber (+0x8E), IsToKillOnLevelUnload (+0x93&4), StatGetType()=15;
+  CTCHero::SetTeleportParticle 0x004AB270, SetWeaponsAsUsable 0x006CA380, IsWeaponUseOverridden/IsWillUseOverridden/SetWillAsUsable;
+  CTCTrophy::IsMiniGameInProgress (+0x14); CTCInventoryMap::IsOpenedViaGuildSeal (+0x241), ResetWorldMapDisplay 0x005FAA30;
+  CQuestManager::IsAnyQuestActive 0x004B1080 / IsRegionStartOfRegionLockingMode 0x004B11A0 (Ego_r donor order); CMusicManager::PauseMusic
+  0x006BD830 (was "SetRegionLoading"); CASoundManager FreezeAtmosMaps (slot 50) / SetGainFader (slot 46); CPlayerGui SetMiniMapRegion
+  0x004378B0 / IsMiniMapFinishedOpening 0x00437830 / IsMiniMapFinishedClosing 0x00437840; NProgressDisplay::StopProgress 0x009E9F20;
+  NHeroInformationScreens::CManager RemoveAllPlayerModes 0x0066E985 / Close 0x0066E73D / IsOpen (+0x34); CTCTrespasser::LeavingRegion
+  (new header, slot 28 +0x70); CTCHeroExperience::OnRegionLoad 0x006D7570; CThingAICreature ForceAIReset 0x006D5AB0 /
+  IsRegionFollowingOverriddenFromScript (+0x1C9&2); CTCVillage PeekVillagePeople / ClearCrimes; CTCPhysicsBase ResetPosition (slot 31 +0x7C,
+  was "SetPos"), ResetMovementState (slot 35 +0x8C), SetFacingAngleXY, GetRHSet; CTCCreatureNavigation::GetNearbyDirectedPosition 0x006CB780;
+  CTCWife::OnHeroReturnToRegion 0x006CED30; CThingPlayerCreature::OnRegionChange 0x006AA100; CGameCameraManager::ResetCamera 0x0069A990;
+  CTCAppearanceMorphBase::UploadTextureMorphsToEngine 0x006CA7F0 (new header, TCI_APPEARANCE_MORPH); CTCHeroRememberCrimes Get/SetHasPaidTheFine
+  (+0x18, new header); CRegion::GetPRegionDef (COMDAT 0x00419650 called) + CRegionDef PreventHeroWeaponUse/PreventHeroWillUse/CameraManagerSetIndex;
+  CAsyncLoadingMemoryPool::ProcessLoading 0x00A14900 (new header); CTCSoundPlayer::PlayUnattachedCriteria 0x0066BDF0.
+- INFERRED (one source only, say so in hand-back): CTCHeroOpinionDeedLog::PlayerPutWeaponAway = 0x006C6010 and PlayerTakenOutWeapon = 0x006C6E20
+  (the deed log's only two QAEXXZ methods; put-away at region unload, taken-out when IsThingCarryingWeapon(hero) after load).
+  CTCRegionFollower::GetFollowers(std::vector<CThing*>&) 0x006AEE40: in no PDB name set (landed row's name; signature as CTCFollowed's).
+- NAME_FIXES candidates: landed 0x006AEBF0 spells IsCreatureAllowedInRegionAt(const CThing*, ...) -- Ego_r has (const CThingAICreature&, ...);
+  landed 0x00434C90 leaf CDisplayEngine_Methods::EndScreenFadeOut -- PDB CDisplayEngine::EndScreenFadeOut.
+- NEXT: work the 324-byte residue hunk by hunk in retail address order (tools: q.py output in tmp/q_ur3.txt; compare call TARGETS per case).
+- Residue measured after the first grades (v/ur4.cpp == differ/004a3740.cpp; ur4 = ur3 + same-TU bodies GetFrame / SetGuildSealRecallPos /
+  SetGuildSealRecallAngleXY defined above the row, with FABLE_RETAIL_CWORLD_TYPED_SAVE + FABLE_RETAIL_C3DVECTOR_PACKED for the typed
+  GuildSealRecallPos; both grade DIFFER(8624v8948)):
+  * Case byte sizes retail v ours (jump table v the obj's $L labels): prologue 0x46/0x44, case1 1919/1857, case2 216/216, case3 207/199,
+    case4 1719/1635, case5 1417/1413, case6 937/934, case8 2018/1879, case9 400/377. Frame 0xF8 retail v 0x100 ours.
+  * Call sequences (tools/calls2.py, our obj via ce.py + objdump): structurally equal except (a) case 8/9: retail calls the out-of-line
+    std::bitset<274>::test 0x00410DE0 (7 sites from 0x004A5305) and IS_THING_ALIVE 0x0040DCE0 (0x004A56F2, 0x004A57AE) where ours still
+    expands them -- the row's own inline budget (re-measure once the length gap closes; device b /d2inlT is allowed for a pure inline residue);
+    (b) case 6: retail has two ResetPosition (slot 31) calls 0x004A4F2E / 0x004A4F6E, ours tail-merges them into one; (c) retail calls
+    SetGuildSealRecallPos at 0x004A45E7 but expands it at the first site; ours (with the body visible) expands both.
+  * Dominant residue: GLOBAL register allocation. Ours: this in esi, phero in ebp, the constant 0 kept in ebx (`xor ebx,ebx`, then
+    push ebx / mov [m],ebx everywhere -- 1 byte shorter per use, most of the -324). Retail: this in ebp, phero in edi + [esp+24h], immediates
+    (`push 0`, `mov [esp+14h],0`), ebx used for case-local values (bl = the confirmed flag in case 1, loop indexes). Next idea: find which
+    retail case-local variable owns ebx (the case-1 `bool confirmed` is bl at 0x004A38DB; loop counters `xor ebx,ebx` at 0x004A3CC5 /
+    0x004A4E51) and make their use counts / scopes match (named locals at function scope v case scope), then re-grade; the c2 priority of a
+    callee-saved register for the zero constant falls once real variables outrank it.
+- Grades this session: 3 full q.py grades of the row (+ ~35 ce.py compiles); all four matched rows re-graded after the overlay changes:
+  still RELOCATION_MATCH (004736c4, 0044c72b, 006f5c10, 004804de).
+
+### 0x004A3740 sixth session (wfE11 successor #2) -- DIFFER(8624v8948) -> DIFFER(8804v8948), hunks 205 -> 158
+- Work dir v6/ (a0 = old differ). Each step graded; differ/004a3740.cpp = v6/f1.cpp. Tools: tools/g.sh (one-line grade + hunk
+  count), tools/md.py (register-normalised difflib of q.py output), tools/bd.py (byte delta per hunk, largest first), tools/win.py
+  (window of retail/ours by address), tools/al.py, tools/cc.sh (calls2 on our obj).
+- Steps that moved (all EVIDENCED by retail bytes):
+  a1 FABLE_RETAIL_CCHARSTRING_FORCEINLINE_EQ: retail expands CCharString::operator==(const CCharString&) at the CTCTargetingPlayer
+     class-name compare (0x004A3E53..0x004A3E8A: data pointers, null tests, length +4, Compare 0x00411570) (+96 bytes).
+  a2 FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ: retail expands operator==(const char*) at "HeroGuildComplexInside" (0x004A4252..
+     0x004A4287: null arm = strcmp(text,"") as repe cmpsb, else CBasicString==(const char*) 0x004115A0) (+48).
+  b1 case 4 distance test is `to_entrance.GetSquaredMagnitude() > to_teleporter.GetSquaredMagnitude()` (retail test ah,5 / jp).
+  b10 positions as four named C2DVector copies (entrance_pos, hero_pos, teleporter_pos, hero_pos2) then the two differences:
+     retail calls GetPos e,h,t,h with each copied before the next call and subtracts after the 4th (0x004A4479..0x004A44F1). FITTED
+     spelling (a natural one; the unnamed temporaries evaluate the argument first: h,e,h,t). This flipped GLOBAL allocation:
+     this -> ebp, phero -> edi, frame 0xF8 (all as retail).
+  c2 case 1: the four CCharString locals of SetText in their own { } block: retail destroys them BEFORE RegionLoadWaitingForConfirmation=true
+     (0x004A38A7..0x004A38CE). Temporaries in the call (c1) were worse (frame 0x108).
+  d1 case 6: `if (pfollower->PeekTC(TCI_NAVIGATION,&pnavigation) && (GetNearbyDirected(..) || GetNearbyWander(..)))`: retail's
+     HasTC jns goes straight to the else ResetPosition (0x004A4E8E -> 0x004A4F38); loop counter i then lives in memory as retail.
+  d3 case 6: `CTCAppearanceMorphBase* p; if (phero->GetTC(TCI_APPEARANCE_MORPH,&p)) p->UploadTextureMorphsToEngine(...)`
+     (retail takes the TC before the engine argument, 0x004A4FFF..0x004A5040).
+  e1 the two descriptive globals are CWorld.cpp FILE STATICS (only this function references them; xref): 0x013B89D2 =
+     `static bool GAutoSaveQuestStartOnScreenFade` (Anniversary PDB S_LDATA32, same neighbours GDoNotCallStartAutoSaveProgress /
+     GDisplaySaveGameLaunchFailed as TLC 0x013B89D1 / D3), 0x01378880 = `static long GExtraFramesToWaitBeforeProgressRender = 2`
+     (Anniversary S_LDATA32 long; TLC .data initial value 2). Static -> c2 schedules the store as retail (0x004A4737).
+  f1 GetMessageEventManager().AddMessage/FindMostRecentMessage/RemoveMessage (FABLE_RETAIL_CWORLD_MESSAGEEVENTMANAGER, existing opt-in:
+     retail loads [this+60h] before the argument pushes, 0x004A404E). GetMusicManager / GetGameScriptInterface: no change (not used).
+- Tried, no gain: C3DVector named-result / -= forms, C3DVector difference then C2DVector, /d2inlT 30..150 (default = T65..70; T60
+  8836 but case 8/9 calls still expanded), /d2inlS (no effect at any value), GETASCHARARRAY_SELECT/NULLRETURN (StartsWith still two
+  null tests), C3DVector(0,0,0) int literals / Initialise at the case-1 zero site, removing C3DVECTOR_PACKED (SRC_FAIL).
+- c2prio (tools/decomp_pipeline/linux_lane/lane_tools/c2probe/c2prio.py, 65 s): const 0 is candidate #1 (prio -697, 213 refs), split
+  into pieces; pieces #290 (prio 8) and #109 (prio -55) take ebx -> ours `push ebx` (14 sites: SetText 0,0 in case 1, case 3
+  AddMessage, case 4 PSoundManager, case 5, case 9) and `cmp [m],ebx`. Retail has no zero piece. Output tmp/prio_f1t.txt (--trace).
+- Later steps (sixth session, continued; base templates v6/*.tpl with `//@ASSERTS@` = N copies of FABLE_RETAIL_ASSERT(phero), tools/sw.sh):
+  g1 `StartsWith("Prison")` (implicit conversion, not CCharString("Prison")): retail one null test of the prefix (0x004A4299..0x004A42B7).
+  A92 INLINE BUDGET: c2 caller-size penalty never fires in ours (a+g max 8874 < 9000; tools/inl.sh + an.py now prints ag). Retail calls
+     bitset::test 0x00410DE0 at the last 7 HasTC sites and IS_THING_ALIVE at 0x004A543B/0x004A56F2/0x004A57AE, i.e. a+g crosses 9000
+     between our decisions #511 and #538 => ~1560..1800 more IL tuples in retail before case 8. Our /Od build is 11.9 KB / 3302 instr v
+     FableWin UpdateRegionLoad 23130 b / 5206 instr (FableWin.exe.signatures.tsv): ~1900 instructions of debug-only code = ASSERTs. So
+     device d (dead release asserts) is the evidenced closer. One trivial FABLE_RETAIL_ASSERT(phero) = 18 tuples. N=96..100 at the top
+     now gives retail's exact call list in cases 8/9. PLACEHOLDER: the asserts must be spread as plausible pointer asserts before case 8
+     with the same total (re-tune with sw.sh; N also moves the frame map: N=84/90 -> fm 380 v 202).
+  perm08 case-1 confirmed path: `RegionLoadWaitingForConfirmation=false; RegionLoadStatus=0; RegionLoadStartPos=C3DVector(0,0,0);
+     RegionLoadStartAngleXY=0;` (retail's zero piece in eax covers the temporary: `xor eax,eax; mov ecx,eax`, 0x004A39BD).
+  h2/h3 implicit CCharString conversions at PlayUnattachedCriteria("BIG_DOOR_SLAM_SHUT", ...) and DefinitionManager->GetDef(
+     "CAMERA_MANAGER_SET_DEFAULT", ...): retail builds the string before the other arguments (0x004A5938, case 8).
+  h4 case 9 `if (!phero->GetTC(TCI_FADE_OUT_AND_IN, &pfade)) pfade = AddTC(...)` (one out-of-line bitset::test, 0x004A5642); the case-2
+     site keeps HasTC + GetTC (changing both: worse).
+  k6 FableWin COMDAT order after UpdateRegionLoad (FableWin.exe.signatures.tsv 0x01B4EF90..0x01B4F520 = inline helpers first used by the
+     row): SetGuildSealRecallPos, SetGuildSealRecallAngleXY, IsTeleportingEnabled, IsRegionLoadToDisplayRegionName,
+     IsScreenToFadeInOnNextRegionChange, SetScreenToFadeInOnNextRegionChange, IsAllEntitesPauseMode, GFGet2DDistanceSquared,
+     IsFollowingHeroThroughTeleporters, IsNonZero(C3DVector)(not in TLC row bytes), IsScreenFadeOutClosing, ... ForceToHaveNoTarget.
+     The case-4 distance test is `GFGet2DDistanceSquared(phero->GetPos(), precall_region_entrance->GetPos()) >
+     GFGet2DDistanceSquared(phero->GetPos(), precall_teleporter->GetPos())` (implicit C2DVector temporaries; retail evaluates e,h,t,h and
+     keeps dx/dy as separate 4-byte frame slots [esp+14h]/[esp+10h]); new overlay opt-in FABLE_RETAIL_C2DVECTOR_GFGET2DDISTANCESQUARED
+     (body FITTED: pos2-pos1, dy*dy first; /Od 24i/62b v FableWin 25i/64b). Replaces the fitted four named C2DVector copies.
+  l1 new overlay opt-in FABLE_RETAIL_CWORLD_REGIONLOAD_ACCESSORS (the four FableWin accessors above; no byte change, evidenced spelling).
+- Current best: differ/004a3740.cpp = v6/l2_100.cpp = DIFFER(8856v8948), 107 hunks. cc.sh call list = retail's except case 6.
+- Remaining residue: (1) FRAME LAYOUT: ~200 instructions with different esp offsets (tools/fm.py; tools/fit.sh prints fm=); retail
+  keeps the PeekTC key temporaries at [esp+10h]/[14h]/[18h], ours elsewhere; the high region is 8 bytes lower in retail. (2) the
+  const-0 pieces: ours keeps 0 in ebx across cases 1/3/4/5/9 (c2prio: pieces of candidate #1 take ebx; a callee-saved constant is given
+  back after codegen only when its benefit <= 2, C2_ALLOCATOR_PROBE.md); retail has local zero pieces (case 9 `xor ebx,ebx` 0x004A58B0).
+  (3) case 6 ResetPosition arms merged in ours (register choice inside the arms differs in retail). (4) CQuestManager::Get() object
+  loaded before the GetRegion argument chain in ours (0x004A37E2), after it in retail (0x004A3810, 0x004A4666).
+- c2prio on l2_100 (tmp/prio_l2t.txt): const 0 (#1, prio -692, 209 refs) still splits into pieces; #177 (prio 8, allowed only ebx)
+  and #23 (prio -55) take ebx; phero is also split (pieces in esi/ebx/eax). Retail keeps phero in edi with home [esp+24h] and has no
+  global zero piece. Next idea for the zero piece: find what makes retail's phero a single web (edi) -- our phero pieces take the
+  registers that leave ebx free for the constant; candidates: phero_tc / pplayer named locals, the case-local `phero` re-reads.
+- Next idea for the frame: tools/fm.py shows retail sharing [esp+10h] for several PeekTC key temporaries (cases 4/6/8) and the high
+  half 8 bytes lower; the frame packer rules are in MATCHING_PLAYBOOK "Frame packer" (size asc, IL weight desc, join latest slot,
+  density sort); the hand886 pack.py tracer would name the first differing node.
+- Grades this session: ~130 full q.py grades + 4 c2prio runs + 3 inline traces. Matched rows regraded after the two overlay header
+  additions (CWorld.h, C2DVector.h): 004736c4 / 0044c72b / 006f5c10 / 004804de still RELOCATION_MATCH.
