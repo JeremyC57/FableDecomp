@@ -1,0 +1,114 @@
+--- a/rebuild/include/engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h
++++ b/rebuild/include/engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h
+@@ -16,11 +16,55 @@
+ #include "engine/CVertexShader.h"
+ #include "engine/CPixelShader.h"
+ struct CSIMDVariableBlock;
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_RENDERSUB
++// Ego_r.pdb CSIMDVariableBlock (0xC00 bytes, allocated 16-aligned by the constructor 0x00B99D90) and the 2-byte clip-list element of
++// ClipSubSections' mangled name (NEnginePrimitiveManagerRepeatedStaticMeshes::CClipListElement: Ego_r.pdb fields Start +0, Size +1).
++#include "engine/C4DVector.h"
++#include "engine/CRGBFloatColour.h"
++class CEngineSubPrimitiveBase;
++class CEngineInternalPrimitiveRepeatedStaticMesh;
++enum ERenderPassType;
++namespace NEnginePrimitiveManagerRepeatedStaticMeshes {
++    struct CSubsectionElement;
++    struct CClipListElement { unsigned char Start; unsigned char Size; };
++}
++struct CSIMDVariableBlock {
++    float NormalX[32], NormalY[32], NormalZ[32], PosX[32], PosY[32], PosZ[32];   // +0x000 .. +0x2FF
++    C4DVector ObjectMatricies[32];                                                 // +0x300
++    C4DVector ObjectOffsets[32];                                                   // +0x500
++    CRGBFloatColour Colour[32];                                                    // +0x700
++    CRGBFloatColour MainLightColour[32];                                           // +0x900
++    float CameraPosX[4], CameraPosY[4], CameraPosZ[4];                             // +0xB00
++    float CameraClipPlaneLeftX[4], CameraClipPlaneLeftY[4], CameraClipPlaneLeftZ[4];
++    float CameraClipPlaneRightX[4], CameraClipPlaneRightY[4], CameraClipPlaneRightZ[4];
++    float CameraClipPlaneTopX[4], CameraClipPlaneTopY[4], CameraClipPlaneTopZ[4];
++    float CameraClipPlaneBottomX[4], CameraClipPlaneBottomY[4], CameraClipPlaneBottomZ[4];
++    float FadeDistance[4];                                                         // +0xBF0
++};
++#endif
+ class CEnginePrimitiveManagerRepeatedStaticMeshes : public CEnginePrimitiveManagerMeshBase {
+ public:
+     CEnginePrimitiveManagerRepeatedStaticMeshes(CArray<CEngineScene*>& scenes);   // 0x00B99D90
+     virtual ~CEnginePrimitiveManagerRepeatedStaticMeshes();
+     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& primitive, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);   // slot 7, 0x00B9A4A0
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_RENDERSUB
++    // Nested opt-in (wfA5, row 0x00B9AC30): Ego_r.pdb / FableWin.pdb spellings of RenderSubPrimitive (vtable 0x012A3E9C slot 5) and the
++    // private same-TU helpers it calls out of line (ClipSubSectionsSIMD 0x00B98E10, ClipSubSections 0x00B99710, ProcessLightingSW 0x00B99300,
++    // UploadShaderConstants 0x00B99670, UpdateBoneMatrixForWindSheer 0x00B990B0). Declarations only.
++    virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& sub_primitive, ERenderPassType pass);   // slot 5, 0x00B9AC30
++private:
++    void ClipSubSectionsSIMD(const NEnginePrimitiveManagerRepeatedStaticMeshes::CSubsectionElement* element, unsigned long clip_flags,
++                             NEnginePrimitiveManagerRepeatedStaticMeshes::CClipListElement*& clip_list);                       // 0x00B98E10
++    void ClipSubSections(const NEnginePrimitiveManagerRepeatedStaticMeshes::CSubsectionElement* element, unsigned long clip_flags, float range,
++                         bool inside, NEnginePrimitiveManagerRepeatedStaticMeshes::CClipListElement*& clip_list);              // 0x00B99710
++    void ProcessLightingSW(CEngineInternalPrimitiveRepeatedStaticMesh& primitive, const float* normal_x, const float* normal_y,
++                           const float* normal_z, const C4DVector* offsets, long count, bool shadowed);                          // 0x00B99300
++    void UploadShaderConstants(CEngineInternalPrimitiveRepeatedStaticMesh& primitive, const C4DVector* offsets, const C4DVector* matrices,
++                               long count);                                                                                       // 0x00B99670
++    void UpdateBoneMatrixForWindSheer(CEngineInternalPrimitiveRepeatedStaticMesh& primitive, C4DVector* matrices,
++                                      const unsigned char* wind_delays, long count);                                             // 0x00B990B0
++public:
++#endif
+ private:
+     CPixelShader        PixelShader;                                     // +0x20
+     CVertexShader       VertexShader;                                    // +0x28
+@@ -40,7 +84,7 @@
+     CVertexShader*      VertexShaderShadowedStippleAlpha;                // +0x8c
+     CSIMDVariableBlock* SIMDVariableBlock;                               // +0x90
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerRepeatedStaticMeshes) == 0x94);
++FABLE_STATIC_ASSERT_AT(43, sizeof(CEnginePrimitiveManagerRepeatedStaticMeshes) == 0x94);
+ #else
+ 
+ class CPixelShader;
+@@ -84,27 +128,27 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerRepeatedStaticMeshes) == 0x94);
++FABLE_STATIC_ASSERT_AT(87, sizeof(CEnginePrimitiveManagerRepeatedStaticMeshes) == 0x94);
+ #ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_VIRTUAL_DTOR
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(89, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, __vftable) == 0x0);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShader) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShader) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderStippleAlpha) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderStippleAlpha) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderDepthBufferShadowed) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderDepthBufferShadowed) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderDepthBufferShadowedStippleAlpha) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderDepthBufferShadowedStippleAlpha) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderColourBufferShadowed) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderColourBufferShadowed) == 0x68);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderColourBufferShadowedStippleAlpha) == 0x70);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderColourBufferShadowedStippleAlpha) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderShadowed) == 0x80);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderShadowed) == 0x84);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderShadowedStippleAlpha) == 0x88);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderShadowedStippleAlpha) == 0x8c);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, SIMDVariableBlock) == 0x90);
++FABLE_STATIC_ASSERT_AT(91, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShader) == 0x20);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShader) == 0x28);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderStippleAlpha) == 0x30);
++FABLE_STATIC_ASSERT_AT(94, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderStippleAlpha) == 0x38);
++FABLE_STATIC_ASSERT_AT(95, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderDepthBufferShadowed) == 0x40);
++FABLE_STATIC_ASSERT_AT(96, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderDepthBufferShadowed) == 0x48);
++FABLE_STATIC_ASSERT_AT(97, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderDepthBufferShadowedStippleAlpha) == 0x50);
++FABLE_STATIC_ASSERT_AT(98, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderDepthBufferShadowedStippleAlpha) == 0x58);
++FABLE_STATIC_ASSERT_AT(99, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderColourBufferShadowed) == 0x60);
++FABLE_STATIC_ASSERT_AT(100, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderColourBufferShadowed) == 0x68);
++FABLE_STATIC_ASSERT_AT(101, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderColourBufferShadowedStippleAlpha) == 0x70);
++FABLE_STATIC_ASSERT_AT(102, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderColourBufferShadowedStippleAlpha) == 0x78);
++FABLE_STATIC_ASSERT_AT(103, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderShadowed) == 0x80);
++FABLE_STATIC_ASSERT_AT(104, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderShadowed) == 0x84);
++FABLE_STATIC_ASSERT_AT(105, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderShadowedStippleAlpha) == 0x88);
++FABLE_STATIC_ASSERT_AT(106, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShaderShadowedStippleAlpha) == 0x8c);
++FABLE_STATIC_ASSERT_AT(107, offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, SIMDVariableBlock) == 0x90);
+ 
+ #endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_H

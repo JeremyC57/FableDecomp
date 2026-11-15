@@ -1,0 +1,27 @@
+--- a/rebuild/include/engine/C2DBoxF.h
++++ b/rebuild/include/engine/C2DBoxF.h
+@@ -54,6 +54,15 @@
+  C2DBoxF(const class C2DVector& centre,float radius);
+  class C2DBoxI ToC2DBoxI() const;                                       // 0x00A55A30
+ #endif
++#ifdef FABLE_RETAIL_C2DBOXF_SETTERS
++ // Nested opt-in (wfE9-9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): FableWin.pdb ?SetTLPos@C2DBoxF@@QAEXABVC2DVector@@@Z,
++ // ?SetWidth@C2DBoxF@@QAEXM@Z, ?SetHeight@C2DBoxF@@QAEXM@Z (FableWin 0x020DF960 / 0x020DF990 / 0x020DF9C0, emitted right after
++ // CDrawMiniMap::Draw = first used there); inline in retail, whose NPlayerGui TU also keeps out-of-line COMDAT copies at 0x00643930
++ // (copies X / Y into TLX / TLY), 0x00643950 (BRX = TLX + width), 0x00643960 (BRY = TLY + height). Bodies follow the class.
++ void SetTLPos(const class C2DVector& pos);
++ void SetWidth(float width) { BRX = TLX + width; }
++ void SetHeight(float height) { BRY = TLY + height; }
++#endif
+ #endif
+ };
+ #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_CENTRE)
+@@ -77,4 +86,8 @@
+ inline C2DBoxF::C2DBoxF(const C2DVector& tl,const C2DVector& br):TLX(tl.X),TLY(tl.Y),BRX(br.X),BRY(br.Y){}
+ #endif
+ #endif
++#if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_SETTERS)
++#include "engine/C2DVector.h"
++inline void C2DBoxF::SetTLPos(const C2DVector& pos) { TLX = pos.X; TLY = pos.Y; }
++#endif
+ #endif

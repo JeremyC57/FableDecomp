@@ -1,0 +1,52 @@
+--- a/rebuild/include/engine/CGraphicInfo.h
++++ b/rebuild/include/engine/CGraphicInfo.h
+@@ -249,6 +249,49 @@
+     return true;
+ }
+ #endif
++#if defined(FABLE_RETAIL_CGRAPHICINFOFRAME_GETTEXTURE_INLINE) && defined(FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME)
++// Opt-in (wfA5, row 0x00B9AC30 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderSubPrimitive): FableWin.pdb
++// ?GetTexture@CGraphicInfoFrame@@QBE_NPAPBVCTexture@@KK@Z inline (expanded at 0x00B9B102..0x00B9B1CB with mipmap level 0, flags 0); the body is
++// the landed out-of-line copy 0x00B66C10's text over the shared classes (touch block, finer-level reload, create-and-load, forced load).
++// b10 text = the sibling GetFrame's (TouchFrame(mipmap_level) when !(flags & 8), the if / else finer-level arm, IsLoading under
++// FABLE_RETAIL_CFRAMEDATA_ISLOADING) with the texture stored instead of the frame. Evidence: FableWin.pdb GetTexture is 149 debug instructions /
++// 470 bytes and plain VC7.1 /Od /EHsc of this text (+ ISLOADING, ISLOADING_ISNULL, GETBANK_DIRECT) gives 149 / 471 (GetFrame: 146/461 v 146/462;
++// the 0x00B66C10 goto text gives 203 / 661); the out-of-line 0x00B66C10 still grades RELOCATION_MATCH with this text; TouchFrame reads the bank
++// frame twice (no named local), which this row's eax/edx picks at 0x00B9B11E..0x00B9B1C7 / 0x00B9B2C4 need. Needs FABLE_RETAIL_CGRAPHICINFOFRAME_TOUCHFRAME.
++FABLE_FORCEINLINE bool CGraphicInfoFrame::GetTexture(const CTexture** texture, unsigned long mipmap_level, unsigned long flags) const
++{
++    if (!Data.IsNull()) {
++        if (Data->Frame.IsInitialised()) {
++            if (!(flags & 8))
++                TouchFrame(mipmap_level);
++            if (mipmap_level < (unsigned long)Data->CurrentMipmapLevel) {
++                Data->BeginLoading(mipmap_level, flags);
++#ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING
++                if (!(flags & 16) || !Data->IsLoading()) {
++#else
++                if (!(flags & 16) || !Data->FileData.Get()) {
++#endif
++                    *texture = Data->Frame.GetTexture();
++                    return true;
++                }
++            } else {
++                *texture = Data->Frame.GetTexture();
++                return true;
++            }
++        }
++        Data->BeginLoading(mipmap_level, flags);
++    } else {
++        if (flags & 4)
++            return false;
++        Data.Reset(new CFrameData(this));
++        Data->BeginLoading(mipmap_level, flags);
++    }
++    if (!(flags & 1) || !InternalGetFrameForcedLoading(flags))
++        return false;
++    *texture = Data->Frame.GetTexture();
++    return true;
++}
++#endif
+ #ifdef FABLE_RETAIL_CGRAPHICDATABANK_PEEKGRAPHIC
+ // Retail opt-in (chunk 2045, row 0x00BB8EF0): FableWin.pdb ?PeekGraphic@CGraphicDataBank@@QBEPBVCGraphicInfo@@K@Z (donor 0x01D2D7A0), inline in
+ // retail: 0x00BB8F49..0x00BB8F81 reads GraphicList (+0x1E0 begin / +0x1E4 end), divides by sizeof(CGraphicInfo) 0x2C and returns the element

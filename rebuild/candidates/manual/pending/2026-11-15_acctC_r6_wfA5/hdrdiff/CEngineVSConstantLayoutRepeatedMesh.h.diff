@@ -1,0 +1,49 @@
+--- a/rebuild/include/engine/CEngineVSConstantLayoutRepeatedMesh.h
++++ b/rebuild/include/engine/CEngineVSConstantLayoutRepeatedMesh.h
+@@ -6,6 +6,27 @@
+ // Retail evidence: 0 trusted landed function(s); reconciliation clean.
+ // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+ // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
++// Retail opt-in (wfA5, row 0x00B9AC30): define FABLE_RETAIL_CENGINEVSCONSTANTLAYOUTREPEATEDMESH for the polymorphic retail class, RTTI
++// CEngineVSConstantLayoutRepeatedMesh : CVertexShaderConstantLayout (FableWin.pdb ??0..@@QAE@XZ, ??1..@@UAE@XZ, ?PeekName@..@@UBE?AVCCharString@@XZ)
++// with its four Ego_r.pdb CShaderConstantRange members (retail offsets: base 0x14C as LightsBones; the row reads ObjectMatricies.Count at
++// GPResourceManager+0x3034 = VSConstantLayoutRepeatedMesh +0x2EC8 + 0x16C, 0x00B9B969). Needs FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT.
++#ifdef FABLE_RETAIL_CENGINEVSCONSTANTLAYOUTREPEATEDMESH
++#include <stddef.h>
++#include "rebuild_abi.h"
++#include "engine/CVertexShaderConstantLayout.h"
++class CEngineVSConstantLayoutRepeatedMesh : public CVertexShaderConstantLayout {
++public:
++    CEngineVSConstantLayoutRepeatedMesh();
++    virtual ~CEngineVSConstantLayoutRepeatedMesh();
++    virtual CCharString PeekName() const;
++    CShaderConstantRange LightingResults;                                // +0x14c
++    CShaderConstantRange MainLightLightingResults;                       // +0x158
++    CShaderConstantRange ObjectMatricies;                                // +0x164
++    CShaderConstantRange ObjectOffsets;                                  // +0x170
++};
++FABLE_STATIC_ASSERT(sizeof(CEngineVSConstantLayoutRepeatedMesh) == 0x17c);
++FABLE_STATIC_ASSERT(offsetof(CEngineVSConstantLayoutRepeatedMesh, ObjectMatricies) == 0x164);
++#else // flattened Ego_r layout (the landed default, unchanged)
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
+@@ -100,11 +121,12 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEngineVSConstantLayoutRepeatedMesh) == 0x17c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineVSConstantLayoutRepeatedMesh, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineVSConstantLayoutRepeatedMesh, LightingResults) == 0x14c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineVSConstantLayoutRepeatedMesh, MainLightLightingResults) == 0x158);
+-FABLE_STATIC_ASSERT(offsetof(CEngineVSConstantLayoutRepeatedMesh, ObjectMatricies) == 0x164);
+-FABLE_STATIC_ASSERT(offsetof(CEngineVSConstantLayoutRepeatedMesh, ObjectOffsets) == 0x170);
++FABLE_STATIC_ASSERT_AT(103, sizeof(CEngineVSConstantLayoutRepeatedMesh) == 0x17c);
++FABLE_STATIC_ASSERT_AT(104, offsetof(CEngineVSConstantLayoutRepeatedMesh, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(105, offsetof(CEngineVSConstantLayoutRepeatedMesh, LightingResults) == 0x14c);
++FABLE_STATIC_ASSERT_AT(106, offsetof(CEngineVSConstantLayoutRepeatedMesh, MainLightLightingResults) == 0x158);
++FABLE_STATIC_ASSERT_AT(107, offsetof(CEngineVSConstantLayoutRepeatedMesh, ObjectMatricies) == 0x164);
++FABLE_STATIC_ASSERT_AT(108, offsetof(CEngineVSConstantLayoutRepeatedMesh, ObjectOffsets) == 0x170);
+ 
++#endif // FABLE_RETAIL_CENGINEVSCONSTANTLAYOUTREPEATEDMESH
+ #endif // FABLE_ENGINE_CENGINEVSCONSTANTLAYOUTREPEATEDMESH_H
