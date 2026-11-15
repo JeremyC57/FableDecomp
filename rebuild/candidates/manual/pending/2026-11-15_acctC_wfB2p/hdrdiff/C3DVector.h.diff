@@ -1,0 +1,33 @@
+--- a/rebuild/include/engine/C3DVector.h
++++ b/rebuild/include/engine/C3DVector.h
+@@ -148,11 +148,17 @@
+ #endif
+ #endif
+     FABLE_VECTOR_INLINE void Initialise(float x,float y,float z){X=x;Y=y;Z=z;}
++#if defined(FABLE_RETAIL_C3DVECTOR_NAMED_RESULT_SUB)
++    // Retail opt-in (chunk 2060, row 0x00BA5260 RenderMeshPrimitive; agentC2 row 0x00BB3E80): the named-result text (as C2DVector's
++    // FableWin operators). FableWin.pdb ??GC3DVector@@QBE?BV0@ABV0@@Z debug copy is 34i/90b; `return C3DVector(...)` is 28i/70b at /Od.
++    FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{C3DVector result(X-other.X,Y-other.Y,Z-other.Z);return result;}
++#else
+ #ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP
+     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector((X-other.X),(Y-other.Y),Z-other.Z);}
+ #else
+     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector(X-other.X,Y-other.Y,Z-other.Z);}
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_C3DVECTOR_ADD_XY_GROUP
+     // Original addition signature and scalar components, donor018C0B60.
+     FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector((X+other.X),(Y+other.Y),Z+other.Z);}
+@@ -307,7 +313,11 @@
+     // Original FableWin01d99fb0 and both PDB signatures; named squared sum.
+     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return (float)sqrt(magnitude);}
+ #endif
+-#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_XY_THEN_Z)
++#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_NAMED_SQUARED)
++    // Retail opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): the named squared sum in X, Z, Y order (retail 0x00BA547A..
++    // 0x00BA548C squares X, then Z, then Y). FableWin.pdb ?GetMagnitude@C3DVector@@QBEMXZ is 26i/66b.
++    FABLE_VECTOR_INLINE float GetMagnitude()const{float squared=X*X+Z*Z+Y*Y;return (float)sqrt(squared);}
++#elif defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_XY_THEN_Z)
+     // Retail opt-in (chunk 2053, row 0x0087F3A0): a named squared sum, X/Y pair first. FableWin.pdb ?GetMagnitude@C3DVector@@QBEMXZ
+     // debug copy 0x01B52910 is 26i/66b (same signature hash as GetAccurateMagnitude 0x01D99FB0); this text is 26i/66b at plain /Od
+     // (fwsize SAME). The unparenthesised `X*X+Y*Y+Z*Z` (same /Od bytes) grades DIFFER in the row (md.py 710 equal). Body only.

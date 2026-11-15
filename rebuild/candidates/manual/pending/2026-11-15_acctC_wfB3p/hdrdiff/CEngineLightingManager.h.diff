@@ -1,0 +1,216 @@
+--- a/rebuild/include/engine/CEngineLightingManager.h
++++ b/rebuild/include/engine/CEngineLightingManager.h
+@@ -59,6 +59,10 @@
+ class CEngineLocalLightArray {
+ public:
+     CEngineLocalLightArray() : LightCount(0) { }
++#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SPOTLIGHT
++    // Opt-in (bwf1 / agentC2, row 0x00BB3E80): FableWin.pdb inline ?GetCount@CEngineLocalLightArray@@QBEJXZ (9 debug instructions).
++    long GetCount() const { return LightCount; }
++#endif
+     unsigned long            LightCount;                                 // +0x00
+     CEngineLocalLightElement Lights[8];                                  // +0x04
+ };
+@@ -104,6 +108,10 @@
+     void SetupShaderPointLights(const CEngineLocalLightArray& lights);   // 0x00B44F20
+     void DisablePointLights();                                           // 0x00B44D50
+     void UpdateGlobalLightingStates();                                   // 0x00B46C80
++#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SPOTLIGHT
++    // Opt-in (bwf1 / agentC2, row 0x00BB3E80): Ego_r.pdb / FableWin.pdb ?SetupShaderSpotLight@CEngineLightingManager@@QAEXABVCMatrix3x4@@@Z (0x00B47390).
++    void SetupShaderSpotLight(const CMatrix3x4& transform);              // 0x00B47390
++#endif
+     void SetupDefaultFogStates();                                        // 0x00B47630 ?SetupDefaultFogStates@CEngineLightingManager@@QAEXXZ (CEngine::SetDefaultRenderStates 0x00B25877)
+ #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_FOGTRANSFORM
+     // Chunk 764 (row 0x00B451D0): Ego_r.pdb ?CalculateFogTransformMatrix@CEngineLightingManager@@AAE?AVC4DVector@@MM@Z (private). Declaration only.
+@@ -172,7 +180,21 @@
+     // ?SetEnableFadedShadowFactor@CEngineLightingManager@@QAEX_N@Z, ?SetCurrentEnvironmentThemeChannel@CEngineLightingManager@@
+     // QAEXABVCEnginePrimitiveThemeChannelDesc@@@Z, ?SetSelfIlluminationAmbient@CEngineLightingManager@@QAEXJ@Z and
+     // ?RestoreDefaultPrimitiveParameters@CEngineLightingManager@@QAEXXZ (the three resets in this order, 0x00BBE922..0x00BBE9BB).
+-#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD
++#if defined(FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD) && defined(FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD_DIRECT)
++    // Retail opt-in (agentC17, rows 0x00BA5260 / 0x00BA2350; needs _SETFADED_SHADOWGUARD + _MEMBERS): the same guarded setter with the
++    // shadow mode read straight from the member. FableWin ?SetEnableFadedShadowFactor@CEngineLightingManager@@QAEX_N@Z is 24i/80b; this
++    // text gives 24i/80b at plain /Od (fwsize SAME), the PeekGlobalShadowMode() spelling 25i/81b. Retail out-of-line copy 0x00B66EB0.
++    FABLE_FORCEINLINE ELightingManagerShadowMode PeekGlobalShadowMode() const { return ShadowMode; }
++    FABLE_FORCEINLINE void SetEnableFadedShadowFactor(bool enable)
++    {
++        if (ShadowMode != (ELightingManagerShadowMode)1)
++            enable = false;
++        if (enable != FadedShadowDiffuseFactorEnabled) {
++            FadedShadowDiffuseFactorEnabled = enable;
++            StateUpdateFlags |= 1;
++        }
++    }
++#elif defined(FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD)
+     // FableWin ?PeekGlobalShadowMode@CEngineLightingManager@@QBE?AW4ELightingManagerShadowMode@@XZ (inline).
+     FABLE_FORCEINLINE ELightingManagerShadowMode PeekGlobalShadowMode() const { return ShadowMode; }
+     // FableWin ?SetEnableFadedShadowFactor@CEngineLightingManager@@QAEX_N@Z, the PDB body (out-of-line copy 0x00B66EB0).
+@@ -238,22 +260,22 @@
+     unsigned char          _pad_0xec[0x46d0 - 0xec];                     // +0xec LightLookupGrid .. (opaque)
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineLightingManager::CThemeChannel) == 0x70);
+-FABLE_STATIC_ASSERT(sizeof(CEngineLightingManager) == 0x46d0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SunVector) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ThemeChannels) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SelfIlluminationAmbientPercentage) == 0xe8);
++FABLE_STATIC_ASSERT_AT(241, sizeof(CEngineLightingManager::CThemeChannel) == 0x70);
++FABLE_STATIC_ASSERT_AT(242, sizeof(CEngineLightingManager) == 0x46d0);
++FABLE_STATIC_ASSERT_AT(243, offsetof(CEngineLightingManager, SunVector) == 0x18);
++FABLE_STATIC_ASSERT_AT(244, offsetof(CEngineLightingManager, ThemeChannels) == 0x3c);
++FABLE_STATIC_ASSERT_AT(245, offsetof(CEngineLightingManager, PrimitiveFogColour) == 0x78);
++FABLE_STATIC_ASSERT_AT(246, offsetof(CEngineLightingManager, SelfIlluminationAmbientPercentage) == 0xe8);
+ #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+-FABLE_STATIC_ASSERT(sizeof(CEngineLocalLightArray) == 0x1a4);
+-FABLE_STATIC_ASSERT(sizeof(CEngineLightingManagerSpotlightParams) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightAttenuation) == 0x90);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LocalLightList) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LocalLightsEnabled) == 0xcc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightLookupGrid) == 0xec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, EmptyLightArray) == 0x44ec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShadowMode) == 0x4694);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentShadowedSpotLightParams) == 0x4698);
++FABLE_STATIC_ASSERT_AT(248, sizeof(CEngineLocalLightArray) == 0x1a4);
++FABLE_STATIC_ASSERT_AT(249, sizeof(CEngineLightingManagerSpotlightParams) == 0x38);
++FABLE_STATIC_ASSERT_AT(250, offsetof(CEngineLightingManager, LightAttenuation) == 0x90);
++FABLE_STATIC_ASSERT_AT(251, offsetof(CEngineLightingManager, LocalLightList) == 0xac);
++FABLE_STATIC_ASSERT_AT(252, offsetof(CEngineLightingManager, LocalLightsEnabled) == 0xcc);
++FABLE_STATIC_ASSERT_AT(253, offsetof(CEngineLightingManager, LightLookupGrid) == 0xec);
++FABLE_STATIC_ASSERT_AT(254, offsetof(CEngineLightingManager, EmptyLightArray) == 0x44ec);
++FABLE_STATIC_ASSERT_AT(255, offsetof(CEngineLightingManager, ShadowMode) == 0x4694);
++FABLE_STATIC_ASSERT_AT(256, offsetof(CEngineLightingManager, CurrentShadowedSpotLightParams) == 0x4698);
+ #endif
+ #else // flattened Ego_r layout (the landed default, unchanged)
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+@@ -342,68 +364,68 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEngineLightingManager) == 0x46d0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SunVector_X) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SunVector_Y) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SunVector_Z) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MoonVector_X) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MoonVector_Y) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MoonVector_Z) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, DiffuseVector_X) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, DiffuseVector_Y) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, DiffuseVector_Z) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ThemeChannels) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveDiffuseColour_R) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveDiffuseColour_G) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveDiffuseColour_B) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveDiffuseColour_A) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveAmbientColour_R) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveAmbientColour_G) == 0x5c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveAmbientColour_B) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveAmbientColour_A) == 0x64);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveBacklightColour_R) == 0x68);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveBacklightColour_G) == 0x6c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveBacklightColour_B) == 0x70);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveBacklightColour_A) == 0x74);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour_R) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour_G) == 0x7c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour_B) == 0x80);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour_A) == 0x84);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogStartZ) == 0x88);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogEndZ) == 0x8c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightAttenuation_Attenuation0) == 0x90);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightAttenuation_Attenuation1) == 0x94);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightAttenuation_Attenuation2) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightAttenuation_AttenuationBase) == 0x9c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShaderPointLightsEnabledCount) == 0xa0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, DrawLightRadius) == 0xa4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, DrawSpotLightCone) == 0xa5);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, EnableLightCache) == 0xa6);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentShaderLocalLights) == 0xa8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LocalLightList) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShadowedSpotLightList) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LookupGridWorldX) == 0xc4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LookupGridWorldY) == 0xc8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LocalLightsEnabled) == 0xcc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShadowedSpotLightsEnabled) == 0xcd);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, FadedShadowDiffuseFactorEnabled) == 0xce);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MistEffectColour_R) == 0xd0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MistEffectColour_G) == 0xd4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MistEffectColour_B) == 0xd8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, MistEffectColour_A) == 0xdc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelIndex0) == 0xe0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelIndex1) == 0xe1);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelBlendFactor) == 0xe2);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentThemeChannel_Pad) == 0xe3);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, StateUpdateFlags) == 0xe4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SelfIlluminationAmbientPercentage) == 0xe8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightLookupGrid) == 0xec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SmallObjectLookupGrid) == 0x4ec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, EmptyLightArray) == 0x44ec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SIMDVarBlock) == 0x4690);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShadowMode) == 0x4694);
+-FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentShadowedSpotLightParams) == 0x4698);
++FABLE_STATIC_ASSERT_AT(345, sizeof(CEngineLightingManager) == 0x46d0);
++FABLE_STATIC_ASSERT_AT(346, offsetof(CEngineLightingManager, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(347, offsetof(CEngineLightingManager, SunVector_X) == 0x18);
++FABLE_STATIC_ASSERT_AT(348, offsetof(CEngineLightingManager, SunVector_Y) == 0x1c);
++FABLE_STATIC_ASSERT_AT(349, offsetof(CEngineLightingManager, SunVector_Z) == 0x20);
++FABLE_STATIC_ASSERT_AT(350, offsetof(CEngineLightingManager, MoonVector_X) == 0x24);
++FABLE_STATIC_ASSERT_AT(351, offsetof(CEngineLightingManager, MoonVector_Y) == 0x28);
++FABLE_STATIC_ASSERT_AT(352, offsetof(CEngineLightingManager, MoonVector_Z) == 0x2c);
++FABLE_STATIC_ASSERT_AT(353, offsetof(CEngineLightingManager, DiffuseVector_X) == 0x30);
++FABLE_STATIC_ASSERT_AT(354, offsetof(CEngineLightingManager, DiffuseVector_Y) == 0x34);
++FABLE_STATIC_ASSERT_AT(355, offsetof(CEngineLightingManager, DiffuseVector_Z) == 0x38);
++FABLE_STATIC_ASSERT_AT(356, offsetof(CEngineLightingManager, ThemeChannels) == 0x3c);
++FABLE_STATIC_ASSERT_AT(357, offsetof(CEngineLightingManager, PrimitiveDiffuseColour_R) == 0x48);
++FABLE_STATIC_ASSERT_AT(358, offsetof(CEngineLightingManager, PrimitiveDiffuseColour_G) == 0x4c);
++FABLE_STATIC_ASSERT_AT(359, offsetof(CEngineLightingManager, PrimitiveDiffuseColour_B) == 0x50);
++FABLE_STATIC_ASSERT_AT(360, offsetof(CEngineLightingManager, PrimitiveDiffuseColour_A) == 0x54);
++FABLE_STATIC_ASSERT_AT(361, offsetof(CEngineLightingManager, PrimitiveAmbientColour_R) == 0x58);
++FABLE_STATIC_ASSERT_AT(362, offsetof(CEngineLightingManager, PrimitiveAmbientColour_G) == 0x5c);
++FABLE_STATIC_ASSERT_AT(363, offsetof(CEngineLightingManager, PrimitiveAmbientColour_B) == 0x60);
++FABLE_STATIC_ASSERT_AT(364, offsetof(CEngineLightingManager, PrimitiveAmbientColour_A) == 0x64);
++FABLE_STATIC_ASSERT_AT(365, offsetof(CEngineLightingManager, PrimitiveBacklightColour_R) == 0x68);
++FABLE_STATIC_ASSERT_AT(366, offsetof(CEngineLightingManager, PrimitiveBacklightColour_G) == 0x6c);
++FABLE_STATIC_ASSERT_AT(367, offsetof(CEngineLightingManager, PrimitiveBacklightColour_B) == 0x70);
++FABLE_STATIC_ASSERT_AT(368, offsetof(CEngineLightingManager, PrimitiveBacklightColour_A) == 0x74);
++FABLE_STATIC_ASSERT_AT(369, offsetof(CEngineLightingManager, PrimitiveFogColour_R) == 0x78);
++FABLE_STATIC_ASSERT_AT(370, offsetof(CEngineLightingManager, PrimitiveFogColour_G) == 0x7c);
++FABLE_STATIC_ASSERT_AT(371, offsetof(CEngineLightingManager, PrimitiveFogColour_B) == 0x80);
++FABLE_STATIC_ASSERT_AT(372, offsetof(CEngineLightingManager, PrimitiveFogColour_A) == 0x84);
++FABLE_STATIC_ASSERT_AT(373, offsetof(CEngineLightingManager, PrimitiveFogStartZ) == 0x88);
++FABLE_STATIC_ASSERT_AT(374, offsetof(CEngineLightingManager, PrimitiveFogEndZ) == 0x8c);
++FABLE_STATIC_ASSERT_AT(375, offsetof(CEngineLightingManager, LightAttenuation_Attenuation0) == 0x90);
++FABLE_STATIC_ASSERT_AT(376, offsetof(CEngineLightingManager, LightAttenuation_Attenuation1) == 0x94);
++FABLE_STATIC_ASSERT_AT(377, offsetof(CEngineLightingManager, LightAttenuation_Attenuation2) == 0x98);
++FABLE_STATIC_ASSERT_AT(378, offsetof(CEngineLightingManager, LightAttenuation_AttenuationBase) == 0x9c);
++FABLE_STATIC_ASSERT_AT(379, offsetof(CEngineLightingManager, ShaderPointLightsEnabledCount) == 0xa0);
++FABLE_STATIC_ASSERT_AT(380, offsetof(CEngineLightingManager, DrawLightRadius) == 0xa4);
++FABLE_STATIC_ASSERT_AT(381, offsetof(CEngineLightingManager, DrawSpotLightCone) == 0xa5);
++FABLE_STATIC_ASSERT_AT(382, offsetof(CEngineLightingManager, EnableLightCache) == 0xa6);
++FABLE_STATIC_ASSERT_AT(383, offsetof(CEngineLightingManager, CurrentShaderLocalLights) == 0xa8);
++FABLE_STATIC_ASSERT_AT(384, offsetof(CEngineLightingManager, LocalLightList) == 0xac);
++FABLE_STATIC_ASSERT_AT(385, offsetof(CEngineLightingManager, ShadowedSpotLightList) == 0xb8);
++FABLE_STATIC_ASSERT_AT(386, offsetof(CEngineLightingManager, LookupGridWorldX) == 0xc4);
++FABLE_STATIC_ASSERT_AT(387, offsetof(CEngineLightingManager, LookupGridWorldY) == 0xc8);
++FABLE_STATIC_ASSERT_AT(388, offsetof(CEngineLightingManager, LocalLightsEnabled) == 0xcc);
++FABLE_STATIC_ASSERT_AT(389, offsetof(CEngineLightingManager, ShadowedSpotLightsEnabled) == 0xcd);
++FABLE_STATIC_ASSERT_AT(390, offsetof(CEngineLightingManager, FadedShadowDiffuseFactorEnabled) == 0xce);
++FABLE_STATIC_ASSERT_AT(391, offsetof(CEngineLightingManager, MistEffectColour_R) == 0xd0);
++FABLE_STATIC_ASSERT_AT(392, offsetof(CEngineLightingManager, MistEffectColour_G) == 0xd4);
++FABLE_STATIC_ASSERT_AT(393, offsetof(CEngineLightingManager, MistEffectColour_B) == 0xd8);
++FABLE_STATIC_ASSERT_AT(394, offsetof(CEngineLightingManager, MistEffectColour_A) == 0xdc);
++FABLE_STATIC_ASSERT_AT(395, offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelIndex0) == 0xe0);
++FABLE_STATIC_ASSERT_AT(396, offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelIndex1) == 0xe1);
++FABLE_STATIC_ASSERT_AT(397, offsetof(CEngineLightingManager, CurrentThemeChannel_ChannelBlendFactor) == 0xe2);
++FABLE_STATIC_ASSERT_AT(398, offsetof(CEngineLightingManager, CurrentThemeChannel_Pad) == 0xe3);
++FABLE_STATIC_ASSERT_AT(399, offsetof(CEngineLightingManager, StateUpdateFlags) == 0xe4);
++FABLE_STATIC_ASSERT_AT(400, offsetof(CEngineLightingManager, SelfIlluminationAmbientPercentage) == 0xe8);
++FABLE_STATIC_ASSERT_AT(401, offsetof(CEngineLightingManager, LightLookupGrid) == 0xec);
++FABLE_STATIC_ASSERT_AT(402, offsetof(CEngineLightingManager, SmallObjectLookupGrid) == 0x4ec);
++FABLE_STATIC_ASSERT_AT(403, offsetof(CEngineLightingManager, EmptyLightArray) == 0x44ec);
++FABLE_STATIC_ASSERT_AT(404, offsetof(CEngineLightingManager, SIMDVarBlock) == 0x4690);
++FABLE_STATIC_ASSERT_AT(405, offsetof(CEngineLightingManager, ShadowMode) == 0x4694);
++FABLE_STATIC_ASSERT_AT(406, offsetof(CEngineLightingManager, CurrentShadowedSpotLightParams) == 0x4698);
+ 
+ #endif // FABLE_RETAIL_CENGINELIGHTINGMANAGER
+ 

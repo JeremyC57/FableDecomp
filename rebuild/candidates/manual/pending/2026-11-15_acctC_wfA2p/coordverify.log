@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00dce230   WARN RELOC_NAME: ?SetState@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAEXJ@Z -> 00dcec50 labelled 'CHandleBasedMemoryPool::GetPointerFromHandle'
+00dce230   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00dce230 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Main

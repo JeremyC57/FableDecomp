@@ -1,0 +1,17 @@
+--- a/rebuild/include/engine/CCreatureActionBase.h
++++ b/rebuild/include/engine/CCreatureActionBase.h
+@@ -327,6 +327,14 @@
+ #else
+ protected: unsigned char _pad_0x08[0xa0];
+ #endif
++#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_REGISTEREDACTIONS
++    // Retail opt-in (wfE11, row 0x006F5C10 CCreatureActionBase::StatRegisterClass): the static action-prototype map (Ego_r.pdb / FableWin.pdb
++    // `dynamic initializer for 'CCreatureActionBase::RegisteredActions'`; retail 0x013BA8C8, insert_unique 0x006F5400; private like
++    // RegisteredActionEvents) and ?StatRegisterClass@CCreatureActionBase@@SIXXZ (Ego_r / FableWin), which fills it. No layout change.
++    static std::map<EActionRegisteredType,CCountedPointer<CCreatureActionBase> > RegisteredActions;
++public:
++    static void __fastcall StatRegisterClass();                         // 0x006F5C10
++#endif
+ };
+ FABLE_STATIC_ASSERT_AT(338, sizeof(CCreatureActionBase)==0xa8);
+ #else

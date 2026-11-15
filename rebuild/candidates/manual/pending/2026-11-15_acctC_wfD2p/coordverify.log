@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00cfe030   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00cfe030 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::COracleTablet::Main

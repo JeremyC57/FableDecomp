@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00a593f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00a593f0   WARN RELOC_NAME: ??$transform@PBVC3DVector@@V?$back_insert_iterator@V?$vector@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@@std@@VCTransformWorldCoordsToPlaneCoords@?A0x922093bb@@@std@@YI?AV?$back_insert_iterator@V?$vector@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@@0@PBVC3DVector@@0V10@VCTransformWorldCoordsToPlaneCoords@?A0x922093bb@@@Z -> 00a5a9d0 labelled 'Vector_InsertMany_PairFloat'
+00a593f0   RELOCATION_MATCH PASS   GetFirstIntersectionWithTriangle
+
+WINS: 1
+  00a593f0 RELOCATION_MATCH NBBBMaths::CCylinder::GetFirstIntersectionWithTriangle

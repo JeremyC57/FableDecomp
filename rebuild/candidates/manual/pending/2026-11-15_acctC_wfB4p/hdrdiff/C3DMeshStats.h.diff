@@ -1,0 +1,13 @@
+--- a/rebuild/include/engine/C3DMeshStats.h
++++ b/rebuild/include/engine/C3DMeshStats.h
+@@ -27,6 +27,10 @@
+ // Full original Ego_r0x3580 data range, native STLport maps/arrays. External declaration only.
+ class C3DMeshStats: public CMovableResource {
+ public:
++#ifdef FABLE_RETAIL_C3DMESHSTATS_BOUNDINGSPHERE
++ // Opt-in (row 0x00B8B780): FableWin.pdb ?GetBoundingSphere@C3DMeshStats@@QBE?AVC3DBoundingSphere@@XZ (inline, by value).
++ C3DBoundingSphere GetBoundingSphere() const { return BoundingSphere; }
++#endif
+  bool HasDummyObject(unsigned long)const;
+ #ifdef FABLE_RETAIL_C3DMESHSTATS_MESHGENERATORS
+  // Retail opt-in (wf22, row 0x00A24520): Ego_r.pdb ?InitialiseMeshGenerators@C3DMeshStats@@QAEXABVCMeshDataBank@@ABVCCharString@@@Z

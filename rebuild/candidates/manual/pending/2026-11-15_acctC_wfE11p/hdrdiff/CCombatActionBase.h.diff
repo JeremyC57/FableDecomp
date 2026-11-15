@@ -1,0 +1,22 @@
+--- a/rebuild/include/engine/CCombatActionBase.h
++++ b/rebuild/include/engine/CCombatActionBase.h
+@@ -191,6 +191,11 @@
+ };
+ #else
+ class CCombatActionBase : public CCreatureActionBase {
++#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_PRIORITYCTOR
++    // Retail opt-in (wfE11, row 0x006F5C10): Ego_r.pdb ??0CCombatActionBase@@IAE@J@Z (protected), out of line in retail at 0x00857E40;
++    // the derived action constructors expanded in CCreatureActionBase::StatRegisterClass call it with 50 / 150 / 250. Declaration only.
++protected: CCombatActionBase(long priority);                             // 0x00857E40
++#endif
+ #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+ public: CCombatActionBase(CThingCreatureBase& creature, long priority, const CSoundPair& sound);   // 0x00858030
+ protected: static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+@@ -242,6 +247,6 @@
+ protected: unsigned char _pad_0xa8[0x6c];
+ };
+ #endif
+-FABLE_STATIC_ASSERT(sizeof(CCombatActionBase)==0x114);
++FABLE_STATIC_ASSERT_AT(245, sizeof(CCombatActionBase)==0x114);
+ #endif
+ #endif

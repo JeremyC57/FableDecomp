@@ -1,0 +1,21 @@
+--- a/rebuild/include/engine/CParticle.h
++++ b/rebuild/include/engine/CParticle.h
+@@ -84,6 +84,11 @@
+     }
+     // Original donor02F27C00/02F27C40 call the genuine vector interpolation member.
+     C3DVector GetInterpolatedPos(float interp)const{return PositionBuffer[1].Interpolate(PositionBuffer[0],interp);}
++#ifdef FABLE_RETAIL_CPARTICLE_INTERPOLATEDORIENTATION
++    // Opt-in (wfD6, row 0x00B01900): FableWin ?GetInterpolatedOrientation@CParticle@NParticleEngine@@QBE?AVCQuaternion@@M@Z, the landed
++    // out-of-line copy 0x00B05620's text (expanded in 0x00B01900). Needs FABLE_RETAIL_CQUATERNION_SLERPFROMIDENTITY and its body.
++    FABLE_FORCEINLINE CQuaternion GetInterpolatedOrientation(float t) const { CQuaternion change; change.SetSlerpFromIdentity(OrientationChange, t); CQuaternion result = Orientation * change; return result; }
++#endif
+     C3DVector GetRecordedPos(float delay,float interp)const{
+         float t=delay+1.0f-interp;
+         long index=GFFloatToLongCeil(t);
+@@ -145,5 +150,5 @@
+  CArray<CEnginePrimitiveHandle> ParentHandleList;
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CParticle)==0x9c);
++FABLE_STATIC_ASSERT_AT(148, sizeof(NParticleEngine::CParticle)==0x9c);
+ #endif

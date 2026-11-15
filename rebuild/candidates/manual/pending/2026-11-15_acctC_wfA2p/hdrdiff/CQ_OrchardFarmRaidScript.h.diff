@@ -1,0 +1,44 @@
+--- a/rebuild/include/engine/CQ_OrchardFarmRaidScript.h
++++ b/rebuild/include/engine/CQ_OrchardFarmRaidScript.h
+@@ -117,6 +117,41 @@
+ #ifdef FABLE_RETAIL_CQ_ORCHARDFARMRAIDSCRIPT_CTEAMSPAWN_MAIN
+ FABLE_STATIC_ASSERT(sizeof(NScript::CQ_OrchardFarmRaidScript::CTeamSpawn) == 0x40);
+ #endif
++#ifdef FABLE_RETAIL_CQ_ORCHARDFARMRAIDSCRIPT_CCRATETEAMMEMBER_MAIN
++// Opt-in (wfA2, row 0x00DCE230 CCrateTeamMember::Main): the nested entity class, defined after the enclosing class (declared there)
++// so no existing assert moves. Layout Ego_r.pdb CCrateTeamMember (60 bytes; entity offsets equal retail: Main reads TeamID +0x24,
++// MemberState +0x28, MyTeam +0x2c, CurrentAIState / PreviousAIState +0x1c / +0x20). Members from Ego_r.pdb + FableWin.pdb name sets
++// (?Main / ?Init / ?OnPredicateFail EAE private virtual, ?GoOnPatrol / ?IsThingCarryingCrate / ?GetNearestCrateToMe / ?SetState AAE
++// private, ?GetMasterData QAE, ?GetParentScript UBE, ??0 QAE(CQ_OrchardFarmRaidScript&, CScriptDataBase*, const CScriptThing&)).
++namespace NScript {
++class CQ_OrchardFarmRaidScript::CCrateTeamMember : public CEntityScriptBase {
++public:
++    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_OrchardFarmRaidScript&, CScriptDataBase*, const CScriptThing&); // 0x00DCDE20
++    CCrateTeamMember(CQ_OrchardFarmRaidScript&, CScriptDataBase*, const CScriptThing&);
++    virtual CScriptBase* GetParentScript() const;                        // 0x00DCDEC0
++    CQ_SunnyvaleMasterData* GetMasterData();
++private:
++    virtual void Main();                                                 // 0x00DCE230
++    virtual void Init();                                                 // 0x00DCDF60
++    virtual void OnPredicateFail();                                      // 0x00DCDED0
++    void GoOnPatrol();                                                   // 0x00DCEC70
++    bool IsThingCarryingCrate(const CScriptThing&);                      // 0x00DCED10
++    CScriptThing GetNearestCrateToMe();                                  // 0x00DCEDF0
++    void SetState(long);                                                 // 0x00DCEC50
++protected:
++    CQ_OrchardFarmRaidScript* ParentClass;                               // +0x14
++    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
++private:
++    long CurrentAIState;                                                 // +0x1c
++    long PreviousAIState;                                                // +0x20
++    long TeamID;                                                         // +0x24
++    long MemberState;                                                    // +0x28
++    CCrateTeamManager* MyTeam;                                           // +0x2c
++    CScriptThing ThingToPatrolTo;                                        // +0x30
++};
++}
++FABLE_STATIC_ASSERT(sizeof(NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember) == 0x3c);
++#endif
+ 
+ #endif // FABLE_RETAIL_NSCRIPT
+ #endif // FABLE_ENGINE_CQ_ORCHARDFARMRAIDSCRIPT_H

@@ -1,0 +1,82 @@
+--- a/rebuild/include/engine/CMatrix3x4.h
++++ b/rebuild/include/engine/CMatrix3x4.h
+@@ -247,7 +247,17 @@
+     // __forceinline (owner 2026-11-01 helper rule): retail expands it in place in both PreparePrimitives rows and Fable.exe has no
+     // out-of-line ?TransformPoint@CMatrix3x4@@QBEXAAVC3DVector@@@Z (the catalog has none; only the debug PDBs carry a copy); with
+     // plain inline VC7.1 calls it out of line twice in 0x00B19C60 (landing 2026-11-03h probe).
+-#if defined(FABLE_RETAIL_CPARTICLE_SPRITE) || defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_LTR)
++#if defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_GROUPED_XZY)
++    // Nested opt-in (wfA6, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB; FITTED grouping): the x87 arm's centre transform
++    // 0x00ADE6xx sums the X row as (x*E11 + z*E31) + y*E21 + E41 and the Y / Z rows with x last; this grouping is the one that
++    // reproduces it (flat sums are reordered by VC7.1 whatever their source order). Body only: default path unchanged.
++    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
++        const float xx=point.X,yy=point.Y,zz=point.Z;
++        point.X=(xx*E11+zz*E31)+yy*E21+E41;
++        point.Y=xx*E12+(yy*E22+zz*E32)+E42;
++        point.Z=xx*E13+(yy*E23+zz*E33)+E43;
++    }
++#elif defined(FABLE_RETAIL_CPARTICLE_SPRITE) || defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_LTR)
+     // Donor024543E0: original non-incremental left-associated coordinate sums.
+     // FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_LTR (chunk 3001, row 0x00A12EE0): the same plain left-to-right rows E1k*x + E2k*y + E3k*z + E4k.
+     FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+@@ -329,6 +339,14 @@
+         const float xx=v.X;
+         const float yy=v.Y;
+         const float zz=v.Z;
++#if defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_GROUPED_XZY)
++        // Nested opt-in (wfA6, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB; FITTED grouping): the four half-extent transforms
++        // 0x00ADE25x..0x00ADE36x sum X as (x*E11 + z*E31) + y*E21 and Y / Z with x last (`fld st(2) ; fmul [eax+4] ; faddp`,
++        // `fxch ; fmul [eax+8] ; faddp`). Body only: the default and the other opt-ins are unchanged.
++        v.X=(xx*E11+zz*E31)+yy*E21;
++        v.Y=xx*E12+(yy*E22+zz*E32);
++        v.Z=xx*E13+(yy*E23+zz*E33);
++#else
+ #ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_GROUPED_X
+         // Nested opt-in (chunk 2014 / 3010, row 0x00A4E300 C3DAnimation2::GetDeltaMovement): the X row grouped like TransformPoint's
+         // (`E11*x+(E21*y+E31*z)`): GetDeltaMovement 0x00A4E8A5..0x00A4E8BC adds zz*E31 + yy*E21 first and xx*E11 last (the ungrouped
+@@ -339,6 +357,7 @@
+ #endif
+         v.Y=xx*E12+yy*E22+zz*E32;
+         v.Z=xx*E13+yy*E23+zz*E33;
++#endif
+     }
+ #endif
+ #ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMPLANE
+@@ -446,5 +465,37 @@
+         return scale;
+     }
+ #endif
++#if defined(FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT) && !defined(FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY)
++    // Retail opt-in (agentC42, rows 0x00772BB0 CTCShop::AddSaleItem / 0x007DE710 CTCWallMount::AttachObject): FableWin.pdb
++    // ?SetInverseOfUniformScaleRotationTranslation@CMatrix3x4@@QAEMABV1@@Z alone (the same text as the FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY
++    // block's, for a TU whose PostMultiply goes through SetMultiply: FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_POSTMULTIPLY). No retail
++    // out-of-line copy; expanded at 0x00772E9C.
++    FABLE_FORCEINLINE float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
++        float scale = 1.0f / (m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13);
++        E11 = m.E11 * scale; E21 = m.E12 * scale; E31 = m.E13 * scale;
++        E12 = m.E21 * scale; E22 = m.E22 * scale; E32 = m.E23 * scale;
++        E13 = m.E31 * scale; E23 = m.E32 * scale; E33 = m.E33 * scale;
++        E41 = -(E11 * m.E41 + E21 * m.E42 + E31 * m.E43);
++        E42 = -(E12 * m.E41 + E22 * m.E42 + E32 * m.E43);
++        E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
++        return scale;
++    }
++#endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_SOURCE_DEST
++    // Opt-in (wfD6, row 0x00B01900 CPSCRenderMesh::AddToBoundingSphere): FableWin.pdb ?TransformVector@CMatrix3x4@@QBEXABVC3DVector@@AAV2@@Z
++    // (0x02D84BB0, 55i/146b at /Od; no Ego_r.pdb or retail out-of-line copy): declaration only while the row is open (the includer
++    // defines the body).
++    void TransformVector(const C3DVector& pSource,C3DVector& destination) const;
++#endif
+ };
++#ifdef FABLE_RETAIL_CMATRIX3X4_SET_RHSET_INLINE
++// Retail opt-in (chunk 850 text re-applied by agentC42, row 0x00772BB0 CTCShop::AddSaleItem): the body of
++// ?Set@CMatrix3x4@@QAEXABVCRightHandedSet@@ABVC3DVector@@@Z (out of line at 0x007767A0 in the CTCShop TU: GetRight, Forward, Up, then
++// the translation), which AddSaleItem expands three times. Force-inline: with plain inline VC7.1 calls it out of line there (2161 v 2585 bytes).
++#include "engine/CRightHandedSet.h"
++FABLE_FORCEINLINE void CMatrix3x4::Set(const CRightHandedSet& orientation,const C3DVector& translation)
++{
++    Set(orientation.GetRight(), orientation.GetForward(), orientation.GetUp(), translation);
++}
++#endif
+ #endif

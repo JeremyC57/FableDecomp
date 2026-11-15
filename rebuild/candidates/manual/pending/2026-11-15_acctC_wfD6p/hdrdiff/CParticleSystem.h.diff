@@ -1,0 +1,33 @@
+--- a/rebuild/include/engine/CParticleSystem.h
++++ b/rebuild/include/engine/CParticleSystem.h
+@@ -47,6 +47,11 @@
+  // 0x00B05840, out of line; ?GetNormalisedTime@...@QBEMXZ inline (the +0x50 bit 3 test, then the +0x5C read).
+  void ScaleParticleDimensions(C2DVector&) const;
+  void ScaleParticleDimensions(unsigned long&) const;
++#ifdef FABLE_RETAIL_CPARTICLESYSTEM_SCALEVECTOR
++ // Opt-in (wfD6, row 0x00B01900): FableWin ?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAVC3DVector@@@Z, inline in retail
++ // (no retail copy; CPSCRenderMesh::AddToBoundingSphere 0x00B01900 scales the mesh size per axis). Needs a typed Scale (FABLE_RETAIL_CPARTICLESYSTEM_SCALE).
++ void ScaleParticleDimensions(C3DVector& dim) const { if (ScaleParticles) { dim.X *= Scale.X; dim.Y *= Scale.Y; dim.Z *= Scale.Z; } }
++#endif
+  void GetUnscaledWorldTransform(CMatrix3x4&) const;
+  float GetNormalisedTime() const { return NormalisedTimeEnabled ? NormalisedTime : 0.0f; }
+  float GetGlobalAlpha() const { return GlobalAlpha; }
+@@ -91,6 +96,11 @@
+  // Opt-in (row 0x00AF5430): Ego_r.pdb + FableWin.pdb ?ClearDecal@CParticleSystem@NParticleEngine@@QAEXAAV?$_List_iterator@..CDecal..@std@@@Z.
+  void ClearDecal(std::list<CDecal*>::iterator&);
+ #endif
++#ifdef FABLE_RETAIL_CPARTICLESYSTEM_GETDECALLIST
++ // Opt-in (wfD6, row 0x00B1F200): FableWin.pdb ?GetDecalList@CParticleSystem@NParticleEngine@@QAEAAV?$list@PAVCDecal@NParticleEngine@@..@std@@XZ
++ // (inline; the row reads the list head at +0x20 in place, as GetParticleList).
++ std::list<CDecal*>& GetDecalList(){return Decals;}
++#endif
+  void TransformVectorIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformVector(v);}}
+  void TransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformPoint(v);}}
+  void InverseTransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetInverseSystemTransform(t);t.TransformPoint(v);}}
+@@ -123,5 +133,5 @@
+  CCharString Name;
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CParticleSystem)==0x70);
++FABLE_STATIC_ASSERT_AT(126, sizeof(NParticleEngine::CParticleSystem)==0x70);
+ #endif

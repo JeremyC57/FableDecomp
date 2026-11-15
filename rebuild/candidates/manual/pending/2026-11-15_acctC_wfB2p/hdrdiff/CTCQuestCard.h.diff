@@ -1,0 +1,80 @@
+--- a/rebuild/include/engine/CTCQuestCard.h
++++ b/rebuild/include/engine/CTCQuestCard.h
+@@ -62,6 +62,14 @@
+     // (Ego_r 0x00723D20, first in the class's donor run; TeleporterRegionName +0x24).
+     void SetTeleporterRegionName(const CCharString& name);               // 0x007021E0
+ #endif
++#ifdef FABLE_RETAIL_CTCQUESTCARD_TELEPORTERREGIONNAME
++    // Nested opt-in (agent4008 scout, row 0x0060EEB0 CTCInventoryMap::ConstructPCMapList): Ego_r.pdb (0x00723D30, right after
++    // SetTeleporterRegionName 0x00723D20 = retail 0x007021E0) + FableWin.pdb (0x025540E0)
++    // ?GetTeleporterRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ, out of line at 0x007021F0 (copies TeleporterRegionName +0x24;
++    // hidden result, `ret 4`). Landed there as the descriptive "GetMarkerRegionName" (pending/2026-11-03_linux_hand729 NAME_FIXES).
++    // Declaration only.
++    CCharString GetTeleporterRegionName() const;                         // 0x007021F0
++#endif
+ #ifdef FABLE_RETAIL_CTCQUESTCARD_ACCESSORS
+     // Nested opt-in (chunk 882, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): Ego_r.pdb / FableWin.pdb accessors the row calls
+     // out of line (Ego_r order IsCore 0x00723DA0 < IsExclusive < IsOptional < IsVignette = retail 0x00702280 / 0x007022A0 / 0x007022C0 /
+@@ -70,6 +78,10 @@
+     // +0x0C in place: null test, `inc [ecx+4]`, read, `dec [ecx+4]` / release, 0x0061E7D3). Needs the complete engine/CQuestCardDef.h.
+     bool IsCore() const;                                                 // 0x00702280
+     bool IsOptional() const;                                             // 0x007022C0
++#ifdef FABLE_RETAIL_CTCQUESTCARD_ISVIGNETTE
++    // Nested opt-in (bwf1, CreateMapMarkers body in the 0x0060EEB0 TU): Ego_r.pdb / FableWin.pdb ?IsVignette@CTCQuestCard@@QBE_NXZ, out of line.
++    bool IsVignette() const;                                             // 0x007022E0
++#endif
+     CWideString GetQuestName() const;                                    // 0x00702310
+     CWideString GetQuestSummary() const;                                 // 0x00702400
+     CWideString GetQuestObjective() const;                               // 0x00702470
+@@ -100,12 +112,12 @@
+     long                             GoldReward;                         // +0x2c
+     long                             RenownReward;                       // +0x30
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCQuestCard) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, PDef) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, FeatIndex) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, QuestName) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, ScriptQuestName) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, RenownReward) == 0x30);
++FABLE_STATIC_ASSERT_AT(103, sizeof(CTCQuestCard) == 0x34);
++FABLE_STATIC_ASSERT_AT(104, offsetof(CTCQuestCard, PDef) == 0xc);
++FABLE_STATIC_ASSERT_AT(105, offsetof(CTCQuestCard, FeatIndex) == 0x14);
++FABLE_STATIC_ASSERT_AT(106, offsetof(CTCQuestCard, QuestName) == 0x18);
++FABLE_STATIC_ASSERT_AT(107, offsetof(CTCQuestCard, ScriptQuestName) == 0x28);
++FABLE_STATIC_ASSERT_AT(108, offsetof(CTCQuestCard, RenownReward) == 0x30);
+ #else // flattened Ego_r layout (the landed default, unchanged)
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+@@ -134,19 +146,19 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTCQuestCard) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, PDef_Object) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, Finished) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, Replayable) == 0x11);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, FeatIndex) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, QuestName_PStringData) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, ObjectiveName_PStringData) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, RegionName_PStringData) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, TeleporterRegionName_PStringData) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, ScriptQuestName_PStringData) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, GoldReward) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CTCQuestCard, RenownReward) == 0x30);
++FABLE_STATIC_ASSERT_AT(137, sizeof(CTCQuestCard) == 0x34);
++FABLE_STATIC_ASSERT_AT(138, offsetof(CTCQuestCard, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(139, offsetof(CTCQuestCard, PDef_Object) == 0xc);
++FABLE_STATIC_ASSERT_AT(140, offsetof(CTCQuestCard, Finished) == 0x10);
++FABLE_STATIC_ASSERT_AT(141, offsetof(CTCQuestCard, Replayable) == 0x11);
++FABLE_STATIC_ASSERT_AT(142, offsetof(CTCQuestCard, FeatIndex) == 0x14);
++FABLE_STATIC_ASSERT_AT(143, offsetof(CTCQuestCard, QuestName_PStringData) == 0x18);
++FABLE_STATIC_ASSERT_AT(144, offsetof(CTCQuestCard, ObjectiveName_PStringData) == 0x1c);
++FABLE_STATIC_ASSERT_AT(145, offsetof(CTCQuestCard, RegionName_PStringData) == 0x20);
++FABLE_STATIC_ASSERT_AT(146, offsetof(CTCQuestCard, TeleporterRegionName_PStringData) == 0x24);
++FABLE_STATIC_ASSERT_AT(147, offsetof(CTCQuestCard, ScriptQuestName_PStringData) == 0x28);
++FABLE_STATIC_ASSERT_AT(148, offsetof(CTCQuestCard, GoldReward) == 0x2c);
++FABLE_STATIC_ASSERT_AT(149, offsetof(CTCQuestCard, RenownReward) == 0x30);
+ 
+ #endif // FABLE_RETAIL_CTCQUESTCARD
+ 

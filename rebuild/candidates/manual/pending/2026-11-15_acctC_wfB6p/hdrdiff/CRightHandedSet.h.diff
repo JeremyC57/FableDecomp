@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/CRightHandedSet.h
++++ b/rebuild/include/engine/CRightHandedSet.h
+@@ -84,6 +84,11 @@
+     // AngleXY / AngleYZ / AngleXZ triple). A declaration only.
+     CRightHandedSet(const class C3DAngles& angles);                      // 0x00A229E0
+ #endif
++#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_INTERPOLATE
++    // agentC30 (row 0x007E15C0): Ego_r.pdb ?Interpolate@CRightHandedSet@@QBE?AV1@ABV1@M@Z, out of line at 0x00A23190
++    // (reloc_bindings.tsv; called by the landed RefreshPrimitivePos 0x004BC340). A declaration only.
++    CRightHandedSet Interpolate(const CRightHandedSet& other, float t) const;   // 0x00A23190
++#endif
+ };
+ #endif
+ #endif

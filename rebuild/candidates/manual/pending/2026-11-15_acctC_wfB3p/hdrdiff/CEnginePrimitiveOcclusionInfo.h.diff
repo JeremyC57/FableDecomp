@@ -1,0 +1,22 @@
+--- a/rebuild/include/engine/CEnginePrimitiveOcclusionInfo.h
++++ b/rebuild/include/engine/CEnginePrimitiveOcclusionInfo.h
+@@ -2,6 +2,17 @@
+ #define FABLE_ENGINE_CENGINEPRIMITIVEOCCLUSIONINFO_H
+ #include "engine/CIVCountedPointeeBase.h"
+ #include "engine/CArray.h"
+-class CEnginePrimitiveOcclusionInfo:public CIVCountedPointeeBase {public:CEnginePrimitiveOcclusionInfo();virtual ~CEnginePrimitiveOcclusionInfo();private:long InvisibleFrames;CArray<unsigned long> OcclusionTestHandles;bool Seen;unsigned long TestFrame;};
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveOcclusionInfo)==0x20);
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONINFO_ADDOCCLUSIONTEST
++// Opt-in (bwf1 / agentC2, row 0x00BB3E80): FableWin.pdb inline ?AddOcclusionTest@CEnginePrimitiveOcclusionInfo@@QAEXK@Z (24 debug instructions)
++// and the private ?ClearHandles@CEnginePrimitiveOcclusionInfo@@AAEXXZ (13; Ego_r.pdb out-of-line copy 0x009D01F0), expanded at
++// 0x00BB3F3B..0x00BB3FA7 (no retail out-of-line copy). The row defines AddOcclusionTest's body (it reads g_pOcclusionManager).
++class CEnginePrimitiveOcclusionInfo:public CIVCountedPointeeBase {public:CEnginePrimitiveOcclusionInfo();virtual ~CEnginePrimitiveOcclusionInfo();
++ void AddOcclusionTest(unsigned long handle);
++private:
++ void ClearHandles() { OcclusionTestHandles.clear(); }
++#else
++class CEnginePrimitiveOcclusionInfo:public CIVCountedPointeeBase {public:CEnginePrimitiveOcclusionInfo();virtual ~CEnginePrimitiveOcclusionInfo();private:
++#endif
++long InvisibleFrames;CArray<unsigned long> OcclusionTestHandles;bool Seen;unsigned long TestFrame;};
++FABLE_STATIC_ASSERT_AT(6, sizeof(CEnginePrimitiveOcclusionInfo)==0x20);
+ #endif

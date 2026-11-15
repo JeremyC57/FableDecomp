@@ -1,0 +1,23 @@
+--- a/rebuild/include/stlport/fable_map.h
++++ b/rebuild/include/stlport/fable_map.h
+@@ -530,6 +530,13 @@
+ public:
+     typedef typename _Rep_type::const_iterator const_iterator;
+     typedef typename _Rep_type::iterator iterator;
++#ifdef FABLE_RETAIL_STLP_MAP_FORCEINLINE_DTOR
++    // Per-TU inline opt-in (acctC agentC4, row 0x005FF190 CTCInventoryMap::CreateMapMarkers): STLport's map destructor (the tree's
++    // `clear()` then the header node freed) written out and forced: retail expands the map<long, pair<long,long> > destructor at the
++    // end of that row (0x00600136..0x0060019D: _M_erase 0x00613CE0 with one recursion level in place, two frees); VC7.1 never even
++    // scores the implicit destructor there (no plain-inline decision in the c2 trace), so only a forced explicit one expands.
++    FABLE_FORCEINLINE ~map() {}
++#endif
+ #ifdef FABLE_RETAIL_STLP_MAP_COPY_OUTOFLINE
+     // Per-TU opt-in (chunk F1, row 0x00AD9770 CVertexGroupBlockList::RemoveAllSubsets; like FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE):
+     // STLport's map copy constructor is one inline body, which VC7.1 called as a COMDAT in that TU: map<unsigned long, long>::map(const
+@@ -696,5 +703,5 @@
+ #endif
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(std::map<unsigned long,long>)==12);
++FABLE_STATIC_ASSERT_AT(699, sizeof(std::map<unsigned long,long>)==12);
+ #endif

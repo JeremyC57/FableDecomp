@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/C3DBoundingBox.h
++++ b/rebuild/include/engine/C3DBoundingBox.h
+@@ -29,6 +29,12 @@
+     const C3DVector& PeekMinCoord() const { return MinCoord; }
+     const C3DVector& PeekMaxCoord() const { return MaxCoord; }
+ #endif
++#ifdef FABLE_RETAIL_C3DBOUNDINGBOX_OBB
++    // Row 0x00ADE080: Ego_r.pdb 0x00BCFDA0 / FableWin.pdb 0x03313830 ?InitialiseFromOBB@C3DBoundingBox@@QAEXABV1@ABVCMatrix3x4@@@Z --
++    // the axis-aligned box around a box transformed by a 3x4 matrix (an SSE path behind g_SSEAvailable 0x013D2880, else x87).
++public:
++    void InitialiseFromOBB(const C3DBoundingBox& obb, const class CMatrix3x4& transform);
++#endif
+ private:
+     C3DVector MinCoord;
+     C3DVector MaxCoord;

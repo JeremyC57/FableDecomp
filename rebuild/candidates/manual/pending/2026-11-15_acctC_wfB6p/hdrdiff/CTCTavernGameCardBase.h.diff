@@ -1,0 +1,37 @@
+--- a/rebuild/include/engine/CTCTavernGameCardBase.h
++++ b/rebuild/include/engine/CTCTavernGameCardBase.h
+@@ -31,6 +31,11 @@
+ class CTCTavernGameCardBase : public CTCTavernGame {
+ public:
+     virtual void ProcessInput(const CInputEvent&, CProcessedInput&, CInputProcessTavernGame*);   // 28 0x008F12D0
++#ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBASE_NEWROUND
++    // Retail opt-in (agentC40, row 0x007DB2E0 CTCTavernGameCardBlackjack::NewRound): Ego_r.pdb ?NewRound@CTCTavernGameCardBase@@UAEXXZ
++    // (0x008F0960), the override of CTCTavernGame slot 32 (no new slot, no layout change). Declaration only.
++    virtual void NewRound();                                             // 32 0x008F0960
++#endif
+     virtual void DealCards();                                            // 51 0x008F0BD0
+     virtual void CardsMoving();                                          // 52 0x008F2280
+     virtual void CardsFinishedMoving();                                  // 53 0x008F09E0
+@@ -68,13 +73,13 @@
+     CCard*              HighlightedCard;                                 // +0x30c
+     long                CurrentMovingCard;                               // +0x310
+ };
+-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCardBase, GamePositionRHSet) == 0xf0);
+-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCardBase, GamePositionPos) == 0x108);
+-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCardBase, MinX) == 0x118);
+-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCardBase, Cards) == 0x128);
+-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCardBase, Pointer) == 0x140);
+-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCardBase, Counter) == 0x154);
+-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCardBase, GameType) == 0x300);
+-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCardBase, HighlightedCard) == 0x30c);
+-FABLE_STATIC_ASSERT(sizeof(CTCTavernGameCardBase) == 0x318);
++FABLE_STATIC_ASSERT_AT(71, offsetof(CTCTavernGameCardBase, GamePositionRHSet) == 0xf0);
++FABLE_STATIC_ASSERT_AT(72, offsetof(CTCTavernGameCardBase, GamePositionPos) == 0x108);
++FABLE_STATIC_ASSERT_AT(73, offsetof(CTCTavernGameCardBase, MinX) == 0x118);
++FABLE_STATIC_ASSERT_AT(74, offsetof(CTCTavernGameCardBase, Cards) == 0x128);
++FABLE_STATIC_ASSERT_AT(75, offsetof(CTCTavernGameCardBase, Pointer) == 0x140);
++FABLE_STATIC_ASSERT_AT(76, offsetof(CTCTavernGameCardBase, Counter) == 0x154);
++FABLE_STATIC_ASSERT_AT(77, offsetof(CTCTavernGameCardBase, GameType) == 0x300);
++FABLE_STATIC_ASSERT_AT(78, offsetof(CTCTavernGameCardBase, HighlightedCard) == 0x30c);
++FABLE_STATIC_ASSERT_AT(79, sizeof(CTCTavernGameCardBase) == 0x318);
+ #endif

@@ -1,0 +1,7 @@
+addr       parity           behav  name
+006f5c10   WARN RELOC_NAME: ??1?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 00695d90 labelled '_global::Dtor_CountedPtrAt0x8_00695d90'
+006f5c10   WARN RELOC_NAME: ??1?$pair@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 006f5260 labelled '_global::Dtor_CountedPtrAt0x8_006f5260'
+006f5c10   RELOCATION_MATCH PASS   StatRegisterClass
+
+WINS: 1
+  006f5c10 RELOCATION_MATCH CCreatureActionBase::StatRegisterClass

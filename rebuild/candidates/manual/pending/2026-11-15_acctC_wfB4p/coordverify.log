@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00b8b780   WARN RELOC_NAME: ?AttachZBuffer@CRenderTarget@@QAEXABVCSurface@@@Z -> 00a10e90 labelled 'CRenderTarget::AttachTarget'
+00b8b780   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b8b780   WARN RELOC_CONFLICT: ?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA -> 01396dd8 here, 01396de8 in landed 00bbc460
+00b8b780   RELOCATION_MATCH PASS   RenderBillboard
+
+WINS: 1
+  00b8b780 RELOCATION_MATCH CEngineBillboardGenerator::RenderBillboard
