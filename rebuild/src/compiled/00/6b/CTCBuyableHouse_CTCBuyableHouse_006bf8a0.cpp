@@ -1,8 +1,10 @@
-// CTCBuyableHouse::CTCBuyableHouse(CThing* owner) -- CTCBase(owner), own vtable, empty def pointer, every flag and counter cleared (rent due day = LONG_MAX), the three sign/wife intelligent pointers default-built, IsResidential = true
-// Leaf: ??0CTCBuyableHouse
+// CTCBuyableHouse::CTCBuyableHouse(CThing& owner) -- CTCBase(owner), own vtable, empty def pointer, every flag and counter cleared (rent due day = LONG_MAX), the three sign/wife intelligent pointers default-built, IsResidential = true
+// Leaf: ??0CTCBuyableHouse@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBase, which bound a made-up constructor name to
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BF8A0, length 120 bytes (+8 int3 padding). `ret 4`. Vtable 0x0125D6A4.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x3, each
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x3, each
 // followed by the CIntelligentPointer vtable store 0x01238C6C: the default ctor, no SetPItem).
 // Shape: one init list in declaration order with a shared zero register (ebx); DaySomeoneWillMoveIn is left alone.
 // Layout: engine/CTCBuyableHouse.h (Ego_r.pdb, retail-identical): PDef +0xC, IsScripted +0x10, OwnedByPlayer +0x11, Rented +0x12,
@@ -10,6 +12,8 @@
 // DressingSignPost +0x2C, FrameToNextCheckIfWeNeedToCreateAnything +0x34, WifeLivingHere +0x38, InitiallySetupDressLevel +0x40,
 // VirtualMoneyBags +0x44, HasPreviouslyBeenBuyable +0x48, IsResidential +0x49. The header flattens the vptrs and the pointer
 // members, so the class is restated polymorphically with the same names and offsets.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CBuyableHouseDef;
 class CBaseObject;
@@ -19,14 +23,6 @@ class CBaseObjectPointer;
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-};
-class CTCBase {
-public:
-    CTCBase(CThing* owner);                     // 0x00686800
-    virtual ~CTCBase();
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
 };
 class CTCBuyableHouse : public CTCBase {        // vtable 0x0125D6A4
 public:
@@ -46,11 +42,11 @@ public:
     long VirtualMoneyBags;                      // +0x44
     bool HasPreviouslyBeenBuyable;              // +0x48
     bool IsResidential;                         // +0x49
-    CTCBuyableHouse(CThing* owner);
+    CTCBuyableHouse(CThing& owner);
     virtual ~CTCBuyableHouse();
 };
 
-CTCBuyableHouse::CTCBuyableHouse(CThing* owner)
+CTCBuyableHouse::CTCBuyableHouse(CThing& owner)
     : CTCBase(owner)
     , IsScripted(false)
     , OwnedByPlayer(false)

@@ -216,6 +216,12 @@ public:
     float GetExtendedSightRadius()const;
 #endif
     const CThing* GetPerceivedThing() const;                             // 0x007446A0
+#if defined(FABLE_RETAIL_CTCPERCEIVETHING_GETSIGHTRADIUS) && !(defined(FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS) && defined(FABLE_RETAIL_CTCPERCEIVETHING_THINGFLAGS))
+    // Nested opt-in (2026-11-16, rows 0x009207A0 / 0x00933B30 / 0x00936210, respelled from GetSurfaceRange / GetExtendedSightRadius):
+    // Ego_r.pdb / FableWin.pdb ?GetSightRadius@CTCPerceiveThing@@QBEMXZ, out of line at 0x007448F0 (reads SightRadius +0x40; its twin
+    // GetExtendedSightRadius is 0x00744950). Declaration only: no layout change.
+    float GetSightRadius() const;                                        // 0x007448F0
+#endif
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS_CALLS
     // Nested opt-in (agentNF24, row 0x00935160): both awareness queries called out of line, as retail calls them there:
     // 0x00643B3B Ego_r/FableWin ?IsAwareOfThing@CTCPerceiveThing@@QBE_NXZ (reloc_bindings first caller 0x00864700) and

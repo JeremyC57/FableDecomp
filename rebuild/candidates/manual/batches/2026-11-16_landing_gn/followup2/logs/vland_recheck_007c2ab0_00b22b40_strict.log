@@ -1,0 +1,10 @@
+addr       parity           behav  name
+007c2ab0   RELOCATION_MATCH PASS   vector
+00b22b40   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b22b40   WARN SHARED_HEADER_AVAILABLE CCardinalSpline
+00b22b40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b22b40   WARN SHARED_HEADER_AVAILABLE CPSCBase
+00b22b40   HEADER_POLICY    -      ReadBinary
+
+WINS: 1
+  007c2ab0 RELOCATION_MATCH std::vector<C3DVector,std::allocator<C3DVector> >::??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@I@Z

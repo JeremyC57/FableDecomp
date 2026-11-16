@@ -127,6 +127,11 @@ public:
     T* GetAsCArray() { return this->size()>0 ? &this->front() : GetZeroSizeArray(); }
 #endif
     const T* GetAsCArray() const { return this->size()>0 ? this->_M_start : (const T*)this; }
+#ifdef FABLE_RETAIL_CARRAY_GETBYTESIZE
+    // Nested opt-in (2026-11-16, rows 0x00AE1730 / 0x00AE18C0 CParticleSimulation::ReadVectorArray / WriteVectorArray): FableWin.pdb
+    // ?GetByteSize@?$CArray@..@@QBEIXZ (52 instances, e.g. CArray<float> 0x0179E49C), inline in retail: size() * sizeof(T). Body only.
+    unsigned int GetByteSize() const { return this->size() * sizeof(T); }
+#endif
 #ifdef FABLE_RETAIL_CARRAY_DEALLOCATEUNUSEDMEMORY
     // Chunk 767 (row 0x009E5350 CSymbolMap::DeallocateUnusedMemory): Ego_r.pdb ?DeallocateUnusedMemory@?$CArray@..@@QAEXXZ (CMapInfo,
     // pair<K,CAnimationEntry>, unsigned short, unsigned char ... instances), out of line in retail (the pair<CCharString,

@@ -7,7 +7,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00935AD0, length 368 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x34 = CTCPerceiveThing, bit 20 of +0x24),
 //          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary CIntelligentPointer<CThing>, vtable 0x01244344),
-//          CTCPerceiveThing::GetExtendedSightRadius @ 0x007448F0, CThing::GetPos @ 0x004C73D0,
+//          CTCPerceiveThing::GetSightRadius @ 0x007448F0 (respelled 2026-11-16: it reads SightRadius +0x40; GetExtendedSightRadius is 0x00744950), CThing::GetPos @ 0x004C73D0,
 //          CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, CThingSearchTools::GetPBestLeafThing<CFilter_Bind2<
 //          burning, CThingFilter_In2DRange>, CThingCompare_Nearest, CThing> @ 0x00936070 (the manifest instance name is
 //          propagated from an identical body).
@@ -26,7 +26,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 #include "engine/C3DVector.h"
 
 class CTCPerceiveThing { public:                       // interface 0x34
-    float GetExtendedSightRadius();             // 0x007448F0
+    float GetSightRadius() const;               // 0x007448F0 ?GetSightRadius@CTCPerceiveThing@@QBEMXZ
 };
 
 struct CThingFilter_IsBurning {                 // descriptive: the empty first filter
@@ -118,7 +118,7 @@ bool CAIStateGroup_MinionPutOutFires::IsRunnable()
     if (GetCreature()->GetTC(TCI_PERCEIVE_THING, &perceive)) {
         CThing* fire = 0;
         PFire = CIntelligentPointerThing(0);
-        float radius = perceive->GetExtendedSightRadius();
+        float radius = perceive->GetSightRadius();
         if (PeekThingSearchTools().GetPBestLeafThing(
                 CThingFilter_IsBurning() && CThingFilter_In2DRange(((CThing*)(GetCreature()))->GetPos(), radius),
                 CThingCompare_Nearest(((CThing*)(GetCreature()))->GetPos()), &fire)) {

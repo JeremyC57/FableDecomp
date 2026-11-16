@@ -1,5 +1,7 @@
-// CTCTurncoatSpell::CTCTurncoatSpell(CThing* owner) -- build the turncoat-spell component: its will-button helper timer for ability 5, def pointer, intelligent pointers and timers; mark the owner's ability-cast component as busy with ability 5, load SPECIAL_ABILITIES_TURNCOAT_SPELL_DEF, read the owner's turncoat ability level and turn the def's per-level duration tables into whole frames plus fractions
-// Leaf: ??0CTCTurncoatSpell
+// CTCTurncoatSpell::CTCTurncoatSpell(CThing& owner) -- build the turncoat-spell component: its will-button helper timer for ability 5, def pointer, intelligent pointers and timers; mark the owner's ability-cast component as busy with ability 5, load SPECIAL_ABILITIES_TURNCOAT_SPELL_DEF, read the owner's turncoat ability level and turn the def's per-level duration tables into whole frames plus fractions
+// Leaf: ??0CTCTurncoatSpell@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBaseModel, which bound a made-up constructor name to
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -11,6 +13,8 @@
 //   GetDefIndex 0x009AD390, GetDef<CTurncoatSpellDef> 0x007C7720, CTCInventoryAbilities::GetAbilityLevel 0x005EDE93, __ftol2
 // Naming wave 17: the CWillButtonHelperTimer ctor is c672's (EHeroAbility, CThing&) one (??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z);
 //   the ability is a cast of the landed value (no enumerator ordinal source) -- name-only.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -62,12 +66,6 @@ public:
         }
     }
 };
-struct CTCBaseModel {
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04
-    unsigned char _pad08[0x0c - 0x08];
-    CTCBaseModel(CThing* owner);                        // 0x00686800
-};
 enum EHeroAbility { };                                   // Ego_r enum (enumerators: no ordinal source)
 struct CWillButtonHelperTimer {
     unsigned char _pad[0x34];
@@ -108,7 +106,7 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-class CTCTurncoatSpell : public CTCBaseModel { public:
+class CTCTurncoatSpell : public CTCBase { public:
     CWillButtonHelperTimer Timer;                       // +0x0c
     CDefPointer<CTurncoatSpellDef> Def;                 // +0x40
     CThingIntelligentPointer Target;                    // +0x44
@@ -127,11 +125,11 @@ class CTCTurncoatSpell : public CTCBaseModel { public:
     bool Active;                                        // +0x8c
     long CooldownLeft;                                  // +0x90
     long Cooldown;                                      // +0x94
-    CTCTurncoatSpell(CThing* owner);
+    CTCTurncoatSpell(CThing& owner);
 };
 
-CTCTurncoatSpell::CTCTurncoatSpell(CThing* owner)
-    : CTCBaseModel(owner), Timer((EHeroAbility)5, *ParentThing), Level(0), State(0), Caster(0), Counter(0), Counter2(0),
+CTCTurncoatSpell::CTCTurncoatSpell(CThing& owner)
+    : CTCBase(owner), Timer((EHeroAbility)5, *ParentThing), Level(0), State(0), Caster(0), Counter(0), Counter2(0),
       Creature3(0), Active(false), CooldownLeft(0), Cooldown(0)
 {
     if (ParentThing->HasTC(0xa7)) {

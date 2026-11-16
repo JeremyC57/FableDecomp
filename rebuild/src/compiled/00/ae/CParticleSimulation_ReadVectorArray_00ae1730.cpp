@@ -8,7 +8,8 @@
 //   shape (`ret 8`: the stream reference and the float); (2) its two callers are CParticleSimulation::ReadFromFile 0x00AE1BC0
 //   (call 0x00AE1D42) and CParticleProgram::ReadFromFile 0x00AE3C30 (call 0x00AE4043, w = 0), and the catalog row is
 //   already named ReadVectorArray.
-// Callees: CArray<C3DVector>::CArray(unsigned long) 0x007C2AB0 (bound `??0?$CArray@VC3DVector@@@@QAE@K@Z`),
+// Callees: STLport vector<C3DVector>(size_type) 0x007C2AB0 (??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@I@Z;
+//   CArray<C3DVector>(n) forwards to it inline),
 //   CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0 (slow path of the inline Read), free 0x00BFEA14 (~CArray).
 // Shape: CArray::GetAsCArray() (`size() > 0 ? _M_start : GetZeroSizeArray()`, the zero-size pointer being the array object
 //   itself: `lea edi,[esp+14h]`), GetByteSize() tested `> 0`, and the inline stream Read (64-bit position range check,
@@ -17,6 +18,9 @@
 //   C4DVector::Initialise(const C3DVector&, float) (PDB): with an inline member call in the body VC7.1 unrolls the loop
 //   by four (retail's `cmp ebx,4 ; jl` + remainder loop); the same stores written field by field, through a reference
 //   local, as a while loop or with a signed index are never unrolled (234v391).
+// Ported 2026-11-16: the local std::vector / CArray stand-in (which bound 0x007C2AB0 as a made-up ??0?$CArray@VC3DVector@@@@QAE@K@Z)
+//   replaced by the shared engine/CArray.h retail branch, as the landed 0x00B149D0 / 0x00B22B40: CArray<T>(n) forwards to STLport
+//   vector<T>(n), which VC7.1 calls out of line; GETASCARRAY_START keeps the _M_start read, GETBYTESIZE is the PDB inline.
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -51,44 +55,10 @@ public:
     void Initialise(const C3DVector& v, float w) { X = v.X; Y = v.Y; Z = v.Z; W = w; }   // ?Initialise@C4DVector@@QAEXABVC3DVector@@M@Z
 };
 
-namespace std {
-template <class _Tp> class allocator {
-public:
-    allocator() { }
-    allocator(const allocator<_Tp>&) { }
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-    _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
-    ~_Vector_base() { _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef unsigned int size_type;
-    typedef _Alloc allocator_type;
-    explicit vector(const allocator_type& __a = allocator_type()) : _Vector_base<_Tp, _Alloc>(__a) { }
-    size_type size() const { return size_type(this->_M_finish - this->_M_start); }
-    _Tp& operator[](size_type __n) { return *(this->_M_start + __n); }
-};
-}
-
-template <class T> class CArray : public std::vector<T> {   // engine CArray over the STLport 4.6 vector (0xC bytes)
-public:
-    explicit CArray(unsigned long size);                          // 0x007C2AB0 (T = C3DVector)
-    const T* GetZeroSizeArray() const { return reinterpret_cast<const T*>(this); }
-    T* GetAsCArray() { return this->size() > 0 ? this->_M_start : const_cast<T*>(GetZeroSizeArray()); }
-    unsigned int GetByteSize() const { return this->size() * sizeof(T); }
-};
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CARRAY_GETASCARRAY_START
+#define FABLE_RETAIL_CARRAY_GETBYTESIZE
+#include "engine/CArray.h"   // CArray<T> : STLport vector<T>; CArray(n) forwards to vector<C3DVector>(size_type) 0x007C2AB0
 
 class CParticleSimulation {                                // Ego_r: CParticleSimulation (class)
 protected:

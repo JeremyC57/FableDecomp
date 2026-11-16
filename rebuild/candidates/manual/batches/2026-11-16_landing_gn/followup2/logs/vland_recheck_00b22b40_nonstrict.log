@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00b22b40   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b22b40   WARN SHARED_HEADER_AVAILABLE CCardinalSpline
+00b22b40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b22b40   WARN SHARED_HEADER_AVAILABLE CPSCBase
+00b22b40   RELOCATION_MATCH PASS   ReadBinary
+
+WINS: 1
+  00b22b40 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::?ReadBinary@CPSCSplineBase@NParticleEngine@@UAEXAAVCDataInputStream@@@Z

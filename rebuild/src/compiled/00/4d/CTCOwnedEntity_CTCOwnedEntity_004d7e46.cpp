@@ -1,13 +1,18 @@
-// CTCOwnedEntity::CTCOwnedEntity(CThing*) -- CTCBase(owner), vtable, SwitchableNavigationTCAdded = false, an empty POwner, OwnerUID = 0
+// CTCOwnedEntity::CTCOwnedEntity(CThing&) -- CTCBase(owner), vtable, SwitchableNavigationTCAdded = false, an empty POwner, OwnerUID = 0
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Leaf: ??0CTCOwnedEntity@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBase_004d7e46, which bound a made-up constructor name to
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D7E46, length 54 bytes (vtable 0x0123EB4C).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10.
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10.
 // Retail layout (PDB): SwitchableNavigationTCAdded +0x0c, POwner (CIntelligentPointer<CThing>, vtable 0x01238C6C) at the
 // unaligned +0x0d (pack(1)), OwnerUID (unsigned __int64) +0x18.
 // Shape: the size-optimised constructor module (`push dword ptr [esp+0Ch]`, `and dword ptr [..],0`); POwner's inline default
 // constructor = the out-of-line base constructor then its vtable store (no SetPItem), the init-list byte store scheduled
 // before that call.
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -15,24 +20,17 @@ class CThing;
 
 
 #pragma pack(push, 1)
-struct CTCBase_004d7e46 {
-    virtual void v00();
-    CThing*       ParentThing;                      // +0x04
-    unsigned char _pad08[4];
-    CTCBase_004d7e46(CThing* owner);                // 0x00686800
-};
 
-class CTCOwnedEntity : public CTCBase_004d7e46 { public:
+class CTCOwnedEntity : public CTCBase { public:
     bool                        SwitchableNavigationTCAdded;   // +0x0c
     CIntelligentPointer<CThing> POwner;             // +0x0d
     unsigned char               _pad15[3];
     unsigned __int64            OwnerUID;           // +0x18
-    CTCOwnedEntity(CThing* owner);
-    virtual void v00();
+    CTCOwnedEntity(CThing& owner);
 };
 #pragma pack(pop)
 
-CTCOwnedEntity::CTCOwnedEntity(CThing* owner)
-    : CTCBase_004d7e46(owner), SwitchableNavigationTCAdded(false), OwnerUID(0)
+CTCOwnedEntity::CTCOwnedEntity(CThing& owner)
+    : CTCBase(owner), SwitchableNavigationTCAdded(false), OwnerUID(0)
 {
 }

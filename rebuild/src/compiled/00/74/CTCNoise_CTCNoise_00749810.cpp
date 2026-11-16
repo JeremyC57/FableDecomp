@@ -1,16 +1,21 @@
-// CTCNoise::CTCNoise(CThing*) -- CTCBase(owner), vtable, an inline-constructed Definition (CTCNoiseDef), zero timer and range, an empty Creator pointer
+// CTCNoise::CTCNoise(CThing&) -- CTCBase(owner), vtable, an inline-constructed Definition (CTCNoiseDef), zero timer and range, an empty Creator pointer
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Shape: the inline CDefClassBase ctor is the landed out-of-line 0x0042D9E0 form (PDefManager in the init list, the three
 // status bits cleared in the body, byte-packed def base): inlined here VC7.1 clears the bits with retail's split
 // read-modify-write (`mov cl,[edi+24h] ; xor eax,eax ; and cl,0F8h ; mov [edi+24h],cl`) and stores PDefManager from eax.
+// Leaf: ??0CTCNoise@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBase_00749810, which bound a made-up constructor name to
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00749810, length 79 bytes (vtable 0x01268A74).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, the def root constructor @ 0x009FBEC0 (labelled "CResource::CResource"),
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, the def root constructor @ 0x009FBEC0 (labelled "CResource::CResource"),
 // CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10.
 // Retail CTCNoise (PDB): Definition (CTCNoiseDef, 0x34 bytes, vtable 0x01231E9C) +0x0c, LifeTimer +0x40,
 // DistanceCanBeHeardFrom +0x44, Creator (CIntelligentPointer<const CThing>, vtable 0x01237F1C) +0x48.
 // Shape: CDefClassBase's constructor (out of line @ 0x0044C0C0 elsewhere) inlined here: its bit-field clear
 // (`and cl,0F8h` on +0x24: Setup/Template/DefaultValsApplied) and PDefManager = 0 (+0x1c); its own vtable store is dead
 // under CTCNoiseDef's. Definition's address stays in edi; the CTCNoise scalars share eax's zero.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 
 struct CResourceRoot {                              // the def root (0x1c bytes)
@@ -49,23 +54,15 @@ class CTCNoiseDef : public CDefClassBase { public:                // 0x34 bytes
 #include "engine/CIntelligentPointer.h"
 
 
-struct CTCBase_00749810 {
-    virtual void v00();
-    CThing*       ParentThing;                      // +0x04
-    unsigned char _pad08[4];
-    CTCBase_00749810(CThing* owner);                // 0x00686800
-};
-
-class CTCNoise : public CTCBase_00749810 { public:
+class CTCNoise : public CTCBase { public:
     CTCNoiseDef                       Definition;   // +0x0c
     long                              LifeTimer;    // +0x40
     float                             DistanceCanBeHeardFrom;   // +0x44
     CIntelligentPointer<const CThing> Creator;      // +0x48
-    CTCNoise(CThing* owner);
-    virtual void v00();
+    CTCNoise(CThing& owner);
 };
 
-CTCNoise::CTCNoise(CThing* owner)
-    : CTCBase_00749810(owner), LifeTimer(0), DistanceCanBeHeardFrom(0.0f)
+CTCNoise::CTCNoise(CThing& owner)
+    : CTCBase(owner), LifeTimer(0), DistanceCanBeHeardFrom(0.0f)
 {
 }

@@ -1,5 +1,6 @@
 // CTCCameraPointScripted::CTCCameraPointScripted(CThing*) -- CTCCameraPointDefinitionBase(thing), the scripted camera-point vtable, StartPos zeroed, ThingUID / PAT / TransitionTime zeroed and the three "set" flags cleared
-// Leaf: ??0CTCCameraPointScripted@@QAE@PAVCThing@@@Z
+// Leaf: ??0CTCCameraPointScripted@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: both constructors take CThing& as the PDBs spell them.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075CC60, length 66 bytes (+ int3 padding). Manifest label "CTCHeroCentre::
 // CTCHeroCentre" is propagated; vtable 0x01269C84 = CTCCameraPointScripted (rtti-vtables.tsv).
@@ -15,7 +16,7 @@ class CThing;
 class CTCCameraPointDefinitionBase { public:                       // vtable 0x01269B04
     virtual void v00();
     unsigned char _base[0x3c];                              // +0x04 .. +0x40 (CTCBase + camera-point definition members)
-    CTCCameraPointDefinitionBase(CThing* thing);            // 0x0075C180
+    CTCCameraPointDefinitionBase(CThing& thing);            // 0x0075C180
 };
 
 #include "engine/C3DVector.h"
@@ -34,10 +35,10 @@ class CTCCameraPointScripted : public CTCCameraPointDefinitionBase { public:   /
     bool StartPosSet;                                       // +0x81
     bool EndPosSet;                                         // +0x82
     virtual void v00();
-    CTCCameraPointScripted(CThing* thing);
+    CTCCameraPointScripted(CThing& thing);
 };
 
-CTCCameraPointScripted::CTCCameraPointScripted(CThing* thing)
+CTCCameraPointScripted::CTCCameraPointScripted(CThing& thing)
     : CTCCameraPointDefinitionBase(thing), StartPos(0.0f, 0.0f, 0.0f), ThingUID(0), PAT(EDITOR_POINT_ACQUISITION_0),
       TransitionTime(0.0f), LookDirSet(false), StartPosSet(false), EndPosSet(false)
 {

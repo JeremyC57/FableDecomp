@@ -1,5 +1,6 @@
-// CTCCameraPointBuilding::CTCCameraPointBuilding(CThing* parent) -- CTCCameraPointDefinitionBase(parent), three cleared flags, own vtable
-// Leaf: CTCCameraPointBuilding
+// CTCCameraPointBuilding::CTCCameraPointBuilding(CThing& parent) -- CTCCameraPointDefinitionBase(parent), three cleared flags, own vtable
+// Leaf: ??0CTCCameraPointBuilding@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: both constructors take CThing& as the PDBs spell them (the base was bound as CTCCameraPointDefinitionBase_Calls(CThing*)).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D8193, length 35 bytes.
 // Callees: CTCCameraPointDefinitionBase::CTCCameraPointDefinitionBase(CThing*) @ 0x0075C180 (stores vtable
 // 0x01269B04 = CTCCameraPointDefinitionBase; the manifest's "CTCOpinionSource" label on it is propagated).
@@ -11,22 +12,22 @@
 #pragma optimize("s", on)
 class CThing;
 
-struct CTCCameraPointDefinitionBase_Calls {
+struct CTCCameraPointDefinitionBase {
     virtual void v00();
     unsigned char _body[0x40 - 4];                          // CTCBase (+0x04..+0x0b) and the camera-point fields
-    CTCCameraPointDefinitionBase_Calls(CThing* parent);     // 0x0075C180
+    CTCCameraPointDefinitionBase(CThing& parent);     // 0x0075C180 ??0CTCCameraPointDefinitionBase@@QAE@AAVCThing@@@Z
 };
 
-struct CTCCameraPointBuilding : CTCCameraPointDefinitionBase_Calls {
+struct CTCCameraPointBuilding : CTCCameraPointDefinitionBase {
     bool InMyBuilding;                                      // +0x40
     bool ExitPoint;                                         // +0x41
     bool StartPoint;                                        // +0x42
     virtual void v00();                                     // own vtable 0x0123ECBC
-    CTCCameraPointBuilding(CThing* parent);
+    CTCCameraPointBuilding(CThing& parent);
 };
 
-CTCCameraPointBuilding::CTCCameraPointBuilding(CThing* parent)
-    : CTCCameraPointDefinitionBase_Calls(parent)
+CTCCameraPointBuilding::CTCCameraPointBuilding(CThing& parent)
+    : CTCCameraPointDefinitionBase(parent)
     , InMyBuilding(false)
     , ExitPoint(false)
     , StartPoint(false)

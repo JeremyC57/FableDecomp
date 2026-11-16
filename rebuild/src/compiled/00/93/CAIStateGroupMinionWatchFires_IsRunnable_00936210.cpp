@@ -51,9 +51,9 @@ class CAIStateGroupBase;
 class CTCIdleScheduler { public:
     bool IsPreferredIdle(CAIStateGroupBase* group);   // 0x00801BE0
 };
-class CTCPerceiveThing { public:
-    float GetSightRadius();                     // 0x007448F0
-};
+#define FABLE_RETAIL_CTCPERCEIVETHING
+#define FABLE_RETAIL_CTCPERCEIVETHING_GETSIGHTRADIUS
+#include "engine/CTCPerceiveThing.h"   // the interface-0x34 component (GetSightRadius 0x007448F0)
 struct CThingFilter_OnFire { CThingFilter_OnFire() { } };
 class CThingFilter_In2DRange { public:
     C3DVector Pos;

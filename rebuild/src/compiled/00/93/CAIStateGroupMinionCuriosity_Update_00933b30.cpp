@@ -4,7 +4,7 @@
 // curiosity position, then terminate.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00933B30, length 95 bytes.
 // Callees: CVectorMap::LowerBound @ 0x004365B0 (the inlined interface lookup, type 0x34 = bit 20 of the bitset
-// dword at +0x24; this module links the second copy of LowerBound), CTCPerceiveThing::GetExtendedSightRadius
+// dword at +0x24; this module links the second copy of LowerBound), CTCPerceiveThing::GetSightRadius (respelled 2026-11-16: 0x007448F0 reads SightRadius +0x40; GetExtendedSightRadius is 0x00744950)
 // @ 0x007448F0 (float in st0, stored straight into the pushed argument slot), MoveToCuriosityProximity(float)
 // @ 0x00933A40 (own member, bool result dropped), CAIStateGroupBase::Terminate @ 0x008FCF40.
 // Shape: uninitialised component local, untested lookup, both paths merge (`jmp`) into the call. Base layout
@@ -37,9 +37,9 @@ public:
     void Terminate();   // 0x008FCF40
 };
 
-class CTCPerceiveThing { public:                       // interface type 0x34 component
-    float GetExtendedSightRadius() const;             // 0x007448F0
-};
+#define FABLE_RETAIL_CTCPERCEIVETHING
+#define FABLE_RETAIL_CTCPERCEIVETHING_GETSIGHTRADIUS
+#include "engine/CTCPerceiveThing.h"   // the interface-0x34 component (GetSightRadius 0x007448F0)
 
 struct CAIStateGroup_MinionCuriosity : CAIStateGroupBase {
     float CuriosityPos_X, CuriosityPos_Y, CuriosityPos_Z;   // +0x14 C3DVector
@@ -51,6 +51,6 @@ void CAIStateGroup_MinionCuriosity::Update()
 {
     const CTCPerceiveThing* pPerceive;
     PBrain->Creature->PeekTC(TCI_PERCEIVE_THING, &pPerceive);
-    MoveToCuriosityProximity(pPerceive->GetExtendedSightRadius());
+    MoveToCuriosityProximity(pPerceive->GetSightRadius());
     Terminate();
 }

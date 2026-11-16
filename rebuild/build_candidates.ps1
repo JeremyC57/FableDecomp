@@ -230215,9 +230215,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c2ab0'
-        Module = 'CSTLportVector<C3DVector>'
-        Source = '00/7c/CSTLportVectorC3DVector_CSTLportVector_007c2ab0.cpp'
-        TestSource = '00/7c/CSTLportVectorC3DVector_CSTLportVector_007c2ab0_test.cpp'
+        Module = 'std::vector<C3DVector,std::allocator<C3DVector> >'
+        Source = '00/7c/stdvectorC3DVectorstdallocatorC3DVector_vector_007c2ab0.cpp'
+        TestSource = '00/7c/stdvectorC3DVectorstdallocatorC3DVector_vector_007c2ab0_test.cpp'
         PassPattern = '007c2ab0_TEST PASS'
     }
     [pscustomobject]@{

@@ -1,10 +1,12 @@
-// CTCWillLightning::CTCWillLightning(CThing*) -- construct the lightning-spell component: default members, look up the spell def, play its init sound, read the beam/hand effect indices, bind the caster, take the ability level and the starting state
-// Leaf: ??0CTCWillLightning
+// CTCWillLightning::CTCWillLightning(CThing&) -- construct the lightning-spell component: default members, look up the spell def, play its init sound, read the beam/hand effect indices, bind the caster, take the ability level and the starting state
+// Leaf: ??0CTCWillLightning@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBase_Calls, which bound a made-up constructor name to
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A09B0, 952 bytes (+ int3 padding), `ret 4`, vtable 0x0126C724.
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800; CBaseIntelligentPointer() 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800; CBaseIntelligentPointer() 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50
 //   / SetPItem 0x00A01B90; CWillButtonHelperTimer(EHeroAbility, CThing*) 0x008EDFF0; malloc 0x00BFEA0E (list sentinel);
 //   CGameDefinitionManager::Get 0x0044C6B0 / the def index by name 0x009AD390 / GetDef 0x007A35D0; LowerBound 0x0040F020
 //   (interfaces 0xA7, 0x10, 4) and the const 0x004365B0 (0x6F); CDefStringTable::GetString 0x009D49B0 on 0x013CA828;
@@ -16,6 +18,8 @@
 //   +0x98, m_bPlayedSound +0xd8, m_OnhitEveryFrame +0xdc, m_CombatMultiplierTimer +0xe0.
 // Naming wave 17: the CWillButtonHelperTimer ctor is c672's (EHeroAbility, CThing&) one (??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z);
 //   the ability is a cast of the landed value (no enumerator ordinal source) -- name-only.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 class CTCBase;
@@ -186,15 +190,8 @@ struct CBeamList {
     }
 };
 
-struct CTCBase_Calls {
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04
-    unsigned char _pad08[4];
-    CTCBase_Calls(CThing* parent);                      // 0x00686800
-};
-
 #pragma pack(push, 1)
-class CTCWillLightning : public CTCBase_Calls { public:               // vtable 0x0126C724
+class CTCWillLightning : public CTCBase { public:               // vtable 0x0126C724
     long  WeaponState;                                  // +0x0c
     bool  LeftHandAnim;                                 // +0x10
     CIntelligentPointer PItemRemoved;                   // +0x11
@@ -222,14 +219,13 @@ class CTCWillLightning : public CTCBase_Calls { public:               // vtable 
     unsigned char _padd9[3];
     long  m_OnhitEveryFrame;                            // +0xdc
     long  m_CombatMultiplierTimer;                      // +0xe0
-    virtual void v00();
     void SetLevel(long level);                          // 0x0079F810
-    CTCWillLightning(CThing* parent);
+    CTCWillLightning(CThing& parent);
 };
 #pragma pack(pop)
 
-CTCWillLightning::CTCWillLightning(CThing* parent)
-    : CTCBase_Calls(parent)
+CTCWillLightning::CTCWillLightning(CThing& parent)
+    : CTCBase(parent)
     , WeaponState(0)
     , LeftHandAnim(true)
     , PItemRemoved(0)

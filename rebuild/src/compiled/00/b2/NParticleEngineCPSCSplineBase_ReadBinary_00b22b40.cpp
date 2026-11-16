@@ -7,9 +7,9 @@
 //   (reference, as their landed definitions 0x00B22100 / 0x00B21C90 spell them).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B22B40, 594 bytes, `ret 4` (virtual).
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0 (slow path of the inlined Read) / Read3DVector 0x009950F0,
-//   CArray<C3DVector>(unsigned long) 0x007C2AB0 / operator= 0x0075B8D0, operator new 0x00BFEA1A, free 0x00BFEA14,
+//   STLport vector<C3DVector>(size_type) 0x007C2AB0 / vector<C3DVector>::operator= 0x0075B8D0, operator new 0x00BFEA1A, free 0x00BFEA14,
 //   operator delete 0x00BFE9BC, CSplineRandomOffsetData(CCardinalSpline*) 0x00B21DD0 / ReadBinary 0x00B22100,
-//   CSplinePosParamData::ReadBinary 0x00B21C90 (its constructor is inline here), CArray<unsigned long>::resize 0x00464931,
+//   CSplinePosParamData::ReadBinary 0x00B21C90 (its constructor is inline here), vector<unsigned long>::resize(size_type, const unsigned long&) 0x00464931,
 //   CCountedPointer<..>::Reset(T*) 0x00B23240 / 0x00B23170.
 // Layout: the landed CPSCSplineBase::DatabaseCopy 0x00B22530 / WriteBinary 0x00B21630 models: Spline +0x10,
 //   SplineRandomOffsetData +0x24, SplinePosParamData +0x2c; CDataInputStream is the landed 0x00B16F60 model.
@@ -24,16 +24,15 @@ extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
 #include "engine/C3DVector.h"
-template <class T> class CArray { public:                     // STLport vector<T> (12 bytes in retail)
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray() : m_begin(0), m_end(0), m_capacity(0) {}
-    explicit CArray(unsigned long n);                  // 0x007C2AB0 (T = C3DVector)
-    ~CArray() { if (m_begin) free(m_begin); }
-    long Size() const { return (long)(m_end - m_begin); }
-    T& operator[](unsigned long i) { return m_begin[i]; }
-    CArray& operator=(const CArray& other);            // 0x0075B8D0 (T = C3DVector)
-    void resize(unsigned long newSize, const T& value);   // 0x00464931 (T = unsigned long)
-};
+// Ported 2026-11-16: the local CArray stand-in (which bound 0x007C2AB0 as a made-up ??0?$CArray@VC3DVector@@@@QAE@K@Z) replaced by
+//   the shared engine/CArray.h retail branch, as the landed 0x00B149D0 / 0x007BFE30: CArray<T>(n) forwards to STLport vector<T>(n),
+//   which VC7.1 calls out of line (??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@I@Z); FABLE_RETAIL_STLP_VECTOR_C
+//   makes the operator= body visible (called, 0x0075B8D0) and FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE keeps the inline
+//   CSplinePosParamData constructor's resize a call (0x00464931 ?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z). Same bytes.
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_STLP_VECTOR_C
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "engine/CArray.h"   // CArray<T> : STLport vector<T> (12 bytes in retail)
 class CDataInputStream { public:
     virtual void v0();
     unsigned long StreamPos;                                           // +0x04
@@ -111,7 +110,7 @@ class CPSCSplineBase : public CPSCBase { public:
         CSplinePosParamData(CCardinalSpline* spline)   // the landed 0x00B21A00 body
             : Spline(spline)
         {
-            unsigned long count = Spline->ControlPoints.Size();
+            unsigned long count = Spline->ControlPoints.size();
             SplinePosParam.resize(count, 0);
         }
         void ReadBinary(CDataInputStream& in);         // 0x00B21C90
@@ -128,7 +127,7 @@ void CPSCSplineBase::ReadBinary(CDataInputStream& in)
     unsigned long count = in.ReadULong();
     CArray<C3DVector> points(count);
     if (count > 0) {
-        C3DVector* point = points.m_begin;
+        C3DVector* point = points.begin();
         for (unsigned long i = count; i != 0; --i, ++point)
             *point = in.Read3DVector();
     }

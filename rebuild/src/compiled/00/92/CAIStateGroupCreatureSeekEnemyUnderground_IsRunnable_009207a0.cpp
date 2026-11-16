@@ -2,7 +2,8 @@
 // Flags: /d2inlS20
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009207A0, 308 bytes (virtual, `ret`). Ego_r.pdb: ?IsRunnable@CAIStateGroup_CreatureSeekEnemyUnderground@@MAE_NXZ.
 // Callees: CVectorMap::LowerBound 0x004365B0 (const; inlined GetInterface types 8 and 0x34), the enemy source's virtual
-// slot 29 (+0x74), CThing::GetPos 0x004C73D0 (creature first), the 0x34 component's range getter 0x007448F0, the
+// slot 29 (+0x74), CThing::GetPos 0x004C73D0 (creature first), the 0x34 component's CTCPerceiveThing::GetSightRadius 0x007448F0 (respelled 2026-11-16 from a
+// made-up CTCUndergroundMover::GetSurfaceRange: interface 0x34 is CTCPerceiveThing, and the getter reads SightRadius +0x40), the
 // converting CIntelligentPointer temporary (vtable 0x01237F1C: ctor 0x00A01B10, SetPItem 0x00A01B90 x2, GetPItem 0x00A01B50,
 // dtor 0x00A01C10); 0.5f pool 0x0122F59C.
 // Shape: the landed AI state-group models (0x00937F70; one-ternary GetInterface select); `sqrt(dx*dx + dy*dy)` of
@@ -75,9 +76,9 @@ struct CTCEnemySource {                         // the interface-8 component
     virtual CThing* GetEnemy() const;                 // slot 29 (+0x74)
 };
 
-struct CTCUndergroundMover {                    // the interface-0x34 component
-    float GetSurfaceRange() const;                    // 0x007448F0
-};
+#define FABLE_RETAIL_CTCPERCEIVETHING
+#define FABLE_RETAIL_CTCPERCEIVETHING_GETSIGHTRADIUS
+#include "engine/CTCPerceiveThing.h"   // the interface-0x34 component (GetSightRadius 0x007448F0)
 
 static inline float XYDistance(const C3DVector& a, const C3DVector& b)
 {
@@ -99,9 +100,9 @@ bool CAIStateGroup_CreatureSeekEnemyUnderground::IsRunnable()
     CThing* enemy = source->GetEnemy();
     if (enemy != 0 && !enemy->IsDead()) {
         CThing* creature = PBrain->PCreature;
-        const CTCUndergroundMover* mover;
-        if (creature->PeekTC(TCI_PERCEIVE_THING, &mover)) {
-            if (XYDistance(enemy->GetPos(), creature->GetPos()) > mover->GetSurfaceRange() * 0.5f) {
+        const CTCPerceiveThing* perceive;
+        if (creature->PeekTC(TCI_PERCEIVE_THING, &perceive)) {
+            if (XYDistance(enemy->GetPos(), creature->GetPos()) > perceive->GetSightRadius() * 0.5f) {
                 PEnemy = enemy;
                 return true;
             }

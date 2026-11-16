@@ -1,6 +1,9 @@
-// CTCMultiArrow::CTCMultiArrow(CThing*) -- CTCBase(owner), vtable, counters and the ammo-effect vector cleared, BowEffect = 0, then Init()
+// CTCMultiArrow::CTCMultiArrow(CThing&) -- CTCBase(owner), vtable, counters and the ammo-effect vector cleared, BowEffect = 0, then Init()
+// Leaf: ??0CTCMultiArrow@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBase_007cc7d0, which bound a made-up constructor name to
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CC7D0, length 92 bytes (vtable 0x0126ED7C).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10,
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10,
 // CBaseIntelligentPointer::SetPItem(CBaseObject*) @ 0x00A01B90, CTCMultiArrow::Init() @ 0x007CC4D0.
 // Retail CTCMultiArrow (PDB, 12-byte retail vector): PDef +0x0c, NumberOfShots/NumberInVolley/NumOfVolleys +0x10..+0x18
 // (left uninitialised), SpellLevel +0x1c, RemovedEffect +0x20, CreateAmmoEffectCount/Delay/Timer +0x24..+0x2c,
@@ -10,6 +13,8 @@
 // `allocator_type()` temporary) -- with three plain zeroing words the `mov ecx,edi` for BowEffect is scheduled before
 // the vector stores; BowEffect built from a null pointer (the base constructor, its vtable, SetPItem(0) with `push ebx`);
 // Init is a body call.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 
 class CBaseObject;
@@ -54,14 +59,7 @@ struct CDefPointerMultiArrow {                      // CDefPointer<const CSpecia
     CDefPointerMultiArrow() : m_pDef(0) {}
 };
 
-struct CTCBase_007cc7d0 {
-    virtual void v00();
-    CThing*       ParentThing;                      // +0x04
-    unsigned char _pad08[4];
-    CTCBase_007cc7d0(CThing* owner);                // 0x00686800
-};
-
-class CTCMultiArrow : public CTCBase_007cc7d0 { public:
+class CTCMultiArrow : public CTCBase { public:
     CDefPointerMultiArrow                      PDef;   // +0x0c
     long                                       NumberOfShots;   // +0x10
     long                                       NumberInVolley;  // +0x14
@@ -74,13 +72,12 @@ class CTCMultiArrow : public CTCBase_007cc7d0 { public:
     CRetailVector<CIntelligentPointer<CThing> > AmmoEffects;    // +0x30
     CIntelligentPointer<CThing>                BowEffect;       // +0x3c
     bool                                       CutSceneCancelled;   // +0x44
-    CTCMultiArrow(CThing* owner);
+    CTCMultiArrow(CThing& owner);
     void Init();                                    // 0x007CC4D0
-    virtual void v00();
 };
 
-CTCMultiArrow::CTCMultiArrow(CThing* owner)
-    : CTCBase_007cc7d0(owner), SpellLevel(0), RemovedEffect(false), CreateAmmoEffectCount(0),
+CTCMultiArrow::CTCMultiArrow(CThing& owner)
+    : CTCBase(owner), SpellLevel(0), RemovedEffect(false), CreateAmmoEffectCount(0),
       CreateAmmoEffectDelay(0), CreateAmmoEffectTimer(0), BowEffect(0), CutSceneCancelled(false)
 {
     Init();
