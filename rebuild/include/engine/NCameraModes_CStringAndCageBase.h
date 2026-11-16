@@ -16,6 +16,11 @@ private:
     long NextAutoGoBehindWF,TimerForExpansion;
     bool DriftToMaxStringLength;
     void UpdateXYVars();
+#ifdef FABLE_RETAIL_NCAMERAMODES_CSTRINGANDCAGEBASE_AUTOGOBEHIND
+    // Opt-in (w24A, row 0x00872110): Ego_r.pdb / FableWin.pdb ?UpdateAutoGoBehind@CStringAndCageBase@NCameraModes@@ABEXAAVC3DVector@@@Z
+    // (private const, out of line at 0x00872110). Declaration only.
+    void UpdateAutoGoBehind(C3DVector& go_to) const;                     // 0x00872110
+#endif
 #ifdef FABLE_RETAIL_NCAMERAMODES_CSTRINGANDCAGEBASE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.

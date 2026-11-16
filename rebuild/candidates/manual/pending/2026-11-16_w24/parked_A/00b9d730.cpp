@@ -1,0 +1,87 @@
+// CEnginePrimitiveManagerStaticMeshesBase::IsInsideFustrum(C3DPrimitive2* bound, CEngineInternalPrimitiveStaticMesh* mesh) -- transform the bounding sphere into the world by the mesh's object transform, then test it against the camera's near/far depth range and the four side planes
+// Grade: DIFFER(429v429) dl=4 -- latest pending draft (hand759): retail loads bound->Radius first and fmul mesh.Scale after the camera load (0x00B9D7A4); ours the reverse. Paren either operand, radius *= Scale, (double) on either operand: no change (6 grades).
+// Leaf: ?IsInsideFustrum@CEnginePrimitiveManagerStaticMeshesBase@@AAE_NPBVC3DPrimitive2@@ABVCEngineInternalPrimitiveStaticMesh@@@Z
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B9D730, length 432 bytes (body 0x1ad + int3 padding), `ret 8` (`this` unused).
+// Globals: the engine camera @ 0x01436EA0.
+// Layout: engine/CEngineCamera.h flattens CameraDesc (+0x14, 0x6c bytes); the desc's camera position (+0x54), near (+0x6c)
+//   and far (+0x70) distances are read here, with LookVector +0x1b4 and FrustrumPlanes[4] +0x1c0 (0x10-byte CPlane:
+//   normal + d), so the camera is modelled locally at those offsets. The sphere is C3DPrimitive2 (centre +0xc, radius
+//   +0x18); the mesh's uniform scale sits at +0x58 and its ObjectTransform (CMatrix3x4, rows Right/Up/Forward + Pos) at
+//   +0x70 (engine/CEngineInternalPrimitiveStaticMesh.h names +0x58 a retail-only long; it is read as a float here).
+// Shape: the side planes are tested in the order 2, 3, 0, 1 against the normal only (the planes pass through the eye).
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector() {}
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
+};
+
+struct CMatrix3x4 {
+    C3DVector Right;                               // +0x00
+    C3DVector Up;                                  // +0x0c
+    C3DVector Forward;                             // +0x18
+    C3DVector Pos;                                 // +0x24
+    __forceinline C3DVector operator*(const C3DVector& v) const
+    {
+        float x = v.X, y = v.Y, z = v.Z;
+        return C3DVector(z * Forward.X + y * Up.X + x * Right.X + Pos.X,
+                         z * Forward.Y + y * Up.Y + x * Right.Y + Pos.Y,
+                         z * Forward.Z + y * Up.Z + x * Right.Z + Pos.Z);
+    }
+};
+
+struct CPlane {
+    C3DVector Normal;
+    float     D;
+};
+
+class C3DPrimitive2 { public:
+    unsigned char _pad00[0xc];
+    C3DVector     Centre;                          // +0x0c
+    float         Radius;                          // +0x18
+};
+
+class CEngineInternalPrimitiveStaticMesh { public:
+    unsigned char _pad00[0x58];
+    float         Scale;                           // +0x58
+    unsigned char _pad5c[0x70 - 0x5c];
+    CMatrix3x4    ObjectTransform;                 // +0x70
+};
+
+struct CEngineCamera {
+    unsigned char _pad000[0x54];
+    C3DVector     Position;                        // +0x54 (CameraDesc +0x40)
+    unsigned char _pad060[0x6c - 0x60];
+    float         NearClip;                        // +0x6c
+    float         FarClip;                         // +0x70
+    unsigned char _pad074[0x1b4 - 0x74];
+    C3DVector     LookVector;                      // +0x1b4
+    CPlane        FrustrumPlanes[4];               // +0x1c0
+};
+extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
+
+static inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
+
+class CEnginePrimitiveManagerStaticMeshesBase {
+private:
+    bool IsInsideFustrum(const C3DPrimitive2* bound, const CEngineInternalPrimitiveStaticMesh& mesh);
+};
+
+bool CEnginePrimitiveManagerStaticMeshesBase::IsInsideFustrum(const C3DPrimitive2* bound, const CEngineInternalPrimitiveStaticMesh& mesh)
+{
+    C3DVector centre = mesh.ObjectTransform * bound->Centre;
+    float radius = bound->Radius * mesh.Scale;
+    CEngineCamera* camera = g_pEngineCamera;
+    C3DVector rel;
+    rel.X = centre.X - camera->Position.X;
+    rel.Y = centre.Y - camera->Position.Y;
+    rel.Z = centre.Z - camera->Position.Z;
+    float depth = Dot(rel, camera->LookVector);
+    if (depth + radius < camera->NearClip || depth - radius > camera->FarClip
+        || Dot(rel, camera->FrustrumPlanes[2].Normal) > radius
+        || Dot(rel, camera->FrustrumPlanes[3].Normal) > radius
+        || Dot(rel, camera->FrustrumPlanes[0].Normal) > radius
+        || Dot(rel, camera->FrustrumPlanes[1].Normal) > radius)
+        return false;
+    return true;
+}

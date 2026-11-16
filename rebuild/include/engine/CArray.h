@@ -5,6 +5,9 @@
 // operators returning T& and const T&, the (n) and (n, value) constructors, GetAsCArray over a private zero-size array.
 #include "stlport/fable_containers.h"
 #include "fable_compiler.h"
+#ifdef FABLE_RETAIL_CARRAY_INDEX_ASSERT
+#include "fable_assert.h"
+#endif
 #ifdef FABLE_RETAIL_CARRAY_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
 // Both original TPI records:23 real methods, generated assignment omitted.
 // Inverse LF_METHOD overload groups: measured VC71 reversal supports this
@@ -74,7 +77,15 @@ public:
     explicit CArray(unsigned int n) : std::vector<T>(n,T()) { }
 #endif
     CArray(unsigned int n,const T& x) : std::vector<T>(n,x) { }
-#ifdef FABLE_RETAIL_CARRAY_ORIGINAL_INDEX_VECTOR_CHAIN_PASS22
+#if defined(FABLE_RETAIL_CARRAY_INDEX_ASSERT)
+    // Opt-in (w24A, rows 0x0047042A CSoundMap::TransferBinaryIn, 0x00681E60): the original indexers assert the index in the debug
+    // build (FableWin.pdb CArray<T>::operator[] bodies, e.g. CArray<CGraphicInfo>::operator[] 0x01D2F450: the bounds ASSERT, then
+    // vector::operator[]); the release build keeps that ASSERT as a dead arm (fable_assert.h; define FABLE_RETAIL_ASSERT_DEAD_ARM
+    // in the row). It emits no bytes. Graded on 0x0047042A: with the arm, the second access to one element (`v[j].first = ...;
+    // v[j].second.F()`) gives retail's `lea ecx,[eax+ecx+4]` (index * size first, 0x004706C9); without it `[ecx+eax+4]`.
+    T& operator[](unsigned int index) { FABLE_RETAIL_ASSERT(index < this->size()); return std::vector<T>::operator[](index); }
+    const T& operator[](unsigned int index) const { FABLE_RETAIL_ASSERT(index < this->size()); return std::vector<T>::operator[](index); }
+#elif defined(FABLE_RETAIL_CARRAY_ORIGINAL_INDEX_VECTOR_CHAIN_PASS22)
     // Original CArray<CGraphicInfo>::operator[]01D2F450 release tail calls vector::operator[].
     T& operator[](unsigned int index) { return std::vector<T>::operator[](index); }
     const T& operator[](unsigned int index) const { return std::vector<T>::operator[](index); }

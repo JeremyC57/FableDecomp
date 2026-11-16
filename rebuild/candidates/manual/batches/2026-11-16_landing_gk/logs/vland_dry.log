@@ -1,0 +1,21 @@
+addr       parity           behav  name
+0047042a   WARN RELOC_NAME: ?resize@?$vector@U?$pair@KVCDefString@@@std@@V?$allocator@U?$pair@KVCDefString@@@std@@@2@@std@@QAEXIABU?$pair@KVCDefString@@@2@@Z -> 00470a28 labelled 'CArray<std::pair<long,long>_>::push_back'
+0047042a   RELOCATION_MATCH PASS   TransferBinaryIn
+0090c900   RELOCATION_MATCH PASS   operator()
+00959380   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00959380   WARN STANDIN_LEAF ??$GetAllThingsInRoughArea@$$CBVCThingObject@@V?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@@Z (catalog CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>; names another function)
+00959380   RELOCATION_MATCH PASS   GetAllThingsInRoughArea<CThingObject const,std::vector<CThingObject const*>,CThingFilter_None>
+0095c7c0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0095c7c0   WARN STANDIN_LEAF ??$GetAllThingsInRoughArea@VCThingObject@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z (catalog CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>; names another function)
+0095c7c0   RELOCATION_MATCH PASS   GetAllThingsInRoughArea<CThingObject,std::vector<CThing*>,CThingFilter_None>
+00872110   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00872110   RELOCATION_MATCH PASS   UpdateAutoGoBehind
+00c6b9d0   RELOCATION_MATCH PASS   FilterWithGain
+
+WINS: 6
+  0047042a RELOCATION_MATCH CSoundMap::?TransferBinaryIn@CSoundMap@@QAEXAAVCMemoryDataInputStream@@@Z
+  0090c900 RELOCATION_MATCH CThingFilter_IsValidGossipee::??RCThingFilter_IsValidGossipee@@QBE_NABVCThingAICreature@@@Z
+  00959380 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@$$CBVCThingObject@@V?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@@Z
+  0095c7c0 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThingObject@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  00872110 RELOCATION_MATCH CStringAndCageBase::?UpdateAutoGoBehind@CStringAndCageBase@NCameraModes@@ABEXAAVC3DVector@@@Z
+  00c6b9d0 RELOCATION_MATCH CStateVariableFilter::?FilterWithGain@CStateVariableFilter

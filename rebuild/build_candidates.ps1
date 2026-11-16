@@ -397537,6 +397537,48 @@ $catalog = @(
         TestSource = '00/bf/CEnginePrimitiveRenderUtil_SetupOutlineStencilStates_00bf0740_test.cpp'
         PassPattern = '00bf0740_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0047042a'
+        Module = 'CSoundMap'
+        Source = '00/47/CSoundMap_TransferBinaryIn_0047042a.cpp'
+        TestSource = '00/47/CSoundMap_TransferBinaryIn_0047042a_test.cpp'
+        PassPattern = '0047042a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090c900'
+        Module = 'CThingFilter_IsValidGossipee'
+        Source = '00/90/CThingFilterIsValidGossipee_operator_0090c900.cpp'
+        TestSource = '00/90/CThingFilterIsValidGossipee_operator_0090c900_test.cpp'
+        PassPattern = '0090c900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00959380'
+        Module = 'CThingSearchTools'
+        Source = '00/95/CThingSearchTools_vectorCThingObjectconstCThingFilterNone_00959380.cpp'
+        TestSource = '00/95/CThingSearchTools_vectorCThingObjectconstCThingFilterNone_00959380_test.cpp'
+        PassPattern = '00959380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095c7c0'
+        Module = 'CThingSearchTools'
+        Source = '00/95/CThingSearchTools_vectorCThingCThingFilterNone_0095c7c0.cpp'
+        TestSource = '00/95/CThingSearchTools_vectorCThingCThingFilterNone_0095c7c0_test.cpp'
+        PassPattern = '0095c7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00872110'
+        Module = 'CStringAndCageBase'
+        Source = '00/87/CStringAndCageBase_UpdateAutoGoBehind_00872110.cpp'
+        TestSource = '00/87/CStringAndCageBase_UpdateAutoGoBehind_00872110_test.cpp'
+        PassPattern = '00872110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6b9d0'
+        Module = 'CStateVariableFilter'
+        Source = '00/c6/CStateVariableFilter_FilterWithGain_00c6b9d0.cpp'
+        TestSource = '00/c6/CStateVariableFilter_FilterWithGain_00c6b9d0_test.cpp'
+        PassPattern = '00c6b9d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

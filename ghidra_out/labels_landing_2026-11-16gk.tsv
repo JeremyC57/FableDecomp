@@ -1,0 +1,7 @@
+address	name	evidence
+0x0047042A	?TransferBinaryIn@CSoundMap@@QAEXAAVCMemoryDataInputStream@@@Z	landing gk (2026-11-16, w24A): RELOCATION_MATCH + test PASS, strict headers
+0x0090C900	??RCThingFilter_IsValidGossipee@@QBE_NABVCThingAICreature@@@Z	landing gk (2026-11-16, w24A): RELOCATION_MATCH + test PASS, strict headers
+0x00959380	??$GetAllThingsInRoughArea@$$CBVCThingObject@@V?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@@Z	landing gk (2026-11-16, w24A): RELOCATION_MATCH + test PASS, strict headers
+0x0095C7C0	??$GetAllThingsInRoughArea@VCThingObject@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	landing gk (2026-11-16, w24A): RELOCATION_MATCH + test PASS, strict headers
+0x00872110	?UpdateAutoGoBehind@CStringAndCageBase@NCameraModes@@ABEXAAVC3DVector@@@Z	landing gk (2026-11-16, w24A): RELOCATION_MATCH + test PASS, strict headers
+0x00C6B9D0	?FilterWithGain@CStateVariableFilter	landing gk (2026-11-16, w24A): RELOCATION_MATCH + test PASS, strict headers

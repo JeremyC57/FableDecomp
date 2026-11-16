@@ -100,6 +100,12 @@ public:
     virtual long GetMaterialOnHitByMelee() const;                        // slot 70, 0x00703040
 public:
 #endif // FABLE_RETAIL_CTHINGOBJECT_VSLOTS2
+#ifdef FABLE_RETAIL_CTHINGOBJECT_STATTYPEFLAGS
+    // Opt-in (w24A, rows 0x00959380 / 0x0095C7C0, via the CThingSearchTools rough-area body): FableWin.pdb ?StatGetTypeFlags@CThingObject@@SIKXZ
+    // (static fastcall, inline in retail: both GetAllThingsInRoughArea<CThingObject,..> instances test the +0x6C flags against 0x807).
+public:
+    static unsigned long __fastcall StatGetTypeFlags() { return 0x807; }
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CThingObject)==0xe0);
+FABLE_STATIC_ASSERT_AT(104, sizeof(CThingObject)==0xe0);
 #endif

@@ -76,6 +76,12 @@ class CAGraphicAppearanceComponent;
 enum EAppearanceMeshEffectPriority;                          // MS forward enum (chunk 867: the row passes the value 3)
 #endif
 class CTCGraphicAppearance : public CTCBase {
+#if defined(FABLE_RETAIL_CTCGRAPHICAPPEARANCE_CAMERAFOCALPOS) && !(defined(FABLE_RETAIL_CTCGRAPHICAPPEARANCE_STATIC_FOCAL) && defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST))
+    // Opt-in (w24A, row 0x00872110): FableWin.pdb ?GetCameraFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z, out of
+    // line at 0x004C12D0 (landed), alone -- without the STATIC_FOCAL / UPDATE_LIST chain that also declares it. Declaration only.
+public:
+    C3DVector GetCameraFocalPos(float) const;                            // 0x004C12D0
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_STATIC_FOCAL
 public:
     // Both original PDBs and native004c11f0: const owner, output reference.

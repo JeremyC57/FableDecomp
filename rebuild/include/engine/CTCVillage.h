@@ -151,9 +151,9 @@ public:
     bool GetIsHeroEnemyOfGuards();                           // 0x00658604
 #endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_CURFEW
-    // Retail opt-in (chunk Q15, row 0x0090C900): Ego_r.pdb ?IsCurfewTime@CTCVillage@@QBE_NXZ (out of line, 0x00658D5D). Declaration only.
+    // Retail opt-in (chunk Q15 / w24A, row 0x0090C900): Ego_r.pdb ?IsCurfewTime@CTCVillage@@QBE_NXZ (0x00658DB3) and ?IsSociableTime@CTCVillage@@QBE_NXZ (0x00658D5D, landed; the row calls this one -- Q15 had bound IsCurfewTime to it). Declarations only.
 public:
-    bool IsCurfewTime() const;                               // 0x00658D5D
+    bool IsCurfewTime() const; bool IsSociableTime() const;  // 0x00658DB3 / 0x00658D5D
 #endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_SCHOOLSTORYTIME
     // Opt-in (agentNF26, 2026-11-12, rows 0x00658A35 / 0x00658A80 and their binders): Ego_r.pdb + FableWin.pdb

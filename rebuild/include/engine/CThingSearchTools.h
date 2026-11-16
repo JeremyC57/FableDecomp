@@ -200,7 +200,16 @@ public:
                 if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
                     continue;
                 for(long y=cells.TLY;y<cells.BRY;++y) {
-#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE)
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_CELL_BYTEOFFSET)
+                    // w24A opt-in (rows 0x00959380 / 0x0095C7C0, the <CThingObject, vector, CThingFilter_None> instances): FITTED form of the
+                    // PeekCell expression -- the layer's level-info record addressed as bytes (layer * sizeof(CMapwhoLevelInfo) added to the
+                    // vector start), the spelling the landed family K016 rows 0x006F3570 / 0x006F37B0 / 0x007197C0 carry in their local models.
+                    // Retail's vector instances read the row width with `mov ecx,[ecx+eax+4]` (layer * 20 as base, 0x0095C8C3) while the list
+                    // instances (0x008780D0, PEEKCELL_INLINE) read it with the start as base (`mov eax,[eax+ebp+4]`, 0x008781D3): the same
+                    // inline PeekCell in both, so the order follows the instance's context, and no natural spelling of the access (PeekCell
+                    // bodies with or without ASSERT dead arms, locals, operand orders, vector index forms: 30 probes) reproduces it here.
+                    const NThingMap::CThingMapCell* cell=&map.Cells.begin()[(unsigned char)layer].begin()[y*(*(const long*)((unsigned char)layer*sizeof(NThingMap::CMapwhoLevelInfo)+(size_t)map.MapwhoLevelInfo.begin()+offsetof(NThingMap::CMapwhoLevelInfo,Extents)))+cells.TLX];
+#elif defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE)
                     const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
 #else
                     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];

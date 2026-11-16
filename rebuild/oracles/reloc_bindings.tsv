@@ -41354,3 +41354,13 @@ _mip	0139a838	00b70230
 ?ClampResolution@CUserProfileManager@@AAEXAAKJ@Z	00406d90	0040bca0
 ?push_back@?$vector@UCEmbeddedIcon@CIconText@NUISystem@@V?$allocator@UCEmbeddedIcon@CIconText@NUISystem@@@std@@@std@@QAEXABUCEmbeddedIcon@CIconText@NUISystem@@@Z	00543c90	00542780
 ?GPPrimitiveRenderer2D@NEngineInternal@@3PAVCEnginePrimitiveRenderer2D@@A	01436e7c	00bcf4f0
+?Sort@?$CVectorMap@KVCDefString@@V?$CKeyPairCompareLess@KVCDefString@@@@@@QAEXXZ	0047119a	0047042a
+?Sort@?$CVectorMap@KVCSoundPair@@V?$CKeyPairCompareLess@KVCSoundPair@@@@@@QAEXXZ	00470cd8	0047042a
+?resize@?$vector@U?$pair@KVCDefString@@@std@@V?$allocator@U?$pair@KVCDefString@@@std@@@2@@std@@QAEXIABU?$pair@KVCDefString@@@2@@Z	00470a28	0047042a
+?resize@?$vector@U?$pair@KVCSoundPair@@@std@@V?$allocator@U?$pair@KVCSoundPair@@@std@@@2@@std@@QAEXIABU?$pair@KVCSoundPair@@@2@@Z	004706f6	0047042a
+?NoLookups@CThingSearchTools@@2KA	013b89a8	00959380
+?NoThingsScanned@CThingSearchTools@@2KA	013b89ac	00959380
+?SearchID@CThingSearchTools@@2KA	013b89b0	00959380
+?_M_insert_overflow@?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@IAEXPAPBVCThingObject@@ABQBV3@ABU__true_type@2@I_N@Z	0091ffe0	00959380
+?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ	0084d080	00872110
+?FilterRampedWithGain@CStateVariableFilter@@QAEXPAFK@Z	00c6b7c0	00c6b9d0
