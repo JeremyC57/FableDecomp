@@ -21,7 +21,7 @@
 #include "engine/CEngineCamera.h"
 #include "engine/CEngineLightingManager.h"
 
-extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }              // 0x01436EA0
 
 C4DVector CEngineLightingManager::CalculateFogTransformMatrix(float fogStart, float fogEnd)
 {
@@ -30,6 +30,6 @@ C4DVector CEngineLightingManager::CalculateFogTransformMatrix(float fogStart, fl
                    0.0f, 0.0f, 0.0f,
                    scale, 0.0f, 0.0f,
                    -(scale * fogStart), 0.0f, 0.0f);
-    fog.PreMultiply(g_pEngineCamera->NoScaleViewTransform);
+    fog.PreMultiply(NEngineInternal::GPCamera->NoScaleViewTransform);
     return C4DVector(fog.E11, fog.E21, fog.E31, fog.E41);
 }

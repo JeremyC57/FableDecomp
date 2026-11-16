@@ -13,7 +13,7 @@
 //   virtual bool (const CEngineVideoOptionsDef&)) on the displacement, glow and radial-blur renderers; the step-down is the
 //   inlined CEngine::GetNextLowerQualitySetting (Ego_r, private).
 // Globals (no PDB data names; each type proven by the constructor that publishes it, see the landed AddEngineComponent
-//   instantiations): 0x01436E60 CEngineShadowRenderer* (bound ?g_pShadowRenderer_01436e60@@3PAVCEngineShadowRenderer@@A),
+//   instantiations): 0x01436E60 CEngineShadowRenderer* (bound ?NEngineInternal::GPShadowRenderer@@3PAVCEngineShadowRenderer@@A),
 //   0x01436E38 CEngineScreenEffectDisplacementRenderer*, 0x01436E34 CEngineScreenEffectGlowRenderer*, 0x01436E30
 //   CEngineScreenEffectRadialBlurRenderer* (descriptive names).
 // Shape: `failed` starts false and ORs in each renderer's refusal (retail's first result goes through eax into bl;
@@ -65,8 +65,8 @@ class CEngineScreenEffectRadialBlurRenderer : public CEngineComponent {
 public:
     virtual bool SetEffectQuality(const CEngineVideoOptionsDef& def);   // slot 13
 };
-extern CEngineShadowRenderer* g_pShadowRenderer_01436e60;                       // 0x01436E60
-extern CEngineScreenEffectDisplacementRenderer* g_pDisplacementRenderer_01436e38;  // 0x01436E38
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }                       // 0x01436E60
+namespace NEngineInternal { extern CEngineScreenEffectDisplacementRenderer* GPScreenEffectDisplacementRenderer; }  // 0x01436E38
 extern CEngineScreenEffectGlowRenderer* g_pGlowRenderer_01436e34;               // 0x01436E34
 extern CEngineScreenEffectRadialBlurRenderer* g_pRadialBlurRenderer_01436e30;   // 0x01436E30
 
@@ -127,10 +127,10 @@ CEngine::ESmartRestoreComponentVideoMemoryResult CEngine::SmartRestoreComponentV
         const CEngineVideoOptionsDef& effectsDef = PeekVideoOptionsDef(effectsQuality);
         const CEngineVideoOptionsDef& shadowDef = PeekVideoOptionsDef(shadowQuality);
         bool failed = false;
-        failed |= g_pShadowRenderer_01436e60 &&
-                      !g_pShadowRenderer_01436e60->ChangeVideoOptionShadowQuality(shadowDef.ShadowBufferSize,
+        failed |= NEngineInternal::GPShadowRenderer &&
+                      !NEngineInternal::GPShadowRenderer->ChangeVideoOptionShadowQuality(shadowDef.ShadowBufferSize,
                                                                                   shadowDef.ShadowDistanceScale);
-        failed |= g_pDisplacementRenderer_01436e38 && !g_pDisplacementRenderer_01436e38->SetEffectQuality(effectsDef);
+        failed |= NEngineInternal::GPScreenEffectDisplacementRenderer && !NEngineInternal::GPScreenEffectDisplacementRenderer->SetEffectQuality(effectsDef);
         failed |= g_pGlowRenderer_01436e34 && !g_pGlowRenderer_01436e34->SetEffectQuality(effectsDef);
         failed |= g_pRadialBlurRenderer_01436e30 && !g_pRadialBlurRenderer_01436e30->SetEffectQuality(effectsDef);
         if (!failed)

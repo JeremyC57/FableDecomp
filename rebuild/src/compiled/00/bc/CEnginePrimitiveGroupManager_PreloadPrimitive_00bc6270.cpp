@@ -84,7 +84,7 @@ class CEnginePrimitiveTypeInfo : public CEngineComponent, public CBaseClassNonCo
 public:
     CEnginePrimitiveManager* PrimitiveManagers[47];  // +0x10
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 bool CEnginePrimitiveGroupManager::PreloadPrimitive(CEngineInternalPrimitiveBase& primitive, const C3DVector& position, unsigned long flags)
 {
@@ -95,7 +95,7 @@ bool CEnginePrimitiveGroupManager::PreloadPrimitive(CEngineInternalPrimitiveBase
         CEnginePrimitiveHandle& handle = group.Primitives[i];
         if (!handle.IsNull()) {
             CEngineInternalPrimitiveBase& child = static_cast<CEngineInternalPrimitiveBase&>(handle.GetData());
-            result |= g_pEnginePrimitiveTypeInfo->PrimitiveManagers[child.Type]->PreloadPrimitive(child, position, flags);
+            result |= NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[child.Type]->PreloadPrimitive(child, position, flags);
         }
     }
     return result;

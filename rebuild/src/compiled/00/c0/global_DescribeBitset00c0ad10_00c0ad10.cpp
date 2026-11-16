@@ -15,11 +15,11 @@ public:
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(const CString& string);   // 0x00C0DEA0
 };
-extern CString _EmptyString;                    // 0x0139C900 (its m_pchData)
+extern char* _afxPchNil;                    // 0x0139C900 (its m_pchData)
 
 inline void CString::Init()
 {
-    m_pchData = _EmptyString.m_pchData;
+    m_pchData = _afxPchNil;
 }
 
 CString __fastcall DescribeBitset_00c0ad10(const CString* names, unsigned long count, unsigned short bits)

@@ -145,7 +145,7 @@ private:
 public:
     void ResetWorldTransform();   // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 class CEngineWaterSettings { public:                           // PDB CEngineWaterSettings (0x2e4)
     unsigned char _pad00[0xd];
@@ -182,20 +182,20 @@ class CEngineWaterRenderer { public:
 
 void CEngineWaterRenderer::SetupBackgroundShaderConstantsAndFog()
 {
-    g_pShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
-    g_pShaderRenderManager->SetBoneTransform(0, &Settings.OtherBackgroundShaderVars);
-    g_pShaderRenderManager->SetBoneTransform(1, &Settings.ShoreLookupMaskMatrix);
-    g_pShaderRenderManager->SetBoneTransform(2, &Settings.ShoreLookupMaskMatrixForBounds);
-    g_pShaderRenderManager->SetBoneTransform(3, &Settings.ShoreLookupMaskMatrix2);
+    NEngineInternal::GPShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, &Settings.OtherBackgroundShaderVars);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, &Settings.ShoreLookupMaskMatrix);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, &Settings.ShoreLookupMaskMatrixForBounds);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, &Settings.ShoreLookupMaskMatrix2);
     if (HighendWaterEnabled) {
         float factor = WaterBumpFactor * Settings.BumpMatFactor;
-        g_pShaderRenderManager->SetUserVertexShaderConstant(3, factor, 0.0f, factor * -0.5f, 1.0f);
+        NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(3, factor, 0.0f, factor * -0.5f, 1.0f);
     } else {
         static C4DVector lowEndConstant(0.8f, 0.8f, 0.0f, 0.0f);
         static CRGBFloatColour lowEndColour(0.0f, 0.4f, 0.8f, 1.0f);
         CRGBFloatColour colour = lowEndColour * NEngineInternal::GPLightingManager->ThemeChannels[0].Colour;
-        g_pShaderRenderManager->SetPixelShaderConstant(5, lowEndConstant);
-        g_pShaderRenderManager->SetPixelShaderConstant(6, C4DVector(colour));
+        NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, lowEndConstant);
+        NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(6, C4DVector(colour));
     }
-    g_pShaderRenderManager->PrepareForRender(0x604);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0x604);
 }

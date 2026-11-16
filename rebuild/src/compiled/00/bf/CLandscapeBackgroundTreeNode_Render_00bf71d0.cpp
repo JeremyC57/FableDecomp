@@ -17,7 +17,7 @@ class CEngineCamera { public:
     unsigned char _pad[0x1c0];
     CPlane        FrustrumPlanes[4];                // +0x1c0
 };
-extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }              // 0x01436EA0
 class CMovableResource { public:                          // landscape-memory resources: re-parented after a relocation
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
     virtual bool IsPatch();                        // slot 4 (+0x10), meaningful on a tree node's sub node
@@ -108,7 +108,7 @@ void CLandscapeBackgroundTreeNode::Render(unsigned long flags)
 {
     bool visible = true;
     for (long i = 0; i < 4; i++) {
-        const CPlane& plane = g_pEngineCamera->FrustrumPlanes[i];
+        const CPlane& plane = NEngineInternal::GPCamera->FrustrumPlanes[i];
         float nx = plane.Normal.X;
         float ny = plane.Normal.Y;
         float nz = plane.Normal.Z;

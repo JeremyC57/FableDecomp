@@ -24,7 +24,7 @@ class CEngineShadowRenderer : public CEngineShadowRenderer_HeaderLayout {
 public:
     long PeekRenderingTechnique() const { return *reinterpret_cast<const long*>(RenderingTechnique); }
 };
-extern CEngineShadowRenderer* g_pShadowRenderer_01436e60;     // 0x01436E60
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }     // 0x01436E60
 
 class CVertexShader {
 public:
@@ -51,7 +51,7 @@ public:
 
 void CEngineClothRenderer::FrameStart()
 {
-    if (g_pShadowRenderer_01436e60->PeekRenderingTechnique() == 2) {
+    if (NEngineInternal::GPShadowRenderer->PeekRenderingTechnique() == 2) {
         TriVertexShadersShadow = TriVertexShadersColourBufferShadow.GetAsCArray();
         TriVertexShadersSpotShadow = TriVertexShadersSpotColourBufferShadow.GetAsCArray();
     } else {

@@ -18,7 +18,7 @@ class CString { public:
     ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
-extern char* g_pDebugBuffer;                               // 0x0139C900
+extern char* _afxPchNil;                               // 0x0139C900
 extern void (__fastcall* g_pfnErrorReport)(const char*);   // 0x0143BB2C
 
 struct PKCAutoFile {
@@ -30,7 +30,7 @@ void* PKCAutoFile::GetChecked()
 {
     if (m_pFile == 0) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << ".\\PKCAutoFile.cpp" << "(" << 26 << ") : " << "Should have checked first..." << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

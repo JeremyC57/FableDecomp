@@ -14,7 +14,7 @@ class CString { public:                 // one word: the shared buffer
 };
 
 typedef void (__fastcall* PFNLOGSINK_00c4c370)(void* buffer);
-extern void* g_logBuffer_0139c900;         // 0x0139C900
+extern char* _afxPchNil;         // 0x0139C900
 extern PFNLOGSINK_00c4c370 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 struct CDebugBreak {                       // empty temporary (a debug-break helper): homed in a dead byte of the frame
@@ -34,7 +34,7 @@ CMasterObject_00c4c370::~CMasterObject_00c4c370()
 {
     if (!m_finalised) {
         {
-            CString line(g_logBuffer_0139c900);
+            CString line(_afxPchNil);
             line << ".\\PKRACMasterObject.cpp" << "(" << 8L << ") : " << "If it was not finalised, then how did I get here?" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pBuffer);

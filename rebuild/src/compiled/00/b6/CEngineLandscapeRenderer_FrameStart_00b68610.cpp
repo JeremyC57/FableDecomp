@@ -74,7 +74,7 @@ class CEngineWorldMap { public:
     unsigned char  _pad[0x2c];
     CEngineMapList VisibleMapList;                 // +0x2c
 };
-extern CEngineWorldMap* g_pEngineWorldMap;         // 0x01436E8C
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }         // 0x01436E8C
 
 class CEngineLandscapeMemoryManager { public: void FrameStart(); };   // 0x00BD9AC0
 
@@ -130,7 +130,7 @@ void CEngineLandscapeRenderer::FrameStart(const CEngineComponentParams& params)
     g_pRenderStateManager->CreateCaptureBlock();
     g_pRenderStateManager->CreateCaptureBlock();
     double time = GFGetFastSubFrameTimer() + TimeOffset;
-    CEngineMapList& maps = g_pEngineWorldMap->VisibleMapList;
+    CEngineMapList& maps = NEngineInternal::GPEngineWorldMap->VisibleMapList;
     if (UpdateBackgroundLODs)
         for (_List_iterator it = maps.begin(); it != maps.end(); ++it)
             (*it)->LandscapeMap->UpdateBackgroundLOD(&GPUUpdateQueue, time, false);

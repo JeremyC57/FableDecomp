@@ -12,13 +12,13 @@ public:
     C4DVector() { }
     C4DVector(const C4DVector& other) : X(other.X), Y(other.Y), Z(other.Z), W(other.W) { }
 };
-extern bool g_SSEAvailable;                                          // 0x013D2880
+extern bool GEnableSIMD;                                          // 0x013D2880
 namespace NVectorMath {
 void __fastcall GFClear4DVectorsScalar(C4DVector* dst, unsigned long count, const C4DVector* value);   // 0x00A5C510
 #pragma optimize("y", off)
 void GFClear4DVectors(C4DVector* dst, unsigned long count, const C4DVector* value)
 {
-    if (g_SSEAvailable) {
+    if (GEnableSIMD) {
         GF_SSE_CLEAR_4D_VECTORS(value, dst, count);
     } else
     {

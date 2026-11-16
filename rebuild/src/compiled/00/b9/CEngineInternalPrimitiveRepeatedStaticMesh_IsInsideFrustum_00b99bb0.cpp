@@ -5,14 +5,14 @@
 //   kernel of C3DBoundingBox::CalcShortestDistanceToPointSquared (0x00BF7DF0 form); the x87 fallback's difference vector
 //   is a frame C3DVector for X/Y with the Z difference a scalar consumed by its square (retail's fld st0 / fmulp and the
 //   0x24 frame); the plane normals as named locals.
-// Retail-asm: 0x00B99BE5..0x00B99C2F `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [esp+0Ch],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind g_SSEAvailable 0x013D2880 (the box and point pointers spilled to [esp+8] / the dead camera slot [esp+30h] and reloaded into ecx/edx because the asm names them), the same kernel as landed 0x00BF7DF0; the x87 branch is the C++ fallback.
+// Retail-asm: 0x00B99BE5..0x00B99C2F `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [esp+0Ch],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind GEnableSIMD 0x013D2880 (the box and point pointers spilled to [esp+8] / the dead camera slot [esp+30h] and reloaded into ecx/edx because the asm names them), the same kernel as landed 0x00BF7DF0; the x87 branch is the C++ fallback.
 // Helper (2026-11-05 asm migration): the retail inline-asm block is the shared engine/C3DBoundingBoxSSE.h (byte-matching path + FABLE_PORTABLE twin); the row has
 //   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SSE_BOX.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B99BB0, 475 bytes, `ret 8`. Ego_r.pdb:
 //   ?IsInsideFrustum@CEngineInternalPrimitiveRepeatedStaticMesh@@UAE_NABVCEngineCamera@@_N@Z (virtual); the virtual is a
 //   __fastcall free function, as the landed siblings 0x00B9DC60 / 0x00BAA4E0.
-// Globals: ((CEnginePrimitiveRendererSharedData*)g_pEnginePrimitiveRenderer) 0x01436E80 (Ego_r CEnginePrimitiveRendererSharedData
-//   RepeatedMeshDrawDistanceFactor +0x88; the landed 0x00BAA4E0 binding), g_SSEAvailable 0x013D2880 (landed 0x00BF7DF0), 0.0f @0x0122DEDC.
+// Globals: ((CEnginePrimitiveRendererSharedData*)NEngineInternal::GPPrimitiveRenderer) 0x01436E80 (Ego_r CEnginePrimitiveRendererSharedData
+//   RepeatedMeshDrawDistanceFactor +0x88; the landed 0x00BAA4E0 binding), GEnableSIMD 0x013D2880 (landed 0x00BF7DF0), 0.0f @0x0122DEDC.
 // Layout: engine/CEngineInternalPrimitiveRepeatedStaticMesh.h (BoundingBox +0x58; the base's CEngineFadeDistance
 //   MaxDrawDistance word +0x18), engine/CEngineCamera.h (CameraDesc +0x14: WorldPosition at camera +0x54; FrustrumPlanes +0x1c0).
 #include "fable_compiler.h"
@@ -21,7 +21,7 @@ extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 #include "engine/CEngineInternalPrimitiveRepeatedStaticMesh.h"
 #include "engine/CEngineCamera.h"
-extern bool g_SSEAvailable;                             // 0x013D2880
+extern bool GEnableSIMD;                             // 0x013D2880
 
 #include "engine/C3DVector.h"
 class C3DBoundingBox {
@@ -30,7 +30,7 @@ public:
     C3DVector MaxCoord;                                 // +0x0c
     FABLE_FORCEINLINE float CalcShortestDistanceToPointSquared(const C3DVector& point) const
     {
-        if (g_SSEAvailable) {
+        if (GEnableSIMD) {
             float result;
             GF_SSE_BOX_DISTANCE_SQUARED(this, point, result);
             return result;
@@ -69,7 +69,7 @@ struct CEnginePrimitiveRendererSharedData {        // Ego_r.pdb (only the draw-d
     float RepeatedMeshDrawDistanceFactor;          // +0x88
 };
 class CEnginePrimitiveRenderer;
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 // The members read here are modelled by the local CEnginePrimitiveRendererSharedData view of that object (name debt: the shared
 // engine/CEnginePrimitiveRenderer.h retail branch).
 
@@ -80,7 +80,7 @@ static FABLE_FORCEINLINE const CPlane* Planes(const CEngineCamera& c) { return (
 
 bool __fastcall IsInsideFrustum(CEngineInternalPrimitiveRepeatedStaticMesh* self, int /*edx*/, const CEngineCamera& camera, bool ignoreFrustum)
 {
-    float maxDistance = ((CEnginePrimitiveRendererSharedData*)g_pEnginePrimitiveRenderer)->RepeatedMeshDrawDistanceFactor * MaxDrawDistance(self);
+    float maxDistance = ((CEnginePrimitiveRendererSharedData*)NEngineInternal::GPPrimitiveRenderer)->RepeatedMeshDrawDistanceFactor * MaxDrawDistance(self);
 
     if (Box(self).CalcShortestDistanceToPoint(CameraPosition(camera)) > maxDistance)
         return false;

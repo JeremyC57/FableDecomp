@@ -106,32 +106,32 @@ namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x0
 extern const CEngineDef*       g_pEngineDef_01436e20;            // 0x01436E20 (descriptive)
 namespace NEngineInternal { extern const CEnvironmentDef* GPEnvironmentDef; }   // 0x01436E24 ?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B (PDB PUBLIC, Codex pass 22; respelled 2026-11-16, was the descriptive g_pEngineEnvironmentDef)
 extern CDefinitionManager*     g_pEngineDefinitionManager;       // 0x01436E28 (descriptive, chunk 727)
-extern CEngine*                g_pEngine_01436ea4;               // 0x01436EA4
+namespace NEngineInternal { extern CEngine* GPEngine; }               // 0x01436EA4
 extern CEngineScreenEffectRadialBlurRenderer*   g_pRadialBlurRenderer_01436e30;      // 0x01436E30
 extern CEngineScreenEffectGlowRenderer*         g_pGlowRenderer_01436e34;            // 0x01436E34
-extern CEngineScreenEffectDisplacementRenderer* g_pDisplacementRenderer_01436e38;    // 0x01436E38
+namespace NEngineInternal { extern CEngineScreenEffectDisplacementRenderer* GPScreenEffectDisplacementRenderer; }    // 0x01436E38
 namespace NEngineInternal { extern CEngineScreenEffectOutlineGlow* GPScreenEffectOutlineGlow; }   // 0x01436E3C ?GPScreenEffectOutlineGlow@NEngineInternal@@3PAVCEngineScreenEffectOutlineGlow@@A (Anniversary publics; type: ctor 0x00B891B0 / RTTI)
 extern CEngineScreenEffectColourFilter*         g_pColourFilter;                     // 0x01436E40
 extern CEngineWeatherRenderer*                  g_pEngineWeatherRenderer;            // 0x01436E44
 extern CEngineEnvironment*                      g_pEngineEnvironment_01436e48;       // 0x01436E48
 extern CEngineBillboardGenerator*               g_pEngineBillboardGenerator;         // 0x01436E4C
-extern CEngineSkyRenderer*                      g_pEngineSkyRenderer;                // 0x01436E50
+namespace NEngineInternal { extern CEngineSkyRenderer* GPSkyRenderer; }                // 0x01436E50
 extern CEngineWaterRenderer*                    g_pEngineWaterRenderer;              // 0x01436E54
 extern CEnginePrimitiveOcclusionManager*        g_pPrimitiveOcclusionManager;        // 0x01436E58
-extern CEngineOcclusionManager*                 g_pEngineOcclusionManager;           // 0x01436E5C
-extern CEngineShadowRenderer*                   g_pEngineShadowRenderer;             // 0x01436E60
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }           // 0x01436E5C
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }             // 0x01436E60
 extern CEngineSimulationManager*                g_pEngineSimulationManager;          // 0x01436E68
 extern CEnginePrimitiveAttachmentManager*       g_pEnginePrimitiveAttachmentManager; // 0x01436E70
 extern CEngineSubPrimitiveRenderer*             g_pEngineSubPrimitiveRenderer;       // 0x01436E74
-extern CEnginePrimitiveRenderer2D*              g_pEnginePrimitiveRenderer2D;        // 0x01436E7C
-extern CEnginePrimitiveRenderer*                g_pEnginePrimitiveRenderer;          // 0x01436E80
-extern CEnginePrimitiveTypeInfo*                g_pEnginePrimitiveTypeInfo;          // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D; }        // 0x01436E7C
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }          // 0x01436E80
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }          // 0x01436E84
 extern CEngineLocalDetailGenerator*             g_pLocalDetailGenerator;             // 0x01436E88
-extern CEngineWorldMap*                         g_pEngineWorldMap;                   // 0x01436E8C
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }                   // 0x01436E8C
 extern CEngineStateBlocks*                      g_pEngineStateBlocks;                // 0x01436E90
-extern CEngineResourceManager*                  g_pResourceManager;                  // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }                  // 0x01436E98
 namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
-extern CEngineCamera*                           g_pEngineCamera;                     // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                     // 0x01436EA0
 extern CEngineLandscapeRenderer*                g_LandscapeRenderer_01436EA8;        // 0x01436EA8
 extern CEngineSurfaceCompositionManager*        g_pEngineSurfaceCompositionManager;  // 0x01436EAC
 extern "C" double __fastcall GFGetTime();                              // 0x009E1BC0
@@ -164,35 +164,35 @@ bool CEngine::Initialise(const CEngineInit& init)
     NEngineInternal::GPDisplayManager = GFGetSystemManager()->GetDisplayManager();
     NEngineInternal::GPRenderManager = init.RenderManager;
     NEngineInternal::GPShaderRenderManager = &CShaderRenderManager::Get();
-    g_pEngine_01436ea4 = this;
+    NEngineInternal::GPEngine = this;
     NEngineInternal::GPDisplayManager->AddDeviceResetCallback(this);
     CDefaultEngineMemoryInit memory_init;
     memory_init.ApplyCustomSettings(init.MemoryInit);
-    AddEngineComponent(new CEnginePrimitiveTypeInfo(), g_pEnginePrimitiveTypeInfo, 0);
-    AddEngineComponent(new CEngineResourceManager(init, memory_init), g_pResourceManager, 1);
-    AddEngineComponent(new CEngineOcclusionManager(), g_pEngineOcclusionManager, 0);
+    AddEngineComponent(new CEnginePrimitiveTypeInfo(), NEngineInternal::GPPrimitiveTypeInfo, 0);
+    AddEngineComponent(new CEngineResourceManager(init, memory_init), NEngineInternal::GPResourceManager, 1);
+    AddEngineComponent(new CEngineOcclusionManager(), NEngineInternal::GPOcclusionManager, 0);
     AddEngineComponent(new CEnginePrimitiveOcclusionManager(), g_pPrimitiveOcclusionManager, 0);
     AddEngineComponent(new CEngineEnvironment(), g_pEngineEnvironment_01436e48, 0);
-    AddEngineComponent(new CEngineCamera(true), g_pEngineCamera, 0);
+    AddEngineComponent(new CEngineCamera(true), NEngineInternal::GPCamera, 0);
     AddEngineComponent(new CEngineStateBlocks(), g_pEngineStateBlocks, 0);
     AddEngineComponent(new CEngineBillboardGenerator(), g_pEngineBillboardGenerator, 0);
     AddEngineComponent(new CEngineScreenEffectOutlineGlow(init), NEngineInternal::GPScreenEffectOutlineGlow, 0);
-    AddEngineComponent(new CEngineScreenEffectDisplacementRenderer(init), g_pDisplacementRenderer_01436e38, 0);
+    AddEngineComponent(new CEngineScreenEffectDisplacementRenderer(init), NEngineInternal::GPScreenEffectDisplacementRenderer, 0);
     AddEngineComponent(new CEngineSubPrimitiveRenderer(), g_pEngineSubPrimitiveRenderer, 0);
-    AddEngineComponent(new CEnginePrimitiveRenderer(), g_pEnginePrimitiveRenderer, 0);
-    AddEngineComponent(new CEnginePrimitiveRenderer2D(), g_pEnginePrimitiveRenderer2D, 0);
+    AddEngineComponent(new CEnginePrimitiveRenderer(), NEngineInternal::GPPrimitiveRenderer, 0);
+    AddEngineComponent(new CEnginePrimitiveRenderer2D(), NEngineInternal::GPPrimitiveRenderer2D, 0);
     AddEngineComponent(new CEngineLightingManager(), NEngineInternal::GPLightingManager, 0);
     AddEngineComponent(new CEnginePrimitiveAttachmentManager(), g_pEnginePrimitiveAttachmentManager, 0);
     AddEngineComponent(new CEngineSurfaceCompositionManager(), g_pEngineSurfaceCompositionManager, 0);
     AddEngineComponent(new CEngineSimulationManager(), g_pEngineSimulationManager, 0);
-    AddEngineComponent(new CEngineShadowRenderer(), g_pEngineShadowRenderer, 0);
+    AddEngineComponent(new CEngineShadowRenderer(), NEngineInternal::GPShadowRenderer, 0);
     if (init.InitFlags & 1) {
         g_pEngineDefinitionManager->GetDef("ENVIRONMENT", 1, &PEnvironmentDef);
         NEngineInternal::GPEnvironmentDef = PEnvironmentDef.Get();
-        AddEngineComponent(new CEngineWorldMap(init), g_pEngineWorldMap, 0);
+        AddEngineComponent(new CEngineWorldMap(init), NEngineInternal::GPEngineWorldMap, 0);
         AddEngineComponent(new CEngineWaterRenderer(init), g_pEngineWaterRenderer, 0);
         AddEngineComponent(new CEngineLandscapeRenderer(memory_init), g_LandscapeRenderer_01436EA8, 0);
-        AddEngineComponent(new CEngineSkyRenderer(init), g_pEngineSkyRenderer, 0);
+        AddEngineComponent(new CEngineSkyRenderer(init), NEngineInternal::GPSkyRenderer, 0);
         AddEngineComponent(new CEngineWeatherRenderer(), g_pEngineWeatherRenderer, 0);
         AddEngineComponent(new CEngineLocalDetailGenerator((init.InitFlags & 4) != 0), g_pLocalDetailGenerator, 0);
         AddEngineComponent(new CEngineScreenEffectColourFilter(init), g_pColourFilter, 0);
@@ -200,39 +200,39 @@ bool CEngine::Initialise(const CEngineInit& init)
         AddEngineComponent(new CEngineScreenEffectRadialBlurRenderer(init), g_pRadialBlurRenderer_01436e30, 0);
     }
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x1), static_cast<ERenderRenderLayerFlags>(0), 1));
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x2), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEngineShadowRenderer << g_pEnginePrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x2), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPShadowRenderer << NEngineInternal::GPPrimitiveRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x4), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_LandscapeRenderer_01436EA8;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x8), static_cast<ERenderRenderLayerFlags>(1), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x10), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEnginePrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x8), static_cast<ERenderRenderLayerFlags>(1), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x10), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x40), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_LandscapeRenderer_01436EA8;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x20), static_cast<ERenderRenderLayerFlags>(1), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x100), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x400), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x1000), static_cast<ERenderRenderLayerFlags>(1), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x2000), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEngineSkyRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x4000), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x8000), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEnginePrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x20), static_cast<ERenderRenderLayerFlags>(1), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x100), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x400), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x1000), static_cast<ERenderRenderLayerFlags>(1), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x2000), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPSkyRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x4000), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x8000), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x20000), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEngineWaterRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x100000), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x8000000), static_cast<ERenderRenderLayerFlags>(0), 3)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x10000000), static_cast<ERenderRenderLayerFlags>(0), 3)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x10000), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pDisplacementRenderer_01436e38;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x40000), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x800), static_cast<ERenderRenderLayerFlags>(2), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x80000), static_cast<ERenderRenderLayerFlags>(2), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x200000), static_cast<ERenderRenderLayerFlags>(2), 1)) << g_pEnginePrimitiveRenderer << g_pEnginePrimitiveRenderer2D;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x400000), static_cast<ERenderRenderLayerFlags>(2), 1)) << g_pEnginePrimitiveRenderer << g_pEngineSkyRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x800000), static_cast<ERenderRenderLayerFlags>(2), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x2000000), static_cast<ERenderRenderLayerFlags>(2), 1)) << g_LandscapeRenderer_01436EA8 << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x80), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x200), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEnginePrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x100000), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x8000000), static_cast<ERenderRenderLayerFlags>(0), 3)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x10000000), static_cast<ERenderRenderLayerFlags>(0), 3)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x10000), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPScreenEffectDisplacementRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x40000), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x800), static_cast<ERenderRenderLayerFlags>(2), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x80000), static_cast<ERenderRenderLayerFlags>(2), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x200000), static_cast<ERenderRenderLayerFlags>(2), 1)) << NEngineInternal::GPPrimitiveRenderer << NEngineInternal::GPPrimitiveRenderer2D;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x400000), static_cast<ERenderRenderLayerFlags>(2), 1)) << NEngineInternal::GPPrimitiveRenderer << NEngineInternal::GPSkyRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x800000), static_cast<ERenderRenderLayerFlags>(2), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x2000000), static_cast<ERenderRenderLayerFlags>(2), 1)) << g_LandscapeRenderer_01436EA8 << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x80), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x200), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x4000000), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPScreenEffectOutlineGlow;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x1000000), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pColourFilter;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x8000000), static_cast<ERenderRenderLayerFlags>(0), 3)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x10000000), static_cast<ERenderRenderLayerFlags>(0), 3)) << g_pEnginePrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x20000000), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEngineWeatherRenderer << g_pDisplacementRenderer_01436e38 << g_pGlowRenderer_01436e34 << g_pRadialBlurRenderer_01436e30;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x40000000), static_cast<ERenderRenderLayerFlags>(0), 3)) << g_pResourceManager;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x80000000), static_cast<ERenderRenderLayerFlags>(2), 2)) << g_pEnginePrimitiveRenderer2D;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x8000000), static_cast<ERenderRenderLayerFlags>(0), 3)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x10000000), static_cast<ERenderRenderLayerFlags>(0), 3)) << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x20000000), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_pEngineWeatherRenderer << NEngineInternal::GPScreenEffectDisplacementRenderer << g_pGlowRenderer_01436e34 << g_pRadialBlurRenderer_01436e30;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x40000000), static_cast<ERenderRenderLayerFlags>(0), 3)) << NEngineInternal::GPResourceManager;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x80000000), static_cast<ERenderRenderLayerFlags>(2), 2)) << NEngineInternal::GPPrimitiveRenderer2D;
     NonInterpolatedWorldTime = 0.0;
     NonInterpolatedPausedWorldTime = 0.0;
     EnableScreenShotMode = false;

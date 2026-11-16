@@ -19,7 +19,7 @@
 //   UpdatePixelShader 0x00988A20, UpdatePixelShaderConstants 0x00989BF0, UpdateAmbient 0x00989760, UpdateFogColour 0x009897C0,
 //   UpdateLightGlobals 0x0098A760, ResetWorldTransform 0x00988290, UpdateCombinedProjectionTransform 0x00988A50),
 //   CRenderManagerCore::DrawCurrentBuffersIndexed(const CTexture**, 5 x unsigned long) 0x00A0ACA0, CRenderStateManager::RestoreCaptureBlock 0x00A05840.
-// Globals: g_pEngineWorldMap 0x01436E8C, NEngineInternal::GPResourceManager 0x01436E98 (GetZeroRGBATexture = +0x2AD4), GPRenderManager 0x01436E18,
+// Globals: NEngineInternal::GPEngineWorldMap 0x01436E8C, NEngineInternal::GPResourceManager 0x01436E98 (GetZeroRGBATexture = +0x2AD4), GPRenderManager 0x01436E18,
 //   GPShaderRenderManager 0x01436E14, CRenderStateManager::D3DTextureUVModeTable[TEXTURE_UV_WRAP] 0x01396DC8, D3DAlphaBlendModeTable[ONE]
 //   0x01396F6C / [INV_SRC_ALPHA] 0x01396F7C, the capture-block state manager 0x013CB508. Members: CloudPixelShader +0x120, CloudVertexShader
 //   +0xE8, CloudVector[2] +0x15C, CloudVectorHistory[2][2] +0x16C (Ego_r layout = retail).
@@ -82,7 +82,7 @@
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }        // 0x01436E98
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }                  // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }      // 0x01436E14
-extern CEngineWorldMap* g_pEngineWorldMap;                                            // 0x01436E8C
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }                                            // 0x01436E8C
 
 inline const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) const
 {
@@ -96,7 +96,7 @@ FABLE_FORCEINLINE const CGraphicInfoFrame* CGraphicDataBank::PeekGraphicInfoFram
 void CEngineSkyRenderer::RenderClouds(float interpolate)
 {
     CRenderStateScopedCaptureBlock capture;
-    const CIDrawEnvironmentParams& params = g_pEngineWorldMap->PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams();
+    const CIDrawEnvironmentParams& params = NEngineInternal::GPEngineWorldMap->PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams();
     long texture_ids[4];
     texture_ids[0] = params.ThemeChannels[0].TextureSets[2].Textures[0];
     texture_ids[1] = params.ThemeChannels[0].TextureSets[2].Textures[1];

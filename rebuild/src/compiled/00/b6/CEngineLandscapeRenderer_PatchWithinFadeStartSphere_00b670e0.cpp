@@ -19,7 +19,7 @@ extern "C" double __cdecl sqrt(double);
 
 #include "engine/C3DVector.h"
 
-extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                  // 0x01436EA0
 
 inline const C3DVector& PeekCameraPos(const CEngineCamera* camera)
 {
@@ -36,7 +36,7 @@ public:
 
 bool CEngineLandscapeRenderer::PatchWithinFadeStartSphere(long x, long y)
 {
-    C3DVector offset = C3DVector((float)x, (float)y, 0.0f) - PeekCameraPos(g_pEngineCamera);
+    C3DVector offset = C3DVector((float)x, (float)y, 0.0f) - PeekCameraPos(NEngineInternal::GPCamera);
     if (offset.GetMagnitude() < m_foregroundFadeStart)
         return true;
     return false;

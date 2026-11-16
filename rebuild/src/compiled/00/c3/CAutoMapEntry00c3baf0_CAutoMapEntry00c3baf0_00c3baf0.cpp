@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C3BAF0, length 66 bytes (the oracle row carries 14 bytes of int3 padding).
 // Callees: none; reads g_pchNil @ 0x0139C900. The keyed twin is @ 0x00C3BAA0 (same layout, key argument stored first). Shape: `mov eax,ecx`
 // frees ecx as the zero register; six `mov word ptr` stores are the short members. The manifest label is propagated; the class is named by address.
-extern char* g_pchNil_0139c900;                    // 0x0139C900
+extern char* _afxPchNil;                    // 0x0139C900
 
 struct CUnprovenTransferRecord_00C3B970 {                    // 0x30 bytes
     void*          m_pKey;                         // +0x00
@@ -28,7 +28,7 @@ struct CUnprovenTransferRecord_00C3B970 {                    // 0x30 bytes
 CUnprovenTransferRecord_00C3B970::CUnprovenTransferRecord_00C3B970()
     : m_pKey(0)
     , m_4(0)
-    , m_pchName(g_pchNil_0139c900)
+    , m_pchName(_afxPchNil)
     , m_c(0), m_e(0)
     , m_10(0), m_14(0)
     , m_18(0), m_1a(0), m_1c(0), m_1e(0), m_20(0), m_22(0)

@@ -2,13 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2EBC0, oracle length 241 bytes. Built under /EHsc.
 // Retail bytes:  ... push ecx ; push ebx ; push esi ; mov ebx,ecx ; mov esi,[ebx+4] ; push edi ; mov edi,[esp+20h] ; cmp edi,esi ; jb done ; mov eax,[g_pchNil] ; mov [esp+0Ch],eax ; mov edx,offset "d:\dev\audio\ver_fable_1.5_b\libpk\PKCAutoDeleteArray.h" ; lea ecx,[esp+0Ch] ; mov dword ptr [esp+18h],0 ; call Append ; ... "(" ... mov edx,4Dh ; ... call AppendNumber ; ... ") : " ... "Index " ... mov edx,edi ; ... call AppendNumber(unsigned) ; ... " is out of range (" ... mov edx,esi ; ... call AppendNumber(unsigned) ; ... ")" ... "\n" ; mov eax,[g_pfnLogSink] ; test eax,eax ; je skip ; mov ecx,[esp+0Ch] ; call eax ; skip: lea ecx,[esp+0Ch] ; mov dword ptr [esp+18h],-1 ; call ~CString ; lea ecx,[esp+20h] ; call CTrace::CTrace ; done: mov ecx,[ebx] ; lea eax,[ecx+edi*4] ; ... ret 4
 // The twin at 0x00C16B10 indexes an unsigned short array. The classes are named by address.
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c2ebc0)(const char* text);
 extern PFNLOGSINK_00c2ebc0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

@@ -12,7 +12,7 @@
 #include "engine/CEngine.h"
 #include "fable_string.h"
 
-extern CEngine* g_pEngine_01436ea4;                     // 0x01436EA4 (the engine; CEngine::Initialise stores this)
+namespace NEngineInternal { extern CEngine* GPEngine; }                     // 0x01436EA4 (the engine; CEngine::Initialise stores this)
 
 class CGraphicDataBank { public:                        // vtable 0x0129C8CC, 0x30c bytes
     virtual void v00();
@@ -44,7 +44,7 @@ class CEngineSurfaceCompositionManager {
 
 void CEngineSurfaceCompositionManager::BeginBankUpdate()
 {
-    g_pEngine_01436ea4->DeallocateShadowBuffer();
+    NEngineInternal::GPEngine->DeallocateShadowBuffer();
     unsigned long create = 0;
     if (GeneratedMorphs.empty())
         create = 1;

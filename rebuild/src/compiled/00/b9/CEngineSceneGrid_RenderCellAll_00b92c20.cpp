@@ -10,7 +10,7 @@ enum EEngineRenderLayer {ENGINE_RENDER_LAYER_DEFAULT=0};
 enum ERendered {RENDERED_NOTHING=0,RENDERED_SUB_PRIMITIVES=2};
 class CEngineSubPrimitiveChain { public:void* First;void* Last;CEngineSubPrimitiveChain():First(0),Last(0){}};
 class CEnginePrimitiveManager { public:virtual void v00();virtual void v01();virtual void v02();virtual void v03();virtual void v04();virtual void v05();virtual void v06();virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);};
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo; //01436e84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; } //01436e84
 extern unsigned short g_engineFrameNumber; //0143b8d8
 class CEngineSceneRenderStats;
 class CEngineSceneGridCell { public:CEngineSceneGridCell* Parent;CEngineInternalPrimitiveBase* FirstPrimitive;unsigned char BoundsAndGroups[0x2c];unsigned long LocalCount,TotalCount,RenderMask,OccludedLayers;unsigned char Flags,OccludedFrames,PreloadFrames;};
@@ -25,7 +25,7 @@ void CEngineSceneGrid::RenderCellAll(unsigned long x,unsigned long y,EEngineRend
   CEngineInternalPrimitiveBase* p=cell->FirstPrimitive;
   while(p){if(p->RenderLayerMask&layer){
    unsigned long type=*reinterpret_cast<unsigned long*>(p->_pad_0x08);
-   CEnginePrimitiveManager* manager=g_pEnginePrimitiveTypeInfo->PrimitiveManagers[type];
+   CEnginePrimitiveManager* manager=NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[type];
    CEngineSubPrimitiveChain chain;
    if(manager->RenderPrimitive(*p,layer,chain)==RENDERED_SUB_PRIMITIVES)p->LastFrameRendered=g_engineFrameNumber;
    p=p->NextPrimitive;

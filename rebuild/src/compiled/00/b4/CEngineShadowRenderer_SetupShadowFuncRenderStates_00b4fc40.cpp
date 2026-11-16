@@ -19,8 +19,8 @@
 //   SetTextureUVModeU / V, SetTextureTransformMode (SetRenderState / AddStateToUpdateList), CShaderRenderManager::SetPixelShaderConstant,
 //   CMatrix4x4(const CMatrix3x4&) -> Initialise, CMatrix4x4::PostMultiply, CEngineLightingManager::PeekGlobalShadowMode,
 //   CEngineShadowRenderer::GetShadowBufferTexture / GetDepthPackingTexture / PeekRenderingTechnique (all FableWin.pdb names).
-// Globals: NEngineInternal::GPRenderManager 0x01436E18, NEngineInternal::GPShaderRenderManager 0x01436E14 (established), g_pEngineShadowRenderer
-//   0x01436E60, g_pEngineLightingManager 0x01436E9C (settled spellings; see NOTES.md), the CRenderStateManager D3D tables 0x01396E58 / 0x01396E5C
+// Globals: NEngineInternal::GPRenderManager 0x01436E18, NEngineInternal::GPShaderRenderManager 0x01436E14 (established), NEngineInternal::GPShadowRenderer
+//   0x01436E60, NEngineInternal::GPLightingManager 0x01436E9C (settled spellings; see NOTES.md), the CRenderStateManager D3D tables 0x01396E58 / 0x01396E5C
 //   (filter), 0x01396DC8 / 0x01396DD0 (UV), 0x01396FE0 (transform [5]).
 // History: chunk 2024 parked this body at DIFFER(1837v1837) with the accessor calls written in place (16 grades); chunk 3004 measured the
 //   lever with free c2 traces (tools/tord.sh) and matched it on its third grade (NOTES.md).
@@ -49,8 +49,8 @@
 
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }              // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }  // 0x01436E14
-extern CEngineShadowRenderer* g_pEngineShadowRenderer;                             // 0x01436E60
-extern CEngineLightingManager* g_pEngineLightingManager;                           // 0x01436E9C
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }                             // 0x01436E60
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }                           // 0x01436E9C
 
 void CEngineShadowRenderer::SetupShadowFuncRenderStates(long stage, const CMatrix3x4& texture_transform,
                                                         const CColorBufferDepthPackParameters& pack_parameters)
@@ -61,7 +61,7 @@ void CEngineShadowRenderer::SetupShadowFuncRenderStates(long stage, const CMatri
     NEngineInternal::GPRenderManager->AttachTextureToStage(stage, &shadow_buffer_texture);
     EShadowRenderingTechnique technique = PeekRenderingTechnique();
     if (technique == SHADOW_RENDERING_TECHNIQUE_COLOUR_BUFFER) {
-        CTexture& depth_packing_texture = g_pEngineShadowRenderer->GetDepthPackingTexture();
+        CTexture& depth_packing_texture = NEngineInternal::GPShadowRenderer->GetDepthPackingTexture();
         NEngineInternal::GPRenderManager->AttachTextureToStage(pack_parameters.DepthToColourLookupTextureStage, &depth_packing_texture);
         NEngineInternal::GPRenderManager->SetTextureFilterModeMag(stage, TEXTURE_FILTER_POINT);
         NEngineInternal::GPRenderManager->SetTextureFilterModeMin(stage, TEXTURE_FILTER_POINT);
@@ -82,7 +82,7 @@ void CEngineShadowRenderer::SetupShadowFuncRenderStates(long stage, const CMatri
     const CMatrix4x4& world_to_shadow = SceneData.WorldToShadowBufferMatrixTextureSpace;
     shadow_texture_transform.PostMultiply(world_to_shadow);
     NEngineInternal::GPShaderRenderManager->SetShadowTextureTransform(shadow_texture_transform);
-    ELightingManagerShadowMode shadow_mode = g_pEngineLightingManager->PeekGlobalShadowMode();
+    ELightingManagerShadowMode shadow_mode = NEngineInternal::GPLightingManager->PeekGlobalShadowMode();
     if (shadow_mode == 1) {
         float fade_scale = 1.0f / (SceneData.ShadowFadeStart - SceneData.ShadowFadeEnd);
         NEngineInternal::GPShaderRenderManager->SetShadowFadeTransform(C4DVector(fade_scale, 0.0f, 0.0f, -(fade_scale * SceneData.ShadowFadeEnd)));

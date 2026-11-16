@@ -82,8 +82,8 @@
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }              // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }  // 0x01436E14
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }            // 0x01436E1C
-extern CEngineResourceManager* g_pResourceManager;                                 // 0x01436E98
-extern CEngineCamera* g_pEngineCamera;                                             // 0x01436EA0
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }                                 // 0x01436E98
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                                             // 0x01436EA0
 
 void CEngineScreenEffectGlowRenderer::CaptureBackBuffer()
 {
@@ -91,7 +91,7 @@ void CEngineScreenEffectGlowRenderer::CaptureBackBuffer()
     static volatile long NoBlurPasses = 2;                                                  // 0x0139A6B4
     static unsigned short QuadIndices[6] = { 0, 1, 2, 0, 2, 3 };                   // 0x0139A6B8
     CRenderStateScopedCaptureBlock capture;
-    CGPUScratchBufferTextureManager& scratch = g_pResourceManager->GetGPUScratchBufferTextureManager();
+    CGPUScratchBufferTextureManager& scratch = NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager();
     GlowTexture256 = scratch.StartTextureUse(GlowTexture256Handle);
     GlowTexture64 = scratch.StartTextureUse(GlowTexture64Handle);
     GlowTexture64Alt = scratch.StartTextureUse(GlowTexture64AltHandle);
@@ -226,5 +226,5 @@ void CEngineScreenEffectGlowRenderer::CaptureBackBuffer()
         NEngineInternal::GPRenderManager->DrawAsIndexedTris(textures, 4, Glow64ToGlow16Verts, sizeof(CTVertexColTex1), 4, QuadIndices, 2);
     }
     NEngineInternal::GPDisplayManager->SetRenderTargetAsBackScreen();
-    g_pEngineCamera->RefreshD3DTransforms();
+    NEngineInternal::GPCamera->RefreshD3DTransforms();
 }

@@ -4,13 +4,13 @@
 // Retail bytes:  ... sub esp,10h ; push esi ; mov esi,ecx ; lea eax,[esi+10h] ; push eax ; lea ecx,[esp+10h] ; call CProfileLock::CProfileLock ; mov ecx,[esi+4] ; cmp ecx,[esi] ; mov dword ptr [esp+1Ch],0 ; jb ok ; mov edx,[g_pchNil] ; mov [esp+8],edx ; mov edx,offset ".\PKRACMasterObject.cpp" ; lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],1 ; call Append ; ... mov edx,4Fh ; ... call AppendNumber ; ... call Append (text) ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; test eax,eax ; je skip ; mov ecx,[esp+8] ; call eax ; skip: lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],0 ; call ~CString ; lea ecx,[esp+7] ; call CTrace::CTrace ; ok: mov al,[esp+24h] ; test al,al ; jne a ; inc dword ptr [esi+8] ; a: mov edx,[esi+4] ; mov ecx,[esi] ; inc edx ; mov eax,edx ; cmp ecx,eax ; mov [esi+4],edx ; jne b ; mov al,[esi+28h] ; test al,al ; je b ; mov ecx,esi ; call Complete ; b: lea ecx,[esp+0Ch] ; mov dword ptr [esp+1Ch],-1 ; call ~CProfileLock ; ... ret 4
 // The sibling destructor landed at 0x00C4C370 and the finalise hook at 0x00C4C6C0. The classes are named by address.
 #include "libpk/PKCProtectionInstance.h"
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4c7a0)(const char* text);
 extern PFNLOGSINK_00c4c7a0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

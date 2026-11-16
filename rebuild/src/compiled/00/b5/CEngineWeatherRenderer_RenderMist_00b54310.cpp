@@ -130,7 +130,7 @@ private:
     void UpdateCombinedProjectionTransform();           // 0x00988A50
     void UpdateCameraPos();                             // 0x00989700
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 struct IDirect3DDevice9 {
     virtual void __stdcall Slot0() = 0;
     virtual void __stdcall Slot1() = 0;
@@ -398,34 +398,34 @@ void CEngineWeatherRendererMethods::RenderMist(const CEngineComponentRenderParam
     g_pRenderManagerCore->SetTexture(1, reinterpret_cast<const CBaseTextureView*>(MistVolumeTexture));
     g_pRenderManagerCore->SetTexture(2, reinterpret_cast<const CBaseTextureView*>(MistVolumeTexture));
     g_pRenderManagerCore->SetTexture(3, reinterpret_cast<const CBaseTextureView*>(MistVolumeTexture));
-    g_pShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(MistPixelShader));
-    g_pShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(MistVertexShader), 0);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(MistPixelShader));
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(MistVertexShader), 0);
     g_pRenderManagerCore->SetIndices(reinterpret_cast<const CIndexBufferView*>(MistIndexBuffer));
     g_pRenderManagerCore->SetStreamSource(reinterpret_cast<const CVertexBufferView*>(MistVertexBuffer));
     const CMistParamsView* mist = g_pMistParams;
-    g_pShaderRenderManager->SetUserVertexShaderConstant(0, mist->Position.X, mist->Position.Y,
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, mist->Position.X, mist->Position.Y,
                                                         mist->Position.Z,
                                                         GetSettings().MistHeight * mist->Scale);
-    g_pShaderRenderManager->SetUserVertexShaderConstant(1, GetSettings().MistScale.X, GetSettings().MistScale.Y,
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(1, GetSettings().MistScale.X, GetSettings().MistScale.Y,
                                                         GetSettings().MistScale.Z, 1.0f);
     const CMatrix3x4& view = g_pEngineCamera->ViewTransform;
-    g_pShaderRenderManager->SetUserVertexShaderConstant(2, view.XAxis.X, view.YAxis.X, view.ZAxis.X, view.Position.X);
-    g_pShaderRenderManager->SetUserVertexShaderConstant(3, view.XAxis.Y, view.YAxis.Y, view.ZAxis.Y, view.Position.Y);
-    g_pShaderRenderManager->SetUserVertexShaderConstant(4, view.XAxis.Z, view.YAxis.Z, view.ZAxis.Z, view.Position.Z);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(2, view.XAxis.X, view.YAxis.X, view.ZAxis.X, view.Position.X);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(3, view.XAxis.Y, view.YAxis.Y, view.ZAxis.Y, view.Position.Y);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(4, view.XAxis.Z, view.YAxis.Z, view.ZAxis.Z, view.Position.Z);
     float fogScale = GetSettings().FogScale;
-    g_pShaderRenderManager->SetUserVertexShaderConstant(5, fogScale * GetSettings().FogColour.X,
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(5, fogScale * GetSettings().FogColour.X,
                                                         fogScale * GetSettings().FogColour.Y,
                                                         fogScale * GetSettings().FogColour.Z, 0.0f);
-    g_pShaderRenderManager->SetUserVertexShaderConstant(6, GetSettings().MistColour.X, GetSettings().MistColour.Y,
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(6, GetSettings().MistColour.X, GetSettings().MistColour.Y,
                                                         GetSettings().MistColour.Z, 0.0f);
-    g_pShaderRenderManager->SetUserVertexShaderConstant(7, GetSettings().MistParam1.X, GetSettings().MistParam1.Y,
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(7, GetSettings().MistParam1.X, GetSettings().MistParam1.Y,
                                                         GetSettings().MistParam1.Z, 1.0f);
-    g_pShaderRenderManager->SetUserVertexShaderConstant(8, GetSettings().MistParam2.X, GetSettings().MistParam2.Y,
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(8, GetSettings().MistParam2.X, GetSettings().MistParam2.Y,
                                                         GetSettings().MistParam2.Z, 1.0f);
-    g_pShaderRenderManager->SetUserVertexShaderConstant(9, GetSettings().MistParam3.X, GetSettings().MistParam3.Y,
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(9, GetSettings().MistParam3.X, GetSettings().MistParam3.Y,
                                                         GetSettings().MistParam3.Z, 1.0f);
     SetState(g_pRenderManagerCore->m_state2890, g_renderStateValue_01396fb8, g_pRenderManagerCore);
-    g_pShaderRenderManager->PrepareForRender(1);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(1);
     g_pRenderManagerCore->RealiseRenderState();
     g_pRenderManagerCore->DrawCurrentBuffersAsIndexedTris(0, 4, 0, 2);
     g_pRenderStateManager->RestoreCaptureBlock();

@@ -4,13 +4,13 @@
 static int g_ok = 1;
 #define CHECK(c) do { if (!(c)) { g_ok = 0; printf("check failed line %d\n", __LINE__); } } while (0)
 namespace NVectorMath { void GFInitVectorMath(); }
-bool g_SSEAvailable = false;                        // 0x013D2880 in retail; defined here for the linked candidate object
+bool GEnableSIMD = false;                        // 0x013D2880 in retail; defined here for the linked candidate object
 int main()
 {
     NVectorMath::GFInitVectorMath();
-    CHECK(g_SSEAvailable == true);                  // every CPU this test runs on reports SSE (cpuid 1, edx bit 25)
+    CHECK(GEnableSIMD == true);                  // every CPU this test runs on reports SSE (cpuid 1, edx bit 25)
     NVectorMath::GFInitVectorMath();                // the flag is only ever set, never cleared
-    CHECK(g_SSEAvailable == true);
+    CHECK(GEnableSIMD == true);
     if (g_ok) printf("00a5b850_TEST PASS\n");
     return g_ok ? 0 : 1;
 }

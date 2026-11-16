@@ -9,14 +9,14 @@
 extern "C" __declspec(dllimport) void* __stdcall CreateThread(void* attributes, unsigned long stackSize, unsigned long (__stdcall* start)(void*), void* parameter, unsigned long flags, unsigned long* threadId);
 extern "C" __declspec(dllimport) int __stdcall SetThreadPriority(void* thread, long priority);
 unsigned long __stdcall ThreadProc_00c35510(void* parameter);   // 0x00C35510
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c355e0)(const char* text);
 extern PFNLOGSINK_00c355e0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString {                            // the libpk MFC-style string: one word, the shared empty data for the default constructor (the landed own rows 0x00C0BA40 / 0x00C0DEC0 / 0x00C0DF00)
 public:
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                                // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);         // 0x00C0DF00

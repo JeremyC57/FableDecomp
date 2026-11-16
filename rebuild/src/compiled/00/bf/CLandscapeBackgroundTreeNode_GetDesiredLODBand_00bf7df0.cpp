@@ -1,7 +1,7 @@
 // CLandscapeBackgroundTreeNode::GetDesiredLODBand() -- the LOD band for the camera's shortest distance to the node's bounding box (the renderer's LOD Z bands), clamped to the node's [FirstBand, LastBand]
 // Leaf: ?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
-// Retail-asm: 0x00BF7E1E..0x00BF7E58 `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [esp+0Ch],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind the g_SSEAvailable byte 0x013D2880 (the box and point pointers are spilled to [esp+8]/[esp+4] and reloaded because the asm names them; VC7.1 C++ emits no packed SSE: /arch:SSE only produces scalar ss code and the xmmintrin intrinsics would not reload the spilled pointers); the x87 branch is the C++ fallback.
+// Retail-asm: 0x00BF7E1E..0x00BF7E58 `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [esp+0Ch],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind the GEnableSIMD byte 0x013D2880 (the box and point pointers are spilled to [esp+8]/[esp+4] and reloaded because the asm names them; VC7.1 C++ emits no packed SSE: /arch:SSE only produces scalar ss code and the xmmintrin intrinsics would not reload the spilled pointers); the x87 branch is the C++ fallback.
 // Helper (2026-11-05 asm migration): the retail inline-asm block is the shared engine/C3DBoundingBoxSSE.h (byte-matching path + FABLE_PORTABLE twin); the row has
 //   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SSE_BOX.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BF7DF0, 379 bytes, thiscall, plain `ret`, long in eax.
@@ -12,16 +12,16 @@
 // Inlines: C3DBoundingBox::CalcShortestDistanceToPoint(Squared) (Ego_r QBEMABVC3DVector@@@Z) and
 //   CEngineLandscapeRenderer::GetLODZBandAtZ(float) (Ego_r QAEJM@Z: first band whose LODZBandsZ[band] exceeds z, minus one; 7
 //   past the last), both __forceinline as retail expands them.
-// Globals: g_pEngineCamera 0x01436EA0 (CameraDesc.WorldPosition at +0x54 = Ego_r CEngineCamera +0x14 + CEngineCameraDesc +0x40),
+// Globals: NEngineInternal::GPCamera 0x01436EA0 (CameraDesc.WorldPosition at +0x54 = Ego_r CEngineCamera +0x14 + CEngineCameraDesc +0x40),
 //   the landscape renderer pointer 0x01436EA8 (LODZBandsZ[8] at +0x498; Ego_r CEngineLandscapeRenderer LODZBandsZ float[8]),
-//   g_SSEAvailable 0x013D2880.
+//   GEnableSIMD 0x013D2880.
 // Shape: the distance feeds GetLODZBandAtZ in one expression (a named local float changes the x87 stack order of the
 //   fallback's sum of squares).
 #include "fable_compiler.h"
 #include "engine/C3DBoundingBoxSSE.h"
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
-extern bool g_SSEAvailable;                             // 0x013D2880
+extern bool GEnableSIMD;                             // 0x013D2880
 
 #include "engine/C3DVector.h"
 class C3DBoundingBox {
@@ -30,7 +30,7 @@ public:
     C3DVector MaxCoord;                                 // +0x0c
     FABLE_FORCEINLINE float CalcShortestDistanceToPointSquared(const C3DVector& point) const
     {
-        if (g_SSEAvailable) {
+        if (GEnableSIMD) {
             float result;
             GF_SSE_BOX_DISTANCE_SQUARED(this, point, result);
             return result;
@@ -61,7 +61,7 @@ public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                        // +0x54 (CameraDesc +0x14, WorldPosition +0x40)
 };
-extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                  // 0x01436EA0
 
 class CEngineLandscapeRenderer {
 public:
@@ -90,7 +90,7 @@ public:
 
 long CLandscapeBackgroundTreeNode::GetDesiredLODBand()
 {
-    long band = g_pLandscapeRenderer->GetLODZBandAtZ(BoundingBox.CalcShortestDistanceToPoint(g_pEngineCamera->WorldPosition));
+    long band = g_pLandscapeRenderer->GetLODZBandAtZ(BoundingBox.CalcShortestDistanceToPoint(NEngineInternal::GPCamera->WorldPosition));
     if (band < FirstBand)
         return FirstBand;
     if (band > LastBand)

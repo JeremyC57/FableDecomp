@@ -56,7 +56,7 @@ public:
     void*                         RefLayerMask;          // +0x44
 };
 
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 extern unsigned short            g_engineFrameNumber;          // 0x0143B8D8
 
 class CEngineScene {
@@ -71,7 +71,7 @@ void CEngineScene::RenderPrimitiveList(CEngineInternalPrimitiveBase* primitive, 
     while (primitive) {
         if (primitive->RenderLayerMask & layer) {
             if (primitive->Enable && primitive->IsVisible(camera, 0)) {
-                CEnginePrimitiveManager* manager = g_pEnginePrimitiveTypeInfo->PrimitiveManagers[primitive->Type];
+                CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[primitive->Type];
                 CEngineSubPrimitiveChain chain;
                 if (manager->RenderPrimitive(*primitive, layer, chain) == RENDERED_SUB_PRIMITIVES)
                     primitive->LastFrameRendered = g_engineFrameNumber;

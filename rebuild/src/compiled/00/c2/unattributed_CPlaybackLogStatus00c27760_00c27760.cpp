@@ -5,13 +5,13 @@
 // The classes are named by address.
 #include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_soundLock;   // 0x0143BAFC
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 extern "C" long __stdcall CODA_IsSourcePlaying(void* source);             // 0x00C35CA0: +0x10 flags & 0x217
 extern "C" unsigned long __stdcall CODA_GetSourcePosition(void* source);   // 0x00C35CC0
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     CString(const char* text);    // 0x00C0BFE0
     CString(const CString& other);   // 0x00C0DAB0
     ~CString();                       // 0x00C0BA40

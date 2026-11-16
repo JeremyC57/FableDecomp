@@ -5,7 +5,7 @@
 // Identity: Ego_r.pdb ?Update@CEngineInternalPrimitiveAnimatedMesh@@UAEXABVCEnginePrimitive@@K@Z; the body writes the
 //   CEngineInternalPrimitiveAnimatedMesh members (Anim +0x70, WorldPos +0x84, Orientation +0xa0, Cache +0xd4) and its
 //   sibling 2D Update 0x00BD2BC0 has the same shape.
-// Callees: CMeshDataBank::PeekAnimatedMesh 0x00A242B0 on g_pResourceManager->PeekMeshBank(0) (inline), C3DOrientationInterpolator::
+// Callees: CMeshDataBank::PeekAnimatedMesh 0x00A242B0 on NEngineInternal::GPResourceManager->PeekMeshBank(0) (inline), C3DOrientationInterpolator::
 //   operator= 0x006B0E00, malloc 0x00BFEA0E / free 0x00BFEA14 (the STLport map header node), the BoneScalings map's _Rb_tree::
 //   operator= 0x00BD8D00 and _M_erase 0x00BD8A10, C3DAnimationInterpolator::operator= 0x00BD85F0,
 //   CEngineInternalPrimitiveBase::SetFadeDistanceWithGamePrimitiveDefaults 0x00B8FD40.
@@ -163,7 +163,7 @@ class CEngineResourceManager { public:
     CMeshDataBank* MeshBanks[3];                       // +0x10
     const CMeshDataBank* PeekMeshBank(EMeshBankNo no) const { return MeshBanks[no]; }
 };
-extern CEngineResourceManager* g_pResourceManager;     // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }     // 0x01436E98
 
 class CEnginePrimitive { public:
     long          Type;                                // +0x00
@@ -225,7 +225,7 @@ class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMesh
 void CEngineInternalPrimitiveAnimatedMesh::Update(const CEnginePrimitive& primitive, unsigned long flags)
 {
     const CEnginePrimitiveAnimatedMesh& mesh = static_cast<const CEnginePrimitiveAnimatedMesh&>(primitive);
-    MeshInfo = const_cast<C3DMeshInfo*>(g_pResourceManager->PeekMeshBank((EMeshBankNo)0)->PeekAnimatedMesh(mesh.MeshIndex));
+    MeshInfo = const_cast<C3DMeshInfo*>(NEngineInternal::GPResourceManager->PeekMeshBank((EMeshBankNo)0)->PeekAnimatedMesh(mesh.MeshIndex));
     Scale = mesh.Size * 0.01f;
     WorldPos.StartPosition = mesh.WorldPos.StartPosition;
     WorldPos.EndPosition = mesh.WorldPos.EndPosition;

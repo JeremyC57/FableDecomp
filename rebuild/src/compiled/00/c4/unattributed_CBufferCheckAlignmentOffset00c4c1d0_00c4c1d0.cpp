@@ -2,13 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4C1D0, oracle length 237 bytes. Built under /EHsc.
 // Retail bytes:  ... mov edi,[esp+20h] ; mov ebx,ecx ; mov esi,[ebx+0Ch] ; xor edx,edx ; mov eax,edi ; div esi ; test edx,edx ; je ok ; mov eax,[g_pchNil] ; mov [esp+0Ch],eax ; mov edx,offset ".\PKRACBuffer.cpp" ; lea ecx,[esp+0Ch] ; mov dword ptr [esp+18h],0 ; call Append ; mov edx,offset "(" ; ... call Append ; mov edx,51h ; ... call AppendNumber ; mov edx,offset ") : " ; ... call Append ; mov edx,offset "your byte request (" ; ... call Append ; mov edx,edi ; mov ecx,eax ; call AppendNumber(unsigned) ; mov edx,offset ") was not aligned to " ; ... call Append ; mov edx,esi ; mov ecx,eax ; call AppendNumber(unsigned) ; mov edx,offset "\n" ; ... call Append ; mov eax,[g_pfnLogSink] ; test eax,eax ; je skip ; mov ecx,[esp+0Ch] ; call eax ; skip: lea ecx,[esp+0Ch] ; mov dword ptr [esp+18h],-1 ; call ~CString ; lea ecx,[esp+20h] ; call CTrace::CTrace ; ok: mov ecx,[esp+10h] ; mov eax,edi ; pop edi ; xor edx,edx ; div dword ptr [ebx+0Ch] ; ... ret 4
 // The sibling callers at 0x00C4C2C0 / 0x00C4C2D0 pass the free and used extents. The classes are named by address.
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4c1d0)(const char* text);
 extern PFNLOGSINK_00c4c1d0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

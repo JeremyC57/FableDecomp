@@ -17,7 +17,7 @@
 //   CRenderStateManager::RestoreCaptureBlock 0x00A05840 (the scoped capture block's destructor); the diffuse-only state block's
 //   virtual Apply (slot 0, CEngineStateBlocks +0x28).
 // Globals: CRenderStateCaptureBlock::StateManager 0x013CB508, NEngineInternal::GPShaderRenderManager 0x01436E14 / GPRenderManager
-//   0x01436E18 and g_pEngineCamera 0x01436EA0 (the spellings of the definer CEngine::Initialise 0x00B26360 / NAME_FIXES_QUEUE c722; no PDB data symbols), g_pEngineStateBlocks 0x01436E90 (the
+//   0x01436E18 and NEngineInternal::GPCamera 0x01436EA0 (the spellings of the definer CEngine::Initialise 0x00B26360 / NAME_FIXES_QUEUE c722; no PDB data symbols), g_pEngineStateBlocks 0x01436E90 (the
 //   spelling of the landed CEngine::Initialise 0x00B26360), DELTA_NOTIONAL_ZERO 0x0129BA3C; 0.5f / pi are __real pool constants.
 // Inline (no retail out-of-line copy; shared headers): CRenderStateScopedCaptureBlock (StartCaptureBlock / RestoreCaptureBlock),
 //   CShaderRenderManager::SetVertexShadersEnable / SetPixelShadersEnable / PrepareForRender, CRenderStateManager::SetZBufferWriteEnable /
@@ -82,7 +82,7 @@ namespace NEngineInternal {
 extern CShaderRenderManager* GPShaderRenderManager;                     // 0x01436E14
 extern CRenderManager*       GPRenderManager;                           // 0x01436E18
 }
-extern CEngineCamera* g_pEngineCamera;                                   // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                                   // 0x01436EA0
 extern CEngineStateBlocks* g_pEngineStateBlocks;                        // 0x01436E90
 
 void CEngineOcclusionManager::FrameEnd(const CEngineComponentParams& params)
@@ -100,19 +100,19 @@ void CEngineOcclusionManager::FrameEnd(const CEngineComponentParams& params)
     NEngineInternal::GPRenderManager->SetColourWriteEnable(false);
     for (unsigned long i = 0; i < FlareTests.size(); ++i) {
         COccluderFlareEntry& entry = FlareTests[i];
-        if (g_pEngineCamera->ClipSphere(entry.Position, entry.Radius)) {
-            CMatrix3x4 transform = g_pEngineCamera->PeekInverseNonHomogenousViewTransform();
+        if (NEngineInternal::GPCamera->ClipSphere(entry.Position, entry.Radius)) {
+            CMatrix3x4 transform = NEngineInternal::GPCamera->PeekInverseNonHomogenousViewTransform();
             C3DVector position = entry.Position;
             transform.SetTranslateOnly(position);
             transform.PreScale(entry.Radius);
             NEngineInternal::GPShaderRenderManager->SetWorldTransform(transform);
             C3DVector viewPos;
-            g_pEngineCamera->TransformWorldToView(entry.Position, viewPos);
+            NEngineInternal::GPCamera->TransformWorldToView(entry.Position, viewPos);
             if (viewPos.Z > DELTA_NOTIONAL_ZERO) {
                 float scale = entry.Radius / viewPos.Z;
                 C2DExtentsI dims = GFGetSystemManager()->GetDisplayManager()->GetRenderTargetDimensions();
-                float radiusX = (float)dims.X * g_pEngineCamera->PeekNonHomogenousViewToViewScaleX() * scale * 0.5f;
-                float radiusY = (float)dims.Y * g_pEngineCamera->PeekNonHomogenousViewToViewScaleY() * scale * 0.5f;
+                float radiusX = (float)dims.X * NEngineInternal::GPCamera->PeekNonHomogenousViewToViewScaleX() * scale * 0.5f;
+                float radiusY = (float)dims.Y * NEngineInternal::GPCamera->PeekNonHomogenousViewToViewScaleY() * scale * 0.5f;
                 entry.MaxPixelCount = GFFloatToLongNear(radiusX * radiusY * 3.1415927f);
             }
             SelectFlareTestVertexBuffer(entry.CircleSegments);
@@ -126,5 +126,5 @@ void CEngineOcclusionManager::FrameEnd(const CEngineComponentParams& params)
     NEngineInternal::GPRenderManager->SetColourWriteEnable(true);
     NEngineInternal::GPShaderRenderManager->SetVertexShadersEnable(vertexShadersEnabled, 0);
     NEngineInternal::GPShaderRenderManager->SetPixelShadersEnable(pixelShadersEnabled, 0);
-    g_pEngineCamera->RefreshD3DTransforms();
+    NEngineInternal::GPCamera->RefreshD3DTransforms();
 }

@@ -9,13 +9,13 @@
 //   0x00C16750, operator new, the slave ctor 0x00C62E20, reader slots 1 (Load) / 2 (GetCount), Reset 0x00C4C330, Commit 0x00C4C6C0.
 // Shape: Load's six arguments are pushed in two halves around the GetCount() call.
 #include "libpk/PKCProtectionInstance.h"
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4c8b0)(const char* text);
 extern PFNLOGSINK_00c4c8b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

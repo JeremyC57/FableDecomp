@@ -18,7 +18,7 @@
 //   CountReferences. Shape: the pixel shader resource is fetched into a local BEFORE the name string is built (retail holds it
 //   in edi across the CCharString ctor); the vertex resource is read after its string. operator= releases through a local copy
 //   of Data (`mov ecx,[edi+4] ; test ; dec [ecx+N] ; jne`), the temporaries' dtors through Release() (`mov edi,[eax+N] ; dec edi`).
-// Globals: 0x01436E98 the engine resource manager (spelling g_pEngineResourceManager_01436e98 is descriptive, see NOTES); retail
+// Globals: 0x01436E98 the engine resource manager (spelling NEngineInternal::GPResourceManager is descriptive, see NOTES); retail
 //   VShaderResources +0x29C0 (CCountedPointer<CShaderResource>[27]; bank 1 = +0x29C8), ShaderResourcePixel +0x2A98 -- the Ego_r
 //   offsets less 0xF34 (engine/CEngineResourceManager.h is 0x230 off for these members: header debt, so the class is modelled
 //   locally). The EShaderBankNo enumerator for bank 1 has no recovered name (cast literal).
@@ -112,7 +112,7 @@ class CEngineResourceManager { public:
     const CShaderResource* GetVShaderResource(EShaderBankNo bank) const { return VShaderResources[bank].Get(); }
     const CShaderResource* GetPShaderResource() const { return ShaderResourcePixel.Get(); }
 };
-extern CEngineResourceManager* g_pEngineResourceManager_01436e98;   // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
@@ -139,7 +139,7 @@ class CEngineBillboardGenerator : public CEnginePrimitiveRenderUtil, public CEng
 };
 CEngineBillboardGenerator::CEngineBillboardGenerator()
 {
-    VertexShader = g_pEngineResourceManager_01436e98->GetVShaderResource((EShaderBankNo)1)->GetVertexShader("VSHADER_STATIC_DIRLIGHT_FOG");
-    const CShaderResource* pixelResource = g_pEngineResourceManager_01436e98->GetPShaderResource();
+    VertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)1)->GetVertexShader("VSHADER_STATIC_DIRLIGHT_FOG");
+    const CShaderResource* pixelResource = NEngineInternal::GPResourceManager->GetPShaderResource();
     PixelShader = pixelResource->GetPixelShader("PSHADER_TEXTURE_DIFFUSE");
 }

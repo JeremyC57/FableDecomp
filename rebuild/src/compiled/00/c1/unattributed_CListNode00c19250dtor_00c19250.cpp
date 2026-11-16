@@ -3,13 +3,13 @@
 // Retail bytes:  ... mov dword ptr [esi],012B2F0Ch ; mov ecx,[esi+20h] ; lea eax,[esi+0Ch] ; cmp ecx,eax ; mov dword ptr [esp+18h],0 ; je free ; mov ecx,[g_pchNil] ; mov [esp+8],ecx ; mov edx,offset file ; lea ecx,[esp+8] ; mov byte ptr [esp+18h],1 ; call Append ; ... AppendNumber(4Fh) ... ; mov eax,[g_pfnLogSink] ; test eax,eax ; je rel ; mov ecx,[esp+8] ; call eax ; rel: lea ecx,[esp+8] ; mov byte ptr [esp+18h],0 ; call ~CString ; lea ecx,[esp+7] ; call CTrace::CTrace ; free: mov eax,[esi+8] ; test eax,eax ; je done ; push eax ; call operator delete ; add esp,4 ; mov dword ptr [esi+8],0 ; done: mov ecx,[esp+10h] ; mov dword ptr [esi],012B2DB0h ; ...
 // The 0x28-byte node every 0x012B1AB0-family container embeds (its destructor is called from
 // all of them). The manifest label is a description; the classes are named by address.
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c19250)(const char* text);
 extern PFNLOGSINK_00c19250 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

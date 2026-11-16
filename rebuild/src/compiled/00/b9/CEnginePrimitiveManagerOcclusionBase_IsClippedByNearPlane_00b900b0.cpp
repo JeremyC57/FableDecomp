@@ -40,7 +40,7 @@ class CEngineCamera { public:
     unsigned char _pad070[0x114 - 0x70];
     CMatrix3x4    NoScaleViewTransform;            // +0x114
 };
-extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }              // 0x01436EA0
 
 struct CEnginePrimitiveManagerOcclusionBase {
     bool IsClippedByNearPlane(const CMatrix3x4& box);
@@ -53,10 +53,10 @@ bool CEnginePrimitiveManagerOcclusionBase::IsClippedByNearPlane(const CMatrix3x4
         C3DVector(1.0f, -1.0f, -1.0f), C3DVector(1.0f, -1.0f, 1.0f), C3DVector(1.0f, 1.0f, -1.0f), C3DVector(1.0f, 1.0f, 1.0f),
     };
     CMatrix3x4 toCamera;
-    Multiply(toCamera, box, g_pEngineCamera->NoScaleViewTransform);
+    Multiply(toCamera, box, NEngineInternal::GPCamera->NoScaleViewTransform);
     for (unsigned long i = 0; i < 8; ++i) {
         const C3DVector& c = corners[i];
-        if (c.X * toCamera.Right.Z + c.Y * toCamera.Up.Z + c.Z * toCamera.Forward.Z + toCamera.Pos.Z < g_pEngineCamera->NearClip)
+        if (c.X * toCamera.Right.Z + c.Y * toCamera.Up.Z + c.Z * toCamera.Forward.Z + toCamera.Pos.Z < NEngineInternal::GPCamera->NearClip)
             return true;
     }
     return false;

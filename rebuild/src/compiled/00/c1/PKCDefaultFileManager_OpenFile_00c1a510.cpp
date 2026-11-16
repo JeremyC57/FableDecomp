@@ -9,7 +9,7 @@
 // Callees: PKCProtectionInstance 0x00C0FFC0 / 0x00C0FFE0, KERNEL32 GetFileAttributesW / GetLastError / CreateFileW (IAT
 //   0x0143FDBC / 0x0143FD58 / 0x0143FE2C), operator new 0x00BFEA1A (8 bytes), PKCTRRedblackMap_00c1b720::Insert 0x00C1B720 (the landed body, same TU),
 //   the libpk trace stream (CString operator<< text 0x00C0DEC0 / long 0x00C0DF00 / unsigned int 0x00C0DEF0 / pointer
-//   0x00C0DF20 -- the wide file name streams as a pointer -- ~CString 0x00C0BA40, g_pDebugBuffer 0x0139C900,
+//   0x00C0DF20 -- the wide file name streams as a pointer -- ~CString 0x00C0BA40, _afxPchNil 0x0139C900,
 //   g_pfnErrorReport 0x0143BB2C) and CDebugBreak 0x00C16750.
 // Shape: the GetLastError argument of each trace chain is evaluated before the chain (right-to-left argument order);
 //   `*key = m_nextKey; ++m_nextKey;` re-reads the counter after the store through `key`.
@@ -36,7 +36,7 @@ class CString { public:
     ~CString();                                         // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
-extern char* g_pDebugBuffer;                               // 0x0139C900
+extern char* _afxPchNil;                               // 0x0139C900
 extern void (__fastcall* g_pfnErrorReport)(const char*);   // 0x0143BB2C
 
 struct SOpenFile_00c1a370 {
@@ -117,7 +117,7 @@ bool PKCDefaultFileManager::OpenFile(const wchar16* fileName, unsigned long* key
 {
     PKCProtectionInstance lock(&m_lock);
     if (GetFileAttributesW(fileName) == (unsigned long)-1) {
-        CString s(g_pDebugBuffer);
+        CString s(_afxPchNil);
         s << ".\\PKCDefaultFileManager.cpp" << "(" << 101L << ") : " << "GetFileAttributes for file '" << (const void*)fileName
           << "' failed: " << (unsigned int)GetLastError() << "\n";
         if (g_pfnErrorReport)
@@ -126,7 +126,7 @@ bool PKCDefaultFileManager::OpenFile(const wchar16* fileName, unsigned long* key
     }
     void* handle = CreateFileW(fileName, 0x80000000, 3, 0, 4, 0, 0);
     if (handle == (void*)-1) {
-        CString s(g_pDebugBuffer);
+        CString s(_afxPchNil);
         s << ".\\PKCDefaultFileManager.cpp" << "(" << 116L << ") : " << "CreateFile '" << (const void*)fileName
           << "' failed: " << (unsigned int)GetLastError() << "\n";
         if (g_pfnErrorReport)
@@ -136,7 +136,7 @@ bool PKCDefaultFileManager::OpenFile(const wchar16* fileName, unsigned long* key
     SOpenFile_00c1a370* file = new SOpenFile_00c1a370;
     if (!file) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << ".\\PKCDefaultFileManager.cpp" << "(" << 122L << ") : " << "EMEM" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);
@@ -150,7 +150,7 @@ bool PKCDefaultFileManager::OpenFile(const wchar16* fileName, unsigned long* key
     long result = m_files.Insert(key, (void* const*)&file);
     if (result != 0) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << ".\\PKCDefaultFileManager.cpp" << "(" << 132L << ") : " << "Inserting tree item failed (EMEM or duplicate)" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

@@ -39,7 +39,7 @@ public:
         return -1;
     }
 };
-extern CEngineOcclusionManager* g_pEngineOcclusionManager;   // 0x01436E5C
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }   // 0x01436E5C
 
 class C2DCoordI { public: long X, Y; };
 class CEngineWaterBackgroundSubPatch {
@@ -68,7 +68,7 @@ void CEngineWaterRenderer::RenderBackgroundList(CArray<CEngineWaterBackgroundSub
     for (CEngineWaterBackgroundSubPatch** it = list.begin(); it != list.end(); ++it) {
         if (OcclusionEnabled) {
             long id;
-            if ((*it)->OcclusionID > 0 && !g_pEngineOcclusionManager->IsQueryVisible((*it)->OcclusionID, true)) {
+            if ((*it)->OcclusionID > 0 && !NEngineInternal::GPOcclusionManager->IsQueryVisible((*it)->OcclusionID, true)) {
                 CEngineWaterBackgroundSubPatch* patch = *it;
                 long y = patch->MapPos.Y;
                 unsigned short h = patch->Height;
@@ -88,13 +88,13 @@ void CEngineWaterRenderer::RenderBackgroundList(CArray<CEngineWaterBackgroundSub
                 box.M[9] = (float)x;
                 box.M[10] = (float)y;
                 box.M[11] = minZ;
-                id = g_pEngineOcclusionManager->RenderOcclusionBox(box);
+                id = NEngineInternal::GPOcclusionManager->RenderOcclusionBox(box);
             }
             else {
-                g_pEngineOcclusionManager->StartOcclusionTest();
+                NEngineInternal::GPOcclusionManager->StartOcclusionTest();
                 RenderBackgroundPatch(*it);
-                id = g_pEngineOcclusionManager->AllocateQuery();
-                g_pEngineOcclusionManager->EndOcclusionTest(id);
+                id = NEngineInternal::GPOcclusionManager->AllocateQuery();
+                NEngineInternal::GPOcclusionManager->EndOcclusionTest(id);
             }
             (*it)->OcclusionID = id;
         }

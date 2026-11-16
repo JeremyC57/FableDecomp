@@ -4,7 +4,7 @@
 // The catalog label "CVsyncCallbackTimerInfo::CVsyncCallbackTimerInfo" is propagated; the caller (0x00C2F860) is inside
 // CMessageEvent_ProcessLoadingFrame_Vsync. Shape: plain initialiser list in member order; the two `mov word ptr` stores
 // of cx mark 16-bit members.
-extern void* g_default_00c3b930;   // 0x0139C900
+extern char* _afxPchNil;   // 0x0139C900
 
 struct SRecord_00c3b930 {
     long  m_a;         // +0x00
@@ -20,6 +20,6 @@ struct SRecord_00c3b930 {
 };
 
 SRecord_00c3b930::SRecord_00c3b930()
-    : m_a(0), m_default(g_default_00c3b930), m_c(0), m_d(0), m_e(0), m_f(0), m_g(0), m_h(0), m_i(0)
+    : m_a(0), m_default(_afxPchNil), m_c(0), m_d(0), m_e(0), m_f(0), m_g(0), m_h(0), m_i(0)
 {
 }

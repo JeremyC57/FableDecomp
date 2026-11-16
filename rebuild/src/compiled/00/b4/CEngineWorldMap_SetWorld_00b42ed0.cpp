@@ -75,11 +75,11 @@ private:
     void DeleteMap();                                   // 0x00B42C70
     void AutoBuildWorldMapGrid();                       // 0x00B40070
 };
-extern CEngineWorldMap* g_pEngineWorldMap;              // 0x01436E8C
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }              // 0x01436E8C
 
 inline void CEngineMap::OnGameMapLoaded(long mapIndex)
 {
-    CDrawMapInfo info = g_pEngineWorldMap->PeekGameWorldMap()->GetMapInfo(mapIndex);
+    CDrawMapInfo info = NEngineInternal::GPEngineWorldMap->PeekGameWorldMap()->GetMapInfo(mapIndex);
     GameMap = info.PMap;
     LandscapeMap->OnGameMapLoaded();
 }

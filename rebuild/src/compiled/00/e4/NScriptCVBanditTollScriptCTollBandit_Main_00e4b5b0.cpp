@@ -41,7 +41,7 @@
 #include "stlport/fable_containers.h"
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, SCRIPT_AI_PRIORITY_MEDIUM=2, SCRIPT_AI_PRIORITY_HIGH=3, SCRIPT_AI_PRIORITY_HIGHEST=4 };
 enum ETextGroupSelectionMethod { GROUP_SELECT_NONE=0, GROUP_SELECT_RANDOM=1, GROUP_SELECT_RANDOM_NO_REPEAT=2, GROUP_SELECT_SEQUENTIAL=3, GROUP_SELECT_FIRST_ONLY=4 };
-enum EScriptEntityMoveType { MOVE_TYPE_WALKING=0, MOVE_TYPE_RUNNING=1 };
+#include "engine/EScriptEntityMoveType.h"   // ENTITY_MOVE_WALK 0 / ENTITY_MOVE_RUN 1 (Ego_r / FableWin TPI)
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748
 bool FABLE_FASTCALL IsDistanceFromThingToPositionOver(const CScriptThing&, const C3DVector&, float);   // 0x00CBE45C
 extern "C" int __cdecl rand();
@@ -385,7 +385,7 @@ void NScript::CV_BanditTollScript::CTollBandit::Main()
             while (IsDistanceFromThingToPositionOver(seh_me.GetScriptThing(),escape_pos,close_to_exit+2.0f)) {
                 NSF;
                 if (T) return;
-                seh_me.MoveToPosition(escape_pos,close_to_exit,MOVE_TYPE_RUNNING,false,true);
+                seh_me.MoveToPosition(escape_pos,close_to_exit,ENTITY_MOVE_RUN,false,true);
                 BC_WAIT_TASK
             }
             if (T) return;

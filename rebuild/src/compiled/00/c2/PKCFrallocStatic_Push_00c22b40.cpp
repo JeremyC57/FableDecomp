@@ -17,12 +17,12 @@
 
 typedef void (__fastcall* PFNLOGSINK)(const char* text);
 extern PFNLOGSINK g_pfnLogSink;                 // 0x0143BB2C
-extern char* g_pchEmptyString;                  // 0x0139C900 (the shared empty string buffer)
+extern char* _afxPchNil;                  // 0x0139C900 (the shared empty string buffer)
 
 class CString {                                 // the library's MFC-style string (one word)
 public:
     char* m_pchData;
-    CString() : m_pchData(g_pchEmptyString) {}
+    CString() : m_pchData(_afxPchNil) {}
     ~CString();                                 // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

@@ -37,7 +37,7 @@
 #include "engine/CIsThingAlive.h"
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, SCRIPT_AI_PRIORITY_MEDIUM=2, SCRIPT_AI_PRIORITY_HIGH=3, SCRIPT_AI_PRIORITY_HIGHEST=4 };
 enum EHeroAbility { HERO_ABILITY_NULL=0, HERO_ABILITY_HEAL_LIFE_SPELL=14 };
-enum EScriptEntityMoveType { MOVE_TYPE_WALKING=0, MOVE_TYPE_RUNNING=1 };
+#include "engine/EScriptEntityMoveType.h"   // ENTITY_MOVE_WALK 0 / ENTITY_MOVE_RUN 1 (Ego_r / FableWin TPI)
 extern "C" int __cdecl rand();
 extern CGameScriptInterfaceBase* pDSTGame;
 float FABLE_FASTCALL GetDistanceBetweenThings(const CScriptThing&, const CScriptThing&);    // 0x00CBE512
@@ -125,7 +125,7 @@ void NScript::CQ_MinionCampScript::CBriarRose::Main()
         bool SaidFollow=false;
         long MoveState=0;
         seh_me.ClearCommands();
-        seh_me.MoveToPosition(MyDestination.GetPos(),1.0f,MOVE_TYPE_RUNNING,false,true);
+        seh_me.MoveToPosition(MyDestination.GetPos(),1.0f,ENTITY_MOVE_RUN,false,true);
         while (!IsDistanceBetweenThingsUnder(Me,MyDestination,2.0f)) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating()) return _Fail_Val.Return();
@@ -151,7 +151,7 @@ void NScript::CQ_MinionCampScript::CBriarRose::Main()
                     if (MoveState!=1) {
                         if (IsActiveThreadTerminating()) return _Fail_Val.Return();
                         seh_me.ClearCommands();
-                        seh_me.MoveToPosition(MyDestination.GetPos(),1.0f,MOVE_TYPE_WALKING,false,true);
+                        seh_me.MoveToPosition(MyDestination.GetPos(),1.0f,ENTITY_MOVE_WALK,false,true);
                         MoveState=1;
                     }
                 } else {
@@ -159,7 +159,7 @@ void NScript::CQ_MinionCampScript::CBriarRose::Main()
                     if (MoveState!=0) {
                         if (IsActiveThreadTerminating()) return _Fail_Val.Return();
                         seh_me.ClearCommands();
-                        seh_me.MoveToPosition(MyDestination.GetPos(),1.0f,MOVE_TYPE_RUNNING,false,true);
+                        seh_me.MoveToPosition(MyDestination.GetPos(),1.0f,ENTITY_MOVE_RUN,false,true);
                         MoveState=0;
                     }
                 }
@@ -182,7 +182,7 @@ void NScript::CQ_MinionCampScript::CBriarRose::Main()
         if (ParentClass.BriarState==1) {
             if (IsActiveThreadTerminating()) return _Fail_Val.Return();
             MyDestination=Game->GetThingWithScriptName("MC_Altar");
-            seh_me.MoveToPosition(MyDestination.GetPos(),0.5f,MOVE_TYPE_RUNNING,false,true);
+            seh_me.MoveToPosition(MyDestination.GetPos(),0.5f,ENTITY_MOVE_RUN,false,true);
             while (seh_me.IsPerformingScriptTask()) {
                 Game->NewScriptFrame();
                 if (IsActiveThreadTerminating()) return _Fail_Val.Return();

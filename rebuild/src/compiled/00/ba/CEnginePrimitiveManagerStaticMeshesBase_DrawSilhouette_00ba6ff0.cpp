@@ -10,8 +10,8 @@
 //   C3DMeshInfo::GetMesh 0x00A25E70, ~CCountedPointer<const C3DMesh2> 0x00A36EC0, CEngineLightingManager::GetLightsInSphereFast 0x00B46B90,
 //   DrawImmediately 0x00BA6DC0, CRenderStateManager::RestoreCaptureBlock 0x00A05840 (scoped capture block), the primitive's virtual
 //   GetBoundingBoxTransform (slot 16). Globals: CRenderStateCaptureBlock::StateManager 0x013CB508, NEngineInternal::GPRenderManager 0x01436E18,
-//   g_pPrimitiveRendererSharedData 0x01436E78 (VisibilityRatiosValid +0x25A, ShowSilhouettes +0x250, LODErrorTolerance +0x9C, FOV-adjusted
-//   virtual screen size +0xA8), g_pEngineLightingManager 0x01436E9C, g_pEngineCamera 0x01436EA0, DELTA_NOTIONAL_ZERO 0x0129BA3C, the stencil
+//   NEngineInternal::GPPrimitiveRendererSharedData 0x01436E78 (VisibilityRatiosValid +0x25A, ShowSilhouettes +0x250, LODErrorTolerance +0x9C, FOV-adjusted
+//   virtual screen size +0xA8), NEngineInternal::GPLightingManager 0x01436E9C, NEngineInternal::GPCamera 0x01436EA0, DELTA_NOTIONAL_ZERO 0x0129BA3C, the stencil
 //   op / func tables 0x01396F38 / 0x01396E18.
 // Inline bodies proven against retail's unreferenced out-of-line COMDAT copies (RepeatedStaticMeshes TU; a file-scope address-taking probe
 //   compiles to the same bytes): GetAppropriateLOD = 0x00B9C210 (ternary clamp of the distance to the surface, a separate lod_error local that
@@ -98,23 +98,23 @@
 namespace NEngineInternal {
 extern CRenderManager* GPRenderManager;                                  // 0x01436E18
 }
-extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRendererSharedData; // 0x01436E78
-extern CEngineLightingManager*             g_pEngineLightingManager;       // 0x01436E9C
-extern CEngineCamera*                      g_pEngineCamera;                // 0x01436EA0
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; } // 0x01436E78
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }       // 0x01436E9C
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                // 0x01436EA0
 
-inline CEngineCamera& __fastcall CEnginePrimitiveRenderUtil::GetCurrentCamera() { return *g_pEngineCamera; }
+inline CEngineCamera& __fastcall CEnginePrimitiveRenderUtil::GetCurrentCamera() { return *NEngineInternal::GPCamera; }
 inline float __fastcall CEnginePrimitiveRenderUtil::CalcDistanceFromCamera(const C3DVector& position)
 {
     return (position - GetCurrentCamera().PeekCameraPos()).GetMagnitude();
 }
-inline bool __fastcall CEnginePrimitiveRenderUtil::GetVisibilityRatiosValid() { return g_pPrimitiveRendererSharedData->VisibilityRatiosValid; }
-inline long __fastcall CEnginePrimitiveRenderUtil::GetShowSilhouettes() { return g_pPrimitiveRendererSharedData->ShowSilhouettes; }
-inline float __fastcall CEnginePrimitiveRenderUtil::GetLODErrorTolerance() { return g_pPrimitiveRendererSharedData->LODErrorTolerance; }
-inline float __fastcall CEnginePrimitiveRenderUtil::GetLODVirtualScreenSizeFOVAdjusted() { return g_pPrimitiveRendererSharedData->LODVirtualScreenSizeFOVAdjusted; }
+inline bool __fastcall CEnginePrimitiveRenderUtil::GetVisibilityRatiosValid() { return NEngineInternal::GPPrimitiveRendererSharedData->VisibilityRatiosValid; }
+inline long __fastcall CEnginePrimitiveRenderUtil::GetShowSilhouettes() { return NEngineInternal::GPPrimitiveRendererSharedData->ShowSilhouettes; }
+inline float __fastcall CEnginePrimitiveRenderUtil::GetLODErrorTolerance() { return NEngineInternal::GPPrimitiveRendererSharedData->LODErrorTolerance; }
+inline float __fastcall CEnginePrimitiveRenderUtil::GetLODVirtualScreenSizeFOVAdjusted() { return NEngineInternal::GPPrimitiveRendererSharedData->LODVirtualScreenSizeFOVAdjusted; }
 FABLE_FORCEINLINE CEngineLocalLightArray* __fastcall CEnginePrimitiveRenderUtil::FindLocalLights(const C3DVector& position, float radius,
                                                                                       CEnginePrimitiveThemeChannelDesc channel)
 {
-    return g_pEngineLightingManager->GetLightsInSphereFast(C3DBoundingSphere(position, radius), 5, channel);
+    return NEngineInternal::GPLightingManager->GetLightsInSphereFast(C3DBoundingSphere(position, radius), 5, channel);
 }
 
 FABLE_FORCEINLINE unsigned long FABLE_FASTCALL CEnginePrimitiveManagerMeshBase::GetAppropriateLOD(const C3DMeshInfo* mesh_info, float distance, float radius, float tolerance)

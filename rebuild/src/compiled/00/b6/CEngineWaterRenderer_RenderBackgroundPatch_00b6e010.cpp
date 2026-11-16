@@ -159,7 +159,7 @@ private:
     void UpdateCombinedProjectionTransform();           // 0x00988A50
     void UpdateCameraPos();                             // 0x00989700
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 struct IDirect3DVertexBuffer9;
 struct IDirect3DIndexBuffer9;
@@ -236,7 +236,7 @@ class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                        // +0x54
 };
-extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                  // 0x01436EA0
 
 class CEngineWaterRenderer { public:
     void RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch);
@@ -245,9 +245,9 @@ class CEngineWaterRenderer { public:
 void CEngineWaterRenderer::RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch)
 {
     CMatrix3x4 world(C3DVector(1.0f, 0.0f, 0.0f), C3DVector(0.0f, 1.0f, 0.0f), C3DVector(0.0f, 0.0f, 1.0f), C3DVector(0.0f, 0.0f, 0.0f));
-    world.Pos = g_pEngineCamera->WorldPosition;
-    g_pShaderRenderManager->SetWorldTransform(world);
-    g_pShaderRenderManager->PrepareForRender(1);
+    world.Pos = NEngineInternal::GPCamera->WorldPosition;
+    NEngineInternal::GPShaderRenderManager->SetWorldTransform(world);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(1);
     g_pRenderManagerCore->SetVertexBuffer(patch->VertexBuffer);
     g_pRenderManagerCore->SetIndexBuffer(patch->IndexBuffer);
     g_pRenderManagerCore->DrawCurrentBuffersAsIndexedTris(0, patch->VertexCount, 0, patch->PolyCount);

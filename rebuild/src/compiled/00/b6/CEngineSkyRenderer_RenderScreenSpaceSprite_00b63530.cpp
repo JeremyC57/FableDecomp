@@ -132,7 +132,7 @@ private:
 public:
     void ResetWorldTransform();   // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 struct CEngineSkyRenderer_Methods : CEngineSkyRenderer {
     void RenderScreenSpaceSprite(CTexture* texture, C2DVector topLeft, C2DVector size, CRGBColour colour);
@@ -183,8 +183,8 @@ void CEngineSkyRenderer_Methods::RenderScreenSpaceSprite(CTexture* texture, C2DV
     indices[3] = 0;
     indices[4] = 2;
     indices[5] = 3;
-    g_pShaderRenderManager->ApplyVertexShader((CVertexShader*)ScreenSpaceSpriteVertexShader, false);
-    g_pShaderRenderManager->ApplyPixelShader((CPixelShader*)ScreenSpaceSpritePixelShader);
-    g_pShaderRenderManager->PrepareForRender(0);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)ScreenSpaceSpriteVertexShader, false);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)ScreenSpaceSpritePixelShader);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
     g_pRenderManagerCore->DrawAsIndexedTris(&texture, 1, verts, 0x20, 4, indices, 2);
 }

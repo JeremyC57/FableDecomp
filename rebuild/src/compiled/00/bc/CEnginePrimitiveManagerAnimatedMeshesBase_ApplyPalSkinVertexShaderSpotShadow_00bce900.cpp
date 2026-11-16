@@ -7,7 +7,7 @@
 //   +0x300 EnvSpotShadow) end `call ; ret 4` instead. This body indexes the selector VertexShadersPalSkinSpotShadow
 //   (+0x2fc, PDB offset, as in the landed FrameStart 0x00BCEA60), so it is the SpotShadow member; its second argument is
 //   unused.
-// Callee: ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z @ 0x00988020 (PDB) on g_pShaderRenderManager
+// Callee: ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z @ 0x00988020 (PDB) on NEngineInternal::GPShaderRenderManager
 //   (0x01436E14). PointLightShaderIndex (+0x20, unsigned long[6]) maps a light count to a shader slot.
 #include "engine/CVertexShader.h"                              // 8 bytes (PDB)
 
@@ -15,7 +15,7 @@ class CShaderRenderManager {
 public:
     void ApplyVertexShader(const CVertexShader& shader, bool force);    // 0x00988020
 };
-extern CShaderRenderManager* g_pShaderRenderManager;                     // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }                     // 0x01436E14
 
 class CEnginePrimitiveManagerAnimatedMeshesBase {
 public:
@@ -31,5 +31,5 @@ void CEnginePrimitiveManagerAnimatedMeshesBase::ApplyPalSkinVertexShaderSpotShad
 {
     if (num_point_lights > 5)
         num_point_lights = 5;
-    g_pShaderRenderManager->ApplyVertexShader(VertexShadersPalSkinSpotShadow[PointLightShaderIndex[num_point_lights]], true);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(VertexShadersPalSkinSpotShadow[PointLightShaderIndex[num_point_lights]], true);
 }

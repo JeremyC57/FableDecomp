@@ -41,11 +41,11 @@ struct CHandleVector {                  // +0x440: {begin, end, capacity}
     }
 };
 
-extern long g_pchNil;                      // 0x0139C900 (the nil string block)
+extern char* _afxPchNil;                      // 0x0139C900 (the nil string block)
 
 struct CPoolName {                  // +0x450
     long m_value;
-    CPoolName() : m_value(g_pchNil) {}
+    CPoolName() : m_value((long)_afxPchNil) {}
     ~CPoolName();                          // 0x00C0BA40
 };
 

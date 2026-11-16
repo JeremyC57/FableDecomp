@@ -29,39 +29,39 @@
 #include "engine/CEngineResourceManager.h"
 #include "engine/CShaderResource.h"
 
-extern CEngineResourceManager* g_pResourceManager;    // 0x01436E98 (descriptive; no PDB name for this global)
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }    // 0x01436E98 (descriptive; no PDB name for this global)
 
 CEnginePrimitiveManagerParticleSpriteGroup::CEnginePrimitiveManagerParticleSpriteGroup(CArray<CEngineScene*>& scenes)
     : CEnginePrimitiveManager(scenes)
 {
     VertexShaders3DFaceMeSpritePointLights.resize(5);
-    VertexShaders3DFaceMeSpritePointLights[0] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DIRLIGHT_FOG");
-    VertexShaders3DFaceMeSpritePointLights[1] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShaders3DFaceMeSpritePointLights[2] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShaders3DFaceMeSpritePointLights[3] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShaders3DFaceMeSpritePointLights[4] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DIRLIGHT_5POINTLIGHTS_FOG");
+    VertexShaders3DFaceMeSpritePointLights[0] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DIRLIGHT_FOG");
+    VertexShaders3DFaceMeSpritePointLights[1] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShaders3DFaceMeSpritePointLights[2] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShaders3DFaceMeSpritePointLights[3] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShaders3DFaceMeSpritePointLights[4] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DIRLIGHT_5POINTLIGHTS_FOG");
 
     VertexShadersCrossedSpritePointLights.resize(5);
-    VertexShadersCrossedSpritePointLights[0] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DIRLIGHT_FOG");
-    VertexShadersCrossedSpritePointLights[1] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShadersCrossedSpritePointLights[2] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShadersCrossedSpritePointLights[3] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShadersCrossedSpritePointLights[4] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DIRLIGHT_5POINTLIGHTS_FOG");
+    VertexShadersCrossedSpritePointLights[0] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DIRLIGHT_FOG");
+    VertexShadersCrossedSpritePointLights[1] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShadersCrossedSpritePointLights[2] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShadersCrossedSpritePointLights[3] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShadersCrossedSpritePointLights[4] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DIRLIGHT_5POINTLIGHTS_FOG");
 
     VertexShadersBillboardSpritePointLights.resize(5);
-    VertexShadersBillboardSpritePointLights[0] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DIRLIGHT_FOG");
-    VertexShadersBillboardSpritePointLights[1] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShadersBillboardSpritePointLights[2] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShadersBillboardSpritePointLights[3] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShadersBillboardSpritePointLights[4] = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DIRLIGHT_5POINTLIGHTS_FOG");
+    VertexShadersBillboardSpritePointLights[0] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DIRLIGHT_FOG");
+    VertexShadersBillboardSpritePointLights[1] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShadersBillboardSpritePointLights[2] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShadersBillboardSpritePointLights[3] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShadersBillboardSpritePointLights[4] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DIRLIGHT_5POINTLIGHTS_FOG");
 
-    VertexShadersBillboardSpriteDisplacement = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DISPLACEMENT");
-    VertexShadersCrossedSpriteDisplacement = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DISPLACEMENT");
-    VertexShaders3DFaceMeSpriteDisplacement = g_pResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DISPLACEMENT");
+    VertexShadersBillboardSpriteDisplacement = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_BILLBOARD_DISPLACEMENT");
+    VertexShadersCrossedSpriteDisplacement = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_CROSSED_DISPLACEMENT");
+    VertexShaders3DFaceMeSpriteDisplacement = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)21)->GetVertexShader("VSHADER_SPRITE_GROUP_3D_FACE_ME_DISPLACEMENT");
 
-    PixelShader = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SPRITE_GROUP");
-    PixelShaderStipple = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SPRITE_GROUP_STIPPLE");
-    PixelShaderDisplacement = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SPRITE_GROUP_DISPLACEMENT");
+    PixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SPRITE_GROUP");
+    PixelShaderStipple = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SPRITE_GROUP_STIPPLE");
+    PixelShaderDisplacement = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SPRITE_GROUP_DISPLACEMENT");
 
     BuildBuffers();
 }

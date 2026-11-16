@@ -6,13 +6,13 @@
 // null-checked around the inlined constructor and VC duplicates the tail into both paths; the
 // returned pointer is the address of the embedded entry (no null check: `lea eax,[esi+4]`).
 // The id post-increment reloads the global after the store (the fresh object may alias it).
-extern void* g_pDebugBuffer;               // 0x0139C900
+extern char* _afxPchNil;               // 0x0139C900
 extern unsigned long g_nextInstanceId;     // 0x0143BB44
 
 struct SInstanceEntry {
     void* m_pOwner;                        // +0
     unsigned long m_id;                    // +4
-    SInstanceEntry() : m_pOwner(g_pDebugBuffer), m_id(g_nextInstanceId++) { }
+    SInstanceEntry() : m_pOwner(_afxPchNil), m_id(g_nextInstanceId++) { }
 };
 
 struct SInstanceRecord {

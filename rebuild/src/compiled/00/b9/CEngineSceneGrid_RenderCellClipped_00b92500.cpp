@@ -40,7 +40,7 @@ class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* PrimitiveManagers[47];   // +0x10
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 extern unsigned short g_engineFrameNumber;                     // 0x0143B8D8
 
 class CEngineInternalPrimitiveBase {
@@ -110,7 +110,7 @@ void CEngineSceneGrid::RenderCellClipped(unsigned long x, unsigned long y, EEngi
     while (primitive) {
         if (primitive->RenderLayerMask & layer) {
             if (primitive->IsVisibleToCamera(camera, inside)) {
-                CEnginePrimitiveManager* manager = g_pEnginePrimitiveTypeInfo->PrimitiveManagers[primitive->Type];
+                CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[primitive->Type];
                 CEngineSubPrimitiveChain chain;
                 if (manager->RenderPrimitive(*primitive, layer, chain) == 2)
                     primitive->LastFrameRendered = g_engineFrameNumber;

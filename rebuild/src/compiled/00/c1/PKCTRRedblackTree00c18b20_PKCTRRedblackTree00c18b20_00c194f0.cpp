@@ -16,13 +16,13 @@
 // Retail bytes:  ... mov eax,[esp+20h] ; xor ebx,ebx ; cmp eax,ebx ; lea edi,[esi+0Ch] ; mov [esp+18h],ebx ; mov dword ptr [esi],12B2F0Ch ; mov [esi+4],eax ; mov [esi+8],ebx ; mov [esi+20h],edi ; mov [esi+24h],ebx ; jne link ; push 4 ; call operator new ; add esp,4 ; cmp eax,ebx ; je null ; mov dword ptr [eax],12B2F60h ; jmp got ; null: xor eax,eax ; got: cmp eax,ebx ; mov [esi+8],eax ; jne own ; mov eax,[g_pchNil] ; mov [esp+20h],eax ; mov edx,offset ".\PKCTRRedblackTree.cpp" ; lea ecx,[esp+20h] ; mov byte ptr [esp+18h],1 ; call Append ; ... mov edx,23h ; ... call AppendNumber ; ... call Append ("Error: EMEM") ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; cmp eax,ebx ; je skip ; mov ecx,[esp+20h] ; call eax ; skip: lea ecx,[esp+20h] ; mov byte ptr [esp+18h],bl ; call ~CString ; lea ecx,[esp+20h] ; call CTrace::CTrace ; own: mov ecx,[esi+8] ; mov [esi+4],ecx ; link: ... mov [esi+10h],edi ; mov [edi],edi ; mov [esi+14h],ebx ; mov [esi+18h],ebx ; mov [esi+1Ch],ebx ; ... mov eax,esi ; ... ret 4
 // The tree is the one the landed containers build (mode 0) and the 0x00C185B0 holder allocates.
 void* __cdecl operator new(unsigned int size);
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c194f0)(const char* text);
 extern PFNLOGSINK_00c194f0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

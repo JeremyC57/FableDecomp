@@ -7,7 +7,7 @@
 // Callees: malloc 0x00BFEA0E / free 0x00BFEA14 (STLport vector storage), BuildSharedIndexBufferGenerationTables 0x00BE2CD0
 //   (same-TU stand-in body below), operator new 0x00BFEA1A, CEngineResourceManager::GetIndexBufferUsage 0x00B3B060 /
 //   GetIndexBufferMemPool 0x00B3B0A0, CIndexBuffer::CIndexBuffer 0x00AC2010 / Lock 0x00AC1FB0 / Unlock 0x00AC1F00; memcpy
-//   intrinsic; g_pResourceManager 0x01436E98.
+//   intrinsic; NEngineInternal::GPResourceManager 0x01436E98.
 // Stand-in: BuildSharedIndexBufferGenerationTables is a same-TU noinline stand-in for the real retail callee (its writes through
 //   the index pointer keep VC7.1 from dropping the vector's zero-fill stores); it is not part of this row.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
@@ -33,7 +33,7 @@ class CEngineResourceManager { public:
     unsigned long GetIndexBufferUsage();               // 0x00B3B060
     EIndexBufferPool GetIndexBufferMemPool();          // 0x00B3B0A0
 };
-extern CEngineResourceManager* g_pResourceManager;     // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }     // 0x01436E98
 
 class CEngineLandscapeMeshBuilder { public:
     void*         __vftable;
@@ -59,8 +59,8 @@ void CEngineLandscapeMeshBuilder::BuildSharedIndexBuffers()
             C2DCoordI coords[289];
             long count = 0;
             BuildSharedIndexBufferGenerationTables(coords, indices.GetAsCArray(), 0, x, y, count);
-            CIndexBuffer* buffer = new CIndexBuffer(count * 2, g_pResourceManager->GetIndexBufferUsage(), (EIndexBufferFormat)0x65,
-                                                    g_pResourceManager->GetIndexBufferMemPool(), (EPrimitiveType)5);
+            CIndexBuffer* buffer = new CIndexBuffer(count * 2, NEngineInternal::GPResourceManager->GetIndexBufferUsage(), (EIndexBufferFormat)0x65,
+                                                    NEngineInternal::GPResourceManager->GetIndexBufferMemPool(), (EPrimitiveType)5);
             unsigned char* data = buffer->Lock(0, 0, 0);
             memcpy(data, indices.GetAsCArray(), count * 2);
             buffer->Unlock();

@@ -32,7 +32,7 @@ class CEngineCamera { public:
     CEngineCameraDesc CameraDesc;                        // +0x14
     void SetCameraState(const CEngineCameraDesc* desc, bool a, bool b);   // 0x00B30B50
 };
-extern CEngineCamera* g_pEngineCamera;                   // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                   // 0x01436EA0
 class CEngineLightingManager { public:
     unsigned char _pad00[0x18];
     C3DVector     SunVector;                             // +0x18
@@ -142,7 +142,7 @@ void CEngineSkyRenderer_Methods::Render(const CEngineComponentRenderParams& para
         RenderSunFlare();
     } else {
         float interpolate = params.Params->BulletTimeCurrent.WFInterpolate;
-        CEngineCameraDesc savedDesc(g_pEngineCamera->CameraDesc);
+        CEngineCameraDesc savedDesc(NEngineInternal::GPCamera->CameraDesc);
         CEngineCameraDesc skyDesc(savedDesc);
         skyDesc.NearZPlane = 100.0f;
         skyDesc.FarZPlane = 10000.0f;
@@ -151,13 +151,13 @@ void CEngineSkyRenderer_Methods::Render(const CEngineComponentRenderParams& para
         skyDesc.WorldPosition.X = 0.0f;
         skyDesc.WorldPosition.Y = 0.0f;
         skyDesc.WorldPosition.Z = 0.0f;
-        g_pEngineCamera->SetCameraState(&skyDesc, false, true);
+        NEngineInternal::GPCamera->SetCameraState(&skyDesc, false, true);
         SetState(g_pRenderManagerCore->m_state2868, 1, g_pRenderManagerCore);
-        RenderSky(interpolate, &g_pEngineCamera->CameraDesc.WorldPosition, false);
-        g_pEngineCamera->SetCameraState(&savedDesc, false, true);
+        RenderSky(interpolate, &NEngineInternal::GPCamera->CameraDesc.WorldPosition, false);
+        NEngineInternal::GPCamera->SetCameraState(&savedDesc, false, true);
         C3DVector sun = NEngineInternal::GPLightingManager->SunVector;
-        float distance = g_pEngineCamera->CameraDesc.FarZPlane * 0.099f;
-        C3DVector pos = sun * distance + g_pEngineCamera->CameraDesc.WorldPosition;
+        float distance = NEngineInternal::GPCamera->CameraDesc.FarZPlane * 0.099f;
+        C3DVector pos = sun * distance + NEngineInternal::GPCamera->CameraDesc.WorldPosition;
         g_pRenderer_01436e5c->DrawDebugSphere(0x1000000, pos, distance * 0.15f, 0x20);
     }
     g_pRenderStateManager->RestoreCaptureBlock();

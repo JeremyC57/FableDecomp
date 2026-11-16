@@ -15,9 +15,9 @@
 //   CEnginePrimitiveManagerMeshBase::GetDiffuseTexture 0x00BA9360, CEngineLightingManager::UpdateGlobalLightingStates 0x00B46C80,
 //   CRenderManagerCore::DrawCurrentBuffersAsIndexedTris 0x00A0AC60, IDirect3DDevice9 SetTexture / SetStreamSource / SetIndices (slots 65,
 //   100, 104), the expanded ~CCountedPointer<const C3DMesh2> (deleter call, operator delete 0x00BFE9BC).
-// Globals: NEngineInternal::GPRenderManager 0x01436E18, GPShaderRenderManager 0x01436E14, g_pEnginePrimitiveRenderer 0x01436E80,
-//   g_pEnginePrimitiveTypeInfo 0x01436E84 (GetPrimitiveManager(24) = the particle-group manager), g_pDisplacementRenderer_01436e38,
-//   g_pEngineLightingManager 0x01436E9C, g_pEngineCamera 0x01436EA0 (established landed spellings); five render switches 0x0139B7A0..
+// Globals: NEngineInternal::GPRenderManager 0x01436E18, GPShaderRenderManager 0x01436E14, NEngineInternal::GPPrimitiveRenderer 0x01436E80,
+//   NEngineInternal::GPPrimitiveTypeInfo 0x01436E84 (GetPrimitiveManager(24) = the particle-group manager), NEngineInternal::GPScreenEffectDisplacementRenderer,
+//   NEngineInternal::GPLightingManager 0x01436E9C, NEngineInternal::GPCamera 0x01436EA0 (established landed spellings); five render switches 0x0139B7A0..
 //   0x0139B7B0 (dwords, no PDB data name found: descriptive); D3D tables CRenderStateManager::D3DBlendOpModeTable 0x01396ED0,
 //   D3DAlphaBlendModeTable 0x01396F68, D3DAlphaFuncModeTable 0x01396DD8; 1/255 0x01231724 (CRGBFloatColour(const CRGBColour&)).
 // Layout: the typed overlay opt-ins (hdr/README.md): manager members at their retail offsets (VertexShadersMeshPointLights +0x20 ..
@@ -107,11 +107,11 @@
 
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }                  // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }      // 0x01436E14
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;                           // 0x01436E84
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;                           // 0x01436E80
-extern CEngineLightingManager* g_pEngineLightingManager;                               // 0x01436E9C
-extern CEngineScreenEffectDisplacementRenderer* g_pDisplacementRenderer_01436e38;      // 0x01436E38
-extern CEngineCamera* g_pEngineCamera;                                                 // 0x01436EA0
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }                           // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }                           // 0x01436E80
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }                               // 0x01436E9C
+namespace NEngineInternal { extern CEngineScreenEffectDisplacementRenderer* GPScreenEffectDisplacementRenderer; }      // 0x01436E38
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                                                 // 0x01436EA0
 extern long g_particleMeshRenderEnabled;                                      // 0x0139B7B0 (descriptive)
 extern long g_particleMeshBlendOpEnabled;                                     // 0x0139B7AC (descriptive)
 extern long g_particleMeshBlendModeEnabled;                                   // 0x0139B7A8 (descriptive)
@@ -122,7 +122,7 @@ extern long g_particleMeshTailDrawEnabled;                                    //
 
 inline bool __fastcall CEnginePrimitiveManager::GetBlockOnLoad()
 {
-    return g_pEnginePrimitiveRenderer->GetBlockOnLoad();
+    return NEngineInternal::GPPrimitiveRenderer->GetBlockOnLoad();
 }
 inline void __fastcall CEnginePrimitiveRenderUtil::ApplyVertexShader(const CVertexShader& shader)
 {
@@ -134,7 +134,7 @@ inline void __fastcall CEnginePrimitiveRenderUtil::ApplyPixelShader(const CPixel
 }
 inline CEngineCamera& __fastcall CEnginePrimitiveRenderUtil::GetCurrentCamera()
 {
-    return *g_pEngineCamera;
+    return *NEngineInternal::GPCamera;
 }
 FABLE_FORCEINLINE void CEnginePrimitiveRenderUtil::SetupBlendOpState(EEnginePrimitiveBlendOp op)
 {
@@ -179,10 +179,10 @@ void CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive(CEngineSubPrim
         return;
     }
     CEnginePrimitiveManagerParticleGroup* group_manager =
-        GFDebugPDynamicCast(g_pEnginePrimitiveTypeInfo->GetPrimitiveManager(24), (CEnginePrimitiveManagerParticleGroup*)0);
+        GFDebugPDynamicCast(NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(24), (CEnginePrimitiveManagerParticleGroup*)0);
     if (pass == RENDER_PASS_DISPLACEMENT_BUFFER) {
         if (group_manager->GetReadZBuffer())
-            g_pDisplacementRenderer_01436e38->SetupShadowHWAsDepthBuffer(&group->WorldTransform);
+            NEngineInternal::GPScreenEffectDisplacementRenderer->SetupShadowHWAsDepthBuffer(&group->WorldTransform);
         SetupBlendOpState(ENGINE_PRIMITIVE_BLEND_OP_ADD);
         SetupAlphaBlendingStatesFromBlendMode(ENGINE_PRIMITIVE_BLEND_ALPHA);
         ApplyDisplacementVertexShader();
@@ -232,8 +232,8 @@ void CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive(CEngineSubPrim
                 continue;
         }
         NEngineInternal::GPRenderManager->AttachTextureToStage(0, texture);
-        g_pEngineLightingManager->SetSelfIlluminationAmbient(material->GetSelfIllumination());
-        g_pEngineLightingManager->UpdateGlobalLightingStates();
+        NEngineInternal::GPLightingManager->SetSelfIlluminationAmbient(material->GetSelfIllumination());
+        NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
         NEngineInternal::GPShaderRenderManager->SelectVertexBuffer(*primitive->GetVertexBuffer());
         NEngineInternal::GPRenderManager->SelectIndexBuffer(primitive->GetIndexBuffer(), 0);
         unsigned long batch_triangles = primitive->GetTriangleCount() * batch_size;
@@ -285,7 +285,7 @@ void CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive(CEngineSubPrim
                 NEngineInternal::GPRenderManager->DrawCurrentBuffersAsIndexedTris(0, primitive->GetVertexCount() * meshes, 0,
                                                                                  primitive->GetTriangleCount() * meshes);
         }
-        g_pEngineLightingManager->RestoreDefaultPrimitiveParameters();
+        NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
     }
     NEngineInternal::GPShaderRenderManager->ResetWorldTransform();
 }

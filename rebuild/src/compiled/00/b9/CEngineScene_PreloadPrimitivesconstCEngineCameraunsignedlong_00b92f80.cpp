@@ -91,7 +91,7 @@ class CEnginePrimitiveManager:public CEnginePrimitiveRenderUtil { public:
  virtual void RenderNonsortedPrimitives();virtual void AddStaticShadowData(CEngineInternalPrimitiveBase&,NEngineShadowRenderer::CShadowSceneContext&);
  CArray<CEngineScene*>* Scenes;bool Enable;
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo; //01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; } //01436E84
 class CEnginePrimitiveHandle { public:void* NativeVTable;CEnginePersistentPrimitiveBase* Data;};
 class CEngineSceneGridCell { public:
  CEngineSceneGridCell* Parent;CEngineInternalPrimitiveBase* FirstPrimitive;C3DBoundingBox BoundingBox;float DrawDistance;
@@ -138,7 +138,7 @@ bool CEngineScene::PreloadPrimitives(const CEngineCamera& volume,unsigned long f
   for(RetailTree<CCountedSceneMap>::iterator y=x.value().begin();y!=x.value().end();++y)
    result|=y.value().Data->GridLevels.First[0].Get().PreloadPrimitives(0,0,volume,flags);
  for(CEngineInternalPrimitiveBase* primitive=FirstMovingPrimitive;primitive;primitive=primitive->NextPrimitive){
-  if(primitive->IsInsideFrustum(volume,false)) result|=g_pEnginePrimitiveTypeInfo->PrimitiveManagers[primitive->Type]->PreloadPrimitive(*primitive,static_cast<const CEngineCameraMethods&>(volume).Position(),flags);
+  if(primitive->IsInsideFrustum(volume,false)) result|=NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[primitive->Type]->PreloadPrimitive(*primitive,static_cast<const CEngineCameraMethods&>(volume).Position(),flags);
  }
  return result;
 }

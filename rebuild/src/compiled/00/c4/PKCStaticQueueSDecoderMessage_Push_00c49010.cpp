@@ -19,7 +19,7 @@ class CString { public:
     ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
-extern char* g_pDebugBuffer;                               // 0x0139C900
+extern char* _afxPchNil;                               // 0x0139C900
 extern void (__fastcall* g_pfnErrorReport)(const char*);   // 0x0143BB2C
 
 struct SDecoderMessage {                        // 0x40 bytes: one async-decoder message record
@@ -59,7 +59,7 @@ template<class T> long PKCStaticQueue<T>::Push(const T* item)
 {
     if (m_count >= m_capacity) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCStaticQueue.h" << "(" << 57 << ") : " << "This queue is full!" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

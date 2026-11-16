@@ -16,7 +16,7 @@ class CString { public:
     ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
-extern char* g_pDebugBuffer;                               // 0x0139C900
+extern char* _afxPchNil;                               // 0x0139C900
 extern void (__fastcall* g_pfnErrorReport)(const char*);   // 0x0143BB2C
 
 // libpk PKCTRArray.cpp (no PDB): vtable 0x012B4E80, entry block +0x04, capacity +0x08, count +0x0C (as the landed
@@ -36,7 +36,7 @@ void* PKCTRArray::GetFirst()
         return 0;
     if (m_pEntries[0] == 0) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << ".\\PKCTRArray.cpp" << "(" << 204 << ") : " << "Error: Null item" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

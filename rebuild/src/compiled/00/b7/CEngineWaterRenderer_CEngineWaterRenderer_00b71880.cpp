@@ -29,7 +29,7 @@
 class CGPUScratchBufferTextureManager { public:
     void FreeMemoryPage(long page);                    // 0x00F37030 ?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z
 };
-extern CEngineResourceManager* g_pResourceManager;    // 0x01436E98 (descriptive; no PDB name for this global)
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }    // 0x01436E98 (descriptive; no PDB name for this global)
 
 void CEngineWaterRenderer::DeleteConstantBuffers()
 {
@@ -40,7 +40,7 @@ void CEngineWaterRenderer::DeleteConstantBuffers()
 
 void CEngineWaterRenderer::UninitialiseDynamicTextures()
 {
-    g_pResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(DynamicTexturePageHandle);
+    NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(DynamicTexturePageHandle);
     DynamicTexturePageHandle = 0;
 }
 

@@ -5,7 +5,7 @@
 //   0x00BF7DF0 C3DBoundingBox model, fallback as 0x00B99BB0); PDB overload with bool& (not bool*); the centre passed
 //   directly to the distance call, the far corner a frame C3DVector with scalar differences; plane normals as named
 //   locals.
-// Retail-asm: 0x00B4CF08..0x00B4CF52 `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [esp+10h],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind g_SSEAvailable 0x013D2880 (the box re-read from its argument slot, the sphere-centre pointer spilled into the dead fullyInside slot); the same kernel as landed 0x00BF7DF0; the x87 branch is the C++ fallback.
+// Retail-asm: 0x00B4CF08..0x00B4CF52 `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [esp+10h],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind GEnableSIMD 0x013D2880 (the box re-read from its argument slot, the sphere-centre pointer spilled into the dead fullyInside slot); the same kernel as landed 0x00BF7DF0; the x87 branch is the C++ fallback.
 // Helper (2026-11-05 asm migration): the retail inline-asm block is the shared engine/C3DBoundingBoxSSE.h (byte-matching path + FABLE_PORTABLE twin); the row has
 //   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SSE_BOX.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B4CED0, 829 bytes (+ int3 padding), `ret 8`. Identity: FableWin.pdb / Ego_r.pdb
@@ -18,7 +18,7 @@ extern "C" double __cdecl sqrt(double x);
 extern "C" double __cdecl fabs(double x);
 #pragma intrinsic(sqrt)
 #pragma intrinsic(fabs)
-extern bool g_SSEAvailable;                             // 0x013D2880
+extern bool GEnableSIMD;                             // 0x013D2880
 #include "engine/C3DVector.h"
 class C3DBoundingBox {
 public:
@@ -26,7 +26,7 @@ public:
     C3DVector MaxCoord;                                 // +0x0c
     FABLE_FORCEINLINE float CalcShortestDistanceToPointSquared(const C3DVector& point) const
     {
-        if (g_SSEAvailable) {
+        if (GEnableSIMD) {
             float result;
             GF_SSE_BOX_DISTANCE_SQUARED(this, point, result);
             return result;

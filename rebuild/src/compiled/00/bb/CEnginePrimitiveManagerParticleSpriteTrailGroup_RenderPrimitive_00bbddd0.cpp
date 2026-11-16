@@ -39,9 +39,9 @@
 #include "engine/CEnginePrimitiveManagerParticleSpriteTrailGroup.h"
 
 extern CEngineSubPrimitiveRenderer* g_pEngineSubPrimitiveRenderer;       // 0x01436E74
-extern CEngineCamera*               g_pEngineCamera;                     // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                     // 0x01436EA0
 
-inline CEngineCamera& __fastcall CEnginePrimitiveRenderUtil::GetCurrentCamera() { return *g_pEngineCamera; }
+inline CEngineCamera& __fastcall CEnginePrimitiveRenderUtil::GetCurrentCamera() { return *NEngineInternal::GPCamera; }
 inline float __fastcall CEnginePrimitiveRenderUtil::CalcDistanceFromCamera(const C3DVector& position)
 {
     return (position - GetCurrentCamera().PeekCameraPos()).GetMagnitude();

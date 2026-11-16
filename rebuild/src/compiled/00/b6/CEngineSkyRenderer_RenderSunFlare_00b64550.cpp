@@ -17,8 +17,8 @@
 //   CGraphicInfoFrame::BeginLoading(unsigned long, unsigned long) const 0x009FE620, CGraphicInfo::GetFrame(CGraphicFrame&, 3 x unsigned long) const
 //   0x009FF8D0, __ftol2 0x00BFEA70, CEngineSkyRenderer::RenderScreenSpaceSprite 0x00B63530, CGraphicFrameData::Uninitialise 0x009FCBA0,
 //   operator delete 0x00BFE9BC, CRenderStateManager::RestoreCaptureBlock 0x00A05840.
-// Globals: g_pOcclusionManager 0x01436E5C, g_pEngineLightingManager 0x01436E9C, g_pEngineCamera 0x01436EA0 (bound spellings; no PDB data names),
-//   g_pEngineWorldMap 0x01436E8C, NEngineInternal::GPResourceManager 0x01436E98, GPRenderManager 0x01436E18.
+// Globals: NEngineInternal::GPOcclusionManager 0x01436E5C, NEngineInternal::GPLightingManager 0x01436E9C, NEngineInternal::GPCamera 0x01436EA0 (bound spellings; no PDB data names),
+//   NEngineInternal::GPEngineWorldMap 0x01436E8C, NEngineInternal::GPResourceManager 0x01436E98, GPRenderManager 0x01436E18.
 #include "fable_compiler.h"
 #define FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL
 #define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT
@@ -92,10 +92,10 @@
 
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }        // 0x01436E98
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }                  // 0x01436E18
-extern CEngineWorldMap* g_pEngineWorldMap;                                            // 0x01436E8C
-extern CEngineOcclusionManager* g_pOcclusionManager;                                  // 0x01436E5C
-extern CEngineLightingManager* g_pEngineLightingManager;                                    // 0x01436E9C
-extern CEngineCamera* g_pEngineCamera;                                                // 0x01436EA0
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }                                            // 0x01436E8C
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }                                  // 0x01436E5C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }                                    // 0x01436E9C
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                                                // 0x01436EA0
 float __fastcall GFVXToAX(float x);                                                   // 0x009E1E10
 float __fastcall GFVYToAY(float y);                                                   // 0x009E1E40
 
@@ -111,23 +111,23 @@ FABLE_FORCEINLINE const CGraphicInfoFrame* CGraphicDataBank::PeekGraphicInfoFram
 void CEngineSkyRenderer::RenderSunFlare()
 {
     CRenderStateScopedCaptureBlock capture;
-    const CIDrawEnvironmentParams& params = g_pEngineWorldMap->PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams();
-    float visibility = g_pOcclusionManager->GetPrevFrameFlareTestResultFromRetrivalID(0x1000000);
+    const CIDrawEnvironmentParams& params = NEngineInternal::GPEngineWorldMap->PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams();
+    float visibility = NEngineInternal::GPOcclusionManager->GetPrevFrameFlareTestResultFromRetrivalID(0x1000000);
     if (visibility < 0.0f)
         return;
     if (visibility > 1.0f)
         visibility = 1.0f;
     else if (visibility < 1.0f / 255.0f)
         return;
-    C3DVector sun = g_pEngineLightingManager->PeekSunVector();
+    C3DVector sun = NEngineInternal::GPLightingManager->PeekSunVector();
     NEngineInternal::GPRenderManager->SetSourceAlphaBlendMode(ALPHA_BLEND_ONE);
     NEngineInternal::GPRenderManager->SetDestAlphaBlendMode(ALPHA_BLEND_INV_SRC_COLOR);
     NEngineInternal::GPRenderManager->SetAlphaBlendEnable(true);
     NEngineInternal::GPRenderManager->SetZBufferEnable(false);
-    C3DVector screen = sun * 2000.0f + g_pEngineCamera->PeekCameraPos();
-    g_pEngineCamera->TransformWorldToView(screen);
+    C3DVector screen = sun * 2000.0f + NEngineInternal::GPCamera->PeekCameraPos();
+    NEngineInternal::GPCamera->TransformWorldToView(screen);
     if (screen.Z > 0.01) {
-        g_pEngineCamera->TransformViewToScreen(screen);
+        NEngineInternal::GPCamera->TransformViewToScreen(screen);
         float centre_x = GFVXToAX(32768.0f);
         float centre_y = GFVYToAY(32768.0f);
         long count = PSkyDef->FlareElements.size();

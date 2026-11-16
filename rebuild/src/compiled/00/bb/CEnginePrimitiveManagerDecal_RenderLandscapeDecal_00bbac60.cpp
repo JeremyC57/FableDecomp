@@ -82,7 +82,7 @@
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }              // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }  // 0x01436E14
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }    // 0x01436E98
-extern CEngineLightingManager* g_pEngineLightingManager;                           // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }                           // 0x01436E9C
 
 // The engine/CEnginePrimitiveRenderUtil.h opt-in declares these FableWin.pdb members and leaves the bodies to the including row (landed
 // sibling 0x00BB8EF0 carries the same text).
@@ -222,17 +222,17 @@ void CEnginePrimitiveManagerDecal::RenderLandscapeDecal(CEngineInternalPrimitive
     if (decal.Lit) {
         CEnginePrimitiveThemeChannelDesc channels;
         channels = CEnginePrimitiveThemeChannelDesc();
-        CEngineLocalLightArray* lights = g_pEngineLightingManager->GetLightsInSphereFast(
+        CEngineLocalLightArray* lights = NEngineInternal::GPLightingManager->GetLightsInSphereFast(
             C3DBoundingSphere(decal.WorldPos, decal.Size.GetMagnitude()), 5, channels);
         FABLE_RETAIL_ASSERT(lights);
 
         light_count = lights->LightCount;
-        g_pEngineLightingManager->SetupShaderPointLights(*lights);
+        NEngineInternal::GPLightingManager->SetupShaderPointLights(*lights);
     } else {
         light_count = 0;
-        g_pEngineLightingManager->SetSelfIlluminationAmbient(100);
+        NEngineInternal::GPLightingManager->SetSelfIlluminationAmbient(100);
     }
-    g_pEngineLightingManager->UpdateGlobalLightingStates();
+    NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
     NEngineInternal::GPRenderManager->SetTextureUVModeU(0, TEXTURE_UV_BORDER);
     NEngineInternal::GPRenderManager->SetTextureUVModeV(0, TEXTURE_UV_BORDER);
     NEngineInternal::GPRenderManager->SetTextureBorderColour(0, 0);
@@ -247,5 +247,5 @@ void CEnginePrimitiveManagerDecal::RenderLandscapeDecal(CEngineInternalPrimitive
     NEngineInternal::GPShaderRenderManager->PrepareForRender(9);
     NEngineInternal::GPRenderManager->DrawAsIndexedTris(vertices.GetAsCArray(), sizeof(CTVertexNormTex1), vertex_count,
                                                         indices.GetAsCArray(), triangle_count);
-    g_pEngineLightingManager->RestoreDefaultPrimitiveParameters();
+    NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
 }

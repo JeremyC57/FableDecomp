@@ -145,14 +145,14 @@ class CEnginePrimitiveManager { public:
     virtual void v00();
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);   // slot 1 (+0x04)
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 void CEngineInternalPrimitiveChanger::SetChildPrimitive(unsigned long index, const CEnginePrimitive& primitive, unsigned long flags)
 {
     if (index >= Primitives.GetCount())
         Primitives.Resize(index + 1);
     CEnginePrimitiveHandle& slot = Primitives.m_pFirst[index];
-    CEnginePrimitiveManager* manager = g_pEnginePrimitiveTypeInfo->PrimitiveManagers[primitive.Type];
+    CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[primitive.Type];
     bool enable = (flags & 0x20) == 0;
     if (!manager)
         return;

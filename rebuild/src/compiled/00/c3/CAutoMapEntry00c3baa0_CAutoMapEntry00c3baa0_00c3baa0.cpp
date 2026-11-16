@@ -4,7 +4,7 @@
 // module). Shape: `mov eax,ecx` frees ecx to be the zero register, the key argument is stored first, then the initialisers in declaration
 // order -- six half-words at +0xc/+0xe and +0x18..+0x22 are `short` members (`mov word ptr`). The caller is the EH-framed factory @ 0x00C31560
 // (`new CEntry(*key)`). The manifest label "CEngineWaterBackgroundSubPatch::CEngineWaterBackgroundSubPatch" is propagated; the class is named by address.
-extern char* g_pchNil_0139c900;                    // 0x0139C900
+extern char* _afxPchNil;                    // 0x0139C900
 
 struct CAutoMapEntry_00c3baa0 {                    // 0x30 bytes
     void*          m_pKey;                         // +0x00
@@ -29,7 +29,7 @@ struct CAutoMapEntry_00c3baa0 {                    // 0x30 bytes
 CAutoMapEntry_00c3baa0::CAutoMapEntry_00c3baa0(void* key)
     : m_pKey(key)
     , m_4(0)
-    , m_pchName(g_pchNil_0139c900)
+    , m_pchName(_afxPchNil)
     , m_c(0), m_e(0)
     , m_10(0), m_14(0)
     , m_18(0), m_1a(0), m_1c(0), m_1e(0), m_20(0), m_22(0)

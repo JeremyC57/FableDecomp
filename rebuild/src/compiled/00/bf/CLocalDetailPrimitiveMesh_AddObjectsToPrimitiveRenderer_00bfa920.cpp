@@ -5,11 +5,11 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BFA920, length 346 bytes; thiscall, no arguments, no frame pointer, no EH frame.
 // Identity: vtable 0x012A7E04 slot 5 (rebuild/manifest/rtti-vtables.tsv); Ego_r.pdb and FableWin.pdb both list
 //   ?AddObjectsToPrimitiveRenderer@CLocalDetailPrimitiveMesh@@UAEXXZ.
-// Callees: CEnginePrimitiveRenderer::AddStaticMesh 0x00B32F20 on g_pEnginePrimitiveRenderer (0x01436E80), result by hidden
+// Callees: CEnginePrimitiveRenderer::AddStaticMesh 0x00B32F20 on NEngineInternal::GPPrimitiveRenderer (0x01436E80), result by hidden
 //   pointer; the persistent primitive's virtual slot 3 NotifyReleased 0x00B8FFC0 and slot 1 Delete 0x0042D930 (through the
 //   inline handle Clear / counted-pointer release); CBaseClass::~CBaseClass 0x0099A2E0 on the result temporary (its vtable
 //   0x0122F598 stored first). Float pool: 0.0f @ 0x0122DEDC.
-// Descriptive (made-up) name, already landed: g_pEnginePrimitiveRenderer 0x01436E80 (no PDB data symbol).
+// Descriptive (made-up) name, already landed: NEngineInternal::GPPrimitiveRenderer 0x01436E80 (no PDB data symbol).
 // Shape: `if (!Type->PeekMesh()) return;` then a local CEngineFadeDistance from the type's raw fade start / end (PeekFade*BeforeVideoOptionModifier), flags 1 (0x101 for
 //   boolean alpha, | 0x1000 when the type's receives-shadows value is 0), and one statement
 //   `PrimitiveHandle = renderer->AddStaticMesh(mesh, shadow mesh, Matrix, Scale, fade, 255, CRGBColour(255,255,255,255),
@@ -49,7 +49,7 @@ class CEngineCamera;
 class CDataInputStream;
 class CLocalDetailCacheMap;
 enum LOCAL_DETAIL_PRIMITIVE_TYPE { LocalDetailPrimitiveUnspecified = 0 };
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80
 
 class CLocalDetailObjectCollectionType : public CBaseClassNonCopyable {   // Ego_r.pdb, 84 bytes; vtable 0x012A7D94 (vptr +0x00)
 public:
@@ -120,7 +120,7 @@ void CLocalDetailPrimitiveMesh::AddObjectsToPrimitiveRenderer()
         flags = 0x101;
     if (Type->PeekReceivesShadows() == 0.0f)
         flags |= 0x1000;
-    PrimitiveHandle = g_pEnginePrimitiveRenderer->AddStaticMesh(Type->PeekMesh(), Type->PeekShadowMesh(), Matrix, Scale, fade, 255,
+    PrimitiveHandle = NEngineInternal::GPPrimitiveRenderer->AddStaticMesh(Type->PeekMesh(), Type->PeekShadowMesh(), Matrix, Scale, fade, 255,
                                                                 CRGBColour(255, 255, 255, 255), Type->PeekAlphaRef(),
                                                                 Type->PeekAlphaMipBias(), true, flags);
 }

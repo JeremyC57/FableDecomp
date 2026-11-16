@@ -12,7 +12,7 @@ class CEngineShadowRenderer { public:
     unsigned char _pad000[0x334];
     EShadowRenderingTechnique RenderingTechnique;       // +0x334
 };
-extern CEngineShadowRenderer* g_pShadowRenderer_01436e60;   // 0x01436E60
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 struct CEnginePrimitiveManagerAnimatedMeshesBase {
     unsigned char _pad000[0x98];
     CVertexShader VertexShadersPalSkinDepthBufferShadow[4];             // +0x098
@@ -49,7 +49,7 @@ struct CEnginePrimitiveManagerAnimatedMeshesBase {
 void CEnginePrimitiveManagerAnimatedMeshesBase::FrameStart()
 {
     // retail sets eight selectors in this order; VertexShadersPalSkinDP3BumpSpotShadow (+0x308) is not touched here
-    if (g_pShadowRenderer_01436e60->RenderingTechnique == 2) {
+    if (NEngineInternal::GPShadowRenderer->RenderingTechnique == 2) {
         VertexShadersPalSkinShadowBufferRender = &VertexShadersPalSkinColourShadowBufferRender;
         VertexShadersPalSkinShadow = VertexShadersPalSkinColourBufferShadow;
         VertexShadersPalSkinSpotShadow = VertexShadersPalSkinSpotColourBufferShadow;

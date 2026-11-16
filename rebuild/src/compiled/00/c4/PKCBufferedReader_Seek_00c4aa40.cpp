@@ -9,13 +9,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4AA40, oracle length 325 bytes. Built under /EHsc.
 // Retail bytes:  ... mov ebx,[esp+18h] ; push esi ; mov esi,ecx ; cmp ebx,[esi+20h] ; jbe ok ; ... xor al,al ; ... ret 4 ; ok: mov ecx,[esi+8] ; xor edx,edx ; mov eax,ebx ; div ecx ; push ebp ; push edi ; mov edi,ecx ; mov edx,ebx ; imul edi,eax ; sub edx,edi ; mov edi,[esi+24h] ; cmp eax,edi ; jb outside ; mov ebp,[esi+2Ch] ; add ebp,edi ; cmp eax,ebp ; jae outside ; imul edi,ecx ; cmp ebx,edi ; jae inside ; mov eax,[g_pchNil] ; mov [esp+10h],eax ; xor ebp,ebp ; mov edx,offset "PKCBufferedReader.cpp" ; lea ecx,[esp+10h] ; mov [esp+1Ch],ebp ; call Append ; ... mov edx,19Eh ; ... call AppendNumber ; ... call Append ("Error: Byte offset out of scope???|!!???") ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; cmp eax,ebp ; je skip ; mov ecx,[esp+10h] ; call eax ; skip: lea ecx,[esp+10h] ; mov dword ptr [esp+1Ch],-1 ; call ~CString ; lea ecx,[esp+24h] ; call CTrace::CTrace ; inside: mov ecx,[esi+24h] ; imul ecx,[esi+8] ; sub ebx,ecx ; mov [esi+30h],ebx ; jmp refill ; outside: mov edi,[esi+10h] ; xor ebp,ebp ; cmp edi,eax ; mov [esi+28h],ebp ; mov [esi+2Ch],ebp ; mov [esi+24h],eax ; mov [esi+30h],edx ; jbe a ; mov edi,eax ; a: cmp edi,ebp ; je refill ; imul ecx,edi ; sub eax,edi ; add ecx,edx ; mov [esi+24h],eax ; mov [esi+30h],ecx ; refill: mov ecx,esi ; call Refill ; ... mov al,1 ; ... ret 4
 // The string helpers are named by address.
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4aa40)(const char* text);
 extern PFNLOGSINK_00c4aa40 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

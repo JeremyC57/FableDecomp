@@ -133,14 +133,14 @@ class CEnginePrimitiveTypeInfo { public:
     unsigned char _pad[0x94];
     C2DClipOwner* ClipOwner;                       // +0x94
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 class CEnginePrimitiveRenderer2D { public:
     unsigned char _pad[0x320];
     bool          LayerEnabled[1];                 // +0x320
     float Layer2DToSortDistance(EEngine2DLayer layer); // 0x00B4A6A0
 };
-extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D;   // 0x01436E7C
+namespace NEngineInternal { extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D; }   // 0x01436E7C
 struct CSimulationSettings { unsigned char _pad[0xa4]; bool Enabled; };
 class CEnginePrimitiveRenderer { public:
     unsigned char        _pad000[4];
@@ -148,7 +148,7 @@ class CEnginePrimitiveRenderer { public:
     unsigned char        _pad005[0x2f0 - 5];
     CSimulationSettings* Simulation;               // +0x2f0
 };
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 
 struct CBase {
     virtual void v00();
@@ -187,24 +187,24 @@ void CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalP
     if (mesh.ScreenTLX > display->ViewportBRX || mesh.ScreenBRX < display->ViewportTLX ||
         mesh.ScreenTLY > display->ViewportBRY || mesh.ScreenBRY < display->ViewportTLY)
         return;
-    C2DClipInfo& clip = g_pEnginePrimitiveTypeInfo->ClipOwner->Clip;
+    C2DClipInfo& clip = NEngineInternal::GPPrimitiveTypeInfo->ClipOwner->Clip;
     if (clip.Enabled && clip.Active && clip.Valid) {
         if (mesh.ScreenTLX > clip.BRX || mesh.ScreenBRX < clip.TLX || mesh.ScreenTLY > clip.BRY || mesh.ScreenBRY < clip.TLY)
             return;
     }
     const long& layer = mesh.Layer;
-    if (!g_pPrimitiveRenderer2D->LayerEnabled[layer])
+    if (!NEngineInternal::GPPrimitiveRenderer2D->LayerEnabled[layer])
         return;
     if (!mesh.Initialised)
         mesh.Initialise();
     CMatrix3x4 transform = mesh.GetLODTransform(g_LODTable_0143b934[mesh.LODIndex].Distance, true);
     bool urgent = (mesh.Flags >> 7) & 1;
     C3DMeshInfo* info = mesh.MeshInfo;
-    if (!g_pEnginePrimitiveRenderer->Loading) {
+    if (!NEngineInternal::GPPrimitiveRenderer->Loading) {
         info->BeginLoading(0, false, false);
         info->SetLoadPriority(urgent ? 2 : 1);
     }
-    if (!urgent && !g_pEnginePrimitiveRenderer->Loading) {
+    if (!urgent && !NEngineInternal::GPPrimitiveRenderer->Loading) {
         C3DMeshInfo* current = mesh.MeshInfo;
         if (!current->IsLoaded())
             return;
@@ -256,7 +256,7 @@ void CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalP
             flags |= 0x180;
         long list = (material.Flags & 1) ? 0x10 : 0xf;
         bool simulated;
-        if (subMesh->SimulationStart != subMesh->SimulationEnd && g_pEnginePrimitiveRenderer->Simulation->Enabled &&
+        if (subMesh->SimulationStart != subMesh->SimulationEnd && NEngineInternal::GPPrimitiveRenderer->Simulation->Enabled &&
             mesh.IsSimulationRunning(i))
             simulated = true;
         else
@@ -264,7 +264,7 @@ void CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalP
         CEngineSubPrimitiveAnimatedMesh* subPrimitive = new CEngineSubPrimitiveAnimatedMesh(&mesh, subMesh, list, simulated);
         subPrimitive->Alpha = alpha;
         subPrimitive->RenderFlags = flags;
-        float depth = g_pPrimitiveRenderer2D->Layer2DToSortDistance((EEngine2DLayer)mesh.Layer);
+        float depth = NEngineInternal::GPPrimitiveRenderer2D->Layer2DToSortDistance((EEngine2DLayer)mesh.Layer);
         if (flags & 1)
             depth -= g_pEngineSubPrimitiveRenderer->DepthBias * 9.3132257e-10f;
         g_pEngineSubPrimitiveRenderer->AddSubPrimitive(type, subPrimitive, depth, (CEnginePrimitiveManager*)this);

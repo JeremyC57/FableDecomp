@@ -19,7 +19,7 @@ class CEngineCamera { public:
     unsigned char m_unknown[0x1c0];
     CFrustumPlane m_planes[6];                     // +0x1C0
 };
-extern CEngineCamera* g_pEngineCamera_01436ea0;    // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }    // 0x01436EA0
 
 class CEngineLandscapePatch { public:
     unsigned char _pad00[0x20];
@@ -31,7 +31,7 @@ class CEngineLandscapePatch { public:
 bool CEngineLandscapePatch::ClipPatch()
 {
     for (long i = 0; i < 4; ++i) {
-        const CFrustumPlane& plane = g_pEngineCamera_01436ea0->m_planes[i];
+        const CFrustumPlane& plane = NEngineInternal::GPCamera->m_planes[i];
         float nx = plane.nx;
         float ny = plane.ny;
         float nz = plane.nz;

@@ -6,7 +6,7 @@
 //   0x01436EA0: CEngineCamera (Ego_r) CameraDesc.WorldPosition +0x54, CameraDesc.NearZPlane +0x6C / FarZPlane +0x70,
 //   LookVector +0x1B4, FrustrumPlanes[4] +0x1C0 (CPlane, 0x10 each; tested in the order 2, 3, 0, 1).
 // Globals: 0x01436EA0, the current CEngineCamera* (no PDB data name; landed under eight spellings -- see NOTES.md; this
-//   source uses the bound ?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A, a descriptive name whose type the layout proves).
+//   source uses the bound ?NEngineInternal::GPCamera@@3PAVCEngineCamera@@A, a descriptive name whose type the layout proves).
 // Shape: radius read first, then a copy of the centre through C3DVector's user copy constructor (z homed in the frame,
 //   radius in the dead sphere argument slot), then the camera; one `||` chain so the shared `return false` sits at the
 //   end (separate ifs gave an early inline return, grade 1); dot products as the C3DVector operator* member.
@@ -53,7 +53,7 @@ public:
     C3DVector LookVector;                                  // +0x1B4
     CPlane FrustrumPlanes[4];                              // +0x1C0
 };
-extern CEngineCamera* g_pEngineCamera_01436ea0;                     // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                     // 0x01436EA0
 
 class CEngine {
 public:
@@ -64,7 +64,7 @@ bool CEngine::ClipSphere(const C3DBoundingSphere& sphere) const
 {
     float radius = sphere.Radius;
     C3DVector centre = sphere.Centre;
-    const CEngineCamera* camera = g_pEngineCamera_01436ea0;
+    const CEngineCamera* camera = NEngineInternal::GPCamera;
     C3DVector d = centre - camera->CameraDesc.WorldPosition;
     float depth = d * camera->LookVector;
     if (depth + radius < camera->CameraDesc.NearZPlane ||

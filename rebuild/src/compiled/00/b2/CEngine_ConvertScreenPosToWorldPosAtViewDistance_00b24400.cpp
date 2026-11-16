@@ -26,15 +26,15 @@ class CEngineCamera { public:                    // engine/CEngineCamera.h's ret
     unsigned char _pad0d0[0xe4 - 0xd0];
     CMatrix3x4    InverseViewTransform;         // +0xe4
 };
-extern CEngineCamera* g_pEngineCamera;          // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }          // 0x01436EA0
 
 bool CEngine::ConvertScreenPosToWorldPosAtViewDistance(float distance, const C2DVector& screenPos, C3DVector& worldPos) const
 {
     if (IsActive()) {
         C3DVector viewPos(screenPos.X, screenPos.Y, distance);
-        viewPos.X = (viewPos.X - g_pEngineCamera->WindowCenterX) * g_pEngineCamera->OneOverHalfWindowWidth * distance;
-        viewPos.Y = (g_pEngineCamera->WindowCenterY - viewPos.Y) * g_pEngineCamera->OneOverHalfWindowHeight * distance;
-        g_pEngineCamera->InverseViewTransform.TransformPoint(viewPos);
+        viewPos.X = (viewPos.X - NEngineInternal::GPCamera->WindowCenterX) * NEngineInternal::GPCamera->OneOverHalfWindowWidth * distance;
+        viewPos.Y = (NEngineInternal::GPCamera->WindowCenterY - viewPos.Y) * NEngineInternal::GPCamera->OneOverHalfWindowHeight * distance;
+        NEngineInternal::GPCamera->InverseViewTransform.TransformPoint(viewPos);
         worldPos = viewPos;
         return true;
     }

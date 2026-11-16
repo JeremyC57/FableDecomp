@@ -81,7 +81,7 @@ class CShaderRenderManager { public:
     void DisablePixelShaders();                    // 0x00988190
     void EnablePixelShaders();                     // 0x00988110
 };
-extern CShaderRenderManager* g_pShaderRenderManager;   // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
 struct CRenderStatePreparer {
     virtual void Apply();                          // slot 0
@@ -110,18 +110,18 @@ public:
 void CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long pass)
 {
     g_pRenderStateManager->OpenCaptureBlock();
-    bool pixelShaders = g_pShaderRenderManager->PixelShadersEnabled;
+    bool pixelShaders = NEngineInternal::GPShaderRenderManager->PixelShadersEnabled;
     if (pixelShaders)
-        g_pShaderRenderManager->DisablePixelShaders();
+        NEngineInternal::GPShaderRenderManager->DisablePixelShaders();
     g_pEngineComponent_01436e90->RenderState.Apply();
     g_pRenderManagerCore->m_state2854.Set(0);
     g_pRenderManagerCore->m_state2890.Set(g_renderStateDefault_01396fb8);
     RenderWeaponTrail(*subPrimitive.Parent);
-    if (pixelShaders != g_pShaderRenderManager->PixelShadersEnabled) {
+    if (pixelShaders != NEngineInternal::GPShaderRenderManager->PixelShadersEnabled) {
         if (pixelShaders)
-            g_pShaderRenderManager->EnablePixelShaders();
+            NEngineInternal::GPShaderRenderManager->EnablePixelShaders();
         else
-            g_pShaderRenderManager->DisablePixelShaders();
+            NEngineInternal::GPShaderRenderManager->DisablePixelShaders();
     }
     g_pRenderStateManager->RestoreCaptureBlock();
 }

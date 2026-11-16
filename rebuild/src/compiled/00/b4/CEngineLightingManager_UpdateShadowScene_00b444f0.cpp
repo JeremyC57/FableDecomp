@@ -7,7 +7,7 @@
 class CEngineShadowRenderer { public:
     void UpdateShadowScene(void* scene, long shadowed, void* params);   // 0x00B4F390
 };
-extern CEngineShadowRenderer* g_pShadowRenderer_01436e60;   // 0x01436E60
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 
 class CEngineLightingManager { public:
     unsigned char _pad[0x4694];
@@ -19,7 +19,7 @@ class CEngineLightingManager { public:
 void CEngineLightingManager::UpdateShadowScene(void* scene)
 {
     if (m_shadowMode == 2)
-        g_pShadowRenderer_01436e60->UpdateShadowScene(scene, 1, m_spotLightParams);
+        NEngineInternal::GPShadowRenderer->UpdateShadowScene(scene, 1, m_spotLightParams);
     else if (m_shadowMode == 1)
-        g_pShadowRenderer_01436e60->UpdateShadowScene(scene, 0, m_spotLightParams);
+        NEngineInternal::GPShadowRenderer->UpdateShadowScene(scene, 0, m_spotLightParams);
 }

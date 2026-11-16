@@ -44,7 +44,7 @@ class CEngineWorldMap { public:
         return 0;
     }
 };
-extern CEngineWorldMap* g_pEngineWorldMap;         // 0x01436E8C
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }         // 0x01436E8C
 
 class CEngineLandscapeMap { public:
     void*                         _vptr;           // +0x00
@@ -63,7 +63,7 @@ void CEngineLandscapeMap::InvalidateEdge(long x, long y, long length, long direc
         if (testX < Map->WorldPosX || testX >= Map->WorldPosX + Map->MapWidth
             || y + length <= Map->WorldPosY || y >= Map->WorldPosY + Map->MapHeight) {
             for (long walkY = y; walkY < y + length; ) {
-                CEngineMap* other = g_pEngineWorldMap->PeekMap(testX, walkY);
+                CEngineMap* other = NEngineInternal::GPEngineWorldMap->PeekMap(testX, walkY);
                 if (other) {
                     if (other->Landscape) {
                         long count = y - walkY + length;
@@ -78,14 +78,14 @@ void CEngineLandscapeMap::InvalidateEdge(long x, long y, long length, long direc
             }
         }
         if (y < Map->WorldPosY) {
-            CEngineMap* other = g_pEngineWorldMap->PeekMap(testX, y);
+            CEngineMap* other = NEngineInternal::GPEngineWorldMap->PeekMap(testX, y);
             if (other && other->Landscape)
                 other->Landscape->InvalidateEdge(x, y, Map->WorldPosY - y, direction);
             InvalidateEdge(x, Map->WorldPosY, length + (y - Map->WorldPosY), direction);
             return;
         }
         if (y + length > Map->WorldPosY + Map->MapHeight) {
-            CEngineMap* other = g_pEngineWorldMap->PeekMap(testX, Map->WorldPosY + Map->MapHeight);
+            CEngineMap* other = NEngineInternal::GPEngineWorldMap->PeekMap(testX, Map->WorldPosY + Map->MapHeight);
             if (other && other->Landscape)
                 other->Landscape->InvalidateEdge(x, Map->WorldPosY + Map->MapHeight, y + length - (Map->WorldPosY + Map->MapHeight), direction);
             InvalidateEdge(x, y, Map->WorldPosY + Map->MapHeight - y, direction);
@@ -98,7 +98,7 @@ void CEngineLandscapeMap::InvalidateEdge(long x, long y, long length, long direc
         if (testY < Map->WorldPosY || testY >= Map->WorldPosY + Map->MapHeight
             || x + length <= Map->WorldPosX || x >= Map->WorldPosX + Map->MapWidth) {
             for (long walkX = x; walkX < x + length; ) {
-                CEngineMap* other = g_pEngineWorldMap->PeekMap(walkX, testY);
+                CEngineMap* other = NEngineInternal::GPEngineWorldMap->PeekMap(walkX, testY);
                 if (other) {
                     if (other->Landscape) {
                         long count = x - walkX + length;
@@ -114,14 +114,14 @@ void CEngineLandscapeMap::InvalidateEdge(long x, long y, long length, long direc
             return;
         }
         if (x < Map->WorldPosX) {
-            CEngineMap* other = g_pEngineWorldMap->PeekMap(x, testY);
+            CEngineMap* other = NEngineInternal::GPEngineWorldMap->PeekMap(x, testY);
             if (other && other->Landscape)
                 other->Landscape->InvalidateEdge(x, y, Map->WorldPosX - x, direction);
             InvalidateEdge(Map->WorldPosX, y, length + (x - Map->WorldPosX), direction);
             return;
         }
         if (x + length > Map->WorldPosX + Map->MapWidth) {
-            CEngineMap* other = g_pEngineWorldMap->PeekMap(Map->WorldPosX + Map->MapWidth, testY);
+            CEngineMap* other = NEngineInternal::GPEngineWorldMap->PeekMap(Map->WorldPosX + Map->MapWidth, testY);
             if (other && other->Landscape)
                 other->Landscape->InvalidateEdge(Map->WorldPosX + Map->MapWidth, y, x + length - (Map->WorldPosX + Map->MapWidth), direction);
             InvalidateEdge(x, y, Map->WorldPosX + Map->MapWidth - x, direction);

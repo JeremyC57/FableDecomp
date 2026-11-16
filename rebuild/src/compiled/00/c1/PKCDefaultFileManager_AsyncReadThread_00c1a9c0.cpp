@@ -31,7 +31,7 @@ class CString { public:
     CString& __fastcall operator<<(unsigned long value);// 0x00C0DF10
     ~CString();                                         // 0x00C0BA40
 };
-extern char* g_pDebugBuffer;                               // 0x0139C900
+extern char* _afxPchNil;                               // 0x0139C900
 extern void (__fastcall* g_pfnErrorReport)(const char*);   // 0x0143BB2C
 
 class PKCReadCallback { public:                 // the request's completion object
@@ -80,7 +80,7 @@ void PKCDefaultFileManager::AsyncReadThread()
             bool success = true;
             if (!ReadFile(request.m_hFile, request.m_pBuffer, request.m_size, (unsigned long*)&read, 0)) {
                 {
-                    CString s(g_pDebugBuffer);
+                    CString s(_afxPchNil);
                     s << ".\\PKCDefaultFileManager.cpp" << "(" << 40L << ") : " << "win32 error" << "\n";
                     if (g_pfnErrorReport)
                         g_pfnErrorReport(s.m_pBuffer);
@@ -88,7 +88,7 @@ void PKCDefaultFileManager::AsyncReadThread()
                 success = false;
             } else if (read != request.m_size) {
                 {
-                    CString s(g_pDebugBuffer);
+                    CString s(_afxPchNil);
                     s << ".\\PKCDefaultFileManager.cpp" << "(" << 45L << ") : " << "asked for " << request.m_size
                       << "bytes, only read " << read << " bytes" << "\n";
                     if (g_pfnErrorReport)

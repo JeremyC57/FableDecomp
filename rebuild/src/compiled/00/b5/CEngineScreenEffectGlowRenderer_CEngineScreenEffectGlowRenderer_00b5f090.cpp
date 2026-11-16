@@ -29,7 +29,7 @@
 #include "engine/CEngineResourceManager.h"
 #include "engine/CShaderResource.h"
 #include "engine/CEngineInit.h"
-extern CEngineResourceManager* g_pResourceManager;    // 0x01436E98 (descriptive; no PDB name for this global)
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }    // 0x01436E98 (descriptive; no PDB name for this global)
 CEngineScreenEffectGlowRenderer::CEngineScreenEffectGlowRenderer(const CEngineInit& init)
 {
     if (init.InitFlags & 0x80)
@@ -41,15 +41,15 @@ CEngineScreenEffectGlowRenderer::CEngineScreenEffectGlowRenderer(const CEngineIn
     DynamicTexturePageHandle = -1;
     ShowDebug = 0;
     if (EffectSupported) {
-        VertexShaderCopy = g_pResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_GLOW");
-        VertexShaderBlur = g_pResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_GLOW_BLUR");
-        PixelShaderGlowNeg = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SCREEN_FX_GLOW_NEG");
-        PixelShaderGlow = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SCREEN_FX_GLOW");
-        PixelShaderBlur = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SCREEN_FX_GLOW_BLUR");
-        VertexShaderApplyGlow = g_pResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_DISPLACEMENT");
-        PixelShaderApplyGlow = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_APPLY_GLOW");
-        VertexShaderShowDebug = g_pResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_COPY");
-        PixelShaderShowDebug = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_ONLY");
+        VertexShaderCopy = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_GLOW");
+        VertexShaderBlur = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_GLOW_BLUR");
+        PixelShaderGlowNeg = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SCREEN_FX_GLOW_NEG");
+        PixelShaderGlow = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SCREEN_FX_GLOW");
+        PixelShaderBlur = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SCREEN_FX_GLOW_BLUR");
+        VertexShaderApplyGlow = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_DISPLACEMENT");
+        PixelShaderApplyGlow = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_APPLY_GLOW");
+        VertexShaderShowDebug = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_COPY");
+        PixelShaderShowDebug = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_ONLY");
         InitialiseTextures();
         GlowTexture256 = 0;
         GlowTexture64 = 0;

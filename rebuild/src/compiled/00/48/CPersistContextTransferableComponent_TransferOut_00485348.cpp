@@ -27,22 +27,14 @@ template <> struct CPersistTraits<C3DVector> {
     void TransferIn(CPersistContext& context, CStringParser& parser, C3DVector* value);     // 0x009E84D0
 };
 
-class CPersistContext_TransferableComponentGenericType { public:
-    virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
-    virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
-};
-
-template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {
-    T* TransferableValue;                              // +0x4
-    virtual void TransferOut(CPersistContext& context, CCharString& out);
-    virtual void TransferIn(CPersistContext& context, CStringParser& parser);
-};
+// The wrapper from the shared header: private virtual TransferOut / TransferIn (both PDBs, @@EAE), member Object +4.
+#include "engine/CPersistContext_TransferableComponent.h"
 
 template <class T>
 void CPersistContext_TransferableComponent<T>::TransferOut(CPersistContext& context, CCharString& out)
 {
     CPersistTraits<T> traits;
-    traits.TransferOut(context, out, TransferableValue);
+    traits.TransferOut(context, out, Object);
 }
 
 template void CPersistContext_TransferableComponent<C3DVector>::TransferOut(CPersistContext& context, CCharString& out);

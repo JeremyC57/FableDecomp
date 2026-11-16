@@ -91,7 +91,7 @@ class CEnginePrimitiveManager:public CEnginePrimitiveRenderUtil { public:
  virtual void RenderNonsortedPrimitives();virtual void AddStaticShadowData(CEngineInternalPrimitiveBase&,NEngineShadowRenderer::CShadowSceneContext&);
  CArray<CEngineScene*>* Scenes;bool Enable;
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo; //01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; } //01436E84
 class CEnginePrimitiveHandle { public:void* NativeVTable;CEnginePersistentPrimitiveBase* Data;};
 class CEngineSceneGridCell { public:
  CEngineSceneGridCell* Parent;CEngineInternalPrimitiveBase* FirstPrimitive;C3DBoundingBox BoundingBox;float DrawDistance;
@@ -137,7 +137,7 @@ void CEngineSceneGrid::RenderCellClippedShadowBuffer(unsigned long x,unsigned lo
  bool clippedInside=inside;
  if(!clippedInside){C3DBoundingBox bounds;float distance;if(!GetCellBoundingBoxAndDrawDistance(bounds,distance,x,y)||!volume.ClipBoundingBox(bounds,clippedInside))return;}
  for(CEngineInternalPrimitiveBase* primitive=cell->FirstPrimitive;primitive;){
-  if(primitive->RenderLayerMask&layer){g_pEnginePrimitiveTypeInfo->PrimitiveManagers[primitive->Type]->RenderPrimitiveToShadowBuffer(*primitive);primitive=primitive->NextPrimitive;}
+  if(primitive->RenderLayerMask&layer){NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[primitive->Type]->RenderPrimitiveToShadowBuffer(*primitive);primitive=primitive->NextPrimitive;}
   else primitive=primitive->NextLayerMask;
  }
  if(LevelDown)for(unsigned long yy=0;yy<2;++yy)for(unsigned long xx=0;xx<2;++xx)LevelDown->RenderCellClippedShadowBuffer(x*2+xx,y*2+yy,layer,volume,clippedInside,stats);

@@ -7,13 +7,13 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A5CEE0, 285 bytes (+3 int3), `ret 0Ch`, `and esp,-16` frame. Extent from the retail bytes (no catalog length; BOUNDS_FIX.tsv).
 // Name: Ego_r.pdb ?AlignedSetInterpolate@CMatrix4x4@@QAEXABV1@0M@Z (donor order AlignedTransformTransposedAssumeW then AlignedSetInterpolate; retail 0x00A5CB90 is the reloc-bound AlignedTransformTransposedAssumeW) + reloc_bindings.tsv (the caller at 0x00ADF300).
 // Shape: 1 - t and t each stored as the X of an aligned C4DVector local (only X written; the asm broadcasts it). The x87 fallback reads a and b TRANSPOSED (m[r][c] = a.m[c][r] + (b.m[c][r] - a.m[c][r]) * t) -- retail walks a/b by column while it walks this by row; the SSE path is row-wise. Kept as retail computes it.
-// Global: g_SSEAvailable 0x013D2880 (the landed spelling, NVectorMath_GFInterpolateVectors_00a5bef0.cpp).
+// Global: GEnableSIMD 0x013D2880 (the landed spelling, NVectorMath_GFInterpolateVectors_00a5bef0.cpp).
 #include "engine/CMatrix4x4InterpolateSSE.h"
 class __declspec(align(16)) C4DVector {         // the SSE-aligned 4D vector (Ego_r.pdb C4DVector: X, Y, Z, W)
 public:
     float X, Y, Z, W;
 };
-extern bool g_SSEAvailable;                        // 0x013D2880
+extern bool GEnableSIMD;                        // 0x013D2880
 class CMatrix4x4 {
 public:
     float m[4][4];
@@ -22,7 +22,7 @@ public:
 
 void CMatrix4x4::AlignedSetInterpolate(const CMatrix4x4& a, const CMatrix4x4& b, float t)
 {
-    if (g_SSEAvailable) {
+    if (GEnableSIMD) {
         C4DVector oneMinusT;
         oneMinusT.X = 1.0f - t;
         CMatrix4x4* self = this;

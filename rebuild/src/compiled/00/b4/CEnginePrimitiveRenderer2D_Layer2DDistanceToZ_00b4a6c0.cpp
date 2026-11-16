@@ -7,7 +7,7 @@
 //   "Perspective_TransformDepth" is descriptive.
 // Layout: engine/CEngineCamera.h (ViewTransform +0x80, ZBufferFactor +0xdc, ZBufferOffset +0xe0 -- the PDB offsets
 //   retail uses); CMatrix3x4 as the PDB's E11..E43 (row-major, translation row E41..E43). The camera is the engine's
-//   current camera global 0x01436EA0 (named g_pEngineCamera in the landed primitive-manager sources). 1.0f pooled at
+//   current camera global 0x01436EA0 (named NEngineInternal::GPCamera in the landed primitive-manager sources). 1.0f pooled at
 //   0x0122DED8 (`fdivr`).
 // Shape: one left-to-right expression `distance * E33 + E43 + E23 + E13` (the view z of the layer point, retail's exact
 //   fadd order), then the reciprocal as its own statement (`1.0f / z * F` in one
@@ -22,7 +22,7 @@ public:
     float E41, E42, E43;
 };
 
-extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                  // 0x01436EA0
 
 class CEnginePrimitiveRenderer2D {
 public:
@@ -31,7 +31,7 @@ public:
 
 float CEnginePrimitiveRenderer2D::Layer2DDistanceToZ(float distance)
 {
-    const CEngineCamera* camera = g_pEngineCamera;
+    const CEngineCamera* camera = NEngineInternal::GPCamera;
     const CMatrix3x4& view = *(const CMatrix3x4*)camera->ViewTransform;
     float z = distance * view.E33 + view.E43 + view.E23 + view.E13;
     float oneOverZ = 1.0f / z;

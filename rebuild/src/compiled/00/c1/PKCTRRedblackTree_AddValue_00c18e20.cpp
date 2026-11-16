@@ -11,18 +11,18 @@
 //   +0x20, remembered node +0x24, node {Left, Right, Parent, Colour, Key}); the catalog's gap-scan name is a placeholder.
 // Callees: the allocator's virtual slot 1 Allocate() (vtable 0x012B2F60: slot 0 Free 0x00C19640, slot 1 0x00C19650),
 //   PKCTRRedblackTree::InsertFixup 0x00C18B20 (thiscall `ret 4`; landed under the address-suffixed class, NAME_FIXES), the libpk
-//   trace stream (CString operator<< 0x00C0DEC0 text / 0x00C0DF00 long, ~CString 0x00C0BA40, g_pchNil 0x0139C900,
+//   trace stream (CString operator<< 0x00C0DEC0 text / 0x00C0DF00 long, ~CString 0x00C0BA40, _afxPchNil 0x0139C900,
 //   g_pfnAssertHook 0x0143BB2C) and CDebugBreak 0x00C16750.
 // Shape: the comparator is re-read from its argument slot at every virtual call; the two CDebugBreak temporaries take the
 //   dead bytes of the 8-byte frame below the trace string; the node's fields are stored Parent, Left, Right, Colour, Key.
-extern char* g_pchNil;                          // 0x0139C900 (the shared empty string data)
+extern char* _afxPchNil;                          // 0x0139C900 (the shared empty string data)
 typedef void (__fastcall* PFNASSERTHOOK)(const char* message);
 extern PFNASSERTHOOK g_pfnAssertHook;           // 0x0143BB2C
 
 class CString {                                 // the libpk MFC-style string: one word
 public:
     char* m_pchData;
-    CString() : m_pchData(g_pchNil) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                                         // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);         // 0x00C0DF00

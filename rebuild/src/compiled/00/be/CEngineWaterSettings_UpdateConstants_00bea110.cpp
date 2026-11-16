@@ -13,7 +13,7 @@
 //   (x87 fsin / fcos on the angle times the float two-pi widened to double, one shared product), and this TU's own out-of-line
 //   ?CalcReflectToRefractBlendFactors@CEngineWaterSettings@@QAEXMM@Z 0x00BE94B0 (defined here: VC7.1 expands it at 0x00BEA16A, and the
 //   out-of-line copy this TU emits is byte-identical to retail 0x00BE94B0).
-// Globals (the landed CEngine::Initialise 0x00B26360 spellings): g_pEngineWorldMap 0x01436E8C, g_pResourceManager 0x01436E98,
+// Globals (the landed CEngine::Initialise 0x00B26360 spellings): NEngineInternal::GPEngineWorldMap 0x01436E8C, NEngineInternal::GPResourceManager 0x01436E98,
 //   g_pEngineEnvironmentDef 0x01436E24, g_pDisplayManager_01436e1c 0x01436E1C, g_LandscapeRenderer_01436EA8 0x01436EA8.
 // Layout: engine/CEngineWaterSettings.h with the TYPED opt-in (C2DVector[3][2] shifts +0xE8, histories [3][2][2] +0x118, CMatrix3x4
 //   members); the interpolation fraction is Params->InterpolationInfo.BulletTimeCurrent.WFInterpolate (Params +0x3C); the theme
@@ -64,8 +64,8 @@
 #include "engine/GFCos.h"
 #include "engine/GFFloatToLongNear.h"
 
-extern CEngineWorldMap*          g_pEngineWorldMap;              // 0x01436E8C
-extern CEngineResourceManager*   g_pResourceManager;             // 0x01436E98
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }              // 0x01436E8C
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }             // 0x01436E98
 extern const CEnvironmentDef*    g_pEngineEnvironmentDef;        // 0x01436E24
 extern CDisplayManager*          g_pDisplayManager_01436e1c;     // 0x01436E1C
 extern CEngineLandscapeRenderer* g_LandscapeRenderer_01436EA8;   // 0x01436EA8
@@ -82,7 +82,7 @@ void CEngineWaterSettings::UpdateConstants(const CEngineComponentRenderParams& p
     // Retail keeps the fraction in the dead parameter slot ([esp+34h]).
     float interp = params.Params->InterpolationInfo.BulletTimeCurrent.WFInterpolate;
     if (!ForceWaterSettings) {
-        const CIDrawEnvironmentParams& env = g_pEngineWorldMap->PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams();
+        const CIDrawEnvironmentParams& env = NEngineInternal::GPEngineWorldMap->PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams();
         Colour = env.ThemeChannels[0].Colours[14];                      // +0xE0: dword copy through edi
         CalcReflectToRefractBlendFactors(env.ThemeChannels[0].Scalers[23], env.ThemeChannels[0].Scalers[24]);
         FlowSpeedFactor = env.ThemeChannels[0].Scalers[25];
@@ -97,7 +97,7 @@ void CEngineWaterSettings::UpdateConstants(const CEngineComponentRenderParams& p
     BumpmapGenerationShift[1][1] = (BumpmapGenerationShiftHistory[1][1][0] - BumpmapGenerationShiftHistory[1][1][1]) * interp + BumpmapGenerationShiftHistory[1][1][1];
     EdgeWakeOffset = (EdgeWakeOffsetHistory[0] - EdgeWakeOffsetHistory[1]) * interp + EdgeWakeOffsetHistory[1];
 
-    const CGraphicDataBank* bank = g_pResourceManager->PeekGraphicBank((EGraphicBankNo)0);
+    const CGraphicDataBank* bank = NEngineInternal::GPResourceManager->PeekGraphicBank((EGraphicBankNo)0);
     const CGraphicInfo* ice = bank->PeekGraphic(g_pEngineEnvironmentDef->IceBumpMapPC);
     const CGraphicInfo* water = bank->PeekGraphic(g_pEngineEnvironmentDef->WaterBumpMapPC);
     const CGraphicInfo* sea = bank->PeekGraphic(g_pEngineEnvironmentDef->SeaBumpMapPC);

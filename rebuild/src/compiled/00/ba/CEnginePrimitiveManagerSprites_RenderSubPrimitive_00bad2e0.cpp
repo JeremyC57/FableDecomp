@@ -156,7 +156,7 @@ class CShaderRenderManager {
 public:
     void ResetWorldTransform();                         // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 class CEngineLightingManager {
 public:
     void UpdateGlobalLightingStates();                  // 0x00B46C80
@@ -213,7 +213,7 @@ void CEnginePrimitiveManagerSprites::RenderSubPrimitive(CEngineSubPrimitiveBase&
     SetStateConst(g_pRenderManagerCore->m_state28cc, 0, g_pRenderManagerCore);
     SetStateConst(g_pRenderManagerCore->m_state2944, 0, g_pRenderManagerCore);
     NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
-    g_pShaderRenderManager->ResetWorldTransform();
+    NEngineInternal::GPShaderRenderManager->ResetWorldTransform();
     group->RenderSingleSprite(&subPrimitive, pass);
-    g_pShaderRenderManager->ResetWorldTransform();
+    NEngineInternal::GPShaderRenderManager->ResetWorldTransform();
 }

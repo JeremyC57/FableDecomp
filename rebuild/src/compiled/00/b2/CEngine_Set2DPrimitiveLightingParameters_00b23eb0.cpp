@@ -7,7 +7,7 @@
 //   ?Set2DPrimitiveLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z (the virtual CIEngine method, `this` never read).
 // Callee: CEnginePrimitiveRenderer2D::SetLightingParameters @ 0x00B4A5F0, Ego_r + FableWin ?SetLightingParameters@CEnginePrimitiveRenderer2D@@QAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z;
 //   its `ret 10h` pops the same 4 stack arguments, so VC7.1 passes them through untouched and tail-jumps.
-// Global: the engine component pointer 0x01436E7C (CEnginePrimitiveRenderer2D*) under its landed spelling g_pEnginePrimitiveRenderer2D; it has no PDB data symbol
+// Global: the engine component pointer 0x01436E7C (CEnginePrimitiveRenderer2D*) under its landed spelling NEngineInternal::GPPrimitiveRenderer2D; it has no PDB data symbol
 //   (CEngine::AddEngineComponent<T>(T*, T*&, unsigned char) publishes each component into its own global).
 // Shape: a virtual member of a local CEngine model: the shared engine/CEngine.h carries the vptr as a data member, so it cannot
 //   declare the CIEngine virtual (same model as the landed siblings 0x00B239C0 / 0x00B23CB0 / 0x00B25D20).
@@ -17,7 +17,7 @@ class CRGBFloatColour;
 class CEnginePrimitiveRenderer2D { public:
     void SetLightingParameters(const C3DVector& lightDirection, const CRGBFloatColour& diffuse, const CRGBFloatColour& ambient, const CRGBFloatColour& backlight);   // 0x00B4A5F0
 };
-extern CEnginePrimitiveRenderer2D* g_pEnginePrimitiveRenderer2D;   // 0x01436E7C
+namespace NEngineInternal { extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D; }   // 0x01436E7C
 
 class CEngine { public:                      // vtable 0x012A0F3C, slot 67
     virtual void Set2DPrimitiveLightingParameters(const C3DVector& lightDirection, const CRGBFloatColour& diffuse, const CRGBFloatColour& ambient, const CRGBFloatColour& backlight);
@@ -25,5 +25,5 @@ class CEngine { public:                      // vtable 0x012A0F3C, slot 67
 
 void CEngine::Set2DPrimitiveLightingParameters(const C3DVector& lightDirection, const CRGBFloatColour& diffuse, const CRGBFloatColour& ambient, const CRGBFloatColour& backlight)
 {
-    g_pEnginePrimitiveRenderer2D->SetLightingParameters(lightDirection, diffuse, ambient, backlight);
+    NEngineInternal::GPPrimitiveRenderer2D->SetLightingParameters(lightDirection, diffuse, ambient, backlight);
 }

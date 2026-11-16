@@ -7,7 +7,7 @@
 //   ?CollectPrimitiveStatsForArea@CEngine@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z (the virtual CIEngine method, `this` never read).
 // Callee: CEnginePrimitiveRenderer::CollectPrimitiveStatsForArea @ 0x00B321B0, Ego_r + FableWin ?CollectPrimitiveStatsForArea@CEnginePrimitiveRenderer@@QBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z;
 //   its `ret 10h` pops the same 4 stack arguments, so VC7.1 passes them through untouched and tail-jumps.
-// Global: the engine component pointer 0x01436E80 (CEnginePrimitiveRenderer*) under its landed spelling g_pEnginePrimitiveRenderer; it has no PDB data symbol
+// Global: the engine component pointer 0x01436E80 (CEnginePrimitiveRenderer*) under its landed spelling NEngineInternal::GPPrimitiveRenderer; it has no PDB data symbol
 //   (CEngine::AddEngineComponent<T>(T*, T*&, unsigned char) publishes each component into its own global).
 // Shape: a virtual member of a local CEngine model: the shared engine/CEngine.h carries the vptr as a data member, so it cannot
 //   declare the CIEngine virtual (same model as the landed siblings 0x00B239C0 / 0x00B23CB0 / 0x00B25D20).
@@ -24,7 +24,7 @@ typedef std::map<unsigned long, unsigned long, std::less<unsigned long>, std::al
 class CEnginePrimitiveRenderer { public:
     void CollectPrimitiveStatsForArea(CPrimitiveStatMap& stats, const C2DBoxF& area, EEnginePrimitiveStatIndex statIndex, unsigned long flags) const;   // 0x00B321B0
 };
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80
 
 class CEngine { public:                      // vtable 0x012A0F3C, slot 33
     virtual void CollectPrimitiveStatsForArea(CPrimitiveStatMap& stats, const C2DBoxF& area, EEnginePrimitiveStatIndex statIndex, unsigned long flags) const;
@@ -32,5 +32,5 @@ class CEngine { public:                      // vtable 0x012A0F3C, slot 33
 
 void CEngine::CollectPrimitiveStatsForArea(CPrimitiveStatMap& stats, const C2DBoxF& area, EEnginePrimitiveStatIndex statIndex, unsigned long flags) const
 {
-    g_pEnginePrimitiveRenderer->CollectPrimitiveStatsForArea(stats, area, statIndex, flags);
+    NEngineInternal::GPPrimitiveRenderer->CollectPrimitiveStatsForArea(stats, area, statIndex, flags);
 }

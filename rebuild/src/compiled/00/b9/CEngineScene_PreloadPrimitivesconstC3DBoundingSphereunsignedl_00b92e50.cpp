@@ -91,7 +91,7 @@ class CEnginePrimitiveManager:public CEnginePrimitiveRenderUtil { public:
  virtual void RenderNonsortedPrimitives();virtual void AddStaticShadowData(CEngineInternalPrimitiveBase&,NEngineShadowRenderer::CShadowSceneContext&);
  CArray<CEngineScene*>* Scenes;bool Enable;
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo; //01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; } //01436E84
 class CEnginePrimitiveHandle { public:void* NativeVTable;CEnginePersistentPrimitiveBase* Data;};
 class CEngineSceneGridCell { public:
  CEngineSceneGridCell* Parent;CEngineInternalPrimitiveBase* FirstPrimitive;C3DBoundingBox BoundingBox;float DrawDistance;
@@ -140,7 +140,7 @@ bool CEngineScene::PreloadPrimitives(const C3DBoundingSphere& volume,unsigned lo
  for(CEngineInternalPrimitiveBase* primitive=FirstMovingPrimitive;primitive;primitive=primitive->NextPrimitive){
   C3DBoundingBox bounds;
   if(primitive->GetBoundingBoxWorldSpace(bounds)&&bounds.IntersectsSolid(volume)){
-   bool loaded=g_pEnginePrimitiveTypeInfo->PrimitiveManagers[primitive->Type]->PreloadPrimitive(*primitive,volume.Center,flags);
+   bool loaded=NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[primitive->Type]->PreloadPrimitive(*primitive,volume.Center,flags);
    primitive->PreloadStat=loaded?2:1;result|=loaded;
   }
  }

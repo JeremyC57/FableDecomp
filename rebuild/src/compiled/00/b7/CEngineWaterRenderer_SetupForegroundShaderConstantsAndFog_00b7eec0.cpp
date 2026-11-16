@@ -136,7 +136,7 @@ private:
 public:
     void ResetWorldTransform();   // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 inline float Clamp(float value, float lo, float hi)
 {
@@ -186,20 +186,20 @@ class CEngineWaterRenderer { public:
 void CEngineWaterRenderer::SetupForegroundShaderConstantsAndFog()
 {
     if (Settings.EnableSwell)
-        g_pShaderRenderManager->SetUserVertexShaderConstant(0, Settings.SwellFactor, Settings.ShoreSwellFactor, Settings.RefOffset, 0.0f);
+        NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, Settings.SwellFactor, Settings.ShoreSwellFactor, Settings.RefOffset, 0.0f);
     else
-        g_pShaderRenderManager->SetUserVertexShaderConstant(0, 0.0f, 0.0f, 0.0f, 0.0f);
-    g_pShaderRenderManager->SetUserVertexShaderConstant(1, Settings.SoftEdgeSpanFactor, 0.0f, 0.0f, 0.0f);
-    g_pShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
-    g_pShaderRenderManager->SetBoneTransform(0, &Settings.OtherShaderVars);
-    g_pShaderRenderManager->SetBoneTransform(1, &Settings.ShoreLookupMaskMatrix);
-    g_pShaderRenderManager->SetBoneTransform(2, &Settings.ShoreLookupMaskMatrixForBounds);
-    g_pShaderRenderManager->SetBoneTransform(3, &Settings.ShoreLookupMaskMatrix2);
+        NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, 0.0f, 0.0f, 0.0f, 0.0f);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(1, Settings.SoftEdgeSpanFactor, 0.0f, 0.0f, 0.0f);
+    NEngineInternal::GPShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, &Settings.OtherShaderVars);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, &Settings.ShoreLookupMaskMatrix);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, &Settings.ShoreLookupMaskMatrixForBounds);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, &Settings.ShoreLookupMaskMatrix2);
     float fresnel;
     if (Settings.EnableFresnel)
         fresnel = Clamp(Settings.FresnelFactor * 0.25f, 0.0f, 1.0f);
     else
         fresnel = 0.0f;
-    g_pShaderRenderManager->SetPixelShaderConstant(5, C4DVector(fresnel, fresnel, fresnel, fresnel));
-    g_pShaderRenderManager->PrepareForRender(0x604);
+    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, C4DVector(fresnel, fresnel, fresnel, fresnel));
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0x604);
 }

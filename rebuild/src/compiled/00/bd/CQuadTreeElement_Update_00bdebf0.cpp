@@ -27,7 +27,7 @@ class CEngineCamera { public:
 class CEngineLocalDetailGenerator { public:
     float ModifyFadeDistanceForVideoOptions(unsigned long typeMask, float distance);   // 0x00B597E0
 };
-extern CEngineCamera* g_pEngineCamera;                      // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                      // 0x01436EA0
 extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator; // 0x01436E88
 double __fastcall GFGetFastSubFrameTimer();                 // 0x009E1C70
 class CEngineStaticMapFileBlockManager;
@@ -68,7 +68,7 @@ bool CQuadTreeElement::Update(CEngineStaticMapFileBlockManager* blocks, const CO
     bool changed = false;
     if (!HasDynamicAreasFlag) {
         C3DVector centre(BoundingSphere.Centre.X, BoundingSphere.Centre.Y, BoundingSphere.Centre.Z);
-        float distance = (centre - g_pEngineCamera->Position).GetMagnitude() - BoundingSphere.Radius;
+        float distance = (centre - NEngineInternal::GPCamera->Position).GetMagnitude() - BoundingSphere.Radius;
         if (g_pLocalDetailGenerator->ModifyFadeDistanceForVideoOptions(PrimitiveTypeMask, MaxFadeDistance) > distance) {
             if (GFGetFastSubFrameTimer() < deadline)
                 changed = LoadStaticContents(blocks, palette);

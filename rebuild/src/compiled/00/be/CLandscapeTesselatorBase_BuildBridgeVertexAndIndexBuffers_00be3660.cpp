@@ -40,7 +40,7 @@ class CEngine { public:
     CEngineLandscapeMemoryManager* LandscapeMemoryManager;   // +0x6b0
 };
 extern CEngine*                g_pEngine_01436ea8;          // 0x01436EA8
-extern CEngineResourceManager* g_pResourceManager; // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; } // 0x01436E98
 class CTesselationData { public:
     unsigned char       _pad[0x2c];
     CVertexBufferWin32* BridgeVertexBuffers[4];    // +0x2c
@@ -70,7 +70,7 @@ bool CLandscapeTesselatorBase::BuildBridgeVertexAndIndexBuffers(long bridge, CMo
     if (BridgeIndexBuffer.size() != 0) {
         long size = BridgeIndexBuffer.size() * sizeof(unsigned short);
         CEngineLandscapeMemoryManager* memory = g_pEngine_01436ea8->LandscapeMemoryManager;
-        CIndexBuffer* indexBuffer = memory->AllocateIndexBuffer(owner, size, g_pResourceManager->GetIndexBufferUsage(),
+        CIndexBuffer* indexBuffer = memory->AllocateIndexBuffer(owner, size, NEngineInternal::GPResourceManager->GetIndexBufferUsage(),
                                                                 INDEX_FORMAT_16, PRIMITIVE_TRIANGLE_LIST);
         if (!indexBuffer)
             return false;
@@ -83,7 +83,7 @@ bool CLandscapeTesselatorBase::BuildBridgeVertexAndIndexBuffers(long bridge, CMo
     if (GetVertexCount()) {
         CEngineLandscapeMemoryManager* memory = g_pEngine_01436ea8->LandscapeMemoryManager;
         CVertexBufferWin32* vertexBuffer = memory->AllocateVertexBuffer(owner, VERTEX_TYPE_DEFAULT, GetVertexCount(), GetVertexSize(),
-                                                                         g_pResourceManager->GetVertexBufferUsage());
+                                                                         NEngineInternal::GPResourceManager->GetVertexBufferUsage());
         if (!vertexBuffer)
             return false;
         unsigned char* vertices = vertexBuffer->Lock(0, 0, 0);

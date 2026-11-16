@@ -31,8 +31,8 @@ public:
     void SetViewTransform(const CMatrix3x4& view);      // 0x00988350
     void SetProjectionTransform(const CMatrix4x4& projection);   // 0x00988540
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
-extern CEngineShadowRenderer* g_pShadowRenderer_01436e60;        // 0x01436E60
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }        // 0x01436E60
 class CEngineComponentRenderParams { public:
     void*         Params;                               // +0x00
     long          RenderLayer;                          // +0x04
@@ -137,8 +137,8 @@ void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderP
     if (*(long*)RenderingTechnique != 0 && params.RenderLayer == 2) {
         *(bool*)ShadowBufferRenderStateCaptureBlock = true;
         g_pRenderStateManager->OpenCaptureBlock();
-        SetState(g_pRenderManagerCore->m_state2b60, FloatBits(g_pShadowRenderer_01436e60->ShadowProjectionZOffset), g_pRenderManagerCore);
-        SetState(g_pRenderManagerCore->m_state2b74, FloatBits(g_pShadowRenderer_01436e60->ShadowProjectionZSlopeOffset), g_pRenderManagerCore);
+        SetState(g_pRenderManagerCore->m_state2b60, FloatBits(NEngineInternal::GPShadowRenderer->ShadowProjectionZOffset), g_pRenderManagerCore);
+        SetState(g_pRenderManagerCore->m_state2b74, FloatBits(NEngineInternal::GPShadowRenderer->ShadowProjectionZSlopeOffset), g_pRenderManagerCore);
         NEngineInternal::GPDisplayManager->SetRenderTarget((CRenderTarget*)RenderTarget);
         if (*(long*)RenderingTechnique == 1) {
             CRGBColour white;
@@ -175,7 +175,7 @@ void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderP
         identity.M[8] = 1.0f;
         identity.M[4] = 1.0f;
         identity.M[0] = 1.0f;
-        g_pShaderRenderManager->SetViewTransform(identity);
-        g_pShaderRenderManager->SetProjectionTransform(*(const CMatrix4x4*)(SceneData + 0x40));
+        NEngineInternal::GPShaderRenderManager->SetViewTransform(identity);
+        NEngineInternal::GPShaderRenderManager->SetProjectionTransform(*(const CMatrix4x4*)(SceneData + 0x40));
     }
 }

@@ -24,7 +24,7 @@ class CEnginePrimitiveManager { public:
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool PreloadPrimitive(CEngineInternalPrimitiveBase& primitive, const C3DVector& position, unsigned long flags);   // slot 9 (+0x24)
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 class CEnginePrimitiveHandle { public:
     virtual ~CEnginePrimitiveHandle();
@@ -47,7 +47,7 @@ struct CEngineInternalPrimitiveChanger : CEngineInternalPrimitiveBase {
 static inline CEnginePrimitiveManager* GetManager(const CEngineInternalPrimitiveBase* primitive)
 {
     unsigned long type = *reinterpret_cast<const unsigned long*>(primitive->_pad_0x08);
-    return g_pEnginePrimitiveTypeInfo->PrimitiveManagers[type];
+    return NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[type];
 }
 
 static inline CEngineInternalPrimitiveBase* GetActiveChild(CEngineInternalPrimitiveChanger& changer)

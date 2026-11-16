@@ -29,7 +29,7 @@ struct CEnginePrimitiveRendererSharedData {        // Ego_r.pdb (only the z-spri
     float MaximumZSpriteAsMeshDistance;            // +0x94
 };
 class CEnginePrimitiveRenderer;
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 // The members read here are modelled by the local CEnginePrimitiveRendererSharedData view of that object (name debt: the shared
 // engine/CEnginePrimitiveRenderer.h retail branch).
 
@@ -45,8 +45,8 @@ struct CEngineInternalPrimitiveRepeatedZSprite_Methods : CEngineInternalPrimitiv
 CEngineFadeDistance CEngineInternalPrimitiveRepeatedZSprite_Methods::GetTransitionFade() const
 {
     CEngineFadeDistance fade(FadeInStart, FadeInEnd);
-    float transitionEnd = Clamp(fade.MaxDrawDistance, ((CEnginePrimitiveRendererSharedData*)g_pEnginePrimitiveRenderer)->MinimumZSpriteAsMeshDistance,
-                                ((CEnginePrimitiveRendererSharedData*)g_pEnginePrimitiveRenderer)->MaximumZSpriteAsMeshDistance);
+    float transitionEnd = Clamp(fade.MaxDrawDistance, ((CEnginePrimitiveRendererSharedData*)NEngineInternal::GPPrimitiveRenderer)->MinimumZSpriteAsMeshDistance,
+                                ((CEnginePrimitiveRendererSharedData*)NEngineInternal::GPPrimitiveRenderer)->MaximumZSpriteAsMeshDistance);
     fade.FadeBeginDistance -= fade.MaxDrawDistance - transitionEnd;
     fade.MaxDrawDistance = transitionEnd;
     return fade;

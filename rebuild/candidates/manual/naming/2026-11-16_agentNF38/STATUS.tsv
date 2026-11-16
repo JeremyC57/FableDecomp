@@ -1,0 +1,380 @@
+address	change	grade	test	grades_used	entries	note
+0x0048531E	local TransferableComponent model replaced by engine/CPersistContext_TransferableComponent.h (private virtual, @@EAE)	RELOCATION_MATCH	PASS	1	0x0048531E	
+0x00485348	local TransferableComponent model replaced by engine/CPersistContext_TransferableComponent.h (private virtual, @@EAE)	RELOCATION_MATCH	PASS	1	0x00485348	
+0x0052E470	self rename ConvertX; static data through the header's PDB private statics (DefaultBackBufferWidth, BackBufferWidth, IsUsingRelativeCoords)	RELOCATION_MATCH	PASS	2	0x0052E470 0x01375CD4 0x013B8768 0x013B876C	header opt-ins FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS + _CONVERTXY
+0x0052E4D0	self rename ConvertY; static data through the PDB private statics (DefaultBackBufferHeight, BackBufferHeight, IsUsingRelativeCoords)	RELOCATION_MATCH	PASS	2	0x0052E4D0 0x01375CD8 0x013B8768 0x013B8770	header opt-ins as 0x0052E470
+0x00556570	self rename AddExclusiveObserver (free stand-in) -> NUISystem::CRedefinerList::SetAcceptButton on engine/NUISystem_CRedefinerList.h	MATCH	PASS	1	0x00556570	
+0x006421C0	local TransferableComponent model replaced by engine/CPersistContext_TransferableComponent.h (private virtual, @@EAE)	RELOCATION_MATCH	PASS	1	0x006421C0	
+0x006421F0	local TransferableComponent model replaced by engine/CPersistContext_TransferableComponent.h (private virtual, @@EAE)	RELOCATION_MATCH	PASS	1	0x006421F0	
+0x006E71B0	g_pScriptRunner retyped onto engine/CSuspendableProcessMicrothread.h (local CScriptRunner view removed; StopRunning +5)	RELOCATION_MATCH	PASS	1	0x013D2838	
+0x0075C9B0	self rename CKeyCamera::GetEventName -> CTCCameraPointScriptedSpline::CKeyCamera::GetEvent on engine/CTCCameraPointScriptedSpline.h	RELOCATION_MATCH	PASS	1	0x0075C9B0	
+0x0077C360	self rename CLoopedRange::GetFraction -> NGraphicAppearance::CTCGraphicAppearanceSprite::GetInterpolatedAnimStage on the shared header	RELOCATION_MATCH	PASS	1	0x0077C360	
+0x0079F730	self rename CLightningBeam::AllBeamsInactive const -> CTCWillLightning::CLightningBeam::AllChildrenInactive on engine/CTCWillLightning.h	RELOCATION_MATCH	PASS	1	0x0079F730	
+0x007E7760	g_pScriptRunner retyped CScriptRunner -> class CSuspendableProcessMicrothread (forward declaration only)	RELOCATION_MATCH	PASS	1	0x013D2838	
+0x009DC6E0	header opt-in FABLE_RETAIL_CGENERICVERTEX_ORIGINAL_RHW_PASS23 (BIGGEST_RHW_VERTEX_VALUE, was g_ScreenRHW via CTVertexRHWColSpecTex1.h)	RELOCATION_MATCH	PASS	2	0x0139652C	
+0x009DC870	data respell g_ScreenRHW -> extern const float BIGGEST_RHW_VERTEX_VALUE (0x0139652C)	RELOCATION_MATCH	PASS	1	0x0139652C	
+0x009DCA80	data respell g_ScreenRHW -> extern const float BIGGEST_RHW_VERTEX_VALUE (0x0139652C)	RELOCATION_MATCH	PASS	1	0x0139652C	
+0x009DD210	data respell g_ScreenRHW -> extern const float BIGGEST_RHW_VERTEX_VALUE (0x0139652C)	RELOCATION_MATCH	PASS	1	0x0139652C	
+0x009DD960	data respell g_ScreenRHW -> extern const float BIGGEST_RHW_VERTEX_VALUE (0x0139652C)	RELOCATION_MATCH	PASS	1	0x0139652C	
+0x009DDA50	data respell g_ScreenRHW -> extern const float BIGGEST_RHW_VERTEX_VALUE (0x0139652C)	RELOCATION_MATCH	PASS	1	0x0139652C	
+0x009DDFF0	data respell g_ScreenRHW -> extern const float BIGGEST_RHW_VERTEX_VALUE (0x0139652C)	RELOCATION_MATCH	PASS	1	0x0139652C	
+0x00A5B850	data respell: g_SSEAvailable->GEnableSIMD(5)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00A5B870	data respell: g_SSEAvailable->GEnableSIMD(2)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00A5BBA0	data respell: g_SSEAvailable->GEnableSIMD(2)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00A5BEF0	data respell: g_SSEAvailable->GEnableSIMD(2)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00A5C300	data respell: g_SSEAvailable->GEnableSIMD(1)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00A5CEE0	data respell: g_SSEAvailable->GEnableSIMD(2)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00A9D580	data respell: g_SSEAvailable->GEnableSIMD(2)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00A9EB90	data respell: g_SSEAvailable->GEnableSIMD(2)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00AE0E60	data respell: g_SSEAvailable->GEnableSIMD(2)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00B23B50	data respell: g_pEngineCamera_01436ea0->NEngineInternal::GPCamera(2)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B23B80	data respell: g_pEngineCamera->NEngineInternal::GPCamera(2)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B23BB0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23BC0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23BE0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23BF0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23C20	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23C30	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23C40	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23C50	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23C60	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23C70	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23C90	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23CA0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23CB0	data respell: g_pResourceManager->NEngineInternal::GPResourceManager(3)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00B23D00	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B23DB0	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B23DC0	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B23E00	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B23E10	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B23E20	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B23E30	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B23E40	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B23E50	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B23E60	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B23EB0	data respell: g_pEnginePrimitiveRenderer2D->NEngineInternal::GPPrimitiveRenderer2D(2)	RELOCATION_MATCH	PASS	1	0x01436E7C	
+0x00B23F40	data respell: g_pResourceManager->NEngineInternal::GPResourceManager(2)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00B23F50	data respell: g_pResourceManager->NEngineInternal::GPResourceManager(2)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00B23F70	data respell: g_pEngineShadowRenderer->NEngineInternal::GPShadowRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E60	
+0x00B23F80	data respell: g_pEngineShadowRenderer->NEngineInternal::GPShadowRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E60	
+0x00B24150	data respell: g_pEngineCamera_01436ea0->NEngineInternal::GPCamera(2)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B24400	data respell: g_pEngineCamera->NEngineInternal::GPCamera(5)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B24500	data respell: g_pDisplacementRenderer_01436e38->NEngineInternal::GPScreenEffectDisplacementRenderer(2), g_pShadowRenderer_01436e60->NEngineInternal::GPShadowRenderer(3)	RELOCATION_MATCH	PASS	1	0x01436E38 0x01436E60	
+0x00B24690	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1), g_pResourceManager->NEngineInternal::GPResourceManager(1), g_pEngine_01436ea4->NEngineInternal::GPEngine(2)	RELOCATION_MATCH	PASS	1	0x01436E80 0x01436E98 0x01436EA4	
+0x00B26360	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1), g_pDisplacementRenderer_01436e38->NEngineInternal::GPScreenEffectDisplacementRenderer(3), g_pEngineSkyRenderer->NEngineInternal::GPSkyRenderer(3), g_pEngineOcclusionManager->NEngineInternal::GPOcclusionManager(1), g_pEngineShadowRenderer->NEngineInternal::GPShadowRenderer(2), g_pEnginePrimitiveRenderer2D->NEngineInternal::GPPrimitiveRenderer2D(3), g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(24), g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1), g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(1), g_pResourceManager->NEngineInternal::GPResourceManager(2), g_pEngine_01436ea4->NEngineInternal::GPEngine(1)	RELOCATION_MATCH	PASS	2	0x01436E38 0x01436E50 0x01436E5C 0x01436E60 0x01436E7C 0x01436E80 0x01436E84 0x01436E8C 0x01436E98 0x01436EA0 0x01436EA4	
+0x00B2B000	data respell: g_pEngine_01436ea4->NEngineInternal::GPEngine(1)	RELOCATION_MATCH	PASS	1	0x01436EA4	
+0x00B2F7C0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(2)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B2F9F0	data respell: g_pOcclusionManager->NEngineInternal::GPOcclusionManager(1)	RELOCATION_MATCH	PASS	1	0x01436E5C	
+0x00B2FA90	data respell: g_pOcclusionManager->NEngineInternal::GPOcclusionManager(1)	RELOCATION_MATCH	PASS	1	0x01436E5C	
+0x00B2FC50	data respell: g_ShaderRenderManager->NEngineInternal::GPShaderRenderManager(4)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B32100	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(1)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B32230	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(6)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B324A0	data respell: g_pEnginePrimitiveRenderer2D->NEngineInternal::GPPrimitiveRenderer2D(1), g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E7C 0x01436E84	
+0x00B32AD0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(6)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B33AE0	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(2)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B396E0	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B3A110	data respell: g_pEngineCamera_01436ea0->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B3B5D0	data respell: g_pShaderRenderManager_01436e14->NEngineInternal::GPShaderRenderManager(1)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B3B6D0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(1)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B3B8E0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(1)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B42ED0	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(1)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B444F0	data respell: g_pShadowRenderer_01436e60->NEngineInternal::GPShadowRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E60	
+0x00B44D50	data respell: g_pShaderRenderManager_01436e14->NEngineInternal::GPShaderRenderManager(1)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B44F20	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(2)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B44FE0	data respell: g_pEngine_01436ea4->NEngineInternal::GPEngine(1)	RELOCATION_MATCH	PASS	1	0x01436EA4	
+0x00B451D0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B46280	data respell: g_SSEAvailable->GEnableSIMD(3)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00B47310	data respell: g_pShaderRenderManager_01436e14->NEngineInternal::GPShaderRenderManager(1), g_pShadowRenderer_01436e60->NEngineInternal::GPShadowRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E14 0x01436E60	
+0x00B47630	data respell: g_pEngineCamera_01436ea0->NEngineInternal::GPCamera(1), g_pShaderRenderManager_01436e14->NEngineInternal::GPShaderRenderManager(3)	RELOCATION_MATCH	PASS	2	0x01436E14 0x01436EA0	
+0x00B482A0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1), g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E80 0x01436E84	
+0x00B49810	data respell: g_SSEAvailable->GEnableSIMD(2)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00B4A6C0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(2)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B4ABB0	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(2)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B4CED0	data respell: g_SSEAvailable->GEnableSIMD(2)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00B4F510	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(2), g_pShadowRenderer_01436e60->NEngineInternal::GPShadowRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E14 0x01436E60	
+0x00B4FC40	data respell: g_pEngineShadowRenderer->NEngineInternal::GPShadowRenderer(2), g_pEngineLightingManager->NEngineInternal::GPLightingManager(2)	RELOCATION_MATCH	PASS	1	0x01436E60 0x01436E9C	
+0x00B52160	data respell: gShaderRenderManager->NEngineInternal::GPShaderRenderManager(6)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B54100	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(2)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B54210	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(2)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B54310	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(13)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B599C0	data respell: g_pEngineCamera_01436ea0->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B59A30	data respell: g_pEngineCamera->NEngineInternal::GPCamera(2)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B59BE0	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(5)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B5E700	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(3)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B5F090	data respell: g_pResourceManager->NEngineInternal::GPResourceManager(9)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00B5FAB0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1), g_pResourceManager->NEngineInternal::GPResourceManager(1)	RELOCATION_MATCH	PASS	2	0x01436E98 0x01436EA0	
+0x00B61690	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(3)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B63010	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(4)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B63260	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(3)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B63530	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(3)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B64550	data respell: g_pEngineCamera->NEngineInternal::GPCamera(4), g_pOcclusionManager->NEngineInternal::GPOcclusionManager(2), g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2), g_pEngineLightingManager->NEngineInternal::GPLightingManager(2)	RELOCATION_MATCH	PASS	2	0x01436E5C 0x01436E8C 0x01436E9C 0x01436EA0	
+0x00B64FA0	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B65A20	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B662F0	data respell: g_pEngineCamera -> NEngineInternal::GPCamera (6 uses); binder was unverified by xref, checked by object symbols	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B670E0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B67480	data respell: g_pShaderRenderManager_01436e14->NEngineInternal::GPShaderRenderManager(1)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B676F0	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(3)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B67920	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(4)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B68610	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(1)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B6B0B0	data respell: g_pEngineWorldMap -> NEngineInternal::GPEngineWorldMap (1 use); binder was unverified by xref, checked by object symbols	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00B6D510	self rename CWaterDynamicTextures::InitialiseDynamicTextures -> CEngineWaterRenderer::InitialiseDynamicTextures (private) on engine/CEngineWaterRenderer.h	RELOCATION_MATCH	PASS	3	0x00B6D510	
+0x00B6D940	data respell: g_pEngineResourceManager_01436e98->NEngineInternal::GPResourceManager(1)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00B6E010	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1), g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(2)	RELOCATION_MATCH	PASS	2	0x01436E14 0x01436EA0	
+0x00B6E260	data respell: g_pEngineOcclusionManager->NEngineInternal::GPOcclusionManager(5)	RELOCATION_MATCH	PASS	1	0x01436E5C	
+0x00B6E3E0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(8)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B71880	data respell: g_pResourceManager->NEngineInternal::GPResourceManager(1)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00B75CA0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(9)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B76BC0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(13)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B77E20	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(13)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B7AD20	data respell: g_pRenderManager->NEngineInternal::GPRenderManager(1)	RELOCATION_MATCH	PASS	1	0x01436E18	
+0x00B7C510	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1), g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(7)	RELOCATION_MATCH	PASS	2	0x01436E14 0x01436EA0	
+0x00B7EEC0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(10)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B7F0F0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(9)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B7F3B0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(10)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B7F600	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(7)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B7FA20	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(11)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B806E0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B80940	data respell: g_pEngineCamera->NEngineInternal::GPCamera(2)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B812F0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(4)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B814B0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(4)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B81640	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(4)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B88BC0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(3)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B891B0	data respell: g_pResourceManager->NEngineInternal::GPResourceManager(10)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00B8B630	data respell: g_pEngineResourceManager_01436e98->NEngineInternal::GPResourceManager(3)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00B8DF50	data respell: g_pEngineCamera->NEngineInternal::GPCamera(7)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B900B0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(2)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B90CD0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(3)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B91140	data respell: g_pOcclusionManager->NEngineInternal::GPOcclusionManager(3)	RELOCATION_MATCH	PASS	1	0x01436E5C	
+0x00B91760	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B91840	data respell: g_pPrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B91F50	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B92070	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B92500	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B92660	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B92790	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B92C20	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B92D30	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B92E50	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B92F80	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B930A0	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B943F0	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00B98DA0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B991D0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00B99670	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(4), g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E14 0x01436E80	
+0x00B99710	data respell: g_pEngineCamera->NEngineInternal::GPCamera(4)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B99860	data respell: g_pEngineCamera->NEngineInternal::GPCamera(8)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00B99BB0	data respell: g_SSEAvailable->GEnableSIMD(3), g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x013D2880 0x01436E80	
+0x00B9A4A0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1), g_SSEAvailable->GEnableSIMD(2), g_pEngineShadowRenderer->NEngineInternal::GPShadowRenderer(2), g_pPrimitiveRendererSharedData->NEngineInternal::GPPrimitiveRendererSharedData(4), g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2), g_pEngineLightingManager->NEngineInternal::GPLightingManager(2)	RELOCATION_MATCH	PASS	2	0x013D2880 0x01436E60 0x01436E78 0x01436E80 0x01436E9C 0x01436EA0	
+0x00B9C2E0	data respell: g_SSEAvailable->GEnableSIMD(3)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00B9C500	data respell: g_SSEAvailable->GEnableSIMD(2)	RELOCATION_MATCH	PASS	1	0x013D2880	
+0x00B9D100	data respell: g_pShadowRenderer_01436e60->NEngineInternal::GPShadowRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E60	
+0x00B9DFC0	data respell: g_pEngineResourceManager_01436e98->NEngineInternal::GPResourceManager(2)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00B9E750	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(2)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00B9E950	data respell: g_pPrimitiveRenderer2D->NEngineInternal::GPPrimitiveRenderer2D(2), g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(3), g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E7C 0x01436E80 0x01436E84	
+0x00BA6FF0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(2), g_pPrimitiveRendererSharedData->NEngineInternal::GPPrimitiveRendererSharedData(5), g_pEngineLightingManager->NEngineInternal::GPLightingManager(2)	RELOCATION_MATCH	PASS	2	0x01436E78 0x01436E9C 0x01436EA0	
+0x00BA9360	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BA95D0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BA9A70	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BAA460	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BAA4E0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BABF70	data respell: g_pEngineCamera->NEngineInternal::GPCamera(3)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BAD2E0	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(2)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00BB1EF0	data respell: g_pShadowRenderer_01436e60->NEngineInternal::GPShadowRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E60	
+0x00BB6450	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BB6AB0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(3)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BB8090	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(3)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00BB8EF0	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(2), g_pEngineLightingManager->NEngineInternal::GPLightingManager(4)	RELOCATION_MATCH	PASS	1	0x01436E84 0x01436E9C	
+0x00BBA340	data respell: g_pEngineCamera->NEngineInternal::GPCamera(3)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BBAC60	data respell: g_pEngineLightingManager->NEngineInternal::GPLightingManager(5)	RELOCATION_MATCH	PASS	1	0x01436E9C	
+0x00BBBF70	data respell: g_pEngineCamera->NEngineInternal::GPCamera(3)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BBDDD0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BBF4A0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(2), g_pDisplacementRenderer_01436e38->NEngineInternal::GPScreenEffectDisplacementRenderer(2), g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1), g_pEngineLightingManager->NEngineInternal::GPLightingManager(3)	RELOCATION_MATCH	PASS	2	0x01436E38 0x01436E84 0x01436E9C 0x01436EA0	
+0x00BC04F0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1), g_pDisplacementRenderer_01436e38->NEngineInternal::GPScreenEffectDisplacementRenderer(1), g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1), g_pEngineLightingManager->NEngineInternal::GPLightingManager(5)	RELOCATION_MATCH	PASS	2	0x01436E38 0x01436E84 0x01436E9C 0x01436EA0	
+0x00BC14E0	data respell: g_pResourceManager->NEngineInternal::GPResourceManager(21)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00BC25F0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(2), g_pDisplacementRenderer_01436e38->NEngineInternal::GPScreenEffectDisplacementRenderer(2), g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2), g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(2), g_pEngineLightingManager->NEngineInternal::GPLightingManager(4)	RELOCATION_MATCH	PASS	2	0x01436E38 0x01436E80 0x01436E84 0x01436E9C 0x01436EA0	
+0x00BC5820	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00BC5970	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00BC5C50	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00BC6210	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00BC6270	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00BC6340	data respell: g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E84	
+0x00BCB800	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(2)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00BCD490	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(5)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00BCE900	data respell: g_pShaderRenderManager->NEngineInternal::GPShaderRenderManager(2)	RELOCATION_MATCH	PASS	1	0x01436E14	
+0x00BCEA60	data respell: g_pShadowRenderer_01436e60->NEngineInternal::GPShadowRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E60	
+0x00BCEBE0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BCF2E0	data respell: g_pPrimitiveRendererSharedData->NEngineInternal::GPPrimitiveRendererSharedData(2), g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2), g_pEngine_01436ea4->NEngineInternal::GPEngine(1)	RELOCATION_MATCH	PASS	1	0x01436E78 0x01436E80 0x01436EA4	
+0x00BCF430	data respell: g_pEngine_01436ea4->NEngineInternal::GPEngine(1)	RELOCATION_MATCH	PASS	1	0x01436EA4	
+0x00BD1F70	data respell: g_pPrimitiveRenderer2D->NEngineInternal::GPPrimitiveRenderer2D(2), g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(3), g_pEnginePrimitiveTypeInfo->NEngineInternal::GPPrimitiveTypeInfo(1)	RELOCATION_MATCH	PASS	1	0x01436E7C 0x01436E80 0x01436E84	
+0x00BD2920	data respell: g_pResourceManager->NEngineInternal::GPResourceManager(2)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00BD2BC0	data respell: g_pResourceManager->NEngineInternal::GPResourceManager(1)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00BDC2D0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BDC980	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(1)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00BDCBB0	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(6)	RELOCATION_MATCH	PASS	1	0x01436E8C	
+0x00BDEB50	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BDEBF0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BE0CD0	data respell: g_pPrimitiveRenderer2D->NEngineInternal::GPPrimitiveRenderer2D(2)	RELOCATION_MATCH	PASS	1	0x01436E7C	
+0x00BE0DE0	data respell: g_pPrimitiveRenderer2D->NEngineInternal::GPPrimitiveRenderer2D(1)	RELOCATION_MATCH	PASS	1	0x01436E7C	
+0x00BE1BA0	data respell: g_pPrimitiveRenderer2D_01436e7c->NEngineInternal::GPPrimitiveRenderer2D(1)	RELOCATION_MATCH	PASS	1	0x01436E7C	
+0x00BE1E70	data respell: g_pEngineCamera_01436ea0 -> NEngineInternal::GPCamera (3 uses); binder was unverified by xref, checked by object symbols	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BE2A80	data respell signed char g_highestSetBitTable[256] -> unsigned char GTopBitInByteTable[256]	RELOCATION_MATCH	PASS	1	0x0143B990	
+0x00BE3110	data respell: g_pResourceManager->NEngineInternal::GPResourceManager(3)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00BE3660	data respell: g_pResourceManager->NEngineInternal::GPResourceManager(2)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00BE79D0	data respell: g_pOcclusionManager->NEngineInternal::GPOcclusionManager(8)	RELOCATION_MATCH	PASS	1	0x01436E5C	
+0x00BE91E0	data respell: g_pEngineResourceManager_01436e98->NEngineInternal::GPResourceManager(3)	RELOCATION_MATCH	PASS	1	0x01436E98	
+0x00BEA110	data respell: g_pEngineWorldMap->NEngineInternal::GPEngineWorldMap(2), g_pResourceManager->NEngineInternal::GPResourceManager(2)	RELOCATION_MATCH	PASS	1	0x01436E8C 0x01436E98	
+0x00BEACA0	data respell: g_pShaderRenderManager -> NEngineInternal::GPShaderRenderManager (3), g_pEngineCamera -> NEngineInternal::GPCamera (2); binder was unverified by xref, checked by object symbols	RELOCATION_MATCH	PASS	1	0x01436E14 0x01436EA0	
+0x00BF12A0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BF18B0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(2)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BF3860	data respell: g_pEngineCamera_01436ea0->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BF71D0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(1)	RELOCATION_MATCH	PASS	1	0x01436EA0	
+0x00BF7DF0	data respell: g_pEngineCamera->NEngineInternal::GPCamera(2), g_SSEAvailable->GEnableSIMD(3)	RELOCATION_MATCH	PASS	2	0x013D2880 0x01436EA0	
+0x00BF9CC0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BFA8A0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BFA920	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(3)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BFABA0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00BFACC0	data respell: g_pEnginePrimitiveRenderer->NEngineInternal::GPPrimitiveRenderer(1)	RELOCATION_MATCH	PASS	1	0x01436E80	
+0x00C08880	data respell: g_pchNil->_afxPchNil(3)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C08D40	data respell: g_pchNil->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C09920	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C099F0	data respell: g_pchNil->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C0A250	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C0A300	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C0AD10	data respell _EmptyString.m_pchData (CString view) -> _afxPchNil (0x0139C900)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C0DAB0	data respell _EmptyString.m_pchData (CString view) -> _afxPchNil (0x0139C900)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C0DF50	data respell _EmptyString.m_pchData (CString view) -> _afxPchNil (0x0139C900)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C0E0F0	data respell _EmptyString.m_pchData (CString view) -> _afxPchNil (0x0139C900)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C15740	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C157F0	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C169D0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C16B10	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C17740	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C17850	data respell: g_pchNil->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C17940	data respell: g_pDebugBuffer->_afxPchNil(3)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C17BE0	data respell: g_pDebugBuffer->_afxPchNil(3)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C17E60	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C17F30	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C18000	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C180D0	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C18270	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C18340	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C18410	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C185B0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C187A0	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C18870	data respell: g_pDebugBuffer->_afxPchNil(3)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C18E20	data respell: g_pchNil->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C191B0	data respell g_logBuffer_0139c900 (void*) -> char* _afxPchNil	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C19250	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C19340	local CDebugStream (a CString stand-in) replaced by engine/CString.h (BUILDERS / ALLOCCOPY / DEFAULT_CTOR); CDebugBreak from the header	RELOCATION_MATCH	PASS	3	0x00C0BA40 0x00C0DF00 0x0139C900	
+0x00C194F0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C19FA0	self rename ReleaseFileObject_00c19fa0 (free __stdcall stand-in) -> PKCDefaultFileManager::ReleaseFileObject on libpk/PKCDefaultFileManager.h + libpk/CAudioFile.h (delete through the virtual destructor); local CString model replaced by engine/CString.h (binds _afxPchNil, entry 204 set)	RELOCATION_MATCH	PASS	2	0x00C19FA0 0x0139C900	
+0x00C1A370	data respell: g_pDebugBuffer->_afxPchNil(3)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C1A510	data respell: g_pDebugBuffer->_afxPchNil(5)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C1A9C0	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C1DB60	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C1DE50	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C22B40	data respell: g_pchEmptyString->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C23370	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C23420	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C239B0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C23C10	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C23E00	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C24050	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C25A50	data respell: g_pchEmptyString->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C271F0	callee respell CODA_CreateSample -> CODA_BufferCreate (0x00C36080)	RELOCATION_MATCH	PASS	1	0x00C36080	
+0x00C276B0	callee respell CODA_StopSource -> CODA_SourcePlay (0x00C35DD0)	RELOCATION_MATCH	PASS	1	0x00C35DD0	
+0x00C27760	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C279A0	callee respell RenderBuffer_00c35dd0 -> extern "C" CODA_SourcePlay	RELOCATION_MATCH	PASS	1	0x00C35DD0	
+0x00C28AE0	data respell long g_pchNil -> (long)_afxPchNil	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C29FC0	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C2A090	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C2A150	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C2CE60	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C2CF10	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C2EBC0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C2F070	data respell: g_pchNil->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C2F190	data respell: g_pchNil->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C2F2B0	data respell: g_pchNil->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C30840	data respell void* g_pDebugBuffer -> _afxPchNil	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C312C0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C31560	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C31710	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C31810	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C31A70	data respell: g_pchNil->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C31B90	data respell: g_pchNil->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C31DB0	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C322E0	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C324F0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C325F0	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C326D0	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C327B0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C328B0	data respell g_logBuffer_0139c900 (void*) -> char* _afxPchNil	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C32950	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C32BF0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C32CD0	data respell: g_pchNil->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C35510	data respell g_logBuffer_0139c900 (void*) -> char* _afxPchNil	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C355E0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C35A10	self rename AudioObject_PlaySource -> extern "C" CODA_SourceQueueBuffer	RELOCATION_MATCH	PASS	1	0x00C35A10	
+0x00C36080	self rename operator_new -> extern "C" CODA_BufferCreate	RELOCATION_MATCH	PASS	1	0x00C36080	
+0x00C37560	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C37610	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C388A0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C38D60	data respell: g_pchNil_0139c900->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C392F0	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C394B0	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C39670	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C39830	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C399F0	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C3A330	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C3A420	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C3B690	data respell g_c3b690_ptr -> _afxPchNil	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C3B930	data respell g_default_00c3b930 -> _afxPchNil	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C3BAA0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C3BAF0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C3BF30	data respell: g_pchNil->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C454E0	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C45590	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C47B90	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C47C40	data respell: g_pDebugBuffer->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C48640	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C48860	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C48E00	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C49010	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C491D0	self rename onto libpk/CCodaFrameStreamer.h (CCodaFrame::GetData)	MATCH	PASS	1	0x00C491D0	
+0x00C491E0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C49650	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C49820	callee respell CODA_StopSource -> CODA_SourcePlay (0x00C35DD0)	RELOCATION_MATCH	PASS	2	0x00C35DD0 0x0139C900	
+0x00C49B90	self rename CMailboxQueue_00c49b90::ProcessMessage_CMailboxQueue_00c49b90 -> CMailboxQueue::ProcessMessage on libpk/CCodaFrameStreamer.h	RELOCATION_MATCH	PASS	1	0x00C49B90	
+0x00C49FF0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4A1A0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4AA40	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4AB90	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4AC70	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4B060	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4B300	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4B890	data respell: g_pchNil_0139c900->_afxPchNil(2)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4BC80	self rename CMailbox_00c4bc80::GetResult -> PKCMailbox::GetResult on libpk/PKCMailbox.h; local CString/lock models replaced by shared headers (binds _afxPchNil, entry 204 set)	RELOCATION_MATCH	PASS	3	0x00C4BC80 0x0139C900	
+0x00C4C1D0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4C370	data respell g_logBuffer_0139c900 (void*) -> char* _afxPchNil	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4C440	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4C6C0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4C7A0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4C8B0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4CAB0	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4CC90	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C4CD80	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C62A50	data respell: g_pDebugBuffer->_afxPchNil(3)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C62C70	data respell: g_pchNil_0139c900->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C62E60	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00C73A00	data respell g_flag_0143ccd8 -> g_ForceTestTone (descriptive libpk name, as 0x00C73AF0 spells it)	RELOCATION_MATCH	PASS	1	0x0143CCD8	
+0x00C73D90	data respell: g_pDebugBuffer->_afxPchNil(1)	RELOCATION_MATCH	PASS	1	0x0139C900	
+0x00DA0EF0	same enum respell	RELOCATION_MATCH	PASS	1	0x(ENUMERATOR)	
+0x00E1FEB0	self rename onto engine/NScript_CQR_EscortTraderScript.h (local CV_AmbushScamScript struct removed)	RELOCATION_MATCH	PASS	1	0x00E1FEB0	
+0x00E2C100	same enum respell	RELOCATION_MATCH	PASS	1	0x(ENUMERATOR)	
+0x00E44EA0	same enum respell (MOVE_TYPE_WALKING -> ENTITY_MOVE_WALK too)	RELOCATION_MATCH	PASS	1	0x(ENUMERATOR)	
+0x00E4B5B0	same enum respell	RELOCATION_MATCH	PASS	1	0x(ENUMERATOR)	
+0x00E4E0E0	self rename CTollBanditScript::HandleBanditToll -> NScript::CV_BanditTollScript::CTollBandit::SetUpBanditToll on engine/CV_BanditTollScript.h; local CCharString/CScriptThing models replaced	RELOCATION_MATCH	PASS	4	0x00E4E0E0	
+0x00EDD170	local enum EScriptEntityMoveType replaced by engine/EScriptEntityMoveType.h; MOVE_TYPE_RUNNING -> ENTITY_MOVE_RUN	RELOCATION_MATCH	PASS	1	0x(ENUMERATOR)	
+0x01224B60	static-init object retyped CStatic_00c0bfe0 -> CString (engine/CString.h); object named g_CString_0143bb3c (descriptive)	RELOCATION_MATCH	PASS	1	0x00C0BFE0	
+0x0122A20A	local CAIBrain model replaced by engine/CAIBrain.h (FABLE_RETAIL_CAIBRAIN_STATEGROUPINFO): table is the private static const StateGroupInfo	RELOCATION_MATCH	PASS	1	0x013BB008	
+0x0122AE00	atexit thunk calls CString::~CString on g_CString_0143bb3c (was AutoTinyThunkTarget::Invoke_00c0ba40)	RELOCATION_MATCH	PASS	2	0x00C0BA40	

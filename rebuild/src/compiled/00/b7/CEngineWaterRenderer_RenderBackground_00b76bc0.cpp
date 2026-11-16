@@ -155,7 +155,7 @@ private:
 public:
     void ResetWorldTransform();   // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 struct IDirect3DDevice9 {
     virtual void __stdcall Slot0() = 0;
     virtual void __stdcall Slot1() = 0;
@@ -460,28 +460,28 @@ void CEngineWaterRenderer::RenderBackground(float time)
     SetState(g_pRenderManagerCore->m_state2f0c, g_renderStateValue_01396dcc, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state2fac, g_renderStateValue_01396dd0, g_pRenderManagerCore);
     if (HighendWaterEnabled) {
-        g_pShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(BackgroundVertexShader), 0);
-        g_pShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(BackgroundPixelShader));
+        NEngineInternal::GPShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(BackgroundVertexShader), 0);
+        NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(BackgroundPixelShader));
     } else {
-        g_pShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(WaterBackgroundLowEndVertexShader), 0);
-        g_pShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(WaterLowEndPixelShader));
+        NEngineInternal::GPShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(WaterBackgroundLowEndVertexShader), 0);
+        NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(WaterLowEndPixelShader));
     }
-    g_pShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
-    g_pShaderRenderManager->SetBoneTransform(0, &BoneMatrix0);
-    g_pShaderRenderManager->SetBoneTransform(1, &BoneMatrix1);
-    g_pShaderRenderManager->SetBoneTransform(2, &BoneMatrix2);
-    g_pShaderRenderManager->SetBoneTransform(3, &BoneMatrix3);
+    NEngineInternal::GPShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, &BoneMatrix0);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, &BoneMatrix1);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, &BoneMatrix2);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, &BoneMatrix3);
     if (HighendWaterEnabled) {
         float bump = WaterBumpFactor * BumpScale;
-        g_pShaderRenderManager->SetUserVertexShaderConstant(3, bump, 0.0f, bump * -0.5f, 1.0f);
+        NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(3, bump, 0.0f, bump * -0.5f, 1.0f);
     } else {
         static C4DVector lowEndConstant(0.8f, 0.8f, 0.0f, 0.0f);
         static CRGBFloatColour lowEndColour(0.0f, 0.4f, 0.8f, 1.0f);
         CRGBFloatColour colour = lowEndColour * *g_pEngineLighting->AmbientColour;
-        g_pShaderRenderManager->SetPixelShaderConstant(5, lowEndConstant);
-        g_pShaderRenderManager->SetPixelShaderConstant(6, C4DVector(colour));
+        NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, lowEndConstant);
+        NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(6, C4DVector(colour));
     }
-    g_pShaderRenderManager->PrepareForRender(0x604);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0x604);
     RenderBackgroundList(AlphaedBackgroundRenderList, time);
     SetStateStateMaskFirst(g_pRenderManagerCore->m_state28b8, 0, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state28cc, 0, g_pRenderManagerCore);

@@ -7,7 +7,7 @@
 //   ?ReallocateShadowBuffer@CEngine@@UAEXXZ (the virtual CIEngine method, `this` never read).
 // Callee: CEngineShadowRenderer::XBoxReallocateShadowBuffer @ 0x00B4B8A0, Ego_r + FableWin ?XBoxReallocateShadowBuffer@CEngineShadowRenderer@@QAEXXZ;
 //   its `ret ` pops the same 0 stack arguments, so VC7.1 passes them through untouched and tail-jumps.
-// Global: the engine component pointer 0x01436E60 (CEngineShadowRenderer*) under its landed spelling g_pEngineShadowRenderer; it has no PDB data symbol
+// Global: the engine component pointer 0x01436E60 (CEngineShadowRenderer*) under its landed spelling NEngineInternal::GPShadowRenderer; it has no PDB data symbol
 //   (CEngine::AddEngineComponent<T>(T*, T*&, unsigned char) publishes each component into its own global).
 // Shape: a virtual member of a local CEngine model: the shared engine/CEngine.h carries the vptr as a data member, so it cannot
 //   declare the CIEngine virtual (same model as the landed siblings 0x00B239C0 / 0x00B23CB0 / 0x00B25D20).
@@ -15,7 +15,7 @@
 class CEngineShadowRenderer { public:
     void XBoxReallocateShadowBuffer();   // 0x00B4B8A0
 };
-extern CEngineShadowRenderer* g_pEngineShadowRenderer;   // 0x01436E60
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 
 class CEngine { public:                      // vtable 0x012A0F3C, slot 75
     virtual void ReallocateShadowBuffer();
@@ -23,5 +23,5 @@ class CEngine { public:                      // vtable 0x012A0F3C, slot 75
 
 void CEngine::ReallocateShadowBuffer()
 {
-    g_pEngineShadowRenderer->XBoxReallocateShadowBuffer();
+    NEngineInternal::GPShadowRenderer->XBoxReallocateShadowBuffer();
 }

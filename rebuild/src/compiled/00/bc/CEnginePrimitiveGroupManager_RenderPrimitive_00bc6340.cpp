@@ -94,7 +94,7 @@ class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* PrimitiveManagers[47];   // +0x10
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 struct CEngineRenderSettings {
     unsigned char _pad[0x78];
@@ -123,7 +123,7 @@ long CEnginePrimitiveGroupManager::RenderPrimitive(CEngineInternalPrimitiveBase&
                 if (target)
                     target->OcclusionInfo[occlusion] = group.OcclusionInfo[occlusion];
             }
-            long rendered = g_pEnginePrimitiveTypeInfo->PrimitiveManagers[child->Type]->RenderPrimitive(*child, layer, chain);
+            long rendered = NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[child->Type]->RenderPrimitive(*child, layer, chain);
             if (rendered > result)
                 result = rendered;
         }

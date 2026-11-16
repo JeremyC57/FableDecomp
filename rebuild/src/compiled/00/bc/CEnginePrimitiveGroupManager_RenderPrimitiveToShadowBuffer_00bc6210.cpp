@@ -83,7 +83,7 @@ class CEnginePrimitiveTypeInfo : public CEngineComponent, public CBaseClassNonCo
 public:
     CEnginePrimitiveManager* PrimitiveManagers[47];  // +0x10
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 ERendered CEnginePrimitiveGroupManager::RenderPrimitiveToShadowBuffer(CEngineInternalPrimitiveBase& primitive)
 {
@@ -94,7 +94,7 @@ ERendered CEnginePrimitiveGroupManager::RenderPrimitiveToShadowBuffer(CEngineInt
         CEnginePrimitiveHandle& handle = group.Primitives[i];
         if (!handle.IsNull()) {
             CEngineInternalPrimitiveBase& child = static_cast<CEngineInternalPrimitiveBase&>(handle.GetData());
-            ERendered rendered = g_pEnginePrimitiveTypeInfo->PrimitiveManagers[child.Type]->RenderPrimitiveToShadowBuffer(child);
+            ERendered rendered = NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[child.Type]->RenderPrimitiveToShadowBuffer(child);
             if (rendered > result)
                 result = rendered;
         }

@@ -20,7 +20,7 @@ class CTVertexRHWColSpecTex1 { public:
 };
 float __stdcall GFAXToVX(float x);                 // 0x009E1E10
 float __stdcall GFAYToVY(float y);                 // 0x009E1E40
-extern float g_ScreenRHW;                          // 0x0139652C
+extern const float BIGGEST_RHW_VERTEX_VALUE;                          // 0x0139652C (S_LDATA32 const float in both PDBs; the spelling engine/CTVertexRHWColSpecTex1.h declares)
 
 struct CRenderManager2D {
     void Add2DTri(const CTVertexRHWColSpecTex1& v0, const CTVertexRHWColSpecTex1& v1, const CTVertexRHWColSpecTex1& v2,
@@ -41,21 +41,21 @@ bool CRenderManager2D::Draw2DTriangle(const C2DVector& p0, const C2DVector& p1, 
     v[0].Diffuse = argb;
     v[0].U = 0.0f;
     v[0].V = 0.0f;
-    v[0].RHW = g_ScreenRHW;
+    v[0].RHW = BIGGEST_RHW_VERTEX_VALUE;
     v[1].X = GFAXToVX(p1.X);
     v[1].Y = GFAYToVY(p1.Y);
     v[1].Z = 0.0f;
     v[1].Diffuse = argb;
     v[1].U = 0.0f;
     v[1].V = 0.0f;
-    v[1].RHW = g_ScreenRHW;
+    v[1].RHW = BIGGEST_RHW_VERTEX_VALUE;
     v[2].X = GFAXToVX(p2.X);
     v[2].Y = GFAYToVY(p2.Y);
     v[2].Z = 0.0f;
     v[2].Diffuse = argb;
     v[2].U = 0.0f;
     v[2].V = 0.0f;
-    v[2].RHW = g_ScreenRHW;
+    v[2].RHW = BIGGEST_RHW_VERTEX_VALUE;
     if (flags & 1) {
         if (colour.A != 0xff)
             mode = 3;

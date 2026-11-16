@@ -10,7 +10,7 @@
 //   reference count +4). Caller: the async read thread 0x00C1A9C0, after a request's completion callback. The manifest
 //   label "FileManager_CloseHandle" is descriptive.
 // Callees: PKCTRRedblackMap::Find 0x00C1AE50 (bound) and the map's remove-by-key 0x00C1B7D0 (unbound: descriptive
-//   `Remove`), the libpk trace stream (CString 0x00C0DEC0 / 0x00C0DF00 / ~0x00C0BA40, buffer g_pDebugBuffer 0x0139C900,
+//   `Remove`), the libpk trace stream (CString 0x00C0DEC0 / 0x00C0DF00 / ~0x00C0BA40, buffer _afxPchNil 0x0139C900,
 //   hook g_pfnErrorReport 0x0143BB2C, CDebugBreak 0x00C16750: the dominant landed spellings), KERNEL32 CloseHandle (import
 //   0x0143FE30), operator delete 0x00BFE9BC.
 // Shape: the map's Find and remove-by-key have same-TU bodies (`#pragma auto_inline(off)`; Find is the landed GetFileSize
@@ -29,7 +29,7 @@ class CString { public:
     ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
-extern char* g_pDebugBuffer;                               // 0x0139C900
+extern char* _afxPchNil;                               // 0x0139C900
 extern void (__fastcall* g_pfnErrorReport)(const char*);   // 0x0143BB2C
 
 struct SOpenFile_00c1a370 {
@@ -96,7 +96,7 @@ void PKCDefaultFileManager::CloseFile(unsigned long key)
     SOpenFile_00c1a370* file;
     PKCProtectionInstance lock((PKCCriticalSection*)m_section);
     if (m_files.Find(&key, (void**)&file) != 0) {
-        CString s(g_pDebugBuffer);
+        CString s(_afxPchNil);
         s << ".\\PKCDefaultFileManager.cpp" << "(" << 65 << ") : " << "something has gone wrong here" << "\n";
         if (g_pfnErrorReport)
             g_pfnErrorReport(s.m_pBuffer);
@@ -104,7 +104,7 @@ void PKCDefaultFileManager::CloseFile(unsigned long key)
     }
     if (file->m_refCount <= 0) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << ".\\PKCDefaultFileManager.cpp" << "(" << 68 << ") : " << "Reference count for file out of sync" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

@@ -16,14 +16,14 @@ struct CCameraVector {
  float Dot(const CCameraVector& o)const{return X*o.X+Y*o.Y+Z*o.Z;}
 };
 struct CCameraDescriptionView {unsigned char Window[0x10];unsigned char RotationMatrix[0x30];CCameraVector WorldPosition;};
-extern CEngineCamera* g_pEngineCamera; //01436ea0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; } //01436ea0
 class CEngineComponentParams;
 struct CEnginePrimitiveOcclusionManager_Methods:CEnginePrimitiveOcclusionManager {void FrameStart(const CEngineComponentParams&);};
 void CEnginePrimitiveOcclusionManager_Methods::FrameStart(const CEngineComponentParams&)
 {
  InvalidateOcclusion=false;
- CCameraVector position=reinterpret_cast<const CCameraDescriptionView*>(g_pEngineCamera->CameraDesc)->WorldPosition;
- CCameraVector direction=reinterpret_cast<const CCameraVector&>(g_pEngineCamera->LookVector_X);
+ CCameraVector position=reinterpret_cast<const CCameraDescriptionView*>(NEngineInternal::GPCamera->CameraDesc)->WorldPosition;
+ CCameraVector direction=reinterpret_cast<const CCameraVector&>(NEngineInternal::GPCamera->LookVector_X);
  if(NewSceneFlag){NewSceneFlag=false;InvalidateOcclusion=true;}
  else if((position-reinterpret_cast<const CCameraVector&>(LastCameraPosition_X)).Length()>MaxCameraPositionStep || direction.Dot(reinterpret_cast<const CCameraVector&>(LastCameraDirection_X))<cos(MaxCameraAngleStep*(double)6.2831855f))InvalidateOcclusion=true;
  reinterpret_cast<CCameraVector&>(LastCameraPosition_X)=position;

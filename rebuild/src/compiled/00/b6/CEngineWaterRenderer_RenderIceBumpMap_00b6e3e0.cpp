@@ -134,7 +134,7 @@ private:
 public:
     void ResetWorldTransform();   // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
     unsigned long m_value;                         // +0x04 requested value
@@ -196,18 +196,18 @@ class CEngineWaterRenderer { public:                      // retail layout (thre
 
 void CEngineWaterRenderer::RenderIceBumpMap()
 {
-    g_pShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(IceBumpmapVertexShader), 0);
-    g_pShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(IceBumpmapPixelShader));
-    g_pShaderRenderManager->SetPixelShaderConstant(5, C4DVector(1.0f, 0.0f, 0.0f, 0.0f));
-    g_pShaderRenderManager->SetPixelShaderConstant(6, C4DVector(0.0f, 1.0f, 0.0f, 0.0f));
-    g_pShaderRenderManager->PrepareForRender(0);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(IceBumpmapVertexShader), 0);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(IceBumpmapPixelShader));
+    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, C4DVector(1.0f, 0.0f, 0.0f, 0.0f));
+    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(6, C4DVector(0.0f, 1.0f, 0.0f, 0.0f));
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
     g_pRenderManagerCore->DrawCurrentBuffersAsIndexedTris(0, 0xe, 0, 2);
     SetState(g_pRenderManagerCore->m_state28b8, 1, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state291c, g_renderStateValue_01396f6c, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state2930, g_renderStateValue_01396f6c, g_pRenderManagerCore);
-    g_pShaderRenderManager->SetPixelShaderConstant(5, C4DVector(0.0f, 1.0f, 0.0f, 0.0f));
-    g_pShaderRenderManager->SetPixelShaderConstant(6, C4DVector(0.0f, 0.0f, 1.0f, 0.0f));
-    g_pShaderRenderManager->PrepareForRender(0);
+    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, C4DVector(0.0f, 1.0f, 0.0f, 0.0f));
+    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(6, C4DVector(0.0f, 0.0f, 1.0f, 0.0f));
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
     g_pRenderManagerCore->DrawCurrentBuffersAsIndexedTris(0, 0xe, 0, 2);
     SetState(g_pRenderManagerCore->m_state28b8, 0, g_pRenderManagerCore);
 }

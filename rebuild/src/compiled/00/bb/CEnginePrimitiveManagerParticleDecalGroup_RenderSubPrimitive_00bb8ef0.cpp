@@ -29,7 +29,7 @@
 //   CShaderRenderManager::SetVertexShaderConstantLayout 0x0098B5E0 (CScopedVertexShaderConstantLayout), RenderLandscapeDecalGroup 0x00BB8750
 //   (its only caller, 0x00BB9533), CRenderStateManager::RestoreCaptureBlock 0x00A05840 (~CRenderStateScopedCaptureBlock).
 // Globals: NEngineInternal::GPResourceManager 0x01436E98, GPRenderManager 0x01436E18, GPShaderRenderManager 0x01436E14,
-//   g_pEnginePrimitiveTypeInfo 0x01436E84 (GetPrimitiveManager(24) = the particle-group manager, +0x70), g_pEngineLightingManager 0x01436E9C
+//   NEngineInternal::GPPrimitiveTypeInfo 0x01436E84 (GetPrimitiveManager(24) = the particle-group manager, +0x70), NEngineInternal::GPLightingManager 0x01436E9C
 //   (established spellings; no PDB data symbol on this machine), CRenderStateCaptureBlock::StateManager 0x013CB508,
 //   CShaderRenderManager::SingletonInstance 0x013BC470; D3D tables CRenderStateManager::D3DTextureUVModeTable 0x01396DC8 (CLAMP 0x01396DD0),
 //   D3DBlendOpModeTable 0x01396ED0, D3DAlphaBlendModeTable 0x01396F68.
@@ -90,8 +90,8 @@
 
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }                  // 0x01436E18
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }        // 0x01436E98
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;                           // 0x01436E84
-extern CEngineLightingManager* g_pEngineLightingManager;                               // 0x01436E9C
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }                           // 0x01436E84
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }                               // 0x01436E9C
 
 // FableWin.pdb ??$GFDebugPDynamicCast@PAVCEnginePrimitiveManager@@PAVCEnginePrimitiveManagerParticleGroup@@@@YI... (this TU's COMDAT list): the
 // release path is the plain static cast (shared definition, engine/GFDebugPDynamicCast.h).
@@ -152,15 +152,15 @@ void CEnginePrimitiveManagerParticleDecalGroup::RenderSubPrimitive(CEngineSubPri
         bool premultiplied_alpha = SetupAlphaBlendingStatesFromBlendMode(group.BlendMode);
         long point_light_count = 0;
         if (group.Flags & 0x80)
-            point_light_count = GFDebugPDynamicCast(g_pEnginePrimitiveTypeInfo->GetPrimitiveManager(24),
+            point_light_count = GFDebugPDynamicCast(NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(24),
                                                     (CEnginePrimitiveManagerParticleGroup*)0)->SetUpPointLights();
         else
-            g_pEngineLightingManager->SetSelfIlluminationAmbient(100);
-        g_pEngineLightingManager->UpdateGlobalLightingStates();
+            NEngineInternal::GPLightingManager->SetSelfIlluminationAmbient(100);
+        NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
         NEngineInternal::GPShaderRenderManager->PrepareForRender(1);
         CScopedVertexShaderConstantLayout layout(3);
         if (group.LandscapeDecal)
             RenderLandscapeDecalGroup(group, premultiplied_alpha, point_light_count);
-        g_pEngineLightingManager->RestoreDefaultPrimitiveParameters();
+        NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
     }
 }

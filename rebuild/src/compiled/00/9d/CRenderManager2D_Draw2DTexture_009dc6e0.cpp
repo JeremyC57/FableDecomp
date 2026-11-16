@@ -5,7 +5,7 @@
 // 0x009DC870).
 // Callees: the colour packing (inline, the A,R,G,B word, 0x009DC6ED..0x009DC70B), GFVBoxToABox 0x009E1E70 (__fastcall, virtual
 //   box in, screen box out; Ego_r.pdb ?GFVBoxToABox@@YIXABVC2DBoxF@@AAV1@@Z), CGenericVertex<CTVertexRHWColSpecTex1Base>::SetRHWFromZ
-//   (inline; reads the 2D TU's screen RHW float 0x0139652C, bound spelling g_ScreenRHW), the private CRenderManager2D::Add2DTri
+//   (inline; reads the 2D TU's screen RHW float 0x0139652C, bound spelling BIGGEST_RHW_VERTEX_VALUE), the private CRenderManager2D::Add2DTri
 //   0x009DC030 (v0, v1, v2, mode, &texture) twice.
 // Shape: the ARGB word is packed before the box conversion (esi across the call). The four corners (TL, TR, BR, BL) take X/Y from
 //   the converted box first, one statement per member in vertex order: c2 merges the TLY / BRX / BRY reads of neighbouring
@@ -14,10 +14,11 @@
 //   with Z a known 0 the inline SetRHWFromZ folds to its first arm (RHW = the screen RHW float), which is why retail loads that
 //   float twice (0x009DC747 for vertex 0, 0x009DC75E shared by vertices 1..3 with one register copy 0x009DC796) and why vertex
 //   0's Z is the one late immediate store (0x009DC7DE) while the other Z and specular zeroes share `xor eax,eax`. Plain
-//   `v[i].RHW = g_ScreenRHW` stores in the same places leave a third register copy for vertex 3 and other argument registers.
+//   `v[i].RHW = BIGGEST_RHW_VERTEX_VALUE` stores in the same places leave a third register copy for vertex 3 and other argument registers.
 //   Blend mode: flag 2 picks 2, else flag 1 picks 3, else 1 (`test al,2` hoisted above the stores, the inner choice branchless).
 //   Triangles (0, 1, 2) and (0, 2, 3).
 #define FABLE_RETAIL_CGENERICVERTEX_SETRHWFROMZ
+#define FABLE_RETAIL_CGENERICVERTEX_ORIGINAL_RHW_PASS23   // BIGGEST_RHW_VERTEX_VALUE 0x0139652C (both PDBs, S_LDATA32 const float)
 // Colour: the D3DCOLOR is packed here from the four channel accessors (Ego_r.pdb / FableWin.pdb GetA / GetR / GetG / GetB), the
 //   D3DCOLOR_ARGB shape (`movzx eax,[R] ; mov ah,[A] ; shl eax,8 ; or eax,G ; shl eax,8 ; or eax,B`). It is not CRGBColour::GetD3DCOLOR:
 //   FableWin.pdb's debug GetD3DCOLOR 0x02CCFDA0 is a one-load accessor (0x20-byte slot), see engine/CRGBColour.h.

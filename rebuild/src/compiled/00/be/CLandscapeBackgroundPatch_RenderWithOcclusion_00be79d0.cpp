@@ -41,7 +41,7 @@ class CEngineOcclusionManager { public:
         return -1;
     }
 };
-extern CEngineOcclusionManager* g_pOcclusionManager;   // 0x01436E5C
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }   // 0x01436E5C
 struct CEngineGlobal {
     unsigned char _pad[0x63e];
     bool          OcclusionEnabled;                 // +0x63E (descriptive)
@@ -73,7 +73,7 @@ void CLandscapeBackgroundPatch::RenderWithOcclusion(long& queryHandle, bool& occ
 {
     if (g_pEngine->OcclusionEnabled) {
         if (queryHandle >= 0) {
-            if (g_pOcclusionManager->GetQueryResult(queryHandle, true) == 0) {
+            if (NEngineInternal::GPOcclusionManager->GetQueryResult(queryHandle, true) == 0) {
                 float y = (float)((Parent->Map->Header)->OriginY + MapY);
                 float x = (float)((Parent->Map->Header)->OriginX + MapX);
                 CMatrix3x4 box;
@@ -85,23 +85,23 @@ void CLandscapeBackgroundPatch::RenderWithOcclusion(long& queryHandle, bool& occ
                 box.Position.X = x;
                 box.Position.Z = MinZ;
                 box.Position.Y = y;
-                queryHandle = g_pOcclusionManager->RenderOcclusionBox(box);
+                queryHandle = NEngineInternal::GPOcclusionManager->RenderOcclusionBox(box);
                 if (occluded)
                     Parent->SetVisibilityFlagAndUpdateParentChain(false);
                 occluded = true;
             } else {
-                g_pOcclusionManager->StartOcclusionTest();
+                NEngineInternal::GPOcclusionManager->StartOcclusionTest();
                 Render(true);
-                queryHandle = g_pOcclusionManager->AddQuery();
+                queryHandle = NEngineInternal::GPOcclusionManager->AddQuery();
                 occluded = false;
-                g_pOcclusionManager->EndOcclusionTest(queryHandle);
+                NEngineInternal::GPOcclusionManager->EndOcclusionTest(queryHandle);
             }
         } else {
-            g_pOcclusionManager->StartOcclusionTest();
+            NEngineInternal::GPOcclusionManager->StartOcclusionTest();
             Render(false);
-            queryHandle = g_pOcclusionManager->AddQuery();
+            queryHandle = NEngineInternal::GPOcclusionManager->AddQuery();
             occluded = true;
-            g_pOcclusionManager->EndOcclusionTest(queryHandle);
+            NEngineInternal::GPOcclusionManager->EndOcclusionTest(queryHandle);
         }
     } else {
         Render(true);

@@ -69,7 +69,7 @@ class CEngine { public:
     unsigned char     _pad[0x130];
     CSimpleMemoryPool FrameMemoryPool;             // +0x130
 };
-extern CEngine* g_pEngine_01436ea4;                         // 0x01436EA4
+namespace NEngineInternal { extern CEngine* GPEngine; }                         // 0x01436EA4
 
 class CEngineLightingManager { public:
     unsigned char          _pad[0x44ec];
@@ -116,7 +116,7 @@ CEngineLocalLightArray* CEngineLightingManager::ClipLightCountAndBuildLightArray
     }
     if (lightCount == 0)
         return &EmptyLightArray;
-    CEngineLocalLightArray* array = (CEngineLocalLightArray*)g_pEngine_01436ea4->FrameMemoryPool.Allocate(lightCount * sizeof(CEngineLocalLightElement) + 4);
+    CEngineLocalLightArray* array = (CEngineLocalLightArray*)NEngineInternal::GPEngine->FrameMemoryPool.Allocate(lightCount * sizeof(CEngineLocalLightElement) + 4);
     array->LightCount = lightCount;
     long i = 0;
     for (CManagerLocalLight* light = lights; light && i < maxLights; light = light->NextLocalLight, ++i) {

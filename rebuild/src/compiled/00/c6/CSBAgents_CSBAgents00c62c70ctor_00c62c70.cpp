@@ -4,13 +4,13 @@
 // Retail bytes:  ... push ecx ; mov eax,[esp+14h] ; push ebx ; push esi ; push edi ; mov esi,ecx ; push eax ; mov [esp+10h],esi ; call CSlaveObject::CSlaveObject ; mov edi,[esp+24h] ; mov ecx,[esp+28h] ; mov edx,[esp+2Ch] ; mov eax,[esp+30h] ; xor ebx,ebx ; cmp edi,ebx ; mov [esp+18h],ebx ; mov dword ptr [esi],12B938Ch ; mov [esi+8],edi ; mov [esi+0Ch],ecx ; mov [esi+10h],edx ; mov [esi+14h],ebx ; mov [esi+18h],eax ; ja alloc ; mov ecx,[g_pchNil] ; mov [esp+20h],ecx ; mov edx,offset ".\PKRASlaveObject_Local.cpp" ; lea ecx,[esp+20h] ; mov byte ptr [esp+18h],1 ; call Append ; ... mov edx,0Fh ; ... call AppendNumber ; ... call Append ("Expecting to be reading some data!") ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; cmp eax,ebx ; je skip ; mov ecx,[esp+20h] ; call eax ; skip: lea ecx,[esp+20h] ; mov [esp+18h],bl ; call ~CString ; lea ecx,[esp+20h] ; call CTrace::CTrace ; alloc: push edi ; call operator new ; add esp,4 ; cmp eax,ebx ; mov [esi+14h],eax ; jne done ; (the same warning with 11h and "EMEM", state 2) ; done: ... mov eax,esi ; ... ret 14h
 // The classes are named by address.
 void* __cdecl operator new(unsigned int size);
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c62c70)(const char* text);
 extern PFNLOGSINK_00c62c70 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

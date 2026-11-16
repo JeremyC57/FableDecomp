@@ -31,7 +31,7 @@ class CEnginePrimitiveManager { public:
 class CEnginePrimitiveHandle { public: virtual ~CEnginePrimitiveHandle(); CEngineInternalPrimitiveBase* Data; operator bool() const { return Data!=0; } };
 struct CPrimitiveArray { CEnginePrimitiveHandle *First,*Last,*Limit; CEnginePrimitiveHandle& operator[](unsigned long i) { return First[i]; } };
 struct CEngineInternalPrimitiveChanger : CEngineInternalPrimitiveBase { CPrimitiveArray Primitives; CMeshEffectPointer MeshEffect; long ActiveIndex;bool PreloadAll;unsigned long PrimitiveFlags; };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo; //01436e84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; } //01436e84
 class CEnginePrimitiveChangerManager { public:
  void* Vtable;void* SceneList;bool Enable;
  ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);
@@ -47,7 +47,7 @@ ERendered CEnginePrimitiveChangerManager::RenderPrimitive(CEngineInternalPrimiti
   if(handle && (child->PostRenderEnable[0]&1)) {
    reinterpret_cast<CPrimitiveEffectInterface*>(child)->SetMeshEffect(CMeshEffectPointer(changer.MeshEffect));
    unsigned int type=*reinterpret_cast<const unsigned int*>(child->_pad_0x08);
-   CEnginePrimitiveManager* manager=g_pEnginePrimitiveTypeInfo->PrimitiveManagers[type];
+   CEnginePrimitiveManager* manager=NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[type];
    CEngineSubPrimitiveChain chain;
    return manager->RenderPrimitive(*child,layer,chain);
   }

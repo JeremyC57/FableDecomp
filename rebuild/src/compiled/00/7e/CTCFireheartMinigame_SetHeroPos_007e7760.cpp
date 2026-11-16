@@ -97,8 +97,8 @@ class CTCScriptedControl { public:
     void AddAction(CActionBase* action);        // 0x007137D0
 };
 
-struct CScriptRunner;
-extern CScriptRunner* g_pScriptRunner;          // 0x013D2838
+class CSuspendableProcessMicrothread;
+extern CSuspendableProcessMicrothread* g_pScriptRunner;          // 0x013D2838
 
 class CTCBase {
 public:

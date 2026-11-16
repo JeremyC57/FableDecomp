@@ -10,7 +10,7 @@
 // Callees: ~CLocalDetailCacheMap 0x00BDED60 (inline `delete` of each map's LocalDetailCacheMap; the catalog's
 //   "~CPatchTesselationEdgeStrip" label there is propagated), operator delete 0x00BFE9BC, free 0x00BFEA14 (STLport allocator
 //   deallocate of ObjectCollectionTypes), ??1CEngineComponent@@UAE@XZ 0x00B59730 (tail jump).
-// Globals: the engine world map pointer 0x01436E8C, spelt ?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A as the landed
+// Globals: the engine world map pointer 0x01436E8C, spelt ?NEngineInternal::GPEngineWorldMap@@3PAVCEngineWorldMap@@A as the landed
 //   CEngineWorldMap callers spell it (no PDB data-symbol dump). CEngineWorldMap::MapList +0x20 (retail CArray<CEngineMap*>,
 //   as the landed DeleteMap 0x00B42B10), CEngineMap::LocalDetailCacheMap +0x04 (Ego_r).
 // Layout: retail CEngineLocalDetailGenerator : CEngineComponent (0x0C); ObjectCollectionTypes +0x0C (Ego_r name; retail
@@ -40,7 +40,7 @@ class CEngineWorldMap { public:
     long GetMapCount() const { return MapList.size(); }
     CEngineMap* GetMap(long index) const { return MapList[index]; }
 };
-extern CEngineWorldMap* g_pEngineWorldMap;                  // 0x01436E8C
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }                  // 0x01436E8C
 
 class CEngineComponent {                                    // engine/CEngineComponent.h offsets, 0x0C bytes
 public:
@@ -59,10 +59,10 @@ public:
 
 CEngineLocalDetailGenerator::~CEngineLocalDetailGenerator()
 {
-    for (long i = 0; i < g_pEngineWorldMap->GetMapCount(); ++i) {
-        if (g_pEngineWorldMap->GetMap(i)) {
-            delete g_pEngineWorldMap->GetMap(i)->LocalDetailCacheMap;
-            g_pEngineWorldMap->GetMap(i)->LocalDetailCacheMap = 0;
+    for (long i = 0; i < NEngineInternal::GPEngineWorldMap->GetMapCount(); ++i) {
+        if (NEngineInternal::GPEngineWorldMap->GetMap(i)) {
+            delete NEngineInternal::GPEngineWorldMap->GetMap(i)->LocalDetailCacheMap;
+            NEngineInternal::GPEngineWorldMap->GetMap(i)->LocalDetailCacheMap = 0;
         }
     }
 }

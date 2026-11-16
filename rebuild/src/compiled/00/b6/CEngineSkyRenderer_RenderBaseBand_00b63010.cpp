@@ -177,7 +177,7 @@ private:
     void UpdateCombinedProjectionTransform();           // 0x00988A50
     void UpdateCameraPos();                             // 0x00989700
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 struct SSkySettings {
     unsigned char _pad00[0x50];
@@ -209,14 +209,14 @@ void CEngineSkyRenderer_Methods::RenderBaseBand()
 {
     g_pRenderStateManager->OpenCaptureBlock();
     SEnvironmentSettings* settings = g_pEngineState_01436e8c->m_pEnvironmentProvider->GetCurrentEnvironment()->GetSettings();
-    g_pShaderRenderManager->ApplyVertexShader((CVertexShader*)BaseBandVertexShader, false);
-    g_pShaderRenderManager->ApplyPixelShader((CPixelShader*)BaseBandPixelShader);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)BaseBandVertexShader, false);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)BaseBandPixelShader);
     SSkySettings* sky = settings->m_pSky;
     C4DVector colour = sky->BaseBandColour;
-    g_pShaderRenderManager->SetUserVertexShaderConstant(0, &colour);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, &colour);
     g_pRenderManagerCore->m_state28b8.Set(0);
     g_pRenderManagerCore->m_state28cc.Set(0);
-    g_pShaderRenderManager->PrepareForRender(0);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
     g_pRenderManagerCore->DrawCurrentBuffersIndexed(0x196, 0x25, 0x804, 0x24);
     g_pRenderStateManager->RestoreCaptureBlock();
 }

@@ -3,12 +3,12 @@
 // Retail bytes:  ... mov al,[esp+18h] ; mov edx,[esp+1Ch] ; mov ecx,[ecx+4] ; mov [esp],al ; lea eax,[esp] ; push eax ; mov [esp+8],edx ; call CMailboxQueue::Post ; test eax,eax ; je done ; mov ecx,[g_pchNil] ; mov [esp+1Ch],ecx ; mov edx,offset file ; lea ecx,[esp+1Ch] ; mov dword ptr [esp+10h],0 ; call Append ; ... AppendNumber(29h) ... ; mov eax,[g_pfnLogSink] ; test eax,eax ; je rel ; mov ecx,[esp+1Ch] ; call eax ; rel: lea ecx,[esp+1Ch] ; mov dword ptr [esp+10h],-1 ; call ~CString ; lea ecx,[esp+18h] ; call CTrace::CTrace ; done: ... ret 8
 // The string local is homed in the dead second-argument slot and the trace temporary in the
 // first. The manifest label is a description; the class is named by address.
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c1db60)(const char* text);
 extern PFNLOGSINK_00c1db60 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 class CString { public:                  // MFC-style string: one word, the shared empty data @ 0x0139C900 for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

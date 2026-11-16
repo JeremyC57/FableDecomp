@@ -29,7 +29,7 @@
 
 #include "engine/C3DVector.h"
 
-extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                  // 0x01436EA0
 
 inline const C3DVector& PeekCameraPos(const CEngineCamera* camera)
 {
@@ -51,7 +51,7 @@ protected:
 float CEngineClothSimulationMeshBase::CalculateFadeOut(const C3DVector& position) const
 {
     float fade = 0.0f;
-    float distance = (position - PeekCameraPos(g_pEngineCamera)).GetMagnitude();
+    float distance = (position - PeekCameraPos(NEngineInternal::GPCamera)).GetMagnitude();
     const CEngineSimulationManager* manager = g_pEngineSimulationManager;
     float fadeBegin = manager->SimFadeBegin * manager->Zoom;
     fadeBegin *= manager->SimRadius;

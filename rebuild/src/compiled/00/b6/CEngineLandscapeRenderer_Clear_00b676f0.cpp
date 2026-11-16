@@ -10,7 +10,7 @@
 //   fits; its callee 0x00BDC450 frees the map's landscape buffers, i.e. CEngineLandscapeMap::Clear() (Ego_r.pdb name).
 // Callees: CEngineLandscapeMap::Clear() 0x00BDC450 (descriptive binding in the catalog: cl_h_00bdc4f0).
 // Layout: Ego_r.pdb CEngineWorldMap.MapList (CArray<CEngineMap*>) +0x20 (retail STLport vector: _M_start +0x20, _M_finish
-//   +0x24), CEngineMap.LandscapeMap +0x00; g_pEngineWorldMap 0x01436E8C, re-read after each call. Local model --
+//   +0x24), CEngineMap.LandscapeMap +0x00; NEngineInternal::GPEngineWorldMap 0x01436E8C, re-read after each call. Local model --
 //   engine/CEngineWorldMap.h carries MapList as opaque bytes.
 class CEngineLandscapeMap {
 public:
@@ -26,7 +26,7 @@ public:
     unsigned char      _pad_0x00[0x20];                  // vptr, Map, MapArrayWidth/Height, MapOffsetX/Y
     CArray<CEngineMap*> MapList;                         // +0x20
 };
-extern CEngineWorldMap* g_pEngineWorldMap;               // 0x01436E8C
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }               // 0x01436E8C
 
 class CEngineLandscapeRenderer {
 public:
@@ -35,9 +35,9 @@ public:
 
 void CEngineLandscapeRenderer::Clear()
 {
-    for (long i = 0; i < (long)g_pEngineWorldMap->MapList.size(); ++i)
+    for (long i = 0; i < (long)NEngineInternal::GPEngineWorldMap->MapList.size(); ++i)
     {
-        CEngineMap* map = g_pEngineWorldMap->MapList[i];
+        CEngineMap* map = NEngineInternal::GPEngineWorldMap->MapList[i];
         if (map != 0 && map->LandscapeMap != 0)
             map->LandscapeMap->Clear();
     }

@@ -112,7 +112,7 @@ public:
         }
     }
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 class CEngineLightingManager {
 public:
@@ -141,14 +141,14 @@ public:
 
 void CEnginePrimitiveRenderer::PreRenderLayer(EEngineRenderLayer layer)
 {
-    SavedVertexShadersEnabled = g_pShaderRenderManager->VertexShadersEnabled;
-    SavedPixelShadersEnabled = g_pShaderRenderManager->PixelShadersEnabled;
+    SavedVertexShadersEnabled = NEngineInternal::GPShaderRenderManager->VertexShadersEnabled;
+    SavedPixelShadersEnabled = NEngineInternal::GPShaderRenderManager->PixelShadersEnabled;
     if (layer == 2)
         return;
-    g_pShaderRenderManager->SetVertexShadersEnabled(true);
+    NEngineInternal::GPShaderRenderManager->SetVertexShadersEnabled(true);
     if (layer == RENDER_LAYER_1000) {
-        g_pShaderRenderManager->SetPixelShadersEnabled(false);
-        g_pShaderRenderManager->ResetWorldTransform();
+        NEngineInternal::GPShaderRenderManager->SetPixelShadersEnabled(false);
+        NEngineInternal::GPShaderRenderManager->ResetWorldTransform();
         SetState(g_pRenderManagerCore->m_state3204, g_renderStateDefault_01396e70, g_pRenderManagerCore);
         SetStateConst(g_pRenderManagerCore->m_state32a4, g_renderStateDefault_01396e70, g_pRenderManagerCore);
         SetStateConst(g_pRenderManagerCore->m_state2840, 0, g_pRenderManagerCore);
@@ -157,7 +157,7 @@ void CEnginePrimitiveRenderer::PreRenderLayer(EEngineRenderLayer layer)
         SetStateConst(g_pRenderManagerCore->m_state28cc, 0, g_pRenderManagerCore);
         SetStateConst(g_pRenderManagerCore->m_state28b8, 0, g_pRenderManagerCore);
     } else {
-        g_pShaderRenderManager->SetPixelShadersEnabled(true);
+        NEngineInternal::GPShaderRenderManager->SetPixelShadersEnabled(true);
         if (layer == RENDER_LAYER_8 || layer == RENDER_LAYER_10 || layer == RENDER_LAYER_20 || layer == RENDER_LAYER_400 ||
             layer == RENDER_LAYER_40000 || layer == RENDER_LAYER_4 || layer == RENDER_LAYER_40)
             NEngineInternal::GPLightingManager->EnableFog();

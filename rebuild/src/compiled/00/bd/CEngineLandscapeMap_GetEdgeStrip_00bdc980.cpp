@@ -49,7 +49,7 @@ class CEngineWorldMap { public:
         return 0;
     }
 };
-extern CEngineWorldMap* g_pEngineWorldMap;         // 0x01436E8C
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }         // 0x01436E8C
 
 class CEngineLandscapeMap { public:
     void*                         _vptr;           // +0x00
@@ -61,7 +61,7 @@ class CEngineLandscapeMap { public:
 
 CPatchTesselationEdgeStrip* CEngineLandscapeMap::GetEdgeStrip(long x, long y, long length, LANDSCAPE_EDGE_STRIP_SIDE side)
 {
-    CEngineWorldMap* world = g_pEngineWorldMap;
+    CEngineWorldMap* world = NEngineInternal::GPEngineWorldMap;
     long testX = x;
     long testY = y;
     if (side == EDGE_SIDE_1)

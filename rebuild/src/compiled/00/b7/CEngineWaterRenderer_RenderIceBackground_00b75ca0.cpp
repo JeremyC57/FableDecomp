@@ -144,7 +144,7 @@ private:
 public:
     void ResetWorldTransform();   // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 struct IDirect3DDevice9 {
     virtual void __stdcall Slot0() = 0;
     virtual void __stdcall Slot1() = 0;
@@ -413,18 +413,18 @@ void CEngineWaterRenderer::RenderIceBackground(float time)
     SetState(g_pRenderManagerCore->m_state2f84, g_renderStateValue_01396dc8, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state2ef8, g_renderStateValue_01396dcc, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state2f98, g_renderStateValue_01396dd0, g_pRenderManagerCore);
-    g_pShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(IceBackgroundVertexShader), 0);
-    g_pShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(IceBackgroundPixelShader));
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(IceBackgroundVertexShader), 0);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(IceBackgroundPixelShader));
     float bump = 0.0f;
     if (EnableBumpMap)
         bump = IceBumpScale * 0.5f;
-    g_pShaderRenderManager->SetUserVertexShaderConstant(3, bump, bump, bump, bump);
-    g_pShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
-    g_pShaderRenderManager->SetBoneTransform(0, &BoneMatrix0);
-    g_pShaderRenderManager->SetBoneTransform(1, &BoneMatrix1);
-    g_pShaderRenderManager->SetBoneTransform(2, &BoneMatrix2);
-    g_pShaderRenderManager->SetBoneTransform(3, &BoneMatrix3);
-    g_pShaderRenderManager->PrepareForRender(0x604);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(3, bump, bump, bump, bump);
+    NEngineInternal::GPShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, &BoneMatrix0);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, &BoneMatrix1);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, &BoneMatrix2);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, &BoneMatrix3);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0x604);
     RenderBackgroundList(IceAlphaedBackgroundRenderList, time);
     SetState(g_pRenderManagerCore->m_state28b8, 0, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state28cc, 0, g_pRenderManagerCore);

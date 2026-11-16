@@ -18,7 +18,7 @@ class CString { public:
     ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
-extern char* g_pDebugBuffer;                               // 0x0139C900
+extern char* _afxPchNil;                               // 0x0139C900
 extern void (__fastcall* g_pfnErrorReport)(const char*);   // 0x0143BB2C
 
 struct CMailboxQueue_00c4bd70 {               // the reader's result mailbox (PKCMailbox shape: lock, queue +0x18, semaphore +0x1c)
@@ -38,7 +38,7 @@ void PKCBufferedReader::OnReadComplete(bool success, unsigned char* pRequestId)
 {
     if (!success) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << ".\\PKCBufferedReader.cpp" << "(" << 5 << ") : " << "Error: Read failed" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

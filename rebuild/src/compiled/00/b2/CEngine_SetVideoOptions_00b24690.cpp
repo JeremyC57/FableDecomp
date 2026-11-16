@@ -77,12 +77,12 @@ extern CShaderBankStateBlock*           g_pShaderBankStateBlock;  // 0x01436E44
 extern CEngineVideoOptionsListener*     g_pVideoOptionsListener;  // 0x01436E54
 extern CEngineVideoOptionsSink*         g_pVideoOptionsSink;      // 0x01436E58
 class CEnginePrimitiveRenderer;
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 // The members read here are modelled by the local CEngineMeshDetailManager view of that object (name debt: the shared
 // engine/CEnginePrimitiveRenderer.h retail branch).
 extern CEngineLocalDetailGenerator*     g_pLocalDetailGenerator;  // 0x01436E88
-extern CEngineResourceManager*          g_pResourceManager;       // 0x01436E98
-extern CEngine*                         g_pEngine_01436ea4;                // 0x01436EA4
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }       // 0x01436E98
+namespace NEngineInternal { extern CEngine* GPEngine; }                // 0x01436EA4
 extern CEngineVideoOptions*             g_pVideoOptions;          // 0x01436EB0
 
 bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
@@ -111,9 +111,9 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
     g_pShaderBankStateBlock->Set(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
     g_pColourFilter->SetEffectQuality(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
     g_pVideoOptionsListener->SetEffectQuality(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
-    g_pResourceManager->ResizeHiresTextureMemory(g_pEngine_01436ea4->PEngineVideoOptionsDefs[VideoOptions.TextureDetail]->HiresTextureMemory);
-    CEngineVideoOptionsDef* meshDef = g_pEngine_01436ea4->PEngineVideoOptionsDefs[VideoOptions.MeshDetail];
-    ((CEngineMeshDetailManager*)g_pEnginePrimitiveRenderer)->SetMeshDetail(VideoOptions.MeshDetail, meshDef);
+    NEngineInternal::GPResourceManager->ResizeHiresTextureMemory(NEngineInternal::GPEngine->PEngineVideoOptionsDefs[VideoOptions.TextureDetail]->HiresTextureMemory);
+    CEngineVideoOptionsDef* meshDef = NEngineInternal::GPEngine->PEngineVideoOptionsDefs[VideoOptions.MeshDetail];
+    ((CEngineMeshDetailManager*)NEngineInternal::GPPrimitiveRenderer)->SetMeshDetail(VideoOptions.MeshDetail, meshDef);
     if (g_pLocalDetailGenerator)
         g_pLocalDetailGenerator->UpdateLoadingDistanceVideoOptions(meshDef);
     g_pVideoOptionsSink->OnVideoOptionsChanged();

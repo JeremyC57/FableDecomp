@@ -126,7 +126,7 @@ private:
     void UpdateCombinedProjectionTransform();           // 0x00988A50
     void UpdateCameraPos();                             // 0x00989700
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 class CRenderManagerCore {
 public:
@@ -150,9 +150,9 @@ struct CEngineWeatherRendererMethods : CEngineWeatherRenderer {
 
 void CEngineWeatherRendererMethods::RenderRainBox(const C3DVector& boxPos)
 {
-    g_pShaderRenderManager->SetUserVertexShaderConstant(0, boxPos.X, boxPos.Y, boxPos.Z,
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, boxPos.X, boxPos.Y, boxPos.Z,
                                                         GetSettings().RainVolumeDepthSelectMultiplier);
-    g_pShaderRenderManager->PrepareForRender(5);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(5);
     g_pRenderManagerCore->DrawCurrentBuffersAsIndexedTris(0, (long)(GetSettings().CurrentRainStrength * 512.0f), 0,
                                                           (long)(GetSettings().CurrentRainStrength * 256.0f));
 }

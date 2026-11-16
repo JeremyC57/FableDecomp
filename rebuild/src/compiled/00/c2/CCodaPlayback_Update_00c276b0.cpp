@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C276B0, 164 bytes (`ret`). Descriptive names (no PDB or RTTI covers the libpk
 //   audio library): the manifest's "DebugState_UpdateDisplay" is propagated. Only caller: 0x00C11FA5.
 // Callees: PKCProtectionInstance @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0 over the module lock 0x0143BAFC,
-//   CODA_GetSourcePosition @ 0x00C35CC0, CODA_StopSource @ 0x00C35DD0 (both `__stdcall`).
+//   CODA_GetSourcePosition @ 0x00C35CC0, CODA_SourcePlay @ 0x00C35DD0 (both `__stdcall`; the landed self row 0x00C35DD0 spells _CODA_SourcePlay@8).
 // Shape: m_loopsLeft -1 loops forever, 0 is the last pass (stop), above 0 counts down; the `m_bArmed = 0` after the
 //   three-way test is tail-duplicated into the count-down arm, and the constant 1 lives in ecx for both the byte
 //   `m_bStarted = true` and the dword `m_bArmed = 1`. The EH frame with NO state-0 store (`mov eax,fs:[0]` first)
@@ -21,7 +21,7 @@ struct CODASource;                              // opaque CODA source object
 extern "C" {                                    // the CODA C API (__stdcall; nothrow under /EHsc)
 void __stdcall CODA_SetSourceVolume(CODASource* source, float volume);              // 0x00C35AF0
 unsigned long __stdcall CODA_GetSourcePosition(CODASource* source);                 // 0x00C35CC0
-long __stdcall CODA_StopSource(CODASource* source, bool immediate);                 // 0x00C35DD0
+long __stdcall CODA_SourcePlay(CODASource* source, long looping);                      // 0x00C35DD0
 }
 
 struct CPanel {
@@ -59,7 +59,7 @@ void CCodaPlayback::Update()
                 if (m_loopsLeft > 0)
                     --m_loopsLeft;
             } else
-                CODA_StopSource(m_pSource, false);
+                CODA_SourcePlay(m_pSource, false);
             m_bArmed = 0;
         }
     } else if (position < m_loopPoint)

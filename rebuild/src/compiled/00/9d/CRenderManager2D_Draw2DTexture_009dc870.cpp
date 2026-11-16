@@ -36,7 +36,7 @@ class CTVertexRHWColSpecTex1 { public:
     float U, V;
 };
 void __fastcall GFVBoxToABox(const C2DBoxF* box, C2DBoxF* out);   // 0x009E1E70
-extern float g_ScreenRHW;                          // 0x0139652C
+extern const float BIGGEST_RHW_VERTEX_VALUE;                          // 0x0139652C (S_LDATA32 const float in both PDBs; the spelling engine/CTVertexRHWColSpecTex1.h declares)
 
 struct CRenderManager2D {
     void Add2DTri(const CTVertexRHWColSpecTex1& v0, const CTVertexRHWColSpecTex1& v1, const CTVertexRHWColSpecTex1& v2,
@@ -76,19 +76,19 @@ bool CRenderManager2D::Draw2DTexture(const C2DBoxF& box, const CUVBox& uvs, cons
     v[0].U = offsetU + uvs.U[0];
     v[0].V = offsetV + uvs.V[0];
     v[0].Z = 0.0f;
-    v[0].RHW = g_ScreenRHW;
+    v[0].RHW = BIGGEST_RHW_VERTEX_VALUE;
     v[1].U = offsetU + uvs.U[1];
     v[1].V = offsetV + uvs.V[1];
     v[1].Z = 0.0f;
-    v[1].RHW = g_ScreenRHW;
+    v[1].RHW = BIGGEST_RHW_VERTEX_VALUE;
     v[2].U = offsetU + uvs.U[2];
     v[2].V = offsetV + uvs.V[2];
     v[2].Z = 0.0f;
-    v[2].RHW = g_ScreenRHW;
+    v[2].RHW = BIGGEST_RHW_VERTEX_VALUE;
     v[3].U = offsetU + uvs.U[3];
     v[3].V = offsetV + uvs.V[3];
     v[3].Z = 0.0f;
-    v[3].RHW = g_ScreenRHW;
+    v[3].RHW = BIGGEST_RHW_VERTEX_VALUE;
     long mode;
     if (flags & 2)
         mode = 2;

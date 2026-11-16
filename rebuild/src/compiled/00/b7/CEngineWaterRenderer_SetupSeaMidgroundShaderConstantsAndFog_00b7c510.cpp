@@ -162,7 +162,7 @@ private:
     void UpdateCombinedProjectionTransform();           // 0x00988A50
     void UpdateCameraPos();                             // 0x00989700
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 class CEngineWaterSettings { public:                           // PDB CEngineWaterSettings (0x2e4)
     unsigned char   _pad00[0xd];
@@ -227,7 +227,7 @@ class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                        // +0x54
 };
-extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                  // 0x01436EA0
 
 class CEngineWaterRenderer { public:
     unsigned char        _pad000[0x274];                // vptr, buffers, shaders, render lists (retail 12-byte CArrays)
@@ -241,7 +241,7 @@ class CEngineWaterRenderer { public:
 
 void CEngineWaterRenderer::SetupSeaMidgroundShaderConstantsAndFog()
 {
-    g_pShaderRenderManager->SetUserVertexShaderConstant(0, Settings.SeaBumpmapSpan, 0.0f, 0.0f, 0.0f);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, Settings.SeaBumpmapSpan, 0.0f, 0.0f, 0.0f);
     if (HighendWaterEnabled) {
         C4DVector colour;
         colour.X = Settings.Colour.R;
@@ -249,18 +249,18 @@ void CEngineWaterRenderer::SetupSeaMidgroundShaderConstantsAndFog()
         colour.Z = Settings.Colour.B;
         colour.W = g_pEngineState->m_pEnvironmentProvider->GetCurrentEnvironment()->GetTheme()->m_pSettings->SeaReflectionAlpha
                  * Settings.ColourToReflectionFactor;
-        g_pShaderRenderManager->SetPixelShaderConstant(7, colour);
+        NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(7, colour);
         float factor = WaterBumpFactor * Settings.BumpMatFactor;
-        g_pShaderRenderManager->SetUserVertexShaderConstant(3, factor, 0.0f, factor * -0.5f, 1.0f);
+        NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(3, factor, 0.0f, factor * -0.5f, 1.0f);
         CMatrix3x4 world(C3DVector(1.0f, 0.0f, 0.0f), C3DVector(0.0f, 1.0f, 0.0f), C3DVector(0.0f, 0.0f, 1.0f), C3DVector(0.0f, 0.0f, 0.0f));
-        world.Pos = g_pEngineCamera->WorldPosition;
-        g_pShaderRenderManager->SetWorldTransform(world);
+        world.Pos = NEngineInternal::GPCamera->WorldPosition;
+        NEngineInternal::GPShaderRenderManager->SetWorldTransform(world);
     } else {
         static C4DVector lowEndConstant(0.8f, 0.8f, 0.0f, 0.0f);
         static CRGBFloatColour lowEndColour(0.0f, 0.4f, 0.8f, 1.0f);
         CRGBFloatColour colour = lowEndColour * NEngineInternal::GPLightingManager->ThemeChannels[0].Colour;
-        g_pShaderRenderManager->SetPixelShaderConstant(5, lowEndConstant);
-        g_pShaderRenderManager->SetPixelShaderConstant(6, C4DVector(colour));
+        NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, lowEndConstant);
+        NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(6, C4DVector(colour));
     }
-    g_pShaderRenderManager->PrepareForRender(0x205);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0x205);
 }

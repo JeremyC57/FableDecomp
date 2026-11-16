@@ -6,13 +6,13 @@
 // Callees: the trace stream helpers, CDebugBreak 0x00C16750, operator new[] 0x00BFEB22.
 // Shape: members in the init list, member tests (the trace string lives in the dead argument slot).
 void* __cdecl operator new[](unsigned int size);   // 0x00BFEB22 (MSVCR71 ??_U thunk)
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4c8b0)(const char* text);
 extern PFNLOGSINK_00c4c8b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

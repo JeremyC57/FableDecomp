@@ -35,15 +35,15 @@ class CShaderRenderManager { public:
  void SetWorldTransform(const CMatrix3x4&); // 009881F0
 };
 extern CRenderManagerCore_Methods* g_RenderManagerCore; // 01436E18
-extern CShaderRenderManager* g_ShaderRenderManager; // 01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; } // 01436E14
 struct CEngineCamera_Methods : CEngineCamera { CEngineCameraDesc& Desc() { return *reinterpret_cast<CEngineCameraDesc*>(CameraDesc); } void RefreshD3DTransforms(); };
 void CEngineCamera_Methods::RefreshD3DTransforms() {
  { C2DBoxF viewport; GFABoxToVBox(Desc().Window,viewport); g_RenderManagerCore->SetViewportFloat(viewport); }
  g_RenderManagerCore->SetViewTransform(*reinterpret_cast<CMatrix3x4*>(ViewTransform));
  g_RenderManagerCore->SetPerspectiveTransform(Desc().NearZPlane,Desc().FarZPlane,Desc().ZBufferStart,Desc().ZBufferEnd);
- g_ShaderRenderManager->SetViewTransform(*reinterpret_cast<CMatrix3x4*>(ViewTransform));
- g_ShaderRenderManager->SetProjectionTransform(*reinterpret_cast<CMatrix4x4*>(ProjectionTransform));
- g_ShaderRenderManager->SetFogColour(*reinterpret_cast<CRGBFloatColour*>(&Desc().WorldPosition));
+ NEngineInternal::GPShaderRenderManager->SetViewTransform(*reinterpret_cast<CMatrix3x4*>(ViewTransform));
+ NEngineInternal::GPShaderRenderManager->SetProjectionTransform(*reinterpret_cast<CMatrix4x4*>(ProjectionTransform));
+ NEngineInternal::GPShaderRenderManager->SetFogColour(*reinterpret_cast<CRGBFloatColour*>(&Desc().WorldPosition));
  CMatrix3x4 identity; identity.Identity();
- g_RenderManagerCore->SetWorldTransform(identity); g_ShaderRenderManager->SetWorldTransform(identity);
+ g_RenderManagerCore->SetWorldTransform(identity); NEngineInternal::GPShaderRenderManager->SetWorldTransform(identity);
 }

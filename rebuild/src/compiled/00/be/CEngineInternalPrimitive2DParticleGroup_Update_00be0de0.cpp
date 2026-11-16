@@ -43,7 +43,7 @@ struct CEnginePrimitive2DParticleGroup : CEnginePrimitive {
 class CEnginePrimitiveRenderer2D { public:
     float Layer2DToDistance(EEngine2DLayer layer);     // 0x00B4A6B0
 };
-extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D;   // 0x01436E7C
+namespace NEngineInternal { extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D; }   // 0x01436E7C
 
 struct CEngineInternalPrimitive2DParticleGroup {
     virtual void Update(const CEnginePrimitive& primitive, unsigned long key);
@@ -74,7 +74,7 @@ void CEngineInternalPrimitive2DParticleGroup::Update(const CEnginePrimitive& pri
     InverseTransform = group.InverseTransform;
     Pos.X = group.Position.X;
     Pos.Y = group.Position.Y;
-    Pos.Z = g_pPrimitiveRenderer2D->Layer2DToDistance((EEngine2DLayer)group.Layer);
+    Pos.Z = NEngineInternal::GPPrimitiveRenderer2D->Layer2DToDistance((EEngine2DLayer)group.Layer);
     BSphere = C3DBoundingSphere(Pos, 1.0f);
     DistanceFromCam = 0.0f;
     WaterStage = 2;

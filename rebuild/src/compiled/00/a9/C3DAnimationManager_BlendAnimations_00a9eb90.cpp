@@ -7,7 +7,7 @@
 // Callees: NVectorMath::GFInterpolateVectors(C4DVector*, unsigned long, const C4DVector*, unsigned long, unsigned long, float)
 //   0x00A5B870 and NVectorMath::GFFinishPartialSlerp 0x00A5C2B0 (FableWin.pdb spellings, landed), CSimpleMemoryPool::Allocate 0x00A5C910
 //   (through the inline FableWin ??$AllocateType@VCQuaternion@@@CSimpleMemoryPool@@QAEPAVCQuaternion@@K@Z).
-// Globals: g_SSEAvailable 0x013D2880, the arc-cosine / cosine tables 0x013CB530 / 0x013CD550 (landed spellings), the two 64-bit
+// Globals: GEnableSIMD 0x013D2880, the arc-cosine / cosine tables 0x013CB530 / 0x013CD550 (landed spellings), the two 64-bit
 //   blend statistics 0x013D2D88 (cycles) / 0x013D2D90 (keyframes) (descriptive names; no PDB data symbol on this machine).
 // Layout: engine/C3DAnimationManager.h (MemoryPool +0x14); C3DKeyframe 0x30 (Rotation +0, Position +0x10).
 // Retail-asm: 0x00A9EB99 `xor eax,eax ; xor edx,edx ; rdtsc` + the two stores (and 0x00A9F066) -- engine/GFGetCycleCount.h (VC7.1 has
@@ -45,7 +45,7 @@
 #include "engine/GFGetCycleCount.h"
 extern float g_ArcCosTable[1026];       // 0x013CB530
 extern float g_CosTable[1025];          // 0x013CD550
-extern bool g_SSEAvailable;             // 0x013D2880
+extern bool GEnableSIMD;             // 0x013D2880
 extern unsigned __int64 g_BlendAnimationsCycles;       // 0x013D2D88 (descriptive)
 extern unsigned __int64 g_BlendAnimationsKeyframes;    // 0x013D2D90 (descriptive)
 extern "C" double __cdecl sqrt(double);
@@ -174,7 +174,7 @@ void C3DAnimationManager::BlendAnimations(C3DKeyframe* from, const C3DKeyframe* 
     __int64 start;
     GF_GET_CYCLE_COUNT(start);
     NVectorMath::GFInterpolateVectors(&from->Position, sizeof(C3DKeyframe), &to->Position, sizeof(C3DKeyframe), count, t);
-    if (g_SSEAvailable) {
+    if (GEnableSIMD) {
         CQuaternion* weights = MemoryPool.AllocateType<CQuaternion>(count);
         for (unsigned long i = 0; i < count; ++i)
             CQuaternion::CalculateSlerpWeights(weights[i], from[i].Rotation, to[i].Rotation, t);

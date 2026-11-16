@@ -81,13 +81,13 @@ class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* PrimitiveManagers[47];   // +0x10
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 class CEnginePrimitiveRenderer2D {
 public:
     void AddPrimitive(CEngineInternalPrimitiveBase* primitive);   // 0x00B4A670
 };
-extern CEnginePrimitiveRenderer2D* g_pEnginePrimitiveRenderer2D;   // 0x01436E7C
+namespace NEngineInternal { extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D; }   // 0x01436E7C
 
 class CEngineScene {
 public:
@@ -103,7 +103,7 @@ void CEnginePrimitiveRenderer::SetPersistentPrimitive(CEnginePrimitiveHandle& ha
                                                       unsigned long flags, bool nonPersistent)
 {
     long type = primitive.Type;
-    CEnginePrimitiveManager* manager = g_pEnginePrimitiveTypeInfo->PrimitiveManagers[type];
+    CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[type];
     unsigned char enable = (unsigned char)~(flags >> 5) & 1;
     CEngineInternalPrimitiveBase* current = handle.Data.Object;
     if (current) {
@@ -124,7 +124,7 @@ void CEnginePrimitiveRenderer::SetPersistentPrimitive(CEnginePrimitiveHandle& ha
     created->Update(primitive, flags);
     created->Enable = enable;
     if (flags & 0x40)
-        g_pEnginePrimitiveRenderer2D->AddPrimitive(created);
+        NEngineInternal::GPPrimitiveRenderer2D->AddPrimitive(created);
     else
         manager->RegisterPrimitive(created, flags);
 }

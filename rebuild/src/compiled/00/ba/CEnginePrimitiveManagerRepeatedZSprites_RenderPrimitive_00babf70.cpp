@@ -89,7 +89,7 @@ class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                    // +0x54
 };
-extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }              // 0x01436EA0
 
 struct CEngineRenderSettings {
     unsigned char _pad00[0x78];
@@ -147,9 +147,9 @@ ERendered CEnginePrimitiveManagerRepeatedZSprites::RenderPrimitive(CEngineIntern
 {
     if (!Enable)
         return RENDERED_NOTHING;
-    float dx = primitive.WorldPosition.X - g_pEngineCamera->WorldPosition.X;
-    float dy = primitive.WorldPosition.Y - g_pEngineCamera->WorldPosition.Y;
-    float dz = primitive.WorldPosition.Z - g_pEngineCamera->WorldPosition.Z;
+    float dx = primitive.WorldPosition.X - NEngineInternal::GPCamera->WorldPosition.X;
+    float dy = primitive.WorldPosition.Y - NEngineInternal::GPCamera->WorldPosition.Y;
+    float dz = primitive.WorldPosition.Z - NEngineInternal::GPCamera->WorldPosition.Z;
     float distance = (float)sqrt(dx * dx + dy * dy + dz * dz);
     if (g_pEngineRenderSettings->OcclusionPass) {
         long occlusion = g_pEngineRenderSettings->CurrentOcclusionLayer;

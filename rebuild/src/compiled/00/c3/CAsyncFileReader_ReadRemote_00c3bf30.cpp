@@ -13,13 +13,13 @@
 //   0x00C4C2D0, GetFirstBlock 0x00C4C2C0, GetAlignedSize 0x00C4BFF0, GetAlignment 0x00C4BFC0; the master-object factory
 //   0x00C4CC90 (`__fastcall`: callback ecx, flags edx) and its LoadScriptInfo 0x00C4C8B0, LoadSlave 0x00C4CAB0, Finalize
 //   0x00C4CD80; the trace string 0x00C0DEC0 / 0x00C0DF00 / 0x00C0DF10 / ~CString 0x00C0BA40, CDebugBreak 0x00C16750.
-extern char* g_pchNil;                                          // 0x0139C900
+extern char* _afxPchNil;                                          // 0x0139C900
 typedef void (__fastcall* PFNASSERTHOOK)(const char* message);
 extern PFNASSERTHOOK g_pfnAssertHook;                           // 0x0143BB2C
 
 class CString {                                                 // libpk's MFC-style string (one word)
 public:
-    CString() : m_pchData(g_pchNil) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                                                 // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);           // 0x00C0DEC0
     CString& __fastcall operator<<(long value);                 // 0x00C0DF00

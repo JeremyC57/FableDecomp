@@ -9,7 +9,7 @@ class CEngineCamera { public:
     void AddExclusiveObserver(CCamera* observer);  // 0x00B2FBF0 (CObservable)
     void Process(bool force);                      // 0x00B314E0
 };
-extern CEngineCamera* g_pEngineCamera_01436ea0;    // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }    // 0x01436EA0
 
 struct CEngine_Methods : CEngine {
     void SetCamera(CCamera* camera);
@@ -17,7 +17,7 @@ struct CEngine_Methods : CEngine {
 
 void CEngine_Methods::SetCamera(CCamera* camera)
 {
-    g_pEngineCamera_01436ea0->AddExclusiveObserver(camera);
-    g_pEngineCamera_01436ea0->Process(true);
+    NEngineInternal::GPCamera->AddExclusiveObserver(camera);
+    NEngineInternal::GPCamera->Process(true);
     CurrentCamera = camera;
 }

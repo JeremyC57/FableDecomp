@@ -19,7 +19,7 @@ class CEngineCamera { public:
     unsigned char _pad[0x54];
     C3DVector     WorldPosition;                       // +0x54 (CameraDesc.WorldPosition)
 };
-extern CEngineCamera* g_pEngineCamera;                 // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                 // 0x01436EA0
 
 double __fastcall GFGetFastSubFrameTimer();            // 0x009E1C70
 
@@ -68,7 +68,7 @@ void CEngineLocalDetailGenerator::FrameStart(const CEngineComponentParams& param
     if (!LocalDetailEnabled)
         return;
     double endTime = GFGetFastSubFrameTimer() + LocalDetailMaxUpdateTime;
-    C3DVector cameraPos = g_pEngineCamera->WorldPosition;
+    C3DVector cameraPos = NEngineInternal::GPCamera->WorldPosition;
     CMapList* maps = &g_pEngineState->m_loadedMaps;
     SMapListNode* node;
     if (params.OffWorldTickProcessFlag) {
@@ -79,7 +79,7 @@ void CEngineLocalDetailGenerator::FrameStart(const CEngineComponentParams& param
         }
     }
     for (node = maps->m_pHead->m_pNext; node != maps->m_pHead; node = node->m_pNext) {
-        CEngineCamera* camera = g_pEngineCamera;
+        CEngineCamera* camera = NEngineInternal::GPCamera;
         CLocalDetailCacheMap* cache = node->m_pMap->LocalDetailCacheMap;
         if (cache)
             cache->Render(camera, 0.0f);

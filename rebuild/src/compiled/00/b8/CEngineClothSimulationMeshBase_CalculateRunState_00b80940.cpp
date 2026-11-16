@@ -5,7 +5,7 @@
 // Name: Ego_r.pdb + FableWin.pdb `?CalculateRunState@CEngineClothSimulationMeshBase@@IBE?AW4ERunState@CEngineSimulationBase@@ABVC3DVector@@M@Z`
 //   (protected const, returns CEngineSimulationBase::ERunState); the landed callers bind
 //   `?CalculateRunState@CEngineSimulationBase@@QAEJABVC3DVector@@M@Z` (NAME_FIXES.tsv).
-// Globals: g_pEngineCamera 0x01436EA0 (CEngineCamera: CameraDesc.WorldPosition +0x54, CameraDesc.NearZPlane +0x6C,
+// Globals: NEngineInternal::GPCamera 0x01436EA0 (CEngineCamera: CameraDesc.WorldPosition +0x54, CameraDesc.NearZPlane +0x6C,
 //   CameraDesc.FarZPlane +0x70, LookVector +0x1B4, FrustrumPlanes[4] +0x1C0 -- Ego_r.pdb names, engine/CEngineCamera.h offsets);
 //   g_pEngineSimulationManager 0x01436E68 (SimRadius +0x1060, Zoom +0x1068 -- engine/CEngineSimulationManager.h offsets).
 // Shape: the radius test is written `!(distance^2 < range^2)` (x87 `test ah,41h ; jne`); the depth and plane tests share one
@@ -50,7 +50,7 @@ public:
 #include "engine/CEngineSimulationManager.h"
 #undef CEngineSimulationManager
 class CEngineSimulationManager : public CEngineSimulationManagerLayout { };
-extern CEngineCamera* g_pEngineCamera;                        // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                        // 0x01436EA0
 extern CEngineSimulationManager* g_pEngineSimulationManager;  // 0x01436E68
 
 class CEngineSimulationBase {
@@ -64,7 +64,7 @@ protected:
 
 CEngineSimulationBase::ERunState CEngineClothSimulationMeshBase::CalculateRunState(const C3DVector& position, float radius) const
 {
-    const CEngineCamera* camera = g_pEngineCamera;
+    const CEngineCamera* camera = NEngineInternal::GPCamera;
     C3DVector toCamera = camera->GetDesc().WorldPosition - position;
     float simRadius = g_pEngineSimulationManager->SimRadius * g_pEngineSimulationManager->Zoom;
     if (!(toCamera.GetMagnitudeSquared() < simRadius * simRadius))

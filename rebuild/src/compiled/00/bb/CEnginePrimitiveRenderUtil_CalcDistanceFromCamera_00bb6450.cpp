@@ -29,13 +29,13 @@ class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                   // +0x54 (CameraDesc +0x14, its WorldPosition +0x40)
 };
-extern CEngineCamera* g_pEngineCamera;             // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }             // 0x01436EA0
 
 class CEnginePrimitiveRenderUtil {
 public:
     static float __fastcall CalcDistanceFromCamera(const C3DVector& position)
     {
-        return (position - g_pEngineCamera->WorldPosition).GetMagnitude();
+        return (position - NEngineInternal::GPCamera->WorldPosition).GetMagnitude();
     }
     static float __fastcall CalcDistanceFromCamera(const CMatrix3x4& transform);
 };

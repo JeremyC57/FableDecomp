@@ -103,7 +103,7 @@ struct CShaderResourcePointer {
 class CShaderRenderManager { public:
     CShaderResourcePointer CreateResource();
 };
-extern CShaderRenderManager* g_pShaderRenderManager_01436e14;
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }
 class CEngineResourceManager { public:
     unsigned char NativeBeforeVertexBanks[0x960];
     CShaderDataBank VertexShaderBanks[27];
@@ -119,7 +119,7 @@ void CEngineResourceManager::SetupVertexShaderResource(
 {
     CShaderDataBank* shaderBank = &VertexShaderBanks[bank];
     shaderBank->OpenReadOnly(name, 0x48);
-    VertexShaderResources[bank] = g_pShaderRenderManager_01436e14->CreateResource();
+    VertexShaderResources[bank] = NEngineInternal::GPShaderRenderManager->CreateResource();
     VertexShaderResources[bank].Data->OpenShaderBank(shaderBank);
     VertexShaderResources[bank].Data->SetVertexShaderDeclaration(declaration);
     VertexShaderResources[bank].Data->SetVertexFormat(format);

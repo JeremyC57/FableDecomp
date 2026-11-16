@@ -16,7 +16,7 @@
 #include "engine/CEnginePrimitive.h"
 #include "engine/CEnginePrimitiveManager.h"
 #include "engine/CEnginePrimitiveTypeInfo.h"
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }
 bool CEngineInternalAttachedPrimitive::Update(const CEnginePrimitive& src,const CEnginePrimitiveAttachmentInfo& attachment_info,const CEnginePrimitiveHandle& parent,long group_index,unsigned long flags)
 {
  AttachmentInfo=attachment_info;
@@ -28,7 +28,7 @@ bool CEngineInternalAttachedPrimitive::Update(const CEnginePrimitive& src,const 
  if(ParentType==PARENT_TYPE_NULL)return false;
  EEnginePrimitiveType type=src.GetType();
  if(OutputPrimitive.IsNull()||OutputPrimitive.GetType()!=type){
-  CEnginePrimitiveManager* prim_manager=g_pEnginePrimitiveTypeInfo->GetPrimitiveManager(type);
+  CEnginePrimitiveManager* prim_manager=NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(type);
   if(!prim_manager)return false;
   CEngineInternalPrimitiveBase* internal_prim=prim_manager->CreateInternalPrimitive(type);
   OutputPrimitive.SetData(internal_prim);

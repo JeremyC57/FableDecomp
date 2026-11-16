@@ -19,7 +19,7 @@ class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* Managers[1];          // +0x10, indexed by primitive type
 };
-extern CEnginePrimitiveTypeInfo* g_pPrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 class CEngineInternalPrimitiveBase {
 public:
@@ -38,6 +38,6 @@ void __fastcall CEngineScene::UpdatePosition(CEngineInternalPrimitiveBase& primi
 {
     if (!(flags & 0x40)) {
         primitive.RemoveFromList();
-        g_pPrimitiveTypeInfo->Managers[primitive.Type]->AddPrimitive(primitive, flags);
+        NEngineInternal::GPPrimitiveTypeInfo->Managers[primitive.Type]->AddPrimitive(primitive, flags);
     }
 }

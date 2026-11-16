@@ -19,7 +19,7 @@ class CEngineCamera { public:
     unsigned char _pad[0x1c0];
     CPlane        FrustrumPlanes[4];                   // +0x1c0
 };
-extern CEngineCamera* g_pEngineCamera;                 // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                 // 0x01436EA0
 
 class CLandscapeBackgroundTreeNode { public:
     unsigned char _pad[0xa8];
@@ -47,7 +47,7 @@ void CEngineLandscapeMap::RenderForeground()
         return;
     if (PatchTree) {
         for (long i = 0; i < 4; ++i) {
-            const CPlane& plane = g_pEngineCamera->FrustrumPlanes[i];
+            const CPlane& plane = NEngineInternal::GPCamera->FrustrumPlanes[i];
             float nx = plane.Normal.X;
             float ny = plane.Normal.Y;
             float nz = plane.Normal.Z;

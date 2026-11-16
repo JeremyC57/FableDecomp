@@ -30,7 +30,7 @@
 //   its 'Inline-budget' lines). Visible-body facts: FableWin.pdb has only debug copies (SetupBlendOpState 0x02EAC160 78b/25i,
 //   ApplyVertexShader 0x02E74E10 28b/12i, GetCurrentCamera 0x02E74B40 10b/5i), Ego_r.pdb and Fable.exe have none, and this body never
 //   calls them: it calls CShaderRenderManager::ApplyVertexShader 0x00988020 directly (0x00BBF7F9, 0x00BBFA04, 0x00BBFDFD, 0x00BBFE34),
-//   reads g_pEngineCamera inline (0x00BBFF0A) and reads CRenderStateManager::D3DBlendOpModeTable inline (0x00BBF600, 0x00BBFA36).
+//   reads NEngineInternal::GPCamera inline (0x00BBFF0A) and reads CRenderStateManager::D3DBlendOpModeTable inline (0x00BBF600, 0x00BBFA36).
 // Inline-budget (measured on this row, repair grades): SetupBlendOpState and SetupAlphaBlendingStatesFromBlendMode are FABLE_FORCEINLINE
 //   as in 0x00BC25F0, whose c2 trace measured the same two helpers (variable-argument sites: SetupAlphaBlendingStatesFromBlendMode c1 693,
 //   over c2's hard 450 cap; SetupBlendOpState c1 154, f 0.0312, score 836: refused as plain inline); this row has the same variable-argument
@@ -39,7 +39,7 @@
 //   (their fistp sites 0x00BC010D / 0x00BC0159 sit in this body, while the out-of-line copies 0x00A14840 / 0x00A147E0 exist); with
 //   GFFastSin plain inline the row grades DIFFER(4005v4169), 59 hunks (frame `sub esp,30h` v retail's 38h).
 // Names: GFDebugPDynamicCast comes from the shared template in engine/CThing.h (FableWin
-//   ??$GFDebugPDynamicCast@PAVCEnginePrimitiveManager@@PAVCEnginePrimitiveManagerParticleGroup@@...). g_pDisplacementRenderer_01436e38 is the
+//   ??$GFDebugPDynamicCast@PAVCEnginePrimitiveManager@@PAVCEnginePrimitiveManagerParticleGroup@@...). NEngineInternal::GPScreenEffectDisplacementRenderer is the
 //   established landed spelling of 0x01436E38 (CEngine::Initialise 0x00B26360 stores `new CEngineScreenEffectDisplacementRenderer` there;
 //   also 0x00B24500, 0x00BC25F0); no PDB / string / FSE / EgoCore name exists for it (descriptive, see NOTES.md and NAME_FIXES.tsv).
 // Flags: none
@@ -106,10 +106,10 @@
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }                  // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }      // 0x01436E14
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }        // 0x01436E98
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;                           // 0x01436E84
-extern CEngineLightingManager* g_pEngineLightingManager;                               // 0x01436E9C
-extern CEngineScreenEffectDisplacementRenderer* g_pDisplacementRenderer_01436e38;      // 0x01436E38
-extern CEngineCamera* g_pEngineCamera;                                                 // 0x01436EA0
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }                           // 0x01436E84
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }                               // 0x01436E9C
+namespace NEngineInternal { extern CEngineScreenEffectDisplacementRenderer* GPScreenEffectDisplacementRenderer; }      // 0x01436E38
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                                                 // 0x01436EA0
 extern long g_particleSpriteRenderEnabled_0139b6e0;                                    // 0x0139B6E0 (descriptive)
 
 
@@ -133,7 +133,7 @@ inline void __fastcall CEnginePrimitiveRenderUtil::ApplyPixelShader(const CPixel
 }
 inline CEngineCamera& __fastcall CEnginePrimitiveRenderUtil::GetCurrentCamera()
 {
-    return *g_pEngineCamera;
+    return *NEngineInternal::GPCamera;
 }
 FABLE_FORCEINLINE void CEnginePrimitiveRenderUtil::SetupBlendOpState(EEnginePrimitiveBlendOp op)
 {
@@ -178,9 +178,9 @@ void CEnginePrimitiveManagerParticleSpriteGroup::RenderSubPrimitive(CEngineSubPr
         return;
     NEngineInternal::GPRenderManager->AttachTextureToStage(0, frame.GetTexture());
     CEnginePrimitiveManagerParticleGroup* group_manager =
-        GFDebugPDynamicCast(g_pEnginePrimitiveTypeInfo->GetPrimitiveManager(24), (CEnginePrimitiveManagerParticleGroup*)0);
+        GFDebugPDynamicCast(NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(24), (CEnginePrimitiveManagerParticleGroup*)0);
     bool additive;
-    if (pass == RENDER_PASS_DISPLACEMENT_BUFFER && g_pDisplacementRenderer_01436e38->GetEnable3DDisplacement()) {
+    if (pass == RENDER_PASS_DISPLACEMENT_BUFFER && NEngineInternal::GPScreenEffectDisplacementRenderer->GetEnable3DDisplacement()) {
         additive = false;
         SetupBlendOpState(ENGINE_PRIMITIVE_BLEND_OP_ADD);
         SetupAlphaBlendingStatesFromBlendMode(ENGINE_PRIMITIVE_BLEND_ALPHA);
@@ -214,8 +214,8 @@ void CEnginePrimitiveManagerParticleSpriteGroup::RenderSubPrimitive(CEngineSubPr
         if (group->Flags & 0x80)
             light_count = group_manager->SetUpPointLights();
         else
-            g_pEngineLightingManager->SetSelfIlluminationAmbient(100);
-        g_pEngineLightingManager->UpdateGlobalLightingStates();
+            NEngineInternal::GPLightingManager->SetSelfIlluminationAmbient(100);
+        NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
         if (group->Flags & 1) {
             Apply3DFaceMePointLightVertexShader(light_count);
         } else if (group->Flags & 0x40) {
@@ -297,5 +297,5 @@ void CEnginePrimitiveManagerParticleSpriteGroup::RenderSubPrimitive(CEngineSubPr
         NEngineInternal::GPShaderRenderManager->PrepareForRender(0x15);
         NEngineInternal::GPRenderManager->DrawCurrentBuffersAsIndexedTris(0, sprites * 4, 0, sprites * 2);
     }
-    g_pEngineLightingManager->RestoreDefaultPrimitiveParameters();
+    NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
 }

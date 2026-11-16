@@ -3,13 +3,13 @@
 // Retail bytes:  ... sub esp,14h ; push ebx ; push esi ; mov esi,ecx ; mov [esp+10h],esi ; call CDecoderBase::CDecoderBase ; xor ebx,ebx ; push 0Ch ; mov [esp+28h],ebx ; mov [esi+38h],ebx ; mov [esp+1Ch],ebx ; mov dword ptr [esp+18h],3000h ; call operator new ; add esp,4 ; mov [esp+0Ch],eax ; cmp eax,ebx ; mov byte ptr [esp+24h],1 ; je null ; lea ecx,[esp+14h] ; push ecx ; push esi ; mov ecx,eax ; call CWorkerThread::CWorkerThread ; jmp got ; null: xor eax,eax ; got: cmp eax,ebx ; mov byte ptr [esp+24h],bl ; mov [esi+38h],eax ; jne done ; mov edx,[g_pchNil] ; mov [esp+0Ch],edx ; mov edx,offset ".\CASyncDecoder.cpp" ; lea ecx,[esp+0Ch] ; mov byte ptr [esp+24h],2 ; call Append ; ... mov edx,0C1h ; ... call AppendNumber ; ... call Append ("EMEM") ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; cmp eax,ebx ; je skip ; mov ecx,[esp+0Ch] ; call eax ; skip: lea ecx,[esp+0Ch] ; mov byte ptr [esp+24h],bl ; call ~CString ; lea ecx,[esp+0Bh] ; call CTrace::CTrace ; done: ... mov eax,esi ; ... ret
 // The classes are named by address.
 void* __cdecl operator new(unsigned int size);
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c48640)(const char* text);
 extern PFNLOGSINK_00c48640 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

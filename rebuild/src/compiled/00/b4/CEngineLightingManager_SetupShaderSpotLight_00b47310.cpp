@@ -34,13 +34,13 @@ class CEngineShadowRenderer { public:
     unsigned char            _pad00[0xc];
     CShadowRendererSceneData SceneData;            // +0x0C
 };
-extern CEngineShadowRenderer* g_pShadowRenderer_01436e60;   // 0x01436E60
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 
 class CShaderRenderManager { public:
     void SetShadowSpotLightFalloffParameters(const CMatrix3x4* falloff, float scale, float offset,
                                              const CRGBFloatColour* colour);   // 0x009899B0
 };
-extern CShaderRenderManager* g_pShaderRenderManager_01436e14;   // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
 #pragma pack(push, 1)
 struct CEngineLightingManagerSpotlightParams {     // 0x38 bytes, byte-packed (PDB)
@@ -63,9 +63,9 @@ class CEngineLightingManager { public:
 
 void CEngineLightingManager::SetupShaderSpotLight()
 {
-    CShadowRendererSceneData scene(g_pShadowRenderer_01436e60->SceneData);
+    CShadowRendererSceneData scene(NEngineInternal::GPShadowRenderer->SceneData);
     float ratio = SpotLightParams.SpotRadius / SpotLightParams.Radius;
     float scale = 1.0f / (1.0f / (ratio * ratio) - 1.0f);
-    g_pShaderRenderManager_01436e14->SetShadowSpotLightFalloffParameters(&scene.SpotLightFalloffMatrix, scale, -scale,
+    NEngineInternal::GPShaderRenderManager->SetShadowSpotLightFalloffParameters(&scene.SpotLightFalloffMatrix, scale, -scale,
                                                                          &SpotLightParams.Colour);
 }

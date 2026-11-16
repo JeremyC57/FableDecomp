@@ -24,7 +24,7 @@ class CString { public:
     ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
-extern char* g_pDebugBuffer;                               // 0x0139C900
+extern char* _afxPchNil;                               // 0x0139C900
 extern void (__fastcall* g_pfnErrorReport)(const char*);   // 0x0143BB2C
 
 class CUnprovenArrayComparator {          // the landed FindValue model (four pure comparison slots + virtual dtor)
@@ -68,7 +68,7 @@ void PKCTRArray::RemoveValue(CUnprovenArrayComparator* comparator, const void* v
 {
     if (value == 0) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << ".\\PKCTRArray.cpp" << "(" << 154 << ") : " << "Error: NULL object" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);
@@ -79,7 +79,7 @@ void PKCTRArray::RemoveValue(CUnprovenArrayComparator* comparator, const void* v
     int index = FindValueIndex(comparator, value, &found);
     if (!found) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << ".\\PKCTRArray.cpp" << "(" << 157 << ") : " << "Error: Could not find this object..." << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

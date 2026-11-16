@@ -28,11 +28,11 @@ struct CShaderResourcePointer {
 };
 struct CShaderDataBankNative {virtual ~CShaderDataBankNative();virtual bool OpenReadOnly(const CCharString&,unsigned long);unsigned char NativeMembers[0x124];};
 class CShaderRenderManager { public:CShaderResourcePointer CreateResource();}; //0098b860
-extern CShaderRenderManager* g_pShaderRenderManager; //01436e14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; } //01436e14
 struct CEngineResourceManagerNative {unsigned char EarlierMembers[0x960];CShaderDataBankNative VShaderBanks[27];unsigned char PixelShaderAndOtherData[0x128];CShaderResourcePointer VShaderResources[27];void SetupVertexShaderResource(EShaderBankNo bank,const CCharString&,const CVertexShaderInput&);};
 void CEngineResourceManagerNative::SetupVertexShaderResource(EShaderBankNo bank,const CCharString& name,const CVertexShaderInput& input){
  CShaderDataBankNative* shaderBank=&VShaderBanks[bank];shaderBank->OpenReadOnly(name,0x48);
- VShaderResources[bank]=g_pShaderRenderManager->CreateResource();
+ VShaderResources[bank]=NEngineInternal::GPShaderRenderManager->CreateResource();
  VShaderResources[bank].Data->OpenShaderBank(shaderBank);
  VShaderResources[bank].Data->SetVertexShaderInput(input);
 }

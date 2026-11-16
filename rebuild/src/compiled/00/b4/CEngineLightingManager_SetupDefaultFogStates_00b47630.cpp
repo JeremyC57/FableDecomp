@@ -60,7 +60,7 @@ class CEngineCamera { public:
     unsigned char _pad000[0x114];
     CMatrix3x4    NoScaleViewTransform;            // +0x114
 };
-extern CEngineCamera* g_pEngineCamera_01436ea0;   // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }   // 0x01436EA0
 
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
@@ -125,7 +125,7 @@ class CShaderRenderManager { public:
         DirtyFlags |= 2;
     }
 };
-extern CShaderRenderManager* g_pShaderRenderManager_01436e14;   // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
 class CEngineLightingManager { public:
     unsigned char   _pad00[0x3c];
@@ -141,9 +141,9 @@ void CEngineLightingManager::SetupDefaultFogStates()
                    0.0f, 0.0f, 0.0f,
                    scale, 0.0f, 0.0f,
                    -(scale * ThemeChannels->FogStartZ), 0.0f, 0.0f);
-    fog.PreMultiply(g_pEngineCamera_01436ea0->NoScaleViewTransform);
+    fog.PreMultiply(NEngineInternal::GPCamera->NoScaleViewTransform);
     C4DVector transform(fog.m[0], fog.m[3], fog.m[6], fog.m[9]);
-    g_pShaderRenderManager_01436e14->SetFogTransform(&transform);
+    NEngineInternal::GPShaderRenderManager->SetFogTransform(&transform);
     }
     CRenderStateManager::SetState(g_pRenderStateManager_01436e18->m_fogTableMode, g_DefaultFogMode_01396f58, g_pRenderStateManager_01436e18);
     CRenderStateManager::SetState(g_pRenderStateManager_01436e18->m_fogVertexMode, g_DefaultFogMode_01396f58, g_pRenderStateManager_01436e18);
@@ -151,6 +151,6 @@ void CEngineLightingManager::SetupDefaultFogStates()
     unsigned long packed = (((((long)(colour.A * 255.0f) << 8) | (long)(colour.R * 255.0f)) << 8 |
                              (long)(colour.G * 255.0f)) << 8) | (long)(colour.B * 255.0f);
     CRenderStateManager::SetState(g_pRenderStateManager_01436e18->m_fogColour, packed, g_pRenderStateManager_01436e18);
-    g_pShaderRenderManager_01436e14->SetFogParameters(C4DVector(colour.A, colour.A, colour.A, colour.A));
-    g_pShaderRenderManager_01436e14->SetFogColour(&colour);
+    NEngineInternal::GPShaderRenderManager->SetFogParameters(C4DVector(colour.A, colour.A, colour.A, colour.A));
+    NEngineInternal::GPShaderRenderManager->SetFogColour(&colour);
 }

@@ -216,7 +216,7 @@ private:
     void UpdateCombinedProjectionTransform();           // 0x00988A50
     void UpdateCameraPos();                             // 0x00989700
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 struct CShaderEnableSaver {                             // saves and forces the shader enables, restores them on exit
     bool m_vertexShaders;
     bool m_pixelShaders;
@@ -247,12 +247,12 @@ void CEngineScreenEffectDisplacementRenderer_Methods::ShowDisplacementTexture()
     if (EnableDisplacementTextureView) {
         CRenderStateCaptureBlock capture;
         CShaderEnableSaver shaders(true, true);
-        g_pShaderRenderManager->ApplyVertexShader((CVertexShader*)ScreenCopyVertexShader, false);
-        g_pShaderRenderManager->ApplyPixelShader((CPixelShader*)ScreenCopyPixelShader);
+        NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)ScreenCopyVertexShader, false);
+        NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)ScreenCopyPixelShader);
         SetState(0, g_pRenderManagerCore->m_state28b8, g_pRenderManagerCore);
         SetState(0, g_pRenderManagerCore->m_state2868, g_pRenderManagerCore);
         SetState(g_renderStateDefault_01396fb8, g_pRenderManagerCore->m_state2890, g_pRenderManagerCore);
-        g_pShaderRenderManager->PrepareForRender(0);
+        NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
         CTexture* texture = DisplacementTexture;
         g_pRenderManagerCore->DrawAsIndexedTris(&texture, 1, DisplacementToBackBufferVerts, 0x18, 4, g_QuadIndices_0139ab0c, 2);
     }

@@ -25,22 +25,14 @@ template <class T> struct CPersistTraits {
     void TransferOut(CPersistContext& context, CCharString& out, const T* value);   // 0x009E8110 for CRGBColour
 };
 
-class CPersistContext_TransferableComponentGenericType { public:
-    virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
-    virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
-};
-
-template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {
-    T* TransferableValue;                              // +0x4
-    virtual void TransferOut(CPersistContext& context, CCharString& out);
-    virtual void TransferIn(CPersistContext& context, CStringParser& parser);
-};
+// The wrapper from the shared header: private virtual TransferOut / TransferIn (both PDBs, @@EAE), member Object +4.
+#include "engine/CPersistContext_TransferableComponent.h"
 
 template <class T>
 void CPersistContext_TransferableComponent<T>::TransferOut(CPersistContext& context, CCharString& out)
 {
     CPersistTraits<T> traits;
-    traits.TransferOut(context, out, TransferableValue);
+    traits.TransferOut(context, out, Object);
 }
 
 template void CPersistContext_TransferableComponent<CRGBColour>::TransferOut(CPersistContext& context, CCharString& out);

@@ -166,7 +166,7 @@ class CEngineResourceManager { public:
     CMeshDataBank* MeshBanks[3];                       // +0x10
     const CMeshDataBank* PeekMeshBank(EMeshBankNo no) const { return MeshBanks[no]; }
 };
-extern CEngineResourceManager* g_pResourceManager;     // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }     // 0x01436E98
 
 class CEnginePrimitive { public:
     long          Type;                                // +0x00
@@ -234,7 +234,7 @@ class CEngineInternalPrimitive2DAnimatedMesh : public CEngineInternalPrimitiveAn
 void CEngineInternalPrimitive2DAnimatedMesh::Update(const CEnginePrimitive& primitive, unsigned long flags)
 {
     const CEnginePrimitive2DAnimatedMesh& mesh = static_cast<const CEnginePrimitive2DAnimatedMesh&>(primitive);
-    MeshInfo = const_cast<C3DMeshInfo*>(g_pResourceManager->PeekMeshBank((EMeshBankNo)0)->PeekAnimatedMesh(mesh.MeshIndex));
+    MeshInfo = const_cast<C3DMeshInfo*>(NEngineInternal::GPResourceManager->PeekMeshBank((EMeshBankNo)0)->PeekAnimatedMesh(mesh.MeshIndex));
     ClipBox = mesh.ClipBox;
     Orientation = mesh.Orientation;
     InterpolationSet = mesh.InterpolationSet;

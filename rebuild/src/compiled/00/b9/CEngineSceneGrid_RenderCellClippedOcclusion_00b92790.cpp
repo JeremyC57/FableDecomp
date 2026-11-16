@@ -38,7 +38,7 @@ class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* PrimitiveManagers[47];   // +0x10
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 extern unsigned short g_engineFrameNumber;                     // 0x0143B8D8
 
 class CEngineInternalPrimitiveBase {
@@ -114,7 +114,7 @@ bool CEngineSceneGrid::RenderCellClippedOcclusion(unsigned long x, unsigned long
     while (primitive) {
         if (primitive->RenderLayerMask & layer) {
             if ((primitive->OcclusionLayerBitMask & occlusionLayers) && primitive->IsVisibleToCamera(camera, inside)) {
-                CEnginePrimitiveManager* manager = g_pEnginePrimitiveTypeInfo->PrimitiveManagers[primitive->Type];
+                CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[primitive->Type];
                 CEngineSubPrimitiveChain chain;
                 long result = manager->RenderPrimitive(*primitive, layer, chain);
                 if (result == 2)

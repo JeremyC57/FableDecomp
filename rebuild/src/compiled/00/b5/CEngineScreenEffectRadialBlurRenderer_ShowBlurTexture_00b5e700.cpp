@@ -220,7 +220,7 @@ private:
     void UpdateCombinedProjectionTransform();           // 0x00988A50
     void UpdateCameraPos();                             // 0x00989700
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 struct CShaderEnableSaver {                             // saves and forces the shader enables, restores them on exit
     bool m_vertexShaders;
     bool m_pixelShaders;
@@ -260,12 +260,12 @@ void CEngineScreenEffectRadialBlurRenderer_Methods::ShowBlurTexture()
     CRenderStateCaptureBlock capture;
     CShaderLayoutSaver layout(2);
     CShaderEnableSaver shaders(true, true);
-    g_pShaderRenderManager->ApplyVertexShader((CVertexShader*)ScreenCopyVertexShader, false);
-    g_pShaderRenderManager->ApplyPixelShader((CPixelShader*)TextureOnlyPixelShader);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)ScreenCopyVertexShader, false);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)TextureOnlyPixelShader);
     SetState(0, g_pRenderManagerCore->m_state28b8, g_pRenderManagerCore);
     SetState(0, g_pRenderManagerCore->m_state2868, g_pRenderManagerCore);
     SetState(g_renderStateDefault_01396fb8, g_pRenderManagerCore->m_state2890, g_pRenderManagerCore);
-    g_pShaderRenderManager->PrepareForRender(0);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
     CTexture* texture;
     switch (ShowDebug) {
     case 1:

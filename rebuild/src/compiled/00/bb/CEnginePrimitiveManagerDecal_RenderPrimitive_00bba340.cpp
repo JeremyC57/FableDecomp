@@ -37,7 +37,7 @@ class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                    // +0x54 (CameraDesc +0x14, its WorldPosition +0x40)
 };
-extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }              // 0x01436EA0
 
 class CEngineInternalPrimitiveDecal {               // CEngineInternalPrimitiveBase (0x48) + decal data (PDB)
 public:
@@ -74,9 +74,9 @@ ERendered CEnginePrimitiveManagerDecal::RenderPrimitive(CEngineInternalPrimitive
         return RENDERED_NOTHING;
     CEngineSubPrimitiveDecal* subPrimitive = new CEngineSubPrimitiveDecal(primitive);
     const CEngineInternalPrimitiveDecal& decal = (const CEngineInternalPrimitiveDecal&)primitive;
-    float dx = g_pEngineCamera->WorldPosition.X - decal.WorldPos.X;
-    float dy = g_pEngineCamera->WorldPosition.Y - decal.WorldPos.Y;
-    float dz = g_pEngineCamera->WorldPosition.Z - decal.WorldPos.Z;
+    float dx = NEngineInternal::GPCamera->WorldPosition.X - decal.WorldPos.X;
+    float dy = NEngineInternal::GPCamera->WorldPosition.Y - decal.WorldPos.Y;
+    float dz = NEngineInternal::GPCamera->WorldPosition.Z - decal.WorldPos.Z;
     g_pEngineSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)0, subPrimitive, (float)sqrt(dx * dx + dy * dy + dz * dz),
                                                    (CEnginePrimitiveManager*)this);
     return RENDERED_SUB_PRIMITIVES;

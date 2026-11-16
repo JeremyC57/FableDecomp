@@ -13,7 +13,7 @@ class CEngineShadowRenderer { public:
     unsigned char _pad000[0x334];
     EShadowRenderingTechnique RenderingTechnique;       // +0x334
 };
-extern CEngineShadowRenderer* g_pShadowRenderer_01436e60;   // 0x01436E60
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 struct CEnginePrimitiveManagerStaticMeshesBase {
     unsigned char _pad000[0xd8];
     CVertexShader VertexShadersStaticDepthBufferShadow[4];          // +0x0d8
@@ -46,7 +46,7 @@ struct CEnginePrimitiveManagerStaticMeshesBase {
 };
 void CEnginePrimitiveManagerStaticMeshesBase::FrameStart()
 {
-    if (g_pShadowRenderer_01436e60->RenderingTechnique == 2) {
+    if (NEngineInternal::GPShadowRenderer->RenderingTechnique == 2) {
         VertexShaderShadowBufferRender = &VertexShaderColourShadowBufferRender;
         VertexShadersStaticShadow = VertexShadersStaticColourBufferShadow;
         VertexShadersStaticEnvShadow = VertexShadersStaticEnvColourBufferShadow;

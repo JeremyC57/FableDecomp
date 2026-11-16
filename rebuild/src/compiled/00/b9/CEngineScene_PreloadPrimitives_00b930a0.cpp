@@ -61,7 +61,7 @@ class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* PrimitiveManagers[47];   // +0x10
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 class CEngineInternalPrimitiveBase {
 public:
@@ -120,7 +120,7 @@ bool CEngineScene::PreloadPrimitives(const CShadowClipVolume& volume, const C3DV
         sphere.Center.Z = 0.0f;
         sphere.Radius = 0.0f;
         if (primitive->GetBoundingSphereWorldSpace(sphere) && volume.IsSphereInside(sphere))
-            preloaded |= g_pEnginePrimitiveTypeInfo->PrimitiveManagers[primitive->Type]->PreloadPrimitive(*primitive, position, flags);
+            preloaded |= NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[primitive->Type]->PreloadPrimitive(*primitive, position, flags);
     }
     return preloaded;
 }

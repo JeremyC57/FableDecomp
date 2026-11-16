@@ -238,13 +238,13 @@ CAIStateGroupBase* __fastcall AllocStateGroup_SG_SUMMONER_LIGHTNING_ATTACK(); //
 CAIStateGroupBase* __fastcall AllocStateGroup_SG_SUMMONER_SUMMON();           // 0x00902D5B
 CAIStateGroupBase* __fastcall AllocStateGroup_SG_SUMMONER_CHARGE();           // 0x00902F17
 
-class CAIBrain {
-public:
-    static CAIStateGroupInfo StateGroupInfo[203];        // 0x013BB008
-};
+// CAIBrain from the shared header: the private static const table (Anniversary PDB LF_STMEMBER, the spelling the initializer
+// 0x0121F86F binds: ?StateGroupInfo@CAIBrain@@0QBVCAIStateGroupInfo@@B).
+#define FABLE_RETAIL_CAIBRAIN_STATEGROUPINFO
+#include "engine/CAIBrain.h"
 
 // The 203 entries in retail order (names and allocator addresses read from the initializer 0x0121F86F).
-CAIStateGroupInfo CAIBrain::StateGroupInfo[203] = {
+const CAIStateGroupInfo CAIBrain::StateGroupInfo[203] = {   // 0x013BB008
     CAIStateGroupInfo(CCharString("SG_MINION_WANDER", -1), AllocStateGroup_SG_MINION_WANDER),
     CAIStateGroupInfo(CCharString("SG_MINION_SLEEP", -1), AllocStateGroup_SG_MINION_SLEEP),
     CAIStateGroupInfo(CCharString("SG_MINION_GO_TO_BED", -1), AllocStateGroup_SG_MINION_GO_TO_BED),

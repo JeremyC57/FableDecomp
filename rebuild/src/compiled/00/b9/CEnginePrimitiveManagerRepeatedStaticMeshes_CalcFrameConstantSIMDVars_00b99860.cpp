@@ -9,7 +9,7 @@
 //   colour-buffer shadowed shader set), and the stores land exactly on the PDB layout of CSIMDVariableBlock
 //   (this->SIMDVariableBlock +0x90; CameraPosX +0xB00 .. CameraClipPlaneBottomZ +0xBE0, float[4] each). Manifest label
 //   "engine_copy_global_transform_to_array" is wrong.
-// Data: the engine camera global 0x01436EA0 under its dominant landed spelling `?g_pEngineCamera@@3PAVCEngineCamera@@A`
+// Data: the engine camera global 0x01436EA0 under its dominant landed spelling `?NEngineInternal::GPCamera@@3PAVCEngineCamera@@A`
 //   (no PDB data symbol; several other spellings are bound, see NOTES.md); its CameraDesc (+0x14) WorldPosition (+0x40)
 //   = +0x54 and FrustrumPlanes CPlane[4] at +0x1C0 (engine/CEngineCamera.h).
 // Shape: one loop over the four lanes (VC7.1 strength-reduces the lane offset into eax 0xB10..0xB20). The position is
@@ -73,7 +73,7 @@ public:
     const C3DVector& GetPosition() const { return ((const CEngineCameraDesc*)CameraDesc)->WorldPosition; }
     const CPlane& GetFrustrumPlane(long i) const { return ((const CPlane*)FrustrumPlanes)[i]; }
 };
-extern CEngineCamera* g_pEngineCamera;             // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }             // 0x01436EA0
 
 #define CEnginePrimitiveManagerRepeatedStaticMeshes CEnginePrimitiveManagerRepeatedStaticMeshes_Layout
 #include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"
@@ -85,13 +85,13 @@ class CEnginePrimitiveManagerRepeatedStaticMeshes : public CEnginePrimitiveManag
 void CEnginePrimitiveManagerRepeatedStaticMeshes::CalcFrameConstantSIMDVars()
 {
     for (long i = 0; i < 4; ++i) {
-        SIMDVariableBlock->CameraPosX[i] = g_pEngineCamera->GetPosition().X;
-        SIMDVariableBlock->CameraPosY[i] = g_pEngineCamera->GetPosition().Y;
-        SIMDVariableBlock->CameraPosZ[i] = g_pEngineCamera->GetPosition().Z;
-        C3DVector left = g_pEngineCamera->GetFrustrumPlane(0).Normal;
-        C3DVector right = g_pEngineCamera->GetFrustrumPlane(1).Normal;
-        C3DVector top = g_pEngineCamera->GetFrustrumPlane(2).Normal;
-        C3DVector bottom = g_pEngineCamera->GetFrustrumPlane(3).Normal;
+        SIMDVariableBlock->CameraPosX[i] = NEngineInternal::GPCamera->GetPosition().X;
+        SIMDVariableBlock->CameraPosY[i] = NEngineInternal::GPCamera->GetPosition().Y;
+        SIMDVariableBlock->CameraPosZ[i] = NEngineInternal::GPCamera->GetPosition().Z;
+        C3DVector left = NEngineInternal::GPCamera->GetFrustrumPlane(0).Normal;
+        C3DVector right = NEngineInternal::GPCamera->GetFrustrumPlane(1).Normal;
+        C3DVector top = NEngineInternal::GPCamera->GetFrustrumPlane(2).Normal;
+        C3DVector bottom = NEngineInternal::GPCamera->GetFrustrumPlane(3).Normal;
         SIMDVariableBlock->CameraClipPlaneLeftX[i] = left.X;
         SIMDVariableBlock->CameraClipPlaneLeftY[i] = left.Y;
         SIMDVariableBlock->CameraClipPlaneLeftZ[i] = left.Z;

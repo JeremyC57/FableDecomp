@@ -11491,9 +11491,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c491d0'
-        Module = '_global'
-        Source = '00/c4/global_DrawGetEnvironment_00c491d0.cpp'
-        TestSource = '00/c4/global_DrawGetEnvironment_00c491d0_test.cpp'
+        Module = 'CCodaFrame'
+        Source = '00/c4/CCodaFrame_GetData_00c491d0.cpp'
+        TestSource = '00/c4/CCodaFrame_GetData_00c491d0_test.cpp'
         PassPattern = 'AUTO_TINY_00c491d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -30993,9 +30993,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052e4d0'
-        Module = '_global'
-        Source = '00/52/global_LengthScaleConversion_0052e4d0.cpp'
-        TestSource = '00/52/global_LengthScaleConversion_0052e4d0_test.cpp'
+        Module = 'CUIScreenUnitConverter'
+        Source = '00/52/CUIScreenUnitConverter_ConvertY_0052e4d0.cpp'
+        TestSource = '00/52/CUIScreenUnitConverter_ConvertY_0052e4d0_test.cpp'
         PassPattern = 'OK_0x0052e4d0'
     }
     [pscustomobject]@{
@@ -31021,9 +31021,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052e470'
-        Module = '_global'
-        Source = '00/52/global_PhysicsScaleFloatByGameSpeed_0052e470.cpp'
-        TestSource = '00/52/global_PhysicsScaleFloatByGameSpeed_0052e470_test.cpp'
+        Module = 'CUIScreenUnitConverter'
+        Source = '00/52/CUIScreenUnitConverter_ConvertX_0052e470.cpp'
+        TestSource = '00/52/CUIScreenUnitConverter_ConvertX_0052e470_test.cpp'
         PassPattern = 'OK_0x0052e470'
     }
     [pscustomobject]@{
@@ -31042,9 +31042,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00556570'
-        Module = '_global'
-        Source = '00/55/CObservable_AddExclusiveObserver_00556570.cpp'
-        TestSource = '00/55/CObservable_AddExclusiveObserver_00556570_test.cpp'
+        Module = 'NUISystem::CRedefinerList'
+        Source = '00/55/NUISystemCRedefinerList_SetAcceptButton_00556570.cpp'
+        TestSource = '00/55/NUISystemCRedefinerList_SetAcceptButton_00556570_test.cpp'
         PassPattern = 'OK_0x00556570'
     }
     [pscustomobject]@{
@@ -35110,8 +35110,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c36080'
         Module = '_global'
-        Source = '00/c3/global_operatornew_00c36080.cpp'
-        TestSource = '00/c3/global_operatornew_00c36080_test.cpp'
+        Source = '00/c3/global_CODABufferCreate_00c36080.cpp'
+        TestSource = '00/c3/global_CODABufferCreate_00c36080_test.cpp'
         PassPattern = '00c36080_TEST PASS'
     }
     [pscustomobject]@{
@@ -181600,9 +181600,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c49b90'
-        Module = '_unattributed'
-        Source = '00/c4/unattributed_ProcessMessageCMailboxQueue00c49b90_00c49b90.cpp'
-        TestSource = '00/c4/unattributed_ProcessMessageCMailboxQueue00c49b90_00c49b90_test.cpp'
+        Module = 'CMailboxQueue'
+        Source = '00/c4/CMailboxQueue_ProcessMessage_00c49b90.cpp'
+        TestSource = '00/c4/CMailboxQueue_ProcessMessage_00c49b90_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c49b90_TEST PASS'
     }
@@ -193179,9 +193179,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c19fa0'
-        Module = '_global'
-        Source = '00/c1/global_ReleaseFileObject00c19fa0_00c19fa0.cpp'
-        TestSource = '00/c1/global_ReleaseFileObject00c19fa0_00c19fa0_test.cpp'
+        Module = 'PKCDefaultFileManager'
+        Source = '00/c1/PKCDefaultFileManager_ReleaseFileObject_00c19fa0.cpp'
+        TestSource = '00/c1/PKCDefaultFileManager_ReleaseFileObject_00c19fa0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c19fa0_TEST PASS'
     }
@@ -193685,9 +193685,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c4bc80'
-        Module = '_unattributed'
-        Source = '00/c4/unattributed_GetResult00c4bc80_00c4bc80.cpp'
-        TestSource = '00/c4/unattributed_GetResult00c4bc80_00c4bc80_test.cpp'
+        Module = 'PKCMailbox'
+        Source = '00/c4/PKCMailbox_GetResult_00c4bc80.cpp'
+        TestSource = '00/c4/PKCMailbox_GetResult_00c4bc80_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c4bc80_TEST PASS'
     }
@@ -219987,9 +219987,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1feb0'
-        Module = 'CV_AmbushScamScript'
-        Source = '00/e1/CVAmbushScamScript_ResetRandomSpeechTime_00e1feb0.cpp'
-        TestSource = '00/e1/CVAmbushScamScript_ResetRandomSpeechTime_00e1feb0_test.cpp'
+        Module = 'CQR_EscortTraderScript'
+        Source = '00/e1/CQREscortTraderScript_ResetTraderRandomSpeechTime_00e1feb0.cpp'
+        TestSource = '00/e1/CQREscortTraderScript_ResetTraderRandomSpeechTime_00e1feb0_test.cpp'
         PassPattern = '00e1feb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -233145,8 +233145,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0079f730'
         Module = 'CTCWillLightning::CLightningBeam'
-        Source = '00/79/CTCWillLightningCLightningBeam_AllBeamsInactive_0079f730.cpp'
-        TestSource = '00/79/CTCWillLightningCLightningBeam_AllBeamsInactive_0079f730_test.cpp'
+        Source = '00/79/CTCWillLightningCLightningBeam_AllChildrenInactive_0079f730.cpp'
+        TestSource = '00/79/CTCWillLightningCLightningBeam_AllChildrenInactive_0079f730_test.cpp'
         PassPattern = '0079f730_TEST PASS'
     }
     [pscustomobject]@{
@@ -237219,8 +237219,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0075c9b0'
         Module = 'CTCCameraPointScriptedSpline::CKeyCamera'
-        Source = '00/75/CTCCameraPointScriptedSplineCKeyCamera_GetEventName_0075c9b0.cpp'
-        TestSource = '00/75/CTCCameraPointScriptedSplineCKeyCamera_GetEventName_0075c9b0_test.cpp'
+        Source = '00/75/CTCCameraPointScriptedSplineCKeyCamera_GetEvent_0075c9b0.cpp'
+        TestSource = '00/75/CTCCameraPointScriptedSplineCKeyCamera_GetEvent_0075c9b0_test.cpp'
         PassPattern = '0075c9b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -265035,8 +265035,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006421c0'
         Module = 'CPersistContext_TransferableComponent<CRGBColour>'
-        Source = '00/64/CPersistContextTransferableComponentCRGBColour_TransferIn_006421c0.cpp'
-        TestSource = '00/64/CPersistContextTransferableComponentCRGBColour_TransferIn_006421c0_test.cpp'
+        Source = '00/64/CPersistContextTransferableComponent_TransferIn_006421c0.cpp'
+        TestSource = '00/64/CPersistContextTransferableComponent_TransferIn_006421c0_test.cpp'
         PassPattern = '006421c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -276726,15 +276726,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0048531e'
         Module = 'CPersistContext_TransferableComponent<C3DVector>'
-        Source = '00/48/CPersistContextTransferableComponentC3DVector_TransferIn_0048531e.cpp'
-        TestSource = '00/48/CPersistContextTransferableComponentC3DVector_TransferIn_0048531e_test.cpp'
+        Source = '00/48/CPersistContextTransferableComponent_TransferIn_0048531e.cpp'
+        TestSource = '00/48/CPersistContextTransferableComponent_TransferIn_0048531e_test.cpp'
         PassPattern = '0048531e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00485348'
         Module = 'CPersistContext_TransferableComponent<C3DVector>'
-        Source = '00/48/CPersistContextTransferableComponentC3DVector_TransferOut_00485348.cpp'
-        TestSource = '00/48/CPersistContextTransferableComponentC3DVector_TransferOut_00485348_test.cpp'
+        Source = '00/48/CPersistContextTransferableComponent_TransferOut_00485348.cpp'
+        TestSource = '00/48/CPersistContextTransferableComponent_TransferOut_00485348_test.cpp'
         PassPattern = '00485348_TEST PASS'
     }
     [pscustomobject]@{
@@ -276747,8 +276747,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006421f0'
         Module = 'CPersistContext_TransferableComponent<CRGBColour>'
-        Source = '00/64/CPersistContextTransferableComponentCRGBColour_TransferOut_006421f0.cpp'
-        TestSource = '00/64/CPersistContextTransferableComponentCRGBColour_TransferOut_006421f0_test.cpp'
+        Source = '00/64/CPersistContextTransferableComponent_TransferOut_006421f0.cpp'
+        TestSource = '00/64/CPersistContextTransferableComponent_TransferOut_006421f0_test.cpp'
         PassPattern = '006421f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -294165,9 +294165,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077c360'
-        Module = 'CLoopedRange'
-        Source = '00/77/CLoopedRange_GetFraction_0077c360.cpp'
-        TestSource = '00/77/CLoopedRange_GetFraction_0077c360_test.cpp'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceSprite'
+        Source = '00/77/NGraphicAppearanceCTCGraphicAppearanceSprite_GetInterpolatedAnimStage_0077c360.cpp'
+        TestSource = '00/77/NGraphicAppearanceCTCGraphicAppearanceSprite_GetInterpolatedAnimStage_0077c360_test.cpp'
         PassPattern = '0077c360_TEST PASS'
     }
     [pscustomobject]@{
@@ -306108,8 +306108,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c35a10'
         Module = '_global'
-        Source = '00/c3/global_AudioObjectPlaySource_00c35a10.cpp'
-        TestSource = '00/c3/global_AudioObjectPlaySource_00c35a10_test.cpp'
+        Source = '00/c3/global_CODASourceQueueBuffer_00c35a10.cpp'
+        TestSource = '00/c3/global_CODASourceQueueBuffer_00c35a10_test.cpp'
         PassPattern = '00c35a10_TEST PASS'
     }
     [pscustomobject]@{
@@ -380696,9 +380696,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e4e0e0'
-        Module = 'CTollBanditScript'
-        Source = '00/e4/CTollBanditScript_HandleBanditToll_00e4e0e0.cpp'
-        TestSource = '00/e4/CTollBanditScript_HandleBanditToll_00e4e0e0_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CTollBandit'
+        Source = '00/e4/NScriptCVBanditTollScriptCTollBandit_SetUpBanditToll_00e4e0e0.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCTollBandit_SetUpBanditToll_00e4e0e0_test.cpp'
         PassPattern = '00e4e0e0_TEST PASS'
     }
     [pscustomobject]@{

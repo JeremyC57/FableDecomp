@@ -9,7 +9,7 @@
 //   MeshBanks[0], the inline PeekMeshBank), C3DMeshInfo::GetMesh 0x00A25E70 (flags 4), BeginLoading 0x00A256F0, ~CCountedPointer<const C3DMesh2>
 //   0x00A36EC0 (called at the end of the local-origin block, expanded at the `continue`), CEnginePrimitiveManagerStaticMeshesBase::AddStaticMesh
 //   0x00BA0FC0 (through the inline GetStaticMeshManager), ~CBaseClass 0x0099A2E0 (the expanded ~CEnginePrimitiveHandle), operator delete 0x00BFE9BC.
-// Globals: NEngineInternal::GPResourceManager 0x01436E98, g_pEnginePrimitiveRenderer 0x01436E80 (the established spellings).
+// Globals: NEngineInternal::GPResourceManager 0x01436E98, NEngineInternal::GPPrimitiveRenderer 0x01436E80 (the established spellings).
 // Shape: the inline HasLOD carries the `lod < 4` bound, so GetBestCurrentDetailLevel's loop keeps retail's top-tested head (0x00BF1340);
 //   the handle temporary's destructor is the shared header's FABLE_FORCEINLINE one (no out-of-line ??1CEnginePrimitiveHandle in Ego_r.pdb
 //   or Fable.exe, only ??_G 0x0041C500); PreMultiply / PostMultiply are the SetMultiply-on-a-copy nesting (chunk 2006). The x87 term
@@ -67,7 +67,7 @@
 #include "engine/CEnginePrimitiveRenderUtil.h"
 
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;                      // 0x01436E80
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }                      // 0x01436E80
 
 void CEnginePrimitiveRenderUtil::AddGeneratedObjects(const CEngineInternalPrimitiveStaticMesh& primitive)
 {
@@ -89,7 +89,7 @@ void CEnginePrimitiveRenderUtil::AddGeneratedObjects(const CEngineInternalPrimit
                     transform.PreMultiply(mesh->PeekInverseTransform());
                 }
                 transform.PostMultiply(static_mesh.ObjectTransform);
-                CEnginePrimitiveManagerStaticMeshes& static_mesh_manager = g_pEnginePrimitiveRenderer->GetStaticMeshManager();
+                CEnginePrimitiveManagerStaticMeshes& static_mesh_manager = NEngineInternal::GPPrimitiveRenderer->GetStaticMeshManager();
                 static_mesh_manager.AddStaticMesh(mesh_info, mesh_info, transform, static_mesh.Scale,
                     static_mesh.FadeDistance, static_mesh.Alpha, static_mesh.TintColour, static_mesh.AlphaRef, static_mesh.AlphaMipBias, false,
                     static_mesh.EnginePrimitiveFlags);

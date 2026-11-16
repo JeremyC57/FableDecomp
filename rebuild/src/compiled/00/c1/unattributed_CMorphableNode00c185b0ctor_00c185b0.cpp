@@ -3,13 +3,13 @@
 // Retail bytes:  ... mov eax,[esp+1Ch] ; xor ebx,ebx ; cmp eax,ebx ; mov [esp+14h],ebx ; mov dword ptr [esi],12B2DECh ; mov [esi+4],ebx ; je flat ; push 28h ; call operator new ; add esp,4 ; mov [esp+1Ch],eax ; cmp eax,ebx ; mov byte ptr [esp+14h],1 ; je null ; push ebx ; mov ecx,eax ; call CTreeNode::CTreeNode ; jmp got ; flat: push 10h ; call operator new ; add esp,4 ; mov [esp+1Ch],eax ; cmp eax,ebx ; mov byte ptr [esp+14h],2 ; je null ; push ebx ; mov ecx,eax ; call CFlatNode::CFlatNode ; jmp got ; null: xor eax,eax ; got: cmp eax,ebx ; mov byte ptr [esp+14h],bl ; mov [esi+4],eax ; jne done ; ... (warning) ... done: ... mov eax,esi ; ... ret 4
 // The classes are named by address.
 void* __cdecl operator new(unsigned int size);
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c185b0)(const char* text);
 extern PFNLOGSINK_00c185b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

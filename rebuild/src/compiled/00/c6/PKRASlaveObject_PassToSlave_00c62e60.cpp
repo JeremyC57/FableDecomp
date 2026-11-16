@@ -21,14 +21,14 @@ struct CDebugBreak {                        // empty class whose constructor bre
     CDebugBreak();                          // 0x00C16750
 };
 
-extern char* g_pDebugBuffer;                // 0x0139C900 (the nil string's buffer)
+extern char* _afxPchNil;                // 0x0139C900 (the nil string's buffer)
 extern void (__fastcall* g_pfnErrorReport)(const char* text);   // 0x0143BB2C
 
 // libpk's error report: "<file>(<line>) : <text>\n" to the installed report hook, then a debugger break.
 #define PK_REPORT_ERROR(line, text)                                                         \
     {                                                                                       \
         {                                                                                   \
-            CString s(g_pDebugBuffer);                                                 \
+            CString s(_afxPchNil);                                                 \
             s << ".\\PKRASlaveObject.cpp" << "(" << (long)(line) << ") : " << text << "\n"; \
             if (g_pfnErrorReport)                                                           \
                 g_pfnErrorReport(s.m_pBuffer);                                              \

@@ -30,7 +30,7 @@ class CShaderRenderManager { public:
 struct CRenderManagerCore {
     void SetWorldTransform(const CMatrix3x4& transform);     // 0x00A0B140
 };
-extern CShaderRenderManager* g_pShaderRenderManager;         // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }         // 0x01436E14
 extern CRenderManagerCore*   g_pRenderManagerCore;           // 0x01436E18
 
 struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
@@ -40,6 +40,6 @@ struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
 void CEnginePrimitiveRenderer_Methods::ResetWorldTransform()
 {
     CMatrix3x4 identity;
-    g_pShaderRenderManager->SetWorldTransform(identity);
+    NEngineInternal::GPShaderRenderManager->SetWorldTransform(identity);
     g_pRenderManagerCore->SetWorldTransform(identity);
 }

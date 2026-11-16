@@ -8,16 +8,16 @@
 // Callees: CString operator<< (const char*) 0x00C0DEC0 / (double) 0x00C0DED0 / (long) 0x00C0DF00 / (unsigned long) 0x00C0DF10,
 //   ~CString 0x00C0BA40 (the landed libpk spellings); the block copier 0x00C4B640 (descriptive CopyOutOfBuffers: copies from
 //   the resident blocks into the caller's buffer and returns the bytes copied; its messages "Error: alignment out" /
-//   "Error: Expecting to be processing SOME bytes!"); g_pchNil_0139c900 / g_pfnLogSink_0143bb2c (held spellings, D4).
+//   "Error: Expecting to be processing SOME bytes!"); _afxPchNil / g_pfnLogSink_0143bb2c (held spellings, D4).
 // Layout: the landed Seek 0x00C4AA40 model; +0x14 is the buffer block count the constructor sets (look-behind + look-ahead).
 // Shape: the ratio is a float division (`fadd dword [2^32]` unsigned fix-ups, 0x0122DCB4) passed to operator<<(double).
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4aa40)(const char* text);
 extern PFNLOGSINK_00c4aa40 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                                         // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(double value);       // 0x00C0DED0

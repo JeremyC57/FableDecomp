@@ -24,11 +24,11 @@
 #include "engine/CEnginePrimitiveTypeInfo.h"
 #include "engine/CMemoryAllocator.h"
 
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;    // 0x01436E80
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;    // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }    // 0x01436E80
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }    // 0x01436E84
 
 CEngineLightingManager::CEngineLightingManager()
-    : CEnginePrimitiveManager(g_pEnginePrimitiveRenderer->SceneList)
+    : CEnginePrimitiveManager(NEngineInternal::GPPrimitiveRenderer->SceneList)
 {
     memset(LightLookupGrid, 0, sizeof(LightLookupGrid));
     memset(SmallObjectLookupGrid, 0, sizeof(SmallObjectLookupGrid));
@@ -53,7 +53,7 @@ CEngineLightingManager::CEngineLightingManager()
     ThemeChannels[0].FogStartZ = 1000.0f;
     ThemeChannels[0].FogEndZ = 2000.0f;
     MistEffectColour.Initialise(0.0f, 0.0f, 0.0f, 1.0f);
-    g_pEnginePrimitiveTypeInfo->RegisterPrimitiveManager(this);
+    NEngineInternal::GPPrimitiveTypeInfo->RegisterPrimitiveManager(this);
     CurrentShadowedSpotLightParams.Active = false;
     StateUpdateFlags = 0xf;
 }

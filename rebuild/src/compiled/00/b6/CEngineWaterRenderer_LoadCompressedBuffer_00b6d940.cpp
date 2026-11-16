@@ -74,7 +74,7 @@ class CVertexBufferWin32 { public:
 class CEngineResourceManager { public:
     unsigned long GetVertexBufferUsage();          // 0x00B3B030 (folded with GetIndexBufferUsage)
 };
-extern CEngineResourceManager* g_pEngineResourceManager_01436e98;   // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 struct CRangeCompressor {
     void Decompress(const unsigned char* source, long count, long stride, void* destination);   // 0x00F39ED0
@@ -91,7 +91,7 @@ void CEngineWaterRenderer::LoadCompressedBuffer(CMemoryDataInputStream& stream, 
     long count = stream.ReadLong();
     long stride = stream.ReadLong();
     if (count && stride) {
-        buffer.Initialise(0, count, stride, g_pEngineResourceManager_01436e98->GetVertexBufferUsage(), 1);
+        buffer.Initialise(0, count, stride, NEngineInternal::GPResourceManager->GetVertexBufferUsage(), 1);
         unsigned char* data = buffer.Lock(0, 0, 0);
         long compressedSize = stream.ReadLong();
         if (compressedSize > 0) {

@@ -1,11 +1,15 @@
 // CEngineWaterRenderer::InitialiseDynamicTextures -- allocate shared scratch page and four texture handles.
-// Leaf: ?InitialiseDynamicTextures@CWaterDynamicTextures@@QAEXXZ
+// Leaf: ?InitialiseDynamicTextures@CEngineWaterRenderer@@AAEXXZ
+// Name-fix NF38: Ego_r.pdb / FableWin.pdb ?InitialiseDynamicTextures@CEngineWaterRenderer@@AAEXXZ (private), the header's
+// FABLE_RETAIL_CENGINEWATERRENDERER(_CTOR) opt-in names it for 0x00B6D510 (handles +0x1d8..+0x1f4 as native); was the local stand-in CWaterDynamicTextures.
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail 00b6d510,235 bytes; PDB shared CEngineWaterRenderer has handles +0xc later and incorrect pointer labels.
 // Native handles page1d8, environment1dc,sea1e4,water1ec,ice1f4; manager global1436e98+3190.
 enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #ifdef _MSC_VER
+#define FABLE_RETAIL_CENGINEWATERRENDERER
+#define FABLE_RETAIL_CENGINEWATERRENDERER_CTOR
 #include "engine/CEngineWaterRenderer.h"
 #include "engine/CEngineResourceManager.h"
 #define CPixelFormat CPixelFormatLayout
@@ -26,11 +30,7 @@ class CGPUScratchBufferTextureManager { public:
 // Resource manager donor scratch offset40e4 differs from native3190.
 struct CEngineResourceManagerNative { unsigned char OtherManagers[0x3190]; CGPUScratchBufferTextureManager ScratchTextures; };
 extern CEngineResourceManagerNative* gResourceManager; // 01436e98
-struct CWaterDynamicTextures {
- unsigned char Shaders[0x1d8];long DynamicTexturePageHandle,EnvironmentMapHandle; void* EnvironmentMap; long SeaBumpMapHandle; void* SeaBumpMap; long WaterBumpMapHandle; void* WaterBumpMap; long IceBumpMapHandle;
- void InitialiseDynamicTextures();
-};
-void CWaterDynamicTextures::InitialiseDynamicTextures(){
+void CEngineWaterRenderer::InitialiseDynamicTextures(){
  CPixelFormat format;format.Initialise(D3DFMT_A8R8G8B8);
  CGPUScratchBufferTextureManager& manager=gResourceManager->ScratchTextures;
  DynamicTexturePageHandle=manager.AllocteMemoryPage(0,true);

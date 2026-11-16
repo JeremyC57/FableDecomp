@@ -90,10 +90,10 @@
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }                  // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }      // 0x01436E14
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }        // 0x01436E98
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;                           // 0x01436E84
-extern CEngineLightingManager* g_pEngineLightingManager;                               // 0x01436E9C
-extern CEngineScreenEffectDisplacementRenderer* g_pDisplacementRenderer_01436e38;      // 0x01436E38
-extern CEngineCamera* g_pEngineCamera;                                                 // 0x01436EA0
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }                           // 0x01436E84
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }                               // 0x01436E9C
+namespace NEngineInternal { extern CEngineScreenEffectDisplacementRenderer* GPScreenEffectDisplacementRenderer; }      // 0x01436E38
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                                                 // 0x01436EA0
 extern long g_spriteRenderEnabled_0139b6e4;                                            // 0x0139B6E4 (descriptive)
 
 
@@ -117,7 +117,7 @@ inline void __fastcall CEnginePrimitiveRenderUtil::ApplyPixelShader(const CPixel
 }
 inline CEngineCamera& __fastcall CEnginePrimitiveRenderUtil::GetCurrentCamera()
 {
-    return *g_pEngineCamera;
+    return *NEngineInternal::GPCamera;
 }
 FABLE_FORCEINLINE void CEnginePrimitiveRenderUtil::SetupBlendOpState(EEnginePrimitiveBlendOp op)
 {
@@ -155,11 +155,11 @@ FABLE_FORCEINLINE bool CEnginePrimitiveRenderUtil::SetupAlphaBlendingStatesFromB
 FABLE_FORCEINLINE CEngineLocalLightArray* __fastcall CEnginePrimitiveRenderUtil::FindLocalLights(const C3DVector& position, float radius,
                                                                                                CEnginePrimitiveThemeChannelDesc channel)
 {
-    return g_pEngineLightingManager->GetLightsInSphereFast(C3DBoundingSphere(position, radius), 5, channel);
+    return NEngineInternal::GPLightingManager->GetLightsInSphereFast(C3DBoundingSphere(position, radius), 5, channel);
 }
 FABLE_FORCEINLINE void __fastcall CEnginePrimitiveRenderUtil::SetupLocalLights(const CEngineLocalLightArray& lights)
 {
-    g_pEngineLightingManager->SetupShaderPointLights(lights);
+    NEngineInternal::GPLightingManager->SetupShaderPointLights(lights);
 }
 
 void CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSprite(CEngineSubPrimitiveBase& sub, ERenderPassType pass)
@@ -176,7 +176,7 @@ void CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSprite(CEngineSubPr
     CRenderStateScopedCaptureBlock capture_block;
     NEngineInternal::GPRenderManager->AttachTextureToStage(0, frame.GetTexture());
     bool additive;
-    if (pass == RENDER_PASS_DISPLACEMENT_BUFFER && g_pDisplacementRenderer_01436e38->PeekRenderEnabled()) {
+    if (pass == RENDER_PASS_DISPLACEMENT_BUFFER && NEngineInternal::GPScreenEffectDisplacementRenderer->PeekRenderEnabled()) {
         additive = false;
         SetupBlendOpState(ENGINE_PRIMITIVE_BLEND_OP_ADD);
         SetupAlphaBlendingStatesFromBlendMode(ENGINE_PRIMITIVE_BLEND_ALPHA);
@@ -207,7 +207,7 @@ void CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSprite(CEngineSubPr
         SetupBlendOpState(sprite->BlendOp);
         additive = SetupAlphaBlendingStatesFromBlendMode(sprite->BlendMode);
         CEnginePrimitiveManagerParticleGroup* group_manager =
-            GFDebugPDynamicCast(g_pEnginePrimitiveTypeInfo->GetPrimitiveManager(24), (CEnginePrimitiveManagerParticleGroup*)0);
+            GFDebugPDynamicCast(NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(24), (CEnginePrimitiveManagerParticleGroup*)0);
         unsigned long light_count = 0;
         if (sprite->Lit) {
             if (sprite->IsParticle) {
@@ -218,9 +218,9 @@ void CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSprite(CEngineSubPr
                 SetupLocalLights(*lights);
             }
         } else {
-            g_pEngineLightingManager->SetSelfIlluminationAmbient(100);
+            NEngineInternal::GPLightingManager->SetSelfIlluminationAmbient(100);
         }
-        g_pEngineLightingManager->UpdateGlobalLightingStates();
+        NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
         if (sprite->Sprite3D) {
             Apply3DFaceMePointLightVertexShader(light_count);
         } else if (sprite->RotateAroundZAxis) {
@@ -264,5 +264,5 @@ void CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSprite(CEngineSubPr
         NEngineInternal::GPShaderRenderManager->PrepareForRender(0x15);
         NEngineInternal::GPRenderManager->DrawCurrentBuffersAsIndexedTris(0, 6, 0, 2);
     }
-    g_pEngineLightingManager->RestoreDefaultPrimitiveParameters();
+    NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
 }

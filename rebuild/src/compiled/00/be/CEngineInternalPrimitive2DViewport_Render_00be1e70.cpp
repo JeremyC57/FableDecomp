@@ -49,7 +49,7 @@ public:
     CEngineCameraDesc CameraDesc;    // +0x14
     void SetCameraDesc(const CEngineCameraDesc& desc, bool a, bool b);   // 0x00B30B50
 };
-extern CEngineCamera* g_pEngineCamera_01436ea0;   // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }   // 0x01436EA0
 
 class CDisplayManager { public:
     unsigned char _pad000[0x1f4];
@@ -173,7 +173,7 @@ public:
 
 void CEngineInternalPrimitive2DViewport::Render()
 {
-    CEngineCameraDesc savedDesc(g_pEngineCamera_01436ea0->CameraDesc);
+    CEngineCameraDesc savedDesc(NEngineInternal::GPCamera->CameraDesc);
     {
         CEngineCameraDesc desc(savedDesc);
         desc.NearZPlane = 0.1f;
@@ -198,7 +198,7 @@ void CEngineInternalPrimitive2DViewport::Render()
         desc.RotationMatrix.E33 = 1.0f;
         desc.RotationMatrix.E11 = 1.0f;
         desc.RotationMatrix.E22 = -1.0f;
-        g_pEngineCamera_01436ea0->SetCameraDesc(desc, false, true);
+        NEngineInternal::GPCamera->SetCameraDesc(desc, false, true);
     }
     C2DBoxI oldViewport = NEngineInternal::GPDisplayManager->Viewport;
     C2DExtentsI dimensions = NEngineInternal::GPDisplayManager->GetRenderTargetDimensions();
@@ -220,5 +220,5 @@ void CEngineInternalPrimitive2DViewport::Render()
         NEngineInternal::GPDisplayManager->SetViewport(oldViewport);
         g_pRenderStateManager->RestoreCaptureBlock();
     }
-    g_pEngineCamera_01436ea0->SetCameraDesc(savedDesc, false, true);
+    NEngineInternal::GPCamera->SetCameraDesc(savedDesc, false, true);
 }

@@ -93,7 +93,7 @@ struct SViewRecord_01436E80 {
     unsigned char NativeByteAt4;
 };
 class CEnginePrimitiveRenderer;
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 // The members read here are modelled by the local SViewRecord_01436E80 view of that object (name debt: the shared
 // engine/CEnginePrimitiveRenderer.h retail branch).
 extern float g_fReciprocal255_01231724;               // 0x01231724
@@ -136,7 +136,7 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes_Methods::UpdateRepeatedStaticMe
     base->FadeDistance_FadeBeginDistance = desc.FadeDist.FadeBeginDistance;
 
     C3DMeshInfo* meshInfo = primitive->MeshInfo;
-    if (!((SViewRecord_01436E80*)g_pEnginePrimitiveRenderer)->NativeByteAt4) {
+    if (!((SViewRecord_01436E80*)NEngineInternal::GPPrimitiveRenderer)->NativeByteAt4) {
         reinterpret_cast<C3DMeshInfoLoadingCallView*>(meshInfo)->BeginLoading(0, false, false);
         reinterpret_cast<C3DMeshInfoRet4CallView*>(meshInfo)->UnknownRet4(1);
     }

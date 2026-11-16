@@ -88,7 +88,7 @@ struct CLocalDetailRenderer : CEnginePrimitiveRenderer {
  void UpdateRepeatedStaticMesh(CEnginePrimitiveHandle&,const CAddMeshDesc&); // 0x00B31FE0
 };
 class CEnginePrimitiveRenderer;
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 // The members read here are modelled by the local CLocalDetailRenderer view of that object (name debt: the shared
 // engine/CEnginePrimitiveRenderer.h retail branch).
 struct CLocalDetailPrimitiveRepeatedMesh : CLocalDetailPrimitiveBase {
@@ -151,5 +151,5 @@ void CLocalDetailPrimitiveRepeatedMesh::RelocateData(long,void* oldBase,void* ne
  else if(IsInRange(ObjectMatricies,oldBase,size)) Relocate(ObjectMatricies,oldBase,newBase);
  else if(IsObjectOffsetsInRange(&ObjectOffsets,oldBase,size)) Relocate(ObjectOffsets,oldBase,newBase);
  CAddMeshDesc desc=SetupPrimitiveDesc();
- ((CLocalDetailRenderer*)g_pEnginePrimitiveRenderer)->UpdateRepeatedStaticMesh(PrimitiveHandle,desc);
+ ((CLocalDetailRenderer*)NEngineInternal::GPPrimitiveRenderer)->UpdateRepeatedStaticMesh(PrimitiveHandle,desc);
 }

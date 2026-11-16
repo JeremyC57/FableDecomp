@@ -88,7 +88,7 @@ struct CLocalDetailRenderer : CEnginePrimitiveRenderer {
  void UpdateRepeatedStaticMesh(CEnginePrimitiveHandle&,const CAddMeshDesc&); // 0x00B31FE0
 };
 class CEnginePrimitiveRenderer;
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 // The members read here are modelled by the local CLocalDetailRenderer view of that object (name debt: the shared
 // engine/CEnginePrimitiveRenderer.h retail branch).
 struct CLocalDetailPrimitiveRepeatedMesh : CLocalDetailPrimitiveBase {
@@ -139,4 +139,4 @@ typedef void (CLocalDetailPrimitiveRepeatedMesh::*LocalDetailAddPMF)();
 FABLE_STATIC_ASSERT(sizeof(LocalDetailAddPMF)==4);
 #endif
 
-void CLocalDetailPrimitiveRepeatedMesh::AddObjectsToPrimitiveRenderer() { PrimitiveHandle=((CLocalDetailRenderer*)g_pEnginePrimitiveRenderer)->AddRepeatedStaticMesh(SetupPrimitiveDesc()); }
+void CLocalDetailPrimitiveRepeatedMesh::AddObjectsToPrimitiveRenderer() { PrimitiveHandle=((CLocalDetailRenderer*)NEngineInternal::GPPrimitiveRenderer)->AddRepeatedStaticMesh(SetupPrimitiveDesc()); }

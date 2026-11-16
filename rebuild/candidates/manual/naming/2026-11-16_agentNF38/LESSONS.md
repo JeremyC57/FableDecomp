@@ -1,0 +1,12 @@
+# NF38 lessons (one line each)
+- A relative write from the repo cwd lands in the repo root (dec.tsv, nobad): cd into $W/work or use absolute paths in every call.
+- A helper script that reads $S must run with S exported; unset, `$S/w22/...` globs fall back to the cwd (changed.sh echoed the repo root).
+- engine/CEngineWaterRenderer.h: the native layout and the opt-in member declarations sit under FABLE_RETAIL_CENGINEWATERRENDERER; the flattened default lacks them.
+- Moving an NScript row onto the shared CScriptThing needs the inline ctor, dtor, GetPos / GetAngleXY and a FABLE_FORCEINLINE operator= defined after the headers, or VC7.1 calls the COMDATs out of line (DIFFER 1559v1811).
+- The implicit CScriptThing assignment (IMPLICIT_ASSIGNMENT) was not expanded at six sites in 0x00E4E0E0; the explicit FABLE_FORCEINLINE spelling was.
+- A thiscall member whose `this` is never read gives the same bytes as a one-argument __stdcall stand-in (`ret 4`), so libpk free stand-ins can take the header member name.
+- A virtual slot-4 call with argument 1 on libpk/CAudioFile.h is `delete file` (the virtual destructor), not a Release(long) method.
+- xref.py picks the wrong function in objects with funclets or helpers; check the binding with `strings -a obj | grep`.
+- Funclet rows `#include` their parent by repo path, so they follow a renamed parent at landing; list them in NOTES.
+- "blocked: port" needs a recorded attempt; label untried ports partial (some binders respelled) or carry (port not attempted).
+- The Codex two-PDB evidence can contradict a queue claim (entries 50-54); check NAME_FIXES_CONFLICTS_WITH_QUEUE.tsv before editing.

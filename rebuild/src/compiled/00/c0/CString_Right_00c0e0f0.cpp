@@ -36,11 +36,11 @@ public:
     }
     CString Right(int nCount) const;
 };
-extern CString _EmptyString;                    // 0x0139C900 (its m_pchData)
+extern char* _afxPchNil;                    // 0x0139C900 (its m_pchData)
 
 inline void CString::Init()
 {
-    m_pchData = _EmptyString.m_pchData;
+    m_pchData = _afxPchNil;
 }
 
 CString CString::Right(int nCount) const

@@ -126,7 +126,7 @@ class CAsyncLoadingMemoryPool { public:
 class CShaderRenderManager { public:
     void UnregisterVertexShaderConstantLayouts();      // 0x0098B280
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 class CBankFileManager { public:
     unsigned char _pad00[0x14];
     bool          m_retailMode;                         // +0x14
@@ -186,5 +186,5 @@ CEngineResourceManager::~CEngineResourceManager()
         CMeshDataBank* engineBank = &EngineMeshBank;
         engineBank->Close();
     }
-    g_pShaderRenderManager->UnregisterVertexShaderConstantLayouts();
+    NEngineInternal::GPShaderRenderManager->UnregisterVertexShaderConstantLayouts();
 }

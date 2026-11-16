@@ -26,7 +26,7 @@ class C3DMeshInfo { public:
 class CEngine : public CEngineDonor {
  public:
 };
-extern CEngine* g_pEngine_01436ea4;                             // 0x01436EA4
+namespace NEngineInternal { extern CEngine* GPEngine; }                             // 0x01436EA4
 
 class CEngineRenderInfoAnimatedMesh { public:                 // retail +0xe0 in the primitive
     void*           Lights;                            // +0x00
@@ -48,7 +48,7 @@ class CEngineInternalPrimitiveAnimatedMesh { public:
 
 bool CEngineInternalPrimitiveAnimatedMesh::SetupMesh2D()
 {
-    long frame = g_pEngine_01436ea4->CurrentRenderFrame;
+    long frame = NEngineInternal::GPEngine->CurrentRenderFrame;
     if (RenderInfo.Mesh && RenderInfo.RenderFrame == frame)
         return true;
     CCountedPointer<const C3DMesh2> mesh;

@@ -19,7 +19,7 @@
 //   takes three strided streams and one weight ([ebx+24h] both as the SSE splat and as the x87 `fmul [ebx+24h]`), the
 //   (K1KKM) signature; callers 0x00AE12B2 / 0x00AE1671 are the two CParticleProgram::PrepareForRendering bodies
 //   (0x00AE1260 / 0x00AE1600) interpolating particle streams by one blend weight. No callees. Global: the SSE-available
-//   byte g_SSEAvailable 0x013D2880 (as the landed siblings).
+//   byte GEnableSIMD 0x013D2880 (as the landed siblings).
 // Shape: the landed 0x00A5BEF0 model with one weight: the x87 fallback walks local copies of the three stream pointers
 //   and calls the __forceinline C4DVector::Interpolate (FableWin.pdb: const C4DVector Interpolate(const C4DVector&, float)
 //   const, out of line at 0x00A5B7D0 in this TU); VC7.1 unrolls it four times with a remainder loop.
@@ -35,12 +35,12 @@ public:
     const C4DVector operator*(float s) const { return C4DVector(X * s, Y * s, Z * s, W * s); }
     FABLE_FORCEINLINE const C4DVector Interpolate(const C4DVector& to, float t) const { return (to - *this) * t + *this; }
 };
-extern bool g_SSEAvailable;                                          // 0x013D2880
+extern bool GEnableSIMD;                                          // 0x013D2880
 namespace NVectorMath {
 void GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVector* from, unsigned long fromStride,
                           const C4DVector* to, unsigned long toStride, unsigned long count, float weight)
 {
-    if (g_SSEAvailable) {
+    if (GEnableSIMD) {
         __declspec(align(16)) C4DVector w;
         __declspec(align(16)) C4DVector oneMinusW;
         w.X = weight;

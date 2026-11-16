@@ -28,7 +28,7 @@ namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; } 
 class CShaderRenderManager { public:
     void SetWorldTransform(const CMatrix3x4& matrix);   // 0x009881F0
 };
-extern CShaderRenderManager* g_pShaderRenderManager_01436e14;     // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }     // 0x01436E14
 
 class CEngineLandscapeRenderer { public:
     void SetupCommonStates();
@@ -40,5 +40,5 @@ void CEngineLandscapeRenderer::SetupCommonStates()
     NEngineInternal::GPLightingManager->EnableFog();
     CMatrix3x4 identity;
     identity.SetIdentity();
-    g_pShaderRenderManager_01436e14->SetWorldTransform(identity);
+    NEngineInternal::GPShaderRenderManager->SetWorldTransform(identity);
 }

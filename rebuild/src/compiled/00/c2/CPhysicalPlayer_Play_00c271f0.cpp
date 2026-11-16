@@ -38,7 +38,7 @@ extern "C" {                                    // the CODA C API (__stdcall; no
 CODASource* __stdcall AudioSystem_SetModeFlags(unsigned long flags);                 // 0x00C33DC0 (3D source)
 CODASource* __stdcall AudioSystem_SetOutputFlags(unsigned long flags);               // 0x00C35EC0 (2D source)
 void __stdcall CODA_SetSourceEnvelope(CODASource* source, const SCodaEnvelope* envelope);   // 0x00C35B30
-CODASample* __stdcall CODA_CreateSample(const SCodaSampleDesc* desc);                // 0x00C36080
+CODASample* __stdcall CODA_BufferCreate(const SCodaSampleDesc* desc);                // 0x00C36080 (landed self row _CODA_BufferCreate@4)
 void __stdcall CODA_SetSourcePosition(CODASource* source, const C3DVector* position);   // 0x00C33FD0
 void __stdcall CODA_SetSourceRangeCallback(CODASource* source, CODARangeCallback callback, long user);   // 0x00C33F20
 void __stdcall CODA_SetSourcePropertyFCUnlessAccepted(CODASource* source, float value);  // 0x00C35F20
@@ -175,7 +175,7 @@ void CPhysicalPlayer::Play(CSoundEventManager* manager, SPlayDesc* desc, CSoundE
     }
     sample.m_length = buffer->m_format.m_length;
     sample.m_data = buffer->GetData(manager);
-    m_pSample = CODA_CreateSample(&sample);
+    m_pSample = CODA_BufferCreate(&sample);
     m_length = buffer->m_format.m_length;
     m_bStarted = false;
     m_bStopped = false;

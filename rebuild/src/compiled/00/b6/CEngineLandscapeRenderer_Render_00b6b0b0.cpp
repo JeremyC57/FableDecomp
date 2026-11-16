@@ -115,7 +115,7 @@ class CEngineWorldMap { public:
     unsigned char  _pad[0x2c];
     CEngineMapList VisibleMapList;                 // +0x2c
 };
-extern CEngineWorldMap* g_pEngineWorldMap;         // 0x01436E8C
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }         // 0x01436E8C
 
 struct CEngineRenderParams {
     void* _pad00;
@@ -138,7 +138,7 @@ public:
 
 void CEngineLandscapeRenderer::Render(const CEngineRenderParams& params)
 {
-    CEngineMapList& maps = g_pEngineWorldMap->VisibleMapList;
+    CEngineMapList& maps = NEngineInternal::GPEngineWorldMap->VisibleMapList;
     CShaderStatesScope shaderStates(true, true);
     g_pRenderStateManager->CreateCaptureBlock();
     switch (params.Pass) {

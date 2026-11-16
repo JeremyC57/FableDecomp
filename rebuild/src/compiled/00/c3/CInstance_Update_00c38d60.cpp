@@ -18,19 +18,19 @@
 //   and the ramp step 0x00C3A7D0; operator new 0x00BFEA1A / delete 0x00BFE9BC; CCodaFrameStreamer_00c49650 ctor 0x00C49820
 //   (the landed definer's spelling); CCodaFrame::Silence 0x00C49180; streamer slots 0 (take a frame back), 2, 3 (free frame),
 //   4 (position), 6 (deleting dtor); the assert stream CString 0x00C0DEC0 / 0x00C0DF00 / 0x00C0BA40, CDebugBreak 0x00C16750,
-//   g_pchNil_0139c900, g_pfnLogSink_0143bb2c.
+//   _afxPchNil, g_pfnLogSink_0143bb2c.
 // Shape: a `done`-flag loop around the switch (VC7.1 then jumps back to the state load instead of rotating the dispatch to the
 //   loop bottom), with explicit `done = true` cases 0 and 6 beside the default (so the table spans 0..6 with no `dec eax`);
 //   the refusals return from inside the cases (their own epilogues); the assert blocks are the landed CheckFrameStreamer form.
 void* __cdecl operator new(unsigned int size);              // 0x00BFEA1A
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
-extern char* g_pchNil_0139c900;                             // 0x0139C900
+extern char* _afxPchNil;                             // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c38d60)(const char* text);
 extern PFNLOGSINK_00c38d60 g_pfnLogSink_0143bb2c;          // 0x0143BB2C
 
 class CString { public:
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                                             // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);       // 0x00C0DEC0
     CString& __fastcall operator<<(long value);             // 0x00C0DF00

@@ -4,7 +4,7 @@
 // ?TransferIn@?$CPersistContext_TransferableComponent@VCRGBColour@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z.
 // Callee: 0x009E8C10 CPersistTraits<CRGBColour>::TransferIn(CPersistContext&, CStringParser&, CRGBColour*) (thiscall,
 // `ret 0Ch`); its manifest label `CPersistTraits<NInventory::CItem>::TransferIn` is propagated.
-// Persist READ hook (vtable slot 1) of the component wrapper { vptr; T* TransferableValue; }. The traits object
+// Persist READ hook (vtable slot 1) of the component wrapper { vptr; T* Object; }. The traits object
 // (PDB: { CRGBColour DefaultVal; }, CRGBColour = { uchar B, G, R, A } at +0..+3) lives in the `push ecx` frame slot;
 // its inline default constructor stores R, G, B = 0 (`xor al,al` ; +2, +1, +0) and A = 0xFF, which VC schedules
 // after the argument pushes (`mov byte ptr [esp+0Fh],0FFh`).
@@ -25,22 +25,14 @@ template <class T> struct CPersistTraits {
     void TransferIn(CPersistContext& context, CStringParser& parser, T* value);   // 0x009E8C10 for CRGBColour
 };
 
-class CPersistContext_TransferableComponentGenericType { public:
-    virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
-    virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
-};
-
-template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {
-    T* TransferableValue;                              // +0x4
-    virtual void TransferOut(CPersistContext& context, CCharString& out);
-    virtual void TransferIn(CPersistContext& context, CStringParser& parser);
-};
+// The wrapper from the shared header: private virtual TransferOut / TransferIn (both PDBs, @@EAE), member Object +4.
+#include "engine/CPersistContext_TransferableComponent.h"
 
 template <class T>
 void CPersistContext_TransferableComponent<T>::TransferIn(CPersistContext& context, CStringParser& parser)
 {
     CPersistTraits<T> traits;
-    traits.TransferIn(context, parser, TransferableValue);
+    traits.TransferIn(context, parser, Object);
 }
 
 template void CPersistContext_TransferableComponent<CRGBColour>::TransferIn(CPersistContext& context, CStringParser& parser);

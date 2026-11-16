@@ -4,13 +4,13 @@
 // Retail bytes: 6a ff 68 e6 5f 21 01 64 a1 00 00 00 00 50 64 89 25 00 00 00 00 83 ec 10 53 55 56 8b e9 57 8d 45 10 50 8d 4c 24 1c e8 ... (`mov al,[ebp+28h] ; xor ebx,ebx ; cmp al,bl` guard, `push 1Ch ; call operator new`, `imul esi,[esp+38h]`, `push 139CA38h ; push esi ; call 0xC62C20` then `call [ebx+4]` and `test al,al`) ...
 // The class is named by address.
 #include "libpk/PKCProtectionInstance.h"
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4c8b0)(const char* text);
 extern PFNLOGSINK_00c4c8b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

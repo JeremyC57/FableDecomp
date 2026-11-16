@@ -2,13 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C32BF0, oracle length 223 bytes. Built under /EHsc.
 // Retail bytes:  ... mov dword ptr [esi],012B4E80h ; mov eax,[esi+0Ch] ; test eax,eax ; mov dword ptr [esp+18h],0 ; je free ; mov eax,[g_pchNil] ; mov [esp+8],eax ; mov edx,offset file ; lea ecx,[esp+8] ; mov byte ptr [esp+18h],1 ; call Append ; ... AppendNumber(3Bh) ... ; mov eax,[g_pfnLogSink] ; test eax,eax ; je rel ; mov ecx,[esp+8] ; call eax ; rel: lea ecx,[esp+8] ; mov byte ptr [esp+18h],0 ; call ~CString ; lea ecx,[esp+7] ; call CTrace::CTrace ; free: mov eax,[esi+4] ; test eax,eax ; je done ; push eax ; call operator delete ; add esp,4 ; mov dword ptr [esi+4],0 ; done: mov ecx,[esp+10h] ; mov dword ptr [esi],012B2DB0h ; ...
 // The manifest label is a description; the classes are named by address.
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c32bf0)(const char* text);
 extern PFNLOGSINK_00c32bf0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

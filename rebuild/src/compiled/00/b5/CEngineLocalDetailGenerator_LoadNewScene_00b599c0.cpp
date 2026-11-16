@@ -35,7 +35,7 @@ struct SEngineState_01436e8c {
     CMapList      m_loadedMaps;                    // +0x2C
 };
 extern SEngineState_01436e8c* g_pEngineState_01436e8c;   // 0x01436E8C
-extern CEngineCamera* g_pEngineCamera_01436ea0;          // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }          // 0x01436EA0
 
 class CEngineLocalDetailGenerator { public:
     bool LoadNewScene(const CEngineComponentLoadNewSceneParams& params);
@@ -53,7 +53,7 @@ bool CEngineLocalDetailGenerator::LoadNewScene(const CEngineComponentLoadNewScen
     for (node = maps->m_pHead->m_pNext; node != maps->m_pHead; node = node->m_pNext) {
         CLocalDetailCacheMap* cache = node->m_pMap->m_pLocalDetailCache;
         if (cache)
-            cache->Render(g_pEngineCamera_01436ea0, 0.0f);
+            cache->Render(NEngineInternal::GPCamera, 0.0f);
     }
     return false;
 }

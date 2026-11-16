@@ -5,13 +5,13 @@
 void* __cdecl operator new(unsigned int size);                 // 0x00BFEA1A
 void __cdecl operator delete(void* p);
 
-extern char* g_pchNil;                                         // 0x0139C900
+extern char* _afxPchNil;                                         // 0x0139C900
 typedef void (__fastcall* PFNASSERTHOOK)(const char* message);
 extern PFNASSERTHOOK g_pfnAssertHook;                          // 0x0143BB2C
 
 class CString {                                                // libpk's MFC-style string (one word)
 public:
-    CString() : m_pchData(g_pchNil) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                                                // 0x00C0BA40
     const CString& operator=(const char* lpsz);                // 0x00C0C200
     CString Right(int nCount) const;                           // 0x00C0E0F0

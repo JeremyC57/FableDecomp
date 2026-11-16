@@ -54,7 +54,7 @@ public:
 float __fastcall GFAXToVX(float x);                     // 0x009E1DA0
 float __fastcall GFAYToVY(float y);                     // 0x009E1DD0
 
-extern CRenderManager*  g_pRenderManager;               // 0x01436E18
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }               // 0x01436E18
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
 class CEngineWaterRenderer {
@@ -66,5 +66,5 @@ void CEngineWaterRenderer::SetRenderTargetToSurface(CRenderTarget& target, const
 {
     target.AttachTarget(surface);
     NEngineInternal::GPDisplayManager->SetRenderTarget(target);
-    g_pRenderManager->SetViewport(C2DBoxF(0.0f, 0.0f, GFAXToVX((float)surface.GetWidth()), GFAYToVY((float)surface.GetHeight())));
+    NEngineInternal::GPRenderManager->SetViewport(C2DBoxF(0.0f, 0.0f, GFAXToVX((float)surface.GetWidth()), GFAYToVY((float)surface.GetHeight())));
 }

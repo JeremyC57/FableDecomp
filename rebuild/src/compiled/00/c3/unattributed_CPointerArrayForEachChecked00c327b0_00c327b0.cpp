@@ -2,13 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C327B0, oracle length 247 bytes. Built under /EHsc.
 // Retail bytes:  ... mov esi,ecx ; mov eax,[esi+0Ch] ; xor ebx,ebx ; test eax,eax ; jbe done ; push ebp ; mov ebp,[esp+20h] ; push edi ; loop: mov eax,[esi+4] ; lea edi,[ebx*4] ; cmp dword ptr [edi+eax],0 ; jne visit ; mov ecx,[g_pchNil] ; mov [esp+10h],ecx ; mov edx,offset ".\PKCTRArray.cpp" ; lea ecx,[esp+10h] ; mov dword ptr [esp+1Ch],0 ; call Append ; ... mov edx,0DCh ; ... call AppendNumber ; ... call Append ("Error: Null item") ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; test eax,eax ; je skip ; mov ecx,[esp+10h] ; call eax ; skip: lea ecx,[esp+10h] ; mov dword ptr [esp+1Ch],-1 ; call ~CString ; lea ecx,[esp+24h] ; call CTrace::CTrace ; visit: mov eax,[esi+4] ; mov edx,[ebp] ; add eax,edi ; push eax ; mov ecx,ebp ; call [edx] ; mov eax,[esi+0Ch] ; inc ebx ; cmp ebx,eax ; jb loop ; pop edi ; pop ebp ; done: ... ret 4
 // The sibling checked getter landed at 0x00C324F0 (same class, same warning text at line 190). The classes are named by address.
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c327b0)(const char* text);
 extern PFNLOGSINK_00c327b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

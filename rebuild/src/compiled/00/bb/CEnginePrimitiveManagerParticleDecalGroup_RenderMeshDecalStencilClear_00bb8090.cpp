@@ -121,7 +121,7 @@ private:
 public:
     void ResetWorldTransform();   // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
@@ -191,8 +191,8 @@ struct CEnginePrimitiveManagerParticleDecalGroupMethods : CEnginePrimitiveManage
 void CEnginePrimitiveManagerParticleDecalGroupMethods::RenderMeshDecalStencilClear(const C3DVector& minimum,
                                                                                 const C3DVector& maximum)
 {
-    g_pShaderRenderManager->ApplyVertexShader((CVertexShader*)MeshDecalStencilClearVertexShader, false);
-    g_pShaderRenderManager->ApplyPixelShader((CPixelShader*)MeshDecalStencilClearPixelShader);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)MeshDecalStencilClearVertexShader, false);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)MeshDecalStencilClearPixelShader);
     SetState(g_pRenderManagerCore->m_state2bc4, g_renderStateDefault_01396f3c, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state2bb0, g_renderStateDefault_01396f3c, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state2b9c, g_renderStateDefault_01396f3c, g_pRenderManagerCore);
@@ -208,6 +208,6 @@ void CEnginePrimitiveManagerParticleDecalGroupMethods::RenderMeshDecalStencilCle
         { minimum.X, maximum.Y, minimum.Z }, { maximum.X, maximum.Y, minimum.Z },
         { minimum.X, minimum.Y, minimum.Z }, { maximum.X, minimum.Y, minimum.Z },
     };
-    g_pShaderRenderManager->PrepareForRender(0);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
     g_pRenderManagerCore->DrawAsIndexedTris(corners, sizeof(C3DVector), 8, g_boxTriangleIndices, 12);
 }

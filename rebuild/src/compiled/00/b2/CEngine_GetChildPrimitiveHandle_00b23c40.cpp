@@ -7,7 +7,7 @@
 //   ?GetChildPrimitiveHandle@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z (the virtual CIEngine method, `this` never read).
 // Callee: CEnginePrimitiveRenderer::GetChildPrimitiveHandle @ 0x00B31F50, Ego_r + FableWin ?GetChildPrimitiveHandle@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0@Z;
 //   its `ret ch` pops the same 3 stack arguments, so VC7.1 passes them through untouched and tail-jumps.
-// Global: the engine component pointer 0x01436E80 (CEnginePrimitiveRenderer*) under its landed spelling g_pEnginePrimitiveRenderer; it has no PDB data symbol
+// Global: the engine component pointer 0x01436E80 (CEnginePrimitiveRenderer*) under its landed spelling NEngineInternal::GPPrimitiveRenderer; it has no PDB data symbol
 //   (CEngine::AddEngineComponent<T>(T*, T*&, unsigned char) publishes each component into its own global).
 // Shape: a virtual member of a local CEngine model: the shared engine/CEngine.h carries the vptr as a data member, so it cannot
 //   declare the CIEngine virtual (same model as the landed siblings 0x00B239C0 / 0x00B23CB0 / 0x00B25D20).
@@ -17,7 +17,7 @@ class CEnginePrimitiveHandle;
 class CEnginePrimitiveRenderer { public:
     void GetChildPrimitiveHandle(CEnginePrimitiveHandle& handle, unsigned long childIndex, CEnginePrimitiveHandle& childHandle);   // 0x00B31F50
 };
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80
 
 class CEngine { public:                      // vtable 0x012A0F3C, slot 29
     virtual void GetChildPrimitiveHandle(CEnginePrimitiveHandle& handle, unsigned long childIndex, CEnginePrimitiveHandle& childHandle);
@@ -25,5 +25,5 @@ class CEngine { public:                      // vtable 0x012A0F3C, slot 29
 
 void CEngine::GetChildPrimitiveHandle(CEnginePrimitiveHandle& handle, unsigned long childIndex, CEnginePrimitiveHandle& childHandle)
 {
-    g_pEnginePrimitiveRenderer->GetChildPrimitiveHandle(handle, childIndex, childHandle);
+    NEngineInternal::GPPrimitiveRenderer->GetChildPrimitiveHandle(handle, childIndex, childHandle);
 }

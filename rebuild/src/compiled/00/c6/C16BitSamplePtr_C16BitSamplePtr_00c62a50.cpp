@@ -9,7 +9,7 @@
 //   parameter names descriptive. Caller: the libpk mixer at 0x00C48039 (a stack cursor). Catalog label
 //   "C16BitSamplePtr_Initialize" -> constructor.
 // Callees: the libpk log line (landed spellings): CString's `__fastcall` appenders 0x00C0DEC0 (text) / 0x00C0DF00
-//   (number), ~CString 0x00C0BA40, the trace temporary CDebugBreak() 0x00C16750; globals g_pDebugBuffer 0x0139C900
+//   (number), ~CString 0x00C0BA40, the trace temporary CDebugBreak() 0x00C16750; globals _afxPchNil 0x0139C900
 //   and the report sink g_pfnErrorReport 0x0143BB2C.
 // Shape: the members are initialised before the checks (init list); each assertion is the libpk log-line block (the
 //   stream in its own scope: state 0/1 -> -1 before its destructor) followed by the CDebugBreak temporary, as the landed
@@ -22,7 +22,7 @@ class CString { public:                      // 4 bytes: the message text (the l
     ~CString();                                         // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                       // 0x00C16750
-extern char* g_pDebugBuffer;                                 // 0x0139C900
+extern char* _afxPchNil;                                 // 0x0139C900
 extern void (__fastcall* g_pfnErrorReport)(const char*);     // 0x0143BB2C
 
 class C16BitSamplePtr {
@@ -37,7 +37,7 @@ C16BitSamplePtr::C16BitSamplePtr(short* pSamples, long channels)
 {
     if (m_pSamples == 0) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << ".\\C16BitSamplePtr.cpp" << "(" << 8 << ") : " << "Null buffer" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);
@@ -46,7 +46,7 @@ C16BitSamplePtr::C16BitSamplePtr(short* pSamples, long channels)
     }
     if (m_channels == 0) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << ".\\C16BitSamplePtr.cpp" << "(" << 9 << ") : " << "Expecting at least 1 channel!" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

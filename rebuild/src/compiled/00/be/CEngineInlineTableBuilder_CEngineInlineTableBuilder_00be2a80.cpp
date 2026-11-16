@@ -6,7 +6,7 @@
 // helper's `++value` lands as `lea esi,[edi+1]` here because the loop index stays live. The helper must be `__forceinline` (plain
 // `inline` leaves it out of line).
 #include "fable_compiler.h"
-extern signed char g_highestSetBitTable[256];   // 0x0143B990
+extern unsigned char GTopBitInByteTable[256];   // 0x0143B990 (Anniversary PDB GTopBitInByteTable, unsigned char[256]; read by GFGetTopBitInByte)
 
 FABLE_FORCEINLINE long HighestSetBit(unsigned long value)
 {
@@ -30,5 +30,5 @@ struct CEngineInlineTableBuilder {
 CEngineInlineTableBuilder::CEngineInlineTableBuilder()
 {
     for (long i = 0; i < 256; ++i)
-        g_highestSetBitTable[i] = (signed char)HighestSetBit(i);
+        GTopBitInByteTable[i] = (unsigned char)HighestSetBit(i);
 }

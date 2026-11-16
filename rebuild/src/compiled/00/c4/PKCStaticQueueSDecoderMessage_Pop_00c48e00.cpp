@@ -25,7 +25,7 @@ class CString { public:
     ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
-extern char* g_pDebugBuffer;                               // 0x0139C900
+extern char* _afxPchNil;                               // 0x0139C900
 extern void (__fastcall* g_pfnErrorReport)(const char*);   // 0x0143BB2C
 
 struct CHeapBlock {                             // 8 bytes: owned data pointer and size (PKCAutoDeleteArray)
@@ -94,7 +94,7 @@ template<class T> T PKCStaticQueue<T>::Pop()
 {
     if (m_count == 0) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCStaticQueue.h" << "(" << 67 << ") : "
               << "Nothing in this queue - you should have checked first!" << "\n";
             if (g_pfnErrorReport)

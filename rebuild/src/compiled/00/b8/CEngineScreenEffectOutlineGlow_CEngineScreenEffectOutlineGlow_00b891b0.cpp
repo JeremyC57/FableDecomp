@@ -20,7 +20,7 @@
 // Layout: hdr/engine/CEngineScreenEffectOutlineGlow.h opt-in FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW_MEMBERS (Ego_r.pdb names and
 //   offsets, which are retail's), hdr/engine/CRenderTarget.h (chunk 2008), hdr/engine/CGPUScratchBufferTextureManager.h (chunk 2018
 //   _TEXTURES), hdr/engine/CRenderStateCaptureBlock.h (new _INLINE_CTOR opt-in: FableWin-only inline constructor).
-// Global: 0x01436E98 as `g_pResourceManager` (the spelling reloc_bindings.tsv binds and the sibling CEngineScreenEffectGlowRenderer
+// Global: 0x01436E98 as `NEngineInternal::GPResourceManager` (the spelling reloc_bindings.tsv binds and the sibling CEngineScreenEffectGlowRenderer
 //   constructor 0x00B5F090 uses; no PDB data symbol exists, see NOTES.md).
 // Shape: the sibling glow / displacement constructors' shape: one statement per vertex field, quad by quad (positions, then UVs), the 12
 //   diffuse colours as one `for (i < 4)` loop over the three quads (VC7.1 unrolls it; the -1 kept in ebp is the CCharString length too);
@@ -50,14 +50,14 @@
 #include "engine/CPixelFormat.h"
 #include "engine/C2DExtentsI.h"
 
-extern CEngineResourceManager* g_pResourceManager;    // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }    // 0x01436E98
 
 CEngineScreenEffectOutlineGlow::CEngineScreenEffectOutlineGlow(const CEngineInit& init)
 {
     OutlineGlowScaleFactor = 0.333f;
     CPixelFormat format;
     format.Initialise(D3DFMT_A8R8G8B8);
-    CGPUScratchBufferTextureManager& scratch = g_pResourceManager->GetGPUScratchBufferTextureManager();
+    CGPUScratchBufferTextureManager& scratch = NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager();
     DynamicTexturePageHandle = scratch.AllocteMemoryPage(0, true);
     OutlineTextureHandle = scratch.AllocateTexture(DynamicTexturePageHandle, C2DExtentsI(256, 256), 1, format, 1, false);
     OutlineTexture = 0;
@@ -130,17 +130,17 @@ CEngineScreenEffectOutlineGlow::CEngineScreenEffectOutlineGlow(const CEngineInit
         BlurToBlurVerts[i].DiffuseColour = 0xffffffff;
         BlurToBackBufferVerts[i].DiffuseColour = 0xffffffff;
     }
-    OutlineToBlurVertexShader = g_pResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_GLOW_BLUR");
-    BlurToBlurVertexShader = g_pResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_GLOW_BLUR");
+    OutlineToBlurVertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_GLOW_BLUR");
+    BlurToBlurVertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_GLOW_BLUR");
     if (init.InitFlags & 0x40) {
-        OutlineToBlurPixelShader = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_COPY_OUTLINE_SIMPLE");
-        BlurToBlurPixelShader = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_COPY_OUTLINE_SIMPLE");
+        OutlineToBlurPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_COPY_OUTLINE_SIMPLE");
+        BlurToBlurPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_COPY_OUTLINE_SIMPLE");
     } else {
-        OutlineToBlurPixelShader = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_COPY_OUTLINE");
-        BlurToBlurPixelShader = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_COPY_OUTLINE");
+        OutlineToBlurPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_COPY_OUTLINE");
+        BlurToBlurPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_COPY_OUTLINE");
     }
-    BlurToBackBufferVertexShader = g_pResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_COPY");
-    BlurToBackBufferPixelShader = g_pResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_APPLY_OUTLINE");
+    BlurToBackBufferVertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_COPY");
+    BlurToBackBufferPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_APPLY_OUTLINE");
     ParametersOverridden = false;
     OverriddenParamsWidthWorldSpace = 0.0f;
     OverriddenParamsWidthScreenSpace = 0.0f;

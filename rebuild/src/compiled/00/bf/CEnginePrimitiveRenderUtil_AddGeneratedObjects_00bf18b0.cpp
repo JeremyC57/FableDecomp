@@ -11,7 +11,7 @@
 //   C3DMeshInfo::GetMesh 0x00A25E70 (flags 0 here, 4 in the static overload), BeginLoading 0x00A256F0, ~CCountedPointer<const C3DMesh2>
 //   0x00A36EC0 (called at the end of the local-origin block, expanded at the `continue`), CEnginePrimitiveManagerStaticMeshesBase::AddStaticMesh
 //   0x00BA0FC0 (through the inline GetStaticMeshManager), ~CBaseClass 0x0099A2E0 (the expanded ~CEnginePrimitiveHandle), operator delete 0x00BFE9BC.
-// Globals: NEngineInternal::GPResourceManager 0x01436E98, g_pEnginePrimitiveRenderer 0x01436E80 (the established spellings), the static
+// Globals: NEngineInternal::GPResourceManager 0x01436E98, NEngineInternal::GPPrimitiveRenderer 0x01436E80 (the established spellings), the static
 //   CEngineInternalPrimitiveBase::CurrentInterpolationInfo 0x0143B8E0 (InterpolationSetList[set].WFInterpolate = 0x0143B934 + set*12).
 // Shape: the inline HasLOD carries the `lod < 4` bound, so GetBestCurrentDetailLevel's loop keeps retail's top-tested head (0x00BF19B0);
 //   the handle temporary's destructor is the shared header's FABLE_FORCEINLINE one (no out-of-line ??1CEnginePrimitiveHandle in Ego_r.pdb
@@ -73,7 +73,7 @@
 #include "engine/CEnginePrimitiveRenderUtil.h"
 
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;                      // 0x01436E80
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }                      // 0x01436E80
 
 void CEnginePrimitiveRenderUtil::AddGeneratedObjects(const CEngineInternalPrimitiveAnimatedMesh& primitive, const CMatrix3x4& object_transform)
 {
@@ -97,7 +97,7 @@ void CEnginePrimitiveRenderUtil::AddGeneratedObjects(const CEngineInternalPrimit
                     transform.PreMultiply(mesh->PeekInverseTransform());
                 }
                 transform.PostMultiply(object_transform);
-                g_pEnginePrimitiveRenderer->GetStaticMeshManager().AddStaticMesh(mesh_info, mesh_info, transform, primitive.Scale,
+                NEngineInternal::GPPrimitiveRenderer->GetStaticMeshManager().AddStaticMesh(mesh_info, mesh_info, transform, primitive.Scale,
                     primitive.FadeDistance, primitive.Alpha, primitive.TintColour, primitive.AlphaRef, primitive.AlphaMipBias, false,
                     primitive.EnginePrimitiveFlags);
             }

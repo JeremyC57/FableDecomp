@@ -109,7 +109,7 @@ class CGraphicDataBank { public:
 };
 float __fastcall GFAXToVX_009e1e10(float x);                    // 0x009E1E10
 float __fastcall GFAYToVY(float y);                    // 0x009E1E40
-extern float g_ScreenRHW;                              // 0x0139652C
+extern const float BIGGEST_RHW_VERTEX_VALUE;                              // 0x0139652C (S_LDATA32 const float in both PDBs; the spelling engine/CTVertexRHWColSpecTex1.h declares)
 static const unsigned long s_CornerOrderNormal[4] = { 0, 1, 2, 3 };    // 0x0129B94C
 static const unsigned long s_CornerOrderFlipX[4]  = { 1, 0, 3, 2 };    // 0x0129B95C
 static const unsigned long s_CornerOrderFlipY[4]  = { 3, 2, 1, 0 };    // 0x0129B96C
@@ -117,18 +117,18 @@ static const unsigned long s_CornerOrderFlipY[4]  = { 3, 2, 1, 0 };    // 0x0129
 static FABLE_FORCEINLINE float GetRHWForZ(const float& z)
 {
     if (z >= 0.0f && z < 0.01f)
-        return g_ScreenRHW;
+        return BIGGEST_RHW_VERTEX_VALUE;
     if (z >= -0.01f && z < 0.0f)
-        return -g_ScreenRHW;
+        return -BIGGEST_RHW_VERTEX_VALUE;
     return 1.0f / z;
 }
 
 static FABLE_FORCEINLINE void SetRHWForZ(CTVertexRHWColSpecTex1& vert)
 {
     if (vert.Z >= 0.0f && vert.Z < 0.01f)
-        vert.RHW = g_ScreenRHW;
+        vert.RHW = BIGGEST_RHW_VERTEX_VALUE;
     else if (vert.Z >= -0.01f && vert.Z < 0.0f)
-        vert.RHW = -g_ScreenRHW;
+        vert.RHW = -BIGGEST_RHW_VERTEX_VALUE;
     else
         vert.RHW = 1.0f / vert.Z;
 }

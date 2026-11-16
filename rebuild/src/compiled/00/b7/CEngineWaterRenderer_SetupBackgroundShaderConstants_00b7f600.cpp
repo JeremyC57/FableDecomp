@@ -129,7 +129,7 @@ private:
 public:
     void ResetWorldTransform();   // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 class CEngineWaterSettings { public:                           // PDB CEngineWaterSettings (0x2e4)
     unsigned char _pad00[0xd];
@@ -157,11 +157,11 @@ void CEngineWaterRenderer::SetupBackgroundShaderConstants()
     float factor = 0.0f;
     if (Settings.EnableBumpMap)
         factor = Settings.BumpMatFactor * 0.5f;
-    g_pShaderRenderManager->SetUserVertexShaderConstant(3, factor, factor, factor, factor);
-    g_pShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
-    g_pShaderRenderManager->SetBoneTransform(0, &Settings.OtherBackgroundShaderVars);
-    g_pShaderRenderManager->SetBoneTransform(1, &Settings.ShoreLookupMaskMatrix);
-    g_pShaderRenderManager->SetBoneTransform(2, &Settings.ShoreLookupMaskMatrixForBounds);
-    g_pShaderRenderManager->SetBoneTransform(3, &Settings.ShoreLookupMaskMatrix2);
-    g_pShaderRenderManager->PrepareForRender(0x604);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(3, factor, factor, factor, factor);
+    NEngineInternal::GPShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, &Settings.OtherBackgroundShaderVars);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, &Settings.ShoreLookupMaskMatrix);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, &Settings.ShoreLookupMaskMatrixForBounds);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, &Settings.ShoreLookupMaskMatrix2);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0x604);
 }

@@ -7,7 +7,7 @@
 //   ?AddPrimitive@CEngine@@UAEXABVCEnginePrimitive@@@Z (the virtual CIEngine method, `this` never read).
 // Callee: CEnginePrimitiveRenderer::AddPrimitive @ 0x00B32E90, Ego_r + FableWin ?AddPrimitive@CEnginePrimitiveRenderer@@QAEXABVCEnginePrimitive@@@Z;
 //   its `ret 4h` pops the same 1 stack argument, so VC7.1 passes them through untouched and tail-jumps.
-// Global: the engine component pointer 0x01436E80 (CEnginePrimitiveRenderer*) under its landed spelling g_pEnginePrimitiveRenderer; it has no PDB data symbol
+// Global: the engine component pointer 0x01436E80 (CEnginePrimitiveRenderer*) under its landed spelling NEngineInternal::GPPrimitiveRenderer; it has no PDB data symbol
 //   (CEngine::AddEngineComponent<T>(T*, T*&, unsigned char) publishes each component into its own global).
 // Shape: a virtual member of a local CEngine model: the shared engine/CEngine.h carries the vptr as a data member, so it cannot
 //   declare the CIEngine virtual (same model as the landed siblings 0x00B239C0 / 0x00B23CB0 / 0x00B25D20).
@@ -16,7 +16,7 @@ class CEnginePrimitive;
 class CEnginePrimitiveRenderer { public:
     void AddPrimitive(const CEnginePrimitive& primitive);   // 0x00B32E90
 };
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80
 
 class CEngine { public:                      // vtable 0x012A0F3C, slot 20
     virtual void AddPrimitive(const CEnginePrimitive& primitive);
@@ -24,5 +24,5 @@ class CEngine { public:                      // vtable 0x012A0F3C, slot 20
 
 void CEngine::AddPrimitive(const CEnginePrimitive& primitive)
 {
-    g_pEnginePrimitiveRenderer->AddPrimitive(primitive);
+    NEngineInternal::GPPrimitiveRenderer->AddPrimitive(primitive);
 }

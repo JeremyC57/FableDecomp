@@ -39,7 +39,7 @@ class C3DMeshInfo : public C3DMeshInfoDonor { public:
     float GetLODError(unsigned long lod) const { return LODErrors[lod]; }
 };
 class CEngine : public CEngineDonor { public: };
-extern CEngine* g_pEngine_01436ea4;                             // 0x01436EA4
+namespace NEngineInternal { extern CEngine* GPEngine; }                             // 0x01436EA4
 class CEnginePrimitiveRendererSharedData { public:
     unsigned char _pad00[0xa0];
     float         CharacterLODErrorTolerance;          // +0xa0
@@ -49,13 +49,13 @@ class CEnginePrimitiveRendererSharedData { public:
     long          LODForced;                           // +0x264
 };
 class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData { public: };
-extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRendererSharedData;   // 0x01436E78
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 class CEnginePrimitiveManagerMeshBase : public CEnginePrimitiveManagerMeshBaseHeader { public:   // engine/CEnginePrimitiveManagerMeshBase.h layout
     static FABLE_FORCEINLINE unsigned long __fastcall GetAppropriateLOD(const C3DMeshInfo* meshInfo, float distance, float radius, float errorTolerance)
     {
         float distanceToSurface = distance - radius > 0.0001f ? distance - radius : 0.0001f;
-        errorTolerance *= distanceToSurface / (radius * g_pPrimitiveRendererSharedData->LODVirtualScreenSizeFOVAdjusted);
+        errorTolerance *= distanceToSurface / (radius * NEngineInternal::GPPrimitiveRendererSharedData->LODVirtualScreenSizeFOVAdjusted);
         unsigned long lod = 0;
         while (meshInfo->HasLOD(lod + 1) && !(meshInfo->GetLODError(lod + 1) > errorTolerance))
             ++lod;
@@ -80,11 +80,11 @@ class CEngineInternalPrimitiveAnimatedMesh { public:
 };
 bool CEngineInternalPrimitiveAnimatedMesh::SetupMesh(float distance, float radius)
 {
-    long frame = g_pEngine_01436ea4->CurrentRenderFrame;
+    long frame = NEngineInternal::GPEngine->CurrentRenderFrame;
     if (!RenderInfo.Mesh || RenderInfo.RenderFrame != frame) {
-        unsigned long lod = CEnginePrimitiveManagerMeshBase::GetAppropriateLOD(MeshInfo, distance, radius, g_pPrimitiveRendererSharedData->CharacterLODErrorTolerance);
-        if (g_pEnginePrimitiveRenderer->LODForced != -1)
-            lod = g_pEnginePrimitiveRenderer->LODForced;
+        unsigned long lod = CEnginePrimitiveManagerMeshBase::GetAppropriateLOD(MeshInfo, distance, radius, NEngineInternal::GPPrimitiveRendererSharedData->CharacterLODErrorTolerance);
+        if (NEngineInternal::GPPrimitiveRenderer->LODForced != -1)
+            lod = NEngineInternal::GPPrimitiveRenderer->LODForced;
         CCountedPointer<const C3DMesh2> mesh;
         if (!MeshInfo->GetMesh(mesh, lod, 0))
             return false;

@@ -11,22 +11,20 @@
 //   "RedBlackTree_RemoveByKey" (a guess: it removes by value, the by-key twin is PKCTRRedblackMap's 0x00C1B7D0).
 // Callees: PKCTRRedblackTree::DeleteFixup 0x00C18C00 (landed leaf), the allocator's free-and-clear helper 0x00C19610 (thiscall on
 //   the allocator: slot 0 Free(*pp), then *pp = 0; descriptive), the libpk trace stream (CDebugStream 0x00C0DEC0 / 0x00C0DF00 /
-//   ~0x00C0BA40, g_pDebugBuffer 0x0139C900, g_pfnErrorReport 0x0143BB2C, CDebugBreak 0x00C16750: the spellings of the landed
+//   ~0x00C0BA40, _afxPchNil 0x0139C900, g_pfnErrorReport 0x0143BB2C, CDebugBreak 0x00C16750: the spellings of the landed
 //   PKCTRArray::RemoveValue).
 // Shape: the spliced node `y` lives in memory (its address goes to the free helper) and shares the dead `comparator` argument
 //   slot with the trace string; the trace does not return (retail goes on to unlink the sentinel). `y` is declared with `z` at
 //   the top of the function: declared inside the unlink block, VC7.1 packs the trace string, the break temporary and `y` all
 //   into the `value` slot ([esp+28h]); declared at function scope it gives retail's split (string and y in [esp+24h]).
 // Layout: local model (no engine header; libpk is not in the PDB type set).
-struct CDebugStream {
-    char* m_pBuffer;
-    CDebugStream(char* buffer) : m_pBuffer(buffer) { }
-    CDebugStream& __fastcall operator<<(const char* text); // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(long value);       // 0x00C0DF00
-    ~CDebugStream();                                       // 0x00C0BA40
-};
-struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
-extern char* g_pDebugBuffer;                               // 0x0139C900
+// The libpk trace stream is the MFC-style CString of engine/CString.h (name-fix NF38; was the local CDebugStream stand-in):
+// inline default ctor (Init: m_pchData = _afxPchNil), operator<< 0x00C0DEC0 / 0x00C0DF00, ~CString 0x00C0BA40.
+#define FABLE_RETAIL_CSTRING_BUILDERS
+#define FABLE_RETAIL_CSTRING_ALLOCCOPY
+#define FABLE_RETAIL_CSTRING_DEFAULT_CTOR
+#include "engine/CString.h"
+// CDebugBreak 0x00C16750 comes from engine/CString.h.
 extern void (__fastcall* g_pfnErrorReport)(const char*);   // 0x0143BB2C
 
 class CUnprovenArrayComparator {          // the libpk container comparator (landed PKCTRArray::RemoveValue model)
@@ -100,10 +98,10 @@ void PKCTRRedblackTree::RemoveValue(CUnprovenArrayComparator* comparator, const 
         if (z == &Sentinel)
         {
             {
-                CDebugStream s(g_pDebugBuffer);
-                s << ".\\PKCTRRedblackTree.cpp" << "(" << 368 << ") : " << "Error: Key not found" << "\n";
+                CString s;
+                s << ".\\PKCTRRedblackTree.cpp" << "(" << 368L << ") : " << "Error: Key not found" << "\n";
                 if (g_pfnErrorReport)
-                    g_pfnErrorReport(s.m_pBuffer);
+                    g_pfnErrorReport(s.m_pchData);
             }
             CDebugBreak();
         }

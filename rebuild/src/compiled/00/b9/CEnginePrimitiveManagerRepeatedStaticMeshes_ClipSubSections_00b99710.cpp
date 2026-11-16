@@ -18,7 +18,7 @@ public:
     C3DVector     WorldPosition;                    // +0x54
     void ClipSphere(const C3DVector& centre, float radius, unsigned long& flags);   // 0x00B30480
 };
-extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }              // 0x01436EA0
 
 namespace NEnginePrimitiveManagerRepeatedStaticMeshes {
 struct CSubsectionElement {
@@ -57,9 +57,9 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes::ClipSubSections(const CSubsect
         centre.Z = element->Z[i];
         float radius = element->Radius[i];
         if (!childInside) {
-            float dx = centre.X - g_pEngineCamera->WorldPosition.X;
-            float dy = centre.Y - g_pEngineCamera->WorldPosition.Y;
-            float dz = centre.Z - g_pEngineCamera->WorldPosition.Z;
+            float dx = centre.X - NEngineInternal::GPCamera->WorldPosition.X;
+            float dy = centre.Y - NEngineInternal::GPCamera->WorldPosition.Y;
+            float dz = centre.Z - NEngineInternal::GPCamera->WorldPosition.Z;
             float distanceSq = dx * dx + dy * dy + dz * dz;
             float outer = radius + range;
             if (distanceSq > outer * outer)
@@ -69,7 +69,7 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes::ClipSubSections(const CSubsect
                 childInside = true;
         }
         if ((flags & 0x3c) != 0x3c)
-            g_pEngineCamera->ClipSphere(centre, radius, flags);
+            NEngineInternal::GPCamera->ClipSphere(centre, radius, flags);
         if (flags & 0x40)
             continue;
         flags = 0;

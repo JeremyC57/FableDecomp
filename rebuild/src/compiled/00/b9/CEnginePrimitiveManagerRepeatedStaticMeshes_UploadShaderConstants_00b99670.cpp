@@ -19,7 +19,7 @@ struct SViewRecord_01436e80 {
     float         m_fadeDistanceScale;                   // +0x88
 };
 class CEnginePrimitiveRenderer;
-extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 // The members read here are modelled by the local SViewRecord_01436e80 view of that object (name debt: the shared
 // engine/CEnginePrimitiveRenderer.h retail branch).
 struct SEngineShaderRegisters_01436e98 {
@@ -35,7 +35,7 @@ public:
     void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
     void SetVSConstants(long reg, const void* data, unsigned long count);                         // 0x0098B930
 };
-extern CShaderRenderManager* g_pShaderRenderManager;     // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }     // 0x01436E14
 
 struct CEnginePrimitiveManagerRepeatedStaticMeshes_Methods : CEnginePrimitiveManagerRepeatedStaticMeshes {
     void UploadShaderConstants(CEngineInternalPrimitiveRepeatedStaticMesh& primitive, const C4DVector* offsets,
@@ -45,10 +45,10 @@ struct CEnginePrimitiveManagerRepeatedStaticMeshes_Methods : CEnginePrimitiveMan
 void CEnginePrimitiveManagerRepeatedStaticMeshes_Methods::UploadShaderConstants(
     CEngineInternalPrimitiveRepeatedStaticMesh& primitive, const C4DVector* offsets, const C4DVector* matrices, long count)
 {
-    g_pShaderRenderManager->SetUserVertexShaderConstant(
-        1, primitive.AlphaTransformMult / ((SViewRecord_01436e80*)g_pEnginePrimitiveRenderer)->m_fadeDistanceScale, 0.0f, 0.0f,
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(
+        1, primitive.AlphaTransformMult / ((SViewRecord_01436e80*)NEngineInternal::GPPrimitiveRenderer)->m_fadeDistanceScale, 0.0f, 0.0f,
         primitive.AlphaTransformOffset);
-    g_pShaderRenderManager->SetUserVertexShaderConstant(2, 1.0f, -1.0f, 1.0f, 0.0f);
-    g_pShaderRenderManager->SetVSConstants(g_pEngine_01436e98->m_objectMatrixRegister, matrices, count);
-    g_pShaderRenderManager->SetVSConstants(g_pEngine_01436e98->m_objectOffsetRegister, offsets, count);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(2, 1.0f, -1.0f, 1.0f, 0.0f);
+    NEngineInternal::GPShaderRenderManager->SetVSConstants(g_pEngine_01436e98->m_objectMatrixRegister, matrices, count);
+    NEngineInternal::GPShaderRenderManager->SetVSConstants(g_pEngine_01436e98->m_objectOffsetRegister, offsets, count);
 }

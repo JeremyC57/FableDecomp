@@ -42,7 +42,7 @@ class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                    // +0x54
 };
-extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }              // 0x01436EA0
 
 class CEngineInternalPrimitiveParticleGroup {      // retail layout
 public:
@@ -88,8 +88,8 @@ ERendered CEnginePrimitiveManagerParticleGroup::RenderPrimitive(CEngineInternalP
     subPrimitive->RenderFlags = 0;
     subPrimitive->Alpha = 0xff;
     C3DVector position = group.WorldPos;
-    C3DVector delta(position.X - g_pEngineCamera->WorldPosition.X, position.Y - g_pEngineCamera->WorldPosition.Y,
-                    position.Z - g_pEngineCamera->WorldPosition.Z);
+    C3DVector delta(position.X - NEngineInternal::GPCamera->WorldPosition.X, position.Y - NEngineInternal::GPCamera->WorldPosition.Y,
+                    position.Z - NEngineInternal::GPCamera->WorldPosition.Z);
     float distance = (float)sqrt(delta.X * delta.X + delta.Y * delta.Y + delta.Z * delta.Z);
     if (group.ScreenDisplacement) {
         if (g_pEngineSettings_01436e38->DisplacementPassEnabled) {

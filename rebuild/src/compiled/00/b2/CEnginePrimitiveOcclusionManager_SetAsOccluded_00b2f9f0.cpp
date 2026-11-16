@@ -41,7 +41,7 @@ private:
     friend class CEnginePrimitiveOcclusionManager;
 };
 
-extern CEngineOcclusionManager* g_pOcclusionManager;     // 0x01436E5C
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }     // 0x01436E5C
 
 class CEnginePrimitiveOcclusionManager : public CEnginePrimitiveOcclusionManager_HeaderLayout {
 public:
@@ -52,5 +52,5 @@ void CEnginePrimitiveOcclusionManager::SetAsOccluded(CEnginePrimitiveOcclusionIn
 {
     info.InvisibleFrames = PrimitiveOccludeDelay + 1;
     info.ClearHandles();
-    info.TestFrame = g_pOcclusionManager->CurrentFrame;
+    info.TestFrame = NEngineInternal::GPOcclusionManager->CurrentFrame;
 }

@@ -52,7 +52,7 @@ __declspec(noinline) void CArray<T>::InsertGrow(T* where, const T& value, const 
 #pragma auto_inline(on)
 
 class CEngineCamera;
-extern CEngineCamera* g_pEngineCamera_01436ea0;    // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }    // 0x01436EA0
 
 class CEngineComponentParams { public:
     float m_frameTime;                             // +0x00
@@ -79,6 +79,6 @@ class CEnginePrimitiveAttachmentManager : public CEngineRoot_0099a2f0, public CE
 void CEnginePrimitiveAttachmentManager::FrameStart(const CEngineComponentParams& params)
 {
     CArray<CEngineCamera*> cameras;
-    cameras.push_back(g_pEngineCamera_01436ea0);
+    cameras.push_back(NEngineInternal::GPCamera);
     UpdatePrimitives(cameras, params.m_frameTime);
 }

@@ -8,13 +8,13 @@
 //   0x012B4DE0 "Null writer", 0x0129B208 "\n".
 // Shape: the assertion macro as in the landed CBufferedReader seek 0x00C4AA40 (string built in a nested block, EH state 0
 //   while it lives, the empty trace temporary after the block); the writer is re-read for the return value.
-extern char* g_pchNil;                              // 0x0139C900
+extern char* _afxPchNil;                              // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK)(const char* text);
 extern PFNLOGSINK g_pfnLogSink;                     // 0x0143BB2C
 
 class CString { public:                              // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                               // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00

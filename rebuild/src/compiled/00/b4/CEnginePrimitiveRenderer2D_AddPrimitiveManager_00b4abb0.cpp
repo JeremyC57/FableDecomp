@@ -9,7 +9,7 @@
 //   CEnginePrimitiveRenderer::AddPrimitiveManager 0x00B33AE0 (same callees). The catalog label is right.
 // Callees: std::vector<CCountedPointer<CEnginePrimitiveManager> >::_M_insert_overflow 0x00B38BB0 (bound spelling, the
 //   __false_type overload), CEnginePrimitiveTypeInfo::RegisterPrimitiveManager 0x00B8FAD0 on the global 0x01436E84 (the
-//   established landed spelling g_pEnginePrimitiveTypeInfo of 0x00B33AE0; no PDB data symbol).
+//   established landed spelling NEngineInternal::GPPrimitiveTypeInfo of 0x00B33AE0; no PDB data symbol).
 // Layout: Ego_r.pdb PrimitiveManagers (CArray<CCountedPointer<CEnginePrimitiveManager> >) at +0x0C after CEngineComponent
 //   (vptr, GlobalPointerAddress, RenderEnabled, KeepAlive); engine/CEnginePrimitiveRenderer2D.h / CEngineComponent.h flatten
 //   the vptr (header debt), so a local model keeps the member this row touches.
@@ -71,7 +71,7 @@ class CEnginePrimitiveTypeInfo {
 public:
     void RegisterPrimitiveManager(CEnginePrimitiveManager* manager);             // 0x00B8FAD0
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;                     // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }                     // 0x01436E84
 
 class CEngineComponent {                                                         // vptr, GlobalPointerAddress +4, RenderEnabled +8, KeepAlive +9
 public:
@@ -91,5 +91,5 @@ private:
 void CEnginePrimitiveRenderer2D::AddPrimitiveManager(const CCountedPointer<CEnginePrimitiveManager>& manager)
 {
     PrimitiveManagers.push_back(manager);
-    g_pEnginePrimitiveTypeInfo->RegisterPrimitiveManager(manager.Get());
+    NEngineInternal::GPPrimitiveTypeInfo->RegisterPrimitiveManager(manager.Get());
 }

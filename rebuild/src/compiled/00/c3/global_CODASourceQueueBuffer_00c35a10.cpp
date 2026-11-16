@@ -1,5 +1,8 @@
 // _global::AudioObject_PlaySource(CAudioObject* object, CAudioSource* source, long a, long b) -- libpk audio API: refuses (error -6, returns 0) a source whose +0x2C flags have bits 2 and 3 set while its +0xC word is non-zero; otherwise returns the object's bool member result for (source, a, b) as a BOOL
-// Leaf: AudioObject_PlaySource
+// Leaf: _CODA_SourceQueueBuffer@16
+// Name-fix NF38: descriptive CODA C-API name as the landed caller CCodaFrameStreamer::SubmitFrame 0x00C49470 binds it
+//   (`CODA_SourceQueueBuffer(m_pSource, frame->m_hBuffer, 0)`: queue a frame buffer on the source, the 64-bit time as the last
+//   two words); was the free stand-in AudioObject_PlaySource. Same family as the landed CODA_SourcePlay 0x00C35DD0.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C35A10, 77 bytes, __stdcall `ret 0x10`. Descriptive name (no PDB covers
 //   libpk): the catalog's `Inventory_OnItemEquipped_ValidateWeaponExtended` is propagated. Caller: 0x00C495A1.
 //   The sibling 0x00C35990 runs the same source check (with a null-source escape this row does not have).
@@ -26,7 +29,7 @@ struct CAudioObject {
     bool PlaySource(CAudioSource* source, long a, long b);   // 0x00C43F80
 };
 
-int __stdcall AudioObject_PlaySource(CAudioObject* object, CAudioSource* source, long a, long b)
+extern "C" int __stdcall CODA_SourceQueueBuffer(CAudioObject* object, CAudioSource* source, long a, long b)
 {
     if (source->IsStreamed() && source->IsLocked() && source->m_pending) {
         ((CCodaContext*)&g_audioSystem)->SetError(-6);

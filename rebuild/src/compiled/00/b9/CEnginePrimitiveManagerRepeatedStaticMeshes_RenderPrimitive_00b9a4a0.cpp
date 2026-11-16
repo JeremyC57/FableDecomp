@@ -3,7 +3,7 @@
 // Identity: Ego_r.pdb / FableWin.pdb ?RenderPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z
 //   (rtti-vtables.tsv slot 7 of the class's vtable; RTTI chain RepeatedStaticMeshes : MeshBase : OcclusionBase : CEnginePrimitiveManager : CEnginePrimitiveRenderUtil).
 // Retail-asm: 0x00B9A75F..0x00B9A799 `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... maxps ; minps ; subps ; mulps ; shufps ; addps ; addss ; movss [esp+4Ch],xmm2`
-//   -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind g_SSEAvailable, the shared engine/C3DBoundingBoxSSE.h helper (attempts:
+//   -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind GEnableSIMD, the shared engine/C3DBoundingBoxSSE.h helper (attempts:
 //   that header and rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/); expanded through the inline CShadowClipVolume::ClipBoundingBox. No asm in this row.
 // Inline-budget: FABLE_FORCEINLINE on SetupOcclusionInfo (c2 inline score 138), IsOccluded (80), CIVCountedPointer::Reset (80), ClipBoundingBox (534),
 //   CalcShortestDistanceToPointSquared and CalculateSubPrimitiveRenderFlags (141) -- FableWin-only inlines expanded by retail; plain inline keeps the
@@ -102,24 +102,24 @@
 #include "engine/CEngineShadowRenderer.h"
 #include "engine/CEngineLightingManager.h"
 
-extern bool g_SSEAvailable;                                              // 0x013D2880
+extern bool GEnableSIMD;                                              // 0x013D2880
 extern CEnginePrimitiveOcclusionManager*   g_pPrimitiveOcclusionManager;   // 0x01436E58
-extern CEngineShadowRenderer*              g_pEngineShadowRenderer;        // 0x01436E60
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }        // 0x01436E60
 extern CEngineSubPrimitiveRenderer*        g_pEngineSubPrimitiveRenderer;  // 0x01436E74
-extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRendererSharedData; // 0x01436E78
-extern CEnginePrimitiveRenderer*           g_pEnginePrimitiveRenderer;     // 0x01436E80
-extern CEngineLightingManager*             g_pEngineLightingManager;       // 0x01436E9C
-extern CEngineCamera*                      g_pEngineCamera;                // 0x01436EA0
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; } // 0x01436E78
+namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }     // 0x01436E80
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }       // 0x01436E9C
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                // 0x01436EA0
 
-inline CEngineCamera& __fastcall CEnginePrimitiveRenderUtil::GetCurrentCamera() { return *g_pEngineCamera; }
+inline CEngineCamera& __fastcall CEnginePrimitiveRenderUtil::GetCurrentCamera() { return *NEngineInternal::GPCamera; }
 inline float __fastcall CEnginePrimitiveRenderUtil::CalcDistanceFromCamera(const C3DVector& position)
 {
     return (position - GetCurrentCamera().PeekCameraPos()).GetMagnitude();
 }
-inline EEngineOcclusionLayer __fastcall CEnginePrimitiveRenderUtil::GetCurrentOcclusionLayer() { return g_pPrimitiveRendererSharedData->GetCurrentOcclusionLayer(); }
-inline bool __fastcall CEnginePrimitiveRenderUtil::GetOcclusionEnable() { return g_pPrimitiveRendererSharedData->GetOcclusionEnable(); }
-inline float __fastcall CEnginePrimitiveRenderUtil::GetLODErrorTolerance() { return g_pPrimitiveRendererSharedData->LODErrorTolerance; }
-inline float __fastcall CEnginePrimitiveRenderUtil::GetLODVirtualScreenSizeFOVAdjusted() { return g_pPrimitiveRendererSharedData->LODVirtualScreenSizeFOVAdjusted; }
+inline EEngineOcclusionLayer __fastcall CEnginePrimitiveRenderUtil::GetCurrentOcclusionLayer() { return NEngineInternal::GPPrimitiveRendererSharedData->GetCurrentOcclusionLayer(); }
+inline bool __fastcall CEnginePrimitiveRenderUtil::GetOcclusionEnable() { return NEngineInternal::GPPrimitiveRendererSharedData->GetOcclusionEnable(); }
+inline float __fastcall CEnginePrimitiveRenderUtil::GetLODErrorTolerance() { return NEngineInternal::GPPrimitiveRendererSharedData->LODErrorTolerance; }
+inline float __fastcall CEnginePrimitiveRenderUtil::GetLODVirtualScreenSizeFOVAdjusted() { return NEngineInternal::GPPrimitiveRendererSharedData->LODVirtualScreenSizeFOVAdjusted; }
 FABLE_FORCEINLINE unsigned long CEnginePrimitiveRenderUtil::CalculateSubPrimitiveRenderFlags(bool fading, bool translucent, bool alpha_test,
                                                                                  unsigned long primitive_flags, bool shadowed)
 {
@@ -133,9 +133,9 @@ FABLE_FORCEINLINE unsigned long CEnginePrimitiveRenderUtil::CalculateSubPrimitiv
         flags |= 2;
     else if (translucent)
         flags |= 5;
-    if (shadowed && g_pEngineShadowRenderer->PeekRenderEnabled()) {
+    if (shadowed && NEngineInternal::GPShadowRenderer->PeekRenderEnabled()) {
         flags |= 0x200;
-        if (g_pEngineLightingManager->PeekGlobalShadowMode() == 2)
+        if (NEngineInternal::GPLightingManager->PeekGlobalShadowMode() == 2)
             flags |= 0x10;
     }
     if (primitive_flags & 0x800)
@@ -144,7 +144,7 @@ FABLE_FORCEINLINE unsigned long CEnginePrimitiveRenderUtil::CalculateSubPrimitiv
         flags |= 0x180;
     return flags;
 }
-inline bool __fastcall CEnginePrimitiveManager::GetBlockOnLoad() { return g_pEnginePrimitiveRenderer->GetBlockOnLoad(); }
+inline bool __fastcall CEnginePrimitiveManager::GetBlockOnLoad() { return NEngineInternal::GPPrimitiveRenderer->GetBlockOnLoad(); }
 inline void CEnginePrimitiveManager::AddSubPrimitive(CEngineSubPrimitiveBase* sub_primitive, float distance, unsigned char alpha, unsigned long flags)
 {
     g_pEngineSubPrimitiveRenderer->AddSubPrimitive(sub_primitive, distance, alpha, flags, this);
@@ -157,7 +157,7 @@ FABLE_FORCEINLINE bool CEngineInternalPrimitiveOcclusionBase::IsOccluded(EEngine
 }
 FABLE_FORCEINLINE float C3DBoundingBox::CalcShortestDistanceToPointSquared(const C3DVector& point) const
 {
-    if (g_SSEAvailable) {
+    if (GEnableSIMD) {
         float result;
         GF_SSE_BOX_DISTANCE_SQUARED(this, point, result);
         return result;
@@ -218,8 +218,8 @@ ERendered CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive(CEngineIn
         return RENDERED_BOUNDING_VOLUME;
     }
     primitive.GetRenderInfo()->Mesh = const_cast<C3DMesh2*>(mesh.Get());
-    primitive.GetRenderInfo()->Lights = g_pEngineLightingManager->GetLightsInArea(primitive.BoundingBox, 5, CEnginePrimitiveThemeChannelDesc());
-    const CShadowRendererSceneData scene_data = g_pEngineShadowRenderer->PeekSceneData();
+    primitive.GetRenderInfo()->Lights = NEngineInternal::GPLightingManager->GetLightsInArea(primitive.BoundingBox, 5, CEnginePrimitiveThemeChannelDesc());
+    const CShadowRendererSceneData scene_data = NEngineInternal::GPShadowRenderer->PeekSceneData();
     bool shadowed = scene_data.RecieverClipVolume.ClipBoundingBox(primitive.BoundingBox);
     for (unsigned long i = 0; i < mesh->PrimitiveCount; ++i) {
         C3DPrimitive2* mesh_primitive = &mesh->Primitives[i];
@@ -238,7 +238,7 @@ ERendered CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive(CEngineIn
             render_mode = (ERenderMode)1;
         }
         CEngineSubPrimitiveBase* sub_primitive = new CEngineSubPrimitiveRepeatedStaticMesh(&primitive, mesh_primitive, render_mode);
-        bool fading = radius + distance > g_pEnginePrimitiveRenderer->GetRepeatedMeshDrawDistanceFactor() * primitive.FadeDistance.FadeBeginDistance;
+        bool fading = radius + distance > NEngineInternal::GPPrimitiveRenderer->GetRepeatedMeshDrawDistanceFactor() * primitive.FadeDistance.FadeBeginDistance;
         AddSubPrimitive(sub_primitive, distance, 255,
                         CalculateSubPrimitiveRenderFlags(fading, material->IsTransparent(), material->IsBooleanAlpha(),
                                                          primitive.EnginePrimitiveFlags | 0x200, shadowed));

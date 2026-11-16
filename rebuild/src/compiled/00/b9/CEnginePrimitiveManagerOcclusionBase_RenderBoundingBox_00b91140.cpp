@@ -111,7 +111,7 @@ class CEngineOcclusionManager { public:
         return 0xffffffff;
     }
 };
-extern CEngineOcclusionManager* g_pOcclusionManager;   // 0x01436E5C
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }   // 0x01436E5C
 
 struct CEnginePrimitiveRendererSharedData {
     unsigned char _pad000[0x78];
@@ -170,11 +170,11 @@ void CEnginePrimitiveManagerOcclusionBase::RenderBoundingBox(CEngineInternalPrim
             g_pPrimitiveOcclusionManager->SetVisible(*info);
             return;
         }
-        unsigned long handle = g_pOcclusionManager->AllocateOccluderHandle();
-        if (g_pOcclusionManager->CurrentFrame != info->TestFrame)
+        unsigned long handle = NEngineInternal::GPOcclusionManager->AllocateOccluderHandle();
+        if (NEngineInternal::GPOcclusionManager->CurrentFrame != info->TestFrame)
             info->OcclusionTestHandles.clear();
         info->OcclusionTestHandles.push_back(handle);
-        info->TestFrame = g_pOcclusionManager->CurrentFrame;
+        info->TestFrame = NEngineInternal::GPOcclusionManager->CurrentFrame;
         DrawVisibilityTestBox(box, handle);
         long show = g_pPrimitiveRendererSharedData->ShowVisibilityInfo;
         if (show == 1 || show == 2) {

@@ -1,4 +1,4 @@
-// CMailboxQueue_00c49b90::ProcessMessage(void*) -- under a scoped queue lock (ctor @ 0x00C0FFC0, dtor @ 0x00C0FFE0): 1 when the mailbox at +0x18 has a pending item (virtual slot 3), else release the semaphore at +0x1C (@ 0x00C2A150), push the message (virtual slot 1) and return 0; EH-framed
+// CMailboxQueue::ProcessMessage(void*) -- under a scoped queue lock (ctor @ 0x00C0FFC0, dtor @ 0x00C0FFE0): 1 when the mailbox at +0x18 has a pending item (virtual slot 3), else release the semaphore at +0x1C (@ 0x00C2A150), push the message (virtual slot 1) and return 0; EH-framed
 // Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
 // Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C2A150 ?Release@PKCSemaphore@@QAEXXZ (was ?Release@CSemaphore@@QAEXXZ)
@@ -12,34 +12,20 @@
 // virtual slot 3 the call returns 1; otherwise the semaphore at +0x1C is released (@ 0x00C2A150),
 // the message is pushed through virtual slot 1 and 0 is returned. Built under /EHsc (the
 // `__ehhandler` is not compared; the unwind funclet lands separately through the funclet pass).
-// The manifest label is propagated; the queue class is named by address. One of 8
+// The manifest label is propagated. Name-fix NF38: the class is libpk/CCodaFrameStreamer.h CMailboxQueue (descriptive; its
+// callers 0x00C47F10 / 0x00C49470 bind ?ProcessMessage@CMailboxQueue@@QAEJPAX@Z); was the address-named local CMailboxQueue_00c49b90. One of 8
 // bodies of this shape.
+// Leaf: ?ProcessMessage@CMailboxQueue@@QAEJPAX@Z
+#define FABLE_RETAIL_CCODAFRAMESTREAMER_PASS23
+#include "libpk/CCodaFrameStreamer.h"
 #include "libpk/PKCProtectionInstance.h"
-struct CMailboxQueue_00c49b90;
 
-
-#include "libpk/PKCSemaphore.h"
-
-struct CMailbox {
-    virtual void v00();
-    virtual void Push(void* message);      // slot 1
-    virtual void v08();
-    virtual void* Peek();                  // slot 3
-};
-
-struct CMailboxQueue_00c49b90 {
-    unsigned char _pad[0x18];
-    CMailbox* m_pMailbox;                  // +0x18
-    PKCSemaphore m_semaphore;                // +0x1C
-    long ProcessMessage_CMailboxQueue_00c49b90(void* message);
-};
-
-long CMailboxQueue_00c49b90::ProcessMessage_CMailboxQueue_00c49b90(void* message)
+long CMailboxQueue::ProcessMessage(void* message)
 {
-    PKCProtectionInstance lock((PKCCriticalSection*)this);
-    if (m_pMailbox->Peek())
+    PKCProtectionInstance lock(&m_criticalSection);
+    if (m_pQueue->IsFull())
         return 1;
     m_semaphore.Release();
-    m_pMailbox->Push(message);
+    m_pQueue->Push(static_cast<CCodaFrame* const*>(message));
     return 0;
 }

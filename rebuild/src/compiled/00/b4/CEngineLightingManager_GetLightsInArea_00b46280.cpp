@@ -2,14 +2,14 @@
 // Grade: RELOCATION_MATCH (982 bytes)
 // Leaf: ?GetLightsInArea@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingBox@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
 // Flags: none
-// Retail-asm: 0x00B462DE..0x00B462F8 `fld [ebp-10h] ; fsub [ebp-20h] ; fistp dword ptr [ebp-14h] ; fild [ebp-14h] ; fadd [ebp-24h] ; fstp [ebp-0Ch] ; mov eax,[ebp-10h] ; cmp eax,[ebp-0Ch] ; jne ; inc dword ptr [ebp-14h]` (x4: GFFloatToLongFloor, standalone 0x0048D940) and 0x00B464A2..0x00B464E2 `mov ecx,[ebp+8] ; mov edx,[ebp-2Ch] ; movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [ebp-30h],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind g_SSEAvailable (0x013D2880), the same kernel as landed 0x00BF7DF0; VC7.1 emits neither a bare dword fistp nor packed SSE from C++. The x87 branch (0x00B464EF..) is the C++ fallback.
+// Retail-asm: 0x00B462DE..0x00B462F8 `fld [ebp-10h] ; fsub [ebp-20h] ; fistp dword ptr [ebp-14h] ; fild [ebp-14h] ; fadd [ebp-24h] ; fstp [ebp-0Ch] ; mov eax,[ebp-10h] ; cmp eax,[ebp-0Ch] ; jne ; inc dword ptr [ebp-14h]` (x4: GFFloatToLongFloor, standalone 0x0048D940) and 0x00B464A2..0x00B464E2 `mov ecx,[ebp+8] ; mov edx,[ebp-2Ch] ; movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [ebp-30h],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind GEnableSIMD (0x013D2880), the same kernel as landed 0x00BF7DF0; VC7.1 emits neither a bare dword fistp nor packed SSE from C++. The x87 branch (0x00B464EF..) is the C++ fallback.
 // Helper (2026-11-05 asm migration): the retail inline-asm block is the shared engine/C3DBoundingBoxSSE.h (byte-matching path + FABLE_PORTABLE twin); the row has
 //   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SSE_BOX.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B46280, length 982 bytes, ebp frame (0x48), `ret 0Ch`.
 // Name: Ego_r.pdb + FableWin.pdb `?GetLightsInArea@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingBox@@JABVCEnginePrimitiveThemeChannelDesc@@@Z`;
 //   called by LookupSmallObjectLightCache 0x00B46A30 (landed, `call 0xb46280`).
 // Callees: ResetAlreadyFoundFlags 0x00B44CE0 and ClipLightCountAndBuildLightArray 0x00B44FE0 (both private in the PDB).
-// Constants: 0.0625 (double) @ 0x012A2230, 0.5f @ 0x0122F59C (literals). Globals: g_SSEAvailable 0x013D2880.
+// Constants: 0.0625 (double) @ 0x012A2230, 0.5f @ 0x0122F59C (literals). Globals: GEnableSIMD 0x013D2880.
 // Inlines: C3DBoundingBox::CalcShortestDistanceToPointSquared and C3DBoundingBox::GetCenter (PDB names; engine/C3DBoundingBox.h
 //   FABLE_RETAIL_C3DBOUNDINGBOX branch), C3DVector::GetSquaredMagnitude (engine/C3DVector.h).
 // Shape: the grid walk is GetLightsInSphere's (0x00B45FB0); here the flag store goes through link->Light (retail reloads it).
@@ -21,14 +21,14 @@
 #undef CEngineLightingManager
 #include "engine/C3DVector.h"
 
-extern bool g_SSEAvailable;                             // 0x013D2880
+extern bool GEnableSIMD;                             // 0x013D2880
 #define FABLE_RETAIL_C3DBOUNDINGBOX
 #include "engine/C3DBoundingBox.h"
 
 // the engine's C3DBoundingBox::CalcShortestDistanceToPointSquared (Ego_r QBEMABVC3DVector@@@Z), expanded in place
 FABLE_FORCEINLINE float C3DBoundingBox::CalcShortestDistanceToPointSquared(const C3DVector& point) const
 {
-    if (g_SSEAvailable) {
+    if (GEnableSIMD) {
         float result;
         GF_SSE_BOX_DISTANCE_SQUARED(this, point, result);
         return result;

@@ -12,13 +12,13 @@
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 void* __cdecl operator new[](unsigned int size);   // 0x00BFEB22
-extern char* g_pchNil_0139c900;            // 0x0139C900
+extern char* _afxPchNil;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c49820)(const char* text);
 extern PFNLOGSINK_00c49820 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                       // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);   // 0x00C0DF00
@@ -84,7 +84,7 @@ extern "C" void __stdcall CODA_SetSourceVolume(CAudioObject* source, float volum
 struct CCodaFrameStreamer_00c49650;
 typedef void (__stdcall* PFNFRAMEDONE_00c49820)(void* handle, void* buffer, CCodaFrameStreamer_00c49650* streamer);
 extern "C" int __stdcall AudioObject_Play(CAudioObject* object, unsigned long frames, PFNFRAMEDONE_00c49820 callback, CCodaFrameStreamer_00c49650* context);   // 0x00C359E0
-extern "C" long __stdcall CODA_StopSource(CAudioObject* source, long flag);              // 0x00C35DD0
+extern "C" long __stdcall CODA_SourcePlay(CAudioObject* source, long looping);            // 0x00C35DD0
 
 struct CStreamerBase_00c49650 {            // vtable 0x012B80AC
     virtual ~CStreamerBase_00c49650() { }
@@ -140,5 +140,5 @@ CCodaFrameStreamer_00c49650::CCodaFrameStreamer_00c49650(unsigned long channels,
     m_pSource = CreateSource_00c35ec0(0x10003);
     CODA_SetSourceVolume(m_pSource, volume);
     AudioObject_Play(m_pSource, m_frames, OnFrameDone, this);
-    CODA_StopSource(m_pSource, 1);
+    CODA_SourcePlay(m_pSource, 1);
 }

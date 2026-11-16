@@ -10,7 +10,7 @@
 //   (+0x1A0), ::DrawIndexedPrimitive (+0x148); CRenderStateManager::RealiseRenderState 0x00A058C0.
 // Globals: g_pRenderManagerCore 0x01436E18 (CurrentTextures +0x3D00, NumTextureStagesUsed +0x3CB8, PD3DDevice +0x3CF0;
 //   the spelling of the landed SetupFirstTextures 0x00B9D670 / CEngine::Uninitialise 0x00B25D80);
-//   g_pShaderRenderManager 0x01436E14 (RenderManager +0x1D0, D3DDevice +0x1D4, as the landed DrawBuffersIndexed 0x00BA7DB0).
+//   NEngineInternal::GPShaderRenderManager 0x01436E14 (RenderManager +0x1D0, D3DDevice +0x1D4, as the landed DrawBuffersIndexed 0x00BA7DB0).
 // Layout: C3DPrimitive2 (Ego_r.pdb, retail offsets 4 lower past the 12-byte ClothPrimitives CArray): IndexBuffer +0x34,
 //   StaticBlockCount +0x40, StaticBlocks +0x44 (CStaticBlock, 0x20 bytes, base N3DPrimitive::CBaseBlock {PrimitiveCount,
 //   StartIndex, IsStrip, DegenerateTriangles, ChangeFlags}), VertexCount +0x58. No engine header exists for C3DPrimitive2,
@@ -159,7 +159,7 @@ public:
         D3DDevice->DrawIndexedPrimitive(primitiveType, 0, minVertexIndex, numVertices, startIndex, primitiveCount);
     }
 };
-extern CShaderRenderManager* g_pShaderRenderManager;   // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
 template <class T> class scoped_ptr {              // boost::scoped_ptr (one pointer)
 public:
@@ -232,7 +232,7 @@ void __fastcall CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBloc
             const unsigned long startIndex = block.StartIndex;
             const unsigned long vertexCount = primitive.VertexCount;
             CIndexBuffer& indexBuffer = *primitive.IndexBuffer;
-            g_pShaderRenderManager->DrawBuffersIndexed(0, vertexCount, indexBuffer, startIndex, primitiveCount,
+            NEngineInternal::GPShaderRenderManager->DrawBuffersIndexed(0, vertexCount, indexBuffer, startIndex, primitiveCount,
                                                        block.IsStrip ? PrimitiveTriangleStrip : PrimitiveTriangleList);
         }
     }

@@ -45,7 +45,7 @@ struct CEngineSubPrimitive2DViewport : CEngineSubPrimitiveBase {   // vtable 0x0
 class CEnginePrimitiveRenderer2D { public:
     float Layer2DToSortDistance(EEngine2DLayer layer); // 0x00B4A6A0
 };
-extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D_01436e7c;   // 0x01436E7C
+namespace NEngineInternal { extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D; }   // 0x01436E7C
 
 class CEnginePrimitiveManager;
 class CEngineSubPrimitiveRenderer { public:
@@ -63,5 +63,5 @@ void CEnginePrimitive2DViewportManager::Render2DPrimitive(CEngineInternalPrimiti
 {
     CEngineSubPrimitive2DViewport* subPrimitive = new CEngineSubPrimitive2DViewport(primitive);
     g_pPrimitiveRenderer_01436e74->AddSubPrimitive(
-        type, subPrimitive, g_pPrimitiveRenderer2D_01436e7c->Layer2DToSortDistance(primitive.m_layer), (CEnginePrimitiveManager*)this);
+        type, subPrimitive, NEngineInternal::GPPrimitiveRenderer2D->Layer2DToSortDistance(primitive.m_layer), (CEnginePrimitiveManager*)this);
 }

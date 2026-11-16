@@ -122,7 +122,7 @@ private:
     void UpdateCombinedProjectionTransform();           // 0x00988A50
     void UpdateCameraPos();                             // 0x00989700
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 class CRenderManagerCore {
 public:
@@ -147,7 +147,7 @@ struct CEngineWeatherRendererMethods : CEngineWeatherRenderer {
 
 void CEngineWeatherRendererMethods::RenderSnowBox(const C3DVector& boxPos)
 {
-    g_pShaderRenderManager->SetUserVertexShaderConstant(0, boxPos.X, boxPos.Y, boxPos.Z, GetSettings().SnowWeighting);
-    g_pShaderRenderManager->PrepareForRender(5);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, boxPos.X, boxPos.Y, boxPos.Z, GetSettings().SnowWeighting);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(5);
     g_pRenderManagerCore->DrawCurrentBuffersAsPointList(0, (long)(GetSettings().CurrentSnowStrength * 1024.0f));
 }

@@ -36,7 +36,7 @@ class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                    // +0x54 (CameraDesc +0x14, its WorldPosition +0x40)
 };
-extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }              // 0x01436EA0
 
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 class CEngineInternalPrimitiveWeatherMask {         // CEngineInternalPrimitiveBase (0x48) + mask data (PDB)
@@ -74,9 +74,9 @@ ERendered CEnginePrimitiveManagerWeatherMask::RenderPrimitive(CEngineInternalPri
     if (!Enable)
         return RENDERED_NOTHING;
     const CEngineInternalPrimitiveWeatherMask& mask = (const CEngineInternalPrimitiveWeatherMask&)primitive;
-    float dx = mask.BSphere.Center.X - g_pEngineCamera->WorldPosition.X;
-    float dy = mask.BSphere.Center.Y - g_pEngineCamera->WorldPosition.Y;
-    float dz = mask.BSphere.Center.Z - g_pEngineCamera->WorldPosition.Z;
+    float dx = mask.BSphere.Center.X - NEngineInternal::GPCamera->WorldPosition.X;
+    float dy = mask.BSphere.Center.Y - NEngineInternal::GPCamera->WorldPosition.Y;
+    float dz = mask.BSphere.Center.Z - NEngineInternal::GPCamera->WorldPosition.Z;
     float d2 = dy * dy;
     d2 += dz * dz;
     d2 += dx * dx;

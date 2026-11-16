@@ -109,7 +109,7 @@ class CShaderRenderManager { public:
         }
     }
 };
-extern CShaderRenderManager* g_pShaderRenderManager;   // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
 class CMatrix3x4 { public: float M[12]; };
 
@@ -128,8 +128,8 @@ struct CEnginePrimitiveManagerOcclusionBase {
 void CEnginePrimitiveManagerOcclusionBase::DrawAlphaBoundingBox(const CMatrix3x4& box, unsigned long colour)
 {
     g_pRenderStateManager->OpenCaptureBlock();
-    bool pixelShaders = g_pShaderRenderManager->PixelShadersEnabled;
-    g_pShaderRenderManager->SetPixelShadersEnabled(false);
+    bool pixelShaders = NEngineInternal::GPShaderRenderManager->PixelShadersEnabled;
+    NEngineInternal::GPShaderRenderManager->SetPixelShadersEnabled(false);
     SetState(g_pRenderManagerCore->m_state3204, g_renderStateDefault_01396e74, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state3344, g_renderStateDefault_01396ef4, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state32a4, g_renderStateDefault_01396e74, g_pRenderManagerCore);
@@ -140,6 +140,6 @@ void CEnginePrimitiveManagerOcclusionBase::DrawAlphaBoundingBox(const CMatrix3x4
     SetState(g_pRenderManagerCore->m_state2930, g_renderStateDefault_01396f7c, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state2840, 0xf, g_pRenderManagerCore);
     RenderUntexturedStaticMeshPrimitive(m_pOcclusionData->m_pTestMesh, box);
-    g_pShaderRenderManager->SetPixelShadersEnabled(pixelShaders);
+    NEngineInternal::GPShaderRenderManager->SetPixelShadersEnabled(pixelShaders);
     g_pRenderStateManager->RestoreCaptureBlock();
 }

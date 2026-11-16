@@ -10,7 +10,7 @@
 // Callees: std::vector<CCountedPointer<CEnginePrimitiveManager> >::_M_insert_overflow 0x00B38BB0 (out of line, the
 //   __false_type overload: CCountedPointer has a user copy ctor); CEnginePrimitiveTypeInfo::RegisterPrimitiveManager(
 //   CEnginePrimitiveManager*) 0x00B8FAD0 (FableWin.pdb ?RegisterPrimitiveManager@CEnginePrimitiveTypeInfo@@QAEXPAVCEngine
-//   PrimitiveManager@@@Z) on the global 0x01436E84 (the established landed spelling g_pEnginePrimitiveTypeInfo; no PDB data
+//   PrimitiveManager@@@Z) on the global 0x01436E84 (the established landed spelling NEngineInternal::GPPrimitiveTypeInfo; no PDB data
 //   symbol).
 // Label: manifest "_global::CEnginePrimitiveTypeInfo_Manager_List_Insert" was descriptive.
 // Shape: STLport 4.6 inline push_back (placement new with its null test, the copy ctor's `if (Info) ++Info->RefCount`),
@@ -74,7 +74,7 @@ class CEnginePrimitiveTypeInfo {
 public:
     void RegisterPrimitiveManager(CEnginePrimitiveManager* manager);             // 0x00B8FAD0
 };
-extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;                     // 0x01436E84
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }                     // 0x01436E84
 
 class CEnginePrimitiveRenderer {
 public:
@@ -87,5 +87,5 @@ private:
 void CEnginePrimitiveRenderer::AddPrimitiveManager(const CCountedPointer<CEnginePrimitiveManager>& manager)
 {
     PrimitiveManagers.push_back(manager);
-    g_pEnginePrimitiveTypeInfo->RegisterPrimitiveManager(manager.Get());
+    NEngineInternal::GPPrimitiveTypeInfo->RegisterPrimitiveManager(manager.Get());
 }

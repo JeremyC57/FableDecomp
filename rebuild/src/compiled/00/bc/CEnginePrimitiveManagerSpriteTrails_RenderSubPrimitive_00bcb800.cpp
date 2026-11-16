@@ -236,7 +236,7 @@ class CShaderRenderManager { public:
     void ApplyVertexShader(CVertexShader* shader, bool force);   // 0x00988020
     void ResetWorldTransform();                    // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;   // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
 struct CStateBlockOwnerBase {                      // 0x20 bytes
     virtual void v00();
@@ -352,7 +352,7 @@ void CEnginePrimitiveManagerSpriteTrails::RenderSubPrimitive(CEngineSubPrimitive
     CEngineInternalPrimitiveSpriteTrail* trail = subPrimitive.m_pPrimitive;
     CRenderStateCaptureBlock capture;
     CShaderEnableSaver shaders(true, false);
-    g_pShaderRenderManager->ApplyVertexShader((CVertexShader*)&VertexShader, false);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)&VertexShader, false);
     g_pEngineStateBlock_01436e90->Apply();
     SetStateConst(g_pRenderManagerCore->m_state2854, 0, g_pRenderManagerCore);
     SetStateConst(g_pRenderManagerCore->m_state2890, g_renderStateDefault_01396fb8, g_pRenderManagerCore);
@@ -365,7 +365,7 @@ void CEnginePrimitiveManagerSpriteTrails::RenderSubPrimitive(CEngineSubPrimitive
             core->m_activeTextureCount = 1;
         SetStateConst(g_pRenderManagerCore->m_state2ee4, g_renderStateDefault_01396dd0, g_pRenderManagerCore);
         SetStateConst(g_pRenderManagerCore->m_state2f84, g_renderStateDefault_01396dd0, g_pRenderManagerCore);
-        g_pShaderRenderManager->ResetWorldTransform();
+        NEngineInternal::GPShaderRenderManager->ResetWorldTransform();
         SetStateConst(g_pRenderManagerCore->m_state2944, 0, g_pRenderManagerCore);
         RenderSpriteTrail(trail, true);
     }

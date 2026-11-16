@@ -37,7 +37,7 @@ class CShaderPointLight : public CShaderLight { public:   // vtable 0x012A2114, 
                       const CShaderLightAttenuation& attenuation);   // 0x00B49320
 };
 
-extern CShaderRenderManager* g_pShaderRenderManager;   // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
 class CEngineLocalLightElement { public:                      // 0x34 bytes
     C3DVector       WorldPos;                          // +0x00
@@ -77,10 +77,10 @@ void CEngineLightingManager::SetupShaderPointLights(const CEngineLocalLightArray
             attenuation.Attenuation2 = element.AttenuationDistSquared;
             attenuation.AttenuationBase = element.AttenuationConstant;
             CShaderPointLight light(element.WorldPos, element.Colour, 1.0f, attenuation);
-            g_pShaderRenderManager->InitialiseLight(i + 1, light);
+            NEngineInternal::GPShaderRenderManager->InitialiseLight(i + 1, light);
         } while (++i < lights->LightCount);
     }
     for (long j = lights->LightCount; j < ShaderPointLightsEnabledCount; ++j)
-        g_pShaderRenderManager->ResetLight(j + 1);
+        NEngineInternal::GPShaderRenderManager->ResetLight(j + 1);
     ShaderPointLightsEnabledCount = lights->LightCount;
 }

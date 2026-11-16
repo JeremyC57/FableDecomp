@@ -11,7 +11,7 @@
 //   `Compare` on a private copy of the class), ~CString 0x00C0BA40, and Right 0x00C0E0F0 (catalog
 //   "CShaderResource_Assign_Range", propagated). The row's own descriptive name and module are kept: whether it is a
 //   CString member or a libpk helper taking the string in ecx cannot be read from the bytes.
-extern bool g_flag_0143ccd8;               // 0x0143CCD8
+extern bool g_ForceTestTone;                // 0x0143CCD8 (descriptive: set, every stream is the 440 Hz test tone, type 2 in CreateDecoderStream 0x00C73AF0, which spells it so)
 
 class CString {                            // libpk MFC-style string: one word
 public:
@@ -28,7 +28,7 @@ struct CString_00c73a00 : CString {
 
 long CString_00c73a00::ClassifyAudioExtension() const
 {
-    if (g_flag_0143ccd8)
+    if (g_ForceTestTone)
         return 2;
     if (SafeStrlen(m_pchData) < 4)
         return 3;

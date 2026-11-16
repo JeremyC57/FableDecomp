@@ -7,7 +7,7 @@ class CShaderRenderManager { public:
 public:
     void ResetLight(unsigned long);   // 0x00988640
 };
-extern CShaderRenderManager* g_pShaderRenderManager_01436e14;   // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
 class CEngineLightingManager { public:
     unsigned char _pad[0xa0];
@@ -18,6 +18,6 @@ class CEngineLightingManager { public:
 void CEngineLightingManager::DisablePointLights()
 {
     for (long i = 0; i < m_shaderPointLightsEnabledCount; ++i)
-        g_pShaderRenderManager_01436e14->ResetLight(i + 1);
+        NEngineInternal::GPShaderRenderManager->ResetLight(i + 1);
     m_shaderPointLightsEnabledCount = 0;
 }

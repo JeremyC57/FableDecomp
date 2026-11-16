@@ -13,13 +13,13 @@
 //   +0x14, request mailbox +0x48, outstanding request count +0x68.
 // Shape: the ring walk re-reads the slot count for the modulus and the loop test; a slot that does not carry the id
 //   ends the walk by pushing the index to the count (`mov edi,ecx`), not by a `break`.
-extern char* g_pchNil_0139c900;                         // 0x0139C900
+extern char* _afxPchNil;                         // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK)(const char* text);
 extern PFNLOGSINK g_pfnLogSink_0143bb2c;                // 0x0143BB2C
 
 class CString { public:                                        // MFC-style string: one word
     char* m_pchData;
-    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                                         // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);       // 0x00C0DEC0
     CString& __fastcall operator<<(long value);       // 0x00C0DF00

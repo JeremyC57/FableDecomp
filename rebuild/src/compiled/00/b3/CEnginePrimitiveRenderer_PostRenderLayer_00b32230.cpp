@@ -22,7 +22,7 @@ class CShaderRenderManager { public:unsigned char EarlierMembers[0x390];bool Ver
 };
 struct CEngineLightingManager_Methods:CEngineLightingManager {void DisablePointLights();}; //00b44d50
 extern CRenderStateManager* g_pRenderStateManager_01436e18; //01436e18
-extern CShaderRenderManager* g_pShaderRenderManager; //01436e14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; } //01436e14
 extern CEngineLightingManager_Methods* g_pLightingManager; //01436e9c
 static FABLE_FORCEINLINE void ClearNormalizeNormals()
 {
@@ -48,6 +48,6 @@ void CEnginePrimitiveRenderer_Methods::PostRenderLayer()
  ClearNormalizeNormals();
  g_pLightingManager->DisablePointLights();
  ResetWorldTransform();
- if(_pad_0x260[0]!=g_pShaderRenderManager->PixelShadersEnabled){if(_pad_0x260[0])g_pShaderRenderManager->EnablePixelShaders();else g_pShaderRenderManager->DisablePixelShaders();}
- if(_pad_0x260[1]!=g_pShaderRenderManager->VertexShadersEnabled){if(_pad_0x260[1])g_pShaderRenderManager->EnableVertexShaders();else g_pShaderRenderManager->DisableVertexShaders();}
+ if(_pad_0x260[0]!=NEngineInternal::GPShaderRenderManager->PixelShadersEnabled){if(_pad_0x260[0])NEngineInternal::GPShaderRenderManager->EnablePixelShaders();else NEngineInternal::GPShaderRenderManager->DisablePixelShaders();}
+ if(_pad_0x260[1]!=NEngineInternal::GPShaderRenderManager->VertexShadersEnabled){if(_pad_0x260[1])NEngineInternal::GPShaderRenderManager->EnableVertexShaders();else NEngineInternal::GPShaderRenderManager->DisableVertexShaders();}
 }

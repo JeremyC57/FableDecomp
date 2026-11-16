@@ -22,7 +22,7 @@ class CEngineCamera { public:
 class CEngineLocalDetailGenerator { public:
     float ModifyFadeDistanceForVideoOptions(unsigned long typeMask, float distance);   // 0x00B597E0
 };
-extern CEngineCamera* g_pEngineCamera;                      // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                      // 0x01436EA0
 extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator; // 0x01436E88
 double __fastcall GFGetFastSubFrameTimer();                 // 0x009E1C70
 class CEngineStaticMapFileBlockManager;
@@ -45,7 +45,7 @@ class CLocalDetailCacheMap { public:
 bool CLocalDetailCacheMap::CObjectCacheGroupCollection::StaticUpdate(CEngineStaticMapFileBlockManager* blocks,
                                                                      const CObjectTypeCollectionPalette& palette, double deadline)
 {
-    const C3DVector& camera = g_pEngineCamera->Position;
+    const C3DVector& camera = NEngineInternal::GPCamera->Position;
     float dx = BoundingSphere.Centre.X - camera.X;
     float dy = BoundingSphere.Centre.Y - camera.Y;
     float dz = BoundingSphere.Centre.Z - camera.Z;

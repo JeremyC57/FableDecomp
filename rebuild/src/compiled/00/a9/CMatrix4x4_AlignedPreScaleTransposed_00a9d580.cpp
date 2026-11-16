@@ -12,15 +12,15 @@
 //   column goes through dword frame slots. Intrinsic spellings (chunk 748 NOTES table, 12 graded) never re-read the pointer.
 // x87: VC7.1 picks the fld operand of each `E *= s` from the whole function's load-node order; the third row written as a
 //   column loop gives retail's operand order in every product (125 row-form combinations searched; UUL family).
-// Global: g_SSEAvailable 0x013D2880.
+// Global: GEnableSIMD 0x013D2880.
 #define FABLE_RETAIL_CMATRIX4X4
 #include "engine/CMatrix4x4.h"
 #include "engine/CMatrix4x4AlignedSSE.h"
-extern bool g_SSEAvailable;                          // 0x013D2880
+extern bool GEnableSIMD;                          // 0x013D2880
 
 void CMatrix4x4::AlignedPreScaleTransposed(const C3DVector& scale)
 {
-    if (g_SSEAvailable) {
+    if (GEnableSIMD) {
         __declspec(align(16)) C4DVector s;
         s.X = scale.X; s.Y = scale.Y; s.Z = scale.Z;
         s.W = 0.0f;

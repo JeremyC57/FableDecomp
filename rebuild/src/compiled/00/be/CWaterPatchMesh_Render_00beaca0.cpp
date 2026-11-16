@@ -8,7 +8,7 @@
 // UpdatePixelShader 0x00988A20, UpdatePixelShaderConstants 0x00989BF0, UpdateAmbient 0x00989760, UpdateFogColour
 // 0x009897C0, UpdateLightGlobals 0x0098A760, UpdateCombinedProjectionTransform 0x00988A50, UpdateCameraPos 0x00989700),
 // CRenderManagerCore::DrawCurrentBuffersIndexed(unsigned long x4) @ 0x00A0AD40.
-// Globals: g_pShaderRenderManager 0x01436E14, g_pRenderManagerCore 0x01436E18, g_pEngineCamera 0x01436EA0.
+// Globals: NEngineInternal::GPShaderRenderManager 0x01436E14, g_pRenderManagerCore 0x01436E18, NEngineInternal::GPCamera 0x01436EA0.
 // Layout: engine/CWaterPatchMesh.h for `this` (VertexBuffer +0x10). CVertexBufferBase as in the landed
 // C3DPrimitive2::SetupVertexBuffer (PVertexBuffer +4, Stride unsigned char +0x10). CRenderManagerCore keeps its
 // device at +0x3cf0; the camera world position is at +0x54 (landed decal RenderPrimitive model). The
@@ -128,7 +128,7 @@ private:
     void UpdateCombinedProjectionTransform();
     void UpdateCameraPos();
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 struct IDirect3DVertexBuffer9;
 struct IDirect3DDevice9 {
@@ -249,7 +249,7 @@ class CEngineCamera { public:
     unsigned char _pad0[0x54];
     C3DVector WorldPosition;                            // +0x54
 };
-extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                  // 0x01436EA0
 
 class CVertexBufferWin32 { public:
     void* _vptr;                                        // +0x00
@@ -267,16 +267,16 @@ void CWaterPatchMesh_Methods::Render(long triangleCount) const
     if (!VertexBuffer)
         return;
     CMatrix3x4 transform;
-    const CEngineCamera* camera = g_pEngineCamera;
+    const CEngineCamera* camera = NEngineInternal::GPCamera;
     transform.Position.X = camera->WorldPosition.X;
     transform.Position.Y = camera->WorldPosition.Y;
     transform.Position.Z = camera->WorldPosition.Z;
-    g_pShaderRenderManager->SetWorldTransform(transform);
+    NEngineInternal::GPShaderRenderManager->SetWorldTransform(transform);
     CVertexBufferWin32* vertexBuffer = VertexBuffer;
     if (vertexBuffer)
         g_pRenderManagerCore->PD3DDevice->SetStreamSource(0, vertexBuffer->PVertexBuffer, 0, vertexBuffer->Stride);
     else
         g_pRenderManagerCore->PD3DDevice->SetStreamSource(0, 0, 0, 0);
-    g_pShaderRenderManager->PrepareForRender(5);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(5);
     g_pRenderManagerCore->DrawCurrentBuffersIndexed(0, 0x121, 0, triangleCount);
 }

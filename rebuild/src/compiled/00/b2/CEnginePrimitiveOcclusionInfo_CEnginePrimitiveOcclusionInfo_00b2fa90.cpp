@@ -37,10 +37,10 @@ private:
     void ClearHandles() { OcclusionTestHandles.clear(); }
 };
 
-extern CEngineOcclusionManager* g_pOcclusionManager;     // 0x01436E5C
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }     // 0x01436E5C
 
 CEnginePrimitiveOcclusionInfo::CEnginePrimitiveOcclusionInfo()
-    : TestFrame(g_pOcclusionManager->CurrentFrame)
+    : TestFrame(NEngineInternal::GPOcclusionManager->CurrentFrame)
 {
     InvisibleFrames = 0;
     Seen = false;

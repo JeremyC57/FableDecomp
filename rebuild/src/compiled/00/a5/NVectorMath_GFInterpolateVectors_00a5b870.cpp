@@ -19,7 +19,7 @@
 //   ?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@KKM@Z (NVectorMath namespace; the catalog label and the
 //   reloc binding drop the namespace); donor order GFInitVectorMath, the (KKM), (K1KKM) and (K1KPBMKK) overloads,
 //   GFFinishPartialSlerp = retail 0x00A5B850, 0x00A5B870, 0x00A5BBA0, 0x00A5BEF0, 0x00A5C2B0. No callees.
-//   Globals: the SSE-available byte g_SSEAvailable 0x013D2880, the 1.0f constant 0x0122DED8.
+//   Globals: the SSE-available byte GEnableSIMD 0x013D2880, the 1.0f constant 0x0122DED8.
 // Shape:
 //   - `/Zi` (debug info, as the retail TU was built) is what makes VC7.1 copy the return address into the realigned
 //     frame (`sub esp,8 ; and esp,-16 ; add esp,4 ; push ebp ; mov ebp,[ebx+4] ; mov [esp+4],ebp ; mov ebp,esp`), as in
@@ -41,12 +41,12 @@ public:
     const C4DVector operator*(float s) const { return C4DVector(X * s, Y * s, Z * s, W * s); }
     FABLE_FORCEINLINE const C4DVector Interpolate(const C4DVector& to, float t) const { return (to - *this) * t + *this; }
 };
-extern bool g_SSEAvailable;                                          // 0x013D2880
+extern bool GEnableSIMD;                                          // 0x013D2880
 namespace NVectorMath {
 void GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVector* from, unsigned long fromStride,
                           unsigned long count, float t)
 {
-    if (g_SSEAvailable) {
+    if (GEnableSIMD) {
         __declspec(align(16)) float tt[4];
         __declspec(align(16)) float oneMinusT[4];
         tt[0] = t;

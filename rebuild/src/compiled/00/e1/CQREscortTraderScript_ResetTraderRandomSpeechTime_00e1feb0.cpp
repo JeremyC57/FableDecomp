@@ -1,5 +1,9 @@
-// CV_AmbushScamScript::ResetRandomSpeechTime() -- restart the random-speech timer (+0x84) with the def's maximum minus a random amount below the def's range
-// Leaf: ?ResetRandomSpeechTime@CV_AmbushScamScript@@
+// NScript::CQR_EscortTraderScript::ResetTraderRandomSpeechTime() -- restart the trader's random-speech timer (TraderRandomSpeechTimer +0x84) with the def's maximum minus a random amount below the def's range
+// Leaf: ?ResetTraderRandomSpeechTime@CQR_EscortTraderScript@NScript@@QAEXXZ
+// Identity: Ego_r.pdb / FableWin.pdb ?ResetTraderRandomSpeechTime@CQR_EscortTraderScript@NScript@@QAEXXZ; the shared header
+//   engine/NScript_CQR_EscortTraderScript.h declares it next to TraderRandomSpeechTimer, and its callers are the escort-trader
+//   script's own entity code (0x00E1FCF0 / 0x00E1FEF0 call it at +0x84). Was the stand-in CV_AmbushScamScript::ResetRandomSpeechTime
+//   on a local struct (name-fix NF38: moved onto the shared header).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe @ 0x00E1FEB0, 60 bytes (+ int3 padding). Called from eleven places in its script (0x00E1FD9C..).
@@ -11,9 +15,12 @@
 // mov eax,[eax+9c8h]` reload in eax; computing it inside the call argument hoists the interface fetch into ebx).
 extern "C" int __cdecl rand();                           // 0x00BFEB16
 
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_STLPORT_HTTP
+#define FABLE_STLPORT_CONSTRUCTORS
+#include "engine/NScript_CQR_EscortTraderScript.h"
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
@@ -24,19 +31,9 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
-// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
-//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
-#include "engine/CTimer.h"
-
-struct CV_AmbushScamScript {
-    unsigned char _base[0x84];
-    CTimer RandomSpeechTimer;                            // +0x84
-    void ResetRandomSpeechTime();
-};
-
-void CV_AmbushScamScript::ResetRandomSpeechTime()
+void NScript::CQR_EscortTraderScript::ResetTraderRandomSpeechTime()
 {
     CScriptDef* def = pGlobalScriptDef;
     long time = pGlobalScriptDef->RandomSpeechTimeMax - rand() % def->RandomSpeechTimeRange;
-    pDSTGame->SetTimer(RandomSpeechTimer.TimerIndex, time);
+    pDSTGame->SetTimer(TraderRandomSpeechTimer.TimerIndex, time);
 }

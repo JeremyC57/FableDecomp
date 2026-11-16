@@ -31,7 +31,7 @@
 #include "engine/fable_script_text.h"
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, SCRIPT_AI_PRIORITY_MEDIUM=2, SCRIPT_AI_PRIORITY_HIGH=3, SCRIPT_AI_PRIORITY_HIGHEST=4 };
 enum ETextGroupSelectionMethod { GROUP_SELECT_NONE=0, GROUP_SELECT_RANDOM=1, GROUP_SELECT_RANDOM_NO_REPEAT=2, GROUP_SELECT_SEQUENTIAL=3, GROUP_SELECT_FIRST_ONLY=4 };
-enum EScriptEntityMoveType { MOVE_TYPE_WALKING=0, MOVE_TYPE_RUNNING=1 };
+#include "engine/EScriptEntityMoveType.h"   // ENTITY_MOVE_WALK 0 / ENTITY_MOVE_RUN 1 (Ego_r / FableWin TPI)
 enum EHeroAbility { HERO_ABILITY_NULL=0, HERO_ABILITY_HEAL_LIFE_SPELL=14 };
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8
 template<> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer();
@@ -83,7 +83,7 @@ void NScript::CV_BordelloScript::CBordelloClient::Main()
             if (!arrived) {
                 if (!seh_me.IsPerformingScriptTask()) {
                     if (T) return;
-                    seh_me.MoveToPosition(stand.GetPos(),1.0f,MOVE_TYPE_WALKING,false,true);
+                    seh_me.MoveToPosition(stand.GetPos(),1.0f,ENTITY_MOVE_WALK,false,true);
                 }
                 if (IsDistanceBetweenThingsUnder(Me,stand,5.0f)) {
                     if (T) return;
@@ -123,7 +123,7 @@ void NScript::CV_BordelloScript::CBordelloClient::Main()
             if (T) return;
             if (!seh_me.IsPerformingScriptTask()) {
                 if (T) return;
-                seh_me.MoveToPosition(stand.GetPos(),1.0f,MOVE_TYPE_WALKING,false,true);
+                seh_me.MoveToPosition(stand.GetPos(),1.0f,ENTITY_MOVE_WALK,false,true);
             }
             if (IsDistanceBetweenThingsUnder(stand,Me,5.0f)) {
                 if (T) return;
@@ -215,7 +215,7 @@ void NScript::CV_BordelloScript::CBordelloClient::Main()
             if (T) return;
             if (!seh_me.IsPerformingScriptTask()) {
                 if (T) return;
-                seh_me.MoveToPosition(spawn.GetPos(),1.0f,MOVE_TYPE_WALKING,false,true);
+                seh_me.MoveToPosition(spawn.GetPos(),1.0f,ENTITY_MOVE_WALK,false,true);
             }
             if (IsDistanceBetweenThingsUnder(spawn,Me,5.0f)) {
                 if (T) return;

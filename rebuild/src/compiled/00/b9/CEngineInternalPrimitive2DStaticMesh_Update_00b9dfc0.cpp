@@ -10,7 +10,7 @@
 //   (a direct `MeshBanks[0]->` call pushes the index first); C3DMeshInfo::GetBoundingSphere() by value -- with the C3DBoundingSphere
 //   / C3DVector memberwise copy constructors the copy goes through a frame temporary (the 0x10-byte frame) as in retail.
 // Globals: 0x01436E98 the engine resource manager (MeshBanks[3] +0x10, engine/CEngineResourceManager.h; spelling
-//   g_pEngineResourceManager_01436e98 is descriptive, see NOTES). Constants 0.0f @ 0x0122DEDC, 100.0f @ 0x01230A08.
+//   NEngineInternal::GPResourceManager is descriptive, see NOTES). Constants 0.0f @ 0x0122DEDC, 100.0f @ 0x01230A08.
 // Layout: CEnginePrimitive / CEnginePrimitive2DStaticMesh = Ego_r.pdb (MeshIndex +0x0C, ClipBox +0x10, Alpha +0x20, Orientation
 //   +0x24, BoundingSphere +0x58, TintColour +0x68); `this` = the offsets of engine/CEngineInternalPrimitive2DStaticMesh.h plus the
 //   base members it leaves as padding (Ego_r.pdb CEngineInternalPrimitiveBase EnginePrimitiveFlags +0x0C, Alpha +0x27,
@@ -56,7 +56,7 @@ public:
     // FableWin.pdb ?PeekMeshBank@CEngineResourceManager@@QBEPBVCMeshDataBank@@W4EMeshBankNo@@@Z (inline here)
     const CMeshDataBank* PeekMeshBank(EMeshBankNo bankNo) const { return MeshBanks[bankNo]; }
 };
-extern CEngineResourceManager* g_pEngineResourceManager_01436e98;   // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 enum EEngine2DLayer { };
 enum EEngineInterpolationSet { };
 class CEnginePrimitive { public:
@@ -101,7 +101,7 @@ void CEngineInternalPrimitive2DStaticMesh::Update(const CEnginePrimitive& primit
 {
     EnginePrimitiveFlags = flags;
     const CEnginePrimitive2DStaticMesh& desc = static_cast<const CEnginePrimitive2DStaticMesh&>(primitive);
-    MeshInfo = g_pEngineResourceManager_01436e98->PeekMeshBank((EMeshBankNo)0)->PeekStaticMesh(desc.MeshIndex);
+    MeshInfo = NEngineInternal::GPResourceManager->PeekMeshBank((EMeshBankNo)0)->PeekStaticMesh(desc.MeshIndex);
     Alpha = desc.Alpha;
     TintColour = desc.TintColour;
     ClipBox = desc.ClipBox;

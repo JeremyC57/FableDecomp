@@ -23,14 +23,14 @@
 // argument slot) from the string length; the writer's slot 0 returns an unsigned char tested `? true : false`
 // (`test al,al ; setne al`) and takes the text through the string's inline `operator const char*` (so the text is
 // read before the size, as retail).
-extern char* g_pchNil;                             // 0x0139C900
+extern char* _afxPchNil;                             // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK)(const char* text);
 extern PFNLOGSINK g_pfnLogSink;                    // 0x0143BB2C
 class CString {                                    // MFC-style string: one word
 public:
     char* m_pchData;
     operator const char*() const { return m_pchData; }
-    CString() : m_pchData(g_pchNil) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                                    // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);    // 0x00C0DF00

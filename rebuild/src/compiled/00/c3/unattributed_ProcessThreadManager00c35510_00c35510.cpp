@@ -17,7 +17,7 @@ struct CDebugBreak {                       // empty temporary (a debug-break hel
 };
 
 typedef void (__fastcall* PFNLOGSINK_00c35510)(void* buffer);
-extern void* g_logBuffer_0139c900;         // 0x0139C900
+extern char* _afxPchNil;         // 0x0139C900
 extern PFNLOGSINK_00c35510 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 
@@ -41,7 +41,7 @@ long CThreadHost_00c35510::ProcessThreadManager(CThreadManager_00c35510* manager
 {
     if (!manager) {
         {
-            CString line(g_logBuffer_0139c900);
+            CString line(_afxPchNil);
             line << ".\\PKCThreadManager.cpp" << "(" << 6L << ") : " << "Null thread manager" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pBuffer);

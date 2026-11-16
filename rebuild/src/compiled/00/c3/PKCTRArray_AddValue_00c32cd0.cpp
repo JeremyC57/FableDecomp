@@ -12,17 +12,17 @@
 // Callees: PKCTRArray::FindValueIndex 0x00C32160 (the landed FindValue / RemoveValue spelling; its body is in the TU so VC7.1
 //   homes `found` in the dead trace-string slot, as the landed RemoveValue explains), PKCTRArray::ResizeAllocation(long)
 //   0x00C32950 (landed), the libpk trace stream (CString operator<< 0x00C0DEC0 text / 0x00C0DF00 long, ~CString 0x00C0BA40,
-//   g_pchNil 0x0139C900, g_pfnAssertHook 0x0143BB2C) and CDebugBreak 0x00C16750.
+//   _afxPchNil 0x0139C900, g_pfnAssertHook 0x0143BB2C) and CDebugBreak 0x00C16750.
 // Shape: the free-slot test is `Capacity - Count` twice (zero -> grow; then still below one -> trace); the tail shift runs from
 //   the last entry down to the insertion index and is guarded by an explicit non-empty test.
-extern char* g_pchNil;                          // 0x0139C900 (the shared empty string data)
+extern char* _afxPchNil;                          // 0x0139C900 (the shared empty string data)
 typedef void (__fastcall* PFNASSERTHOOK)(const char* message);
 extern PFNASSERTHOOK g_pfnAssertHook;           // 0x0143BB2C
 
 class CString {                                 // the libpk MFC-style string: one word
 public:
     char* m_pchData;
-    CString() : m_pchData(g_pchNil) { }
+    CString() : m_pchData(_afxPchNil) { }
     ~CString();                                         // 0x00C0BA40
     CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
     CString& __fastcall operator<<(long value);         // 0x00C0DF00

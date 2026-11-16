@@ -4,13 +4,9 @@
 // The landed Rest 0x006E71F0 and NewScriptFrame 0x006E7410 independently use this global/flag.
 // This query requires an active runner; callers establish it. The interface object is unused.
 #include "engine/CGameScriptInterface.h"
-struct CScriptRunner {
-    void* __vftable;
-    unsigned char m_runnerState;
-    bool m_bStopRequested;
-};
-extern CScriptRunner* g_pScriptRunner; // 0x013D2838
+#include "engine/CSuspendableProcessMicrothread.h"   // CASuspendableProcess::StopRunning +5
+extern CSuspendableProcessMicrothread* g_pScriptRunner; // 0x013D2838 (claim ?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A)
 bool __fastcall CGameScriptInterface_IsActiveThreadTerminating(CGameScriptInterface*, void*)
 {
-    return g_pScriptRunner->m_bStopRequested;
+    return g_pScriptRunner->StopRunning;
 }

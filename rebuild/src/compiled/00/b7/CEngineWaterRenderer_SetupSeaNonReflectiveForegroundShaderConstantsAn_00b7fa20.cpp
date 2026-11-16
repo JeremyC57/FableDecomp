@@ -135,7 +135,7 @@ private:
 public:
     void ResetWorldTransform();   // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
 inline float Clamp(float value, float lo, float hi)
 {
@@ -206,28 +206,28 @@ class CEngineWaterRenderer { public:
 void CEngineWaterRenderer::SetupSeaNonReflectiveForegroundShaderConstantsAndFog()
 {
     if (Settings.EnableSwell)
-        g_pShaderRenderManager->SetUserVertexShaderConstant(0, Settings.SwellFactor, Settings.ShoreSwellFactor, Settings.RefOffset, 0.0f);
+        NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, Settings.SwellFactor, Settings.ShoreSwellFactor, Settings.RefOffset, 0.0f);
     else
-        g_pShaderRenderManager->SetUserVertexShaderConstant(0, 0.0f, 0.0f, 0.0f, 0.0f);
-    g_pShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
-    g_pShaderRenderManager->SetBoneTransform(0, &Settings.OtherSeaShaderVars);
-    g_pShaderRenderManager->SetBoneTransform(1, &Settings.ShoreLookupMaskMatrix);
-    g_pShaderRenderManager->SetBoneTransform(2, &Settings.ShoreLookupMaskMatrixForBounds);
-    g_pShaderRenderManager->SetBoneTransform(3, &Settings.ShoreLookupMaskMatrix2);
+        NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, 0.0f, 0.0f, 0.0f, 0.0f);
+    NEngineInternal::GPShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, &Settings.OtherSeaShaderVars);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, &Settings.ShoreLookupMaskMatrix);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, &Settings.ShoreLookupMaskMatrixForBounds);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, &Settings.ShoreLookupMaskMatrix2);
     float fresnel;
     if (Settings.EnableFresnel)
         fresnel = Clamp(Settings.FresnelFactor * 0.25f, 0.0f, 1.0f);
     else
         fresnel = 0.0f;
-    g_pShaderRenderManager->SetPixelShaderConstant(5, C4DVector(fresnel, fresnel, fresnel, fresnel));
+    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, C4DVector(fresnel, fresnel, fresnel, fresnel));
     float factor = WaterBumpFactor * Settings.BumpMatFactor;
-    g_pShaderRenderManager->SetUserVertexShaderConstant(3, factor, 0.0f, factor * -0.5f, 1.0f);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(3, factor, 0.0f, factor * -0.5f, 1.0f);
     C4DVector colour;
     colour.X = Settings.Colour.R;
     colour.Y = Settings.Colour.G;
     colour.Z = Settings.Colour.B;
     colour.W = g_pEngineState->m_pEnvironmentProvider->GetCurrentEnvironment()->GetTheme()->m_pSettings->SeaReflectionAlpha
              * Settings.ColourToReflectionFactor;
-    g_pShaderRenderManager->SetPixelShaderConstant(7, colour);
-    g_pShaderRenderManager->PrepareForRender(0x604);
+    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(7, colour);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0x604);
 }

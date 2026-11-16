@@ -52,7 +52,7 @@ public:
     bool          LayerEnabled[1];                  // +0x320 (indexed by layer)
     float Layer2DToSortDistance(EEngine2DLayer layer); // 0x00B4A6A0
 };
-extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D;   // 0x01436E7C
+namespace NEngineInternal { extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D; }   // 0x01436E7C
 
 struct CEngineSettings_01436e38 {
     unsigned char _pad[0xee];
@@ -81,12 +81,12 @@ void CEnginePrimitiveManager2DParticleGroup::Render2DPrimitive(CEngineInternalPr
     if (!Enable)
         return;
     CEngineInternalPrimitive2DParticleGroup& group = (CEngineInternalPrimitive2DParticleGroup&)primitive;
-    if (!g_pPrimitiveRenderer2D->LayerEnabled[group.Layer])
+    if (!NEngineInternal::GPPrimitiveRenderer2D->LayerEnabled[group.Layer])
         return;
     CEngineSubPrimitiveParticleGroup* const& subPrimitive = new CEngineSubPrimitiveParticleGroup(primitive);
     subPrimitive->Alpha = 0xff;
     subPrimitive->RenderFlags = 1;
-    float depth = g_pPrimitiveRenderer2D->Layer2DToSortDistance((EEngine2DLayer)group.Layer);
+    float depth = NEngineInternal::GPPrimitiveRenderer2D->Layer2DToSortDistance((EEngine2DLayer)group.Layer);
     if (group.ScreenDisplacement) {
         if (!g_pEngineSettings_01436e38->DisplacementPassEnabled)
             return;

@@ -6,7 +6,7 @@
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
-// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,10h ; push esi ; mov esi,ecx ; lea ecx,[esi+1Ch] ; call PKCSemaphore::Acquire ; push esi ; lea ecx,[esp+10h] ; call PKCProtectionInstance::PKCProtectionInstance ; mov ecx,[esi+18h] ; mov eax,[ecx] ; mov dword ptr [esp+1Ch],0 ; call [eax+8] ; test eax,eax ; ja D ; mov ecx,[g_pDebugBuffer] ; mov [esp+8],ecx ; mov edx,offset lit ; lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],1 ; call operator<< ; (mov edx,piece ; mov ecx,eax ; call operator<<) x5 ; mov eax,[g_pfnErrorReport] ; test eax,eax ; je S ; mov ecx,[esp+8] ; call eax ; S: lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],0 ; call ~CString ; lea ecx,[esp+7] ; call CDebugBreak::CDebugBreak ; D: mov ecx,[esi+18h] ; mov esi,[message] ; mov edx,[ecx] ; push esi ; call [edx] ; lea ecx,[esp+0Ch] ; mov dword ptr [esp+1Ch],-1 ; call ~PKCProtectionInstance ; mov ecx,[esp+14h] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,1Ch ; ret 4
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,10h ; push esi ; mov esi,ecx ; lea ecx,[esi+1Ch] ; call PKCSemaphore::Acquire ; push esi ; lea ecx,[esp+10h] ; call PKCProtectionInstance::PKCProtectionInstance ; mov ecx,[esi+18h] ; mov eax,[ecx] ; mov dword ptr [esp+1Ch],0 ; call [eax+8] ; test eax,eax ; ja D ; mov ecx,[_afxPchNil] ; mov [esp+8],ecx ; mov edx,offset lit ; lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],1 ; call operator<< ; (mov edx,piece ; mov ecx,eax ; call operator<<) x5 ; mov eax,[g_pfnErrorReport] ; test eax,eax ; je S ; mov ecx,[esp+8] ; call eax ; S: lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],0 ; call ~CString ; lea ecx,[esp+7] ; call CDebugBreak::CDebugBreak ; D: mov ecx,[esi+18h] ; mov esi,[message] ; mov edx,[ecx] ; push esi ; call [edx] ; lea ecx,[esp+0Ch] ; mov dword ptr [esp+1Ch],-1 ; call ~PKCProtectionInstance ; mov ecx,[esp+14h] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,1Ch ; ret 4
 // Mailbox dispatch: the semaphore at +0x1C is acquired (@ 0x00C2A090), an 8-byte scoped lock
 // is taken over the queue (EH state 0), and unless the mailbox at +0x18 reports a positive count
 // through its virtual slot 2 an assertion fires: a CString over the shared debug buffer
@@ -42,7 +42,7 @@ struct CDebugBreak {                       // empty class whose constructor brea
     CDebugBreak();                         // 0x00C16750
 };
 
-extern char* g_pDebugBuffer;               // 0x0139C900
+extern char* _afxPchNil;               // 0x0139C900
 extern void (__fastcall* g_pfnErrorReport)(const char* text);   // 0x0143BB2C
 
 struct CMailboxQueue_00c394b0 {
@@ -58,7 +58,7 @@ void* CMailboxQueue_00c394b0::DispatchMessage_CMailboxQueue_00c394b0(void* messa
     PKCProtectionInstance lock((PKCCriticalSection*)this);
     if (!(m_pMailbox->GetCount() > 0)) {
         {
-            CString s(g_pDebugBuffer);
+            CString s(_afxPchNil);
             s << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCMailbox.h" << "(" << 63 << ") : " << "the queue is out of step with the mailbox handler" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

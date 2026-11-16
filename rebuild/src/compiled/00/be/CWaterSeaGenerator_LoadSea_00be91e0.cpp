@@ -83,7 +83,7 @@ class CEngineResourceManager { public:
     unsigned long GetIndexBufferUsage();           // 0x00B3B060
     long GetIndexBufferPool();                     // 0x00B3B0A0 (returns 1)
 };
-extern CEngineResourceManager* g_pEngineResourceManager_01436e98;   // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 struct CRangeCompressor {
     void Decompress(const unsigned char* source, long count, long stride, void* destination);   // 0x00F39ED0
@@ -104,7 +104,7 @@ void CWaterSeaGenerator::LoadSea(CMemoryDataInputStream* stream, CVertexBufferWi
     *vertexCount = stream->ReadLong();
     *polyCount = stream->ReadLong();
     if (*vertexCount) {
-        vertexBuffer->Initialise(0, *vertexCount, 0xc, g_pEngineResourceManager_01436e98->GetVertexBufferUsage(), 1);
+        vertexBuffer->Initialise(0, *vertexCount, 0xc, NEngineInternal::GPResourceManager->GetVertexBufferUsage(), 1);
         unsigned char* data = vertexBuffer->Lock(0, 0, 0);
         long compressedSize = stream->ReadLong();
         if (compressedSize > 0)
@@ -112,8 +112,8 @@ void CWaterSeaGenerator::LoadSea(CMemoryDataInputStream* stream, CVertexBufferWi
         vertexBuffer->Unlock();
     }
     if (*polyCount) {
-        indexBuffer->Initialise(*polyCount * 2, g_pEngineResourceManager_01436e98->GetIndexBufferUsage(), 0x65,
-                                g_pEngineResourceManager_01436e98->GetIndexBufferPool(), 5);
+        indexBuffer->Initialise(*polyCount * 2, NEngineInternal::GPResourceManager->GetIndexBufferUsage(), 0x65,
+                                NEngineInternal::GPResourceManager->GetIndexBufferPool(), 5);
         unsigned char* data = indexBuffer->Lock(0, 0, 0);
         long compressedSize = stream->ReadLong();
         if (compressedSize > 0)

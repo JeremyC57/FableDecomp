@@ -30,14 +30,14 @@ class CEngineLandscapeMap { public:                    // RTTI CEngineLandscapeM
 class CEngineLandscapeMemoryManager { public:          // RTTI CEngineLandscapeMemoryManager : CFailedAllocationHandler, CMovableResource@4
     virtual ~CEngineLandscapeMemoryManager();          // ??1CEngineLandscapeMemoryManager@@UAE@XZ
 };
-extern CEngineWorldMap* g_pEngineWorldMap;            // 0x01436E8C
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }            // 0x01436E8C
 
 CEngineLandscapeRenderer::~CEngineLandscapeRenderer()
 {
-    for (long i = 0; i < g_pEngineWorldMap->GetMapCount(); ++i) {
-        if (g_pEngineWorldMap->GetMap(i)) {
-            delete g_pEngineWorldMap->GetMap(i)->GetLandscapeMap();
-            g_pEngineWorldMap->GetMap(i)->SetLandscapeMap(0);
+    for (long i = 0; i < NEngineInternal::GPEngineWorldMap->GetMapCount(); ++i) {
+        if (NEngineInternal::GPEngineWorldMap->GetMap(i)) {
+            delete NEngineInternal::GPEngineWorldMap->GetMap(i)->GetLandscapeMap();
+            NEngineInternal::GPEngineWorldMap->GetMap(i)->SetLandscapeMap(0);
         }
     }
     delete MemoryManager;

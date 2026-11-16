@@ -143,7 +143,7 @@ private:
 public:
     void ResetWorldTransform();   // 0x00988290
 };
-extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
+namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 struct IDirect3DDevice9 {
     virtual void __stdcall Slot0() = 0;
     virtual void __stdcall Slot1() = 0;
@@ -458,29 +458,29 @@ void CEngineWaterRenderer::RenderSeaNonReflectiveForeground(float time)
     SetState(g_pRenderManagerCore->m_state2f84, g_renderStateValue_01396dc8, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state2ef8, g_renderStateValue_01396dd0, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state2f98, g_renderStateValue_01396dd0, g_pRenderManagerCore);
-    g_pShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(SeaForegroundNonReflectiveVertexShader), 0);
-    g_pShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(SeaForegroundNonReflectivePixelShader));
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(SeaForegroundNonReflectiveVertexShader), 0);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(SeaForegroundNonReflectivePixelShader));
     g_pRenderManagerCore->SetIndices(reinterpret_cast<const CIndexBufferView*>(ForegroundIndexBuffers));
     if (EnableSwell)
-        g_pShaderRenderManager->SetUserVertexShaderConstant(0, SwellX, SwellY, SwellZ, 0.0f);
+        NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, SwellX, SwellY, SwellZ, 0.0f);
     else
-        g_pShaderRenderManager->SetUserVertexShaderConstant(0, 0.0f, 0.0f, 0.0f, 0.0f);
-    g_pShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
-    g_pShaderRenderManager->SetBoneTransform(0, &BoneMatrix0);
-    g_pShaderRenderManager->SetBoneTransform(1, &BoneMatrix1);
-    g_pShaderRenderManager->SetBoneTransform(2, &BoneMatrix2);
-    g_pShaderRenderManager->SetBoneTransform(3, &BoneMatrix3);
+        NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, 0.0f, 0.0f, 0.0f, 0.0f);
+    NEngineInternal::GPShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, &BoneMatrix0);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, &BoneMatrix1);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, &BoneMatrix2);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, &BoneMatrix3);
     float fresnel = EnableFresnel ? Clamp(FresnelFactor * 0.25f, 0.0f, 1.0f) : 0.0f;
-    g_pShaderRenderManager->SetPixelShaderConstant(5, C4DVector(fresnel, fresnel, fresnel, fresnel));
+    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, C4DVector(fresnel, fresnel, fresnel, fresnel));
     float bump = WaterBumpFactor * BumpScale;
-    g_pShaderRenderManager->SetUserVertexShaderConstant(3, bump, 0.0f, bump * -0.5f, 1.0f);
+    NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(3, bump, 0.0f, bump * -0.5f, 1.0f);
     C4DVector colour;
     colour.X = SeaColour.X;
     colour.Y = SeaColour.Y;
     colour.Z = SeaColour.Z;
     colour.W = g_pEngineEnvironment->Owner->GetSource()->GetEnvironment()->State->Brightness * SeaColourBrightness;
-    g_pShaderRenderManager->SetPixelShaderConstant(7, colour);
-    g_pShaderRenderManager->PrepareForRender(0x604);
+    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(7, colour);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0x604);
     for (CWaterPatchMesh** it = SeaNonReflectiveForegroundRenderList.First; it != SeaNonReflectiveForegroundRenderList.Last; ++it)
         (*it)->Render(WaterForegroundPolyCount);
     g_pRenderStateManager->RestoreCaptureBlock();
