@@ -1,0 +1,116 @@
+addr       parity           behav  name
+004a1840   WARN RELOC_NAME: ?CreateStaticMaps@CWorldMap@@QAEXABVCWideString@@AAVCIEngine@@@Z -> 004fb320 labelled '_global::Nop_ret8_004fb320'
+004a1840   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+004a1840   RELOCATION_MATCH PASS   Load
+0054ef00   RELOCATION_MATCH PASS   Draw
+00590235   RELOCATION_MATCH PASS   GetItemsListUIComponent
+007c4430   RELOCATION_MATCH PASS   StartHealingEffect
+00813d00   RELOCATION_MATCH PASS   FrameUpdate
+0090e5d0   RELOCATION_MATCH PASS   Update
+00927f30   WARN RELOC_NAME: ??1CCreatureAction_ShopkeeperPutAway@@UAE@XZ -> 00927dd0 labelled '_global::Dtor_CCreatureActionBaseBase_00927dd0'
+00927f30   RELOCATION_MATCH PASS   Update
+00b8dcd0   WARN RELOC_NAME: ??4?$CCountedPointer@VCVertexBufferWin32@@@@QAEAAV0@ABV0@@Z -> 00b8ebc0 labelled '_global::CCountedPointer_Set_00b8ebc0'
+00b8dcd0   RELOCATION_MATCH PASS   SelectFlareTestVertexBuffer
+00d29880   RELOCATION_MATCH PASS   Main
+00683c10   RELOCATION_MATCH PASS   GetGreetDialogueGroupIndex
+00659800   WARN RELOC_NAME: ??$count_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YIHU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@0UHasGuardProperty@@@Z -> 0065f6a6 labelled 'std::count_if<struct std::_List_iterator<class CIntelligentPointer<class CThingAICreature>,struct std::_Nonconst_traits<class CIntelligentPointer<class CThingAICreature>>>,struct HasGuardProperty>'
+00659800   WARN RELOC_NAME: ??$find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@U10@0UHasGuardProperty@@@Z -> 0066000a labelled 'std::find_if<struct std::_List_iterator<class CIntelligentPointer<class CThingAICreature>,struct std::_Nonconst_traits<class CIntelligentPointer<class CThingAICreature>>>,struct HasGuardProperty>'
+00659800   WARN RELOC_NAME: ??$GetPBestThing@V?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABV?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z -> 0065f6da labelled 'CThingSearchTools::GetPBestThing<class std::binary_compose<struct std::logical_or<bool>,class CThingFilter_HasTC,class CThingFilter_HasTC>,class CThingCompare_Nearest,class CThing>'
+00659800   RELOCATION_MATCH PASS   CalculateSecuritySweepTasks
+009482a0   WARN RELOC_NAME: ??1?$_List_base@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@QAE@XZ -> 00792240 labelled 'std::list::~list'
+009482a0   RELOCATION_MATCH PASS   GetSeat
+00b47bc0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b47bc0   RELOCATION_MATCH PASS   UpdateShadowedSpotLights
+00972f30   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+00972f30   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 0096bcb0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThing, std::vector<CThing *, std::allocator<CThing *>>, CThingFilter_HasDefGlobalIndex>'
+00972f30   RELOCATION_MATCH PASS   SetupArena
+0063d0a0   WARN RELOC_NAME: ?PointIsWithinCellTR@CWorldMap@@IBE_NPBVC3DVector@@0@Z -> 0063b890 labelled 'CWorldMap::PointIsWithinCellBR'
+0063d0a0   WARN RELOC_NAME: ?PointIsWithinCellBL@CWorldMap@@IBE_NPBVC3DVector@@0@Z -> 0063b920 labelled 'CWorldMap::PointIsWithinCellTL'
+0063d0a0   WARN RELOC_NAME: ?PointIsWithinCellTL@CWorldMap@@IBE_NPBVC3DVector@@0@Z -> 0063b9b0 labelled 'CWorldMap::PointIsWithinCellBL'
+0063d0a0   WARN RELOC_NAME: ?PointIsWithinCellBR@CWorldMap@@IBE_NPBVC3DVector@@0@Z -> 0063ba30 labelled 'CWorldMap::PointIsWithinCellTR'
+0063d0a0   RELOCATION_MATCH PASS   FindGroundCollisionPointWithinCell
+0063d4a0   WARN RELOC_NAME: ?PointIsWithinCellTR@CWorldMap@@IBE_NPBVC3DVector@@0@Z -> 0063b890 labelled 'CWorldMap::PointIsWithinCellBR'
+0063d4a0   WARN RELOC_NAME: ?PointIsWithinCellBL@CWorldMap@@IBE_NPBVC3DVector@@0@Z -> 0063b920 labelled 'CWorldMap::PointIsWithinCellTL'
+0063d4a0   WARN RELOC_NAME: ?PointIsWithinCellTL@CWorldMap@@IBE_NPBVC3DVector@@0@Z -> 0063b9b0 labelled 'CWorldMap::PointIsWithinCellBL'
+0063d4a0   WARN RELOC_NAME: ?PointIsWithinCellBR@CWorldMap@@IBE_NPBVC3DVector@@0@Z -> 0063ba30 labelled 'CWorldMap::PointIsWithinCellTR'
+0063d4a0   RELOCATION_MATCH PASS   FindThemeCollisionPointWithinCell
+009af7a0   WARN RELOC_NAME: ?CompressDefinitionBlock@CDefinitionManager@@IAEXAAVCMemoryDataOutputStream@@AAV?$CArray@G@@K@Z -> 009ae390 labelled 'CEngineInternalPrimitiveBase::CompressPrimitive'
+009af7a0   WARN RELOC_NAME: ?GetTotalMemoryAllocated@CMemoryAllocator@@QAEKXZ -> 009f2450 labelled 'CMemoryAllocator::GetHeaderOverhead'
+009af7a0   WARN RELOC_NAME: ?GetNoAllocatedAreas@CMemoryAllocator@@QAEKXZ -> 009f2550 labelled 'CMemoryAllocator::GetWastedSpace'
+009af7a0   RELOCATION_MATCH PASS   SaveBinaryDefinitions
+00a1ceb0   WARN RELOC_NAME: ?NumberOfPeopleCalculatingRoute@@3JA -> 013d27b0 labelled 'g_AStarSearchesInProgress'
+00a1ceb0   WARN RELOC_NAME: ?NumberOfAStarStates@CAStarState@CNavigatorAStar@@2JA -> 013d27b8 labelled 'CNavigatorAStar::CAStarState::NoOfStates'
+00a1ceb0   WARN RELOC_NAME: ?NumberOfOpenStates@CAStarState@CNavigatorAStar@@2JA -> 013d27bc labelled 'CNavigatorAStar::CAStarState::NoOfStatesOnOpenList'
+00a1ceb0   WARN RELOC_NAME: ?NumberOfClosedStates@CAStarState@CNavigatorAStar@@2JA -> 013d27c0 labelled 'CNavigatorAStar::CAStarState::NoOfStatesOnClosedList'
+00a1ceb0   RELOCATION_MATCH PASS   Initialise
+00b17030   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00b17030   RELOCATION_MATCH PASS   DatabaseSerialise
+00650e98   RELOCATION_MATCH PASS   DrawAt
+00a89e40   RELOCATION_MATCH PASS   GetDummyObjectPositionAnimated
+00a8a5f0   RELOCATION_MATCH PASS   GetDummyObjectTransformAnimated
+00a89a70   RELOCATION_MATCH PASS   GetDummyObjectPositionAnimated
+00a8a220   RELOCATION_MATCH PASS   GetDummyObjectTransformAnimated
+0095bcf0   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0095bcf0   RELOCATION_MATCH PASS   Attack
+0079c880   WARN RELOC_NAME: ?GetRadialBlurParam@CEnvironmentSpellEffectInterpolator@@QBE?AUCRadialBlurParams@CEnvironmentSpellEffectInterface@@PAX@Z -> 006b8350 labelled 'NScript::GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+0079c880   RELOCATION_MATCH PASS   FrameUpdate
+00b4a700   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b4a700   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b4a700   RELOCATION_MATCH PASS   Render
+00934410   RELOCATION_MATCH PASS   EvadeTarget
+0064a639   RELOCATION_MATCH PASS   Draw
+0064e978   WARN RELOC_CONFLICT: ??0C3DAnimationBlendState@@QAE@XZ -> 004c2dd0 here, 00c59ba0 in landed 00c72600
+0064e978   RELOCATION_MATCH PASS   Draw
+007daef0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007daef0   RELOCATION_MATCH PASS   DealCard
+009ddc60   RELOCATION_MATCH PASS   Draw2DBoxWithZ
+00aeeba0   RELOCATION_MATCH PASS   StartFrame
+0057df85   WARN RELOC_NAME: ?SetMiniMapRegion@CPlayerGui@@QAEXABVCRegion@@@Z -> 004378b0 labelled '_global::Forward_SetRegion_via0x160_004378b0'
+0057df85   RELOCATION_MATCH PASS   KickHeroToMostRecentSafeRegion
+00915350   RELOCATION_MATCH PASS   Update
+007ce7a0   RELOCATION_MATCH PASS   Reset
+00a1a7e0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00a1a7e0   RELOCATION_MATCH PASS   GetIntersectionPointsBetweenNodes
+0085c470   RELOCATION_MATCH PASS   Update
+006e99b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006e99b0   RELOCATION_MATCH PASS   GetDefenderZone
+00b202d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b202d0   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00b202d0   RELOCATION_MATCH PASS   TransformPosToMaintainShape
+00646f67   WARN RELOC_NAME: ?GetCurrentType@CMultiStatBar@NPlayerGui@@QBE?AW4EStatUpdateType@@XZ -> 00646d90 labelled 'CMultiStatBar::GetCurrentChange'
+00646f67   RELOCATION_MATCH PASS   Draw
+00a177a0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00a177a0   RELOCATION_MATCH PASS   GetPointIntersectionFromToUsingSegmentation
+00c74510   RELOCATION_MATCH PASS   ApplyFilter
+00a17f80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00a17f80   RELOCATION_MATCH PASS   GetPointIntersectionFromToUsingFullCollision
+00a1d290   WARN RELOC_NAME: ?NumberOfAStarStates@CAStarState@CNavigatorAStar@@2JA -> 013d27b8 labelled 'CNavigatorAStar::CAStarState::NoOfStates'
+00a1d290   WARN RELOC_NAME: ?NumberOfOpenStates@CAStarState@CNavigatorAStar@@2JA -> 013d27bc labelled 'CNavigatorAStar::CAStarState::NoOfStatesOnOpenList'
+00a1d290   WARN RELOC_NAME: ?NumberOfPeopleCalculatingRoute@@3JA -> 013d27b0 labelled 'g_AStarSearchesInProgress'
+00a1d290   WARN RELOC_NAME: ?NumberOfClosedStates@CAStarState@CNavigatorAStar@@2JA -> 013d27c0 labelled 'CNavigatorAStar::CAStarState::NoOfStatesOnClosedList'
+00a1d290   RELOCATION_MATCH PASS   CalculateRoute
+0064ae80   WARN RELOC_NAME: ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z -> 0072c430 labelled 'CTCSpecialAbilities::GetAbilityAvailability'
+0064ae80   RELOCATION_MATCH PASS   DrawAbilityButton
+007bcf7f   RELOCATION_MATCH PASS   InitMovement
+01216410   RELOCATION_MATCH PASS   Unwind01216410
+00c61610   WARN RELOC_NAME: ?DeleteChangesList@CEAXListener@@QAEXXZ -> 00c60410 labelled 'CEAXListener::ClearEvents'
+00c61610   WARN RELOC_NAME: ?AddBuffer@CEAXListener@@QAEHPAVCEAXBuffer@@@Z -> 00c609a0 labelled 'CEAXListener::AddSource'
+00c61610   RELOCATION_MATCH PASS   CEAXBuffer
+01216ce0   RELOCATION_MATCH PASS   Unwind01216ce0
+00ca97a0   OUTSIDE_MANIFEST -      Disconnect
+01216e00   RELOCATION_MATCH PASS   Unwind01216e00
+00caa860   OUTSIDE_MANIFEST -      SetSyncSource
+01216e20   RELOCATION_MATCH PASS   Unwind01216e20
+00caa8d0   OUTSIDE_MANIFEST -      GetSyncSource
+01216e40   RELOCATION_MATCH PASS   Unwind01216e40
+00caa9c0   OUTSIDE_MANIFEST -      Run
+012150a1   RELOCATION_MATCH PASS   Unwind012150a1
+  TIMEOUT $S/wine/vc71rtm/bin/cl.exe $S/p23l/wd/01/21/01211e82/01211e82.cpp
+  TIMEOUT $S/wine/vc71rtm/bin/cl.exe $S/p23l/wd/01/21/01211e82/01211e82.cpp
+  TIMEOUT $S/wine/vc71rtm/bin/cl.exe $S/p23l/wd/01/21/01211e82/01211e82.cpp
+  TIMEOUT $S/wine/vc71rtm/bin/cl.exe $S/p23l/wd/01/21/01211e82/01211e82.cpp
+  TIMEOUT $S/wine/vc71rtm/bin/cl.exe $S/p23l/wd/01/21/01211e82/01211e82.cpp
+  TIMEOUT $S/wine/vc71rtm/bin/cl.exe $S/p23l/wd/01/21/01211e82/01211e82.cpp
+  TIMEOUT $S/wine/vc71rtm/bin/cl.exe $S/p23l/wd/01/21/01211e82/01211e82.cpp
+  TIMEOUT $S/wine/vc71rtm/bin/cl.exe $S/p23l/wd/01/21/01211e82/01211e82.cpp
+  TIMEOUT $S/wine/vc71rtm/bin/cl.exe $S/p23l/wd/01/21/01211e82/01211e82.cpp

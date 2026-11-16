@@ -1,0 +1,138 @@
+addr       parity           behav  name
+00ca97a0   OUTSIDE_MANIFEST -      Disconnect
+00caa860   OUTSIDE_MANIFEST -      SetSyncSource
+00caa8d0   OUTSIDE_MANIFEST -      GetSyncSource
+00caa9c0   OUTSIDE_MANIFEST -      Run
+01211e82   RELOCATION_MATCH PASS   Unwind01211e82
+00c17640   WARN RELOC_NAME: ??0CLoadLog@@QAE@XZ -> 00c308f0 labelled 'CThingGraphicByPassFlagState::CThingGraphicByPassFlagState'
+00c17640   WARN RELOC_NAME: ?LoadBankByFormat@@YGXPAVPKCFileManager@@PAVCLoadLog@@PAVCScriptHost@@PBGPBUSBankRequest@@@Z -> 00c174a0 labelled '_global::LoadBankFile'
+00c17640   WARN RELOC_NAME: ?SetSourceName@CLoadLog@@QAEXPBD@Z -> 00c308a0 labelled 'CVtable_012b4c28::CVtable_012b4c28'
+00c17640   WARN RELOC_NAME: ??1CLoadLog@@UAE@XZ -> 00c30940 labelled '_global::Destructor_IterateDelete_Cleanup'
+00c17640   RELOCATION_MATCH PASS   OpenBankFile
+01213bb0   RELOCATION_MATCH PASS   Unwind01213bb0
+012152b8   RELOCATION_MATCH PASS   Unwind012152b8
+0121679f   RELOCATION_MATCH PASS   Unwind0121679f
+01211dfe   RELOCATION_MATCH PASS   Unwind01211dfe
+0121524b   RELOCATION_MATCH PASS   Unwind0121524b
+012114f4   RELOCATION_MATCH PASS   Unwind012114f4
+00c11230   WARN RELOC_NAME: ??0CSampleRef@@QAE@XZ -> 00c25c50 labelled 'CKey_00c119d0::CKey_00c119d0'
+00c11230   WARN RELOC_NAME: ?Release@CSampleRef@@QAEXXZ -> 00c25cb0 labelled 'CParticleHandle::~CParticleHandle'
+00c11230   WARN RELOC_NAME: ?RestartPlayback@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z -> 00c20df0 labelled 'CSoundEvent::ResetLevel'
+00c11230   RELOCATION_MATCH PASS   CheckExisting
+0121154e   RELOCATION_MATCH PASS   Unwind0121154e
+00c11520   WARN RELOC_NAME: ??0CSoundPosition@@QAE@XZ -> 00c20390 labelled 'SEventRecord::SEventRecord'
+00c11520   RELOCATION_MATCH PASS   SetEventPosition
+01213c1a   RELOCATION_MATCH PASS   Unwind01213c1a
+01214130   RELOCATION_MATCH PASS   Unwind01214130
+00c319b0   OUTSIDE_MANIFEST -      ValidateReader
+01215b88   RELOCATION_MATCH PASS   Unwind01215b88
+01215d7a   RELOCATION_MATCH PASS   Unwind01215d7a
+00c4aeb0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c4aeb0   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4aeb0   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c4aeb0   RELOCATION_MATCH PASS   WaitForSlot
+01215d9e   RELOCATION_MATCH PASS   Unwind01215d9e
+00c4b160   OUTSIDE_MANIFEST -      PollReadCompletion
+00c53400   MATCH            PASS   CHLRvbParams
+008f8f50   RELOCATION_MATCH PASS   Send
+01215280   RELOCATION_MATCH PASS   Unwind01215280
+00c3f9d0   WARN RELOC_NAME: ?Initialize@CSalCpuInfo@@CAXXZ -> 00c52e40 labelled '_global::DetectCpu'
+00c3f9d0   WARN RELOC_NAME: ??0CSalMixerLimiter@@QAE@XZ -> 00c3efa0 labelled 'CLimitedMixBuffer::CLimitedMixBuffer'
+00c3f9d0   WARN RELOC_NAME: ??0CSalOutputNull@@QAE@XZ -> 00c5eec0 labelled 'CVtable_012b9174::CVtable_012b9174'
+00c3f9d0   WARN RELOC_NAME: ??0CSalOutputKS@@QAE@XZ -> 00c5ed90 labelled 'CWound_00c5eca0::CWound_00c5eca0'
+00c3f9d0   WARN RELOC_NAME: ?CreateSwDirectSound@CSalPlatform@@AAE_NPBUCPLATFORMDESC@@@Z -> 00c3ec80 labelled '_global::CTCHeroStats_InitializeAnimationGroup'
+00c3f9d0   WARN RELOC_NAME: ?CreateSwBufferedDirectSound@CSalPlatform@@AAE_NPBUCPLATFORMDESC@@@Z -> 00c3ee10 labelled 'CTCHeroStats::CTCHeroStats::CreateNavigationLayerAction'
+00c3f9d0   WARN RELOC_NAME: ??0CDSoundAccelerationQuery@@QAE@XZ -> 00c5db30 labelled 'CFourierAnalysis::CFourierAnalysis'
+00c3f9d0   WARN RELOC_NAME: ??0CSalOutputMM@@QAE@XZ -> 00c5d750 labelled 'CLockedHandler_00c5d750::CLockedHandler_00c5d750'
+00c3f9d0   WARN RELOC_NAME: ?CreateSwVoices@CSalPlatform@@AAE_NXZ -> 00c3f800 labelled 'CTCHeroStats::InitializeActorArrays'
+00c3f9d0   WARN RELOC_NAME: ?SetSWOutputConfig@CSalPlatform@@AAE_NXZ -> 00c3f710 labelled 'CCombatRenderer::SetRenderScaleWithFallback'
+00c3f9d0   RELOCATION_MATCH PASS   CreateSw
+0121528e   RELOCATION_MATCH PASS   Unwind0121528e
+0121529c   RELOCATION_MATCH PASS   Unwind0121529c
+012152aa   RELOCATION_MATCH PASS   Unwind012152aa
+0121676d   RELOCATION_MATCH PASS   Unwind0121676d
+01216786   RELOCATION_MATCH PASS   Unwind01216786
+01211de8   RELOCATION_MATCH PASS   Unwind01211de8
+00c16f00   WARN RELOC_NAME: ??0CSegmentFile@@QAE@PAXK@Z -> 00c2da20 labelled 'CLiOnHeAdSegmentReader::CLiOnHeAdSegmentReader'
+00c16f00   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c16f00   WARN RELOC_NAME: ??1CSegmentFile@@QAE@XZ -> 00c2dbe0 labelled '_global::TeleportData_Destructor_WithUnwind'
+00c16f00   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c16f00   WARN RELOC_NAME: ?GetPosition@CSegmentFile@@QAEKXZ -> 00c2da10 labelled 'CGameScriptThing::GetPThingUniqueID'
+00c16f00   RELOCATION_MATCH PASS   ReadDeferredBank
+01211df3   RELOCATION_MATCH PASS   Unwind01211df3
+01215080   RELOCATION_MATCH PASS   Unwind01215080
+0121508b   RELOCATION_MATCH PASS   Unwind0121508b
+01215096   RELOCATION_MATCH PASS   Unwind01215096
+01215240   RELOCATION_MATCH PASS   Unwind01215240
+00c3f800   WARN RELOC_NAME: ??1CSalSw2DVoice@@UAE@XZ -> 00c3f630 labelled 'CVtable_012b5868::~CVtable_012b5868'
+00c3f800   WARN RELOC_NAME: ??0CSalSw2DVoice@@QAE@XZ -> 00c3f760 labelled 'CVtable_012b5d70::CVtable_012b5d70'
+00c3f800   WARN RELOC_NAME: ??_L@YGXPAXIHP6EX0@Z1@Z -> 00f3fb96 labelled '`eh_vector_constructor_iterator''
+00c3f800   WARN RELOC_NAME: ?CreateStatic@CCodaObjectList@@QAEXPAVCCodaObject@@II@Z -> 00c3c8c0 labelled 'CNodePool::Init'
+00c3f800   WARN RELOC_NAME: ??1CSalSw3DVoice@@UAE@XZ -> 00c55130 labelled 'CVtable_012b5868::~CVtable_012b5868'
+00c3f800   WARN RELOC_NAME: ??0CSalSw3DVoice@@QAE@XZ -> 00c555e0 labelled 'CBossDef::~CBossDef'
+00c3f800   RELOCATION_MATCH PASS   CreateSwVoices
+01216762   RELOCATION_MATCH PASS   Unwind01216762
+00c73af0   WARN RELOC_NAME: ??0CNullAudioStream@@QAE@PAXABUPKCBufferedReaderParams@@@Z -> 00c888f0 labelled 'CVtable_012bf1dc::CVtable_012bf1dc'
+00c73af0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c73af0   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c73af0   WARN RELOC_NAME: ??0CTestToneAudioStream@@QAE@M@Z -> 00c73ef0 labelled 'CVtable_012bf014::CVtable_012bf014'
+00c73af0   RELOCATION_MATCH PASS   CreateDecoderStream
+0121677b   RELOCATION_MATCH PASS   Unwind0121677b
+01216794   RELOCATION_MATCH PASS   Unwind01216794
+01213ba0   RELOCATION_MATCH PASS   Unwind01213ba0
+00c2da20   WARN RELOC_NAME: ??0CBufferedRangeReader@@QAE@PAXK@Z -> 00c3aac0 labelled 'CBufferedReader_00c3aac0::CBufferedReader_00c3aac0'
+00c2da20   RELOCATION_MATCH PASS   CSegmentFile
+01213ba8   RELOCATION_MATCH PASS   Unwind01213ba8
+01215b80   RELOCATION_MATCH PASS   Unwind01215b80
+00c49470   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c49470   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c49470   WARN RELOC_NAME: ?GetData@CCodaFrame@@QAEPAFXZ -> 00c491d0 labelled '_global::GetMember_dword0x10_00c491d0'
+00c49470   WARN RELOC_NAME: _CODA_BufferCreate@4 -> 00c36080 labelled 'CEngineSubPrimitiveBase::operator_new'
+00c49470   WARN RELOC_NAME: _CODA_SourceQueueBuffer@16 -> 00c35a10 labelled '_global::AudioObject_PlaySource'
+00c49470   WARN RELOC_NAME: _CODA_SourceIsPlaying@4 -> 00c35ca0 labelled 'CODA_IsSourcePlaying'
+00c49470   RELOCATION_MATCH PASS   SubmitFrame
+
+WINS: 43
+  01211e82 RELOCATION_MATCH _global::?OpenBankFile@@YI_NPAVPKCFileManager@@PBGPAVCScriptHost@@PBUSBankRequest@@@Z
+  00c17640 RELOCATION_MATCH _global::?OpenBankFile@@YI_NPAVPKCFileManager@@PBGPAVCScriptHost@@PBUSBankRequest@@@Z
+  01213bb0 RELOCATION_MATCH _global::??0CSegmentFile@@QAE@PAXK@Z
+  012152b8 RELOCATION_MATCH _global::?CreateSw@CSalPlatform@@AAE_NPBU_CRESOURCEDESC@@PBUCPLATFORMDESC@@@Z
+  0121679f RELOCATION_MATCH _global::?CreateDecoderStream@@YIPAVIAudioStream@@PAXPBGABUPKCBufferedReaderParams@@@Z
+  01211dfe RELOCATION_MATCH _global::?ReadDeferredBank@@YGXPAVCLoadLog@@PAXPAVCScriptHost@@PBUSBankRequest@@@Z
+  0121524b RELOCATION_MATCH _global::?CreateSwVoices@CSalPlatform@@AAE_NXZ
+  012114f4 RELOCATION_MATCH _global::?CheckExisting@CSoundEventManager@@QAEHPAVCSoundSample@@JJJJK@Z
+  00c11230 RELOCATION_MATCH CSoundEventManager::?CheckExisting@CSoundEventManager@@QAEHPAVCSoundSample@@JJJJK@Z
+  0121154e RELOCATION_MATCH _global::?SetEventPosition@CSoundEventManager@@UAEXJABVC3DVector@@@Z
+  00c11520 RELOCATION_MATCH CSoundEventManager::?SetEventPosition@CSoundEventManager@@UAEXJABVC3DVector@@@Z
+  01213c1a RELOCATION_MATCH _global::?AddSampleNameTriggers@CBankProcessor@@QAEXXZ
+  01214130 RELOCATION_MATCH _global::?ValidateReader@PKSerialiseCParser@@QAEPAUIDataStream@@XZ
+  01215b88 RELOCATION_MATCH _global::?SubmitFrame@CCodaFrameStreamer@@UAEXPAVCCodaFrame@@@Z
+  01215d7a RELOCATION_MATCH _global::?WaitForSlot@PKCBufferedReader@@QAE_NK@Z
+  00c4aeb0 RELOCATION_MATCH PKCBufferedReader::?WaitForSlot@PKCBufferedReader@@QAE_NK@Z
+  01215d9e RELOCATION_MATCH _global::?PollReadCompletion@PKCBufferedReader@@QAE_NXZ
+  00c53400 MATCH CHLRvbParams::??0CHLRvbParams@@QAE@XZ
+  008f8f50 RELOCATION_MATCH LHNetworkLib::LSocket::?Send@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@ABULAddress@2@1@Z
+  01215280 RELOCATION_MATCH _global::?CreateSw@CSalPlatform@@AAE_NPBU_CRESOURCEDESC@@PBUCPLATFORMDESC@@@Z
+  00c3f9d0 RELOCATION_MATCH CSalPlatform::?CreateSw@CSalPlatform@@AAE_NPBU_CRESOURCEDESC@@PBUCPLATFORMDESC@@@Z
+  0121528e RELOCATION_MATCH _global::?CreateSw@CSalPlatform@@AAE_NPBU_CRESOURCEDESC@@PBUCPLATFORMDESC@@@Z
+  0121529c RELOCATION_MATCH _global::?CreateSw@CSalPlatform@@AAE_NPBU_CRESOURCEDESC@@PBUCPLATFORMDESC@@@Z
+  012152aa RELOCATION_MATCH _global::?CreateSw@CSalPlatform@@AAE_NPBU_CRESOURCEDESC@@PBUCPLATFORMDESC@@@Z
+  0121676d RELOCATION_MATCH _global::?CreateDecoderStream@@YIPAVIAudioStream@@PAXPBGABUPKCBufferedReaderParams@@@Z
+  01216786 RELOCATION_MATCH _global::?CreateDecoderStream@@YIPAVIAudioStream@@PAXPBGABUPKCBufferedReaderParams@@@Z
+  01211de8 RELOCATION_MATCH _global::?ReadDeferredBank@@YGXPAVCLoadLog@@PAXPAVCScriptHost@@PBUSBankRequest@@@Z
+  00c16f00 RELOCATION_MATCH _global::?ReadDeferredBank@@YGXPAVCLoadLog@@PAXPAVCScriptHost@@PBUSBankRequest@@@Z
+  01211df3 RELOCATION_MATCH _global::?ReadDeferredBank@@YGXPAVCLoadLog@@PAXPAVCScriptHost@@PBUSBankRequest@@@Z
+  01215080 RELOCATION_MATCH _global::$L1205
+  0121508b RELOCATION_MATCH _global::$L1206
+  01215096 RELOCATION_MATCH _global::$L1207
+  01215240 RELOCATION_MATCH _global::?CreateSwVoices@CSalPlatform@@AAE_NXZ
+  00c3f800 RELOCATION_MATCH CSalPlatform::?CreateSwVoices@CSalPlatform@@AAE_NXZ
+  01216762 RELOCATION_MATCH _global::?CreateDecoderStream@@YIPAVIAudioStream@@PAXPBGABUPKCBufferedReaderParams@@@Z
+  00c73af0 RELOCATION_MATCH _global::?CreateDecoderStream@@YIPAVIAudioStream@@PAXPBGABUPKCBufferedReaderParams@@@Z
+  0121677b RELOCATION_MATCH _global::?CreateDecoderStream@@YIPAVIAudioStream@@PAXPBGABUPKCBufferedReaderParams@@@Z
+  01216794 RELOCATION_MATCH _global::?CreateDecoderStream@@YIPAVIAudioStream@@PAXPBGABUPKCBufferedReaderParams@@@Z
+  01213ba0 RELOCATION_MATCH _global::??0CSegmentFile@@QAE@PAXK@Z
+  00c2da20 RELOCATION_MATCH CSegmentFile::??0CSegmentFile@@QAE@PAXK@Z
+  01213ba8 RELOCATION_MATCH _global::??0CSegmentFile@@QAE@PAXK@Z
+  01215b80 RELOCATION_MATCH _global::?SubmitFrame@CCodaFrameStreamer@@UAEXPAVCCodaFrame@@@Z
+  00c49470 RELOCATION_MATCH CCodaFrameStreamer::?SubmitFrame@CCodaFrameStreamer@@UAEXPAVCCodaFrame@@@Z

@@ -45674,6 +45674,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c31960	IsInitialised	CGraphicFrame	__thiscall	bool	1	CGraphicFrame *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CGraphicFrame_IsInitialised_00c31960.cpp
 00c31970	CUnprovenRecord_00c31970	CUnprovenRecord_00c31970	__thiscall	undefined	2	CThingFilter_SolidToThing *,CThing *	0	yes	accepted									
 00c31990	CValueHolder_00c31990	CValueHolder_00c31990	__thiscall	undefined	3	CSBAgents *,vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_> *,CSteeringAgent *	0	yes	accepted									
+00c319b0	ValidateReader	PKSerialiseCParser	unknown	undefined	0		0			discovered	boundary							
 00c31a70	ValidateWriter	PKSerialiseCParser	unknown	undefined	0		0	yes	accepted									
 00c31b30	Transfer	PKSerialiseCParser	__thiscall	void	3	CDisplayViewManager *,CInterpolationInfo *,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CDisplayViewManager_Render_00c31b30.cpp
 00c31b50	TransferSize	PKSerialiseCParser	__thiscall	void	2	CMainGameComponent *,CWideString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CMainGameComponent_BeginInputLoading_00c31b50.cpp
@@ -46817,6 +46818,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c4b010	ReturnAllBuffers	CBufferOwner_00c4b010	__thiscall	void	1	CDrawGuildSeal *	1	yes	accepted									
 00c4b040	Dtor_ReturnAllBuffersBase_00c4b040	_global	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00c4b040.cpp
 00c4b060	ReturnCompletedBuffers	PKCBufferedReader	unknown	undefined	0		0	yes	accepted									
+00c4b160	PollReadCompletion	PKCBufferedReader	unknown	undefined	0		0			discovered	boundary							
 00c4b270	~PKCBufferedReader	PKCBufferedReader	__fastcall	void	2	allocator<NScript::CQ_BountyHuntScript::TeleportData> *,TeleportData *	1	yes	accepted									
 00c4b300	PKCBufferedReader	PKCBufferedReader	unknown	undefined	0		0	yes	accepted									
 00c4b640	CopyOutOfBuffers	PKCBufferedReader	unknown	undefined	0		0	yes	accepted									
@@ -48340,6 +48342,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca96f0	QueryInterface	CDynamicOutputPin	unknown	undefined	0		0	unmeasured	accepted									
 00ca9700	AddRef	CDynamicOutputPin	unknown	undefined	0		0	unmeasured	accepted									
 00ca9710	Release	CDynamicOutputPin	unknown	undefined	0		0	unmeasured	accepted									
+00ca97a0	Disconnect	CDynamicOutputPin	unknown	undefined	0		0			discovered	boundary							
 00ca9820	BlockOutputPin	CDynamicOutputPin	__thiscall	void	2	CPhysicalPrimitiveCylinder *,CDataOutputStream *	1	yes	accepted									
 00ca9860	UnblockOutputPin	CDynamicOutputPin	unknown	undefined	0		0	yes	accepted									
 00ca98e0	StartUsingOutputPin	CDynamicOutputPin	unknown	undefined	0		0	yes	accepted									
@@ -48374,6 +48377,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00caa760	sub_00caa760	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00caa770	Release`adjustor{148}'	CDynamicOutputPin	unknown	undefined	0		0			discovered	gapscan							
 00caa790	~CVolume_00caa790	_unattributed	__thiscall	void	1	CVolume *	1	yes	accepted									
+00caa860	SetSyncSource	CBaseMediaFilter	unknown	undefined	0		0			discovered	boundary							
+00caa8d0	GetSyncSource	CBaseMediaFilter	unknown	undefined	0		0			discovered	boundary							
+00caa9c0	Run	CBaseMediaFilter	unknown	undefined	0		0			discovered	boundary							
 00caaac0	~CBaseFilter	CBaseFilter	__thiscall	void	1	CJoystickDX *	1	yes	accepted									
 00caab30	CAudioBank_PauseAllSounds	_global	unknown	undefined	0		0	yes	accepted									
 00caabe0	CAudioBank_ResumeAllSounds	_global	unknown	undefined	0		0	yes	accepted									

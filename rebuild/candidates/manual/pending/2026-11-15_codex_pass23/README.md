@@ -1,5 +1,11 @@
 # Codex pass 23 reservation (2026-11-15, owner): 100 rows handed to Codex
 
+**Returned and released 2026-11-16 (owner):** Codex's hand-back (`FableDecomp_pass23_handoff_2026-11-16.zip`: 91 RELOCATION_MATCH,
+9 PARKED) landed 103 rows in landing p23 (`../../batches/2026-11-16_landing_p23/`): 49 rows, 17 whole EH parents at their real starts
+and 37 EH funclets that include them. `RESERVED.tsv` is renamed `RELEASED.tsv`, so the rest are back in the normal pool;
+`../2026-11-16_codex_pass23_open/` holds the best drafts of the 9 parked rows and the 3 matched-but-held ones (UNMATCHED_ROWS.tsv
+points at them).
+
 Owner: "can i get a new set of functions / rows for codex to work on along with updated headers and documentation".
 `RESERVED.tsv` lists them; they are off-limits to every other lane until it is renamed `RELEASED.tsv`. None overlaps the acctC
 reservation (`../2026-11-13_acctC/RESERVED.tsv`) or the three pass-22 rows still being worked in house (0x00F3E120, 0x0064BFBA, 0x00675E20).

@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00c298d0   SRC_FAIL         TCC_FAIL _Insert_n
+00d29880   RELOCATION_MATCH PASS   Main
+00659800   WARN RELOC_NAME: ??$count_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YIHU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@0UHasGuardProperty@@@Z -> 0065f6a6 labelled 'std::count_if<struct std::_List_iterator<class CIntelligentPointer<class CThingAICreature>,struct std::_Nonconst_traits<class CIntelligentPointer<class CThingAICreature>>>,struct HasGuardProperty>'
+00659800   WARN RELOC_NAME: ??$find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@U10@0UHasGuardProperty@@@Z -> 0066000a labelled 'std::find_if<struct std::_List_iterator<class CIntelligentPointer<class CThingAICreature>,struct std::_Nonconst_traits<class CIntelligentPointer<class CThingAICreature>>>,struct HasGuardProperty>'
+00659800   WARN RELOC_NAME: ??$GetPBestThing@V?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABV?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z -> 0065f6da labelled 'CThingSearchTools::GetPBestThing<class std::binary_compose<struct std::logical_or<bool>,class CThingFilter_HasTC,class CThingFilter_HasTC>,class CThingCompare_Nearest,class CThing>'
+00659800   RELOCATION_MATCH PASS   CalculateSecuritySweepTasks
+01216410   RELOCATION_MATCH PASS   Unwind01216410
+00c61610   WARN RELOC_NAME: ?DeleteChangesList@CEAXListener@@QAEXXZ -> 00c60410 labelled 'CEAXListener::ClearEvents'
+00c61610   WARN RELOC_NAME: ?AddBuffer@CEAXListener@@QAEHPAVCEAXBuffer@@@Z -> 00c609a0 labelled 'CEAXListener::AddSource'
+00c61610   RELOCATION_MATCH PASS   CEAXBuffer
+008f8f50   RELOCATION_MATCH PASS   Send
+01215080   RELOCATION_MATCH PASS   Unwind01215080
+
+WINS: 6
+  00d29880 RELOCATION_MATCH NScript::CQ_EndGameScript::CHookCoastTeleporter::?Main@CHookCoastTeleporter@CQ_EndGameScript@NScript@@EAEXXZ
+  00659800 RELOCATION_MATCH CTCVillage::?CalculateSecuritySweepTasks@CTCVillage@@AAEXXZ
+  01216410 RELOCATION_MATCH _global::??0CEAXBuffer@@QAE@PAVCEAXListener@@JJW4EAXVERSION@@PAPAU_CHANGES@@@Z
+  00c61610 RELOCATION_MATCH CEAXBuffer::??0CEAXBuffer@@QAE@PAVCEAXListener@@JJW4EAXVERSION@@PAPAU_CHANGES@@@Z
+  008f8f50 RELOCATION_MATCH LHNetworkLib::LSocket::?Send@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@ABULAddress@2@1@Z
+  01215080 RELOCATION_MATCH _global::$L1205

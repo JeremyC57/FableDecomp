@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00ca97a0   RELOCATION_MATCH PASS   Disconnect
+00caa860   RELOCATION_MATCH PASS   SetSyncSource
+00caa8d0   RELOCATION_MATCH PASS   GetSyncSource
+00caa9c0   RELOCATION_MATCH PASS   Run
+00c319b0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c319b0   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c319b0   RELOCATION_MATCH PASS   ValidateReader
+00c4b160   WARN RELOC_NAME: ?GetCount@PKCMailbox@@QAEJXZ -> 00c4be10 labelled '_unattributed::Query_00c4be10'
+00c4b160   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c4b160   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4b160   RELOCATION_MATCH PASS   PollReadCompletion
+
+WINS: 6
+  00ca97a0 RELOCATION_MATCH CDynamicOutputPin::?Disconnect@CDynamicOutputPin@@UAGJXZ
+  00caa860 RELOCATION_MATCH CBaseMediaFilter::?SetSyncSource@CBaseMediaFilter@@UAGJPAUIReferenceClock@@@Z
+  00caa8d0 RELOCATION_MATCH CBaseMediaFilter::?GetSyncSource@CBaseMediaFilter@@UAGJPAPAUIReferenceClock@@@Z
+  00caa9c0 RELOCATION_MATCH CBaseMediaFilter::?Run@CBaseMediaFilter@@UAGJ_J@Z
+  00c319b0 RELOCATION_MATCH PKSerialiseCParser::?ValidateReader@PKSerialiseCParser@@QAEPAUIDataStream@@XZ
+  00c4b160 RELOCATION_MATCH PKCBufferedReader::?PollReadCompletion@PKCBufferedReader@@QAE_NXZ
