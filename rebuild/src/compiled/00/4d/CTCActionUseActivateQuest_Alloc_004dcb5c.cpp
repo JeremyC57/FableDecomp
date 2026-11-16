@@ -1,21 +1,26 @@
 #pragma optimize("s",on)
-// CTCActionUseActivateQuest::Alloc(CThing&) -- factory: new CTCActionUseActivateQuest(owner)
+// CTCActionUseActivateQuest::Alloc(CThing& thing) -- the registry factory: a new CTCActionUseActivateQuest for `thing` (operator new(0x14) 0x00BFEA1A, null-checked, then
+//   the constructor 0x004DB1C2), returned as its CTCBase
+// Leaf: ?Alloc@CTCActionUseActivateQuest@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DCB5C, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x14 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCActionUseActivateQuest::CTCActionUseActivateQuest ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCActionUseActivateQuest) = 0x14 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x004DB1C2 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCActionUseActivateQuest@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCActionUseActivateQuest@@QAE@AAVCThing@@@Z (0x004DB1C2, landed). (Landed earlier as a generated free function CTCActionUseActivateQuest_Alloc(CThing*) returning CTCActionUseActivateQuest*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCActionUseActivateQuest { public:
-    unsigned char _body[0x14];       // sizeof(CTCActionUseActivateQuest) = 0x14
-    CTCActionUseActivateQuest(void* owner);                   // 0x004DB1C2
+class CTCActionUseActivateQuest : public CTCBase {
+public:
+    CTCActionUseActivateQuest(CThing& thing);                        // 0x004DB1C2
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x14 - 0xC];              // the class's own members (not modelled); sizeof(CTCActionUseActivateQuest) = 0x14
 };
 
-CTCActionUseActivateQuest* __fastcall CTCActionUseActivateQuest_Alloc(void* owner)
+CTCBase* __fastcall CTCActionUseActivateQuest::Alloc(CThing& thing)
 {
-    return new CTCActionUseActivateQuest(owner);
+    return new CTCActionUseActivateQuest(thing);
 }

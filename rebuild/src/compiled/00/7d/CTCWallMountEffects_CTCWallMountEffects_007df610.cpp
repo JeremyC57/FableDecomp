@@ -1,7 +1,10 @@
-// CTCWallMountEffects::CTCWallMountEffects(CThing*) -- CTCBase(thing), own vtable, null def / creature pointers, effect never used, then resolve the owner def's wall-mount sub-def
+// CTCWallMountEffects::CTCWallMountEffects(CThing&) -- CTCBase(thing), own vtable, null def / creature pointers, effect never used, then resolve the owner def's wall-mount sub-def
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Leaf: ??0CTCWallMountEffects@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCWallMountEffects@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DF610, length 85 bytes (+ int3 padding).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is propagated),
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is propagated),
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, CDefClassBase::GetSubDef<CWallMountEffectsDef>
 // @ 0x007DF9E0 (manifest "GetSubDef<CAICreatureWillPowerIndicatorDef>" is the propagated template name).
 // Vtables: CTCWallMountEffects 0x0126FC84, CIntelligentPointer<CThingCreatureBase> 0x0123E7D8.
@@ -11,16 +14,10 @@
 // Shape: the derived vtable is stored first, the null def pointer (inline constructor) and the confirmation
 // enum are cleared around the creature pointer's base call, its vtable follows; FrameEffectLastUsed starts at
 // 0xC0000000 (a "long ago" frame); the body then asks the owner's def (CThing +0x70) for the sub-def into PDef.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CWallMountEffectsDef;
-
-struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
-    virtual void v00();
-    CThing* ParentThing;                                    // +0x04
-    bool    ToBeRemoved;                                    // +0x08
-    bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase_Calls(CThing* thing);                           // 0x00686800
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -50,18 +47,17 @@ class CThing { public:
 
 enum EWallMountEffectsConfirmationType { WALL_MOUNT_CONFIRMATION_NONE = 0 };
 
-class CTCWallMountEffects : public CTCBase_Calls { public:                // vtable 0x0126FC84
+class CTCWallMountEffects : public CTCBase { public:                // vtable 0x0126FC84
     CDefPointer_CWallMountEffectsDef        PDef;                       // +0x0c
     EWallMountEffectsConfirmationType       WaitingForConfirmation;     // +0x10
     CIntelligentPointer<CThingCreatureBase>  CreaturePerformingAction;   // +0x14
     long                                    FrameEffectLastUsed;        // +0x1c
     bool                                    ObjectWasGamePersistant;    // +0x20
-    virtual void v00();
-    CTCWallMountEffects(CThing* thing);
+    CTCWallMountEffects(CThing& thing);
 };
 
-CTCWallMountEffects::CTCWallMountEffects(CThing* thing)
-    : CTCBase_Calls(thing)
+CTCWallMountEffects::CTCWallMountEffects(CThing& thing)
+    : CTCBase(thing)
     , WaitingForConfirmation(WALL_MOUNT_CONFIRMATION_NONE)
     , FrameEffectLastUsed((long)0xC0000000)
     , ObjectWasGamePersistant(false)

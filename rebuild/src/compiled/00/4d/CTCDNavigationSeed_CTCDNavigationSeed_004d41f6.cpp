@@ -1,5 +1,7 @@
 #pragma optimize("s",on)
-// CTCDNavigationSeed::CTCDNavigationSeed(CThing*) -- base CTCDriverBase(argument) then this class's vtable
+// CTCDNavigationSeed::CTCDNavigationSeed(CThing&) -- base CTCDriverBase(argument) then this class's vtable
+// Leaf: ??0CTCDNavigationSeed@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D41F6, oracle length 24 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -12,15 +14,15 @@ class CThing;
 
 class CTCDriverBase { public:
     virtual void v00();
-    CTCDriverBase(CThing* argument);            // 0x00771200
+    CTCDriverBase(CThing& argument);            // 0x00771200
 };
 
 class CTCDNavigationSeed : public CTCDriverBase { public:
     virtual void v00();
-    CTCDNavigationSeed(CThing* argument);
+    CTCDNavigationSeed(CThing& argument);
 };
 
-CTCDNavigationSeed::CTCDNavigationSeed(CThing* argument)
+CTCDNavigationSeed::CTCDNavigationSeed(CThing& argument)
     : CTCDriverBase(argument)
 {
 }

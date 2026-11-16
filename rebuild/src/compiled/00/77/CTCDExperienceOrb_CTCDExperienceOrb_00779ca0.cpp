@@ -1,8 +1,9 @@
-// CTCDExperienceOrb::CTCDExperienceOrb(CThing*) -- driver component of an experience orb: CTCDriverBase(parent), target cleared, two indices at -1, first-update flag set, collected flag cleared
+// CTCDExperienceOrb::CTCDExperienceOrb(CThing&) -- driver component of an experience orb: CTCDriverBase(parent), target cleared, two indices at -1, first-update flag set, collected flag cleared
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the two -1 indices as records with an inline (-1) constructor: the zero register is set before `or eax,-1` as in retail
-// Leaf: ??0CTCDExperienceOrb
+// Leaf: ??0CTCDExperienceOrb@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00779CA0, length 46 bytes (+2 int3 padding).
-// Callee: CTCDriverBase::CTCDriverBase(CThing*) @ 0x00771200 (CTCBase(parent), vtable 0x0126A79C, then the parent's
+// Callee: CTCDriverBase::CTCDriverBase(CThing&) @ 0x00771200 (CTCBase(parent), vtable 0x0126A79C, then the parent's
 // virtual slot 28 with 1). Vtable 0x0126ABFC = CTCDExperienceOrb (rtti-vtables.tsv).
 // Label correction: the manifest "CTCShotDefinitionMultiArrow::CTCShotDefinitionMultiArrow" is propagated; the vtable stored
 // is CTCDExperienceOrb's.
@@ -13,7 +14,7 @@ class CThing;
 class CTCDriverBase { public:
     virtual void v00();
     unsigned char _body[0x8];                // CTCBase: ParentThing +4, flags +8/+9
-    CTCDriverBase(CThing* parent);           // 0x00771200
+    CTCDriverBase(CThing& parent);           // 0x00771200
 };
 
 struct CIndexM1 { long v; CIndexM1() : v(-1) {} };
@@ -26,10 +27,10 @@ class CTCDExperienceOrb : public CTCDriverBase { public:
     bool          m_firstUpdate;             // +0x1c
     bool          m_collected;               // +0x1d
     virtual void v00();
-    CTCDExperienceOrb(CThing* parent);
+    CTCDExperienceOrb(CThing& parent);
 };
 
-CTCDExperienceOrb::CTCDExperienceOrb(CThing* parent)
+CTCDExperienceOrb::CTCDExperienceOrb(CThing& parent)
     : CTCDriverBase(parent)
     , m_target(0)
     , m_firstUpdate(true)

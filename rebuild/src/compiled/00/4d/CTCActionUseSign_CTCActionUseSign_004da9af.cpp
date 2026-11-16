@@ -1,5 +1,7 @@
 #pragma optimize("s",on)
-// CTCActionUseSign::CTCActionUseSign(CThing*) -- base CTCActionUseBase(argument) then this class's vtable
+// CTCActionUseSign::CTCActionUseSign(CThing&) -- base CTCActionUseBase(argument) then this class's vtable
+// Leaf: ??0CTCActionUseSign@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCActionUseBase(CThing&) (0x004DA939) as both PDBs spell it; this constructor too.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DA9AF, oracle length 24 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -12,15 +14,15 @@ class CThing;
 
 class CTCActionUseBase { public:
     virtual void v00();
-    CTCActionUseBase(CThing* argument);            // 0x004DA939
+    CTCActionUseBase(CThing& argument);            // 0x004DA939
 };
 
 struct CTCActionUseSign : CTCActionUseBase {
     virtual void v00();
-    CTCActionUseSign(CThing* argument);
+    CTCActionUseSign(CThing& argument);
 };
 
-CTCActionUseSign::CTCActionUseSign(CThing* argument)
+CTCActionUseSign::CTCActionUseSign(CThing& argument)
     : CTCActionUseBase(argument)
 {
 }

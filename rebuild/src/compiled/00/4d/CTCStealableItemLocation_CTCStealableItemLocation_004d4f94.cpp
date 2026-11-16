@@ -1,7 +1,9 @@
 // CTCStealableItemLocation::CTCStealableItemLocation(CThing* thing) -- CTCBase(thing), own vtable, RadiusToBeWithin = 1.0, RadiusToTakeItemsBackTo = 0.0
-// Leaf: ??0CTCStealableItemLocation
+// Leaf: ??0CTCStealableItemLocation@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCStealableItemLocation@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D4F94, length 34 bytes. Size-optimised TU: `#pragma optimize("s", on)`.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (landed; the manifest's "CEngineSubPrimitive2DClockSprite" label is propagated).
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (landed; the manifest's "CEngineSubPrimitive2DClockSprite" label is propagated).
 // Identity: the stored vtable 0x0123C65C is CTCStealableItemLocation (rtti-vtables.tsv); the manifest's
 // "CTCCameraPointTrack::CTCCameraPointTrack" label is propagated and rejected (CTCCameraPointTrack is 0x54 bytes).
 // Layout: Ego_r.pdb CTCStealableItemLocation (0x14 bytes): RadiusToBeWithin +0xc, RadiusToTakeItemsBackTo +0x10.
@@ -11,25 +13,18 @@
 // (fld1 / fldz), the first scheduled before the vtable store.
 #pragma optimize("s", on)
 
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 
-struct CTCBase_Calls {                              // engine/CTCBase.h layout (0xc bytes)
-    virtual void v00();
-    CThing* ParentThing;                            // +0x04
-    bool    ToBeRemoved;                            // +0x08
-    bool    IsInGlobalUpdateTCs;                    // +0x09
-    CTCBase_Calls(CThing* thing);                   // 0x00686800
-};
-
-class CTCStealableItemLocation : public CTCBase_Calls { public:   // vtable 0x0123C65C
+class CTCStealableItemLocation : public CTCBase { public:   // vtable 0x0123C65C
     float RadiusToBeWithin;                         // +0x0c
     float RadiusToTakeItemsBackTo;                  // +0x10
-    virtual void v00();
-    CTCStealableItemLocation(CThing* thing);
+    CTCStealableItemLocation(CThing& thing);
 };
 
-CTCStealableItemLocation::CTCStealableItemLocation(CThing* thing)
-    : CTCBase_Calls(thing)
+CTCStealableItemLocation::CTCStealableItemLocation(CThing& thing)
+    : CTCBase(thing)
     , RadiusToBeWithin(1.0f)
     , RadiusToTakeItemsBackTo(0.0f)
 {

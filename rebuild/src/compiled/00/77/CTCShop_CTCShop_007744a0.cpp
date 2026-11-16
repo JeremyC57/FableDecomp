@@ -1,8 +1,10 @@
 // CTCShop::CTCShop(CThing* thing) -- CTCBase(thing), the shop vtable, stock state 1, an empty shopkeeper pointer, shopper and goods-place lists and stock map; then the stock map is filled from the thing's shop def (every stock item copied, its quantity raised to at least the maximum stock) and the last-checked day set 30 days back
-// Leaf: ??0CTCShop
+// Leaf: ??0CTCShop@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCShop@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007744A0, 361 bytes (`ret 4`).
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800; CBaseIntelligentPointer() 0x00A01B10 (then the
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800; CBaseIntelligentPointer() 0x00A01B10 (then the
 //          CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8); malloc 0x00BFEA0E (the 0x30-byte map header node);
 //          CTCBase::GetDefinitionManager() const 0x006869D0; CDefinitionManager::GetDef<CThingBaseDef> 0x0042AF3C and
 //          CDefClassBase::GetSubDef<CShopDef> 0x005130A0 (pushes "CShopDef"); CShopDef::Test() const 0x007773A0
@@ -21,6 +23,8 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 template <class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CShopItem { public:                              // 28 bytes
     float Quantity;                             // +0x00
     float PriceMultiplier;                      // +0x04
@@ -144,16 +148,6 @@ struct CStockMap : CStockTree {                 // map<long, CShopItem>
     CShopItem& operator[](const long& key);     // 0x00778280
 };
 
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-    CTCBase(CThing* thing);                     // 0x00686800
-protected:
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
-    CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
-};
 class CTCShop : public CTCBase { public:                      // vtable 0x0126A94C
     long          StockState;                   // +0x0c
     CIntelligentPointer<CThingCreatureBase> PShopKeeper;   // +0x10
@@ -167,11 +161,10 @@ class CTCShop : public CTCBase { public:                      // vtable 0x0126A9
     long          GoldDonated;                  // +0x4c
     bool          StallLike;                    // +0x50
     unsigned long Alarm;                        // +0x54
-    CTCShop(CThing* thing);
-    virtual void v00();
+    CTCShop(CThing& thing);
 };
 
-CTCShop::CTCShop(CThing* thing)
+CTCShop::CTCShop(CThing& thing)
     : CTCBase(thing), StockState(1), SpecialItem(-1), DaysSinceSpecialItemPlaced(0), GoldDonated(0), StallLike(false),
       Alarm(0)
 {

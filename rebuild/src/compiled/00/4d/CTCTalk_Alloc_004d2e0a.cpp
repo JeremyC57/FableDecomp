@@ -1,22 +1,26 @@
 #pragma optimize("s",on)
-// CTCTalk::Alloc(CThing&) -- factory: new CTCTalk(owner)
+// CTCTalk::Alloc(CThing& thing) -- the registry factory: a new CTCTalk for `thing` (operator new(0x3c) 0x00BFEA1A, null-checked, then
+//   the constructor 0x006E27E0), returned as its CTCBase
+// Leaf: ?Alloc@CTCTalk@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D2E0A, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x3c ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCTalk::CTCTalk ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCTalk) = 0x3c bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x006E27E0 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCTalk@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCTalk@@QAE@AAVCThing@@@Z (0x006E27E0, landed). (Landed earlier as a generated free function CTCTalk_Alloc(CThing*) returning CTCTalk*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCTalk { public:
-    unsigned char _body[0x3c];       // sizeof(CTCTalk) = 0x3c
-    CTCTalk(CThing* owner);                   // 0x006E27E0
+class CTCTalk : public CTCBase {
+public:
+    CTCTalk(CThing& thing);                        // 0x006E27E0
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x3c - 0xC];              // the class's own members (not modelled); sizeof(CTCTalk) = 0x3c
 };
 
-CTCTalk* __fastcall CTCTalk_Alloc(CThing* owner)
+CTCBase* __fastcall CTCTalk::Alloc(CThing& thing)
 {
-    return new CTCTalk(owner);
+    return new CTCTalk(thing);
 }

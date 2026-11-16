@@ -1,10 +1,12 @@
 // CTCPerceiveThing::CTCPerceiveThing(CThing* parent) -- CTCBase(parent), the CTCPerceiveThing vtable, an empty perceived-thing intelligent pointer, every perception flag/radius cleared, FramesSinceDirectlyPerceivedThing = -1 and the update offset taken from the parent thing
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- PDef as a CDefPointer record with an inline ctor (the -1 store stays above it) and UpdateOffset assigned in the body (its `and edx,3` sinks below the radius stores)
-// Leaf: ??0CTCPerceiveThing
+// Leaf: ??0CTCPerceiveThing@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCPerceiveThing@@QAE@AAVCThing@@@Z).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007445E0, 128 bytes. Vtable 0x012688CC (CTCPerceiveThing, RTTI: slot 0 0x007462D0, slot 4
 //   OnCreate 0x00744ED0); the member's vtable 0x01237F1C is CIntelligentPointer<CThing const>.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
 //   CBaseIntelligentPointer::SetPItem @ 0x00A01B90.
 // Layout (engine/CTCPerceiveThing.h, 0x58 bytes; modelled locally because the header flattens the CIntelligentPointer member
 //   to a byte array): PerceivedThing +0x0c, DistanceFromPerceivedThingSquared +0x14, AwarenessTimer +0x18,
@@ -13,6 +15,8 @@
 //   FrameHitByPerceivedThing +0x54. UpdateOffset = (ParentThing word at +0x18) & 3 spreads the perception updates over 4 frames.
 // Shape: init list in declaration order (also tried: body assignments in retail order; same instructions).
 //   One shared zero register.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing { public:
     unsigned char _pad00[0x18];
     unsigned long m_uidLow;                     // +0x18 (low word of the thing's UID)
@@ -35,13 +39,6 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 class CDefPointeeBase;
-class CTCBase { public:
-    virtual ~CTCBase();
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-    CTCBase(CThing* parent);                    // 0x00686800
-};
 #include "engine/C3DVector.h"
 class CPerceivedThingDef;
 template <class T> class CDefPointer { public:          // CDefPointer<T const>: the def object pointer with its inline constructor (released by the out-of-line destructor)
@@ -72,10 +69,10 @@ class CTCPerceiveThing : public CTCBase { public:
     bool      PerceptionCombat;                 // +0x50
     long      FrameHitByPerceivedThing;         // +0x54
     virtual ~CTCPerceiveThing();
-    CTCPerceiveThing(CThing* parent);
+    CTCPerceiveThing(CThing& parent);
 };
 
-CTCPerceiveThing::CTCPerceiveThing(CThing* parent) : CTCBase(parent)
+CTCPerceiveThing::CTCPerceiveThing(CThing& parent) : CTCBase(parent)
     , DistanceFromPerceivedThingSquared(0), AwarenessTimer(0), FramesSinceDirectlyPerceivedThing(-1)
     , Perceiving(false), LineOfSight(false), ExtendedLineOfSight(false), IgnoreFOVLineOfSight(false), DirectAwareness(false)
     , Smelt(false), Heard(false), SearchingForThingToPerceive(false), PDef()

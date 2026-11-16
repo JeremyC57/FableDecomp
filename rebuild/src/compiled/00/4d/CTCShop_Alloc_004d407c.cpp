@@ -1,22 +1,26 @@
 #pragma optimize("s",on)
-// CTCShop::Alloc(CThing&) -- factory: new CTCShop(owner)
+// CTCShop::Alloc(CThing& thing) -- the registry factory: a new CTCShop for `thing` (operator new(0x58) 0x00BFEA1A, null-checked, then
+//   the constructor 0x007744A0), returned as its CTCBase
+// Leaf: ?Alloc@CTCShop@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D407C, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x58 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCShop::CTCShop ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCShop) = 0x58 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x007744A0 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCShop@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCShop@@QAE@AAVCThing@@@Z (0x007744A0, landed). (Landed earlier as a generated free function CTCShop_Alloc(CThing*) returning CTCShop*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCShop { public:
-    unsigned char _body[0x58];       // sizeof(CTCShop) = 0x58
-    CTCShop(CThing* owner);                   // 0x007744A0
+class CTCShop : public CTCBase {
+public:
+    CTCShop(CThing& thing);                        // 0x007744A0
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x58 - 0xC];              // the class's own members (not modelled); sizeof(CTCShop) = 0x58
 };
 
-CTCShop* __fastcall CTCShop_Alloc(CThing* owner)
+CTCBase* __fastcall CTCShop::Alloc(CThing& thing)
 {
-    return new CTCShop(owner);
+    return new CTCShop(thing);
 }

@@ -1,5 +1,5 @@
 // CTCCarrying::CTCCarrying(CThing* owner) -- thing-component base, the carry-slot vector map emptied, filters/key cleared, the primary-slot list built
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004E748A, length 59 bytes. Callees: CTCBase::CTCBase(CThing*) @ 0x00686800
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004E748A, length 59 bytes. Callees: CTCBase::CTCBase(CThing&) @ 0x00686800
 // (manifest label "CEngineSubPrimitive2DClockSprite", propagated), the std::list<CIntelligentPointer<CThing> > constructor
 // @ 0x004B8920 (manifest "std::list_Construct").
 // Label correction: the manifest calls this a CTCGraphicAppearanceReplaceableMesh constructor; the vtable it stores,
@@ -11,19 +11,15 @@
 // Shape: frame-pointer size TU (`optimize("y",off)` + `("s",on)`); the derived vtable store precedes the zero run
 // because the zeroed words belong to the CVectorMap member's inline constructor; the list's empty allocator
 // temporary is homed in the high byte of the dead `owner` slot (`lea eax,[ebp+0Bh]`).
-// The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
-// Leaf: ??0CTCCarrying
+// The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model. [superseded 2026-11-16: the header's FABLE_RETAIL_CTCBASE branch is polymorphic; see the Ported note]
+// Leaf: ??0CTCCarrying@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCarrying@@QAE@AAVCThing@@@Z).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-
-class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04
-    bool    ToBeRemoved;                                // +0x08
-    bool    IsInGlobalUpdateTCs;                        // +0x09
-    CTCBase(CThing* owner);                             // 0x00686800
-};
 
 struct SCarrySlot;                                      // pair<long, CIntelligentPointer<CThing> >
 
@@ -55,11 +51,10 @@ class CTCCarrying : public CTCBase { public:
     bool                            BypassFilters;      // +0x1c
     void*                           Key;                // +0x20
     CRetailList_CIntelligentPointer ThingsInPrimarySlots;   // +0x24
-    virtual void v00();
-    CTCCarrying(CThing* owner);
+    CTCCarrying(CThing& owner);
 };
 
-CTCCarrying::CTCCarrying(CThing* owner)
+CTCCarrying::CTCCarrying(CThing& owner)
     : CTCBase(owner), CarrySlots(), BypassFilters(false), Key(0), ThingsInPrimarySlots()
 {
 }

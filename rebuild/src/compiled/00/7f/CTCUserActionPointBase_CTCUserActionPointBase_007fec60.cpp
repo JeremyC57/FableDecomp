@@ -1,7 +1,10 @@
-// CTCUserActionPointBase::CTCUserActionPointBase(CThing*) -- CTCBase(owner), own vtable, two empty index vectors, zero point count and next-check frame, an empty PThing pointer
+// CTCUserActionPointBase::CTCUserActionPointBase(CThing&) -- CTCBase(owner), own vtable, two empty index vectors, zero point count and next-check frame, an empty PThing pointer
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Leaf: ??0CTCUserActionPointBase@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCUserActionPointBase@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FEC60, length 68 bytes.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is propagated),
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is propagated),
 // CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (then the CIntelligentPointer vtable 0x01238C6C).
 // Vtable 0x0127216C = CTCUserActionPointBase.
 // Shape: one `xor eax,eax` zero register for all eight dwords; the vectors are STLport _Vector_base (start/finish
@@ -9,15 +12,10 @@
 // init-list members, then PThing's inline constructor (`lea edi,[esi+2Ch]` scheduled among the zero stores).
 // Layout: Ego_r.pdb CTCUserActionPointBase with 12-byte retail vectors: FreeActionPointIndexes +0x0C,
 // BlockedActionPointIndexes +0x18, NumberOfActionPoints +0x24, FrameOfNextCheck +0x28, PThing +0x2C. No engine header.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CBaseObject;
-
-class CTCBase { public:
-    virtual void v00();
-    CThing*       Thing;                    // +0x04
-    unsigned char _pad_0x08[0x4];
-    CTCBase(CThing* thing);                 // 0x00686800
-};
 
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -50,11 +48,10 @@ struct CTCUserActionPointBase : CTCBase {
     long                NumberOfActionPoints;        // +0x24
     long                FrameOfNextCheck;            // +0x28
     CIntelligentPointer<CThing> PThing;                      // +0x2C
-    virtual void v00();
-    CTCUserActionPointBase(CThing* thing);
+    CTCUserActionPointBase(CThing& thing);
 };
 
-CTCUserActionPointBase::CTCUserActionPointBase(CThing* thing)
+CTCUserActionPointBase::CTCUserActionPointBase(CThing& thing)
     : CTCBase(thing), NumberOfActionPoints(0), FrameOfNextCheck(0)
 {
 }

@@ -1,8 +1,9 @@
 // CTCCameraPointGeneralCase::CTCCameraPointGeneralCase(CThing* parent) -- shape-activation base, then the camera defaults (string 5, cage radius and height offset 2, three stick/target flags on)
-// Leaf: CTCCameraPointGeneralCase
+// Leaf: ??0CTCCameraPointGeneralCase@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCCameraPointShapeActivationBase(CThing&) (0x004D3A03) as both PDBs spell it; this constructor too.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D3B41, length 55 bytes. Called only from the factory at 0x004D82A3
 // (`new` of 0x54 bytes).
-// Callees: CTCCameraPointShapeActivationBase::CTCCameraPointShapeActivationBase(CThing*) @ 0x004D3A03 (stores vtable
+// Callees: CTCCameraPointShapeActivationBase::CTCCameraPointShapeActivationBase(CThing&) @ 0x004D3A03 (stores vtable
 // 0x0123AEDC = CTCCameraPointShapeActivationBase; manifest label "CEnginePrimitiveGroupManager" is propagated).
 // Label correction: the chunk calls this CTCSmokeGenerator::CTCSmokeGenerator; the vtable it stores, 0x0123B194, is
 // CTCCameraPointGeneralCase (rtti-vtables.tsv), and the PDB CTCCameraPointGeneralCase (0x54 bytes) matches every store:
@@ -15,7 +16,7 @@ class CThing;
 struct CTCCameraPointShapeActivationBase {
     virtual void v00();
     unsigned char _body[0x40 - 4];                          // CTCBase + the camera-point definition fields
-    CTCCameraPointShapeActivationBase(CThing* parent);      // 0x004D3A03
+    CTCCameraPointShapeActivationBase(CThing& parent);      // 0x004D3A03
 };
 
 class CTCCameraPointGeneralCase : public CTCCameraPointShapeActivationBase { public:
@@ -28,10 +29,10 @@ class CTCCameraPointGeneralCase : public CTCCameraPointShapeActivationBase { pub
     bool  AutoGoBehind;                                     // +0x4f
     float AutoGoBehindTime;                                 // +0x50
     virtual void v00();                                     // own vtable 0x0123B194
-    CTCCameraPointGeneralCase(CThing* parent);
+    CTCCameraPointGeneralCase(CThing& parent);
 };
 
-CTCCameraPointGeneralCase::CTCCameraPointGeneralCase(CThing* parent)
+CTCCameraPointGeneralCase::CTCCameraPointGeneralCase(CThing& parent)
     : CTCCameraPointShapeActivationBase(parent)
 {
     CameraHeightOffset = CameraCageRadius = 2.0f;

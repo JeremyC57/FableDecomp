@@ -1,26 +1,22 @@
 // CTCStockItem::CTCStockItem(CThing* parent) -- thing-component base, for sale and stealable, not initialised, zero price, empty price-tag primitive handle
-// Leaf: ??0CTCStockItem
+// Leaf: ??0CTCStockItem@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCStockItem@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DC737, length 62 bytes (size-optimised module: pass-through argument
 // push, `and dword ptr [..],0` zero stores).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseClass::CBaseClass @ 0x0099A2D0 (the handle's base).
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseClass::CBaseClass @ 0x0099A2D0 (the handle's base).
 // Vtables: 0x01240C1C = CTCStockItem, 0x0122F598 = CEnginePrimitiveHandle (rtti-vtables.tsv).
 // Layout: Ego_r.pdb CTCStockItem (engine/CTCStockItem.h, 0x1c bytes): ForSale +0x0c, Stealable +0x0d, Initialised +0x0e,
-// Price +0x10, PrimHandle +0x14. The header is a flattened POD (`void* __vftable`), unusable as a polymorphic class, so
+// Price +0x10, PrimHandle +0x14. The header is a flattened POD (`void* __vftable`), unusable as a polymorphic class, so [superseded 2026-11-16: the header's FABLE_RETAIL_CTCBASE branch is polymorphic; see the Ported note]
 // the constructor is modelled locally with the header's names and offsets.
 // Shape: init list in declaration order; the handle is a member object with an inline constructor whose data pointer is
 // itself a CIVCountedPointer member object (its zero follows the handle vtable, as 0x00BFBBC0); under optimize("s")
 // both constructors must be `__forceinline` or the handle's is called out of line.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 class CThing;
-
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                                    // +0x04
-    bool    ToBeRemoved;                                    // +0x08
-    bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase(CThing* parent);                                // 0x00686800
-};
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
@@ -41,11 +37,10 @@ class CTCStockItem : public CTCBase { public:
     bool                   Initialised;                     // +0x0e
     long                   Price;                           // +0x10
     CEnginePrimitiveHandle PrimHandle;                      // +0x14
-    virtual void v00();                                     // own vtable 0x01240C1C
-    CTCStockItem(CThing* parent);
+    CTCStockItem(CThing& parent);
 };
 
-CTCStockItem::CTCStockItem(CThing* parent)
+CTCStockItem::CTCStockItem(CThing& parent)
     : CTCBase(parent)
     , ForSale(true)
     , Stealable(true)

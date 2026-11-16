@@ -1,9 +1,10 @@
 // CTCPhysicsRigidBody::CTCPhysicsRigidBody(CThing* parent) -- CTCPhysicsBase(parent), own vtable, the three collision vectors and the rigid body's three vertex vectors empty, no physics mesh info yet
-// Leaf: ??0CTCPhysicsRigidBody
+// Leaf: ??0CTCPhysicsRigidBody@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCPhysicsBase(CThing&) (0x006B0730) as both PDBs spell it; this constructor too.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075AA80, 111 bytes. Vtable 0x0126996C (CTCPhysicsRigidBody: slot 3 ConstructFromParams
 //   0x00759900, slot 4 OnCreate 0x0075B2D0, slot 97 GetPossibleCollidedWithArea 0x00759870).
-// Callees: CTCPhysicsBase::CTCPhysicsBase(CThing*) @ 0x006B0730.
+// Callees: CTCPhysicsBase::CTCPhysicsBase(CThing&) @ 0x006B0730.
 // Layout: PDB CTCPhysicsRigidBody (engine/CTCPhysicsRigidBody.h) with retail 12-byte STLport vectors: CollisionNormal +0x40,
 //   CollidingVertexIndex +0x4c, Collidors +0x58, PPhysicsMeshInfo +0x64, RHSet +0x68, OldRHSet +0x80, OffsetVector +0x98,
 //   Body +0xa0 (CRigidBody: BodyBoundingVertices +0x44, CurrentConfig +0x50 and LastConfig +0x104, each CRigidBodyConfig 0xb4
@@ -34,7 +35,7 @@ struct CRigidBody {
 class CTCPhysicsBase { public:
     virtual ~CTCPhysicsBase();
     unsigned char _pad04[0x3c];
-    CTCPhysicsBase(CThing* parent);             // 0x006B0730
+    CTCPhysicsBase(CThing& parent);             // 0x006B0730
 };
 class CThingPhysicsMeshInfo;
 struct CTCPhysicsRigidBody : CTCPhysicsBase {
@@ -47,10 +48,10 @@ struct CTCPhysicsRigidBody : CTCPhysicsBase {
     C2DVector       OffsetVector;               // +0x98
     CRigidBody      Body;                       // +0xa0
     virtual ~CTCPhysicsRigidBody();
-    CTCPhysicsRigidBody(CThing* parent);
+    CTCPhysicsRigidBody(CThing& parent);
 };
 
-CTCPhysicsRigidBody::CTCPhysicsRigidBody(CThing* parent) : CTCPhysicsBase(parent)
+CTCPhysicsRigidBody::CTCPhysicsRigidBody(CThing& parent) : CTCPhysicsBase(parent)
 {
     PPhysicsMeshInfo = 0;
 }

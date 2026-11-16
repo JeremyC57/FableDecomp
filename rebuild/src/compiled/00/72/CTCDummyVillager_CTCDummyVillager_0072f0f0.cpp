@@ -1,8 +1,10 @@
-// CTCDummyVillager::CTCDummyVillager(CThing*) -- CTCBase(thing), no def type, the home/work building and creature intelligent pointers (UIDs zero), never-recreate day/frame, respawnable, not a guard
-// Leaf: ??0CTCDummyVillager
+// CTCDummyVillager::CTCDummyVillager(CThing&) -- CTCBase(thing), no def type, the home/work building and creature intelligent pointers (UIDs zero), never-recreate day/frame, respawnable, not a guard
+// Leaf: ??0CTCDummyVillager@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCDummyVillager@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 //
-// Retail 0x0072F0F0, 118 bytes (`ret 4`). Callees: CTCBase::CTCBase(CThing*) @ 0x00686800,
+// Retail 0x0072F0F0, 118 bytes (`ret 4`). Callees: CTCBase::CTCBase(CThing&) @ 0x00686800,
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (three times; then the
 // CIntelligentPointer<CThingBuilding> vtable 0x01244344 twice and CIntelligentPointer<CThingAICreature>
 // 0x0123E7E0). The vtable store 0x01266CDC is CTCDummyVillager (rtti-vtables.tsv): the catalog label
@@ -12,20 +14,14 @@
 // DayToBeRecreated +0x40, FrameToBeRecreated +0x44, Respawnable +0x48, Guard +0x49.
 // Shape: plain initialisers in declaration order; one zero register (ebx), each pointer member
 // addressed once in edi for its base ctor + vtable store.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CThingBuilding;
 class CThingAICreature;
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                                    // +0x04
-    bool    ToBeRemoved;                                    // +0x08
-    bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase(CThing* thing);                                 // 0x00686800
-};
 
 class CTCDummyVillager : public CTCBase { public:                         // vtable 0x01266CDC
     unsigned long                         DefType;          // +0x0c
@@ -39,11 +35,10 @@ class CTCDummyVillager : public CTCBase { public:                         // vta
     long                                  FrameToBeRecreated; // +0x44
     bool                                  Respawnable;      // +0x48
     bool                                  Guard;            // +0x49
-    virtual void v00();
-    CTCDummyVillager(CThing* thing);
+    CTCDummyVillager(CThing& thing);
 };
 
-CTCDummyVillager::CTCDummyVillager(CThing* thing)
+CTCDummyVillager::CTCDummyVillager(CThing& thing)
     : CTCBase(thing)
     , DefType(0)
     , HomeBuilding()

@@ -1,22 +1,26 @@
 #pragma optimize("s",on)
-// CTCCameraPointScripted::Alloc(CThing&) -- factory: new CTCCameraPointScripted(owner)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D3BCB, oracle length 32 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
+// CTCCameraPointScripted::Alloc(CThing& thing) -- the registry factory: a new CTCCameraPointScripted for `thing` (operator new(0x88) 0x00BFEA1A, null-checked, then
+//   the constructor 0x0075CC60), returned as its CTCBase
+// Leaf: ?Alloc@CTCCameraPointScripted@@SIPAVCTCBase@@AAVCThing@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D3BCB, oracle length 29 bytes.
 // Retail bytes:  push esi ; push 0x88 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCCameraPointScripted::CTCCameraPointScripted ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCCameraPointScripted) = 0x88 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x0075CC60 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCCameraPointScripted@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCCameraPointScripted@@QAE@AAVCThing@@@Z (0x0075CC60, landed). (Landed earlier as a generated free function CTCCameraPointScripted_Alloc(CThing*) returning CTCCameraPointScripted*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCCameraPointScripted { public:
-    unsigned char _body[0x88];       // sizeof(CTCCameraPointScripted) = 0x88
-    CTCCameraPointScripted(CThing* owner);                   // 0x0075CC60
+class CTCCameraPointScripted : public CTCBase {
+public:
+    CTCCameraPointScripted(CThing& thing);                        // 0x0075CC60
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x88 - 0xC];              // the class's own members (not modelled); sizeof(CTCCameraPointScripted) = 0x88
 };
 
-CTCCameraPointScripted* __fastcall CTCCameraPointScripted_Alloc(CThing* owner)
+CTCBase* __fastcall CTCCameraPointScripted::Alloc(CThing& thing)
 {
-    return new CTCCameraPointScripted(owner);
+    return new CTCCameraPointScripted(thing);
 }

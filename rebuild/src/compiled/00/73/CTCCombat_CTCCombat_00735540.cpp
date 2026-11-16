@@ -1,7 +1,9 @@
 // CTCCombat::CTCCombat(CThing* thing) -- CTCBase(thing), then the combat manager from the world, empty ability lists / blocker list / ability multimap / flourish particles, no current ability (-1), and the state reset
-// Leaf: ??0CTCCombat
+// Leaf: ??0CTCCombat@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCombat@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00735540, 170 bytes (`ret 4`). Vtable 0x0126724C.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CTCBase::GetWorld() @ 0x00686A70 (the world's combat manager at +0x4c),
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CTCBase::GetWorld() @ 0x00686A70 (the world's combat manager at +0x4c),
 // malloc @ 0x00BFEA0E (the 0x24-byte multimap header node), CTCCombat's state reset @ 0x007334F0 (manifest
 // "CTCCombat_ResetState"; it sets the members this ctor leaves alone).
 // Layout: local model -- engine/CTCCombat.h is Ego_r.pdb (16-byte containers); retail containers are 12 bytes, so from
@@ -14,6 +16,8 @@
 // count and empty-initialises the header (re-reading it after every store); the malloc's `add esp,4` lands after the
 // following member ctors and before the body's byte store, then the reset call.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CCombatManager;
 template <class T> struct CAllocator {                  // STLport allocator<T>: empty
@@ -65,15 +69,6 @@ class CWorld { public:
     unsigned char   _pad00[0x4c];
     CCombatManager* PCombatManager;                     // +0x4c
 };
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04
-    bool    ToBeRemoved;                                // +0x08
-    bool    IsInGlobalUpdateTCs;                        // +0x09
-    CTCBase(CThing* thing);                             // 0x00686800
-protected:
-    CWorld& GetWorld() const;   // 0x00686A70
-};
 class CThingCreatureBase;
 class CTCCombat : public CTCBase { public:
     long                ComboChainPos;                  // +0x0c
@@ -104,12 +99,11 @@ class CTCCombat : public CTCBase { public:
     long                CurFlourishTimer;               // +0x84
     CVector<void*>      FlourishParticles;              // +0x88 vector<CIntelligentPointer<CThing>>
     bool                IsInMiddleOfFlourishAction;     // +0x94
-    virtual void v00();
-    CTCCombat(CThing* thing);
+    CTCCombat(CThing& thing);
     void ResetCombatState();                            // 0x007334F0
 };
 
-CTCCombat::CTCCombat(CThing* thing)
+CTCCombat::CTCCombat(CThing& thing)
     : CTCBase(thing)
     , CombatManager(GetWorld().PCombatManager)
     , ParentCreature(0)

@@ -1,9 +1,9 @@
-# 2026-11-16 landing gn, follow-up 2: 0x007C2AB0 row, 0x00B22B40 port, callers of 0x00686800 / 0x007448F0
+# 2026-11-16 landing gn, follow-up 2: 0x007C2AB0 row, 0x00B22B40 port, callers of 0x00686800 / 0x007448F0 (two commits)
 
 Owner: "fix these now" on the three items still open after follow-up 1: the 0x007C2AB0 placeholder row, 0x00B22B40's own CArray
 copy, and old rows binding wrong names to 0x00686800 (CTCBase::CTCBase(CThing&)) and 0x007448F0 (CTCPerceiveThing::GetSightRadius).
 
-## Done (this commit)
+## Part 1 (first commit, 3991d2d1a9)
 - **0x007C2AB0** is now STLport `std::vector<C3DVector>::vector(size_type)` itself:
   `template std::vector<C3DVector, std::allocator<C3DVector> >::vector(size_type);` over the shared stlport/fable_containers.h body.
   It matches (115 bytes, no flags), strict, test PASS. File, test, catalog and module are renamed to the 0x00AD30C0 convention
@@ -37,19 +37,49 @@ Header equivalence (`logs/equivalence_changed_input_rows.tsv`, HEAD include tree
 rows that use the two new opt-ins and the five known `__FILE__`-only rows differ. Every `FABLE_STATIC_ASSERT` below both header
 insertions is pinned `_AT`.
 
-## Not done: 181 rows still bind wrong names (`callers_wrong_symbol.tsv`)
-reloc_bindings.tsv keeps only the first caller of each symbol, so it showed one row per wrong spelling. A scan of the retail
-bytes is complete: `tools/callers.py` finds every E8/E9 into a target and maps it to the landed row that holds the call site
-(`retail_calls_into_targets.tsv`). `tools/xrow.sh` compiles that row and resolves each relocation of its function against the
-retail bytes at the same offset (`tools/xref.py`). It finds:
+## Part 2: callers of 0x00686800 and the cascade (second commit)
+reloc_bindings.tsv records only the first caller of each symbol, so it showed one row per wrong spelling. A scan of the retail
+bytes is complete:
+- `tools/callers.py` finds every E8/E9 into a target and maps it to the landed row that holds the call site
+  (`retail_calls_into_targets.tsv`).
+- `tools/xrow.sh` compiles that row and resolves each relocation of its function against the retail bytes at the same offset
+  (`tools/xref.py`).
 
-| Target | Rows | Wrong symbols they bind |
-|---|---|---|
-| 0x00686800 | 175 | 106 `??0CTCBase@@QAE@PAVCThing@@@Z`, 29+ `??0CTCBase_Calls@@QAE@PAVCThing@@@Z`, 14 `??0CEngineSubPrimitive2DClockSprite@@..`, `??0CThingComponent@@..` |
-| 0x0075C180 / 0x0075CC60 / 0x004D8193 / 0x004C00E0 / 0x004D7E46 | 6 | the old pointer-form spellings of constructors re-signed above (CTCCameraPointScriptedSpline 0x0075DD10, CTCCameraPointShapeActivationBase 0x004D3A03, NGraphicAppearance::CTCGraphicAppearance::Alloc 0x004D44E8, CTCOwnedEntity::Alloc 0x004DAF68, ...) |
+It found 181 rows binding wrong names (`callers_wrong_symbol.tsv`): 175 to 0x00686800, as `??0CTCBase@@QAE@PAVCThing@@@Z`,
+`??0CTCBase_Calls@@..`, `??0CThingComponent@@..` and the clock-sprite ctor, and 6 to the ctors re-signed in part 1.
 
-Each needs the same port as the 12 above, worked base-first because each re-signed constructor pulls its own callers in.
-Queue line 2272 (0x00686800) stays open and points here.
+- **Port** (`tools/bulkport.py`). Each constructor calling 0x00686800 through a local base model moves onto engine/CTCBase.h with
+  the PDB `(CThing&)` signature, but only where `??0X@@QAE@AAVCThing@@@Z` is in Ego_r.pdb or FableWin.pdb. Base renames touch
+  code only, never comments quoting a manifest label. 164 ported mechanically; 133 match, 31 do not compile.
+- **Cascade** (`tools/cascade.py`, run to a fixed point). Every re-signed constructor changes its own symbol, so every retail
+  caller of it is re-spelled too:
+  - the generated `X_Alloc(CThing*)` free functions become `X::Alloc(CThing&)` (`?Alloc@X@@SIPAVCTCBase@@AAVCThing@@@Z`, checked
+    in the PDBs) from the template used in part 1;
+  - derived constructors get the callee's local declaration and, where the PDB has it, their own signature respelled to `CThing&`.
+    Local stand-ins carrying a propagated manifest label (`CEnginePrimitiveGroupManager`, `CTCOpinionSource`, `CTCDHeroSuit`,
+    `*_Calls`, namespace-wrapped `N_<addr>` copies) are renamed to the class the callee address belongs to.
+  - Four levels deep (e.g. CTCActionUseBase → CTCCarriedActionUseBase → CTCCarriedActionUseGive → GiveBeer → its Alloc).
+  - Hand-written: 0x004DAE4D (calls two re-signed ctors), 0x004DAD2A, and the Allocs 0x004DC54B, 0x004D55D0 and 0x004D44E8
+    (namespaced).
+- **Result.** 384 rows re-authored (`part2_rows.txt`), every one RELOCATION_MATCH with its behaviour test PASS through the lander
+  (`logs/part2/`), covering 209 re-signed constructors.
+- **Closure** (checked by relocation, not text). All 274 retail call sites into those constructors now bind the `CThing&` names:
+  384 rows here, 11 from part 1, and 11 rows that already declared them so.
+- **Bindings.** reloc_bindings.tsv lines whose caller is a re-authored row are respelled to the symbol that row now binds (97),
+  and new symbols get a first-caller line (102), via `tools/rebind.py`. No sources other than the rows changed, and no headers,
+  so header equivalence is unaffected.
+
+## Still open: 42 rows (`held_rows.tsv`)
+42 constructors still call 0x00686800 under `??0CTCBase@@QAE@PAVCThing@@@Z` or `??0CTCBase_Calls@@QAE@PAVCThing@@@Z`. Those two
+lines stay in reloc_bindings.tsv, naming one of these rows, so later landings still see the conflict.
+- **31 do not compile on the shared header.** They use members their local base model invented or spells differently
+  (AddToGlobalTCs, m_pParentThing, GetSubDef through the parent, `CTCBase(&parent)`). Each needs its body rewritten against
+  engine/CTCBase.h's real members.
+- **11 need hand work.** Six are namespaced classes (NGraphicAppearance::*, NInventory::CTCInventoryBase,
+  NThingShot::CTCShotDefinitionBase); four have no `(CThing&)` constructor in either PDB (CTCWeapon, CTCEmoteIcon,
+  CTCWeaponTrail, CTCHitOnCollision: check the PDB signature first); two have an unusual base block (CTCBoastingPosition, CTCBob).
+
+Their callers were deliberately left as they are, so every pair stays consistent.
 
 ## Other findings
 - 0x00665190 has no `// Leaf:` line, and its own signature `IsThingInFOV(CThing*, bool)` differs from the PDB

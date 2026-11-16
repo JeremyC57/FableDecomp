@@ -1,8 +1,10 @@
 // CTCWife::CTCWife(CThing* thing) -- CTCBase(thing), the wife vtable, every marriage/courting flag false, the "never" frames at LONG_MAX, no sex-cutscene sample, gift price 500, empty gift and seen-clothing trees, no appearance changes noticed
-// Leaf: ??0CTCWife
+// Leaf: ??0CTCWife@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCWife@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CF040, 394 bytes (`ret 4`); CTCWife vtable 0x0125ED5C (the catalog label
 //          "CTCOpinionSource::CTCOpinionSource" is propagated: that constructor is 0x00771360).
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800; malloc 0x00BFEA0E (the two tree header nodes, 0x18 and 0x14 bytes).
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800; malloc 0x00BFEA0E (the two tree header nodes, 0x18 and 0x14 bytes).
 // Global: the invalid sound-sample id 0x0129D25C.
 // Layout: rebuild/include/engine/CTCWife.h is the PDB layout (16-byte map/set); retail STLport trees are 12 bytes (header,
 //          node count, empty compare), so FrameLastReceivedNiceGift sits at +0x84 (PDB +0x88) and FrameNoticedChangeInAppearance
@@ -10,14 +12,9 @@
 // Shape: the members are initialiser-list stores in declaration order; the appearance-frame array is zeroed by a loop in the
 //          body (VC7.1 unrolls it through its own zero register) and the four husband-appearance flags by one dword store.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04
-    bool ToBeRemoved;                           // +0x08
-    bool IsInGlobalUpdateTCs;                   // +0x09
-    CTCBase(CThing* thing);                     // 0x00686800
-};
 template <class TNode> struct CTreeBase {       // STLport _Rb_tree_base: the header node pointer
     TNode* m_pHeader;
     CTreeBase() : m_pHeader(0)
@@ -105,10 +102,10 @@ class CTCWife : public CTCBase { public:
     long FrameNoticedChangeInAppearance[16];    // +0xa4
     float LastFatnessChangePoint;               // +0xe4
     bool BooleanHusbandAppearances[4];          // +0xe8
-    CTCWife(CThing* thing);
+    CTCWife(CThing& thing);
 };
 
-CTCWife::CTCWife(CThing* thing)
+CTCWife::CTCWife(CThing& thing)
     : CTCBase(thing), OpinionAttitude(0), AttitudeUpdateCounter(0), CourtingBlocked(false), PermittedToRegionFollow(false),
       FrameGotMarriedToThePlayer(0x7fffffff), DivorcedHero(false), JustMarried(false), NeedsToChangeBrain(false),
       WaitingForFadeOut(false), WaitingForFadeIn(false), WaitingForDivorce(false), WaitingForDivorceRenting(false),

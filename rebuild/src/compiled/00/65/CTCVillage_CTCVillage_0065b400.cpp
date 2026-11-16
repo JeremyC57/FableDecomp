@@ -1,11 +1,13 @@
 // CTCVillage::CTCVillage(CThing* parent) -- village component ctor: CTCBase(parent), cleared frame counters, seventeen empty retail 4-byte lists and the crime set, cleared state flags/frames, the two guard intelligent pointers, then InitialiseSecuritySweeps()
-// Leaf: ??0CTCVillage
+// Leaf: ??0CTCVillage@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCVillage@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065B400, length 408 bytes (frame-pointer, size-optimised module: the
 // neighbouring InitialiseSecuritySweeps 0x00659085 sits at an odd address).
 // Vtables: CTCVillage 0x0125A9AC (rtti-vtables.tsv), CIntelligentPointer<CThingAICreature> 0x0123E7E0.
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800; per-element-type list<...>::list(const allocator&) 0x0065F1AD,
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800; per-element-type list<...>::list(const allocator&) 0x0065F1AD,
 // 0x00512870, 0x004B8920 (list<CIntelligentPointer<CThing> >, x6), 0x0065F1DF, 0x0065F211, 0x0065F243, 0x0065F25E,
 // 0x0065F279, 0x0065F294, 0x0065F2AF, 0x0065F2CA, 0x0065F2E5; set<long>::set() 0x005157F0;
 // CBaseIntelligentPointer::CBaseIntelligentPointer() 0x00A01B10 (x2); CTCVillage::InitialiseSecuritySweeps() 0x00659085.
@@ -20,14 +22,9 @@
 // after the out-of-line base ctor.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-    CTCBase(CThing* parent);                    // 0x00686800
-};
 #pragma pack(push, 1)
 class CBaseObject;
 class CBaseObjectPointer;
@@ -119,11 +116,11 @@ class CTCVillage : public CTCBase { public:
     bool             CurrentIsHeroCriminal;                  // +0xe4
 
     virtual void v01();
-    CTCVillage(CThing* parent);
+    CTCVillage(CThing& parent);
     void InitialiseSecuritySweeps();                         // 0x00659085
 };
 
-CTCVillage::CTCVillage(CThing* parent)
+CTCVillage::CTCVillage(CThing& parent)
     : CTCBase(parent)
     , TorchTasksUpdateFrame(0)
     , LastAweCrowdEventFrame(0)

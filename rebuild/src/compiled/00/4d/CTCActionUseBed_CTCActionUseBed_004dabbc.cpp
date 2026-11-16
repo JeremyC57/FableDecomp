@@ -1,8 +1,9 @@
-// CTCActionUseBed::CTCActionUseBed(CThing*) -- CTCActionUseBase(owner), own vtable, idle bed state, usable by the hero, two empty thing pointers
-// Leaf: ??0CTCActionUseBed
+// CTCActionUseBed::CTCActionUseBed(CThing&) -- CTCActionUseBase(owner), own vtable, idle bed state, usable by the hero, two empty thing pointers
+// Leaf: ??0CTCActionUseBed@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCActionUseBase(CThing&) (0x004DA939) as both PDBs spell it; this constructor too.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DABBC, length 75 bytes (a /Os module: unaligned entry,
 // `push dword ptr [esp+0Ch]` pass-through, `or dword ptr [..],-1`).
-// Callees: CTCActionUseBase::CTCActionUseBase(CThing*) @ 0x004DA939, CIntelligentPointer<CThing>::
+// Callees: CTCActionUseBase::CTCActionUseBase(CThing&) @ 0x004DA939, CIntelligentPointer<CThing>::
 // CIntelligentPointer(CThing*) @ 0x004A96F0 (x2, with a null thing). Own vtable 0x0123F784 =
 // CTCActionUseBed (rtti-vtables.tsv); the destructor is 0x007EBDD0.
 //
@@ -20,7 +21,7 @@ class CThing;
 class CTCActionUseBase { public:                                   // 0x14 bytes, vtable 0x0123F09C
     virtual void v00();
     unsigned char _body[0x10];                              // CTCBase + PActionUseDef + Usable
-    CTCActionUseBase(CThing* owner);                        // 0x004DA939
+    CTCActionUseBase(CThing& owner);                        // 0x004DA939
 };
 
 #pragma pack(push, 1)
@@ -43,11 +44,11 @@ class CTCActionUseBed : public CTCActionUseBase { public:                 // vta
     CIntelligentPointer PBuilding;                          // +0x23
     CIntelligentPointer PThingUser;                         // +0x2b
     virtual void v00();
-    CTCActionUseBed(CThing* owner);
+    CTCActionUseBed(CThing& owner);
 };
 #pragma pack(pop)
 
-CTCActionUseBed::CTCActionUseBed(CThing* owner)
+CTCActionUseBed::CTCActionUseBed(CThing& owner)
     : CTCActionUseBase(owner)
     , WaitingForFadeOut(false)
     , WaitingForFadeIn(false)

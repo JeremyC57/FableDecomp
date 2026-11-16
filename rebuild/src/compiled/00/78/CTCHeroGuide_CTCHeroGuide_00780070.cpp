@@ -1,10 +1,14 @@
 // CTCHeroGuide::CTCHeroGuide(CThing* parent) -- CTCBase(parent), own vtable, the QuestRewards list (list<CTCHeroGuide::CQuestReward>, 0x14-byte nodes) default-constructed
-// Leaf: ??0CTCHeroGuide
+// Leaf: ??0CTCHeroGuide@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroGuide@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe @ 0x00780070, 50 bytes (+ int3 padding).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, malloc @ 0x00BFEA0E (the STLport node allocator).
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, malloc @ 0x00BFEA0E (the STLport node allocator).
 // Label: the manifest's "CTextContainer::CTextContainer" is propagated -- the vtable stored, 0x0126B0F4, is CTCHeroGuide
 // in rtti-vtables.tsv; PDB CTCHeroGuide holds only QuestRewards at +0xc.
 // Shape: identical to CTCRegionFollower's constructor (0x006AED80) with a 0xc-byte element.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
@@ -22,21 +26,14 @@ template <class T> struct CRetailList {
     }
 };
 
-struct CTCBase_Calls {                             // CTCBase, 0xc bytes
-    virtual void v00();
-    unsigned char _body[0x8];                      // ParentThing +4, ToBeRemoved +8, IsInGlobalUpdateTCs +9
-    CTCBase_Calls(CThing* parent);                 // 0x00686800
-};
-
 struct CQuestReward { unsigned char _body[0xc]; };  // CTCHeroGuide::CQuestReward (retail 0xc bytes)
 
-class CTCHeroGuide : public CTCBase_Calls { public:              // vtable 0x0126B0F4
+class CTCHeroGuide : public CTCBase { public:              // vtable 0x0126B0F4
     CRetailList<CQuestReward> QuestRewards;        // +0x0c
-    virtual void v00();
-    CTCHeroGuide(CThing* parent);
+    CTCHeroGuide(CThing& parent);
 };
 
-CTCHeroGuide::CTCHeroGuide(CThing* parent)
-    : CTCBase_Calls(parent)
+CTCHeroGuide::CTCHeroGuide(CThing& parent)
+    : CTCBase(parent)
 {
 }

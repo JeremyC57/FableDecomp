@@ -1,5 +1,7 @@
 // CTCBattleCharge::CTCBattleCharge(CThing* parent) -- set up the battle-charge component: members cleared, its special-ability def fetched, a player's spell-cast state switched to charge mode, the spell level read from the inventory abilities, then Reset and the creature's current action finished
-// Leaf: ??0CTCBattleCharge
+// Leaf: ??0CTCBattleCharge@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCBattleCharge@@QAE@AAVCThing@@@Z).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x007A71B0, 448 bytes (`ret 4`). Vtable 0x0126CBFC (CTCBattleCharge, RTTI). Callees: CTCBase(CThing*) @ 0x00686800,
 // CBaseIntelligentPointer() @ 0x00A01B10, SetPItem @ 0x00A01B90 (CIntelligentPointer<CThing> vtable 0x01238C6C),
@@ -14,6 +16,8 @@
 // ChargeDelayFrameCount +0x8c, CompletedExitModes +0x90 sit 4 below the PDB. The thing's type byte +0x10 (2 = creature).
 // Shape: the landed CTCWillEnflame/CTCForcePushPower constructor (0x007A43A0 / 0x007A54A0): default-constructed intelligent
 // pointers store only their vtable, the effect pointers are constructed from 0 (SetPItem); the def name is block-scoped.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 class CThing;
 class CBaseObject;
@@ -126,14 +130,6 @@ struct CTCSpellCastState {                          // interface type 0xA7 (clas
     long Mode;                                      // +0x10
 };
 
-class CTCBase {
-public:
-    CTCBase(CThing* parent);                        // 0x00686800
-    virtual void v00();
-    CThing* ParentThing;                            // +0x04
-    unsigned char _pad08[0x4];                      // ToBeRemoved, IsInGlobalUpdateTCs
-};
-
 #include "engine/C3DVector.h"
 
 template<class T> struct CVector {                  // retail STLport vector, 12 bytes
@@ -170,12 +166,11 @@ public:
     bool FakeCollideWithSomething;                  // +0x89
     long ChargeDelayFrameCount;                     // +0x8c
     bool CompletedExitModes;                        // +0x90
-    CTCBattleCharge(CThing* parent);
-    virtual void v00();
+    CTCBattleCharge(CThing& parent);
     void Reset();                                   // 0x007A6F00
 };
 
-CTCBattleCharge::CTCBattleCharge(CThing* parent)
+CTCBattleCharge::CTCBattleCharge(CThing& parent)
     : CTCBase(parent), DashDistance(0.0f), SpellLevel(0), RadiusOfEffect(0.0f), ShieldEffect(0), LeftFeetEffect(0),
       RightFeetEffect(0), PoseDelay(0), StartPoseDelay(false), HitSomething(false), DisplacementVector(0.0f, 0.0f, 0.0f),
       FakeCollideWithSomething(false), ChargeDelayFrameCount(0), CompletedExitModes(false)

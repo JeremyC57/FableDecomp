@@ -1,16 +1,20 @@
 // CTCLight::CTCLight(CThing* thing) -- CTCBase(thing) + the graphic-appearance component base, everything cleared (flicker factors 1.0), then register with the owner's graphic appearance and fetch the light sub-def
-// Leaf: ??0CTCLight
+// Leaf: ??0CTCLight@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCLight@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00640F00, length 120 bytes (`ret 4`). Vtables: CTCLight primary 0x0125A194, the
 // NGraphicAppearance::CAGraphicAppearanceComponent base 0x0125A170 (stored first by its inline ctor) and CTCLight's side 0x0125A208 at +0xC
 // (as the landed ~CTCLight 0x00640F80).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated),
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated),
 // NGraphicAppearance::CTCGraphicAppearance::RegisterComponent @ 0x004BD390 (owner +0x64, the +0xC subobject; catalog
 // "DoubleLinkedListInsertNode" is propagated), CDefClassBase::GetSubDef<CLightDef> @ 0x0059346A (owner def +0x70; the catalog's
 // <CAbilityDef> instantiation is a byte twin).
 // Layout (retail = PDB CTCLight 0x4C with 12-byte STLport vectors, 0x44): PLightInfo +0x10, PLightDef +0x18, Active/Overridden
 // +0x1C/+0x1D, AccumilativeFlickerFactor/OldAccumilativeFlickerFactor +0x20/+0x24, Initialised +0x28, FlareSprites +0x2C, Lights +0x38.
 // Shape: init-list in declaration order; the vectors as the STLport _Vector_base + _STLP_alloc_proxy model (places `lea edi`); the zeroes share eax, the 1.0f pair edx; the body registers then calls GetSubDef(&PLightDef).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 struct CLightInfo;
 #include "engine/CCountedPointer.h"
@@ -61,13 +65,6 @@ template <class T> struct CVectorBase {             // STLport _Vector_base<T, a
 template<class T> struct CPtrVector : CVectorBase<T*> {   // STLport vector<T*> (12 bytes)
     CPtrVector() : CVectorBase<T*>(CAllocator<T*>()) { }
 };
-class CTCBase { public:
-    virtual ~CTCBase();
-    CThing* ParentThing;                            // +0x04
-    bool ToBeRemoved;                               // +0x08
-    bool IsInGlobalUpdateTCs;                       // +0x09
-    CTCBase(CThing* thing);                         // 0x00686800
-};
 class CTCLight : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:   // vtables 0x0125A194 / 0x0125A208
     CCountedPointer<CLightInfo>     PLightInfo;             // +0x10
     CDefPointer<const CLightDef>    PLightDef;              // +0x18
@@ -78,12 +75,12 @@ class CTCLight : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceC
     bool  Initialised;                                      // +0x28
     CPtrVector<NGraphicAppearance::CPrimitive> FlareSprites;   // +0x2c
     CPtrVector<NGraphicAppearance::CPrimitive> Lights;         // +0x38
-    CTCLight(CThing* thing);
+    CTCLight(CThing& thing);
     virtual ~CTCLight();
     virtual void OnAppearanceDraw();
 };
 
-CTCLight::CTCLight(CThing* thing)
+CTCLight::CTCLight(CThing& thing)
     : CTCBase(thing)
     , Active(false)
     , Overridden(false)

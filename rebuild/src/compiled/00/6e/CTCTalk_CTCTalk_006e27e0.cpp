@@ -1,6 +1,9 @@
 // CTCTalk::CTCTalk(CThing* owner) -- talk component constructor: CTCBase(owner), speech state cleared, attitude 1, no sample loaded (-1.0f), empty narrator and voice strings
+// Leaf: ??0CTCTalk@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCTalk@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E27E0, length 95 bytes (ret 4). Vtable 0x0125FFEC (CTCTalk).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CCharString::CCharString(const char*, long) @ 0x0099EBF0 (with the
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CCharString::CCharString(const char*, long) @ 0x0099EBF0 (with the
 // empty literal @ 0x0122D70E and -1), CCharString::CCharString() @ 0x0099E4B0. Created by Create_CTCTalk @ 0x004D2E0A
 // (operator new(0x3c)).
 // Ego_r.pdb CTCTalk (0x3c bytes): SpeechSample +0x0c, SampleStartedFrame +0x10, SampleDurationFrames +0x14, Attitude +0x18,
@@ -9,15 +12,9 @@
 // Shape: an initialiser list in declaration order; the scalars before LastNarrator are stored right after the vtable
 // (sharing the ebx zero register) while LastNarrator's constructor arguments are already pushed; the bools between the
 // two strings are stored before DialogueVoice's default constructor.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                     // +0x04
-    bool    ToBeRemoved;                     // +0x08
-    bool    IsInGlobalUpdateTCs;             // +0x09
-    CTCBase(CThing* owner);                  // 0x00686800
-};
 
 class CCharString { public:
     void* m_pData;
@@ -43,11 +40,10 @@ class CTCTalk : public CTCBase { public:                   // vtable 0x0125FFEC
     bool                  LipSynching;           // +0x35
     bool                  UseLipSynching;        // +0x36
     CCharString           DialogueVoice;         // +0x38
-    virtual void v00();
-    CTCTalk(CThing* owner);
+    CTCTalk(CThing& owner);
 };
 
-CTCTalk::CTCTalk(CThing* owner)
+CTCTalk::CTCTalk(CThing& owner)
     : CTCBase(owner)
     , SpeechSample(0)
     , SampleStartedFrame(0)

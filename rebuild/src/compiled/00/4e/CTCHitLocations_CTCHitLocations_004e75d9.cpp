@@ -1,9 +1,11 @@
 #pragma optimize("s", on)
 // CTCHitLocations::CTCHitLocations(CThing* parent) -- CTCBase(parent), own vtable, an empty hit-location vector, no default hit location or definition, a zero bounding sphere not yet cached
-// Leaf: ??0CTCHitLocations
+// Leaf: ??0CTCHitLocations@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHitLocations@@QAE@AAVCThing@@@Z).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E75D9, length 64 bytes.
-// Callee: CTCBase::CTCBase(CThing*) 0x00686800 (manifest label "CEngineSubPrimitive2DClockSprite" is
+// Callee: CTCBase::CTCBase(CThing&) 0x00686800 (manifest label "CEngineSubPrimitive2DClockSprite" is
 //         propagated; the body stores ParentThing +4, the two flag bytes +8/+9 and the CTCBase vtable).
 // Vtable 0x012434E4 (RTTI: CTCHitLocations). PDB CTCHitLocations (56 bytes) with the retail 12-byte
 // std::vector: HitLocations +0x0c, PDefaultHitLocation +0x18, PDef (CDefPointer) +0x1c,
@@ -12,17 +14,11 @@
 // an x87 `fldz ; fstp` pair, the integer zeros and the bool share eax; the vtable store precedes all
 // member stores because the vector, the def pointer and the vector3 are member objects with inline
 // constructors.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 struct CHitLocation;
 class CHitLocationsDef;
-
-class CTCBase { public:
-    virtual void v00();
-    CThing*       ParentThing;                 // +0x04
-    bool          ToBeRemoved;                 // +0x08
-    bool          IsInGlobalUpdateTCs;         // +0x09
-    CTCBase(CThing* parent);                   // 0x00686800
-};
 
 struct CHitLocationVector {                    // retail std::vector<pair<CHitLocation, long> >: three words
     void* m_pFirst;
@@ -39,17 +35,16 @@ struct CHitLocationsDefPointer {               // CDefPointer<const CHitLocation
 #include "engine/C3DVector.h"
 
 class CTCHitLocations : public CTCBase { public:             // vtable 0x012434E4
-    virtual void v00();
     CHitLocationVector      HitLocations;                  // +0x0c
     CHitLocation*           PDefaultHitLocation;           // +0x18
     CHitLocationsDefPointer PDef;                          // +0x1c
     C3DVector               BoundingSphereOffsetFromPos;   // +0x20
     float                   BoundingSphereRadius;          // +0x2c
     bool                    CachedBoundingSphere;          // +0x30
-    CTCHitLocations(CThing* parent);
+    CTCHitLocations(CThing& parent);
 };
 
-CTCHitLocations::CTCHitLocations(CThing* parent)
+CTCHitLocations::CTCHitLocations(CThing& parent)
     : CTCBase(parent),
       PDefaultHitLocation(0),
       BoundingSphereOffsetFromPos(0.0f, 0.0f, 0.0f),

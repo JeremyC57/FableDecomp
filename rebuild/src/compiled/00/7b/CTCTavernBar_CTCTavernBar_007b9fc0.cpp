@@ -1,7 +1,10 @@
 // CTCTavernBar::CTCTavernBar(CThing* owner) -- tavern-bar component constructor: CTCBase(owner), an empty jug vector, a null barman pointer
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Leaf: ??0CTCTavernBar@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCTavernBar@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B9FC0, length 52 bytes (ret 4). Vtable 0x0126DC4C (CTCTavernBar).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10.
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10.
 // Vtable 0x0123E7E0 = CIntelligentPointer (the barman pointer's own vtable). Created by the factory @ 0x004D5184.
 // Ego_r.pdb CTCTavernBar (0x24): Jugs (vector<CIntelligentPointer<CThingObject>>) +0x0c, Barman
 // (CIntelligentPointer<CThingAICreature>) +0x1c; the retail vector is 12 bytes, so Barman sits at +0x18 (sizeof 0x20).
@@ -10,18 +13,12 @@
 // vtable store. The vector is modelled as the real STLport structure (the landed 0x00547600 model): _M_start/_M_finish
 // are _Vector_base initialisers and the end pointer an _STLP_alloc_proxy member built from (allocator(), 0) -- that is
 // what schedules `mov ecx,edi` between the second and third zero store (a plain three-pointer init list puts it first).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CBaseObject;
 class CThingObject;
 class CThingAICreature;
-
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                     // +0x04
-    bool    ToBeRemoved;                     // +0x08
-    bool    IsInGlobalUpdateTCs;             // +0x09
-    CTCBase(CThing* owner);                  // 0x00686800
-};
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -50,11 +47,10 @@ template<class T> struct CRetailVector : CVectorBase<T> {   // retail std::vecto
 class CTCTavernBar : public CTCBase { public:              // vtable 0x0126DC4C
     CRetailVector<CIntelligentPointer<CThingObject> > Jugs;   // +0x0c
     CIntelligentPointer<CThingAICreature> Barman;             // +0x18
-    virtual void v00();
-    CTCTavernBar(CThing* owner);
+    CTCTavernBar(CThing& owner);
 };
 
-CTCTavernBar::CTCTavernBar(CThing* owner)
+CTCTavernBar::CTCTavernBar(CThing& owner)
     : CTCBase(owner)
 {
 }

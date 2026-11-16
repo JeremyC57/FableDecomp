@@ -1,7 +1,9 @@
 // CTCWillEnflame::CTCWillEnflame(CThing* parent) -- constructor: CTCBase, cleared flags, null def pointer and spell level, null removed-item and target pointers; arm the owner's spell-cast state component, load SPECIAL_ABILITIES_ENFLAME_DEF and take the spell level from the owner's ability inventory
-// Leaf: ??0CTCWillEnflame
+// Leaf: ??0CTCWillEnflame@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCWillEnflame@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A43A0, 281 bytes (+7 int3), `ret 4`; vtable 0x0126C824.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800; CBaseIntelligentPointer ctor/SetPItem @ 0x00A01B10/0x00A01B90 (x2,
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800; CBaseIntelligentPointer ctor/SetPItem @ 0x00A01B10/0x00A01B90 (x2,
 //   CIntelligentPointer<CThing> vtable 0x01238C6C); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (non-const,
 //   interface 0xA7 = word 5 bit 7: `test cl,cl ; jns`) and the const copy @ 0x004365B0 (interface 0x6F, word 3 bit 15);
 //   CCharString(const char*, long) @ 0x0099EBF0 ("SPECIAL_ABILITIES_ENFLAME_DEF" @ 0x01235C1C), ~CCharString @ 0x0099EAE0;
@@ -14,6 +16,8 @@
 //   parent (const LowerBound, component straight into ecx).
 // Layout: Ego_r.pdb CTCWillEnflame (0x2C) matches retail: EnflameActionInitialised +0x0C, Released +0x0D, PDef +0x10,
 //   SpellLevel +0x14, PItemRemoved +0x18, IsZTargetting +0x20, PTarget +0x21 (unaligned).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 class CThing;
 class CBaseObject;
@@ -113,14 +117,6 @@ struct CTCSpellCastState {                          // interface type 0xA7 (clas
     long Mode;                                      // +0x10
 };
 
-class CTCBase {
-public:
-    CTCBase(CThing* parent);                        // 0x00686800
-    virtual void v00();
-    CThing* ParentThing;                            // +0x04
-    unsigned char _pad08[0x4];                      // ToBeRemoved, IsInGlobalUpdateTCs
-};
-
 #pragma pack(push, 1)
 class CTCWillEnflame : public CTCBase {             // vtable 0x0126C824
 public:
@@ -132,12 +128,11 @@ public:
     CIntelligentPointer<CThing> PItemRemoved;       // +0x18
     bool IsZTargetting;                             // +0x20
     CIntelligentPointer<CThing> PTarget;            // +0x21 (unaligned, as the PDB)
-    CTCWillEnflame(CThing* parent);
-    virtual void v00();
+    CTCWillEnflame(CThing& parent);
 };
 #pragma pack(pop)
 
-CTCWillEnflame::CTCWillEnflame(CThing* parent)
+CTCWillEnflame::CTCWillEnflame(CThing& parent)
     : CTCBase(parent), EnflameActionInitialised(false), Released(false), SpellLevel(0), PItemRemoved(0),
       IsZTargetting(false), PTarget(0)
 {

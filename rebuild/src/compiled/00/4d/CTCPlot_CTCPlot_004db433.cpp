@@ -1,5 +1,7 @@
 #pragma optimize("s",on)
-// CTCPlot::CTCPlot(CThing*) -- base CTCDiceGame(argument) then this class's vtable
+// CTCPlot::CTCPlot(CThing&) -- base CTCDiceGame(argument) then this class's vtable
+// Leaf: ??0CTCPlot@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCDiceGame(CThing&) (0x004DB3DB) as both PDBs spell it; this constructor too.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DB433, oracle length 24 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -12,15 +14,15 @@ class CThing;
 
 class CTCDiceGame { public:
     virtual void v00();
-    CTCDiceGame(CThing* argument);            // 0x004DB3DB
+    CTCDiceGame(CThing& argument);            // 0x004DB3DB
 };
 
 class CTCPlot : public CTCDiceGame { public:
     virtual void v00();
-    CTCPlot(CThing* argument);
+    CTCPlot(CThing& argument);
 };
 
-CTCPlot::CTCPlot(CThing* argument)
+CTCPlot::CTCPlot(CThing& argument)
     : CTCDiceGame(argument)
 {
 }

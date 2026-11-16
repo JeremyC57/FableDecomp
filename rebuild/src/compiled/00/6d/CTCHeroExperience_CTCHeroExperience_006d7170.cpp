@@ -1,8 +1,10 @@
 // CTCHeroExperience::CTCHeroExperience(CThing* parent) -- hero-experience component ctor: fishing level 1, zero experience, the three per-stat vectors (3, 10 and 10 zeroed longs), the pickup and attack-history lists, able to gain experience, and the hero-stats def taken from the definition manager
-// Leaf: ??0CTCHeroExperience
+// Leaf: ??0CTCHeroExperience@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroExperience@@QAE@AAVCThing@@@Z).
 //
 // Retail 0x006D7170, 344 bytes (+8 int3 padding, `ret 4`). Vtable 0x0125F6C4 (the landed dtor 0x006DB7E0 names the class).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, malloc @ 0x00BFEA0E (STLport __malloc_alloc: the three vector
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, malloc @ 0x00BFEA0E (STLport __malloc_alloc: the three vector
 // buffers and the two list header nodes; one deferred `add esp,14h`), CTCBase::GetDefinitionManager @ 0x006869D0, the def's
 // virtual slot 1 (destroy at zero count).
 // Shape: members initialised in declaration order through the STLport bases: `_Vector_base(n, alloc)` (pointers nulled, the
@@ -17,6 +19,8 @@
 // LastExperienceMultiplierParam +0x34, ExperienceAttenuationTimer +0x38, AbleToGainExperience +0x3c, Pickups +0x40,
 // ExperienceSpentOnStats +0x44, AttackHistory +0x50, PDef +0x54, PHeroCombatDef +0x58, PHeroStatsDef +0x5c; the definition
 // manager's hero-stats def pointer at +0xdc.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 #include <stddef.h>
 
@@ -112,16 +116,6 @@ template <class T> struct CRetailList {             // STLport list<T>: the head
 struct SPickup { long Type; long Amount; };             // pair<long,long>
 struct SAttack { long Attribute; long Count; };         // pair<EDamageAttribute,long>
 
-class CTCBase { public:
-    CTCBase(CThing* parent);                        // 0x00686800
-    virtual ~CTCBase();
-    CThing* ParentThing;                            // +0x04
-    bool    ToBeRemoved;                            // +0x08
-    bool    IsInGlobalUpdateTCs;                    // +0x09
-protected:
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
-};
-
 class CTCHeroExperience : public CTCBase { public:                // vtable 0x0125F6C4
     long                 FishingLevel;              // +0x0C
     long                 TotalExperiencePoints;     // +0x10
@@ -138,11 +132,11 @@ class CTCHeroExperience : public CTCBase { public:                // vtable 0x01
     CDefPointer<CHeroExperienceDef> PDef;           // +0x54
     CDefPointer<CHeroCombatDef>     PHeroCombatDef; // +0x58
     CDefPointer<CHeroStatsDef>      PHeroStatsDef;  // +0x5C
-    CTCHeroExperience(CThing* parent);
+    CTCHeroExperience(CThing& parent);
     virtual ~CTCHeroExperience();
 };
 
-CTCHeroExperience::CTCHeroExperience(CThing* parent)
+CTCHeroExperience::CTCHeroExperience(CThing& parent)
     : CTCBase(parent),
       FishingLevel(1),
       TotalExperiencePoints(0),

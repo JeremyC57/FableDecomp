@@ -1,4 +1,7 @@
-// CTCTimeAppearanceFade::CTCTimeAppearanceFade(CEngineInternalPrimitive2DClockSprite*) -- base CEngineSubPrimitive2DClockSprite(argument) then this class's vtable
+// CTCTimeAppearanceFade::CTCTimeAppearanceFade(CThing&) -- base CEngineSubPrimitive2DClockSprite(argument) then this class's vtable
+// Leaf: ??0CTCTimeAppearanceFade@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CEngineSubPrimitive2DClockSprite (which bound ??0CEngineSubPrimitive2DClockSprite@@QAE@PAVCEngineInternalPrimitive2DClockSprite@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCTimeAppearanceFade@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007785E0, oracle length 25 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -7,19 +10,15 @@
 // One-argument constructor of a polymorphic class that only forwards the argument to its base
 // constructor @ 0x00686800; the compiler then stores this class's vtable (0x0126AA64, named
 // through rtti-vtables.tsv) and returns `this`. One of 12 bodies of this shape.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CEngineInternalPrimitive2DClockSprite;
 
-struct CEngineSubPrimitive2DClockSprite {
-    virtual void v00();
-    CEngineSubPrimitive2DClockSprite(CEngineInternalPrimitive2DClockSprite* argument);            // 0x00686800
+struct CTCTimeAppearanceFade : CTCBase {
+    CTCTimeAppearanceFade(CThing& argument);
 };
 
-struct CTCTimeAppearanceFade : CEngineSubPrimitive2DClockSprite {
-    virtual void v00();
-    CTCTimeAppearanceFade(CEngineInternalPrimitive2DClockSprite* argument);
-};
-
-CTCTimeAppearanceFade::CTCTimeAppearanceFade(CEngineInternalPrimitive2DClockSprite* argument)
-    : CEngineSubPrimitive2DClockSprite(argument)
+CTCTimeAppearanceFade::CTCTimeAppearanceFade(CThing& argument)
+    : CTCBase(argument)
 {
 }

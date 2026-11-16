@@ -1,9 +1,10 @@
-// CTCCameraPointScriptedSpline::CTCCameraPointScriptedSpline(CThing*) -- the spline camera point: empty splines, key cameras, message list and anim set, default tension 0.8
-// Leaf: ??0CTCCameraPointScriptedSpline
+// CTCCameraPointScriptedSpline::CTCCameraPointScriptedSpline(CThing&) -- the spline camera point: empty splines, key cameras, message list and anim set, default tension 0.8
+// Leaf: ??0CTCCameraPointScriptedSpline@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCCameraPointDefinitionBase(CThing&) (0x0075C180) as both PDBs spell it; this constructor too.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075DD10, 221 bytes, `ret 4`. Label correction: the catalog calls this
 // row "CTCHeroRangedAttacks::CTCHeroRangedAttacks"; the vtable it stores, 0x0126A0BC, is CTCCameraPointScriptedSpline
 // (rtti-vtables.tsv / RTTI locator); the real CTCHeroRangedAttacks ctor is 0x00789BB0.
-// Callees: CTCCameraPointDefinitionBase::CTCCameraPointDefinitionBase(CThing*) @ 0x0075C180 (manifest
+// Callees: CTCCameraPointDefinitionBase::CTCCameraPointDefinitionBase(CThing&) @ 0x0075C180 (manifest
 //          "CTCOpinionSource" is propagated), malloc @ 0x00BFEA0E (the list and tree header nodes),
 //          CCharString::CCharString() @ 0x0099E4B0.
 // Shape: one zero register (ebx) for every word after the vtable store: the five CCountedPointer<CCardinalSpline>
@@ -28,7 +29,7 @@ class CCharString { public:
 class CTCCameraPointDefinitionBase { public:                // vtable 0x01269B04
     virtual void v00();
     unsigned char _base[0x5c];                       // +0x04 .. +0x60 (CTCBase, definition members, edit preview)
-    CTCCameraPointDefinitionBase(CThing* thing);     // 0x0075C180
+    CTCCameraPointDefinitionBase(CThing& thing);     // 0x0075C180
 };
 
 class CCardinalSpline;
@@ -94,10 +95,10 @@ class CTCCameraPointScriptedSpline : public CTCCameraPointDefinitionBase { publi
     float                 AnimationSpeed;            // +0xBC
     CLongSet              ValidAnimList;             // +0xC0
     virtual void v00();
-    CTCCameraPointScriptedSpline(CThing* thing);
+    CTCCameraPointScriptedSpline(CThing& thing);
 };
 
-CTCCameraPointScriptedSpline::CTCCameraPointScriptedSpline(CThing* thing)
+CTCCameraPointScriptedSpline::CTCCameraPointScriptedSpline(CThing& thing)
     : CTCCameraPointDefinitionBase(thing), EditPreviewIndex(0.0f)
 {
     PauseFor = 0.0f;

@@ -1,22 +1,26 @@
 #pragma optimize("s",on)
-// CTCBed::Alloc(CThing&) -- factory: new CTCBed(owner)
+// CTCBed::Alloc(CThing& thing) -- the registry factory: a new CTCBed for `thing` (operator new(0x18) 0x00BFEA1A, null-checked, then
+//   the constructor 0x00746820), returned as its CTCBase
+// Leaf: ?Alloc@CTCBed@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D35E2, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x18 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCBed::CTCBed ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCBed) = 0x18 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x00746820 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCBed@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCBed@@QAE@AAVCThing@@@Z (0x00746820, landed). (Landed earlier as a generated free function CTCBed_Alloc(CThing*) returning CTCBed*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCBed { public:
-    unsigned char _body[0x18];       // sizeof(CTCBed) = 0x18
-    CTCBed(CThing* owner);                   // 0x00746820
+class CTCBed : public CTCBase {
+public:
+    CTCBed(CThing& thing);                        // 0x00746820
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x18 - 0xC];              // the class's own members (not modelled); sizeof(CTCBed) = 0x18
 };
 
-CTCBed* __fastcall CTCBed_Alloc(CThing* owner)
+CTCBase* __fastcall CTCBed::Alloc(CThing& thing)
 {
-    return new CTCBed(owner);
+    return new CTCBed(thing);
 }

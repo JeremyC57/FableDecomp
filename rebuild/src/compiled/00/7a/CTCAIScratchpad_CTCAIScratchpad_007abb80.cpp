@@ -1,8 +1,10 @@
-// CTCAIScratchpad::CTCAIScratchpad(CThing*) -- CTCBase(owner), own vtable, four empty strings, null def pointer
-// Leaf: ??0CTCAIScratchpad
+// CTCAIScratchpad::CTCAIScratchpad(CThing&) -- CTCBase(owner), own vtable, four empty strings, null def pointer
+// Leaf: ??0CTCAIScratchpad@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCAIScratchpad@@QAE@AAVCThing@@@Z).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007ABB80, length 67 bytes (+ int3 padding).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is a
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is a
 // propagated name), CCharString::CCharString() @ 0x0099E4B0 (x4). Own vtable 0x0126D07C (rtti-vtables.tsv).
 //
 // Layout = Ego_r.pdb CTCAIScratchpad (0x84 bytes): the CCharString members Action +0x48, TargetName +0x50,
@@ -11,16 +13,10 @@
 // Shape: base constructor, own vtable store (scheduled after the first member's `lea`), the four string
 // default constructors in declaration order, then the def pointer's inline constructor (a single
 // zero store). engine/CTCBase.h holds the layout only, so the base is modelled as `CTCBase_Calls`.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CAIScratchpadDef;
-
-struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
-    virtual void v00();
-    CThing* ParentThing;                                    // +0x04
-    bool    ToBeRemoved;                                    // +0x08
-    bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase_Calls(CThing* thing);                           // 0x00686800
-};
 
 class CCharString { public:
     void* m_pData;
@@ -35,7 +31,7 @@ class CDefPointer { public:
 
 #include "engine/C3DVector.h"
 
-class CTCAIScratchpad : public CTCBase_Calls { public:                    // vtable 0x0126D07C
+class CTCAIScratchpad : public CTCBase { public:                    // vtable 0x0126D07C
     unsigned long  ThankingPhrase;                          // +0x0c
     unsigned long  IgnoringPhrase;                          // +0x10
     C3DVector      WanderCentrePoint;                       // +0x14
@@ -70,11 +66,10 @@ class CTCAIScratchpad : public CTCBase_Calls { public:                    // vta
     bool           AvoidRegionExits;                        // +0x7b
     float          TargetingDistanceOffset;                 // +0x7c
     CDefPointer<CAIScratchpadDef> PDef;                     // +0x80
-    virtual void v00();
-    CTCAIScratchpad(CThing* owner);
+    CTCAIScratchpad(CThing& owner);
 };
 
-CTCAIScratchpad::CTCAIScratchpad(CThing* owner)
-    : CTCBase_Calls(owner)
+CTCAIScratchpad::CTCAIScratchpad(CThing& owner)
+    : CTCBase(owner)
 {
 }

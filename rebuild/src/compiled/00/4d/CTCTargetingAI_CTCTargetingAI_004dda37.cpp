@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DDA37, length 72 bytes; a frame-pointer size TU
 // (`push ebp ; mov ebp,esp`, `push dword ptr [ebp+8]` pass-through, the allocator tag homed in the
 // dead argument slot `lea eax,[ebp+0Bh]`): `#pragma optimize("y", off)` + `#pragma optimize("s", on)`.
-// Callees: CTCTargetingBase::CTCTargetingBase(CThing*) @ 0x007F58E0, CBaseIntelligentPointer::
+// Callees: CTCTargetingBase::CTCTargetingBase(CThing&) @ 0x007F58E0, CBaseIntelligentPointer::
 // CBaseIntelligentPointer() @ 0x00A01B10 (x2), the sentinel-node std::list constructor @ 0x004B8920
 // (landed as CRetailList_node0x10). Vtables: 0x012411FC = CTCTargetingAI, 0x0123E7D8 =
 // CIntelligentPointer<CThingCreatureBase> (rtti-vtables.tsv; held in edi for both member stores).
@@ -10,7 +10,8 @@
 // Layout = Ego_r.pdb CTCTargetingAI: PBestEnemyCreatureForAttack +0x38, PScriptTargetOverride +0x40,
 // ThingsToNotAttack +0x48 (list, 4 bytes in retail). Shape as the landed CTCThingOwner 0x004DDAED:
 // the list takes its allocator by const reference to an empty temporary with a user constructor.
-// Leaf: ??0CTCTargetingAI
+// Leaf: ??0CTCTargetingAI@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCTargetingBase(CThing&) (0x007F58E0) as both PDBs spell it; this constructor too.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -20,7 +21,7 @@ class CBaseObject;
 class CTCTargetingBase { public:
     virtual void v00();
     unsigned char _pad04[0x38 - 0x04];                      // CTCBase + the targeting base state
-    CTCTargetingBase(CThing* thing);                        // 0x007F58E0
+    CTCTargetingBase(CThing& thing);                        // 0x007F58E0
 };
 
 class CBaseObjectPointer;
@@ -41,10 +42,10 @@ class CTCTargetingAI : public CTCTargetingBase { public:                  // vta
     CIntelligentPointer<CThingCreatureBase> PScriptTargetOverride;          // +0x40
     CRetailList_node0x10        ThingsToNotAttack;              // +0x48
     virtual void v00();
-    CTCTargetingAI(CThing* thing);
+    CTCTargetingAI(CThing& thing);
 };
 
-CTCTargetingAI::CTCTargetingAI(CThing* thing)
+CTCTargetingAI::CTCTargetingAI(CThing& thing)
     : CTCTargetingBase(thing)
 {
 }

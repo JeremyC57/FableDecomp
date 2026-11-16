@@ -1,22 +1,26 @@
 #pragma optimize("s",on)
-// CTCAISummon::Alloc(CThing&) -- factory: new CTCAISummon(owner)
+// CTCAISummon::Alloc(CThing& thing) -- the registry factory: a new CTCAISummon for `thing` (operator new(0x18) 0x00BFEA1A, null-checked, then
+//   the constructor 0x004DF2D4), returned as its CTCBase
+// Leaf: ?Alloc@CTCAISummon@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E181D, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x18 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCAISummon::CTCAISummon ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCAISummon) = 0x18 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x004DF2D4 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCAISummon@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCAISummon@@QAE@AAVCThing@@@Z (0x004DF2D4, landed). (Landed earlier as a generated free function CTCAISummon_Alloc(CThing*) returning CTCAISummon*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCAISummon { public:
-    unsigned char _body[0x18];       // sizeof(CTCAISummon) = 0x18
-    CTCAISummon(CThing* owner);                   // 0x004DF2D4
+class CTCAISummon : public CTCBase {
+public:
+    CTCAISummon(CThing& thing);                        // 0x004DF2D4
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x18 - 0xC];              // the class's own members (not modelled); sizeof(CTCAISummon) = 0x18
 };
 
-CTCAISummon* __fastcall CTCAISummon_Alloc(CThing* owner)
+CTCBase* __fastcall CTCAISummon::Alloc(CThing& thing)
 {
-    return new CTCAISummon(owner);
+    return new CTCAISummon(thing);
 }

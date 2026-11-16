@@ -1,9 +1,11 @@
 // CTCPreCalculatedNavigationRoute::CTCPreCalculatedNavigationRoute(CThing* thing) -- CTCBase(thing), own vtable, an empty target intelligent pointer, target UID 0, an empty route
-// Leaf: ??0CTCPreCalculatedNavigationRoute
+// Leaf: ??0CTCPreCalculatedNavigationRoute@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCPreCalculatedNavigationRoute@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E0CDF, length 59 bytes; size TU (unaligned entry, pass-through
 // `push dword ptr [esp+0Ch]` before `mov esi,ecx`): `#pragma optimize("s", on)`.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite", propagated),
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite", propagated),
 // CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10. Vtables 0x01242444 = CTCPreCalculatedNavigationRoute,
 // 0x01237F1C = CIntelligentPointer (rtti-vtables.tsv).
 // Layout = Ego_r.pdb CTCPreCalculatedNavigationRoute (0x30) with the 12-byte retail vector (0x2c): PThingToCalculateRouteTo
@@ -13,15 +15,9 @@
 // addressed once); the UID's two words and the vector's three pointers follow as five stores of one `xor eax,eax` register
 // (init-list scalar + member object with an inline zeroing constructor, all after the derived vtable store).
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-
-struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
-    virtual void v00();
-    CThing* ParentThing;                                    // +0x04
-    bool    ToBeRemoved;                                    // +0x08
-    bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase_Calls(CThing* thing);                           // 0x00686800
-};
 
 #pragma pack(push, 1)
 class CBaseObject;
@@ -38,16 +34,15 @@ struct CRetailVector_RouteNode {                            // retail std::vecto
     CRetailVector_RouteNode() : _Myfirst(0), _Mylast(0), _Myend(0) { }
 };
 
-class CTCPreCalculatedNavigationRoute : public CTCBase_Calls { public:    // vtable 0x01242444
+class CTCPreCalculatedNavigationRoute : public CTCBase { public:    // vtable 0x01242444
     CIntelligentPointer<const CThing>     PThingToCalculateRouteTo;       // +0x0c
     unsigned __int64        ThingToCalculateRouteToUID;     // +0x18
     CRetailVector_RouteNode Route;                          // +0x20
-    virtual void v00();
-    CTCPreCalculatedNavigationRoute(CThing* thing);
+    CTCPreCalculatedNavigationRoute(CThing& thing);
 };
 
-CTCPreCalculatedNavigationRoute::CTCPreCalculatedNavigationRoute(CThing* thing)
-    : CTCBase_Calls(thing)
+CTCPreCalculatedNavigationRoute::CTCPreCalculatedNavigationRoute(CThing& thing)
+    : CTCBase(thing)
     , PThingToCalculateRouteTo()
     , ThingToCalculateRouteToUID(0)
     , Route()

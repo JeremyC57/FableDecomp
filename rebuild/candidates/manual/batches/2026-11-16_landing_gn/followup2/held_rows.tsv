@@ -1,0 +1,43 @@
+target	caller_row	symbol_bound	reason
+00686800	0047df8a	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C3861: 'AddToGlobalTCs': identifier not found, even with argument-dependent lookup
+00686800	0055d520	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C3861: 'AddToGlobalTCs': identifier not found, even with argument-dependent lookup
+00686800	00562ec0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C3861: 'AddToGlobalTCs': identifier not found, even with argument-dependent lookup
+00686800	0056ac10	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C3861: 'AddToGlobalTCs': identifier not found, even with argument-dependent lookup
+00686800	005bff07	??0CTCBase@@QAE@PAVCThing@@@Z	needs hand work: not a plain ctor: NInventory::CTCInventoryBase::CTCInventoryBase
+00686800	005da6a0	??0CTCBase_Calls@@QAE@PAVCThing@@@Z	needs hand work: leaf not in either PDB
+00686800	005e4030	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C3861: 'AddToGlobalTCs': identifier not found, even with argument-dependent lookup
+00686800	006259e0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C3861: 'AddToGlobalTCs': identifier not found, even with argument-dependent lookup
+00686800	006398b0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C3861: 'AddToGlobalTCs': identifier not found, even with argument-dependent lookup
+00686800	006ddae0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2819: type 'CThing' does not have an overloaded member 'operator ->'
+00686800	007026a0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2027: use of undefined type 'CThing'
+00686800	0071afe0	??0CTCBase@@QAE@PAVCThing@@@Z	needs hand work: leaf not in either PDB
+00686800	00728000	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	00729a90	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C3861: 'AddToGlobalTCs': identifier not found, even with argument-dependent lookup
+00686800	0072e690	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	00747820	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2027: use of undefined type 'CThing'
+00686800	00750be0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	00753170	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2440: 'type cast' : cannot convert from 'CThing' to 'CThingCreatureBase *'
+00686800	0076e620	??0CTCBase@@QAE@PAVCThing@@@Z	needs hand work: leaf not in either PDB
+00686800	0077c3e0	??0CTCBase@@QAE@PAVCThing@@@Z	needs hand work: not a plain ctor: NGraphicAppearance::CTCGraphicAppearanceSprite::CTCGraphicAppearanceSprite
+00686800	00781da0	??0CTCBase@@QAE@PAVCThing@@@Z	needs hand work: local base block CTCBase not found
+00686800	00784b30	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	00787750	??0CTCBase@@QAE@PAVCThing@@@Z	needs hand work: local base block CTCBase not found
+00686800	00798570	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	0079a6e0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	007a54a0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	007a66a0	??0CTCBase@@QAE@PAVCThing@@@Z	needs hand work: not a plain ctor: NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::CTCGraphicAppearanceReplaceableMesh
+00686800	007bb800	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C3861: 'GetPWorldSeed': identifier not found, even with argument-dependent lookup
+00686800	007bf460	??0CTCBase@@QAE@PAVCThing@@@Z	needs hand work: not a plain ctor: NThingShot::CTCShotDefinitionBase::CTCShotDefinitionBase
+00686800	007c30e0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	007c4bd0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	007c5560	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	007c78c0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2027: use of undefined type 'CThing'
+00686800	007c81b0	??0CTCBase_Calls@@QAE@PAVCThing@@@Z	needs hand work: leaf not in either PDB
+00686800	007c87f0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	007ca830	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C3861: 'AddToGlobalTCs': identifier not found, even with argument-dependent lookup
+00686800	007dfb20	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2664: 'CTCBase::CTCBase' : cannot convert parameter 1 from 'CThing *' to 'CThing &'
+00686800	007dfee0	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2065: 'm_pParentThing' : undeclared identifier
+00686800	007e14c0	??0CTCBase@@QAE@PAVCThing@@@Z	needs hand work: not a plain ctor: NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::CTCGraphicAppearanceMultipleStaticMeshes
+00686800	007e2730	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C3861: 'AddToGlobalTCs': identifier not found, even with argument-dependent lookup
+00686800	007e5970	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2065: 'm_pThing' : undeclared identifier
+00686800	007e5f00	??0CTCBase@@QAE@PAVCThing@@@Z	port does not compile: error C2027: use of undefined type 'CThing'

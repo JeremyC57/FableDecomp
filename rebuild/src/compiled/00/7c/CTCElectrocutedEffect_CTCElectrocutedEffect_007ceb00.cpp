@@ -1,8 +1,10 @@
 // CTCElectrocutedEffect::CTCElectrocutedEffect(CThing* thing) -- constructor: CTCBase, a null def, zero timers, a null effect pointer and an empty tint list; load SPECIAL_ABILITIES_ELECTROCUTED_EFFECT_DEF, collect the things the owner carries into the tint list, then reset the effect
-// Leaf: ??0CTCElectrocutedEffect
+// Leaf: ??0CTCElectrocutedEffect@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCElectrocutedEffect@@QAE@AAVCThing@@@Z).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CEB00, 297 bytes (+ int3 padding), `ret 4`; vtable 0x0126F044.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800; CBaseIntelligentPointer ctor / SetPItem @ 0x00A01B10 / 0x00A01B90
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800; CBaseIntelligentPointer ctor / SetPItem @ 0x00A01B10 / 0x00A01B90
 //   (CIntelligentPointer<CThing> vtable 0x01238C6C); CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0;
 //   CGameDefinitionManager::Get @ 0x0044C6B0 (__fastcall, twice); CDefinitionManager::GetGlobalIndexFromClassIndex(const
 //   CCharString&, long) const @ 0x009AD390; CDefinitionManager::GetDef<CSpecialAbilitiesElectrocutedEffectDef>(long,
@@ -17,6 +19,8 @@
 //   CCharString homed in the dead `thing` slot, the index a named local); the carried things come in a local
 //   vector<CThing*> (zeroed after the lookup, freed by its inline destructor); `copy(begin, end, back_inserter(TintList))`
 //   inlines to the __copy call with the iterator-category temporary and a null distance pointer.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 class CThing;
@@ -146,14 +150,6 @@ public:
         return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
 };
-class CTCBase {
-public:
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04
-    bool    ToBeRemoved;                                // +0x08
-    bool    IsInGlobalUpdateTCs;                        // +0x09
-    CTCBase(CThing* thing);                             // 0x00686800
-};
 class CTCElectrocutedEffect : public CTCBase {          // vtable 0x0126F044
 public:
     CDefPointer<const CSpecialAbilitiesElectrocutedEffectDef> PDef;   // +0x0c
@@ -163,9 +159,8 @@ public:
     long FadeOutTime;                                   // +0x1c
     CIntelligentPointer<CThing> PEffect;                              // +0x20
     CThingPointerVector TintList;                       // +0x28
-    virtual void v00();
     void Reset();                                       // 0x007CE7A0
-    CTCElectrocutedEffect(CThing* thing);
+    CTCElectrocutedEffect(CThing& thing);
 };
 long NearSink_s7_0(const void* self, long seen);   // stand-in: the work Reset does outside this TU
 #pragma auto_inline(off)
@@ -177,7 +172,7 @@ __declspec(noinline) void CTCElectrocutedEffect::Reset()
 }
 #pragma auto_inline(on)
 
-CTCElectrocutedEffect::CTCElectrocutedEffect(CThing* thing)
+CTCElectrocutedEffect::CTCElectrocutedEffect(CThing& thing)
     : CTCBase(thing), CurTime(0), FadeInTime(0), FadeOutTimeStart(0), FadeOutTime(0)
 {
     long index;

@@ -1,22 +1,26 @@
 #pragma optimize("s",on)
-// CTCSpotLight::Alloc(CThing&) -- factory: new CTCSpotLight(owner)
+// CTCSpotLight::Alloc(CThing& thing) -- the registry factory: a new CTCSpotLight for `thing` (operator new(0x2c) 0x00BFEA1A, null-checked, then
+//   the constructor 0x00731D40), returned as its CTCBase
+// Leaf: ?Alloc@CTCSpotLight@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D33DC, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x2c ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCSpotLight::CTCSpotLight ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCSpotLight) = 0x2c bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x00731D40 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCSpotLight@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCSpotLight@@QAE@AAVCThing@@@Z (0x00731D40, landed). (Landed earlier as a generated free function CTCSpotLight_Alloc(CThing*) returning CTCSpotLight*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCSpotLight { public:
-    unsigned char _body[0x2c];       // sizeof(CTCSpotLight) = 0x2c
-    CTCSpotLight(CThing* owner);                   // 0x00731D40
+class CTCSpotLight : public CTCBase {
+public:
+    CTCSpotLight(CThing& thing);                        // 0x00731D40
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x2c - 0xC];              // the class's own members (not modelled); sizeof(CTCSpotLight) = 0x2c
 };
 
-CTCSpotLight* __fastcall CTCSpotLight_Alloc(CThing* owner)
+CTCBase* __fastcall CTCSpotLight::Alloc(CThing& thing)
 {
-    return new CTCSpotLight(owner);
+    return new CTCSpotLight(thing);
 }

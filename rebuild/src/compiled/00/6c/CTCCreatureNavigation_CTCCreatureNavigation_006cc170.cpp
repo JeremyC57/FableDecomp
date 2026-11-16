@@ -1,9 +1,11 @@
 // CTCCreatureNavigation::CTCCreatureNavigation(CThing* parent) -- creature navigation component: no navigator, empty navigator and steering-agent vectors, a zeroed navigation target, no thing to avoid; FrameLastNavigated -1 and CalculatingNewRoute set
-// Leaf: ??0CTCCreatureNavigation
+// Leaf: ??0CTCCreatureNavigation@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreatureNavigation@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CC170, length 106 bytes (+ int3 padding). Vtable 0x0125EC24 (CTCCreatureNavigation).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (then the
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (then the
 // CIntelligentPointer<const CThing> vtable 0x01237F1C).
 // Layout: Ego_r.pdb CTCCreatureNavigation with retail 12-byte vectors (everything after PossibleNavigators sits 4 bytes lower, after
 // Agents 8): PNavigator +0xC, PossibleNavigators +0x10, NavigationTarget +0x1C (CNavigationInput: Destination +0, Proximity +0xC,
@@ -12,14 +14,9 @@
 // CurrentSpeed +0x5C. The destination vector has a trivial ctor (not stored).
 // Shape: the zero members are initialisers (one ebx zero register, vectors as STLport _Vector_base + alloc proxy); the -1 and
 // the `true` store come last: they are body assignments.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-    CTCBase(CThing* parent);                    // 0x00686800
-};
 template <class T> struct SRetailAllocProxy {   // STLport _STLP_alloc_proxy: the end-of-storage pointer
     T* _M_data;
     SRetailAllocProxy(T* data) : _M_data(data) {}
@@ -59,10 +56,10 @@ class CTCCreatureNavigation : public CTCBase { public:
     float ProximityForDirectApproach;           // +0x58
     float CurrentSpeed;                         // +0x5c
     virtual void v01();
-    CTCCreatureNavigation(CThing* parent);
+    CTCCreatureNavigation(CThing& parent);
 };
 
-CTCCreatureNavigation::CTCCreatureNavigation(CThing* parent)
+CTCCreatureNavigation::CTCCreatureNavigation(CThing& parent)
     : CTCBase(parent)
     , PNavigator(0)
     , Speed(0)

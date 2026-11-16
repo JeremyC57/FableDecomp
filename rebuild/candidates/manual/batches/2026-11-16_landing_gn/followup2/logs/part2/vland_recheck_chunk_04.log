@@ -1,0 +1,126 @@
+addr       parity           behav  name
+004dc4d9   RELOCATION_MATCH PASS   Alloc
+004dc512   RELOCATION_MATCH PASS   Alloc
+004dc54b   RELOCATION_MATCH PASS   Alloc
+004dc58e   RELOCATION_MATCH PASS   Alloc
+004dc620   RELOCATION_MATCH PASS   Alloc
+004dc681   RELOCATION_MATCH PASS   Alloc
+004dc737   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+004dc737   RELOCATION_MATCH PASS   CTCStockItem
+004dc7e8   RELOCATION_MATCH PASS   Alloc
+004dc936   RELOCATION_MATCH PASS   Alloc
+004dcb5c   RELOCATION_MATCH PASS   Alloc
+004dcb95   RELOCATION_MATCH PASS   Alloc
+004dcbee   RELOCATION_MATCH PASS   Alloc
+004dcc27   RELOCATION_MATCH PASS   Alloc
+004dcc60   RELOCATION_MATCH PASS   Alloc
+004dccf2   RELOCATION_MATCH PASS   Alloc
+004dcd6b   RELOCATION_MATCH PASS   Alloc
+004dce1d   RELOCATION_MATCH PASS   Alloc
+004dce3a   RELOCATION_MATCH PASS   Alloc
+004dcea4   RELOCATION_MATCH PASS   Alloc
+004dcf6e   RELOCATION_MATCH PASS   Alloc
+004dda37   WARN SHARED_HEADER_AVAILABLE CTCTargetingBase
+004dda37   WARN RELOC_NAME: ??0CRetailList_node0x10@@QAE@ABUCRetailAllocator@@@Z -> 004b8920 labelled 'std::list<T_0x8_004b8920>::list'
+004dda37   RELOCATION_MATCH PASS   CTCTargetingAI
+004de414   RELOCATION_MATCH PASS   Alloc
+004de6b6   WARN RELOC_NAME: ??0CLevitatedItemList@@QAE@ABUSAllocator@@@Z -> 004ab470 labelled 'ListNode_AllocateSelfLinked'
+004de6b6   RELOCATION_MATCH PASS   CTCCreatureItemLevitationBase
+004de742   RELOCATION_MATCH PASS   CTCCreatureItemLevitationHero
+004de7fd   WARN SHARED_HEADER_AVAILABLE CDefPointer
+004de7fd   RELOCATION_MATCH PASS   CTCParticleAttacher
+004de839   WARN RELOC_NAME: ??0CRetailList_CAnimInit@@QAE@ABUCRetailAllocator@@@Z -> 004db674 labelled 'ListNode_InitSelfLinked_34'
+004de839   RELOCATION_MATCH PASS   CTCAnimatingObject
+004ded6f   WARN RELOC_NAME: ??0CRetailList_node0x10@@QAE@ABUCRetailAllocator@@@Z -> 004b8920 labelled 'std::list<T_0x8_004b8920>::list'
+004ded6f   RELOCATION_MATCH PASS   CTCParticleAttachmentTracker
+004defa7   WARN RELOC_NAME: ??0CThingPointerList@@QAE@ABUCThingPointerAllocator@@@Z -> 004b8920 labelled 'std::list<T_0x8_004b8920>::list'
+004defa7   RELOCATION_MATCH PASS   CTCKraken
+004df14b   WARN SHARED_HEADER_AVAILABLE CTCDriverBase
+004df14b   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+004df14b   RELOCATION_MATCH PASS   CTCDPhysicalObstruction
+004df2d4   WARN SHARED_HEADER_AVAILABLE CDefPointer
+004df2d4   WARN RELOC_NAME: ??0CRetailList_node0x10@@QAE@ABUCRetailAllocator@@@Z -> 004b8920 labelled 'std::list<T_0x8_004b8920>::list'
+004df2d4   RELOCATION_MATCH PASS   CTCAISummon
+004e0047   RELOCATION_MATCH PASS   Alloc
+004e0350   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase
+004e0350   RELOCATION_MATCH PASS   CTCSingleUserActionPoints
+004e079c   WARN SHARED_HEADER_AVAILABLE CTCDriverBase
+004e079c   WARN SHARED_HEADER_AVAILABLE CDefPointer
+004e079c   RELOCATION_MATCH PASS   CTCDHeroSuit
+004e09c7   RELOCATION_MATCH PASS   Alloc
+004e0aab   RELOCATION_MATCH PASS   CTCGatherPointBase
+004e0afb   WARN SHARED_HEADER_AVAILABLE CTCGatherPointBase
+004e0afb   RELOCATION_MATCH PASS   CTCGatherPointBuilding
+004e0b23   WARN SHARED_HEADER_AVAILABLE CTCGatherPointBase
+004e0b23   RELOCATION_MATCH PASS   CTCGatherPointRadialArea
+004e0bbd   RELOCATION_MATCH PASS   Alloc
+004e0c1e   RELOCATION_MATCH PASS   Alloc
+004e0c61   WARN RELOC_NAME: ??0CHasteMultiplierMap@@QAE@XZ -> 004df9a0 labelled 'std::map<T_004df9a0>::map'
+004e0c61   RELOCATION_MATCH PASS   CTCHaste
+004e0cdf   RELOCATION_MATCH PASS   CTCPreCalculatedNavigationRoute
+004e1244   RELOCATION_MATCH PASS   Alloc
+004e13fe   RELOCATION_MATCH PASS   Alloc
+004e1537   WARN RELOC_NAME: ??0CIdleStateMap@@QAE@XZ -> 004dfaa7 labelled 'std::map<T_004dfaa7>::map'
+004e1537   WARN RELOC_NAME: ??0CIdleWeightMap@@QAE@XZ -> 004dfa89 labelled 'std::map<T_004dfa89>::map'
+004e1537   WARN RELOC_NAME: ?Reset@CTCIdleScheduler@@QAEXXZ -> 008018b0 labelled 'CTCIdleScheduler::Clear'
+004e1537   RELOCATION_MATCH PASS   CTCIdleScheduler
+004e15d3   RELOCATION_MATCH PASS   Alloc
+004e181d   RELOCATION_MATCH PASS   Alloc
+004e2250   WARN SHARED_HEADER_AVAILABLE CTCTargetingBase
+004e2250   WARN SHARED_HEADER_AVAILABLE C2DVector
+004e2250   RELOCATION_MATCH PASS   CTCTargetingPlayer
+004e23e2   RELOCATION_MATCH PASS   Alloc
+004e272a   RELOCATION_MATCH PASS   Alloc
+004e28f1   RELOCATION_MATCH PASS   Alloc
+
+WINS: 50
+  004dc4d9 RELOCATION_MATCH CTCCarriedActionUsePotion::?Alloc@CTCCarriedActionUsePotion@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dc512 RELOCATION_MATCH CTCCarriedActionUseWallMount::?Alloc@CTCCarriedActionUseWallMount@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dc54b RELOCATION_MATCH CTCCarriedActionUseTrophy::?Alloc@CTCCarriedActionUseTrophy@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dc58e RELOCATION_MATCH CTCActionUseSwitch::?Alloc@CTCActionUseSwitch@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dc620 RELOCATION_MATCH CTCVillageMember::?Alloc@CTCVillageMember@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dc681 RELOCATION_MATCH CTCActionUseChest::?Alloc@CTCActionUseChest@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dc737 RELOCATION_MATCH CTCStockItem::??0CTCStockItem@@QAE@AAVCThing@@@Z
+  004dc7e8 RELOCATION_MATCH CTCCarriedActionUseExpression::?Alloc@CTCCarriedActionUseExpression@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dc936 RELOCATION_MATCH CTCCarriedActionUseActivateQuest::?Alloc@CTCCarriedActionUseActivateQuest@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dcb5c RELOCATION_MATCH CTCActionUseActivateQuest::?Alloc@CTCActionUseActivateQuest@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dcb95 RELOCATION_MATCH CTCDecapitation::?Alloc@CTCDecapitation@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dcbee RELOCATION_MATCH CTCActionUseWallMount::?Alloc@CTCActionUseWallMount@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dcc27 RELOCATION_MATCH CTCCarriedActionUseFishingRod::?Alloc@CTCCarriedActionUseFishingRod@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dcc60 RELOCATION_MATCH CTCCarriedActionUseSpade::?Alloc@CTCCarriedActionUseSpade@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dccf2 RELOCATION_MATCH CTCKrakenTentacle::?Alloc@CTCKrakenTentacle@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dcd6b RELOCATION_MATCH CTCCarriedActionUseRead::?Alloc@CTCCarriedActionUseRead@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dce1d RELOCATION_MATCH CTCDiceGame::?Alloc@CTCDiceGame@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dce3a RELOCATION_MATCH CTCPlot::?Alloc@CTCPlot@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dcea4 RELOCATION_MATCH CTCLightningOrb::?Alloc@CTCLightningOrb@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dcf6e RELOCATION_MATCH CTCCarriedActionUseAbility::?Alloc@CTCCarriedActionUseAbility@@SIPAVCTCBase@@AAVCThing@@@Z
+  004dda37 RELOCATION_MATCH CTCTargetingAI::??0CTCTargetingAI@@QAE@AAVCThing@@@Z
+  004de414 RELOCATION_MATCH CTCStockItem::?Alloc@CTCStockItem@@SIPAVCTCBase@@AAVCThing@@@Z
+  004de6b6 RELOCATION_MATCH CTCCreatureItemLevitationBase::??0CTCCreatureItemLevitationBase@@QAE@AAVCThing@@@Z
+  004de742 RELOCATION_MATCH CTCCreatureItemLevitationHero::??0CTCCreatureItemLevitationHero@@QAE@AAVCThing@@@Z
+  004de7fd RELOCATION_MATCH CTCParticleAttacher::??0CTCParticleAttacher@@QAE@AAVCThing@@@Z
+  004de839 RELOCATION_MATCH CTCAnimatingObject::??0CTCAnimatingObject@@QAE@AAVCThing@@@Z
+  004ded6f RELOCATION_MATCH CTCParticleAttachmentTracker::??0CTCParticleAttachmentTracker@@QAE@AAVCThing@@@Z
+  004defa7 RELOCATION_MATCH CTCKraken::??0CTCKraken@@QAE@AAVCThing@@@Z
+  004df14b RELOCATION_MATCH CTCDPhysicalObstruction::??0CTCDPhysicalObstruction@@QAE@AAVCThing@@@Z
+  004df2d4 RELOCATION_MATCH CTCAISummon::??0CTCAISummon@@QAE@AAVCThing@@@Z
+  004e0047 RELOCATION_MATCH CTCTargetingAI::?Alloc@CTCTargetingAI@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e0350 RELOCATION_MATCH CTCSingleUserActionPoints::??0CTCSingleUserActionPoints@@QAE@AAVCThing@@@Z
+  004e079c RELOCATION_MATCH CTCDHeroSuit::??0CTCDHeroSuit@@QAE@AAVCThing@@@Z
+  004e09c7 RELOCATION_MATCH CTCCreatureItemLevitationHero::?Alloc@CTCCreatureItemLevitationHero@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e0aab RELOCATION_MATCH CTCGatherPointBase::??0CTCGatherPointBase@@QAE@AAVCThing@@@Z
+  004e0afb RELOCATION_MATCH CTCGatherPointBuilding::??0CTCGatherPointBuilding@@QAE@AAVCThing@@@Z
+  004e0b23 RELOCATION_MATCH CTCGatherPointRadialArea::??0CTCGatherPointRadialArea@@QAE@AAVCThing@@@Z
+  004e0bbd RELOCATION_MATCH CTCParticleAttacher::?Alloc@CTCParticleAttacher@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e0c1e RELOCATION_MATCH CTCAnimatingObject::?Alloc@CTCAnimatingObject@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e0c61 RELOCATION_MATCH CTCHaste::??0CTCHaste@@QAE@AAVCThing@@@Z
+  004e0cdf RELOCATION_MATCH CTCPreCalculatedNavigationRoute::??0CTCPreCalculatedNavigationRoute@@QAE@AAVCThing@@@Z
+  004e1244 RELOCATION_MATCH CTCParticleAttachmentTracker::?Alloc@CTCParticleAttachmentTracker@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e13fe RELOCATION_MATCH CTCKraken::?Alloc@CTCKraken@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e1537 RELOCATION_MATCH CTCIdleScheduler::??0CTCIdleScheduler@@QAE@AAVCThing@@@Z
+  004e15d3 RELOCATION_MATCH CTCDPhysicalObstruction::?Alloc@CTCDPhysicalObstruction@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e181d RELOCATION_MATCH CTCAISummon::?Alloc@CTCAISummon@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e2250 RELOCATION_MATCH CTCTargetingPlayer::??0CTCTargetingPlayer@@QAE@AAVCThing@@@Z
+  004e23e2 RELOCATION_MATCH CTCSingleUserActionPoints::?Alloc@CTCSingleUserActionPoints@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e272a RELOCATION_MATCH CTCDHeroSuit::?Alloc@CTCDHeroSuit@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e28f1 RELOCATION_MATCH CTCGatherPointBuilding::?Alloc@CTCGatherPointBuilding@@SIPAVCTCBase@@AAVCThing@@@Z

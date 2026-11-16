@@ -1,22 +1,26 @@
 #pragma optimize("s",on)
-// CTCCreatureGroupTag::Alloc(CThing&) -- factory: new CTCCreatureGroupTag(owner)
+// CTCCreatureGroupTag::Alloc(CThing& thing) -- the registry factory: a new CTCCreatureGroupTag for `thing` (operator new(0x38) 0x00BFEA1A, null-checked, then
+//   the constructor 0x004E5F18), returned as its CTCBase
+// Leaf: ?Alloc@CTCCreatureGroupTag@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E762D, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x38 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCCreatureGroupTag::CTCCreatureGroupTag ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCCreatureGroupTag) = 0x38 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x004E5F18 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCCreatureGroupTag@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCCreatureGroupTag@@QAE@AAVCThing@@@Z (0x004E5F18, landed). (Landed earlier as a generated free function CTCCreatureGroupTag_Alloc(CThing*) returning CTCCreatureGroupTag*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCCreatureGroupTag { public:
-    unsigned char _body[0x38];       // sizeof(CTCCreatureGroupTag) = 0x38
-    CTCCreatureGroupTag(CThing* owner);                   // 0x004E5F18
+class CTCCreatureGroupTag : public CTCBase {
+public:
+    CTCCreatureGroupTag(CThing& thing);                        // 0x004E5F18
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x38 - 0xC];              // the class's own members (not modelled); sizeof(CTCCreatureGroupTag) = 0x38
 };
 
-CTCCreatureGroupTag* __fastcall CTCCreatureGroupTag_Alloc(CThing* owner)
+CTCBase* __fastcall CTCCreatureGroupTag::Alloc(CThing& thing)
 {
-    return new CTCCreatureGroupTag(owner);
+    return new CTCCreatureGroupTag(thing);
 }

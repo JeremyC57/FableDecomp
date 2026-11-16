@@ -1,10 +1,12 @@
 // CTCNymph::CTCNymph(CThing* thing) -- CTCBase(thing), own vtable, null def, an empty flight spline (tension 0.5), null effect/old-effect/target pointers
-// Leaf: ??0CTCNymph
+// Leaf: ??0CTCNymph@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCNymph@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3325, length 97 bytes (`ret 4`; size TU, odd start). Vtable 0x01242AD4 (CTCNymph).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated),
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated),
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x3: CIntelligentPointer<CThing> vtable 0x01238C6C twice,
 // CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8).
 // Layout (retail, local model; PDB CTCNymph is 0x74, retail 0x70 because the retail CArray inside CCardinalSpline is 0x0C):
@@ -18,6 +20,8 @@
 // like STLport's _STLP_alloc_proxy (an allocator base + the word): that places `lea edi,[esi+41h] ; mov ecx,edi` after the third
 // array zero as retail (plain three-word init puts it right after the PDef zero).
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CThingCreatureBase;
 #pragma pack(push, 1)
@@ -50,13 +54,6 @@ template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                            // +0x04
-    bool ToBeRemoved;                               // +0x08
-    bool IsInGlobalUpdateTCs;                       // +0x09
-    CTCBase(CThing* thing);                         // 0x00686800
-};
 class CTCNymph : public CTCBase { public:                         // vtable 0x01242AD4
     CDefPointer<const CNymphDef> PDef;              // +0x0c
     C3DVector PointToFlyAround;                     // +0x10
@@ -76,11 +73,10 @@ class CTCNymph : public CTCBase { public:                         // vtable 0x01
     long FadeCounter;                               // +0x60
     long TotalFadeTime;                             // +0x64
     CIntelligentPointerCreature PTarget;            // +0x68
-    virtual void v00();
-    CTCNymph(CThing* thing);
+    CTCNymph(CThing& thing);
 };
 
-CTCNymph::CTCNymph(CThing* thing)
+CTCNymph::CTCNymph(CThing& thing)
     : CTCBase(thing)
 {
 }

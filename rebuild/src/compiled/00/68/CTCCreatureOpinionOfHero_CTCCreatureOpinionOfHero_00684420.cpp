@@ -1,9 +1,11 @@
 // CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero(CThing* parent) -- opinion-of-hero thing component ctor: default counters, all-on attitude/reaction/deed masks, an empty opinion set, deed lists and the threat pointer, then the masks and personality applied from the owner's COpinionOfHeroDef and every deed's last-applied frame set to -1
-// Leaf: ??0CTCCreatureOpinionOfHero
+// Leaf: ??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00684420, length 496 bytes (body 0x1ed + int3 padding), `ret 4`.
 // Label correction: the catalog says CEngineSubPrimitive2DClockSprite::ctor, but the vtable stored, 0x0125BC3C, is
 //   CTCCreatureOpinionOfHero (the ??_G at 0x006866D0 / dtor 0x006866F0 store the same vtable; labels_chunk190_195 corrections).
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800, malloc 0x00BFEA0E (STLport node/array allocator), CBaseIntelligentPointer
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800, malloc 0x00BFEA0E (STLport node/array allocator), CBaseIntelligentPointer
 //   ctor 0x00A01B10 and SetPItem 0x00A01B90 (CIntelligentPointer<CThing> vtable 0x01238C6C), CDefClassBase::GetSubDef
 //   <COpinionOfHeroDef> 0x00685C00 on the owner's def (+0x70), SetPersonalityOverride(long, bool) 0x00681E60,
 //   SetOpinionReactionMask(long) 0x00681CD0, SetOpinionDeedMask(long) 0x006821E0.
@@ -13,18 +15,12 @@
 //   pointer +0x344 and FrameLastUpdatedUnknownThreat +0x34c (the landed SetOpinionReactionMask 0x00681E30 agrees).
 // Shape: the masks are byte vectors of 18/79/92 entries filled with 1 (memset), the opinion set five zero floats; the
 //   92 list heads are built by an inline counted loop; the def fields are read through the member pointer each call.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 #include <string.h>
 class CThing;
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-
-class CTCBase { public:
-    virtual void v00();
-    CThing*       ParentThing;                      // +0x04
-    bool          ToBeRemoved;                      // +0x08
-    bool          IsInGlobalUpdateTCs;              // +0x09
-    CTCBase(CThing* parent);                        // 0x00686800
-};
 
 template <class T> struct CRetailList {             // STLport list: one sentinel-node pointer
     struct node { node* next; node* prev; T value; };
@@ -140,14 +136,13 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:         // vtable 0x01
     CIntelligentPointer<CThing>             PUnknownThreatOpinionSource;   // +0x344
     long                                 FrameLastUpdatedUnknownThreat; // +0x34c
 
-    virtual void v00();
-    CTCCreatureOpinionOfHero(CThing* parent);
+    CTCCreatureOpinionOfHero(CThing& parent);
     void SetPersonalityOverride(long index, bool apply);   // 0x00681E60
     void SetOpinionReactionMask(long index);                // 0x00681CD0
     void SetOpinionDeedMask(long index);                    // 0x006821E0
 };
 
-CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero(CThing* parent)
+CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero(CThing& parent)
     : CTCBase(parent)
     , LastOpinionReactionFrame(0)
     , NumberOfTimesHit(0.0f)

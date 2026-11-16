@@ -1,6 +1,8 @@
 // CTCDHeroSuit::CTCDHeroSuit(CThing* parent) -- CTCDriverBase(parent), own vtable, null def pointer and empty SuitParts vector
+// Leaf: ??0CTCDHeroSuit@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E079C, length 38 bytes.
-// Callees: CTCDriverBase::CTCDriverBase(CThing*) @ 0x00771200 (vtable 0x0126A79C = CTCDriverBase, rtti-vtables.tsv).
+// Callees: CTCDriverBase::CTCDriverBase(CThing&) @ 0x00771200 (vtable 0x0126A79C = CTCDriverBase, rtti-vtables.tsv).
 // Vtable 0x01242004 = CTCDHeroSuit (rtti-vtables.tsv). PDB CTCDHeroSuit: PDef
 // (CDefPointer<const CHeroSuitDef>, one pointer) +0x0c, SuitParts (std::vector<pair<EClothingSuitPart,bool>>)
 // +0x10; the retail vector is 12 bytes (first/last/end at +0x10/+0x14/+0x18), not the PDB's 16.
@@ -12,10 +14,10 @@
 class CThing;
 class CHeroSuitDef;
 
-struct CTCDriverBase_Calls {
+struct CTCDriverBase {
     virtual void v00();
     unsigned char _body[0x8];                               // ParentThing +4, ToBeRemoved +8, IsInGlobalUpdateTCs +9
-    CTCDriverBase_Calls(CThing* parent);                    // 0x00771200
+    CTCDriverBase(CThing& parent);                    // 0x00771200
 };
 
 template<class T> class CDefPointer { public:
@@ -35,15 +37,15 @@ struct SSuitPart {                                          // std::pair<EClothi
     bool Worn;
 };
 
-class CTCDHeroSuit : public CTCDriverBase_Calls { public:
+class CTCDHeroSuit : public CTCDriverBase { public:
     CDefPointer<const CHeroSuitDef> PDef;                   // +0x0c
     CRetailVector<SSuitPart>        SuitParts;              // +0x10
     virtual void v00();                                     // own vtable 0x01242004
-    CTCDHeroSuit(CThing* parent);
+    CTCDHeroSuit(CThing& parent);
 };
 
-CTCDHeroSuit::CTCDHeroSuit(CThing* parent)
-    : CTCDriverBase_Calls(parent)
+CTCDHeroSuit::CTCDHeroSuit(CThing& parent)
+    : CTCDriverBase(parent)
     , PDef()
     , SuitParts()
 {

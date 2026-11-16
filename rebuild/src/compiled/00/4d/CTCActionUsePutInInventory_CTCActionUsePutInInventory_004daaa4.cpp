@@ -1,5 +1,7 @@
 #pragma optimize("s",on)
-// CTCActionUsePutInInventory::CTCActionUsePutInInventory(CThing*) -- base CTCActionUseBase(argument) then this class's vtable
+// CTCActionUsePutInInventory::CTCActionUsePutInInventory(CThing&) -- base CTCActionUseBase(argument) then this class's vtable
+// Leaf: ??0CTCActionUsePutInInventory@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCActionUseBase(CThing&) (0x004DA939) as both PDBs spell it; this constructor too.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DAAA4, oracle length 24 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -12,15 +14,15 @@ class CThing;
 
 class CTCActionUseBase { public:
     virtual void v00();
-    CTCActionUseBase(CThing* argument);            // 0x004DA939
+    CTCActionUseBase(CThing& argument);            // 0x004DA939
 };
 
 struct CTCActionUsePutInInventory : CTCActionUseBase {
     virtual void v00();
-    CTCActionUsePutInInventory(CThing* argument);
+    CTCActionUsePutInInventory(CThing& argument);
 };
 
-CTCActionUsePutInInventory::CTCActionUsePutInInventory(CThing* argument)
+CTCActionUsePutInInventory::CTCActionUsePutInInventory(CThing& argument)
     : CTCActionUseBase(argument)
 {
 }

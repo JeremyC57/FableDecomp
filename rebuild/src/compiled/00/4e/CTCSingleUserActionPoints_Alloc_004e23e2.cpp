@@ -1,21 +1,26 @@
 #pragma optimize("s",on)
-// CTCSingleUserActionPoints::Alloc(CThing&) -- factory: new CTCSingleUserActionPoints(owner)
+// CTCSingleUserActionPoints::Alloc(CThing& thing) -- the registry factory: a new CTCSingleUserActionPoints for `thing` (operator new(0x34) 0x00BFEA1A, null-checked, then
+//   the constructor 0x004E0350), returned as its CTCBase
+// Leaf: ?Alloc@CTCSingleUserActionPoints@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E23E2, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x34 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCSingleUserActionPoints::CTCSingleUserActionPoints ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCSingleUserActionPoints) = 0x34 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x004E0350 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCSingleUserActionPoints@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCSingleUserActionPoints@@QAE@AAVCThing@@@Z (0x004E0350, landed). (Landed earlier as a generated free function CTCSingleUserActionPoints_Alloc(CThing*) returning CTCSingleUserActionPoints*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCSingleUserActionPoints { public:
-    unsigned char _body[0x34];       // sizeof(CTCSingleUserActionPoints) = 0x34
-    CTCSingleUserActionPoints(void* owner);                   // 0x004E0350
+class CTCSingleUserActionPoints : public CTCBase {
+public:
+    CTCSingleUserActionPoints(CThing& thing);                        // 0x004E0350
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x34 - 0xC];              // the class's own members (not modelled); sizeof(CTCSingleUserActionPoints) = 0x34
 };
 
-CTCSingleUserActionPoints* __fastcall CTCSingleUserActionPoints_Alloc(void* owner)
+CTCBase* __fastcall CTCSingleUserActionPoints::Alloc(CThing& thing)
 {
-    return new CTCSingleUserActionPoints(owner);
+    return new CTCSingleUserActionPoints(thing);
 }

@@ -1,21 +1,26 @@
 #pragma optimize("s",on)
-// CTCCarriedActionUseFishingRod::Alloc(CThing&) -- factory: new CTCCarriedActionUseFishingRod(owner)
+// CTCCarriedActionUseFishingRod::Alloc(CThing& thing) -- the registry factory: a new CTCCarriedActionUseFishingRod for `thing` (operator new(0x14) 0x00BFEA1A, null-checked, then
+//   the constructor 0x004DB265), returned as its CTCBase
+// Leaf: ?Alloc@CTCCarriedActionUseFishingRod@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DCC27, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x14 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCCarriedActionUseFishingRod::CTCCarriedActionUseFishingRod ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCCarriedActionUseFishingRod) = 0x14 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x004DB265 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCCarriedActionUseFishingRod@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCCarriedActionUseFishingRod@@QAE@AAVCThing@@@Z (0x004DB265, landed). (Landed earlier as a generated free function CTCCarriedActionUseFishingRod_Alloc(CThing*) returning CTCCarriedActionUseFishingRod*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-struct CTCCarriedActionUseFishingRod {
-    unsigned char _body[0x14];       // sizeof(CTCCarriedActionUseFishingRod) = 0x14
-    CTCCarriedActionUseFishingRod(void* owner);                   // 0x004DB265
+class CTCCarriedActionUseFishingRod : public CTCBase {
+public:
+    CTCCarriedActionUseFishingRod(CThing& thing);                        // 0x004DB265
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x14 - 0xC];              // the class's own members (not modelled); sizeof(CTCCarriedActionUseFishingRod) = 0x14
 };
 
-CTCCarriedActionUseFishingRod* __fastcall CTCCarriedActionUseFishingRod_Alloc(void* owner)
+CTCBase* __fastcall CTCCarriedActionUseFishingRod::Alloc(CThing& thing)
 {
-    return new CTCCarriedActionUseFishingRod(owner);
+    return new CTCCarriedActionUseFishingRod(thing);
 }

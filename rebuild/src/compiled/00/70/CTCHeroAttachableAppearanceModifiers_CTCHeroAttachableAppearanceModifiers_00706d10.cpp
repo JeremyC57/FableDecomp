@@ -1,9 +1,11 @@
-// CTCHeroAttachableAppearanceModifiers::CTCHeroAttachableAppearanceModifiers(CThing*) -- thing-component and appearance-component bases, change flags cleared, empty primitive list, hidden-material set and graphics list, three empty appearance-modifier lists, then registration with the owner's graphic appearance
-// Leaf: ??0CTCHeroAttachableAppearanceModifiers
+// CTCHeroAttachableAppearanceModifiers::CTCHeroAttachableAppearanceModifiers(CThing&) -- thing-component and appearance-component bases, change flags cleared, empty primitive list, hidden-material set and graphics list, three empty appearance-modifier lists, then registration with the owner's graphic appearance
+// Leaf: ??0CTCHeroAttachableAppearanceModifiers@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroAttachableAppearanceModifiers@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00706D10, 226 bytes (+ int3 padding), `ret 4`.
 // Label correction: the catalog's "CEngineSubPrimitive2DClockSprite::Ctor" is propagated; the vtables stored are 0x01264F0C
 //   (primary) / 0x01264EF4 (component base) = CTCHeroAttachableAppearanceModifiers (rtti-vtables.tsv).
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800, malloc 0x00BFEA0E (the set's 0x14-byte header node, the 3-list block),
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800, malloc 0x00BFEA0E (the set's 0x14-byte header node, the 3-list block),
 //   vector<CModifierEntry>::vector(const vector&) 0x00708830 (each modifier list copied from the empty default),
 //   CTCGraphicAppearance::RegisterComponent 0x004BD390 (owner +0x64). Vtable 0x0125A170 = CAGraphicAppearanceComponent.
 // Layout (retail; engine/CTCHeroAttachableAppearanceModifiers.h carries the PDB's 16-byte containers, retail's are 12):
@@ -16,6 +18,8 @@
 //   `explicit vector(n)` (allocate 3, then uninitialized_fill_n of a T() temporary built after the allocation, through the
 //   element copy ctor with a count-down in the dead `owner` slot; the empty temporary has no destructor call in retail, so
 //   the 12-byte element is modelled without one).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -31,13 +35,6 @@ struct CTCGraphicAppearance {
 class CThing { public:
     unsigned char         _pad_0x00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;        // +0x64 (retail)
-};
-class CTCBase { public:                                       // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
-    virtual void v00();
-    CThing* ParentThing;                               // +0x04
-    bool    ToBeRemoved;                               // +0x08
-    bool    IsInGlobalUpdateTCs;                       // +0x09
-    CTCBase(CThing* owner);                            // 0x00686800
 };
 namespace NGraphicAppearance {
 class CAGraphicAppearanceComponent { public:                  // vtable 0x0125A170
@@ -123,11 +120,10 @@ class CTCHeroAttachableAppearanceModifiers : public CTCBase, public NGraphicAppe
     CNameSet                                     HiddenMaterialNames;      // +0x24
     CModifierListVector                          AppearanceModifiers;      // +0x30
     CRetailVector<CModifierGraphic>              Graphics;                 // +0x3c
-    virtual void v00();
-    CTCHeroAttachableAppearanceModifiers(CThing* owner);
+    CTCHeroAttachableAppearanceModifiers(CThing& owner);
 };
 
-CTCHeroAttachableAppearanceModifiers::CTCHeroAttachableAppearanceModifiers(CThing* owner)
+CTCHeroAttachableAppearanceModifiers::CTCHeroAttachableAppearanceModifiers(CThing& owner)
     : CTCBase(owner), CAGraphicAppearanceComponent(), FrameLastChanged(0), Changed(false), RecreatePrimitives(false),
       AppearanceModifiersLoaded(false), AppearanceModifiers(3)
 {

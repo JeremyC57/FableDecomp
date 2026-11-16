@@ -1,8 +1,9 @@
-// CTCDRegionExit::CTCDRegionExit(CThing*) -- CTCDriverBase(thing), own vtable, the exit flags (active, waiting for activation / for the player to leave the message area), unit radius, no connected entrance, the entrance intelligent pointer constructed, then the parent thing's cutscene pause behaviour set to 2
-// Leaf: ??0CTCDRegionExit
+// CTCDRegionExit::CTCDRegionExit(CThing&) -- CTCDriverBase(thing), own vtable, the exit flags (active, waiting for activation / for the player to leave the message area), unit radius, no connected entrance, the entrance intelligent pointer constructed, then the parent thing's cutscene pause behaviour set to 2
+// Leaf: ??0CTCDRegionExit@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00778FA0, length 94 bytes (+ int3 padding).
-// Callees: CTCDriverBase::CTCDriverBase(CThing*) @ 0x00771200 (installs vtable 0x0126A79C = CTCDriverBase),
+// Callees: CTCDriverBase::CTCDriverBase(CThing&) @ 0x00771200 (installs vtable 0x0126A79C = CTCDriverBase),
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (then the CIntelligentPointer vtable
 // 0x01238C6C), CThing::SetCutscenePauseBehaviour @ 0x004C78A0. Vtable 0x0126AB54 = CTCDRegionExit
 // (rtti-vtables.tsv): the chunk label "CTCChest::CTCChest" is propagated.
@@ -15,6 +16,7 @@
 // the zeroes share eax, the 1.0f radius is an immediate), the pointer member addressed once in edi,
 // the cutscene call is the constructor body.
 #include "engine/ECutsceneBehaviour.h"
+class CThing;
 class CThing { public:
     void SetCutscenePauseBehaviour(ECutsceneBehaviour behaviour);   // 0x004C78A0 (Ego_r + FableWin: ECutsceneBehaviour)
 };
@@ -26,15 +28,15 @@ class CBaseObjectPointer;
 #include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
-struct CTCDriverBase_Calls {                                // CTCBase layout (0xc bytes), vtable 0x0126A79C
+struct CTCDriverBase {                                // CTCBase layout (0xc bytes), vtable 0x0126A79C
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCDriverBase_Calls(CThing* thing);                     // 0x00771200
+    CTCDriverBase(CThing& thing);                     // 0x00771200
 };
 
-class CTCDRegionExit : public CTCDriverBase_Calls { public:               // vtable 0x0126AB54
+class CTCDRegionExit : public CTCDriverBase { public:               // vtable 0x0126AB54
     bool                Active;                             // +0x0c
     bool                InLetterBoxMode;                    // +0x0d
     bool                WaitingForConfirmation;             // +0x0e
@@ -47,11 +49,11 @@ class CTCDRegionExit : public CTCDriverBase_Calls { public:               // vta
     bool                HiddenOnMiniMap;                    // +0x29
     CIntelligentPointer<CThing> PEntranceConnectedTo;               // +0x2a
     virtual void v00();
-    CTCDRegionExit(CThing* thing);
+    CTCDRegionExit(CThing& thing);
 };
 
-CTCDRegionExit::CTCDRegionExit(CThing* thing)
-    : CTCDriverBase_Calls(thing)
+CTCDRegionExit::CTCDRegionExit(CThing& thing)
+    : CTCDriverBase(thing)
     , Active(true)
     , InLetterBoxMode(false)
     , WaitingForConfirmation(false)

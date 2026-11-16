@@ -1,8 +1,10 @@
-// CTCActionUseBase::CTCActionUseBase(CThing*) -- CTCBase(owner), own vtable, null action-use def, usable
-// Leaf: ??0CTCActionUseBase
+// CTCActionUseBase::CTCActionUseBase(CThing&) -- CTCBase(owner), own vtable, null action-use def, usable
+// Leaf: ??0CTCActionUseBase@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCActionUseBase@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DA939, length 32 bytes (a /Os module: unaligned entry,
 // `push dword ptr [esp+8]` pass-through, `and dword ptr [..],0` zero store).
-// Callee: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is a
+// Callee: CTCBase::CTCBase(CThing&) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is a
 // propagated name). Own vtable 0x0123F09C = CTCActionUseBase (rtti-vtables.tsv); the landed
 // CTCActionUse* constructors (0x004DA987, 0x004DAB6C, ...) call this one.
 //
@@ -12,16 +14,10 @@
 // modelled as `CTCBase_Calls` (as the landed CTCRockTrollShield).
 #pragma optimize("s", on)
 
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CActionUseDef;
-
-struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
-    virtual void v00();
-    CThing* ParentThing;                                    // +0x04
-    bool    ToBeRemoved;                                    // +0x08
-    bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase_Calls(CThing* thing);                           // 0x00686800
-};
 
 template<class T>
 class CDefPointer { public:
@@ -29,15 +25,14 @@ class CDefPointer { public:
     CDefPointer() : m_pDef(0) { }
 };
 
-class CTCActionUseBase : public CTCBase_Calls { public:                   // vtable 0x0123F09C
+class CTCActionUseBase : public CTCBase { public:                   // vtable 0x0123F09C
     CDefPointer<CActionUseDef> PActionUseDef;               // +0x0c
     bool                       Usable;                      // +0x10
-    virtual void v00();
-    CTCActionUseBase(CThing* owner);
+    CTCActionUseBase(CThing& owner);
 };
 
-CTCActionUseBase::CTCActionUseBase(CThing* owner)
-    : CTCBase_Calls(owner)
+CTCActionUseBase::CTCActionUseBase(CThing& owner)
+    : CTCBase(owner)
     , Usable(true)
 {
 }

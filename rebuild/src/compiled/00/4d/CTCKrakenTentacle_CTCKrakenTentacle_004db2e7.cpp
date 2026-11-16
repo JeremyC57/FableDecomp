@@ -1,10 +1,12 @@
 // CTCKrakenTentacle::CTCKrakenTentacle(CThing* thing) -- CTCBase(thing), own vtable, null def pointer and thing pointers, strike state cleared, empty DummyName, DoneDeathStuff false
-// Leaf: ??0CTCKrakenTentacle
+// Leaf: ??0CTCKrakenTentacle@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCKrakenTentacle@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DB2E7, length 102 bytes (`ret 4`). Vtable 0x012407BC = .?AVCTCKrakenTentacle@@
 // (RTTI: CTCBase, CBaseClassNonCopyable, CBaseClass); only caller 0x004DCD04 (the component factory).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated),
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated),
 // CIntelligentPointer<const CThing>::CIntelligentPointer(const CThing*) @ 0x004A96F0 (out of line, called with 0),
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x2, inline CIntelligentPointer<CThing> ctors storing vtable
 // 0x01238C6C), CCharString::CCharString() @ 0x0099E4B0.
@@ -14,6 +16,8 @@
 // Size TU (odd start address): `#pragma optimize("s", on)` gives the `push [esp+14h]` argument and the vtable kept in ebp.
 // Shape: all zero stores share ebx; the CDefPointer's inline ctor zero is scheduled into the PKraken argument push.
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CCharString { public:
     void* m_pData;
@@ -35,13 +39,6 @@ template <class T> class CDefPointer { public:
     CDefPointer() : Object(0) { }
 };
 #include "engine/C3DVector.h"
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                            // +0x04
-    bool ToBeRemoved;                               // +0x08
-    bool IsInGlobalUpdateTCs;                       // +0x09
-    CTCBase(CThing* thing);                         // 0x00686800
-};
 class CTCKrakenTentacle : public CTCBase { public:                // vtable 0x012407BC
     CDefPointer<CKrakenTentacleDef> PTentacleDef;   // +0x0c
     CIntelligentPointerConstThing   PKraken;        // +0x10
@@ -57,11 +54,10 @@ class CTCKrakenTentacle : public CTCBase { public:                // vtable 0x01
     float     FacingAngle;                          // +0x44
     CCharString DummyName;                          // +0x48
     bool      DoneDeathStuff;                       // +0x4c
-    virtual void v00();
-    CTCKrakenTentacle(CThing* thing);
+    CTCKrakenTentacle(CThing& thing);
 };
 
-CTCKrakenTentacle::CTCKrakenTentacle(CThing* thing)
+CTCKrakenTentacle::CTCKrakenTentacle(CThing& thing)
     : CTCBase(thing)
     , PKraken(0)
     , CanStrike(false)

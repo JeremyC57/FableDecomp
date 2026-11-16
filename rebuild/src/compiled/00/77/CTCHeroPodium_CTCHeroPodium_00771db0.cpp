@@ -1,9 +1,11 @@
-// CTCHeroPodium::CTCHeroPodium(CThing*) -- component constructor: CTCBase(parent), no crowd occupants, an empty occupation vector
-// Leaf: ??0CTCHeroPodium
+// CTCHeroPodium::CTCHeroPodium(CThing&) -- component constructor: CTCBase(parent), no crowd occupants, an empty occupation vector
+// Leaf: ??0CTCHeroPodium@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroPodium@@QAE@AAVCThing@@@Z).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771DB0, 39 bytes (+9 int3 padding). Vtable 0x0126A89C (CTCHeroPodium).
 // Single caller: the component factory at 0x004D4015 (global CreateCTCHeroPodium, landed).
-// Callee: CTCBase::CTCBase(CThing*) @ 0x00686800.
+// Callee: CTCBase::CTCBase(CThing&) @ 0x00686800.
 //
 // Shape: speed TU (argument through eax, `xor eax,eax` zero register). NumberOfCrowdOccupants (+0x0C) is zeroed
 // BEFORE the vtable store -- a plain init-list member -- while the three vector words (+0x10/+0x14/+0x18) follow
@@ -11,15 +13,9 @@
 // Layout: retail vector<long> is 12 bytes (PDB 16), so E_X / E_Y sit at +0x1C / +0x28 (PDB +0x20 / +0x2C); they
 // are C3DVectors with an empty default constructor and stay uninitialised. Local model (no engine header).
 
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                       // +0x04
-    bool    ToBeRemoved;                       // +0x08
-    bool    IsInGlobalUpdateTCs;               // +0x09
-    CTCBase(CThing* parent);                   // 0x00686800
-};
 
 #include "engine/C3DVector.h"
 
@@ -35,11 +31,10 @@ class CTCHeroPodium : public CTCBase { public:
     CLongVector CrowdOccupation;               // +0x10 (PDB +0x10, 16 bytes)
     C3DVector   E_X;                           // +0x1C (PDB +0x20)
     C3DVector   E_Y;                           // +0x28 (PDB +0x2C)
-    virtual void v00();
-    CTCHeroPodium(CThing* parent);
+    CTCHeroPodium(CThing& parent);
 };
 
-CTCHeroPodium::CTCHeroPodium(CThing* parent)
+CTCHeroPodium::CTCHeroPodium(CThing& parent)
     : CTCBase(parent), NumberOfCrowdOccupants(0)
 {
 }

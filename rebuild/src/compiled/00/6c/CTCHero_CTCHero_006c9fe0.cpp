@@ -1,8 +1,10 @@
-// CTCHero::CTCHero(CThing*) -- CTCBase(thing), the CTCHero vtable, the four use flags / title / title def / def pointer / podium flag zeroed, and the two intelligent pointers (LastWeaponEquipped +0x1d, PTeleportParticle +0x30) with the 64-bit weapon id between them
-// Leaf: ??0CTCHero@@QAE@PAVCThing@@@Z
+// CTCHero::CTCHero(CThing&) -- CTCBase(thing), the CTCHero vtable, the four use flags / title / title def / def pointer / podium flag zeroed, and the two intelligent pointers (LastWeaponEquipped +0x1d, PTeleportParticle +0x30) with the 64-bit weapon id between them
+// Leaf: ??0CTCHero@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHero@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C9FE0, length 93 bytes (+ int3 padding). Vtable 0x0125EB54 = CTCHero.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is propagated),
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is propagated),
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (twice; each followed by the CIntelligentPointer<CThing>
 // vtable store 0x01238C6C from its inline derived constructor).
 // Shape: Ego_r.pdb layout (0x38 bytes): WeaponsUsable +0xc, WillUsable +0xd, WeaponUseOverriddenByScripts +0xe,
@@ -11,17 +13,11 @@
 // classes are declared under pack(1)), LastWeaponEquippedID +0x28 (unsigned __int64), PTeleportParticle +0x30.
 // All initialisers share ebx = 0; the 64-bit id is zeroed in the initialiser list and scheduled between the two pointer
 // constructors, in declaration order.
-// Local model: no engine header exists for CTCHero; engine/CTCBase.h is a flattened POD (vptr as a data member), so the
+// Local model: no engine header exists for CTCHero; engine/CTCBase.h is a flattened POD (vptr as a data member), so the [superseded 2026-11-16: the header's FABLE_RETAIL_CTCBASE branch is polymorphic; see the Ported note]
 // polymorphic CTCBase is modelled locally.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                                    // +0x04
-    bool    ToBeRemoved;                                    // +0x08
-    bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase(CThing* thing);                                 // 0x00686800
-};
 
 class CDefPointeeBase;
 struct CDefPointer {                                        // CDefPointer<CHeroTitleDef const>
@@ -48,11 +44,10 @@ class CTCHero : public CTCBase { public:                                  // vta
     CIntelligentPointer<CThing> LastWeaponEquipped;                 // +0x1d
     unsigned __int64 LastWeaponEquippedID;                  // +0x28
     CIntelligentPointer<CThing> PTeleportParticle;                  // +0x30
-    virtual void v00();
-    CTCHero(CThing* thing);
+    CTCHero(CThing& thing);
 };
 
-CTCHero::CTCHero(CThing* thing)
+CTCHero::CTCHero(CThing& thing)
     : CTCBase(thing), WeaponsUsable(false), WillUsable(false), WeaponUseOverriddenByScripts(false),
       WillUseOverriddenByScripts(false), Title(0), HeroTitleObjectDef(0), OnBoastingPodium(false),
       LastWeaponEquippedID(0)

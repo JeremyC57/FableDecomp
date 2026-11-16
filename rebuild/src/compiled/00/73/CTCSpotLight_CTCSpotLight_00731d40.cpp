@@ -1,10 +1,12 @@
 // CTCSpotLight::CTCSpotLight(CThing* thing) -- CTCBase(thing) + the graphic-appearance component base, light info/def/primitive cleared, flicker factors 1.0, then register with the owner's graphic appearance
-// Leaf: ??0CTCSpotLight
+// Leaf: ??0CTCSpotLight@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCSpotLight@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00731D40, length 108 bytes (`ret 4`). Vtables (rtti-vtables.tsv): CTCSpotLight primary
 // 0x01266FBC, CTCSpotLight's NGraphicAppearance::CAGraphicAppearanceComponent side 0x01266FA4 at +0xC; the component base's own
 // vtable 0x0125A170 is stored first by its inline ctor (same as the landed CTCLight ctor 0x00640F00).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated),
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated),
 // NGraphicAppearance::CTCGraphicAppearance::RegisterComponent @ 0x004BD390 (owner +0x64, passed the +0xC subobject; catalog
 // "DoubleLinkedListInsertNode" is propagated); the def release is the inline CDefPointer reset (pointee vtable slot 1 = Destroy).
 // Layout (retail = PDB CTCSpotLight 0x2C, engine/CTCSpotLight.h): CAGraphicAppearanceComponent +0x0C, PLightInfo (CCountedPointer
@@ -14,6 +16,8 @@
 // Shape: PLightInfo/PLightDef in the init list; the rest are body assignments in retail store order (`Accum = Old = 1.0f` stores
 // +0x28 first), then `PLightDef = CDefPointer()` -- the inline operator= releases the old def through a pointer local (null test, `dec [ecx+4] ; jne`, slot 1; the member form re-reads),
 // zeroes it inside the test and stores the new (null) object again.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 #include "engine/CCountedPointer.h"
 namespace NGraphicAppearance {
@@ -52,13 +56,6 @@ template<class T> class CDefPointer { public:
 };
 class CSpotLightDef : public CDefPointeeBase { public: };
 struct CSpotLightInfo;
-class CTCBase { public:
-    virtual ~CTCBase();
-    CThing* ParentThing;                            // +0x04
-    bool ToBeRemoved;                               // +0x08
-    bool IsInGlobalUpdateTCs;                       // +0x09
-    CTCBase(CThing* thing);                         // 0x00686800
-};
 class CTCSpotLight : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:   // vtables 0x01266FBC / 0x01266FA4
     CCountedPointer<CSpotLightInfo>  PLightInfo;            // +0x10
     CDefPointer<CSpotLightDef>       PLightDef;             // +0x18
@@ -66,12 +63,12 @@ class CTCSpotLight : public CTCBase, public NGraphicAppearance::CAGraphicAppeara
     NGraphicAppearance::CPrimitive* LightPrimitive;         // +0x20
     float AccumilativeFlickerFactor;                        // +0x24
     float OldAccumilativeFlickerFactor;                     // +0x28
-    CTCSpotLight(CThing* thing);
+    CTCSpotLight(CThing& thing);
     virtual ~CTCSpotLight();
     virtual void OnAppearanceDraw();
 };
 
-CTCSpotLight::CTCSpotLight(CThing* thing)
+CTCSpotLight::CTCSpotLight(CThing& thing)
     : CTCBase(thing)
 {
     AccumilativeFlickerFactor = OldAccumilativeFlickerFactor = 1.0f;

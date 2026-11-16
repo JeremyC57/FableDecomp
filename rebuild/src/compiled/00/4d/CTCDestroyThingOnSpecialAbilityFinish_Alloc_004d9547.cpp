@@ -1,21 +1,26 @@
 #pragma optimize("s",on)
-// CTCDestroyThingOnSpecialAbilityFinish::Alloc(CThing&) -- factory: new CTCDestroyThingOnSpecialAbilityFinish(owner)
+// CTCDestroyThingOnSpecialAbilityFinish::Alloc(CThing& thing) -- the registry factory: a new CTCDestroyThingOnSpecialAbilityFinish for `thing` (operator new(0xc) 0x00BFEA1A, null-checked, then
+//   the constructor 0x004D63BA), returned as its CTCBase
+// Leaf: ?Alloc@CTCDestroyThingOnSpecialAbilityFinish@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D9547, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0xc ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCDestroyThingOnSpecialAbilityFinish::CTCDestroyThingOnSpecialAbilityFinish ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCDestroyThingOnSpecialAbilityFinish) = 0xc bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x004D63BA on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCDestroyThingOnSpecialAbilityFinish@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCDestroyThingOnSpecialAbilityFinish@@QAE@AAVCThing@@@Z (0x004D63BA, landed). (Landed earlier as a generated free function CTCDestroyThingOnSpecialAbilityFinish_Alloc(CThing*) returning CTCDestroyThingOnSpecialAbilityFinish*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-struct CTCDestroyThingOnSpecialAbilityFinish {
-    unsigned char _body[0xc];       // sizeof(CTCDestroyThingOnSpecialAbilityFinish) = 0xc
-    CTCDestroyThingOnSpecialAbilityFinish(void* owner);                   // 0x004D63BA
+class CTCDestroyThingOnSpecialAbilityFinish : public CTCBase {
+public:
+    CTCDestroyThingOnSpecialAbilityFinish(CThing& thing);                        // 0x004D63BA
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0xc - 0xC];              // the class's own members (not modelled); sizeof(CTCDestroyThingOnSpecialAbilityFinish) = 0xc
 };
 
-CTCDestroyThingOnSpecialAbilityFinish* __fastcall CTCDestroyThingOnSpecialAbilityFinish_Alloc(void* owner)
+CTCBase* __fastcall CTCDestroyThingOnSpecialAbilityFinish::Alloc(CThing& thing)
 {
-    return new CTCDestroyThingOnSpecialAbilityFinish(owner);
+    return new CTCDestroyThingOnSpecialAbilityFinish(thing);
 }

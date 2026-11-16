@@ -1,0 +1,145 @@
+addr       parity           behav  name
+004e292a   RELOCATION_MATCH PASS   Alloc
+004e2b4b   RELOCATION_MATCH PASS   Alloc
+004e2b8e   RELOCATION_MATCH PASS   Alloc
+004e30e7   WARN SHARED_HEADER_AVAILABLE CTCDriverBase
+004e30e7   RELOCATION_MATCH PASS   CTCDExplosion
+004e323c   RELOCATION_MATCH PASS   Alloc
+004e3325   WARN SHARED_HEADER_AVAILABLE CCardinalSpline
+004e3325   WARN SHARED_HEADER_AVAILABLE CDefPointer
+004e3325   RELOCATION_MATCH PASS   CTCNymph
+004e3401   WARN SHARED_HEADER_AVAILABLE CTCDriverBase
+004e3401   WARN RELOC_NAME: ??0CTrapList@@QAE@ABUSTrapAllocator@@@Z -> 004db72d labelled 'ListNode_InitSelfLinked_14'
+004e3401   RELOCATION_MATCH PASS   CTCDExplosiveTrail
+004e3783   RELOCATION_MATCH PASS   Alloc
+004e3cd7   WARN RELOC_NAME: ??0CRetailList_node0x10@N_004db60e@@QAE@ABUCRetailAllocator@@@Z -> 004db60e labelled 'ListNode_InitSelfLinked_10'
+004e3cd7   RELOCATION_MATCH PASS   CTCEntityEvents
+004e3ea8   RELOCATION_MATCH PASS   Alloc
+004e3fef   RELOCATION_MATCH PASS   Alloc
+004e400c   RELOCATION_MATCH PASS   Alloc
+004e48f6   RELOCATION_MATCH PASS   Alloc
+004e5c2f   WARN RELOC_NAME: ??0CGroupMemberMap@@QAE@XZ -> 004e4082 labelled 'CDisplayManager::CopyBackBufferToTexture'
+004e5c2f   RELOCATION_MATCH PASS   CTCCreatureGroup
+004e5f18   WARN SHARED_HEADER_AVAILABLE CTCCreatureGroup
+004e5f18   RELOCATION_MATCH PASS   CTCCreatureGroupTag
+004e6d17   RELOCATION_MATCH PASS   CTCLightningNode
+004e748a   WARN RELOC_NAME: ??0CRetailList_CIntelligentPointer@@QAE@ABUCRetailAllocator@@@Z -> 004b8920 labelled 'std::list<T_0x8_004b8920>::list'
+004e748a   RELOCATION_MATCH PASS   CTCCarrying
+004e7513   RELOCATION_MATCH PASS   CTCBoastingPodium
+004e75a0   RELOCATION_MATCH PASS   Alloc
+004e75d9   RELOCATION_MATCH PASS   CTCHitLocations
+004e762d   RELOCATION_MATCH PASS   Alloc
+004e7666   RELOCATION_MATCH PASS   Alloc
+004e7dfc   RELOCATION_MATCH PASS   Alloc
+004e7e19   RELOCATION_MATCH PASS   Alloc
+004e7e46   RELOCATION_MATCH PASS   Alloc
+0057cdb5   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef
+0057cdb5   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+0057cdb5   WARN SHARED_HEADER_AVAILABLE CWorld
+0057cdb5   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0057cdb5   WARN RELOC_NAME: ??0CCrimeMap@@QAE@XZ -> 00581114 labelled 'CDisplayManager::CopyBackBufferToTexture'
+0057cdb5   WARN RELOC_NAME: ??0CMarriageList@@QAE@ABUCMarriageAllocator@@@Z -> 0057fda2 labelled 'CTCHeroStats_Constructor'
+0057cdb5   WARN RELOC_NAME: ?Reset@CMarriageList@@QAEXXZ -> 0057f58e labelled 'std::_List_base<CHeroMarriageInfo,std::allocator<CHeroMarriageInfo> >::clear'
+0057cdb5   RELOCATION_MATCH PASS   CTCHeroStats
+00640f00   WARN SHARED_HEADER_AVAILABLE CThing
+00640f00   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00640f00   RELOCATION_MATCH PASS   CTCLight
+0065b400   WARN RELOC_NAME: ??0CBuildingList@@QAE@ABUCEmptyAllocator@@@Z -> 0065f1ad labelled '_global::StdList_Ctor_0065f1ad'
+0065b400   WARN RELOC_NAME: ??0CCreatureList@@QAE@ABUCEmptyAllocator@@@Z -> 00512870 labelled 'std::list<T_0x8_00512870>::list'
+0065b400   WARN RELOC_NAME: ??0CThingList@@QAE@ABUCEmptyAllocator@@@Z -> 004b8920 labelled 'std::list<T_0x8_004b8920>::list'
+0065b400   WARN RELOC_NAME: ??0CObjectList@@QAE@ABUCEmptyAllocator@@@Z -> 0065f1df labelled '_global::StdList_Ctor_0065f1df'
+0065b400   WARN RELOC_NAME: ??0CTrackNodeList@@QAE@ABUCEmptyAllocator@@@Z -> 0065f211 labelled '_global::StdList_Ctor_0065f211'
+0065b400   WARN RELOC_NAME: ??0CTorchTaskList@@QAE@ABUCEmptyAllocator@@@Z -> 0065f243 labelled '_global::StdList_Ctor_0065f243'
+0065b400   WARN RELOC_NAME: ??0CHornTaskList@@QAE@ABUCEmptyAllocator@@@Z -> 0065f25e labelled '_global::StdList_Ctor_0065f25e'
+0065b400   WARN RELOC_NAME: ??0CPatrolTaskList@@QAE@ABUCEmptyAllocator@@@Z -> 0065f279 labelled '_global::StdList_Ctor_0065f279'
+0065b400   WARN RELOC_NAME: ??0CCropTaskList@@QAE@ABUCEmptyAllocator@@@Z -> 0065f294 labelled '_global::StdList_Ctor_0065f294'
+0065b400   WARN RELOC_NAME: ??0CSweepTaskList@@QAE@ABUCEmptyAllocator@@@Z -> 0065f2af labelled '_global::StdList_Ctor_0065f2af'
+0065b400   WARN RELOC_NAME: ??0CCrateTaskList@@QAE@ABUCEmptyAllocator@@@Z -> 0065f2ca labelled '_global::StdList_Ctor_0065f2ca'
+0065b400   WARN RELOC_NAME: ??0CLongSet@@QAE@XZ -> 005157f0 labelled 'std::_Rb_tree<T_node0x14_005157f0>::_Rb_tree'
+0065b400   WARN RELOC_NAME: ??0CMarkerList@@QAE@ABUCEmptyAllocator@@@Z -> 0065f2e5 labelled '_global::StdList_Ctor_0065f2e5'
+0065b400   RELOCATION_MATCH PASS   CTCVillage
+0066ac80   RELOCATION_MATCH PASS   CTCSoundPlayer
+00670050   RELOCATION_MATCH PASS   CTCCoopSpirit
+00684420   WARN SHARED_HEADER_AVAILABLE COpinionOfHeroDef
+00684420   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00684420   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00684420   WARN RELOC_NAME: ?SetOpinionReactionMask@CTCCreatureOpinionOfHero@@QAEXJ@Z -> 00681cd0 labelled 'CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero'
+00684420   RELOCATION_MATCH PASS   CTCCreatureOpinionOfHero
+006aed80   RELOCATION_MATCH PASS   CTCRegionFollower
+006b0730   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006b0730   RELOCATION_MATCH PASS   CTCPhysicsBase
+006c9fe0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006c9fe0   RELOCATION_MATCH PASS   CTCHero
+006cc170   RELOCATION_MATCH PASS   CTCCreatureNavigation
+006cf040   RELOCATION_MATCH PASS   CTCWife
+006d4e10   RELOCATION_MATCH PASS   CTCFollowed
+006d7170   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006d7170   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+006d7170   RELOCATION_MATCH PASS   CTCHeroExperience
+006dff30   WARN SHARED_HEADER_AVAILABLE CTCDriverBase
+006dff30   RELOCATION_MATCH PASS   CTCDParticleEmitter
+006e27e0   RELOCATION_MATCH PASS   CTCTalk
+00706d10   WARN SHARED_HEADER_AVAILABLE CThing
+00706d10   WARN RELOC_NAME: ??0CModifierEntryList@@QAE@ABU0@@Z -> 00708830 labelled 'std::vector::vector'
+00706d10   RELOCATION_MATCH PASS   CTCHeroAttachableAppearanceModifiers
+0070a520   RELOCATION_MATCH PASS   CTCTextureDecal
+007156b0   RELOCATION_MATCH PASS   CTCScriptedControl
+0071a670   RELOCATION_MATCH PASS   CTCMapwho
+0071e180   RELOCATION_MATCH PASS   CTCHeroMorph
+00722540   RELOCATION_MATCH PASS   CTCSmokeGenerator
+00723400   RELOCATION_MATCH PASS   CTCPhysicsLight
+00729360   RELOCATION_MATCH PASS   CTCCreatureExpression
+0072f0f0   RELOCATION_MATCH PASS   CTCDummyVillager
+007315f0   RELOCATION_MATCH PASS   CTCJackPillar
+
+WINS: 50
+  004e292a RELOCATION_MATCH CTCGatherPointRadialArea::?Alloc@CTCGatherPointRadialArea@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e2b4b RELOCATION_MATCH CTCHaste::?Alloc@CTCHaste@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e2b8e RELOCATION_MATCH CTCPreCalculatedNavigationRoute::?Alloc@CTCPreCalculatedNavigationRoute@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e30e7 RELOCATION_MATCH CTCDExplosion::??0CTCDExplosion@@QAE@AAVCThing@@@Z
+  004e323c RELOCATION_MATCH CTCIdleScheduler::?Alloc@CTCIdleScheduler@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e3325 RELOCATION_MATCH CTCNymph::??0CTCNymph@@QAE@AAVCThing@@@Z
+  004e3401 RELOCATION_MATCH CTCDExplosiveTrail::??0CTCDExplosiveTrail@@QAE@AAVCThing@@@Z
+  004e3783 RELOCATION_MATCH CTCTargetingPlayer::?Alloc@CTCTargetingPlayer@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e3cd7 RELOCATION_MATCH CTCEntityEvents::??0CTCEntityEvents@@QAE@AAVCThing@@@Z
+  004e3ea8 RELOCATION_MATCH CTCDExplosion::?Alloc@CTCDExplosion@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e3fef RELOCATION_MATCH CTCNymph::?Alloc@CTCNymph@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e400c RELOCATION_MATCH CTCDExplosiveTrail::?Alloc@CTCDExplosiveTrail@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e48f6 RELOCATION_MATCH CTCEntityEvents::?Alloc@CTCEntityEvents@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e5c2f RELOCATION_MATCH CTCCreatureGroup::??0CTCCreatureGroup@@QAE@AAVCThing@@@Z
+  004e5f18 RELOCATION_MATCH CTCCreatureGroupTag::??0CTCCreatureGroupTag@@QAE@AAVCThing@@@Z
+  004e6d17 RELOCATION_MATCH CTCLightningNode::??0CTCLightningNode@@QAE@AAVCThing@@@Z
+  004e748a RELOCATION_MATCH CTCCarrying::??0CTCCarrying@@QAE@AAVCThing@@@Z
+  004e7513 RELOCATION_MATCH CTCBoastingPodium::??0CTCBoastingPodium@@QAE@AAVCThing@@@Z
+  004e75a0 RELOCATION_MATCH CTCCreatureGroup::?Alloc@CTCCreatureGroup@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e75d9 RELOCATION_MATCH CTCHitLocations::??0CTCHitLocations@@QAE@AAVCThing@@@Z
+  004e762d RELOCATION_MATCH CTCCreatureGroupTag::?Alloc@CTCCreatureGroupTag@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e7666 RELOCATION_MATCH CTCLightningNode::?Alloc@CTCLightningNode@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e7dfc RELOCATION_MATCH CTCCarrying::?Alloc@CTCCarrying@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e7e19 RELOCATION_MATCH CTCBoastingPodium::?Alloc@CTCBoastingPodium@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e7e46 RELOCATION_MATCH CTCHitLocations::?Alloc@CTCHitLocations@@SIPAVCTCBase@@AAVCThing@@@Z
+  0057cdb5 RELOCATION_MATCH CTCHeroStats::??0CTCHeroStats@@QAE@AAVCThing@@@Z
+  00640f00 RELOCATION_MATCH CTCLight::??0CTCLight@@QAE@AAVCThing@@@Z
+  0065b400 RELOCATION_MATCH CTCVillage::??0CTCVillage@@QAE@AAVCThing@@@Z
+  0066ac80 RELOCATION_MATCH CTCSoundPlayer::??0CTCSoundPlayer@@QAE@AAVCThing@@@Z
+  00670050 RELOCATION_MATCH CTCCoopSpirit::??0CTCCoopSpirit@@QAE@AAVCThing@@@Z
+  00684420 RELOCATION_MATCH CTCCreatureOpinionOfHero::??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z
+  006aed80 RELOCATION_MATCH CTCRegionFollower::??0CTCRegionFollower@@QAE@AAVCThing@@@Z
+  006b0730 RELOCATION_MATCH CTCPhysicsBase::??0CTCPhysicsBase@@QAE@AAVCThing@@@Z
+  006c9fe0 RELOCATION_MATCH CTCHero::??0CTCHero@@QAE@AAVCThing@@@Z
+  006cc170 RELOCATION_MATCH CTCCreatureNavigation::??0CTCCreatureNavigation@@QAE@AAVCThing@@@Z
+  006cf040 RELOCATION_MATCH CTCWife::??0CTCWife@@QAE@AAVCThing@@@Z
+  006d4e10 RELOCATION_MATCH CTCFollowed::??0CTCFollowed@@QAE@AAVCThing@@@Z
+  006d7170 RELOCATION_MATCH CTCHeroExperience::??0CTCHeroExperience@@QAE@AAVCThing@@@Z
+  006dff30 RELOCATION_MATCH CTCDParticleEmitter::??0CTCDParticleEmitter@@QAE@AAVCThing@@@Z
+  006e27e0 RELOCATION_MATCH CTCTalk::??0CTCTalk@@QAE@AAVCThing@@@Z
+  00706d10 RELOCATION_MATCH CTCHeroAttachableAppearanceModifiers::??0CTCHeroAttachableAppearanceModifiers@@QAE@AAVCThing@@@Z
+  0070a520 RELOCATION_MATCH CTCTextureDecal::??0CTCTextureDecal@@QAE@AAVCThing@@@Z
+  007156b0 RELOCATION_MATCH CTCScriptedControl::??0CTCScriptedControl@@QAE@AAVCThing@@@Z
+  0071a670 RELOCATION_MATCH CTCMapwho::??0CTCMapwho@@QAE@AAVCThing@@@Z
+  0071e180 RELOCATION_MATCH CTCHeroMorph::??0CTCHeroMorph@@QAE@AAVCThing@@@Z
+  00722540 RELOCATION_MATCH CTCSmokeGenerator::??0CTCSmokeGenerator@@QAE@AAVCThing@@@Z
+  00723400 RELOCATION_MATCH CTCPhysicsLight::??0CTCPhysicsLight@@QAE@AAVCThing@@@Z
+  00729360 RELOCATION_MATCH CTCCreatureExpression::??0CTCCreatureExpression@@QAE@AAVCThing@@@Z
+  0072f0f0 RELOCATION_MATCH CTCDummyVillager::??0CTCDummyVillager@@QAE@AAVCThing@@@Z
+  007315f0 RELOCATION_MATCH CTCJackPillar::??0CTCJackPillar@@QAE@AAVCThing@@@Z

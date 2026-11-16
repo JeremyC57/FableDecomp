@@ -1,7 +1,9 @@
 // CTCObjectAugmentations::CTCObjectAugmentations(CThing* thing) -- empty augmentation slots, sound maps, effect lists and trail pointer; then the thing definition's object-augmentations sub-def is fetched and the slot vector sized to its NumberOfSlots
-// Leaf: ??0CTCObjectAugmentations
+// Leaf: ??0CTCObjectAugmentations@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCObjectAugmentations@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007673C0, 222 bytes (`ret 4`). Vtable 0x0126A3A4 (CTCObjectAugmentations).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, malloc @ 0x00BFEA0E (the two map header nodes, 0x20 each),
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, malloc @ 0x00BFEA0E (the two map header nodes, 0x20 each),
 //   CBaseIntelligentPointer() @ 0x00A01B10 + SetPItem @ 0x00A01B90 (vtable 0x01238C6C = CIntelligentPointer<CThing>),
 //   CDefClassBase::GetSubDef<CObjectAugmentationsDef> @ 0x0042AF9E (labelled GetSubDef<CAbilityDef>), vector<CDefPointer<
 //   const CThingBaseDef> >::resize(n, const T&) @ 0x0076BF80 (labelled vector<unsigned int>::resize).
@@ -15,6 +17,8 @@
 //   out-of-line `resize(n, const T&)`, which puts the temporary's zero store AFTER the argument pushes (in the dead `thing`
 //   parameter slot), where `resize(n, T())` written in the body stores it first.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 struct CDefVirtual {
     virtual void v00();
@@ -111,13 +115,6 @@ public:
 #pragma pack(pop)
 struct ParticleAndEndPoints;
 struct AttackParticleAndEndPoints;
-class CTCBase { public:
-    CTCBase(CThing* thing);                             // 0x00686800
-    virtual ~CTCBase();
-    CThing* ParentThing;                                // +0x04
-    bool    ToBeRemoved;                                // +0x08
-    bool    IsInGlobalUpdateTCs;                        // +0x09
-};
 class CTCObjectAugmentations : public CTCBase { public:               // vtable 0x0126A3A4
     CDefPointer<const CObjectAugmentationsDef> PDef;    // +0x0c
     bool          LoadedFromSaveGame;                   // +0x10
@@ -131,11 +128,11 @@ class CTCObjectAugmentations : public CTCBase { public:               // vtable 
     long          CurPeriod;                            // +0x60
     bool          InStrikeAction;                       // +0x64
     CIntelligentPointer<CThing> ProjectileTrailEffect;  // +0x65
-    CTCObjectAugmentations(CThing* thing);
+    CTCObjectAugmentations(CThing& thing);
     virtual ~CTCObjectAugmentations();
 };
 
-CTCObjectAugmentations::CTCObjectAugmentations(CThing* thing)
+CTCObjectAugmentations::CTCObjectAugmentations(CThing& thing)
     : CTCBase(thing), LoadedFromSaveGame(false), CurrentRunningAugEffectIndex(0), CurPeriod(0), InStrikeAction(false),
       ProjectileTrailEffect(0)
 {

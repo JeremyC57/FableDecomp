@@ -1,21 +1,26 @@
 #pragma optimize("s",on)
-// CTCWobble::Alloc(CThing&) -- factory: new CTCWobble(owner)
+// CTCWobble::Alloc(CThing& thing) -- the registry factory: a new CTCWobble for `thing` (operator new(0x30) 0x00BFEA1A, null-checked, then
+//   the constructor 0x004D61CA), returned as its CTCBase
+// Leaf: ?Alloc@CTCWobble@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D942C, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x30 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCWobble::CTCWobble ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCWobble) = 0x30 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x004D61CA on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCWobble@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCWobble@@QAE@AAVCThing@@@Z (0x004D61CA, landed). (Landed earlier as a generated free function CTCWobble_Alloc(CThing*) returning CTCWobble*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCWobble { public:
-    unsigned char _body[0x30];       // sizeof(CTCWobble) = 0x30
-    CTCWobble(long owner);                   // 0x004D61CA
+class CTCWobble : public CTCBase {
+public:
+    CTCWobble(CThing& thing);                        // 0x004D61CA
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x30 - 0xC];              // the class's own members (not modelled); sizeof(CTCWobble) = 0x30
 };
 
-CTCWobble* __fastcall CTCWobble_Alloc(long owner)
+CTCBase* __fastcall CTCWobble::Alloc(CThing& thing)
 {
-    return new CTCWobble(owner);
+    return new CTCWobble(thing);
 }

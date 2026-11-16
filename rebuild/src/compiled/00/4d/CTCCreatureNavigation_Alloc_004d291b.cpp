@@ -1,22 +1,26 @@
 #pragma optimize("s",on)
-// CTCCreatureNavigation::Alloc(CThing&) -- factory: new CTCCreatureNavigation(owner)
+// CTCCreatureNavigation::Alloc(CThing& thing) -- the registry factory: a new CTCCreatureNavigation for `thing` (operator new(0x60) 0x00BFEA1A, null-checked, then
+//   the constructor 0x006CC170), returned as its CTCBase
+// Leaf: ?Alloc@CTCCreatureNavigation@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D291B, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x60 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCCreatureNavigation::CTCCreatureNavigation ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCCreatureNavigation) = 0x60 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x006CC170 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCCreatureNavigation@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCCreatureNavigation@@QAE@AAVCThing@@@Z (0x006CC170, landed). (Landed earlier as a generated free function CTCCreatureNavigation_Alloc(CThing*) returning CTCCreatureNavigation*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCCreatureNavigation { public:
-    unsigned char _body[0x60];       // sizeof(CTCCreatureNavigation) = 0x60
-    CTCCreatureNavigation(CThing* owner);                   // 0x006CC170
+class CTCCreatureNavigation : public CTCBase {
+public:
+    CTCCreatureNavigation(CThing& thing);                        // 0x006CC170
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x60 - 0xC];              // the class's own members (not modelled); sizeof(CTCCreatureNavigation) = 0x60
 };
 
-CTCCreatureNavigation* __fastcall CTCCreatureNavigation_Alloc(CThing* owner)
+CTCBase* __fastcall CTCCreatureNavigation::Alloc(CThing& thing)
 {
-    return new CTCCreatureNavigation(owner);
+    return new CTCCreatureNavigation(thing);
 }

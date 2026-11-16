@@ -1,9 +1,11 @@
 // CTCHeroRangedAttacks::CTCHeroRangedAttacks(CThing* thing) -- CTCBase(thing), own vtable, null combat def, no fire cycle, timers -1, accuracy 100, damage multiplier 1, button pressures 0.01, Z-lock pressure -1, zoom mode -1
-// Leaf: ??0CTCHeroRangedAttacks
+// Leaf: ??0CTCHeroRangedAttacks@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroRangedAttacks@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00789BB0, length 101 bytes (`ret 4`). Catalog label "CTCOpinionSource::CTCOpinionSource"
 // is propagated: the vtable store 0x0126BAF4 is RTTI .?AVCTCHeroRangedAttacks@@ (CTCBase, CBaseClassNonCopyable, CBaseClass); the
 // only caller is the component factory @ 0x004D4A25.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated).
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated).
 // Layout = PDB CTCHeroRangedAttacks (0x4C): PParentCreature +0x0C (not initialised here), PHeroCombatDef +0x10, FireCycleInProgress/
 // Aiming/FireQueued/Loading +0x14..+0x17, AimingTimer +0x18, PullBackTimer +0x1C, PullBackAmount +0x20, Accuracy +0x24,
 // DamageMultiplier +0x28, Decapitate +0x2C, ButtonReleaseCancelTimer +0x30, ButtonPressure +0x34, LastButtonPressure +0x38,
@@ -11,19 +13,14 @@
 // BowDrawbackSoundID +0x48.
 // Shape: init list in declaration order; VC groups the stores by register (zeros in eax, -1 in ecx, 0.01f in edx, other floats
 // as immediates).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CThingCreatureBase;
 class CHeroCombatDef;
 template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-};
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                            // +0x04
-    bool ToBeRemoved;                               // +0x08
-    bool IsInGlobalUpdateTCs;                       // +0x09
-    CTCBase(CThing* thing);                         // 0x00686800
 };
 class CTCHeroRangedAttacks : public CTCBase { public:             // vtable 0x0126BAF4
     CThingCreatureBase* PParentCreature;            // +0x0c
@@ -45,11 +42,10 @@ class CTCHeroRangedAttacks : public CTCBase { public:             // vtable 0x01
     float ProjectileWeaponZoomParameter;            // +0x40
     long  ProjectileWeaponFirstPersonZoomModeIndex; // +0x44
     unsigned long BowDrawbackSoundID;               // +0x48
-    virtual void v00();
-    CTCHeroRangedAttacks(CThing* thing);
+    CTCHeroRangedAttacks(CThing& thing);
 };
 
-CTCHeroRangedAttacks::CTCHeroRangedAttacks(CThing* thing)
+CTCHeroRangedAttacks::CTCHeroRangedAttacks(CThing& thing)
     : CTCBase(thing)
     , FireCycleInProgress(false)
     , Aiming(false)

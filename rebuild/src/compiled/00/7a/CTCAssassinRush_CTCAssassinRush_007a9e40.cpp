@@ -1,5 +1,7 @@
 // CTCAssassinRush::CTCAssassinRush(CThing* parent) -- set up the assassin-rush component: members cleared (the behind-target position to FLT_MAX, UseCollision on), its special-ability def fetched, a player's spell-cast state switched to rush mode, the spell level read from the inventory abilities, then Reset
-// Leaf: ??0CTCAssassinRush
+// Leaf: ??0CTCAssassinRush@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCAssassinRush@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -16,6 +18,8 @@
 // FinalAction +0x90, RadialBlurFadeKey +0x98, UseCollision +0x9c, ScheduleForCancel +0x9e (as the landed CancelMove
 // 0x007AA480), FakeCollideWithSomething +0x9f, RushDelayFrameCount +0xa0, CompletedExitModes +0xa4 sit 4 below the PDB.
 // Shape: the sibling CTCBattleCharge constructor 0x007A71B0 (same TU family); FLT_MAX is 0x7F7FFFFF.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 class CThing;
 class CBaseObject;
@@ -120,14 +124,6 @@ struct CTCSpellCastState {                          // interface type 0xA7 (clas
     long Mode;                                      // +0x10
 };
 
-class CTCBase {
-public:
-    CTCBase(CThing* parent);                        // 0x00686800
-    virtual void v00();
-    CThing* ParentThing;                            // +0x04
-    unsigned char _pad08[0x4];                      // ToBeRemoved, IsInGlobalUpdateTCs
-};
-
 #include "engine/C3DVector.h"
 
 template<class T> struct CVector {                  // retail STLport vector, 12 bytes
@@ -173,13 +169,12 @@ public:
     bool FakeCollideWithSomething;                  // +0x9f
     long RushDelayFrameCount;                       // +0xa0
     bool CompletedExitModes;                        // +0xa4
-    CTCAssassinRush(CThing* parent);
-    virtual void v00();
+    CTCAssassinRush(CThing& parent);
     void Reset();                                   // 0x007A9B70
 };
 #pragma pack(pop)
 
-CTCAssassinRush::CTCAssassinRush(CThing* parent)
+CTCAssassinRush::CTCAssassinRush(CThing& parent)
     : CTCBase(parent), SlowTimeLength(0), BehindTargetPos(3.402823466e+38f, 3.402823466e+38f, 3.402823466e+38f),
       SpellLevel(0), RadialBlurFadeKey(0), UseCollision(true), ScheduleForCancel(false), FakeCollideWithSomething(false),
       RushDelayFrameCount(0), CompletedExitModes(false)

@@ -1,11 +1,13 @@
 // CTCCreatureGenerator::CTCCreatureGenerator(CThing* thing) -- construct the creature-generator component: the CTCBase part, empty creature-family array / created-creature list / triggerer and position vectors, active and ready flags set, unlimited trigger count, no def, a null random-particle pointer, then the generation defaults (radii 1.0, no limits) and the nav-check flag
-// Leaf: ??0CTCCreatureGenerator
+// Leaf: ??0CTCCreatureGenerator@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreatureGenerator@@QAE@AAVCThing@@@Z).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0074AA00, 248 bytes (+ int3 padding), `ret 4`.
 // Label: the catalog's "CPSCOrbit::CPSCOrbit" is propagated; the body stores vtable 0x01268C24 = CTCCreatureGenerator
 //   (RTTI; OnCreate 0x00749EA0 is its slot 4) and its only caller is the component factory 0x004D37A8.
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800, malloc 0x00BFEA0E (the list sentinel), CCharString() 0x0099E4B0
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800, malloc 0x00BFEA0E (the list sentinel), CCharString() 0x0099E4B0
 //   (GenParams.ScriptNameOfAllGeneratedCreatures), CBaseIntelligentPointer() 0x00A01B10 / SetPItem 0x00A01B90 (then the
 //   CIntelligentPointer<CThing> vtable 0x01238C6C).
 // Layout (retail, Ego_r.pdb less the container deltas: CArray/vectors 12 bytes, list 4 bytes; as the landed OnCreate):
@@ -18,17 +20,12 @@
 //   PExclusionArea +0xa4. engine/CTCCreatureGenerator.h carries the PDB offsets, so the class is modelled locally.
 // Shape: STLport containers through their real bases (alloc proxies from allocator temporaries); the scalars stored after
 //   the intelligent pointer are ctor-body assignments.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);          // 0x00BFEA0E
 class CThing;
 class CTCShapeManager;
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04
-    bool ToBeRemoved;                                   // +0x08
-    bool IsInGlobalUpdateTCs;                           // +0x09
-    CTCBase(CThing* thing);                             // 0x00686800
-};
 class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
@@ -129,11 +126,10 @@ class CTCCreatureGenerator : public CTCBase { public:                 // vtable 
     bool                                                NeedToDoNavCheck;      // +0xa0
     bool                                                DoNavCheckOnGeneration;   // +0xa1
     CTCShapeManager*                                    PExclusionArea;        // +0xa4
-    virtual void v00();
-    CTCCreatureGenerator(CThing* thing);
+    CTCCreatureGenerator(CThing& thing);
 };
 
-CTCCreatureGenerator::CTCCreatureGenerator(CThing* thing)
+CTCCreatureGenerator::CTCCreatureGenerator(CThing& thing)
     : CTCBase(thing), Active(true), Initialised(false), ReadyToInitialise(true), ExternalTrigger(false),
       WaitForAllCreaturesDead(true), NumTriggersLeft(-1), ActivationFrame(0), LastSpaceTest(false),
       CreationCount(0), UndeadTriggered(false), Destroyed(false)

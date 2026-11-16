@@ -1,8 +1,10 @@
 // CTCDPhysicalObstruction::CTCDPhysicalObstruction(CThing* parent) -- CTCDriverBase(parent), own vtable, empty ignore list, three null primitive handles
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retry 10: RELOCATION_MATCH -- the vector modelled as STLport _Vector_base (m_pEnd an _STLP_alloc_proxy with its own ctor); three plain pointers put `mov ecx,edi` one store too early.
+// Leaf: ??0CTCDPhysicalObstruction@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DF14B, length 91 bytes.
-// Callees: CTCDriverBase::CTCDriverBase(CThing*) @ 0x00771200; CBaseClass::CBaseClass @ 0x0099A2D0 (x3, the
+// Callees: CTCDriverBase::CTCDriverBase(CThing&) @ 0x00771200; CBaseClass::CBaseClass @ 0x0099A2D0 (x3, the
 // base of each CEnginePrimitiveHandle, vtable 0x01231710).
 // Vtable 0x01241C0C = CTCDPhysicalObstruction, 0x0122F598 = CEnginePrimitiveHandle (rtti-vtables.tsv).
 // PDB CTCDPhysicalObstruction: StartPos +0x0c, EndPos +0x18 (C3DVector, trivial constructors: no stores),
@@ -18,10 +20,10 @@ class CThing;
 struct CThingConst;
 class CEnginePersistentPrimitiveBase;
 
-struct CTCDriverBase_Calls {
+struct CTCDriverBase {
     virtual void v00();
     unsigned char _body[0x8];                               // ParentThing +4, ToBeRemoved +8, IsInGlobalUpdateTCs +9
-    CTCDriverBase_Calls(CThing* parent);                    // 0x00771200
+    CTCDriverBase(CThing& parent);                    // 0x00771200
 };
 
 #include "engine/C3DVector.h"
@@ -56,7 +58,7 @@ class CEnginePrimitiveHandle : public CBaseClass { public:                // vta
     FABLE_FORCEINLINE CEnginePrimitiveHandle() { }             // inline under /Os only when forced
 };
 
-class CTCDPhysicalObstruction : public CTCDriverBase_Calls { public:
+class CTCDPhysicalObstruction : public CTCDriverBase { public:
     C3DVector                               StartPos;                   // +0x0c
     C3DVector                               EndPos;                     // +0x18
     long                                    LifeTimer;                  // +0x24
@@ -66,10 +68,10 @@ class CTCDPhysicalObstruction : public CTCDriverBase_Calls { public:
     CEnginePrimitiveHandle                  line2;                      // +0x40
     CEnginePrimitiveHandle                  line3;                      // +0x48
     virtual void v00();                                     // own vtable 0x01241C0C
-    CTCDPhysicalObstruction(CThing* parent);
+    CTCDPhysicalObstruction(CThing& parent);
 };
 
-CTCDPhysicalObstruction::CTCDPhysicalObstruction(CThing* parent)
-    : CTCDriverBase_Calls(parent)
+CTCDPhysicalObstruction::CTCDPhysicalObstruction(CThing& parent)
+    : CTCDriverBase(parent)
 {
 }

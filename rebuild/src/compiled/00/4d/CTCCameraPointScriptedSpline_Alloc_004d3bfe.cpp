@@ -1,22 +1,26 @@
 #pragma optimize("s",on)
-// CTCCameraPointScriptedSpline::Alloc(CThing&) -- factory: new CTCCameraPointScriptedSpline(owner)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D3BFE, oracle length 32 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
+// CTCCameraPointScriptedSpline::Alloc(CThing& thing) -- the registry factory: a new CTCCameraPointScriptedSpline for `thing` (operator new(0xcc) 0x00BFEA1A, null-checked, then
+//   the constructor 0x0075DD10), returned as its CTCBase
+// Leaf: ?Alloc@CTCCameraPointScriptedSpline@@SIPAVCTCBase@@AAVCThing@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D3BFE, oracle length 29 bytes.
 // Retail bytes:  push esi ; push 0xcc ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCCameraPointScriptedSpline::CTCCameraPointScriptedSpline ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCCameraPointScriptedSpline) = 0xcc bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x0075DD10 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCCameraPointScriptedSpline@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCCameraPointScriptedSpline@@QAE@AAVCThing@@@Z (0x0075DD10, landed). (Landed earlier as a generated free function CTCCameraPointScriptedSpline_Alloc(CThing*) returning CTCCameraPointScriptedSpline*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCCameraPointScriptedSpline { public:
-    unsigned char _body[0xcc];       // sizeof(CTCCameraPointScriptedSpline) = 0xcc
-    CTCCameraPointScriptedSpline(CThing* owner);                   // 0x0075DD10
+class CTCCameraPointScriptedSpline : public CTCBase {
+public:
+    CTCCameraPointScriptedSpline(CThing& thing);                        // 0x0075DD10
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0xcc - 0xC];              // the class's own members (not modelled); sizeof(CTCCameraPointScriptedSpline) = 0xcc
 };
 
-CTCCameraPointScriptedSpline* __fastcall CTCCameraPointScriptedSpline_Alloc(CThing* owner)
+CTCBase* __fastcall CTCCameraPointScriptedSpline::Alloc(CThing& thing)
 {
-    return new CTCCameraPointScriptedSpline(owner);
+    return new CTCCameraPointScriptedSpline(thing);
 }

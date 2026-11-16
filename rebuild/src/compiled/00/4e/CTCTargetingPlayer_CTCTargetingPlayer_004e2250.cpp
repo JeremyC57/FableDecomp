@@ -1,10 +1,11 @@
 // CTCTargetingPlayer::CTCTargetingPlayer(CThing* thing) -- the targeting base, then a cleared player-targeting state: no target-next request, an empty targeted point and point lists, no Z target, zeroed targeted positions and four empty thing pointers
-// Leaf: ??0CTCTargetingPlayer
+// Leaf: ??0CTCTargetingPlayer@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCTargetingBase(CThing&) (0x007F58E0) as both PDBs spell it; this constructor too.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E2250, 184 bytes (`ret 4`; size TU: `or [m],-1`, `fldz ; fstp` zeros);
 // vtable 0x0124280C CTCTargetingPlayer.
-// Callees: CTCTargetingBase::CTCTargetingBase(CThing*) @ 0x007F58E0, NPlayerTargeting::CTargetPoint::CTargetPoint() @ 0x004D7A76,
+// Callees: CTCTargetingBase::CTCTargetingBase(CThing&) @ 0x007F58E0, NPlayerTargeting::CTargetPoint::CTargetPoint() @ 0x004D7A76,
 // CIntelligentPointer<CThing>::CIntelligentPointer(CThing*) @ 0x004A96F0 (out of line, with null), CBaseIntelligentPointer
 // ctor @ 0x00A01B10 (the three default-constructed pointers; vtable 0x01238C6C stored inline).
 // Layout: engine/CTCTargetingPlayer.h carries the PDB offsets (16-byte vectors); retail has 12-byte vectors, so from
@@ -20,7 +21,7 @@ class CBaseObject;
 class CTCTargetingBase { public:
     virtual void v00();
     unsigned char _base[0x34];                          // +0x04 CTCBase rest, ScriptOverride.., PTargetedThing, PTargetingDef, LookAtCamera
-    CTCTargetingBase(CThing* thing);                    // 0x007F58E0
+    CTCTargetingBase(CThing& thing);                    // 0x007F58E0
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -84,10 +85,10 @@ class CTCTargetingPlayer : public CTCTargetingBase { public:
     CIntelligentPointer<CThing> PTargetOnlyThing;       // +0xec
     bool LockedOntoEnemy;                               // +0xf4
     virtual void v00();
-    CTCTargetingPlayer(CThing* thing);
+    CTCTargetingPlayer(CThing& thing);
 };
 
-CTCTargetingPlayer::CTCTargetingPlayer(CThing* thing)
+CTCTargetingPlayer::CTCTargetingPlayer(CThing& thing)
     : CTCTargetingBase(thing), TargetNextThing(false), ForcedToHaveNoTarget(false), FrameSetAsTargetNextThing(-1),
       CurrentZTargetIndex(-1), TargetedPos(0.0f, 0.0f, 0.0f), OldTargetedPos(0.0f, 0.0f, 0.0f), PLastThreatenedThing(0),
       LockedOntoEnemy(false)

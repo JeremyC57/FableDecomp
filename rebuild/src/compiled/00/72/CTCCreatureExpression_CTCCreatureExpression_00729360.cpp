@@ -1,7 +1,9 @@
-// CTCCreatureExpression::CTCCreatureExpression(CThing*) -- CTCBase(owner), own vtable, an empty expression-state list, not blinking
-// Leaf: ??0CTCCreatureExpression
+// CTCCreatureExpression::CTCCreatureExpression(CThing&) -- CTCBase(owner), own vtable, an empty expression-state list, not blinking
+// Leaf: ??0CTCCreatureExpression@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreatureExpression@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00729360, length 52 bytes (+ int3 padding).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is a
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is a
 // propagated name), malloc @ 0x00BFEA0E (the list's sentinel node).
 // Identity: the manifest label "CTCActionUseBase::CTCActionUseBase" is propagated; the vtable stored is
 // 0x012665CC = CTCCreatureExpression (rtti-vtables.tsv).
@@ -15,15 +17,9 @@
 // to just before the Blinking store.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-
-struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
-    virtual void v00();
-    CThing* ParentThing;                                    // +0x04
-    bool    ToBeRemoved;                                    // +0x08
-    bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase_Calls(CThing* thing);                           // 0x00686800
-};
 
 struct CExpressionState { unsigned char _body[0x14]; };
 
@@ -40,15 +36,14 @@ struct CRetailList {                                        // retail std::list:
     }
 };
 
-class CTCCreatureExpression : public CTCBase_Calls { public:              // vtable 0x012665CC
+class CTCCreatureExpression : public CTCBase { public:              // vtable 0x012665CC
     CRetailList<CExpressionState> ExpressionStates;         // +0x0c
     bool                          Blinking;                 // +0x10
-    virtual void v00();
-    CTCCreatureExpression(CThing* owner);
+    CTCCreatureExpression(CThing& owner);
 };
 
-CTCCreatureExpression::CTCCreatureExpression(CThing* owner)
-    : CTCBase_Calls(owner)
+CTCCreatureExpression::CTCCreatureExpression(CThing& owner)
+    : CTCBase(owner)
     , Blinking(false)
 {
 }

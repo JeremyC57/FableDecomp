@@ -1,8 +1,10 @@
 // CTCLightningNode::CTCLightningNode(CThing* owner) -- construct the lightning node component: CTCBase(owner), three intelligent pointers (PParent, PSourceOfFaction, PSourceOfHit), a null PDef, Timer 0 and an empty LightningBranches vector
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E6D17, length 90 bytes.
-// Leaf: ??0CTCLightningNode
+// Leaf: ??0CTCLightningNode@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCLightningNode@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x3).
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x3).
 // Vtables: CTCLightningNode @ 0x0124337C, CIntelligentPointer<CThing> @ 0x01238C6C (kept in ebx for two members),
 // CIntelligentPointer<CThing const> @ 0x01237F1C.
 // Layout: PDB CTCLightningNode (0x3c; retail 0x38 with the 12-byte vector): PParent +0x0c, PSourceOfFaction +0x14,
@@ -13,16 +15,11 @@
 // Size-optimised TU (`#pragma optimize("s", on)`): the pass-through `push dword ptr [esp+10h]` and the vtable constant
 // cached in ebx.
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CLightningDef;
 struct CLightningBranchPointer;
-
-class CTCBase { public:
-    CTCBase(CThing* owner);                        // 0x00686800
-    virtual ~CTCBase();                            // 0x00686830
-    CThing* m_pThing;                              // +0x04
-    long    m_baseWord;                            // +0x08
-};
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -47,11 +44,11 @@ class CTCLightningNode : public CTCBase { public:
     CLightningDefPointer              PDef;               // +0x24
     long                              Timer;              // +0x28
     CLightningBranchVector            LightningBranches;  // +0x2c
-    CTCLightningNode(CThing* owner);
+    CTCLightningNode(CThing& owner);
     virtual void v01();
 };
 
-CTCLightningNode::CTCLightningNode(CThing* owner)
+CTCLightningNode::CTCLightningNode(CThing& owner)
     : CTCBase(owner), Timer(0)
 {
 }

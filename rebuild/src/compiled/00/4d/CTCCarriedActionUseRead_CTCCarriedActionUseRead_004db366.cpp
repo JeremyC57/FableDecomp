@@ -1,8 +1,9 @@
-// CTCCarriedActionUseRead::CTCCarriedActionUseRead(CThing*) -- CTCCarriedActionUseBase(owner), own vtable, null readable def, not yet read
-// Leaf: ??0CTCCarriedActionUseRead
+// CTCCarriedActionUseRead::CTCCarriedActionUseRead(CThing&) -- CTCCarriedActionUseBase(owner), own vtable, null readable def, not yet read
+// Leaf: ??0CTCCarriedActionUseRead@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCCarriedActionUseBase(CThing&) (0x004DAC61) as both PDBs spell it; this constructor too.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DB366, length 32 bytes (a /Os module: unaligned entry,
 // `push dword ptr [esp+8]` pass-through, `and dword ptr [..],0` zero store).
-// Callee: CTCCarriedActionUseBase::CTCCarriedActionUseBase(CThing*) @ 0x004DAC61 (it calls
+// Callee: CTCCarriedActionUseBase::CTCCarriedActionUseBase(CThing&) @ 0x004DAC61 (it calls
 // CTCActionUseBase 0x004DA939 and stores vtable 0x0123F894 = CTCCarriedActionUseBase; the manifest's
 // "CEnginePrimitiveGroupManager" label is propagated).
 // Identity: the manifest label "CTCActionUseBase::CTCActionUseBase" is propagated; the vtable stored is
@@ -19,7 +20,7 @@ class CCarriedReadableDef;
 class CTCCarriedActionUseBase { public:                            // 0x14 bytes, vtable 0x0123F894
     virtual void v00();
     unsigned char _body[0x10];                              // CTCBase + PActionUseDef + Usable
-    CTCCarriedActionUseBase(CThing* owner);                 // 0x004DAC61
+    CTCCarriedActionUseBase(CThing& owner);                 // 0x004DAC61
 };
 
 template<class T>
@@ -32,10 +33,10 @@ struct CTCCarriedActionUseRead : CTCCarriedActionUseBase {  // vtable 0x01240834
     CDefPointer<CCarriedReadableDef> PDef;                  // +0x14
     bool                             AlreadyRead;           // +0x18
     virtual void v00();
-    CTCCarriedActionUseRead(CThing* owner);
+    CTCCarriedActionUseRead(CThing& owner);
 };
 
-CTCCarriedActionUseRead::CTCCarriedActionUseRead(CThing* owner)
+CTCCarriedActionUseRead::CTCCarriedActionUseRead(CThing& owner)
     : CTCCarriedActionUseBase(owner)
     , AlreadyRead(false)
 {

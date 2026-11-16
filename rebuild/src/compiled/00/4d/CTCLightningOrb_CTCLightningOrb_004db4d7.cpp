@@ -1,8 +1,10 @@
 // CTCLightningOrb::CTCLightningOrb(CThing* owner) -- construct the lightning orb component: CTCBase(owner), the PParent and PTarget intelligent pointers, a null PDef, Timer and LifeTime -1, NumFramesForSplineTraversal 1 and a null PSpline
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DB4D7, length 83 bytes.
-// Leaf: ??0CTCLightningOrb
+// Leaf: ??0CTCLightningOrb@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCLightningOrb@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x2).
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x2).
 // Vtables: CTCLightningOrb @ 0x01240A2C, CIntelligentPointer<CThing> @ 0x01238C6C (cached in ebx for both members).
 // Layout: PDB CTCLightningOrb (0x34): PParent +0x0c, PTarget +0x14 (8-byte intelligent pointers), PDef +0x1c, Timer +0x20,
 // LifeTime +0x24, NumFramesForSplineTraversal +0x28, PSpline +0x2c (CCountedPointer<NBBBMaths::CLinearSpline>: object + block).
@@ -10,16 +12,11 @@
 // (pass-through argument push, `or dword ptr [..],0FFFFFFFFh` for -1, the vtable constant in ebx), inline CIntelligentPointer
 // constructors, and initialisers in declaration order sharing the `xor eax,eax` zero.
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CLightningOrbDef;
 struct CLinearSpline;
-
-class CTCBase { public:
-    CTCBase(CThing* owner);                        // 0x00686800
-    virtual ~CTCBase();                            // 0x00686830
-    CThing* m_pThing;                              // +0x04
-    long    m_baseWord;                            // +0x08
-};
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -44,11 +41,11 @@ class CTCLightningOrb : public CTCBase { public:
     long                        LifeTime;                      // +0x24
     long                        NumFramesForSplineTraversal;   // +0x28
     CSplinePointer              PSpline;                       // +0x2c
-    CTCLightningOrb(CThing* owner);
+    CTCLightningOrb(CThing& owner);
     virtual void v01();
 };
 
-CTCLightningOrb::CTCLightningOrb(CThing* owner)
+CTCLightningOrb::CTCLightningOrb(CThing& owner)
     : CTCBase(owner), Timer(-1), LifeTime(-1), NumFramesForSplineTraversal(1)
 {
 }

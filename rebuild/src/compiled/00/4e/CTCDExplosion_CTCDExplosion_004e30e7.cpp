@@ -1,10 +1,11 @@
-// CTCDExplosion::CTCDExplosion(CThing*) -- explosion driver constructor: zero radii, no life timer / ring (-1), an armed trigger and empty emitter / hit lists
-// Leaf: ??0CTCDExplosion
+// CTCDExplosion::CTCDExplosion(CThing&) -- explosion driver constructor: zero radii, no life timer / ring (-1), an armed trigger and empty emitter / hit lists
+// Leaf: ??0CTCDExplosion@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E30E7, 93 bytes. Manifest label "CTCHeroRangedAttacks::CTCHeroRangedAttacks"
 // is propagated from an unrelated body: the vtable stored is CTCDExplosion's (0x01242A54, rtti-vtables.tsv) and the
 // stores follow CTCDExplosion's PDB members; single caller 0x004E3EBA (the CTCDExplosion factory).
-// Callee: CTCDriverBase::CTCDriverBase(CThing*) @ 0x00771200.
+// Callee: CTCDriverBase::CTCDriverBase(CThing&) @ 0x00771200.
 //
 // Shape: a size-optimised TU (`push dword ptr [esp+8]` pass-through, `or dword ptr [..],-1`). DamageRadius /
 // PhysicsRadius (+0x0C/+0x10, `fldz ; fstp`) and ExplosionLifeTimer (+0x1C, -1) are plain initialisers scheduled
@@ -20,7 +21,7 @@ class CThing;
 class CTCDriverBase { public:
     virtual void v00();
     unsigned char _body[0x8];                  // +0x04 CTCBase
-    CTCDriverBase(CThing* parent);             // 0x00771200
+    CTCDriverBase(CThing& parent);             // 0x00771200
 };
 
 #include "engine/C3DVector.h"
@@ -56,10 +57,10 @@ class CTCDExplosion : public CTCDriverBase { public:
     CPtrVector         SpecifiedThingsToHit;   // +0x6C (PDB +0x78)
 
     virtual void v00();
-    CTCDExplosion(CThing* parent);
+    CTCDExplosion(CThing& parent);
 };
 
-CTCDExplosion::CTCDExplosion(CThing* parent)
+CTCDExplosion::CTCDExplosion(CThing& parent)
     : CTCDriverBase(parent),
       DamageRadius(0.0f), PhysicsRadius(0.0f), ExplosionLifeTimer(-1),
       CreatedEmitter(false), NeedToTriggerExplosion(true),

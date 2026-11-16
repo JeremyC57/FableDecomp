@@ -1,9 +1,11 @@
 // CTCBoss::CTCBoss(CThing* owner) -- CTCBase(owner), own vtable, empty def pointer and vectors, counters cleared and both flags set, the boss sub-def fetched from the owner's base def, the phase start at the owner's position, then any effects cleared
-// Leaf: ??0CTCBoss
+// Leaf: ??0CTCBoss@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCBoss@@QAE@AAVCThing@@@Z).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007AEFD0, length 114 bytes (+14 int3 padding). `ret 4`. Vtable 0x0126D494.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CDefClassBase::GetSubDef(CDefPointer<const CBossDef>*) @ 0x007AFA90 (catalog:
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CDefClassBase::GetSubDef(CDefPointer<const CBossDef>*) @ 0x007AFA90 (catalog:
 // the <CAICreatureWillPowerIndicatorDef> byte-twin), CThing::GetPos @ 0x004C73D0, CTCBoss::ClearEffects @ 0x007AEF60.
 // Shape: the member ctors (def pointer, two vectors modelled as STLport _Vector_base + _STLP_alloc_proxy, which places the
 // `lea ecx,[esi+0Ch]` before the last zero store) zero through one eax after the vtable store; the scalars are body
@@ -13,6 +15,8 @@
 // currentBossPhase +0x18, NextWeapon +0x1C, BCountStrikes +0x20, EnablePhaseChanges +0x21, PhaseStartPos +0x22 (unaligned, so
 // C3DVector is declared packed), HelperCreatures +0x30, Effects +0x3C; retail CThing: bitset +0x20, map +0x44, base def +0x70,
 // Dead +0x91.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 #pragma pack(push, 1)
 #include "engine/C3DVector.h"
@@ -85,16 +89,6 @@ class CDefClassBase { public:
 };
 
 class CTCEntityEvents;
-class CTCBase {
-public:
-    CTCBase(CThing* owner);                     // 0x00686800
-    virtual ~CTCBase();
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-protected:
-    CPlayerManager& GetPlayerManager();   // 0x00686D40 (Ego_r.pdb CTCBase, protected)
-};
 class CTCBoss : public CTCBase {                // vtable 0x0126D494
 public:
     CDefPointer<const CBossDef> PBossDef;       // +0x0c
@@ -107,13 +101,13 @@ public:
     C3DVector PhaseStartPos;                    // +0x22
     CRetailVector<CBaseIntelligentPointer> HelperCreatures;   // +0x30 vector<CIntelligentPointer<CThingAICreature>>
     CRetailVector<CBaseIntelligentPointer> Effects;           // +0x3c vector<CIntelligentPointer<CThing>>
-    CTCBoss(CThing* owner);
+    CTCBoss(CThing& owner);
     virtual ~CTCBoss();
     void ClearEffects();
     virtual void FrameUpdate();
 };
 
-CTCBoss::CTCBoss(CThing* owner)
+CTCBoss::CTCBoss(CThing& owner)
     : CTCBase(owner)
 {
     currentBossPhase = 0;

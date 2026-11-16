@@ -1,9 +1,11 @@
 // CTCCreatureTintEffect::CTCCreatureTintEffect(CThing* parent) -- constructor: CTCBase, null def, zero timers and fade flag, an empty tint vector; load SPECIAL_ABILITIES_CREATURE_TINT_DEF, collect the things the parent carries into TintList, then Reset()
-// Leaf: ??0CTCCreatureTintEffect
+// Leaf: ??0CTCCreatureTintEffect@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreatureTintEffect@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CF110, 278 bytes. `ret 4`; vtable 0x0126F13C (manifest labels the row CTCBurntEffect: wrong, see Reset 0x007CEDE0).
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800; CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0;
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800; CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0;
 //   CGameDefinitionManager::Get 0x0044C6B0 (__fastcall, twice); CDefinitionManager::GetGlobalIndexFromClassIndex
 //   0x009AD390; CDefinitionManager::GetDef<CSpecialAbilitiesCreatureTintDef> 0x007CF2E0;
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (non-const); CTCCarrying member filling a
@@ -24,6 +26,8 @@
 //   The copy loop __copy (0x007CE1F0, same TU, back_insert_iterator returned by hidden pointer in ecx) has a
 //   same-TU stand-in body (AppendThing = push_back of the converted CIntelligentPointer): with only a declaration
 //   VC7.1 homes the hidden result in the dead `index` slot instead of the dead `parent` slot.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 
@@ -143,14 +147,6 @@ public:
     }
 };
 
-class CTCBase {
-public:
-    CTCBase(CThing* parent);                        // 0x00686800
-    virtual void v00();
-    CThing* ParentThing;                            // +0x04
-    unsigned char _pad08[0x4];                      // ToBeRemoved, IsInGlobalUpdateTCs
-};
-
 class CTCCreatureTintEffect : public CTCBase {             // vtable 0x0126EFBC
 public:
     CDefPointer<const CSpecialAbilitiesCreatureTintDef> PDef;  // +0x0c
@@ -161,12 +157,11 @@ public:
     long FadeOutTime;                               // +0x20
     CRetailVector< CIntelligentPointer<CThing> > TintList;   // +0x24
     long Color[4];                                  // +0x30
-    CTCCreatureTintEffect(CThing* parent);
-    virtual void v00();
+    CTCCreatureTintEffect(CThing& parent);
     void Reset();                                   // 0x007CDD10
 };
 
-CTCCreatureTintEffect::CTCCreatureTintEffect(CThing* parent)
+CTCCreatureTintEffect::CTCCreatureTintEffect(CThing& parent)
     : CTCBase(parent), CurTime(0), FadeInTime(0), StartFadeOut(false), FadeOutTimeStart(0), FadeOutTime(0)
 {
     long index;

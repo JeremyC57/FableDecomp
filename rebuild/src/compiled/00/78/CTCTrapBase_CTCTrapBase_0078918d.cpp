@@ -1,9 +1,12 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 #pragma optimize("s", on)
-// CTCTrapBase::CTCTrapBase(CThing*) -- CTCBase(owner), own vtable, three empty vectors and an empty obstruction pointer, the trap opener, a null trap def, Active = true
+// CTCTrapBase::CTCTrapBase(CThing&) -- CTCBase(owner), own vtable, three empty vectors and an empty obstruction pointer, the trap opener, a null trap def, Active = true
+// Leaf: ??0CTCTrapBase@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCTrapBase@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078918D, length 94 bytes. Size TU (`push dword ptr [esp+10h]`
 // pass-through of the owner): `optimize("s",on)`.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is a propagated label;
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is a propagated label;
 // every CTC constructor calls it), CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (then the
 // CIntelligentPointer vtable 0x01238C6C), CFadeInFadeOutBase::CFadeInFadeOutBase() @ 0x00436560 (manifest
 // "CTCHeroStats::SoberUp" is propagated). Vtable 0x0126B7FC = CTCTrapBase.
@@ -15,15 +18,10 @@
 // Layout: CTCTrapBase.h is the PDB layout (16-byte vectors); retail vectors are 12 bytes, which moves every later
 // member 4 bytes per vector (PObstruction +0x24, TriggerThings +0x2C, TrapOpener +0x38, PTrapDef +0x54, Active +0x58),
 // so a local model is used.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CBaseObject;
-
-class CTCBase { public:
-    virtual void v00();
-    CThing*       Thing;                    // +0x04
-    unsigned char _pad_0x08[0x4];
-    CTCBase(CThing* thing);                 // 0x00686800
-};
 
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -73,11 +71,10 @@ class CTCTrapBase : public CTCBase { public:
     bool                Triggered;          // +0x59
     bool                LastTriggerOnProximity;  // +0x5A
     long                TrapType;           // +0x5C ETrapType
-    virtual void v00();
-    CTCTrapBase(CThing* thing);
+    CTCTrapBase(CThing& thing);
 };
 
-CTCTrapBase::CTCTrapBase(CThing* thing)
+CTCTrapBase::CTCTrapBase(CThing& thing)
     : CTCBase(thing), Triggered(false), LastTriggerOnProximity(false)
 {
     Active = true;

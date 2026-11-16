@@ -1,7 +1,9 @@
 // CTCTavernTable::CTCTavernTable(CThing* owner) -- tavern-table component constructor: CTCBase(owner), empty occupant/tankard/food/seat containers, cleared flags, available for use, and the lengths of the five action-point name prefixes
-// Leaf: ??0CTCTavernTable
+// Leaf: ??0CTCTavernTable@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCTavernTable@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B8710, 303 bytes (`ret 4`). Vtable 0x0126DBB4 (CTCTavernTable).
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800; CCharString(const char*, long) 0x0099EBF0 ("ACTION_POINT_SIT_" 0x0126DB98,
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800; CCharString(const char*, long) 0x0099EBF0 ("ACTION_POINT_SIT_" 0x0126DB98,
 //          "ACTION_POINT_GAME_MASTER_" 0x0126DB7C, "ACTION_POINT_HERO_" 0x0126DB68, "DUMMY_POINT_TANKARD_" 0x0126DB50,
 //          "ACTION_POINT_MAID_" 0x0126DB3C); ~CCharString 0x0099EAE0.
 // Layout (retail; Ego_r.pdb names, STLport containers 12 bytes, vector<bool> included): BeingServed +0x0c, Occupants
@@ -10,6 +12,8 @@
 // Shape: the containers are member objects with inline zeroing ctors, so their stores follow the vtable store in member
 //        order and share the ebx zero; each Strlen is the inline length of a temporary CCharString (`data ? data->Length
 //        : 0`), the temporary destroyed right after; VC duplicates the epilogue into both arms of the last length test.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CThingAICreature;
 
@@ -22,14 +26,6 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
     long GetLength() const { return m_data == 0 ? 0 : m_data->Length; }
-};
-
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-    CTCBase(CThing* owner);                     // 0x00686800
 };
 
 template<class T> struct CRetailVector {        // retail STLport vector (12 bytes)
@@ -55,11 +51,10 @@ class CTCTavernTable : public CTCBase { public:               // vtable 0x0126DB
     long  ActionPointTankardStrlen;             // +0x54
     long  ActionPointMaidStrlen;                // +0x58
     bool  AvailableForUse;                      // +0x5c
-    virtual void v00();
-    CTCTavernTable(CThing* owner);
+    CTCTavernTable(CThing& owner);
 };
 
-CTCTavernTable::CTCTavernTable(CThing* owner)
+CTCTavernTable::CTCTavernTable(CThing& owner)
     : CTCBase(owner), BeingServed(false), NumPeopleSeated(0), SomeoneTalking(false), SomeoneLaughing(false),
       AvailableForUse(true)
 {

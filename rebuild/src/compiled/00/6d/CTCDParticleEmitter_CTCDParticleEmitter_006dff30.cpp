@@ -1,9 +1,10 @@
 // CTCDParticleEmitter::CTCDParticleEmitter(CThing* parent) -- particle-emitter driver component: CTCDriverBase(parent), empty names, null emitter / attached-thing pointers, zeroed attachment data, no die-off timer, no creation parameters; only the reset-position/orientation flags set
-// Leaf: ??0CTCDParticleEmitter
+// Leaf: ??0CTCDParticleEmitter@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DFF30, length 114 bytes (+ int3 padding). Vtable 0x0125FEEC (CTCDParticleEmitter).
-// Callees: CTCDriverBase::CTCDriverBase(CThing*) @ 0x00771200, CCharString::CCharString() @ 0x0099E4B0 (x2),
+// Callees: CTCDriverBase::CTCDriverBase(CThing&) @ 0x00771200, CCharString::CCharString() @ 0x0099E4B0 (x2),
 // CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (x2: then the CIntelligentPointer<NParticleEngine::CParticleEmitter>
 // vtable 0x0125A26C and the CIntelligentPointer<CThing> vtable 0x01238C6C).
 // Layout: Ego_r.pdb CTCDParticleEmitter (0x48, retail identical): EmitterName +0xC, ParticleTypeID +0x10, PEmitter +0x14,
@@ -18,7 +19,7 @@ class CTCDriverBase { public:
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CTCDriverBase(CThing* parent);              // 0x00771200
+    CTCDriverBase(CThing& parent);              // 0x00771200
 };
 class CCharString { public:
     void* PStringData;
@@ -60,10 +61,10 @@ class CTCDParticleEmitter : public CTCDriverBase { public:
     bool AlwaysUpdate : 1;
     bool Asleep : 1;
     virtual void v01();
-    CTCDParticleEmitter(CThing* parent);
+    CTCDParticleEmitter(CThing& parent);
 };
 
-CTCDParticleEmitter::CTCDParticleEmitter(CThing* parent)
+CTCDParticleEmitter::CTCDParticleEmitter(CThing& parent)
     : CTCDriverBase(parent)
     , ParticleTypeID(0)
     , AttachmentFlags(0)

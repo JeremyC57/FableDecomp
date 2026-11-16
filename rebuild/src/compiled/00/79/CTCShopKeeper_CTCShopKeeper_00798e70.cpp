@@ -1,9 +1,11 @@
-// CTCShopKeeper::CTCShopKeeper(CThing*) -- constructor: thing-component base, empty customer and shop pointers, three empty previous-customer slots, cleared customer index / shop-occupancy state / graphic / opinion flag, then the customer list emptied
-// Leaf: ??0CTCShopKeeper
+// CTCShopKeeper::CTCShopKeeper(CThing&) -- constructor: thing-component base, empty customer and shop pointers, three empty previous-customer slots, cleared customer index / shop-occupancy state / graphic / opinion flag, then the customer list emptied
+// Leaf: ??0CTCShopKeeper@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCShopKeeper@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00798E70, 213 bytes (+ int3 padding), `ret 4`.
 // Label correction: the catalog's "CEngineSubPrimitive2DClockSprite::Constructor" is propagated; the vtable stored is
 //   0x0126C154 = CTCShopKeeper (rtti-vtables.tsv), and 0x00798E10 is CTCShopKeeper::EmptyCustomerList.
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10 / GetPItem
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10 / GetPItem
 //   0x00A01B50 / SetPItem 0x00A01B90 / ~CBaseIntelligentPointer 0x00A01C10, malloc 0x00BFEA0E, EmptyCustomerList 0x00798E10.
 //   Vtables: CIntelligentPointer<CThingCreatureBase> 0x0123E7D8, CIntelligentPointer<CThing> 0x01238C6C.
 // Layout (retail; Ego_r.pdb with the 12-byte retail vector): Customer +0xc, Shop +0x14, PreviousCustomers +0x1c,
@@ -13,20 +15,14 @@
 //   (the `push 18h` between them), the allocation, then uninitialized_fill_n of a T() temporary (built after the allocation)
 //   through the intelligent pointer's copy ctor (base ctor, vtable, `SetPItem(other.GetPItem())`), the temporary destroyed
 //   by the base dtor (no user dtor on CIntelligentPointer); the scalars are init-list members.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
 class CThing;
 class CThingCreatureBase;
-
-class CTCBase { public:                                       // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
-    virtual void v00();
-    CThing* ParentThing;                               // +0x04
-    bool    ToBeRemoved;                               // +0x08
-    bool    IsInGlobalUpdateTCs;                       // +0x09
-    CTCBase(CThing* owner);                            // 0x00686800
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -93,12 +89,11 @@ class CTCShopKeeper : public CTCBase { public:                       // vtable 0
     long                                    FrameLastCalcedOtherPeopleInShop;   // +0x30
     CEngineGraphic                          Graphic;   // +0x34
     bool                                    RepressedOpinions;   // +0x42
-    virtual void v00();
     void EmptyCustomerList();                          // 0x00798E10
-    CTCShopKeeper(CThing* owner);
+    CTCShopKeeper(CThing& owner);
 };
 
-CTCShopKeeper::CTCShopKeeper(CThing* owner)
+CTCShopKeeper::CTCShopKeeper(CThing& owner)
     : CTCBase(owner), PreviousCustomers(3), CustomerIndex(0), OtherPeopleInShop(false), FrameLastCalcedOtherPeopleInShop(0),
       RepressedOpinions(false)
 {

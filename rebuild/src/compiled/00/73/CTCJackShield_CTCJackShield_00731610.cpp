@@ -1,12 +1,16 @@
 // CTCJackShield::CTCJackShield(CThing* owner) -- the shield component: CTCBase over the owner, its emitter intelligent pointer cleared
-// Leaf: ??0CTCJackShield
+// Leaf: ??0CTCJackShield@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCJackShield@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00731610, length 103 bytes (+ int3 padding), `ret 4`. Vtable 0x01266EFC.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (member and
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (member and
 // temporary), CBaseIntelligentPointer::SetPItem @ 0x00A01B90, GetPItem @ 0x00A01B50, ~CBaseIntelligentPointer @ 0x00A01C10.
 // Shape: PEmitter is default-constructed (base ctor + the CIntelligentPointer<CThing> vtable 0x01238C6C) and then assigned a
 // null CIntelligentPointer<CThing>(0) temporary in the body (`operator=` is SetPItem(other.GetPItem())); the temporary's class
 // has no user dtor, so only the base dtor runs (no vtable re-store).
 // Layout: Ego_r.pdb CTCJackShield (0x14 bytes): CTCBase (vptr, ParentThing, flags) then PEmitter +0x0C.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CBaseObject;
 struct CBaseIntelligentPointer {            // 8 bytes: vptr + the pointed-to item
@@ -24,20 +28,12 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class CTCBase { public:
-    virtual void v00();
-    CThing*       ParentThing;              // +0x04
-    bool          ToBeRemoved;              // +0x08
-    bool          IsInGlobalUpdateTCs;      // +0x09
-    CTCBase(CThing* owner);                 // 0x00686800
-};
 class CTCJackShield : public CTCBase { public:            // vtable 0x01266EFC
     CIntelligentPointer<CThing> PEmitter;   // +0x0c
-    virtual void v00();
-    CTCJackShield(CThing* owner);
+    CTCJackShield(CThing& owner);
 };
 
-CTCJackShield::CTCJackShield(CThing* owner)
+CTCJackShield::CTCJackShield(CThing& owner)
     : CTCBase(owner)
 {
     PEmitter = CIntelligentPointer<CThing>(0);

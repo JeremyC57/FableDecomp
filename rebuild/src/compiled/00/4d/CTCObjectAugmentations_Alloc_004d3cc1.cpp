@@ -1,22 +1,26 @@
 #pragma optimize("s",on)
-// CTCObjectAugmentations::Alloc(CThing&) -- factory: new CTCObjectAugmentations(owner)
+// CTCObjectAugmentations::Alloc(CThing& thing) -- the registry factory: a new CTCObjectAugmentations for `thing` (operator new(0x70) 0x00BFEA1A, null-checked, then
+//   the constructor 0x007673C0), returned as its CTCBase
+// Leaf: ?Alloc@CTCObjectAugmentations@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D3CC1, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x70 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCObjectAugmentations::CTCObjectAugmentations ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCObjectAugmentations) = 0x70 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x007673C0 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCObjectAugmentations@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCObjectAugmentations@@QAE@AAVCThing@@@Z (0x007673C0, landed). (Landed earlier as a generated free function CTCObjectAugmentations_Alloc(CThing*) returning CTCObjectAugmentations*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCObjectAugmentations { public:
-    unsigned char _body[0x70];       // sizeof(CTCObjectAugmentations) = 0x70
-    CTCObjectAugmentations(CThing* owner);                   // 0x007673C0
+class CTCObjectAugmentations : public CTCBase {
+public:
+    CTCObjectAugmentations(CThing& thing);                        // 0x007673C0
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x70 - 0xC];              // the class's own members (not modelled); sizeof(CTCObjectAugmentations) = 0x70
 };
 
-CTCObjectAugmentations* __fastcall CTCObjectAugmentations_Alloc(CThing* owner)
+CTCBase* __fastcall CTCObjectAugmentations::Alloc(CThing& thing)
 {
-    return new CTCObjectAugmentations(owner);
+    return new CTCObjectAugmentations(thing);
 }

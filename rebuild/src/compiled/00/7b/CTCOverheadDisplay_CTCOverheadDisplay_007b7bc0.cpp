@@ -1,9 +1,11 @@
 // CTCOverheadDisplay::CTCOverheadDisplay(CThing* parent) -- overhead-display component: CTCBase(parent), three empty damage/repair/renown value lists, a null def pointer and no primitive handles
-// Leaf: ??0CTCOverheadDisplay
+// Leaf: ??0CTCOverheadDisplay@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCOverheadDisplay@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B7BC0, length 98 bytes (+ int3 padding).
 // Label correction: the catalog's "CTCDHeroSuit::CTCDHeroSuit" is propagated and wrong: the vtable stored, 0x0126DA94, is
 // CTCOverheadDisplay's (rtti-vtables.tsv), and the stores fit Ego_r.pdb CTCOverheadDisplay with retail 4-byte lists.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, malloc @ 0x00BFEA0E (x3, one 0x10-byte sentinel node per list).
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, malloc @ 0x00BFEA0E (x3, one 0x10-byte sentinel node per list).
 // Layout (retail): DamageValues +0xC, RepairValues +0x10, RenownValues +0x14 (single-pointer STLport list<pair<long,float> >),
 // PDef +0x18 (CDefPointer<COverheadDisplayDef>), PrimitiveHandles +0x1C (12-byte vector).
 // Shape: as the landed CTCTrophy ctor (0x006DDAE0): each inline list ctor nulls its head before malloc and links the node
@@ -11,14 +13,9 @@
 // _Vector_base + alloc-proxy model (it places the `add esp,0Ch` before the last zero store).
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-    CTCBase(CThing* parent);                    // 0x00686800
-};
 struct CRetailList_node0x10 {                   // list<pair<long, float> >
     struct node { node* next; node* prev; long first; float second; };
     node* head;
@@ -52,10 +49,10 @@ class CTCOverheadDisplay : public CTCBase { public:
     CDefPointer_COverheadDisplayDef PDef;       // +0x18
     CRetailVector<CEnginePrimitiveHandle> PrimitiveHandles;  // +0x1c
     virtual void v01();
-    CTCOverheadDisplay(CThing* parent);
+    CTCOverheadDisplay(CThing& parent);
 };
 
-CTCOverheadDisplay::CTCOverheadDisplay(CThing* parent)
+CTCOverheadDisplay::CTCOverheadDisplay(CThing& parent)
     : CTCBase(parent)
 {
 }

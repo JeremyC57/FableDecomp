@@ -1,8 +1,10 @@
 // CTCAISummon::CTCAISummon(CThing* parent) -- CTCBase(parent), this vtable, the summon def pointer cleared, the summoned-creature list constructed (sentinel node), LastSummonTick cleared
-// Leaf: ??0CTCAISummon
+// Leaf: ??0CTCAISummon@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCAISummon@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DF2D4, length 47 bytes; frame-pointer size TU (`push ebp ; mov ebp,esp`,
 // `push dword ptr [ebp+8]` pass-through, `and dword ptr [..],0` zero stores): `optimize("y",off)` + `("s",on)`.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (every CTC constructor of this module calls it; manifest
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (every CTC constructor of this module calls it; manifest
 // "CEngineSubPrimitive2DClockSprite" is propagated), std::list ctor (const allocator&) @ 0x004B8920 (node 0x10).
 // Vtable 0x01241C8C = CTCAISummon (rtti-vtables.tsv), so the manifest label "CTCFishingRod::CTCFishingRod" is propagated
 // and wrong (the landed factory 0x004E181D "Create_CTCFishingRod" allocates 0x18 bytes for THIS class).
@@ -13,17 +15,11 @@
 // it after the vtable store; LastSummonTick follows the list constructor in declaration order.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 struct CRetailAllocator { CRetailAllocator() { } };
 
 class CThing;
-
-class CTCBase { public:
-    virtual void v00();
-    CThing*       ParentThing;                   // +0x04
-    bool          ToBeRemoved;                   // +0x08
-    bool          IsInGlobalUpdateTCs;           // +0x09
-    CTCBase(CThing* parent);                     // 0x00686800
-};
 
 class CDefPointeeBase;
 
@@ -38,14 +34,13 @@ struct CRetailList_node0x10 {                   // retail std::list<CIntelligent
 };
 
 class CTCAISummon : public CTCBase { public:
-    virtual void v00();                          // own vtable (0x01241C8C)
     CDefPointer          PSummonDef;             // +0x0c
     CRetailList_node0x10 MySummonedCreatures;    // +0x10
     long                 LastSummonTick;         // +0x14
-    CTCAISummon(CThing* parent);
+    CTCAISummon(CThing& parent);
 };
 
-CTCAISummon::CTCAISummon(CThing* parent)
+CTCAISummon::CTCAISummon(CThing& parent)
     : CTCBase(parent), PSummonDef(), MySummonedCreatures(), LastSummonTick(0)
 {
 }

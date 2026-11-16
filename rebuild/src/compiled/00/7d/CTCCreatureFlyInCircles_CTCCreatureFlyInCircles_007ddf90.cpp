@@ -1,9 +1,11 @@
 // CTCCreatureFlyInCircles::CTCCreatureFlyInCircles(CThing* parent) -- circling-flight component: the creature is the parent, two null intelligent pointers, an empty swoop spline (tension 0.5) sized to three control points, speed 3, fly mode 1, active
-// Leaf: ??0CTCCreatureFlyInCircles
+// Leaf: ??0CTCCreatureFlyInCircles@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreatureFlyInCircles@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DDF90, length 156 bytes (+ int3 padding). Vtable 0x0126FB04.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (twice: then the
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (twice: then the
 // CIntelligentPointer<CThing> vtable 0x01238C6C and the CIntelligentPointer<const CThingCreatureBase> vtable 0x0125AAEC),
 // vector<C3DVector>::resize(size_type, const C3DVector&) @ 0x0075C040 (the manifest's "vector<CBrainBehaviour>::resize" is a
 // byte twin over the same 12-byte element).
@@ -15,15 +17,10 @@
 // Shape: Creature is the only initialiser read from the base (stored before the vtable store); the spline's inline ctor zeroes
 // the vector, clears the flag and sets the tension; the scalars are body assignments in retail store order, the tension is set
 // once more, then the control points are resized with a default C3DVector temporary (the uninitialised 12-byte frame).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CThingCreatureBase;
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-    CTCBase(CThing* parent);                    // 0x00686800
-};
 #include "engine/C3DVector.h"
 template <class T> struct SRetailAllocProxy {   // STLport _STLP_alloc_proxy: the end-of-storage pointer
     T* _M_data;
@@ -75,11 +72,11 @@ struct CTCCreatureFlyInCircles : CTCBase {
     float SwoopDelta;                           // +0x70
     long  LastExplodeTick;                      // +0x74
     virtual void v01();
-    CTCCreatureFlyInCircles(CThing* parent);
+    CTCCreatureFlyInCircles(CThing& parent);
 };
 #pragma pack(pop)
 
-CTCCreatureFlyInCircles::CTCCreatureFlyInCircles(CThing* parent)
+CTCCreatureFlyInCircles::CTCCreatureFlyInCircles(CThing& parent)
     : CTCBase(parent)
     , Creature((CThingCreatureBase*)ParentThing)
 {

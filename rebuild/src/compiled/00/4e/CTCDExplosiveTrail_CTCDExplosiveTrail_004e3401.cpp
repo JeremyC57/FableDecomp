@@ -1,8 +1,9 @@
 // CTCDExplosiveTrail::CTCDExplosiveTrail(CThing* owner) -- construct the explosive-trail driver: CTCDriverBase(owner), the PTarget intelligent pointer, Timer -1, Terminated false, an empty ComponentTraps list, an empty ThingsToIgnore vector and a null PDef
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3401, length 80 bytes.
-// Leaf: ??0CTCDExplosiveTrail
+// Leaf: ??0CTCDExplosiveTrail@@QAE@AAVCThing@@@Z
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Callees: CTCDriverBase::CTCDriverBase(CThing*) @ 0x00771200, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
+// Callees: CTCDriverBase::CTCDriverBase(CThing&) @ 0x00771200, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
 // the list<pair<CIntelligentPointer<CThing>, long>> constructor @ 0x004DB72D (out of line: head = malloc(0x14) linked to
 // itself; takes the allocator by const reference). Vtables: CTCDExplosiveTrail @ 0x01242B4C (RTTI),
 // CIntelligentPointer<CThing const> @ 0x01237F1C.
@@ -22,7 +23,7 @@ struct STrapNode;
 struct CThingPointer;
 
 class CTCDriverBase { public:
-    CTCDriverBase(CThing* owner);                  // 0x00771200
+    CTCDriverBase(CThing& owner);                  // 0x00771200
     virtual ~CTCDriverBase();
     CThing* m_pThing;                              // +0x04
     long    m_baseWord;                            // +0x08
@@ -60,11 +61,11 @@ class CTCDExplosiveTrail : public CTCDriverBase { public:
     CTrapList                         ComponentTraps;   // +0x1c
     CThingPointerVector               ThingsToIgnore;   // +0x20
     CExplosiveTrailDefPointer         PDef;             // +0x2c
-    CTCDExplosiveTrail(CThing* owner);
+    CTCDExplosiveTrail(CThing& owner);
     virtual void v01();
 };
 
-CTCDExplosiveTrail::CTCDExplosiveTrail(CThing* owner)
+CTCDExplosiveTrail::CTCDExplosiveTrail(CThing& owner)
     : CTCDriverBase(owner), Timer(-1), Terminated(false)
 {
 }

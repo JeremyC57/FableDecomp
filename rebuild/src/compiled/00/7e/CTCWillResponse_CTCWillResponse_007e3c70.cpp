@@ -1,8 +1,11 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test exercises a hand-written stand-in, not the candidate)
-// CTCWillResponse::CTCWillResponse(CThing*) -- construct the TC, fetch the thing's CWillResponseDef sub-definition and
+// CTCWillResponse::CTCWillResponse(CThing&) -- construct the TC, fetch the thing's CWillResponseDef sub-definition and
 //   copy its response flags into the TC's bitfield (and the slow-time flag into the thing); without a def all
 //   responses except IsNotBloodyWillable default to true
-// Retail: Fable.exe (TLC, VC7.1) @ 0x007E3C70, 0xe0 bytes. Callees: CTCBase::CTCBase(CThing*) 0x00686800 (manifest label
+// Leaf: ??0CTCWillResponse@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCWillResponse@@QAE@AAVCThing@@@Z).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x007E3C70, 0xe0 bytes. Callees: CTCBase::CTCBase(CThing&) 0x00686800 (manifest label
 //   is a propagated CEngineSubPrimitive2DClockSprite twin), CDefClassBase::GetSubDef<T>(CDefPointer<const T>*) 0x007E47D0
 //   (folded instance; manifest names the CAICreatureWillPowerIndicatorDef instance). Vtable 0x01270534 = CTCWillResponse.
 // Layout: PDB (Ego_r) names: CTCWillResponse PDef +0x0c, flag bits +0x10 (PDB field-list order); CWillResponseDef bools
@@ -10,6 +13,8 @@
 //   retail +0x93 (PDB +0x80 / +0xa3: the TLC CThing is 0x10 bytes shorter before them). Local model: engine/CTCBase.h is
 //   a flat generated layout without the constructor, and no CThing/CWillResponseDef header exists.
 template<class T> class CDefPointer;
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CDefClassBase { public:
     template<class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x007E47D0
 };
@@ -26,13 +31,6 @@ class CThing { public:
     unsigned char LevelIsUnloading : 1;
     unsigned char IsAffectedByBulletTimeOverride : 1;   // +0x93 bit 5
     unsigned char AddingTCsPermitted : 1;
-};
-class CTCBase { public:
-    virtual void VFunc00();
-    CThing* ParentThing;                                // +0x04
-    bool ToBeRemoved;                                   // +0x08
-    bool IsInGlobalUpdateTCs;                           // +0x09
-    CTCBase(CThing* thing);                             // 0x00686800
 };
 class CWillResponseDef { public:
     unsigned char _base[0x25];
@@ -55,9 +53,9 @@ class CTCWillResponse : public CTCBase { public:
     bool IsEpicPowerExplodable : 1;
     bool IsEpicSpellable : 1;                           // +0x10 bit 6
     virtual void VFunc00();
-    CTCWillResponse(CThing* thing);
+    CTCWillResponse(CThing& thing);
 };
-CTCWillResponse::CTCWillResponse(CThing* thing) : CTCBase(thing), PDef() {
+CTCWillResponse::CTCWillResponse(CThing& thing) : CTCBase(thing), PDef() {
     if (ParentThing->PBaseDef.Object->GetSubDef(&PDef)) {
         const CWillResponseDef* d = PDef.Object;
         IsForcePushable = d->IsForcePushable;

@@ -1,8 +1,10 @@
-// CTCFireheartMinigame::CTCFireheartMinigame(CThing*) -- CTCBase(thing), no session / forced quit / initialisation / move, an empty scripted-thing handle and primitive-handle vector, then the minigame def taken from the parent's definition
-// Leaf: ??0CTCFireheartMinigame
+// CTCFireheartMinigame::CTCFireheartMinigame(CThing&) -- CTCBase(thing), no session / forced quit / initialisation / move, an empty scripted-thing handle and primitive-handle vector, then the minigame def taken from the parent's definition
+// Leaf: ??0CTCFireheartMinigame@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCFireheartMinigame@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 //
-// Retail 0x007E7640, 109 bytes (`ret 4`). Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, the
+// Retail 0x007E7640, 109 bytes (`ret 4`). Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, the
 // CBaseObject root ctor @ 0x0099A380 (vtable 0x0129A7D8, +4 nulled; manifest
 // "CBaseIntelligentPointer"), CDefClassBase::GetSubDef<CFireheartMinigameDef> @ 0x007E7D80 (manifest
 // template name is a byte twin). Vtables 0x012709CC = CTCFireheartMinigame, 0x0127094C =
@@ -14,6 +16,8 @@
 // Shape: plain initialisers with one zero register (ebx); ScriptData addressed once in edi (root ctor,
 // vtable store, the PImp words from an embedded zeroing member, the landed 0x00D80C30 model); the body
 // passes the PDef address formed for its zero store.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 class CFireheartMinigameDef;
 
@@ -51,14 +55,6 @@ template <class T> struct CRetailVector {                   // STLport vector (1
 };
 class CEnginePrimitiveHandle;
 
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                                    // +0x04
-    bool    ToBeRemoved;                                    // +0x08
-    bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase(CThing* thing);                                 // 0x00686800
-};
-
 class CTCFireheartMinigame : public CTCBase { public:                     // vtable 0x012709CC
     CThing*  Markers[4][4];                                 // +0x0c
     bool     InSession;                                     // +0x4c
@@ -74,11 +70,10 @@ class CTCFireheartMinigame : public CTCBase { public:                     // vta
     bool     QuitWithDelay;                                 // +0x88
     CRetailVector<CEnginePrimitiveHandle> Handles;          // +0x8c
     CDefPointer<const CFireheartMinigameDef> PDef;          // +0x98
-    virtual void v00();
-    CTCFireheartMinigame(CThing* thing);
+    CTCFireheartMinigame(CThing& thing);
 };
 
-CTCFireheartMinigame::CTCFireheartMinigame(CThing* thing)
+CTCFireheartMinigame::CTCFireheartMinigame(CThing& thing)
     : CTCBase(thing)
     , InSession(false)
     , ForceQuit(false)

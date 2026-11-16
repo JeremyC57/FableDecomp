@@ -1,5 +1,5 @@
 // CTCAnimatingObject::CTCAnimatingObject(CThing* owner) -- thing-component base, not animating, priority -1, the queued-animation list built
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004DE839, length 47 bytes. Callees: CTCBase::CTCBase(CThing*) @ 0x00686800
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004DE839, length 47 bytes. Callees: CTCBase::CTCBase(CThing&) @ 0x00686800
 // (manifest label "CEngineSubPrimitive2DClockSprite", propagated), the std::list<CAnimInit> constructor @ 0x004DB674
 // (landed as ListNode_InitSelfLinked_34: one 0x34-byte sentinel node).
 // Label correction: the manifest calls this a CTCGraphicAppearanceAnimatedMesh constructor; the vtable it stores,
@@ -10,19 +10,15 @@
 // Shape: frame-pointer size TU (`push ebp ; mov ebp,esp`, `push dword ptr [ebp+8]`, `or dword ptr [..],-1`):
 // `optimize("y",off)` + `("s",on)`. The list takes its allocator by const reference: the empty allocator temporary
 // (user constructor, writes nothing) is homed in the high byte of the dead `owner` slot (`lea eax,[ebp+0Bh]`).
-// The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
-// Leaf: ??0CTCAnimatingObject
+// The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model. [superseded 2026-11-16: the header's FABLE_RETAIL_CTCBASE branch is polymorphic; see the Ported note]
+// Leaf: ??0CTCAnimatingObject@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCAnimatingObject@@QAE@AAVCThing@@@Z).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-
-class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04
-    bool    ToBeRemoved;                                // +0x08
-    bool    IsInGlobalUpdateTCs;                        // +0x09
-    CTCBase(CThing* owner);                             // 0x00686800
-};
 
 struct CRetailAllocator { CRetailAllocator() { } };
 
@@ -35,11 +31,10 @@ class CTCAnimatingObject : public CTCBase { public:
     bool                  Animating;                    // +0x0c
     long                  CurrentAnimationPriority;     // +0x10
     CRetailList_CAnimInit QueuedAnims;                  // +0x14
-    virtual void v00();
-    CTCAnimatingObject(CThing* owner);
+    CTCAnimatingObject(CThing& owner);
 };
 
-CTCAnimatingObject::CTCAnimatingObject(CThing* owner)
+CTCAnimatingObject::CTCAnimatingObject(CThing& owner)
     : CTCBase(owner), Animating(false), CurrentAnimationPriority(-1), QueuedAnims()
 {
 }

@@ -1,22 +1,26 @@
 #pragma optimize("s",on)
-// CTCCarrying::Alloc(CThing&) -- factory: new CTCCarrying(owner)
+// CTCCarrying::Alloc(CThing& thing) -- the registry factory: a new CTCCarrying for `thing` (operator new(0x28) 0x00BFEA1A, null-checked, then
+//   the constructor 0x004E748A), returned as its CTCBase
+// Leaf: ?Alloc@CTCCarrying@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E7DFC, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x28 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCCarrying::CTCCarrying ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCCarrying) = 0x28 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x004E748A on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCCarrying@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCCarrying@@QAE@AAVCThing@@@Z (0x004E748A, landed). (Landed earlier as a generated free function CTCCarrying_Alloc(CThing*) returning CTCCarrying*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCCarrying { public:
-    unsigned char _body[0x28];       // sizeof(CTCCarrying) = 0x28
-    CTCCarrying(CThing* owner);                   // 0x004E748A
+class CTCCarrying : public CTCBase {
+public:
+    CTCCarrying(CThing& thing);                        // 0x004E748A
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x28 - 0xC];              // the class's own members (not modelled); sizeof(CTCCarrying) = 0x28
 };
 
-CTCCarrying* __fastcall CTCCarrying_Alloc(CThing* owner)
+CTCBase* __fastcall CTCCarrying::Alloc(CThing& thing)
 {
-    return new CTCCarrying(owner);
+    return new CTCCarrying(thing);
 }

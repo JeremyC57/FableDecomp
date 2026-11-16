@@ -1,6 +1,9 @@
-// CTCHeroStats::CTCHeroStats(CThing*) -- the hero-stats component: CTCBase, zeroed counters and records, default multipliers and recovery marker, sized experience/region/ability tables, random wobble counters and the def-derived age, stamina, fatness timer and renown cap
+// CTCHeroStats::CTCHeroStats(CThing&) -- the hero-stats component: CTCBase, zeroed counters and records, default multipliers and recovery marker, sized experience/region/ability tables, random wobble counters and the def-derived age, stamina, fatness timer and renown cap
+// Leaf: ??0CTCHeroStats@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroStats@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057CDB5, 1007 bytes, `ret 4`; frame-pointer size TU, no EH frame.
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" propagated), the crime map ctor
+// Callees: CTCBase::CTCBase(CThing&) 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" propagated), the crime map ctor
 //   0x00581114 (manifest "CopyBackBufferToTexture"), CCharString copy ctor 0x0099EC30 (global 0x013B8B0C), the primitive-handle
 //   base ctor 0x0099A2D0 (manifest "NHeroInformationScreens::CBase"), list<CHeroMarriageInfo> ctor 0x0057FDA2, vector<long>::resize
 //   0x004428F0, CTCBase::GetWorldMap 0x00686D30 / GetWorld 0x00686A70 / GetDefinitions 0x006869D0, CWorldMap::GetNoMaps 0x004FB470,
@@ -15,6 +18,8 @@
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
 //   `dynamic initializer for '...'`, defining rows named by agentFAM09):
 //   0x013B8B0C DEFAULT_DEATH_RECOVERY_MARKER_NAME (anonymous namespace; initializer 0x0121A7AD), was g_HeroGuildRecoveryMarker.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -82,17 +87,6 @@ class CWorld { public: unsigned long* GetWorldSeed() const;     // 0x0049D810
 class CWorldMap { public: long GetNoMaps() const;           // 0x004FB470
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-
-class CTCBase { public:
-    virtual void v00();
-    CThing*       ParentThing;                       // +0x04
-    unsigned char _pad08[4];
-    CTCBase(CThing* owner);                          // 0x00686800
-protected:
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
-    CWorld& GetWorld() const;   // 0x00686A70
-    CWorldMap& GetWorldMap();   // 0x00686D30
-};
 
 class CTCHeroStats : public CTCBase { public:
     CCrimeMap                OutstandingCrimes;             // +0xc
@@ -204,13 +198,12 @@ class CTCHeroStats : public CTCBase { public:
     float                    RotCounter;
     bool                     IsInCutSceneFirstTime;         // +0x1d4
     CMarriageList            Marriages;                     // +0x1d8
-    CTCHeroStats(CThing* owner);
-    virtual void v00();
+    CTCHeroStats(CThing& owner);
     const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
     long GetFatnessReducingFrequencyInFrames() const;   // 0x0057A60A
 };
 
-CTCHeroStats::CTCHeroStats(CThing* owner)
+CTCHeroStats::CTCHeroStats(CThing& owner)
     : CTCBase(owner), OutstandingCrimes(), ExperienceSpentOn(), NumberOfDecapitations(0), Morality(0), MoralityChangingEnabled(true),
       SunTan(0.5f), Fatness(0.0f), Money(0), MaxMoney(0), ConfiscatedMoney(0), TotalMoneyEarned(0),
       TotalMoneySpent(0), RewardMoney(0), RentMoney(0), Stamina(0), MaxStamina(0), FramesUntilStaminaRefills(0),

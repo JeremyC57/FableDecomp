@@ -1,21 +1,26 @@
 #pragma optimize("s",on)
-// CTCHeroGuide::Alloc(CThing&) -- factory: new CTCHeroGuide(owner)
+// CTCHeroGuide::Alloc(CThing& thing) -- the registry factory: a new CTCHeroGuide for `thing` (operator new(0x10) 0x00BFEA1A, null-checked, then
+//   the constructor 0x00780070), returned as its CTCBase
+// Leaf: ?Alloc@CTCHeroGuide@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D4670, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x10 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCHeroGuide::CTCHeroGuide ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCHeroGuide) = 0x10 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x00780070 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCHeroGuide@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+//   ??0CTCHeroGuide@@QAE@AAVCThing@@@Z (0x00780070, landed). (Landed earlier as a generated free function CTCHeroGuide_Alloc(CThing*) returning CTCHeroGuide*;
+//   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-class CTCHeroGuide { public:
-    unsigned char _body[0x10];       // sizeof(CTCHeroGuide) = 0x10
-    CTCHeroGuide(long owner);                   // 0x00780070
+class CTCHeroGuide : public CTCBase {
+public:
+    CTCHeroGuide(CThing& thing);                        // 0x00780070
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x10 - 0xC];              // the class's own members (not modelled); sizeof(CTCHeroGuide) = 0x10
 };
 
-CTCHeroGuide* __fastcall CTCHeroGuide_Alloc(long owner)
+CTCBase* __fastcall CTCHeroGuide::Alloc(CThing& thing)
 {
-    return new CTCHeroGuide(owner);
+    return new CTCHeroGuide(thing);
 }

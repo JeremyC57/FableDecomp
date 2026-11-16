@@ -1,7 +1,9 @@
 // CTCHeroRememberCrimes::CTCHeroRememberCrimes(CThing* parent) -- CTCBase(parent), empty region -> (crime duration, fine) map, HasPaidTheFine = false
-// Leaf: ??0CTCHeroRememberCrimes
+// Leaf: ??0CTCHeroRememberCrimes@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroRememberCrimes@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007555F0, 71 bytes.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, malloc @ 0x00BFEA0E (the STLport node allocator).
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, malloc @ 0x00BFEA0E (the STLport node allocator).
 // Label: the manifest's "CEngineSubPrimitive2DClockSprite_Constructor" is a propagation -- the vtable stored, 0x0126980C,
 // is CTCHeroRememberCrimes (its landed OnSerialise 0x007556B0 is slot 1 of that vtable).
 // Layout (retail): RegionNamesToCrimeDurationAndFine = STLport map<CCharString, pair<long,long>> +0x0C (header +0x0C,
@@ -10,6 +12,8 @@
 // node (colour/parent/left/right + an 0xC-byte pair<const CCharString, pair<long,long>>), the count is zeroed, then
 // _M_empty_initialize() writes colour red (0), root 0, leftmost/rightmost = header. Every header store re-reads the
 // member (the node pointer stores may alias it); the zero register (ebx) is shared with the bool.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 
@@ -37,21 +41,14 @@ struct CCrimeMap {                                      // map<CCharString, pair
     }
 };
 
-struct CTCBase_Calls {                                  // CTCBase, 0xc bytes
-    virtual void v00();
-    unsigned char _body[0x8];                           // ParentThing +4, ToBeRemoved +8, IsInGlobalUpdateTCs +9
-    CTCBase_Calls(CThing* parent);                      // 0x00686800
-};
-
-class CTCHeroRememberCrimes : public CTCBase_Calls { public:          // vtable 0x0126980C
+class CTCHeroRememberCrimes : public CTCBase { public:          // vtable 0x0126980C
     CCrimeMap RegionNamesToCrimeDurationAndFine;        // +0x0C
     bool      HasPaidTheFine;                           // +0x18
-    virtual void v00();
-    CTCHeroRememberCrimes(CThing* parent);
+    CTCHeroRememberCrimes(CThing& parent);
 };
 
-CTCHeroRememberCrimes::CTCHeroRememberCrimes(CThing* parent)
-    : CTCBase_Calls(parent)
+CTCHeroRememberCrimes::CTCHeroRememberCrimes(CThing& parent)
+    : CTCBase(parent)
     , HasPaidTheFine(false)
 {
 }

@@ -1,10 +1,12 @@
 // CTCKraken::CTCKraken(CThing* parent) -- Kraken boss component: CTCBase(parent), a null def pointer, five null intelligent pointers, empty explosion and tentacle lists, cleared strike state, phase and mode 0
-// Leaf: ??0CTCKraken
+// Leaf: ??0CTCKraken@@QAE@AAVCThing@@@Z
+// Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCKraken@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DEFA7, length 144 bytes (frame-pointer, size-optimised module).
 // Label correction: the catalog's "CTCDPhysicalObstruction::CTCDPhysicalObstruction" is propagated and wrong: the vtable stored,
 // 0x01241B94, is CTCKraken's (rtti-vtables.tsv), and the stores fit Ego_r.pdb CTCKraken with retail 4-byte lists.
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (x5, then the
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (x5, then the
 // CIntelligentPointer<CThing> vtable 0x01238C6C held in edi), list<CIntelligentPointer<CThing> >::list(const allocator&) @ 0x004B8920
 // (x2, out of line).
 // Layout (retail): PKrakenDef +0xC, PChamber +0x10, PCentreMarker +0x18, PTarget +0x20, PHeadEffect +0x28, ExplosionList +0x30,
@@ -15,14 +17,9 @@
 // homed in the top byte of the dead parent-argument slot (`lea eax,[ebp+0Bh]`); one ebx zero register.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
 class CThing;
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-    CTCBase(CThing* parent);                    // 0x00686800
-};
 class CBaseObject;
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -61,10 +58,10 @@ class CTCKraken : public CTCBase { public:
     long Phase;                                 // +0x60 EKrakenBossPhase
     long Mode;                                  // +0x64 EKrakenMode
     virtual void v01();
-    CTCKraken(CThing* parent);
+    CTCKraken(CThing& parent);
 };
 
-CTCKraken::CTCKraken(CThing* parent)
+CTCKraken::CTCKraken(CThing& parent)
     : CTCBase(parent)
     , TentacleStrikeCounter(0)
     , TentacleReadyToStrike(false)
