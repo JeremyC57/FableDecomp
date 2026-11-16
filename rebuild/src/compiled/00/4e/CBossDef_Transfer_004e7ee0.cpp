@@ -14,10 +14,7 @@ public:
     _Tp* _M_start; _Tp* _M_finish; _Tp* _M_end_of_storage;
 };
 }
-class CPersistContext {
-public:
-    template <class T> void Transfer(T& value);          // per-type helpers (out of line)
-};
+#include "engine/CPersistContext.h"
 class CSubDefClassBase {                                            // retail 0x28 bytes (members not touched here)
 public:
     virtual ~CSubDefClassBase();
@@ -34,9 +31,9 @@ public:
 };
 void CBossDef::Transfer(CPersistContext& context)
 {
-    context.Transfer(PhaseHealthPercent);
-    context.Transfer(Shots);
-    context.Transfer(TwinBladeMissesBeforeLunge);
+    context.TransferVector(PhaseHealthPercent);
+    context.TransferVector(Shots);
+    context.TransferVector(TwinBladeMissesBeforeLunge);
     context.Transfer(TwinBladeStuckLoops);
     context.Transfer(TwinBladeTimeBeforeLunge);
 }

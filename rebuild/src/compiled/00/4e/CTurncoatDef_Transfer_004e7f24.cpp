@@ -26,11 +26,7 @@ public:
     _Compare _M_key_compare;
 };
 }
-class CPersistContext {
-public:
-    template <class T> void Transfer(T& value);                                  // 0x0043314A
-    void Transfer(std::vector<long >& value);                    // 0x00466A47
-};
+#include "engine/CPersistContext.h"
 class CTurncoatDef {
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x0124193C slot 18
@@ -56,7 +52,7 @@ void CTurncoatDef::Transfer(CPersistContext& context)
     context.Transfer(MinimumResistance);
     context.Transfer(TimeDelayBeforeResistanceRecoverySecs);
     context.Transfer(ResistanceRecoveryPerSec);
-    context.Transfer(TurncoatStageEffects);
+    context.TransferVector(TurncoatStageEffects);
     context.Transfer(PercentageOfHealthAsResistance);
     context.Transfer(ExtraResistance);
 }

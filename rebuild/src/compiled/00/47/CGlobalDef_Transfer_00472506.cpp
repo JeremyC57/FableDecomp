@@ -14,17 +14,11 @@
 // Shape: one transfer per member in declaration order; the def base transfer is not called.
 class CCharString { public: void* m_pData; };
 class CEngineGraphic { public: unsigned char _body[0xe]; };
-struct CConversationCameraMap { void* _M_header[3]; };   // STLport map<long, CCharString>, 12 bytes
-struct CCharStringVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
-struct CDialogueLayerDefVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
 
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);                         // 0x00431102
-    void Transfer(CConversationCameraMap& value);       // 0x0047280C
-    void Transfer(CCharStringVector& value);            // 0x004331F9
-    void Transfer(CDialogueLayerDefVector& value);      // 0x00472A8D
-};
-
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+namespace NSpeechGainManager { class CDialogueLayerDef; }
+#include "engine/CPersistContext.h"
 class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x3c - 4];
@@ -72,9 +66,9 @@ class CGlobalDef : public CDefClassBase { public:
     long  E3BodgeFireflyGraphic;                                  // +0xd4
     CEngineGraphic SwitchGraphic;                                 // +0xd8
     CEngineGraphic TrackGraphic;                                  // +0xe6
-    CConversationCameraMap ConversationCameras;                   // +0xf4
-    CCharStringVector PermittedAINarrators;                       // +0x100
-    CDialogueLayerDefVector DialogueLayers;                       // +0x10c
+    std::map<long, CCharString> ConversationCameras;                   // +0xf4
+    std::vector<CCharString> PermittedAINarrators;                       // +0x100
+    std::vector<NSpeechGainManager::CDialogueLayerDef> DialogueLayers;                       // +0x10c
     long  OpinionDebugIndicatorIcon;                              // +0x118
     long  WifeLoveIndicatorIcon;                                  // +0x11c
     long  WifeEngagedIndicatorIcon;                               // +0x120
@@ -135,9 +129,9 @@ void CGlobalDef::Transfer(CPersistContext& context)
     context.Transfer(E3BodgeFireflyGraphic);
     context.Transfer(SwitchGraphic);
     context.Transfer(TrackGraphic);
-    context.Transfer(ConversationCameras);
-    context.Transfer(PermittedAINarrators);
-    context.Transfer(DialogueLayers);
+    context.TransferMap(ConversationCameras);
+    context.TransferVector(PermittedAINarrators);
+    context.TransferVectorOfSubComponents(DialogueLayers);
     context.Transfer(OpinionDebugIndicatorIcon);
     context.Transfer(WifeLoveIndicatorIcon);
     context.Transfer(WifeEngagedIndicatorIcon);

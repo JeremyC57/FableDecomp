@@ -12,44 +12,22 @@
 //   first word of the CParentDefClassBase part, so the opaque base bytes after it are 0x38.
 // Shape: one call per member in source order (SetupCond is transferred third, before Lights), `this` in esi, the context
 //   in edi; the last member address is formed by `add esi,90h`.
-class CCharString {
-public:
-    void* PStringData;
-};
-namespace std {
-template <class T> class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-};
-}
-class CPersistContext {
-public:
-    template <class T> void TransferVectorBinary(std::vector<T>& v);   // 0x004331F9 for CCharString
-};
-class CCutsceneDef {
-public:
-    virtual ~CCutsceneDef();                     // slot layout beyond Transfer not modelled
-    unsigned char              _base[0x38];      // CParentDefClassBase after its vptr (0x35 bytes, padding)
-    std::vector<CCharString>  Macro;            // +0x3c
-    std::vector<CCharString>  SkipCond;         // +0x48
-    std::vector<CCharString>  Lights;           // +0x54
-    std::vector<CCharString>  LightScene;       // +0x60
-    std::vector<CCharString>  SetupCond;        // +0x6c
-    std::vector<CCharString>  Sound;            // +0x78
-    std::vector<CCharString>  Answer0;          // +0x84
-    std::vector<CCharString>  Answer1;          // +0x90
-    virtual void Transfer(CPersistContext& context);   // vtable 0x012FB6E0 slot 18
-};
+// Port (round 4, NF40): the local CPersistContext / def-class models (and any vector stand-ins) are replaced by
+//   engine/CCutsceneDef.h and engine/CPersistContext.h; vector members go through the unnamed TransferVector<T>.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#include "engine/CCutsceneDef.h"
+#include "engine/CPersistContext.h"
+
 void CCutsceneDef::Transfer(CPersistContext& context)
 {
-    context.TransferVectorBinary(Macro);
-    context.TransferVectorBinary(SkipCond);
-    context.TransferVectorBinary(SetupCond);
-    context.TransferVectorBinary(Lights);
-    context.TransferVectorBinary(LightScene);
-    context.TransferVectorBinary(Sound);
-    context.TransferVectorBinary(Answer0);
-    context.TransferVectorBinary(Answer1);
+    context.TransferVector(Macro);
+    context.TransferVector(SkipCond);
+    context.TransferVector(SetupCond);
+    context.TransferVector(Lights);
+    context.TransferVector(LightScene);
+    context.TransferVector(Sound);
+    context.TransferVector(Answer0);
+    context.TransferVector(Answer1);
 }

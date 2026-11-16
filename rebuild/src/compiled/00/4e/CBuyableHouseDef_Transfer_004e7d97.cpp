@@ -12,22 +12,17 @@
 //   MaxRentBags (+0x44) -- the def's TRANSFER list order.
 #pragma optimize("s", on)
 
-template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-class CPersistContext {
-public:
-    template <class T> void Transfer(T& value);                 // 0x0043314A
-    void Transfer(CStlVector<long>& value);     // 0x00466A47
-};
-
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
 class CBuyableHouseDef {
 public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x21];                  // CDefClassBase data (+0x04..+0x24)
     bool IsBuyable;                             // +0x25
     bool InitiallyEmpty;                        // +0x26
-    CStlVector<long> Price;                     // +0x28
-    CStlVector<long> Rent;                      // +0x34
+    std::vector<long> Price;                     // +0x28
+    std::vector<long> Rent;                      // +0x34
     long DaysBetweenRentPayments;               // +0x40
     long MaxRentBags;                           // +0x44
     bool IsScripted;                            // +0x48
@@ -38,8 +33,8 @@ void CBuyableHouseDef::Transfer(CPersistContext& context)
 {
     context.Transfer(IsBuyable);
     context.Transfer(InitiallyEmpty);
-    context.Transfer(Price);
-    context.Transfer(Rent);
+    context.TransferVector(Price);
+    context.TransferVector(Rent);
     context.Transfer(DaysBetweenRentPayments);
     context.Transfer(IsScripted);
     context.Transfer(MaxRentBags);

@@ -1,0 +1,6 @@
+- A named `Transfer(const char*, vector<T>&)` stand-in is CPersistContext::TransferVector<T> (named): instantiate CPersistContext.h TRANSFERVECTOR_NAMED_BODY; an out-of-line clear() needs FABLE_RETAIL_STLP_VECTOR_CLEAR_OUTOFLINE.
+- An inline in-class member that retail also emits out of line needs a declaration-only opt-in in the header; the row then defines the body (0x0066C810).
+- CStreamingGlyph.h is gated on FABLE_RETAIL_PASS22_STREAMING_FONT_CTOR, which also needs FABLE_RETAIL_CFONTBANK_BASE (the CFontBank ctor names its base).
+- CArray<T>(n) explicitly instantiated over fable_containers.h does not expand the base vector(n); a 77-byte retail body needs a header opt-in.
+- Re-probe before triage: entries the round-3 screen called wrong can be fixed already by other landings (entry 28).
+- mkrc-style scripts must use absolute output paths when they chdir into the repo.

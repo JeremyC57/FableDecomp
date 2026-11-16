@@ -1,21 +1,28 @@
-// Leaf: ?CSpecialAbilitiesCreatureTintDef_Transfer@@YIXPAVCVillagerInteractionsDef@@PAXPAVCPersistContext@@@Z
+// CSpecialAbilitiesCreatureTintDef::Transfer(CPersistContext& context) -- persist the def's members in declaration order
+// Leaf: ?Transfer@CSpecialAbilitiesCreatureTintDef@@UAEXAAVCPersistContext@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0046A7E0, 46 bytes, virtual `ret 4` (RTTI vtable slot 18; RTTI base CParentDefClassBase): Transfer<float> 0x00431061 x2, TransferVector<long> 0x00466A47.
+// Port (round 4, NF40): was a stand-in (leaf ?CSpecialAbilitiesCreatureTintDef_Transfer@@YIXPAVCVillagerInteractionsDef@@PAXPAVCPersistContext@@@Z) on a local CPersistContext model with stand-in per-type transfer members
+//   over opaque fields; now engine/CPersistContext.h (Transfer<T> / TransferVector<T>) and the retail def chain
+//   engine/CParentDefClassBase.h. No shared header exists for CSpecialAbilitiesCreatureTintDef, so the row keeps its own model of the class, with the
+//   Ego_r.pdb members (FadeInTimeSecs +0x3C, FadeOutTimeSecs +0x40, Color +0x44; the retail offsets are the Ego_r ones minus 4 after the 0x39-byte retail CParentDefClassBase) and the virtual override
+//   ?Transfer@CSpecialAbilitiesCreatureTintDef@@UAEXAAVCPersistContext@@@Z (Ego_r.pdb / FableWin.pdb).
 #pragma optimize("s",on)
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);
-    void PersistB_00466a47(int& r);
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
+
+class CSpecialAbilitiesCreatureTintDef : public CParentDefClassBase {
+public:
+    virtual void Transfer(CPersistContext& context);     // slot 18
+    float                      FadeInTimeSecs;                // +0x3C
+    float                      FadeOutTimeSecs;               // +0x40
+    std::vector<long>          Color;                         // +0x44
 };
 
-class CVillagerInteractionsDef { public:
-    char pad[0x3c];
-    int fieldA;   // +0x3c
-    int fieldB;   // +0x40
-    int fieldC;   // +0x44
-};
-
-void __fastcall CSpecialAbilitiesCreatureTintDef_Transfer(CVillagerInteractionsDef* def, void* /*edx*/, CPersistContext* ctx)
+void CSpecialAbilitiesCreatureTintDef::Transfer(CPersistContext& context)
 {
-    ctx->Transfer(*(float*)&(def->fieldA));
-    ctx->Transfer(*(float*)&(def->fieldB));
-    ctx->PersistB_00466a47(def->fieldC);
+    context.Transfer(FadeInTimeSecs);
+    context.Transfer(FadeOutTimeSecs);
+    context.TransferVector(Color);
 }
-// Stand-in (owner rule 2026-11-05): CSpecialAbilitiesCreatureTintDef_Transfer for CSpecialAbilitiesCreatureTintDef::Transfer; RTTI vtable slot ?Transfer@CSpecialAbilitiesCreatureTintDef@@UAEXAAVCPersistContext@@@Z + PDB name set (egor/fablewin).

@@ -10,6 +10,12 @@
 enum ECreatureGeneratorGenerateType;                                     // MS forward enum
 class CCreatureGenerationFamilyDef : public CParentDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CCREATUREGENERATIONFAMILYDEF_TRANSFER
+// Opt-in (NF40, 2026-11-16, row 0x004696C1 CCreatureGenerationFamilyDef::Transfer): Ego_r.pdb / FableWin.pdb ?Transfer@CCreatureGenerationFamilyDef@@UAEXAAVCPersistContext@@@Z,
+// the def's override of CDefClassBase::Transfer (virtual slot 18). Declaration only (the elaborated class needs no include); no layout change.
+public: virtual void Transfer(class CPersistContext&);
+public:
+#endif
     std::vector<long> Creatures;                                         // +0x3c
     long DifficultyLevel;                                                // +0x48
     long GeneratorObject;                                                // +0x4c

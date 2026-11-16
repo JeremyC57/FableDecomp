@@ -26,11 +26,7 @@ public:
     _Compare _M_key_compare;
 };
 }
-class CPersistContext {
-public:
-    void Transfer(std::vector<long >& value);                    // 0x00466A47
-    template <class T> void Transfer(T& value);                                  // 0x00431102
-};
+#include "engine/CPersistContext.h"
 class CCameraManagerDef {
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x01233BE4 slot 18
@@ -49,8 +45,8 @@ public:
 
 void CCameraManagerDef::Transfer(CPersistContext& context)
 {
-    context.Transfer(CameraList);
-    context.Transfer(SpecialityCameraList);
+    context.TransferVector(CameraList);
+    context.TransferVector(SpecialityCameraList);
     context.Transfer(InitialMode);
     context.Transfer(ZTargetMode);
     context.Transfer(ProjectileWeaponMode);

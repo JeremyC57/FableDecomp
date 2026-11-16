@@ -19,66 +19,13 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct COpinionTransientOffsetList { void* _M_node; };
-namespace std {                                            // STLport 4.6 vector (12 bytes; the transfer takes it by reference)
-template <class _Tp> class allocator { };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-};
-}
-class COpinionDeedReactionDef;
-struct CCharStringVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
-enum EDialogueLayer { DIALOGUE_LAYER_0 };
-enum ECrimeSeverity { CRIME_SEVERITY_0 };
-enum ETutorialCategory { TUTORIAL_CATEGORY_0 };
-
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);                                              // 0x00431102
-    void Transfer(COpinionTransientOffsetList& value);                       // 0x004792CF
-    template <class T> void TransferVectorOfSubComponents(std::vector<T>& value);   // TLC release persist macro form (Ego_r/FableWin ??$TransferVectorOfSubComponents@V..@@@CPersistContext@@)
-    // TransferVectorOfSubComponents<COpinionDeedReactionDef> 0x00479466
-    void Transfer(EDialogueLayer& value);                                    // 0x00479187
-    void Transfer(CCharStringVector& value);                                 // 0x004331F9
-    void Transfer(ECrimeSeverity& value);                                    // 0x0047922B
-    void Transfer(ETutorialCategory& value);                                 // 0x00452045
-    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
-    //   instances here: bool 0x004045C0
-};
-
-struct CDefBase {
-    virtual void Transfer(CPersistContext& context);
-    unsigned char _pad04[0x3c - 4];
-};
-
-class COpinionDeedEffectsDef : public CDefBase { public:
-    long                          KnowledgeLifeInSeconds;                    // +0x3c
-    long                          MinimumSecondsBetweenPostings;             // +0x40
-    long                          MinimumSecondsBetweenEffectsForIndividual; // +0x44
-    float                         PreReactionDelayIgnoreOnDelay;             // +0x48
-    COpinionTransientOffsetList   Effects;                                   // +0x4c
-    long                          ReactionPriority;                          // +0x50
-    std::vector<COpinionDeedReactionDef> Reaction;                                  // +0x54
-    EDialogueLayer                ReactionDialogueLayer;                     // +0x60
-    CCharStringVector             WarningText;                               // +0x64
-    ECrimeSeverity                CrimeSeverity;                             // +0x70
-    long                          CrimeFineAmount;                           // +0x74
-    ETutorialCategory             Tutorial;                                  // +0x78
-    bool CanBeHeard : 1;                                                     // +0x7c bit 0
-    bool ReactionRestrictToTarget : 1;
-    bool AllowSimultaneousReactionDialogue : 1;
-    bool CanApologise : 1;
-    bool MustNotRunWhenWarned : 1;
-    bool OnlyGetFinedForOneInstance : 1;
-    bool IsFlirting : 1;
-    bool OnReactSetGreeted : 1;
-    bool AllowSpeechOnNonPureAISpeaker : 1;                                  // +0x7d bit 0
-    bool AllowIndirectReactWhileCarrying : 1;
-    bool BlockWhileFollowingPlayer : 1;
-    virtual void Transfer(CPersistContext& context);
-};
+// Port (round 4, NF40): the local CPersistContext / def-class models (and any vector stand-ins) are replaced by
+//   engine/COpinionDeedEffectsDef.h and engine/CPersistContext.h; vector members go through the unnamed TransferVector<T>.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_LIST
+#include "engine/COpinionDeedEffectsDef.h"
+#include "engine/CPersistContext.h"
 
 void COpinionDeedEffectsDef::Transfer(CPersistContext& context)
 {
@@ -90,7 +37,7 @@ void COpinionDeedEffectsDef::Transfer(CPersistContext& context)
     context.Transfer(ReactionPriority);
     context.TransferVectorOfSubComponents(Reaction);
     context.Transfer(ReactionDialogueLayer);
-    context.Transfer(WarningText);
+    context.TransferVector(WarningText);
     context.Transfer(CrimeSeverity);
     context.Transfer(CrimeFineAmount);
     context.Transfer(Tutorial);

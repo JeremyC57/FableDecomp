@@ -6,6 +6,12 @@
 #include "fable_string.h"
 class CSpecialAbilitiesDrainLifeDef:public CParentDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CSPECIALABILITIESDRAINLIFEDEF_TRANSFER
+// Opt-in (NF40, 2026-11-16, row 0x004724C2 CSpecialAbilitiesDrainLifeDef::Transfer): Ego_r.pdb / FableWin.pdb ?Transfer@CSpecialAbilitiesDrainLifeDef@@UAEXAAVCPersistContext@@@Z, the def's
+// override of CDefClassBase::Transfer (virtual slot 18). Declaration only (the elaborated class needs no include); no layout change.
+public: virtual void Transfer(class CPersistContext&);
+public:
+#endif
  std::vector<float> AmountOfHealthSucked;
  std::vector<long> NumEffects;
  std::vector<float> SpellRange;

@@ -10,13 +10,9 @@
 // Shape: VC7.1 forms the last address with `add esi,0C0h ; push esi` because `this` is dead after it.
 #pragma optimize("s", on)
 
-template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);                 // 0x0043314A
-    void Transfer(CStlVector<long>& v);     // 0x00466A47
-};
-
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
 class CVillagePeopleDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x21];              // CDefClassBase fields (+0x04)
@@ -53,8 +49,8 @@ class CVillagePeopleDef { public:
     long               FemaleGhost;                                     // +0x9c
     long               NumGuards;                                       // +0xa0
     long               NumGhosts;                                       // +0xa4
-    CStlVector<long>   GuardRespawnType;                                // +0xa8
-    CStlVector<long>   GuardRespawnQuantity;                            // +0xb4
+    std::vector<long>   GuardRespawnType;                                // +0xa8
+    std::vector<long>   GuardRespawnQuantity;                            // +0xb4
     long               GuardRespawnMaxRenownBasedOffset;                // +0xc0
 };
 
@@ -93,7 +89,7 @@ void CVillagePeopleDef::Transfer(CPersistContext& context)
     context.Transfer(FemaleGhost);
     context.Transfer(NumGuards);
     context.Transfer(NumGhosts);
-    context.Transfer(GuardRespawnType);
-    context.Transfer(GuardRespawnQuantity);
+    context.TransferVector(GuardRespawnType);
+    context.TransferVector(GuardRespawnQuantity);
     context.Transfer(GuardRespawnMaxRenownBasedOffset);
 }

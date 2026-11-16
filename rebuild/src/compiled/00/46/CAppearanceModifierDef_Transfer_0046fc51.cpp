@@ -72,12 +72,7 @@ public:
     struct CEntry;                            // Ego_r.pdb nested class (opaque here)
     CArray<CEntry >                          Graphics;
 };
-class CPersistContext {
-public:
-    void Transfer(std::vector<CCharString >& value);             // 0x004331F9
-    void Transfer(CAppearanceModifierGraphics& value);           // 0x0046FE40
-    template <class T> void Transfer(T& value);              // enum instances: EClothingSuitPart 0x0046FCF8, EHeroAttachableAppearanceModifierType 0x0046FD9C
-};
+#include "engine/CPersistContext.h"
 class CAppearanceModifierDef : public CSubDefClassBase {    // vtable 0x012330DC
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x012330DC slot 18
@@ -99,7 +94,7 @@ public:
 
 void CAppearanceModifierDef::Transfer(CPersistContext& context)
 {
-    context.Transfer(HideMaterials);
+    context.TransferVector(HideMaterials);
     context.Transfer(MorphGraphics);
     context.Transfer(CoversBodyAreaFlags);
     context.Transfer(IsRemoveable);

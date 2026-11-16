@@ -22,18 +22,8 @@ public:
 }
 class CAppearanceModifierScalingDef;
 class CAbilityTrackDef;
-struct CLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; };
-struct CFloatVector { float* _M_start; float* _M_finish; float* _M_end_of_storage; };
 
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);                                    // 0x00431102
-    template <class T> void TransferVectorOfSubComponents(std::vector<T>& value);   // TLC release persist macro form (Ego_r/FableWin ??$TransferVectorOfSubComponents@V..@@@CPersistContext@@)
-    // TransferVectorOfSubComponents<CAppearanceModifierScalingDef> 0x00479EF4
-    void Transfer(CLongVector& value);                             // 0x00466A47
-    void Transfer(CFloatVector& value);                            // 0x00464CBF
-    // TransferVectorOfSubComponents<CAbilityTrackDef> 0x0047A2F5
-};
-
+#include "engine/CPersistContext.h"
 class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x3c - 4];
@@ -66,9 +56,9 @@ class CHeroStatsDef : public CDefClassBase { public:
     float PintsToDrunk;                                    // +0xa0
     float PintsToVomit;                                    // +0xa4
     float AlcoholAbsorbtionPerSecond;                      // +0xa8
-    CLongVector RenownLevelCosts;                          // +0xac
-    CLongVector RenownLevelMaxFollowers;                   // +0xb8
-    CLongVector RenownLevelMaxBoastingCrowd;               // +0xc4
+    std::vector<long> RenownLevelCosts;                          // +0xac
+    std::vector<long> RenownLevelMaxFollowers;                   // +0xb8
+    std::vector<long> RenownLevelMaxBoastingCrowd;               // +0xc4
     long  MaxMorality;                                     // +0xd0
     long  MaxMoralityAsChild;                              // +0xd4
     float MaxExtraMaxHitPoints;                            // +0xd8
@@ -77,12 +67,12 @@ class CHeroStatsDef : public CDefClassBase { public:
     long  MoralityChangeOnTheftFromShop;                   // +0xe4
     long  MoralityChangeOnPicklock;                        // +0xe8
     long  MoralityChangeOnVandalism;                       // +0xec
-    CFloatVector TradeSkillForGuileLevel;                  // +0xf0
+    std::vector<float> TradeSkillForGuileLevel;                  // +0xf0
     std::vector<CAbilityTrackDef> StatLevels;                     // +0xfc
-    CFloatVector MaxHitPointsPerHealthLevel;               // +0x108
-    CLongVector MaxStaminaPointsPerMagicPowerLevel;        // +0x114
-    CFloatVector SoundDistanceMultiplierPerStealthLevel;   // +0x120
-    CFloatVector VisibilityMultiplierPerStealthLevel;      // +0x12c
+    std::vector<float> MaxHitPointsPerHealthLevel;               // +0x108
+    std::vector<long> MaxStaminaPointsPerMagicPowerLevel;        // +0x114
+    std::vector<float> SoundDistanceMultiplierPerStealthLevel;   // +0x120
+    std::vector<float> VisibilityMultiplierPerStealthLevel;      // +0x12c
     virtual void Transfer(CPersistContext& context);
 };
 
@@ -114,9 +104,9 @@ void CHeroStatsDef::Transfer(CPersistContext& context)
     context.Transfer(PintsToDrunk);
     context.Transfer(PintsToVomit);
     context.Transfer(AlcoholAbsorbtionPerSecond);
-    context.Transfer(RenownLevelCosts);
-    context.Transfer(RenownLevelMaxFollowers);
-    context.Transfer(RenownLevelMaxBoastingCrowd);
+    context.TransferVector(RenownLevelCosts);
+    context.TransferVector(RenownLevelMaxFollowers);
+    context.TransferVector(RenownLevelMaxBoastingCrowd);
     context.Transfer(MaxMorality);
     context.Transfer(MaxMoralityAsChild);
     context.Transfer(MaxExtraMaxHitPoints);
@@ -125,10 +115,10 @@ void CHeroStatsDef::Transfer(CPersistContext& context)
     context.Transfer(MoralityChangeOnTheftFromShop);
     context.Transfer(MoralityChangeOnVandalism);
     context.Transfer(MoralityChangeOnPicklock);
-    context.Transfer(TradeSkillForGuileLevel);
+    context.TransferVector(TradeSkillForGuileLevel);
     context.TransferVectorOfSubComponents(StatLevels);
-    context.Transfer(MaxHitPointsPerHealthLevel);
-    context.Transfer(MaxStaminaPointsPerMagicPowerLevel);
-    context.Transfer(SoundDistanceMultiplierPerStealthLevel);
-    context.Transfer(VisibilityMultiplierPerStealthLevel);
+    context.TransferVector(MaxHitPointsPerHealthLevel);
+    context.TransferVector(MaxStaminaPointsPerMagicPowerLevel);
+    context.TransferVector(SoundDistanceMultiplierPerStealthLevel);
+    context.TransferVector(VisibilityMultiplierPerStealthLevel);
 }

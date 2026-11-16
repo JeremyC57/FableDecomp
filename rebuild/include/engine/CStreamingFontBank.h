@@ -30,6 +30,11 @@ public:
     static bool FABLE_FASTCALL GetUseFixedFunction(){return UseFixedFunction;}
     static void FABLE_FASTCALL SetAlphaMaskUVs(const class C2DVector&,const class C2DVector&);
 #endif
+#ifdef FABLE_RETAIL_CSTREAMINGFONTBANK_SETUSEFIXEDFUNCTION
+    // Retail opt-in (NF40 round 4, row 0x009A0EF0): Ego_r.pdb / FableWin.pdb ?SetUseFixedFunction@CStreamingFontBank@@SIX_N@Z, the
+    // out-of-line static setter of UseFixedFunction 0x013C5A7C (needs FABLE_RETAIL_CENGINEPRIMITIVEMANAGERTEXT_RENDER for the member).
+    static void FABLE_FASTCALL SetUseFixedFunction(bool value);
+#endif
     virtual ~CStreamingFontBank();                                       // slot 0 (??_G 0x009A4E40, ??1 0x009A1090)
 #ifdef FABLE_RETAIL_PASS22_STREAMING_FONT_CTOR
     virtual C2DExtentsF GetStringExtents(const FableFontWideChar* text, bool) const;

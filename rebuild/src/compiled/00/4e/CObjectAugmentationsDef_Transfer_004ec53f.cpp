@@ -39,13 +39,7 @@ public:
     unsigned char _body[52];
 };
 enum EObjectAugmentationType { };                           // enumerators not needed
-class CPersistContext {
-public:
-    template <class T> void Transfer(T& value);                                  // 0x00431102
-    void Transfer(std::map<EObjectAugmentationType, CObjectAugmentationParticleSet >& value); // 0x004EC825
-    void Transfer(std::vector<long >& value);                    // 0x00466A47
-    void Transfer(std::map<EObjectAugmentationType, CDefString >& value); // 0x004EC5FA
-};
+#include "engine/CPersistContext.h"
 class CObjectAugmentationsDef {
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x01243974 slot 18
@@ -71,12 +65,12 @@ void CObjectAugmentationsDef::Transfer(CPersistContext& context)
 {
     context.Transfer(NumberOfSlots);
     context.Transfer(MaximumNumberOfSlots);
-    context.Transfer(AugmentationParticles);
+    context.TransferMap(AugmentationParticles);
     context.Transfer(EmptySlotName);
-    context.Transfer(InitialAugmentations);
-    context.Transfer(SlotUpgradeCosts);
-    context.Transfer(InitSounds);
-    context.Transfer(LoopingSounds);
+    context.TransferVector(InitialAugmentations);
+    context.TransferVector(SlotUpgradeCosts);
+    context.TransferMap(InitSounds);
+    context.TransferMap(LoopingSounds);
     context.Transfer(FireProjectileTrailEffect);
     context.Transfer(LightningProjectileTrailEffect);
     context.Transfer(FireAndLightningProjectileTrailEffect);

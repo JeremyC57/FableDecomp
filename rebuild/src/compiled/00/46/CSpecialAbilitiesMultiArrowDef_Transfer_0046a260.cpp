@@ -51,13 +51,7 @@ class CDefinitionManager;
 #define FABLE_PDCB_TYPED_MEMBERS
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
-class CPersistContext {
-public:
-    template <class T> void Transfer(T& value);              // ??$Transfer@J@CPersistContext@@QAEXAAJ@Z 0x00431102, @K@ 0x00431020, @M@ 0x00431061, @_N@ 0x0043314A (Ego_r.pdb member template instantiations)
-    void Transfer(std::vector<long >& value);                    // 0x00466A47
-    void Transfer(std::vector<float >& value);                   // 0x00464CBF
-    void Transfer(CDefString& value);                            // 0x0045228F
-};
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesMultiArrowDef : public CParentDefClassBase {    // vtable 0x01234194
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x01234194 slot 18
@@ -82,7 +76,7 @@ void CSpecialAbilitiesMultiArrowDef::Transfer(CPersistContext& context)
     context.Transfer(NumberInVolley[3]);
     context.Transfer(AmmoEffectCreationDelaySecs);
     context.Transfer(BowHighlightWidth);
-    context.Transfer(BowHighlightColor);
-    context.Transfer(MultiArrowPerArrowDamageMultiplier);
+    context.TransferVector(BowHighlightColor);
+    context.TransferVector(MultiArrowPerArrowDamageMultiplier);
     context.Transfer(CastSound);
 }

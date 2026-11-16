@@ -21,10 +21,7 @@ public:
 };
 }
 class CBlendedParticleEffectSet;
-class CPersistContext {
-public:
-    template <class T> void Transfer(T& value);
-};
+#include "engine/CPersistContext.h"
 #pragma pack(push, 1)
 class CParentDefClassBase {
 public:
@@ -56,10 +53,10 @@ void CMaterialDef::Transfer(CPersistContext& context)
     context.Transfer(OnHitRumbleFalloff);
     context.Transfer(DeflectAllHits);
     context.Transfer(IsDiggable);
-    context.Transfer(SlideFootParticleEffect);
-    context.Transfer(SwordHitParticleEffect);
-    context.Transfer(KnockdownHitFloorParticleEffect);
-    context.Transfer(WindBlowDustEffect);
-    context.Transfer(BerserkedSwordHitParticleEffect);
+    context.TransferVector(SlideFootParticleEffect);
+    context.TransferVector(SwordHitParticleEffect);
+    context.TransferVector(KnockdownHitFloorParticleEffect);
+    context.TransferVector(WindBlowDustEffect);
+    context.TransferVector(BerserkedSwordHitParticleEffect);
     context.Transfer(BlendedSwordHitEffects);
 }

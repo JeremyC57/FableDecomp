@@ -26,10 +26,7 @@ public:
     _Compare _M_key_compare;
 };
 }
-class CPersistContext {
-public:
-    void Transfer(std::vector<float >& value);                   // 0x00464CBF
-};
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesHealLifeDef {
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x0123446C slot 18
@@ -41,7 +38,7 @@ public:
 
 void CSpecialAbilitiesHealLifeDef::Transfer(CPersistContext& context)
 {
-    context.Transfer(HealthIncreasePerFrame);
-    context.Transfer(TotalHealthIncrease);
-    context.Transfer(RadiusOfEffect);
+    context.TransferVector(HealthIncreasePerFrame);
+    context.TransferVector(TotalHealthIncrease);
+    context.TransferVector(RadiusOfEffect);
 }

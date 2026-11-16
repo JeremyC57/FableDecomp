@@ -1,27 +1,30 @@
-// Leaf: ?CCreatureModeDef_Transfer@@YIXPAVCCarrySlotDef@@PAXPAVCPersistContext@@@Z
+// CCreatureModeDef::Transfer(CPersistContext& context) -- persist the def's members in declaration order
+// Leaf: ?Transfer@CCreatureModeDef@@UAEXAAVCPersistContext@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004E7EA7, 57 bytes, virtual `ret 4` (RTTI vtable slot 18; RTTI base CSubDefClassBase): Transfer<long> 0x00431102 x3, TransferVector<long> 0x00466A47.
+// Port (round 4, NF40): was a stand-in (leaf ?CCreatureModeDef_Transfer@@YIXPAVCCarrySlotDef@@PAXPAVCPersistContext@@@Z) on a local CPersistContext model with stand-in per-type transfer members
+//   over opaque fields; now engine/CPersistContext.h (Transfer<T> / TransferVector<T>) and the retail def chain
+//   engine/CSubDefClassBase.h. No shared header exists for CCreatureModeDef, so the row keeps its own model of the class, with the
+//   Ego_r.pdb members (DefaultCreatureMode +0x28, InitialCreatureMode +0x2C, DefaultWeaponCreatureMode +0x30, AvailableIdleModes +0x34; the retail offsets are the Ego_r ones) and the virtual override
+//   ?Transfer@CCreatureModeDef@@UAEXAAVCPersistContext@@@Z (Ego_r.pdb / FableWin.pdb).
 #pragma optimize("s",on)
-struct A { int x; };
-struct B { int x; };
-struct C { int x; };
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CSubDefClassBase.h"
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
 
-class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
-    template <class T> void Transfer(T& value);                 // 0x00431102 Transfer(long&)
-    void Transfer_00466a47(A* value);               // 0x00466A47 per-type transfer instantiation, element type not attributed
+class CCreatureModeDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext& context);     // slot 18
+    long                       DefaultCreatureMode;           // +0x28
+    long                       InitialCreatureMode;           // +0x2C
+    long                       DefaultWeaponCreatureMode;     // +0x30
+    std::vector<long>          AvailableIdleModes;            // +0x34
 };
 
-class CCarrySlotDef { public:
-    unsigned char _pad[0x28];
-    A a;   // +0x28
-    B b;   // +0x2c
-    C c;   // +0x30
-    A a2;  // +0x34
-};
-
-void __fastcall CCreatureModeDef_Transfer(CCarrySlotDef* def, void* edx, CPersistContext* ctx)
+void CCreatureModeDef::Transfer(CPersistContext& context)
 {
-    ctx->Transfer(*(long*)(&def->a));
-    ctx->Transfer(*(long*)(&def->b));
-    ctx->Transfer(*(long*)(&def->c));
-    ctx->Transfer_00466a47(&def->a2);
+    context.Transfer(DefaultCreatureMode);
+    context.Transfer(InitialCreatureMode);
+    context.Transfer(DefaultWeaponCreatureMode);
+    context.TransferVector(AvailableIdleModes);
 }
-// Stand-in (owner rule 2026-11-05): CCreatureModeDef_Transfer for CCreatureModeDef::Transfer; RTTI vtable slot ?Transfer@CCreatureModeDef@@UAEXAAVCPersistContext@@@Z + PDB name set (egor/fablewin).

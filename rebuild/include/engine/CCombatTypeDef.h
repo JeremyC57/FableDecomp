@@ -9,6 +9,12 @@
 #include "stlport/fable_map.h"
 class CCombatTypeDef:public CParentDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CCOMBATTYPEDEF_TRANSFER
+// Opt-in (NF40, 2026-11-16, row 0x0046F7C8 CCombatTypeDef::Transfer): Ego_r.pdb / FableWin.pdb ?Transfer@CCombatTypeDef@@UAEXAAVCPersistContext@@@Z,
+// the def's override of CDefClassBase::Transfer (virtual slot 18). Declaration only (the elaborated class needs no include); no layout change.
+public: virtual void Transfer(class CPersistContext&);
+public:
+#endif
  std::vector<long> DefenderCombatRingOccupationNumbers;long DefenderWheelOuterRingStartIndex;bool DefenderWheelAllowAttackerStrafing;
  std::vector<CCharString> CombatSequence;std::vector<long> CombatSequenceDef;bool PreferOuterRing;
  float FrontFarLimit,FrontMiddleLimit,FrontNearLimit,SideLimit,RearLimit,PreferredCombatDistance;

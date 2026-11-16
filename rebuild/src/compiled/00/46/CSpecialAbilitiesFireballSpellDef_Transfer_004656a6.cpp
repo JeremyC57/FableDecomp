@@ -11,21 +11,16 @@
 //   member's address is the natural `add esi,50h ; push esi`.
 #pragma optimize("s", on)
 
-template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-class CPersistContext {
-public:
-    template <class T> void Transfer(T& value);                // 0x00431061
-    void Transfer(CStlVector<float>& value);    // 0x00464CBF
-};
-
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesFireballSpellDef {
 public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                  // CSpecialAbilitiesDef data (+0x04..+0x3b)
     float ReleaseDelay;                         // +0x3c
     float Inclination;                          // +0x40
-    CStlVector<float> StaminaCost;              // +0x44
+    std::vector<float> StaminaCost;              // +0x44
     float TargettingArcAngle;                   // +0x50
 };
 
@@ -33,6 +28,6 @@ void CSpecialAbilitiesFireballSpellDef::Transfer(CPersistContext& context)
 {
     context.Transfer(Inclination);
     context.Transfer(ReleaseDelay);
-    context.Transfer(StaminaCost);
+    context.TransferVector(StaminaCost);
     context.Transfer(TargettingArcAngle);
 }

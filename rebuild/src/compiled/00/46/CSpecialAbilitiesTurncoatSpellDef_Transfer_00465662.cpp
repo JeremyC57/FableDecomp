@@ -1,25 +1,23 @@
-// Leaf: ?Transfer@CSpecialAbilitiesTurncoatSpellDef@@QAEXAAVCPersistContext@@@Z
+// CSpecialAbilitiesTurncoatSpellDef::Transfer(CPersistContext& context) -- persist the five per-level float vectors of the turncoat spell def
+// Leaf: ?Transfer@CSpecialAbilitiesTurncoatSpellDef@@UAEXAAVCPersistContext@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00465662, 68 bytes, virtual `ret 4`; five calls of the unnamed
+//   CPersistContext::TransferVector<float> 0x00464CBF on +0x3C .. +0x6C. Ego_r.pdb / FableWin.pdb
+//   ?Transfer@CSpecialAbilitiesTurncoatSpellDef@@UAEXAAVCPersistContext@@@Z (RTTI vtable slot 18).
+// Port (round 4, NF40): was a stand-in class named after the real class, with opaque 12-byte fields and a stand-in
+//   Transfer_00464cbf(void*) member on a local CPersistContext; now engine/CSpecialAbilitiesTurncoatSpellDef.h (Ego_r.pdb
+//   members StaminaCostPerSec, ResistanceDamagePerSec, TurncoatTime, TurncoatRange, TurncoatXPUpEveryNSecs; the override
+//   through the FABLE_RETAIL_CSPECIALABILITIESTURNCOATSPELLDEF_TRANSFER opt-in) and engine/CPersistContext.h.
 #pragma optimize("s",on)
-struct Field { unsigned char b[0xc]; };
-class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
-    void Transfer_00464cbf(void* value);            // 0x00464CBF per-type transfer instantiation, element type not attributed
-};
-class CSpecialAbilitiesTurncoatSpellDef { public:
-    unsigned char _pad[0x3c];
-    Field f0; // 0x3c
-    Field f1; // 0x48
-    Field f2; // 0x54
-    Field f3; // 0x60
-    Field f4; // 0x6c
-    void Transfer(CPersistContext& ctx);
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CSPECIALABILITIESTURNCOATSPELLDEF_TRANSFER
+#include "engine/CSpecialAbilitiesTurncoatSpellDef.h"
+#include "engine/CPersistContext.h"
 
-void CSpecialAbilitiesTurncoatSpellDef::Transfer(CPersistContext& ctx)
+void CSpecialAbilitiesTurncoatSpellDef::Transfer(CPersistContext& context)
 {
-    ctx.Transfer_00464cbf(&f0);
-    ctx.Transfer_00464cbf(&f1);
-    ctx.Transfer_00464cbf(&f2);
-    ctx.Transfer_00464cbf(&f3);
-    ctx.Transfer_00464cbf(&f4);
+    context.TransferVector(StaminaCostPerSec);
+    context.TransferVector(ResistanceDamagePerSec);
+    context.TransferVector(TurncoatTime);
+    context.TransferVector(TurncoatRange);
+    context.TransferVector(TurncoatXPUpEveryNSecs);
 }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?Transfer@CSpecialAbilitiesTurncoatSpellDef@@UAEXAAVCPersistContext@@@Z); evidence: RTTI vtable slot + PDB name set.

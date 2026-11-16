@@ -15,40 +15,33 @@ enum EVillageStanceToHero { VILLAGE_STANCE_DEFAULT };
 enum EVillageTaskType { VILLAGE_TASK_DEFAULT };
 class CDefString { public: long Index; };
 class CCharString { public: void* PData; };
-struct CTaskVector { EVillageTaskType* _M_start; EVillageTaskType* _M_finish; EVillageTaskType* _M_end_of_storage; };
-struct CLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; };
 
-class CPersistContext { public:
-    void Transfer(CTaskVector& value);            // 0x004E85AE
-    template <class T> void Transfer(T& value);             // 0x0045228F
-    void Transfer(EVillageStanceToHero& value);   // 0x004E850A
-    void Transfer(CLongVector& value);            // 0x00466A47
-};
-
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
 class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x28 - 4];
 };
 
 class CVillageDef : public CDefClassBase { public:
-    CTaskVector Tasks;                            // +0x28
+    std::vector<EVillageTaskType> Tasks;                            // +0x28
     CDefString PatrolTrackName;                   // +0x34
     EVillageStanceToHero DefaultStanceToHero;     // +0x38
     long SecondsSecuritySweepLasts;               // +0x3c
     long WarehouseCrateDef;                       // +0x40
-    CLongVector StoryStartTimes;                  // +0x44
+    std::vector<long> StoryStartTimes;                  // +0x44
     long StoryDuration;                           // +0x50
-    CLongVector SchoolStartTimes;                 // +0x54
+    std::vector<long> SchoolStartTimes;                 // +0x54
     long SchoolDuration;                          // +0x60
-    CLongVector WorkStartTimes;                   // +0x64
+    std::vector<long> WorkStartTimes;                   // +0x64
     long WorkDuration;                            // +0x70
-    CLongVector CookStartTimes;                   // +0x74
+    std::vector<long> CookStartTimes;                   // +0x74
     long CookDuration;                            // +0x80
-    CLongVector EatStartTimes;                    // +0x84
+    std::vector<long> EatStartTimes;                    // +0x84
     long EatDuration;                             // +0x90
-    CLongVector TavernStartTimes;                 // +0x94
+    std::vector<long> TavernStartTimes;                 // +0x94
     long TavernDuration;                          // +0xa0
-    CLongVector GamingStartTimes;                 // +0xa4
+    std::vector<long> GamingStartTimes;                 // +0xa4
     long GamingDuration;                          // +0xb0
     long SleepAdultStartTime;                     // +0xb4
     long SleepAdultEndTime;                       // +0xb8
@@ -79,7 +72,7 @@ class CVillageDef : public CDefClassBase { public:
 
 void CVillageDef::Transfer(CPersistContext& context)
 {
-    context.Transfer(Tasks);
+    context.TransferVector(Tasks);
     context.Transfer(PatrolTrackName);
     context.Transfer(DefaultStanceToHero);
     context.Transfer(SecondsSecuritySweepLasts);
@@ -96,19 +89,19 @@ void CVillageDef::Transfer(CPersistContext& context)
     context.Transfer(SociableFinishTime);
     context.Transfer(CurfewStartTime);
     context.Transfer(CurfewFinishTime);
-    context.Transfer(StoryStartTimes);
+    context.TransferVector(StoryStartTimes);
     context.Transfer(StoryDuration);
-    context.Transfer(SchoolStartTimes);
+    context.TransferVector(SchoolStartTimes);
     context.Transfer(SchoolDuration);
-    context.Transfer(WorkStartTimes);
+    context.TransferVector(WorkStartTimes);
     context.Transfer(WorkDuration);
-    context.Transfer(CookStartTimes);
+    context.TransferVector(CookStartTimes);
     context.Transfer(CookDuration);
-    context.Transfer(EatStartTimes);
+    context.TransferVector(EatStartTimes);
     context.Transfer(EatDuration);
-    context.Transfer(TavernStartTimes);
+    context.TransferVector(TavernStartTimes);
     context.Transfer(TavernDuration);
-    context.Transfer(GamingStartTimes);
+    context.TransferVector(GamingStartTimes);
     context.Transfer(GamingDuration);
     context.Transfer(EnableAutoPlacement);
     context.Transfer(AllowHouseBuying);

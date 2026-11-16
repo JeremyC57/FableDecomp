@@ -13,6 +13,12 @@
 #include "stlport/fable_containers.h"
 class CSpecialAbilitiesTurncoatSpellDef : public CParentDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CSPECIALABILITIESTURNCOATSPELLDEF_TRANSFER
+// Opt-in (NF40, 2026-11-16, row 0x00465662 CSpecialAbilitiesTurncoatSpellDef::Transfer): Ego_r.pdb / FableWin.pdb ?Transfer@CSpecialAbilitiesTurncoatSpellDef@@UAEXAAVCPersistContext@@@Z, the def's
+// override of CDefClassBase::Transfer (virtual slot 18). Declaration only (the elaborated class needs no include); no layout change.
+public: virtual void Transfer(class CPersistContext&);
+public:
+#endif
     std::vector<float,std::allocator<float> > StaminaCostPerSec;                 // +0x3C
     std::vector<float,std::allocator<float> > ResistanceDamagePerSec;            // +0x48
     std::vector<float,std::allocator<float> > TurncoatTime;                      // +0x54

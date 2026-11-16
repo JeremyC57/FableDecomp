@@ -51,11 +51,7 @@ class CDefinitionManager;
 #define FABLE_PDCB_TYPED_MEMBERS
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
-class CPersistContext {
-public:
-    template <class T> void Transfer(T& value);              // ??$Transfer@J@CPersistContext@@QAEXAAJ@Z 0x00431102, @K@ 0x00431020, @M@ 0x00431061, @_N@ 0x0043314A (Ego_r.pdb member template instantiations)
-    void Transfer(std::vector<float >& value);                   // 0x00464CBF
-};
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesAssassinRushDef : public CParentDefClassBase {    // vtable 0x0123405C
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x0123405C slot 18
@@ -98,5 +94,5 @@ void CSpecialAbilitiesAssassinRushDef::Transfer(CPersistContext& context)
     context.Transfer(AssassinAlpha);
     context.Transfer(SlowTimeMultiplier);
     context.Transfer(RushDelay);
-    context.Transfer(DashDistance);
+    context.TransferVector(DashDistance);
 }

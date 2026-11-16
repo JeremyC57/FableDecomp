@@ -1,24 +1,17 @@
+// CEngineLocalDetailLayerDef::Transfer(CPersistContext& context) -- persist the layer's spacing vector and its object sub-defs
+// Leaf: ?Transfer@CEngineLocalDetailLayerDef@@UAEXAAVCPersistContext@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00477CB1, 33 bytes, virtual `ret 4` (slot 18): the unnamed TransferVector<float>
+//   0x00464CBF on SpacingFromLayer (+0x3C), then TransferVectorOfSubComponents<CEngineLocalDetailObjectDef> 0x00477CD2 on
+//   Objects (+0x48). Ego_r.pdb / FableWin.pdb ?Transfer@CEngineLocalDetailLayerDef@@UAEXAAVCPersistContext@@@Z.
+// Port (round 4, NF40): was a pad struct with stand-in PersistA / PersistB members on a local CPersistContext (and the
+//   non-virtual QAE leaf); now engine/CEngineLocalDetailLayerDef.h (which declares the override) and engine/CPersistContext.h.
 #pragma optimize("s",on)
-// Byte-exact reconstruction of CEngineLocalDetailLayerDef::Transfer @ 0x00477cb1
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CEngineLocalDetailLayerDef.h"
+#include "engine/CPersistContext.h"
 
-struct SubA { int a; };
-struct SubB { int b; };
-
-class CPersistContext { public:
-    void PersistA(SubA* obj);   // __fastcall: ecx=this(persist), obj on stack
-    void PersistB(SubB* obj);
-};
-
-class CEngineLocalDetailLayerDef { public:
-    char pad[0x3c];
-    SubA m3c;   // at +0x3c
-    char pad2[0x48 - 0x3c - (int)sizeof(SubA)];
-    SubB m48;   // at +0x48
-    void Transfer(CPersistContext* ctx);
-};
-
-void CEngineLocalDetailLayerDef::Transfer(CPersistContext* ctx)
+void CEngineLocalDetailLayerDef::Transfer(CPersistContext& context)
 {
-    ctx->PersistA(&this->m3c);
-    ctx->PersistB(&this->m48);
+    context.TransferVector(SpacingFromLayer);
+    context.TransferVectorOfSubComponents(Objects);
 }

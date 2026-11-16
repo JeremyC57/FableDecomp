@@ -65,13 +65,7 @@ public:
 class CSubDefClassBase : public CDefClassBase {         // vtable 0x01231D54, Ego_r.pdb 0x25 (packed, no members of its own)
 };
 #pragma pack(pop)
-class CPersistContext {
-public:
-    template <class T> void Transfer(T& value);              // ??$Transfer@J@CPersistContext@@QAEXAAJ@Z 0x00431102, @K@ 0x00431020, @M@ 0x00431061, @_N@ 0x0043314A (Ego_r.pdb member template instantiations)
-    void Transfer(CDefString& value);                            // 0x0045228F
-    void Transfer(std::vector<long >& value);                    // 0x00466A47
-    void Transfer(std::map<EQuestCardPrerequisite, long >& value); // 0x004E7A2D
-};
+#include "engine/CPersistContext.h"
 class CQuestCardDef : public CSubDefClassBase {    // vtable 0x01241E44
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x01241E44 slot 18
@@ -106,12 +100,12 @@ void CQuestCardDef::Transfer(CPersistContext& context)
     context.Transfer(InventoryCategory);
     context.Transfer(RenownReward);
     context.Transfer(GoldReward);
-    context.Transfer(RewardObjects);
+    context.TransferVector(RewardObjects);
     context.Transfer(IsCore);
     context.Transfer(IsVignette);
     context.Transfer(IsExclusive);
     context.Transfer(MakeVignetteRouteAppearOnMinimap);
-    context.Transfer(Prerequisites);
+    context.TransferMap(Prerequisites);
     context.Transfer(NumBoasts);
     context.Transfer(CanPlayerCancel);
     context.Transfer(QuestEpilogue);

@@ -51,12 +51,7 @@ class CDefinitionManager;
 #define FABLE_PDCB_TYPED_MEMBERS
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
-class CPersistContext {
-public:
-    void Transfer(float& value);                                 // 0x00431061
-    void Transfer(std::vector<float >& value);                   // 0x00464CBF
-    void Transfer(std::vector<long >& value);                    // 0x00466A47
-};
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesBattleChargeDef : public CParentDefClassBase {    // vtable 0x012340C4
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x012340C4 slot 18
@@ -83,9 +78,9 @@ public:
 void CSpecialAbilitiesBattleChargeDef::Transfer(CPersistContext& context)
 {
     context.Transfer(RunSpeed);
-    context.Transfer(DashDistance);
-    context.Transfer(RadiusOfEffect);
-    context.Transfer(BattleChargeDamage);
+    context.TransferVector(DashDistance);
+    context.TransferVector(RadiusOfEffect);
+    context.TransferVector(BattleChargeDamage);
     context.Transfer(BattleChargeCombatMultiplierFactor);
     context.Transfer(BattleChargeRadialStartSeconds);
     context.Transfer(BattleChargeRadialEndSeconds);
@@ -97,7 +92,7 @@ void CSpecialAbilitiesBattleChargeDef::Transfer(CPersistContext& context)
     context.Transfer(BattleChargeRadialTwist);
     context.Transfer(PoseDelaySecs);
     context.Transfer(ChargeDelay);
-    context.Transfer(NumPeopleHit);
+    context.TransferVector(NumPeopleHit);
     context.Transfer(DragonExtraGumphRadiusMultiplier);
     context.Transfer(DragonExtraGumphRadius);
 }

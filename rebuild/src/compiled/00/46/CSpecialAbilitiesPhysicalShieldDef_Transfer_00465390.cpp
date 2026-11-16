@@ -13,13 +13,9 @@
 #pragma optimize("s", on)
 
 class CDefString { public: long m_index; };
-template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);                // 0x00431061
-    void Transfer(CStlVector<float>& v);    // 0x00464CBF
-};
-
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesPhysicalShieldDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                       // CSpecialAbilitiesDef base fields (+0x04)
@@ -39,18 +35,18 @@ class CSpecialAbilitiesPhysicalShieldDef { public:
     float CastCamFOV;                                // +0xC8
     float CastCamSwitchTime;                         // +0xCC
     float MinWidth;                                  // +0xD0
-    CStlVector<float> MaxWidth;                      // +0xD4
+    std::vector<float> MaxWidth;                      // +0xD4
     float BeenHitExtraWidth;                         // +0xE0
     float BeenHitFadeOffTimeSecs;                    // +0xE4
     float WobbleRate;                                // +0xE8
-    CStlVector<float> ColorStartLevel1;              // +0xEC
-    CStlVector<float> ColorStartLevel2;              // +0xF8
-    CStlVector<float> ColorStartLevel3;              // +0x104
-    CStlVector<float> ColorStartLevel4;              // +0x110
-    CStlVector<float> ColorEnd;                      // +0x11C
-    CStlVector<float> ColorHit;                      // +0x128
+    std::vector<float> ColorStartLevel1;              // +0xEC
+    std::vector<float> ColorStartLevel2;              // +0xF8
+    std::vector<float> ColorStartLevel3;              // +0x104
+    std::vector<float> ColorStartLevel4;              // +0x110
+    std::vector<float> ColorEnd;                      // +0x11C
+    std::vector<float> ColorHit;                      // +0x128
     float FadeOutPhysicalShieldTimeSecs;             // +0x134
-    CStlVector<float> ManaDamage;                    // +0x138
+    std::vector<float> ManaDamage;                    // +0x138
     bool ShieldCoversCarriedItems;                   // +0x144
 };
 
@@ -82,17 +78,17 @@ void CSpecialAbilitiesPhysicalShieldDef::Transfer(CPersistContext& context)
     context.Transfer(CastCamFOV);
     context.Transfer(CastCamSwitchTime);
     context.Transfer(MinWidth);
-    context.Transfer(MaxWidth);
-    context.Transfer(ColorStartLevel1);
-    context.Transfer(ColorStartLevel2);
-    context.Transfer(ColorStartLevel3);
-    context.Transfer(ColorStartLevel4);
-    context.Transfer(ColorEnd);
-    context.Transfer(ColorHit);
+    context.TransferVector(MaxWidth);
+    context.TransferVector(ColorStartLevel1);
+    context.TransferVector(ColorStartLevel2);
+    context.TransferVector(ColorStartLevel3);
+    context.TransferVector(ColorStartLevel4);
+    context.TransferVector(ColorEnd);
+    context.TransferVector(ColorHit);
     context.Transfer(WobbleRate);
     context.Transfer(FadeOutPhysicalShieldTimeSecs);
     context.Transfer(BeenHitExtraWidth);
     context.Transfer(BeenHitFadeOffTimeSecs);
-    context.Transfer(ManaDamage);
+    context.TransferVector(ManaDamage);
     context.Transfer(ShieldCoversCarriedItems);
 }

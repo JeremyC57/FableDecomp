@@ -7,15 +7,8 @@
 // retail's STLport vector is 12 bytes (PDB 16), so TentacleMaxRiseDelay sits at +0x78 (PDB +0x7C). No engine header exists for CKrakenDef.
 // Size TU (`#pragma optimize("s", on)`: every address goes through eax). Shape: one call per member, the context kept in edi, the last member's address formed with `add esi,78h` (the natural `&m_last`).
 #pragma optimize("s", on)
-struct CLongVector {                            // retail STLport vector<long>: three pointers
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-};
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);                // 0x00431061
-    void Transfer(CLongVector& value);          // 0x00466A47
-};
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
 class CKrakenDef { public:
     void*         __vftable;                    // +0x00 (CDefClassBase)
     unsigned char _base[0x24];                  // +0x04 .. +0x27
@@ -36,7 +29,7 @@ class CKrakenDef { public:
     float BeamMouthDistLow;                     // +0x60
     float BeamMouthDistHigh;                    // +0x64
     long  TicksBetweenBeamExplosions;           // +0x68
-    CLongVector TentacleDefIndex;               // +0x6c
+    std::vector<long> TentacleDefIndex;               // +0x6c
     float TentacleMaxRiseDelay;                 // +0x78
     void Transfer(CPersistContext& context);
 };
@@ -60,6 +53,6 @@ void CKrakenDef::Transfer(CPersistContext& context)
     context.Transfer(BeamMouthDistLow);
     context.Transfer(BeamMouthDistHigh);
     context.Transfer(TicksBetweenBeamExplosions);
-    context.Transfer(TentacleDefIndex);
+    context.TransferVector(TentacleDefIndex);
     context.Transfer(TentacleMaxRiseDelay);
 }

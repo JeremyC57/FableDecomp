@@ -1,4 +1,4 @@
-// CRegionMinimap::GetWorldCoordinatesFromTGAPosition(const C2DVectorI& tgaPosition) const -- map a pixel of the region minimap TGA back to world coordinates (z = 0)
+// CRegionMinimap::GetWorldCoordinatesFromTGAPosition(C3DVector& world, const C2DCoordI& tga) const -- map a pixel of the region minimap TGA back to world coordinates (z = 0)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066C810, length 100 bytes (`ret 8`: hidden C3DVector result + the
 // position). No callees.
 // Layout: engine/CRegionMinimap.h (PDB names; the leading members agree with retail): RegionMinimapSize +0,
@@ -8,28 +8,24 @@
 // temporary for Y: each 8-byte object keeps its own frame slot with the unused half's store dead (retail 0x1c frame, Y at
 // +0x10, X at +0x14, two unused words); the top-left local is declared before the size (its loads come first). The world
 // position is built in the hidden result by an inline C3DVector(x, y, z) constructor (arguments evaluate z, y, x).
-// The method is attached through a derived shell because the generated header is a plain layout struct.
-// Leaf: GetWorldCoordinatesFromTGAPosition
+// Leaf: ?GetWorldCoordinatesFromTGAPosition@CRegionMinimap@@QBEXAAVC3DVector@@ABVC2DCoordI@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Port (NF40, round 4): the PDB member (Ego_r.pdb ?GetWorldCoordinatesFromTGAPosition@CRegionMinimap@@QBEXAAVC3DVector@@ABVC2DCoordI@@@Z;
+//   the C3DVector is an out parameter, not a return) on engine/CRegionMinimap.h (FABLE_RETAIL_CREGIONMINIMAP + the overlay opt-in
+//   FABLE_RETAIL_CREGIONMINIMAP_WORLDCOORDS_OUTOFLINE, declaration only), defined with the header's WORLDCOORDS_INITIALISE text
+//   (wfD4: "compiles out of line to 0x0066C810 byte for byte"). Replaces the local derived shell and C2DVectorI stand-in.
+#define FABLE_RETAIL_C2DBOXI
+#define FABLE_RETAIL_CREGIONMINIMAP
+#define FABLE_RETAIL_CREGIONMINIMAP_WORLDCOORDS_OUTOFLINE
+#include "engine/C2DCoordI.h"
+#include "engine/C3DVector.h"
 #include "engine/CRegionMinimap.h"
 
-struct C2DVectorI {
-    long X, Y;
-    C2DVectorI(long x, long y) : X(x), Y(y) {}
-};
-
-#include "engine/C3DVector.h"
-
-struct CRegionMinimap_GetWorldCoordinatesFromTGAPosition : CRegionMinimap {
-    C3DVector GetWorldCoordinatesFromTGAPosition(const C2DVectorI& tgaPosition) const;
-    C2DVectorI GetSquareSize() const { return C2DVectorI(RegionMapSquare_BRX - RegionMapSquare_TLX, RegionMapSquare_BRY - RegionMapSquare_TLY); }
-};
-
-C3DVector CRegionMinimap_GetWorldCoordinatesFromTGAPosition::GetWorldCoordinatesFromTGAPosition(const C2DVectorI& tgaPosition) const
+void CRegionMinimap::GetWorldCoordinatesFromTGAPosition(C3DVector& world, const C2DCoordI& tga) const
 {
-    C2DVectorI topLeft(RegionMapBox_TLX, RegionMapBox_TLY);
+    C2DCoordI topLeft = RegionMapBox.GetTLPos();
     long size = RegionMinimapSize;
-    C2DVectorI squareSize = GetSquareSize();
-    return C3DVector(topLeft.X + (float)tgaPosition.X / (float)size * squareSize.X,
-                     topLeft.Y + (float)tgaPosition.Y / (float)size * GetSquareSize().Y, 0.0f);
+    C2DExtentsI squareSize = RegionMapSquare.GetExtents();
+    world.Initialise(topLeft.X + (float)tga.X / (float)size * squareSize.X,
+                     topLeft.Y + (float)tga.Y / (float)size * RegionMapSquare.GetExtents().Y, 0.0f);
 }

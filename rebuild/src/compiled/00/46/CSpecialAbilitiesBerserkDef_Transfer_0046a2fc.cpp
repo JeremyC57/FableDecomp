@@ -13,14 +13,9 @@
 #pragma optimize("s", on)
 
 class CDefString { public: long m_index; };
-template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);                // 0x00431061
-    void Transfer(CStlVector<float>& v);    // 0x00464CBF
-    void Transfer(CStlVector<long>& v);     // 0x00466A47
-};
-
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesBerserkDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                                   // CSpecialAbilitiesDef base fields (+0x04)
@@ -40,35 +35,35 @@ class CSpecialAbilitiesBerserkDef { public:
     float CameraEndDist;                                         // +0x70
     float CameraStartDeltaHeight;                                // +0x74
     float CameraEndDeltaHeight;                                  // +0x78
-    CStlVector<float> BerserkDuration;                           // +0x7C
-    CStlVector<float> BerserkDamageToEnemyMultiplier;            // +0x88
+    std::vector<float> BerserkDuration;                           // +0x7C
+    std::vector<float> BerserkDamageToEnemyMultiplier;            // +0x88
     float BerserkDamageToEnemyMultiplierAdditionPerHit;          // +0x94
-    CStlVector<float> BerserkDamageToMeMultiplier;               // +0x98
-    CStlVector<float> MaxIncreaseInStrength;                     // +0xA4
-    CStlVector<float> BerserkScale;                              // +0xB0
+    std::vector<float> BerserkDamageToMeMultiplier;               // +0x98
+    std::vector<float> MaxIncreaseInStrength;                     // +0xA4
+    std::vector<float> BerserkScale;                              // +0xB0
     float BerserkBlastRadius;                                    // +0xBC
-    CStlVector<float> CamDist;                                   // +0xC0
-    CStlVector<float> CamHeight;                                 // +0xCC
-    CStlVector<float> CamFOV;                                    // +0xD8
-    CStlVector<float> CamSwitchTime;                             // +0xE4
-    CStlVector<float> RumbleLevel;                               // +0xF0
-    CStlVector<float> RumbleSmoothness;                          // +0xFC
-    CStlVector<float> RumbleAttack;                              // +0x108
-    CStlVector<float> RumbleDecay;                               // +0x114
+    std::vector<float> CamDist;                                   // +0xC0
+    std::vector<float> CamHeight;                                 // +0xCC
+    std::vector<float> CamFOV;                                    // +0xD8
+    std::vector<float> CamSwitchTime;                             // +0xE4
+    std::vector<float> RumbleLevel;                               // +0xF0
+    std::vector<float> RumbleSmoothness;                          // +0xFC
+    std::vector<float> RumbleAttack;                              // +0x108
+    std::vector<float> RumbleDecay;                               // +0x114
     float RumbleReleaseLevelDelta;                               // +0x120
     float RumbleReleaseSmoothnessDelta;                          // +0x124
     float RumbleReleaseAttackDelta;                              // +0x128
     float RumbleReleaseDecayDelta;                               // +0x12C
     float CrazyActionRadius;                                     // +0x130
     float CrazyActionDamage;                                     // +0x134
-    CStlVector<float> DecapitateMaxProb;                         // +0x138
+    std::vector<float> DecapitateMaxProb;                         // +0x138
     float TargetNearestEnemyDistance;                            // +0x144
     long WeaponTrailAttack;                                      // +0x148
     long WeaponTrailKnockDown;                                   // +0x14C
-    CStlVector<float> LevelUpTimings;                            // +0x150
-    CStlVector<long> TintColorR;                                 // +0x15C
-    CStlVector<long> TintColorG;                                 // +0x168
-    CStlVector<long> TintColorB;                                 // +0x174
+    std::vector<float> LevelUpTimings;                            // +0x150
+    std::vector<long> TintColorR;                                 // +0x15C
+    std::vector<long> TintColorG;                                 // +0x168
+    std::vector<long> TintColorB;                                 // +0x174
     bool CanBlockWhileBerserked;                                 // +0x180
     float CrazyIdleIntervalSecs;                                 // +0x184
 };
@@ -91,35 +86,35 @@ void CSpecialAbilitiesBerserkDef::Transfer(CPersistContext& context)
     context.Transfer(CameraEndDist);
     context.Transfer(CameraStartDeltaHeight);
     context.Transfer(CameraEndDeltaHeight);
-    context.Transfer(LevelUpTimings);
-    context.Transfer(BerserkDamageToEnemyMultiplier);
+    context.TransferVector(LevelUpTimings);
+    context.TransferVector(BerserkDamageToEnemyMultiplier);
     context.Transfer(BerserkDamageToEnemyMultiplierAdditionPerHit);
-    context.Transfer(BerserkDamageToMeMultiplier);
-    context.Transfer(BerserkDuration);
-    context.Transfer(MaxIncreaseInStrength);
-    context.Transfer(BerserkScale);
+    context.TransferVector(BerserkDamageToMeMultiplier);
+    context.TransferVector(BerserkDuration);
+    context.TransferVector(MaxIncreaseInStrength);
+    context.TransferVector(BerserkScale);
     context.Transfer(BerserkBlastRadius);
-    context.Transfer(CamDist);
-    context.Transfer(CamHeight);
-    context.Transfer(CamFOV);
-    context.Transfer(CamSwitchTime);
-    context.Transfer(RumbleLevel);
-    context.Transfer(RumbleSmoothness);
-    context.Transfer(RumbleAttack);
-    context.Transfer(RumbleDecay);
+    context.TransferVector(CamDist);
+    context.TransferVector(CamHeight);
+    context.TransferVector(CamFOV);
+    context.TransferVector(CamSwitchTime);
+    context.TransferVector(RumbleLevel);
+    context.TransferVector(RumbleSmoothness);
+    context.TransferVector(RumbleAttack);
+    context.TransferVector(RumbleDecay);
     context.Transfer(RumbleReleaseLevelDelta);
     context.Transfer(RumbleReleaseSmoothnessDelta);
     context.Transfer(RumbleReleaseAttackDelta);
     context.Transfer(RumbleReleaseDecayDelta);
-    context.Transfer(DecapitateMaxProb);
+    context.TransferVector(DecapitateMaxProb);
     context.Transfer(CrazyActionRadius);
     context.Transfer(CrazyActionDamage);
     context.Transfer(TargetNearestEnemyDistance);
     context.Transfer(WeaponTrailAttack);
     context.Transfer(WeaponTrailKnockDown);
-    context.Transfer(TintColorR);
-    context.Transfer(TintColorG);
-    context.Transfer(TintColorB);
+    context.TransferVector(TintColorR);
+    context.TransferVector(TintColorG);
+    context.TransferVector(TintColorB);
     context.Transfer(CanBlockWhileBerserked);
     context.Transfer(CrazyIdleIntervalSecs);
 }

@@ -55,14 +55,7 @@ class CDefinitionManager;
 #define FABLE_PDCB_TYPED_MEMBERS
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
-class CPersistContext {
-public:
-    void Transfer(CDefString& value);                            // 0x0045228F
-    void Transfer(float& value);                                 // 0x00431061
-    void Transfer(std::vector<long >& value);                    // 0x00466A47
-    void Transfer(std::vector<float >& value);                   // 0x00464CBF
-    void Transfer(std::vector<CCharString >& value);             // 0x004331F9
-};
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesMultiStrikeDef : public CParentDefClassBase {    // vtable 0x0123412C
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x0123412C slot 18
@@ -87,9 +80,9 @@ void CSpecialAbilitiesMultiStrikeDef::Transfer(CPersistContext& context)
     context.Transfer(Animations[2]);
     context.Transfer(Animations[3]);
     context.Transfer(HighlightWidth);
-    context.Transfer(HighlightColor);
-    context.Transfer(DelayTimeSecs);
-    context.Transfer(NumHits);
-    context.Transfer(PerHitDamagerMultiplier);
-    context.Transfer(AttachmentPoint);
+    context.TransferVector(HighlightColor);
+    context.TransferVector(DelayTimeSecs);
+    context.TransferVector(NumHits);
+    context.TransferVector(PerHitDamagerMultiplier);
+    context.TransferVector(AttachmentPoint);
 }

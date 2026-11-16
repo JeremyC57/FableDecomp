@@ -10,36 +10,12 @@
 // Size-optimised def module (`#pragma optimize("s", on)`): speed picks ecx for each `lea` (ecx is dead before `mov ecx,edi`).
 // Leaf: ?Transfer@CSpecialAbilitiesEnflameDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s", on)
-class CPersistContext;
-
-template <class T>
-struct CRetailVector {                          // STLport vector: _M_start / _M_finish / _M_end_of_storage
-    T* first;
-    T* last;
-    T* end;
-};
-
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);                // 0x00431061
-    void Transfer(CRetailVector<float>& value); // 0x00464CBF
-};
-
-class CParentDefClassBase { public:
-    virtual void Transfer(CPersistContext& context);
-    unsigned char _base[0x38];                  // +0x04..+0x3b: the def root's own members
-};
-
-class CSpecialAbilitiesEnflameDef : public CParentDefClassBase { public:
-    float CamDist[4];                           // +0x3c
-    float CamHeight[4];                         // +0x4c
-    float CamFOV[4];                            // +0x5c
-    float CamSwitchTime[4];                     // +0x6c
-    float LevelUpTimings[3];                    // +0x7c
-    float Damage[4];                            // +0x88
-    CRetailVector<float> RadiusOfEffect;        // +0x98
-    float EnflameCombatMultiplierFactor;        // +0xa4
-    virtual void Transfer(CPersistContext& context);
-};
+// Port (round 4, NF40): the local CPersistContext / def-class models (and any vector stand-ins) are replaced by
+//   engine/CSpecialAbilitiesEnflameDef.h (its FABLE_RETAIL_CSPECIALABILITIESENFLAMEDEF_TRANSFER opt-in declares the override) and engine/CPersistContext.h; vector members go through the unnamed TransferVector<T>.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CSPECIALABILITIESENFLAMEDEF_TRANSFER
+#include "engine/CSpecialAbilitiesEnflameDef.h"
+#include "engine/CPersistContext.h"
 
 void CSpecialAbilitiesEnflameDef::Transfer(CPersistContext& context)
 {
@@ -50,7 +26,7 @@ void CSpecialAbilitiesEnflameDef::Transfer(CPersistContext& context)
     context.Transfer(Damage[1]);
     context.Transfer(Damage[2]);
     context.Transfer(Damage[3]);
-    context.Transfer(RadiusOfEffect);
+    context.TransferVector(RadiusOfEffect);
     context.Transfer(CamDist[0]);
     context.Transfer(CamDist[1]);
     context.Transfer(CamDist[2]);

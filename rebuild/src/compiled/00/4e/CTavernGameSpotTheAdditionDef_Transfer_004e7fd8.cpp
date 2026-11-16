@@ -11,23 +11,16 @@
 #pragma optimize("s", on)
 
 class CRGBColour { public: unsigned long m_argb; };
-struct CLongVector {                             // std::vector<long> (retail 12 bytes)
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-};
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);                  // 0x00431102
-    void Transfer(CLongVector& value);           // 0x00466A47
-};
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
 class CTavernGameSpotTheAdditionDef { public:
     unsigned char _head[0x24];                   // CDefClassBase body after the vptr (links, index, flag bits)
     long        Pointer;                         // +0x28
     long        Cover;                           // +0x2c
     float       CoverWidth;                      // +0x30
     float       CoverLength;                     // +0x34
-    CLongVector Knicknacks;                      // +0x38
-    CLongVector ItemsPerRound;                   // +0x44
+    std::vector<long> Knicknacks;                      // +0x38
+    std::vector<long> ItemsPerRound;                   // +0x44
     float       JoystickScale;                   // +0x50
     float       TimeToThink;                     // +0x54
     float       MaxCursorHeight;                 // +0x58
@@ -53,8 +46,8 @@ void CTavernGameSpotTheAdditionDef::Transfer(CPersistContext& context)
     context.Transfer(Cover);
     context.Transfer(CoverWidth);
     context.Transfer(CoverLength);
-    context.Transfer(Knicknacks);
-    context.Transfer(ItemsPerRound);
+    context.TransferVector(Knicknacks);
+    context.TransferVector(ItemsPerRound);
     context.Transfer(JoystickScale);
     context.Transfer(TimeToThink);
     context.Transfer(MaxCursorHeight);

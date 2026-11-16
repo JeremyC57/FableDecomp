@@ -65,11 +65,7 @@ public:
 class CSubDefClassBase : public CDefClassBase {         // vtable 0x01231D54, Ego_r.pdb 0x25 (packed, no members of its own)
 };
 #pragma pack(pop)
-class CPersistContext {
-public:
-    void Transfer(std::vector<long >& value);                    // 0x00466A47
-    void Transfer(CDefString& value);                            // 0x0045228F
-};
+#include "engine/CPersistContext.h"
 class CCarryingDef : public CSubDefClassBase {    // vtable 0x01241194
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x01241194 slot 18
@@ -79,6 +75,6 @@ public:
 
 void CCarryingDef::Transfer(CPersistContext& context)
 {
-    context.Transfer(AvailableCarrySlots);
+    context.TransferVector(AvailableCarrySlots);
     context.Transfer(OverriddenDummyObject);
 }

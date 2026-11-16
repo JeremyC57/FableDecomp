@@ -27,11 +27,7 @@ public:
     _Compare _M_key_compare;
 };
 }
-class CPersistContext {
-public:
-    template <class T> void Transfer(T& value);                                 // 0x00431061
-    void Transfer(std::vector<float >& value);                   // 0x00464CBF
-};
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesForcePushDef {
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x012342CC slot 18
@@ -73,9 +69,9 @@ void CSpecialAbilitiesForcePushDef::Transfer(CPersistContext& context)
     context.Transfer(ReleaseLevel4Delay);
     context.Transfer(HeightOffGround);
     context.Transfer(Level4OffsetMagnitude);
-    context.Transfer(RadiusOfEffect);
+    context.TransferVector(RadiusOfEffect);
     context.Transfer(ExtraPush);
     context.Transfer(PushSpeed);
-    context.Transfer(ObjectDamage);
-    context.Transfer(TimeDelayBetweenCastsSec);
+    context.TransferVector(ObjectDamage);
+    context.TransferVector(TimeDelayBetweenCastsSec);
 }

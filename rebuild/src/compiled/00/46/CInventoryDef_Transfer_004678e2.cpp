@@ -53,8 +53,8 @@ void CInventoryDef::Transfer(CPersistContext& context)
     context.Transfer(StatLevelsNextLineTextOffset);           // 00467A9C +0x13c C2DVector -> 0x004568BC
     context.Transfer(ButtonAssignmentTextPos);                // 00467AAA +0x144 C2DVector -> 0x004568BC
     context.Transfer(ButtonAssignmentTextOffset);             // 00467AB8 +0x14c C2DVector -> 0x004568BC
-    context.Transfer(StatLevelsTexts);                        // 00467AC6 +0x154 vector<unsigned_long,alloc<unsigned_long -> 0x00464841
-    context.Transfer(StatLevelsColours);                      // 00467AD4 +0x160 vector<CRGBColour,alloc<CRGBColour>_> -> 0x00468EB4
+    context.TransferVector(StatLevelsTexts);                        // 00467AC6 +0x154 vector<unsigned_long,alloc<unsigned_long -> 0x00464841
+    context.TransferVector(StatLevelsColours);                      // 00467AD4 +0x160 vector<CRGBColour,alloc<CRGBColour>_> -> 0x00468EB4
     context.Transfer(WeaponsTextNumberOfSlots);               // 00467AE2 +0x170 long -> 0x00431102
     context.Transfer(WeaponsTextSeparator);                   // 00467AF0 +0x16c long -> 0x00431102
     context.Transfer(WeaponsTextSlot);                        // 00467AFE +0x174 long -> 0x00431102
@@ -136,10 +136,10 @@ void CInventoryDef::Transfer(CPersistContext& context)
     context.Transfer(StatsStatisticsQuestsActiveLabel);       // 00467F26 +0x340 ulong -> 0x00431020
     context.Transfer(StatsStatisticsQuestsFinishedLabel);     // 00467F34 +0x344 ulong -> 0x00431020
     context.Transfer(StatsStatisticsBoastsAchievedLabel);     // 00467F42 +0x348 ulong -> 0x00431020
-    context.Transfer(InitialInventoryStatsItems);             // 00467F4D +0x074 vector<long,alloc<long>_> -> 0x00466A47
-    context.Transfer(InitialInventoryStandardItems);          // 00467F5B +0x080 vector<long,alloc<long>_> -> 0x00466A47
-    context.Transfer(InitialInventoryWeaponsItems);           // 00467F66 +0x068 vector<long,alloc<long>_> -> 0x00466A47
-    context.Transfer(InitialInventoryClothingItems);          // 00467F71 +0x05c vector<long,alloc<long>_> -> 0x00466A47
+    context.TransferVector(InitialInventoryStatsItems);             // 00467F4D +0x074 vector<long,alloc<long>_> -> 0x00466A47
+    context.TransferVector(InitialInventoryStandardItems);          // 00467F5B +0x080 vector<long,alloc<long>_> -> 0x00466A47
+    context.TransferVector(InitialInventoryWeaponsItems);           // 00467F66 +0x068 vector<long,alloc<long>_> -> 0x00466A47
+    context.TransferVector(InitialInventoryClothingItems);          // 00467F71 +0x05c vector<long,alloc<long>_> -> 0x00466A47
     context.Transfer(ClothingShadedCircleTLPos);              // 00467F7F +0x08c C2DVector -> 0x004568BC
     context.Transfer(ClothingShadedCircleExtents);            // 00467F8D +0x094 C2DVector -> 0x004568BC
     context.Transfer(StatsExperienceStrengthTextOffset);      // 00467F9B +0x34c C2DVector -> 0x004568BC
@@ -243,8 +243,8 @@ void CInventoryDef::Transfer(CPersistContext& context)
     context.Transfer(ExperienceProgBarValueOffset);           // 004684F7 +0x54c C2DVector -> 0x004568BC
     context.Transfer(ExperienceSpendTimeOffset);              // 00468505 +0x554 long -> 0x00431102
     context.Transfer(ExperienceSpendRate);                    // 00468513 +0x558 long -> 0x00431102
-    context.Transfer(ExperienceItemLabelStat);                // 00468521 +0x55c vector<long,alloc<long>_> -> 0x00466A47
-    context.Transfer(ExperienceItemLabelAbility);             // 0046852F +0x568 vector<long,alloc<long>_> -> 0x00466A47
+    context.TransferVector(ExperienceItemLabelStat);                // 00468521 +0x55c vector<long,alloc<long>_> -> 0x00466A47
+    context.TransferVector(ExperienceItemLabelAbility);             // 0046852F +0x568 vector<long,alloc<long>_> -> 0x00466A47
     context.Transfer(ExperienceSpendGreen);                   // 0046853D +0x574 CEngineGraphic -> 0x00451E11
     context.Transfer(ExperienceSpendGreenOutline);            // 0046854B +0x582 CEngineGraphic -> 0x00451E11
     context.Transfer(ExperienceSpendGreenEnd);                // 00468559 +0x590 CEngineGraphic -> 0x00451E11
@@ -314,8 +314,8 @@ void CInventoryDef::Transfer(CPersistContext& context)
     context.Transfer(TradeTextProfit);                        // 004688D9 +0x6d4 ulong -> 0x00431020
     context.Transfer(TradeShadedCircleTLPos);                 // 004688E7 +0x6d8 C2DVector -> 0x004568BC
     context.Transfer(TradeShadedCircleTLPos);                 // 004688EF +0x6d8 C2DVector -> 0x004568BC
-    context.Transfer(ExpSpendItemLabelStat);                  // 004688FD +0x7d4 vector<long,alloc<long>_> -> 0x00466A47
-    context.Transfer(ExpSpendItemLabelAbility);               // 0046890B +0x7e0 vector<long,alloc<long>_> -> 0x00466A47
+    context.TransferVector(ExpSpendItemLabelStat);                  // 004688FD +0x7d4 vector<long,alloc<long>_> -> 0x00466A47
+    context.TransferVector(ExpSpendItemLabelAbility);               // 0046890B +0x7e0 vector<long,alloc<long>_> -> 0x00466A47
     context.Transfer(ExpSpendMaxItemsToDisplay);              // 00468919 +0x7ec long -> 0x00431102
     context.Transfer(ExpSpendButtonTLPos);                    // 00468927 +0x7f0 C2DVector -> 0x004568BC
     context.Transfer(ExpSpendButtonTLPosOffset);              // 00468935 +0x7f8 C2DVector -> 0x004568BC

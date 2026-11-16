@@ -10,6 +10,13 @@
 #include "stlport/fable_containers.h"
 class CSpecialAbilitiesEnflameDef : public CParentDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CSPECIALABILITIESENFLAMEDEF_TRANSFER
+// Opt-in (NF40, 2026-11-16, row 0x00465258 CSpecialAbilitiesEnflameDef::Transfer): Ego_r.pdb / FableWin.pdb
+// ?Transfer@CSpecialAbilitiesEnflameDef@@UAEXAAVCPersistContext@@@Z, the def's override of CDefClassBase::Transfer (virtual slot 18).
+// Declaration only (the elaborated class needs no include); no layout change.
+public: virtual void Transfer(class CPersistContext&);
+public:
+#endif
     float CamDist[4];
     float CamHeight[4];
     float CamFOV[4];

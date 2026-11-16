@@ -41,6 +41,12 @@ public:
     long GetRegionMinimapSize() const { return RegionMinimapSize; }
 #endif
 #endif
+#if defined(FABLE_RETAIL_CREGIONMINIMAP_WORLDCOORDS_OUTOFLINE) && !defined(FABLE_RETAIL_CREGIONMINIMAP_POPULATE)
+    // Retail opt-in (NF40 round 4, row 0x0066C810): Ego_r.pdb ?GetWorldCoordinatesFromTGAPosition@CRegionMinimap@@QBEXAAVC3DVector@@ABVC2DCoordI@@@Z,
+    // the out-of-line copy at 0x0066C810. Declaration only; the row defines the WORLDCOORDS_INITIALISE text of the POPULATE branch's
+    // inline body. Needs engine/C2DCoordI.h and engine/C3DVector.h at use.
+    void GetWorldCoordinatesFromTGAPosition(C3DVector& world, const C2DCoordI& tga) const;
+#endif
 #ifdef FABLE_RETAIL_CREGIONMINIMAP_POPULATE
     // Nested opt-in (chunk 802, row 0x0066CF00 PopulateRegionMinimap): the Ego_r.pdb CRegionMinimap members that row uses.
     // RegionMinimapTheme is the PDB's nested enum (pdb_class_keys W4, ?SetRegionMinimapThemeValue@..W4RegionMinimapTheme@1@@Z);

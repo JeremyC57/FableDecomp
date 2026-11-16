@@ -11,37 +11,32 @@
 #pragma optimize("s", on)
 
 class CDefString { public: long m_index; };
-template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);           // 0x0045228F
-    void Transfer(CStlVector<float>& v);    // 0x00464CBF
-    void Transfer(CStlVector<long>& v);     // 0x00466A47
-};
-
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesLightningSpellDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                       // CSpecialAbilitiesDef base fields (+0x04)
-    CStlVector<float> m_faAreaEffect;                // +0x3C
-    CStlVector<float> m_faDamagePerHit;              // +0x48
-    CStlVector<float> m_faSubBeamDamagePerHit;       // +0x54
-    CStlVector<float> m_faActivationTime;            // +0x60
-    CStlVector<float> m_faDeActivationTime;          // +0x6C
-    CStlVector<long>  m_naMinMainBeams;              // +0x78
-    CStlVector<long>  m_naMaxMainBeams;              // +0x84
-    CStlVector<long>  m_naMinSubBeams;               // +0x90
-    CStlVector<long>  m_naMaxSubBeams;               // +0x9C
-    CStlVector<float> m_faTemporaryBeamLife;         // +0xA8
-    CStlVector<float> m_faTargettingFOV;             // +0xB4
-    CStlVector<float> m_faStaminaPerSecond;          // +0xC0
+    std::vector<float> m_faAreaEffect;                // +0x3C
+    std::vector<float> m_faDamagePerHit;              // +0x48
+    std::vector<float> m_faSubBeamDamagePerHit;       // +0x54
+    std::vector<float> m_faActivationTime;            // +0x60
+    std::vector<float> m_faDeActivationTime;          // +0x6C
+    std::vector<long>  m_naMinMainBeams;              // +0x78
+    std::vector<long>  m_naMaxMainBeams;              // +0x84
+    std::vector<long>  m_naMinSubBeams;               // +0x90
+    std::vector<long>  m_naMaxSubBeams;               // +0x9C
+    std::vector<float> m_faTemporaryBeamLife;         // +0xA8
+    std::vector<float> m_faTargettingFOV;             // +0xB4
+    std::vector<float> m_faStaminaPerSecond;          // +0xC0
     float m_fRandomBeamMinAngleX;                    // +0xCC
     float m_fRandomBeamMaxAngleX;                    // +0xD0
     float m_fRandomBeamMinAngleZ;                    // +0xD4
     float m_fRandomBeamMaxAngleZ;                    // +0xD8
-    CStlVector<float> m_faMainBeamDecapitationTime;  // +0xDC
-    CStlVector<float> m_faSubBeamDecapitationTime;   // +0xE8
-    CStlVector<float> m_faSubBeamDelay;              // +0xF4
-    CStlVector<float> OnhitEveryNSecs;               // +0x100
+    std::vector<float> m_faMainBeamDecapitationTime;  // +0xDC
+    std::vector<float> m_faSubBeamDecapitationTime;   // +0xE8
+    std::vector<float> m_faSubBeamDelay;              // +0xF4
+    std::vector<float> OnhitEveryNSecs;               // +0x100
     float CombatMultiplierIncreaseTime;              // +0x10C
     CDefString InitSound;                            // +0x110
     CDefString LoopingSound;                         // +0x114
@@ -61,22 +56,22 @@ void CSpecialAbilitiesLightningSpellDef::Transfer(CPersistContext& context)
     context.Transfer(m_fRandomBeamMaxAngleX);
     context.Transfer(m_fRandomBeamMinAngleZ);
     context.Transfer(m_fRandomBeamMaxAngleZ);
-    context.Transfer(m_faAreaEffect);
-    context.Transfer(m_faDamagePerHit);
-    context.Transfer(m_faSubBeamDamagePerHit);
-    context.Transfer(m_faActivationTime);
-    context.Transfer(m_faDeActivationTime);
-    context.Transfer(m_naMinMainBeams);
-    context.Transfer(m_naMaxMainBeams);
-    context.Transfer(m_naMinSubBeams);
-    context.Transfer(m_naMaxSubBeams);
-    context.Transfer(m_faTemporaryBeamLife);
-    context.Transfer(m_faTargettingFOV);
-    context.Transfer(m_faStaminaPerSecond);
-    context.Transfer(m_faMainBeamDecapitationTime);
-    context.Transfer(m_faSubBeamDecapitationTime);
-    context.Transfer(m_faSubBeamDelay);
-    context.Transfer(OnhitEveryNSecs);
+    context.TransferVector(m_faAreaEffect);
+    context.TransferVector(m_faDamagePerHit);
+    context.TransferVector(m_faSubBeamDamagePerHit);
+    context.TransferVector(m_faActivationTime);
+    context.TransferVector(m_faDeActivationTime);
+    context.TransferVector(m_naMinMainBeams);
+    context.TransferVector(m_naMaxMainBeams);
+    context.TransferVector(m_naMinSubBeams);
+    context.TransferVector(m_naMaxSubBeams);
+    context.TransferVector(m_faTemporaryBeamLife);
+    context.TransferVector(m_faTargettingFOV);
+    context.TransferVector(m_faStaminaPerSecond);
+    context.TransferVector(m_faMainBeamDecapitationTime);
+    context.TransferVector(m_faSubBeamDecapitationTime);
+    context.TransferVector(m_faSubBeamDelay);
+    context.TransferVector(OnhitEveryNSecs);
     context.Transfer(CombatMultiplierIncreaseTime);
     context.Transfer(LightningThemeTransitionInSecs);
     context.Transfer(LightningThemeTransitionOutSecs);

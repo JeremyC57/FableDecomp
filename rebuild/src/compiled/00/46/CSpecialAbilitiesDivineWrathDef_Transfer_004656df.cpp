@@ -30,12 +30,7 @@ class CDefString {                                         // Ego_r.pdb, 4 bytes
 public:
     long TablePos;
 };
-class CPersistContext {
-public:
-    void Transfer(std::vector<CDefString >& value);              // 0x004657F2
-    template <class T> void Transfer(T& value);                                 // 0x00431061
-    void Transfer(std::vector<float >& value);                   // 0x00464CBF
-};
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesDivineWrathDef {
 public:
     virtual void Transfer(CPersistContext& context);   // vtable 0x0123487C slot 18
@@ -64,24 +59,24 @@ public:
 
 void CSpecialAbilitiesDivineWrathDef::Transfer(CPersistContext& context)
 {
-    context.Transfer(StartPowerupSound);
-    context.Transfer(LoopingPowerupSound);
-    context.Transfer(ReleaseSound);
-    context.Transfer(ReleaseLoopSound);
-    context.Transfer(FinishSound);
-    context.Transfer(CancelSound);
+    context.TransferVector(StartPowerupSound);
+    context.TransferVector(LoopingPowerupSound);
+    context.TransferVector(ReleaseSound);
+    context.TransferVector(ReleaseLoopSound);
+    context.TransferVector(FinishSound);
+    context.TransferVector(CancelSound);
     context.Transfer(RandomFactorForNumSecsBetweenDamageHit);
-    context.Transfer(NumSecsBetweenDamageHit);
-    context.Transfer(DamagePerHit);
-    context.Transfer(DurationOfSpellSecs);
-    context.Transfer(RadiusOfEffect);
-    context.Transfer(EnvChangeSecs);
-    context.Transfer(EnvReturnSecs);
+    context.TransferVector(NumSecsBetweenDamageHit);
+    context.TransferVector(DamagePerHit);
+    context.TransferVector(DurationOfSpellSecs);
+    context.TransferVector(RadiusOfEffect);
+    context.TransferVector(EnvChangeSecs);
+    context.TransferVector(EnvReturnSecs);
     context.Transfer(DoLifting);
     context.Transfer(VelocityOfLift);
     context.Transfer(DistanceToLift);
-    context.Transfer(StaminaCostPerSec);
-    context.Transfer(DamageTakenMultiplier);
+    context.TransferVector(StaminaCostPerSec);
+    context.TransferVector(DamageTakenMultiplier);
     context.Transfer(SmallRingRadius);
     context.Transfer(LargeRingRadius);
 }

@@ -14,13 +14,9 @@
 
 class CDefString { public: long m_index; };
 #include "engine/C3DVector.h"
-template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-class CPersistContext { public:
-    template <class T> void Transfer(T& value);                // 0x00431061
-    void Transfer(CStlVector<float>& v);    // 0x00464CBF
-};
-
+#include "stlport/fable_containers.h"
+#include "engine/CPersistContext.h"
 class CSpecialAbilitiesBulletTimeDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                       // CSpecialAbilitiesDef base fields (+0x04)
@@ -57,13 +53,13 @@ class CSpecialAbilitiesBulletTimeDef { public:
     float DamageRadialBlurTwist;                     // +0x124
     float DamageRadialBlurFadeTimeSecs;              // +0x128
     float HeroCombatSlowness;                        // +0x12C
-    CStlVector<float> ScreenFilterAlpha;             // +0x130
-    CStlVector<float> ScreenFilterSaturation;        // +0x13C
-    CStlVector<float> ScreenFilterContrast;          // +0x148
-    CStlVector<float> ScreenFilterBrightness;        // +0x154
-    CStlVector<float> ScreenFilterTintR;             // +0x160
-    CStlVector<float> ScreenFilterTintG;             // +0x16C
-    CStlVector<float> ScreenFilterTintB;             // +0x178
+    std::vector<float> ScreenFilterAlpha;             // +0x130
+    std::vector<float> ScreenFilterSaturation;        // +0x13C
+    std::vector<float> ScreenFilterContrast;          // +0x148
+    std::vector<float> ScreenFilterBrightness;        // +0x154
+    std::vector<float> ScreenFilterTintR;             // +0x160
+    std::vector<float> ScreenFilterTintG;             // +0x16C
+    std::vector<float> ScreenFilterTintB;             // +0x178
     float ScreenFilterFadeInSecs;                    // +0x184
     float ScreenFilterFadeOutSecs;                   // +0x188
 };
@@ -113,13 +109,13 @@ void CSpecialAbilitiesBulletTimeDef::Transfer(CPersistContext& context)
     context.Transfer(DamageRadialBlurTwist);
     context.Transfer(DamageRadialBlurFadeTimeSecs);
     context.Transfer(HeroCombatSlowness);
-    context.Transfer(ScreenFilterAlpha);
-    context.Transfer(ScreenFilterSaturation);
-    context.Transfer(ScreenFilterContrast);
-    context.Transfer(ScreenFilterBrightness);
-    context.Transfer(ScreenFilterTintR);
-    context.Transfer(ScreenFilterTintG);
-    context.Transfer(ScreenFilterTintB);
+    context.TransferVector(ScreenFilterAlpha);
+    context.TransferVector(ScreenFilterSaturation);
+    context.TransferVector(ScreenFilterContrast);
+    context.TransferVector(ScreenFilterBrightness);
+    context.TransferVector(ScreenFilterTintR);
+    context.TransferVector(ScreenFilterTintG);
+    context.TransferVector(ScreenFilterTintB);
     context.Transfer(ScreenFilterFadeOutSecs);
     context.Transfer(ScreenFilterFadeInSecs);
 }

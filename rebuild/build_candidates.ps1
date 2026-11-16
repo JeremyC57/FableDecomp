@@ -40857,8 +40857,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00654af5'
         Module = '_global'
-        Source = '00/65/global_ISTHINGALIVECThingBuilding_00654af5.cpp'
-        TestSource = '00/65/global_ISTHINGALIVECThingBuilding_00654af5_test.cpp'
+        Source = '00/65/global_ISTHINGALIVE_00654af5.cpp'
+        TestSource = '00/65/global_ISTHINGALIVE_00654af5_test.cpp'
         PassPattern = 'IA_654af5_OK'
     }
     [pscustomobject]@{
@@ -76335,9 +76335,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeaaa0'
-        Module = '_global'
-        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aeaaa0.cpp'
-        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aeaaa0_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetGraphicBank_00aeaaa0.cpp'
+        TestSource = '00/ae/NParticleEngine_GetGraphicBank_00aeaaa0_test.cpp'
         PassPattern = 'PASS_00aeaaa0'
     }
     [pscustomobject]@{
@@ -165965,9 +165965,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00568850'
-        Module = '_global'
-        Source = '00/56/global_PushBackdword00568850_00568850.cpp'
-        TestSource = '00/56/global_PushBackdword00568850_00568850_test.cpp'
+        Module = 'std::vector<float>'
+        Source = '00/56/stdvector_pushback_00568850.cpp'
+        TestSource = '00/56/stdvector_pushback_00568850_test.cpp'
         PassPattern = '00568850_TEST PASS'
     }
     [pscustomobject]@{
@@ -168310,9 +168310,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00535000'
-        Module = '_global'
-        Source = '00/53/global_MoveCountedPointer00535000_00535000.cpp'
-        TestSource = '00/53/global_MoveCountedPointer00535000_00535000_test.cpp'
+        Module = 'std'
+        Source = '00/53/std_copy_00535000.cpp'
+        TestSource = '00/53/std_copy_00535000_test.cpp'
         PassPattern = '00535000_TEST PASS'
     }
     [pscustomobject]@{
@@ -171824,29 +171824,29 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00464841'
         Module = 'CPersistContext'
-        Source = '00/46/CPersistContext_TransferBinary00464841_00464841.cpp'
-        TestSource = '00/46/CPersistContext_TransferBinary00464841_00464841_test.cpp'
+        Source = '00/46/CPersistContext_TransferVector_00464841.cpp'
+        TestSource = '00/46/CPersistContext_TransferVector_00464841_test.cpp'
         PassPattern = '00464841_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00464cbf'
         Module = 'CPersistContext'
-        Source = '00/46/CPersistContext_TransferBinary00464cbf_00464cbf.cpp'
-        TestSource = '00/46/CPersistContext_TransferBinary00464cbf_00464cbf_test.cpp'
+        Source = '00/46/CPersistContext_TransferVector_00464cbf.cpp'
+        TestSource = '00/46/CPersistContext_TransferVector_00464cbf_test.cpp'
         PassPattern = '00464cbf_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004657f2'
         Module = 'CPersistContext'
-        Source = '00/46/CPersistContext_TransferBinary004657f2_004657f2.cpp'
-        TestSource = '00/46/CPersistContext_TransferBinary004657f2_004657f2_test.cpp'
+        Source = '00/46/CPersistContext_TransferVector_004657f2.cpp'
+        TestSource = '00/46/CPersistContext_TransferVector_004657f2_test.cpp'
         PassPattern = '004657f2_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00466a47'
         Module = 'CPersistContext'
-        Source = '00/46/CPersistContext_TransferBinary00466a47_00466a47.cpp'
-        TestSource = '00/46/CPersistContext_TransferBinary00466a47_00466a47_test.cpp'
+        Source = '00/46/CPersistContext_TransferVector_00466a47.cpp'
+        TestSource = '00/46/CPersistContext_TransferVector_00466a47_test.cpp'
         PassPattern = '00466a47_TEST PASS'
     }
     [pscustomobject]@{
@@ -171873,15 +171873,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00468eb4'
         Module = 'CPersistContext'
-        Source = '00/46/CPersistContext_TransferBinary00468eb4_00468eb4.cpp'
-        TestSource = '00/46/CPersistContext_TransferBinary00468eb4_00468eb4_test.cpp'
+        Source = '00/46/CPersistContext_TransferVector_00468eb4.cpp'
+        TestSource = '00/46/CPersistContext_TransferVector_00468eb4_test.cpp'
         PassPattern = '00468eb4_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004696fa'
         Module = 'CPersistContext'
-        Source = '00/46/CPersistContext_TransferBinary004696fa_004696fa.cpp'
-        TestSource = '00/46/CPersistContext_TransferBinary004696fa_004696fa_test.cpp'
+        Source = '00/46/CPersistContext_TransferVector_004696fa.cpp'
+        TestSource = '00/46/CPersistContext_TransferVector_004696fa_test.cpp'
         PassPattern = '004696fa_TEST PASS'
     }
     [pscustomobject]@{
@@ -171950,15 +171950,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00475d99'
         Module = 'CPersistContext'
-        Source = '00/47/CPersistContext_TransferBinary00475d99_00475d99.cpp'
-        TestSource = '00/47/CPersistContext_TransferBinary00475d99_00475d99_test.cpp'
+        Source = '00/47/CPersistContext_TransferVector_00475d99.cpp'
+        TestSource = '00/47/CPersistContext_TransferVector_00475d99_test.cpp'
         PassPattern = '00475d99_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e85ae'
         Module = 'CPersistContext'
-        Source = '00/4e/CPersistContext_TransferBinary004e85ae_004e85ae.cpp'
-        TestSource = '00/4e/CPersistContext_TransferBinary004e85ae_004e85ae_test.cpp'
+        Source = '00/4e/CPersistContext_TransferVector_004e85ae.cpp'
+        TestSource = '00/4e/CPersistContext_TransferVector_004e85ae_test.cpp'
         PassPattern = '004e85ae_TEST PASS'
     }
     [pscustomobject]@{
@@ -177081,8 +177081,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005f81be'
         Module = 'CDefinitionManager'
-        Source = '00/5f/CDefinitionManager_GetDef005f81be_005f81be.cpp'
-        TestSource = '00/5f/CDefinitionManager_GetDef005f81be_005f81be_test.cpp'
+        Source = '00/5f/CDefinitionManager_GetDef_005f81be.cpp'
+        TestSource = '00/5f/CDefinitionManager_GetDef_005f81be_test.cpp'
         PassPattern = '005f81be_TEST PASS'
     }
     [pscustomobject]@{
@@ -177508,15 +177508,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00451354'
         Module = 'CDefinitionManager'
-        Source = '00/45/CDefinitionManager_GetDef00451354_00451354.cpp'
-        TestSource = '00/45/CDefinitionManager_GetDef00451354_00451354_test.cpp'
+        Source = '00/45/CDefinitionManager_GetDef_00451354.cpp'
+        TestSource = '00/45/CDefinitionManager_GetDef_00451354_test.cpp'
         PassPattern = '00451354_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004513b9'
         Module = 'CDefinitionManager'
-        Source = '00/45/CDefinitionManager_GetDef004513b9_004513b9.cpp'
-        TestSource = '00/45/CDefinitionManager_GetDef004513b9_004513b9_test.cpp'
+        Source = '00/45/CDefinitionManager_GetDef_004513b9.cpp'
+        TestSource = '00/45/CDefinitionManager_GetDef_004513b9_test.cpp'
         PassPattern = '004513b9_TEST PASS'
     }
     [pscustomobject]@{
@@ -179727,8 +179727,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007304c0'
         Module = '_global'
-        Source = '00/73/global_IsThingDead007304c0_007304c0.cpp'
-        TestSource = '00/73/global_IsThingDead007304c0_007304c0_test.cpp'
+        Source = '00/73/global_ISTHINGDEAD_007304c0.cpp'
+        TestSource = '00/73/global_ISTHINGDEAD_007304c0_test.cpp'
         PassPattern = '007304c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -182349,9 +182349,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a0ef0'
-        Module = '_global'
-        Source = '00/9a/global_SetLeftAlignText_009a0ef0.cpp'
-        TestSource = '00/9a/global_SetLeftAlignText_009a0ef0_test.cpp'
+        Module = 'CStreamingFontBank'
+        Source = '00/9a/CStreamingFontBank_SetUseFixedFunction_009a0ef0.cpp'
+        TestSource = '00/9a/CStreamingFontBank_SetUseFixedFunction_009a0ef0_test.cpp'
         PassPattern = '009a0ef0_TEST PASS'
     }
     [pscustomobject]@{
@@ -194357,9 +194357,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0074cbc0'
-        Module = 'CRetailVector_dword_0074cbc0'
-        Source = '00/74/CRetailVectordword0074cbc0_at_0074cbc0.cpp'
-        TestSource = '00/74/CRetailVectordword0074cbc0_at_0074cbc0_test.cpp'
+        Module = 'std::vector<CDefIndex>'
+        Source = '00/74/stdvector_at_0074cbc0.cpp'
+        TestSource = '00/74/stdvector_at_0074cbc0_test.cpp'
         PassPattern = '0074cbc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -242006,8 +242006,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00412db0'
         Module = 'CPersistContext'
-        Source = '00/41/CPersistContext_TransferCActionInputControl_00412db0.cpp'
-        TestSource = '00/41/CPersistContext_TransferCActionInputControl_00412db0_test.cpp'
+        Source = '00/41/CPersistContext_TransferVector_00412db0.cpp'
+        TestSource = '00/41/CPersistContext_TransferVector_00412db0_test.cpp'
         PassPattern = '00412db0_TEST PASS'
     }
     [pscustomobject]@{
@@ -259578,8 +259578,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004331f9'
         Module = 'CPersistContext'
-        Source = '00/43/CPersistContext_TransferVectorBinaryCCharString_004331f9.cpp'
-        TestSource = '00/43/CPersistContext_TransferVectorBinaryCCharString_004331f9_test.cpp'
+        Source = '00/43/CPersistContext_TransferVector_004331f9.cpp'
+        TestSource = '00/43/CPersistContext_TransferVector_004331f9_test.cpp'
         PassPattern = '004331f9_TEST PASS'
     }
     [pscustomobject]@{
@@ -276261,9 +276261,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a49f60'
-        Module = 'std'
-        Source = '00/a4/STL_insertunique_00a49f60.cpp'
-        TestSource = '00/a4/STL_insertunique_00a49f60_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, pair<const unsigned long, CCharString>, ..>'
+        Source = '00/a4/stdRbtree_insertunique_00a49f60.cpp'
+        TestSource = '00/a4/stdRbtree_insertunique_00a49f60_test.cpp'
         PassPattern = '00a49f60_TEST PASS'
     }
     [pscustomobject]@{
@@ -277777,8 +277777,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00412e80'
         Module = 'CPersistContext'
-        Source = '00/41/CPersistContext_TransferETutorialCategory_00412e80.cpp'
-        TestSource = '00/41/CPersistContext_TransferETutorialCategory_00412e80_test.cpp'
+        Source = '00/41/CPersistContext_TransferVector_00412e80.cpp'
+        TestSource = '00/41/CPersistContext_TransferVector_00412e80_test.cpp'
         PassPattern = '00412e80_TEST PASS'
     }
     [pscustomobject]@{
@@ -283917,9 +283917,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006e5360'
-        Module = '_global'
-        Source = '00/6e/global_DestroyStringRecordC_006e5360.cpp'
-        TestSource = '00/6e/global_DestroyStringRecordC_006e5360_test.cpp'
+        Module = 'std'
+        Source = '00/6e/std_Destroy_006e5360.cpp'
+        TestSource = '00/6e/std_Destroy_006e5360_test.cpp'
         PassPattern = '006e5360_TEST PASS'
     }
     [pscustomobject]@{
@@ -288317,16 +288317,16 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0049b1e0'
         Module = 'std'
-        Source = '00/49/STL_randomshuffle_0049b1e0.cpp'
-        TestSource = '00/49/STL_randomshuffle_0049b1e0_test.cpp'
+        Source = '00/49/std_randomshuffle_0049b1e0.cpp'
+        TestSource = '00/49/std_randomshuffle_0049b1e0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0049b1e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0049b240'
         Module = 'std'
-        Source = '00/49/STL_randomshuffle_0049b240.cpp'
-        TestSource = '00/49/STL_randomshuffle_0049b240_test.cpp'
+        Source = '00/49/std_randomshuffle_0049b240.cpp'
+        TestSource = '00/49/std_randomshuffle_0049b240_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0049b240_TEST PASS'
     }
@@ -291287,8 +291287,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00632c90'
         Module = 'std::_Rb_tree<unsigned long,pair<const unsigned long,CCharString>,_Select1st<..>,less<unsigned long>,allocator<..> >'
-        Source = '00/63/stdRbtreeunsignedlongpairconstunsignedlongCCharStringSelect1stlessunsignedlongal_insertunique_00632c90.cpp'
-        TestSource = '00/63/stdRbtreeunsignedlongpairconstunsignedlongCCharStringSelect1stlessunsignedlongal_insertunique_00632c90_test.cpp'
+        Source = '00/63/stdRbtree_insertunique_00632c90.cpp'
+        TestSource = '00/63/stdRbtree_insertunique_00632c90_test.cpp'
         PassPattern = '00632c90_TEST PASS'
     }
     [pscustomobject]@{
@@ -300404,8 +300404,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a484b0'
         Module = 'std'
-        Source = '00/a4/STL_copy_00a484b0.cpp'
-        TestSource = '00/a4/STL_copy_00a484b0_test.cpp'
+        Source = '00/a4/std_copy_00a484b0.cpp'
+        TestSource = '00/a4/std_copy_00a484b0_test.cpp'
         PassPattern = '00a484b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -300432,8 +300432,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a4a670'
         Module = 'std::map<unsigned long, CCharString>'
-        Source = '00/a4/STLmapunsignedlongCCharString_operator_00a4a670.cpp'
-        TestSource = '00/a4/STLmapunsignedlongCCharString_operator_00a4a670_test.cpp'
+        Source = '00/a4/stdmap_operator_00a4a670.cpp'
+        TestSource = '00/a4/stdmap_operator_00a4a670_test.cpp'
         PassPattern = '00a4a670_TEST PASS'
     }
     [pscustomobject]@{
