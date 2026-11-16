@@ -5,6 +5,7 @@
 // GetResult at00B8D0B0 has the matching PDB signature unsigned long(unsigned long,bool);
 // its retail body currently returns0. It is still an external call, with global reload per iteration.
 #include "engine/CEnginePrimitiveOcclusionManager.h"
+#define FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_GETRESULT
 #include "engine/CEngineOcclusionManager.h"
 #include <string.h>
 inline void* CopyTrivial(const void* first,const void* last,void* result) {
@@ -27,10 +28,10 @@ class CEnginePrimitiveOcclusionInfo { public:
  bool Seen; unsigned long TestFrame;
  void ClearHandles(); // 0x00B2F8B0: clears handles only
 };
-struct CEngineOcclusionManager_Methods:CEngineOcclusionManager {
- unsigned long GetResult(unsigned long,bool); // 0x00B8D0B0
-};
-extern CEngineOcclusionManager_Methods* g_OcclusionManager; //0x01436E5C
+// NF44 (round 6): the occlusion manager global 0x01436E5C is Ego_r.pdb / FableWin.pdb ?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A
+// and GetResult (0x00B8D0B0) the Ego_r.pdb member ?GetResult@CEngineOcclusionManager@@QAEKK_N@Z (overlay opt-in
+// FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_GETRESULT); were the CEngineOcclusionManager_Methods / g_OcclusionManager stand-ins.
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }   // 0x01436E5C
 struct CEnginePrimitiveOcclusionManager_Methods:CEnginePrimitiveOcclusionManager {
  void CheckVisibilityResult(CEnginePrimitiveOcclusionInfo&);
 };
@@ -39,14 +40,14 @@ void CEnginePrimitiveOcclusionManager_Methods::CheckVisibilityResult(CEnginePrim
   info.InvisibleFrames=0;
   info.OcclusionTestHandles.Clear();
  } else {
-  unsigned long frame=g_OcclusionManager->CurrentFrame;
+  unsigned long frame=NEngineInternal::GPOcclusionManager->CurrentFrame;
   if(info.TestFrame+1==frame) {
    if(!info.OcclusionTestHandles.empty()) {
     unsigned long count=info.OcclusionTestHandles.size();
     unsigned long samples=0;
     for(unsigned long i=0;i<count;++i) {
      unsigned long handle=info.OcclusionTestHandles[i];
-     samples+=g_OcclusionManager->GetResult(handle,true);
+     samples+=NEngineInternal::GPOcclusionManager->GetResult(handle,true);
     }
     if(samples==0) ++info.InvisibleFrames; else info.InvisibleFrames=0;
     info.OcclusionTestHandles.Clear();

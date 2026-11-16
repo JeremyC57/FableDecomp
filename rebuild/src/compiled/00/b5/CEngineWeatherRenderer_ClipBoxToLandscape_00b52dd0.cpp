@@ -53,6 +53,9 @@
 #define FABLE_RETAIL_CENGINEMAP_MAPHASDATA_IFRETURN
 #include "engine/C3DVector.h"
 #include "engine/CEngineWeatherRenderer.h"
+// NF44 (round 6): the world-map global 0x01436E8C is NEngineInternal::GPEngineWorldMap (Ego_r.pdb / FableWin.pdb
+// ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A), through the engine/CEngineMap.h opt-in (was g_pEngineWorldMap).
+#define FABLE_RETAIL_CENGINEMAP_GPENGINEWORLDMAP
 #include "engine/CEngineMap.h"
 #include "engine/CEngineWorldMap.h"
 #include "engine/CIDrawMap.h"
@@ -67,25 +70,25 @@ CEngineWeatherRenderer::EWeatherBoxVisible CEngineWeatherRenderer::ClipBoxToLand
     {
         long x = GFFloatToLongFloor(pos.X - halfX);
         long y = GFFloatToLongFloor(pos.Y - halfY);
-        if (!g_pEngineWorldMap->MapHasDataAtPoint(x, y) || g_pEngineWorldMap->PeekLandscapeHeight(x, y) < top)
+        if (!NEngineInternal::GPEngineWorldMap->MapHasDataAtPoint(x, y) || NEngineInternal::GPEngineWorldMap->PeekLandscapeHeight(x, y) < top)
             return WEATHER_BOX_VISIBLE;
     }
     {
         long x = GFFloatToLongFloor(pos.X - halfX);
         long y = GFFloatToLongCeil(pos.Y + halfY);
-        if (!g_pEngineWorldMap->MapHasDataAtPoint(x, y) || g_pEngineWorldMap->PeekLandscapeHeight(x, y) < top)
+        if (!NEngineInternal::GPEngineWorldMap->MapHasDataAtPoint(x, y) || NEngineInternal::GPEngineWorldMap->PeekLandscapeHeight(x, y) < top)
             return WEATHER_BOX_VISIBLE;
     }
     {
         long x = GFFloatToLongCeil(pos.X + halfX);
         long y = GFFloatToLongFloor(pos.Y - halfY);
-        if (!g_pEngineWorldMap->MapHasDataAtPoint(x, y) || g_pEngineWorldMap->PeekLandscapeHeight(x, y) < top)
+        if (!NEngineInternal::GPEngineWorldMap->MapHasDataAtPoint(x, y) || NEngineInternal::GPEngineWorldMap->PeekLandscapeHeight(x, y) < top)
             return WEATHER_BOX_VISIBLE;
     }
     {
         long x = GFFloatToLongCeil(pos.X + halfX);
         long y = GFFloatToLongCeil(pos.Y + halfY);
-        if (!g_pEngineWorldMap->MapHasDataAtPoint(x, y) || g_pEngineWorldMap->PeekLandscapeHeight(x, y) < top)
+        if (!NEngineInternal::GPEngineWorldMap->MapHasDataAtPoint(x, y) || NEngineInternal::GPEngineWorldMap->PeekLandscapeHeight(x, y) < top)
             return WEATHER_BOX_VISIBLE;
     }
     return WEATHER_BOX_CLIPPED;

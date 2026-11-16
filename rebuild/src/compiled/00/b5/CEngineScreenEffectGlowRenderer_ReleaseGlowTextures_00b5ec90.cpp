@@ -11,16 +11,17 @@
 // the calls (one zero register).
 struct CTexture_Calls;
 
-struct CTexturePool_Retail {
-    void Release(long handle);                              // 0x00F36F00
-};
-
-struct CEngine_Retail {
-    unsigned char _pad[0x3190];
-    CTexturePool_Retail TexturePool;                        // +0x3190
-};
-
-extern CEngine_Retail* g_pEngine_01436e98;                           // 0x01436E98
+// NF44 (round 6): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) and its +0x3190 member the CGPUScratchBufferTextureManager
+// (engine/CEngineResourceManager.h GetGPUScratchBufferTextureManager(), engine/CGPUScratchBufferTextureManager.h, Ego_r.pdb member
+// spellings); were the address-named CEngine_Retail / g_pEngine_01436e98 / CTexturePool_Retail and local scratch-manager stand-ins.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ENDTEXTUREUSE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 struct CEngineScreenEffectGlowRenderer_Retail {
     unsigned char   _pad[0x10];
@@ -37,11 +38,11 @@ struct CEngineScreenEffectGlowRenderer_Retail {
 
 void CEngineScreenEffectGlowRenderer_Retail::ReleaseGlowTextures()
 {
-    CTexturePool_Retail* pool = &g_pEngine_01436e98->TexturePool;
-    pool->Release(GlowTexture256Handle);
-    pool->Release(GlowTexture64Handle);
-    pool->Release(GlowTexture64AltHandle);
-    pool->Release(GlowTexture16Handle);
+    CGPUScratchBufferTextureManager* pool = &NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager();
+    pool->EndTextureUse(GlowTexture256Handle);
+    pool->EndTextureUse(GlowTexture64Handle);
+    pool->EndTextureUse(GlowTexture64AltHandle);
+    pool->EndTextureUse(GlowTexture16Handle);
     GlowTexture256 = 0;
     GlowTexture64 = 0;
     GlowTexture64Alt = 0;

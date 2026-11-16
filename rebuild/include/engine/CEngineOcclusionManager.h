@@ -172,6 +172,11 @@ public:
     unsigned char   UnitBoxIB[0x14];                         // +0x2409c CIndexBuffer
     unsigned char   OcclusionBoxVShader[0x8];                // +0x240b0 CVertexShader
     unsigned char   OcclusionBoxPixelShader[0x8];            // +0x240b8 CPixelShader
+#ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_GETRESULT
+    // Opt-in (NF44 round 6, row 0x00B2F8E0 CEnginePrimitiveOcclusionManager::CheckVisibilityResult): Ego_r.pdb
+    // ?GetResult@CEngineOcclusionManager@@QAEKK_N@Z (retail 0x00B8D0B0, `xor eax,eax ; ret 8`). Declaration only.
+    unsigned long GetResult(unsigned long handle, bool wait);            // 0x00B8D0B0
+#endif
 #ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_ALLOCATE
     // Opt-in (bwf1 / agentC2, row 0x00BB3E80 CEngineClothRenderer::RenderClothPrimitive): the FableWin.pdb inline
     // ?AllocateOccluderHandle@CEngineOcclusionManager@@QAEKXZ (expanded at 0x00BB3EFD..0x00BB3F34; text of landed 0x00B91140) and the

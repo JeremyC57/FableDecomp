@@ -10,18 +10,15 @@
 // Layout: retail CComponent States (map, 12 bytes) +0x24, as the landed 0x0054BBB0 model; no engine/ header exists.
 // Shape: the literal key is a frame temporary whose address is pushed before its zero store; the reference result is
 //          returned as the pointer.
-class C2DVector { public: float X, Y; };
-struct CUIState {
-    unsigned long StateChangeFlag;                 // +0x00
-    long          StateChangeType;                 // +0x04
-    C2DVector     Position;                        // +0x08
-};
-struct CStateMap {                                 // STLport map<unsigned long, CUIState> (12 bytes)
-    void*         Header;
-    unsigned long NodeCount;
-    unsigned long Compare;
-    CUIState& operator[](const unsigned long& key);   // 0x0042D5B1
-};
+// NF44 (round 6): the local C2DVector / CUIState / state-map stand-ins replaced by the shared engine/C2DVector.h,
+// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line), so the
+// subscript binds STLport map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row spelling).
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+typedef std::map<unsigned long, NUISystem::CUIState> CStateMap;   // STLport, 12 bytes
 
 namespace NUISystem {
 class CComponent {

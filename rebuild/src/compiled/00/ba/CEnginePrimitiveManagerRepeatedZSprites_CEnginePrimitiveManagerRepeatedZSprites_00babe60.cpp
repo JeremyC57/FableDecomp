@@ -55,14 +55,17 @@ class CPixelShader : public CShaderBase { public:  // vtable 0x0129A054
 void operator delete(void* p);                          // 0x00BFE9BC
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClassNonCopyable.h"
-class CGPUScratchBufferTextureManager { public:
-    void FreeMemoryPage(long);                     // 0x00F37030
-};
-struct CEngineGlobal_01436e98 {
-    unsigned char                   _pad0000[0x3190];
-    CGPUScratchBufferTextureManager ScratchTextures;   // +0x3190
-};
-extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
+// NF44 (round 6): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) and its +0x3190 member the CGPUScratchBufferTextureManager
+// (engine/CEngineResourceManager.h GetGPUScratchBufferTextureManager(), engine/CGPUScratchBufferTextureManager.h, Ego_r.pdb member
+// spellings); were the address-named CEngineGlobal_01436e98 / g_pEngine_01436e98 and local scratch-manager stand-ins.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ENDTEXTUREUSE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 class CMovableResource {
 public:
     virtual ~CMovableResource() { }                // inline in Ego_r (only FableWin lists ??1CMovableResource)
@@ -151,5 +154,5 @@ public:
 };
 CEnginePrimitiveManagerRepeatedZSprites::~CEnginePrimitiveManagerRepeatedZSprites()
 {
-    g_pEngine_01436e98->ScratchTextures.FreeMemoryPage(DynamicTexturePageHandle);
+    NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(DynamicTexturePageHandle);
 }

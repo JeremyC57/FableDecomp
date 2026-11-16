@@ -14,32 +14,21 @@
 // vectors and +0x24 after the 8-byte CDeletion/list/vector run: Time +0x30, Position +0x34 .. RenderZoom
 // +0x7c, Colour +0x84 .. RenderColour +0x94, timers +0x98..+0xac, Children +0xb0, ChildrenToDelete +0xbc,
 // PParent +0xc8, Size +0xcc, RelativeParentPosition +0x100, RelativeParentZoom +0x110, PPositionParent +0x118.
+// NF44 (round 6): the local C2DVector / CUIState / state-map stand-ins replaced by the shared engine/C2DVector.h,
+// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line), so the
+// subscript binds STLport map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row spelling).
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+
 namespace NUISystem {
 
-struct C2DVector {
-    float X;
-    float Y;
-    C2DVector() {}
-    void Clear() { X = 0.0f; Y = 0.0f; }
-};
-struct CRGBColour {                         // D3DCOLOR byte order
-    unsigned char B, G, R, A;
-};
-class CUIState { public:                           // PDB 0x24 bytes
-    unsigned long StateChangeFlag;          // +0x00
-    long          StateChangeType;          // +0x04 EStateChangeType
-    C2DVector     Position;                 // +0x08
-    C2DVector     Zoom;                     // +0x10
-    CRGBColour    Colour;                   // +0x18
-    float         UpdateTime;               // +0x1c
-    bool          LinearChange;             // +0x20
-};
-struct CUIStateMap {                        // map<unsigned long, CUIState> (STLport, 12 bytes)
-    void*         m_pHeader;
-    unsigned long m_nodeCount;
-    unsigned char m_compare;
-    CUIState& operator[](const unsigned long& key);   // 0x0042D5B1
-};
+typedef std::map<unsigned long, CUIState> CUIStateMap;   // STLport, 12 bytes
+// The zeroed vectors are cleared through one inline helper taking the vector by reference (was the local C2DVector::Clear()
+// member; with plain member stores VC7.1 keeps the pointer in eax).
+static inline void ClearVector(C2DVector& vector) { vector.X = 0.0f; vector.Y = 0.0f; }
 class CComponent;
 struct CCountedComponentPointer {           // CCountedPointer<NUISystem::CComponent>
     CComponent* Object;
@@ -159,8 +148,8 @@ void CComponent::Initialise()
     }
     TargetColour = Colour = States[0].Colour;
     if (PPositionParent == 0) {
-        ParentPosition.Clear();
-        RelativeParentPosition.Clear();
+        ClearVector(ParentPosition);
+        ClearVector(RelativeParentPosition);
     }
     ParentColour.R = ParentColour.G = ParentColour.B = ParentColour.A = 0xff;
     ParentZoom.X = ParentZoom.Y = 1.0f;

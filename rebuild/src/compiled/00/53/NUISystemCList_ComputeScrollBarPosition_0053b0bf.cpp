@@ -15,23 +15,18 @@
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
-class C2DVector { public:
-    float X, Y;
-    C2DVector() {}
-    C2DVector(float x, float y) : X(x), Y(y) {}
-    C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {}
-};
+// NF44 (round 6): the local C2DVector / CUIState / state-map stand-ins replaced by the shared engine/C2DVector.h,
+// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line), so the
+// subscript binds STLport map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row spelling).
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
 
 namespace NUISystem {
 
-struct SComponentState {
-    unsigned char _pad00[8];
-    C2DVector     Position;                 // +0x08
-};
-struct CStateMap {                          // map<unsigned long, SComponentState> (STLport, 12 bytes)
-    unsigned char _body[12];
-    SComponentState& operator[](const unsigned long& key);   // 0x0042D5B1
-};
+typedef std::map<unsigned long, CUIState> CStateMap;   // STLport, 12 bytes (the alpha byte +0x1b is CUIState::Colour.A)
 struct CRefCounted {
     long m_count;
     void DecRef() { --m_count; }

@@ -61,25 +61,26 @@ static FABLE_FORCEINLINE void Swap(PSprite& a, PSprite& b)
     a = b;
     b = tmp;
 }
-class CGPUScratchBufferTextureManager { public:
-    long StartSurfaceUse(long handle);             // 0x00F36EE0
-    long StartSurfaceUse2(long handle);            // 0x00F36F10
-    void EndSurfaceUse(long handle);               // 0x00F36F00
-    void EndSurfaceUse2(long handle);              // 0x00F36F30
-};
-struct CDisplayManagerView {
-    unsigned char _pad[0x3190];
-    CGPUScratchBufferTextureManager ScratchTextures;   // +0x3190
-};
-extern CDisplayManagerView* g_pDisplayManager;     // 0x01436E98
+// NF44 (round 6): the 0x01436E98 global is NEngineInternal::GPResourceManager and its +0x3190 member the CGPUScratchBufferTextureManager
+// (engine/CEngineResourceManager.h, engine/CGPUScratchBufferTextureManager.h, Ego_r.pdb spellings): 0x00F36EE0 / 0x00F36F00 are
+// StartTextureUse / EndTextureUse (the entry's texture +4) and 0x00F36F10 / 0x00F36F30 StartSurfaceUse / EndSurfaceUse (+8); were the
+// CDisplayManagerView / g_pDisplayManager stand-ins with StartSurfaceUse / StartSurfaceUse2 / EndSurfaceUse / EndSurfaceUse2.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ENDTEXTUREUSE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_SURFACEUSE
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C
 
+class CTexture; class CSurface;
 class CEnginePrimitiveManagerRepeatedZSprites { public:
     unsigned char _pad00[0x80];
     CSortList     PrimitiveSortList;               // +0x80
-    long          BillboardSurface;                // +0x8c
-    long          ZBufferSurface;                  // +0x90
+    CTexture*     BillboardSurface;                // +0x8c (the billboard texture: StartTextureUse)
+    CSurface*     ZBufferSurface;                  // +0x90 (StartSurfaceUse)
     unsigned char _pad94[0xa4 - 0x94];
     long          BillboardTextureHandle;          // +0xa4
     long          ZBufferTextureHandle;            // +0xa8
@@ -91,9 +92,9 @@ class CEnginePrimitiveManagerRepeatedZSprites { public:
 
 void CEnginePrimitiveManagerRepeatedZSprites::RenderNonsortedPrimitives()
 {
-    CGPUScratchBufferTextureManager* scratch = &g_pDisplayManager->ScratchTextures;
-    BillboardSurface = scratch->StartSurfaceUse(BillboardTextureHandle);
-    ZBufferSurface = scratch->StartSurfaceUse2(ZBufferTextureHandle);
+    CGPUScratchBufferTextureManager* scratch = &NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager();
+    BillboardSurface = scratch->StartTextureUse(BillboardTextureHandle);
+    ZBufferSurface = scratch->StartSurfaceUse(ZBufferTextureHandle);
     for (long gap = PrimitiveSortList.size() - 1; gap > 0; --gap) {
         for (unsigned long j = 0; j < PrimitiveSortList.size() - gap; ++j) {
             if (SortsBefore(PrimitiveSortList[j + gap], PrimitiveSortList[j]))
@@ -104,9 +105,9 @@ void CEnginePrimitiveManagerRepeatedZSprites::RenderNonsortedPrimitives()
         RenderFromSortList(PrimitiveSortList[i]);
     PrimitiveSortList.resize(0);
     RenderedCount = 0;
-    scratch->EndSurfaceUse(BillboardTextureHandle);
+    scratch->EndTextureUse(BillboardTextureHandle);
     BillboardSurface = 0;
-    scratch->EndSurfaceUse2(ZBufferTextureHandle);
+    scratch->EndSurfaceUse(ZBufferTextureHandle);
     ZBufferSurface = 0;
     NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
 }

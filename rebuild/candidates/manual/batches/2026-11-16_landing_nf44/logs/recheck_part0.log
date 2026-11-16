@@ -1,0 +1,95 @@
+addr       parity           behav  name
+00427dc9   WARN SHARED_HEADER_AVAILABLE C2DCoordI
+00427dc9   WARN SHARED_HEADER_AVAILABLE CManager
+00427dc9   RELOCATION_MATCH PASS   CreateLevelSlider
+005339b0   RELOCATION_MATCH PASS   Initialise
+0053ad07   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0053ad07   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0053ad07   RELOCATION_MATCH PASS   AddScrollingChildAndSetOffsets
+0053bf20   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0053bf20   WARN SHARED_HEADER_AVAILABLE CManager
+0053bf20   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0053bf20   WARN RELOC_NAME: ?AddChild@CScrollLayout@NUISystem@@QAEXAAV?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@@Z -> 0053cfc2 labelled 'std::vector<std::map<unsigned long,NUISystem::CUIState> >::push_back'
+0053bf20   RELOCATION_MATCH PASS   AddScrollingChildDynamicallyAndSetOffsets
+00545df0   RELOCATION_MATCH PASS   AddChildAndSetOffsets
+005461d0   RELOCATION_MATCH PASS   Initialise
+00546d90   RELOCATION_MATCH PASS   Initialise
+0054ba20   RELOCATION_MATCH PASS   Update
+005518e0   WARN SHARED_HEADER_AVAILABLE CManager
+005518e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+005518e0   WARN RELOC_NAME: ?Grow@ChildrenVector@RetailUI@@QAEXPAUPointer@2@ABU32@ABUTag@2@K_N@Z -> 005359d0 labelled 'std::vector::_M_insert_overflow'
+005518e0   RELOCATION_MATCH PASS   ConstructHorizontalLine
+00596a68   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+00596a68   RELOCATION_MATCH PASS   CreateFrontEndButtonComponent
+00b2f8e0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveOcclusionInfo
+00b2f8e0   WARN RELOC_NAME: ?GetResult@CEngineOcclusionManager@@QAEKK_N@Z -> 00b8d0b0 labelled '_global::ReturnZero_ret8_00b8d0b0'
+00b2f8e0   RELOCATION_MATCH PASS   CheckVisibilityResult
+00b3f5e0   RELOCATION_MATCH PASS   PeekMapNormal
+00b52dd0   RELOCATION_MATCH PASS   ClipBoxToLandscape
+00b5bfd0   RELOCATION_MATCH PASS   SetEffectQuality
+00b5ea30   RELOCATION_MATCH PASS   Render
+00b5ee00   RELOCATION_MATCH PASS   SetEffectQuality
+00b67510   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9
+00b67510   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32
+00b67510   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00b67510   WARN SHARED_HEADER_AVAILABLE CTexture
+00b67510   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00b67510   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b67510   RELOCATION_MATCH PASS   PostRenderClearRenderStates
+00b6d630   RELOCATION_MATCH PASS   FinishUsingDynamicTextures
+00b86a30   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectDisplacementRenderer
+00b86a30   RELOCATION_MATCH PASS   ReleaseDynamicTextures_00b86a30
+00b870a0   WARN SHARED_HEADER_AVAILABLE CShaderBase
+00b870a0   RELOCATION_MATCH PASS   ~CEngineScreenEffectDisplacementRenderer
+00b89140   WARN SHARED_HEADER_AVAILABLE CRenderStateManager
+00b89140   WARN SHARED_HEADER_AVAILABLE CRenderTarget
+00b89140   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00b89140   RELOCATION_MATCH PASS   FinishOutlineRendering
+00b89a20   WARN SHARED_HEADER_AVAILABLE CSurface
+00b89a20   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00b89a20   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00b89a20   WARN SHARED_HEADER_AVAILABLE CTexture
+00b89a20   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b89a20   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore
+00b89a20   WARN SHARED_HEADER_AVAILABLE CRenderStateManager
+00b89a20   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b89a20   RELOCATION_MATCH PASS   BeginOutlineRendering
+00b99b50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedStaticMeshes
+00b99b50   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b99b50   WARN RELOC_NAME: ?FrameStartCommon@CEnginePrimitiveManagerRepeatedStaticMeshes@@QAEXXZ -> 00b99860 labelled 'CEnginePrimitiveManagerRepeatedStaticMeshes::CalcFrameConstantSIMDVars'
+00b99b50   RELOCATION_MATCH PASS   FrameStart
+00bac0f0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveRepeatedZSprite
+00bac0f0   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00bac0f0   WARN RELOC_CONFLICT: ?EndSurfaceUse@CGPUScratchBufferTextureManager@@QAEXJ@Z -> 00f36f30 here, 00f36f00 in landed 00bac0f0
+00bac0f0   WARN RELOC_NAME: ?EndSurfaceUse@CGPUScratchBufferTextureManager@@QAEXJ@Z -> 00f36f30 labelled '_global::Nop_ret4_00f36f30'
+00bac0f0   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00bac0f0   RELOCATION_MATCH PASS   RenderNonsortedPrimitives
+00c313c0   WARN RELOC_NAME: ?CreateEntry@CAutoMapOwner_00c31560@@QAEPAUCAutoMapEntry_00c3baa0@@PBQAX@Z -> 00c31560 labelled '_global::CEngineWaterBackgroundSubPatch_Constructor'
+00c313c0   RELOCATION_MATCH PASS   OnRecord
+
+WINS: 25
+  00427dc9 RELOCATION_MATCH NUISystem::CManager::CreateLevelSlider
+  005339b0 RELOCATION_MATCH NUISystem::CComponent::Initialise
+  0053ad07 RELOCATION_MATCH NUISystem::CList::?AddScrollingChildAndSetOffsets@CList@NUISystem
+  0053bf20 RELOCATION_MATCH NUISystem::CList::?AddScrollingChildDynamicallyAndSetOffsets@CList@NUISystem
+  00545df0 RELOCATION_MATCH NUISystem::CSpellContainer::AddChildAndSetOffsets
+  005461d0 RELOCATION_MATCH NUISystem::CComponentContainer::Initialise
+  00546d90 RELOCATION_MATCH NUISystem::CTextContainer::Initialise
+  0054ba20 RELOCATION_MATCH NUISystem::CSlider::Update
+  005518e0 RELOCATION_MATCH NUISystem::CTable::ConstructHorizontalLine
+  00596a68 RELOCATION_MATCH NUISystem::CFrontEndManager::?CreateFrontEndButtonComponent@CFrontEndManager@NUISystem@@QAEPAVCComponent@2@AAVCWideString@@MABVCCharString@@1_N@Z
+  00b2f8e0 RELOCATION_MATCH CEnginePrimitiveOcclusionManager::CheckVisibilityResult
+  00b3f5e0 RELOCATION_MATCH CEngineMap::?PeekMapNormal@CEngineMap@@QBE?AVC3DVector@@JJ@Z
+  00b52dd0 RELOCATION_MATCH CEngineWeatherRenderer::?ClipBoxToLandscape@CEngineWeatherRenderer@@ABE?AW4EWeatherBoxVisible@1@ABVC3DVector@@@Z
+  00b5bfd0 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::SetEffectQuality
+  00b5ea30 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::Render
+  00b5ee00 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::SetEffectQuality
+  00b67510 RELOCATION_MATCH CEngineLandscapeRenderer::?PostRenderClearRenderStates@CEngineLandscapeRenderer@@AAEXXZ
+  00b6d630 RELOCATION_MATCH CEngineWaterRenderer::FinishUsingDynamicTextures
+  00b86a30 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::ReleaseDynamicTextures_00b86a30
+  00b870a0 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::??1CEngineScreenEffectDisplacementRenderer
+  00b89140 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::FinishOutlineRendering
+  00b89a20 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::BeginOutlineRendering
+  00b99b50 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::FrameStart
+  00bac0f0 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::RenderNonsortedPrimitives
+  00c313c0 RELOCATION_MATCH CUnprovenRecordReader_012b4d34::?OnRecord@CUnprovenRecordReader_012b4d34@@UAEXPAVCLoadLog@@PBX@Z

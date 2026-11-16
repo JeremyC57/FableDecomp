@@ -1,0 +1,95 @@
+addr       parity           behav  name
+0042bead   RELOCATION_MATCH PASS   AddComponentToAvailableWeaponsEntries
+00533b30   RELOCATION_MATCH PASS   GetCurrentState
+0053b0bf   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0053b0bf   WARN SHARED_HEADER_AVAILABLE CList
+0053b0bf   RELOCATION_MATCH PASS   ComputeScrollBarPosition
+00540980   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+00540980   WARN SHARED_HEADER_AVAILABLE CText
+00540980   RELOCATION_MATCH PASS   UpdateDisplayText
+00545f00   RELOCATION_MATCH PASS   AddChildDynamically
+00546320   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+00546320   WARN SHARED_HEADER_AVAILABLE CManager
+00546320   RELOCATION_MATCH PASS   AddTextLine
+00547160   RELOCATION_MATCH PASS   Initialise
+0054bbb0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+0054bbb0   WARN RELOC_NAME: ?GetSoundVolume@CUserProfileManager@@QBEMXZ -> 0047cfc2 labelled 'CUserProfileManager::GetCameraSensitivity'
+0054bbb0   WARN RELOC_NAME: ?GetDialogueVolume@CUserProfileManager@@QBEMXZ -> 0047cfd3 labelled 'CUserProfileManager::GetCameraSensitivity'
+0054bbb0   WARN RELOC_NAME: ?GetMusicVolume@CUserProfileManager@@QBEMXZ -> 0054a4f0 labelled 'CUserProfileManager::GetCameraSensitivity'
+0054bbb0   WARN RELOC_NAME: ?GetHUDAlpha@CUserProfileManager@@QBEMXZ -> 00437490 labelled 'CUserProfileManager::GetCameraSensitivity'
+0054bbb0   WARN RELOC_NAME: ?GetGamma@CUserProfileManager@@QBEMXZ -> 00437470 labelled 'CUserProfileManager::GetCameraSensitivity'
+0054bbb0   WARN RELOC_NAME: ?GetEffectsDetail@CUserProfileManager@@QBEMXZ -> 0054a570 labelled 'CUserProfileManager::GetCameraSensitivity'
+0054bbb0   RELOCATION_MATCH PASS   GetValueFromProfile
+00551bc0   WARN SHARED_HEADER_AVAILABLE CManager
+00551bc0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00551bc0   WARN RELOC_NAME: ?Grow@ChildrenVector@RetailUI@@QAEXPAUPointer@2@ABU32@ABUTag@2@K_N@Z -> 005359d0 labelled 'std::vector::_M_insert_overflow'
+00551bc0   RELOCATION_MATCH PASS   ConstructVerticalLine
+00b242a0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b242a0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b242a0   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00b242a0   WARN SHARED_HEADER_AVAILABLE CEngine
+00b242a0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b242a0   RELOCATION_MATCH PASS   ClipBox
+00b2fa40   WARN SHARED_HEADER_AVAILABLE CV_BanditTollScript
+00b2fa40   RELOCATION_MATCH PASS   Init
+00b40bd0   RELOCATION_MATCH PASS   PeekWaterDepth
+00b5bd30   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectRadialBlurRenderer
+00b5bd30   RELOCATION_MATCH PASS   ReleaseTextures_00b5bd30
+00b5c050   WARN SHARED_HEADER_AVAILABLE CShaderBase
+00b5c050   RELOCATION_MATCH PASS   ~CEngineScreenEffectRadialBlurRenderer
+00b5ec90   RELOCATION_MATCH PASS   ReleaseGlowTextures
+00b5ee80   WARN SHARED_HEADER_AVAILABLE CShaderBase
+00b5ee80   RELOCATION_MATCH PASS   ~CEngineScreenEffectGlowRenderer
+00b6d600   RELOCATION_MATCH PASS   CloseStaticMap
+00b869a0   WARN SHARED_HEADER_AVAILABLE CRenderTarget
+00b869a0   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00b869a0   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectDisplacementRenderer
+00b869a0   RELOCATION_MATCH PASS   FinishDisplacementRendering
+00b86b00   RELOCATION_MATCH PASS   SetEffectQuality
+00b87680   WARN SHARED_HEADER_AVAILABLE CSurface
+00b87680   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00b87680   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00b87680   WARN SHARED_HEADER_AVAILABLE CTexture
+00b87680   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b87680   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore
+00b87680   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b87680   RELOCATION_MATCH PASS   BeginDisplacementRendering
+00b898d0   WARN SHARED_HEADER_AVAILABLE CRenderStateManager
+00b898d0   WARN SHARED_HEADER_AVAILABLE CRenderStateCaptureBlock
+00b898d0   WARN SHARED_HEADER_AVAILABLE CShaderBase
+00b898d0   WARN SHARED_HEADER_AVAILABLE CSurface
+00b898d0   RELOCATION_MATCH PASS   ~CEngineScreenEffectOutlineGlow
+00b903d0   RELOCATION_MATCH PASS   RenderUntexturedStaticMeshPrimitive
+00babe60   WARN SHARED_HEADER_AVAILABLE CShaderBase
+00babe60   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams
+00babe60   RELOCATION_MATCH PASS   ~CEnginePrimitiveManagerRepeatedZSprites
+00c31230   WARN RELOC_NAME: ?CreateEntry@CWaveEntryMap@@QAEPAUSWaveEntry@@PBQAX@Z -> 00c312c0 labelled '_global::CLandscapeLayerMesh_Constructor'
+00c31230   RELOCATION_MATCH PASS   OnRecord
+00c4b040   RELOCATION_MATCH PASS   Dtor_ReturnAllBuffersBase_00c4b040
+
+WINS: 25
+  0042bead RELOCATION_MATCH CTCInventoryWeapons::?AddComponentToAvailableWeaponsEntries@CTCInventoryWeapons@@QAEXPAVCComponent@NUISystem@@@Z
+  00533b30 RELOCATION_MATCH NUISystem::CComponent::?GetCurrentState@CComponent
+  0053b0bf RELOCATION_MATCH NUISystem::CList::?ComputeScrollBarPosition@CList@NUISystem
+  00540980 RELOCATION_MATCH NUISystem::CEditBox::UpdateDisplayText
+  00545f00 RELOCATION_MATCH NUISystem::CSpellContainer::?AddChildDynamically@CSpellContainer@NUISystem@@
+  00546320 RELOCATION_MATCH NUISystem::CComponentContainer::?AddTextLine@CComponentContainer@NUISystem@@
+  00547160 RELOCATION_MATCH NUISystem::CScrollingComponent::Initialise
+  0054bbb0 RELOCATION_MATCH NUISystem::CSlider::GetValueFromProfile
+  00551bc0 RELOCATION_MATCH NUISystem::CTable::ConstructVerticalLine
+  00b242a0 RELOCATION_MATCH CEngine::ClipBox
+  00b2fa40 RELOCATION_MATCH CV_BanditTollScript::Init
+  00b40bd0 RELOCATION_MATCH CEngineMap::?PeekWaterDepth@CEngineMap@@QBEMJJ@Z
+  00b5bd30 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::ReleaseTextures_00b5bd30
+  00b5c050 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::??1CEngineScreenEffectRadialBlurRenderer@@UAE@XZ
+  00b5ec90 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::ReleaseGlowTextures
+  00b5ee80 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::??1CEngineScreenEffectGlowRenderer
+  00b6d600 RELOCATION_MATCH CLocalDetailCacheMap_00b6d600::CloseStaticMap
+  00b869a0 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::FinishDisplacementRendering
+  00b86b00 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::SetEffectQuality
+  00b87680 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::BeginDisplacementRendering
+  00b898d0 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::??1CEngineScreenEffectOutlineGlow
+  00b903d0 RELOCATION_MATCH CEnginePrimitiveManagerOcclusionBase::?RenderUntexturedStaticMeshPrimitive@CEnginePrimitiveManagerOcclusionBase@@AAEXPAVC3DPrimitive2@@ABVCMatrix3x4@@@Z
+  00babe60 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::??1CEnginePrimitiveManagerRepeatedZSprites@@UAE@XZ
+  00c31230 RELOCATION_MATCH CWaveDataReader::OnRecord
+  00c4b040 RELOCATION_MATCH _global::?_Dest_val_pair_CCharString_CSymbolInfo@@YIXPAX0@Z

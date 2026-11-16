@@ -15,25 +15,18 @@
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
-class C2DVector { public:
-    float X, Y;
-    C2DVector() {}
-    C2DVector(float x, float y) : X(x), Y(y) {}
-    C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {}
-};
+// NF44 (round 6): the local C2DVector / CUIState / state-map stand-ins replaced by the shared engine/C2DVector.h,
+// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line), so the
+// subscript binds STLport map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row spelling).
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
 
 namespace NUISystem {
 
-struct SComponentState {                    // CUIState
-    unsigned char _pad00[8];
-    C2DVector     Position;                 // +0x08
-    unsigned char _pad10[0x1b - 0x10];
-    unsigned char Alpha;                    // +0x1b
-};
-struct CStateMap {                          // map<unsigned long, SComponentState> (STLport, 12 bytes)
-    unsigned char _body[12];
-    SComponentState& operator[](const unsigned long& key);   // 0x0042D5B1
-};
+typedef std::map<unsigned long, CUIState> CStateMap;   // STLport, 12 bytes (the alpha byte +0x1b is CUIState::Colour.A)
 struct CRefCounted {
     long m_count;
     void DecRef() { --m_count; }
@@ -169,21 +162,21 @@ void CList::AddScrollingChildAndSetOffsets(const CCountedPointer<CComponent>& ch
         c->GetStateMap()[3].Position = NextScrollingChildPosition;
     }
     if (NextScrollingChildAlpha < 0.0f) {
-        child->GetStateMap()[1].Alpha = 0;
+        child->GetStateMap()[1].Colour.A = 0;
         c = child.Data;
-        c->GetStateMap()[4].Alpha = 0;
+        c->GetStateMap()[4].Colour.A = 0;
         c = child.Data;
-        c->GetStateMap()[5].Alpha = 0;
+        c->GetStateMap()[5].Colour.A = 0;
     } else if (NextScrollingChildAlpha > 1.0f) {
-        child->GetStateMap()[1].Alpha = 0xff;
+        child->GetStateMap()[1].Colour.A = 0xff;
         c = child.Data;
-        c->GetStateMap()[4].Alpha = 0xff;
+        c->GetStateMap()[4].Colour.A = 0xff;
         c = child.Data;
-        c->GetStateMap()[5].Alpha = 0xff;
+        c->GetStateMap()[5].Colour.A = 0xff;
     } else {
-        child->GetStateMap()[1].Alpha = (unsigned char)(NextScrollingChildAlpha * 255.0f);
-        child->GetStateMap()[4].Alpha = (unsigned char)(NextScrollingChildAlpha * 255.0f);
-        child->GetStateMap()[5].Alpha = (unsigned char)(NextScrollingChildAlpha * 255.0f);
+        child->GetStateMap()[1].Colour.A = (unsigned char)(NextScrollingChildAlpha * 255.0f);
+        child->GetStateMap()[4].Colour.A = (unsigned char)(NextScrollingChildAlpha * 255.0f);
+        child->GetStateMap()[5].Colour.A = (unsigned char)(NextScrollingChildAlpha * 255.0f);
     }
     NextScrollingChildPosition.Y += PositionOffsetToUse.Y;
     float alpha = AlphaOffsetToUse + NextScrollingChildAlpha;

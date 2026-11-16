@@ -1,0 +1,9 @@
+- A self rename's caller list in the previous NOTES can be incomplete: probe every caller of the renamed address (0x0042D5B1 had 23 stale callers, not 7).
+- One family transformer (work/scratch.py) turned 17 address-named CEngineGlobal_01436e98 rows into 1-grade ports; look for the shared accessor (GetGPUScratchBufferTextureManager) before porting row by row.
+- A shared header can itself declare the wrong global (CEngineMap.h `extern g_pEngineWorldMap`); fix it once with an opt-in, not in each row.
+- Replacing a local base-class model with the shared header changes the base size; check the derived class's leading pad (0x00B5EE80: an 8-byte local base, `_pad_0x08` = RenderEnabled).
+- Stand-in fields typed `void*` for scratch-texture handles must become `long` to call the PDB EndTextureUse(long).
+- Swapping a local C2DVector for the shared one changes the mangling of any own-signature parameter; check the self leaf and its callers first (0x00555440 / 0x005556F0 were left for that reason).
+- A row's operator[] stand-in with a same-TU body maps to fable_map.h's visible FABLE_RETAIL_STLP_MAP body; the declaration-only form serves the rest.
+- Compile the original sources into a private dir to diff relocation sets: it catches incidental binding changes (0x0053BF20's 0x0053CFC2 call) that a target-only probe misses.
+- Wait for a long background job with a run_in_background until-loop, never a foreground sleep.

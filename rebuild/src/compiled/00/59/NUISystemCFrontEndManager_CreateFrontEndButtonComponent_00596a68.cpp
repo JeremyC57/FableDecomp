@@ -68,24 +68,14 @@ public:
     void ShareData(T* data, CCPPointerInfo* info);      // 0x00429460 for CText
     T* operator->() const { return Data; }
 };
-namespace std {
-template <class K, class V> class map {
-public:
-    void* _body[3];
-    V& operator[](const K& key);                        // 0x0042D5B1 for <unsigned long, CUIState>
-};
-}
+// NF44 (round 6): the local one-parameter std::map model, NUISystem::C2DVector and NUISystem::CUIState stand-ins replaced by the shared
+// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line), so the five
+// subscripts bind STLport's map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row's spelling).
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
 namespace NUISystem {
-struct C2DVector { float X, Y; };
-class CUIState { public:
-    unsigned long StateChangeFlag;                      // +0x00
-    long          StateChangeType;                      // +0x04
-    C2DVector     Position;                             // +0x08
-    C2DVector     Zoom;                                 // +0x10
-    unsigned long Colour;                               // +0x18
-    float         UpdateTime;                           // +0x1c
-    bool          LinearChange;                         // +0x20
-};
 class CComponent;
 typedef std::map<unsigned long, CUIState> CUIStateMap;
 class CComponent {

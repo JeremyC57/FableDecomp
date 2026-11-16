@@ -26,24 +26,16 @@ class CIME { public:
     bool ShouldEditBoxShowCaret();                          // 0x00404BA0 ?ShouldEditBoxShowCaret@CIME@NUISystem@@QAE_NXZ
 };
 }
-class C2DVector { public:
-    float X, Y;
-    C2DVector() { }
-    C2DVector(float x, float y) : X(x), Y(y) { }
-    C2DVector operator*(const C2DVector& o) const { return C2DVector(X * o.X, Y * o.Y); }
-    C2DVector Offset(float dx) const { return C2DVector(X + dx, Y); }
-};
+// NF44 (round 6): the local C2DVector / SComponentState / CStateMap stand-ins replaced by the shared engine/C2DVector.h,
+// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line), so the
+// subscript binds STLport's map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row's spelling).
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
-struct SComponentState {
-    unsigned char _pad00[8];
-    C2DVector     Position;                                 // +0x08
-    C2DVector     Size;                                     // +0x10
-    float         Alpha;                                    // +0x18
-};
-struct CStateMap {
-    void* m_pHeader; unsigned long m_nodeCount; unsigned char m_compare;
-    SComponentState& operator[](const unsigned long& key);  // 0x0042D5B1
-};
+typedef std::map<unsigned long, NUISystem::CUIState> CStateMap;   // 12 bytes
 class CFont {
 public:
     virtual void v000();

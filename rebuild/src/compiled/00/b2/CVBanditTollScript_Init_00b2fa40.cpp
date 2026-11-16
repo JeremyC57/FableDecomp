@@ -31,11 +31,11 @@ struct CRetailVector {                                   // STLport vector of a 
     void clear() { erase(begin(), end()); }
 };
 
-struct SFrameSource {
-    unsigned char _pad[0x4010];
-    long m_frame;                                        // +0x4010
-};
-extern SFrameSource* g_pFrameSource;                     // 0x01436E5C
+// NF44 (round 6): the frame counter is CEngineOcclusionManager::CurrentFrame (+0x4010, engine/CEngineOcclusionManager.h) of
+// NEngineInternal::GPOcclusionManager (Ego_r.pdb / FableWin.pdb ?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A, 0x01436E5C);
+// were the SFrameSource / g_pFrameSource stand-ins.
+#include "engine/CEngineOcclusionManager.h"
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }   // 0x01436E5C
 
 struct SOcclusionRecord {
     long _pad00[2];
@@ -53,5 +53,5 @@ void CV_BanditTollScript::Init(SOcclusionRecord* record)
 {
     record->m_count = 0;
     record->m_bytes.clear();
-    record->m_frame = g_pFrameSource->m_frame;
+    record->m_frame = NEngineInternal::GPOcclusionManager->CurrentFrame;
 }

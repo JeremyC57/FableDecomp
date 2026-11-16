@@ -7,10 +7,10 @@
 //   entry of CAutoMapEntry_00c3baa0 0x00C3BAA0), CString::operator=(const char*) 0x00C0C200.
 // Shape: the landed CWaveDataReader::OnRecord 0x00C31230 shape -- the key homed in the dead record argument slot, the
 //   find-or-create an inline early-return member.
-struct CString {
-    char* m_pchData;
-    CString& operator=(const char* text);           // 0x00C0C200
-};
+// NF44 (round 6): the local `struct CString` stand-in replaced by the shared engine/CString.h (FABLE_RETAIL_CSEGMENTFILE_PASS23: the MFC
+// `const CString& operator=(const char*)`), so the assignment binds ??4CString@@QAEABV0@PBD@Z at 0x00C0C200.
+#define FABLE_RETAIL_CSEGMENTFILE_PASS23
+#include "engine/CString.h"
 
 struct CAutoMapEntry_00c3baa0 {                     // 0x30 bytes
     void*          m_pKey;                          // +0x00

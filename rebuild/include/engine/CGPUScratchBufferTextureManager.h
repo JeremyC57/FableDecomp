@@ -36,6 +36,22 @@ public:
     // the _TEXTURES opt-in above (chunk 2018), so it is skipped when both are defined.
     class CTexture* StartTextureUse(long handle);                        // 0x00F36EE0
 #endif
+#ifdef FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
+    // Opt-in (NF44 round 6, the CEngineScreenEffect* InitialiseTextures / SetEffectQuality rows 0x00B5BFD0 ..): Ego_r.pdb
+    // ?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z (retail 0x00F37030). Declaration only.
+    void FreeMemoryPage(long page);                                      // 0x00F37030
+#endif
+#if defined(FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ENDTEXTUREUSE) && !defined(FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_TEXTURES)
+    // Opt-in (NF44 round 6, rows 0x00B5BD30 ..): Ego_r.pdb ?EndTextureUse@CGPUScratchBufferTextureManager@@QAEXJ@Z (retail 0x00F36F00, an
+    // empty `ret 4`). The same declaration as the _TEXTURES opt-in above, so it is skipped when both are defined.
+    void EndTextureUse(long handle);                                     // 0x00F36F00
+#endif
+#ifdef FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_SURFACEUSE
+    // Opt-in (NF44 round 6, row 0x00BAC0F0 RenderNonsortedPrimitives): Ego_r.pdb ?StartSurfaceUse@CGPUScratchBufferTextureManager@@QAEPAVCSurface@@J@Z
+    // (retail 0x00F36F10, the entry's +8) and ?EndSurfaceUse@CGPUScratchBufferTextureManager@@QAEXJ@Z (retail 0x00F36F30). Declarations only.
+    class CSurface* StartSurfaceUse(long handle);                        // 0x00F36F10
+    void EndSurfaceUse(long handle);                                     // 0x00F36F30
+#endif
 private:
     unsigned char Unmodeled_0x00[0x44];
 };

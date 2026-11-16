@@ -16,14 +16,17 @@
 //   CShaderBase vtable), then the render target's implicit destructor (no vtable store): ZBufferSurface then
 //   RenderToSurface (own vtable + Uninitialise), then ~CBaseClass; the base destructor is tail-called.
 #include "fable_compiler.h"
-class CGPUScratchBufferTextureManager { public:
-    void FreeMemoryPage(long page);                // 0x00F37030
-};
-struct CEngineGlobal_01436e98 {
-    unsigned char                   _pad[0x3190];
-    CGPUScratchBufferTextureManager m_scratchTextures;   // +0x3190
-};
-extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
+// NF44 (round 6): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) and its +0x3190 member the CGPUScratchBufferTextureManager
+// (engine/CEngineResourceManager.h GetGPUScratchBufferTextureManager(), engine/CGPUScratchBufferTextureManager.h, Ego_r.pdb member
+// spellings); were the address-named CEngineGlobal_01436e98 / g_pEngine_01436e98 and local scratch-manager stand-ins.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ENDTEXTUREUSE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 class CRenderStateManager { public:
     void RestoreCaptureBlock();                    // 0x00A05840
@@ -93,15 +96,11 @@ class CRenderTarget : public CBaseClass { public:                // 0x24 bytes, 
     CSurface ZBufferSurface;                       // +0x14
 };
 
-class CEngineComponent { public:
-    virtual void v00();
-    void** m_ppOwnerLink;                          // +0x04
-    virtual ~CEngineComponent();                           // 0x00B59730
-};
+// NF44 (round 6): CEngineComponent is the shared engine/CEngineComponent.h class (pulled in by CEngineResourceManager.h); was a local model.
 
 class CTexture;
 class CEngineScreenEffectOutlineGlow : public CEngineComponent { public:   // vtable 0x012A3B6C, 0x1e4 bytes
-    unsigned char  _pad_0x08[0x4];                 // +0x08 active flag
+    // +0x08 active flag = CEngineComponent::RenderEnabled (shared base, 0xc bytes)
     CTexture*      OutlineTexture;                 // +0x0c
     CTexture*      Blur1Texture;                   // +0x10
     CTexture*      Blur2Texture;                   // +0x14
@@ -145,5 +144,5 @@ class CEngineScreenEffectOutlineGlow : public CEngineComponent { public:   // vt
 
 CEngineScreenEffectOutlineGlow::~CEngineScreenEffectOutlineGlow()
 {
-    g_pEngine_01436e98->m_scratchTextures.FreeMemoryPage(DynamicTexturePageHandle);
+    NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(DynamicTexturePageHandle);
 }

@@ -5,10 +5,16 @@
 // established component States+24 and8-byte child records+b0. CUIState Position.Y+c agrees PDB.
 // Base Initialise0052C730, state-map operator[]0042D5B1, virtual GetCurrentState slot50/GetSize slot23.
 #include "engine/CScrollingComponent.h"
+// NF44 (round 6): the local C2DVector / CUIState / state-map stand-ins replaced by the shared engine/C2DVector.h,
+// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line), so the
+// subscript binds STLport map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row spelling).
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
 namespace NUISystem {
-struct C2DVector { float X,Y; C2DVector() {} C2DVector(const C2DVector& v):X(v.X),Y(v.Y) {} };
-class CUIState { public: unsigned long StateChangeFlag,StateChangeType; C2DVector Position,Zoom; unsigned long Colour; float UpdateTime; bool LinearChange; };
-struct CStateMap { void* Head; unsigned long Count; unsigned char Comparator; CUIState& operator[](const unsigned long&); }; //0042D5B1
+typedef std::map<unsigned long, CUIState> CStateMap;   // STLport, 12 bytes (0x0042D5B1 operator[])
 struct CComponentCalls {
     virtual ~CComponentCalls() {}
     virtual void v01();

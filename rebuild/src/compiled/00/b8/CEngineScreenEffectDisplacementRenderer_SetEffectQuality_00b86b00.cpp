@@ -1,12 +1,20 @@
 // CEngineScreenEffectDisplacementRenderer::SetEffectQuality(const CEngineVideoQualitySettings&) -- sets the 2D/3D feature flags, initializes textures if either is requested and supported, otherwise frees its scratch page; retail 0x00B86B00 length 0xa3. Uses shared renderer layout and the video-quality twin's four-byte option prefix; callees 0x00B86A70 and 0x00F37030.
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
 struct CEngineVideoQualitySettings { unsigned char _pad[0x6c]; unsigned char Enable2D; unsigned char Enable3D; };
-class CGPUScratchBufferTextureManager { public: void FreeMemoryPage(long); /* 0x00F37030 */ };
-struct CEngineGlobal_01436e98 { unsigned char _pad[0x3190]; CGPUScratchBufferTextureManager scratch; };
-extern CEngineGlobal_01436e98 *g_pEngine_01436e98; // 0x01436E98
+// NF44 (round 6): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) and its +0x3190 member the CGPUScratchBufferTextureManager
+// (engine/CEngineResourceManager.h GetGPUScratchBufferTextureManager(), engine/CGPUScratchBufferTextureManager.h, Ego_r.pdb member
+// spellings); were the address-named CEngineGlobal_01436e98 / g_pEngine_01436e98 and local scratch-manager stand-ins.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ENDTEXTUREUSE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 struct CEngineScreenEffectDisplacementRenderer_Quality : CEngineScreenEffectDisplacementRenderer {
     bool InitialiseTextures(); // 0x00B86A70
-    void FreeTexturePage() { if (DynamicTexturePageHandle >= 0) g_pEngine_01436e98->scratch.FreeMemoryPage(DynamicTexturePageHandle); }
+    void FreeTexturePage() { if (DynamicTexturePageHandle >= 0) NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(DynamicTexturePageHandle); }
     bool SetEffectQuality(const CEngineVideoQualitySettings&);
 };
 bool CEngineScreenEffectDisplacementRenderer_Quality::SetEffectQuality(const CEngineVideoQualitySettings& quality)

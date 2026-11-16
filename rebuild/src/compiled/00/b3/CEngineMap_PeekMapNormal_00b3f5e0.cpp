@@ -41,6 +41,9 @@
 #define FABLE_RETAIL_CENGINEWORLDMAP_GETMAPXY
 #include "engine/C3DVector.h"
 #include "engine/C2DVector.h"
+// NF44 (round 6): the world-map global 0x01436E8C is NEngineInternal::GPEngineWorldMap (Ego_r.pdb / FableWin.pdb
+// ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A), through the engine/CEngineMap.h opt-in (was g_pEngineWorldMap).
+#define FABLE_RETAIL_CENGINEMAP_GPENGINEWORLDMAP
 #include "engine/CEngineMap.h"
 #include "engine/CEngineWorldMap.h"
 #include "engine/CIDrawMap.h"

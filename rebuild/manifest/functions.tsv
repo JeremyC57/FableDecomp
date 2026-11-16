@@ -966,7 +966,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042be50	CAction	NUISystem::CAction	__thiscall	undefined	1	CRumbleDef *	0	yes	accepted									
 0042be7b	CObservable	NUISystem::CObservable	__thiscall	undefined	3	CConsoleCommandParameters *,EGenericVarType,EGenericVarType	0	yes	accepted									
 0042bea9	GetExclusiveObserver	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042bead	Forward_Std_List_PushFront_member0x198_0042bead	_global	__thiscall	void	2	CTCInventoryAbilities *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CTCInventoryAbilities_AddLearnedExpression_0042bead.cpp
+0042bead	AddComponentToAvailableWeaponsEntries	CTCInventoryWeapons	__thiscall	void	2	CTCInventoryAbilities *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CTCInventoryAbilities_AddLearnedExpression_0042bead.cpp
 0042bec0	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	std	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0042bec0.cpp
 0042bed4	CDeletion	NUISystem::CDeletion	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CBankFile_GetBankHandle_0042bed4.cpp
 0042bef2	SetMiniMapRegionExitTextOffsetX	CRegion	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CRegion_SetMiniMapRegionExitTextOffsetX_0042bef2.cpp
@@ -9263,7 +9263,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005334a0	CComponent	NUISystem::CComponent	unknown	undefined	0		0	yes	accepted									
 00533720	CComponent	NUISystem::CComponent	unknown	undefined	0		0	yes	accepted									
 005339b0	Initialise	NUISystem::CComponent	__thiscall	void	1	CComponent *	1	yes	accepted									
-00533b30	vfunc_50	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00533b30	GetCurrentState	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00533b50	AddChild	NUISystem::CComponent	unknown	undefined	0		0	yes	accepted									
 00533ba0	AddChildFront	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00533bc0	RemoveChild	NUISystem::CComponent	unknown	undefined	0		0	yes	accepted									

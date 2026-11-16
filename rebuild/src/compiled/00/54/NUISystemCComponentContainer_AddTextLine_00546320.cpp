@@ -33,15 +33,6 @@ class CWideString {
 public:
     void* PStringData;
 };
-class CRGBColour {
-public:
-    unsigned char B, G, R, A;
-};
-class C2DVector {
-public:
-    float X;
-    float Y;
-};
 class C2DBoxF {
 public:
     float TLX;                                                                         // +0x00
@@ -52,26 +43,19 @@ public:
 };
 
 #include "engine/CCountedPointer.h"
+// NF44 (round 6): the local C2DVector / CUIState / state-map stand-ins replaced by the shared engine/C2DVector.h,
+// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP: the STLport body visible, kept out of line by VC7.1 -- it replaces the same-TU LookupState stand-in), so the
+// subscript binds STLport map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row spelling).
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+
+#include "stlport/fable_map.h"
+
 
 namespace NUISystem {
 
-class CUIState { public:                           // map value (key: the state index)
-    unsigned long StateChangeFlag;          // +0x00
-    long          StateChangeType;          // +0x04
-    C2DVector     Position;                 // +0x08
-    C2DVector     Zoom;                     // +0x10
-    CRGBColour    Colour;                   // +0x18
-    float         UpdateTime;               // +0x1c
-    bool          LinearChange;             // +0x20
-};
-void* LookupState(void* map, unsigned long key);
-class CStateMap {                           // STLport map<unsigned long, CUIState> (12 bytes)
-public:
-    void*         Header;
-    unsigned long NodeCount;
-    unsigned char Compare;
-    __declspec(noinline) CUIState& operator[](const unsigned long& key) { return *(CUIState*)LookupState(this, key); }   // 0x0042D5B1
-};
+typedef std::map<unsigned long, CUIState> CStateMap;   // STLport, 12 bytes
 
 class CComponent {
 public:

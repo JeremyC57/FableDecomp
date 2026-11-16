@@ -132,14 +132,22 @@ private:
 // Needs FABLE_RETAIL_CENGINEMAP_PEEK, FABLE_RETAIL_CIDRAWMAP(_DRAW) and FABLE_RETAIL_CENGINEWORLDMAP(_GETMAPXY).
 #include "engine/CEngineWorldMap.h"
 #include "engine/CIDrawMap.h"
+#ifdef FABLE_RETAIL_CENGINEMAP_GPENGINEWORLDMAP
+// Opt-in (NF44 round 6, rows 0x00B3F5E0 / 0x00B40BD0 / 0x00B52DD0): the global at 0x01436E8C is Ego_r.pdb / FableWin.pdb
+// ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A; the bodies below read it through FABLE_CENGINEMAP_WORLDMAP.
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }   // 0x01436E8C
+#define FABLE_CENGINEMAP_WORLDMAP NEngineInternal::GPEngineWorldMap
+#else
 extern CEngineWorldMap* g_pEngineWorldMap;   // 0x01436E8C (landed spelling, CEngineWorldMap::SetWorld 0x00B42ED0)
+#define FABLE_CENGINEMAP_WORLDMAP g_pEngineWorldMap
+#endif
 
 inline long CEngineMap::PeekThemeId(long x, long y, long layer) const
 {
     if (x >= PeekWidth() || y >= PeekHeight() || x < 0 || y < 0 || !GameMap) {
-        long worldX = PeekWorldX() - g_pEngineWorldMap->MapOffsetX + x;
-        long worldY = PeekWorldY() - g_pEngineWorldMap->MapOffsetY + y;
-        const CEngineMap* map = g_pEngineWorldMap->GetMap(worldX, worldY);
+        long worldX = PeekWorldX() - FABLE_CENGINEMAP_WORLDMAP->MapOffsetX + x;
+        long worldY = PeekWorldY() - FABLE_CENGINEMAP_WORLDMAP->MapOffsetY + y;
+        const CEngineMap* map = FABLE_CENGINEMAP_WORLDMAP->GetMap(worldX, worldY);
 #ifdef FABLE_RETAIL_CENGINEMAP_MAPHASDATA_IFRETURN
         // The neighbour test written out as in PeekLandscapeHeight below (out-of-line copy: same object as the call form).
         if (map) {
@@ -169,9 +177,9 @@ inline long CEngineMap::PeekThemeId(long x, long y, long layer) const
 inline unsigned char CEngineMap::PeekThemeBlend(long x, long y, long layer) const
 {
     if (x >= PeekWidth() || y >= PeekHeight() || x < 0 || y < 0 || !GameMap) {
-        long worldX = PeekWorldX() - g_pEngineWorldMap->MapOffsetX + x;
-        long worldY = PeekWorldY() - g_pEngineWorldMap->MapOffsetY + y;
-        const CEngineMap* map = g_pEngineWorldMap->GetMap(worldX, worldY);
+        long worldX = PeekWorldX() - FABLE_CENGINEMAP_WORLDMAP->MapOffsetX + x;
+        long worldY = PeekWorldY() - FABLE_CENGINEMAP_WORLDMAP->MapOffsetY + y;
+        const CEngineMap* map = FABLE_CENGINEMAP_WORLDMAP->GetMap(worldX, worldY);
 #ifdef FABLE_RETAIL_CENGINEMAP_MAPHASDATA_IFRETURN
         // The neighbour test written out as in PeekLandscapeHeight below (out-of-line copy: same object as the call form).
         if (map) {
@@ -201,9 +209,9 @@ inline unsigned char CEngineMap::PeekThemeBlend(long x, long y, long layer) cons
 inline float CEngineMap::PeekLandscapeHeight(long x, long y) const
 {
     if (x >= PeekWidth() || y >= PeekHeight() || x < 0 || y < 0 || !GameMap) {
-        long worldX = PeekWorldX() - g_pEngineWorldMap->MapOffsetX + x;
-        long worldY = PeekWorldY() - g_pEngineWorldMap->MapOffsetY + y;
-        const CEngineMap* map = g_pEngineWorldMap->GetMap(worldX, worldY);
+        long worldX = PeekWorldX() - FABLE_CENGINEMAP_WORLDMAP->MapOffsetX + x;
+        long worldY = PeekWorldY() - FABLE_CENGINEMAP_WORLDMAP->MapOffsetY + y;
+        const CEngineMap* map = FABLE_CENGINEMAP_WORLDMAP->GetMap(worldX, worldY);
 #ifdef FABLE_RETAIL_CENGINEMAP_MAPHASDATA_IFRETURN
         // With the if-return MapHasDataAtPoint body a call here would leave `setne al ; test al,al` behind; retail's neighbour test is
         // pure branches with the neighbour's y cell formed first (COMDAT 0x00B566B0: 0x00B567AF..0x00B567E0, RELOCATION_MATCH): the

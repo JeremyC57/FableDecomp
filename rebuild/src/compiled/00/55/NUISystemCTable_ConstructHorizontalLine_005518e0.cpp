@@ -12,24 +12,18 @@ namespace NUISystem { class CManager { public: static CManager* __fastcall GetIn
 //   0x005359D0, Table = NUISystem::CTable): needs a full re-author on the shared headers.
 namespace NUISystem { class CComponent; }
 template <class T> class CCountedPointer { public: static void __fastcall DeleteData(void* data); };   // 0x00428B10 (T = NUISystem::CComponent)
+// NF44 (round 6): the RetailUI Vec / Colour / State / StatePair / StateNode / StateIterator / StateMap stand-ins (and their same-TU
+// lower_bound / operator[] bodies) replaced by the shared engine/C2DVector.h, engine/NUISystem_CUIState.h and stlport/fable_map.h
+// (FABLE_RETAIL_STLP_MAP: the STLport operator[] body visible, kept out of line by VC7.1), so the subscripts bind
+// STLport map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row spelling).
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_map.h"
 namespace RetailUI {
-struct Vec {float X,Y;Vec(){}Vec(float x,float y):X(x),Y(y){}Vec(const Vec& v):X(v.X),Y(v.Y){}};
-// CUIState PDB layout is 36 bytes. Retail 52e5d0 initializes the fields below;
-// 429e29 copies colour as four bytes. The map key is unsigned long, not a component pointer.
-struct Colour {unsigned char R,G,B,A;Colour():R(255),G(255),B(255),A(255){}Colour(const Colour& c):R(c.R),G(c.G),B(c.B),A(c.A){}};
-struct State {unsigned long Flags,ChangeType;Vec Position,Zoom;Colour ColourValue;float UpdateTime;bool LinearChange;
- State():Flags(7),ChangeType(0),Position(0,0),Zoom(1,1),UpdateTime(-1),LinearChange(false){}
- State(const State& s):Flags(s.Flags),ChangeType(s.ChangeType),Position(s.Position),Zoom(s.Zoom),ColourValue(s.ColourValue),UpdateTime(s.UpdateTime),LinearChange(s.LinearChange){}
-};
-struct StatePair {unsigned long Key;State Value;StatePair():Key(0){}StatePair(const unsigned long& k,const State& s):Key(k),Value(s){}};
-struct StateNode {long Colour;StateNode* Parent;StateNode* Left;StateNode* Right;StatePair Pair;};
-struct StateIterator {StateNode* Node;explicit StateIterator(StateNode* n):Node(n){}StateIterator(const StateIterator& i):Node(i.Node){}StatePair& operator*()const{return Node->Pair;}bool operator==(const StateIterator& i)const{return Node==i.Node;}};
-struct StateMap {StateNode* Header;unsigned long Count;StateNode* LowerBoundNode(const unsigned long&);StateIterator InsertUnique(StateIterator,const StatePair&);State& operator[](const unsigned long&);};
-// Faithful dependency bodies, 42ad6c and 42d5b1: neither retains the caller's key address.
-#pragma auto_inline(off)
-StateNode* StateMap::LowerBoundNode(const unsigned long& key){StateNode* candidate=Header;StateNode* node=Header->Parent;while(node){if(node->Pair.Key>=key){candidate=node;node=node->Left;}else node=node->Right;}return candidate;}
-State& StateMap::operator[](const unsigned long& key){StateIterator i(LowerBoundNode(key));if(i==StateIterator(Header)||key<(*i).Key){State value;i=InsertUnique(i,StatePair(key,value));}return (*i).Value;}
-#pragma auto_inline(on)
+typedef ::C2DVector Vec;
+typedef ::NUISystem::CUIState State;
+typedef std::map<unsigned long, State> StateMap;
 
 struct Component;
 struct Info {long References;void (__fastcall* Destroy)(void*);void* Object;Info(void* p):References(1),Destroy(&::CCountedPointer< ::NUISystem::CComponent>::DeleteData),Object(p){}};   // deleter 0x00428B10

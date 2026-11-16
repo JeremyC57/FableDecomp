@@ -59,14 +59,17 @@ class CTexture { public:
     CSurface GetSurface(long level);               // 0x009F9E00
 };
 
-struct CTexturePool_00f36ee0 {
-    CTexture* Get(long handle);                    // 0x00F36EE0
-};
-struct CEngineGlobal_01436e98 {
-    unsigned char         _pad[0x3190];
-    CTexturePool_00f36ee0 m_texturePool;           // +0x3190
-};
-extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
+// NF44 (round 6): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) and its +0x3190 member the CGPUScratchBufferTextureManager
+// (engine/CEngineResourceManager.h GetGPUScratchBufferTextureManager(), engine/CGPUScratchBufferTextureManager.h, Ego_r.pdb member
+// spellings); were the address-named CEngineGlobal_01436e98 / g_pEngine_01436e98 and local scratch-manager stand-ins.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ENDTEXTUREUSE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 class CRGBColour { public:
     unsigned char B, G, R, A;
@@ -107,11 +110,11 @@ void CEngineScreenEffectOutlineGlow_Begin::BeginOutlineRendering()
         OutlineRenderingCaptureBlock_Open = true;
         g_pRenderStateManager->OpenCaptureBlock();
         if (!OutlineTexture)
-            OutlineTexture = g_pEngine_01436e98->m_texturePool.Get(OutlineTextureHandle);
+            OutlineTexture = NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().StartTextureUse(OutlineTextureHandle);
         if (!Blur1Texture)
-            Blur1Texture = g_pEngine_01436e98->m_texturePool.Get(Blur1TextureHandle);
+            Blur1Texture = NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().StartTextureUse(Blur1TextureHandle);
         if (!Blur2Texture)
-            Blur2Texture = g_pEngine_01436e98->m_texturePool.Get(Blur2TextureHandle);
+            Blur2Texture = NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().StartTextureUse(Blur2TextureHandle);
         {
             CRenderTarget current(NEngineInternal::GPDisplayManager->CurrentRenderSurface,
                                   NEngineInternal::GPDisplayManager->CurrentZBufferSurface);

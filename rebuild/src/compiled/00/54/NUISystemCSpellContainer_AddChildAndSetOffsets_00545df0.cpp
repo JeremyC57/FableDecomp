@@ -14,12 +14,14 @@
 // evaluated first and spilled into the dead argument slot across the calls (the child pointer is read before the slot is
 // reused; a named float local gets its own frame word instead); the map key 0 is a frame temporary; GetStates() is called before the operator[] whose
 // key argument was pushed first; the float is stored as a raw dword.
-class C2DVector { public:
-    float X;
-    float Y;
-    C2DVector() { }
-};
-
+// NF44 (round 6): the local C2DVector / NUISystem::CUIState / CStateMap stand-ins replaced by the shared engine/C2DVector.h,
+// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line), so the
+// subscript binds STLport's map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row's spelling).
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
 namespace NUISystem {
 class CComponent;
 }
@@ -33,17 +35,7 @@ public:
 };
 
 namespace NUISystem {
-class CUIState {
-public:
-    unsigned long StateChangeFlag;                 // +0x00
-    long          StateChangeType;                 // +0x04
-    C2DVector     Position;                        // +0x08
-};
-class CStateMap {                                  // map<unsigned long, CUIState>
-public:
-    unsigned char _rep[0xc];
-    CUIState& operator[](const unsigned long& key);   // 0x0042D5B1
-};
+typedef std::map<unsigned long, CUIState> CStateMap;   // map<unsigned long, CUIState> (12 bytes)
 class CComponent {
 public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();

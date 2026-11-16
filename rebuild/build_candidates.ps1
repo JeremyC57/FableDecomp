@@ -76622,9 +76622,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042bead'
-        Module = '_global'
-        Source = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042bead.cpp'
-        TestSource = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042bead_test.cpp'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/42/CTCInventoryWeapons_AddComponentToAvailableWeaponsEntries_0042bead.cpp'
+        TestSource = '00/42/CTCInventoryWeapons_AddComponentToAvailableWeaponsEntries_0042bead_test.cpp'
         PassPattern = 'PASS_0042bead'
     }
     [pscustomobject]@{

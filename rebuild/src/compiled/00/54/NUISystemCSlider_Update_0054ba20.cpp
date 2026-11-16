@@ -11,19 +11,16 @@
 // reassociates it into `(v - min) * (dim / range)` when dim and range are both memory operands. The X range is a
 // named local (spilled, reused by the move arm); the Y range is recomputed in each arm.
 #include <math.h>
-class C2DVector { public:
-    float X, Y;
-    C2DVector& operator+=(const C2DVector& v) { X += v.X; Y += v.Y; return *this; }
-};
-struct CUIState {
-    unsigned long StateChangeFlag;   // +0x00
-    long          StateChangeType;   // +0x04
-    C2DVector     Position;          // +0x08
-};
-struct CStateMap {                   // STLport map<unsigned long, CUIState> (12 bytes)
-    void* Header; unsigned long NodeCount; unsigned long Compare;
-    CUIState& operator[](const unsigned long& key);   // 0x0042D5B1
-};
+// NF44 (round 6): the local C2DVector / CUIState / CStateMap stand-ins replaced by the shared engine/C2DVector.h (FABLE_RETAIL_C2DVECTOR:
+// operator+=), engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line),
+// so the subscript binds STLport's map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row's spelling).
+#define FABLE_RETAIL_C2DVECTOR
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+typedef std::map<unsigned long, NUISystem::CUIState> CStateMap;   // 12 bytes
 struct CChangingStateComponent {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

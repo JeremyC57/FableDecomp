@@ -16,59 +16,19 @@
 // CComponent / CChangingStateComponent rows (0x0052C730, 0x0052E6B0): StateMap +0x24, Position +0x34,
 // child vector +0xb0 (8-byte CCountedPointer<CComponent> elements), CComponent 0x134 bytes. +0xd0 is Size.Y (PDB
 // CComponent::Size at retail +0xcc), here the stacked content height.
+// NF44 (round 6): the local C2DVector / CUIState / state-map stand-ins replaced by the shared engine/C2DVector.h,
+// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line), so the
+// subscript binds STLport map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row spelling).
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+
 namespace NUISystem {
 
-struct C2DVector {
-    float X;
-    float Y;
-    C2DVector() {}
-};
-struct SComponentState {                    // value of the state map (key: the state index)
-    unsigned char _pad00[8];
-    C2DVector     Position;                 // +0x08
-    C2DVector     Size;                     // +0x10
-    float         Alpha;                    // +0x18
-};
-struct SStateMapNode {                      // STLport _Rb_tree_node<pair<const unsigned long, SComponentState>>
-    unsigned char   m_color;                // +0x00
-    SStateMapNode*  m_pParent;              // +0x04
-    SStateMapNode*  m_pLeft;                // +0x08
-    SStateMapNode*  m_pRight;               // +0x0c
-    unsigned long   m_key;                  // +0x10
-    SComponentState m_value;                // +0x14
-};
-struct CStateMapIterator {
-    SStateMapNode* m_pNode;
-    CStateMapIterator(SStateMapNode* node) : m_pNode(node) {}
-    SComponentState& operator*() const { return m_pNode->m_value; }
-    bool operator!=(const CStateMapIterator& other) const { return m_pNode != other.m_pNode; }
-    static SStateMapNode* Increment(SStateMapNode* node)   // STLport _Rb_global::_M_increment
-    {
-        if (node->m_pRight != 0) {
-            node = node->m_pRight;
-            while (node->m_pLeft != 0)
-                node = node->m_pLeft;
-        } else {
-            SStateMapNode* y = node->m_pParent;
-            while (node == y->m_pRight) {
-                node = y;
-                y = y->m_pParent;
-            }
-            if (node->m_pRight != y)
-                node = y;
-        }
-        return node;
-    }
-    void operator++() { m_pNode = Increment(m_pNode); }
-};
-struct CStateMap {                          // map<unsigned long, SComponentState> (STLport, 12 bytes)
-    SStateMapNode* m_pHeader;
-    unsigned long  m_nodeCount;
-    unsigned char  m_compare;
-    CStateMapIterator begin() { return CStateMapIterator(m_pHeader->m_pLeft); }
-    CStateMapIterator end() { return CStateMapIterator(m_pHeader); }
-    SComponentState& operator[](const unsigned long& key);   // 0x0042D5B1
-};
+typedef std::map<unsigned long, CUIState> CStateMap;          // STLport, 12 bytes
+typedef CStateMap::iterator CStateMapIterator;
 class CComponent;
 struct CCountedComponentPointer {           // CCountedPointer<NUISystem::CComponent>
     CComponent* Object;
@@ -197,7 +157,7 @@ void CTextContainer::Initialise()
         do {
             y += Children[i - 1]->GetSize().Y;
             for (CStateMapIterator it = Children[i]->GetStateMap().begin(); it != Children[i]->GetStateMap().end(); ++it)
-                (*it).Position.Y = y;
+                (*it).second.Position.Y = y;
             Children[i]->SetPosition(Children[i]->GetStateMap()[state].Position);
         } while (++i < Children.size());
     }

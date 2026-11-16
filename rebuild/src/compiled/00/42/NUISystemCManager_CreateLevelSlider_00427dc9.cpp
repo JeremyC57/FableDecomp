@@ -32,28 +32,18 @@ CWideString __fastcall GFIntToWideString(long value);   // 0x00405F00 (hidden re
 class C2DCoordI { public:
     long X, Y;
 };
-class CRGBColour { public:
-    unsigned char B, G, R, A;
-    CRGBColour() {}
-    CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-};
+// NF44 (round 6): the local C2DVector / CUIState / state-map stand-ins replaced by the shared engine/C2DVector.h,
+// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line), so the
+// subscript binds STLport map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row spelling).
+#include "engine/C2DVector.h"
+#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
 
 namespace NUISystem {
 
-struct C2DVector {
-    float X;
-    float Y;
-};
-struct SComponentState {
-    unsigned char _pad00[8];
-    C2DVector     Position;                 // +0x08
-    C2DVector     Size;                     // +0x10
-    CRGBColour    Colour;                   // +0x18
-};
-struct CStateMap {                          // map<unsigned long, SComponentState> (STLport, 12 bytes)
-    unsigned char _body[12];
-    SComponentState& operator[](const unsigned long& key);   // 0x0042D5B1
-};
+typedef std::map<unsigned long, CUIState> CStateMap;   // STLport, 12 bytes
 
 class CComponent {
 public:
@@ -114,7 +104,7 @@ CComponent* CManager::CreateLevelSlider(const CWideString& text, const C2DCoordI
     if (fill) {
         CStateMap& fillStates = fill->GetStateMap();
         float fraction = maxLevel == 0 ? 1.0f : (float)level / maxLevel;
-        fillStates[0].Size.X = fraction * 32.0f;
+        fillStates[0].Zoom.X = fraction * 32.0f;
         CRGBColour tint(colour.R, colour.G, colour.B, 0xdc);
         fillStates[0].Colour = tint;
     }

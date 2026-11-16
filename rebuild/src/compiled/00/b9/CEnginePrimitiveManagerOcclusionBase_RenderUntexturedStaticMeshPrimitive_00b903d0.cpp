@@ -9,7 +9,7 @@
 //   UpdateFogColour 0x009897C0, UpdateLightGlobals 0x0098A760, UpdateCombinedProjectionTransform 0x00988A50), the expanded
 //   seven-argument DrawBuffersIndexed (IDirect3DDevice9 SetStreamSource +0x190, SetIndices +0x1A0, DrawIndexedPrimitive +0x148,
 //   CRenderStateManager::RealiseRenderState 0x00A058C0).
-// Globals: NEngineInternal::GPShaderRenderManager 0x01436E14, g_pRenderManagerCore 0x01436E18.
+// Globals: NEngineInternal::GPShaderRenderManager 0x01436E14, NEngineInternal::GPRenderManager 0x01436E18.
 // Layout: engine headers (VertexShader +0xC; C3DPrimitive2 VertexBuffer +0x30, IndexBuffer +0x34, StaticBlockCount +0x40,
 //   StaticBlocks +0x44, VertexCount +0x58; CShaderRenderManager RenderManager +0x1D0, D3DDevice +0x1D4, FixedFunctionVertexMode
 //   +0x395, UpdateFlags +0x3D8).
@@ -41,12 +41,16 @@
 namespace NEngineInternal {
 extern CShaderRenderManager* GPShaderRenderManager;        // 0x01436E14
 }
-extern CRenderManagerCore* g_pRenderManagerCore;           // 0x01436E18
+// NF44 (round 6): the global 0x01436E18 is NEngineInternal::GPRenderManager (Ego_r.pdb / FableWin.pdb
+// ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A); CRenderManager : CRenderManager2D : CRenderManagerCore at offset 0
+// (engine/CRenderManager.h), so the CRenderManagerCore members are called through it unchanged (was g_pRenderManagerCore).
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 void CEnginePrimitiveManagerOcclusionBase::RenderUntexturedStaticMeshPrimitive(C3DPrimitive2* primitive, const CMatrix3x4& transform)
 {
     NEngineInternal::GPShaderRenderManager->ApplyVertexShader(VertexShader, false);
     if (NEngineInternal::GPShaderRenderManager->IsFixedFunctionVertexMode())
-        g_pRenderManagerCore->SetWorldTransform(transform);
+        NEngineInternal::GPRenderManager->SetWorldTransform(transform);
     else
         NEngineInternal::GPShaderRenderManager->SetWorldTransform(transform);
     NEngineInternal::GPShaderRenderManager->PrepareForRender(1);

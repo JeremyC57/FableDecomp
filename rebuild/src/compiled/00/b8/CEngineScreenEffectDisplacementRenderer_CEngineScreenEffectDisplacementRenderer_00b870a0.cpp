@@ -85,16 +85,19 @@ struct CRenderStateCaptureBlockRetail {
 
 class CEngineInit; // No quarantined header exists; the exact PDB constructor signature uses this reference.
 
-class CGPUScratchBufferTextureManager { public:
-    void FreeMemoryPage(long page); // 0x00F37030
-};
+// NF44 (round 6): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) and its +0x3190 member the CGPUScratchBufferTextureManager
+// (engine/CEngineResourceManager.h GetGPUScratchBufferTextureManager(), engine/CGPUScratchBufferTextureManager.h, Ego_r.pdb member
+// spellings); were the address-named CEngineGlobal_01436e98 / g_pEngine_01436e98 and local scratch-manager stand-ins.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ENDTEXTUREUSE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
-struct CEngineGlobal_01436e98 {
-    unsigned char Prefix[0x3190];
-    CGPUScratchBufferTextureManager ScratchBufferTextureManager;
-};
 
-extern CEngineGlobal_01436e98* g_pEngine_01436e98; // 0x01436E98
 extern CRenderStateManagerCaptureView* g_pRenderStateManager_013cb508; // 0x013CB508
 extern void FABLE_FASTCALL RestoreCaptureBlockAtGlobal(CRenderStateManagerCaptureView* manager); // 0x00A05840
 
@@ -182,7 +185,7 @@ CEngineScreenEffectDisplacementRenderer::~CEngineScreenEffectDisplacementRendere
 {
     const fable_i32 page = DynamicTexturePageHandle;
     if (page >= 0)
-        g_pEngine_01436e98->ScratchBufferTextureManager.FreeMemoryPage(page);
+        NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(page);
     if (StencilRenderingCaptureBlock.Open) {
         StencilRenderingCaptureBlock.Open = false;
         RestoreCaptureBlockAtGlobal(g_pRenderStateManager_013cb508);

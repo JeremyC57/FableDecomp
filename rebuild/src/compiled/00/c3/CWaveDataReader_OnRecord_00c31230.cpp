@@ -9,10 +9,10 @@
 // Shape: the record pointer lives in edi, so the key local is homed in its dead argument slot; the find-or-create is an
 //   inline map member with an early return (both results meet in eax before the move to esi; an `if (!e) e = Create`
 //   body, inline or open-coded, tests esi instead and costs two bytes).
-struct CString {
-    char* m_pchData;
-    CString& operator=(const char* text);   // 0x00C0C200
-};
+// NF44 (round 6): the local `struct CString` stand-in replaced by the shared engine/CString.h (FABLE_RETAIL_CSEGMENTFILE_PASS23: the MFC
+// `const CString& operator=(const char*)`), so the assignment binds ??4CString@@QAEABV0@PBD@Z at 0x00C0C200.
+#define FABLE_RETAIL_CSEGMENTFILE_PASS23
+#include "engine/CString.h"
 
 struct SWaveEntry {                         // 0x20 bytes
     void* m_key;                            // +0x00

@@ -2,11 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B99B50, length 96 bytes.
 // Callees: the common frame start @ 0x00B99860 (a tail jump from both arms; the manifest label "engine_copy_global_transform_to_array" is propagated). Globals: the
 // render settings @ 0x01436E60. Shape: each arm forms the four addresses with `lea` pairs (edx/eax) and stores them in order; `this` stays in ecx throughout.
-struct SRenderSettings_01436e60 {
-    unsigned char _pad[0x334];
-    long          m_clothMode;                     // +0x334
-};
-extern SRenderSettings_01436e60* g_pRenderSettings_01436e60;   // 0x01436E60
+// NF44 (round 6): the 0x01436E60 global is NEngineInternal::GPShadowRenderer (Ego_r.pdb / FableWin.pdb
+// ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A) and +0x334 its RenderingTechnique, read through the FableWin.pdb inline
+// PeekRenderingTechnique() (engine/CEngineShadowRenderer.h _MEMBERS); were the SRenderSettings_01436e60 / g_pRenderSettings_01436e60 stand-ins.
+#define FABLE_RETAIL_CENGINESHADOWRENDERER
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_MEMBERS
+#include "engine/CEngineShadowRenderer.h"
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 
 struct SMeshBuffer { void* m_pA; void* m_pB; };   // 8 bytes
 
@@ -21,7 +23,7 @@ class CEnginePrimitiveManagerRepeatedStaticMeshes { public:
 
 void CEnginePrimitiveManagerRepeatedStaticMeshes::FrameStart()
 {
-    if (g_pRenderSettings_01436e60->m_clothMode == 2) {
+    if (NEngineInternal::GPShadowRenderer->PeekRenderingTechnique() == CEngineShadowRenderer::SHADOW_RENDERING_TECHNIQUE_COLOUR_BUFFER) {
         m_pCurrent[0] = &m_shadow[0];
         m_pCurrent[1] = &m_shadow[1];
         m_pCurrent[2] = &m_shadow[2];

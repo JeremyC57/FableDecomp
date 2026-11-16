@@ -5,7 +5,7 @@
 // Name: Ego_r.pdb `?PostRenderClearRenderStates@CEngineLandscapeRenderer@@AAEXXZ` (private; the catalog binding spells QAE).
 // Callees: none out of line -- IDirect3DDevice9 virtual slots 104 SetIndices (+0x1A0), 100 SetStreamSource (+0x190) and 65
 //   SetTexture (+0x104) (d3d9.h order), all through the render core's inline state-cache helpers.
-// Globals: g_pRenderManagerCore 0x01436E18 (CRenderManagerCore: TextureStagesInUse +0x3CB8, PD3DDevice +0x3CF0,
+// Globals: NEngineInternal::GPRenderManager 0x01436E18 (CRenderManagerCore: TextureStagesInUse +0x3CB8, PD3DDevice +0x3CF0,
 //   PSelectedIndexBuffer +0x3CF4, CurrentlySelectedTextures[8] +0x3D00 -- Ego_r.pdb names at retail offsets, engine header);
 //   NEngineInternal::GPLightingManager 0x01436E9C (FadedShadowDiffuseFactorEnabled +0xCE, CurrentThemeChannel +0xE0, StateUpdateFlags
 //   +0xE4, SelfIlluminationAmbientPercentage +0xE8 -- engine header).
@@ -173,7 +173,11 @@ private:
             TextureStagesInUse = stage + 1;
     }
 };
-extern CRenderManagerCore* g_pRenderManagerCore;           // 0x01436E18
+// NF44 (round 6): the global 0x01436E18 is NEngineInternal::GPRenderManager (Ego_r.pdb / FableWin.pdb
+// ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A); CRenderManager : CRenderManager2D : CRenderManagerCore at offset 0
+// (engine/CRenderManager.h), so the CRenderManagerCore members are called through it unchanged (was g_pRenderManagerCore).
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
 class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0;
@@ -234,10 +238,10 @@ private:
 
 void CEngineLandscapeRenderer::PostRenderClearRenderStates()
 {
-    g_pRenderManagerCore->SelectIndexBuffer(0, 0);
-    g_pRenderManagerCore->SelectVertexBuffer(0, 0);
-    g_pRenderManagerCore->AttachTextureToStage(0, 0);
-    g_pRenderManagerCore->AttachTextureToStage(1, 0);
-    g_pRenderManagerCore->AttachTextureToStage(2, 0);
+    NEngineInternal::GPRenderManager->SelectIndexBuffer(0, 0);
+    NEngineInternal::GPRenderManager->SelectVertexBuffer(0, 0);
+    NEngineInternal::GPRenderManager->AttachTextureToStage(0, 0);
+    NEngineInternal::GPRenderManager->AttachTextureToStage(1, 0);
+    NEngineInternal::GPRenderManager->AttachTextureToStage(2, 0);
     NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
 }

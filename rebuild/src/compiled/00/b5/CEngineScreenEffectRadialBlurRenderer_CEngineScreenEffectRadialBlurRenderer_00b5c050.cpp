@@ -46,20 +46,18 @@ class CPixelShader : public CShaderBase { public:  // vtable 0x0129A054
     virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
     CPixelShaderData* Data;                        // +0x04
 };
-class CGPUScratchBufferTextureManager { public:
-    void FreeMemoryPage(long);                     // 0x00F37030
-};
-struct CEngineGlobal_01436e98 {
-    unsigned char                   _pad0000[0x3190];
-    CGPUScratchBufferTextureManager ScratchTextures;   // +0x3190
-};
-extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
-class CEngineComponent { public:                   // RTTI base, 0xc bytes (engine/CEngineComponent.h layout)
-    virtual ~CEngineComponent();                   // 0x00B59730
-    void**        GlobalPointerAddress;            // +0x04
-    bool          RenderEnabled;                   // +0x08
-    unsigned char KeepAlive;                       // +0x09
-};
+// NF44 (round 6): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) and its +0x3190 member the CGPUScratchBufferTextureManager
+// (engine/CEngineResourceManager.h GetGPUScratchBufferTextureManager(), engine/CGPUScratchBufferTextureManager.h, Ego_r.pdb member
+// spellings); were the address-named CEngineGlobal_01436e98 / g_pEngine_01436e98 and local scratch-manager stand-ins.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ENDTEXTUREUSE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
+// NF44 (round 6): CEngineComponent is the shared engine/CEngineComponent.h class (pulled in by CEngineResourceManager.h); was a local model.
 class CTexture;
 class CEngineInit;
 class CEngineScreenEffectRadialBlurRenderer : public CEngineComponent {
@@ -81,5 +79,5 @@ public:
 CEngineScreenEffectRadialBlurRenderer::~CEngineScreenEffectRadialBlurRenderer()
 {
     if (DynamicTexturePageHandle >= 0)
-        g_pEngine_01436e98->ScratchTextures.FreeMemoryPage(DynamicTexturePageHandle);
+        NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(DynamicTexturePageHandle);
 }

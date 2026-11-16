@@ -38,6 +38,9 @@
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEFCLASSINDEX
 #define FABLE_RETAIL_CENGINELANDSCAPERENDERER
 #define FABLE_RETAIL_CENGINELANDSCAPERENDERER_PEEKTHEME
+// NF44 (round 6): the world-map global 0x01436E8C is NEngineInternal::GPEngineWorldMap (Ego_r.pdb / FableWin.pdb
+// ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A), through the engine/CEngineMap.h opt-in (was g_pEngineWorldMap).
+#define FABLE_RETAIL_CENGINEMAP_GPENGINEWORLDMAP
 #include "engine/CEngineMap.h"
 #include "engine/CEngineWorldMap.h"
 #include "engine/CIDrawMap.h"
