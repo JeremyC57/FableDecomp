@@ -2,11 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B906C0, length 54 bytes.
 // Callees: the renderer's BeginUntextured @ 0x00B8D090 and EndUntextured(colour) @ 0x00B8D0A0 (both empty in retail; on the global @ 0x01436E5C), RenderUntexturedStaticMeshPrimitive
 // @ 0x00B903D0 (on `this`: the mesh, the box). Shape: `this` stays in esi, the global is re-read for the end call, the arguments come straight from the stack.
-struct CEngineRenderer_00b906c0 {
-    void BeginUntextured();                        // 0x00B8D090
-    void EndUntextured(void* colour);              // 0x00B8D0A0
-};
-extern CEngineRenderer_00b906c0* g_pRenderer_01436e5c;   // 0x01436E5C
+// NF37: 0x00B8D090 / 0x00B8D0A0 are CEngineOcclusionManager::StartOcclusionTest / EndOcclusionTest (Ego_r.pdb 0x00A347A0 / 0x00A347B0,
+// the empty PC bodies) on NEngineInternal::GPOcclusionManager 0x01436E5C (the landed spelling of 0x00B8D420 and the cloth renderers).
+#define FABLE_RETAIL_CENGINEOCCLUSIONMANAGER
+#define FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_OCCLUSIONTEST
+#include "engine/CEngineOcclusionManager.h"
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }   // 0x01436E5C
 
 struct COcclusionData_00b906c0 {
     unsigned char _pad[0x94];
@@ -22,7 +23,7 @@ struct CEnginePrimitiveManagerOcclusionBase {
 
 void CEnginePrimitiveManagerOcclusionBase::DrawVisibilityTestBox(void* box, void* colour)
 {
-    g_pRenderer_01436e5c->BeginUntextured();
+    NEngineInternal::GPOcclusionManager->StartOcclusionTest();
     RenderUntexturedStaticMeshPrimitive(m_pOcclusionData->m_pTestMesh, box);
-    g_pRenderer_01436e5c->EndUntextured(colour);
+    NEngineInternal::GPOcclusionManager->EndOcclusionTest((unsigned long)colour);
 }

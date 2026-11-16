@@ -89,7 +89,8 @@ struct CIntelligentPointerConstCreature : CBaseIntelligentPointer {   // CIntell
     virtual void v00();
     CIntelligentPointerConstCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
-bool __fastcall IsAwareOfThingImplementation(CThingCreatureBase* creature, CThing* thing, bool flag);   // 0x00864700
+class CThingAICreature;
+namespace NCreatureAI { bool __fastcall IsAwareOfThingIndirectly(const CThingAICreature* creature, const CThing* thing, bool flag); }   // 0x00864700  NF37: Ego_r + FableWin ?IsAwareOfThingIndirectly@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z
 
 class CAIBrain { public:
     unsigned char _pad00[0x18];
@@ -117,7 +118,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_RunAwayFrom(CIntelligentPointerConst
         return AI_ACTION_ABORTED;
     CIntelligentPointerConstCreature enemy(((CThing*)threat.GetPItem()));
     for (;;) {
-        if (!IS_THING_ALIVE(enemy) || !IsAwareOfThingImplementation(GetCreature(), ((CThing*)enemy.GetPItem()), false))
+        if (!IS_THING_ALIVE(enemy) || !NCreatureAI::IsAwareOfThingIndirectly((const CThingAICreature*)GetCreature(), ((CThing*)enemy.GetPItem()), false))
             return AI_ACTION_DONE;
         C3DVector away = GetCreature()->GetPos() - ((CThing*)enemy.GetPItem())->GetPos();
         CThingCreatureBase* creature = GetCreature();

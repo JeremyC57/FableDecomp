@@ -47,7 +47,7 @@ class CSystemManager { public:
 
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
-extern long g_ConfigLevel;                         // 0x01375080 (GFConfigDetection result, -1 = no cap)
+extern long g_MaxAntialiasing;                       // 0x01375080 (GFConfigDetection result, -1 = no cap)
 
 class CUserProfileManager { public:
     unsigned long GetMaxAntialiasing() const;
@@ -58,12 +58,12 @@ unsigned long CUserProfileManager::GetMaxAntialiasing() const
     CLongVector levels;
     CSystemManager* system = GFGetSystemManager();
     system->PDisplayManager->GetSupportedAntialiasingLevels(levels);
-    if (g_ConfigLevel != -1)
+    if (g_MaxAntialiasing != -1)
     {
         long index = -1;
         for (long* it = levels.begin(); it != levels.end(); ++it)
         {
-            if (*it > g_ConfigLevel)
+            if (*it > g_MaxAntialiasing)
                 break;
             ++index;
         }

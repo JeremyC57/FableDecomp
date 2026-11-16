@@ -56,7 +56,7 @@ public:
     }
 };
 
-bool __fastcall IsAwareOfThingImplementation(CThingAICreature* creature, CThing* thing, bool flag);   // 0x00864700
+namespace NCreatureAI { bool __fastcall IsAwareOfThingIndirectly(const CThingAICreature* creature, const CThing* thing, bool flag); }   // 0x00864700  NF37: Ego_r + FableWin ?IsAwareOfThingIndirectly@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z
 class CThingAICreature;
 namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* viewer, const CThing* target, bool ignoreLight); }  // 0x008645E0
 
@@ -75,7 +75,7 @@ class CThingFilter_IsOpinionSourceWithFreshDeed { public:
     CIntelligentPointer<CThingAICreature> PCreature;    // +0x00
     long LastVDeedID;                                   // +0x08
     unsigned __int64 LastSourceUID;                     // +0x10
-    bool IsAware(CThing* source, bool flag) const { return IsAwareOfThingImplementation(PCreature.GetTypedItem(), source, flag); }
+    bool IsAware(CThing* source, bool flag) const { return NCreatureAI::IsAwareOfThingIndirectly(PCreature.GetTypedItem(), source, flag); }
     bool CanSee(CThing* source, bool flag) const { return NCreatureAI::IsAwareOfThing((const CThingAICreature*)((CThing*)PCreature.GetTypedItem()), source, flag); }
     bool operator()(CThing* source) const;
 };

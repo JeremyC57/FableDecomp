@@ -37,7 +37,7 @@
 #define FABLE_RETAIL_CTCDPARTICLEEMITTER_FULL
 #define FABLE_RETAIL_CTCBOSS_EFFECTS
 #define FABLE_RETAIL_LOOK_HEAD_ANIM
-#define FABLE_RETAIL_CTCHITLOCATIONS_FROMNAME
+#define FABLE_RETAIL_CTCHITLOCATIONS_WITHDEFNAME   // NF37: the PDB spelling of 0x00815820
 #define FABLE_RETAIL_CHITLOCATION_SETENABLED
 #define FABLE_RETAIL_CCREATUREACTION_SCORPIONSUMMON_CLASS
 #include "fable_string.h"
@@ -98,8 +98,8 @@ void NCreatureMode::CModeScorpionKingVulnerable::FrameUpdate()
         } else {
             CTCHitLocations* hitLocations = 0;
             PCreature->GetTC(TCI_HIT_LOCATIONS, &hitLocations);
-            NHitLocations::CHitLocation* belly = hitLocations->GetPHitLocationFromName("HIT_LOCATION_SCORPION_KING_BELLY");
-            NHitLocations::CHitLocation* body = hitLocations->GetPHitLocationFromName("HIT_LOCATION_SCORPION_KING");
+            NHitLocations::CHitLocation* belly = hitLocations->GetPHitLocationWithDefName("HIT_LOCATION_SCORPION_KING_BELLY");
+            NHitLocations::CHitLocation* body = hitLocations->GetPHitLocationWithDefName("HIT_LOCATION_SCORPION_KING");
             belly->SetEnabled(false);
             body->SetEnabled(true);
         }

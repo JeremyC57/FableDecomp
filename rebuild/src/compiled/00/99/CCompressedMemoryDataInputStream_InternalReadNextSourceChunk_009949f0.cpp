@@ -8,6 +8,8 @@
 // the pushes. The byte count is kept in edi across the hook call; `n > 0` is the unsigned compare
 // (`test ; ja`). The manifest's doubled "CCompressedMemoryDataInputStream::CCompressedMemory
 // DataInputStream::" prefix is a naming artefact; vtable 0x0129A758 slot 8 is this body.
+#define FABLE_RETAIL_CAFILE_ERRORCALLBACK   // NF37: CAFile::m_errorCallback 0x013BC9FC (FableWin/Ego_r ?m_errorCallback@CAFile@@0P6IXXZA)
+#include "engine/CAFile.h"
 #include "engine/CCompressedMemoryDataInputStream.h"
 
 struct CCompressorZlib_Calls {
@@ -19,8 +21,7 @@ template<class T> struct CScopedPointer {                       // scoped_ptr<T>
     T* operator->() const { return ptr; }
 };
 
-extern void (__cdecl* g_pfnAssertionFailed)();                  // 0x013BC9FC: installed debug hook
-#define FABLE_ASSERT(cond) do { if (!(cond)) { if (g_pfnAssertionFailed != 0) g_pfnAssertionFailed(); } } while (0)
+#define FABLE_ASSERT(cond) do { if (!(cond)) { CAFile::DoErrorCallback(); } } while (0)
 
 struct CCompressedMemoryDataInputStream_Retail {
     virtual void v00();

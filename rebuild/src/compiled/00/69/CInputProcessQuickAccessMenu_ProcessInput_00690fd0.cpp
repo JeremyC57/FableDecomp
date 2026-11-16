@@ -12,6 +12,8 @@
 // Shape: the presence test precedes the lookup, so the component pick is the plain end/hit ternary (no preload); the
 //   release arm's 0x25/0x26 sends are cross-jumped into from the press arm.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
+#include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 class CProcessedInput {
@@ -67,7 +69,6 @@ class CInputProcessQuickAccessMenu : public CInputProcessGameBase {
 public:
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 
@@ -80,24 +81,24 @@ void CInputProcessQuickAccessMenu::ProcessInput(const CInputEvent& event, CProce
     if (!menu->IsActive() || menu->IsClosing())
         return;
     if (IsEventButtonPressed(event)) {
-        if (IsEventGameAction(0x25, event))
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_UP, event))
             NUISystem::CManager::GetInstance()->SendEvent(0);
-        else if (IsEventGameAction(0x26, event))
+        else if (IsEventGameAction(GAME_ACTION_INVENTORY_DOWN, event))
             NUISystem::CManager::GetInstance()->SendEvent(1);
-        else if (IsEventGameAction(0x27, event))
+        else if (IsEventGameAction(GAME_ACTION_INVENTORY_LEFT, event))
             NUISystem::CManager::GetInstance()->SendEvent(2);
-        else if (IsEventGameAction(0x28, event))
+        else if (IsEventGameAction(GAME_ACTION_INVENTORY_RIGHT, event))
             NUISystem::CManager::GetInstance()->SendEvent(3);
-        else if (IsEventGameAction(2, event)) {
+        else if (IsEventGameAction(GAME_ACTION_OPEN_INVENTORY, event)) {
             menu->RequestClose();
             processed.SetAsPerformedEvent();
             return;
         } else
             return;
     } else if (IsEventButtonReleased(event)) {
-        if (IsEventGameAction(0x25, event))
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_UP, event))
             NUISystem::CManager::GetInstance()->SendEvent(0);
-        else if (IsEventGameAction(0x26, event))
+        else if (IsEventGameAction(GAME_ACTION_INVENTORY_DOWN, event))
             NUISystem::CManager::GetInstance()->SendEvent(1);
         else
             return;

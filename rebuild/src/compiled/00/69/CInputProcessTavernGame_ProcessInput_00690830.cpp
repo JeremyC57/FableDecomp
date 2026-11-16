@@ -16,6 +16,8 @@
 // Shape: `CTCGamePlayer* player = 0; if (HasTC) player = GetTC;` gives the `xor ebx,ebx` preload; each UI arm returns
 //   on its own (no SetHandled in this process).
 #include "fable_compiler.h"
+#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
+#include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 class CProcessedInput;
 class C2DVector { public:
@@ -95,7 +97,6 @@ class CInputProcessTavernGame : public CInputProcessGameBase {
 public:
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 
@@ -108,16 +109,16 @@ void CInputProcessTavernGame::ProcessInput(const CInputEvent& event, CProcessedI
     if (player->GetGame())
         player->GetGame()->ProcessInput(event, processed, this);
     if (IsEventButtonPressed(event)) {
-        if (IsEventGameAction(0x19, event))
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1a);
-        else if (IsEventGameAction(0x4c, event))
+        else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1b);
     } else if (IsEventButtonHeld(event)) {
-        if (IsEventGameAction(0x19, event))
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1c);
-        else if (IsEventGameAction(0x4c, event))
+        else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1d);
-    } else if (IsEventGameAction(0x47, event)) {
+    } else if (IsEventGameAction(GAME_ACTION_MOVE_MOUSE_ON_GUI, event)) {
         C2DVector movement(event.MouseMovementXY);
         NUISystem::CManager::GetInstance()->MouseMovement = movement;
         NUISystem::CManager::GetInstance()->SendEvent(0x19);

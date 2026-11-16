@@ -8,6 +8,7 @@ struct CTexture : CTexturePdb { void Uninitialise(); };   // 0x009f9f70 ?Uniniti
 #define CSurface CSurfaceDonorLayout
 #include "engine/CSurface.h"
 #undef CSurface
+#define FABLE_RETAIL_CRENDERMANAGERCORE_WAITWHILEGPUISBUSY
 #include "engine/CRenderManagerCore.h"
 #include "engine/CPixelFormat.h"
 #include <new>
@@ -16,7 +17,7 @@ struct CScratchTexture:CTexture {~CScratchTexture(){Uninitialise();}};
 // slot0 scalar destructor41C9C0 calls Uninitialise9F2E20 and optionally scalar delete.
 struct CScratchSurface {virtual ~CScratchSurface();IDirect3DSurface9* PD3DSurface;unsigned AllocationSource;void* PAllocatedMemory;};
 struct CScratchRenderMethods:CRenderManagerCore {
- void PrepareShutdown(); //00a0af80 true no-op member
+ // NF37: 0x00A0AF80 is the base CRenderManagerCore::WaitWhileGPUIsBusy (Ego_r/FableWin), engine/CRenderManagerCore.h
  void AttachTextureToStage(int,CTexture*); //009a0cf0
 };
 // System/display headers unavailable; PDB System.PDisplayManager96, Display.PRenderManager8.
@@ -43,7 +44,7 @@ public:
 bool CGPUScratchBufferTextureManager::BeginShutdown(){
  if(!ShutdownFlag){
  CScratchRenderMethods* renderer=GFGetSystemManager()->PDisplayManager->PRenderManager;
- renderer->PrepareShutdown();
+ renderer->WaitWhileGPUIsBusy();
  for(int i=0;i<4;++i)renderer->AttachTextureToStage(i,0);
  for(unsigned i=0;i<Resources.Size();++i){
   CScratchResource& r=Resources[i];delete r.Texture;delete r.Surface;r.Texture=0;r.Surface=0;

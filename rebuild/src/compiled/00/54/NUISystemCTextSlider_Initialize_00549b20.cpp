@@ -1,3 +1,5 @@
+#include "engine/CCountedPointer.h"
+namespace NUISystem { class CAction; }
 // NUISystem::CTextSlider::Initialize() -- read the slider def: input delay and default action, clear the selection state; install the def's selected action, queue its default action, create the right and left arrow components with their scroll actions (type 0x123, long parameter 0x15 / 0x14) targeted at the slider; finally install the change-selection action (0x57), record the last child index and refresh
 // Leaf: ?Initialize@CTextSlider@NUISystem
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00549B20, 1079 bytes (+ int3 padding), plain `ret`; NUISystem::CTextSlider vtable
@@ -31,13 +33,13 @@ struct C2DVector {
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
 };
 
-void __fastcall DestroyAction(void* object);            // 0x00429F43: the per-type deleter stored in the count block
+// NF37: 0x00429F43 is CCountedPointer<NUISystem::CAction>::DeleteData (Ego_r.pdb 0x00438DF1 + FableWin.pdb), the per-T deleter.
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
     SCountBlock() { }
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(DestroyAction), m_pObject(object) { }
+    SCountBlock(void* object) : m_references(1), m_pfnDestroy(CCountedPointer<NUISystem::CAction>::DeleteData), m_pObject(object) { }
 };
 template<class T> struct CCountedPointer {
     T*           m_pObject;                // +0

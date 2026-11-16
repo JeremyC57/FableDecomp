@@ -5,23 +5,23 @@ class CFaction;
 struct CFactionHolder {
     int calls;
     bool ret;
-    bool IsAlliedWithFaction(CFaction* faction);
+    bool IsAlliedWithFaction(const CFaction* faction);
 };
 
 class CTCEnemy { public:
     char pad[0x18];
     CFactionHolder* m_holder; // +0x18
-    bool IsAlliedWithFaction(CFaction* faction);
+    bool IsAlliedWithFaction(const CFaction* faction) const;   // NF37: the retail (Ego_r/FableWin) signature
 };
 
 // local definition of the forwarding target so the test links standalone
-bool CFactionHolder::IsAlliedWithFaction(CFaction* faction)
+bool CFactionHolder::IsAlliedWithFaction(const CFaction* faction)
 {
     this->calls++;
     return this->ret;
 }
 
-bool CTCEnemy::IsAlliedWithFaction(CFaction* faction)
+bool CTCEnemy::IsAlliedWithFaction(const CFaction* faction) const
 {
     if (faction != 0) {
         CFactionHolder* h = this->m_holder;

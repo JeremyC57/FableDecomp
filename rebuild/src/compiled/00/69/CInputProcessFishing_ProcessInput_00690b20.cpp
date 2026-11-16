@@ -15,6 +15,8 @@
 // Shape: `T* p = 0; if (HasTC) p = GetTC;` gives the `xor esi,esi` preload; the lookup key and both payload values sit
 //   in the dead `event` argument slot (the event itself lives in ebx).
 #include "fable_compiler.h"
+#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
+#include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 struct CMemoryBuffer {
@@ -74,7 +76,6 @@ public:
 class CInputProcessFishing : public CInputProcessGameBase {
 public:
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 
@@ -86,13 +87,13 @@ void CInputProcessFishing::ProcessInput(const CInputEvent& event, CProcessedInpu
     CTCFishing* fishing = 0;
     if (hero->HasTC(0xb1))
         fishing = hero->GetTC(0xb1);
-    if (IsEventGameAction(0x2b, event)) {
+    if (IsEventGameAction(GAME_ACTION_FISHING_REEL_IN, event)) {
         fishing->ReelInButtonPressed();
         processed.SetAsPerformedEvent();
-    } else if (IsEventGameAction(0x2c, event)) {
+    } else if (IsEventGameAction(GAME_ACTION_FISHING_CANCEL, event)) {
         fishing->CastButtonPressed();
         processed.SetAsPerformedEvent();
-    } else if (IsEventGameAction(3, event) && hero->HasTC(0xc6)) {
+    } else if (IsEventGameAction(GAME_ACTION_OPEN_IN_GAME_MENU, event) && hero->HasTC(0xc6)) {
         CGameEvent gameEvent(0x1a);
         gameEvent.AddLong(0x17);
         gameEvent.AddBool(true);

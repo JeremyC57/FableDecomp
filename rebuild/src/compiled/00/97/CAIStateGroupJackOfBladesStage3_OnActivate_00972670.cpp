@@ -88,11 +88,11 @@ struct CTCWillPower {                           // interface 0xce
 class CTCCombat { public:                              // interface 0x30
     void SetCombatType(const CDefPointer<const CCombatTypeDef>& def);   // 0x007355F0 (Ego_r.pdb)
 };
-struct CHitLocation {
-    void SetEnabled(bool enabled);              // 0x00816390
-};
+#define FABLE_RETAIL_CHITLOCATION_SETENABLED   // NF37: the shared NHitLocations::CHitLocation (SetEnabled 0x00816390)
+#include "rebuild_abi.h"
+#include "engine/NHitLocations_CHitLocation.h"
 class CTCHitLocations { public:                        // interface 0x7f
-    CHitLocation* GetPHitLocationFromName(const CCharString& name);   // 0x00815820
+    NHitLocations::CHitLocation* GetPHitLocationWithDefName(const CCharString& name);   // 0x00815820  // NF37: Ego_r 0x0080E4C0 + FableWin 0x024E6630 ?GetPHitLocationWithDefName@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVCCharString@@@Z
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -121,10 +121,10 @@ void CAIStateGroup_JackOfBladesStage3::OnActivate()
     }
     combat->SetCombatType(def);
     CTCHitLocations* hitLocations = GetCreature()->GetTCIfPresent<CTCHitLocations>(0x7f);
-    CHitLocation* big = hitLocations->GetPHitLocationFromName("HIT_LOCATION_JACK_OF_BLADES_BIG");
+    NHitLocations::CHitLocation* big = hitLocations->GetPHitLocationWithDefName("HIT_LOCATION_JACK_OF_BLADES_BIG");
     big->SetEnabled(false);
-    CHitLocation* forcefield = hitLocations->GetPHitLocationFromName("HIT_LOCATION_JACK_OF_BLADES_FORCEFIELD");
+    NHitLocations::CHitLocation* forcefield = hitLocations->GetPHitLocationWithDefName("HIT_LOCATION_JACK_OF_BLADES_FORCEFIELD");
     forcefield->SetEnabled(false);
-    CHitLocation* body = hitLocations->GetPHitLocationFromName("HIT_LOCATION_JACK_OF_BLADES");
+    NHitLocations::CHitLocation* body = hitLocations->GetPHitLocationWithDefName("HIT_LOCATION_JACK_OF_BLADES");
     body->SetEnabled(true);
 }

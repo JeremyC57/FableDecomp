@@ -13,6 +13,8 @@
 // with its own local (a caller local is homed in the dead `size` slot); Read starts with `if (size <= 0) return;` and
 // tests `size <= SourceChunkBytesRemaining` (size on the left for `cmp ebp,[ebx+14h] ; jg`).
 // Opt: /O2 (16-aligned entry).
+#define FABLE_RETAIL_CAFILE_ERRORCALLBACK   // NF37: CAFile::m_errorCallback 0x013BC9FC (FableWin/Ego_r ?m_errorCallback@CAFile@@0P6IXXZA)
+#include "engine/CAFile.h"
 #include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStream_Methods   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
@@ -20,7 +22,6 @@
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
-extern void (__cdecl* g_pfnAssertionFailed)();               // 0x013BC9FC: installed debug hook
 
 class CACompressor { public:                                        // landed 0x00A3AEA0 (vtable 0x0129B424)
     virtual ~CACompressor();
@@ -73,8 +74,7 @@ void CDataInputStream_Methods::ReadZlibCompressed(void* data, long size)
         CCompressorZlib compressor;
         unsigned long written = compressor.InternalDecompress(buffer.GetData(), compressedSize, data, size);
         if (written != (unsigned long)size) {
-            if (g_pfnAssertionFailed != 0)
-                g_pfnAssertionFailed();
+            CAFile::DoErrorCallback();
         }
     }
 }

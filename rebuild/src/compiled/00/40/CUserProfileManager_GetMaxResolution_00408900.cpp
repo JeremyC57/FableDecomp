@@ -3,13 +3,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00408900, length 143 bytes (padded to 144), `ret`.
 // Callees: vector<CDisplayModeDesc> copy ctor @ 0x00410460 (catalog label "std_vector_C2DLineF_Copy" is the
 // propagated name of the same 16-byte-element body), free @ 0x00BFEA14 (the inline vector dtor, three copies).
-// Data: g_FableConfigWidth @ 0x01375084 (the width cap set by GFConfigDetection, -1 = none).
+// Data: g_MaxResolutionWidth @ 0x01375084 (the width cap set by GFConfigDetection, -1 = none).
 // Layout: CUserProfileManager::DisplayModes at retail +0x80 (Ego_r.pdb 0x88: two earlier vectors are 12 bytes in
 // retail); CDisplayModeDesc (16 bytes): Dimensions (C2DExtentsI: Width, Height) +0, BitsPerPixel +8, RefreshRate +0xc.
 // Shape: the capped branch first (retail lays the uncapped `size() - 1` return last); the walk counts in esi from -1
 // and stops on the first wider mode.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
-extern long g_FableConfigWidth;                    // 0x01375084
+extern long g_MaxResolutionWidth;                   // 0x01375084
 class C2DExtentsI { public: long Width; long Height; };
 class CDisplayModeDesc { public:
     C2DExtentsI Dimensions;                        // +0x00
@@ -34,12 +34,12 @@ class CUserProfileManager { public:
 long CUserProfileManager::GetMaxResolution() const
 {
     CDisplayModeVector modes(DisplayModes);
-    if (g_FableConfigWidth != -1)
+    if (g_MaxResolutionWidth != -1)
     {
         long index = -1;
         for (CDisplayModeDesc* it = modes.begin(); it != modes.end(); ++it)
         {
-            if (it->Dimensions.Width > g_FableConfigWidth)
+            if (it->Dimensions.Width > g_MaxResolutionWidth)
                 break;
             ++index;
         }

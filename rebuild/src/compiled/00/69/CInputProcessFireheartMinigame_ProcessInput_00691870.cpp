@@ -6,6 +6,8 @@
 // Layout: engine/CInputProcessFireheartMinigame.h is a flattened view (base +0x04..+0x28); the game-base methods need
 // the CInputProcessGameBase base, modelled as in the landed CInputProcessOracleMinigame 0x00691680.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
+#include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 struct CMemoryBuffer {
@@ -81,18 +83,16 @@ public:
 class CInputProcessFireheartMinigame : public CInputProcessGameBase {
 public:
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
-    bool GetEventGameActionVector(long action, const CInputEvent& event, C2DVector& vector);   // 0x00687D00
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 
 void CInputProcessFireheartMinigame::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    if (IsEventGameAction(0x3c, event)) {
+    if (IsEventGameAction(GAME_ACTION_MOVEMENT, event)) {
         CTCFireheartMinigame* minigame = 0;
         MyPlayer->GetPControlledCreature()->GetInterface(&minigame, 0x108);
         C2DVector stick;
-        if (GetEventGameActionVector(0x3c, event, stick)) {
+        if (GetControlMovementFromGameActionEvent(GAME_ACTION_MOVEMENT, event, stick)) {
             if (stick.Y > 0.5) {
                 minigame->ProcessInput(0);
                 processed.SetAsPerformedEvent();
@@ -112,22 +112,22 @@ void CInputProcessFireheartMinigame::ProcessInput(const CInputEvent& event, CPro
         return;
     CThing* hero = MyPlayer->GetPControlledCreature();
     CTCFireheartMinigame* minigame = hero->GetInterface<CTCFireheartMinigame>(0x108);
-    if (IsEventGameAction(0x2c, event) && !minigame->Quitting) {
+    if (IsEventGameAction(GAME_ACTION_FISHING_CANCEL, event) && !minigame->Quitting) {
         minigame->DelayedQuit();
         processed.SetAsPerformedEvent();
         return;
     }
-    if (IsEventGameAction(0x16, event)) {
+    if (IsEventGameAction(GAME_ACTION_ANSWER_QUESTION_YES, event)) {
         minigame->Answer(true);
         processed.SetAsPerformedEvent();
         return;
     }
-    if (IsEventGameAction(0x17, event)) {
+    if (IsEventGameAction(GAME_ACTION_ANSWER_QUESTION_NO, event)) {
         minigame->Answer(false);
         processed.SetAsPerformedEvent();
         return;
     }
-    if (IsEventGameAction(3, event) && hero->HasTC(0xc6)) {
+    if (IsEventGameAction(GAME_ACTION_OPEN_IN_GAME_MENU, event) && hero->HasTC(0xc6)) {
         CGameEvent gameEvent(0x1a);
         gameEvent.AddLong(0x17);
         gameEvent.AddBool(true);

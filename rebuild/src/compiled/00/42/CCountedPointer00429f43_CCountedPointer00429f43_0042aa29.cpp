@@ -1,3 +1,5 @@
+#include "engine/CCountedPointer.h"
+#include "engine/NUISystem_CAction.h"
 #pragma optimize("s",on)
 // CCountedPointer_00429f43::CCountedPointer_00429f43(T*) -- adopt the object: null-checked count block with the per-type destroy function
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042AA29, oracle length 62 bytes.
@@ -9,13 +11,13 @@
 // then for a non-null object allocates the 12-byte block {1, destroy fn 0x00429F43, object}
 // (operator new @ 0x00BFEA1A, null-checked), else leaves the block pointer null. Named like the
 // Reset family (unique manifest label, else the destroy function). One of 15 bodies.
-void __fastcall Destroy_00429f43(void* object);   // 0x00429F43: the per-type deleter stored in the block
+// NF37: 0x00429F43 is CCountedPointer<NUISystem::CAction>::DeleteData (Ego_r.pdb 0x00438DF1 + FableWin.pdb), the per-T deleter.
 
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_00429f43), m_pObject(object) { }
+    SCountBlock(void* object) : m_references(1), m_pfnDestroy(CCountedPointer<NUISystem::CAction>::DeleteData), m_pObject(object) { }
 };
 
 struct CCountedPointer_00429f43 {

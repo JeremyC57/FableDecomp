@@ -102,7 +102,9 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     long BarIndex;                              // +0x9c
     bool HandsOffMode;                          // +0xa0
     bool UnderScriptControl;                    // +0xa1
-    CThingObject* FindMarkerByName(const CCharString& name);   // 0x00947EB0
+protected:
+    CThingObject* GetObjectWithScriptName(const CCharString& name);   // 0x00947EB0  NF37: Ego_r 0x0096E1B0 + FableWin 0x02BC4810 (protected)
+public:
     virtual bool InitCreaturePosition();
 };
 
@@ -112,7 +114,7 @@ bool CAIStateGroup_GoToPub::InitCreaturePosition()
     GetCreature()->GetTC(TCI_AI_SCRATCHPAD, &scratchpad);
     UnderScriptControl = scratchpad->GetSeatName() != "" && scratchpad->GetTableName() != "";
     if (UnderScriptControl) {
-        PTable = FindMarkerByName(scratchpad->GetTableName());
+        PTable = GetObjectWithScriptName(scratchpad->GetTableName());
         CTCOwnedEntity* owned = 0;
         ((CThing*)PTable.GetPItem())->GetTC(TCI_OWNED_ENTITY, &owned);
         if (owned) {

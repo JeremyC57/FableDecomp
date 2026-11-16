@@ -65,7 +65,7 @@ class CThingAICreature : public CThing { public:
     CBaseIntelligentPointer HomeBuilding;       // +0x168
     CBaseIntelligentPointer WorkBuilding;       // +0x170
 };
-bool __fastcall IsAwareOfThingImplementation(const CThingAICreature* creature, const CThing* thing, bool flag);  // 0x00864700
+namespace NCreatureAI { bool __fastcall IsAwareOfThingIndirectly(const CThingAICreature* creature, const CThing* thing, bool flag); }   // 0x00864700  NF37: Ego_r + FableWin ?IsAwareOfThingIndirectly@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z
 
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
@@ -138,7 +138,7 @@ bool CAIStateGroup_MinionReactToCriminal::IsRunnable()
         return false;
     if (((CThing*)PHero.GetPItem()) != 0 && !(((CThing*)PHero.GetPItem())->m_flags91 & 1)) {
         me = PBrain->PCreature;
-        if (IsAwareOfThingImplementation(me, ((CThing*)PHero.GetPItem()), false))
+        if (NCreatureAI::IsAwareOfThingIndirectly(me, ((CThing*)PHero.GetPItem()), false))
             return IsValid();
     }
     long fps = CMainGameComponent::GetConstantFPS();

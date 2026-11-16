@@ -13,7 +13,7 @@ class C3DKeyframe { public:
 };
 
 class C3DAnimationSequenceData { public:
-    void GetKeyframeInterpolate(C3DKeyframe* keyframe, float time);   // 0x00A4DEA0
+    void GetKeyframeInterpolate(C3DKeyframe& keyframe, float time) const;   // 0x00A4DEA0  NF37: Ego_r + FableWin ?GetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXAAVC3DKeyframe@@M@Z
 };
 
 class C3DAnimationSequence { public:
@@ -32,7 +32,7 @@ C3DVector C3DAnimation2::GetMovementOffsetAtTime(float time)
 {
     if (MovementTrack) {                   // the track path is the if-body: the zero path sits at the end
         C3DKeyframe keyframe;
-        MovementTrack->Data->GetKeyframeInterpolate(&keyframe, time);
+        MovementTrack->Data->GetKeyframeInterpolate(keyframe, time);
         return C3DVector(keyframe.Position[0], keyframe.Position[1], keyframe.Position[2]);
     }
     return C3DVector(0.0f, 0.0f, 0.0f);

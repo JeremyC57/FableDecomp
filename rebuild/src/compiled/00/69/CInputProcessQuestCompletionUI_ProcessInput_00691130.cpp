@@ -11,6 +11,8 @@
 //   CInputProcessPhotojournalCapture::ProcessInput 0x00691AE0. Float members are required: with longs the same form
 //   stays in registers.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
+#include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 struct CMousePosition {
     float X, Y;
@@ -83,7 +85,6 @@ public:
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     CMousePosition GetMousePosition(const CInputEvent& event) const { return event.Position; }
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
@@ -97,27 +98,27 @@ void CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CPro
     if (!ui->Active || ui->Closing)
         return;
     if (IsEventButtonPressed(event)) {
-        if (IsEventGameAction(0x19, event)) {
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0x1a);
             processed.SetAsPerformedEvent();
             return;
         }
-        if (IsEventGameAction(0x4c, event)) {
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(5);
             processed.SetAsPerformedEvent();
             return;
         }
-        if (IsEventGameAction(0x58, event)) {
+        if (IsEventGameAction(GAME_ACTION_SCROLL_DESCRIPTION_UP, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(6);
             processed.SetAsPerformedEvent();
             return;
         }
-        if (IsEventGameAction(0x59, event)) {
+        if (IsEventGameAction(GAME_ACTION_SCROLL_DESCRIPTION_DOWN, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(7);
             processed.SetAsPerformedEvent();
             return;
         }
-        if (IsEventGameAction(0x48, event)) {
+        if (IsEventGameAction(GAME_ACTION_TOGGLE_LIVE_GUI, event)) {
             if (ui->State == 0 || ui->State == 1)
                 ui->Deactivate();
             processed.SetAsPerformedEvent();
@@ -125,47 +126,47 @@ void CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CPro
         return;
     }
     if (IsEventButtonHeld(event)) {
-        if (IsEventGameAction(0x19, event)) {
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0x1c);
             processed.SetAsPerformedEvent();
             return;
         }
-        if (IsEventGameAction(0x4c, event)) {
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0x1d);
             processed.SetAsPerformedEvent();
         }
         return;
     }
     if (IsEventButtonReleased(event)) {
-        if (IsEventGameAction(0x19, event)) {
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0x1f);
             processed.SetAsPerformedEvent();
             return;
         }
-        if (IsEventGameAction(0x4c, event)) {
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0x20);
             processed.SetAsPerformedEvent();
             return;
         }
-        if (IsEventGameAction(0x58, event)) {
+        if (IsEventGameAction(GAME_ACTION_SCROLL_DESCRIPTION_UP, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(6);
             processed.SetAsPerformedEvent();
             return;
         }
-        if (IsEventGameAction(0x59, event)) {
+        if (IsEventGameAction(GAME_ACTION_SCROLL_DESCRIPTION_DOWN, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(7);
             processed.SetAsPerformedEvent();
         }
         return;
     }
-    if (IsEventGameAction(0x47, event)) {
+    if (IsEventGameAction(GAME_ACTION_MOVE_MOUSE_ON_GUI, event)) {
         CMousePosition position = GetMousePosition(event);
         NUISystem::CManager::GetInstance()->SetMousePosition(position);
         NUISystem::CManager::GetInstance()->SendEvent(0x19);
         processed.SetAsPerformedEvent();
         return;
     }
-    if (IsEventGameAction(0x65, event)) {
+    if (IsEventGameAction(GAME_ACTION_SCROLL_MENU, event)) {
         NUISystem::CManager::GetInstance()->ScrollMenu((long)floor(event.GetWheelDelta() * 0.008333334f));
         processed.SetAsPerformedEvent();
     }

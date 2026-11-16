@@ -1,3 +1,5 @@
+#include "engine/CCountedPointer.h"
+class CCreatureActionBase;
 // CCountedPointer_00668610::Reset(T*) -- drop the shared count block (destroying the object on last reference), then adopt the new object
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00668D90, oracle length 103 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
@@ -11,13 +13,13 @@
 // allocating a fresh block (operator new @ 0x00BFEA1A, null-checked; delete @ 0x00BFE9BC). The
 // instantiation is named from the manifest label when unique, else from the destroy function.
 // One of 74 bodies of this shape.
-void __fastcall Destroy_00668610(void* object);   // 0x00668610: the per-type deleter stored in the block
+// NF37: 0x00668610 is CCountedPointer<CCreatureActionBase>::DeleteData (Ego_r.pdb / FableWin.pdb), the per-T deleter.
 
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_00668610), m_pObject(object) { }
+    SCountBlock(void* object) : m_references(1), m_pfnDestroy(CCountedPointer<CCreatureActionBase>::DeleteData), m_pObject(object) { }
 };
 
 struct CCountedPointer_00668610 {

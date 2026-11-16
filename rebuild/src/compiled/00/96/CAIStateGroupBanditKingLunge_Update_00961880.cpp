@@ -9,7 +9,7 @@
 #include "engine/CAIStateGroupBase.h"
 #undef CAIStateGroupBase
 #include "engine/CAIBrain.h"
-class CTCBoss { public: long GetBossPhase() const; void SetNextBossPhase(long,bool); void ClearPhaseCounter(); }; // 0x007AED10, 0x007AEDA0, 0x007AED50
+class CTCBoss { public: long GetBossPhase() const; void SetNextBossPhase(long,bool); void ResetStrikesSinceHitHero(); }; // 0x007AED10, 0x007AEDA0, 0x007AED50
 struct CThingRetail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -75,7 +75,7 @@ void BanditKingLungeMethods::Update()
   boss->SetNextBossPhase(boss->GetBossPhase()+1,false);
   GetWorld();
   TimeOfLastLunge=CWorld::GetFrame();
-  boss->ClearPhaseCounter();
+  boss->ResetStrikesSinceHitHero();
  }
 finish:
  Terminate();

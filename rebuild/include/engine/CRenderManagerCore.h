@@ -515,6 +515,11 @@ struct IDirect3DDevice9;
 
 #pragma pack(push, 1)
 struct CRenderManagerCore {
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_WAITWHILEGPUISBUSY
+    // NF37 opt-in (row 0x00F37170, flattened layout): the same declaration the retail class carries under this macro, Ego_r.pdb /
+    // FableWin.pdb ?WaitWhileGPUIsBusy@CRenderManagerCore@@QAEXXZ (retail 0x00A0AF80, the empty `ret`). Declaration only.
+    void WaitWhileGPUIsBusy();                                           // 0x00A0AF80
+#endif
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char          _pad_0x04[0x4];                   // +0x04
     unsigned char          _pad_0x08[0x4];                   // +0x08

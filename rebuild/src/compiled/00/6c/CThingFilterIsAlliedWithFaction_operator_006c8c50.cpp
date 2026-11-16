@@ -12,7 +12,7 @@
 // Shape: the out-parameter GetInterface template on the const thing (the component comes back in eax: `mov eax,[eax+4]
 // ; mov ecx,eax`), key homed in a frame/argument slot and passed by address to the const LowerBound.
 // The filter's faction is read into ecx before the component (`mov ecx,[edi]`), then stored over the argument slot for the
-// tail jump: `return enemy->IsAlliedWithFaction(m_faction);` as the last statement; kind 0x49 = `test ch,2` on word 2.
+// tail jump: `return enemy->IsAlliedWithFaction(PFaction);` as the last statement; kind 0x49 = `test ch,2` on word 2.
 class CTCBase;
 
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -22,12 +22,13 @@ typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
+class CFaction;
 class CTCEnemy { public:                               // component kind 0x49
-    bool IsAlliedWithFaction(long faction) const;   // 0x0076C7F0
+    bool IsAlliedWithFaction(const CFaction* faction) const;   // 0x0076C7F0  NF37: Ego_r + FableWin ?IsAlliedWithFaction@CTCEnemy@@QBE_NPBVCFaction@@@Z
 };
 
 class CThingFilter_IsAlliedWithFaction { public:
-    long m_faction;                             // +0x00
+    CFaction* PFaction;                        // +0x00  NF37: Ego_r.pdb CThingFilter_IsAlliedWithFaction::PFaction (CFaction*, struct_layouts_egor.tsv)
     bool operator()(const CThing& thing) const;
 };
 
@@ -35,6 +36,6 @@ bool CThingFilter_IsAlliedWithFaction::operator()(const CThing& thing) const
 {
     const CTCEnemy* enemy;
     if (thing.PeekTC(TCI_ENEMY, &enemy))
-        return enemy->IsAlliedWithFaction(m_faction);
+        return enemy->IsAlliedWithFaction(PFaction);
     return false;
 }

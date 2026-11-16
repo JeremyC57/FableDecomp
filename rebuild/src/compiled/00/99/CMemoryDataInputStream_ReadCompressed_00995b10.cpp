@@ -8,10 +8,11 @@
 // Shape: the landed CDataInputStream::ReadCompressed 0x00995FB0 with its scratch vector replaced by an inline
 //   GetDataAndSkip(n): read the position, range-check the new one, seek within the chunk (the landed
 //   SetPositionAssumeWithinSourceChunk 0x00993C10 body, two separate deltas) and return StreamSource + old position, or 0.
+#define FABLE_RETAIL_CAFILE_ERRORCALLBACK   // NF37: CAFile::m_errorCallback 0x013BC9FC (FableWin/Ego_r ?m_errorCallback@CAFile@@0P6IXXZA)
+#include "engine/CAFile.h"
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
-extern void (__cdecl* g_pfnAssertionFailed)();               // 0x013BC9FC
 extern "C" int __cdecl lzo1x_decompress_asm_fast(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
                                         unsigned int* dstLen, void* work);   // 0x00C069D0
 
@@ -79,8 +80,7 @@ void CMemoryDataInputStream::ReadCompressed(void* data, long size)
             unsigned int written = size;
             lzo1x_decompress_asm_fast(source, compressedSize, (unsigned char*)data, &written, 0);
             if (written != (unsigned int)(size - 3)) {
-                if (g_pfnAssertionFailed != 0)
-                    g_pfnAssertionFailed();
+                CAFile::DoErrorCallback();
             }
             Read((unsigned char*)data + size - 3, 3);
         } else

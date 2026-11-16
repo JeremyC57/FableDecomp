@@ -93,10 +93,10 @@ extern long  g_DetailB;                                 // 0x01375094
 extern long  g_DetailC;                                 // 0x0137508C
 extern long  g_DetailD;                                 // 0x01375090
 extern long  g_MaxAntialiasing;                             // 0x01375080
-extern unsigned long g_MaxResolutionWidth;                   // 0x01375084
-extern unsigned long g_MaxRefreshRate;                     // 0x01375088
-extern unsigned long g_MemoryA;                         // 0x0137509C
-extern unsigned long g_MemoryB;                         // 0x013750A0
+extern long g_MaxResolutionWidth;                          // 0x01375084
+extern long g_MaxRefreshRate;                            // 0x01375088
+extern long g_MemoryA;                                // 0x0137509C
+extern long g_MemoryB;                                // 0x013750A0
 extern bool  g_FeatureA;                                // 0x013750A4
 extern bool  g_FeatureB;                                // 0x013750A5
 extern bool  g_FeatureD;                                // 0x013750A6

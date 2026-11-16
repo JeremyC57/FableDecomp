@@ -8,7 +8,7 @@
 // The last argument is unused. The narrowing is written with a named destination reference bound BEFORE the source
 // reference (a Set(const CMatrix4x4&) member swaps the two induction registers).
 // Layout: C3DAnimationManager frame pool +0x30; C3DMesh2 bone count +0x98.
-// Leaf: ?CalcBlendedMeshTransformations@C3DAnimationManager@@QAEXPBVC3DAnimationBlendState@@0MPAVC3DVector@@PBVC3DMesh2@@PAVCMatrix3x4@@K@Z
+// Leaf: ?CalcBlendedMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@0MPBVC3DVector@@ABVC3DMesh2@@PAVCMatrix3x4@@K@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/C3DVector.h"
 struct C3DVector4 { float X, Y, Z, W; };
@@ -32,16 +32,16 @@ class C3DMesh2 { public:
 class C3DAnimationManager { public:
     unsigned char _pad[0x30];
     CSimpleMemoryPool MemoryPool;                  // +0x30
-    void CalcBlendedMeshTransformations(const C3DAnimationBlendState* a, const C3DAnimationBlendState* b, float t,
-        C3DVector* movement, const C3DMesh2* mesh, CMatrix4x4* out, unsigned long count, bool flag);   // 0x00AA0090
-    void CalcBlendedMeshTransformations(const C3DAnimationBlendState* a, const C3DAnimationBlendState* b, float t,
-        C3DVector* movement, const C3DMesh2* mesh, CMatrix3x4* out, unsigned long unused);
+    void CalcBlendedMeshTransformations(const C3DAnimationBlendState& a, const C3DAnimationBlendState& b, float t,
+        const C3DVector* movement, const C3DMesh2& mesh, CMatrix4x4* out, unsigned long count, bool flag);   // 0x00AA0090  NF37: Ego_r + FableWin spelling
+    void CalcBlendedMeshTransformations(const C3DAnimationBlendState& a, const C3DAnimationBlendState& b, float t,
+        const C3DVector* movement, const C3DMesh2& mesh, CMatrix3x4* out, unsigned long unused);   // NF37: Ego_r 0x00BE4F90 + FableWin 0x033810F0 spelling
 };
 
-void C3DAnimationManager::CalcBlendedMeshTransformations(const C3DAnimationBlendState* a, const C3DAnimationBlendState* b, float t,
-    C3DVector* movement, const C3DMesh2* mesh, CMatrix3x4* out, unsigned long unused)
+void C3DAnimationManager::CalcBlendedMeshTransformations(const C3DAnimationBlendState& a, const C3DAnimationBlendState& b, float t,
+    const C3DVector* movement, const C3DMesh2& mesh, CMatrix3x4* out, unsigned long unused)
 {
-    unsigned long count = mesh->NumBones;
+    unsigned long count = mesh.NumBones;
     CMatrix4x4* blended = PoolNewArray<CMatrix4x4>(MemoryPool, count);
     CalcBlendedMeshTransformations(a, b, t, movement, mesh, blended, count, false);
     for (unsigned long i = 0; i < count; ++i)

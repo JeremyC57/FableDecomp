@@ -82,9 +82,28 @@ class CWorld;
 #ifdef FABLE_RETAIL_INPUTPROCESS_QUICKACCESSQUEUE
 enum EInputButtonEventType;                                  // MS forward enum (FAM13 opt-in below)
 #endif
+#ifdef FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS
+enum EGameAction;                                            // MS forward enums (NF37 opt-in below)
+enum EInputButtonEventType;
+class CInputEvent;
+class C2DVector;
+#endif
 
 #pragma pack(push, 1)
 struct CInputProcessGameBase {
+#ifdef FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS
+    // NF37 opt-in (the CInputProcess* ProcessInput / Update rows on this generated layout): the three queries the retail opt-ins
+    // FABLE_RETAIL_INPUTPROCESS_ZTARGET / _MOVEMENT / _EVENTINQUEUE declare on the retail class, as Ego_r.pdb / FableWin.pdb spell them:
+    // ?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z (0x00687CF0),
+    // ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z (0x00687D00),
+    // ?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@AAM@Z (0x00687D80, protected).
+    // Declarations only, the layout below is unchanged.
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;                                       // 0x00687CF0
+    bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& movement) const;   // 0x00687D00
+protected:
+    bool IsGameActionEventInQueue(EGameAction action, EInputButtonEventType type, float& time) const;                // 0x00687D80
+public:
+#endif
 #ifdef FABLE_RETAIL_INPUTPROCESS_QUICKACCESSQUEUE
     // Opt-in (FAM13, row 0x00687CB0): Ego_r.pdb / FableWin.pdb ?IsQuickAccessEventInQueue@CInputProcessGameBase@@IBE_NJW4EInputButtonEventType@@@Z
     // (protected const; forwards to CGamePlayerInterface::IsQuickAccessEventInQueue 0x004460C0 with MyPlayer's joystick device).

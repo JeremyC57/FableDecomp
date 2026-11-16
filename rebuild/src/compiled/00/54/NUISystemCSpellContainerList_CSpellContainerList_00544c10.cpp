@@ -13,6 +13,7 @@
 // CAction)` with every constructor inline (`__forceinline`: CAction, its two list heads built in a local node, the count
 // block; the block reads the object back through the pointer), the type stored through the pointer, ExecuteAction by
 // reference, the inline counted release (block re-read from its frame word), the vector's null-tested free; one ebx zero.
+#include "engine/CCountedPointer.h"
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void  __cdecl free(void* block);           // 0x00BFEA14
@@ -46,13 +47,13 @@ class CAction { public:                                     // 0x10 bytes
     ~CAction();                                      // 0x0053FD00
 };
 
-void __fastcall DestroyAction(void* object);         // 0x00429F43: the per-type deleter stored in the block
+// NF37: 0x00429F43 is CCountedPointer<NUISystem::CAction>::DeleteData (Ego_r.pdb 0x00438DF1 + FableWin.pdb), the per-T deleter.
 
 struct SCountBlock {
     long m_references;                               // +0
     void (__fastcall* m_pfnDestroy)(void*);          // +4
     void* m_pObject;                                 // +8
-    FABLE_FORCEINLINE SCountBlock(void* object) : m_references(1), m_pfnDestroy(DestroyAction), m_pObject(object) { }
+    FABLE_FORCEINLINE SCountBlock(void* object) : m_references(1), m_pfnDestroy(CCountedPointer<NUISystem::CAction>::DeleteData), m_pObject(object) { }
 };
 
 template<class T> struct CCountedPointer {

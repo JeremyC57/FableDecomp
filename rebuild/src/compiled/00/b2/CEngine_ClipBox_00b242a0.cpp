@@ -12,7 +12,7 @@ class C3DBoundingBox { public:
 };
 
 class CEngineCamera { public:
-    bool ClipBox(CMatrix3x4* matrix);              // 0x00B30610
+    bool ClipBox(const CMatrix3x4& matrix) const;  // 0x00B30610  NF37: Ego_r + FableWin ?ClipBox@CEngineCamera@@QBE_NABVCMatrix3x4@@@Z
 };
 extern CEngineCamera* g_pEngineCamera_01436ea0;    // 0x01436EA0
 
@@ -24,5 +24,5 @@ bool CEngine::ClipBox(const C3DBoundingBox& box)
 {
     CMatrix3x4 matrix;
     box.CalculateMatrix(&matrix);
-    return g_pEngineCamera_01436ea0->ClipBox(&matrix);
+    return g_pEngineCamera_01436ea0->ClipBox(matrix);
 }

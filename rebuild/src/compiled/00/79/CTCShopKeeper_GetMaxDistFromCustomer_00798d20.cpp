@@ -1,0 +1,81 @@
+// CTCShopKeeper::GetMaxDistFromCustomer() -- 10 on the PC build. Ego_r.pdb / FableWin.pdb ?GetMaxDistFromCustomer@CTCShopKeeper@@QAEJXZ (Ego_r donor 0x0079E7B0, the header CUSTOMER opt-in names 0x00798D20).
+// Leaf: ?GetMaxDistFromCustomer@CTCShopKeeper@@QAEJXZ
+// NF37 (2026-11-16): moved off its stand-in onto the shared engine/CTCShopKeeper.h; include chain = the preamble of the landed 00/94/CAIStateGroupSellToBuyer_Update_0094c050.cpp.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_INTERACTION
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUP_WORKBASE_STAYINSHOP
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CTCSHOPKEEPER_SHOP
+#define FABLE_RETAIL_CTCSHOPKEEPER_CUSTOMER
+#define FABLE_RETAIL_CTCSHOP_AVAILABLE
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE_RADIUS_ACCESS
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_C3DVECTOR_SQUAREDMAGNITUDE_XYZ
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_MESSAGEEVENTMANAGER
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_NCREATUREAI_SPEAKING
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CVectorMap.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CAIBrain.h"
+#include "engine/CDefPointer.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CSubDefClassBase.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CShopDef.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CTCShop.h"
+#include "engine/CTCShopKeeper.h"
+#include "engine/CCreatureInteraction.h"
+#include "engine/CAIStateGroup_WorkBase.h"
+#include "engine/CAIStateGroup_SellToBuyer.h"
+#include "engine/CMessageEventManager.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CWorld.h"
+#include "engine/NCreatureAI.h"
+#include "engine/ThingAlive.h"
+
+long CTCShopKeeper::GetMaxDistFromCustomer()
+{
+    return 10;
+}

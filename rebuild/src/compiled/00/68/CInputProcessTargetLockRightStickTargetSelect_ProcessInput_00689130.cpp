@@ -6,6 +6,7 @@
 #define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
 #undef CPlayer
+#define FABLE_RETAIL_CPROCESSEDINPUT_PERFORMED
 #include "engine/CProcessedInput.h"
 #include "engine/_quarantine/CThing.h"
 #include "engine/CTCTargetingPlayer.h"
@@ -27,7 +28,7 @@ namespace NativeInput {
 struct Vector2 {float X,Y;};
 enum EInputEventType { RightStick=18 };
 struct InputEvent {EInputEventType GetType()const;Vector2 GetJoystickPosition()const;};
-struct ProcessedInput:CProcessedInput {void SetAsPerformedEvent();};
+struct ProcessedInput:CProcessedInput {};   // NF37: SetAsPerformedEvent is the base CProcessedInput::SetAsPerformedEvent 0x00A0D390 (Ego_r.pdb), header PERFORMED opt-in
 struct TargetingPlayer:CTCTargetingPlayer {enum ETargetNextThingMethod { Left=2,Right=3 };void SetAsTargetNextThingInDirection(ETargetNextThingMethod);};
 typedef ::CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 // Retail CThing: component bitset36 vs donor40, vector map16 vs20, list8 vs12.

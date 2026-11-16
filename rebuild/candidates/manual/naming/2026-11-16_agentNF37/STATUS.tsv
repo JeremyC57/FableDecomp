@@ -1,0 +1,84 @@
+address	change	grade	test	grades_used	entries	note
+0x00409090	extern g_ConfigLevel -> g_MaxAntialiasing (long)	RELOCATION_MATCH	PASS	1	01375080	q34: one name per address (GFConfigDetection spelling)
+0x00408900	extern g_FableConfigWidth -> g_MaxResolutionWidth (long)	RELOCATION_MATCH	PASS	1	01375084	q35
+0x00406890	extern g_maxDisplayRefreshRate -> g_MaxRefreshRate (long)	RELOCATION_MATCH	PASS	1	01375088	q36
+0x004017B0	externs g_MaxResolutionWidth/g_MaxRefreshRate/g_MemoryA/g_MemoryB unsigned long -> long	RELOCATION_MATCH	PASS	1	01375084 01375088 0137509C 013750A0	q35 q36 q37 q38: retail compares them signed (0x004093E0 jle)
+0x009949F0	cdecl g_pfnAssertionFailed extern -> CAFile::DoErrorCallback() (engine/CAFile.h FABLE_RETAIL_CAFILE_ERRORCALLBACK)	RELOCATION_MATCH	PASS	1	013BC9FC	q48
+0x00994A40	same	RELOCATION_MATCH	PASS	1	013BC9FC	q48
+0x00995B10	same	RELOCATION_MATCH	PASS	1	013BC9FC	q48
+0x00995FB0	same	RELOCATION_MATCH	PASS	1	013BC9FC	q48
+0x00996230	same	RELOCATION_MATCH	PASS	1	013BC9FC	q48
+0x00A4DEA0	self: onto engine/C3DAnimationSequenceData.h; (C3DKeyframe&, float) const; callee (C3DKeyframe&, unsigned long, float) const; test respelled	RELOCATION_MATCH	PASS	1	q120 q121	section-1 rename
+0x00A4E100	local decl GetKeyframeInterpolate (C3DKeyframe&, float) const	RELOCATION_MATCH	PASS	1	q120	
+0x00A4E150	local decl GetKeyframeInterpolate (C3DKeyframe&, float) const	RELOCATION_MATCH	PASS	1	q120	
+0x00AA09F0	self + callee CalcBlendedMeshTransformations by reference (Ego_r/FableWin)	RELOCATION_MATCH	PASS	1	q245 q246	section-1 rename
+0x00B242A0	local decl CEngineCamera::ClipBox(const CMatrix3x4&) const	RELOCATION_MATCH	PASS	1	q222	
+0x00B2C4E0	local decl WriteTextureToBank private	RELOCATION_MATCH	PASS	1	q144	
+0x0076C7F0	self onto engine/CTCEnemy.h; callee CFaction::IsAlliedWithFaction(const CFaction&) const via hdr opt-in FABLE_RETAIL_CFACTION_ISALLIEDWITHFACTION; test respelled	RELOCATION_MATCH	PASS	2	q26	section-1 rename
+0x00687CF0	self onto engine/CInputProcessGameBase.h ZTARGET + hdr CGamePlayerInterface GAMEACTIONQUERIES	RELOCATION_MATCH	PASS	1	q16 q52	section-1 rename
+0x00687D00	self onto engine/CInputProcessGameBase.h MOVEMENT + hdr CGamePlayerInterface GAMEACTIONQUERIES	RELOCATION_MATCH	PASS	1	q15 q19 q53	section-1 rename
+0x00687D80	self onto engine/CInputProcessGameBase.h EVENTINQUEUE + hdr CGamePlayerInterface GAMEACTIONQUERIES; test respelled	RELOCATION_MATCH	PASS	1	q74	section-1 rename
+0x0068AE30	derived-class IsEventGameAction(long) stand-in dropped; base query via hdr CInputProcessGameBase.h GAMEACTIONS opt-in, EGameAction enumerators	RELOCATION_MATCH	PASS	1	q16 q52	
+0x0068B2E0	derived-class IsEventGameAction(long) stand-in dropped; base query via hdr CInputProcessGameBase.h GAMEACTIONS opt-in, EGameAction enumerators	RELOCATION_MATCH	PASS	1	q16 q52	
+0x0068C880	derived-class IsEventGameAction(long) stand-in dropped; base query via hdr CInputProcessGameBase.h GAMEACTIONS opt-in, EGameAction enumerators	RELOCATION_MATCH	PASS	1	q16 q52	
+0x00690480	derived-class IsEventGameAction(long) stand-in dropped; base query via hdr CInputProcessGameBase.h GAMEACTIONS opt-in, EGameAction enumerators	RELOCATION_MATCH	PASS	1	q16 q52	
+0x00690830	derived-class IsEventGameAction(long) stand-in dropped; base query via hdr CInputProcessGameBase.h GAMEACTIONS opt-in, EGameAction enumerators	RELOCATION_MATCH	PASS	1	q16 q52	
+0x00690B20	derived-class IsEventGameAction(long) stand-in dropped; base query via hdr CInputProcessGameBase.h GAMEACTIONS opt-in, EGameAction enumerators	RELOCATION_MATCH	PASS	1	q16 q52	
+0x00690E70	derived-class IsEventGameAction(long) stand-in dropped; base query via hdr CInputProcessGameBase.h GAMEACTIONS opt-in, EGameAction enumerators	RELOCATION_MATCH	PASS	1	q16 q52	
+0x00690FD0	derived-class IsEventGameAction(long) stand-in dropped; base query via hdr CInputProcessGameBase.h GAMEACTIONS opt-in, EGameAction enumerators	RELOCATION_MATCH	PASS	1	q16 q52	
+0x00691130	derived-class IsEventGameAction(long) stand-in dropped; base query via hdr CInputProcessGameBase.h GAMEACTIONS opt-in, EGameAction enumerators	RELOCATION_MATCH	PASS	1	q16 q52	
+0x00691680	derived-class IsEventGameAction(long) stand-in dropped; base query via hdr CInputProcessGameBase.h GAMEACTIONS opt-in, EGameAction enumerators	RELOCATION_MATCH	PASS	1	q16 q52	
+0x0068F320	same + GetEventGameActionVector stand-in -> GetControlMovementFromGameActionEvent	RELOCATION_MATCH	PASS	1	q15 q16 q19 q52 q53	
+0x00691870	same + GetEventGameActionVector stand-in -> GetControlMovementFromGameActionEvent	RELOCATION_MATCH	PASS	1	q15 q16 q19 q52 q53	
+0x00815820	self method rename in its local model (Leaf added)	RELOCATION_MATCH	PASS	1	q24	section-1 rename
+0x008E0A10	header opt-in FROMNAME -> WITHDEFNAME	RELOCATION_MATCH	PASS	1	q24	
+0x008C8550	local CHitLocation stand-in -> engine/NHitLocations_CHitLocation.h (SETENABLED); method respelled	RELOCATION_MATCH	PASS	1	q24	
+0x008C8C30	same	RELOCATION_MATCH	PASS	1	q24	
+0x00972670	same	RELOCATION_MATCH	PASS	1	q24	
+0x006C8C50	member m_faction -> PFaction (CFaction*, Ego_r TPI)	RELOCATION_MATCH	PASS	3	q25 q26	
+0x00A10E20	self off free stand-in onto engine/CRenderTarget.h; test respelled	RELOCATION_MATCH	PASS	1	q20	section-1 rename
+0x00787C18	self off free stand-in onto engine/CTCTrapBase.h; test respelled	MATCH	PASS	1	q27	section-1 rename
+0x00F36F00	self off stand-in onto its shared header opt-in	MATCH	PASS	1	q140 	section-1 rename
+0x00A0AF80	self off stand-in onto its shared header opt-in	MATCH	PASS	1	q141 	section-1 rename
+0x00A0D390	self off stand-in onto its shared header opt-in	MATCH	PASS	1	q18 q54 	section-1 rename
+0x00A23C50	self off stand-in onto its shared header opt-in	MATCH	PASS	3	q194 	section-1 rename
+0x006B7350	self off stand-in onto its shared header opt-in	MATCH	PASS	4	q201 	section-1 rename
+0x00B90090	self off stand-in onto its shared header opt-in	MATCH	PASS	2	q209 	section-1 rename
+0x00F37170	stand-in PrepareShutdown dropped; base CRenderManagerCore::WaitWhileGPUIsBusy via hdr flattened-layout opt-in	RELOCATION_MATCH	PASS	2	q141	
+0x00689130	stand-in SetAsPerformedEvent dropped; base CProcessedInput::SetAsPerformedEvent (header PERFORMED opt-in)	RELOCATION_MATCH	PASS	1	q18 q54	
+0x007AED50	self off stand-in onto its shared header opt-in	MATCH	PASS	2	q215 	section-1 rename
+0x00B86A00	self off stand-in onto its shared header opt-in	MATCH	PASS	1	q289 	section-1 rename
+0x00625930	self off stand-in onto its shared header opt-in	MATCH	PASS	2	q321 	section-1 rename
+0x00B89070	self off stand-in onto its shared header opt-in	MATCH	PASS	1	q330 	section-1 rename
+0x00B8D090	self off stand-in onto its shared header opt-in	MATCH	PASS	1	q331 	section-1 rename
+0x00B8D0A0	self off stand-in onto its shared header opt-in	MATCH	PASS	1	q332 	section-1 rename
+0x009E37F0	self off stand-in onto its shared header opt-in	MATCH	PASS	1	q67 	section-1 rename
+0x00B906C0	renderer stand-in -> CEngineOcclusionManager (header OCCLUSIONTEST) on NEngineInternal::GPOcclusionManager	RELOCATION_MATCH	PASS	1	q331 q332	
+0x00961880	local CTCBoss model: ClearPhaseCounter -> ResetStrikesSinceHitHero	RELOCATION_MATCH	PASS	1	q215	
+0x0041BC90	placeholder pointee -> CTexture	RELOCATION_MATCH	PASS	1	q287	section-1 rename
+0x007A3200	placeholder pointee -> CTCWillLightning::CLightningBeam (header CLASS opt-in)	RELOCATION_MATCH	PASS	2	q130	section-1 rename
+0x00429B72	extern C Forward -> CCountedPointer<NUISystem::CAction> dtor (RELEASEDATA_DECL_ONLY)	RELOCATION_MATCH	PASS	1	q285	section-1 rename
+0x0051E2E0	self off free stand-in onto its shared header (landed preamble); test respelled	MATCH	PASS	1	q133 	section-1 rename
+0x0051E2C0	self off free stand-in onto its shared header (landed preamble); test respelled	MATCH	PASS	1	q132 	section-1 rename
+0x00B3B090	self off free stand-in onto its shared header (landed preamble); test respelled	MATCH	PASS	1	q73 	section-1 rename
+0x004375E0	self off free stand-in onto its shared header (landed preamble); test respelled	MATCH	PASS	1	q320 	section-1 rename
+0x00798D10	self off free stand-in onto its shared header (landed preamble); test respelled	MATCH	PASS	2	q161 	section-1 rename
+0x00798D20	self off free stand-in onto its shared header (landed preamble); test respelled	MATCH	PASS	2	q162 	section-1 rename
+0x00595A03	self off free stand-in onto its shared header (landed preamble); test respelled	MATCH	PASS	2	q262 	section-1 rename
+0x00449980	self off free stand-in onto its shared header (landed preamble); test respelled	RELOCATION_MATCH	PASS	1	q188 	section-1 rename
+0x00733190	self off stand-in onto its shared header (landed preamble); test respelled where it named the stand-in	RELOCATION_MATCH	PASS	2	q100 	section-1 rename
+0x00733210	self off stand-in onto its shared header (landed preamble); test respelled where it named the stand-in	MATCH	PASS	1	q171 	section-1 rename
+0x00407030	self off stand-in onto its shared header (landed preamble); test respelled where it named the stand-in	MATCH	PASS	1	q59 	section-1 rename
+0x008EF910	self + callee onto engine/CTCTavernGameCoinBase.h / engine/Coin.h; test respelled	RELOCATION_MATCH	PASS	1	q76	section-1 rename (row outside the queue, needed by q76)
+0x00931010	free IsAwareOfThingImplementation -> NCreatureAI::IsAwareOfThingIndirectly	RELOCATION_MATCH	PASS	1	q84	
+0x00960FC0	same (const pointers)	RELOCATION_MATCH	PASS	1	q84	
+0x0097FBE0	same (creature pointer passed as const CThingAICreature*)	RELOCATION_MATCH	PASS	1	q84	
+0x00948060	local decl FindMarkerByName -> protected GetObjectWithScriptName	RELOCATION_MATCH	PASS	1	q149	
+0x0069BBA0	self: free stand-in -> template DeleteData instantiation	RELOCATION_MATCH	PASS	1	q210	section-1 rename
+0x00429F43	self: CTCMapwho::OnDie stand-in -> template DeleteData instantiation	RELOCATION_MATCH	PASS	1	q304	section-1 rename
+0x0042AA29	deleter stand-in Destroy_00429f43 -> CCountedPointer<NUISystem::CAction>::DeleteData (engine/CCountedPointer.h)	RELOCATION_MATCH	PASS	1	q304	
+0x00544C10	deleter stand-in NUISystem::DestroyAction -> CCountedPointer<NUISystem::CAction>::DeleteData	RELOCATION_MATCH	PASS	2	q304	
+0x00549B20	same	RELOCATION_MATCH	PASS	3	q304	
+0x0054B4B0	same	RELOCATION_MATCH	PASS	2	q304	
+0x00668D90	deleter stand-in Destroy_00668610 -> CCountedPointer<CCreatureActionBase>::DeleteData (engine/CCountedPointer.h)	RELOCATION_MATCH	PASS	1	q5	
+0x00977820	pseudo-global g_MinTeleportMarkerDistance -> literal 8.0f (__real@41000000)	RELOCATION_MATCH	PASS	1	q138	

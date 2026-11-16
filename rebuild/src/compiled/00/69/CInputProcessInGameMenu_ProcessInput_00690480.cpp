@@ -4,6 +4,8 @@
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00690480, 848 bytes, `ret 8` (/GS cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
+#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
+#include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
@@ -78,7 +80,6 @@ public:
     CTCInGameMenu* PInGameMenu;                    // +0x28
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 
@@ -114,34 +115,34 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
             processed.SetAsPerformedEvent();
         }
     } else if (IsEventButtonPressed(event)) {
-        if (IsEventGameAction(0x25, event)) {
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_UP, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0);
             processed.SetAsPerformedEvent();
-        } else if (IsEventGameAction(0x26, event)) {
+        } else if (IsEventGameAction(GAME_ACTION_INVENTORY_DOWN, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(1);
             processed.SetAsPerformedEvent();
-        } else if (IsEventGameAction(0x27, event)) {
+        } else if (IsEventGameAction(GAME_ACTION_INVENTORY_LEFT, event)) {
             if (PInGameMenu->IsAnySliderReceivingInput())
                 NUISystem::CManager::GetInstance()->SendEvent(0x14);
             else if (!PInGameMenu->IsQuitMenuReceivingInput() && !PInGameMenu->IsListReceivingInputA() && !PInGameMenu->IsListReceivingInputB())
                 NUISystem::CManager::GetInstance()->SendEvent(5);
             processed.SetAsPerformedEvent();
-        } else if (IsEventGameAction(0x28, event)) {
+        } else if (IsEventGameAction(GAME_ACTION_INVENTORY_RIGHT, event)) {
             if (PInGameMenu->IsAnySliderReceivingInput())
                 NUISystem::CManager::GetInstance()->SendEvent(0x15);
             else if (!PInGameMenu->IsQuitMenuReceivingInput() && !PInGameMenu->IsListReceivingInputA() && !PInGameMenu->IsListReceivingInputB())
                 NUISystem::CManager::GetInstance()->SendEvent(4);
             processed.SetAsPerformedEvent();
-        } else if (IsEventGameAction(0x21, event)) {
+        } else if (IsEventGameAction(GAME_ACTION_INVENTORY_A, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(4);
             processed.SetAsPerformedEvent();
-        } else if (IsEventGameAction(0x22, event)) {
+        } else if (IsEventGameAction(GAME_ACTION_INVENTORY_B, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(5);
             processed.SetAsPerformedEvent();
-        } else if (IsEventGameAction(3, event)) {
+        } else if (IsEventGameAction(GAME_ACTION_OPEN_IN_GAME_MENU, event)) {
             PInGameMenu->CloseInGameMenuViaGameEvent();
             processed.SetAsPerformedEvent();
-        } else if (IsEventGameAction(2, event)) {
+        } else if (IsEventGameAction(GAME_ACTION_OPEN_INVENTORY, event)) {
             PInGameMenu->CloseInGameMenuViaGameEvent();
             CThingPlayerCreature* const& hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
             if (IS_THING_ALIVE(hero)) {
@@ -153,10 +154,10 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
             processed.SetAsPerformedEvent();
         }
     } else if (IsEventButtonReleased(event)) {
-        if (IsEventGameAction(0x25, event)) {
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_UP, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0);
             processed.SetAsPerformedEvent();
-        } else if (IsEventGameAction(0x26, event)) {
+        } else if (IsEventGameAction(GAME_ACTION_INVENTORY_DOWN, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(1);
             processed.SetAsPerformedEvent();
         }

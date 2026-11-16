@@ -58,7 +58,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-extern const float g_MinTeleportMarkerDistance; // 0x0125916C
+// NF37: 0x0125916C is the VC7.1 literal-pool constant __real@41000000 (8.0f), not a named global; written as the literal.
 
 struct CAIStateGroupGuildmasterMethods : CAIStateGroup_Guildmaster {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
@@ -79,7 +79,7 @@ bool CAIStateGroupGuildmasterMethods::GetBetterTeleportPos(C3DVector& pos)
         if (IS_THING_ALIVE(*it)) {
             CThing* enemy = ((CThing*)Enemy().GetPItem());
             float distance = Distance2D(enemy->GetPos(), ((CThing*)it->GetPItem())->GetPos());
-            if (distance < bestDistance && distance > g_MinTeleportMarkerDistance) {
+            if (distance < bestDistance && distance > 8.0f) {
                 bestDistance = distance;
                 best = ((CThing*)it->GetPItem());
             }

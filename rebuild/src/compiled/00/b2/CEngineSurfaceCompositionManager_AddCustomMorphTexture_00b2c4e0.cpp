@@ -133,7 +133,9 @@ class CEngineSurfaceCompositionManager { public:
     unsigned char    _padfb8[0x10c8 - 0xfb8];
     unsigned long    MaxCompositeTextureSize;           // +0x10c8
     unsigned long    MinRenderTargetSize;               // +0x10cc
-    void WriteTextureToBank(CTexture& texture, CGraphicDataBank& bank, unsigned long index, bool transparent);   // 0x00B2BD80
+private:
+    void WriteTextureToBank(CTexture& texture, CGraphicDataBank& bank, unsigned long index, bool transparent);   // 0x00B2BD80  // NF37: Ego_r + FableWin private (AAE)
+public:
     unsigned long AddCustomMorphTexture(CTexture& texture, const CCharString& name);
 };
 

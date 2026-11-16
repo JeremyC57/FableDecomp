@@ -117,6 +117,12 @@ enum EInputButtonEventType;
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSQUEUE
 enum EInputButtonEventType;                                  // MS forward enum (FAM13 opt-in below)
 #endif
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_GAMEACTIONQUERIES
+enum EGameAction;                                            // MS forward enums (NF37 opt-in below)
+enum EInputButtonEventType;
+class CInputEvent;
+class C2DVector;
+#endif
 #pragma pack(push, 1)
 class CGamePlayerInterface {
 public:
@@ -154,6 +160,16 @@ public:
     // +0x7c4; its twins 0x00445E90 IsAssignableSpecialMoveButtonInQueue +0x7b8 and 0x004461D0 IsContextSensitiveEventInQueue +0x7d0).
     // Declaration only, the layout below is unchanged.
     bool IsQuickAccessEventInQueue(long button, EInputButtonEventType type, long device) const;   // 0x004460C0
+#endif
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_GAMEACTIONQUERIES
+    // NF37 opt-in (rows 0x00687CF0 / 0x00687D00 / 0x00687D80, the CInputProcessGameBase forwarders): Ego_r.pdb / FableWin.pdb
+    // ?IsEventGameAction@CGamePlayerInterface@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z (Ego_r 0x004439F0 = retail 0x00445BD0),
+    // ?GetControlMovementFromGameActionEvent@CGamePlayerInterface@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z (0x00443A60 = 0x00445C30),
+    // ?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@JAAM@Z (0x00443AF0 = 0x00445CB0); Ego_r order
+    // IsToggleSneak 0x004431D0 .. IsGameActionEventInQueue(3) 0x00443F70 matches retail 0x00445BA0 .. 0x00446B10. Declarations only.
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;                                    // 0x00445BD0
+    bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& movement) const;   // 0x00445C30
+    bool IsGameActionEventInQueue(EGameAction action, EInputButtonEventType type, long device, float& time) const;  // 0x00445CB0
 #endif
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04

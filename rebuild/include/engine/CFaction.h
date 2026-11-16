@@ -14,6 +14,11 @@ public:
         EnemyFactions=faction.EnemyFactions;
         AlliedFactions=faction.AlliedFactions;
     }
+#ifdef FABLE_RETAIL_CFACTION_ISALLIEDWITHFACTION
+    // NF37 opt-in (row 0x0076C7F0 CTCEnemy::IsAlliedWithFaction): Ego_r.pdb ?IsAlliedWithFaction@CFaction@@QBE_NABV1@@Z (Ego_r 0x006F4EC0;
+    // retail 0x006B9460, the catalog's CFaction::IsAlliedWithFaction). Declaration only.
+    bool IsAlliedWithFaction(const CFaction& faction) const;   // 0x006B9460
+#endif
 private:
     CCharString Name;
     typedef std::set<CCharString> TStringSet;

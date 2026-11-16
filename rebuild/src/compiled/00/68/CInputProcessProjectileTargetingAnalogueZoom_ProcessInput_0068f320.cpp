@@ -12,6 +12,8 @@
 // Shape: GetTC is a `__forceinline` `T* c = 0; if (HasTC(k)) c = Find(k); return c;` inlined at each of the three zoom
 //   calls (the `xor ecx,ecx` preload each time); its key shares the dead `event` argument slot.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
+#include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 class C2DVector { public:
     float x, y;
@@ -65,8 +67,6 @@ public:
 class CInputProcessProjectileTargetingAnalogueZoom : public CInputProcessGameBase {
 public:
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
-    bool GetEventGameActionVector(long action, const CInputEvent& event, C2DVector* vector);   // 0x00687D00
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 
@@ -76,13 +76,13 @@ void CInputProcessProjectileTargetingAnalogueZoom::ProcessInput(const CInputEven
     if (!hero || hero->m_dead)
         return;
     C2DVector zoom;
-    if (GetEventGameActionVector(0x54, event, &zoom))
+    if (GetControlMovementFromGameActionEvent(GAME_ACTION_PROJECTILE_TARGETING_ANALOGUE_ZOOM, event, zoom))
         hero->GetTC(0x81)->AdjustZoom(zoom.y * (1.0f / 255.0f));
-    else if (IsEventGameAction(0x6e, event)) {
+    else if (IsEventGameAction(GAME_ACTION_DIGITAL_ANALOGUE_ZOOM_IN, event)) {
         if (!IsEventButtonPressed(event))
             return;
         hero->GetTC(0x81)->AdjustZoom(196.0f / 255.0f);
-    } else if (IsEventGameAction(0x6f, event) && IsEventButtonPressed(event))
+    } else if (IsEventGameAction(GAME_ACTION_DIGITAL_ANALOGUE_ZOOM_OUT, event) && IsEventButtonPressed(event))
         hero->GetTC(0x81)->AdjustZoom(-196.0f / 255.0f);
     else
         return;

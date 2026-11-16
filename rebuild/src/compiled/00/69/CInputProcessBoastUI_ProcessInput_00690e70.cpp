@@ -11,6 +11,8 @@
 // Shape: every arm ends in `Send(x)` + the shared SetAsPerformedEvent tail; the press and release arms end in the same
 //   0x58/0x59 tests, which VC7.1 cross-jumps into one block. The mouse vector is copied into a named local through
 //   C2DVector's user copy constructor before GetInstance runs.
+#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
+#include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 class CProcessedInput {
 public:
@@ -39,42 +41,41 @@ public:
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 
 void CInputProcessBoastUI::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
     if (IsEventButtonPressed(event)) {
-        if (IsEventGameAction(0x19, event))
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1a);
-        else if (IsEventGameAction(0x4c, event))
+        else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(5);
-        else if (IsEventGameAction(0x58, event))
+        else if (IsEventGameAction(GAME_ACTION_SCROLL_DESCRIPTION_UP, event))
             NUISystem::CManager::GetInstance()->SendEvent(6);
-        else if (IsEventGameAction(0x59, event))
+        else if (IsEventGameAction(GAME_ACTION_SCROLL_DESCRIPTION_DOWN, event))
             NUISystem::CManager::GetInstance()->SendEvent(7);
         else
             return;
     } else if (IsEventButtonHeld(event)) {
-        if (IsEventGameAction(0x19, event))
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1c);
-        else if (IsEventGameAction(0x4c, event))
+        else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1d);
         else
             return;
     } else if (IsEventButtonReleased(event)) {
-        if (IsEventGameAction(0x19, event))
+        if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1f);
-        else if (IsEventGameAction(0x4c, event))
+        else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x20);
-        else if (IsEventGameAction(0x58, event))
+        else if (IsEventGameAction(GAME_ACTION_SCROLL_DESCRIPTION_UP, event))
             NUISystem::CManager::GetInstance()->SendEvent(6);
-        else if (IsEventGameAction(0x59, event))
+        else if (IsEventGameAction(GAME_ACTION_SCROLL_DESCRIPTION_DOWN, event))
             NUISystem::CManager::GetInstance()->SendEvent(7);
         else
             return;
-    } else if (IsEventGameAction(0x47, event)) {
+    } else if (IsEventGameAction(GAME_ACTION_MOVE_MOUSE_ON_GUI, event)) {
         C2DVector movement(event.MouseMovementXY);
         NUISystem::CManager::GetInstance()->MouseMovement = movement;
         NUISystem::CManager::GetInstance()->SendEvent(0x19);

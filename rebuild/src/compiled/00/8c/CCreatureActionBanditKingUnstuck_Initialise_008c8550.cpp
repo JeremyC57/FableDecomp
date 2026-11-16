@@ -144,11 +144,11 @@ private: public:
 class CTCCreatureModeManager { public:                       // interface type 0x31
     void RemoveMode(unsigned long mode);              // 0x0073ABA0
 };
-struct CHitLocation {
-    void SetEnabled(bool enabled);                    // 0x00816390
-};
+#define FABLE_RETAIL_CHITLOCATION_SETENABLED   // NF37: the shared NHitLocations::CHitLocation (SetEnabled 0x00816390)
+#include "rebuild_abi.h"
+#include "engine/NHitLocations_CHitLocation.h"
 class CTCHitLocations { public:                              // interface type 0x7F
-    CHitLocation* GetPHitLocationFromName(const CCharString& name);   // 0x00815820
+    NHitLocations::CHitLocation* GetPHitLocationWithDefName(const CCharString& name);   // 0x00815820  // NF37: Ego_r 0x0080E4C0 + FableWin 0x024E6630 ?GetPHitLocationWithDefName@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVCCharString@@@Z
 };
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
@@ -176,8 +176,8 @@ void CCreatureAction_BanditKingUnstuck::Initialise()
     modes->RemoveMode(0x53);
     CTCHitLocations* hitLocations;
     PCreature.GetPItem()->GetInterface(&hitLocations, 0x7f);
-    CHitLocation* stuck = hitLocations->GetPHitLocationFromName("HIT_LOCATION_TWINBLADE_STUCK");
-    CHitLocation* blade = hitLocations->GetPHitLocationFromName("HIT_LOCATION_TWINBLADE");
+    NHitLocations::CHitLocation* stuck = hitLocations->GetPHitLocationWithDefName("HIT_LOCATION_TWINBLADE_STUCK");
+    NHitLocations::CHitLocation* blade = hitLocations->GetPHitLocationWithDefName("HIT_LOCATION_TWINBLADE");
     if (stuck)
         stuck->SetEnabled(false);
     if (blade)

@@ -13,6 +13,8 @@
 // Shape: the same press/fishing-style event arm as CInputProcessFishing::ProcessInput 0x00690B20; SetAsPerformedEvent closes every
 //   pressed path, including the no-match one.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
+#include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 struct CMemoryBuffer {
@@ -71,7 +73,6 @@ public:
 class CInputProcessOracleMinigame : public CInputProcessGameBase {
 public:
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 
@@ -83,17 +84,17 @@ void CInputProcessOracleMinigame::ProcessInput(const CInputEvent& event, CProces
     CTCOracleMinigame* oracle = 0;
     if (hero->HasTC(0x107))
         oracle = hero->GetTC(0x107);
-    if (IsEventGameAction(0x42, event))
+    if (IsEventGameAction(GAME_ACTION_ORACLE_MINIGAME_UP, event))
         oracle->PushSymbolToQueue(0);
-    else if (IsEventGameAction(0x43, event))
+    else if (IsEventGameAction(GAME_ACTION_ORACLE_MINIGAME_DOWN, event))
         oracle->PushSymbolToQueue(2);
-    else if (IsEventGameAction(0x44, event))
+    else if (IsEventGameAction(GAME_ACTION_ORACLE_MINIGAME_LEFT, event))
         oracle->PushSymbolToQueue(3);
-    else if (IsEventGameAction(0x45, event))
+    else if (IsEventGameAction(GAME_ACTION_ORACLE_MINIGAME_RIGHT, event))
         oracle->PushSymbolToQueue(1);
-    else if (IsEventGameAction(0x46, event))
+    else if (IsEventGameAction(GAME_ACTION_ORACLE_MINIGAME_QUIT, event))
         oracle->Quit();
-    else if (IsEventGameAction(3, event) && hero->HasTC(0xc6)) {
+    else if (IsEventGameAction(GAME_ACTION_OPEN_IN_GAME_MENU, event) && hero->HasTC(0xc6)) {
         CGameEvent gameEvent(0x1a);
         gameEvent.AddLong(0x17);
         gameEvent.AddBool(true);

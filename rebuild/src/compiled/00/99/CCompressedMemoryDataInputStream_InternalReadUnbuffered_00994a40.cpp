@@ -6,14 +6,15 @@
 // flag is a 1-byte local in the high byte of the frame slot (`lea eax,[esp+7]`), cleared after the
 // pushes; the requested size stays in esi for the compare. Decorated name in the manifest:
 // ?InternalReadUnbuffered@CCompressedMemoryDataInputStream@@EAEXPAEJ@Z (private, void, uchar*, long).
+#define FABLE_RETAIL_CAFILE_ERRORCALLBACK   // NF37: CAFile::m_errorCallback 0x013BC9FC (FableWin/Ego_r ?m_errorCallback@CAFile@@0P6IXXZA)
+#include "engine/CAFile.h"
 #include "engine/CCompressedMemoryDataInputStream.h"
 
 struct CCompressorZlib_Calls {
     unsigned long DecompressStream(void* dest, unsigned long destSize, bool* endOfStream);   // 0x00A3A840
 };
 
-extern void (__cdecl* g_pfnAssertionFailed)();                  // 0x013BC9FC: installed debug hook
-#define FABLE_ASSERT(cond) do { if (!(cond)) { if (g_pfnAssertionFailed != 0) g_pfnAssertionFailed(); } } while (0)
+#define FABLE_ASSERT(cond) do { if (!(cond)) { CAFile::DoErrorCallback(); } } while (0)
 
 struct CCompressedMemoryDataInputStream_Retail {
     virtual void v00();

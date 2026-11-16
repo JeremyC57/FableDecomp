@@ -13,6 +13,7 @@
 // Layout: retail CSlider = Ego_r.pdb minus 0x30 (landed ctor 0x0054C050): Min +0x18c, Max +0x194, Step +0x19c, Value +0x1a4, Move +0x1ac,
 //   OldValue +0x1ad, StartValue +0x1b5, Actions +0x1c0, PDefAction +0x1d4, PLeftArrow +0x1d8, PRightArrow +0x1dc, PreviousValue +0x1e0;
 //   the slider's CActionParam base sits at +0x18.
+#include "engine/CCountedPointer.h"
 #include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
@@ -87,7 +88,7 @@ class CAction { public:                                        // retail 0x10 by
     void AddUIActionParam(CActionParam* param) { UIActionParams.push_back(param); }
     void AddUIActionParam(CActionParam* param, const CCountedPointer<CAction>& self);   // 0x0053FDE0
 };
-void __fastcall DestroyAction(void* action);           // 0x00429F43
+// NF37: 0x00429F43 is CCountedPointer<NUISystem::CAction>::DeleteData (Ego_r.pdb 0x00438DF1 + FableWin.pdb), the per-T deleter.
 struct CInlineAction {                                  // the same 16-byte CAction, constructed inline at the 0x57 site
     long ActionType;
     CRetailList<CActionParam*> UIActionParams;
@@ -99,7 +100,7 @@ struct CInlineActionPointer {
     CInlineAction* m_pObject;
     SCountBlock* m_pCount;
     CInlineActionPointer(CInlineAction* object) : m_pObject(object) {
-        m_pCount = m_pObject ? new SCountBlock(DestroyAction, m_pObject) : 0;
+        m_pCount = m_pObject ? new SCountBlock(CCountedPointer<NUISystem::CAction>::DeleteData, m_pObject) : 0;
     }
     ~CInlineActionPointer() {
         if (m_pCount) {

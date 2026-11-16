@@ -5,6 +5,8 @@
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068C880, 576 bytes, `ret 8` (/GS cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
+#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
+#include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
@@ -51,7 +53,6 @@ class CInputProcessYesNoQuestion : public CInputProcessGameBase {
 public:
     long PreviousMode;                             // +0x28 EPlayerMode
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 
@@ -73,19 +74,19 @@ void CInputProcessYesNoQuestion::ProcessInput(const CInputEvent& event, CProcess
             processed.SetAsPerformedEvent();
             processed.AddGameEvent(gameEvent);
         }
-    } else if (IsEventGameAction(0x16, event)) {
+    } else if (IsEventGameAction(GAME_ACTION_ANSWER_QUESTION_YES, event)) {
         CGameEvent gameEvent(0x1d);
         gameEvent.AddLong(1);
         gameEvent.AddLong(PreviousMode);
         processed.SetAsPerformedEvent();
         processed.AddGameEvent(gameEvent);
-    } else if (IsEventGameAction(0x17, event)) {
+    } else if (IsEventGameAction(GAME_ACTION_ANSWER_QUESTION_NO, event)) {
         CGameEvent gameEvent(0x1d);
         gameEvent.AddLong(0);
         gameEvent.AddLong(PreviousMode);
         processed.SetAsPerformedEvent();
         processed.AddGameEvent(gameEvent);
-    } else if (IsEventGameAction(0x18, event) && CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Question.CanCancel()) {
+    } else if (IsEventGameAction(GAME_ACTION_ANSWER_QUESTION_THIRD, event) && CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Question.CanCancel()) {
         CGameEvent gameEvent(0x1d);
         gameEvent.AddLong(2);
         gameEvent.AddLong(PreviousMode);

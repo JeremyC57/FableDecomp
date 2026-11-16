@@ -9,6 +9,8 @@
 // Shape: the CByteArray / inline Read / ReadLong models of the landed ReadZlibCompressed 0x00996230; the short count
 //   comes from an inline ReadShort() widened with movsx; the decompressed length starts as `size` and the assertion
 //   fires unless it came out as size - 3.
+#define FABLE_RETAIL_CAFILE_ERRORCALLBACK   // NF37: CAFile::m_errorCallback 0x013BC9FC (FableWin/Ego_r ?m_errorCallback@CAFile@@0P6IXXZA)
+#include "engine/CAFile.h"
 #include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStream_Methods   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
@@ -16,7 +18,6 @@
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
-extern void (__cdecl* g_pfnAssertionFailed)();               // 0x013BC9FC
 extern "C" int __cdecl lzo1x_decompress_asm_fast(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
                                         unsigned int* dstLen, void* work);   // 0x00C069D0
 
@@ -62,8 +63,7 @@ void CDataInputStream_Methods::ReadCompressed(void* data, long size)
             unsigned int written = size;
             lzo1x_decompress_asm_fast(buffer.GetData(), compressedSize, (unsigned char*)data, &written, 0);
             if (written != (unsigned int)(size - 3)) {
-                if (g_pfnAssertionFailed != 0)
-                    g_pfnAssertionFailed();
+                CAFile::DoErrorCallback();
             }
             Read((unsigned char*)data + size - 3, 3);
         } else
