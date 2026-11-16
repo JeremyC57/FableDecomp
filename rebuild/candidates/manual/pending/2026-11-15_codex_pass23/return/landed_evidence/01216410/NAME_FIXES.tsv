@@ -1,0 +1,7 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00c61610	??0CEAXBuffer@@QAE@PAVCEAXListener@@JJW4EAXVERSION@@PAPAU_CHANGES@@@Z	Multiple original SDK symbols/complete type records, actual native caller/vtable/cleanup binding; NAMING_EVIDENCE and RELOCATION_AUDIT	CShadowRendererSceneData constructor; CEaxSource constructor
+00c60410	?DeleteChangesList@CEAXListener@@QAEXXZ	Multiple original SDK symbols/complete type records, actual native caller/vtable/cleanup binding; NAMING_EVIDENCE and RELOCATION_AUDIT	CEaxContext::ClearEvents; InitShadowDevice fastcall
+00c609a0	?AddBuffer@CEAXListener@@QAEHPAVCEAXBuffer@@@Z	Multiple original SDK symbols/complete type records, actual native caller/vtable/cleanup binding; NAMING_EVIDENCE and RELOCATION_AUDIT	CEaxContext::AddSource; CShadowDevice::Register
+00c60b90	??1CEAXBuffer@@UAE@XZ	Multiple original SDK symbols/complete type records, actual native caller/vtable/cleanup binding; NAMING_EVIDENCE and RELOCATION_AUDIT	CEaxSource destructor; CConsoleVariable
+00c61b20	??_GCEAXBuffer@@UAEPAXI@Z	Multiple original SDK symbols/complete type records, actual native caller/vtable/cleanup binding; NAMING_EVIDENCE and RELOCATION_AUDIT	CEaxSource deleting destructor; old28Bextent omitted RET4
+00c3c830	??1CCodaObjectBase@@UAE@XZ	Multiple original SDK symbols/complete type records, actual native caller/vtable/cleanup binding; NAMING_EVIDENCE and RELOCATION_AUDIT	CPKObject destructor

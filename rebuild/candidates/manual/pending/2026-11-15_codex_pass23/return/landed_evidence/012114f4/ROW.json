@@ -1,0 +1,68 @@
+{
+  "address": "012114f4",
+  "status": "RELOCATION_MATCH",
+  "assigned_name": "CSoundEventManager::CheckExisting",
+  "source_dependencies": [
+    "00c11230.cpp"
+  ],
+  "parent_address": "00c11230",
+  "parent_size": 242,
+  "selected_flags": [
+    "/EHsc"
+  ],
+  "main_verified": true,
+  "assigned_leaf": "?CheckExisting@CSoundEventManager@@QAEHPAVCSoundSample@@JJJJK@Z",
+  "source_sha256": "f55bc5be6af366a3a1e1762c265d0eb14b37548bd694bb5ee4a4cc9fae00482c",
+  "source_dependency_sha256": "82f1c4c211df96f16f72afbecbef204f323df74a70cd9bb742bddfc5dd75eb9c",
+  "test_sha256": "b7d044283a6bc01a4f21e76d304c99b310ecde267a540efe6e9f30708693f30f",
+  "main_grade": "history/012114f4/all_verified_headers_21/RESULT.json",
+  "include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/a66be40b2e8e7026f11ef08d4d5e32bf405f533ec0e261920c8a3fccb40b9fb3",
+  "native_test_receipt": "history/012114f4/main_native_final_03/RESULT.json",
+  "gcc_test_receipt": "evidence/header_regression/main_012114f4_gcc_final.json",
+  "native_normal_cases": 2700,
+  "gcc_normal_cases": 2700,
+  "gcc_exception_cases": 7,
+  "assigned_extent": 18,
+  "assigned_bytes_covered": 18,
+  "verified_unique_function_bytes": 242,
+  "verified_unique_code_bytes": 260,
+  "source_shape_strategy_families_this_pass": 2,
+  "code_data_relocations": 18,
+  "matched_body_inventory": [
+    {
+      "section": 3,
+      "address": "00c11230",
+      "bytes": 242,
+      "masked_equal": true,
+      "name": "?CheckExisting@CSoundEventManager@@QAEHPAVCSoundSample@@JJJJK@Z"
+    },
+    {
+      "section": 4,
+      "address": "012114f4",
+      "bytes": 18,
+      "masked_equal": true,
+      "name": ".text$x"
+    },
+    {
+      "section": 5,
+      "address": "0136a388",
+      "bytes": 36,
+      "masked_equal": true,
+      "name": ".xdata$x"
+    }
+  ],
+  "naming": "Descriptive libpk names; original names unavailable. See NAMING_EVIDENCE for ABI/type uncertainty.",
+  "helper_debts": [],
+  "verified_unique_generated_bytes": 18,
+  "parked": false,
+  "final_verification_pending": false,
+  "final_grade": "history/012114f4/handoff_final/RESULT.json",
+  "final_source_sha256": "f55bc5be6af366a3a1e1762c265d0eb14b37548bd694bb5ee4a4cc9fae00482c",
+  "final_test_sha256": "b7d044283a6bc01a4f21e76d304c99b310ecde267a540efe6e9f30708693f30f",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/012114f4/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/012114f4/handoff_native_gcc/GCC_RESULT.json",
+  "headers_path": "hdr",
+  "final_compiler_receipts_for_assigned_row": 31,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

@@ -1,0 +1,41 @@
+{
+  "address": "01215b80",
+  "status": "RELOCATION_MATCH",
+  "assigned_name": "CCodaFrameStreamer::SubmitFrame",
+  "leaf": "?SubmitFrame@CCodaFrameStreamer@@UAEXPAVCCodaFrame@@@Z",
+  "selected_flags": [
+    "/EHsc"
+  ],
+  "assigned_extent": 8,
+  "real_start": "00c49470",
+  "real_parent_bytes": 415,
+  "main_verified": true,
+  "owned_header_paths": [
+    "libpk/CCodaFrameStreamer.h"
+  ],
+  "source_sha256": "fc31ee8453173f47fe4e6a28dec9afb4f84280c5fd2441b40ad54348222545e8",
+  "test_sha256": "96b8e361e072a4646ec3f3212c1437ea8c8264ffbbb1dd962c0925f698a347cb",
+  "main_grade": "history/01215b80/all_verified_headers_33/RESULT.json",
+  "source_tag": "all_verified_headers_33",
+  "main_native_test": "history/01215b80/main_native_listener_frame_final01/RESULT.json",
+  "main_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/c7680cf5f472c6ab36f39d7f1f2092f2f2eb614b5c513473c4efe4eb38665cd4",
+  "verified_unique_function_bytes": 415,
+  "verified_unique_generated_bytes": 8,
+  "verified_unique_code_bytes": 423,
+  "assigned_bytes_covered": 8,
+  "native_cases": 576,
+  "gcc64_normal_cases": 576,
+  "gcc64_throw_cases": 9,
+  "residue": null,
+  "parked": false,
+  "final_verification_pending": false,
+  "final_grade": "history/01215b80/handoff_final/RESULT.json",
+  "final_source_sha256": "fc31ee8453173f47fe4e6a28dec9afb4f84280c5fd2441b40ad54348222545e8",
+  "final_test_sha256": "96b8e361e072a4646ec3f3212c1437ea8c8264ffbbb1dd962c0925f698a347cb",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/01215b80/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/01215b80/handoff_native_gcc/GCC_RESULT.json",
+  "headers_path": "hdr",
+  "final_compiler_receipts_for_assigned_row": 28,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

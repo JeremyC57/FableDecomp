@@ -1,0 +1,57 @@
+{
+  "address": "01216ce0",
+  "status": "RELOCATION_MATCH",
+  "main_verified": true,
+  "assigned_name": "CDynamicOutputPin::Disconnect",
+  "assigned_leaf": "?Disconnect@CDynamicOutputPin@@UAGJXZ",
+  "selected_flags": [
+    "/EHsc"
+  ],
+  "assigned_extent": 18,
+  "real_parent": "00ca97a0",
+  "real_parent_size": 127,
+  "generated_cleanup": {
+    "symbol": "$L1270",
+    "section": ".text$x",
+    "offset": 0,
+    "size": 8
+  },
+  "generated_handler": {
+    "symbol": "__ehhandler$?Disconnect@CDynamicOutputPin@@UAGJXZ",
+    "offset": 8,
+    "size": 10
+  },
+  "source_dependencies": [
+    "parent_00ca97a0.cpp"
+  ],
+  "source_shape_strategies_this_pass": 1,
+  "source_grades_this_pass": 2,
+  "main_grade": "history/01216ce0/main_generated_review_01/RESULT.json",
+  "pass23_native_test": "history/01216ce0/native_sdk_behavior_01/RESULT.json",
+  "native_eh_test": "history/01216ce0/native_sdk_eh_01/RESULT.json",
+  "main_gcc_test": "evidence/header_regression/main_01216ce0_gcc_final.json",
+  "source_sha256": "ad9471a4c8069af4cfb1f53a1c44ab1cfc701d1479766186fc71030d0b2c7b65",
+  "test_sha256": "233b38b722226e09a06385f30045fa13a482a42cbc18167bae1a896b76abe895",
+  "native_cases": 340,
+  "additional_eh_cases": 2,
+  "pending": "",
+  "evidence": [
+    "NAMING_EVIDENCE.md",
+    "NATIVE_SDK_IDENTITY.json",
+    "RELOCATION_AUDIT.json"
+  ],
+  "verified_unique_function_bytes": 127,
+  "verified_unique_generated_bytes": 18,
+  "verified_unique_code_bytes": 145,
+  "parked": false,
+  "final_verification_pending": false,
+  "final_grade": "history/01216ce0/handoff_final/RESULT.json",
+  "final_source_sha256": "ad9471a4c8069af4cfb1f53a1c44ab1cfc701d1479766186fc71030d0b2c7b65",
+  "final_test_sha256": "233b38b722226e09a06385f30045fa13a482a42cbc18167bae1a896b76abe895",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/01216ce0/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/01216ce0/handoff_native_gcc/GCC_RESULT.json",
+  "headers_path": "hdr",
+  "final_compiler_receipts_for_assigned_row": 41,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

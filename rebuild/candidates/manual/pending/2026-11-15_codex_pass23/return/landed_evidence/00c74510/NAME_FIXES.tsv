@@ -1,0 +1,5 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00c74510	?ApplyFilter@CFloatFilter@@AAEXPBM0PAM01_NI@Z	Original SDK release/private PUBLIC plus independent debug PUBLIC/full CodeView; exact828-byte native body.	?ApplyRamps@CDspGain@@QAEXPBM0PAM01_NI@Z;?ApplyRamps@CDspGain@@QAEXPBM0PAM01HI@Z
+0x0143ccdc	?m_pDSP@CReverbDspProcessor@@1PAVCReverbFns@@A	Both SDK release/debug FloatFilter references and original protected static CReverbFns* type; exact native operand.	?s_pOps@CDspObject@@2PAUCDspOps@@A
+0x00c74030	?ScaleSamples@CReverbFns@@UAEXPAMPBMMI@Z	Actual base IMPLEMENTATION full119bytes/44instructions byte-identical in SDK release ReverbDspModule.obj AND ReverbFns_SSE.obj; both debug original base PUBLICs. SDK_TARGET_IDENTITY.json.	?ScaleCopy@CDspOps@@UAEXPAMPBMMI@Z;CDspOps::ScaleCopy
+0x00c76880	?ApplyFilterOrder2@CReverbFns@@UAEXPAMPBM110I@Z	Actual base IMPLEMENTATION full513bytes/156instructions matches SDK release ReverbFns.obj modulo sole float1 relocation offset59 validated native0122ded8; debug original PUBLIC. SDK_TARGET_IDENTITY.json.	?Biquad@CDspOps@@UAEXPAMPBM110I@Z;CDspOps::Biquad

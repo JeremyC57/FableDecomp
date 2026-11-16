@@ -1,0 +1,7 @@
+# Exact names and structure
+
+Target: `?GetPointIntersectionFromToUsingFullCollision@CPhysicsMesh@@ABE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z`. Both original PDBs: Ego_r00b75ce0 and FableWin031994f0; native caller00a187ac and private class TPI records independently support const/private signature. The supplied best wrongly uses public QBE and struct U for both vector and intersection data. Emitted leaf confirmed in the final object's symbol table.
+
+FableWin031994f0 constructs hit/normal, gets TotalFaceIndices.size(), normalises direction, indexes each original C3DTriangle2, and calls HasCollidedWithTriangleAt through the03199596 call. On hit it tests squared distance then stores Normal, DistanceSquared, IntersectionPosition and nearest. This source follows that original shape. Inline helper, globals, field types and all called identities share the independently proven evidence in rows/00a177a0/NAMING_EVIDENCE.md. The nine actual relocations are independently checked in this row's RELOCATION_AUDIT.json; none is accepted from a guessed manifest label.
+
+Native extent00a17f80..00a182b2 is one818-byte function,256instructions endingret12. CPhysicsMesh fields+30/+34/+3c and six-byte triangle stride agree with the original PDB field types adjusted for native12-byte STLport vectors. Class keys/access/const/signature are exact. Original scalar local names are descriptive; recovered class/member/function names are original.

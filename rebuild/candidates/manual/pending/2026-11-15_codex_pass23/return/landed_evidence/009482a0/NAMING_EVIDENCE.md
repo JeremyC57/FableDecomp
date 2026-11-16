@@ -1,0 +1,11 @@
+# Original identity and exact ABI
+
+Assigned method: protected, nonvirtual bool CAIStateGroup_GoToPub::GetSeat(CThing*,const CCharString*), exact public ?GetSeat@CAIStateGroup_GoToPub@@IAE_NPAVCThing@@PBVCCharString@@@Z in BOTH original name catalogs. Both original procedure records and locals are saved in ORIGINAL_LOCALS.json (release module ai_state_group_go_to_pub.obj,1164B; debug1904B). The debug original at02bbd5b0 supplies scope/controlflow/call order. Retail assigned extent009482a0..009486d0 is1072B and ends in ret8.
+
+The pub component is CTCThingOwner, interface33, and its ObjectList is std::list<CIntelligentPointer<CThing>>; tables is std::list<CThingObject*>. They replace the historical CTCTableList surrogate. Original CTCTavernTable::GetSeat takes mutable CThing&,C3DVector&,CRightHandedSet&,long&,long&,const CCharString*. Its GetTankard returns CThingObject*. Pub/table/tankard member template owners match original GoToPub TPI records. Native vtable RTTI proves exact CThingObject and CThing intelligent-pointer template owners; relocation audit follows complete-object locators and descriptor strings.
+
+GetPWorldSeed is the protected CONST CAIStateGroupBase member, not a derived/nonconst surrogate. GetCreature is the protected const base accessor through original CAIBrain's private Creature reference. GFRandom is the real two-argument fastcall inline helper (range,seed), multiplying/add/rotate then remainder; GFROR13 is fastcall long(unsigned long), native00497890.
+
+Native004a96f0 is CIntelligentPointer<CThing>::CIntelligentPointer(CThing*) (both exact PDB publics), NOT the historical CThingObject constructor. Its32B emitted body,3 operands, CThing vtable/type descriptor and ret4 are independently verified. Scalar/array allocation aliases are absent; list allocation/deallocation are exactly C malloc/free, proven through native PE imports.
+
+Only new header option: FABLE_RETAIL_CTCTAVERNTABLE_LIFETIMES_PASS23 exposes the public CThing& constructor and virtual destructor. BOTH original TPI records retain these exact member signatures. Existing full layout and enum are not altered. Default and existing full-layout preprocessing tokens are identical; original STATIC_ASSERT line names pinned to original package line numbers.

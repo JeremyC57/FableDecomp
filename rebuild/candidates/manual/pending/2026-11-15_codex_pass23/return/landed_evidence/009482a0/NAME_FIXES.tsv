@@ -1,0 +1,6 @@
+historical_name	correct_symbol	native_va	evidence
+GetSeat(CThingObject*,const CCharString*)	?GetSeat@CAIStateGroup_GoToPub@@IAE_NPAVCThing@@PBVCCharString@@@Z	009482a0	both original publics and procedure locals
+CTCTableList	CTCThingOwner		both original locals+ObjectList TPI,TCI_THING_OWNER33
+Derived nonconst GetPWorldSeed	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ	008fcfd0	both exact original publics
+One-argument GFRandom surrogate	GFRandom(unsigned long,unsigned long*)	inline	genuine shared helper; native range/seed/LCG/rotate/remainder
+CThingObject pointer constructor at004a96f0	??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z	004a96f0	both exact original publics and native32B body/CThing RTTI

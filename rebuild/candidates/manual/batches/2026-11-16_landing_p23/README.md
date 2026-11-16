@@ -25,6 +25,8 @@ All 103 are RELOCATION_MATCH (one MATCH) with their behaviour tests PASS under `
 - **37 FUNCLET:** `Unwind<addr>` rows (module `_global`, `funclet_offset` 0, `/EHsc`) with no code of their own. Each
   `#include`s its landed parent's file, as 0x01215000 does in landing gb. Five of them belong to parents landed earlier:
   0x00C3DFD0 (Codex's copy is identical to the landed one) and 0x00C2E610.
+- **Evidence:** Codex's top-level files and the landed rows' NAMING_EVIDENCE / PROBES / ROW.json / BUILD.json are in
+  `pending/2026-11-15_codex_pass23/return/` (as gb did for pass 22). Scanned: no retail byte runs, only sha256 header profiles.
 
 Tools are in `tools/`:
 - `mkpayload23.py` builds the payload, oracle and plan. Its first version did not inline `#include "<addr>.cpp"`, so about 25
@@ -66,14 +68,16 @@ The four strmbase parents are unmodified DX9.0c SDK Summer 2004 `BaseClasses/amf
 
 ## Bookkeeping
 - **Reservation:** `pending/2026-11-15_codex_pass23/RESERVED.tsv` is renamed `RELEASED.tsv`.
-- **UNMATCHED_ROWS.tsv:** 100 rows removed (the landed reservations plus 13 landed parents that were listed); 16 changed, plus
-  the three parents above.
+- **UNMATCHED_ROWS.tsv:** 100 rows removed: 87 landed reservations, plus 13 rows already listed outside the reservation (11 of
+  the parents and the real starts 0x008F8F50 / 0x00D29880). 16 rows changed, plus the three parents above.
 - **Labels:** `ghidra_out/labels_landing_2026-11-16p23.tsv` has 66 labels, for rows and parents (funclets take none, as in gb).
 - **Name fixes:** 185 queued as `land1116p23` (182 more were already queued with the same spelling). 39 that disagree with a
-  queued spelling, a landed leaf or a 2026-11-16gn label are held in `NAME_FIXES_CONFLICTS_WITH_QUEUE.tsv` for the coordinator.
+  queued spelling, a landed leaf or a 2026-11-16gn label are held in `NAME_FIXES_CONFLICTS_WITH_QUEUE.tsv` for the coordinator. All 39 disagree with a queued spelling only; none
+  disputes a leaf landed here or a gn label.
 
 ## Audit notes
-- **RELOC_NAME:** 94 warnings. Codex's spellings differ from current labels, and most of them are in the name-fix queue.
+- **RELOC_NAME:** 94 warnings (69 distinct symbols). Codex's spellings differ from current labels; 80 of the 94 bind a symbol the
+  name-fix queue already carries.
 - **RELOC_CONFLICT (one):** 0x0064E978 binds `??0C3DAnimationBlendState@@QAE@XZ` to 0x004C2DD0, which the manifest names
   C3DAnimationBlendState. The other side is a stale reloc_bindings line from 0x00C72600; that row respelled its callee
   0x00C59BA0 to `??0CCodaVoice@@QAE@XZ` in vendor naming wave V1. The new row is the right one.
@@ -83,3 +87,14 @@ The four strmbase parents are unmodified DX9.0c SDK Summer 2004 `BaseClasses/amf
   under those names (header debt since 2026-11-03). That debt is not in the rows.
 - **Optional:** 0x00CAA790 is vendor-proved as `??1CBaseMediaFilter@@UAE@XZ`, yet it is still landed as `~CVolume_00caa790`.
   It is older naming debt, left as it is.
+
+## Open: 25 caller-side bindings (`callers_wrong_symbol.tsv`)
+A scan of every retail E8/E9 into the 66 new non-funclet addresses (`retail_calls_into_new_rows.tsv`, `tools/callers.py`) finds 67
+call sites. 58 of them sit in 49 landed rows, which were compiled with `tools/xrow.sh` (relocations resolved against retail
+by `tools/xref.py`). Their 56 resolved relocations into the new rows break down as follows: 31 bind the new rows' leaves.
+The other two sites resolve to no relocation of the graded function. **25, in 20 older caller rows, bind another spelling.** These
+are const / access / parameter-type differences such as `QAE` v `IAE`, `PAV` v `ABV`, `J` v the enum, as well as stand-in names
+(`?Run_0064e978@Sub@@`, `_ForwardTarget_00590235`, `CProcessor_00c09110::Load`, `CDspGain::ApplyRamps` for CFloatFilter::ApplyFilter,
+`CUnknownSystem1D8::InitSubSystemB` for CSalPlatform::CreateSw). Each caller needs its declaration respelled, the same kind of
+work as landing gn follow-up 2. They are still RELOCATION_MATCH: the grade masks the symbol, so retail parity is unaffected.
+0x007E2A60 (a correct binding) is the one caller the one-off q.py could not grade, because it needs its catalog flags.

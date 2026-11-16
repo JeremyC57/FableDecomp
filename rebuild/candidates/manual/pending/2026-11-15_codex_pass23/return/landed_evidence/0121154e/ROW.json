@@ -1,0 +1,108 @@
+{
+  "address": "0121154e",
+  "status": "RELOCATION_MATCH",
+  "assigned_name": "CSoundEventManager::SetEventPosition",
+  "source_dependencies": [
+    "00c11520.cpp"
+  ],
+  "parent_address": "00c11520",
+  "parent_size": 163,
+  "selected_flags": [
+    "/EHsc"
+  ],
+  "source_dependency_sha256": "6a7692445a1973f64eca199913e508fe7eb64e12f4e6f7413afcf26887acbfce",
+  "test_sha256": "29a8fed091d7dd5942c08ee14c9524eae0d0dcedae885a7cefa3b02d678b5018",
+  "selected_grade": "history/0121154e/all_verified_headers_44/RESULT.json",
+  "source_grades_this_pass": 20,
+  "independent_strategy_count": "Conservative categories documented in PROBES;10 builds are not claimed as10 distinct mechanisms.",
+  "native_test_receipt": "history/0121154e/main_native_position_final02/RESULT.json",
+  "native_cases": 256,
+  "gcc_cases": 256,
+  "gcc_exception_cases": 5,
+  "residue": null,
+  "main_verified": true,
+  "total_compiler_invocations": 33,
+  "processor_control_grades": 3,
+  "profile_setup_failures": 1,
+  "additional_main_probes": [
+    "main_11_real_shared_C3DVector",
+    "main_12_genuine_guard_dtor",
+    "main_13_genuine_guard_dtor_complete_profile",
+    "main_14_canonical_shared_virtual_reference",
+    "main_15_condition_scoped_receiver",
+    "main_16_grouped_copy_expression",
+    "main_17_processor_control_G5",
+    "main_18_processor_control_G6",
+    "main_19_processor_control_G7",
+    "main_20_named_relative_value",
+    "main_21_value_copy_temporary",
+    "main_22_const_reference_components",
+    "main_23_grouped_float_components",
+    "main_24_grouped_float_components"
+  ],
+  "selected_files_unchanged": false,
+  "additional_main_grades_25_26": [
+    {
+      "tag": "main_25_actual_vector_initialise",
+      "parent_source_sha256": "942e7fee5af5c553c12a5dccb8cf5e03339df527b2753b2ed6cc6f5074d28e8d",
+      "object_size": 163,
+      "first_difference": 86,
+      "status": "DIFFER"
+    },
+    {
+      "tag": "main_26_actual_vector_component_temporary",
+      "parent_source_sha256": "3ef9cafbf8c395c2e6fe62df5654ccbfa387128f06c8d7cf91974cd3e520b760",
+      "object_size": 185,
+      "first_difference": 23,
+      "status": "DIFFER"
+    }
+  ],
+  "pending": null,
+  "additional_main_grades_27_28": [
+    {
+      "tag": "main_27_packet_value_argument",
+      "parent_source_sha256": "220e25f3dcac595cf99d91b1c360ee1b0322b7f737fa6316878359aa7c7f1391",
+      "object_size": 191,
+      "first_difference": 23,
+      "status": "DIFFER"
+    },
+    {
+      "tag": "main_28_packet_copy_lifetime",
+      "parent_source_sha256": "8b60215d6971cdd335b265829f8cac7a7efaac7b200ff8d91f1d6905aa6c897e",
+      "object_size": 191,
+      "first_difference": 23,
+      "status": "DIFFER"
+    }
+  ],
+  "scheduler_trace": "history/0121154e/main_14_canonical_shared_virtual_reference/MAIN_SCHEDULE_VALIDATION.json",
+  "parked": false,
+  "assigned_body_match": true,
+  "assigned_leaf": "?SetEventPosition@CSoundEventManager@@UAEXJABVC3DVector@@@Z",
+  "source_tag": "all_verified_headers_44",
+  "main_grade": "history/0121154e/all_verified_headers_44/RESULT.json",
+  "main_native_test": "history/0121154e/main_native_position_final02/RESULT.json",
+  "main_gcc_test": "history/0121154e/main_native_position_final02/GCC_RESULT.json",
+  "main_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/1cb460aebb36fe7e2bdc9acda6d76e5fb5c70116e2bc274038481a5bbca0f338",
+  "verified_unique_function_bytes": 163,
+  "verified_unique_generated_bytes": 18,
+  "verified_unique_code_bytes": 181,
+  "verified_code_bytes": 181,
+  "unique_new_code_bytes": 181,
+  "assigned_bytes_covered": 18,
+  "real_start": "00c11520",
+  "source_path": "rows/0121154e/0121154e.cpp",
+  "test_path": "rows/0121154e/0121154e_test.cpp",
+  "headers_path": "hdr",
+  "source_sha256": "9a9bbf67c51229f452944b135022563b50f20a3bc0ec58b27b37510e13293324",
+  "relocation_audit": "PASS_PARENT163_GENERATED18_METADATA36_ALL14_BINDINGS",
+  "compiler_snapshots_note": "Prior28 + lookup-ref29, manager-ref30, canonical-header31, independent-root32, final-header33. Two scheduler diagnostic compilations separate. Historical trials not invented.",
+  "final_verification_pending": false,
+  "final_grade": "history/0121154e/handoff_final/RESULT.json",
+  "final_source_sha256": "9a9bbf67c51229f452944b135022563b50f20a3bc0ec58b27b37510e13293324",
+  "final_test_sha256": "29a8fed091d7dd5942c08ee14c9524eae0d0dcedae885a7cefa3b02d678b5018",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/0121154e/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/0121154e/handoff_native_gcc/GCC_RESULT.json",
+  "final_compiler_receipts_for_assigned_row": 39,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

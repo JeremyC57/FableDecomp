@@ -1,0 +1,7 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00C33110	??_VCCodaObjectBase@@SAXPAX@Z	Official GameCODA release/debug symbols and CodeView types; exact native caller/arrays/constructor-destructor graph, byte and EH audits	
+0x00C3D0F0	??_ECCodaEnvironment@@UAEPAXI@Z	Official GameCODA release/debug symbols and CodeView types; exact native caller/arrays/constructor-destructor graph, byte and EH audits	
+0x00C3D8B0	??_ECCoda2DSource@@UAEPAXI@Z	Official GameCODA release/debug symbols and CodeView types; exact native caller/arrays/constructor-destructor graph, byte and EH audits	
+0x00C3D910	??_ECCoda3DSource@@UAEPAXI@Z	Official GameCODA release/debug symbols and CodeView types; exact native caller/arrays/constructor-destructor graph, byte and EH audits	
+0x00C3D9A0	??_ECCodaListener@@UAEPAXI@Z	Official GameCODA release/debug symbols and CodeView types; exact native caller/arrays/constructor-destructor graph, byte and EH audits	
+0x00C3DFD0	?Create@CCodaContext@@QAE_NPBU_CRESOURCEDESC@@PBUCPLATFORMDESC@@@Z	Official GameCODA release/debug symbols and CodeView types; exact native caller/arrays/constructor-destructor graph, byte and EH audits	?Initialise@CAudioSystem@@QAE_NKPBX@Z

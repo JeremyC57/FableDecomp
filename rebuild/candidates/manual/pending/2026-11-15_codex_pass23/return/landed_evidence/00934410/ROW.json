@@ -1,0 +1,78 @@
+{
+  "address": "00934410",
+  "status": "RELOCATION_MATCH",
+  "main_verified": true,
+  "assigned_name": "CAIStateGroup_MinionKidGroupTag::EvadeTarget",
+  "assigned_leaf": "?EvadeTarget@CAIStateGroup_MinionKidGroupTag@@AAEXXZ",
+  "selected_flags": [],
+  "assigned_extent": 922,
+  "object_size": 922,
+  "retail_size": 922,
+  "source_shape_strategy_families_this_pass": 3,
+  "source_grades_this_pass": 4,
+  "verification_grades_this_pass": 2,
+  "attempt_count_note": "One historical baseline (wrong public Leaf), one initial compile failure, then original shared-source rebase, real sound constructor, original group accessor. Lifetime and aggregate grades are verification. Three source families; no minimum-ten requirement after exact match.",
+  "main_grade": "history/00934410/all_verified_headers_15/RESULT.json",
+  "source_sha256": "7d76515b89bbfefb834cc09f985de1cf659863eb1c4bf26c1f66f189605a6a6c",
+  "test_sha256": "c1fe66eb207e37267b25bd13f8e88fba24a77c4bebfec085ac2f43c3cb23c5d9",
+  "native_test_receipt": "history/00934410/main_native_review_01/RESULT.json",
+  "main_gcc_test": "evidence/header_regression/main_00934410_gcc_final.json",
+  "native_cases": 1536,
+  "gcc_cases": 1536,
+  "code_data_relocations": 50,
+  "matched_body_inventory": [
+    {
+      "address": "0x934410",
+      "leaf": "?EvadeTarget@CAIStateGroup_MinionKidGroupTag@@AAEXXZ",
+      "bytes": 922,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "0x40f020",
+      "leaf": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "bytes": 60,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "0x48a4f0",
+      "leaf": "??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z",
+      "bytes": 30,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "0x1237f1c",
+      "leaf": "??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@",
+      "bytes": 4,
+      "masked_equal": true,
+      "extent_verified": true
+    }
+  ],
+  "helper_debts": [],
+  "pending": "",
+  "evidence": [
+    "NAMING_EVIDENCE.md",
+    "EGOR_TYPES.json",
+    "FABLEWIN_TYPES.json",
+    "ORIGINAL_LOCALS.json",
+    "DISTANCE_LOCALS.json",
+    "DONOR_CALLS.json",
+    "RELOCATION_AUDIT.json"
+  ],
+  "verified_unique_function_bytes": 922,
+  "verified_unique_generated_bytes": 0,
+  "verified_unique_code_bytes": 922,
+  "parked": false,
+  "final_verification_pending": false,
+  "final_grade": "history/00934410/handoff_final/RESULT.json",
+  "final_source_sha256": "7d76515b89bbfefb834cc09f985de1cf659863eb1c4bf26c1f66f189605a6a6c",
+  "final_test_sha256": "c1fe66eb207e37267b25bd13f8e88fba24a77c4bebfec085ac2f43c3cb23c5d9",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/00934410/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/00934410/handoff_native_gcc/GCC_RESULT.json",
+  "headers_path": "hdr",
+  "final_compiler_receipts_for_assigned_row": 40,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

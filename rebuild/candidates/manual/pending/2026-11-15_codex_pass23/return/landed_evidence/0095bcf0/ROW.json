@@ -1,0 +1,60 @@
+{
+  "address": "0095bcf0",
+  "status": "RELOCATION_MATCH",
+  "assigned_name": "CAIStateGroup_HoverHornetQueen::Attack",
+  "leaf": "?Attack@CAIStateGroup_HoverHornetQueen@@IAEXXZ",
+  "retail_size": 948,
+  "object_size": 948,
+  "selected_flags": [],
+  "flags": [],
+  "source_tag": "sol_final03_aggregate_rebase",
+  "test_tag": "sol_native_final02_ordering",
+  "test_status": "NATIVE_AND_GCC64_PASS",
+  "test_cases": 14,
+  "relocation_audit": "PASS",
+  "carried_helpers": [
+    {
+      "address": "0095c5c0",
+      "bytes": 182,
+      "status": "MASKED_MATCH_AND_FULL_RELOC_AUDIT_PASS",
+      "already_landed": true
+    }
+  ],
+  "changed_headers": [
+    "engine/CAIStateGroup_HoverHornetQueen.h",
+    "engine/CAIStateGroup_HoverMovementBase.h",
+    "engine/CCreatureAction_WaspQueenPrimaryAttack.h",
+    "engine/_quarantine/CWaspQueenBattleDef.h",
+    "engine/NCreatureAI.h",
+    "engine/CWorldMap.h"
+  ],
+  "evidence": [
+    "RELOCATION_AUDIT.json",
+    "ORIGINAL_LOCALS.json",
+    "ORIGINAL_TYPES.json",
+    "NAMING_EVIDENCE.md"
+  ],
+  "lever": "Real shared helper body and scoped def lifetime; grouped X/Y vector subtraction gives exact Newton-region scheduling.",
+  "main_verified": true,
+  "source_sha256": "a673822a3ecff7e44b30a8d8b3c4c496fa14c69531cf370d9757fd567d2118d2",
+  "test_sha256": "f7d8130b25269b82f3d7b4b5dec0ed43508198a2012a00513f8952c3cdbfe416",
+  "main_grade": "history/0095bcf0/all_verified_headers_06/RESULT.json",
+  "pass23_native_test": "history/0095bcf0/main_native_enum_review_02/RESULT.json",
+  "main_gcc_test": "evidence/header_regression/main_0095bcf0_gcc_final.json",
+  "source_shape_strategies_this_pass": 6,
+  "pending": "",
+  "verified_unique_function_bytes": 948,
+  "verified_unique_generated_bytes": 0,
+  "verified_unique_code_bytes": 948,
+  "parked": false,
+  "final_verification_pending": false,
+  "final_grade": "history/0095bcf0/handoff_final/RESULT.json",
+  "final_source_sha256": "a673822a3ecff7e44b30a8d8b3c4c496fa14c69531cf370d9757fd567d2118d2",
+  "final_test_sha256": "f7d8130b25269b82f3d7b4b5dec0ed43508198a2012a00513f8952c3cdbfe416",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/0095bcf0/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/0095bcf0/handoff_native_gcc/GCC_RESULT.json",
+  "headers_path": "hdr",
+  "final_compiler_receipts_for_assigned_row": 68,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

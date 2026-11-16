@@ -1,0 +1,86 @@
+{
+  "address": "0090e5d0",
+  "input_kind": "test_port",
+  "status": "RELOCATION_MATCH",
+  "assigned_extent": 1367,
+  "object_size": 1367,
+  "retail_size": 1367,
+  "assigned_leaf": "?Update@CAIStateGroup_BanditGossip@@MAEXXZ",
+  "selected_flags": [
+    "/d2inlT80"
+  ],
+  "source_grades_this_pass": 1,
+  "source_shape_strategies_this_pass": 0,
+  "production_source_unchanged": true,
+  "pass23_grade": "sol_testport_baseline_current",
+  "source_sha256": "e1fa4472caa9a5532591166ffee6c7e7f75f7d9b7ab3d8538b71169805011ed3",
+  "test_sha256": "75590d05da8bbd4fa9284cb745f8ac93d74fb69c419574b49ae7275c137fd385",
+  "test_status": "VC71_OD_W3_NO_EHSC_AND_GCC64_CPP03_PASS",
+  "native_test_receipt": "history/0090e5d0/sol_native_real_headers_03/RESULT.json",
+  "native_cases": 4352,
+  "gcc64_cases": 4352,
+  "code_data_relocations": 100,
+  "matched_body_inventory": [
+    {
+      "address": "0090e5d0",
+      "leaf": "?Update@CAIStateGroup_BanditGossip@@MAEXXZ",
+      "bytes": 1367,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "0040f020",
+      "leaf": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "bytes": 60,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "0090ebe0",
+      "leaf": "??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@@@@Z",
+      "bytes": 208,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "0050f410",
+      "leaf": "??0?$CIntelligentPointer@VCThingAICreature@@@@QAE@ABV0@@Z",
+      "bytes": 37,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "007304c0",
+      "leaf": "??$IS_THING_DEAD@V?$CIntelligentPointer@VCThingAICreature@@@@@@YI_NABV?$CIntelligentPointer@VCThingAICreature@@@@@Z",
+      "bytes": 36,
+      "masked_equal": true,
+      "extent_verified": true
+    }
+  ],
+  "helper_debts": [],
+  "historical_metadata": "PASS22_ROW.json",
+  "pending": "",
+  "pass23_owner": "sol_testports",
+  "main_verified": true,
+  "main_grade": "history/0090e5d0/main_gossip_review_01/RESULT.json",
+  "pass23_native_test": "history/0090e5d0/main_native_review_01/RESULT.json",
+  "main_gcc_test": "evidence/header_regression/main_0090e5d0_gcc_final.json",
+  "direct_helper_checks": {
+    "map_lower_bound": 3300,
+    "pointer_predicates": "null/live/dead/invalidated/copy"
+  },
+  "verified_unique_function_bytes": 1367,
+  "verified_unique_generated_bytes": 0,
+  "verified_unique_code_bytes": 1367,
+  "parked": false,
+  "final_verification_pending": false,
+  "final_grade": "history/0090e5d0/handoff_final/RESULT.json",
+  "final_source_sha256": "e1fa4472caa9a5532591166ffee6c7e7f75f7d9b7ab3d8538b71169805011ed3",
+  "final_test_sha256": "75590d05da8bbd4fa9284cb745f8ac93d74fb69c419574b49ae7275c137fd385",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/0090e5d0/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/0090e5d0/handoff_native_gcc/GCC_RESULT.json",
+  "headers_path": "hdr",
+  "final_compiler_receipts_for_assigned_row": 45,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

@@ -1,0 +1,9 @@
+# Original identity and body evidence
+
+Both original PDB complete types identify NThingShot::CTCShotDefinitionMultiArrow and its protected virtual InitMovement; native vtable entry0126dfb8 points at007bcf7f. ORIGINAL_LOCALS records genuine local names. DONOR_CALLS resolves original debug calls through their ILT jumps. Reconstructed arithmetic uses the original GetAccurateMagnitude, CrossWithUp/Cross and unsplit acceleration expression, eliminating the earlier model's x87 residue.
+
+Every emitted relocation, its native address and addend is checked in RELOCATION_AUDIT. The actual SetVelocity body is independently38/38 bytes at0066f9b0, GetSubDef162/162 at007be7ea. SetVelocity's PUBLIC is present in FableWin; both original PDB type signatures and donor call corroborate it. The other exact names and static ConstantFPS are documented by original PDB signatures plus donor/native evidence. Compiler conversion __ftol2 is native CRT code, not an import thunk.
+
+Only three new shared-header opt-ins add original constructor/destructor declarations for normal-lifetime fixtures; production does not select them. They preserve default token streams and existing assertion identities. No local replacement game class is used.
+
+The self-contained fixture tests768 cases with actual game classes and controlled external services: straight/scattered branch, distance clamp, positive speeds/durations, random fractions, frame rate, velocity/acceleration/gravity, rotation argument axes/order, angle conversion and last-reference deletion. External Rotate leaves direction unchanged intentionally: this tests this row's call contract and acceleration independently, not the Rotate implementation. Native VC7.1 /Od /W3 without EHsc and GCC64 C++03 both pass. Source precision differs from double test calculations only within an explicit1e-6 tolerance.

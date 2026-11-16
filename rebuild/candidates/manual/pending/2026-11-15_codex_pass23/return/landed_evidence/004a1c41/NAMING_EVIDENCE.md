@@ -1,0 +1,4 @@
+CWorld::Load(constCWideString&) isoriginalboth-PDBpublicthiscall?Load@CWorld@@QAEXABVCWideString@@@Z. CaughtclassCBBBFileExceptionusesoriginalclassV typedesc.?AVCBBBFileException@@,runtime32bytesat01378A58. NativeHandlerType01369274hasreferenceadjectives8,typedesc01378A58,catchreferenceEBP-0xB0,handlerpointer004A1C41at01369280. Actualcompilerlabel$L9360insideparent.textoffset1025isnotsynthesizedCppname. OriginalinputCatch@labelisahint. Everyassignedoperandandfullparent/metadata/callbackedgeaudited;allnewcodeiscompilerproducedbyoriginalparent. Existingparentboth-PDBname/type/callbackproofsareunderrows/004a1840andreferencedbyparent_evidence.
+
+
+Pass23: original two-PDB public/type evidence is now copied alongside this row as reduced JSON (binary field-list encodings omitted). Current code/operand audits are RELOCATION_AUDIT.json; previous naming/source history above is retained. Production source is unchanged.

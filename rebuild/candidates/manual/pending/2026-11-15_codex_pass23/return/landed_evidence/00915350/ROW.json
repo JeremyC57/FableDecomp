@@ -1,0 +1,77 @@
+{
+  "address": "00915350",
+  "status": "RELOCATION_MATCH",
+  "main_verified": true,
+  "assigned_name": "CAIStateGroup_KidHurtSelfRunToMother::Update",
+  "assigned_leaf": "?Update@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ",
+  "selected_flags": [],
+  "assigned_extent": 867,
+  "object_size": 867,
+  "retail_size": 867,
+  "source_shape_strategy_families_this_pass": 1,
+  "source_grades_this_pass": 5,
+  "verification_grades_this_pass": 1,
+  "attempt_count_note": "One original shared-source reconstruction; one compile error, inclusion correction and canonical destructor correction retained. Final verification builds not distinct source families.",
+  "main_grade": "history/00915350/all_verified_headers_11/RESULT.json",
+  "source_sha256": "47126ea462d96648d2b40121c9d318f59a00c50a71c5223049912aaefe0f411d",
+  "test_sha256": "fb58092d4682980ad30f78e6e7103e6e298479bcc41577ca1589023f66d4ee51",
+  "native_test_receipt": "history/00915350/main_native_review_01/RESULT.json",
+  "main_gcc_test": "evidence/header_regression/main_00915350_gcc_final.json",
+  "native_cases": 1560,
+  "gcc_cases": 1560,
+  "code_data_relocations": 48,
+  "matched_body_inventory": [
+    {
+      "address": "0x915350",
+      "leaf": "?Update@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ",
+      "bytes": 867,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "0x40f020",
+      "leaf": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "bytes": 60,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "0x48a4f0",
+      "leaf": "??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z",
+      "bytes": 30,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "0x1237f1c",
+      "leaf": "??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@",
+      "bytes": 4,
+      "masked_equal": true,
+      "extent_verified": true
+    }
+  ],
+  "helper_debts": [],
+  "pending": "",
+  "evidence": [
+    "NAMING_EVIDENCE.md",
+    "EGOR_TYPES.json",
+    "FABLEWIN_TYPES.json",
+    "ORIGINAL_LOCALS.json",
+    "DONOR_CALLS.json",
+    "RELOCATION_AUDIT.json"
+  ],
+  "verified_unique_function_bytes": 867,
+  "verified_unique_generated_bytes": 0,
+  "verified_unique_code_bytes": 867,
+  "parked": false,
+  "final_verification_pending": false,
+  "final_grade": "history/00915350/handoff_final/RESULT.json",
+  "final_source_sha256": "47126ea462d96648d2b40121c9d318f59a00c50a71c5223049912aaefe0f411d",
+  "final_test_sha256": "fb58092d4682980ad30f78e6e7103e6e298479bcc41577ca1589023f66d4ee51",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/00915350/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/00915350/handoff_native_gcc/GCC_RESULT.json",
+  "headers_path": "hdr",
+  "final_compiler_receipts_for_assigned_row": 43,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

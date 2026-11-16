@@ -1,0 +1,104 @@
+{
+  "address": "01215d9e",
+  "status": "RELOCATION_MATCH",
+  "main_verified": true,
+  "assigned_name": "PKCBufferedReader::PollReadCompletion",
+  "assigned_leaf": "?PollReadCompletion@PKCBufferedReader@@QAE_NXZ",
+  "selected_flags": [
+    "/EHsc"
+  ],
+  "assigned_extent": 18,
+  "parent_address": "00c4b160",
+  "parent_size": 265,
+  "source_dependencies": [
+    "00c4b160.cpp"
+  ],
+  "source_sha256": "251ac035b35715bc311ad599a2e538478cfc24b5fd7c311eb342100011640e14",
+  "source_dependency_sha256": "f01867b72cbc34000ac112f8838ca628d510cae3495b94ae56bae3713bd860f4",
+  "test_sha256": "03055f003b43744034de5f173b03f177e4030d781a95f442272089d1f0417a61",
+  "source_shape_strategy_families_this_pass": 1,
+  "source_grades_this_pass": 1,
+  "verification_grades_this_pass": 1,
+  "main_grade": "history/01215d9e/all_verified_headers_17/RESULT.json",
+  "native_test_receipt": "history/01215d9e/main_native_test_01/RESULT.json",
+  "gcc_test_receipt": "evidence/header_regression/main_01215d9e_gcc_final.json",
+  "native_normal_cases": 400,
+  "gcc_normal_cases": 400,
+  "gcc_exception_cases": 8,
+  "code_data_relocations": 27,
+  "matched_body_inventory": [
+    {
+      "section": 7,
+      "address": "00c4b160",
+      "bytes": 265,
+      "masked_equal": true,
+      "name": "?PollReadCompletion@PKCBufferedReader@@QAE_NXZ"
+    },
+    {
+      "section": 8,
+      "address": "01215d9e",
+      "bytes": 18,
+      "masked_equal": true,
+      "name": ".text$x"
+    },
+    {
+      "section": 13,
+      "address": "012b8200",
+      "bytes": 24,
+      "masked_equal": true,
+      "name": "??_C@_0BI@MEBCLEME@?4?2PKCBufferedReader?4cpp?$AA@"
+    },
+    {
+      "section": 12,
+      "address": "0122e028",
+      "bytes": 2,
+      "masked_equal": true,
+      "name": "??_C@_01ODHLEDKK@?$CI?$AA@"
+    },
+    {
+      "section": 11,
+      "address": "012b1ae4",
+      "bytes": 5,
+      "masked_equal": true,
+      "name": "??_C@_04OJEGKOEN@?$CJ?5?3?5?$AA@"
+    },
+    {
+      "section": 10,
+      "address": "012b8430",
+      "bytes": 37,
+      "masked_equal": true,
+      "name": "??_C@_0CF@CCKEEEIK@Error?3?5Should?5not?5be?5blocked?5her@"
+    },
+    {
+      "section": 9,
+      "address": "0129b208",
+      "bytes": 2,
+      "masked_equal": true,
+      "name": "??_C@_01EEMJAFIK@?6?$AA@"
+    },
+    {
+      "section": 14,
+      "address": "01370268",
+      "bytes": 36,
+      "masked_equal": true,
+      "name": ".xdata$x"
+    }
+  ],
+  "verified_unique_function_bytes": 265,
+  "verified_unique_code_bytes": 283,
+  "assigned_bytes_covered": 18,
+  "naming": "Descriptive libpk names documented; no PDB claim.",
+  "helper_debts": [],
+  "verified_unique_generated_bytes": 18,
+  "parked": false,
+  "final_verification_pending": false,
+  "final_grade": "history/01215d9e/handoff_final/RESULT.json",
+  "final_source_sha256": "251ac035b35715bc311ad599a2e538478cfc24b5fd7c311eb342100011640e14",
+  "final_test_sha256": "03055f003b43744034de5f173b03f177e4030d781a95f442272089d1f0417a61",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/01215d9e/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/01215d9e/handoff_native_gcc/GCC_RESULT.json",
+  "headers_path": "hdr",
+  "final_compiler_receipts_for_assigned_row": 31,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

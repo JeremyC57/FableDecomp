@@ -1,0 +1,22 @@
+# 007C4430 probes
+
+Baseline_package: exact prior827 source,1980vs1952,61strict/15loosehunks. This is a baseline, not a strategy. best_2026-11-14.cpp is the old simplified test, not the function.
+
+1. sol2_01/01b: original complete type/callee/scope reconstruction. Original module361 debug/tc_heal_life.obj function02712A70/3456; root parent_creature CThingCreatureBase&, phealingtarget_creature rootnull then original checked downcast under flags and two nested IS_THING_ALIVE calls. Original initialized sound/targeting/emitter/events, separate inner loop event local; real direct pointer/raw comparison; real ToC2DCoordI; actual shared filters/parentdef/hitevent/classes; real GetSubDef and GetEffect helper bodies. Initial01 compile failed because mechanical local rename also renamed end();01b fixes typo, same source strategy.1972vs1952,61strict/14loosehunks. Still second vector<float> push_back expanded. Compiler diagnostics not a separate strategy.
+
+2. sol2_02: restore actual original mutable converting CIntelligentPointer constructor overload, used by loop something(*it). Original call0271330F resolves025206A0, ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@VCThingCreatureBase@@@@QAE@AAV0@@Z; preceding source incorrectly chose const-copy overload. Existing shared CONVERT_MUTABLE body is enabled. 1976vs1952,44strict/10loosegroups; material improvement.
+
+No flag or inline-control probes yet. No attempt to introduce per-site wrapper or hidden alternative algorithm. No tests yet; old simplified fixture is not accepted.
+
+3. Original iterator-macro constant arm: donor02713298 xor edx,edx;je027132A1;jmp027137B6 immediately before iterator scope. if(false){}else for(...) reproduces this ordinary control shape (original macro spelling unknown, no invented macro used), restoring native selective float-push expansion and ALL early stack slots;1940vs1952,15strict/4loosegroups,firstdiff596. No new inline controls.
+
+4. Restore first emitter as uninitialized assertion-output local, distinct from original second emitter initialized0. Donor firstGetTC02712F0C has no preceding zero; it is assertion-checked only in debug; native release relies on component presence. Target now1952/1952 maskedexact, no flags. Nonportable absent-emitter behavior excluded from fixture.
+
+5. Restore original const-pointer copy member chain GetPointer/SetPointer (existing COPY_ORIGINAL_CHAIN) as well as mutable converting overload. Target remains exact and reached listpush73 nowexact. Remaining recursively reached non-POD vector overflow failed266vsnative265: it called CDECL uninitialized_copy/fill where actual native calls are fastcall. This is a calling-convention issue, not another body strategy. Diagnostic05b uses TU /Gr and reproduces all15 reached bodies (1952target+1310helperbytes=3262total); no inline controls, all wholehelperextents endinret. All170code/data bindings and2callbackwords independently audited. One helper/body-source family for pointer-original-chain restoration, counted separately; flag rerun not additional source strategy.
+
+Fixture:27648 complete fullbody scenarios, actual shared STLport/vector/list/map/CIP/CDef/filters; direct1190enumLowerBound results plus84profiles each of POD/nonPOD overflow. Initial directbound negative enum sanitizer diagnostic was corrected to original nonnegative enum domain; see FIXTURE_SANITIZER_EXPLORATION.md. Final original-signature/enum-domain/dependency-pinned fixture passes both required compilers. ASan/UBSan correctedfixture PASS with detect_leaks=0 because containerptrace blocksLSan. No tests introduced into production headers.
+
+
+## Pass23 standalone real-header test port
+
+Production source retained verbatim; current RTM baseline exactly matches 1952 bytes. Fresh 15-body/170-operand audit PASS. Self-contained real-object fixture compiles alone with one shared include tree. Native VC7.1 /Od /W3 without /EHsc and GCC64 C++03 both PASS 27648 complete original behavior cases plus direct helper cases. Old source attempts are preserved, not reset; unchanged production control grades are not new source-shape strategies. No parking.

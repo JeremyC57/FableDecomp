@@ -1,0 +1,69 @@
+{
+  "address": "007bcf7f",
+  "status": "RELOCATION_MATCH",
+  "main_verified": true,
+  "assigned_name": "NThingShot::CTCShotDefinitionMultiArrow::InitMovement",
+  "assigned_leaf": "?InitMovement@CTCShotDefinitionMultiArrow@NThingShot@@MAEXXZ",
+  "selected_flags": [],
+  "assigned_extent": 808,
+  "object_size": 808,
+  "retail_size": 808,
+  "source_shape_strategy_families_this_pass": 6,
+  "source_grades_this_pass": 6,
+  "verification_grades_this_pass": 2,
+  "main_grade": "history/007bcf7f/all_verified_headers_13/RESULT.json",
+  "source_sha256": "64df99ab10e21bd934c900fbc57795a9e3a949a3f7c303e62c709c8124b181b9",
+  "test_sha256": "e71f1b616b2a906424f847330078cb4e8e76d7b7f627eaf95a366c866db8a980",
+  "native_test_receipt": "history/007bcf7f/main_native_review_01/RESULT.json",
+  "main_gcc_test": "evidence/header_regression/main_007bcf7f_gcc_final.json",
+  "native_cases": 768,
+  "gcc_cases": 768,
+  "code_data_relocations": 36,
+  "matched_body_inventory": [
+    {
+      "address": "0x7bcf7f",
+      "leaf": "?InitMovement@CTCShotDefinitionMultiArrow@NThingShot@@MAEXXZ",
+      "bytes": 808,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "0x7be7ea",
+      "leaf": "??$GetSubDef@VCThingMultiArrowShotDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThingMultiArrowShotDef@@@@@Z",
+      "bytes": 162,
+      "masked_equal": true,
+      "extent_verified": true
+    },
+    {
+      "address": "0x66f9b0",
+      "leaf": "?SetVelocity@CTCPhysicsBase@@QAEXABVC3DVector@@@Z",
+      "bytes": 38,
+      "masked_equal": true,
+      "extent_verified": true
+    }
+  ],
+  "helper_debts": [],
+  "pending": "",
+  "evidence": [
+    "NAMING_EVIDENCE.md",
+    "EGOR_TYPES.json",
+    "FABLEWIN_TYPES.json",
+    "ORIGINAL_LOCALS.json",
+    "DONOR_CALLS.json",
+    "RELOCATION_AUDIT.json"
+  ],
+  "verified_unique_function_bytes": 808,
+  "verified_unique_generated_bytes": 0,
+  "verified_unique_code_bytes": 808,
+  "parked": false,
+  "final_verification_pending": false,
+  "final_grade": "history/007bcf7f/handoff_final/RESULT.json",
+  "final_source_sha256": "64df99ab10e21bd934c900fbc57795a9e3a949a3f7c303e62c709c8124b181b9",
+  "final_test_sha256": "e71f1b616b2a906424f847330078cb4e8e76d7b7f627eaf95a366c866db8a980",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/007bcf7f/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/007bcf7f/handoff_native_gcc/GCC_RESULT.json",
+  "headers_path": "hdr",
+  "final_compiler_receipts_for_assigned_row": 43,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

@@ -1,0 +1,11 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0057a5dd	??0MirroredCriminalStatus@CTCHeroStats@@QAE@XZ	Both original exact PUBLICs/class records and native root operand binding; see RELOCATION_AUDIT.json	MirroredCriminalStatus global constructor
+00686d20	?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ	Both original exact PUBLICs/class records and native root operand binding; see RELOCATION_AUDIT.json	GetWorldMap const pointer stand-in
+004fb150	?GetLoadedRegion@CWorldMap@@QBEJXZ	Both original exact PUBLICs/class records and native root operand binding; see RELOCATION_AUDIT.json	GetCurrentRegionNumber
+004fc180	?GetRegion@CWorldMap@@QBEABVCRegion@@J@Z	Both original exact PUBLICs/class records and native root operand binding; see RELOCATION_AUDIT.json	nonconst GetRegion
+00686d90	?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ	Both original exact PUBLICs/class records and native root operand binding; see RELOCATION_AUDIT.json	GetThingSearchTools const pointer stand-in
+00686a70	?GetWorld@CTCBase@@IBEAAVCWorld@@XZ	Both original exact PUBLICs/class records and native root operand binding; see RELOCATION_AUDIT.json	public GetWorld pointer stand-in
+004c73d0	?GetPos@CThing@@QBEABVC3DVector@@XZ	Both original exact PUBLICs/class records and native root operand binding; see RELOCATION_AUDIT.json	GetPosition
+009f1760	?AddData@CGameEvent@@QAEXJPBX@Z	Both original exact PUBLICs/class records and native root operand binding; see RELOCATION_AUDIT.json	CMemoryBuffer::Copy
+004378b0	?SetMiniMapRegion@CPlayerGui@@QAEXABVCRegion@@@Z	Both original exact PUBLICs/class records and native root operand binding; see RELOCATION_AUDIT.json	ShowRegion_004378b0
+013b8790	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A	Both original exact PUBLICs/class records and native root operand binding; see RELOCATION_AUDIT.json	g_pPlayerGui

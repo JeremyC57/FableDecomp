@@ -1,0 +1,58 @@
+{
+  "address": "00a89e40",
+  "input_kind": "parked",
+  "status": "RELOCATION_MATCH",
+  "assigned_leaf": "?GetDummyObjectPositionAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAV2@ABVC3DAnimationBlendState@@2MAAVC3DAnimationManager@@_N@Z",
+  "assigned_extent": 986,
+  "object_size": 986,
+  "retail_size": 986,
+  "selected_flags": [
+    "/d2inlT800"
+  ],
+  "source_shape_strategy_families_this_pass": 21,
+  "source_shape_strategy_counts_note": "Six grouping families include their single-equation subtrials; threshold ladder/control/metadata regrades are not separate strategies.",
+  "source_grades_this_pass": 52,
+  "historical_counts": "HISTORICAL_INPUT/handback_STATUS.tsv and prior source diagnoses retained verbatim; no old counts reset.",
+  "pass23_grade": "all_verified_headers_10",
+  "source_sha256": "af2c412e5457a74629af8efe332eb99c805c6d4e17d71ffdc724a3b37ec0ed5d",
+  "test_sha256": "002fc119e9f676536815a6945438179ce1a6e1520a98711b759c7018aea759cf",
+  "test_status": "VC71_OD_W3_NO_EHSC_AND_GCC64_CPP03_PASS",
+  "native_test_receipt": "history/00a89e40/main_native_review_01/RESULT.json",
+  "native_cases": 16384,
+  "gcc64_cases": 16384,
+  "direct_helper_checks": {
+    "no_bone_special_float_bitcopies": 5
+  },
+  "code_data_relocations": 1,
+  "matched_body_inventory": [
+    {
+      "address": "00a89e40",
+      "leaf": "?GetDummyObjectPositionAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAV2@ABVC3DAnimationBlendState@@2MAAVC3DAnimationManager@@_N@Z",
+      "bytes": 986,
+      "masked_equal": true,
+      "extent_verified": true,
+      "terminal_instruction": "ret 0x1c"
+    }
+  ],
+  "helper_debts": [],
+  "pending": "",
+  "pass23_owner": "sol_testports",
+  "source_lever": "Ordinary CMatrix3x4& target receiver before first SetMultiply; original shared arithmetic and PostMultiply unchanged.",
+  "main_verified": true,
+  "main_grade": "history/00a89e40/all_verified_headers_10/RESULT.json",
+  "main_gcc_test": "evidence/header_regression/main_00a89e40_gcc_final.json",
+  "verified_unique_function_bytes": 986,
+  "verified_unique_generated_bytes": 0,
+  "verified_unique_code_bytes": 986,
+  "parked": false,
+  "final_verification_pending": false,
+  "final_grade": "history/00a89e40/handoff_final/RESULT.json",
+  "final_source_sha256": "af2c412e5457a74629af8efe332eb99c805c6d4e17d71ffdc724a3b37ec0ed5d",
+  "final_test_sha256": "002fc119e9f676536815a6945438179ce1a6e1520a98711b759c7018aea759cf",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/00a89e40/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/00a89e40/handoff_native_gcc/GCC_RESULT.json",
+  "headers_path": "hdr",
+  "final_compiler_receipts_for_assigned_row": 92,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

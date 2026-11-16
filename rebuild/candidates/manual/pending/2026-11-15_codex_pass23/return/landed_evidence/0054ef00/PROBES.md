@@ -1,0 +1,32 @@
+# 0054EF00 probes
+
+Baseline_package: actual prior749 production source f2d20f45d2ea913cf5858596dc97be8aac0729fd3646c792a70fc7bfc886d02e,1127/1127 but37strict/10loosehunks,firstdiff89. Best supplied file is old simplified test, not production source; not an attempt.
+
+1. Original root-local scope and direct early returns from module879 debug/ui_text.obj original0228B700/1909. Full donor call/local/scope extraction retained. Both original exact Draw PUBLICs and native CText vtable slot2 prove identity. Restored original names, all localsrootratherthan2inventedscopesneededforoldgoto. Original invisible-secondframe andoffscreen arms each performreleaseandreturn.1048vs1127,37strict/11loosegroups. Clear nowcalled where native expands. Diagnose inline split before any body source change; pureinlinebudget ladder next.
+
+ASM eligibility pending: existing original GFFloatToLongNear shared helper yields native bare dwordfistp at2sites. Prior749 table records truncation→ftol2 and QIfist→qword; current canonical ASM_RULES requires30C++/10intrinsic site forms plusdualportabletest. No final delivery until required ladder/evidence complete, separate counts from full-function source strategies. No new helper body/control or packing authored.
+
+02 is a diagnostic renaming of old common-cleanup source to original local names,1127same37strictgroups; identifiers alone are not another genuine strategy.03 restores original4-channel colour constructor Initialise chain (existing sharedflag), validated donor018BCBE0 body44bytes; no target change. Helper/source family, not arbitrary ctor spelling.
+
+04/04b expose BOTH complete real descriptor114-byte ctor and91-byte assignment, and actual3arg base-constructor/default descriptor chain. Both real helper extents independently maskexact; they only snapshot inputreferences. This removes false captures and fixes ALL original five-local stack ordering; target1127,firstdiff476,14strictgroups.04b pins the one moved assertion with actual directory-based pin_asserts invocation (first file-based call was a no-op); preservation correction not new strategy. CEnginePrimitive condition changes only OR-newflag,0moved assertions. No packing changes.
+
+05 uses original *PFont counted-pointer operator* (original call0228BAC8→0188D200), rather than legacy *PFont.Data. It fixes all descriptor argument rotations; onlytwoClearChildPrimitive push/mov scheduling pairs remain,firstdiff976,4groups. This is a genuinely different original member/callee expression, second full-function source family.
+
+06 combines original root scopes/direct early returns (family1) with all real descriptor/helper chains and actualfontdereference. Measured T88 expands original4Clear sites (scores87/79,default74); final source5af68ecf6cfcbbab702eec84483bcbdde30421c5aac76298ac392156e518fad0 matches1127/1127 ALL344instructions, including cleanup scheduling. No scoped or forced inline control added. Count2full-functionfamilies+2helperfamilies; names/flags/pin reruns/combinations are not invented extra strategies. Required original rounding-helper eligibility catalog remains distinct and pending final40forms/fullfixture.
+
+07 corrects descriptor PFont to the original const CFontBank pointer, proved in both owner records.08 restores all five original private screen-converter static fields, including DefaultBackBufferWidth/Height, after original PUBLIC+GDATA and native getter binding. These declaration/name repairs retain the same exact code and are not new full-function strategies.09 adds readable source formatting and required source heading/Inline-budget/Retail-asm metadata only. SOURCE_FORMAT_PROOF.json proves the entire noncomment token sequence equals tested08; final09 independently regrades all three real bodies exact.
+
+Final plain-inline diagnostic in selected context again emits1048 rather than1127. The observational backend reports four Clear scores87,87,79,79, default threshold74; diagnostic and unmodified RTM leaf bytes are identical. T88 admits all four. No new scoped or forced inline controls. INLINE_BUDGET.json records final evidence.
+
+Completed ASM ladder:30 plain C++ and10 intrinsic forms compiled at both actual Draw rounding sites and their outlined kernel when present. None emits the native bare DWORD FISTP. Width/cast/precision/library/nearest-even/bias/IEEE/SSE families are recorded separately; truncation/width/bias/C99 variants with different contracts are diagnostics, not candidate replacements. /QIfist is a separate flag diagnostic and produces QWORD FISTP. Forty site spellings are not40 full-function source strategies. Existing shared original GFFloatToLongNear helper is unchanged; ASM_ELIGIBILITY.json records its original named19-byte body, both native sites, and the portable twin proof.
+
+Full fixture PASS:283392 valid Draw scenarios plus90136 native/twin/independent IEEE-oracle rounding cases. All373528 serialized case lines compare directly across VC71 native and portable /Od /W3 /GR- without /EHsc, GCC64 C++03 O0/O2, plus full m32 syntax. Final ASan/UBSan passes. The absent canonical runner is explicitly replaced by a local checker adapted from batch15. Source08 bodies are copied verbatim; final09 whole-source token equivalence and final native regrade are proved. Runtime disk-full failure and lossless local output recovery are retained in RUNTIME_DISK_RECOVERY.md, not counted as strategies.
+
+Final counts:2 genuine full-function source families,2 original-helper visibility families; exact target1127+ctor114+assignment91=1332bytes,30relocations,7newbindings,16indirect ABI sites,24unreferenced shared COMDATs not landed. No helper debts. All17 old/default header profiles preserved,1moved assertion pinned,0new assertions,3overlays. Selection sol2_09_final_readable_source_metadata.
+
+
+## Pass23 self-contained test port
+
+Production baseline current matches1127bytes; exact emitted Leaf; fresh3-body/30-operand audit PASS. Self-contained real CText/CComponent/CManager/CIEngine fixture executes283392 Draw and90136 rounding cases. ExpectedFont identity asserted. Native /Od /W3 without /EHsc and GCC64 C++03 PASS; no new header changes. Native receipt sol_native_font_identity_02; main independently reverified.
+
+This is successful test-port verification, not an unmatched-source search. Production source attempts this pass:0; unchanged-source control grades:1. Earlier source family and invocation counts remain historical and are not reset or inflated by test fixture builds.

@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00AEEBA0	?StartFrame@CParticleEmitter@NParticleEngine@@QAEXMABVCEnginePrimitivePrepareInfo@@@Z	Both complete original PDB records and PUBLICs; const PrepareInfo reference	StartFrame(float,const CEnginePrimitivePrepareInfo*)
+0x00AEAB10	?GetEnvironmentInteraction@NParticleEngine@@YIAAVCAEnvironmentInteraction@1@XZ	Both exact PDB PUBLICs and native direct call; output-reference camera interface	GetParticleCamera

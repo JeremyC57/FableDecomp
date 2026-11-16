@@ -1,0 +1,14 @@
+{
+  "status": "RELOCATION_MATCH",
+  "selected_attempt": "main_review_01",
+  "baseline": "reference/include",
+  "source": "007c4430.cpp",
+  "flags": [
+    "/Gr"
+  ],
+  "header_profile": "28289289a3988ceae0aea13d6bc12041cf4bff7a6b14ce463b0fd33e6d6bcbf1",
+  "source_dependencies": [],
+  "test_adapter": "test_include",
+  "source_sha256": "8658d6a936eca59bcca2ae520bf8cb0f1c4835d203044affcff71e708db5c2b4",
+  "test_sha256": "acbd40ebfe2ed0d1bb1d8af09031f35e9db4b67a2431fb42bc2aeeeb63d5d6db"
+}

@@ -1,0 +1,104 @@
+{
+  "address": "01214130",
+  "status": "RELOCATION_MATCH",
+  "main_verified": true,
+  "assigned_name": "PKSerialiseCParser::ValidateReader",
+  "assigned_leaf": "?ValidateReader@PKSerialiseCParser@@QAEPAUIDataStream@@XZ",
+  "selected_flags": [
+    "/EHsc"
+  ],
+  "assigned_extent": 18,
+  "parent_address": "00c319b0",
+  "parent_size": 186,
+  "source_dependencies": [
+    "00c319b0.cpp"
+  ],
+  "source_sha256": "e5b6d686d69bcc7821471bb80241cee23d544dcee1586ff73baf662fe14c0bd2",
+  "source_dependency_sha256": "c233e1a9045974d59d9eb69604daba50a4eafbef99cac015585e542c428824e8",
+  "test_sha256": "d45a3bf1d9d3705ba1ffa3a031acd9757c5eb16abc768243e1eb06c159bfa311",
+  "source_shape_strategy_families_this_pass": 1,
+  "source_grades_this_pass": 1,
+  "verification_grades_this_pass": 1,
+  "main_grade": "history/01214130/all_verified_headers_16/RESULT.json",
+  "native_test_receipt": "history/01214130/main_native_test_01/RESULT.json",
+  "gcc_test_receipt": "evidence/header_regression/main_01214130_gcc_final.json",
+  "native_normal_cases": 16,
+  "gcc_normal_cases": 16,
+  "gcc_exception_cases": 8,
+  "code_data_relocations": 24,
+  "matched_body_inventory": [
+    {
+      "section": 7,
+      "address": "00c319b0",
+      "bytes": 186,
+      "masked_equal": true,
+      "name": "?ValidateReader@PKSerialiseCParser@@QAEPAUIDataStream@@XZ"
+    },
+    {
+      "section": 8,
+      "address": "01214130",
+      "bytes": 18,
+      "masked_equal": true,
+      "name": ".text$x"
+    },
+    {
+      "section": 13,
+      "address": "012b4dc4",
+      "bytes": 25,
+      "masked_equal": true,
+      "name": "??_C@_0BJ@LACAIBI@?4?2PKSerialiseCParser?4cpp?$AA@"
+    },
+    {
+      "section": 12,
+      "address": "0122e028",
+      "bytes": 2,
+      "masked_equal": true,
+      "name": "??_C@_01ODHLEDKK@?$CI?$AA@"
+    },
+    {
+      "section": 11,
+      "address": "012b1ae4",
+      "bytes": 5,
+      "masked_equal": true,
+      "name": "??_C@_04OJEGKOEN@?$CJ?5?3?5?$AA@"
+    },
+    {
+      "section": 10,
+      "address": "012b4db8",
+      "bytes": 12,
+      "masked_equal": true,
+      "name": "??_C@_0M@DKDKCECK@Null?5reader?$AA@"
+    },
+    {
+      "section": 9,
+      "address": "0129b208",
+      "bytes": 2,
+      "masked_equal": true,
+      "name": "??_C@_01EEMJAFIK@?6?$AA@"
+    },
+    {
+      "section": 14,
+      "address": "0136de9c",
+      "bytes": 36,
+      "masked_equal": true,
+      "name": ".xdata$x"
+    }
+  ],
+  "verified_unique_function_bytes": 186,
+  "verified_unique_code_bytes": 204,
+  "assigned_bytes_covered": 18,
+  "naming": "Original libpk symbols unavailable; descriptive identities explicitly recorded.",
+  "helper_debts": [],
+  "verified_unique_generated_bytes": 18,
+  "parked": false,
+  "final_verification_pending": false,
+  "final_grade": "history/01214130/handoff_final/RESULT.json",
+  "final_source_sha256": "e5b6d686d69bcc7821471bb80241cee23d544dcee1586ff73baf662fe14c0bd2",
+  "final_test_sha256": "d45a3bf1d9d3705ba1ffa3a031acd9757c5eb16abc768243e1eb06c159bfa311",
+  "final_include_tree": "/tmp/work/codex_pass23_20261115/runtime/include_cache/9f3f6bde50d008c47a7da6c9eea6f565ee16d1cbfa4e361d442be9fbf3f427cd",
+  "final_native_test": "history/01214130/handoff_native_gcc/RESULT.json",
+  "final_gcc_test": "history/01214130/handoff_native_gcc/GCC_RESULT.json",
+  "headers_path": "hdr",
+  "final_compiler_receipts_for_assigned_row": 32,
+  "compiler_receipt_count_note": "Includes controls, repeats, setup failures and final reviews; not a count of independent source strategies. Shared-parent research is documented once in its owning row PROBES."
+}

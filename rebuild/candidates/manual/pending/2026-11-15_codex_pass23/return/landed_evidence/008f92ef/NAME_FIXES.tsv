@@ -1,0 +1,6 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+008f8f50	?Send@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@ABULAddress@2@1@Z	Both original PDB PUBLIC/type records plus donor/native target; STLport source and full native forwarding helper for resize; see NAMING_EVIDENCE.	?Send@LSocket@LHNetworkLib@@QAE_NABUByteBuffer@2@ABULAddress@2@1@Z
+013baffc	?NeedToFlush@LSocket@LHNetworkLib@@0_NA	Both original PDB PUBLIC/type records plus donor/native target; STLport source and full native forwarding helper for resize; see NAMING_EVIDENCE.	?g_bSocketDataQueued@LHNetworkLib@@3_NA
+008f82e0	?IsWriteable@LSocket@LHNetworkLib@@AAE_NJ@Z	Both original PDB PUBLIC/type records plus donor/native target; STLport source and full native forwarding helper for resize; see NAMING_EVIDENCE.	?IsWriteable@LSocket@@QAE_NJ@Z
+008f8c70	?Close@LSocket@LHNetworkLib@@QAE_NXZ	Both original PDB PUBLIC/type records plus donor/native target; STLport source and full native forwarding helper for resize; see NAMING_EVIDENCE.	?Close@LSocket@@QAE_NXZ
+00412880	?resize@?$vector@DV?$allocator@D@std@@@std@@QAEXI@Z	Both original PDB PUBLIC/type records plus donor/native target; STLport source and full native forwarding helper for resize; see NAMING_EVIDENCE.	?resize@CCharVector@@QAEXI@Z

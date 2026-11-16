@@ -1,0 +1,67 @@
+004a1840	00416aba	00416953	CMainGameComponent::PostInit
+0064e978	00437666	00437660	_global::Forward_Draw_via0x198_00437660
+0064e978	00439461	00439070	CPlayerGui::DrawPreparePrimitivesForEngine
+00646f67	0043968d	00439070	CPlayerGui::DrawPreparePrimitivesForEngine
+0064a639	0043978e	00439070	CPlayerGui::DrawPreparePrimitivesForEngine
+004a1840	004a2a01	004a21f0	CWorld::LoadGameStateInternal
+00590235	005907a6	005907a6	CTCInventory::ConstructScreen
+0063d0a0	0063da71	0063d960	CWorldMap::FindLastUnblockedGroundPositionAndReportCollision
+0063d4a0	0063dc41	0063db30	CWorldMap::FindLastUnblockedThemePositionAndReportCollision
+0064ae80	0064dc7f	0064db2b	NPlayerGui::CDrawAbilityButtons::DrawAbilityList
+0064ae80	0064dd17	0064db2b	NPlayerGui::CDrawAbilityButtons::DrawAbilityList
+00659800	00659c75	00659c32	CTCVillage::StartSecuritySweep
+00659800	0065c13e	0065c08a	CTCVillage::UpdateSecuritySweepTasks
+006e99b0	006ab000	006aabe0	CThingPlayerCreature::SetActionForMelee
+006e99b0	006ea23e	-	
+006e99b0	006eaccc	006eac50	CCombatManager::GetCombatDebugInfo
+007ce7a0	007a1da6	007a1b20	CTCWillLightning::CLightningBeam::FrameUpdate
+0057df85	007b31ab	-	
+007c4430	007c4cca	007c4bd0	CTCHealLife::CTCHealLife
+007ce7a0	007cec1a	007ceb00	CTCElectrocutedEffect::CTCElectrocutedEffect
+007daef0	007dbc1d	007db6a0	CTCTavernGameCardBlackjack::CardsMainGame
+007daef0	007dbe5a	007db6a0	CTCTavernGameCardBlackjack::CardsMainGame
+007daef0	007dc039	007db6a0	CTCTavernGameCardBlackjack::CardsMainGame
+007ce7a0	007e2647	007e2600	CTCElectrocuteOnTouch::OnHit
+0057df85	007e2c87	007e2a60	CTCFineDialogue::GlobalUpdate
+007ce7a0	007f34ef	007f2dc0	CTCLightningNode::FrameUpdate
+008f8f50	0083f927	0083f8b0	LHNetworkLib::LHHttp2::SendRawData
+006e99b0	008b0629	008b0610	CCombatSequenceBase::IsZoneValid
+007c4430	008b98b8	008b97e0	CCreatureAction_CastWillHealLifeSpell::PerformAction
+007ce7a0	008dd96a	-	
+008f8f50	008f963d	008f95d0	LHNetworkLib::LSocket::SendBlock
+008f8f50	008f9685	008f95d0	LHNetworkLib::LSocket::SendBlock
+00683c10	009299ed	00929820	CAIStateGroup_MinionGuardGreetPlayer::Update
+00683c10	0092ff9c	0092fab0	CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoInteraction
+00934410	009348ec	00934870	CAIStateGroup_MinionKidGroupTag::Update
+009482a0	00949c89	00949ab0	CAIStateGroup_GoToPub::IsRunnable
+006e99b0	00955783	-	
+006e99b0	00955eb3	-	
+0095bcf0	0095c32d	0095c1f0	CAIStateGroup_HoverHornetQueen::Update
+0095bcf0	0095c3c9	0095c1f0	CAIStateGroup_HoverHornetQueen::Update
+00683c10	00960427	-	
+009af7a0	009b0a56	009b08c0	CDefinitionManager::Compile
+009ddc60	009de401	009de3f0	CRenderManager2D::Draw2DBox
+00a177a0	00a18798	00a18760	CPhysicsMesh::GetPointIntersectionFromTo
+00a17f80	00a187ac	00a18760	CPhysicsMesh::GetPointIntersectionFromTo
+00a1a7e0	00a1cd30	-	
+00a1ceb0	00a1f1d0	-	
+00a1d290	00a1f1f0	-	
+00aeeba0	00aeb5df	00aeb550	CParticleEmitterManager::StartFrame
+00aeeba0	00b0c98f	00b0c910	NParticleEngine::CPSCUpdateNormal::PreparePrimitives
+00b202d0	00b218a1	00b21850	NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformFromPosition
+00b202d0	00b21923	00b218b0	NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformFromIndex
+00b47bc0	00b488d1	00b484b0	CEngineLightingManager::FrameStart
+00b8dcd0	00b8e36c	00b8df50	CEngineOcclusionManager::FrameEnd
+00c17640	00c08f1f	00c08d40	CSystem::LoadBank
+00c11230	00c12a52	00c12940	CSoundEventManager::StartEvent
+00c2da20	00c16f2b	00c16f00	_global::ReadDeferredBank
+00c16f00	00c17599	00c174a0	_global::LoadBankFile
+00c2da20	00c30f8b	00c30f60	_global::ReadBankData
+00c3f800	00c3fca4	00c3f9d0	CSalPlatform::CreateSw
+00c3f9d0	00c3feb7	00c3fd20	CUnknownSystem1D8::Init
+00c61610	00c42edb	00c42dd0	CAudioObject::Open
+00c4aeb0	00c4b7ef	00c4b640	PKCBufferedReader::CopyOutOfBuffers
+00c73af0	00c62a03	00c62920	CAudioStreamOwner_00c62920::CAudioStreamOwner_00c62920
+00c74510	00c74d07	00c74ce0	CDspGain::Apply
+00c74510	00c74d7b	00c74d30	CDspGain::Crossfade
+00c74510	00c74da2	00c74d30	CDspGain::Crossfade
