@@ -1,0 +1,6 @@
+# acctC hand-back 2026-11-15_acctC_r6_wfA4h_HELD
+
+Rows: 0x00b77370.
+
+Coordinator-verified RELOCATION_MATCH / test PASS (`coordverify.log`). RULE AUDIT DONE: independent audit found no hard-rule violation. SPLIT AUDIT, HELD FOR OWNER RULING, NOT COUNTED. Bytes: RELOCATION_MATCH, test PASS, coordinator re-run PASS. One verifier passed it, one failed it: the 19 dead asserts in the in-row PeekGraphic exist only to move the compiler's caller-size counter so the CGraphicFrameData deleting destructor is called at 0x00B77AE7 and expanded elsewhere, i.e. an inline-decision ruler, which the lane rule says must be an inline control instead (authors report pragma inline_depth and /d2inlT cannot split the two sites). Count is fitted (debug evidence about 2). This also makes PeekGraphic text differ from landed 0x00BA4A40 and staged 0x00B751F0 (two texts for one inline function; not regraded with the 19-assert body). Also: 70 dead asserts in the helper (debug evidence about 9), four unused CGraphicFrame locals (device c, k=4 smallest), FITTED goto past a shared return false. All carry Inferred / Fidelity notes. Behaviour tests are standalone models unless stated.
+Fitted items and devices are marked in each source header comment; residue history in NOTES.md (grep the address).

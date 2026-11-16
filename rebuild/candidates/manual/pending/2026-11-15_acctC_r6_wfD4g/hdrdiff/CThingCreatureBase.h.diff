@@ -1,0 +1,112 @@
+--- a/rebuild/include/engine/CThingCreatureBase.h
++++ b/rebuild/include/engine/CThingCreatureBase.h
+@@ -217,10 +217,20 @@
+     void SetUnderInfluenceOfEpicSpell(bool value){UnderInfluenceOfEpicSpell=value;} // Both original PDBs; native0078fc48.
+ #endif
+     bool AutoPlaceNearBuilding(const CThingBuilding*,float);
++#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_AUTOPLACENEAR
++    // Retail opt-in (wfA1, row 0x006D0830 CTCWife::GlobalUpdate): Ego_r.pdb ?AutoPlaceNear@CThingCreatureBase@@QAE_NABVC3DVector@@M@Z
++    // (0x00541790, listed right before AutoPlaceNearBuilding 0x00541840 as retail 0x00665DF0 before 0x00666EF0; reloc_bindings 0x00665DF0).
++    bool AutoPlaceNear(const C3DVector& pos, float radius);              // 0x00665DF0
++#endif
++#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_GETSEX
++    // Retail opt-in (wfA1, row 0x006D0830 CTCWife::GlobalUpdate): Ego_r.pdb (0x0053CE40) / FableWin.pdb (0x01D9A430)
++    // ?GetSex@CThingCreatureBase@@QBE?AW4ESex@@XZ, out of line in retail at 0x00661FF0 (`mov ecx,[esi+4] ; call ; cmp eax,2`, 0x006D0894).
++    ESex GetSex() const;                                                 // 0x00661FF0
++#endif
+     static void CheckRetailLayout() {
+-        FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase,PDef)==0xe0);
+-        FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase,PCurrentAction)==0x100);
+-        FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase,PQueuedActions)==0x108);
++        FABLE_STATIC_ASSERT_AT(221, offsetof(CThingCreatureBase,PDef)==0xe0);
++        FABLE_STATIC_ASSERT_AT(222, offsetof(CThingCreatureBase,PCurrentAction)==0x100);
++        FABLE_STATIC_ASSERT_AT(223, offsetof(CThingCreatureBase,PQueuedActions)==0x108);
+     }
+     virtual void OnHit(CHitParameters&);
+     bool SetCurrentAction(const CCreatureActionBase&);
+@@ -431,7 +441,7 @@
+ public:
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CThingCreatureBase)==0x160);
++FABLE_STATIC_ASSERT_AT(434, sizeof(CThingCreatureBase)==0x160);
+ #ifdef FABLE_ENGINE_CTHINGCREATUREDEF_H
+ inline const CThingCreatureDef& CThingCreatureBase::PeekDefinition() const { return *PDef; }
+ #endif
+@@ -541,41 +551,41 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CThingCreatureBase) == 0x160);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, q) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, LastMessageEventICreatedID) == 0xd0);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, CombatCollisionDebugGraphics) == 0xd4);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PDef_Object) == 0xe0);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, ShotAccuracyPercentage) == 0xe4);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, InitialPos_X) == 0xe8);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, InitialPos_Y) == 0xec);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, InitialPos_Z) == 0xf0);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PLastAttackedByCreature) == 0xf4);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, WFLastAttackedByCreature) == 0xfc);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PCurrentAction_Data) == 0x100);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PCurrentAction_Info) == 0x104);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PQueuedActions) == 0x108);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, MovementVector_X) == 0x10c);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, MovementVector_Y) == 0x110);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, MovementVector_Z) == 0x114);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, HeadPosOffset_X) == 0x118);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, HeadPosOffset_Y) == 0x11c);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, HeadPosOffset_Z) == 0x120);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IdleCounter) == 0x124);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, TurnSpeed) == 0x128);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PCreatureInteraction_Data) == 0x12c);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PCreatureInteraction_Info) == 0x130);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PTCModeManager) == 0x134);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PreviousActionHandedness) == 0x138);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PreviousActionHandednessWF) == 0x13c);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, BodyReorienter_ptr) == 0x140);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, CombatDebugGraphics) == 0x144);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PItemToUnsheatheAfterCutscene) == 0x150);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, DebugText) == 0x158);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, HeadPosCached) == 0x15c);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, HiddenOnMiniMap) == 0x15d);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x15e);
++FABLE_STATIC_ASSERT_AT(544, sizeof(CThingCreatureBase) == 0x160);
++FABLE_STATIC_ASSERT_AT(545, offsetof(CThingCreatureBase, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(546, offsetof(CThingCreatureBase, q) == 0x60);
++FABLE_STATIC_ASSERT_AT(547, offsetof(CThingCreatureBase, LastMessageEventICreatedID) == 0xd0);
++FABLE_STATIC_ASSERT_AT(548, offsetof(CThingCreatureBase, CombatCollisionDebugGraphics) == 0xd4);
++FABLE_STATIC_ASSERT_AT(549, offsetof(CThingCreatureBase, PDef_Object) == 0xe0);
++FABLE_STATIC_ASSERT_AT(550, offsetof(CThingCreatureBase, ShotAccuracyPercentage) == 0xe4);
++FABLE_STATIC_ASSERT_AT(551, offsetof(CThingCreatureBase, InitialPos_X) == 0xe8);
++FABLE_STATIC_ASSERT_AT(552, offsetof(CThingCreatureBase, InitialPos_Y) == 0xec);
++FABLE_STATIC_ASSERT_AT(553, offsetof(CThingCreatureBase, InitialPos_Z) == 0xf0);
++FABLE_STATIC_ASSERT_AT(554, offsetof(CThingCreatureBase, PLastAttackedByCreature) == 0xf4);
++FABLE_STATIC_ASSERT_AT(555, offsetof(CThingCreatureBase, WFLastAttackedByCreature) == 0xfc);
++FABLE_STATIC_ASSERT_AT(556, offsetof(CThingCreatureBase, PCurrentAction_Data) == 0x100);
++FABLE_STATIC_ASSERT_AT(557, offsetof(CThingCreatureBase, PCurrentAction_Info) == 0x104);
++FABLE_STATIC_ASSERT_AT(558, offsetof(CThingCreatureBase, PQueuedActions) == 0x108);
++FABLE_STATIC_ASSERT_AT(559, offsetof(CThingCreatureBase, MovementVector_X) == 0x10c);
++FABLE_STATIC_ASSERT_AT(560, offsetof(CThingCreatureBase, MovementVector_Y) == 0x110);
++FABLE_STATIC_ASSERT_AT(561, offsetof(CThingCreatureBase, MovementVector_Z) == 0x114);
++FABLE_STATIC_ASSERT_AT(562, offsetof(CThingCreatureBase, HeadPosOffset_X) == 0x118);
++FABLE_STATIC_ASSERT_AT(563, offsetof(CThingCreatureBase, HeadPosOffset_Y) == 0x11c);
++FABLE_STATIC_ASSERT_AT(564, offsetof(CThingCreatureBase, HeadPosOffset_Z) == 0x120);
++FABLE_STATIC_ASSERT_AT(565, offsetof(CThingCreatureBase, IdleCounter) == 0x124);
++FABLE_STATIC_ASSERT_AT(566, offsetof(CThingCreatureBase, TurnSpeed) == 0x128);
++FABLE_STATIC_ASSERT_AT(567, offsetof(CThingCreatureBase, PCreatureInteraction_Data) == 0x12c);
++FABLE_STATIC_ASSERT_AT(568, offsetof(CThingCreatureBase, PCreatureInteraction_Info) == 0x130);
++FABLE_STATIC_ASSERT_AT(569, offsetof(CThingCreatureBase, PTCModeManager) == 0x134);
++FABLE_STATIC_ASSERT_AT(570, offsetof(CThingCreatureBase, PreviousActionHandedness) == 0x138);
++FABLE_STATIC_ASSERT_AT(571, offsetof(CThingCreatureBase, PreviousActionHandednessWF) == 0x13c);
++FABLE_STATIC_ASSERT_AT(572, offsetof(CThingCreatureBase, BodyReorienter_ptr) == 0x140);
++FABLE_STATIC_ASSERT_AT(573, offsetof(CThingCreatureBase, CombatDebugGraphics) == 0x144);
++FABLE_STATIC_ASSERT_AT(574, offsetof(CThingCreatureBase, PItemToUnsheatheAfterCutscene) == 0x150);
++FABLE_STATIC_ASSERT_AT(575, offsetof(CThingCreatureBase, DebugText) == 0x158);
++FABLE_STATIC_ASSERT_AT(576, offsetof(CThingCreatureBase, HeadPosCached) == 0x15c);
++FABLE_STATIC_ASSERT_AT(577, offsetof(CThingCreatureBase, HiddenOnMiniMap) == 0x15d);
++FABLE_STATIC_ASSERT_AT(578, offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x15e);
+ 
+ #endif // FABLE_RETAIL_CTHINGCREATUREBASE
+ #endif // FABLE_ENGINE_CTHINGCREATUREBASE_H

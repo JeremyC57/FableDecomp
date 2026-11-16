@@ -1,0 +1,22 @@
+--- a/rebuild/include/engine/C3DBoundingBox.h
++++ b/rebuild/include/engine/C3DBoundingBox.h
+@@ -15,7 +15,18 @@
+     // (0x0122F59C): (MaxCoord + MinCoord) * 0.5f (chunk 721 round 4); 0x00AC2BE0 is byte-identical with that form.
+ public:
+     void BuildFromPoints(const std::vector<C3DVector>&);
+-#ifdef FABLE_RETAIL_C3DBOUNDINGBOX_CENTER_MIN_FIRST
++#ifdef FABLE_RETAIL_C3DBOUNDINGBOX_GETDIMENTIONS
++    // Overlay opt-in (wfA4, row 0x00BAA870): FableWin.pdb ?GetDimentions@C3DBoundingBox@@QBE?BVC3DVector@@XZ (debug copy 15i/35b; no
++    // Ego_r.pdb or Fable.exe out-of-line copy): the corner difference. Body only; no layout change.
++    const C3DVector GetDimentions() const { return MaxCoord - MinCoord; }
++#endif
++#if defined(FABLE_RETAIL_C3DBOUNDINGBOX_GETCENTER_PROBE1)
++    const C3DVector GetCenter() const { return MinCoord + GetDimentions() * 0.5f; }
++#elif defined(FABLE_RETAIL_C3DBOUNDINGBOX_GETCENTER_PROBE2)
++    const C3DVector GetCenter() const { C3DVector centre = (MaxCoord + MinCoord) * 0.5f; return centre; }
++#elif defined(FABLE_RETAIL_C3DBOUNDINGBOX_GETCENTER_PROBE3)
++    const C3DVector GetCenter() const { return (MaxCoord + MinCoord) / 2.0f; }
++#elif defined(FABLE_RETAIL_C3DBOUNDINGBOX_CENTER_MIN_FIRST)
+     const C3DVector GetCenter()const{return (MinCoord+MaxCoord)*0.5f;}
+ #else
+     const C3DVector GetCenter() const { return (MaxCoord + MinCoord) * 0.5f; }

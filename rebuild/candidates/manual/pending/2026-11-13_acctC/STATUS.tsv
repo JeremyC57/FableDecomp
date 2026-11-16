@@ -79,7 +79,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 009d9c80	MATCHED_STAGED	3435	2026-11-14_acctC_wfD5	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	CRenderManager2D::DrawBufferedPolys
 00bc8a60	PARKED		2026-11-15_acctC_wfE5/open	after workflow unworked/Opus round 3: parked DIFFER(3394v3416); Re-authored on shared headers from the 0x00BCC800 prelude: 136 masked hunks down to 46, best source in differ/00bc8a60.cpp. These retail-evi	parked	CEnginePrimitiveManagerLines::RenderLine
 009d8cf0	MATCHED_STAGED	3385	2026-11-14_acctC_wfD5	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	CRenderManager2D::ClearRenderTarget
-00715a70	PARKED		2026-11-14_acctC_wfD4open	after workflow unworked/Opus round 2: DIFFER(2860v3356) parked: baseline graded only; 496 bytes short (focus-case cross-jump)	parked	NTCScriptedControl::CActionTalkBase::SetUpCamera
+00715a70	MATCHED_STAGED	3356	2026-11-15_acctC_r6_wfD4g	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	NTCScriptedControl::CActionTalkBase::SetUpCamera
 00b1c880	MATCHED_STAGED	3266	2026-11-14_acctC_wfD6	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NParticleEngine::CPSCDecalRenderer::ReadBinary
 00d82640	MATCHED_STAGED	3260	2026-11-14_acctC_wfD1	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NScript::CQ_HeroSoulsBriarScript::CBriarRose::Main
 0066cf00	MATCHED_STAGED	3248	2026-11-15_acctC_r6_wfD4	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CRegionMinimap::PopulateRegionMinimap
@@ -107,7 +107,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00dadf80	MATCHED_STAGED	2787	2026-11-14_acctC_wfA3	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	parked	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::Main
 00e2f170	MATCHED_STAGED	2781	2026-11-14_acctC_wfA3	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	parked	CV_AmbushScamScript::SpringAmbush
 004a0d90	MATCHED_STAGED	2733	2026-11-14_acctC_wfA3	workflow unworked/Opus: RELOCATION_MATCH / PASS, verified by the workflow verifier and the coordinator	parked	CWorld::LoadQuestsFromFile
-00b77370	PARKED	2734	2026-11-14_acctC_wfA4open	workflow unworked/Opus: DIFFER(2798v2734): one inline decision at 0x00B77AE9	parked	CEngineWaterRenderer::RenderSeaReflectiveForeground
+00b77370	MATCHED_HELD_OWNER_RULING	2734	2026-11-15_acctC_r6_wfA4h_HELD	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, SPLIT rule audit (inline-decision assert ruler; two texts for PeekGraphic) -- held, not counted	parked	CEngineWaterRenderer::RenderSeaReflectiveForeground
 00b751f0	MATCHED_STAGED	2722	2026-11-15_acctC_r6_wfA4	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEngineWaterRenderer::RenderIceForeground
 00981410	PARKED	2703	2026-11-14_acctC_wfA3b/open	after workflow unworked/Opus round 2: DIFFER 2700v2703 - 2+6+25+~120 PARKED (successor-2): 782 v 782 instructions, 15 structural hunks; differ/00981410.cpp; residue layout / event register / frame (needs the 	parked	_global::AIAction_InteractWith
 00acdb80	MATCHED_STAGED	2674	2026-11-14_acctC_wfA3b	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	QuadricOptimiserInternals::COptimisedPrimitive::COptimisedPrimitive
