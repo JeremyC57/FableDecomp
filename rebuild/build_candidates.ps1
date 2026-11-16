@@ -44632,9 +44632,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006afd40'
-        Module = 'CTCBase'
-        Source = '00/6a/CTCBase_PeekThingSearchTools_006afd40.cpp'
-        TestSource = '00/6a/CTCBase_PeekThingSearchTools_006afd40_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6a/CTCPhysicsBase_GetThingSearchTools_006afd40.cpp'
+        TestSource = '00/6a/CTCPhysicsBase_GetThingSearchTools_006afd40_test.cpp'
         PassPattern = '006afd40_TEST PASS'
     }
     [pscustomobject]@{
@@ -397578,6 +397578,43 @@ $catalog = @(
         Source = '00/c6/CStateVariableFilter_FilterWithGain_00c6b9d0.cpp'
         TestSource = '00/c6/CStateVariableFilter_FilterWithGain_00c6b9d0_test.cpp'
         PassPattern = '00c6b9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00686d90'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_PeekThingSearchTools_00686d90.cpp'
+        TestSource = '00/68/CTCBase_PeekThingSearchTools_00686d90_test.cpp'
+        PassPattern = '00686d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c28380'
+        Module = 'CHandleBasedMemoryPool_012b4098'
+        Source = '00/c2/CHandleBasedMemoryPool012b4098_GetPointerFromHandle_00c28380.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool012b4098_GetPointerFromHandle_00c28380_test.cpp'
+        PassPattern = '00c28380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d97e0'
+        Module = 'std'
+        Source = '00/7d/std_iterswapKnickKnackKnickKnack_007d97e0.cpp'
+        TestSource = '00/7d/std_iterswapKnickKnackKnickKnack_007d97e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '007d97e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d9a00'
+        Module = 'std'
+        Source = '00/7d/std_swapKnickKnack_007d9a00.cpp'
+        TestSource = '00/7d/std_swapKnickKnack_007d9a00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '007d9a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009aa440'
+        Module = 'std::pair<const CCharString,CBankInfo_009aa210>'
+        Source = '00/9a/stdpairconstCCharStringCBankInfo009aa210_pair_009aa440.cpp'
+        TestSource = '00/9a/stdpairconstCCharStringCBankInfo009aa210_pair_009aa440_test.cpp'
+        PassPattern = '009aa440_TEST PASS'
     }
 )
 

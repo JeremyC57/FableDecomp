@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00686d90   RELOCATION_MATCH PASS   PeekThingSearchTools
+00c28380   WARN STANDIN_LEAF ?GetPointerFromHandle@CHandleBasedMemoryPool_012b4098@@QAEPAXJ@Z (catalog CHandleBasedMemoryPool::GetPointerFromHandle; address-only name)
+00c28380   MATCH            PASS   GetPointerFromHandle
+007d97e0   WARN STANDIN_LEAF ??$iter_swap@PAUKnickKnack@@PAU1@@std@@YIXPAUKnickKnack@@0@Z (catalog CNearestBuildingWithProperty::CNearestBuildingWithProperty; names another function)
+007d97e0   MATCH            PASS   iter_swap<KnickKnack*,KnickKnack*>
+007d9a00   WARN STANDIN_LEAF ??$swap@UKnickKnack@@@std@@YIXAAUKnickKnack@@0@Z (catalog CNearestBuildingWithProperty::CNearestBuildingWithProperty; names another function)
+007d9a00   MATCH            PASS   swap<KnickKnack>
+009aa440   RELOCATION_MATCH PASS   ~pair
+
+WINS: 5
+  00686d90 RELOCATION_MATCH CTCBase::?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ
+  00c28380 MATCH CHandleBasedMemoryPool_012b4098::?GetPointerFromHandle@CHandleBasedMemoryPool_012b4098@@QAEPAXJ@Z
+  007d97e0 MATCH std::??$iter_swap@PAUKnickKnack@@PAU1@@std@@YIXPAUKnickKnack@@0@Z
+  007d9a00 MATCH std::??$swap@UKnickKnack@@@std@@YIXAAUKnickKnack@@0@Z
+  009aa440 RELOCATION_MATCH std::pair<const CCharString,CBankInfo_009aa210>::??1?$pair@$$CBVCCharString@@UCBankInfo_009aa210@@@std@@QAE@XZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CTCBase_PeekThingSearchTools_00686d90
+  CHandleBasedMemoryPool012b4098_GetPointerFromHandle_00c28380
+  std_iterswapKnickKnackKnickKnack_007d97e0
+  std_swapKnickKnack_007d9a00
+  stdpairconstCCharStringCBankInfo009aa210_pair_009aa440

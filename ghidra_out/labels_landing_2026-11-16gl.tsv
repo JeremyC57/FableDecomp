@@ -1,0 +1,7 @@
+address	name	evidence
+0x00686D90	?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ	landing gl (2026-11-16): RELOCATION_MATCH + test PASS, strict headers; Ego_r 0x006B2180 / FableWin 0x021915D0
+0x006AFD40	?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ	landing gl (2026-11-16) respelling of the landed row (was CTCBase::PeekThingSearchTools); Ego_r 0x006EC500 / FableWin 0x0246E010, donor order, CTCPhysics* callers; recheck RELOCATION_MATCH + PASS
+0x00C28380	?GetPointerFromHandle@CHandleBasedMemoryPool_012b4098@@QAEPAXJ@Z	landing gl (2026-11-16): MATCH + test PASS, strict headers; Ego_r 0x00B6D5E0 member, libpk-copy suffix (owner 2026-10-31)
+0x007D97E0	??$iter_swap@PAUKnickKnack@@PAU1@@std@@YIXPAUKnickKnack@@0@Z	landing gl (2026-11-16): MATCH + test PASS; FableWin 0x027565F0; iter_swap/swap order INFERRED from sibling TU 0x00806220/0x008068B0
+0x007D9A00	??$swap@UKnickKnack@@@std@@YIXAAUKnickKnack@@0@Z	landing gl (2026-11-16): MATCH + test PASS; FableWin 0x027568A0; order INFERRED as 0x007D97E0
+0x009AA440	??1?$pair@$$CBVCCharString@@UCBankInfo_009aa210@@@std@@QAE@XZ	landing gl (2026-11-16): RELOCATION_MATCH + test PASS; second-TU twin of 0x009A8FE0, value type CBankInfo_009aa210 (DESCRIPTIVE suffix)

@@ -1,0 +1,15 @@
+address	state	note
+00686d90	LANDED	RELOCATION_MATCH+PASS
+00c28380	LANDED	MATCH+PASS
+007d97e0	LANDED	MATCH+PASS (/Gr)
+007d9a00	LANDED	MATCH+PASS (/Gr)
+009aa440	LANDED	RELOCATION_MATCH+PASS
+006afd40	RESPELLED	CTCPhysicsBase::GetThingSearchTools; recheck RELOCATION_MATCH+PASS
+00c11700	OPEN	`add ecx,7D8h ; jmp CFader::GetOutput`: owner CSoundEventManager (caller 0x00C271E0 CPhysicalPlayer::UpdateManagerTime(CSoundEventManager*)); needs a CFader member at +0x7D8 in libpk/CSoundEventManager.h; descriptive name
+00c14700	OPEN	`add ecx,0Ch ; jmp 0x00C14630` (PKCWorkerQueue_00c14630 dtor); caller scalar deleting dtor 0x00C14720; owner-class dtor, descriptive
+00c14710	OPEN	`add ecx,0Ch ; jmp 0x00C14560`; caller 0x00C14740; owner-class dtor, descriptive
+00c2d9b0	OPEN	`add ecx,8 ; jmp CString::~CString 0x00C0BA40`; caller 0x00C2DCA0; owner-class dtor, descriptive
+00c47ea0	OPEN	`add ecx,10h ; jmp 0x00C167C0`; unwind funclet 0x01215920; descriptive
+00c48740	OPEN	`add ecx,14h ; jmp 0x00C167C0`; 11 refs; the row binding ??1SDecoderMessage@@QAE@XZ to check
+00add5c0	OPEN	CLHFile null test (`mov edx,[ecx] ; xor eax,eax ; test ; sete al ; ret`), LHA library, no PDB, no refs; descriptive
+00702e00	OPEN	unreferenced 488-byte function on local stand-in classes; identity research + shared-header port

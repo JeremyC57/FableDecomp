@@ -1,0 +1,5 @@
+addr       parity           behav  name
+006afd40   RELOCATION_MATCH PASS   GetThingSearchTools
+
+WINS: 1
+  006afd40 RELOCATION_MATCH CTCBase::?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ
