@@ -1,7 +1,7 @@
 # FableTLC / FableDecomp — AI agent guide
 
 Reverse-engineering + byte-exact reconstruction of the **native PC** `Fable.exe`
-(Fable: The Lost Chapters, Steam, VC7.1). Public repo: `BuffJesus/FableDecomp` (this tree, `main`).
+(Fable: The Lost Chapters, Steam, VC7.1). Public repo: `JeremyC57/FableDecomp` (this tree).
 
 **Start here, in this order:** `docs/HANDOFF.md` (one page: state + resume commands) →
 `docs/ROADMAP.md` (the only task list) → `docs/ARCHITECTURE.md` → `docs/BUILDING.md` →

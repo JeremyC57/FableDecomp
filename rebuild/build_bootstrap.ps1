@@ -530,10 +530,6 @@ $visualBootRetailSunbeamSheet = Join-Path $outDir 'frontend_sunbeam_sheet.png'
 $visualBootRetailMenu = Join-Path $outDir 'frontend_main_menu.png'
 $visualBootRetailMenuComponents =
     Join-Path $outDir 'frontend_main_menu_components.png'
-$visualBootBuffJesusMenu =
-    Join-Path $outDir 'frontend_main_menu_buff_jesus.png'
-$visualBootBuffJesusMenuComponents =
-    Join-Path $outDir 'frontend_main_menu_buff_jesus_components.png'
 $visualBootRetailOptions = Join-Path $outDir 'frontend_options_menu.png'
 $visualBootRetailOptionsComponents =
     Join-Path $outDir 'frontend_options_menu_components.png'
@@ -562,8 +558,6 @@ $visualBootTitleBitmap = Join-Path $outDir 'visual_boot_title.bmp'
 $visualBootForestBitmap = Join-Path $outDir 'visual_boot_forest.bmp'
 $visualBootSunbeamBitmap = Join-Path $outDir 'visual_boot_sunbeam.bmp'
 $visualBootMenuBitmap = Join-Path $outDir 'visual_boot_main_menu.bmp'
-$visualBootBuffJesusMenuBitmap =
-    Join-Path $outDir 'visual_boot_main_menu_buff_jesus.bmp'
 $visualBootOptionsBitmap = Join-Path $outDir 'visual_boot_options_menu.bmp'
 $visualBootTitleSegmentBitmap =
     Join-Path $outDir 'visual_boot_title_rule_segment.bmp'
@@ -1084,7 +1078,6 @@ $visualBootUsesRetailLegal = $false
 $visualBootUsesRetailPointer = $false
 $visualBootUsesRetailAnimation = $false
 $visualBootUsesRetailMenu = $false
-$visualBootUsesBuffJesusMenu = $false
 $visualBootUsesRetailSubscreens = $false
 $visualBootUsesRetailUiSounds = $false
 if ($selectedRetailFrontendBank) {
@@ -1332,25 +1325,6 @@ if ($selectedRetailFrontendBank) {
                     (Test-Path -LiteralPath $visualBootRetailMenuComponents)
                 ) {
                     $visualBootUsesRetailMenu = $true
-                    & python $frontendMenuRenderer `
-                        $selectedRetailFrontendBank `
-                        $selectedRetailFontBank `
-                        $visualBootBuffJesusMenu `
-                        --text-variant buff-jesus `
-                        --component-output $visualBootBuffJesusMenuComponents `
-                        @frontendLayoutArguments
-                    if (
-                        $LASTEXITCODE -eq 0 -and
-                        (Test-Path -LiteralPath $visualBootBuffJesusMenu) -and
-                        (Test-Path -LiteralPath $visualBootBuffJesusMenuComponents)
-                    ) {
-                        $visualBootUsesBuffJesusMenu = $true
-                    } else {
-                        Write-Warning (
-                            "BuffJesus menu composition failed; the " +
-                            "retail-exact menu remains available."
-                        )
-                    }
                 } else {
                     Write-Warning (
                         "Retail main-menu composition failed; the " +
@@ -1429,12 +1403,6 @@ if ($selectedRetailFrontendBank) {
                 "VISUAL_MENU RETAIL root=UI_FRONTEND_MAIN_MENU " +
                 "background=COASTAL action=229"
             )
-            if ($visualBootUsesBuffJesusMenu) {
-                Write-Output (
-                    "VISUAL_MENU VARIANT name=buff-jesus " +
-                    "activation=--buff-jesus retail_default=preserved"
-                )
-            }
         }
         if ($visualBootUsesRetailSubscreens) {
             Write-Output (
@@ -3853,19 +3821,6 @@ try {
                     Height = 1440
                 }
             )
-            if ($visualBootUsesBuffJesusMenu) {
-                $buffJesusMenuEmbedPng = $visualBootBuffJesusMenu
-                if ($visualBootUsesRetailSubscreens) {
-                    $buffJesusMenuEmbedPng =
-                        $visualBootBuffJesusMenuComponents
-                }
-                $animationSheets += @{
-                    Png = $buffJesusMenuEmbedPng
-                    Bmp = $visualBootBuffJesusMenuBitmap
-                    Width = if ($visualBootUsesRetailSubscreens) { 1280 } else { 640 }
-                    Height = 3360
-                }
-            }
         }
         if ($spookyAnimationReady) {
             $animationSheets += @(
@@ -3995,7 +3950,6 @@ try {
         $visualBootForestBitmap,
         $visualBootSunbeamBitmap,
         $visualBootMenuBitmap,
-        $visualBootBuffJesusMenuBitmap,
         $visualBootCoastalBitmap,
         $visualBootCoastalSunbeamBitmap,
         $visualBootSpookyBitmap,
@@ -4062,12 +4016,6 @@ try {
             "107 BITMAP `"$resourceCoastalBitmapPath`""
         $resourceLines +=
             "108 BITMAP `"$resourceCoastalSunbeamBitmapPath`""
-        if ($visualBootUsesBuffJesusMenu) {
-            $resourceBuffJesusMenuBitmapPath =
-                $visualBootBuffJesusMenuBitmap.Replace('\', '/')
-            $resourceLines +=
-                "111 BITMAP `"$resourceBuffJesusMenuBitmapPath`""
-        }
     }
     if ($spookyAnimationReady) {
         $resourceSpookyBitmapPath =

@@ -59,18 +59,8 @@ MENU_ROWS = (
     ("About", 210),
     ("Quit", 240),
 )
-BUFF_JESUS_MENU_ROWS = (
-    ("Continue the Gains", 0),
-    ("Summon BuffJesus", 30),
-    ("Sacred Settings", 60),
-    ("Gains for Windows - LIFT", 120),
-    ("Disciples", 180),
-    ("About BuffJesus", 210),
-    ("Skip Leg Day", 240),
-)
 MENU_TEXT_VARIANTS = {
     "retail": MENU_ROWS,
-    "buff-jesus": BUFF_JESUS_MENU_ROWS,
 }
 
 

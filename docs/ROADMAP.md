@@ -33,7 +33,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## (a) Repo health & public presentation — `CONTRIBUTING.md`, `docs/ARCHITECTURE.md`
 
-- [x] 2026-09-07 `main` fast-forwarded to include 519 commits and pushed to `BuffJesus/FableDecomp`
+- [x] 2026-09-07 `main` fast-forwarded to include 519 commits and pushed to the public repository
 - [x] 2026-09-07 22 agent branches archived as `archive/*` tags (24 tags total)
 - [x] 2026-09-07 root scratch files + the `CON` file removed; `LICENSE`, `CONTRIBUTING.md`, CI (`docs-consistency`) added
 - [x] 2026-09-07 docs restructured into `ARCHITECTURE.md`, `BUILDING.md`, `engine/`, `formats/`, `pipeline/`, `scripts/`, `journal/`, `modding/`

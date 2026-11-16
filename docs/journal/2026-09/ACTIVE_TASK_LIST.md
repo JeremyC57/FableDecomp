@@ -1,5 +1,8 @@
 # Active task list — decomp, frontend parity, and downstream tools
 
+> Note (2026-11-16): the joke main-menu text variant these notes once named after the upstream author is called the
+> "alt-text" variant below (its flags written `--alt-text` / `-AltText`); it was removed from the build on 2026-11-16.
+
 ## ACTIVE — curated decomp promotion pass (2026-08-26)
 
 - **LANDED:** `0x00890FF0 CGameScriptInterface::CameraDefault`. The recovered
@@ -1112,8 +1115,8 @@ Completed in the current checkpoint:
    `UI_TEXTBOX_MIDDLE` (#122), producing one continuous retail gold-edged/
    blue-filled rule instead of substituted selected-button pieces. The build
    still prefers the pristine installed `frontend.big`.
-4. Plain `--buff-jesus` includes the three retail boot movies; the explicit
-   `--skip-boot-videos` developer override and retail/BuffJesus smokes pass.
+4. Plain `--alt-text` includes the three retail boot movies; the explicit
+   `--skip-boot-videos` developer override and retail/alt-text smokes pass.
 5. The horizontal/vertical `CTable` line geometry is promoted from retail and
    the PDB-backed FableWin donor: primary placement, axis-specific zoom/repeat
    count, resource-key filtering, cursor advancement, and truncated-output
@@ -1125,7 +1128,7 @@ Completed in the current checkpoint:
    `OnUnhovered @ 0x00557880`. Clicking a row enters the yellow retail
    `PRESS CONTROL` state; keyboard/three-button mouse capture, Escape
    cancellation, duplicate clearing, and Apply/Cancel snapshots are exercised
-   by both retail-text and BuffJesus live smokes. Movement action 60 now
+   by both retail-text and alt-text live smokes. Movement action 60 now
    follows `CRedefinerList::RefreshScriptThings @ 0x00556A40`: it expands into
    four W/A/S/D Forward/Left/Backward/Right children before the remaining
    actions,
@@ -1196,17 +1199,17 @@ Completed in the current checkpoint:
     all eight oracle frames pixel-identically. The live D3D9 adapter now
     recognizes the title segment plus all three `TS_BUTTON_L/M/R` texture
     handles; previously those valid Render2D records attached null and made
-    the runtime highlight disappear. Retail, BuffJesus, and full subscreen
+    the runtime highlight disappear. Retail, alt-text, and full subscreen
     smokes now require a visible off-texture highlight-pixel delta.
 16. Main-menu selection tables are live in both public variants. Rows 1-6
     reuse the owned 280-pixel vector; Continue Game uses a second owned
     `UI_BUTTON_BIG` vector with the recovered 400-pixel span and 34-tile
-    middle zoom. Retail and BuffJesus component sheets omit the ornament and
+    middle zoom. Retail and alt-text component sheets omit the ornament and
     recompose all seven baked frames pixel-identically. Both main-menu smokes,
     the complete subscreen smoke, maximized scaling, and the Release bootstrap
     pass.
 17. Main-menu labels are seven independent Render2D rows rather than text
-    flattened into every selection frame. Retail and BuffJesus component
+    flattened into every selection frame. Retail and alt-text component
     atlases retain title-only left frames and one transparent row canvas per
     list child; recomposition is pixel-identical across all 14 frames. The
     retail 0x24-byte `CUIState` layout is compile-locked, and a focused
@@ -1222,7 +1225,7 @@ Completed in the current checkpoint:
     `AlphaOffset=0`, and `PositionOffsetY=30`; text states 3/4 are immediately
     visible at x=120 with `UpdateTime=-1`. Therefore navigation correctly moves
     only the selected ornament rather than inventing a row translation/fade.
-    Retail, BuffJesus, complete subscreen (including Options Down/Up), and
+    Retail, alt-text, complete subscreen (including Options Down/Up), and
     maximized 2560x1369 smokes pass.
 19. Options labels are four independent Render2D row canvases rather than text
     repeated in the four selection frames. The component sheet expands from
@@ -1231,7 +1234,7 @@ Completed in the current checkpoint:
     quads consume their exact decoded five-state position/colour maps.
     Recomposition against the retained 1024x3840 baked oracle is
     pixel-identical for every Options and detail frame. The full VC7.1 build,
-    15 focused subscreen tests, retail interaction, BuffJesus main-menu, and
+    15 focused subscreen tests, retail interaction, alt-text main-menu, and
     maximized smokes pass.
 20. Keyboard Enter now dispatches the selected recovered routes instead of
     requiring a synthetic mouse release: press-start action 229, main-menu
@@ -1239,7 +1242,7 @@ Completed in the current checkpoint:
     keyboard share the same transition helpers, keeping detail initialization,
     saved-value snapshots, and D3D state changes aligned. The complete
     subscreen smoke uses Enter for press-start, Options entry, and every detail
-    destination; retail and BuffJesus report `keys=enter-up-wrap-down`.
+    destination; retail and alt-text report `keys=enter-up-wrap-down`.
 21. Frontend navigation now uses the untouched retail `Frontend.lug` audio
     rather than a synthetic placeholder. `CFrontEndList::ScrollUp/ScrollDown`
     selects `UI_MISC_THINGS_DEF.SoundUpDown` (`CS_GUI_2`, sample 3) after a

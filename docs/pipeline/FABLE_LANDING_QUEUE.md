@@ -72,7 +72,7 @@ pair (see `pending/2026-10-15_linux_hand75/LESSONS.md`) before giving up on them
 GOTCHAS: one `- Wave 25x (...)` line built from the batches' NOTES "What matched" lessons and each pending dir's `LESSONS.md` (the agent's final-report lessons plus any review item, e.g. a local base model next to an existing engine header -- check those before accepting the batch); journal
 `docs/journal/2026-10/LINUX_CONTAINER_LANE_2026-10-13.md` (new part section above the previous one); `docs/HANDOFF.md`
 and `docs/ROADMAP.md` counts; `python3 tools/write_decomp_dashboard.py && python3 tools/update_readme_progress.py`;
-commit `land: ...` as BuffJesus with the session's Co-Authored-By / Claude-Session lines; `git push -u origin FullDecomp`.
+commit `land: ...` with the session's Co-Authored-By / Claude-Session lines; `git push -u origin FullDecomp`.
 
 ## Skipped rows -- the permanent ledger (any session, any agent; no Fable needed to author them)
 A row an agent could not author as ONE function is logged in `rebuild/candidates/manual/SKIPPED_ROWS.tsv` (address, row

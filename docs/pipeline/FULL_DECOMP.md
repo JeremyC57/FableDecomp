@@ -13,7 +13,7 @@ leans on automation because the target is large.
 - [x] Generate `rebuild/backlog/PROMOTION_QUEUE.md`, a continuously refreshed ranking of every
   uncompiled auto-RE result by checker/signature quality and estimated porting cost.
 - [x] Validate the queue by promoting its first-ranked result, `GFGetBuildNumber2 @ 0x00401F30`.
-- [x] Establish the public recovery repository at `BuffJesus/FableDecomp`, excluding original game
+- [x] Establish the public recovery repository `FableDecomp`, excluding original game
   binaries, PDBs, Ghidra databases, build products, and raw agent transcripts.
 - [x] Promote `CEngineLandscapePatch::RelocateData @ 0x00BF3980`; its six-path behavior oracle passes
   and its 143-byte body is an exact relocation-normalized retail match.

@@ -3,7 +3,7 @@
 You are the coordinator of the **FableDecomp** project: a byte-exact reconstruction of the native
 PC `Fable.exe` (Fable: The Lost Chapters, Steam build, Microsoft Visual C++ 7.1 / 2003) into
 **human-readable C++** that recompiles to the retail bytes. Repo `JeremyC57/FableDecomp`, branch
-`FullDecomp` (public mirror `BuffJesus/FableDecomp`, `main`). Read `CLAUDE.md`, then
+`FullDecomp` (public repository `JeremyC57/FableDecomp`). Read `CLAUDE.md`, then
 `docs/HANDOFF.md`, `docs/ROADMAP.md`, `docs/pipeline/GOTCHAS.md` (whole file) before any work.
 
 ## 1. The mission, stated precisely

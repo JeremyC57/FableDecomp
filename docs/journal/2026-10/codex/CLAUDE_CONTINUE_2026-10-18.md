@@ -11,7 +11,7 @@ Read this snapshot for baseline context, then `docs/HANDOFF.md` for the current 
 - Final accepted catalog: **34,246 / 49,568 = 69.0889%** (69.1% rounded), **148 additional functions**. Use this FUNCTION metric when reporting progress to the owner.
 - The separate genuine-C++ audit is **33,662 functions / 1,568,258 bytes**. It excludes historical catalog entries identified by the earlier audit; do not substitute it for the owner's requested catalog percentage or claim that all historical catalog entries meet the current authoring standard.
 - Last code landing: `4fa12a46d` (retry45). Final checkpoint/documentation commits follow it; the archive's `HANDOFF_STATE.json` gives the exact final branch tip and full baseline SHA.
-- Local commits contain all accepted changes. **Do not assume a remote push occurred.** Earlier automatic approval review rejected pushing to the unverified configured remote `https://github.com/JeremyC57/FableDecomp.git`; older project documentation names `BuffJesus/FableDecomp`. No push was performed during this wrap-up. The bundle and patch transfer the work without relying on the remote.
+- Local commits contain all accepted changes. **Do not assume a remote push occurred.** Earlier automatic approval review rejected pushing to the unverified configured remote `https://github.com/JeremyC57/FableDecomp.git`; older project documentation names the upstream repository. No push was performed during this wrap-up. The bundle and patch transfer the work without relying on the remote.
 
 The live count is obtained from `Address = '<8 lower-case hex digits>'` entries in `rebuild/build_candidates.ps1`. Generated dashboards may lag until the canonical Windows refresh. Do not manually edit generated coverage files to make them agree.
 

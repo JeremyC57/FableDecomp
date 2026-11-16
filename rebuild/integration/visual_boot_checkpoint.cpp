@@ -2189,7 +2189,6 @@ namespace
     const int kBootProfilesResource = 124;
     const int kBootSpookyResource = 121;
     const int kBootSpookySunbeamResource = 122;
-    const int kBootBuffJesusMenuResource = 111;
     const int kBootTitleSegmentResource = 112;
     const int kBootButtonLeftResource = 113;
     const int kBootButtonMiddleResource = 114;
@@ -2229,8 +2228,6 @@ namespace
         "FableDecomp - D3D9 Presented via Render2D - Retail Frontend + Progress Display Ready";
     const char kD3DRetailAssetPresentedActiveWindowTitle[] =
         "FableDecomp - D3D9 Presented via Render2D - Retail Frontend + Progress Display Active";
-    const char kD3DBuffJesusPresentedWindowTitle[] =
-        "FableDecomp - D3D9 Presented via Render2D - BuffJesus Text Variant";
 #else
     const char kD3DCheckpointReadyWindowTitle[] =
         "FableDecomp - D3D9 Visual Checkpoint Ready";
@@ -2303,8 +2300,6 @@ namespace
     FableBitmapInfo g_BootSunbeamArtworkInfo = {};
     FableBitmap g_BootMenuArtwork = 0;
     FableBitmapInfo g_BootMenuArtworkInfo = {};
-    FableBitmap g_BootBuffJesusMenuArtwork = 0;
-    FableBitmapInfo g_BootBuffJesusMenuArtworkInfo = {};
     FableBitmap g_BootCoastalArtwork = 0;
     FableBitmapInfo g_BootCoastalArtworkInfo = {};
     FableBitmap g_BootCoastalSunbeamArtwork = 0;
@@ -5464,9 +5459,7 @@ bool FABLE_FASTCALL FableShouldPlayBootVideos(const char* commandLine)
         return false;
     }
 
-    return
-        strstr(commandLine, "--retail-video") != 0 ||
-        strstr(commandLine, "--buff-jesus") != 0;
+    return strstr(commandLine, "--retail-video") != 0;
 }
 
 long FABLE_FASTCALL FableRunVisualBootCheckpoint(
@@ -5705,10 +5698,6 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         instance,
         kBootMenuResource,
         "visual_boot_main_menu.bmp");
-    g_BootBuffJesusMenuArtwork = LoadFrontendArtwork(
-        instance,
-        kBootBuffJesusMenuResource,
-        "visual_boot_main_menu_buff_jesus.bmp");
     g_BootCoastalArtwork = LoadFrontendArtwork(
         instance,
         kBootCoastalResource,
@@ -5726,13 +5715,6 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
             g_BootMenuArtwork,
             sizeof(g_BootMenuArtworkInfo),
             &g_BootMenuArtworkInfo);
-        if (g_BootBuffJesusMenuArtwork != 0)
-        {
-            GetObjectA(
-                g_BootBuffJesusMenuArtwork,
-                sizeof(g_BootBuffJesusMenuArtworkInfo),
-                &g_BootBuffJesusMenuArtworkInfo);
-        }
         GetObjectA(
             g_BootCoastalArtwork,
             sizeof(g_BootCoastalArtworkInfo),
@@ -5746,11 +5728,9 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     {
         DeleteObject(g_BootCoastalSunbeamArtwork);
         DeleteObject(g_BootCoastalArtwork);
-        DeleteObject(g_BootBuffJesusMenuArtwork);
         DeleteObject(g_BootMenuArtwork);
         g_BootCoastalSunbeamArtwork = 0;
         g_BootCoastalArtwork = 0;
-        g_BootBuffJesusMenuArtwork = 0;
         g_BootMenuArtwork = 0;
     }
     // SPOOKY graveyard background for UI_FRONTEND_ABOUT_MENU: a 640x1920
@@ -5918,14 +5898,7 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         haveFrontendAnimation
             ? g_BootSunbeamArtworkInfo
             : emptyAnimationArtwork;
-    const bool useBuffJesusMenu =
-        commandLine != 0 &&
-        strstr(commandLine, "--buff-jesus") != 0 &&
-        g_BootBuffJesusMenuArtwork != 0;
-    const FableBitmapInfo& menuArtworkInfo =
-        useBuffJesusMenu
-            ? g_BootBuffJesusMenuArtworkInfo
-            : g_BootMenuArtworkInfo;
+    const FableBitmapInfo& menuArtworkInfo = g_BootMenuArtworkInfo;
     if (FableInitialiseVisualD3D9(
             window,
             frontendClientWidth,
@@ -6052,20 +6025,11 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     if (FableWasVisualD3D9Presented())
     {
 #if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
-        if (useBuffJesusMenu)
-        {
-            SetWindowTextA(
-                window,
-                kD3DBuffJesusPresentedWindowTitle);
-        }
-        else
-        {
-            SetWindowTextA(
-                window,
-                g_RetailProgressDisplayActive
-                    ? kD3DRetailAssetPresentedActiveWindowTitle
-                    : kD3DRetailAssetPresentedReadyWindowTitle);
-        }
+        SetWindowTextA(
+            window,
+            g_RetailProgressDisplayActive
+                ? kD3DRetailAssetPresentedActiveWindowTitle
+                : kD3DRetailAssetPresentedReadyWindowTitle);
 #else
         SetWindowTextA(
             window,
@@ -6168,11 +6132,9 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
 #endif
     DeleteObject(g_BootCoastalSunbeamArtwork);
     DeleteObject(g_BootCoastalArtwork);
-    DeleteObject(g_BootBuffJesusMenuArtwork);
     DeleteObject(g_BootMenuArtwork);
     g_BootCoastalSunbeamArtwork = 0;
     g_BootCoastalArtwork = 0;
-    g_BootBuffJesusMenuArtwork = 0;
     g_BootMenuArtwork = 0;
 #endif
     DeleteObject(g_BootArtwork);

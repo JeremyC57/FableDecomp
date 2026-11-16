@@ -23,8 +23,6 @@ param(
 
     [string]$ReferenceProfileName = '',
 
-    [switch]$BuffJesus,
-
     [switch]$VerifyUpscaled,
 
     [switch]$OriginalVideo,
@@ -123,14 +121,6 @@ public static class VisualSmokeNativeMethods
 }
 
 $arguments = @()
-if ($BuffJesus) {
-    $arguments += '--buff-jesus'
-    if (-not $RetailVideo) {
-        # The public BuffJesus launch includes the retail boot sequence. Keep
-        # direct UI smoke runs fast unless they explicitly request that gate.
-        $arguments += '--skip-boot-videos'
-    }
-}
 if ($VerifyMaximizedScale -or $VerifySubscreens) {
     # Keep the existing decoded-backdrop pixel oracle deterministic while the
     # default frontend runs its independent forest/sunbeam animation.
@@ -190,9 +180,6 @@ try {
     }
     if ($title -notlike $expectedTitle) {
         throw "Expected presentation was not observed; last title was '$title'."
-    }
-    if ($BuffJesus -and -not $RetailVideo -and $title -notlike '*BuffJesus*') {
-        throw "The BuffJesus text variant was not activated; title was '$title'."
     }
     if ($VerifyUpscaled) {
         if (-not $RetailVideo -or $OriginalVideo) {
@@ -992,11 +979,7 @@ try {
                 )
                 $menuScreenshot = Join-Path (
                     Split-Path -Parent $Executable
-                ) $(if ($BuffJesus) {
-                    'buff-jesus-main-menu-smoke.png'
-                } else {
-                    'main-menu-transition-smoke.png'
-                })
+                ) 'main-menu-transition-smoke.png'
                 $menuBitmap.Save(
                     $menuScreenshot,
                     [System.Drawing.Imaging.ImageFormat]::Png
@@ -2254,9 +2237,6 @@ try {
 
     if ($quitViaRetailAction) {
         $frameProof += ' yes-action=296-exited'
-    }
-    if ($BuffJesus) {
-        $frameProof += ' text=buff-jesus'
     }
     Write-Output (
         "VISUAL_WINDOW_SMOKE PASS title=$title" +

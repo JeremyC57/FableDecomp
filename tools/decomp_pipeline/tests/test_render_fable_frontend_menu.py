@@ -12,7 +12,6 @@ if TOOLS_DIR not in sys.path:
 
 from render_fable_frontend_menu import (  # noqa: E402
     BUTTON_TABLE_X_BY_WIDTH,
-    BUFF_JESUS_MENU_ROWS,
     GENERATED_BUTTON_CHILD_X,
     MENU_CONTENT_CENTER_X,
     MENU_ROWS,
@@ -73,16 +72,10 @@ class FrontendMenuRenderTests(unittest.TestCase):
         self.assertEqual((3, 0, 0, 255), frame.getpixel((519, 193)))
         self.assertEqual((9, 9, 9, 255), frame.getpixel((320, 200)))
 
-    def test_buff_jesus_variant_preserves_retail_layout(self):
+    def test_retail_is_the_only_text_variant(self):
         self.assertIs(MENU_ROWS, menu_rows_for_variant("retail"))
-        self.assertIs(
-            BUFF_JESUS_MENU_ROWS,
-            menu_rows_for_variant("buff-jesus"))
-        self.assertEqual(
-            tuple(offset for _, offset in MENU_ROWS),
-            tuple(offset for _, offset in BUFF_JESUS_MENU_ROWS))
-        self.assertIn("BuffJesus", " ".join(
-            text for text, _ in BUFF_JESUS_MENU_ROWS))
+        with self.assertRaises(ValueError):
+            menu_rows_for_variant("unknown")
         self.assertEqual(("Continue Game", 0), MENU_ROWS[0])
 
     @unittest.skipUnless(

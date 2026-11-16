@@ -396,10 +396,7 @@ int main()
         FableShouldPlayBootVideos(0) ||
         FableShouldPlayBootVideos("") ||
         !FableShouldPlayBootVideos("--retail-video") ||
-        !FableShouldPlayBootVideos("--buff-jesus") ||
-        !FableShouldPlayBootVideos("--buff-jesus --retail-video") ||
-        FableShouldPlayBootVideos(
-            "--buff-jesus --skip-boot-videos") ||
+        FableShouldPlayBootVideos("--other-flag") ||
         FableShouldPlayBootVideos(
             "--retail-video --skip-boot-videos"))
     {

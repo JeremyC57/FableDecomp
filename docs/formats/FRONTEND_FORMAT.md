@@ -159,14 +159,14 @@ with the middle component zoomed across 19 tiles. The no-ornament component
 sheet keeps row text above those draws and recomposes pixel-identically with
 the baked oracle. Main-menu selection ornaments use the same bridge: ordinary
 rows reuse the 19-tile vector and Continue Game owns a 34-tile
-`UI_BUTTON_BIG` vector. Retail and BuffJesus no-ornament sheets both recompose
-pixel-identically with their baked seven-frame oracles.
+`UI_BUTTON_BIG` vector. The retail no-ornament sheet recomposes
+pixel-identically with its baked seven-frame oracle.
 The live Render2D-to-D3D9 bridge must explicitly resolve the title segment and
 all three `TS_BUTTON_L/M/R` texture handles. A missing mapping here does not
 break component generation, but it attaches null at draw time and hides the
 ornament. The main-menu smoke now samples the translucent middle away from the
-row text before and after hover; retail and BuffJesus runs produce deltas of
-354 and 355, and the complete subscreen interaction smoke passes the same
+row text before and after hover; the retail run produces a delta of
+354, and the complete subscreen interaction smoke passes the same
 check.
 
 The seven main-menu labels are independent now as well. The embedded component
@@ -174,7 +174,7 @@ atlas is 1280x3360: the left 640 pixels hold title-only frames, while the right
 half holds one transparent 640x480 text-child canvas per row. Render2D submits
 all seven row canvases after the live selected-button components. The retained
 640x3360 baked sheet remains the oracle, and overlaying the selected ornament,
-title frame, and seven row children reproduces every retail and BuffJesus frame
+title frame, and seven row children reproduces every retail frame
 pixel-identically. This is an intermediate runtime texture representation; the
 row children consume the decoded `CUIState` position and colour at draw time,
 but they do not yet use the retail streaming-font object.
@@ -460,7 +460,7 @@ their retail dispatch paths are recovered.
 | Slice | Current evidence | Code-parity status |
 |---|---|---|
 | Boot movies | Retail files, order, end-of-stream advance, and Escape skip are live | Recovered sequencing with a compatibility presentation seam |
-| Press-start and main menu | Retail definitions/assets; all 14 retail/BuffJesus frames recompose pixel-identically | Live component adapters; not whole-function byte parity |
+| Press-start and main menu | Retail definitions/assets; all 7 retail frames recompose pixel-identically | Live component adapters; not whole-function byte parity |
 | Options and detail frames | All eight frames recompose pixel-identically; Enter/mouse routes and Cancel/Apply/default behavior are smoke-gated | Several rows and controls still originate in component atlases |
 | Main/Options list state | Exact 0x24-byte `CUIState` layout, decoded state maps, wrapping, and old/new state changes | `InitialiseOffsets` is exact 57/57, `ScrollUp` is 834/834, and `ScrollDown` is 977/977; both scroll bodies are complete-symbol relocation matches |
 | Manager transitions/profile/save loading | Constructor/singleton/init layout, stack ownership, used-key lookup, transition fields, menu/title replacement, scoreboard profile round-trip, virtual-keyboard allocation, profile creation, component creation, button composition, profile-list refresh, press-start, load, draw, frame update, edit-box recursion, slider reset, delete-list paths, and the complete saved-game row-construction contract are recovered | Thirty manager bodies match complete retail symbols; the large saved-game refresh body and `RefreshAvailableProfiles` are now exact relocation-normalized reconstructions |
@@ -537,14 +537,9 @@ no-rule sheet plus those components recompose pixel-identically. Header text
 remains part of the authored flat-composition boundary until text components
 are emitted live.
 
-The build also embeds an explicitly non-parity `buff-jesus` text variant.
-`--buff-jesus` selects a second seven-frame sheet whose row offsets, ornament
-sizes, x=320 centers, retail font, title, animation, hitboxes, and actions are
-unchanged. Only the displayed main-menu strings differ. The no-argument path
-continues to use the retail-localized sheet. A normal `--buff-jesus` launch
-also follows the recovered Lionhead/Microsoft/intro boot-movie sequence before
-revealing that sheet; `--skip-boot-videos` is the explicit direct-frontend
-developer override.
+`--retail-video` follows the recovered Lionhead/Microsoft/intro boot-movie
+sequence before revealing the menu; `--skip-boot-videos` is the explicit
+direct-frontend developer override.
 `tools/render_fable_frontend_animation.py --theme coastal` stitches the four
 opaque and three sunbeam states selected by #685. `WM_LBUTTONUP` activates
 the screen; `WM_MOUSEMOVE` maps the stretched client back into the 640x480

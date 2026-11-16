@@ -140,23 +140,21 @@ From the repository root:
 powershell -ExecutionPolicy Bypass -File rebuild/build_bootstrap.ps1
 ```
 
-Then launch the retail-layout checkpoint with the optional BuffJesus text
-variant:
+Then launch the retail-layout checkpoint with the retail boot movies:
 
 ```powershell
-.\rebuild\build\bootstrap-Release\FableTLC-Reconstruction-VisualCheckpoint.exe --buff-jesus
+.\rebuild\build\bootstrap-Release\FableTLC-Reconstruction-VisualCheckpoint.exe --retail-video
 ```
 
 Useful switches:
 
 | Switch | Behavior |
 |---|---|
-| `--buff-jesus` | Changes main-menu strings while preserving retail geometry, actions, videos, and assets. |
 | `--skip-boot-videos` | Fast developer launch directly into the frontend. |
 | `--retail-video` | Exercises the recovered retail movie path. |
 | `--retail-video-upscaled` | Uses an explicitly generated local 2× video cache when available. |
 
-The normal BuffJesus path includes Lionhead, Microsoft, and `intro_comp`
+The `--retail-video` path includes the Lionhead, Microsoft, and `intro_comp`
 movies. Escape skips the current movie. Retail banks are read from the local
 game installation at build/runtime; they are not committed to this repository.
 

@@ -1,5 +1,8 @@
 # HANDOFF — resume here
 
+> Note (2026-11-16): the joke main-menu text variant these notes once named after the upstream author is called the
+> "alt-text" variant below (its flags written `--alt-text` / `-AltText`); it was removed from the build on 2026-11-16.
+
 ## 2026-08-29 — dual-lane continuation: StatueMaster state + UpdateLines gate
 
 - `mods/StatueMasterRestoration/WorldEventState.lua` now implements the five
@@ -958,11 +961,11 @@ green).*
 - Main-menu selection ornaments now use the same owned component bridge.
   Rows 1-6 reuse the 280-pixel `UI_BUTTON`; Continue Game owns a second
   three-child `UI_BUTTON_BIG` vector with the recovered 400-pixel span and
-  34-tile middle zoom. Both retail and BuffJesus component sheets exclude the
+  34-tile middle zoom. Both retail and alt-text component sheets exclude the
   ornament and recompose pixel-identically across all seven frames. Retail,
-  BuffJesus, complete subscreen, and maximized-scale smokes pass.
+  alt-text, complete subscreen, and maximized-scale smokes pass.
 - Main-menu row text is no longer flattened into the seven selection frames.
-  Retail and BuffJesus builds pack seven independent transparent row canvases;
+  Retail and alt-text builds pack seven independent transparent row canvases;
   the D3D9 Render2D queue submits each row after the live ornament and
   title-only frame. Recomposition remains pixel-identical for all 14 oracle
   frames, and both main-menu, complete subscreen, and maximized smokes pass.
@@ -998,13 +1001,13 @@ green).*
   from the installed `data\Sound\Frontend.lug`, embeds WAVE resources
   116-119, and uses asynchronous resource playback. A PE resource audit proved
   every embedded byte equals its extracted retail sample. The full VC7.1
-  build, retail subscreen smoke, BuffJesus menu smoke, and maximized-scale
+  build, retail subscreen smoke, alt-text menu smoke, and maximized-scale
   smoke pass.
 - The missing live selected-row ornament was traced to the D3D9 texture bridge,
   not the decoded assets or component geometry. `TS_BUTTON_L/M/R` and the
   title-rule segment were submitted as valid Render2D records but omitted from
   the adapter's texture-handle resolver, so null was attached at draw time.
-  All four bindings are now live. Release bootstrap, retail/BuffJesus main-menu
+  All four bindings are now live. Release bootstrap, retail/alt-text main-menu
   smokes, and the complete Options/detail/redefine/quit smoke pass; the smoke
   now requires an off-text highlight sample delta (354/355 in the two public
   variants).
@@ -1114,7 +1117,7 @@ green).*
   canonical percentage updater and its focused tests pass against the new
   expandable metrics block.
 - Build and launch from the repository root with
-  `.\rebuild\build\bootstrap-Release\FableTLC-Reconstruction-VisualCheckpoint.exe --buff-jesus`.
+  `.\rebuild\build\bootstrap-Release\FableTLC-Reconstruction-VisualCheckpoint.exe --alt-text`.
   This public path includes the Lionhead/Microsoft/intro sequence;
   `--skip-boot-videos` is only the fast developer override.
 - The initial Redefine viewport is now generated like retail. Action 60
@@ -1323,19 +1326,18 @@ green).*
 - `WM_MOUSEMOVE` maps the stretched client back into the 640x480 design view
   and applies the compiled button rectangles, so selection follows the mouse.
 - The faithful retail sheet remains the default. The build embeds a second
-  geometry-identical sheet selected only by `--buff-jesus`: Continue the
-  Gains, Summon BuffJesus, Sacred Settings, Gains for Windows - LIFT,
-  Disciples, About BuffJesus, and Skip Leg Day. The variant changes text only;
+  geometry-identical sheet selected only by `--alt-text`: seven joke
+  replacements of the retail row strings. The variant changes text only;
   retail assets, font metrics, row centers, actions, and hitboxes remain
-  shared. Plain `--buff-jesus` now plays the recovered Lionhead, Microsoft,
+  shared. Plain `--alt-text` now plays the recovered Lionhead, Microsoft,
   and intro movies before the variant frontend; `--skip-boot-videos` remains
   available for a direct developer launch. The focused
-  `smoke_visual_checkpoint.ps1 -BuffJesus -VerifyMainMenu` gate applies that
+  `smoke_visual_checkpoint.ps1 -AltText -VerifyMainMenu` gate applies that
   override internally and requires the alternate resource to be active.
-- The full Release build and both BuffJesus gates pass after that policy
-  change. A plain `--buff-jesus` runtime reaches
+- The full Release build and both alt-text gates pass after that policy
+  change. A plain `--alt-text` runtime reaches
   `Retail WMV Playing 1/3 - Lionhead`; the combined
-  `-BuffJesus -RetailVideo -Movie boot -VerifyBootToFrontend
+  `-AltText -RetailVideo -Movie boot -VerifyBootToFrontend
   -VerifyMainMenu -OriginalVideo` smoke skips through all three movies,
   verifies the post-movie frontend, enters the alternate main menu, and
   observes a distinct Quit-hover frame.
@@ -1495,12 +1497,12 @@ order:
    services with reconstructed retail owners in parallel with visible work.
 
 Latest alignment regression: focused Python tests, full VC7.1 Release
-bootstrap, and both retail/BuffJesus `-VerifySubscreens` runs pass. The
+bootstrap, and both retail/alt-text `-VerifySubscreens` runs pass. The
 stateful gate reports
 distinct main-menu/Options hover frames, all four distinct detail screens, and
 graceful Yes/action-296 exit zero. Main-menu clicks now re-resolve the row
 under the pointer instead of dispatching a stale prior hover selection.
-The separate BuffJesus main-menu smoke also passes while the default smoke
+The separate alt-text main-menu smoke also passes while the default smoke
 continues to report the retail frontend title.
 
 The former route-only checklist is complete:
@@ -6483,7 +6485,7 @@ build-from-user-copy is the legally-defensible pattern.
 
 ### Public recovery baseline + landscape relocation promotion (2026-07-22 19:04 MDT)
 
-- Initialized the workspace as Git repository `BuffJesus/FableDecomp`, committed 1,324 source,
+- Initialized the workspace as Git repository `FableDecomp`, committed 1,324 source,
   documentation, compact-oracle, and generated-report files as `cac16c0`, and pushed `main`.
   Original binaries/PDBs, Ghidra/BSim databases, local build products, multi-gigabyte XML exports,
   and raw agent logs remain excluded. Local and remote commit hashes were verified identical.
@@ -7236,7 +7238,7 @@ are drawn after the state-3 hover strip, preserving the complete retail slot
 textures underneath.
 
 `rebuild/smoke_visual_checkpoint.ps1 -VerifySubscreens` now proves hover,
-capture, and a real `Z` reassignment synchronously. Retail-text and BuffJesus
+capture, and a real `Z` reassignment synchronously. Retail-text and alt-text
 full smokes pass, as does the complete VC7.1 Release bootstrap gate. The latest
 focused Python suite is 30 tests with `ResourceWarning` promoted to an error.
 The reconciled manifest contains 49,568 named function boundaries, 49,525
@@ -7303,10 +7305,10 @@ Validation for this checkpoint:
 
 - 31 focused Python tests PASS with `ResourceWarning` treated as an error;
 - a fresh Release build and every VC7.1 behavior executable PASS;
-- retail and BuffJesus `-VerifySubscreens` smokes PASS, including hover,
+- retail and alt-text `-VerifySubscreens` smokes PASS, including hover,
   Gameplay Cancel/Apply/Defaults, Video, Audio, Redefine capture, Back, Quit
   No, and action 296 Quit Yes;
-- the end-to-end BuffJesus retail-boot handoff reaches its humorous menu with
+- the end-to-end alt-text retail-boot handoff reaches its humorous menu with
   the DirectShow child released.
 
 The scheduled canonical refresh that started at `2026-07-27 21:10:10` with
@@ -7431,7 +7433,7 @@ states 3 and 4 have the same `(120,0)` position, full alpha, and update time
 0.2-second hidden state 2 is a separate transition. The selected-button table
 is the moving visual during Up/Down.
 
-The full Release bootstrap passes, retail and BuffJesus menu recomposition is
+The full Release bootstrap passes, retail and alt-text menu recomposition is
 pixel-identical across all 14 frames, the complete subscreen smoke exercises
 Options Down/Up, and the maximized smoke passes at 2560x1369 with scale error
 8.56. These runtime adapters are authored integration with behavior and data
@@ -7457,7 +7459,7 @@ selection, and submits each row using its current position and packed colour.
 
 The complete Release build and VC7.1 behavior gates pass. The subscreen smoke
 reaches and mutates every Options destination after Down/Up navigation, the
-BuffJesus main-menu smoke passes, and maximized 2560x1369 scaling remains at
+alt-text main-menu smoke passes, and maximized 2560x1369 scaling remains at
 error 8.56. The next frontend slice is Enter/controller activation through the
 recovered action dispatcher, followed by remaining detail-row extraction.
 
@@ -7473,7 +7475,7 @@ consumed before frontend activation.
 
 The full VC7.1 build passes. The complete subscreen smoke now uses Enter for
 press-start, main-menu Options entry, and all four Options destinations; its
-retail result reports `keys=enter-up-wrap-down`. The BuffJesus variant reports
+retail result reports `keys=enter-up-wrap-down`. The alt-text variant reports
 the same input proof, and maximized scaling remains green. This does not claim
 the retail controller polling/update path or the unimplemented Continue and
 LIVE-aware actions. Profile, Credits, and About routing have newer verified
@@ -12245,7 +12247,7 @@ with the non-semantic categories excluded.
 - **2026-10-25 fleet rule (owner, updated):** family passes (agent950 landed 613/613; agent951 pass 2 landed 576/604; agent952 = pass 3, 94 families, 602 rows) run with 2 chunk authoring agents; landed-errors sweep 3 starts when the next chunk lands and takes that chunk agent's slot (not replaced). Open decisions are delegated: "whatever is consistent and accurate to retail".
 - **2026-10-15, wave 25 (read first):** the session runs as Fable 5.1 with Opus 5.5 authoring agents; the owner's current fleet rule is **2 Opus authoring agents at medium effort, no Fable sub-agents** (owner, 2026-10-15: agents in flight finish as they are, freed slots above the cap are not refilled, later launches pass `effort: medium`; the Fable 5.1 main session lands, retries parked rows, authors ledger pieces and keeps the docs); the developer-voice comment pass (brief and tools in `$S/w22/comments/`, owner wants comments written as the original Fable developers would) is **paused** after 59 files of `rebuild/src/compiled/00/40/` were rewritten and applied (resume from `DONE.txt`; `codeeq.py` + the catalog-backed grader check every file before it is copied in), launching a prepared chunk only when a report arrives (never above the cap). Landed this wave: chunks 58, 61–324 (owner: no further chunk launches after 324), ledger chunks 901–910, boundary chunks 911–915 (cut from the mis-cut skipped rows; 911 landed 32/33, 912 33/33, 913 30/33, 914 29/33, 915 33/33; recovered starts enter the manifest via crawl/manifest_add_boundaries.py), retry batches 1–10z, 11a, 11b, advisor a1–a20, b1–b99, the ChatGPT external chunks 960–962 (61 of 120 rows, regraded and tested here, plus 7 of its parks recovered in b99 and b103), b100–b109, the ChatGPT external chunks 963–965 (51 of 120, regraded and tested here), 966–968 (54 of 120, regraded and tested here, plus 4 parks recovered in `_external966_nm`; 969–971 from Codex (107 of 174 incl. 14 retries, regraded and tested here)), the int3-after-noreturn rows (7) and 10b1–10b39, 10c1–10c3, 10d1–10d7, the Codex review landing (503 rows) and the held-row rework (47 rows); catalog **46836 (94.5%)**. **Codex update reviewed and landed 2026-10-19** (see the Codex paragraph below); the owner's current rule (2026-10-20, late) is **paused** (owner, 2026-10-21: no agents running after chunks 242 and 243 landed; retry 10 stopped; chunk 244 is cut and briefed at `$S/w22/agent244/PROMPT.md`, launch it to resume), landed in the main session in batches; chunk 189 was re-authored by Codex (its batch records are under `batches/2026-10-1[78]_*`), chunks 190–192 are prepared but their row lists must be re-cut against the new catalog (`mkchunk.py 190 3 161 240`) (the 97–160-byte pool is fully cut; 180 onward come from the 161–240-byte band, about 1,540 rows) (the 161–240 and 241–320 bands are fully cut; chunks 239–256 came from the 241–400-byte band (spent); chunks 257–275 came from 241–512 (spent); chunks 276–311 came from 241–1024 (spent 2026-10-23); chunk 312 onward come from 241–2048, `mkchunk.py N 1 241 2048` (reads families2048.json from `famscan.py 2048` with FAMOUT), about 700 rows left; briefs with `mkprompt25.py`). Each finished agent: `stage_pending.sh agentNN <batch>` then `land_pending.sh <batch>`; `queue_status.py` regenerates `docs/pipeline/FABLE_LANDING_QUEUE.md`. Relocation-conflict cleanup finished 2026-10-23 (3,855 files renamed, one symbol per retail address; leftovers by policy in GOTCHAS). Open: ~1,040 parked rows (`pending/<batch>/differ/`, all formulation gaps: none change under the retail compiler; retry 10 in `$S/w22/retry10` works through all of them; 377 landed in six batches (retry10a–f), 855 rows never worked individually (`$S/w22/retry10/s7/unworked.txt`); **stopped by the owner 2026-10-20** after segment 7, resume point is the RESUME line of its NOTES.md), the ledger's 2 ltcg + 2 cold rows and the two asm-rounding RenderPrimitive bodies (chunk 902 differ), the "Review at landing" items in each batch LESSONS.md (wrong propagated labels on landed files, local models beside PDB-offset headers). After a pause prime Wine once; relaunched agents resume from PROGRESS.md.
 - 2026-10-13: branch `FullDecomp` carries the typed-header lane (head `8d6ce97c` + this session). A Linux cloud session stood up a VC7.1 verification lane under Wine (`tools/decomp_pipeline/linux_lane/`, `docs/BUILDING.md`) and landed, byte-exact (MATCH/RELOCATION_MATCH + PASS), 118/122 hand-authored candidates (`rebuild/candidates/manual/batches/2026-10-13_linux_b1..b4/`), 58/71 of compile-as-you-go batch 5 (`_b5/`), the 179-row CCharString-literal family (`_b6n/`) and **2,800 rows from 67 shape families** (`_f<N>/`) and **5,028 more from 240 families of the 128/256/512-byte rescans** (`_g<N>/`: counted pointers, red-black tree internals, STL copy/destroy loops, EH-framed shells with `/EHsc`, adjustor thunks, interface lookups, static cos/sin initialisers, unrolled `find`, `fill_n`, removal helpers, the 590 script-module counted-pointer factories, VC6-era tree insert/_Insert, vector `push_back`/`_Uninit_fill_n` variants, persist binary reads, aggregate destructors, recursive tree frees, VC6-era tree copy/assignment, list clear/move of counted pointers, recursive tree frees, VC6-era tree copy/assignment, list clear/move of counted pointers, hashed-name constructors, SGI sort/copy instantiations, Dinkumware fill/uninit-copy/destroy loops, STLport insertion sort, combat-action and copy constructors, persist transfer hooks, the CGameScriptInterface script entry points over a by-value CScriptThing, generated by `tools/decomp_pipeline/families/`: factories, ctor/dtor shells, Clone, retail STL node ctors, persist hooks, static initialisers, small virtual getters/setters). Then (wave 23, 2026-10-14) **338 hand-authored EH-framed bodies** in 32 compiler-in-the-loop passes (`_eh1..32/`: scoped-lock queries, factories, container constructors/destructors, class arrays, COM slot calls, critical-section holders, the "null-object warning" family, novtable chains) with **533 unwind funclets** (`_funclets7..37/`), and **2,029 rows from 60 hand-authoring chunks** (`_hand00..60/`: the class-labelled 17–96-byte pool, 40 functions per agent, `$S/w22/BRIEF.md`; the user has since limited delegation to at most one agent, used rarely). Catalog: 18,631 → **29,732 byte-exact entries (60.0% of 49,568)**. DIFFERs are ledgered in `crawl/gen_tried.txt`; three open shapes (F15/F73/F148) are in `docs/journal/FINDINGS_LOG.md`. Notes: `docs/journal/2026-10/LINUX_CONTAINER_LANE_2026-10-13.md`; codegen rules in `docs/pipeline/GOTCHAS.md`. The compile-gate ledger (`rebuild/compile-gate/vc71-compiled.tsv`, `retail-parity.tsv`) and therefore `status.json`/README counts are only rewritten by the canonical refresh (`tools/bootstrap_rebuild_tree.py` on the Windows box): run it next to count these rows.
-- Branch: `feat/script-recovery-marathon` (head `2e038aa`, clean tree, `main` == this head); `main` was fast-forwarded (519 commits) and pushed to `BuffJesus/FableDecomp` on 2026-09-07 — fast-forward it again after each checkpoint. Note: `git add` on this tree takes 1–6 minutes and HANGS if another process is writing under `rebuild/` (or a reserved-name file like `CON` exists); never run it concurrently with the header generator or retype.
+- Branch: `feat/script-recovery-marathon` (head `2e038aa`, clean tree, `main` == this head); `main` was fast-forwarded (519 commits) and pushed to the public repository on 2026-09-07 — fast-forward it again after each checkpoint. Note: `git add` on this tree takes 1–6 minutes and HANGS if another process is writing under `rebuild/` (or a reserved-name file like `CON` exists); never run it concurrently with the header generator or retype.
 - 22 old agent branches are now `archive/*` tags. Root scratch + `CON` removed. `LICENSE`, `CONTRIBUTING.md`, CI `docs-consistency` added.
 - Coverage (2026-08-28 dashboard): 8,082 byte-identical (16.3%), 18,579 functional-or-matching (37.5%) of 49,568; catalog is now 18,631 landed. Regenerate `rebuild/COVERAGE.md` before quoting numbers.
 
