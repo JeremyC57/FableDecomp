@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00b625e0   WARN RELOC_NAME: ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z -> 009ade10 labelled 'CDefinitionManager::GetPDefFromGlobalIndex'
+00b625e0   RELOCATION_MATCH PASS   CEngineSkyRenderer
+004075c0   RELOCATION_MATCH PASS   RenderUIBackground
+0040bca0   WARN RELOC_NAME: ??$TransferVector@VCActionInputControl@@@CPersistContext@@QAEXPBDAAV?$vector@VCActionInputControl@@V?$allocator@VCActionInputControl@@@std@@@std@@@Z -> 00412db0 labelled 'CPersistContext::Transfer<CActionInputControl>'
+0040bca0   WARN RELOC_NAME: ??$TransferVector@W4ETutorialCategory@@@CPersistContext@@QAEXPBDAAV?$vector@W4ETutorialCategory@@V?$allocator@W4ETutorialCategory@@@std@@@std@@@Z -> 00412e80 labelled 'CPersistContext::Transfer<ETutorialCategory>'
+0040bca0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+0040bca0   RELOCATION_MATCH PASS   LoadGameState
+00542780   RELOCATION_MATCH PASS   AddIcon
+007dda30   RELOCATION_MATCH PASS   QueueSwoop
+
+WINS: 5
+  00b625e0 RELOCATION_MATCH CEngineSkyRenderer::??0CEngineSkyRenderer@@QAE@ABVCEngineInit@@@Z
+  004075c0 RELOCATION_MATCH CUserProfileManager::?RenderUIBackground@CUserProfileManager@@QAEXM@Z
+  0040bca0 RELOCATION_MATCH CUserProfileManager::?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z
+  00542780 RELOCATION_MATCH NUISystem::CIconText::?AddIcon@CIconText@NUISystem@@UAEXJJW4EIconFlags@2@@Z
+  007dda30 RELOCATION_MATCH CTCCreatureFlyInCircles::?QueueSwoop@CTCCreatureFlyInCircles@@QAEXABVCThingCreatureBase@@ABVC3DVector@@11@Z

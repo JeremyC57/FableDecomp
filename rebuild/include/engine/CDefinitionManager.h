@@ -229,6 +229,25 @@ template<class T> bool CDefinitionManager::GetDef(const CCharString& type_name, 
 #pragma auto_inline(on)
 #endif
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_INDEX_INLINE
+// Opt-in (w24B, row 0x00B625E0 CEngineSkyRenderer::CEngineSkyRenderer): the by-class-index lookup
+// ??$GetDef@VCSkyDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCSkyDef@@@@@Z (FableWin.pdb 0x02D46A60 only) EXPANDED
+// in the caller (no CSkyDef instance in Ego_r.pdb): the constructor calls GetPDefFromClassIndex 0x009ADE10 itself at 0x00B62F7A and
+// assigns the handle in line (0x00B62F7F..0x00B62FB6, re-reading the temporary after the release = SetDynamicCast, FableWin.pdb
+// ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCSkyDef@@@@QAEX..@Z). The text is the ..._GETDEF_INDEX_BODY body with
+// SetDynamicCast on a hit, left to the inliner. Do not combine with ..._GETDEF_INDEX_BODY / ..._PASS22_GETDEF_INDEX_BODY.
+template<class T> inline bool CDefinitionManager::GetDef(const CCharString& type_name, long index, CDefPointer<const T>* out) const
+{
+    if (index <= 0)
+        return false;
+    CDefPointer<const CDefClassBase> def = GetPDefFromClassIndex(type_name, index);
+    if (!def.IsNull()) {
+        out->SetDynamicCast(def);
+        return true;
+    }
+    return false;
+}
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_PASS22_GETDEF_INDEX_BODY
 // Retail opt-in (Codex pass 22, 0x006B16B0): the genuine called GetDef<CSoundThemeDef> 0x006B25E0
 // uses SetDynamicCast with a reread of the source after releasing the old output. Its 113-byte body is

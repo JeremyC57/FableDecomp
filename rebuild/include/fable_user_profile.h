@@ -33,6 +33,12 @@ enum ETutorialCategory { };
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PCLASS
 #include "engine/CCountedPointer.h"
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_RENDERUIBACKGROUND
+class CTexture;
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_LOADGAMESTATE
+class CAFile;
+#endif
 class CConfigOptionsDefaultsDef;                                         // chunk 719: GetConfigOptionsDefaultsDef's def type
 template <class T> class CDefPointer;                                    // engine/CDefPointer.h (by-value return: complete at the definition)
 class CUserProfileManager : public CBaseClassNonCopyable, public CDeviceResetCallback
@@ -86,6 +92,21 @@ protected:
     void SaveGameState(CAFile&); // Ego_r/FableWin IAEXAAVCAFile@@@Z,00409FD0
 #endif
     void ApplyVideoValues(); // Ego_r/FableWin IAEXXZ, retail0040A7F0
+public:
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_RENDERUIBACKGROUND
+    // Nested opt-in (w24B, row 0x004075C0; rebased from chunk 733): Ego_r.pdb / FableWin.pdb ?RenderUIBackground@CUserProfileManager@@QAEXM@Z
+    // (public) and the captured back-buffer texture it draws, Ego_r.pdb PBackBufferTexture (retail +0x138: `mov eax,[ecx+138h]` at
+    // 0x00407A2B; the landed CaptureBackBufferForUIBackground 0x00406CC0 writes the same word). Not the name of the
+    // engine/CUserProfileManager.h declaration-only opt-in (..._UIBACKGROUND), which landed rows define. Layout unchanged (the word is carved out of the opaque tail).
+    void RenderUIBackground(float alpha);                                // 0x004075C0
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_LOADGAMESTATE
+    // Nested opt-in (w24B, row 0x0040BCA0; rebased from chunk 733): Ego_r.pdb / FableWin.pdb
+    // ?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z (protected, like SaveGameState 0x00409FD0). Declaration only; the row also
+    // needs ..._VIDEODEFAULTS + ..._PASS22_DEFAULTS + ..._PASS22_STATE (the typed containers and the clamps).
+protected:
+    void LoadGameState(CAFile& file);                                    // 0x0040BCA0
 public:
 #endif
     void SetDefaultValues();                                             // 0x0040C790 (Ego_r / FableWin ?SetDefaultValues@CUserProfileManager@@QAEXXZ)
@@ -216,9 +237,21 @@ private:
 #endif
     long ScoreBoardProxyPort; // Ego_r+0x120 minus4, retail+0x11c
     long ScoreBoardServerPort; // retail+0x120
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_RENDERUIBACKGROUND
+    unsigned char _pad_defaults_124[0x138-0x124];
+    CTexture*     PBackBufferTexture;                                    // +0x138
+    unsigned char _pad_defaults_13c[0x140-0x13c];
+#else
     unsigned char _pad_defaults_124[0x140-0x124];
+#endif
+#else
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_RENDERUIBACKGROUND
+    unsigned char _pad_0x100[0x138 - 0x100];                             // +0x100 MeshDetailNewProfile .. (opaque)
+    CTexture*     PBackBufferTexture;                                    // +0x138
+    unsigned char _pad_0x13c[0x140 - 0x13c];                             // VideoChangesAccepted (opaque)
 #else
     unsigned char _pad_0x100[0x140 - 0x100];                             // +0x100 MeshDetailNewProfile .. (opaque)
+#endif
 #endif
 public:
     static void CheckRetailLayout() {

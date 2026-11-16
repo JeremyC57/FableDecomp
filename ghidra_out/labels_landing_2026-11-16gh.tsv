@@ -1,0 +1,6 @@
+address	name	evidence
+0x00B625E0	??0CEngineSkyRenderer@@QAE@ABVCEngineInit@@@Z	landing gh (2026-11-16, w24B): RELOCATION_MATCH + test PASS, strict headers; Leaf from the source
+0x004075C0	?RenderUIBackground@CUserProfileManager@@QAEXM@Z	landing gh (2026-11-16, w24B): RELOCATION_MATCH + test PASS, strict headers; Leaf from the source
+0x0040BCA0	?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z	landing gh (2026-11-16, w24B): RELOCATION_MATCH + test PASS, strict headers; Leaf from the source
+0x00542780	?AddIcon@CIconText@NUISystem@@UAEXJJW4EIconFlags@2@@Z	landing gh (2026-11-16, w24B): RELOCATION_MATCH + test PASS, strict headers; Leaf from the source
+0x007DDA30	?QueueSwoop@CTCCreatureFlyInCircles@@QAEXABVCThingCreatureBase@@ABVC3DVector@@11@Z	landing gh (2026-11-16, w24B): RELOCATION_MATCH + test PASS, strict headers; Leaf from the source

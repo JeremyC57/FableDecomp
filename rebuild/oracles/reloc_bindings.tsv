@@ -41345,3 +41345,11 @@ _mip	0139a838	00b70230
 ?TransferBinaryOut@CExpressionSet@@QBEXAAVCDataOutputStream@@@Z	0086f590	00675e20
 ?TransferBinaryOut@CWoundMorphs@@QBEXAAVCDataOutputStream@@@Z	00757500	00675e20
 ?IsInLoveWithHero@CTCWife@@QBE_NXZ	006cf900	0064bfba
+?BuildBuffers@CEngineSkyRenderer@@AAEXXZ	00b620a0	00b625e0
+?$S1@?1??RenderUIBackground@CUserProfileManager@@QAEXM@Z@4IA	013b7d48	004075c0
+?noFilterBrightness@?1??RenderUIBackground@CUserProfileManager@@QAEXM@Z@4MA	013b7d2c	004075c0
+?noFilterColour@?1??RenderUIBackground@CUserProfileManager@@QAEXM@Z@4VC4DVector@@A	013b7d38	004075c0
+?noFilterContrast@?1??RenderUIBackground@CUserProfileManager@@QAEXM@Z@4MA	013b7d30	004075c0
+?noFilterSaturation@?1??RenderUIBackground@CUserProfileManager@@QAEXM@Z@4MA	013b7d34	004075c0
+?ClampResolution@CUserProfileManager@@AAEXAAKJ@Z	00406d90	0040bca0
+?push_back@?$vector@UCEmbeddedIcon@CIconText@NUISystem@@V?$allocator@UCEmbeddedIcon@CIconText@NUISystem@@@std@@@std@@QAEXABUCEmbeddedIcon@CIconText@NUISystem@@@Z	00543c90	00542780

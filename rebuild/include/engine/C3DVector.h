@@ -180,6 +180,11 @@ public:
 #else
 #ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector((X-other.X),(Y-other.Y),Z-other.Z);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_SUBTRACT_X_GROUP)
+    // Retail opt-in (w24B, row 0x007DDA30 CTCCreatureFlyInCircles::QueueSwoop; chunk Q6 lesson 4): the X difference alone grouped. Same
+    // value and same instructions; one no-code PAREN tuple. With FABLE_RETAIL_C3DVECTOR_MAGNITUDE_NAMED_SQUARED it puts the clear()'s `push 0` between the second magnitude's
+    // `fld st(4)` and `fmul st(5)` (0x007DDB16); with the default parenthesised GetSquaredMagnitude it lands one instruction early, ungrouped one late, XY-grouped three early.
+    FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector((X-other.X),Y-other.Y,Z-other.Z);}
 #else
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector(X-other.X,Y-other.Y,Z-other.Z);}
 #endif

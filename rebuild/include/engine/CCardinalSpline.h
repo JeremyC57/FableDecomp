@@ -23,6 +23,20 @@ public:
  // agentC37 (row 0x0075D580): Ego_r.pdb 0x00BAE530 ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z (retail 0x00A567A0). Declaration only.
  void GetSplinePosition(C3DVector& position,float t)const;            // 0x00A567A0
 #endif
+#ifdef FABLE_RETAIL_CCARDINALSPLINE_APPENDCONTROLPOINT
+ // Retail opt-in (w24B, row 0x007DDA30 CTCCreatureFlyInCircles::QueueSwoop): FableWin.pdb ?DeleteAllControlPoints@CCardinalSpline@@QAEXXZ
+ // (debug COMDAT 0x027636F0, first used by QueueSwoop 0x027633E0) and Ego_r.pdb / FableWin.pdb ?AppendControlPoint@CCardinalSpline@@QAEJABVC3DVector@@@Z
+ // (retail's unreferenced out-of-line copy 0x0075F980, landed: push_back then `size() - 1`), both expanded in QueueSwoop: the clear
+ // is ControlPoints.erase(begin, end) through the random-access __copy 0x0074CA20 (0x007DDB37..0x007DDB4C), each append the inline
+ // push_back with the _M_insert_overflow 0x0066E370 call (0x007DDB6E..0x007DDBA4 and twice more). Bodies only: no layout change.
+ void DeleteAllControlPoints(){ControlPoints.clear();}
+#ifdef FABLE_RETAIL_CCARDINALSPLINE_APPENDCONTROLPOINT_FORCEINLINE
+ // Per-TU inline opt-in (same row): QueueSwoop expands all three AppendControlPoint calls in place past VC7.1's caller-size inline
+ // budget, which calls a plain-inline copy (502v642).
+ FABLE_FORCEINLINE
+#endif
+ long AppendControlPoint(const C3DVector& point){ControlPoints.push_back(point);return ControlPoints.size()-1;}
+#endif
 private:
  CArray<C3DVector> ControlPoints;float Tension;bool EndPointsConnected;
 };

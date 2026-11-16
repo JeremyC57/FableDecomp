@@ -397457,6 +397457,42 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0064bfba_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b625e0'
+        Module = 'CEngineSkyRenderer'
+        Source = '00/b6/CEngineSkyRenderer_CEngineSkyRenderer_00b625e0.cpp'
+        TestSource = '00/b6/CEngineSkyRenderer_CEngineSkyRenderer_00b625e0_test.cpp'
+        PassPattern = '00b625e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004075c0'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_RenderUIBackground_004075c0.cpp'
+        TestSource = '00/40/CUserProfileManager_RenderUIBackground_004075c0_test.cpp'
+        PassPattern = '004075c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0040bca0'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_LoadGameState_0040bca0.cpp'
+        TestSource = '00/40/CUserProfileManager_LoadGameState_0040bca0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0040bca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00542780'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_AddIcon_00542780.cpp'
+        TestSource = '00/54/NUISystemCIconText_AddIcon_00542780_test.cpp'
+        PassPattern = '00542780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dda30'
+        Module = 'CTCCreatureFlyInCircles'
+        Source = '00/7d/CTCCreatureFlyInCircles_QueueSwoop_007dda30.cpp'
+        TestSource = '00/7d/CTCCreatureFlyInCircles_QueueSwoop_007dda30_test.cpp'
+        PassPattern = '007dda30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

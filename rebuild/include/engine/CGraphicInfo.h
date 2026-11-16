@@ -378,5 +378,17 @@ inline const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) co
     return index < GraphicList.size() ? &GraphicList[index] : 0;
 }
 #endif
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_PEEKGRAPHICINFOFRAME
+// Retail opt-in (w24B, row 0x00542780 NUISystem::CIconText::AddIcon): FableWin.pdb
+// ?PeekGraphicInfoFrame@CGraphicDataBank@@QBEPBVCGraphicInfoFrame@@KK@Z, inline in retail: 0x00542802..0x00542857 evaluates PeekGraphic
+// twice (the GraphicList size computed for the test and again for the value: `cmp esi,eax ; jae` then `cmp esi,ecx ; sbb eax,eax ;
+// and eax,edi`) and reads Frames +0x28 of the element (frame 0), else 0. The text the landed 0x00B64550 / 0x00BADB40 rows carry in-row.
+// Needs FABLE_RETAIL_CGRAPHICDATABANK_PEEKGRAPHIC (the inline PeekGraphic above). No layout change.
+// FABLE_FORCEINLINE as the landed rows spell it: plain `inline` leaves it called in AddIcon (604v682).
+FABLE_FORCEINLINE const CGraphicInfoFrame* CGraphicDataBank::PeekGraphicInfoFrame(unsigned long graphic, unsigned long frame) const
+{
+    return PeekGraphic(graphic) ? PeekGraphic(graphic)->PeekInfoFrame(frame) : 0;
+}
+#endif
 #endif
 #endif
