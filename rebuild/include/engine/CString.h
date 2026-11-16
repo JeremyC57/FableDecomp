@@ -65,7 +65,7 @@ public:
 #ifdef FABLE_RETAIL_CSTRING_ALLOCCOPY
     // Chunk 767 (row 0x00C0BF90): MFC strcore.cpp AllocCopy / AllocBuffer / Init, the spellings Mid 0x00C0DF50, Right 0x00C0E0F0 and
     // Left 0x00C0E1F0 bind (?AllocCopy@CString@@QBEXAAV1@HHH@Z, ?AllocBuffer@CString@@QAEXH@Z 0x00C0BDA0). Init() is inline in retail:
-    // `m_pchData = _afxPchNil` (the nil characters 0x0139C900; the spelling 40 landed rows bind, naming decision D4 still HOLD).
+    // `m_pchData = _afxPchNil` (the nil characters 0x0139C900; the one spelling every landed row binds; wave 25 D4 resolved 2026-11-16, naming/2026-11-16_decisions/).
     void AllocCopy(CString& dest, int nCopyLen, int nCopyIndex, int nExtraLen) const;   // 0x00C0BF90
     void AllocBuffer(int nLen);                              // 0x00C0BDA0
     void Init();

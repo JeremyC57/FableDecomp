@@ -50,8 +50,8 @@ and 40 rows already used. Before, about ten junk spellings were bound there (g_p
 Wave 25's decision D4 (2026-11-01) held that family because no retail name exists for the address. The coordinator lands the
 consolidation anyway, under the later owner rule (2026-11-10): where no original name exists, one consistent name per address
 everywhere. MFC's own name for the CString nil pointer, already in the shared header, is the most accurate one available.
-One other spelling is still bound: `?g_logBuffer_0139c900@@3PAXA` in 0x00C13620. If the owner prefers the HOLD, these 126
-respellings revert as one set, and the rows stay byte-identical either way.
+One other spelling is still bound: `?g_logBuffer_0139c900@@3PAXA` in 0x00C13620. The owner left the call to the coordinator ("You can decide as the expert"). It is settled in
+`naming/2026-11-16_decisions/D4_0139C900.md`: `_afxPchNil` everywhere, and the last six rows were respelled after this landing.
 
 ## Open (NOTES.md)
 - 0x00B6D510 keeps its landed `#define CPixelFormat CPixelFormatLayout` wrapper and the wrong 0x01436E98 binder.
