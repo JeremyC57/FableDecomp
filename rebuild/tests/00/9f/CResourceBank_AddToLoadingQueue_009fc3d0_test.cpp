@@ -86,13 +86,13 @@ static bool Order(CResourceList& l, CResource** want, int n)
 
 class CResourceBank { public:
     CResourceList ResourceList; CResourceList LoadingQueue;
-    void AddResourceToLoadingQueue(CResource* resource) { LoadingQueue.AddResource(resource); }
+    void AddToLoadingQueue(CResource& resource) { LoadingQueue.AddResource(&resource); }
 };
 
 int main()
 {
     CResourceBank bank; CResource a, b; a.ResourceSize = 3; b.ResourceSize = 9; bank.LoadingQueue.CurrentFrame = 4;
-    bank.AddResourceToLoadingQueue(&a); bank.AddResourceToLoadingQueue(&b);
+    bank.AddToLoadingQueue(a); bank.AddToLoadingQueue(b);
     CResource* want[2] = { &a, &b };
     if (!Order(bank.LoadingQueue, want, 2) || bank.LoadingQueue.ResourceCount != 2 || bank.LoadingQueue.AllocatedMemory != 12
         || b.ResourceList != &bank.LoadingQueue || b.LastUsedFrame != 4 || bank.ResourceList.ResourceCount

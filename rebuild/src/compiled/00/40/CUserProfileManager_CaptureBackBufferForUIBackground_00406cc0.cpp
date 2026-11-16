@@ -5,7 +5,8 @@
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00406CC0, length 204 bytes (208 with padding).
 // Callees: CEngine::Enable3DSceneRendering(bool) (CEngine slot 76, +0x130) and Enable2DSceneRendering(bool) (slot 78,
-// +0x138) on the display engine's Engine3D, CDisplayEngine::DoRender(CInterpolationInfo*, bool, bool) @ 0x00435F70,
+// +0x138) on the display engine's Engine3D, CDisplayEngine::Render(const CInterpolationInfo*, bool, bool) @ 0x00435F70 (public; respelled
+//   2026-11-16 from DoRender, which is the protected body at 0x00435530 -- see the landed 0x00435F70 row),
 // CDisplayManager::CopyBackBufferToTexture @ 0x009BF5E0. Globals: the enable flag @ 0x013750A7 (descriptive name),
 // CMainGameComponent::Get() @ 0x013B86A0, the display manager @ 0x013B8390.
 // Layout (Ego_r.pdb): CMainGameComponent PDisplayEngine +0x28, LastInterpolationInfo (0x34 bytes) +0x70; CDisplayEngine
@@ -29,7 +30,7 @@ class CEngine { public:
 class CDisplayEngine { public:
     unsigned char _pad00[0x2c];
     CEngine*      Engine3D;                                 // +0x2c
-    void DoRender(CInterpolationInfo* info, bool a, bool b);   // 0x00435F70
+    void Render(const CInterpolationInfo* info, bool world_updated, bool render);   // 0x00435F70 ?Render@CDisplayEngine@@QAEXPBVCInterpolationInfo@@_N1@Z
 };
 class CMainGameComponent {
 protected:
@@ -60,8 +61,8 @@ void CUserProfileManager::CaptureBackBufferForUIBackground()
         CMainGameComponent::Get()->PDisplayEngine->Engine3D->Enable3DSceneRendering(true);
         CMainGameComponent::Get()->PDisplayEngine->Engine3D->Enable2DSceneRendering(false);
         CInterpolationInfo info = CMainGameComponent::Get()->LastInterpolationInfo;
-        CMainGameComponent::Get()->PDisplayEngine->DoRender(&info, false, false);
-        CMainGameComponent::Get()->PDisplayEngine->DoRender(&info, false, false);
+        CMainGameComponent::Get()->PDisplayEngine->Render(&info, false, false);
+        CMainGameComponent::Get()->PDisplayEngine->Render(&info, false, false);
         CMainGameComponent::Get()->PDisplayEngine->Engine3D->Enable3DSceneRendering(false);
         CMainGameComponent::Get()->PDisplayEngine->Engine3D->Enable2DSceneRendering(true);
         PBackBufferTexture = GPDisplayManager->CopyBackBufferToTexture();

@@ -1,26 +1,27 @@
 #pragma optimize("s",on)
-// CTCUndeadSoul::CTCUndeadSoul(CEngineInternalPrimitive2DClockSprite*) -- base CEngineSubPrimitive2DClockSprite(argument) then this class's vtable
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D2DDB, oracle length 24 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push dword ptr [esp+8] ; mov esi,ecx ; call CEngineSubPrimitive2DClockSprite::CEngineSubPrimitive2DClockSprite ; mov dword ptr [esi],offset CTCUndeadSoul::`vftable' ; mov eax,esi ; pop esi ; ret 4
-// One-argument constructor of a polymorphic class that only forwards the argument to its base
-// constructor @ 0x00686800; the compiler then stores this class's vtable (0x0123A364, named
-// through rtti-vtables.tsv) and returns `this`. One of 68 bodies of this shape.
-class CEngineInternalPrimitive2DClockSprite;
+// CTCUndeadSoul::CTCUndeadSoul(CThing& thing) -- construct the undead-soul thing component: the CTCBase part for the owner thing, then
+// this class's vtable
+// Leaf: ??0CTCUndeadSoul@@QAE@AAVCThing@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004D2DDB, 24 bytes: push esi ; push [esp+8] ; mov esi,ecx ; call CTCBase::CTCBase 0x00686800 ;
+//   mov [esi],offset CTCUndeadSoul::`vftable' (0x0123A364) ; mov eax,esi ; pop esi ; ret 4.
+// Identity: FableWin.pdb ??0CTCUndeadSoul@@QAE@AAVCThing@@@Z; Ego_r.pdb ?Alloc@CTCUndeadSoul@@SIPAVCTCBase@@AAVCThing@@@Z (the registry
+//   factory that news one from a CThing&) and the overrides GetInterfaceType / GetClassTypeName / HasFrameUpdate / FrameUpdate
+//   (0x00743990). The base call is CTCBase::CTCBase(CThing&) 0x00686800 (??0CTCBase@@QAE@AAVCThing@@@Z).
+// (Landed earlier as one of 68 generated bodies of this shape with a made-up CEngineSubPrimitive2DClockSprite base and a pointer
+//   argument; re-authored 2026-11-16 on the shared engine/CTCBase.h.)
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-struct CEngineSubPrimitive2DClockSprite {
-    virtual void v00();
-    CEngineSubPrimitive2DClockSprite(CEngineInternalPrimitive2DClockSprite* argument);            // 0x00686800
+class CTCUndeadSoul : public CTCBase {
+public:
+    CTCUndeadSoul(CThing& thing);
+    virtual bool HasFrameUpdate() const;
+    virtual void FrameUpdate();                                          // 0x00743990
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
 };
 
-struct CTCUndeadSoul : CEngineSubPrimitive2DClockSprite {
-    virtual void v00();
-    CTCUndeadSoul(CEngineInternalPrimitive2DClockSprite* argument);
-};
-
-CTCUndeadSoul::CTCUndeadSoul(CEngineInternalPrimitive2DClockSprite* argument)
-    : CEngineSubPrimitive2DClockSprite(argument)
+CTCUndeadSoul::CTCUndeadSoul(CThing& thing)
+    : CTCBase(thing)
 {
 }

@@ -337,9 +337,16 @@ private:
 public:
 #endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_CRIME
-    // Nested opt-in (chunk 755, row 0x00775B40 CTCShop::FrameUpdate): Ego_r.pdb 0x0044A410 / FableWin.pdb 0x01A7EF10
-    // ?SetCrimeAsDisplaying@CPlayerGui@@QAEXXZ, out of line in retail at 0x004376B0 (landed).
-    void SetCrimeAsDisplaying();                                         // 0x004376B0
+    // Nested opt-in (chunk 755; used by rows 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): Ego_r.pdb 0x0044A410 /
+    // FableWin.pdb 0x01A7EF10 ?SetCrimeAsDisplaying@CPlayerGui@@QAEXXZ, out of line in retail at 0x00437770 (landed; reads PCrime +0x2EC).
+    // (Corrected 2026-11-16: the text said 0x004376B0, which is SetMoneyAsDisplaying -- the call CTCShop::FrameUpdate 0x00775B40 makes.)
+    void SetCrimeAsDisplaying();                                         // 0x00437770
+#endif
+#if defined(FABLE_RETAIL_CPLAYERGUI_SETMONEYASDISPLAYING) && !defined(FABLE_RETAIL_CPLAYERGUI_DRAWPREPAREPRIMITIVES)
+    // Opt-in (2026-11-16, rows 0x004376B0 itself and 0x00775B40 CTCShop::FrameUpdate): Ego_r.pdb ?SetMoneyAsDisplaying@CPlayerGui@@QAEXXZ
+    // 0x0044A350, first of the seven Set*AsDisplaying (retail 0x004376B0..0x00437770 in the same order; this one reads PMoney +0x2CC).
+    // The DRAWPREPAREPRIMITIVES opt-in declares the same member.
+    void SetMoneyAsDisplaying();                                         // 0x004376B0
 #endif
 };
 FABLE_STATIC_ASSERT_AT(291, sizeof(CPlayerGui)==0x338);

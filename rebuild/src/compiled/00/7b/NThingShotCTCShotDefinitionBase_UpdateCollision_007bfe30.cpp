@@ -63,7 +63,11 @@
 #define FABLE_RETAIL_CTHING_STATTYPEFLAGS
 #define FABLE_RETAIL_C2DBOXI
 #define FABLE_RETAIL_FILTER_BIND3_FUNCTION
-#define FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE
+// CArray<C3DVector>(3): the inline CArray(n) forwards to STLport vector<C3DVector>(size_type), out of line at 0x007C2AB0
+// (??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@I@Z; the binding the landed 0x00B149D0 / 0x00B15BD0 need to match).
+// Was FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE (a CArray(I) call) at landing gn; same bytes, respelled 2026-11-16.
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE
 #define FABLE_RETAIL_CTCHITLOCATIONS_TRIANGLE
 #define FABLE_RETAIL_CTCWEAPONTRAIL_UPDATEWEAPONTRAILS
 #include "stlport/fable_containers.h"

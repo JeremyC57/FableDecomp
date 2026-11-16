@@ -30532,8 +30532,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004376b0'
         Module = 'CPlayerGui'
-        Source = '00/43/CPlayerGui_SetCrimeAsDisplaying_004376b0.cpp'
-        TestSource = '00/43/CPlayerGui_SetCrimeAsDisplaying_004376b0_test.cpp'
+        Source = '00/43/CPlayerGui_SetMoneyAsDisplaying_004376b0.cpp'
+        TestSource = '00/43/CPlayerGui_SetMoneyAsDisplaying_004376b0_test.cpp'
         PassPattern = 'OK_0x004376b0'
     }
     [pscustomobject]@{
@@ -49387,9 +49387,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dcec50'
-        Module = 'CHandleBasedMemoryPool'
-        Source = '00/dc/CHandleBasedMemoryPool_GetPointerFromHandle_00dcec50.cpp'
-        TestSource = '00/dc/CHandleBasedMemoryPool_GetPointerFromHandle_00dcec50_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_SetState_00dcec50.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_SetState_00dcec50_test.cpp'
         PassPattern = 'PARITY_OK_dcec50'
     }
     [pscustomobject]@{
@@ -76973,8 +76973,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00435f70'
         Module = 'CDisplayEngine'
-        Source = '00/43/CDisplayEngine_DoRender_00435f70.cpp'
-        TestSource = '00/43/CDisplayEngine_DoRender_00435f70_test.cpp'
+        Source = '00/43/CDisplayEngine_Render_00435f70.cpp'
+        TestSource = '00/43/CDisplayEngine_Render_00435f70_test.cpp'
         PassPattern = 'PASS_00435f70'
     }
     [pscustomobject]@{
@@ -208733,8 +208733,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009fc3d0'
         Module = 'CResourceBank'
-        Source = '00/9f/CResourceBank_AddResourceToLoadingQueue_009fc3d0.cpp'
-        TestSource = '00/9f/CResourceBank_AddResourceToLoadingQueue_009fc3d0_test.cpp'
+        Source = '00/9f/CResourceBank_AddToLoadingQueue_009fc3d0.cpp'
+        TestSource = '00/9f/CResourceBank_AddToLoadingQueue_009fc3d0_test.cpp'
         PassPattern = '009fc3d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -398096,6 +398096,13 @@ $catalog = @(
         Source = '00/87/NCameraModesCGeneralCircle_CGeneralCircle_00875690.cpp'
         TestSource = '00/87/NCameraModesCGeneralCircle_CGeneralCircle_00875690_test.cpp'
         PassPattern = '00875690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba50a0'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_SetupStaticBlocks_00ba50a0.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_SetupStaticBlocks_00ba50a0_test.cpp'
+        PassPattern = 'PASS_00ba50a0'
     }
 )
 

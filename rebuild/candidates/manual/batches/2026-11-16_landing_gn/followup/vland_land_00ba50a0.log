@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00ba50a0   RELOCATION_MATCH PASS   SetupStaticBlocks
+
+WINS: 1
+  00ba50a0 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::?SetupStaticBlocks@CEnginePrimitiveManagerStaticMeshesBase@@AAE_NAAVC3DPrimitive2@@AAVCEngineInternalPrimitiveStaticMesh@@AAVC3DTextureStages@@PBVC3DMeshMaterial@@PAV?$CVectorMap@JVCCompositeSurfaceInfo@@V?$CKeyPairCompareLess@JVCCompositeSurfaceInfo@@@@@@JPA_N@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveManagerStaticMeshesBase_SetupStaticBlocks_00ba50a0

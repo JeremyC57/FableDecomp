@@ -4,7 +4,7 @@
 static char g_log[64];
 struct Info { long w[13]; };
 struct Engine { void Enable3D(bool e) { std::strcat(g_log, e ? "3" : "a"); } void Enable2D(bool e) { std::strcat(g_log, e ? "2" : "b"); } };
-struct Display { Engine* Engine3D; const Info* seen; void DoRender(Info* i, bool, bool) { std::strcat(g_log, "R"); seen = i; } };
+struct Display { Engine* Engine3D; const Info* seen; void Render(const Info* i, bool, bool) { std::strcat(g_log, "R"); seen = i; } };
 struct Main { Display* PDisplayEngine; Info LastInterpolationInfo; };
 struct Tex { int id; };
 static Tex g_tex = { 5 };
@@ -18,8 +18,8 @@ struct Mgr {
             g_main.PDisplayEngine->Engine3D->Enable3D(true);
             g_main.PDisplayEngine->Engine3D->Enable2D(false);
             Info info = g_main.LastInterpolationInfo;
-            g_main.PDisplayEngine->DoRender(&info, false, false);
-            g_main.PDisplayEngine->DoRender(&info, false, false);
+            g_main.PDisplayEngine->Render(&info, false, false);
+            g_main.PDisplayEngine->Render(&info, false, false);
             g_main.PDisplayEngine->Engine3D->Enable3D(false);
             g_main.PDisplayEngine->Engine3D->Enable2D(true);
             PBackBufferTexture = &g_tex;

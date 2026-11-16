@@ -57,12 +57,16 @@ public:
     void WorldUpdate();
 #endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_DORENDER
-    // Retail opt-in (chunk 1022, row 0x00417747 CMainGameComponent::UpdateForcedTickSpeed): Ego_r.pdb (0x004490E0)
-    // ?DoRender@CDisplayEngine@@IAEXPBVCInterpolationInfo@@_N1@Z (protected; out of line in retail at 0x00435F70, called on
-    // PDisplayEngine with `push 1 ; push WorldUpdateTurn ; push &info`), so CMainGameComponent is a friend. No layout change.
+    // Retail opt-in (chunk 1022, row 0x00417747 CMainGameComponent::UpdateForcedTickSpeed; corrected 2026-11-16): Ego_r.pdb
+    // ?DoRender@CDisplayEngine@@IAEXPBVCInterpolationInfo@@_N1@Z (0x004490E0, protected) is followed 0xAE0 bytes later by
+    // ?Render@CDisplayEngine@@QAEXPBVCInterpolationInfo@@_N1@Z (0x00449BC0, public); FableWin.pdb has the 0x30-byte Render at
+    // 0x01ADC6C0 right before DoRender 0x01ADC6F0. Retail keeps the Ego_r order: DoRender is the 2,624-byte body at 0x00435530 and
+    // Render the 5-byte `jmp DoRender` at 0x00435F70 that outside callers use (`push 1 ; push WorldUpdateTurn ; push &info` on
+    // PDisplayEngine, 0x00417747 / 0x00406CC0). The earlier text bound DoRender to 0x00435F70 and made CMainGameComponent a friend
+    // to reach it; Render is public, so no friend is needed. No layout change.
+    void Render(const class CInterpolationInfo* info, bool world_updated, bool render);     // 0x00435F70
 protected:
-    void DoRender(const class CInterpolationInfo* info, bool world_updated, bool render);   // 0x00435F70
-    friend class CMainGameComponent;
+    void DoRender(const class CInterpolationInfo* info, bool world_updated, bool render);   // 0x00435530
 public:
 #endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE

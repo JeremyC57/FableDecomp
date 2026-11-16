@@ -1,9 +1,9 @@
-// NCreatureAI::IsAwareOfPosition(const CThingCreatureBase*, const C3DVector&) -- the position is within the creature's extended sight radius (2D), in its field of view and in navigation line of sight
+// NCreatureAI::IsAwareOfPosition(const CThingCreatureBase*, const C3DVector&) -- the position is within the creature's sight radius (2D), in its field of view and in navigation line of sight
 // Leaf: ?IsAwareOfPosition@NCreatureAI@@YI_NPBVCThingCreatureBase@@ABVC3DVector@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x00864620, 0xE0 bytes, __fastcall (creature in ecx, position in edx). PDB (Ego_r):
 // ?IsAwareOfPosition@NCreatureAI@@YI_NPBVCThingCreatureBase@@ABVC3DVector@@@Z. Callers 0x006C0BBE, 0x006C0C1C.
-// Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (twice), CTCPerceiveThing::GetExtendedSightRadius()
+// Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (twice), CTCPerceiveThing::GetSightRadius()
 // const @ 0x007448F0, CThing::GetPos() const @ 0x004C73D0 (twice), CThingCreatureBase::IsPosInFOV(const C3DVector&, bool)
 // const @ 0x00665260, CTCCreatureNavigation::IsPosNavLineOfSightToPos(const C3DVector&, const C3DVector&) const @ 0x006CB610
 // (manifest labels "ComputeAngleBetweenPositions"/"CScriptThing::operator==" are propagations; the Ego_r names fit the
@@ -35,7 +35,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CTCPerceiveThing                               // interface type 0x34
 {
 public:
-    float GetExtendedSightRadius() const;            // 0x007448F0
+    float GetSightRadius() const;                    // 0x007448F0 ?GetSightRadius@CTCPerceiveThing@@QBEMXZ (SightRadius +0x40; respelled 2026-11-16, was GetExtendedSightRadius = 0x00744950)
 };
 
 class CTCCreatureNavigation                          // interface type 7
@@ -104,7 +104,7 @@ bool __fastcall NCreatureAI::IsAwareOfPosition(const CThingCreatureBase* creatur
 {
     if (creature && creature->HasTC(0x34))
     {
-        float radius = ((const CTCPerceiveThing*)creature->FindEntry(0x34)->second)->GetExtendedSightRadius();
+        float radius = ((const CTCPerceiveThing*)creature->FindEntry(0x34)->second)->GetSightRadius();
         const C3DVector& here = creature->GetPos();
         float dx = here.X - pos.X;
         float dy = here.Y - pos.Y;

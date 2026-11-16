@@ -1,0 +1,39 @@
+addr       parity           behav  name
+00435f70   RELOCATION_MATCH PASS   Render
+00406cc0   WARN SHARED_HEADER_AVAILABLE CInterpolationInfo
+00406cc0   WARN SHARED_HEADER_AVAILABLE CEngine
+00406cc0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+00406cc0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00406cc0   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00406cc0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00406cc0   HEADER_POLICY    -      CaptureBackBufferForUIBackground
+00435530   WARN RELOC_NAME: ?DrawProfiles@CProfileManager@@QAEXABVC2DBoxF@@ABVCFontBank@@@Z -> 009f8d60 labelled '_global::Nop_ret8_009f8d60'
+00435530   WARN RELOC_NAME: ?RenderHeroFuckShit@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z -> 00435000 labelled 'CGameScriptInterface::GiveHeroGold'
+00435530   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00435530   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_OverlappingCircle@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_OverlappingCircle@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 00436d60 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_OverlappingCircle>'
+00435530   WARN RELOC_NAME: ?Draw@CConsole@@QAEXABVC2DBoxF@@@Z -> 009ea550 labelled '_global::Nop_ret4_009ea550'
+00435530   RELOCATION_MATCH PASS   DoRender
+004376b0   MATCH            PASS   SetMoneyAsDisplaying
+00775b40   WARN SHARED_HEADER_AVAILABLE CGameTimeManager
+00775b40   HEADER_POLICY    -      FrameUpdate
+004d2ddb   RELOCATION_MATCH PASS   CTCUndeadSoul
+00864620   WARN SHARED_HEADER_AVAILABLE CThing
+00864620   HEADER_POLICY    -      IsAwareOfPosition
+00dcec50   MATCH            PASS   SetState
+007bfe30   RELOCATION_MATCH PASS   UpdateCollision
+00b26360   WARN RELOC_NAME: ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z -> 009ade10 labelled 'CDefinitionManager::GetPDefFromGlobalIndex'
+00b26360   WARN RELOC_CONFLICT: ??0CEnginePrimitiveTypeInfo@@QAE@XZ -> 00b8faa0 here, 00a02d20 in landed 00a148d0
+00b26360   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b26360   WARN RELOC_NAME: ?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B -> 01436e24 labelled 'g_pEngineEnvironmentDef'
+00b26360   RELOCATION_MATCH PASS   Initialise
+009fc3d0   MATCH            PASS   AddToLoadingQueue
+
+WINS: 8
+  00435f70 RELOCATION_MATCH CDisplayEngine::?Render@CDisplayEngine@@QAEXPBVCInterpolationInfo@@_N1@Z
+  00435530 RELOCATION_MATCH CDisplayEngine::?DoRender@CDisplayEngine@@IAEXPBVCInterpolationInfo@@_N1@Z
+  004376b0 MATCH CPlayerGui::?SetMoneyAsDisplaying@CPlayerGui@@QAEXXZ
+  004d2ddb RELOCATION_MATCH CTCUndeadSoul::??0CTCUndeadSoul@@QAE@AAVCThing@@@Z
+  00dcec50 MATCH NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::?SetState@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAEXJ@Z
+  007bfe30 RELOCATION_MATCH NThingShot::CTCShotDefinitionBase::?UpdateCollision@CTCShotDefinitionBase@NThingShot@@MAEXAA_N@Z
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+  009fc3d0 MATCH CResourceBank::AddToLoadingQueue

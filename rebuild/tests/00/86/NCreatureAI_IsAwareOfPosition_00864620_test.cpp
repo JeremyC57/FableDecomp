@@ -1,4 +1,4 @@
-// Behaviour test for 0x00864620: IsAwareOfPosition = perceive component present, 2D distance < extended sight radius,
+// Behaviour test for 0x00864620: IsAwareOfPosition = perceive component present, 2D distance < sight radius,
 // position in FOV, and navigation line of sight.
 #include <cstdio>
 
@@ -23,7 +23,7 @@ class CTCPerceiveThing
 {
 public:
     float radius;
-    float GetExtendedSightRadius() const { return radius; }
+    float GetSightRadius() const { return radius; }
 };
 
 class CTCCreatureNavigation
@@ -86,7 +86,7 @@ bool IsAwareOfPosition(const CThingCreatureBase* creature, const C3DVector& pos)
 {
     if (creature && creature->HasTC(0x34))
     {
-        float radius = ((const CTCPerceiveThing*)creature->FindEntry(0x34)->component)->GetExtendedSightRadius();
+        float radius = ((const CTCPerceiveThing*)creature->FindEntry(0x34)->component)->GetSightRadius();
         const C3DVector& here = creature->GetPosition();
         float dx = here.X - pos.X;
         float dy = here.Y - pos.Y;

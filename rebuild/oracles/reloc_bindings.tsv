@@ -15478,7 +15478,7 @@ __Rebalance_for_erase	0042a34e	00756420
 ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z	0070c050	008619c0
 ?GetMovementSpeedFromAnimation@NCreatureMode@@YIMJABVCThingCreatureBase@@ABVCMeshDataBank@@@Z	00861950	00861c90
 ?SetEmoteText@CTCEmoteIcon@@QAEXW4EEmotePriority@@ABVCWideString@@MM@Z	0071ac70	00864580
-?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ	007448f0	00864620
+?GetSightRadius@CTCPerceiveThing@@QBEMXZ	007448f0	00864620
 ?IsPosInFOV@CThingCreatureBase@@QBE_NABVC3DVector@@_N@Z	00665260	00864620
 ?IsPosNavLineOfSightToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0@Z	006cb610	00864620
 ??4CWeaponTrailList@@QAEAAU0@ABU0@@Z	0076ff90	008650e0
@@ -19482,7 +19482,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetFont@CFontBankSource@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	009e2c80	00405020
 ?TransferIn_009e2590@@YIXPAVCPersistContext@@JPAJ@Z	009e2590	004059f0
 ?TransferOutLong@@YIXPAVCPersistContext@@PAVCCharString@@PAJ@Z	009e2560	00405a10
-?DoRender@CDisplayEngine@@QAEXPAVCInterpolationInfo@@_N1@Z	00435f70	00406cc0
+?Render@CDisplayEngine@@QAEXPBVCInterpolationInfo@@_N1@Z	00435f70	00406cc0
 ?CreateDirectoryW@CDriveManager@@QAEJABVCWideString@@@Z	009e4da0	00406e30
 ?GetValidProfileName@@YI?AVCWideString@@ABV1@@Z	00406350	00406e30
 ?DeleteDirectory@CDriveManager@@QAEJABVCWideString@@@Z	009e4b70	00407040
@@ -19968,7 +19968,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CTCRandomAppearanceMorph@@QAE@PAVCThing@@@Z	00728000	004d2a44
 ??0CTCActionUseScriptedHook@@QAE@PAVCThing@@@Z	00729a90	004d2ad4
 ??0CTCActionUseBuyOrSteal@@QAE@PAVCThing@@@Z	0072a630	004d2c12
-??0CEngineSubPrimitive2DClockSprite@@QAE@PAVCEngineInternalPrimitive2DClockSprite@@@Z	00686800	004d2ddb
+??0CTCBase@@QAE@AAVCThing@@@Z	00686800	004d2ddb
 ??0CTCTalk@@QAE@PAVCThing@@@Z	006e27e0	004d2e0a
 ??0CTCQuestCard@@QAE@PAVCThing@@@Z	007026a0	004d2e44
 ??0CTCInventory@@QAE@PAVCThing@@@Z	00590d32	004d2e74
@@ -30971,7 +30971,7 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ?SetCameraRoll@NCameraModes@@YIXAAVCCamera@@M@Z	0084cd10	0087ba90
 ?SetFOV@CCamera@@QAEXMM@Z	00a0bed0	0087ba90
 ?SetAlarm@CTCShop@@QAEX_N@Z	00773c90	00775b40
-?SetCrimeAsDisplaying@CPlayerGui@@QAEXXZ	004376b0	00775b40
+?SetMoneyAsDisplaying@CPlayerGui@@QAEXXZ	004376b0	00775b40
 ?UpdateStock@CTCShop@@QAEXXZ	00775350	00775b40
 ?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@K_NW4EDialogueLayer@NSpeechGainManager@@00@Z	006e3b60	008af500
 ?find@?$_Rb_tree@KU?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Select1st@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@2@ABK@Z	008aeed0	008af500
@@ -38241,7 +38241,7 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?g_pEngineBillboardGenerator@@3PAVCEngineBillboardGenerator@@A	01436e4c	00b26360
 ?g_pEngineDef_01436e20@@3PBVCEngineDef@@B	01436e20	00b26360
 ?g_pEngineDefinitionManager@@3PAVCDefinitionManager@@A	01436e28	00b26360
-?g_pEngineEnvironmentDef@@3PBVCEnvironmentDef@@B	01436e24	00b26360
+?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B	01436e24	00b26360
 ?g_pEngineEnvironment_01436e48@@3PAVCEngineEnvironment@@A	01436e48	00b26360
 ?g_pEngineInputManager_01436e10@@3PAVCInputManager@@A	01436e10	00b26360
 ?g_pEngineSkyRenderer@@3PAVCEngineSkyRenderer@@A	01436e50	00b26360
@@ -41751,7 +41751,12 @@ _GExtraFramesToWaitBeforeProgressRender	01378880	004a3740
 ?UpdateBoneMatrixForWindSheer@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXAAVCEngineInternalPrimitiveRepeatedStaticMesh@@PAVC4DVector@@PBEJ@Z	00b990b0	00b9ac30
 ?UploadShaderConstants@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXAAVCEngineInternalPrimitiveRepeatedStaticMesh@@PBVC4DVector@@1J@Z	00b99670	00b9ac30
 ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_IsNot@@VCThingFilter_ShotsToCheckForCollisionWith@?A0xd8a2d73f@@VCThingFilter_SolidToThing@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_IsNot@@VCThingFilter_ShotsToCheckForCollisionWith@?A0xd8a2d73f@@VCThingFilter_SolidToThing@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	007c2d10	007bfe30
-??0?$CArray@VC3DVector@@@@QAE@I@Z	007c2ab0	007bfe30
+??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@I@Z	007c2ab0	007bfe30
 ??0CThingFilter_SolidToThing@@QAE@ABVCThing@@@Z	00661620	007bfe30
 ?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z	008168b0	007bfe30
 ?g_LightingChannelDrawFilter@@3JA	013756f0	007e15c0
+?DoRender@CDisplayEngine@@IAEXPBVCInterpolationInfo@@_N1@Z	00435530	00435f70
+?SetCrimeAsDisplaying@CPlayerGui@@QAEXXZ	00437770	00439070
+?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ	00744950	006d1e30
+??0CEngineSubPrimitive2DClockSprite@@QAE@PAVCEngineInternalPrimitive2DClockSprite@@@Z	00bb1780	00bafa00
+?SetupStaticBlocksBlankTextures@CEnginePrimitiveManagerStaticMeshesBase@@AAE_NAAVC3DPrimitive2@@AAVCEngineInternalPrimitiveStaticMesh@@AAVC3DTextureStages@@PBVC3DMeshMaterial@@PA_N@Z	00ba4a40	00ba50a0

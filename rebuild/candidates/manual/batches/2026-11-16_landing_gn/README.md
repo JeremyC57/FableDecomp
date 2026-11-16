@@ -27,9 +27,8 @@ that ctor), 0x007448F0 is GetSightRadius (landed 0x00864620 binds GetExtendedSig
 SetMoneyAsDisplaying (landed 0x00775B40 binds SetCrimeAsDisplaying = 0x00437770). 125 RELOC_NAME (catalog labels the queued fixes
 correct), 9 RELOC_ALIAS.
 
-Open: 0x00435F70 (the landed 5-byte forwarder stub `CDisplayEngine_DoRender_00435f70`) is really CDisplayEngine::Render, so the
-catalog now has DoRender at two addresses. Respelling it means changing CDisplayEngine.h's default-path DoRender declaration that
-the landed caller 0x00406CC0 binds, with a recheck of its includers; queued PRIORITY (land1116gn), not done here.
+Done in the follow-up (`followup/README.md`): 0x00435F70 respelled CDisplayEngine::Render, the three RELOC_CONFLICTs fixed, the four held
+name fixes decided, 0x00BA50A0 landed.
 
 Grades: all 58 count as genuine; 15 are `retail_asm` (each cites the retail fistp / fnstcw site and uses the existing shared
 GFFloatToLong* / FPU-control helpers; no `__asm` in any row source or test). 49 of the 58 are in the original catalog (README count

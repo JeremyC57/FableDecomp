@@ -1,5 +1,7 @@
-// CResourceBank::AddResourceToLoadingQueue(CResource* resource) -- hand a resource to the bank's loading queue (CResourceList::AddResource inlined on the list at +0x40)
-// Leaf: AddResourceToLoadingQueue
+// CResourceBank::AddToLoadingQueue(CResource& resource) -- hand a resource to the bank's loading queue (CResourceList::AddResource inlined on the list at +0x40)
+// Leaf: AddToLoadingQueue
+// Name: Ego_r.pdb ?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z (0x00B6C340, right after AddResource 0x00B6C2B0 as retail
+//   0x009FC3D0 follows 0x009FC380); respelled 2026-11-16 from the descriptive AddResourceToLoadingQueue(CResource*), same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FC3D0, length 52 bytes (+12 int3 padding).
 // Manifest label "CResourceBank::AddResource" is shared with the twin 0x009FC380 (the resource list at +4); this body
 // works on LoadingQueue (+0x40), so it is named from use.
@@ -39,10 +41,10 @@ struct CResourceBank_Retail {
     void*                 __vftable;        // +0x00
     CResourceList_Methods ResourceList;     // +0x04
     CResourceList_Methods LoadingQueue;     // +0x40
-    void AddResourceToLoadingQueue(CResource* resource);
+    void AddToLoadingQueue(CResource& resource);
 };
 
-void CResourceBank_Retail::AddResourceToLoadingQueue(CResource* resource)
+void CResourceBank_Retail::AddToLoadingQueue(CResource& resource)
 {
-    this->LoadingQueue.AddResource(resource);
+    this->LoadingQueue.AddResource(&resource);
 }

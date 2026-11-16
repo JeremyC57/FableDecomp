@@ -104,7 +104,7 @@ extern CShaderRenderManager* GPShaderRenderManager;    // 0x01436E14
 extern CInputManager*          g_pEngineInputManager_01436e10;   // 0x01436E10 (descriptive)
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 extern const CEngineDef*       g_pEngineDef_01436e20;            // 0x01436E20 (descriptive)
-extern const CEnvironmentDef*  g_pEngineEnvironmentDef;          // 0x01436E24 (descriptive, chunk 727)
+namespace NEngineInternal { extern const CEnvironmentDef* GPEnvironmentDef; }   // 0x01436E24 ?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B (PDB PUBLIC, Codex pass 22; respelled 2026-11-16, was the descriptive g_pEngineEnvironmentDef)
 extern CDefinitionManager*     g_pEngineDefinitionManager;       // 0x01436E28 (descriptive, chunk 727)
 extern CEngine*                g_pEngine_01436ea4;               // 0x01436EA4
 extern CEngineScreenEffectRadialBlurRenderer*   g_pRadialBlurRenderer_01436e30;      // 0x01436E30
@@ -188,7 +188,7 @@ bool CEngine::Initialise(const CEngineInit& init)
     AddEngineComponent(new CEngineShadowRenderer(), g_pEngineShadowRenderer, 0);
     if (init.InitFlags & 1) {
         g_pEngineDefinitionManager->GetDef("ENVIRONMENT", 1, &PEnvironmentDef);
-        g_pEngineEnvironmentDef = PEnvironmentDef.Get();
+        NEngineInternal::GPEnvironmentDef = PEnvironmentDef.Get();
         AddEngineComponent(new CEngineWorldMap(init), g_pEngineWorldMap, 0);
         AddEngineComponent(new CEngineWaterRenderer(init), g_pEngineWaterRenderer, 0);
         AddEngineComponent(new CEngineLandscapeRenderer(memory_init), g_LandscapeRenderer_01436EA8, 0);

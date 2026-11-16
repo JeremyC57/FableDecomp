@@ -4,8 +4,8 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00775B40, 274 bytes (plain `ret`). CTCShop vtable 0x0126A94C slot 9 (CTCBase::FrameUpdate).
 // Callees: CTCBase::PeekComponent() const @ 0x00686D60, CPlayerManager::GetMainPlayer() const @ 0x00449960 (on the inline
 //   CMainGameComponent::PeekPlayerManager), CPlayer::PeekPControlledCreature() const @ 0x00487DD0, CThing::GetPos() const
-//   @ 0x004C73D0, CThingBuilding::IsPointInside(const C3DVector&) const @ 0x0082D000, CPlayerGui::SetCrimeAsDisplaying()
-//   @ 0x004376B0 (on CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()), CVectorMap lower_bound @ 0x0040F020 (GetTC<CTCVillageMember>),
+//   @ 0x004C73D0, CThingBuilding::IsPointInside(const C3DVector&) const @ 0x0082D000, CPlayerGui::SetMoneyAsDisplaying()
+//   @ 0x004376B0 (respelled 2026-11-16: the shop refreshes the money bar; SetCrimeAsDisplaying is 0x00437770) (on CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()), CVectorMap lower_bound @ 0x0040F020 (GetTC<CTCVillageMember>),
 //   CTCVillageMember::GetPVillage() const @ 0x007EE540, CTCVillage::IsHeroCriminal() @ 0x0065BFCE, CTCShop::SetAlarm(bool)
 //   @ 0x00773C90, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCBase::GetWorld() const @ 0x00686A70,
 //   CTCShop::RemoveStockItemsFromShop @ 0x00773E10, CTCShop::UpdateStock @ 0x00775350, CTCShop::IsPermanentlyStocked() const
@@ -28,7 +28,7 @@
 #define FABLE_RETAIL_CPLAYERMANAGER
 #define FABLE_RETAIL_PLAYER
 #define FABLE_RETAIL_CPLAYERGUI
-#define FABLE_RETAIL_CPLAYERGUI_CRIME
+#define FABLE_RETAIL_CPLAYERGUI_SETMONEYASDISPLAYING
 #define FABLE_RETAIL_CMAINGAMECOMPONENT
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
 #define FABLE_RETAIL_CTCVILLAGE
@@ -71,7 +71,7 @@ void CTCShop::FrameUpdate()
     if (IS_THING_ALIVE(hero)) {
         CThing* parent = ParentThing;
         if (parent->GetType() == 3 && static_cast<CThingBuilding*>(parent)->IsPointInside(hero->GetPos()))
-            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SetCrimeAsDisplaying();
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SetMoneyAsDisplaying();
     }
     CTCVillageMember* member;
     if (Alarm && ParentThing->GetTC(&member)) {
