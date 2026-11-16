@@ -1,0 +1,28 @@
+--- a/rebuild/include/engine/CPSCBase.h
++++ b/rebuild/include/engine/CPSCBase.h
+@@ -22,6 +22,16 @@
+ };
+ template<class K,class V>class CParticleUpdateParamDesc:public CBaseClass {
+ public: virtual ~CParticleUpdateParamDesc();
++#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMDESC_GETUPDATEPARAM
++ // Opt-in (wfD6, row 0x00B087C0): FableWin.pdb / Ego_r.pdb ?GetUpdateParam@?$CParticleUpdateParamDesc@KK@NParticleEngine@@QBE_NAAVC3DVector@@M_NABV?$CParticleUpdateParameters@KK@2@K@Z
++ // (inline in retail: CPSCSingleSprite::PreparePrimitives 0x00B08AxA `call [edx+4]` through Callback with Index pushed). No layout change.
++ bool GetUpdateParam(C3DVector& out,float time,bool local,const CParticleUpdateParameters<K,V>& params,unsigned long flags)const{return Callback->GetUpdateParam(out,Index,time,local,params,flags);}
++#endif
++#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMDESC_ISNULL
++ // Opt-in (wfE8 6th agent, row 0x00B10B10): FableWin.pdb ?IsNull@?$CParticleUpdateParamDesc@KK@NParticleEngine@@QBE_NXZ (inline in retail:
++ // GenerateParticle tests the Callback word before each GetUpdateParam, 0x00B1150x / 0x00B1178x). No layout change.
++ bool IsNull()const{return Callback==0;}
++#endif
+ private: CParticleUpdateParamCallback<K,V>* Callback;V Index;
+ };
+ class CPSCBase:public CParticleUpdateParamCallback<unsigned long,unsigned long>{
+@@ -61,6 +71,6 @@
+ protected: bool Initialised:1;
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CPSCBase)==12);
+-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CParticleUpdateParamDesc<unsigned long,unsigned long>)==12);
++FABLE_STATIC_ASSERT_AT(64, sizeof(NParticleEngine::CPSCBase)==12);
++FABLE_STATIC_ASSERT_AT(65, sizeof(NParticleEngine::CParticleUpdateParamDesc<unsigned long,unsigned long>)==12);
+ #endif

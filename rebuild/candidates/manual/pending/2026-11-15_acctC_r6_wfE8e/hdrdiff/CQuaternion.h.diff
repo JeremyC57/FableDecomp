@@ -1,0 +1,27 @@
+--- a/rebuild/include/engine/CQuaternion.h
++++ b/rebuild/include/engine/CQuaternion.h
+@@ -19,7 +19,12 @@
+  // Both original PDB signatures; native A88C10/A88DE0, donor Update call sites.
+  void ToRightHandedSet(CRightHandedSet& dest)const {
+   float d=GFSqr(X)+GFSqr(Y)+GFSqr(Z)+GFSqr(W);
++#ifdef FABLE_RETAIL_CQUATERNION_TORIGHTHANDEDSET_FLOAT
++  // Opt-in (wfD6, row 0x00B01900): single-precision literals; retail 0x00B02493 `fdivr dword ptr [2.0f]` / 0x00B0249D `fld dword ptr [1.0f]`.
++  float s=(d!=0.0f)?2.0f/d:1.0f;
++#else
+   float s=(d!=0.0f)?2.0/d:1.0;
++#endif
+   float xs=X*s,ys=Y*s,zs=Z*s;
+   float wx=W*xs,wy=W*ys,wz=W*zs;
+   float xx=X*xs,xy=X*ys,xz=X*zs;
+@@ -63,6 +68,11 @@
+  CQuaternion operator*(const CQuaternion& q) const;
+  const CQuaternion& operator*=(const CQuaternion& q);
+ #endif
++#ifdef FABLE_RETAIL_CQUATERNION_MUL
++ // Opt-in (wfD6, row 0x00B01900): Ego_r / FableWin ??DCQuaternion@@QBE?AV0@ABV0@@Z alone (out of line at 0x00A88B60), for TUs that
++ // already declare operator*= through FABLE_RETAIL_CQUATERNION_PARTICLE_UPDATE (MULASSIGN would declare it twice).
++ CQuaternion operator*(const CQuaternion& q) const;
++#endif
+ #ifdef FABLE_RETAIL_CQUATERNION_MULASSIGN_INLINE
+  // the inline header body (retail 0x00A88C10 is its emitted COMDAT copy): visible, so callers know it does not capture
+  CQuaternion operator*(const CQuaternion& q) const;            // 0x00A88B60 (out of line)

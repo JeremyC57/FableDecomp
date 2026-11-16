@@ -1,0 +1,7 @@
+00aca830 QuadricOptimiserInternals::COptimisedPrimitive Initialise ['/Gr']
+00b10b10 NParticleEngine::CPSCEmitterGeneric GenerateParticle ['/d2inlT158']
+00b03ca0 NParticleEngine::CPSCRenderMesh PreparePrimitives ['/d2inlT1537', '/d2inlS15']
+addr       parity           behav  name
+00aca830   RELOCATION_MATCH PASS   Initialise
+00b10b10   RELOCATION_MATCH PASS   GenerateParticle
+00b03ca0   RELOCATION_MATCH PASS   PreparePrimitives
