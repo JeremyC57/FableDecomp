@@ -10,7 +10,35 @@
 //   PDB CEngineInternalPrimitiveSprite (WorldPos +0x48 .. bitfield byte +0x84) / CEnginePrimitiveSprite (WorldPos +0x0c .. Offset +0x40).
 // Shape: the six flag-word bits are plain `bool`-valued bitfield assignments after `IsParticle = true` (VC7.1 merges them into
 //   one byte RMW as retail); the frame getter is the landed bank model with a frame index; every offset branch shares the tail call.
+// NF46 (round 7): the 0x01436E98 stand-in CEngineGlobal_01436e98 / g_pEngine_01436e98 is NEngineInternal::GPResourceManager
+//   (?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on engine/CEngineResourceManager.h; +0x954 is GetGraphicBank (_GETGRAPHICBANK,
+//   as 0x00B2D9F0), and the local graphic-bank / record-vector / CGraphicInfoFrame models are the header CGraphicDataBank / CGraphicInfo /
+//   CGraphicInfoFrame (GraphicList +0x1E0, Frames +0x28; FableWin.pdb inline PeekGraphic / PeekGraphicInfoFrame / PeekInfoFrame as landed
+//   0x00BB0970, both getters forced inline; BeginLoading const from the _BEGINLOADING opt-in).
+//   The frame size is FableWin.pdb CGraphicInfoFrame::GetWidth / GetHeight (inline, unsigned long; FABLE_RETAIL_CGRAPHICINFO_PASS22_SPRITE bodies).
+//   FITTED: retail converts it signed (0x00BAD85F `movzx ; mov [esp+18h] ; fild dword`), so the quotient divides by `(float)(long)GetWidth()`;
+//   a plain unsigned long conversion emits the 2^32-correction form (the landed row read the unsigned short header word directly).
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_GETGRAPHICBANK
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CGRAPHICINFOFRAME_BEGINLOADING
+#define FABLE_RETAIL_CGRAPHICINFO_SPRITE
+#define FABLE_RETAIL_CGRAPHICINFO_PASS22_SPRITE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT
+#define FABLE_RETAIL_CMOVABLERESOURCE
+#define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+#define FABLE_RETAIL_CGRAPHICFRAME
+#define FABLE_RETAIL_CGRAPHICFRAME_CTOR
+#define FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE
+#define FABLE_RETAIL_CGRAPHICFRAME_DTOR_FORCEINLINE
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #include "fable_compiler.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGraphicDataBank.h"
+#include "engine/CGraphicInfo.h"
 #include "engine/CEngineInternalPrimitiveBase.h"
 
 #include "engine/C3DVector.h"
@@ -40,44 +68,15 @@ public:
     C2DVector      Offset;                         // +0x40
 };
 
-struct CGraphicInfoFrameInfo {
-    unsigned char  _pad[6];
-    unsigned short Width;                          // +0x06
-    unsigned short Height;                         // +0x08
-};
-class CGraphicInfoFrame { public:                         // 16 bytes
-    unsigned char          _pad[0xc];
-    CGraphicInfoFrameInfo* m_pInfo;                // +0x0c
-    void BeginLoading(unsigned long a0, unsigned long a1) const;   // 0x009FE620
-};
-
-struct SBankGraphic {
-    unsigned char      _pad[0x28];
-    CGraphicInfoFrame* m_pFrames;                  // +0x28
-};
-
-template <class T> struct CRetailVector {
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    T* begin() { return m_pFirst; }
-    T* end() { return m_pLast; }
-    unsigned long size() { return end() - begin(); }
-    T& operator[](unsigned long n) { return *(begin() + n); }
-};
-
-struct CGraphicBank {
-    unsigned char               _pad[0x1e0];
-    CRetailVector<SBankGraphic> m_records;         // +0x1e0
-    FABLE_FORCEINLINE SBankGraphic* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
-    FABLE_FORCEINLINE CGraphicInfoFrame* GetFrame(unsigned long index, unsigned long frame) { return Get(index) ? &Get(index)->m_pFrames[frame] : 0; }
-};
-
-struct CEngineGlobal_01436e98 {
-    unsigned char _pad[0x954];
-    CGraphicBank* m_pGraphicBank;                  // +0x954
-};
-extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
+FABLE_FORCEINLINE const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) const
+{
+    return index < GraphicList.size() ? &GraphicList[index] : 0;
+}
+FABLE_FORCEINLINE const CGraphicInfoFrame* CGraphicDataBank::PeekGraphicInfoFrame(unsigned long graphic, unsigned long frame) const
+{
+    return PeekGraphic(graphic) ? PeekGraphic(graphic)->PeekInfoFrame(frame) : 0;
+}
 
 enum {
     SPRITE_3D              = 0x001,
@@ -139,7 +138,7 @@ void CEngineInternalPrimitiveSprite::Update(const CEnginePrimitive& primitive, u
     RotateAroundCentre = (spriteFlags & SPRITE_ROTATE_CENTRE) != 0;
     RotateAroundZAxis = (spriteFlags & SPRITE_ROTATE_Z_AXIS) != 0;
     ZBuffer = (spriteFlags & SPRITE_NO_ZBUFFER) == 0;
-    CGraphicInfoFrame* frame = g_pEngine_01436e98->m_pGraphicBank->GetFrame(BankIndex, Frame);
+    const CGraphicInfoFrame* frame = NEngineInternal::GPResourceManager->GetGraphicBank((EGraphicBankNo)0)->PeekGraphicInfoFrame(BankIndex, Frame);
     frame->BeginLoading(0, 0);
     if (spriteFlags & SPRITE_OFFSET_LEFT) {
         OffsetFactorX = 1.0f;
@@ -154,8 +153,8 @@ void CEngineInternalPrimitiveSprite::Update(const CEnginePrimitive& primitive, u
         OffsetFactorX = 0.0f;
         OffsetFactorY = 1.0f;
     } else {
-        OffsetFactorX = sprite.Offset.X / (float)frame->m_pInfo->Width * 2.0f;
-        OffsetFactorY = sprite.Offset.Y / (float)frame->m_pInfo->Height * 2.0f;
+        OffsetFactorX = sprite.Offset.X / (float)(long)frame->GetWidth() * 2.0f;
+        OffsetFactorY = sprite.Offset.Y / (float)(long)frame->GetHeight() * 2.0f;
     }
     SetFadeDistanceWithGamePrimitiveDefaults(sprite.FadeStart);
 }

@@ -9,72 +9,21 @@
 // Layout: engine/CEngineWeatherRenderer.h offsets hold, but its members are opaque byte arrays; restated locally with the real
 //   buffer / shader types (models as the landed 0x00BABB50). CWeatherMask's implicit ctor only zeroes its C3DBoundingSphere, which
 //   VC7.1 emits as a fully unrolled 3-element loop.
-class CCharString { public:
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-    void* m_pData;
-};
-
-struct CVertexShaderData {
-    virtual ~CVertexShaderData();                  // slot 0
-    void*         VertexDeclaration;
-    void*         VertexShader;
-    const void*   FormatDecl;
-    long          ReferenceCount;                  // +0x10
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-struct CPixelShaderData {
-    virtual ~CPixelShaderData();                   // slot 0
-    void*         PixelShader;
-    long          ReferenceCount;                  // +0x08
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-
-class CShaderBase { public:                               // vtable 0x0129A030
-    virtual ~CShaderBase() { }
-};
-class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
-    CVertexShaderData* Data;
-    CVertexShader();                               // 0x00A62FB0
-    CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CVertexShader& operator=(const CVertexShader& other)
-    {
-        if (Data) Data->ReleaseReference();
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
-    CPixelShaderData* Data;
-    CPixelShader();                                // 0x00A5EC00
-    CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CPixelShader& operator=(const CPixelShader& other)
-    {
-        if (Data) { Data->ReleaseReference(); Data = 0; }
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-
-class CShaderResource { public:
-    CVertexShader GetVertexShader(const CCharString& name) const;// 0x00A5D5F0  // NF35: Ego_r + FableWin ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z (const)
-    CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
-};
-struct CEngineData {
-    unsigned char    _pad0000[0x2a10];
-    CShaderResource* WeatherVertexShaderResource;  // +0x2A10
-    unsigned char    _pad2a14[0x2a98 - 0x2a14];
-    CShaderResource* PixelShaderResource;          // +0x2A98
-    CShaderResource* GetWeatherVertexShaderResource() { return WeatherVertexShaderResource; }
-    CShaderResource* GetPixelShaderResource() { return PixelShaderResource; }
-};
-extern CEngineData* g_pEngineData;                 // 0x01436E98
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A); the vertex shader resources are
+// CEngineResourceManager::VShaderResources[bank] (retail +0x29C0 + 8*bank, FableWin.pdb inline GetVShaderResource) and the pixel one
+// ShaderResourcePixel (+0x2A98, GetPShaderResource). Shader classes from the shared headers (CShaderResource::GetVertexShader /
+// GetPixelShader const, Ego_r.pdb / FableWin.pdb); were a local CEngineData / g_pEngineData stand-in and local shader models.
+#define FABLE_RETAIL_CENGINECOMPONENT_PROTECTED
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CVERTEXSHADER
+#include "fable_string.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CShaderResource.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 class CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();   // 0x0099A300
@@ -108,13 +57,6 @@ class CIndexBuffer { public:                              // 0x14 bytes
     void* _vtable;
     unsigned char _body[0x10];
     CIndexBuffer();                                // 0x00AC1EC0
-};
-class CEngineComponent { public:                          // 0x0c bytes
-    virtual ~CEngineComponent();
-    void** GlobalPointerAddress;
-    bool   RenderEnabled;
-    unsigned char KeepAlive;
-    CEngineComponent();                            // 0x00B59710
 };
 struct CEngineWeatherSettings {                    // 0x558 bytes
     unsigned char _body[0x558];
@@ -164,14 +106,14 @@ class CEngineWeatherRenderer : public CEngineComponent { public: // vtable 0x012
 
 CEngineWeatherRenderer::CEngineWeatherRenderer()
 {
-    MistVertexShader = g_pEngineData->GetWeatherVertexShaderResource()->GetVertexShader("VSHADER_MIST");
-    MistPixelShader = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_MIST");
-    SnowParticleVertexShader = g_pEngineData->GetWeatherVertexShaderResource()->GetVertexShader("VSHADER_WEATHER_SNOW");
-    SnowParticleClippingVertexShader = g_pEngineData->GetWeatherVertexShaderResource()->GetVertexShader("VSHADER_WEATHER_SNOW_CLIPPING");
-    SnowParticlePixelShader = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_WEATHER_SNOW");
-    RainParticleVertexShader = g_pEngineData->GetWeatherVertexShaderResource()->GetVertexShader("VSHADER_WEATHER_RAIN");
-    RainParticleClippingVertexShader = g_pEngineData->GetWeatherVertexShaderResource()->GetVertexShader("VSHADER_WEATHER_RAIN_CLIPPING");
-    RainParticlePixelShader = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_WEATHER_RAIN");
+    MistVertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)10)->GetVertexShader("VSHADER_MIST");
+    MistPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_MIST");
+    SnowParticleVertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)10)->GetVertexShader("VSHADER_WEATHER_SNOW");
+    SnowParticleClippingVertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)10)->GetVertexShader("VSHADER_WEATHER_SNOW_CLIPPING");
+    SnowParticlePixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_WEATHER_SNOW");
+    RainParticleVertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)10)->GetVertexShader("VSHADER_WEATHER_RAIN");
+    RainParticleClippingVertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)10)->GetVertexShader("VSHADER_WEATHER_RAIN_CLIPPING");
+    RainParticlePixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_WEATHER_RAIN");
     BuildBuffers();
     OverridenRainStrength = -1.0f;
     OverridenSnowStrength = -1.0f;

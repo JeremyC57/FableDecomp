@@ -15,75 +15,21 @@
 //   lookups follow the landed 2D sprite constructor 0x00BAD040 (implicit CCharString temporaries, inline shader destructors) and
 //   every resource is read through an INLINE accessor (a direct member read loads the global early / into another register).
 #include <string.h>
-class CCharString { public:
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-    void* m_pData;
-};
-
-struct CVertexShaderData {
-    virtual ~CVertexShaderData();                  // slot 0
-    void*         VertexDeclaration;
-    void*         VertexShader;
-    const void*   FormatDecl;
-    long          ReferenceCount;                  // +0x10
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-struct CPixelShaderData {
-    virtual ~CPixelShaderData();                   // slot 0
-    void*         PixelShader;
-    long          ReferenceCount;                  // +0x08
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-
-class CShaderBase { public:                               // vtable 0x0129A030
-    virtual ~CShaderBase() { }
-};
-class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
-    CVertexShaderData* Data;
-    CVertexShader();                               // 0x00A62FB0
-    CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CVertexShader& operator=(const CVertexShader& other)
-    {
-        if (Data) Data->ReleaseReference();
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
-    CPixelShaderData* Data;
-    CPixelShader();                                // 0x00A5EC00
-    CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CPixelShader& operator=(const CPixelShader& other)
-    {
-        if (Data) { Data->ReleaseReference(); Data = 0; }
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-
-class CShaderResource { public:
-    CVertexShader GetVertexShader(const CCharString& name) const;// 0x00A5D5F0  // NF35: Ego_r + FableWin ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z (const)
-    CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
-};
-struct CEngineData {
-    unsigned char    _pad0000[0x29c8];
-    CShaderResource* StaticUnlitShaderResource;    // +0x29C8
-    unsigned char    _pad29cc[0x2a60 - 0x29cc];
-    CShaderResource* OcclusionBoxShaderResource;   // +0x2A60
-    unsigned char    _pad2a64[0x2a98 - 0x2a64];
-    CShaderResource* PixelShaderResource;          // +0x2A98
-    CShaderResource* GetStaticUnlitShaderResource() { return StaticUnlitShaderResource; }
-    CShaderResource* GetOcclusionBoxShaderResource() { return OcclusionBoxShaderResource; }
-    CShaderResource* GetPixelShaderResource() { return PixelShaderResource; }
-};
-extern CEngineData* g_pEngineData;                 // 0x01436E98
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A); the vertex shader resources are
+// CEngineResourceManager::VShaderResources[bank] (retail +0x29C0 + 8*bank, FableWin.pdb inline GetVShaderResource) and the pixel one
+// ShaderResourcePixel (+0x2A98, GetPShaderResource). Shader classes from the shared headers (CShaderResource::GetVertexShader /
+// GetPixelShader const, Ego_r.pdb / FableWin.pdb); were a local CEngineData / g_pEngineData stand-in and local shader models.
+#define FABLE_RETAIL_CENGINECOMPONENT_PROTECTED
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CVERTEXSHADER
+#include "fable_string.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CShaderResource.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 class CBaseClassNonCopyable {
 protected:
@@ -136,12 +82,6 @@ template <class T> struct vector : _Vector_base<T> {   // retail 12-byte STLport
 template <class A, class B> struct pair { A first; B second; };
 #include "engine/CCountedPointer.h"
 
-class CEngineComponent { public:                          // 0x0C bytes
-    virtual ~CEngineComponent();
-    void** m_ppOwnerLink;                          // +0x04
-    void*  m_pOwner;                               // +0x08
-    CEngineComponent();                            // 0x00B59710
-};
 
 struct COccluderSlot {                             // 8 bytes
     long Handle;
@@ -189,8 +129,8 @@ CEngineOcclusionManager::CEngineOcclusionManager()
     PrevFrameEntries = EntriesBuffer2;
     EntriesSize = 0;
     PrevFrameEntriesSize = 0;
-    VertexShaderFlareTest = g_pEngineData->GetStaticUnlitShaderResource()->GetVertexShader("VSHADER_STATIC_UNLIT");
+    VertexShaderFlareTest = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)1)->GetVertexShader("VSHADER_STATIC_UNLIT");
     InitializeOcclusionBuffers();
-    OcclusionBoxVShader = g_pEngineData->GetOcclusionBoxShaderResource()->GetVertexShader("VSHADER_OCCLUSION_BOX");
-    OcclusionBoxPixelShader = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_DIFFUSE_ONLY");
+    OcclusionBoxVShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)20)->GetVertexShader("VSHADER_OCCLUSION_BOX");
+    OcclusionBoxPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_DIFFUSE_ONLY");
 }

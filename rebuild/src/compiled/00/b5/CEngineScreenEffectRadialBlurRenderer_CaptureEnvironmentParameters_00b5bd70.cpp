@@ -13,45 +13,19 @@
 
 #include "engine/C3DVector.h"
 
-struct SEnvironmentRadialBlur {
-    C3DVector     BlurCenter;                      // +0x00
-    C3DVector     AreaCenter;                      // +0x0c
-    float         ThresholdR;                      // +0x18
-    float         ThresholdG;                      // +0x1c
-    float         ThresholdB;                      // +0x20
-    unsigned char _pad24[4];
-    float         IntensityR;                      // +0x28
-    float         IntensityG;                      // +0x2c
-    float         IntensityB;                      // +0x30
-    unsigned char _pad34[4];
-    float         Length;                          // +0x38
-    float         Fade;                            // +0x3c
-    float         Range;                           // +0x40
-    float         Twist;                           // +0x44
-    long          BlurTrackMode;                   // +0x48
-    long          AreaTrackMode;                   // +0x4c
-};
-
-struct SEnvironmentSettings {
-    unsigned char          _pad[0x60];
-    SEnvironmentRadialBlur RadialBlur;             // +0x60
-};
-
-class CEnvironment { public:
-    virtual void v00();
-    virtual SEnvironmentSettings* GetSettings();   // slot 1
-};
-
-struct CEnvironmentProvider {
-    virtual void v00();
-    virtual CEnvironment* GetCurrentEnvironment(); // slot 1
-};
-
-struct SEngineState_01436e8c {
-    unsigned char         _pad[0x198];
-    CEnvironmentProvider* m_pEnvironmentProvider;  // +0x198
-};
-extern SEngineState_01436e8c* g_pEngineState_01436e8c;   // 0x01436E8C
+// NF46 (round 7): the 0x01436E8C global is NEngineInternal::GPEngineWorldMap (Ego_r.pdb / FableWin.pdb
+// ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A); the "environment provider at +0x198" is its GameWorld (CIDrawWorld*,
+// FableWin.pdb inline PeekGameWorld, engine/CEngineWorldMap.h _GAMEWORLD), slot 1 is CIDrawWorld::DrawGetEnvironment and the environment's
+// slot 1 CIDrawEnvironment::PeekInterpolatedParams (engine/CIDrawWorld.h / CIDrawEnvironment.h); the radial-blur block (+0x60) is
+// CIDrawEnvironmentParams::ScreenEffectParams.RadialBlur (CIDrawEnvironmentRadialBlurParameters, Ego_r.pdb members). Were the local
+// SEngineState_01436e8c / g_pEngineState_01436e8c, CEnvironmentProvider, CEnvironment, SEnvironmentSettings and SEnvironmentRadialBlur.
+#define FABLE_RETAIL_CENGINEWORLDMAP
+#define FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLD
+#define FABLE_RETAIL_CIDRAWENVIRONMENTPARAMS_SCREENEFFECTS
+#include "engine/CEngineWorldMap.h"
+#include "engine/CIDrawWorld.h"
+#include "engine/CIDrawEnvironment.h"
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }   // 0x01436E8C
 
 struct CEngineScreenEffectRadialBlurRenderer_Env : CEngineScreenEffectRadialBlurRenderer {
     C3DVector& BlurTrackPosition() { return *reinterpret_cast<C3DVector*>(&BlurCenterWorldTrackPosition_X); }
@@ -61,19 +35,19 @@ struct CEngineScreenEffectRadialBlurRenderer_Env : CEngineScreenEffectRadialBlur
 
 void CEngineScreenEffectRadialBlurRenderer_Env::CaptureEnvironmentParameters()
 {
-    const SEnvironmentRadialBlur& env = g_pEngineState_01436e8c->m_pEnvironmentProvider->GetCurrentEnvironment()->GetSettings()->RadialBlur;
+    const CIDrawEnvironmentRadialBlurParameters& env = NEngineInternal::GPEngineWorldMap->PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams().ScreenEffectParams.RadialBlur;
     CurrentParameters_Fade = env.Fade;
     CurrentParameters_Range = env.Range;
     CurrentParameters_Length = env.Length;
     CurrentParameters_Twist = env.Twist;
-    CurrentParameters_IntensityR = env.IntensityR;
-    CurrentParameters_IntensityG = env.IntensityG;
-    CurrentParameters_IntensityB = env.IntensityB;
-    CurrentParameters_ThresholdR = env.ThresholdR;
-    CurrentParameters_ThresholdG = env.ThresholdG;
-    CurrentParameters_ThresholdB = env.ThresholdB;
-    AreaTrack3DPos = env.AreaTrackMode == 1;
-    BlurTrack3DPos = env.BlurTrackMode == 1;
+    CurrentParameters_IntensityR = env.IntensityColour.R;
+    CurrentParameters_IntensityG = env.IntensityColour.G;
+    CurrentParameters_IntensityB = env.IntensityColour.B;
+    CurrentParameters_ThresholdR = env.ThresholdColour.R;
+    CurrentParameters_ThresholdG = env.ThresholdColour.G;
+    CurrentParameters_ThresholdB = env.ThresholdColour.B;
+    AreaTrack3DPos = env.AreaTrackPos == ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION_WORLD_SPACE;
+    BlurTrack3DPos = env.BlurTrackPos == ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION_WORLD_SPACE;
     if (AreaTrack3DPos) {
         AreaTrackPosition() = env.AreaCenter;
     } else {

@@ -9,44 +9,22 @@
 //   the threshold to `1 - c * |blend| / 255`, otherwise `c * blend / 255 + 1`.
 #include "engine/CEngineScreenEffectGlowRenderer.h"
 
-class CRGBColour { public:                                // B,G,R,A bytes over a packed 32-bit colour
-    unsigned char B, G, R, A;
-    CRGBColour(unsigned char r, unsigned char g, unsigned char b) { R = r; G = g; B = b; }
-};
 
-struct SFloatColour { float R, G, B; };
-
-struct SGlowSettings {
-    unsigned char _pad000[0x100];
-    SFloatColour  ThresholdColour;                 // +0x100
-    unsigned char _pad10c[0x4];
-    SFloatColour  IntensityColour;                 // +0x110
-    unsigned char _pad11c[0x178 - 0x11c];
-    float         ThresholdBlend;                  // +0x178
-    float         IntensityScale;                  // +0x17c
-    float         MotionBlur;                      // +0x180
-};
-
-struct CEnvironmentTheme {
-    unsigned char  _pad[0x54];
-    SGlowSettings* m_pGlowSettings;                // +0x54
-};
-
-class CEnvironment { public:
-    virtual void v00();
-    virtual CEnvironmentTheme* GetTheme();         // slot 1
-};
-
-struct CEnvironmentProvider {
-    virtual void v00();
-    virtual CEnvironment* GetCurrentEnvironment(); // slot 1
-};
-
-struct SEngineState_01436e8c {
-    unsigned char         _pad[0x198];
-    CEnvironmentProvider* m_pEnvironmentProvider;  // +0x198
-};
-extern SEngineState_01436e8c* g_pEngineState_01436e8c;   // 0x01436E8C
+// NF46 (round 7): the 0x01436E8C global is NEngineInternal::GPEngineWorldMap (Ego_r.pdb / FableWin.pdb
+// ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A); the "environment provider at +0x198" is its GameWorld (FableWin.pdb inline
+// PeekGameWorld, engine/CEngineWorldMap.h _GAMEWORLD), slot 1 CIDrawWorld::DrawGetEnvironment, then CIDrawEnvironment::PeekInterpolatedParams
+// (engine/CIDrawWorld.h / CIDrawEnvironment.h); the "theme +0x54 glow settings pointer" is ThemeChannels[0] (CArray begin at +0x54) and
+// the glow fields its Ego_r.pdb members: threshold Colours[16] +0x100, intensity Colours[17] +0x110, Scalers[18..20] +0x178..+0x180.
+// Were the local SEngineState_01436e8c / g_pEngineState_01436e8c, CEnvironmentProvider, CEnvironment, CEnvironmentTheme, SGlowSettings models; the colour locals are engine/CRGBColour.h
+// (FABLE_RETAIL_CRGBCOLOUR: FableWin.pdb ??0CRGBColour@@QAE@EEE@Z, inline), which replaces a local CRGBColour model.
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CRGBCOLOUR
+#define FABLE_RETAIL_CENGINEWORLDMAP
+#define FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLD
+#include "engine/CEngineWorldMap.h"
+#include "engine/CIDrawWorld.h"
+#include "engine/CIDrawEnvironment.h"
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }   // 0x01436E8C
 
 struct CEngineScreenEffectGlowRenderer_Methods : CEngineScreenEffectGlowRenderer {
     void ComputeGlowColor();
@@ -54,17 +32,17 @@ struct CEngineScreenEffectGlowRenderer_Methods : CEngineScreenEffectGlowRenderer
 
 void CEngineScreenEffectGlowRenderer_Methods::ComputeGlowColor()
 {
-    const CEnvironmentTheme* theme = g_pEngineState_01436e8c->m_pEnvironmentProvider->GetCurrentEnvironment()->GetTheme();
-    const SGlowSettings* settings = theme->m_pGlowSettings;
-    CRGBColour threshold((unsigned char)(settings->ThresholdColour.R * 255.0f),
-                         (unsigned char)(settings->ThresholdColour.G * 255.0f),
-                         (unsigned char)(settings->ThresholdColour.B * 255.0f));
-    CRGBColour intensity((unsigned char)(settings->IntensityColour.R * 255.0f),
-                         (unsigned char)(settings->IntensityColour.G * 255.0f),
-                         (unsigned char)(settings->IntensityColour.B * 255.0f));
-    float blend = theme->m_pGlowSettings->ThresholdBlend;
-    float scale = theme->m_pGlowSettings->IntensityScale;
-    MotionBlur = 1.0f - theme->m_pGlowSettings->MotionBlur;
+    const CIDrawEnvironmentParams& theme = NEngineInternal::GPEngineWorldMap->PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams();
+    const CIDrawEnvironmentParams::CThemeChannel* settings = &theme.ThemeChannels[0];
+    CRGBColour threshold((unsigned char)(settings->Colours[16].R * 255.0f),
+                         (unsigned char)(settings->Colours[16].G * 255.0f),
+                         (unsigned char)(settings->Colours[16].B * 255.0f));
+    CRGBColour intensity((unsigned char)(settings->Colours[17].R * 255.0f),
+                         (unsigned char)(settings->Colours[17].G * 255.0f),
+                         (unsigned char)(settings->Colours[17].B * 255.0f));
+    float blend = theme.ThemeChannels[0].Scalers[18];
+    float scale = theme.ThemeChannels[0].Scalers[19];
+    MotionBlur = 1.0f - theme.ThemeChannels[0].Scalers[20];
     if (blend >= 0.0f) {
         ThresholdR = (float)threshold.R * blend * (1.0f / 255.0f) + 1.0f;
         ThresholdG = (float)threshold.G * blend * (1.0f / 255.0f) + 1.0f;

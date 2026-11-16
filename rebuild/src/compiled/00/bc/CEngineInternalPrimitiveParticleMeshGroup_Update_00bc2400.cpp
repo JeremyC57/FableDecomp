@@ -10,15 +10,18 @@ class C3DMeshInfo;
 
 class CMatrix3x4 { public: float m_rows[12]; };
 
-struct CMeshBank_00a242a0 {
-    C3DMeshInfo* GetMeshInfo(long id);             // 0x00A242A0
-};
-
-struct CEngineData_01436e98 {
-    unsigned char      _pad[0x10];
-    CMeshBank_00a242a0* m_pMeshBank;               // +0x10
-};
-extern CEngineData_01436e98* g_pEngineData_01436e98;   // 0x01436E98
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A); the bank at +0x10 is MeshBanks[0] (FableWin.pdb inline PeekMeshBank,
+// engine/CEngineResourceManager.h _PEEKMESHBANK) and the lookup 0x00A242A0 is Ego_r.pdb / FableWin.pdb CMeshDataBank::PeekParticleMesh
+// (engine/CMeshDataBank.h, overlay opt-in _PEEKPARTICLEMESH). Were the CEngineData_01436e98 / g_pEngineData_01436e98 and
+// CMeshBank_00a242a0 (GetMeshInfo) stand-ins.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKMESHBANK
+#define FABLE_RETAIL_CMESHDATABANK
+#define FABLE_RETAIL_CMESHDATABANK_PEEKPARTICLEMESH
+#include "engine/CEngineResourceManager.h"
+#include "engine/CMeshDataBank.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 struct SParticleMeshGroupUpdate {
     unsigned char _pad[0xc];
@@ -42,8 +45,8 @@ struct CEngineInternalPrimitiveParticleMeshGroup {
 void CEngineInternalPrimitiveParticleMeshGroup::Update(const SParticleMeshGroupUpdate& update, unsigned long flags)
 {
     EnginePrimitiveFlags = flags;
-    CMeshBank_00a242a0* bank = g_pEngineData_01436e98->m_pMeshBank;
-    MeshInfo = bank->GetMeshInfo(update.m_meshId);
+    const CMeshDataBank* bank = NEngineInternal::GPResourceManager->PeekMeshBank((EMeshBankNo)0);
+    MeshInfo = (C3DMeshInfo*)bank->PeekParticleMesh(update.m_meshId);
     WorldTransform = update.m_worldTransform;
     BlendOp = update.m_blendOp;
     BlendMode = update.m_blendMode;

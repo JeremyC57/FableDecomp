@@ -11,21 +11,29 @@
 //        manager comes from the by-value GetPTextureManager() (temp copy + release) into SetTextureManager 0x009FD870 (labelled
 //        NUISystem::CFrontEndScreen::AddActionOnLeftClicked; really CGraphicDataBank::SetTextureManager(const CCountedPointer&)). engine/CEngineSurfaceCompositionManager.h carries PDB offsets (list 0xc bytes, banks 0x388) that
 //        do not match retail, so `this` is modelled locally.
+// NF46 (round 7): the 0x01436E98 stand-in CEngineData_01436e98 / g_pEngine_01436e98 (and its local GetLoadingMemoryPool helper) is
+//   NEngineInternal::GPResourceManager (?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on engine/CEngineResourceManager.h:
+//   +0x8e0 through FableWin.pdb's inline GetLoadingMemoryPool (overlay opt-in _GETLOADINGMEMORYPOOL), +0x954 through GetGraphicBank (_GETGRAPHICBANK,
+//   as same-TU 0x00B2D9F0). The pool is the header CMovableResourceMemoryPool (a CHandleBasedMemoryPool; Allocate / Free from the
+//   CHandleBasedMemoryPool.h overlay opt-in _ALLOCATE, Lock / Unlock from _LOCK); the local CWideString / CBaseClassNonCopyable moved to their headers.
 #include "fable_compiler.h"
 #include <stdlib.h>
 extern "C" double __fastcall GFGetTime();               // 0x009E1BC0
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
 
 #include "engine/CCountedPointer.h"
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_GETLOADINGMEMORYPOOL
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_GETGRAPHICBANK
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL_LOCK
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL_ALLOCATE
+#include "engine/CBaseClassNonCopyable.h"
+#include "engine/CMovableResourceMemoryPool.h"
+#include "engine/CEngineResourceManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
-class CWideString { public:
-    void* PStringData;
-    ~CWideString();                                     // 0x0099B510
-};
-class CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();                                           // 0x0099A300
-};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
 class CDiskFileWin32 : public CBaseClassNonCopyable { public:                         // vtable 0x0122D06C
@@ -44,13 +52,6 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:                   
     long GetLength() const { return Length; }
 };
 
-class CHandleBasedMemoryPool { public:
-    bool  Allocate(long* handle, unsigned long size, unsigned long flags);   // 0x00A03180
-    void  Lock(long handle);                            // 0x00A026F0
-    void* GetPointerFromHandle(long handle);            // 0x00A026B0
-    void  Unlock(long handle);                          // 0x00A02710
-    void  Free(long handle);                            // 0x00A02B30
-};
 
 struct CByteVector {
     unsigned char* first;
@@ -83,20 +84,6 @@ class CGraphicDataBank { public:
     unsigned char _pad[0x27c];
     CCountedPointer<CTextureManager> TextureManager;    // +0x280
 };
-
-struct CEngineData_01436e98 {
-    unsigned char _pad[0x8e0];
-    CCountedPointer<CHandleBasedMemoryPool> MemoryPool; // +0x8e0
-    unsigned char _pad8e8[0x954 - 0x8e8];
-    CGraphicDataBank* GraphicBank;                      // +0x954
-};
-extern CEngineData_01436e98* g_pEngine_01436e98;        // 0x01436E98
-
-FABLE_FORCEINLINE CHandleBasedMemoryPool* GetLoadingMemoryPool()
-{
-    CCountedPointer<CHandleBasedMemoryPool> pool(g_pEngine_01436e98->MemoryPool);
-    return pool.Data;
-}
 
 FABLE_FORCEINLINE bool IsPositive(long n)
 {
@@ -133,7 +120,7 @@ void CEngineSurfaceCompositionManager::CopyIntermediateBank()
     {
         CDiskFileWin32 source(IntermediateDiskCacheFileName, FILE_ACCESS_READ, 2);
         CDiskFileWin32 dest(CompletedDiskCacheFileName, FILE_ACCESS_WRITE, 2);
-        CHandleBasedMemoryPool* pool = GetLoadingMemoryPool();
+        CMovableResourceMemoryPool* pool = NEngineInternal::GPResourceManager->GetLoadingMemoryPool().Get();
         long handle = -1;
         unsigned char* buffer = 0;
         long bufferSize = 0x100000;
@@ -164,7 +151,7 @@ void CEngineSurfaceCompositionManager::CopyIntermediateBank()
     }
     GFGetTime();
     CompletedBankFile.OpenFileReadOnly(CompletedDiskCacheFileName, 0x48);
-    CompletedBankFile.SetTextureManager(g_pEngine_01436e98->GraphicBank->GetPTextureManager());
+    CompletedBankFile.SetTextureManager(NEngineInternal::GPResourceManager->GetGraphicBank((EGraphicBankNo)0)->GetPTextureManager());
     for (SCacheNode* it = CachedSurfaces->next; it != CachedSurfaces; it = it->next)
         it->value.Data->BankFileIndex = 0;
 }

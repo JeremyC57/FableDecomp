@@ -27,11 +27,12 @@ class CEngineMap { public:
 struct CVector2i { long X, Y; CVector2i() { } CVector2i(long x, long y) : X(x), Y(y) { } };
 static inline long MapUnitsToPatches(long units) { return units / 16; }
 
-struct CEngineGlobal_01436e98 {
-    unsigned char     _pad0[0x954];
-    CGraphicDataBank* GraphicBank;              // +0x954
-};
-extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
+// NF46 (round 7): the 0x01436E98 stand-in CEngineGlobal_01436e98 / g_pEngine_01436e98 is NEngineInternal::GPResourceManager
+//   (?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on engine/CEngineResourceManager.h, +0x954 its GraphicBanks[0] (Ego_r.pdb
+//   member; the header's generated layout branch: the retail branch pulls in the template engine/CCountedPointer.h, which the row's local
+//   non-template counted pointer below would collide with).
+#include "engine/CEngineResourceManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 struct SRenderSettings_01436e20 {
     unsigned char _pad0[0x78];
     unsigned long TexturePaletteDefault;        // +0x78
@@ -96,7 +97,7 @@ public:
 };
 
 CEngineLandscapeMap::CEngineLandscapeMap(CEngineMap* map, long creationFlags)
-    : TexturePalette(g_pEngine_01436e98->GraphicBank, false, g_pRenderSettings_01436e20->TexturePaletteDefault),
+    : TexturePalette(NEngineInternal::GPResourceManager->GraphicBanks[0], false, g_pRenderSettings_01436e20->TexturePaletteDefault),
       CreationFlags(creationFlags)
 {
     Map = map;

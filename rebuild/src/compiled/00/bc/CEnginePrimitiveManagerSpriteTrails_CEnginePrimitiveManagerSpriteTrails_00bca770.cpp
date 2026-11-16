@@ -1,9 +1,13 @@
 // CEnginePrimitiveManagerSpriteTrails::CEnginePrimitiveManagerSpriteTrails(CArray<CEngineScene*>&) -- initializes scene, shader and vertex-buffer pool; retail 00BCA770, 271 bytes. RTTI COL/CHD for VT 012A6A10 proves the zero-offset chain SpriteTrails -> Manager -> RenderUtil -> NonCopyable -> BaseClass; PDB signatures and retail constructor bodies establish each base constructor/dtor. The Manager vtable 012A53E8 has 13 real slots and the derived table overrides slots 0,1,2,5,7. Donor CEngine/CVertexShader/CShaderDataBank headers are included under aliases; retail engine resource is at +0x2A28, unlike donor engine extent. Pool vptrs 012A69DC/012A69EC are documented ABI views with three untyped native entries, not invented methods. Calls: 00BACDB0 manager ctor, 00A62FB0 shader ctor, 00BF2880 CBase ctor, 00BF3180 tree Initialise(3), 00BACD80 enable hook, 0099EBF0/0099EAE0 CCharString ctor/dtor, 00A5D5F0 by-value GetVertexShader(const CCharString&). Strings are retail literals.
 // Leaf: CEnginePrimitiveManagerSpriteTrails
 #include "fable_compiler.h"
-#define CEngine CEngine_PDB
-#include "engine/CEngine.h"
-#undef CEngine
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+//   ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on engine/CEngineResourceManager.h (retail branch); the shader resource
+//   read at +0x2A28 is its VShaderResources[13] (retail +0x29C0 + 8 * bank, FableWin.pdb inline GetVShaderResource). Was g_pEngineData typed as a
+//   CEngineResourceAccessorNativeView over a renaming-macro CEngine (CEngine_PDB) donor block.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#include "engine/CEngineResourceManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 #define CVertexShader CVertexShader_PDB
 #include "engine/CVertexShader.h"
 #undef CVertexShader
@@ -181,12 +185,6 @@ class CEnginePrimitiveManagerSpriteTrails : public CEnginePrimitiveManager { pub
 // The donor CEngine ends at 0x188. Retail code follows its global pointer at
 // 01436E98 and loads the shader resource at +0x2A28; keep donor state aliased,
 // then expose only that proven native field in this projection.
-struct CEngineResourceAccessorNativeView {
-    CEngine_PDB DonorEngineState;
-    unsigned char RetailEngineStateThroughShaderResource[0x2a28 - sizeof(CEngine_PDB)];
-    CShaderResource* ShaderResource;
-};
-extern CEngineResourceAccessorNativeView* g_pEngineData; // 01436E98
 
 CEnginePrimitiveManagerSpriteTrails::CEnginePrimitiveManagerSpriteTrails(
     CArray<CEngineScene*>& scenes)
@@ -203,8 +201,7 @@ CEnginePrimitiveManagerSpriteTrails::CEnginePrimitiveManagerSpriteTrails(
             void* Alignment;
         } result;
         CVertexShader* temporary = reinterpret_cast<CVertexShader*>(result.Bytes);
-        CEngineResourceAccessorNativeView* engine = g_pEngineData;
-        CShaderResource* resource = engine->ShaderResource;
+        const CShaderResource* resource = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)13);
         CVertexShader* shader = resource->GetVertexShader(temporary, name);
         VertexShaderZSortedUnlit = *shader;
         temporary->CVertexShader::~CVertexShader();
@@ -223,5 +220,4 @@ typedef char CBaseClassNativeSize[(sizeof(CBaseClass) == 4) ? 1 : -1];
 typedef char CBaseClassNonCopyableNativeSize[(sizeof(CBaseClassNonCopyable) == 4) ? 1 : -1];
 typedef char CEnginePrimitiveRenderUtilNativeSize[(sizeof(CEnginePrimitiveRenderUtil) == 4) ? 1 : -1];
 typedef char CEnginePrimitiveManagerSpriteTrailsNativeSize[(sizeof(CEnginePrimitiveManagerSpriteTrails) == 0x30) ? 1 : -1];
-typedef char CEngineResourceAccessorNativeOffset[(offsetof(CEngineResourceAccessorNativeView, ShaderResource) == 0x2a28) ? 1 : -1];
 #endif

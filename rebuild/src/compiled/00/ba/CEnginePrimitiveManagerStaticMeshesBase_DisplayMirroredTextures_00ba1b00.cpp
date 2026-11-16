@@ -9,7 +9,7 @@
 //   Initialise 0x00AC1F70 / Lock 0x00AC1FB0 / Unlock 0x00AC1F00 / Uninitialise 0x00AC1EE0 (the inline ~CIndexBuffer, vtable
 //   0x0129EF2C), CRenderStateManager::RealiseRenderState 0x00A058C0, __ftol2 0x00BFEA70, IDirect3DDevice9 SetStreamSource (+0x190),
 //   SetTexture (+0x104), SetIndices (+0x1A0), DrawIndexedPrimitive (+0x148). Globals: NEngineInternal::GPShaderRenderManager
-//   0x01436E14, GPRenderManager 0x01436E18, g_pPrimitiveRenderer 0x01436E78 (DynamicIBUsage / Pool / LockFlags +0xD0..+0xD8,
+//   0x01436E14, GPRenderManager 0x01436E18, GPPrimitiveRendererSharedData 0x01436E78 (DynamicIBUsage / Pool / LockFlags +0xD0..+0xD8,
 //   PixelShaderDiffuse +0xF4), 1/255 0x01231724, 255.0 0x01230014.
 // Shape: two highlight passes (red, then green) over one dynamic 16-bit index buffer filled from the mirrored vertex index list;
 //   each pass is CEnginePrimitiveRenderUtil::SetTextureFactor (pixel-shader constant 2 when pixel shaders are on, else the
@@ -53,7 +53,8 @@ enum ERenderPassType;
 
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }              // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }  // 0x01436E14
-extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer;                             // 0x01436E78
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78 (NF46 round 7: Ego_r.pdb / FableWin.pdb
+//   ?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A; was extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer)
 
 // C3DPrimitive2 (Ego_r.pdb; retail 4 lower past the 12-byte ClothPrimitives CArray and 8 lower past the second CArray): no header.
 class C3DPrimitive2 {
@@ -120,14 +121,14 @@ void CEnginePrimitiveManagerStaticMeshesBase::DisplayMirroredTextures(const CTex
                                                                       unsigned long renderFlags)
 {
     unsigned long index_count = primitive->MirroredTextureVertexIndexList.size();
-    if (index_count == 0 || !g_pPrimitiveRenderer->HighlightMirroredTexturesEnabled || pass == 1)
+    if (index_count == 0 || !NEngineInternal::GPPrimitiveRendererSharedData->HighlightMirroredTexturesEnabled || pass == 1)
         return;
     NEngineInternal::GPShaderRenderManager->ApplyVertexShader(((const CVertexShader*)VertexShadersStatic)[PointLightShaderIndex[0]], true);
-    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(g_pPrimitiveRenderer->PixelShaderDiffuse);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(NEngineInternal::GPPrimitiveRendererSharedData->PixelShaderDiffuse);
     CIndexBuffer index_buffer;
-    index_buffer.Initialise(index_count * 2, g_pPrimitiveRenderer->DynamicIBUsage, INDEX_BUFFER_FORMAT_16, g_pPrimitiveRenderer->DynamicIBPool,
+    index_buffer.Initialise(index_count * 2, NEngineInternal::GPPrimitiveRendererSharedData->DynamicIBUsage, INDEX_BUFFER_FORMAT_16, NEngineInternal::GPPrimitiveRendererSharedData->DynamicIBPool,
                             PT_TRIANGLE_LIST);
-    unsigned short* indices = (unsigned short*)index_buffer.Lock(g_pPrimitiveRenderer->DynamicIBLockFlags, 0, 0);
+    unsigned short* indices = (unsigned short*)index_buffer.Lock(NEngineInternal::GPPrimitiveRendererSharedData->DynamicIBLockFlags, 0, 0);
     for (unsigned long i = 0; i < index_count; ++i)
         indices[i] = (unsigned short)primitive->MirroredTextureVertexIndexList[i];
     index_buffer.Unlock();

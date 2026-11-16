@@ -53,22 +53,46 @@ public:
     long             MapOffsetX;                             // +0x18
     long             MapOffsetY;                             // +0x1c
     CArray<CEngineMap*> MapList;                             // +0x20
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_VISIBLEMAPLIST
+    // Opt-in (NF46 round 7, rows 0x00B599C0 / 0x00B59A30 / 0x00B684F0): Ego_r.pdb VisibleMapList +0x2c, std::list<CEngineMap*> (the 4-byte
+    // retail STLport list; the rows walk `_M_node->_M_next .. _M_node` from GPEngineWorldMap + 0x2C). Same size and later offsets.
+    std::list<CEngineMap*> VisibleMapList;                   // +0x2c
+#endif
 #ifdef FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLD
     // Retail opt-in (chunk 2031, row 0x00B65A20 CEngineSkyRenderer::RenderOuterSky): Ego_r.pdb GameWorld (CIDrawWorld*) at retail +0x198
     // with FableWin.pdb ?PeekGameWorld@CEngineWorldMap@@QBEPBVCIDrawWorld@@XZ, inline in retail (0x00B65A48..0x00B65A55:
     // `mov ecx,[map+198h] ; mov edx,[ecx] ; call [edx+4]`, the CIDrawWorld slot-1 DrawGetEnvironment). The members around it stay opaque.
     const CIDrawWorld* PeekGameWorld() const { return GameWorld; }
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLDMAP
+    // Opt-in (NF46 round 7, row 0x00B401E0): Ego_r.pdb GameWorldMap (CIDrawWorldMap*) at retail +0x19C, right after GameWorld, with FableWin.pdb
+    // ?PeekGameWorldMap@CEngineWorldMap@@QBEPBVCIDrawWorldMap@@XZ, inline in retail (0x00B401E0: `mov ecx,[map+19Ch] ; call [edx+4]`, the
+    // CIDrawWorldMap slot-1 DrawGetMapInfo). Same size and later offsets.
+    const CIDrawWorldMap* PeekGameWorldMap() const { return GameWorldMap; }
+#endif
 private:
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_VISIBLEMAPLIST
+    unsigned char       _pad_0x30[0x168];                    // +0x30 (after the _VISIBLEMAPLIST member)
+#else
     unsigned char       _pad_0x2c[0x16c];                    // +0x2c
+#endif
     CIDrawWorld*        GameWorld;                           // +0x198
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLDMAP
+    CIDrawWorldMap*     GameWorldMap;                        // +0x19c
+    unsigned char       _pad_0x1a0[0x20];                    // +0x1a0 StaticMapQuality .. (not modelled)
+#else
     unsigned char       _pad_0x19c[0x24];                    // +0x19c GameWorldMap .. (not modelled)
+#endif
 #else
 private:
     // Chunk 731: retail CEngineWorldMap is 0x1C0 bytes (CEngine::Initialise 0x00B26360 news 0x1C0 before ??0CEngineWorldMap@@QAE@
     // ABVCEngineInit@@@Z 0x00B423F0), not the 0x360 the generated container-size model gives: the two CStaticMapBankFile members
     // are smaller in retail. The members after MapList (VisibleMapList .. CommonHeaderPosLookupTable, see the default model
     // below) are opaque until their retail offsets are proven; no landed row reads them (0x00B67920 uses MapList only).
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_VISIBLEMAPLIST
+    unsigned char       _pad_0x30[0x190];                    // +0x30 (after the _VISIBLEMAPLIST member)
+#else
     unsigned char       _pad_0x2c[0x194];                    // +0x2c
+#endif
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineWorldMap) == 0x1c0);

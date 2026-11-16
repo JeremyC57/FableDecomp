@@ -141,15 +141,15 @@ struct CIteratorArray {                            // CArray<CPrimitiveIterator>
     CPrimitiveIterator& operator[](unsigned long index) { return m_pFirst[index]; }
 };
 
-class CEnginePrimitiveManager { public:
-    virtual void v00();
-    virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);   // slot 1 (+0x04)
-};
-struct CEnginePrimitiveManagerTable {
-    unsigned char             _pad[0x10];
-    CEnginePrimitiveManager*  Managers[1];         // +0x10, indexed by primitive type
-};
-extern CEnginePrimitiveManagerTable* g_pPrimitiveManagers;   // 0x01436E84
+// NF46 (round 7): the 0x01436E84 global is NEngineInternal::GPPrimitiveTypeInfo (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A); the manager is its FableWin.pdb inline GetPrimitiveManager(type)
+// (PrimitiveManagers +0x10, engine/CEnginePrimitiveTypeInfo.h, overlay opt-in _GETPRIMITIVEMANAGER), a CEnginePrimitiveManager
+// (engine/CEnginePrimitiveManager.h: the Ego_r.pdb virtuals in retail slot order). Were the CEnginePrimitiveManagerTable / g_pPrimitiveManagers and local CEnginePrimitiveManager (slot-1 view) stand-ins.
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO_GETPRIMITIVEMANAGER
+#include "engine/CEnginePrimitiveTypeInfo.h"
+#include "engine/CEnginePrimitiveManager.h"
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 class CEngineInternalPrimitiveParticleGroup {
 public:
@@ -181,7 +181,7 @@ void CEngineInternalPrimitiveParticleGroup::SetChildPrimitive(unsigned long id, 
             handle.Clear();
     }
     if (!handle.Data.Object) {
-        child = g_pPrimitiveManagers->Managers[primitive.Type]->CreateInternalPrimitive(primitive.Type);
+        child = NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(primitive.Type)->CreateInternalPrimitive((EEnginePrimitiveType)primitive.Type);
         handle.Clear();
         handle.Data = child;
     }

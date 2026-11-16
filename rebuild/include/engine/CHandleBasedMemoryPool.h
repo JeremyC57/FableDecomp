@@ -131,6 +131,12 @@ virtual ~CHandleBasedMemoryPool();
 void Defragment();
 #endif
 void * GetPointerFromHandle(long);
+#ifdef FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL_ALLOCATE
+// Retail opt-in (NF46 round 7, row 0x00B2C8E0): FableWin.pdb ?Allocate@CHandleBasedMemoryPool@@QAE_NPAJKK@Z (retail 0x00A03180) and
+// ?Free@CHandleBasedMemoryPool@@QAEXJ@Z (retail 0x00A02B30). Declarations only.
+bool Allocate(long *,unsigned long,unsigned long);
+void Free(long);
+#endif
 #ifdef FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL_LOCK
 // Retail opt-in (Codex pass22): both original PDB public methods, native A026F0/A02710.
 void Lock(long);

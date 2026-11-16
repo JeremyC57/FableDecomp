@@ -96,11 +96,12 @@ class CEnginePrimitiveTypeInfo { public:
 };
 namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
-struct CEngineRenderSettings {
-    unsigned char _pad[0x78];
-    long          CurrentOcclusionLayer;           // +0x78
-};
-extern CEngineRenderSettings* g_pEngineRenderSettings;   // 0x01436E78
+// NF46 (round 7): the 0x01436E78 global is NEngineInternal::GPPrimitiveRendererSharedData (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A); its fields are the Ego_r.pdb members of
+// engine/CEnginePrimitiveRendererSharedData.h (CurrentOcclusionLayer +0x78); was a local CEngineRenderSettings / g_pEngineRenderSettings stand-in.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_RENDERSETTINGS
+#include "engine/CEnginePrimitiveRendererSharedData.h"
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
 
 class CEnginePrimitiveGroupManager : public CEnginePrimitiveManager {
 public:
@@ -109,7 +110,7 @@ public:
 
 long CEnginePrimitiveGroupManager::RenderPrimitive(CEngineInternalPrimitiveBase& group, long layer, CEngineSubPrimitiveChain& chain)
 {
-    long occlusion = g_pEngineRenderSettings->CurrentOcclusionLayer;
+    long occlusion = NEngineInternal::GPPrimitiveRendererSharedData->CurrentOcclusionLayer;
     if (occlusion != -1 && !(group.EnginePrimitiveFlags & 0x4000) && !group.OcclusionInfo[occlusion].Object)
         group.OcclusionInfo[occlusion].Assign(new CEnginePrimitiveOcclusionInfo);
     long result = 0;

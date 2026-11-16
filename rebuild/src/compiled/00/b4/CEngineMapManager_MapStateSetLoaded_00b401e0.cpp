@@ -4,38 +4,30 @@
 // (on the map object at +0 of the state entry), ~CCharString @ 0x0099EAE0 (on the record's name at +4: the record's inline destructor). Shape: the map
 // state table at +0x20 holds pointers to 12-byte entries {map, ?, id}; the 0x20-byte frame holds the returned record (its id read from +4, its name destroyed at +8);
 // the chunk label "CEngine::MapState_SetLoaded" names the method; `this` is the map manager (pointer table at +0x20).
-class CCharString { public:
-    void* m_pStringData;
-    ~CCharString();                                // 0x0099EAE0
-};
-
-struct SMapInfo {                                  // returned by value (0x20 bytes): a word, the id, the name and 0x14 bytes of other fields
-    long          m_kind;                          // +0x00
-    long          m_id;                            // +0x04
-    CCharString   m_name;                          // +0x08
-    unsigned char _rest[0x14];                     // +0x0c
-    ~SMapInfo() { }
-};
-
-struct CWorldMapProvider {
-    virtual void v00();
-    virtual SMapInfo GetMapInfo(long index);       // slot 1 (hidden result pointer, then the index)
-};
-
-struct SEngineState_01436e8c {
-    unsigned char      _pad[0x19c];
-    CWorldMapProvider* m_pWorldMaps;               // +0x19c
-};
-extern SEngineState_01436e8c* g_pEngineState_01436e8c;   // 0x01436E8C
+// NF46 (round 7): the 0x01436E8C stand-in SEngineState_01436e8c / g_pEngineState_01436e8c is NEngineInternal::GPEngineWorldMap
+//   (Ego_r.pdb / FableWin.pdb ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A) on engine/CEngineWorldMap.h; +0x19c is its GameWorldMap
+//   (CIDrawWorldMap*, FableWin.pdb inline PeekGameWorldMap; overlay opt-in _GAMEWORLDMAP) and the provider's slot 1 is
+//   CIDrawWorldMap::DrawGetMapInfo(long) const returning the 0x20-byte CDrawMapInfo (engine/CIDrawWorldMap.h, engine/CDrawMapInfo.h): the id
+//   read from +4 is its PMap (const CIDrawMap*), the name destroyed at +8 its StaticMeshName. The local CCharString / SMapInfo / CWorldMapProvider
+//   moved to fable_string.h and those headers; the state entry's +8 field (local model) now holds that map pointer.
+#define FABLE_RETAIL_CENGINEWORLDMAP
+#define FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLD
+#define FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLDMAP
+#define FABLE_RETAIL_CDRAWMAPINFO_PASS23
+#include "fable_string.h"
+#include "engine/CDrawMapInfo.h"
+#include "engine/CIDrawWorldMap.h"
+#include "engine/CEngineWorldMap.h"
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }   // 0x01436E8C
 
 class CEngineMap { public:
     void OnLoaded();                               // 0x00BDBFE0
 };
 
 struct SMapState {
-    CEngineMap* m_pMap;                            // +0x00
-    long        m_a;                               // +0x04
-    long        m_infoId;                          // +0x08
+    CEngineMap*      m_pMap;                       // +0x00
+    long             m_a;                          // +0x04
+    const CIDrawMap* m_pDrawMap;                   // +0x08
 };
 
 struct CEngineMapManager {
@@ -47,7 +39,7 @@ struct CEngineMapManager {
 void CEngineMapManager::MapState_SetLoaded(long index)
 {
     SMapState* state = m_ppStates[index];
-    SMapInfo info = g_pEngineState_01436e8c->m_pWorldMaps->GetMapInfo(index);
-    state->m_infoId = info.m_id;
+    CDrawMapInfo info = NEngineInternal::GPEngineWorldMap->PeekGameWorldMap()->DrawGetMapInfo(index);
+    state->m_pDrawMap = info.PMap;
     state->m_pMap->OnLoaded();
 }

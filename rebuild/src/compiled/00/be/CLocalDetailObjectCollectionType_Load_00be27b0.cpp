@@ -13,28 +13,23 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-class CCharStringData { public:
-    char* Data;                             // +0
-    long  Length;                           // +4
-};
-class CCharString {
-public:
-    CCharStringData* PStringData;
-    ~CCharString();                         // 0x0099EAE0
-    bool IsEmpty() const { return PStringData == 0 || PStringData->Length == 0; }
-};
-
-struct CGraphicsBank {
-    unsigned long FindEntry(const CCharString& name);   // 0x009CCDC0
-    long GetEntry(long index);                          // 0x00A24280
-    long GetAnimatedEntry(long index);                  // 0x00A24290
-};
-struct SEngineResources {                   // engine resource record reached through the pointer at 0x01436E98
-    unsigned char  _pad[0x10];
-    CGraphicsBank* Bank;                    // +0x10
-    CGraphicsBank* GetBank() const { return Bank; }
-};
-extern SEngineResources* g_pEngineResources;   // 0x01436E98
+// NF46 (round 7): the 0x01436E98 stand-in SEngineResources / g_pEngineResources (+0x10 bank) is NEngineInternal::GPResourceManager
+//   (?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) and its MeshBanks[0] (FableWin.pdb inline PeekMeshBank, opt-in _PEEKMESHBANK);
+//   the bank's calls are CBankFile::FindIndexBySymbol (0x009CCDC0) and CMeshDataBank::PeekStaticMesh / PeekRepeatedMesh (0x00A24280 / 0x00A24290, PeekRepeatedMesh from the overlay opt-in _PEEKREPEATEDMESH;
+//   opt-in _PEEKSTATICANIMATED; FindIndexBySymbol from FABLE_RETAIL_CBANKFILE_ENTRIES), so the three resolved fields hold const C3DMeshInfo*. The local
+//   CCharString / CBaseClassNonCopyable moved to fable_string.h / engine/CBaseClassNonCopyable.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKMESHBANK
+#define FABLE_RETAIL_CMESHDATABANK
+#define FABLE_RETAIL_CMESHDATABANK_BASES
+#define FABLE_RETAIL_CBANKFILE_ENTRIES
+#define FABLE_RETAIL_CMESHDATABANK_PEEKSTATICANIMATED
+#define FABLE_RETAIL_CMESHDATABANK_PEEKREPEATEDMESH
+#include "fable_string.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CMeshDataBank.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 class CDataInputStream {
 public:
@@ -71,7 +66,7 @@ public:
         CCharString name = ReadString();
         if (name.IsEmpty())
             return 0;
-        return g_pEngineResources->GetBank()->FindEntry(name);
+        return NEngineInternal::GPResourceManager->PeekMeshBank((EMeshBankNo)0)->FindIndexBySymbol(name);
     }
 private:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
@@ -83,16 +78,13 @@ struct SCollectionBlock {                   // 0x34 bytes of plain data at +0x20
     long m_tail[3];
 };
 
-class CBaseClassNonCopyable {
-public:
-    virtual void v00();
-};
+#include "engine/CBaseClassNonCopyable.h"
 
 class CLocalDetailObjectCollectionType : public CBaseClassNonCopyable {
 public:
-    long             m_4;                   // +0x04 resolved entry for m_14
-    long             m_8;                   // +0x08 resolved entry for m_18
-    long             m_c;                   // +0x0c resolved entry for m_1c
+    const C3DMeshInfo* m_4;                 // +0x04 resolved entry for m_14
+    const C3DMeshInfo* m_8;                 // +0x08 resolved entry for m_18
+    const C3DMeshInfo* m_c;                 // +0x0c resolved entry for m_1c
     long             m_10;                  // +0x10
     long             m_14;                  // +0x14
     long             m_18;                  // +0x18
@@ -115,12 +107,12 @@ void CLocalDetailObjectCollectionType::Load(CDataInputStream& stream, bool binar
     stream.Read(&m_block, sizeof(m_block));
     if (m_14 > 0) {
         if (m_block.m_kind == 1)
-            m_4 = g_pEngineResources->GetBank()->GetAnimatedEntry(m_14);
+            m_4 = NEngineInternal::GPResourceManager->PeekMeshBank((EMeshBankNo)0)->PeekRepeatedMesh(m_14);
         else
-            m_4 = g_pEngineResources->GetBank()->GetEntry(m_14);
+            m_4 = NEngineInternal::GPResourceManager->PeekMeshBank((EMeshBankNo)0)->PeekStaticMesh(m_14);
     }
     if (m_1c > 0)
-        m_c = g_pEngineResources->GetBank()->GetEntry(m_1c);
+        m_c = NEngineInternal::GPResourceManager->PeekMeshBank((EMeshBankNo)0)->PeekStaticMesh(m_1c);
     if (m_18 > 0)
-        m_8 = g_pEngineResources->GetBank()->GetEntry(m_18);
+        m_8 = NEngineInternal::GPResourceManager->PeekMeshBank((EMeshBankNo)0)->PeekStaticMesh(m_18);
 }

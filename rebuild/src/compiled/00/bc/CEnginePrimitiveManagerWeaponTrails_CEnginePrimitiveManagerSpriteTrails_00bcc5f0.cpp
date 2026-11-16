@@ -1,9 +1,13 @@
 // CEnginePrimitiveManagerWeaponTrails::CEnginePrimitiveManagerWeaponTrails(CArray<CEngineScene*>&) -- initializes scene, shader and vertex-buffer pool; retail 00BCC5F0, 271 bytes. RTTI COL/CHD for VT 012A6AEC proves the zero-offset chain WeaponTrails -> Manager -> RenderUtil -> NonCopyable -> BaseClass; PDB signatures and retail constructor bodies establish each base constructor/dtor. The Manager vtable 012A53E8 has 13 real slots and the derived table overrides slots 0,1,2,5,7. The global at 01436E98 is CEngineResourceManager: its donor header is included under an alias, while the native shader-resource access at +0x2A28 is represented by a bounded ABI projection because donor field offsets differ. Pool vptrs 012A69DC/012A69EC are documented ABI views with three untyped native entries, not invented methods. Calls: 00BACDB0 manager ctor, 00A62FB0 shader ctor, 00BF2880 CBase ctor, 00BF3180 tree Initialise(3), 00BACD80 enable hook, 0099EBF0/0099EAE0 CCharString ctor/dtor, 00A5D5F0 by-value GetVertexShader(const CCharString&). Strings are retail literals.
 // Leaf: ??0CEnginePrimitiveManagerWeaponTrails@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z
 #include "fable_compiler.h"
-#define CEngineResourceManager CEngineResourceManager_PDB
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+//   ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on engine/CEngineResourceManager.h (retail branch, sizeof 0x31E0); the shader
+//   resource read at +0x2A28 is its VShaderResources[13] (retail +0x29C0 + 8 * bank, FableWin.pdb inline GetVShaderResource). Was g_pEngineData typed
+//   as a CEngineResourceManagerRetailProjection beside a renaming-macro include of the header's generated (donor) layout.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
 #include "engine/CEngineResourceManager.h"
-#undef CEngineResourceManager
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 #define CVertexShader CVertexShader_PDB
 #include "engine/CVertexShader.h"
 #undef CVertexShader
@@ -178,16 +182,6 @@ class CEnginePrimitiveManagerWeaponTrails : public CEnginePrimitiveManager { pub
     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&, EEngineRenderLayer, CEngineSubPrimitiveChain&);
 };
 
-// Retail callers identify 01436E98 as CEngineResourceManager and load its
-// shader-resource pointer at +0x2A28. The included donor manager header is a
-// distinct build layout (its ShaderResourcePixel field is at +0x39CC), so this
-// view exposes only the proven native prefix and access. Its bytes stand for
-// pre-existing engine state; it is not constructed as a C++ manager object.
-struct CEngineResourceManagerRetailProjection {
-    unsigned char NativeResourceManagerState[0x2a28];
-    CShaderResource* ShaderResourceAt2A28;
-};
-extern CEngineResourceManagerRetailProjection* g_pEngineData; // 01436E98
 
 CEnginePrimitiveManagerWeaponTrails::CEnginePrimitiveManagerWeaponTrails(
     CArray<CEngineScene*>& scenes)
@@ -204,8 +198,7 @@ CEnginePrimitiveManagerWeaponTrails::CEnginePrimitiveManagerWeaponTrails(
             void* Alignment;
         } result;
         CVertexShader* temporary = reinterpret_cast<CVertexShader*>(result.Bytes);
-        CEngineResourceManagerRetailProjection* resourceManager = g_pEngineData;
-        CShaderResource* resource = resourceManager->ShaderResourceAt2A28;
+        const CShaderResource* resource = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)13);
         CVertexShader* shader = resource->GetVertexShader(temporary, name);
         VertexShaderZSortedUnlit = *shader;
         temporary->CVertexShader::~CVertexShader();
@@ -224,5 +217,4 @@ typedef char CBaseClassNativeSize[(sizeof(CBaseClass) == 4) ? 1 : -1];
 typedef char CBaseClassNonCopyableNativeSize[(sizeof(CBaseClassNonCopyable) == 4) ? 1 : -1];
 typedef char CEnginePrimitiveRenderUtilNativeSize[(sizeof(CEnginePrimitiveRenderUtil) == 4) ? 1 : -1];
 typedef char CEnginePrimitiveManagerWeaponTrailsNativeSize[(sizeof(CEnginePrimitiveManagerWeaponTrails) == 0x30) ? 1 : -1];
-typedef char CEngineResourceManagerNativeProjectionOffset[(offsetof(CEngineResourceManagerRetailProjection, ShaderResourceAt2A28) == 0x2a28) ? 1 : -1];
 #endif

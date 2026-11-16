@@ -7,72 +7,20 @@
 // Layout: engine/CEnginePrimitiveManagerParticleMeshGroup.h has the PDB 16-byte CArray at +0x20; retail's STLport vector is 12 bytes,
 //   so every later member sits 4 lower (VertexShaderDisplacement +0x2c ... PixelShaderDisplacement +0x54), restated locally.
 // Shape: as the landed line-group constructor 0x00BC4D90 (signed-index `*(begin() + index)` element access, real _Vector_base).
-class CCharString { public:
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-    void* m_pData;
-};
-
-struct CVertexShaderData {
-    virtual ~CVertexShaderData();                  // slot 0
-    void*         VertexDeclaration;
-    void*         VertexShader;
-    const void*   FormatDecl;
-    long          ReferenceCount;                  // +0x10
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-struct CPixelShaderData {
-    virtual ~CPixelShaderData();                   // slot 0
-    void*         PixelShader;
-    long          ReferenceCount;                  // +0x08
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-
-class CShaderBase { public:                               // vtable 0x0129A030
-    virtual ~CShaderBase() { }
-};
-class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
-    CVertexShaderData* Data;
-    CVertexShader();                               // 0x00A62FB0
-    CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CVertexShader& operator=(const CVertexShader& other)
-    {
-        if (Data) Data->ReleaseReference();
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
-    CPixelShaderData* Data;
-    CPixelShader();                                // 0x00A5EC00
-    CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CPixelShader& operator=(const CPixelShader& other)
-    {
-        if (Data) { Data->ReleaseReference(); Data = 0; }
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-
-class CShaderResource { public:
-    CVertexShader GetVertexShader(const CCharString& name) const;// 0x00A5D5F0  // NF35: Ego_r + FableWin ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z (const)
-    CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
-};
-struct CEngineData {
-    unsigned char    _pad0000[0x2a78];
-    CShaderResource* MeshGroupVertexShaderResource; // +0x2A78
-    unsigned char    _pad2a7c[0x2a98 - 0x2a7c];
-    CShaderResource* PixelShaderResource;          // +0x2A98
-    CShaderResource* GetMeshGroupVertexShaderResource() { return MeshGroupVertexShaderResource; }
-    CShaderResource* GetPixelShaderResource() { return PixelShaderResource; }
-};
-extern CEngineData* g_pEngineData;                 // 0x01436E98
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A); the vertex shader resources are
+// CEngineResourceManager::VShaderResources[bank] (retail +0x29C0 + 8*bank, FableWin.pdb inline GetVShaderResource) and the pixel one
+// ShaderResourcePixel (+0x2A98, GetPShaderResource). Shader classes from the shared headers (CShaderResource::GetVertexShader /
+// GetPixelShader const, Ego_r.pdb / FableWin.pdb); were a local CEngineData / g_pEngineData stand-in and local shader models.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CVERTEXSHADER
+#include "fable_string.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CShaderResource.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 struct CEngineSceneArray;
 struct CBase {
     virtual void VSlot0();
@@ -148,15 +96,15 @@ CEnginePrimitiveManagerParticleMeshGroup::CEnginePrimitiveManagerParticleMeshGro
     : CEnginePrimitiveGroupManager(scenes)
 {
     VertexShadersMeshPointLights.resize(5);
-    VertexShadersMeshPointLights[0] = g_pEngineData->GetMeshGroupVertexShaderResource()->GetVertexShader("VSHADER_MESH_GROUP_DIRLIGHT_FOG");
-    VertexShadersMeshPointLights[1] = g_pEngineData->GetMeshGroupVertexShaderResource()->GetVertexShader("VSHADER_MESH_GROUP_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShadersMeshPointLights[2] = g_pEngineData->GetMeshGroupVertexShaderResource()->GetVertexShader("VSHADER_MESH_GROUP_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShadersMeshPointLights[3] = g_pEngineData->GetMeshGroupVertexShaderResource()->GetVertexShader("VSHADER_MESH_GROUP_DIRLIGHT_3POINTLIGHTS_FOG");
-    VertexShadersMeshPointLights[4] = g_pEngineData->GetMeshGroupVertexShaderResource()->GetVertexShader("VSHADER_MESH_GROUP_DIRLIGHT_5POINTLIGHTS_FOG");
-    VertexShaderDisplacement = g_pEngineData->GetMeshGroupVertexShaderResource()->GetVertexShader("VSHADER_MESH_GROUP_DISPLACEMENT");
-    PixelShader = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_MESH_GROUP");
-    PixelShaderStipple = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_MESH_GROUP_STIPPLE");
-    PixelShaderAdditiveAlpha = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_MESH_GROUP_ADDITIVE_ALPHA");
-    PixelShaderAdditiveAlphaStipple = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_MESH_GROUP_ADDITIVE_ALPHA_STIPPLE");
-    PixelShaderDisplacement = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_MESH_GROUP_DISPLACEMENT");
+    VertexShadersMeshPointLights[0] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)23)->GetVertexShader("VSHADER_MESH_GROUP_DIRLIGHT_FOG");
+    VertexShadersMeshPointLights[1] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)23)->GetVertexShader("VSHADER_MESH_GROUP_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShadersMeshPointLights[2] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)23)->GetVertexShader("VSHADER_MESH_GROUP_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShadersMeshPointLights[3] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)23)->GetVertexShader("VSHADER_MESH_GROUP_DIRLIGHT_3POINTLIGHTS_FOG");
+    VertexShadersMeshPointLights[4] = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)23)->GetVertexShader("VSHADER_MESH_GROUP_DIRLIGHT_5POINTLIGHTS_FOG");
+    VertexShaderDisplacement = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)23)->GetVertexShader("VSHADER_MESH_GROUP_DISPLACEMENT");
+    PixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_MESH_GROUP");
+    PixelShaderStipple = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_MESH_GROUP_STIPPLE");
+    PixelShaderAdditiveAlpha = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_MESH_GROUP_ADDITIVE_ALPHA");
+    PixelShaderAdditiveAlphaStipple = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_MESH_GROUP_ADDITIVE_ALPHA_STIPPLE");
+    PixelShaderDisplacement = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_MESH_GROUP_DISPLACEMENT");
 }

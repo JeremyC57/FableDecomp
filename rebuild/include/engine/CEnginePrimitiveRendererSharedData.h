@@ -19,6 +19,11 @@ enum EIndexBufferPool;
 #endif
 class CEnginePrimitiveRendererSharedData : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_DTOR
+    // Opt-in (NF46 round 7, row 0x00B33520 ~CEnginePrimitiveRenderer): Ego_r.pdb / FableWin.pdb ??1CEnginePrimitiveRendererSharedData@@UAE@XZ
+    // (public virtual; retail 0x00B36EC0, called out of line by the derived destructor). Declaration only: no layout change.
+    virtual ~CEnginePrimitiveRendererSharedData();                       // 0x00B36EC0
+#endif
 
 #ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
 // Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.

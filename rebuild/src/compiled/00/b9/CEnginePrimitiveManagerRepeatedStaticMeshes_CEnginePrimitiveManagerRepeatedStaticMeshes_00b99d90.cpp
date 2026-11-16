@@ -7,72 +7,20 @@
 //   AllocateAligned @ 0x009F2BE0 (`__fastcall`, size 0xC00, alignment 0x10).
 // Layout: engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h offsets hold (0x94 bytes); its shader members are opaque byte arrays,
 //   so the class is restated locally with the real shader types (models as the landed 0x00BAD040).
-class CCharString { public:
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-    void* m_pData;
-};
-
-struct CVertexShaderData {
-    virtual ~CVertexShaderData();                  // slot 0
-    void*         VertexDeclaration;
-    void*         VertexShader;
-    const void*   FormatDecl;
-    long          ReferenceCount;                  // +0x10
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-struct CPixelShaderData {
-    virtual ~CPixelShaderData();                   // slot 0
-    void*         PixelShader;
-    long          ReferenceCount;                  // +0x08
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-
-class CShaderBase { public:                               // vtable 0x0129A030
-    virtual ~CShaderBase() { }
-};
-class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
-    CVertexShaderData* Data;
-    CVertexShader();                               // 0x00A62FB0
-    CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CVertexShader& operator=(const CVertexShader& other)
-    {
-        if (Data) Data->ReleaseReference();
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
-    CPixelShaderData* Data;
-    CPixelShader();                                // 0x00A5EC00
-    CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CPixelShader& operator=(const CPixelShader& other)
-    {
-        if (Data) { Data->ReleaseReference(); Data = 0; }
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-
-class CShaderResource { public:
-    CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
-    CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
-};
-struct CEngineData {
-    unsigned char    _pad0000[0x2a30];
-    CShaderResource* RepeatedMeshVertexShaderResource; // +0x2A30
-    unsigned char    _pad2a34[0x2a98 - 0x2a34];
-    CShaderResource* PixelShaderResource;          // +0x2A98
-    CShaderResource* GetRepeatedMeshVertexShaderResource() { return RepeatedMeshVertexShaderResource; }
-    CShaderResource* GetPixelShaderResource() { return PixelShaderResource; }
-};
-extern CEngineData* g_pEngineData;                 // 0x01436E98
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A); the vertex shader resources are
+// CEngineResourceManager::VShaderResources[bank] (retail +0x29C0 + 8*bank, FableWin.pdb inline GetVShaderResource) and the pixel one
+// ShaderResourcePixel (+0x2A98, GetPShaderResource). Shader classes from the shared headers (CShaderResource::GetVertexShader /
+// GetPixelShader const, Ego_r.pdb / FableWin.pdb); were a local CEngineData / g_pEngineData stand-in and local shader models.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CVERTEXSHADER
+#include "fable_string.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CShaderResource.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 struct CEngineSceneArray;
 struct CBase {
     virtual void VSlot0();
@@ -150,20 +98,20 @@ CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStat
     : CEnginePrimitiveGroupManager(scenes)
 {
     AddEnableConsoleVariable("EnableRepeatedMeshes");
-    PixelShader = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH");
-    VertexShader = g_pEngineData->GetRepeatedMeshVertexShaderResource()->GetVertexShader("VSHADER_REPEATED_MESH");
-    PixelShaderStippleAlpha = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_STIPPLE_ALPHA");
-    VertexShaderStippleAlpha = g_pEngineData->GetRepeatedMeshVertexShaderResource()->GetVertexShader("VSHADER_REPEATED_MESH_STIPPLE_ALPHA");
-    PixelShaderDepthBufferShadowed = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_SHADOWED");
-    VertexShaderDepthBufferShadowed = g_pEngineData->GetRepeatedMeshVertexShaderResource()->GetVertexShader("VSHADER_REPEATED_MESH_SHADOWED");
-    PixelShaderDepthBufferShadowedStippleAlpha = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_SHADOWED_STIPPLE_ALPHA");
-    VertexShaderDepthBufferShadowedStippleAlpha = g_pEngineData->GetRepeatedMeshVertexShaderResource()->GetVertexShader("VSHADER_REPEATED_MESH_SHADOWED_STIPPLE_ALPHA");
+    PixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH");
+    VertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)14)->GetVertexShader("VSHADER_REPEATED_MESH");
+    PixelShaderStippleAlpha = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_STIPPLE_ALPHA");
+    VertexShaderStippleAlpha = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)14)->GetVertexShader("VSHADER_REPEATED_MESH_STIPPLE_ALPHA");
+    PixelShaderDepthBufferShadowed = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_SHADOWED");
+    VertexShaderDepthBufferShadowed = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)14)->GetVertexShader("VSHADER_REPEATED_MESH_SHADOWED");
+    PixelShaderDepthBufferShadowedStippleAlpha = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_SHADOWED_STIPPLE_ALPHA");
+    VertexShaderDepthBufferShadowedStippleAlpha = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)14)->GetVertexShader("VSHADER_REPEATED_MESH_SHADOWED_STIPPLE_ALPHA");
     if (g_pEngineDisplay->CalculateTextureMemoryFromQuality() >= 1400)
     {
-        PixelShaderColourBufferShadowed = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_COLBUFF_SHADOWED");
-        VertexShaderColourBufferShadowed = g_pEngineData->GetRepeatedMeshVertexShaderResource()->GetVertexShader("VSHADER_REPEATED_MESH_COLBUFF_SHADOWED");
-        PixelShaderColourBufferShadowedStippleAlpha = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_COLBUFF_SHADOWED_STIPPLE_ALPHA");
-        VertexShaderColourBufferShadowedStippleAlpha = g_pEngineData->GetRepeatedMeshVertexShaderResource()->GetVertexShader("VSHADER_REPEATED_MESH_COLBUFF_SHADOWED_STIPPLE_ALPHA");
+        PixelShaderColourBufferShadowed = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_COLBUFF_SHADOWED");
+        VertexShaderColourBufferShadowed = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)14)->GetVertexShader("VSHADER_REPEATED_MESH_COLBUFF_SHADOWED");
+        PixelShaderColourBufferShadowedStippleAlpha = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_COLBUFF_SHADOWED_STIPPLE_ALPHA");
+        VertexShaderColourBufferShadowedStippleAlpha = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)14)->GetVertexShader("VSHADER_REPEATED_MESH_COLBUFF_SHADOWED_STIPPLE_ALPHA");
     }
     PixelShaderShadowed = &PixelShaderDepthBufferShadowed;
     VertexShaderShadowed = &VertexShaderDepthBufferShadowed;

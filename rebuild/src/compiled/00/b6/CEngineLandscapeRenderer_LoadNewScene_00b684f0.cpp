@@ -8,10 +8,22 @@
 // of the opaque Settings (CLandscapeSettings, +0x608), not part of MeshBuilder as the Ego_r layout suggested. Map update helpers and statuses are native
 // addresses 0x00BDC180 (LOD), 0x00BDC510 (foreground), 0x00BDC020 (background tessellation), and
 // 0x00B68070 (foreground textures). Status values 3=failed, 2=pending.
+// NF46 (round 7): the 0x01436E8C global is NEngineInternal::GPEngineWorldMap (Ego_r.pdb / FableWin.pdb
+// ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A); its +0x2C list is the Ego_r.pdb member VisibleMapList (std::list<CEngineMap*>,
+// engine/CEngineWorldMap.h overlay opt-in _VISIBLEMAPLIST) and each node's map record is a CEngineMap whose +0 LandscapeMap is read through
+// the FableWin.pdb inline GetLandscapeMap (engine/CEngineMap.h FABLE_RETAIL_CENGINEMAP). Were the CEngineSceneState_01436E8C /
+// g_pEngineSceneState_01436E8C, CEngineMapList / CEngineMapListNode / CEngineMapReference stand-ins. The component is the retail
+// engine/CEngineComponent.h (its public FableWin.pdb inline PeekRenderEnabled for the +0x08 flag).
+#define FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINEWORLDMAP
+#define FABLE_RETAIL_CENGINEWORLDMAP_VISIBLEMAPLIST
+#define FABLE_RETAIL_CENGINEMAP
 #include "engine/CEngineComponent.h"
+#include "engine/CEngineWorldMap.h"
 #include "engine/CEngineLandscapeRenderer.h"
 #include "engine/CEngineLandscapeMemoryManager.h"
 #include "engine/_quarantine/CEngineLandscapeMap.h"
+#include "engine/CEngineMap.h"
 
 enum LS_LOADING_STATUS
 {
@@ -60,43 +72,18 @@ class CEngineComponentLoadNewSceneParams
     unsigned int Flags;
 };
 
-struct CEngineMapReference
-{
-    CEngineLandscapeMap* Data;
-    void* ReferenceInfo;
-};
-
-struct CEngineMapListNode
-{
-    CEngineMapListNode* Next;
-    CEngineMapListNode* Previous;
-    CEngineMapReference* Value;
-};
-
-struct CEngineMapList
-{
-    CEngineMapListNode* Head;
-    unsigned int Size;
-};
-
-struct CEngineSceneState_01436E8C
-{
-    unsigned char _pad_0x00[0x2c];
-    CEngineMapList LoadedLandscapeMaps;
-};
-
 struct CEngineGlobal_01436EA8
 {
     unsigned char _pad_0x00[0x6b0];
     CEngineLandscapeMemoryManager* LandscapeMemoryManager;
 };
 
-extern CEngineSceneState_01436E8C* g_pEngineSceneState_01436E8C; // 0x01436E8C
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }   // 0x01436E8C
 extern CEngineGlobal_01436EA8* g_pEngineGlobal_01436EA8; // 0x01436EA8
 
 bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNewSceneParams& params)
 {
-    if (!reinterpret_cast<CEngineComponent*>(this)->RenderEnabled)
+    if (!reinterpret_cast<CEngineComponent*>(this)->PeekRenderEnabled())
         return false;
 
     bool updatePending = false;
@@ -104,17 +91,16 @@ bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNe
     reinterpret_cast<CEngineLandscapeMemoryManagerCallView*>(
         global->LandscapeMemoryManager)->ClearTexturePool();
 
-    CEngineSceneState_01436E8C* const sceneState = g_pEngineSceneState_01436E8C;
+    CEngineWorldMap* const sceneState = NEngineInternal::GPEngineWorldMap;
     const bool updateBackgroundLOD = Settings[0x34] != 0;   // +0x63c: CLandscapeSettings at +0x608 in the retail header (not MeshBuilder)
-    CEngineMapList* const maps = &sceneState->LoadedLandscapeMaps;
+    std::list<CEngineMap*>* const maps = &sceneState->VisibleMapList;
 
     if (updateBackgroundLOD && (params.Flags & 2u) == 0)
     {
-        for (CEngineMapListNode* node = maps->Head->Next; node != maps->Head; node = node->Next)
+        for (std::list<CEngineMap*>::iterator it = maps->begin(); it != maps->end(); ++it)
         {
-            CEngineMapReference* const reference = node->Value;
             CEngineLandscapeMapCallView* const map =
-                reinterpret_cast<CEngineLandscapeMapCallView*>(reference->Data);
+                reinterpret_cast<CEngineLandscapeMapCallView*>((*it)->GetLandscapeMap());
             const LS_LOADING_STATUS status =
                 map->UpdateBackgroundLOD(
                     *reinterpret_cast<CLandscapeGPUUpdateQueue*>(GPUUpdateQueue),
@@ -127,11 +113,10 @@ bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNe
         }
     }
 
-    for (CEngineMapListNode* node = maps->Head->Next; node != maps->Head; node = node->Next)
+    for (std::list<CEngineMap*>::iterator it = maps->begin(); it != maps->end(); ++it)
     {
-        CEngineMapReference* const reference = node->Value;
         CEngineLandscapeMapCallView* const map =
-            reinterpret_cast<CEngineLandscapeMapCallView*>(reference->Data);
+            reinterpret_cast<CEngineLandscapeMapCallView*>((*it)->GetLandscapeMap());
         const LS_LOADING_STATUS status =
             map->UpdateForeground();
         if (status == LS_LOADING_FAILED)
@@ -142,11 +127,10 @@ bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNe
 
     if (!updatePending && (params.Flags & 2u) == 0)
     {
-        for (CEngineMapListNode* node = maps->Head->Next; node != maps->Head; node = node->Next)
+        for (std::list<CEngineMap*>::iterator it = maps->begin(); it != maps->end(); ++it)
         {
-            CEngineMapReference* const reference = node->Value;
             CEngineLandscapeMapCallView* const map =
-                reinterpret_cast<CEngineLandscapeMapCallView*>(reference->Data);
+                reinterpret_cast<CEngineLandscapeMapCallView*>((*it)->GetLandscapeMap());
             map->UpdateBackgroundTesselation();
         }
     }

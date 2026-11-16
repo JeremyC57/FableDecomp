@@ -6,16 +6,16 @@
 // mask stays in edi, the loop head is aligned with `mov edi,edi`; the two trailing arguments and `this` are unused (`ret 10h`).
 class CEngineInternalPrimitiveBase;
 
-struct CEnginePrimitiveManagerBase_00b917e0 {
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
-    virtual void RenderPrimitive(CEngineInternalPrimitiveBase* primitive);   // slot 8 (+0x20)
-};
-
-struct CEngine_01436e84 {
-    unsigned char                        _pad[0x10];
-    CEnginePrimitiveManagerBase_00b917e0* m_managers[1];   // +0x10, indexed by primitive type
-};
-extern CEngine_01436e84* g_pEngine_01436e84;       // 0x01436E84
+// NF46 (round 7): the 0x01436E84 global is NEngineInternal::GPPrimitiveTypeInfo (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A); the manager is its FableWin.pdb inline GetPrimitiveManager(type)
+// (PrimitiveManagers +0x10, engine/CEnginePrimitiveTypeInfo.h, overlay opt-in _GETPRIMITIVEMANAGER) and slot 8 is
+// CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(CEngineInternalPrimitiveBase&) (engine/CEnginePrimitiveManager.h, Ego_r.pdb order).
+// Were the address-named CEngine_01436e84 / g_pEngine_01436e84 and CEnginePrimitiveManagerBase_00b917e0 stand-ins.
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO_GETPRIMITIVEMANAGER
+#include "engine/CEnginePrimitiveTypeInfo.h"
+#include "engine/CEnginePrimitiveManager.h"
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 class CEngineInternalPrimitiveBase { public:
     unsigned char                 _pad0[8];
@@ -43,7 +43,7 @@ void CEngineScene::RenderPrimitiveListToShadowBuffer(CEngineInternalPrimitiveBas
     CEngineInternalPrimitiveBase* primitive = first;
     while (primitive) {
         if (primitive->RenderLayerMask & layerMask) {
-            g_pEngine_01436e84->m_managers[primitive->m_type]->RenderPrimitive(primitive);
+            NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(primitive->m_type)->RenderPrimitiveToShadowBuffer(*primitive);
             primitive = primitive->m_pNextRendered;
         } else {
             primitive = primitive->m_pNextSkipped;

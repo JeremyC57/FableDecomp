@@ -33,12 +33,12 @@ public:
     void*          Data;                           // +0x08 CIVCountedPointer<CFrameData>
     CGraphicInfo*  GraphicInfo;                    // +0x0c
 };
-struct SPrimitiveRendererSettings {                // the record behind the pointer at 0x01436E78
-    unsigned char _pad[0xb4];
-    unsigned long PreloadMipmapBias;               // +0xb4
-    unsigned long MaxPreloadTextureSize;           // +0xb8
-};
-extern SPrimitiveRendererSettings* g_pPrimitiveRenderer;   // 0x01436E78
+// NF46 (round 7): the 0x01436E78 global is NEngineInternal::GPPrimitiveRendererSharedData (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A); its fields are the Ego_r.pdb members of
+// engine/CEnginePrimitiveRendererSharedData.h (PreloadMipmapMaxSize +0xB8, PreloadMipmapTolerance +0xB4); was a local SPrimitiveRendererSettings / g_pPrimitiveRenderer stand-in.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_RENDERSETTINGS
+#include "engine/CEnginePrimitiveRendererSharedData.h"
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
 
 class CEnginePrimitiveManagerMeshBase {
     static unsigned long __fastcall GetAcceptablePreloadMipmap(unsigned long mipmap, const CGraphicInfoFrame* frame);
@@ -53,9 +53,9 @@ unsigned long __fastcall CEnginePrimitiveManagerMeshBase::GetAcceptablePreloadMi
         size = frame->GraphicInfo->Header.FrameHeight;
     size >>= mipmap;
     unsigned long level = mipmap;
-    while (size > g_pPrimitiveRenderer->MaxPreloadTextureSize) {
+    while (size > NEngineInternal::GPPrimitiveRendererSharedData->PreloadMipmapMaxSize) {
         size >>= 1;
         ++level;
     }
-    return g_pPrimitiveRenderer->PreloadMipmapBias + level;
+    return NEngineInternal::GPPrimitiveRendererSharedData->PreloadMipmapTolerance + level;
 }

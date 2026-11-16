@@ -22,13 +22,18 @@ class CEnginePrimitiveRenderer;
 namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 // The members read here are modelled by the local SViewRecord_01436e80 view of that object (name debt: the shared
 // engine/CEnginePrimitiveRenderer.h retail branch).
-struct SEngineShaderRegisters_01436e98 {
-    unsigned char _pad[0x3030];
-    long          m_objectMatrixRegister;                // +0x3030
-    unsigned char _pad3034[0x8];
-    long          m_objectOffsetRegister;                // +0x303c
-};
-extern SEngineShaderRegisters_01436e98* g_pEngine_01436e98;   // 0x01436E98
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A); the two register indices are its VSConstantLayoutRepeatedMesh (+0x2EC8,
+// FableWin.pdb inline PeekVSConstantLayoutRepeatedMesh) ObjectMatricies.Offset (+0x164 + 4 = +0x3030) and ObjectOffsets.Offset
+// (+0x170 + 4 = +0x303C) (Ego_r.pdb CEngineVSConstantLayoutRepeatedMesh / CShaderConstantRange members; engine/CEngineResourceManager.h
+// _PEEKVSCONSTANTLAYOUTREPEATEDMESH, engine/CEngineVSConstantLayoutRepeatedMesh.h); was a SEngineShaderRegisters_01436e98 / g_pEngine_01436e98 stand-in.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKVSCONSTANTLAYOUTREPEATEDMESH
+#define FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT
+#define FABLE_RETAIL_CENGINEVSCONSTANTLAYOUTREPEATEDMESH
+#include "engine/CEngineResourceManager.h"
+#include "engine/CEngineVSConstantLayoutRepeatedMesh.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 class CShaderRenderManager {
 public:
@@ -49,6 +54,6 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes_Methods::UploadShaderConstants(
         1, primitive.AlphaTransformMult / ((SViewRecord_01436e80*)NEngineInternal::GPPrimitiveRenderer)->m_fadeDistanceScale, 0.0f, 0.0f,
         primitive.AlphaTransformOffset);
     NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(2, 1.0f, -1.0f, 1.0f, 0.0f);
-    NEngineInternal::GPShaderRenderManager->SetVSConstants(g_pEngine_01436e98->m_objectMatrixRegister, matrices, count);
-    NEngineInternal::GPShaderRenderManager->SetVSConstants(g_pEngine_01436e98->m_objectOffsetRegister, offsets, count);
+    NEngineInternal::GPShaderRenderManager->SetVSConstants(NEngineInternal::GPResourceManager->PeekVSConstantLayoutRepeatedMesh().ObjectMatricies.Offset, matrices, count);
+    NEngineInternal::GPShaderRenderManager->SetVSConstants(NEngineInternal::GPResourceManager->PeekVSConstantLayoutRepeatedMesh().ObjectOffsets.Offset, offsets, count);
 }

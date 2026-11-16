@@ -1,0 +1,134 @@
+addr       parity           behav  name
+00b25c80   RELOCATION_MATCH PASS   GetLoadingMemoryPool
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CSurface
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CTexture
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager
+00b2c4e0   WARN RELOC_NAME: ?FindEntry@CGraphicDataBank@@QAEKABVCCharString@@@Z -> 009ccdc0 labelled 'CBankFile::FindIndexBySymbol'
+00b2c4e0   RELOCATION_MATCH PASS   AddCustomMorphTexture
+00b401e0   WARN SHARED_HEADER_AVAILABLE CEngineMap
+  WARN leaf 'OnGameMapLoaded' matches no symbol in 00b401e0.obj; graded the largest function
+  WARN leaf 'OnGameMapLoaded' matches no symbol in 00b401e0.obj; graded the largest function
+00b401e0   WARN RELOC_NAME: ?OnLoaded@CEngineMap@@QAEXXZ -> 00bdbfe0 labelled '_global::Nop_ret0_00bdbfe0'
+00b401e0   WARN STANDIN_LEAF ?MapState_SetLoaded@CEngineMapManager@@QAEXJ@Z (catalog CEngineWorldMap::OnGameMapLoaded; names another function)
+00b401e0   RELOCATION_MATCH PASS   OnGameMapLoaded
+00b52120   RELOCATION_MATCH PASS   ClipLockedBoxToCamera
+00b52b30   WARN SHARED_HEADER_AVAILABLE CEngineWeatherRenderer
+00b52b30   RELOCATION_MATCH PASS   WorldFrameUpdate
+00b5a1d0   WARN SHARED_HEADER_AVAILABLE CSurface
+00b5a1d0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b5a1d0   WARN SHARED_HEADER_AVAILABLE CEngineColourFilterSettings
+00b5a1d0   WARN SHARED_HEADER_AVAILABLE CTVertexColTex1
+00b5a1d0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00b5a1d0   RELOCATION_MATCH PASS   CEngineScreenEffectColourFilter
+00b5c460   WARN SHARED_HEADER_AVAILABLE CEngineInit
+00b5c460   WARN SHARED_HEADER_AVAILABLE CTVertexColTex1
+00b5c460   WARN SHARED_HEADER_AVAILABLE C2DVector
+00b5c460   WARN RELOC_NAME: ?ResetParameters@CEngineScreenEffectRadialBlurRenderer@@QAEXXZ -> 00b5bbc0 labelled 'SetShadowClipVolumesToNeverShadow'
+00b5c460   RELOCATION_MATCH PASS   CEngineScreenEffectRadialBlurRenderer
+00b620a0   WARN RELOC_NAME: ?Create@CSkyVertexBufferCalls@@QAE_NIIIII@Z -> 00a63150 labelled 'CVertexBufferWin32::Initialise'
+00b620a0   WARN RELOC_NAME: ?Create@CSkyIndexBufferCalls@@QAEXIIIII@Z -> 00ac1f70 labelled 'CIndexBuffer::Initialise'
+00b620a0   WARN RELOC_NAME: ?GetByteLength@CSkyIndexBufferCalls@@QAEIXZ -> 00ac1f10 labelled 'CIndexBuffer::GetSize'
+00b620a0   WARN RELOC_NAME: ?BuildSky@CSkyRendererMethods@@QAEXAAPAX0II@Z -> 00b61b30 labelled 'CEngineSkyRenderer::BuildOuterSkyMesh'
+00b620a0   WARN RELOC_NAME: ?BuildClouds@CSkyRendererMethods@@QAEXAAPAX0II@Z -> 00b61dd0 labelled 'BuildBuffers_BuildGlowParticles'
+00b620a0   WARN RELOC_NAME: ?BuildBand@CSkyRendererMethods@@QAEXAAPAX0II@Z -> 00b61cd0 labelled 'CEngineSkyRenderer::BuildBaseBandMesh'
+00b620a0   WARN RELOC_NAME: ?BuildSolidBaseBand@CSkyRendererMethods@@QAEXXZ -> 00b61ff0 labelled 'CEngineSkyRenderer::BuildStarFieldVB'
+00b620a0   RELOCATION_MATCH PASS   BuildBuffers
+00b6d510   RELOCATION_MATCH PASS   InitialiseDynamicTextures
+00b86a70   RELOCATION_MATCH PASS   InitialiseTextures
+00b8d780   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b8d780   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams
+00b8d780   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00b8d780   RELOCATION_MATCH PASS   CEngineOcclusionManager
+00b917e0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b917e0   WARN SHARED_HEADER_AVAILABLE CEngineScene
+00b917e0   RELOCATION_MATCH PASS   RenderPrimitiveListToShadowBuffer
+00b9bcc0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b9bcc0   WARN SHARED_HEADER_AVAILABLE CGraphicFrame
+00b9bcc0   WARN SHARED_HEADER_AVAILABLE CResourceList
+00b9bcc0   WARN SHARED_HEADER_AVAILABLE CResource
+00b9bcc0   WARN SHARED_HEADER_AVAILABLE CGraphicInfo
+00b9bcc0   WARN SHARED_HEADER_AVAILABLE CGraphicInfoFrame
+00b9bcc0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00b9bcc0   WARN SHARED_HEADER_AVAILABLE C3DMesh2
+00b9bcc0   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00b9bcc0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveRepeatedStaticMesh
+00b9bcc0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedStaticMeshes
+00b9bcc0   RELOCATION_MATCH PASS   PreloadPrimitive
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CResource
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CResourceList
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CGraphicFrame
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CManagedTexture
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CGraphicInfoFrame
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CGraphicInfo
+00ba9a70   WARN SHARED_HEADER_AVAILABLE C3DMeshMaterial
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRendererSharedData
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerMeshBase
+00ba9a70   RELOCATION_MATCH PASS   Get2DAlphaMaskTexture
+00bacc50   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00bacc50   RELOCATION_MATCH PASS   RenderPrimitive
+00bad8a0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00bad8a0   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+00bad8a0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00bad8a0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive
+00bad8a0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00bad8a0   RELOCATION_MATCH PASS   Update
+00bbc130   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleGroup
+00bbc130   WARN RELOC_NAME: ?g_ShaderRenderManager@@3VCShaderRenderManager@@A -> 013bc470 labelled 'CShaderRenderManager::SingletonInstance'
+00bbc130   RELOCATION_MATCH PASS   RenderSubPrimGroups
+00bbf380   RELOCATION_MATCH PASS   BuildBuffers
+00bc3e10   RELOCATION_MATCH PASS   BuildBuffers
+00bc6340   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveChain
+00bc6340   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveOcclusionInfo
+00bc6340   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00bc6340   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00bc6340   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bc6340   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager
+00bc6340   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00bc6340   RELOCATION_MATCH PASS   RenderPrimitive
+00bc7e90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager
+00bc7e90   WARN RELOC_NAME: ?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z -> 00bacd80 labelled 'CEnginePrimitiveManager::AddEnableConsoleVariable'
+00bc7e90   RELOCATION_MATCH PASS   CEnginePrimitiveManagerLines
+00bcc5f0   WARN SHARED_HEADER_AVAILABLE CShaderBase
+00bcc5f0   WARN SHARED_HEADER_AVAILABLE CShaderResource
+00bcc5f0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerWeaponTrails
+00bdd2f0   WARN SHARED_HEADER_AVAILABLE CEngineMap
+00bdd2f0   RELOCATION_MATCH PASS   CEngineLandscapeMap
+00be27b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00be27b0   RELOCATION_MATCH PASS   Load
+00bebbe0   WARN SHARED_HEADER_AVAILABLE CGraphicInfo
+00bebbe0   WARN SHARED_HEADER_AVAILABLE CGraphicInfoFrame
+00bebbe0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerMeshBase
+00bebbe0   RELOCATION_MATCH PASS   GetAcceptablePreloadMipmap
+
+WINS: 25
+  00b25c80 RELOCATION_MATCH CEngine::?GetLoadingMemoryPool@CEngine@@UAEPAVCMovableResourceMemoryPool@@XZ
+  00b2c4e0 RELOCATION_MATCH CEngineSurfaceCompositionManager::AddCustomMorphTexture
+  00b401e0 RELOCATION_MATCH CEngineMapManager::OnGameMapLoaded
+  00b52120 RELOCATION_MATCH CEngineWeatherRenderer::ClipLockedBoxToCamera
+  00b52b30 RELOCATION_MATCH CEngineWeatherRenderer::WorldFrameUpdate
+  00b5a1d0 RELOCATION_MATCH CEngineScreenEffectColourFilter::??0CEngineScreenEffectColourFilter
+  00b5c460 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::??0CEngineScreenEffectRadialBlurRenderer
+  00b620a0 RELOCATION_MATCH CEngineSkyRenderer::BuildBuffers
+  00b6d510 RELOCATION_MATCH CEngineWaterRenderer::?InitialiseDynamicTextures@CEngineWaterRenderer@@AAEXXZ
+  00b86a70 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::?InitialiseTextures@CEngineScreenEffectDisplacementRenderer_Init@@QAE_NXZ
+  00b8d780 RELOCATION_MATCH CEngineOcclusionManager::??0CEngineOcclusionManager
+  00b917e0 RELOCATION_MATCH CEngineScene::?RenderPrimitiveListToShadowBuffer@CEngineScene@@AAEXPAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@ABVCShadowClipVolume@@AAVCEngineSceneRenderStats@@@Z
+  00b9bcc0 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::PreloadPrimitive
+  00ba9a70 RELOCATION_MATCH CEnginePrimitiveManagerMeshBase::?Get2DAlphaMaskTexture@CEnginePrimitiveManagerMeshBase@@SIPBVCTexture@@KKAA_NPBVCGraphicDataBank@@_N@Z
+  00bacc50 RELOCATION_MATCH CEnginePrimitiveOcclusionGroupManager::RenderPrimitive
+  00bad8a0 RELOCATION_MATCH CEngineInternalPrimitive2DSprite::Update
+  00bbc130 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z
+  00bbf380 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::BuildBuffers
+  00bc3e10 RELOCATION_MATCH CEnginePrimitiveManagerParticleLineGroup::BuildBuffers
+  00bc6340 RELOCATION_MATCH CEnginePrimitiveGroupManager::?RenderPrimitive@CEnginePrimitiveGroupManager
+  00bc7e90 RELOCATION_MATCH CEnginePrimitiveManagerLines::CEnginePrimitiveManagerLines
+  00bcc5f0 RELOCATION_MATCH CEnginePrimitiveManagerWeaponTrails::??0CEnginePrimitiveManagerWeaponTrails@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z
+  00bdd2f0 RELOCATION_MATCH CEngineLandscapeMap::??0CEngineLandscapeMap
+  00be27b0 RELOCATION_MATCH CLocalDetailObjectCollectionType::Load
+  00bebbe0 RELOCATION_MATCH CEnginePrimitiveManagerMeshBase::?GetAcceptablePreloadMipmap@CEnginePrimitiveManagerMeshBase@@CIKKPBVCGraphicInfoFrame@@@Z

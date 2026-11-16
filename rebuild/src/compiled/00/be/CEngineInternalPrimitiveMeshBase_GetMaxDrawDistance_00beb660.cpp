@@ -12,13 +12,12 @@
 // `distance *= scale` keeps the product on the FPU stack); the scaled distance is a separate float frame local,
 // the max limit a float local copied as an integer (`mov eax,[eax+84h]`), the min limit stays on the FPU stack and is the
 // value returned by the `<` exit (`test ah,5 ; jnp`), the `>` exit is `test ah,41h ; jne`. Grades: 4.
-struct SFadeSettings {                             // engine settings record reached through the pointer at 0x01436E78
-    unsigned char _pad[0x7c];
-    float         FadeDistanceScale;               // +0x7c
-    float         MinDrawDistance;                 // +0x80
-    float         MaxDrawDistance;                 // +0x84
-};
-extern SFadeSettings* g_pFadeSettings;             // 0x01436E78
+// NF46 (round 7): the 0x01436E78 global is NEngineInternal::GPPrimitiveRendererSharedData (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A); its fields are the Ego_r.pdb members of
+// engine/CEnginePrimitiveRendererSharedData.h (DrawDistanceFactor +0x7C, DrawDistanceMaximum +0x84, DrawDistanceMinimum +0x80); was a local SFadeSettings / g_pFadeSettings stand-in.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_RENDERSETTINGS
+#include "engine/CEnginePrimitiveRendererSharedData.h"
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
 
 class CEngineFadeDistance { public:
     float FadeBeginDistance;
@@ -43,9 +42,9 @@ float CEngineInternalPrimitiveMeshBase::GetMaxDrawDistance() const
 {
     float distance = FadeDistance.MaxDrawDistance;
     if (OverrideFadeDistance) {
-        float maxDraw = distance * g_pFadeSettings->FadeDistanceScale;
-        float minLimit = g_pFadeSettings->MinDrawDistance;
-        float maxLimit = g_pFadeSettings->MaxDrawDistance;
+        float maxDraw = distance * NEngineInternal::GPPrimitiveRendererSharedData->DrawDistanceFactor;
+        float minLimit = NEngineInternal::GPPrimitiveRendererSharedData->DrawDistanceMinimum;
+        float maxLimit = NEngineInternal::GPPrimitiveRendererSharedData->DrawDistanceMaximum;
         if (maxDraw < minLimit)
             return minLimit;
         if (maxDraw > maxLimit)

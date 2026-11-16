@@ -31,6 +31,18 @@ public:
     virtual void OnPreDeviceReset();                                     // 0x00B26010 ?OnPreDeviceReset@CEngine@@UAEXXZ
     virtual bool OnPostDeviceReset();                                    // 0x00B25D00 ?OnPostDeviceReset@CEngine@@UAE_NXZ
     virtual void Uninitialise();                                         // slot 85 0x00B25D80 ?Uninitialise@CEngine@@UAEXXZ (CEngine's first own virtual)
+#ifdef FABLE_RETAIL_CENGINE_GETSCRATCHBUFFERTEXTUREMANAGER
+    // Opt-in (NF46 round 7, row 0x00B23F60): the CIEngine slot-73 override, Ego_r.pdb / FableWin.pdb
+    // ?GetScratchBufferTextureManager@CEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ (retail 0x00B23F60). Declaration only: an override.
+    virtual CGPUScratchBufferTextureManager* GetScratchBufferTextureManager();   // 0x00B23F60
+#endif
+#ifdef FABLE_RETAIL_CENGINE_GETMEMORYPOOLS
+    // Opt-in (NF46 round 7, rows 0x00B25C80 / 0x00B25CC0): the CIEngine slot-71 / 72 overrides, Ego_r.pdb / FableWin.pdb
+    // ?GetLoadingMemoryPool@CEngine@@UAEPAVCMovableResourceMemoryPool@@XZ and ?GetAnimationMemoryPool@CEngine@@UAEPAVCMovableResourceMemoryPool@@XZ
+    // (retail 0x00B25C80 / 0x00B25CC0). Declarations only: overrides.
+    virtual CMovableResourceMemoryPool* GetLoadingMemoryPool();          // 0x00B25C80
+    virtual CMovableResourceMemoryPool* GetAnimationMemoryPool();        // 0x00B25CC0
+#endif
 #ifdef FABLE_RETAIL_CIENGINE_CONVERTWORLDPOS
     // Nested opt-in (chunk 763): the slot-13 override, FableWin.pdb ?ConvertWorldPosToScreenPos@CEngine@@UBE_NABVC3DVector@@AAVC2DVector@@@Z 0x00B242D0.
     virtual bool ConvertWorldPosToScreenPos(const C3DVector& worldPos, C2DVector& screenPos) const;

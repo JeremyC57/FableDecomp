@@ -75,15 +75,15 @@ struct CHandleVector {                                 // vector<CEnginePrimitiv
     CEnginePrimitiveHandle& operator[](unsigned long index) { return m_pFirst[index]; }
 };
 
-struct CEnginePrimitiveManagerBase {
-    virtual void v00();
-    virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);   // slot 1 (+0x04)
-};
-struct CEnginePrimitiveManagerTable {
-    unsigned char                _pad[0x10];
-    CEnginePrimitiveManagerBase* Managers[1];          // +0x10, indexed by primitive type
-};
-extern CEnginePrimitiveManagerTable* g_pPrimitiveManagers;   // 0x01436E84
+// NF46 (round 7): the 0x01436E84 global is NEngineInternal::GPPrimitiveTypeInfo (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A); the manager is its FableWin.pdb inline GetPrimitiveManager(type)
+// (PrimitiveManagers +0x10, engine/CEnginePrimitiveTypeInfo.h, overlay opt-in _GETPRIMITIVEMANAGER), a CEnginePrimitiveManager
+// (engine/CEnginePrimitiveManager.h: the Ego_r.pdb virtuals in retail slot order). Were the CEnginePrimitiveManagerTable / g_pPrimitiveManagers and local CEnginePrimitiveManagerBase slot-view stand-ins.
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO_GETPRIMITIVEMANAGER
+#include "engine/CEnginePrimitiveTypeInfo.h"
+#include "engine/CEnginePrimitiveManager.h"
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 struct CEngineInternalPrimitiveGroup : CEngineInternalPrimitiveBase {
     unsigned char _pad38[0x50 - 0x38];
@@ -98,10 +98,10 @@ void CEngineInternalPrimitiveGroup::SetChildPrimitive(unsigned long index, const
     if (index >= Primitives.size())
         Primitives.Resize(index + 1);
     CEnginePrimitiveHandle& handle = Primitives[index];
-    CEnginePrimitiveManagerBase* manager = g_pPrimitiveManagers->Managers[primitive.Type];
+    CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(primitive.Type);
     bool enable = (flags & 0x20) ? false : true;
     if (manager) {
-        CEngineInternalPrimitiveBase* child = manager->CreateInternalPrimitive(primitive.Type);
+        CEngineInternalPrimitiveBase* child = manager->CreateInternalPrimitive((EEnginePrimitiveType)primitive.Type);
         handle.Clear();
         handle.Data = child;
         child->Update(primitive, flags);

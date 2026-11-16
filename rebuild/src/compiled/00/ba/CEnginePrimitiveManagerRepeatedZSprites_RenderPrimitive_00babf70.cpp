@@ -91,13 +91,12 @@ class CEngineCamera { public:
 };
 namespace NEngineInternal { extern CEngineCamera* GPCamera; }              // 0x01436EA0
 
-struct CEngineRenderSettings {
-    unsigned char _pad00[0x78];
-    long          CurrentOcclusionLayer;            // +0x78
-    unsigned char _pad7c[0x41];
-    bool          OcclusionPass;                    // +0xbd
-};
-extern CEngineRenderSettings* g_pEngineRenderSettings;   // 0x01436E78
+// NF46 (round 7): the 0x01436E78 global is NEngineInternal::GPPrimitiveRendererSharedData (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A); its fields are the Ego_r.pdb members of
+// engine/CEnginePrimitiveRendererSharedData.h (CurrentOcclusionLayer +0x78, OcclusionEnable +0xBD); was a local CEngineRenderSettings / g_pEngineRenderSettings stand-in.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_RENDERSETTINGS
+#include "engine/CEnginePrimitiveRendererSharedData.h"
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
 
 struct __true_type { __true_type() {} };
 template <class T> struct CVector {                 // STLport vector<T>
@@ -151,8 +150,8 @@ ERendered CEnginePrimitiveManagerRepeatedZSprites::RenderPrimitive(CEngineIntern
     float dy = primitive.WorldPosition.Y - NEngineInternal::GPCamera->WorldPosition.Y;
     float dz = primitive.WorldPosition.Z - NEngineInternal::GPCamera->WorldPosition.Z;
     float distance = (float)sqrt(dx * dx + dy * dy + dz * dz);
-    if (g_pEngineRenderSettings->OcclusionPass) {
-        long occlusion = g_pEngineRenderSettings->CurrentOcclusionLayer;
+    if (NEngineInternal::GPPrimitiveRendererSharedData->OcclusionEnable) {
+        long occlusion = NEngineInternal::GPPrimitiveRendererSharedData->CurrentOcclusionLayer;
         if (!(primitive.Flags & 2) && occlusion != -1) {
             if (primitive.EnginePrimitiveFlags & 0x4000)
                 goto queue;

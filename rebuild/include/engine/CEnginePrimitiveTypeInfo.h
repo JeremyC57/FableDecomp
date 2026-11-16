@@ -23,7 +23,10 @@ public:
     // (FableWin.pdb likewise), out of line in retail at 0x00B8FAD0. Declaration only.
     void RegisterPrimitiveManager(CEnginePrimitiveManager* manager);
 #endif
-#if defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED) || defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGERTEXT_RENDER)
+#if defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED) || defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGERTEXT_RENDER) || defined(FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO_GETPRIMITIVEMANAGER)
+    // FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO_GETPRIMITIVEMANAGER (NF46 round 7, the CEngineScene / primitive-group rows 0x00B917E0 ..): the
+    // same FableWin.pdb inline ?GetPrimitiveManager@CEnginePrimitiveTypeInfo@@QBEPAVCEnginePrimitiveManager@@J@Z
+    // view (PrimitiveManagers[type] at +0x10) without the attached-primitive / text-render opt-ins.
     CEnginePrimitiveManager* GetPrimitiveManager(long type)const{return PrimitiveManagers[type];}
 private:
     CEnginePrimitiveManager* PrimitiveManagers[47];

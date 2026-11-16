@@ -16,11 +16,7 @@
 class CMatrix3x4;
 enum ERenderPassType { RENDER_PASS_DEFAULT = 0 };
 
-class CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();                              // 0x0099A300
-    CBaseClassNonCopyable();                                       // 0x0099A2F0
-};
+#include "engine/CBaseClassNonCopyable.h"
 
 class CEngineInternalPrimitiveBase;
 class CEnginePrimitiveManager;
@@ -35,11 +31,16 @@ public:
     CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase& parent) : Parent(&parent), NextSubPrimitive(0) { }
 };
 
-class CEnginePrimitiveManager {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, ERenderPassType pass);   // slot 5 (+0x14)
-};
+// NF46 (round 7): the 0x01436E84 global is NEngineInternal::GPPrimitiveTypeInfo (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A); the manager is its FableWin.pdb inline GetPrimitiveManager(type)
+// (PrimitiveManagers +0x10, engine/CEnginePrimitiveTypeInfo.h, overlay opt-in _GETPRIMITIVEMANAGER), a CEnginePrimitiveManager
+// (engine/CEnginePrimitiveManager.h: the Ego_r.pdb virtuals in retail slot order, RenderSubPrimitive slot 5). Were the
+// CEnginePrimitiveManagerTable / g_pPrimitiveManagers and local CEnginePrimitiveManager slot-view stand-ins.
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO_GETPRIMITIVEMANAGER
+#include "engine/CEnginePrimitiveTypeInfo.h"
+#include "engine/CEnginePrimitiveManager.h"
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 class CEnginePrimitiveManagerParticleSpriteGroup : public CEnginePrimitiveManager {
 public:
     void RenderSingleSprite(CEngineSubPrimitiveBase* subPrimitive, ERenderPassType pass);           // 0x00BC04F0
@@ -49,11 +50,6 @@ public:
     void RenderSingleSpriteTrail(CEngineSubPrimitiveBase* subPrimitive, ERenderPassType pass);      // 0x00BBE090
 };
 
-struct CEnginePrimitiveManagerTable {
-    unsigned char            _pad00[0x10];
-    CEnginePrimitiveManager* Managers[40];          // +0x10, by primitive type
-};
-extern CEnginePrimitiveManagerTable* g_pPrimitiveManagers;   // 0x01436E84
 
 struct CEngineCapabilities_01436eb0 {
     unsigned char _pad00[0x2c];
@@ -102,13 +98,13 @@ void CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups(CEngineInternalPr
         break;
     }
     case 7: {
-        CEnginePrimitiveManagerParticleSpriteGroup* manager = (CEnginePrimitiveManagerParticleSpriteGroup*)g_pPrimitiveManagers->Managers[27];
+        CEnginePrimitiveManagerParticleSpriteGroup* manager = (CEnginePrimitiveManagerParticleSpriteGroup*)NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(27);
         CEngineSubPrimitiveBase subPrimitive(primitive);
         manager->RenderSingleSprite(&subPrimitive, pass);
         break;
     }
     case 20: {
-        CEnginePrimitiveManagerParticleSpriteTrailGroup* manager = (CEnginePrimitiveManagerParticleSpriteTrailGroup*)g_pPrimitiveManagers->Managers[29];
+        CEnginePrimitiveManagerParticleSpriteTrailGroup* manager = (CEnginePrimitiveManagerParticleSpriteTrailGroup*)NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(29);
         CEngineSubPrimitiveBase subPrimitive(primitive);
         manager->RenderSingleSpriteTrail(&subPrimitive, pass);
         long layout = g_ShaderRenderManager.CurrentVSConstantLayoutIndex;
@@ -118,14 +114,14 @@ void CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups(CEngineInternalPr
     }
     case 30: {
         if (g_pEngineCapabilities_01436eb0 && g_pEngineCapabilities_01436eb0->Level >= 2) {
-            CEnginePrimitiveManager* manager = g_pPrimitiveManagers->Managers[primitive.Type];
+            CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(primitive.Type);
             CEngineSubPrimitiveBase subPrimitive(primitive);
             manager->RenderSubPrimitive(subPrimitive, pass);
         }
         break;
     }
     default: {
-        CEnginePrimitiveManager* manager = g_pPrimitiveManagers->Managers[primitive.Type];
+        CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(primitive.Type);
         CEngineSubPrimitiveBase subPrimitive(primitive);
         manager->RenderSubPrimitive(subPrimitive, pass);
         break;

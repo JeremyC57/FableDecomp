@@ -154,6 +154,30 @@ public:
         return *(CGPUScratchBufferTextureManager*)GPUScratchBufferTextureManager;
     }
 #endif
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_GETLOADINGMEMORYPOOL
+    // Opt-in (NF46 round 7, rows 0x00B25C80 / 0x00B42750 ..): FableWin.pdb ?GetLoadingMemoryPool@CEngineResourceManager@@QAE?AV?$CCountedPointer@VCMovableResourceMemoryPool@@@@XZ
+    // (0x02CA1F60; inline in retail: the +0x8E0 counted pointer copied by value, add-ref then release). The member stays opaque outside _CTOR.
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_CTOR
+    CCountedPointer<CMovableResourceMemoryPool> GetLoadingMemoryPool() { return LoadingMemoryPool; }
+#else
+    CCountedPointer<class CMovableResourceMemoryPool> GetLoadingMemoryPool()
+    {
+        return *reinterpret_cast<CCountedPointer<class CMovableResourceMemoryPool>*>(LoadingMemoryPool);
+    }
+#endif
+#endif
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKANIMATIONMEMORYPOOL
+    // Opt-in (NF46 round 7, row 0x00B25CC0): FableWin.pdb ?PeekAnimationMemoryPool@CEngineResourceManager@@QBE?AV?$CCountedPointer@VCMovableResourceMemoryPool@@@@XZ
+    // (0x02CA1FF0; inline in retail: the +0x8F0 counted pointer copied by value). The member stays opaque outside _CTOR.
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_CTOR
+    CCountedPointer<CMovableResourceMemoryPool> PeekAnimationMemoryPool() const { return AnimationMemoryPool; }
+#else
+    CCountedPointer<class CMovableResourceMemoryPool> PeekAnimationMemoryPool() const
+    {
+        return *reinterpret_cast<const CCountedPointer<class CMovableResourceMemoryPool>*>(AnimationMemoryPool);
+    }
+#endif
+#endif
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_ZERORGBATEXTURE
     // Retail opt-in (chunk 2048, row 0x00B64FA0): FableWin.pdb ?GetZeroRGBATexture@CEngineResourceManager@@QAEPAVCTexture@@XZ (its COMDAT is
     // listed right after RenderClouds) on the Ego_r.pdb member ZeroRGBATexture (+0x2AD4, the landed ~CEngineResourceManager 0x00B3B8E0);

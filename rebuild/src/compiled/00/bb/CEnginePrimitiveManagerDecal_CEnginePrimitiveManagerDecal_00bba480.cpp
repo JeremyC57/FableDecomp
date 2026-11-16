@@ -6,74 +6,20 @@
 // Layout: no engine/ header exists; members and offsets from Ego_r.pdb (struct_layouts_egor.tsv, 0x124 bytes): MeshDecal vertex /
 //   index buffers lead at +0x0c / +0x40, so the shader block sits 0x48 above the particle decal group's.
 // Shape: VC7.1 keeps the CVertexShader[3] constructor-loop counter in a frame slot here (ebx already holds zero).
-class CCharString { public:
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-    void* m_pData;
-};
-
-struct CVertexShaderData {
-    virtual ~CVertexShaderData();                  // slot 0
-    void*         VertexDeclaration;
-    void*         VertexShader;
-    const void*   FormatDecl;
-    long          ReferenceCount;                  // +0x10
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-struct CPixelShaderData {
-    virtual ~CPixelShaderData();                   // slot 0
-    void*         PixelShader;
-    long          ReferenceCount;                  // +0x08
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-
-class CShaderBase { public:                               // vtable 0x0129A030
-    virtual ~CShaderBase() { }
-};
-class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
-    CVertexShaderData* Data;
-    CVertexShader();                               // 0x00A62FB0
-    CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CVertexShader& operator=(const CVertexShader& other)
-    {
-        if (Data) Data->ReleaseReference();
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
-    CPixelShaderData* Data;
-    CPixelShader();                                // 0x00A5EC00
-    CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CPixelShader& operator=(const CPixelShader& other)
-    {
-        if (Data) { Data->ReleaseReference(); Data = 0; }
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-
-class CShaderResource { public:
-    CVertexShader GetVertexShader(const CCharString& name) const;// 0x00A5D5F0  // NF35: Ego_r + FableWin ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z (const)
-    CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
-};
-struct CEngineData {
-    unsigned char    _pad0000[0x29c0];
-    CShaderResource* DecalVertexShaderResource;    // +0x29C0
-    unsigned char    _pad29c4[0x2a60 - 0x29c4];
-    CShaderResource* OcclusionVertexShaderResource;   // +0x2A60
-    unsigned char    _pad2a64[0x2a98 - 0x2a64];
-    CShaderResource* PixelShaderResource;          // +0x2A98
-    CShaderResource* GetOcclusionVertexShaderResource() { return OcclusionVertexShaderResource; }
-    CShaderResource* GetPixelShaderResource() { return PixelShaderResource; }
-};
-extern CEngineData* g_pEngineData;                 // 0x01436E98
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A); the vertex shader resources are
+// CEngineResourceManager::VShaderResources[bank] (retail +0x29C0 + 8*bank, FableWin.pdb inline GetVShaderResource) and the pixel one
+// ShaderResourcePixel (+0x2A98, GetPShaderResource). Shader classes from the shared headers (CShaderResource::GetVertexShader /
+// GetPixelShader const, Ego_r.pdb / FableWin.pdb); were a local CEngineData / g_pEngineData stand-in and local shader models.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CVERTEXSHADER
+#include "fable_string.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CShaderResource.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 struct CEngineSceneArray;
 class CBaseClassNonCopyable {
 protected:
@@ -146,7 +92,7 @@ CEnginePrimitiveManagerDecal::CEnginePrimitiveManagerDecal(CEngineSceneArray* sc
     PointLightShaderIndex[3] = 1;
     PointLightShaderIndex[4] = 2;
     PointLightShaderIndex[5] = 2;
-    CShaderResource* vertexResource = g_pEngineData->DecalVertexShaderResource;
+    const CShaderResource* vertexResource = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)0);
     LandscapeDecalVertexShader[0] = vertexResource->GetVertexShader("VSHADER_LANDSCAPE_DECAL_DIRLIGHT");
     LandscapeDecalVertexShader[1] = vertexResource->GetVertexShader("VSHADER_LANDSCAPE_DECAL_3POINTLIGHTS");
     LandscapeDecalVertexShader[2] = vertexResource->GetVertexShader("VSHADER_LANDSCAPE_DECAL_5POINTLIGHTS");
@@ -154,9 +100,9 @@ CEnginePrimitiveManagerDecal::CEnginePrimitiveManagerDecal(CEngineSceneArray* sc
     MeshDecalVertexShader[1] = vertexResource->GetVertexShader("VSHADER_MESH_DECAL_3POINTLIGHTS");
     MeshDecalVertexShader[2] = vertexResource->GetVertexShader("VSHADER_MESH_DECAL_5POINTLIGHTS");
     MeshDecalTwoPassStencilVertexShader = vertexResource->GetVertexShader("VSHADER_MESH_DECAL_STENCIL_TWO_PASS");
-    MeshDecalStencilClearVertexShader = g_pEngineData->GetOcclusionVertexShaderResource()->GetVertexShader("VSHADER_OCCLUSION_BOX");
-    LandscapeDecalPixelShader = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_TEXTURE_DIFFUSE");
-    MeshDecalPixelShader = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_TEXTURE_DIFFUSE");
-    MeshDecalTwoPassStencilPixelShader = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_DECAL_STENCIL_TWO_PASS");
-    MeshDecalStencilClearPixelShader = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_DECAL_STENCIL_TWO_PASS");
+    MeshDecalStencilClearVertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)20)->GetVertexShader("VSHADER_OCCLUSION_BOX");
+    LandscapeDecalPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_DIFFUSE");
+    MeshDecalPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXTURE_DIFFUSE");
+    MeshDecalTwoPassStencilPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_DECAL_STENCIL_TWO_PASS");
+    MeshDecalStencilClearPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_DECAL_STENCIL_TWO_PASS");
 }

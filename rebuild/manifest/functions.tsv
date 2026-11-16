@@ -41627,7 +41627,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b51ad0	BuildBoxPositionMatrix	CEngineWeatherRenderer	__thiscall	void	1	CEngineWeatherRenderer *	1	yes	accepted									
 00b51ea0	StartRaining	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,float	1	yes	accepted									
 00b51f00	StartSnowing	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,float	1	yes	accepted									
-00b51f60	ClipBoxToCamera	_global	__thiscall	EWeatherBoxVisible	3	CEngineWeatherRenderer *,C3DVector *,float	1	yes	accepted									
+00b51f60	ClipBoxToCamera	CEngineWeatherRenderer	__thiscall	EWeatherBoxVisible	3	CEngineWeatherRenderer *,C3DVector *,float	1	yes	accepted									
 00b52090	ClipBoxToWeatherMaskSphere	CEngineWeatherRenderer	unknown	undefined	0		0	yes	accepted									
 00b52120	ClipLockedBoxToCamera	CEngineWeatherRenderer	__thiscall	EWeatherBoxVisible	4	CEngineWeatherRenderer *,C3DVector *,float,long	1	yes	accepted									
 00b52160	SetCommonParticleShaderConstants	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,long *	1	yes	accepted									

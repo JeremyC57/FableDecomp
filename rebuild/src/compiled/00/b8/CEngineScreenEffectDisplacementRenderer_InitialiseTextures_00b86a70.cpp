@@ -11,49 +11,40 @@
 // Shape: the old page is freed through the inline `if (handle >= 0)` helper; the manager is then re-read into a local
 // (edi); the pixel format and the C2DCoordI size are frame locals (`sub esp,0Ch`); the copy-texture clear is an immediate
 // scheduled right before the call; `return handle >= 0;` from a bool goes through ecx (`xor ecx,ecx ; setge cl ; mov al,cl`).
-enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
+// NF46 (round 7): the 0x01436E98 stand-in CEngineGlobal_01436e98 / g_pEngine_01436e98 (+0x3190 m_scratchTextures) is
+//   NEngineInternal::GPResourceManager (?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on engine/CEngineResourceManager.h
+//   (retail branch) and its GetGPUScratchBufferTextureManager() (engine/CGPUScratchBufferTextureManager.h, opt-ins _TEXTURES / _FREEMEMORYPAGE,
+//   the idiom of landed 0x00B2CB40). The local scratch-manager class (0x00F37660 / 0x00F37440 callees now the Ego_r.pdb spellings
+//   AllocteMemoryPage(long, bool) (sic) / AllocateTexture(long, const C2DExtentsI&, long, const CPixelFormat&, unsigned long, bool)), the local
+//   CPixelFormat, C2DCoordI (the PDB parameter is C2DExtentsI) and _D3DFORMAT moved to their headers (FABLE_RETAIL_CPIXELFORMAT). The derived
+//   _Init shell (self) is unchanged: the PDB self is ?InitialiseTextures@CEngineScreenEffectDisplacementRenderer@@AAE_NXZ (name debt, NOTES.md).
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_TEXTURES
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
-
-class CPixelFormat { public:
-    long FormatIndex;
-    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
-    void Initialise(_D3DFORMAT d3dFormat);         // 0x009E3830
-};
-
-class C2DCoordI { public:
-    long X, Y;
-    C2DCoordI(long x, long y) : X(x), Y(y) { }
-};
-
-class CGPUScratchBufferTextureManager { public:
-    void FreeMemoryPage(long page);                // 0x00F37030
-    long AllocateMemoryPage(long a, long b);       // 0x00F37660
-    long AllocateTexture(long page, const C2DCoordI* size, long mipLevels, const CPixelFormat* format, long count, long flags);   // 0x00F37440
-};
-struct CEngineGlobal_01436e98 {
-    unsigned char                   _pad[0x3190];
-    CGPUScratchBufferTextureManager m_scratchTextures;   // +0x3190
-};
-extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
-
+#include "engine/CPixelFormat.h"
+#include "engine/C2DExtentsI.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 struct CEngineScreenEffectDisplacementRenderer_Init : CEngineScreenEffectDisplacementRenderer {
     void FreeTexturePage()
     {
         if (DynamicTexturePageHandle >= 0)
-            g_pEngine_01436e98->m_scratchTextures.FreeMemoryPage(DynamicTexturePageHandle);
+            NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(DynamicTexturePageHandle);
     }
     bool InitialiseTextures();
 };
-
 bool CEngineScreenEffectDisplacementRenderer_Init::InitialiseTextures()
 {
     FreeTexturePage();
-    CGPUScratchBufferTextureManager* textures = &g_pEngine_01436e98->m_scratchTextures;
-    DynamicTexturePageHandle = textures->AllocateMemoryPage(0, 0);
+    CGPUScratchBufferTextureManager* textures = &NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager();
+    DynamicTexturePageHandle = textures->AllocteMemoryPage(0, false);
     CPixelFormat format(D3DFMT_A8R8G8B8);
-    C2DCoordI size(256, 256);
+    C2DExtentsI size(256, 256);
     BackBufferCopyTexture = 0;
-    DisplacementTextureHandle = textures->AllocateTexture(DynamicTexturePageHandle, &size, 1, &format, 1, 0);
+    DisplacementTextureHandle = textures->AllocateTexture(DynamicTexturePageHandle, size, 1, format, 1, false);
     DisplacementTexture = 0;
     return DisplacementTextureHandle >= 0;
 }

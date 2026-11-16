@@ -4,39 +4,36 @@
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail00b5ece0 length286. Actual glow header offsets agree. Resource-manager donor
 // GPU manager+40e4 differs from retail+3190, represented as a documented native view.
-enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
+// NF46 (round 7): the 0x01436E98 stand-in CGlowResourceManager / gGlowResources (+0x3190 Scratch) and the CEngineResourceManager renaming
+//   macro are NEngineInternal::GPResourceManager (?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on
+//   engine/CEngineResourceManager.h (retail branch: +0x3190) and its GetGPUScratchBufferTextureManager() (engine/CGPUScratchBufferTextureManager.h,
+//   opt-ins _TEXTURES / _FREEMEMORYPAGE, the idiom of landed 0x00B2CB40). The local CGPUScratchBufferTextureManager / CGlowScratchManager
+//   (their 0x00F37660 / 0x00F37440 callees now the Ego_r.pdb AllocteMemoryPage (sic) / AllocateTexture), CGlowExtents (C2DExtentsI), the
+//   CPixelFormat renaming macro + local CPixelFormat and _D3DFORMAT moved to their headers (FABLE_RETAIL_CPIXELFORMAT). The derived
+//   CGlowRendererMethods shell (self) is unchanged: the PDB self is CEngineScreenEffectGlowRenderer::InitialiseTextures (name debt, NOTES.md).
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_TEXTURES
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
 #include "engine/CEngineScreenEffectGlowRenderer.h"
-#define CPixelFormat CPixelFormatLayout
 #include "engine/CPixelFormat.h"
-#undef CPixelFormat
-#define CEngineResourceManager CEngineResourceManagerDonorLayout
+#include "engine/C2DExtentsI.h"
 #include "engine/CEngineResourceManager.h"
-#undef CEngineResourceManager
-
-class CPixelFormat : public CPixelFormatLayout { public: CPixelFormat(){FormatIndex=-1;}void Initialise(_D3DFORMAT format);}; //009e3830 (was a CGlowPixelFormat stand-in)
-struct CGlowExtents {int Width,Height;CGlowExtents(int w,int h):Width(w),Height(h){}};
-class CGPUScratchBufferTextureManager { public:
-    void FreeMemoryPage(long a0);   // 0x00F37030 (Ego_r.pdb ?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z)
-};
-struct CGlowScratchManager {
- long AllocateMemoryPage(long,bool); //00f37660
- long AllocateTexture(long,const CGlowExtents&,long,const CPixelFormat&,unsigned,bool); //00f37440
-};
-struct CGlowResourceManager {unsigned char UnrelatedResources[0x3190];CGlowScratchManager Scratch;};
-extern CGlowResourceManager* gGlowResources; //01436e98
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 struct CGlowRendererMethods:CEngineScreenEffectGlowRenderer {int InitialiseTextures();};
 int CGlowRendererMethods::InitialiseTextures(){
- if(DynamicTexturePageHandle>=0)((CGPUScratchBufferTextureManager*)&(gGlowResources->Scratch))->FreeMemoryPage(DynamicTexturePageHandle);
+ if(DynamicTexturePageHandle>=0)NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager().FreeMemoryPage(DynamicTexturePageHandle);
  CPixelFormat format;format.Initialise(D3DFMT_A8R8G8B8);
- CGlowScratchManager* manager=&gGlowResources->Scratch;
- DynamicTexturePageHandle=manager->AllocateMemoryPage(0,false);
- CGlowExtents extents(256,256);
+ CGPUScratchBufferTextureManager* manager=&NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager();
+ DynamicTexturePageHandle=manager->AllocteMemoryPage(0,false);
+ C2DExtentsI extents(256,256);
  GlowTexture256Handle=manager->AllocateTexture(DynamicTexturePageHandle,extents,1,format,1,false);
- extents.Width=64;extents.Height=64;
+ extents.X=64;extents.Y=64;
  GlowTexture64Handle=manager->AllocateTexture(DynamicTexturePageHandle,extents,1,format,1,false);
- extents.Width=64;extents.Height=64;
+ extents.X=64;extents.Y=64;
  GlowTexture64AltHandle=manager->AllocateTexture(DynamicTexturePageHandle,extents,1,format,1,false);
- extents.Width=16;extents.Height=16;
+ extents.X=16;extents.Y=16;
  GlowTexture16Handle=manager->AllocateTexture(DynamicTexturePageHandle,extents,1,format,1,false);
  return GlowTexture256Handle>=0&&GlowTexture64Handle>=0&&GlowTexture64AltHandle>=0&&GlowTexture16Handle>=0?1:0;
 }

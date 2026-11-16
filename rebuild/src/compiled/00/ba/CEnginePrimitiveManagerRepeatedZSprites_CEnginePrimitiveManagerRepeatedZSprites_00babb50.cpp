@@ -20,90 +20,30 @@
 //   STLport vector (_Vector_base + _STLP_alloc_proxy over an allocator temporary) so its three zero stores interleave with the first
 //   CCharString pushes; the two 256x256 sizes are C2DCoordI TEMPORARIES passed by const reference (they share the shader-temporary
 //   frame slot: sub esp,10h; named locals grow the frame to 0x18/0x20).
-enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
-class CCharString { public:
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-    void* m_pData;
-};
-
-struct CVertexShaderData {
-    virtual ~CVertexShaderData();                  // slot 0
-    void*         VertexDeclaration;
-    void*         VertexShader;
-    const void*   FormatDecl;
-    long          ReferenceCount;                  // +0x10
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-struct CPixelShaderData {
-    virtual ~CPixelShaderData();                   // slot 0
-    void*         PixelShader;
-    long          ReferenceCount;                  // +0x08
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-
-class CShaderBase { public:                               // vtable 0x0129A030
-    virtual ~CShaderBase() { }
-};
-class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
-    CVertexShaderData* Data;
-    CVertexShader();                               // 0x00A62FB0
-    CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CVertexShader& operator=(const CVertexShader& other)
-    {
-        if (Data) Data->ReleaseReference();
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
-    CPixelShaderData* Data;
-    CPixelShader();                                // 0x00A5EC00
-    CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CPixelShader& operator=(const CPixelShader& other)
-    {
-        if (Data) { Data->ReleaseReference(); Data = 0; }
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-
-class CShaderResource { public:
-    CVertexShader GetVertexShader(const CCharString& name) const;// 0x00A5D5F0  // NF35: Ego_r + FableWin ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z (const)
-    CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
-};
-class CPixelFormat { public:
-    long FormatIndex;
-    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
-    void Initialise(_D3DFORMAT d3dFormat);         // 0x009E3830
-    void Initialise(long r, long g, long b, long a, bool alpha);   // 0x009E3790
-    CPixelFormat() { }
-};
-class C2DCoordI { public:
-    long X, Y;
-    C2DCoordI(long x, long y) : X(x), Y(y) { }
-};
-class CGPUScratchBufferTextureManager { public:
-    long AllocateMemoryPage(long a, long b);       // 0x00F37660
-    long AllocateTexture(long page, const C2DCoordI& size, long mipLevels, const CPixelFormat* format, long count, long flags);   // 0x00F37440
-    long AllocateDepthBufferSurface(long page, const C2DCoordI& size, const CPixelFormat* format, long flags);   // 0x00F37390
-};
-struct CEngineData {
-    unsigned char    _pad0000[0x2a48];
-    CShaderResource* VertexShaderResource;         // +0x2A48
-    unsigned char    _pad2a4c[0x2a98 - 0x2a4c];
-    CShaderResource* PixelShaderResource;          // +0x2A98
-    unsigned char    _pad2a9c[0x3190 - 0x2a9c];
-    CGPUScratchBufferTextureManager ScratchTextures;   // +0x3190
-    CShaderResource* GetVertexShaderResource() { return VertexShaderResource; }
-};
-extern CEngineData* g_pEngineData;                 // 0x01436E98
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A); the vertex shader resources are
+// CEngineResourceManager::VShaderResources[bank] (retail +0x29C0 + 8*bank, FableWin.pdb inline GetVShaderResource) and the pixel one
+// ShaderResourcePixel (+0x2A98, GetPShaderResource). Shader classes from the shared headers (CShaderResource::GetVertexShader /
+// GetPixelShader const, Ego_r.pdb / FableWin.pdb); were a local CEngineData / g_pEngineData stand-in and local shader models.
+// NF46: the +0x3190 scratch manager is GetGPUScratchBufferTextureManager() (engine/CGPUScratchBufferTextureManager.h, opt-in _TEXTURES and the
+//   overlay opt-in _ALLOCATEDEPTHBUFFERSURFACE; Ego_r.pdb spellings AllocteMemoryPage (sic) / AllocateTexture / AllocateDepthBufferSurface taking
+//   C2DExtentsI / CPixelFormat by reference, ESurfaceMultisampleType); the local CPixelFormat / C2DCoordI / _D3DFORMAT moved to
+//   engine/CPixelFormat.h (FABLE_RETAIL_CPIXELFORMAT: the 8,8,8,8 format is the header's no -1 store constructor), C2DExtentsI.h, Direct3D9Types.h.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_TEXTURES
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ALLOCATEDEPTHBUFFERSURFACE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CVERTEXSHADER
+#include "fable_string.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CShaderResource.h"
+#include "engine/CPixelFormat.h"
+#include "engine/C2DExtentsI.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 struct CEngineSceneArray;
 class CBaseClassNonCopyable {
@@ -193,21 +133,20 @@ class CEnginePrimitiveManagerRepeatedZSprites : public CEnginePrimitiveManagerOc
 CEnginePrimitiveManagerRepeatedZSprites::CEnginePrimitiveManagerRepeatedZSprites(CEngineSceneArray* scenes)
     : CEnginePrimitiveManagerOcclusionBase(scenes)
 {
-    VertexShader = g_pEngineData->GetVertexShaderResource()->GetVertexShader("VSHADER_ZSPRITE");
-    CShaderResource* pixelResource = g_pEngineData->PixelShaderResource;
+    VertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)17)->GetVertexShader("VSHADER_ZSPRITE");
+    const CShaderResource* pixelResource = NEngineInternal::GPResourceManager->GetPShaderResource();
     PixelShader = pixelResource->GetPixelShader("PSHADER_ZSPRITE");
     PixelShaderNoStipple = pixelResource->GetPixelShader("PSHADER_ZSPRITE_NO_STIPPLE");
     RegisterEnable("EnableZSprites");
     BuildBuffers();
-    CGPUScratchBufferTextureManager* textures = &g_pEngineData->ScratchTextures;
-    DynamicTexturePageHandle = textures->AllocateMemoryPage(0, 1);
-    CPixelFormat format;
-    format.Initialise(8, 8, 8, 8, false);
-    BillboardTextureHandle = textures->AllocateTexture(DynamicTexturePageHandle, C2DCoordI(256, 256), 1, &format, 1, 0);
+    CGPUScratchBufferTextureManager* textures = &NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager();
+    DynamicTexturePageHandle = textures->AllocteMemoryPage(0, true);
+    CPixelFormat format(8, 8, 8, 8);
+    BillboardTextureHandle = textures->AllocateTexture(DynamicTexturePageHandle, C2DExtentsI(256, 256), 1, format, 1, false);
     BillboardTexture.Texture = 0;
     BillboardTexture.Surface = 0;
     CPixelFormat depthFormat(D3DFMT_D24S8);
-    ZBufferTextureHandle = textures->AllocateDepthBufferSurface(DynamicTexturePageHandle, C2DCoordI(256, 256), &depthFormat, 0);
+    ZBufferTextureHandle = textures->AllocateDepthBufferSurface(DynamicTexturePageHandle, C2DExtentsI(256, 256), depthFormat, SURFACE_MULTISAMPLE_NONE);
     CurrentRenderedMesh = 0;
     NonStippleAlphaFactor = 1.2f;
     EnableZSpriteAlpha = true;

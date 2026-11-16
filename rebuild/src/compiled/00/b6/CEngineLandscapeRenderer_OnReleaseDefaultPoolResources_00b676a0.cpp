@@ -1,40 +1,38 @@
-#include "candidates/landscape_renderer_release_compiled.h"
+// CEngineLandscapeRenderer::OnReleaseDefaultPoolResources() -- release the default-pool surfaces of every engine map's landscape map
+// Leaf: ?OnReleaseDefaultPoolResources@CEngineLandscapeRenderer@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B676A0, 69 bytes, plain `ret` (virtual: the CEngineComponent override).
+// NF46 (round 7): ported off candidates/landscape_renderer_release_compiled.h (its DAT_01436e8c / CEngineLandscapeMapList /
+//   CEngineLandscapeMapEntry stand-ins). The 0x01436E8C global is NEngineInternal::GPEngineWorldMap (Ego_r.pdb / FableWin.pdb
+//   ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A); the +0x20 / +0x24 begin / end pair is its MapList (CArray<CEngineMap*>,
+//   FableWin.pdb inline GetMapCount / GetMap, engine/CEngineWorldMap.h) and each entry's +0 the CEngineMap LandscapeMap (FableWin.pdb inline
+//   GetLandscapeMap, engine/CEngineMap.h FABLE_RETAIL_CENGINEMAP). Identity: Ego_r.pdb ?OnReleaseDefaultPoolResources@CEngineLandscapeRenderer@@UAEXXZ
+//   (virtual; the landed row spelled it non-virtual QAE, which its own note said needed the header's `virtual`) on
+//   engine/CEngineLandscapeRenderer.h (overlay opt-in _ONRELEASEDEFAULTPOOLRESOURCES); callee Ego_r.pdb
+//   ?ReleaseDefaultPoolSurfaces@CEngineLandscapeMap@@QAEXXZ (CEngineLandscapeMap has no engine/ header; declared here as the candidates
+//   header did).
+// Body shape: the world map global is re-read at the top and bottom of each iteration (the count test and the indexed load).
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_ONRELEASEDEFAULTPOOLRESOURCES
+#define FABLE_RETAIL_CENGINEWORLDMAP
+#define FABLE_RETAIL_CENGINEMAP
+#include "engine/CEngineLandscapeRenderer.h"
+#include "engine/CEngineWorldMap.h"
+#include "engine/CEngineMap.h"
 
-// NOTE: This .cpp fix must be paired with a one-line header change in
-// rebuild/include/candidates/landscape_renderer_release_compiled.h:
-//   change  `void OnReleaseDefaultPoolResources();`
-//   to      `virtual void OnReleaseDefaultPoolResources();`
-// Retail mangles as ?...@CEngineLandscapeRenderer@@UAEXXZ (virtual thiscall);
-// the current header emits @@QAE (non-virtual). The `virtual` keyword is only
-// legal on the in-class declaration, so it cannot live in this out-of-line
-// definition -- the header edit is required to flip @@QAE -> @@UAE. With that
-// edit, this body assembles to the exact 69-byte retail sequence (all bytes
-// match apart from the 3 masked relocation fields).
-//
-// Body shape: reload the container global (DAT_01436e8c) at the top AND bottom
-// of each iteration and index through list->Begin[index]. This stops VC7.1
-// from hoisting/strength-reducing Begin into a register, so it keeps the
-// container pointer live in edx, loads End(+0x24) before Begin(+0x20), and
-// re-reads [edx+0x20] each pass -- matching retail and eliminating the loop
-// alignment pad.
+class CEngineLandscapeMap
+{
+public:
+    void ReleaseDefaultPoolSurfaces();             // 0x00BDC040 ?ReleaseDefaultPoolSurfaces@CEngineLandscapeMap@@QAEXXZ
+};
+
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }   // 0x01436E8C
 
 void CEngineLandscapeRenderer::OnReleaseDefaultPoolResources()
 {
-    int index = 0;
-    CEngineLandscapeMapList* list = DAT_01436e8c;
-    if (((reinterpret_cast<int>(list->End) - reinterpret_cast<int>(list->Begin)) & (int)0xFFFFFFFC) > 0)
+    for (long i = 0; i < NEngineInternal::GPEngineWorldMap->GetMapCount(); ++i)
     {
-        do
-        {
-            list = DAT_01436e8c;
-            CEngineLandscapeMapEntry* entry = list->Begin[index];
-            if (entry != 0 && entry->LandscapeMap != 0)
-            {
-                entry->LandscapeMap->ReleaseDefaultPoolSurfaces();
-            }
-            ++index;
-            list = DAT_01436e8c;
-        } while (index <
-            ((reinterpret_cast<int>(list->End) - reinterpret_cast<int>(list->Begin)) >> 2));
+        CEngineMap* map = NEngineInternal::GPEngineWorldMap->GetMap(i);
+        if (map != 0 && map->GetLandscapeMap() != 0)
+            map->GetLandscapeMap()->ReleaseDefaultPoolSurfaces();
     }
 }

@@ -113,15 +113,13 @@ class CEngineOcclusionManager { public:
 };
 namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }   // 0x01436E5C
 
-struct CEnginePrimitiveRendererSharedData {
-    unsigned char _pad000[0x78];
-    long          CurrentOcclusionLayer;           // +0x78
-    unsigned char _pad07c[0xbd - 0x7c];
-    bool          OcclusionEnable;                 // +0xbd
-    unsigned char _pad0be[0x24c - 0xbe];
-    long          ShowVisibilityInfo;              // +0x24c
-};
-extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRendererSharedData;   // 0x01436E78
+// NF46 (round 7): the 0x01436E78 global is NEngineInternal::GPPrimitiveRendererSharedData (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A); its fields are the Ego_r.pdb members of
+// engine/CEnginePrimitiveRendererSharedData.h (CurrentOcclusionLayer +0x78, OcclusionEnable +0xBD, ShowVisibilityInfo +0x24C); was a local CEnginePrimitiveRendererSharedData / g_pPrimitiveRendererSharedData stand-in.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_RENDERSETTINGS
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_SILHOUETTES
+#include "engine/CEnginePrimitiveRendererSharedData.h"
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
 
 class CEngineInternalPrimitiveOcclusionBase {
 public:
@@ -152,13 +150,13 @@ public:
 
 void CEnginePrimitiveManagerOcclusionBase::RenderBoundingBox(CEngineInternalPrimitiveOcclusionBase* primitive)
 {
-    long layer = g_pPrimitiveRendererSharedData->CurrentOcclusionLayer;
+    long layer = NEngineInternal::GPPrimitiveRendererSharedData->CurrentOcclusionLayer;
     if (layer == -1)
         return;
     CEnginePrimitiveOcclusionInfo* info = primitive->OcclusionInfo[layer];
     if (!info)
         return;
-    if (!g_pPrimitiveRendererSharedData->OcclusionEnable) {
+    if (!NEngineInternal::GPPrimitiveRendererSharedData->OcclusionEnable) {
         primitive->RenderWithoutOcclusion(layer);
         return;
     }
@@ -176,7 +174,7 @@ void CEnginePrimitiveManagerOcclusionBase::RenderBoundingBox(CEngineInternalPrim
         info->OcclusionTestHandles.push_back(handle);
         info->TestFrame = NEngineInternal::GPOcclusionManager->CurrentFrame;
         DrawVisibilityTestBox(box, handle);
-        long show = g_pPrimitiveRendererSharedData->ShowVisibilityInfo;
+        long show = NEngineInternal::GPPrimitiveRendererSharedData->ShowVisibilityInfo;
         if (show == 1 || show == 2) {
             unsigned long colour;
             if (primitive->Type == 0x29)
@@ -186,7 +184,7 @@ void CEnginePrimitiveManagerOcclusionBase::RenderBoundingBox(CEngineInternalPrim
             DrawDebugVisibilityTestBox(box, colour);
         }
     }
-    else if (g_pPrimitiveRendererSharedData->ShowVisibilityInfo == 2) {
+    else if (NEngineInternal::GPPrimitiveRendererSharedData->ShowVisibilityInfo == 2) {
         primitive->GetWorldBoundingBox(box);
         DrawDebugVisibilityTestBox(box, 0x8000ff00);
     }

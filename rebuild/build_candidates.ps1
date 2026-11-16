@@ -239092,9 +239092,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b51f60'
-        Module = 'CWeatherRendererMethods'
-        Source = '00/b5/CWeatherRendererMethods_ClipBoxToCamera_00b51f60.cpp'
-        TestSource = '00/b5/CWeatherRendererMethods_ClipBoxToCamera_00b51f60_test.cpp'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_ClipBoxToCamera_00b51f60.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_ClipBoxToCamera_00b51f60_test.cpp'
         PassPattern = '00b51f60_TEST PASS'
     }
     [pscustomobject]@{

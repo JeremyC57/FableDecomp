@@ -18,18 +18,18 @@ class CIndexBuffer : public CIndexBufferLayout
 public:
     unsigned char* Lock(unsigned long, unsigned long, unsigned long);   // 0x00AC1FB0
 };
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on the retail branch of engine/CEngineResourceManager.h, which declares
+// the three out-of-line buffer getters (GetVertexBufferUsage 0x00B3B030, GetIndexBufferUsage 0x00B3B060, GetIndexBufferMemPool 0x00B3B0A0);
+// was a CEngineResourceManager_Methods / g_ResourceManager stand-in derived from the flattened default.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
 #include "engine/CEngineResourceManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 enum EVertexType {VertexTypeDefault=0};
 enum EVertexBufferPool {VertexPoolManaged=1};
 enum EIndexBufferFormat {IndexFormat16=101};
 enum EIndexBufferPool {IndexPoolManaged=1};
 enum EPrimitiveType {PrimitiveTriangleList=4};
-struct CEngineResourceManager_Methods:CEngineResourceManager {
- unsigned long GetVertexBufferUsage(); //00B3B030
- unsigned long GetIndexBufferUsage(); //00B3B060
- EIndexBufferPool GetIndexBufferMemPool(); //00B3B0A0
-};
-extern CEngineResourceManager_Methods* g_ResourceManager; //01436E98
 struct CVertexBufferWin32_Retail {
  void* NativeVTable;void* PVertexBuffer;unsigned long Length;EVertexType Type;unsigned char Stride;unsigned char Alignment[3];unsigned char CompressionParams[32];
  bool Initialise(EVertexType,long,long,unsigned long,EVertexBufferPool); //00A63150
@@ -54,7 +54,7 @@ class CEnginePrimitiveManagerParticleSpriteGroup { public:
 };
 struct SIndexedParticleVertex {float Index;unsigned short U,V;};
 void CEnginePrimitiveManagerParticleSpriteGroup::BuildBuffers(){
- VertexBuffer.Initialise(VertexTypeDefault,40,8,g_ResourceManager->GetVertexBufferUsage(),VertexPoolManaged);
+ VertexBuffer.Initialise(VertexTypeDefault,40,8,NEngineInternal::GPResourceManager->GetVertexBufferUsage(),VertexPoolManaged);
  SIndexedParticleVertex* vertex=(SIndexedParticleVertex*)VertexBuffer.Lock(0,0,VertexBuffer.Length);
  int shaderIndex=4;
  for(int i=10;i;--i){
@@ -65,7 +65,7 @@ void CEnginePrimitiveManagerParticleSpriteGroup::BuildBuffers(){
   shaderIndex+=4;
  }
  VertexBuffer.Unlock();
- IndexBuffer.Initialise(120,g_ResourceManager->GetIndexBufferUsage(),IndexFormat16,g_ResourceManager->GetIndexBufferMemPool(),PrimitiveTriangleList);
+ IndexBuffer.Initialise(120,NEngineInternal::GPResourceManager->GetIndexBufferUsage(),IndexFormat16,NEngineInternal::GPResourceManager->GetIndexBufferMemPool(),PrimitiveTriangleList);
  unsigned short* index=(unsigned short*)IndexBuffer.Lock(0,0,IndexBuffer.GetSize());
  int base=0;
  for(int j=10;j;--j){*index++=(unsigned short)base;*index++=(unsigned short)(base+1);*index++=(unsigned short)(base+3);*index++=(unsigned short)(base+1);*index++=(unsigned short)(base+2);*index++=(unsigned short)(base+3);base+=4;}

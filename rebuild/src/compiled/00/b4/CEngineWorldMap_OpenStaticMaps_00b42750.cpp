@@ -20,19 +20,19 @@
 // Shape: the progress text is an implicit conversion temporary; the state-2 loop passes the folded constant 2; the open
 //   result is kept in bl across the pool and water calls; the single state store after the if/else is duplicated by VC
 //   into each exit (storing ebp, not the propagated 2), which separate early-return stores do not reproduce.
+// NF46 (round 7): the 0x01436E98 stand-in CEngineGlobal_01436e98 / g_pEngine_01436e98 is NEngineInternal::GPResourceManager
+//   (?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on engine/CEngineResourceManager.h; its +0x8e0 LoadingMemoryPool is read
+//   through FableWin.pdb's inline GetLoadingMemoryPool (overlay opt-in _GETLOADINGMEMORYPOOL). The local CCharString / CWideString moved to
+//   fable_string.h (included by the header; FABLE_RETAIL_CCHARSTRING for the defaulted length).
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
 //   `dynamic initializer for '...'`, defining rows named by agentFAM09):
 //   0x01436EC4 SeaStaticMapBankFileName (global; initializer 0x01224680), was g_WaterBankSymbol.
 //   0x01436ECC CommonStaticMapHeaderEntryName (global; initializer 0x012246C0), was g_GlobalMapEntrySymbol.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CWideString { public:
-    void* PStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_GETLOADINGMEMORYPOOL
+#include "engine/CEngineResourceManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 namespace NProgressDisplay {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
@@ -58,11 +58,6 @@ class CStaticMapBankFile : public CBankFileAsync { public:
     void SetMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool);   // 0x00B3E820
 };
 
-struct CEngineGlobal_01436e98 {
-    unsigned char _pad[0x8e0];
-    CCountedPointer<CMovableResourceMemoryPool> MemoryPool;   // +0x8e0
-};
-extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
 
 class CEngineWaterRenderer { public:
     void OpenStaticMapForUse(CStaticMapBankFile* file, CCharString symbol);   // 0x00B6D4D0
@@ -108,7 +103,7 @@ void CEngineWorldMap::OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state)
     }
     else {
         bool opened = StaticMapFile.Open(StaticMapBankName, 0x62);
-        StaticMapFile.SetMemoryPool(g_pEngine_01436e98->MemoryPool);
+        StaticMapFile.SetMemoryPool(NEngineInternal::GPResourceManager->GetLoadingMemoryPool());
         if (!opened)
             return;
         g_pEngineWaterRenderer->OpenStaticMapForUse(&StaticMapFile, SeaStaticMapBankFileName);

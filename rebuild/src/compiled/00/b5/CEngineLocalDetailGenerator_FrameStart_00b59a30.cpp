@@ -33,20 +33,15 @@ class CEngineMap { public:
     CLocalDetailCacheMap* LocalDetailCacheMap;         // +0x04
 };
 
-struct SMapListNode {                                  // VC6 std::list node
-    SMapListNode* m_pNext;                             // +0x00
-    SMapListNode* m_pPrev;                             // +0x04
-    CEngineMap*   m_pMap;                              // +0x08
-};
-struct CMapList {
-    SMapListNode* m_pHead;                             // +0x00 sentinel
-    unsigned long m_size;                              // +0x04
-};
-struct SEngineState {
-    unsigned char _pad[0x2c];
-    CMapList      m_loadedMaps;                        // +0x2c
-};
-extern SEngineState* g_pEngineState;                   // 0x01436E8C
+// NF46 (round 7): the 0x01436E8C global is NEngineInternal::GPEngineWorldMap (Ego_r.pdb / FableWin.pdb
+// ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A) and its +0x2C list the Ego_r.pdb member VisibleMapList
+// (std::list<CEngineMap*>, engine/CEngineWorldMap.h overlay opt-in _VISIBLEMAPLIST); were the SEngineState / g_pEngineState,
+// CMapList and SMapListNode stand-ins.
+#define FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINEWORLDMAP
+#define FABLE_RETAIL_CENGINEWORLDMAP_VISIBLEMAPLIST
+#include "engine/CEngineWorldMap.h"
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }   // 0x01436E8C
 
 class CEngineComponentParams { public:
     unsigned char _pad[0x7c];
@@ -69,18 +64,18 @@ void CEngineLocalDetailGenerator::FrameStart(const CEngineComponentParams& param
         return;
     double endTime = GFGetFastSubFrameTimer() + LocalDetailMaxUpdateTime;
     C3DVector cameraPos = NEngineInternal::GPCamera->WorldPosition;
-    CMapList* maps = &g_pEngineState->m_loadedMaps;
-    SMapListNode* node;
+    std::list<CEngineMap*>* maps = &NEngineInternal::GPEngineWorldMap->VisibleMapList;
+    std::list<CEngineMap*>::iterator it;
     if (params.OffWorldTickProcessFlag) {
-        for (node = maps->m_pHead->m_pNext; node != maps->m_pHead; node = node->m_pNext) {
-            CLocalDetailCacheMap* cache = node->m_pMap->LocalDetailCacheMap;
+        for (it = maps->begin(); it != maps->end(); ++it) {
+            CLocalDetailCacheMap* cache = (*it)->LocalDetailCacheMap;
             if (cache)
                 cache->Update(endTime);
         }
     }
-    for (node = maps->m_pHead->m_pNext; node != maps->m_pHead; node = node->m_pNext) {
+    for (it = maps->begin(); it != maps->end(); ++it) {
         CEngineCamera* camera = NEngineInternal::GPCamera;
-        CLocalDetailCacheMap* cache = node->m_pMap->LocalDetailCacheMap;
+        CLocalDetailCacheMap* cache = (*it)->LocalDetailCacheMap;
         if (cache)
             cache->Render(camera, 0.0f);
     }

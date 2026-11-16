@@ -32,10 +32,13 @@ static COcclusionPointer& GetInfo(CEngineInternalPrimitiveOcclusionGroup& g,long
 #endif
 }
 static unsigned long PrimitiveFlags(CEngineInternalPrimitiveBase& p){return p.EnginePrimitiveFlags;}
-// PDB CEnginePrimitiveRendererSharedData CurrentOcclusionLayer+78; no shared header exists.
-struct CEnginePrimitiveRendererSharedData {unsigned char InterpolationAndLoadState[0x78];long CurrentOcclusionLayer;};
-extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRendererSharedData; //01436e78
-struct CBaseClassNonCopyable {protected: virtual ~CBaseClassNonCopyable(); public:protected:CBaseClassNonCopyable();}; //0099a2f0 ??0CBaseClassNonCopyable@@IAE@XZ
+// NF46 (round 7): the 0x01436E78 global is NEngineInternal::GPPrimitiveRendererSharedData (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A), CurrentOcclusionLayer +0x78 from
+// engine/CEnginePrimitiveRendererSharedData.h (_RENDERSETTINGS; it brings engine/CBaseClassNonCopyable.h, which replaces the row's local
+// CBaseClassNonCopyable model); was a local CEnginePrimitiveRendererSharedData model / g_pPrimitiveRendererSharedData.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_RENDERSETTINGS
+#include "engine/CEnginePrimitiveRendererSharedData.h"
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
 struct CEngineSubPrimitiveBoundingBox;
 class __declspec(novtable) CEngineSubPrimitiveBase:public CBaseClassNonCopyable { public:
  unsigned long RenderFlags;unsigned char Alpha;CEngineInternalPrimitiveBase* Parent;CEngineSubPrimitiveBase* NextSubPrimitive;CEnginePrimitiveOcclusionGroupManager* Manager;
@@ -54,7 +57,7 @@ ERendered CEnginePrimitiveOcclusionGroupManager_Methods::RenderPrimitive(CEngine
 {
  CEngineInternalPrimitiveOcclusionGroup& group=reinterpret_cast<CEngineInternalPrimitiveOcclusionGroup&>(primitive);
  if(group.FramesRendered==0){
-  long index=g_pPrimitiveRendererSharedData->CurrentOcclusionLayer;
+  long index=NEngineInternal::GPPrimitiveRendererSharedData->CurrentOcclusionLayer;
   if(index!=-1 && !(PrimitiveFlags(primitive)&0x4000) && !GetInfo(group,index).Object){
    CEnginePrimitiveOcclusionInfo* info=new CEnginePrimitiveOcclusionInfo;
    GetInfo(group,index).SetNew(info);

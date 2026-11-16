@@ -6,6 +6,9 @@
 //         CompressedOpaquePixelFormat +0xfb0 / CompressedAlphaPixelFormat +0xfb4, MaxCompositeTextureSize +0x10c8, MinRenderTargetSize +0x10cc
 //         (Ego_r.pdb names, retail offsets = PDB - 0x1c0 here); CGraphicBankStateBlock 0x64 bytes (vtable 0x0129C888, landed 0x009FEA20 model);
 //         pixel-format info table 0x0129BA4C (0x24-byte rows, alpha bit count first).
+// NF46 (round 7): the 0x01436E98 stand-in CEngineData_01436e98 / g_pEngine_01436e98 is NEngineInternal::GPResourceManager
+//   (?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on engine/CEngineResourceManager.h; +0x954 is GetGraphicBank (_GETGRAPHICBANK,
+//   as same-TU 0x00B2D9F0). The local CCharString / CWideString moved to fable_string.h (FABLE_RETAIL_CCHARSTRING; the ctor length is the PDB long).
 #include "fable_compiler.h"
 #include <stddef.h>
 void* __cdecl operator new(size_t size);
@@ -15,12 +18,11 @@ void __cdecl operator_delete_00bfe9bc(void* p);         // 0x00BFE9BC
 
 
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* s, int len = -1);           // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CWideString { public: void* PStringData; };
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_GETGRAPHICBANK
+#include "engine/CEngineResourceManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 class C2DExtentsI { public:
     long X, Y;
@@ -95,11 +97,6 @@ class CGraphicDataBank { public:
     CCountedPointer<CTextureManager> GetPTextureManager() { return TextureManager; }
 };
 
-struct CEngineData_01436e98 {
-    unsigned char     _pad[0x954];
-    CGraphicDataBank* GraphicBank;                      // +0x954
-};
-extern CEngineData_01436e98* g_pEngine_01436e98;        // 0x01436E98
 
 FABLE_FORCEINLINE long HighestSetBit(unsigned long value)
 {
@@ -184,6 +181,6 @@ unsigned long CEngineSurfaceCompositionManager::AddCustomMorphTexture(CTexture& 
     CustomTextureBankFile.EndUpdateEntries();
     CustomTextureBankFile.Close();
     CustomTextureBankFile.OpenFileReadOnly(CustomTextureBankFileName, 0x48);
-    CustomTextureBankFile.SetTextureManager(g_pEngine_01436e98->GraphicBank->GetPTextureManager());
+    CustomTextureBankFile.SetTextureManager(NEngineInternal::GPResourceManager->GetGraphicBank((EGraphicBankNo)0)->GetPTextureManager());
     return index | 0x80000000;
 }

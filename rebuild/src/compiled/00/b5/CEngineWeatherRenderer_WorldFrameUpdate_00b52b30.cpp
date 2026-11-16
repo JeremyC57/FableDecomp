@@ -6,36 +6,23 @@
 // Shape: C3DVector needs a user copy ctor and operator* with a named result (no NRVO in VC7.1): retail keeps the ctor temporary and copies it.
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator*(float f) const { C3DVector r(X * f, Y * f, Z * f); return r; }
-};
-struct SWeatherStrengths {
-    unsigned char _pad[0x168];
-    float SnowStrength;                            // +0x168
-    float RainStrength;                            // +0x16c
-    float MistStrength;                            // +0x170
-};
-struct SWindRecord {
-    unsigned char      _pad[0x54];
-    SWeatherStrengths* Weather;                    // +0x54
-};
-class CEnvironment { public:
-    virtual void v00();
-    virtual SWindRecord* GetWind();                // slot 1
-};
-struct CEnvironmentProvider {
-    virtual void v00();
-    virtual CEnvironment* GetCurrentEnvironment(); // slot 1
-};
-struct SEngineState_01436e8c {
-    unsigned char         _pad[0x198];
-    CEnvironmentProvider* m_pEnvironmentProvider;  // +0x198
-};
-extern SEngineState_01436e8c* g_pEngineState_01436e8c;   // 0x01436E8C
+// NF46 (round 7): the 0x01436E8C global is NEngineInternal::GPEngineWorldMap (Ego_r.pdb / FableWin.pdb
+// ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A); the "environment provider at +0x198" is its GameWorld (FableWin.pdb inline
+// PeekGameWorld, engine/CEngineWorldMap.h _GAMEWORLD), slot 1 CIDrawWorld::DrawGetEnvironment, the environment's slot 1
+// CIDrawEnvironment::PeekInterpolatedParams; the "+0x54 weather record" is ThemeChannels[0] (CArray begin) and the strengths its Ego_r.pdb
+// Scalers[14] / [15] / [16] (+0x168 snow, +0x16C rain, +0x170 mist). Were local SEngineState_01436e8c / CEnvironmentProvider /
+// CEnvironment / SWindRecord / SWeatherStrengths stand-ins; the local C3DVector model is engine/C3DVector.h (its user copy ctor; the
+// scaled copy built in a named local is the header's FABLE_RETAIL_C3DVECTOR_SCALE_NAMED_RESULT opt-in, the same text).
+#define FABLE_RETAIL_C3DVECTOR_SCALE_NAMED_RESULT
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINEWORLDMAP
+#define FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLD
+#include "engine/C3DVector.h"
+#include "engine/CEngineWorldMap.h"
+#include "engine/CIDrawWorld.h"
+#include "engine/CIDrawEnvironment.h"
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }   // 0x01436E8C
 struct SEngineGlobals_01436e48 {
     unsigned char _pad[0x628];
     C3DVector     WindDirection;                   // +0x628
@@ -97,9 +84,9 @@ void CEngineWeatherRenderer::WorldFrameUpdate(bool full)
     if (!Initialised)
         return;
     if (!ForceWeatherEffects) {
-        SWindRecord* env = g_pEngineState_01436e8c->m_pEnvironmentProvider->GetCurrentEnvironment()->GetWind();
+        const CIDrawEnvironmentParams& env = NEngineInternal::GPEngineWorldMap->PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams();
         if (!RainOverriden) {
-            float rain = env->Weather->RainStrength;
+            float rain = env.ThemeChannels[0].Scalers[15];
             if (OverridenRainStrength < 0.0f) {
                 StartRaining(rain);
             } else {
@@ -111,7 +98,7 @@ void CEngineWeatherRenderer::WorldFrameUpdate(bool full)
             FadeRainToTarget(OverridenRainStrength);
         }
         if (!SnowOverriden) {
-            float snow = env->Weather->SnowStrength;
+            float snow = env.ThemeChannels[0].Scalers[14];
             if (OverridenSnowStrength < 0.0f) {
                 StartSnowing(snow);
             } else {
@@ -122,7 +109,7 @@ void CEngineWeatherRenderer::WorldFrameUpdate(bool full)
         } else {
             FadeSnowToTarget(OverridenSnowStrength);
         }
-        float mist = env->Weather->MistStrength;
+        float mist = env.ThemeChannels[0].Scalers[16];
         if (mist <= 0.0f) {
             Mist = false;
         } else {

@@ -248,13 +248,12 @@ class C3DMeshInfo { public:
     void*           LODMesh[4];                    // +0x54
     bool GetMesh(CCountedMeshPointer& mesh, unsigned long lod, unsigned long flags) const;   // 0x00A25E70
 };
-struct CEngineRenderSettings {
-    unsigned char _pad00[0x9c];
-    float         LODScale;                        // +0x9c
-    unsigned char _pada0[0xa8 - 0xa0];
-    float         FieldOfViewScale;                // +0xa8
-};
-extern CEngineRenderSettings* g_pEngineRenderSettings;   // 0x01436E78
+// NF46 (round 7): the 0x01436E78 global is NEngineInternal::GPPrimitiveRendererSharedData (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A); its fields are the Ego_r.pdb members of
+// engine/CEnginePrimitiveRendererSharedData.h (LODErrorTolerance +0x9C, LODVirtualScreenSizeFOVAdjusted +0xA8); was a local CEngineRenderSettings / g_pEngineRenderSettings stand-in.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_RENDERSETTINGS
+#include "engine/CEnginePrimitiveRendererSharedData.h"
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
 class CEngineInternalPrimitiveBase;
 class CEngineInternalPrimitiveRepeatedStaticMesh { public:
     unsigned char _pad00[0x50];
@@ -277,16 +276,16 @@ class CEnginePrimitiveManagerRepeatedStaticMeshes { public:
 bool CEnginePrimitiveManagerRepeatedStaticMeshes::PreloadPrimitive(CEngineInternalPrimitiveBase& primitive, const C3DVector& position, unsigned long flags)
 {
     CEngineInternalPrimitiveRepeatedStaticMesh& mesh = (CEngineInternalPrimitiveRepeatedStaticMesh&)primitive;
-    CEngineRenderSettings* settings = g_pEngineRenderSettings;
+    CEnginePrimitiveRendererSharedData* settings = NEngineInternal::GPPrimitiveRendererSharedData;
     float dx = mesh.Centre.X - position.X;
-    float lodScale = settings->LODScale;
+    float lodScale = settings->LODErrorTolerance;
     float dy = mesh.Centre.Y - position.Y;
     C3DMeshInfo* info = mesh.MeshInfo;
     float dz = mesh.Centre.Z - position.Z;
     float radius = mesh.Radius;
     float distance = (float)sqrt(dx * dx + dy * dy + dz * dz) - radius;
     distance = distance > 0.0001f ? distance : 0.0001f;
-    float ratio = distance / (radius * settings->FieldOfViewScale) * lodScale;
+    float ratio = distance / (radius * settings->LODVirtualScreenSizeFOVAdjusted) * lodScale;
     unsigned long lod;
     for (lod = 0; IsBelowLODCount(lod); ++lod) {
         if (!info->LODMesh[lod] || info->LODDistance[lod] > ratio)

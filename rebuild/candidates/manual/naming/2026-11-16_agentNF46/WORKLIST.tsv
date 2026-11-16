@@ -1,0 +1,85 @@
+target	entry	correct_symbol	binder_row	probe_status	bound_symbol_at_probe
+01436e78	32	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	00ba1b00	OK	?g_pPrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+01436e78	32	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	00b91140	OK	?g_pPrimitiveRendererSharedData@@3PAUCEnginePrimitiveRendererSharedData@@A
+01436e78	32	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	00b33520	OK	?g_pPrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+01436e78	32	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	00b9bcc0	OK	?g_pEngineRenderSettings@@3PAUCEngineRenderSettings@@A
+01436e78	32	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	00babf70	OK	?g_pEngineRenderSettings@@3PAUCEngineRenderSettings@@A
+01436e78	32	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	00bacc50	OK	?g_pPrimitiveRendererSharedData@@3PAUCEnginePrimitiveRendererSharedData@@A
+01436e78	32	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	00bc6340	OK	?g_pEngineRenderSettings@@3PAUCEngineRenderSettings@@A
+01436e78	32	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	00beb5c0	OK	?g_pFadeSettings@@3PAUSFadeSettings@@A
+01436e78	32	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	00beb660	OK	?g_pFadeSettings@@3PAUSFadeSettings@@A
+01436e78	32	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	00bebbe0	OK	?g_pPrimitiveRenderer@@3PAUSPrimitiveRendererSettings@@A
+01436e84	33	?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A	00bbc130	OK	?g_pPrimitiveManagers@@3PAUCEnginePrimitiveManagerTable@@A
+01436e84	33	?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A	00b917e0	OK	?g_pEngine_01436e84@@3PAUCEngine_01436e84@@A
+01436e84	33	?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A	00bbcf70	OK	?g_pPrimitiveManagers@@3PAUCEnginePrimitiveManagerTable@@A
+01436e84	33	?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A	00bc5a20	OK	?g_pEngine_01436e84@@3PAUCEngine_01436e84@@A
+01436e84	33	?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A	00bc65d0	OK	?g_pPrimitiveManagers@@3PAUCEnginePrimitiveManagerTable@@A
+01436e84	33	?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A	00be2310	OK	?g_pPrimitiveManagers@@3PAUCEnginePrimitiveManagerTable@@A
+01436e84	33	?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A	00be23f0	OK	?g_pPrimitiveManagers@@3PAUCEnginePrimitiveManagerTable@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b6b0b0	NOREL	
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b401e0	OK	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b52b30	OK	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b599c0	OK	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b59a30	OK	?g_pEngineState@@3PAUSEngineState@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b5bd70	OK	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b5f8c0	OK	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b676a0	OK	?DAT_01436e8c@@3PAUCEngineLandscapeMapList@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b684f0	OK	?g_pEngineSceneState_01436E8C@@3PAUCEngineSceneState_01436E8C@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b7c510	OK	?g_pEngineState@@3PAUSEngineState@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b7fa20	OK	?g_pEngineState@@3PAUSEngineState@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b80790	OK	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+01436e8c	34	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	00b80840	OK	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b2c8e0	OK	?g_pEngine_01436e98@@3PAUCEngineData_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b99d90	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00babb50	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bad040	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bb6e00	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bba480	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bc7e90	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bca770	OK	?g_pEngineData@@3PAUCEngineResourceAccessorNativeView@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bcc5f0	OK	?g_pEngineData@@3PAUCEngineResourceManagerRetailProjection@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b239c0	OK	?g_pEngineData_01436e98@@3PAUCEngineData_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b23f60	OK	?g_engineSingleton@@3PADA
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b25c80	OK	?g_pEngineData_01436e98@@3PAUCEngineData_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b25cc0	OK	?g_pEngineData_01436e98@@3PAUCEngineData_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b2b790	OK	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b2c4e0	OK	?g_pEngine_01436e98@@3PAUCEngineData_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b42750	OK	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b52250	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b5a1d0	OK	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b5bf10	OK	?gEngine@@3PAUEngineTextureGlobal@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b5c460	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b5ece0	OK	?gGlowResources@@3PAUCGlowResourceManager@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b620a0	OK	?gSkyBufferManager@@3PAUCSkyBufferManager@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b687d0	NOREL	
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b6d510	OK	?gResourceManager@@3PAUCEngineResourceManagerNative@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b86a70	OK	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b86c00	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b88ed0	NOREL	
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b8d780	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b90270	OK	?g_pEngineData@@3PAVCEngineResourceManager_PDB@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b99670	OK	?g_pEngine_01436e98@@3PAUSEngineShaderRegisters_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00b9d8e0	OK	?g_pEngineResources@@3PAUSEngineResources@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00ba9a70	OK	?g_pEngineResourceManager_01436e98@@3PAUCEngineResourceManager_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bad670	OK	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bad8a0	OK	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bbeaf0	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bbf380	OK	?g_ResourceManager@@3PAUCEngineResourceManager_Methods@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bc2400	OK	?g_pEngineData_01436e98@@3PAUCEngineData_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bc34d0	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bc3e10	OK	?g_ResourceManager@@3PAUCEngineResourceManager_Methods@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bc4d90	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bc6b50	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bc7f70	OK	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bce070	OK	?g_pEngineData@@3PAUCEngineData@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bdd2f0	OK	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00be27b0	OK	?g_pEngineResources@@3PAUSEngineResources@@A
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00be7d70	NOREL	
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bf4130	NOREL	
+01436e98	35	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	00bfe050	NOREL	
+01436ea0	79	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	00b51f60	OK	?gWeatherCamera@@3PAUCWeatherCameraMethods@@A
+01436ea0	79	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	00b52990	OK	?g_pCamera_01436ea0@@3PAUSCamera_01436ea0@@A
+01436ea0	79	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	00bcc700	OK	?g_pEngineCamera@@3PAUCEngineCamera@@A
+01436ea0	79	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	00bdc510	NOREL	
+01436ea0	79	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	00bf4220	NOREL	
+01436ea0	79	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	00bf8810	NOREL	

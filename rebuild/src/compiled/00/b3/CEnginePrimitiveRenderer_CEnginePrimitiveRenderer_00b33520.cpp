@@ -95,10 +95,15 @@ struct CScenePointerArray {                         // STLport vector<CEngineSce
     }
 };
 
-struct CEnginePrimitiveRendererSharedData {       // vtable 0x012A1380 (as the derived), 0x268 bytes
-    virtual ~CEnginePrimitiveRendererSharedData();   // 0x00B36EC0
-    unsigned char _pad004[0x264];
-};
+// NF46 (round 7): the 0x01436E78 global is NEngineInternal::GPPrimitiveRendererSharedData (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A; the renderer's first base); the base class
+// from engine/CEnginePrimitiveRendererSharedData.h (_RENDERSETTINGS, 0x268 bytes, with the overlay's _DTOR opt-in for the out-of-line
+// ??1CEnginePrimitiveRendererSharedData@@UAE@XZ 0x00B36EC0); were a local CEnginePrimitiveRendererSharedData model and an
+// extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_RENDERSETTINGS
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_DTOR
+#include "engine/CEnginePrimitiveRendererSharedData.h"
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
 
 class CEngineComponent { public:                          // +0x268, vtable 0x012A1348
     virtual ~CEngineComponent();                     // 0x00B59730
@@ -137,7 +142,6 @@ class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, publ
     virtual ~CEnginePrimitiveRenderer();
 };
 
-extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer;   // 0x01436E78
 
 CEnginePrimitiveRenderer::~CEnginePrimitiveRenderer()
 {
@@ -146,5 +150,5 @@ CEnginePrimitiveRenderer::~CEnginePrimitiveRenderer()
         *it = 0;
     }
     SceneList.clear();
-    g_pPrimitiveRenderer = 0;
+    NEngineInternal::GPPrimitiveRendererSharedData = 0;
 }

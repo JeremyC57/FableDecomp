@@ -14,27 +14,18 @@
 // member through ecx/edx; the strength stays on the FPU across the three products; `++PausedStepsPending` last.
 #include "engine/C3DVector.h"
 
-struct SWindRecord {
-    unsigned char _pad[0x14];
-    C3DVector     Direction;                       // +0x14
-    float         Strength;                        // +0x20
-};
-
-class CEnvironment { public:
-    virtual void v00();
-    virtual SWindRecord* GetWind();                // slot 1
-};
-
-struct CEnvironmentProvider {
-    virtual void v00();
-    virtual CEnvironment* GetCurrentEnvironment(); // slot 1
-};
-
-struct SEngineState_01436e8c {
-    unsigned char         _pad[0x198];
-    CEnvironmentProvider* m_pEnvironmentProvider;  // +0x198
-};
-extern SEngineState_01436e8c* g_pEngineState_01436e8c;   // 0x01436E8C
+// NF46 (round 7): the 0x01436E8C global is NEngineInternal::GPEngineWorldMap (Ego_r.pdb / FableWin.pdb
+// ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A); the "environment provider at +0x198" is its GameWorld (FableWin.pdb inline
+// PeekGameWorld, engine/CEngineWorldMap.h _GAMEWORLD), slot 1 CIDrawWorld::DrawGetEnvironment, the environment's slot 1
+// CIDrawEnvironment::PeekInterpolatedParams (engine/CIDrawWorld.h / CIDrawEnvironment.h; CIDrawEnvironmentParams Ego_r.pdb members).
+// Were local SEngineState_01436e8c-style / CEnvironmentProvider / CEnvironment / settings-record stand-ins.
+#define FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINEWORLDMAP
+#define FABLE_RETAIL_CENGINEWORLDMAP_GAMEWORLD
+#include "engine/CEngineWorldMap.h"
+#include "engine/CIDrawWorld.h"
+#include "engine/CIDrawEnvironment.h"
+namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }   // 0x01436E8C
 
 class CEngineSimulationManager { public:
     unsigned char _pad[0x104c];                     // CEngineComponent vptr at subobject +0x00 (object +0x04)
@@ -46,7 +37,7 @@ class CEngineSimulationManager { public:
 
 void CEngineSimulationManager::PausedWorldFrameUpdate()
 {
-    C3DVector direction = g_pEngineState_01436e8c->m_pEnvironmentProvider->GetCurrentEnvironment()->GetWind()->Direction;
-    WindVector = direction * g_pEngineState_01436e8c->m_pEnvironmentProvider->GetCurrentEnvironment()->GetWind()->Strength;
+    C3DVector direction = NEngineInternal::GPEngineWorldMap->PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams().ThemeWindDirection;
+    WindVector = direction * NEngineInternal::GPEngineWorldMap->PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams().ThemeWindSpeed;
     ++PausedStepsPending;
 }

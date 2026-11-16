@@ -125,6 +125,11 @@ public:
     CEngineLandscapeRenderer(const CEngineMemoryInit& init);             // ??0CEngineLandscapeRenderer@@QAE@ABVCEngineMemoryInit@@@Z
     virtual ~CEngineLandscapeRenderer();                                 // ??1CEngineLandscapeRenderer@@UAE@XZ 0x00B67920
     virtual unsigned long PeekSceneFilterFlags() const;                  // ?PeekSceneFilterFlags@CEngineLandscapeRenderer@@UBEKXZ (chunk 731)
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_ONRELEASEDEFAULTPOOLRESOURCES
+    // Opt-in (NF46 round 7, row 0x00B676A0): Ego_r.pdb ?OnReleaseDefaultPoolResources@CEngineLandscapeRenderer@@UAEXXZ (the CEngineComponent
+    // override, public virtual; retail 0x00B676A0). Declaration only: an override, no new slot.
+    virtual void OnReleaseDefaultPoolResources();                        // 0x00B676A0
+#endif
 #ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_GETSETTINGS
     // Retail opt-in (chunk 2030, row 0x00BEA110 CEngineWaterSettings::UpdateConstants): Ego_r.pdb / FableWin.pdb
     // ?GetSettings@CEngineLandscapeRenderer@@QAEABUCLandscapeSettings@1@XZ, inline in retail (0x00BEA579 `fld [ecx+614h]` =

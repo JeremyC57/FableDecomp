@@ -39,11 +39,13 @@ public:
     static void* __fastcall operator new(unsigned int size);   // 0x00BEB540 (sub-primitive pool)
 };
 
-struct CEngineCamera {
-    unsigned char _pad00[0x54];
-    C3DVector     WorldPosition;                    // +0x54
-};
-extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
+// NF46 (round 7): the 0x01436EA0 global is NEngineInternal::GPCamera (Ego_r.pdb / FableWin.pdb ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A),
+// the position its inline PeekCameraPos() (CameraDesc.WorldPosition +0x54, engine/CEngineCamera.h); was a local struct CEngineCamera
+// model / g_pEngineCamera.
+#define FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINECAMERA_POSITION
+#include "engine/CEngineCamera.h"
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                          // 0x01436EA0
 
 class CEngineInternalPrimitiveWeaponTrail {
 public:
@@ -82,7 +84,7 @@ ERendered CEnginePrimitiveManagerWeaponTrails::RenderPrimitive(CEngineInternalPr
     const CEngineInternalPrimitiveWeaponTrail& trail = (const CEngineInternalPrimitiveWeaponTrail&)primitive;
     if (!trail.Trail[0].empty()) {
         C3DVector head = trail.Trail[0][0];
-        float distance = (head - g_pEngineCamera->WorldPosition).GetMagnitude();
+        float distance = (head - NEngineInternal::GPCamera->PeekCameraPos()).GetMagnitude();
         g_pEngineSubPrimitiveRenderer->AddSubPrimitive(new CEngineSubPrimitiveWeaponTrail(primitive), distance, 0xff, 1,
                                                        (CEnginePrimitiveManager*)this);
     }

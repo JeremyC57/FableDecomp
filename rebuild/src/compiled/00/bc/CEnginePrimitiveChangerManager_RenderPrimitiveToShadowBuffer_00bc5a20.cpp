@@ -1,4 +1,5 @@
 // CEnginePrimitiveChangerManager::RenderPrimitiveToShadowBuffer(CEngineInternalPrimitiveBase& primitive) -- forwards the changer's current child to its own manager's shadow render, after handing the child the changer's mesh effect
+// Leaf: ?RenderPrimitiveToShadowBuffer@CEnginePrimitiveChangerManager@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC5A20, length 116 bytes.
 // Callees: the child's virtual SetMeshEffect (slot 25, +0x64, takes the counted effect by const reference), the effect's
 // virtual destroy (slot 1) at zero count, the child manager's virtual RenderPrimitiveToShadowBuffer (slot 8, +0x20) through the
@@ -47,7 +48,7 @@ struct CMeshEffectPointer {                        // CIVCountedPointer<CEngineM
     }
 };
 
-typedef long ERendered;
+#include "engine/CEngineRenderEnums.h"   // ERendered (NF46: was a local `typedef long ERendered`; Ego_r.pdb / FableWin.pdb W4ERendered)
 
 class CEngineInternalPrimitiveBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -83,20 +84,21 @@ struct CEngineInternalPrimitiveChanger : CEngineInternalPrimitiveBase {
     CMeshEffectPointer GetMeshEffect() const { return m_meshEffect; }
 };
 
-struct CEnginePrimitiveManagerBase {
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07();
-    virtual ERendered RenderPrimitiveToShadowBuffer(CEngineInternalPrimitiveBase& primitive);   // slot 8 (+0x20)
-};
+// NF46 (round 7): the 0x01436E84 global is NEngineInternal::GPPrimitiveTypeInfo (Ego_r.pdb / FableWin.pdb
+// ?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A); the manager is its FableWin.pdb inline GetPrimitiveManager(type)
+// (PrimitiveManagers +0x10, engine/CEnginePrimitiveTypeInfo.h, overlay opt-in _GETPRIMITIVEMANAGER), a CEnginePrimitiveManager
+// (engine/CEnginePrimitiveManager.h: the Ego_r.pdb virtuals in retail slot order). Were the CEngine_01436e84 / g_pEngine_01436e84 and local CEnginePrimitiveManagerBase slot-view stand-ins.
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO_GETPRIMITIVEMANAGER
+#include "engine/CEnginePrimitiveTypeInfo.h"
+#include "engine/CEnginePrimitiveManager.h"
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
-struct CEngine_01436e84 {
-    unsigned char                 _pad[0x10];
-    CEnginePrimitiveManagerBase*  m_managers[1];   // +0x10, indexed by primitive type
-};
-extern CEngine_01436e84* g_pEngine_01436e84;       // 0x01436E84
 
 class CEnginePrimitiveChangerManager { public:
-    ERendered RenderPrimitiveToShadowBuffer(CEngineInternalPrimitiveBase& primitive);
+    // Ego_r.pdb / FableWin.pdb ?RenderPrimitiveToShadowBuffer@CEnginePrimitiveChangerManager@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z
+    // (the slot-8 override; NF46: was a non-virtual member returning long)
+    virtual ERendered RenderPrimitiveToShadowBuffer(CEngineInternalPrimitiveBase& primitive);
 };
 
 ERendered CEnginePrimitiveChangerManager::RenderPrimitiveToShadowBuffer(CEngineInternalPrimitiveBase& primitive)
@@ -107,8 +109,8 @@ ERendered CEnginePrimitiveChangerManager::RenderPrimitiveToShadowBuffer(CEngineI
         if (handle->m_pPrimitive && (handle->m_pPrimitive->m_flags34 & 1)) {
             CEngineInternalPrimitiveBase* child = handle->m_pPrimitive;
             child->SetMeshEffect(changer.GetMeshEffect());
-            return g_pEngine_01436e84->m_managers[child->m_type]->RenderPrimitiveToShadowBuffer(*child);
+            return NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(child->m_type)->RenderPrimitiveToShadowBuffer(*child);
         }
     }
-    return 0;
+    return RENDERED_NOTHING;
 }

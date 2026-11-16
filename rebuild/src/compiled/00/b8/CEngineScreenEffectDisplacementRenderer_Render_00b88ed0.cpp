@@ -22,25 +22,28 @@ class CDisplayManager { public:
 };
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
-struct CTexturePool_00f36f00 {
-    void Release(long texture);                    // 0x00F36F00
-};
-struct CEngineGlobal_01436e98 {
-    unsigned char         _pad[0x3190];
-    CTexturePool_00f36f00 m_texturePool;           // +0x3190
-};
-extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
+// NF46 (round 7, NF44's scratch.py): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) and its +0x3190 member the CGPUScratchBufferTextureManager
+// (engine/CEngineResourceManager.h GetGPUScratchBufferTextureManager(), engine/CGPUScratchBufferTextureManager.h, Ego_r.pdb member
+// spellings); were the address-named CEngineGlobal_01436e98 / g_pEngine_01436e98 and local scratch-manager stand-ins.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_FREEMEMORYPAGE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ENDTEXTUREUSE
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 struct CEngineScreenEffectDisplacementRenderer_Render : CEngineScreenEffectDisplacementRenderer {
     void ApplyDisplacement();                      // 0x00B87870
     void ShowDisplacementTexture();                // 0x00B88BC0
     void ReleaseDynamicTextures()
     {
-        CTexturePool_00f36f00* pool = &g_pEngine_01436e98->m_texturePool;
+        CGPUScratchBufferTextureManager* pool = &NEngineInternal::GPResourceManager->GetGPUScratchBufferTextureManager();
         if (BackBufferCopyTexture)
             BackBufferCopyTexture = 0;
         if (DisplacementTexture) {
-            pool->Release(DisplacementTextureHandle);
+            pool->EndTextureUse(DisplacementTextureHandle);
             DisplacementTexture = 0;
         }
     }

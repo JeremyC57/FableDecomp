@@ -20,88 +20,22 @@
 // resource is read through an inline const getter on the engine global so it is loaded before the string is built;
 // operator= releases through a named data pointer (`dec [ecx+N] ; jne`), the by-value temporary's destructor through the
 // pointee's inline Release() (`mov edi,[eax+N] ; add eax,N ; dec edi`).
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A); the vertex shader resources are
+// CEngineResourceManager::VShaderResources[bank] (retail +0x29C0 + 8*bank, FableWin.pdb inline GetVShaderResource) and the pixel one
+// ShaderResourcePixel (+0x2A98, GetPShaderResource). Shader classes from the shared headers (CShaderResource::GetVertexShader /
+// GetPixelShader const, Ego_r.pdb / FableWin.pdb); were a local CEngineData / g_pEngineData stand-in and local shader models.
+#define FABLE_RETAIL_CENGINECOMPONENT_PROTECTED
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CVERTEXSHADER
+#include "fable_string.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CShaderResource.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 #pragma pack(push, 4)
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-
-struct CPixelShaderData {
-    virtual ~CPixelShaderData();
-    void* m_pShader;                                    // +0x04
-    long  m_refCount;                                   // +0x08
-    void DecRef() { --m_refCount; }
-    long GetRefCount() const { return m_refCount; }
-    void Release() { DecRef(); if (GetRefCount() == 0) delete this; }
-};
-struct CVertexShaderData {
-    virtual ~CVertexShaderData();
-    unsigned char _pad04[0xc];
-    long  m_refCount;                                   // +0x10
-    void DecRef() { --m_refCount; }
-    long GetRefCount() const { return m_refCount; }
-    void Release() { DecRef(); if (GetRefCount() == 0) delete this; }
-};
-class CShaderBase { public:                                    // vtable 0x0129A030
-    virtual ~CShaderBase() { }
-};
-class CVertexShader : public CShaderBase { public:                    // vtable 0x0129B3D0
-    CVertexShaderData* Data;
-    CVertexShader();                                    // 0x00A62FB0
-    CVertexShader(const CVertexShader& other);
-    CVertexShader& operator=(const CVertexShader& other)
-    {
-        CVertexShaderData* data = Data;
-        if (data) {
-            if (--data->m_refCount == 0)
-                delete data;
-        }
-        Data = other.Data;
-        ++Data->m_refCount;
-        return *this;
-    }
-    virtual ~CVertexShader()
-    {
-        if (Data)
-            Data->Release();
-    }
-};
-class CPixelShader : public CShaderBase { public:                     // vtable 0x0129A054
-    CPixelShaderData* Data;
-    CPixelShader();                                     // 0x00A5EC00
-    CPixelShader(const CPixelShader& other);
-    CPixelShader& operator=(const CPixelShader& other)
-    {
-        CPixelShaderData* data = Data;
-        if (data) {
-            if (--data->m_refCount == 0)
-                delete data;
-            Data = 0;
-        }
-        Data = other.Data;
-        ++Data->m_refCount;
-        return *this;
-    }
-    virtual ~CPixelShader()
-    {
-        if (Data)
-            Data->Release();
-    }
-};
-class CShaderResource { public:
-    CVertexShader GetVertexShader(const CCharString& name) const;// 0x00A5D5F0  // NF35: Ego_r + FableWin ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z (const)
-    CPixelShader GetPixelShader(const CCharString& name);     // 0x00A5D720
-};
-struct CEngineGlobal_01436e98 {
-    unsigned char    _pad[0x2a28];
-    CShaderResource* VertexShaderResource;              // +0x2a28
-    unsigned char    _pad2a2c[0x2a98 - 0x2a2c];
-    CShaderResource* PixelShaderResource;               // +0x2a98
-    CShaderResource* GetVertexShaderResource() const { return VertexShaderResource; }
-    CShaderResource* GetPixelShaderResource() const { return PixelShaderResource; }
-};
-extern CEngineGlobal_01436e98* g_pEngine_01436e98;     // 0x01436E98
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct IDirect3DSurface9;
@@ -145,12 +79,6 @@ struct CEngineScreenEffectCaps {
     unsigned char ColourFilterSupported : 1;            // +0x60 bit 7
 };
 
-class CEngineComponent { public:
-    virtual void v00();
-    void*         m_pOwnerLink;                         // +0x04
-    bool          Enabled;                              // +0x08
-    CEngineComponent();                                 // 0x00B59710
-};
 class CEngineScreenEffectColourFilter : public CEngineComponent { public:   // vtable 0x012A25CC
     bool                        ForceColourFilter;      // +0x0c
     CEngineColourFilterSettings Settings;               // +0x10
@@ -173,7 +101,7 @@ CEngineScreenEffectColourFilter::CEngineScreenEffectColourFilter(const CEngineSc
         EffectSupported = true;
     } else {
         EffectSupported = false;
-        Enabled = false;
+        RenderEnabled = false;
     }
     GrayRGBWeights = CRGBFloatColour(0.212671f, 0.715160f, 0.072169f, 1.0f);
     ForceColourFilter = false;
@@ -190,6 +118,6 @@ CEngineScreenEffectColourFilter::CEngineScreenEffectColourFilter(const CEngineSc
     TextureToBackBufferVerts[3].X = -1.0f;
     TextureToBackBufferVerts[3].Y = 1.0f;
     TextureToBackBufferVerts[3].Z = 0.0f;
-    ScreenCopyVertexShader = g_pEngine_01436e98->GetVertexShaderResource()->GetVertexShader("VSHADER_SCREEN_FX_COPY");
-    ColourFilterPixelShader = g_pEngine_01436e98->GetPixelShaderResource()->GetPixelShader("PSHADER_SCREEN_FX_COLOUR_FILTER");
+    ScreenCopyVertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_SCREEN_FX_COPY");
+    ColourFilterPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SCREEN_FX_COLOUR_FILTER");
 }

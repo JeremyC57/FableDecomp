@@ -14,6 +14,9 @@
 // StartSurfaceUse / EndSurfaceUse at those two addresses are wrong (NAME_FIXES.tsv).
 class C2DExtentsI; class CPixelFormat; class CTexture; class CSurface;
 #endif
+#ifdef FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ALLOCATEDEPTHBUFFERSURFACE
+#include "engine/ESurfaceMultisampleType.h"
+#endif
 class CGPUScratchBufferTextureManager {
 public:
 #ifdef FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_CTOR
@@ -29,6 +32,13 @@ public:
                          unsigned long usage, bool is_compressed);                                          // 0x00F37440
     CTexture* StartTextureUse(long handle);                                                             // 0x00F36EE0
     void EndTextureUse(long handle);                                                                    // 0x00F36F00
+#endif
+#ifdef FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ALLOCATEDEPTHBUFFERSURFACE
+    // Opt-in (NF46 round 7, row 0x00BABB50 CEnginePrimitiveManagerRepeatedZSprites ctor): Ego_r.pdb / FableWin.pdb
+    // ?AllocateDepthBufferSurface@CGPUScratchBufferTextureManager@@QAEJJABVC2DExtentsI@@ABVCPixelFormat@@W4ESurfaceMultisampleType@@@Z
+    // (retail 0x00F37390). Declaration only.
+    long AllocateDepthBufferSurface(long page, const class C2DExtentsI& extents, const class CPixelFormat& format,
+                                    ESurfaceMultisampleType multisample_type);                          // 0x00F37390
 #endif
 #if defined(FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_STARTTEXTUREUSE) && !defined(FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_TEXTURES)
     // Opt-in (bwf2, row 0x00B72180): Ego_r.pdb 0x00B3C370 ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z

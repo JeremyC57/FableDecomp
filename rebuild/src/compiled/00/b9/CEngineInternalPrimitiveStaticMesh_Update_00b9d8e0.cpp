@@ -50,18 +50,17 @@ public:
     }
 };
 
-class CMeshDataBank { public:
-    C3DMeshInfo const* PeekStaticMesh(unsigned long a0) const;   // 0x00A24280 (Ego_r.pdb ?PeekStaticMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z)
-};
-struct CMeshBank {
-};
-
-struct SEngineResources {                          // engine resource record reached through the pointer at 0x01436E98
-    unsigned char _pad[0x10];
-    CMeshBank*    MeshBank;                        // +0x10
-    CMeshBank* GetMeshBank() const { return MeshBank; }
-};
-extern SEngineResources* g_pEngineResources;       // 0x01436E98
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A); the bank at +0x10 is MeshBanks[0] (FableWin.pdb inline
+// PeekMeshBank, engine/CEngineResourceManager.h _PEEKMESHBANK) and the lookup Ego_r.pdb CMeshDataBank::PeekStaticMesh 0x00A24280
+// (engine/CMeshDataBank.h _PEEKSTATICANIMATED). Were a local CMeshDataBank model and the SEngineResources / g_pEngineResources stand-in.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKMESHBANK
+#define FABLE_RETAIL_CMESHDATABANK
+#define FABLE_RETAIL_CMESHDATABANK_PEEKSTATICANIMATED
+#include "engine/CEngineResourceManager.h"
+#include "engine/CMeshDataBank.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 class CEngineInternalPrimitiveMeshBase { public:
     static void __fastcall CalcObjectMatrix(CMatrix3x4& matrix, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00BEBAA0 (Ego_r / FableWin)
@@ -119,7 +118,7 @@ void CEngineInternalPrimitiveStaticMesh::Update(const CEnginePrimitive& primitiv
 {
     const CEnginePrimitiveStaticMesh& mesh = static_cast<const CEnginePrimitiveStaticMesh&>(primitive);
     EnginePrimitiveFlags = flags;
-    ShadowMeshInfo = MeshInfo = ((C3DMeshInfo*)((CMeshDataBank*)(g_pEngineResources->GetMeshBank()))->PeekStaticMesh(mesh.MeshIndex));
+    ShadowMeshInfo = MeshInfo = (C3DMeshInfo*)NEngineInternal::GPResourceManager->PeekMeshBank((EMeshBankNo)0)->PeekStaticMesh(mesh.MeshIndex);
     Scale = mesh.Size * 0.01f;
     Alpha = mesh.Alpha;
     TintColour = mesh.TintColour;

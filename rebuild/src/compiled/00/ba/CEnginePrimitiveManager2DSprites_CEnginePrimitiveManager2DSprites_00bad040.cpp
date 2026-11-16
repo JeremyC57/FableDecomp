@@ -17,72 +17,20 @@
 //   temporary, assigns (the vertex shader
 //   operator= releases and re-points; the pixel one also nulls the old pointer inside the release) and destroys the
 //   temporary through its inline destructor (`RemoveReference` copy, as the landed Lines constructor 0x00BC7E90).
-class CCharString { public:
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-    void* m_pData;
-};
-
-struct CVertexShaderData {
-    virtual ~CVertexShaderData();                  // slot 0
-    void*         VertexDeclaration;
-    void*         VertexShader;
-    const void*   FormatDecl;
-    long          ReferenceCount;                  // +0x10
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-struct CPixelShaderData {
-    virtual ~CPixelShaderData();                   // slot 0
-    void*         PixelShader;
-    long          ReferenceCount;                  // +0x08
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-
-class CShaderBase { public:                               // vtable 0x0129A030
-    virtual ~CShaderBase() { }
-};
-class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
-    CVertexShaderData* Data;
-    CVertexShader();                               // 0x00A62FB0
-    CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CVertexShader& operator=(const CVertexShader& other)
-    {
-        if (Data) Data->ReleaseReference();
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
-    CPixelShaderData* Data;
-    CPixelShader();                                // 0x00A5EC00
-    CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
-    CPixelShader& operator=(const CPixelShader& other)
-    {
-        if (Data) { Data->ReleaseReference(); Data = 0; }
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-
-class CShaderResource { public:
-    CVertexShader GetVertexShader(const CCharString& name) const;// 0x00A5D5F0  // NF35: Ego_r + FableWin ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z (const)
-    CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
-};
-struct CEngineData {
-    unsigned char    _pad0000[0x2a40];
-    CShaderResource* VertexShaderResource;         // +0x2A40
-    unsigned char    _pad2a44[0x2a98 - 0x2a44];
-    CShaderResource* PixelShaderResource;          // +0x2A98
-    CShaderResource* GetVertexShaderResource() { return VertexShaderResource; }
-    CShaderResource* GetPixelShaderResource() { return PixelShaderResource; }
-};
-extern CEngineData* g_pEngineData;                 // 0x01436E98
+// NF46 (round 7): the 0x01436E98 global is NEngineInternal::GPResourceManager (Ego_r.pdb / FableWin.pdb
+// ?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A); the vertex shader resources are
+// CEngineResourceManager::VShaderResources[bank] (retail +0x29C0 + 8*bank, FableWin.pdb inline GetVShaderResource) and the pixel one
+// ShaderResourcePixel (+0x2A98, GetPShaderResource). Shader classes from the shared headers (CShaderResource::GetVertexShader /
+// GetPixelShader const, Ego_r.pdb / FableWin.pdb); were a local CEngineData / g_pEngineData stand-in and local shader models.
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CVERTEXSHADER
+#include "fable_string.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CShaderResource.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 struct CEngineSceneArray;
 class CEnginePrimitiveManager { public:
@@ -106,10 +54,10 @@ class CEnginePrimitiveManager2DSprites : public CEnginePrimitiveManager { public
 CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites(CEngineSceneArray* scenes)
     : CEnginePrimitiveManager(scenes)
 {
-    VertexShader2DSprite = g_pEngineData->GetVertexShaderResource()->GetVertexShader("VSHADER_2D_SPRITE");
-    VertexShader2DClockSprite = g_pEngineData->GetVertexShaderResource()->GetVertexShader("VSHADER_2D_CLOCK_SPRITE");
-    PixelShader2DClockSprite = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_2D_CLOCK_SPRITE");
-    PixelShader2DClockSpriteAdditive = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_2D_CLOCK_SPRITE_ADDITIVE");
+    VertexShader2DSprite = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)16)->GetVertexShader("VSHADER_2D_SPRITE");
+    VertexShader2DClockSprite = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)16)->GetVertexShader("VSHADER_2D_CLOCK_SPRITE");
+    PixelShader2DClockSprite = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_2D_CLOCK_SPRITE");
+    PixelShader2DClockSpriteAdditive = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_2D_CLOCK_SPRITE_ADDITIVE");
     Indices[0] = 0;
     Indices[1] = 1;
     Indices[2] = 2;

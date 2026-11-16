@@ -261,6 +261,19 @@ public:
     const C3DMeshInfo* PeekStaticMesh(unsigned long)const;
     const C3DMeshInfo* PeekAnimatedMesh(unsigned long)const;
 #endif
+#ifdef FABLE_RETAIL_CMESHDATABANK_PEEKREPEATEDMESH
+    // Opt-in (NF46 round 7, row 0x00BE27B0 CLocalDetailObjectCollectionType::Load): Ego_r.pdb / FableWin.pdb
+    // ?PeekRepeatedMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z (retail 0x00A24290, landed CMeshDataBank_PeekRepeatedMesh_00a24290.cpp; Ego_r
+    // order PeekStaticMesh / PeekRepeatedMesh / PeekParticleMesh / PeekAnimatedMesh = retail 0x00A24280 / 0x00A24290 / 0x00A242A0 / 0x00A242B0).
+    // Declaration only.
+    const C3DMeshInfo* PeekRepeatedMesh(unsigned long)const;             // 0x00A24290
+#endif
+#ifdef FABLE_RETAIL_CMESHDATABANK_PEEKPARTICLEMESH
+    // Opt-in (NF46 round 7, row 0x00BC2400 CEngineInternalPrimitiveParticleMeshGroup::Update): Ego_r.pdb / FableWin.pdb
+    // ?PeekParticleMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z (Ego_r 0x00B60550, next to PeekStaticMesh 0x00B60530; retail 0x00A242A0, next
+    // to PeekStaticMesh 0x00A24280). Declaration only.
+    const C3DMeshInfo* PeekParticleMesh(unsigned long)const;             // 0x00A242A0
+#endif
     void FrameEnd();                                         // 0x00A23AD0 ?FrameEnd@CMeshDataBank@@QAEXXZ
 #endif
 };

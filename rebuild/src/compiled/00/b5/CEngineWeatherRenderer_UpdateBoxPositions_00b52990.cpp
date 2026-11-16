@@ -9,8 +9,12 @@
 // Retail-asm: six expansions, 0x00B529C1..0x00B529DB (`fld [ebp-10h] ; fsub [ebp-14h] ; fistp dword ptr [ebp-8] ; fild [ebp-8] ; fadd [ebp-18h] ; fstp [ebp-0Ch] ; mov eax,[ebp-10h] ; cmp eax,[ebp-0Ch] ; jne ; inc dword ptr [ebp-8]`) through 0x00B52AE8..0x00B52B02 -- the engine's inline-assembly floor helper expanded in place (0.5f / 1.0f stored as frame constants, a bare dword fistp into a named long, the bit compare and `jne ; inc dword ptr` in the same 10-instruction block: rasm1 family (b)). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si: rasm1 probe family (a)); the result is read back by C++ after the block.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongFloor.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 #include "engine/C3DVector.h"
-struct SCamera_01436ea0 { unsigned char _pad[0x54]; C3DVector Position; };
-extern SCamera_01436ea0* g_pCamera_01436ea0;       // 0x01436EA0
+// NF46 (round 7): the 0x01436EA0 global is NEngineInternal::GPCamera (Ego_r.pdb / FableWin.pdb ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A),
+// the position its inline PeekCameraPos() (CameraDesc.WorldPosition +0x54, engine/CEngineCamera.h); was SCamera_01436ea0 / g_pCamera_01436ea0.
+#define FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINECAMERA_POSITION
+#include "engine/CEngineCamera.h"
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }                          // 0x01436EA0
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 
@@ -39,7 +43,7 @@ void CEngineWeatherRenderer::UpdateBoxPositions()
     long sizeX = GFFloatToLongFloor(BoxSize.X * 0.5f);
     long sizeY = GFFloatToLongFloor(BoxSize.Y * 0.5f);
     long sizeZ = GFFloatToLongFloor(BoxSize.Z * 0.5f);
-    const C3DVector& camera = g_pCamera_01436ea0->Position;
+    const C3DVector& camera = NEngineInternal::GPCamera->PeekCameraPos();
     long distX = GFFloatToLongFloor((float)fabs((float)BoxCentre[0] - camera.X));
     long distY = GFFloatToLongFloor((float)fabs((float)BoxCentre[1] - camera.Y));
     long distZ = GFFloatToLongFloor((float)fabs((float)BoxCentre[2] - camera.Z));

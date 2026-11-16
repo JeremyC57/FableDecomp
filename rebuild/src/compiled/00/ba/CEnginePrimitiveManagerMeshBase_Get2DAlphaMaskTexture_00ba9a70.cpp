@@ -15,6 +15,9 @@
 //   BuildHWStipplePatterns 0x00B3C4B0 pins HWInverseStipplePatterns at +0x2AB4; the mask's "blank" is the all-ones texture).
 // Shape: as the Reflection differ (STLport-style vector member for the double size computation; `flags = 0; if (BlockOnLoad ||
 //   force) flags = 0x11;`), the frame body inlined per row because its frame-less result differs between the four siblings.
+// NF46 (round 7): the 0x01436E98 stand-in CEngineResourceManager_01436e98 / g_pEngineResourceManager_01436e98 is
+//   NEngineInternal::GPResourceManager (?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A) on engine/CEngineResourceManager.h;
+//   +0x2ADC is read through FableWin.pdb's inline GetSatRGBATexture (opt-in _SATRGBATEXTURE, which names this row).
 #include "fable_compiler.h"
 class CTexture;
 enum ETextureType { TEXTURE_TYPE_0 = 0 };
@@ -201,11 +204,10 @@ namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer
 
 struct IDirect3DTexture9;
 class CTexture { public: IDirect3DTexture9* PD3DTexture; unsigned long Flags; };   // engine/CTexture.h, 8 bytes
-struct CEngineResourceManager_01436e98 {                  // the engine resource manager singleton, SatRGBATexture at retail +0x2ADC
-    unsigned char _pad00[0x2adc];
-    CTexture      SatRGBATexture;                       // +0x2adc (Ego_r 14876; retail = generated header - 0x230)
-};
-extern CEngineResourceManager_01436e98* g_pEngineResourceManager_01436e98;   // 0x01436E98
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_SATRGBATEXTURE
+#include "engine/CEngineResourceManager.h"
+namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 struct CEnginePrimitiveManagerMeshBase {
     static const CTexture* __fastcall Get2DAlphaMaskTexture(unsigned long bankIndex, unsigned long mipmap, bool& preloading, const CGraphicDataBank* bank, bool force);
@@ -237,12 +239,12 @@ FABLE_FORCEINLINE const CTexture* CGraphicInfoFrame::GetTexture(unsigned long mi
         Data->BeginLoading(mipmapLevel, flags);
     } else {
         if (flags & 4)
-            return &g_pEngineResourceManager_01436e98->SatRGBATexture;
+            return NEngineInternal::GPResourceManager->GetSatRGBATexture();
         Data = new CFrameData(this);
         Data->BeginLoading(mipmapLevel, flags);
     }
     if (!(flags & 1) || !InternalGetFrameForcedLoading(flags))
-        return &g_pEngineResourceManager_01436e98->SatRGBATexture;
+        return NEngineInternal::GPResourceManager->GetSatRGBATexture();
     return Data->Frame.FrameData->PTexture.Data;
 }
 
@@ -250,7 +252,7 @@ const CTexture* __fastcall CEnginePrimitiveManagerMeshBase::Get2DAlphaMaskTextur
 {
     const CGraphicDataBankFull* fullBank = static_cast<const CGraphicDataBankFull*>(bank);
     if (bankIndex == 0)
-        return &g_pEngineResourceManager_01436e98->SatRGBATexture;
+        return NEngineInternal::GPResourceManager->GetSatRGBATexture();
     CGraphicInfoFrame* frame = fullBank->GetGraphicInfo(bankIndex) ? fullBank->GetGraphicInfo(bankIndex)->Frames : 0;
     unsigned long flags = (((CEnginePrimitiveRendererSharedData*)NEngineInternal::GPPrimitiveRenderer)->BlockOnLoad || force) ? 0x11 : 0;
     return frame->GetTexture(mipmap, flags);
