@@ -1,0 +1,174 @@
+fix engine/CAIStateGroup_JackOfBladesStage2.h line 13 32 -> 13 r6_wfD4
+fix engine/CAIStateGroup_MinionGossip.h line 52 29 -> 26 r6_wfD4k
+fix engine/CCombatAction_StrikeResponseJackOfBladesIntoRush.h line 13 24 -> 13 wfE11p
+fix engine/CCombatAction_StrikeResponseJackOfBladesIntoRush.h line 36 110 -> 24 HEAD
+fix engine/CCombatAction_StrikeResponseScorpionKing.h line 12 32 -> 12 wfE11p
+fix engine/CCreatureAction_BalverineBreakOffFromCombat.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_BalverineBreakOffFromCombatLong.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_BalverineLungeAttack.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_BanditKingGetHit.h line 12 32 -> 12 wfE11p
+fix engine/CCreatureAction_BodgeSideStrike.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_CastBattleCharge.h line 18 36 -> 18 wfE11p
+fix engine/CCreatureAction_Charge.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_CombatBoast.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_CombatIdle.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_DiagonalStrafeBL.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_DiagonalStrafeBR.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_GenericAimProjectileWeapon.h line 12 32 -> 12 wfE11p
+fix engine/CCreatureAction_GenericFireProjectileWeapon.h line 12 26 -> 12 wfE11p
+fix engine/CCreatureAction_GenericFireProjectileWeapon.h line 37 47 -> 26 HEAD
+fix engine/CCreatureAction_GenericLeaderCommand.h line 12 45 -> 12 wfE11p
+fix engine/CCreatureAction_GenericLoadProjectileWeapon.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_GenericStrafeLeft.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_GenericStrafeRight.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_HobbeLungeAttack.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_InterruptableFarAttack.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_InterruptableMidAttack.h line 13 80 -> 13 wfE11p
+fix engine/CCreatureAction_JackFlash.h line 11 30 -> 11 r6_wfD4
+fix engine/CCreatureAction_JackFloatUp.h line 16 84 -> 16 r6_wfD4
+fix engine/CCreatureAction_JackShotFloat.h line 11 30 -> 11 r6_wfD4
+fix engine/CCreatureAction_LeapBack.h line 12 14 -> 12 wfE11p
+fix engine/CCreatureAction_LeapBack.h line 25 43 -> 14 HEAD
+fix engine/CCreatureAction_MidAttackSide.h line 12 11 -> 12 wfE11p
+fix engine/CCreatureAction_NymphGetHit.h line 14 96 -> 14 wfE11p
+fix engine/CCreatureAction_NymphGetHitDie.h line 13 94 -> 13 wfE11p
+fix engine/CCreatureAction_ScorpionKingDeath.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_ScreamerAdvance.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_ScreamerBackOff.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_ScreamerDrainAttack.h line 11 30 -> 11 wfE11p
+fix engine/CCreatureAction_ScreamerDrainOutOf.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_ScreamerIdle.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_StrafeBackward.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_StrafeForward.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_SummonerDie.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_SummonerFlameSlice.h line 15 80 -> 15 wfE11p
+fix engine/CCreatureAction_SummonerStrike.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_SummonerUnsheatheStrike.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_TentacleStrikeGetHit.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_UnblockableMidAttack.h line 12 30 -> 12 wfE11p
+fix engine/CCreatureAction_UnsheatheWeapons.h line 13 30 -> 13 wfE11p
+fix engine/CCreatureAction_UnsheatheWeapons.h line 37 101 -> 30 HEAD
+fix engine/CEngineInternalPrimitive2DClockSprite.h line 40 40 -> 1000 r6_wfE5
+fix engine/CEngineInternalPrimitive2DSprite.h line 39 40 -> 1000 r5_wfE5
+fix engine/CEnginePrimitiveManager2DParticleGroup.h line 22 32 -> 22 r5_wfA4
+fix engine/CEnginePrimitiveManager2DParticleGroup.h line 44 48 -> 32 HEAD
+changed 54
+PROB ('engine/C3DMeshInfo.h', 'head_vs_folder', 112, (104, 'HEAD'), (111, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(104, sizeof(C3DMeshInfo) == 0x60);')
+PROB ('engine/C3DMeshInfo.h', 'head_vs_folder', 158, (150, 'HEAD'), (157, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(150, sizeof(C3DMeshInfo) == 0x60);')
+PROB ('engine/C3DMeshInfo.h', 'head_vs_folder', 159, (151, 'HEAD'), (158, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(151, offsetof(C3DMeshInfo, __vftable)')
+PROB ('engine/C3DMeshInfo.h', 'head_vs_folder', 160, (152, 'HEAD'), (159, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(152, offsetof(C3DMeshInfo, f4) == 0x4')
+PROB ('engine/C3DMeshInfo.h', 'head_vs_folder', 161, (153, 'HEAD'), (160, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(153, offsetof(C3DMeshInfo, MeshData_O')
+PROB ('engine/C3DMeshInfo.h', 'head_vs_folder', 162, (154, 'HEAD'), (161, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(154, offsetof(C3DMeshInfo, BoundingBo')
+PROB ('engine/C3DMeshInfo.h', 'head_vs_folder', 163, (155, 'HEAD'), (162, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(155, offsetof(C3DMeshInfo, BoundingSp')
+PROB ('engine/C3DMeshInfo.h', 'head_vs_folder', 164, (156, 'HEAD'), (163, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(156, offsetof(C3DMeshInfo, SafeBoundi')
+PROB ('engine/C3DMeshInfo.h', 'head_vs_folder', 165, (157, 'HEAD'), (164, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(157, offsetof(C3DMeshInfo, PhysicsMes')
+PROB ('engine/C3DMeshInfo.h', 'head_vs_folder', 166, (158, 'HEAD'), (165, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(158, offsetof(C3DMeshInfo, LODErrors)')
+PROB ('engine/C3DMeshInfo.h', 'head_vs_folder', 167, (159, 'HEAD'), (166, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(159, offsetof(C3DMeshInfo, LODDataSiz')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 292, (241, 'HEAD'), (249, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(241, sizeof(CEngineLightingManager::C')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 293, (242, 'HEAD'), (250, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(242, sizeof(CEngineLightingManager) =')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 294, (243, 'HEAD'), (251, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(243, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 295, (244, 'HEAD'), (252, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(244, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 296, (245, 'HEAD'), (253, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(245, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 297, (246, 'HEAD'), (254, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(246, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 299, (248, 'HEAD'), (256, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(248, sizeof(CEngineLocalLightArray) =')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 300, (249, 'HEAD'), (257, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(249, sizeof(CEngineLightingManagerSpo')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 301, (250, 'HEAD'), (258, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(250, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 302, (251, 'HEAD'), (259, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(251, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 303, (252, 'HEAD'), (260, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(252, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 304, (253, 'HEAD'), (261, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(253, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 305, (254, 'HEAD'), (262, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(254, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 306, (255, 'HEAD'), (263, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(255, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 307, (256, 'HEAD'), (264, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(256, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 396, (345, 'HEAD'), (353, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(345, sizeof(CEngineLightingManager) =')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 397, (346, 'HEAD'), (354, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(346, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 398, (347, 'HEAD'), (355, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(347, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 399, (348, 'HEAD'), (356, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(348, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 400, (349, 'HEAD'), (357, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(349, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 401, (350, 'HEAD'), (358, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(350, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 402, (351, 'HEAD'), (359, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(351, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 403, (352, 'HEAD'), (360, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(352, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 404, (353, 'HEAD'), (361, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(353, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 405, (354, 'HEAD'), (362, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(354, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 406, (355, 'HEAD'), (363, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(355, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 407, (356, 'HEAD'), (364, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(356, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 408, (357, 'HEAD'), (365, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(357, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 409, (358, 'HEAD'), (366, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(358, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 410, (359, 'HEAD'), (367, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(359, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 411, (360, 'HEAD'), (368, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(360, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 412, (361, 'HEAD'), (369, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(361, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 413, (362, 'HEAD'), (370, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(362, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 414, (363, 'HEAD'), (371, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(363, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 415, (364, 'HEAD'), (372, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(364, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 416, (365, 'HEAD'), (373, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(365, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 417, (366, 'HEAD'), (374, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(366, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 418, (367, 'HEAD'), (375, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(367, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 419, (368, 'HEAD'), (376, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(368, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 420, (369, 'HEAD'), (377, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(369, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 421, (370, 'HEAD'), (378, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(370, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 422, (371, 'HEAD'), (379, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(371, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 423, (372, 'HEAD'), (380, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(372, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 424, (373, 'HEAD'), (381, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(373, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 425, (374, 'HEAD'), (382, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(374, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 426, (375, 'HEAD'), (383, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(375, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 427, (376, 'HEAD'), (384, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(376, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 428, (377, 'HEAD'), (385, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(377, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 429, (378, 'HEAD'), (386, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(378, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 430, (379, 'HEAD'), (387, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(379, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 431, (380, 'HEAD'), (388, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(380, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 432, (381, 'HEAD'), (389, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(381, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 433, (382, 'HEAD'), (390, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(382, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 434, (383, 'HEAD'), (391, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(383, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 435, (384, 'HEAD'), (392, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(384, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 436, (385, 'HEAD'), (393, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(385, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 437, (386, 'HEAD'), (394, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(386, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 438, (387, 'HEAD'), (395, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(387, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 439, (388, 'HEAD'), (396, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(388, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 440, (389, 'HEAD'), (397, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(389, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 441, (390, 'HEAD'), (398, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(390, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 442, (391, 'HEAD'), (399, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(391, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 443, (392, 'HEAD'), (400, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(392, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 444, (393, 'HEAD'), (401, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(393, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 445, (394, 'HEAD'), (402, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(394, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 446, (395, 'HEAD'), (403, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(395, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 447, (396, 'HEAD'), (404, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(396, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 448, (397, 'HEAD'), (405, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(397, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 449, (398, 'HEAD'), (406, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(398, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 450, (399, 'HEAD'), (407, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(399, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 451, (400, 'HEAD'), (408, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(400, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 452, (401, 'HEAD'), (409, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(401, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 453, (402, 'HEAD'), (410, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(402, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 454, (403, 'HEAD'), (411, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(403, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 455, (404, 'HEAD'), (412, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(404, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 456, (405, 'HEAD'), (413, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(405, offsetof(CEngineLightingManager,')
+PROB ('engine/CEngineLightingManager.h', 'head_vs_folder', 457, (406, 'HEAD'), (414, 'r6_wfA5'), 'FABLE_STATIC_ASSERT_AT(406, offsetof(CEngineLightingManager,')
+PROB ('engine/CEnginePrimitiveParticleMesh.h', 'head_vs_folder', 23, (17, 'HEAD'), (23, 'r6_wfE8e'), 'FABLE_STATIC_ASSERT_AT(17, sizeof(CEnginePrimitiveParticleMe')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 146, (119, 'HEAD'), (135, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(119, sizeof(CParticleProgram)==0x140)')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 191, (164, 'HEAD'), (180, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(164, sizeof(CParticleProgram) == 0x14')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 192, (165, 'HEAD'), (181, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(165, offsetof(CParticleProgram, __vft')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 193, (166, 'HEAD'), (182, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(166, offsetof(CParticleProgram, Initi')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 194, (167, 'HEAD'), (183, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(167, offsetof(CParticleProgram, Expor')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 195, (168, 'HEAD'), (184, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(168, offsetof(CParticleProgram, Rende')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 196, (169, 'HEAD'), (185, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(169, offsetof(CParticleProgram, Rende')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 197, (170, 'HEAD'), (186, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(170, offsetof(CParticleProgram, Rende')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 198, (171, 'HEAD'), (187, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(171, offsetof(CParticleProgram, NonSi')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 199, (172, 'HEAD'), (188, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(172, offsetof(CParticleProgram, NonSi')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 200, (173, 'HEAD'), (189, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(173, offsetof(CParticleProgram, Index')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 201, (174, 'HEAD'), (190, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(174, offsetof(CParticleProgram, TempV')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 202, (175, 'HEAD'), (191, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(175, offsetof(CParticleProgram, Parti')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 203, (176, 'HEAD'), (192, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(176, offsetof(CParticleProgram, Verte')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 204, (177, 'HEAD'), (193, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(177, offsetof(CParticleProgram, Bezie')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 205, (178, 'HEAD'), (194, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(178, offsetof(CParticleProgram, Avera')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 206, (179, 'HEAD'), (195, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(179, offsetof(CParticleProgram, SimGr')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 207, (180, 'HEAD'), (196, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(180, offsetof(CParticleProgram, NonSi')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 208, (181, 'HEAD'), (197, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(181, offsetof(CParticleProgram, Const')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 209, (182, 'HEAD'), (198, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(182, offsetof(CParticleProgram, LoopS')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 210, (183, 'HEAD'), (199, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(183, offsetof(CParticleProgram, Memor')
+PROB ('engine/CParticleProgram.h', 'head_vs_folder', 211, (184, 'HEAD'), (200, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(184, offsetof(CParticleProgram, Memor')
+PROB ('engine/CParticleSimulation.h', 'head_vs_folder', 94, (88, 'HEAD'), (94, 'r5_wfA4b'), 'FABLE_STATIC_ASSERT_AT(88, sizeof(CParticleSimulation)==0x80')
+PROB ('engine/CRenderManager2D.h', 'head_vs_folder', 125, (115, 'HEAD'), (120, 'r6_wfA2b'), 'FABLE_STATIC_ASSERT_AT(115, sizeof(CRenderManager2D) == 0x3e')
+PROB ('engine/CThing.h', 'head_vs_folder', 474, (453, 'HEAD'), (470, 'r6_wfE11'), 'FABLE_STATIC_ASSERT_AT(453, offsetof(CThing,UniqueID)==0x18)')
+PROB ('engine/CThing.h', 'head_vs_folder', 475, (454, 'HEAD'), (471, 'r6_wfE11'), 'FABLE_STATIC_ASSERT_AT(454, offsetof(CThing,UsingComponents)')
+PROB ('engine/CThing.h', 'head_vs_folder', 476, (455, 'HEAD'), (472, 'r6_wfE11'), 'FABLE_STATIC_ASSERT_AT(455, offsetof(CThing,Components)==0x4')
+PROB ('engine/CThing.h', 'head_vs_folder', 477, (456, 'HEAD'), (473, 'r6_wfE11'), 'FABLE_STATIC_ASSERT_AT(456, offsetof(CThing,PhysicsTC)==0x60')
+PROB ('engine/CThing.h', 'head_vs_folder', 478, (457, 'HEAD'), (474, 'r6_wfE11'), 'FABLE_STATIC_ASSERT_AT(457, offsetof(CThing,PBaseDef)==0x70)')
+PROB ('engine/CV_BanditTollScript.h', 'head_vs_folder', 181, (169, 'HEAD'), (181, 'r5_wfE3'), 'FABLE_STATIC_ASSERT_AT(169, sizeof(NScript::CV_BanditTollScr')

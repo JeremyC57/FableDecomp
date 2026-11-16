@@ -17,8 +17,12 @@ public:
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
     float AverageTextureStretch;          // +0x10
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+    static const char* FABLE_FASTCALL GetStaticChunkType() { return "XMIF"; }   // FableWin ?GetStaticChunkType@C3DMeshFileXMappingInfoChunk@@SIPBDXZ
+    float GetAverageTextureStretch() const { return AverageTextureStretch; }
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXMappingInfoChunk) == 0x14);
+FABLE_STATIC_ASSERT_AT(21, sizeof(C3DMeshFileXMappingInfoChunk) == 0x14);
 #endif // FABLE_ENGINE_C3DMESHFILEXMAPPINGINFOCHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILEXMAPPINGINFOCHUNK_H
@@ -42,9 +46,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXMappingInfoChunk) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXMappingInfoChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXMappingInfoChunk, AverageTextureStretch) == 0x10);
+FABLE_STATIC_ASSERT_AT(45, sizeof(C3DMeshFileXMappingInfoChunk) == 0x14);
+FABLE_STATIC_ASSERT_AT(46, offsetof(C3DMeshFileXMappingInfoChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(47, offsetof(C3DMeshFileXMappingInfoChunk, AverageTextureStretch) == 0x10);
 
 #endif // FABLE_ENGINE_C3DMESHFILEXMAPPINGINFOCHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILEXMAPPINGINFOCHUNK

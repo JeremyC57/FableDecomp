@@ -224,6 +224,18 @@ template<class I,class O> inline O __copy_aux(I first,I last,O result,const __fa
     return __copy(first,last,result,typename iterator_traits<I>::iterator_category(),(typename iterator_traits<I>::difference_type*)0);
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_COPY
+// Retail opt-in (wfE8, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData; chunk 868's text): STLport 4.6 _algobase.h copy() for
+// pointer ranges, dispatched on the element's trivial-assignment trait: a POD range through __copy_trivial (the inline `last == first`
+// test and memmove 0x00BFEAE6 at 0x00A30084), a non-POD one through __copy<I,O,int> (0x00A31150 / 0x00A311B0 for the
+// pair<unsigned long, C3DHelperPoint / C3DDummyObject> ranges).
+template<class T> inline T* copy(T* first,T* last,T* result) {
+    return __copy_ptrs(first,last,result,typename __type_traits<T>::has_trivial_assignment_operator());
+}
+template<class T> inline T* copy(const T* first,const T* last,T* result) {
+    return __copy_ptrs(first,last,result,typename __type_traits<T>::has_trivial_assignment_operator());
+}
+#endif
 #if defined(FABLE_RETAIL_PASS22_SCOREBOARD_COPY_BACKWARD_ORIGINAL) || defined(FABLE_RETAIL_STLP_ORIGINAL_COPY_TRIVIAL_BACKWARD_PASS22)
 // Actual STLport4.6.2 _algobase.h182..185 and224..226, including empty-range guard.
 inline void* __copy_trivial_backward(const void* __first,const void* __last,void* __result) {
@@ -753,6 +765,13 @@ public:
         } else _M_insert_overflow(position,x,_IsPODType(),1UL,false);
         return begin()+n;
     }
+#endif
+#if defined(FABLE_RETAIL_STLP_VECTOR_ERASE_NOINLINE) && defined(_MSC_VER)
+    // Per-TU opt-in (acctC wfE9-8, rows 0x005A4CDD ConstructActualSellInventoryPC / 0x005AC10E ConstructActualBuyInventoryPC): the
+    // STLport erase(position) body below, visible but kept out of line, as the retail TU calls it (vector<pair<long,long> >::erase
+    // 0x00593139). Unlike the declaration-only FABLE_RETAIL_STLP_VECTOR_ERASE_OUTOFLINE, c2 then knows erase keeps no address of the
+    // vector, so a local vector's words survive later calls (retail loop heads 0x005A4E49 / 0x005AC189). Mirror of PUSHBACK_NOINLINE.
+    __declspec(noinline)
 #endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_ERASE_OUTOFLINE
     // Retail opt-in (chunk 782, row 0x00DFD600 CQ_TraderConflictGoodScript::AttackPeople; like
@@ -1641,6 +1660,22 @@ private:
 };
 template<class _Ret,class _Tp> inline const_mem_fun_ref_t<_Ret,_Tp> mem_fun_ref(_Ret (_Tp::*__f)() const) {
     return const_mem_fun_ref_t<_Ret,_Tp>(__f);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_MEM_FUN_PTR
+// Per-TU opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): STLport 4.6 _function_base.h mem_fun_t / mem_fun
+// (the pointer form; Ego_r.pdb ??$for_each@PAPAVCDrawBase@NPlayerGui@@V?$mem_fun_t@XVCDrawBase@NPlayerGui@@@std@@@std@@..., retail COMDAT
+// 0x0043F310, called with the 4-byte member pointer = a vcall thunk; the landed ClearGui 0x00438230 models the same functor locally).
+template<class _Ret,class _Tp> class mem_fun_t : public unary_function<_Tp*,_Ret> {
+    typedef _Ret (_Tp::*__fun_type)(void);
+public:
+    explicit mem_fun_t(__fun_type __pf) : _M_f(__pf) {}
+    _Ret operator()(_Tp* __p) const { return (__p->*_M_f)(); }
+private:
+    __fun_type _M_f;
+};
+template<class _Ret,class _Tp> inline mem_fun_t<_Ret,_Tp> mem_fun(_Ret (_Tp::*__f)()) {
+    return mem_fun_t<_Ret,_Tp>(__f);
 }
 #endif
 #ifdef FABLE_RETAIL_STLP_BACK_INSERTER

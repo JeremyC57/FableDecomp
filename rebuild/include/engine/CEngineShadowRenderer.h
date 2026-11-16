@@ -65,6 +65,11 @@ public:
     EShadowRenderingTechnique PeekRenderingTechnique() const { return RenderingTechnique; }
     CTexture& GetShadowBufferTexture() { return ShadowBufferTexture; }
     CTexture& GetDepthPackingTexture() { return DepthPackingLookupTexture; }
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_PEEKMINWCLAMP
+    // Retail opt-in (wfA6b, row 0x00BA6240): FableWin.pdb ?PeekColourBufferShadowMinWClamp@CEngineShadowRenderer@@QBEMXZ (0x02E822A0,
+    // 9i/20b = the member read; no retail out-of-line copy). Read at 0x00BA6909 (+0x25C).
+    float PeekColourBufferShadowMinWClamp() const { return ColourBufferShadowMinWClamp; }
+#endif
 #ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_PEEKSCENEDATA
     // Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): Ego_r.pdb / FableWin.pdb
     // ?PeekSceneData@CEngineShadowRenderer@@QAE?BVCShadowRendererSceneData@@XZ (inline; the caller copies SceneData +0x0C through the

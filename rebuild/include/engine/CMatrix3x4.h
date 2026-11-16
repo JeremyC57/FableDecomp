@@ -41,6 +41,24 @@ public:
         }
     }
 #endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_POSTSCALE_XYZ
+    // Overlay opt-in (row 0x00BAA870): FableWin.pdb inlines ?PostScale@CMatrix3x4@@QAEXMMM@Z and ?PostTranslate@CMatrix3x4@@QAEXMMM@Z
+    // (no Ego_r.pdb or Fable.exe copy; 0x00BAAB36..0x00BAAC00 scale the columns x, y, z in that order after evaluating the
+    // arguments right to left).
+#if !(defined(FABLE_RETAIL_CMATRIX3X4) && defined(FABLE_RETAIL_CMATRIX3X4_POSTSCALE3))   // (that opt-in declares the same PostScale)
+    FABLE_FORCEINLINE void PostScale(float x,float y,float z) {
+        E11*=x; E21*=x; E31*=x; E41*=x;
+        E12*=y; E22*=y; E32*=y; E42*=y;
+        E13*=z; E23*=z; E33*=z; E43*=z;
+    }
+#endif
+    FABLE_FORCEINLINE void PostTranslate(float x,float y,float z) { E41+=x; E42+=y; E43+=z; }
+    FABLE_FORCEINLINE void PostScale(const C3DVector& scale) {
+        E11*=scale.X; E21*=scale.X; E31*=scale.X; E41*=scale.X;
+        E12*=scale.Y; E22*=scale.Y; E32*=scale.Y; E42*=scale.Y;
+        E13*=scale.Z; E23*=scale.Z; E33*=scale.Z; E43*=scale.Z;
+    }
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_OPERATOR_MUL_VECTOR
     // Retail opt-in (row 0x0075A7A0 CTCPhysicsRigidBody::ResolveCollisions): Ego_r.pdb / FableWin.pdb
     // ??DCMatrix3x4@@QBE?AVC3DVector@@ABV1@@Z, out of line in retail at 0x00A56530 (landed: the 3x3 part times the vector, result by
@@ -244,6 +262,31 @@ public:
     FABLE_FORCEINLINE void PostTranslate(const C3DVector& v) {
         E41+=v.X; E42+=v.Y; E43+=v.Z;
     }
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETINVERSE_TRANSLATION_LOCAL
+    // Nested opt-in (wfE6 successor, row 0x00B4D370 CEngineShadowRenderer::UpdateShadowSpace): the same cofactors, determinant and
+    // elements, with m's translation taken into a C3DVector first and the inverse translation as -(Ek1*t.X + Ek2*t.Y + Ek3*t.Z).
+    // Retail 0x00B4D40A..0x00B4D5C1 computes the column-1 cofactors in the order E12, E13, E11 and keeps the column-3 elements in
+    // st through the frustum block; with the translation read straight from m (default below) c2 orders them E11, E13, E12 and keeps
+    // column 2. With the LTR TransformPoint the translation rows then factor `(E31+E21+E11)*0` like retail 0x00B4D5C1. FITTED (chosen by
+    // grading; FableWin's SetInverse is 332 /Od instructions v 154+51 here, its exact text is unknown). Body only: default path unchanged.
+    FABLE_FORCEINLINE void SetInverse(const CMatrix3x4& m) {
+        C3DVector t(m.E41, m.E42, m.E43);
+        float det = m.E11 * (m.E22 * m.E33 - m.E23 * m.E32) + m.E21 * (m.E32 * m.E13 - m.E33 * m.E12) + m.E31 * (m.E23 * m.E12 - m.E22 * m.E13);
+        float inv = 1.0f / det;
+        E11 = (m.E22 * m.E33 - m.E23 * m.E32) * inv;
+        E21 = (m.E23 * m.E31 - m.E21 * m.E33) * inv;
+        E31 = (m.E21 * m.E32 - m.E22 * m.E31) * inv;
+        E12 = (m.E32 * m.E13 - m.E33 * m.E12) * inv;
+        E22 = (m.E33 * m.E11 - m.E13 * m.E31) * inv;
+        E32 = (m.E31 * m.E12 - m.E32 * m.E11) * inv;
+        E13 = (m.E23 * m.E12 - m.E22 * m.E13) * inv;
+        E23 = (m.E21 * m.E13 - m.E23 * m.E11) * inv;
+        E33 = (m.E22 * m.E11 - m.E21 * m.E12) * inv;
+        E41 = -(E11 * t.X + E21 * t.Y + E31 * t.Z);
+        E42 = -(E12 * t.X + E22 * t.Y + E32 * t.Z);
+        E43 = -(E13 * t.X + E23 * t.Y + E33 * t.Z);
+    }
+#else
     FABLE_FORCEINLINE void SetInverse(const CMatrix3x4& m) {
         float det = m.E11 * (m.E22 * m.E33 - m.E23 * m.E32) + m.E21 * (m.E32 * m.E13 - m.E33 * m.E12) + m.E31 * (m.E23 * m.E12 - m.E22 * m.E13);
         float inv = 1.0f / det;
@@ -261,6 +304,7 @@ public:
         E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
     }
 #endif
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4
     // Chunk 737 (CPSCLight::PreparePrimitives 0x00B19C60, through CParticleSystem::TransformPosIfWorld): every row in the X row's
     // form, `E1k*xx+(E2k*yy+E3k*zz)+E4k`, gives retail's E3k*z, E2k*y, E1k*x term order in all three rows (0x00B1A43A..0x00B1A4C0:
@@ -270,6 +314,18 @@ public:
     // __forceinline (owner 2026-11-01 helper rule): retail expands it in place in both PreparePrimitives rows and Fable.exe has no
     // out-of-line ?TransformPoint@CMatrix3x4@@QBEXAAVC3DVector@@@Z (the catalog has none; only the debug PDBs carry a copy); with
     // plain inline VC7.1 calls it out of line twice in 0x00B19C60 (landing 2026-11-03h probe).
+#if defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_ZXY_LOCALS)
+    // Retail opt-in (wfA6g, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB; FITTED declaration order): the FableWin-sized flat
+    // text (same 61i/168b as TRANSFORMPOINT_LTR) with the locals declared z, x, y. Arithmetic identical to the default; the order
+    // in which VC7.1 loads / keeps the three copies on the x87 stack follows the declaration order: z, x, y gives retail's centre
+    // loads (0x00ADE600 `fld [esp+28h] ; fld st(2) ; fld [esp+28h]`) and the X / Y rows (z*E32 before y*E22, 0x00ADE624).
+    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+        const float zz=point.Z,xx=point.X,yy=point.Y;
+        point.X=E11*xx+E21*yy+E31*zz+E41;
+        point.Y=E12*xx+E22*yy+E32*zz+E42;
+        point.Z=E13*xx+E23*yy+E33*zz+E43;
+    }
+#else
 #if defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_GROUPED_XZY)
     // Nested opt-in (wfA6, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB; FITTED grouping): the x87 arm's centre transform
     // 0x00ADE6xx sums the X row as (x*E11 + z*E31) + y*E21 + E41 and the Y / Z rows with x last; this grouping is the one that
@@ -351,6 +407,7 @@ public:
         point.Z=E13*xx+(E23*yy+E33*zz)+E43;
     }
 #endif
+#endif
 #else
     void TransformPoint(C3DVector& point) const {
         const float xx=point.X;
@@ -393,6 +450,37 @@ public:
 #endif
         v.Y=xx*E12+yy*E22+zz*E32;
         v.Z=xx*E13+yy*E23+zz*E33;
+#endif
+    }
+#endif
+#if defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_SOURCE_DEST_INLINE) && !defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_SOURCE_DEST)
+    // (wfA4's probe, unused by its best source; renamed from FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_SOURCE_DEST at landing gn, whose
+    // name is the declaration-only opt-in below that rows 0x00B01900 / 0x00B03CA0 use with their own body text.)
+    // Overlay opt-in (wfA4, row 0x00BAA870 CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList): FableWin.pdb
+    // ?TransformVector@CMatrix3x4@@QBEXABVC3DVector@@AAV2@@Z (debug copy 146 bytes / 55 instructions; no Ego_r.pdb or Fable.exe
+    // out-of-line copy): the rotation part from a source into a destination, one row sum per component. The row writes its texture
+    // translation through it (0x00BAAADC..0x00BAAB34: three row sums of the negated sphere centre kept on the x87 stack, stored
+    // straight into E41 / E42 / E43). FABLE_FORCEINLINE per the owner's 2026-11-01 helper rule. Default path unchanged.
+    FABLE_FORCEINLINE void TransformVector(const C3DVector& pSource,C3DVector& destination) const {
+        destination.X=E11*pSource.X+E21*pSource.Y+E31*pSource.Z;
+        destination.Y=E12*pSource.X+E22*pSource.Y+E32*pSource.Z;
+        destination.Z=E13*pSource.X+E23*pSource.Y+E33*pSource.Z;
+    }
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_PRETRANSLATE
+    // Overlay opt-in (wfA4, row 0x00BAA870): FableWin.pdb ?PreTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z (debug copy 165 bytes /
+    // 61 instructions, the size of the three-row TransformPoint(source, destination); no Ego_r.pdb or Fable.exe out-of-line copy):
+    // the translation applied before the matrix, E4k += t . column k. After SetTranslateOnly(0,0,0) on a copied view matrix (the
+    // sibling 0x00B8B780 idiom) VC7.1 folds the zero terms and drops the dead stores: 0x00BAAADC..0x00BAAB34. Default path unchanged.
+    FABLE_FORCEINLINE void PreTranslate(const C3DVector& t) {
+#ifdef FABLE_RETAIL_CMATRIX3X4_PRETRANSLATE_ACCUMULATE
+        E41+=E11*t.X+E21*t.Y+E31*t.Z;
+        E42+=E12*t.X+E22*t.Y+E32*t.Z;
+        E43+=E13*t.X+E23*t.Y+E33*t.Z;
+#else
+        E41=E11*t.X+E21*t.Y+E31*t.Z+E41;
+        E42=E12*t.X+E22*t.Y+E32*t.Z+E42;
+        E43=E13*t.X+E23*t.Y+E33*t.Z+E43;
 #endif
     }
 #endif
@@ -579,6 +667,74 @@ public:
         E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
         return scale;
     }
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETYZROTATE
+    // Retail opt-in (wfA1 successor, row 0x006B2CA0 CEnvironment::UpdateSunAndMoonPositions): FableWin.pdb ?SetYRotate@CMatrix3x4@@QAEXM@Z
+    // (0x02453F00, 88 debug bytes) and ?SetZRotate@CMatrix3x4@@QAEXM@Z (0x02454000, 88), emitted around ?SetIdentity@CMatrix3x4@@QAEXXZ in the
+    // environment TU; inline in retail (no out-of-line copy). Identity plus the four rotation entries: the row's x87 trace keeps the
+    // identity's 0/1 entries as compile-time constants (fmul by 0.0f, *1 folded): Y turn E11 = E33 = cos, E13 = sin, E31 = -sin; Z turn
+    // E11 = E22 = cos, E21 = sin, E12 = -sin. Body only: no layout change, default path unchanged.
+    void SetYRotate(float angle) {
+        SetIdentity();
+        float c = (float)cos(angle);
+        float s = (float)sin(angle);
+        E11 = c; E13 = s; E31 = -s; E33 = c;
+    }
+    void SetZRotate(float angle) {
+        SetIdentity();
+        float c = (float)cos(angle);
+        float s = (float)sin(angle);
+        E11 = c; E12 = -s; E21 = s; E22 = c;
+    }
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETYZROTATE_GF
+    // Retail opt-in (wfA1 successor 3, row 0x006B2CA0 CEnvironment::UpdateSunAndMoonPositions, still DIFFER): the SetYRotate / SetZRotate
+    // bodies through GFCos / GFSin (FableWin.pdb ?GFCos@@YINM@Z / ?GFSin@@YINM@Z; angle in turns). EVIDENCE: the row multiplies every
+    // angle by the double at 0x0124F2B8 = 6.2831854820251465 = (double)6.2831855f, which is the GFCos / GFSin constant (a plain
+    // cos(x * 2pi) text uses 6.283185307179586 and only LOOKS right under the relocation mask); cos of the Y turn is stored twice
+    // from one x87 value (`fst [E11] ; fstp [E33]`, 0x006B2CE5), i.e. two double -> float entry stores. The entry ORDER and whether
+    // sin goes through E13 or a local `s` are FITTED and not final (the row does not match yet). Include engine/GFCos.h and engine/GFSin.h
+    // (after rebuild_abi.h) before this header. Do not define together with FABLE_RETAIL_CMATRIX3X4_SETYZROTATE. Body only.
+    void SetYRotate(float angle) { SetIdentity(); E11 = GFCos(angle); E33 = GFCos(angle); float s = GFSin(angle); E13 = s; E31 = -s; }
+    void SetZRotate(float angle) { SetIdentity(); E11 = GFCos(angle); E22 = GFCos(angle); float s = GFSin(angle); E21 = s; E12 = -s; }
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETYZROTATE_GF_NEGENTRY
+    // Retail opt-in (wfA1 successor 4, row 0x006B2CA0 CEnvironment::UpdateSunAndMoonPositions): SetYRotate / SetZRotate through GFCos / GFSin
+    // (angle in turns, FableWin.pdb ?GFCos@@YINM@Z / ?GFSin@@YINM@Z) with the negated sine entry read back from the stored one
+    // (E31 = -E13, E12 = -E21). EVIDENCE: constant 0x0124F2B8 = (double)6.2831855f (the GF constant); cos stored twice from one x87 value
+    // (`fst [E11] ; fstp [E33]`, 0x006B2CE5 / 0x006B2DF4 = two double -> float entry stores of one CSE'd call); the sine kept on the
+    // x87 stack and multiplied in after the point (`fxch ; fmul xx`, 0x006B2D3D / 0x006B2E50), which the `float s` text of _GF gives
+    // the other way round (c2 leaf of the transformed E13 = the stored entry, not a local). Do not define together with
+    // FABLE_RETAIL_CMATRIX3X4_SETYZROTATE or _SETYZROTATE_GF. Include engine/GFCos.h and engine/GFSin.h first. Body only.
+    void SetYRotate(float angle) { SetIdentity(); E11 = GFCos(angle); E33 = GFCos(angle); E13 = GFSin(angle); E31 = -E13; }
+    void SetZRotate(float angle) { SetIdentity(); E11 = GFCos(angle); E22 = GFCos(angle); E21 = GFSin(angle); E12 = -E21; }
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETYZROTATE_GF_PAREN
+    // Retail opt-in (wfA1 successor 5, row 0x006B2CA0 CEnvironment::UpdateSunAndMoonPositions): the _GF_NEGENTRY bodies with each entry
+    // assignment parenthesised. Same instructions as _GF_NEGENTRY; the parentheses leave three no-code PAREN tuples per call (the two
+    // cosines CSE to one) and so move VC7.1's 81-tuple scheduling cut: retail's `lea ecx,[vector]` placed right before both
+    // AccurateNormalise calls (0x006B2DB9, 0x006B2EBA) and the Scalers[5] / SunVector copy order (0x006B2EE3) need exactly three per call
+    // (measured: 2 or 4 per call leave the leas hoisted; sched2 region dumps). FITTED (the parenthesis count is fixed by grading, not by
+    // a source text). Do not define together with _SETYZROTATE, _SETYZROTATE_GF or _SETYZROTATE_GF_NEGENTRY. Body only.
+    void SetYRotate(float angle) { SetIdentity(); E11 = (GFCos(angle)); E33 = (GFCos(angle)); E13 = (GFSin(angle)); E31 = (-E13); }
+    void SetZRotate(float angle) { SetIdentity(); E11 = (GFCos(angle)); E22 = (GFCos(angle)); E21 = (GFSin(angle)); E12 = (-E21); }
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETYZROTATE_GF_PAREN5
+    // Retail opt-in (wfA1 successor 7, row 0x006B2CA0 CEnvironment::UpdateSunAndMoonPositions): the _GF_NEGENTRY bodies with the
+    // SetYRotate entry assignments parenthesised (3 no-code PAREN tuples) and SetZRotate's cosine and sine entries parenthesised (2);
+    // same instructions as _GF_NEGENTRY. With the row's parenthesised `((float)GFCos(t))` vector X arguments (one high-priority PAREN
+    // each, which places the xx copy store after fsin as retail 0x006B2CCF / 0x006B2DDE) exactly 5 tuples per Y+Z pair place VC7.1's
+    // 81-tuple scheduling cuts as retail (sun / moon `lea ecx,[vector]` right before AccurateNormalise, 0x006B2DB9 / 0x006B2EBA; measured:
+    // Y/Z counts 3+2 and 2+3 match, 3+3 / 2+2 / others do not). FITTED (the count is fixed by grading). Do not define together with
+    // _SETYZROTATE, _SETYZROTATE_GF, _SETYZROTATE_GF_NEGENTRY or _SETYZROTATE_GF_PAREN. Body only.
+    void SetYRotate(float angle) { SetIdentity(); E11 = (GFCos(angle)); E33 = (GFCos(angle)); E13 = (GFSin(angle)); E31 = (-E13); }
+    void SetZRotate(float angle) { SetIdentity(); E11 = (GFCos(angle)); E22 = (GFCos(angle)); E21 = (GFSin(angle)); E12 = -E21; }
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_SOURCE_DEST
+    // Opt-in (wfD6, row 0x00B01900 CPSCRenderMesh::AddToBoundingSphere): FableWin.pdb ?TransformVector@CMatrix3x4@@QBEXABVC3DVector@@AAV2@@Z
+    // (0x02D84BB0, 55i/146b at /Od; no Ego_r.pdb or retail out-of-line copy): declaration only while the row is open (the includer
+    // defines the body).
+    void TransformVector(const C3DVector& pSource,C3DVector& destination) const;
 #endif
 };
 #ifdef FABLE_RETAIL_CMATRIX3X4_SET_RHSET_INLINE

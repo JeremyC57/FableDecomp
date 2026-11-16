@@ -47,7 +47,13 @@ public:
 #else
  CDefString(const CCharString&);
 #endif
-#if defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION)
+#if defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_FORWARDER) && !defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION)
+ // Per-TU inline opt-in (wfE10-2, rows 0x00795300 CTCUnholyPower::FrameUpdate / 0x0078FD60 CTCDivineWrath::FrameUpdate): the conversion
+ // forwarder is always expanded while GetString keeps the plain inline heuristic: the first cancel-sound conversion expands both (call
+ // CDefStringTable::GetString 0x009D49B0 directly, 0x007953C9) and the second calls GetString 0x00415DD0 (0x0079546E), both temporaries
+ // built before the argument pushes. Same body.
+ FABLE_FORCEINLINE operator CCharString()const{return GetString();}
+#elif defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION)
  // Per-TU inline opt-in (chunk 1010b, row 0x008A8C60 CGameScriptInterface::EntitySetAsSittingOnFloor): that TU expands the
  // conversion forwarder and calls GetString 0x00415DD0 out of line for an implicit conversion temporary (0x008A8D51..0x008A8D5E:
  // `lea edx,<tmp> ; push edx ; lea ecx,[ebp+8] ; call 0x00415DD0 ; lea eax,<tmp>`), where VC7.1's plain-inline heuristic
@@ -88,6 +94,17 @@ public:
  // Chunk 732 (row 0x006AA2E0): Ego_r.pdb / FableWin.pdb ?ToWideString@CDefString@@QBE?AVCWideString@@XZ, out of line in retail
  // (0x00415D90: GetString through GDefStringTable, then CCharString::ToWideString 0x0099E480). Declaration only.
  CWideString ToWideString()const;
+#endif
+#ifdef FABLE_RETAIL_CDEFSTRING_TOWIDESTRING_INLINE
+ // Opt-in (wfA2, row 0x00435530 CDisplayEngine::DoRender): Ego_r.pdb / FableWin.pdb ?ToWideString@CDefString@@QBE?AVCWideString@@XZ with
+ // the body of its landed out-of-line copy 0x00415D90 (rebuild/src/compiled/00/41/CDefString_ToWideString_00415d90.cpp), visible because
+ // DoRender expands it (0x0043599E..0x004359BE: GetString 0x009D49B0 into a CCharString frame slot, CCharString::ToWideString 0x0099E480
+ // into the by-value argument slot, ~CCharString 0x0099EAE0). Exclusive with FABLE_RETAIL_CDEFSTRING (its declaration-only twin). Needs
+ // CWideString complete (include fable_string.h first).
+#ifdef FABLE_RETAIL_CDEFSTRING
+#error FABLE_RETAIL_CDEFSTRING_TOWIDESTRING_INLINE and FABLE_RETAIL_CDEFSTRING both declare CDefString::ToWideString
+#endif
+ CWideString ToWideString()const{CCharString text=GDefStringTable.GetString(TablePos);return text.ToWideString();}
 #endif
 #ifdef FABLE_RETAIL_CDEFSTRING_EQUALS
  // Opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): FableWin.pdb ??8CDefString@@QBE_NPBD@Z, out of

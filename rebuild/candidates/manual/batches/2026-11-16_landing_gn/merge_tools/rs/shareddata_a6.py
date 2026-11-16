@@ -1,0 +1,5 @@
+def R(k,o,b,t):
+    if k==1: return o
+    assert o[0]=='#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_SHADERS' and o[-1]=='#else'
+    assert t[0]=='#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_SHADOWBUFFERSHADERS' and t[-1]=='#else'
+    return o[:-1]+['#elif defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_SHADOWBUFFERSHADERS)']+t[1:]

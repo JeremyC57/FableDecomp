@@ -11,6 +11,16 @@
 #define FABLE_RETAIL_CFADEINFADEOUTBASE_ISACTIVE
 #include "engine/CFadeInFadeOutBase.h"
 #endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_DORENDER_BODY
+// Opt-in (wfA2, row 0x00435530 CDisplayEngine::DoRender): the members DoRender reads typed as their Ego_r.pdb types (MainWindow C2DBoxF
+// +0x1C, LetterBox CLetterBoxModeInfo +0x70, PViewManager CCountedPointer<CDisplayViewManager> +0xE0; same bytes, pack 1) and the
+// accessors / callees it uses (see the block in the class). Needs FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT, FABLE_RETAIL_C2DBOXF.
+#include "engine/C2DBoxF.h"
+#include "engine/CLetterBoxModeInfo.h"
+#include "engine/CCountedPointer.h"
+class CFontBank;
+class CInterpolationInfo;
+#endif
 
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_EVENTPACKAGES
 class CGameEventPackage;
@@ -69,10 +79,81 @@ public:
     // place, 0x007E27A2). ScreenFadeOutInfo is typed CFadeInFadeOutBase under this opt-in (same 0x1c bytes, pack 1).
     bool IsScreenFadeOut() const { return ScreenFadeOutInfo.IsActive(); }
 #endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_ENDSCREENFADEOUT
+    // Retail opt-in (wfA1, row 0x006D0830 CTCWife::GlobalUpdate): Ego_r.pdb / FableWin.pdb ?EndScreenFadeOut@CDisplayEngine@@QAEXXZ, out of
+    // line at 0x00434C90 (reloc_bindings; landed row); called at 0x006D0BD5 / 0x006D0F3B. Declaration only, no layout change.
+    void EndScreenFadeOut();                                             // 0x00434C90
+#endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_SETGAMMARAMP
+    // Retail opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): FableWin.pdb ?SetGammaRamp@CDisplayEngine@@QAEXM@Z,
+    // inline in retail (the caller stores GammaRamp +0xB4 in place through GetDisplayEngine: `mov ecx,[013B86A0h] ; mov edx,[ecx+28h] ;
+    // fstp dword ptr [edx+0B4h]`, 0x004390C1..0x004390CA). Body from those bytes. No layout change.
+    void SetGammaRamp(float gamma_ramp) { GammaRamp = gamma_ramp; }
+#endif
+#if defined(FABLE_RETAIL_CDISPLAYENGINE_ISSCREENFULLYFADEDOUT) && defined(FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT) && defined(FABLE_RETAIL_CFADEINFADEOUTBASE_FADE)
+    // Nested opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): FableWin.pdb ?IsScreenFullyFadedOut@CDisplayEngine@@QBE_NXZ
+    // and ?GetScreenFadeOutAlpha@CDisplayEngine@@QBEEXZ (the latter's out-of-line COMDAT 0x004364C0 is landed: (unsigned char)(ScreenFadeOutInfo
+    // .GetFadeInOutAlpha() * 255)), both inline in retail there (`lea ecx,[eax+0BCh] ; cmp byte ptr [ecx],0 ; je ; call 0x004348D0 ; fmul 255.0 ;
+    // call __ftol2 ; cmp al,0FFh`, 0x00439395..0x004393B2). Body of IsScreenFullyFadedOut from those bytes (descriptive). Needs
+    // FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT and GetFadeInOutAlpha on CFadeInFadeOutBase (FABLE_RETAIL_CFADEINFADEOUTBASE_FADE). No layout change.
+    unsigned char GetScreenFadeOutAlpha() const { return (unsigned char)(ScreenFadeOutInfo.GetFadeInOutAlpha() * 255.0f); }
+    bool IsScreenFullyFadedOut() const { return IsScreenFadeOut() && GetScreenFadeOutAlpha() == 255; }
+    // Two texts are on record for IsScreenFullyFadedOut (both descriptive, from row bytes): this one through GetScreenFadeOutAlpha
+    // (wfA2 rows 0x00439070 / 0x00435530, which define FABLE_RETAIL_CFADEINFADEOUTBASE_FADE) and the member test below (wfA1 rows
+    // 0x006D0830 / 0x006D1E30, FABLE_RETAIL_CFADEINFADEOUTBASE_OPEN). The FADE opt-in that GetFadeInOutAlpha needs selects this one.
+#elif defined(FABLE_RETAIL_CDISPLAYENGINE_ISSCREENFULLYFADEDOUT)
+    // Retail opt-in (wfA1, row 0x006D0830 CTCWife::GlobalUpdate): Ego_r.pdb (0x004B1F80) / FableWin.pdb (0x01B389F0)
+    // ?IsScreenFullyFadedOut@CDisplayEngine@@QBE_NXZ, inline in this row (an out-of-line copy is 0x004A9210): the fade's Active +0xBC,
+    // Opening +0xC9 and Closing +0xC8 bytes tested in place in that order (0x006D0858..0x006D087A) = CFadeInFadeOutBase::IsOpen.
+    // Needs ..._SCREENFADEOUT and FABLE_RETAIL_CFADEINFADEOUTBASE_OPEN.
+    bool IsScreenFullyFadedOut() const { return ScreenFadeOutInfo.Active && !ScreenFadeOutInfo.Opening && !ScreenFadeOutInfo.Closing; }
+#endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_REGIONLOADFADE
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?IsScreenFullyFadedOut@CDisplayEngine@@QBE_NXZ (out of line at
+    // 0x004A9210, called 3x: ScreenFadeOutInfo Active && !Opening && !Closing), ?EndScreenFadeOut@CDisplayEngine@@QAEXXZ (0x00434C90, called),
+    // ?IsScreenFadeOutClosing@CDisplayEngine@@QBE_NXZ (inline: byte +0xC8 in place, 0x004A477E) and ?IsScreenFadeOutLockFlagSet@CDisplayEngine@@QBE_NXZ
+    // (inline: ScreenFadeOutLocked +0xD8 in place, 0x004A5895). Needs FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT (typed ScreenFadeOutInfo) and
+    // FABLE_RETAIL_CFADEINFADEOUTBASE_ISCLOSING. No layout change.
+    // (IsScreenFullyFadedOut / EndScreenFadeOut are the FABLE_RETAIL_CDISPLAYENGINE_ISSCREENFULLYFADEDOUT / _ENDSCREENFADEOUT members
+    // when those opt-ins are also set.)
+#ifndef FABLE_RETAIL_CDISPLAYENGINE_ISSCREENFULLYFADEDOUT
+    bool IsScreenFullyFadedOut() const;                                 // 0x004A9210
+#endif
+#ifndef FABLE_RETAIL_CDISPLAYENGINE_ENDSCREENFADEOUT
+    void EndScreenFadeOut();                                            // 0x00434C90
+#endif
+    bool IsScreenFadeOutClosing() const { return ScreenFadeOutInfo.IsClosing(); }
+    bool IsScreenFadeOutLockFlagSet() const { return ScreenFadeOutLocked; }
+#endif // FABLE_RETAIL_CDISPLAYENGINE_REGIONLOADFADE
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_GET3DENGINE
     // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): FableWin.pdb ?Get3DEngine@CDisplayEngine@@QAEAAVCIEngine@@XZ,
     // inline in retail (the caller reads Engine3D +0x2C in place, 0x005E790E). Define FABLE_RETAIL_CIENGINE for the polymorphic CIEngine.
     CIEngine& Get3DEngine() { return *Engine3D; }
+#endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_DORENDER_BODY
+    // Ego_r.pdb / FableWin.pdb names. Public: SetAboutToRun 0x00434CD0 / EndScreenFadeOut 0x00434C90 (?..@CDisplayEngine@@QAEXXZ, landed),
+    // the inline ?IsInitialFadeActive@ / ?IsRenderingNormalScene@ / ?IsLetterBoxMode@CDisplayEngine@@QBE_NXZ (bytes tested in place in
+    // DoRender: +0xEC, +0x6C, +0x70), ?GetViewManager@CDisplayEngine@@QAEAAVCDisplayViewManager@@XZ (DoRender reads the counted
+    // pointer's Data word +0xE0 in place) and ?PeekMainFont@CDisplayEngine@@QBEABVCFontBank@@XZ; protected (IBE): ?PeekDebugFont@,
+    // ?PeekWorld@CDisplayEngine@@IBEABVCWorld@@XZ, ?RenderHeroFuckShit@ 0x00435000 / ?RenderHeroDrunkenness@ 0x00435070 (both
+    // ..@@IBEXABVCInterpolationInfo@@@Z; Ego_r donor order 0x00446F40 / 0x00446FC0 = retail order). The font accessors read the main game
+    // component's counted pointers (PeekMainFont: PCutSceneMainFont +0x1614C, PeekDebugFont: PDebugFont +0x16144, DoRender
+    // 0x00435A71 / 0x00435985); their bodies follow the class (they need CMainGameComponent). No layout change.
+    void SetAboutToRun();                                                // 0x00434CD0
+    void EndScreenFadeOut();                                             // 0x00434C90
+    bool IsInitialFadeActive() const { return InitialFadeActive; }
+    bool IsRenderingNormalScene() const { return DrawGame; }
+#ifndef FABLE_RETAIL_CDISPLAYENGINE_ISLETTERBOXMODE
+    bool IsLetterBoxMode() const { return LetterBox.Active; }
+#endif
+    CDisplayViewManager& GetViewManager() { return *PViewManager; }
+    const CFontBank& PeekMainFont() const;
+protected:
+    const CFontBank& PeekDebugFont() const;
+    const CWorld& PeekWorld() const { return *World; }
+    void RenderHeroFuckShit(const CInterpolationInfo& info) const;      // 0x00435000
+    void RenderHeroDrunkenness(const CInterpolationInfo& info) const;   // 0x00435070
+public:
 #endif
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long           EnginePreloadFlags;              // +0x04
@@ -81,16 +162,24 @@ public:
     CGameDefinitionManager* DefinitionManager;               // +0x10
     CGraphicDataBank*       EngineGraphicBank;               // +0x14
     CMeshDataBank*          MeshBank;                        // +0x18
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_DORENDER_BODY
+    C2DBoxF                 MainWindow;                      // +0x1c (typed: Ego_r.pdb C2DBoxF)
+#else
     float                   MainWindow_TLX;                  // +0x1c C2DBoxF::TLX
     float                   MainWindow_TLY;                  // +0x20 C2DBoxF::TLY
     float                   MainWindow_BRX;                  // +0x24 C2DBoxF::BRX
     float                   MainWindow_BRY;                  // +0x28 C2DBoxF::BRY
+#endif
     CIEngine*               Engine3D;                        // +0x2c
     unsigned char           Camera[0x38];                    // +0x30 CCamera
     long                    Frame;                           // +0x68
     bool                    DrawGame;                        // +0x6c
     unsigned char           _pad_0x6d[0x3];                  // +0x6d
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_DORENDER_BODY
+    CLetterBoxModeInfo      LetterBox;                       // +0x70 (typed: Ego_r.pdb CLetterBoxModeInfo, 0x20 bytes)
+#else
     unsigned char           LetterBox[0x20];                 // +0x70 CLetterBoxModeInfo
+#endif
     bool                    CameraInputsOn;                  // +0x90
     unsigned char           _pad_0x91[0x7];                  // +0x91
     double                  LastRefreshTime;                 // +0x98
@@ -109,8 +198,12 @@ public:
     bool                    DrawMemoryUse;                   // +0xd9
     unsigned char           _pad_0xda[0x2];                  // +0xda
     long                    DrawDebugPage;                   // +0xdc
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_DORENDER_BODY
+    CCountedPointer<CDisplayViewManager> PViewManager;       // +0xe0 (typed: Ego_r.pdb CCountedPointer<CDisplayViewManager>)
+#else
     CDisplayViewManager*    PViewManager_Data;               // +0xe0 CCountedPointer<CDisplayViewManager>::Data
     CCPPointerInfo*         PViewManager_Info;               // +0xe4 CCountedPointer<CDisplayViewManager>::Info
+#endif
     long                    InitialFadeReadynessCount;       // +0xe8
     bool                    InitialFadeActive;               // +0xec
     unsigned char           _pad_0xed[0x3];                  // +0xed
@@ -121,40 +214,57 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CDisplayEngine) == 0x100);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, EnginePreloadFlags) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, Component) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PlayerManager) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, DefinitionManager) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, EngineGraphicBank) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MeshBank) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_TLX) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_TLY) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_BRX) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_BRY) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, Engine3D) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, Camera) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, Frame) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, DrawGame) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, LetterBox) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, CameraInputsOn) == 0x90);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, LastRefreshTime) == 0x98);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, LastRenderTimeLength) == 0xa0);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, LastWorldUpdateRenderTime) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PreparePrimitives) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, GammaRamp) == 0xb4);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, OldGammaRamp) == 0xb8);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, ScreenFadeOutInfo) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, ScreenFadeOutLocked) == 0xd8);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, DrawMemoryUse) == 0xd9);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, DrawDebugPage) == 0xdc);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PViewManager_Data) == 0xe0);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PViewManager_Info) == 0xe4);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, InitialFadeReadynessCount) == 0xe8);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, InitialFadeActive) == 0xec);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, ScreenFadeDuration) == 0xf0);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, TimeSinceFadeStarted) == 0xf4);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, World) == 0xf8);
+FABLE_STATIC_ASSERT_AT(124, sizeof(CDisplayEngine) == 0x100);
+FABLE_STATIC_ASSERT_AT(125, offsetof(CDisplayEngine, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(126, offsetof(CDisplayEngine, EnginePreloadFlags) == 0x4);
+FABLE_STATIC_ASSERT_AT(127, offsetof(CDisplayEngine, Component) == 0x8);
+FABLE_STATIC_ASSERT_AT(128, offsetof(CDisplayEngine, PlayerManager) == 0xc);
+FABLE_STATIC_ASSERT_AT(129, offsetof(CDisplayEngine, DefinitionManager) == 0x10);
+FABLE_STATIC_ASSERT_AT(130, offsetof(CDisplayEngine, EngineGraphicBank) == 0x14);
+FABLE_STATIC_ASSERT_AT(131, offsetof(CDisplayEngine, MeshBank) == 0x18);
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_DORENDER_BODY
+FABLE_STATIC_ASSERT_AT(195, offsetof(CDisplayEngine, MainWindow) == 0x1c);
+#else
+FABLE_STATIC_ASSERT_AT(132, offsetof(CDisplayEngine, MainWindow_TLX) == 0x1c);
+FABLE_STATIC_ASSERT_AT(133, offsetof(CDisplayEngine, MainWindow_TLY) == 0x20);
+FABLE_STATIC_ASSERT_AT(134, offsetof(CDisplayEngine, MainWindow_BRX) == 0x24);
+FABLE_STATIC_ASSERT_AT(135, offsetof(CDisplayEngine, MainWindow_BRY) == 0x28);
+#endif
+FABLE_STATIC_ASSERT_AT(136, offsetof(CDisplayEngine, Engine3D) == 0x2c);
+FABLE_STATIC_ASSERT_AT(137, offsetof(CDisplayEngine, Camera) == 0x30);
+FABLE_STATIC_ASSERT_AT(138, offsetof(CDisplayEngine, Frame) == 0x68);
+FABLE_STATIC_ASSERT_AT(139, offsetof(CDisplayEngine, DrawGame) == 0x6c);
+FABLE_STATIC_ASSERT_AT(140, offsetof(CDisplayEngine, LetterBox) == 0x70);
+FABLE_STATIC_ASSERT_AT(141, offsetof(CDisplayEngine, CameraInputsOn) == 0x90);
+FABLE_STATIC_ASSERT_AT(142, offsetof(CDisplayEngine, LastRefreshTime) == 0x98);
+FABLE_STATIC_ASSERT_AT(143, offsetof(CDisplayEngine, LastRenderTimeLength) == 0xa0);
+FABLE_STATIC_ASSERT_AT(144, offsetof(CDisplayEngine, LastWorldUpdateRenderTime) == 0xa8);
+FABLE_STATIC_ASSERT_AT(145, offsetof(CDisplayEngine, PreparePrimitives) == 0xb0);
+FABLE_STATIC_ASSERT_AT(146, offsetof(CDisplayEngine, GammaRamp) == 0xb4);
+FABLE_STATIC_ASSERT_AT(147, offsetof(CDisplayEngine, OldGammaRamp) == 0xb8);
+FABLE_STATIC_ASSERT_AT(148, offsetof(CDisplayEngine, ScreenFadeOutInfo) == 0xbc);
+FABLE_STATIC_ASSERT_AT(149, offsetof(CDisplayEngine, ScreenFadeOutLocked) == 0xd8);
+FABLE_STATIC_ASSERT_AT(150, offsetof(CDisplayEngine, DrawMemoryUse) == 0xd9);
+FABLE_STATIC_ASSERT_AT(151, offsetof(CDisplayEngine, DrawDebugPage) == 0xdc);
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_DORENDER_BODY
+FABLE_STATIC_ASSERT_AT(219, offsetof(CDisplayEngine, PViewManager) == 0xe0);
+#else
+FABLE_STATIC_ASSERT_AT(152, offsetof(CDisplayEngine, PViewManager_Data) == 0xe0);
+FABLE_STATIC_ASSERT_AT(153, offsetof(CDisplayEngine, PViewManager_Info) == 0xe4);
+#endif
+FABLE_STATIC_ASSERT_AT(154, offsetof(CDisplayEngine, InitialFadeReadynessCount) == 0xe8);
+FABLE_STATIC_ASSERT_AT(155, offsetof(CDisplayEngine, InitialFadeActive) == 0xec);
+FABLE_STATIC_ASSERT_AT(156, offsetof(CDisplayEngine, ScreenFadeDuration) == 0xf0);
+FABLE_STATIC_ASSERT_AT(157, offsetof(CDisplayEngine, TimeSinceFadeStarted) == 0xf4);
+FABLE_STATIC_ASSERT_AT(158, offsetof(CDisplayEngine, World) == 0xf8);
 
+#if defined(FABLE_RETAIL_CDISPLAYENGINE_DORENDER_BODY) && !defined(FABLE_ENGINE_CDISPLAYENGINE_FONTS_DEFINED)
+#define FABLE_ENGINE_CDISPLAYENGINE_FONTS_DEFINED
+// (see the opt-in block in the class) Bodies of the two font accessors: the main game component's own inline peeks.
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_MAINFONT
+#define FABLE_RETAIL_STEALTH_DRAW
+#include "engine/CMainGameComponent.h"
+inline const CFontBank& CDisplayEngine::PeekMainFont() const { return Component->PeekMainFont(); }
+inline const CFontBank& CDisplayEngine::PeekDebugFont() const { return Component->PeekDebugFont(); }
+#endif
 #endif // FABLE_ENGINE_CDISPLAYENGINE_H

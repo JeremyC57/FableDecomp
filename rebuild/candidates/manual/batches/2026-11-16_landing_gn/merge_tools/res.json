@@ -1,0 +1,95 @@
+{
+ "engine/CAIStateGroup_MinionGossip.h": {
+  "bac4b4fb5639e7a997cd83ec7d10719d": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/minion.py"
+ },
+ "engine/CChunkedFileSuperChunk.h": {
+  "2d127f06c8773e58318c561639b2c668": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/superchunk.py"
+ },
+ "engine/CDisplayEngine.h": {
+  "52666a35be1b90495996e1875c2d3aa7": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/displayengine.py",
+  "c091823634859ec851046a7a27c181f5": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/displayengine2.py"
+ },
+ "engine/CEngineOcclusionManager.h": {
+  "66ffae9c3e185d33dce9e80d5ac2f3f4": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/occl.py",
+  "87b0c05e6f1324deed50630d4f3e7254": "o"
+ },
+ "engine/CEnginePrimitive2DViewportManager.h": {
+  "047b488502cee506cabb757730776534": "o"
+ },
+ "engine/CEnginePrimitiveManagerOcclusionBase.h": {
+  "4a70bd008c935e6219bf1bbd6fc4c000": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/occlbase.py"
+ },
+ "engine/CEnginePrimitiveRenderUtil.h": {
+  "d8c8fd8a9b594f9a4fc3291df97bcf3f": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/renderutil.py"
+ },
+ "engine/CEnginePrimitiveRendererSharedData.h": {
+  "85d0095c3bc8b0edd4c9b8dcc774aa39": "t",
+  "314f02b15cf04921735a3ced576a1a19": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/shareddata_a6.py"
+ },
+ "engine/CEngineSubPrimitiveBase.h": {
+  "454ece1aa66d10cf24346a84faa4e3a4": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/subprimbase.py"
+ },
+ "engine/CEngineWaterRenderer.h": {
+  "b7a640bc74016e76ab6e863337556e63": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/water.py"
+ },
+ "engine/CEngineSubPrimitiveRepeatedStaticMesh.h": {
+  "3abfc93a04dd8d8903f0ddc5767d247d": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/subprimrsm.py"
+ },
+ "engine/CGraphicDataBank.h": {
+  "0484c25f0e77894868261224fc93ba9f": "o"
+ },
+ "engine/CFontBank.h": {
+  "9be7b112b23f3c2a00dbf07101a8f193": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/fontbank.py"
+ },
+ "engine/CHeroMarriageInfo.h": {
+  "05dec8870ceb89e6ea24408ffbd2873a": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/heromarriage.py"
+ },
+ "engine/CGraphicInfo.h": {
+  "3e04b990ad7fb637fa8f065352033665": "o"
+ },
+ "engine/CMatrix3x4.h": {
+  "cfea18a62d883b16d9bdd9fbcc5fb716": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/m34_a4.py",
+  "14548ac788014b292fd9ba7a9edd7ac0": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/m34_a1.py",
+  "3e255952d06ee175d3688aab24e813db": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/append.py"
+ },
+ "engine/CMatrix4x4.h": {
+  "926df10aea32c11ed89af862fb8a806c": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/union.py"
+ },
+ "engine/CMessageEventFilters.h": {
+  "ac48d9bdfe9a1ba17200999b3025d0b4": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/msgfilters.py"
+ },
+ "engine/CPlayerGui.h": {
+  "1136ba9d3e9a3faf017a17b3b8ea3daa": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/union.py"
+ },
+ "engine/CRegion.h": {
+  "cc61f0e91f56b69838209473b842d3f5": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/union.py"
+ },
+ "engine/CQuaternion.h": {
+  "aa749b0a47a5fb95cfeb87be115be049": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/quat.py"
+ },
+ "engine/CThingCreatureBase.h": {
+  "f201e7730d78a6abe5a3ada91157d62e": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/creaturebase.py"
+ },
+ "engine/CTCInventoryMap.h": {
+  "01f8e3e6aba504bc37d4e2a30e10a1f5": "o",
+  "f881f0677175864d59e4916b7717a5ac": "o"
+ },
+ "engine/CWorld.h": {
+  "8ea1acbc67a8c3400eb334b20a68cfe1": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/world.py"
+ },
+ "engine/CWorldMap.h": {
+  "ff2d3bd30f064303e1c9ddc1cf811894": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/union.py"
+ },
+ "engine/NPlayerGui_CDrawHighlightingTargetingCursor.h": {
+  "d93413212380f29721450ede46898ab8": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/cursor.py"
+ },
+ "stlport/fable_containers.h": {
+  "eb0382e99a638593f35d15f490027a56": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/containers.py"
+ },
+ "engine/C3DBone2.h": {
+  "5d499bef36f2780056efcf0a7eca6425": "py:/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/lc2/rs/union.py"
+ },
+ "engine/C4DVector.h": {
+  "7deaca0889188cae783dcd9410530f2d": "o"
+ }
+}

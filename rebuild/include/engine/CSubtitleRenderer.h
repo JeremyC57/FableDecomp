@@ -8,6 +8,9 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_DRAWPREPAREPRIMITIVES
+class CEnginePrimitivePrepareInfo;
+#endif
 
 class CFontBank;
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT_CHAR
@@ -22,6 +25,19 @@ class CWideString;                                              // chunk 795
 #if defined(FABLE_RETAIL_CSUBTITLERENDERER_GRAPHICTAG) && !defined(FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT)
 class CWideString;                                              // chunk 855
 #endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_BUTTONGRAPHICS
+// Opt-in (chunk 2056 scout, row 0x0048E78E CSubtitleRenderer::DrawButtonGraphics): the button texts +0x64..+0x74 typed as their
+// Ego_r.pdb type CWideString (struct_layouts_egor.tsv; one PStringData word each, same offsets) and the two timers +0xE8 / +0x104 as
+// CFadeInFadeOutBase (Ego_r.pdb, 0x1C each). Evidence: the row passes &Button1Text / &Button2Text / &Button3Text / &Button1OverrideText
+// (`lea eax,[esi+64h/68h/6Ch/70h]`) to GetTextWidthFromText 0x0048E062 and calls CWideString::operator!=(const wchar_t*) 0x0099B150 on
+// +0x64 / +0x68 / +0x6C; ButtonPulseTimer +0x104 is `this` of CFadeInFadeOutBase::Update 0x00434870 / Open 0x00434840 / IsOpen 0x0048DA30 /
+// GetFadeInOutAlpha 0x004348D0 (Ego_r / FableWin ?Update@CFadeInFadeOutBase@@QAEXM@Z ..). Same layout as the opaque words it replaces.
+// Needs FABLE_RETAIL_CFADEINFADEOUTBASE_FADE for the timer's member functions.
+#include "fable_string.h"
+#include "engine/CFadeInFadeOutBase.h"
+#include "stlport/fable_containers.h"
+class CEnginePrimitivePrepareInfo; class CEnginePrimitiveHandle; class C2DVector;
+#endif
 
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDED
 // Retail opt-in (chunk 2010, row 0x00492381 ProcessEmbeddedGraphicTags): the members the embedded-tag code uses typed as Ego_r.pdb has them
@@ -35,6 +51,9 @@ class CWideString;                                              // chunk 855
 class C2DBoxF;
 #endif
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_ISFLAGSET
+enum ESubtitleFlag { };   // FableWin.pdb type name only (no enumerator survives)
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_FORMATTEXTWITHGAMEACTIONNAMES
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
@@ -95,11 +114,19 @@ public:
     CWideStringData*  Text_PStringData;                      // +0x5c CWideString::PStringData
 #endif
     CWideStringData*  NameText_PStringData;                  // +0x60 CWideString::PStringData
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_BUTTONGRAPHICS
+    CWideString       Button1Text;                           // +0x64
+    CWideString       Button2Text;                           // +0x68
+    CWideString       Button3Text;                           // +0x6c
+    CWideString       Button1OverrideText;                   // +0x70
+    CWideString       Button2OverrideText;                   // +0x74
+#else
     CWideStringData*  Button1Text_PStringData;               // +0x64 CWideString::PStringData
     CWideStringData*  Button2Text_PStringData;               // +0x68 CWideString::PStringData
     CWideStringData*  Button3Text_PStringData;               // +0x6c CWideString::PStringData
     CWideStringData*  Button1OverrideText_PStringData;       // +0x70 CWideString::PStringData
     CWideStringData*  Button2OverrideText_PStringData;       // +0x74 CWideString::PStringData
+#endif
     unsigned char     Button1Alpha;                          // +0x78
     unsigned char     Button2Alpha;                          // +0x79
     unsigned char     _pad_0x7a[0x2];                        // +0x7a
@@ -134,8 +161,35 @@ public:
     bool              DisplayingText;                        // +0xe5
     bool              UpdateWhilePaused;                     // +0xe6
     bool              UpdateTimer;                           // +0xe7
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_BUTTONGRAPHICS
+    CFadeInFadeOutBase SkipCutsceneTimer;                    // +0xe8
+    CFadeInFadeOutBase ButtonPulseTimer;                     // +0x104
+    // FableWin.pdb ?IsCutsceneActionModeEnabled@CSubtitleRenderer@@QBE_NXZ (0x01A671BF, 18 bytes / 8 instructions at /Od = a plain member
+    // read, fwsize SAME); inline in retail (the row tests the byte +0xE2 in place: 0x0048E7D2, 0x0048E8E0, 0x0048E91F, 0x0048EA8A).
+    bool IsCutsceneActionModeEnabled() const { return CutsceneActionMode; }
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_ISFLAGSET
+    // FableWin.pdb ?IsFlagSet@CSubtitleRenderer@@QBE_NW4ESubtitleFlag@@@Z (0x01A630DF, 29 bytes / 12 instructions at /Od); inline in retail.
+    // No ESubtitleFlag enumerator survives in any PDB: the bits (0x800, 4, 0x48, 2) stay numeric casts.
+    bool IsFlagSet(ESubtitleFlag flag) const { return (DisplayFlags & flag) != 0; }
+#endif
+    // Ego_r.pdb / FableWin.pdb ?IsCutsceneSkippable@CSubtitleRenderer@@QBE_NXZ, out of line at 0x0048DE44 (landed; called at 0x0048ED96).
+    bool IsCutsceneSkippable() const;                                    // 0x0048DE44
+    // Ego_r.pdb / FableWin.pdb ?IsTextReadyForClickPast@CSubtitleRenderer@@QBE_NXZ, out of line at 0x0048E072 (landed; called at 0x0048EDC3).
+    bool IsTextReadyForClickPast() const;                                // 0x0048E072
+private:
+    // Ego_r.pdb / FableWin.pdb ?GetTextWidthFromText@CSubtitleRenderer@@ABEMABVCWideString@@ABVCFontBank@@@Z (private const), out of line
+    // at 0x0048E062 (`push [esp+4] ; mov ecx,[esp+0Ch] ; call CFontBank::GetVStringWidth 0x0043E4D0 ; ret 8`; landed under the wrong name
+    // global_operatornew_0048e062.cpp). Declaration only (a row may carry the body `return font.GetVStringWidth(text);` under auto_inline(off)).
+    float GetTextWidthFromText(const CWideString& text, const CFontBank& font) const;   // 0x0048E062
+    // Ego_r.pdb / FableWin.pdb ?DrawButtonGraphics@CSubtitleRenderer@@AAE_NABVCEnginePrimitivePrepareInfo@@AAV?$vector@VCEnginePrimitiveHandle@@
+    // V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@ABVC2DVector@@_N@Z (private), retail 0x0048E78E (`ret 10h`). Parameter names descriptive.
+    bool DrawButtonGraphics(const CEnginePrimitivePrepareInfo& info, std::vector<CEnginePrimitiveHandle>& primitive_handles,
+                            const C2DVector& pos, bool in_text_box);
+public:
+#else
     unsigned char     SkipCutsceneTimer[0x1c];               // +0xe8 CFadeInFadeOutBase
     unsigned char     ButtonPulseTimer[0x1c];                // +0x104 CFadeInFadeOutBase
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER
     // Retail opt-in (2026-11-03, row 0x005EB9E0): FableWin.pdb ?IsDisplayingText@CSubtitleRenderer@@QBE_NXZ, inline in Ego_r.pdb and
     // retail (CTCTavernGame::FrameUpdate reads the byte +0xFD of the CPlayerGui singleton = SubtitleRenderer +0x18 + DisplayingText
@@ -162,11 +216,26 @@ public:
     // CPlayerGui singleton + 0x18). Declaration only: no layout change.
     bool IsInInteractiveState() const;                                   // 0x00490A22
 #endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_DRAWPREPAREPRIMITIVES
+    // Retail opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): Ego_r.pdb / FableWin.pdb
+    // ?DrawPreparePrimitivesForEngine@CSubtitleRenderer@@QAEXABVCEnginePrimitivePrepareInfo@@@Z, out of line in retail at 0x00490494 (the
+    // caller: `push ebp ; lea ecx,[esi+18h] ; call 0x00490494`, 0x00439342). Declaration only: no layout change.
+    void DrawPreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& info);   // 0x00490494
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_INCUTSCENE
     // Retail opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): FableWin.pdb ?IsInCutscene@CSubtitleRenderer@@QBE_NXZ
     // (0x0187F200; no Ego_r.pdb copy, inline in retail: Activate tests the CPlayerGui singleton's byte +0xF6 = SubtitleRenderer +0x18 +
     // InCutscene +0xDE in place, 0x0056AD6B, right after the +0xFD IsDisplayingText test). Member function only: no layout change.
     bool IsInCutscene() const { return InCutscene; }
+#endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_CUTSCENEFLAGS
+    // Retail opt-in (wfA1, row 0x006D0830 CTCWife::GlobalUpdate): FableWin.pdb ?SetAsInCutscene@CSubtitleRenderer@@QAEX_N@Z (out of line in
+    // retail at 0x0049319C, reloc_bindings; `add ecx,18h ; call` on the CPlayerGui singleton, 0x006D0C0D), ?SetCutsceneAsSkippable@ and
+    // ?SetCutsceneAsSkippableWhilePaused@CSubtitleRenderer@@QAEX_N@Z (inline in retail: byte stores to the singleton's +0xF8 / +0xF9 =
+    // SubtitleRenderer +0x18 + CutsceneSkippable +0xE0 / CutsceneSkippableWhilePaused +0xE1, 0x006D0C18 / 0x006D0C2A). No layout change.
+    void SetAsInCutscene(bool in_cutscene);                              // 0x0049319C
+    void SetCutsceneAsSkippable(bool skippable) { CutsceneSkippable = skippable; }
+    void SetCutsceneAsSkippableWhilePaused(bool skippable) { CutsceneSkippableWhilePaused = skippable; }
 #endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_CLICKPAST
     // Retail opt-in (chunk 2010, row 0x00716DE0 CActionTalkBase::Update): FableWin.pdb ?IsWaitingForClickPast@CSubtitleRenderer@@QBE_NXZ (retail
@@ -226,6 +295,18 @@ public:
     void SetText(const CFontBank&, const CWideString&, const CWideString&, const CWideString&,
                  const CWideString&, const CWideString&, unsigned long, float, bool, bool);
 #endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_ISGAMEPAUSEDFLAGSET
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?IsGamePausedFlagSet@CSubtitleRenderer@@QBE_NXZ, inline in retail
+    // (PausedGame +0xDC read in place: `mov cl,[eax+0F4h]` on CPlayerGui::Get() +0x18, 0x004A3FBD). Body only: no layout change.
+    bool IsGamePausedFlagSet() const { return PausedGame; }
+#endif // FABLE_RETAIL_CSUBTITLERENDERER_ISGAMEPAUSEDFLAGSET
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT_CHAR4
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@111KM_N2@Z
+    // (the 4-caption char overload, 0x00492FB4; called at 0x004A38A2 with text, "", TEXT_GUI_RELOAD, TEXT_GUI_STAY, 0x104, 0, false, true).
+    // Needs FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT_CHAR (forward CCharString). Declaration only.
+    void SetText(const CFontBank&, const CCharString&, const CCharString&, const CCharString&, const CCharString&,
+                 unsigned long, float, bool, bool);                                                        // 0x00492FB4
+#endif // FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT_CHAR4
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT
     // Retail opt-in (chunk 795, row 0x0092FAB0): Ego_r.pdb ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z
     // (0x00492E4B) and ?SetText@..ABVCFontBank@@ABVCWideString@@111KM_N2@Z (the text and three button texts; 0x00492F69), out of line
@@ -281,11 +362,19 @@ FABLE_STATIC_ASSERT_AT(271, offsetof(CSubtitleRenderer, Text) == 0x5c);
 FABLE_STATIC_ASSERT_AT(273, offsetof(CSubtitleRenderer, Text_PStringData) == 0x5c);
 #endif
 FABLE_STATIC_ASSERT_AT(275, offsetof(CSubtitleRenderer, NameText_PStringData) == 0x60);
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_BUTTONGRAPHICS
+FABLE_STATIC_ASSERT_AT(328, offsetof(CSubtitleRenderer, Button1Text) == 0x64);
+FABLE_STATIC_ASSERT_AT(329, offsetof(CSubtitleRenderer, Button2Text) == 0x68);
+FABLE_STATIC_ASSERT_AT(330, offsetof(CSubtitleRenderer, Button3Text) == 0x6c);
+FABLE_STATIC_ASSERT_AT(331, offsetof(CSubtitleRenderer, Button1OverrideText) == 0x70);
+FABLE_STATIC_ASSERT_AT(332, offsetof(CSubtitleRenderer, Button2OverrideText) == 0x74);
+#else
 FABLE_STATIC_ASSERT_AT(276, offsetof(CSubtitleRenderer, Button1Text_PStringData) == 0x64);
 FABLE_STATIC_ASSERT_AT(277, offsetof(CSubtitleRenderer, Button2Text_PStringData) == 0x68);
 FABLE_STATIC_ASSERT_AT(278, offsetof(CSubtitleRenderer, Button3Text_PStringData) == 0x6c);
 FABLE_STATIC_ASSERT_AT(279, offsetof(CSubtitleRenderer, Button1OverrideText_PStringData) == 0x70);
 FABLE_STATIC_ASSERT_AT(280, offsetof(CSubtitleRenderer, Button2OverrideText_PStringData) == 0x74);
+#endif
 FABLE_STATIC_ASSERT_AT(281, offsetof(CSubtitleRenderer, Button1Alpha) == 0x78);
 FABLE_STATIC_ASSERT_AT(282, offsetof(CSubtitleRenderer, Button2Alpha) == 0x79);
 FABLE_STATIC_ASSERT_AT(283, offsetof(CSubtitleRenderer, DisplayFlags) == 0x7c);

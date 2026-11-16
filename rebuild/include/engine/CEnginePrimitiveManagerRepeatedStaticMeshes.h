@@ -21,6 +21,32 @@
 #include "engine/CRGBFloatColour.h"
 #endif
 struct CSIMDVariableBlock;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_RENDERSUB
+// Ego_r.pdb CSIMDVariableBlock (0xC00 bytes, allocated 16-aligned by the constructor 0x00B99D90) and the 2-byte clip-list element of
+// ClipSubSections' mangled name (NEnginePrimitiveManagerRepeatedStaticMeshes::CClipListElement: Ego_r.pdb fields Start +0, Size +1).
+#include "engine/C4DVector.h"
+#include "engine/CRGBFloatColour.h"
+class CEngineSubPrimitiveBase;
+class CEngineInternalPrimitiveRepeatedStaticMesh;
+enum ERenderPassType;
+namespace NEnginePrimitiveManagerRepeatedStaticMeshes {
+    struct CSubsectionElement;
+    struct CClipListElement { unsigned char Start; unsigned char Size; };
+}
+struct CSIMDVariableBlock {
+    float NormalX[32], NormalY[32], NormalZ[32], PosX[32], PosY[32], PosZ[32];   // +0x000 .. +0x2FF
+    C4DVector ObjectMatricies[32];                                                 // +0x300
+    C4DVector ObjectOffsets[32];                                                   // +0x500
+    CRGBFloatColour Colour[32];                                                    // +0x700
+    CRGBFloatColour MainLightColour[32];                                           // +0x900
+    float CameraPosX[4], CameraPosY[4], CameraPosZ[4];                             // +0xB00
+    float CameraClipPlaneLeftX[4], CameraClipPlaneLeftY[4], CameraClipPlaneLeftZ[4];
+    float CameraClipPlaneRightX[4], CameraClipPlaneRightY[4], CameraClipPlaneRightZ[4];
+    float CameraClipPlaneTopX[4], CameraClipPlaneTopY[4], CameraClipPlaneTopZ[4];
+    float CameraClipPlaneBottomX[4], CameraClipPlaneBottomY[4], CameraClipPlaneBottomZ[4];
+    float FadeDistance[4];                                                         // +0xBF0
+};
+#endif
 class CEnginePrimitiveManagerRepeatedStaticMeshes : public CEnginePrimitiveManagerMeshBase {
 public:
     CEnginePrimitiveManagerRepeatedStaticMeshes(CArray<CEngineScene*>& scenes);   // 0x00B99D90
@@ -31,6 +57,24 @@ public:
     virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;
 #endif
     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& primitive, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);   // slot 7, 0x00B9A4A0
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_RENDERSUB
+    // Nested opt-in (wfA5, row 0x00B9AC30): Ego_r.pdb / FableWin.pdb spellings of RenderSubPrimitive (vtable 0x012A3E9C slot 5) and the
+    // private same-TU helpers it calls out of line (ClipSubSectionsSIMD 0x00B98E10, ClipSubSections 0x00B99710, ProcessLightingSW 0x00B99300,
+    // UploadShaderConstants 0x00B99670, UpdateBoneMatrixForWindSheer 0x00B990B0). Declarations only.
+    virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& sub_primitive, ERenderPassType pass);   // slot 5, 0x00B9AC30
+private:
+    void ClipSubSectionsSIMD(const NEnginePrimitiveManagerRepeatedStaticMeshes::CSubsectionElement* element, unsigned long clip_flags,
+                             NEnginePrimitiveManagerRepeatedStaticMeshes::CClipListElement*& clip_list);                       // 0x00B98E10
+    void ClipSubSections(const NEnginePrimitiveManagerRepeatedStaticMeshes::CSubsectionElement* element, unsigned long clip_flags, float range,
+                         bool inside, NEnginePrimitiveManagerRepeatedStaticMeshes::CClipListElement*& clip_list);              // 0x00B99710
+    void ProcessLightingSW(CEngineInternalPrimitiveRepeatedStaticMesh& primitive, const float* normal_x, const float* normal_y,
+                           const float* normal_z, const C4DVector* offsets, long count, bool shadowed);                          // 0x00B99300
+    void UploadShaderConstants(CEngineInternalPrimitiveRepeatedStaticMesh& primitive, const C4DVector* offsets, const C4DVector* matrices,
+                               long count);                                                                                       // 0x00B99670
+    void UpdateBoneMatrixForWindSheer(CEngineInternalPrimitiveRepeatedStaticMesh& primitive, C4DVector* matrices,
+                                      const unsigned char* wind_delays, long count);                                             // 0x00B990B0
+public:
+#endif
 private:
 #ifdef FABLE_RETAIL_PASS22_REPEATED_MESH_CLIP_SIMD
     // Original Ego_r TPI nested types; native manager+90 and aligned four-lane clipping data.

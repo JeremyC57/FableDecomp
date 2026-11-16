@@ -127,6 +127,11 @@ public:
     // Original PDB signature and donor01D09580: this + scaled displacement.
     const C3DVector Interpolate(const C3DVector& vector,float interp)const{return *this+(vector-*this)*interp;}
 #endif
+#if defined(FABLE_RETAIL_C3DVECTOR_INTERPOLATE) && !defined(FABLE_RETAIL_CPARTICLE_SPRITE)
+    // ?Interpolate@C3DVector@@QBE?BV1@ABV1@M@Z (FableWin donor 0x01D09580): the same body without the CParticle opt-in set;
+    // RenderSpriteTrail 0x00BCA950 expands it (tangent .Y/.Z read through one strength-reduced address in both the subtract and the add, 0x00BCB215).
+    const C3DVector Interpolate(const C3DVector& vector,float interp)const{return *this+(vector-*this)*interp;}
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR_CLEAR
     // Retail opt-in (Codex pass21): original01D8BC00 Z/Y/X zero stores;
     // called by original particle ClearAcceleration02F41010.
@@ -173,9 +178,12 @@ public:
     // filled through Initialise. FableWin.pdb ??GC3DVector@@QBE?BV0@ABV0@@Z debug copy 34i; this text gives 34i at /Od (the named-ctor
     // form 32i, `return C3DVector(...)` 28i). Replaces the overlay-only FABLE_RETAIL_C3DVECTOR_NAMED_RESULT_SUB (no debug-build evidence).
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{C3DVector result;result.Initialise(X-other.X,Y-other.Y,Z-other.Z);return result;}
-#elif defined(FABLE_RETAIL_C3DVECTOR_NAMED_RESULT_SUB)
+#elif defined(FABLE_RETAIL_C3DVECTOR_NAMED_RESULT_SUB) || defined(FABLE_RETAIL_C3DVECTOR_SUBTRACT_NAMED_RESULT)
     // Retail opt-in (chunk 2060, row 0x00BA5260 RenderMeshPrimitive; agentC2 row 0x00BB3E80): the named-result text (as C2DVector's
     // FableWin operators). FableWin.pdb ??GC3DVector@@QBE?BV0@ABV0@@Z debug copy is 34i/90b; `return C3DVector(...)` is 28i/70b at /Od.
+    // FABLE_RETAIL_C3DVECTOR_SUBTRACT_NAMED_RESULT is the same body (acctC: row 0x00795300; wfD6 row 0x00B01900
+    // CPSCRenderMesh::AddToBoundingSphere; wfE8 row 0x00ACA830 COptimisedPrimitive::Initialise): same release code, one more inline
+    // layer (copy constructor) per use.
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{C3DVector result(X-other.X,Y-other.Y,Z-other.Z);return result;}
 #else
 #ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP
@@ -189,13 +197,24 @@ public:
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector(X-other.X,Y-other.Y,Z-other.Z);}
 #endif
 #endif
-#ifdef FABLE_RETAIL_C3DVECTOR_ADD_XY_GROUP
+#if defined(FABLE_RETAIL_C3DVECTOR_INITIALISE_ADD)
+    // Overlay opt-in (wfA4, row 0x00BAA870): the named default-constructed result filled through Initialise, as
+    // FABLE_RETAIL_C3DVECTOR_INITIALISE_SUB. FableWin.pdb ??HC3DVector@@QBE?BV0@ABV0@@Z debug copy 34i; this text gives 34i at /Od.
+    FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{C3DVector result;result.Initialise(X+other.X,Y+other.Y,Z+other.Z);return result;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_ADD_NAMED_RESULT)
+    // Opt-in (wfD6, row 0x00B01900 CPSCRenderMesh::AddToBoundingSphere): the named-result body, as SCALE_NAMED_RESULT. FableWin.pdb debug copy is
+    // 34i/90b at /Od (this text SAME by fwsize; `return C3DVector(...)` is 28i/70b). Body only: default path unchanged.
+    FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{C3DVector result(X+other.X,Y+other.Y,Z+other.Z);return result;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_ADD_XY_GROUP)
     // Original addition signature and scalar components, donor018C0B60.
     FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector((X+other.X),(Y+other.Y),Z+other.Z);}
 #else
     FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector(X+other.X,Y+other.Y,Z+other.Z);}
 #endif
-#if defined(FABLE_RETAIL_C3DVECTOR_SCALE_NAMED_RESULT)
+#if defined(FABLE_RETAIL_C3DVECTOR_INITIALISE_SCALE)
+    // Overlay opt-in (wfA4, row 0x00BAA870): FableWin.pdb ??DC3DVector@@QBE?BV0@M@Z debug copy 31i; this text gives 31i at /Od.
+    FABLE_VECTOR_INLINE const C3DVector operator*(float scale)const{C3DVector result;result.Initialise(X*scale,Y*scale,Z*scale);return result;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_SCALE_NAMED_RESULT)
     // Retail opt-in (wf21 row 0x00875B10 NCameraModes::CTools::TestMeshForOccupationAndGetType): the scaled copy built in a named
     // local. Same arithmetic; the extra copy tuple moves VC7.1's x87 scheduling so the Y product of `normal * cos` is
     // `fld [nY] ; fmul st(2)` (retail 0x00875DD3) instead of `fld st(1) ; fmul [nY]`. Body only: default path unchanged.
@@ -218,7 +237,8 @@ public:
     // (componentwise product; no out-of-line copy in retail, expanded at 0x00A8981C: `fld this.k ; fmul scale.k` per axis).
 #ifdef FABLE_RETAIL_C3DVECTOR_GETSCALED_NAMED_RESULT
     // Nested opt-in (wfA5, rows 0x00AA0FA0 / 0x00AA2110): the FableWin.pdb ?GetScaled@C3DVector@@QBE?BV1@ABV1@@Z text: a named result
-    // (FableWin debug 34i/90b = VC7.1 /Od of this body; the one-expression body is 28i/70b). Release bytes unchanged.
+    // (FableWin debug 34i/90b = VC7.1 /Od of this body; the one-expression body is 28i/70b). Release bytes unchanged. Also wfE8 row
+    // 0x00B10B10 CPSCEmitterGeneric::GenerateParticle.
     FABLE_VECTOR_INLINE const C3DVector GetScaled(const C3DVector& scale)const{C3DVector result(X*scale.X,Y*scale.Y,Z*scale.Z);return result;}
 #else
     FABLE_VECTOR_INLINE const C3DVector GetScaled(const C3DVector& scale)const{return C3DVector(X*scale.X,Y*scale.Y,Z*scale.Z);}
@@ -235,7 +255,11 @@ public:
     // Both PDB operator^ signature; original donor01B40A20 parameter vector.
     FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& vector)const{return C3DVector(Y*vector.Z-Z*vector.Y,Z*vector.X-X*vector.Z,X*vector.Y-Y*vector.X);}
 #else
-#ifdef FABLE_RETAIL_C3DVECTOR_CROSS_XZ_GROUP
+#if defined(FABLE_RETAIL_C3DVECTOR_CROSS_NAMED_RESULT)
+    // Opt-in (wfD6, row 0x00B01900 CPSCRenderMesh::AddToBoundingSphere): the named-result body, as SCALE_NAMED_RESULT. FableWin.pdb debug copy is
+    // 49i/130b at /Od (this text SAME by fwsize; `return C3DVector(...)` is 43i/110b). Body only: default path unchanged.
+    FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& other)const{C3DVector result(Y*other.Z-Z*other.Y,Z*other.X-X*other.Z,X*other.Y-Y*other.X);return result;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_XZ_GROUP)
     // Retail opt-in (row 0x0075A7A0 CTCPhysicsRigidBody::ResolveCollisions): the X and Z cross-product components parenthesised, Y
     // bare. Same arithmetic and instructions as the default; the two no-code PAREN tuples move VC7.1's scheduling-region cut so the
     // argument set-up of the first CMatrix3x4::operator* call (`push ecx ; lea edx,[esp+78h] ; push edx ; lea ecx,[esi+6Ch]`,
@@ -350,6 +374,9 @@ public:
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),Z*other.X-X*other.Z,X*other.Y-Y*other.X);}
 #elif defined(FABLE_RETAIL_C3DVECTOR_CYLINDER_CROSS_GROUPED)
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector(Y*other.Z-Z*other.Y,(Z*other.X-X*other.Z),X*other.Y-Y*other.X);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_COMPONENTS_GROUPED)
+    // wfD5 (row 0x00A593F0): the CTCSHOTDEFINITIONBASE_COLLISION Cross text alone (every component its own parenthesised unit; the Dot / IsNonZero texts of that opt-in untouched).
+    FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),(X*other.Y-Y*other.X));}
 #else
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector(Y*other.Z-Z*other.Y,Z*other.X-X*other.Z,X*other.Y-Y*other.X);}
 #endif
@@ -358,7 +385,18 @@ public:
 #endif
     FABLE_VECTOR_INLINE const C3DVector& operator+=(const C3DVector& v){X+=v.X;Y+=v.Y;Z+=v.Z;return *this;}
     FABLE_VECTOR_INLINE const C3DVector& operator*=(float v){X*=v;Y*=v;Z*=v;return *this;}
+#if defined(FABLE_RETAIL_C3DVECTOR_INITIALISE_DIV)
+    // Overlay opt-in (wfA4, row 0x00BAA870): FableWin.pdb ??KC3DVector@@QBE?BV0@M@Z debug copy 35i: the named result through Initialise.
+    FABLE_VECTOR_INLINE const C3DVector operator/(float v)const{C3DVector result;float reciprocal=1.0f/v;result.Initialise(X*reciprocal,Y*reciprocal,Z*reciprocal);return result;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_INITIALISE_DIV3)
+    FABLE_VECTOR_INLINE const C3DVector operator/(float v)const{C3DVector result;result.Initialise(X/v,Y/v,Z/v);return result;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_INITIALISE_DIV4)
+    FABLE_VECTOR_INLINE const C3DVector operator/(float v)const{C3DVector result;float reciprocal=1.0f/v;result.Initialise(reciprocal*X,reciprocal*Y,reciprocal*Z);return result;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_INITIALISE_DIV2)
+    FABLE_VECTOR_INLINE const C3DVector operator/(float v)const{float reciprocal=1.0f/v;C3DVector result;result.Initialise(X*reciprocal,Y*reciprocal,Z*reciprocal);return result;}
+#else
     FABLE_VECTOR_INLINE const C3DVector operator/(float v)const{float reciprocal=1.0f/v;return C3DVector(X*reciprocal,Y*reciprocal,Z*reciprocal);}
+#endif
     FABLE_VECTOR_INLINE const C3DVector& operator/=(float v){float reciprocal=1.0f/v;X*=reciprocal;Y*=reciprocal;Z*=reciprocal;return *this;}
 #ifdef FABLE_RETAIL_C3DVECTOR_ACCURATE_MAGNITUDE
     // Original FableWin01d99fb0 and both PDB signatures; named squared sum.
@@ -481,7 +519,24 @@ public:
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z (static __fastcall, out of line at 0x00A145C0,
     // landed) and ?Normalise@C3DVector@@QAEAAV1@XZ (the fast normalise: GFFastOneOverSqrt of GetSquaredMagnitude, expanded in retail).
     static C3DVector __fastcall GetRandomUnitVector(unsigned long* seed);  // 0x00A145C0
-#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_PAREN_SQUARES_XYZ)
+#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_NAMED_SQUARED)
+    // Retail opt-in (wfE8 8th agent, row 0x00ACA830 COptimisedPrimitive::Initialise): IsNonZero as ONE expression (FableWin.pdb
+    // ?IsNonZero 0x01B4F100 31i/91b = this text at /Od) and Normalise with its squared length in a named local (FITTED: no whole-sum
+    // CSE with IsNonZero, so the three products are shared and VC7.1 orders them per site, as retail does: X,Z,Y at 0x00ACABD2 /
+    // 0x00ACB0C0, Z,Y,X at 0x00ACB4B2 and in GetFaceNormal 0x00AC7D51). Bodies only: default path unchanged.
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float squared=Z*Z;squared+=X*X+Y*Y;float factor=GFFastOneOverSqrt(squared);X*=factor;Y*=factor;Z*=factor;return *this;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_ZXY)
+    // Retail opt-in (wfE8, row 0x00A91640 C3DPrimitive2::InitialiseFromMeshFileData; bodies of the bwf1 lane's FABLE_NV_* row macros):
+    // Normalise sums Z*Z + X*X + Y*Y (one x87 chain) and IsNonZero accumulates Z*Z then X*X + Y*Y, the expansions retail inlines in
+    // the loader's normal / tangent loops. Bodies only: default path unchanged.
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float factor=GFFastOneOverSqrt(Z*Z+X*X+Y*Y);X*=factor;Y*=factor;Z*=factor;return *this;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARED_ZXY)
+    // Overlay opt-in (wfA4, row 0x00BAA870 CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList): the squared length accumulated
+    // from the members in Z, X, Y order (the NORMALISE_LOCALS sum without the component copies). There the camera-up vector (Z = 0) squares
+    // X then Y (0x00BAAC3C `fld st(1) ; fmul st(2)`) and the first scale multiplies the stack component by the spilled factor
+    // (0x00BAACA0 `fstp [esp+10h] ; fxch st(1) ; fmul [esp+10h]`); the LOCALS copies put the factor first there. Body only.
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float squared=Z*Z;squared+=X*X;squared+=Y*Y;float one_on_magnitude=GFFastOneOverSqrt(squared);X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_PAREN_SQUARES_XYZ)
     // Overlay opt-in (wf22, row 0x007E1FC0 CTCAmbientBird::FrameUpdate): the PAREN_SQUARES_ZYX body with the squares summed X, Y, Z
     // (0x007E21F0 `fld [X*X] ; fadd [Y*Y] ; fadd [Z*Z]` from the spilled squares shared with the earlier distance test). Body only.
     FABLE_VECTOR_INLINE C3DVector& Normalise(){float one_on_magnitude=GFFastOneOverSqrt((X*X)+(Y*Y)+(Z*Z));X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
@@ -523,7 +578,13 @@ public:
     // Chunk 732 (row 0x006AABE0): FableWin.pdb ?IsNonZero@C3DVector@@QBE_NXZ (debug copy 0x01B4F100; no Ego_r.pdb copy, expanded in
     // retail). Body from the row's bytes (0x006AAE00: X, Z, Y loaded in source order, then `> DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO`);
     // GetSquaredMagnitude's one-line sum cannot be reused (it loads Z, Y, X there, and 0x00AE0710 needs that one-line form).
-#ifdef FABLE_RETAIL_C3DVECTOR_ISNONZERO_ORIGINAL_YXZ
+#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_NAMED_SQUARED)
+    // (same opt-in, see Normalise above): the one-expression sum, FableWin 31i/91b at /Od = this text (fwsize SAME).
+    FABLE_VECTOR_INLINE bool IsNonZero()const{return X*X+Y*Y+Z*Z>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_ZXY)
+    // (same opt-in, see Normalise above)
+    FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=Z*Z;squared+=X*X+Y*Y;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_ISNONZERO_ORIGINAL_YXZ)
     // Original donor01B4F100: Y square, X square, Z square, then the threshold.
     FABLE_VECTOR_INLINE bool IsNonZero()const{return Y*Y+X*X+Z*Z>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
 #else

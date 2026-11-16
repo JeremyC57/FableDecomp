@@ -20,6 +20,11 @@ public:
  CThingMap* GetThingMapAt(const C2DCoordI&) const;
  void DebugDraw(const C2DCoordI&,long) const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGMAPMANAGER_INIT
+    // Retail opt-in (chunk H40g, row 0x00507C30; re-based by agent wfE10): the landed NThingMap::CThingMapManager::Init 0x00638540
+    // (the world pushed last, then the map count: 0x00509596). Declaration only; needs `class CWorld;` before the header.
+    void Init(CWorld* world, long maps);
+#endif
     bool IsToBePlacedInMapwho(const CTCMapwho&, const C3DVector&) const; // 0x00637F40
     void PlaceThing(CTCMapwho&, const C3DVector&);                       // 0x00637FC0
     void RemoveThing(CTCMapwho&);                                        // 0x00637A10
@@ -50,15 +55,15 @@ struct CThingMapManager {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CThingMapManager) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CThingMapManager, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CThingMapManager, PWorld) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CThingMapManager, ThingMaps) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CThingMapManager, ActiveThingMaps) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CThingMapManager, ActiveGameMaps) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CThingMapManager, NoThings) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CThingMapManager, Dimensions_X) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CThingMapManager, Dimensions_Y) == 0x34);
+FABLE_STATIC_ASSERT_AT(53, sizeof(CThingMapManager) == 0x38);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CThingMapManager, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CThingMapManager, PWorld) == 0x4);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CThingMapManager, ThingMaps) == 0x8);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CThingMapManager, ActiveThingMaps) == 0x14);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CThingMapManager, ActiveGameMaps) == 0x20);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CThingMapManager, NoThings) == 0x2c);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CThingMapManager, Dimensions_X) == 0x30);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CThingMapManager, Dimensions_Y) == 0x34);
 
 #endif // FABLE_RETAIL_CTHINGMAPMANAGER
 

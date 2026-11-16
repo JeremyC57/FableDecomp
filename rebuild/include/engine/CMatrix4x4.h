@@ -14,6 +14,9 @@
 #ifdef FABLE_RETAIL_CMATRIX4X4_SHADOWSPACE
 enum EMatrix34Init { MATRIX34_INIT_IDENTITY };
 #endif
+#ifdef FABLE_RETAIL_CMATRIX4X4_INITIALISETRANSPOSED
+#include "engine/CMatrix3x4.h"
+#endif
 class CMatrix4x4 {
 public:
     union {
@@ -89,6 +92,17 @@ public:
     // (reloc-bound from CParticleSimulation::ApplyDragging 0x00ADF300): count aligned vectors, SSE kernel of
     // engine/CMatrix4x4TransformSSE.h four at a time, the inline TransformTransposedAssumeW for the rest.
     void AlignedTransformTransposedAssumeW(const C4DVector* src, C4DVector* dest, unsigned long count, float w) const;
+#endif
+#ifdef FABLE_RETAIL_CMATRIX4X4_INITIALISETRANSPOSED
+    // Retail opt-in (wfA6, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB): FableWin.pdb ?InitialiseTransposed@CMatrix4x4@@QAEXABVCMatrix3x4@@@Z,
+    // inline in retail: the 3x4's rows become the first three rows' columns (E11..E14 = m.E11 / m.E21 / m.E31 / m.E41, ...) and the
+    // fourth row is 0 / 0 / 0 / 1 (0x00ADE16C..0x00ADE238 + 0x00ADE281..0x00ADE2A9).
+    FABLE_FORCEINLINE void InitialiseTransposed(const CMatrix3x4& m) {
+        E11=m.E11; E12=m.E21; E13=m.E31; E14=m.E41;
+        E21=m.E12; E22=m.E22; E23=m.E32; E24=m.E42;
+        E31=m.E13; E32=m.E23; E33=m.E33; E34=m.E43;
+        E41=0.0f; E42=0.0f; E43=0.0f; E44=1.0f;
+    }
 #endif
 #ifdef FABLE_RETAIL_CMATRIX4X4_FROMMATRIX3X4
     // Retail opt-in (chunk 2024, row 0x00B4FC40 CEngineShadowRenderer::SetupShadowFuncRenderStates): FableWin.pdb ??0CMatrix4x4@@QAE@XZ

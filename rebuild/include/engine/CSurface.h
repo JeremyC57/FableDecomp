@@ -48,6 +48,11 @@ public:
  void CopyFromSurface(const class C2DBoxI* destRect, const CSurface& source, const class C2DBoxI* sourceRect,
                       unsigned long filter);              // 0x009F37E0
 #endif
+#ifdef FABLE_RETAIL_CSURFACE_SAVEASTGA
+ // Opt-in (wfA2, row 0x00435530 CDisplayEngine::DoRender): Ego_r.pdb ?SaveAsTGA@CSurface@@QBE_NABVCWideString@@PBVC2DExtentsI@@_N@Z, out of
+ // line in retail at 0x009F4590 (DoRender 0x00435E24 / 0x00435EF1, ecx = GPDisplayManager + 0x2C). Parameter names descriptive. Declaration only.
+ bool SaveAsTGA(const class CWideString& filename, const class C2DExtentsI* extents, bool flag) const;   // 0x009F4590
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_AUTOSWIZZLE
  // Opt-in (chunk 2001, row 0x00B3C5D0): Ego_r.pdb ?CopyFromMemoryAutoSwizzle@CSurface@@QAEXPAXJ@Z (0x009F3470; the stipple texture's
  // level 0 is filled with `push 80h ; push data` = (data, pitch)). Declaration only.

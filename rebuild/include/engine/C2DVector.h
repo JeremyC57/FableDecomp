@@ -162,6 +162,11 @@ public:
     bool IsNonZero() const { return GetSquaredMagnitude()>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO; }
 #endif
 #endif
+#ifdef FABLE_RETAIL_C2DVECTOR_GETRANDOMUNITVECTOR
+    // Retail opt-in (wfE8 6th agent, row 0x00B10B10): Ego_r.pdb / FableWin.pdb ?GetRandomUnitVector@C2DVector@@SI?AV1@PAK@Z (static
+    // __fastcall, 0x00A13EB0: seed in edx, result slot in ecx). Declaration only.
+    static C2DVector FABLE_FASTCALL GetRandomUnitVector(unsigned long* seed);
+#endif
 };
 #pragma pack(pop)
 #ifdef FABLE_RETAIL_C2DVECTOR_FROM3D
@@ -170,6 +175,19 @@ inline C2DVector::C2DVector(const C3DVector& v) : X(v.X),Y(v.Y) { }
 #ifdef FABLE_RETAIL_C2DVECTOR_ASSIGN3D
 inline void C2DVector::operator=(const C3DVector& v) {X=v.X;Y=v.Y;}
 #endif
+#endif
+#ifdef FABLE_RETAIL_C2DVECTOR_GFGET2DDISTANCESQUARED
+// Opt-in (wfE11 sixth session, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?GFGet2DDistanceSquared@@YIMABVC2DVector@@0@Z
+// (global __fastcall; FableWin COMDAT 0x01B4F090, 64 bytes / 25 instructions, emitted right after UpdateRegionLoad; no Ego_r copy: inline
+// in retail). Body FITTED to the row's bytes (0x004A44C5..0x004A450F: both differences stored as separate floats, second minus first,
+// then dy*dy + dx*dx); this text is 24 instructions / 62 bytes at /Od.
+inline float __fastcall GFGet2DDistanceSquared(const C2DVector& pos1, const C2DVector& pos2) {
+    float dx = pos2.X - pos1.X;
+    float dy = pos2.Y - pos1.Y;
+    float squared = dy * dy;
+    squared += dx * dx;
+    return squared;
+}
 #endif
 #else
 class C2DVector {

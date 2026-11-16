@@ -19,6 +19,9 @@ class CThing; class CWorld; class CThingAICreature; class CReactionMatch; class 
 #if defined(FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTITUDETOPLAYER) && !defined(FABLE_RETAIL_CTCWIFE_MARRY)
 enum EOpinionAttitudeType;
 #endif
+#ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTACHOPINIONSOURCE
+class CTCOpinionSource;
+#endif
 class COpinionReactionManager {
 #ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_CTOR
     // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0COpinionReactionManager@@QAE@ABVCWorld@@@Z, retail 0x007004B0. Declaration only.
@@ -41,7 +44,19 @@ private:
     EOpinionReactionType GetAttitudeOrReactionType(const CThing&,bool,const bool*,const CTCOpinionSource*)const;
 public:
 #endif
+#ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_REACTIONMATCHSTRENGTH
+    // Overlay opt-in (wfD4, row 0x006D1E30): Ego_r.pdb 0x005515E0 ?GetReactionMatchStrength@COpinionReactionManager@@QBEMW4EOpinionReactionType@@ABVCThingAICreature@@@Z
+    // (Ego_r order 0x005515E0 .. GetThingAttitudeToPlayer 0x00551920 = retail 0x00701590 .. 0x00701840), out of line, called at 0x006D2794
+    // (`push ebx ; push 0Bh ; mov ecx,<manager>`, result `fstp`). Declaration only.
+    float GetReactionMatchStrength(EOpinionReactionType type, const class CThingAICreature& creature) const;   // 0x00701590
+#endif
     void SetThingOpinionSource(CThing* thing);                           // 0x00700770
+#ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTACHOPINIONSOURCE
+    // Retail opt-in (acctC wfA1, row 0x00682810 CTCCreatureOpinionOfHero::InformOfDeed): Ego_r.pdb
+    // ?AttachOpinionSource@COpinionReactionManager@@QBE_NAAVCThing@@ABVCCharString@@PAPAVCTCOpinionSource@@@Z, out of line in retail
+    // at 0x00700780 (call 0x0068350E). Declaration only.
+    bool AttachOpinionSource(CThing& thing, const CCharString& name, CTCOpinionSource** source) const;   // 0x00700780
+#endif
 #ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_PEEKSOURCE
     // Nested opt-in (chunk 2004, row 0x009609B0 CAIStateGroup_DeedReactionRoot::IsRunnable): Ego_r.pdb / FableWin.pdb
     // ?PeekThingOpinionSource@COpinionReactionManager@@QBEPBVCThing@@XZ, inline in retail (the caller calls GetPItem 0x00A01B50 on

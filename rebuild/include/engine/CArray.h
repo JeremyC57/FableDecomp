@@ -59,7 +59,19 @@ public:
     // FableWin original At(T) called by02ebbf70; same index access as operator[].
     T& At(unsigned int i){return *(this->begin()+i);}
 #endif
-#if defined(FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE)
+#if defined(FABLE_RETAIL_CARRAY_SIZE_CTOR_VISIBLE_NOINLINE)
+    // Per-TU inline opt-in (wfE10, row 0x00507C30 CWorldMap::LoadFromFile): retail calls the CArray<char> one-argument constructor out of
+    // line (0x00410F30, Ego_r.pdb ??0?$CArray@D@@QAE@I@Z: three zero stores, malloc(n), memset-zero fill, `ret 4`) while its body stays
+    // visible to the caller (the buffer's _M_start is kept in edi across the whole parse loop, 0x00507DE3..0x00509546). Default body.
+#if defined(_MSC_VER)
+    __declspec(noinline)
+#endif
+#if defined(FABLE_RETAIL_CARRAY)
+    explicit CArray(unsigned int n) : std::vector<T>(n) { }
+#else
+    explicit CArray(unsigned int n) : std::vector<T>(n,T()) { }
+#endif
+#elif defined(FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE)
     // Opt-in (chunk Q16, row 0x00A90260 C3DPrimitive2::CreateDegenerateTriangleIndexBuffer): the one-argument constructor called out
     // of line (0x00A96100 for CArray<unsigned long>: three zero stores, malloc(n*4), `rep stosd` zero fill, `ret 4`; FableWin.pdb
     // ??0?$CArray@K@@QAE@I@Z). Declaration only.

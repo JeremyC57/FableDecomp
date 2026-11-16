@@ -30,10 +30,11 @@ class CEngineOcclusionManager : public CEngineComponent {
 public:
     CEngineOcclusionManager();                 // 0x00B8D780 ??0CEngineOcclusionManager@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
-#ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_OCCLUSIONTEST
+#if defined(FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_OCCLUSIONTEST) || defined(FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_TESTS)
     // Opt-in (chunk 2060, row 0x00BA5260): Ego_r.pdb ?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ (Ego_r 0x00A347A0, 1 byte `ret`)
     // and ?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z (0x00A347B0, 3 bytes `ret 4`), FableWin.pdb the same names: the empty PC
     // bodies at retail 0x00B8D090 / 0x00B8D0A0 (landed as BeginQuery / EndQuery: NAME_FIXES.tsv).
+    // FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_TESTS (wfA5, row 0x00B9AC30) declares the same two members.
     void StartOcclusionTest();                                           // 0x00B8D090
     void EndOcclusionTest(unsigned long handle);                         // 0x00B8D0A0
 #endif

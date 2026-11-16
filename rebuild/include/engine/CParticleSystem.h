@@ -53,6 +53,16 @@ public:CParticleSystem();virtual ~CParticleSystem();
  void ScaleParticleDimensions(C3DVector& dim) const { if (ScaleParticles) { dim.X *= Scale.X; dim.Y *= Scale.Y; dim.Z *= Scale.Z; } }
 #endif
  void GetUnscaledWorldTransform(CMatrix3x4&) const;
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_PARTICLEWORLDTRANSFORM
+ // Opt-in (wfE8, row 0x00B03CA0): FableWin.pdb ?GetParticleWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z, out of line
+ // (retail 0x00B05980, landed). Declaration only.
+ void GetParticleWorldTransform(CMatrix3x4&) const;
+#endif
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_GETSCALE
+ // Opt-in (wfE8, row 0x00B03CA0): FableWin.pdb ?GetScale@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ (inline; no Ego_r copy).
+ // Needs the typed Scale (FABLE_RETAIL_CPARTICLESYSTEM_UPDATE / _SCALE).
+ const C3DVector& GetScale() const { return Scale; }
+#endif
  float GetNormalisedTime() const { return NormalisedTimeEnabled ? NormalisedTime : 0.0f; }
  float GetGlobalAlpha() const { return GlobalAlpha; }
  float GetFadeAlpha() const { return FadeAlpha; }
@@ -104,6 +114,14 @@ public:CParticleSystem();virtual ~CParticleSystem();
  void TransformVectorIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformVector(v);}}
  void TransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformPoint(v);}}
  void InverseTransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetInverseSystemTransform(t);t.TransformPoint(v);}}
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_GENERATEPARTICLE
+ // Retail opt-in (wfE8 6th agent, row 0x00B10B10 CPSCEmitterGeneric::GenerateParticle): FableWin.pdb ?TransformVectorIfWorld@ / ?InverseTransformVector
+ // IfLocal@CParticleSystem@NParticleEngine@@QBEXAAVC3DVector@@@Z (inline, the siblings TransformVectorIfLocal / InverseTransformPosIfLocal
+ // text) and ?GetComponentOfType@..@@QAEPAVCPSCBase@2@W4EPSCType@2@K@Z (0x00AF4360, out of line). No layout change.
+ void TransformVectorIfWorld(C3DVector& v)const{if(!StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformVector(v);}}
+ void InverseTransformVectorIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetInverseSystemTransform(t);t.TransformVector(v);}}
+ CPSCBase* GetComponentOfType(EPSCType type,unsigned long index);   // 0x00AF4360
+#endif
 #endif
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM_PEEKEMITTERTRANSFORM
  // Opt-in (agentNF22, row 0x00AF3D80): Ego_r.pdb + FableWin.pdb ?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ

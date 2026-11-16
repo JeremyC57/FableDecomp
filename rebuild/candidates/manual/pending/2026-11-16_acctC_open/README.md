@@ -28,6 +28,11 @@ newest sections first), the row line(s) of the batch `STATUS.tsv`, and `hdrdiff/
 | 0x00879900 | wfE9 | DIFFER(3370v3415) |
 | 0x00931390 | wfE9 | DIFFER(3863v3863) |
 
+**Released 2026-11-16 (landing gn).** These rows are back in the normal pool. When reusing a `hdrdiff/`, merge it into today's
+`rebuild/include`. One opt-in was renamed at landing: wfA4's inline probe `FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_SOURCE_DEST`
+is `FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_SOURCE_DEST_INLINE` in the repo, because the landed 0x00B01900 / 0x00B03CA0 use the old
+name as a declaration-only opt-in. The best 0x00BAA870 draft does not use it.
+
 Useful findings for whoever continues (details in the batch NOTES):
 - 0x009FDE80, 0x00795300 / 0x0078FD60 (twins): instructions equal retail; the residue is stack-slot order / frame size, traced into the
   VC7.1 code generator frame packer (models and probes described in wfB5 and wfE10 NOTES).

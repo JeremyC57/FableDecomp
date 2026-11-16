@@ -27,6 +27,11 @@ public: virtual ~CParticleUpdateParamDesc();
  // (inline in retail: CPSCSingleSprite::PreparePrimitives 0x00B08AxA `call [edx+4]` through Callback with Index pushed). No layout change.
  bool GetUpdateParam(C3DVector& out,float time,bool local,const CParticleUpdateParameters<K,V>& params,unsigned long flags)const{return Callback->GetUpdateParam(out,Index,time,local,params,flags);}
 #endif
+#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMDESC_ISNULL
+ // Opt-in (wfE8 6th agent, row 0x00B10B10): FableWin.pdb ?IsNull@?$CParticleUpdateParamDesc@KK@NParticleEngine@@QBE_NXZ (inline in retail:
+ // GenerateParticle tests the Callback word before each GetUpdateParam, 0x00B1150x / 0x00B1178x). No layout change.
+ bool IsNull()const{return Callback==0;}
+#endif
 private: CParticleUpdateParamCallback<K,V>* Callback;V Index;
 };
 class CPSCBase:public CParticleUpdateParamCallback<unsigned long,unsigned long>{

@@ -76,6 +76,14 @@ typedef unsigned long long SpriteUniqueId;
 class CEnginePrimitive2DSprite : public CEnginePrimitive {
 public:
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_TEXTURE_POS_CTOR
+    // Retail opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): Ego_r.pdb / FableWin.pdb
+    // ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@AAVCTexture@@W4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z,
+    // out of line in retail at 0x0043FA20 (landed; the caller pushes 15 argument words: u64 id, &pos, layer, &texture, blend, set,
+    // two angles, four colour bytes, flags, &uv start, &uv end, 0x004399C4..0x00439A29). Needs ENUM_CTORS. Declaration only.
+    CEnginePrimitive2DSprite(unsigned __int64,const C2DVector&,EEngine2DLayer,CTexture&,EEnginePrimitiveBlendMode,EEngineInterpolationSet,
+        float,float,unsigned char,unsigned char,unsigned char,unsigned char,unsigned long,const C2DVector&,const C2DVector&);   // 0x0043FA20
+#endif
     // Retail opt-in (Codex 2026-11-09): both PDBs retain enum parameter types;
     // native0041beb0 takes a box,00493ac2 takes a position. Same16 arguments.
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_HIGHLIGHT_BODY
@@ -134,4 +142,32 @@ CEnginePrimitive2DSprite(SpriteUniqueId uid,const C2DBoxF& clip_box,EEngine2DLay
     C2DVector UVOffsetsEnd;                                                               // +0x4c
 };
 FABLE_STATIC_ASSERT_AT(117, sizeof(CEnginePrimitive2DSprite) == 0x54);
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_TEXTURE_POS_CTOR) && defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_TEXTURE_POS_CTOR_BODY)
+// Retail opt-in (wfA2 successor 4, row 0x00439070): the inline body of the texture/position ctor declared above. Retail emits it as
+// an out-of-line COMDAT in the CPlayerGui TU (0x0043FA20; FableWin places ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@...K11@Z at
+// 0x01A7E8F0, beside DrawPreparePrimitivesForEngine 0x01A7D4F0), so the body was visible to the caller. This text compiled on its own
+// grades MATCH against 0x0043FA20 (probe ctor.cpp, 167 bytes). Same member-init style as ..._CRIME_CTOR. Needs FABLE_RETAIL_CENGINEPRIMITIVE_ID_CTOR,
+// FABLE_RETAIL_C2DBOXF_CORNERS, FABLE_RETAIL_CRGBCOLOUR.
+inline CEnginePrimitive2DSprite::CEnginePrimitive2DSprite(unsigned __int64 id,const C2DVector&pos,EEngine2DLayer layer,CTexture&texture,
+        EEnginePrimitiveBlendMode blend,EEngineInterpolationSet interpolation,float start_angle,float end_angle,
+        unsigned char alpha,unsigned char r,unsigned char g,unsigned char b,unsigned long flags,const C2DVector&uv_start,const C2DVector&uv_end)
+    :CEnginePrimitive((EEnginePrimitiveType)34,id,interpolation),ClipBox(pos,pos),Layer(layer),BankIndex(0),Frame(0),StartAngle(start_angle),
+     EndAngle(end_angle),BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(true),Flags(flags),Texture(&texture),UVOffsetsStart(uv_start),
+     UVOffsetsEnd(uv_end){}
+#endif
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS) && defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_BOX_CTOR_BODY)
+// Retail opt-in (wfA2-5, row 0x0048E78E CSubtitleRenderer::DrawButtonGraphics): the inline body of the box ctor declared above
+// (Ego_r.pdb / FableWin.pdb ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@
+// W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@5@Z). Retail emits it as an out-of-line COMDAT (0x0041BEB0); FableWin places it at
+// 0x01A662C6 in the CSubtitleRenderer TU (beside the position ctor 0x01A663FC, DrawButtonText 0x01A665C5), so the body was visible to
+// the subtitle rows. This text compiled on its own grades MATCH against 0x0041BEB0 (wfA2 probe/s5/ctors3.cpp). Same member-init style
+// as ..._CRIME_CTOR (ClipBox(box), ClipBoxIsPos false, Texture 0). Needs FABLE_RETAIL_CENGINEPRIMITIVE_ID_CTOR, FABLE_RETAIL_C2DBOXF_COPY,
+// FABLE_RETAIL_CRGBCOLOUR.
+inline CEnginePrimitive2DSprite::CEnginePrimitive2DSprite(unsigned __int64 id,const C2DBoxF&box,EEngine2DLayer layer,unsigned long bank,
+        unsigned long frame,EEnginePrimitiveBlendMode blend,EEngineInterpolationSet interpolation,float start_angle,float end_angle,
+        unsigned char alpha,unsigned char r,unsigned char g,unsigned char b,unsigned long flags,const C2DVector&uv_start,const C2DVector&uv_end)
+    :CEnginePrimitive((EEnginePrimitiveType)34,id,interpolation),ClipBox(box),Layer(layer),BankIndex(bank),Frame(frame),StartAngle(start_angle),
+     EndAngle(end_angle),BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(false),Flags(flags),Texture(0),UVOffsetsStart(uv_start),
+     UVOffsetsEnd(uv_end){}
+#endif
 #endif

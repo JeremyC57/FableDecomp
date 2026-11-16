@@ -31,6 +31,9 @@
 #ifdef FABLE_RETAIL_CPARTICLEPROGRAM_RENDERACCESS
 #include "engine/C3DClothRenderVertex.h"
 #endif
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_TEXCOORDACCESS
+#include "engine/C2DVector.h"
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEPROGRAM_REMAPBONEINDICES
 #include "stlport/fable_map.h"
 #endif
@@ -106,7 +109,20 @@ private:
 #endif
     unsigned long NonSimCount;                               // +0xBC
     C4DVector* NonSimPositions;                              // +0xC0
+#if defined(FABLE_RETAIL_CPARTICLEPROGRAM_TEXCOORDACCESS) && defined(FABLE_RETAIL_CPARTICLEPROGRAM_RENDERACCESS)
+public:
+    // Overlay opt-in (wfA4, row 0x00BB2540 CEngineClothRenderer::RenderPolygons): FableWin.pdb ?GetRenderVertexCount@CParticleProgram@@QBEKXZ,
+    // ?GetIndexedTextureCoordCount@CParticleProgram@@QBEKXZ and ?PeekIndexedTextureCoords@CParticleProgram@@QBEPBVC2DVector@@XZ (inline in
+    // release: 0x00BB25A9 size() of RenderVertices, 0x00BB26EF..0x00BB2710 GetAsCArray of the texture coordinates, `test ; ja` keeping
+    // the array object's address when empty). IndexedTextureCoords typed (Ego_r CArray<C2DVector>, 12 bytes): no layout change.
+    unsigned long GetRenderVertexCount() const { return RenderVertices.size(); }
+    unsigned long GetIndexedTextureCoordCount() const { return IndexedTextureCoords.size(); }
+    const C2DVector* PeekIndexedTextureCoords() const { return IndexedTextureCoords.GetAsCArray(); }
+private:
+    CArray<C2DVector> IndexedTextureCoords;                  // +0xC4
+#else
     unsigned char IndexedTextureCoords[12];                  // +0xC4 CArray<C2DVector>
+#endif
     unsigned char TempVertexPositions[12];                   // +0xD0 CArray<C4DVector>
     unsigned char ParticleIndices[12];                       // +0xDC CArray<long>
     unsigned char VertexIndices[12];                         // +0xE8 CArray<long>

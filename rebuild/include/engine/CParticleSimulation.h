@@ -59,7 +59,13 @@ protected:
     static void __fastcall ReadVectorArray(C4DVector* vectors, unsigned long count, CDataInputStream& in, float w);
 public:
 #endif
+#ifdef FABLE_RETAIL_CPARTICLESIMULATION_MUTABLE_RENDERDATA
+    // Overlay opt-in (wfA4, row 0x00BB2540): the renderer's cache, created / released through a const CParticleSimulation&
+    // (CEngineClothRenderer::RenderPolygons calls Reset 0x00BB64A0 and the inline ReleaseData on it). No layout change.
+    mutable CCountedPointer<CParticleSimulationRenderData> RenderData;
+#else
     CCountedPointer<CParticleSimulationRenderData> RenderData;
+#endif
 protected:
     float Timestep;
     bool TimestepChanged;
@@ -85,5 +91,5 @@ private:
     long MemoryHandle;
     CMovableResourceMemoryPool* MemoryPool;
 };
-FABLE_STATIC_ASSERT(sizeof(CParticleSimulation)==0x80);
+FABLE_STATIC_ASSERT_AT(88, sizeof(CParticleSimulation)==0x80);
 #endif

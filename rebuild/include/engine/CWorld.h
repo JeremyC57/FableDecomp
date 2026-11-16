@@ -66,6 +66,10 @@ class CWorldMap;
 #if defined(FABLE_RETAIL_CWORLD_TYPED_SAVE) || defined(FABLE_RETAIL_CWORLD_GUILDSEALRECALLPOS)
 #include "engine/C3DVector.h"
 #endif
+#ifdef FABLE_RETAIL_CWORLD_TYPED_REGIONLOAD
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#endif
 #ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
 #include "engine/CCountedPointer.h"                          // chunk 2051 typed members
 #include "boost/scoped_ptr.h"
@@ -168,6 +172,27 @@ public:
     // ?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z, out of line in retail at 0x0049EAF0 (landed). Declaration only.
     void HandleMoveHeroToRegionGameEvent(const CGameEvent& event);   // 0x0049EAF0
 #endif
+#ifdef FABLE_RETAIL_CWORLD_UPDATEREGIONLOAD_CALLEES
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?SetGuildSealRecallPos@CWorld@@QAEXABVC3DVector@@@Z (0x0049C9B0),
+    // ?SetGuildSealRecallAngleXY@CWorld@@QAEXM@Z (0x0049C9D0), ?SetSaveGameMarkerPos@CWorld@@QAEXABVC3DVector@@@Z (0x0049E590),
+    // ?IsDisplayingMiniMapOnRegionLoad@CWorld@@QBE_NXZ (0x0049E9F0), ?DisplayCollectableRentInformation@CWorld@@QBEXXZ (0x004A0370): the
+    // row's same-TU callees. Declarations only.
+    void SetGuildSealRecallPos(const C3DVector&);                        // 0x0049C9B0
+    void SetGuildSealRecallAngleXY(float);                               // 0x0049C9D0
+    void SetSaveGameMarkerPos(const C3DVector&);                         // 0x0049E590
+    bool IsDisplayingMiniMapOnRegionLoad() const;                        // 0x0049E9F0
+    void DisplayCollectableRentInformation() const;                      // 0x004A0370
+#endif // FABLE_RETAIL_CWORLD_UPDATEREGIONLOAD_CALLEES
+#ifdef FABLE_RETAIL_CWORLD_REGIONLOAD_ACCESSORS
+    // Opt-in (wfE11 sixth session, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?IsTeleportingEnabled@CWorld@@QBE_NXZ,
+    // ?IsRegionLoadToDisplayRegionName@CWorld@@QBE_NXZ, ?IsScreenToFadeInOnNextRegionChange@CWorld@@QBE_NXZ,
+    // ?SetScreenToFadeInOnNextRegionChange@CWorld@@QAEX_N@Z: no Ego_r out-of-line copy (inline in retail); FableWin emits their COMDATs
+    // (0x01B4EFF0..0x01B4F050, 20/9, 20/9, 20/9, 25/10 bytes/instructions) right after UpdateRegionLoad's body (first used there).
+    bool IsTeleportingEnabled() const { return TeleportingEnabled; }
+    bool IsRegionLoadToDisplayRegionName() const { return RegionLoadDisplayRegionName; }
+    bool IsScreenToFadeInOnNextRegionChange() const { return ScreenToFadeInOnNextRegionChange; }
+    void SetScreenToFadeInOnNextRegionChange(bool fade_in) { ScreenToFadeInOnNextRegionChange = fade_in; }
+#endif // FABLE_RETAIL_CWORLD_REGIONLOAD_ACCESSORS
 #ifdef FABLE_RETAIL_CWORLD_SETKICKPOS
     // Nested opt-in (chunk 1012, row 0x0049FFD0): Ego_r.pdb ?SetKickPos@CWorld@@QAEXXZ (public). Declaration only.
     void SetKickPos();                                                   // 0x0049FFD0
@@ -325,6 +350,11 @@ public:
     // agentC30 (row 0x007B57C0): FableWin.pdb ?IsPerformingRegionLoadReally@CWorld@@QBE_NXZ, inline in retail (`mov ecx,[eax+104h] ;
     // test ecx,ecx` on PeekWorld(), 0x007B58F0): RegionLoadStatus +0x104 non-zero. Body only, no layout change.
     bool IsPerformingRegionLoadReally() const { return RegionLoadStatus != 0; }
+#endif
+#ifdef FABLE_RETAIL_CWORLD_POPULATE
+    // Retail opt-in (chunk 879, row 0x00502E90; re-based by agent wfE10): Ego_r.pdb ?PopDontPopulateNextLoadedRegion@CWorld@@QAE_NXZ
+    // (0x0049DBD0, called at 0x00502F14). Declaration only: no layout change.
+    bool PopDontPopulateNextLoadedRegion();                  // 0x0049DBD0
 #endif
 #ifdef FABLE_RETAIL_CWORLD_ISCREATUREGENERATIONENABLEDFORGROUP
     // agentC36 (row 0x0074AF50): Ego_r.pdb / FableWin.pdb ?IsCreatureGenerationEnabledForGroup@CWorld@@QBE_NK@Z, retail 0x0049D910. Declaration only.
@@ -620,11 +650,19 @@ public:
     bool                        SerialisingHeroState;        // +0x102
     bool                        SerialisingNonPersistentQuestItems; // +0x103
     ERegionLoadStatus           RegionLoadStatus;            // +0x104 (chunk 734: typed)
+#ifdef FABLE_RETAIL_CWORLD_TYPED_REGIONLOAD
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): the Ego_r.pdb member types of RegionLoadStartPos (C3DVector +0x108; UpdateRegionLoad
+    // passes `lea [ebp+108h]` to CWorldMap::GetMapNumberAt(const C3DVector&), 0x004A37E4) and RegionLoadFollowers (+0x118, push_back 0x004AD520).
+    C3DVector                   RegionLoadStartPos;          // +0x108
+    float                       RegionLoadStartAngleXY;      // +0x114
+    std::vector<CIntelligentPointer<CThing> > RegionLoadFollowers;   // +0x118
+#else
     float                       RegionLoadStartPos_X;        // +0x108 C3DVector::X
     float                       RegionLoadStartPos_Y;        // +0x10c C3DVector::Y
     float                       RegionLoadStartPos_Z;        // +0x110 C3DVector::Z
     float                       RegionLoadStartAngleXY;      // +0x114
     unsigned char               RegionLoadFollowers[0xc];    // +0x118 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+#endif // FABLE_RETAIL_CWORLD_TYPED_REGIONLOAD
     long                        PreviousRegion;              // +0x124
     long                        NumberOfTimesFreezeControlsModeAddedDuringRegionLoad; // +0x128
     bool                        RegionLoadViaTeleporter;     // +0x12c
@@ -845,7 +883,11 @@ FABLE_STATIC_ASSERT_AT(708, offsetof(CWorld, POpinionReactionManager_Data) == 0x
 FABLE_STATIC_ASSERT_AT(709, offsetof(CWorld, POpinionReactionManager_Info) == 0x78);
 FABLE_STATIC_ASSERT_AT(710, offsetof(CWorld, PScriptConversationManager_ptr) == 0x7c);
 FABLE_STATIC_ASSERT_AT(711, offsetof(CWorld, JustLoaded) == 0x80);
+#ifndef FABLE_RETAIL_CWORLD_TYPED_SAVE
 FABLE_STATIC_ASSERT_AT(712, offsetof(CWorld, CurrentWorldName_PStringData) == 0x84);
+#else
+FABLE_STATIC_ASSERT_AT(712, offsetof(CWorld, CurrentWorldName) == 0x84);
+#endif
 FABLE_STATIC_ASSERT_AT(713, offsetof(CWorld, ConsolePauseAtFrameNumber) == 0x88);
 FABLE_STATIC_ASSERT_AT(714, offsetof(CWorld, FrameStarted3DRendering) == 0x8c);
 FABLE_STATIC_ASSERT_AT(715, offsetof(CWorld, LastUpdateTimeLength) == 0x90);
@@ -901,9 +943,13 @@ FABLE_STATIC_ASSERT_AT(764, offsetof(CWorld, SerialisingAboutToLoadHeroState) ==
 FABLE_STATIC_ASSERT_AT(765, offsetof(CWorld, SerialisingHeroState) == 0x102);
 FABLE_STATIC_ASSERT_AT(766, offsetof(CWorld, SerialisingNonPersistentQuestItems) == 0x103);
 FABLE_STATIC_ASSERT_AT(767, offsetof(CWorld, RegionLoadStatus) == 0x104);
+#ifndef FABLE_RETAIL_CWORLD_TYPED_REGIONLOAD
 FABLE_STATIC_ASSERT_AT(768, offsetof(CWorld, RegionLoadStartPos_X) == 0x108);
 FABLE_STATIC_ASSERT_AT(769, offsetof(CWorld, RegionLoadStartPos_Y) == 0x10c);
 FABLE_STATIC_ASSERT_AT(770, offsetof(CWorld, RegionLoadStartPos_Z) == 0x110);
+#else
+FABLE_STATIC_ASSERT_AT(768, offsetof(CWorld, RegionLoadStartPos) == 0x108);
+#endif
 FABLE_STATIC_ASSERT_AT(771, offsetof(CWorld, RegionLoadStartAngleXY) == 0x114);
 FABLE_STATIC_ASSERT_AT(772, offsetof(CWorld, RegionLoadFollowers) == 0x118);
 FABLE_STATIC_ASSERT_AT(773, offsetof(CWorld, PreviousRegion) == 0x124);

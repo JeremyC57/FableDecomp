@@ -73,7 +73,23 @@ public:
     // Retail opt-in (Codex2026-11-10): FableWin018aee90 and raw return type signed long.
     long GetFontHeight()const{return (long)FontHeight;}
 #endif
+#ifdef FABLE_RETAIL_CFONTBANK_VSTRINGWIDTH
+    // Opt-in (chunk 2056 scout, row 0x0048E78E via CSubtitleRenderer::GetTextWidthFromText 0x0048E062): Ego_r.pdb / FableWin.pdb
+    // ?GetVStringWidth@CFontBank@@QBEMABVCWideString@@@Z, out of line in retail at 0x0043E4D0 (0x0048E06A `call`; the landed
+    // NPlayerGui::CStatBar::DrawStatBoxWithText 0x00646A46 calls it too). Declaration only.
+    float GetVStringWidth(const CWideString& text) const;                // 0x0043E4D0
+#endif
+#ifdef FABLE_RETAIL_CFONTBANK_VFONTMAXHEIGHT_PAREN
+    // Opt-in (wfA2-9, row 0x00435530 CDisplayEngine::DoRender): FableWin.pdb ?GetVFontMaxHeight@CFontBank@@QBEMXZ with the return
+    // expression parenthesised. Same /Od bytes as the plain text (14i / 31b; FableWin's 15i / 33b stays unexplained); in release the
+    // paren is a no-code c2 tuple that the list scheduler counts. Evidence = retail bytes of two rows: DoRender 0x00435C9F..0x00435CA7
+    // (fstp X before `push edi`, fadd before `push esp`: RELOCATION_MATCH only with this text) and CFrontendGameComponent::Output
+    // 0x00494900 (RELOCATION_MATCH with this text and the natural `y += MainFont->GetVFontMaxHeight();`, which the plain text only
+    // reaches through a named `line_height` temporary). CPlayer::DrawFreeCamDebug 0x00487570 matches with either text.
+    float GetVFontMaxHeight() const { return (GFAYToVY(GetFontMaxHeight())); }
+#else
     float GetVFontMaxHeight() const { return GFAYToVY(GetFontMaxHeight()); }
+#endif
 #ifdef FABLE_RETAIL_CFONTBANK_VSTRINGEXTENTS_OUTOFLINE
     // Opt-in (bwf1 / agentC2, row 0x00651B04): out of line in this TU (call 0x00437210, Ego_r.pdb keeps it out of line). Declaration only.
     C2DExtentsF GetVStringExtents(const CWideString& text) const;       // 0x00437210

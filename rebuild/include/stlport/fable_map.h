@@ -439,6 +439,12 @@ public:
         }
         return iterator(y);
     }
+#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
+    // Nested opt-in (chunk 879, row 0x00502E90 CWorldMap::PopulateRegionWithVillagers; re-based by agent wfE10): that TU expands
+    // erase(const K&) in place (0x005034BE, its distance count dead) and CALLS both halves out of line (equal_range 0x00514730, pair
+    // through a hidden pointer; erase(first, last) 0x0051AF80, iterators by value): the same STLport bodies, kept out of line.
+    __declspec(noinline)
+#endif
     pair<iterator,iterator> equal_range(const K& key) { return pair<iterator,iterator>(lower_bound(key),upper_bound(key)); }
 #ifdef FABLE_RETAIL_STLP_SET_UPPER_BOUND
     // Retail opt-in (chunk F2, row 0x009D5BF0 CBankFileAsync::HandleFailedAllocation): STLport 4.6 _tree.h const upper_bound (the
@@ -453,10 +459,27 @@ public:
         return const_iterator(y);
     }
 #endif
+#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
+    __declspec(noinline)
+#endif
     void erase(iterator first,iterator last) {
         if(first==begin()&&last==end()) clear();
         else while(first!=last) erase(first++);
     }
+#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
+    __forceinline
+#endif
+#ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY_DISTANCE
+    // Nested opt-in (agent wfE10-5, row 0x00502E90): STLport 4.6 _tree.c's own text, `size_type __n = distance(__p.first, __p.second);`
+    // (needs FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE's distance / __distance). VC7.1 then drops the dead count loop as retail does
+    // (0x005034BE: equal_range 0x00514730 straight into erase(first, last) 0x0051AF80, no node walk); the hand loop below is kept.
+    size_t erase(const K& key) {
+        pair<iterator,iterator> p=equal_range(key);
+        size_t n=distance(p.first,p.second);
+        erase(p.first,p.second);
+        return n;
+    }
+#else
     size_t erase(const K& key) {
         pair<iterator,iterator> p=equal_range(key);
         size_t n=0;
@@ -464,6 +487,7 @@ public:
         erase(p.first,p.second);
         return n;
     }
+#endif
 #endif
 };
 #ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
@@ -540,6 +564,21 @@ pair<_Rb_tree_iterator<V,_Nonconst_traits<V> >,bool> _Rb_tree<K,V,KeyOfValue,Com
     if(_M_key_compare(_S_key(j._M_node),KeyOfValue()(v)))
         return pair<iterator,bool>(_M_insert(x,y,v),true);
     return pair<iterator,bool>(j,false);
+}
+#endif
+#if defined(FABLE_RETAIL_STLP_MAP) && defined(FABLE_RETAIL_STLP_TREE_INSERT_EQUAL_BODY)
+// Per-TU opt-in (row 0x00ACA830 COptimisedPrimitive::Initialise): the STLport 4.6 _tree.c insert_equal(const V&) body, visible as
+// _tree.c is in every retail TU; retail expands it twice there (0x00ACBD94, 0x00ACC109: the key walk, then a call to _M_insert
+// 0x00AD4540 with w = 0) while the same-TU UpdateCost 0x00AC8A60 calls the COMDAT 0x00AD54B0.
+template<class K,class V,class KeyOfValue,class Compare,class A>
+_Rb_tree_iterator<V,_Nonconst_traits<V> > _Rb_tree<K,V,KeyOfValue,Compare,A>::insert_equal(const V& v) {
+    _Link_type y=this->_M_header._M_data;
+    _Link_type x=_M_root();
+    while(x!=0) {
+        y=x;
+        x=_M_key_compare(KeyOfValue()(v),_S_key(x))?_S_left(x):_S_right(x);
+    }
+    return _M_insert(x,y,v);
 }
 #endif
 #if defined(FABLE_RETAIL_STLP_MAP) && defined(FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_HINT_BODY)
@@ -704,6 +743,9 @@ public:
     void erase(iterator position){_M_t.erase(position);}
 #endif
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY
+#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
+    __forceinline
+#endif
     size_t erase(const K& key){return _M_t.erase(key);}
 #endif
 };
@@ -796,6 +838,12 @@ public:
 #endif
     multimap():_M_t(Compare(),A()){}
     iterator insert(const value_type& x){return _M_t.insert_equal(x);}
+#ifdef FABLE_RETAIL_STLP_MULTIMAP_BEGIN_END
+    // Per-TU opt-in (row 0x00ACA830): STLport 4.6 _multimap.h begin() / end() (inline; 0x00ACC24F walks VertexPairContractions
+    // from the header's left link to the header).
+    iterator begin(){return _M_t.begin();}
+    iterator end(){return _M_t.end();}
+#endif
     void clear(){_M_t.clear();}
 #ifdef FABLE_RETAIL_STLP_MULTIMAP_EQUAL_RANGE
     // Retail opt-in (wf13, row 0x009CCEF0 CBankFile::FindIndicesByFilename): STLport 4.6 _map.h multimap const equal_range, forwarding

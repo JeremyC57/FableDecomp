@@ -1,0 +1,4 @@
+def R(k,o,b,t):
+    assert t[0]=='#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_PEEKRENDERFLAGS' and t[-1]=='#endif' and len(t)==4
+    return ['#if defined(FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_PEEKRENDERFLAGS) && !defined(FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_ACCESSORS)',
+            t[1], ' // (FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_ACCESSORS declares it too.)', t[2], t[3]]+o

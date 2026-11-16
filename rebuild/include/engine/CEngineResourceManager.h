@@ -116,6 +116,15 @@ public:
     // inline in retail (UpdateDiskCache 0x00B2DA07 / 0x00B2DBA2 read GraphicBanks[0] at +0x954 and write through it).
     CGraphicDataBank* GetGraphicBank(EGraphicBankNo bank) { return GraphicBanks[bank]; }
 #endif
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKVSCONSTANTLAYOUTREPEATEDMESH
+    // Opt-in (wfA5, row 0x00B9AC30): FableWin.pdb ?PeekVSConstantLayoutRepeatedMesh@CEngineResourceManager@@QAEABVCEngineVSConstantLayoutRepeatedMesh@@XZ,
+    // inline in retail (ObjectMatricies.Count read in place at +0x3034 = VSConstantLayoutRepeatedMesh +0x2EC8 + 0x16C, 0x00B9B969). The member
+    // stays opaque, as in the LIGHTSBONES opt-in; the includer supplies engine/CEngineVSConstantLayoutRepeatedMesh.h (retail branch).
+    const class CEngineVSConstantLayoutRepeatedMesh& PeekVSConstantLayoutRepeatedMesh()
+    {
+        return *reinterpret_cast<const class CEngineVSConstantLayoutRepeatedMesh*>(VSConstantLayoutRepeatedMesh);
+    }
+#endif
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKVSCONSTANTLAYOUTLIGHTSBONES
     // Retail opt-in (chunk F2, row 0x00BCFB00): FableWin.pdb ?PeekVSConstantLayoutLightsBones@CEngineResourceManager@@QAEABVCEngineVSConstantLayoutLightsBones@@XZ,
     // inline in retail (the row reads the layout's BoneMatrices at +0x2E50 = VSConstantLayoutLightsBones +0x2D7C + 0xD4 in place).
@@ -150,6 +159,12 @@ public:
     // listed right after RenderClouds) on the Ego_r.pdb member ZeroRGBATexture (+0x2AD4, the landed ~CEngineResourceManager 0x00B3B8E0);
     // inline in retail (RenderClouds 0x00B659C9..0x00B659DA: `add edx,2AD4h`).
     class CTexture* GetZeroRGBATexture() { return (class CTexture*)ZeroRGBATexture; }
+#endif
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_SATRGBATEXTURE
+    // Retail opt-in (wfB3, rows 0x00BA2350 / 0x00BA9A70): FableWin.pdb ?GetSatRGBATexture@CEngineResourceManager@@QAEPAVCTexture@@XZ
+    // (0x02E73E10, listed right after Get2DAlphaMaskTexture 0x02E73D60) on the Ego_r.pdb member SatRGBATexture (retail +0x2ADC, next to
+    // ZeroRGBATexture +0x2AD4; the landed Get2DAlphaMaskTexture 0x00BA9A70 returns it). Inline in retail.
+    class CTexture* GetSatRGBATexture() { return (class CTexture*)SatRGBATexture; }
 #endif
 private:
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_ONRELEASE

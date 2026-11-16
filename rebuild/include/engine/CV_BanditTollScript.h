@@ -20,6 +20,11 @@ public:
     virtual void OnPersist(CPersistContext&);
     void CheckForLeaderDead();
     void ResetToll();
+#ifdef FABLE_RETAIL_CV_BANDITTOLLSCRIPT_TOLLBANDIT
+    // Retail opt-in (chunk 816): ?CheckForBanditTollPaid@CV_BanditTollScript@NScript@@QAEXXZ (Ego_r.pdb / FableWin.pdb), the
+    // member the CTollBandit::Main 0x00E4B5B0 spawns as "ParentClass.CheckForBanditTollPaid" (CSpawnedFunc vtable 0x012E4B90).
+    void CheckForBanditTollPaid();
+#endif
     bool BanditsAngered;
     bool TollPaid;
     bool AssassinateReluctantTrader;
@@ -149,6 +154,13 @@ public:
         virtual CScriptBase* GetParentScript() const;
     private:
         virtual void Main();
+#ifdef FABLE_RETAIL_CV_BANDITTOLLSCRIPT_TOLLBANDIT
+        // Retail opt-in (chunk 816): Ego_r.pdb / FableWin.pdb ?SetUpBanditToll@CTollBandit@..@@AAEXXZ (0x00E4E0E0, called first by
+        // Main 0x00E4B5B0) and ?Should_I_Flee@CTollBandit@..@@AAEXAAVCScriptGameResourceObjectScriptedThingBase@@@Z (0x00E4DF20,
+        // called at the end of every Main state loop with seh_me).
+        void SetUpBanditToll();
+        void Should_I_Flee(CScriptGameResourceObjectScriptedThingBase&);
+#endif
     protected:
         NScript::CV_BanditTollScript & ParentClass;
     protected:
@@ -166,5 +178,5 @@ public:
     };
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_BanditTollScript) == 0x5c);
+FABLE_STATIC_ASSERT_AT(169, sizeof(NScript::CV_BanditTollScript) == 0x5c);
 #endif

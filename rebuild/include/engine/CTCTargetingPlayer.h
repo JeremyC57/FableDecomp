@@ -124,6 +124,14 @@ public:
 // (Ego_r 0x007FD220, FableWin 0x024CE410), out of line in retail at 0x00802390 (fld [ecx+48h] ; ret: MaxTargetingDistance +0x48). Declaration only.
 public: float GetMaxTargetingDistance() const;                       // 0x00802390
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_FORCENOTARGET
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?StatGetClassTypeName@CTCTargetingPlayer@@SI?AVCCharString@@XZ (inline:
+    // CCharString("CTCTargetingPlayer") built in place, 0x004A3E42) and ?ForceToHaveNoTarget@CTCTargetingPlayer@@QAEX_N@Z (inline: the store
+    // `mov byte [esi+3Dh],1` into ForcedToHaveNoTarget, 0x004A3EA2). Bodies only: no layout change.
+    static CCharString FABLE_FASTCALL StatGetClassTypeName() { return CCharString("CTCTargetingPlayer"); }
+    void ForceToHaveNoTarget(bool force) { ForcedToHaveNoTarget = force; }
+#endif // FABLE_RETAIL_CTCTARGETINGPLAYER_FORCENOTARGET
 };
 FABLE_STATIC_ASSERT_AT(123, sizeof(CTCTargetingPlayer) == 0xf8);
 #else

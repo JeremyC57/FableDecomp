@@ -55,6 +55,30 @@ public:
  COptimisedVertex& GetVertex(unsigned long index){return Vertices[index];}
 private:
 #endif
+#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE_INITIALISE
+ // Retail opt-in (row 0x00ACA830): Ego_r.pdb ?Initialise@COptimisedPrimitive@QuadricOptimiserInternals@@QAEXABVCOptimisationParameters@2@@Z
+ // (public) and the private members it calls (Ego_r / FableWin names, AAE = private): FindAdjacentFaces 0x00AC9A60, PaintSegments
+ // 0x00AC8540, MeasureSegments 0x00AC9D50, ComputeVertexCost 0x00AC8C80, ComputeContraction 0x00AC92C0, ComputeSelfContraction
+ // 0x00AC7EB0; FableWin.pdb inline ?UniqueToActualIndex@COptimisedPrimitive@QuadricOptimiserInternals@@ABEJKABVCOptimisedFace@2@@Z
+ // (expanded four times in 0x00ACA830: a k < 3 loop on Vertices[face.VertexIndices[k]].UniqueIndex, else -1). Needs the complete
+ // COptimisedVertex / COptimisedFace (engine/QuadricOptimiserTypes.h first). No layout change.
+public:
+ void Initialise(const COptimisationParameters& parameters);                                        // 0x00ACA830
+private:
+ void FindAdjacentFaces();                                                                          // 0x00AC9A60
+ void PaintSegments();                                                                              // 0x00AC8540
+ void MeasureSegments();                                                                            // 0x00AC9D50
+ void ComputeVertexCost(COptimisedVertex& vertex);                                                  // 0x00AC8C80
+ void ComputeContraction(CVertexPairContraction& contraction);                                      // 0x00AC92C0
+ void ComputeSelfContraction(CVertexPairContraction& contraction);                                  // 0x00AC7EB0
+ long UniqueToActualIndex(unsigned long unique_index,const COptimisedFace& face)const{
+  for(unsigned long k=0;k<3;k++){
+   unsigned long index=face.VertexIndices[k];
+   if(Vertices[index].UniqueIndex==unique_index)return index;
+  }
+  return -1;
+ }
+#endif
 };
 }
 #else

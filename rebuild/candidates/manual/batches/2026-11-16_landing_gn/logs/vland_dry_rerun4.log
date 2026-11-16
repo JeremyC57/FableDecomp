@@ -1,0 +1,30 @@
+addr       parity           behav  name
+00ba2350   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00ba2350   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00ba2350   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00ba2350   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00ba2350   WARN RELOC_NAME: ?SetupDepthBufferTransform@CEngineScreenEffectOutlineGlow@@QAEXABVCMatrix3x4@@@Z -> 00b89070 labelled '_global::Nop_ret4_00b89070'
+00ba2350   RELOCATION_MATCH PASS   SetupRenderModeShadersAndConstants
+00a91640   WARN RELOC_NAME: ?GetCount@C3DMeshFileVerticesChunk@@QBEKXZ -> 00aba360 labelled 'CShaderPreParser::GetConstantCount'
+00a91640   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00a91640   WARN RELOC_NAME: ??$GFExplicitNew@VCAnimatedBlock@N3DPrimitive@@@@YIXPAVCAnimatedBlock@N3DPrimitive@@K@Z -> 00a96270 labelled 'GFExplicitNew<N3DPrimitive::CAnimatedBlock>'
+00a91640   WARN RELOC_NAME: ??$__copy@PAV?$CIVCountedPointer@VCTriangleList@N3DPrimitive@@@@PAV1@H@std@@YIPAV?$CIVCountedPointer@VCTriangleList@N3DPrimitive@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00a964c0 labelled '_gapscan::sub_00a964c0'
+00a91640   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CIVCountedPointer@VCTriangleList@N3DPrimitive@@@@@std@@YIXPAV?$CIVCountedPointer@VCTriangleList@N3DPrimitive@@@@0ABU__false_type@0@@Z -> 00a96990 labelled 'std::__destroy_aux<CIVCountedPointer<N3DPrimitive::CTriangleList> *>'
+00a91640   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VC3DClothPrimitive@@@@SIXPAX@Z -> 00a93a60 labelled 'sub_00a93a60'
+00a91640   RELOCATION_MATCH PASS   InitialiseFromMeshFileData
+0090d030   WARN RELOC_NAME: ??$GetPOriginator@VCThingAICreature@@@CMessageEvent@@QBEPAVCThingAICreature@@XZ -> 0090df30 labelled 'CThingHolder_0090df30::GetPThing'
+0090d030   RELOCATION_MATCH PASS   Update
+00439070   WARN RELOC_CONFLICT: ?SetCrimeAsDisplaying@CPlayerGui@@QAEXXZ -> 00437770 here, 004376b0 in landed 00775b40
+00439070   WARN RELOC_NAME: ?SetMoneyAsDisplaying@CPlayerGui@@QAEXXZ -> 004376b0 labelled 'CPlayerGui::SetCrimeAsDisplaying'
+00439070   WARN RELOC_NAME: ?ClearEffects@CDrawHealth@NPlayerGui@@QAEXXZ -> 00644644 labelled '_unattributed::GetTarget_00644644'
+00439070   WARN RELOC_NAME: ?ClearEffects@CDrawStamina@NPlayerGui@@QAEXXZ -> 0064464c labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+00439070   WARN RELOC_NAME: ?ClearEffects@CDrawAbilityButtons@NPlayerGui@@QAEXXZ -> 0064528a labelled '_unattributed::GetTarget_0064528a'
+00439070   WARN RELOC_NAME: ?ClearEffects@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ -> 00645821 labelled '_unattributed::GetTarget_00645821'
+00439070   WARN RELOC_NAME: ??_9@$BA@AE -> 0043e420 labelled 'NPlayerGui::CDrawBase::vcall{0}'
+00439070   RELOCATION_MATCH PASS   DrawPreparePrimitivesForEngine
+
+WINS: 4
+  00ba2350 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::?SetupRenderModeShadersAndConstants@CEnginePrimitiveManagerStaticMeshesBase@@AAE_NW4ERenderPassType@@PBVC3DMeshMaterial@@AAVCEngineSubPrimitiveStaticMesh@@AAVC3DTextureStages@@JPAKPA_N@Z
+  00a91640 RELOCATION_MATCH C3DPrimitive2::?InitialiseFromMeshFileData@C3DPrimitive2@@QAE_NABVC3DMeshFilePrimitiveChunk@@_NKKAAVCScopedMemoryHandle@@@Z
+  0090d030 RELOCATION_MATCH CAIStateGroup_MinionGossip::?Update@CAIStateGroup_MinionGossip@@MAEXXZ
+  00439070 RELOCATION_MATCH CPlayerGui::?DrawPreparePrimitivesForEngine@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z

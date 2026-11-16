@@ -56,6 +56,11 @@ public:
     void Render2DDrawList(bool);                                         // 0x009DA9F0 ?Render2DDrawList@CRenderManager2D@@QAEX_N@Z
     bool Draw2DTexture(const C2DBoxF&,const CUVBox&,const CRGBColour&,CTexture&,unsigned long);
                                                                          // 0x009DC870 ?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCUVBox@@ABVCRGBColour@@AAVCTexture@@K@Z
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_DRAW2DBOXOUTLINE
+    // Opt-in (wfE5, rows 0x00BB0970 / 0x00BAFA00): Ego_r.pdb 00b31dd0 / FableWin.pdb 030e34a0
+    // ?Draw2DBoxOutline@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z, out of line in retail at 0x009DE140 (called on GPRenderManager).
+    bool Draw2DBoxOutline(const C2DBoxF& box, const CRGBColour& colour, unsigned long flags);   // 0x009DE140
+#endif
 #ifdef FABLE_RETAIL_CRENDERMANAGER2D
     // Retail opt-in (chunk 718, row 0x00487570 CPlayer::DrawFreeCamDebug): FableWin.pdb ?Draw2DText@CRenderManager2D@@QAE_NABVC2DVector@@VCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
     // (the landed body 0x009DD8F0, `ret 14h`; the string travels by value, built in its argument slot). A declaration only.
@@ -104,6 +109,11 @@ public:
     //   array parameter (one colour per corner), not a plain pointer: the landed row's `const CRGBColour*` mangles PBV (NAME_FIXES).
     bool Draw2DBoxColours(const C2DBoxF& box, const CRGBColour colours[], unsigned long flags);   // 0x009DDA50
 #endif
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_DRAW3DSCALEDTEXT
+    // Retail opt-in (chunk 829 / wfA2 re-apply, row 0x00435530 CDisplayEngine::DoRender): Ego_r.pdb / FableWin.pdb
+    // ?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z (reloc_bindings 0x009DBFF0).
+    bool Draw3DScaledText(const C3DVector&,float,CWideString,const CFontBank&,const CRGBColour&,unsigned long);   // 0x009DBFF0
+#endif
 #ifdef FABLE_RETAIL_CRENDERMANAGER2D_VIEWPORTBOXFLOAT
     // Retail opt-in (chunk 784, row 0x00BC6DB0 CEnginePrimitiveManagerText::RenderSubPrimitive): the out-of-line viewport box getter
     // 0x00A0AAA0 (`ret`, returns the address of the float viewport box), called on NEngineInternal::GPRenderManager (0x01436E18) there and
@@ -112,5 +122,5 @@ public:
     const C2DBoxF& GetViewportBoxFloat() const;                          // 0x00A0AAA0
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CRenderManager2D) == 0x3ea4);
+FABLE_STATIC_ASSERT_AT(115, sizeof(CRenderManager2D) == 0x3ea4);
 #endif // FABLE_ENGINE_CRENDERMANAGER2D_H

@@ -6,6 +6,10 @@ class C3DTriangle2;
 // Opt-in (Codex pass 22, row 0x00F3E120): complete original signatures; inverse overload-group order is supported
 // by measured VC71 LF_METHODLIST emission, not literal textual source proof.
 // Generated constructors, destructors and assignments stay implicit.
+// Also row 0x00B6EDF0 (acctC wfE6; it defined FABLE_RETAIL_CTRIANGLESTRIPIFIER2 for this class shape, a name chunk 730 already uses for
+// the members below): Fable.exe RTTI CTriangleStripifier2 : CTriangleStripifierBase : CBaseClassNonCopyable : CBaseClass, no data
+// (4 bytes); vtable 0x012A331C: slot 0 ??_G 0x00B7AE00 (no vtable stores, so both destructors are the implicit ones), slot 1 the
+// C3DTriangle2 GenerateTriangleListAndStrip 0x00F3F3A0; the index-array overload is non-virtual (0x00F3EA50; caller 0x00B6EDF0).
 #include "engine/CBaseClassNonCopyable.h"
 class CTriangleStripifierBase : public CBaseClassNonCopyable {
 public:

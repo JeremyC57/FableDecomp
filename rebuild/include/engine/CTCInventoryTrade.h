@@ -250,6 +250,14 @@ public:
     virtual NHeroInformationScreens::EScreenType GetScreenType() const;
     virtual bool IsInventoryScreen() const;
 #endif // FABLE_RETAIL_CTCINVENTORYTRADE_HISCREEN
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_ADDITEMOFTYPE
+// acctC wfE9-8 (rows 0x005A4CDD / 0x005AC10E, which carry the same-TU body of InitialiseBuyableItems 0x005A30A1): Ego_r.pdb /
+// FableWin.pdb ?AddItemOfTypeToInventory@CTCInventoryTrade@@AAE_NJJ@Z (0x0059C6B0, out of line; private, returns bool).
+// Declaration only (no layout change).
+private:
+    bool AddItemOfTypeToInventory(long itemDefIndex, long count);                  // 0x0059C6B0
+public:
+#endif // FABLE_RETAIL_CTCINVENTORYTRADE_ADDITEMOFTYPE
 };
 FABLE_STATIC_ASSERT_AT(251, sizeof(CTCInventoryTrade) == 0x230);
 FABLE_STATIC_ASSERT_AT(252, offsetof(CTCInventoryTrade, NotInStock) == 0x140);

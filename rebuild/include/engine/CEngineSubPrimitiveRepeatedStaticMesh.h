@@ -28,8 +28,9 @@ public:
  CEngineSubPrimitiveMeshBase(CEngineInternalPrimitiveBase*,C3DPrimitive2*,ERenderMode,bool);
 #endif
 
-#ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER
+#if defined(FABLE_RETAIL_PASS22_STATIC_MESH_RENDER) || defined(FABLE_RETAIL_CENGINESUBPRIMITIVEMESHBASE_PUBLICMEMBERS)
 // Both original PDB field lists: MeshPrimitive/RenderMode/IsCloth are public.
+    // Opt-in (wfA5, row 0x00B9AC30): the members public (Ego_r / FableWin have no accessor for them; retail managers read [sub+18h] in place).
 public:
 #else
 protected:
@@ -42,6 +43,11 @@ class CEngineSubPrimitiveRepeatedStaticMesh : public CEngineSubPrimitiveMeshBase
 public:
     CEngineSubPrimitiveRepeatedStaticMesh(CEngineInternalPrimitiveRepeatedStaticMesh* parent, C3DPrimitive2* primitive, ERenderMode mode);   // 0x00B98BC0
     virtual ~CEngineSubPrimitiveRepeatedStaticMesh();
+#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEREPEATEDSTATICMESH_GETPARENT
+    // Opt-in (wfA5, row 0x00B9AC30): FableWin.pdb ?GetParent@CEngineSubPrimitiveRepeatedStaticMesh@@QAEPAVCEngineInternalPrimitiveRepeatedStaticMesh@@XZ
+    // (19 debug bytes, emitted right after RenderSubPrimitive: its first user); inline in retail (`mov edi,[sub+0Ch]`).
+    CEngineInternalPrimitiveRepeatedStaticMesh* GetParent() { return (CEngineInternalPrimitiveRepeatedStaticMesh*)GetParentBase(); }
+#endif
 };
 FABLE_STATIC_ASSERT_AT(25, sizeof(CEngineSubPrimitiveRepeatedStaticMesh) == 0x24);
 #endif

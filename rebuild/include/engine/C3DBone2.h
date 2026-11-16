@@ -23,6 +23,12 @@ public:
     // Opt-in (wfA5, rows 0x00AA0FA0 / 0x00AA2110): FableWin.pdb ?GetNameCRC@C3DBone2@@QBEKXZ (inline in retail: `mov eax,[bone]`).
     unsigned long GetNameCRC() const { return NameCRC; }
 #endif
+#ifdef FABLE_RETAIL_C3DBONE2_CTOR
+    // Retail opt-in (wfE8, row 0x00A8B990 C3DMesh2::InitialiseBones): the inline default constructor that GFExplicitNew<C3DBone2>
+    // (FableWin ??$GFExplicitNew@VC3DBone2@@@@YIXPAVC3DBone2@@K@Z) expands: Parent = -1, OriginalNoChildren = 0, NameCRC and the
+    // matrix untouched (0x00A8BC95 `or edx,-1` ... 0x00A8BC9F `mov [eax-4],edx` ; `mov dword ptr [eax],0`, 0x3C stride).
+    C3DBone2() : Parent(-1), OriginalNoChildren(0) { }
+#endif
     unsigned long NameCRC;                               // +0x00
     long          Parent;                                // +0x04
     long          OriginalNoChildren;                    // +0x08

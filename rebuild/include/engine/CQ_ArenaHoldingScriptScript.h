@@ -84,8 +84,28 @@ private:
     virtual void Main();                                                 // 0x00CF4EC0
 };
 #endif
+#ifdef FABLE_RETAIL_CQ_ARENAHOLDINGSCRIPTSCRIPT_ENTRANCEGUARD
+// wfE1 opt-in (row 0x00CF68C0): Ego_r.pdb CEntranceGuard (32 bytes: CEntityScriptBase 0x14, ParentClass +0x14, PMasterData +0x18,
+// IntroDone +0x1c, DoneArena +0x1d, the bools the landed Init 0x00CF0C10 clears); vtable 0x012C6158 stored by the landed Alloc
+// 0x00CF0B60: 0 scalar deleting dtor 0x00CF0C20, 1 Main 0x00CF68C0, 2 Init 0x00CF0C10, 3 GetParentScript 0x00CF0C00, 4 OnPersist
+// 0x00CF6890. Ego_r.pdb / FableWin.pdb ?Main@CEntranceGuard@CQ_ArenaHoldingScriptScript@NScript@@EAEXXZ (private). Declarations only.
+class CQ_ArenaHoldingScriptScript::CEntranceGuard : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_ArenaHoldingScriptScript&, CScriptDataBase*, const CScriptThing&); // 0x00CF0B60
+    virtual CScriptBase* GetParentScript() const;                        // 0x00CF0C00
+private:
+    virtual void Main();                                                 // 0x00CF68C0
+    virtual void Init();                                                 // 0x00CF0C10
+    virtual void OnPersist(CPersistContext&);                            // 0x00CF6890
+protected:
+    CQ_ArenaHoldingScriptScript& ParentClass;                            // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    bool IntroDone;                                                      // +0x1c
+    bool DoneArena;                                                      // +0x1d
+};
+#endif
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_ArenaHoldingScriptScript) == 0x50);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_ArenaHoldingScriptScript::COakvaleFan) == 0x1c);
+FABLE_STATIC_ASSERT_AT(88, sizeof(NScript::CQ_ArenaHoldingScriptScript) == 0x50);
+FABLE_STATIC_ASSERT_AT(89, sizeof(NScript::CQ_ArenaHoldingScriptScript::COakvaleFan) == 0x1c);
 #endif
 #endif

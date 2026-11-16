@@ -61,21 +61,56 @@ public:
     void SetRegionMinimapThemeLighting(const C2DCoordI& position, float light) { CellAt(position).light = light; }
     void GetWorldCoordinatesFromTGAPosition(C3DVector& world, const C2DCoordI& tga) const
     {
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_WORLDCOORDS_REGIONEXTENTS
+        // wfD4 (row 0x0066CF00): the preamble of the landed sibling GetTGAPositionFromWorldCoordinates 0x0066C880 (GetRegionMapExtents into
+        // two locals, GetRegionMinimapSize()); with WORLDCOORDS_INITIALISE it also compiles out of line to 0x0066C810 byte for byte.
+        C2DCoordI topLeft;
+        C2DExtentsI extents;
+        GetRegionMapExtents(topLeft, extents);
+        long size = GetRegionMinimapSize();
+#else
         C2DCoordI topLeft = RegionMapBox.GetTLPos();
         long size = RegionMinimapSize;
+#endif
         C2DExtentsI squareSize = RegionMapSquare.GetExtents();
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_WORLDCOORDS_PAREN
+        // wfD4 successor 7 (row 0x0066CF00): the INITIALISE text with the X quotient parenthesised. Out of line it is still 0x0066C810 byte
+        // for byte; inline (PopulateRegionMinimap, both sites) the parenthesised float sub-expression keeps VC7.1's no-code PAREN tuple in
+        // the scheduling DAG, which orders the fdiv after the square-extent subtraction as retail does (0x0066CFA3 / 0x0066DA11).
+        world.Initialise(topLeft.X + ((float)tga.X / (float)size) * squareSize.X,
+                         topLeft.Y + (float)tga.Y / (float)size * RegionMapSquare.GetExtents().Y, 0.0f);
+#else
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_WORLDCOORDS_INITIALISE
+        // wfD4 (row 0x0066CF00): the text that compiles out of line to the retail copy 0x0066C810 byte for byte (MATCH, PDB signature):
+        // one C3DVector::Initialise(x, y, z) call (arguments evaluate z, y, x; stores X, Y) instead of three member stores.
+        world.Initialise(topLeft.X + (float)tga.X / (float)size * squareSize.X,
+                         topLeft.Y + (float)tga.Y / (float)size * RegionMapSquare.GetExtents().Y, 0.0f);
+#else
         world.X = topLeft.X + (float)tga.X / (float)size * squareSize.X;
         world.Y = topLeft.Y + (float)tga.Y / (float)size * RegionMapSquare.GetExtents().Y;
         world.Z = 0.0f;
+#endif
+#endif
     }
 
 #ifndef FABLE_RETAIL_CREGIONMINIMAP_TGA_COORDS
     void GetTGAPositionFromWorldCoordinates(const C3DVector& world, C2DCoordI& tga) const
     {
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_TGACOORDS_LANDED_TEXT
+        // wfD4 (row 0x0066CF00): the landed body of the out-of-line copy 0x0066C880 (rebuild/src/compiled/00/66/
+        // CRegionMinimap_GetTGAPositionFromWorldCoordinates_0066c880.cpp), used as the inline text.
+        C2DCoordI regionOrigin;
+        C2DExtentsI regionExtents;
+        GetRegionMapExtents(regionOrigin, regionExtents);
+        long minimapPixelSize = GetRegionMinimapSize();
+        tga.X = (long)((world.X - regionOrigin.X) / RegionMapSquare.GetExtents().X * minimapPixelSize);
+        tga.Y = (long)((world.Y - regionOrigin.Y) / RegionMapSquare.GetExtents().Y * minimapPixelSize);
+#else
         C2DCoordI topLeft = RegionMapBox.GetTLPos();
         long size = RegionMinimapSize;
         tga.X = (long)((world.X - topLeft.X) / RegionMapSquare.GetExtents().X * size);
         tga.Y = (long)((world.Y - topLeft.Y) / RegionMapSquare.GetExtents().Y * size);
+#endif
     }
 #endif
     const CGameDefinitionManager& PeekDefinitionManager() const { return CMainGameComponent::Get()->PeekDefinitionManager(); }
@@ -115,29 +150,29 @@ struct CRegionMinimap {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CRegionMinimap) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapSize) == 0x0);
+FABLE_STATIC_ASSERT_AT(118, sizeof(CRegionMinimap) == 0x64);
+FABLE_STATIC_ASSERT_AT(119, offsetof(CRegionMinimap, RegionMinimapSize) == 0x0);
 #ifndef FABLE_RETAIL_CREGIONMINIMAP
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox_TLX) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox_TLY) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox_BRX) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox_BRY) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_TLX) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_TLY) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_BRX) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_BRY) == 0x20);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CRegionMinimap, RegionMapBox_TLX) == 0x4);
+FABLE_STATIC_ASSERT_AT(122, offsetof(CRegionMinimap, RegionMapBox_TLY) == 0x8);
+FABLE_STATIC_ASSERT_AT(123, offsetof(CRegionMinimap, RegionMapBox_BRX) == 0xc);
+FABLE_STATIC_ASSERT_AT(124, offsetof(CRegionMinimap, RegionMapBox_BRY) == 0x10);
+FABLE_STATIC_ASSERT_AT(125, offsetof(CRegionMinimap, RegionMapSquare_TLX) == 0x14);
+FABLE_STATIC_ASSERT_AT(126, offsetof(CRegionMinimap, RegionMapSquare_TLY) == 0x18);
+FABLE_STATIC_ASSERT_AT(127, offsetof(CRegionMinimap, RegionMapSquare_BRX) == 0x1c);
+FABLE_STATIC_ASSERT_AT(128, offsetof(CRegionMinimap, RegionMapSquare_BRY) == 0x20);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapSurface) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapTexture) == 0x34);
+FABLE_STATIC_ASSERT_AT(130, offsetof(CRegionMinimap, RegionMinimapSurface) == 0x24);
+FABLE_STATIC_ASSERT_AT(131, offsetof(CRegionMinimap, RegionMinimapTexture) == 0x34);
 #ifdef FABLE_RETAIL_CREGIONMINIMAP_ILLUMINATION
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection) == 0x3c);
+FABLE_STATIC_ASSERT_AT(133, offsetof(CRegionMinimap, IlluminationDirection) == 0x3c);
 #else
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection_X) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection_Y) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection_Z) == 0x44);
+FABLE_STATIC_ASSERT_AT(135, offsetof(CRegionMinimap, IlluminationDirection_X) == 0x3c);
+FABLE_STATIC_ASSERT_AT(136, offsetof(CRegionMinimap, IlluminationDirection_Y) == 0x40);
+FABLE_STATIC_ASSERT_AT(137, offsetof(CRegionMinimap, IlluminationDirection_Z) == 0x44);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapCellList) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, MaxRegionMinimapThemeColours) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapThemeColour) == 0x58);
+FABLE_STATIC_ASSERT_AT(139, offsetof(CRegionMinimap, RegionMinimapCellList) == 0x48);
+FABLE_STATIC_ASSERT_AT(140, offsetof(CRegionMinimap, MaxRegionMinimapThemeColours) == 0x54);
+FABLE_STATIC_ASSERT_AT(141, offsetof(CRegionMinimap, RegionMinimapThemeColour) == 0x58);
 
 #endif // FABLE_ENGINE_CREGIONMINIMAP_H

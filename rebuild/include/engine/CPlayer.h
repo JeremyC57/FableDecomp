@@ -130,6 +130,12 @@ class CPlayer : public CInitBaseClass {
 class CPlayer {
 #endif
 public:
+#ifdef FABLE_RETAIL_CPLAYER_RESPAWNDELAY
+    // Opt-in (chunk 2056 scout, row 0x0048E78E CSubtitleRenderer::DrawButtonGraphics): FableWin.pdb ?GetPlayerRespawnDelay@CPlayer@@QBEJXZ
+    // (0x01A671D5, 15 bytes / 8 instructions at /Od = a plain member read), inline in retail (0x0048EE9C..0x0048EEA1: GetMainPlayer
+    // 0x00449970 then `cmp dword ptr [eax+3Ch],0` on PlayerRespawnDelay +0x3C, Ego_r.pdb long). Member function only: no layout change.
+    long GetPlayerRespawnDelay() const { return PlayerRespawnDelay; }
+#endif
 #ifdef FABLE_RETAIL_PLAYER
     // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): the base is RTTI's (.?AVCPlayer@@ : CInitBaseClass@0 :
     // CBaseClass@0, ghidra_out/rtti_bases.tsv), replacing the flattened vptr / +0x04 bytes of the default branch (same offsets:
@@ -225,6 +231,12 @@ public:
     const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
     // Retail opt-in (chunk 718): Ego_r.pdb / FableWin.pdb ?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z (retail 0x00487570).
     void DrawFreeCamDebug(const C2DBoxF* box, const CFontBank& font) const;   // 0x00487570
+#ifdef FABLE_RETAIL_CPLAYER_ISDRAWINGFREECAMDEBUG
+    // Opt-in (wfA2, row 0x00435530 CDisplayEngine::DoRender): FableWin.pdb ?IsDrawingFreeCamDebug@CPlayer@@QBE_NXZ (0x01ADDB30, in the
+    // DoRender TU's inline run; no Ego_r.pdb copy), inline in retail: DoRender tests the byte +0x08 in place (`mov al,[ebx+8] ; test al,al`,
+    // 0x00435795). Member function only: no layout change.
+    bool IsDrawingFreeCamDebug() const { return DrawingFreeCamDebug; }
+#endif
     // Retail opt-in (chunk 728, row 0x0074B770): FableWin.pdb ?GetPPlayerCharacter@CPlayer@@QBEPAVCThingPlayerCreature@@XZ (0x01A5B1A0),
     // absent from Ego_r.pdb and inline in retail (`lea ecx,[eax+34h] ; call GetPItem 0x00A01B50` after PeekMyPlayer 0x0049D9D0).
     // The body needs CThingPlayerCreature complete: engine/CThingPlayerCreature.h defines it (the CThing::PeekBaseDef pattern).

@@ -13,6 +13,20 @@ enum EBlackjackWinStates;                                                // MS f
 class CTCTavernGameCardBlackjack : public CTCTavernGameCardBase {
 public:
     virtual void NewRound();                                             // 32 0x007DB2E0
+#ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBLACKJACK_CARDSMAINGAME
+    // Retail opt-in (agentC42, row 0x007DB6A0 CardsMainGame): the slot-56 override and the members it uses (Ego_r.pdb / FableWin.pdb
+    // names; addresses = the landed rows / reloc bindings). HasGoneBust (landed 0x007DA8B0) and CardsFaceDown
+    // (?CardsFaceDown@CTCTavernGameCardBlackjack@@QAE_NXZ, no retail out-of-line copy) are defined by the row's TU text.
+    virtual void CardsMainGame();                                        // 56 0x007DB6A0
+    void Split();                                                        // 0x007DB5C0
+    void DealCard();                                                     // 0x007DAEF0
+    bool CanSplit();                                                     // 0x007DA1A0
+    long GetHandValue(std::vector<CCard*>* cards, bool includeFaceDown); // 0x007DA230
+    bool HasPlayerWonHand();                                             // 0x007DA900
+    bool HasPlayerDrawnHand();                                           // 0x007DA9B0
+    bool HasGoneBust();                                                  // 0x007DA8B0
+    bool CardsFaceDown();
+#endif
     std::vector<CCard*>               DealersCards;                      // +0x318
     std::vector<std::vector<CCard*> > PlayersCards;                      // +0x324
     std::vector<long>                 Bets;                              // +0x330
@@ -34,8 +48,8 @@ public:
     long                              NumHandsWonThisRound;              // +0x370
     bool                              Doubled;                           // +0x374
 };
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCardBlackjack, DealersCards) == 0x318);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCardBlackjack, CurrentPackCardIndex) == 0x35c);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCardBlackjack, Doubled) == 0x374);
-FABLE_STATIC_ASSERT(sizeof(CTCTavernGameCardBlackjack) == 0x378);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CTCTavernGameCardBlackjack, DealersCards) == 0x318);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CTCTavernGameCardBlackjack, CurrentPackCardIndex) == 0x35c);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CTCTavernGameCardBlackjack, Doubled) == 0x374);
+FABLE_STATIC_ASSERT_AT(40, sizeof(CTCTavernGameCardBlackjack) == 0x378);
 #endif

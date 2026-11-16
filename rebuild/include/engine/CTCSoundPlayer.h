@@ -25,7 +25,20 @@ public:
 #ifdef FABLE_RETAIL_CTCUNHOLYPOWER_CANCELFORCUTSCENE
     void StopAttachedSound(unsigned long); // Both original PDBs; native0066add0.
 #endif
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_ATTACHEDDIALOGUE
+    // Retail opt-in (wfA1, row 0x006D0830 CTCWife::GlobalUpdate): Ego_r.pdb ?IsAttachedSoundPlaying@CTCSoundPlayer@@QBE_NK@Z (0x00574400;
+    // retail 0x0066AE10, reloc_bindings) and ?PlayAttachedDialogue@CTCSoundPlayer@@QAEKABVCCharString@@_N111@Z (0x00575000; retail
+    // 0x0066BED0: `push 1 ; push 0 ; push 0 ; push 0 ; push &def+0xC4 (CCharString) ; mov ecx,player ; call`, 0x006D0D8A). Declarations only.
+    bool IsAttachedSoundPlaying(unsigned long sample_id) const;          // 0x0066AE10
+    unsigned long PlayAttachedDialogue(const CCharString& group, bool b0, bool b1, bool b2, bool b3);   // 0x0066BED0
+#endif
     unsigned long PlayAttachedCriteria(const CCharString&,bool,bool,bool,long);
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYUNATTACHEDCRITERIA
+    // agent wfE10 (row 0x007A1B20): Ego_r.pdb / FableWin.pdb ?PlayUnattachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@ABVC3DVector@@_N2@Z,
+    // out of line in retail at 0x0066BDF0 (reloc_bindings). Declaration only; include engine/C3DVector.h first. Also wfE11, row 0x004A3740
+    // CWorld::UpdateRegionLoad (called 0x004A595F with "BIG_DOOR_SLAM_SHUT", the hero's position, false, false).
+    unsigned long PlayUnattachedCriteria(const CCharString& criteria, const C3DVector& position, bool loop, bool p3);   // 0x0066BDF0
+#endif
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_RELEASELOOPINGSOUND
     // Nested opt-in (chunk Q25, row 0x00847520): Ego_r.pdb / FableWin.pdb ?ReleaseAttachedLoopingSound@CTCSoundPlayer@@QAEXK@Z, out of
     // line in retail at 0x0066AD90. Declaration only.
@@ -48,6 +61,11 @@ public:
     // Declarations only.
     unsigned long PlayAttachedSample(class CASoundBank& bank, const class CSoundPair& sound, const class CSoundInit& init, bool, bool, bool);   // 0x0066B300
     void SetSpecificSamplePitch(unsigned long sampleID, float pitch);   // 0x0066AFA0
+#endif
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_SETSPECIFICSAMPLEVOLUME
+    // Overlay opt-in (wfD4, row 0x006D1E30): Ego_r.pdb 0x00574450 ?SetSpecificSampleVolume@CTCSoundPlayer@@QAEXKM@Z, out of line in retail at
+    // 0x0066AFF0 (reloc_bindings; the SetSpecificSamplePitch 0x0066AFA0 twin). Declaration only.
+    void SetSpecificSampleVolume(unsigned long sampleID, float volume);  // 0x0066AFF0
 #endif
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_VOICENAME
     // Opt-in (chunk 765, row 0x0066A9D0): Ego_r.pdb / FableWin.pdb ?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z (VoiceName +0x14).
@@ -89,5 +107,5 @@ public:
 public:
 #endif // FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS3
 };
-FABLE_STATIC_ASSERT(sizeof(CTCSoundPlayer)==36);
+FABLE_STATIC_ASSERT_AT(92, sizeof(CTCSoundPlayer)==36);
 #endif

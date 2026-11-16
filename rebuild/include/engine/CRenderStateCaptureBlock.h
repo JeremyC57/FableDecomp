@@ -10,6 +10,9 @@
 #endif
 #include "rebuild_abi.h"
 #include "engine/CRenderStateManager.h"
+#ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
+#include "fable_compiler.h"
+#endif
 class CRenderStateScopedCaptureBlock;
 #ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE
 // Opt-in (chunk 2048): the retail-era inline bodies (Ego_r.pdb has no out-of-line CRenderStateCaptureBlock function; FableWin.pdb
@@ -81,7 +84,14 @@ private:
 };
 class CRenderStateScopedCaptureBlock {
 public:
+#ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
+    // Retail opt-in (wfA6b, row 0x00BA6240): the same constructor force-inlined. No out-of-line ??0CRenderStateScopedCaptureBlock
+    // exists in retail (reloc_bindings) or Ego_r.pdb; retail expands StartCaptureBlock at 0x00BA62A6..0x00BA62CF, plain inline is
+    // called out of line by VC7.1 in that 2.9 KB caller. Needs fable_compiler.h (FABLE_FORCEINLINE).
+    FABLE_FORCEINLINE CRenderStateScopedCaptureBlock() { CRenderStateCaptureBlock::StateManager->StartCaptureBlock(this); }
+#else
     CRenderStateScopedCaptureBlock() { CRenderStateCaptureBlock::StateManager->StartCaptureBlock(this); }
+#endif
     ~CRenderStateScopedCaptureBlock() { CRenderStateCaptureBlock::StateManager->RestoreCaptureBlock(); }
 };
 #endif

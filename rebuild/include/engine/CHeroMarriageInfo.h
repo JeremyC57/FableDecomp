@@ -8,21 +8,44 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CHEROMARRIAGEINFO_STATE
+enum EMarriageState;                                         // MS forward enum (the row defines the enumerators it uses)
+#endif
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CHEROMARRIAGEINFO_CTOR
+enum EMarriageState;                                         // MS forward enum
+#endif
 class CHeroMarriageInfo {
 public:
+#ifdef FABLE_RETAIL_CHEROMARRIAGEINFO_CTOR
+    // Retail opt-in (acctC wfA1, row 0x00682810): FableWin ??0CHeroMarriageInfo@@QAE@XZ (FableWin.exe.signatures.tsv), inline in
+    // retail (0x0068301A..0x0068302E: the four UID dwords, State and the GayMarriage byte zeroed in member order); State typed
+    // EMarriageState (the row compares it with 5, 0x00683049). Same layout.
+    CHeroMarriageInfo() : WifeUID(0), MaritalHomeUID(0), State((EMarriageState)0), GayMarriage(false) { }
+#endif
     unsigned __int64 WifeUID;                                // +0x00
     unsigned __int64 MaritalHomeUID;                         // +0x08
+#if defined(FABLE_RETAIL_CHEROMARRIAGEINFO_CTOR) || defined(FABLE_RETAIL_CHEROMARRIAGEINFO_STATE)
+    // Overlay opt-in (wfD4, row 0x006D1E30 CTCWife::FrameUpdate): State typed as its Ego_r.pdb type EMarriageState (same 4 bytes; the
+    // row compares it with 4 after PeekMarriageInfo, `cmp [esp+..],4`).
+    EMarriageState   State;                                  // +0x10
+#else
     unsigned char    State[0x4];                             // +0x10 EMarriageState
+#endif
     bool             GayMarriage;                            // +0x14
     unsigned char    _pad_0x15[0x3];                         // +0x15
+#if defined(FABLE_RETAIL_CHEROMARRIAGEINFO_DEFAULT_CTOR) && defined(FABLE_RETAIL_CHEROMARRIAGEINFO_STATE)
+    // Overlay opt-in (wfD4 s6, row 0x006D1E30): FableWin.pdb ??0CHeroMarriageInfo@@QAE@XZ (inline in retail: xor eax,eax + five dword stores
+    // and a byte store at 0x006D268E before PeekMarriageInfo); member-wise zero as the landed models (0x005813D7, 0x0057F9E9, 0x00986510).
+    CHeroMarriageInfo() : WifeUID(0), MaritalHomeUID(0), State((EMarriageState)0), GayMarriage(false) {}
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CHeroMarriageInfo) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageInfo, WifeUID) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageInfo, MaritalHomeUID) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageInfo, State) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageInfo, GayMarriage) == 0x14);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CHeroMarriageInfo) == 0x18);
+FABLE_STATIC_ASSERT_AT(23, offsetof(CHeroMarriageInfo, WifeUID) == 0x0);
+FABLE_STATIC_ASSERT_AT(24, offsetof(CHeroMarriageInfo, MaritalHomeUID) == 0x8);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CHeroMarriageInfo, State) == 0x10);
+FABLE_STATIC_ASSERT_AT(26, offsetof(CHeroMarriageInfo, GayMarriage) == 0x14);
 
 #endif // FABLE_ENGINE_CHEROMARRIAGEINFO_H

@@ -27,6 +27,9 @@ public:
     const C3DTriangle2& PeekTriangle(unsigned long index) const { return TriangleList[index]; }
 #endif
     CArray<C3DTriangle2> TriangleList;              // +0x2C
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+    static const char* FABLE_FASTCALL GetStaticChunkType() { return "TRIS"; }   // FableWin ?GetStaticChunkType@C3DMeshFileTrianglesChunk@@SIPBDXZ
+#endif
 };
 FABLE_STATIC_ASSERT_AT(26, sizeof(C3DMeshFileTrianglesChunk) == 0x38);
 #endif // FABLE_ENGINE_C3DMESHFILETRIANGLESCHUNK_H

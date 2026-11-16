@@ -56,7 +56,7 @@ public:
     CCPPointerInfo(unsigned long refCount, void (FABLE_FASTCALL* deleteFunc)(void*), void* data)
         : RefCount(refCount), DeleteFunc(deleteFunc), Data(data) { }     // FableWin.pdb ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
 };
-FABLE_STATIC_ASSERT_AT(59, sizeof(CCPPointerInfo) == 0xc);
+FABLE_STATIC_ASSERT(sizeof(CCPPointerInfo) == 0xc);
 
 #ifdef FABLE_RETAIL_CCOUNTEDPOINTER_ORIGINAL_COMPLETE_MEMBERS_PASS22
 // All real instantiated member signatures from both PDB23-member records.

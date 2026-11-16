@@ -28,6 +28,16 @@ class CTexture;
 // Retail opt-in (chunk 2018, row 0x00B2B180 CEngineSurfaceCompositionManager::RenderToTexture): Ego_r.pdb CGraphicFrameData (0x1B bytes,
 // packed; the FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS model above, PTexture +0x08) with FableWin.pdb ?GetTexture@CGraphicFrameData@@QBEPAVCTexture@@XZ
 // and ?GetTexture@CGraphicFrame@@QBEPAVCTexture@@XZ, inline in retail (0x00B2B47B..0x00B2B486: `mov ecx,[frame] ; mov ecx,[ecx+8]`).
+#ifdef FABLE_RETAIL_CGRAPHICFRAMEDATA_TEXTUREQUADUVS
+// Nested opt-in (wfE5, rows 0x00BB0970 RenderSpritePrim / 0x00BAFA00 RenderClockPrim): the out-of-line
+// ?GetTextureQuadUVs@CGraphicFrameData@@QBE?AUCTextureQuadUVs@@XZ (retail 0x009FC810, landed; hidden 32-byte result: U[4] then V[4],
+// rebuild/oracles/reloc_bindings.tsv) and the inline FableWin.pdb ?GetWidth@CGraphicFrameData@@QBEKXZ / ?GetHeight@CGraphicFrameData@@QBEKXZ
+// (02d122a0 / 02d125a0; the rows read Width +0x14 / Height +0x16 with movzx in place, 0x00BB0C65 / 0x00BB0C86). No layout change.
+struct CTextureQuadUVs {
+    float U[4];                                              // TL, TR, BR, BL
+    float V[4];
+};
+#endif
 #pragma pack(push, 1)
 class CGraphicFrameData {
 public:
@@ -36,6 +46,11 @@ public:
     CTexture* GetTexture() const { return PTexture.Get(); }
 #else
     CTexture* GetTexture() const { return PTexture.Data; }
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICFRAMEDATA_TEXTUREQUADUVS
+    CTextureQuadUVs GetTextureQuadUVs() const;               // 0x009FC810
+    unsigned long GetWidth() const { return Width; }
+    unsigned long GetHeight() const { return Height; }
 #endif
 #ifdef FABLE_RETAIL_CGRAPHICFRAME_FLOATTL
     // Opt-in (row 0x00BBF4A0): FableWin.pdb ?GetFloatTLX@CGraphicFrameData@@QBEMXZ / ?GetFloatTLY@..@@QBEMXZ (the 16-bit texel offset scaled
@@ -87,6 +102,10 @@ class CGraphicFrame {
 public:
 #ifdef FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE
     CTexture* GetTexture() const { return FrameData->GetTexture(); }
+#ifdef FABLE_RETAIL_CGRAPHICFRAMEDATA_TEXTUREQUADUVS
+    unsigned long GetWidth() const { return FrameData->GetWidth(); }      // FableWin.pdb ?GetWidth@CGraphicFrame@@QBEKXZ (02d120f0)
+    unsigned long GetHeight() const { return FrameData->GetHeight(); }    // FableWin.pdb ?GetHeight@CGraphicFrame@@QBEKXZ (02d123f0)
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICFRAME_FLOATTL
     // FableWin.pdb ?GetFloatTLX@CGraphicFrame@@QBEMXZ / ?GetFloatTLY@CGraphicFrame@@QBEMXZ.
     float GetFloatTLX() const { return FrameData->GetFloatTLX(); }

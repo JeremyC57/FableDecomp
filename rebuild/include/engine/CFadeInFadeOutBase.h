@@ -7,7 +7,7 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
-#ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_OPEN
+#if defined(FABLE_RETAIL_CFADEINFADEOUTBASE_OPEN) || defined(FABLE_RETAIL_CFADEINFADEOUTBASE_FADE)   // (FADE: wfA2 re-base of the chunk 2056 opt-in, row 0x0048E78E)
 #include "engine/CRGBColour.h"
 #endif
 
@@ -41,6 +41,8 @@ public:
     void Update(float time_delta);                           // 0x00434870
     bool IsOpen() const { return Active && !Opening && !Closing; }
     void Close() { Opening = false; Closing = true; }
+#elif defined(FABLE_RETAIL_CFADEINFADEOUTBASE_FADE)
+    CRGBColour    ToColour;                                  // +0x18 (Ego_r.pdb type)
 #else
     unsigned char ToColour[0x4];                             // +0x18 CRGBColour
 #endif
@@ -59,6 +61,67 @@ public:
     float GetFadeInOutAlpha() const;
     void Close() { Opening = false; Closing = true; }
 #endif
+#ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_FADE
+    // Ego_r.pdb / FableWin.pdb ?Open@CFadeInFadeOutBase@@QAEXMMVCRGBColour@@@Z (retail COMDAT 0x00434840, landed).
+    void Open(float fade_in_time, float fade_out_time, CRGBColour to_colour)
+    {
+        Active = true;
+        FadeInTime = fade_in_time;
+        FadeOutTime = fade_out_time;
+        Opening = true;
+        Closing = false;
+        OpenTimer = 0.0f;
+        CloseTimer = fade_out_time;
+        ToColour = to_colour;
+    }
+    // FableWin.pdb ?Close@CFadeInFadeOutBase@@QAEXXZ (0x01A65180), expanded in retail (0x0048E828: Opening = 0 then Closing = 1).
+    void Close() { Opening = false; Closing = true; }
+    // Ego_r.pdb / FableWin.pdb ?Update@CFadeInFadeOutBase@@QAEXM@Z (retail COMDAT 0x00434870, landed).
+    void Update(float time_delta)
+    {
+        if (Opening) {
+            OpenTimer += time_delta;
+            if (OpenTimer >= FadeInTime) Opening = false;
+        } else if (Closing) {
+            CloseTimer -= time_delta;
+            if (CloseTimer <= 0.0f) {
+                if (CloseTimer < 0.0f) CloseTimer = 0.0f;
+                Active = false;
+                Closing = false;
+                Opening = false;
+            }
+        }
+    }
+    // Ego_r.pdb / FableWin.pdb ?GetFadeInOutAlpha@CFadeInFadeOutBase@@QBEMXZ (retail COMDAT 0x004348D0, landed).
+    float GetFadeInOutAlpha() const
+    {
+        if (Opening) {
+            if (FadeInTime < DELTA_NOTIONAL_ZERO) return 1.0f;
+            return OpenTimer / FadeInTime;
+        }
+        if (Closing) {
+            if (FadeOutTime < DELTA_NOTIONAL_ZERO) return 1.0f;
+            return CloseTimer / FadeOutTime;
+        }
+        if (Active) return 1.0f;
+        return 0.0f;
+    }
+    // Ego_r.pdb / FableWin.pdb ?IsOpen@CFadeInFadeOutBase@@QBE_NXZ (retail COMDAT 0x0048DA30 in the subtitle TU, landed: Active, then
+    // Opening, then Closing tested; `mov eax,1` / `xor eax,eax` result).
+#ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_ISOPEN_OUTOFLINE
+    // Nested opt-in (chunk 2056, row 0x0048E78E): declaration only. Retail calls the COMDAT copy 0x0048DA30 at every one of its ten
+    // sites (xref: 0x0048E81F, 0x006441B5, 0x006489D9, 0x0064A6BC, 0x0064D133, 0x0064E08C, 0x00654005, 0x00787C1E, 0x007885D0,
+    // 0x00788858) and never expands it; with the body visible VC7.1 expands it in the row (two byte tests), so the row declares it.
+    bool IsOpen() const;                                                 // 0x0048DA30
+#else
+    bool IsOpen() const { return Active && !Opening && !Closing; }
+#endif
+#endif
+#ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_ISCLOSING
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?IsClosing@CFadeInFadeOutBase@@QBE_NXZ, inline in retail (the
+    // byte Closing +0x0C tested in place: `mov al,[esi+0C8h]` on the display engine's ScreenFadeOutInfo +0xBC, 0x004A477E). No layout change.
+    bool IsClosing() const { return Closing; }
+#endif // FABLE_RETAIL_CFADEINFADEOUTBASE_ISCLOSING
 };
 #pragma pack(pop)
 

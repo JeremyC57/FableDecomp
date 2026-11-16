@@ -18,8 +18,11 @@ public:
     virtual CChunkedFileChunk* CreateNewInstance() const;
     unsigned long BonesPerBlock;          // +0x2C
     unsigned long BonesPerVertex;         // +0x30
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+    static const char* FABLE_FASTCALL GetStaticChunkType() { return "XAPR"; }   // FableWin ?GetStaticChunkType@C3DMeshFileXAnimatedPrimitiveChunk@@SIPBDXZ
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXAnimatedPrimitiveChunk) == 0x34);
+FABLE_STATIC_ASSERT_AT(22, sizeof(C3DMeshFileXAnimatedPrimitiveChunk) == 0x34);
 #endif // FABLE_ENGINE_C3DMESHFILEXANIMATEDPRIMITIVECHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILEXANIMATEDPRIMITIVECHUNK_H
@@ -47,10 +50,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXAnimatedPrimitiveChunk) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXAnimatedPrimitiveChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXAnimatedPrimitiveChunk, BonesPerBlock) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXAnimatedPrimitiveChunk, BonesPerVertex) == 0x30);
+FABLE_STATIC_ASSERT_AT(50, sizeof(C3DMeshFileXAnimatedPrimitiveChunk) == 0x34);
+FABLE_STATIC_ASSERT_AT(51, offsetof(C3DMeshFileXAnimatedPrimitiveChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(52, offsetof(C3DMeshFileXAnimatedPrimitiveChunk, BonesPerBlock) == 0x2c);
+FABLE_STATIC_ASSERT_AT(53, offsetof(C3DMeshFileXAnimatedPrimitiveChunk, BonesPerVertex) == 0x30);
 
 #endif // FABLE_ENGINE_C3DMESHFILEXANIMATEDPRIMITIVECHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILEXANIMATEDPRIMITIVECHUNK

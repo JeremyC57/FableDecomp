@@ -37,6 +37,16 @@ protected:
     // (protected; retail 0x00B905A0, manifest label agrees). Declaration only.
     void PrepareOcclusionTest(CEngineInternalPrimitiveOcclusionBase& primitive, ERenderPassType pass, unsigned long& query);   // 0x00B905A0
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_PREPARETEST
+    // Opt-in (wfA5, row 0x00B9AC30): Ego_r.pdb ?PrepareOcclusionTest@CEnginePrimitiveManagerOcclusionBase@@IAEXAAVCEngineInternalPrimitiveOcclusionBase@@
+    // W4ERenderPassType@@AAK@Z (protected; retail 0x00B905A0, not landed). Declaration only.
+protected:
+#if !defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_OCCLUSIONTEST) && !defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_PREPAREOCCLUSIONTEST)
+    // (those opt-ins declare it)
+    void PrepareOcclusionTest(class CEngineInternalPrimitiveOcclusionBase& primitive, enum ERenderPassType pass, unsigned long& handle);   // 0x00B905A0
+#endif
+public:
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_RENDERUNTEXTURED
     // Retail opt-in (wf8, row 0x00B903D0): Ego_r.pdb / FableWin.pdb
     // ?RenderUntexturedStaticMeshPrimitive@CEnginePrimitiveManagerOcclusionBase@@AAEXPAVC3DPrimitive2@@ABVCMatrix3x4@@@Z (private).

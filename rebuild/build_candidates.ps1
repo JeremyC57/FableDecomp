@@ -397672,6 +397672,431 @@ $catalog = @(
         TestSource = '00/70/CThingObject_GetAlpha_00702e00_test.cpp'
         PassPattern = '00702e00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ba2350'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_SetupRenderModeShadersAndConstants_00ba2350.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_SetupRenderModeShadersAndConstants_00ba2350_test.cpp'
+        PassPattern = '00ba2350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b783f0'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_Render_00b783f0.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_Render_00b783f0_test.cpp'
+        PassPattern = '00b783f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b89c30'
+        Module = 'CEngineScreenEffectOutlineGlow'
+        Source = '00/b8/CEngineScreenEffectOutlineGlow_ApplyOutline_00b89c30.cpp'
+        TestSource = '00/b8/CEngineScreenEffectOutlineGlow_ApplyOutline_00b89c30_test.cpp'
+        PassPattern = '00b89c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a91640'
+        Module = 'C3DPrimitive2'
+        Source = '00/a9/C3DPrimitive2_InitialiseFromMeshFileData_00a91640.cpp'
+        TestSource = '00/a9/C3DPrimitive2_InitialiseFromMeshFileData_00a91640_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT106'
+        PassPattern = '00a91640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8b780'
+        Module = 'CEngineBillboardGenerator'
+        Source = '00/b8/CEngineBillboardGenerator_RenderBillboard_00b8b780.cpp'
+        TestSource = '00/b8/CEngineBillboardGenerator_RenderBillboard_00b8b780_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00b8b780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba5260'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_RenderMeshPrimitive_00ba5260.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_RenderMeshPrimitive_00ba5260_test.cpp'
+        PassPattern = '00ba5260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048e78e'
+        Module = 'CSubtitleRenderer'
+        Source = '00/48/CSubtitleRenderer_DrawButtonGraphics_0048e78e.cpp'
+        TestSource = '00/48/CSubtitleRenderer_DrawButtonGraphics_0048e78e_test.cpp'
+        PassPattern = '0048e78e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4b5b0'
+        Module = 'NScript::CV_BanditTollScript::CTollBandit'
+        Source = '00/e4/NScriptCVBanditTollScriptCTollBandit_Main_00e4b5b0.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCTollBandit_Main_00e4b5b0_test.cpp'
+        PassPattern = '00e4b5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d973d0'
+        Module = 'NScript::CQ_HobbeCaveScript::CBanditSacrifice'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Main_00d973d0.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Main_00d973d0_test.cpp'
+        PassPattern = '00d973d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00603000'
+        Module = 'CTCInventoryMap'
+        Source = '00/60/CTCInventoryMap_CreateMiniMapMarkers_00603000.cpp'
+        TestSource = '00/60/CTCInventoryMap_CreateMiniMapMarkers_00603000_test.cpp'
+        PassPattern = '00603000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b10b10'
+        Module = 'NParticleEngine::CPSCEmitterGeneric'
+        Source = '00/b1/NParticleEngineCPSCEmitterGeneric_GenerateParticle_00b10b10.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCEmitterGeneric_GenerateParticle_00b10b10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT158'
+        PassPattern = '00b10b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf68c0'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard_Main_00cf68c0.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard_Main_00cf68c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15 /d2inlT69'
+        PassPattern = '00cf68c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00507c30'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_LoadFromFile_00507c30.cpp'
+        TestSource = '00/50/CWorldMap_LoadFromFile_00507c30_test.cpp'
+        PassPattern = '00507c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d13580'
+        Module = 'NScript::CQ_BountyHuntScript'
+        Source = '00/d1/NScriptCQBountyHuntScript_Main_00d13580.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScript_Main_00d13580_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00d13580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b03ca0'
+        Module = 'NParticleEngine::CPSCRenderMesh'
+        Source = '00/b0/NParticleEngineCPSCRenderMesh_PreparePrimitives_00b03ca0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCRenderMesh_PreparePrimitives_00b03ca0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT1537 /d2inlS15'
+        PassPattern = '00b03ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df6010'
+        Module = 'NScript::CQ_TraderConflictEvilScript'
+        Source = '00/df/NScriptCQTraderConflictEvilScript_Main_00df6010.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScript_Main_00df6010_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT72'
+        PassPattern = '00df6010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a1b20'
+        Module = 'CTCWillLightning::CLightningBeam'
+        Source = '00/7a/CTCWillLightningCLightningBeam_FrameUpdate_007a1b20.cpp'
+        TestSource = '00/7a/CTCWillLightningCLightningBeam_FrameUpdate_007a1b20_test.cpp'
+        PassPattern = '007a1b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a8b990'
+        Module = 'C3DMesh2'
+        Source = '00/a8/C3DMesh2_InitialiseBones_00a8b990.cpp'
+        TestSource = '00/a8/C3DMesh2_InitialiseBones_00a8b990_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a8b990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d75060'
+        Module = 'NScript::CQ_HangingTreeGoodScript'
+        Source = '00/d7/NScriptCQHangingTreeGoodScript_FinalRound_00d75060.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScript_FinalRound_00d75060_test.cpp'
+        PassPattern = '00d75060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bafa00'
+        Module = 'CEnginePrimitiveManager2DSprites'
+        Source = '00/ba/CEnginePrimitiveManager2DSprites_RenderClockPrim_00bafa00.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManager2DSprites_RenderClockPrim_00bafa00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS18'
+        PassPattern = '00bafa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b01900'
+        Module = 'NParticleEngine::CPSCRenderMesh'
+        Source = '00/b0/NParticleEngineCPSCRenderMesh_AddToBoundingSphere_00b01900.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCRenderMesh_AddToBoundingSphere_00b01900_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT332'
+        PassPattern = '00b01900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bca950'
+        Module = 'CEnginePrimitiveManagerSpriteTrails'
+        Source = '00/bc/CEnginePrimitiveManagerSpriteTrails_RenderSpriteTrail_00bca950.cpp'
+        TestSource = '00/bc/CEnginePrimitiveManagerSpriteTrails_RenderSpriteTrail_00bca950_test.cpp'
+        PassPattern = '00bca950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090d030'
+        Module = 'CAIStateGroup_MinionGossip'
+        Source = '00/90/CAIStateGroupMinionGossip_Update_0090d030.cpp'
+        TestSource = '00/90/CAIStateGroupMinionGossip_Update_0090d030_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT91'
+        PassPattern = '0090d030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005a4cdd'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_ConstructActualSellInventoryPC_005a4cdd.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_ConstructActualSellInventoryPC_005a4cdd_test.cpp'
+        PassPattern = '005a4cdd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00531ec0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_Update_00531ec0.cpp'
+        TestSource = '00/53/NUISystemCComponent_Update_00531ec0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00531ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfe030'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::COracleTablet'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCOracleTablet_Main_00cfe030.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCOracleTablet_Main_00cfe030_test.cpp'
+        PassPattern = '00cfe030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b70a90'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_RenderEnvironmentMap_00b70a90.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_RenderEnvironmentMap_00b70a90_test.cpp'
+        PassPattern = '00b70a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d1e30'
+        Module = 'CTCWife'
+        Source = '00/6d/CTCWife_FrameUpdate_006d1e30.cpp'
+        TestSource = '00/6d/CTCWife_FrameUpdate_006d1e30_test.cpp'
+        PassPattern = '006d1e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00682810'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/68/CTCCreatureOpinionOfHero_InformOfDeed_00682810.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_InformOfDeed_00682810_test.cpp'
+        PassPattern = '00682810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc8a60'
+        Module = 'CEnginePrimitiveManagerLines'
+        Source = '00/bc/CEnginePrimitiveManagerLines_RenderLine_00bc8a60.cpp'
+        TestSource = '00/bc/CEnginePrimitiveManagerLines_RenderLine_00bc8a60_test.cpp'
+        PassPattern = '00bc8a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00715a70'
+        Module = 'NTCScriptedControl::CActionTalkBase'
+        Source = '00/71/NTCScriptedControlCActionTalkBase_SetUpCamera_00715a70.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkBase_SetUpCamera_00715a70_test.cpp'
+        PassPattern = '00715a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066cf00'
+        Module = 'CRegionMinimap'
+        Source = '00/66/CRegionMinimap_PopulateRegionMinimap_0066cf00.cpp'
+        TestSource = '00/66/CRegionMinimap_PopulateRegionMinimap_0066cf00_test.cpp'
+        PassPattern = '0066cf00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007db6a0'
+        Module = 'CTCTavernGameCardBlackjack'
+        Source = '00/7d/CTCTavernGameCardBlackjack_CardsMainGame_007db6a0.cpp'
+        TestSource = '00/7d/CTCTavernGameCardBlackjack_CardsMainGame_007db6a0_test.cpp'
+        PassPattern = '007db6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb0970'
+        Module = 'CEnginePrimitiveManager2DSprites'
+        Source = '00/bb/CEnginePrimitiveManager2DSprites_RenderSpritePrim_00bb0970.cpp'
+        TestSource = '00/bb/CEnginePrimitiveManager2DSprites_RenderSpritePrim_00bb0970_test.cpp'
+        PassPattern = '00bb0970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6edf0'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b6/CEngineWaterRenderer_BuildConstantBuffers_00b6edf0.cpp'
+        TestSource = '00/b6/CEngineWaterRenderer_BuildConstantBuffers_00b6edf0_test.cpp'
+        PassPattern = '00b6edf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00974aa0'
+        Module = 'CAIStateGroup_JackOfBladesStage2'
+        Source = '00/97/CAIStateGroupJackOfBladesStage2_Update_00974aa0.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesStage2_Update_00974aa0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS28'
+        PassPattern = '00974aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a593f0'
+        Module = 'NBBBMaths::CCylinder'
+        Source = '00/a5/NBBBMathsCCylinder_GetFirstIntersectionWithTriangle_00a593f0.cpp'
+        TestSource = '00/a5/NBBBMathsCCylinder_GetFirstIntersectionWithTriangle_00a593f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a593f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eaf810'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff'
+        Source = '00/ea/NScriptCVMurderTwistFinalScriptCMurderTwistSheriff_DoAskingHeroToKillAssassin_00eaf810.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistFinalScriptCMurderTwistSheriff_DoAskingHeroToKillAssassin_00eaf810_test.cpp'
+        PassPattern = '00eaf810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd5c90'
+        Module = 'CEnginePrimitiveManagerAnimatedMeshesBase'
+        Source = '00/bd/CEnginePrimitiveManagerAnimatedMeshesBase_RenderPrimitiveToShadowBuffer_00bd5c90.cpp'
+        TestSource = '00/bd/CEnginePrimitiveManagerAnimatedMeshesBase_RenderPrimitiveToShadowBuffer_00bd5c90_test.cpp'
+        PassPattern = '00bd5c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba6240'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_RenderPrimitiveToShadowBuffer_00ba6240.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_RenderPrimitiveToShadowBuffer_00ba6240_test.cpp'
+        PassPattern = '00ba6240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b5a3f0'
+        Module = 'CEngineScreenEffectColourFilter'
+        Source = '00/b5/CEngineScreenEffectColourFilter_ApplyColourFilter_00b5a3f0.cpp'
+        TestSource = '00/b5/CEngineScreenEffectColourFilter_ApplyColourFilter_00b5a3f0_test.cpp'
+        PassPattern = '00b5a3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb2540'
+        Module = 'CEngineClothRenderer'
+        Source = '00/bb/CEngineClothRenderer_RenderPolygons_00bb2540.cpp'
+        TestSource = '00/bb/CEngineClothRenderer_RenderPolygons_00bb2540_test.cpp'
+        PassPattern = '00bb2540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be0eb0'
+        Module = 'CEnginePrimitiveManager2DParticleGroup'
+        Source = '00/be/CEnginePrimitiveManager2DParticleGroup_RenderSubPrimitive_00be0eb0.cpp'
+        TestSource = '00/be/CEnginePrimitiveManager2DParticleGroup_RenderSubPrimitive_00be0eb0_test.cpp'
+        PassPattern = '00be0eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c79fd0'
+        Module = '_global'
+        Source = '00/c7/global_ResampleStereoMMX_00c79fd0.cpp'
+        TestSource = '00/c7/global_ResampleStereoMMX_00c79fd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c79fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b77370'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_RenderSeaReflectiveForeground_00b77370.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_RenderSeaReflectiveForeground_00b77370_test.cpp'
+        PassPattern = '00b77370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b751f0'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_RenderIceForeground_00b751f0.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_RenderIceForeground_00b751f0_test.cpp'
+        PassPattern = '00b751f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00435530'
+        Module = 'CDisplayEngine'
+        Source = '00/43/CDisplayEngine_DoRender_00435530.cpp'
+        TestSource = '00/43/CDisplayEngine_DoRender_00435530_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT63'
+        PassPattern = '00435530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00439070'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_DrawPreparePrimitivesForEngine_00439070.cpp'
+        TestSource = '00/43/CPlayerGui_DrawPreparePrimitivesForEngine_00439070_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT63'
+        PassPattern = '00439070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dce230'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_Main_00dce230.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_Main_00dce230_test.cpp'
+        PassPattern = '00dce230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d0830'
+        Module = 'CTCWife'
+        Source = '00/6d/CTCWife_GlobalUpdate_006d0830.cpp'
+        TestSource = '00/6d/CTCWife_GlobalUpdate_006d0830_test.cpp'
+        PassPattern = '006d0830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a3740'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_UpdateRegionLoad_004a3740.cpp'
+        TestSource = '00/4a/CWorld_UpdateRegionLoad_004a3740_test.cpp'
+        PassPattern = '004a3740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f5c10'
+        Module = 'CCreatureActionBase'
+        Source = '00/6f/CCreatureActionBase_StatRegisterClass_006f5c10.cpp'
+        TestSource = '00/6f/CCreatureActionBase_StatRegisterClass_006f5c10_test.cpp'
+        PassPattern = '006f5c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aca830'
+        Module = 'QuadricOptimiserInternals::COptimisedPrimitive'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_Initialise_00aca830.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_Initialise_00aca830_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00aca830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9ac30'
+        Module = 'CEnginePrimitiveManagerRepeatedStaticMeshes'
+        Source = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_RenderSubPrimitive_00b9ac30.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_RenderSubPrimitive_00b9ac30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00b9ac30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bfe30'
+        Module = 'NThingShot::CTCShotDefinitionBase'
+        Source = '00/7b/NThingShotCTCShotDefinitionBase_UpdateCollision_007bfe30.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionBase_UpdateCollision_007bfe30_test.cpp'
+        PassPattern = '007bfe30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e15c0'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes'
+        Source = '00/7e/NGraphicAppearanceCTCGraphicAppearanceMultipleStaticMeshes_OnAppearanceDraw_007e15c0.cpp'
+        TestSource = '00/7e/NGraphicAppearanceCTCGraphicAppearanceMultipleStaticMeshes_OnAppearanceDraw_007e15c0_test.cpp'
+        PassPattern = '007e15c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b2ca0'
+        Module = 'CEnvironment'
+        Source = '00/6b/CEnvironment_UpdateSunAndMoonPositions_006b2ca0.cpp'
+        TestSource = '00/6b/CEnvironment_UpdateSunAndMoonPositions_006b2ca0_test.cpp'
+        PassPattern = '006b2ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00875690'
+        Module = 'NCameraModes::CGeneralCircle'
+        Source = '00/87/NCameraModesCGeneralCircle_CGeneralCircle_00875690.cpp'
+        TestSource = '00/87/NCameraModesCGeneralCircle_CGeneralCircle_00875690_test.cpp'
+        PassPattern = '00875690_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

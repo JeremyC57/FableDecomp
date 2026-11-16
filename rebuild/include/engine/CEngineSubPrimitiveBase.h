@@ -31,6 +31,18 @@ public:
  CEngineInternalPrimitiveBase* GetParentBase() { return Parent; }
  const CEngineInternalPrimitiveBase* PeekParentBase() const { return Parent; }
 #endif
+#if defined(FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_PEEKRENDERFLAGS) && !defined(FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_ACCESSORS)
+ // Opt-in (wfA5, row 0x00B9AC30): FableWin.pdb ?PeekRenderFlags@CEngineSubPrimitiveBase@@QBEKXZ (inline: `mov eax,[sub+4]`).
+ // (FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_ACCESSORS declares it too.)
+ unsigned long PeekRenderFlags() const { return RenderFlags; }
+#endif
+#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_SETTERS_ALPHAFLOAT
+ // Opt-in (wfE7, row 0x00BD3070; chunk 4010 text): FableWin.pdb inline ?SetRenderFlags@ (10i/22b), ?SetAlpha@ (10i/22b),
+ // ?GetAlphaAsFloat@CEngineSubPrimitiveBase@@QBEMXZ (14i/38b): Alpha +0x08 times 1/255 (0x00BD4599, float pool 0x01231724). No layout change.
+ void SetRenderFlags(unsigned long flags){RenderFlags=flags;}
+ void SetAlpha(unsigned char alpha){Alpha=alpha;}
+ float GetAlphaAsFloat()const{return Alpha*(1.0f/255.0f);}
+#endif
 #ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_ACCESSORS
  // Opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): FableWin.pdb inline accessors ?PeekRenderFlags@CEngineSubPrimitiveBase@@QBEKXZ,
  // ?PeekAlpha@CEngineSubPrimitiveBase@@QBEEXZ, ?GetParentBase@ / ?PeekParentBase@ (9 debug instructions each = one member read); the data

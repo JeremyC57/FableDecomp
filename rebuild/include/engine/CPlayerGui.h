@@ -7,6 +7,10 @@ namespace NPlayerGui { class CDrawQuestInfo; }
 // Retail opt-in (Codex pass 11 consolidation 2): the retail CPlayerGui model (row 0x00667D30 CThingCreatureBase::OnHit); see below.
 #include "engine/CTBaseSingletonNoDefaultAlloc.h"
 #include "engine/CSubtitleRenderer.h"
+#ifdef FABLE_RETAIL_CPLAYERGUI_DRAWPREPAREPRIMITIVES
+#include "engine/CInterpolationInfo.h"                           // RenderUpdateGuiTimers' parameter type (nested class)
+class CEnginePrimitivePrepareInfo;
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_MEMBERS
 // Retail opt-in (chunk 853, row 0x0043A570 CPlayerGui::~CPlayerGui): the members PFont .. DisplayBottomHalfGUI with their Ego_r.pdb
 // types at the retail offsets (the generated layout below, STLport sizes), for the implicit member destruction the destructor emits.
@@ -276,6 +280,14 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // ?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ, out of line at 0x00437CE0 (`mov eax,[ecx+160h]; add eax,28h`). Declaration only.
     class CMiniMapDisplay& GetMiniMap();                                 // 0x00437CE0
 #endif
+#ifdef FABLE_RETAIL_CPLAYERGUI_MINIMAPREGIONLOAD
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb / FableWin.pdb ?SetMiniMapRegion@CPlayerGui@@QAEXABVCRegion@@@Z (0x004378B0),
+    // ?IsMiniMapFinishedOpening@CPlayerGui@@QBE_NXZ (0x00437830) and ?IsMiniMapFinishedClosing@CPlayerGui@@QBE_NXZ (0x00437840): the forwards to
+    // PDrawMiniMap +0x160, called on Get() at 0x004A47D9 / 0x004A488E / 0x004A50B5. Declarations only.
+    void SetMiniMapRegion(const class CRegion&);                         // 0x004378B0
+    bool IsMiniMapFinishedOpening() const;                               // 0x00437830
+    bool IsMiniMapFinishedClosing() const;                               // 0x00437840
+#endif // FABLE_RETAIL_CPLAYERGUI_MINIMAPREGIONLOAD
 #ifdef FABLE_RETAIL_CPLAYERGUI_MINIMAPDRAWING
     // Opt-in (chunk 898, row 0x00654438 NPlayerGui::CDrawQuestInfo::Draw): Ego_r.pdb 0x0044A510 / FableWin.pdb 0x01A7F700
     // ?IsMiniMapDrawing@CPlayerGui@@QBE_NXZ, out of line in retail at 0x00437870 (reads PDrawMiniMap +0x160 -> CDrawBase::Drawing +0x18).
@@ -311,6 +323,18 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // CWorld 0x004A0220) -- NAME_FIXES. Declarations only.
     void Close(bool);                                                    // 0x00438400
     void ForceClearGui();                                                // 0x004382C0
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUI_DRAWPREPAREPRIMITIVES
+    // Retail opt-in (wfA2, row 0x00439070): Ego_r.pdb / FableWin.pdb ?DrawPreparePrimitivesForEngine@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+    // (retail 0x00439070, the per-frame HUD build), ?SetMoneyAsDisplaying@CPlayerGui@@QAEXXZ (Ego_r 0x0044A350, first of the seven
+    // Set*AsDisplaying 0x0044A350..0x0044A470 = retail 0x004376B0..0x00437770 in the same order; 0x004376B0 reads PMoney +0x2CC, the landed
+    // 0x00437770 reads PCrime +0x2EC) and ?RenderUpdateGuiTimers@CPlayerGui@@ABEXABVCInterpolationInfoSet@CInterpolationInfo@@@Z (private
+    // const, retail 0x004387F0, landed). Declarations only: no layout change.
+    void DrawPreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& info);   // 0x00439070
+    void SetMoneyAsDisplaying();                                         // 0x004376B0
+private:
+    void RenderUpdateGuiTimers(const CInterpolationInfo::CInterpolationInfoSet& set) const;   // 0x004387F0
+public:
 #endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_CRIME
     // Nested opt-in (chunk 755, row 0x00775B40 CTCShop::FrameUpdate): Ego_r.pdb 0x0044A410 / FableWin.pdb 0x01A7EF10

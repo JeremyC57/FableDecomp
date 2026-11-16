@@ -238,6 +238,13 @@ public:
 #endif
     const std::list<CIntelligentPointer<CThing> >& GetActiveQuestCards() const { return ActiveQuestCards; }
     const std::list<CIntelligentPointer<CThing> >& GetCompletedQuestCards() const { return CompletedQuestCards; }
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ANYQUEST_LOCKSTART
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?IsAnyQuestActive@CQuestManager@@QBE_NXZ (retail 0x004B1080) and
+    // ?IsRegionStartOfRegionLockingMode@CQuestManager@@QBE_NABVCRegion@@@Z (retail 0x004B11A0): both called on the quest manager at 0x004A4623 /
+    // 0x004A466D (Ego_r donor order IsAnyQuestActive 0x004B55B0 .. IsRegionStartOfRegionLockingMode 0x004B5710). Declarations only.
+    bool IsAnyQuestActive() const;                                       // 0x004B1080
+    bool IsRegionStartOfRegionLockingMode(const class CRegion&) const;   // 0x004B11A0
+#endif // FABLE_RETAIL_CQUESTMANAGER_ANYQUEST_LOCKSTART
     // Ego_r.pdb / FableWin.pdb ?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z (retail 0x004B05C0).
     void TransferBoasts(CPersistContext& context);
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CQuestManager@@QAEXXZ (retail 0x004B4490, landed).

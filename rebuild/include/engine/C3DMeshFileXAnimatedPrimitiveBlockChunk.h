@@ -23,6 +23,9 @@ public:
     unsigned long BonesPerVertex;                   // +0x44
     CArray<unsigned long> VertexList;               // +0x48
     CArray<C3DIndexedBoneWeight> BoneWeights;       // +0x54
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+    static const char* FABLE_FASTCALL GetStaticChunkType() { return "XAPB"; }   // FableWin ?GetStaticChunkType@C3DMeshFileXAnimatedPrimitiveBlockChunk@@SIPBDXZ
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXAnimatedPrimitiveBlockChunk) == 0x60);
+FABLE_STATIC_ASSERT_AT(27, sizeof(C3DMeshFileXAnimatedPrimitiveBlockChunk) == 0x60);
 #endif

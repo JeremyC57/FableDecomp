@@ -67,6 +67,14 @@ public:
  const CMatrix4x4* GetBoneTransformations();
  const C3DVector* GetBoneScalings(const C3DMesh2&) const;
 #endif
+#if defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_RENDERINFO) && defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ORIGINAL_CACHE)
+ // Retail opt-in (wfA6b, row 0x00BD5C90 CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveToShadowBuffer): FableWin.pdb
+ // ?SetupMesh@CEngineInternalPrimitiveAnimatedMesh@@QAE_NMM@Z (out of line, landed 0x00BCF2E0) and the inline
+ // ?GetRenderInfo@CEngineInternalPrimitiveAnimatedMesh@@QAEPAVCEngineRenderInfoAnimatedMesh@@XZ (&RenderInfo; no retail copy: the row
+ // reads +0xE4 Mesh and copies +0xEC ObjectTransform in place, 0x00BD5F22..0x00BD5F37). No layout change.
+ bool SetupMesh(float distance, float radius);                        // 0x00BCF2E0
+ CEngineRenderInfoAnimatedMesh* GetRenderInfo() { return &RenderInfo; }
+#endif
 private:
 #if defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ORIGINAL_CACHE)
  CEngineRenderInfoAnimatedMesh RenderInfo;

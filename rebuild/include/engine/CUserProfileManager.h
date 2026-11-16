@@ -280,5 +280,23 @@ public:
     long ScoreBoardProxyPort;                                            // +0x11c
     long ScoreBoardServerPort;                                           // +0x120
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_GAMMA
+    // Retail opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): FableWin.pdb ?GetGamma@CUserProfileManager@@QBEMXZ /
+    // ?GetHUDAlpha@CUserProfileManager@@QBEMXZ, expanded in place in retail (`call Get ; cmp byte ptr [eax+0Ch],0 ; fld [eax+0DCh] / fld
+    // [eax+1Ch]` and `fld [eax+0E0h] / fld [eax+20h]`, 0x004390AA..0x004390E4), the same shape as the VOLUME block's GetSoundVolume.
+    // Retail offsets = Ego_r.pdb before the first vector (UseNewProfileValues +0x0C, Gamma +0x1C, HUDAlpha +0x20) and Ego_r.pdb - 4 after
+    // it (GammaNewProfile +0xDC, HUDAlphaNewProfile +0xE0). Layout-only block: not combinable with the VOLUME / SCOREBOARD / PROFILENAME_MEMBER
+    // layout opt-ins (own pads).
+    float GetGamma() const { return UseNewProfileValues ? GammaNewProfile : Gamma; }
+    float GetHUDAlpha() const { return UseNewProfileValues ? HUDAlphaNewProfile : HUDAlpha; }
+    unsigned char _pad_gamma_0x00[0xc];                                  // vptr, CBaseClass, ProfileName
+    bool UseNewProfileValues;                                            // +0x0c
+    unsigned char _pad_gamma_0x0d[0x1c - 0xd];                           // SubtitlingEnabled .. CameraPCViewHeroYZInverted
+    float Gamma;                                                         // +0x1c
+    float HUDAlpha;                                                      // +0x20
+    unsigned char _pad_gamma_0x24[0xdc - 0x24];                          // SoundVolume .. HUDTooltipEnabledNewProfile
+    float GammaNewProfile;                                               // +0xdc
+    float HUDAlphaNewProfile;                                            // +0xe0
+#endif
 };
 #endif

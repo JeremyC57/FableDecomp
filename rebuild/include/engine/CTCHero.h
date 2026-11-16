@@ -70,6 +70,22 @@ public:
     virtual bool IsComponentSerialisable() const;  // slot 23, 0x006CA730
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCHERO_USEOVERRIDES
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?SetWeaponsAsUsable@CTCHero@@QAEX_N@Z (out of line 0x006CA380, called
+    // 0x004A52B6), and the inline ?IsWeaponUseOverridden@CTCHero@@QBE_NXZ (+0x0E), ?IsWillUseOverridden@CTCHero@@QBE_NXZ (+0x0F) and
+    // ?SetWillAsUsable@CTCHero@@QAEX_N@Z (store to +0x0D) read / written in place at 0x004A52A2..0x004A52CA. Needs FABLE_RETAIL_CTCHERO_TITLE (typed bytes).
+    void SetWeaponsAsUsable(bool usable);                                // 0x006CA380
+    bool IsWeaponUseOverridden() const { return WeaponUseOverriddenByScripts; }
+    bool IsWillUseOverridden() const { return WillUseOverriddenByScripts; }
+    void SetWillAsUsable(bool usable) { WillUsable = usable; }
+#endif // FABLE_RETAIL_CTCHERO_USEOVERRIDES
+#ifdef FABLE_RETAIL_CTCHERO_TELEPORTPARTICLE
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?SetTeleportParticle@CTCHero@@QAEXAAVCThing@@@Z (0x004AB270, `push edi ;
+    // mov ecx,hero_tc ; call`, 0x004A3C83). Declaration only.
+    void SetTeleportParticle(CThing&);                                   // 0x004AB270
+#endif // FABLE_RETAIL_CTCHERO_TELEPORTPARTICLE
 };
 #ifdef FABLE_RETAIL_CTCHERO_TITLE
 FABLE_STATIC_ASSERT_AT(70, sizeof(CTCHero) == 0x38);

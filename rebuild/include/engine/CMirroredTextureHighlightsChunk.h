@@ -18,10 +18,15 @@ public:
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+    static const char* FABLE_FASTCALL GetStaticChunkType() { return "MTEH"; }   // FableWin ?GetStaticChunkType@CMirroredTextureHighlightsChunk@@SIPBDXZ
+    unsigned long* GetList();                          // 0x00AC4F30
+    unsigned long GetCount() const;                    // 0x00AC4F20 (ICF)
+#endif
 private:
     CArray<unsigned long> TriangleVertexIndexList;     // +0x10
 };
-FABLE_STATIC_ASSERT(sizeof(CMirroredTextureHighlightsChunk) == 0x1C);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CMirroredTextureHighlightsChunk) == 0x1C);
 #endif // FABLE_ENGINE_CMIRROREDTEXTUREHIGHLIGHTSCHUNK_H
 #else
 #ifndef FABLE_ENGINE_CMIRROREDTEXTUREHIGHLIGHTSCHUNK_H
@@ -46,9 +51,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CMirroredTextureHighlightsChunk) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CMirroredTextureHighlightsChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CMirroredTextureHighlightsChunk, TriangleVertexIndexList) == 0x10);
+FABLE_STATIC_ASSERT_AT(49, sizeof(CMirroredTextureHighlightsChunk) == 0x1c);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CMirroredTextureHighlightsChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CMirroredTextureHighlightsChunk, TriangleVertexIndexList) == 0x10);
 
 #endif // FABLE_ENGINE_CMIRROREDTEXTUREHIGHLIGHTSCHUNK_H
 #endif // FABLE_RETAIL_CMIRROREDTEXTUREHIGHLIGHTSCHUNK

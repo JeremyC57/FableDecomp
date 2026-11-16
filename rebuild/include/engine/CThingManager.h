@@ -109,6 +109,20 @@ public:
     const CThing* PeekPThingWithUID(unsigned __int64 uid) const;        // 0x0051ED60
     // Codex pass 13 (row 0x004FB990): FableWin ?GetCurrentThingUID@CThingManager@@QBE_KXZ, inline in retail (reads CurrentUniqueID).
     unsigned __int64 GetCurrentThingUID() const { return CurrentUniqueID; }
+#ifdef FABLE_RETAIL_CTHINGMANAGER_SETCURRENTTHINGUID
+    // Retail opt-in (chunk H40i, row 0x00507C30 CWorldMap::LoadFromFile; re-based by agent wfE10): FableWin.pdb
+    // ?SetCurrentThingUID@CThingManager@@QAEX_K@Z, inline in retail (the row stores CurrentUniqueID in place at 0x00507E87 / 0x00508217).
+    void SetCurrentThingUID(unsigned __int64 uid) { CurrentUniqueID = uid; }
+#endif
+#ifdef FABLE_RETAIL_CTHINGMANAGER_WORLDLOAD
+    // Retail opt-in (chunk H40g, row 0x00507C30; re-based by agent wfE10): Ego_r.pdb
+    // ?LoadFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@JV?$set@VCCharString@@..@std@@AAV?$vector@PAVCThing@@..@4@PAVCASuspendableProcess@@H@Z
+    // (0x00521AE0) and ?ActivateThings@CThingManager@@QAEXABV?$vector@PAVCThing@@..@std@@@Z (0x0051E2F0, landed; the H40g draft's
+    // descriptive "InitialiseLoadedThings"). The spellings of the landed caller 0x005223F0. Needs CCountedPointer / CAFile declared.
+    void LoadFromFile(CCountedPointer<CAFile> file, long version, std::set<CCharString> names,
+                      std::vector<CThing*>& things, CASuspendableProcess* process, int mode);   // 0x00521AE0
+    void ActivateThings(const std::vector<CThing*>& things);   // 0x0051E2F0
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_THINGTYPEFLAGS
     // Retail opt-in (chunk 2008, row 0x004CA390 CThing::ConstructFromBinarySave): Ego_r.pdb 0x00528260 ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z,
     // out of line in retail at 0x0051E580 (`mov ecx,[ecx+3Ch] ; lea eax,[eax+eax*2] ; mov eax,[ecx+eax*4+4]`: ThingTypeInfo[type].ThingTypeFlags;
@@ -213,5 +227,5 @@ private:
     long LevelBeingLoaded;
     CCharString CurrentSectionName;
 };
-FABLE_STATIC_ASSERT(sizeof(CThingManager)==0xe8);
+FABLE_STATIC_ASSERT_AT(216, sizeof(CThingManager)==0xe8);
 #endif

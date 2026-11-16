@@ -303,6 +303,10 @@ public:
     // (catalog CThing::IsIncludedInThingScans; Ego_r.pdb / FableWin.pdb ?IsIncludedInThingScans@CThing@@QBE_NXZ). Everywhere else
     // retail expands the body below.
     bool IsIncludedInThingScans() const;                         // 0x0048BC40
+#elif defined(FABLE_RETAIL_CTHING_SCANINCLUSION_ISALIVE)
+    // wfA1 (row 0x006D0830 CTCWife::GlobalUpdate, through its same-TU GetAllLeafThings<CThingVillage> COMDAT 0x006D4600): the alive test
+    // as IsAlive()'s `!Dead` (`mov cl,al ; not cl ; test cl,1`, out-of-line copy 0x0048BC4E, expanded at 0x006D4637). No layout change.
+    bool IsIncludedInThingScans() const { return IncludeInThingScans && Activated && IsAlive() && !InLimbo; }
 #else
     bool IsIncludedInThingScans() const { return IncludeInThingScans && Activated && !Dead && !InLimbo; }
 #endif
@@ -379,6 +383,23 @@ public:
     }
     template<class T> FABLE_FORCEINLINE bool GetTC(T** result) { return GetTC(T::StatGetInterfaceType(),result); }
     template<class T> FABLE_FORCEINLINE bool PeekTC(T** result) const { return PeekTC(T::StatGetInterfaceType(),result); }
+#ifdef FABLE_RETAIL_CTHING_GETTCOFLEAFTYPE
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ??$GetTCOfLeafType@VCTCTargetingPlayer@@@CThing@@QAE_NPAPAVCTCTargetingPlayer@@@Z
+    // (also ..@VCTCTargetingAI@@@, ..@VCTCActionUseScriptedHook@@@ ...): the component of T's interface type if its class is exactly T.
+    // Retail expands it at 0x004A3E01..0x004A3EA2 / 0x004A51C0: presence test, LowerBound with the key in the frame, T::StatGetClassTypeName()
+    // built first, the GetClassTypeName virtual (+0x58), the inline CCharString operator== into one byte, both temporaries destroyed, then
+    // the store through the out pointer. Same body as the landed filter 0x00518DC0 (HasTC, the lookup, the compare). No layout change.
+    template<class T> FABLE_FORCEINLINE bool GetTCOfLeafType(T** ptc) {
+        CTCBase* tc;
+        if(GetTC(T::StatGetInterfaceType(),&tc)) {
+            if(tc->GetClassTypeName()==T::StatGetClassTypeName()) {
+                *ptc=(T*)tc;
+                return true;
+            }
+        }
+        return false;
+    }
+#endif
 #ifdef FABLE_RETAIL_CTHING_HASTC_CLASSTYPE
     // Nested opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb / FableWin.pdb
     // ??$HasTC@VCTCActionUseActivateQuest@@@CThing@@QBE_NXZ (also ..@VCTCActionUseWindow@@@ / ..@VCTCRandomAppearanceMorph@@@ in FableWin):
@@ -450,11 +471,11 @@ public:
 #endif
     CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }
     static void CheckRetailLayout() {
-        FABLE_STATIC_ASSERT(offsetof(CThing,UniqueID)==0x18);
-        FABLE_STATIC_ASSERT(offsetof(CThing,UsingComponents)==0x20);
-        FABLE_STATIC_ASSERT(offsetof(CThing,Components)==0x44);
-        FABLE_STATIC_ASSERT(offsetof(CThing,PhysicsTC)==0x60);
-        FABLE_STATIC_ASSERT(offsetof(CThing,PBaseDef)==0x70);
+        FABLE_STATIC_ASSERT_AT(453, offsetof(CThing,UniqueID)==0x18);
+        FABLE_STATIC_ASSERT_AT(454, offsetof(CThing,UsingComponents)==0x20);
+        FABLE_STATIC_ASSERT_AT(455, offsetof(CThing,Components)==0x44);
+        FABLE_STATIC_ASSERT_AT(456, offsetof(CThing,PhysicsTC)==0x60);
+        FABLE_STATIC_ASSERT_AT(457, offsetof(CThing,PBaseDef)==0x70);
     }
     const CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
     const C3DVector& GetPos() const;
@@ -703,6 +724,22 @@ public:
     // (`mov [013B8A1Ch],ecx ; ret`, landed). Declaration only: no layout change.
     static void __fastcall SetCurrentThingManager(CThingManager& thing_manager);   // 0x004C74F0
 #endif
+#ifdef FABLE_RETAIL_CTHING_REGIONLOAD_TCS
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z (0x004C9840, `push 0F9h ;
+    // call`, 0x004A3B33) and the member template ??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z (COMDAT 0x004ACB50,
+    // called out of line at 0x004A3C1D). Declarations only: no layout change.
+#ifndef FABLE_RETAIL_CTHING_STATEACCESS
+    void RemoveTC(ETCInterfaceType);                                     // 0x004C9840 (also declared under FABLE_RETAIL_CTHING_STATEACCESS)
+#endif
+    template<class T> bool GetTCDriver(T** ptcd);                       // COMDAT (0x004ACB50 for CTCDParticleEmitter)
+#endif // FABLE_RETAIL_CTHING_REGIONLOAD_TCS
+#ifdef FABLE_RETAIL_CTHING_STATGETTYPE
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): ?StatGetType@CThing@@SIJXZ, inline (the type-list key 15 pushed in place by
+    // GetPFirstLeafThing<..,CThing> 0x004A9EF4; CThingManager::InitThingTypes registers type 15 "THING" with CThing::Alloc). Body only.
+    static long FABLE_FASTCALL StatGetType() { return 15; }
+#endif // FABLE_RETAIL_CTHING_STATGETTYPE
 };
 FABLE_STATIC_ASSERT_AT(703, sizeof(CThing)==0x98);
 

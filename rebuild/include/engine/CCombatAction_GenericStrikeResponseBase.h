@@ -8,6 +8,11 @@ class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase {
 #endif
 public:
     virtual ~CCombatAction_GenericStrikeResponseBase();
+#ifdef FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEBASE_DEFAULTCTOR
+    // Retail opt-in (wfE11, row 0x006F5C10): the default constructor, out of line in retail at 0x00867950 (called with no argument by the
+    // derived constructors expanded in CCreatureActionBase::StatRegisterClass and by the landed 0x006F5790). Declaration only.
+    CCombatAction_GenericStrikeResponseBase();                          // 0x00867950
+#endif
     void SetMoveOnHitOverride(bool b) { MoveOnHitOverride=b; }
     void SetCreateDustEffect(bool b) { CreateDustEffect=b; }
 #ifdef FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEBASE_TYPED
@@ -29,5 +34,5 @@ protected:
     long FrameForDust;
     unsigned char DustTravelDirection[12];
 };
-FABLE_STATIC_ASSERT(sizeof(CCombatAction_GenericStrikeResponseBase)==0x148);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CCombatAction_GenericStrikeResponseBase)==0x148);
 #endif

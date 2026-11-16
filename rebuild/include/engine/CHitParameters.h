@@ -25,6 +25,9 @@ class CArmourDef;class CThingGameObject;
 #endif
 // Original Ego_r TPI0x2af3a; native OnHit proves offsets0,1,2,e,1a..28,48,50,58.
 // STLport replaces both 16-byte donor containers with12-byte containers: native sizeof60.
+#if defined(FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP) || defined(FABLE_RETAIL_CHITPARAMETERS_SPECIALABILITY)
+#include "engine/EDamageAttribute.h"
+#endif
 #if defined(FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP) || defined(FABLE_RETAIL_CHITPARAMETERS_LOCATIONCTOR) || defined(FABLE_RETAIL_CHITPARAMETERS_ADDDAMAGE)
 #include "engine/EDamageAttribute.h"
 #endif
@@ -99,16 +102,16 @@ bool IsLightningStrike()const;bool IsDivineWrathStrike()const;bool IsUnholyPower
     const C3DVector& GetHitPosition() const { return Position; }
     const C3DVector& GetHitDirection() const { return Direction; }
     static void CheckRetailVectorLayout() {
-        FABLE_STATIC_ASSERT(offsetof(CHitParameters,Position)==0x02);
-        FABLE_STATIC_ASSERT(offsetof(CHitParameters,Direction)==0x0e);
-        FABLE_STATIC_ASSERT(offsetof(CHitParameters,KnockDown)==0x1a);
-        FABLE_STATIC_ASSERT(offsetof(CHitParameters,ShotBuildupTime)==0x2c);
-        FABLE_STATIC_ASSERT(offsetof(CHitParameters,DamageMap)==0x30);
-        FABLE_STATIC_ASSERT(offsetof(CHitParameters,Augmentations)==0x3c);
-        FABLE_STATIC_ASSERT(offsetof(CHitParameters,PHitLocation)==0x48);
-        FABLE_STATIC_ASSERT(offsetof(CHitParameters,PThingHitting)==0x50);
-        FABLE_STATIC_ASSERT(offsetof(CHitParameters,PWeapon)==0x58);
-        FABLE_STATIC_ASSERT(sizeof(CHitParameters)==0x60);
+        FABLE_STATIC_ASSERT_AT(102, offsetof(CHitParameters,Position)==0x02);
+        FABLE_STATIC_ASSERT_AT(103, offsetof(CHitParameters,Direction)==0x0e);
+        FABLE_STATIC_ASSERT_AT(104, offsetof(CHitParameters,KnockDown)==0x1a);
+        FABLE_STATIC_ASSERT_AT(105, offsetof(CHitParameters,ShotBuildupTime)==0x2c);
+        FABLE_STATIC_ASSERT_AT(106, offsetof(CHitParameters,DamageMap)==0x30);
+        FABLE_STATIC_ASSERT_AT(107, offsetof(CHitParameters,Augmentations)==0x3c);
+        FABLE_STATIC_ASSERT_AT(108, offsetof(CHitParameters,PHitLocation)==0x48);
+        FABLE_STATIC_ASSERT_AT(109, offsetof(CHitParameters,PThingHitting)==0x50);
+        FABLE_STATIC_ASSERT_AT(110, offsetof(CHitParameters,PWeapon)==0x58);
+        FABLE_STATIC_ASSERT_AT(111, sizeof(CHitParameters)==0x60);
     }
 #else
     const C3DVector& GetHitPosition() const { return *reinterpret_cast<const C3DVector*>(Position); }
@@ -209,6 +212,13 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
 #endif
     void AddDamageWithAttribute(EDamageAttribute attribute, float damage);   // 0x00868CA0
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_EPICSPELL_SETTERS
+    // agent wfE10 (rows 0x00795300 / 0x0078FD60, with HIT_CTOR + HIT_CTOR_BODY instead of SPECIALABILITY): the two inline setters
+    // SPECIALABILITY declares, FableWin.pdb ?SetEpicSpell@CHitParameters@@QAEX_N@Z (+0x1E) / ?SetCreateParticleEffectOnHit@CHitParameters@@QAEX_N@Z
+    // (+0x23). No layout change.
+    void SetEpicSpell(bool value) { EpicSpell=value; }
+    void SetCreateParticleEffectOnHit(bool value) { CreateParticleEffectOnHit=value; }
+#endif
 #ifdef FABLE_RETAIL_CHITPARAMETERS_SETWEAPON
     // Retail opt-in (row 0x00868CE0): Ego_r.pdb ?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z, out of line in retail (callers
     // 0x00838BED / 0x00838FB2). Declaration only: no layout change.
@@ -221,10 +231,29 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
     // FrameUpdate pushes the def's DamagePerCycle then 2 = DAMAGE_LIGHTNING, 0x007F3455..0x007F3465). Declaration only: no layout change.
     void AddDamageWithAttribute(EDamageAttribute attribute, float damage);   // 0x00868CA0
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_SPECIALABILITY
+    // Retail opt-in (row 0x00795300 CTCUnholyPower::FrameUpdate): FableWin.pdb
+    // ??0CHitParameters@@QAE@PAVCHitLocation@NHitLocations@@PAVCThing@@1ABVC3DVector@@2_N333@Z (out of line 0x00789238),
+    // ??1CHitParameters@@QAE@XZ (0x00789358), ?AddDamageWithAttribute@CHitParameters@@QAEXW4EDamageAttribute@@M@Z (0x00868CA0) and the
+    // inline setters ?SetEpicSpell@CHitParameters@@QAEX_N@Z (+0x1E) / ?SetCreateParticleEffectOnHit@CHitParameters@@QAEX_N@Z (+0x23).
+    CHitParameters(NHitLocations::CHitLocation* location,CThing* hitter,CThing* weapon,const C3DVector& position,const C3DVector& direction,
+                   bool knock_down,bool blockable,bool flourish,bool block_counter);   // 0x00789238
+    ~CHitParameters();                                                   // 0x00789358
+    void AddDamageWithAttribute(EDamageAttribute attribute,float damage);   // 0x00868CA0
+    void SetEpicSpell(bool value) { EpicSpell=value; }
+#ifndef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+    void SetCreateParticleEffectOnHit(bool value) { CreateParticleEffectOnHit=value; }
+#endif
+#endif
     void SetKnockDown(bool value) { KnockDown=value; }
     void SetDecapitate(bool value) { Decapitate=value; }
     void SetPlayHitResponse(bool value) { PlayHitResponseOverrideSet=true;PlayHitResponse=value; }
     void SetMoveBackOnHit(bool value) { MoveBack=value; }
+#ifdef FABLE_RETAIL_CHITPARAMETERS_SETCREATEDUST
+    // agent wfE10 (row 0x007A1B20): FableWin.pdb ?SetCreateDustParticleEffectOnHit@CHitParameters@@QAEX_N@Z (inline: retail byte store
+    // 0x007A21AC into the temporary's CreateDustParticleEffectOnHit). No layout change.
+    void SetCreateDustParticleEffectOnHit(bool value) { CreateDustParticleEffectOnHit=value; }
+#endif
     bool IsMeleeStrike() const;
     bool IsExplosionStrike() const;
     bool IsDrainStrike() const;
@@ -233,6 +262,6 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
 #ifdef FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS
 #pragma pack(pop)
 #endif
-FABLE_STATIC_ASSERT(sizeof(CHitParameters)==0x60);
+FABLE_STATIC_ASSERT_AT(236, sizeof(CHitParameters)==0x60);
 
 #endif

@@ -111,6 +111,23 @@ public:
  // Retail opt-in (Codex pass19): both PDB names; native00662000.
  ECreatureType GetCreatureType() const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_GETSEX
+public:
+ // agent wfE10 (row 0x00502E90 CWorldMap::PopulateRegionWithVillagers; chunk 879's SEXTYPE text re-based): Ego_r.pdb / FableWin.pdb
+ // ?GetSex@CThingCreatureBase@@QBE?AW4ESex@@XZ, out of line in retail at 0x00661FF0 (`mov eax,[ecx+0E0h] ; mov eax,[eax+0C0h]`,
+ // the def's Sex), next to GetCreatureType 0x00662000. Declaration only: no layout change.
+ // Retail opt-in (acctC wfA1, row 0x00682810 CTCCreatureOpinionOfHero::InformOfDeed): Ego_r.pdb ?GetSex@CThingCreatureBase@@QBE?AW4ESex@@XZ,
+ // out of line in retail at 0x00661FF0 (calls 0x00682E1A / 0x00683256). Declaration only.
+ // wfA1 (row 0x006D0830 CTCWife::GlobalUpdate): Ego_r.pdb 0x0053CE40 / FableWin.pdb 0x01D9A430 (`mov ecx,[esi+4] ; call ; cmp eax,2`, 0x006D0894).
+ ESex GetSex() const;                                                 // 0x00661FF0
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_AUTOPLACENEAR
+public:
+ // Retail opt-in (acctC wfA1, row 0x006D0830 CTCWife::GlobalUpdate; restored after the GETSEX re-copy dropped it): Ego_r.pdb 0x00541790
+ // ?AutoPlaceNear@CThingCreatureBase@@QAE_NABVC3DVector@@M@Z, out of line in retail at 0x00665DF0 (reloc_bindings). Declaration only.
+ // (Ego_r lists it right before AutoPlaceNearBuilding 0x00541840, as retail 0x00665DF0 before 0x00666EF0.)
+ bool AutoPlaceNear(const C3DVector&, float);                         // 0x00665DF0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATRADIUS
 public:
  // Retail opt-in (Codex pass18): both PDBs QBEMXZ; native00661f90, sphere caller00814ea0.
@@ -198,11 +215,31 @@ public:
     void SetAsFollowingHeroThroughTeleporters(bool value) { FollowHeroThroughTeleporters = value; }
 #endif
 protected:
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ISFOLLOWINGTELEPORTERS
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?IsFollowingHeroThroughTeleporters@CThingCreatureBase@@QBE_NXZ, inline in
+    // retail (`test byte [esi+15Ch],40h` = FollowHeroThroughTeleporters, 0x004A3D4F). Body only: no layout change.
+    bool IsFollowingHeroThroughTeleporters() const { return FollowHeroThroughTeleporters; }
+protected:
+#endif // FABLE_RETAIL_CTHINGCREATUREBASE_ISFOLLOWINGTELEPORTERS
     void ReactToGenericStrike(const CHitParameters&);
     // FableWin-only ?PeekDefinition@CThingCreatureBase@@IBEABVCThingCreatureDef@@XZ (0x01D6DD10; inline in Ego_r and retail): the body
     // `return *PDef;` needs the complete CThingCreatureDef, so it is defined inline below once both classes are complete.
     const CThingCreatureDef& PeekDefinition() const;
 public:
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_LEAVEORBS
+    // Retail opt-in (row 0x00795300): FableWin.pdb ?GetLeaveExperienceOrbsOverride@CThingCreatureBase@@QBE_NXZ and
+    // ?SetLeaveExperienceOrbsOverride@CThingCreatureBase@@QAEX_N@Z (bit 5 of the +0x15C flag byte; out-of-line copies 0x0078DDD0 /
+    // 0x0078DDB0 in the CTCDivineWrath TU). Bodies only: no layout change.
+    bool GetLeaveExperienceOrbsOverride() const { return LeaveExperienceOrbsOverride; }
+#ifndef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+    // FableWin.pdb ?GetPLastAttackedByCreature@CThingCreatureBase@@QBEPAV1@XZ (the FABLE_RETAIL_CTCTARGETINGAI_ATTACK body).
+    CThingCreatureBase* GetPLastAttackedByCreature()const{return PLastAttackedByCreature.Get();}
+#endif
+#ifndef FABLE_RETAIL_CTHINGCREATUREBASE_FLAGSETTERS
+    void SetLeaveExperienceOrbsOverride(bool value) { LeaveExperienceOrbsOverride = value; }
+#endif
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_LASTHANDEDNESS
     // Retail opt-in (chunk 778, row 0x00839420 NThingHelpers::CreateEffectOnHit): Ego_r.pdb / FableWin.pdb
     // ?GetLastActionHandedness@CThingCreatureBase@@QBE?AW4ECombatAnimationHandedness@@XZ, inline in retail (`mov eax,[ebp+138h]`
@@ -230,6 +267,7 @@ public:
     void SetUnderInfluenceOfEpicSpell(bool value){UnderInfluenceOfEpicSpell=value;} // Both original PDBs; native0078fc48.
 #endif
     bool AutoPlaceNearBuilding(const CThingBuilding*,float);
+    // (AutoPlaceNear / GetSex: the FABLE_RETAIL_CTHINGCREATUREBASE_AUTOPLACENEAR / _GETSEX declarations above.)
     static void CheckRetailLayout() {
         FABLE_STATIC_ASSERT_AT(221, offsetof(CThingCreatureBase,PDef)==0xe0);
         FABLE_STATIC_ASSERT_AT(222, offsetof(CThingCreatureBase,PCurrentAction)==0x100);

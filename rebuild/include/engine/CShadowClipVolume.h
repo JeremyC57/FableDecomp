@@ -43,6 +43,25 @@ public:
         BoundingSphere = sphere;
         ClipToSphere = true;
     }
+#ifdef FABLE_RETAIL_CSHADOWCLIPVOLUME_CLIPSPHERE
+    // Retail opt-in (wfA6b, row 0x00BA6240 CEnginePrimitiveManagerStaticMeshesBase::RenderPrimitiveToShadowBuffer): FableWin.pdb
+    // ?ClipSphere@CShadowClipVolume@@QBE_NABVC3DVector@@M@Z (0x02E1C2E0, 68i/201b; no retail out-of-line copy: expanded at 0x00BA635B..
+    // 0x00BA63F0). Same sense as ClipBoundingBox (true = inside the volume): the bounding-sphere range test, then every plane.
+    FABLE_FORCEINLINE bool ClipSphere(const C3DVector& centre, float radius) const
+    {
+        if (ClipToSphere) {
+            C3DVector offset = centre - BoundingSphere.Center;
+            float range = BoundingSphere.Radius + radius;
+            if (offset.Dot(offset) > range * range)
+                return false;
+        }
+        for (long i = 0; i < ClipPlaneCount; ++i) {
+            if (centre.Dot(ClipPlanes[i].Normal) - radius > ClipPlanes[i].Distance)
+                return false;
+        }
+        return true;
+    }
+#endif
 #ifdef FABLE_RETAIL_CSHADOWCLIPVOLUME_CLIPBOUNDINGBOX
     // Retail opt-in (chunk 2028, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): Ego_r.pdb / FableWin.pdb
     // ?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBoundingBox@@@Z, inline: expanded at 0x00B9A743..0x00B9A946 while this TU keeps an

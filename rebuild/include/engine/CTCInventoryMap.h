@@ -296,6 +296,18 @@ public:
  // Ego_r.pdb 0x00652B10 / FableWin.pdb 0x02093750 ?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z (retail 0x00603000).
  void CreateMiniMapMarkers(NUISystem::CComponent* pminimap, CRegion& region);
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_ISOPENEDVIAGUILDSEAL
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?IsOpenedViaGuildSeal@CTCInventoryMap@@QBE_NXZ, inline in retail
+    // (OpenedViaGuildSeal +0x241 read in place, `mov cl,[eax+241h]`, 0x004A4219). Body only: no layout change.
+    bool IsOpenedViaGuildSeal() const { return OpenedViaGuildSeal; }
+#endif // FABLE_RETAIL_CTCINVENTORYMAP_ISOPENEDVIAGUILDSEAL
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_RESETWORLDMAPDISPLAY
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?ResetWorldMapDisplay@CTCInventoryMap@@QAEXXZ (0x005FAA30, called 0x004A5628:
+    // sets +0x234, stores GetWorldMap's loaded region to +0x238). Declaration only.
+    void ResetWorldMapDisplay();                                         // 0x005FAA30
+#endif // FABLE_RETAIL_CTCINVENTORYMAP_RESETWORLDMAPDISPLAY
 };
 FABLE_STATIC_ASSERT_AT(253, sizeof(CTCInventoryMap)==0x258);
 FABLE_STATIC_ASSERT_AT(254, sizeof(CTCInventoryMap::CUIMiniMapMarker)==28);

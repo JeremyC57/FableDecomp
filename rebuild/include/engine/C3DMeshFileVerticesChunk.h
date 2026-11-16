@@ -22,6 +22,12 @@ public:
     virtual CChunkedFileChunk* CreateNewInstance() const;
 #endif
     void AddVertex(const C3DVertex2& vertex);                    // 0x00ABCEB0
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+    const C3DVertex2* GetList() const;                           // 0x00ABC420 (ICF)
+#ifndef FABLE_RETAIL_C3DMESHFILEVERTICESCHUNK_PEEKVERTEX          // (that opt-in declares GetCount)
+    unsigned long GetCount() const;                              // 0x00ABA360 (ICF)
+#endif
+#endif
 #ifdef FABLE_RETAIL_C3DMESHFILEVERTICESCHUNK_PEEKVERTEX
     // Opt-in (wfA3, row 0x00ACDB80): Ego_r ?GetCount@C3DMeshFileVerticesChunk@@QBEKXZ (retail 0x00ABA360, called 0x00ACDC43) and
     // FableWin's inline ?PeekVertex@C3DMeshFileVerticesChunk@@QBEABVC3DVertex2@@K@Z (28 debug bytes = one CArray index call).

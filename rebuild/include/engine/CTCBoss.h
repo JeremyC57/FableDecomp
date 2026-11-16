@@ -15,7 +15,7 @@ public:
  virtual void FrameUpdate();
  long GetBossPhase()const;
  void SetNextBossPhase(long,bool);
-#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+#if defined(FABLE_RETAIL_JACK_STAGE1_UPDATE) || defined(FABLE_RETAIL_CTCBOSS_ISREADYFORPHASECHANGE)   // FABLE_RETAIL_CTCBOSS_ISREADYFORPHASECHANGE: wfD4, row 0x00974AA0 (0x007AEE90)
  bool IsReadyForPhaseChange()const;
 #endif
 

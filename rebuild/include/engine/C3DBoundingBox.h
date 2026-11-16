@@ -15,7 +15,18 @@ class C3DBoundingBox {
     // (0x0122F59C): (MaxCoord + MinCoord) * 0.5f (chunk 721 round 4); 0x00AC2BE0 is byte-identical with that form.
 public:
     void BuildFromPoints(const std::vector<C3DVector>&);
-#ifdef FABLE_RETAIL_C3DBOUNDINGBOX_CENTER_MIN_FIRST
+#ifdef FABLE_RETAIL_C3DBOUNDINGBOX_GETDIMENTIONS
+    // Overlay opt-in (wfA4, row 0x00BAA870): FableWin.pdb ?GetDimentions@C3DBoundingBox@@QBE?BVC3DVector@@XZ (debug copy 15i/35b; no
+    // Ego_r.pdb or Fable.exe out-of-line copy): the corner difference. Body only; no layout change.
+    const C3DVector GetDimentions() const { return MaxCoord - MinCoord; }
+#endif
+#if defined(FABLE_RETAIL_C3DBOUNDINGBOX_GETCENTER_PROBE1)
+    const C3DVector GetCenter() const { return MinCoord + GetDimentions() * 0.5f; }
+#elif defined(FABLE_RETAIL_C3DBOUNDINGBOX_GETCENTER_PROBE2)
+    const C3DVector GetCenter() const { C3DVector centre = (MaxCoord + MinCoord) * 0.5f; return centre; }
+#elif defined(FABLE_RETAIL_C3DBOUNDINGBOX_GETCENTER_PROBE3)
+    const C3DVector GetCenter() const { return (MaxCoord + MinCoord) / 2.0f; }
+#elif defined(FABLE_RETAIL_C3DBOUNDINGBOX_CENTER_MIN_FIRST)
     const C3DVector GetCenter()const{return (MinCoord+MaxCoord)*0.5f;}
 #else
     const C3DVector GetCenter() const { return (MaxCoord + MinCoord) * 0.5f; }
@@ -32,6 +43,18 @@ public:
     // members are private, so callers that read the corners (GetLightsInArea 0x00B46280) go through them.
     const C3DVector& PeekMinCoord() const { return MinCoord; }
     const C3DVector& PeekMaxCoord() const { return MaxCoord; }
+#endif
+#ifdef FABLE_RETAIL_C3DBOUNDINGBOX_OBB
+    // Row 0x00ADE080: Ego_r.pdb 0x00BCFDA0 / FableWin.pdb 0x03313830 ?InitialiseFromOBB@C3DBoundingBox@@QAEXABV1@ABVCMatrix3x4@@@Z --
+    // the axis-aligned box around a box transformed by a 3x4 matrix (an SSE path behind g_SSEAvailable 0x013D2880, else x87).
+public:
+    void InitialiseFromOBB(const C3DBoundingBox& obb, const class CMatrix3x4& transform);
+#endif
+#ifdef FABLE_RETAIL_C3DBOUNDINGBOX_SETCENTERDIAG
+    // Retail opt-in (wfE8, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?SetCenterDiag@C3DBoundingBox@@QAEXABVC3DVector@@0@Z,
+    // inline in retail (0x00A30172..0x00A301FF: MinCoord = center - diagonal stored, then MaxCoord = center + diagonal).
+public:
+    FABLE_FORCEINLINE void SetCenterDiag(const C3DVector& center, const C3DVector& diagonal) { MinCoord = center - diagonal; MaxCoord = center + diagonal; }
 #endif
 private:
     C3DVector MinCoord;

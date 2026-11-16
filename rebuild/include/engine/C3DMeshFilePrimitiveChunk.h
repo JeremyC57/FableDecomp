@@ -8,6 +8,9 @@
 #include "rebuild_abi.h"
 #include "engine/CChunkedFileSuperChunk.h"
 #include "engine/CArray.h"
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+class C3DMeshFileVerticesChunk;class C3DMeshFileTrianglesChunk;class C3DMeshFileGroupChunk;class C3DMeshFileClothChunk;
+#endif
 #ifdef FABLE_RETAIL_C3DMESHFILEPRIMITIVECHUNK_ACCESSORS
 class C3DMeshFileVerticesChunk;class C3DMeshFileUniqueVerticesChunk;class C3DMeshFileTrianglesChunk;class C3DMeshFileGroupChunk;
 #endif
@@ -33,6 +36,20 @@ public:
 #endif
 private:
     CArray<long> MaterialIndices;
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+public:
+    static const char* FABLE_FASTCALL GetStaticChunkType();
+#ifndef FABLE_RETAIL_C3DMESHFILEPRIMITIVECHUNK_ACCESSORS     // (that opt-in declares these two)
+    long GetMaterialIndex(unsigned long index) const { return MaterialIndices[index]; }   // FableWin ?GetMaterialIndex@C3DMeshFilePrimitiveChunk@@QBEJK@Z
+    CCountedPointer<const C3DMeshFileVerticesChunk> PeekVertices() const;              // 0x00ABAFE0
+#endif
+    CCountedPointer<const C3DMeshFileTrianglesChunk> FindFirstTriangles() const;       // 0x00ABB300
+    CCountedPointer<const C3DMeshFileTrianglesChunk> FindNextTriangles(const CCountedPointer<const C3DMeshFileTrianglesChunk>&) const;   // 0x00ABB390
+    CCountedPointer<const C3DMeshFileGroupChunk> FindFirstGroup() const;               // 0x00ABB920
+    CCountedPointer<const C3DMeshFileGroupChunk> FindNextGroup(const CCountedPointer<const C3DMeshFileGroupChunk>&) const;   // 0x00ABB9B0
+    CCountedPointer<const C3DMeshFileClothChunk> FindFirstCloth() const;               // 0x00ABBC00
+    CCountedPointer<const C3DMeshFileClothChunk> FindNextCloth(const CCountedPointer<const C3DMeshFileClothChunk>&) const;   // 0x00ABBC90
+#endif
 };
 FABLE_STATIC_ASSERT_AT(21, sizeof(C3DMeshFilePrimitiveChunk) == 0x38);
 #endif // FABLE_ENGINE_C3DMESHFILEPRIMITIVECHUNK_H

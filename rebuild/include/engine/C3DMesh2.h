@@ -3,6 +3,11 @@
 #include "engine/C3DMeshMaterial.h"
 #include "engine/C3DPrimitive2.h"
 #include <stddef.h>
+#ifdef FABLE_RETAIL_C3DMESH2_INITIALISEBONES
+#include "engine/CArray.h"
+#include "stlport/fable_map.h"
+#include "fable_string.h"
+#endif
 class C3DBone2;class C3DKeyframe;class CMatrix4x4;
 // Complete donor244-byte member range, with native resource prefix8 bytes smaller: full size236.
 #ifdef FABLE_RETAIL_C3DMESH2_HELPERPOINTS
@@ -73,6 +78,27 @@ public:
     // place, 0x00BD2AC3 / 0x00BD2B10; C3DBone2 is 0x3C bytes in Ego_r).
     unsigned long GetBoneCount() const { return BoneCount; }
     const C3DBone2* GetBone(unsigned long index) const { return &Bones[index]; }
+#endif
+#ifdef FABLE_RETAIL_C3DMESH2_INITIALISEBONES
+    // Retail opt-in (wfE8, row 0x00A8B990 C3DMesh2::InitialiseBones): Ego_r.pdb / FableWin.pdb private ?InitialiseBones@C3DMesh2@@AAE_N
+    // ABVC3DMeshFileSubMeshChunk@@@Z and its callees ?GetUsedBones@..@@ABEXAAV?$CArray@_N@@@Z (0x00A8B5F0), ?PackBoneNames@..@@AAE_NABV?$
+    // CArray@VCCharString@@@@@Z (0x00A8B6C0), ?RemapBoneIndices@..@@AAEXAAV?$map@KK..@std@@@Z (0x00A8B820), ?CalculateBoneKeyframes@..@@
+    // AAEXXZ (0x00A8A9D0), all landed. Declarations only; no layout change.
+private:
+    void GetUsedBones(CArray<bool>&) const;                                            // 0x00A8B5F0
+    bool PackBoneNames(const CArray<CCharString>&);                                    // 0x00A8B6C0
+    void RemapBoneIndices(std::map<unsigned long, unsigned long>&);                    // 0x00A8B820
+    void CalculateBoneKeyframes();                                                     // 0x00A8A9D0
+    bool InitialiseBones(const class C3DMeshFileSubMeshChunk&);
+public:
+#endif
+#ifdef FABLE_RETAIL_C3DMESH2_BONENAMEPOINTERS_DECL
+    // Retail opt-in (wfE8 6th agent, row 0x00A8B990): Ego_r.pdb / FableWin.pdb private ?InitialiseBoneNamePointers@C3DMesh2@@AAEXK@Z
+    // (landed out of line at 0x00A892E0; expanded inside PackBoneNames 0x00A8B6C0). Declaration only (the row defines the same-TU
+    // body above PackBoneNames); no layout change.
+private:
+    void InitialiseBoneNamePointers(unsigned long);                                    // 0x00A892E0
+public:
 #endif
 #ifndef FABLE_RETAIL_C3DMESH2_HELPERPOINTS
     unsigned char UnmodelledBase[0x7c];

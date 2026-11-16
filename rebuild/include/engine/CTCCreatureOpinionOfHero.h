@@ -49,6 +49,9 @@ enum EOpinion;                                                           // MS f
 #ifdef FABLE_RETAIL_COPINIONTRANSIENTOFFSET_BINARY
 class CMemoryDataInputStream;
 #endif
+#ifdef FABLE_RETAIL_COPINIONTRANSIENTOFFSET_TRAITS
+class COpinionPersonalityTraits;
+#endif
 class COpinionTransientOffset {
 public:
     // ??0COpinionTransientOffset@@QAE@XZ (Ego_r / FableWin), inline in retail: the stores run Opinion, the run-in pair, the run-out pair,
@@ -65,6 +68,12 @@ public:
     COpinionTransientOffset(const COpinionTransientOffset& other)
         : Opinion(other.Opinion), OffsetPerFrameRunIn(other.OffsetPerFrameRunIn), FramesToRunIn(other.FramesToRunIn),
           FramesOfCappedPeak(other.FramesOfCappedPeak), OffsetPerFrameRunOut(other.OffsetPerFrameRunOut), FramesToRunOut(other.FramesToRunOut) {}
+#endif
+#ifdef FABLE_RETAIL_COPINIONTRANSIENTOFFSET_TRAITS
+    // Retail opt-in (acctC wfA1, row 0x00682810 InformOfDeed): Ego_r.pdb / FableWin.pdb
+    // ??0COpinionTransientOffset@@QAE@ABV0@ABVCOpinionPersonalityTraits@@@Z, out of line in retail at 0x00681680 (the row builds the
+    // scaled copy into a temporary, then list push_back, 0x0068342E..). Declaration only.
+    COpinionTransientOffset(const COpinionTransientOffset& other, const COpinionPersonalityTraits& traits);   // 0x00681680
 #endif
     EOpinion Opinion;
     float OffsetPerFrameRunIn;
@@ -95,6 +104,12 @@ public:
     float operator[](long opinion) const { return OpinionValues[opinion]; }
 #endif
     CArray<float> OpinionValues;
+#ifdef FABLE_RETAIL_COPINIONSET_SUBSCRIPT_CONST
+    // Overlay opt-in (wfD4 s6, row 0x006D1E30 CTCWife::FrameUpdate): FableWin.pdb ??ACOpinionSet@@QBEMJ@Z (0x01F16A20), the const subscript
+    // returning the value BY VALUE (inline in retail): the row copies each entry into a stack temporary before GFLimitReturn binds it
+    // (`mov eax,[ebx+0Ch] ; mov [esp+10h],eax` 0x006D2488). The non-const float& form (??ACOpinionSet@@QAEAAMJ@Z) is not modelled.
+    float operator[](long index) const { return OpinionValues[index]; }
+#endif
 };
 #endif
 
@@ -119,6 +134,11 @@ private:
     friend class CTCWife;
     void ClearAllKnownDeeds();
 public:
+#endif
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_SETPERSONALITYOVERRIDE_INDEX
+    // Overlay opt-in (wfD4, row 0x006D1E30): the def-index overload ?SetPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXJ_N@Z (Ego_r.pdb
+    // 0x00593410, after the CCharString overload 0x00593040), out of line in retail at 0x00681E60 (reloc_bindings). Declaration only.
+    void SetPersonalityOverride(long personality, bool permanent);       // 0x00681E60
 #endif
 #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_SETDEEDMASK
     // Retail opt-in (chunk Q32, row 0x00958B20): Ego_r.pdb ?SetOpinionDeedMask@CTCCreatureOpinionOfHero@@QAEXJ@Z (retail 0x006821E0,

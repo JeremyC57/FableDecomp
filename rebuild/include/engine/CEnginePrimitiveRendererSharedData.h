@@ -118,6 +118,14 @@ public:
     CPixelShader*    PixelShaderDiffuseEnvBumpFogShadow;                  // +0x230
     CPixelShader*    PixelShaderDiffuseDP3BumpFogShadow;                  // +0x234
     CPixelShader*    PixelShaderDiffuseDP3BumpFogShadowOutputFactor;      // +0x238
+#elif defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_SHADOWBUFFERSHADERS)
+    // Nested opt-in (wfA6b, row 0x00BA6240 CEnginePrimitiveManagerStaticMeshesBase::RenderPrimitiveToShadowBuffer): Ego_r.pdb
+    // PixelShaderShadowBufferRender +0x21C / PixelShaderShadowBufferRenderAlpha +0x220 (CPixelShader*) carved out of the pad.
+    // Same size and later offsets.
+    unsigned char    _pad_0xc4[0x21c - 0xc4];                            // +0xc4 DynamicVBUsage .. PixelShaderOutlineSmoothFillDP3Alpha
+    class CPixelShader* PixelShaderShadowBufferRender;                   // +0x21c
+    class CPixelShader* PixelShaderShadowBufferRenderAlpha;              // +0x220
+    unsigned char    _pad_0x224[0x23c - 0x224];                          // +0x224 PixelShaderDiffuseFogShadow .. PixelShaderDiffuseDP3BumpFogShadowOutputFactor
 #else
     unsigned char    _pad_0xc4[0x23c - 0xc4];                            // +0xc4 DynamicVBUsage .. PixelShaderDiffuseDP3BumpFogShadowOutputFactor
 #endif
@@ -249,7 +257,26 @@ private:
 #ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
 protected:
     bool BlockOnLoad;
-#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_MIPMAPSIZEMULTIPLIER
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_ZSPRITE
+    // Overlay opt-in (row 0x00BAA870 RenderFromSortList): Ego_r.pdb ZSpriteDrawDistanceFactor +0x8C (read in place 0x00BAB394),
+    // MinimumZSpriteAsMeshDistance +0x90 / MaximumZSpriteAsMeshDistance +0x94 and MipmapSizeMultiplier +0xb0 (superset of
+    // _MIPMAPSIZEMULTIPLIER). FableWin.pdb inlines ?GetZSpriteDrawDistanceFactor / ?GetMinimumZSpriteAsMeshDistance /
+    // ?GetMaximumZSpriteAsMeshDistance@CEnginePrimitiveRendererSharedData@@QAEMXZ. No layout change.
+    unsigned char _pad_0x5[0x8c - 0x5];
+public:
+    float ZSpriteDrawDistanceFactor;                                     // +0x8c
+    float MinimumZSpriteAsMeshDistance;                                  // +0x90
+    float MaximumZSpriteAsMeshDistance;                                  // +0x94
+protected:
+    unsigned char _pad_0x98[0xb0 - 0x98];
+public:
+    float MipmapSizeMultiplier;                                          // +0xb0
+    float GetZSpriteDrawDistanceFactor() { return ZSpriteDrawDistanceFactor; }
+    float GetMinimumZSpriteAsMeshDistance() { return MinimumZSpriteAsMeshDistance; }
+    float GetMaximumZSpriteAsMeshDistance() { return MaximumZSpriteAsMeshDistance; }
+protected:
+    unsigned char _pad_0xb4[0x268 - 0xb4];
+#elif defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_MIPMAPSIZEMULTIPLIER)
     // Opt-in (row 0x00B8B780): Ego_r.pdb MipmapSizeMultiplier +0xb0 (float), read by the inline
     // CEnginePrimitiveRenderUtil::GetMipmapSizeMultiplier.
     unsigned char _pad_0x5[0xb0 - 0x5];

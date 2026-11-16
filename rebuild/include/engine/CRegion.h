@@ -46,6 +46,17 @@ public:
 public:
     CRegion& operator=(const CRegion& other);                // 0x00519B80
 #endif
+#ifdef FABLE_RETAIL_CREGION_LOADFROMFILE
+    // Retail opt-in (chunk H40g, row 0x00507C30 CWorldMap::LoadFromFile, which writes the protected members in place; re-based by
+    // agent wfE10): Ego_r.pdb ?AddMap@CRegion@@QAEXJ@Z 0x006BC4A0, ?SetRegionDefName@CRegion@@QAEXABVCCharString@@@Z 0x006BC1D0,
+    // ?SetMiniMapRegionExitTextOffsetX@CRegion@@QAEXABVCCharString@@M@Z 0x006BC4D0 / ...Y 0x006BC4F0.
+    friend class CWorldMap;
+public:
+    void AddMap(long map);
+    void SetRegionDefName(const CCharString& name);
+    void SetMiniMapRegionExitTextOffsetX(const CCharString& exitName, float x);
+    void SetMiniMapRegionExitTextOffsetY(const CCharString& exitName, float y);
+#endif
 public: const CCharString& GetName() const { return Name; }
     // Codex pass 13 (rows 0x004FD040 / 0x00501450): Ego_r / FableWin accessors; GetDisplayName, GetWorldMapOffset and
     // GetNameGraphicOffset out of line, the rest inline in retail.

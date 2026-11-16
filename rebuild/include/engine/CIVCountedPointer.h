@@ -94,6 +94,9 @@ public:
     void Reset(T* object) { Release(); Object = object; }
 #endif
 #else
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_FORCEINLINE_RELEASE
+    FABLE_FORCEINLINE                                                    // see the Release() note below (chunk 2056)
+#endif
     void Reset(T* object) { Release(); Object = object; if (Object) Object->AddRef(); }
 #endif
 #else
@@ -176,6 +179,13 @@ public:
         }
     }
 #else
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_FORCEINLINE_RELEASE
+    // Nested opt-in (chunk 2056, row 0x0048E78E CSubtitleRenderer::DrawButtonGraphics, a size-optimised TU): the same Reset / Release
+    // bodies, forced. Retail expands the whole CEnginePrimitiveHandle::Clear cascade in place (0x0048EE70..0x0048EE84: `mov ecx,[edi+4] ;
+    // cmp ecx,esi ; je ; dec [ecx+4] ; jne ; mov eax,[ecx] ; call [eax+4] ; mov [edi+4],esi ; mov [edi+4],esi`); in a size TU c2 calls
+    // the plain-inline Release copy out of line even when Clear itself is forced (cascades must be forced bottom-up). Same text.
+    FABLE_FORCEINLINE
+#endif
     void Release() {
         CIVCountedPointeeBase* object = Object;
         if (object) {

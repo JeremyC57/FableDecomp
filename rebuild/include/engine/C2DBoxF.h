@@ -55,8 +55,15 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
  float GetTLY() const { return TLY; }
  float GetBRX() const { return BRX; }
  float GetBRY() const { return BRY; }
+#if defined(FABLE_RETAIL_C2DBOXF_EXTENT_NAMED)
+ // Overlay opt-in (wfA4, row 0x00BAA870): FableWin ?GetWidth@C2DBoxF@@QBEMXZ / ?GetHeight@C2DBoxF@@QBEMXZ are 13i/30b and 13i/31b at /Od,
+ // two instructions more than the one-expression body (11i/22b): the difference stored in a named local and returned.
+ float GetWidth() const { float width=BRX-TLX; return width; }
+ float GetHeight() const { float height=BRY-TLY; return height; }
+#else
  float GetWidth() const { return BRX-TLX; }
  float GetHeight() const { return BRY-TLY; }
+#endif
 #ifdef FABLE_RETAIL_C2DBOXF_GETEXTENTS
  // Original FableWin PDB exact GetExtents signature; donor0227D670 calls
  // GetHeight, GetWidth and the real C2DExtentsF(float,float) value constructor.
@@ -74,6 +81,18 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
  // ?ToC2DBoxI@C2DBoxF@@QBE?AVC2DBoxI@@XZ (out of line at 0x00A55A30, landed; C2DBoxI by hidden pointer). Needs C2DVector / C2DBoxI.
  C2DBoxF(const class C2DVector& centre,float radius);
  class C2DBoxI ToC2DBoxI() const;                                       // 0x00A55A30
+#endif
+#ifdef FABLE_RETAIL_C2DBOXF_SETTERS
+ // Nested opt-in (wfE9-9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): FableWin.pdb ?SetTLPos@C2DBoxF@@QAEXABVC2DVector@@@Z,
+ // ?SetWidth@C2DBoxF@@QAEXM@Z, ?SetHeight@C2DBoxF@@QAEXM@Z (FableWin 0x020DF960 / 0x020DF990 / 0x020DF9C0, emitted right after
+ // CDrawMiniMap::Draw = first used there); inline in retail, whose NPlayerGui TU also keeps out-of-line COMDAT copies at 0x00643930
+ // (copies X / Y into TLX / TLY), 0x00643950 (BRX = TLX + width), 0x00643960 (BRY = TLY + height). Bodies follow the class.
+ // SetTLPos is the FABLE_RETAIL_C2DBOXF_SETTLPOS member when that opt-in is also set (same body).
+#ifndef FABLE_RETAIL_C2DBOXF_SETTLPOS
+ void SetTLPos(const class C2DVector& pos);
+#endif
+ void SetWidth(float width) { BRX = TLX + width; }
+ void SetHeight(float height) { BRY = TLY + height; }
 #endif
 #ifdef FABLE_RETAIL_C2DBOXF_CORNERPOS
  // Nested opt-in (wfB6, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility): FableWin.pdb ?GetTLPos@C2DBoxF@@QBE?AVC2DVector@@XZ
@@ -104,6 +123,10 @@ FABLE_FORCEINLINE C2DBoxF::C2DBoxF(const C2DVector& tl,const C2DVector& br):TLX(
 #else
 inline C2DBoxF::C2DBoxF(const C2DVector& tl,const C2DVector& br):TLX(tl.X),TLY(tl.Y),BRX(br.X),BRY(br.Y){}
 #endif
+#endif
+#if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_SETTERS) && !defined(FABLE_RETAIL_C2DBOXF_SETTLPOS)
+#include "engine/C2DVector.h"
+inline void C2DBoxF::SetTLPos(const C2DVector& pos) { TLX = pos.X; TLY = pos.Y; }
 #endif
 #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_CORNERPOS)
 #include "engine/C2DVector.h"

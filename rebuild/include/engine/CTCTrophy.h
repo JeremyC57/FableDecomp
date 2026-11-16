@@ -73,12 +73,18 @@ public:
     bool  IsGlobalTC;                                                    // +0x40
     long  CurrentInstructionsPage;                                       // +0x44
     bool  Mountable;                                                     // +0x48
+#ifdef FABLE_RETAIL_CTCTROPHY_ISMINIGAMEINPROGRESS
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?IsMiniGameInProgress@CTCTrophy@@QBE_NXZ, inline in retail
+    // (`mov al,[ecx+14h]` = MinigameInProgress in place, 0x004A3F8D). Body only: no layout change.
+    bool IsMiniGameInProgress() const { return MinigameInProgress; }
+#endif // FABLE_RETAIL_CTCTROPHY_ISMINIGAMEINPROGRESS
 };
-FABLE_STATIC_ASSERT(offsetof(CTCTrophy, PDef) == 0x0c);
-FABLE_STATIC_ASSERT(offsetof(CTCTrophy, PendingGainedWitnessSounds) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTCTrophy, AvailableWitnesses) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CTCTrophy, WitnessesAchieved) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CTCTrophy, WaitingForConfirmation) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CTCTrophy, CurrentInstructionsPage) == 0x44);
-FABLE_STATIC_ASSERT(sizeof(CTCTrophy) == 0x4c);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CTCTrophy, PDef) == 0x0c);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CTCTrophy, PendingGainedWitnessSounds) == 0x2c);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CTCTrophy, AvailableWitnesses) == 0x34);
+FABLE_STATIC_ASSERT_AT(80, offsetof(CTCTrophy, WitnessesAchieved) == 0x38);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CTCTrophy, WaitingForConfirmation) == 0x3c);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CTCTrophy, CurrentInstructionsPage) == 0x44);
+FABLE_STATIC_ASSERT_AT(83, sizeof(CTCTrophy) == 0x4c);
 #endif

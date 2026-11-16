@@ -33,6 +33,9 @@ class C3DVector;
 #endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_DYNAMICVB
 enum EVertexBufferPool;                                                  // MS forward enum
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_DYNAMICIB
+enum EIndexBufferPool;                                                   // MS forward enum (engine/CIndexBuffer.h)
+#endif
 #endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_ADDGENERATEDOBJECTS
 class CEngineInternalPrimitiveStaticMesh;
@@ -202,6 +205,15 @@ public:
     static EVertexBufferPool __fastcall GetDynamicVBPool();
     static unsigned long __fastcall GetDynamicVBLockFlags();
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_DYNAMICIB
+    // Overlay opt-in (wfA4, row 0x00BB2540 CEngineClothRenderer::RenderPolygons): FableWin.pdb ?GetDynamicIBUsage@CEnginePrimitiveRenderUtil@@SIKXZ,
+    // ?GetDynamicIBPool@CEnginePrimitiveRenderUtil@@SI?AW4EIndexBufferPool@@XZ, ?GetDynamicIBLockFlags@CEnginePrimitiveRenderUtil@@SIKXZ (static
+    // fastcall, no out-of-line copy in retail; shared data DynamicIBUsage +0xD0 / DynamicIBPool +0xD4 / DynamicIBLockFlags +0xD8, read at
+    // 0x00BB2BBF..0x00BB2BED). The including row defines the bodies.
+    static unsigned long __fastcall GetDynamicIBUsage();
+    static EIndexBufferPool __fastcall GetDynamicIBPool();
+    static unsigned long __fastcall GetDynamicIBLockFlags();
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERTEXT_RENDER
     // Original FableWin bodies02e74030/90/e0 and both PDB class records.
     const C2DAlphaMaskInfo* GetCurrent2DAlphaMaskInfo();
@@ -273,6 +285,12 @@ public:
     static CEngineCamera& __fastcall GetCurrentCamera();                 // ?GetCurrentCamera@CEnginePrimitiveRenderUtil@@SIAAVCEngineCamera@@XZ
     void SetupBlendOpState(EEnginePrimitiveBlendOp op);                   // ?SetupBlendOpState@CEnginePrimitiveRenderUtil@@QAEXW4EEnginePrimitiveBlendOp@@@Z
     bool SetupAlphaBlendingStatesFromBlendMode(EEnginePrimitiveBlendMode mode);   // ?SetupAlphaBlendingStatesFromBlendMode@CEnginePrimitiveRenderUtil@@QAE_NW4EEnginePrimitiveBlendMode@@@Z
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SETUPDIFFUSESHADING
+    // Nested opt-in (wfE5 14th author, row 0x00BC8A60 RenderLine): FableWin.pdb ?SetupDiffuseShading@CEnginePrimitiveRenderUtil@@QAEX_NKK@Z
+    // (0x02EC0760, 159b/49i), a debug COMDAT placed right after RenderLine (first used there); no Ego_r.pdb / retail out-of-line copy.
+    // Parameter names descriptive. The including row defines the inline body. Declaration only.
+    void SetupDiffuseShading(bool textured, unsigned long brightness, unsigned long alpha);
+#endif
 #endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SETTEXTUREFACTOR
     // Opt-in (chunk 851, row 0x00BA1B00 DisplayMirroredTextures): Ego_r.pdb / FableWin.pdb
@@ -327,6 +345,13 @@ public:
     void Set2DAlphaMaskTextureMode(unsigned long stage, bool filter, bool clamp);
     void DisableTextureFiltering(unsigned long stage);
     const C2DAlphaMaskInfo* GetCurrent2DAlphaMaskInfo();
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SHADOWBUFFERSHADERS
+    // Opt-in (wfA6b, row 0x00BA6240 CEnginePrimitiveManagerStaticMeshesBase::RenderPrimitiveToShadowBuffer): FableWin.pdb inline statics
+    // ?GetPixelShaderShadowBufferRender@CEnginePrimitiveRenderUtil@@SIABVCPixelShader@@XZ and ?GetPixelShaderShadowBufferRenderAlpha@..@@SIABVCPixelShader@@XZ
+    // (no Ego_r.pdb or retail copy: the row reads [g_pPrimitiveRendererSharedData+21Ch] / [+220h] in place). The including row defines the bodies.
+    static const CPixelShader& __fastcall GetPixelShaderShadowBufferRender();
+    static const CPixelShader& __fastcall GetPixelShaderShadowBufferRenderAlpha();
 #endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_STATICMESHSHADERS
     // Opt-in (agentC20, row 0x00BA2350 CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants): the remaining FableWin.pdb static

@@ -44,6 +44,11 @@ template<class Base> inline void CGenericVertex<Base>::SetNormal(const C3DVector
 template<class Base> inline void CGenericVertex<Base>::SetU1(float u){this->U1=u;}
 template<class Base> inline void CGenericVertex<Base>::SetV1(float v){this->V1=v;}
 #endif
+#if defined(FABLE_RETAIL_CGENERICVERTEX_INLINE_SETU1V1) && !defined(FABLE_RETAIL_CGENERICVERTEX_INLINE)
+// Overlay opt-in (wfA4, row 0x00BB2540): FableWin.pdb ?SetU1V1@?$CGenericVertex@VCTVertexNormTex1Base@@@@QAEXMM@Z alone (with
+// _INLINE_SETTERS, whose SetU1 / SetV1 bodies would clash with _INLINE): the two member stores, as the _INLINE body.
+template<class Base> inline void CGenericVertex<Base>::SetU1V1(float u, float v) { this->U1 = u; this->V1 = v; }
+#endif
 #ifdef FABLE_RETAIL_CGENERICVERTEX_INLINE
 // Retail opt-in (chunk 2005, row 0x00B51570): the FableWin.pdb inline setters (no out-of-line copy in retail): plain member stores.
 template<class Base> inline void CGenericVertex<Base>::SetX(float x) { this->X = x; }

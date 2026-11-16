@@ -8,6 +8,11 @@
 #ifdef FABLE_RETAIL_QUADRIC_CUNIQUEVERTEX
 #include "stlport/fable_map.h"
 #endif
+#ifdef FABLE_RETAIL_QUADRIC_CVERTEXPAIRCONTRACTION
+#include "engine/CArray.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_map.h"
+#endif
 // Original Ego_r class records; retail three container reductions give native vertex strideB8.
 namespace QuadricOptimiserInternals {
 class CQuadric {public:double AA,AB,AC,AD,BB,BC,BD,CC,CD,DD,Weight;void operator+=(const CQuadric&);double EvaluateError(const C3DVector&)const;
@@ -15,6 +20,14 @@ class CQuadric {public:double AA,AB,AC,AD,BB,BC,BD,CC,CD,DD,Weight;void operator
  // Retail opt-in (chunk Q14, row 0x00AC70F0): Ego_r.pdb 0x00C5F9C0 / FableWin.pdb 0x034BF810
  // ?GetInverseMatrixPart@CQuadric@QuadricOptimiserInternals@@QBE?AVCMatrix3x4@@XZ, out of line in retail at 0x00AC70F0. Declaration only.
  CMatrix3x4 GetInverseMatrixPart()const;
+#endif
+#ifdef FABLE_RETAIL_CQUADRIC_MEMBERS
+ // Retail opt-in (row 0x00ACA830): Ego_r.pdb / FableWin.pdb ?Clear@CQuadric@QuadricOptimiserInternals@@QAEXXZ (0x00AC6CE0),
+ // ??XCQuadric@QuadricOptimiserInternals@@QAEXN@Z (0x00AC6EF0; both same-TU out-of-line definitions that 0x00ACA830 expands) and
+ // ?Initialise@CQuadric@QuadricOptimiserInternals@@QAEXABVC3DVector@@0M@Z (0x00AC7050, called). Declarations only.
+ void Clear();
+ void operator*=(double scale);
+ void Initialise(const C3DVector& normal,const C3DVector& point,float weight);
 #endif
 };
 #ifdef FABLE_RETAIL_QUADRIC_CUNIQUEVERTEX
@@ -47,6 +60,23 @@ class COptimisedVertex {public:
  float GetGroupDifference(const COptimisedVertex&)const;
 };
 class CSubContraction {public:unsigned long Index1,Index2;};
+#ifdef FABLE_RETAIL_QUADRIC_CVERTEXPAIRCONTRACTION
+// Retail opt-in (row 0x00ACA830): Ego_r.pdb CVertexPairContraction (Exists, Unsplit, SubContractions, Weight2, Cost,
+// ResultingPosition, ListIterator; retail 0x28 with a 12-byte CArray and a 4-byte multimap iterator, as the landed UpdateCost
+// 0x00AC8A60 / ComputeContraction 0x00AC92C0 models) with FableWin.pdb's inline ??0CVertexPairContraction@QuadricOptimiserInternals@@QAE@XZ
+// (expanded at 0x00ACB935: [0] = 1, [1] = 0, the vector words, [24h] = 0); Ego_r.pdb CContractionReference { CCountedPointer
+// Contraction; unsigned long SubIndex } with the inline ??0CContractionReference@...@QAE@ABV?$CCountedPointer@...@@K@Z (0x00ACC2D0).
+class CVertexPairContraction {public:
+ bool Exists,Unsplit;CArray<CSubContraction> SubContractions;float Weight2,Cost;C3DVector ResultingPosition;
+ std::multimap<float,CCountedPointer<CVertexPairContraction> >::iterator ListIterator;
+ CVertexPairContraction():Exists(true),Unsplit(false),ListIterator(0){}
+};
+class CContractionReference {public:
+ CCountedPointer<CVertexPairContraction> Contraction;unsigned long SubIndex;
+ CContractionReference(){}
+ CContractionReference(const CCountedPointer<CVertexPairContraction>& contraction,unsigned long sub_index):Contraction(contraction),SubIndex(sub_index){}
+};
+#endif
 #ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDFACE
 // Retail opt-in (chunk Q15, rows 0x00AC7CB0 / 0x00AC7300): Ego_r.pdb COptimisedFace (72 bytes, no containers, so the retail
 // layout is the PDB one): VertexIndices +0, UniqueVertexIndices +0Ch, Edges +18h, UTangent +24h, VTangent +30h, Exists +3Ch,

@@ -21,6 +21,10 @@ const CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char*) co
 // Opt-in (wfA3, row 0x00ACDB80 COptimisedPrimitive ctor): retail 0x00AA8190 (reloc_bindings; Ego_r name), the CLTH loop's call 0x00ACE4AF.
 CCountedPointer<CChunkedFileChunk> FindNextSubChunkOfType(const CCountedPointer<const CChunkedFileChunk>&);
 #endif
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+const CCountedPointer<CChunkedFileChunk> FindNextSubChunkOfType(const CCountedPointer<const CChunkedFileChunk>&) const;   // 0x00AA7FF0
+unsigned long CountSubChunksOfType(const char*) const;   // 0x00AA7EA0
+#endif
 virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
 virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
 virtual CChunkedFileChunk* CreateNewInstance() const=0;

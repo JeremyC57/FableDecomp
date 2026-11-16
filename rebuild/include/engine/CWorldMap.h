@@ -129,6 +129,19 @@ public:
     // DrawGetNoMaps is the virtual CIDrawWorldMap slot and GetNoMaps (FableWin only) counts maps, not regions. Declaration only.
     long GetRegionCount() const;                             // 0x004FB470
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_SETSOUNDTHEMESDISABLED
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?SetSoundThemesDisabled@CWorldMap@@QAEX_N@Z, inline in retail
+    // (`mov byte [eax+4Ch],1` = SoundThemesDisabled on GetWorldMap(), 0x004A40CF). Body only: no layout change.
+    void SetSoundThemesDisabled(bool disabled) { SoundThemesDisabled = disabled; }
+#endif // FABLE_RETAIL_CWORLDMAP_SETSOUNDTHEMESDISABLED
+#ifdef FABLE_RETAIL_CWORLDMAP_MOVEPLAYERPOS
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?StartMovePlayerPos@CWorldMap@@QAEXJABVC3DVector@@W4ELoadType@1@@Z (0x00502500),
+    // ?EndMovePlayerPos@CWorldMap@@QAEXXZ (0x005064B0) and ?IsLoadingAnyMap@CWorldMap@@QBE_NXZ (0x004FB4A0), all called. Needs the nested ELoadType
+    // (declared above under FABLE_RETAIL_CWORLDMAP). Declarations only.
+    void StartMovePlayerPos(long player, const C3DVector& pos, ELoadType load_type);   // 0x00502500
+    void EndMovePlayerPos();                                             // 0x005064B0
+    bool IsLoadingAnyMap() const;                                        // 0x004FB4A0
+#endif // FABLE_RETAIL_CWORLDMAP_MOVEPLAYERPOS
 #ifdef FABLE_RETAIL_CWORLDMAP_SAVEGAMESTATE
     // Opt-in (chunk 2052, row 0x0049F4C0): Ego_r.pdb ?SaveGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z, out of line at 0x004FDE80.
     void SaveGameState(CPersistContext& context);                       // 0x004FDE80
@@ -226,6 +239,27 @@ public:
 protected:
     void SetMapPlacement(const C2DBoxI& area, long map);
 public:
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_POPULATE
+    // Retail opt-in (chunk 879, row 0x00502E90; re-based by agent wfE10): Ego_r.pdb / FableWin.pdb
+    // ?PopulateRegionWithVillagers@CWorldMap@@QAEXAAVCThing@@@Z (public, called by PostRegionLoad 0x005064C0). Declaration only.
+    void PopulateRegionWithVillagers(CThing& village);       // 0x00502E90
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_LOADFROMFILE
+    // Retail opt-in (chunk H40g, row 0x00507C30 CWorldMap::LoadFromFile; re-based by agent wfE10): Ego_r.pdb names bound by argument
+    // shape at the call sites of 0x00507C30: ?AllocateMapUID@CWorldMap@@IAEKJ@Z 0x004FCE20, ?IsMapPlacementPositionFree@CWorldMap@@IAE_NABVC2DBoxI@@@Z
+    // 0x004FCA50, ?GetLevelDimensions@CWorldMap@@QBE?AVC2DBoxI@@ABVCCharString@@@Z 0x00506E30, ?SaveWorldToBinaryFile@CWorldMap@@QAEXAAVCWideString@@@Z
+    // 0x004FBDE0, ?CompileLoadableGlobalThingsToSingleFile@CWorldMap@@IAEXABVCWideString@@@Z 0x004FE030,
+    // ?LoadAllLoadableGlobalThingsFromSingleFile@CWorldMap@@IAEXABVCWideString@@@Z 0x004FE2A0, ?LoadLoadableGlobalThings@CWorldMap@@IAEXXZ 0x004FDBC0,
+    // ?LoadRegionGraph@CWorldMap@@QAEXABVCWideString@@@Z 0x00506D40. Declarations only.
+    unsigned long AllocateMapUID(long map);
+    bool IsMapPlacementPositionFree(const C2DBoxI& area);
+    C2DBoxI GetLevelDimensions(const CCharString& levelName) const;
+    void SaveWorldToBinaryFile(CWideString& filename);
+    void CompileLoadableGlobalThingsToSingleFile(const CWideString& filename);
+    void LoadAllLoadableGlobalThingsFromSingleFile(const CWideString& filename);
+    void LoadLoadableGlobalThings();
+    void LoadRegionGraph(const CWideString& filename);
 #endif
 #ifdef FABLE_RETAIL_CWORLDMAP_GROUNDFACENORMAL
     // Nested opt-in (chunk Q14, row 0x0066C900 CRegionMinimap::IlluminateRegionMinimapTheme): Ego_r.pdb (0x006E7420) / FableWin.pdb

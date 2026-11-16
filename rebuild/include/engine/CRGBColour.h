@@ -43,12 +43,22 @@ public:
         struct { unsigned char B,G,R,A; };
         unsigned long IntValue;
     };
+#ifdef FABLE_RETAIL_CRGBCOLOUR_DEFAULTCTOR_OUTOFLINE
+    // Opt-in (wfE8, row 0x00B03CA0, PROBE): the default ctor not visible to the TU -- retail builds the row's two CRGBColour[3] locals with
+    // `vector constructor iterator` 0x004038C0 over the folded empty ctor 0x004048E0 (pushes at 0x00B040EF / 0x00B042AC). Declaration only.
+    CRGBColour();
+#else
     CRGBColour() { }
+#endif
 #if defined(FABLE_RETAIL_CRGBCOLOUR) && defined(FABLE_RETAIL_CRGBCOLOUR_CTOR4_INITIALISE)
     // Opt-in (chunk 4007, row 0x0061B610; first measured by hand882 on the PC twin 0x0061E6D0): FableWin ??0CRGBColour@@QAE@EEEE@Z is
     // 18 instructions / 44 bytes at /Od = the four-channel constructor forwarding to ?Initialise@CRGBColour@@QAEXEEEE@Z (19i/48b),
     // like the three-channel constructor below; the member-store body is 20i/51b. Same release bytes, one more inline layer.
     CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Initialise(r,g,b,a); }
+#elif defined(FABLE_RETAIL_CRGBCOLOUR_FORCEINLINE_CTOR4)
+    // Opt-in (wfE3, 2026-11-15, row 0x00F1EED0 PlayWave): retail never calls ??0CRGBColour@@QAE@EEEE@Z out of line (no binding in
+    // rebuild/oracles/reloc_bindings.tsv) and expands it at 0x00F21108 where c2's plain-inline score is 888 (f 0.0024): always inline.
+    FABLE_FORCEINLINE CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
 #else
 #ifdef FABLE_RETAIL_CRGBCOLOUR_CTOR_FORCEINLINE
     // Per-TU opt-in (row 0x00CBFB7D RunCutsceneMacro; hand885 text): ??0CRGBColour@@QAE@EEEE@Z has no out-of-line copy in Fable.exe

@@ -107,8 +107,11 @@ class CThingFilter_In2DRange
 #endif
 {
 public:
-#ifdef FABLE_RETAIL_CTHINGFILTER_IN2DRANGE_CTOR
+#if defined(FABLE_RETAIL_CTHINGFILTER_IN2DRANGE_CTOR) || defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_IN2DRANGE_CTOR)
     // Retail opt-in (Codex pass22,row0090E5D0): original02B659D8 constructor call and both class records.
+    // Overlay opt-in (wfD4, row 0x0090D030 CAIStateGroup_MinionGossip::Update): the inline member-initialiser constructor of the
+    // engine/CThingFilter_In2DRange.h class (same layout, Ego_r ??0CThingFilter_In2DRange@@QAE@ABVC3DVector@@M@Z), built in place in
+    // retail (0x0090D0C3..0x0090D0F9: Pos copied to [esp+70h], Range 16.0f to [esp+7Ch]).
     CThingFilter_In2DRange(const C3DVector& pos,float range):Pos(pos),Range(range){}
 #endif
     bool operator()(const CThing& thing) const;                          // 0x006A76B0

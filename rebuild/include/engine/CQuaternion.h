@@ -24,7 +24,8 @@ public:
  // Both original PDB signatures; native A88C10/A88DE0, donor Update call sites.
  void ToRightHandedSet(CRightHandedSet& dest)const {
   float d=GFSqr(X)+GFSqr(Y)+GFSqr(Z)+GFSqr(W);
-#ifdef FABLE_RETAIL_CQUATERNION_PARTICLE_ADD_FLOAT_SCALE
+#if defined(FABLE_RETAIL_CQUATERNION_PARTICLE_ADD_FLOAT_SCALE) || defined(FABLE_RETAIL_CQUATERNION_TORIGHTHANDEDSET_FLOAT)
+  // Opt-in (wfD6, row 0x00B01900): single-precision literals; retail 0x00B02493 `fdivr dword ptr [2.0f]` / 0x00B0249D `fld dword ptr [1.0f]`.
   float s=(d!=0.0f)?2.0f/d:1.0f;
 #else
   float s=(d!=0.0f)?2.0/d:1.0;
@@ -71,6 +72,11 @@ public:
  // returns this), both out of line.
  CQuaternion operator*(const CQuaternion& q) const;
  const CQuaternion& operator*=(const CQuaternion& q);
+#endif
+#ifdef FABLE_RETAIL_CQUATERNION_MUL
+ // Opt-in (wfD6, row 0x00B01900): Ego_r / FableWin ??DCQuaternion@@QBE?AV0@ABV0@@Z alone (out of line at 0x00A88B60), for TUs that
+ // already declare operator*= through FABLE_RETAIL_CQUATERNION_PARTICLE_UPDATE (MULASSIGN would declare it twice).
+ CQuaternion operator*(const CQuaternion& q) const;
 #endif
 #ifdef FABLE_RETAIL_CQUATERNION_MULASSIGN_INLINE
  // the inline header body (retail 0x00A88C10 is its emitted COMDAT copy): visible, so callers know it does not capture

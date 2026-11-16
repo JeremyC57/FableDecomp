@@ -109,12 +109,20 @@ public:
 #if (defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_ORIGINAL_CHAIN))) || (!defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)))
     CIntelligentPointer& operator=(const CIntelligentPointer& other){SetPointer(other.GetPointer());return *this;}
 #else
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_DIRECT
+    // Nested opt-in (wfE9-7, row 0x00931390 CAIStateGroup_MinionReactToCriminal::Update): the same body with the item passed straight
+    // to SetPItem, no named local (identical bytes out of line: 0x004A9760 = GetPItem on the source, SetPItem, `ret 4`; the argument is
+    // read before the destination either way). The local is a c2 candidate: in that row it raises the marker-pick block's K and with it
+    // the markers._M_finish local's priority over `result` (ebx); without it the row's `!empty()` test, threading and dtor are retail's.
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+#else
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_FORCEINLINE
     // Per-TU opt-in (wf18 row 0x0094F180 CAIStateGroup_BalverineCornered::IsRunnable): that TU expands both `PX = target` assignments
     // in place (0x0094F41E / 0x0094F443: GetPItem on the temporary, SetPItem) past VC7.1's caller-size inline budget.
     FABLE_FORCEINLINE
 #endif
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
+#endif
 #endif
     // Chunk 755 row 0x00729F60 (OnInitialActivate, 0x0072A061..0x0072A06E) also uses this form; some TUs keep an out-of-line
     // copy (0x004A9760).
@@ -174,6 +182,12 @@ template<class T> inline bool FABLE_FASTCALL operator!=(const CIntelligentPointe
 #endif
 #if (defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_RAW_NOT_EQUAL))) || (!defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)))
 // Original FableWin025370d0 calls GetPItem then compares the raw object.
+template<class T> inline bool FABLE_FASTCALL operator!=(const CIntelligentPointer<T>& pointer,const CBaseObject* item){return pointer.GetPItem()!=item;}
+#endif
+#if defined(FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_ITEM_NE) && !((defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_RAW_NOT_EQUAL))) || (!defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK))))
+// Retail opt-in (wfE9-9, row 0x00931390 CAIStateGroup_MinionReactToCriminal::Update): the same FableWin025370d0 text as the block above,
+// on its own switch. FableWin.pdb instantiates ??$?9VCThingBuilding@@@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@PBVCBaseObject@@@Z
+// in that TU right after Update's std::sort; retail evaluates the raw item first, then GetPItem, cmp (0x00931A53..0x00931A64).
 template<class T> inline bool FABLE_FASTCALL operator!=(const CIntelligentPointer<T>& pointer,const CBaseObject* item){return pointer.GetPItem()!=item;}
 #endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE

@@ -30,6 +30,11 @@ enum EMarriageState;                                         // MS forward enum 
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 namespace NHeroStatModifierEvent {class CBase;}
 #endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_WIVES
+#include "stlport/fable_containers.h"
+class CThingAICreature; class CHeroMarriageInfo;
+enum EMarriageState;                                         // MS forward enum
+#endif
 class CTCHeroStats : public CTCBase {
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 public:void InformOfEvent(const NHeroStatModifierEvent::CBase&);
@@ -37,6 +42,14 @@ public:void InformOfEvent(const NHeroStatModifierEvent::CBase&);
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_STATS; }
     float GetMoralityPercentage() const;
+#ifdef FABLE_RETAIL_CTCHEROSTATS_WIVES
+    // Retail opt-in (acctC wfA1, row 0x00682810 CTCCreatureOpinionOfHero::InformOfDeed): Ego_r.pdb
+    // ?GetWivesInMarriageState@CTCHeroStats@@QBEXAAV?$list@PBVCThingAICreature@@V?$allocator@PBVCThingAICreature@@@std@@@std@@W4EMarriageState@@@Z
+    // and ?PeekMarriageInfo@CTCHeroStats@@QBE_N_KAAVCHeroMarriageInfo@@@Z, out of line in retail at 0x0057AE53 / 0x0057AC89
+    // (calls 0x00682F84 / 0x00683044). Declarations only.
+    void GetWivesInMarriageState(std::list<const CThingAICreature*>& wives, EMarriageState state) const;   // 0x0057AE53
+    bool PeekMarriageInfo(unsigned __int64 uid, CHeroMarriageInfo& info) const;                          // 0x0057AC89
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_TRADESKILL
     // Retail opt-in (wf7, rows 0x007735D0 CTCShop::GetAttitudeBuyPriceMultiplier and 0x00773790 GetAttitudeSellPriceMultiplier):
     // Ego_r.pdb (0x0056E5CA) + FableWin.pdb ?GetTradeSkill@CTCHeroStats@@QBEMXZ, out of line in retail at 0x0057C239 (landed).
@@ -76,6 +89,17 @@ public:
     // inline in retail (`cmp ebx,[ebp+0DCh] ; jle ; mov [ebp+0DCh],ebx`, 0x006DE571..0x006DE579). No layout change.
     long GetBestTrophyWitnesses() const { return BestTrophyWitnesses; }
     void SetBestTrophyWitnesses(long value) { BestTrophyWitnesses = value; }
+#endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_PEEKMARRIAGEINFO
+    // Overlay opt-in (wfD4, row 0x006D1E30): Ego_r.pdb 0x0056E06C ?PeekMarriageInfo@CTCHeroStats@@QBE_N_KAAVCHeroMarriageInfo@@@Z, out of line
+    // in retail at 0x0057AC89 (called once by 0x006D1E30). Declaration only.
+    bool PeekMarriageInfo(unsigned __int64 uid, class CHeroMarriageInfo& info) const;   // 0x0057AC89
+#endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_LOVERS
+    // Overlay opt-in (wfD4 s8, row 0x006D1E30): FableWin.pdb ?LogLoverAcquired@CTCHeroStats@@QAEXXZ (0x024884F0, 32 bytes / 12 instructions at /Od
+    // = `NumLoversAcquired++`, its COMDAT in the CTCWife TU run) and ?GetNumberOfLoversAcquired@CTCHeroStats@@QBEJXZ (0x021BCADD); inline (no Ego_r copy).
+    void LogLoverAcquired() { NumLoversAcquired++; }
+    long GetNumberOfLoversAcquired() const { return NumLoversAcquired; }
 #endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_MORALITYMAX
     // Opt-in (chunk 1008, row 0x005EE77C CTCInventoryAbilities::GetExperienceCostToUpgradeAbility): Ego_r.pdb

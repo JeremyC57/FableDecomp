@@ -18,11 +18,22 @@ public:
     CEngineManager() { }
     virtual ~CEngineManager();
     void AddEngine(CIEngine& engine);                       // 0x006404D0
+#ifdef FABLE_RETAIL_CENGINEMANAGER_CLEANUP
+    // Retail opt-in (chunk H40g, row 0x00507C30; re-based by agent wfE10): Ego_r.pdb ?Cleanup@CEngineManager@@QAEXXZ (Ego_r 0x005A5930,
+    // right before AddEngine 0x005A5950; retail 0x00640490 right before AddEngine 0x006404D0), the call after DeleteAllLevels /
+    // DeleteAllRegions (0x00507C93). Declaration only.
+    void Cleanup();
+#endif
     void AddMap(long map);                                  // 0x006403A0
     void AddChangedArea(const C2DBoxI& area);               // 0x00640560
+#ifdef FABLE_RETAIL_CENGINEMANAGER_ONRENDER
+    // Opt-in (wfA2, row 0x00435530 CDisplayEngine::DoRender): Ego_r.pdb ?OnRender@CEngineManager@@QAEXXZ, out of line in retail at
+    // 0x00640500 (DoRender 0x004356EA, ecx = CTBaseSingleton<CEngineManager>::Get()). Declaration only.
+    void OnRender();                                        // 0x00640500
+#endif
 private:
     std::list<CIEngine*> Engines;                           // +0x04
     std::vector<C2DBoxI> ChangedAreas;                      // +0x08
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineManager) == 0x14);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CEngineManager) == 0x14);
 #endif

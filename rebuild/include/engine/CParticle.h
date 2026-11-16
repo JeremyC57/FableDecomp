@@ -88,6 +88,11 @@ public:
     unsigned char GetFlickerIndex() const { return FlickerIndex; }
     unsigned char GetFlickerTimeOffset() const { return FlickerTimeOffset; }
     float GetInterpolatedLifetimer(float fraction) const { return Lifetimer - GetCreationTime() + fraction; }
+#ifdef FABLE_RETAIL_CPARTICLE_LIFETIMERINSECONDS_DECL
+    // Opt-in (wfE8, row 0x00B03CA0): FableWin.pdb ?GetInterpolatedLifetimerInSeconds@CParticle@NParticleEngine@@QBEMM@Z, out of line in
+    // retail at 0x00AF85E0 (calls GetOneOverTickRate 0x00AEAA00); the row calls it at 0x00B0456B. Declaration only.
+    float GetInterpolatedLifetimerInSeconds(float fraction) const;
+#endif
     bool IsActive(float time) const
     {
         if (Lifetimer > 0) return true;
@@ -96,6 +101,11 @@ public:
     }
     // Original donor02F27C00/02F27C40 call the genuine vector interpolation member.
     C3DVector GetInterpolatedPos(float interp)const{return PositionBuffer[1].Interpolate(PositionBuffer[0],interp);}
+#ifdef FABLE_RETAIL_CPARTICLE_INTERPOLATEDORIENTATION
+    // Opt-in (wfD6, row 0x00B01900): FableWin ?GetInterpolatedOrientation@CParticle@NParticleEngine@@QBE?AVCQuaternion@@M@Z, the landed
+    // out-of-line copy 0x00B05620's text (expanded in 0x00B01900). Needs FABLE_RETAIL_CQUATERNION_SLERPFROMIDENTITY and its body.
+    FABLE_FORCEINLINE CQuaternion GetInterpolatedOrientation(float t) const { CQuaternion change; change.SetSlerpFromIdentity(OrientationChange, t); CQuaternion result = Orientation * change; return result; }
+#endif
     C3DVector GetRecordedPos(float delay,float interp)const{
         float t=delay+1.0f-interp;
         long index=GFFloatToLongCeil(t);

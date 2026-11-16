@@ -65,8 +65,18 @@ public:
 #else
     ~CDrawBase();
 #endif
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_VSLOTS
+    // Retail opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): the two virtuals in retail slot order.
+    // rebuild/manifest/rtti-vtables.tsv: CDrawNPCName (no override) slot 0 = 0x00644627, the base ClearPrimitivesIfNecessary
+    // (`cmp byte ptr [ecx+18h],0 ; jne` = Drawing, then the handles cleared); CDrawMiniMap slot 1 = 0x00644660, its landed
+    // ClearPrimitives. The row's for_each(..., mem_fun(&CDrawBase::ClearPrimitivesIfNecessary)) pushes the slot-0 vcall thunk
+    // 0x0043E420 (`jmp [eax]`), ForceClearGui 0x004382C0 (ClearPrimitives) the slot-1 thunk 0x0043E430. Same vptr, no layout change.
+    virtual void ClearPrimitivesIfNecessary();
+    virtual void ClearPrimitives();
+#else
     virtual void ClearPrimitives();
     virtual void ClearPrimitivesIfNecessary();
+#endif
     bool IsDrawing() const { return Drawing; }
 #ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_SETASDRAWING
     // Retail opt-in (chunk Q22, row 0x00649E8B CDrawFishingGame::Draw): FableWin.pdb ?SetAsDrawing@CDrawBase@NPlayerGui@@QAEX_N@Z

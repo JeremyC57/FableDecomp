@@ -50,6 +50,14 @@ private:
 class CDrawHighlightingTargetingCursor : public CDrawBase {
 public:
     void Draw(const CEnginePrimitivePrepareInfo& info);                  // 0x0064BFBA ?Draw@CDrawHighlightingTargetingCursor@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWHIGHLIGHTINGTARGETINGCURSOR_CLEAR
+    // Retail opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): Ego_r.pdb / FableWin.pdb
+    // ?Clear@CDrawHighlightingTargetingCursor@NPlayerGui@@QAEXXZ (out of line in retail at 0x00646709) and FableWin.pdb
+    // ?GetPTargetedThing@CDrawHighlightingTargetingCursor@NPlayerGui@@QBEPAVCThing@@XZ, inline in retail (the caller reads PTargetedThing
+    // +0x28 in place: `lea ecx,[eax+28h] ; call CBaseIntelligentPointer::GetPItem`, 0x00439803). No layout change.
+    void Clear();                                                        // 0x00646709
+    CThing* GetPTargetedThing() const { return PTargetedThing.Get(); }
+#endif
 private:
     CIntelligentPointer<CThing> PTargetedThing;                          // +0x28
     CRGBColour                  CurrentColour;                           // +0x30

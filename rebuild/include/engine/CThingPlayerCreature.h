@@ -173,9 +173,14 @@ public:
     virtual EControlledMovementType GetControlledMovementType() const;   // slot 92, 0x006A9870
 public:
 #endif // FABLE_RETAIL_CTHINGPLAYERCREATURE_VSLOTS2
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ONREGIONCHANGE
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?OnRegionChange@CThingPlayerCreature@@QAEXXZ (0x006AA100, called 0x004A4DDF).
+    void OnRegionChange();                                               // 0x006AA100
+#endif // FABLE_RETAIL_CTHINGPLAYERCREATURE_ONREGIONCHANGE
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CThingPlayerCreature)==0x208);
+FABLE_STATIC_ASSERT_AT(178, sizeof(CThingPlayerCreature)==0x208);
 #else
 // Original sole base CThingCreatureBase; native Create006ac91c allocates208.
 // Complete original tail ControlPos through MovementBandType is unused here.
@@ -195,7 +200,7 @@ public: CThingPlayerCreature();
     static CClass* __fastcall Alloc();
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CThingPlayerCreature)==0x208);
+FABLE_STATIC_ASSERT_AT(198, sizeof(CThingPlayerCreature)==0x208);
 #endif
 #if defined(FABLE_RETAIL_PLAYER) && defined(FABLE_RETAIL_CINTELLIGENTPOINTER) && defined(FABLE_ENGINE_CPLAYER_H)
 // Retail opt-in (chunk 728): the inline FableWin-only CPlayer::GetPPlayerCharacter declared in engine/CPlayer.h (PlayerCharacter +0x34).

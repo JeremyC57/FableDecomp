@@ -13,6 +13,12 @@ public:
     C3DVector       Size;               // +0x18
     CRightHandedSet RightHandedSet;     // +0x24
     CRGBColour      Colour;             // +0x3c
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEPARTICLEMESH_CTOR
+    // Opt-in (wfE8, row 0x00B03CA0): FableWin.pdb ??0CEnginePrimitiveParticleMesh@@QAE@_KABVC3DVector@@ABVCRightHandedSet@@1ABVCRGBColour@@W4EEngineInterpolationSet@@@Z,
+    // out of line (retail 0x00B058E0, landed). Declaration only.
+    CEnginePrimitiveParticleMesh(unsigned __int64 uid, const C3DVector& world_pos, const CRightHandedSet& rh_set, const C3DVector& size,
+                                 const CRGBColour& colour, EEngineInterpolationSet interp_set);
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveParticleMesh) == 0x40);
+FABLE_STATIC_ASSERT_AT(17, sizeof(CEnginePrimitiveParticleMesh) == 0x40);
 #endif

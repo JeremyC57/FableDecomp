@@ -1,0 +1,3 @@
+00cbfb7d	src	DIFF		rebuild/src/compiled/00/cb/global_RunCutsceneMacro_00cbfb7d.cpp
+0047042a	src	DIFF		rebuild/src/compiled/00/47/CSoundMap_TransferBinaryIn_0047042a.cpp
+0047042a	test	DIFF		rebuild/tests/00/47/CSoundMap_TransferBinaryIn_0047042a_test.cpp

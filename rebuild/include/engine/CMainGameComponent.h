@@ -156,6 +156,12 @@ protected:
     unsigned char RoughFPSCounter[8];               // +0x161BC CRoughFrameCounter
 #endif
     CGameComponent* NextComponentToRun;             // +0x161C4
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_FRIEND_DISPLAYENGINE
+    // Opt-in (wfA2, row 0x00435530 CDisplayEngine::DoRender): DoRender reads the protected DebugNoFramesUnableToRender +0x161E4 in place
+    // (`mov ecx,[eax+161E4h] ; test ecx,ecx`, 0x00435AB9) and neither PDB has an accessor for it (FableWin.pdb keeps every inline
+    // accessor of the class out of line), so CDisplayEngine is a friend. No layout change.
+    friend class CDisplayEngine;
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ENGINEGRAPHICS
     friend class CGraphicDataBank;
     CCountedPointer<CGraphicDataBank> PMainGraphicBank;  // +0x161C8 (typed: opt-in below)

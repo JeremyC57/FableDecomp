@@ -18,15 +18,7 @@ public:
 // opaque here (retail sizeof of the morph info 0x38; set 12 bytes, CArray 12). FableWin.pdb
 // ?GetMorphInfo@CEngineInternalPrimitiveMorphedStaticMesh@@UAEPAVCEngineInternalPrimitiveMorphInfo@@XZ returns &Morph (virtual).
 #include "engine/CEngineInternalPrimitiveStaticMesh.h"
-#include "engine/CVectorMap.h"
-class CEngineTextureDecal;
-class CCompositeSurfaceInfo;
-class CEngineInternalPrimitiveMorphInfo {
-public:
-    CVectorMap<std::pair<long,long>,CEngineTextureDecal,CKeyPairCompareLess<std::pair<long,long>,CEngineTextureDecal> > TextureDecals;   // +0x00
-    CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> > CompositeSurfaces;                       // +0x10
-    unsigned char _opaque_0x20[0x18];                                    // +0x20 HiddenMaterialNames (set), HiddenMaterials (CArray)
-};
+#include "engine/CEngineInternalPrimitiveMorphInfo.h"
 class CEngineInternalPrimitiveMorphedStaticMesh : public CEngineInternalPrimitiveStaticMesh {
 public:
     virtual CEngineInternalPrimitiveMorphInfo* GetMorphInfo();

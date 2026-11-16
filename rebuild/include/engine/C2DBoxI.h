@@ -14,7 +14,16 @@ class C2DBoxI { public:
 #endif
  long TLX,TLY,BRX,BRY; C2DBoxI() {}
 // Original Ego_r TPI0xb186; centre/radius arithmetic is native0074a685 onward.
-#if defined(FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE) || defined(FABLE_RETAIL_C2DBOXI_CENTRE_RADIUS_OUTOFLINE)
+#if defined(FABLE_RETAIL_C2DBOXI_RADIUS_INITIALIZERS_FIRST)
+// Retail opt-in (agent wfE10-5, rows 0x00795300 / 0x0078FD60): the FableWin direct four-field initialiser body (the RADIUS_INITIALIZERS
+// text below) as the FIRST branch, so it wins over the TU's CTCVOLUMECONTAINMENTTRACKER_UPDATE out-of-line declaration: retail
+// computes x-r, y-r, x+r, y+r and stores TL then BR (0x007954F2..0x0079550F).
+C2DBoxI(const C2DCoordI& p,long radius):TLX(p.X-radius),TLY(p.Y-radius),BRX(p.X+radius),BRY(p.Y+radius){}
+#elif defined(FABLE_RETAIL_C2DBOXI_RADIUS_INLINE)
+// Retail opt-in (acctB, row 0x00795300; re-based by agent wfE10): the default inline (coord, radius) constructor body in a TU that also
+// defines FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE (the spell FrameUpdate expands it: no call to 0x00434740).
+C2DBoxI(const C2DCoordI& p,long radius){long x=p.X;long y=p.Y;Initialise(x-radius,y-radius,x+radius,y+radius);}
+#elif defined(FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE) || defined(FABLE_RETAIL_C2DBOXI_CENTRE_RADIUS_OUTOFLINE)
 // FABLE_RETAIL_C2DBOXI_CENTRE_RADIUS_OUTOFLINE (w22 agent2042, row 0x007F2DC0 CTCLightningNode::FrameUpdate): the same out-of-line
 // declaration without the other CTCVolumeContainmentTracker opt-ins (FrameUpdate calls 0x00434740, 0x007F2EAD).
 C2DBoxI(const C2DCoordI&,long); // Original both PDBs; native00434740.

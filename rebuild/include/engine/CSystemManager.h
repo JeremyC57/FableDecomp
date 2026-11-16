@@ -105,6 +105,13 @@ CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
  bool IsApplicationActive();
  bool HasInputFocus();
 #endif
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER_PROFILEMANAGER
+public:
+ // Opt-in (wfA2, row 0x00435530 CDisplayEngine::DoRender): Ego_r.pdb ?GetProfileManager@CSystemManager@@QAEPAVCProfileManager@@XZ, inline in
+ // retail (DoRender reads the counted pointer's Data word +0xF8 in place after GFGetSystemManager 0x009A4EC0: `mov eax,[eax+0F8h]`,
+ // 0x00435779). Body descriptive (the PDB keeps no source). No layout change.
+ CProfileManager* GetProfileManager(){return ProfileManager.Get();}
+#endif
 };
 FABLE_STATIC_ASSERT_AT(100, sizeof(CSystemManager)==0x180);
 CSystemManager* __fastcall GFGetSystemManager();

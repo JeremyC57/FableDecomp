@@ -18,6 +18,12 @@ public:
         TeleportData();                                                  // 0x00D15140
         ~TeleportData();                                                 // 0x00CD4550
 #endif
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_MAINTHREADS
+#ifndef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY2
+        TeleportData();                                                  // 0x00D15140 (dtor implicit: COMDAT 0x00CD4550, expanded at Main's hot exit)
+#endif
+        TeleportData& operator=(const TeleportData&);                    // 0x00D15170 (Ego_r.pdb ??4TeleportData@CQ_BountyHuntScript@NScript@@)
+#endif
     };
     CQ_BountyHuntScript(CScriptDataBase*,CGameScriptInterfaceBase&);
     virtual ~CQ_BountyHuntScript();
@@ -48,6 +54,17 @@ public:
     void WatchForLeaderGruntsKilled();                                   // 0x00D1C9E0
     void WatchForLeaderChargeGruntsKilled();                             // 0x00D1CAC0
     class CBH_GangLeader;                                                // Alloc 0x00D16380
+#endif
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_MAINTHREADS // wfE1 (row 0x00D13580): the threads / entity scripts Main binds and spawns (Ego_r.pdb + FableWin.pdb QAEXXZ).
+    void WatchForQuestFailure();                                         // 0x00D15090
+    void WatchForQuestSuccess();                                         // 0x00D150F0
+    void WatchForEnableFisherCreekHutDoor();                             // 0x00D151D0
+    void WatchForAllGruntsKilled();                                      // 0x00D17340
+    class CBH_GangGrunt;                                                 // Alloc 0x00D15940
+    class CBH_GangGruntSpawn;                                            // Alloc 0x00D153F0
+#ifndef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY2
+    class CBH_GangDeputy2;                                               // Alloc 0x00D161A0
+#endif
 #endif
     bool QuestFailed;
     bool QuestSucceeded;
@@ -99,7 +116,28 @@ public:
     std::vector<TeleportData> TeleportInfo;
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript)==0x94);
+FABLE_STATIC_ASSERT_AT(102, sizeof(NScript::CQ_BountyHuntScript)==0x94);
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_MAINTHREADS
+// wfE1 (row 0x00D13580): the CBH_GangGrunt / CBH_GangGruntSpawn entity scripts as far as Main uses them (their Allocs, bound by
+// CEntityScriptBinding; Ego_r.pdb + FableWin.pdb ?Alloc@CBH_GangGrunt@ / ?Alloc@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@SI...).
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_BountyHuntScript::CBH_GangGrunt : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BountyHuntScript&, CScriptDataBase*, const CScriptThing&); // 0x00D15940
+};
+class CQ_BountyHuntScript::CBH_GangGruntSpawn : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BountyHuntScript&, CScriptDataBase*, const CScriptThing&); // 0x00D153F0
+};
+#ifndef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY2
+class CQ_BountyHuntScript::CBH_GangDeputy2 : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BountyHuntScript&, CScriptDataBase*, const CScriptThing&); // 0x00D161A0
+};
+#endif
+}
+#endif
 #ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY2
 // Opt-in (chunk 797): the CBH_GangDeputy2 entity script (Ego_r.pdb CBH_GangDeputy2, 28 bytes: ParentClass +0x14, PMasterData +0x18)
 // and the TeleportData ctor / dtor its Main 0x00D18DF0 calls out of line (Ego_r.pdb ??0 / ??1TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ),
@@ -121,7 +159,7 @@ protected:
     CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_GangDeputy2) == 0x1c);
+FABLE_STATIC_ASSERT_AT(124, sizeof(NScript::CQ_BountyHuntScript::CBH_GangDeputy2) == 0x1c);
 #endif
 #ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY1
 // Retail opt-in (chunk 833): the CBH_GangDeputy1 entity script (Ego_r.pdb CBH_GangDeputy1, 28 bytes = the landed Alloc 0x00D15FC0's
@@ -144,7 +182,7 @@ protected:
     CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_GangDeputy1) == 0x1c);
+FABLE_STATIC_ASSERT_AT(147, sizeof(NScript::CQ_BountyHuntScript::CBH_GangDeputy1) == 0x1c);
 #endif
 #ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_HOSTAGE1
 // Retail opt-in (chunk 833): the CBH_Hostage1 entity script (Ego_r.pdb CBH_Hostage1, 28 bytes = the landed Alloc 0x00D160B0's new size:
@@ -166,7 +204,7 @@ protected:
     CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_Hostage1) == 0x1c);
+FABLE_STATIC_ASSERT_AT(169, sizeof(NScript::CQ_BountyHuntScript::CBH_Hostage1) == 0x1c);
 #endif
 #ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_HOSTAGE2
 // Retail opt-in (chunk 833): the CBH_Hostage2 entity script (Ego_r.pdb CBH_Hostage2, 28 bytes = the landed Alloc 0x00D16290's new size:
@@ -188,7 +226,7 @@ protected:
     CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_Hostage2) == 0x1c);
+FABLE_STATIC_ASSERT_AT(191, sizeof(NScript::CQ_BountyHuntScript::CBH_Hostage2) == 0x1c);
 #endif
 #ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGLEADER // Retail opt-in (Codex pass 21): original PDB/native leader owner and watchers; rebased hand810 model.
 // Opt-in (chunk 810): the CBH_GangLeader entity script (Ego_r.pdb CBH_GangLeader, 44 bytes: ParentClass +0x14, PMasterData +0x18,
@@ -221,7 +259,7 @@ private:
     float HealthCurrent;                                                 // +0x28
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_GangLeader) == 0x2c);
+FABLE_STATIC_ASSERT_AT(224, sizeof(NScript::CQ_BountyHuntScript::CBH_GangLeader) == 0x2c);
 #endif
 
 #endif

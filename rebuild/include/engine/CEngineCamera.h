@@ -39,7 +39,34 @@ public:
  const C3DVector& PeekCameraPos()const{return CameraDesc.WorldPosition;}
 #ifdef FABLE_RETAIL_CENGINECAMERA_PEEKWINDOW
  // Opt-in (bwf2, row 0x00BA2350): FableWin.pdb ?PeekWindow@CEngineCamera@@QBEABVC2DBoxF@@XZ (9 debug instructions), inline.
+ // Also wfA5, row 0x00B9AC30: inline in release, CameraDesc.Window +0x14 read in place (0x00B9B350).
  const C2DBoxF& PeekWindow()const{return CameraDesc.Window;}
+#endif
+#ifdef FABLE_RETAIL_CENGINECAMERA_ZSPRITE_ACCESSORS
+ // Overlay opt-in (row 0x00BAA870 RenderFromSortList): FableWin.pdb inline accessors (no Ego_r.pdb or Fable.exe copy; the row reads
+ // the members in place): ?PeekCameraState@CEngineCamera@@QAEABUCEngineCameraDesc@@XZ, ?PeekHFOV@CEngineCamera@@QBEMXZ (below, shared
+ // with FABLE_RETAIL_CENGINECAMERA_LOOKFOV),
+ // ?PeekNonHomogenousViewToViewScaleX/Y@CEngineCamera@@QBEMXZ, ?PeekInvZToZBufferFactor/Offset@CEngineCamera@@QBEMXZ (first used by the
+ // row: FableWin COMDATs after 0x02ED3E30), ?PeekNonHomogenousViewTransform / ?PeekInverseNonHomogenousViewTransform@CEngineCamera@@QBEABVCMatrix3x4@@XZ.
+ const CEngineCameraDesc& PeekCameraState(){return CameraDesc;}
+ float PeekNonHomogenousViewToViewScaleX()const{return HomogenousViewScaleX;}
+ float PeekNonHomogenousViewToViewScaleY()const{return HomogenousViewScaleY;}
+ float PeekInvZToZBufferFactor()const{return ZBufferFactor;}
+ float PeekInvZToZBufferOffset()const{return ZBufferOffset;}
+ const CMatrix3x4& PeekNonHomogenousViewTransform()const{return NoScaleViewTransform;}
+ const CMatrix3x4& PeekInverseNonHomogenousViewTransform()const{return InverseNoScaleViewTransform;}
+#endif
+#ifdef FABLE_RETAIL_CENGINECAMERA_LOOKFOV
+ // Opt-in (wfE6, row 0x00B70A90 CEngineWaterRenderer::RenderEnvironmentMap): FableWin.pdb ?PeekLookVector@CEngineCamera@@QBEABVC3DVector@@XZ
+ // (9 debug instructions), ?PeekHFOV@CEngineCamera@@QBEMXZ (9i; below, shared with FABLE_RETAIL_CENGINECAMERA_ZSPRITE_ACCESSORS) and
+ // ?PeekVFOV@CEngineCamera@@QBEMXZ (22i), inline in retail: 0x00B710FE
+ // reads LookVector +0x1B4..+0x1BC, 0x00B7112B HorizontalFOV +0x60, 0x00B71161..0x00B71191 `Use2DFOV +0x68 ? VerticalFOV +0x64 :
+ // fld 1.0 ; fdiv AspectRatio +0xD0 ; fmul HorizontalFOV`.
+ const C3DVector& PeekLookVector()const{return LookVector;}
+ float PeekVFOV()const{return CameraDesc.Use2DFOV?CameraDesc.VerticalFOV:CameraDesc.HorizontalFOV*(1.0f/AspectRatio);}
+#endif
+#if defined(FABLE_RETAIL_CENGINECAMERA_ZSPRITE_ACCESSORS) || defined(FABLE_RETAIL_CENGINECAMERA_LOOKFOV)
+ float PeekHFOV()const{return CameraDesc.HorizontalFOV;}
 #endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_SHADOWFRUSTRUM_PASS22
  // Original FableWin02d76ff0 member; identical owner/signature in the complete TPI.
@@ -99,7 +126,12 @@ public:
  // ?TransformDistScreenToViewHorizontal@CEngineCamera@@QBEXMAAM@Z (Ego_r / FableWin; expanded in release): a horizontal screen distance
  // to view space at depth z, in place through the reference (0x00BCF54D..0x00BCF566: `fld [cam+0C0h] ; fmul [dist] ; fmul z ;
  // fdiv [cam+0D4h] ; fstp [dist]`).
+#ifdef FABLE_RETAIL_CENGINECAMERA_DISTH_NAMED
+ // Retail opt-in (wfA4, row 0x00BE0EB0): the same text as _MESH2D_ORIGINAL's (product named, then the divide) on the FORCEINLINE branch.
+ void TransformDistScreenToViewHorizontal(float z,float& distance)const{const float scaled=OneOverHalfWindowWidth*distance*z;distance=scaled/HomogenousViewScaleX;}
+#else
  void TransformDistScreenToViewHorizontal(float z,float& distance)const{distance=OneOverHalfWindowWidth*distance*z/HomogenousViewScaleX;}
+#endif
 #endif
 #endif
 private:
@@ -185,6 +217,16 @@ private:
 public:
     CMatrix3x4 InverseNoScaleViewTransform;     // +0x144
     const CMatrix3x4& PeekInverseNonHomogenousViewTransform() const { return InverseNoScaleViewTransform; }
+#ifdef FABLE_RETAIL_CENGINECAMERA_NONHOMOGENOUSVIEW_TRANSFORMS
+    // Nested opt-in (wfE5 14th author, row 0x00BC8A60 CEnginePrimitiveManagerLines::RenderLine): FableWin.pdb
+    // ?TransformWorldToNonHomogenousView@CEngineCamera@@QBEXAAVC3DVector@@@Z (0x02EC0730, 31b/12i) and
+    // ?TransformNonHomogenousViewToWorld@CEngineCamera@@QBEXAAVC3DVector@@@Z (0x02EC0700, 31b/12i): debug COMDATs placed right after RenderLine
+    // (first used there), one-call wrappers of TransformPoint on NoScaleViewTransform (+0x114) / InverseNoScaleViewTransform (+0x144); /Od of
+    // these bodies = FableWin byte counts. No Ego_r.pdb / retail out-of-line copy: expanded in place (0x00BC8ABF.., 0x00BC8E28..).
+    // Needs FABLE_RETAIL_CMATRIX3X4 and FABLE_RETAIL_CENGINECAMERA_PEEKNONHOMOGENOUSVIEWTRANSFORM. No layout change.
+    FABLE_FORCEINLINE void TransformWorldToNonHomogenousView(C3DVector& point) const { NoScaleViewTransform.TransformPoint(point); }
+    FABLE_FORCEINLINE void TransformNonHomogenousViewToWorld(C3DVector& point) const { InverseNoScaleViewTransform.TransformPoint(point); }
+#endif
 private:
     unsigned char _pad_0x174[0xb4];             // +0x174 .. (not modelled)
 #else

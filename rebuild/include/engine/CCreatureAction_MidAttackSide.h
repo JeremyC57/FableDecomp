@@ -1,5 +1,16 @@
 #ifndef FABLE_ENGINE_CCREATUREACTION_MIDATTACKSIDE_H
 #define FABLE_ENGINE_CCREATUREACTION_MIDATTACKSIDE_H
+#ifdef FABLE_RETAIL_CCREATUREACTION_MIDATTACKSIDE_PROTOTYPE
+// Overlay opt-in (wfE11, row 0x006F5C10 CCreatureActionBase::StatRegisterClass): the polymorphic class as the registration
+// prototype `new CCreatureAction_MidAttackSide` builds it: RTTI base CCombatActionBase; default ctor out of line at 0x008B81E0;
+// operator new size 0x114 at the call site.
+#include "engine/CCombatActionBase.h"
+class CCreatureAction_MidAttackSide : public CCombatActionBase {
+public:
+    CCreatureAction_MidAttackSide();                                   // 0x008B81E0
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_MidAttackSide) == 0x114);
+#else
 // CCreatureAction_MidAttackSide (new, chunk Q12): RTTI .?AVCCreatureAction_MidAttackSide@@ : CCombatActionBase (ghidra_out/rtti_bases.tsv),
 // no members of its own (Ego_r.pdb 300 bytes = CCombatActionBase; retail 0x114). Initialise is vtable slot 0x0127AB6C's entry
 // 0x008B6AD0 (Ego_r.pdb / FableWin.pdb ?Initialise@CCreatureAction_MidAttackSide@@UAEXXZ). Includers define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
@@ -8,5 +19,6 @@ class CCreatureAction_MidAttackSide : public CCombatActionBase {
 public:
     virtual void Initialise();                                           // 0x008B6AD0
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_MidAttackSide) == 0x114);
+FABLE_STATIC_ASSERT_AT(11, sizeof(CCreatureAction_MidAttackSide) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_MIDATTACKSIDE_PROTOTYPE
 #endif

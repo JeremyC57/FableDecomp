@@ -59,9 +59,11 @@ public:
     // FableWin.pdb inline ?PeekTextureBank@C3DMeshInfo@@QBEPBVCGraphicDataBank@@XZ (0x02E77A90; the caller reads Bank +0x04, then
     // the bank's TextureBank, in place: 0x00BEC74A). Needs FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK. No layout change.
     bool GetMesh(CCountedPointer<const C3DMesh2>& mesh, unsigned long lod, unsigned long flags) const;   // 0x00A25E70
-#ifdef FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_MEMBER
+#if defined(FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_MEMBER) || defined(FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_DIRECT)
     // Nested opt-in (agentC8, rows 0x00BB30A0 / 0x00BB3E80): FableWin.pdb's debug PeekTextureBank is 10 instructions / 25 bytes = the bank's
     // TextureBank (+0x3D4) read in place (`PeekBank()->TextureBank`); the GetTextureBank() call form is 11 / 26. Same release bytes.
+    // FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_DIRECT (wfA5, row 0x00B9AC30): the same text (+0x3D4, disp32; plain VC7.1 /Od of it
+    // 10 / 25, fwsize SAME).
     const CGraphicDataBank* PeekTextureBank() const { return PeekBank()->TextureBank; }
 #else
     const CGraphicDataBank* PeekTextureBank() const { return PeekBank()->GetTextureBank(); }

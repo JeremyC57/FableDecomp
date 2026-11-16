@@ -19,8 +19,13 @@ public:
     virtual CChunkedFileChunk* CreateNewInstance() const;
     C3DVector Center;                     // +0x10
     float Radius;                         // +0x1C
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+    static const char* FABLE_FASTCALL GetStaticChunkType() { return "XBDS"; }   // FableWin ?GetStaticChunkType@C3DMeshFileXBoundingSphereChunk@@SIPBDXZ
+    C3DVector GetCenter() const { return Center; }
+    float GetRadius() const { return Radius; }
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXBoundingSphereChunk) == 0x20);
+FABLE_STATIC_ASSERT_AT(23, sizeof(C3DMeshFileXBoundingSphereChunk) == 0x20);
 #endif // FABLE_ENGINE_C3DMESHFILEXBOUNDINGSPHERECHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILEXBOUNDINGSPHERECHUNK_H
@@ -47,12 +52,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXBoundingSphereChunk) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingSphereChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingSphereChunk, Center_X) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingSphereChunk, Center_Y) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingSphereChunk, Center_Z) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingSphereChunk, Radius) == 0x1c);
+FABLE_STATIC_ASSERT_AT(50, sizeof(C3DMeshFileXBoundingSphereChunk) == 0x20);
+FABLE_STATIC_ASSERT_AT(51, offsetof(C3DMeshFileXBoundingSphereChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(52, offsetof(C3DMeshFileXBoundingSphereChunk, Center_X) == 0x10);
+FABLE_STATIC_ASSERT_AT(53, offsetof(C3DMeshFileXBoundingSphereChunk, Center_Y) == 0x14);
+FABLE_STATIC_ASSERT_AT(54, offsetof(C3DMeshFileXBoundingSphereChunk, Center_Z) == 0x18);
+FABLE_STATIC_ASSERT_AT(55, offsetof(C3DMeshFileXBoundingSphereChunk, Radius) == 0x1c);
 
 #endif // FABLE_ENGINE_C3DMESHFILEXBOUNDINGSPHERECHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILEXBOUNDINGSPHERECHUNK

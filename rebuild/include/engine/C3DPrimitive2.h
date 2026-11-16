@@ -3,6 +3,42 @@
 #include "engine/C3DTextureStages.h"
 #include "engine/N3DPrimitive_CStaticBlock.h"
 #include <stddef.h>
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+// Opt-in (bwf1, row 0x00A91640 C3DPrimitive2::InitialiseFromMeshFileData): types BoundingSphere, ClothPrimitives, Data, VertexBuffer
+// (Ego_r.pdb), adds N3DPrimitive::CDeviceIndependent (retail 0x50; Ego_r members) and the loader's members.
+#include "boost/scoped_ptr.h"
+#include "engine/CArray.h"
+#include "engine/CCountedPointer.h"
+#include "engine/C3DBoundingSphere.h"
+#include "engine/C3DVertex2.h"
+#include "engine/CBaseClassNonCopyable.h"
+#include "engine/CIVCountedPointer.h"
+#include "engine/CVertexBufferWin32.h"
+class C3DClothPrimitive;class C3DGroup2;class C3DMeshFilePrimitiveChunk;class C3DMeshFileTrianglesChunk;class C3DMeshFileXAnimatedPrimitiveBlockChunk;
+class CScopedMemoryHandle;
+namespace N3DPrimitive {
+class CTriangleList;
+class CDeviceIndependent : public CBaseClassNonCopyable {
+public:
+    CDeviceIndependent();                                                // 0x00A98100
+    virtual ~CDeviceIndependent();
+    void ResizeVertexList(unsigned long count) { Vertices.resize(count); }                       // FableWin ?ResizeVertexList@CDeviceIndependent@N3DPrimitive@@QAEXK@Z
+    void SetVertex(unsigned long index, const C3DVertex2& vertex) { Vertices[index] = vertex; }  // ?SetVertex@..@@QAEXKABVC3DVertex2@@@Z
+    void AddGroup(CCountedPointer<C3DGroup2>& group) { Groups.push_back(group); }                // ?AddGroup@..@@QAEXAAV?$CCountedPointer@VC3DGroup2@@@@@Z
+    void ClearTriangleLists() { TriangleLists.clear(); }                                          // ?ClearTriangleLists@..@@QAEXXZ
+    unsigned long GetTriangleListCount() const { return TriangleLists.size(); }                  // ?GetTriangleListCount@..@@QBEKXZ
+    unsigned long GetTotalTriangleCount() const;                         // 0x00A8ECE0
+    unsigned long GetTotalIndexCount() const;                            // 0x00A8ED30
+    void AddTriangleList(const C3DMeshFileTrianglesChunk& chunk);        // 0x00A90900 (private in Ego_r)
+    CArray<C3DVertex2> Vertices;                                         // +0x04
+    CArray<CIVCountedPointer<CTriangleList> > TriangleLists;             // +0x10
+    CArray<CCountedPointer<C3DGroup2> > Groups;                          // +0x1C
+    C3DBoundingSphere BoundingSphere;                                    // +0x28
+    CArray<C3DVector> UTangents;                                         // +0x38
+    CArray<C3DVector> VTangents;                                         // +0x44
+};
+}
+#endif
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_RENDER
 #include "engine/C3DBoundingSphere.h"
 #endif
@@ -43,6 +79,9 @@ namespace N3DPrimitive { class CDeviceIndependent; }
 namespace N3DPrimitive {
 class CAnimatedBlock : public CBaseBlock {
 public:
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+    void InitialiseFromMeshFileData(const C3DMeshFileXAnimatedPrimitiveBlockChunk& chunk, bool b);   // 0x00A90AE0
+#endif
     unsigned long GetVertexCount() const { return VertexCount; }
     unsigned long GetGroupCount() const { return GroupCount; }
     unsigned long GetGroup(unsigned long index) const { return Groups[index]; }
@@ -96,6 +135,13 @@ public:
 #else
     unsigned char UnmodelledBase[4];
 #endif
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+    long MaterialIndex,RepeatingMeshReps;C3DBoundingSphere BoundingSphere;float AverageTextureStretch;
+    CArray<CCountedPointer<C3DClothPrimitive> > ClothPrimitives;          // +0x20
+    boost::scoped_ptr<N3DPrimitive::CDeviceIndependent> Data;            // +0x2C
+    boost::scoped_ptr<CVertexBufferWin32> VertexBuffer;                  // +0x30
+    unsigned char IndexBuffer[4];                                        // +0x34
+#else
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_RENDER
     // Opt-in (chunk 2060 row 0x00BA5260; re-based by bwf1 / agentC2 row 0x00BB3E80): BoundingSphere typed as Ego_r.pdb declares it
     // (C3DBoundingSphere +0xC, same storage) and the FableWin.pdb inline accessors ?GetMaterialIndex@C3DPrimitive2@@QBEJXZ,
@@ -140,6 +186,7 @@ public:
 #endif
 #else
     unsigned char ClothPrimitives[12],Data[4],VertexBuffer[4],IndexBuffer[4];
+#endif
 #endif
 #endif
     unsigned long VertexBufferStatus,IndexBufferStatus,StaticBlockCount;
@@ -227,6 +274,43 @@ public:
     long GetRecordedFrame() const { return RecordedFrame; }
     const C3DTextureStages& PeekRecordedTextureStages() const { return RecordedTextureStages; }
     void SetRecordedTextureStages(const C3DTextureStages& stages) { RecordedTextureStages=stages; }
+#endif
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+    bool InitialiseFromMeshFileData(const C3DMeshFilePrimitiveChunk& chunk, bool b, unsigned long reps, unsigned long initFlags, CScopedMemoryHandle& memoryHandle);
+    void FreeData();                                                     // 0x00A901E0
+    static unsigned long FABLE_FASTCALL CalculateVertexSize(unsigned long flags, bool a, bool b);   // 0x00A910E0
+private:
+    bool SetupVertexBuffer(EVertexType type, unsigned long size, unsigned long count, unsigned long flags);   // 0x00A8EDA0
+    void AddMirroredTextureVertexIndex(const unsigned long* indices, unsigned long count);   // 0x00A90510
+    void SetVertexBufferStatus(unsigned long status) { VertexBufferStatus |= status; }
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_STREAMFLAGS_MEMBER
+    // Retail opt-in (row 0x00A91640): the expansion at 0x00A92578..0x00A925A1 tests the InitFlags MEMBER, re-read after the byte
+    // store (`mov cl,[edi+68h] ; mov al,2 ; test al,cl ; ... ; or [edi+65h],al ; test byte ptr [edi+68h],10h`), not the by-value
+    // copy the caller passed. Same signature (Ego_r ?SetupVertexStreamFlags@C3DPrimitive2@@AAEXK_N@Z). fwsize: 32i/89b v FableWin
+    // 35i/98b (the default body below is 30i/83b; neither equal: FableWin's text still unknown).
+    void SetupVertexStreamFlags(unsigned long flags, bool b)
+    {
+        VertexStreamFlags = 0;
+        if (b)
+            VertexStreamFlags = 1;
+        if (InitFlags & 2)
+            VertexStreamFlags |= 2;
+        if (InitFlags & 0x10)
+            VertexStreamFlags |= 4;
+    }
+#else
+    void SetupVertexStreamFlags(unsigned long flags, bool b)             // ?SetupVertexStreamFlags@C3DPrimitive2@@AAEXK_N@Z
+    {
+        VertexStreamFlags = 0;
+        if (b)
+            VertexStreamFlags = 1;
+        if (flags & 2)
+            VertexStreamFlags |= 2;
+        if (flags & 0x10)
+            VertexStreamFlags |= 4;
+    }
+#endif
+public:
 #endif
 };
 FABLE_STATIC_ASSERT_AT(193, sizeof(C3DPrimitive2)==0xa0);

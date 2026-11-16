@@ -463,6 +463,24 @@ private:
     // retail 0x00B6D510, landed under the wrong leaf ?InitialiseDynamicTextures@CWaterDynamicTextures@@QAEXXZ: NAME_FIXES.tsv).
     void InitialiseDynamicTextures();                                    // 0x00B6D510
 #endif
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_FOREGROUNDHELPERS
+    // Opt-in (wfA4, rows 0x00B77370 RenderSeaReflectiveForeground / 0x00B751F0 RenderIceForeground): the private helpers both rows expand
+    // (FableWin.pdb ?SetSeaReflectiveForegroundTexturesAndUVModes@CEngineWaterRenderer@@AAE_NXZ 0x02D4F600, ?SetupSeaReflectiveForeground
+    // ShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ 0x02D4FAD0, ?SetIceForegroundTexturesAndUVModes@CEngineWaterRenderer@@AAE_N_N@Z
+    // 0x02D4D210, ?SetupIceForegroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ 0x02D4D690 (retail copy 0x00B7F3B0)); bodies in the rows.
+    bool SetSeaReflectiveForegroundTexturesAndUVModes();
+    void SetupSeaReflectiveForegroundShaderConstantsAndFog();
+    bool SetIceForegroundTexturesAndUVModes(bool shadows);
+    void SetupIceForegroundShaderConstantsAndFog();
+#ifndef FABLE_RETAIL_CENGINEWATERRENDERER_FOREGROUND_BODIES_PASS22   // (that opt-in declares it)
+    void SetupFresnelPixelShaderConstants();                             // FableWin.pdb ?SetupFresnelPixelShaderConstants@CEngineWaterRenderer@@AAEXXZ 0x02D4D810
+#endif
+    // Ego_r.pdb / FableWin.pdb ?GetIceForeground{,Shadowed,ColbuffShadowed}VertexShader@CEngineWaterRenderer@@AAEAAVCVertexShader@@J@Z
+    // (out of line in retail: 0x00B6DF50 / 0x00B6DF90 / 0x00B6DFD0, called by RenderIceForeground).
+    CVertexShader& GetIceForegroundVertexShader(long light_count);
+    CVertexShader& GetIceForegroundShadowedVertexShader(long light_count);
+    CVertexShader& GetIceForegroundColbuffShadowedVertexShader(long light_count);
+#endif
 public:
     CIndexBuffer         ForegroundIndexBuffers;                         // +0x00c
     CIndexBuffer         ForegroundTextureIndexBuffers;                  // +0x020
