@@ -27,6 +27,14 @@ that ctor), 0x007448F0 is GetSightRadius (landed 0x00864620 binds GetExtendedSig
 SetMoneyAsDisplaying (landed 0x00775B40 binds SetCrimeAsDisplaying = 0x00437770). 125 RELOC_NAME (catalog labels the queued fixes
 correct), 9 RELOC_ALIAS.
 
+Open: 0x00435F70 (the landed 5-byte forwarder stub `CDisplayEngine_DoRender_00435f70`) is really CDisplayEngine::Render, so the
+catalog now has DoRender at two addresses. Respelling it means changing CDisplayEngine.h's default-path DoRender declaration that
+the landed caller 0x00406CC0 binds, with a recheck of its includers; queued PRIORITY (land1116gn), not done here.
+
+Grades: all 58 count as genuine; 15 are `retail_asm` (each cites the retail fistp / fnstcw site and uses the existing shared
+GFFloatToLong* / FPU-control helpers; no `__asm` in any row source or test). 49 of the 58 are in the original catalog (README count
+48,270 -> 48,319); the other nine are gap-scan / boundary starts.
+
 ## Headers
 acctC handed back its header changes as per-folder diffs against the repo of the day (`hdrdiff/*.diff`) plus `NEW_<file>` copies,
 48 staged folders in all. They touch 253 existing headers and add 30. Each was merged into the current `rebuild/include`, not
@@ -71,8 +79,7 @@ copied over it:
     (RELOCATION_MATCH, same bytes).
   - 0x00BA2350 timed out in cl once under load and matched only in the lander's `"t"` pragma sweep; alone it matches plainly
     (`logs/vland_dry_rerun4.log`).
-- Two bare `__forceinline` added by wfE10 in stlport/fable_map.h sit behind `defined(_MSC_VER)` (the pattern CVectorMap.h
-  already uses).
+- The two bare `__forceinline` wfE10 added in stlport/fable_map.h (under `FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS && _MSC_VER`) are spelled `FABLE_FORCEINLINE` (follow-up commit; no landed row defines that opt-in, only the parked 0x00502E90 draft).
 
 Gates: every header balances, no conflict markers; no folder-added code line is missing from the merge (checked line by line,
 modulo spelling); lines present more often than in any single source are distinct opt-ins. Whole-tree equivalence

@@ -467,7 +467,7 @@ public:
         else while(first!=last) erase(first++);
     }
 #if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY_DISTANCE
     // Nested opt-in (agent wfE10-5, row 0x00502E90): STLport 4.6 _tree.c's own text, `size_type __n = distance(__p.first, __p.second);`
@@ -744,7 +744,7 @@ public:
 #endif
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY
 #if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
     size_t erase(const K& key){return _M_t.erase(key);}
 #endif
