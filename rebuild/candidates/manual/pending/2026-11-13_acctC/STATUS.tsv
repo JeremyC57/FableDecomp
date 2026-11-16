@@ -64,7 +64,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00bbac60	MATCHED_STAGED	3743	2026-11-15_acctC_wfE5	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	parked	CEnginePrimitiveManagerDecal::RenderLandscapeDecal
 009a25d0	MATCHED_STAGED	3722	2026-11-15_acctC_wfE9fix	workflow unworked/Opus round 3 match + rule fix-up; verifier + coordinator-verified	parked	CStreamingFontBank::Render
 00b1e380	MATCHED_STAGED	3698	2026-11-14_acctC_wfD6	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NParticleEngine::CPSCDecalRenderer::DatabaseSerialise
-0090d030	PARKED		2026-11-14_acctC_wfD4open	after workflow unworked/Opus round 2: DIFFER(3243v3269) parked: baseline graded only; local models, needs re-author on shared headers	parked	CAIStateGroup_MinionGossip::?Update@CAIStateGroup_MinionGossip@@MAEXXZ
+0090d030	MATCHED_STAGED	3269	2026-11-15_acctC_r6_wfD4k	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CAIStateGroup_MinionGossip::?Update@CAIStateGroup_MinionGossip@@MAEXXZ
 005a4cdd	MATCHED_STAGED	3668	2026-11-15_acctC_r6_wfE9	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CTCInventoryTrade::ConstructActualSellInventoryPC
 00531ec0	MATCHED_STAGED	3642	2026-11-15_acctC_r6_wfD5	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	NUISystem::CComponent::Update
 00e27e90	MATCHED_STAGED	3595	2026-11-14_acctC_wfD2	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze::Main

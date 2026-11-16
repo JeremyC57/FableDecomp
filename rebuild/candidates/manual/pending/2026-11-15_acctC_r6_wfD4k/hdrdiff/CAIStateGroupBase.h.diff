@@ -1,0 +1,28 @@
+--- a/rebuild/include/engine/CAIStateGroupBase.h
++++ b/rebuild/include/engine/CAIStateGroupBase.h
+@@ -76,6 +76,11 @@
+     void SetPushableByHero(bool pushable);                               // 0x0097E330
+ #endif
+     unsigned long* GetPWorldSeed() const;                                // 0x008FCFD0 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (chunk 751)
++#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEKPLAYERMANAGER
++    // agentC29 (row 0x00944940 CAIStateGroup_WorkSawingWood::Update): Ego_r.pdb / FableWin.pdb ?PeekPlayerManager@CAIStateGroupBase@@IBEABVCPlayerManager@@XZ
++    // (protected), out of line in retail at 0x008FCF80 (landed; call at 0x00944A94). Declaration only.
++    const CPlayerManager& PeekPlayerManager() const;                     // 0x008FCF80
++#endif
+     // Chunk 754 (row 0x00945BD0 CAIStateGroup_SitForMeal::Update): Ego_r.pdb ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
+     // (protected; retail 0x0097E200).
+ #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+@@ -182,6 +187,13 @@
+         bool& reached, EMovementType movement, bool, bool, bool, bool, float);   // 0x0097E380
+     EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
+ #endif
++#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_INTERACTWITH) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS)
++    // Overlay opt-in (wfD4, row 0x0090D030 CAIStateGroup_MinionGossip::Update): Ego_r.pdb 0x0084C7D0
++    // ?AIAction_InteractWith@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingAICreature@@@@VCCharString@@H_N@Z
++    // (protected; retail 0x00981410, called at 0x0090D6F2). Declaration only.
++    EAIActionReturn AIAction_InteractWith(EAIActionRepeat repeat, CIntelligentPointer<CThingAICreature> creature, CCharString interaction,
++        int frames, bool initiator);                                     // 0x00981410
++#endif
+ #if defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH)
+     // Nested opt-in (chunk 795, row 0x0092FAB0 CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoInteraction): Ego_r.pdb protected
+     // members, out of line in retail, declarations only: ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (0x008FCFC0),
