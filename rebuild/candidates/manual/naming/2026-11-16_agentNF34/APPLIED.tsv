@@ -1,0 +1,646 @@
+line	tag	address	correct_symbol	status	binders_respelled	note
+2	land1115ga	(enumerator)	ENTITY_MOVE_RUN (EScriptEntityMoveType, engine/EScriptEntityMoveType.h)	carry	0	not reached this pass
+3	land1115ga	00406880	?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ	carry	0	not reached this pass
+4	land1115ga	00412130	std::vector<CWideString>::~vector (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)	carry	0	not reached this pass
+5	land1115ga	0041a600	?GetPhotojournalDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+6	land1115ga	00429b72	??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ	carry	0	not reached this pass
+7	land1115ga	00429f43	?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z	carry	0	not reached this pass
+8	land1115ga	004331f9	??$TransferVector@VCCharString@@@CPersistContext@@QAEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	carry	0	not reached this pass
+9	land1115ga	004372a0	?GetWidth@CTexture@@QBEKK@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+10	land1115ga	004375e0	?GetAbilityButtonScale@CPlayerGui@@QBEMXZ	carry	0	not reached this pass
+11	land1115ga	004376b0	?SetMoneyAsDisplaying@CPlayerGui@@QAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+12	land1115ga	0043e420	??_9CDrawBase@NPlayerGui@@$BA@AE (vcall thunk, slot 0 = ClearPrimitivesIfNecessary)	carry	0	not reached this pass
+13	land1115ga	00451354	??$GetDef@VCEnvironmentDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCEnvironmentDef@@@@@Z	carry	0	not reached this pass
+14	land1115ga	004513b9	??$GetDef@VCHeroStatsDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCHeroStatsDef@@@@@Z	carry	0	not reached this pass
+15	land1115ga	00464cbf	??$TransferVector@M@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z	carry	0	not reached this pass
+16	land1115ga	00466a47	??$TransferVector@J@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z	carry	0	not reached this pass
+17	land1115ga	00468eb4	??$TransferVector@VCRGBColour@@@CPersistContext@@QAEXAAV?$vector@VCRGBColour@@V?$allocator@VCRGBColour@@@std@@@std@@@Z	carry	0	not reached this pass
+18	land1115ga	00475d99	??$TransferVector@VC2DVector@@@CPersistContext@@QAEXAAV?$vector@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@@Z	carry	0	not reached this pass
+19	land1115ga	0049b1e0	??$random_shuffle@PAJURandFunc@@@std@@YIXPAJ0AAURandFunc@@@Z	carry	0	not reached this pass
+20	land1115ga	0049b240	??$random_shuffle@PAVCCharString@@URandFunc@@@std@@YIXPAVCCharString@@0AAURandFunc@@@Z	carry	0	not reached this pass
+21	land1115ga	0049b6b0	?push_back@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@QAEXABVCTexture@@@Z	carry	0	not reached this pass
+22	land1115ga	004fad50	??1CThingAICreatureInit@@QAE@XZ	carry	0	not reached this pass
+23	land1115ga	0052e470	?ConvertX@CUIScreenUnitConverter@NUISystem@@SIMM@Z	carry	0	not reached this pass
+24	land1115ga	0052e4d0	?ConvertY@CUIScreenUnitConverter@NUISystem@@SIMM@Z	carry	0	not reached this pass
+25	land1115ga	00535cd0	?ContainsPoint@C2DBoxF@@QBE_NABVC2DVector@@@Z (bool; body `return point.X >= TLX && point.X < BRX && point.Y >= TLY && point.Y < BRY;`)	done	1	self row 0x00535CD0 long->bool on engine/C2DBoxF.h (MATCH); binder 0x00A1BEE0 already bool
+26	land1115ga	00537e70	(not a function) tail of ?ComputeChildrenVisibility@CList@NUISystem@@MAEXXZ at 0x005379F5	carry	0	not reached this pass
+27	land1115ga	00556570	?SetAcceptButton@CRedefinerList@NUISystem@@QAEXPAVCComponent@2@@Z	carry	0	not reached this pass
+28	land1115ga	00564d5d	(tail of 0x00564D50) ?copy@?$char_traits@D@std@@SAPADPADPBDI@Z	carry	0	not reached this pass
+29	land1115ga	0057aa1b	?GetNumRegionsExplored@CTCHeroStats@@QBEJXZ	carry	0	not reached this pass
+30	land1115ga	0058578b	?OpenInventory@CTCInventory@@UAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+31	land1115ga	00598a1c	?BuildComponents@CFrontEndManager@NUISystem@@QAEX_N@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+32	land1115ga	005bc0d3	??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ	carry	0	not reached this pass
+33	land1115ga	005ccc91	?GetTimeSpentInGame@CTCInventoryStats@@SI?AVCWideString@@KPBVCDataBank@NGameText@@@Z	partial	0	binder 0x0047EEE4 calls through a CTCHeroStats pointer whose fetch is otherwise dead; respelling to the static CTCInventoryStats needs a re-model
+34	land1115ga	005d8e50	?ReturnToInventory@CTCInventoryItem@@QAEXXZ	carry	0	not reached this pass
+35	land1115ga	005d9930	?IsTrophy@CTCInventoryItem@@SI_NJ@Z	carry	0	not reached this pass
+36	land1115ga	005da7d0	?GetWeaponType@CTCWeapon@@QBE?AW4EWeaponType@@XZ	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+37	land1115ga	005ede93	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	partial	13	13 CTCInventoryAbilities binders respelled; self row 0x005EDE93 still emits ?GetAbilityLevel@CTCInventoryAbilities@@QAEHH@Z; 0x0057770A / 0x005778CA bind a CTCHeroAbilities stand-in
+38	land1115ga	005f81be	??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z	carry	0	not reached this pass
+39	land1115ga	0060c900	?ConstructMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@_NPA_N@Z	carry	0	not reached this pass
+40	land1115ga	00625930	?IsActive@CTCQuickAccessMenu@@QBE_NXZ	partial	0	4-byte getter (mov al,[ecx+0Ch]); remaining binders 0x00583BD5 (CTCInventoryMenu) / 0x0068FF50 (CTCMenu) call other classes' IsActive folded here (ICF): not respelled; self stand-in row ?M@C_00625930 left (folded body)
+41	land1115ga	006294a0	?EAPlayerRespawn@CWorld@@QAEXPBVCGameEvent@@@Z	carry	0	not reached this pass
+42	land1115ga	00644d54	?GetMiniGameType@CDrawQuestInfo@NPlayerGui@@QBE?AW4EMiniGameType@@XZ	carry	0	not reached this pass
+43	land1115ga	0064d7a6	?DrawChargeGraphic@CDrawQuickAccessIcons@NPlayerGui@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@J@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+44	land1115ga	0066c810	?GetWorldCoordinatesFromTGAPosition@CRegionMinimap@@QBEXAAVC3DVector@@ABVC2DCoordI@@@Z	carry	0	not reached this pass
+45	land1115ga	00677620	??0CReactionMatch_AsymmetricPyramid@@QAE@W4EOpinionReactionType@@W4EOpinion@@1MMMMMM@Z	carry	0	not reached this pass
+46	land1115ga	006a7140	??RCThingFilter_HasInformation@@QBE_NABVCThingAICreature@@@Z (0x006A7140)	carry	0	not reached this pass
+47	land1115ga	006b2ca0	?UpdateSunAndMoonPositions@CEnvironment@@AAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+48	land1115ga	006f5c10	?StatRegisterClass@CCreatureActionBase@@SIXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+49	land1115ga	007021f0	?GetTeleporterRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ	done	0	self row respelled; binders already right (reloc_bindings)
+50	land1115ga	00708a30	??1CEnginePrimitiveAnimatingMesh@@QAE@XZ	carry	0	not reached this pass
+51	land1115ga	0072c430	?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+52	land1115ga	0074cbc0	?at@?$vector@VCDefIndex@@V?$allocator@VCDefIndex@@@std@@@std@@QBEABVCDefIndex@@I@Z	carry	0	not reached this pass
+53	land1115ga	0074d0d0	?SetGenerator@CTCGeneratedCreature@@QAEXABVCThing@@@Z	carry	0	not reached this pass
+54	land1115ga	0074dd20	??0CCreatureAction_UndeadIdleUnderground@@QAE@AAVCThingCreatureBase@@@Z	done	0	self ctor respelled; caller 0x0074AF50 already right
+55	land1115ga	0074fb20	?erase@?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAEPAU?$pair@JVCCharString@@@2@PAU32@0@Z	carry	0	not reached this pass
+56	land1115ga	0075c280	?TransformVector@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBVCRightHandedSet@@@Z	partial	0	binders 0x0075CCB0 / 0x0075CCF0 are CEnvironmentSpellEffectInterface stand-ins with a filter-params type: the caller identity itself is unproven; not respelled
+57	land1115ga	0075c420	?TransformPosition@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBV2@PBVCRightHandedSet@@@Z	done	2	self row 0x0075C420 made protected too (section 1); callers 0x0075CD30 / 0x0075CD90
+58	land1115ga	0075c9b0	?GetEvent@CKeyCamera@CTCCameraPointScriptedSpline@@QBE?AVCCharString@@XZ	carry	0	not reached this pass
+59	land1115ga	007aed10	?GetBossPhase@CTCBoss@@QBEJXZ	carry	0	not reached this pass
+60	land1115ga	007bc38a	?InitMovement@CTCShotDefinitionThrowPredictive@NThingShot@@MAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+61	land1115ga	007db2e0	?NewRound@CTCTavernGameCardBlackjack@@UAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+62	land1115ga	007e15c0	?OnAppearanceDraw@CTCGraphicAppearanceMultipleStaticMeshes@NGraphicAppearance@@UAE_NAAVCTCGraphicAppearance@2@ABVCGraphicAppearanceDrawInfo@2@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+63	land1115ga	007ea580	?GetAllTargetPoints@CTCTargeted@@QBEXAAV?$vector@U?$pair@VC3DVector@@J@std@@V?$allocator@U?$pair@VC3DVector@@J@std@@@2@@std@@M@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+64	land1115ga	007ea880	??$__uninitialized_copy@PAU?$pair@VC3DVector@@J@std@@PAU12@@std@@YIPAU?$pair@VC3DVector@@J@0@PAU10@00ABU__false_type@0@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+65	land1115ga	00802390	?GetMaxTargetingDistance@CTCTargetingPlayer@@QBEMXZ	partial	0	self rename not done: engine/CTCTargetingPlayer.h needs the full FABLE_RETAIL_CTCTARGETINGPLAYER chain (one compile hung, killed by timeout)
+66	land1115ga	008645e0	?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z	carry	0	not reached this pass
+67	land1115ga	00875690	??0CGeneralCircle@NCameraModes@@QAE@ABVC3DVector@@00@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+68	land1115ga	008ac890	??$remove_if@V?$CConvFilterToCP@VCIsEventOfType@NEntityEvents@@@NEntityEvents@@@?$list@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@V?$allocator@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@@std@@@std@@QAEXV?$CConvFilterToCP@VCIsEventOfType@NEntityEvents@@@NEntityEvents@@@Z	carry	0	not reached this pass
+69	land1115ga	008fcfb0	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	partial	2	0x00958840 0x0097FEA0 (overlay opt-in); 0x00917130 0x009378F0 0x00972670 0x00972830 bind GetPDefinitionManager (pointer result) stand-ins, not respelled
+70	land1115ga	008fd46b	?GetName@CAIStateGroup_PerformAction@@SI?AVCCharString@@XZ	carry	0	not reached this pass
+71	land1115ga	008fd4bc	?GetName@CAIStateGroup_MinionReactToCorpse@@SI?AVCCharString@@XZ	carry	0	not reached this pass
+72	land1115ga	008fd7d9	?GetName@CAIStateGroup_ButterflyWander@@SI?AVCCharString@@XZ	carry	0	not reached this pass
+73	land1115ga	008fd923	?GetName@CAIStateGroup_VillageTaskPatrol@@SI?AVCCharString@@XZ	carry	0	not reached this pass
+74	land1115ga	008fd94e	?GetName@CAIStateGroup_VillageTaskPickCrops@@SI?AVCCharString@@XZ	carry	0	not reached this pass
+75	land1115ga	008fdba2	?GetName@CAIStateGroup_PrepareMeal@@SI?AVCCharString@@XZ	carry	0	not reached this pass
+76	land1115ga	008fdbcb	?GetName@CAIStateGroup_GazeOutside@@SI?AVCCharString@@XZ	carry	0	not reached this pass
+77	land1115ga	008fdbf4	?GetName@CAIStateGroup_GazeAtHome@@SI?AVCCharString@@XZ	carry	0	not reached this pass
+78	land1115ga	008fdd10	?GetName@CAIStateGroup_MinionHawkingFromStall@@SI?AVCCharString@@XZ	carry	0	not reached this pass
+79	land1115ga	008fe019	?GetName@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@SI?AVCCharString@@XZ	carry	0	not reached this pass
+80	land1115ga	008fe14d	?GetName@CAIStateGroup_HoverAttack@@SI?AVCCharString@@XZ	carry	0	not reached this pass
+81	land1115ga	008fe93b	??1CAIStateGroupInfo@@QAE@XZ (user-declared INLINE ~CAIStateGroupInfo() {}, this is its out-of-line copy)	carry	0	not reached this pass
+82	land1115ga	00981410	?AIAction_InteractWith@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingAICreature@@@@VCCharString@@H_N@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+83	land1115ga	00984a20	?WatchUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	carry	0	not reached this pass
+84	land1115ga	00985430	?FollowFarUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	carry	0	not reached this pass
+85	land1115ga	009863e0	?CommentAboutHeroIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	carry	0	not reached this pass
+86	land1115ga	009886f0	?SetSoftwareVertexShaderEnable@CShaderRenderManager@@QAEX_N@Z	done	0	self row renamed (MATCH); binders already right
+87	land1115ga	00988700	?SetSoftwareFixedFunctionEnable@CShaderRenderManager@@QAEX_N@Z	done	0	self row renamed (MATCH); binders already right
+88	land1115ga	00989700	?UpdateCameraPos@CShaderRenderManager@@AAEXXZ	done	2	self row renamed UpdateCameraPos (private, MATCH); binder 0x009E1280 respelled; 0x00B54100 already right
+89	land1115ga	009ad390	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z	done	2	0x005EE3B3 0x007C6760 (CDefinitionManager callers); the landed self row at 0x009AD390 is the ICF twin COptimisedPrimitive::ActualToUniqueIndex (left)
+90	land1115ga	009c7c20	?ConstructString@NGameText@@YI_NAAVCWideString@@ABV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	carry	0	not reached this pass
+91	land1115ga	009fc3d0	?AddResource@CResourceBank@@QAEXPAUCResourceBase@@@Z	rejected	0	superseded by line 461 (AddToLoadingQueue)
+92	land1115ga	00a03b30	??1CInputEvent@@QAE@XZ	carry	0	not reached this pass
+93	land1115ga	00a0aea0	?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z	carry	0	not reached this pass
+94	land1115ga	00a0d390	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ	carry	0	not reached this pass
+95	land1115ga	00a23b50	?SetTextureBank@CMeshDataBank@@QAEXPBVCGraphicDataBank@@@Z	done	0	self row renamed (MATCH); binders already right
+96	land1115ga	00a23b60	?SetDP3BumpEnable@CMeshDataBank@@QAEX_N@Z	done	0	self row renamed (MATCH); binders already right
+97	land1115ga	00a3e520	?StopMusic@CSoundManagerLH@@UAEXK@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+98	land1115ga	00a3e830	?SetMonitorAllowedPostStopTailDurationMS@CSoundManagerLH@@UAEXK@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+99	land1115ga	00a45260	?PeekCombinedMorph@C3DSkeletalMorph@@QBE?AV?$CCountedPointer@$$CBVC3DSkeletalMorphTarget@@@@XZ	carry	0	not reached this pass
+100	land1115ga	00a567a0	?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z	done	2	0x007DCCB0, 0x007DCE40
+101	land1115ga	00ab9f60	?GetBoneIndex@C3DMeshFileGroupChunk@@QBEJXZ	carry	0	not reached this pass
+102	land1115ga	00aba350	?GetCount@C3DMeshFileGroupChunk@@QBEKXZ	carry	0	not reached this pass
+103	land1115ga	00aba360	?GetCount@C3DMeshFileVerticesChunk@@QBEKXZ	carry	0	not reached this pass
+104	land1115ga	00aba370	?GetCount@C3DMeshFileTrianglesChunk@@QBEKXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+105	land1115ga	00acdb80	??0COptimisedPrimitive@QuadricOptimiserInternals@@QAE@AAVC3DMeshFilePrimitiveChunk@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+106	land1115ga	00ad7400	??1COptimisedVertex@QuadricOptimiserInternals@@QAE@XZ	carry	0	not reached this pass
+107	land1115ga	00aeaa00	?GetOneOverTickRate@NParticleEngine@@YIMXZ	carry	0	not reached this pass
+108	land1115ga	00aeaaa0	?GetGraphicBank@NParticleEngine@@YIABVCGraphicDataBank@@XZ	carry	0	not reached this pass
+109	land1115ga	00b244f0	?PeekVideoOptionsDef@CEngine@@QAEABVCEngineVideoOptionsDef@@W4EEngineVideoOptionQuality@@@Z	carry	0	not reached this pass
+110	land1115ga	00b6d510	?InitialiseDynamicTextures@CEngineWaterRenderer@@AAEXXZ	carry	0	not reached this pass
+111	land1115ga	00b8d090	?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ	partial	2	0x00B6E260 0x00BE79D0 respelled; self row 0x00B8D090 is a placeholder (?M@C00b8d090@@QAEXXZ) and 0x00B906C0 a stand-in class: left
+112	land1115ga	00b8d0a0	?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z	partial	2	0x00B6E260 0x00BE79D0 respelled; self row 0x00B8D0A0 is a placeholder (?M@C00b8d0a0@@QAEXH@Z) and 0x00B906C0 a stand-in class: left
+113	land1115ga	00b990b0	?UpdateBoneMatrixForWindSheer@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXAAVCEngineInternalPrimitiveRepeatedStaticMesh@@PAVC4DVector@@PBEJ@Z	carry	0	not reached this pass
+114	land1115ga	00b9d670 helper	?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z	done-already	0	NO_BINDER: no landed row binds the address yet; nothing to do
+115	land1115ga	00bacd80	?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z	carry	0	not reached this pass
+116	land1115ga	00bc9b30	?FindNode@CEngineTreeFilerBase@@AAEPAUCNodeHeader@1@PAU21@PAK@Z	carry	0	not reached this pass
+117	land1115ga	00bf0b20	?SetupOutlineFillStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@M@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+118	land1115ga	00c11700	CSoundEventManager::GetTime() (descriptive, double)	carry	0	not reached this pass
+119	land1115ga	00c271e0	CPhysicalPlayer::UpdateManagerTime(CSoundEventManager*) (descriptive)	carry	0	not reached this pass
+120	land1115ga	00c271f0	?Play@CPhysicalPlayer@@QAEXPAUCSoundEventManager@@PAUSPlayDesc@@PAUCSoundEvent@@PAUSEventLevel@@MM@Z (descriptive)	carry	0	not reached this pass
+121	land1115ga	00c271f0	?Play@CPhysicalPlayer@@QAEXPAUCSoundEventManager@@PAUSPlayDesc@@PAUCSoundEvent@@PAUSEventLevel@@MM@Z (descriptive, kept)	carry	0	not reached this pass
+122	land1115ga	00c271f0	CPhysicalPlayer::Play (descriptive, libpk)	carry	0	not reached this pass
+123	land1115ga	00c35dd0	CODA_SourcePlay(CODASource*, long looping) (landed leaf _CODA_SourcePlay@8)	carry	0	not reached this pass
+124	land1115ga	00c4e3c0	?ApplyListenerProperties@CEAXManager@@QAEHPBU_EAXLISTENERPROPERTIES@@@Z (landed) v ?ApplyListenerProperties@CEAXManager@@QAEHPBU_EAX30LISTENERPROPERTIES@@@Z (declared by 0x00C4F600 via engine/EAXNativeTypes.h)	carry	0	not reached this pass
+125	land1115ga	00c6f3e0	?Process@CVtable_012b8aa0@@UAEXPBFPBQAJ@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+126	land1115ga	00cbe09a	??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z	carry	0	not reached this pass
+127	land1115ga	00dc5f80	?Main@CSecretPassageWoman@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+128	land1115ga	00e1feb0	?ResetTraderRandomSpeechTime@CQR_EscortTraderScript@NScript@@QAEXXZ	partial	0	binders 0x00E1FCF0 / 0x00E1FEF0 are CQR_EscortTraderScript members outside namespace NScript: moving the class changes their own leaves (self renames + their callers)
+129	land1115ga	00e337c0	?ResetRandomSpeechTime@CV_ArcheryCompetitionScript@NScript@@QAEXXZ	carry	0	not reached this pass
+130	land1115ga	00f36ee0	?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z	carry	0	not reached this pass
+131	land1115ga	0122a460	_$E2 = CAIStateGroup_OpinionReactionRoot::`dynamic atexit destructor for 'Behaviours''	carry	0	not reached this pass
+132	land1115ga	0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+133	land1115ga	01375cd4	?ScreenWidth@CUIScreenUnitConverter@NUISystem@@2MA	carry	0	not reached this pass
+134	land1115ga	01375cd8	?ScreenHeight@CUIScreenUnitConverter@NUISystem@@2MA	carry	0	not reached this pass
+135	land1115ga	01396dc8	?D3DTextureUVModeTable@CRenderStateManager@@0PAKA	carry	0	not reached this pass
+136	land1115ga	01396dd8	?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+137	land1115ga	013b8768	?IsUsingRelativeCoords@CUIScreenUnitConverter@NUISystem@@2_NA	carry	0	not reached this pass
+138	land1115ga	013b876c	?BackBufferWidth@CUIScreenUnitConverter@NUISystem@@2MA	carry	0	not reached this pass
+139	land1115ga	013b8770	?BackBufferHeight@CUIScreenUnitConverter@NUISystem@@2MA	carry	0	not reached this pass
+140	land1115ga	013b9288	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B	carry	0	not reached this pass
+141	land1115ga	013ba8c8	?RegisteredActions@CCreatureActionBase@@0V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@U?$less@W4EActionRegisteredType@@@std@@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@4@@std@@A	carry	0	not reached this pass
+142	land1115ga	013bb008	?StateGroupInfo@CAIBrain@@0QBVCAIStateGroupInfo@@B	carry	0	not reached this pass
+143	land1115ga	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	carry	0	not reached this pass
+144	land1115ga	013d2838	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A	carry	0	not reached this pass
+145	land1115ga	01436e14	?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A	carry	0	not reached this pass
+146	land1115ga	01436e18	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	carry	0	not reached this pass
+147	land1115ga	01436e50	?GPSkyRenderer@NEngineInternal@@3PAVCEngineSkyRenderer@@A	carry	0	not reached this pass
+148	land1115ga	01436e5c	?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A	carry	0	not reached this pass
+149	land1115ga	01436e60	?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A	carry	0	not reached this pass
+150	land1115ga	01436e78	(DECISION) g_pPrimitiveRenderer v g_pEnginePrimitiveRenderer	carry	0	not reached this pass
+151	land1115ga	01436e78	?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A	carry	0	not reached this pass
+152	land1115ga	01436e7c	?GPPrimitiveRenderer2D@NEngineInternal@@3PAVCEnginePrimitiveRenderer2D@@A	carry	0	not reached this pass
+153	land1115ga	01436e80	?GPPrimitiveRenderer@NEngineInternal@@3PAVCEnginePrimitiveRenderer@@A	carry	0	not reached this pass
+154	land1115ga	01436e84	?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A	carry	0	not reached this pass
+155	land1115ga	01436e8c	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	carry	0	not reached this pass
+156	land1115ga	01436e98	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	carry	0	not reached this pass
+157	land1115ga	01436e9c	?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A	carry	0	not reached this pass
+158	land1115ga	01436ea0	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	carry	0	not reached this pass
+159	land1115ga	01436ea4	?GPEngine@NEngineInternal@@3PAVCEngine@@A	carry	0	not reached this pass
+160	land1115ga	0143b990	?GTopBitInByteTable@@3PAEA	carry	0	not reached this pass
+161	land1115gb	0x00403F90	?TransferOut@?$CPersistContext_TransferableComponent@_N@@EAEXAAVCPersistContext@@AAVCCharString@@@Z	carry	0	not reached this pass
+162	land1115gb	0x00403FC0	?TransferIn@?$CPersistContext_TransferableComponent@_N@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z	carry	0	not reached this pass
+163	land1115gb	0x0040BC50	?SetSaveSlotFileName@CUserProfileManager@@QAEXJABVCWideString@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+164	land1115gb	0x0040E4D0	?TransferIn@?$CPersistContext_TransferableComponent@VCCharString@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+165	land1115gb	0x0040E5F0	?TransferOut@?$CPersistContext_TransferableComponent@VCCharString@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+166	land1115gb	0x0040E8F0	?TransferIn@?$CPersistContext_TransferableComponent@J@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z	carry	0	not reached this pass
+167	land1115gb	0x0040E910	?TransferOut@?$CPersistContext_TransferableComponent@J@@EAEXAAVCPersistContext@@AAVCCharString@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+168	land1115gb	0x0040F7B0	?TransferIn@?$CPersistContext_TransferableComponent@M@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+169	land1115gb	0x0040F870	?TransferOut@?$CPersistContext_TransferableComponent@M@@EAEXAAVCPersistContext@@AAVCCharString@@@Z	carry	0	not reached this pass
+170	land1115gb	0x0040F950	?TransferIn@?$CPersistContext_TransferableComponent@K@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z	carry	0	not reached this pass
+171	land1115gb	0x0040F970	?TransferOut@?$CPersistContext_TransferableComponent@K@@EAEXAAVCPersistContext@@AAVCCharString@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+172	land1115gb	0x0042951B	?_Rotate_left@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z	carry	0	not reached this pass
+173	land1115gb	0x0042955B	?_Rotate_right@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z	carry	0	not reached this pass
+174	land1115gb	0x0042971D	?_Rebalance@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z	carry	0	not reached this pass
+175	land1115gb	0x0042A18F	?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ	carry	0	not reached this pass
+176	land1115gb	0x0042AA96	??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABKABVCUIState@NUISystem@@@Z	carry	0	not reached this pass
+177	land1115gb	0x0042AB8A	?insert@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@U32@ABQAVCComponent@NUISystem@@@Z	carry	0	not reached this pass
+178	land1115gb	0x0042AD6C	?_M_lower_bound@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@ABK@Z	carry	0	not reached this pass
+179	land1115gb	0x0042BDF0	?_M_create_node@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z	carry	0	not reached this pass
+180	land1115gb	0x0042CB08	?_M_insert@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKVCUIState@NUISystem@@@2@0@Z	carry	0	not reached this pass
+181	land1115gb	0x0042CEE3	?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z	carry	0	not reached this pass
+182	land1115gb	0x0042D2C6	?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z	carry	0	not reached this pass
+183	land1115gb	0x0042D4D3	?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z	carry	0	not reached this pass
+184	land1115gb	0x004408A0	?_M_insert_overflow@?$vector@MV?$allocator@M@std@@@std@@IAEXPAMABMABU__true_type@2@I_N@Z	carry	0	not reached this pass
+185	land1115gb	0x00458F89	?TransferBinaryIn@?$CPersistTraits@VCFloatRange@@@@QAEXAAVCMemoryDataInputStream@@AAVCFloatRange@@@Z	carry	0	not reached this pass
+186	land1115gb	0x00465820	??$GFSerialiseVectorBinaryOut@VCDefString@@@@YIXAAVCDataOutputStream@@AAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z	carry	0	not reached this pass
+187	land1115gb	0x00465852	??$GFSerialiseVectorBinaryIn@VCDefString@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z	carry	0	not reached this pass
+188	land1115gb	0x0047CF3F	?TransferBinaryIn@?$CPersistTraits@VC3DVector@@@@QAEXAAVCMemoryDataInputStream@@AAVC3DVector@@@Z	carry	0	not reached this pass
+189	land1115gb	0x0047DB73	?SavedConfirmed@@YIXXZ	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+190	land1115gb	0x0048531E	?TransferIn@?$CPersistContext_TransferableComponent@VC3DVector@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z	carry	0	not reached this pass
+191	land1115gb	0x00485348	?TransferOut@?$CPersistContext_TransferableComponent@VC3DVector@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z	carry	0	not reached this pass
+192	land1115gb	0x0049D610	?ConvertWorldToLevelWADPath@CWorld@@QBE?AVCWideString@@ABV2@@Z	carry	0	not reached this pass
+193	land1115gb	0x0049D770	?ConvertWorldToQuestPath@CWorld@@SI?AVCWideString@@ABV2@@Z	carry	0	not reached this pass
+194	land1115gb	0x0049DDD0	?ConvertWorldToStaticMapPath@CWorld@@QBE?AVCWideString@@ABV2@@Z	carry	0	not reached this pass
+195	land1115gb	0x004A0D90	?LoadQuestsFromFile@CWorld@@QAEXAAVCAFile@@_N@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+196	land1115gb	0x004A1840	?Load@CWorld@@QAEXABVCWideString@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+197	land1115gb	0x004AA140	??$__uninitialized_copy@PAV?$CIntelligentPointer@VCThing@@@@PAV1@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@00ABU__false_type@0@@Z	carry	0	not reached this pass
+198	land1115gb	0x004AA190	??$__uninitialized_fill_n@PAV?$CIntelligentPointer@VCThing@@@@IV1@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@IABV1@ABU__false_type@0@@Z	carry	0	not reached this pass
+199	land1115gb	0x004AC940	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	carry	0	not reached this pass
+200	land1115gb	0x004AFFA0	?RemoveBoastsForScript@CQuestManager@@QAEXVCCharString@@@Z	done	1	0x005E4740; PDB order RemoveBoastsForScript then RemoveAcceptedBoastsForScript
+201	land1115gb	0x004B0030	?RemoveAcceptedBoastsForScript@CQuestManager@@QAEXVCCharString@@@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+202	land1115gb	0x004C7D90	?PeekGraphicBank@CThing@@QBEPBVCGraphicDataBank@@XZ	carry	0	not reached this pass
+203	land1115gb	0x004CAA00	?ConstructFromLevelScript@CThing@@UAE_NPBD@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+204	land1115gb	0x004FB320	?CreateStaticMaps@CWorldMap@@QAEXABVCWideString@@AAVCIEngine@@@Z	carry	0	not reached this pass
+205	land1115gb	0x004FDAB0	?SetAsUsingWAD@CWorldMap@@QAEXABVCWideString@@@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+206	land1115gb	0x0050F410	??0?$CIntelligentPointer@VCThingAICreature@@@@QAE@ABV0@@Z	carry	0	not reached this pass
+207	land1115gb	0x0054EF00	?Draw@CText@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+208	land1115gb	0x0058771C	?ResetPrimitiveHandles@CTCInventory@@QAEXXZ	carry	0	not reached this pass
+209	land1115gb	0x005907A6	?ConstructScreen@CTCInventory@@UAEPAVCComponent@NUISystem@@PAV23@@Z	carry	0	not reached this pass
+210	land1115gb	0x0059DB82	?RefreshEntriesAmountsAndAvailabilities@CTCInventoryTrade@@AAE?AU?$pair@KK@std@@PAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@PAVCList@2@U?$less@PAVCComponent@NUISystem@@@std@@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@5@@3@@Z	carry	0	not reached this pass
+211	land1115gb	0x005B12F4	??0?$pair@VCWideString@@J@std@@QAE@ABU01@@Z	carry	0	not reached this pass
+212	land1115gb	0x005B1A43	??$_M_find@PAVCComponent@NUISystem@@@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@4@@std@@ABEPAU?$_Rb_tree_node@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@1@ABQAVCComponent@NUISystem@@@Z	carry	0	not reached this pass
+213	land1115gb	0x005B1AFD	??$__distance@U?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z	carry	0	not reached this pass
+214	land1115gb	0x005B1D38	?_M_lower_bound@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@ABEPAU_Rb_tree_node_base@2@ABQAVCComponent@NUISystem@@@Z	carry	0	not reached this pass
+215	land1115gb	0x005B1DFE	?_M_lower_bound@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@ABEPAU_Rb_tree_node_base@2@ABQAVCComponent@NUISystem@@@Z	carry	0	not reached this pass
+216	land1115gb	0x005B2EC4	?insert@?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@2@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@2@@Z	carry	0	not reached this pass
+217	land1115gb	0x005B2EFE	?insert_unique@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@2@@Z	carry	0	not reached this pass
+218	land1115gb	0x005B31CF	?insert@?$map@PAVCComponent@NUISystem@@U?$pair@JJ@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@2@@Z	carry	0	not reached this pass
+219	land1115gb	0x005BD597	?CloseInventory@CTCInventoryBase@NInventory@@UAEXXZ	carry	0	not reached this pass
+220	land1115gb	0x005BFB96	?Copy@CTCInventoryBase@NInventory@@UAEXABVCTCBase@@@Z	partial	0	binders 0x00583A6D / 0x005CDC1C / 0x005F3DC6 override Copy themselves; respelling the base changes their own leaves: authoring
+221	land1115gb	0x005E3EA0	?IsHeroControlledByPlayer@CTCQuestCompletionUI@@ABE_NXZ	done	0	self row respelled; binders already right (reloc_bindings)
+222	land1115gb	0x00630D90	?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCCharString@@@std@@@2@@Z	carry	0	not reached this pass
+223	land1115gb	0x00632D30	?_M_insert@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCCharString@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKVCCharString@@@2@0@Z	carry	0	not reached this pass
+224	land1115gb	0x006421C0	?TransferIn@?$CPersistContext_TransferableComponent@VCRGBColour@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z	carry	0	not reached this pass
+225	land1115gb	0x006421F0	?TransferOut@?$CPersistContext_TransferableComponent@VCRGBColour@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z	carry	0	not reached this pass
+226	land1115gb	0x006A5D90	?ConstructFromLevelScript@CThingPhysical@@UAE_NPBD@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+227	land1115gb	0x006B16B0	?RegisterAtmosPalette@CAtmosProcess@@QAEXXZ	carry	0	not reached this pass
+228	land1115gb	0x006BAED0	??$Transfer@VCFaction@@@CPersistContext@@QAEXPBDAAVCFaction@@@Z	carry	0	not reached this pass
+229	land1115gb	0x006BDC60	?Update@CMusicManager@@QAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+230	land1115gb	0x006C9C60	??$Transfer@V?$CIntelligentPointer@VCThing@@@@@CPersistContext@@QAEXPBDAAV?$CIntelligentPointer@VCThing@@@@@Z	carry	0	not reached this pass
+231	land1115gb	0x006E5360	??$_Destroy@PAVCLipSyncPhoneme@@@std@@YIXPAVCLipSyncPhoneme@@0@Z	carry	0	not reached this pass
+232	land1115gb	0x006E54D0	??1CLipSyncFrameData@@QAE@XZ	carry	0	not reached this pass
+233	land1115gb	0x006E70A0	??_GCScriptGameResourceObjectBase@@UAEPAXI@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+234	land1115gb	0x006F09D0	??1?$_List_base@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@QAE@XZ	carry	0	not reached this pass
+235	land1115gb	0x007304C0	??$IS_THING_DEAD@V?$CIntelligentPointer@VCThingAICreature@@@@@@YI_NABV?$CIntelligentPointer@VCThingAICreature@@@@@Z	carry	0	not reached this pass
+236	land1115gb	0x0074BC20	?DrawDebugInfo@CTCCreatureGenerator@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+237	land1115gb	0x00757500	?TransferBinaryOut@CWoundMorphs@@QBEXAAVCDataOutputStream@@@Z	carry	0	not reached this pass
+238	land1115gb	0x00773950	?IsOpeningHours@CTCShop@@QBE_NXZ	done	7	7 binders respelled const (Ego_r+FableWin QBE; landed self row leaf QBE)
+239	land1115gb	0x00773EE0	?GetSaleItemsToPlace@CTCShop@@QBE?AV?$vector@JV?$allocator@J@std@@@std@@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+240	land1115gb	0x00774B40	?GetFreeSaleItemPlaces@CTCShop@@QAE?AV?$vector@UGoodsPlace@CTCShop@@V?$allocator@UGoodsPlace@CTCShop@@@std@@@std@@_N@Z	carry	0	not reached this pass
+241	land1115gb	0x00774D20	?BuyItem@CTCShop@@QAEXJ@Z	done	1	0x005A3436 SellHighlightedItem stand-in respelled
+242	land1115gb	0x00779B90	??F?$_Rb_tree_iterator@U?$pair@$$CBJM@std@@U?$_Const_traits@U?$pair@$$CBJM@std@@@2@@std@@QAEAAU01@XZ	carry	0	not reached this pass
+243	land1115gb	0x00779EF0	?OnInitialActivate@CTCDExperienceOrb@@UAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+244	land1115gb	0x0077BD70	??0CEnginePrimitiveStaticMesh@@QAE@_KKABVC3DVector@@ABVCRightHandedSet@@M_NEVCRGBColour@@MW4EEngineInterpolationSet@@ABVCEnginePrimitiveThemeChannelDesc@@3@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+245	land1115gb	0x0077BEC0	?OnAppearanceDraw@CTCGraphicAppearanceStaticMeshFadeOutOnProximity@NGraphicAppearance@@UAE_NAAVCTCGraphicAppearance@2@ABVCGraphicAppearanceDrawInfo@2@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+246	land1115gb	0x0077C360	?GetInterpolatedAnimStage@CTCGraphicAppearanceSprite@NGraphicAppearance@@IBEMM@Z	carry	0	not reached this pass
+247	land1115gb	0x0077C4D0	?OnAppearanceDraw@CTCGraphicAppearanceSprite@NGraphicAppearance@@UAE_NAAVCTCGraphicAppearance@2@ABVCGraphicAppearanceDrawInfo@2@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+248	land1115gb	0x00781F10	?ActivatePosition@CTCBoastingPosition@@QAEXJJ@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+249	land1115gb	0x00781FE0	?DeactivatePosition@CTCBoastingPosition@@QAEXXZ	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+250	land1115gb	0x00782060	?RemoveBoast@CTCBoastingPosition@@QAEXXZ	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+251	land1115gb	0x007A6760	?OnAppearanceDraw@CTCGraphicAppearanceReplaceableMesh@NGraphicAppearance@@UAE_NAAVCTCGraphicAppearance@2@ABVCGraphicAppearanceDrawInfo@2@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+252	land1115gb	0x007C3220	?DoDrain@CTCDrainLife@@AAEXPAVCThingCreatureBase@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+253	land1115gb	0x007C36A0	?FrameUpdate@CTCDrainLife@@UAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+254	land1115gb	0x007C3C20	??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@VCThingFilter_In2DRange@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_In2DRange@@AAV?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@@Z	carry	0	not reached this pass
+255	land1115gb	0x007C3EB0	?GetLevelEffectName@CTCHealLife@@AAE?AVCCharString@@XZ	done	0	self row respelled; binders already right (reloc_bindings)
+256	land1115gb	0x007C4430	?StartHealingEffect@CTCHealLife@@QAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+257	land1115gb	0x007C5080	?push_back@?$list@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$allocator@V?$CIntelligentPointer@VCThingCreatureBase@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	carry	0	not reached this pass
+258	land1115gb	0x007E72C0	?Validate@CScriptGameResourceObjectScriptedThingBase@@MBEXXZ	carry	0	not reached this pass
+259	land1115gb	0x007E72E0	?FireProjectileWeaponAtTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z	carry	0	not reached this pass
+260	land1115gb	0x007E7370	?WaitWhilePerformingTasks@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	carry	0	not reached this pass
+261	land1115gb	0x007E7380	?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@KW4ETextGroupSelectionMethod@@_N22@Z	carry	0	not reached this pass
+262	land1115gb	0x007E73A0	?AskHeroQuestion@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDABVCCharString@@22_N3@Z	carry	0	not reached this pass
+263	land1115gb	0x007E73B0	?Converse@CScriptGameResourceObjectScriptedThingBase@@UAEXABV1@PBD@Z	carry	0	not reached this pass
+264	land1115gb	0x007E7470	?WaitForEntityToFinishPerformingTasks@CScriptGameResourceObjectScriptedThingBase@@UAEXABV1@@Z	carry	0	not reached this pass
+265	land1115gb	0x007E7480	?Wait@CScriptGameResourceObjectScriptedThingBase@@UAEXM@Z	carry	0	not reached this pass
+266	land1115gb	0x007E7520	??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z	carry	0	not reached this pass
+267	land1115gb	0x007EFF80	?IsThingAbleToFish@CTCCarriedActionUseFishingRod@@SI_NABVCThingCreatureBase@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+268	land1115gb	0x00813B80	?GetNumberOfActiveBoastingPositions@CTCBoastingPodium@@ABEJXZ	done	0	self row respelled; binders already right (reloc_bindings)
+269	land1115gb	0x00813D00	?FrameUpdate@CTCBoastingPodium@@UAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+270	land1115gb	0x00842C70	??0CCreatureAction_ShopkeeperGetOut@@QAE@AAVCThingCreatureBase@@PAVCTCShop@@ABVC3DVector@@ABVCRightHandedSet@@J@Z	done	0	self ctor respelled; caller 0x00927F30 already right
+271	land1115gb	0x00843670	??0CCreatureAction_ShopkeeperPutAway@@QAE@AAVCThingCreatureBase@@PAVCThing@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+272	land1115gb	0x008D8120	??0CModeScorpionKingVulnerable@NCreatureMode@@QAE@AAVCThing@@@Z	carry	0	not reached this pass
+273	land1115gb	0x0090EBE0	??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+274	land1115gb	0x00927DD0	??1CCreatureAction_ShopkeeperPutAway@@UAE@XZ	carry	0	not reached this pass
+275	land1115gb	0x00988290	?ResetWorldTransform@CShaderRenderManager@@QAEXXZ	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+276	land1115gb	0x0099A400	?Validate@CBaseObject@@UBEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+277	land1115gb	0x009A0B20	?Preload@CFontBank@@UBE_NABVCWideString@@_N@Z	carry	0	not reached this pass
+278	land1115gb	0x009A0B30	??_ECFontBank@@UAEPAXI@Z	carry	0	not reached this pass
+279	land1115gb	0x009A0EA0	?GetFontMaxHeight@CStreamingFontBank@@UBEMXZ	carry	0	not reached this pass
+280	land1115gb	0x009A0F00	?InitializeStreamingFontCacheEntries@?A0xfe46a155@@YIXAAUStreamingFontCacheBufferData@1@@Z	carry	0	not reached this pass
+281	land1115gb	0x009A14E0	?GetStringExtents@CStreamingFontBank@@UBE?AVC2DExtentsF@@PB_W_N@Z	carry	0	not reached this pass
+282	land1115gb	0x009A1720	?PrepareToRender@CStreamingFontBank@@UBEX_N@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+283	land1115gb	0x009A2000	?Preload@CStreamingFontBank@@UBE_NABVCWideString@@_N@Z	done-already	0	NO_BINDER: no landed row binds the address yet; nothing to do
+284	land1115gb	0x009A25D0	?Render@CStreamingFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+285	land1115gb	0x009A3640	?InitializeStreamingFontTextureCache@?A0xfe46a155@@YIXPAVCStreamingFontDataBank@@@Z	carry	0	not reached this pass
+286	land1115gb	0x009A3C20	??0CStreamingFontBank@@QAE@PAVCStreamingFontDataBank@@K@Z	carry	0	not reached this pass
+287	land1115gb	0x009A4E40	??_ECStreamingFontBank@@UAEPAXI@Z	carry	0	not reached this pass
+288	land1115gb	0x009E9C60	?IsValid@CDateAndTime@@QBE_NXZ	carry	0	not reached this pass
+289	land1115gb	0x00A026B0	?GetPointerFromHandle@CHandleBasedMemoryPool@@QAEPAXJ@Z	carry	0	not reached this pass
+290	land1115gb	0x00A484B0	??$__copy@PBVCLipSyncPhoneme@@PAV1@H@std@@YIPAVCLipSyncPhoneme@@PBV1@0PAV1@ABUrandom_access_iterator_tag@0@PAH@Z	carry	0	not reached this pass
+291	land1115gb	0x00A48580	??E?$_Rb_tree_iterator@U?$pair@$$CBKVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@QAEAAU01@XZ	carry	0	not reached this pass
+292	land1115gb	0x00A48750	??F?$_Rb_tree_iterator@U?$pair@$$CBKVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@QAEAAU01@XZ	carry	0	not reached this pass
+293	land1115gb	0x00A495F0	?ReadFromFile@CLipSyncSampleData@@QAEXAAVCDataInputStream@@@Z	carry	0	not reached this pass
+294	land1115gb	0x00A49F60	?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCCharString@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCCharString@@@2@@Z	carry	0	not reached this pass
+295	land1115gb	0x00A4A520	??4?$vector@VCLipSyncPhoneme@@V?$allocator@VCLipSyncPhoneme@@@std@@@std@@QAEAAV01@ABV01@@Z	carry	0	not reached this pass
+296	land1115gb	0x00A4A670	??A?$map@KVCCharString@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@3@@std@@QAEAAVCCharString@@ABK@Z	carry	0	not reached this pass
+297	land1115gb	0x00A62E40	?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVCMovableResource@@KK@Z	carry	0	not reached this pass
+298	land1115gb	0x00AADFC0	?DeleteData@?$CCountedPointer@VCWaveFile@@@@SIXPAX@Z	carry	0	not reached this pass
+299	land1115gb	0x00AD37E0	??$__destroy_aux@PAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@@std@@YIXPAV?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@0ABU__false_type@0@@Z	carry	0	not reached this pass
+300	land1115gb	0x00B1A870	?DatabaseSerialise@CPSCLight@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+301	land1115gb	0x00B32010	?SetDrawDistanceQuality@CEnginePrimitiveRenderer@@QAEXW4EEngineVideoOptionQuality@@ABVCEngineVideoOptionsDef@@@Z	carry	0	not reached this pass
+302	land1115gb	0x00B8E690	?DeleteData@?$CCountedPointer@VCVertexBufferWin32@@@@SIXPAX@Z	carry	0	not reached this pass
+303	land1115gb	0x00B8F470	??$__destroy_aux@PAU?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@std@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@0@0ABU__false_type@0@@Z	carry	0	not reached this pass
+304	land1115gb	0x00B98E10	?ClipSubSectionsSIMD@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXPBUCSubsectionElement@NEnginePrimitiveManagerRepeatedStaticMeshes@@KAAPAUCClipListElement@1@@Z	carry	0	not reached this pass
+305	land1115gb	0x00B9CB10	??0CEngineSubPrimitiveStaticMesh@@QAE@PAVCEngineInternalPrimitiveStaticMesh@@PAVC3DPrimitive2@@W4ERenderMode@@_N@Z	carry	0	not reached this pass
+306	land1115gb	0x00B9DE90	?InitialiseSimulation@CEngineInternalPrimitiveStaticMesh@@QAEXPBVC3DMeshInfo@@ABVC3DMesh2@@@Z	carry	0	not reached this pass
+307	land1115gb	0x00BCE740	??0CEngineSubPrimitiveAnimatedMesh@@QAE@PAVCEngineInternalPrimitiveAnimatedMesh@@PAVC3DPrimitive2@@W4ERenderMode@@_N@Z	carry	0	not reached this pass
+308	land1115gb	0x00BEBBB0	?IsSimulationRunning@CEngineInternalPrimitiveMeshBase@@QBE_NK@Z	carry	0	not reached this pass
+309	land1115gb	0x00BF12A0	?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveStaticMesh@@@Z	carry	0	not reached this pass
+310	land1115gb	0x00BF18B0	?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z	carry	0	not reached this pass
+311	land1115gb	0x00BF7BC0	?CalculateCameraUpdateThreshold@CLandscapeBackgroundTreeNode@@AAEXJ@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+312	land1115gb	0x00C13A00	??0logic_error@std@@QAE@ABV01@@Z	carry	0	not reached this pass
+313	land1115gb	0x00C19FA0	?ReleaseFileObject@PKCDefaultFileManager@@QAEXPAVCAudioFile@@@Z	carry	0	not reached this pass
+314	land1115gb	0x00C26260	?GetPoolData@CStreamBuffer@@QAEPAXPAUCSoundEventManager@@@Z	carry	0	not reached this pass
+315	land1115gb	0x00C294B0	??$_Uninit_fill_n@PAVCHandleInfo@CHandleBasedMemoryPool_012b4098@@IV12@V?$allocator@VCHandleInfo@CHandleBasedMemoryPool_012b4098@@@std@@@std@@YIXPAVCHandleInfo@CHandleBasedMemoryPool_012b4098@@IABV12@AAV?$allocator@VCHandleInfo@CHandleBasedMemoryPool_012b4098@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z	carry	0	not reached this pass
+316	land1115gb	0x00C298D0	?_Insert_n@?$vector@VCHandleInfo@CHandleBasedMemoryPool_012b4098@@V?$allocator@VCHandleInfo@CHandleBasedMemoryPool_012b4098@@@std@@@std@@IAEXViterator@12@IABVCHandleInfo@CHandleBasedMemoryPool_012b4098@@@Z	carry	0	not reached this pass
+317	land1115gb	0x00C29DC0	?GetPositionFlag@CSoundEventGroup@@UAE_NPAUCSoundEventManager@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+318	land1115gb	0x00C33100	??3CCodaObjectBase@@SAXPAX@Z	carry	0	not reached this pass
+319	land1115gb	0x00C33110	??_VCCodaObjectBase@@SAXPAX@Z	carry	0	not reached this pass
+320	land1115gb	0x00C3C8C0	?CreateStatic@CCodaObjectList@@QAEXPAVCCodaObject@@II@Z	carry	0	not reached this pass
+321	land1115gb	0x00C3CE50	??0CCodaListener@@QAE@XZ	carry	0	not reached this pass
+322	land1115gb	0x00C3CEA0	??0CCodaEnvironment@@QAE@XZ	carry	0	not reached this pass
+323	land1115gb	0x00C3CEC0	??1CCodaEnvironment@@UAE@XZ	carry	0	not reached this pass
+324	land1115gb	0x00C3D0D0	??1CCoda2DSource@@UAE@XZ	carry	0	not reached this pass
+325	land1115gb	0x00C3D0E0	??1CCoda3DSource@@UAE@XZ	carry	0	not reached this pass
+326	land1115gb	0x00C3D0F0	??_ECCodaEnvironment@@UAEPAXI@Z	carry	0	not reached this pass
+327	land1115gb	0x00C3D7B0	??1CCodaListener@@UAE@XZ	carry	0	not reached this pass
+328	land1115gb	0x00C3D8B0	??_ECCoda2DSource@@UAEPAXI@Z	carry	0	not reached this pass
+329	land1115gb	0x00C3D910	??_ECCoda3DSource@@UAEPAXI@Z	carry	0	not reached this pass
+330	land1115gb	0x00C3D970	??0CCoda3DSource@@QAE@XZ	carry	0	not reached this pass
+331	land1115gb	0x00C3D9A0	??_ECCodaListener@@UAEPAXI@Z	carry	0	not reached this pass
+332	land1115gb	0x00C3DFD0	?Create@CCodaContext@@QAE_NPBU_CRESOURCEDESC@@PBUCPLATFORMDESC@@@Z	carry	0	not reached this pass
+333	land1115gb	0x00C41060	?Create@CCoda3DSource@@UAE_NI@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+334	land1115gb	0x00C42DD0	?Create@CCodaSource@@UAE_NI@Z	carry	0	not reached this pass
+335	land1115gb	0x00C44580	??0CCoda2DSource@@QAE@XZ	carry	0	not reached this pass
+336	land1115gb	0x00C4D340	?Create@CSalContext@@SAHPBU_CRESOURCEDESC@@PBUCPLATFORMDESC@@PAPAVCSalPlatform@@@Z	carry	0	not reached this pass
+337	land1115gb	0x00C4D5F0	?AllocateSw3DVoice@CSalContext@@QAEHPBVCCodaSource@@PAPAVCSalVoice@@@Z	carry	0	not reached this pass
+338	land1115gb	0x00C54C10	?CalcParams@CSalSw3DVoice@@QAEXPBVCCoda3DSource@@I@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+339	land1115gb	0x00C59890	?CalcPitchLFO@CSalBaseVoice@@IAEXPBU_CPITCHLFO@@@Z	carry	0	not reached this pass
+340	land1115gb	0x00C59D80	?CalcExpDelta@CSalBaseVoice@@KAMMM@Z	carry	0	not reached this pass
+341	land1115gb	0x00C59DE0	?CalcPitchDelta@CSalBaseVoice@@KAMMMM@Z	carry	0	not reached this pass
+342	land1115gb	0x00C5A3C0	?UpdatePlayBuffer@CSalSwBaseVoice@@IAEX_N@Z	carry	0	not reached this pass
+343	land1115gb	0x00C5A480	?CalcLevelEnvelope@CSalSwBaseVoice@@IAE_NPBU_CLEVELENVELOPE@@_N@Z	carry	0	not reached this pass
+344	land1115gb	0x00C5AB50	?CalcMultiFuncLFO@CSalSwBaseVoice@@AAEXPBU_CMULTIFUNCLFO@@@Z	carry	0	not reached this pass
+345	land1115gb	0x00C5ACB0	?CalcParams@CSalSwBaseVoice@@AAEXPBVCCodaSource@@_J@Z	carry	0	not reached this pass
+346	land1115gb	0x00C5E050	?SetProperty@CSalKsPin@@QAE_NABU_GUID@@KPAXK@Z	carry	0	not reached this pass
+347	land1115gb	0x00C6A8B0	?Create@CFloatReverbDspEngine@@QAE_NPAVCFloatReverbConstants@@@Z	carry	0	not reached this pass
+348	land1115gb	0x00C6ADB0	??0CHLRvbParams@@QAE@XZ	carry	0	not reached this pass
+349	land1115gb	0x00C6B050	?Create@CFloatReverbEngine@@QAE_NPAVCReverbConstants@@@Z	carry	0	not reached this pass
+350	land1115gb	0x00C77780	?Create@CFloatReverbParameterTranslator@@QAEXPAVCFloatReverbConstants@@@Z	carry	0	not reached this pass
+351	land1115gb	0x00CDF120	??RCIsThingAlive@NScript@@UBE_NXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+352	land1115gb	0x00CDF130	?Clone@CIsThingAlive@NScript@@UBEPAVCPredicateBase@2@XZ	done-already	0	NO_BINDER: no landed row binds the address yet; nothing to do
+353	land1115gb	0x00CDF160	??_GCIsThingAlive@NScript@@UAEPAXI@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+354	land1115gb	0x0122DEFC	??_7?$CPersistContext_TransferableComponent@VCCharString@@@@6B@	done-already	0	NO_BINDER: no landed row binds the address yet; nothing to do
+355	land1115gb	0x012366F4	??_7CActionParamSLONG@NUISystem@@6B@	carry	0	not reached this pass
+356	land1115gb	0x012668EC	??_7CTCInventoryMagic@@6BCTCInventoryBase@NInventory@@@	carry	0	not reached this pass
+357	land1115gb	0x012B263C	??_7logic_error@std@@6B@	carry	0	not reached this pass
+358	land1115gb	0x012B2644	??_7length_error@std@@6B@	carry	0	not reached this pass
+359	land1115gb	0x012B90D8	__GUID_1d58c920_ac9b_11cf_a5d6_28db04c10000	carry	0	not reached this pass
+360	land1115gb	0x01375446	?GEnableStaticMapCreation@@3_NA	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+361	land1115gb	0x01375456	?GUseLevelWAD@@3_NA	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+362	land1115gb	0x013756F4	?DrawProximityFadeOutMeshes@NGlobalConsole@@3_NA	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+363	land1115gb	0x01396E18	?D3DStencilFuncModeTable@CRenderStateManager@@0PAKA	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+364	land1115gb	0x01396F38	?D3DStencilOperationModeTable@CRenderStateManager@@0PAKA	carry	0	not reached this pass
+365	land1115gb	0x01396F68	?D3DAlphaBlendModeTable@CRenderStateManager@@0PAKA	carry	0	not reached this pass
+366	land1115gb	0x013B89A8	?NoLookups@CThingSearchTools@@2KA	carry	0	not reached this pass
+367	land1115gb	0x013B89AC	?NoThingsScanned@CThingSearchTools@@2KA	carry	0	not reached this pass
+368	land1115gb	0x013B89B0	?SearchID@CThingSearchTools@@2KA	carry	0	not reached this pass
+369	land1115gb	0x013BAD58	?DrawCreatureGeneratorDebug@@3_NA	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+370	land1115gb	0x013C5A7C	?UseFixedFunction@CStreamingFontBank@@1_NA	carry	0	not reached this pass
+371	land1115gb	0x013C5A98	?g_StreamingFontCacheBufferData@?A0xfe46a155@@3U?$StreamingFontCacheBufferData_static@$0CA@$0CA@@1@A	carry	0	not reached this pass
+372	land1115gb	0x013C7AC8	?g_StreamingFontCacheBufferData2@?A0xfe46a155@@3U?$StreamingFontCacheBufferData_static@$0EA@$0EA@@1@A	carry	0	not reached this pass
+373	land1115gb	0x013D2880	?GEnableSIMD@@3_NA	carry	0	not reached this pass
+374	land1115gb	0x01436E24	?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+375	land1115gb	0x01437864	?colour@?6??SetupSeaBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ@4VCRGBFloatColour@@A	carry	0	not reached this pass
+376	land1115gb	0x01437874	?light_dot@?6??SetupSeaBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ@4VC4DVector@@A	carry	0	not reached this pass
+377	land1115gb	0x01437884	??_B?6??SetupSeaBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ@56	carry	0	not reached this pass
+378	land1115gc	0x01436E9C	?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A	carry	0	not reached this pass
+379	land1115gc	0x01436EA0	?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	carry	0	not reached this pass
+380	land1116gh	0x009ADE10	?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z	carry	0	not reached this pass
+381	land1116gh	0x00412DB0	??$TransferVector@VCActionInputControl@@@CPersistContext@@QAEXPBDAAV?$vector@VCActionInputControl@@V?$allocator@VCActionInputControl@@@std@@@std@@@Z	carry	0	not reached this pass
+382	land1116gh	0x00412E80	??$TransferVector@W4ETutorialCategory@@@CPersistContext@@QAEXPBDAAV?$vector@W4ETutorialCategory@@V?$allocator@W4ETutorialCategory@@@std@@@std@@@Z	carry	0	not reached this pass
+383	land1116gi	0x00C44090	?EAXSet@CCodaSource@@QAEXPBU_GUID@@HPAXH@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+384	land1116gi	0x00C44100	?EAXGet@CCodaSource@@QAEXPBU_GUID@@HPAXH@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+385	land1116gk	0x00658D5D	?IsSociableTime@CTCVillage@@QBE_NXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+386	land1116gk	0x00C6B7C0	FilterRampedWithGain	carry	0	not reached this pass
+387	land1116gk	0x00A14440	?AccurateNormalise@C3DVector@@QAEAAV1@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+388	land1116gk	0x00959380	??$GetAllThingsInRoughArea@$$CBVCThingObject@@V?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+389	land1116gk	0x0095C7C0	??$GetAllThingsInRoughArea@VCThingObject@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	carry	0	not reached this pass
+390	land1116gl	0x006AFD40	?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ	carry	0	not reached this pass
+391	land1116gl	0x006AFD40	?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ	carry	0	not reached this pass
+392	land1116gl	0x006AFD40	CTCPhysicsBase::GetThingSearchTools	carry	0	not reached this pass
+393	land1116gl	0x00C28380	?GetPointerFromHandle@CHandleBasedMemoryPool_012b4098@@QAEPAXJ@Z	carry	0	not reached this pass
+394	land1116gl	0x007D97E0	??$iter_swap@PAUKnickKnack@@PAU1@@std@@YIXPAUKnickKnack@@0@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+395	land1116gl	0x007D9A00	??$swap@UKnickKnack@@@std@@YIXAAUKnickKnack@@0@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+396	land1116gl	0x009AA440	??1?$pair@$$CBVCCharString@@UCBankInfo_009aa210@@@std@@QAE@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+397	land1116gm	0x00C167C0	??1CIntelligentPointer_00c16900@@QAE@XZ	carry	0	not reached this pass
+398	land1116gm	0x00C167C0	??1CIntelligentPointer_00c16900@@QAE@XZ	carry	0	not reached this pass
+399	land1116gm	0x00C167C0	??1CIntelligentPointer_00c16900@@QAE@XZ	carry	0	not reached this pass
+400	land1116gm	0x00C167C0	??1CIntelligentPointer_00c16900@@QAE@XZ	carry	0	not reached this pass
+401	land1116gm	0x00C167C0	??1CIntelligentPointer_00c16900@@QAE@XZ	carry	0	not reached this pass
+402	land1116gm	0x00C167C0	??1CIntelligentPointer_00c16900@@QAE@XZ	carry	0	not reached this pass
+403	land1116gm	0x00C167C0	AUDIT	carry	0	not reached this pass
+404	land1116gm	0x00C14700	??1CVtable_012b401c@@QAE@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+405	land1116gm	0x00C14710	??1CVtable_012b4030@@QAE@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+406	land1116gm	0x00C2D9B0	??1SSegment@@QAE@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+407	land1116gm	0x00C271E0	?UpdateManagerTime@CPhysicalPlayer@@QAEXPAUCSoundEventManager@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+408	land1116gm	0x00C271E0	?UpdateManagerTime@CPhysicalPlayer@@QAEXPAUCSoundEventManager@@@Z / ?GetFaderOutput@CSoundEventManager@@QBEMXZ	carry	0	not reached this pass
+409	land1116gm	0x00C11700	?GetFaderOutput@CSoundEventManager@@QBEMXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+410	land1116gm	0x00702E00	?GetAlpha@CThingObject@@IBEEXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+411	land1116gm	0x00ADD5C0	?IsNull@?$CCountedPointer@VCThreadedFile@@@@QBE_NXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+412	land1116gn	0x00C79FD0	?ResampleStereoMMX@@YAXPBFKKKPAJ1G@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+413	land1116gn	0x00BD5C90	?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManagerAnimatedMeshesBase@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+414	land1116gn	0x00989AB0	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z	carry	0	not reached this pass
+415	land1116gn	0x0051E2F0	?ActivateThings@CThingManager@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	carry	0	not reached this pass
+416	land1116gn	0x00410F30	??0?$CArray@D@@QAE@I@Z (CArray<char>::CArray(unsigned int))	carry	0	not reached this pass
+417	land1116gn	0x00410F30	??0?$CArray@D@@QAE@I@Z	carry	0	not reached this pass
+418	land1116gn	0x006BC4A0	?AddMap@CRegion@@QAEXJ@Z	carry	0	not reached this pass
+419	land1116gn	0x0079F730	?AllChildrenInactive@CLightningBeam@CTCWillLightning@@QAE_NXZ	carry	0	not reached this pass
+420	land1116gn	0x00E53670	?IsHeroWearingAnyBeard@CV_BeardyBaldyScript@NScript@@QAE_NXZ	done	0	self row respelled; binders already right (reloc_bindings)
+421	land1116gn	0x00E4E0E0	?SetUpBanditToll@CTollBandit@CV_BanditTollScript@NScript@@AAEXXZ	carry	0	not reached this pass
+422	land1116gn	0x01436E38	?GPScreenEffectDisplacementRenderer@NEngineInternal@@3PAVCEngineScreenEffectDisplacementRenderer@@A	carry	0	not reached this pass
+423	land1116gn	0x004372C0	?GetHeight@CTexture@@QBEKK@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+424	land1116gn	0x00435F70	?Render@CDisplayEngine@@QAEXPBVCInterpolationInfo@@_N1@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+425	land1116gn	0x0048E062	?GetTextWidthFromText@CSubtitleRenderer@@ABEMABVCWideString@@ABVCFontBank@@@Z	carry	0	not reached this pass
+426	land1116gn	0x0048E072	?IsTextReadyForClickPast@CSubtitleRenderer@@QBE_NXZ	done	1	0x00490A22 stand-in IsTextFullyShown respelled
+427	land1116gn	0x00435000	?RenderHeroFuckShit@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z	carry	0	not reached this pass
+428	land1116gn	0x00437770	?SetCrimeAsDisplaying@CPlayerGui@@QAEXXZ	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+429	land1116gn	0x013B85E0	?GVersionString@@3VCCharString@@A	carry	0	not reached this pass
+430	land1116gn	0x00B27EE0	?GetScratchZBufferD24S8@CEngine@@QAEAAVCSurface@@J@Z	carry	0	not reached this pass
+431	land1116gn	0x01396DE8	(no symbol: element [4] of ?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA at 0x01396DD8)	carry	0	not reached this pass
+432	land1116gn	0x007DB5C0	?Split@CTCTavernGameCardBlackjack@@QAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+433	land1116gn	0x0090DF30	??$GetPOriginator@VCThingAICreature@@@CMessageEvent@@QBEPAVCThingAICreature@@XZ	carry	0	not reached this pass
+434	land1116gn	0x008525F0	??0CScriptModuleFullTransition@NCameraModes@@QAE@ABVC3DVector@@000J@Z	carry	0	not reached this pass
+435	land1116gn	0x00A58720	??RCTransformWorldCoordsToPlaneCoords@@QBE?AVC2DVector@@ABVC3DVector@@@Z (class name; mangling of the operator() not checked against a PDB symbol)	carry	0	not reached this pass
+436	land1116gn	0x00535000	??$__copy@PAV?$CCountedPointer@VCComponent@NUISystem@@@@PAV1@H@std@@YIPAV?$CCountedPointer@VCComponent@NUISystem@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	carry	0	not reached this pass
+437	land1116gn	0x0049C9B0	?SetGuildSealRecallPos@CWorld@@QAEXABVC3DVector@@@Z	carry	0	not reached this pass
+438	land1116gn	0x006AEBF0	?IsCreatureAllowedInRegionAt@CTCRegionFollower@@QBE_NABVCThingAICreature@@ABVC3DVector@@@Z	carry	0	not reached this pass
+439	land1116gn	0x00434C90	?EndScreenFadeOut@CDisplayEngine@@QAEXXZ	carry	0	not reached this pass
+440	land1116gn	0x0049E590	?SetSaveGameMarkerPos@CWorld@@QAEXABVC3DVector@@@Z	carry	0	not reached this pass
+441	land1116gn	0x004AB270	?SetTeleportParticle@CTCHero@@QAEXAAVCThing@@@Z	carry	0	not reached this pass
+442	land1116gn	0x006BD830	?PauseMusic@CMusicManager@@QAEX_N@Z	carry	0	not reached this pass
+443	land1116gn	0x00437830	?IsMiniMapFinishedOpening@CPlayerGui@@QBE_NXZ	carry	0	not reached this pass
+444	land1116gn	0x0066E73D	?Close@CManager@NHeroInformationScreens@@QAEXXZ	carry	0	not reached this pass
+445	land1116gn	0x006C6010	?PlayerPutWeaponAway@CTCHeroOpinionDeedLog@@QAEXXZ	carry	0	not reached this pass
+446	land1116gn	0x005064B0	?EndMovePlayerPos@CWorldMap@@QAEXXZ	carry	0	not reached this pass
+447	land1116gn	0x006CED30	?OnHeroReturnToRegion@CTCWife@@QAEXXZ	carry	0	not reached this pass
+448	land1116gn	0x00437870	?IsMiniMapDrawing@CPlayerGui@@QBE_NXZ	carry	0	not reached this pass
+449	land1116gn	0x00437840	?IsMiniMapFinishedClosing@CPlayerGui@@QBE_NXZ	carry	0	not reached this pass
+450	land1116gn	0x00A892E0	?InitialiseBoneNamePointers@C3DMesh2@@AAEXK@Z	done	0	self row respelled; binders already right (reloc_bindings)
+451	land1116gn	0x013BAF98	(unchanged) g_CUnprovenCameraInputFlag_013baf98	carry	0	not reached this pass
+452	land1116gn	0x0082DD90	?IsLockable@CThingBuilding@@QBE_NXZ	carry	0	not reached this pass
+453	land1116gn	0x0082DE20	?IsLocked@CThingBuilding@@QBE_NXZ	carry	0	not reached this pass
+454	land1116gn	0x00930D90	?OrderByHeight2@@YI_NPBVCThing@@0@Z	done-already	0	NO_BINDER: no landed row binds the address yet; nothing to do
+455	land1116gn	0x00A014D0	?GetGraphicMaxWidth@CGraphicDataBank@@UBEKK@Z (CGraphicDataBank vtable slot 23, +0x5C)	carry	0	not reached this pass
+456	land1116gn	0x00A01540	?GetGraphicMaxHeight@CGraphicDataBank@@UBEKK@Z (slot 24, +0x60)	carry	0	not reached this pass
+457	land1116gn	0x005D9B30	?IsSellable@CTCInventoryItem@@SI_NJ@Z	partial	3	3 binders respelled IsBuyable->IsSellable; the self row 0x005D9B30 is still a placeholder (_FableIsBuyable_5d9b30), not renamed
+458	land1116gn	0x005D9B50	?IsBuyable@CTCInventoryItem@@SI_NJ@Z	carry	0	not reached this pass
+459	land1116gn	0x005AC10E	?ConstructActualBuyInventoryPC@CTCInventoryTrade@@AAEXXZ	carry	0	not reached this pass
+460	land1116gn	0x005FABA0	?IsThingAsPosBeingDrawn@CTCInventoryMap@@IBE_NABVC3DVector@@@Z	carry	0	not reached this pass
+461	land1116gn	0x009FC3D0	?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z	partial	3	0x00A24A80 0x00A256F0 0x00A26730 respelled; self row emits ?AddToLoadingQueue@CResourceBank_Retail@@ (stand-in class); 0x00A25BD0 / 0x00A42980 stand-ins left
+462	land1116p23	0x00A177A0	?GetPointIntersectionFromToUsingSegmentation@CPhysicsMesh@@ABE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z	done	1	0x00A18760
+463	land1116p23	0x00A17F80	?GetPointIntersectionFromToUsingFullCollision@CPhysicsMesh@@ABE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z	done	1	0x00A18760
+464	land1116p23	0x0137B730	?LineCollisionAround4Square@CWorldMap@@1QBVC2DCoordI@@B	carry	0	not reached this pass
+465	land1116p23	0x0084D050	?GetWorld@CBase@NCameraModes@@IBEABVCWorld@@XZ	done	5	protected; 5 derived camera-mode callers
+466	land1116p23	0x006EA450	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z	done	6	0x0091E050 + 5 melee/hover rows
+467	land1116p23	0x00864D00	?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z	done	4	0x0091E050 0x0091F050 0x00937DA0 0x00970AB0
+468	land1116p23	0x0091D510	?AIAction_MoveToPosProximityAndFacePos@CAIStateGroup_HoverMovementBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@M1AA_NW4EMovementType@@@Z	carry	0	not reached this pass
+469	land1116p23	0x0095CA00	??0CCreatureAction_WaspQueenPrimaryAttack@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+470	land1116p23	0x0095C5C0	??$GetSubDef@VCWaspQueenBattleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWaspQueenBattleDef@@@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+471	land1116p23	0x006B8310	?RadialBlurSetCenterWorldPos@CEnvironmentSpellEffectInterpolator@@QAEXPAXABVC3DVector@@@Z	partial	0	binders 0x007A9FE0 / 0x007AB190 use a CEnvironmentSpellEffects stand-in that also declares RadialBlurFadeTo 0x006B8730; the shared CEnvironmentSpellEffectInterpolator.h needs CEnvironmentSpellEffectInterface.h (clashes with the rows' local models)
+472	land1116p23	0x006699C0	?find@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Const_traits@U?$pair@$$CBKJ@std@@@2@@2@ABK@Z	carry	0	not reached this pass
+473	land1116p23	0x0041A7E0	??0C2DBoxF@@QAE@ABVC2DVector@@ABVC2DExtentsF@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+474	land1116p23	0x0048DF77	?GetTextFromEmbeddedTagGraphic@CSubtitleRenderer@@QBE?AVCWideString@@J@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+475	land1116p23	0x0048DC3C	?GetTextOffsetFromEmbeddedTagGraphic@CSubtitleRenderer@@QBEABVC2DVector@@J@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+476	land1116p23	0x006CB840	?GetNearestFleePosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z	done	2	self row 0x006CB840 respelled too (section 1); callers 0x00911D90 / 0x0095E470
+477	land1116p23	0x0097E890	?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z	carry	0	not reached this pass
+478	land1116p23	0x0139C900	?_afxPchNil@@3PADA	carry	0	not reached this pass
+479	land1116p23	0x00C0DF00	??6CString@@QAIAAV0@J@Z	carry	0	not reached this pass
+480	land1116p23	0x00C0BA40	??1CString@@QAE@XZ	carry	0	not reached this pass
+481	land1116p23	0x00C4AC70	?ReturnBuffer@PKCBufferedReader@@QAEXPA_N@Z	carry	0	not reached this pass
+482	land1116p23	0x00643F7C	?SetEnabled@CDrawGuildSeal@NPlayerGui@@QAEX_N@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+483	land1116p23	0x00434870	?Update@CFadeInFadeOutBase@@QAEXM@Z	carry	0	not reached this pass
+484	land1116p23	0x0043DBF0	??$IS_THING_ALIVE@PBVCThingPlayerCreature@@@@YI_NABQBVCThingPlayerCreature@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+485	land1116p23	0x00643CDA	?GFAnchorToBottomLeft@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+486	land1116p23	0x00C3F800	?CreateSwVoices@CSalPlatform@@AAE_NXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+487	land1116p23	0x00C3F760	??0CSalSw2DVoice@@QAE@XZ	carry	0	not reached this pass
+488	land1116p23	0x00C3F630	??1CSalSw2DVoice@@UAE@XZ	carry	0	not reached this pass
+489	land1116p23	0x00C555E0	??0CSalSw3DVoice@@QAE@XZ	carry	0	not reached this pass
+490	land1116p23	0x00C55130	??1CSalSw3DVoice@@UAE@XZ	carry	0	not reached this pass
+491	land1116p23	0x00C25C50	??0CSampleRef@@QAE@XZ	carry	0	not reached this pass
+492	land1116p23	0x00C25C70	?Bind@CSampleRef@@QAEXPAVCSoundSample@@JJJ@Z	carry	0	not reached this pass
+493	land1116p23	0x00C25CB0	?Release@CSampleRef@@QAEXXZ	carry	0	not reached this pass
+494	land1116p23	0x00C20C10	?IsAudible@CSoundEvent@@QAE_NPAUCSoundEventManager@@@Z	carry	0	not reached this pass
+495	land1116p23	0x00C21620	?Stop@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z	carry	0	not reached this pass
+496	land1116p23	0x012354D0	??_7CIVCountedPointeeBase@@6B@	carry	0	not reached this pass
+497	land1116p23	0x00C74030	?ScaleSamples@CReverbFns@@UAEXPAMPBMMI@Z	carry	0	not reached this pass
+498	land1116p23	0x00C76880	?ApplyFilterOrder2@CReverbFns@@UAEXPAMPBM110I@Z	done-already	0	NO_BINDER: no landed row binds the address yet; nothing to do
+499	land1116p23	0x00404310	?GetCRC@CCharString@@QBEKXZ	partial	3	0x0047EEE4 0x00929820 0x0096DD10 respelled; 0x0065C781 left: its LookupValue(const char*) 0x009CC410 decl would also change
+500	land1116p23	0x00701750	?GetThingOpinionOfPlayer@COpinionReactionManager@@QBEMABVCThing@@W4EOpinion@@@Z	partial	0	binders 0x008909F0 / 0x00929820 keep stand-in managers: engine/COpinionReactionManager.h clashes with the local CBaseIntelligentPointer in 0x00929820
+501	land1116p23	0x013BABD0	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B	carry	0	not reached this pass
+502	land1116p23	0x00683C10	?GetGreetDialogueGroupIndex@CTCCreatureOpinionOfHero@@QAEKW4EOpinionAttitudeType@@@Z	done	1	0x00929820 (enum parameter)
+503	land1116p23	0x009482A0	?GetSeat@CAIStateGroup_GoToPub@@IAE_NPAVCThing@@PBVCCharString@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+504	land1116p23	0x00993EA0	?WriteULONG@CDataOutputStream@@QAEXK@Z	carry	0	not reached this pass
+505	land1116p23	0x009BAA50	?Init@CPersistContext@@QAEXAAVCDataOutputStream@@_N@Z	done	0	self row respelled; binders already right (reloc_bindings)
+506	land1116p23	0x009AE390	?CompressDefinitionBlock@CDefinitionManager@@IAEXAAVCMemoryDataOutputStream@@AAV?$CArray@G@@K@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+507	land1116p23	0x009F2450	?GetTotalMemoryAllocated@CMemoryAllocator@@QAEKXZ	carry	0	not reached this pass
+508	land1116p23	0x009F2550	?GetNoAllocatedAreas@CMemoryAllocator@@QAEKXZ	done	0	self row respelled; binders already right (reloc_bindings)
+509	land1116p23	0x009B6300	?_M_insert_overflow@?$vector@U?$pair@KK@std@@V?$allocator@U?$pair@KK@std@@@2@@std@@IAEXPAU?$pair@KK@2@ABU32@ABU__false_type@2@I_N@Z	carry	0	not reached this pass
+510	land1116p23	0x009B85A0	??$sort@PAU?$pair@KK@std@@V?$CKeyPairCompareLess@KK@@@std@@YIXPAU?$pair@KK@0@0V?$CKeyPairCompareLess@KK@@@Z	carry	0	not reached this pass
+511	land1116p23	0x008F8F50	?Send@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@ABULAddress@2@1@Z	partial	0	authoring: 0x008F95D0 models ByteBuffer; the PDB vector<char>& needs the STLport vector model
+512	land1116p23	0x013BAFFC	?NeedToFlush@LSocket@LHNetworkLib@@0_NA	carry	0	not reached this pass
+513	land1116p23	0x008F82E0	?IsWriteable@LSocket@LHNetworkLib@@AAE_NJ@Z	carry	0	not reached this pass
+514	land1116p23	0x00412880	?resize@?$vector@DV?$allocator@D@std@@@std@@QAEXI@Z	carry	0	not reached this pass
+515	land1116p23	0x00C61610	??0CEAXBuffer@@QAE@PAVCEAXListener@@JJW4EAXVERSION@@PAPAU_CHANGES@@@Z	carry	0	not reached this pass
+516	land1116p23	0x00C609A0	?AddBuffer@CEAXListener@@QAEHPAVCEAXBuffer@@@Z	carry	0	not reached this pass
+517	land1116p23	0x00C60B90	??1CEAXBuffer@@UAE@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+518	land1116p23	0x00C61B20	??_GCEAXBuffer@@UAEPAXI@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+519	land1116p23	0x00C3C830	??1CCodaObjectBase@@UAE@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+520	land1116p23	0x00C3AAC0	??0CBufferedRangeReader@@QAE@PAXK@Z	carry	0	not reached this pass
+521	land1116p23	0x00C3A9D0	??1CBufferedRangeReader@@QAE@XZ	carry	0	not reached this pass
+522	land1116p23	0x00C3AA50	?SetRange@CBufferedRangeReader@@QAEJKK@Z	carry	0	not reached this pass
+523	land1116p23	0x00C3A9E0	?Read@CBufferedRangeReader@@QAEJPAXJ@Z	carry	0	not reached this pass
+524	land1116p23	0x00C3AA30	?GetCount@CBufferedRangeReader@@QBEKXZ	carry	0	not reached this pass
+525	land1116p23	0x00C0C200	??4CString@@QAEABV0@PBD@Z	carry	0	not reached this pass
+526	land1116p23	0x012B47D0	??_7CSegmentList@@6B@	carry	0	not reached this pass
+527	land1116p23	0x00C2DDE0	??1?$PKCTRList@UCSegment@@@@UAE@XZ	carry	0	not reached this pass
+528	land1116p23	0x00C2E030	??1CSegmentList@@UAE@XZ	carry	0	not reached this pass
+529	land1116p23	0x00C3F9D0	?CreateSw@CSalPlatform@@AAE_NPBU_CRESOURCEDESC@@PBUCPLATFORMDESC@@@Z	carry	0	not reached this pass
+530	land1116p23	0x0143BC7A	?m_bHasMMX@CSalCpuInfo@@0_NA	carry	0	not reached this pass
+531	land1116p23	0x00C3EFA0	??0CSalMixerLimiter@@QAE@XZ	carry	0	not reached this pass
+532	land1116p23	0x012B5DE0	??_7CSalMixerLimiterSSE2@@6B@	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+533	land1116p23	0x012B5D40	??_7CSalMixerLimiterMMX@@6B@	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+534	land1116p23	0x00C5EEC0	??0CSalOutputNull@@QAE@XZ	carry	0	not reached this pass
+535	land1116p23	0x00C5ED90	??0CSalOutputKS@@QAE@XZ	carry	0	not reached this pass
+536	land1116p23	0x00C3EC80	?CreateSwDirectSound@CSalPlatform@@AAE_NPBUCPLATFORMDESC@@@Z	carry	0	not reached this pass
+537	land1116p23	0x00C3EE10	?CreateSwBufferedDirectSound@CSalPlatform@@AAE_NPBUCPLATFORMDESC@@@Z	carry	0	not reached this pass
+538	land1116p23	0x00C5DD70	?GetAccelerationLevel@CDSoundAccelerationQuery@@QAEHPBU_GUID@@@Z	carry	0	not reached this pass
+539	land1116p23	0x00C5D750	??0CSalOutputMM@@QAE@XZ	carry	0	not reached this pass
+540	land1116p23	0x0143BC18	_g_HRTFMode	carry	0	not reached this pass
+541	land1116p23	0x00C3F710	?SetSWOutputConfig@CSalPlatform@@AAE_NXZ	carry	0	not reached this pass
+542	land1116p23	0x00C3F680	??1CSalMixerLimiterMMX@@UAE@XZ	carry	0	not reached this pass
+543	land1116p23	0x00C3F7F0	??1CSalMixerLimiterSSE2@@UAE@XZ	carry	0	not reached this pass
+544	land1116p23	0x00C3F030	??1CSalMixerLimiter@@UAE@XZ	carry	0	not reached this pass
+545	land1116p23	0x00C3F690	??_GCSalMixerLimiterMMX@@UAEPAXI@Z	carry	0	not reached this pass
+546	land1116p23	0x00C3F000	?Reset@CSalMixerLimiter@@UAEXXZ	carry	0	not reached this pass
+547	land1116p23	0x00C5C050	?MixFrameClear@CSalMixerLimiterMMX@@UAEXXZ	carry	0	not reached this pass
+548	land1116p23	0x00C5C070	?MixFrame@CSalMixerLimiterMMX@@UAEXPBFPAHG@Z	carry	0	not reached this pass
+549	land1116p23	0x00C58040	?MixFrame@CSalMixer@@UAEXPBHPAHG@Z	carry	0	not reached this pass
+550	land1116p23	0x00C58000	?MixFrame@CSalMixer@@UAEXPBHPAH@Z	carry	0	not reached this pass
+551	land1116p23	0x00C57FC0	?MixFrame@CSalMixer@@UAEXPBMPAHM@Z	carry	0	not reached this pass
+552	land1116p23	0x00C57F60	?MixFrame@CSalMixer@@UAEXPBMPAHG@Z	carry	0	not reached this pass
+553	land1116p23	0x00C57F20	?MixFrame@CSalMixer@@UAEXPBMPAH@Z	carry	0	not reached this pass
+554	land1116p23	0x00C5C090	?MixFrameFade@CSalMixerLimiterMMX@@UAEXPBFPAHGF@Z	carry	0	not reached this pass
+555	land1116p23	0x00C591C0	?GetFrame@CSalMixerLimiter@@UAEXPAF@Z	carry	0	not reached this pass
+556	land1116p23	0x00C3F7D0	??_GCSalMixerLimiterSSE2@@UAEPAXI@Z	carry	0	not reached this pass
+557	land1116p23	0x00C5D510	?MixFrame@CSalMixerLimiterSSE2@@UAEXPBFPAHG@Z	carry	0	not reached this pass
+558	land1116p23	0x00C5D4B0	?MixFrame@CSalMixerLimiterSSE2@@UAEXPBHPAH@Z	carry	0	not reached this pass
+559	land1116p23	0x00C5D490	?MixFrame@CSalMixerLimiterSSE2@@UAEXPBMPAH@Z	carry	0	not reached this pass
+560	land1116p23	0x00C5D530	?MixFrameFade@CSalMixerLimiterSSE2@@UAEXPBFPAHGF@Z	carry	0	not reached this pass
+561	land1116p23	0x00C1BFF0	?Copy@C3DVector@@QBE?AU_CVECTOR@@XZ	carry	0	not reached this pass
+562	land1116p23	0x00C33690	_CODA_Commit@0	carry	0	not reached this pass
+563	land1116p23	0x00C49470	?SubmitFrame@CCodaFrameStreamer@@UAEXPAVCCodaFrame@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+564	land1116p23	0x00C16750	??0CDebugBreak@@QAE@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+565	land1116p23	0x00C491D0	?GetData@CCodaFrame@@QAEPAFXZ	carry	0	not reached this pass
+566	land1116p23	0x00C36080	_CODA_BufferCreate@4	carry	0	not reached this pass
+567	land1116p23	0x00C35A10	_CODA_SourceQueueBuffer@16	carry	0	not reached this pass
+568	land1116p23	0x00C49D50	?Push@CLockedRingBuffer@@QAEXPAVCCodaFrame@@@Z	carry	0	not reached this pass
+569	land1116p23	0x00C49B90	?ProcessMessage@CMailboxQueue@@QAEJPAX@Z	carry	0	not reached this pass
+570	land1116p23	0x0143CCD8	?g_ForceTestTone@@3_NA	carry	0	not reached this pass
+571	land1116p23	0x00C0BCC0	?SafeStrlen@CString@@SGHPBD@Z	carry	0	not reached this pass
+572	land1116p23	0x00C0E0F0	?Right@CString@@QBE?AV1@H@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+573	land1116p23	0x00C0BD60	?CompareNoCase@CString@@QBEHPBD@Z	carry	0	not reached this pass
+574	land1116p23	0x00C16760	?WideToMultiByte@@YIXPBGPADH@Z	carry	0	not reached this pass
+575	land1116p23	0x00C0BFE0	??0CString@@QAE@PBD@Z	carry	0	not reached this pass
+576	land1116p23	0x00BFEA1A	??2@YAPAXI@Z	carry	0	not reached this pass
+577	land1116p23	0x00C888F0	??0CNullAudioStream@@QAE@PAXABUPKCBufferedReaderParams@@@Z	carry	0	not reached this pass
+578	land1116p23	0x00C88780	??0COggVorbisStream@@QAE@PAXABUPKCBufferedReaderParams@@@Z	carry	0	not reached this pass
+579	land1116p23	0x00C73EF0	??0CTestToneAudioStream@@QAE@M@Z	carry	0	not reached this pass
+580	land1116p23	0x00C2E610	?AddSampleNameTriggers@CBankProcessor@@QAEXXZ	carry	0	not reached this pass
+581	land1116p23	0x00C3ABD0	?Get@CIndexMap_00c3abd0@@QAEPAXK@Z	carry	0	not reached this pass
+582	land1116p23	0x00C307E0	?AddMessage@CLoadLog@@QAEAAVCString@@XZ	carry	0	not reached this pass
+583	land1116p23	0x00C0DF10	??6CString@@QAIAAV0@K@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+584	land1116p23	0x00C0E360	?GetFileNameWithoutExtension@CString@@QBE?AV1@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+585	land1116p23	0x00C0DBB0	?GetHash@CString@@QBEKXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+586	land1116p23	0x00C1F4E0	?InsertDriver@CEventTriggerRef@@QAEJKPAX@Z	carry	0	not reached this pass
+587	land1116p23	0x00C0AF90	?ReadSecond@CUnprovenAudioChannelBank@@UAEMI@Z	done-already	0	NO_BINDER: no landed row binds the address yet; nothing to do
+588	land1116p23	0x0139652C	BIGGEST_RHW_VERTEX_VALUE	carry	0	not reached this pass
+589	land1116p23	0x00C17640	?OpenBankFile@@YI_NPAVPKCFileManager@@PBGPAVCScriptHost@@PBUSBankRequest@@@Z	carry	0	not reached this pass
+590	land1116p23	0x00C2E0C0	??0CBankProcessor@@QAE@PAUCBankData@@PAXPAVCLoadLog@@@Z	carry	0	not reached this pass
+591	land1116p23	0x00C2EB00	?Load@CBankProcessor@@QAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+592	land1116p23	0x00C2E140	??1CBankProcessor@@QAE@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+593	land1116p23	0x00C2EED0	??0CBankData@@QAE@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+594	land1116p23	0x00C30F60	?ReadBankData@@YIXPAXPAUCBankData@@KPAVCLoadLog@@@Z	carry	0	not reached this pass
+595	land1116p23	0x00C307C0	?IsOk@CLoadLog@@QBE_NXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+596	land1116p23	0x00C16CE0	?RunBankProcessor@@YGXPAVCScriptHost@@PAUCBankData@@PAVCLoadLog@@PBUSBankRequest@@@Z	carry	0	not reached this pass
+597	land1116p23	0x00C2EF30	??1CBankData@@QAE@XZ	carry	0	not reached this pass
+598	land1116p23	0x00C16E10	?ReadBankInfoCount@@YIJPAVCSegmentFile@@@Z	carry	0	not reached this pass
+599	land1116p23	0x00BFEB22	??_U@YAPAXI@Z	carry	0	not reached this pass
+600	land1116p23	0x00C0E9E0	?QueueEvent@CScriptHost@@QAEXJJJ@Z	carry	0	not reached this pass
+601	land1116p23	0x00C17940	?ReadMetadataData@@YIPAUCBankData@@PAX@Z	carry	0	not reached this pass
+602	land1116p23	0x00C17910	??1CBankDataOwner@@QAE@XZ	carry	0	not reached this pass
+603	land1116p23	0x00C0DF20	??6CString@@QAIAAV0@PBG@Z	carry	0	not reached this pass
+604	land1116p23	0x00C31DB0	?GetChecked@PKCAutoFile@@QAEPAVCAudioFile@@XZ	carry	0	not reached this pass
+605	land1116p23	0x00C16D90	?ProcessBankEntry@@YGXPBUSBankRequest@@PAXPAVCLoadLog@@PAVCScriptHost@@@Z	carry	0	not reached this pass
+606	land1116p23	0x00C174A0	?LoadBankByFormat@@YGXPAVPKCFileManager@@PAVCLoadLog@@PAVCScriptHost@@PBGPBUSBankRequest@@@Z	carry	0	not reached this pass
+607	land1116p23	0x00AEEBA0	?StartFrame@CParticleEmitter@NParticleEngine@@QAEXMABVCEnginePrimitivePrepareInfo@@@Z	done	2	0x00AEB550 0x00B0C910 (p23 callers list)
+608	land1116p23	0x00972F30	?SetupArena@CAIStateGroup_JackOfBladesStage2@@MAEXXZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+609	land1116p23	0x00972830	?SetupArena@CAIStateGroup_JackOfBladesBase@@MAEXXZ	carry	0	not reached this pass
+610	land1116p23	0x007FD110	??$GetPFirstThingInRoughArea@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z	carry	0	not reached this pass
+611	land1116p23	0x00659800	?CalculateSecuritySweepTasks@CTCVillage@@AAEXXZ	done	2	private; CTCVillage member callers
+612	land1116p23	0x0065F6A6	??$count_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YIHU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@0UHasGuardProperty@@@Z	carry	0	not reached this pass
+613	land1116p23	0x0065F6DA	??$GetPBestThing@V?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABV?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z	carry	0	not reached this pass
+614	land1116p23	0x0065DCE8	??0CVillageTaskSecuritySweep@@QAE@ABVC3DVector@@M0M@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+615	land1116p23	0x0065E2E0	??0?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAE@PAVCVillageTaskSecuritySweep@@@Z	carry	0	not reached this pass
+616	land1116p23	0x00660587	?push_back@?$list@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCVillageTaskSecuritySweep@@@@@Z	carry	0	not reached this pass
+617	land1116p23	0x0065F9AB	??$__find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@U10@0UHasGuardProperty@@ABUinput_iterator_tag@0@@Z	carry	0	not reached this pass
+618	land1116p23	0x00C4AEB0	?WaitForSlot@PKCBufferedReader@@QAE_NK@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+619	land1116p23	0x00C4BE10	?GetCount@PKCMailbox@@QAEJXZ	carry	0	not reached this pass
+620	land1116p23	0x00C4BC80	?GetResult@PKCMailbox@@QAEKXZ	carry	0	not reached this pass
+621	land1116p23	0x0064AE80	?DrawAbilityButton@CDrawAbilityButtons@NPlayerGui@@IAEXABVCEnginePrimitivePrepareInfo@@AAV?$vector@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@V?$allocator@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@@std@@JJJM@Z	carry	0	not reached this pass
+622	land1116p23	0x013D27B0	?NumberOfPeopleCalculatingRoute@@3JA	carry	0	not reached this pass
+623	land1116p23	0x00BFEAE6	_memmove	carry	0	not reached this pass
+624	land1116p23	0x00A763F0	??8CANavQuadTreeNode@@QBE_NABV0@@Z	carry	0	not reached this pass
+625	land1116p23	0x013D27B8	?NumberOfAStarStates@CAStarState@CNavigatorAStar@@2JA	carry	0	not reached this pass
+626	land1116p23	0x013D27BC	?NumberOfOpenStates@CAStarState@CNavigatorAStar@@2JA	carry	0	not reached this pass
+627	land1116p23	0x009E2460	?GFGet2DDistance@@YIMABVC2DVector@@0@Z	done	2	0x00751BC0 0x00A1A0A0
+628	land1116p23	0x00A20240	??$?0JVCAStarState@CNavigatorAStar@@@?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@QAE@ABU?$pair@JVCAStarState@CNavigatorAStar@@@1@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+629	land1116p23	0x013D27C0	?NumberOfClosedStates@CAStarState@CNavigatorAStar@@2JA	carry	0	not reached this pass
+630	land1116p23	0x00A22460	??$Push@VCAStarStateTotalGreaterThan@@@?$CPriorityQueue@PAVCAStarState@CNavigatorAStar@@@@QAEXABQAVCAStarState@CNavigatorAStar@@ABVCAStarStateTotalGreaterThan@@@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+631	land1116p23	0x00A154D0	?AddNavigatorToQueue@CNavigatorQueueManager@@QAEXABVCNavigatorBase@@_NM@Z	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+632	land1116p23	0x00C53400	??0CHLRvbParams@@QAE@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+633	land1116p23	0x007D1260	??$GetSubDef@VCTavernGameShoveHaPennyDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameShoveHaPennyDef@@@@@Z	carry	0	not reached this pass
+634	land1116p23	0x007D00F0	?FrameUpdate@CTCTavernGameShoveHaPenny@@UAEXXZ	done-already	0	NO_BINDER: no landed row binds the address yet; nothing to do
+635	land1116p23	0x0089C910	?CanThingBe_Sensed_ByOtherThing@CGameScriptInterface@@ABE_NABVCScriptThing@@0J@Z	carry	0	not reached this pass
+636	land1116p23	0x00654AF5	??$IS_THING_ALIVE@PAVCThingObject@@@@YI_NABQAVCThingObject@@@Z	carry	0	not reached this pass
+637	land1116p23	0x005508D0	??0C3DOrientationInterpolator@@QAE@ABVCRightHandedSet@@0@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+638	land1116p23	0x004BD420	?GetAllMeshes@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCMeshInfo@NGraphicAppearance@@V?$allocator@VCMeshInfo@NGraphicAppearance@@@std@@@std@@@Z	carry	0	not reached this pass
+639	land1116p23	0x00550940	??0CEnginePrimitive2DStaticMesh@@QAE@_KKABVC2DBoxF@@ABVC3DOrientationInterpolator@@W4EEngineInterpolationSet@@EVCRGBColour@@@Z	carry	0	not reached this pass
+640	land1116p23	0x004C2DD0	??0C3DAnimationBlendState@@QAE@XZ	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+641	land1116p23	0x01249F50	??_7C3DAnimationState@@6B@	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+642	land1116p23	0x00A3C260	?SetBaseAnimation@C3DAnimationBlendState@@QAEXABVC3DAnimationState@@@Z	done-already	0	self row compiled (NF34 probe) already emits the claimed symbol; reloc_bindings agree
+643	land1116p23	0x00550A70	??0CEnginePrimitive2DAnimatingMesh@@QAE@_KKABVC3DAnimationBlendState@@ABVC2DBoxF@@ABVC3DBoundingSphere@@ABVC3DOrientationInterpolator@@W4EEngineInterpolationSet@@EVCRGBColour@@@Z	carry	0	not reached this pass
+644	land1116p23	0x004C2DF0	??1C3DAnimationBlendState@@UAE@XZ	done-already	0	ALREADY_OK screen (reloc_bindings + self Leaf agree); 5 spot-checked (lines 30,167,300,409,585)
+645	land1116p23	0x00C12E50	?PlayStreamed@CSoundEventManager@@UAEJPAVCStreamSoundBank@@JKPBUInput@@@Z	done-already	0	NO_BINDER: no landed row binds the address yet; nothing to do
+646	land1116p23	0x00C2CBD0	??0CEventScript@@QAE@PAUCScriptOwner@@@Z	done-already	0	NO_BINDER: no landed row binds the address yet; nothing to do

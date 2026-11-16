@@ -1,5 +1,6 @@
 // CTCCameraPointDefinitionBase::TransformPosition(const C3DVector& position, const C3DVector* origin, const CRightHandedSet* axes) const -- for a camera point using relative coordinates: express the position relative to the point's base in the given axes and move it to the origin; otherwise return it unchanged
-// Leaf: TransformPosition
+// Leaf: ?TransformPosition@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBV2@PBVCRightHandedSet@@@Z
+// Name fix (NF34, 2026-11-16): Ego_r.pdb 0x0076AE70 + FableWin.pdb 0x024F44E0 spell it protected (IBE); access only.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075C420, length 205 bytes (+ int3 padding), `ret 10h` (hidden result + 3).
 // Callees: CTCCameraPointDefinitionBase::TransformVector(const C3DVector&, const CRightHandedSet*) const @ 0x0075C280 (the
@@ -32,7 +33,9 @@ public:
     bool    UsingRelativeCoords;                // +0x3a
     bool    UsingRelativeOrientation;           // +0x3b
     bool    Activated;                          // +0x3c
+protected:
     C3DVector TransformPosition(const C3DVector& position, const C3DVector* origin, const CRightHandedSet* axes) const;
+public:
 protected:
     C3DVector TransformVector(const C3DVector&, const CRightHandedSet*) const;   // 0x0075C280
 };

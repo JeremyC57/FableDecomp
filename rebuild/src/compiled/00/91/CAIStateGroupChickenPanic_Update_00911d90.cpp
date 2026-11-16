@@ -94,7 +94,7 @@ class CThing : public CThingPhysical { public:
 };
 
 class CTCCreatureNavigation { public:                  // interface 7
-    bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector* result);   // 0x006CB840
+    bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector& result) const;   // 0x006CB840 (NF34: Ego_r + FableWin QBE, C3DVector&)
 };
 
 class CAIBrain { public:
@@ -141,7 +141,7 @@ void CAIStateGroup_ChickenPanic::Update()
         CThing* chicken = PBrain->PCreature;
         chicken->GetInterfaceT(&navigation, 7);
         C3DVector fleePos;
-        if (navigation->GetNearestFleePosition(((const CThing*)chicken->LastAttacker.GetPItem())->PeekPos(), 8.0f, &fleePos)) {
+        if (navigation->GetNearestFleePosition(((const CThing*)chicken->LastAttacker.GetPItem())->PeekPos(), 8.0f, fleePos)) {
             bool reached = false;
             AIAction_MoveToPosProximity(1, fleePos, 1.0f, &reached, 5, true, false, true, 0, true, 0.0f);
         }

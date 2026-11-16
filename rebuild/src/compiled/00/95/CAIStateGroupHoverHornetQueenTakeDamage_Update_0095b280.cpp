@@ -63,9 +63,10 @@ class CThing { public:
         return false;
     }
 };
+class CThingCreatureBase;   // NF34: the PDB parameter type (no layout needed)
 class CCombatManager { public:
     void RegisterCombatant(CThing* creature, CThing* target, bool flag);   // 0x006EDC50
-    void SetAttackerAsReadyToAttack(CThing* creature, bool ready);         // 0x006EA450
+    void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);   // 0x006EA450 (NF34: Ego_r + FableWin ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z)
 };
 class CTCBoss { public:                                // interface 0xad
     bool IsReadyForPhaseChange() const;               // 0x007AEE90
@@ -122,7 +123,7 @@ void CAIStateGroupHoverHornetQueenTakeDamageMethods::Update()
                 if (GetCreature()->IsCombatant()) {
                     CThing* creature = GetCreature();
                     CWorld* world = &GetWorld();
-                    world->PCombatManager->SetAttackerAsReadyToAttack(creature, true);
+                    world->PCombatManager->SetAttackerAsReadyToAttack(*(const CThingCreatureBase*)creature, true);
                 }
                 CThing* creature = GetCreature();
                 AIAction_CombatPerformActionAndWait(&CCreatureAction_DragonRoar(creature, ((CThing*)PTarget().GetPItem())), false);

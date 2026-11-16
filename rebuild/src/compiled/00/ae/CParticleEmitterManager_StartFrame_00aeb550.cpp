@@ -59,7 +59,7 @@ class CParticleEmitter { public:
     bool Initialise(CIEngine* engine);                                          // 0x00AEE240
     bool IsVisible() const;                                                     // 0x00AED010 (labelled "CTCPhysicsStandard::CanCollideWithLandscape")
     void Update();                                                              // 0x00AEE9F0
-    void StartFrame(float interpolate, CEnginePrimitivePrepareInfo* info);     // 0x00AEEBA0
+    void StartFrame(float interpolate, const CEnginePrimitivePrepareInfo& info);     // 0x00AEEBA0 (NF34: Ego_r + FableWin ?StartFrame@CParticleEmitter@NParticleEngine@@QAEXMABVCEnginePrimitivePrepareInfo@@@Z)
 };
 
 struct CCountedItem { };
@@ -121,9 +121,9 @@ void CParticleEmitterManager::StartFrame(CEnginePrimitivePrepareInfo* info)
         }
         if (emitter->IsInitialised()) {
             if (emitter->AlwaysUpdate)
-                emitter->StartFrame(interpolate, info);
+                emitter->StartFrame(interpolate, *info);
             else
-                emitter->StartFrame(bulletTimeInterpolate, info);
+                emitter->StartFrame(bulletTimeInterpolate, *info);
         }
         ++it;
     }

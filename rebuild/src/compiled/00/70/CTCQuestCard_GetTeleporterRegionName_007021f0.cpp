@@ -1,5 +1,6 @@
-// CTCQuestCard::GetMarkerRegionName() const -- the region the quest marker points at: the teleporter region name, blanked when the world map knows the region and has a route to it from the current region (only an unreachable or unknown region is kept)
-// Leaf: GetMarkerRegionName
+// CTCQuestCard::GetTeleporterRegionName() const -- the region the quest marker points at: the teleporter region name, blanked when the world map knows the region and has a route to it from the current region (only an unreachable or unknown region is kept)
+// Leaf: ?GetTeleporterRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ
+// Name fix (NF34, 2026-11-16): Ego_r.pdb + FableWin.pdb ?GetTeleporterRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ (was the made-up GetMarkerRegionName).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007021F0, length 137 bytes (padded to 144), `ret 4` (hidden result).
 // Label correction: the catalog's "CViewBase::" class is wrong: the neighbours 0x00702280..0x00702400 are CTCQuestCard members and
 // +0x24 is CTCQuestCard::TeleporterRegionName (engine/CTCQuestCard.h, PDB offsets match retail here).
@@ -46,9 +47,9 @@ class CTCQuestCard : public CTCBase { public:
     CCharString    ScriptQuestName;                // +0x28
     long           GoldReward;                     // +0x2c
     long           RenownReward;                   // +0x30
-    CCharString GetMarkerRegionName() const;
+    CCharString GetTeleporterRegionName() const;
 };
-CCharString CTCQuestCard::GetMarkerRegionName() const
+CCharString CTCQuestCard::GetTeleporterRegionName() const
 {
     CCharString name(TeleporterRegionName);
     if (name != "") {

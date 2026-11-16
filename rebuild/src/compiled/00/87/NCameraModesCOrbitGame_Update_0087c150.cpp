@@ -57,7 +57,9 @@ class CBase { public:
     float         CameraFOV;                    // +0x84
     float         RollAngle;                    // +0x88
     float         ObservedPositionZOffset;      // +0x8c
+protected:  // NF34: Ego_r.pdb + FableWin.pdb ?GetWorld@CBase@NCameraModes@@IBEABVCWorld@@XZ (protected)
     const CWorld& GetWorld() const;             // 0x0084D050
+public:
 };
 
 struct COrbitGame : CBase {

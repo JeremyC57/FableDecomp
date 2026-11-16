@@ -1,0 +1,84 @@
+address	change	grade	test	grades_used	entries	note
+0x00917db0	callee decl IsOpeningHours const	RELOCATION_MATCH	PASS	1	00773950	binds ?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00926a10	callee decl IsOpeningHours const	RELOCATION_MATCH	PASS	1	00773950	binds ?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00926b30	callee decl IsOpeningHours const	RELOCATION_MATCH	PASS	1	00773950	binds ?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00926c50	callee decl IsOpeningHours const	RELOCATION_MATCH	PASS	1	00773950	binds ?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00927c80	callee decl IsOpeningHours const	RELOCATION_MATCH	PASS	2	00773950	binds ?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00927df0	callee decl IsOpeningHours const	RELOCATION_MATCH	PASS	1	00773950	binds ?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00927ea0	callee decl IsOpeningHours const	RELOCATION_MATCH	PASS	1	00773950	binds ?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00535cd0	self: long->bool ContainsPoint on shared C2DBoxF.h	MATCH	PASS	2	00535cd0	return type fix; same bytes
+0x00989700	self: UpdateAmbient->UpdateCameraPos (private)	MATCH	PASS	1	00989700	local model kept
+0x007dccb0	callee decl GetSplinePosition const&	RELOCATION_MATCH	PASS	2	00a567a0	local model respelled (own C3DVector clashes with header)
+0x007dce40	callee GetSplinePosition via engine/CCardinalSpline.h opt-in	RELOCATION_MATCH	PASS	1	00a567a0	local CCardinalSpline model replaced by shared header
+0x0075cd30	callee TransformPosition protected	RELOCATION_MATCH	PASS	1	0075c420	derived-class caller
+0x0075cd90	callee TransformPosition protected	RELOCATION_MATCH	PASS	1	0075c420	derived-class caller
+0x00873030	callee GetWorld protected	RELOCATION_MATCH	PASS	1	0084d050	derived camera mode caller
+0x00879560	callee GetWorld protected	RELOCATION_MATCH	PASS	1	0084d050	derived camera mode caller
+0x008798c0	callee GetWorld protected	RELOCATION_MATCH	PASS	1	0084d050	derived camera mode caller
+0x0087c070	callee GetWorld protected	RELOCATION_MATCH	PASS	1	0084d050	derived camera mode caller
+0x0087c150	callee GetWorld protected	RELOCATION_MATCH	PASS	1	0084d050	derived camera mode caller
+0x00659c32	callee CalculateSecuritySweepTasks private	RELOCATION_MATCH	PASS	1	00659800	CTCVillage member caller
+0x0065c08a	callee CalculateSecuritySweepTasks private	RELOCATION_MATCH	PASS	1	00659800	CTCVillage member caller
+0x00490a22	callee IsTextFullyShown->IsTextReadyForClickPast	RELOCATION_MATCH	PASS	1	0048e072	stand-in name replaced
+0x005a3436	callee CTCShop::SellHighlightedItem->BuyItem	RELOCATION_MATCH	PASS	1	00774d20	
+0x005e4740	callee RemoveAccepted..->RemoveBoastsForScript	RELOCATION_MATCH	PASS	1	004affa0	
+0x0091e050	callees IsToAttackTarget (NCreatureAI) + SetAttackerAsReadyToAttack const&	RELOCATION_MATCH	PASS	1	00864d00,006ea450	local models kept
+0x0091f050	callee IsToAttackTarget (NCreatureAI)	RELOCATION_MATCH	PASS	1	00864d00	
+0x0059d820	callee IsBuyable->IsSellable (local decl)	RELOCATION_MATCH	PASS	1	005d9b30	
+0x005af64e	callee IsBuyable->IsSellable (overlay opt-in CTCINVENTORYITEM_ISSELLABLE)	RELOCATION_MATCH	PASS	1	005d9b30	hdr overlay
+0x005b0aac	callee IsBuyable->IsSellable (overlay opt-in CTCINVENTORYITEM_ISSELLABLE)	RELOCATION_MATCH	PASS	1	005d9b30	hdr overlay
+0x0047eee4	callee CRC accessor -> CCharString::GetCRC (local model member)	RELOCATION_MATCH	PASS	1	00404310	
+0x0096dd10	callee CRC accessor -> CCharString::GetCRC (local model member)	RELOCATION_MATCH	PASS	1	00404310	
+0x00751bc0	callee Distance2D -> GFGet2DDistance	RELOCATION_MATCH	PASS	1	009e2460	
+0x00a1a0a0	callee Distance2D -> GFGet2DDistance	RELOCATION_MATCH	PASS	1	009e2460	
+0x00911d90	callee GetNearestFleePosition const, C3DVector&	RELOCATION_MATCH	PASS	1	006cb840	
+0x0095e470	callee GetNearestFleePosition const, C3DVector&	RELOCATION_MATCH	PASS	1	006cb840	
+0x0057b3e2	callee GetAbilityLevel(EHeroAbility) const via engine/EHeroAbility.h	RELOCATION_MATCH	PASS	2	005ede93	local model respelled
+0x0079a6e0	callee GetAbilityLevel(EHeroAbility) const via engine/EHeroAbility.h	RELOCATION_MATCH	PASS	1	005ede93	local model respelled
+0x007a43a0	callee GetAbilityLevel(EHeroAbility) const via engine/EHeroAbility.h	RELOCATION_MATCH	PASS	1	005ede93	local model respelled
+0x007a54a0	callee GetAbilityLevel(EHeroAbility) const via engine/EHeroAbility.h	RELOCATION_MATCH	PASS	1	005ede93	local model respelled
+0x007a71b0	callee GetAbilityLevel(EHeroAbility) const via engine/EHeroAbility.h	RELOCATION_MATCH	PASS	1	005ede93	local model respelled
+0x007a9e40	callee GetAbilityLevel(EHeroAbility) const via engine/EHeroAbility.h	RELOCATION_MATCH	PASS	1	005ede93	local model respelled
+0x007c30e0	callee GetAbilityLevel(EHeroAbility) const via engine/EHeroAbility.h	RELOCATION_MATCH	PASS	1	005ede93	local model respelled
+0x007c4bd0	callee GetAbilityLevel(EHeroAbility) const via engine/EHeroAbility.h	RELOCATION_MATCH	PASS	1	005ede93	local model respelled
+0x007c5560	callee GetAbilityLevel(EHeroAbility) const via engine/EHeroAbility.h	RELOCATION_MATCH	PASS	1	005ede93	local model respelled
+0x007c6940	callee GetAbilityLevel(EHeroAbility) const via engine/EHeroAbility.h	RELOCATION_MATCH	PASS	1	005ede93	local model respelled
+0x007cc4d0	callee GetAbilityLevel(EHeroAbility) const via engine/EHeroAbility.h	RELOCATION_MATCH	PASS	1	005ede93	local model respelled
+0x007a09b0	callees GetAbilityLevel(EHeroAbility) const + GetGlobalIndexFromClassIndex	RELOCATION_MATCH	PASS	2	005ede93,009ad390	local empty enum EHeroAbility replaced by engine/EHeroAbility.h
+0x007c6760	callees GetAbilityLevel(EHeroAbility) const + GetGlobalIndexFromClassIndex	RELOCATION_MATCH	PASS	2	005ede93,009ad390	local empty enum EHeroAbility replaced by engine/EHeroAbility.h
+0x005ee3b3	callee GetDefGlobalIndex -> GetGlobalIndexFromClassIndex	RELOCATION_MATCH	PASS	1	009ad390	
+0x0093dde0	callee SetAttackerAsReadyToAttack(const CThingCreatureBase&, bool)	RELOCATION_MATCH	PASS	1	006ea450	local model respelled
+0x0093e2d0	callee SetAttackerAsReadyToAttack(const CThingCreatureBase&, bool)	RELOCATION_MATCH	PASS	1	006ea450	local model respelled
+0x0093e5e0	callee SetAttackerAsReadyToAttack(const CThingCreatureBase&, bool)	RELOCATION_MATCH	PASS	1	006ea450	local model respelled
+0x0095b280	callee SetAttackerAsReadyToAttack(const CThingCreatureBase&, bool)	RELOCATION_MATCH	PASS	1	006ea450	local model respelled
+0x0096ea50	callee SetAttackerAsReadyToAttack(const CThingCreatureBase&, bool)	RELOCATION_MATCH	PASS	1	006ea450	local model respelled
+0x009e1280	callee UpdateFlag8State -> UpdateCameraPos (private)	RELOCATION_MATCH	PASS	1	00989700	CShaderRenderManager member caller
+0x00937da0	callee IsToAttackTarget (NCreatureAI, PDB parameter types)	RELOCATION_MATCH	PASS	1	00864d00	
+0x00970ab0	callee IsToAttackTarget (NCreatureAI, PDB parameter types)	RELOCATION_MATCH	PASS	1	00864d00	
+0x00aeb550	callee CParticleEmitter::StartFrame(float, const CEnginePrimitivePrepareInfo&)	RELOCATION_MATCH	PASS	1	00aeeba0	
+0x00b0c910	callee CParticleEmitter::StartFrame(float, const CEnginePrimitivePrepareInfo&)	RELOCATION_MATCH	PASS	1	00aeeba0	
+0x00a18760	callees two GetPointIntersectionFromToUsing* private	RELOCATION_MATCH	PASS	1	00a177a0,00a17f80	CPhysicsMesh member caller
+0x00958840	callee PeekDefinitionManager protected (overlay opt-in)	RELOCATION_MATCH	PASS	1	008fcfb0	hdr overlay CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER_PROTECTED
+0x0097fea0	callee PeekDefinitionManager protected (overlay opt-in)	RELOCATION_MATCH	PASS	1	008fcfb0	hdr overlay CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER_PROTECTED
+0x00b6e260	callees BeginQuery/EndQuery -> StartOcclusionTest/EndOcclusionTest(unsigned long)	RELOCATION_MATCH	PASS	1	00b8d090,00b8d0a0	
+0x00be79d0	callees BeginQuery/EndQuery -> StartOcclusionTest/EndOcclusionTest(unsigned long)	RELOCATION_MATCH	PASS	1	00b8d090,00b8d0a0	
+0x00a24a80	callee AddResource(CResource*) -> AddToLoadingQueue(CResource&)	RELOCATION_MATCH	PASS	1	009fc3d0	
+0x00a256f0	callee AddResource(CResource*) -> AddToLoadingQueue(CResource&)	RELOCATION_MATCH	PASS	1	009fc3d0	
+0x00a26730	callee AddResource(CResource*) -> AddToLoadingQueue(CResource&)	RELOCATION_MATCH	PASS	1	009fc3d0	
+0x00a23b50	self: placeholder -> CMeshDataBank::SetTextureBank on shared header	MATCH	PASS	3	00a23b50	hdr overlay
+0x00a23b60	self: placeholder -> CMeshDataBank::SetDP3BumpEnable on shared header	MATCH	PASS	1	00a23b60	
+0x009886f0	self: placeholder -> CShaderRenderManager::SetSoftwareVertexShaderEnable on shared header	MATCH	PASS	1	009886f0	
+0x00988700	self: placeholder -> CShaderRenderManager::SetSoftwareFixedFunctionEnable on shared header	MATCH	PASS	1	00988700	
+0x005e3ea0	self: IsHeroControlledByPlayer spelling (Ego_r + FableWin private; access only)	RELOCATION_MATCH	PASS	1	005e3ea0	
+0x007c3eb0	self: GetLevelEffectName spelling (Ego_r + FableWin private; access only)	RELOCATION_MATCH	PASS	1	007c3eb0	
+0x00813b80	self: GetNumberOfActiveBoastingPositions spelling (Ego_r + FableWin private; access only)	RELOCATION_MATCH	PASS	1	00813b80	
+0x007021f0	self: GetTeleporterRegionName spelling (Ego_r + FableWin name; made-up name replaced)	RELOCATION_MATCH	PASS	1	007021f0	
+0x009f2550	self: GetNoAllocatedAreas spelling (Ego_r + FableWin; Ego_r GetTotalMemoryAllocated 0x00B45FD0 -> GetNoAllocatedAreas +0x100 as retail 0x009F2450 -> 0x009F2550; binder 0x009AF7A0 already)	RELOCATION_MATCH	PASS	1	009f2550	
+0x00e53670	self: IsHeroWearingAnyBeard spelling (Ego_r + FableWin name)	RELOCATION_MATCH	PASS	1	00e53670	
+0x009baa50	self: Init spelling (Ego_r + FableWin reference parameter)	MATCH	PASS	1	009baa50	
+0x00a892e0	self: InitialiseBoneNamePointers spelling (Ego_r + FableWin private, unsigned long)	RELOCATION_MATCH	PASS	1	00a892e0	
+0x0074dd20	self: ctor owner CThingCreatureBase* -> &	RELOCATION_MATCH	PASS	1	0074dd20	
+0x00842c70	self: ctor owner CThingCreatureBase* -> &	RELOCATION_MATCH	PASS	1	00842c70	
+0x0075c420	self: TransformPosition protected	RELOCATION_MATCH	PASS	1	0075c420	
+0x006cb840	self: GetNearestFleePosition const, C3DVector&	RELOCATION_MATCH	PASS	1	006cb840	
+0x00929820	callees GetCRC + GetGreetDialogueGroupIndex(EOpinionAttitudeType)	RELOCATION_MATCH	PASS	3	00404310,00683c10	GetOpinionValue stand-in (0x00701750) left: COpinionReactionManager.h clashes with local CBaseIntelligentPointer

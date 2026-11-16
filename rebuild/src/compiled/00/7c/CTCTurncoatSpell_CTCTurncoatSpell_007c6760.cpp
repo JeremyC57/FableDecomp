@@ -10,11 +10,12 @@
 // Shape: the TC 0xA7 / 0x6F lookups are an inline HasTC (masked word) guarding an inline GetTC without its own bit test (const LowerBound for 0x6F); the def name is passed as `const char*` (built before the `push 1`); the frame/fraction pairs go through a named `whole` local.
 // Callees: CTCBase ctor 0x00686800, CWillButtonHelperTimer ctor 0x008EDFF0, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90,
 //   LowerBound 0x0040F020 / 0x004365B0 (const), CCharString ctor/dtor 0x0099EBF0/0x0099EAE0, definition manager 0x0044C6B0 (__fastcall),
-//   GetDefIndex 0x009AD390, GetDef<CTurncoatSpellDef> 0x007C7720, CTCInventoryAbilities::GetAbilityLevel 0x005EDE93, __ftol2
+//   GetGlobalIndexFromClassIndex 0x009AD390, GetDef<CTurncoatSpellDef> 0x007C7720, CTCInventoryAbilities::GetAbilityLevel 0x005EDE93, __ftol2
 // Naming wave 17: the CWillButtonHelperTimer ctor is c672's (EHeroAbility, CThing&) one (??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z);
 //   the ability is a cast of the landed value (no enumerator ordinal source) -- name-only.
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -66,7 +67,7 @@ public:
         }
     }
 };
-enum EHeroAbility { };                                   // Ego_r enum (enumerators: no ordinal source)
+// (NF34: the local empty EHeroAbility enum is replaced by engine/EHeroAbility.h, included above)
 struct CWillButtonHelperTimer {
     unsigned char _pad[0x34];
     CWillButtonHelperTimer(EHeroAbility ability, CThing& owner);   // 0x008EDFF0
@@ -94,12 +95,12 @@ template <class T> class CDefPointer { public:
     CDefPointer() : Object(0) { }
 };
 class CDefinitionManager { public:
-    long GetDefIndex(const CCharString& name, bool required);         // 0x009AD390
+    long GetGlobalIndexFromClassIndex(const CCharString& name, long classIndex) const;   // 0x009AD390 (NF34: Ego_r + FableWin)
     bool GetDef(long index, CDefPointer<CTurncoatSpellDef>* def);     // 0x007C7720
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };  // 0x0044C6B0
 struct CTCAbilityCast { unsigned char _pad[0x0c]; bool Busy; unsigned char _pad0d[3]; long Ability; };
-class CTCInventoryAbilities { public: long GetAbilityLevel(long ability); };   // 0x005EDE93
+class CTCInventoryAbilities { public: long GetAbilityLevel(EHeroAbility ability) const; };   // 0x005EDE93
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -137,10 +138,10 @@ CTCTurncoatSpell::CTCTurncoatSpell(CThing& owner)
         cast->Busy = true;
         cast->Ability = 5;
     }
-    long index = CGameDefinitionManager::Get().GetDefIndex("SPECIAL_ABILITIES_TURNCOAT_SPELL_DEF", true);
+    long index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex("SPECIAL_ABILITIES_TURNCOAT_SPELL_DEF", 1);
     CGameDefinitionManager::Get().GetDef(index, &Def);
     if (ParentThing->HasTC(0x6f))
-        Level = ((CTCInventoryAbilities*)ParentThing->GetTCC(0x6f))->GetAbilityLevel(5);
+        Level = ((CTCInventoryAbilities*)ParentThing->GetTCC(0x6f))->GetAbilityLevel(HERO_ABILITY_TURNCOAT_SPELL);
     CTurncoatSpellDef* def = Def.Object;
     float duration = def->DurationSeconds.First[Level] / (float)CMainGameComponent::GetConstantFPS();
     long whole = (long)duration;

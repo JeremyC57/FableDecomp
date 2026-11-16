@@ -1,4 +1,6 @@
-// CV_BeardyBaldyScript::IsHeroWearingBeard() -- true if the hero wears any of the eight beard hairstyles (the BeardyBaldy copy: called only from CV_BeardyBaldyScript::GoTalkToBeardyBaldy)
+// CV_BeardyBaldyScript::IsHeroWearingAnyBeard() -- true if the hero wears any of the eight beard hairstyles (the BeardyBaldy copy: called only from CV_BeardyBaldyScript::GoTalkToBeardyBaldy)
+// Leaf: ?IsHeroWearingAnyBeard@CV_BeardyBaldyScript@NScript@@QAE_NXZ
+// Name fix (NF34, 2026-11-16): Ego_r.pdb + FableWin.pdb ?IsHeroWearingAnyBeard@CV_BeardyBaldyScript@NScript@@QAE_NXZ (was IsHeroWearingBeard).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E53670, length 632 bytes (label propagated: 0x00E44A40 and 0x00E53670 are
 //   byte-identical copies; 0x00E44A40 is the CV_BordelloScript original, called from its nested CMagicman).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; GameCalls slots 70 GetHero (+0x118) and
@@ -52,12 +54,12 @@ namespace NScript {
 class CV_BeardyBaldyScript : public CScriptBase {
 public:
     GameCalls* Game;                                     // +0x40
-    bool IsHeroWearingBeard();
+    bool IsHeroWearingAnyBeard();
 };
 } // namespace NScript
 using NScript::CV_BeardyBaldyScript;
 
-bool NScript::CV_BeardyBaldyScript::IsHeroWearingBeard()
+bool NScript::CV_BeardyBaldyScript::IsHeroWearingAnyBeard()
 {
     return Game->IsWearingHairstyle(Game->GetHero(), "OBJECT_HERO_BEARD_01")
         || Game->IsWearingHairstyle(Game->GetHero(), "OBJECT_HERO_BEARD_02")

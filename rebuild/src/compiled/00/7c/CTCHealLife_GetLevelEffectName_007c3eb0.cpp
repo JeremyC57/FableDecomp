@@ -1,5 +1,6 @@
 // CTCHealLife::GetLevelEffectName() -- the healing particle effect name for the spell level: "HEALING_EFFECT_LEVEL1" by default, LEVEL2/3/4 for spell levels 1/2/3
-// Leaf: ?GetLevelEffectName@CTCHealLife
+// Leaf: ?GetLevelEffectName@CTCHealLife@@AAE?AVCCharString@@XZ
+// Name fix (NF34, 2026-11-16): Ego_r.pdb + FableWin.pdb spell it private (AAE); access only.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C3EB0, 92 bytes (+4 int3), thiscall `ret 4` (CCharString through the hidden
 //   result pointer), no EH frame.
 // Identity: Ego_r.pdb name set ?GetLevelEffectName@CTCHealLife@@AAE?AVCCharString@@XZ (private, non-const); both
@@ -26,7 +27,9 @@ public:
     void*         ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad08[0x18 - 0x08];
     long          SpellLevel;                   // +0x18
+private:
     CCharString GetLevelEffectName();
+public:
 };
 
 CCharString CTCHealLife::GetLevelEffectName()

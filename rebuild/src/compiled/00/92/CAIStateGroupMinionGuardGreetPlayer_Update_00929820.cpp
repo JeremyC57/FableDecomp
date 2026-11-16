@@ -7,7 +7,7 @@
 // (creature 0x23 / 0x4F lookups) and its const instantiation @ 0x004365B0 (the player's interface 4), CWorld::GetFrame
 // @ 0x0049D870, CTCVillageMember::GetPVillage @ 0x007EE540, _ftol @ 0x00BFEA70, CCharString() @ 0x0099E4B0 /
 // operator=(const char*) @ 0x0099EFE0 / ~CCharString @ 0x0099EAE0, GetPThingWorld @ 0x008FCFA0, GetOpinionValue
-// @ 0x00701750, CCharString_ComputeCRC32 @ 0x00404310 (__fastcall), GetTagFromCRC @ 0x009CC410,
+// @ 0x00701750, CCharString::GetCRC @ 0x00404310, GetTagFromCRC @ 0x009CC410,
 // CTCCreatureOpinionOfHero::GetGreetDialogueGroupIndex @ 0x00683C10, CBaseIntelligentPointer ctor @ 0x00A01B10 /
 // SetPItem @ 0x00A01B90, AIAction_SpeakAISpeechToTarget @ 0x009812C0, Terminate @ 0x008FCF40.
 // Data: CMainGameComponent::Get() @ 0x013B86A0; "TEXT_AI_GUARD_GREET_NEUTRAL/FRIENDLY/WARY" @ 0x012919E4/0x012919C4/0x012919A4;
@@ -72,24 +72,26 @@ class CTCHeroStats { public:
     unsigned char _pad[0x114];
     long Field114;                              // +0x114
 };
+// NF34 name fix: the shared enum header for the Ego_r + FableWin spelling of 0x00683C10.
+#include "engine/EOpinionAttitudeType.h"
 class CTCCreatureOpinionOfHero { public:
-    unsigned long GetGreetDialogueGroupIndex(long attitude);    // 0x00683C10
+    unsigned long GetGreetDialogueGroupIndex(EOpinionAttitudeType attitude);    // 0x00683C10 (NF34: Ego_r + FableWin enum parameter)
 };
 class CCharString { public:
     void* m_pData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
     const CCharString& operator=(const char* text);   // 0x0099EFE0
+    unsigned long GetCRC() const;               // 0x00404310 (NF34: Ego_r + FableWin ?GetCRC@CCharString@@QBEKXZ)
 };
-unsigned long __fastcall CCharString_ComputeCRC32(const CCharString& text);    // 0x00404310
 struct CTagTable {
     unsigned long GetTagFromCRC(unsigned long crc) const;   // 0x009CC410
 };
-class CPlayer { public:
-    CThingPlayerCreature* GetPControlledCreature() const;      // 0x00487DC0
-};
 struct COpinionManager {
     float GetOpinionValue(CThing* thing, long opinion);     // 0x00701750
+};
+class CPlayer { public:
+    CThingPlayerCreature* GetPControlledCreature() const;      // 0x00487DC0
 };
 class CWorld { public:
     const CPlayer* PeekMyPlayer() const;                // 0x0049D9D0 Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ
@@ -166,11 +168,11 @@ void CAIStateGroup_MinionGuardGreetPlayer::Update()
             if (opinion < -0.3f)
                 text = "TEXT_AI_GUARD_GREET_WARY";
             CTagTable* tags = CMainGameComponent::Get()->PTags;
-            speech = tags->GetTagFromCRC(CCharString_ComputeCRC32(text));
+            speech = tags->GetTagFromCRC(text.GetCRC());
         } else {
             CTCCreatureOpinionOfHero* opinionTC;
             GetCreature()->GetInterface(&opinionTC, 0x4f);
-            speech = opinionTC->GetGreetDialogueGroupIndex(0x12);
+            speech = opinionTC->GetGreetDialogueGroupIndex((EOpinionAttitudeType)0x12);   // 18 = the enum count value; the source enumerator is not proven
         }
         float when;
         if (speech && AIAction_SpeakAISpeechToTarget(1, CIntelligentPointerCreature(GetCreature()),

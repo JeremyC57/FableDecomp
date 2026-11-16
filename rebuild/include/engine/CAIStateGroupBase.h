@@ -238,6 +238,11 @@ protected:
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER
     // Chunk 767 (row 0x008FCFB0): Ego_r.pdb ?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ (donor 0x00847E00,
     // just before GetPWorldSeed 0x00847E20 as retail 0x008FCFB0 / 0x008FCFD0), protected, out of line in retail.
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER_PROTECTED
+    // NF34 opt-in (2026-11-16): the block above leaves the access of whatever label precedes it (public on the default path), so
+    // rows bind ?PeekDefinitionManager@CAIStateGroupBase@@QBE..; Ego_r + FableWin spell it protected (IBE). Access label only.
+protected:
+#endif
     const CGameDefinitionManager& PeekDefinitionManager() const;         // 0x008FCFB0
 #endif
 public:

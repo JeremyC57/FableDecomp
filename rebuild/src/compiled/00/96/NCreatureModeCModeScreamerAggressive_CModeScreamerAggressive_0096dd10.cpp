@@ -23,9 +23,9 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0 (default argument: the literal converts implicitly)
     ~CCharString();                        // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    unsigned long GetCRC() const;          // 0x00404310: CRC of the text, the out-of-line copy (NF34: Ego_r + FableWin ?GetCRC@CCharString@@QBEKXZ)
 };
 
-unsigned long __fastcall CCharString_ComputeCRC32(const CCharString& text);   // 0x00404310: CRC of the text (the out-of-line copy of the inline CRC accessor pair)
 
 class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
@@ -35,7 +35,7 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
         : Group()
     {
         Group = group;
-        GroupCRC = CCharString_ComputeCRC32(group);   // out of line in this module (0x00404310)
+        GroupCRC = group.GetCRC();   // out of line in this module (0x00404310)
     }
 };
 

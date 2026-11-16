@@ -18,6 +18,7 @@
 //   SpellLevel +0x14, PItemRemoved +0x18, IsZTargetting +0x20, PTarget +0x21 (unaligned).
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 #include "fable_compiler.h"
 class CThing;
 class CBaseObject;
@@ -78,7 +79,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCInventoryAbilities {
 public:
-    long GetAbilityLevel(long ability);             // 0x005EDE93 (EHeroAbility)
+    long GetAbilityLevel(EHeroAbility ability) const;             // 0x005EDE93 (EHeroAbility)
 };
 
 class CThing {
@@ -149,5 +150,5 @@ CTCWillEnflame::CTCWillEnflame(CThing& parent)
     CGameDefinitionManager::Get().GetDef(index, &PDef);
     const CThing* parentThing = ParentThing;
     if (parentThing->HasTC(0x6f))
-        SpellLevel = ((CTCInventoryAbilities*)parentThing->GetTC(0x6f))->GetAbilityLevel(3);
+        SpellLevel = ((CTCInventoryAbilities*)parentThing->GetTC(0x6f))->GetAbilityLevel(HERO_ABILITY_ENFLAME_SPELL);
 }

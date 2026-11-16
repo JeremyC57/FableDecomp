@@ -1,8 +1,11 @@
-// CShaderRenderManager::UpdateAmbient() -- uploads the camera position (+0x380, w = 0) as one vector to the current layout's camera register (+0x44) and clears dirty bit 8
+// CShaderRenderManager::UpdateCameraPos() -- uploads the camera position (+0x380, w = 0) as one vector to the current layout's camera register (+0x44) and clears dirty bit 8
+// Leaf: ?UpdateCameraPos@CShaderRenderManager@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00989700, length 85 bytes.
+// Name fix (NF34, 2026-11-16): Ego_r.pdb 0x00AE5A00 + FableWin.pdb ?UpdateCameraPos@CShaderRenderManager@@AAEXXZ (private); the
+// body uploads CameraPos (w = 0); UpdateAmbient is the twin 0x00989760. PrepareForRender 0x00B54100 already binds this spelling.
 // Layout: engine/CVertexShaderConstantLayout.h (its CShaderConstantRange members viewed as {vptr, Offset, Count}).
 // Callees: IDirect3DDevice9::SetVertexShaderConstantF (COM slot 94, vtable +0x178, `__stdcall`, `this` pushed).
-// The twin of the landed UpdateAmbient 0x00989760 (ambient colour, w = 1.0f), whose label this row carries:
+// The twin of the landed UpdateAmbient 0x00989760 (ambient colour, w = 1.0f), whose label this row used to carry:
 // the data is the PDB's CameraPos (retail +0x380, 0x10 below the PDB offset) with w = 0.
 // Shape: a 16-byte frame vector handed to the device as one constant. It reproduces only through an
 // inline helper that takes the register FIRST and the four components by value: the components are copied
@@ -42,7 +45,9 @@ class CShaderRenderManager { public:
     unsigned char                _pad38c[0x4c];
     unsigned long                UpdateFlags;               // +0x3d8
 
-    void UpdateAmbient();
+private:
+    void UpdateCameraPos();
+public:
 
     // inline upload of one vector: the four components arrive by value (right-to-left argument
     // evaluation puts the register expression last, which is what fixes retail's push schedule)
@@ -57,7 +62,7 @@ class CShaderRenderManager { public:
     }
 };
 
-void CShaderRenderManager::UpdateAmbient()
+void CShaderRenderManager::UpdateCameraPos()
 {
     SetVertexShaderConstant(ConstantRange(CurrentVSConstantLayout->CameraPos).Offset, CameraPos.x, CameraPos.y, CameraPos.z, 0.0f);
     UpdateFlags &= ~8u;

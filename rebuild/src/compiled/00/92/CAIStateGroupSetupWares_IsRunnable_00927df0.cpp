@@ -64,7 +64,7 @@ class CTCShop { public:
     unsigned char _pad[0xc];
     long StockState;                            // +0x0c
     bool IsPermanentlyStocked() const;                // 0x007721A0
-    bool IsOpeningHours();                      // 0x00773950
+    bool IsOpeningHours() const;                    // 0x00773950
     void SetStockState(long state);             // 0x00773C00
 };
 class CTCShopKeeper { public:

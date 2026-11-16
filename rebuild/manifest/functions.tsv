@@ -18167,7 +18167,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00701fc0	find	CRetailTree_longkey	unknown	undefined	0		0	yes	accepted									
 007020d0	TransferBinaryIn	COpinionSet	__thiscall	void	4	C3DMeshFileXTriangleStripChunk *,CDataInputStream *,ulong,CChunkedFileLoader *	1	yes	accepted									
 007021e0	SetTeleporterRegionName	CTCQuestCard	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
-007021f0	GetMarkerRegionName	CTCQuestCard	unknown	undefined	0		0	yes	accepted									
+007021f0	GetTeleporterRegionName	CTCQuestCard	unknown	undefined	0		0	yes	accepted									
 00702280	IsCore	CTCQuestCard	__thiscall	bool	1	CTCQuestCard *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CTCQuestCard_IsCore_00702280.cpp
 007022a0	IsCore	CTCQuestCard	__thiscall	bool	1	CTCQuestCard *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CTCQuestCard_IsCore_007022a0.cpp
 007022c0	IsOptional	CTCQuestCard	__thiscall	bool	1	CTCQuestCard *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CTCQuestCard_IsOptional_007022c0.cpp
@@ -33071,8 +33071,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00988640	ResetLight	CShaderRenderManager	__thiscall	void	2	CShaderRenderManager *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\CShaderRenderManager_ResetLight_00988640.cpp
 00988680	SetAmbientColour	CShaderRenderManager	__thiscall	void	2	CShaderRenderManager *,CMatrix3x4 *	1	yes	accepted									
 009886c0	SetFogColour	CShaderRenderManager	__thiscall	void	2	CShaderRenderManager *,CRGBFloatColour *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\CShaderRenderManager_SetFogColour_009886c0.cpp
-009886f0	SetMember_byte0x393_009886f0	_global	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\CNavigator_EnableNavigator_009886f0.cpp
-00988700	SetMember_byte0x394_00988700	_global	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\EnableNavigator_EnableNavigator_00988700.cpp
+009886f0	SetSoftwareVertexShaderEnable	CShaderRenderManager	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\CNavigator_EnableNavigator_009886f0.cpp
+00988700	SetSoftwareFixedFunctionEnable	CShaderRenderManager	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\EnableNavigator_EnableNavigator_00988700.cpp
 00988730	Nop_ret16_00988730	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\E2_E2_00988730.cpp
 009887b0	SetVSMatrixConstantTransposed	CShaderRenderManager	__thiscall	void	4	CShaderRenderManager *,long,CMatrix3x4 *,ulong	1	yes	accepted									
 00988840	SetVSMatrixConstantTransposed	CShaderRenderManager	__thiscall	void	4	CShaderRenderManager *,long,CMatrix4x4 *,ulong	1	yes	accepted									
@@ -35222,7 +35222,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009f2400	GetTotalMemoryControlledByAllocator	CMemoryAllocator	__thiscall	ulong	1	CMemoryAllocator *	1	yes	accepted									
 009f2450	GetHeaderOverhead	CMemoryAllocator	__thiscall	ulong	1	CMemoryAllocator *	1	yes	accepted									
 009f2500	GetNoFreeAreas	CMemoryAllocator	__thiscall	ulong	1	CMemoryAllocator *	1	yes	accepted									
-009f2550	GetWastedSpace	CMemoryAllocator	__thiscall	ulong	1	CMemoryAllocator *	1	yes	accepted									
+009f2550	GetNoAllocatedAreas	CMemoryAllocator	__thiscall	ulong	1	CMemoryAllocator *	1	yes	accepted									
 009f2610	GetHeaderOverhead	CMemoryAllocator	__thiscall	ulong	1	CMemoryAllocator *	1	yes	accepted									
 009f2660	ConsolidateFreeAreas	CMemoryAllocator	__thiscall	void	1	CMemoryAllocator *	1	yes	accepted									
 009f26b0	ClearPerformanceStats	CMemoryAllocator	__thiscall	void	1	CMemoryAllocator *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CMemoryAllocator_ClearPerformanceStats_009f26b0.cpp
@@ -36226,8 +36226,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a23ac0	GetDataFormatVersion	CMeshDataBank	__thiscall	ulong	1	CMeshDataBank *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a2\CMeshDataBank_GetDataFormatVersion_00a23ac0.cpp
 00a23ad0	FrameEnd	CMeshDataBank	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted									
 00a23b00	ProcessLoadingQueue	CMeshDataBank	__thiscall	void	3	CMeshDataBank *,bool,double	1	yes	accepted									
-00a23b50	SetMember_dword0x3d4_00a23b50	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a2\CObservable_AddExclusiveObserver_00a23b50.cpp
-00a23b60	SetMember_byte0x3d8_00a23b60	_global	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a2\EnableNavigator_EnableNavigator_00a23b60.cpp
+00a23b50	SetTextureBank	CMeshDataBank	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a2\CObservable_AddExclusiveObserver_00a23b50.cpp
+00a23b60	SetDP3BumpEnable	CMeshDataBank	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a2\EnableNavigator_EnableNavigator_00a23b60.cpp
 00a23c20	CanAbortResourceLoad	C3DMeshLODInfo	__thiscall	bool	2	C3DMeshLODInfo *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a2\C3DMeshLODInfo_CanAbortResourceLoad_00a23c20.cpp
 00a23c40	HasPhysicsMesh	C3DMeshInfo	__thiscall	bool	1	C3DMeshInfo *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a2\C3DMeshInfo_C3DMeshInfoHasPhysicsMesh_00a23c40.cpp
 00a23c50	Nop_ret4_00a23c50	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a2\E2_E2_00a23c50.cpp
@@ -52886,7 +52886,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e50910	WatchForQuestCardConditions	NScript::CV_BeardyBaldyScript	__thiscall	void	1	CV_BeardyBaldyScript *	1	yes	accepted									
 00e50e40	GoTalkToBarber	NScript::CV_BeardyBaldyScript	__thiscall	void	1	CV_BeardyBaldyScript *	1	yes	accepted									
 00e50fd0	Main	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan	unknown	undefined	0		0			discovered	gapscan							
-00e53670	IsHeroWearingBeard	NScript::CV_BeardyBaldyScript	__thiscall	bool	1	CV_BordelloScript *	1	yes	accepted									
+00e53670	IsHeroWearingAnyBeard	NScript::CV_BeardyBaldyScript	__thiscall	bool	1	CV_BordelloScript *	1	yes	accepted									
 00e538f0	IsHeroWearingAnyTash	NScript::CV_BeardyBaldyScript	__thiscall	bool	1	CV_BordelloScript *	1	yes	accepted									
 00e53ad0	IsHeroWearingAnyOddHairdo	NScript::CV_BeardyBaldyScript	__thiscall	bool	1	CV_BeardyBaldyScript *	1	yes	accepted									
 00e53c70	ResetRandomSpeechTime	NScript::CV_BeardyBaldyScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									

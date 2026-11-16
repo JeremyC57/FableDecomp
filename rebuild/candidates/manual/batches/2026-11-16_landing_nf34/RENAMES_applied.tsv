@@ -1,0 +1,91 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00535cd0	C2DBoxF	ContainsPoint	?ContainsPoint@C2DBoxF@@QBE_NABVC2DVector@@@Z	C2DBoxF::ContainsPoint	?ContainsPoint@C2DBoxF@@QBEJABVC2DVector@@@Z	Ego_r.pdb + FableWin.pdb bool (_N); row moved onto engine/C2DBoxF.h + C2DVector.h, MATCH
+0x00989700	CShaderRenderManager	UpdateCameraPos	?UpdateCameraPos@CShaderRenderManager@@AAEXXZ	CShaderRenderManager::UpdateCameraPos	?UpdateAmbient@CShaderRenderManager@@QAEXXZ	Ego_r.pdb 0x00AE5A00 + FableWin.pdb private; body uploads CameraPos; UpdateAmbient is 0x00989760; MATCH
+0x00a23b50	CMeshDataBank	SetTextureBank	?SetTextureBank@CMeshDataBank@@QAEXPBVCGraphicDataBank@@@Z	_global::SetMember_dword0x3d4_00a23b50	?AddExclusiveObserver@@YIXPAUS@@PAX1@Z (free __fastcall placeholder)	Ego_r.pdb + FableWin.pdb; engine/CMeshDataBank.h names this address; body stores TextureBank +0x3D4; MATCH on the header (overlay opt-in CMESHDATABANK_SETTEXTUREBANK)
+0x00a23b60	CMeshDataBank	SetDP3BumpEnable	?SetDP3BumpEnable@CMeshDataBank@@QAEX_N@Z	_global::SetMember_byte0x3d8_00a23b60	?M@C00a23b60@@QAEXE@Z	FableWin.pdb + Ego_r.pdb; engine/CMeshDataBank.h opt-in names this address; stores DP3BumpEnable +0x3D8; MATCH on the header
+0x009886f0	CShaderRenderManager	SetSoftwareVertexShaderEnable	?SetSoftwareVertexShaderEnable@CShaderRenderManager@@QAEX_N@Z	_global::SetMember_byte0x393_009886f0	?EnableNavigator@@YIXPAUS@@PAXE@Z (free __fastcall placeholder)	FableWin.pdb + Ego_r.pdb; engine/CShaderRenderManager.h declares it; stores +0x393; MATCH on the header
+0x00988700	CShaderRenderManager	SetSoftwareFixedFunctionEnable	?SetSoftwareFixedFunctionEnable@CShaderRenderManager@@QAEX_N@Z	_global::SetMember_byte0x394_00988700	?M@C00988700@@QAEXE@Z	FableWin.pdb + Ego_r.pdb; engine/CShaderRenderManager.h declares it; stores +0x394; MATCH on the header
+0x005e3ea0	CTCQuestCompletionUI	IsHeroControlledByPlayer	?IsHeroControlledByPlayer@CTCQuestCompletionUI@@ABE_NXZ	CTCQuestCompletionUI::IsHeroControlledByPlayer	?IsHeroControlledByPlayer@CTCQuestCompletionUI@@QBE_NXZ	Ego_r + FableWin private; access only
+0x007c3eb0	CTCHealLife	GetLevelEffectName	?GetLevelEffectName@CTCHealLife@@AAE?AVCCharString@@XZ	CTCHealLife::GetLevelEffectName	?GetLevelEffectName@CTCHealLife@@QAE?AVCCharString@@XZ	Ego_r + FableWin private; access only
+0x00813b80	CTCBoastingPodium	GetNumberOfActiveBoastingPositions	?GetNumberOfActiveBoastingPositions@CTCBoastingPodium@@ABEJXZ	CTCBoastingPodium::GetNumberOfActiveBoastingPositions	?GetNumberOfActiveBoastingPositions@CTCBoastingPodium@@QBEJXZ	Ego_r + FableWin private; access only
+0x007021f0	CTCQuestCard	GetTeleporterRegionName	?GetTeleporterRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ	CTCQuestCard::GetMarkerRegionName	?GetMarkerRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ	Ego_r + FableWin name; made-up name replaced
+0x009f2550	CMemoryAllocator	GetNoAllocatedAreas	?GetNoAllocatedAreas@CMemoryAllocator@@QAEKXZ	CMemoryAllocator::GetWastedSpace	?GetWastedSpace@CMemoryAllocator@@QAEKXZ	Ego_r + FableWin; Ego_r GetTotalMemoryAllocated 0x00B45FD0 -> GetNoAllocatedAreas +0x100 as retail 0x009F2450 -> 0x009F2550; binder 0x009AF7A0 already
+0x00e53670	NScript::CV_BeardyBaldyScript	IsHeroWearingAnyBeard	?IsHeroWearingAnyBeard@CV_BeardyBaldyScript@NScript@@QAE_NXZ	NScript::CV_BeardyBaldyScript::IsHeroWearingBeard	?IsHeroWearingBeard@CV_BeardyBaldyScript@NScript@@QAE_NXZ	Ego_r + FableWin name
+0x009baa50	CPersistContext	Init	?Init@CPersistContext@@QAEXAAVCDataOutputStream@@_N@Z	CPersistContext::Init	?Init@CPersistContext@@QAEXPAVCDataOutputStream@@_N@Z	Ego_r + FableWin reference parameter
+0x00a892e0	C3DMesh2	InitialiseBoneNamePointers	?InitialiseBoneNamePointers@C3DMesh2@@AAEXK@Z	C3DMesh2::InitialiseBoneNamePointers	?InitialiseBoneNamePointers@C3DMesh2@@QAEXJ@Z	Ego_r + FableWin private, unsigned long
+0x0074dd20	CCreatureAction_UndeadIdleUnderground	CCreatureAction_UndeadIdleUnderground	??0CCreatureAction_UndeadIdleUnderground@@QAE@AAVCThingCreatureBase@@@Z	CCreatureAction_UndeadIdleUnderground::CCreatureAction_UndeadIdleUnderground	??0CCreatureAction_UndeadIdleUnderground@@QAE@PAVCThingCreatureBase@@@Z	Ego_r + FableWin owner by reference; only caller 0x0074AF50 already binds it
+0x00842c70	CCreatureAction_ShopkeeperGetOut	CCreatureAction_ShopkeeperGetOut	??0CCreatureAction_ShopkeeperGetOut@@QAE@AAVCThingCreatureBase@@PAVCTCShop@@ABVC3DVector@@ABVCRightHandedSet@@J@Z	CCreatureAction_ShopkeeperGetOut::CCreatureAction_ShopkeeperGetOut	??0CCreatureAction_ShopkeeperGetOut@@QAE@PAVCThingCreatureBase@@PAVCTCShop@@ABVC3DVector@@ABVCRightHandedSet@@J@Z	Ego_r + FableWin owner by reference; only caller 0x00927F30 already binds it
+0x0075c420	CTCCameraPointDefinitionBase	TransformPosition	?TransformPosition@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBV2@PBVCRightHandedSet@@@Z	CTCCameraPointDefinitionBase::TransformPosition	?TransformPosition@CTCCameraPointDefinitionBase@@QBE?AVC3DVector@@ABV2@PBV2@PBVCRightHandedSet@@@Z	Ego_r + FableWin protected; access only; callers 0x0075CD30 / 0x0075CD90 respelled
+0x006cb840	CTCCreatureNavigation	GetNearestFleePosition	?GetNearestFleePosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z	CTCCreatureNavigation::GetNearestFleePosition	?GetNearestFleePosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@@Z	Ego_r + FableWin const, C3DVector&; callers 0x00911D90 / 0x0095E470 respelled
+# Section 2
+0x00917db0	?IsOpeningHours@CTCShop@@QAE_NXZ	?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00926a10	?IsOpeningHours@CTCShop@@QAE_NXZ	?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00926b30	?IsOpeningHours@CTCShop@@QAE_NXZ	?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00926c50	?IsOpeningHours@CTCShop@@QAE_NXZ	?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00927c80	?IsOpeningHours@CTCShop@@QAE_NXZ	?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00927df0	?IsOpeningHours@CTCShop@@QAE_NXZ	?IsOpeningHours@CTCShop@@QBE_NXZ
+0x00927ea0	?IsOpeningHours@CTCShop@@QAE_NXZ	?IsOpeningHours@CTCShop@@QBE_NXZ
+0x007dccb0	?GetSplinePosition@CCardinalSpline@@QAEXPAVC3DVector@@M@Z	?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z
+0x007dce40	?GetSplinePosition@CCardinalSpline@@QAEXPAVC3DVector@@M@Z	?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z
+0x0075cd30	?TransformPosition@CTCCameraPointDefinitionBase@@QBE?AVC3DVector@@ABV2@PBV2@PBVCRightHandedSet@@@Z	?TransformPosition@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBV2@PBVCRightHandedSet@@@Z
+0x0075cd90	?TransformPosition@CTCCameraPointDefinitionBase@@QBE?AVC3DVector@@ABV2@PBV2@PBVCRightHandedSet@@@Z	?TransformPosition@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBV2@PBVCRightHandedSet@@@Z
+0x00873030	?GetWorld@CBase@NCameraModes@@QBEABVCWorld@@XZ	?GetWorld@CBase@NCameraModes@@IBEABVCWorld@@XZ
+0x00879560	?GetWorld@CBase@NCameraModes@@QBEABVCWorld@@XZ	?GetWorld@CBase@NCameraModes@@IBEABVCWorld@@XZ
+0x008798c0	?GetWorld@CBase@NCameraModes@@QBEABVCWorld@@XZ	?GetWorld@CBase@NCameraModes@@IBEABVCWorld@@XZ
+0x0087c070	?GetWorld@CBase@NCameraModes@@QBEABVCWorld@@XZ	?GetWorld@CBase@NCameraModes@@IBEABVCWorld@@XZ
+0x0087c150	?GetWorld@CBase@NCameraModes@@QBEABVCWorld@@XZ	?GetWorld@CBase@NCameraModes@@IBEABVCWorld@@XZ
+0x00659c32	?CalculateSecuritySweepTasks@CTCVillage@@QAEXXZ	?CalculateSecuritySweepTasks@CTCVillage@@AAEXXZ
+0x0065c08a	?CalculateSecuritySweepTasks@CTCVillage@@QAEXXZ	?CalculateSecuritySweepTasks@CTCVillage@@AAEXXZ
+0x00490a22	?IsTextFullyShown@CSubtitleRenderer@@QBE_NXZ	?IsTextReadyForClickPast@CSubtitleRenderer@@QBE_NXZ
+0x005a3436	?SellHighlightedItem@CTCShop@@QAEXJ@Z	?BuyItem@CTCShop@@QAEXJ@Z
+0x005e4740	?RemoveAcceptedBoastsForScript@CQuestManager@@QAEXVCCharString@@@Z	?RemoveBoastsForScript@CQuestManager@@QAEXVCCharString@@@Z
+0x0091e050	?IsToAttackTarget@@YI_NPAVCThingCreatureBase@@PAVCThing@@@Z	?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z
+0x0091e050	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXPAVCThingCreatureBase@@_N@Z	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z
+0x0091f050	?IsToAttackTarget@@YI_NPAVCThing@@PAVCThingCreatureBase@@@Z	?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z
+0x0059d820	?IsBuyable@CTCInventoryItem@@SI_NJ@Z	?IsSellable@CTCInventoryItem@@SI_NJ@Z
+0x005af64e	?IsBuyable@CTCInventoryItem@@SI_NJ@Z	?IsSellable@CTCInventoryItem@@SI_NJ@Z
+0x005b0aac	?IsBuyable@CTCInventoryItem@@SI_NJ@Z	?IsSellable@CTCInventoryItem@@SI_NJ@Z
+0x0047eee4	?ComputeCRC32@CCharString@@QBEKXZ	?GetCRC@CCharString@@QBEKXZ
+0x0096dd10	?CCharString_ComputeCRC32@@YIKABVCCharString@@@Z	?GetCRC@CCharString@@QBEKXZ
+0x00929820	?CCharString_ComputeCRC32@@YIKABVCCharString@@@Z	?GetCRC@CCharString@@QBEKXZ
+0x00929820	?GetGreetDialogueGroupIndex@CTCCreatureOpinionOfHero@@QAEKJ@Z	?GetGreetDialogueGroupIndex@CTCCreatureOpinionOfHero@@QAEKW4EOpinionAttitudeType@@@Z
+0x00751bc0	?Distance2D@@YIMABVC2DVector@@0@Z	?GFGet2DDistance@@YIMABVC2DVector@@0@Z
+0x00a1a0a0	?Distance2D@@YIMABVC2DVector@@0@Z	?GFGet2DDistance@@YIMABVC2DVector@@0@Z
+0x00911d90	?GetNearestFleePosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@@Z	?GetNearestFleePosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z
+0x0095e470	?GetNearestFleePosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@@Z	?GetNearestFleePosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z
+0x0057b3e2	?GetAbilityLevel@CTCInventoryAbilities@@QBEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x0079a6e0	?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007a09b0	?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007a43a0	?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007a54a0	?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007a71b0	?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007a9e40	?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007c30e0	?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007c4bd0	?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007c5560	?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007c6760	?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007c6940	?GetAbilityLevel@CTCInventoryAbilities@@QBEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007cc4d0	?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+0x007c6760	?GetDefIndex@CDefinitionManager@@QAEJABVCCharString@@_N@Z	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z
+0x005ee3b3	?GetDefGlobalIndex@CDefinitionManager@@QAEJABVCCharString@@_N@Z	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z
+0x0093dde0	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXPAVCThingCreatureBase@@_N@Z	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z
+0x0096ea50	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXPAVCThingCreatureBase@@_N@Z	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z
+0x0093e2d0	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXPAVCThing@@_N@Z	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z
+0x0093e5e0	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXPAVCThing@@_N@Z	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z
+0x0095b280	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXPAVCThing@@_N@Z	?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z
+0x009e1280	?UpdateFlag8State@CShaderRenderManager@@QAEXXZ	?UpdateCameraPos@CShaderRenderManager@@AAEXXZ
+0x00937da0	?IsToAttackTarget@@YI_NPAVCThingAICreature@@PAVCThingCreatureBase@@@Z	?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z
+0x00970ab0	?IsToAttackTarget@@YI_NPAVCThing@@0@Z	?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z
+0x00aeb550	?StartFrame@CParticleEmitter@NParticleEngine@@QAEXMPAVCEnginePrimitivePrepareInfo@@@Z	?StartFrame@CParticleEmitter@NParticleEngine@@QAEXMABVCEnginePrimitivePrepareInfo@@@Z
+0x00b0c910	?StartFrame@CParticleEmitter@NParticleEngine@@QAEXMPAVCEnginePrimitivePrepareInfo@@@Z	?StartFrame@CParticleEmitter@NParticleEngine@@QAEXMABVCEnginePrimitivePrepareInfo@@@Z
+0x00a18760	?GetPointIntersectionFromToUsingSegmentation@CPhysicsMesh@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z	?GetPointIntersectionFromToUsingSegmentation@CPhysicsMesh@@ABE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z
+0x00a18760	?GetPointIntersectionFromToUsingFullCollision@CPhysicsMesh@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z	?GetPointIntersectionFromToUsingFullCollision@CPhysicsMesh@@ABE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z
+0x00958840	?PeekDefinitionManager@CAIStateGroupBase@@QBEABVCGameDefinitionManager@@XZ	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ
+0x0097fea0	?PeekDefinitionManager@CAIStateGroupBase@@QBEABVCGameDefinitionManager@@XZ	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ
+0x00b6e260	?BeginQuery@CEngineOcclusionManager@@QAEXXZ	?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ
+0x00b6e260	?EndQuery@CEngineOcclusionManager@@QAEXJ@Z	?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z
+0x00be79d0	?BeginQuery@CEngineOcclusionManager@@QAEXXZ	?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ
+0x00be79d0	?EndQuery@CEngineOcclusionManager@@QAEXJ@Z	?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z
+0x00a24a80	?AddResource@CResourceBank@@QAEXPAVCResource@@@Z	?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z
+0x00a256f0	?AddResource@CResourceBank@@QAEXPAVCResource@@@Z	?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z
+0x00a26730	?AddResource@CResourceBank@@QAEXPAVCResource@@@Z	?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z

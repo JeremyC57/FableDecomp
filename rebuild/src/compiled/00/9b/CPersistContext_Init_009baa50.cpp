@@ -1,5 +1,6 @@
-// CPersistContext::Init(CDataOutputStream* saveStream, bool) -- reset to a binary-save context: Mode 3, the output stream, no input stream or definition manager, CRC check off
-// Leaf: Init
+// CPersistContext::Init(CDataOutputStream& saveStream, bool) -- reset to a binary-save context: Mode 3, the output stream, no input stream or definition manager, CRC check off
+// Leaf: ?Init@CPersistContext@@QAEXAAVCDataOutputStream@@_N@Z
+// Name fix (NF34, 2026-11-16): Ego_r.pdb + FableWin.pdb ?Init@CPersistContext@@QAEXAAVCDataOutputStream@@_N@Z (reference parameter).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BAA50, length 27 bytes (+ int3 padding).
 // Callees: none. The catalog label "CPersistContext::CPersistContext" is propagated: the body does not return `this`
 // (no `mov eax,ecx`; eax is the zero register), so it is the void Init that the real constructor @ 0x009BAE50 inlines.
@@ -29,12 +30,12 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;                  // +0x24
     CDataOutputStream*      PSaveStream;                  // +0x28
 
-    void Init(CDataOutputStream* saveStream, bool useCRCCheck);
+    void Init(CDataOutputStream& saveStream, bool useCRCCheck);
 };
 
-void CPersistContext::Init(CDataOutputStream* saveStream, bool)
+void CPersistContext::Init(CDataOutputStream& saveStream, bool)
 {
-    PSaveStream = saveStream;
+    PSaveStream = &saveStream;
     Mode = 3;
     PLoadStream = 0;
     PDefinitionManager = 0;

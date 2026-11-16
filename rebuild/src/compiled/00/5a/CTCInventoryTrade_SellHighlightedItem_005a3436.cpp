@@ -68,7 +68,7 @@ struct CPairVector {                                        // STLport vector<pa
 };
 class CTCShop { public:
     long GetCurrentBuyPrice(long defIndex, long count) const;   // 0x007742C0
-    void SellHighlightedItem(long defIndex);                // 0x00774D20
+    void BuyItem(long defIndex);                            // 0x00774D20 (NF34: Ego_r.pdb + FableWin.pdb ?BuyItem@CTCShop@@QAEXJ@Z)
 };
 class CTCHeroStats { public:
     void AddMoney(long amount, bool showMessage);           // 0x0057B327
@@ -116,7 +116,7 @@ void CTCInventoryTrade::SellHighlightedItem()
             CTCShop* shop = 0;
             GetOwner()->GetTC(TCI_SHOP, &shop);
             long price = shop->GetCurrentBuyPrice(item, 1);
-            shop->SellHighlightedItem(item);
+            shop->BuyItem(item);
             CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
             CTCHeroStats* stats = 0;
             hero->GetTC(TCI_HERO_STATS, &stats);

@@ -19,6 +19,7 @@
 // register), the def name a named CCharString in its own block homed in the dead `parent` slot like the lookup key; here the
 // frame-count conversion precedes the ability lookup.
 #include "fable_compiler.h"
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -82,7 +83,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCInventoryAbilities {
 public:
-    long GetAbilityLevel(long ability);             // 0x005EDE93 (EHeroAbility)
+    long GetAbilityLevel(EHeroAbility ability) const;             // 0x005EDE93 (EHeroAbility)
 };
 
 class CThing {
@@ -148,5 +149,5 @@ CTCGhostSword::CTCGhostSword(CThing& parent)
     FadeInTimer = (long)(CMainGameComponent::GetConstantFPS() * PDef->FadeInSecs);
     CTCInventoryAbilities* abilities;
     if (ParentThing->GetInterface(&abilities, 0x6f))
-        SpellLevel = abilities->GetAbilityLevel(0xf);
+        SpellLevel = abilities->GetAbilityLevel(HERO_ABILITY_GHOST_SWORD_SPELL);
 }

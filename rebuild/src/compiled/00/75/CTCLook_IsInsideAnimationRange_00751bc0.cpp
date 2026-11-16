@@ -2,11 +2,11 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751BC0, length 176 bytes (+ int3 padding); speed TU (no frame pointer, esp-relative frame).
 // Callees: CThing::GetPos @ 0x004C73D0, CTCBase::GetWorld @ 0x00686A70 (twice), CWorld virtual slot 8 (+0x20, GetViewPosition --
-// a C3DVector through the hidden pointer), Distance2D(const C2DVector&, const C2DVector&) @ 0x009E2460 (`__fastcall`, float in st0),
+// a C3DVector through the hidden pointer), GFGet2DDistance(const C2DVector&, const C2DVector&) @ 0x009E2460 (`__fastcall`, float in st0),
 // CTCGraphicAppearance::WasRenderedLastFrame @ 0x004BD200 on CThing::PTCGraphicAppearance (+0x64), CGameScriptInterface::
 // IsInMovieSequence() const (slot 395, +0x62C) through CWorld::PGameScriptInterface (+0x38). CLookDef::CutOffNoLooking +0x50 (PDB).
 // Shape: the thing's position is copied into a C3DVector local (member-wise copy ctor, so the dead Z store drops and the
-// 12-byte slot keeps retail's 4-byte hole above X/Y) and the view position into a second 3D local; both reach Distance2D as 2D
+// 12-byte slot keeps retail's 4-byte hole above X/Y) and the view position into a second 3D local; both reach GFGet2DDistance as 2D
 // conversion temporaries in the frame. The range test is `!(distance <= cutoff)` (`fcomp ; test ah,41h ; jp` on the false edge);
 // the `||` of the two queries is materialised as the 32-bit 0/1 tails. The script interface comes through an inline CWorld getter
 // over the scoped_ptr (`mov ecx,[eax+38h]`); the scoped_ptr's operator-> or get() at the call site gives `add eax,38h` / `mov ecx,eax`.
@@ -18,7 +18,7 @@ class C2DVector { public:
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
-float __fastcall Distance2D(const C2DVector& a, const C2DVector& b);   // 0x009E2460
+float __fastcall GFGet2DDistance(const C2DVector& a, const C2DVector& b);   // 0x009E2460 (NF34: Ego_r + FableWin ?GFGet2DDistance@@YIMABVC2DVector@@0@Z)
 struct CTCGraphicAppearance {
     bool WasRenderedLastFrame() const;               // 0x004BD200
 };
@@ -68,7 +68,7 @@ bool CTCLook::IsInsideAnimationRange()
     C3DVector position = ParentThing->GetPos();
     C3DVector view = GetWorld().GetViewPosition();
     CLookDef* def = PDef.Object;
-    if (Distance2D(C2DVector(position), C2DVector(view)) <= def->CutOffNoLooking)
+    if (GFGet2DDistance(C2DVector(position), C2DVector(view)) <= def->CutOffNoLooking)
         return ParentThing->PTCGraphicAppearance->WasRenderedLastFrame() || GetWorld().GetGameScriptInterface()->IsInMovieSequence();
     return false;
 }

@@ -45,7 +45,7 @@ class CAIBrain { public:
 };
 
 class CTCShop { public:
-    bool IsOpeningHours();                      // 0x00773950
+    bool IsOpeningHours() const;                    // 0x00773950
     void RemoveStockItemsFromShop();            // 0x00773E10
     void StockDisplay();                        // 0x00774C60
     void SetStockState(long state);             // 0x00773C00

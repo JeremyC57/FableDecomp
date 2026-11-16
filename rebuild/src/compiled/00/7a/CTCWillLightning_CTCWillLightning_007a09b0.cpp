@@ -20,6 +20,7 @@
 //   the ability is a cast of the landed value (no enumerator ordinal source) -- name-only.
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 class CTCBase;
@@ -95,7 +96,7 @@ public:
 private:    // 0x0066BD00
 };
 class CTCInventoryAbilities { public:                          // interface 0x6F
-    long GetAbilityLevel(long ability);                 // 0x005EDE93
+    long GetAbilityLevel(EHeroAbility ability) const;                 // 0x005EDE93
 };
 class CTCHeroStats { public:                                   // interface 4
     unsigned char _pad00[0x58];
@@ -171,7 +172,7 @@ class CGameDefinitionManager { public:
     bool GetDef(long index, CLightningSpellDefPointer* out) const;   // 0x007A35D0
 };
 
-enum EHeroAbility { };                                   // Ego_r enum (enumerators: no ordinal source)
+// (NF34: the local empty EHeroAbility enum is replaced by engine/EHeroAbility.h, included above)
 struct CWillButtonHelperTimer {                         // retail 0x34 bytes
     unsigned char _pad00[0x2e];
     bool IsPlayer;                                      // +0x2e (descriptive)
@@ -267,7 +268,7 @@ CTCWillLightning::CTCWillLightning(CThing& parent)
     long level = 0;
     CThing* caster = ((CThing*)m_cbpPlayer.GetPItem());
     if (caster->HasTC(0x6f))
-        level = caster->GetTCConst<CTCInventoryAbilities>(0x6f)->GetAbilityLevel(11);
+        level = caster->GetTCConst<CTCInventoryAbilities>(0x6f)->GetAbilityLevel(HERO_ABILITY_LIGHTNING_SPELL);
     SetLevel(level);
     if (ParentThing->ThingType == 1)
         m_tTimer.IsPlayer = true;

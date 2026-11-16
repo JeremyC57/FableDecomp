@@ -64,7 +64,7 @@ class CTCPerceiveThing { public:                       // interface 0x34
 };
 class CCombatManager { public:
     void RegisterCombatant(CThing* creature, CThing* target, bool flag);   // 0x006EDC50
-    void SetAttackerAsReadyToAttack(CThing* creature, bool ready);         // 0x006EA450
+    void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);   // 0x006EA450 (NF34: Ego_r + FableWin ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z)
 };
 class CWorld { public:
     unsigned char _pad[0x4c];
@@ -157,7 +157,7 @@ void CAIStateGroup_MeleeCombatNearby2::Update()
             continue;
         CThing* attacker = GetCreature();
         CWorld* world = &GetWorld();
-        world->PCombatManager->SetAttackerAsReadyToAttack(attacker, false);
+        world->PCombatManager->SetAttackerAsReadyToAttack(*static_cast<const CThingCreatureBase*>(attacker), false);
     }
     Terminate();
 }

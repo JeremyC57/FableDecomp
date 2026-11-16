@@ -48,6 +48,7 @@
 #define FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
 #define FABLE_RETAIL_CTCINVENTORYITEM_CARDDEFS
 #define FABLE_RETAIL_CTCINVENTORYITEM_KINDS
+#define FABLE_RETAIL_CTCINVENTORYITEM_ISSELLABLE   // NF34: 0x005D9B30 is IsSellable (Ego_r + FableWin; def +0x5C)
 #define FABLE_RETAIL_CDELETION
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -173,7 +174,7 @@ void CTCInventoryTrade::BuyItemPC(CComponent* entry, long count)
         }
         inventory->AddItemToInventory(itemDefIndex, count, false, true, price / count, false);
         RefreshBuyPossibilityPC();
-        if (CTCInventoryItem::IsBuyable(itemDefIndex)) {
+        if (CTCInventoryItem::IsSellable(itemDefIndex)) {
             // the bought item joins the sell side: the per-type total and the "Sell x N" text of the sell entry
             CComponent* sellEntry = Components[0]->FindChild("PC_MENU_ENTRY_TRADE_SELL");
             EItem_Menu_Type type = GetTypeFromDefIndexPC(itemDefIndex);

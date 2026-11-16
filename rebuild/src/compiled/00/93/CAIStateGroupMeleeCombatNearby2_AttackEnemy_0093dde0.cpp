@@ -111,7 +111,7 @@ class CThingCreatureBase { public:
 };
 
 class CCombatManager { public:
-    void SetAttackerAsReadyToAttack(CThingCreatureBase* attacker, bool ready);   // 0x006EA450
+    void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);   // 0x006EA450 (NF34: Ego_r + FableWin ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z)
     bool IsCreatureInAttackRingSector(const CThingCreatureBase& creature) const;   // 0x006E94D0 (Ego_r/FableWin ?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z)
 };
 class CWorld { public:
@@ -160,7 +160,7 @@ void CAIStateGroup_MeleeCombatNearby2::AttackEnemy()
     if (PBrain->PCreature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->PCreature;
         CWorld* world = &GetWorld();
-        world->CombatManager->SetAttackerAsReadyToAttack(creature, true);
+        world->CombatManager->SetAttackerAsReadyToAttack(*creature, true);
     }
     while (!IsStopping()) {
         if (!IsStillRunnable(true))

@@ -18,7 +18,9 @@ namespace NCameraModes {
 
 class CBase { public:
     virtual void v00();
+protected:  // NF34: Ego_r.pdb + FableWin.pdb ?GetWorld@CBase@NCameraModes@@IBEABVCWorld@@XZ (protected)
     const CWorld& GetWorld() const;                         // 0x0084D050
+public:
 };
 
 class CProjectileWeapon : public CBase { public:

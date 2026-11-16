@@ -4,7 +4,7 @@
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the CrossProduct is the landed 0x007A1870 shape ((float)(double) per component through component pointers), which puts retail's Up.X fstp before the Forward.Y copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DCCB0, 400 bytes (`ret`).
-// Callees: __ftol2 @ 0x00BFEA70, CCardinalSpline::GetSplinePosition(C3DVector*, float) @ 0x00A567A0 (twice), the physics
+// Callees: __ftol2 @ 0x00BFEA70, CCardinalSpline::GetSplinePosition(C3DVector&, float) const @ 0x00A567A0 (twice), the physics
 // component's virtual slots 30 SetPosition (+0x78) and 75 SetRHSet (+0x12c, {up, forward}), C3DVector::AccurateNormalise() @ 0x00A14440.
 // Globals: 0.0f @ 0x0122DEDC, 1.0f @ 0x0122DED8, the epsilon 1e-4f @ 0x0129BA3C (variable, squared).
 // Layout: as the landed SetSpline 0x007DCFD0 (PSpline +0x0c, Progress +0x20, DeltaProgress +0x24, Looping +0x28; the thing's
@@ -46,8 +46,9 @@ class CTCPhysicsBase { public:
 #undef VF
 };
 #include "engine/CThing.h"
-class CCardinalSpline { public:
-    void GetSplinePosition(C3DVector* position, float progress);    // 0x00A567A0
+// NF34 name fix: Ego_r.pdb + FableWin.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z (const, reference).
+class CCardinalSpline { public:     // pre-existing local model (the row's own C3DVector clashes with engine/CCardinalSpline.h)
+    void GetSplinePosition(C3DVector& position, float progress) const;    // 0x00A567A0
 };
 struct SCountBlock;
 #include "engine/CCountedPointer.h"
@@ -79,9 +80,9 @@ void CTCCreatureFlyOnSpline::FrameUpdate()
     else if (Progress > 1.0f)
         Progress = 1.0f;
     C3DVector lastPos;
-    PSpline->GetSplinePosition(&lastPos, lastProgress);
+    PSpline->GetSplinePosition(lastPos, lastProgress);
     C3DVector pos;
-    PSpline->GetSplinePosition(&pos, Progress);
+    PSpline->GetSplinePosition(pos, Progress);
     ParentThing->GetPhysicsTC()->SetPosition(pos);
     C3DVector dir = pos - lastPos;
     if (dir.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {

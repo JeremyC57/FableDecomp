@@ -63,7 +63,9 @@ class CTCVillage : public CTCBase { public:
 private:
     void InvalidateAndClearAllSecuritySweepTasks();   // 0x006590A0 (private: Ego_r / FableWin ?InvalidateAndClearAllSecuritySweepTasks@CTCVillage@@AAEXXZ)
 public:
+private:  // NF34: Ego_r.pdb + FableWin.pdb ?CalculateSecuritySweepTasks@CTCVillage@@AAEXXZ (private)
     void CalculateSecuritySweepTasks();         // 0x00659800
+public:
     void UpdateSecuritySweepTasks();
 };
 

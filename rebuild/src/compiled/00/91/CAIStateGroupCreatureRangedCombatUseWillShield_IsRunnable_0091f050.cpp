@@ -35,7 +35,9 @@ class CThing { public:
 };
 
 bool __fastcall IsThingCarryingMeleeWeapon(CThing* thing);                              // 0x006A1620
-bool __fastcall IsToAttackTarget(CThing* creature, CThingCreatureBase* target);          // 0x00864D00
+// NF34 name fix: Ego_r.pdb + FableWin.pdb ?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z.
+class CThingAICreature;
+namespace NCreatureAI { bool __fastcall IsToAttackTarget(CThingAICreature* creature, const CThingCreatureBase* target); }   // 0x00864D00
 
 struct CTCTargeting {                           // interface 8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -73,7 +75,7 @@ bool CAIStateGroup_CreatureRangedCombatUseWillShield::IsRunnable()
         CThing* creature = PBrain->Creature;
         if (creature->HasInterface(8)) {
             CThingCreatureBase* target = ((CTCTargeting*)creature->FindInterface(8))->GetTarget();
-            if (target != 0 && IsToAttackTarget(PBrain->Creature, target) && !PBrain->Creature->HasInterface(0x93))
+            if (target != 0 && NCreatureAI::IsToAttackTarget((CThingAICreature*)PBrain->Creature, target) && !PBrain->Creature->HasInterface(0x93))
                 return true;
         }
     }

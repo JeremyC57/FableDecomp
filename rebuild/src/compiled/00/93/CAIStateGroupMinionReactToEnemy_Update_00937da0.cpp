@@ -24,7 +24,8 @@ class CThingPhysical : public CThing { public:
 class CThingCreatureBase : public CThingPhysical { public:
 };
 class CThingAICreature : public CThingCreatureBase { public: };
-bool __fastcall IsToAttackTarget(CThingAICreature* creature, CThingCreatureBase* target);   // 0x00864D00
+// NF34 name fix: Ego_r.pdb + FableWin.pdb ?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z.
+namespace NCreatureAI { bool __fastcall IsToAttackTarget(CThingAICreature* creature, const CThingCreatureBase* target); }   // 0x00864D00
 inline float GetDistanceSquaredXY(const CThing* a, const CThing* b)
 {
     const C3DVector& posB = b->GetPos();
@@ -74,7 +75,7 @@ void CAIStateGroup_MinionReactToEnemy::Update()
     for (;;) {
         if (!IsThingAlive(PEnemy))
             break;
-        if (!IsToAttackTarget(GetCreature(), PEnemy.GetPItem()))
+        if (!NCreatureAI::IsToAttackTarget(GetCreature(), PEnemy.GetPItem()))
             break;
         float distanceSquared = GetDistanceSquaredXY(GetCreature(), PEnemy.GetPItem());
         if (distanceSquared < 25.0f) {

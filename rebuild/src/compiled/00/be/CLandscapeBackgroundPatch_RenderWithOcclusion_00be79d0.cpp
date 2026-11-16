@@ -26,8 +26,8 @@ class CEngineOcclusionManager { public:
     SOcclusionQuery* Queries;                       // +0x4014
     unsigned char    _pad4018[4];
     unsigned long    QueryCount;                    // +0x401C
-    void BeginQuery();                              // 0x00B8D090
-    void EndQuery(long handle);                     // 0x00B8D0A0
+    void StartOcclusionTest();                     // 0x00B8D090 (NF34: Ego_r + FableWin)
+    void EndOcclusionTest(unsigned long handle);         // 0x00B8D0A0 (NF34: Ego_r + FableWin)
     unsigned long GetQueryResult(long handle, bool wait);   // 0x00B8D0B0
     long RenderOcclusionBox(const CMatrix3x4& box); // 0x00B8D420
     FABLE_FORCEINLINE long AddQuery()
@@ -90,18 +90,18 @@ void CLandscapeBackgroundPatch::RenderWithOcclusion(long& queryHandle, bool& occ
                     Parent->SetVisibilityFlagAndUpdateParentChain(false);
                 occluded = true;
             } else {
-                g_pOcclusionManager->BeginQuery();
+                g_pOcclusionManager->StartOcclusionTest();
                 Render(true);
                 queryHandle = g_pOcclusionManager->AddQuery();
                 occluded = false;
-                g_pOcclusionManager->EndQuery(queryHandle);
+                g_pOcclusionManager->EndOcclusionTest(queryHandle);
             }
         } else {
-            g_pOcclusionManager->BeginQuery();
+            g_pOcclusionManager->StartOcclusionTest();
             Render(false);
             queryHandle = g_pOcclusionManager->AddQuery();
             occluded = true;
-            g_pOcclusionManager->EndQuery(queryHandle);
+            g_pOcclusionManager->EndOcclusionTest(queryHandle);
         }
     } else {
         Render(true);

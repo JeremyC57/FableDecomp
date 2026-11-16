@@ -33079,16 +33079,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a23b50'
-        Module = '_global'
-        Source = '00/a2/CObservable_AddExclusiveObserver_00a23b50.cpp'
-        TestSource = '00/a2/CObservable_AddExclusiveObserver_00a23b50_test.cpp'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_SetTextureBank_00a23b50.cpp'
+        TestSource = '00/a2/CMeshDataBank_SetTextureBank_00a23b50_test.cpp'
         PassPattern = '00a23b50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009886f0'
-        Module = '_global'
-        Source = '00/98/CNavigator_EnableNavigator_009886f0.cpp'
-        TestSource = '00/98/CNavigator_EnableNavigator_009886f0_test.cpp'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetSoftwareVertexShaderEnable_009886f0.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetSoftwareVertexShaderEnable_009886f0_test.cpp'
         PassPattern = '009886f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -67977,9 +67977,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00988700'
-        Module = '_global'
-        Source = '00/98/EnableNavigator_EnableNavigator_00988700.cpp'
-        TestSource = '00/98/EnableNavigator_EnableNavigator_00988700_test.cpp'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetSoftwareFixedFunctionEnable_00988700.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetSoftwareFixedFunctionEnable_00988700_test.cpp'
         PassPattern = 'OK_00988700'
     }
     [pscustomobject]@{
@@ -68005,9 +68005,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a23b60'
-        Module = '_global'
-        Source = '00/a2/EnableNavigator_EnableNavigator_00a23b60.cpp'
-        TestSource = '00/a2/EnableNavigator_EnableNavigator_00a23b60_test.cpp'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_SetDP3BumpEnable_00a23b60.cpp'
+        TestSource = '00/a2/CMeshDataBank_SetDP3BumpEnable_00a23b60_test.cpp'
         PassPattern = 'OK_00a23b60'
     }
     [pscustomobject]@{
@@ -204796,8 +204796,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009f2550'
         Module = 'CMemoryAllocator'
-        Source = '00/9f/CMemoryAllocator_GetWastedSpace_009f2550.cpp'
-        TestSource = '00/9f/CMemoryAllocator_GetWastedSpace_009f2550_test.cpp'
+        Source = '00/9f/CMemoryAllocator_GetNoAllocatedAreas_009f2550.cpp'
+        TestSource = '00/9f/CMemoryAllocator_GetNoAllocatedAreas_009f2550_test.cpp'
         PassPattern = '009f2550_TEST PASS'
     }
     [pscustomobject]@{
@@ -209731,8 +209731,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00989700'
         Module = 'CShaderRenderManager'
-        Source = '00/98/CShaderRenderManager_UpdateAmbient_00989700.cpp'
-        TestSource = '00/98/CShaderRenderManager_UpdateAmbient_00989700_test.cpp'
+        Source = '00/98/CShaderRenderManager_UpdateCameraPos_00989700.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateCameraPos_00989700_test.cpp'
         PassPattern = '00989700_TEST PASS'
     }
     [pscustomobject]@{
@@ -234220,8 +234220,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007021f0'
         Module = 'CTCQuestCard'
-        Source = '00/70/CTCQuestCard_GetMarkerRegionName_007021f0.cpp'
-        TestSource = '00/70/CTCQuestCard_GetMarkerRegionName_007021f0_test.cpp'
+        Source = '00/70/CTCQuestCard_GetTeleporterRegionName_007021f0.cpp'
+        TestSource = '00/70/CTCQuestCard_GetTeleporterRegionName_007021f0_test.cpp'
         PassPattern = '007021f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -272139,8 +272139,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00e53670'
         Module = 'NScript::CV_BeardyBaldyScript'
-        Source = '00/e5/NScriptCVBeardyBaldyScript_IsHeroWearingBeard_00e53670.cpp'
-        TestSource = '00/e5/NScriptCVBeardyBaldyScript_IsHeroWearingBeard_00e53670_test.cpp'
+        Source = '00/e5/NScriptCVBeardyBaldyScript_IsHeroWearingAnyBeard_00e53670.cpp'
+        TestSource = '00/e5/NScriptCVBeardyBaldyScript_IsHeroWearingAnyBeard_00e53670_test.cpp'
         PassPattern = '00e53670_TEST PASS'
     }
     [pscustomobject]@{

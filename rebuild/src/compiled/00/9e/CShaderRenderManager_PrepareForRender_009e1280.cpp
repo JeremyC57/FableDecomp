@@ -43,7 +43,9 @@ private:
     void UpdateLocalisedSphereMapping();           // 0x00988E80 (FableWin.pdb + Ego_r.pdb private)
 public:
     void ResetWorldTransform();                    // 0x00988290
-    void UpdateFlag8State();                       // 0x00989700 (manifest label UpdateAmbient, duplicated with 0x00989760)
+private:
+    void UpdateCameraPos();                        // 0x00989700 (NF34: Ego_r + FableWin ?UpdateCameraPos@CShaderRenderManager@@AAEXXZ, private)
+public:
     void PrepareForRender(unsigned long renderFlags);
 private:
     void SetVSConstants(long, const void*, unsigned long);   // 0x0098B930
@@ -95,5 +97,5 @@ void CShaderRenderManager::PrepareForRender(unsigned long renderFlags)
     if (DirtyFlags & 0x80)
         UpdateCombinedProjectionTransform();
     if ((renderFlags & 4) && (DirtyFlags & 8))
-        UpdateFlag8State();
+        UpdateCameraPos();
 }

@@ -143,9 +143,10 @@ class CTCPerceiveThing { public:                       // interface 0x34
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void Refresh();                     // slot 9 (+0x24, descriptive)
 };
+class CThingCreatureBase;   // NF34: the PDB parameter type (no layout needed)
 class CCombatManager { public:
     void RegisterCombatant(CThing* creature, CThing* target, bool flag);   // 0x006EDC50
-    void SetAttackerAsReadyToAttack(CThing* creature, bool ready);         // 0x006EA450
+    void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);   // 0x006EA450 (NF34: Ego_r + FableWin ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z)
 };
 class CWorld { public:
     unsigned char _pad0[0x4c];
@@ -208,7 +209,7 @@ void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update()
     if (GetCreature()->IsCombatant()) {
         CThing* attacker = GetCreature();
         CWorld* world = &GetWorld();
-        world->PCombatManager->SetAttackerAsReadyToAttack(attacker, true);
+        world->PCombatManager->SetAttackerAsReadyToAttack(*(const CThingCreatureBase*)attacker, true);
     }
     while (IS_THING_ALIVE(PEnemy) && !IsStopping() && IsStillRunnable(true) && GetCreature()->IsCombatant()) {
         CBrainOutput output;
@@ -224,7 +225,7 @@ void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update()
     if (GetCreature()->IsCombatant()) {
         CThing* attacker = GetCreature();
         CWorld* world = &GetWorld();
-        world->PCombatManager->SetAttackerAsReadyToAttack(attacker, false);
+        world->PCombatManager->SetAttackerAsReadyToAttack(*(const CThingCreatureBase*)attacker, false);
     }
     Terminate();
 }

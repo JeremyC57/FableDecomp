@@ -1,5 +1,6 @@
 // CTCQuestCompletionUI::IsHeroControlledByPlayer() const -- false while the main player is in one of the non-control modes (4..15, 17, 18, 21, 23, 26, 27, 29, 30, 32, 36, 37), true otherwise
-// Leaf: IsHeroControlledByPlayer
+// Leaf: ?IsHeroControlledByPlayer@CTCQuestCompletionUI@@ABE_NXZ
+// Name fix (NF34, 2026-11-16): Ego_r.pdb + FableWin.pdb spell it private (ABE); access only.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005E3EA0, 90 bytes incl. the two-entry jump table 0x005E3ED0 and the 34-entry byte index
@@ -32,7 +33,9 @@ private: public:
 
 class CTCQuestCompletionUI {
 public:
+private:
     bool IsHeroControlledByPlayer() const;
+public:
 };
 
 bool CTCQuestCompletionUI::IsHeroControlledByPlayer() const

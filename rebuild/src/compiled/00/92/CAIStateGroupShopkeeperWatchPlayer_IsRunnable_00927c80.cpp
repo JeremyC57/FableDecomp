@@ -16,7 +16,7 @@ class CTCShopKeeper : public CTCBase { public:
     CTCShop* GetShopTC(); // 0x00798f50
     bool GetAreOtherPeopleInShop(bool); // 0x00799a60
 };
-class CTCShop : public CTCBase { public: bool IsOpeningHours(); }; // 0x00773950
+class CTCShop : public CTCBase { public: bool IsOpeningHours() const; }; // 0x00773950
 struct CVectorMapEntry { long Type; CTCBase* Component; };
 struct CCreatureInterfaceMap {
     CVectorMapEntry* Start;

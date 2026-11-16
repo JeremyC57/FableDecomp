@@ -1,4 +1,6 @@
 // CCreatureAction_UndeadIdleUnderground::CCreatureAction_UndeadIdleUnderground(CThingCreatureBase*) -- base CCombatActionBase(owner, 50, zeroed CSoundPair)
+// Leaf: ??0CCreatureAction_UndeadIdleUnderground@@QAE@AAVCThingCreatureBase@@@Z
+// Name fix (NF34, 2026-11-16): Ego_r.pdb + FableWin.pdb take the owner by reference (??0..@@QAE@AAVCThingCreatureBase@@@Z); the base call keeps its landed declaration.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074DD20, oracle length 50 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -25,10 +27,10 @@ class CCombatActionBase { public:
 
 class CCreatureAction_UndeadIdleUnderground : public CCombatActionBase { public:
     virtual void v00();
-    CCreatureAction_UndeadIdleUnderground(CThingCreatureBase* owner);
+    CCreatureAction_UndeadIdleUnderground(CThingCreatureBase& owner);
 };
 
-CCreatureAction_UndeadIdleUnderground::CCreatureAction_UndeadIdleUnderground(CThingCreatureBase* owner)
-    : CCombatActionBase(owner, 50, CSoundPair())
+CCreatureAction_UndeadIdleUnderground::CCreatureAction_UndeadIdleUnderground(CThingCreatureBase& owner)
+    : CCombatActionBase(&owner, 50, CSoundPair())
 {
 }

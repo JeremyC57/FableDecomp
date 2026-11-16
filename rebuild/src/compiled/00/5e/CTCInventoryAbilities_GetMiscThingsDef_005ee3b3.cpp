@@ -6,7 +6,7 @@
 //   catalog label "CCreatureAction_CastStrengthMultiStrikeProper" is propagated. Ego_r.pdb names it
 //   `?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CGameDefinitionManager::Get @ 0x0044C6B0 (returns
-//          the global manager), CDefinitionManager::GetDefGlobalIndex(const CCharString&, bool) @ 0x009AD390 (manifest
+//          the global manager), CDefinitionManager::GetGlobalIndexFromClassIndex(const CCharString&, long) const @ 0x009AD390 (manifest
 //          label "ActualToUniqueIndex" is propagated), CCharString::~CCharString @ 0x0099EAE0,
 //          CDefinitionManager::GetDef<T>(long, CDefPointer<T>*) @ 0x0042B312.
 // Shape: a size-optimised frame-pointer TU (`optimize("y",off)` + `("s",on)`: `push ebp ; mov ebp,esp ... leave`,
@@ -49,7 +49,7 @@ class CDefPointer { public:
 namespace NUISystem { class CUIMiscThingsDef : public CDefBase { }; }
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndex(const CCharString& name, bool mustExist);          // 0x009AD390
+    long GetGlobalIndexFromClassIndex(const CCharString& name, long classIndex) const;   // 0x009AD390 (NF34: Ego_r + FableWin)
     template <class T> bool GetDef(long index, CDefPointer<const T>* result) const;   // 0x0042B312 GetDef<NUISystem::CUIMiscThingsDef> (Ego_r.pdb)
 };
 void* FindDef_s7r_0();
@@ -84,7 +84,7 @@ const CDefPointer<const NUISystem::CUIMiscThingsDef> CTCInventoryAbilities::GetM
     long index;
     {
         CCharString name("UI_MISC_THINGS_DEF", -1);
-        index = CGameDefinitionManager::Get().GetDefGlobalIndex(name, true);
+        index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(name, 1);
     }
     {
         CDefPointer<const NUISystem::CUIMiscThingsDef> def;      // sibling block: shares the string's frame word

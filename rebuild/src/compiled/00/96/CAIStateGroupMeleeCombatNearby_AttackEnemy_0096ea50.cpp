@@ -150,7 +150,7 @@ class CThingCreatureBase { public:
 enum EAIActionReturn { AI_ACTION_RETURN_NONE, AI_ACTION_RETURN_1, AI_ACTION_RETURN_SUCCEEDED, AI_ACTION_RETURN_3, AI_ACTION_RETURN_4 };
 
 class CCombatManager { public:
-    void SetAttackerAsReadyToAttack(CThingCreatureBase* attacker, bool ready);   // 0x006EA450
+    void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);   // 0x006EA450 (NF34: Ego_r + FableWin ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z)
     bool IsAttackerReadyToAttack(CThingCreatureBase* attacker);                  // 0x006E93C0
 };
 
@@ -168,7 +168,7 @@ void CAIStateGroup_MeleeCombatNearby::AttackEnemy()
     if (((CThingCreatureBase*)PBrain->PCreature)->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
         const CWorld& world = GetWorld();
-        world.CombatManager->SetAttackerAsReadyToAttack(creature, true);
+        world.CombatManager->SetAttackerAsReadyToAttack(*creature, true);
     }
     do {
         EAIActionReturn result = AIAction_PumpCombatActions();

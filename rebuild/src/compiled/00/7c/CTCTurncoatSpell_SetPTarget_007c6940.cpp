@@ -22,6 +22,7 @@ class CTCBase;
 
 #define FABLE_RETAIL_CTHING
 #include "engine/CThing.h"
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -60,7 +61,7 @@ class CTCTurncoat { public:
     void SetTurncoatTimeLast(float time);       // 0x007C7810
 };
 class CTCInventoryAbilities { public:
-    long GetAbilityLevel(long ability) const;   // 0x005EDE93 (EHeroAbility)
+    long GetAbilityLevel(EHeroAbility ability) const;   // 0x005EDE93 (EHeroAbility)
 };
 struct CFloatVector {                            // STLport vector<float> (12 bytes in retail)
     float* _M_start;
@@ -93,7 +94,7 @@ void CTCTurncoatSpell::SetPTarget(CThingCreatureBase* target)
             if (caster->HasTC(TCI_HERO_ABILITIES)) {
                 const CTCInventoryAbilities* abilities = (const CTCInventoryAbilities*)((const CTCInventoryAbilities*)&caster->GetTC(TCI_HERO_ABILITIES));
                 CSpecialAbilitiesTurncoatSpellDef* def = PDef;
-                turncoat->SetTurncoatTimeLast(def->TurncoatTime[abilities->GetAbilityLevel(5)]);
+                turncoat->SetTurncoatTimeLast(def->TurncoatTime[abilities->GetAbilityLevel(HERO_ABILITY_TURNCOAT_SPELL)]);
             }
         }
     }

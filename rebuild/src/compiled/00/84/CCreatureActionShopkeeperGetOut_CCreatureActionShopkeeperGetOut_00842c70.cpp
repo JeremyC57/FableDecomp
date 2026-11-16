@@ -1,4 +1,6 @@
 // CCreatureAction_ShopkeeperGetOut::CCreatureAction_ShopkeeperGetOut(CThingCreatureBase*, CTCShop*, const C3DVector&, const CRightHandedSet&, long) -- base CCreatureActionBase(owner, -1.0, 1.0, the owner's GET_OUT animation, zeroed CSoundPair, 0, 0), then TCShop, Goods, Pos and RHSet
+// Leaf: ??0CCreatureAction_ShopkeeperGetOut@@QAE@AAVCThingCreatureBase@@PAVCTCShop@@ABVC3DVector@@ABVCRightHandedSet@@J@Z
+// Name fix (NF34, 2026-11-16): Ego_r.pdb + FableWin.pdb take the owner by reference (??0..@@QAE@AAVCThingCreatureBase@@PAVCTCShop@@..@Z); callee declarations unchanged.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00842C70, length 206 bytes (+ int3 padding), `ret 14h`. Vtable 0x01273FCC.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, the animation lookup by name @ 0x006924B0
@@ -46,11 +48,11 @@ class CCreatureAction_ShopkeeperGetOut : public CCreatureActionBase { public:   
     C3DVector       Pos;                    // +0xb0 (PDB +0xbc)
     CRightHandedSet RHSet;                  // +0xbc (PDB +0xc8)
     virtual void v00();
-    CCreatureAction_ShopkeeperGetOut(CThingCreatureBase* owner, CTCShop* shop, const C3DVector& pos, const CRightHandedSet& rhSet, long goods);
+    CCreatureAction_ShopkeeperGetOut(CThingCreatureBase& owner, CTCShop* shop, const C3DVector& pos, const CRightHandedSet& rhSet, long goods);
 };
 
-CCreatureAction_ShopkeeperGetOut::CCreatureAction_ShopkeeperGetOut(CThingCreatureBase* owner, CTCShop* shop, const C3DVector& pos, const CRightHandedSet& rhSet, long goods)
-    : CCreatureActionBase(owner, -1.0f, 1.0f, GetAnimationFromName(owner, "GET_OUT"), CSoundPair(), 0, 0)
+CCreatureAction_ShopkeeperGetOut::CCreatureAction_ShopkeeperGetOut(CThingCreatureBase& owner, CTCShop* shop, const C3DVector& pos, const CRightHandedSet& rhSet, long goods)
+    : CCreatureActionBase(&owner, -1.0f, 1.0f, GetAnimationFromName(&owner, "GET_OUT"), CSoundPair(), 0, 0)
     , TCShop(shop)
     , Goods(goods)
     , Pos(pos)

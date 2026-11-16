@@ -1,6 +1,7 @@
-// CMemoryAllocator::GetWastedSpace() -- under the allocator lock, sum the wasted space reported by every sub-allocator of the global table (0x01396880, 0x1c-byte entries, count at +0x410) through virtual slot 9 (+0x24); the chunk label (GetHeaderOverhead) is propagated from the slot-7 twin @ 0x009F2450
+// CMemoryAllocator::GetNoAllocatedAreas() -- under the allocator lock, sum the wasted space reported by every sub-allocator of the global table (0x01396880, 0x1c-byte entries, count at +0x410) through virtual slot 9 (+0x24); the chunk label (GetHeaderOverhead) is propagated from the slot-7 twin @ 0x009F2450
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F2550, length 77 bytes.
-// Leaf: GetWastedSpace
+// Name fix (NF34, 2026-11-16): Ego_r.pdb + FableWin.pdb ?GetNoAllocatedAreas@CMemoryAllocator@@QAEKXZ (the queue claim; was GetWastedSpace); the sub-allocator slot-9 virtual keeps its local name.
+// Leaf: ?GetNoAllocatedAreas@CMemoryAllocator@@QAEKXZ
 // Callees: EnterCriticalSection / LeaveCriticalSection on the allocator lock @ 0x013CAA70 (IAT 0x0143FE0C / 0x0143FE10), the sub-allocators' virtual slot 9. Shape: the sum in ebp, the table pointer stepped by 0x1c in edi, the count (+0x410) re-read after every call, `ret`.
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void* section);   // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void* section);   // IAT 0x0143FE10
@@ -24,11 +25,11 @@ class CMemoryAllocator { public:
     unsigned char _pad00[0x410];
     unsigned long m_noSubAllocators;               // +0x410
     unsigned long GetHeaderOverhead();
-    unsigned long GetWastedSpace();
+    unsigned long GetNoAllocatedAreas();
     void ConsolidateFreeAreas();
 };
 
-unsigned long CMemoryAllocator::GetWastedSpace()
+unsigned long CMemoryAllocator::GetNoAllocatedAreas()
 {
     unsigned long total = 0;
     EnterCriticalSection(g_allocatorLock_013caa70);

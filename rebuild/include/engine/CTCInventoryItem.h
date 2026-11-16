@@ -93,11 +93,17 @@ public:
     static bool __fastcall IsBook(long defIndex);                                     // 0x005D9970
     static bool __fastcall IsExpression(long defIndex);                               // 0x005D9830
     // Row 0x005AF64E CTCInventoryTrade::BuyItem: ?IsWeapon@CTCInventoryItem@@SI_NJ@Z 0x005D97F0 (FableWin.pdb 0x01E029A0),
-    // ?IsBuyable@CTCInventoryItem@@SI_NJ@Z 0x005D9B30 (0x01E03CA0) and ?GetDescription@CTCInventoryItem@@SI?AVCWideString@@J@Z
+    // ?IsBuyable@CTCInventoryItem@@SI_NJ@Z 0x005D9B50 (0x01E03CA0; 0x005D9B30 is IsSellable, def +0x5C v +0x5D) and ?GetDescription@CTCInventoryItem@@SI?AVCWideString@@J@Z
     // 0x005D95C0 (0x01E01CC0; the def's description text, hidden CWideString result, the index in edx). All out of line in retail.
     static bool __fastcall IsWeapon(long defIndex);                                   // 0x005D97F0
-    static bool __fastcall IsBuyable(long defIndex);                                  // 0x005D9B30
+    static bool __fastcall IsBuyable(long defIndex);                                  // 0x005D9B50
     static CWideString __fastcall GetDescription(long defIndex);                      // 0x005D95C0
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_ISSELLABLE
+    // NF34 opt-in (2026-11-16): Ego_r.pdb 0x0055AB00 / FableWin.pdb 0x01E03B40 ?IsSellable@CTCInventoryItem@@SI_NJ@Z is retail
+    // 0x005D9B30 (reads CInventoryItemDef::IsSellable +0x5C; Ego_r order IsSellable then IsBuyable, retail 0x005D9B30 then 0x005D9B50,
+    // so IsBuyable above, +0x5D, is 0x005D9B50). Declaration only; needs FABLE_RETAIL_CTCINVENTORYITEM_KINDS.
+    static bool __fastcall IsSellable(long defIndex);                                 // 0x005D9B30
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_DESCRIPTION
     // Nested opt-in (w22 agent2057 scout, row 0x007CACB0 CTCHeroReceiveItems::GlobalUpdate): the const member overloads, Ego_r.pdb

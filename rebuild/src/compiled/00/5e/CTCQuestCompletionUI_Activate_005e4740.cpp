@@ -10,7 +10,7 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (interfaces 0xE8 = CTCBoastUI and 0x6C = CTCQuestCard), CTCBoastUI::Deactivate
 //   @ 0x0056A880, CCharString::operator= @ 0x0099EFB0, CWideString::operator= @ 0x0099B7D0, Activate(CompletionType,
 //   CTCQuestCard*, bool) @ 0x005E4430, CQuestManager::GetActiveQuestCardFromScriptName(const CCharString&) @ 0x004B0C80,
-//   CCharString copy ctor @ 0x0099EC30, CQuestManager::RemoveAcceptedBoastsForScript(CCharString) @ 0x004AFFA0.
+//   CCharString copy ctor @ 0x0099EC30, CQuestManager::RemoveBoastsForScript(CCharString) @ 0x004AFFA0 (NF34: Ego_r/FableWin order; 0x004B0030 is RemoveAcceptedBoastsForScript).
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass @ 0x013B89FC.
 // Layout: Ego_r.pdb CTCQuestCompletionUI with retail containers: ScriptName +0x50 / FailureReason +0x54 (PDB -8),
 //   CanTeleportToGuildMember +0xD4 (PDB 0xE8, -0x14 after the three 12-byte maps). CThing interface bitset +0x20, map +0x44.
@@ -40,7 +40,7 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public:
-    void RemoveAcceptedBoastsForScript(CCharString name);               // 0x004AFFA0
+    void RemoveBoastsForScript(CCharString name);                       // 0x004AFFA0
 public:
     CThing* GetActiveQuestCardFromScriptName(const CCharString&) const;   // 0x004B0C80
 };
@@ -82,6 +82,6 @@ void CTCQuestCompletionUI::Activate(CompletionType type, const CCharString& scri
     }
     if (type == COMPLETION_0) {
         CQuestManager* questManager = (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
-        questManager->RemoveAcceptedBoastsForScript(ScriptName);
+        questManager->RemoveBoastsForScript(ScriptName);
     }
 }

@@ -62,7 +62,7 @@ class CThingPhysical : public CThing { public:
 class CThingCreatureBase : public CThingPhysical { public:
 };
 class CTCCreatureNavigation { public:                  // interface 7
-    bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector* result);   // 0x006CB840
+    bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector& result) const;   // 0x006CB840 (NF34: Ego_r + FableWin QBE, C3DVector&)
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -123,7 +123,7 @@ void CAIStateGroup_ReactToDeadLeader::Update()
         CTCCreatureNavigation* navigation;
         GetCreature()->GetInterface(&navigation, 7);
         C3DVector fleePos;
-        if (!navigation->GetNearestFleePosition(PEnemy.GetPCreature()->PeekPos(), 20.0f, &fleePos))
+        if (!navigation->GetNearestFleePosition(PEnemy.GetPCreature()->PeekPos(), 20.0f, fleePos))
             break;
         long result;
         {

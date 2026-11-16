@@ -9,7 +9,7 @@
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449960 (engine 0x013B86A0 +0x1C), CPlayer::PeekPControlledCreature
 //   @ 0x00487DD0, std::bitset<>::test @ 0x00410DE0 and the const CVectorMap LowerBound @ 0x004365B0 (the inlined
 //   GetInterface), CTCInventoryBase::GetAllItems(vector<NInventory::CItem>&) @ 0x005BF482 (landed, another TU),
-//   CTCBase owner getter @ 0x005BC4C4 (label "CWorld::DrawGetEnvironment" is propagated), CTCInventoryItem::IsBuyable
+//   CTCBase owner getter @ 0x005BC4C4 (label "CWorld::DrawGetEnvironment" is propagated), CTCInventoryItem::IsSellable (NF34: was IsBuyable)
 //   (long) @ 0x005D9B30 (static `__fastcall`), CTCInventoryTrade::AddItemOfTypeToInventory(long, long) @ 0x0059C6B0,
 //   NInventory::CTCInventoryBase::GetSelectedCategory @ 0x005BCACE, CCategory::GetUniqueItemCountInCategory
 //   @ 0x005BC8AC, the category-count getter @ 0x005BCE2F (label "CWorldMap::DrawGetNoMaps" is propagated), the CRT
@@ -85,7 +85,7 @@ struct CItemVector {                                        // STLport vector<NI
     NInventory::CItem& operator[](unsigned long n) { return _M_start[n]; }
 };
 class CTCInventoryItem { public:
-    static bool __fastcall IsBuyable(long defIndex);        // 0x005D9B30
+    static bool __fastcall IsSellable(long defIndex);       // 0x005D9B30 (NF34: Ego_r + FableWin ?IsSellable@CTCInventoryItem@@SI_NJ@Z, def +0x5C)
 };
 
 struct CTCInventoryBase {
@@ -123,7 +123,7 @@ void CTCInventoryTrade::InitialiseSellableItems()
     bool isShop = GetOwner()->HasTC(0x53);
     for (unsigned long i = 0; i < items.size(); ++i) {
         long defIndex = items[i].DefIndex;
-        if (defIndex > 0 && CTCInventoryItem::IsBuyable(defIndex)) {
+        if (defIndex > 0 && CTCInventoryItem::IsSellable(defIndex)) {
             AddItemOfTypeToInventory(defIndex, items[i].Count);
             total += items[i].Count;
         }

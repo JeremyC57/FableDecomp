@@ -13,7 +13,7 @@
 //   IsSpecialCase 0x0059C983, CCharString(const char*,long) 0x0099EBF0 / () 0x0099E4B0 / copy 0x0099EC30 / = 0x0099EFB0 / ~ 0x0099EAE0,
 //   RefreshNameAndTitle 0x0059CFBD, CPlayerManager::GetMainPlayer 0x00449970 (+0x1C) / CPlayer::GetPControlledCreature 0x00487DC0,
 //   CTCInventoryItem::GetInventoryType 0x005D99D0 / GetTattooCardDef 0x005D9AA0 / GetHairCardDef 0x005D9A10 / IsWeapon 0x005D97F0 /
-//   IsBuyable 0x005D9B30 / GetDescription 0x005D95C0, bitset::test 0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (the inline
+//   IsSellable 0x005D9B30 (NF34: was spelled IsBuyable) / GetDescription 0x005D95C0, bitset::test 0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (the inline
 //   GetTC on the hero, the trading thing and the parent thing), IsSpaceInInventoryForItem 0x005BF2ED, CDeletion() 0x0042BED4 /
 //   copy 0x0042CD84 / ~list<CComponent*> 0x0042ABCA, GetBuildingThing 0x005BC4C4, CTCShop::GetCurrentSellPrice 0x007743B0 / SellItem
 //   0x00774730 / IsTitleShop 0x00772590 / IsTattooShop 0x00772510 / IsBarberShop 0x00772490, CTCBase::GetDefinitionManager 0x006869D0,
@@ -79,6 +79,7 @@
 #define FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
 #define FABLE_RETAIL_CTCINVENTORYITEM_CARDDEFS
 #define FABLE_RETAIL_CTCINVENTORYITEM_KINDS
+#define FABLE_RETAIL_CTCINVENTORYITEM_ISSELLABLE   // NF34: 0x005D9B30 is IsSellable (Ego_r + FableWin; def +0x5C)
 #define FABLE_RETAIL_CDELETION
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -257,7 +258,7 @@ void CTCInventoryTrade::BuyItem(CComponent* entry, long count)
         }
         inventory->AddItemToInventory(itemDefIndex, count, false, true, price / count, false);
         RefreshBuyPossibility();
-        if (CTCInventoryItem::IsBuyable(itemDefIndex)) {
+        if (CTCInventoryItem::IsSellable(itemDefIndex)) {
             // the bought item joins the sell side: its category branch's count, the per-type total and subtitles
             CComponent* sellEntry = Components[0]->FindChild("UI_TRADING_MENU_SELL_ENTRY");
             EItem_Menu_Type type;

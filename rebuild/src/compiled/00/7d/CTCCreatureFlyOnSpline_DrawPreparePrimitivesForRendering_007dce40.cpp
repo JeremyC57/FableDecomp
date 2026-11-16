@@ -3,7 +3,7 @@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DCE40, 336 bytes (`ret 4`).
-// Callees: CCardinalSpline::GetSplinePosition(C3DVector*, float) @ 0x00A567A0, CEnginePrimitiveLine::CEnginePrimitiveLine(...)
+// Callees: CCardinalSpline::GetSplinePosition(C3DVector&, float) const @ 0x00A567A0, CEnginePrimitiveLine::CEnginePrimitiveLine(...)
 // @ 0x004C3090 (returns `this`), CIEngine::SetPersistentPrimitive(CEnginePrimitiveHandle&, const CEnginePrimitive&, unsigned
 // long) (slot 23, +0x5c). Globals: 2^32 @ 0x0122DCB4 (unsigned size to float), 1.0f @ 0x0122DED8, 0.0f @ 0x0122DEDC.
 // Layout: as the landed SetSpline 0x007DCFD0 (PSpline +0x0c, EngineHandles: retail STLport vector of 8-byte handles +0x14);
@@ -43,9 +43,9 @@ class CEnginePrimitivePrepareInfo { public:
     CIEngine* Engine;                                   // +0x34
 };
 #include "engine/CThing.h"
-class CCardinalSpline { public:
-    void GetSplinePosition(C3DVector* position, float progress);    // 0x00A567A0
-};
+// NF34 name fix: Ego_r.pdb + FableWin.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z (const, reference).
+#define FABLE_RETAIL_CCARDINALSPLINE_GETSPLINEPOSITION
+#include "engine/CCardinalSpline.h"
 struct SCountBlock;
 #include "engine/CCountedPointer.h"
 struct CEnginePrimitiveHandleVector {                   // STLport vector<CEnginePrimitiveHandle>
@@ -75,7 +75,7 @@ void CTCCreatureFlyOnSpline::DrawPreparePrimitivesForRendering(const CEnginePrim
         return;
     float progress = 0.0f;
     C3DVector lastPos;
-    PSpline->GetSplinePosition(&lastPos, 0.0f);
+    PSpline->GetSplinePosition(lastPos, 0.0f);
     unsigned long i = 0;
     if (EngineHandles.size() != 0) {
         CRGBColour colour(255, 255, 0, 255);
@@ -86,7 +86,7 @@ void CTCCreatureFlyOnSpline::DrawPreparePrimitivesForRendering(const CEnginePrim
             else if (progress > 1.0f)
                 progress = 1.0f;
             C3DVector pos;
-            PSpline->GetSplinePosition(&pos, progress);
+            PSpline->GetSplinePosition(pos, progress);
             unsigned __int64 id = ParentThing->GetUniqueID();
             info.Engine->SetPersistentPrimitive(*(EngineHandles.begin() + i),
                 CEnginePrimitiveLine(id, lastPos, pos, colour, 0.05f, (EEnginePrimitiveBlendMode)0, 0, true, (EEngineInterpolationSet)0, (EEnginePrimitiveBlendOp)0), 0);

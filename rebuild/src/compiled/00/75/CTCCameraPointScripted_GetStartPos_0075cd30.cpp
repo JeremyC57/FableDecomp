@@ -35,6 +35,7 @@ public:
     virtual void v00();
     CThing*       ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad08[0x3d - 0x08];              // +0x08 CTCBase flags .. Activated (+0x3c)
+protected:   // NF34: Ego_r.pdb + FableWin.pdb ?TransformPosition@CTCCameraPointDefinitionBase@@IBE..@Z (protected)
     C3DVector TransformPosition(const C3DVector& position, const C3DVector* origin, const CRightHandedSet* axes) const;   // 0x0075C420
 };
 class CTCCameraPointScripted : public CTCCameraPointDefinitionBase {

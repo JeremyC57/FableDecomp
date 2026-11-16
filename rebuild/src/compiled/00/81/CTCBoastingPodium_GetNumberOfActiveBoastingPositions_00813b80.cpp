@@ -1,5 +1,6 @@
 // CTCBoastingPodium::GetNumberOfActiveBoastingPositions() const -- count the podium's boasting positions whose position component reports itself activated
-// Leaf: ?GetNumberOfActiveBoastingPositions@CTCBoastingPodium@@QBEJXZ
+// Leaf: ?GetNumberOfActiveBoastingPositions@CTCBoastingPodium@@ABEJXZ
+// Name fix (NF34, 2026-11-16): Ego_r.pdb + FableWin.pdb spell it private (ABE); access only.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00813B80, length 198 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the const CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0
@@ -45,7 +46,9 @@ public:
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
     CRetailVector<SBoastingPositionEntry> BoastingPositions;   // +0x0c
+private:
     long GetNumberOfActiveBoastingPositions() const;
+public:
 };
 
 long CTCBoastingPodium::GetNumberOfActiveBoastingPositions() const

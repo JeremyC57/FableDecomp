@@ -61,7 +61,7 @@ class CThingAICreature { public:
 class CTCShop { public:
     unsigned char _pad[0x50];
     unsigned char m_bClosedDown;                // +0x50
-    bool IsOpeningHours();                      // 0x00773950
+    bool IsOpeningHours() const;                    // 0x00773950
 };
 
 class CTCShopKeeper { public:                          // interface 0x90

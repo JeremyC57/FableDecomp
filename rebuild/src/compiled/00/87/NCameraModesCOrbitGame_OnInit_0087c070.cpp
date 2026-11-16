@@ -58,7 +58,9 @@ class CBase { public:
     float               RollAngle;                   // +0x88
     float               ObservedPositionZOffset;     // +0x8c
     unsigned char       _pad90[0xa4 - 0x90];
+protected:  // NF34: Ego_r.pdb + FableWin.pdb ?GetWorld@CBase@NCameraModes@@IBEABVCWorld@@XZ (protected)
     const CWorld& GetWorld() const;                  // 0x0084D050
+public:
 };
 struct COrbitGame : CBase {
     C3DVector Focus;                                 // +0xa4

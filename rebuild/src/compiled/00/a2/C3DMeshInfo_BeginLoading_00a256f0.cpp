@@ -99,7 +99,7 @@ inline void CResource::Touch()
     }
 }
 class CResourceBank { public:
-    void AddResource(CResource* resource);         // 0x009FC3D0
+    void AddToLoadingQueue(CResource& resource);   // 0x009FC3D0 (NF34: Ego_r + FableWin; links into LoadingQueue +0x40)
 };
 class CMeshDataBank { public:
     unsigned char _pad000[0x170];
@@ -181,7 +181,7 @@ void C3DMeshInfo::BeginLoading(unsigned long lod, bool unusedFlag, bool urgent)
     if (urgent)
         priority = THREADED_FILE_PRIORITY_HIGH;
     slot->FileData = entry->BeginReadDataAutoAlloc(offset, size, priority);
-    Bank->ResourceBank.AddResource(slot.m_pObject);
+    Bank->ResourceBank.AddToLoadingQueue(*slot.m_pObject);
     C3DMeshLODInfo* info = slot.m_pObject;
     unsigned long meshSize = info->Mesh.Object ? info->Mesh->Sizeof() + 8 : 8;
     unsigned long dataSize = info->FileData.Object ? info->FileData->Sizeof() + 8 : 8;

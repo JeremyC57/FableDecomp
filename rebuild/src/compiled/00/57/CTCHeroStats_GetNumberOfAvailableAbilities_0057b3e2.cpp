@@ -16,13 +16,14 @@
 // (`cmp esi,14h ; jne`) bumps the count for every level that is not -1.
 // Layout: CTCBase::ParentThing +0x04; retail CThing: UsingComponents bitset +0x20, Components map {first, last} +0x44
 // (PDB +0x48).
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
 class CTCBase;
 
 class CTCInventoryAbilities { public:
-    long GetAbilityLevel(long ability) const;  // 0x005EDE93
+    long GetAbilityLevel(EHeroAbility ability) const;  // 0x005EDE93
 };
 
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
@@ -45,7 +46,7 @@ long CTCHeroStats_Retail::GetNumberOfAvailableAbilities() const
     ParentThing->PeekTC(TCI_HERO_ABILITIES, &abilities);
     long available = 0;
     for (long ability = 1; ability != 20; ++ability) {
-        if (abilities->GetAbilityLevel(ability) != -1)
+        if (abilities->GetAbilityLevel((EHeroAbility)ability) != -1)
             ++available;
     }
     return available;

@@ -16,6 +16,7 @@
 // Shape: the landed CTCDrainLife ctor (0x007C30E0) family; the list is STLport (`_M_node` alloc proxy zeroed, then the
 // malloc'd sentinel linked to itself), the vectors `_Vector_base` + `_STLP_alloc_proxy`.
 #include "fable_compiler.h"
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -99,7 +100,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCInventoryAbilities {
 public:
-    long GetAbilityLevel(long ability);             // 0x005EDE93 (EHeroAbility)
+    long GetAbilityLevel(EHeroAbility ability) const;             // 0x005EDE93 (EHeroAbility)
 };
 
 class CThing {
@@ -158,6 +159,6 @@ CTCHealLife::CTCHealLife(CThing& parent)
     CGameDefinitionManager::Get().GetDef(index, &PDef);
     CTCInventoryAbilities* abilities;
     if (ParentThing->GetInterface(&abilities, 0x6f))
-        SpellLevel = abilities->GetAbilityLevel(0xe);
+        SpellLevel = abilities->GetAbilityLevel(HERO_ABILITY_HEAL_LIFE_SPELL);
     StartHealingEffect();
 }

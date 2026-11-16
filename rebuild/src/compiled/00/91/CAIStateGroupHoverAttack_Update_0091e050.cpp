@@ -19,11 +19,13 @@ class CThingCreatureBase : public CThing { public:
 public:
     bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
-bool __fastcall IsToAttackTarget(CThingCreatureBase* creature, CThing* target);   // 0x00864D00
+// NF34 name fix: Ego_r.pdb + FableWin.pdb ?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z.
+class CThingAICreature;
+namespace NCreatureAI { bool __fastcall IsToAttackTarget(CThingAICreature* creature, const CThingCreatureBase* target); }   // 0x00864D00
 
 class CCombatActionBase;
 class CCombatManager { public:
-    void SetAttackerAsReadyToAttack(CThingCreatureBase* attacker, bool ready);    // 0x006EA450
+    void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);    // 0x006EA450 (NF34: Ego_r + FableWin const&)
     C3DVector GetPreferredPos(const CThingCreatureBase& creature) const;                       // 0x006EA770
     CCombatActionBase* GetNextActionForCreature(CThingCreatureBase* creature);    // 0x006EB600
 };
@@ -80,13 +82,13 @@ void CAIStateGroup_HoverAttack::Update()
     {
         CThingCreatureBase* creature = GetCreature();
         CWorld* world = &GetWorld();
-        world->PCombatManager->SetAttackerAsReadyToAttack(creature, true);
+        world->PCombatManager->SetAttackerAsReadyToAttack(*creature, true);
     }
-    while (IsAlive(PTarget) && IsToAttackTarget(GetCreature(), PTarget.Get()) && IsRunnableLeaf()) {
+    while (IsAlive(PTarget) && NCreatureAI::IsToAttackTarget((CThingAICreature*)GetCreature(), static_cast<const CThingCreatureBase*>(PTarget.Get())) && IsRunnableLeaf()) {
         bool inRange = false;
         for (;;) {
             if (!IsAlive(PTarget) || !GetCreature()->IsInMeleeAsAttacker()
-                || !IsToAttackTarget(GetCreature(), PTarget.Get())) {
+                || !NCreatureAI::IsToAttackTarget((CThingAICreature*)GetCreature(), static_cast<const CThingCreatureBase*>(PTarget.Get()))) {
                 Terminate();
                 return;
             }

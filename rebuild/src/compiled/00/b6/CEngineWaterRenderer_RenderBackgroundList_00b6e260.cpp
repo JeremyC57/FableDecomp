@@ -26,8 +26,8 @@ public:
     unsigned long    QueryCount;                   // +0x401c
     long IsQueryVisible(unsigned long id, bool wait);   // 0x00B8D0B0
     long RenderOcclusionBox(const CMatrix3x4& box);     // 0x00B8D420
-    void BeginQuery();                             // 0x00B8D090
-    void EndQuery(long id);                        // 0x00B8D0A0
+    void StartOcclusionTest();                     // 0x00B8D090 (NF34: Ego_r + FableWin)
+    void EndOcclusionTest(unsigned long id);         // 0x00B8D0A0 (NF34: Ego_r + FableWin)
     FABLE_FORCEINLINE long AllocateQuery()
     {
         if (QueryCount < 0x2000) {
@@ -91,10 +91,10 @@ void CEngineWaterRenderer::RenderBackgroundList(CArray<CEngineWaterBackgroundSub
                 id = g_pEngineOcclusionManager->RenderOcclusionBox(box);
             }
             else {
-                g_pEngineOcclusionManager->BeginQuery();
+                g_pEngineOcclusionManager->StartOcclusionTest();
                 RenderBackgroundPatch(*it);
                 id = g_pEngineOcclusionManager->AllocateQuery();
-                g_pEngineOcclusionManager->EndQuery(id);
+                g_pEngineOcclusionManager->EndOcclusionTest(id);
             }
             (*it)->OcclusionID = id;
         }

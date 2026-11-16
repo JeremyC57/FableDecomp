@@ -42,7 +42,7 @@ class CParticleEmitter { public:
     bool IsDead() const { return Dead; }
     bool IsInitialised() const { return Initialised; }
     bool Initialise(CIEngine* engine);                                                   // 0x00AEE240
-    void StartFrame(float interpolate, CEnginePrimitivePrepareInfo* info);               // 0x00AEEBA0
+    void StartFrame(float interpolate, const CEnginePrimitivePrepareInfo& info);         // 0x00AEEBA0 (NF34: Ego_r + FableWin ?StartFrame@CParticleEmitter@NParticleEngine@@QAEXMABVCEnginePrimitivePrepareInfo@@@Z)
     void PreparePrimitives(float distance, const CEnginePrimitivePrepareInfo* info);     // 0x00AEE560
 };
 }
@@ -117,7 +117,7 @@ void CPSCUpdateNormal::PreparePrimitives(float distance, const CEnginePrimitiveP
         } else {
             if (!it->Get()->IsInitialised())
                 it->Get()->Initialise(info.Engine);
-            it->Get()->StartFrame(distance, const_cast<CEnginePrimitivePrepareInfo*>(&info));
+            it->Get()->StartFrame(distance, info);
             it->Get()->PreparePrimitives(distance, &info);
             ++it;
         }

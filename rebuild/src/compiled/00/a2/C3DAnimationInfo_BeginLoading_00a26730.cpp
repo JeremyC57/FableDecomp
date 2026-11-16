@@ -74,7 +74,7 @@ class CResource { public:
     void SetResourceSize(unsigned long size);      // 0x009FBF20
 };
 class CResourceBank { public:
-    void AddResource(CResource* resource);         // 0x009FC3D0
+    void AddToLoadingQueue(CResource& resource);   // 0x009FC3D0 (NF34: Ego_r + FableWin; links into LoadingQueue +0x40)
 };
 class CBankFile { public:
     unsigned long GetEntryDataSize(unsigned long a0) const;   // 0x009CC240 (Ego_r.pdb ?GetEntryDataSize@CBankFile@@QBEKK@Z)
@@ -110,5 +110,5 @@ void C3DAnimationInfo::BeginLoading(bool wait) const
     Data = new CAnimationData(this);
     Data->FileData = entry->BeginReadDataAutoAlloc(0, size, g_AnimationReadPriority);
     Data->SetResourceSize(size);
-    Bank->ResourceBank.AddResource(Data.Data);
+    Bank->ResourceBank.AddToLoadingQueue(*Data.Data);
 }

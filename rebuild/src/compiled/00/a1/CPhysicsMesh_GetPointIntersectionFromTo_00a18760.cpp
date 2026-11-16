@@ -32,8 +32,10 @@ class CPhysicsMesh { public:
     unsigned char              _pad9c[0xb4 - 0x9c];
     CIPhysicsFacesSegmentBase* m_pSegmentation;        // +0xb4 (counted pointer's object)
     bool HasBoundingBoxIntersectedFromTo(float tolerance, const C3DVector& from, const C3DVector& to) const;            // 0x00A17690
+private:   // NF34: Ego_r.pdb + FableWin.pdb spell both helpers private (ABE)
     bool GetPointIntersectionFromToUsingSegmentation(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;   // 0x00A177A0
     bool GetPointIntersectionFromToUsingFullCollision(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;  // 0x00A17F80
+public:
     bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;
 };
 

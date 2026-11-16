@@ -1,4 +1,6 @@
-// C3DMesh2::InitialiseBoneNamePointers(long) -- when asked, resolves the bone-name handle through the pool at +4 and points BoneNameIndices (+0xa4) at it and BoneNameData (+0xa8) just past the BoneCount (+0x98) shorts
+// C3DMesh2::InitialiseBoneNamePointers(unsigned long) -- when asked, resolves the bone-name handle through the pool at +4 and points BoneNameIndices (+0xa4) at it and BoneNameData (+0xa8) just past the BoneCount (+0x98) shorts
+// Leaf: ?InitialiseBoneNamePointers@C3DMesh2@@AAEXK@Z
+// Name fix (NF34, 2026-11-16): Ego_r.pdb + FableWin.pdb ?InitialiseBoneNamePointers@C3DMesh2@@AAEXK@Z (private, unsigned long).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A892E0, length 51 bytes.
 // Callees: CHandleBasedMemoryPool::GetPointerFromHandle(long) @ 0x00A026B0.
 // Retail C3DMesh2 sits 8 bytes below the Ego_r PDB layout here: BoneNameMemoryHandle +0x84,
@@ -18,10 +20,12 @@ class C3DMesh2 { public:
     unsigned char _pad_0x9c[0x8];
     unsigned short* BoneNameIndices;       // +0xa4
     char* BoneNameData;                    // +0xa8
-    void InitialiseBoneNamePointers(long hasBoneNames);
+private:
+    void InitialiseBoneNamePointers(unsigned long hasBoneNames);
+public:
 };
 
-void C3DMesh2::InitialiseBoneNamePointers(long hasBoneNames)
+void C3DMesh2::InitialiseBoneNamePointers(unsigned long hasBoneNames)
 {
     if (hasBoneNames) {
         unsigned short* indices = (unsigned short*)MemoryPool->GetPointerFromHandle(BoneNameMemoryHandle);

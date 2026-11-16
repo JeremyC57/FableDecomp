@@ -108,7 +108,9 @@ public:
     CPhysicsState GoTo;                                 // +0x54
     unsigned char _pad84[0x20];
     const CThingGameObject* GetObservedThing() const;             // 0x0084F1B0
+protected:  // NF34: Ego_r.pdb + FableWin.pdb ?GetWorld@CBase@NCameraModes@@IBEABVCWorld@@XZ (protected)
     const CWorld& GetWorld() const;                     // 0x0084D050
+public:
 };
 class CZTargetNew : public CBase {
 public:

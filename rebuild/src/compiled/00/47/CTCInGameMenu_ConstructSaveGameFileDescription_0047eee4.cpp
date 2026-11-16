@@ -43,7 +43,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    unsigned long ComputeCRC32() const;                 // 0x00404310
+    unsigned long GetCRC() const;                       // 0x00404310 (NF34: Ego_r + FableWin ?GetCRC@CCharString@@QBEKXZ)
     CWideString ToWideString() const;                   // 0x0099E480
 };
 class CAFile { public: static bool __fastcall PathExists(const CWideString& path); };   // 0x00999230
@@ -200,7 +200,7 @@ void CTCInGameMenu::ConstructSaveGameFileDescription(CWideString& description, l
         description += GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_REGION") + L":";
         CWideString region;
         CDataBank* bank = GetTextBank();
-        unsigned long entry = bank->LookupValue(FileRegionNames[index].ComputeCRC32());
+        unsigned long entry = bank->LookupValue(FileRegionNames[index].GetCRC());
         if (entry > 0) {
             if (bank->GetEntryDataType(entry)) {
                 CRetailVector<unsigned long> const& ids = bank->GetPGroupEntry(entry, true)->Ids;

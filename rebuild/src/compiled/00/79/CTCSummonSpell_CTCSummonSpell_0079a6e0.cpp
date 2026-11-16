@@ -19,6 +19,7 @@
 //   class-name string in its own block; the creature-name string a block-scoped by-value result; `FadeInTimer =
 //   CurFadeInTimer = ...` stores CurFadeInTimer first.
 #include "fable_compiler.h"
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -83,7 +84,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCInventoryAbilities {
 public:
-    long GetAbilityLevel(long ability);                 // 0x005EDE93 (EHeroAbility)
+    long GetAbilityLevel(EHeroAbility ability) const;                 // 0x005EDE93 (EHeroAbility)
 };
 class CThing {
 public:
@@ -153,5 +154,5 @@ CTCSummonSpell::CTCSummonSpell(CThing& parent)
     }
     FadeInTimer = CurFadeInTimer = (long)(CMainGameComponent::GetConstantFPS() * PDef->FadeInTime);
     if (ParentThing->HasTC(0x6f))
-        SpellLevel = ((CTCInventoryAbilities*)ParentThing->GetTC(0x6f))->GetAbilityLevel(10);
+        SpellLevel = ((CTCInventoryAbilities*)ParentThing->GetTC(0x6f))->GetAbilityLevel(HERO_ABILITY_SUMMON_SPELL);
 }

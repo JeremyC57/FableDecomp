@@ -1,0 +1,9 @@
+- Probe every landed caller once (compile + relocation scan) into a file before editing: reloc_bindings shows only the first caller, and the probe gave an exact worklist of wrong binders per target in ~25 min for 560 rows.
+- Run probes and grades in a private work dir (S=<you>/pS for q.py), never the shared $S/wine/q/<addr>, so two agents cannot clobber each other's objects.
+- Rows without `// Flags:` take their extra flags from build_candidates.ps1 CompilerFlags (e.g. /Oa, /GS); a bare q.py grade without them reports a false DIFFER.
+- An access-only callee fix (QAE -> IAE/AAE) is a one-line `protected:` / `private:` wrap of the local declaration when the caller is a member of that class or a derived one.
+- A header block whose comment says "protected" can still be public: the access label comes from whatever precedes the `#ifdef` (CAIStateGroupBase PEEKDEFINITIONMANAGER).
+- Including a shared class header into a row that models its own C3DVector / CBaseIntelligentPointer locally fails with a redefinition; respell the local declaration instead.
+- Free-function stand-ins for a CRC accessor (`__fastcall F(const CCharString&)`) respell to a member `GetCRC() const` with identical bytes (ecx carries the object either way).
+- `enum X { };` local empties clash with the shared enum header; replace them with the include.
+- An opt-in chain like FABLE_RETAIL_CTCTARGETINGPLAYER can hang Wine cl (likely an #error); keep `timeout` on every grade and give up after one hang.

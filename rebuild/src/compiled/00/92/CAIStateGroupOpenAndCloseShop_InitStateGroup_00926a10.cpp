@@ -165,7 +165,7 @@ class CAIStateGroupBase { public:
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class CTCShop { public:
-    bool IsOpeningHours();                      // 0x00773950
+    bool IsOpeningHours() const;                    // 0x00773950
 };
 class CTCShopKeeper { public:
     CTCShop* GetShopTC();                       // 0x00798F50

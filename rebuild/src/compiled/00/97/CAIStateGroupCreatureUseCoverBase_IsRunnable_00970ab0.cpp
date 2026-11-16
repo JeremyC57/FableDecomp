@@ -109,7 +109,9 @@ struct CTCInterface8                                // interface type 8 componen
     virtual CThing* GetTarget();                    // slot 29 (+0x74)
 };
 
-bool __fastcall IsToAttackTarget(CThing* creature, CThing* target);   // 0x00864D00
+// NF34 name fix: Ego_r.pdb + FableWin.pdb ?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z.
+class CThingAICreature;
+namespace NCreatureAI { bool __fastcall IsToAttackTarget(CThingAICreature* creature, const CThingCreatureBase* target); }   // 0x00864D00
 
 struct CAIStateGroup_CreatureUseCoverBase
 {
@@ -130,7 +132,7 @@ bool CAIStateGroup_CreatureUseCoverBase::IsRunnable()
     if (creature->HasTC(8))
     {
         CThing* target = ((CTCInterface8*)creature->FindEntry(8)->second)->GetTarget();
-        if (target && IsToAttackTarget(PBrain->Creature, target))
+        if (target && NCreatureAI::IsToAttackTarget((CThingAICreature*)PBrain->Creature, (const CThingCreatureBase*)target))
         {
             PTargetThing.SetPItem((CBaseObject*)(((CThing*)CIntelligentPointer<CThingCreatureBase>((CThingCreatureBase*)target).GetPItem())));
             return IsRunnableLeaf();

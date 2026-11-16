@@ -20,6 +20,7 @@
 // Shape: the sibling CTCBattleCharge constructor 0x007A71B0 (same TU family); FLT_MAX is 0x7F7FFFFF.
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"                     // CTCBase(CThing&) 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 #include "fable_compiler.h"
 class CThing;
 class CBaseObject;
@@ -72,7 +73,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCInventoryAbilities {
 public:
-    long GetAbilityLevel(long ability);             // 0x005EDE93 (EHeroAbility)
+    long GetAbilityLevel(EHeroAbility ability) const;             // 0x005EDE93 (EHeroAbility)
 };
 
 // Respell (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the callee 0x00487170 was bound as ?StopChargeMode@CPlayer@@QAEXXZ on a local CPlayer;
@@ -195,6 +196,6 @@ CTCAssassinRush::CTCAssassinRush(CThing& parent)
     }
     const CThing* parentThing = ParentThing;
     if (parentThing->HasTC(0x6f))
-        SpellLevel = ((CTCInventoryAbilities*)parentThing->GetTC(0x6f))->GetAbilityLevel(0xd);
+        SpellLevel = ((CTCInventoryAbilities*)parentThing->GetTC(0x6f))->GetAbilityLevel(HERO_ABILITY_ASSASSIN_RUSH);
     Reset();
 }

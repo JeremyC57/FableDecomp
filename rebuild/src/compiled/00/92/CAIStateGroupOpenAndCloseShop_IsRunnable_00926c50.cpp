@@ -166,7 +166,7 @@ extern "C" double __cdecl sqrt(double);
 class CTCShop { public:
     unsigned char _pad[0x0c];
     long StockState;                            // +0x0c
-    bool IsOpeningHours();                      // 0x00773950
+    bool IsOpeningHours() const;                    // 0x00773950
     bool IsPermanentlyStocked() const;                // 0x007721A0
 };
 class CTCShopKeeper { public:

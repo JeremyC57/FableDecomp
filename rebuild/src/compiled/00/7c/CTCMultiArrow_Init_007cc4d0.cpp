@@ -18,6 +18,7 @@
 //   +0x18, SpellLevel +0x1C, CreateAmmoEffectCount/Delay/Timer +0x24/+0x28/+0x2C. CSpecialAbilitiesMultiArrowDef is 4 bytes
 //   below Ego_r in retail: NumberOfShots[4] +0x3C, NumberInVolley[4] +0x4C, AmmoEffectCreationDelaySecs +0x5C, CastSound +0x60.
 #include "fable_compiler.h"
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 class CThing;
 class CTCBase;
 
@@ -212,7 +213,7 @@ CThing* __fastcall CreateParticleEffect(long type, const C3DVector& position);  
 
 class CTCInventoryAbilities {
 public:
-    long GetAbilityLevel(long ability);                // 0x005EDE93 (EHeroAbility)
+    long GetAbilityLevel(EHeroAbility ability) const;                // 0x005EDE93 (EHeroAbility)
 };
 class CTCSoundPlayer {
 public:
@@ -254,7 +255,7 @@ void CTCMultiArrow::Init()
     CGameDefinitionManager::Get().GetDef(index, &PDef);
     const CThing* parentThing = parent;
     if (parentThing->HasTC(0x6f))
-        SpellLevel = ((CTCInventoryAbilities*)parentThing->GetTC(0x6f))->GetAbilityLevel(0x11);
+        SpellLevel = ((CTCInventoryAbilities*)parentThing->GetTC(0x6f))->GetAbilityLevel(HERO_ABILITY_MULTI_ARROW);
     NumberOfShots = PDef->NumberOfShots[SpellLevel];
     NumberInVolley = PDef->NumberInVolley[SpellLevel];
     NumOfVolleys = NumberOfShots / NumberInVolley;

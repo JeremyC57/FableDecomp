@@ -228,6 +228,11 @@ public:
     // reloc_bindings.tsv from landed 0x00861950). Declaration only.
     const C3DAnimationInfo* PeekAnimation(unsigned long index) const;  // 0x00A242C0
 #endif
+#if defined(FABLE_RETAIL_CMESHDATABANK_SETTEXTUREBANK) && !(defined(FABLE_RETAIL_CMESHDATABANK_BASES) && defined(FABLE_RETAIL_CMESHDATABANK_CTOR))
+    // NF34 opt-in (2026-11-16, row 0x00A23B50): Ego_r.pdb + FableWin.pdb ?SetTextureBank@CMeshDataBank@@QAEXPBVCGraphicDataBank@@@Z on the
+    // default layout (stores TextureBank +0x3D4); the BASES + CTOR branch already declares it. Declaration only.
+    void SetTextureBank(const CGraphicDataBank* bank);                   // 0x00A23B50
+#endif
 #ifdef FABLE_RETAIL_CMESHDATABANK_SETDP3BUMPENABLE
     // Retail opt-in (wfE7, row 0x00B33B50): FableWin.pdb ?SetDP3BumpEnable@CMeshDataBank@@QAEX_N@Z, out of line at 0x00A23B60 (stores the bool
     // DP3BumpEnable +0x3D8; landed under a placeholder name -- NAME_FIXES.tsv). Declaration only.

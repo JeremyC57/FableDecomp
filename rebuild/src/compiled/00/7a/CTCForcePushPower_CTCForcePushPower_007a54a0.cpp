@@ -19,6 +19,7 @@
 //         CurTimeDelayBetweenCastsFrames +0x20, IgnoreFriendlies +0x24); retail CSpecialAbilitiesForcePushDef::
 //         TimeDelayBetweenCastsSec +0x98 (PDB +0xA4: 4-byte smaller def base, 12-byte vectors).
 #include "fable_compiler.h"
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -90,7 +91,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCInventoryAbilities {
 public:
-    long GetAbilityLevel(long ability);             // 0x005EDE93 (EHeroAbility)
+    long GetAbilityLevel(EHeroAbility ability) const;             // 0x005EDE93 (EHeroAbility)
 };
 
 class CThing {
@@ -152,6 +153,6 @@ CTCForcePushPower::CTCForcePushPower(CThing& parent)
     }
     CGameDefinitionManager::Get().GetDef(index, &PDef);
     if (ParentThing->HasTC(0x6f))
-        SpellLevel = ((CTCInventoryAbilities*)ParentThing->GetTC(0x6f))->GetAbilityLevel(1);
+        SpellLevel = ((CTCInventoryAbilities*)ParentThing->GetTC(0x6f))->GetAbilityLevel(HERO_ABILITY_FORCE_PUSH);
     CurTimeDelayBetweenCastsFrames = (long)(CMainGameComponent::GetConstantFPS() * PDef->TimeDelayBetweenCastsSec._M_start[SpellLevel]);
 }

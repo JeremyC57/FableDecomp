@@ -19,6 +19,7 @@
 //         STLport vector), JustReleased +0x28, SpellDelayFrames +0x2C); retail CSpecialAbilitiesDrainLifeDef::SpellDelaySecs
 //         +0x6C (PDB +0x80: the def base is 4 bytes smaller and the four vectors 12 bytes each).
 #include "fable_compiler.h"
+#include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -82,7 +83,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCInventoryAbilities {
 public:
-    long GetAbilityLevel(long ability);             // 0x005EDE93 (EHeroAbility)
+    long GetAbilityLevel(EHeroAbility ability) const;             // 0x005EDE93 (EHeroAbility)
 };
 
 class CThing {
@@ -143,6 +144,6 @@ CTCDrainLife::CTCDrainLife(CThing& parent)
     CGameDefinitionManager::Get().GetDef(index, &PDef);
     CTCInventoryAbilities* abilities;
     if (ParentThing->GetInterface(&abilities, 0x6f))
-        SpellLevel = abilities->GetAbilityLevel(6);
+        SpellLevel = abilities->GetAbilityLevel(HERO_ABILITY_DRAIN_LIFE_SPELL);
     SpellDelayFrames = (long)(CMainGameComponent::GetConstantFPS() * PDef->SpellDelaySecs);
 }

@@ -1,6 +1,6 @@
 // CSubtitleRenderer::IsInInteractiveState() -- whether the subtitle box is waiting on the player: forced/click flags, a text-complete click-past outside cutscenes, an active casting/fishing-style hero component (0xFC) or a quest-card/gui state
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00490A22, 446 bytes, plain `ret`; /Os frame-pointer TU like the landed siblings 0x00490927/0x0048DB46.
-// Callees: CSubtitleRenderer::IsTextFullyShown? 0x0048E072 (name unconfirmed), IsWaitingForClickPast 0x0048DB46, CPlayerManager::GetMainPlayer 0x00449970,
+// Callees: CSubtitleRenderer::IsTextReadyForClickPast 0x0048E072 (Ego_r.pdb + FableWin.pdb; NF34 respelled the stand-in IsTextFullyShown), IsWaitingForClickPast 0x0048DB46, CPlayerManager::GetMainPlayer 0x00449970,
 //   CPlayer::PeekPControlledCreature 0x00487DD0 / GetPControlledCreature 0x00487DC0, IS_THING_ALIVE<CThing*> 0x0043DBF0, bitset::test 0x00410DE0,
 //   LowerBound const 0x004365B0 / non-const 0x0040F020, front-end predicate 0x00434D60 on CMainGameComponent::Get()+0x28, CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0.
 #include "fable_compiler.h"
@@ -80,7 +80,7 @@ public:
     CFadeInFadeOutBase SkipCutsceneTimer;          // +0xE8
     CFadeInFadeOutBase ButtonPulseTimer;           // +0x104
     bool IsWaitingForClickPast() const;            // 0x0048DB46
-    bool IsTextFullyShown() const;                 // 0x0048E072
+    bool IsTextReadyForClickPast() const;          // 0x0048E072
     bool IsInInteractiveState();
 };
 
@@ -214,8 +214,8 @@ bool CSubtitleRenderer::IsInInteractiveState()
         if (InCutscene)
             return false;
         if (DisplayingText) {
-            if (!((flags & 0x20) && (flags & 2) && IsTextFullyShown() && AllCharactersDisplayed)) {
-                if (!(IsWaitingForClickPast() && IsTextFullyShown() && AllCharactersDisplayed))
+            if (!((flags & 0x20) && (flags & 2) && IsTextReadyForClickPast() && AllCharactersDisplayed)) {
+                if (!(IsWaitingForClickPast() && IsTextReadyForClickPast() && AllCharactersDisplayed))
                     return false;
             }
         } else {

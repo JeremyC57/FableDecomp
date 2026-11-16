@@ -9,7 +9,7 @@
 class C2DVector { public:
     float X, Y;
 };
-float __fastcall Distance2D(const C2DVector& a, const C2DVector& b);   // 0x009E2460
+float __fastcall GFGet2DDistance(const C2DVector& a, const C2DVector& b);   // 0x009E2460 (NF34: Ego_r + FableWin ?GFGet2DDistance@@YIMABVC2DVector@@0@Z)
 class CANavQuadTreeNode { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07();
@@ -38,7 +38,7 @@ private:
 
 float CNavigatorAStar::GetCostFromNodeToNode(const CANavQuadTreeNode* from, const CANavQuadTreeNode* to, bool ignorePreferability) const
 {
-    float distance = Distance2D(from->Position, to->Position);
+    float distance = GFGet2DDistance(from->Position, to->Position);
     float factor = 1.0f;
     if (!ignorePreferability) {
         switch (to->GetPreferabilityCost()) {
