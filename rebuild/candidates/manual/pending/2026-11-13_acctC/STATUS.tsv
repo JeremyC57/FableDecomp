@@ -77,7 +77,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 00648820	PARKED		2026-11-15_acctC_wfE9/open	after workflow unworked/Opus round 3: parked DIFFER(3419v3464); Not reworked in this run: I put the effort into the twins and 0x00931390. It still needs a full port from the local C2DVector / C2DBoxF / CT	parked	CDrawMiniMap::Draw
 00682810	MATCHED_STAGED	3442	2026-11-15_acctC_r6_wfA1b	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CTCCreatureOpinionOfHero::InformOfDeed
 009d9c80	MATCHED_STAGED	3435	2026-11-14_acctC_wfD5	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	CRenderManager2D::DrawBufferedPolys
-00bc8a60	PARKED		2026-11-15_acctC_wfE5/open	after workflow unworked/Opus round 3: parked DIFFER(3394v3416); Re-authored on shared headers from the 0x00BCC800 prelude: 136 masked hunks down to 46, best source in differ/00bc8a60.cpp. These retail-evi	parked	CEnginePrimitiveManagerLines::RenderLine
+00bc8a60	MATCHED_STAGED	3416	2026-11-15_acctC_r6_wfE5n	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CEnginePrimitiveManagerLines::RenderLine
 009d8cf0	MATCHED_STAGED	3385	2026-11-14_acctC_wfD5	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	CRenderManager2D::ClearRenderTarget
 00715a70	MATCHED_STAGED	3356	2026-11-15_acctC_r6_wfD4g	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	NTCScriptedControl::CActionTalkBase::SetUpCamera
 00b1c880	MATCHED_STAGED	3266	2026-11-14_acctC_wfD6	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	parked	NParticleEngine::CPSCDecalRenderer::ReadBinary
