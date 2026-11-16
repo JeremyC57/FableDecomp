@@ -18,6 +18,13 @@
 // for the constant 5; the CArray data is the `size ? first : (T*)this` GetData select; the point count is
 // `(long)(strength * 1024.0f)` through __ftol2.
 #include "fable_compiler.h"
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderManagerCore at offset 0), called
+//   through ?DrawCurrentBuffersAsPointList@CRenderManagerCore@@QAEXJJ@Z 0x00A0AE70 (overlay declaration opt-in; was a local class
+//   CRenderManagerCore / g_pRenderManagerCore).
+#define FABLE_RETAIL_CRENDERMANAGERCORE_DRAWCURRENTBUFFERSASPOINTLIST
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 #include "engine/CEngineWeatherRenderer.h"
 
 #include "engine/C3DVector.h"
@@ -124,11 +131,6 @@ private:
 };
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
-class CRenderManagerCore {
-public:
-    void DrawCurrentBuffersAsPointList(long firstVertex, long pointCount);   // 0x00A0AE70
-};
-extern CRenderManagerCore* g_pRenderManagerCore;        // 0x01436E18
 
 struct CEngineWeatherSettingsView {                     // CEngineWeatherSettings (PDB, 0x558 bytes)
     unsigned char _pad00[0x34];
@@ -149,5 +151,5 @@ void CEngineWeatherRendererMethods::RenderSnowBox(const C3DVector& boxPos)
 {
     NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, boxPos.X, boxPos.Y, boxPos.Z, GetSettings().SnowWeighting);
     NEngineInternal::GPShaderRenderManager->PrepareForRender(5);
-    g_pRenderManagerCore->DrawCurrentBuffersAsPointList(0, (long)(GetSettings().CurrentSnowStrength * 1024.0f));
+    NEngineInternal::GPRenderManager->DrawCurrentBuffersAsPointList(0, (long)(GetSettings().CurrentSnowStrength * 1024.0f));
 }

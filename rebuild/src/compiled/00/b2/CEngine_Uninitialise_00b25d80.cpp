@@ -2,66 +2,17 @@
 // Leaf: Uninitialise
 #include <string.h>
 
-struct IDirect3DBaseTexture9;
-struct IDirect3DDevice9 {
-    virtual void __stdcall Slot000(); virtual void __stdcall Slot001(); virtual void __stdcall Slot002(); virtual void __stdcall Slot003();
-    virtual void __stdcall Slot004(); virtual void __stdcall Slot005(); virtual void __stdcall Slot006(); virtual void __stdcall Slot007();
-    virtual void __stdcall Slot008(); virtual void __stdcall Slot009(); virtual void __stdcall Slot010(); virtual void __stdcall Slot011();
-    virtual void __stdcall Slot012(); virtual void __stdcall Slot013(); virtual void __stdcall Slot014(); virtual void __stdcall Slot015();
-    virtual void __stdcall Slot016(); virtual void __stdcall Slot017(); virtual void __stdcall Slot018(); virtual void __stdcall Slot019();
-    virtual void __stdcall Slot020(); virtual void __stdcall Slot021(); virtual void __stdcall Slot022(); virtual void __stdcall Slot023();
-    virtual void __stdcall Slot024(); virtual void __stdcall Slot025(); virtual void __stdcall Slot026(); virtual void __stdcall Slot027();
-    virtual void __stdcall Slot028(); virtual void __stdcall Slot029(); virtual void __stdcall Slot030(); virtual void __stdcall Slot031();
-    virtual void __stdcall Slot032(); virtual void __stdcall Slot033(); virtual void __stdcall Slot034(); virtual void __stdcall Slot035();
-    virtual void __stdcall Slot036(); virtual void __stdcall Slot037(); virtual void __stdcall Slot038(); virtual void __stdcall Slot039();
-    virtual void __stdcall Slot040(); virtual void __stdcall Slot041(); virtual void __stdcall Slot042(); virtual void __stdcall Slot043();
-    virtual void __stdcall Slot044(); virtual void __stdcall Slot045(); virtual void __stdcall Slot046(); virtual void __stdcall Slot047();
-    virtual void __stdcall Slot048(); virtual void __stdcall Slot049(); virtual void __stdcall Slot050(); virtual void __stdcall Slot051();
-    virtual void __stdcall Slot052(); virtual void __stdcall Slot053(); virtual void __stdcall Slot054(); virtual void __stdcall Slot055();
-    virtual void __stdcall Slot056(); virtual void __stdcall Slot057(); virtual void __stdcall Slot058(); virtual void __stdcall Slot059();
-    virtual void __stdcall Slot060(); virtual void __stdcall Slot061(); virtual void __stdcall Slot062(); virtual void __stdcall Slot063();
-    virtual void __stdcall Slot064();
-    virtual long __stdcall SetTexture(unsigned long stage, IDirect3DBaseTexture9* texture) = 0;   // slot 65 (+0x104)
-    virtual void __stdcall Slot066(); virtual void __stdcall Slot067(); virtual void __stdcall Slot068(); virtual void __stdcall Slot069();
-    virtual void __stdcall Slot070(); virtual void __stdcall Slot071(); virtual void __stdcall Slot072(); virtual void __stdcall Slot073();
-    virtual void __stdcall Slot074(); virtual void __stdcall Slot075(); virtual void __stdcall Slot076(); virtual void __stdcall Slot077();
-    virtual void __stdcall Slot078(); virtual void __stdcall Slot079(); virtual void __stdcall Slot080(); virtual void __stdcall Slot081();
-    virtual void __stdcall Slot082(); virtual void __stdcall Slot083(); virtual void __stdcall Slot084(); virtual void __stdcall Slot085();
-    virtual void __stdcall Slot086(); virtual void __stdcall Slot087(); virtual void __stdcall Slot088(); virtual void __stdcall Slot089();
-    virtual void __stdcall Slot090(); virtual void __stdcall Slot091(); virtual void __stdcall Slot092(); virtual void __stdcall Slot093();
-    virtual void __stdcall Slot094(); virtual void __stdcall Slot095(); virtual void __stdcall Slot096(); virtual void __stdcall Slot097();
-    virtual void __stdcall Slot098(); virtual void __stdcall Slot099();
-    virtual long __stdcall SetStreamSource(unsigned int stream, void* data, unsigned int offset, unsigned int stride) = 0;   // slot 100 (+0x190)
-    virtual void __stdcall Slot101(); virtual void __stdcall Slot102(); virtual void __stdcall Slot103();
-    virtual long __stdcall SetIndices(void* indexData) = 0;   // slot 104 (+0x1a0)
-};
-
-class CRenderManagerCore {
-public:
-    unsigned char          _pad0[0x3cb8];
-    long                   NumTextureStagesUsed;     // +0x3cb8
-    unsigned char          _pad3cbc[0x3cf0 - 0x3cbc];
-    IDirect3DDevice9*      PD3DDevice;               // +0x3cf0
-    void*                  CurrentIndices;           // +0x3cf4
-    unsigned char          _pad3cf8[8];
-    IDirect3DBaseTexture9* CurrentTextures[4];       // +0x3d00
-    void SetIndices(void* indices)
-    {
-        CurrentIndices = indices;
-        PD3DDevice->SetIndices(indices);
-    }
-    void SetTexture(long stage, IDirect3DBaseTexture9* texture)
-    {
-        if (CurrentTextures[stage] != texture) {
-            CurrentTextures[stage] = texture;
-            PD3DDevice->SetTexture(stage, texture);
-        }
-        if (NumTextureStagesUsed < stage + 1)
-            NumTextureStagesUsed = stage + 1;
-    }
-};
-extern CRenderManagerCore* g_pRenderManagerCore;   // 0x01436E18
-
+// NF45 (round 7): the render core 0x01436E18 is NEngineInternal::GPRenderManager (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderManagerCore at offset 0). The local
+//   CRenderManagerCore / IDirect3DDevice9 / CRenderManager models are the shared ones: the stream / index / texture unbinds are the
+//   Ego_r.pdb inline members SelectVertexBuffer(0, 0) (SetStreamSource slot 100), SelectIndexBuffer(0, 0) (PSelectedIndexBuffer
+//   +0x3CF4, SetIndices slot 104) and AttachTextureToStage(stage, 0) (repo FORCEINLINE_HELPERS: CurrentlySelectedTextures +0x3D00,
+//   TextureStagesInUse +0x3CB8, SetTexture slot 65). The 0x01436E78 store is NEngineInternal::GPPrimitiveRendererSharedData
+//   (?GPPrimitiveRendererSharedData@NEngineInternal@@3PAVCEnginePrimitiveRendererSharedData@@A; was g_pEngineComponentGlobal).
+#define FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS
+#include "fable_compiler.h"
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 class CDeviceResetCallback { public:
     virtual void OnPreDeviceReset() = 0;
     virtual bool OnPostDeviceReset() = 0;
@@ -69,10 +20,9 @@ class CDeviceResetCallback { public:
 class CDisplayManager { public:
     void RemoveDeviceResetCallback(CDeviceResetCallback*a0);   // 0x009BF5A0 (Ego_r.pdb ?RemoveDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z)
 };
-class CRenderManager {
-};
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
-extern void* g_pEngineComponentGlobal;              // 0x01436E78
+class CEnginePrimitiveRendererSharedData;
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
 extern void* g_pEngineGlobal_01436eb0;              // 0x01436EB0
 
 template <class T> class CArray { public:                  // STLport vector<T*> (12 bytes)
@@ -134,12 +84,12 @@ void CEngine::Uninitialise()
     if (!IsInitialised)
         return;
     NEngineInternal::GPDisplayManager->RemoveDeviceResetCallback(this);
-    g_pRenderManagerCore->PD3DDevice->SetStreamSource(0, 0, 0, 0);
-    g_pRenderManagerCore->SetIndices(0);
-    g_pRenderManagerCore->SetTexture(0, 0);
-    g_pRenderManagerCore->SetTexture(1, 0);
-    g_pRenderManagerCore->SetTexture(2, 0);
-    g_pRenderManagerCore->SetTexture(3, 0);
+    NEngineInternal::GPRenderManager->SelectVertexBuffer(0, 0);
+    NEngineInternal::GPRenderManager->SelectIndexBuffer(0, 0);
+    NEngineInternal::GPRenderManager->AttachTextureToStage(0, 0);
+    NEngineInternal::GPRenderManager->AttachTextureToStage(1, 0);
+    NEngineInternal::GPRenderManager->AttachTextureToStage(2, 0);
+    NEngineInternal::GPRenderManager->AttachTextureToStage(3, 0);
     while (!EngineComponents.empty()) {
         unsigned long count = EngineComponents.size();
         CEngineComponent* component = EngineComponents.begin()[count - 1];
@@ -147,7 +97,7 @@ void CEngine::Uninitialise()
         if (component)
             delete component;
     }
-    g_pEngineComponentGlobal = 0;
+    NEngineInternal::GPPrimitiveRendererSharedData = 0;
     for (unsigned long i = 0; i < ScratchZBuffersD24S8.size(); ++i)
         delete ScratchZBuffersD24S8[i];
     ScratchZBuffersD24S8.clear();

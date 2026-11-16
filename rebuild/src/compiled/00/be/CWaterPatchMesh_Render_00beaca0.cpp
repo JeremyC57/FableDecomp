@@ -14,7 +14,14 @@
 // device at +0x3cf0; the camera world position is at +0x54 (landed decal RenderPrimitive model). The
 // CShaderRenderManager view is the landed RenderRainBox model (retail layout, UpdateFlags +0x3d8).
 #include "fable_compiler.h"
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderManagerCore at offset 0): the stream bind is
+//   its PDB inline SelectVertexBuffer(0, buffer) (PD3DDevice +0x3CF0, SetStreamSource +0x190) on the shared CVertexBufferWin32, and the
+//   draw ?DrawCurrentBuffersIndexed@CRenderManagerCore@@QAEXKKKK@Z 0x00A0AD40. Was g_pRenderManagerCore with local CRenderManagerCore /
+//   IDirect3DDevice9 / CVertexBufferWin32 models.
+#include "engine/CRenderManager.h"
 #include "engine/CWaterPatchMesh.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
 #include "engine/C3DVector.h"
 class C4DVector { public: float X, Y, Z, W; };
@@ -130,133 +137,11 @@ private:
 };
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
-struct IDirect3DVertexBuffer9;
-struct IDirect3DDevice9 {
-    virtual void __stdcall Slot0() = 0;
-    virtual void __stdcall Slot1() = 0;
-    virtual void __stdcall Slot2() = 0;
-    virtual void __stdcall Slot3() = 0;
-    virtual void __stdcall Slot4() = 0;
-    virtual void __stdcall Slot5() = 0;
-    virtual void __stdcall Slot6() = 0;
-    virtual void __stdcall Slot7() = 0;
-    virtual void __stdcall Slot8() = 0;
-    virtual void __stdcall Slot9() = 0;
-    virtual void __stdcall Slot10() = 0;
-    virtual void __stdcall Slot11() = 0;
-    virtual void __stdcall Slot12() = 0;
-    virtual void __stdcall Slot13() = 0;
-    virtual void __stdcall Slot14() = 0;
-    virtual void __stdcall Slot15() = 0;
-    virtual void __stdcall Slot16() = 0;
-    virtual void __stdcall Slot17() = 0;
-    virtual void __stdcall Slot18() = 0;
-    virtual void __stdcall Slot19() = 0;
-    virtual void __stdcall Slot20() = 0;
-    virtual void __stdcall Slot21() = 0;
-    virtual void __stdcall Slot22() = 0;
-    virtual void __stdcall Slot23() = 0;
-    virtual void __stdcall Slot24() = 0;
-    virtual void __stdcall Slot25() = 0;
-    virtual void __stdcall Slot26() = 0;
-    virtual void __stdcall Slot27() = 0;
-    virtual void __stdcall Slot28() = 0;
-    virtual void __stdcall Slot29() = 0;
-    virtual void __stdcall Slot30() = 0;
-    virtual void __stdcall Slot31() = 0;
-    virtual void __stdcall Slot32() = 0;
-    virtual void __stdcall Slot33() = 0;
-    virtual void __stdcall Slot34() = 0;
-    virtual void __stdcall Slot35() = 0;
-    virtual void __stdcall Slot36() = 0;
-    virtual void __stdcall Slot37() = 0;
-    virtual void __stdcall Slot38() = 0;
-    virtual void __stdcall Slot39() = 0;
-    virtual void __stdcall Slot40() = 0;
-    virtual void __stdcall Slot41() = 0;
-    virtual void __stdcall Slot42() = 0;
-    virtual void __stdcall Slot43() = 0;
-    virtual void __stdcall Slot44() = 0;
-    virtual void __stdcall Slot45() = 0;
-    virtual void __stdcall Slot46() = 0;
-    virtual void __stdcall Slot47() = 0;
-    virtual void __stdcall Slot48() = 0;
-    virtual void __stdcall Slot49() = 0;
-    virtual void __stdcall Slot50() = 0;
-    virtual void __stdcall Slot51() = 0;
-    virtual void __stdcall Slot52() = 0;
-    virtual void __stdcall Slot53() = 0;
-    virtual void __stdcall Slot54() = 0;
-    virtual void __stdcall Slot55() = 0;
-    virtual void __stdcall Slot56() = 0;
-    virtual void __stdcall Slot57() = 0;
-    virtual void __stdcall Slot58() = 0;
-    virtual void __stdcall Slot59() = 0;
-    virtual void __stdcall Slot60() = 0;
-    virtual void __stdcall Slot61() = 0;
-    virtual void __stdcall Slot62() = 0;
-    virtual void __stdcall Slot63() = 0;
-    virtual void __stdcall Slot64() = 0;
-    virtual void __stdcall Slot65() = 0;
-    virtual void __stdcall Slot66() = 0;
-    virtual void __stdcall Slot67() = 0;
-    virtual void __stdcall Slot68() = 0;
-    virtual void __stdcall Slot69() = 0;
-    virtual void __stdcall Slot70() = 0;
-    virtual void __stdcall Slot71() = 0;
-    virtual void __stdcall Slot72() = 0;
-    virtual void __stdcall Slot73() = 0;
-    virtual void __stdcall Slot74() = 0;
-    virtual void __stdcall Slot75() = 0;
-    virtual void __stdcall Slot76() = 0;
-    virtual void __stdcall Slot77() = 0;
-    virtual void __stdcall Slot78() = 0;
-    virtual void __stdcall Slot79() = 0;
-    virtual void __stdcall Slot80() = 0;
-    virtual void __stdcall Slot81() = 0;
-    virtual void __stdcall Slot82() = 0;
-    virtual void __stdcall Slot83() = 0;
-    virtual void __stdcall Slot84() = 0;
-    virtual void __stdcall Slot85() = 0;
-    virtual void __stdcall Slot86() = 0;
-    virtual void __stdcall Slot87() = 0;
-    virtual void __stdcall Slot88() = 0;
-    virtual void __stdcall Slot89() = 0;
-    virtual void __stdcall Slot90() = 0;
-    virtual void __stdcall Slot91() = 0;
-    virtual void __stdcall Slot92() = 0;
-    virtual void __stdcall Slot93() = 0;
-    virtual void __stdcall Slot94() = 0;
-    virtual void __stdcall Slot95() = 0;
-    virtual void __stdcall Slot96() = 0;
-    virtual void __stdcall Slot97() = 0;
-    virtual void __stdcall Slot98() = 0;
-    virtual void __stdcall Slot99() = 0;
-    virtual long __stdcall SetStreamSource(unsigned int stream, IDirect3DVertexBuffer9* data, unsigned int offset,
-                                           unsigned int stride) = 0;    // slot 100
-};
-
-class CRenderManagerCore {
-public:
-    void DrawCurrentBuffersIndexed(unsigned long minVertexIndex, unsigned long vertexCount, unsigned long startIndex,
-                                   unsigned long primitiveCount);   // 0x00A0AD40
-    unsigned char _pad0[0x3cf0];
-    IDirect3DDevice9* PD3DDevice;                       // +0x3cf0
-};
-extern CRenderManagerCore* g_pRenderManagerCore;        // 0x01436E18
-
 class CEngineCamera { public:
     unsigned char _pad0[0x54];
     C3DVector WorldPosition;                            // +0x54
 };
 namespace NEngineInternal { extern CEngineCamera* GPCamera; }                  // 0x01436EA0
-
-class CVertexBufferWin32 { public:
-    void* _vptr;                                        // +0x00
-    IDirect3DVertexBuffer9* PVertexBuffer;              // +0x04
-    unsigned char _pad8[8];
-    unsigned char Stride;                               // +0x10
-};
 
 struct CWaterPatchMesh_Methods : CWaterPatchMesh {
     void Render(long triangleCount) const;
@@ -272,11 +157,7 @@ void CWaterPatchMesh_Methods::Render(long triangleCount) const
     transform.Position.Y = camera->WorldPosition.Y;
     transform.Position.Z = camera->WorldPosition.Z;
     NEngineInternal::GPShaderRenderManager->SetWorldTransform(transform);
-    CVertexBufferWin32* vertexBuffer = VertexBuffer;
-    if (vertexBuffer)
-        g_pRenderManagerCore->PD3DDevice->SetStreamSource(0, vertexBuffer->PVertexBuffer, 0, vertexBuffer->Stride);
-    else
-        g_pRenderManagerCore->PD3DDevice->SetStreamSource(0, 0, 0, 0);
+    NEngineInternal::GPRenderManager->SelectVertexBuffer(0, VertexBuffer);
     NEngineInternal::GPShaderRenderManager->PrepareForRender(5);
-    g_pRenderManagerCore->DrawCurrentBuffersIndexed(0, 0x121, 0, triangleCount);
+    NEngineInternal::GPRenderManager->DrawCurrentBuffersIndexed(0, 0x121, 0, triangleCount);
 }

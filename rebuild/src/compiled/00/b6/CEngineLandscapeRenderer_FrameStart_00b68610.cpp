@@ -16,36 +16,18 @@
 // Shape: the capture-block push must index through a `long&` to the stack size but increment the MEMBER (`StateStackSize++`)
 //   before shifting the mask: the first inlined copy then reloads/increments the size in ebx (`++size` through the reference
 //   gives `inc dword ptr [ecx]`, the member increment after the shift picks edi). The same inline matches 0x00B6B0B0.
-struct CStateInfo { unsigned char _body[0x14]; };
-struct CStateStackElement { CStateInfo* State; unsigned long Value; };
-class CRenderStateManager { public:
-    void*              __vftable;            // +0x00
-    void*              PD3DDevice;           // +0x04
-    CStateStackElement StateStack[1024];     // +0x08
-    CStateInfo*        StateUpdateList[256]; // +0x2008
-    CStateInfo*        AllStatesList[256];   // +0x2408
-    long               StateStackSize;       // +0x2808
-    long               StateUpdateListSize;  // +0x280c
-    long               AllStatesListSize;    // +0x2810
-    unsigned long      CurrentBookmarkMask;  // +0x2814
-    unsigned char      DeviceState[0x3a24 - 0x2818];   // +0x2818 CDeviceState
-    CStateInfo         BookmarkDummyState;   // +0x3a24
-    void CreateCaptureBlock()
-    {
-        long& size = StateStackSize;
-        StateStack[size].State = &BookmarkDummyState;
-        StateStackSize++;
-        CurrentBookmarkMask <<= 1;
-    }
-    void RestoreCaptureBlock();              // 0x00A05840
-};
-extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
-
-struct SRenderSettings_01436e60 {
-    unsigned char _pad[0x334];
-    long          m_clothMode;                     // +0x334
-};
-extern SRenderSettings_01436e60* g_pRenderSettings_01436e60;   // 0x01436E60
+// NF45 (round 7): 0x01436E60 is NEngineInternal::GPShadowRenderer (Ego_r.pdb / FableWin.pdb
+//   ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A) and +0x334 its RenderingTechnique, read through the FableWin.pdb inline
+//   PeekRenderingTechnique() (engine/CEngineShadowRenderer.h _MEMBERS, as the landed 0x00B99B50); the two capture-block pushes and
+//   restores on 0x013CB508 are two CRenderStateScopedCaptureBlock objects (engine/CRenderStateCaptureBlock.h, the header's inline
+//   StartCaptureBlock; RestoreCaptureBlock 0x00A05840 in their destructors). Was SRenderSettings_01436e60 / g_pRenderSettings_01436e60 and a
+//   local CRenderStateManager / CStateInfo / CStateStackElement model with g_pRenderStateManager.
+#define FABLE_RETAIL_CENGINESHADOWRENDERER
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_MEMBERS
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
+#include "engine/CEngineShadowRenderer.h"
+#include "engine/CRenderStateCaptureBlock.h"
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 
 double __fastcall GFGetFastSubFrameTimer();        // 0x009E1C70
 
@@ -111,7 +93,7 @@ void CEngineLandscapeRenderer::FrameStart(const CEngineComponentParams& params)
 {
     if (!Enabled)
         return;
-    if (g_pRenderSettings_01436e60->m_clothMode == 2) {
+    if (NEngineInternal::GPShadowRenderer->PeekRenderingTechnique() == CEngineShadowRenderer::SHADOW_RENDERING_TECHNIQUE_COLOUR_BUFFER) {
         Current5a0[0] = C588;
         Current5a0[1] = C590;
         Current544[0] = B520;
@@ -127,8 +109,8 @@ void CEngineLandscapeRenderer::FrameStart(const CEngineComponentParams& params)
     if (!params.UpdateLandscape)
         return;
     MemoryManager->FrameStart();
-    g_pRenderStateManager->CreateCaptureBlock();
-    g_pRenderStateManager->CreateCaptureBlock();
+    CRenderStateScopedCaptureBlock capture_block_1;
+    CRenderStateScopedCaptureBlock capture_block_2;
     double time = GFGetFastSubFrameTimer() + TimeOffset;
     CEngineMapList& maps = NEngineInternal::GPEngineWorldMap->VisibleMapList;
     if (UpdateBackgroundLODs)
@@ -140,6 +122,4 @@ void CEngineLandscapeRenderer::FrameStart(const CEngineComponentParams& params)
     for (_List_iterator it = maps.begin(); it != maps.end(); ++it)
         (*it)->LandscapeMap->UpdateForeground();
     LoadForegroundTextures(false);
-    g_pRenderStateManager->RestoreCaptureBlock();
-    g_pRenderStateManager->RestoreCaptureBlock();
 }

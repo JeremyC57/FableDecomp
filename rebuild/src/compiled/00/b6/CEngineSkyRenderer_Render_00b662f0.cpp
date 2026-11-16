@@ -8,6 +8,23 @@
 // Layout: engine/CEngineSkyRenderer.h; CEngineCameraDesc / CEngineCamera / CEngineLightingManager members from the PDB
 //   (struct_layouts_egor.tsv): CameraDesc at camera +0x14, SunVector at lighting manager +0x18.
 #include "fable_compiler.h"
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderManagerCore / CRenderStateManager at
+//   offset 0): the shared inline setters FogEnable(false) +0x2944, DitherEnable(true) +0x2A0C and ZBufferEnable(true) +0x2868; the
+//   capture open / RestoreCaptureBlock pair on 0x013CB508 is a CRenderStateScopedCaptureBlock (engine/CRenderStateCaptureBlock.h).
+//   0x01436E5C is NEngineInternal::GPOcclusionManager (?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A,
+//   engine/CEngineOcclusionManager.h) and the 0x00B8D040 stub is ?AddFlareTest@CEngineOcclusionManager@@QAEXKABVC3DVector@@MJ@Z
+//   (overlay declaration opt-in; Ego_r donor delta, see the header). Was a local CRenderManagerCoreView / CRenderStateManager /
+//   CTrackedRenderState model with g_pRenderManagerCore / g_pRenderStateManager, and g_pRenderer_01436e5c->DrawDebugSphere on a
+//   local CEngineRendererView.
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
+#define FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_ADDFLARETEST
+#include "engine/CRenderManager.h"
+#include "engine/CRenderStateCaptureBlock.h"
+#include "engine/C3DVector.h"
+#include "engine/CEngineOcclusionManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }   // 0x01436E5C
 #include "engine/CEngineSkyRenderer.h"
 
 #include "engine/C3DVector.h"
@@ -38,10 +55,6 @@ class CEngineLightingManager { public:
     C3DVector     SunVector;                             // +0x18
 };
 namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
-struct CEngineRendererView {
-    void DrawDebugSphere(unsigned long flags, const C3DVector& pos, float radius, unsigned long colour);   // 0x00B8D040
-};
-extern CEngineRendererView* g_pRenderer_01436e5c;        // 0x01436E5C
 extern float g_skyZBufferStart_0139a704;                 // 0x0139A704
 
 struct CEngineInterpolationInfoSet { float GTPredictedRenderAt, GTPredictedTimeSinceLastRenderFrame, WFInterpolate; };
@@ -54,79 +67,7 @@ class CEngineComponentRenderParams { public:
     long                    RenderLayer;                 // +0x04
     unsigned long           RenderLayerFlags;            // +0x08
 };
-struct CTrackedRenderState {                       // 0x14 bytes
-    long          m_stateId;                       // +0x00
-    unsigned long m_value;                         // +0x04 requested value
-    unsigned long m_captureMask;                   // +0x08
-    long          m_appliedValue;                  // +0x0C
-    bool          m_queued;                        // +0x10
-    FABLE_FORCEINLINE void Set(unsigned long value);
-};
-struct SCapturedRenderState {
-    CTrackedRenderState* m_pState;                 // +0x00
-    unsigned long        m_priorValue;             // +0x04
-};
-class CRenderStateManager
-{
-public:
-    void RestoreCaptureBlock();   // 0x00A05840
-};
 
-struct CRenderManagerCoreView : public CRenderStateManager {                    // the render manager core @ 0x01436E18 / 0x013CB508
-    unsigned char        _pad0000[0x8];
-    SCapturedRenderState m_captured[0x400];        // +0x0008
-    CTrackedRenderState* m_dirty[0x200];           // +0x2008
-    long                 m_capturedCount;          // +0x2808
-    long                 m_dirtyCount;             // +0x280C
-    long                 m_unknown2810;            // +0x2810
-    unsigned long        m_captureMask;            // +0x2814
-    unsigned char        _pad2818[0x2868 - 0x2818];
-    CTrackedRenderState  m_state2868;              // +0x2868
-    unsigned char        _pad287c[0x2944 - 0x287c];
-    CTrackedRenderState  m_state2944;              // +0x2944
-    unsigned char        _pad2958[0x2a0c - 0x2958];
-    CTrackedRenderState  m_state2a0c;              // +0x2A0C
-    unsigned char        _pad2a20[0x3a24 - 0x2a20];
-    unsigned char        m_captureBlockMarker[4];  // +0x3A24
-
-    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
-    {
-        if ((m_captureMask & state.m_captureMask) == 0) {
-            state.m_captureMask |= m_captureMask;
-            m_captured[m_capturedCount].m_pState = &state;
-            m_captured[m_capturedCount].m_priorValue = state.m_value;
-            ++m_capturedCount;
-        }
-        state.m_value = value;
-        if (!state.m_queued) {
-            state.m_queued = true;
-            m_dirty[m_dirtyCount] = &state;
-            ++m_dirtyCount;
-        }
-    }
-    FABLE_FORCEINLINE void OpenCaptureBlock()
-    {
-        m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
-        m_captureMask <<= 1;
-    }
-    void DrawCurrentBuffersIndexed(unsigned long baseVertex, unsigned long vertexCount,
-                                   unsigned long startIndex, unsigned long primitiveCount);   // 0x00A0AD40
-};
-extern CRenderManagerCoreView* g_pRenderStateManager;  // 0x013CB508
-extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
-
-FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
-{
-    if (m_value != value)
-        g_pRenderManagerCore->ChangeState(*this, value);
-}
-
-
-static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
-{
-    if (state.m_value != value)
-        core->ChangeState(state, value);
-}
 struct CEngineSkyRenderer_Methods : CEngineSkyRenderer {
     void RenderSunFlare();                                                       // 0x00B64550
     void RenderSky(float interpolate, const C3DVector* cameraPos, bool reflection);   // 0x00B66190
@@ -135,9 +76,9 @@ struct CEngineSkyRenderer_Methods : CEngineSkyRenderer {
 
 void CEngineSkyRenderer_Methods::Render(const CEngineComponentRenderParams& params)
 {
-    g_pRenderStateManager->OpenCaptureBlock();
-    SetState(g_pRenderManagerCore->m_state2944, 0, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state2a0c, 1, g_pRenderManagerCore);
+    CRenderStateScopedCaptureBlock capture_block;
+    NEngineInternal::GPRenderManager->SetFogEnable(false);
+    NEngineInternal::GPRenderManager->SetDitherEnable(true);
     if (params.RenderLayer == 0x400000) {
         RenderSunFlare();
     } else {
@@ -152,13 +93,12 @@ void CEngineSkyRenderer_Methods::Render(const CEngineComponentRenderParams& para
         skyDesc.WorldPosition.Y = 0.0f;
         skyDesc.WorldPosition.Z = 0.0f;
         NEngineInternal::GPCamera->SetCameraState(&skyDesc, false, true);
-        SetState(g_pRenderManagerCore->m_state2868, 1, g_pRenderManagerCore);
+        NEngineInternal::GPRenderManager->SetZBufferEnable(true);
         RenderSky(interpolate, &NEngineInternal::GPCamera->CameraDesc.WorldPosition, false);
         NEngineInternal::GPCamera->SetCameraState(&savedDesc, false, true);
         C3DVector sun = NEngineInternal::GPLightingManager->SunVector;
         float distance = NEngineInternal::GPCamera->CameraDesc.FarZPlane * 0.099f;
         C3DVector pos = sun * distance + NEngineInternal::GPCamera->CameraDesc.WorldPosition;
-        g_pRenderer_01436e5c->DrawDebugSphere(0x1000000, pos, distance * 0.15f, 0x20);
+        NEngineInternal::GPOcclusionManager->AddFlareTest(0x1000000, pos, distance * 0.15f, 0x20);
     }
-    g_pRenderStateManager->RestoreCaptureBlock();
 }

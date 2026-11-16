@@ -22,67 +22,14 @@
 //   through a lookup table and call the private SetRenderState(value, state) (modelled here with the looked-up value); the
 //   bookmark test reads the manager mask first, and the dirty flag is tested before the new value is stored.
 #include "fable_compiler.h"
-#define CRenderStateManager CRenderStateManagerLayout
-#include "engine/CRenderStateManager.h"
-#undef CRenderStateManager
-
-extern unsigned long g_renderStateValue_01396dc8;   // 0x01396DC8 texture address-mode table entry (D3DTADDRESS_WRAP)
-extern unsigned long g_renderStateValue_01396e60;   // 0x01396E60 texture filter-mode table entry (D3DTEXF_ANISOTROPIC)
-
-class CRenderStateManager : public CRenderStateManagerLayout {
-public:
-    struct CStateInfo {                                // 0x14 bytes
-        unsigned long CurrentState;                    // +0x00
-        unsigned long DesiredState;                    // +0x04
-        unsigned long BookmarkMask;                    // +0x08
-        unsigned long StateId;                         // +0x0C (union)
-        bool          DirtyListFlag;                   // +0x10
-        unsigned char StateType;                       // +0x11
-        unsigned char TextureStage;                    // +0x12
-    };
-    struct CStateStackElement {
-        CStateInfo*   State;                           // +0x00
-        unsigned long Value;                           // +0x04
-    };
-    struct CDeviceState {
-        unsigned char _pad000[0x6cc];
-        CStateInfo    TextureUVModeU[8];               // +0x6CC
-        CStateInfo    TextureUVModeV[8];               // +0x76C
-        unsigned char _pad80c[0x8ac - 0x80c];
-        CStateInfo    TextureFilterModeMin[8];         // +0x8AC
-    };
-    CStateStackElement* GetStateStack() { return reinterpret_cast<CStateStackElement*>(StateStack); }
-    CDeviceState& GetDeviceState() { return *reinterpret_cast<CDeviceState*>(DeviceState); }
-
-    FABLE_FORCEINLINE void SetTextureUVModeU(long stage, const unsigned long& d3dValue) { SetRenderState(d3dValue, GetDeviceState().TextureUVModeU[stage]); }
-    FABLE_FORCEINLINE void SetTextureUVModeV(long stage, const unsigned long& d3dValue) { SetRenderState(d3dValue, GetDeviceState().TextureUVModeV[stage]); }
-    FABLE_FORCEINLINE void SetTextureFilterModeMin(long stage, const unsigned long& d3dValue) { SetRenderState(d3dValue, GetDeviceState().TextureFilterModeMin[stage]); }
-private:
-    FABLE_FORCEINLINE void SetRenderState(unsigned long value, CStateInfo& state)
-    {
-        if (state.DesiredState != value) {
-            if ((CurrentBookmarkMask & state.BookmarkMask) == 0) {
-                state.BookmarkMask |= CurrentBookmarkMask;
-                GetStateStack()[StateStackSize].State = &state;
-                GetStateStack()[StateStackSize].Value = state.DesiredState;
-                ++StateStackSize;
-            }
-            state.DesiredState = value;
-            AddStateToUpdateList(state);
-        }
-    }
-    FABLE_FORCEINLINE void AddStateToUpdateList(CStateInfo& state)
-    {
-        if (!state.DirtyListFlag) {
-            state.DirtyListFlag = true;
-            StateUpdateList[StateUpdateListSize] = reinterpret_cast< ::CStateInfo*>(&state);
-            ++StateUpdateListSize;
-        }
-    }
-};
-class CRenderManagerCore : public CRenderStateManager {
-};
-extern CRenderManagerCore* g_pRenderManagerCore;   // 0x01436E18
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderStateManager at offset 0), and the three
+//   states are the shared inline CRenderStateManager setters with their engine enums: stage 1 TextureUVModeU / TextureUVModeV
+//   [TEXTURE_UV_WRAP] through D3DTextureUVModeTable 0x01396DC8 and TextureFilterModeMin [TEXTURE_FILTER_ANISOTROPIC] through
+//   D3DTextureFilterModeTable 0x01396E58 (+8). Was a CRenderStateManager model derived from the header under a renaming macro, an
+//   empty local CRenderManagerCore, g_pRenderManagerCore and the address-named g_renderStateValue_01396dc8 / _01396e60.
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
 #define CEngineLandscapeRenderer CEngineLandscapeRendererLayout
 #include "engine/CEngineLandscapeRenderer.h"
@@ -94,7 +41,7 @@ private:
 
 void CEngineLandscapeRenderer::SetupForegroundStates()
 {
-    g_pRenderManagerCore->SetTextureUVModeU(1, g_renderStateValue_01396dc8);
-    g_pRenderManagerCore->SetTextureUVModeV(1, g_renderStateValue_01396dc8);
-    g_pRenderManagerCore->SetTextureFilterModeMin(1, g_renderStateValue_01396e60);
+    NEngineInternal::GPRenderManager->SetTextureUVModeU(1, TEXTURE_UV_WRAP);
+    NEngineInternal::GPRenderManager->SetTextureUVModeV(1, TEXTURE_UV_WRAP);
+    NEngineInternal::GPRenderManager->SetTextureFilterModeMin(1, TEXTURE_FILTER_ANISOTROPIC);
 }

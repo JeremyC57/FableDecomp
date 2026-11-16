@@ -55,11 +55,13 @@ public:
     bool          ZBufferWritable;                  // +0xa8
 };
 
-struct CEngineSettings_01436e38 {
-    unsigned char _pad[0xef];
-    bool          DisplacementPassEnabled;          // +0xef (descriptive)
-};
-extern CEngineSettings_01436e38* g_pEngineSettings_01436e38;   // 0x01436E38
+// NF45 (round 7): 0x01436E38 is NEngineInternal::GPScreenEffectDisplacementRenderer (Ego_r.pdb / FableWin.pdb
+//   ?GPScreenEffectDisplacementRenderer@NEngineInternal@@3PAVCEngineScreenEffectDisplacementRenderer@@A) and its +0xEF byte is
+//   Enable3DDisplacement, read through the FableWin.pdb inline GetEnable3DDisplacement() (engine/CEngineScreenEffectDisplacementRenderer.h
+//   repo opt-in _GETENABLE3D); was the address-named CEngineSettings_01436e38 / g_pEngineSettings_01436e38 view.
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_GETENABLE3D
+#include "engine/CEngineScreenEffectDisplacementRenderer.h"
+namespace NEngineInternal { extern CEngineScreenEffectDisplacementRenderer* GPScreenEffectDisplacementRenderer; }   // 0x01436E38
 
 class CEngineSubPrimitiveRenderer {
 public:
@@ -92,7 +94,7 @@ ERendered CEnginePrimitiveManagerParticleGroup::RenderPrimitive(CEngineInternalP
                     position.Z - NEngineInternal::GPCamera->WorldPosition.Z);
     float distance = (float)sqrt(delta.X * delta.X + delta.Y * delta.Y + delta.Z * delta.Z);
     if (group.ScreenDisplacement) {
-        if (g_pEngineSettings_01436e38->DisplacementPassEnabled) {
+        if (NEngineInternal::GPScreenEffectDisplacementRenderer->GetEnable3DDisplacement()) {
             g_pEngineSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)5, subPrimitive, distance, (CEnginePrimitiveManager*)this);
             CEngineSubPrimitiveParticleGroup* displacement = new CEngineSubPrimitiveParticleGroup(primitive);
             displacement->RenderFlags = 0;

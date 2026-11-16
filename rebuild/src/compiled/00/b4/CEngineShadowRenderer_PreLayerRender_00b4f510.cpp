@@ -7,10 +7,26 @@
 // The z offsets are read through the shadow renderer global 0x01436E60, not `this`.
 // Layout: engine/CEngineShadowRenderer.h (ShadowBufferRenderStateCaptureBlock +0x24c, RenderTarget +0x2c4,
 //   ShadowBufferTexture +0x2e8, RenderingTechnique +0x334); the projection matrix sits in SceneData at +0x4c.
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_SHADOWBUFFERRENDERSTATECAPTUREBLOCK
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_CAPTURE_INLINE
+#define FABLE_RETAIL_CRENDERSTATEMANAGER_SETDEPTHOFFSET_INLINE
+#define FABLE_RETAIL_CRENDERSTATEMANAGER_SETSLOPESCALEDDEPTHOFFSET_INLINE
+#define FABLE_RETAIL_CRENDERSTATEMANAGER_OUTLINE_INLINE
+#define FABLE_RETAIL_CTEXTURE_EXTENTS_INLINE
 #include "fable_compiler.h"
 #include "engine/CEngineShadowRenderer.h"
 
-class C2DExtentsI { public: unsigned long Width; unsigned long Height; };
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h): the local CRenderManagerCoreView / SetState /
+//   ChangeState model is the shared inline CRenderStateManager setters: +0x2B60 DepthOffset / +0x2B74 DepthOffsetSlope
+//   (SetDepthOffset / SetSlopeScaledDepthOffset, overlay inline opt-ins, the float's bits), +0x2840 ColourWriteEnable(false) (repo
+//   OUTLINE_INLINE), +0x28CC AlphaTestEnable, +0x28E0 AlphaRef. The window is CRenderManagerCore::SetAWindow(const C2DBoxF&)
+//   0x00A0AA80 (was a pointer overload on the stand-in). The capture push on 0x013CB508 is
+//   ShadowBufferRenderStateCaptureBlock.Capture() (CRenderStateCaptureBlock::StateManager, repo CAPTURE_INLINE; overlay opt-in types
+//   the +0x24C member; was g_pRenderStateManager). The shadow-buffer extents are the shared CTexture::GetWidth / GetHeight (repo
+//   EXTENTS_INLINE; GetDimensions 0x009F9DB0) and C2DExtentsI (was a local CTextureView / C2DExtentsI).
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 class C2DBoxF { public: float X0, Y0, X1, Y1; };
 class CMatrix3x4 { public: float M[12]; };
 class CMatrix4x4 { public: float M[16]; };
@@ -18,9 +34,6 @@ class CRGBColour { public:
     unsigned char B, G, R, A;
 };
 class CRenderTarget;
-struct CTextureView {
-    C2DExtentsI GetDimensions(long level) const;        // 0x009F9DB0
-};
 class CDisplayManager { public:
     void SetRenderTarget(CRenderTarget* target);        // 0x009BF160
     void ClearRenderTarget(const CRGBColour* colour, unsigned long flags);   // 0x009BE420
@@ -38,88 +51,6 @@ class CEngineComponentRenderParams { public:
     long          RenderLayer;                          // +0x04
     unsigned long RenderLayerFlags;                     // +0x08
 };
-struct CTrackedRenderState {                       // 0x14 bytes
-    long          m_stateId;                       // +0x00
-    unsigned long m_value;                         // +0x04 requested value
-    unsigned long m_captureMask;                   // +0x08
-    long          m_appliedValue;                  // +0x0C
-    bool          m_queued;                        // +0x10
-    FABLE_FORCEINLINE void Set(unsigned long value);
-};
-struct SCapturedRenderState {
-    CTrackedRenderState* m_pState;                 // +0x00
-    unsigned long        m_priorValue;             // +0x04
-};
-struct CRenderManagerCoreView {                    // the render manager core @ 0x01436E18 / 0x013CB508
-    unsigned char        _pad0000[0x8];
-    SCapturedRenderState m_captured[0x400];        // +0x0008
-    CTrackedRenderState* m_dirty[0x200];           // +0x2008
-    long                 m_capturedCount;          // +0x2808
-    long                 m_dirtyCount;             // +0x280C
-    long                 m_unknown2810;            // +0x2810
-    unsigned long        m_captureMask;            // +0x2814
-    unsigned char        _pad2818[0x2840 - 0x2818];
-    CTrackedRenderState  m_state2840;              // +0x2840
-    unsigned char        _pad2854[0x28cc - 0x2854];
-    CTrackedRenderState  m_state28cc;              // +0x28CC
-    CTrackedRenderState  m_state28e0;              // +0x28E0
-    unsigned char        _pad28f4[0x2b60 - 0x28f4];
-    CTrackedRenderState  m_state2b60;              // +0x2B60
-    CTrackedRenderState  m_state2b74;              // +0x2B74
-    unsigned char        _pad2b88[0x3a24 - 0x2b88];
-    unsigned char        m_captureBlockMarker[4];  // +0x3A24
-
-    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
-    {
-        if ((m_captureMask & state.m_captureMask) == 0) {
-            state.m_captureMask |= m_captureMask;
-            m_captured[m_capturedCount].m_pState = &state;
-            m_captured[m_capturedCount].m_priorValue = state.m_value;
-            ++m_capturedCount;
-        }
-        state.m_value = value;
-        if (!state.m_queued) {
-            state.m_queued = true;
-            m_dirty[m_dirtyCount] = &state;
-            ++m_dirtyCount;
-        }
-    }
-    FABLE_FORCEINLINE void OpenCaptureBlock()
-    {
-        m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
-        m_captureMask <<= 1;
-    }
-    void RestoreCaptureBlock();                    // 0x00A05840
-    void SetAWindow(const C2DBoxF* window);        // 0x00A0AA80
-};
-extern CRenderManagerCoreView* g_pRenderStateManager;  // 0x013CB508
-extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
-
-FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
-{
-    if (m_value != value)
-        g_pRenderManagerCore->ChangeState(*this, value);
-}
-
-static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
-{
-    if (state.m_value != value) {
-        if ((core->m_captureMask & state.m_captureMask) == 0) {
-            state.m_captureMask |= core->m_captureMask;
-            core->m_captured[core->m_capturedCount].m_pState = &state;
-            core->m_captured[core->m_capturedCount].m_priorValue = state.m_value;
-            ++core->m_capturedCount;
-        }
-        state.m_value = value;
-        if (!state.m_queued) {
-            state.m_queued = true;
-            core->m_dirty[core->m_dirtyCount] = &state;
-            ++core->m_dirtyCount;
-        }
-    }
-}
-
-static FABLE_FORCEINLINE unsigned long FloatBits(float value) { return *(unsigned long*)&value; }
 
 static FABLE_FORCEINLINE void SetWindowSize(C2DBoxF& window, unsigned long width, unsigned long height)
 {
@@ -135,10 +66,9 @@ struct CEngineShadowRenderer_Methods : CEngineShadowRenderer {
 void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderParams& params)
 {
     if (*(long*)RenderingTechnique != 0 && params.RenderLayer == 2) {
-        *(bool*)ShadowBufferRenderStateCaptureBlock = true;
-        g_pRenderStateManager->OpenCaptureBlock();
-        SetState(g_pRenderManagerCore->m_state2b60, FloatBits(NEngineInternal::GPShadowRenderer->ShadowProjectionZOffset), g_pRenderManagerCore);
-        SetState(g_pRenderManagerCore->m_state2b74, FloatBits(NEngineInternal::GPShadowRenderer->ShadowProjectionZSlopeOffset), g_pRenderManagerCore);
+        ShadowBufferRenderStateCaptureBlock.Capture();
+        NEngineInternal::GPRenderManager->SetDepthOffset(NEngineInternal::GPShadowRenderer->ShadowProjectionZOffset);
+        NEngineInternal::GPRenderManager->SetSlopeScaledDepthOffset(NEngineInternal::GPShadowRenderer->ShadowProjectionZSlopeOffset);
         NEngineInternal::GPDisplayManager->SetRenderTarget((CRenderTarget*)RenderTarget);
         if (*(long*)RenderingTechnique == 1) {
             CRGBColour white;
@@ -147,7 +77,7 @@ void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderP
             white.B = 0xff;
             white.A = 0xff;
             NEngineInternal::GPDisplayManager->ClearRenderTarget(&white, 1);
-            SetState(g_pRenderManagerCore->m_state2840, 0, g_pRenderManagerCore);
+            NEngineInternal::GPRenderManager->SetColourWriteEnable(false);
         } else {
             CRGBColour white;
             white.R = 0xff;
@@ -157,11 +87,11 @@ void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderP
             NEngineInternal::GPDisplayManager->ClearRenderTarget(&white, 5);
         }
         C2DBoxF window;
-        SetWindowSize(window, ((CTextureView*)ShadowBufferTexture)->GetDimensions(0).Width,
-                      ((CTextureView*)ShadowBufferTexture)->GetDimensions(0).Height);
-        g_pRenderManagerCore->SetAWindow(&window);
-        SetState(g_pRenderManagerCore->m_state28cc, 1, g_pRenderManagerCore);
-        SetState(g_pRenderManagerCore->m_state28e0, 0x80, g_pRenderManagerCore);
+        SetWindowSize(window, reinterpret_cast<const CTexture*>(ShadowBufferTexture)->GetWidth(0),
+                      reinterpret_cast<const CTexture*>(ShadowBufferTexture)->GetHeight(0));
+        NEngineInternal::GPRenderManager->SetAWindow(window);
+        NEngineInternal::GPRenderManager->SetAlphaTestEnable(true);
+        NEngineInternal::GPRenderManager->SetAlphaRef(0x80);
         CMatrix3x4 identity;
         identity.M[11] = 0.0f;
         identity.M[10] = 0.0f;

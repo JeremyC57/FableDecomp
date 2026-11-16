@@ -9,7 +9,14 @@
 #include "engine/CLandscapeBackgroundPatch.h"
 #include "engine/CMovableResource.h"
 #include "engine/_quarantine/CEngineLandscapeMap.h"
+// NF45 (round 7): 0x01436E5C is NEngineInternal::GPOcclusionManager (Ego_r.pdb / FableWin.pdb
+//   ?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A) and the call is ?RenderOcclusionBox@CEngineOcclusionManager@@QAEKABVCMatrix3x4@@@Z
+//   0x00B8D420 (overlay declaration opt-in) on the shared engine/CMatrix3x4.h (E11..E43); was Native::OcclusionManager /
+//   Native::gOcclusionManager with a local Native::Matrix.
+#define FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_RENDEROCCLUSIONBOX
+#include "engine/CMatrix3x4.h"
 #include "engine/CEngineOcclusionManager.h"
+namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }   // 0x01436E5C
 #include <math.h>
 class CPatchTesselationEdgeStrip;
 namespace Native {
@@ -35,9 +42,6 @@ struct LandscapeMap { void* VTable;Tree* PatchTree;void* Patches;long PatchGridW
 struct C3DBoundingBox { C3DVector MinCoord,MaxCoord; };
 struct C3DBoundingSphere { C3DVector Center;float Radius; };
 struct CLODLoadInfo { long FileBlockPos,FileBlockSize,OffsetIntoFileBlock;unsigned char OptimizedBandRemap; };
-struct Matrix {float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;};
-struct OcclusionManager { unsigned long RenderOcclusionBox(const Matrix&); }; // B8D420; PDB QAEKABVCMatrix3x4
-extern OcclusionManager* gOcclusionManager; //01436e5c
 struct Patch:SubNode {
 
     CLandscapeBackgroundTreeNode*   Parent;                  // +0x04
@@ -108,11 +112,11 @@ void Tree::RenderOcclusionBox(long& handle){
  float y=(float)(MapY+Map->Map->WorldPosY);
  float x=(float)(MapX+Map->Map->WorldPosX);
  float width=(float)Width,height=(float)Height;
- Matrix matrix;
+ CMatrix3x4 matrix;
  matrix.E11=width;matrix.E12=0;matrix.E13=0;
  matrix.E21=0;matrix.E22=height;matrix.E23=0;
  matrix.E31=0;matrix.E32=0;matrix.E33=BoundingBox.MaxCoord.Z-BoundingBox.MinCoord.Z;
  matrix.E41=x;matrix.E42=y;matrix.E43=BoundingBox.MinCoord.Z;
- handle=gOcclusionManager->RenderOcclusionBox(matrix);
+ handle=NEngineInternal::GPOcclusionManager->RenderOcclusionBox(matrix);
 }
 }

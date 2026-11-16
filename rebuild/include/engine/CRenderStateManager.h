@@ -625,12 +625,51 @@ public:
 #endif
     void SetVertexBlending(VERTEX_BLEND_MODE);
     void SetFogDensity(float);
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_SETFOGMODE_INLINE
+    // NF45 opt-in (row 0x00B47630 CEngineLightingManager::SetupDefaultFogStates): Ego_r.pdb / FableWin.pdb
+    // ?SetFogMode@CRenderStateManager@@QAEXW4FOG_MODE@@@Z expanded in place: SetRenderState on FogMode (+0x190, core +0x29A8) through
+    // D3DFogTableMode 0x01396F58 ({0, 3, 1, 2} = D3DFOG_NONE, LINEAR, EXP, EXP2; reloc_bindings.tsv binds it from 0x00A059E0).
+    FABLE_FORCEINLINE void SetFogMode(FOG_MODE mode) { SetRenderState(D3DFogTableMode[mode], DeviceState.FogMode); }
+#else
     void SetFogMode(FOG_MODE);
+#endif
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_SETFOGVERTEXMODE_INLINE
+    // NF45 opt-in (row 0x00B47630): ?SetFogVertexMode@CRenderStateManager@@QAEXW4FOG_MODE@@@Z expanded in place: SetRenderState on
+    // FogVertexMode (+0x1A4, core +0x29BC) through the same D3DFogTableMode.
+    FABLE_FORCEINLINE void SetFogVertexMode(FOG_MODE mode) { SetRenderState(D3DFogTableMode[mode], DeviceState.FogVertexMode); }
+#else
     void SetFogVertexMode(FOG_MODE);
+#endif
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_SETTEXTUREFACTOR_INLINE
+    // NF45 opt-in (rows 0x00B90700 / 0x00B90CD0 CEnginePrimitiveManagerOcclusionBase): Ego_r.pdb / FableWin.pdb
+    // ?SetTextureFactor@CRenderStateManager@@QAEXK@Z expanded in place: SetRenderState on TextureFactor (+0x1B8, core +0x29D0) with the
+    // colour as given.
+    FABLE_FORCEINLINE void SetTextureFactor(unsigned long factor) { SetRenderState(factor, DeviceState.TextureFactor); }
+#else
     void SetTextureFactor(unsigned long);
+#endif
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_SETNORMALIZENORMALS_INLINE
+    // NF45 opt-in (row 0x00B32300 CEnginePrimitiveRenderer::InitialiseGlobalLights): Ego_r.pdb / FableWin.pdb
+    // ?SetNormalizeNormals@CRenderStateManager@@QAEX_N@Z expanded in place (0x00B32446..: SetRenderState on NormalizeNormals +0x230,
+    // core +0x2A48, value 1 for true), as the other bool setters.
+    FABLE_FORCEINLINE void SetNormalizeNormals(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.NormalizeNormals); }
+#else
     void SetNormalizeNormals(bool);
+#endif
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_SETAMBIENTMATERIALCOLOURSOURCE_INLINE
+    // NF45 opt-in (row 0x00B32300): ?SetAmbientMaterialColourSource@CRenderStateManager@@QAEXW4MATERIAL_COLOUR_SOURCE@@@Z expanded in
+    // place: SetRenderState on AmbientMaterialColourSource (+0x244, core +0x2A5C) through D3DMaterialColourSourceTable 0x01396FF4.
+    FABLE_FORCEINLINE void SetAmbientMaterialColourSource(MATERIAL_COLOUR_SOURCE source) { SetRenderState(D3DMaterialColourSourceTable[source], DeviceState.AmbientMaterialColourSource); }
+#else
     void SetAmbientMaterialColourSource(MATERIAL_COLOUR_SOURCE);
+#endif
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_SETDIFFUSEMATERIALCOLOURSOURCE_INLINE
+    // NF45 opt-in (row 0x00B32300): ?SetDiffuseMaterialColourSource@CRenderStateManager@@QAEXW4MATERIAL_COLOUR_SOURCE@@@Z expanded in
+    // place: SetRenderState on DiffuseMaterialColourSource (+0x258, core +0x2A70) through D3DMaterialColourSourceTable 0x01396FF4.
+    FABLE_FORCEINLINE void SetDiffuseMaterialColourSource(MATERIAL_COLOUR_SOURCE source) { SetRenderState(D3DMaterialColourSourceTable[source], DeviceState.DiffuseMaterialColourSource); }
+#else
     void SetDiffuseMaterialColourSource(MATERIAL_COLOUR_SOURCE);
+#endif
     void SetSpecularMaterialColourSource(MATERIAL_COLOUR_SOURCE);
 #ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_POINTSPRITE_INLINE
     // Retail opt-in (chunk 2031, row 0x00B54E30 CEngineWeatherRenderer::RenderSnow): FableWin.pdb ?SetPointSpriteEnable@CRenderStateManager@@QAEX_N@Z
@@ -738,8 +777,20 @@ public:
 #else
     void SetStencilWriteMask(unsigned long);
 #endif
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_SETDEPTHOFFSET_INLINE
+    // NF45 opt-in (row 0x00B4F510 CEngineShadowRenderer::PreLayerRender): Ego_r.pdb / FableWin.pdb ?SetDepthOffset@CRenderStateManager@@QAEXM@Z
+    // expanded in place: SetRenderState on DepthOffset (+0x348, core +0x2B60) with the float's bits, as SetFogStart / SetTextureMipmapLODBias.
+    FABLE_FORCEINLINE void SetDepthOffset(float offset) { SetRenderState(*(unsigned long*)&offset, DeviceState.DepthOffset); }
+#else
     void SetDepthOffset(float);
+#endif
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_SETSLOPESCALEDDEPTHOFFSET_INLINE
+    // NF45 opt-in (row 0x00B4F510): ?SetSlopeScaledDepthOffset@CRenderStateManager@@QAEXM@Z expanded in place: SetRenderState on
+    // DepthOffsetSlope (+0x35C, core +0x2B74) with the float's bits.
+    FABLE_FORCEINLINE void SetSlopeScaledDepthOffset(float offset) { SetRenderState(*(unsigned long*)&offset, DeviceState.DepthOffsetSlope); }
+#else
     void SetSlopeScaledDepthOffset(float);
+#endif
     void SetSoftwareVertexProcessing(bool);
     void SetShadowFunc(SHADOW_FUNC);
     void SetSolidOffsetEnable(bool);

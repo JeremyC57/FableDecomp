@@ -6,6 +6,14 @@
 //   DrawAsIndexedTris 0x00A0AEA0 on the render core @ 0x01436E18.
 // Layout: engine/CEngineSkyRenderer.h (SkySpriteVertexShader +0x110, SkySpritePixelShader +0x130).
 #include "fable_compiler.h"
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderManagerCore at offset 0) and the quad is
+//   ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z 0x00A0AEA0 (repo opt-in DRAWASINDEXEDTRIS; the texture
+//   parameter's address passed as the PDB's const CTexture**). Was a local CRenderManagerCoreView / g_pRenderManagerCore spelling the
+//   callee with CTexture** / const void*.
+#define FABLE_RETAIL_CRENDERMANAGERCORE_DRAWASINDEXEDTRIS
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 #include "engine/CEngineSkyRenderer.h"
 
 class C3DVector { public:
@@ -27,11 +35,6 @@ struct SSkySpriteVertex {                                // 0x18 bytes
     unsigned long Colour;
     float         U, V;
 };
-struct CRenderManagerCoreView {
-    void DrawAsIndexedTris(CTexture** textures, unsigned long textureCount, const void* vertices, long stride,
-                           long vertexCount, const void* indices, long triangleCount);   // 0x00A0AEA0
-};
-extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
 template <class T> class CArray { public:
     T* First;
     T* Last;
@@ -170,5 +173,5 @@ void CEngineSkyRenderer_Methods::RenderSprite(CTexture* texture, const C3DVector
     NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)SkySpritePixelShader);
     NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)SkySpriteVertexShader, false);
     NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
-    g_pRenderManagerCore->DrawAsIndexedTris(&texture, 1, verts, 0x18, 4, indices, 2);
+    NEngineInternal::GPRenderManager->DrawAsIndexedTris(const_cast<const CTexture**>(&texture), 1, verts, 0x18, 4, indices, 2);
 }

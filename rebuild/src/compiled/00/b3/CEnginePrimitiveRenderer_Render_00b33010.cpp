@@ -52,13 +52,15 @@ extern CEngineOcclusionRenderer* g_pOcclusionRenderer;   // 0x01436E60
 #define FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW_OUTLINERENDERING
 #include "engine/CEngineScreenEffectOutlineGlow.h"
 namespace NEngineInternal { extern CEngineScreenEffectOutlineGlow* GPScreenEffectOutlineGlow; }   // 0x01436E3C ?GPScreenEffectOutlineGlow@NEngineInternal@@3PAVCEngineScreenEffectOutlineGlow@@A
-class CEngineShadowRenderer { public:                     // 0x01436E38
-    bool BeginShadows();                           // 0x00B87680
-    void EndShadows();                             // 0x00B869A0
-    void BeginShadowCasters();                     // 0x00B871B0
-    void EndShadowCasters();                       // 0x00B86BB0
-};
-extern CEngineShadowRenderer* g_pShadowRenderer;   // 0x01436E38
+// NF45 (round 7): 0x01436E38 is NEngineInternal::GPScreenEffectDisplacementRenderer (Ego_r.pdb / FableWin.pdb
+//   ?GPScreenEffectDisplacementRenderer@NEngineInternal@@3PAVCEngineScreenEffectDisplacementRenderer@@A, engine header) and the four
+//   calls are its pass brackets Begin/FinishDisplacementRendering and Begin/FinishDisplacementStencilRendering (overlay opt-in
+//   DISPLACEMENTPASSES); was a local CEngineShadowRenderer (BeginShadows / EndShadows / BeginShadowCasters / EndShadowCasters) on
+//   g_pShadowRenderer. Not changed here: the 0x01436E60 (GPShadowRenderer) and 0x01436EA0 (GPCamera) reads, which still go through
+//   the CEngineOcclusionRenderer / CEngineLightingManager stand-ins.
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_DISPLACEMENTPASSES
+#include "engine/CEngineScreenEffectDisplacementRenderer.h"
+namespace NEngineInternal { extern CEngineScreenEffectDisplacementRenderer* GPScreenEffectDisplacementRenderer; }   // 0x01436E38
 class CEngineSubPrimitiveRenderer { public:
     void RenderList(long list, bool sort);         // 0x00B849F0
     unsigned long GetListSize(long list);          // 0x00B842B0
@@ -159,18 +161,18 @@ void CEnginePrimitiveRenderer::Render(const CEngineComponentRenderParams& params
         break;
     case 0x8000000:
         if (g_pEngineSubPrimitiveRenderer->GetListSize(5) > 0) {
-            if (g_pShadowRenderer->BeginShadows()) {
+            if (NEngineInternal::GPScreenEffectDisplacementRenderer->BeginDisplacementRendering()) {
                 g_pEngineSubPrimitiveRenderer->RenderList(5, true);
-                g_pShadowRenderer->EndShadows();
+                NEngineInternal::GPScreenEffectDisplacementRenderer->FinishDisplacementRendering();
             }
             g_pEngineSubPrimitiveRenderer->ClearList(5);
         }
         break;
     case 0x10000000:
         if (g_pEngineSubPrimitiveRenderer->GetListSize(6) > 0) {
-            g_pShadowRenderer->BeginShadowCasters();
+            NEngineInternal::GPScreenEffectDisplacementRenderer->BeginDisplacementStencilRendering();
             g_pEngineSubPrimitiveRenderer->RenderList(6, true);
-            g_pShadowRenderer->EndShadowCasters();
+            NEngineInternal::GPScreenEffectDisplacementRenderer->FinishDisplacementStencilRendering();
             g_pEngineSubPrimitiveRenderer->ClearList(6);
         }
         break;

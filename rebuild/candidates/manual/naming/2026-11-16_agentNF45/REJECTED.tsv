@@ -1,0 +1,2 @@
+address	claim	reason
+# none: no claim or entry was rejected this round (blocked rows are in STATUS.tsv, blocked entries in APPLIED.tsv)

@@ -135,6 +135,9 @@ FABLE_STATIC_ASSERT_AT(107, sizeof(CEngineShadowRenderer) == 0x340);
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_SHADOWBUFFERRENDERSTATECAPTUREBLOCK
+#include "engine/CRenderStateCaptureBlock.h"
+#endif
 
 struct IDirect3DTexture9;
 
@@ -144,7 +147,14 @@ public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x8];                           // +0x04 flattened base-class subobject(s)
     unsigned char SceneData[0x240];                          // +0x0c CShadowRendererSceneData
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_SHADOWBUFFERRENDERSTATECAPTUREBLOCK
+    // NF45 opt-in (row 0x00B4F510 PreLayerRender): the member typed as the Ego_r.pdb class (engine/CRenderStateCaptureBlock.h,
+    // Open at +0x24C; the rest of the Ego_r 4 bytes stays padding), as the retail branch above.
+    CRenderStateCaptureBlock ShadowBufferRenderStateCaptureBlock;        // +0x24c
+    unsigned char _pad_0x24d[0x3];                                       // +0x24d
+#else
     unsigned char ShadowBufferRenderStateCaptureBlock[0x4];  // +0x24c CRenderStateCaptureBlock
+#endif
     float         ShadowProjectionZOffset;                   // +0x250
     float         ShadowProjectionZSlopeOffset;              // +0x254
     float         ColourBufferShadowTextureZBias;            // +0x258

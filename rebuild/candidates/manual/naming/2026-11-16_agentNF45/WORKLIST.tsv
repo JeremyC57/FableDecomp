@@ -1,0 +1,60 @@
+target	entry	correct_symbol	binder_row	probe_status	bound_symbol_at_probe
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b5e700	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b61690	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b63260	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b63530	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b88bc0	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00bad2e0	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00bcb800	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00bf4570	NOREL	
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b25d80	OK	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b2fc50	OK	?g_RenderManagerCore@@3PAUCRenderManagerCore_Methods@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b32100	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b32230	OK	?g_pRenderStateManager_01436e18@@3PAVCRenderStateManager@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b32300	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b32ad0	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b3b0c0	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b46890	OK	?g_pRenderStateManager_01436e18@@3PAVCRenderStateManager@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b47630	OK	?g_pRenderStateManager_01436e18@@3PAVCRenderStateManager@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b4d2c0	OK	?g2D@@3PAURender2DMethods@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b4f510	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b54100	OK	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b54210	OK	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b54310	OK	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b56b00	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b56f50	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b586a0	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b58de0	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b58fb0	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b592c0	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b63010	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b66190	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b662f0	NOREL	
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b677d0	OK	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b6e010	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b6e3e0	OK	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b75ca0	OK	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b76bc0	OK	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b77e20	OK	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b849f0	OK	?gSubRenderManager@@3PAUCSubRenderStateManager@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b871b0	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b90700	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b90cd0	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b9d670	OK	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00b9e750	OK	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00bb8090	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00bcd490	OK	?g_pRenderManagerCore@@3PAVCRenderStateManager@@A
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00be1e70	NOREL	
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00be6f70	NOREL	
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00beaca0	NOREL	
+01436e18	29	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	00bf1030	OK	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+01436e38	82	?GPScreenEffectDisplacementRenderer@NEngineInternal@@3PAVCEngineScreenEffectDisplacementRenderer@@A	00b33010	OK	?g_pShadowRenderer@@3PAVCEngineShadowRenderer@@A
+01436e38	82	?GPScreenEffectDisplacementRenderer@NEngineInternal@@3PAVCEngineScreenEffectDisplacementRenderer@@A	00bbbf70	OK	?g_pEngineSettings_01436e38@@3PAUCEngineSettings_01436e38@@A
+01436e38	82	?GPScreenEffectDisplacementRenderer@NEngineInternal@@3PAVCEngineScreenEffectDisplacementRenderer@@A	00be0cd0	OK	?g_pEngineSettings_01436e38@@3PAUCEngineSettings_01436e38@@A
+01436e5c	30	?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A	00b662f0	NOREL	
+01436e5c	30	?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A	00bf7100	OK	?gOcclusionManager@Native@@3PAUOcclusionManager@1@A
+01436e60	31	?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A	00b32660	OK	?g_pShadowRenderer_01436e60@@3PAUCEngineShadowRendererView@@A
+01436e60	31	?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A	00bf4570	NOREL	
+01436e60	31	?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A	00b33010	OK	?g_pOcclusionRenderer@@3PAUCEngineOcclusionRenderer@@A
+01436e60	31	?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A	00b68610	OK	?g_pRenderSettings_01436e60@@3PAUSRenderSettings_01436e60@@A
+01436ea4	38	?GPEngine@NEngineInternal@@3PAVCEngine@@A	00b32660	OK	?g_pTextureManager_01436ea4@@3PAVCTextureManager@@A

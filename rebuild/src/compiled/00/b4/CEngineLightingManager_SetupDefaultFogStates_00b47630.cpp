@@ -62,51 +62,15 @@ class CEngineCamera { public:
 };
 namespace NEngineInternal { extern CEngineCamera* GPCamera; }   // 0x01436EA0
 
-struct CTrackedRenderState {                       // 0x14 bytes
-    long          m_stateId;                       // +0x00
-    unsigned long m_value;                         // +0x04 requested value
-    unsigned long m_captureMask;                   // +0x08
-    long          m_appliedValue;                  // +0x0C
-    bool          m_queued;                        // +0x10
-};
-struct SCapturedRenderState {
-    CTrackedRenderState* m_pState;                 // +0x00
-    unsigned long        m_priorValue;             // +0x04
-};
-class CRenderStateManager { public:
-    unsigned char        _pad0000[0x8];
-    SCapturedRenderState m_captured[0x400];        // +0x0008
-    CTrackedRenderState* m_dirty[0x200];           // +0x2008
-    long                 m_capturedCount;          // +0x2808
-    long                 m_dirtyCount;             // +0x280C
-    long                 AllStatesListSize;        // +0x2810
-    unsigned long        m_captureMask;            // +0x2814
-    unsigned char        _pad2818[0x2958 - 0x2818];
-    CTrackedRenderState  m_fogColour;              // +0x2958
-    unsigned char        _pad296c[0x29a8 - 0x296c];
-    CTrackedRenderState  m_fogVertexMode;          // +0x29a8
-    CTrackedRenderState  m_fogTableMode;           // +0x29bc
-
-    static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderStateManager* mgr)
-{
-        if (state.m_value != value) {
-            if ((mgr->m_captureMask & state.m_captureMask) == 0) {
-                state.m_captureMask |= mgr->m_captureMask;
-                mgr->m_captured[mgr->m_capturedCount].m_pState = &state;
-                mgr->m_captured[mgr->m_capturedCount].m_priorValue = state.m_value;
-                ++mgr->m_capturedCount;
-            }
-            state.m_value = value;
-            if (!state.m_queued) {
-                state.m_queued = true;
-                mgr->m_dirty[mgr->m_dirtyCount] = &state;
-                ++mgr->m_dirtyCount;
-            }
-        }
-    }
-};
-extern CRenderStateManager* g_pRenderStateManager_01436e18;   // 0x01436E18
-extern unsigned long g_DefaultFogMode_01396f58;                // 0x01396F58 (3)
+// NF45 (round 7): the render-state manager is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderStateManager at offset 0): the local
+//   CRenderStateManager model and g_DefaultFogMode_01396f58 are the shared inline setters SetFogVertexMode (+0x29BC) / SetFogMode
+//   (+0x29A8) through D3DFogTableMode 0x01396F58 [FOG_MODE_NONE] (overlay inline opt-ins; the old labels m_fogTableMode /
+//   m_fogVertexMode were one state off) and SetFogColour (+0x2958; the row's own channel packing).
+#define FABLE_RETAIL_CRENDERSTATEMANAGER_SETFOGMODE_INLINE
+#define FABLE_RETAIL_CRENDERSTATEMANAGER_SETFOGVERTEXMODE_INLINE
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
 struct CShaderConstantBlock {
     unsigned char _pad00[0x30];
@@ -145,12 +109,12 @@ void CEngineLightingManager::SetupDefaultFogStates()
     C4DVector transform(fog.m[0], fog.m[3], fog.m[6], fog.m[9]);
     NEngineInternal::GPShaderRenderManager->SetFogTransform(&transform);
     }
-    CRenderStateManager::SetState(g_pRenderStateManager_01436e18->m_fogTableMode, g_DefaultFogMode_01396f58, g_pRenderStateManager_01436e18);
-    CRenderStateManager::SetState(g_pRenderStateManager_01436e18->m_fogVertexMode, g_DefaultFogMode_01396f58, g_pRenderStateManager_01436e18);
+    NEngineInternal::GPRenderManager->SetFogVertexMode(FOG_MODE_NONE);
+    NEngineInternal::GPRenderManager->SetFogMode(FOG_MODE_NONE);
     CRGBFloatColour colour = ThemeChannels->FogColour;
     unsigned long packed = (((((long)(colour.A * 255.0f) << 8) | (long)(colour.R * 255.0f)) << 8 |
                              (long)(colour.G * 255.0f)) << 8) | (long)(colour.B * 255.0f);
-    CRenderStateManager::SetState(g_pRenderStateManager_01436e18->m_fogColour, packed, g_pRenderStateManager_01436e18);
+    NEngineInternal::GPRenderManager->SetFogColour(packed);
     NEngineInternal::GPShaderRenderManager->SetFogParameters(C4DVector(colour.A, colour.A, colour.A, colour.A));
     NEngineInternal::GPShaderRenderManager->SetFogColour(&colour);
 }

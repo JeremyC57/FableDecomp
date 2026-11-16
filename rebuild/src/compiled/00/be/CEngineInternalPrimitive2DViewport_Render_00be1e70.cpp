@@ -13,7 +13,23 @@
 //   viewport fields U/H/V, then position and matrix); the unused dimensions result is a named local (a discarded temporary shares
 //   the chain's frame words, 8 bytes short); the fog disable is a __forceinline manager member (a direct SetState swaps eax/ecx and the
 //   capture-block store order); the child entry is a `const&` local (an indexed member read folds the lea into the load).
+// NF45 (round 7): the tracked render-state manager 0x01436E18 is NEngineInternal::GPRenderManager (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderStateManager at offset 0): the local
+//   DisableFog / SetState model is the shared inline SetFogEnable(false) (DeviceState.FogEnable +0x2944). The capture open on the
+//   0x013CB508 manager (push of BookmarkDummyState +0x3A24, mask shift) and RestoreCaptureBlock 0x00A05840 are a
+//   CRenderStateScopedCaptureBlock (engine/CRenderStateCaptureBlock.h, repo SCOPED_FORCEINLINE; the static is
+//   ?StateManager@CRenderStateCaptureBlock@@0PAVCRenderStateManager@@A). Was a local CCaptureStateManager on g_pRenderStateManager
+//   and a local CRenderStateManager / CTrackedRenderState model on g_pRenderStateManager_01436e18. The local C2DExtentsI is the
+//   shared engine/C2DExtentsI.h (pulled in by the render manager; X / Y). The camera, display and primitive-manager models are
+//   unchanged (row debt). The primitive manager table 0x01436E84 is NEngineInternal::GPPrimitiveTypeInfo
+//   (?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A, engine/CEnginePrimitiveTypeInfo.h PrimitiveManagers +0x10;
+//   was a local CEnginePrimitiveManagerTable on g_pPrimitiveManagers). The sub-primitive renderer 0x01436E74 extern is respelled
+//   NEngineInternal::GPSubPrimitiveRenderer (the spelling the landed 0x00BCA6B0 binds; was g_pPrimitiveRenderer_01436e74).
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
 #include "fable_compiler.h"
+#include "engine/CRenderManager.h"
+#include "engine/CRenderStateCaptureBlock.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF(const C2DBoxF& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {}
@@ -24,7 +40,6 @@ class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(const C2DBoxI& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {}
 };
-class C2DExtentsI { public: long Width, Height; };
 class CMatrix3x4 { public:
     float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43;
 };
@@ -60,66 +75,6 @@ class CDisplayManager { public:
 };
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
-struct SCaptureEntry { void* Block; unsigned long State; };
-struct CCaptureStateManager {
-    unsigned char _pad000[8];
-    SCaptureEntry CaptureStack[0x500];             // +0x008
-    unsigned long CaptureStackCount;               // +0x2808
-    unsigned char _pad280c[8];
-    unsigned long CaptureMask;                     // +0x2814
-    unsigned char _pad2818[0x3a24 - 0x2818];
-    unsigned char CaptureBlock[4];                 // +0x3a24
-    void OpenCaptureBlock()
-    {
-        CaptureStack[CaptureStackCount++].Block = CaptureBlock;
-        CaptureMask <<= 1;
-    }
-    void RestoreCaptureBlock();                    // 0x00A05840
-};
-extern CCaptureStateManager* g_pRenderStateManager;   // 0x013CB508
-
-struct CTrackedRenderState {                       // 0x14 bytes
-    long          m_stateId;                       // +0x00
-    unsigned long m_value;                         // +0x04
-    unsigned long m_captureMask;                   // +0x08
-    long          m_appliedValue;                  // +0x0C
-    bool          m_queued;                        // +0x10
-};
-struct SCapturedRenderState {
-    CTrackedRenderState* m_pState;
-    unsigned long        m_priorValue;
-};
-class CRenderStateManager { public:
-    unsigned char        _pad0000[0x8];
-    SCapturedRenderState m_captured[0x400];        // +0x0008
-    CTrackedRenderState* m_dirty[0x200];           // +0x2008
-    long                 m_capturedCount;          // +0x2808
-    long                 m_dirtyCount;             // +0x280C
-    long                 AllStatesListSize;        // +0x2810
-    unsigned long        m_captureMask;            // +0x2814
-    unsigned char        _pad2818[0x2944 - 0x2818];
-    CTrackedRenderState  m_fogEnable;              // +0x2944
-    FABLE_FORCEINLINE void DisableFog() { SetState(m_fogEnable, 0); }
-    FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value)
-    {
-        if (state.m_value != value) {
-            if ((m_captureMask & state.m_captureMask) == 0) {
-                state.m_captureMask |= m_captureMask;
-                m_captured[m_capturedCount].m_pState = &state;
-                m_captured[m_capturedCount].m_priorValue = state.m_value;
-                ++m_capturedCount;
-            }
-            state.m_value = value;
-            if (!state.m_queued) {
-                state.m_queued = true;
-                m_dirty[m_dirtyCount] = &state;
-                ++m_dirtyCount;
-            }
-        }
-    }
-};
-extern CRenderStateManager* g_pRenderStateManager_01436e18;   // 0x01436E18
-
 class CEngineInternalPrimitiveBase;
 class CEngineSubPrimitiveChain { public:
     void* First;
@@ -132,16 +87,13 @@ public:
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void RenderPrimitive(CEngineInternalPrimitiveBase* primitive, CEngineSubPrimitiveChain& chain, long pass);   // slot 10 (+0x28)
 };
-struct CEnginePrimitiveManagerTable {
-    unsigned char            _pad00[0x10];
-    CEnginePrimitiveManager* Managers[40];          // +0x10, by primitive type
-};
-extern CEnginePrimitiveManagerTable* g_pPrimitiveManagers;   // 0x01436E84
+#include "engine/CEnginePrimitiveTypeInfo.h"
+namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
 
 class CEngineSubPrimitiveRenderer { public:
     void RenderType(long type, bool flag);         // 0x00B849F0
 };
-extern CEngineSubPrimitiveRenderer* g_pPrimitiveRenderer_01436e74;   // 0x01436E74
+namespace NEngineInternal { extern CEngineSubPrimitiveRenderer* GPSubPrimitiveRenderer; }   // 0x01436E74 ?GPSubPrimitiveRenderer@NEngineInternal@@3PAVCEngineSubPrimitiveRenderer@@A
 
 class CEngineInternalPrimitiveBase {
 public:
@@ -203,22 +155,21 @@ void CEngineInternalPrimitive2DViewport::Render()
     C2DBoxI oldViewport = NEngineInternal::GPDisplayManager->Viewport;
     C2DExtentsI dimensions = NEngineInternal::GPDisplayManager->GetRenderTargetDimensions();
     if (Viewport.GetWidth() > 0.0f && Viewport.GetHeight() > 0.0f) {
-        g_pRenderStateManager->OpenCaptureBlock();
-        g_pRenderStateManager_01436e18->DisableFog();
+        CRenderStateScopedCaptureBlock capture_block;
+        NEngineInternal::GPRenderManager->SetFogEnable(false);
         NEngineInternal::GPDisplayManager->SetViewport(Viewport);
         unsigned long count = Primitives.GetCount();
         CEngineSubPrimitiveChain chain;
         for (unsigned long i = 0; i < count; ++i) {
             const CEnginePrimitiveHandle& handle = Primitives.m_pFirst[i];
             if (handle.m_pPrimitive) {
-                CEnginePrimitiveManager* manager = g_pPrimitiveManagers->Managers[handle.m_pPrimitive->Type];
+                CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[handle.m_pPrimitive->Type];
                 if (manager)
                     manager->RenderPrimitive(handle.m_pPrimitive, chain, 3);
             }
         }
-        g_pPrimitiveRenderer_01436e74->RenderType(3, true);
+        NEngineInternal::GPSubPrimitiveRenderer->RenderType(3, true);
         NEngineInternal::GPDisplayManager->SetViewport(oldViewport);
-        g_pRenderStateManager->RestoreCaptureBlock();
     }
     NEngineInternal::GPCamera->SetCameraDesc(savedDesc, false, true);
 }

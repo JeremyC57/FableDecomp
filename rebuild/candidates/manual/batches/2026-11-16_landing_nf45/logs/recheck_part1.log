@@ -1,0 +1,95 @@
+addr       parity           behav  name
+00b2fc50   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+00b2fc50   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b2fc50   WARN SHARED_HEADER_AVAILABLE CMatrix4x4
+00b2fc50   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b2fc50   WARN SHARED_HEADER_AVAILABLE CEngineCameraDesc
+00b2fc50   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b2fc50   RELOCATION_MATCH PASS   RefreshD3DTransforms
+00b32300   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager
+00b32300   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b32300   WARN RELOC_NAME: ?SetMaterial@CRenderManagerCore@@QAEXABVCRGBColour@@0@Z -> 00a0aa10 labelled '_global::Nop_ret8_00a0aa10'
+00b32300   RELOCATION_MATCH PASS   InitialiseGlobalLights
+00b3b0c0   WARN SHARED_HEADER_AVAILABLE CShaderResource
+00b3b0c0   RELOCATION_MATCH PASS   UninitialiseShaders
+00b4d2c0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b4d2c0   WARN STANDIN_LEAF ?PostLayerRender@ShadowMethods@@QAEXABVCEngineComponentRenderParams@@@Z (catalog CEngineShadowRenderer::PostLayerRender; names another function)
+00b4d2c0   RELOCATION_MATCH PASS   PostLayerRender
+00b54210   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b54210   WARN SHARED_HEADER_AVAILABLE CArray
+00b54210   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b54210   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b54210   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b54210   RELOCATION_MATCH PASS   RenderSnowBox
+00b56f50   RELOCATION_MATCH PASS   Apply
+00b58fb0   RELOCATION_MATCH PASS   Apply
+00b61690   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b61690   WARN SHARED_HEADER_AVAILABLE CArray
+00b61690   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b61690   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b61690   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b61690   WARN RELOC_NAME: ?g_ShaderRenderManager@@3UCShaderEnableState@@A -> 013bc470 labelled 'CShaderRenderManager::SingletonInstance'
+00b61690   RELOCATION_MATCH PASS   ShowGlowTexture
+00b66190   RELOCATION_MATCH PASS   RenderSky
+00b68610   WARN SHARED_HEADER_AVAILABLE CLandscapeGPUUpdateQueue
+00b68610   WARN SHARED_HEADER_AVAILABLE CEngineMap
+00b68610   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b68610   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00b68610   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b68610   RELOCATION_MATCH PASS   FrameStart
+00b75ca0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CArray
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b75ca0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b75ca0   RELOCATION_MATCH PASS   RenderIceBackground
+00b871b0   RELOCATION_MATCH PASS   BeginDisplacementStencilRendering
+00b90cd0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b90cd0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b90cd0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerOcclusionBase
+00b90cd0   RELOCATION_MATCH PASS   DrawAlphaBoundingBox
+00bbbf70   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00bbbf70   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00bbbf70   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveParticleGroup
+00bbbf70   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00bbbf70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleGroup
+00bbbf70   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00bbbf70   RELOCATION_MATCH PASS   RenderPrimitive
+00be1e70   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+00be1e70   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00be1e70   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00be1e70   WARN SHARED_HEADER_AVAILABLE CEngineCameraDesc
+00be1e70   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00be1e70   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00be1e70   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveChain
+00be1e70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager
+00be1e70   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00be1e70   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00be1e70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00be1e70   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00be1e70   RELOCATION_MATCH PASS   Render
+00bf7100   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00bf7100   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00bf7100   RELOCATION_MATCH PASS   RenderOcclusionBox
+
+WINS: 16
+  00b2fc50 RELOCATION_MATCH CEngineCamera::RefreshD3DTransforms
+  00b32300 RELOCATION_MATCH CEnginePrimitiveRenderer::InitialiseGlobalLights
+  00b3b0c0 RELOCATION_MATCH CEngineResourceManager::UninitialiseShaders
+  00b4d2c0 RELOCATION_MATCH CEngineShadowRenderer::PostLayerRender
+  00b54210 RELOCATION_MATCH CEngineWeatherRenderer::RenderSnowBox
+  00b56f50 RELOCATION_MATCH CEngineStateBlockSolid2X::?Apply@CEngineStateBlockSolid2X@@UAEXXZ
+  00b58fb0 RELOCATION_MATCH CEngineStateBlockDiffuse2X::?Apply@CEngineStateBlockDiffuse2X@@UAEXXZ
+  00b61690 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::ShowGlowTexture
+  00b66190 RELOCATION_MATCH CEngineSkyRenderer::RenderSky
+  00b68610 RELOCATION_MATCH CEngineLandscapeRenderer::FrameStart
+  00b75ca0 RELOCATION_MATCH CEngineWaterRenderer::RenderIceBackground
+  00b871b0 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::BeginDisplacementStencilRendering
+  00b90cd0 RELOCATION_MATCH CEnginePrimitiveManagerOcclusionBase::DrawAlphaBoundingBox
+  00bbbf70 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::RenderPrimitive
+  00be1e70 RELOCATION_MATCH CEngineInternalPrimitive2DViewport::Render
+  00bf7100 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?RenderOcclusionBox@Tree@Native

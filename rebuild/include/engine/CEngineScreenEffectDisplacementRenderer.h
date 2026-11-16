@@ -86,12 +86,27 @@ FABLE_STATIC_ASSERT_AT(75, sizeof(CEngineScreenEffectDisplacementRenderer) == 0x
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_STENCILRENDERINGCAPTUREBLOCK
+#include "engine/CRenderStateCaptureBlock.h"
+#endif
 
 class CTexture;
 
 #pragma pack(push, 1)
 class CEngineScreenEffectDisplacementRenderer {
 public:
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_DISPLACEMENTPASSES
+    // NF45 opt-in (row 0x00B33010 CEnginePrimitiveRenderer::Render): the four public pass brackets, Ego_r.pdb names
+    // ?BeginDisplacementRendering@CEngineScreenEffectDisplacementRenderer@@QAE_NXZ, ?FinishDisplacementRendering@..@@QAEXXZ,
+    // ?BeginDisplacementStencilRendering@..@@QAEXXZ, ?FinishDisplacementStencilRendering@..@@QAEXXZ. The first three are the landed
+    // self rows 0x00B87680 / 0x00B869A0 / 0x00B871B0 (catalog names); the fourth is called right after the stencil list as the pair of
+    // BeginDisplacementStencilRendering and sits after SetEffectQuality in the Ego_r donor order (0x00A2D730), retail 0x00B86BB0
+    // (catalog label "AddToInterface" is a propagated label). Declarations only.
+    bool BeginDisplacementRendering();                                   // 0x00B87680
+    void FinishDisplacementRendering();                                  // 0x00B869A0
+    void BeginDisplacementStencilRendering();                            // 0x00B871B0
+    void FinishDisplacementStencilRendering();                           // 0x00B86BB0
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -125,7 +140,14 @@ public:
     unsigned char ScreenCopyPixelShader[0x8];                // +0x12c CPixelShader
     unsigned char DisplacementVertexShader[0x8];             // +0x134 CVertexShader
     unsigned char DisplacementPixelShader[0x8];              // +0x13c CPixelShader
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_STENCILRENDERINGCAPTUREBLOCK
+    // NF45 opt-in (row 0x00B871B0 BeginDisplacementStencilRendering): the member typed as the Ego_r.pdb class
+    // (engine/CRenderStateCaptureBlock.h, Open at +0x144); the second Ego_r byte stays padding.
+    CRenderStateCaptureBlock StencilRenderingCaptureBlock;               // +0x144
+    unsigned char _pad_0x145[0x1];                                       // +0x145
+#else
     unsigned char StencilRenderingCaptureBlock[0x2];         // +0x144 CRenderStateCaptureBlock
+#endif
     unsigned char _pad_0x146[0x2];                           // +0x146
     unsigned char DisplacementToBackBufferVerts[0x60];       // +0x148 CTVertexColTex1[4]
     bool          EnableDisplacementTextureView;             // +0x1a8

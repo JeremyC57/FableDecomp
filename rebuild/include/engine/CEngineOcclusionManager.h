@@ -177,6 +177,19 @@ public:
     // ?GetResult@CEngineOcclusionManager@@QAEKK_N@Z (retail 0x00B8D0B0, `xor eax,eax ; ret 8`). Declaration only.
     unsigned long GetResult(unsigned long handle, bool wait);            // 0x00B8D0B0
 #endif
+#ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_ADDFLARETEST
+    // NF45 opt-in (row 0x00B662F0 CEngineSkyRenderer::Render): Ego_r.pdb ?AddFlareTest@CEngineOcclusionManager@@QAEXKABVC3DVector@@MJ@Z
+    // (Ego_r 0x00A34750) = retail 0x00B8D040, the empty PC stub `ret 10h`: the same Ego_r -> retail delta 0x1588F0 as GetResult 0x00B8D0B0
+    // (Ego_r 0x00A347C0) and Start/EndOcclusionTest 0x00B8D090 / 0x00B8D0A0, and the four-argument void overload (the other overload
+    // 0x00A34760 returns K). Declaration only.
+    void AddFlareTest(unsigned long, const class C3DVector&, float, long);   // 0x00B8D040
+#endif
+#ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_RENDEROCCLUSIONBOX
+    // NF45 opt-in (row 0x00BF7100 CLandscapeBackgroundTreeNode::RenderOcclusionBox): Ego_r.pdb
+    // ?RenderOcclusionBox@CEngineOcclusionManager@@QAEKABVCMatrix3x4@@@Z (Ego_r 0x00A34B30 + 0x1588F0) = retail 0x00B8D420, the landed self
+    // row's leaf. Declaration only.
+    unsigned long RenderOcclusionBox(const class CMatrix3x4& transform);   // 0x00B8D420
+#endif
 #ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_ALLOCATE
     // Opt-in (bwf1 / agentC2, row 0x00BB3E80 CEngineClothRenderer::RenderClothPrimitive): the FableWin.pdb inline
     // ?AllocateOccluderHandle@CEngineOcclusionManager@@QAEKXZ (expanded at 0x00BB3EFD..0x00BB3F34; text of landed 0x00B91140) and the

@@ -11,81 +11,28 @@
 // Layout: engine/CEngineScreenEffectRadialBlurRenderer.h (BlurTexture256_1 +0x0c, BlurTexture256_2 +0x10,
 //   ScreenCopyVertexShader +0x20, TextureOnlyPixelShader +0x40, ShowDebug +0x1c4, BlurToBackBufferVerts +0x1cc).
 #include "fable_compiler.h"
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderManagerCore / CRenderStateManager at
+//   offset 0): the three states are the shared inline setters AlphaBlendEnable (+0x28B8) / ZBufferEnable (+0x2868) false and
+//   PolyCullMode (+0x2890) [POLY_CULL_NONE] through D3DPolyCullModeTable 0x01396FB0, and the quad is
+//   ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z 0x00A0AEA0 (repo opt-in DRAWASINDEXEDTRIS; const
+//   CTexture* texture, the index table passed as the PDB's void*). The capture open / RestoreCaptureBlock pair on 0x013CB508 is a
+//   CRenderStateScopedCaptureBlock (engine/CRenderStateCaptureBlock.h, CRenderStateCaptureBlock::StateManager). Was a local
+//   CRenderManagerCoreView / CTrackedRenderState / SetState model, g_pRenderManagerCore / g_pRenderStateManager,
+//   g_renderStateDefault_01396fb8 and a local struct CRenderStateCaptureBlock.
+#define FABLE_RETAIL_CRENDERMANAGERCORE_DRAWASINDEXEDTRIS
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
+#include "engine/CRenderManager.h"
+#include "engine/CRenderStateCaptureBlock.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 #include "engine/CEngineScreenEffectRadialBlurRenderer.h"
 
 class C4DVector { public: float X, Y, Z, W; };
 class CTexture;
 
-struct CTrackedRenderState {                       // 0x14 bytes
-    long          m_stateId;                       // +0x00
-    unsigned long m_value;                         // +0x04 requested value
-    unsigned long m_captureMask;                   // +0x08
-    long          m_appliedValue;                  // +0x0C
-    bool          m_queued;                        // +0x10
-    FABLE_FORCEINLINE void Set(unsigned long value);
-};
-struct SCapturedRenderState {
-    CTrackedRenderState* m_pState;                 // +0x00
-    unsigned long        m_priorValue;             // +0x04
-};
-struct CRenderManagerCoreView {                    // the render manager core @ 0x01436E18 / 0x013CB508
-    unsigned char        _pad0000[0x8];
-    SCapturedRenderState m_captured[0x400];        // +0x0008
-    CTrackedRenderState* m_dirty[0x200];           // +0x2008
-    long                 m_capturedCount;          // +0x2808
-    long                 m_dirtyCount;             // +0x280C
-    long                 m_unknown2810;            // +0x2810
-    unsigned long        m_captureMask;            // +0x2814
-    unsigned char        _pad2818[0x2868 - 0x2818];
-    CTrackedRenderState  m_state2868;              // +0x2868
-    unsigned char        _pad287c[0x2890 - 0x287c];
-    CTrackedRenderState  m_state2890;              // +0x2890
-    unsigned char        _pad28a4[0x28b8 - 0x28a4];
-    CTrackedRenderState  m_state28b8;              // +0x28B8
-    unsigned char        _pad28cc[0x3a24 - 0x28cc];
-    unsigned char        m_captureBlockMarker[4];  // +0x3A24
 
-    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
-    {
-        if ((m_captureMask & state.m_captureMask) == 0) {
-            state.m_captureMask |= m_captureMask;
-            m_captured[m_capturedCount].m_pState = &state;
-            m_captured[m_capturedCount].m_priorValue = state.m_value;
-            ++m_capturedCount;
-        }
-        state.m_value = value;
-        if (!state.m_queued) {
-            state.m_queued = true;
-            m_dirty[m_dirtyCount] = &state;
-            ++m_dirtyCount;
-        }
-    }
-    FABLE_FORCEINLINE void OpenCaptureBlock()
-    {
-        m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
-        m_captureMask <<= 1;
-    }
-    void RestoreCaptureBlock();                    // 0x00A05840
-    void DrawAsIndexedTris(CTexture** textures, unsigned long textureCount, const void* vertices, long stride,
-                           long vertexCount, const void* indices, long triangleCount);   // 0x00A0AEA0
-};
-extern CRenderManagerCoreView* g_pRenderStateManager;  // 0x013CB508
-extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
-
-FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
-{
-    if (m_value != value)
-        g_pRenderManagerCore->ChangeState(*this, value);
-}
-
-extern unsigned long g_renderStateDefault_01396fb8;    // 0x01396FB8
 extern const unsigned short g_QuadIndices_0139a550[6]; // 0x0139A550
 
-static FABLE_FORCEINLINE void SetState(unsigned long value, CTrackedRenderState& state, CRenderManagerCoreView* core)
-{
-    if (state.m_value != value)
-        core->ChangeState(state, value);
-}
 struct CShaderEnableState {                             // the static shader manager object @ 0x013BC470
     unsigned char _pad000[0x8];
     long          CurrentVSConstantLayoutIndex;         // +0x008
@@ -246,10 +193,6 @@ struct CShaderLayoutSaver {                             // selects a vertex cons
     }
     FABLE_FORCEINLINE ~CShaderLayoutSaver() { g_ShaderRenderManager.SetVertexShaderConstantLayout(m_layout); }
 };
-struct CRenderStateCaptureBlock {
-    FABLE_FORCEINLINE CRenderStateCaptureBlock() { g_pRenderStateManager->OpenCaptureBlock(); }
-    FABLE_FORCEINLINE ~CRenderStateCaptureBlock() { g_pRenderStateManager->RestoreCaptureBlock(); }
-};
 
 struct CEngineScreenEffectRadialBlurRenderer_Methods : CEngineScreenEffectRadialBlurRenderer {
     void ShowBlurTexture();
@@ -257,16 +200,16 @@ struct CEngineScreenEffectRadialBlurRenderer_Methods : CEngineScreenEffectRadial
 
 void CEngineScreenEffectRadialBlurRenderer_Methods::ShowBlurTexture()
 {
-    CRenderStateCaptureBlock capture;
+    CRenderStateScopedCaptureBlock capture;
     CShaderLayoutSaver layout(2);
     CShaderEnableSaver shaders(true, true);
     NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)ScreenCopyVertexShader, false);
     NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)TextureOnlyPixelShader);
-    SetState(0, g_pRenderManagerCore->m_state28b8, g_pRenderManagerCore);
-    SetState(0, g_pRenderManagerCore->m_state2868, g_pRenderManagerCore);
-    SetState(g_renderStateDefault_01396fb8, g_pRenderManagerCore->m_state2890, g_pRenderManagerCore);
+    NEngineInternal::GPRenderManager->SetAlphaBlendEnable(false);
+    NEngineInternal::GPRenderManager->SetZBufferEnable(false);
+    NEngineInternal::GPRenderManager->SetPolyCullMode(POLY_CULL_NONE);
     NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
-    CTexture* texture;
+    const CTexture* texture;
     switch (ShowDebug) {
     case 1:
         texture = BlurTexture256_1;
@@ -275,5 +218,5 @@ void CEngineScreenEffectRadialBlurRenderer_Methods::ShowBlurTexture()
         texture = BlurTexture256_2;
         break;
     }
-    g_pRenderManagerCore->DrawAsIndexedTris(&texture, 1, BlurToBackBufferVerts, 0x18, 4, g_QuadIndices_0139a550, 2);
+    NEngineInternal::GPRenderManager->DrawAsIndexedTris(&texture, 1, BlurToBackBufferVerts, 0x18, 4, const_cast<unsigned short*>(g_QuadIndices_0139a550), 2);
 }

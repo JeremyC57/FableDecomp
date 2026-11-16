@@ -333,6 +333,12 @@ public:
     // ?EnableXBoxShaderConstants@CRenderManagerCore@@QAEX_N@Z 0x00A0AA20: an empty PC stub (`ret 4`), Ego_r.pdb 0x00B73FD0 between the
     // SetMaterial and SetVertexFormat stubs as in retail (0x00A0AA10 `ret 8` SetMaterial).
     void EnableXBoxShaderConstants(bool enable);
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_SETMATERIAL
+    // NF45 opt-in (row 0x00B32300): Ego_r.pdb / FableWin.pdb ?SetMaterial@CRenderManagerCore@@QAEXABVCRGBColour@@0@Z = retail 0x00A0AA10
+    // (the empty `ret 8` PC stub, Ego_r donor order before EnableXBoxShaderConstants 0x00A0AA20; the PASS22 declaration above).
+    // Declaration only.
+    void SetMaterial(const class CRGBColour&, const class CRGBColour&);   // 0x00A0AA10
+#endif
     void SetVertexFormat(unsigned long);
     void FlushRender();
 #ifdef FABLE_RETAIL_CRENDERMANAGERCORE_WAITWHILEGPUISBUSY
@@ -426,7 +432,24 @@ FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* texture)
     // draws D3DPT_POINTLIST = 1, DrawCurrentBuffersAsPointList(JJ)). Declaration only.
     void DrawCurrentBuffersAsTriFan(long startVertex, long triangleCount);                         // 0x00A0AE40
 #endif
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_DRAWCURRENTBUFFERSASPOINTLIST
+    // NF45 opt-in (row 0x00B54210 CEngineWeatherRenderer::RenderSnowBox): Ego_r.pdb / FableWin.pdb
+    // ?DrawCurrentBuffersAsPointList@CRenderManagerCore@@QAEXJJ@Z = retail 0x00A0AE70 (the DrawPrimitive(D3DPT_POINTLIST) twin of
+    // DrawCurrentBuffersAsTriFan; catalog CRenderManagerCore::DrawCurrentBuffersAsPointList, reloc_bindings.tsv). Declaration only.
+    void DrawCurrentBuffersAsPointList(long startVertex, long pointCount);                         // 0x00A0AE70
+#endif
     void SetWorldTransform(const CMatrix3x4& matrix);                    // ?SetWorldTransform@CRenderManagerCore@@QAEXABVCMatrix3x4@@@Z
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_SETVIEWTRANSFORM
+    // NF45 opt-in (row 0x00B2FC50 CEngineCamera::RefreshD3DTransforms): Ego_r.pdb / FableWin.pdb
+    // ?SetViewTransform@CRenderManagerCore@@QAEXABVCMatrix3x4@@@Z = retail 0x00A0B0A0 (catalog CRenderManagerCore::SetViewTransform; the
+    // PASS22 declaration above). Declaration only.
+    void SetViewTransform(const CMatrix3x4& matrix);                     // 0x00A0B0A0
+#endif
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_SETPERSPECTIVETRANSFORM
+    // NF45 opt-in (row 0x00B2FC50): the four-float overload ?SetPerspectiveTransform@CRenderManagerCore@@QAEXMMMM@Z = retail 0x00A0B320
+    // (catalog CRenderManagerCore::SetPerspectiveTransform; the PASS22 declaration above). Declaration only.
+    void SetPerspectiveTransform(float, float, float, float);            // 0x00A0B320
+#endif
     void SetTextureTransform(unsigned long stage, const CMatrix3x4& matrix);   // ?SetTextureTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z
 private:
     // ?AttachD3DTextureToStage@CRenderManagerCore@@AAEXJPAUIDirect3DBaseTexture9@@@Z: device call only on a change; the

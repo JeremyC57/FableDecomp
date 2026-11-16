@@ -22,127 +22,16 @@
 //   arguments are named locals in the order primitiveCount, startIndex, vertexCount (that order puts PrimitiveCount in
 //   ebx and spills StartIndex / VertexCount as retail does; the direct-argument form swaps them).
 #include "fable_compiler.h"
-#define COM_SLOT(n) virtual void __stdcall slot##n()
-
-struct IDirect3DBaseTexture9;
-struct IDirect3DTexture9;
-struct IDirect3DIndexBuffer9;
-
-struct IDirect3DDevice9 {                          // only the slots used are typed
-    COM_SLOT(0);
-    COM_SLOT(1);
-    COM_SLOT(2);
-    COM_SLOT(3);
-    COM_SLOT(4);
-    COM_SLOT(5);
-    COM_SLOT(6);
-    COM_SLOT(7);
-    COM_SLOT(8);
-    COM_SLOT(9);
-    COM_SLOT(10);
-    COM_SLOT(11);
-    COM_SLOT(12);
-    COM_SLOT(13);
-    COM_SLOT(14);
-    COM_SLOT(15);
-    COM_SLOT(16);
-    COM_SLOT(17);
-    COM_SLOT(18);
-    COM_SLOT(19);
-    COM_SLOT(20);
-    COM_SLOT(21);
-    COM_SLOT(22);
-    COM_SLOT(23);
-    COM_SLOT(24);
-    COM_SLOT(25);
-    COM_SLOT(26);
-    COM_SLOT(27);
-    COM_SLOT(28);
-    COM_SLOT(29);
-    COM_SLOT(30);
-    COM_SLOT(31);
-    COM_SLOT(32);
-    COM_SLOT(33);
-    COM_SLOT(34);
-    COM_SLOT(35);
-    COM_SLOT(36);
-    COM_SLOT(37);
-    COM_SLOT(38);
-    COM_SLOT(39);
-    COM_SLOT(40);
-    COM_SLOT(41);
-    COM_SLOT(42);
-    COM_SLOT(43);
-    COM_SLOT(44);
-    COM_SLOT(45);
-    COM_SLOT(46);
-    COM_SLOT(47);
-    COM_SLOT(48);
-    COM_SLOT(49);
-    COM_SLOT(50);
-    COM_SLOT(51);
-    COM_SLOT(52);
-    COM_SLOT(53);
-    COM_SLOT(54);
-    COM_SLOT(55);
-    COM_SLOT(56);
-    COM_SLOT(57);
-    COM_SLOT(58);
-    COM_SLOT(59);
-    COM_SLOT(60);
-    COM_SLOT(61);
-    COM_SLOT(62);
-    COM_SLOT(63);
-    COM_SLOT(64);
-    virtual long __stdcall SetTexture(unsigned long stage, IDirect3DBaseTexture9* texture);   // slot 65 (+0x104)
-    COM_SLOT(66); COM_SLOT(67); COM_SLOT(68); COM_SLOT(69); COM_SLOT(70); COM_SLOT(71); COM_SLOT(72); COM_SLOT(73); COM_SLOT(74); COM_SLOT(75);
-    COM_SLOT(76); COM_SLOT(77); COM_SLOT(78); COM_SLOT(79); COM_SLOT(80); COM_SLOT(81);
-    virtual long __stdcall DrawIndexedPrimitive(unsigned long type, long baseVertexIndex, unsigned long minVertexIndex,
-                                                unsigned long numVertices, unsigned long startIndex,
-                                                unsigned long primCount);                  // slot 82 (+0x148)
-    COM_SLOT(83); COM_SLOT(84); COM_SLOT(85); COM_SLOT(86); COM_SLOT(87); COM_SLOT(88); COM_SLOT(89); COM_SLOT(90); COM_SLOT(91); COM_SLOT(92);
-    COM_SLOT(93); COM_SLOT(94); COM_SLOT(95); COM_SLOT(96); COM_SLOT(97); COM_SLOT(98); COM_SLOT(99); COM_SLOT(100); COM_SLOT(101);
-    COM_SLOT(102); COM_SLOT(103);
-    virtual long __stdcall SetIndices(IDirect3DIndexBuffer9* indexData);                     // slot 104 (+0x1a0)
-};
-
-enum EPrimitiveType { PRIMITIVE_TYPE_DEFAULT = -1, PrimitiveTriangleList = 4, PrimitiveTriangleStrip = 5 };
-
-#include "engine/CIndexBuffer.h"                   // Ego_r.pdb, 0x14 bytes (PD3DIndexBuffer +4, PrimitiveType +0xc)
-#include "engine/CTexture.h"                       // Ego_r.pdb, 8 bytes (PD3DTexture +0)
-
-class CRenderStateManager {
-public:
-    void RealiseRenderState();                     // 0x00A058C0
-};
-
-class CRenderManagerCore : public CRenderStateManager {   // retail offsets as the landed SetupFirstTextures 0x00B9D670
-public:
-    unsigned char          _pad0[0x3cb8];
-    long                   NumTextureStagesUsed;   // +0x3cb8
-    unsigned char          _pad3cbc[0x3cf0 - 0x3cbc];
-    IDirect3DDevice9*      PD3DDevice;             // +0x3cf0
-    void*                  CurrentIndices;         // +0x3cf4
-    unsigned char          _pad3cf8[8];
-    IDirect3DBaseTexture9* CurrentTextures[4];     // +0x3d00
-    void AttachTextureToStage(long stage, const CTexture* texture)
-    {
-        AttachD3DTextureToStage(stage, texture ? (IDirect3DBaseTexture9*)texture->PD3DTexture : 0);
-    }
-private:
-    void AttachD3DTextureToStage(long stage, IDirect3DBaseTexture9* texture)
-    {
-        if (CurrentTextures[stage] != texture) {
-            CurrentTextures[stage] = texture;
-            PD3DDevice->SetTexture(stage, texture);
-        }
-        if (NumTextureStagesUsed < stage + 1)
-            NumTextureStagesUsed = stage + 1;
-    }
-};
-extern CRenderManagerCore* g_pRenderManagerCore;   // 0x01436E18
-
-class CRenderManager : public CRenderManagerCore { };
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h: CRenderManager : CRenderManager2D :
+//   CRenderManagerCore : CRenderStateManager, all at offset 0); the stage unbinds are its PDB inline AttachTextureToStage (repo opt-in
+//   FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS), on the shared IDirect3DDevice9 / CIndexBuffer / CTexture and the shared
+//   EPrimitiveType (engine/EPrimitiveType.h). Was g_pRenderManagerCore with local IDirect3DDevice9 / CRenderStateManager /
+//   CRenderManagerCore / CRenderManager models and a local EPrimitiveType.
+#define FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS
+#include "engine/EPrimitiveType.h"
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
 class CShaderRenderManager {
 public:
@@ -153,7 +42,7 @@ public:
                             unsigned long startIndex, unsigned long primitiveCount, EPrimitiveType primitiveType)
     {
         D3DDevice->SetIndices(indexBuffer.PD3DIndexBuffer);
-        if (primitiveType == PRIMITIVE_TYPE_DEFAULT)
+        if (primitiveType == PT_NULL)
             primitiveType = *(EPrimitiveType*)indexBuffer.PrimitiveType;
         RenderManager->RealiseRenderState();
         D3DDevice->DrawIndexedPrimitive(primitiveType, 0, minVertexIndex, numVertices, startIndex, primitiveCount);
@@ -220,9 +109,9 @@ void __fastcall CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBloc
                                                                                                       const C3DTextureStages& textureStages)
 {
     if (textureStages.DiffuseTextureStage != -1)
-        g_pRenderManagerCore->AttachTextureToStage(textureStages.DiffuseTextureStage, 0);
+        NEngineInternal::GPRenderManager->AttachTextureToStage(textureStages.DiffuseTextureStage, 0);
     if (textureStages.BumpTextureStage != -1)
-        g_pRenderManagerCore->AttachTextureToStage(textureStages.BumpTextureStage, 0);
+        NEngineInternal::GPRenderManager->AttachTextureToStage(textureStages.BumpTextureStage, 0);
 
     const unsigned long blockCount = primitive.StaticBlockCount;
     for (unsigned long i = 0; i < blockCount; ++i) {
@@ -233,7 +122,7 @@ void __fastcall CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBloc
             const unsigned long vertexCount = primitive.VertexCount;
             CIndexBuffer& indexBuffer = *primitive.IndexBuffer;
             NEngineInternal::GPShaderRenderManager->DrawBuffersIndexed(0, vertexCount, indexBuffer, startIndex, primitiveCount,
-                                                       block.IsStrip ? PrimitiveTriangleStrip : PrimitiveTriangleList);
+                                                       block.IsStrip ? PT_TRIANGLE_STRIP : PT_TRIANGLE_LIST);
         }
     }
 }

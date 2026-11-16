@@ -11,6 +11,7 @@
 // ZAxis.Z down to XAxis.X. The first manager pointer is loaded before the argument is formed (the global is read
 // into ecx first, then `lea eax ; push eax`), the second after (`lea ecx ; push ecx ; mov ecx,[global]`):
 // VC schedules the first global load early because the matrix stores are independent of it.
+#include "engine/CRenderManager.h"
 #include "engine/CEnginePrimitiveRenderer.h"
 
 #include "engine/C3DVector.h"
@@ -27,11 +28,11 @@ class CMatrix3x4 { public:
 class CShaderRenderManager { public:
     void SetWorldTransform(const CMatrix3x4& transform);     // 0x009881F0
 };
-struct CRenderManagerCore {
-    void SetWorldTransform(const CMatrix3x4& transform);     // 0x00A0B140
-};
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }         // 0x01436E14
-extern CRenderManagerCore*   g_pRenderManagerCore;           // 0x01436E18
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderManagerCore at offset 0) and the call is the
+//   shared ?SetWorldTransform@CRenderManagerCore@@QAEXABVCMatrix3x4@@@Z 0x00A0B140 (was a local struct CRenderManagerCore / g_pRenderManagerCore).
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
 struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
     void ResetWorldTransform();
@@ -41,5 +42,5 @@ void CEnginePrimitiveRenderer_Methods::ResetWorldTransform()
 {
     CMatrix3x4 identity;
     NEngineInternal::GPShaderRenderManager->SetWorldTransform(identity);
-    g_pRenderManagerCore->SetWorldTransform(identity);
+    NEngineInternal::GPRenderManager->SetWorldTransform(identity);
 }

@@ -22,6 +22,12 @@
 // position; the CArray data is the `size ? first : (T*)this` GetData select. The two counts are truncated with
 // __ftol2 right to left (triangles = strength * 256 first, vertices = strength * 512 second).
 #include "fable_compiler.h"
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderManagerCore at offset 0), called
+//   through the shared ?DrawCurrentBuffersAsIndexedTris@CRenderManagerCore@@QAEXKKKK@Z 0x00A0AC60 (was a local class
+//   CRenderManagerCore / g_pRenderManagerCore).
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 #include "engine/CEngineWeatherRenderer.h"
 
 #include "engine/C3DVector.h"
@@ -128,12 +134,6 @@ private:
 };
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
-class CRenderManagerCore {
-public:
-    void DrawCurrentBuffersAsIndexedTris(unsigned long minVertexIndex, unsigned long vertexCount,
-                                         unsigned long startIndex, unsigned long triangleCount);   // 0x00A0AC60
-};
-extern CRenderManagerCore* g_pRenderManagerCore;        // 0x01436E18
 
 struct CEngineWeatherSettingsView {                     // CEngineWeatherSettings (PDB, 0x558 bytes)
     unsigned char _pad00[0x34];
@@ -153,6 +153,6 @@ void CEngineWeatherRendererMethods::RenderRainBox(const C3DVector& boxPos)
     NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, boxPos.X, boxPos.Y, boxPos.Z,
                                                         GetSettings().RainVolumeDepthSelectMultiplier);
     NEngineInternal::GPShaderRenderManager->PrepareForRender(5);
-    g_pRenderManagerCore->DrawCurrentBuffersAsIndexedTris(0, (long)(GetSettings().CurrentRainStrength * 512.0f), 0,
+    NEngineInternal::GPRenderManager->DrawCurrentBuffersAsIndexedTris(0, (long)(GetSettings().CurrentRainStrength * 512.0f), 0,
                                                           (long)(GetSettings().CurrentRainStrength * 256.0f));
 }

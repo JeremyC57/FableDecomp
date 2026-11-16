@@ -13,68 +13,22 @@
 //   settings (slot 1); the settings' sky block (+0x54) holds the base-band colour at +0x50.
 // Layout: engine/CEngineSkyRenderer.h (BaseBandVertexShader +0x118, BaseBandPixelShader +0x138).
 #include "fable_compiler.h"
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderManagerCore / CRenderStateManager at
+//   offset 0): the shared inline setters AlphaBlendEnable (+0x28B8) / AlphaTestEnable (+0x28CC) false and
+//   ?DrawCurrentBuffersIndexed@CRenderManagerCore@@QAEXKKKK@Z 0x00A0AD40; the capture open / RestoreCaptureBlock pair on 0x013CB508
+//   is a CRenderStateScopedCaptureBlock (engine/CRenderStateCaptureBlock.h). Was a local CRenderManagerCoreView /
+//   CTrackedRenderState model with g_pRenderManagerCore / g_pRenderStateManager. Not changed here: the 0x01436E8C read
+//   (NEngineInternal::GPEngineWorldMap -> PeekGameWorld()->DrawGetEnvironment()->PeekInterpolatedParams().ThemeChannels[0]
+//   Colours[5], the 0x00B65A20 shape) still goes through the SEngineState_01436e8c / CEnvironmentProvider view.
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
+#include "engine/CRenderManager.h"
+#include "engine/CRenderStateCaptureBlock.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 #include "engine/CEngineSkyRenderer.h"
 
 class C4DVector { public: float X, Y, Z, W; };
 
-struct CTrackedRenderState {                       // 0x14 bytes
-    long          m_stateId;                       // +0x00
-    unsigned long m_value;                         // +0x04 requested value
-    unsigned long m_captureMask;                   // +0x08
-    long          m_appliedValue;                  // +0x0C
-    bool          m_queued;                        // +0x10
-    FABLE_FORCEINLINE void Set(unsigned long value);
-};
-struct SCapturedRenderState {
-    CTrackedRenderState* m_pState;                 // +0x00
-    unsigned long        m_priorValue;             // +0x04
-};
-struct CRenderManagerCoreView {                    // the render manager core @ 0x01436E18 / 0x013CB508
-    unsigned char        _pad0000[0x8];
-    SCapturedRenderState m_captured[0x400];        // +0x0008
-    CTrackedRenderState* m_dirty[0x200];           // +0x2008
-    long                 m_capturedCount;          // +0x2808
-    long                 m_dirtyCount;             // +0x280C
-    long                 m_unknown2810;            // +0x2810
-    unsigned long        m_captureMask;            // +0x2814
-    unsigned char        _pad2818[0x28b8 - 0x2818];
-    CTrackedRenderState  m_state28b8;              // +0x28B8
-    CTrackedRenderState  m_state28cc;              // +0x28CC
-    unsigned char        _pad28e0[0x3a24 - 0x28e0];
-    unsigned char        m_captureBlockMarker[4];  // +0x3A24
-
-    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
-    {
-        if ((m_captureMask & state.m_captureMask) == 0) {
-            state.m_captureMask |= m_captureMask;
-            m_captured[m_capturedCount].m_pState = &state;
-            m_captured[m_capturedCount].m_priorValue = state.m_value;
-            ++m_capturedCount;
-        }
-        state.m_value = value;
-        if (!state.m_queued) {
-            state.m_queued = true;
-            m_dirty[m_dirtyCount] = &state;
-            ++m_dirtyCount;
-        }
-    }
-    FABLE_FORCEINLINE void OpenCaptureBlock()
-    {
-        m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
-        m_captureMask <<= 1;
-    }
-    void RestoreCaptureBlock();                    // 0x00A05840
-    void DrawCurrentBuffersIndexed(unsigned long baseVertex, unsigned long vertexCount,
-                                   unsigned long startIndex, unsigned long primitiveCount);   // 0x00A0AD40
-};
-extern CRenderManagerCoreView* g_pRenderStateManager;  // 0x013CB508
-extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
-
-FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
-{
-    if (m_value != value)
-        g_pRenderManagerCore->ChangeState(*this, value);
-}
 
 template <class T> class CArray { public:
     T* First;
@@ -207,16 +161,15 @@ struct CEngineSkyRenderer_Methods : CEngineSkyRenderer {
 
 void CEngineSkyRenderer_Methods::RenderBaseBand()
 {
-    g_pRenderStateManager->OpenCaptureBlock();
+    CRenderStateScopedCaptureBlock capture_block;
     SEnvironmentSettings* settings = g_pEngineState_01436e8c->m_pEnvironmentProvider->GetCurrentEnvironment()->GetSettings();
     NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)BaseBandVertexShader, false);
     NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)BaseBandPixelShader);
     SSkySettings* sky = settings->m_pSky;
     C4DVector colour = sky->BaseBandColour;
     NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, &colour);
-    g_pRenderManagerCore->m_state28b8.Set(0);
-    g_pRenderManagerCore->m_state28cc.Set(0);
+    NEngineInternal::GPRenderManager->SetAlphaBlendEnable(false);
+    NEngineInternal::GPRenderManager->SetAlphaTestEnable(false);
     NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
-    g_pRenderManagerCore->DrawCurrentBuffersIndexed(0x196, 0x25, 0x804, 0x24);
-    g_pRenderStateManager->RestoreCaptureBlock();
+    NEngineInternal::GPRenderManager->DrawCurrentBuffersIndexed(0x196, 0x25, 0x804, 0x24);
 }

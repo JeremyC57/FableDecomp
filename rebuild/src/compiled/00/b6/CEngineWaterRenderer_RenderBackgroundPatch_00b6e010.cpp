@@ -10,7 +10,15 @@
 // Shape: the world matrix is 0x00B7C510's (members written translation/off-diagonal first, diagonal last); a bridge strip's
 //   vertex count is its byte length divided (signed) by the stride.
 #include "fable_compiler.h"
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderManagerCore at offset 0): the buffer binds
+//   are its PDB inlines SelectVertexBuffer(0, buffer) / SelectIndexBuffer(buffer, 0) (PD3DDevice +0x3CF0, PSelectedIndexBuffer +0x3CF4)
+//   on the shared CVertexBufferWin32 / CIndexBuffer (a bridge strip's vertex count is the inline CVertexBufferBase::GetSize() over the
+//   stride), and the draw ?DrawCurrentBuffersAsIndexedTris@CRenderManagerCore@@QAEXKKKK@Z 0x00A0AC60. Was g_pRenderManagerCore with
+//   local CRenderManagerCore (SetVertexBuffer / SetIndexBuffer) / IDirect3DDevice9 / CVertexBufferWin32 / CIndexBuffer models.
+#include "engine/CRenderManager.h"
 #include "engine/CEngineWaterBackgroundSubPatch.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
 class CRGBFloatColour;
 class C4DVector { public:
@@ -161,77 +169,6 @@ private:
 };
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 
-struct IDirect3DVertexBuffer9;
-struct IDirect3DIndexBuffer9;
-
-struct IDirect3DDevice9 {
-    virtual void __stdcall v00(); virtual void __stdcall v04(); virtual void __stdcall v08(); virtual void __stdcall v0c();
-    virtual void __stdcall v10(); virtual void __stdcall v14(); virtual void __stdcall v18(); virtual void __stdcall v1c();
-    virtual void __stdcall v20(); virtual void __stdcall v24(); virtual void __stdcall v28(); virtual void __stdcall v2c();
-    virtual void __stdcall v30(); virtual void __stdcall v34(); virtual void __stdcall v38(); virtual void __stdcall v3c();
-    virtual void __stdcall v40(); virtual void __stdcall v44(); virtual void __stdcall v48(); virtual void __stdcall v4c();
-    virtual void __stdcall v50(); virtual void __stdcall v54(); virtual void __stdcall v58(); virtual void __stdcall v5c();
-    virtual void __stdcall v60(); virtual void __stdcall v64(); virtual void __stdcall v68(); virtual void __stdcall v6c();
-    virtual void __stdcall v70(); virtual void __stdcall v74(); virtual void __stdcall v78(); virtual void __stdcall v7c();
-    virtual void __stdcall v80(); virtual void __stdcall v84(); virtual void __stdcall v88(); virtual void __stdcall v8c();
-    virtual void __stdcall v90(); virtual void __stdcall v94(); virtual void __stdcall v98(); virtual void __stdcall v9c();
-    virtual void __stdcall va0(); virtual void __stdcall va4(); virtual void __stdcall va8(); virtual void __stdcall vac();
-    virtual void __stdcall vb0(); virtual void __stdcall vb4(); virtual void __stdcall vb8(); virtual void __stdcall vbc();
-    virtual void __stdcall vc0(); virtual void __stdcall vc4(); virtual void __stdcall vc8(); virtual void __stdcall vcc();
-    virtual void __stdcall vd0(); virtual void __stdcall vd4(); virtual void __stdcall vd8(); virtual void __stdcall vdc();
-    virtual void __stdcall ve0(); virtual void __stdcall ve4(); virtual void __stdcall ve8(); virtual void __stdcall vec();
-    virtual void __stdcall vf0(); virtual void __stdcall vf4(); virtual void __stdcall vf8(); virtual void __stdcall vfc();
-    virtual void __stdcall v100(); virtual void __stdcall v104(); virtual void __stdcall v108(); virtual void __stdcall v10c();
-    virtual void __stdcall v110(); virtual void __stdcall v114(); virtual void __stdcall v118(); virtual void __stdcall v11c();
-    virtual void __stdcall v120(); virtual void __stdcall v124(); virtual void __stdcall v128(); virtual void __stdcall v12c();
-    virtual void __stdcall v130(); virtual void __stdcall v134(); virtual void __stdcall v138(); virtual void __stdcall v13c();
-    virtual void __stdcall v140(); virtual void __stdcall v144(); virtual void __stdcall v148(); virtual void __stdcall v14c();
-    virtual void __stdcall v150(); virtual void __stdcall v154(); virtual void __stdcall v158(); virtual void __stdcall v15c();
-    virtual void __stdcall v160(); virtual void __stdcall v164(); virtual void __stdcall v168(); virtual void __stdcall v16c();
-    virtual void __stdcall v170(); virtual void __stdcall v174(); virtual void __stdcall v178(); virtual void __stdcall v17c();
-    virtual void __stdcall v180(); virtual void __stdcall v184(); virtual void __stdcall v188(); virtual void __stdcall v18c();
-    virtual long __stdcall SetStreamSource(unsigned long stream, IDirect3DVertexBuffer9* data, unsigned long offset, unsigned long stride);   // slot 100 (+0x190)
-    virtual void __stdcall v194(); virtual void __stdcall v198(); virtual void __stdcall v19c();
-    virtual long __stdcall SetIndices(IDirect3DIndexBuffer9* indices);   // slot 104 (+0x1A0)
-};
-
-class CVertexBufferWin32 { public:                        // PDB CVertexBufferBase fields of CVertexBufferWin32
-    void*                   _vptr;                 // +0x00
-    IDirect3DVertexBuffer9* PVertexBuffer;         // +0x04
-    long                    Length;                // +0x08 (bytes; divided signed by the stride)
-    long                    Type;                  // +0x0c
-    unsigned char           Stride;                // +0x10
-};
-class CIndexBuffer { public:
-    void*                  _vptr;                  // +0x00
-    IDirect3DIndexBuffer9* PD3DIndexBuffer;        // +0x04
-};
-
-struct CRenderManagerCore {                         // the render manager core @ 0x01436E18 (Ego_r.pdb offsets)
-    unsigned char     _pad0000[0x3cf0];
-    IDirect3DDevice9* PD3DDevice;                       // +0x3CF0
-    CIndexBuffer*     PSelectedIndexBuffer;             // +0x3CF4
-
-    void DrawCurrentBuffersAsIndexedTris(unsigned long minIndex, unsigned long vertexCount,
-                                         unsigned long startIndex, unsigned long triangleCount);   // 0x00A0AC60
-    FABLE_FORCEINLINE void SetVertexBuffer(CVertexBufferWin32* buffer)
-    {
-        if (buffer)
-            PD3DDevice->SetStreamSource(0, buffer->PVertexBuffer, 0, buffer->Stride);
-        else
-            PD3DDevice->SetStreamSource(0, 0, 0, 0);
-    }
-    FABLE_FORCEINLINE void SetIndexBuffer(CIndexBuffer* buffer)
-    {
-        PSelectedIndexBuffer = buffer;
-        if (buffer)
-            PD3DDevice->SetIndices(buffer->PD3DIndexBuffer);
-        else
-            PD3DDevice->SetIndices(0);
-    }
-};
-extern CRenderManagerCore* g_pRenderManagerCore;        // 0x01436E18
-
 class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                        // +0x54
@@ -248,14 +185,14 @@ void CEngineWaterRenderer::RenderBackgroundPatch(CEngineWaterBackgroundSubPatch*
     world.Pos = NEngineInternal::GPCamera->WorldPosition;
     NEngineInternal::GPShaderRenderManager->SetWorldTransform(world);
     NEngineInternal::GPShaderRenderManager->PrepareForRender(1);
-    g_pRenderManagerCore->SetVertexBuffer(patch->VertexBuffer);
-    g_pRenderManagerCore->SetIndexBuffer(patch->IndexBuffer);
-    g_pRenderManagerCore->DrawCurrentBuffersAsIndexedTris(0, patch->VertexCount, 0, patch->PolyCount);
+    NEngineInternal::GPRenderManager->SelectVertexBuffer(0, patch->VertexBuffer);
+    NEngineInternal::GPRenderManager->SelectIndexBuffer(patch->IndexBuffer, 0);
+    NEngineInternal::GPRenderManager->DrawCurrentBuffersAsIndexedTris(0, patch->VertexCount, 0, patch->PolyCount);
     for (long i = 0; i < 4; ++i) {
         if (patch->BridgeVertexBuffers[i]) {
-            g_pRenderManagerCore->SetVertexBuffer(patch->BridgeVertexBuffers[i]);
-            g_pRenderManagerCore->SetIndexBuffer(patch->BridgeIndexBuffers[i]);
-            g_pRenderManagerCore->DrawCurrentBuffersAsIndexedTris(0, patch->BridgeVertexBuffers[i]->Length / patch->BridgeVertexBuffers[i]->Stride,
+            NEngineInternal::GPRenderManager->SelectVertexBuffer(0, patch->BridgeVertexBuffers[i]);
+            NEngineInternal::GPRenderManager->SelectIndexBuffer(patch->BridgeIndexBuffers[i], 0);
+            NEngineInternal::GPRenderManager->DrawCurrentBuffersAsIndexedTris(0, patch->BridgeVertexBuffers[i]->GetSize() / patch->BridgeVertexBuffers[i]->Stride,
                                                                   0, patch->BridgePolyCount[i]);
         }
     }

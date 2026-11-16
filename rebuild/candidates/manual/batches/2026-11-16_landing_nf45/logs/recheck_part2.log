@@ -1,0 +1,119 @@
+addr       parity           behav  name
+00b32100   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b32100   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b32100   RELOCATION_MATCH PASS   ResetWorldTransform
+00b32660   WARN SHARED_HEADER_AVAILABLE CPixelShader
+00b32660   WARN SHARED_HEADER_AVAILABLE CEngineInterpolationInfo
+00b32660   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+00b32660   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00b32660   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager
+00b32660   WARN SHARED_HEADER_AVAILABLE CEngineClothRenderer
+00b32660   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRendererSharedData
+00b32660   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b32660   WARN RELOC_NAME: ?PeekVideoOptionsDef@CEngine@@QAEABVCEngineVideoOptionsDef@@W4EEngineVideoOptionQuality@@@Z -> 00b244f0 labelled 'CTextureManager::GetPoolTextureSize'
+00b32660   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b32660   RELOCATION_MATCH PASS   FrameStart
+00b46890   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager
+00b46890   RELOCATION_MATCH PASS   EnableFog
+00b4f510   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+00b4f510   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b4f510   WARN SHARED_HEADER_AVAILABLE CMatrix4x4
+00b4f510   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b4f510   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00b4f510   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b4f510   WARN SHARED_HEADER_AVAILABLE CEngineComponentRenderParams
+00b4f510   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b4f510   WARN RELOC_NAME: ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z -> 00a0aa80 labelled '_global::Forward_SetViewport_via0x3a3c_00a0aa80'
+00b4f510   RELOCATION_MATCH PASS   PreLayerRender
+00b54310   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b54310   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b54310   WARN SHARED_HEADER_AVAILABLE CArray
+00b54310   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b54310   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b54310   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b54310   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b54310   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b54310   RELOCATION_MATCH PASS   RenderMist
+00b586a0   RELOCATION_MATCH PASS   Apply
+00b592c0   RELOCATION_MATCH PASS   Apply
+00b63010   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b63010   WARN SHARED_HEADER_AVAILABLE CArray
+00b63010   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b63010   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b63010   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b63010   WARN SHARED_HEADER_AVAILABLE CEnvironment
+00b63010   RELOCATION_MATCH PASS   RenderBaseBand
+00b662f0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b662f0   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+00b662f0   WARN SHARED_HEADER_AVAILABLE CEngineCameraDesc
+00b662f0   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00b662f0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager
+00b662f0   WARN SHARED_HEADER_AVAILABLE CEngineComponentRenderParams
+00b662f0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b662f0   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b662f0   WARN RELOC_NAME: ?AddFlareTest@CEngineOcclusionManager@@QAEXKABVC3DVector@@MJ@Z -> 00b8d040 labelled '_global::Nop_ret16_00b8d040'
+00b662f0   RELOCATION_MATCH PASS   Render
+00b6e010   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b6e010   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b6e010   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b6e010   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b6e010   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix
+00b6e010   WARN SHARED_HEADER_AVAILABLE CArray
+00b6e010   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b6e010   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b6e010   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b6e010   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00b6e010   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b6e010   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b6e010   RELOCATION_MATCH PASS   RenderBackgroundPatch
+00b77e20   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b77e20   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b77e20   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix
+00b77e20   WARN SHARED_HEADER_AVAILABLE CArray
+00b77e20   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b77e20   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b77e20   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b77e20   WARN SHARED_HEADER_AVAILABLE CWaterPatchMesh
+00b77e20   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b77e20   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b77e20   RELOCATION_MATCH PASS   RenderSeaNonReflectiveForeground
+00b88bc0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b88bc0   WARN SHARED_HEADER_AVAILABLE CArray
+00b88bc0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b88bc0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b88bc0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b88bc0   WARN RELOC_NAME: ?g_ShaderRenderManager@@3UCShaderEnableState@@A -> 013bc470 labelled 'CShaderRenderManager::SingletonInstance'
+00b88bc0   RELOCATION_MATCH PASS   ShowDisplacementTexture
+00b9d670   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2
+00b9d670   WARN SHARED_HEADER_AVAILABLE C3DTextureStages
+00b9d670   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerStaticMeshesBase
+00b9d670   RELOCATION_MATCH PASS   SetupFirstTextures
+00bcd490   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00bcd490   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveBase
+00bcd490   RELOCATION_MATCH PASS   RenderSubPrimitive
+00beaca0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00beaca0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00beaca0   WARN SHARED_HEADER_AVAILABLE CArray
+00beaca0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00beaca0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00beaca0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00beaca0   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00beaca0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00beaca0   RELOCATION_MATCH PASS   Render
+
+WINS: 15
+  00b32100 RELOCATION_MATCH CEnginePrimitiveRenderer::ResetWorldTransform
+  00b32660 RELOCATION_MATCH CEnginePrimitiveRenderer::?FrameStart@CEnginePrimitiveRenderer@@UAEXABVCEngineComponentParams@@@Z
+  00b46890 RELOCATION_MATCH CEngineLightingManager::EnableFog
+  00b4f510 RELOCATION_MATCH CEngineShadowRenderer::PreLayerRender
+  00b54310 RELOCATION_MATCH CEngineWeatherRenderer::RenderMist
+  00b586a0 RELOCATION_MATCH CEngineStateBlockAlpha2XTFactor::?Apply@CEngineStateBlockAlpha2XTFactor@@UAEXXZ
+  00b592c0 RELOCATION_MATCH CEngineStateBlockDiffuseEnv2X::?Apply@CEngineStateBlockDiffuseEnv2X@@UAEXXZ
+  00b63010 RELOCATION_MATCH CEngineSkyRenderer::RenderBaseBand
+  00b662f0 RELOCATION_MATCH CEngineSkyRenderer::Render
+  00b6e010 RELOCATION_MATCH CEngineWaterRenderer::RenderBackgroundPatch
+  00b77e20 RELOCATION_MATCH CEngineWaterRenderer::RenderSeaNonReflectiveForeground
+  00b88bc0 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::ShowDisplacementTexture
+  00b9d670 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::?SetupFirstTextures@CEnginePrimitiveManagerStaticMeshesBase@@SIXAAVC3DPrimitive2@@AAVC3DTextureStages@@@Z
+  00bcd490 RELOCATION_MATCH CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive
+  00beaca0 RELOCATION_MATCH CWaterPatchMesh::Render

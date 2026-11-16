@@ -1,89 +1,30 @@
 // CEngineStateBlockSolid2X::Apply() -- set the 10 tracked render states of the Solid2X state block on the render core
-// Leaf: Apply
+// Leaf: ?Apply@CEngineStateBlockSolid2X@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B56F50, length 1104 bytes, plain `ret` (virtual, `this` unused).
-// Twin of the landed CEngineStateBlockDiffuse2X::Apply 0x00B58FB0 / CEngineStateBlockDiffuseOnly::Apply 0x00B58DE0: render manager
-//   core @ 0x01436E18 (capture stack +0x08, dirty list +0x2008, counts +0x2808/+0x280C, capture mask +0x2814, 0x14-byte
-//   tracked states) and the same `__forceinline` SetState(state, value, core) with the core LAST.
-// States in retail order: +0x291c<-0x01396F6C, +0x2930<-0x01396F68, +0x3204<-0x01396E80, +0x32a4<-0x01396E7C, +0x3344<-0x01396EF0, +0x33e4<-0x01396EEC, +0x3484<-0x01396EF0, +0x3524<-0x01396EEC, +0x3218<-0x01396E70, +0x32b8<-0x01396E70
-#include "fable_compiler.h"
-struct CTrackedRenderState {                       // 0x14 bytes
-    long          m_stateId;                       // +0x00
-    unsigned long m_value;                         // +0x04 requested value
-    unsigned long m_captureMask;                   // +0x08
-    long          m_appliedValue;                  // +0x0C
-    bool          m_queued;                        // +0x10
-};
-struct SCapturedRenderState {
-    CTrackedRenderState* m_pState;                 // +0x00
-    unsigned long        m_priorValue;             // +0x04
-};
-struct CRenderManagerCoreView {                    // the render manager core @ 0x01436E18
-    unsigned char        _pad0000[0x8];
-    SCapturedRenderState m_captured[0x400];        // +0x0008
-    CTrackedRenderState* m_dirty[0x200];           // +0x2008
-    long                 m_capturedCount;          // +0x2808
-    long                 m_dirtyCount;             // +0x280C
-    long                 m_unknown2810;            // +0x2810
-    unsigned long        m_captureMask;            // +0x2814
-    unsigned char        _pad2818[0x291c - 0x2818];
-    CTrackedRenderState  m_state291c;              // +0x291C
-    CTrackedRenderState  m_state2930;              // +0x2930
-    unsigned char        _pad2944[0x3204 - 0x2944];
-    CTrackedRenderState  m_state3204;              // +0x3204
-    CTrackedRenderState  m_state3218;              // +0x3218
-    unsigned char        _pad322c[0x32a4 - 0x322c];
-    CTrackedRenderState  m_state32a4;              // +0x32A4
-    CTrackedRenderState  m_state32b8;              // +0x32B8
-    unsigned char        _pad32cc[0x3344 - 0x32cc];
-    CTrackedRenderState  m_state3344;              // +0x3344
-    unsigned char        _pad3358[0x33e4 - 0x3358];
-    CTrackedRenderState  m_state33e4;              // +0x33E4
-    unsigned char        _pad33f8[0x3484 - 0x33f8];
-    CTrackedRenderState  m_state3484;              // +0x3484
-    unsigned char        _pad3498[0x3524 - 0x3498];
-    CTrackedRenderState  m_state3524;              // +0x3524
-};
-extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
-extern unsigned long g_renderStateDefault_01396e70;    // 0x01396E70
-extern unsigned long g_renderStateDefault_01396e7c;    // 0x01396E7C
-extern unsigned long g_renderStateDefault_01396e80;    // 0x01396E80
-extern unsigned long g_renderStateDefault_01396eec;    // 0x01396EEC
-extern unsigned long g_renderStateDefault_01396ef0;    // 0x01396EF0
-extern unsigned long g_renderStateDefault_01396f68;    // 0x01396F68
-extern unsigned long g_renderStateDefault_01396f6c;    // 0x01396F6C
-
-static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
-{
-    if (state.m_value != value) {
-        if ((core->m_captureMask & state.m_captureMask) == 0) {
-            state.m_captureMask |= core->m_captureMask;
-            core->m_captured[core->m_capturedCount].m_pState = &state;
-            core->m_captured[core->m_capturedCount].m_priorValue = state.m_value;
-            ++core->m_capturedCount;
-        }
-        state.m_value = value;
-        if (!state.m_queued) {
-            state.m_queued = true;
-            core->m_dirty[core->m_dirtyCount] = &state;
-            ++core->m_dirtyCount;
-        }
-    }
-}
-
-struct CEngineStateBlockSolid2X {
-    virtual void Apply();
-};
+// RTTI class: engine/CEngineStateBlocks.h FABLE_RETAIL_CENGINESTATEBLOCKS (CStateBlockFunctionBase); twin of the landed
+//   CEngineStateBlockAlpha::Apply 0x00B573A0 (same body shape, different setter constants).
+// Body: 10 inline CRenderStateManager setters (engine/CRenderStateManager.h FABLE_RETAIL_CRENDERSTATEMANAGER) on the render manager
+//   singleton NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A;
+//   CRenderManager : CRenderManager2D : CRenderManagerCore : CRenderStateManager, all at offset 0), re-read after every changed state.
+//   Each setter maps the engine enum through its private static D3D table (D3DAlphaBlendModeTable 0x01396F68,
+//   D3DTextureOperationModeTable 0x01396E70, D3DTextureArgumentModeTable 0x01396EE8). States in retail order: SourceAlphaBlendMode=ALPHA_BLEND_ONE, DestAlphaBlendMode=ALPHA_BLEND_ZERO, TextureOperation[0]=TEXTURE_OP_MODULATE_2X, TextureAlphaOperation[0]=TEXTURE_OP_MODULATE, TextureArgument1[0]=TEXTURE_ARG_TEXTURE, TextureArgument2[0]=TEXTURE_ARG_DIFFUSE, TextureAlphaArgument1[0]=TEXTURE_ARG_TEXTURE, TextureAlphaArgument2[0]=TEXTURE_ARG_DIFFUSE, TextureOperation[1]=TEXTURE_OP_DISABLE, TextureAlphaOperation[1]=TEXTURE_OP_DISABLE.
+// NF45 (round 7): was a local CRenderManagerCoreView / CTrackedRenderState model with a local SetState and address-named
+//   g_renderStateDefault_<addr> table entries; now the shared header's DeviceState setters.
+#define FABLE_RETAIL_CENGINESTATEBLOCKS
+#include "engine/CRenderManager.h"
+#include "engine/CEngineStateBlocks.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
 void CEngineStateBlockSolid2X::Apply()
 {
-    SetState(g_pRenderManagerCore->m_state291c, g_renderStateDefault_01396f6c, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state2930, g_renderStateDefault_01396f68, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state3204, g_renderStateDefault_01396e80, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state32a4, g_renderStateDefault_01396e7c, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state3344, g_renderStateDefault_01396ef0, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state33e4, g_renderStateDefault_01396eec, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state3484, g_renderStateDefault_01396ef0, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state3524, g_renderStateDefault_01396eec, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state3218, g_renderStateDefault_01396e70, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state32b8, g_renderStateDefault_01396e70, g_pRenderManagerCore);
+    NEngineInternal::GPRenderManager->SetSourceAlphaBlendMode(ALPHA_BLEND_ONE);
+    NEngineInternal::GPRenderManager->SetDestAlphaBlendMode(ALPHA_BLEND_ZERO);
+    NEngineInternal::GPRenderManager->SetTextureOperation(0, TEXTURE_OP_MODULATE_2X);
+    NEngineInternal::GPRenderManager->SetTextureAlphaOperation(0, TEXTURE_OP_MODULATE);
+    NEngineInternal::GPRenderManager->SetTextureArgument1(0, TEXTURE_ARG_TEXTURE);
+    NEngineInternal::GPRenderManager->SetTextureArgument2(0, TEXTURE_ARG_DIFFUSE);
+    NEngineInternal::GPRenderManager->SetTextureAlphaArgument1(0, TEXTURE_ARG_TEXTURE);
+    NEngineInternal::GPRenderManager->SetTextureAlphaArgument2(0, TEXTURE_ARG_DIFFUSE);
+    NEngineInternal::GPRenderManager->SetTextureOperation(1, TEXTURE_OP_DISABLE);
+    NEngineInternal::GPRenderManager->SetTextureAlphaOperation(1, TEXTURE_OP_DISABLE);
 }

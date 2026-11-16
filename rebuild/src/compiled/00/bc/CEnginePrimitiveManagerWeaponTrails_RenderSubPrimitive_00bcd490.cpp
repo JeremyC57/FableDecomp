@@ -16,64 +16,17 @@
 #include "fable_compiler.h"
 class CEngineSubPrimitiveBase;
 
-struct CTrackedRenderState {                       // 0x14 bytes
-    long          m_stateId;                       // +0x00
-    unsigned long m_value;                         // +0x04 requested value
-    unsigned long m_captureMask;                   // +0x08
-    long          m_appliedValue;                  // +0x0C
-    bool          m_queued;                        // +0x10
-    FABLE_FORCEINLINE void Set(unsigned long value);
-};
-struct SCapturedRenderState {
-    CTrackedRenderState* m_pState;                 // +0x00
-    unsigned long        m_priorValue;             // +0x04
-};
-class CRenderStateManager { public:
-    unsigned char        _pad0000[0x8];
-    SCapturedRenderState m_captured[0x400];        // +0x0008
-    CTrackedRenderState* m_dirty[0x200];           // +0x2008
-    long                 m_capturedCount;          // +0x2808
-    long                 m_dirtyCount;             // +0x280C
-    long                 AllStatesListSize;            // +0x2810
-    unsigned long        m_captureMask;            // +0x2814
-    unsigned char        _pad2818[0x2854 - 0x2818];
-    CTrackedRenderState  m_state2854;              // +0x2854
-    unsigned char        _pad2868[0x2890 - 0x2868];
-    CTrackedRenderState  m_state2890;              // +0x2890
-    unsigned char        _pad28a4[0x3a24 - 0x28a4];
-    unsigned char        m_captureBlockMarker[4];  // +0x3a24
-    void RestoreCaptureBlock();                    // 0x00A05840
-    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
-    {
-        if ((m_captureMask & state.m_captureMask) == 0) {
-            state.m_captureMask |= m_captureMask;
-            m_captured[m_capturedCount].m_pState = &state;
-            m_captured[m_capturedCount].m_priorValue = state.m_value;
-            ++m_capturedCount;
-        }
-        state.m_value = value;
-        if (!state.m_queued) {
-            state.m_queued = true;
-            m_dirty[m_dirtyCount] = &state;
-            ++m_dirtyCount;
-        }
-    }
-    FABLE_FORCEINLINE void OpenCaptureBlock()
-    {
-        m_captured[m_capturedCount].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
-        ++m_capturedCount;
-        m_captureMask <<= 1;
-    }
-};
-extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
-extern CRenderStateManager* g_pRenderManagerCore;    // 0x01436E18
-extern unsigned long g_renderStateDefault_01396fb8;  // 0x01396FB8
-
-FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
-{
-    if (m_value != value)
-        g_pRenderManagerCore->ChangeState(*this, value);
-}
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderStateManager at offset 0): the shared
+//   inline setters ZBufferWriteEnable(false) (+0x2854) and PolyCullMode (+0x2890) [POLY_CULL_NONE] through D3DPolyCullModeTable
+//   0x01396FB0; the capture open / RestoreCaptureBlock pair on 0x013CB508 is a CRenderStateScopedCaptureBlock
+//   (engine/CRenderStateCaptureBlock.h). Was a local CRenderStateManager / CTrackedRenderState model typed onto g_pRenderManagerCore
+//   and g_pRenderStateManager, and g_renderStateDefault_01396fb8. 0x01436E90 (g_pEngineComponent_01436e90) is outside the GP family
+//   and left.
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
+#include "engine/CRenderManager.h"
+#include "engine/CRenderStateCaptureBlock.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
 class CShaderRenderManager { public:
     unsigned char _pad[0x391];
@@ -109,13 +62,13 @@ public:
 
 void CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long pass)
 {
-    g_pRenderStateManager->OpenCaptureBlock();
+    CRenderStateScopedCaptureBlock capture_block;
     bool pixelShaders = NEngineInternal::GPShaderRenderManager->PixelShadersEnabled;
     if (pixelShaders)
         NEngineInternal::GPShaderRenderManager->DisablePixelShaders();
     g_pEngineComponent_01436e90->RenderState.Apply();
-    g_pRenderManagerCore->m_state2854.Set(0);
-    g_pRenderManagerCore->m_state2890.Set(g_renderStateDefault_01396fb8);
+    NEngineInternal::GPRenderManager->SetZBufferWriteEnable(false);
+    NEngineInternal::GPRenderManager->SetPolyCullMode(POLY_CULL_NONE);
     RenderWeaponTrail(*subPrimitive.Parent);
     if (pixelShaders != NEngineInternal::GPShaderRenderManager->PixelShadersEnabled) {
         if (pixelShaders)
@@ -123,5 +76,4 @@ void CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive(CEngineSubPrimitive
         else
             NEngineInternal::GPShaderRenderManager->DisablePixelShaders();
     }
-    g_pRenderStateManager->RestoreCaptureBlock();
 }

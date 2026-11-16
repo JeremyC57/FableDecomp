@@ -54,11 +54,12 @@ public:
 };
 namespace NEngineInternal { extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D; }   // 0x01436E7C
 
-struct CEngineSettings_01436e38 {
-    unsigned char _pad[0xee];
-    bool          DisplacementPassEnabled;          // +0xee (descriptive)
-};
-extern CEngineSettings_01436e38* g_pEngineSettings_01436e38;   // 0x01436E38
+// NF45 (round 7): 0x01436E38 is NEngineInternal::GPScreenEffectDisplacementRenderer (Ego_r.pdb / FableWin.pdb
+//   ?GPScreenEffectDisplacementRenderer@NEngineInternal@@3PAVCEngineScreenEffectDisplacementRenderer@@A) and its +0xEE byte is the
+//   Ego_r.pdb member Enable2DDisplacement (engine/CEngineScreenEffectDisplacementRenderer.h); was the address-named
+//   CEngineSettings_01436e38 / g_pEngineSettings_01436e38 view.
+#include "engine/CEngineScreenEffectDisplacementRenderer.h"
+namespace NEngineInternal { extern CEngineScreenEffectDisplacementRenderer* GPScreenEffectDisplacementRenderer; }   // 0x01436E38
 
 class CEngineSubPrimitiveRenderer {
 public:
@@ -88,7 +89,7 @@ void CEnginePrimitiveManager2DParticleGroup::Render2DPrimitive(CEngineInternalPr
     subPrimitive->RenderFlags = 1;
     float depth = NEngineInternal::GPPrimitiveRenderer2D->Layer2DToSortDistance((EEngine2DLayer)group.Layer);
     if (group.ScreenDisplacement) {
-        if (!g_pEngineSettings_01436e38->DisplacementPassEnabled)
+        if (!NEngineInternal::GPScreenEffectDisplacementRenderer->Enable2DDisplacement)
             return;
         g_pEngineSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)5, subPrimitive, depth, (CEnginePrimitiveManager*)this);
         CEngineSubPrimitiveParticleGroup* displacement = new CEngineSubPrimitiveParticleGroup(primitive);

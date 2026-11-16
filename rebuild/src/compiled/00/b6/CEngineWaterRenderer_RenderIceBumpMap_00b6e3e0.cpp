@@ -135,55 +135,13 @@ public:
     void ResetWorldTransform();   // 0x00988290
 };
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
-struct CTrackedRenderState {                       // 0x14 bytes
-    long          m_stateId;                       // +0x00
-    unsigned long m_value;                         // +0x04 requested value
-    unsigned long m_captureMask;                   // +0x08
-    long          m_appliedValue;                  // +0x0C
-    bool          m_queued;                        // +0x10
-};
-struct SCapturedRenderState {
-    CTrackedRenderState* m_pState;                 // +0x00
-    unsigned long        m_priorValue;             // +0x04
-};
-class CRenderManagerCore {                         // the render manager core @ 0x01436E18
-public:
-    void DrawCurrentBuffersAsIndexedTris(unsigned long minVertexIndex, unsigned long vertexCount,
-                                         unsigned long startIndex, unsigned long triangleCount);   // 0x00A0AC60
-    unsigned char        _pad0000[0x8];
-    SCapturedRenderState m_captured[0x400];        // +0x0008
-    CTrackedRenderState* m_dirty[0x200];           // +0x2008
-    long                 m_capturedCount;          // +0x2808
-    long                 m_dirtyCount;             // +0x280C
-    long                 m_unknown2810;            // +0x2810
-    unsigned long        m_captureMask;            // +0x2814
-    unsigned char        _pad2818[0x28b8 - 0x2818];
-    CTrackedRenderState  m_state28b8;              // +0x28B8
-    unsigned char        _pad28cc[0x291c - 0x28cc];
-    CTrackedRenderState  m_state291c;              // +0x291C
-    CTrackedRenderState  m_state2930;              // +0x2930
-};
-extern CRenderManagerCore* g_pRenderManagerCore;   // 0x01436E18
-
-static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCore* core)
-{
-    if (state.m_value != value) {
-        if ((core->m_captureMask & state.m_captureMask) == 0) {
-            state.m_captureMask |= core->m_captureMask;
-            core->m_captured[core->m_capturedCount].m_pState = &state;
-            core->m_captured[core->m_capturedCount].m_priorValue = state.m_value;
-            ++core->m_capturedCount;
-        }
-        state.m_value = value;
-        if (!state.m_queued) {
-            state.m_queued = true;
-            core->m_dirty[core->m_dirtyCount] = &state;
-            ++core->m_dirtyCount;
-        }
-    }
-}
-
-extern unsigned long g_renderStateValue_01396f6c;  // 0x01396F6C
+// NF45 (round 7): the render core is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A, engine/CRenderManager.h; CRenderManagerCore / CRenderStateManager at
+//   offset 0): DrawCurrentBuffersAsIndexedTris 0x00A0AC60 and the shared inline setters AlphaBlendEnable (+0x28B8) and Source /
+//   DestAlphaBlendMode (+0x291C / +0x2930, D3DAlphaBlendModeTable 0x01396F68 [ALPHA_BLEND_ONE]). Was g_pRenderManagerCore with a
+//   local CRenderManagerCore / CTrackedRenderState / SetState model and g_renderStateValue_01396f6c.
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
 class CEngineWaterRenderer { public:                      // retail layout (three 12-byte CArrays before +0x15c)
     unsigned char _pad000[0x178];
@@ -201,13 +159,13 @@ void CEngineWaterRenderer::RenderIceBumpMap()
     NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, C4DVector(1.0f, 0.0f, 0.0f, 0.0f));
     NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(6, C4DVector(0.0f, 1.0f, 0.0f, 0.0f));
     NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
-    g_pRenderManagerCore->DrawCurrentBuffersAsIndexedTris(0, 0xe, 0, 2);
-    SetState(g_pRenderManagerCore->m_state28b8, 1, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state291c, g_renderStateValue_01396f6c, g_pRenderManagerCore);
-    SetState(g_pRenderManagerCore->m_state2930, g_renderStateValue_01396f6c, g_pRenderManagerCore);
+    NEngineInternal::GPRenderManager->DrawCurrentBuffersAsIndexedTris(0, 0xe, 0, 2);
+    NEngineInternal::GPRenderManager->SetAlphaBlendEnable(true);
+    NEngineInternal::GPRenderManager->SetSourceAlphaBlendMode(ALPHA_BLEND_ONE);
+    NEngineInternal::GPRenderManager->SetDestAlphaBlendMode(ALPHA_BLEND_ONE);
     NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, C4DVector(0.0f, 1.0f, 0.0f, 0.0f));
     NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(6, C4DVector(0.0f, 0.0f, 1.0f, 0.0f));
     NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
-    g_pRenderManagerCore->DrawCurrentBuffersAsIndexedTris(0, 0xe, 0, 2);
-    SetState(g_pRenderManagerCore->m_state28b8, 0, g_pRenderManagerCore);
+    NEngineInternal::GPRenderManager->DrawCurrentBuffersAsIndexedTris(0, 0xe, 0, 2);
+    NEngineInternal::GPRenderManager->SetAlphaBlendEnable(false);
 }

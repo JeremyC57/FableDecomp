@@ -10,49 +10,12 @@
 // `__forceinline` (plain inline stays out of line); the mask test is written `(m_captureMask & state.m_captureMask) == 0`
 // with `|=` (a cached `mask` local swaps edx/esi).
 #include "fable_compiler.h"
-struct CTrackedRenderState {                       // 0x14 bytes
-    long          m_stateId;                       // +0x00
-    unsigned long m_value;                         // +0x04 requested value
-    unsigned long m_captureMask;                   // +0x08
-    long          m_appliedValue;                  // +0x0C
-    bool          m_queued;                        // +0x10
-};
-
-struct SCapturedRenderState {
-    CTrackedRenderState* m_pState;                 // +0x00
-    unsigned long        m_priorValue;             // +0x04
-};
-
-class CRenderStateManager { public:
-    unsigned char        _pad0000[0x8];
-    SCapturedRenderState m_captured[0x400];        // +0x0008
-    CTrackedRenderState* m_dirty[0x200];           // +0x2008
-    long                 m_capturedCount;          // +0x2808
-    long                 m_dirtyCount;             // +0x280C
-    long                 AllStatesListSize;            // +0x2810
-    unsigned long        m_captureMask;            // +0x2814
-    unsigned char        _pad2818[0x2944 - 0x2818];
-    CTrackedRenderState  m_fogEnable;              // +0x2944
-
-    FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value)
-    {
-        if (state.m_value != value) {
-            if ((m_captureMask & state.m_captureMask) == 0) {
-                state.m_captureMask |= m_captureMask;
-                m_captured[m_capturedCount].m_pState = &state;
-                m_captured[m_capturedCount].m_priorValue = state.m_value;
-                ++m_capturedCount;
-            }
-            state.m_value = value;
-            if (!state.m_queued) {
-                state.m_queued = true;
-                m_dirty[m_dirtyCount] = &state;
-                ++m_dirtyCount;
-            }
-        }
-    }
-};
-extern CRenderStateManager* g_pRenderStateManager_01436e18;   // 0x01436E18
+// NF45 (round 7): the manager is NEngineInternal::GPRenderManager 0x01436E18 (Ego_r.pdb / FableWin.pdb
+//   ?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A; engine/CRenderManager.h, CRenderStateManager at offset 0); the fog-enable
+//   record +0x2944 is DeviceState.FogEnable (+0x2818 + 0x12C), set by the shared inline CRenderStateManager::SetFogEnable(true)
+//   (was a local CRenderStateManager model and g_pRenderStateManager_01436e18).
+#include "engine/CRenderManager.h"
+namespace NEngineInternal { extern CRenderManager* GPRenderManager; }   // 0x01436E18
 
 class CEngineLightingManager { public:
     void EnableFog();
@@ -60,5 +23,5 @@ class CEngineLightingManager { public:
 
 void CEngineLightingManager::EnableFog()
 {
-    g_pRenderStateManager_01436e18->SetState(g_pRenderStateManager_01436e18->m_fogEnable, 1);
+    NEngineInternal::GPRenderManager->SetFogEnable(true);
 }

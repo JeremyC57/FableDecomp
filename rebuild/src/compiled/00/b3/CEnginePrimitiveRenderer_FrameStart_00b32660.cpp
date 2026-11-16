@@ -29,14 +29,26 @@ public:
     CEngineInterpolationInfo InterpolationInfo;    // +0x04
 };
 
-struct CEngineShadowRendererView { unsigned char _pad[0x334]; long ShadowMode; };
-extern CEngineShadowRendererView* g_pShadowRenderer_01436e60;  // 0x01436E60
-
-struct STexturePoolRecord { unsigned char _pad[0x40]; float LODErrorTolerance; float CharacterLODErrorTolerance; };
-class CTextureManager { public:
-    const STexturePoolRecord* GetPoolTextureSize(unsigned long pool);   // 0x00B244F0
-};
-extern CTextureManager* g_pTextureManager_01436ea4;            // 0x01436EA4
+// NF45 (round 7): 0x01436E60 is NEngineInternal::GPShadowRenderer (Ego_r.pdb / FableWin.pdb
+//   ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A; engine/CEngineShadowRenderer.h, its RenderingTechnique +0x334 opaque in
+//   the default layout) and 0x01436EA4 is NEngineInternal::GPEngine (?GPEngine@NEngineInternal@@3PAVCEngine@@A; engine/CEngine.h) whose
+//   0x00B244F0 is ?PeekVideoOptionsDef@CEngine@@QAEABVCEngineVideoOptionsDef@@W4EEngineVideoOptionQuality@@@Z (repo opt-in
+//   PEEKVIDEOOPTIONSDEF; the landed self row is misnamed CTextureManager::GetPoolTextureSize, NAME_FIXES) returning the def whose
+//   LODErrorTolerance / CharacterLODErrorTolerance are +0x40 / +0x44 (engine/CEngineVideoOptionsDef.h PASS22_FIELDS). Were the
+//   CEngineShadowRendererView / g_pShadowRenderer_01436e60 and CTextureManager / STexturePoolRecord / g_pTextureManager_01436ea4 stand-ins.
+//   0x01436EA0 is NEngineInternal::GPCamera (?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A, engine/CEngineCamera.h) and its +0xD4 is
+//   HomogenousViewScaleX (was CCamera_01436ea0::Zoom / g_pCamera_01436ea0); the secondary base is the shared 0xC-byte CEngineComponent
+//   (FABLE_RETAIL_CENGINECOMPONENT, FrameStart slot 1), which absorbs the old 8-byte pad before PrimitiveManagers +0x274.
+#define FABLE_RETAIL_CENGINE_PEEKVIDEOOPTIONSDEF
+#define FABLE_RETAIL_CENGINECOMPONENT
+#include "engine/CEngineComponent.h"
+#include "engine/CEngineCamera.h"
+#define FABLE_RETAIL_CENGINEVIDEOOPTIONSDEF_PASS22_FIELDS
+#include "engine/CEngineShadowRenderer.h"
+#include "engine/CEngine.h"
+#include "engine/CEngineVideoOptionsDef.h"
+namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
+namespace NEngineInternal { extern CEngine* GPEngine; }                         // 0x01436EA4
 struct CTexturePoolOwner { unsigned char _pad[0x20]; unsigned long PoolID; };
 extern CTexturePoolOwner* g_pTexturePoolOwner_01436eb0;        // 0x01436EB0
 
@@ -45,8 +57,7 @@ class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
-struct CCamera_01436ea0 { unsigned char _pad[0xd4]; float Zoom; };
-extern CCamera_01436ea0* g_pCamera_01436ea0;       // 0x01436EA0
+namespace NEngineInternal { extern CEngineCamera* GPCamera; }   // 0x01436EA0
 
 class CEnginePrimitiveManager { public:
     virtual void v00(); virtual void v04(); virtual void v08();
@@ -101,13 +112,8 @@ struct CEnginePrimitiveRendererSharedData {        // primary base, 0x268 bytes
     CPixelShader* PixelShaderDiffuseDP3BumpFogShadowOutputFactor;   // +0x238
     unsigned char _pad23c[0x268 - 0x23c];
 };
-class CEngineComponent { public:                          // secondary base at +0x268, vtable 0x012A1348
-    virtual void v00();
-    virtual void FrameStart(const CEngineComponentParams& params);   // slot 1
-};
 
 class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, public CEngineComponent { public:
-    unsigned char         _pad26c[0x8];
     CManagerArray         PrimitiveManagers;       // +0x274
     unsigned char         _pad280[0x2f0 - 0x280];
     CCountedPointer<CEngineClothRenderer> ClothRenderer;   // +0x2f0
@@ -116,7 +122,7 @@ class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, publ
 
 void CEnginePrimitiveRenderer::FrameStart(const CEngineComponentParams& params)
 {
-    if (g_pShadowRenderer_01436e60->ShadowMode == 2) {
+    if (*reinterpret_cast<const long*>(NEngineInternal::GPShadowRenderer->RenderingTechnique) == 2) {
         PixelShaderShadowBufferRender = &PixelShaderColourShadowBufferRender;
         PixelShaderShadowBufferRenderAlpha = &PixelShaderColourShadowBufferRenderAlpha;
         PixelShaderDiffuseFogShadow = &PixelShaderDiffuseFogColourBufferShadow;
@@ -141,12 +147,12 @@ void CEnginePrimitiveRenderer::FrameStart(const CEngineComponentParams& params)
         PrimitiveManagers.m_pFirst[i].Data->FrameStart();
     ClothRenderer.Data->FrameStart();
     if (g_pTexturePoolOwner_01436eb0) {
-        LODErrorTolerance = g_pTextureManager_01436ea4->GetPoolTextureSize(g_pTexturePoolOwner_01436eb0->PoolID)->LODErrorTolerance;
-        CharacterLODErrorTolerance = g_pTextureManager_01436ea4->GetPoolTextureSize(g_pTexturePoolOwner_01436eb0->PoolID)->CharacterLODErrorTolerance;
+        LODErrorTolerance = NEngineInternal::GPEngine->PeekVideoOptionsDef((EEngineVideoOptionQuality)g_pTexturePoolOwner_01436eb0->PoolID).LODErrorTolerance;
+        CharacterLODErrorTolerance = NEngineInternal::GPEngine->PeekVideoOptionsDef((EEngineVideoOptionQuality)g_pTexturePoolOwner_01436eb0->PoolID).CharacterLODErrorTolerance;
     }
     C2DExtentsI dims = NEngineInternal::GPDisplayManager->GetRenderTargetDimensions();
     float width = (float)dims.Width;
     float screen = width < LODVirtualScreenSize ? width : LODVirtualScreenSize;
-    MipmapSizeMultiplier = g_pCamera_01436ea0->Zoom * MipmapQuality * (unsigned long)screen;
-    LODVirtualScreenSizeFOVAdjusted = g_pCamera_01436ea0->Zoom * LODVirtualScreenSize;
+    MipmapSizeMultiplier = NEngineInternal::GPCamera->HomogenousViewScaleX * MipmapQuality * (unsigned long)screen;
+    LODVirtualScreenSizeFOVAdjusted = NEngineInternal::GPCamera->HomogenousViewScaleX * LODVirtualScreenSize;
 }
