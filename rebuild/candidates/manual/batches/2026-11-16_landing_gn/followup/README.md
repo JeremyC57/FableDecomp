@@ -27,17 +27,18 @@ the 5-byte `jmp` at 0x00435F70 (0xA40 later).
 0x00406CC0, 0x00775B40 and 0x00864620 fail strict header policy because of local class models they already had at HEAD
 (SHARED_HEADER_AVAILABLE CDisplayEngine, CGameTimeManager, CThing, ...), not because of these edits. Porting them is a separate job.
 
-## 3. The four held name fixes
+## 3. The four held name fixes (decided; none left for review)
 - 0x01436E24: `?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B` (Codex, PDB PUBLIC; the NEngineInternal::GP* pattern). acctC
   had found no PDB name. 0x00B26360, the only binding of the old descriptive spelling, respelled. RELOCATION_MATCH.
 - 0x009FC3D0: `?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z` (acctC). Retail links into LoadingQueue +0x40; its twin
   0x009FC380 links into ResourceList +0x04 = AddResource. Catalog and landed row respelled. MATCH. The callers 0x00A42980 /
   0x00A25BD0 still bind AddResource spellings (queued).
-- 0x007C2AB0: STLport `vector<C3DVector>(size_type)` (the queued spelling), not acctC's CArray(unsigned). The landed 0x00B149D0 /
-  0x00B15BD0 match only through an inline CArray(n) forwarding to it, and acctC's "the only size ctor in either PDB" is wrong
-  (FableWin has both). acctC's 0x007BFE30 respelled to bind it (RELOCATION_MATCH). Not done: re-authoring the 0x007C2AB0 row itself
-  (still a local CSTLportVector placeholder; two tries on the shared headers gave 19 / 37 bytes, so stopped per the two-failure rule;
-  docs/journal/FINDINGS_LOG.md) and 0x00B22B40's local CArray model.
+- 0x007C2AB0: STLport `vector<C3DVector>(size_type)` (the queued spelling), not acctC's CArray(unsigned). Byte-proven: the landed
+  0x00B149D0 DIFFERs (3784v3779) when `CArray<C3DVector>(n)` is called out of line (FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE) and matches
+  only through the inline CArray(n) forwarding to it; acctC's "the only size ctor in either PDB" is wrong (FableWin has both).
+  acctC's 0x007BFE30 (which matches either way) respelled to bind it (RELOCATION_MATCH). Not done: re-authoring the 0x007C2AB0 row
+  itself (still a local CSTLportVector placeholder; two tries on the shared headers gave 19 / 37 bytes, so stopped per the
+  two-failure rule; docs/journal/FINDINGS_LOG.md) and 0x00B22B40's local CArray model (binds CArray(unsigned long)).
 - 0x00DCEC50: `?SetState@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAEXJ@Z`. The older queued line already said so. The row
   is re-authored on engine/CQ_OrchardFarmRaidScript.h (was CHandleBasedMemoryPool::GetPointerFromHandle on a local struct). MATCH.
 
@@ -45,3 +46,16 @@ the 5-byte `jmp` at 0x00435F70 (0xA40 later).
 441 bytes (`ret 1Ch`), RELOCATION_MATCH + PASS. The source is the 0x00BA5260 TU's preamble and globals plus the stretch from
 PeekGraphicInfoFrame to this function, verbatim (the whole TU grades the same); a new behaviour test models the blank / already-set /
 per-block paths.
+
+## 5. A fourth binding conflict (found by the recheck of 0x00B26360)
+`??0CEnginePrimitiveTypeInfo@@QAE@XZ` was bound to 0x00B8FAA0 (the real ctor; catalog, Ego_r 0x00A36610) and, by the landed
+0x00A148D0, to 0x00A02D20 = CHandleBasedMemoryPool::CHandleBasedMemoryPool. 0x00A148D0 was another generated body with a made-up base;
+RTTI says .?AVCAsyncLoadingMemoryPool@@ : CHandleBasedMemoryPool. Re-authored as `CAsyncLoadingMemoryPool::CAsyncLoadingMemoryPool()
+: CHandleBasedMemoryPool()` on engine/CAsyncLoadingMemoryPool.h (new `FABLE_RETAIL_CASYNCLOADINGMEMORYPOOL_CTOR` opt-in, exclusive with
+the existing one) + engine/CHandleBasedMemoryPool.h, Ego_r ??0CAsyncLoadingMemoryPool@@QAE@XZ; RELOCATION_MATCH + PASS strict
+(`vland_recheck_00a148d0.log`). The binding now reads ??0CHandleBasedMemoryPool@@QAE@XZ. Over the whole reloc_bindings.tsv the only
+symbol with more than one address is the pre-existing ?NullCoord@CScriptThing@@ (the object and two member offsets).
+
+Note on the follow-up commit message (065a65459f): it says every changed row was rechecked under strict headers. 0x00406CC0,
+0x00775B40 and 0x00864620 pass only non-strict (`vland_recheck_nonstrict.log`): their local class models predate these edits and
+fail strict header policy at HEAD too (checked).

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a148d0   RELOCATION_MATCH PASS   CAsyncLoadingMemoryPool
+
+WINS: 1
+  00a148d0 RELOCATION_MATCH CAsyncLoadingMemoryPool::??0CAsyncLoadingMemoryPool@@QAE@XZ

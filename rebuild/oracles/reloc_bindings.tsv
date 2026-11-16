@@ -6614,7 +6614,7 @@ _iswdigit	00bfede2	00a0ce90
 ?sub@@YIXPAUSub@@@Z	009f2e20	00a10e10
 ?GetRigidBodyBoundingPoints@CPhysicsMesh@@QBEXAAUC3DVectorVector@@@Z	00a6cb20	00a12840
 ?HasNavigationLineListInfo@CPhysicsMesh@@QBE_NXZ	00a73ce0	00a12c90
-??0CEnginePrimitiveTypeInfo@@QAE@XZ	00a02d20	00a148d0
+??0CHandleBasedMemoryPool@@QAE@XZ	00a02d20	00a148d0
 ??_7CAsyncLoadingMemoryPool@@6B@	0129ca6c	00a148d0
 ??1CBase_00a02db0@@QAE@XZ	00a02db0	00a14b40
 ?BlockRange@CNavQuadTree@@QAEXJJJ@Z	00a79240	00a15470

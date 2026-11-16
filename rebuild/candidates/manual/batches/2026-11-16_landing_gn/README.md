@@ -96,8 +96,8 @@ reserved fragments 0x00537E70 / 0x00564D5D (re-cut to 0x005379F5 / 0x00564D50, b
 `ghidra_out/labels_landing_2026-11-16gn.tsv` (58 labels, mangled leaf symbols). The staged folders' NAME_FIXES.tsv held 314 fixes:
 261 were already queued with the same spelling, 49 are queued as `land1116gn` (0x00435F70 as PRIORITY: it is
 CDisplayEngine::Render, the public 5-byte wrapper; it is landed as `CDisplayEngine_DoRender_00435f70` and an older queue line
-spells it DoRender, while 0x00435530 now lands as the real DoRender, so until the respelling one name has two addresses), and 4 that name a different symbol than one already queued are held for review in
-`NAME_FIXES_CONFLICTS_WITH_QUEUE.tsv` (0x01436E24, 0x009FC3D0, 0x007C2AB0, 0x00DCEC50).
+spells it DoRender, while 0x00435530 now lands as the real DoRender, so until the respelling one name has two addresses), and 4 that named a different symbol than one already queued were listed in `NAME_FIXES_CONFLICTS_WITH_QUEUE.tsv` (0x01436E24, 0x009FC3D0,
+0x007C2AB0, 0x00DCEC50); all four are decided in the follow-up (`followup/README.md`).
 
 ## Files
 `payload.json` (as landed), `LANDED.tsv`, `logs/` (dry run, rerun of the four, land, equivalence, ordered pin check),
