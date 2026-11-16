@@ -106,6 +106,11 @@ private:
     bool FleeUpdate();                                      // 0x00984F60
     bool FollowCloseUpdate();                               // 0x00985420
     bool FollowFarUpdate();                                 // 0x00985430
+#ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_FOLLOWUPDATE
+    // Nested opt-in (agentNF36 2026-11-16, row 0x00985430 FollowFarUpdate = `push 0 ; push 40E00000h ; call 0x009852C0 ; ret`):
+    // Ego_r.pdb + FableWin.pdb ?FollowUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NM_N@Z (private), landed 0x009852C0. Declaration only.
+    bool FollowUpdate(float distance, bool close);          // 0x009852C0
+#endif
     bool HeroImitationPlayUpdate();                         // 0x00985440
     bool HeroTitleAtHeroIsRunnable();                       // 0x009856C0
     bool HeroTitleAtHeroUpdate();                           // 0x009857D0

@@ -16,6 +16,7 @@
 //   `a + b + 0x34` (`lea edi,[eax+edi+34h]`); the stream is a function-scope local destroyed at the end.
 // Name fix (agentNF6 2026-11-10): CResource::RemoveFromResourceList 0x009FC440 (?RemoveFromResourceList@CResource@@QAEXXZ, Ego_r.pdb / FableWin.pdb; body: if the resource is in a list (+8), the list unlinks it, call 0x009FC020).
 class CLipSyncSampleData;
+class CDataInputStream;                                   // engine/CDataInputStream.h: the retail base of CMemoryDataInputStream (+0)
 class CMemoryDataInputStream {
 public:
     CMemoryDataInputStream(const void* data, long size);   // 0x00994930
@@ -30,7 +31,7 @@ class CLipSyncSampleData { public:                                // 0x10 bytes
     void* m_pEnd;
     long m_count;
     CLipSyncSampleData() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
-    void ReadFromFile(CMemoryDataInputStream* stream);     // 0x00A495F0
+    void ReadFromFile(CDataInputStream& stream);           // 0x00A495F0 (Ego_r.pdb + FableWin.pdb: CDataInputStream&)
     unsigned long Sizeof() const;                          // 0x00A43960
 };
 class CBankFileAsyncData { public:
@@ -97,7 +98,7 @@ void CLipSyncDataBankEntry::CData::BuildLipSync()
             m_pAsyncData.object->WaitUntilFinished();
         m_pSampleData.Reset(new CLipSyncSampleData);
         CMemoryDataInputStream stream(m_pAsyncData.object->GetData(), m_pAsyncData.object->GetSize());
-        m_pSampleData->ReadFromFile(&stream);
+        m_pSampleData->ReadFromFile(*(CDataInputStream*)&stream);   // the CDataInputStream base sits at +0
         m_pAsyncData.Clear();
         unsigned long sampleSize = m_pSampleData.object ? m_pSampleData.object->Sizeof() + 8 : 8;
         unsigned long asyncSize = m_pAsyncData.object ? m_pAsyncData.object->Sizeof() + 8 : 8;

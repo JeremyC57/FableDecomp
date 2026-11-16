@@ -10798,9 +10798,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ab9f60'
-        Module = '_global'
-        Source = '00/ab/global_DrawGetEnvironment_00ab9f60.cpp'
-        TestSource = '00/ab/global_DrawGetEnvironment_00ab9f60_test.cpp'
+        Module = 'C3DMeshFileGroupChunk'
+        Source = '00/ab/C3DMeshFileGroupChunk_GetBoneIndex_00ab9f60.cpp'
+        TestSource = '00/ab/C3DMeshFileGroupChunk_GetBoneIndex_00ab9f60_test.cpp'
         PassPattern = 'AUTO_TINY_00ab9f60_TEST PASS'
     }
     [pscustomobject]@{
@@ -43631,30 +43631,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fd46b'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd46b.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd46b_test.cpp'
+        Module = 'CAIStateGroup_PerformAction'
+        Source = '00/8f/CAIStateGroupPerformAction_GetName_008fd46b.cpp'
+        TestSource = '00/8f/CAIStateGroupPerformAction_GetName_008fd46b_test.cpp'
         PassPattern = '008fd46b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008fd4bc'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd4bc.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd4bc_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToCorpse'
+        Source = '00/8f/CAIStateGroupMinionReactToCorpse_GetName_008fd4bc.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToCorpse_GetName_008fd4bc_test.cpp'
         PassPattern = '008fd4bc_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008fd7d9'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd7d9.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd7d9_test.cpp'
+        Module = 'CAIStateGroup_ButterflyWander'
+        Source = '00/8f/CAIStateGroupButterflyWander_GetName_008fd7d9.cpp'
+        TestSource = '00/8f/CAIStateGroupButterflyWander_GetName_008fd7d9_test.cpp'
         PassPattern = '008fd7d9_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008fd923'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd923.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd923_test.cpp'
+        Module = 'CAIStateGroup_VillageTaskPatrol'
+        Source = '00/8f/CAIStateGroupVillageTaskPatrol_GetName_008fd923.cpp'
+        TestSource = '00/8f/CAIStateGroupVillageTaskPatrol_GetName_008fd923_test.cpp'
         PassPattern = '008fd923_TEST PASS'
     }
     [pscustomobject]@{
@@ -43883,9 +43883,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fd94e'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd94e.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd94e_test.cpp'
+        Module = 'CAIStateGroup_VillageTaskPickCrops'
+        Source = '00/8f/CAIStateGroupVillageTaskPickCrops_GetName_008fd94e.cpp'
+        TestSource = '00/8f/CAIStateGroupVillageTaskPickCrops_GetName_008fd94e_test.cpp'
         PassPattern = '008fd94e_TEST PASS'
     }
     [pscustomobject]@{
@@ -49142,9 +49142,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fe019'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe019.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe019_test.cpp'
+        Module = 'CAIStateGroup_MinionBehaviourPodiumEmoteNeutral'
+        Source = '00/8f/CAIStateGroupMinionBehaviourPodiumEmoteNeutral_GetName_008fe019.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionBehaviourPodiumEmoteNeutral_GetName_008fe019_test.cpp'
         PassPattern = 'GETACTIONNAME_PASS'
     }
     [pscustomobject]@{
@@ -62121,9 +62121,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fe14d'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe14d.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe14d_test.cpp'
+        Module = 'CAIStateGroup_HoverAttack'
+        Source = '00/8f/CAIStateGroupHoverAttack_GetName_008fe14d.cpp'
+        TestSource = '00/8f/CAIStateGroupHoverAttack_GetName_008fe14d_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -126935,30 +126935,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fdba2'
-        Module = 'CAIStateGroupNameTag'
-        Source = '00/8f/CAIStateGroupNameTag_ctorSGPREPAREMEAL_008fdba2.cpp'
-        TestSource = '00/8f/CAIStateGroupNameTag_ctorSGPREPAREMEAL_008fdba2_test.cpp'
+        Module = 'CAIStateGroup_PrepareMeal'
+        Source = '00/8f/CAIStateGroupPrepareMeal_GetName_008fdba2.cpp'
+        TestSource = '00/8f/CAIStateGroupPrepareMeal_GetName_008fdba2_test.cpp'
         PassPattern = '008fdba2_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008fdbcb'
-        Module = 'CAIStateGroupNameTag'
-        Source = '00/8f/CAIStateGroupNameTag_ctorSGGAZEOUTSIDE_008fdbcb.cpp'
-        TestSource = '00/8f/CAIStateGroupNameTag_ctorSGGAZEOUTSIDE_008fdbcb_test.cpp'
+        Module = 'CAIStateGroup_GazeOutside'
+        Source = '00/8f/CAIStateGroupGazeOutside_GetName_008fdbcb.cpp'
+        TestSource = '00/8f/CAIStateGroupGazeOutside_GetName_008fdbcb_test.cpp'
         PassPattern = '008fdbcb_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008fdbf4'
-        Module = 'CAIStateGroupNameTag'
-        Source = '00/8f/CAIStateGroupNameTag_ctorSGGAZEATHOME_008fdbf4.cpp'
-        TestSource = '00/8f/CAIStateGroupNameTag_ctorSGGAZEATHOME_008fdbf4_test.cpp'
+        Module = 'CAIStateGroup_GazeAtHome'
+        Source = '00/8f/CAIStateGroupGazeAtHome_GetName_008fdbf4.cpp'
+        TestSource = '00/8f/CAIStateGroupGazeAtHome_GetName_008fdbf4_test.cpp'
         PassPattern = '008fdbf4_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008fdd10'
-        Module = 'CAIStateGroupNameTag'
-        Source = '00/8f/CAIStateGroupNameTag_ctorSGMINIONHAWKINGFROMSTALL_008fdd10.cpp'
-        TestSource = '00/8f/CAIStateGroupNameTag_ctorSGMINIONHAWKINGFROMSTALL_008fdd10_test.cpp'
+        Module = 'CAIStateGroup_MinionHawkingFromStall'
+        Source = '00/8f/CAIStateGroupMinionHawkingFromStall_GetName_008fdd10.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionHawkingFromStall_GetName_008fdd10_test.cpp'
         PassPattern = '008fdd10_TEST PASS'
     }
     [pscustomobject]@{
@@ -182328,16 +182328,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aba350'
-        Module = 'CShaderPreParser'
-        Source = '00/ab/CShaderPreParser_GetConstantCount_00aba350.cpp'
-        TestSource = '00/ab/CShaderPreParser_GetConstantCount_00aba350_test.cpp'
+        Module = 'C3DMeshFileGroupChunk'
+        Source = '00/ab/C3DMeshFileGroupChunk_GetCount_00aba350.cpp'
+        TestSource = '00/ab/C3DMeshFileGroupChunk_GetCount_00aba350_test.cpp'
         PassPattern = '00aba350_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aba360'
-        Module = 'CShaderPreParser'
-        Source = '00/ab/CShaderPreParser_GetConstantCount_00aba360.cpp'
-        TestSource = '00/ab/CShaderPreParser_GetConstantCount_00aba360_test.cpp'
+        Module = 'C3DMeshFileVerticesChunk'
+        Source = '00/ab/C3DMeshFileVerticesChunk_GetCount_00aba360.cpp'
+        TestSource = '00/ab/C3DMeshFileVerticesChunk_GetCount_00aba360_test.cpp'
         PassPattern = '00aba360_TEST PASS'
     }
     [pscustomobject]@{
@@ -182384,9 +182384,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005064b0'
-        Module = '_unattributed'
-        Source = '00/50/unattributed_CallWith005064b0_005064b0.cpp'
-        TestSource = '00/50/unattributed_CallWith005064b0_005064b0_test.cpp'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_EndMovePlayerPos_005064b0.cpp'
+        TestSource = '00/50/CWorldMap_EndMovePlayerPos_005064b0_test.cpp'
         PassPattern = '005064b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -182762,9 +182762,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00985430'
-        Module = '_unattributed'
-        Source = '00/98/unattributed_CallWith200985430_00985430.cpp'
-        TestSource = '00/98/unattributed_CallWith200985430_00985430_test.cpp'
+        Module = 'CAIStateGroup_OpinionReactionRoot'
+        Source = '00/98/CAIStateGroupOpinionReactionRoot_FollowFarUpdate_00985430.cpp'
+        TestSource = '00/98/CAIStateGroupOpinionReactionRoot_FollowFarUpdate_00985430_test.cpp'
         PassPattern = '00985430_TEST PASS'
     }
     [pscustomobject]@{
@@ -226537,8 +226537,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005faba0'
         Module = 'CTCInventoryMap'
-        Source = '00/5f/CTCInventoryMap_IsPositionInsideClipEdges_005faba0.cpp'
-        TestSource = '00/5f/CTCInventoryMap_IsPositionInsideClipEdges_005faba0_test.cpp'
+        Source = '00/5f/CTCInventoryMap_IsThingAsPosBeingDrawn_005faba0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_IsThingAsPosBeingDrawn_005faba0_test.cpp'
         PassPattern = '005faba0_TEST PASS'
     }
     [pscustomobject]@{
@@ -272734,9 +272734,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b990b0'
-        Module = 'CEnginePrimitiveManagerRepeatedStaticMeshes_Wind'
-        Source = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshesWind_UpdateBoneMatrixForWindSheer_00b990b0.cpp'
-        TestSource = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshesWind_UpdateBoneMatrixForWindSheer_00b990b0_test.cpp'
+        Module = 'CEnginePrimitiveManagerRepeatedStaticMeshes'
+        Source = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_UpdateBoneMatrixForWindSheer_00b990b0.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_UpdateBoneMatrixForWindSheer_00b990b0_test.cpp'
         PassPattern = '00b990b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -306758,8 +306758,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c609a0'
         Module = 'CEAXListener'
-        Source = '00/c6/CEAXListener_AddSource_00c609a0.cpp'
-        TestSource = '00/c6/CEAXListener_AddSource_00c609a0_test.cpp'
+        Source = '00/c6/CEAXListener_AddBuffer_00c609a0.cpp'
+        TestSource = '00/c6/CEAXListener_AddBuffer_00c609a0_test.cpp'
         PassPattern = '00c609a0_TEST PASS'
     }
     [pscustomobject]@{

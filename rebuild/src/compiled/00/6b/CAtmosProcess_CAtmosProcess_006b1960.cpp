@@ -78,7 +78,7 @@ public:
     long ReverbType;                            // +0x18 EReverbEnvironmentType
     float ReverbLevel;                          // +0x1c
     CAtmosProcess();
-    void LoadThemes_006b16b0();                 // 0x006B16B0
+    void RegisterAtmosPalette();                // 0x006B16B0 (Ego_r.pdb + FableWin.pdb)
 private:
     void ApplyReverbSettings();                 // 0x006B1600 (Ego_r ?ApplyReverbSettings@CAtmosProcess@@AAEXXZ)
 public:
@@ -95,7 +95,7 @@ CAtmosProcess::CAtmosProcess()
         }
         CSoundDef* def = const_cast<CSoundDef*>(soundDef.Object);
         PSoundManager->InitAtmos(&AtmosMap, def->AtmosListenerDampingMin, def->AtmosListenerDampingRange, 0x8010);
-        LoadThemes_006b16b0();
+        RegisterAtmosPalette();
         ApplyReverbSettings();
         if (--def->RefCount == 0)
             def->Destroy();

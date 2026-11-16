@@ -6,7 +6,9 @@
 // Globals: the Z edge @ 0x01253D40, the Y edge @ 0x01257088 (floats).
 // Shape: four `if (flag && compare) return false;` tests; `>` gives `test ah,41h ; je`, `<=` gives `test ah,41h ; jnp`;
 // the shared `xor al,al` exit sits after the fourth test, `mov al,1` last.
-// Leaf: ?IsPositionInsideClipEdges@CTCInventoryMap@@
+// Leaf: ?IsThingAsPosBeingDrawn@CTCInventoryMap@@IBE_NABVC3DVector@@@Z
+// Name fix (agentNF36 2026-11-16): Ego_r.pdb 0x0064B620 + FableWin.pdb 0x020A1AA0 ?IsThingAsPosBeingDrawn@CTCInventoryMap@@IBE_NABVC3DVector@@@Z
+// (protected; the only CTCInventoryMap member of this signature); was the descriptive IsPositionInsideClipEdges.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/C3DVector.h"
 extern const float g_mapEdgeZ;                     // 0x01253D40
@@ -17,10 +19,12 @@ class CTCInventoryMap { public:
     bool          m_clipBelowZ;                    // +0x185
     bool          m_clipBelowY;                    // +0x186
     bool          m_clipAboveY;                    // +0x187
-    bool IsPositionInsideClipEdges(const C3DVector& pos) const;
+protected:
+    bool IsThingAsPosBeingDrawn(const C3DVector& pos) const;
+public:
 };
 
-bool CTCInventoryMap::IsPositionInsideClipEdges(const C3DVector& pos) const
+bool CTCInventoryMap::IsThingAsPosBeingDrawn(const C3DVector& pos) const
 {
     if (m_clipAboveZ && pos.Z > g_mapEdgeZ)
         return false;

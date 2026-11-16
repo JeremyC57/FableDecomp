@@ -131,7 +131,9 @@ class CTCInventoryTrade { public:
     unsigned char _pad_0x00[0x220];
     NUISystem::CComponent* PTop_Level_List;   // +0x220
     void DeleteComponents();                    // 0x0059C8AE
-    void ConstructActualBuyInventoryPC();       // 0x005AC10E
+private:
+    void ConstructActualBuyInventoryPC();       // 0x005AC10E (Ego_r.pdb + FableWin.pdb: private, AAE)
+public:
     void ConstructActualSpecialInventoryPC();   // 0x005A8C66
     void OpenActualBuyInventoryPC();
 };

@@ -75,7 +75,7 @@ class CWorld { public:
     virtual void SetDisplayEngine(CDisplayEngine* engine);                  // slot 7 (+0x1c)
     bool LoadGame(const CWideString& name, bool b);                          // 0x004A3200
     void Load(const CWideString& path);                                      // 0x004A1840
-    CWideString GetMapPath(const CWideString& path) const;                   // 0x0049DDD0
+    CWideString ConvertWorldToStaticMapPath(const CWideString& path) const;  // 0x0049DDD0 (Ego_r.pdb + FableWin.pdb)
     CWideString ConvertWorldToStaticMapPath(const CWideString& path, bool a, bool b) const;   // 0x0049D550
     CWideString GetMapPath2(const CWideString& path) const;                  // 0x0049DEC0
     CWideString ConvertWorldToStaticMapPath2(const CWideString& path, bool a, bool b) const;  // 0x0049D6B0
@@ -128,7 +128,7 @@ void CMainGameComponent::PostInit()
         }
         PWorld->Load(path);
         if (g_bExportStaticMaps) {
-            CWideString mapPath = PWorld->GetMapPath(path);
+            CWideString mapPath = PWorld->ConvertWorldToStaticMapPath(path);
             CDiskFileWin32 mapFrom(mapPath, FILE_ACCESS_READ, 2);
             CWideString staticMapPath = PWorld->ConvertWorldToStaticMapPath(path, true, g_b13B8616);
             CDiskFileWin32 mapTo(staticMapPath, FILE_ACCESS_WRITE, 2);

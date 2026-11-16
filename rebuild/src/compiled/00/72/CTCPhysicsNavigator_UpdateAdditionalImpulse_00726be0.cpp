@@ -150,6 +150,9 @@ public:
     C3DVector     Position;                         // +0x0c
     unsigned char _pad18[0x34 - 0x18];
     float         Radius;                           // +0x34
+protected:
+    const CThingSearchTools& GetThingSearchTools() const;   // 0x006AFD40 (Ego_r.pdb + FableWin.pdb ?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ)
+public:
 };
 #pragma pack(pop)
 class CApplyAdditionalImpulseIfInCombatAndTooClose { public:   // 0x18 bytes
@@ -173,7 +176,6 @@ class CTCPhysicsNavigator : public CTCPhysicsBase {
 public:
     unsigned char _pad38[0x95 - 0x38];
     C3DVector     AdditionalImpulse;                // +0x95
-    const CThingSearchTools* PeekThingSearchTools() const;   // 0x006AFD40 (CTCBase)
     C2DBoxI GetPossibleCollidedWithAreaWithImpulse(const C3DVector& impulse) const;   // 0x007267C0
     void UpdateAdditionalImpulse();
 };
@@ -208,7 +210,7 @@ void CTCPhysicsNavigator::UpdateAdditionalImpulse()
             && NCreatureMode::IsPhysicsPushableBySelfAvoidance(*(CThing*)creature)) {
             vector<CThingCreatureBase*> creatures;
             C2DBoxI area = GetPossibleCollidedWithAreaWithImpulse(C3DVector(1.0f, 1.0f, 0.0f));
-            ((CThingSearchTools*)PeekThingSearchTools())->GetAllThingsInRoughArea(area, CThingFilter_IsNot(ParentThing), creatures);
+            ((CThingSearchTools&)GetThingSearchTools()).GetAllThingsInRoughArea(area, CThingFilter_IsNot(ParentThing), creatures);
             std::_For_each(creatures.begin(), creatures.end(),
                            CApplyAdditionalImpulseIfInCombatAndTooClose(Position, Radius, this));
         }

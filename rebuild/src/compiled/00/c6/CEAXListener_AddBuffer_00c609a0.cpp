@@ -1,5 +1,7 @@
 // CEAXListener::AddSource(CEAXBuffer* source) -- push a source onto the EAX context's list; mark it dirty when the context is
-// Leaf: ?AddSource@CEAXListener@@QAEJPAVCEAXBuffer@@@Z
+// Leaf: ?AddBuffer@CEAXListener@@QAEHPAVCEAXBuffer@@@Z
+// Name fix (agentNF36 2026-11-16): AddBuffer, int result (H): the spelling its landed caller already binds (pass-23 libpk naming);
+//   same bytes as the former long AddSource.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C609A0, 81 bytes (thiscall, `ret 4`).
 // Callees: CCodaObjectBase::operator new 0x00C3C360 (0xc bytes), CEAXBufferList::CEAXBufferList 0x00C5FF50,
 //   CEAXBuffer::MarkAllDirty 0x00C60FE0 (the source's dirty mask +0x368 |= 0x80000000, returns 0).
@@ -50,10 +52,10 @@ public:
     unsigned char    _pad3c8[8];                   // +0x3c8
     long             m_queueEvents;                // +0x3d0 1 = queue notifications
     long             m_lastError;                  // +0x3d4
-    long AddSource(CEAXBuffer* source);
+    int AddBuffer(CEAXBuffer* source);
 };
 
-long CEAXListener::AddSource(CEAXBuffer* source)
+int CEAXListener::AddBuffer(CEAXBuffer* source)
 {
     long result = 0;
     CEAXBufferList* node = new CEAXBufferList;

@@ -11,7 +11,9 @@
 //   map<long, CAStarState> (Ego_r pair<const long, CAStarState> instantiations). No code references reach it (an unreferenced
 //   COMDAT, like the pair ??_G 0x00CD22C0 that the map<long,CCharString> erase calls with 0). The landed name was descriptive.
 // Namespace: std as in this TU's landed tree rows (0x00A21640 / 0x00A21D90).
-// Model: the landed row's CAStarState; the counter names are descriptive (not in the PDB name sets).
+// Model: the landed row's CAStarState; the counters carry their PDB names.
+// Name fix (agentNF36 2026-11-16): the three CAStarState counters are spelled NumberOfAStarStates / NumberOfOpenStates /
+// NumberOfClosedStates, the original static names of engine/CNavigatorAStar.h (pass23, both PDBs' type records).
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 
 class CANavQuadTreeNode;
@@ -26,16 +28,16 @@ public:
         float              TotalCost;              // +0x0C
         bool               OnOpenList;             // +0x10
         bool               OnClosedList;           // +0x11
-        static long NoOfStates;                    // 0x013D27B8 (descriptive)
-        static long NoOfStatesOnOpenList;          // 0x013D27BC (descriptive)
-        static long NoOfStatesOnClosedList;        // 0x013D27C0 (descriptive)
+        static long NumberOfAStarStates;                    // 0x013D27B8 (PDB name, engine/CNavigatorAStar.h)
+        static long NumberOfOpenStates;          // 0x013D27BC (PDB name)
+        static long NumberOfClosedStates;        // 0x013D27C0 (PDB name)
         ~CAStarState()
         {
-            --NoOfStates;
+            --NumberOfAStarStates;
             if (OnOpenList)
-                --NoOfStatesOnOpenList;
+                --NumberOfOpenStates;
             if (OnClosedList)
-                --NoOfStatesOnClosedList;
+                --NumberOfClosedStates;
         }
     };
 };

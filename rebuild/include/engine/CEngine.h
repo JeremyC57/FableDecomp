@@ -143,6 +143,11 @@ public:
     // Opt-in (row 0x00B8B780): Ego_r.pdb ?GetScratchZBufferD24S8@CEngine@@QAEPAUCSurfaceNative@@K@Z (0x00B27EE0). Declaration only.
     struct CSurfaceNative* GetScratchZBufferD24S8(unsigned long size);   // 0x00B27EE0
 #endif
+#ifdef FABLE_RETAIL_CENGINE_SCRATCHZBUFFER_PDB
+    // Opt-in (agentNF36 2026-11-16, row 0x00B8B780): Ego_r.pdb 0x009B0790 + FableWin.pdb 0x02CA14A0
+    // ?GetScratchZBufferD24S8@CEngine@@QAEAAVCSurface@@J@Z (0x00B27EE0): returns CSurface&, takes long. Declaration only.
+    class CSurface& GetScratchZBufferD24S8(long size);   // 0x00B27EE0
+#endif
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    f;                                      // +0x08 retail-only unsigned char (previous header)

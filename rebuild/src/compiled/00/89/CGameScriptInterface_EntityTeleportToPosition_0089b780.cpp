@@ -120,7 +120,7 @@ class CWorldMap { public:
     virtual long GetRegionAt(const C3DVector& pos);   // slot 16 (+0x40)
     long GetRegionNumberMapIsIn(long map) const;         // 0x004FC190
     void StartMovePlayerPos(long map, const C3DVector& pos, long loadType);   // 0x00502500
-    void FinishMovePlayer();                       // 0x005064B0
+    void EndMovePlayerPos();                       // 0x005064B0 (Ego_r.pdb + FableWin.pdb)
 };
 struct CPhysicsObject {
     VPAD16(a) VPAD8(b) VPAD4(c) VPAD2(d) VPAD1(e)  // 0..30
@@ -227,7 +227,7 @@ void CGameScriptInterface::EntityTeleportToPosition(const CScriptThing& thing, c
                 physics->SetPosition(ground);
         }
         if (creature) {
-            World->GetWorldMap()->FinishMovePlayer();
+            World->GetWorldMap()->EndMovePlayerPos();
             T(object)->SetInLimbo(false);
         }
         if (T(object)->Flags24 & 0x100000)

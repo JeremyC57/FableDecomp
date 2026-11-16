@@ -1,5 +1,7 @@
-// CEngine::GetScratchZBufferD24S8(unsigned long size) -- the shared D24S8 depth surface for a power-of-two size class: index = floor(log2(size)); grow the cache array when needed and create the size x size depth buffer on first use
-// Leaf: ?GetScratchZBufferD24S8@CEngine@@QAEPAUCSurfaceNative@@K@Z
+// CEngine::GetScratchZBufferD24S8(long size) -- the shared D24S8 depth surface for a power-of-two size class: index = floor(log2(size)); grow the cache array when needed and create the size x size depth buffer on first use
+// Leaf: ?GetScratchZBufferD24S8@CEngine@@QAEAAVCSurface@@J@Z
+// Name fix (agentNF36 2026-11-16): Ego_r.pdb 0x009B0790 + FableWin.pdb 0x02CA14A0 spell it CSurface& GetScratchZBufferD24S8(long); was
+//   CSurfaceNative* (the local stand-in) taking unsigned long.
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B27EE0, length 289 bytes (`ret 4`).
@@ -62,10 +64,10 @@ template <class T> struct CRetailArray {           // retail CArray: {first, las
 class CEngine { public:
     unsigned char                  _pad[0x14c];
     CRetailArray<CSurfaceNative*>  ScratchZBuffersD24S8;   // +0x14c
-    CSurfaceNative* GetScratchZBufferD24S8(unsigned long size);
+    CSurface& GetScratchZBufferD24S8(long size);
 };
 
-CSurfaceNative* CEngine::GetScratchZBufferD24S8(unsigned long size)
+CSurface& CEngine::GetScratchZBufferD24S8(long size)
 {
     unsigned long level = HighestSetBit(size);
     if (level >= ScratchZBuffersD24S8.size())
@@ -75,5 +77,5 @@ CSurfaceNative* CEngine::GetScratchZBufferD24S8(unsigned long size)
         CPixelFormat format(D3DFMT_D24S8);           // D3DFMT_D24S8
         ScratchZBuffersD24S8[level]->InitialiseAsDepthBuffer(C2DExtentsI(size, size), format, 0, false);
     }
-    return ScratchZBuffersD24S8[level];
+    return *ScratchZBuffersD24S8[level];
 }

@@ -74,7 +74,7 @@ public:
     CWideString Pathname;                           // +0x18
 };
 
-extern CCharString FableFullBuildVersion;           // 0x013B85E0
+extern CCharString GVersionString;                  // 0x013B85E0 (Ego_r.pdb dynamic initializer for 'GVersionString')
 
 // Matching: retail builds and destroys the three objects in fixed frame slots in exactly this order
 // (the wide path is rebuilt in the same slot and destroyed straight after the file opens it), so each
@@ -105,7 +105,7 @@ void __cdecl GFGetBuildNumber2()
         pathText.Get().~CWideString();
 
         new (fileContents.Raw) CCharString(&diskFile.Get(), -1);
-        FableFullBuildVersion = fileContents.Get();
+        GVersionString = fileContents.Get();
         fileContents.Get().~CCharString();
 
         diskFile.Get().CDiskFileWin32::~CDiskFileWin32();     // qualified: the explicit call of the virtual destructor stays direct, as the scope-end call retail compiled

@@ -63,10 +63,22 @@ public:
     // UploadShaderConstants 0x00B99670, UpdateBoneMatrixForWindSheer 0x00B990B0). Declarations only.
     virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& sub_primitive, ERenderPassType pass);   // slot 5, 0x00B9AC30
 private:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_RENDERSUB_NESTEDCLIP
+    // Nested opt-in (agentNF36 2026-11-16, row 0x00B9AC30): both PDB name sets spell the clip-list element as a type nested in this class
+    // (`PAUCClipListElement@1@` in ?ClipSubSectionsSIMD@..@@AAEXPBUCSubsectionElement@NEnginePrimitiveManagerRepeatedStaticMeshes@@KAAPAUCClipListElement@1@@Z
+    // and ?ClipSubSections@..@@AAEXPBUCSubsectionElement@NEnginePrimitiveManagerRepeatedStaticMeshes@@KM_NAAPAUCClipListElement@1@@Z), as the
+    // PASS22 block and the landed 0x00B98E10 do. Declarations only.
+    struct CClipListElement { unsigned char Start; unsigned char Size; };
+    void ClipSubSectionsSIMD(const NEnginePrimitiveManagerRepeatedStaticMeshes::CSubsectionElement* element, unsigned long clip_flags,
+                             CClipListElement*& clip_list);                                                                   // 0x00B98E10
+    void ClipSubSections(const NEnginePrimitiveManagerRepeatedStaticMeshes::CSubsectionElement* element, unsigned long clip_flags, float range,
+                         bool inside, CClipListElement*& clip_list);                                                          // 0x00B99710
+#else
     void ClipSubSectionsSIMD(const NEnginePrimitiveManagerRepeatedStaticMeshes::CSubsectionElement* element, unsigned long clip_flags,
                              NEnginePrimitiveManagerRepeatedStaticMeshes::CClipListElement*& clip_list);                       // 0x00B98E10
     void ClipSubSections(const NEnginePrimitiveManagerRepeatedStaticMeshes::CSubsectionElement* element, unsigned long clip_flags, float range,
                          bool inside, NEnginePrimitiveManagerRepeatedStaticMeshes::CClipListElement*& clip_list);              // 0x00B99710
+#endif
     void ProcessLightingSW(CEngineInternalPrimitiveRepeatedStaticMesh& primitive, const float* normal_x, const float* normal_y,
                            const float* normal_z, const C4DVector* offsets, long count, bool shadowed);                          // 0x00B99300
     void UploadShaderConstants(CEngineInternalPrimitiveRepeatedStaticMesh& primitive, const C4DVector* offsets, const C4DVector* matrices,

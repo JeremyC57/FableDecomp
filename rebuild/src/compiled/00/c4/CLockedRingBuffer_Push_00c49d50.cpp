@@ -1,5 +1,6 @@
 // CLockedRingBuffer::Push(CCodaFrame* frame) -- under the ring's own critical section append a frame pointer at the tail slot of the fixed-capacity FIFO (dropped silently when the ring is full), advancing the tail modulo the capacity and bumping the count
-// Leaf: ?Push@CLockedRingBuffer@@QAEXPAUCCodaFrame@@@Z
+// Leaf: ?Push@CLockedRingBuffer@@QAEXPAVCCodaFrame@@@Z
+// Name fix (agentNF36 2026-11-16): CCodaFrame class key V, the spelling its landed caller 0x00C495AA already binds (forward declaration only).
 // Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C49D50, 107 bytes (+ int3 padding), __fastcall `ret 4`, EH-framed.
@@ -15,7 +16,7 @@
 //   all (67 bytes). The increment of the count lands between the `idiv` and the tail store.
 #include "libpk/PKCProtectionInstance.h"
 
-struct CCodaFrame;
+class CCodaFrame;
 
 struct CLockedRingBuffer {
     unsigned char m_section[0x18];              // +0x00 CRITICAL_SECTION

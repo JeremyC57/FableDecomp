@@ -39,13 +39,14 @@ public:
     static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 namespace std {
-template <class T> class vector {
+template <class T> class allocator;                  // STLport 4.6 (class key V)
+template <class T, class A = allocator<T> > class vector {
 public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~vector();                                           // 0x00412130 for CWideString
+    ~vector();                                           // 0x00412130 for CWideString (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)
     bool empty() const { return _M_start == _M_finish; }
 };
 }

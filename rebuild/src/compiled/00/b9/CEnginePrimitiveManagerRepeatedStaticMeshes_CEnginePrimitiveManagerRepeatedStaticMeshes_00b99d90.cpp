@@ -2,7 +2,7 @@
 // Leaf: ??0CEnginePrimitiveManagerRepeatedStaticMeshes
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B99D90, length 1808 bytes (`ret 4`, no EH frame). Vtable 0x012A3E9C.
 // Callees: CEnginePrimitiveGroupManager ctor @ 0x00BEBC30, CPixelShader() @ 0x00A5EC00, CVertexShader() @ 0x00A62FB0,
-//   RegisterEnable @ 0x00BACD80, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, GetVertexShader @ 0x00A5D5F0 / GetPixelShader @ 0x00A5D720,
+//   AddEnableConsoleVariable @ 0x00BACD80, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, GetVertexShader @ 0x00A5D5F0 / GetPixelShader @ 0x00A5D720,
 //   CalculateTextureMemoryFromQuality @ 0x009BEE00 (thiscall on the global at 0x01436E1C; `cmp eax,0x578 / jb`),
 //   AllocateAligned @ 0x009F2BE0 (`__fastcall`, size 0xC00, alignment 0x10).
 // Layout: engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h offsets hold (0x94 bytes); its shader members are opaque byte arrays,
@@ -117,7 +117,7 @@ struct CSIMDVariableBlock;
 class CEnginePrimitiveManager { public:                   // 0x0c bytes
     virtual ~CEnginePrimitiveManager();
     unsigned char _body[0x8];
-    void RegisterEnable(const CCharString& name);  // 0x00BACD80
+    void AddEnableConsoleVariable(const CCharString& name);  // 0x00BACD80 (FableWin.pdb + Ego_r.pdb name sets)
 };
 class CEnginePrimitiveGroupManager : public CEnginePrimitiveManager { public:   // 0x20 bytes
     unsigned char _group[0x14];
@@ -149,7 +149,7 @@ class CEnginePrimitiveManagerRepeatedStaticMeshes : public CEnginePrimitiveGroup
 CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStaticMeshes(CEngineSceneArray* scenes)
     : CEnginePrimitiveGroupManager(scenes)
 {
-    RegisterEnable("EnableRepeatedMeshes");
+    AddEnableConsoleVariable("EnableRepeatedMeshes");
     PixelShader = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH");
     VertexShader = g_pEngineData->GetRepeatedMeshVertexShaderResource()->GetVertexShader("VSHADER_REPEATED_MESH");
     PixelShaderStippleAlpha = g_pEngineData->GetPixelShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_STIPPLE_ALPHA");

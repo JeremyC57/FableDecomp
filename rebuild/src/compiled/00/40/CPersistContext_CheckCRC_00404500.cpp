@@ -1,7 +1,7 @@
 // CPersistContext::CheckCRC(const char* name) -- binary persist key guard: on binary load skip the 4-byte key CRC, on binary save write the CRC of the key
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00404500, 181 bytes (+ int3 padding), `ret 4`.
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, CCharString::CCharString(const char*, long) 0x0099EBF0,
-//   CCRC::Calc (CRC32) 0x004014A0 (`__fastcall` seed, data, length), CDataOutputStream::WriteULong 0x00993EA0 (catalogued
+//   CCRC::Calc (CRC32) 0x004014A0 (`__fastcall` seed, data, length), CDataOutputStream::WriteULONG 0x00993EA0 (catalogued
 //   "WriteCBYTE"), CCharString::~CCharString 0x0099EAE0.
 // Shape: every CPersistContext::Transfer<T> calls this first. Mode 2 (binary load) reads the stored key CRC through the
 //   inlined by-value ReadULong() over CMemoryDataInputStream::Read (64-bit position range check, chunk fast path,
@@ -62,7 +62,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteULong(unsigned long value);  // 0x00993EA0
+    void WriteULONG(unsigned long value);  // 0x00993EA0
 };
 
 class CPersistContext { public:
@@ -80,6 +80,6 @@ void CPersistContext::CheckCRC(const char* name)
         LoadStream->ReadULong();
     }
     else if (Mode == 3) {
-        SaveStream->WriteULong(GetCRC(CCharString(name)));
+        SaveStream->WriteULONG(GetCRC(CCharString(name)));
     }
 }

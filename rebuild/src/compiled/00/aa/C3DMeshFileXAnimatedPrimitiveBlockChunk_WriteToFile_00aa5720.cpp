@@ -1,7 +1,7 @@
 // C3DMeshFileXAnimatedPrimitiveBlockChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const -- the group list, BonesPerVertex, the vertex list and every bone weight, then the sub-chunks
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA5720, length 208 bytes (virtual, slot 8).
-// Callees: CDataOutputStream::WriteULong @ 0x00993EA0, _ftol2 @ 0x00BFEA70, CChunkedFileSuperChunk::WriteToFile @ 0x00AA78C0.
-// Shape: each CArray<unsigned long> goes out as its count (kept in ebx) then one WriteULong per element (begin
+// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0, _ftol2 @ 0x00BFEA70, CChunkedFileSuperChunk::WriteToFile @ 0x00AA78C0.
+// Shape: each CArray<unsigned long> goes out as its count (kept in ebx) then one WriteULONG per element (begin
 // re-read each pass, STLport `*(begin() + i)`); the bone weights (BonesPerVertex * vertex count records) write
 // BoneIndex and then the weight converted unsigned -> float -> long (`fild ; fadd 2^32 if negative ; _ftol2`).
 // Layout: retail CArray is 12 bytes (PDB 16): GroupBlock.Groups +0x2c, BonesPerVertex +0x44, VertexList +0x48,
@@ -40,7 +40,7 @@ class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteUShort(unsigned short value);             // 0x00993E80
-    void WriteULong(unsigned long value);               // 0x00993EA0
+    void WriteULONG(unsigned long value);               // 0x00993EA0
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void WriteBool(bool value);                         // 0x00993E30
@@ -115,19 +115,19 @@ class C3DMeshFileXAnimatedPrimitiveBlockChunk : public CChunkedFileSuperChunkBas
 void C3DMeshFileXAnimatedPrimitiveBlockChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
     unsigned long groups = GroupBlock.Groups.Size();
-    out.WriteULong(groups);
+    out.WriteULONG(groups);
     for (unsigned long i = 0; i < groups; ++i)
-        out.WriteULong(GroupBlock.Groups.at(i));
-    out.WriteULong(BonesPerVertex);
+        out.WriteULONG(GroupBlock.Groups.at(i));
+    out.WriteULONG(BonesPerVertex);
     unsigned long vertices = VertexList.Size();
-    out.WriteULong(vertices);
+    out.WriteULONG(vertices);
     for (unsigned long j = 0; j < vertices; ++j)
-        out.WriteULong(VertexList.at(j));
+        out.WriteULONG(VertexList.at(j));
     unsigned long weights = BonesPerVertex * vertices;
     for (unsigned long k = 0; k < weights; ++k) {
         const C3DIndexedBoneWeight& w = BoneWeights.at(k);
-        out.WriteULong(w.BoneIndex);
-        out.WriteULong((long)(float)w.Weight);
+        out.WriteULONG(w.BoneIndex);
+        out.WriteULONG((long)(float)w.Weight);
     }
     CChunkedFileSuperChunkBase::WriteToFile(out, saver);
 }

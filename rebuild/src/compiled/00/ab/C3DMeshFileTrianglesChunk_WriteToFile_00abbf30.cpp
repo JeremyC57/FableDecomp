@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABBF30, length 131 bytes.
 // Leaf: ?WriteToFile@C3DMeshFileTrianglesChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Callees: 0x00993EA0 CDataOutputStream::WriteULong, 0x00993E80 CDataOutputStream::WriteUShort (writes 2 bytes
+// Callees: 0x00993EA0 CDataOutputStream::WriteULONG, 0x00993E80 CDataOutputStream::WriteUShort (writes 2 bytes
 // through slot 4), 0x00AA78C0 CChunkedFileSuperChunk::WriteToFile.
 // Shape: Triangles is a retail CArray (three pointers) of 6-byte index triples at +0x2c, so the count is the
 // byte span divided by 6 (`imul 0x2AAAAAAB`, no shift). VC strength-reduces the indexed loop into a byte
@@ -46,7 +46,7 @@ class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteUShort(unsigned short value);             // 0x00993E80
-    void WriteULong(unsigned long value);               // 0x00993EA0
+    void WriteULONG(unsigned long value);               // 0x00993EA0
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void WriteBool(bool value);                         // 0x00993E30
@@ -100,7 +100,7 @@ class C3DMeshFileTrianglesChunk : public C3DMeshFileChunk { public:
 void C3DMeshFileTrianglesChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
     unsigned long count = Triangles.Size();
-    out.WriteULong(count);
+    out.WriteULONG(count);
     for (unsigned long i = 0; i < count; ++i) {
         const C3DMeshFileTriangle& triangle = Triangles[i];
         out.WriteUShort(triangle.Index[0]);

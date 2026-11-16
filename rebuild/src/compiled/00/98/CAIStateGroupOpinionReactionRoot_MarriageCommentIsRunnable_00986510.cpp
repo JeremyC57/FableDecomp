@@ -90,7 +90,9 @@ class CAIStateGroup_OpinionReactionRoot { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x6b - 0x08];
     unsigned char ThingReactingTo[9];           // +0x6b CIntelligentPointer<CThing>
-    bool CommentAboutHeroIsRunnable();          // 0x009863E0
+private:
+    bool CommentAboutHeroIsRunnable();          // 0x009863E0 (Ego_r.pdb + FableWin.pdb: private, AAE)
+public:
     bool MarriageCommentIsRunnable();
 };
 #pragma pack(pop)

@@ -7,12 +7,15 @@
 // Shape: `mov eax,[esp+4] ; push 0 ; push 0 ; push eax ; call ; ret 4` -- a void forwarder that cannot tail-jump
 // (the callee pops three slots, the caller one); the argument is loaded before the constant pushes. The method's real
 // name is unknown (catalog label kept); the two trailing arguments are modelled as bools. Local model.
+// Name fix (agentNF36 2026-11-16): the callee is ?ConstructMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@_NPA_N@Z (Ego_r.pdb +
+// FableWin.pdb); this row's own spelling is unchanged.
+namespace NUISystem { class CComponent; }
 class CTCInventoryMap { public:
-    void BuildMapTeleportUI(long screen, bool forceRebuild, bool keepSelection);   // 0x0060C900
+    NUISystem::CComponent* ConstructMapList(NUISystem::CComponent* parent, bool pc, bool* built);   // 0x0060C900
     void ConstructScreen(long screen);
 };
 
 void CTCInventoryMap::ConstructScreen(long screen)
 {
-    BuildMapTeleportUI(screen, false, false);
+    ConstructMapList((NUISystem::CComponent*)screen, false, 0);
 }

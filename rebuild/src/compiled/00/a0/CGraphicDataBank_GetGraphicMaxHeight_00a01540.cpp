@@ -35,12 +35,14 @@ struct CArray_CGraphicInfo {                       // retail CArray<CGraphicInfo
     CGraphicInfo* m_pEnd;
     unsigned long size() const { return m_pLast - m_pFirst; }
 };
-class CGraphicDataBank { public:
-    unsigned char       _pad000[0x1e0];
+class CGraphicDataBank { public:                   // the vptr is the first dword (vtable 0x0129C8CC, slots 23/24 below)
+    unsigned char       _pad004[0x1e0 - 4];
     CArray_CGraphicInfo GraphicList;               // +0x1e0
     const CGraphicInfo* GetGraphicInfo(unsigned long index) const { return index < GraphicList.size() ? &GraphicList.m_pFirst[index] : 0; }
-    unsigned long GetGraphicMaxWidth(unsigned long index) const;
-    unsigned long GetGraphicMaxHeight(unsigned long index) const;
+    // FableWin.pdb ?GetGraphicMaxWidth@CGraphicDataBank@@UBEKK@Z / ?GetGraphicMaxHeight@..@@UBEKK@Z: virtual, vtable slots 23 (+0x5C) / 24 (+0x60)
+    // (agentNF36 name fix; earlier slots not modelled).
+    virtual unsigned long GetGraphicMaxWidth(unsigned long index) const;
+    virtual unsigned long GetGraphicMaxHeight(unsigned long index) const;
 };
 
 unsigned long CGraphicDataBank::GetGraphicMaxHeight(unsigned long index) const

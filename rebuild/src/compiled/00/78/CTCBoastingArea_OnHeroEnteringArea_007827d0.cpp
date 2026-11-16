@@ -27,9 +27,11 @@ class CTCBoastingCrowdControl { public:
     void OnHeroEnterPodiumArea();               // 0x00783BF0 (catalog "OnHeroApproachPodiumArea")
     void OnHeroLeavePodiumArea();               // 0x00783C20 (catalog "OnHeroAttackCrowdMember")
 };
-struct CDrawQuestInfo {
-    long GetMiniGameType();                     // 0x00644D54 (EMiniGameType)
-};
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CDRAWQUESTINFO_MINIGAMETYPE     // Ego_r.pdb / FableWin.pdb ?GetMiniGameType@CDrawQuestInfo@NPlayerGui@@QBE?AW4EMiniGameType@@XZ (0x00644D54)
+#include "engine/NPlayerGui_CDrawQuestInfo.h"
+using NPlayerGui::CDrawQuestInfo;
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
@@ -56,7 +58,7 @@ private:
 
 void CTCBoastingArea::OnHeroEnteringArea(CThing& hero)
 {
-    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_pQuestInfo->GetMiniGameType() == 0) {
+    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_pQuestInfo->GetMiniGameType() == (EMiniGameType)0) {
         CTCBoastUI* boastUI;
         if (hero.GetTC(TCI_BOAST_UI, &boastUI)) {
             boastUI->RequestActivate();

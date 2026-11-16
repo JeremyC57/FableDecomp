@@ -40,13 +40,14 @@ public:
     static T& __fastcall Get();                          // 0x0040D2A0 for CUserProfileManager
 };
 namespace std {
-template <class T> class vector {
+template <class T> class allocator;                  // STLport 4.6 (class key V)
+template <class T, class A = allocator<T> > class vector {
 public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~vector();                                           // 0x00412130 for CWideString
+    ~vector();                                           // 0x00412130 for CWideString (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)
     unsigned int size() const { return unsigned int(_M_finish - _M_start); }
     T* begin() { return _M_start; }
     T& operator[](unsigned int n) { return _M_start[n]; }
@@ -73,7 +74,9 @@ public:
     CComponent*                      PScreenToActivate;     // +0x9c
     unsigned char                    _padA0[0xc4 - 0xa0];
     std::map<CWideString, bool>      Signatures;            // +0xc4
-    void GetProfileNames(std::vector<CWideString>& names);   // 0x005955AB
+protected:
+    void GetProfileNames(std::vector<CWideString>& names);   // 0x005955AB (Ego_r.pdb + FableWin.pdb: protected, IAE)
+public:
     void Init(CCountedPointer<CGraphicDataBank> graphics, CCountedPointer<CMeshDataBank> meshes, CInputManager* input,
               CDefinitionManager* definitions);
 };

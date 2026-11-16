@@ -64,7 +64,7 @@ struct BuildCall
     int ValueB;
 };
 
-CCharString FableFullBuildVersion(0, 0);
+CCharString GVersionString(0, 0);
 static BuildCall gCalls[20];
 static int gCallCount;
 static bool gPathExists;
@@ -153,7 +153,7 @@ int main()
     if (gCalls[5].Event != EVENT_DESTROY) return 9;
     if (gCalls[6].Event != EVENT_FILE_CONSTRUCT || gCalls[6].ValueA != -1) return 10;
     if (gCalls[7].Event != EVENT_ASSIGN_STRING ||
-        gCalls[7].Self != &FableFullBuildVersion ||
+        gCalls[7].Self != &GVersionString ||
         gCalls[7].Argument != gCalls[6].Self) return 11;
     if (gCalls[8].Event != EVENT_DESTROY || gCalls[8].Self != gCalls[6].Self) return 12;
     if (gCalls[9].Event != EVENT_DISK_CLOSE ||

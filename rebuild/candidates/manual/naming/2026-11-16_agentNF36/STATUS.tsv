@@ -1,0 +1,75 @@
+address	change	grade	test	grades_used	entries	note
+0x00401f30	global rename GVersionString	RELOCATION_MATCH	PASS	1	013b85e0	binds the claim
+0x00404500	callee rename WriteULONG	RELOCATION_MATCH	PASS	1	00993ea0	binds the claim
+0x00416953	callee rename ConvertWorldToStaticMapPath	RELOCATION_MATCH	PASS	1	0049ddd0	binds the claim
+0x00434870	SELF rename onto engine/CFadeInFadeOutBase.h (FABLE_RETAIL_CFADEINFADEOUTBASE_DECLS; CFadeInFadeOutBase_Methods view dropped)	RELOCATION_MATCH	PASS	1	00434870	section 1
+0x00434c90	SELF rename onto engine/CDisplayEngine.h (FABLE_RETAIL_CDISPLAYENGINE_ENDSCREENFADEOUT + typed ScreenFadeOutInfo; CDisplayEngine_Methods view dropped)	RELOCATION_MATCH	PASS	1	00434c90	section 1
+0x0049d610	SELF rename onto engine/CWorld.h (CWorld_Methods view -> CWorld, FABLE_RETAIL_CWORLD_LOAD_ORIGINAL) + callee 0x0041A060 GetLevelsDirectory_0041a060 -> NResourceDirectoryNames::GetLevelDir	RELOCATION_MATCH	PASS	4	0049d610	section 1; callee via fable_resource_directories.h
+0x0049d770	SELF rename onto engine/CWorld.h (CWorld_Methods view -> CWorld) + callee 0x0041A060 -> NResourceDirectoryNames::GetLevelDir	RELOCATION_MATCH	PASS	3	0049d770	section 1; callee via fable_resource_directories.h
+0x005064b0	SELF rename onto engine/CWorldMap.h	RELOCATION_MATCH	PASS	1	005064b0	callee 0x00502850 = ?CacheMaps@CWorldMap@@IAEXW4ELoadType@1@@Z
+0x00589d30	callee rename CloseMenus->ResetPrimitiveHandles	RELOCATION_MATCH	PASS	1	0058771c	binds ?ResetPrimitiveHandles@CTCInventory@@QAEXXZ (0x005BD597 call left: stand-in)
+0x00595845	+ GetProfileNames protected (IAE, PDB)	RELOCATION_MATCH	PASS	2	00412130	side effect of the allocator fix; GetProfileNames now the PDB spelling
+0x005958f5	+ GetProfileNames protected (IAE, PDB)	RELOCATION_MATCH	PASS	2	00412130	side effect of the allocator fix; GetProfileNames now the PDB spelling
+0x0059899a	local vector model gains STLport allocator parameter	RELOCATION_MATCH	PASS	1	00412130	also GetSavedGameNames now = PDB spelling
+0x005a30a1	callee static CTCInventoryItem::IsBuyable (existing local model)	RELOCATION_MATCH	PASS	1	005d9b50	binds the claim
+0x005ae972	callee decl private (AAE)	RELOCATION_MATCH	PASS	1	005ac10e	binds ?ConstructActualBuyInventoryPC@CTCInventoryTrade@@AAEXXZ
+0x005faba0	SELF rename IsThingAsPosBeingDrawn (protected)	RELOCATION_MATCH	PASS	1	005faba0	section 1
+0x006116c0	callee ConstructMapList (own leaf unchanged)	RELOCATION_MATCH	PASS	1	0060c900	binds the claim
+0x00617a00	callee operator()(const CThingAICreature&)	RELOCATION_MATCH	PASS	1	006a7140	binds the claim
+0x00644d54	SELF rename const + EMiniGameType (fable_nscript_forward.h)	MATCH	PASS	1	00644d54	section 1
+0x006aebf0	SELF rename (const CThingAICreature&)	RELOCATION_MATCH	PASS	1	006aebf0	section 1
+0x006b1960	callee rename RegisterAtmosPalette	RELOCATION_MATCH	PASS	1	006b16b0	binds the claim
+0x00726be0	callee respell protected GetThingSearchTools const& on CTCPhysicsBase	RELOCATION_MATCH	PASS	1	006afd40	binds the claim
+0x007827d0	local CDrawQuestInfo stand-in replaced by engine/NPlayerGui_CDrawQuestInfo.h (+_MINIGAMETYPE)	RELOCATION_MATCH	PASS	2	00644d54	binds ?GetMiniGameType@CDrawQuestInfo@NPlayerGui@@QBE?AW4EMiniGameType@@XZ
+0x007dff90	callee ConstructMapList	RELOCATION_MATCH	PASS	1	0060c900	binds the claim
+0x0088f960	callee decl const C3DVector&	RELOCATION_MATCH	PASS	1	0049e590	binds ?SetSaveGameMarkerPos@CWorld@@QAEXABVC3DVector@@@Z
+0x00892610	callee class respell (local model, no shared header): CScriptModuleMoveBetweenLookFromAndLookTo -> NCameraModes::CScriptModuleFullTransition	RELOCATION_MATCH	PASS	1	008525f0	binds ??0CScriptModuleFullTransition@NCameraModes@@QAE@ABVC3DVector@@000J@Z
+0x0089b780	callee rename EndMovePlayerPos	RELOCATION_MATCH	PASS	1	005064b0	binds the claim
+0x008e57d0	callee respell protected GetThingSearchTools const&	RELOCATION_MATCH	PASS	1	006afd40	binds the claim
+0x008fd46b	SELF rename to CAIStateGroup_PerformAction::GetName (static __fastcall)	RELOCATION_MATCH	PASS	1	008fd46b	section 1
+0x008fd4bc	SELF rename to CAIStateGroup_MinionReactToCorpse::GetName (static __fastcall)	RELOCATION_MATCH	PASS	1	008fd4bc	section 1
+0x008fd7d9	SELF rename to CAIStateGroup_ButterflyWander::GetName (static __fastcall)	RELOCATION_MATCH	PASS	2	008fd7d9	section 1
+0x008fd923	SELF rename to CAIStateGroup_VillageTaskPatrol::GetName (static __fastcall)	RELOCATION_MATCH	PASS	1	008fd923	section 1
+0x008fd94e	SELF rename to CAIStateGroup_VillageTaskPickCrops::GetName (static __fastcall)	RELOCATION_MATCH	PASS	1	008fd94e	section 1
+0x008fdba2	SELF rename to CAIStateGroup_PrepareMeal::GetName (static __fastcall)	RELOCATION_MATCH	PASS	1	008fdba2	section 1
+0x008fdbcb	SELF rename to CAIStateGroup_GazeOutside::GetName (static __fastcall)	RELOCATION_MATCH	PASS	1	008fdbcb	section 1
+0x008fdbf4	SELF rename to CAIStateGroup_GazeAtHome::GetName (static __fastcall)	RELOCATION_MATCH	PASS	1	008fdbf4	section 1
+0x008fdd10	SELF rename to CAIStateGroup_MinionHawkingFromStall::GetName (static __fastcall)	RELOCATION_MATCH	PASS	1	008fdd10	section 1
+0x008fe019	SELF rename to CAIStateGroup_MinionBehaviourPodiumEmoteNeutral::GetName (static __fastcall)	RELOCATION_MATCH	PASS	1	008fe019	section 1
+0x008fe14d	SELF rename to CAIStateGroup_HoverAttack::GetName (static __fastcall)	RELOCATION_MATCH	PASS	1	008fe14d	section 1
+0x0091d510	SELF rename protected (access only); Leaf line added	RELOCATION_MATCH	PASS	1	0091d510	section 1
+0x0091d7f0	callee decl protected, enums, const C3DVector&, bool& (own leaf unchanged)	RELOCATION_MATCH	PASS	1	0091d510	binds the claim
+0x00926c50	callee renames IsLockable/IsLocked const	RELOCATION_MATCH	PASS	1	0082dd90 0082de20	binds both claims
+0x00954470	callee rename GetBossPhase const	RELOCATION_MATCH	PASS	1	007aed10	binds the claim
+0x00954630	callee rename GetBossPhase const	RELOCATION_MATCH	PASS	1	007aed10	binds the claim
+0x0095b020	callee decl protected + EMovementType	RELOCATION_MATCH	PASS	1	0091d510	binds the claim
+0x00961880	callee rename GetBossPhase const	RELOCATION_MATCH	PASS	1	007aed10	binds the claim
+0x00985430	SELF rename onto engine/CAIStateGroup_OpinionReactionRoot.h (+overlay _FOLLOWUPDATE)	RELOCATION_MATCH	PASS	1	00985430	section 1; callee now ?FollowUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NM_N@Z
+0x009863e0	SELF rename onto engine/CAIStateGroup_OpinionReactionRoot.h (_BEHAVIOURS)	RELOCATION_MATCH	PASS	1	009863e0	section 1
+0x00986510	callee decl private (AAE)	RELOCATION_MATCH	PASS	1	009863e0	binds ?CommentAboutHeroIsRunnable@..@@AAE_NXZ
+0x00989ab0	SELF rename (unsigned long, const C4DVector&)	MATCH	PASS	1	00989ab0	section 1
+0x00a014d0	SELF rename virtual (UBEKK); vptr at +0 of local model	MATCH	PASS	1	00a014d0	section 1
+0x00a01540	SELF rename virtual (UBEKK); vptr at +0 of local model	MATCH	PASS	1	00a01540	section 1
+0x00a1e370	global rename NumberOfPeopleCalculatingRoute	RELOCATION_MATCH	PASS	1	013d27b0	binds the claim
+0x00a20240	CAStarState static renames	RELOCATION_MATCH	PASS	1	013d27b8 013d27bc 013d27c0	binds the three claims
+0x00a20410	CAStarState static renames	RELOCATION_MATCH	PASS	1	013d27b8 013d27bc 013d27c0	binds the three claims
+0x00a205c0	CAStarState static renames	RELOCATION_MATCH	PASS	1	013d27b8 013d27bc 013d27c0	binds the three claims
+0x00a20670	CAStarState static renames	RELOCATION_MATCH	PASS	1	013d27b8 013d27bc 013d27c0	binds the three claims
+0x00a21640	CAStarState static renames	RELOCATION_MATCH	PASS	1	013d27b8 013d27bc 013d27c0	binds the three claims
+0x00a42ea0	callee decl CDataInputStream& (forward decl; &stream cast to its +0 base)	RELOCATION_MATCH	PASS	1	00a495f0	binds ?ReadFromFile@CLipSyncSampleData@@QAEXAAVCDataInputStream@@@Z
+0x00aa4ca0	callee rename WriteULONG	RELOCATION_MATCH	PASS	1	00993ea0	binds the claim
+0x00aa5720	callee rename WriteULONG	RELOCATION_MATCH	PASS	1	00993ea0	binds the claim
+0x00ab9f60	SELF rename onto engine/C3DMeshFileGroupChunk.h	MATCH	PASS	1	00ab9f60	section 1
+0x00aba350	SELF rename onto engine/C3DMeshFileGroupChunk.h	MATCH	PASS	1	00aba350	section 1
+0x00aba360	SELF rename onto engine/C3DMeshFileVerticesChunk.h	MATCH	PASS	1	00aba360	section 1
+0x00abbf30	callee rename WriteULONG	RELOCATION_MATCH	PASS	1	00993ea0	binds the claim
+0x00ac4150	callee rename GetCount	RELOCATION_MATCH	PASS	1	00aba350	binds the claim
+0x00adfdc0	callee rename WriteULONG	RELOCATION_MATCH	PASS	1	00993ea0	binds the claim
+0x00b27ee0	SELF rename (CSurface&, long)	RELOCATION_MATCH	PASS	1	00b27ee0	section 1
+0x00b8b780	overlay opt-in FABLE_RETAIL_CENGINE_SCRATCHZBUFFER_PDB (CSurface&, long)	RELOCATION_MATCH	PASS	1	00b27ee0	binds ?GetScratchZBufferD24S8@CEngine@@QAEAAVCSurface@@J@Z
+0x00b990b0	SELF rename onto engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h (RENDERSUB private member; _Wind derived shell dropped; primitive by reference, const delays) + engine/C4DVector.h replaces the local C4DVector	RELOCATION_MATCH	PASS	4	00b990b0	section 1; preamble copied from row 0x00B9AC30
+0x00b99d90	callee rename RegisterEnable->AddEnableConsoleVariable	RELOCATION_MATCH	PASS	1	00bacd80	binds ?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+0x00b9ac30	overlay opt-in _RENDERSUB_NESTEDCLIP (ClipSubSectionsSIMD / ClipSubSections callee respell) + global g_SSEAvailable -> GEnableSIMD	RELOCATION_MATCH	PASS	2	00b98e10	ClipSubSections 0x00B99710 respelled too
+0x00c49d50	SELF rename CCodaFrame class key	RELOCATION_MATCH	PASS	1	00c49d50	section 1
+0x00c5dd70	SELF rename int result	RELOCATION_MATCH	PASS	1	00c5dd70	section 1
+0x00c609a0	SELF rename AddBuffer (int)	RELOCATION_MATCH	PASS	1	00c609a0	section 1

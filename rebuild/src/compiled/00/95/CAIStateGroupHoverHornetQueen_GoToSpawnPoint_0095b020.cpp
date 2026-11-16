@@ -15,6 +15,7 @@
 // Name fix (agentNF24): 0x0095A420 respelled the protected CAIStateGroup_HoverHornetQueen::IsStillRunnable (Ego_r 0x0097ECE0 / FableWin 0x02C0FEC0 ?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ; was public)
 #include <stdio.h>
 #include "engine/C3DVector.h"
+#include "engine/EMovementType.h"
 class CCharString { public:
     void* PData;
     CCharString(const char* text, long length);  // 0x0099EBF0
@@ -96,8 +97,11 @@ protected:
 public:
 };
 struct CAIStateGroup_HoverMovementBase : CAIStateGroupBase {
+protected:
+    // Both PDB name sets: protected, EMovementType (agentNF36 name fix; was public / long).
     EAIActionReturn AIAction_MoveToPosProximityAndFacePos(EAIActionRepeat repeat, const C3DVector& pos, float proximity,
-        const C3DVector& facePos, bool& arrived, long movementType);   // 0x0091D510
+        const C3DVector& facePos, bool& arrived, EMovementType movementType);   // 0x0091D510
+public:
 };
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_HoverMovementBase {
     CIntelligentPointer<CThing> PTarget;            // +0x14
@@ -163,7 +167,7 @@ void CAIStateGroup_HoverHornetQueen::GoToSpawnPoint()
             EAIActionReturn result;
             do {
                 bool arrived;
-                result = AIAction_MoveToPosProximityAndFacePos(AI_ACTION_REPEAT_POLL, target, 0.3f, look, arrived, 10);
+                result = AIAction_MoveToPosProximityAndFacePos(AI_ACTION_REPEAT_POLL, target, 0.3f, look, arrived, AI_MOVEMENT_HOVER_FAST);
                 if (!IsStillRunnable()) {
                     Terminate();
                     return;

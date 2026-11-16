@@ -5,6 +5,7 @@
 // Flags: /GS
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_RENDERSUB
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_RENDERSUB_NESTEDCLIP
 #define FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_PREPARETEST
 #define FABLE_RETAIL_CENGINESUBPRIMITIVEREPEATEDSTATICMESH_GETPARENT
 #define FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_TESTS
@@ -153,7 +154,7 @@ namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; 
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }        // 0x01436E98
 namespace NEngineInternal { extern CEngineOcclusionManager* GPOcclusionManager; }      // 0x01436E5C ?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A
 
-extern bool g_SSEAvailable;                                              // 0x013D2880
+extern bool GEnableSIMD;                                                 // 0x013D2880 (pass-22 PDB name, as landed 0x00BF7BC0)
 namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }        // 0x01436E60 (Anniversary PDB S_GDATA32 NEngineInternal::GPShadowRenderer)
 namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }  // 0x01436E80 (Anniversary PDB S_GDATA32 NEngineInternal::GPPrimitiveRenderer)
 namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }        // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
@@ -202,7 +203,7 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes::RenderSubPrimitive(CEngineSubP
     const CSubsectionElement* sub_sections = primitive->SubSections;
     if (sub_sections) {
         clip_end = clip_list;
-        if (g_SSEAvailable)
+        if (GEnableSIMD)
             ClipSubSectionsSIMD(sub_sections, 0, clip_end);
         else
             ClipSubSections(sub_sections, 0, fade_distance, false, clip_end);

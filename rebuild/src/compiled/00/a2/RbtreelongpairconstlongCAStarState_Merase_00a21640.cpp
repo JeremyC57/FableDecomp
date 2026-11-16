@@ -9,7 +9,9 @@
 // Shape: STLport `_M_erase` (recurse right, keep left, _Destroy the value, deallocate = free 0x00BFEA14). The inline
 //   ~CAStarState counts the state out of three statics 0x013D27B8 / 0x013D27BC / 0x013D27C0 (the landed scalar
 //   deleting destructor 0x00A205C0 decrements the same three for the pair<const long, CAStarState>); their names are
-//   not in the PDB name sets, so NoOfStates / NoOfStatesOnOpenList / NoOfStatesOnClosedList are descriptive names.
+//   NumberOfAStarStates / NumberOfOpenStates / NumberOfClosedStates (the PDB names, engine/CNavigatorAStar.h).
+// Name fix (agentNF36 2026-11-16): the three CAStarState counters are spelled NumberOfAStarStates / NumberOfOpenStates /
+// NumberOfClosedStates, the original static names of engine/CNavigatorAStar.h (pass23, both PDBs' type records).
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 
 class CANavQuadTreeNode;
@@ -24,16 +26,16 @@ public:
         float              TotalCost;                   // +0x0C
         bool               OnOpenList;                  // +0x10
         bool               OnClosedList;                // +0x11
-        static long NoOfStates;                         // 0x013D27B8 (descriptive)
-        static long NoOfStatesOnOpenList;               // 0x013D27BC (descriptive)
-        static long NoOfStatesOnClosedList;             // 0x013D27C0 (descriptive)
+        static long NumberOfAStarStates;                         // 0x013D27B8 (PDB name, engine/CNavigatorAStar.h)
+        static long NumberOfOpenStates;               // 0x013D27BC (PDB name)
+        static long NumberOfClosedStates;             // 0x013D27C0 (PDB name)
         ~CAStarState()
         {
-            --NoOfStates;
+            --NumberOfAStarStates;
             if (OnOpenList)
-                --NoOfStatesOnOpenList;
+                --NumberOfOpenStates;
             if (OnClosedList)
-                --NoOfStatesOnClosedList;
+                --NumberOfClosedStates;
         }
     };
 };

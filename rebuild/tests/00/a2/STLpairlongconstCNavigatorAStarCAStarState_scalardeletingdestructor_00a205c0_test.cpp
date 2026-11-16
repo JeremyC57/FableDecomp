@@ -1,5 +1,5 @@
 // Link test for 0x00A205C0: std::pair<const long, CAStarState>'s scalar deleting destructor (reached through its Kill_00a205c0 helper)
-// must count the CAStarState out of NoOfStates and, per flag, out of the open/closed-list counters, then free it.
+// must count the CAStarState out of NumberOfAStarStates and, per flag, out of the open/closed-list counters, then free it.
 #include <cstdio>
 #include <cstdlib>
 class CANavQuadTreeNode;
@@ -13,14 +13,14 @@ public:
         float              TotalCost;
         bool               OnOpenList;
         bool               OnClosedList;
-        static long NoOfStates;
-        static long NoOfStatesOnOpenList;
-        static long NoOfStatesOnClosedList;
+        static long NumberOfAStarStates;
+        static long NumberOfOpenStates;
+        static long NumberOfClosedStates;
     };
 };
-long CNavigatorAStar::CAStarState::NoOfStates = 10;
-long CNavigatorAStar::CAStarState::NoOfStatesOnOpenList = 10;
-long CNavigatorAStar::CAStarState::NoOfStatesOnClosedList = 10;
+long CNavigatorAStar::CAStarState::NumberOfAStarStates = 10;
+long CNavigatorAStar::CAStarState::NumberOfOpenStates = 10;
+long CNavigatorAStar::CAStarState::NumberOfClosedStates = 10;
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -40,13 +40,13 @@ int main()
     typedef CNavigatorAStar::CAStarState St;
     int ok = sizeof(SCountedInstance_00a205c0) == 0x18;
     Kill_00a205c0(Make(true, false));
-    ok = ok && St::NoOfStates == 9 && St::NoOfStatesOnOpenList == 9 && St::NoOfStatesOnClosedList == 10;
+    ok = ok && St::NumberOfAStarStates == 9 && St::NumberOfOpenStates == 9 && St::NumberOfClosedStates == 10;
     Kill_00a205c0(Make(false, true));
-    ok = ok && St::NoOfStates == 8 && St::NoOfStatesOnOpenList == 9 && St::NoOfStatesOnClosedList == 9;
+    ok = ok && St::NumberOfAStarStates == 8 && St::NumberOfOpenStates == 9 && St::NumberOfClosedStates == 9;
     Kill_00a205c0(Make(true, true));
-    ok = ok && St::NoOfStates == 7 && St::NoOfStatesOnOpenList == 8 && St::NoOfStatesOnClosedList == 8;
+    ok = ok && St::NumberOfAStarStates == 7 && St::NumberOfOpenStates == 8 && St::NumberOfClosedStates == 8;
     Kill_00a205c0(0);
-    ok = ok && St::NoOfStates == 7;
+    ok = ok && St::NumberOfAStarStates == 7;
     if (!ok) { std::printf("00a205c0_TEST FAIL\n"); return 1; }
     std::printf("00a205c0_TEST PASS\n");
     return 0;

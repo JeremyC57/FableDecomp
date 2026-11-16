@@ -1261,7 +1261,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00434740	C2DBoxI	C2DBoxI	__thiscall	undefined	3	C2DBoxI *,C2DCoordI *,long	0	yes	accepted									
 004347d0	ToC2DCoordI	C2DVector	__thiscall	C2DCoordI *	2	C2DCoordI *,C2DVector *	1	yes	accepted									
 00434840	Open	CFadeInFadeOutBase	__thiscall	void	3	CEngine *,ulong,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CEngine_StartNewScene_00434840.cpp
-00434870	Update	CFadeInFadeOutBase_Methods	__thiscall	void	2	CFadeInFadeOutBase *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CFadeInFadeOutBase_Update_00434870.cpp
+00434870	Update	CFadeInFadeOutBase	__thiscall	void	2	CFadeInFadeOutBase *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CFadeInFadeOutBase_Update_00434870.cpp
 004348d0	GetFadeInOutAlpha	CFadeInFadeOutBase	__thiscall	float	1	CFadeInFadeOutBase *	1	yes	accepted									
 00434950	sub_00434950	_global	unknown	undefined	0		0			discovered	gapscan							
 004349d0	EndLetterBox	CDisplayEngine	__thiscall	void	1	CTCCreditsUI *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CTCCreditsUI_Deactivate_004349d0.cpp
@@ -1276,7 +1276,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00434b50	GetMainWindow	CDisplayEngine	__fastcall	CEngineGraphic	0		1	yes	accepted									
 00434ba0	StartLetterBoxMode	CDisplayEngine_Methods	__thiscall	void	4	CDisplayEngine *,float,float,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CDisplayEngine_StartLetterBoxMode_00434ba0.cpp
 00434c00	StartScreenFadeOut	CDisplayEngine	__thiscall	void	5	CDisplayEngine *,float,float,CRGBColour,float	1	yes	accepted									
-00434c90	EndScreenFadeOut	CDisplayEngine_Methods	__thiscall	void	1	CDisplayEngine *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CDisplayEngine_EndScreenFadeOut_00434c90.cpp
+00434c90	EndScreenFadeOut	CDisplayEngine	__thiscall	void	1	CDisplayEngine *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CDisplayEngine_EndScreenFadeOut_00434c90.cpp
 00434cd0	SetAboutToRun	CDisplayEngine	__thiscall	void	1	CDisplayEngine *	1	yes	accepted									
 00434d60	CanRelocateData	C3DAnimation2	__thiscall	bool	2	C3DAnimation2 *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\C3DAnimation2_CanRelocateData_00434d60.cpp
 00434dc0	Nop_ret4_00434dc0	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00434DC0_global_E2.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\E2_E2_00434dc0.cpp
@@ -8338,7 +8338,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00502e90	PopulateRegionWithVillagers	CWorldMap	__thiscall	void	2	CWorldMap *,CThing *	1	yes	accepted									
 005063d0	ForceLoad	CWorldMap	__thiscall	void	2	CWorldMap *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\50\CWorldMap_ForceLoad_005063d0.cpp
 005063e0	SetPlayerPos	CWorldMap	__thiscall	void	4	CWorldMap *,long,C3DVector *,ELoadType	1	yes	accepted									
-005064b0	CallWith_005064b0	_unattributed	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted									
+005064b0	EndMovePlayerPos	CWorldMap	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted									
 005064c0	PostRegionLoad	CWorldMap	__thiscall	void	2	CWorldMap *,long	1	yes	accepted									
 005066e0	CWorldMap	CWorldMap	__thiscall	undefined	5	CWorldMap *,CMainGameComponent *,CWorld *,C2DBoxI *,ulong	0	yes	accepted									
 00506940	~CWorldMap	CWorldMap	__thiscall	void	1	CWorldMap *	1	yes	accepted									
@@ -29987,11 +29987,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008fd433	GetName	CAIStateGroup_MinionKidGroupTag	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd433.cpp
 008fd446	GetName	CAIStateGroup_MinionKidCalledToMother	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd446.cpp
 008fd459	CAIStateGroup_MinionKidCalledToMother	CAIStateGroup_MinionKidCalledToMother	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
-008fd46b	MakeCCharString_SG_PERFORM_ACTION_008fd46b	_global	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd46b.cpp
+008fd46b	GetName	CAIStateGroup_PerformAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd46b.cpp
 008fd483	GetName	CAIStateGroup_MinionFaceHero	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd483.cpp
 008fd496	GetName	CAIStateGroup_MinionPutOutFires	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd496.cpp
 008fd4a9	GetName	CAIStateGroup_MinionWatchFires	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd4a9.cpp
-008fd4bc	MakeCCharString_SG_MINION_REACT_TO_CORPSE_008fd4bc	_global	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd4bc.cpp
+008fd4bc	GetName	CAIStateGroup_MinionReactToCorpse	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd4bc.cpp
 008fd4d4	GetName	CAIStateGroup_MinionReactToUnconsciousPerson	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd4d4.cpp
 008fd4e7	GetName	CAIStateGroup_MinionReactToEnemy	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd4e7.cpp
 008fd4fa	GetName	CAIStateGroup_MinionReactToAlert	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd4fa.cpp
@@ -30033,7 +30033,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008fd7a2	CAIStateGroup_ChickenPanic	CAIStateGroup_ChickenPanic	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008fd7b4	GetName	CAIStateGroup_ChickenBeg	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd7b4.cpp
 008fd7c7	CAIStateGroup_ChickenBeg	CAIStateGroup_ChickenBeg	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
-008fd7d9	MakeCCharString_SG_BUTTERFLY_WANDER_008fd7d9	_global	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd7d9.cpp
+008fd7d9	GetName	CAIStateGroup_ButterflyWander	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd7d9.cpp
 008fd7f1	GetName	CAIStateGroup_FireflyWander	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd7f1.cpp
 008fd804	CAIStateGroup_FireflyWander	CAIStateGroup_FireflyWander	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008fd816	GetName	CAIStateGroup_SmallBirdWander	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd816.cpp
@@ -30051,9 +30051,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008fd8ea	GetName	CAIStateGroup_MeleeCombatNearby2	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd8ea.cpp
 008fd8fd	GetName	CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd8fd.cpp
 008fd910	GetName	CAIStateGroup_VillageTaskTorch	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd910.cpp
-008fd923	MakeCCharString_SG_VILLAGE_TASK_PATROL_008fd923	_global	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd923.cpp
+008fd923	GetName	CAIStateGroup_VillageTaskPatrol	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd923.cpp
 008fd93b	GetName	CAIStateGroup_VillageTaskSecuritySweep	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd93b.cpp
-008fd94e	MakeCCharString_SG_VILLAGE_TASK_PICK_CROPS_008fd94e	_global	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd94e.cpp
+008fd94e	GetName	CAIStateGroup_VillageTaskPickCrops	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd94e.cpp
 008fd966	GetName	CAIStateGroup_VillageTaskHorn	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd966.cpp
 008fd979	GetName	CAIStateGroup_KidWanderNearKids	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd979.cpp
 008fd98c	CAIStateGroup_KidWanderNearKids	CAIStateGroup_KidWanderNearKids	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
@@ -30086,9 +30086,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008fdb6a	GetName	CAIStateGroup_CleanWork	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fdb6a.cpp
 008fdb7d	CAIStateGroup_CleanWork	CAIStateGroup_CleanWork	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008fdb8f	GetName	CAIStateGroup_SitForMeal	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fdb8f.cpp
-008fdba2	ctor_SG_PREPARE_MEAL	CAIStateGroupNameTag	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-008fdbcb	ctor_SG_GAZE_OUTSIDE	CAIStateGroupNameTag	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-008fdbf4	ctor_SG_GAZE_AT_HOME	CAIStateGroupNameTag	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
+008fdba2	GetName	CAIStateGroup_PrepareMeal	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
+008fdbcb	GetName	CAIStateGroup_GazeOutside	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
+008fdbf4	GetName	CAIStateGroup_GazeAtHome	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 008fdc1d	GetName	CAIStateGroup_GazeAtWork	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fdc1d.cpp
 008fdc30	GetName	CAIStateGroup_LightHomeCandle	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fdc30.cpp
 008fdc43	~CAIStateGroup_LightHomeCandle	CAIStateGroup_LightHomeCandle	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\global_Destval_008fdc43.cpp
@@ -30101,7 +30101,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008fdcb7	GetName	CAIStateGroup_GoToPub	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fdcb7.cpp
 008fdcca	~CAIStateGroup_GoToPub	CAIStateGroup_GoToPub	__fastcall	void	2	allocator<CEditLevelMerger::CConflict> *,CConflict *	1	yes	accepted									
 008fdcfd	GetName	CAIStateGroup_SitInPub	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fdcfd.cpp
-008fdd10	ctor_SG_MINION_HAWKING_FROM_STALL	CAIStateGroupNameTag	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
+008fdd10	GetName	CAIStateGroup_MinionHawkingFromStall	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 008fdd39	GetName	CAIStateGroup_BuyFromSeller	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fdd39.cpp
 008fdd4c	GetName	CAIStateGroup_SellToBuyer	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fdd4c.cpp
 008fdd5f	GetName	CAIStateGroup_HandyMan	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fdd5f.cpp
@@ -30141,7 +30141,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008fdfe0	GetName	CAIStateGroup_MinionBehaviourGreetCreature	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fdfe0.cpp
 008fdff3	GetName	CAIStateGroup_MinionBehaviourSad	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fdff3.cpp
 008fe006	~CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\global_Destval_008fe006.cpp
-008fe019	MakeCCharString_SG_MINION_BEHAVIOUR_PODIUM_EMOTE_NEUTRAL_008fe019	_global	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe019.cpp
+008fe019	GetName	CAIStateGroup_MinionBehaviourPodiumEmoteNeutral	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe019.cpp
 008fe036	GetName	CAIStateGroup_MinionReactToBurglary	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe036.cpp
 008fe049	GetName	CAIStateGroup_MinionReactToTrespassing	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe049.cpp
 008fe05c	GetName	CAIStateGroup_MinionReactToNoise	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe05c.cpp
@@ -30162,7 +30162,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008fe105	`scalar_deleting_destructor'	CAIStateGroup_HoverMovementBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CLandscapeBackgroundPatch_vectordeletingdestructor_008fe105.cpp
 008fe127	GetName	CAIStateGroup_HoverWanderAroundThing	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe127.cpp
 008fe13a	GetName	CAIStateGroup_HoverWander	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe13a.cpp
-008fe14d	MakeCCharString_SG_HOVER_ATTACK_008fe14d	_global	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe14d.cpp
+008fe14d	GetName	CAIStateGroup_HoverAttack	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe14d.cpp
 008fe16b	GetName	CAIStateGroup_HoverAttackUnlessTargetIsFleeing	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe16b.cpp
 008fe17e	GetName	CAIStateGroup_HoverAllAroundTest	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe17e.cpp
 008fe191	CAIStateGroup_HoverAllAroundTest	CAIStateGroup_HoverAllAroundTest	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
@@ -33024,7 +33024,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00984f60	FleeUpdate	CAIStateGroup_OpinionReactionRoot	__thiscall	bool	1	CAIStateGroup_OpinionReactionRoot *	1	yes	accepted									
 009852c0	FollowUpdate	CAIStateGroup_OpinionReactionRoot	__thiscall	bool	3	CAIStateGroup_OpinionReactionRoot *,float,bool	1	yes	accepted									
 00985420	CallWith2_00985420	_unattributed	unknown	undefined	0		0	yes	accepted									
-00985430	CallWith2_00985430	_unattributed	unknown	undefined	0		0	yes	accepted									
+00985430	FollowFarUpdate	CAIStateGroup_OpinionReactionRoot	unknown	undefined	0		0	yes	accepted									
 00985440	HeroImitationPlayUpdate	CAIStateGroup_OpinionReactionRoot	__thiscall	bool	1	CAIStateGroup_OpinionReactionRoot *	1	yes	accepted									
 009857d0	HeroTitleAtHeroUpdate	CAIStateGroup_OpinionReactionRoot	unknown	undefined	0		0	yes	accepted									
 009859a0	HeroTitleToSelfUpdate	CAIStateGroup_OpinionReactionRoot	unknown	undefined	0		0	yes	accepted									
@@ -39280,14 +39280,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ab9dd0	GetBone	C3DMeshFileBoneChunk	__fastcall	void	2	CDebugSphere *,CDebugSphere *	1	yes	accepted									
 00ab9ea0	WriteToFile	C3DMeshFileBoneChunk	__thiscall	void	3	C3DMeshFileBoneChunk *,CDataOutputStream *,CChunkedFileSaver *	1	yes	accepted									
 00ab9f00	CreateNewInstance	C3DMeshFileBoneChunk	__thiscall	CChunkedFileChunk *	1	C3DMeshFileBoneChunk *	1	yes	accepted									
-00ab9f60	GetMember_dword0x2c_00ab9f60	_global	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ab\global_DrawGetEnvironment_00ab9f60.cpp
+00ab9f60	GetBoneIndex	C3DMeshFileGroupChunk	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ab\global_DrawGetEnvironment_00ab9f60.cpp
 00ab9f70	SetMember_dword0x2c_00ab9f70	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ab\AddExclusiveObserver_AddExclusiveObserver_00ab9f70.cpp
 00ab9f80	GetChunkInfo	C3DMeshFileSmoothingGroupsChunk	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ab\C3DMeshFileSmoothingGroupsChunk_GetChunkInfoC3DMeshFileSmoothingGroupsChunkUBEBV_00ab9f80.cpp
 00ab9fa0	GetChunkInfo	C3DMeshFileUniqueVerticesChunk	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ab\C3DMeshFileUniqueVerticesChunk_GetChunkInfoC3DMeshFileUniqueVerticesChunkUBEBVC_00ab9fa0.cpp
 00ab9fc0	ReadFromFile	C3DMeshFileSubMeshChunk	__thiscall	void	4	C3DMeshFileSubMeshChunk *,CDataInputStream *,ulong,CChunkedFileLoader *	1	yes	accepted									
 00aba170	ReadFromFile	C3DMeshFileBoneChunk	__thiscall	void	4	C3DMeshFileBoneChunk *,CDataInputStream *,ulong,CChunkedFileLoader *	1	yes	accepted									
-00aba350	GetConstantCount	CShaderPreParser	__thiscall	ulong	1	CShaderPreParser *	1	yes	accepted									
-00aba360	GetConstantCount	CShaderPreParser	__thiscall	ulong	1	CShaderPreParser *	1	yes	accepted									
+00aba350	GetCount	C3DMeshFileGroupChunk	__thiscall	ulong	1	CShaderPreParser *	1	yes	accepted									
+00aba360	GetCount	C3DMeshFileVerticesChunk	__thiscall	ulong	1	CShaderPreParser *	1	yes	accepted									
 00aba370	GetCount	C3DMeshFileTrianglesChunk	__thiscall	long	1	CWorldMap *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ab\CWorldMap_DrawGetNoMaps_00aba370.cpp
 00aba390	GetChunkInfo	C3DMeshFileSubMeshChunk	__thiscall	CCharString const	1	C3DMeshFileSubMeshChunk *	1	yes	accepted									
 00aba410	FindTransformation	C3DMeshFileSubMeshChunk	__thiscall	CCountedPointer<C3DMeshFileBoneChunk_const_>	1	C3DMeshFileSubMeshChunk *	1	yes	accepted									
@@ -42323,7 +42323,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b98de0	CollectStats	CEngineInternalPrimitiveRepeatedStaticMesh	__thiscall	void	4	CEngineInternalPrimitiveRepeatedStaticMesh *,std::map<ulong,ulong,std::less<ulong>,std::allocator<std::pair<ulong const ,ulong> > > &,EEnginePrimitiveStatIndex,ulong	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b9\CEngineInternalPrimitiveRepeatedStaticMesh_CollectStats_00b98de0.cpp
 00b98e00	CreateInternalPrimitive	CEnginePrimitiveManagerRepeatedStaticMeshes	__thiscall	CEngineInternalPrimitiveBase *	2	CEnginePrimitiveManagerRepeatedStaticMeshes *,EEnginePrimitiveType	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b9\CEnginePrimitiveManagerRepeatedStaticMeshes_CreateInternalPrimitive_00b98e00.cpp
 00b98e10	ClipSubSectionsSIMD	CEnginePrimitiveManagerRepeatedStaticMeshes	__thiscall	void	4	CEnginePrimitiveManagerRepeatedStaticMeshes *,CSubsectionElement *,ulong,CClipListElement * *	1	yes	accepted									
-00b990b0	UpdateBoneMatrixForWindSheer	CEnginePrimitiveManagerRepeatedStaticMeshes_Wind	__thiscall	void	5	CEnginePrimitiveManagerRepeatedStaticMeshes *,CEngineInternalPrimitiveRepeatedStaticMesh *,C4DVector *,uchar *,long	1	yes	accepted									
+00b990b0	UpdateBoneMatrixForWindSheer	CEnginePrimitiveManagerRepeatedStaticMeshes	__thiscall	void	5	CEnginePrimitiveManagerRepeatedStaticMeshes *,CEngineInternalPrimitiveRepeatedStaticMesh *,C4DVector *,uchar *,long	1	yes	accepted									
 00b991d0	UpdateRepeatedStaticMesh	_global	__thiscall	void	3	CEnginePrimitiveManagerRepeatedStaticMeshes *,CEnginePrimitiveHandle *,CAddMeshDesc *	1	yes	accepted									
 00b99300	ProcessLightingSW	CEnginePrimitiveManagerRepeatedStaticMeshes	__thiscall	void	8	CEnginePrimitiveManagerRepeatedStaticMeshes *,CEngineInternalPrimitiveRepeatedStaticMesh *,float *,float *,float *,C4DVector *,long,bool	1	yes	accepted									
 00b99670	UploadShaderConstants	CEnginePrimitiveManagerRepeatedStaticMeshes	__thiscall	void	5	CEnginePrimitiveManagerRepeatedStaticMeshes *,CEngineInternalPrimitiveRepeatedStaticMesh *,C4DVector *,C4DVector *,long	1	yes	accepted									
@@ -47225,7 +47225,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c5db30	CFourierAnalysis	CFourierAnalysis	__thiscall	undefined	1	CFourierAnalysis *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c5\CFourierAnalysis_CFourierAnalysis_00c5db30.cpp
 00c5db40	FindDeviceInterface	CDSoundAccelerationQuery	unknown	undefined	0		0	yes	accepted									
 00c5dc60	OpenDeviceRegistryKey	CDSoundAccelerationQuery	unknown	undefined	0		0	yes	accepted									
-00c5dd70	Audio_InitializeDriver	_global	unknown	undefined	0		0	yes	accepted									
+00c5dd70	GetAccelerationLevel	CDSoundAccelerationQuery	unknown	undefined	0		0	yes	accepted									
 00c5dfd0	sub_00c5dfd0	_gapscan	unknown	undefined	0		0			discovered	boundary							
 00c5dfe0	sub_00c5dfe0	_gapscan	unknown	undefined	0		0			discovered	boundary							
 00c5dff0	sub_00c5dff0	_gapscan	unknown	undefined	0		0			discovered	boundary							
@@ -47288,7 +47288,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c60450	ClampFloatProperty	CEAXListener	unknown	undefined	0		0	yes	accepted									
 00c604e0	CEnvironmentSpellEffectInterface	CEnvironmentSpellEffectInterface	__thiscall	undefined	2	CEnvironmentSpellEffectInterface *,CEnvironment *	0	yes	accepted									
 00c60930	~CEAXListener	CEAXListener	unknown	undefined	0		0	yes	accepted									
-00c609a0	AddSource	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c609a0	AddBuffer	CEAXListener	unknown	undefined	0		0	yes	accepted									
 00c60a00	`scalar deleting destructor'	CEAXBufferList	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c60a00.cpp
 00c60a20	~CEAXBufferList	CEAXBufferList	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CBase_CBase_00c60a20.cpp
 00c60a30	InvalidateAll	CEAXListener	unknown	undefined	0		0	yes	accepted									

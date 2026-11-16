@@ -95,7 +95,6 @@ class CHairCardDef : public CDefBase { public: };
 class CTattooDef : public CDefBase { public: };
 CDefBasePointer<CHairCardDef> __fastcall GetHairCardDef(long defIndex);      // 0x005D9A10
 CDefBasePointer<CTattooDef> __fastcall GetTattooCardDef(long defIndex);      // 0x005D9AA0
-bool __fastcall IsBuyable(long defIndex);               // 0x005D9B50
 class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1E5A GetSubDef<CHeroTitleDef> (Ego_r / FableWin template)
 };
@@ -195,6 +194,7 @@ class CTCShop { public:                                // Ego_r / FableWin CTCSh
     long GetMaxStock(long defIndex) const;         // 0x00772720 ?GetMaxStock@CTCShop@@QBEJJ@Z
 };
 class CTCInventoryItem { public:
+    static bool __fastcall IsBuyable(long defIndex);   // 0x005D9B50 (Ego_r.pdb + FableWin.pdb ?IsBuyable@CTCInventoryItem@@SI_NJ@Z)
     void GetAllItems(std::vector<std::pair<long, long> >& out) const;   // 0x005BF482
 };
 namespace std {                                         // STLport 4.6 list<long> (4 bytes: the sentinel pointer); out-of-line members only
@@ -273,7 +273,7 @@ void CTCInventoryTrade::InitialiseBuyableItems(CItemVector& items)
             bool plain = GetTattooCardDef(defIndex).Object == 0 && GetHairCardDef(defIndex).Object == 0;
             if (plain && shop->GetMaxStock(defIndex))
                 NotInStock.push_back(key);
-        } else if (IsBuyable(defIndex)) {
+        } else if (CTCInventoryItem::IsBuyable(defIndex)) {
             AddItemOfTypeToInventory(defIndex, count);
             total += count;
             items.push_back(std::pair<long, long>(defIndex, count));

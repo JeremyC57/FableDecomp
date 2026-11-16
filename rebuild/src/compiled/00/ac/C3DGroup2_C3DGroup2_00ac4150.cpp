@@ -51,7 +51,7 @@ class CArray : public _Vector_base<T> { public:           // retail CArray = STL
 
 class C3DMeshFileGroupChunk { public:
     long GetBoneIndex() const;                          // 0x00AB9F60
-    unsigned long GetVertexCount() const;               // 0x00ABA350
+    unsigned long GetCount() const;                     // 0x00ABA350 (Ego_r.pdb + FableWin.pdb ?GetCount@C3DMeshFileGroupChunk@@QBEKXZ)
     const C3DVertexBlend2* GetList() const;             // 0x00ABC370
 };
 
@@ -64,7 +64,7 @@ class C3DGroup2 { public:
 C3DGroup2::C3DGroup2(const C3DMeshFileGroupChunk& chunk)
 {
     BoneIndex = chunk.GetBoneIndex();
-    unsigned long count = chunk.GetVertexCount();
+    unsigned long count = chunk.GetCount();
     const C3DVertexBlend2* blends = chunk.GetList();
     for (unsigned long i = 0; i < count; ++i)
         VertexBlends.push_back(blends[i]);

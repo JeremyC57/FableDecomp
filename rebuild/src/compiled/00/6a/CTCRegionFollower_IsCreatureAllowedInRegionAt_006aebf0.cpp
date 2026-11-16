@@ -1,5 +1,7 @@
 // CTCRegionFollower::IsCreatureAllowedInRegionAt(const CThing* creature, const C3DVector& position) -- a creature with a def may follow into the region at a position unless its def says it is not allowed in protected towns and the region's def is a protected town
-// Leaf: IsCreatureAllowedInRegionAt
+// Leaf: ?IsCreatureAllowedInRegionAt@CTCRegionFollower@@QBE_NABVCThingAICreature@@ABVC3DVector@@@Z
+// Name fix (agentNF36 2026-11-16): Ego_r.pdb spells the creature parameter const CThingAICreature& (was const CThing*); the body
+// reads it through its CThing base at +0 (forward declaration only: no local CThingAICreature model).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006AEBF0, 248 bytes, `ret 8`.
 // Callees (CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, GetSubDefIndex slot 14 and
@@ -109,6 +111,7 @@ class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapNumber) const;  // 0x004FC190
     const CRegion& GetRegion(long region) const;        // 0x004FC180
 };
+class CThingAICreature;
 class CThing {
 public:
     unsigned char _pad00[0x70];
@@ -125,11 +128,12 @@ class CTCRegionFollower : public CTCBase { public:
     void*   __vftable;                                  // +0x00 (CTCBase)
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x4];
-    bool IsCreatureAllowedInRegionAt(const CThing* creature, const C3DVector& position) const;
+    bool IsCreatureAllowedInRegionAt(const CThingAICreature& creature, const C3DVector& position) const;
 };
 
-bool CTCRegionFollower::IsCreatureAllowedInRegionAt(const CThing* creature, const C3DVector& position) const
+bool CTCRegionFollower::IsCreatureAllowedInRegionAt(const CThingAICreature& creatureRef, const C3DVector& position) const
 {
+    const CThing* creature = (const CThing*)&creatureRef;
     bool hasDef = creature->GetPDef().IsValid();
     if (hasDef) {
         CDefPointer<const CCreatureDef> creatureDef;

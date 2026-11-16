@@ -90,7 +90,7 @@
 #define FABLE_RETAIL_CENGINERESOURCEMANAGER
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_MIPMAPSIZEMULTIPLIER
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MESHPRIMITIVE
-#define FABLE_RETAIL_CENGINE_SCRATCHZBUFFER
+#define FABLE_RETAIL_CENGINE_SCRATCHZBUFFER_PDB
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CSYSTEMMANAGER
 #define FABLE_RETAIL_CMATRIX3X4_SETIDENTITY_SEPARATE
@@ -192,7 +192,7 @@ void CEngineBillboardGenerator::RenderBillboard(const C3DMesh2* mesh, CEngineBil
     if (billboard->ZBuffer)
         target.AttachZBuffer(*billboard->ZBuffer);
     else
-        target.AttachZBuffer(*(const CSurface*)NEngineInternal::GPEngine->GetScratchZBufferD24S8(billboard->Texture->GetWidth(0)));
+        target.AttachZBuffer(NEngineInternal::GPEngine->GetScratchZBufferD24S8(billboard->Texture->GetWidth(0)));
     target.AttachTarget(billboard->Texture->GetSurfaceLevel(0));
     NEngineInternal::GPDisplayManager->SetRenderTarget(target);
     NEngineInternal::GPRenderManager->ClearRenderTarget(CRGBColour(0, 0, 0, 0), 0);

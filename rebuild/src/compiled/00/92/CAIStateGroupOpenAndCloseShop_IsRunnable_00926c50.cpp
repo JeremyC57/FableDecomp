@@ -180,8 +180,8 @@ struct CTCShopSign {                            // interface 0xBD on the shop bu
 class CThingBuilding : public CThing { public:
     unsigned char _pad94[0xd4 - 0x94];
     unsigned char m_buildingFlags;              // +0xd4 (bit 0: keeper present)
-    bool HasOccupants();                        // 0x0082DD90
-    bool HasBusyOccupants();                    // 0x0082DE20
+    bool IsLockable() const;                    // 0x0082DD90 (Ego_r.pdb + FableWin.pdb, const)
+    bool IsLocked() const;                      // 0x0082DE20 (Ego_r.pdb + FableWin.pdb, const)
     bool IsPointInside(const C3DVector& position) const;  // 0x0082D000
 };
 struct CThingShopkeeper : CThing {
@@ -208,14 +208,14 @@ bool CAIStateGroup_OpenAndCloseShop::IsRunnable()
             shop->m_buildingFlags |= 1;
             bool open = keeper->GetShopTC() && keeper->GetShopTC()->IsOpeningHours();
             CTCShopSign* sign;
-            if (!shop->HasOccupants()) {
+            if (!shop->IsLockable()) {
                 if (shop->GetInterface(&sign, 0xbd))
                     sign->m_closed = !open;
                 return false;
             }
             if (!open && shop->GetInterface(&sign, 0xbd))
                 sign->m_closed = true;
-            if (shop->HasBusyOccupants()) {
+            if (shop->IsLocked()) {
                 if (!open) {
                     CThingShopkeeper* creature = GetCreature();
                     CThingBuilding* myShop = creature->GetPShop();

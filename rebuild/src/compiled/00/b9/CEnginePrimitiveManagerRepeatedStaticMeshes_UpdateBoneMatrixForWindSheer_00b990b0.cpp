@@ -1,0 +1,174 @@
+// CEnginePrimitiveManagerRepeatedStaticMeshes::UpdateBoneMatrixForWindSheer(CEngineInternalPrimitiveRepeatedStaticMesh*, C4DVector*, unsigned char*, long) -- for each object, write the delayed wind-sheer offset (X, Y of the history slot named by the object's delay byte, scaled by the primitive's WindScaleFactor) into the Z/W of its bone-matrix row
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B990B0, length 288 bytes (`ret 10h`, `this` unused).
+// Callees: none. Globals: the engine system @ 0x01436E48 holds the wind-sheer history (12-byte C3DVector records) at +0x31c.
+// Layout: engine/CEngineInternalPrimitiveRepeatedStaticMesh.h (WindScaleFactor +0xa0); the manager is engine/
+// CEnginePrimitiveManagerRepeatedStaticMeshes.h (declared there under FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_RENDERSUB; Ego_r.pdb ?UpdateBoneMatrixForWindSheer@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXAAVCEngineInternalPrimitiveRepeatedStaticMesh@@PAVC4DVector@@PBEJ@Z). The row array is
+// engine/C4DVector.h C4DVector (16-byte stride, Z +8, W +0xc).
+// Shape: a plain counted `for` loop; VC7.1 unrolls it by four (index in edx, row pointer in eax) and finishes the
+// remainder in a rolled tail. `fld [wind] ; fmul [scale]` = `wind.X * scale` (the member operand is not hoisted).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_RENDERSUB
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_RENDERSUB_NESTEDCLIP
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_PREPARETEST
+#define FABLE_RETAIL_CENGINESUBPRIMITIVEREPEATEDSTATICMESH_GETPARENT
+#define FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_TESTS
+#define FABLE_RETAIL_CENGINEOCCLUSIONMANAGER
+#define FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_PEEKRENDERFLAGS
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKVSCONSTANTLAYOUTREPEATEDMESH
+#define FABLE_RETAIL_CENGINEVSCONSTANTLAYOUTREPEATEDMESH
+#define FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT
+#define FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_PARENTBASE
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_GETSTIPLEFADETEXTURE
+#define FABLE_RETAIL_CGRAPHICINFOFRAME_GETTEXTURE_INLINE
+#define FABLE_RETAIL_CGRAPHICINFOFRAME_TOUCHFRAME
+#define FABLE_RETAIL_CGRAPHICINFOFRAME_GETBANK_DIRECT
+#define FABLE_RETAIL_CFRAMEDATA_ISLOADING
+#define FABLE_RETAIL_CFRAMEDATA_ISLOADING_ISNULL
+#define FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME
+#define FABLE_RETAIL_CGRAPHICDATABANK_PEEKGRAPHIC
+#define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGRAPHICFRAME
+#define FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE
+#define FABLE_RETAIL_CRENDERMANAGERCORE
+#define FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS
+#define FABLE_RETAIL_CRESOURCEBANK_CURRENTFRAME_DIRECT
+#define FABLE_RETAIL_CMANAGEDTEXTURE_TOUCHTEXTURE_GET
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_GET
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWMODE_DIRECT
+#define FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_DIRECT
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE
+#define FABLE_RETAIL_CRENDERSTATEMANAGER
+#define FABLE_RETAIL_CSHADERRENDERMANAGER_SELECTVERTEXBUFFER
+#define FABLE_RETAIL_CSHADERRENDERMANAGER_INLINE_BLOCKDRAW
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_C3DMESH2_PRIMITIVES
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER
+#define FABLE_RETAIL_C3DPRIMITIVE2_VERTEXBUFFER
+#define FABLE_RETAIL_C3DPRIMITIVE2_PARTICLEMESH
+#define FABLE_RETAIL_C3DMESHMATERIAL_PARTICLEMESH
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CINDEXBUFFER
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ISPERSISTENT
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_ISOCCLUDED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_SETUP_FORCEINLINE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEREPEATEDSTATICMESH
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_SUBPRIMITIVE
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_BLOCKONLOAD
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_DISTANCE
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MESHRENDER
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_RENDERSETTINGS
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_SET
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_OCCLUDED
+#define FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_ADD
+#define FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_ADDTYPED
+#define FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CASTTOBASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CMESHDATABANKENTRY
+#define FABLE_RETAIL_CMESHDATABANK_BASES
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_CGRAPHICDATABANK_BANKFILE
+#define FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK
+#define FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
+#define FABLE_RETAIL_C3DMESHMATERIAL_FLAG_ACCESSORS
+#define FABLE_RETAIL_C3DMESHINFO_BOUNDINGBOX
+#define FABLE_RETAIL_C3DMESHINFO_GETMESH
+#define FABLE_RETAIL_C3DMESHINFO_ISLOADED
+#define FABLE_RETAIL_C3DMESHINFO_DETAILLEVEL
+#define FABLE_RETAIL_C3DMESHINFO_BEGINLOADINGTEXTURES
+#define FABLE_RETAIL_C3DMESHINFO_LODERROR
+#define FABLE_RETAIL_C3DBOUNDINGBOX
+#define FABLE_RETAIL_C3DBOUNDINGSPHERE
+#define FABLE_RETAIL_C3DBOUNDINGSPHERE_CENTER_VALUE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CENGINECAMERA_POSITION
+#define FABLE_RETAIL_CENGINECAMERA_PEEKWINDOW
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_C2DBOXF_COPY
+#define FABLE_RETAIL_CENGINESUBPRIMITIVEMESHBASE_PUBLICMEMBERS
+#define FABLE_RETAIL_CENGINECAMERADESC_STRUCT
+#define FABLE_RETAIL_CSHADOWCLIPVOLUME_CLIPBOUNDINGBOX
+#define FABLE_RETAIL_CSHADOWRENDERERSCENEDATA_COPY
+#define FABLE_RETAIL_CENGINESHADOWRENDERER
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_MEMBERS
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_PEEKSCENEDATA
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD
+#define FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_C4DVECTOR
+#define FABLE_RETAIL_CMATRIX3X4
+#include "fable_compiler.h"
+#include "engine/CMatrix3x4.h"
+#include "engine/CEngineCameraDesc.h"
+#include "engine/CEngineCamera.h"
+#include "engine/CEngineRenderEnums.h"
+#include "engine/EEngineOcclusionLayer.h"
+#include "engine/CEnginePrimitiveRenderUtil.h"
+#include "engine/CEnginePrimitiveManager.h"
+#include "engine/CShadowClipVolume.h"
+#include "engine/CShadowRendererSceneData.h"
+#include "engine/CEngineInternalPrimitiveBase.h"
+#include "engine/CEngineInternalPrimitiveOcclusionBase.h"
+#include "engine/CEngineInternalPrimitiveRepeatedStaticMesh.h"
+#include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"
+#include "engine/CEnginePrimitiveRendererSharedData.h"
+#include "engine/CEnginePrimitiveRenderer.h"
+#include "engine/CEnginePrimitiveOcclusionInfo.h"
+#include "engine/CEnginePrimitiveOcclusionManager.h"
+#include "engine/CEngineSubPrimitiveRenderer.h"
+#include "engine/CEngineSubPrimitiveBoundingBox.h"
+#include "engine/CEngineSubPrimitiveRepeatedStaticMesh.h"
+#include "engine/CEnginePrimitiveThemeChannelDesc.h"
+#include "engine/C3DMeshInfo.h"
+#include "engine/C3DMesh2.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CEngineShadowRenderer.h"
+#include "engine/CEngineLightingManager.h"
+#include "engine/CRenderManager.h"
+#include "engine/CShaderRenderManager.h"
+#include "engine/CRenderStateCaptureBlock.h"
+#include "engine/CScopedVertexShaderConstantLayout.h"
+#include "engine/CEngineOcclusionManager.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CEngineVSConstantLayoutRepeatedMesh.h"
+#include "engine/CGraphicDataBank.h"
+#include "engine/CGraphicInfo.h"
+#include "engine/CGraphicInfoFrame.h"
+#include "engine/C3DPrimitive2.h"
+#include "engine/CEngineInternalPrimitiveRepeatedStaticMesh.h"
+
+struct SEngineSystem_01436e48 {
+    unsigned char _pad[0x31c];
+    C3DVector     WindSheerHistory[1];             // +0x31c (indexed by the per-object wind delay byte)
+};
+extern SEngineSystem_01436e48* g_pEngineSystem_01436e48;   // 0x01436E48
+
+void CEnginePrimitiveManagerRepeatedStaticMeshes::UpdateBoneMatrixForWindSheer(
+    CEngineInternalPrimitiveRepeatedStaticMesh& primitive, C4DVector* matrices, const unsigned char* wind_delays, long count)
+{
+    float u0 = 0.0f;
+    C3DVector* history = g_pEngineSystem_01436e48->WindSheerHistory;
+    for (long i = 0; i < count; ++i) {
+        const C3DVector& wind = history[wind_delays[i]];
+        matrices[i].Z = wind.X * primitive.WindScaleFactor;
+        matrices[i].W = wind.Y * primitive.WindScaleFactor;
+    }
+}

@@ -5,12 +5,14 @@
 //   CNavigatorAStar::CAStarState at +4 (ParentState, Node, CostToThisState, TotalCost, OnOpenList +0x14, OnClosedList
 //   +0x15). CAStarState's copy constructor counts the new state into three statics, 0x013D27B8 always, 0x013D27BC when
 //   it is on the open list and 0x013D27C0 when on the closed list -- the mirror of the inline ~CAStarState in the landed
-//   _Rb_tree::_M_erase 0x00A21640 and 0x00A205C0 (their descriptive NoOfStates* names are reused; not in the PDB name sets).
+//   _Rb_tree::_M_erase 0x00A21640 and 0x00A205C0 (the CAStarState counters, PDB names).
 // Identity: the one caller 0x00A1D016 builds a pair<long, CAStarState> temporary (make_pair, inlined, with the counter
 //   increments of its state copy), converts it into a second temporary through this function and hands that to the map's
 //   insert_unique 0x00A221B0: STLport `map::insert(make_pair(key, state))`. The byte twin 0x00A20670 is the copy constructor.
 // Shape: STLport's member-template converting constructor `pair(const pair<_U1, _U2>& __p) : first(__p.first),
 //   second(__p.second)`, explicitly instantiated; CAStarState's user copy constructor inline.
+// Name fix (agentNF36 2026-11-16): the three CAStarState counters are spelled NumberOfAStarStates / NumberOfOpenStates /
+// NumberOfClosedStates, the original static names of engine/CNavigatorAStar.h (pass23, both PDBs' type records).
 class CANavQuadTreeNode;
 
 class CNavigatorAStar {
@@ -23,18 +25,18 @@ public:
         float              TotalCost;                   // +0x0C
         bool               OnOpenList;                  // +0x10
         bool               OnClosedList;                // +0x11
-        static long NoOfStates;                         // 0x013D27B8 (descriptive)
-        static long NoOfStatesOnOpenList;               // 0x013D27BC (descriptive)
-        static long NoOfStatesOnClosedList;             // 0x013D27C0 (descriptive)
+        static long NumberOfAStarStates;                         // 0x013D27B8 (PDB name, engine/CNavigatorAStar.h)
+        static long NumberOfOpenStates;               // 0x013D27BC (PDB name)
+        static long NumberOfClosedStates;             // 0x013D27C0 (PDB name)
         CAStarState(const CAStarState& other)
             : ParentState(other.ParentState), Node(other.Node), CostToThisState(other.CostToThisState),
               TotalCost(other.TotalCost), OnOpenList(other.OnOpenList), OnClosedList(other.OnClosedList)
         {
-            ++NoOfStates;
+            ++NumberOfAStarStates;
             if (OnOpenList)
-                ++NoOfStatesOnOpenList;
+                ++NumberOfOpenStates;
             if (OnClosedList)
-                ++NoOfStatesOnClosedList;
+                ++NumberOfClosedStates;
         }
     };
 };

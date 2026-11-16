@@ -4,7 +4,7 @@
 class CWorld
 {
 public:
-    void SetSaveGameMarkerPos(const C3DVector* pos);
+    void SetSaveGameMarkerPos(const C3DVector& pos);   // 0x0049E590 (Ego_r.pdb + FableWin.pdb: const C3DVector&)
 };
 
 class CGameScriptInterface
@@ -17,5 +17,5 @@ public:
 
 void CGameScriptInterface::SetSaveGameMarkerPos(const C3DVector& pos)
 {
-    m_World->SetSaveGameMarkerPos(&pos);
+    m_World->SetSaveGameMarkerPos(pos);
 }

@@ -17,11 +17,11 @@ class CScriptModuleBase {
 public:
     virtual ~CScriptModuleBase();
 };
-class CScriptModuleMoveBetweenLookFromAndLookTo : public CScriptModuleBase {
+class CScriptModuleFullTransition : public CScriptModuleBase {
 public:
     unsigned char _pad04[0x80 - 4];
-    CScriptModuleMoveBetweenLookFromAndLookTo(const C3DVector& lookTo1, const C3DVector& lookFrom1, const C3DVector& lookTo2,
-        const C3DVector& lookFrom2, long frames);   // 0x008525F0
+    CScriptModuleFullTransition(const C3DVector& lookTo1, const C3DVector& lookFrom1, const C3DVector& lookTo2,
+        const C3DVector& lookFrom2, long frames);   // 0x008525F0 (Ego_r.pdb ??0CScriptModuleFullTransition@NCameraModes@@QAE@ABVC3DVector@@000J@Z 0x00827260; FableWin.pdb 0x0283C7F0)
 };
 }
 class CCPPointerInfo { public:
@@ -79,6 +79,6 @@ void CGameScriptInterface::CameraMoveBetweenLookFromAndLookTo(const C3DVector& l
     CGameCameraManager* manager;
     World->PCurrentGameCamera->GetCameraManager(&manager);
     manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(
-        new NCameraModes::CScriptModuleMoveBetweenLookFromAndLookTo(lookTo1, lookFrom1, lookTo2, lookFrom2,
+        new NCameraModes::CScriptModuleFullTransition(lookTo1, lookFrom1, lookTo2, lookFrom2,
             CMainGameComponent::ConvertSecondsToWF(time))));
 }

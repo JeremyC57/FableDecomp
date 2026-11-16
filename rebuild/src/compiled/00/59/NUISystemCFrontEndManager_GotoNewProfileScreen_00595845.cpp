@@ -34,13 +34,14 @@ public:
     static T& __fastcall Get();                          // 0x0040D2A0 for CUserProfileManager
 };
 namespace std {
-template <class T> class vector {
+template <class T> class allocator;                  // STLport 4.6 (class key V)
+template <class T, class A = allocator<T> > class vector {
 public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~vector();                                           // 0x00412130 for CWideString
+    ~vector();                                           // 0x00412130 for CWideString (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)
 };
 template <class T> class deque {
 public:
@@ -105,7 +106,9 @@ public:
     bool                    m_bStartNewGame;             // +0x64
     unsigned char           _pad65[0xa0 - 0x65];
     bool                    GoToKeyboard;                // +0xa0
-    void GetProfileNames(std::vector<CWideString>& names);   // 0x005955AB
+protected:
+    void GetProfileNames(std::vector<CWideString>& names);   // 0x005955AB (Ego_r.pdb + FableWin.pdb: protected, IAE)
+public:
     void GotoNewProfileScreen();
 };
 void CFrontEndManager::GotoNewProfileScreen()

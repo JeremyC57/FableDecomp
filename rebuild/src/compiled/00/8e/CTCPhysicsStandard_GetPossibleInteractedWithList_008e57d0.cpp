@@ -64,7 +64,9 @@ class CTCPhysicsBase { public:
     long      OldPositionLastFrameSet;                  // +0x24
     C3DVector Velocity;                                 // +0x28
     float     Radius;                                   // +0x34
-    const CThingSearchTools* PeekThingSearchTools() const;   // 0x006AFD40 (GetWorld() const -> PThingSearchTools)
+protected:
+    const CThingSearchTools& GetThingSearchTools() const;   // 0x006AFD40 (Ego_r.pdb + FableWin.pdb ?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ)
+public:
 };
 struct CTCPhysicsStandard : CTCPhysicsBase {
     void GetPossibleInteractedWithList(const C2DBoxI& box, vector<CThing*>& things, float extraRadius) const;
@@ -76,7 +78,7 @@ void CTCPhysicsStandard::GetPossibleInteractedWithList(const C2DBoxI& box, vecto
         CThingFilter_CanCollideOrInteractWithThing canFilter(const_cast<CTCPhysicsStandard*>(this), IsExcludingCreatures());
         CThingFilter_OverlappingSphere sphereFilter(Position, extraRadius + Radius);
         CThingFilter_HasTC physicsFilter(2);
-        PeekThingSearchTools()->GetAllThingsInRoughArea<const CThing>(box,
+        GetThingSearchTools().GetAllThingsInRoughArea<const CThing>(box,
             CFilter_Bind3<CThingFilter_CanCollideOrInteractWithThing, CThingFilter_OverlappingSphere, CThingFilter_HasTC>(
                 canFilter, sphereFilter, physicsFilter), things);
     }

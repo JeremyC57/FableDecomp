@@ -1,0 +1,11 @@
+# NF36 lessons (one line each)
+- Source `$S/wine/env.sh` in every fresh shell: with only `S=<dir>/pS`, q.py falls back to `D:\Tools\vc71` and fails before cl starts.
+- Before you delete a `_Methods` / `_Wind` view, check whether retail inlined the member's callee. 0x0049DDD0 inlines 0x0049D550, and the real class cannot hold a second definition.
+- engine/CWorld.h has two class bodies: the members exist only under `FABLE_RETAIL_CWORLD`, which also needs `FABLE_RETAIL_CWIDESTRING` and the typed-member opt-ins.
+- When a header-heavy row won't compile, copy the define and include preamble from a landed row on the same class (0x004A1840 for CWorld, 0x00B9AC30 for the repeated-mesh manager).
+- Self-renamed rows whose test calls the old free-function name LINK_FAIL in vland: rewrite the test (rows/<a>_test.cpp) to call the new member.
+- Tests that copy the body and never link the row are unaffected by renames; grep each test for its extern declarations before the recheck.
+- A pre-existing wrong literal can still grade RELOCATION_MATCH (0x008FD7D9 "DoCreatureAction" vs retail 0x0128954C), so check literals when respelling.
+- `ev.py` needs a by-hand pass for NOT_MANGLED / DECISION / tail claims: they have no comparable symbol.
+- Split libpk / CODA claims by evidence source (GameCODA SDK vs descriptive vs real header), not by address range.
+- Look at the probe's bound symbols before porting: a stand-in binder of a header class means a port, and a class with no header means a cheap local respell (0x00892610).

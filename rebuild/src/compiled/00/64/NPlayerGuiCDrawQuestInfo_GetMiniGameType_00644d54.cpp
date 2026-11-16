@@ -1,4 +1,5 @@
 #pragma optimize("s", on)
+// Leaf: ?GetMiniGameType@CDrawQuestInfo@NPlayerGui@@QBE?AW4EMiniGameType@@XZ
 // NPlayerGui::CDrawQuestInfo::GetMiniGameType() -- the mini-game type of the element whose ID is the current mini-game element index, if that index is set and the element is a mini-game bar (type 6); else 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00644D54, length 61 bytes.
 // Callees: CQuestInfoElement::GetType (slot 3, virtual).
@@ -11,6 +12,9 @@
 // Shape: the index test guards the whole walk; the node is compared with the head register on entry and re-read from the member after the virtual call; `e->ID == MiniGameElementIndex` reads the ID first (source operand order); the type is returned from the derived member at +0x1c through a shared `pop` tail.
 class CRGBColour { public: unsigned char R, G, B, A; };
 
+#include "engine/fable_nscript_forward.h"         // enum EMiniGameType (forward)
+// Name fix (agentNF36 2026-11-16): own leaf now ?GetMiniGameType@CDrawQuestInfo@NPlayerGui@@QBE?AW4EMiniGameType@@XZ (Ego_r.pdb + FableWin.pdb:
+// public const, EMiniGameType result; was long, non-const).
 namespace NPlayerGui {
 
 struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEnginePrimitiveHandle>: three words (12 bytes in the shipped build)
@@ -47,8 +51,8 @@ struct CRetailElementList {                        // VC6 Dinkumware list<CCount
         bool operator==(const iterator& o) const { return m_pNode == o.m_pNode; }
     };
     node* head;
-    iterator begin() { return iterator(head->next); }
-    iterator end() { return iterator(head); }
+    iterator begin() const { return iterator(head->next); }
+    iterator end() const { return iterator(head); }
     bool empty() const { return head->next == head; }
     iterator erase(iterator where);                // 0x00655EEA
 };
@@ -68,7 +72,7 @@ class CDrawQuestInfo { public:                            // PDB 116 bytes; reta
     CRetailElementList  Elements;                  // +0x58
     void DisplayQuestInfo(bool display);           // 0x00643F13
     void RemoveElement(long id);                   // 0x00647357
-    long GetMiniGameType();
+    EMiniGameType GetMiniGameType() const;
 };
 struct CQuestInfoElementMiniGameBar : CQuestInfoElement {
     long       Type;                               // +0x1c (EMiniGameType)
@@ -78,16 +82,16 @@ struct CQuestInfoElementMiniGameBar : CQuestInfoElement {
     bool       Updatable;                          // +0x2c
 };
 
-long CDrawQuestInfo::GetMiniGameType()
+EMiniGameType CDrawQuestInfo::GetMiniGameType() const
 {
     if (MiniGameElementIndex > 0) {
         for (CRetailElementList::iterator it = Elements.begin(); it != Elements.end(); ++it) {
             CQuestInfoElement* element = (*it).m_pObject;
             if (element->ID == MiniGameElementIndex && element->GetType() == 6)
-                return static_cast<CQuestInfoElementMiniGameBar*>(element)->Type;
+                return (EMiniGameType)static_cast<CQuestInfoElementMiniGameBar*>(element)->Type;
         }
     }
-    return 0;
+    return (EMiniGameType)0;
 
 }
 

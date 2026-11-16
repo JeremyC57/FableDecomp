@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00954470, length 441 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined lookup 0xAD = CTCBoss) and the const LowerBound @ 0x004365B0
-// (8 = CTCTargetingAI), CTCBoss::GetCurrentPhase @ 0x007AED10 (three times; manifest "CWorld::DrawGetEnvironment"
+// (8 = CTCTargetingAI), CTCBoss::GetBossPhase @ 0x007AED10 (three times; manifest "CWorld::DrawGetEnvironment"
 // propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
 // CIntelligentPointer<CThing>(CThing*) @ 0x004A96F0 (twice), CIntelligentPointer<CThing>::operator= @ 0x004A9760 (out of
 // line the first time, inlined the second), CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90,
@@ -84,7 +84,7 @@ class CTCTargetingAI { public:                         // interface 8
 };
 #pragma pack(pop)
 class CTCBoss { public:                                // interface 0xAD
-    long GetCurrentPhase();                     // 0x007AED10
+    long GetBossPhase() const;                  // 0x007AED10 (Ego_r.pdb + FableWin.pdb ?GetBossPhase@CTCBoss@@QBEJXZ)
 };
 
 class CPlayer { public:
@@ -123,7 +123,7 @@ bool CAIStateGroup_MazeRangedCombat::IsRunnable()
 {
     CTCBoss* boss;
     PBrain->PCreature->GetInterface(&boss, 0xad);
-    if (boss->GetCurrentPhase() != 0 && boss->GetCurrentPhase() != 5 && LastCompletedPhase < boss->GetCurrentPhase()) {
+    if (boss->GetBossPhase() != 0 && boss->GetBossPhase() != 5 && LastCompletedPhase < boss->GetBossPhase()) {
         const CThing* creature = PBrain->PCreature;
         if (creature->HasTC(8)) {
             CTCTargetingAI* targeting = creature->GetTC<CTCTargetingAI>(8);

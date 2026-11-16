@@ -1,0 +1,1972 @@
+line	target	row	status	bound_symbol
+4	0x00412130	0x0042f50b	wrong	??1CWideStringVector@@QAE@XZ
+4	0x00412130	0x0047e07f	wrong	??1CWideStringVector@@QAE@XZ
+4	0x00412130	0x00596cce	wrong	??1?$vector@VCWideString@@@std@@QAE@XZ
+4	0x00412130	0x00597006	wrong	??1CWideStringVector@NUISystem@@QAE@XZ
+4	0x00412130	0x00599d5c	wrong	??1?$vector@VCWideString@@@std@@QAE@XZ
+4	0x00412130	0x00599e3f	wrong	??1CWideStringVector@@QAE@XZ
+4	0x00412130	0x00e64f80	wrong	?AutoTinyMemberDestructor_00412130@@YIXPAX@Z
+6	0x00429f43	0x0042aa29	wrong	?Destroy_00429f43@@YIXPAX@Z
+6	0x00429f43	0x00544c10	wrong	?DestroyAction@NUISystem@@YIXPAX@Z
+6	0x00429f43	0x00549b20	wrong	?DestroyAction@NUISystem@@YIXPAX@Z
+6	0x00429f43	0x0054b4b0	wrong	?DestroyAction@NUISystem@@YIXPAX@Z
+7	0x004331f9	0x004331c0	wrong	??$TransferVectorBinary@VCCharString@@@CPersistContext@@QAEXAAV?$vector@VCCharString@@@std@@@Z
+7	0x004331f9	0x0046f7c8	wrong	?TransferStringVector@CPersistContext@@QAEXPAUNativeVector32@@@Z
+7	0x004331f9	0x0046fc51	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+7	0x004331f9	0x004717a1	wrong	?Xfer_004331f9@CPersistContext@@QAEXPAX@Z
+7	0x004331f9	0x00472415	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+7	0x004331f9	0x004724c2	wrong	?PersistC@CPersistContext@@QAEXPAX@Z
+7	0x004331f9	0x00472506	wrong	?Transfer@CPersistContext@@QAEXAAUCCharStringVector@@@Z
+7	0x004331f9	0x00478ee2	wrong	?Transfer@CPersistContext@@QAEXAAUCCharStringVector@@@Z
+7	0x004331f9	0x004ec153	wrong	?Transfer@CPersistContext@@QAEXPAX@Z
+7	0x004331f9	0x00f2a1d0	wrong	??$TransferVectorBinary@VCCharString@@@CPersistContext@@QAEXAAV?$vector@VCCharString@@@std@@@Z
+9	0x0043e420	0x00438230	wrong	??_9@$BA@AE
+9	0x0043e420	0x00439070	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c0a010	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c0a040	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c0a060	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c0a080	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c24d10	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c24d40	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c24d60	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c24d80	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c24e70	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c24ea0	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c24ec0	wrong	??_9@$BA@AE
+9	0x0043e420	0x00c24ee0	wrong	??_9@$BA@AE
+12	0x00464cbf	0x00464be9	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z
+12	0x00464cbf	0x00464db5	wrong	?Transfer@CPersistContext@@QAEXAAU?$CStlVector@M@@@Z
+12	0x00464cbf	0x00465163	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z
+12	0x00464cbf	0x00465258	wrong	?Transfer@CPersistContext@@QAEXAAU?$CRetailVector@M@@@Z
+12	0x00464cbf	0x00465390	wrong	?Transfer@CPersistContext@@QAEXAAU?$CStlVector@M@@@Z
+12	0x00464cbf	0x00465634	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z
+12	0x00464cbf	0x00465662	wrong	?Transfer_00464cbf@CPersistContext@@QAEXPAX@Z
+12	0x00464cbf	0x004656a6	wrong	?Transfer@CPersistContext@@QAEXAAU?$CStlVector@M@@@Z
+12	0x00464cbf	0x004656df	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z
+12	0x00464cbf	0x00465b41	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z
+12	0x00464cbf	0x004665b6	wrong	?Transfer@CPersistContext@@QAEXAAUCFloatVector@@@Z
+12	0x00464cbf	0x0046a178	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z
+12	0x00464cbf	0x0046a260	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z
+12	0x00464cbf	0x0046a2fc	wrong	?Transfer@CPersistContext@@QAEXAAU?$CStlVector@M@@@Z
+12	0x00464cbf	0x0046a568	wrong	?Transfer@CPersistContext@@QAEXAAU?$CStlVector@M@@@Z
+12	0x00464cbf	0x0046a6dd	wrong	?Transfer_00464cbf@CPersistContext@@QAEXPAJ@Z
+12	0x00464cbf	0x00472415	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z
+12	0x00464cbf	0x004724c2	wrong	?PersistA_00464cbf@CPersistContext@@QAEXPAX@Z
+12	0x00464cbf	0x00477cb1	wrong	?PersistA@CPersistContext@@QAEXPAUSubA@@@Z
+12	0x00464cbf	0x00479cba	wrong	?Transfer@CPersistContext@@QAEXAAUCFloatVector@@@Z
+13	0x00466a47	0x004665b6	wrong	?Transfer@CPersistContext@@QAEXAAUCLongVector@@@Z
+13	0x00466a47	0x00467553	wrong	?Transfer_00466a47@CPersistContext@@QAEXPAX@Z
+13	0x00466a47	0x004678e2	wrong	??$Transfer@V?$vector@JV?$allocator@J@std@@@std@@@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+13	0x00466a47	0x0046923d	wrong	??$Transfer@V?$vector@JV?$allocator@J@std@@@std@@@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+13	0x00466a47	0x004696c1	wrong	?Transfer_00466a47@CPersistContext@@QAEXPAJ@Z
+13	0x00466a47	0x00469ab3	wrong	?TransferLongVector@CPersistContext@@QAEXAAUNativeLongVector@@@Z
+13	0x00466a47	0x0046a0b0	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+13	0x00466a47	0x0046a178	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+13	0x00466a47	0x0046a260	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+13	0x00466a47	0x0046a2fc	wrong	?Transfer@CPersistContext@@QAEXAAU?$CStlVector@J@@@Z
+13	0x00466a47	0x0046a568	wrong	?Transfer@CPersistContext@@QAEXAAU?$CStlVector@J@@@Z
+13	0x00466a47	0x0046a6dd	wrong	?Transfer_00466a47@CPersistContext@@QAEXPAJ@Z
+13	0x00466a47	0x0046a742	wrong	?Transfer_00466a47@CPersistContext@@QAEXPAH@Z
+13	0x00466a47	0x0046a77b	wrong	?Transfer_00466a47@CPersistContext@@QAEXPAJ@Z
+13	0x00466a47	0x0046a7e0	wrong	?PersistB_00466a47@CPersistContext@@QAEXAAH@Z
+13	0x00466a47	0x0046a80e	wrong	?Transfer@CPersistContext@@QAEXAAU?$CStlVector@J@@@Z
+13	0x00466a47	0x0046c284	wrong	?Xfer_00466a47@CPersistContext@@QAEXPAX@Z
+13	0x00466a47	0x0046c6e0	wrong	?Xfer_00466a47@CPersistContext@@QAEXPAX@Z
+13	0x00466a47	0x0046f7c8	wrong	?TransferLongVector@CPersistContext@@QAEXPAUNativeVector32@@@Z
+13	0x00466a47	0x00472415	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+13	0x00466a47	0x004724c2	wrong	?PersistB_00466a47@CPersistContext@@QAEXPAX@Z
+13	0x00466a47	0x00479cba	wrong	?Transfer@CPersistContext@@QAEXAAUCLongVector@@@Z
+13	0x00466a47	0x004e77c8	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+13	0x00466a47	0x004e795a	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+13	0x00466a47	0x004e7d97	wrong	?Transfer@CPersistContext@@QAEXAAU?$CStlVector@J@@@Z
+13	0x00466a47	0x004e7ea7	wrong	?Transfer_00466a47@CPersistContext@@QAEXPAUA@@@Z
+13	0x00466a47	0x004e7ee0	wrong	??$Transfer@V?$vector@JV?$allocator@J@std@@@std@@@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+13	0x00466a47	0x004e7f24	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+13	0x00466a47	0x004e7fd8	wrong	?Transfer@CPersistContext@@QAEXAAUCLongVector@@@Z
+13	0x00466a47	0x004e80e3	wrong	?Transfer@CPersistContext@@QAEXAAUCLongVector@@@Z
+13	0x00466a47	0x004e82c7	wrong	?Transfer@CPersistContext@@QAEXAAUCLongVector@@@Z
+13	0x00466a47	0x004ec53f	wrong	?Transfer@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+14	0x00468eb4	0x004678e2	wrong	??$Transfer@V?$vector@VCRGBColour@@V?$allocator@VCRGBColour@@@std@@@std@@@CPersistContext@@QAEXAAV?$vector@VCRGBColour@@V?$allocator@VCRGBColour@@@std@@@std@@@Z
+15	0x00475d99	0x004ebf22	wrong	?Xfer_00475d99@CPersistContext@@QAEXPAX@Z
+18	0x0049b6b0	0x0049a0b0	wrong	?push_back@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEXABVCTexture@@@Z
+26	0x005bc0d3	0x005bc216	wrong	??1CMember_005bc0d3@@QAE@XZ
+26	0x005bc0d3	0x005bc277	wrong	??1CMember_005bc0d3@@QAE@XZ
+26	0x005bc0d3	0x00709b10	wrong	??1CTextureMorphVector@@QAE@XZ
+26	0x005bc0d3	0x007220f0	wrong	@InnerDtor_005bc0d3@4
+26	0x005bc0d3	0x00722270	wrong	??1CEngineTextureMorphSet@@QAE@XZ
+26	0x005bc0d3	0x007222b0	wrong	??1CEngineTextureMorphSet@@QAE@XZ
+26	0x005bc0d3	0x00728f80	wrong	??1CItemVector_00728f80@@QAE@XZ
+26	0x005bc0d3	0x00755520	wrong	??1SMember_005bc0d3@@QAE@XZ
+27	0x005ccc91	0x0047eee4	wrong	?GetTimeSpentInGame@CTCHeroStats@@SI?AVCWideString@@J_N@Z
+28	0x005d8e50	0x005bf77d	wrong	?Notify@CTCInterface1A@@QAEXXZ
+28	0x005d8e50	0x005c44fa	wrong	?OnShowEnded@CTCShowableItem@@QAEXXZ
+28	0x005d8e50	0x0069f9e0	wrong	?OnNotCarried@CTC1A@@QAEXXZ
+28	0x005d8e50	0x006a1e00	wrong	?OnUseFailed@CTCInterface1A@@QAEXXZ
+28	0x005d8e50	0x0078e9c0	wrong	?OnNotCarried@CTC1A@@QAEXXZ
+28	0x005d8e50	0x00793ec0	wrong	?OnNotCarried@CTC1A@@QAEXXZ
+28	0x005d8e50	0x007e1eb0	wrong	?OnShowEnded@CTCShowableItem@@QAEXXZ
+28	0x005d8e50	0x007ecee0	wrong	?OnShowEnded@CTCShowableItem@@QAEXXZ
+28	0x005d8e50	0x007ed170	wrong	?OnUseFailed@CTCInterface1A@@QAEXXZ
+28	0x005d8e50	0x007ed560	wrong	?OnUseFailed@CTCInterface1A@@QAEXXZ
+28	0x005d8e50	0x007ed870	wrong	?OnUseFailed@CTCInterface1A@@QAEXXZ
+28	0x005d8e50	0x007eddf0	wrong	?Notify@CTCInterface1A@@QAEXXZ
+28	0x005d8e50	0x007f01f0	wrong	?OnShowEnded@CTCShowableItem@@QAEXXZ
+28	0x005d8e50	0x007f03d0	wrong	?OnShowEnded@CTCShowableItem@@QAEXXZ
+28	0x005d8e50	0x007f4d50	wrong	?OnShowEnded@CTCShowableItem@@QAEXXZ
+28	0x005d8e50	0x008116d0	wrong	?OnShowEnded@CTCShowableItem@@QAEXXZ
+28	0x005d8e50	0x008ba3c0	wrong	?OnShowEnded@CTCShowableItem@@QAEXXZ
+29	0x005d9930	0x005e4430	wrong	?IsAugmentation_005d9930@@YI_NJ@Z
+30	0x005ede93	0x0057770a	wrong	?GetAbilityLevel@CTCHeroAbilities@@QAEJW4EHeroAbility@@@Z
+30	0x005ede93	0x005778ca	wrong	?GetAbilityLevel@CTCHeroAbilities@@QAEJW4EHeroAbility@@@Z
+33	0x00625930	0x00583bd5	wrong	?IsActive@CTCInventoryMenu@@QBE_NXZ
+33	0x00625930	0x0068ff50	wrong	?IsActive@CTCMenu@@QAE_NXZ
+34	0x006294a0	0x0121b9b0	unverified	
+37	0x00677620	0x00677760	wrong	??0CReactionMatch_AsymmetricPyramidRetail@@QAE@W4EOpinionReactionType@@JJMMMMMM@Z
+42	0x0074fb20	0x0074e6e0	wrong	?erase@CContainerItemVector@@QAEPAUSContainerItem@@PAU2@0@Z
+42	0x0074fb20	0x008ed170	wrong	?erase@CContainerItemVector@@QAEPAUSContainerItem@@PAU2@0@Z
+43	0x0075c280	0x0075ccb0	wrong	?TransformVector@CEnvironmentSpellEffectInterface@@QAEXAAUSFilterParams_0075ccb0@@ABU2@PAX@Z
+43	0x0075c280	0x0075ccf0	wrong	?TransformVector@CEnvironmentSpellEffectInterface@@QAEXAAUSFilterParams_0075ccf0@@ABU2@PAX@Z
+45	0x007aed10	0x00954410	unverified	
+45	0x007aed10	0x009547d0	wrong	?GetPhase@MazeBoss@@QAEJXZ
+45	0x007aed10	0x00954e30	wrong	?GetPhase@MazeBoss@@QAEJXZ
+45	0x007aed10	0x0096c4f0	wrong	?GetState@CTCThunderCombat@@QAEJXZ
+47	0x008645e0	0x006a7610	wrong	?Shim_008645e0@@YIJPAUCShimTarget_008645e0@@PAXJ@Z
+48	0x008ac890	0x008a7980	wrong	?RemoveIf@EventListMethods@@QAEXPBJ@Z
+49	0x008fcfb0	0x00917130	wrong	?GetPDefinitionManager@CAIStateGroupBase@@QBEPAVCDefinitionManager@@XZ
+49	0x008fcfb0	0x009378f0	wrong	?GetPDefinitionManager@CAIStateGroupBase@@QAEPAVCDefinitionManager@@XZ
+49	0x008fcfb0	0x00972670	wrong	?GetPDefinitionManager@CAIStateGroupBase@@QAEPAVCDefinitionManager@@XZ
+49	0x008fcfb0	0x00972830	wrong	?GetPDefinitionManager@CAIStateGroupJackOfBladesBaseMethods@@QAEPAVCDefinitionManager@@XZ
+50	0x008fd46b	0x0121f86f	unverified	
+51	0x008fd4bc	0x0121f86f	unverified	
+52	0x008fd7d9	0x0121f86f	unverified	
+53	0x008fd923	0x0121f86f	unverified	
+54	0x008fd94e	0x0121f86f	unverified	
+55	0x008fdba2	0x0121f86f	unverified	
+56	0x008fdbcb	0x0121f86f	unverified	
+57	0x008fdbf4	0x0121f86f	unverified	
+58	0x008fdd10	0x0121f86f	unverified	
+59	0x008fe019	0x0121f86f	unverified	
+60	0x008fe14d	0x0121f86f	unverified	
+61	0x008fe93b	0x0122a20a	unverified	
+62	0x00984a20	0x01221d20	unverified	
+63	0x00985430	0x01221d20	unverified	
+64	0x009863e0	0x01221d20	unverified	
+65	0x009c7c20	0x00891340	wrong	?ConstructString@@YI_NPAVCWideString@@PAUCWideStringVector_Retail@@@Z
+66	0x00a03b30	0x009e45d0	wrong	@FableMemberDtor_009e45d0@4
+66	0x00a03b30	0x009f61c0	wrong	?CLandscapeBackgroundPatch_dtor_00a03b30@@YIXPAVCLandscapeBackgroundPatch@@@Z
+66	0x00a03b30	0x009f6720	wrong	??1SRecord34@@QAE@XZ
+67	0x00a0aea0	0x00b5e700	wrong	?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPAPAVCTexture@@KPBXJJ1J@Z
+67	0x00a0aea0	0x00b61690	wrong	?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPAPAVCTexture@@KPBXJJ1J@Z
+67	0x00a0aea0	0x00b63260	wrong	?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPAPAVCTexture@@KPBXJJ1J@Z
+67	0x00a0aea0	0x00b63530	wrong	?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPAPAVCTexture@@KPBXJJ1J@Z
+67	0x00a0aea0	0x00b88bc0	wrong	?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPAPAVCTexture@@KPBXJJ1J@Z
+67	0x00a0aea0	0x00f39a50	wrong	?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPAVCTexture@@KPBXJJ1J@Z
+68	0x00a0d390	0x00689130	wrong	?SetAsPerformedEvent@ProcessedInput@NativeInput@@QAEXXZ
+73	0x00ad7400	0x00ad79c0	wrong	?CLandscapeBackgroundPatch_dtor_00ad7400@@YIXPAVCLandscapeBackgroundPatch@@@Z
+73	0x00ad7400	0x00ad85d0	wrong	??1COptimisedVertex@N00ad85d0@@QAE@XZ
+76	0x00b244f0	0x00b32660	wrong	?GetPoolTextureSize@CTextureManager@@QAEPBUSTexturePoolRecord@@K@Z
+78	0x00b8d090	0x00b906c0	wrong	?BeginUntextured@CEngineRenderer_00b906c0@@QAEXXZ
+79	0x00b8d0a0	0x00b906c0	wrong	?EndUntextured@CEngineRenderer_00b906c0@@QAEXPAX@Z
+81	0x00bacd80	0x00ba1a70	wrong	?SetName@CEnginePrimitiveManagerStaticMeshes@@QAEXABVCCharString@@@Z
+81	0x00bacd80	0x00babb50	wrong	?RegisterEnable@CEnginePrimitiveManagerOcclusionBase@@QAEXABVCCharString@@@Z
+81	0x00bacd80	0x00bad040	wrong	?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+81	0x00bacd80	0x00bb6e00	wrong	?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+81	0x00bacd80	0x00bba480	wrong	?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+81	0x00bacd80	0x00bc7e90	wrong	?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+82	0x00bc9b30	0x00bca950	wrong	?FindNode@CEngineTreeFilerBase@@AAEPAVCNodeHeader@1@PAV21@PAK@Z
+82	0x00bc9b30	0x00bcc800	wrong	?FindNode@CEngineTreeFilerBase@@AAEPAVCNodeHeader@1@PAV21@PAK@Z
+82	0x00bc9b30	0x00bf2e50	wrong	?FindNode@CEngineTreeFilerBase@@QAEPAUCNodeHeader@@PAU2@PAK@Z
+83	0x00c11700	0x00c271e0	wrong	?GetFaderOutput@CSoundEventManager@@QBEMXZ
+84	0x00c271e0	0x00c27540	wrong	_ForwardTarget_00c271e0
+88	0x00c35dd0	0x00c271f0	wrong	_CODA_SourcePlay@8
+88	0x00c35dd0	0x00c276b0	wrong	_CODA_StopSource@8
+88	0x00c35dd0	0x00c279a0	wrong	?RenderBuffer_00c35dd0@@YGXPAXJ@Z
+88	0x00c35dd0	0x00c49470	wrong	_CODA_SourcePlay@8
+88	0x00c35dd0	0x00c49820	wrong	_CODA_StopSource@8
+90	0x00cbe09a	0x00cbf6dc	wrong	??0CWideScreenMagicPauseEntities@@QAE@PAVCGameScriptInterfaceBase@@@Z
+91	0x00e1feb0	0x00e1fcf0	wrong	?RestartRandomSpeechTimer@CQR_EscortTraderScript@@QAEXXZ
+91	0x00e1feb0	0x00e1fef0	wrong	?RestartRandomSpeechTimer@CQR_EscortTraderScript@@QAEXXZ
+92	0x00e337c0	0x00e33720	wrong	?ResetRandomSpeechTime@CQ_AmbushTradersScript@@QAEXXZ
+93	0x00f36ee0	0x00b87680	wrong	?Get@CTexturePool_00f36ee0@@QAEPAVCTexture@@J@Z
+93	0x00f36ee0	0x00b89a20	wrong	?Get@CTexturePool_00f36ee0@@QAEPAVCTexture@@J@Z
+93	0x00f36ee0	0x00bac0f0	wrong	?StartSurfaceUse@CGPUScratchBufferTextureManager@@QAEJJ@Z
+94	0x0122a460	0x01221d20	unverified	
+95	0x01375cd4	0x0041cc14	wrong	?g_HeadAngVelMaxXY_Default@@3MA
+95	0x01375cd4	0x0052e470	wrong	?g_gameSpeedDivisor@@3MA
+95	0x01375cd4	0x00543ee0	wrong	?g_DisplayWidth@NUISystem@@3MA
+95	0x01375cd4	0x0054ef00	wrong	?DefaultBackBufferWidth@CUIScreenUnitConverter@NUISystem@@0MA
+96	0x01375cd8	0x0041cc2b	wrong	?g_HeadAngVelMaxXY_Default_01375cd8@@3MA
+96	0x01375cd8	0x0052e4d0	wrong	?g_lengthScaleDivisor@@3MA
+96	0x01375cd8	0x00543ee0	wrong	?g_DisplayHeight@NUISystem@@3MA
+96	0x01375cd8	0x0054ef00	wrong	?DefaultBackBufferHeight@CUIScreenUnitConverter@NUISystem@@0MA
+97	0x01396dc8	0x00b677d0	wrong	?g_renderStateValue_01396dc8@@3KA
+97	0x01396dc8	0x00b75ca0	wrong	?g_renderStateValue_01396dc8@@3KA
+97	0x01396dc8	0x00b76bc0	wrong	?g_renderStateValue_01396dc8@@3KA
+97	0x01396dc8	0x00b77e20	wrong	?g_renderStateValue_01396dc8@@3KA
+97	0x01396dc8	0x00be6f70	unverified	
+97	0x01396dc8	0x00bf4570	unverified	
+98	0x013b8768	0x0041cc14	wrong	?g_HeadAngVelMaxXY_OverrideFlag@@3EA
+98	0x013b8768	0x0041cc2b	wrong	?g_HeadAngVelMaxXY_OverrideFlag@@3EA
+98	0x013b8768	0x0052e470	wrong	?g_scaleEnabled@@3EA
+98	0x013b8768	0x0052e4d0	wrong	?g_lengthScaleEnabled@@3EA
+98	0x013b8768	0x00543ee0	wrong	?g_bScreenSizeOverride@NUISystem@@3_NA
+98	0x013b8768	0x0054ef00	wrong	?IsUsingRelativeCoords@CUIScreenUnitConverter@NUISystem@@0_NA
+99	0x013b876c	0x0040f0e0	wrong	?g_dimW@@3MA
+99	0x013b876c	0x0041cc14	wrong	?g_HeadAngVelMaxXY_OverrideValue@@3MA
+99	0x013b876c	0x0052e470	wrong	?g_gameSpeedMultiplier@@3MA
+99	0x013b876c	0x00543ee0	wrong	?g_OverrideScreenWidth@NUISystem@@3MA
+99	0x013b876c	0x0054ef00	wrong	?BackBufferWidth@CUIScreenUnitConverter@NUISystem@@0MA
+100	0x013b8770	0x0040f0e0	wrong	?g_dimH@@3MA
+100	0x013b8770	0x0041cc2b	wrong	?g_HeadAngVelMaxXY_OverrideValue_013b8770@@3MA
+100	0x013b8770	0x0052e4d0	wrong	?g_lengthScaleMultiplier@@3MA
+100	0x013b8770	0x00543ee0	wrong	?g_OverrideScreenHeight@NUISystem@@3MA
+100	0x013b8770	0x0054ef00	wrong	?BackBufferHeight@CUIScreenUnitConverter@NUISystem@@0MA
+101	0x013b9288	0x00434a30	wrong	?GameEventDispatchTable@@3PAVCGameEventDispatch@@A
+101	0x013b9288	0x00434a60	wrong	?g_GameEventHandlers@@3PAUSGameEventHandler@@A
+101	0x013b9288	0x0049d8c0	wrong	?GameEventDispatchTable@@3PAVCGameEventDispatch@@A
+101	0x013b9288	0x0049d8e0	wrong	?GameEventDispatchTable@@3PAVCGameEventDispatch@@A
+101	0x013b9288	0x0049d980	wrong	?GameEventDispatchTable@@3PAVCGameEventDispatch@@A
+101	0x013b9288	0x0049dfb0	wrong	?g_GameEventHandlers@@3PAUSGameEventHandler@@A
+101	0x013b9288	0x0049e1d0	wrong	?GameEventDispatchTable@@3PAVCGameEventDispatch@@A
+101	0x013b9288	0x0121b9b0	unverified	
+102	0x013ba8c8	0x00692e50	wrong	?Registry@CCreatureActionBase@@1V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@A
+102	0x013ba8c8	0x006f5c10	wrong	?RegisteredActions@CCreatureActionBase@@1V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@U?$less@W4EActionRegisteredType@@@std@@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@4@@std@@A
+102	0x013ba8c8	0x00857430	wrong	?Registry@CCreatureActionBase@@1V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@A
+102	0x013ba8c8	0x0121e070	unverified	
+102	0x013ba8c8	0x012292e0	unverified	
+103	0x013bb008	0x0121f86f	unverified	
+103	0x013bb008	0x0122a20a	unverified	
+104	0x013bc470	0x004022b0	wrong	?g_FableRenderStateStorage_013BC470@@3EA
+104	0x013bc470	0x009bef80	wrong	?g_CShaderRenderManager_013BC470@@3VCShaderRenderManager@@A
+104	0x013bc470	0x009c01c0	wrong	?g_ShaderRenderManager@@3VCShaderRenderManager@@A
+104	0x013bc470	0x009c0e50	wrong	?g_ShaderRenderManager@@3VCShaderRenderManager@@A
+104	0x013bc470	0x009d8ad0	wrong	?g_ShaderRenderManager@@3VCShaderRenderManager@@A
+104	0x013bc470	0x009d8b40	wrong	?g_ShaderRenderManager@@3VCShaderRenderManager@@A
+104	0x013bc470	0x009d9a30	wrong	?g_ShaderRenderManager@@3VCShaderRenderManager@@A
+104	0x013bc470	0x00b25c00	wrong	?g_ShaderRenderManager@@3VCShaderRenderManager@@A
+104	0x013bc470	0x00b5e700	wrong	?g_ShaderRenderManager@@3UCShaderEnableState@@A
+104	0x013bc470	0x00b61690	wrong	?g_ShaderRenderManager@@3UCShaderEnableState@@A
+104	0x013bc470	0x00b6b0b0	unverified	
+104	0x013bc470	0x00b88bc0	wrong	?g_ShaderRenderManager@@3UCShaderEnableState@@A
+104	0x013bc470	0x00bad2e0	wrong	?g_ShaderRenderManager@@3UCShaderLayoutState@@A
+104	0x013bc470	0x00bbc130	wrong	?g_ShaderRenderManager@@3VCShaderRenderManager@@A
+104	0x013bc470	0x00bcb800	wrong	?g_ShaderRenderManager@@3UCShaderEnableState@@A
+104	0x013bc470	0x00bf4570	unverified	
+104	0x013bc470	0x01223d00	unverified	
+104	0x013bc470	0x0122a4c0	wrong	?g_AutoTinyThunkObject_013bc470@@3UAutoTinyThunkTarget@@A
+105	0x013d2838	0x006e71b0	wrong	?g_pScriptRunner@@3PAUCScriptRunner@@A
+105	0x013d2838	0x006e71f0	wrong	?g_pScriptRunner@@3PAUCScriptRunner@@A
+105	0x013d2838	0x006e7410	wrong	?g_guard@@3PAUGuard@@A
+105	0x013d2838	0x006e7820	wrong	?g_pScriptRunner@@3PAUCScriptRunner@@A
+105	0x013d2838	0x007e7760	wrong	?g_pScriptRunner@@3PAUCScriptRunner@@A
+105	0x013d2838	0x008902e0	wrong	?GHO_RefreshGate@@3PAXA
+105	0x013d2838	0x00898c40	wrong	?g_pScriptRunner@@3PAUCScriptRunner@@A
+105	0x013d2838	0x00904380	wrong	?g_pScriptRunner@@3PAUCScriptRunner@@A
+106	0x01436e14	0x00b2fc50	wrong	?g_ShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b32100	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b32230	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b32ad0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b3b5d0	wrong	?g_pShaderRenderManager_01436e14@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b3b6d0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b3b8e0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b44d50	wrong	?g_pShaderRenderManager_01436e14@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b44f20	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b47310	wrong	?g_pShaderRenderManager_01436e14@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b47630	wrong	?g_pShaderRenderManager_01436e14@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b4f510	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b52160	wrong	?gShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b54100	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b54210	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b54310	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b5e700	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b61690	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b63010	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b63260	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b63530	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b67480	wrong	?g_pShaderRenderManager_01436e14@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b6e010	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b6e3e0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b75ca0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b76bc0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b77e20	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b7c510	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b7eec0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b7f0f0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b7f3b0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b7f600	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b7fa20	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b88bc0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b90cd0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b99670	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00b9e750	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00bad2e0	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00bb8090	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00bcb800	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00bcd490	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00bce900	wrong	?g_pShaderRenderManager@@3PAVCShaderRenderManager@@A
+106	0x01436e14	0x00be6f70	unverified	
+106	0x01436e14	0x00beaca0	unverified	
+106	0x01436e14	0x00bf4570	unverified	
+107	0x01436e18	0x00b25d80	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b2fc50	wrong	?g_RenderManagerCore@@3PAUCRenderManagerCore_Methods@@A
+107	0x01436e18	0x00b32100	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCore@@A
+107	0x01436e18	0x00b32230	wrong	?g_pRenderStateManager_01436e18@@3PAVCRenderStateManager@@A
+107	0x01436e18	0x00b32300	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b32ad0	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b3b0c0	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCore@@A
+107	0x01436e18	0x00b46890	wrong	?g_pRenderStateManager_01436e18@@3PAVCRenderStateManager@@A
+107	0x01436e18	0x00b47630	wrong	?g_pRenderStateManager_01436e18@@3PAVCRenderStateManager@@A
+107	0x01436e18	0x00b4d2c0	wrong	?g2D@@3PAURender2DMethods@@A
+107	0x01436e18	0x00b4f510	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b54100	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b54210	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b54310	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b56b00	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b56f50	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b586a0	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b58de0	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b58fb0	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b592c0	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b5e700	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b61690	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b63010	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b63260	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b63530	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b66190	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b662f0	unverified	
+107	0x01436e18	0x00b67510	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b677d0	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b6e010	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCore@@A
+107	0x01436e18	0x00b6e3e0	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b75ca0	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b76bc0	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b77e20	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b7ad20	wrong	?g_pRenderManager@@3PAVCRenderManager@@A
+107	0x01436e18	0x00b849f0	wrong	?gSubRenderManager@@3PAUCSubRenderStateManager@@A
+107	0x01436e18	0x00b871b0	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b87680	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCore@@A
+107	0x01436e18	0x00b88bc0	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b89a20	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCore@@A
+107	0x01436e18	0x00b903d0	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b90700	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b90cd0	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00b9d670	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00b9e750	wrong	?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A
+107	0x01436e18	0x00bad2e0	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00bb8090	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00bcb800	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00bcd490	wrong	?g_pRenderManagerCore@@3PAVCRenderStateManager@@A
+107	0x01436e18	0x00be1e70	unverified	
+107	0x01436e18	0x00be6f70	unverified	
+107	0x01436e18	0x00beaca0	unverified	
+107	0x01436e18	0x00bf1030	wrong	?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A
+107	0x01436e18	0x00bf4570	unverified	
+108	0x01436e50	0x00b26360	wrong	?g_pEngineSkyRenderer@@3PAVCEngineSkyRenderer@@A
+109	0x01436e5c	0x00b26360	wrong	?g_pEngineOcclusionManager@@3PAVCEngineOcclusionManager@@A
+109	0x01436e5c	0x00b2f8e0	wrong	?g_OcclusionManager@@3PAUCEngineOcclusionManager_Methods@@A
+109	0x01436e5c	0x00b2f9f0	wrong	?g_pOcclusionManager@@3PAVCEngineOcclusionManager@@A
+109	0x01436e5c	0x00b2fa40	wrong	?g_pFrameSource@@3PAUSFrameSource@@A
+109	0x01436e5c	0x00b2fa90	wrong	?g_pOcclusionManager@@3PAVCEngineOcclusionManager@@A
+109	0x01436e5c	0x00b64550	wrong	?g_pOcclusionManager@@3PAVCEngineOcclusionManager@@A
+109	0x01436e5c	0x00b662f0	unverified	
+109	0x01436e5c	0x00b6e260	wrong	?g_pEngineOcclusionManager@@3PAVCEngineOcclusionManager@@A
+109	0x01436e5c	0x00b906c0	wrong	?g_pRenderer_01436e5c@@3PAUCEngineRenderer_00b906c0@@A
+109	0x01436e5c	0x00b91140	wrong	?g_pOcclusionManager@@3PAVCEngineOcclusionManager@@A
+109	0x01436e5c	0x00be79d0	wrong	?g_pOcclusionManager@@3PAVCEngineOcclusionManager@@A
+109	0x01436e5c	0x00bf7100	wrong	?gOcclusionManager@Native@@3PAUOcclusionManager@1@A
+110	0x01436e60	0x00b23f70	wrong	?g_pEngineShadowRenderer@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00b23f80	wrong	?g_pEngineShadowRenderer@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00b24500	wrong	?g_pShadowRenderer_01436e60@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00b26360	wrong	?g_pEngineShadowRenderer@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00b32660	wrong	?g_pShadowRenderer_01436e60@@3PAUCEngineShadowRendererView@@A
+110	0x01436e60	0x00b33010	wrong	?g_pOcclusionRenderer@@3PAUCEngineOcclusionRenderer@@A
+110	0x01436e60	0x00b444f0	wrong	?g_pShadowRenderer_01436e60@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00b47310	wrong	?g_pShadowRenderer_01436e60@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00b4f510	wrong	?g_pShadowRenderer_01436e60@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00b4fc40	wrong	?g_pEngineShadowRenderer@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00b68610	wrong	?g_pRenderSettings_01436e60@@3PAUSRenderSettings_01436e60@@A
+110	0x01436e60	0x00b99b50	wrong	?g_pRenderSettings_01436e60@@3PAUSRenderSettings_01436e60@@A
+110	0x01436e60	0x00b9a4a0	wrong	?g_pEngineShadowRenderer@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00b9d100	wrong	?g_pShadowRenderer_01436e60@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00bb1ef0	wrong	?g_pShadowRenderer_01436e60@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00bcea60	wrong	?g_pShadowRenderer_01436e60@@3PAVCEngineShadowRenderer@@A
+110	0x01436e60	0x00bf4570	unverified	
+111	0x01436e78	0x00b25d80	wrong	?g_pEngineComponentGlobal@@3PAXA
+111	0x01436e78	0x00b33520	wrong	?g_pPrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+111	0x01436e78	0x00b91140	wrong	?g_pPrimitiveRendererSharedData@@3PAUCEnginePrimitiveRendererSharedData@@A
+111	0x01436e78	0x00b9a4a0	wrong	?g_pPrimitiveRendererSharedData@@3PAVCEnginePrimitiveRendererSharedData@@A
+111	0x01436e78	0x00b9bcc0	wrong	?g_pEngineRenderSettings@@3PAUCEngineRenderSettings@@A
+111	0x01436e78	0x00ba1b00	wrong	?g_pPrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+111	0x01436e78	0x00ba6ff0	wrong	?g_pPrimitiveRendererSharedData@@3PAVCEnginePrimitiveRendererSharedData@@A
+111	0x01436e78	0x00babf70	wrong	?g_pEngineRenderSettings@@3PAUCEngineRenderSettings@@A
+111	0x01436e78	0x00bacc50	wrong	?g_pPrimitiveRendererSharedData@@3PAUCEnginePrimitiveRendererSharedData@@A
+111	0x01436e78	0x00bc6340	wrong	?g_pEngineRenderSettings@@3PAUCEngineRenderSettings@@A
+111	0x01436e78	0x00bcf2e0	wrong	?g_pPrimitiveRendererSharedData@@3PAVCEnginePrimitiveRendererSharedData@@A
+111	0x01436e78	0x00beb5c0	wrong	?g_pFadeSettings@@3PAUSFadeSettings@@A
+111	0x01436e78	0x00beb660	wrong	?g_pFadeSettings@@3PAUSFadeSettings@@A
+111	0x01436e78	0x00bebbe0	wrong	?g_pPrimitiveRenderer@@3PAUSPrimitiveRendererSettings@@A
+112	0x01436e78	0x00b25d80	wrong	?g_pEngineComponentGlobal@@3PAXA
+112	0x01436e78	0x00b33520	wrong	?g_pPrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+112	0x01436e78	0x00b91140	wrong	?g_pPrimitiveRendererSharedData@@3PAUCEnginePrimitiveRendererSharedData@@A
+112	0x01436e78	0x00b9a4a0	wrong	?g_pPrimitiveRendererSharedData@@3PAVCEnginePrimitiveRendererSharedData@@A
+112	0x01436e78	0x00b9bcc0	wrong	?g_pEngineRenderSettings@@3PAUCEngineRenderSettings@@A
+112	0x01436e78	0x00ba1b00	wrong	?g_pPrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+112	0x01436e78	0x00ba6ff0	wrong	?g_pPrimitiveRendererSharedData@@3PAVCEnginePrimitiveRendererSharedData@@A
+112	0x01436e78	0x00babf70	wrong	?g_pEngineRenderSettings@@3PAUCEngineRenderSettings@@A
+112	0x01436e78	0x00bacc50	wrong	?g_pPrimitiveRendererSharedData@@3PAUCEnginePrimitiveRendererSharedData@@A
+112	0x01436e78	0x00bc6340	wrong	?g_pEngineRenderSettings@@3PAUCEngineRenderSettings@@A
+112	0x01436e78	0x00bcf2e0	wrong	?g_pPrimitiveRendererSharedData@@3PAVCEnginePrimitiveRendererSharedData@@A
+112	0x01436e78	0x00beb5c0	wrong	?g_pFadeSettings@@3PAUSFadeSettings@@A
+112	0x01436e78	0x00beb660	wrong	?g_pFadeSettings@@3PAUSFadeSettings@@A
+112	0x01436e78	0x00bebbe0	wrong	?g_pPrimitiveRenderer@@3PAUSPrimitiveRendererSettings@@A
+113	0x01436e7c	0x00b23eb0	wrong	?g_pEnginePrimitiveRenderer2D@@3PAVCEnginePrimitiveRenderer2D@@A
+113	0x01436e7c	0x00b26360	wrong	?g_pEnginePrimitiveRenderer2D@@3PAVCEnginePrimitiveRenderer2D@@A
+113	0x01436e7c	0x00b324a0	wrong	?g_pEnginePrimitiveRenderer2D@@3PAVCEnginePrimitiveRenderer2D@@A
+113	0x01436e7c	0x00b9e950	wrong	?g_pPrimitiveRenderer2D@@3PAVCEnginePrimitiveRenderer2D@@A
+113	0x01436e7c	0x00bd1f70	wrong	?g_pPrimitiveRenderer2D@@3PAVCEnginePrimitiveRenderer2D@@A
+113	0x01436e7c	0x00be0cd0	wrong	?g_pPrimitiveRenderer2D@@3PAVCEnginePrimitiveRenderer2D@@A
+113	0x01436e7c	0x00be0de0	wrong	?g_pPrimitiveRenderer2D@@3PAVCEnginePrimitiveRenderer2D@@A
+113	0x01436e7c	0x00be1ba0	wrong	?g_pPrimitiveRenderer2D_01436e7c@@3PAVCEnginePrimitiveRenderer2D@@A
+114	0x01436e80	0x00b23bb0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23bc0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23be0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23bf0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23c20	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23c30	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23c40	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23c50	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23c60	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23c70	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23c90	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23ca0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b23d00	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b24690	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b26360	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b482a0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b812f0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b814b0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b81640	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b98da0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b991d0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b99670	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b99bb0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b9a4a0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00b9e950	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00ba9360	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00ba95d0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00ba9a70	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00baa460	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00baa4e0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00bc25f0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00bcebe0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00bcf2e0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00bd1f70	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00bf12a0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00bf18b0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00bf9cc0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00bfa8a0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00bfa920	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00bfaba0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+114	0x01436e80	0x00bfacc0	wrong	?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A
+115	0x01436e84	0x00b26360	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b324a0	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b33ae0	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b396e0	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b482a0	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b4abb0	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b91760	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b917e0	wrong	?g_pEngine_01436e84@@3PAUCEngine_01436e84@@A
+115	0x01436e84	0x00b91840	wrong	?g_pPrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b91f50	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b92070	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b92500	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b92660	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b92790	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b92c20	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b92d30	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b92e50	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b92f80	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b930a0	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b943f0	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00b9e950	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00bad2e0	wrong	?g_pPrimitiveManagers@@3PAUCEnginePrimitiveManagerTable@@A
+115	0x01436e84	0x00bb8ef0	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00bbc130	wrong	?g_pPrimitiveManagers@@3PAUCEnginePrimitiveManagerTable@@A
+115	0x01436e84	0x00bbcf70	wrong	?g_pPrimitiveManagers@@3PAUCEnginePrimitiveManagerTable@@A
+115	0x01436e84	0x00bbf4a0	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00bc04f0	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00bc25f0	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00bc5820	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00bc5970	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00bc5a20	wrong	?g_pEngine_01436e84@@3PAUCEngine_01436e84@@A
+115	0x01436e84	0x00bc5c50	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00bc6210	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00bc6270	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00bc6340	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00bc65d0	wrong	?g_pPrimitiveManagers@@3PAUCEnginePrimitiveManagerTable@@A
+115	0x01436e84	0x00bd1f70	wrong	?g_pEnginePrimitiveTypeInfo@@3PAVCEnginePrimitiveTypeInfo@@A
+115	0x01436e84	0x00be1e70	unverified	
+115	0x01436e84	0x00be2310	wrong	?g_pPrimitiveManagers@@3PAUCEnginePrimitiveManagerTable@@A
+115	0x01436e84	0x00be23f0	wrong	?g_pPrimitiveManagers@@3PAUCEnginePrimitiveManagerTable@@A
+116	0x01436e8c	0x00b23db0	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b23dc0	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b23e00	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b23e10	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b23e20	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b23e30	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b23e40	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b23e50	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b23e60	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b26360	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b3f5e0	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b401e0	wrong	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+116	0x01436e8c	0x00b40bd0	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b42ed0	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b52b30	wrong	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+116	0x01436e8c	0x00b52dd0	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b599c0	wrong	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+116	0x01436e8c	0x00b59a30	wrong	?g_pEngineState@@3PAUSEngineState@@A
+116	0x01436e8c	0x00b59be0	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b5bd70	wrong	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+116	0x01436e8c	0x00b5f8c0	wrong	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+116	0x01436e8c	0x00b63010	wrong	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+116	0x01436e8c	0x00b64550	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b64fa0	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b65a20	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b676a0	wrong	?DAT_01436e8c@@3PAUCEngineLandscapeMapList@@A
+116	0x01436e8c	0x00b676f0	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b67920	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b684f0	wrong	?g_pEngineSceneState_01436E8C@@3PAUCEngineSceneState_01436E8C@@A
+116	0x01436e8c	0x00b68610	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00b6b0b0	unverified	
+116	0x01436e8c	0x00b77e20	wrong	?g_pEngineEnvironment@@3PAUCEngineEnvironmentManagerView@@A
+116	0x01436e8c	0x00b7c510	wrong	?g_pEngineState@@3PAUSEngineState@@A
+116	0x01436e8c	0x00b7fa20	wrong	?g_pEngineState@@3PAUSEngineState@@A
+116	0x01436e8c	0x00b80790	wrong	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+116	0x01436e8c	0x00b80840	wrong	?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A
+116	0x01436e8c	0x00bdc980	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00bdcbb0	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+116	0x01436e8c	0x00bea110	wrong	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A
+117	0x01436e98	0x00b239c0	wrong	?g_pEngineData_01436e98@@3PAUCEngineData_01436e98@@A
+117	0x01436e98	0x00b23cb0	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00b23f40	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00b23f50	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00b23f60	wrong	?g_engineSingleton@@3PADA
+117	0x01436e98	0x00b24690	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00b25c80	wrong	?g_pEngineData_01436e98@@3PAUCEngineData_01436e98@@A
+117	0x01436e98	0x00b25cc0	wrong	?g_pEngineData_01436e98@@3PAUCEngineData_01436e98@@A
+117	0x01436e98	0x00b26360	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00b2b790	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b2c4e0	wrong	?g_pEngine_01436e98@@3PAUCEngineData_01436e98@@A
+117	0x01436e98	0x00b2c8e0	wrong	?g_pEngine_01436e98@@3PAUCEngineData_01436e98@@A
+117	0x01436e98	0x00b42750	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b52250	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00b5a1d0	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b5bd30	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b5bf10	wrong	?gEngine@@3PAUEngineTextureGlobal@@A
+117	0x01436e98	0x00b5bfd0	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b5c050	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b5c460	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00b5ea30	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b5ec90	wrong	?g_pEngine_01436e98@@3PAUCEngine_Retail@@A
+117	0x01436e98	0x00b5ece0	wrong	?gGlowResources@@3PAUCGlowResourceManager@@A
+117	0x01436e98	0x00b5ee00	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b5ee80	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b5f090	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00b5fab0	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00b620a0	wrong	?gSkyBufferManager@@3PAUCSkyBufferManager@@A
+117	0x01436e98	0x00b687d0	unverified	
+117	0x01436e98	0x00b6d510	wrong	?gResourceManager@@3PAUCEngineResourceManagerNative@@A
+117	0x01436e98	0x00b6d600	wrong	?g_pEngine_01436e98@@3PAUSEngine_01436e98@@A
+117	0x01436e98	0x00b6d630	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b6d940	wrong	?g_pEngineResourceManager_01436e98@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00b71880	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00b869a0	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b86a30	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b86a70	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b86b00	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b86c00	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00b870a0	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b87680	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b88ed0	unverified	
+117	0x01436e98	0x00b89080	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b89140	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b891b0	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00b898d0	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b89a20	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00b8b630	wrong	?g_pEngineResourceManager_01436e98@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00b8d780	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00b90270	wrong	?g_pEngineData@@3PAVCEngineResourceManager_PDB@@A
+117	0x01436e98	0x00b99670	wrong	?g_pEngine_01436e98@@3PAUSEngineShaderRegisters_01436e98@@A
+117	0x01436e98	0x00b99d90	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00b9d8e0	wrong	?g_pEngineResources@@3PAUSEngineResources@@A
+117	0x01436e98	0x00b9dfc0	wrong	?g_pEngineResourceManager_01436e98@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00ba9a70	wrong	?g_pEngineResourceManager_01436e98@@3PAUCEngineResourceManager_01436e98@@A
+117	0x01436e98	0x00babb50	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00babe60	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00bac0f0	wrong	?g_pDisplayManager@@3PAUCDisplayManagerView@@A
+117	0x01436e98	0x00bad040	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00bad670	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00bad8a0	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00bb6e00	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00bba480	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00bbeaf0	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00bbf380	wrong	?g_ResourceManager@@3PAUCEngineResourceManager_Methods@@A
+117	0x01436e98	0x00bc14e0	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00bc2400	wrong	?g_pEngineData_01436e98@@3PAUCEngineData_01436e98@@A
+117	0x01436e98	0x00bc34d0	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00bc3e10	wrong	?g_ResourceManager@@3PAUCEngineResourceManager_Methods@@A
+117	0x01436e98	0x00bc4d90	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00bc6b50	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00bc7e90	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00bc7f70	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00bca770	wrong	?g_pEngineData@@3PAUCEngineResourceAccessorNativeView@@A
+117	0x01436e98	0x00bcb800	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00bcc5f0	wrong	?g_pEngineData@@3PAUCEngineResourceManagerRetailProjection@@A
+117	0x01436e98	0x00bce070	wrong	?g_pEngineData@@3PAUCEngineData@@A
+117	0x01436e98	0x00bd2920	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00bd2bc0	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00bdd2f0	wrong	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+117	0x01436e98	0x00be27b0	wrong	?g_pEngineResources@@3PAUSEngineResources@@A
+117	0x01436e98	0x00be3110	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00be3660	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00be6f70	unverified	
+117	0x01436e98	0x00be7d70	unverified	
+117	0x01436e98	0x00be91e0	wrong	?g_pEngineResourceManager_01436e98@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00bea110	wrong	?g_pResourceManager@@3PAVCEngineResourceManager@@A
+117	0x01436e98	0x00bf4130	unverified	
+117	0x01436e98	0x00bfe050	unverified	
+118	0x01436e9c	0x00b23c00	wrong	?g_engineGlobal@@3PAUCGlobalState@@A
+118	0x01436e9c	0x00b32230	wrong	?g_pLightingManager@@3PAUCEngineLightingManager_Methods@@A
+118	0x01436e9c	0x00b4fc40	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+118	0x01436e9c	0x00b54310	wrong	?g_pMistParams@@3PAUCMistParamsView@@A
+118	0x01436e9c	0x00b64550	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+118	0x01436e9c	0x00b662f0	unverified	
+118	0x01436e9c	0x00b76bc0	wrong	?g_pEngineLighting@@3PAUCEngineLightingView@@A
+118	0x01436e9c	0x00b9a4a0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+118	0x01436e9c	0x00ba6ff0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+118	0x01436e9c	0x00bac0f0	wrong	?g_pEngineLightingManager@@3PAUCEngineLightingManagerView@@A
+118	0x01436e9c	0x00bb8ef0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+118	0x01436e9c	0x00bbac60	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+118	0x01436e9c	0x00bbf4a0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+118	0x01436e9c	0x00bc04f0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+118	0x01436e9c	0x00bc25f0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+118	0x01436e9c	0x00bf4570	unverified	
+119	0x01436ea0	0x00b23b50	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b23b80	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b24150	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b242a0	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b24400	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b26360	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b2f7c0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b32660	wrong	?g_pCamera_01436ea0@@3PAUCCamera_01436ea0@@A
+119	0x01436ea0	0x00b33010	wrong	?g_pLightingManager_01436ea0@@3PAVCEngineLightingManager@@A
+119	0x01436ea0	0x00b3a110	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b451d0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b47630	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b4a6c0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b4d2c0	wrong	?gCamera@@3PAUCameraMethods@@A
+119	0x01436ea0	0x00b51f60	wrong	?gWeatherCamera@@3PAUCWeatherCameraMethods@@A
+119	0x01436ea0	0x00b52990	wrong	?g_pCamera_01436ea0@@3PAUSCamera_01436ea0@@A
+119	0x01436ea0	0x00b54310	wrong	?g_pEngineCamera@@3PAUCEngineCameraView@@A
+119	0x01436ea0	0x00b599c0	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b59a30	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b5fab0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b63530	wrong	?g_pEngineCamera@@3PAUCEngineCameraView@@A
+119	0x01436ea0	0x00b64550	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b662f0	unverified	
+119	0x01436ea0	0x00b670e0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b6e010	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b7c510	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b806e0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b80940	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b8df50	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b900b0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b99710	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b99860	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00b9a4a0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00ba6ff0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00babf70	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bb6450	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bb6ab0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bba340	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bbbf70	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bbddd0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bbf4a0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bc04f0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bc25f0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bcc700	wrong	?g_pEngineCamera@@3PAUCEngineCamera@@A
+119	0x01436ea0	0x00bdc2d0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bdc510	unverified	
+119	0x01436ea0	0x00bdeb50	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bdebf0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00be1e70	unverified	
+119	0x01436ea0	0x00be6f70	unverified	
+119	0x01436ea0	0x00beaca0	unverified	
+119	0x01436ea0	0x00bf3860	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bf4220	unverified	
+119	0x01436ea0	0x00bf4570	unverified	
+119	0x01436ea0	0x00bf71d0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bf7df0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+119	0x01436ea0	0x00bf8810	unverified	
+120	0x01436ea4	0x00b24690	wrong	?g_pEngine_01436ea4@@3PAVCEngine@@A
+120	0x01436ea4	0x00b26360	wrong	?g_pEngine_01436ea4@@3PAVCEngine@@A
+120	0x01436ea4	0x00b2b000	wrong	?g_pEngine_01436ea4@@3PAVCEngine@@A
+120	0x01436ea4	0x00b32660	wrong	?g_pTextureManager_01436ea4@@3PAVCTextureManager@@A
+120	0x01436ea4	0x00b44fe0	wrong	?g_pEngine_01436ea4@@3PAVCEngine@@A
+120	0x01436ea4	0x00bcf2e0	wrong	?g_pEngine_01436ea4@@3PAVCEngine@@A
+120	0x01436ea4	0x00bcf430	wrong	?g_pEngine_01436ea4@@3PAVCEngine@@A
+121	0x0143b990	0x00be2a80	wrong	?g_highestSetBitTable@@3PACA
+129	0x0042971d	0x0042b98b	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_ulongkey_buy0042b5a8@@PAPAU12@@Z
+129	0x0042971d	0x0042ba99	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy0042b5ca@@PAPAU12@@Z
+129	0x0042971d	0x0042bba7	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy0042b5ec@@PAPAU12@@Z
+129	0x0042971d	0x0042cb08	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_ulongkey_buy0042bdf0@@PAPAU12@@Z
+129	0x0042971d	0x004313e9	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_ulongkey_buy00431471@@PAPAU12@@Z
+129	0x0042971d	0x0045ca8f	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_ulongkey_buy0045c8a1@@PAPAU12@@Z
+129	0x0042971d	0x0045e0fa	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy0045de2f@@PAPAU12@@Z
+129	0x0042971d	0x0045e4b4	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy0045e2b1@@PAPAU12@@Z
+129	0x0042971d	0x0045ee0e	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy0045e797@@PAPAU12@@Z
+129	0x0042971d	0x0045f4fd	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy0045f13d@@PAPAU12@@Z
+129	0x0042971d	0x0046180c	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy0046149e@@PAPAU12@@Z
+129	0x0042971d	0x00461a40	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004615c3@@PAPAU12@@Z
+129	0x0042971d	0x00463eb4	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004622ec@@PAPAU12@@Z
+129	0x0042971d	0x004647b9	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004630e7@@PAPAU12@@Z
+129	0x0042971d	0x00465dbc	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy00461cf3@@PAPAU12@@Z
+129	0x0042971d	0x004669bf	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy00462411@@PAPAU12@@Z
+129	0x0042971d	0x00469639	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy0045c2a2@@PAPAU12@@Z
+129	0x0042971d	0x0046fbc9	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy0045c4d2@@PAPAU12@@Z
+129	0x0042971d	0x00472a05	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy00466255@@PAPAU12@@Z
+129	0x0042971d	0x004759ad	wrong	?_Rebalance@_Rb_global_inst@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z
+129	0x0042971d	0x004abc70	wrong	?_Rebalance@?$_Rb_global@_N@@SAXPAU_Rb_tree_node_base@@AAPAU2@@Z
+129	0x0042971d	0x004e51f6	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004e4fef@@PAPAU12@@Z
+129	0x0042971d	0x004e5425	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004e4eca@@PAPAU12@@Z
+129	0x0042971d	0x004e57ac	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004e55cf@@PAPAU12@@Z
+129	0x0042971d	0x004e5ba7	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004e597b@@PAPAU12@@Z
+129	0x0042971d	0x004e6466	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004e6210@@PAPAU12@@Z
+129	0x0042971d	0x004e699e	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004e6623@@PAPAU12@@Z
+129	0x0042971d	0x004e6c39	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004e6748@@PAPAU12@@Z
+129	0x0042971d	0x004e7c3b	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004e4429@@PAPAU12@@Z
+129	0x0042971d	0x004e9299	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004e4bee@@PAPAU12@@Z
+129	0x0042971d	0x004e94c8	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004e4d19@@PAPAU12@@Z
+129	0x0042971d	0x004ec79d	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004ec31c@@PAPAU12@@Z
+129	0x0042971d	0x004eca59	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004ec441@@PAPAU12@@Z
+129	0x0042971d	0x004ecee6	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy004e9ab1@@PAPAU12@@Z
+129	0x0042971d	0x00511430	wrong	?_Rebalance@?$_Rb_global@_N@@SAXPAU_Rb_tree_node_base@@AAPAU2@@Z
+129	0x0042971d	0x0051aa00	wrong	?_Rebalance@?$_Rb_global@_N@@SAXPAU_Rb_tree_node_base@@AAPAU2@@Z
+129	0x0042971d	0x00529150	wrong	_Rebalance_0042971d
+129	0x0042971d	0x005292f0	wrong	_Rebalance_0042971d
+129	0x0042971d	0x005293d0	wrong	_Rebalance_0042971d
+129	0x0042971d	0x0052e0e0	wrong	?_Rebalance@?$_Rb_global@_N@@SAXPAU_Rb_tree_node_base@@AAPAU2@@Z
+129	0x0042971d	0x00567af0	wrong	_Rebalance_0042971d
+129	0x0042971d	0x00579fd8	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy00579f3e@@PAPAU12@@Z
+129	0x0042971d	0x0057a060	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy00579f5f@@PAPAU12@@Z
+129	0x0042971d	0x005808a0	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_ulongkey_buy00580428@@PAPAU12@@Z
+129	0x0042971d	0x0059b1be	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy0059afab@@PAPAU12@@Z
+129	0x0042971d	0x005b2337	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_ulongkey_buy005b200c@@PAPAU12@@Z
+129	0x0042971d	0x005b23bf	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_ulongkey_buy005b2029@@PAPAU12@@Z
+129	0x0042971d	0x005b24cd	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_ulongkey_buy005b204b@@PAPAU12@@Z
+129	0x0042971d	0x005b25db	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_ulongkey_buy005b206c@@PAPAU12@@Z
+129	0x0042971d	0x005bb220	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy005baf06@@PAPAU12@@Z
+129	0x0042971d	0x005bbcbe	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy005bbba5@@PAPAU12@@Z
+129	0x0042971d	0x005f926b	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy005f8c41@@PAPAU12@@Z
+129	0x0042971d	0x00632a30	wrong	_Rebalance_0042971d
+129	0x0042971d	0x0067b320	wrong	_Rebalance_0042971d
+129	0x0042971d	0x0067b3e0	wrong	_Rebalance_0042971d
+129	0x0042971d	0x0067b4a0	wrong	?_Rebalance@?$_Rb_global@_N@@SAXPAU_Rb_tree_node_base@@AAPAU2@@Z
+129	0x0042971d	0x0069d520	wrong	_Rebalance_0042971d
+129	0x0042971d	0x006ae900	wrong	_Rebalance_0042971d
+129	0x0042971d	0x006dafa0	wrong	_Rebalance_0042971d
+129	0x0042971d	0x006db390	wrong	_Rebalance_0042971d
+129	0x0042971d	0x006dcb20	wrong	?Rebalance_0042971d@@YAXPAUnode@CUIBinaryTree@@PAPAU12@@Z
+129	0x0042971d	0x006f1280	wrong	_Rebalance_0042971d
+129	0x0042971d	0x006f4d00	wrong	?_Rb_tree_rebalance@@YAXPAUSRbNodeBase@@AAPAU1@@Z
+129	0x0042971d	0x0070aea0	wrong	_Rebalance_0042971d
+129	0x0042971d	0x00739670	wrong	?_Rebalance@_Rb_global@@SAXPAU_Rb_tree_node_base@@AAPAU2@@Z
+129	0x0042971d	0x0076a110	wrong	_Rebalance_0042971d
+129	0x0042971d	0x00777790	wrong	_Rebalance_0042971d
+129	0x0042971d	0x00783f00	wrong	?_Rb_tree_rebalance@@YAXPAUSRbNodeBase@@AAPAU1@@Z
+129	0x0042971d	0x00801730	wrong	_Rebalance_0042971d
+129	0x0042971d	0x00817d70	wrong	_Rebalance_0042971d
+129	0x0042971d	0x0085ded0	wrong	?_Rebalance@?$_Rb_global@_N@@SAXPAU_Rb_tree_node_base@@AAPAU2@@Z
+129	0x0042971d	0x00869ca0	wrong	?_Rebalance@?$_Rb_global@_N@@SAXPAU_Rb_tree_node_base@@AAPAU2@@Z
+129	0x0042971d	0x008b29a0	wrong	_Rebalance_0042971d
+129	0x0042971d	0x008b2a60	wrong	_Rebalance_0042971d
+129	0x0042971d	0x008b2b20	wrong	_Rebalance_0042971d
+129	0x0042971d	0x00990830	wrong	?_Rebalance@_Rb_global@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z
+129	0x0042971d	0x009c2350	wrong	?_Rebalance@?$_Rb_global@_N@@SAXPAU_Rb_tree_node_base@@AAPAU2@@Z
+129	0x0042971d	0x009ef750	wrong	?Rebalance@@YAXPAUNode@@AAPAU1@@Z
+129	0x0042971d	0x00a61270	wrong	?_Rebalance@_Rb_global@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z
+129	0x0042971d	0x00cd300b	wrong	?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy00cd2c5b@@PAPAU12@@Z
+130	0x0042a18f	0x0042abca	wrong	?clear@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ
+130	0x0042a18f	0x00583815	wrong	?clear@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ
+130	0x0042a18f	0x005838dd	wrong	?clear@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ
+130	0x0042a18f	0x005839a5	wrong	?clear@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ
+130	0x0042a18f	0x00595356	wrong	?clear@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ
+131	0x0042aa96	0x0042d5b1	wrong	??0SComponentStatePair@@QAE@ABQAVCComponent@NUISystem@@ABUCUIState@@@Z
+132	0x0042ab8a	0x0042b4c3	wrong	?insert@?$list@PAVCComponent@NUISystem@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@U32@ABQAVCComponent@NUISystem@@@Z
+132	0x0042ab8a	0x0042b6b8	wrong	?Insert@StdList@@QAEXPAPAXUStdListIterator@@PAX@Z
+133	0x0042ad6c	0x0042d5b1	wrong	?LowerBoundNode@CComponentStateMap@@QAEPAUSComponentStateNode@@ABQAVCComponent@NUISystem@@@Z
+134	0x0042bdf0	0x0042cb08	wrong	?Buynode@CRetailTree_ulongkey_buy0042bdf0@@QAEPAUnode@1@ABK@Z
+135	0x0042cb08	0x0042cee3	wrong	?Insert@CRetailTree_ulongkey_ins0042cb08@@QAE?AUiterator@1@PAUnode@1@0ABK0@Z
+135	0x0042cb08	0x0042d2c6	wrong	?_M_insert@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKVCUIState@NUISystem@@@2@0@Z
+136	0x0042cee3	0x0042d1a3	wrong	?insert_unique@?$_Rb_tree@KPAUCAllocationNode@@U?$less@K@std@@@std@@QAE?AU?$pair@U_Rb_tree_iterator@std@@_N@2@ABU?$pair@$$CBKPAUCAllocationNode@@@2@@Z
+137	0x0042d2c6	0x0042d4d3	wrong	?Helper@CForwarder_0042d4d3@@QAE?AUSResult@@USHandle@@PAX@Z
+137	0x0042d2c6	0x005331a0	wrong	?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z
+138	0x0042d4d3	0x0042d5b1	wrong	?InsertUnique@CComponentStateMap@@QAE?AUSComponentStateIterator@@U2@ABUSComponentStatePair@@@Z
+139	0x004408a0	0x00568850	wrong	?InsertGrow_004408a0@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z
+140	0x00458f89	0x00458f2b	wrong	?TransferBinaryIn@CFloatRangeReader_00458f89@@QAEXPAVCDataInputStream@@PAVCFloatRange@@@Z
+141	0x00465820	0x004657f2	wrong	?GFSerialiseVectorBinaryOut_float_00465820@@YIXPAVCDataOutputStream@@PAUSValue@@@Z
+141	0x00465820	0x00f333b0	wrong	?GFSerialiseVectorBinaryOut@@YIXPAVCDataOutputStream@@AAU?$vector@J@@@Z
+142	0x00465852	0x004657f2	wrong	?GFSerialiseVectorBinaryIn_CDefString_00465852@@YIXPAVCMemoryDataInputStream@@PAUSValue@@@Z
+142	0x00465852	0x004e9642	wrong	??$GFSerialiseVectorBinaryIn@VCDefString@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCDefString@@@std@@@Z
+142	0x00465852	0x00f333b0	wrong	?GFSerialiseVectorBinaryIn@@YIXPAVCMemoryDataInputStream@@AAU?$vector@J@@@Z
+143	0x0047cf3f	0x004859ad	unverified	
+149	0x004aa140	0x0077e580	wrong	?__uninitialized_copy@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV2@00ABU__false_type@1@@Z
+150	0x004aa190	0x0065574c	wrong	?FableUmove_construct_0065574c@@YGXPAUFableUmoveElem_0065574c@@PAD@Z
+151	0x004ac940	0x007ce1f0	wrong	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@@std@@QAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z
+151	0x004ac940	0x008099b0	wrong	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@@std@@QAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@@K_N@Z
+151	0x004ac940	0x0080cc40	wrong	?_M_insert_overflow@?$CRetailVector@UCIntelligentPointer@@@@QAEXPAUCIntelligentPointer@@ABU2@ABU__false_type@@K_N@Z
+151	0x004ac940	0x008ddad0	wrong	?_M_insert_overflow@CIntelligentPointerVector@@QAEXPAUCIntelligentPointerThing@@ABU2@ABU__false_type@@I_N@Z
+151	0x004ac940	0x008e0060	wrong	?_M_insert_overflow@?$CPointerVector@UCIntelligentPointerThing2@@@@QAEXPAUCIntelligentPointerThing2@@ABU2@ABU__false_type@@K_N@Z
+151	0x004ac940	0x0095ab50	wrong	?_M_insert_overflow@?$CRetailVector@UCIntelligentPointer@@@@QAEXPAUCIntelligentPointer@@ABU2@ABU__false_type@@K_N@Z
+151	0x004ac940	0x00970f30	wrong	?InsertOverflow@CHandleVector@@QAEXPAUCIntelligentPointerRetail@@ABU2@ABUCAllocatorTag@@K_N@Z
+151	0x004ac940	0x009710d0	wrong	?InsertOverflow@CHandleVector@@QAEXPAUCIntelligentPointerRetail@@ABU2@ABUCAllocatorTag@@K_N@Z
+151	0x004ac940	0x00977c40	wrong	?_M_insert_overflow@?$CRetailVector@UCIntelligentPointer@@@@QAEXPAUCIntelligentPointer@@ABU2@ABU__false_type@@K_N@Z
+154	0x0050f410	0x0065f6a6	wrong	??$?0VCThingAICreature@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV?$CIntelligentPointer@VCThingAICreature@@@@@Z
+157	0x0059db82	0x0059db82	wrong	?RefreshEntriesAmountsAndAvailabilities@CTCInventoryTrade@@QAE?AU?$pair@KK@std@@PAVCComponent@NUISystem@@AAUCListMap@@@Z
+158	0x005b12f4	0x005b1653	wrong	??0CSecond_005b12f4@@QAE@ABU0@@Z
+158	0x005b12f4	0x005d84d1	wrong	??0value_type_005b12f4@CRetailList_node0x10@@QAE@ABU01@@Z
+159	0x005b1a43	0x0059db82	wrong	?find@CListMap@@QAEPAUSListMapNode@@ABQAVCComponent@NUISystem@@@Z
+159	0x005b1a43	0x0059e6bd	wrong	?find@CListMap@@QAEPAUSListMapNode@@ABQAVCComponent@NUISystem@@@Z
+159	0x005b1a43	0x0059fafe	wrong	?find@CListMap@@QAEPAUSListMapNode@@ABQAVCComponent@NUISystem@@@Z
+160	0x005b1afd	0x005b1ff4	wrong	?helper_5b1afd@@YA_NKKPAX@Z
+161	0x005b1d38	0x005b322b	wrong	?_M_lower_bound@?$map@PAVCComponent@NUISystem@@U?$pair@JJ@std@@U?$less@PAVCComponent@NUISystem@@@4@@std@@QBEPAU_Rb_tree_node_base@2@ABQAVCComponent@NUISystem@@@Z
+162	0x005b1dfe	0x005b3100	wrong	?_M_lower_bound@?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@@std@@QBEPAU_Rb_tree_node_base@2@ABQAVCComponent@NUISystem@@@Z
+163	0x005b2ec4	0x005b3100	wrong	?insert@?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@2@@Z
+164	0x005b2efe	0x005b31cf	wrong	?insert_unique@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@2@@Z
+165	0x005b31cf	0x005b322b	wrong	?insert@?$map@PAVCComponent@NUISystem@@U?$pair@JJ@std@@U?$less@PAVCComponent@NUISystem@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@2@@Z
+166	0x005bd597	0x0057770a	wrong	?OnInventoryClosed@CTCInventoryBase@@QAEXXZ
+166	0x005bd597	0x005778ca	wrong	?OnInventoryClosed@CTCInventoryBase@@QAEXXZ
+166	0x005bd597	0x00587847	wrong	?ClearQuestPersistentFlags@CTCInventory@@QAEXXZ
+166	0x005bd597	0x00589d30	wrong	?ClearQuestPersistentFlags@CTCInventory@@QAEXXZ
+166	0x005bd597	0x0059e2c7	wrong	?BaseCloseInventory@CTCInventoryTrade@@QAEXXZ
+166	0x005bd597	0x0059f304	wrong	?BaseCloseInventory@CTCInventoryTrade@@QAEXXZ
+166	0x005bd597	0x005fce60	wrong	?BaseCloseInventory@CTCInventoryMap@@QAEXXZ
+166	0x005bd597	0x00621720	wrong	?BaseCloseInventory@CTCInventoryQuests@@QAEXXZ
+166	0x005bd597	0x00621c80	wrong	?BaseCloseInventory@CTCInventoryQuests@@QAEXXZ
+167	0x005bfb96	0x00583a6d	wrong	?Copy@CTCInventoryBase@@QAEXPBVCTCBase@@@Z
+167	0x005bfb96	0x005cdc1c	wrong	?Copy@CTCInventoryBase@@UAEXPBU1@@Z
+167	0x005bfb96	0x005f3dc6	wrong	?Copy@CTCInventoryBase@@UAEXPBU1@@Z
+168	0x00630d90	0x006301a0	wrong	?_M_erase@?$CRbTree@$00@@QAEXPAUCRbTreeNode@@@Z
+168	0x00630d90	0x00630d90	wrong	?FreeTree_CTreeOwner_00630d90@CTreeOwner_00630d90@@QAEXPAUSNode@@@Z
+168	0x00630d90	0x00630fe0	wrong	?Detach_00630d90@CTCCarryable@@QAEXI@Z
+168	0x00630d90	0x006311d0	wrong	?Erase@CRetailTree_erase00630d90@@QAEXPAUnode@1@@Z
+168	0x00630d90	0x00631420	wrong	?Erase@CRetailTree_erase00630d90@@QAEXPAUnode@1@@Z
+169	0x00632d30	0x00632c90	wrong	?_M_insert@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCCharString@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKVCCharString@@@2@0@Z
+169	0x00632d30	0x00a49f60	wrong	?_M_insert@_Rb_tree@HeroMorphTree@@AAE?AU_Rb_tree_iterator@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBIUCCharString@HeroMorphTree@@@std@2@0@Z
+173	0x006baed0	0x006b9560	wrong	?TransferFaction@CPersistContext@@QAEXPBDAAVCFaction@@@Z
+174	0x006c9c60	0x006c7370	wrong	?Transfer@CPersistContext@@QAEXPBDAAV?$CIntelligentPointer@VCThing@@@@@Z
+176	0x006e54d0	0x00a4b020	wrong	??1?$vector@VCLipSyncPhoneme@@V?$allocator@VCLipSyncPhoneme@@@std@@@std@@QAE@XZ
+177	0x006f09d0	0x008631a0	wrong	_ForwardTarget_006f09d0
+194	0x008d8120	0x008c4990	wrong	??0CModeScorpionKingVulnerable@@QAE@PAVCThing@@@Z
+199	0x009a0f00	0x009a3c20	wrong	?InitializeStreamingFontCacheEntries@?A0x82efa2bb@@YIXAAUStreamingFontCacheBufferData@1@@Z
+201	0x009a3640	0x009a3c20	wrong	?InitializeStreamingFontTextureCache@?A0x82efa2bb@@YIXPAVCStreamingFontDataBank@@@Z
+202	0x009a3c20	0x00a5f1c0	wrong	??0CStreamingFontBank@@QAE@JJ@Z
+205	0x00a026b0	0x009d52d0	wrong	?GetPointerFromHandle@CMovableResourcePoolCalls@@QAEPAXJ@Z
+205	0x00a026b0	0x00a8b3a0	wrong	?GetPointerFromHandle@CMovableResourceMemoryPool@@QAEPAXJ@Z
+207	0x00a48580	0x00a49f60	wrong	?_M_increment@_Rb_tree_base_iterator@HeroMorphTree@@QAEXXZ
+208	0x00a48750	0x00a49f60	wrong	?_M_decrement@_Rb_tree_base_iterator@HeroMorphTree@@QAEXXZ
+210	0x00a49f60	0x00a4a670	wrong	?insert_unique@?$_Rb_tree@KV?$pair@$$CBKVCCharString@@@std@@V?$less@K@2@V?$allocator@V?$pair@$$CBKVCCharString@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@V?$pair@$$CBKVCCharString@@@std@@@2@U32@ABV?$pair@$$CBKVCCharString@@@2@@Z
+211	0x00a4a520	0x00a4aac0	wrong	??4CLipSyncFrameData@@QAEAAV0@ABV0@@Z
+211	0x00a4a520	0x00a4ad80	wrong	??4CLipSyncFrameData@@QAEAAV0@ABV0@@Z
+211	0x00a4a520	0x00a4adb0	wrong	??4CLipSyncFrameData@@QAEAAV0@ABV0@@Z
+213	0x00a62e40	0x009d52d0	wrong	?AllocateResource@CMovableResourcePoolCalls@@QAE_NPAJPAVCMovableResource@@KK@Z
+213	0x00a62e40	0x00a754e0	wrong	?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAXKK@Z
+213	0x00a62e40	0x00a755c0	wrong	?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAXKK@Z
+213	0x00a62e40	0x00a8b3a0	wrong	?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVC3DMesh2@@KK@Z
+214	0x00aadfc0	0x00aadff0	wrong	?Destroy_00aadfc0@@YIXPAX@Z
+215	0x00ad37e0	0x00ad68d0	wrong	??$__destroy_aux@PAV?$CCountedPointer@VCUnprovenPointee_00ad68d0@@@@@std@@YIXPAV?$CCountedPointer@VCUnprovenPointee_00ad68d0@@@@0ABU__false_type@0@@Z
+216	0x00b32010	0x00b24690	wrong	?SetMeshDetail@CEngineMeshDetailManager@@QAEXW4EEngineVideoOptionQuality@@PAVCEngineVideoOptionsDef@@@Z
+217	0x00b8e690	0x00b8ec10	wrong	?Destroy_00b8e690@@YIXPAX@Z
+218	0x00b8f470	0x00b8da80	wrong	??$_Destroy_range@U?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@@@@YIXPAU?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@@0ABU?$allocator@U?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@@@@@Z
+220	0x00b9cb10	0x00b9e950	wrong	??0CEngineSubPrimitiveStaticMesh@@QAE@PAUCEngineInternalPrimitive2DStaticMesh@@PAUCSubMesh@@J_N@Z
+221	0x00b9de90	0x00b9e950	wrong	?InitialiseSimulation@CEngineInternalPrimitive2DStaticMesh@@QAEXPAVC3DMeshInfo@@PAVC3DMesh2@@@Z
+222	0x00bce740	0x00bd1f70	wrong	??0CEngineSubPrimitiveAnimatedMesh@@QAE@PAVCEngineInternalPrimitive2DAnimatedMesh@@PAUCSubMesh@@J_N@Z
+223	0x00bebbb0	0x00b9e950	wrong	?IsSimulationRunning@CEngineInternalPrimitive2DStaticMesh@@QAE_NK@Z
+223	0x00bebbb0	0x00bd1f70	wrong	?IsSimulationRunning@CEngineInternalPrimitive2DAnimatedMesh@@QAE_NK@Z
+224	0x00bf12a0	0x00b9e950	wrong	?AddGeneratedObjects@CEnginePrimitiveManager2DStaticMeshes@@QAEXPAUCEngineInternalPrimitive2DStaticMesh@@@Z
+225	0x00bf18b0	0x00bd1f70	wrong	?AddGeneratedObjects@CEnginePrimitiveManager2DAnimatedMeshes@@QAEXPAVCEngineInternalPrimitive2DAnimatedMesh@@PAVCMatrix3x4@@@Z
+226	0x00c13a00	0x00c13d20	wrong	??0CDrawQuickAccessIconsPC@@QAE@PAVCPlayerGui@@@Z
+228	0x00c26260	0x00c1d8c0	wrong	?GetValue@CScriptArgument@@QAEJPAUCScriptContext@@@Z
+228	0x00c26260	0x00c1ea60	wrong	?Compute@Thing@@QAEPAXPAVC3DVector@@@Z
+231	0x00c33100	0x01214f40	unverified	
+231	0x00c33100	0x01214fe0	unverified	
+231	0x00c33100	0x01215000	unverified	
+231	0x00c33100	0x01215020	unverified	
+231	0x00c33100	0x01215040	unverified	
+231	0x00c33100	0x01215060	unverified	
+231	0x00c33100	0x01215100	unverified	
+231	0x00c33100	0x01215120	unverified	
+231	0x00c33100	0x01215140	unverified	
+231	0x00c33100	0x0121514b	unverified	
+231	0x00c33100	0x01215160	unverified	
+231	0x00c33100	0x0121516b	unverified	
+231	0x00c33100	0x01215260	unverified	
+231	0x00c33100	0x01215280	unverified	
+231	0x00c33100	0x0121528e	unverified	
+231	0x00c33100	0x0121529c	unverified	
+231	0x00c33100	0x012152aa	unverified	
+231	0x00c33100	0x012152b8	unverified	
+231	0x00c33100	0x01215310	unverified	
+231	0x00c33100	0x012160a0	unverified	
+231	0x00c33100	0x012160c0	unverified	
+231	0x00c33100	0x01216180	unverified	
+231	0x00c33100	0x0121618b	unverified	
+231	0x00c33100	0x01216196	unverified	
+231	0x00c33100	0x012161a1	unverified	
+231	0x00c33100	0x012161ac	unverified	
+231	0x00c33100	0x012161b7	unverified	
+231	0x00c33100	0x012161c2	unverified	
+231	0x00c33100	0x012161cd	unverified	
+231	0x00c33100	0x01216230	unverified	
+231	0x00c33100	0x01216270	unverified	
+231	0x00c33100	0x01216290	unverified	
+232	0x00c33110	0x01215080	unverified	
+232	0x00c33110	0x0121508b	unverified	
+232	0x00c33110	0x01215096	unverified	
+232	0x00c33110	0x012150a1	unverified	
+232	0x00c33110	0x01215240	unverified	
+232	0x00c33110	0x0121524b	unverified	
+236	0x00c3cec0	0x00c3d0f0	wrong	??1CListenerState@@UAE@XZ
+237	0x00c3d0d0	0x00c3d8b0	wrong	??1CUnprovenObject_00c3d8b0@@UAE@XZ
+237	0x00c3d0d0	0x00c449a0	wrong	?CLandscapeBackgroundPatch_dtor_00c3d0d0@@YIXPAVCLandscapeBackgroundPatch@@@Z
+238	0x00c3d0e0	0x00c3d910	wrong	??1CUnprovenObject_00c3d910@@UAE@XZ
+240	0x00c3d7b0	0x00c3d9a0	wrong	??1CMorphAction_00c3dcd0@@UAE@XZ
+245	0x00c3dfd0	0x00c334d0	wrong	?Initialise@CAudioSystem@@QAE_NKPBX@Z
+246	0x00c42dd0	0x00c449c0	wrong	?Open@CAudioObject@@UAE_NK@Z
+249	0x00c4d5f0	0x00c43b30	wrong	?AcquireVoiceB@CVoiceManager@@QAEJPAVCAudioObject@@PAPAVCVoice@@@Z
+251	0x00c59d80	0x00c59e20	wrong	?ExponentialDecayStep@@YAMMM@Z
+251	0x00c59d80	0x00c5a480	wrong	?ExponentialDecayStep@@YAMMM@Z
+252	0x00c59de0	0x00c5a700	wrong	?OctaveRampStep@@YAMMMM@Z
+256	0x00c5acb0	0x00c5b250	wrong	?ScheduleSound@CSoftwareVoice@@QAEXPAVCAudioObject@@_J@Z
+257	0x00c5e050	0x00c5ead0	wrong	?SetProperty@CKsObject@@QAE_NABUGUID@@KPAXK@Z
+260	0x00c6b050	0x00c54510	wrong	?Initialise@CVoiceEffect@@QAE_NPAUCVtable_012b89c4@@@Z
+262	0x012366f4	0x00549b20	wrong	??_7CActionParamLong@NUISystem@@6B@
+262	0x012366f4	0x00582ace	wrong	??_7CActionParamLong@NUISystem@@6B@
+262	0x012366f4	0x0058315b	wrong	??_7CActionParamLong@NUISystem@@6B@
+262	0x012366f4	0x0059ed42	wrong	??_7CActionParamLong@NUISystem@@6B@
+262	0x012366f4	0x0059f51e	wrong	??_7CActionParamLong@NUISystem@@6B@
+262	0x012366f4	0x005b70b8	wrong	??_7CActionParamLong@NUISystem@@6B@
+263	0x012668ec	0x0072db90	wrong	??_7CTCInventoryMagic@@6BCTCInventoryBase@@@
+264	0x012b263c	0x00c108e0	wrong	??_7CCardPositionsDef@@6B@
+264	0x012b263c	0x00c10940	wrong	??_7CCardPositionsDef_00c10940@@6B@
+264	0x012b263c	0x00c13a00	wrong	??_7CCardPositionsDef_00c13a00@@6B@
+265	0x012b2644	0x00c10a10	wrong	?FableVtbl_CChunkedFileChunk_c10a10@@3PAPAXA
+265	0x012b2644	0x00c13d20	wrong	??_7CVtable_012b2644@@6B@
+266	0x012b90d8	0x00c5ead0	wrong	?KSPROPSETID_Connection@@3UGUID@@B
+267	0x01396f38	0x00b871b0	wrong	?g_renderStateValue_01396f38@@3KA
+268	0x01396f68	0x009df060	wrong	?DAT_01396f68@@3IA
+268	0x01396f68	0x00b56b00	wrong	?g_renderStateDefault_01396f68@@3KA
+268	0x01396f68	0x00b56f50	wrong	?g_renderStateDefault_01396f68@@3KA
+268	0x01396f68	0x00b58de0	wrong	?g_renderStateDefault_01396f68@@3KA
+268	0x01396f68	0x00be6f70	unverified	
+269	0x013b89a8	0x004162b5	wrong	?g_frameCounter_013b89a8@@3JA
+269	0x013b89a8	0x00436d60	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x00518130	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x005185f0	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x00518900	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x0063fae0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x006b2720	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x006ce300	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x006f3570	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x006f37b0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x007197c0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x007313b0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x00746560	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x0074d710	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x007512e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0075bc40	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x0077adf0	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x00785dd0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x00786140	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0078954d	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x0078971d	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x0078db20	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x00792e50	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x007930b0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0079a050	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0079a280	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0079bf30	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x007a3ca0	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x007a5190	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x007a63d0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x007a9300	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x007a9580	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x007b6300	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x007c3c20	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x007f4020	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x007f42a0	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x007f4500	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x007f5d20	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x007f70d0	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x007f7340	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x007f9c00	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x007fcef0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x007fd110	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x007fdb10	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x007fe730	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x00809a70	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x0080a550	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x0080e670	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x0080e8e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0080ecc0	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x0084f850	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x00851490	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x00863e70	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x008786e0	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x008ad710	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x008ad950	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x008adcc0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x008e3c50	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x008e3eb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x008e4100	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x008e60d0	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x00905d10	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x009147e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x00919780	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0091a750	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0091adb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0091ba40	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x0091c9c0	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x00937080	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x00937420	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x00937690	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0093cdb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x00942390	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x009595c0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0095db90	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x00961080	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x009697e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x00969fb0	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x0096bcb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x0096f260	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x00971530	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x00978250	wrong	?g_SearchStamps@@3USSearchStamps@@A
+269	0x013b89a8	0x009793d0	wrong	?SearchCount_013b89a8@@3JA
+269	0x013b89a8	0x00987430	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x00436d60	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x00518130	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x005185f0	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x00518900	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x0063fae0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x006b2720	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x006ce300	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x006f3570	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x006f37b0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x007197c0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x007313b0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x00746560	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x0074d710	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x007512e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0075bc40	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x0077adf0	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x00785dd0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x00786140	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0078954d	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x0078971d	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x0078db20	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x00792e50	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x007930b0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0079a050	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0079a280	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0079bf30	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x007a3ca0	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x007a5190	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x007a63d0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x007a9300	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x007a9580	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x007b6300	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x007c3c20	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x007f4020	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x007f42a0	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x007f4500	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x007f5d20	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x007f70d0	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x007f7340	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x007f9c00	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x007fcef0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x007fd110	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x007fdb10	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x007fe730	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x00809a70	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x0080a550	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x0080e670	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x0080e8e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0080ecc0	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x0084f850	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x00851490	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x00863e70	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x008786e0	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x008ad710	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x008ad950	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x008adcc0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x008e3c50	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x008e3eb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x008e4100	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x008e60d0	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x00905d10	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x009147e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x00919780	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0091a750	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0091adb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0091ba40	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x0091c9c0	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x00937080	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x00937420	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x00937690	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0093cdb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x00942390	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x009595c0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0095db90	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x00961080	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x009697e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x00969fb0	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x0096bcb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x0096f260	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x00971530	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x00978250	wrong	?g_SearchStamps@@3USSearchStamps@@A
+270	0x013b89ac	0x009793d0	wrong	?SearchWork_013b89ac@@3JA
+270	0x013b89ac	0x00987430	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x00436d60	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x00518130	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x005185f0	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x00518900	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x0063fae0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x006b2720	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x006ce300	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x006f3570	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x006f37b0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x007197c0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x007313b0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x00746560	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x0074d710	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x007512e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0075bc40	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x0077adf0	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x00785dd0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x00786140	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0078954d	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x0078971d	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x0078db20	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x00792e50	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x007930b0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0079a050	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0079a280	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0079bf30	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x007a3ca0	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x007a5190	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x007a63d0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x007a9300	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x007a9580	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x007b6300	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x007c3c20	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x007f4020	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x007f42a0	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x007f4500	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x007f5d20	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x007f70d0	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x007f7340	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x007f9c00	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x007fcef0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x007fd110	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x007fdb10	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x007fe730	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x00809a70	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x0080a550	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x0080e670	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x0080e8e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0080ecc0	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x0084f850	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x00851490	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x00863e70	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x008786e0	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x008ad710	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x008ad950	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x008adcc0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x008e3c50	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x008e3eb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x008e4100	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x008e60d0	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x00905d10	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x009147e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x00919780	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0091a750	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0091adb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0091ba40	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x0091c9c0	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x00937080	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x00937420	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x00937690	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0093cdb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x00942390	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x009595c0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0095db90	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x00961080	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x009697e0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x00969fb0	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x0096bcb0	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x0096f260	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x00971530	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x00978250	wrong	?g_SearchStamps@@3USSearchStamps@@A
+271	0x013b89b0	0x009793d0	wrong	?SearchID_013b89b0@@3KA
+271	0x013b89b0	0x00987430	wrong	?g_SearchStamps@@3USSearchStamps@@A
+272	0x013c5a7c	0x009a0ef0	wrong	?g_flag@@3_NA
+273	0x013c5a98	0x009a25d0	wrong	?g_FontCacheLayout@@3UCFontCacheLayout@@A
+273	0x013c5a98	0x009a3c20	wrong	?g_StreamingFontCacheBufferData@?A0x82efa2bb@@3U?$StreamingFontCacheBufferData_static@$0CA@$0CA@@1@A
+274	0x013c7ac8	0x009a25d0	wrong	?g_FontCacheLayoutSecond@@3UCFontCacheLayout@@A
+274	0x013c7ac8	0x009a3c20	wrong	?g_StreamingFontCacheBufferData2@?A0x82efa2bb@@3U?$StreamingFontCacheBufferData_static@$0EA@$0EA@@1@A
+275	0x013d2880	0x00988a50	unverified	
+275	0x013d2880	0x00a5b850	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00a5b870	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00a5bba0	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00a5bef0	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00a5c300	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00a5cb90	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00a5cee0	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00a9d580	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00a9e1e0	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00a9eb90	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00aa0fa0	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00aa2110	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00ae0e60	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00b46280	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00b49810	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00b4ced0	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00b99bb0	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00b9a4a0	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00b9c2e0	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00b9c500	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00bb1f50	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00bd2d90	wrong	?g_SSEAvailable@@3_NA
+275	0x013d2880	0x00bdc510	unverified	
+275	0x013d2880	0x00bf4220	unverified	
+275	0x013d2880	0x00bf4570	unverified	
+275	0x013d2880	0x00bf7df0	wrong	?g_SSEAvailable@@3_NA
+276	0x01437864	0x00b7c510	wrong	?lowEndColour@?6??SetupSeaMidgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4VCRGBFloatColour@@A
+277	0x01437874	0x00b7c510	wrong	?lowEndConstant@?6??SetupSeaMidgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4VC4DVector@@A
+278	0x01437884	0x00b7c510	wrong	?$S1@?6??SetupSeaMidgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4IA
+279	0x01436e9c	0x00b23c00	wrong	?g_engineGlobal@@3PAUCGlobalState@@A
+279	0x01436e9c	0x00b32230	wrong	?g_pLightingManager@@3PAUCEngineLightingManager_Methods@@A
+279	0x01436e9c	0x00b4fc40	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+279	0x01436e9c	0x00b54310	wrong	?g_pMistParams@@3PAUCMistParamsView@@A
+279	0x01436e9c	0x00b64550	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+279	0x01436e9c	0x00b662f0	unverified	
+279	0x01436e9c	0x00b76bc0	wrong	?g_pEngineLighting@@3PAUCEngineLightingView@@A
+279	0x01436e9c	0x00b9a4a0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+279	0x01436e9c	0x00ba6ff0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+279	0x01436e9c	0x00bac0f0	wrong	?g_pEngineLightingManager@@3PAUCEngineLightingManagerView@@A
+279	0x01436e9c	0x00bb8ef0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+279	0x01436e9c	0x00bbac60	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+279	0x01436e9c	0x00bbf4a0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+279	0x01436e9c	0x00bc04f0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+279	0x01436e9c	0x00bc25f0	wrong	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A
+279	0x01436e9c	0x00bf4570	unverified	
+280	0x01436ea0	0x00b23b50	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b23b80	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b24150	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b242a0	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b24400	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b26360	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b2f7c0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b32660	wrong	?g_pCamera_01436ea0@@3PAUCCamera_01436ea0@@A
+280	0x01436ea0	0x00b33010	wrong	?g_pLightingManager_01436ea0@@3PAVCEngineLightingManager@@A
+280	0x01436ea0	0x00b3a110	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b451d0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b47630	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b4a6c0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b4d2c0	wrong	?gCamera@@3PAUCameraMethods@@A
+280	0x01436ea0	0x00b51f60	wrong	?gWeatherCamera@@3PAUCWeatherCameraMethods@@A
+280	0x01436ea0	0x00b52990	wrong	?g_pCamera_01436ea0@@3PAUSCamera_01436ea0@@A
+280	0x01436ea0	0x00b54310	wrong	?g_pEngineCamera@@3PAUCEngineCameraView@@A
+280	0x01436ea0	0x00b599c0	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b59a30	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b5fab0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b63530	wrong	?g_pEngineCamera@@3PAUCEngineCameraView@@A
+280	0x01436ea0	0x00b64550	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b662f0	unverified	
+280	0x01436ea0	0x00b670e0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b6e010	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b7c510	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b806e0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b80940	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b8df50	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b900b0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b99710	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b99860	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00b9a4a0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00ba6ff0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00babf70	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bb6450	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bb6ab0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bba340	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bbbf70	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bbddd0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bbf4a0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bc04f0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bc25f0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bcc700	wrong	?g_pEngineCamera@@3PAUCEngineCamera@@A
+280	0x01436ea0	0x00bdc2d0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bdc510	unverified	
+280	0x01436ea0	0x00bdeb50	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bdebf0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00be1e70	unverified	
+280	0x01436ea0	0x00be6f70	unverified	
+280	0x01436ea0	0x00beaca0	unverified	
+280	0x01436ea0	0x00bf3860	wrong	?g_pEngineCamera_01436ea0@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bf4220	unverified	
+280	0x01436ea0	0x00bf4570	unverified	
+280	0x01436ea0	0x00bf71d0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bf7df0	wrong	?g_pEngineCamera@@3PAVCEngineCamera@@A
+280	0x01436ea0	0x00bf8810	unverified	
+281	0x009ade10	0x004384f0	wrong	?GetDef@CDefinitionManager@@QAE?AUCDefPointer@@ABVCCharString@@_N@Z
+281	0x009ade10	0x0043feb0	wrong	?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z
+281	0x009ade10	0x006b25e0	wrong	?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z
+281	0x009ade10	0x00888e60	wrong	?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z
+281	0x009ade10	0x00b6bd40	wrong	?GetPDefFromGlobalIndex@CDefinitionManager@@QAE?AUCDefPointer@@ABKJ@Z
+284	0x00c6b7c0	0x00c6b9d0	wrong	?FilterRampedWithGain@CStateVariableFilter@@QAEXPAFK@Z
+285	0x0095c7c0	0x0095b3e0	wrong	?GetAllThingsInRoughArea@CThingSearchTools@@QBEXABVC2DBoxI@@ABUCThingFilter_All@@AAUCThingPtrVector@@@Z
+289	0x00c28380	0x00c26240	wrong	?Compute@SubObjectAt360@@QAEHH@Z
+290	0x00c167c0	0x00c161a0	wrong	?Release@CBuffer_00c161a0@@QAEXXZ
+290	0x00c167c0	0x00c162a0	wrong	?Cons_val_worker@AllocSub@@QAEXPAUPair@@0@Z
+290	0x00c167c0	0x00c2d3b0	wrong	??1CMember_00c2d3b0@@QAE@XZ
+290	0x00c167c0	0x00c48300	wrong	??1CBaseIntelligentPointer_00c48300@@QAE@XZ
+290	0x00c167c0	0x00c483a0	wrong	??1CBaseIntelligentPointer_00c483a0@@QAE@XZ
+290	0x00c167c0	0x00c48430	wrong	??1CBaseIntelligentPointer_00c48430@@QAE@XZ
+290	0x00c167c0	0x00c484b0	wrong	??1CBaseIntelligentPointer_00c484b0@@QAE@XZ
+290	0x00c167c0	0x00c48560	wrong	??1CBaseIntelligentPointer_00c48560@@QAE@XZ
+291	0x00c167c0	0x00c161a0	wrong	?Release@CBuffer_00c161a0@@QAEXXZ
+291	0x00c167c0	0x00c162a0	wrong	?Cons_val_worker@AllocSub@@QAEXPAUPair@@0@Z
+291	0x00c167c0	0x00c2d3b0	wrong	??1CMember_00c2d3b0@@QAE@XZ
+291	0x00c167c0	0x00c48300	wrong	??1CBaseIntelligentPointer_00c48300@@QAE@XZ
+291	0x00c167c0	0x00c483a0	wrong	??1CBaseIntelligentPointer_00c483a0@@QAE@XZ
+291	0x00c167c0	0x00c48430	wrong	??1CBaseIntelligentPointer_00c48430@@QAE@XZ
+291	0x00c167c0	0x00c484b0	wrong	??1CBaseIntelligentPointer_00c484b0@@QAE@XZ
+291	0x00c167c0	0x00c48560	wrong	??1CBaseIntelligentPointer_00c48560@@QAE@XZ
+292	0x00c167c0	0x00c161a0	wrong	?Release@CBuffer_00c161a0@@QAEXXZ
+292	0x00c167c0	0x00c162a0	wrong	?Cons_val_worker@AllocSub@@QAEXPAUPair@@0@Z
+292	0x00c167c0	0x00c2d3b0	wrong	??1CMember_00c2d3b0@@QAE@XZ
+292	0x00c167c0	0x00c48300	wrong	??1CBaseIntelligentPointer_00c48300@@QAE@XZ
+292	0x00c167c0	0x00c483a0	wrong	??1CBaseIntelligentPointer_00c483a0@@QAE@XZ
+292	0x00c167c0	0x00c48430	wrong	??1CBaseIntelligentPointer_00c48430@@QAE@XZ
+292	0x00c167c0	0x00c484b0	wrong	??1CBaseIntelligentPointer_00c484b0@@QAE@XZ
+292	0x00c167c0	0x00c48560	wrong	??1CBaseIntelligentPointer_00c48560@@QAE@XZ
+293	0x00c167c0	0x00c161a0	wrong	?Release@CBuffer_00c161a0@@QAEXXZ
+293	0x00c167c0	0x00c162a0	wrong	?Cons_val_worker@AllocSub@@QAEXPAUPair@@0@Z
+293	0x00c167c0	0x00c2d3b0	wrong	??1CMember_00c2d3b0@@QAE@XZ
+293	0x00c167c0	0x00c48300	wrong	??1CBaseIntelligentPointer_00c48300@@QAE@XZ
+293	0x00c167c0	0x00c483a0	wrong	??1CBaseIntelligentPointer_00c483a0@@QAE@XZ
+293	0x00c167c0	0x00c48430	wrong	??1CBaseIntelligentPointer_00c48430@@QAE@XZ
+293	0x00c167c0	0x00c484b0	wrong	??1CBaseIntelligentPointer_00c484b0@@QAE@XZ
+293	0x00c167c0	0x00c48560	wrong	??1CBaseIntelligentPointer_00c48560@@QAE@XZ
+294	0x00c167c0	0x00c161a0	wrong	?Release@CBuffer_00c161a0@@QAEXXZ
+294	0x00c167c0	0x00c162a0	wrong	?Cons_val_worker@AllocSub@@QAEXPAUPair@@0@Z
+294	0x00c167c0	0x00c2d3b0	wrong	??1CMember_00c2d3b0@@QAE@XZ
+294	0x00c167c0	0x00c48300	wrong	??1CBaseIntelligentPointer_00c48300@@QAE@XZ
+294	0x00c167c0	0x00c483a0	wrong	??1CBaseIntelligentPointer_00c483a0@@QAE@XZ
+294	0x00c167c0	0x00c48430	wrong	??1CBaseIntelligentPointer_00c48430@@QAE@XZ
+294	0x00c167c0	0x00c484b0	wrong	??1CBaseIntelligentPointer_00c484b0@@QAE@XZ
+294	0x00c167c0	0x00c48560	wrong	??1CBaseIntelligentPointer_00c48560@@QAE@XZ
+295	0x00c167c0	0x00c161a0	wrong	?Release@CBuffer_00c161a0@@QAEXXZ
+295	0x00c167c0	0x00c162a0	wrong	?Cons_val_worker@AllocSub@@QAEXPAUPair@@0@Z
+295	0x00c167c0	0x00c2d3b0	wrong	??1CMember_00c2d3b0@@QAE@XZ
+295	0x00c167c0	0x00c48300	wrong	??1CBaseIntelligentPointer_00c48300@@QAE@XZ
+295	0x00c167c0	0x00c483a0	wrong	??1CBaseIntelligentPointer_00c483a0@@QAE@XZ
+295	0x00c167c0	0x00c48430	wrong	??1CBaseIntelligentPointer_00c48430@@QAE@XZ
+295	0x00c167c0	0x00c484b0	wrong	??1CBaseIntelligentPointer_00c484b0@@QAE@XZ
+295	0x00c167c0	0x00c48560	wrong	??1CBaseIntelligentPointer_00c48560@@QAE@XZ
+296	0x00c167c0	0x00c161a0	wrong	?Release@CBuffer_00c161a0@@QAEXXZ
+296	0x00c167c0	0x00c162a0	wrong	?Cons_val_worker@AllocSub@@QAEXPAUPair@@0@Z
+296	0x00c167c0	0x00c2d3b0	wrong	??1CMember_00c2d3b0@@QAE@XZ
+296	0x00c167c0	0x00c48300	wrong	??1CBaseIntelligentPointer_00c48300@@QAE@XZ
+296	0x00c167c0	0x00c483a0	wrong	??1CBaseIntelligentPointer_00c483a0@@QAE@XZ
+296	0x00c167c0	0x00c48430	wrong	??1CBaseIntelligentPointer_00c48430@@QAE@XZ
+296	0x00c167c0	0x00c484b0	wrong	??1CBaseIntelligentPointer_00c484b0@@QAE@XZ
+296	0x00c167c0	0x00c48560	wrong	??1CBaseIntelligentPointer_00c48560@@QAE@XZ
+297	0x00c271e0	0x00c27540	wrong	_ForwardTarget_00c271e0
+298	0x00989ab0	0x00be6f70	unverified	
+298	0x00989ab0	0x00bf4570	unverified	
+300	0x00410f30	0x004a0d90	wrong	??0?$vector@DV?$allocator@D@std@@@std@@QAE@I@Z
+301	0x00410f30	0x004a0d90	wrong	??0?$vector@DV?$allocator@D@std@@@std@@QAE@I@Z
+305	0x01436e38	0x00b24500	wrong	?g_pDisplacementRenderer_01436e38@@3PAVCEngineScreenEffectDisplacementRenderer@@A
+305	0x01436e38	0x00b26360	wrong	?g_pDisplacementRenderer_01436e38@@3PAVCEngineScreenEffectDisplacementRenderer@@A
+305	0x01436e38	0x00b33010	wrong	?g_pShadowRenderer@@3PAVCEngineShadowRenderer@@A
+305	0x01436e38	0x00bbbf70	wrong	?g_pEngineSettings_01436e38@@3PAUCEngineSettings_01436e38@@A
+305	0x01436e38	0x00bbf4a0	wrong	?g_pDisplacementRenderer_01436e38@@3PAVCEngineScreenEffectDisplacementRenderer@@A
+305	0x01436e38	0x00bc04f0	wrong	?g_pDisplacementRenderer_01436e38@@3PAVCEngineScreenEffectDisplacementRenderer@@A
+305	0x01436e38	0x00bc25f0	wrong	?g_pDisplacementRenderer_01436e38@@3PAVCEngineScreenEffectDisplacementRenderer@@A
+305	0x01436e38	0x00be0cd0	wrong	?g_pEngineSettings_01436e38@@3PAUCEngineSettings_01436e38@@A
+308	0x013b85e0	0x01219f20	unverified	
+308	0x013b85e0	0x01228920	wrong	?g_AutoTinyThunkObject_013b85e0@@3UAutoTinyThunkTarget@@A
+310	0x01396de8	0x00b849f0	wrong	?gSubAlphaTestFunc@@3IA
+310	0x01396de8	0x00bf4570	unverified	
+312	0x008525f0	0x00892610	wrong	??0CScriptModuleMoveBetweenLookFromAndLookTo@NCameraModes@@QAE@ABVC3DVector@@000J@Z
+315	0x0049c9b0	0x00502170	unverified	
+328	0x013baf98	0x00878a50	wrong	?g_CUnprovenCameraInputFlag_013baf98@@3_NA
+337	0x009fc3d0	0x00a25bd0	wrong	?AddResource@CResourceBank@@QAEXPAUCResourceBase@@@Z
+337	0x009fc3d0	0x00a42980	wrong	?AddResource@ResourceBankNative@@QAEXAAUResourceNative@@@Z
+338	0x0137b730	0x0063b750	wrong	?g_CellCornerOffsets@@3PAUCCellCornerOffset@@A
+338	0x0137b730	0x0063b7f0	wrong	?g_CellCornerOffsets@@3PAUCCellCornerOffset@@A
+340	0x006b8310	0x007a9fe0	wrong	?RadialBlurSetCenterWorldPos@CEnvironmentSpellEffects@@QAEXPAXABVC3DVector@@@Z
+340	0x006b8310	0x007ab190	wrong	?RadialBlurSetCenterWorldPos@CEnvironmentSpellEffects@@QAEXPAXABVC3DVector@@@Z
+341	0x006699c0	0x00ad8c30	wrong	?find@CGroupToIndexMap@@QBE?AUSGroupMapIterator@@ABK@Z
+341	0x006699c0	0x00ad8ca0	wrong	?find@CGroupToIndexMap@@QBE?AUSGroupMapIterator@@ABK@Z
+342	0x0097e890	0x0090bed0	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x0090f320	wrong	?AIAction_MoveToPosProximity@CAIStateGroup_MinionHasInformation@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x00911d90	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x009175e0	wrong	?AIAction_MoveToPosProximity@CAIStateGroup_Clean@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x009195d0	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MAA_NJ_N22PBVCThing@@2M@Z
+342	0x0097e890	0x0091bd10	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+342	0x0097e890	0x0091ccc0	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x0092a220	wrong	?AIAction_MoveToPosProximity@CAIStateGroupApprenticeHeroMethods@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x0092ae70	wrong	?AIAction_MoveToPosProximity@CAIStateGroupApprenticeHeroMethods@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x0092afe0	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x0092bc60	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x0092c070	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x00933a40	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x00937da0	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MAA_NJ_N22PBVCThing@@2M@Z
+342	0x0097e890	0x0093c7b0	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x0093e090	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x009425f0	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x009474f0	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x00947a30	wrong	?AIAction_MoveToPosProximity@CAIStateGroup_StayNearFoodHall@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x0095e470	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x0095e900	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+342	0x0097e890	0x009647c0	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22J2M@Z
+342	0x0097e890	0x00969470	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z
+342	0x0097e890	0x0097f780	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MAA_NW4EMovementType@@_N33PBVCThing@@3M@Z
+342	0x0097e890	0x00980770	wrong	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAEJJVC3DVector@@MAA_NJ_N22PBVCThing@@2M@Z
+343	0x0139c900	0x00c08880	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c08d40	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c09920	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c099f0	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c0a250	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c0a300	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c0ad10	wrong	?_EmptyString@@3VCString@@A
+343	0x0139c900	0x00c0dab0	wrong	?_EmptyString@@3VCString@@A
+343	0x0139c900	0x00c0df50	wrong	?_EmptyString@@3VCString@@A
+343	0x0139c900	0x00c0e0f0	wrong	?_EmptyString@@3VCString@@A
+343	0x0139c900	0x00c15740	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c157f0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c169d0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c16b10	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c17740	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c17850	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c17940	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c17be0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c17e60	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c17f30	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c18000	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c180d0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c18270	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c18340	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c18410	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c185b0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c187a0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c18870	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c18e20	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c191b0	wrong	?g_logBuffer_0139c900@@3PAXA
+343	0x0139c900	0x00c19250	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c19340	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c194f0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c19fa0	wrong	?g_logBuffer_0139c900@@3PAXA
+343	0x0139c900	0x00c1a370	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c1a510	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c1a9c0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c1db60	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c1de50	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c22b40	wrong	?g_pchEmptyString@@3PADA
+343	0x0139c900	0x00c23370	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c23420	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c239b0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c23c10	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c23e00	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c24050	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c25a50	wrong	?g_pchEmptyString@@3PADA
+343	0x0139c900	0x00c27760	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c28ae0	wrong	?g_pchNil@@3JA
+343	0x0139c900	0x00c29fc0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c2a090	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c2a150	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c2ce60	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c2cf10	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c2ebc0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c2f070	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c2f190	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c2f2b0	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c30840	wrong	?g_pDebugBuffer@@3PAXA
+343	0x0139c900	0x00c312c0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c31560	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c31710	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c31810	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c31a70	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c31b90	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c31db0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c322e0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c324f0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c325f0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c326d0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c327b0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c328b0	wrong	?g_logBuffer_0139c900@@3PAXA
+343	0x0139c900	0x00c32950	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c32bf0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c32cd0	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c35510	wrong	?g_logBuffer_0139c900@@3PAXA
+343	0x0139c900	0x00c355e0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c37560	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c37610	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c388a0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c38d60	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c392f0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c394b0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c39670	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c39830	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c399f0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c3a330	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c3a420	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c3b690	wrong	?g_c3b690_ptr@@3PAXA
+343	0x0139c900	0x00c3b930	wrong	?g_default_00c3b930@@3PAXA
+343	0x0139c900	0x00c3baa0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c3baf0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c3bf30	wrong	?g_pchNil@@3PADA
+343	0x0139c900	0x00c454e0	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c45590	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c47b90	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c47c40	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c48640	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c48860	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c48e00	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c49010	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c491e0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c49650	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c49820	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c49ff0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4a1a0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4aa40	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4ab90	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c4ac70	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4b060	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c4b300	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4b890	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4bc80	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4c1d0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4c370	wrong	?g_logBuffer_0139c900@@3PAXA
+343	0x0139c900	0x00c4c440	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4c6c0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4c7a0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4c8b0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4cab0	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4cc90	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c4cd80	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c62a50	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c62c70	wrong	?g_pchNil_0139c900@@3PADA
+343	0x0139c900	0x00c62e60	wrong	?g_pDebugBuffer@@3PADA
+343	0x0139c900	0x00c73d90	wrong	?g_pDebugBuffer@@3PADA
+344	0x00c0df00	0x00c16f00	unverified	
+344	0x00c0df00	0x00c19340	wrong	??6CDebugStream@@QAIAAU0@J@Z
+345	0x00c0ba40	0x00c16c10	unverified	
+345	0x00c0ba40	0x00c16f00	unverified	
+345	0x00c0ba40	0x00c174a0	unverified	
+345	0x00c0ba40	0x00c19340	wrong	??1CDebugStream@@QAE@XZ
+345	0x00c0ba40	0x00c2eba0	wrong	_ForwardTarget_00c0ba40
+345	0x00c0ba40	0x00c30e90	unverified	
+345	0x00c0ba40	0x01210ab8	unverified	
+345	0x00c0ba40	0x01210ac3	unverified	
+345	0x00c0ba40	0x01210ace	unverified	
+345	0x00c0ba40	0x01210af0	unverified	
+345	0x00c0ba40	0x01210c40	unverified	
+345	0x00c0ba40	0x01210c60	unverified	
+345	0x00c0ba40	0x01210d00	unverified	
+345	0x00c0ba40	0x01210d20	unverified	
+345	0x00c0ba40	0x01210df0	unverified	
+345	0x00c0ba40	0x01210e1a	unverified	
+345	0x00c0ba40	0x01210e58	unverified	
+345	0x00c0ba40	0x01210e6a	unverified	
+345	0x00c0ba40	0x01210e72	unverified	
+345	0x00c0ba40	0x01210eb9	unverified	
+345	0x00c0ba40	0x01210ed1	unverified	
+345	0x00c0ba40	0x01210ee9	unverified	
+345	0x00c0ba40	0x01210ef1	unverified	
+345	0x00c0ba40	0x01210f20	unverified	
+345	0x00c0ba40	0x01210f39	unverified	
+345	0x00c0ba40	0x01210f4b	unverified	
+345	0x00c0ba40	0x01210f64	unverified	
+345	0x00c0ba40	0x01210f76	unverified	
+345	0x00c0ba40	0x01210f8f	unverified	
+345	0x00c0ba40	0x01210fa1	unverified	
+345	0x00c0ba40	0x01210fa9	unverified	
+345	0x00c0ba40	0x01210fb1	unverified	
+345	0x00c0ba40	0x01211300	unverified	
+345	0x00c0ba40	0x01211320	unverified	
+345	0x00c0ba40	0x0121174b	unverified	
+345	0x00c0ba40	0x01211840	unverified	
+345	0x00c0ba40	0x01211860	unverified	
+345	0x00c0ba40	0x01211b30	unverified	
+345	0x00c0ba40	0x01211b50	unverified	
+345	0x00c0ba40	0x01211d00	unverified	
+345	0x00c0ba40	0x01211d20	unverified	
+345	0x00c0ba40	0x01211d70	unverified	
+345	0x00c0ba40	0x01211d89	unverified	
+345	0x00c0ba40	0x01211dd3	unverified	
+345	0x00c0ba40	0x01211df3	unverified	
+345	0x00c0ba40	0x01211dfe	unverified	
+345	0x00c0ba40	0x01211e62	unverified	
+345	0x00c0ba40	0x01211e6d	unverified	
+345	0x00c0ba40	0x01211ea0	unverified	
+345	0x00c0ba40	0x01211ec0	unverified	
+345	0x00c0ba40	0x01211efb	unverified	
+345	0x00c0ba40	0x01211f22	unverified	
+345	0x00c0ba40	0x01211f35	unverified	
+345	0x00c0ba40	0x01211f47	unverified	
+345	0x00c0ba40	0x01211f59	unverified	
+345	0x00c0ba40	0x01211f6b	unverified	
+345	0x00c0ba40	0x01211f7d	unverified	
+345	0x00c0ba40	0x01211f8f	unverified	
+345	0x00c0ba40	0x01211fa1	unverified	
+345	0x00c0ba40	0x01211fb3	unverified	
+345	0x00c0ba40	0x01211fc5	unverified	
+345	0x00c0ba40	0x01211fd7	unverified	
+345	0x00c0ba40	0x01211fe9	unverified	
+345	0x00c0ba40	0x01212019	unverified	
+345	0x00c0ba40	0x0121202b	unverified	
+345	0x00c0ba40	0x0121203d	unverified	
+345	0x00c0ba40	0x0121204f	unverified	
+345	0x00c0ba40	0x01212062	unverified	
+345	0x00c0ba40	0x01212080	unverified	
+345	0x00c0ba40	0x01212088	unverified	
+345	0x00c0ba40	0x0121209a	unverified	
+345	0x00c0ba40	0x012120b4	unverified	
+345	0x00c0ba40	0x012120c6	unverified	
+345	0x00c0ba40	0x012120e0	unverified	
+345	0x00c0ba40	0x01212100	unverified	
+345	0x00c0ba40	0x01212200	unverified	
+345	0x00c0ba40	0x01212248	unverified	
+345	0x00c0ba40	0x01212280	unverified	
+345	0x00c0ba40	0x012122df	unverified	
+345	0x00c0ba40	0x012122f9	unverified	
+345	0x00c0ba40	0x01212301	unverified	
+345	0x00c0ba40	0x0121231b	unverified	
+345	0x00c0ba40	0x01212323	unverified	
+345	0x00c0ba40	0x0121232b	unverified	
+345	0x00c0ba40	0x01212333	unverified	
+345	0x00c0ba40	0x0121234d	unverified	
+345	0x00c0ba40	0x0121235f	unverified	
+345	0x00c0ba40	0x01212367	unverified	
+345	0x00c0ba40	0x012123bf	unverified	
+345	0x00c0ba40	0x01212400	unverified	
+345	0x00c0ba40	0x012124f8	unverified	
+345	0x00c0ba40	0x01212510	unverified	
+345	0x00c0ba40	0x01212570	unverified	
+345	0x00c0ba40	0x01212590	unverified	
+345	0x00c0ba40	0x01212915	unverified	
+345	0x00c0ba40	0x01212a10	unverified	
+345	0x00c0ba40	0x01212a18	unverified	
+345	0x00c0ba40	0x01212a20	unverified	
+345	0x00c0ba40	0x01212a70	unverified	
+345	0x00c0ba40	0x01212a90	unverified	
+345	0x00c0ba40	0x01212ab0	unverified	
+345	0x00c0ba40	0x01212ad0	unverified	
+345	0x00c0ba40	0x01212ea0	unverified	
+345	0x00c0ba40	0x01212ec0	unverified	
+345	0x00c0ba40	0x01212eeb	unverified	
+345	0x00c0ba40	0x01212ef3	unverified	
+345	0x00c0ba40	0x01212f10	unverified	
+345	0x00c0ba40	0x01212f18	unverified	
+345	0x00c0ba40	0x01212f3b	unverified	
+345	0x00c0ba40	0x01212f43	unverified	
+345	0x00c0ba40	0x01212f6b	unverified	
+345	0x00c0ba40	0x01212f73	unverified	
+345	0x00c0ba40	0x01213250	unverified	
+345	0x00c0ba40	0x0121326d	unverified	
+345	0x00c0ba40	0x012133fe	unverified	
+345	0x00c0ba40	0x01213406	unverified	
+345	0x00c0ba40	0x012134b9	unverified	
+345	0x00c0ba40	0x01213500	unverified	
+345	0x00c0ba40	0x01213512	unverified	
+345	0x00c0ba40	0x01213524	unverified	
+345	0x00c0ba40	0x01213a40	unverified	
+345	0x00c0ba40	0x01213a60	unverified	
+345	0x00c0ba40	0x01213b22	unverified	
+345	0x00c0ba40	0x01213c1a	unverified	
+345	0x00c0ba40	0x01213c60	unverified	
+345	0x00c0ba40	0x01213c80	unverified	
+345	0x00c0ba40	0x01213ca0	unverified	
+345	0x00c0ba40	0x01213cc0	unverified	
+345	0x00c0ba40	0x01214030	unverified	
+345	0x00c0ba40	0x01214049	unverified	
+345	0x00c0ba40	0x01214077	unverified	
+345	0x00c0ba40	0x0121409b	unverified	
+345	0x00c0ba40	0x012140bb	unverified	
+345	0x00c0ba40	0x012140d0	unverified	
+345	0x00c0ba40	0x012140fb	unverified	
+345	0x00c0ba40	0x01214110	unverified	
+345	0x00c0ba40	0x01214130	unverified	
+345	0x00c0ba40	0x01214142	unverified	
+345	0x00c0ba40	0x01214154	unverified	
+345	0x00c0ba40	0x01214170	unverified	
+345	0x00c0ba40	0x012141e0	unverified	
+345	0x00c0ba40	0x012141e8	unverified	
+345	0x00c0ba40	0x012141fa	unverified	
+345	0x00c0ba40	0x0121420c	unverified	
+345	0x00c0ba40	0x0121421e	unverified	
+345	0x00c0ba40	0x01214230	unverified	
+345	0x00c0ba40	0x01214242	unverified	
+345	0x00c0ba40	0x01214254	unverified	
+345	0x00c0ba40	0x0121425c	unverified	
+345	0x00c0ba40	0x01214264	unverified	
+345	0x00c0ba40	0x01214290	unverified	
+345	0x00c0ba40	0x012142a2	unverified	
+345	0x00c0ba40	0x012142aa	unverified	
+345	0x00c0ba40	0x012142b2	unverified	
+345	0x00c0ba40	0x012143d5	unverified	
+345	0x00c0ba40	0x012143f2	unverified	
+345	0x00c0ba40	0x01214600	unverified	
+345	0x00c0ba40	0x01214620	unverified	
+345	0x00c0ba40	0x01214878	unverified	
+345	0x00c0ba40	0x012148d8	unverified	
+345	0x00c0ba40	0x01214938	unverified	
+345	0x00c0ba40	0x01214998	unverified	
+345	0x00c0ba40	0x012149f8	unverified	
+345	0x00c0ba40	0x01214a30	unverified	
+345	0x00c0ba40	0x01214a38	unverified	
+345	0x00c0ba40	0x01214ab5	unverified	
+345	0x00c0ba40	0x01214abd	unverified	
+345	0x00c0ba40	0x01214bd0	unverified	
+345	0x00c0ba40	0x01214bf0	unverified	
+345	0x00c0ba40	0x01214c10	unverified	
+345	0x00c0ba40	0x01214c30	unverified	
+345	0x00c0ba40	0x01214c50	unverified	
+345	0x00c0ba40	0x01214c70	unverified	
+345	0x00c0ba40	0x01214c90	unverified	
+345	0x00c0ba40	0x01214cb0	unverified	
+345	0x00c0ba40	0x01214cd0	unverified	
+345	0x00c0ba40	0x01214cf0	unverified	
+345	0x00c0ba40	0x01214e30	unverified	
+345	0x00c0ba40	0x01214e42	unverified	
+345	0x00c0ba40	0x01214e60	unverified	
+345	0x00c0ba40	0x01214e75	wrong	??0CString@@QAE@PBD@Z
+345	0x00c0ba40	0x01214e98	unverified	
+345	0x00c0ba40	0x01214ea0	unverified	
+345	0x00c0ba40	0x01214ea8	unverified	
+345	0x00c0ba40	0x01215420	unverified	
+345	0x00c0ba40	0x01215440	unverified	
+345	0x00c0ba40	0x012154e0	unverified	
+345	0x00c0ba40	0x012154e8	unverified	
+345	0x00c0ba40	0x012154f0	unverified	
+345	0x00c0ba40	0x012154f8	unverified	
+345	0x00c0ba40	0x01215500	unverified	
+345	0x00c0ba40	0x01215508	unverified	
+345	0x00c0ba40	0x01215510	unverified	
+345	0x00c0ba40	0x01215518	unverified	
+345	0x00c0ba40	0x01215520	unverified	
+345	0x00c0ba40	0x01215710	unverified	
+345	0x00c0ba40	0x01215730	unverified	
+345	0x00c0ba40	0x01215818	unverified	
+345	0x00c0ba40	0x012159f4	unverified	
+345	0x00c0ba40	0x01215a10	wrong	??1CHeapBlock@@QAE@XZ
+345	0x00c0ba40	0x01215a50	unverified	
+345	0x00c0ba40	0x01215a70	unverified	
+345	0x00c0ba40	0x01215a78	unverified	
+345	0x00c0ba40	0x01215a80	unverified	
+345	0x00c0ba40	0x01215b80	wrong	??1PKCProtectionInstance@@QAE@XZ
+345	0x00c0ba40	0x01215bc3	unverified	
+345	0x00c0ba40	0x01215c06	unverified	
+345	0x00c0ba40	0x01215c19	unverified	
+345	0x00c0ba40	0x01215c30	unverified	
+345	0x00c0ba40	0x01215c50	unverified	
+345	0x00c0ba40	0x01215c78	unverified	
+345	0x00c0ba40	0x01215cd0	unverified	
+345	0x00c0ba40	0x01215cd8	unverified	
+345	0x00c0ba40	0x01215ce0	unverified	
+345	0x00c0ba40	0x01215cf2	unverified	
+345	0x00c0ba40	0x01215cfa	unverified	
+345	0x00c0ba40	0x01215d02	unverified	
+345	0x00c0ba40	0x01215d0a	unverified	
+345	0x00c0ba40	0x01215d12	unverified	
+345	0x00c0ba40	0x01215d1a	unverified	
+345	0x00c0ba40	0x01215d22	unverified	
+345	0x00c0ba40	0x01215d34	unverified	
+345	0x00c0ba40	0x01215d46	unverified	
+345	0x00c0ba40	0x01215d58	unverified	
+345	0x00c0ba40	0x01215d60	unverified	
+345	0x00c0ba40	0x01215d68	unverified	
+345	0x00c0ba40	0x01215d7a	wrong	??6CString@@QAIAAV0@K@Z
+345	0x00c0ba40	0x01215d8c	unverified	
+345	0x00c0ba40	0x01215d9e	unverified	
+345	0x00c0ba40	0x01215dee	unverified	
+345	0x00c0ba40	0x01215df6	unverified	
+345	0x00c0ba40	0x01215dfe	unverified	
+345	0x00c0ba40	0x01215e06	unverified	
+345	0x00c0ba40	0x01215e18	unverified	
+345	0x00c0ba40	0x01215e20	unverified	
+345	0x00c0ba40	0x01215e32	unverified	
+345	0x00c0ba40	0x01215e3a	unverified	
+345	0x00c0ba40	0x01215e50	unverified	
+345	0x00c0ba40	0x01215e98	unverified	
+345	0x00c0ba40	0x01215ef0	unverified	
+345	0x00c0ba40	0x01215f10	unverified	
+345	0x00c0ba40	0x01215f22	unverified	
+345	0x00c0ba40	0x01215f4b	unverified	
+345	0x00c0ba40	0x01215f65	unverified	
+345	0x00c0ba40	0x01215f6d	unverified	
+345	0x00c0ba40	0x01215f75	unverified	
+345	0x00c0ba40	0x01215f7d	unverified	
+345	0x00c0ba40	0x01215f97	unverified	
+345	0x00c0ba40	0x01215fb1	unverified	
+345	0x00c0ba40	0x01215fcb	unverified	
+345	0x00c0ba40	0x01215fde	unverified	
+345	0x00c0ba40	0x01215ff8	unverified	
+345	0x00c0ba40	0x0121600b	unverified	
+345	0x00c0ba40	0x01216028	unverified	
+345	0x00c0ba40	0x01216042	unverified	
+345	0x00c0ba40	0x01216460	unverified	
+345	0x00c0ba40	0x01216468	unverified	
+345	0x00c0ba40	0x0121649a	unverified	
+345	0x00c0ba40	0x012164a2	unverified	
+345	0x00c0ba40	0x012164c0	unverified	
+345	0x00c0ba40	0x01216750	unverified	
+345	0x00c0ba40	0x01216762	unverified	
+345	0x00c0ba40	0x0121677b	unverified	
+345	0x00c0ba40	0x01216794	unverified	
+345	0x00c0ba40	0x012167b7	unverified	
+345	0x00c0ba40	0x0122ae00	wrong	?Invoke_00c0ba40@AutoTinyThunkTarget@@QAEXXZ
+346	0x00c4ac70	0x00c4b010	wrong	?ReturnBuffer@CBufferOwner_00c4b010@@QAEXJ@Z
+348	0x00c3f760	0x00c3f970	wrong	??0CAIStateGroupBase_00c3f970@@QAE@XZ
+349	0x00c3f630	0x00c3f6b0	wrong	??1CUnprovenObject_00c3f6b0@@UAE@XZ
+350	0x00c555e0	0x00c3ebb0	wrong	??0CObject_00c3ebb0_00c3ebb0@@QAE@XZ
+351	0x00c55130	0x00c3f0b0	wrong	??1CUnprovenObject_00c3f0b0@@UAE@XZ
+351	0x00c55130	0x00c55660	wrong	?CLandscapeBackgroundPatch_dtor_00c55130@@YIXPAVCLandscapeBackgroundPatch@@@Z
+352	0x00c25c50	0x00c119d0	wrong	??0CKey_00c119d0@@QAE@XZ
+352	0x00c25c50	0x00c21ba0	wrong	??0CKey_00c119d0@@QAE@XZ
+353	0x00c25c70	0x00c119d0	wrong	?Set@CKeyFields_00c119d0@@QAEXPAXPAUCEntry_00c119d0@@0@Z
+353	0x00c25c70	0x00c21c20	wrong	?Set@Blend@Row00c21c20@@QAEXIIII@Z
+354	0x00c25cb0	0x00c119d0	wrong	?Clear@CKey_00c119d0@@QAEXXZ
+354	0x00c25cb0	0x00c21620	wrong	?Reset@CSampleRef@@QAEXXZ
+355	0x00c20c10	0x00c11f50	wrong	?Validate@CElement_00c11f50@@QAE_NPAUCEditControlCentre_00c11f50@@@Z
+356	0x00c21620	0x00c11f50	wrong	?Process@CElement_00c11f50@@QAEXPAUCEditControlCentre_00c11f50@@@Z
+356	0x00c21620	0x00c120a0	wrong	?Process@CEntity_00c120a0@@QAEXPAUCInventory_00c120a0@@@Z
+356	0x00c21620	0x00c12460	wrong	?Release@CEntity_00c12460@@QAEXPAUCInventory_00c12460@@@Z
+356	0x00c21620	0x00c12520	wrong	?Release@CEntity_00c12520@@QAEXPAUCInventory_00c12520@@@Z
+357	0x012354d0	0x00550800	wrong	??_7T@@6B@
+359	0x00404310	0x0065c781	wrong	?GetString@CCharString@@QBEPBDXZ
+360	0x00701750	0x008909f0	wrong	?GetOpinionValue@COpinionReactionManager_Retail@@QAEMPAUCThing_Retail@@J@Z
+360	0x00701750	0x00929820	wrong	?GetOpinionValue@COpinionManager@@QAEMPAVCThing@@J@Z
+361	0x013babd0	0x006d0410	wrong	?g_OpinionAttitudeNames@@3PAVCCharString@@A
+361	0x013babd0	0x007018b0	wrong	?g_OpinionAttitudeNames@@3PAVCCharString@@A
+361	0x013babd0	0x00890970	wrong	?g_attTable@@3PAHA
+361	0x013babd0	0x00982eb0	wrong	?g_OpinionAttitudeNames@@3PAVCCharString@@A
+361	0x013babd0	0x00982f10	wrong	?g_OpinionAttitudeNames@@3PAVCCharString@@A
+361	0x013babd0	0x00982f70	wrong	?g_OpinionAttitudeNames@@3PAVCCharString@@A
+361	0x013babd0	0x00985f40	wrong	?g_WifeAppearanceLineSuffix@@3PAVCCharString@@A
+361	0x013babd0	0x0121e480	unverified	
+362	0x00993ea0	0x00a99840	wrong	?WriteULONG@CDataOutputStreamMethods@X_00a99840@@QAEXK@Z
+362	0x00993ea0	0x00a9ba70	wrong	?WriteULONG@CDataOutputStreamMethods@X_00a9ba70@@QAEXK@Z
+362	0x00993ea0	0x00aa4af0	wrong	?N@Arg@@QAEXPAX@Z
+363	0x009f2450	0x00416005	wrong	?Step@CGlobalService@@QAEXXZ
+365	0x009b85a0	0x009b89b0	wrong	?CGuiVarTransferBool_Sink_009b85a0@@YIXPAXHE@Z
+365	0x009b85a0	0x009b8ad0	wrong	?InnerActivate_009b85a0@@YIXPAUCInner@@PAXE@Z
+365	0x009b85a0	0x009cfb70	wrong	?SortCRCPairs@@YIXPAUSCRCPair@@0UCKeyPairCompareLess@@@Z
+366	0x008f8f50	0x008f95d0	wrong	?Send@LSocket@LHNetworkLib@@QAE_NABUByteBuffer@2@ABULAddress@2@1@Z
+367	0x013baffc	0x008f84a0	wrong	?g_bSocketDataQueued@LHNetworkLib@@3_NA
+368	0x008f82e0	0x008f8440	wrong	?IsWriteable@LSocket@@QAE_NJ@Z
+369	0x00412880	0x008f9320	wrong	?resize@CCharVector@@QAEXI@Z
+370	0x00c61610	0x00c42dd0	wrong	??0CEAXBuffer@@QAE@PAVCEAXListener@@KKJPAJ@Z
+373	0x00c3a9d0	0x00c2dbe0	wrong	??1CTeleportBase_00c2dbe0@@QAE@XZ
+373	0x00c3a9d0	0x01213ba0	unverified	
+373	0x00c3a9d0	0x01213bc8	wrong	??1CString@@QAE@XZ
+374	0x00c3aa50	0x00c2d9c0	wrong	?SetRange@CSegmentFile@@QAEJKK@Z
+375	0x00c3a9e0	0x00c2da00	wrong	_ForwardTarget_00c3a9e0
+377	0x00c0c200	0x00c31230	wrong	??4CString@@QAEAAU0@PBD@Z
+377	0x00c0c200	0x00c313c0	wrong	??4CString@@QAEAAU0@PBD@Z
+378	0x012b47d0	0x00c2dbe0	wrong	??_7CContainer_00c2dbe0@@6B@
+378	0x012b47d0	0x00c2dfe0	wrong	??_7CVtable_012b47d0@@6B@
+378	0x012b47d0	0x00c2e030	wrong	??_7CVtable_012b47d0@@6B@
+379	0x00c2dde0	0x00c2dfc0	wrong	?CLandscapeBackgroundPatch_dtor_00c2dde0@@YIXPAVCLandscapeBackgroundPatch@@@Z
+379	0x00c2dde0	0x01213b60	unverified	
+379	0x00c2dde0	0x01213b80	unverified	
+379	0x00c2dde0	0x01213ba8	unverified	
+379	0x00c2dde0	0x01213bde	wrong	??1CString@@QAE@XZ
+380	0x00c2e030	0x00c2e080	wrong	?Dtor_00c2e030@T@@QAEXXZ
+380	0x00c2e030	0x01213bb0	unverified	
+380	0x00c2e030	0x01213bd0	unverified	
+381	0x00c3f9d0	0x00c3fd20	wrong	?InitSubSystemB@CUnknownSystem1D8@@QAE_NPAXPAUSSystemInitParams@@@Z
+382	0x0143bc7a	0x00c52e40	wrong	?g_cpuHasMMX@@3_NA
+383	0x00c3efa0	0x00c3f660	wrong	??0CLimitedMixBuffer@@QAE@XZ
+383	0x00c3efa0	0x00c3f7b0	wrong	??0CLimitedMixBuffer@@QAE@XZ
+390	0x0143bc18	0x00c33770	wrong	?g_record_0143bc18@@3UCStaticRecord_0143bc18@@A
+392	0x00c3f680	0x00c3f690	wrong	?Dtor_00c3f680@T@@QAEXXZ
+393	0x00c3f7f0	0x00c3f7d0	wrong	?CLandscapeBackgroundPatch_dtor_00c3f7f0@@YIXPAVCLandscapeBackgroundPatch@@@Z
+394	0x00c3f030	0x00c3f090	wrong	?Dtor_00c3f030@T@@QAEXXZ
+394	0x00c3f030	0x00c3f680	wrong	_ForwardTarget_00c3f030
+394	0x00c3f030	0x00c3f7f0	wrong	_ForwardTarget_00c3f030
+414	0x00c36080	0x00c271f0	wrong	_CODA_CreateSample@4
+417	0x00c49b90	0x00c497e0	wrong	?ProcessMessage_CMailboxQueue_00c49b90@CMailboxQueue_00c49b90@@QAEJPAX@Z
+418	0x0143ccd8	0x00c73a00	wrong	?g_flag_0143ccd8@@3_NA
+420	0x00c0bd60	0x00c174a0	unverified	
+421	0x00c16760	0x00c174a0	unverified	
+422	0x00c0bfe0	0x00c16c10	unverified	
+422	0x00c0bfe0	0x00c16f00	unverified	
+422	0x00c0bfe0	0x00c174a0	unverified	
+422	0x00c0bfe0	0x00c30e90	unverified	
+422	0x00c0bfe0	0x01224b60	unverified	
+426	0x00c73ef0	0x00c62920	wrong	??0CVtable_012bf014@@QAE@M@Z
+427	0x00c2e610	0x00c2eb00	wrong	?ProcessEventTriggers@CBankProcessor@@QAEXXZ
+428	0x00c3abd0	0x00c2e4d0	wrong	?Find@CDriverMap@@QAEPAUCDriver@@K@Z
+428	0x00c3abd0	0x00c2e5a0	wrong	?Find@CDriverMap@@QAEPAUCDriver@@K@Z
+428	0x00c3abd0	0x00c2e610	wrong	?Find@CDriverMap@@QAEPAUCDriver@@K@Z
+428	0x00c3abd0	0x00c2e7a0	wrong	?Find@CDriverMap@@QAEPAUCDriver@@K@Z
+429	0x00c307e0	0x00c3ab50	wrong	?NewMessage@CMessageLog_00c3ab50@@QAEPAVCString@@XZ
+429	0x00c307e0	0x00c3b0e0	wrong	?NewMessage@CMessageLog_00c3b0e0@@QAEPAVCString@@XZ
+430	0x00c1f4e0	0x00c2e4d0	wrong	?InsertDriver@CEventTriggerRef@@QAEXKPAUCDriver@@@Z
+430	0x00c1f4e0	0x00c2e610	wrong	?InsertDriver@CEventTriggerRef@@QAEXKPAUCDriver@@@Z
+430	0x00c1f4e0	0x00c2e7a0	wrong	?InsertDriver@CEventTriggerRef@@QAEXKPAUCDriver@@@Z
+431	0x0139652c	0x009dc6e0	wrong	?g_ScreenRHW@@3MA
+431	0x0139652c	0x009dc870	wrong	?g_ScreenRHW@@3MA
+431	0x0139652c	0x009dca80	wrong	?g_ScreenRHW@@3MA
+431	0x0139652c	0x009dd210	wrong	?g_ScreenRHW@@3MA
+431	0x0139652c	0x009dd960	wrong	?g_ScreenRHW@@3MA
+431	0x0139652c	0x009dda50	wrong	?g_ScreenRHW@@3MA
+431	0x0139652c	0x009ddc60	wrong	?BIGGEST_RHW_VERTEX_VALUE@@3MB
+431	0x0139652c	0x009ddff0	wrong	?g_ScreenRHW@@3MA
+432	0x00c17640	0x00c08d40	wrong	?Load@CProcessor_00c09110@@QAI_NPBGPAVCUnprovenPKObject_00c099f0@@PAUCBankLoadDesc_00c08d40@@@Z
+433	0x00c2e0c0	0x00c16ce0	unverified	
+434	0x00c30f60	0x00c16d90	unverified	
+434	0x00c30f60	0x00c17260	unverified	
+435	0x00c16ce0	0x00c16d90	unverified	
+435	0x00c16ce0	0x00c17400	wrong	?RunProcessor@@YGXPAVCScriptHost@@PAUCBankData@@PAVCLoadLog@@PBUSProcessorSettings_00c16ce0@@@Z
+436	0x00c2ef30	0x00c16d90	unverified	
+436	0x00c2ef30	0x00c17260	unverified	
+436	0x00c2ef30	0x00c17800	wrong	?CLandscapeBackgroundPatch_dtor_00c2ef30@@YIXPAVCLandscapeBackgroundPatch@@@Z
+436	0x00c2ef30	0x01211dc1	unverified	
+436	0x00c2ef30	0x01211e13	unverified	
+437	0x00c16e10	0x00c16f00	unverified	
+437	0x00c16e10	0x00c30f60	wrong	?ReadBankInfoCount@@YIJPAUCSegmentFile@@@Z
+439	0x00c0e9e0	0x00c16f00	unverified	
+440	0x00c17940	0x00c17400	wrong	?LookupSelectedWaypoint@@YIPAUCBankData@@PAUCScriptContext@@PAVCLoadLog@@@Z
+441	0x00c17910	0x01211e45	unverified	
+441	0x00c17910	0x01211ef3	unverified	
+442	0x00c0df20	0x00c174a0	unverified	
+442	0x00c0df20	0x00c1a510	wrong	??6CString@@QAIAAV0@PBX@Z
+443	0x00c31db0	0x00c172f0	wrong	?GetChecked@PKCAutoFile@@QAEPAXXZ
+443	0x00c31db0	0x00c174a0	unverified	
+444	0x00c16d90	0x00c174a0	unverified	
+447	0x007fd110	0x007fbc90	wrong	?GetPFirstThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z
+447	0x007fd110	0x008c2240	wrong	?GetPFirstThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z
+447	0x007fd110	0x0095b020	wrong	?GetPFirstThingInRoughArea@CThingSearchTools@@QBEPAVCThing@@ABUCRectI@@ABVCThingFilter_HasScriptName@@PAPAV2@@Z
+447	0x007fd110	0x0095b3e0	wrong	?GetPFirstThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z
+447	0x007fd110	0x00972830	wrong	?GetPFirstThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z
+452	0x0065f9ab	0x0066000a	wrong	?RangeInitialize@CRangeString_0066000a@@QAIXABUSScalarTag@@USIterator@@1PAX@Z
+455	0x0064ae80	0x0064db2b	wrong	?DrawAbilityButton@CDrawAbilityButtons@NPlayerGui@@QAEXPAVCEnginePrimitivePrepareInfo@@PAUAbilityVector@@JJJM@Z
+462	0x007d1260	0x007cf860	wrong	?GetSubDef@CDefClassBase@@QAE_NPAUCShoveHaPennyDefPointer@@@Z
+462	0x007d1260	0x007cff40	wrong	?GetSubDef@CDefClassBase@@QAE_NPAUCShoveHaPennyDefPointer@@@Z
+463	0x0089c910	0x0089cd10	wrong	?CanSeeImpl@CGameScriptInterface_Methods@@QAE_NPAVCThing@@0H@Z
+463	0x0089c910	0x0089cd30	wrong	?CanThingBeSeen@CThingChecker@@QAE_NPAX0H@Z

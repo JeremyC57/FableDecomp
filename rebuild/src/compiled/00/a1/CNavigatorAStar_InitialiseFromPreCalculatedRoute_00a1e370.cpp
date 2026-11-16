@@ -155,7 +155,7 @@ class CNavigatorExternalInterface { public:
 class CSteeringAgent { public:
     void SetGoal(const CNavWayPoint& goal, const CNavWayPoint& next);   // 0x00A20970
 };
-extern long g_AStarSearchesInProgress;             // 0x013D27B0
+extern long NumberOfPeopleCalculatingRoute;        // 0x013D27B0 (both PDBs: S_LDATA32 long NumberOfPeopleCalculatingRoute, lib_navigator_a_star)
 class CNavigatorAStar { public:
     // +0x00 vptr
     unsigned char                _pad04[0x10];
@@ -195,7 +195,7 @@ class CNavigatorAStar { public:
 void CNavigatorAStar::InitialiseFromPreCalculatedRoute(const C3DVector& from, const CRoutePointVector& route, const C3DVector& to)
 {
     if (States._M_node_count != 0)
-        --g_AStarSearchesInProgress;
+        --NumberOfPeopleCalculatingRoute;
     NavigationManager->Navigators.remove_if(CIsNavigator((const CNavigatorBaseLayout*)this));
     States.clear();
     Route.clear();

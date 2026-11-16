@@ -1,5 +1,6 @@
 // CDSoundAccelerationQuery::GetAccelerationLevel(const _GUID* deviceGuid) -- read the DirectSound hardware-acceleration setting of a render device from its driver's registry key: unknown (3) on Windows 9x, when the device's interface path cannot be found or the key cannot be opened or read; 2 for "standard" acceleration (8); for "full" acceleration (15) 1 when the driver reports a present VxD or WDM device, else 0; 0 for any other setting
-// Leaf: ?GetAccelerationLevel@CDSoundAccelerationQuery@@QAEJPBU_GUID@@@Z
+// Leaf: ?GetAccelerationLevel@CDSoundAccelerationQuery@@QAEHPBU_GUID@@@Z
+// Name fix (agentNF36 2026-11-16): int result (H), the spelling its landed caller already binds; same bytes as long.
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C5DD70, 604 bytes (the oracle row is cut at 728: see NOTES.md), thiscall `ret 4`, 8-byte aligned frame, EH-framed (the three
 //   CRegistryKey locals, states 0..2).
@@ -41,10 +42,10 @@ public:
     char m_interfacePath[0x104];                        // +0x000 the device's driver interface path, empty when unknown
     void FindDeviceInterface(const _GUID* deviceGuid);  // 0x00C5DB40
     HKEY OpenDeviceRegistryKey(const char* interfacePath);   // 0x00C5DC60
-    long GetAccelerationLevel(const _GUID* deviceGuid);
+    int GetAccelerationLevel(const _GUID* deviceGuid);
 };
 
-long CDSoundAccelerationQuery::GetAccelerationLevel(const _GUID* deviceGuid)
+int CDSoundAccelerationQuery::GetAccelerationLevel(const _GUID* deviceGuid)
 {
     long versionProbe;
     EnsureWindowsVersionDetected_00c73770(&versionProbe);

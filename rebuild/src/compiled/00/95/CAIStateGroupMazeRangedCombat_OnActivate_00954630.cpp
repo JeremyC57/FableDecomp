@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00954630, length 93 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (the inlined interface lookup, type 0xAD = bit 13 of the bitset
-// dword at +0x34, `test ch,20h`), then CTCBoss::GetCurrentPhase @ 0x007AED10 (manifest "CWorld::
+// dword at +0x34, `test ch,20h`), then CTCBoss::GetBossPhase @ 0x007AED10 (manifest "CWorld::
 // DrawGetEnvironment" is a propagated label: it is the boss component's phase getter, no arguments).
 // Shape: the component is an UNINITIALISED local filled by the inlined GetInterface whose bool is NOT tested;
 // on the miss path retail reads the never-written slot (`mov eax,[esp+4]`, shared with the key temporary)
@@ -36,7 +36,7 @@ class CAIStateGroupBase { public:
 };
 
 class CTCBoss { public:                                // interface type 0xAD component
-    long GetCurrentPhase();                     // 0x007AED10
+    long GetBossPhase() const;                  // 0x007AED10 (Ego_r.pdb + FableWin.pdb ?GetBossPhase@CTCBoss@@QBEJXZ)
 };
 
 struct CAIStateGroup_MazeRangedCombat : CAIStateGroupBase {
@@ -49,5 +49,5 @@ void CAIStateGroup_MazeRangedCombat::OnActivate()
 {
     CTCBoss* pBoss;
     PBrain->Creature->GetTC(TCI_BOSS, &pBoss);
-    LastCompletedPhase = pBoss->GetCurrentPhase();
+    LastCompletedPhase = pBoss->GetBossPhase();
 }

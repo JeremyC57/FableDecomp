@@ -5,10 +5,12 @@
 //   CNavigatorAStar::CAStarState at +4 (ParentState, Node, CostToThisState, TotalCost, OnOpenList +0x14, OnClosedList
 //   +0x15). CAStarState's copy constructor counts the new state into three statics, 0x013D27B8 always, 0x013D27BC when
 //   it is on the open list and 0x013D27C0 when on the closed list -- the mirror of the inline ~CAStarState in the landed
-//   _Rb_tree::_M_erase 0x00A21640 and 0x00A205C0 (their descriptive NoOfStates* names are reused; not in the PDB name sets).
+//   _Rb_tree::_M_erase 0x00A21640 and 0x00A205C0 (the CAStarState counters, PDB names).
 // Identity: the landed _Rb_tree::_M_insert 0x00A21D90 names this out-of-line copy of the node value (its _M_create_node
 //   _Construct); callers 0x00A21155, 0x00A217B9, 0x00A21DCE, 0x00A21DF6.
 // Shape: the memberwise pair copy constructor with CAStarState's user copy constructor inline.
+// Name fix (agentNF36 2026-11-16): the three CAStarState counters are spelled NumberOfAStarStates / NumberOfOpenStates /
+// NumberOfClosedStates, the original static names of engine/CNavigatorAStar.h (pass23, both PDBs' type records).
 class CANavQuadTreeNode;
 
 class CNavigatorAStar {
@@ -21,18 +23,18 @@ public:
         float              TotalCost;                   // +0x0C
         bool               OnOpenList;                  // +0x10
         bool               OnClosedList;                // +0x11
-        static long NoOfStates;                         // 0x013D27B8 (descriptive)
-        static long NoOfStatesOnOpenList;               // 0x013D27BC (descriptive)
-        static long NoOfStatesOnClosedList;             // 0x013D27C0 (descriptive)
+        static long NumberOfAStarStates;                         // 0x013D27B8 (PDB name, engine/CNavigatorAStar.h)
+        static long NumberOfOpenStates;               // 0x013D27BC (PDB name)
+        static long NumberOfClosedStates;             // 0x013D27C0 (PDB name)
         CAStarState(const CAStarState& other)
             : ParentState(other.ParentState), Node(other.Node), CostToThisState(other.CostToThisState),
               TotalCost(other.TotalCost), OnOpenList(other.OnOpenList), OnClosedList(other.OnClosedList)
         {
-            ++NoOfStates;
+            ++NumberOfAStarStates;
             if (OnOpenList)
-                ++NoOfStatesOnOpenList;
+                ++NumberOfOpenStates;
             if (OnClosedList)
-                ++NoOfStatesOnClosedList;
+                ++NumberOfClosedStates;
         }
     };
 };

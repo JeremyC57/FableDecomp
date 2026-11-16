@@ -141,6 +141,13 @@ public:
     void StartMovePlayerPos(long player, const C3DVector& pos, ELoadType load_type);   // 0x00502500
     void EndMovePlayerPos();                                             // 0x005064B0
     bool IsLoadingAnyMap() const;                                        // 0x004FB4A0
+#ifdef FABLE_RETAIL_CWORLDMAP_CACHEMAPS
+    // Nested opt-in (agentNF36 2026-11-16, row 0x005064B0 EndMovePlayerPos = `push 0 ; call 0x00502850 ; ret`): Ego_r.pdb + FableWin.pdb
+    // ?CacheMaps@CWorldMap@@IAEXW4ELoadType@1@@Z (protected, nested ELoadType), retail 0x00502850. Declaration only.
+protected:
+    void CacheMaps(ELoadType load_type);                                 // 0x00502850
+public:
+#endif
 #endif // FABLE_RETAIL_CWORLDMAP_MOVEPLAYERPOS
 #ifdef FABLE_RETAIL_CWORLDMAP_SAVEGAMESTATE
     // Opt-in (chunk 2052, row 0x0049F4C0): Ego_r.pdb ?SaveGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z, out of line at 0x004FDE80.

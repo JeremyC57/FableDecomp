@@ -1,6 +1,6 @@
-// CShaderRenderManager::SetUserVertexShaderConstant(long index, const C4DVector* value) -- uploads one vector (copied to the frame) at the current layout's user-constant base (+0x14) plus index
+// CShaderRenderManager::SetUserVertexShaderConstant(unsigned long index, const C4DVector& value) -- uploads one vector (copied to the frame) at the current layout's user-constant base (+0x14) plus index
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00989AB0, length 74 bytes.
-// Leaf: ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXJPBVC4DVector@@@Z
+// Leaf: ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z
 // Layout: engine/CVertexShaderConstantLayout.h (its CShaderConstantRange members viewed as {vptr, Offset, Count}).
 // Callees: IDirect3DDevice9::SetVertexShaderConstantF (COM slot 94, vtable +0x178, `__stdcall`, `this` pushed).
 // 0x00989AB0 and 0x00989B50 are byte-identical overloads (a 4-vector and a colour of the same layout).
@@ -37,7 +37,7 @@ class CShaderRenderManager { public:
     unsigned char                _pad008[0x1cc];
     IDirect3DDevice9*            D3DDevice;                 // +0x1d4
 
-    void SetUserVertexShaderConstant(long index, const C4DVector* value);
+    void SetUserVertexShaderConstant(unsigned long index, const C4DVector& value);   // Ego_r.pdb + FableWin.pdb (agentNF36 name fix: was long / const C4DVector*)
 
     // inline upload of one vector: the four components arrive by value (right-to-left argument
     // evaluation puts the register expression last, which is what fixes retail's push schedule)
@@ -52,7 +52,7 @@ class CShaderRenderManager { public:
     }
 };
 
-void CShaderRenderManager::SetUserVertexShaderConstant(long index, const C4DVector* value)
+void CShaderRenderManager::SetUserVertexShaderConstant(unsigned long index, const C4DVector& value)
 {
-    SetVertexShaderConstant(ConstantRange(CurrentVSConstantLayout->User).Offset + index, value->x, value->y, value->z, value->w);
+    SetVertexShaderConstant(ConstantRange(CurrentVSConstantLayout->User).Offset + index, value.x, value.y, value.z, value.w);
 }

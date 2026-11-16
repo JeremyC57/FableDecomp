@@ -4,7 +4,7 @@
 // Callees: CMemoryDataInputStream(const CMemoryDataOutputStream&) 0x00995EE0 / ~ 0x00993B10 (label "~CChunkedFileChunk"),
 //   CMemoryDataOutputStream() 0x00996AF0 / ~ 0x00996B30 (label "~CCompressedMemoryDataInputStream") / Reset 0x00996B60 /
 //   Write 0x00996CC0 (the slot-4 virtual, called directly on the locals and through the vtable on the member) / GetSize
-//   0x00994B40 / PeekData 0x00995E70, CDataOutputStream::WriteULong 0x00993EA0, CDataInputStream::ReadWithSrcChunkOverflow
+//   0x00994B40 / PeekData 0x00995E70, CDataOutputStream::WriteULONG 0x00993EA0, CDataInputStream::ReadWithSrcChunkOverflow
 //   0x00993CA0 (slow path of the inline Read), CDataInputStream::ReadToStream(CDataOutputStream&, long) 0x009964E0.
 // Layout: Constraints (CMemoryDataOutputStream, 0x18 bytes) at +0x114 as in the landed CParticleProgram::WriteToFile
 //   0x00AE2230 model; CDataInputStream is the landed 0x00AF4660 model (inline Read with the 64-bit position range check,
@@ -19,7 +19,7 @@ public:
     virtual void v02();
     virtual void v03();
     virtual void Write(const void* data, long length);                 // slot 4 (+0x10)
-    void WriteULong(unsigned long value);                              // 0x00993EA0
+    void WriteULONG(unsigned long value);                              // 0x00993EA0
 };
 class CMemoryDataOutputStream : public CDataOutputStream {
 public:
@@ -90,9 +90,9 @@ void CParticleProgram::OptimiseConstraints()
             totalSize += size;
         } else {
             if (totalCount != 0) {
-                merged.WriteULong(lastType);
-                merged.WriteULong(totalCount);
-                merged.WriteULong(totalSize);
+                merged.WriteULONG(lastType);
+                merged.WriteULONG(totalCount);
+                merged.WriteULONG(totalSize);
                 merged.Write(((void*)data.PeekData()), ((CMemoryDataOutputStream*)&data)->GetLength());
             }
             lastType = type;
@@ -103,9 +103,9 @@ void CParticleProgram::OptimiseConstraints()
         in.ReadToStream(data, size);
     }
     if (totalCount != 0) {
-        merged.WriteULong(lastType);
-        merged.WriteULong(totalCount);
-        merged.WriteULong(totalSize);
+        merged.WriteULONG(lastType);
+        merged.WriteULONG(totalCount);
+        merged.WriteULONG(totalSize);
         merged.Write(((void*)data.PeekData()), ((CMemoryDataOutputStream*)&data)->GetLength());
     }
     constraints.Reset();

@@ -186,7 +186,7 @@ class CTCInventory : public NInventory::CTCInventoryBase { public:
     CTextInput       InputB;                            // +0x208
     void ClearQuestPersistentFlags();                   // 0x005BD597
     void SetEditBoxesActive(bool active);               // 0x00581A14
-    void CloseMenus();                                  // 0x0058771C
+    void ResetPrimitiveHandles();                       // 0x0058771C (Ego_r.pdb + FableWin.pdb)
     void CloseInventory();
 };
 
@@ -195,7 +195,7 @@ void CTCInventory::CloseInventory()
     ClearQuestPersistentFlags();
     SetEditBoxesActive(false);
     InventoryOpen = false;
-    CloseMenus();
+    ResetPrimitiveHandles();
     for_each(HandlesA._M_start, HandlesA._M_finish, CMemFunRefClear(&CEnginePrimitiveHandle::Clear));
     for_each(HandlesB._M_start, HandlesB._M_finish, CMemFunRefClear(&CEnginePrimitiveHandle::Clear));
     for (unsigned long i = 0; i < Components.size(); ++i)

@@ -40,7 +40,7 @@ public:
 };
 class CThingFilter_HasInformation {
 public:
-    bool operator()(const CThing& thing) const;           // 0x006A7140
+    bool operator()(const CThingAICreature& creature) const;   // 0x006A7140 (Ego_r.pdb + FableWin.pdb ??RCThingFilter_HasInformation@@QBE_NABVCThingAICreature@@@Z)
 };
 class CThingFilter_InMap {
 public:

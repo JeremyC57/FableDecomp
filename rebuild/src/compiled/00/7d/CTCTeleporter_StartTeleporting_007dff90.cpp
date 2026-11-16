@@ -52,11 +52,12 @@ public:
     }
 };
 
+namespace NUISystem { class CComponent; }
 class CTCInventoryMap { public:
     unsigned char _pad_0x00[0x240];
     bool          InventoryScreen;              // +0x240
     bool          OpenedViaGuildSeal;           // +0x241
-    void BuildMapTeleportUI(long screen, bool forceRebuild, bool* built);   // 0x0060C900
+    NUISystem::CComponent* ConstructMapList(NUISystem::CComponent* parent, bool pc, bool* built);   // 0x0060C900 (Ego_r.pdb + FableWin.pdb)
 };
 
 #include "engine/CCountedPointer.h"
@@ -124,7 +125,7 @@ void CTCTeleporter::StartTeleporting(CThing* hero)
     map->OpenedViaGuildSeal = false;
     if (!CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_blockingFD && PeekWorld().m_mode == 0) {
         bool built = false;
-        map->BuildMapTeleportUI(0, true, &built);
+        map->ConstructMapList(0, true, &built);
         if (built && !(hero->m_flags91 & 1) && hero->Health > DELTA_NOTIONAL_ZERO) {
             CGameEvent event(0x1a);
             event.AddULONG(8);
