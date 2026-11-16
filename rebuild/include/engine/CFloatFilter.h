@@ -6,6 +6,17 @@
 class CFloatFilter : public CReverbDspProcessor {
 public:
  virtual ~CFloatFilter();
+#ifdef FABLE_RETAIL_CFLOATFILTER_APPLY_PASS23
+ CFloatFilter();
+ void Create();
+ void Clear();
+ float* GetFilterHistory(){return m_fHistoryData;}
+ void Process(const class CFloatFilterParams*,const float*,float*,bool,unsigned int);
+ void Process(class CFloatFilterParams*,const class CFloatFilterParams*,const float*,float*,bool,unsigned int,unsigned int);
+private:
+ void BeginFading();
+ void ApplyFilter(const float*,const float*,float*,const float*,float*,bool,unsigned int);
+#endif
 private:
  float m_fHistoryData[4]; // +0x4
 };

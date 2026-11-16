@@ -71,6 +71,16 @@ public:
     // (0x027290B0, 17 bytes / 9 instructions: its first COMDAT copy directly follows GlobalUpdate 0x02726CD0, so GlobalUpdate is its first
     // user -- retail 0x007CACB6 `mov al,[esi+25h] ; test al,al`) and ?IsDisplayingItems@CTCHeroReceiveItems@@QBE_NXZ (0x020E152B, first
     // copy in another TU, so whether GlobalUpdate uses it is UNVERIFIED; retail 0x007CB6BF `mov al,[esi+26h]`).
+#ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_DRAW_ACCESSORS_PASS23
+    // Both original PDB methods; FableWin020e4d1d..020e4d82, native0064e978 reads these exact fields.
+    CTCHeroReceiveItems(CThing&);
+    virtual ~CTCHeroReceiveItems();
+    CThingObject* GetPThingObject()const{return PCurrentItem.Get();}
+    const C2DBoxF& GetOldAreaItemTaking()const{return OldAreaItemTaking;}
+    const C2DBoxF& GetCurrentAreaItemTaking()const{return CurrentAreaItemTaking;}
+    const CRightHandedSet& GetOldRHS()const{return OldItemRHSet;}
+    const CRightHandedSet& GetCurrentRHS()const{return CurrentItemRHSet;}
+#endif
     bool IsReceivingItems() const { return ReceivingItems; }
     bool IsDisplayingItems() const { return DisplayingItems; }
 private:
@@ -103,17 +113,17 @@ public:
 #endif
 };
 #ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_GLOBALUPDATE
-FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, Items) == 0x0c);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, PickedUpItems) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, PCurrentItem) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, ReceivingItems) == 0x25);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, SendMessageW) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, PContainer) == 0x29);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, AmountThroughForAreaResize) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, InitialAreaItemTook) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, OldItemRHSet) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, ItemPrimitiveHandle) == 0x9c);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroReceiveItems, BackgroundPrimitiveHandle) == 0xa4);
-FABLE_STATIC_ASSERT(sizeof(CTCHeroReceiveItems) == 0xac);
+FABLE_STATIC_ASSERT_AT(106, offsetof(CTCHeroReceiveItems, Items) == 0x0c);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CTCHeroReceiveItems, PickedUpItems) == 0x10);
+FABLE_STATIC_ASSERT_AT(108, offsetof(CTCHeroReceiveItems, PCurrentItem) == 0x1c);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CTCHeroReceiveItems, ReceivingItems) == 0x25);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CTCHeroReceiveItems, SendMessageW) == 0x28);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CTCHeroReceiveItems, PContainer) == 0x29);
+FABLE_STATIC_ASSERT_AT(112, offsetof(CTCHeroReceiveItems, AmountThroughForAreaResize) == 0x34);
+FABLE_STATIC_ASSERT_AT(113, offsetof(CTCHeroReceiveItems, InitialAreaItemTook) == 0x3c);
+FABLE_STATIC_ASSERT_AT(114, offsetof(CTCHeroReceiveItems, OldItemRHSet) == 0x6c);
+FABLE_STATIC_ASSERT_AT(115, offsetof(CTCHeroReceiveItems, ItemPrimitiveHandle) == 0x9c);
+FABLE_STATIC_ASSERT_AT(116, offsetof(CTCHeroReceiveItems, BackgroundPrimitiveHandle) == 0xa4);
+FABLE_STATIC_ASSERT_AT(117, sizeof(CTCHeroReceiveItems) == 0xac);
 #endif
 #endif

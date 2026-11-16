@@ -54,16 +54,28 @@ class CTVertexRHWColSpecTex1:public CGenericVertex<CTVertexRHWColSpecTex1Base> {
 // 2D TU's screen RHW float 0x0139652C (landed spelling g_ScreenRHW) for Z in [0, 0.01), its negation for Z in [-0.01, 0), else 1/Z
 // (retail 0x009DDCCE..0x009DDD70, expanded once per vertex).
 #include "fable_compiler.h"
-extern float g_ScreenRHW;                                                // 0x0139652C
+#ifdef FABLE_RETAIL_CGENERICVERTEX_ORIGINAL_RHW_PASS23
+// Both PDBs, exact lib_render_manager_2d module S_LDATA32: const float BIGGEST_RHW_VERTEX_VALUE.
+extern const float BIGGEST_RHW_VERTEX_VALUE;
+#define FABLE_RHW_VALUE_PASS23 BIGGEST_RHW_VERTEX_VALUE
+#else
+extern float g_ScreenRHW;
+#define FABLE_RHW_VALUE_PASS23 g_ScreenRHW
+#endif                                                // 0x0139652C
+#ifdef FABLE_RETAIL_CGENERICVERTEX_RHW_PLAIN_PASS23
+template<class T> inline void CGenericVertex<T>::SetRHWFromZ()
+#else
 template<class T> FABLE_FORCEINLINE void CGenericVertex<T>::SetRHWFromZ()
+#endif
 {
     if (this->Z >= 0.0f && this->Z < 0.01f)
-        this->RHW = g_ScreenRHW;
+        this->RHW = FABLE_RHW_VALUE_PASS23;
     else if (this->Z >= -0.01f && this->Z < 0.0f)
-        this->RHW = -g_ScreenRHW;
+        this->RHW = -FABLE_RHW_VALUE_PASS23;
     else
         this->RHW = 1.0f / this->Z;
 }
+#undef FABLE_RHW_VALUE_PASS23
 #endif
 FABLE_STATIC_ASSERT_AT(64, sizeof(CTVertexRHWColSpecTex1)==32);
 #endif

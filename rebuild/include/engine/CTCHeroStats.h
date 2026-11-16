@@ -36,6 +36,12 @@ class CThingAICreature; class CHeroMarriageInfo;
 enum EMarriageState;                                         // MS forward enum
 #endif
 class CTCHeroStats : public CTCBase {
+#ifdef FABLE_RETAIL_GREETING_PASS23
+public:
+    // Both original PDB constructors: public CThing&; normal fixture lifetimes.
+    CTCHeroStats(CThing&);
+private:
+#endif
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 public:void InformOfEvent(const NHeroStatModifierEvent::CBase&);
 #endif
@@ -49,6 +55,16 @@ public:
     // (calls 0x00682F84 / 0x00683044). Declarations only.
     void GetWivesInMarriageState(std::list<const CThingAICreature*>& wives, EMarriageState state) const;   // 0x0057AE53
     bool PeekMarriageInfo(unsigned __int64 uid, CHeroMarriageInfo& info) const;                          // 0x0057AC89
+#endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_KICK_PASS23
+ // Both original PDBs: ordinary public CThing& constructor and kick method.
+#ifndef FABLE_RETAIL_GREETING_PASS23
+ CTCHeroStats(CThing&);
+#endif
+ void KickHeroToMostRecentSafeRegion();
+#ifndef FABLE_RETAIL_CTCHEROSTATS_CRIME_REPORT
+ void GetOutstandingFineAndFramesLeft(const CCharString&,long&,long&);
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_TRADESKILL
     // Retail opt-in (wf7, rows 0x007735D0 CTCShop::GetAttitudeBuyPriceMultiplier and 0x00773790 GetAttitudeSellPriceMultiplier):
@@ -147,7 +163,15 @@ private:
     void SetMarriageState(const CThingAICreature* wife, EMarriageState state);   // 0x0057BC6E
 public:
 #endif
-#ifdef FABLE_RETAIL_CTCHEROSTATS_MORALITY
+#ifdef FABLE_RETAIL_GREETING_PASS23
+    // Both original PDBs: TrainingStatus; native00683c85 reads +114.
+    EHeroTrainingStatus GetTrainingStatus() const { return TrainingStatus; }
+private:
+    unsigned char _greet_before_training[0x114-sizeof(CTCBase)];
+    EHeroTrainingStatus TrainingStatus;
+    unsigned char _greet_after_training[0x1dc-0x118];
+public:
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_MORALITY)
     // Nested opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): Ego_r.pdb Morality (long; PDB +0x30, retail +0x28: OutstandingCrimes
     // map and ExperienceSpentOn vector are 4 bytes smaller each in STLport, OnHit reads `[esi+28h]`), FableWin.pdb's inline
     // ?GetMorality@CTCHeroStats@@QBEJXZ and Ego_r.pdb ?SetMorality@CTCHeroStats@@QAEXJ@Z (retail 0x0057C2E6, out of line).

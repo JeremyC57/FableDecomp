@@ -1,0 +1,3 @@
+address	historical_wrong_name	correct_name	evidence
+00c2cbd0	_global::CQ_GuildTrainingPreMeleeScript_Initialize	CEventScript::CEventScript	Descriptive libpk hierarchy and complete native EH chain; no original PDB identity
+00c194f0	CTreeNode constructor / CSegmentArray constructor	PKCTRRedblackTree::PKCTRRedblackTree	Native filename+40Btree layout+15slotinterface; descriptive

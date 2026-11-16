@@ -9,11 +9,21 @@
 // Full-layout opt-in (Codex pass 17, row 0x0078C150 CTCBerserk::PlayHitEffectAtPos): the retail 0x28-byte layout (STLport list 4 and
 // vector<bool> sized members) and the public static ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z.
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_GUI_DRAW_PASS23
+#include "engine/CIntelligentPointer.h"
+#endif
 #include "engine/EHeroAbility.h"
 #include "stlport/fable_containers.h"
 class CThingCreatureBase;class C3DVector;
 class CTCSpecialAbilities:public CTCBase {
 public:static CThing* FABLE_FASTCALL CreateParticleEffect(long,const C3DVector&);
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_GUI_DRAW_PASS23
+ // Both original ctor/dtor and exact static interface API, full branch only.
+ CTCSpecialAbilities(CThing&);virtual ~CTCSpecialAbilities();
+#if !defined(FABLE_RETAIL_CTCUNHOLYPOWER_CANCELFORCUTSCENE) && !defined(FABLE_RETAIL_CTCSPECIALABILITIES_TURNCOAT)
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SPECIAL_ABILITIES;}
+#endif
+#endif
 #ifdef FABLE_RETAIL_CTCUNHOLYPOWER_CANCELFORCUTSCENE
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SPECIAL_ABILITIES;}
  void UnLockAbilitiyMutex(){AbilityMutexLock=false;CurrentAbility=(EHeroAbility)0;}
@@ -63,7 +73,17 @@ private:
  bool SetupDivineWrath();   // 0x0072CD00
  bool SetupUnholyPower();   // 0x0072CE20
 #endif
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_GUI_DRAW_PASS23
+private:
+ // Both original complete nested class records:20bytes, generated copy/destructor.
+ class CUndeadFollower {public:
+  long Health;CIntelligentPointer<CThing> PThing;bool Active;unsigned long AppearanceSeed;
+  CUndeadFollower();CUndeadFollower(long,unsigned long);
+ };
+ bool AbilityMutexLock,UsingBed;EHeroAbility CurrentAbility;
+#else
 private:class CUndeadFollower;bool AbilityMutexLock,UsingBed;EHeroAbility CurrentAbility;
+#endif
  std::list<CUndeadFollower> UndeadFollowers;CThingCreatureBase& Creature;std::vector<bool> AbilityAvailability;
 #ifdef FABLE_RETAIL_CTCSPECIALABILITIES_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).

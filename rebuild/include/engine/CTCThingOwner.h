@@ -10,6 +10,10 @@ private:
     std::list<CIntelligentPointer<CThing> > ObjectList;
     bool CallOnDie;
 public:
+#ifdef FABLE_RETAIL_CTCTHINGOWNER_CTOR_PASS23
+    // Both original PDB constructor PUBLICs; declaration only, no layout change.
+    CTCThingOwner(CThing&);
+#endif
 #ifdef FABLE_RETAIL_CTCTHINGOWNER
     // Retail opt-in (2026-11-03, chunk 720 row 0x0065B854): FableWin.pdb ?StatGetInterfaceType@CTCThingOwner@@SI?AW4ETCInterfaceType@@XZ,
     // inline (TCI_THING_OWNER = 0x21 folds into AddThingToVillage's GetTC lookup at 0x0065BC57). No layout change.
@@ -27,5 +31,5 @@ public:
     const std::list<CIntelligentPointer<CThing> >& GetObjectList() const { return ObjectList; }
     std::list<CIntelligentPointer<CThing> >& GetObjectList() { return ObjectList; }
 };
-FABLE_STATIC_ASSERT(sizeof(CTCThingOwner)==0x14);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CTCThingOwner)==0x14);
 #endif

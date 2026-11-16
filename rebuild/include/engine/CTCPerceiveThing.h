@@ -120,7 +120,7 @@ public:
  virtual ~CTCPerceiveThing();
  CTCPerceiveThing & operator=(const CTCPerceiveThing & p0);
 };
-FABLE_STATIC_ASSERT(sizeof(CTCPerceiveThing)==0x58);
+FABLE_STATIC_ASSERT_AT(123, sizeof(CTCPerceiveThing)==0x58);
 #else
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING
 // Retail opt-in (chunk 765, row 0x007446A0 CTCPerceiveThing::GetPerceivedThing): the polymorphic class, RTTI .?AVCTCPerceiveThing@@,
@@ -174,6 +174,21 @@ public:
     bool IsAwareOfThing() const { return AwarenessTimer!=0.0f; }
 #endif
     bool IsThingLineOfSight() const { return LineOfSight; }
+#ifdef FABLE_RETAIL_SENSED_PASS23
+    // Both original PDB constructor types: CThing& parent, ordinary public thiscall.
+    CTCPerceiveThing(CThing&);
+    // Original PDB methods; donor parent 02A90CA0 calls the named accessors.
+    // Retail 0089C9BB/C8/D5 read the same members at 2E/31/32.
+    bool IsThingExtendedLineOfSight() const { return ExtendedLineOfSight; }
+#ifndef FABLE_RETAIL_CTCPERCEIVETHING_THINGFLAGS
+    bool IsThingSmelt() const { return Smelt; }
+    bool IsThingHeard() const { return Heard; }
+    float GetSightRadius() const; // 007448F0, PDB order and native member +40.
+#endif
+    float GetSoundRadius() const; // 00744440, native member +3C.
+    float GetSmellRadius() const; // 00744450, native member +48.
+    float GetFOV() const; // 007445D0, confirmed by donor call order.
+#endif
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_SEEKPERCEIVEDTHING_FRIEND
     // Nested opt-in (wf8, row 0x0091B3A0 CAIStateGroup_SeekPerceivedThing::RunToPerceivedThingPosition): that function reads the
     // private LastPerceivedPos (+0x20) directly (0x0091B452 `lea edi,[ebp+20h]`). No accessor existed in the source: FableWin.pdb

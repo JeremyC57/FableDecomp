@@ -47,6 +47,11 @@ protected:
  static void __fastcall LeaveSynchronisation();
  void* InternalAllocate(long,unsigned long,bool);
 public:
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_SAVEBINARY_PASS23
+ // Both exact original PDB PUBLICs; actual debug caller confirms these two statistics.
+ unsigned long GetTotalMemoryAllocated();
+ unsigned long GetNoAllocatedAreas();
+#endif
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE
  // Original FableWin Get018a4e40; OnFailedAllocation030bf3a0.
  static CMemoryAllocator* FABLE_FASTCALL Get(){return PMemoryAllocator;}
@@ -66,6 +71,8 @@ public:
  }
 };
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_CTOR
+#ifndef FABLE_RETAIL_CMEMORYALLOCATOR_SAVEBINARY_HOST_PASS23
 typedef char CMemoryAllocator_size_is_0x49c[sizeof(CMemoryAllocator) == 0x49c ? 1 : -1];
+#endif
 #endif
 #endif

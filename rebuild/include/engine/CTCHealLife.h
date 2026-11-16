@@ -8,6 +8,10 @@
 class CSpecialAbilitiesHealLifeDef;class CThingCreatureBase;
 class CTCHealLife:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCHEALLIFE_CTOR_PASS23
+ // Both original PDB PUBLICs: original CThing& constructor.
+public: CTCHealLife(CThing&);
+#endif
  void StartHealingEffect();
 private:
  CCharString GetLevelEffectName();
@@ -21,5 +25,5 @@ private:
  std::vector<float> HealthIncreaseAccum;
  CIntelligentPointer<CThing> PHealingTarget;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCHealLife)==0x48);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CTCHealLife)==0x48);
 #endif

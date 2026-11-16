@@ -4,6 +4,9 @@
 #ifdef FABLE_RETAIL_CPLAYERGUI_QUEST_DRAW
 namespace NPlayerGui { class CDrawQuestInfo; }
 #endif
+#ifdef FABLE_RETAIL_CPLAYERGUI_EXPERIENCE_PASS23
+namespace NPlayerGui { class CMultiStatBar;class CDrawExperience; }
+#endif
 // Retail opt-in (Codex pass 11 consolidation 2): the retail CPlayerGui model (row 0x00667D30 CThingCreatureBase::OnHit); see below.
 #include "engine/CTBaseSingletonNoDefaultAlloc.h"
 #include "engine/CSubtitleRenderer.h"
@@ -50,6 +53,9 @@ enum EPlayerGuiMode { };                                             // W4EPlaye
 enum EPlayerGuiMode { };                                             // W4EPlayerGuiMode@@ (enumerators not needed here)
 #endif
 class CThing;class C3DVector;
+#ifdef FABLE_RETAIL_CPLAYERGUI_KICKREGION_PASS23
+class CRegion;
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_CTOR
 class CWorld; class CPlayerManager; class CGamePlayerInterface; class CMainGameComponent; class CGraphicDataBank;   // chunk 863
 #endif
@@ -60,6 +66,16 @@ namespace NHeroInformationScreens { class CManager; }
 // bytes in retail; FableWin.pdb ?GetSubtitleRenderer@CPlayerGui@@QAEAAVCSubtitleRenderer@@XZ is inline in Ego_r.pdb and retail
 // (CTCTavernGame::FrameUpdate reads the singleton's byte +0xFD = +0x18 + DisplayingText +0xE5 in place, 0x005EBA74).
 class CPlayerGui : public CTBaseSingletonNoDefaultAlloc<CPlayerGui> {
+#ifdef FABLE_RETAIL_CPLAYERGUI_KICKREGION_PASS23
+public:
+ // Both original PDBs and native004378b0: original region receiver/const ref.
+ void SetMiniMapRegion(const CRegion&);
+private:
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUI_EXPERIENCE_PASS23
+// Draw reads original private PStatUpdates and Alpha directly in retail00646f67.
+friend class NPlayerGui::CDrawExperience;
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_SCREENSHOTMESSAGE
 public:
     // Retail opt-in (wf19, row 0x0055D180): Ego_r.pdb / FableWin.pdb ?ShowScreenshotMessage / ?HideScreenshotMessage /
@@ -184,12 +200,26 @@ public:
     ~CPlayerGui();                                                       // 0x0043A570 (virtual through the singleton base)
 private:
 #else
-#ifdef FABLE_RETAIL_CPLAYERGUI_QUEST_DRAW
+#ifdef FABLE_RETAIL_CPLAYERGUI_EXPERIENCE_PASS23
+    // Original members read by00646f67; all other original storage retained opaque.
+    unsigned char _pad_0x138[0x168]; // PFont through Alpha
+    float Alpha; // +0x2a0
+    unsigned char _pad_0x2a4[0x50]; // camera flags and stat bars before PStatUpdates
+    CCountedPointer<NPlayerGui::CMultiStatBar> PStatUpdates; // +0x2f4
+    unsigned char _pad_0x2fc[0x3c]; // PAutoPickups through DisplayBottomHalfGUI
+#elif defined(FABLE_RETAIL_CPLAYERGUI_QUEST_DRAW)
     // Retail opt-in (Codex 2026-11-09): donor PDrawQuestInfo and Alpha,
     // native00651298 and006513c8 read1c8 and2a0. Default storage unchanged.
     unsigned char _pad_0x138[0x90];
     CCountedPointer<NPlayerGui::CDrawQuestInfo> PDrawQuestInfo;
+#ifdef FABLE_RETAIL_CPLAYERGUI_ABILITY_CONTEXT_PASS23
+    // Original both-PDB ShowSpecialAbilityButtons; native006450ea/00645134 read250.
+    unsigned char _pad_0x1d0[0x80];
+    bool ShowSpecialAbilityButtons;
+    unsigned char _pad_0x251[0x4f];
+#else
     unsigned char _pad_0x1d0[0xd0];
+#endif
     float Alpha;
     unsigned char _pad_0x2a4[0x94];
 #elif defined(FABLE_RETAIL_CPLAYERGUI_LIVEGUI)
@@ -211,11 +241,12 @@ public:
     // Retail opt-in (Codex2026-11-10): settled00438010 and both PDB signatures.
     void Draw2DText(const C2DVector&,const CWideString&,const CFontBank&,const CRGBColour&,float,EEngine2DLayer,bool);
 #endif
-#if defined(FABLE_RETAIL_CPLAYERGUI_ISSHOWSPECIALABILITYBUTTONS) && defined(FABLE_RETAIL_CPLAYERGUI_MEMBERS)
+#if defined(FABLE_RETAIL_CPLAYERGUI_ISSHOWSPECIALABILITYBUTTONS) && (defined(FABLE_RETAIL_CPLAYERGUI_MEMBERS) || defined(FABLE_RETAIL_CPLAYERGUI_ABILITY_CONTEXT_PASS23))
 public:
     // Retail opt-in (wf3, row 0x00646580 NPlayerGui::CDrawMeleeActionButtonEffects::Draw): FableWin.pdb
     // ?IsShowSpecialAbilityButtons@CPlayerGui@@QBE_NXZ (0x0180822F / 0x020F5B83), inline in retail: the row reads the flag in place
-    // (`mov eax,[esi+4] ; cmp byte ptr [eax+250h],bl` at 0x0064658D). Needs FABLE_RETAIL_CPLAYERGUI_MEMBERS (the named member). No layout change.
+    // (`mov eax,[esi+4] ; cmp byte ptr [eax+250h],bl` at0x0064658D). The original full-members
+    // profile or new ABILITY_CONTEXT_PASS23+QUEST_DRAW profile supplies the named member; layout unchanged.
     bool IsShowSpecialAbilityButtons() const { return ShowSpecialAbilityButtons; }
 #endif
 public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);

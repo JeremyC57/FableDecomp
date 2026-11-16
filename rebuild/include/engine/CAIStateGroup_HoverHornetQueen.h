@@ -9,7 +9,37 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN
+#if defined(FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN_ATTACK_PASS23)
+// Retail opt-in (chunk Q17, row 0x0095B820 CAIStateGroup_HoverHornetQueen::Spawn): the polymorphic retail class. RTTI
+// .?AVCAIStateGroup_HoverHornetQueen@@ : CAIStateGroup_HoverMovementBase : CAIStateGroup_EnemyCreatureBase (PTargetThing +0x14).
+// Members Ego_r.pdb with the retail 12-byte STLport vectors (sizeof 0x68); the two vectors and the direction enum are opaque here.
+// Member functions: the Ego_r.pdb name set (IsStillRunnable 0x0095A420 and Spawn are protected, IAE). Needs
+// FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE and engine/C3DVector.h.
+#include "engine/CAIStateGroup_HoverMovementBase.h"
+#include "engine/C3DVector.h"
+#include "stlport/fable_containers.h"
+class CThing;
+class CAIStateGroup_HoverHornetQueen : public CAIStateGroup_HoverMovementBase {
+protected:
+    bool IsStillRunnable();                                              // 0x0095A420 ?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ
+    void Attack();
+    void Spawn();                                                        // 0x0095B820 ?Spawn@CAIStateGroup_HoverHornetQueen@@IAEXXZ
+    C3DVector StartPos;                                                  // +0x1c
+    C3DVector ArenaCentrePos;                                            // +0x28
+    bool bOneTime;                                                       // +0x34
+    CThing* PEmitter;                                                    // +0x38
+    CThing* PEmitter2;                                                   // +0x3c
+    std::vector<CIntelligentPointer<CThing> > Things;                                           // +0x40 vector<CIntelligentPointer<CThing> >
+    long CurrentCirclePoint;                                             // +0x4c
+    std::vector<CIntelligentPointer<CThing> > CircleMarkers;                                    // +0x50 vector<CIntelligentPointer<CThing> >
+    long EnemyKnockDownFrame;                                            // +0x5c
+    bool TimingCritical;                                                 // +0x60
+    // Both original TPI enums; declaration access is not encoded by LF_NESTTYPE.
+    enum eWaspDirection { WASP_DIRECTION_CLOCKWISE=0, WASP_DIRECTION_ANTICLOCKWISE=1 };
+    eWaspDirection RouteDirection;                                     // +0x64, original protected field
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverHornetQueen) == 0x68);
+#elif defined(FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN)
 // Retail opt-in (chunk Q17, row 0x0095B820 CAIStateGroup_HoverHornetQueen::Spawn): the polymorphic retail class. RTTI
 // .?AVCAIStateGroup_HoverHornetQueen@@ : CAIStateGroup_HoverMovementBase : CAIStateGroup_EnemyCreatureBase (PTargetThing +0x14).
 // Members Ego_r.pdb with the retail 12-byte STLport vectors (sizeof 0x68); the two vectors and the direction enum are opaque here.
@@ -34,7 +64,7 @@ protected:
     bool TimingCritical;                                                 // +0x60
     unsigned char RouteDirection[0x4];                                   // +0x64 eWaspDirection
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverHornetQueen) == 0x68);
+FABLE_STATIC_ASSERT_AT(37, sizeof(CAIStateGroup_HoverHornetQueen) == 0x68);
 #else
 
 class CThing;

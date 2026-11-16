@@ -12,6 +12,11 @@ class CWorld; class CAnimateThing; class CAnimFilterBase; class C3DVector; enum 
 #endif
 class CTCCreatureModeManager : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_CTOR_PASS23
+    // Both original PDB complete type records: public CThing& constructor and virtual destructor.
+    explicit CTCCreatureModeManager(CThing& thing);
+    virtual ~CTCCreatureModeManager();
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ENTITY_MODE_MANAGER; }
     class CModeBase {
     public:
@@ -103,6 +108,6 @@ protected:
 public:
 #endif // FABLE_RETAIL_CTCCREATUREMODEMANAGER_FRAMEUPDATE
 };
-FABLE_STATIC_ASSERT(sizeof(CTCCreatureModeManager)==0x24);
+FABLE_STATIC_ASSERT_AT(106, sizeof(CTCCreatureModeManager)==0x24);
 
 #endif

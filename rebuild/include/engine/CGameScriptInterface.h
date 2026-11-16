@@ -27,6 +27,11 @@ class CThingSearchTools;
 class CWorld;
 
 class CGameScriptInterface : public CGameScriptInterfaceBase {
+#ifdef FABLE_RETAIL_SENSED_PASS23
+private:
+    // Both original PDBs: private const method; donor 02A90CA0 and retail 0089C910, ret 12.
+    bool CanThingBe_Sensed_ByOtherThing(const CScriptThing&, const CScriptThing&, long) const;
+#endif
 public:
     CGameScriptInterface(CMainGameComponent&, const CGameDefinitionManager&, CWorld&, CPlayerManager&, CDisplayEngine&); // 0x006E7740
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?WorldUpdate@CGameScriptInterface@@QAEX_N@Z, retail 0x006E75C0.
@@ -990,10 +995,10 @@ public:
     long                    CameraResetToViewBehindHeroCount; // +0x48
     long                    CreateCreatureDelayFrames;       // +0x4c
 };
-FABLE_STATIC_ASSERT(sizeof(CGameScriptInterface) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, World) == 0x04);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, HeroSThing) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) == 0x4c);
+FABLE_STATIC_ASSERT_AT(993, sizeof(CGameScriptInterface) == 0x50);
+FABLE_STATIC_ASSERT_AT(994, offsetof(CGameScriptInterface, World) == 0x04);
+FABLE_STATIC_ASSERT_AT(995, offsetof(CGameScriptInterface, HeroSThing) == 0x30);
+FABLE_STATIC_ASSERT_AT(996, offsetof(CGameScriptInterface, CreateCreatureDelayFrames) == 0x4c);
 #else
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -1029,24 +1034,24 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CGameScriptInterface) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, World) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, Component) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, DisplayEngine) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, DefinitionManager) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, PlayerManager) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, ThingSearchTools) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CurrentPlayer) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CurrentLevelID) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CurrentScriptLevelID) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CurrentScriptID) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, InMovieSequence) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, AllowScreenFadingIfAlreadyFaded) == 0x2d);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, HeroSThing) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, ScriptTimers) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CameraResetToViewBehindHeroCount) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) == 0x4c);
+FABLE_STATIC_ASSERT_AT(1032, sizeof(CGameScriptInterface) == 0x50);
+FABLE_STATIC_ASSERT_AT(1033, offsetof(CGameScriptInterface, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(1034, offsetof(CGameScriptInterface, World) == 0x4);
+FABLE_STATIC_ASSERT_AT(1035, offsetof(CGameScriptInterface, Component) == 0x8);
+FABLE_STATIC_ASSERT_AT(1036, offsetof(CGameScriptInterface, DisplayEngine) == 0xc);
+FABLE_STATIC_ASSERT_AT(1037, offsetof(CGameScriptInterface, DefinitionManager) == 0x10);
+FABLE_STATIC_ASSERT_AT(1038, offsetof(CGameScriptInterface, PlayerManager) == 0x14);
+FABLE_STATIC_ASSERT_AT(1039, offsetof(CGameScriptInterface, ThingSearchTools) == 0x18);
+FABLE_STATIC_ASSERT_AT(1040, offsetof(CGameScriptInterface, CurrentPlayer) == 0x1c);
+FABLE_STATIC_ASSERT_AT(1041, offsetof(CGameScriptInterface, CurrentLevelID) == 0x20);
+FABLE_STATIC_ASSERT_AT(1042, offsetof(CGameScriptInterface, CurrentScriptLevelID) == 0x24);
+FABLE_STATIC_ASSERT_AT(1043, offsetof(CGameScriptInterface, CurrentScriptID) == 0x28);
+FABLE_STATIC_ASSERT_AT(1044, offsetof(CGameScriptInterface, InMovieSequence) == 0x2c);
+FABLE_STATIC_ASSERT_AT(1045, offsetof(CGameScriptInterface, AllowScreenFadingIfAlreadyFaded) == 0x2d);
+FABLE_STATIC_ASSERT_AT(1046, offsetof(CGameScriptInterface, HeroSThing) == 0x30);
+FABLE_STATIC_ASSERT_AT(1047, offsetof(CGameScriptInterface, ScriptTimers) == 0x3c);
+FABLE_STATIC_ASSERT_AT(1048, offsetof(CGameScriptInterface, CameraResetToViewBehindHeroCount) == 0x48);
+FABLE_STATIC_ASSERT_AT(1049, offsetof(CGameScriptInterface, CreateCreatureDelayFrames) == 0x4c);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CGAMESCRIPTINTERFACE_H

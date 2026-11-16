@@ -6,6 +6,10 @@
 #include "engine/C3DVector.h"
 class CPlane {
 public:
+#ifdef FABLE_RETAIL_CPLANE_NORMAL_CTOR_PASS23
+    // Both original PDBs contain this overload; native00a17923..60 copies normal/distance.
+    CPlane(const C3DVector& normal,float distance) : Normal(normal),Distance(distance) { }
+#endif
 #ifdef FABLE_RETAIL_CPLANE_THREEPOINT_CONSTRUCTOR_PASS22
     // Original default and three-point constructors; donor02d78d90 forwards to Initialise.
     CPlane() { }

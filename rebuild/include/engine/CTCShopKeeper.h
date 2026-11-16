@@ -18,6 +18,10 @@ class COpinionDeed;
 #endif
 class CTCShopKeeper : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCSHOPKEEPER_CTOR_PASS23
+    // Both original PDB constructor PUBLICs; declaration only, no layout change.
+    CTCShopKeeper(CThing&);
+#endif
 #ifdef FABLE_RETAIL_CTCWIFE_MARRY
     void DetachFromShop();
 #endif

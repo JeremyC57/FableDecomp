@@ -9,6 +9,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 #include "engine/NScreenEffect_CScreenEffectPriorityStack.h"
+#ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_BULLETTIME_PASS23
+#include "engine/CEnvironmentSpellEffectInterface.h"
+#endif
 class CEnvironment;
 class CEnvironmentSpellEffectInterface;
 #ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FADETO
@@ -16,6 +19,11 @@ class CRGBFloatColour;
 #endif
 class CEnvironmentSpellEffectInterpolator {
 public:
+#ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_BULLETTIME_PASS23
+ // Both original PDBs; native006b8310 and006b8350 (const hidden-value return).
+ void RadialBlurSetCenterWorldPos(void*,const C3DVector&);
+ CEnvironmentSpellEffectInterface::CRadialBlurParams GetRadialBlurParam(void*)const;
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FRAMEUPDATE
     // Opt-in (row 0x006B3FF0 CEnvironment::Update): Ego_r.pdb ?FrameUpdate@CEnvironmentSpellEffectInterpolator@@QAEXXZ, retail 0x006B8640
     // (landed). Declaration only.
@@ -57,5 +65,5 @@ private:
 struct CEnvironmentSpellEffectInterpolatorLayout {
     enum { StackOffset = offsetof(CEnvironmentSpellEffectInterpolator, ScreenEffectPriorityStack) };
 };
-FABLE_STATIC_ASSERT(CEnvironmentSpellEffectInterpolatorLayout::StackOffset == 0x90);
+FABLE_STATIC_ASSERT_AT(60, CEnvironmentSpellEffectInterpolatorLayout::StackOffset == 0x90);
 #endif

@@ -13,7 +13,7 @@ public:
     CWideString tablePath_;
 };
 
-FABLE_STATIC_ASSERT(
+FABLE_STATIC_ASSERT_AT(16, 
     offsetof(CDefStringTableRecovered, tablePath_) == 0x30);
 
 #ifdef FABLE_RETAIL_CDEFSTRINGTABLE
@@ -25,6 +25,11 @@ class CDefStringTable
 {
 public:
     void LoadTable(bool readOnly);                                       // ?LoadTable@CDefStringTable@@QAEX_N@Z
+#ifdef FABLE_RETAIL_CDEFSTRINGTABLE_SAVEBINARY_PASS23
+    // Both original PUBLICs and original RandomID field/native013ca854.
+    void SaveTable(bool);
+    unsigned long GetTableRandomID(){return RandomID;}
+#endif
     CCharString GetString(long pos) const;                               // 0x009D49B0
 #ifdef FABLE_RETAIL_CDEFSTRINGTABLE_ASCHARARRAY
     // Opt-in (chunk 1017, row 0x008365F0): Ego_r.pdb / FableWin.pdb ?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z (const; retail
@@ -41,7 +46,7 @@ private:
     bool Locked;                                                         // +0x34
     bool ReadOnly;                                                       // +0x35
 };
-FABLE_STATIC_ASSERT(sizeof(CDefStringTable) == 0x38);
+FABLE_STATIC_ASSERT_AT(44, sizeof(CDefStringTable) == 0x38);
 extern CDefStringTable GDefStringTable;                                  // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A
 #else
 class CDefStringTable
@@ -55,7 +60,7 @@ public:
     bool readOnly_;
 };
 
-FABLE_STATIC_ASSERT(offsetof(CDefStringTable, tablePath_) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CDefStringTable, loaded_) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CDefStringTable, readOnly_) == 0x35);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CDefStringTable, tablePath_) == 0x30);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CDefStringTable, loaded_) == 0x34);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CDefStringTable, readOnly_) == 0x35);
 #endif // FABLE_RETAIL_CDEFSTRINGTABLE

@@ -298,6 +298,13 @@ public:
     // Declaration only: no layout change.
     bool FindLastUnblockedGroundPositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& result) const;   // 0x0063D960
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_COLLISION_CORNERS_PASS23
+    // Original Ego_r/FableWin typed symbols: protected static const C2DCoordI[4].
+    // Donor024a8ab2 indexes LineCollisionAround4Square; native0063d198 uses0137b730.
+protected:
+    static const C2DCoordI LineCollisionAround4Square[4];
+public:
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_LINESEGMENT
     // Nested opt-in (chunk 1013, rows 0x0063B3F0 / 0x0063D0A0 / 0x0063D4A0): Ego_r.pdb protected const
     // ?CreateLineSegment@CWorldMap@@IBE_NPBVC3DVector@@0PAV2@1@Z (Ego_r 0x006E7530; retail 0x0063B3F0),
@@ -384,6 +391,14 @@ class CWorld;
 #pragma pack(push, 1)
 class CWorldMap {
 public:
+#ifdef FABLE_RETAIL_CWORLDMAP_HOVERQUEEN_QUERY_PASS23
+ // Retail opt-in (Codex pass23): exact original const-reference query, no data-layout change.
+ float GetGroundSizeZAt(const class C3DVector& pos) const;
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_CYLINDER_QUERY
+ // Retail opt-in (Codex pass23): original const-reference query, no data-layout change.
+ float GetHeightZBelowPos(const C3DVector& pos) const;
+#endif
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     long                    f4;                              // +0x04 retail-only long (previous header)
     CWorld*                 World;                           // +0x08

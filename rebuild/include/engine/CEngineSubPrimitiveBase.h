@@ -23,7 +23,12 @@ public:
  virtual ~CEngineSubPrimitiveBase();
 #endif
 #endif
+#if defined(FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_PORTABLE_NEW_PASS23) && !defined(_MSC_VER)
+ // Native original first parameter is32bit size_t; host64 requires its own size_t.
+ static void* operator new(size_t size);
+#else
  static void* __fastcall operator new(unsigned int size);
+#endif
  static void __fastcall operator delete(void*);
 #ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_PARENTBASE
  // Retail opt-in (chunk 2045, row 0x00BB8EF0): FableWin.pdb ?GetParentBase@CEngineSubPrimitiveBase@@QAEPAVCEngineInternalPrimitiveBase@@XZ

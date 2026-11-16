@@ -2,6 +2,9 @@
 #ifndef FABLE_ENGINE_C3DVECTOR_H
 #define FABLE_ENGINE_C3DVECTOR_H
 #include "fable_compiler.h"
+#ifdef FABLE_RETAIL_C3DVECTOR_LIBPK_CODA_COPY_PASS23
+struct _CVECTOR;
+#endif
 // PDB C3DVector complete TPI 0x2783: public X/Y/Z at 0/4/8, size 12.
 // Embedded alignment is under review; this header introduces no packing directive.
 // One model (Codex pass 11 consolidation): the arithmetic helpers are __forceinline (owner 2026-11-01: C3DVector arithmetic
@@ -38,6 +41,20 @@ extern const float DELTA_NOTIONAL_ZERO;                                 // 0x012
 // exponent (0x17C - e) / 2, the 128-entry mantissa table 0x013CE558, one Newton step with 3.0f / 0.5f), the body the landed
 // 0x007AF0F0 / 0x006B3030 rows model locally.
 extern unsigned long GFastOneOverSqrtTable[128];                        // 0x013CE558
+#if defined(FABLE_RETAIL_GFFASTONEOVERSQRT_HOST_BITS_PASS23) && !defined(_MSC_VER)
+// Host portability: the original unsigned-long bit word is32bits on VC7.1.
+// Copy float bits into a32-bit unsigned int on LP64 hosts; native text is unchanged.
+#include <string.h>
+inline float FABLE_FASTCALL GFFastOneOverSqrt(float value) {
+    unsigned int bits;
+    memcpy(&bits,&value,sizeof(value));
+    unsigned int estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23) |
+        ((unsigned int)GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);
+    float r;
+    memcpy(&r,&estimate,sizeof(r));
+    return ((3.0f-((r*r)*value))*r)*0.5f;
+}
+#else
 #ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_GROUPED
 // Retail opt-in (chunk Q8, row 0x006A4FB0 CThingPhysical::GetFirstCollision): the same body with the Newton step fully grouped,
 // `((3.0f-((r*r)*value))*r)*0.5f`. Same instructions; the three extra no-code PAREN tuples move VC7.1's scheduling-region cut so
@@ -69,12 +86,18 @@ FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long 
 #endif
 #endif
 #endif
+#endif // FABLE_RETAIL_GFFASTONEOVERSQRT_HOST_BITS_PASS23
 #ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER
+#if defined(FABLE_RETAIL_C3DVECTOR_SQUARE_GROUPED_PASS23)
+// Original GFSqr float helper; preserve its product as one arithmetic expression.
+inline float FABLE_FASTCALL GFSqr(float n){return (n*n);}
+#else
 #if defined(FABLE_RETAIL_JACK_STAGE1_UPDATE) || defined(FABLE_RETAIL_C3DVECTOR_SQUARE_ORIGINAL_FORMAL)
 inline float FABLE_FASTCALL GFSqr(float n){return n*n;}
 #else
 inline float FABLE_FASTCALL GFSqr(float value){return value*value;}
 #endif
+#endif // FABLE_RETAIL_C3DVECTOR_SQUARE_GROUPED_PASS23
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQRTF
 inline float FABLE_FASTCALL GFRoot(float n){return sqrt(n);}
@@ -150,6 +173,7 @@ public:
 #endif
     C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
 #endif
+#ifndef FABLE_RETAIL_C3DVECTOR_LIBPK_IMPLICIT_COPY_PASS23
 #ifdef FABLE_RETAIL_C3DVECTOR_ORIGINAL_COPY_FORMAL
     // Original donor018BFF40 and BPREL record p.
     C3DVector(const C3DVector& p){X=p.X;Y=p.Y;Z=p.Z;}
@@ -172,6 +196,7 @@ public:
 #endif
 #endif
 #endif
+#endif // preserve implicit libpk copy
     FABLE_VECTOR_INLINE void Initialise(float x,float y,float z){X=x;Y=y;Z=z;}
 #if defined(FABLE_RETAIL_C3DVECTOR_INITIALISE_SUB)
     // Retail opt-in (agentC17; rows 0x00BA5260 RenderMeshPrimitive, 0x00BB30A0 / 0x00BB3E80 cloth): a default-constructed named result
@@ -294,7 +319,10 @@ public:
     // the result into a running float total (0x00AE0710 CalculateAveragePatchSize: `fmul; faddp st(1); fmul; faddp st(1);
     // faddp st(3)`); the unparenthesised default lets it reassociate each product into the total (identical bytes everywhere
     // else). The operand order inside the parentheses does not change the bytes there.
-#ifdef FABLE_RETAIL_C3DVECTOR_SQUAREDMAGNITUDE_XYZ
+#if defined(FABLE_RETAIL_C3DVECTOR_SQUARED_MAGNITUDE_ORIGINAL_EXPR_PASS23)
+    // Original donor01907260 is57B with no named local; the row selects an inline budget.
+    inline float GetSquaredMagnitude()const{return (X*X)+(Y*Y)+(Z*Z);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_SQUAREDMAGNITUDE_XYZ)
     // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): the same parenthesised one-line sum in X, Y, Z
     // order. There the inlined Normalise loads Z, Y, X (0x0079AE93 fld [esp+24h], 0x0079AEA0 fld [esp+20h], 0x0079AEAA fld
     // [esp+1Ch]); the X, Z, Y spelling loads Y, Z, X in that TU. Body only: no layout change, default path unchanged.
@@ -315,7 +343,13 @@ public:
     // Chunk 732 (row 0x006AABE0 SetActionForMelee): FableWin.pdb ?GetSquaredMagnitude2D@C3DVector@@QBEMXZ (debug copy 0x01DAEC70; no
     // Ego_r.pdb copy, expanded in retail) as running statements: retail loads X then Y (0x006AACCF, 0x006AADB1, 0x006AAF97); the
     // one-line `X*X+Y*Y` lets VC7.1 load Y first there. No other FABLE_RETAIL_C3DVECTOR includer uses it.
+#ifdef FABLE_RETAIL_C3DVECTOR_SQUARED2D_ONE_EXPRESSION_PASS23
+    // Original FableWin01daec70 is18instructions/43B; the existing running-sum variant is44B.
+    // Reuse the same original expression retained in the existing non-retail branch.
+    FABLE_VECTOR_INLINE float GetSquaredMagnitude2D()const{return X*X+Y*Y;}
+#else
     FABLE_VECTOR_INLINE float GetSquaredMagnitude2D()const{float squared=X*X;squared+=Y*Y;return squared;}
+#endif
 #else
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
     FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return X*X+Y*Y+Z*Z;}
@@ -324,7 +358,11 @@ public:
 #endif
     FABLE_VECTOR_INLINE float GetSquaredMagnitude2D()const{return X*X+Y*Y;}
 #endif
-#if defined(FABLE_RETAIL_C3DVECTOR_DOT_XY_THEN_Z)
+#if defined(FABLE_RETAIL_C3DVECTOR_DOT_ORIGINAL_SCOPE_PASS23)
+    // Original donor01D89990 is59B with no named dot local; ordinary inline is sufficient.
+    // Preserve the original return/receiver/formal and arithmetic association; group only scope.
+    inline const float Dot(const C3DVector& vector)const{return (X*vector.X)+(Y*vector.Y)+(Z*vector.Z);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_DOT_XY_THEN_Z)
     // Retail opt-in (chunk 2053, row 0x0087F3A0 CCombatAction_KickThingOnGround::PerformAction): the X/Y pair as one parenthesised
     // sum, then Z added to the named total. FableWin.pdb ?Dot@C3DVector@@QBE?BMABV1@@Z debug copy 0x01D89990 is 23i/59b; this text is
     // 23i/60b at plain /Od (fwsize SAME; the same +1 byte as the landed running-sum GetSquaredMagnitude2D, 18i/44b v 18i/43b). Without
@@ -365,9 +403,17 @@ public:
     // descriptive DotProduct) and the field-by-field copy 0x00C1BFF0 (landed descriptive Copy). Declarations only.
     const C3DVector Cross(const C3DVector& other) const;                 // 0x00C25860
     float DotProduct(const C3DVector& other) const;                      // 0x00C256A0
+#ifdef FABLE_RETAIL_C3DVECTOR_LIBPK_CODA_COPY_PASS23
+    // NativeC1BFF0 returns plain three-float CODA storage; actual API CODA_3DSourceSetPosition accepts CVECTOR.
+    _CVECTOR Copy() const;
+#else
     C3DVector Copy() const;                                              // 0x00C1BFF0
+#endif
 #elif defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION)
     // Native007c14a3..14fb: retain the two component subtractions as source expression units.
+    FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),(X*other.Y-Y*other.X));}
+#elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_MEMBER_ALL_GROUP_PASS23)
+    // Original Cross components grouped individually; no arithmetic reassociation.
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),(X*other.Y-Y*other.X));}
 #elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_MEMBER_X_GROUP)
     // Cross expression grouping retains native00697d79..b2 scheduling.
@@ -400,7 +446,12 @@ public:
     FABLE_VECTOR_INLINE const C3DVector& operator/=(float v){float reciprocal=1.0f/v;X*=reciprocal;Y*=reciprocal;Z*=reciprocal;return *this;}
 #ifdef FABLE_RETAIL_C3DVECTOR_ACCURATE_MAGNITUDE
     // Original FableWin01d99fb0 and both PDB signatures; named squared sum.
+#if defined(FABLE_RETAIL_C3DVECTOR_ACCURATE_SQUARE_GROUPS_PASS23)
+    // Both original PDBs and donor01d99fb0: three squared components then sqrt.
+    FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+(Y*Y)+(Z*Z);return (float)sqrt(magnitude);}
+#else
     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return (float)sqrt(magnitude);}
+#endif
 #endif
 #if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQUARED_LOCAL)
     // Retail opt-in (row 0x00B4D370): FableWin ?GetMagnitude@C3DVector@@QBEMXZ text (26i / 66b at /Od, fwsize SAME): the sum in a named
@@ -420,18 +471,24 @@ public:
 #else
     FABLE_VECTOR_INLINE float GetMagnitude()const{return (float)sqrt(GetSquaredMagnitude());}
 #endif
-#if (defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || (defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && !defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ONE_EXPRESSION))) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+#if (defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || (defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && !defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ONE_EXPRESSION) && !defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ORIGINAL_SUM_PASS23))) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
     // Original FableWin01d9faa0 GetMagnitude2D, calls single-precision sqrt helper.
     // (FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D selects this body alone: row 0x009711D0 and the chunk 2029 rows 0x00915B60 / 0x0094E7B0 /
     // 0x0097BDA0. FableWin.pdb ?GetMagnitude2D@C3DVector@@QBEMXZ, no Ego_r.pdb or Fable.exe copy: inline in release. 0x00915D8F..0x00915DA3
     // squares X, adds Y squared, then fsqrt.)
     inline float GetMagnitude2D()const {float squared=X*X;squared+=Y*Y;return GFFastSqrt(squared);}
 #endif
-#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ONE_EXPRESSION) && !defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && (defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ONE_EXPRESSION) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ORIGINAL_SUM_PASS23)) && !defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+    // New ORIGINAL_SUM_PASS23 opt-in: original FableWin01d9faa0 is52B, no source locals,
+    // and calls GFFastSqrt on the direct X/Y square sum. The existing ONE_EXPRESSION note follows.
     // FITTED variant (chunk Q9, row 0x0092ACE0 CAIStateGroup_ApprenticeHero::GoToLibrary, its only user): the sum as one expression. With the
     // two-statement body above -- the one every other row matches with -- that row differs at the same size (389 v 389, graded 2026-11-13).
     // One retail inline has one body, so the open question is that row's own spelling of `direction /= direction.GetMagnitude2D()`.
+#ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ORIGINAL_SUM_PASS23
     inline float GetMagnitude2D()const {return GFFastSqrt(X*X+Y*Y);}
+#else
+    inline float GetMagnitude2D()const {return GFFastSqrt(X*X+Y*Y);}
+#endif
 #endif
     inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }
 #ifdef FABLE_RETAIL_C3DVECTOR
@@ -631,8 +688,13 @@ public:
     void Rotate(float angleXY,float angleYZ);                            // 0x00A14260
 #endif
 };
+
 #ifdef FABLE_RETAIL_C3DVECTOR_PACKED
 #pragma pack(pop)
+#endif
+#ifdef FABLE_RETAIL_C3DVECTOR_LIBPK_CODA_COPY_BODY_PASS23
+#include "engine/CodaEnvironment.h"
+inline _CVECTOR C3DVector::Copy()const{_CVECTOR result;result.x=X;result.y=Y;result.z=Z;return result;}
 #endif
 #undef FABLE_VECTOR_INLINE
 #endif

@@ -62,6 +62,10 @@ private:
  bool (__fastcall* IMEMessageFunc)(HWND,unsigned int,unsigned int,long,long&);
  bool (__fastcall* MessageFilter)(tagMSG*);
 public:
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER_LIFETIME_PASS23
+    // Both original PDB user lifetime methods; declarations only.
+    CSystemManager();virtual ~CSystemManager();
+#endif
 #ifdef FABLE_RETAIL_CSYSTEMMANAGER_MOUSE
 // Original PDB names plus debug01870df0 and native009a4fc0..009a5000; default layout unchanged.
  HWND GetApplicationWinHandle()const{return ApplicationWinHandle;}

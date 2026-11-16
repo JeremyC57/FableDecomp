@@ -1,6 +1,11 @@
 #ifndef FABLE_ENGINE_NPLAYERGUI_CSTATBAR_H
 #define FABLE_ENGINE_NPLAYERGUI_CSTATBAR_H
 #include "engine/NPlayerGui_CStatBase.h"
+#ifdef FABLE_RETAIL_NPLAYERGUI_CSTATBAR_CHANGE_TEXT_PASS23
+#include "engine/C2DVector.h"
+#include "engine/CRGBColour.h"
+#include "fable_string.h"
+#endif
 class CFontBank; class CWideString;
 namespace NPlayerGui {
 // Layout: both PDBs; base72, six scalar words, FontBank+96, STLport list+100.
@@ -14,9 +19,21 @@ public:
  virtual void ClearPrimitiveHandles();
 protected:
  virtual void DrawStatBox(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,long,long,long,const CWideString&,unsigned char,bool,bool);
+#ifdef FABLE_RETAIL_NPLAYERGUI_CSTATBAR_CHANGE_TEXT_PASS23
+ // Both original nested class records; native size36, needed for normal list lifetimes.
+ class CChangeText {public:
+  C2DVector OldOffset,Offset;
+  CWideString Text;
+  long Value;
+  CRGBColour Colour;
+  bool StartToEnd;
+  float PercentageThrough;
+ };
+#else
  class CChangeText;
+#endif
  std::list<CChangeText> ChangeTexts;
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NPlayerGui::CStatBar)==104);
+FABLE_STATIC_ASSERT_AT(21, sizeof(NPlayerGui::CStatBar)==104);
 #endif

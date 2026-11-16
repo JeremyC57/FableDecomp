@@ -11,6 +11,13 @@ class C3DVector; class CThing; enum ECombatZone;
 #endif
 class CCombatManager:public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_COMBAT_DEFENDER_ZONE_PASS23
+ // Original FableWin02412a40 and both PDBs; native006e92c0, expanded at006e99b0.
+ bool IsAttacker(const CThingCreatureBase& creature)const {
+     std::map<unsigned __int64,CCombatantInfo>::const_iterator found=Combatants.find(creature.GetUniqueID());
+     return found!=Combatants.end() && found->second.AttackerInfo.Attacked!=0;
+ }
+#endif
 #if defined(FABLE_RETAIL_LEADER_INITIALISE) || defined(FABLE_RETAIL_CCOMBATMANAGER_DIALOGUE)
  // FABLE_RETAIL_CCOMBATMANAGER_DIALOGUE (chunk Q17, row 0x0093C030): the same Ego_r.pdb inline accessor
  // ?GetCombatDialogueManager@CCombatManager@@QAEAAVCombatDialogueManager@@XZ (`lea ecx,[eax+38h]`, 0x0093C11B) without the LEADER opt-in.
@@ -100,5 +107,5 @@ private:
  bool DrawDebug;bool TraceDebug;float ProximityForNavigation;bool EnableAINonAttackMode;float AttackPatternIdleStandardInterval;
  bool AttacksFromNearestCombatantOnly;CombatDialogueManager DialogueManager;
 };
-FABLE_STATIC_ASSERT(sizeof(CCombatManager)==0x5c);
+FABLE_STATIC_ASSERT_AT(103, sizeof(CCombatManager)==0x5c);
 #endif

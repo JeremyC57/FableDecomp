@@ -89,6 +89,11 @@ public:
         union { CHeader* Header; long NextUnusedHandle; };
     };
 #endif
+#ifdef FABLE_RETAIL_CSOUNDEVENTMANAGER_STREAMED_PASS23
+    // Existing nativeC283C0/C283E0 member signatures, no surrogate implementation.
+    void Lock(long);
+    void Unlock(long);
+#endif
     virtual void MoveResource(void* resource, long handle, void* from, void* to, unsigned long size);   // slot 0
     virtual int  CanMoveResource(void* resource, long handle);                                        // slot 1
     virtual void ValidateResource(void* resource);                                                    // slot 2
@@ -117,4 +122,9 @@ protected:
     void* InternalGetResource(long handle);                   // 0x00C28560
 };
 
+#ifdef FABLE_RETAIL_STREAMED_POOL_CALLEES_PASS23
+// NativeC283C0/C283E0: idempotent byte locks and pool LockCount, not a recursive lock count.
+inline void CHandleBasedMemoryPool_012b4098::Lock(long handle){CHeader*header=Handles[handle];if(!header->Locked){header->Locked=1;++LockCount;}}
+inline void CHandleBasedMemoryPool_012b4098::Unlock(long handle){CHeader*header=Handles[handle];if(header->Locked){header->Locked=0;--LockCount;}}
+#endif
 #endif

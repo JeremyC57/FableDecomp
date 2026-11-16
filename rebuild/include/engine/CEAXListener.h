@@ -22,6 +22,11 @@ public:
 };
 class CEAXListener:public CCodaObjectBase {
 public:
+#ifdef FABLE_RETAIL_CEAXBUFFER_CTOR_PASS23
+ // Both original EAXListener.obj variants; native00c60410/00c609a0.
+ void DeleteChangesList();
+ int AddBuffer(CEAXBuffer*);
+#endif
  virtual ~CEAXListener();
  int GetEAX4FXSlot(unsigned long,unsigned long,void*,unsigned long,unsigned long*); // 0x00C66330
  void AddToChangesList(IDENTIFIER,unsigned long,void*,long); // 0x00C5FFB0

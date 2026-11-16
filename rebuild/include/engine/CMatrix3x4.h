@@ -1,6 +1,11 @@
 #ifndef FABLE_ENGINE_CMATRIX3X4_H
 #define FABLE_ENGINE_CMATRIX3X4_H
 #include "fable_compiler.h"
+#ifdef FABLE_RETAIL_CMATRIX3X4_PLAIN_INLINE_PASS23
+#define FABLE_MATRIX_INLINE_PASS23 inline
+#else
+#define FABLE_MATRIX_INLINE_PASS23 FABLE_FORCEINLINE
+#endif
 // CMatrix3x4 (Ego_r TPI: a union whose struct arm is float E11..E43, rows of three, size 0x30; struct_layouts_egor.tsv
 // CMatrix3x4_u_0_s_0). The flat members below are that struct arm (identical layout). TransformPoint overloads: FableWin
 // ?TransformPoint@CMatrix3x4@@QBEXAAVC3DVector@@@Z (0x024543E0) and ?TransformPoint@CMatrix3x4@@QBEXABVC3DVector@@AAV2@@Z
@@ -20,6 +25,7 @@ template<class T> inline void FABLE_FASTCALL SWAP(T& a, T& b) { T temp = a; a = 
 #endif
 class CMatrix3x4 {
 public:
+#ifndef FABLE_RETAIL_CMATRIX3X4_TRAILING_DATA_PASS23
 #ifdef FABLE_RETAIL_CMATRIX3X4_DATA_UNION
     // Retail opt-in (Codex pass 17): original anonymous union and Data[4][3], both PDB TPI layouts.
     union {
@@ -29,7 +35,44 @@ public:
 #else
     float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
 #endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_PRETRANSLATE_PASS23
+    // Original FableWin02d78dd0; called by02f5ee0e. Each row is one sum.
+    void PreTranslate(const C3DVector& translate) {
+        E41=translate.X*E11+translate.Y*E21+translate.Z*E31+E41;
+        E42=translate.X*E12+translate.Y*E22+translate.Z*E32+E42;
+        E43=translate.X*E13+translate.Y*E23+translate.Z*E33+E43;
+    }
+#endif
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_PRESCALE_VECTOR_PASS23
+    // Both PDBs and actual FableWin03364e90: row-wise scaling, translation unchanged.
+    inline void PreScale(const C3DVector& scale) {
+        E11*=scale.X; E12*=scale.X; E13*=scale.X;
+        E21*=scale.Y; E22*=scale.Y; E23*=scale.Y;
+        E31*=scale.Z; E32*=scale.Z; E33*=scale.Z;
+    }
+#endif
     CMatrix3x4() { }
+#ifdef FABLE_RETAIL_CMATRIX3X4_INVERSE_NO_TRANSLATE_PASS23
+ // Original FableWin02d840e0: det/rec locals, column cofactor stores, then zero translation.
+ inline float GetDeterminant()const {
+  float det=(E22*E33-E32*E23)*E11+(E32*E13-E12*E33)*E21+(E12*E23-E22*E13)*E31;return det;
+ }
+ inline void SetInverseNoTranslate(const CMatrix3x4& matrix){
+  float det=matrix.GetDeterminant();float rec=1.0f/det;
+  E11=(matrix.E22*matrix.E33-matrix.E32*matrix.E23)*rec;
+  E21=(matrix.E31*matrix.E23-matrix.E21*matrix.E33)*rec;
+  E31=(matrix.E21*matrix.E32-matrix.E31*matrix.E22)*rec;
+  E12=(matrix.E32*matrix.E13-matrix.E12*matrix.E33)*rec;
+  E22=(matrix.E11*matrix.E33-matrix.E31*matrix.E13)*rec;
+  E32=(matrix.E31*matrix.E12-matrix.E11*matrix.E32)*rec;
+  E13=(matrix.E12*matrix.E23-matrix.E22*matrix.E13)*rec;
+  E23=(matrix.E21*matrix.E13-matrix.E11*matrix.E23)*rec;
+  E33=(matrix.E11*matrix.E22-matrix.E21*matrix.E12)*rec;
+  E41=0.0f;E42=0.0f;E43=0.0f;
+ }
+#endif
+
 #ifdef FABLE_RETAIL_CMATRIX3X4_ENUM_CTOR
     // Original EMatrix34Init constructor, donor01B40AD0, expanded in00B707xx.
     CMatrix3x4(EMatrix34Init init) {
@@ -71,9 +114,9 @@ public:
     // 0x00A114F8..0x00A11512), then the diagonal (E33, E22, E11, 0x00A1151A..0x00A11520). Body only: no layout change.
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETIDENTITY_SEPARATE
     // Opt-in (row 0x00B8B780): FableWin.pdb ?SetIdentity@CMatrix3x4@@QAEXXZ debug size 106 (43 instructions) = twelve separate stores.
-    FABLE_FORCEINLINE void SetIdentity() { E43=0.0f; E42=0.0f; E41=0.0f; E32=0.0f; E31=0.0f; E23=0.0f; E21=0.0f; E13=0.0f; E12=0.0f; E33=1.0f; E22=1.0f; E11=1.0f; }
+    FABLE_MATRIX_INLINE_PASS23 void SetIdentity() { E43=0.0f; E42=0.0f; E41=0.0f; E32=0.0f; E31=0.0f; E23=0.0f; E21=0.0f; E13=0.0f; E12=0.0f; E33=1.0f; E22=1.0f; E11=1.0f; }
 #else
-    FABLE_FORCEINLINE void SetIdentity() { E12=E13=E21=E23=E31=E32=E41=E42=E43=0.0f; E11=E22=E33=1.0f; }
+    FABLE_MATRIX_INLINE_PASS23 void SetIdentity() { E12=E13=E21=E23=E31=E32=E41=E42=E43=0.0f; E11=E22=E33=1.0f; }
 #endif
 #endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETSCALE
@@ -121,9 +164,9 @@ public:
     // `rep movsd`). Both inline in that TU (three expansions, no call). The x87 term order of each sum is VC7.1's own canonical
     // order for this shape (it does not depend on the order written here); this nesting -- a copy local handed to SetMultiply by
     // reference -- is the one that reproduces all 36 sums of the row (a single inline body with the copy inside, or SetMultiply
-    // on an explicit caller copy, leave 2-11 of them in another order). FABLE_FORCEINLINE per the owner's 2026-11-01 helper rule
+    // on an explicit caller copy, leave 2-11 of them in another order). FABLE_MATRIX_INLINE_PASS23 per the owner's 2026-11-01 helper rule
     // (no out-of-line copy of either in retail's TU; 0x00C1CDA0 is the math module's own __fastcall PreMultiply).
-    FABLE_FORCEINLINE void SetMultiply(const CMatrix3x4& m1, const CMatrix3x4& m2) {
+    FABLE_MATRIX_INLINE_PASS23 void SetMultiply(const CMatrix3x4& m1, const CMatrix3x4& m2) {
         E11 = m1.E11 * m2.E11 + m1.E12 * m2.E21 + m1.E13 * m2.E31;
         E12 = m1.E11 * m2.E12 + m1.E12 * m2.E22 + m1.E13 * m2.E32;
         E13 = m1.E11 * m2.E13 + m1.E12 * m2.E23 + m1.E13 * m2.E33;
@@ -140,7 +183,7 @@ public:
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_PREMULTIPLY
     // Nested opt-in (chunk 2006, row 0x00B399A0): ?PreMultiply@CMatrix3x4@@QAEXABV1@@Z (this = matrix * this) written through SetMultiply
     // on a copy of *this, as described above. Mutually exclusive with FABLE_RETAIL_CMATRIX3X4_PREMULTIPLY.
-    FABLE_FORCEINLINE void PreMultiply(const CMatrix3x4& matrix) {
+    FABLE_MATRIX_INLINE_PASS23 void PreMultiply(const CMatrix3x4& matrix) {
         CMatrix3x4 copy(*this);
         SetMultiply(matrix, copy);
     }
@@ -149,7 +192,7 @@ public:
     // ?PostMultiply@CMatrix3x4@@QAEXABV1@@Z (this = this * matrix) written through SetMultiply on a copy of *this, the same nesting as
     // PreMultiply above (inline in retail: the `rep movsd` copy at 0x00BF159A, then the twelve sums into the original). Mutually
     // exclusive with FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY.
-    FABLE_FORCEINLINE void PostMultiply(const CMatrix3x4& matrix) {
+    FABLE_MATRIX_INLINE_PASS23 void PostMultiply(const CMatrix3x4& matrix) {
         CMatrix3x4 copy(*this);
         SetMultiply(copy, matrix);
     }
@@ -168,14 +211,14 @@ public:
     // measured that gives GetDeltaMovement 0x00A4E300 retail's 13 x87 operand orders and size (the 9-sum body: DIFFER 1615v1619).
     // Evidence against: FableWin.pdb's debug COMDAT 0x032289C0 is 160 /Od instructions, which fits the 9-sum body (157), not this
     // one (about 15) nor a 12-sum-then-clear text (211); FableWin is a later revision of the source.
-    FABLE_FORCEINLINE void SetMultiplyNoTranslation(const CMatrix3x4& m1, const CMatrix3x4& m2) {
+    FABLE_MATRIX_INLINE_PASS23 void SetMultiplyNoTranslation(const CMatrix3x4& m1, const CMatrix3x4& m2) {
         SetMultiply(m1, m2);
         E41 = E42 = E43 = 0.0f;
     }
     // PreScale(MMM) is expanded inside retail's out-of-line C3DKeyframe::ToMatrix 0x00A52450 (plain inline leaves it a call there:
-    // 341 v 447 bytes; forced, 447 v 447 relocation-equal), so it is FABLE_FORCEINLINE (FableWin keeps its debug COMDAT
+    // 341 v 447 bytes; forced, 447 v 447 relocation-equal), so it is FABLE_MATRIX_INLINE_PASS23 (FableWin keeps its debug COMDAT
     // 0x03228C60: a real member, not a macro).
-    FABLE_FORCEINLINE void PreScale(float x, float y, float z) {
+    FABLE_MATRIX_INLINE_PASS23 void PreScale(float x, float y, float z) {
         E11 *= x; E12 *= x; E13 *= x;
         E21 *= y; E22 *= y; E23 *= y;
         E31 *= z; E32 *= z; E33 *= z;
@@ -197,7 +240,7 @@ public:
     CMatrix3x4(float e11,float e12,float e13,float e21,float e22,float e23,float e31,float e32,float e33,float e41,float e42,float e43) {
         E11=e11; E12=e12; E13=e13; E21=e21; E22=e22; E23=e23; E31=e31; E32=e32; E33=e33; E41=e41; E42=e42; E43=e43;
     }
-    FABLE_FORCEINLINE void PreMultiply(const CMatrix3x4& l) {
+    FABLE_MATRIX_INLINE_PASS23 void PreMultiply(const CMatrix3x4& l) {
         CMatrix3x4 a(*this);
         E11=a.E21*l.E12+a.E31*l.E13+a.E11*l.E11;
         E12=a.E22*l.E12+a.E32*l.E13+a.E12*l.E11;
@@ -222,7 +265,7 @@ public:
     // plain inline leaves PreScale and SetInverse called out of line in PreparePrimitivesForEngine (934 v 1330 bytes).
 #ifdef FABLE_RETAIL_CMATRIX3X4_SET_ORIGINAL_NAMES
     // Retail opt-in (Codex pass 17): original parameter names and direct field copies, donor0261c5d0.
-    FABLE_FORCEINLINE void Set(const C3DVector& right,const C3DVector& forward,const C3DVector& up,const C3DVector& translate) {
+    FABLE_MATRIX_INLINE_PASS23 void Set(const C3DVector& right,const C3DVector& forward,const C3DVector& up,const C3DVector& translate) {
         // Fidelity: address X through the original three-float Data row. The local
         // pointer step preserves the native X-before-Z copy order at007767d9.
         float* axis=Data[0]+1;
@@ -232,7 +275,7 @@ public:
         E41=translate.X; E42=translate.Y; E43=translate.Z;
     }
 #else
-    FABLE_FORCEINLINE void Set(const C3DVector& x_axis,const C3DVector& y_axis,const C3DVector& z_axis,const C3DVector& translation) {
+    FABLE_MATRIX_INLINE_PASS23 void Set(const C3DVector& x_axis,const C3DVector& y_axis,const C3DVector& z_axis,const C3DVector& translation) {
         E11=x_axis.X; E12=x_axis.Y; E13=x_axis.Z;
         E21=y_axis.X; E22=y_axis.Y; E23=y_axis.Z;
         E31=z_axis.X; E32=z_axis.Y; E33=z_axis.Z;
@@ -242,10 +285,10 @@ public:
     // Chunk 751 (row 0x007767A0): Ego_r.pdb / FableWin.pdb ?Set@CMatrix3x4@@QAEXABVCRightHandedSet@@ABVC3DVector@@@Z, out of line in
     // retail at 0x007767A0 (the axes from the orientation -- GetRight, Forward, Up -- and the translation through the Set above).
     void Set(const class CRightHandedSet& orientation,const C3DVector& translation);
-    FABLE_FORCEINLINE void Set(float e11,float e12,float e13,float e21,float e22,float e23,float e31,float e32,float e33,float e41,float e42,float e43) {
+    FABLE_MATRIX_INLINE_PASS23 void Set(float e11,float e12,float e13,float e21,float e22,float e23,float e31,float e32,float e33,float e41,float e42,float e43) {
         E11=e11; E12=e12; E13=e13; E21=e21; E22=e22; E23=e23; E31=e31; E32=e32; E33=e33; E41=e41; E42=e42; E43=e43;
     }
-    FABLE_FORCEINLINE void PreScale(float scale) {
+    FABLE_MATRIX_INLINE_PASS23 void PreScale(float scale) {
         E11*=scale; E12*=scale; E13*=scale;
         E21*=scale; E22*=scale; E23*=scale;
         E31*=scale; E32*=scale; E33*=scale;
@@ -254,12 +297,12 @@ public:
     // (all twelve elements, translation included, column by column as retail scales them 0x00BE0FB6..0x00BE102B) and
     // ?PostTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z (E4k += v; the by-reference operand gives retail's `fld E4k ; fadd v` order).
     // No Ego_r.pdb or retail out-of-line copy; __forceinline per the owner's 2026-11-01 helper rule.
-    FABLE_FORCEINLINE void PostScale(float scale) {
+    FABLE_MATRIX_INLINE_PASS23 void PostScale(float scale) {
         E11*=scale; E21*=scale; E31*=scale; E41*=scale;
         E12*=scale; E22*=scale; E32*=scale; E42*=scale;
         E13*=scale; E23*=scale; E33*=scale; E43*=scale;
     }
-    FABLE_FORCEINLINE void PostTranslate(const C3DVector& v) {
+    FABLE_MATRIX_INLINE_PASS23 void PostTranslate(const C3DVector& v) {
         E41+=v.X; E42+=v.Y; E43+=v.Z;
     }
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETINVERSE_TRANSLATION_LOCAL
@@ -287,7 +330,7 @@ public:
         E43 = -(E13 * t.X + E23 * t.Y + E33 * t.Z);
     }
 #else
-    FABLE_FORCEINLINE void SetInverse(const CMatrix3x4& m) {
+    FABLE_MATRIX_INLINE_PASS23 void SetInverse(const CMatrix3x4& m) {
         float det = m.E11 * (m.E22 * m.E33 - m.E23 * m.E32) + m.E21 * (m.E32 * m.E13 - m.E33 * m.E12) + m.E31 * (m.E23 * m.E12 - m.E22 * m.E13);
         float inv = 1.0f / det;
         E11 = (m.E22 * m.E33 - m.E23 * m.E32) * inv;
@@ -330,7 +373,7 @@ public:
     // Nested opt-in (wfA6, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB; FITTED grouping): the x87 arm's centre transform
     // 0x00ADE6xx sums the X row as (x*E11 + z*E31) + y*E21 + E41 and the Y / Z rows with x last; this grouping is the one that
     // reproduces it (flat sums are reordered by VC7.1 whatever their source order). Body only: default path unchanged.
-    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+    FABLE_MATRIX_INLINE_PASS23 void TransformPoint(C3DVector& point) const {
         const float xx=point.X,yy=point.Y,zz=point.Z;
         point.X=(xx*E11+zz*E31)+yy*E21+E41;
         point.Y=xx*E12+(yy*E22+zz*E32)+E42;
@@ -339,7 +382,7 @@ public:
 #elif defined(FABLE_RETAIL_CPARTICLE_SPRITE) || defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_LTR)
     // Donor024543E0: original non-incremental left-associated coordinate sums.
     // FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_LTR (chunk 3001, row 0x00A12EE0): the same plain left-to-right rows E1k*x + E2k*y + E3k*z + E4k.
-    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+    FABLE_MATRIX_INLINE_PASS23 void TransformPoint(C3DVector& point) const {
         const float xx=point.X,yy=point.Y,zz=point.Z;
         point.X=E11*xx+E21*yy+E31*zz+E41;
         point.Y=E12*xx+E22*yy+E32*zz+E42;
@@ -348,7 +391,7 @@ public:
 #elif defined(FABLE_RETAIL_CMATRIX3X4_PARTICLE_POINT)
     // Retail opt-in (Codex pass21): original donor024543E0 scalar captures
     // and left-associated xx*E1k + yy*E2k + zz*E3k + E4k.
-    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+    FABLE_MATRIX_INLINE_PASS23 void TransformPoint(C3DVector& point) const {
         const float xx=point.X;
         const float yy=point.Y;
         const float zz=point.Z;
@@ -361,7 +404,7 @@ public:
     // X row as E21*y+E31*z, then E11*x, then E41, but the Y and Z rows left to right (`fld x ; fmul E12 ; .. fmul E22 ; faddp ; ..
     // fmul E32 ; faddp ; fadd E42`, and E13, E23, E33, E43) -- the parenthesised Y / Z rows above give E22*y+E32*z first there (dl 18).
     // A third retail context for the same inline body (see the Open note above).
-    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+    FABLE_MATRIX_INLINE_PASS23 void TransformPoint(C3DVector& point) const {
         const float xx=point.X;
         const float yy=point.Y;
         const float zz=point.Z;
@@ -374,7 +417,7 @@ public:
     // single left-to-right sums in x, z, y order. Retail expands it on the five frustum corners in place (0x00B4D654.., every row one
     // expression: `X*E11 , Z*E31 , Y*E21`, `E12*X , Z*E32 , Y*E22`, `E23*Y , E13*X , Z*E33`) and on the 26 grid points (0x00B4DB00..,
     // X row `E31*z , E21*y , E11*x`); the accumulating default stores the frustum rows term by term. Body only: default path unchanged.
-    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+    FABLE_MATRIX_INLINE_PASS23 void TransformPoint(C3DVector& point) const {
         const float xx=point.X;
         const float yy=point.Y;
         const float zz=point.Z;
@@ -389,7 +432,7 @@ public:
     // row. The parenthesised default emits the same instructions there but schedules the epilogue's result-pointer load and
     // `pop esi` four x87 instructions early (389v389); this unparenthesised form is byte-exact. A fourth retail context for the
     // same inline body (see the Open note above). Body only: default path unchanged.
-    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+    FABLE_MATRIX_INLINE_PASS23 void TransformPoint(C3DVector& point) const {
         const float xx=point.X;
         const float yy=point.Y;
         const float zz=point.Z;
@@ -398,7 +441,7 @@ public:
         point.Z=E33*zz+E23*yy+E13*xx+E43;
     }
 #else
-    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+    FABLE_MATRIX_INLINE_PASS23 void TransformPoint(C3DVector& point) const {
         const float xx=point.X;
         const float yy=point.Y;
         const float zz=point.Z;
@@ -494,11 +537,11 @@ public:
     // (FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR) and renormalised (C3DVector::AccurateNormalise, out of line 0x00A14440; the returned
     // reference copied back, 0x00A13003..0x00A13025), the point transformed, the plane rebuilt through CPlane::Initialise(normal,
     // normal . point) (0x00A42140). Point first (the other order) leaves the Dot product operands swapped (10 lines).
-    // FABLE_FORCEINLINE: retail expands it; VC7.1 calls the plain inline out of line (887-byte row, grade 21 of chunk 3020).
+    // FABLE_MATRIX_INLINE_PASS23: retail expands it; VC7.1 calls the plain inline out of line (887-byte row, grade 21 of chunk 3020).
     // Needs FABLE_RETAIL_CMATRIX3X4 (TransformPoint), FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR, FABLE_RETAIL_CPLANE_NORMAL_DISTANCE,
     // FABLE_RETAIL_CPLANE_ACCESSORS and FABLE_RETAIL_C3DVECTOR_ACCURATENORMALISE.
     // Inline-budget: TransformPlane plain inline is refused at the row's site (grade 21: called, 887v1144); forced it expands (1144v1144).
-    FABLE_FORCEINLINE void TransformPlane(CPlane& plane) const {
+    FABLE_MATRIX_INLINE_PASS23 void TransformPlane(CPlane& plane) const {
         C3DVector normal=plane.GetNormal();
         C3DVector point=plane.GetNormal()*plane.GetDistance();
         TransformVector(normal);
@@ -517,7 +560,7 @@ public:
     // and has no out-of-line copy; the plain-inline default below graded 388 v 422 in that row. The default path is unchanged.
     // Row 0x00A11F20 CPhysicsMeshObject::IsSpherePartContainedInBoundingBox (same workflow, a different author agent) arrived at the
     // same three lines independently and matches with them too (386 v 428 with the plain-inline default).
-    FABLE_FORCEINLINE void TransformPoint(const C3DVector& pSource,C3DVector& destination) const {
+    FABLE_MATRIX_INLINE_PASS23 void TransformPoint(const C3DVector& pSource,C3DVector& destination) const {
         destination.X=E11*pSource.X+E21*pSource.Y+E31*pSource.Z+E41;
         destination.Y=E12*pSource.X+E22*pSource.Y+E32*pSource.Z+E42;
         destination.Z=E13*pSource.X+E23*pSource.Y+E33*pSource.Z+E43;
@@ -529,8 +572,8 @@ public:
     // faddp ; fadd E43`. Each row accumulated from its Z term, then X, then Y gives that order after the row's earlier reads of the same
     // point (the translation copy at 0x00B8E231); the default body below (E13*x, then E33*z) loads E13*x first there and one-line row sums
     // load E23*y second (both graded, one-swap residues). Default path unchanged.
-    // FABLE_FORCEINLINE per the owner's 2026-11-01 helper rule (plain inline leaves it called in that row).
-    FABLE_FORCEINLINE void TransformPoint(const C3DVector& pSource,C3DVector& destination) const {
+    // FABLE_MATRIX_INLINE_PASS23 per the owner's 2026-11-01 helper rule (plain inline leaves it called in that row).
+    FABLE_MATRIX_INLINE_PASS23 void TransformPoint(const C3DVector& pSource,C3DVector& destination) const {
         destination.X=E31*pSource.Z;
         destination.X+=E11*pSource.X;
         destination.X+=E21*pSource.Y;
@@ -560,7 +603,7 @@ public:
 #ifdef FABLE_RETAIL_CMATRIX3X4_BILLBOARD
     // Opt-in (row 0x00B8B780 CEngineBillboardGenerator::RenderBillboard): FableWin.pdb ?SetTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z,
     // ?SetMultiplyNoTranslation@CMatrix3x4@@QAEXABV1@0@Z and ?GetTranslation@CMatrix3x4@@QBE?AVC3DVector@@XZ, inline (no retail copy).
-    FABLE_FORCEINLINE void SetTranslate(const C3DVector& t) {
+    FABLE_MATRIX_INLINE_PASS23 void SetTranslate(const C3DVector& t) {
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATE_FULL
         E11=1.0f; E12=0.0f; E13=0.0f; E21=0.0f; E22=1.0f; E23=0.0f; E31=0.0f; E32=0.0f; E33=1.0f;
 #endif
@@ -572,7 +615,7 @@ public:
 #endif
         E41=t.X; E42=t.Y; E43=t.Z;
     }
-    FABLE_FORCEINLINE void SetMultiplyNoTranslation(const CMatrix3x4& a, const CMatrix3x4& b) {
+    FABLE_MATRIX_INLINE_PASS23 void SetMultiplyNoTranslation(const CMatrix3x4& a, const CMatrix3x4& b) {
         E11 = a.E11 * b.E11 + a.E12 * b.E21 + a.E13 * b.E31;
         E12 = a.E11 * b.E12 + a.E12 * b.E22 + a.E13 * b.E32;
         E13 = a.E11 * b.E13 + a.E12 * b.E23 + a.E13 * b.E33;
@@ -593,7 +636,7 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_POSTSCALE3
     // FableWin.pdb ?PostScale@CMatrix3x4@@QAEXMMM@Z (inline, debug size 191 = the one-float PostScale): column k scaled by its factor.
-    FABLE_FORCEINLINE void PostScale(float x, float y, float z) {
+    FABLE_MATRIX_INLINE_PASS23 void PostScale(float x, float y, float z) {
         E11*=x; E21*=x; E31*=x; E41*=x;
         E12*=y; E22*=y; E32*=y; E42*=y;
         E13*=z; E23*=z; E33*=z; E43*=z;
@@ -606,7 +649,7 @@ public:
     // ?SetInverseOfUniformScaleRotationTranslation@CMatrix3x4@@QAEMABV1@@Z (FableWin debug copy 0x0261C690; no retail out-of-line copy:
     // 0x007DE710 expands it -- one reciprocal of the X row's squared length (`fdivr [1.0f]`), the transposed 3x3 times it, then the
     // translation through the result). The copy of *this is implicit (AttachObject's `rep movsd` of 12 dwords).
-    FABLE_FORCEINLINE void PostMultiply(const CMatrix3x4& matrix) {
+    FABLE_MATRIX_INLINE_PASS23 void PostMultiply(const CMatrix3x4& matrix) {
         CMatrix3x4 a(*this);
         E11 = a.E11 * matrix.E11 + a.E12 * matrix.E21 + a.E13 * matrix.E31;
         E12 = a.E11 * matrix.E12 + a.E12 * matrix.E22 + a.E13 * matrix.E32;
@@ -621,7 +664,7 @@ public:
         E42 = a.E41 * matrix.E12 + a.E42 * matrix.E22 + a.E43 * matrix.E32 + matrix.E42;
         E43 = a.E41 * matrix.E13 + a.E42 * matrix.E23 + a.E43 * matrix.E33 + matrix.E43;
     }
-    FABLE_FORCEINLINE float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
+    FABLE_MATRIX_INLINE_PASS23 float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
         float scale = 1.0f / (m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13);
         E11 = m.E11 * scale; E21 = m.E12 * scale; E31 = m.E13 * scale;
         E12 = m.E21 * scale; E22 = m.E22 * scale; E32 = m.E23 * scale;
@@ -637,7 +680,7 @@ public:
     // ?SetInverseOfUniformScaleRotationTranslation@CMatrix3x4@@QAEMABV1@@Z alone (the same text as the FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY
     // block's, for a TU whose PostMultiply goes through SetMultiply: FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_POSTMULTIPLY). No retail
     // out-of-line copy; expanded at 0x00772E9C.
-    FABLE_FORCEINLINE float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
+    FABLE_MATRIX_INLINE_PASS23 float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
         float scale = 1.0f / (m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13);
         E11 = m.E11 * scale; E21 = m.E12 * scale; E31 = m.E13 * scale;
         E12 = m.E21 * scale; E22 = m.E22 * scale; E32 = m.E23 * scale;
@@ -656,7 +699,7 @@ public:
     // with the c2 operand-sort log, NOTES.md of wfB6); FableWin's debug copy is 123 instructions / 345 bytes against 121 / 339 for the
     // one-statement text (agentC43's model: a named sum of squares is 122 / 343). Local names are descriptive. No out-of-line copy
     // in retail; expanded at 0x00772E9C and 0x007DEA4x.
-    FABLE_FORCEINLINE float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
+    FABLE_MATRIX_INLINE_PASS23 float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
         float scale_squared = m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13;
         float scale = 1.0f / scale_squared;
         E11 = m.E11 * scale; E21 = m.E12 * scale; E31 = m.E13 * scale;
@@ -736,13 +779,32 @@ public:
     // defines the body).
     void TransformVector(const C3DVector& pSource,C3DVector& destination) const;
 #endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_TRAILING_DATA_PASS23
+#ifdef FABLE_RETAIL_CMATRIX3X4_DATA_UNION
+    // Retail opt-in (Codex pass 17): original anonymous union and Data[4][3], both PDB TPI layouts.
+    union {
+        struct { float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43; };
+        float Data[4][3];
+    };
+#else
+    float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_PRETRANSLATE_PASS23
+    // Original FableWin02d78dd0; called by02f5ee0e. Each row is one sum.
+    void PreTranslate(const C3DVector& translate) {
+        E41=translate.X*E11+translate.Y*E21+translate.Z*E31+E41;
+        E42=translate.X*E12+translate.Y*E22+translate.Z*E32+E42;
+        E43=translate.X*E13+translate.Y*E23+translate.Z*E33+E43;
+    }
+#endif
+#endif
 };
 #ifdef FABLE_RETAIL_CMATRIX3X4_SET_RHSET_INLINE
 // Retail opt-in (chunk 850 text re-applied by agentC42, row 0x00772BB0 CTCShop::AddSaleItem): the body of
 // ?Set@CMatrix3x4@@QAEXABVCRightHandedSet@@ABVC3DVector@@@Z (out of line at 0x007767A0 in the CTCShop TU: GetRight, Forward, Up, then
 // the translation), which AddSaleItem expands three times. Force-inline: with plain inline VC7.1 calls it out of line there (2161 v 2585 bytes).
 #include "engine/CRightHandedSet.h"
-FABLE_FORCEINLINE void CMatrix3x4::Set(const CRightHandedSet& orientation,const C3DVector& translation)
+FABLE_MATRIX_INLINE_PASS23 void CMatrix3x4::Set(const CRightHandedSet& orientation,const C3DVector& translation)
 {
     Set(orientation.GetRight(), orientation.GetForward(), orientation.GetUp(), translation);
 }
@@ -753,4 +815,5 @@ inline void CMatrix3x4::Set(const CRightHandedSet& rhset,const C3DVector& transl
     Set(rhset.GetRight(),rhset.GetForward(),rhset.GetUp(),translate);
 }
 #endif
+#undef FABLE_MATRIX_INLINE_PASS23
 #endif

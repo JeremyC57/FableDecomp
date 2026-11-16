@@ -7,6 +7,11 @@
 #include <stddef.h>
 
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_SHOVE_STRING_CLEANUP_PASS23
+// VC7.1 RTM SDK <new>: exact array deallocator declaration. Legacy fallback
+// CRT headers omit it and lower delete[] to scalar delete; nativeBFEB1C is??_V.
+void __cdecl operator delete[](void*) throw();
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING
 #include <string.h>
 #endif
@@ -91,7 +96,16 @@ protected:
 #else
     static long __fastcall Compare(const T*,const T*);
 #endif
+#ifdef FABLE_RETAIL_SHOVE_STRING_CLEANUP_PASS23
+    // Both original PDBs: protected DeallocateData, native expanded in0099E9B0.
+    // FableWin02F650E0 array-deletes only nonnull data and clears that pointer.
+    void DeallocateData() { if(PData) { delete[] PData; PData=0; } }
+#endif
 public:
+#ifdef FABLE_RETAIL_SHOVE_STRING_CLEANUP_PASS23
+    // Original02F65050 calls DeallocateData then clears lengths, preserving both flag bits.
+    ~CBasicString() { DeallocateData(); StringLength=0; DataLength=0; }
+#endif
     const T* PeekData() const { return PData; }
     unsigned long GetLength() const { return StringLength; }
 #ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE
@@ -130,6 +144,13 @@ public:
 class CCharStringData
 { public:
     CBasicString<char> Data;
+#ifdef FABLE_RETAIL_SHOVE_STRING_CLEANUP_PASS23
+    // Both PDBs CCharStringData16members; native0099E9BA..99E9C8 count protocol.
+    void DecRef() { --NoRefs; }
+    long GetRefs() const { return NoRefs; }
+    // Original02F62760 has an empty body; the Data member destructor follows.
+    ~CCharStringData() { }
+#endif
 protected:
     long NoRefs;
 #ifdef FABLE_RETAIL_CCHARSTRINGDATA_FRIEND

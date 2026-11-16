@@ -9,6 +9,14 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_WASPQUEENPRIMARYATTACK_PASS23
+// Retail opt-in (Codex pass23): both original TPI records inherit CCombatActionBase, no own data; native0095ca00 ctor.
+#include "engine/CCombatActionBase.h"
+class CThingCreatureBase;class CThing;
+class CCreatureAction_WaspQueenPrimaryAttack:public CCombatActionBase {
+public:CCreatureAction_WaspQueenPrimaryAttack(CThingCreatureBase&,CThing&);
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_WaspQueenPrimaryAttack {
 public:
@@ -27,7 +35,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_WaspQueenPrimaryAttack) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_WaspQueenPrimaryAttack, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_WaspQueenPrimaryAttack) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_WaspQueenPrimaryAttack, __vftable) == 0x0);
 
+#endif // new opt-in
 #endif // FABLE_ENGINE_CCREATUREACTION_WASPQUEENPRIMARYATTACK_H

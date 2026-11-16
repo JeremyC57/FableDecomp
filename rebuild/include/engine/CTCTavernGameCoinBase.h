@@ -24,6 +24,10 @@ class CThingObject;
 
 class CTCTavernGameCoinBase : public CTCTavernGame {
 public:
+#ifdef FABLE_RETAIL_SHOVE_FRAME_PASS23
+    // Original public CThing& ctor: Ego_r TPI30d63, FableWin TPI339d8; native derived ctor007D09C0.
+    CTCTavernGameCoinBase(CThing&);
+#endif
     virtual void OnInitialActivate();                                    //  6 0x008EF1A0
     virtual ETCInterfaceType GetInterfaceType() const;                   // 21 0x007D21F0
     virtual void EnterGame();                                            // 29 0x008EF390
@@ -48,11 +52,11 @@ public:
     C3DVector         BoardSize;                                         // +0x130
     C2DVector         MousePosEffect;                                    // +0x13c
 };
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCoinBase, Arrow) == 0xf0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCoinBase, Coins) == 0xfc);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCoinBase, Held) == 0x108);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCoinBase, BoardRHSet) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCoinBase, BoardSize) == 0x130);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGameCoinBase, MousePosEffect) == 0x13c);
-FABLE_STATIC_ASSERT(sizeof(CTCTavernGameCoinBase) == 0x148);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CTCTavernGameCoinBase, Arrow) == 0xf0);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CTCTavernGameCoinBase, Coins) == 0xfc);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CTCTavernGameCoinBase, Held) == 0x108);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CTCTavernGameCoinBase, BoardRHSet) == 0x118);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CTCTavernGameCoinBase, BoardSize) == 0x130);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CTCTavernGameCoinBase, MousePosEffect) == 0x13c);
+FABLE_STATIC_ASSERT_AT(57, sizeof(CTCTavernGameCoinBase) == 0x148);
 #endif

@@ -10,6 +10,9 @@
 #include "engine/CEnginePrimitive.h"
 #include "engine/C2DBoxF.h"
 #include "engine/C3DOrientationInterpolator.h"
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DANIMATINGMESH_IMPLICIT_DTOR_PASS23
+#include "engine/C3DAnimationInterpolator.h"
+#endif
 #include "engine/C3DBoundingSphere.h"
 #include "engine/CRGBColour.h"
 class C3DAnimationBlendState;
@@ -18,14 +21,20 @@ public:
     CEnginePrimitive2DAnimatingMesh(unsigned __int64, unsigned long, const C3DAnimationBlendState&, const C2DBoxF&,
                                     const C3DBoundingSphere&, const C3DOrientationInterpolator&, EEngineInterpolationSet,
                                     unsigned char, CRGBColour);                   // 0x00550A70
+#ifndef FABLE_RETAIL_CENGINEPRIMITIVE2DANIMATINGMESH_IMPLICIT_DTOR_PASS23
     ~CEnginePrimitive2DAnimatingMesh();                                  // 0x00550A00
+#endif
     C2DBoxF ClipBox;                                                     // +0x0c
     unsigned long MeshIndex;                                             // +0x1c
     unsigned char Alpha;                                                 // +0x20
     C3DOrientationInterpolator Orientation;                              // +0x24
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DANIMATINGMESH_IMPLICIT_DTOR_PASS23
+    C3DAnimationInterpolator Anim;
+#else
     unsigned char Anim[0x14];                                            // +0x58 C3DAnimationInterpolator
+#endif
     C3DBoundingSphere BoundingSphere;                                    // +0x6c
     CRGBColour TintColour;                                               // +0x7c
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitive2DAnimatingMesh) == 0x80);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CEnginePrimitive2DAnimatingMesh) == 0x80);
 #endif

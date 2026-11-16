@@ -30,6 +30,11 @@ class CTavernGameCardBaseDef;
 enum ECardGameType;                                                      // MS forward enum (Ego_r.pdb member type; values not needed here)
 class CTCTavernGameCardBase : public CTCTavernGame {
 public:
+#ifdef FABLE_RETAIL_BLACKJACK_DEAL_PASS23
+    // Both original PDBs; original0275ab6a, native008f0b80.
+    C3DVector GetPackPosition();
+    CTCTavernGameCardBase(CThing&);
+#endif
     virtual void ProcessInput(const CInputEvent&, CProcessedInput&, CInputProcessTavernGame*);   // 28 0x008F12D0
 #ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBASE_NEWROUND
     // Retail opt-in (agentC40, row 0x007DB2E0 CTCTavernGameCardBlackjack::NewRound): Ego_r.pdb ?NewRound@CTCTavernGameCardBase@@UAEXXZ

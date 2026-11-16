@@ -10,6 +10,10 @@
 #include "rebuild_abi.h"
 
 class CAIStateGroupBase;
+#ifdef FABLE_RETAIL_CAIBRAIN_CTOR_PASS23
+#include "engine/CDefPointer.h"
+class CBrainDef;
+#endif
 #ifdef FABLE_RETAIL_CAIBRAIN_STATEGROUPTEXT
 class CCharString;   // chunk 801 opt-in only (the default path declares nothing new)
 #endif
@@ -37,6 +41,10 @@ class CAIBrain
 #endif
 {
 public:
+#ifdef FABLE_RETAIL_CAIBRAIN_CTOR_PASS23
+    // Both original PDB constructor PUBLICs; declaration only, no layout change.
+    CAIBrain(const CMainGameComponent&,CWorld&,CThingManager&,CPlayerManager&,CThingAICreature&,CDefPointer<const CBrainDef>);
+#endif
 #ifdef FABLE_RETAIL_CAIBRAIN_SUSPENDABLE_BASE
     virtual ~CAIBrain();
 private:

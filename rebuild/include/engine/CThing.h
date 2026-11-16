@@ -421,6 +421,19 @@ public:
     }
 #endif
 #else
+#ifdef FABLE_RETAIL_CTHING_GETTC_DONOR_NAMES_PASS23
+    // Inline-budget: retain the existing GetTC owner force-inline rule; restore donor locals only, no additional forced helper.
+    // Original FableWin GetTC<CTCCreatureNavigation>: ptc, CTCBase& base.
+    // Existing GetTC inline-owner policy is retained; no added force-inline rung.
+    template<class T> FABLE_FORCEINLINE bool GetTC(T** ptc) {
+        if(HasTC(T::StatGetInterfaceType())) {
+            CTCBase& base=GetTC(T::StatGetInterfaceType());
+            *ptc=GFDebugPDynamicCast(&base,(T*)0);
+            return true;
+        }
+        return false;
+    }
+#else
     template<class T> FABLE_FORCEINLINE bool GetTC(T** result) {
         if(HasTC(T::StatGetInterfaceType())) {
 #ifdef FABLE_RETAIL_CTHING_GETTC_ORIGINAL_CHAIN
@@ -434,6 +447,7 @@ public:
         }
         return false;
     }
+#endif // FABLE_RETAIL_CTHING_GETTC_DONOR_NAMES_PASS23
     template<class T> FABLE_FORCEINLINE bool PeekTC(T** result) const {
         if(HasTC(T::StatGetInterfaceType())) {
 #ifdef FABLE_RETAIL_CTHING_PEEKTC_ORIGINAL_CHAIN
@@ -463,7 +477,12 @@ public:
     // Retail (chunk 732, row 0x006AA2E0): GetTC(ETCInterfaceType) is __forceinline like GetTC<T> / PeekTC<T> (owner decision
     // 2026-11-01: no Ego_r.pdb copy, no out-of-line copy in Fable.exe; FableWin.pdb ?GetTC@CThing@@QAEAAVCTCBase@@W4ETCInterfaceType@@@Z
     // is the debug copy). Plain inline is called out of line in the large CThingPlayerCreature draw pass (814 v 1080 bytes).
+#ifdef FABLE_RETAIL_CTHING_GETTC_DONOR_NAMES_PASS23
+    // Both original mutable GetTC overload records name its argument id.
+    FABLE_FORCEINLINE CTCBase& GetTC(ETCInterfaceType id) { return *Components.Find(id)->second; }
+#else
     FABLE_FORCEINLINE CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }
+#endif
     FABLE_FORCEINLINE const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
 #else
     CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }

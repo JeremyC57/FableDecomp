@@ -36,6 +36,10 @@ namespace NUISystem { class CComponent; class CList; }
 class CHeroAbilityDef;
 class CTCInventoryAbilities : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_LIFETIMES_PASS23
+ // Both original PDB ctor(CThing&) and virtual destructor, normal-lifetime fixture.
+ CTCInventoryAbilities(CThing&);virtual ~CTCInventoryAbilities();
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_MAGIC
     // Original names/values: raw Ego_r type0x2af77 and FableWin type0x2d7f3.
     enum EUISpellCategory { SPELL_CATEGORY_ATTACK=0, SPELL_CATEGORY_SURROUND=1, SPELL_CATEGORY_PHYSICAL=2 };
@@ -43,7 +47,12 @@ public:
     NUISystem::CComponent* GetMenuEntryFromCategory(EUISpellCategory,NUISystem::CComponent*);
     CDefPointer<const CHeroAbilityDef> GetAbilityPDef(EHeroAbility) const;
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_LIFETIMES_PASS23
+    // Original both-PDB static __fastcall signature and full enum key.
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_HERO_ABILITIES;}
+#else
     static ETCInterfaceType StatGetInterfaceType() { return (ETCInterfaceType)111; }
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ONSERIALISE
     // Nested opt-in (chunk 2040, row 0x005F6E40): Ego_r.pdb + FableWin.pdb ?OnSerialise@CTCInventoryAbilities@@UAEXAAVCPersistContext@@_N@Z
     // (public virtual override of NInventory::CTCInventoryBase::OnSerialise 0x005BFD5E; vtable 0x01256AD4 slot 1 = 0x005F6E40). An

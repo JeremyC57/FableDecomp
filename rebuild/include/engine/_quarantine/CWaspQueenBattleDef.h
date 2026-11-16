@@ -9,6 +9,16 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CWASPQUEENBATTLEDEF_PASS23
+// Retail opt-in (Codex pass23): original both-PDB parent; native field+3c after native39-byte base.
+#include "engine/CParentDefClassBase.h"
+class CWaspQueenBattleDef:public CParentDefClassBase {
+public:
+ static CCharString FABLE_FASTCALL StatGetTypeName(){return CCharString("CWaspQueenBattleDef");}
+ long NumFramesPauseBetweenAttacks;
+};
+FABLE_STATIC_ASSERT(sizeof(CWaspQueenBattleDef)==0x40);
+#else
 #pragma pack(push, 1)
 class CWaspQueenBattleDef {
 public:
@@ -28,8 +38,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CWaspQueenBattleDef) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CWaspQueenBattleDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CWaspQueenBattleDef, NumFramesPauseBetweenAttacks) == 0x3c);
+FABLE_STATIC_ASSERT_AT(31, sizeof(CWaspQueenBattleDef) == 0x40);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CWaspQueenBattleDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CWaspQueenBattleDef, NumFramesPauseBetweenAttacks) == 0x3c);
 
+#endif // new opt-in
 #endif // FABLE_ENGINE_CWASPQUEENBATTLEDEF_H

@@ -1,0 +1,4 @@
+address	correct_symbol	evidence
+0x00C1E970	?GetStreamBlockOffset@@YIKPAVCStreamBlockReader@@K@Z	Descriptive accurate block-offset helper; parent+native helper body and two request range methods; original PDB names absent.
+0x00C1E990	?GetStreamBlockTail@@YIJPAVCStreamBlockReader@@JJ@Z	Descriptive accurate block-tail helper; parent+native helper body/GetStreamBlockOffset relation; original PDB names absent.
+0x00C12E50	?PlayStreamed@CSoundEventManager@@UAEJPAVCStreamSoundBank@@JKPBUInput@@@Z	Descriptive PlayStreamed identity; manager vtable slot14+full parent/EHmap independently establish semantics; original PDB names absent.

@@ -71,6 +71,10 @@ enum ECreatureInteractionType{CREATURE_INTERACTION_NULL=0,CREATURE_INTERACTION_C
 // Layout: original TPI2251c, complete native size56; intelligent pointers
 // are eight-byte original storage at unaligned offsets13,21,29,37.
 class CTCTargetingBase:public CTCBase{
+#ifdef FABLE_RETAIL_CTCTARGETINGBASE_CTOR_PASS23
+ // Both original PDB PUBLICs: original CThing& constructor.
+public: CTCTargetingBase(CThing&);
+#endif
 public: static ETCInterfaceType __fastcall StatGetInterfaceType(){return (ETCInterfaceType)8;}
 public: virtual ETCInterfaceType GetInterfaceType() const;
 public: virtual void OnInitialActivate();
@@ -106,6 +110,6 @@ protected: const CTargetingDef& GetTargetingDef()const{return *PTargetingDef;}
 #endif
 protected:bool ScriptOverrideIgnoreEverything;unsigned char PNearestInterestingThing[8],PScriptOverrideInterestingThing[8],PScriptOverrideRangedTarget[8],PTargetedThing[8];CDefPointer<const CTargetingDef> PTargetingDef;bool LookAtCamera;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCTargetingBase)==56);
+FABLE_STATIC_ASSERT_AT(109, sizeof(CTCTargetingBase)==56);
 #endif
 #endif

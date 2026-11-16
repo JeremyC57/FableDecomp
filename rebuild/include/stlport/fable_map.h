@@ -271,7 +271,10 @@ private:
     }
 #endif
 public:
-#if defined(FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_DECL)
+#if defined(FABLE_RETAIL_STLP_TREE_ASTAR_FIND_CALL_PASS23)
+    // Native00a1d3a6 calls original non-template findA216A0; original full body visible.
+    FABLE_STLP_NOINLINE iterator find(const K& key){return iterator(_M_find(key));}
+#elif defined(FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_DECL)
     // Row 0x00881A40 opt-in: the non-const member-template find declared only (retail calls the map<CThing*,
     // CThingGraphicByPassFlagState> instance out of line, 0x00883860, through the hidden iterator result).
     template<class KT> iterator find(const KT& key);

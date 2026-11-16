@@ -9,6 +9,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CNAVIGATORMANAGER_QUEUE_PASS23
+#include "engine/CNavigatorQueueManager.h"
+#endif
 class CNavigatorManagerExternalInterface;
 
 #pragma pack(push, 1)
@@ -60,18 +63,23 @@ public:
     long                                NumberOfNodeExaminationsLeftThisFrame; // +0x20
     unsigned char                       QuadTrees[0x4];      // +0x24 list<CNavQuadTreeMap,std::allocator<CNavQuadTreeMap>_>
     CNavigatorManagerExternalInterface* PInterface;          // +0x28
+#ifdef FABLE_RETAIL_CNAVIGATORMANAGER_QUEUE_PASS23
+    CNavigatorQueueManager& GetNavigatorQueueManager() {return QueueManager;}
+    CNavigatorQueueManager QueueManager;
+#else
     unsigned char                       QueueManager[0x4];   // +0x2c CNavigatorQueueManager
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CNavigatorManager) == 0x30);
+FABLE_STATIC_ASSERT_AT(67, sizeof(CNavigatorManager) == 0x30);
 #ifndef FABLE_RETAIL_CNAVIGATORMANAGER_VIRTUALS
-FABLE_STATIC_ASSERT(offsetof(CNavigatorManager, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CNavigatorManager, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CNavigatorManager, Seed) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CNavigatorManager, NumberOfNodeExaminationsLeftThisFrame) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CNavigatorManager, QuadTrees) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CNavigatorManager, PInterface) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CNavigatorManager, QueueManager) == 0x2c);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CNavigatorManager, Seed) == 0x1c);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CNavigatorManager, NumberOfNodeExaminationsLeftThisFrame) == 0x20);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CNavigatorManager, QuadTrees) == 0x24);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CNavigatorManager, PInterface) == 0x28);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CNavigatorManager, QueueManager) == 0x2c);
 
 #endif // FABLE_ENGINE_CNAVIGATORMANAGER_H

@@ -27,6 +27,10 @@ template<class T>class CIVCountedPointer;
 class CEngineInternalPrimitiveBase : public CEnginePersistentPrimitiveBase {
 public:
  CEngineInternalPrimitiveBase(long,unsigned long);
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_NEXT_PASS23
+ // Both original PDB public const getter; private original field at38.
+ CEngineInternalPrimitiveBase* GetNextPrimitive() const {return NextPrimitive;}
+#endif
  virtual ~CEngineInternalPrimitiveBase();
  virtual void Update(const CEnginePrimitive&,unsigned long);
  virtual unsigned long AddChildPrimitive(const CEnginePrimitive&,unsigned long);

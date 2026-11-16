@@ -2,6 +2,16 @@
 #ifndef FABLE_ENGINE_CPARTICLEEMITTER_H
 #define FABLE_ENGINE_CPARTICLEEMITTER_H
 #include "engine/CBaseObject.h"
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_STARTFRAME_PASS23
+#include "engine/NParticleEngine_CEmitterDatabaseSerialiseInfo.h"
+#include "engine/NParticleEngine_CParticleUpdateParameters.h"
+#include "engine/CEnginePrimitiveHandle.h"
+#include "engine/C3DOrientationInterpolator.h"
+#include "engine/C3DPositionInterpolator.h"
+#include "engine/CMatrix3x4.h"
+#include "engine/C3DBoundingSphere.h"
+class CEnginePrimitivePrepareInfo;class CIEngine;
+#endif
 #include "engine/CCountedPointer.h"
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
@@ -23,12 +33,27 @@ enum EEmitterPriority;
 enum EEmitterPriority { };
 #endif
 #endif
+#ifndef FABLE_RETAIL_CPARTICLEEMITTER_STARTFRAME_PASS23
 class CEmitterDatabaseSerialiseInfo {public:const CSymbolMap& GraphicSymbols;const CSymbolMap& MeshSymbols;};
+#endif
 float __fastcall GetMaxSpawnDistance();float __fastcall GetMaxDrawDistance();
 float __fastcall GetFadeOutStartDistance();float __fastcall GetFadeInStartDistance();float __fastcall GetFadeInEndDistance();
 // Layout: Ego_r complete original fields, native vector12/update36; size0x16c.
 class CParticleEmitter:public CBaseObject {
 public:CParticleEmitter();virtual ~CParticleEmitter();
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_STARTFRAME_PASS23
+ // Both original PDBs: StartFrame has a const reference; particle counts are const.
+ void StartFrame(float,const CEnginePrimitivePrepareInfo&);
+ long GetNoParticles()const;long GetNoDecals()const;
+ void ClearAllPrimitives(CIEngine*);
+ bool IsSleeping()const{return Sleeping;}
+#ifndef FABLE_RETAIL_CPARTICLEEMITTER_CREATE2D
+ bool Is2DEmitter()const{return Emitter2D;}
+#endif
+protected:
+ bool IsWaitingToSleep()const{return WaitingToSleep;}
+public:
+#endif
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM_PEEKEMITTERTRANSFORM
  // Opt-in (agentNF22, row 0x00AF3D80): CParticleSystem::PeekEmitterTransform 0x00AF3D80 / PeekEmitterVelocity 0x00AF3DB0 read the
  // protected Transform (+0xb0) / Velocity (+0x52) straight off the parent emitter, and neither PDB names an emitter accessor for them.
@@ -81,8 +106,13 @@ public:CParticleEmitter();virtual ~CParticleEmitter();
 #endif
 protected:
  std::vector<CCountedPointer<CParticleSystem> > ParticleSystems;
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_STARTFRAME_PASS23
+ CParticleUpdateParameters<unsigned long,unsigned long> UpdateParameters;
+ CEnginePrimitiveHandle PrimitiveGroupHandle;
+#else
  unsigned char UpdateParameters[36]; // Original NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>, unaccessed composite.
  unsigned char PrimitiveGroupHandle[8]; // Original CEnginePrimitiveHandle, unaccessed composite.
+#endif
  unsigned short Priority:3;
  unsigned short IsScreenDisplacement:1;
  unsigned short ReadZBuffer:1;
@@ -107,6 +137,12 @@ protected:
  unsigned char BoundingSphereValid:1;
  unsigned char ClearedParticles:1;
  unsigned char ClearedDecals:1;
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_STARTFRAME_PASS23
+ C3DVector OldPos,Velocity;
+ C3DOrientationInterpolator OrientationInterpolator;
+ C3DPositionInterpolator PositionInterpolator;
+ CMatrix3x4 Transform,InverseTransform,EndTransform;
+#else
  unsigned char OldPos[12]; // Original C3DVector, unaccessed composite.
  unsigned char Velocity[14]; // Original C3DVector, unaccessed composite.
  unsigned char OrientationInterpolator[52]; // Original C3DOrientationInterpolator, unaccessed composite.
@@ -114,8 +150,13 @@ protected:
  unsigned char Transform[48]; // Original CMatrix3x4, unaccessed composite.
  unsigned char InverseTransform[48]; // Original CMatrix3x4, unaccessed composite.
  unsigned char EndTransform[48]; // Original CMatrix3x4, unaccessed composite.
+#endif
  CCharString Name;
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_STARTFRAME_PASS23
+ C3DBoundingSphere BSphere;
+#else
  unsigned char BSphere[16]; // Original C3DBoundingSphere, unaccessed composite.
+#endif
  float DistanceToCam;
  float MaxSpawnDistance;
  float MaxDrawDistance;
@@ -124,7 +165,7 @@ protected:
  float FadeInEnd;
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CParticleEmitter)==0x16c);
+FABLE_STATIC_ASSERT_AT(127, sizeof(NParticleEngine::CParticleEmitter)==0x16c);
 #endif
 #else
 #ifndef FABLE_ENGINE_CPARTICLEEMITTER_H
@@ -172,33 +213,33 @@ struct CParticleEmitter {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CParticleEmitter) == 0x16c);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, ParticleSystems) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, UpdateParameters) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, PrimitiveGroupHandle) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, ContinuousEmitter) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, Emitter2D) == 0x41);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, Emitter2DLayer) == 0x42);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, ClipEffectToWeatherMask) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, ClearedDecals) == 0x45);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, OldPos_X) == 0x46);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, OldPos_Y) == 0x4a);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, OldPos_Z) == 0x4e);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, Velocity) == 0x52);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, OrientationInterpolator) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, PositionInterpolator) == 0x94);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, Transform) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, InverseTransform) == 0xe0);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, EndTransform) == 0x110);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, Name_PStringData) == 0x140);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, BSphere) == 0x144);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, DistanceToCam) == 0x154);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, MaxSpawnDistance) == 0x158);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, MaxDrawDistance) == 0x15c);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, FadeOutStart) == 0x160);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, FadeInStart) == 0x164);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, FadeInEnd) == 0x168);
+FABLE_STATIC_ASSERT_AT(175, sizeof(CParticleEmitter) == 0x16c);
+FABLE_STATIC_ASSERT_AT(176, offsetof(CParticleEmitter, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(177, offsetof(CParticleEmitter, ParticleSystems) == 0x8);
+FABLE_STATIC_ASSERT_AT(178, offsetof(CParticleEmitter, UpdateParameters) == 0x14);
+FABLE_STATIC_ASSERT_AT(179, offsetof(CParticleEmitter, PrimitiveGroupHandle) == 0x38);
+FABLE_STATIC_ASSERT_AT(180, offsetof(CParticleEmitter, ContinuousEmitter) == 0x40);
+FABLE_STATIC_ASSERT_AT(181, offsetof(CParticleEmitter, Emitter2D) == 0x41);
+FABLE_STATIC_ASSERT_AT(182, offsetof(CParticleEmitter, Emitter2DLayer) == 0x42);
+FABLE_STATIC_ASSERT_AT(183, offsetof(CParticleEmitter, ClipEffectToWeatherMask) == 0x44);
+FABLE_STATIC_ASSERT_AT(184, offsetof(CParticleEmitter, ClearedDecals) == 0x45);
+FABLE_STATIC_ASSERT_AT(185, offsetof(CParticleEmitter, OldPos_X) == 0x46);
+FABLE_STATIC_ASSERT_AT(186, offsetof(CParticleEmitter, OldPos_Y) == 0x4a);
+FABLE_STATIC_ASSERT_AT(187, offsetof(CParticleEmitter, OldPos_Z) == 0x4e);
+FABLE_STATIC_ASSERT_AT(188, offsetof(CParticleEmitter, Velocity) == 0x52);
+FABLE_STATIC_ASSERT_AT(189, offsetof(CParticleEmitter, OrientationInterpolator) == 0x60);
+FABLE_STATIC_ASSERT_AT(190, offsetof(CParticleEmitter, PositionInterpolator) == 0x94);
+FABLE_STATIC_ASSERT_AT(191, offsetof(CParticleEmitter, Transform) == 0xb0);
+FABLE_STATIC_ASSERT_AT(192, offsetof(CParticleEmitter, InverseTransform) == 0xe0);
+FABLE_STATIC_ASSERT_AT(193, offsetof(CParticleEmitter, EndTransform) == 0x110);
+FABLE_STATIC_ASSERT_AT(194, offsetof(CParticleEmitter, Name_PStringData) == 0x140);
+FABLE_STATIC_ASSERT_AT(195, offsetof(CParticleEmitter, BSphere) == 0x144);
+FABLE_STATIC_ASSERT_AT(196, offsetof(CParticleEmitter, DistanceToCam) == 0x154);
+FABLE_STATIC_ASSERT_AT(197, offsetof(CParticleEmitter, MaxSpawnDistance) == 0x158);
+FABLE_STATIC_ASSERT_AT(198, offsetof(CParticleEmitter, MaxDrawDistance) == 0x15c);
+FABLE_STATIC_ASSERT_AT(199, offsetof(CParticleEmitter, FadeOutStart) == 0x160);
+FABLE_STATIC_ASSERT_AT(200, offsetof(CParticleEmitter, FadeInStart) == 0x164);
+FABLE_STATIC_ASSERT_AT(201, offsetof(CParticleEmitter, FadeInEnd) == 0x168);
 
 #endif // FABLE_ENGINE_CPARTICLEEMITTER_H
 

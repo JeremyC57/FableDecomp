@@ -11,7 +11,9 @@ class C3DOrientationInterpolator : public CBaseClass {
 public:
     C3DOrientationInterpolator();
     C3DOrientationInterpolator(const CRightHandedSet& start, const CRightHandedSet& end);   // 0x005508D0
+#ifndef FABLE_RETAIL_C3DORIENTATIONINTERPOLATOR_GENERATED_COPY_PASS23
     C3DOrientationInterpolator(const C3DOrientationInterpolator&);
+#endif // Both original copy constructor attr0x103 is compiler-generated.
 #ifndef FABLE_RETAIL_C3DORIENTATIONINTERPOLATOR_IMPLICIT_DTOR
     virtual ~C3DOrientationInterpolator() { }
 #else

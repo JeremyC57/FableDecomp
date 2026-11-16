@@ -2,7 +2,14 @@
 #define FABLE_ENGINE_NPLAYERGUI_GRAPHICS_H
 #include "rebuild_abi.h"
 #include "engine/C2DVector.h"
+#ifdef FABLE_RETAIL_NPLAYERGUI_GFTOSCREEN_BOX_PASS23
+#include "engine/C2DBoxF.h"
+#endif
 namespace NPlayerGui {
+#ifdef FABLE_RETAIL_NPLAYERGUI_GFTOSCREEN_BOX_PASS23
+// Both original overload names; identity-copy expansion native006507d5/006509f8.
+inline C2DBoxF FABLE_FASTCALL GFToScreen(const C2DBoxF& box){return box;}
+#endif
 // Original Ego00686ac7/FableWin020d908c: PC mapping copies the input vector.
 inline C2DVector FABLE_FASTCALL GFToScreen(const C2DVector& pos) { return pos; }
 #ifdef FABLE_RETAIL_NPLAYERGUI_ANCHORS

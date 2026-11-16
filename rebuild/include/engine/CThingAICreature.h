@@ -42,6 +42,10 @@ public:
 #endif
 
 public:
+#ifdef FABLE_RETAIL_KID_MOTHER_REFERENCE_PASS23
+    // Both original public const PeekMotherCreature declarations; native+180 intelligent pointer.
+    const CThingAICreature* PeekMotherCreature()const{return MotherCreature.Get();}
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_ANIMEXISTS
     // Retail opt-in (agentNF9, row 0x00830F20): Ego_r.pdb / FableWin.pdb ?AnimExists@CThingAICreature@@MBE_NABVCCharString@@_N@Z (protected
     // const virtual, the override of CThingCreatureBase's slot 73: CThingAICreature vtable 0x0127293C slot 73 = 0x00830F20). Declaration only.

@@ -7,11 +7,16 @@
 #include "engine/CAIStateGroup_EnemyCreatureBase.h"
 class C3DVector;
 class CAIStateGroup_HoverMovementBase : public CAIStateGroup_EnemyCreatureBase {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERMOVEMENTBASE_ATTACK_PASS23
+ // Retail opt-in (Codex pass23): exact both-PDB protected proximity/face method, native0091d510.
+protected:
+ EAIActionReturn AIAction_MoveToPosProximityAndFacePos(EAIActionRepeat,const C3DVector&,float,const C3DVector&,bool&,EMovementType);
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERMOVEMENTBASE_MOVETOPOSANDFACEPOS
 protected:
     // slot 22 (0x0091D7F0) ?AIAction_MoveToPosAndFacePos@CAIStateGroup_HoverMovementBase@@MAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@1AA_NW4EMovementType@@@Z
     virtual EAIActionReturn AIAction_MoveToPosAndFacePos(EAIActionRepeat repeat, const C3DVector& pos, const C3DVector& facePos, bool& reached, EMovementType movement);
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverMovementBase) == 0x1c);
+FABLE_STATIC_ASSERT_AT(16, sizeof(CAIStateGroup_HoverMovementBase) == 0x1c);
 #endif

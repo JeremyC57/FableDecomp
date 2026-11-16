@@ -4,6 +4,10 @@
 #include <math.h>
 #pragma intrinsic(fmod)
 class C3DVector;
+#ifdef FABLE_RETAIL_SHOVE_FRAME_PASS23
+// FableWin 01ACF300, donor GetAngleXY 0273AB10; retail 007D0186..194.
+inline float FABLE_FASTCALL GFArcTan(double opposite,double adjacent) { return (float)atan2(opposite,adjacent)/6.2831855f; }
+#endif
 #ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
 // Original FableWin01ACF300: float atan result, division by promoted float two-pi.
 inline float FABLE_FASTCALL GFArcTan(double opposite,double adjacent){return (float)atan2(opposite,adjacent)/6.2831855f;}
@@ -18,7 +22,7 @@ extern float BODY_ANGULAR_ACCELERATION_XY;
 extern float BODY_ANGULAR_VELOCITY_MAX_XY;
 // Original FableWin 01a824b0 and 01acf220 bodies, debug assertions omitted.
 inline long FABLE_FASTCALL GFGetSign(float value) { return value<0.0f ? -1 : 1; }
-#if defined(FABLE_RETAIL_JACK_STAGE1_UPDATE) || defined(FABLE_RETAIL_GFANGLES_GET_ROUNDED_ANGLE_FORCEINLINE)
+#if defined(FABLE_RETAIL_SHOVE_FRAME_PASS23) || defined(FABLE_RETAIL_JACK_STAGE1_UPDATE) || defined(FABLE_RETAIL_GFANGLES_GET_ROUNDED_ANGLE_FORCEINLINE)
 // (FABLE_RETAIL_GFANGLES_GET_ROUNDED_ANGLE_FORCEINLINE, wfA2 row 0x0068CB90: same body, expanded at all eight sites of that row,
 // fmod 0x00BFEB28 called inline at 0x0068CE4C..; inline-budget device, default text unchanged.)
 FABLE_FORCEINLINE
@@ -27,7 +31,7 @@ inline
 #endif
 float FABLE_FASTCALL GET_ROUNDED_ANGLE(float angle) {
  if(angle<0.0f || angle>=1.0f) {
-#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+#if defined(FABLE_RETAIL_SHOVE_FRAME_PASS23) || defined(FABLE_RETAIL_JACK_STAGE1_UPDATE)
   angle=fmod(angle,1.0f);
 #else
   angle=(float)fmod((double)angle,1.0);

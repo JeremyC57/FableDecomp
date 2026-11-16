@@ -9,6 +9,10 @@
 // parameters as (unused u64, box, layer, bank index, frame, blend mode -> +0x30, interpolation set -> +0x4, start angle, end angle,
 // a -> +0x37, r -> +0x36, g -> +0x35, b -> +0x34, flags -> +0x3C, uv start, uv end); ClipBoxIsPos and Texture are zeroed.
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_INCLUDE_PASS23
+// Use the same original enum before the base-class declaration, also valid C++03.
+#include "engine/EEngineInterpolationSet.h"
+#endif
 #include "engine/CEnginePrimitive.h"
 #include "engine/C2DBoxF.h"
 #include "engine/C2DVector.h"
@@ -55,6 +59,7 @@ enum EEnginePrimitiveBlendMode {
     ENGINE_PRIMITIVE_BLEND_CONST_COLOUR=5,
     ENGINE_PRIMITIVE_BLEND_COUNT=6
 };
+#ifndef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_INCLUDE_PASS23
 enum EEngineInterpolationSet {
     ENGINE_INTERPOLATION_SET_0=0,
     ENGINE_INTERPOLATION_SET_1=1,
@@ -65,6 +70,7 @@ enum EEngineInterpolationSet {
     ENGINE_INTERPOLATION_SET_BULLETTIME=2,
     ENGINE_INTERPOLATION_SET_DEFAULT=0
 };
+#endif
 #endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_HIGHLIGHT_BODY
 #ifdef _MSC_VER

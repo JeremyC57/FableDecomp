@@ -34,6 +34,23 @@ public:
     // Retail opt-in (Codex pass22): both original TPI method records; donor020FF164 selects these two fields.
     bool GetShowTargetingStatus() const { return UseNewProfileValues ? ShowTargetingStatusNewProfile : ShowTargetingStatus; }
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_CYLINDER_INPUT
+ // Retail opt-in (Codex pass23): original FableWin methods and native0085c4a4..0085c54d.
+ bool IsCameraPCViewHeroXYInverted() const { return UseNewProfileValues ? CameraPCViewHeroXYInvertedNewProfile : CameraPCViewHeroXYInverted; }
+ bool IsCameraPCViewHeroYZInverted() const { return UseNewProfileValues ? CameraPCViewHeroYZInvertedNewProfile : CameraPCViewHeroYZInverted; }
+ float GetCameraSensitivity() const { return UseNewProfileValues ? CameraSensitivityNewProfile : CameraSensitivity; }
+ unsigned char _pad_cyl_00[12];
+ bool UseNewProfileValues;
+ unsigned char _pad_cyl_0d[8];
+ bool CameraPCViewHeroXYInverted,CameraPCViewHeroYZInverted;
+ unsigned char _pad_cyl_17[0x7c-0x17];
+ float CameraSensitivity;
+ unsigned char _pad_cyl_80[0xd5-0x80];
+ bool CameraPCViewHeroXYInvertedNewProfile,CameraPCViewHeroYZInvertedNewProfile;
+ unsigned char _pad_cyl_d7[0x130-0xd7];
+ float CameraSensitivityNewProfile;
+ unsigned char _pad_cyl_134[12];
+#endif
     static CUserProfileManager& __fastcall Get();                         // 0x0040D2A0
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VIRTUAL_DTOR
     // Retail opt-in (agentFAM10, 2026-11-12, row 0x0040D830 CCountedPointer<CUserProfileManager>::DeleteData): the class is polymorphic

@@ -60,6 +60,11 @@ enum ESubtitleFlag { };   // FableWin.pdb type name only (no enumerator survives
 #endif
 class CSubtitleRenderer {
 public:
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_QUESTTICK_PASS23
+// Both original PDBs, native0048df77/0048dc3c.
+ CWideString GetTextFromEmbeddedTagGraphic(long)const;
+ const class C2DVector& GetTextOffsetFromEmbeddedTagGraphic(long)const;
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_FORMATTEXTWITHGAMEACTIONNAMES
     // Opt-in (row 0x0054FBC0 NUISystem::CText::SetValue): Ego_r.pdb / FableWin.pdb
     // ?FormatTextWithGameActionNames@CSubtitleRenderer@@SI?AVCWideString@@ABV2@PAV?$vector@VCWideString@@...@std@@@Z (landed 0x004917B5).

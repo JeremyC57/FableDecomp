@@ -38,6 +38,7 @@ namespace std {
 // tag temporary (push_back's _IsPODType() argument, the __destroy / __uninitialized_* dispatch) is never zero-filled -- retail passes
 // the tag's address without storing to it (UpdateShadowedSpotLights 0x00B47F82..0x00B47F91, SwitchDoorsOnAndOff 0x00DEFB10;
 // 558 landed rows declared the tags this way locally before the default path did).
+#if !(defined(FABLE_RETAIL_STLP_HOST_TAGS_PASS23) && defined(_CPP_TYPE_TRAITS_H) && !defined(_MSC_VER))
 struct __true_type { __true_type() { } };
 #ifdef FABLE_RETAIL_STLP_FALSE_TAG_POD
 // Retail opt-in (Codex 2026-11-09): original STLport4.6.2 type_traits.h line65.
@@ -46,6 +47,7 @@ struct __false_type { };
 #else
 struct __false_type { __false_type() { } };
 #endif
+#endif // Host libstdc++ already supplies these two empty dispatch tags.
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };
@@ -1829,12 +1831,16 @@ _OutputIter FABLE_FASTCALL remove_copy_if(_InputIter first,_InputIter last,_Outp
 }
 #endif
 
-#ifdef FABLE_RETAIL_STLP_DECAL_HEAP
+#if defined(FABLE_RETAIL_STLP_DECAL_HEAP) || defined(FABLE_RETAIL_STLP_ASTAR_PUSHHEAP_PASS23)
 // Original STLport4.6 _heap.c comparator overloads, ordinary source bodies.
 template <class _RandomAccessIterator, class _Distance, class _Tp, 
           class _Compare>
 inline
 void
+#ifdef FABLE_RETAIL_STLP_ASTAR_REAL_PUSH_HEAP_PASS23
+// Native independent UpdateElementA21C30/PushA22460 pass ECX first, EDX holeIndex toA206F0.
+FABLE_STLP_FASTCALL
+#endif
 __push_heap(_RandomAccessIterator __first, _Distance __holeIndex,
             _Distance __topIndex, _Tp __val, _Compare __comp)
 {
@@ -1847,6 +1853,17 @@ __push_heap(_RandomAccessIterator __first, _Distance __holeIndex,
   *(__first + __holeIndex) = __val;
 }
 
+#ifdef FABLE_RETAIL_STLP_ASTAR_REAL_PUSH_HEAP_PASS23
+// Original STLport _heap.c comparator range wrapper, inlined in native queue callers.
+template<class _RandomAccessIterator,class _Compare>
+inline void push_heap(_RandomAccessIterator first,_RandomAccessIterator last,_Compare compare) {
+ typedef typename iterator_traits<_RandomAccessIterator>::difference_type _Distance;
+ typedef typename iterator_traits<_RandomAccessIterator>::value_type _Tp;
+ __push_heap(first,_Distance((last-first)-1),_Distance(0),_Tp(*(last-1)),compare);
+}
+#endif
+
+#ifdef FABLE_RETAIL_STLP_DECAL_HEAP
 template <class _RandomAccessIterator, class _Distance,
           class _Tp, class _Compare>
 void
@@ -1868,6 +1885,7 @@ __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex,
   }
   __push_heap(__first, __holeIndex, __topIndex, __val, __comp);
 }
+#endif
 
 
 

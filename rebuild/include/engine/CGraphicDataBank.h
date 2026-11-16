@@ -16,6 +16,9 @@ class CManagedTexture;
 class CManagedTexture;class CBankFileAsyncData;
 #endif
 #ifdef FABLE_RETAIL_CGRAPHICDATABANK_ORIGINAL_METHODS_PASS22
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_DELAYS_PASS23
+class CDataInputStream;class CDataOutputStream;
+#endif
 class CGraphicDataBankInit; class CAFile; class CTGAToRGBAGraphicInfo; class C2DBoxI;
 class CPixelFormat; class CManagedTexture; class CBankFileAsyncData;
 // Both raw PDBs prove signatures and user/generated classification.
@@ -38,9 +41,18 @@ public:
     CTextureManager& GetTextureManager();
     CCountedPointer<CTextureManager> GetPTextureManager();
     void SetTextureManager(const CCountedPointer<CTextureManager>&);
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_DELAYS_PASS23
+    // Original public const scalar getters; native00b4a7xx reads268/26c.
+    unsigned long GetUnloadFrameDelay() const {return UnloadFrameDelay;}
+#else
     unsigned long GetUnloadFrameDelay() const;
+#endif
     void SetUnloadFrameDelay(unsigned long);
+#ifdef FABLE_RETAIL_CGRAPHICDATABANK_DELAYS_PASS23
+    unsigned long GetReduceSizeFrameDelay() const {return ReduceSizeFrameDelay;}
+#else
     unsigned long GetReduceSizeFrameDelay() const;
+#endif
     void SetReduceSizeFrameDelay(unsigned long);
     unsigned long GetTexturePointersValidForFrames() const;
     void SetTexturePointersValidForFrames(unsigned long);

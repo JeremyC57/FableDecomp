@@ -26,6 +26,15 @@ class CTCPhysicsBase : public CTCBase {
     // Opt-in (landing gl, row 0x006AFD40): Ego_r.pdb 0x006EC500 / FableWin.pdb 0x0246E010 ?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ.
 protected: const CThingSearchTools& GetThingSearchTools() const;   // 0x006AFD40
 #endif
+#ifdef FABLE_RETAIL_MULTISHOT_LIFETIMES_PASS23
+// Both complete original PDB type records; real lifetimes for self-contained fixtures.
+public: CTCPhysicsBase(CThing&);
+#endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_ORIGINAL_CTOR_PASS23
+ // Retail opt-in (Codex pass23): both original TPI constructor; test fixture uses normal lifetimes.
+public:
+ CTCPhysicsBase(CThing& thing);
+#endif
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_IMPASSABLE
 protected:
  void ImpulseRespondToCollisonWithImpassableObject(const CPhysicsCollideResponse&,const CTCPhysicsBase&,C3DVector&)const;

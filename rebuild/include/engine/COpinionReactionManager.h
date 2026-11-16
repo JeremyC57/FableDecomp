@@ -50,6 +50,17 @@ public:
     // (`push ebx ; push 0Bh ; mov ecx,<manager>`, result `fstp`). Declaration only.
     float GetReactionMatchStrength(EOpinionReactionType type, const class CThingAICreature& creature) const;   // 0x00701590
 #endif
+#ifdef FABLE_RETAIL_GREETING_PASS23
+    // Both PDBs plus original donor call graph/native00683d75..00683e00.
+    EOpinionAttitudeType GetAttitudeType(const CThing&,const CTCOpinionSource*) const;
+    EOpinionAttitudeType GetBlurredAttitude(EOpinionAttitudeType) const;
+    float GetThingOpinionOfPlayer(const CThing&,EOpinion) const;
+    const CCharString& GetAttitudeString(EOpinionAttitudeType attitude) const { return AttitudeStrings[attitude]; }
+private:
+    // Exact private static const array spelling in both PDBs; native013babd0.
+    static const CCharString AttitudeStrings[18];
+public:
+#endif
     void SetThingOpinionSource(CThing* thing);                           // 0x00700770
 #ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTACHOPINIONSOURCE
     // Retail opt-in (acctC wfA1, row 0x00682810 CTCCreatureOpinionOfHero::InformOfDeed): Ego_r.pdb

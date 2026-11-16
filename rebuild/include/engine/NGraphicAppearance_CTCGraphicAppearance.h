@@ -65,14 +65,22 @@ class CEngineMeshEffect;
 #include "engine/CIVCountedPointer.h"
 class CEngineMeshEffect; class C3DAnimationInterpolator; class C3DPositionInterpolator; class C3DOrientationInterpolator;
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_EFFECT_ENTRY_PASS23
+#include "engine/CIVCountedPointer.h"
+class CEngineMeshEffect;
+#endif
 namespace NGraphicAppearance {
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_EFFECT_ENTRY_PASS23
+// Both original enum records; full entry permits normal empty-map lifetimes.
+enum EAppearanceMeshEffectPriority {MESH_EFFECT_PRIORITY_NULL=0,MESH_EFFECT_PRIORITY_WEAPON_GLOWS=1,MESH_EFFECT_PRIORITY_SPELLS=2,MESH_EFFECT_PRIORITY_TARGETING=3,MESH_EFFECT_PRIORITY_SHIELD_SPELL_SPECIAL_OVERRIDE=4};
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
 class CPrimitive; class CAGraphicAppearanceComponent;
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE
 class CAGraphicAppearanceComponent;
 #endif
-#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT
+#if defined(FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT) && !defined(FABLE_RETAIL_CTCGRAPHICAPPEARANCE_EFFECT_ENTRY_PASS23)
 enum EAppearanceMeshEffectPriority;                          // MS forward enum (chunk 867: the row passes the value 3)
 #endif
 class CTCGraphicAppearance : public CTCBase {
@@ -81,6 +89,10 @@ class CTCGraphicAppearance : public CTCBase {
     // line at 0x004C12D0 (landed), alone -- without the STATIC_FOCAL / UPDATE_LIST chain that also declares it. Declaration only.
 public:
     C3DVector GetCameraFocalPos(float) const;                            // 0x004C12D0
+#endif
+#ifdef FABLE_RETAIL_ELECTROCUTED_LIFETIMES_PASS23
+// Both original PDB complete class declarations; normal-lifetime fixture construction.
+public: CTCGraphicAppearance(CThing&); virtual ~CTCGraphicAppearance();
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_STATIC_FOCAL
 public:
@@ -93,7 +105,17 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
 protected:
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_EFFECT_ENTRY_PASS23
+ // Both original TPI records: struct U, public fields and generated copy/destructor.
+ struct CMeshEffectPriorityEntry {
+  CIVCountedPointer<CEngineMeshEffect> PEffect;
+  EAppearanceMeshEffectPriority Priority;
+  bool EffectsCarriedItems,EffectsWeapons,InheritedFromCarrier;
+  CMeshEffectPriorityEntry();
+ };
+#else
  class CMeshEffectPriorityEntry;
+#endif
  std::map<void*,CMeshEffectPriorityEntry> MeshEffects;
  std::map<void*,CRGBColour> TintColours;
  CTCAnimationBase* PTCAnimation;

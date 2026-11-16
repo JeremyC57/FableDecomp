@@ -12,6 +12,17 @@
 enum EBlackjackWinStates;                                                // MS forward enum (Ego_r.pdb member type; values not needed here)
 class CTCTavernGameCardBlackjack : public CTCTavernGameCardBase {
 public:
+#ifdef FABLE_RETAIL_BLACKJACK_DEAL_PASS23
+    // Both original PDBs and original0275a3d0 call graph; native007da760/007daef0.
+    C3DVector GetPosition(long,long);
+    void DealCard();
+    // Both PDB constructor/override records; declarations support true class lifetime.
+    CTCTavernGameCardBlackjack(CThing&);
+    virtual CCharString GetClassTypeName() const;
+    virtual CWideString GetBestScore();
+    virtual CWideString GetCurrentScore();
+    virtual CWideString GetRequiredScore();
+#endif
     virtual void NewRound();                                             // 32 0x007DB2E0
 #ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBLACKJACK_CARDSMAINGAME
     // Retail opt-in (agentC42, row 0x007DB6A0 CardsMainGame): the slot-56 override and the members it uses (Ego_r.pdb / FableWin.pdb

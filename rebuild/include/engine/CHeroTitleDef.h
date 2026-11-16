@@ -12,7 +12,14 @@
 #pragma pack(push, 1)
 class CHeroTitleDef : public CSubDefClassBase {
 public:
+#ifdef FABLE_RETAIL_GREETING_PASS23
+    // Both original PDBs and native00683e83: signed title-group tag at +30.
+    unsigned char _before_greet[0x30-0x25];
+    long HeroTitleGreetToHeroTag;
+    unsigned char _after_greet[0x50-0x34];
+#else
     unsigned char _members[0x2b];                            // +0x25 .. +0x4f (Ego_r.pdb members, not modelled)
+#endif
 #ifdef FABLE_RETAIL_CHEROTITLEDEF_ALLOC
 // Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
 // ?Alloc@CHeroTitleDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.

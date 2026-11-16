@@ -8,6 +8,24 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_KID_HURT_SELF_PASS23
+#include "engine/CAIStateGroupBase.h"
+// Both original PDB complete types; native slot12 at01289854 and AddedSadMode+14.
+class CAIStateGroup_KidHurtSelfRunToMother : public CAIStateGroupBase {
+public:
+    virtual void OnActivate();
+    virtual void Update();
+    EAIActionReturn PerformRandomLengthCrying();
+    virtual bool IsRunnable();
+    virtual void Cleanup();
+    static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+    static CCharString FABLE_FASTCALL GetName();
+private:
+    void SendMessageToMother();
+    bool AddedSadMode;
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_KidHurtSelfRunToMother)==0x18);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -30,4 +48,5 @@ FABLE_STATIC_ASSERT_AT(23, sizeof(CAIStateGroup_KidHurtSelfRunToMother) == 0x18)
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_KidHurtSelfRunToMother, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(25, offsetof(CAIStateGroup_KidHurtSelfRunToMother, AddedSadMode) == 0x14);
 
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_KIDHURTSELFRUNTOMOTHER_H

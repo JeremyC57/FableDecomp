@@ -35,6 +35,10 @@ public:
         std::vector<CLevelFiles> RegionLevelFiles;                      // +0x10
         long                     RegionIndex;                           // +0x1c
     };
+#ifdef FABLE_RETAIL_CLEVELLOADER_CTOR_PASS23
+    // Retail opt-in (Codex pass23): both original PDBs original three-reference constructor.
+    CLevelLoader(CThingManager&,CWorldMap&,CWorld&);
+#endif
     bool IsBusy() const;                                                 // 0x006C20A0
 #ifdef FABLE_RETAIL_CLEVELLOADER_LOADALL
     // Nested opt-in (chunk 846, row 0x00520D00 CThingManager::LoadEntitiesFromScript): the "load every section" selector. Both PDB

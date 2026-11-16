@@ -17,6 +17,10 @@ class CThing;
 #endif
 class CTCSolidToThing : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCSOLIDTOTHING_CTOR_PASS23
+    // Both original PDB constructor PUBLICs; declaration only.
+    CTCSolidToThing(CThing&);
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SOLID_TO_THING; }
     void AddThingNotSolidTo(const CThing* thing);                    // 0x00770FA0
 #ifdef FABLE_RETAIL_CTCSOLIDTOTHING_REMOVETHINGNOTSOLIDTO
@@ -44,7 +48,7 @@ private:
 #endif
 };
 #ifdef FABLE_RETAIL_CTCSOLIDTOTHING_ORIGINAL_MEMBERS
-FABLE_STATIC_ASSERT(sizeof(CTCSolidToThing)==0x18);
+FABLE_STATIC_ASSERT_AT(47, sizeof(CTCSolidToThing)==0x18);
 #endif
 #endif
 #endif // FABLE_ENGINE_CTCSOLIDTOTHING_H

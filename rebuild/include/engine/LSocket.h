@@ -38,8 +38,25 @@ struct LAddress {
     }
 #endif
 };
+#ifdef FABLE_RETAIL_LSOCKET_SEND_PASS23
+// Original Ego_r/FableWin complete class: empty, size1, no bases or members.
+class LSocketConnError {};
+#endif
 class LSocketServer;
 class LSocket {
+#ifdef FABLE_RETAIL_LSOCKET_SEND_PASS23
+    // Retail opt-in (Codex pass23): both original PDBs and native008f8f50/970-byte parent.
+private:
+    static bool NeedToFlush;
+    bool IsWriteable(long);
+    static bool FABLE_FASTCALL ConvertLAddress2Sockaddr(const LAddress&,sockaddr_in&);
+public:
+    bool Send(std::vector<char>&,const LAddress&,const LAddress&);
+    bool Close();
+    LSOCKET_PROTOCOL GetMode(){return ConnectionMode;}
+    bool IsConnected(){if(Socket==(unsigned int)-1)return false;return true;}
+private:
+#endif
     LAddress RemoteAddress;
     LAddress LocalAddress;
     unsigned int Socket;

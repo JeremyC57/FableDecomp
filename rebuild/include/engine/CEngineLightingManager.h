@@ -17,6 +17,10 @@
 #ifndef FABLE_RETAIL_CENGINECOMPONENT
 #define FABLE_RETAIL_CENGINECOMPONENT
 #endif
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SHADOWED_UPDATE_PASS23
+#include "engine/CDynamicObjectHeap.h"
+extern CDynamicObjectHeap<72,16> LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight;
+#endif
 #include <stddef.h>
 #include "rebuild_abi.h"
 #include "engine/CArray.h"
@@ -50,6 +54,10 @@ public:
 };
 class CEngineLocalLightElement {
 public:
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SHADOWED_UPDATE_PASS23
+ CEngineLocalLightElement(){}
+ CEngineLocalLightElement(const C3DVector&,float,float,const CRGBFloatColour&,unsigned long);
+#endif
     C3DVector       WorldPos;                                            // +0x00
     float           Radius;                                              // +0x0c
     float           RadiusSquared;                                       // +0x10
@@ -96,6 +104,13 @@ public:
     // Original public const reference accessor, donor02CA1E00; native reads first ThemeChannel.
     const CRGBFloatColour& PeekGlobalDiffuseColour() const { return ThemeChannels[0].DiffuseColour; }
 #endif
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_GLOBAL_LIGHTING_PASS23
+    // Both original PDB public const-reference accessors and setter.
+    const C3DVector& PeekDiffuseVector() const {return DiffuseVector;}
+    const CRGBFloatColour& PeekGlobalAmbientColour() const {return ThemeChannels[0].AmbientColour;}
+    const CRGBFloatColour& PeekGlobalBacklightColour() const {return ThemeChannels[0].BacklightColour;}
+    void SetGlobalLightingParameters(const C3DVector&,const CRGBFloatColour&,const CRGBFloatColour&,const CRGBFloatColour&);
+#endif
     // Chunk 731: the constructor (CEngine::Initialise 0x00B26360 news 0x46D0 bytes) and the overrides of the pure CEnginePrimitiveManager
     // slots and CEngineComponent::PeekSceneFilterFlags (Ego_r.pdb / FableWin.pdb spellings).
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_FRAMESTART
@@ -133,6 +148,11 @@ public:
     // Opt-in (bwf1 / agentC2, row 0x00BB3E80): Ego_r.pdb / FableWin.pdb ?SetupShaderSpotLight@CEngineLightingManager@@QAEXABVCMatrix3x4@@@Z (0x00B47390).
     void SetupShaderSpotLight(const CMatrix3x4& transform);              // 0x00B47390
 #endif
+#if defined(FABLE_RETAIL_CENGINELIGHTINGMANAGER_SHADOWED_UPDATE_PASS23) && !defined(FABLE_RETAIL_CENGINELIGHTINGMANAGER_FRAMESTART)
+private:
+ void UpdateShadowedSpotLights();
+public:
+#endif
     void SetupDefaultFogStates();                                        // 0x00B47630 ?SetupDefaultFogStates@CEngineLightingManager@@QAEXXZ (CEngine::SetDefaultRenderStates 0x00B25877)
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_FOGTRANSFORM
     // Chunk 764 (row 0x00B451D0): Ego_r.pdb ?CalculateFogTransformMatrix@CEngineLightingManager@@AAE?AVC4DVector@@MM@Z (private). Declaration only.
@@ -161,8 +181,38 @@ public:
     CRGBFloatColour        PrimitiveBacklightColour;                     // +0x68
     CRGBFloatColour        PrimitiveFogColour;                           // +0x78
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SHADOWED_UPDATE_PASS23
+    struct CManagerLocalLight {
+     virtual void Delete();
+     CEngineLocalLightElement LightElement;
+     CManagerLocalLight* NextLocalLight;
+     float ClippingScore,ThemeWeight;
+     bool AlreadyFoundFlag;
+     CManagerLocalLight(const C3DVector& world_pos,float radius,float spot_radius,const CRGBFloatColour& colour,unsigned long theme_channel_mask):LightElement(world_pos,radius,spot_radius,colour,theme_channel_mask),AlreadyFoundFlag(false){}
+#if defined(FABLE_RETAIL_PASS23_HOST_TEST_ABI) && !defined(_MSC_VER)
+     static void* operator new(size_t size) throw(){return LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight.Alloc((long)size);}
+#else
+     static void* FABLE_FASTCALL operator new(unsigned int size){return LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight.Alloc((long)size);}
+#endif
+     static void FABLE_FASTCALL operator delete(void*);
+#if defined(FABLE_RETAIL_PASS23_HOST_TEST_ABI) && !defined(_MSC_VER)
+     static void* operator new(size_t,void* p) throw(){return p;}
+#else
+     static void* FABLE_FASTCALL operator new(unsigned int,void* p){return p;}
+#endif
+     static void FABLE_FASTCALL operator delete(void*,void*){}
+    };
+    struct CManagerShadowedSpotLight {
+     virtual void Delete();
+     C3DVector Position,Direction;
+     float Radius,SpotRadius,ConeRadius;
+     CRGBFloatColour Colour;
+     CManagerShadowedSpotLight(const C3DVector&,const C3DVector&,float,float,float,const CRGBFloatColour&);
+    };
+#else
     struct CManagerLocalLight;                                           // Ego_r.pdb U (nested)
     struct CManagerShadowedSpotLight;                                    // Ego_r.pdb U (nested)
+#endif
     class CLocalLightElementLink;
     float                  PrimitiveFogStartZ;                           // +0x88
     float                  PrimitiveFogEndZ;                             // +0x8c

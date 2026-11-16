@@ -38,6 +38,11 @@ class CEnginePrimitiveRenderer2D : public CEngineComponent {
 public:
     CEnginePrimitiveRenderer2D();              // 0x00B4AC10 ??0CEnginePrimitiveRenderer2D@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D_RENDER_PASS23
+    // Both PDBs and native component slot5,00b4a700.
+    virtual void Render(const class CEngineComponentRenderParams&);
+    virtual ~CEnginePrimitiveRenderer2D();
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D_LAYER2DTODISTANCE
     // Opt-in (chunk 1020, row 0x00BCF4F0): Ego_r.pdb / FableWin.pdb ?Layer2DToDistance@CEnginePrimitiveRenderer2D@@QAEMW4EEngine2DLayer@@@Z,
     // out of line in retail at 0x00B4A6B0 (called on the renderer pointer 0x01436E7C). Declaration only.
@@ -62,6 +67,9 @@ public:
 private:
     void AddPrimitiveManager(const CCountedPointer<CEnginePrimitiveManager>& manager);   // 0x00B4ABB0 ?AddPrimitiveManager@CEnginePrimitiveRenderer2D@@AAEXABV?$CCountedPointer@VCEnginePrimitiveManager@@@@@Z
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D_RENDER_PASS23
+private:
+#endif
     CArray<CCountedPointer<CEnginePrimitiveManager> >        PrimitiveManagers;        // +0x0c
     CCountedPointer<CEnginePrimitiveManager2DStaticMeshes>   StaticMesh2DManager;      // +0x18
     CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes> AnimatedMesh2DManager;    // +0x20

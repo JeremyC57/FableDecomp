@@ -92,6 +92,10 @@ private:
 }
 #endif
 class CQuestManager : public CTBaseSingletonNoDefaultAlloc<CQuestManager> {
+#ifdef FABLE_RETAIL_CQUESTMANAGER_CTOR_PASS23
+ // Both original PDB PUBLICs: original three-reference constructor.
+public: CQuestManager(class CWorld&,class CScriptInfoManager&,class CGameScriptInterface&);
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE_CONTEXT
 public:
     // Opt-in (chunk 2052, row 0x0049F4C0 CWorld::SaveGameStateInternal): Ego_r.pdb ?SaveGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z,

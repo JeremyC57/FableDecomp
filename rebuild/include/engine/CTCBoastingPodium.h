@@ -8,6 +8,10 @@
 class CBoastingPodiumDef;
 class CTCBoastingPodium:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCBOASTINGPODIUM_CTOR_PASS23
+ // Both original PDB PUBLICs: ??0CTCBoastingPodium@@QAE@AAVCThing@@@Z.
+ CTCBoastingPodium(CThing&);
+#endif
  virtual void FrameUpdate();
 private:
  long GetNumberOfActiveBoastingPositions()const;
@@ -17,5 +21,5 @@ private:
  bool BoastingActive;
  CDefPointer<const CBoastingPodiumDef> PDef;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCBoastingPodium)==0x2c);
+FABLE_STATIC_ASSERT_AT(20, sizeof(CTCBoastingPodium)==0x2c);
 #endif

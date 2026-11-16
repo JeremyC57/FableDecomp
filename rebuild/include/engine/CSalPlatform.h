@@ -23,7 +23,11 @@ public: static int Create(const CRESOURCEDESC*,const CPLATFORMDESC*,CSalPlatform
 #ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
 public: unsigned int GetUpdate()const{return m_ffUpdate;}
 #endif
+#ifdef FABLE_RETAIL_CSALPLATFORM_CREATE_SW_PASS23
+protected:
+#else
 private:
+#endif
  CCodaObjectList m_Hw2DVoices;
  CCodaObjectList m_Hw3DVoices;
  CCodaObjectList m_Sw2DVoices;
@@ -39,6 +43,18 @@ public:
  int ProcessOutput();
  CREFTIME GetReferenceTime(){_LARGE_INTEGER time;QueryPerformanceCounter(&time);return time.QuadPart-timerStart.QuadPart;}
 private:
+#ifdef FABLE_RETAIL_CSALPLATFORM_CREATE_SW_PASS23
+ // SDK private CreateSwVoices; native00c3f800/caller00c3fca9 proves bool in this fork.
+ bool CreateSwVoices();
+#endif
+#ifdef FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+ // SDK CreateSw has an int result in the newer library; this native fork returns bool.
+ bool CreateSw(const CRESOURCEDESC*,const CPLATFORMDESC*);
+ bool SetSWOutputConfig();
+ // Descriptive native-only split helpers; exact original names unavailable.
+ bool CreateSwDirectSound(const CPLATFORMDESC*);
+ bool CreateSwBufferedDirectSound(const CPLATFORMDESC*);
+#endif
  CSalMixer *m_pMixer;
  CSalXTC m_xtcFront;
  CSalXTC m_xtcRear;

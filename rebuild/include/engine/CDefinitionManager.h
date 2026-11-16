@@ -4,6 +4,11 @@
 // Retail opt-in (Codex pass 11 consolidation 2): needs FABLE_RETAIL_CRESOURCELIST and FABLE_RETAIL_DEF_CLASS_BASE.
 #include "engine/CResourceList.h"
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_SAVEBINARY_PASS23
+#include "engine/CArray.h"
+#include "engine/CVectorMap.h"
+class CDataOutputStream;class CMemoryDataOutputStream;
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF
 #include "fable_string.h"
 #include "engine/CArray.h"
@@ -52,6 +57,13 @@ protected:
 public:
 #endif
     virtual ~CDefinitionManager();
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_SAVEBINARY_PASS23
+    // Both original complete records/PUBLICs; select existing INSTANTIATEDEF for its genuine nested records.
+    void SaveBinaryDefinitions(CDataOutputStream&);
+protected:
+    void CompressDefinitionBlock(CMemoryDataOutputStream&,CArray<unsigned short>&,unsigned long);
+public:
+#endif
     long GetGlobalIndexFromClassIndex(const CCharString&,long) const;
     template<class T> bool GetDef(long,CDefPointer<const T>*) const;
     template<class T> bool GetDef(const CCharString&,long,CDefPointer<const T>*) const;   // ??$GetDef@VCSkyDef@@@..QBE_NABVCCharString@@JPAV..@Z (FableWin/Ego_r; chunk 727)
@@ -144,7 +156,12 @@ protected:
 #endif
     unsigned char NameCRCToIndexMap[16],DefClassInfo[16];
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_SAVEBINARY_PASS23
+    CArray<unsigned char> CompressedDefData;
+    CVectorMap<unsigned long,unsigned long> CompressedOffsets;
+#else
     unsigned char CompressedDefData[12],CompressedOffsets[16];
+#endif
     CArray<CInstantiatedDefInfo*> InstantiatedDefs;
 #else
     unsigned char CompressedDefData[12],CompressedOffsets[16],InstantiatedDefs[12];

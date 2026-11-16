@@ -1,0 +1,5 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0089c910	?CanThingBe_Sensed_ByOtherThing@CGameScriptInterface@@ABE_NABVCScriptThing@@0J@Z	Both original private const method records and direct native wrappers; 976code+40table extent	?CanThingBe_Sensed_ByOtherThing@CGameScriptInterface@@UBE_NABVCScriptThing@@0J@Z; shortened Leaf from old hand287
+00744440	?GetSoundRadius@CTCPerceiveThing@@QBEMXZ	Both original PDB methods plus donor calls and native +3C getter	_global::GetMember_float0x3c_00744440; CMap::DrawGetSeaLevel; ?M@C00744440@@
+00744450	?GetSmellRadius@CTCPerceiveThing@@QBEMXZ	Both original PDB methods plus donor calls and native +48 getter	_global::GetMember_float0x48_00744450; CMap::DrawGetSeaLevel; ?M@C00744450@@
+007445d0	?GetFOV@CTCPerceiveThing@@QBEMXZ	Both original PDB methods, native direct calls and original donor GetFOV call identity	_global::GetAirResistance; <unattributed>::GetScaledDefValue

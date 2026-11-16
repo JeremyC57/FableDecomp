@@ -21,6 +21,12 @@
 #include "engine/CTCBase.h"
 #include "engine/EOpinionDeedType.h"
 class CTCOpinionSource : public CTCBase {
+#ifdef FABLE_RETAIL_GREETING_PASS23
+public:
+    // Both original PDB constructors: public CThing&; normal fixture lifetimes.
+    CTCOpinionSource(CThing&);
+private:
+#endif
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_OPINION_SOURCE; }
     bool IsAlwaysAwareOf() const { return AlwaysAwareOf; }
@@ -45,6 +51,6 @@ private:
     long             VirtualDeedID;                      // +0x84
     unsigned long    FrameToClearVirtualDeed;            // +0x88
 };
-FABLE_STATIC_ASSERT(sizeof(CTCOpinionSource) == 0x8c);
+FABLE_STATIC_ASSERT_AT(48, sizeof(CTCOpinionSource) == 0x8c);
 #endif
 #endif // FABLE_ENGINE_CTCOPINIONSOURCE_H

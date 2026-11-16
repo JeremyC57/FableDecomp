@@ -44,6 +44,9 @@ private:
 #else
 template<class T> class CArray : public std::vector<T> {
 public:
+#ifdef FABLE_RETAIL_CARRAY_GETBYTESIZE_PASS23
+ unsigned int GetByteSize()const;
+#endif
 #ifdef FABLE_RETAIL_CARRAY_ORIGINAL_USER_SPECIAL_MEMBERS_PASS22
     // Both original PDBs: user-written copy ctor/dtor attr0x3; assignment generated0x103.
     // FableWin033264B0 forwards copy to vector;02C89C80/01CA07F0 only call base dtor.
@@ -162,5 +165,9 @@ public:
 private:
     T* GetZeroSizeArray() { return (T*)this; }
 };
+#endif
+#ifdef FABLE_RETAIL_CARRAY_GETBYTESIZE_PASS23
+// Original FableWin02e4c2a0/03065c20: vector element count times original element sizeof.
+template<class T> inline unsigned int CArray<T>::GetByteSize()const{return this->size()*sizeof(T);}
 #endif
 #endif

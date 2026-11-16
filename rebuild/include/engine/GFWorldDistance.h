@@ -2,6 +2,15 @@
 #define FABLE_ENGINE_GFWORLDDISTANCE_H
 #include "engine/C3DVector.h"
 inline float FABLE_FASTCALL GFSqr(float n){return n*n;}
+#ifdef FABLE_RETAIL_KID_EVADE_PASS23
+#include "engine/C2DVector.h"
+// Original PUBLIC01b4f090 and PDB locals pos1,pos2,dx,dy; donor64bytes.
+inline float FABLE_FASTCALL GFGet2DDistanceSquared(const C2DVector& pos1,const C2DVector& pos2) {
+ float dx=pos2.X-pos1.X;
+ float dy=pos2.Y-pos1.Y;
+ return dx*dx+dy*dy;
+}
+#endif
 // Original debug01f284e0, locals sqr_dist/sqr_comp.
 inline bool FABLE_FASTCALL GFWorld2DDistanceSmallerThan(const C3DVector& pos1,const C3DVector& pos2,float compare,bool using_delta_notional_zero) {
  float sqr_dist=GFSqr(pos1.X-pos2.X)+GFSqr(pos1.Y-pos2.Y);

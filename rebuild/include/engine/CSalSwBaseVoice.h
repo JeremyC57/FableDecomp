@@ -70,7 +70,12 @@ protected:
  CSalSwBuffer *m_pMixBuffer;
  CSalSwFilter m_Filter[2];
 private:
+#ifdef FABLE_RETAIL_CSALPLATFORM_CREATE_SW_PASS23
+ // Native history begins124, advances20 per channel, and ends at1e4: six channels.
+ short m_asHistory[6][16];
+#else
  short m_asHistory[2][16];
+#endif
  unsigned int m_nHistorySamples;
  unsigned int m_uiSrcRate;
  unsigned int m_uiSrcCount;

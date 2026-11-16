@@ -217,6 +217,10 @@ typedef enum
     EAXREVERB_ROOMROLLOFFFACTOR,
     EAXREVERB_FLAGS,
 } EAXREVERB_PROPERTY;
+#ifdef FABLE_RETAIL_CEAXBUFFER_CTOR_PASS23
+// Both original eaxguids.obj definitions and EAXBuffer constructor references.
+extern const GUID EAX_NULL_GUID;
+#endif
 extern const GUID EAX_REVERB_EFFECT;
 extern const GUID EAX_PrimaryFXSlotID;
 extern const GUID EAXPROPERTYID_EAX40_FXSlot0;

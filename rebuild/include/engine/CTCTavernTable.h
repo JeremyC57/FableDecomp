@@ -37,6 +37,11 @@ class CThingAICreature;
 #endif
 class CTCTavernTable : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCTAVERNTABLE_LIFETIMES_PASS23
+    // Both original PDB TPI records: public CThing& constructor and virtual destructor.
+    CTCTavernTable(CThing&);
+    virtual ~CTCTavernTable();
+#endif
 #ifdef FABLE_RETAIL_CTCTAVERNTABLE_FULL_LAYOUT
     virtual void OnInitialActivate();                                                             //  6 0x007B90F0
     CCharString GetTankardName();                                                                 // 0x007B8680
@@ -117,10 +122,10 @@ public:
 #endif
 };
 #ifdef FABLE_RETAIL_CTCTAVERNTABLE_FULL_LAYOUT
-FABLE_STATIC_ASSERT(offsetof(CTCTavernTable, Tankards) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernTable, SeatsCurrentlyUsed) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernTable, NumPeopleSeated) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernTable, ActionPointTankardStrlen) == 0x54);
-FABLE_STATIC_ASSERT(sizeof(CTCTavernTable) == 0x60);
+FABLE_STATIC_ASSERT_AT(120, offsetof(CTCTavernTable, Tankards) == 0x1c);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CTCTavernTable, SeatsCurrentlyUsed) == 0x34);
+FABLE_STATIC_ASSERT_AT(122, offsetof(CTCTavernTable, NumPeopleSeated) == 0x40);
+FABLE_STATIC_ASSERT_AT(123, offsetof(CTCTavernTable, ActionPointTankardStrlen) == 0x54);
+FABLE_STATIC_ASSERT_AT(124, sizeof(CTCTavernTable) == 0x60);
 #endif
 #endif

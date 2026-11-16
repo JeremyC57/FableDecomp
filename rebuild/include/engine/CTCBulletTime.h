@@ -24,6 +24,10 @@ class CSpecialAbilitiesBulletTimeDef;
 class CThing;
 #endif
 class CTCBulletTime : public CTCBase {
+#ifdef FABLE_RETAIL_CTCBULLETTIME_FRAME_PASS23
+ // Retail opt-in (Codex pass23): both original PDB virtual FrameUpdate and typed intelligent blur target.
+public:CTCBulletTime(CThing&);virtual void FrameUpdate();
+#endif
 #ifdef FABLE_RETAIL_CTCBULLETTIME_MEMBERS
 #ifdef FABLE_RETAIL_CTCBULLETTIME_PLAYEFFECT
 private:
@@ -57,7 +61,11 @@ public:                                                  // members public as in
     CIntelligentPointer<NParticleEngine::CParticleEmitter> m_tpLoopingEffect;   // +0x30
     unsigned long             LoopSound;                     // +0x38
     unsigned char             PItemRemoved[0x8];             // +0x3c CIntelligentPointer<CThing>
+#ifdef FABLE_RETAIL_CTCBULLETTIME_FRAME_PASS23
+    CIntelligentPointer<CThing> HitCreatureBlur;
+#else
     unsigned char             HitCreatureBlur[0x8];          // +0x44 CIntelligentPointer<CThing>
+#endif
     void*                     RadialBlurKey;                 // +0x4c
     void*                     ScreenFilterKey;               // +0x50
     bool                      Pausable;                      // +0x54
@@ -89,14 +97,14 @@ private:
 public:
 #endif // FABLE_RETAIL_CTCBULLETTIME_VSLOTS2
 };
-FABLE_STATIC_ASSERT(sizeof(CTCBulletTime)==0x58);
+FABLE_STATIC_ASSERT_AT(92, sizeof(CTCBulletTime)==0x58);
 #ifdef FABLE_RETAIL_CTCBULLETTIME_MEMBERS
 #include <stddef.h>
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, m_tpLoopingEffect) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, LoopSound) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, ScreenFilterKey) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, Pausable) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, Paused) == 0x55);
+FABLE_STATIC_ASSERT_AT(95, offsetof(CTCBulletTime, m_tpLoopingEffect) == 0x30);
+FABLE_STATIC_ASSERT_AT(96, offsetof(CTCBulletTime, LoopSound) == 0x38);
+FABLE_STATIC_ASSERT_AT(97, offsetof(CTCBulletTime, ScreenFilterKey) == 0x50);
+FABLE_STATIC_ASSERT_AT(98, offsetof(CTCBulletTime, Pausable) == 0x54);
+FABLE_STATIC_ASSERT_AT(99, offsetof(CTCBulletTime, Paused) == 0x55);
 #endif
 
 #else
@@ -138,26 +146,26 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCBulletTime) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, f4) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, BulletTimeRemainingTicks) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, BulletTimeAbilityLevel) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, DisplacementMask) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, DisplacementEffectPrimitive) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, PDef_Object) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, m_nLevel) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, m_nTimeMultiplier) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, m_fDuration) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, m_tpLoopingEffect) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, LoopSound) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, PItemRemoved) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, HitCreatureBlur) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, RadialBlurKey) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, ScreenFilterKey) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, Pausable) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, Paused) == 0x55);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, CutSceneCancel) == 0x56);
+FABLE_STATIC_ASSERT_AT(141, sizeof(CTCBulletTime) == 0x58);
+FABLE_STATIC_ASSERT_AT(142, offsetof(CTCBulletTime, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(143, offsetof(CTCBulletTime, f4) == 0x4);
+FABLE_STATIC_ASSERT_AT(144, offsetof(CTCBulletTime, BulletTimeRemainingTicks) == 0xc);
+FABLE_STATIC_ASSERT_AT(145, offsetof(CTCBulletTime, BulletTimeAbilityLevel) == 0x10);
+FABLE_STATIC_ASSERT_AT(146, offsetof(CTCBulletTime, DisplacementMask) == 0x14);
+FABLE_STATIC_ASSERT_AT(147, offsetof(CTCBulletTime, DisplacementEffectPrimitive) == 0x18);
+FABLE_STATIC_ASSERT_AT(148, offsetof(CTCBulletTime, PDef_Object) == 0x20);
+FABLE_STATIC_ASSERT_AT(149, offsetof(CTCBulletTime, m_nLevel) == 0x24);
+FABLE_STATIC_ASSERT_AT(150, offsetof(CTCBulletTime, m_nTimeMultiplier) == 0x28);
+FABLE_STATIC_ASSERT_AT(151, offsetof(CTCBulletTime, m_fDuration) == 0x2c);
+FABLE_STATIC_ASSERT_AT(152, offsetof(CTCBulletTime, m_tpLoopingEffect) == 0x30);
+FABLE_STATIC_ASSERT_AT(153, offsetof(CTCBulletTime, LoopSound) == 0x38);
+FABLE_STATIC_ASSERT_AT(154, offsetof(CTCBulletTime, PItemRemoved) == 0x3c);
+FABLE_STATIC_ASSERT_AT(155, offsetof(CTCBulletTime, HitCreatureBlur) == 0x44);
+FABLE_STATIC_ASSERT_AT(156, offsetof(CTCBulletTime, RadialBlurKey) == 0x4c);
+FABLE_STATIC_ASSERT_AT(157, offsetof(CTCBulletTime, ScreenFilterKey) == 0x50);
+FABLE_STATIC_ASSERT_AT(158, offsetof(CTCBulletTime, Pausable) == 0x54);
+FABLE_STATIC_ASSERT_AT(159, offsetof(CTCBulletTime, Paused) == 0x55);
+FABLE_STATIC_ASSERT_AT(160, offsetof(CTCBulletTime, CutSceneCancel) == 0x56);
 
 #endif // FABLE_RETAIL_CTCBULLETTIME
 #endif // FABLE_ENGINE_CTCBULLETTIME_H

@@ -46,6 +46,11 @@ public:long GetFrameBribeEnds()const{return FrameBribeEnds;}
 private:void UpdateHornTasks();void RemoveThingFromAllTasks(const CThing&);
 #endif
 public:
+#ifdef FABLE_RETAIL_SECURITY_SWEEP_LIFETIMES_PASS23
+    // Both original CTCVillage TPI records: public CThing& ctor and virtual dtor.
+    CTCVillage(CThing&);
+    virtual ~CTCVillage();
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_TAVERNTIMES
     // Retail opt-in (row 0x0065AA6F CTCVillage::IsTimeToGoToTavern): Ego_r.pdb / FableWin.pdb ?IsTavernTime@CTCVillage@@QBE_NXZ
     // (retail 0x00658C0A), ?GetTavernTimes@CTCVillage@@QBE_NAAM0@Z (retail 0x00658C5B) and

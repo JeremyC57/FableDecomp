@@ -54,6 +54,10 @@ class C3DVector;
 namespace NHitLocations { class CHitLocation; }
 class CTCHitLocations : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCHITLOCATIONS_ORIGINAL_CTOR_PASS23
+ // Retail opt-in (Codex pass23): original both-PDB CThing-reference constructor, declaration only.
+ CTCHitLocations(CThing&);
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HIT_LOCATIONS; }
     void GetBoundingSphere(C3DVector&, float&, bool) const;          // 0x00815420
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithFiniteLine(const C3DVector&, const C3DVector&,

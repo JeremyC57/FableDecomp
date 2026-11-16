@@ -17,6 +17,10 @@
 namespace NEntityEvents{class CEventBase;}
 class CTCEntityEvents:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS_CTOR_PASS23
+ // Both original PDB PUBLICs: original CThing& constructor.
+public: CTCEntityEvents(CThing&);
+#endif
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_ENTITY_EVENTS;}
  template<class E,class F> bool GetEvent(E**,const F&)const;
 #ifdef FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
@@ -47,7 +51,7 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCEntityEvents)==0x10);
+FABLE_STATIC_ASSERT_AT(50, sizeof(CTCEntityEvents)==0x10);
 #else
 #ifdef FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
 namespace NEntityEvents{class CEventBase;}
@@ -74,10 +78,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCEntityEvents) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, sub) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, Events) == 0xc);
+FABLE_STATIC_ASSERT_AT(77, sizeof(CTCEntityEvents) == 0x10);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CTCEntityEvents, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CTCEntityEvents, sub) == 0x4);
+FABLE_STATIC_ASSERT_AT(80, offsetof(CTCEntityEvents, Events) == 0xc);
 
 #endif // retail branch
 #endif // FABLE_ENGINE_CTCENTITYEVENTS_H

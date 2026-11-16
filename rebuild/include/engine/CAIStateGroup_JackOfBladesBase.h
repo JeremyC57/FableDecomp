@@ -16,6 +16,17 @@
 class CThingCreatureBase;
 // Original Ego_r full base/fields; native STLport vector12 replaces donor16.
 class CAIStateGroup_JackOfBladesBase:public CAIStateGroupBase {
+#ifdef FABLE_RETAIL_JACK_SETUPARENA_PASS23
+public:
+ virtual void Initialise(CAIBrain&,CThingAICreature&,long,EScriptAIPriority,const CCharString&);
+ virtual EAIStateGroupType GetStateGroupType()const;
+ virtual void Cleanup();
+ virtual void OnReplace();
+ virtual void OnActivate();
+ virtual bool IsTimingCritical()const;
+protected:
+ virtual void SetupArena();
+#endif
 protected:
 #if defined(FABLE_RETAIL_JACK_STAGE1_UPDATE) || defined(FABLE_RETAIL_JACKOFBLADESBASE_STAGE2_UPDATE)   // FABLE_RETAIL_JACKOFBLADESBASE_STAGE2_UPDATE: wfD4, row 0x00974AA0 (IsStillRunnable 0x00971B00)
  bool IsStillRunnable();

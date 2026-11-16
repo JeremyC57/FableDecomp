@@ -108,6 +108,10 @@ public:
 
 class CWorld : public CBaseClassNonCopyable, public CIDrawWorld {
 public:
+#ifdef FABLE_RETAIL_CWORLD_CTOR_PASS23
+    // Retail opt-in (Codex pass23): both original PDBs ??0CWorld@@QAE@ABVCWorldInit@@@Z.
+    CWorld(const class CWorldInit&);
+#endif
     virtual ~CWorld();                                       // slot 0 (??1CWorld@@UAE@XZ 0x004A6AB0)
 protected:
     virtual void PostLoadInit();                             // slot 1  0x0049D970
@@ -152,10 +156,13 @@ public:
     void UpdateInputRelatedInterpolation();                  // 0x0049D9E0
     void RenderUpdate(const CInterpolationInfo* info);       // 0x0049E080
 #endif
-#ifdef FABLE_RETAIL_CTCBOASTINGCROWDCONTROL
+#if defined(FABLE_RETAIL_CTCBOASTINGCROWDCONTROL) && !defined(FABLE_RETAIL_CWORLD_DEFINITION_REFERENCE_PASS23)
     const CGameDefinitionManager& PeekDefinitionManager()const{return *DefinitionManager;}
 #endif
-#if defined(FABLE_RETAIL_CWORLD_PEEKDEFINITIONMANAGER) && !defined(FABLE_RETAIL_CTCBOASTINGCROWDCONTROL)
+#ifdef FABLE_RETAIL_CWORLD_DEFINITION_REFERENCE_PASS23
+    const CGameDefinitionManager& PeekDefinitionManager()const{return DefinitionManager;}
+#endif
+#if defined(FABLE_RETAIL_CWORLD_PEEKDEFINITIONMANAGER) && !defined(FABLE_RETAIL_CTCBOASTINGCROWDCONTROL) && !defined(FABLE_RETAIL_CWORLD_DEFINITION_REFERENCE_PASS23)
     // Opt-in (agentNF14, row 0x006C8780): the same FableWin.pdb ?PeekDefinitionManager@CWorld@@QBEABVCGameDefinitionManager@@XZ
     // (0x018D4A60), inline in retail (+0x10 read in place, 0x006C8820), under its own opt-in name. No layout change.
     const CGameDefinitionManager& PeekDefinitionManager()const{return *DefinitionManager;}
@@ -170,7 +177,11 @@ public:
 #ifdef FABLE_RETAIL_CWORLD_MOVEHEROTOREGION
     // Nested opt-in (chunk 1011, row 0x005FB4B0 CTCInventoryMap::TeleportHeroToBoastingArea): Ego_r.pdb 0x004A8150
     // ?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z, out of line in retail at 0x0049EAF0 (landed). Declaration only.
-    void HandleMoveHeroToRegionGameEvent(const CGameEvent& event);   // 0x0049EAF0
+    void HandleMoveHeroToRegionGameEvent(const CGameEvent& event);
+#ifdef FABLE_RETAIL_CWORLD_KICKREGION_PASS23
+    // Original PDB setter: one native byte store to DisplayMiniMapOnRegionLoad.
+    void SetToDisplayMiniMapOnRegionLoad(bool display){DisplayMiniMapOnRegionLoad=display;}
+#endif   // 0x0049EAF0
 #endif
 #ifdef FABLE_RETAIL_CWORLD_UPDATEREGIONLOAD_CALLEES
     // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?SetGuildSealRecallPos@CWorld@@QAEXABVC3DVector@@@Z (0x0049C9B0),
@@ -524,7 +535,14 @@ public:
     CMainGameComponent*         Component;                   // +0x08
 #endif
     CPlayerManager*             PlayerManager;               // +0x0c
+#ifdef FABLE_RETAIL_CWORLD_DEFINITION_REFERENCE_PASS23
+    // Both original CWorld records: protected reference to const manager at+0x10.
+protected:
+    const CGameDefinitionManager& DefinitionManager;
+public:
+#else
     CGameDefinitionManager*     DefinitionManager;           // +0x10
+#endif
 #ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
     // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): the owning members typed as Ego_r.pdb declares them (boost::scoped_ptr<T> /
     // CCountedPointer<T>, same offsets and sizes as the flattened words below), so Init writes `PWorldMap.reset(new CWorldMap(...))`
@@ -854,7 +872,9 @@ FABLE_STATIC_ASSERT_AT(678, offsetof(CWorld, __vftable) == 0x0);
 #ifndef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
 FABLE_STATIC_ASSERT_AT(681, offsetof(CWorld, Component) == 0x8);
 FABLE_STATIC_ASSERT_AT(682, offsetof(CWorld, PlayerManager) == 0xc);
+#ifndef FABLE_RETAIL_CWORLD_DEFINITION_REFERENCE_PASS23
 FABLE_STATIC_ASSERT_AT(683, offsetof(CWorld, DefinitionManager) == 0x10);
+#endif // Reference offsets are verified by native getter loads and following field+0x14.
 FABLE_STATIC_ASSERT_AT(684, offsetof(CWorld, PWorldMap_ptr) == 0x14);
 FABLE_STATIC_ASSERT_AT(685, offsetof(CWorld, PEnvironment_ptr) == 0x18);
 FABLE_STATIC_ASSERT_AT(686, offsetof(CWorld, PGameTimeManager_ptr) == 0x1c);

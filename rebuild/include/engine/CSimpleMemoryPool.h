@@ -21,7 +21,12 @@
 
 class CSimpleMemoryPool : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_CSIMPLEMEMORYPOOL_COMPLETE_ENUM_PASS23
+    // Ego_r TPI40c7e and FableWin TPI46940 agree on both original enumerators.
+    enum EAreaStatus { STATUS_FREE = 97, STATUS_ALLOCATED = 103 };
+#else
     enum EAreaStatus;                                                    // MS forward enum (Ego_r CArea::Status)
+#endif
     class CArea {
     public:
         unsigned long Size;                                              // +0x00
@@ -57,11 +62,11 @@ public:
     unsigned long GrowthGranularity;                                     // +0x0c
     CArea         Root;                                                  // +0x10
 };
-FABLE_STATIC_ASSERT(sizeof(CSimpleMemoryPool) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CSimpleMemoryPool, FirstMemoryBlock) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CSimpleMemoryPool, Capacity) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CSimpleMemoryPool, GrowthGranularity) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CSimpleMemoryPool, Root) == 0x10);
+FABLE_STATIC_ASSERT_AT(60, sizeof(CSimpleMemoryPool) == 0x1c);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CSimpleMemoryPool, FirstMemoryBlock) == 0x4);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CSimpleMemoryPool, Capacity) == 0x8);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CSimpleMemoryPool, GrowthGranularity) == 0xc);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CSimpleMemoryPool, Root) == 0x10);
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -80,12 +85,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSimpleMemoryPool) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CSimpleMemoryPool, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSimpleMemoryPool, FirstMemoryBlock) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CSimpleMemoryPool, Capacity) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CSimpleMemoryPool, GrowthGranularity) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CSimpleMemoryPool, Root) == 0x10);
+FABLE_STATIC_ASSERT_AT(83, sizeof(CSimpleMemoryPool) == 0x1c);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CSimpleMemoryPool, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CSimpleMemoryPool, FirstMemoryBlock) == 0x4);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CSimpleMemoryPool, Capacity) == 0x8);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CSimpleMemoryPool, GrowthGranularity) == 0xc);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CSimpleMemoryPool, Root) == 0x10);
 
 #endif // FABLE_RETAIL_CSIMPLEMEMORYPOOL
 

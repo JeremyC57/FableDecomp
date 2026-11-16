@@ -49,6 +49,10 @@ public:
  // Opt-in (row 0x00B8B780): FableWin.pdb ?GetBoundingSphere@C3DMeshStats@@QBE?AVC3DBoundingSphere@@XZ (inline, by value).
  C3DBoundingSphere GetBoundingSphere() const { return BoundingSphere; }
 #endif
+#ifdef FABLE_RETAIL_C3DMESHSTATS_LIFETIME_PASS23
+ // Original user lifetime methods, both PDBs; declarations only, no layout change.
+ C3DMeshStats();virtual ~C3DMeshStats();
+#endif
  bool HasDummyObject(unsigned long)const;
 #ifdef FABLE_RETAIL_C3DMESHSTATS_LOADBINARY
  // Retail opt-in (Codex pass22): both PDB public reference signature, native A2F2D0.

@@ -15,6 +15,10 @@ public:
  void SetMaxSortDistance(float distance);                              // 0x00B84290
 #endif
  CEngineSubPrimitiveRenderer();
+#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_RENDERTYPE_PASS23
+ // Both original publics, native00b849f0.
+ void RenderType(ESubPrimitiveType,bool);
+#endif
  virtual unsigned long PeekSceneFilterFlags()const;
  void AddSubPrimitive(CEngineSubPrimitiveBase*,float,unsigned char,unsigned long,CEnginePrimitiveManager*);
 #ifdef FABLE_RETAIL_PASS22_STATIC_MESH_RENDER

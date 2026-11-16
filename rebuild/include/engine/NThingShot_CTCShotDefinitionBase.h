@@ -40,6 +40,10 @@ class CMeleeCombatAbilityDef;
 #endif
 namespace NThingShot {
 class CTCShotDefinitionBase : public CTCBase {
+#ifdef FABLE_RETAIL_MULTISHOT_LIFETIMES_PASS23
+// Both complete original PDB type records; real lifetimes for self-contained fixtures.
+public: CTCShotDefinitionBase(CThing&); virtual ~CTCShotDefinitionBase();
+#endif
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 public:
 static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SHOT_DEFINITION;}
@@ -155,7 +159,7 @@ public:
 #endif // FABLE_RETAIL_NTHINGSHOT_CTCSHOTDEFINITIONBASE_VSLOTS3
 };
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_MOVEMENT
-FABLE_STATIC_ASSERT(sizeof(CTCShotDefinitionBase)==0x9c);
+FABLE_STATIC_ASSERT_AT(158, sizeof(CTCShotDefinitionBase)==0x9c);
 #endif
 }
 #endif

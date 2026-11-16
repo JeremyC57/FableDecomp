@@ -8,7 +8,12 @@
 #else
 typedef struct _GUID { unsigned long Data1; unsigned short Data2; unsigned short Data3; unsigned char Data4[8]; } GUID;
 #endif
+#if defined(FABLE_RETAIL_CBASEVIDEORENDERER_PORTABLE_SDK_PASS23) && !defined(_MSC_VER)
+#include <stddef.h>
+extern "C" int memcmp(const void* a,const void* b,size_t n);
+#else
 extern "C" int __cdecl memcmp(const void* a, const void* b, unsigned int n);
+#endif
 #pragma intrinsic(memcmp)
 inline int IsEqualGUID(const GUID& a, const GUID& b) { return !memcmp(&a, &b, sizeof(GUID)); }
 inline int operator==(const GUID& a, const GUID& b) { return IsEqualGUID(a, b); }
@@ -17,7 +22,12 @@ typedef __int64 LONGLONG;
 #define NOERROR 0L
 #define S_OK 0L
 #define S_FALSE 1L
+#if defined(FABLE_RETAIL_CBASEVIDEORENDERER_PORTABLE_SDK_PASS23) && !defined(_MSC_VER)
+// Keep the native signed32-bit HRESULT meaning on LP64 hosts.
+#define E_POINTER (-2147467261L)
+#else
 #define E_POINTER ((long)0x80004003L)
+#endif
 #define E_OUTOFMEMORY ((long)0x8007000EL)
 struct IUnknown {
     virtual long __stdcall QueryInterface(const GUID& riid, void** ppv) = 0;   // 0
@@ -89,7 +99,13 @@ class CUnknown : public INonDelegatingUnknown, public CBaseObject {
 private:
     IUnknown* const m_pUnknown;                        // +0x04 (const LPUNKNOWN)
 protected:
+#ifdef FABLE_RETAIL_CUNKNOWN_SDK_REFCOUNT_PASS23
+    // Evidence: original SDK combase.h m_cRef qualifier; native CACD00/CACD20
+    // use InterlockedIncrement/Decrement on this+8 and read the same shared field.
+    volatile long m_cRef;
+#else
     long m_cRef;                                 // +0x08
+#endif
 public:
     CUnknown(const unsigned short*, IUnknown*);
     unsigned long __stdcall NonDelegatingAddRef();

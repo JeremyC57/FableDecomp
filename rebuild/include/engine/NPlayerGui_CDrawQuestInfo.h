@@ -17,9 +17,17 @@ namespace NPlayerGui {
 // Native nested element constructor00656caa and DrawAt00651273 prove40-byte tail.
 class CDrawQuestInfo : public CDrawBase {
 public:
+#ifdef FABLE_RETAIL_CDRAWQUESTINFO_CTOR_PASS23
+// Both original PDBs, public original constructor; fixture normal lifetimes.
+ CDrawQuestInfo(CPlayerGui&,std::vector<CDrawBase*>&);
+#endif
     enum EElementType {QUEST_INFO_ELEMENT_NONE=0, QUEST_INFO_ELEMENT_BAR=1, QUEST_INFO_ELEMENT_TIMER=2, QUEST_INFO_ELEMENT_COUNTER=3, QUEST_INFO_ELEMENT_COUNTER_LIST=4, QUEST_INFO_ELEMENT_COUNTER_TICK=5, QUEST_INFO_ELEMENT_MINIGAME_BAR=6};
     class CQuestInfoElement {
     public:
+#ifdef FABLE_RETAIL_CDRAWQUESTINFO_CTOR_PASS23
+        // Both original PDBs: user constructor takes Scale.
+        CQuestInfoElement(float);
+#endif
         virtual float DrawAt(const C2DVector&,const CEnginePrimitivePrepareInfo&)=0;
         virtual bool Update();
         virtual void Clear();
@@ -77,6 +85,11 @@ public:
     };
     class CQuestInfoElementTick : public CQuestInfoElement {
     public:
+#ifdef FABLE_RETAIL_CDRAWQUESTINFO_CTOR_PASS23
+        // Both original public overloads; graphic constructor native00656c3c.
+        CQuestInfoElementTick(long,bool,float);
+        CQuestInfoElementTick(const CWideString&,bool,float);
+#endif
         virtual float DrawAt(const C2DVector&,const CEnginePrimitivePrepareInfo&);
         virtual EElementType GetType() const;
         long Graphic;

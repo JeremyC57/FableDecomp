@@ -1,0 +1,5 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00c1c460	?UpdateSourcePositions@CUnprovenSoundWorld_00c1c460@@QAEXXZ	Descriptive accurate libpk positional-source owner/method after both PDB searches; nativeparent+independentcaller/member evidence; falseParticleMorphs label.	?Refresh@CWorld@@QAEXXZ; ?Step@CTCInventoryMagic_00c1c6a0@@QAEXXZ; ?Update@CSoundTicker@@QAEXXZ; ?Update@CTarget_00c10a90@@QAEXXZ
+0x00c1bff0	?Copy@C3DVector@@QBE?AU_CVECTOR@@XZ	Descriptive copy name retained; actualplainCVECTOR return proven complete53Bnativebody+originalSDK source-position API and hidden-return ABI counterproof.	
+0x00c33fd0	_CODA_3DSourceSetPosition@8	OriginalCODA.h+bothoriginalSDKpublicdefinitions; nativewrapper Is3D/realCCoda3DSourceSetPosition independently corroborate; falsecameraSetVectorA.	_CODA_SetSourcePosition@8
+0x00c33690	_CODA_Commit@0	OriginalCODA.h+bothoriginalSDKpublicdefinitions; nativecontextthunk->CCodaContextCommitbit independently corroborate; replacesdescriptiveTailThunk.	

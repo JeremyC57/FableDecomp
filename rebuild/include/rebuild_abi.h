@@ -24,7 +24,12 @@ typedef unsigned int fable_u32;
 typedef char fable_require_i8[sizeof(fable_i8) == 1 ? 1 : -1];
 typedef char fable_require_i16[sizeof(fable_i16) == 2 ? 1 : -1];
 typedef char fable_require_i32[sizeof(fable_i32) == 4 ? 1 : -1];
+#if defined(FABLE_RETAIL_PASS23_HOST_TEST_ABI) && !defined(_MSC_VER)
+// Host-only behavior checks use real shared types with native host pointers.
+typedef char fable_require_ptr32[sizeof(void*) >= 4 ? 1 : -1];
+#else
 typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
+#endif
 
 #define FABLE_JOIN_INNER(a, b) a##b
 #define FABLE_JOIN(a, b) FABLE_JOIN_INNER(a, b)
@@ -37,3 +42,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 // it had before (docs/pipeline/GOTCHAS.md, landing fz). Use the plain macro for new asserts.
 #define FABLE_STATIC_ASSERT_AT(pinned_line, expression) \
     typedef char FABLE_JOIN(fable_static_assert_, pinned_line)[(expression) ? 1 : -1]
+
+#if defined(FABLE_RETAIL_PASS23_HOST_TEST_ABI) && !defined(_MSC_VER)
+// Retail ABI assertions remain active in every VC7.1 build.
+#undef FABLE_STATIC_ASSERT
+#undef FABLE_STATIC_ASSERT_AT
+#define FABLE_STATIC_ASSERT(expression) typedef char FABLE_JOIN(fable_static_assert_, __LINE__)[1]
+#define FABLE_STATIC_ASSERT_AT(pinned_line, expression) typedef char FABLE_JOIN(fable_static_assert_, pinned_line)[1]
+#endif

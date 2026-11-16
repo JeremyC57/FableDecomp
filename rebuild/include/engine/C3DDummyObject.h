@@ -12,9 +12,16 @@ public:
     C3DDummyObject();                                                    // 0x00A2E4B0
     const CMatrix3x4& PeekTransform() const { return Transform; }
     long GetBoneIndex() const { return BoneIndex; }
+#ifdef FABLE_RETAIL_C3DDUMMYOBJECT_MESH_FRIEND_PASS23
+    // Both PDBs: fields protected. FableWin03364d7b..84 directly copies BoneIndex;
+    // all four original mesh methods directly address Transform, proving this friendship.
+    friend class C3DMesh2;
+protected:
+#else
 private:
+#endif
     CMatrix3x4 Transform;                                                // +0x00
     long BoneIndex;                                                      // +0x30
 };
-FABLE_STATIC_ASSERT(sizeof(C3DDummyObject) == 0x34);
+FABLE_STATIC_ASSERT_AT(19, sizeof(C3DDummyObject) == 0x34);
 #endif

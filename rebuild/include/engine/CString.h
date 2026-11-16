@@ -25,10 +25,30 @@ struct CStringData {
 class CString {
 public:
     char* m_pchData;
+#ifdef FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
+    CString& __fastcall operator<<(const unsigned short* text); // Native C0DF20 wide appender.
+#endif
+#if defined(FABLE_RETAIL_LIBPK_DECODER_FACTORY_PASS23) || defined(FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23)
+    // Actual MFC methods called by native decoder classification C73A00.
+    CString Right(int count) const;
+    int CompareNoCase(const char* text) const;
+    static int __stdcall SafeStrlen(const char* text);
+#endif
     CStringData* GetData() const {
         LIB_ASSERT(m_pchData != NULL)
         return ((CStringData*)m_pchData)-1;
     }
+#ifdef FABLE_RETAIL_CSEGMENTFILE_PASS23
+    // Original MFC signature and native C0C200; existing bindings agree on const CString&.
+    const CString& operator=(const char* text);
+#endif
+#ifdef FABLE_RETAIL_CSTRING_BANK_TRIGGER_PASS23
+    // MFC conversion/builder and native filename/hash extensions C0E360/C0DBB0.
+    operator const char*()const{return m_pchData;}
+    CString GetFileNameWithoutExtension()const;
+    unsigned long GetHash()const;
+    CString& __fastcall operator<<(const CString&);
+#endif
     int GetAllocLength() const { return GetData()->nAllocLength; }
     char* GetBuffer(int nMinBufLength);
     void ReleaseBuffer(int nNewLength = -1);

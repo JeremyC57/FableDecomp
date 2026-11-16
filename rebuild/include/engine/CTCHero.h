@@ -18,6 +18,12 @@
 #include "engine/fable_nscript_forward.h"
 #endif
 class CTCHero : public CTCBase {
+#ifdef FABLE_RETAIL_GREETING_PASS23
+public:
+    // Both original PDB constructors: public CThing&; normal fixture lifetimes.
+    CTCHero(CThing&);
+private:
+#endif
 public:
     void ProcessPendingTutorials();                                      // 0x006C9FC0
 #ifdef FABLE_RETAIL_CTCHERO_TITLEGUITEXT
@@ -32,7 +38,17 @@ public:
     // engine/fable_nscript_forward.h (included here). Declaration only: no layout change.
     bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0
 #endif
-#ifdef FABLE_RETAIL_CTCHERO_TITLE
+#ifdef FABLE_RETAIL_GREETING_PASS23
+    // Both original PDBs, donor01f481ed..01f4820a, native00683e7c..00683e88.
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_HERO; }
+    bool HasHeroTitleSubDef() const { return !PHeroTitleSubDef.IsNull(); }
+    const CHeroTitleDef& PeekHeroTitleSubDef() const { return *PHeroTitleSubDef; }
+private:
+    unsigned char _before_title[0x18-sizeof(CTCBase)];
+    CDefPointer<const CHeroTitleDef> PHeroTitleSubDef;
+    unsigned char _after_title[0x38-0x1c];
+public:
+#elif defined(FABLE_RETAIL_CTCHERO_TITLE)
     // Retail opt-in (chunk 867, row 0x005AF64E CTCInventoryTrade::BuyItem): the hero component as the trade screen reaches it.
     // Ego_r.pdb ?StatGetInterfaceType@CTCHero@@SI?AW4ETCInterfaceType@@XZ (inline: TCI_HERO = 41, the `push 29h` of the inline
     // CThing::GetTC), ?SetTitle@CTCHero@@QAEXJ@Z 0x006CA400 (FableWin.pdb 0x024742B0; the bought title's def index), and the

@@ -11,6 +11,9 @@
 #endif
 #include "engine/CRenderManagerCore.h"
 class C2DBoxF; class CUVBox; class CRGBColour; class CTexture;
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_LIFETIME_PASS23
+class CWideString;
+#endif
 #ifdef FABLE_RETAIL_CRENDERMANAGER2D_LOADINGSCREEN
 class C2DVector; class CGraphicDataBank;
 #endif
@@ -52,6 +55,11 @@ private:
     unsigned char _pad_0x3d20[0x3ea4 - 0x3d20];                          // +0x3D20 own members (opaque)
 #endif
 public:
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_LIFETIME_PASS23
+    // Both original PDB user methods; native constructor009d9a30.
+    CRenderManager2D(CDisplayManager&,const CWideString&,unsigned long);
+    virtual ~CRenderManager2D();
+#endif
     void DrawBufferedPolys();                                            // 0x009D9C80 ?DrawBufferedPolys@CRenderManager2D@@QAEXXZ
     void Render2DDrawList(bool);                                         // 0x009DA9F0 ?Render2DDrawList@CRenderManager2D@@QAEX_N@Z
     bool Draw2DTexture(const C2DBoxF&,const CUVBox&,const CRGBColour&,CTexture&,unsigned long);

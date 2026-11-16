@@ -10,6 +10,10 @@
 // [m_activeSlots], m_Source.eax3BP +0x1c0 [m_defaultProperties], m_Dest.eax3BP +0x208 [m_deferred], m_BufferID +0x370 [m_sourceID].
 class CEAXBuffer:public CCodaObjectBase {
 public:
+#ifdef FABLE_RETAIL_CEAXBUFFER_CTOR_PASS23
+ // Exact original release/debug SDK constructor and original debug formal names.
+ CEAXBuffer(CEAXListener* lpEAXListener,long BufferID,long Volume,EAXVERSION eaxVersion,_CHANGES** lplpChanges);
+#endif
  virtual ~CEAXBuffer();
  int GetEAX4Source(unsigned long,void*,unsigned long,unsigned long*); // 0x00C66C90
  int CommitEAX3(); // 0x00C65A00
@@ -54,6 +58,14 @@ private:
  unsigned long m_dwFlags,m_dwFlags_Defer;
  long m_BufferID;
  // Remaining native 0x4c storage differs from the later SDK, and is untouched by the landed rows.
+#ifdef FABLE_RETAIL_CEAXBUFFER_CTOR_PASS23
+ // Original SDK field names, four native accessed words independently bound by constructor/callers.
+ long m_SourceSlotID,m_lVolume,m_lDirect;
+ float m_flDirectdB;
+ // Later SDK tail differs: preserve untouched native storage and existing0x3c0 class extent.
+ unsigned char Opaque384[0x3c];
+#else
  unsigned char Opaque374[0x4c];
+#endif
 };
 #endif

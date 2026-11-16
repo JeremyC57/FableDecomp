@@ -123,7 +123,12 @@ protected:
  const CWorld & GetWorld() const;
  void SetCameraModeDef(const CDefPointer<CCameraModeDef const > & p0);
  const C2DVector & GetRightStickVector() const;
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_CYLINDER_INPUT
+ // Retail opt-in (Codex pass23): FableWin original accessor and native0085c490 read LeftStickVector at+98.
+ const C2DVector & GetLeftStickVector() const { return LeftStickVector; }
+#else
  const C2DVector & GetLeftStickVector() const;
+#endif
  CCamera & GetCamera();
  const CCamera & GetCamera() const;
  float DefaultFOV;
@@ -165,7 +170,7 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CBase)==0xa4);
+FABLE_STATIC_ASSERT_AT(168, sizeof(CBase)==0xa4);
 }
 
 #else
@@ -287,7 +292,7 @@ public:
 #endif
 };
 #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES
-FABLE_STATIC_ASSERT(sizeof(CBase)==0xa4);
+FABLE_STATIC_ASSERT_AT(290, sizeof(CBase)==0xa4);
 #endif
 } // namespace NCameraModes
 #endif // FABLE_RETAIL_NCAMERAMODES_CBASE_CYLINDER

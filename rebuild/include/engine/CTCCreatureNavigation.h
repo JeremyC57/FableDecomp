@@ -31,7 +31,16 @@ private:
     float           ProximityForDirectApproach;              // +0x58
     float           CurrentSpeed;                            // +0x5c
 public:
+#ifdef FABLE_RETAIL_KID_EVADE_LIFETIMES_PASS23
+    // Original lifetime declarations, fixture definitions do not replace row calls.
+    CTCCreatureNavigation(CThing&);
+    virtual ~CTCCreatureNavigation();
+#endif
     void InterruptNavigation();
+#ifdef FABLE_RETAIL_KID_EVADE_PASS23
+    // Original PDB const member and donor02b68d59; native006cb840 receives a reference output.
+    bool GetNearestFleePosition(const C3DVector&,float,C3DVector&) const;
+#endif
 #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_VSLOTS
 // agentFAM05 (2026-11-11): retail virtual override this declaration lacks, declaration only (needs the polymorphic FABLE_RETAIL_CTCBASE; no layout
 // change). Slot 8 of the TLC vtable (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.

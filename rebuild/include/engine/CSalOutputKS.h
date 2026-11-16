@@ -37,7 +37,11 @@ private:HANDLE m_handle;DWORD m_threadId;
 };
 class CSalMutex {
 public:virtual ~CSalMutex();
+#ifdef FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+private:CRITICAL_SECTION m_critSection;
+#else
 private:CRITICAL_SECTION m_critSection;bool m_bActive;
+#endif
 };
 class CSalOutput:public CCodaObjectBase {
 public:
@@ -45,6 +49,11 @@ public:
  virtual bool Create(const GUID*,HWND,bool)=0;
  virtual void Release()=0;
  virtual bool CreateBuffer(unsigned int,unsigned int)=0;
+#ifdef FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+ // Descriptive method: native slot4 is called for the reverb output with frame samples.
+ // C3F1B6 passes g_SalCaps.SWMixer.nFrameSamples; default C572C0 returns false/ret4.
+ virtual bool CreateReverbBuffer(unsigned int);
+#endif
  virtual void ReleaseBuffer()=0;
  virtual bool FrameIsReady()=0;
  virtual void* FrameLock()=0;
@@ -55,6 +64,9 @@ struct KsPacketHeader {KSSTREAM_HEADER header;OVERLAPPED signal;};
 // Layout: native receiver offsets and SDK full0x60 class agree.
 class CSalOutputKS:public CSalOutput {
 public:
+#ifdef FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+ CSalOutputKS();
+#endif
  virtual ~CSalOutputKS();
  virtual bool Create(const GUID*,HWND,bool);
  virtual void Release();

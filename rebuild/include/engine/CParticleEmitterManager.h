@@ -15,6 +15,11 @@ enum EEngine2DLayer { };
 #endif
 #endif
 namespace NParticleEngine {
+#ifdef FABLE_RETAIL_CPARTICLEEMITTERMANAGER_BULLETTIME_PASS23
+// Exact original namespace/free fastcall/reference singleton; native00aeaaf0.
+class CParticleEmitterManager;
+CParticleEmitterManager& FABLE_FASTCALL GetParticleEmitterManager();
+#endif
 class CParticleEmitterManager {
 public:
  bool GetEnableDecals()const{return EnableDecals;}

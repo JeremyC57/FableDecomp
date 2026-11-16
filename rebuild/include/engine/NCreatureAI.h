@@ -5,7 +5,14 @@ class CThingAICreature;class CThing;
 #ifdef FABLE_RETAIL_NCREATUREAI_SPEAKING
 class CThingCreatureBase;
 #endif
+#ifdef FABLE_RETAIL_NCREATUREAI_WASP_ATTACK_PASS23
+class CThingCreatureBase;
+#endif
 namespace NCreatureAI {
+#ifdef FABLE_RETAIL_NCREATUREAI_WASP_ATTACK_PASS23
+// Exact Ego_r/FableWin name and signature, native00864d00.
+bool FABLE_FASTCALL IsToAttackTarget(CThingAICreature*,const CThingCreatureBase*);
+#endif
 // Both original PDBs, native008645e0; original IsRunnable donor02c2c6dd.
 bool FABLE_FASTCALL IsAwareOfThing(const CThingAICreature*,const CThing*,bool);
 #ifdef FABLE_RETAIL_NCREATUREAI_SPEAKING

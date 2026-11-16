@@ -231,6 +231,10 @@ template <class _ForwardIter, class _Tp> _ForwardIter FABLE_FASTCALL lower_bound
  *
  */
 // Modified only for this project's names and calling-convention spelling.
+#ifdef FABLE_RETAIL_STLP_FIND_IF_GUARD_BODY_PASS23
+// Genuine existing STLport find_if / input-category dispatcher definitions.
+// Native0066000a calls real __find_if0065f9ab; natural visibility first.
+
 template<class Input,class Predicate>
 inline Input FABLE_FASTCALL __find_if(Input first,Input last,Predicate pred,const input_iterator_tag&) {
     while(first!=last && !pred(*first)) ++first;
@@ -240,6 +244,21 @@ template<class Input,class Predicate>
 Input FABLE_FASTCALL find_if(Input first,Input last,Predicate pred) {
     return __find_if(first,last,pred,typename iterator_traits<Input>::iterator_category());
 }
+
+#elif defined(FABLE_RETAIL_STLP_FIND_IF_CALLED_PASS23)
+template<class Input,class Predicate>
+Input FABLE_FASTCALL find_if(Input first,Input last,Predicate pred);
+#else
+template<class Input,class Predicate>
+inline Input FABLE_FASTCALL __find_if(Input first,Input last,Predicate pred,const input_iterator_tag&) {
+    while(first!=last && !pred(*first)) ++first;
+    return first;
+}
+template<class Input,class Predicate>
+Input FABLE_FASTCALL find_if(Input first,Input last,Predicate pred) {
+    return __find_if(first,last,pred,typename iterator_traits<Input>::iterator_category());
+}
+#endif // FABLE_RETAIL_STLP_FIND_IF_CALLED_PASS23
 #endif
 #ifdef FABLE_RETAIL_STLP_FIND_INPUT
 // Retail opt-in (chunk 2058, row 0x00563920 CTCHeroOnlineScoreboard::DisplayScoreboardGUI): STLport 4.6 _algobase.h

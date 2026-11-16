@@ -1,6 +1,9 @@
 #ifndef FABLE_ENGINE_C2DVECTOR_H
 #define FABLE_ENGINE_C2DVECTOR_H
 #include "fable_compiler.h"
+#ifdef FABLE_RETAIL_SHOVE_FRAME_PASS23
+#include "engine/GFAngles.h"
+#endif
 // Ego_r original class 0x9ebe: public float X+0,Y+4, sizeof8.
 // Native CTCPhysicsBase::GetOffsetVector slot28 at006b13d0 writes both words.
 // Retail opt-in (Codex pass11): original lib_coord.hpp100..103,314..322;
@@ -17,6 +20,11 @@ extern const float DELTA_NOTIONAL_ZERO;                 // 0x0129BA3C ?DELTA_NOT
 class C2DVector {
 public:
     float X,Y;
+#ifdef FABLE_RETAIL_SHOVE_FRAME_PASS23
+    // FableWin name set and donor 0273AB10: calls GFArcTan then GET_ROUNDED_ANGLE.
+    // Native 007D0186..1D6 expands both helpers for Held->Vel.
+    FABLE_FORCEINLINE float GetAngleXY() const { return GET_ROUNDED_ANGLE(GFArcTan(X,Y)); }
+#endif
     C2DVector() { }
 #ifdef FABLE_RETAIL_C2DVECTOR_FORCEINLINE_CTOR
     // Per-TU inline opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): that TU expands this constructor at all four sites
@@ -43,7 +51,12 @@ public:
     // 26/68, 26/68, 24/63 (instructions/bytes), which plain VC7.1 /Od reproduces exactly with a named result local returned by value
     // (VC7.1 has no named-return optimisation: in release each expansion carries the local and an inline copy-constructor expansion,
     // IL that folds away); the unnamed `return C2DVector(...)` text is 22/54, 22/54, 20/49 (/opt/fable_lane/tools/fwsize.py).
-#ifdef FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_ADD
+#ifdef FABLE_RETAIL_C2DVECTOR_ADD_COPY_RHS_X_PASS23
+    // MarkedFidelity,0064a639: same component sums, real copy reads RHS X without changing Y.
+    // Native0064a83a/0064a85b fixes RHS address scheduling and RHS-first X addition.
+    // Plain copy, sum-local, reference, operand reversal and parentheses did not select this DAG.
+    C2DVector operator+(const C2DVector& vector) const { return C2DVector(C2DVector(vector).X+X,Y+vector.Y); }
+#elif defined(FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_ADD)
     C2DVector operator+(const C2DVector& vector) const { C2DVector result(X+vector.X,Y+vector.Y); return result; }
 #else
     C2DVector operator+(const C2DVector& vector) const { return C2DVector(X+vector.X,Y+vector.Y); }

@@ -23,8 +23,10 @@ class C3DAnimationBlendState : public CBaseClass {
 public:
 #ifndef FABLE_RETAIL_C3DANIMATIONINTERPOLATOR_IMPLICIT
     C3DAnimationBlendState();                                            // 0x004C2DD0
+#ifndef FABLE_RETAIL_C3DANIMATIONBLENDSTATE_GENERATED_SPECIALS_PASS23
     C3DAnimationBlendState(const C3DAnimationBlendState&);
     virtual ~C3DAnimationBlendState();                                   // 0x004C2DF0
+#endif // Both original copy0x103/dtor0x107 generated; user default ctor remains declared.
 #else
     // Opt-in (row 0x004BD6E0 CTCGraphicAppearance::SetPrimitive): the compiler-generated constructor and destructor, which retail
     // expands in place there (0x004BD719..0x004BD73F: ~CBaseClass ctor, vptr 0x01239838, Data=0; 0x004BD9C4..0x004BD9EA: Data
@@ -79,5 +81,5 @@ public:
     void* Data;                                                          // +0x04 CIVCountedPointer<C3DAnimationBlendState::CSharedData>
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(C3DAnimationBlendState) == 8);
+FABLE_STATIC_ASSERT_AT(82, sizeof(C3DAnimationBlendState) == 8);
 #endif

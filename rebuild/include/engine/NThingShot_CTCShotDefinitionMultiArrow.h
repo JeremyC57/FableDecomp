@@ -7,6 +7,10 @@
 #include "engine/NThingShot_CTCShotDefinitionBase.h"
 namespace NThingShot {
 class CTCShotDefinitionMultiArrow : public CTCShotDefinitionBase {
+#ifdef FABLE_RETAIL_MULTISHOT_LIFETIMES_PASS23
+// Both complete original PDB type records; real lifetimes for self-contained fixtures.
+public: CTCShotDefinitionMultiArrow(CThing&); virtual ~CTCShotDefinitionMultiArrow();
+#endif
 protected:
     virtual void InitMovement();                                         // 0x007BCF7F
 private:
@@ -15,6 +19,6 @@ private:
     float MaxAngleToTurn;                                                // +0xac
     bool StraightArrow;                                                  // +0xb0
 };
-FABLE_STATIC_ASSERT(sizeof(CTCShotDefinitionMultiArrow)==0xb4);
+FABLE_STATIC_ASSERT_AT(18, sizeof(CTCShotDefinitionMultiArrow)==0xb4);
 }
 #endif

@@ -46,6 +46,12 @@ enum EWifeAppearanceCategories;                              // MS forward enum 
 #endif
 
 class CTCWife : public CTCBase {
+#ifdef FABLE_RETAIL_GREETING_PASS23
+public:
+    // Both original PDB constructors: public CThing&; normal fixture lifetimes.
+    CTCWife(CThing&);
+private:
+#endif
 public:
     virtual ~CTCWife();                                      // slot 0
     virtual void OnSerialise(CPersistContext&, bool);        // slot 1 0x006D2BD0 ?OnSerialise@CTCWife@@UAEXAAVCPersistContext@@_N@Z (public, as the PDB mangles it)

@@ -11,6 +11,10 @@
 class CThingObject;
 class CCard {
 public:
+#ifdef FABLE_RETAIL_BLACKJACK_DEAL_PASS23
+    // Both original PDBs and native008f0660; const vector reference and bool.
+    void Move(const C3DVector&,bool);
+#endif
     // Ego_r.pdb / FableWin.pdb ?Turn@CCard@@QAEXXZ, out of line in retail at 0x008F0620 (the bound spelling). Declaration only.
     void Turn();                                                         // 0x008F0620
     CThingObject* Thing;                                                 // +0x00
@@ -32,8 +36,8 @@ public:
     float         Height;                                                // +0x50
     long          Index;                                                 // +0x54
 };
-FABLE_STATIC_ASSERT(offsetof(CCard, Turning) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CCard, LocalPos) == 0x27);
-FABLE_STATIC_ASSERT(offsetof(CCard, Width) == 0x4c);
-FABLE_STATIC_ASSERT(sizeof(CCard) == 0x58);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CCard, Turning) == 0x24);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CCard, LocalPos) == 0x27);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CCard, Width) == 0x4c);
+FABLE_STATIC_ASSERT_AT(38, sizeof(CCard) == 0x58);
 #endif

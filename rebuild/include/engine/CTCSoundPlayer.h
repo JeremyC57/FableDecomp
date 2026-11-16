@@ -32,6 +32,10 @@ public:
     bool IsAttachedSoundPlaying(unsigned long sample_id) const;          // 0x0066AE10
     unsigned long PlayAttachedDialogue(const CCharString& group, bool b0, bool b1, bool b2, bool b3);   // 0x0066BED0
 #endif
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_CTOR_PASS23
+ // Both original PDB PUBLICs: original CThing& constructor.
+public: CTCSoundPlayer(CThing&);
+#endif
     unsigned long PlayAttachedCriteria(const CCharString&,bool,bool,bool,long);
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYUNATTACHEDCRITERIA
     // agent wfE10 (row 0x007A1B20): Ego_r.pdb / FableWin.pdb ?PlayUnattachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@ABVC3DVector@@_N2@Z,

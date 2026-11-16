@@ -21,6 +21,21 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_JackOfBladesStage2)==0x54);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_JACK_SETUPARENA_PASS23
+#include "engine/CAIStateGroup_JackOfBladesBase.h"
+// Layout: both original PDBs; native vectors12 give CutsceneLookAtMarker+4c,size54.
+class CAIStateGroup_JackOfBladesStage2:public CAIStateGroup_JackOfBladesBase {
+public:
+ virtual void Cleanup();
+ virtual void Update();
+ virtual void OnActivate();
+protected:
+ virtual bool IsRunnable();
+ virtual void SetupArena();
+ CIntelligentPointer<CThing> PCutsceneLookAtMarker;
+};
+FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_JackOfBladesStage2)==0x54);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -52,4 +67,5 @@ FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_JackOfBladesStage2, __vftable)
 FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_JackOfBladesStage2, PCutsceneLookAtMarker) == 0x4c);
 
 #endif
+#endif // FABLE_RETAIL_JACK_STAGE2_UPDATE
 #endif // FABLE_ENGINE_CAISTATEGROUP_JACKOFBLADESSTAGE2_H
