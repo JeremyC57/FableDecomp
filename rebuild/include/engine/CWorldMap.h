@@ -22,6 +22,9 @@ class CWorld; class CMainGameComponent; class CRegionConnectionGraph; class CWAD
 class CASuspendableProcess; class CMap; class C2DCoordI; class C2DBoxI; class C3DVector; class CDrawMapInfo; class CCharString;
 namespace NThingMap { class CThingMapManager; }
 namespace std { template<class T> struct less; template<class K,class C,class A> class set; }
+#ifdef FABLE_RETAIL_CWORLDMAP_ISTHEMEDESTROYABLE
+class CGameDefinitionManager;
+#endif
 class CWorldMap : public CBaseClassNonCopyable, public CIDrawWorldMap {
 public:
 #ifdef FABLE_RETAIL_CWORLDMAP_HEIGHT_BELOW
@@ -178,6 +181,15 @@ public:
     // ?GetStrongestEngineThemeAt@CWorldMap@@QBEJABVC3DVector@@AAJ@Z (Ego_r 0x006E84E0), out of line in retail at 0x0063ADF0
     // (the caller passes the position and the strength out-word by address, `this` the const world map). Declaration only.
     long GetStrongestEngineThemeAt(const C3DVector& pos, long& strength) const;   // 0x0063ADF0
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_ISTHEMEDESTROYABLE
+    // NF41 opt-in (2026-11-16, row 0x0063DD70): Ego_r.pdb 0x006EAC20 ?IsThemeDestroyableAt@CWorldMap@@QBE_NABVC3DVector@@@Z (public
+    // const) and 0x004CE990 ?PeekDefinitionManager@CWorldMap@@IBEABVCGameDefinitionManager@@XZ (protected const, retail 0x004FB310).
+    // Declarations only.
+    bool IsThemeDestroyableAt(const C3DVector& pos) const;                       // 0x0063DD70
+protected:
+    const CGameDefinitionManager& PeekDefinitionManager() const;                 // 0x004FB310
+public:
 #endif
 #ifdef FABLE_RETAIL_CWORLDMAP_MAPNUMBERFROMSCRIPTNAME
     // Chunk 1010 (row 0x008930F0 CGameScriptInterface::GetThingWithScriptName): Ego_r.pdb / FableWin.pdb

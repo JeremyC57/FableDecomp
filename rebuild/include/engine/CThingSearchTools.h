@@ -221,8 +221,20 @@ public:
                                 who->SetSearchID(SearchID);
                                 CThing& thing=who->GetParentThing();
                                 unsigned long mask=T::StatGetTypeFlags();
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_TYPEDLOCAL
+                                // agentNF41 opt-in (row 0x00746560, the <const CThing, vector<const CThing*>, CFilter_Bind3<HasPhysicsMesh,
+                                // RadiusIntersectsInfiniteLine, IsNot> > instance): the typed pointer is a named local that push_back takes by
+                                // reference, stored before the filter calls (0x007466C0 mov [esp+38h],edi ahead of call 0x006A6F50), the
+                                // spelling of the landed row's local model.
+                                if((thing.GetTypeFlags()&mask)==mask) {
+                                    T* typed=static_cast<T*>(&thing);
+                                    if(filter(*typed))
+                                        result.push_back(typed);
+                                }
+#else
                                 if((thing.GetTypeFlags()&mask)==mask && filter(static_cast<const T&>(thing)))
                                     result.push_back(static_cast<T*>(&thing));
+#endif
                             }
                         }
                     }

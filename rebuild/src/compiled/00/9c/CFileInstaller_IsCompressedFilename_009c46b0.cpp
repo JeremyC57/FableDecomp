@@ -1,35 +1,59 @@
-// CFileInstaller::IsCompressedFilename(const CWideString&,CWideString&) -- replace recognized compressed extensions.
-// Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
-//   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
-// Leaf: IsCompressedFilename
-// Retail009C46B0,240bytes. Donor CFileInstaller CompressedFileTypes+b4 -> native+94 (smaller STL).
-// Calls CAFile::SplitPath997620, wide ctors99AED0/dtors99B510, conversion99B2C0,
-// lower99ED10, treeFind9AB5D0, char destructor99EAE0, charToWide99E480,widePlus99BE70,assign99B7D0.
-// Missing conversion/lower declarations are field-free ABI method views over actual shared storage.
-#define CCharString CCharStringCore
-#define CWideString CWideStringCore
-#include "fable_string.h"
-#undef CWideString
-#undef CCharString
-class CWideString;
-class CCharString:public CCharStringCore { public:CCharString();CCharString(const char*,long);~CCharString();CCharString GetAsLowerCase() const;CWideString ToWideString() const;};
-class CWideString:public CWideStringCore {
-public:
-    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
-private: public:CWideString();~CWideString();const CWideString& operator=(const CWideString&);};
-CWideString __fastcall operator+(const CWideString&,const CWideString&);
-struct CExtensionNode {unsigned char TreeLinks[0x10];CCharString first,second;};
-struct CExtensionTree { CExtensionNode* Head;CExtensionNode* Find(const CCharString&); };
-struct CExtensionMap:CExtensionTree { CExtensionNode* find(const CCharString& key){return Find(key);} };
-class CAFile { public:static void __fastcall SplitPath(const CWideString&,CWideString*,CWideString*,CWideString*,CWideString*);};
-class CFileInstaller { public:unsigned char EarlierState[0x94];CExtensionMap CompressedFileTypes;bool IsCompressedFilename(const CWideString&,CWideString&);};
-bool CFileInstaller::IsCompressedFilename(const CWideString& filename,CWideString& output){
- bool result;
- { CWideString stem,extension;
- CAFile::SplitPath(filename,0,0,&stem,&extension);
- CExtensionNode* found=CompressedFileTypes.find(((CWideString*)&extension)->ToCharString().GetAsLowerCase());
- if(found!=CompressedFileTypes.Head){
- output=stem+found->second.ToWideString();result=true;
- }else{output=stem+extension;result=false;}
- }return result;
+// CFileInstaller::IsCompressedFilename(const CWideString&, CWideString&) const -- replace a recognized compressed extension: split the name, look its lower-case extension up in CompressedFileTypes and output stem + mapped extension (true), else stem + extension (false)
+// Leaf: ?IsCompressedFilename@CFileInstaller@@IBE_NABVCWideString@@AAV2@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009C46B0, 240 bytes. Name: Ego_r.pdb 0x00B13080 ?IsCompressedFilename@CFileInstaller@@IBE_NABVCWideString@@AAV2@@Z
+//   (protected const), as engine/CFileInstaller.h declares it.
+// Calls: CAFile::SplitPath(const CWideString&, ...) 0x00997620, wide ctors 0x0099AED0 / dtors 0x0099B510, CWideString::ToCharString
+//   0x0099B2C0, CCharString::GetAsLowerCase 0x0099ED10, the map<CCharString,CCharString> tree's _M_find 0x009AB5D0 (const find),
+//   ~CCharString 0x0099EAE0, CCharString::ToWideString 0x0099E480, operator+(const CWideString&, const CWideString&) 0x0099BE70,
+//   CWideString::operator= 0x0099B7D0.
+// Layout: engine/CFileInstaller.h CompressedFileTypes (std::map<CCharString,CCharString>) at retail +0x94.
+// NF41 (2026-11-16): was a renaming-macro row (CCharStringCore / CWideStringCore) with local CExtensionMap / CAFile / CFileInstaller
+//   models (public non-const); now the shared engine/CFileInstaller.h + engine/CAFile.h (SPLITPATH_WIDE) + fable_string.h under the
+//   include chain of the landed CFileInstaller::AddFile 0x009C47A0.
+#define FABLE_RETAIL_CCHARSTRING_GETASLOWERCASE
+#define FABLE_RETAIL_CAFILE_SPLITPATH_WIDE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_GETASUPPERCASE
+#define FABLE_RETAIL_CCHARSTRING_SUBSTRING
+#define FABLE_RETAIL_CCHARSTRING_LESS_INLINE
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CWIDESTRING_TEXT_EQ
+#define FABLE_RETAIL_CWIDESTRING_TEXT_EQ_STLP_INLINE
+#define FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ
+#define FABLE_RETAIL_CWIDESTRING_FORCEINLINE_DATA_TEXT_EQ
+#define FABLE_RETAIL_STLP_CHAR_TRAITS_LENGTH
+#define FABLE_RETAIL_CCOMPRESSORZLIB
+#define FABLE_RETAIL_CACOMPRESSOR
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_SET
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#define FABLE_RETAIL_CAFILE
+#define FABLE_RETAIL_CAFILE_INSTALLERPATHS
+#define FABLE_RETAIL_CDISKFILEWIN32
+#define FABLE_RETAIL_CDISKFILEWIN32_DEFAULTCTOR
+#define FABLE_RETAIL_CCRITICALSECTIONLOCK
+#define FABLE_RETAIL_CFILEINSTALLER_CFILEINFO_CTOR
+#include "engine/CFileInstaller.h"
+#include "engine/CAFile.h"
+#include "engine/CDiskFileWin32.h"
+#include "engine/CCriticalSectionLock.h"
+
+bool CFileInstaller::IsCompressedFilename(const CWideString& filename, CWideString& output) const
+{
+    bool result;
+    {
+        CWideString stem, extension;
+        CAFile::SplitPath(filename, 0, 0, &stem, &extension);
+        std::map<CCharString, CCharString>::const_iterator found = CompressedFileTypes.find(extension.ToCharString().GetAsLowerCase());
+        if (found != CompressedFileTypes.end()) {
+            output = stem + found->second.ToWideString();
+            result = true;
+        } else {
+            output = stem + extension;
+            result = false;
+        }
+    }
+    return result;
 }

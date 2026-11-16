@@ -3,6 +3,9 @@
 #define FABLE_ENGINE_CCHUNKEDFILESUPERCHUNK_H
 #include "rebuild_abi.h"
 #include "engine/CChunkedFileChunk.h"
+#ifdef FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK_SUBCHUNKS_TYPED
+#include "engine/CArray.h"
+#endif
 class C3DVector;class CQuaternion;class CMatrix3x4;class C3DAnimFile;class CDataInputStream;class CDataOutputStream;class CChunkedFileLoader;class CChunkedFileSaver;class CChunkedFileSuperChunk;class CSimpleMemoryPool;class C3DAnimFileSequenceChunk;class C3DAnimFileObjectChunk;class C3DAnimFileRootChunk;class C3DAnimFileHelpersChunk;class C3DAnimFileMovementVectorChunk;class C3DAnimFileBoneMaskChunk;class C3DAnimationSequenceData;class C3DAnimationSequence;class CMovableResourceMemoryPool;class CMovableResource;
 // Layout: original raw PDB fields and bases; retail sizes reconciled by native accesses and 12-byte vectors.
 class CChunkedFileSuperChunk:public CChunkedFileChunk{private:
@@ -21,6 +24,11 @@ const CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char*) co
 // Opt-in (wfA3, row 0x00ACDB80 COptimisedPrimitive ctor): retail 0x00AA8190 (reloc_bindings; Ego_r name), the CLTH loop's call 0x00ACE4AF.
 CCountedPointer<CChunkedFileChunk> FindNextSubChunkOfType(const CCountedPointer<const CChunkedFileChunk>&);
 #endif
+#if defined(FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK_FINDNEXT_CONST) && !defined(FABLE_RETAIL_C3DPRIMITIVE2_LOADER)
+// Retail opt-in (agentNF41, row 0x00AA7FF0): FableWin.pdb ?FindNextSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@ABV?$CCountedPointer@$$CBVCChunkedFileChunk@@@@@Z,
+// the const overload the C3DPRIMITIVE2_LOADER block below also declares. Declaration only.
+const CCountedPointer<CChunkedFileChunk> FindNextSubChunkOfType(const CCountedPointer<const CChunkedFileChunk>&) const;   // 0x00AA7FF0
+#endif
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
 const CCountedPointer<CChunkedFileChunk> FindNextSubChunkOfType(const CCountedPointer<const CChunkedFileChunk>&) const;   // 0x00AA7FF0
 unsigned long CountSubChunksOfType(const char*) const;   // 0x00AA7EA0
@@ -30,7 +38,15 @@ virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
 virtual CChunkedFileChunk* CreateNewInstance() const=0;
 protected:
 virtual CChunkedFileChunk* InitNewInstance(CChunkedFileChunk*) const;
+#ifdef FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK_SUBCHUNKS_TYPED
+// Retail opt-in (agentNF41, rows 0x00AA7F40 / 0x00AA7FF0 FindFirst / FindNextSubChunkOfType const): the Ego_r.pdb member types,
+// CArray<CCountedPointer<CChunkedFileChunk> > (retail 12-byte STLport vector, size = (end - begin) >> 3) for SubChunks +0x10 and
+// RegisteredSubChunkTypes +0x1c; CurrentChunkIndex +0x28 is written by the const finders (mutable). No layout change. Needs
+// engine/CArray.h and the retail CCountedPointer.
+private:CArray<CCountedPointer<CChunkedFileChunk> > SubChunks,RegisteredSubChunkTypes;mutable unsigned long CurrentChunkIndex;};
+#else
 private:unsigned char SubChunks[12],RegisteredSubChunkTypes[12];unsigned long CurrentChunkIndex;};
+#endif
 FABLE_STATIC_ASSERT_AT(26, sizeof(CChunkedFileSuperChunk)==0x2c);
 #endif
 #else

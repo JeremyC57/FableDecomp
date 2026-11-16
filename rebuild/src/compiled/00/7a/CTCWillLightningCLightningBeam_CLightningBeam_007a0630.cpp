@@ -1,49 +1,61 @@
-// Retail CTCWillLightning::CLightningBeam(CThing*,CThing*), PDB026AFF00.
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Native list is one pointer rather than donor12 bytes; subsequent fields shift -8.
-class CBaseObject;
+// CTCWillLightning::CLightningBeam::CLightningBeam(CThing* home, CThing* target) -- a new lightning beam: zero state, positions and timers, 0.2 s activation / deactivation, the home and target things held in intelligent pointers, right-handed, no decapitation (-1), no def
+// Leaf: ??0CLightningBeam@CTCWillLightning@@QAE@PAVCThing@@0@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x007A0630. Ego_r.pdb ??0CLightningBeam@CTCWillLightning@@QAE@PAVCThing@@0@Z (engine/CTCWillLightning.h, the
+//   nested CLightningBeam with Ego_r member names at the retail offsets: the STLport list child list is one pointer, so the members after it
+//   sit 8 bytes below Ego_r's).
+// Callees: CBaseIntelligentPointer ctor 0x00A01B10 (x3 members + the two temporaries), SetPItem 0x00A01B90 / GetPItem 0x00A01B50 (the
+//   CThing* conversions and assignments), ~CBaseIntelligentPointer 0x00A01C10, malloc (the list's header node).
+// Shape: members default-constructed in declaration order, then the body: the intelligent pointers assigned from temporaries built
+//   from the raw things (target first, then home), PDef reset.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CDEFPOINTER_RESET
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTCWILLLIGHTNING_CLASS
+#include "engine/CCountedPointer.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
 #include "engine/CIntelligentPointer.h"
+#include "engine/CSpecialAbilitiesLightningSpellDef.h"
 #include "engine/CTCWillLightning.h"
-#include "engine/CBaseObject.h"
-#include "engine/_quarantine/CThing.h"
-#include "engine/CIVCountedPointeeBase.h"
-#include <stdlib.h>
-namespace LightningNative {
-struct BaseIntelligentPointer {
- BaseIntelligentPointer(); //A01B10; PDBB4C7A0
- virtual ~BaseIntelligentPointer(); //A01C10; PDBB4C8A0, sole virtual slot
- CBaseObjectPointer* PData;
-};
-struct ThingPointer:BaseIntelligentPointer {
- ThingPointer(){}
- ThingPointer(CThing* p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)p);}
- // Implicit virtual destructor: VT1238C6C slot0=4A9710
- ThingPointer& operator=(const ThingPointer& p){((CBaseIntelligentPointer*)this)->SetPItem(((CBaseIntelligentPointer*)&p)->GetPItem());return *this;}
-};
-struct DefNative {virtual ~DefNative();virtual void Delete()const;unsigned long IVRefCount;long GetRefCount()const{return (long)IVRefCount;}long Release()const{unsigned long r=--const_cast<DefNative*>(this)->IVRefCount;if(!r)Delete();return(long)r;}};
-struct DefPointer {DefNative* Object;DefPointer():Object(0){}void Reset(){if(Object){DefNative* old=Object;if(--old->IVRefCount==0)old->Delete();Object=0;}Object=0;}};
-struct LightningBeam;
-struct ChildNode {ChildNode* Next;ChildNode* Prev;LightningBeam* Data;void* CountInfo;};
-struct ChildList {ChildNode* Head;ChildList():Head(0){ChildNode* node=(ChildNode*)malloc(sizeof(ChildNode));node->Next=node;node->Prev=node;Head=node;}~ChildList(){free(Head);}};
-struct Vector3 {float X,Y,Z;};
-struct LightningBeam {
- long State;ThingPointer ParticleHandle,Home,Target;Vector3 Start,End,Destination;
- float DamagePerHit,Time,TimeBase;ChildList Children;bool Temporary,MainBeam,RightHand;
- float ActivationTime,DeactivationTime,Life,DecapitationTime,DecapitationClock,Delay;
- long OnhitEveryFrame,FrameCount;DefPointer PDef;bool SuccessfulHit;
- LightningBeam(CThing*,CThing*);
-};
-LightningBeam::LightningBeam(CThing* home,CThing* target){
- State=0;DamagePerHit=0;Time=0;TimeBase=0;
- Start.X=0;End.X=0;Destination.X=0;Start.Y=0;End.Y=0;Destination.Y=0;Start.Z=0;End.Z=0;Destination.Z=0;
- ActivationTime=0.2f;DeactivationTime=0.2f;Life=0;
- Target=ThingPointer(target);Home=ThingPointer(home);
- Temporary=false;MainBeam=false;RightHand=true;FrameCount=0;DecapitationTime=-1;DecapitationClock=0;Delay=0;
- PDef.Reset();OnhitEveryFrame=0;SuccessfulHit=false;
-}
-FABLE_STATIC_ASSERT(sizeof(ThingPointer)==8);
-FABLE_STATIC_ASSERT(sizeof(LightningBeam)==0x7c);
-FABLE_STATIC_ASSERT(offsetof(LightningBeam,Children)==0x4c);
-FABLE_STATIC_ASSERT(offsetof(LightningBeam,PDef)==0x74);
+
+CTCWillLightning::CLightningBeam::CLightningBeam(CThing* home, CThing* target)
+{
+    m_lsState = (ELightningState)0;
+    m_fDamagePerHit = 0;
+    m_fTime = 0;
+    m_fTimeBase = 0;
+    m_vStartPos.X = 0;
+    m_vEndPos.X = 0;
+    m_vDestination.X = 0;
+    m_vStartPos.Y = 0;
+    m_vEndPos.Y = 0;
+    m_vDestination.Y = 0;
+    m_vStartPos.Z = 0;
+    m_vEndPos.Z = 0;
+    m_vDestination.Z = 0;
+    m_fActivationTime = 0.2f;
+    m_fDeActivationTime = 0.2f;
+    m_fLife = 0;
+    m_tcpTarget = target;
+    m_tcpHome = home;
+    m_bTemporary = false;
+    m_bMainBeam = false;
+    m_bRightHand = true;
+    m_nFrameCount = 0;
+    m_fDecapitationTime = -1;
+    m_fDecapitationClock = 0;
+    m_fDelay = 0;
+    PDef.Reset(0);
+    m_OnhitEveryFrame = 0;
+    SuccessfulHit = false;
 }

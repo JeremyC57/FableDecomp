@@ -1,77 +1,62 @@
 // CAIStateGroup_BirdGroundWander::IsRunnable() -- runnable when the creature's mode component is in the ground-wander mode and the bird never walked or finished walking more than two seconds ago
-// Leaf: ?IsRunnable@CAIStateGroup_BirdGroundWander@@QAE_NXZ
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
-// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+// Leaf: ?IsRunnable@CAIStateGroup_BirdGroundWander@@UAE_NXZ
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009143E0, length 126 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface, interface 7 =
-// bitset word 0 bit 7 -> `mov cl,[eax+20h] ; test cl,cl ; jns`), the component's mode getter @ 0x006CB6A0
+// bitset word 0 bit 7 -> `mov cl,[eax+20h] ; test cl,cl ; jns`), CTCCreatureNavigation::GetNavigatorType() const @ 0x006CB6A0 (Ego_r.pdb / FableWin.pdb ?GetNavigatorType@CTCCreatureNavigation@@QBEKXZ)
 // (`movzx` of [+0xc]->+0x10; the manifest's CIsHitEventBlocked::operator() label is propagated),
-// CAIStateGroupBase::GetPWorld @ 0x008FCFA0 (result unused: object expression of a static call),
+// CAIStateGroupBase::PeekWorld @ 0x008FCFA0 (result unused: object expression of a static call),
 // CWorld::GetFrame @ 0x0049D870. Globals: the compared mode @ 0x0129CBA4, frames per second @ 0x01375550.
 // Shape: the MazeTeleport (0x009543B0) form -- the lookup's bool is not tested, so the miss path reads the
 // uninitialised out slot (`mov eax,[esp+8]`); `FrameLastFinishedWalking == 0 ||` short-circuits to the shared
 // `mov al,1`; the frame rate is read into a local (esi) before the frame call and doubled with `lea`, the elapsed
-// frames compared unsigned (`jbe`).
-// Model: local (engine/CAIStateGroup_BirdGroundWander.h agrees: FrameLastFinishedWalking +0x14, but flattens the base).
-class CTCBase;
-
-class CMainGameComponent {
-protected:
-    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
-public:
-    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
-};
-extern long g_groundWanderMode;                 // 0x0129CBA4
-
-class CWorld { public:
-    static long GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
-public:
-    static long __fastcall GetFrame();   // 0x0049D870
-};
-
+// Identity: Ego_r.pdb / FableWin.pdb ?IsRunnable@CAIStateGroup_BirdGroundWander@@UAE_NXZ, vtable 0x01289670 slot 11 = 0x009143E0.
+// Model: engine/CAIStateGroup_BirdGroundWander.h retail branch (new opt-in FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGATORTYPE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
+#define FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER
+#include "fable_string.h"
+#include "engine/C3DVector.h"
 #include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CTCCreatureModeManager { public:                 // interface 7
-    long GetCurrentModeType();                  // 0x006CB6A0
-};
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* Creature;                           // +0x18
-};
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-protected:
-    const CWorld& PeekWorld() const;    // 0x008FCFA0
-public:
-};
-
-struct CAIStateGroup_BirdGroundWander : CAIStateGroupBase {
-    unsigned long FrameLastFinishedWalking;     // +0x14
-    bool IsRunnable();
-};
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CWorldMap.h"
+#include "engine/CTCCreatureNavigation.h"
+#include "engine/CWorld.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CAIStateGroup_BirdGroundWander.h"
+extern long g_groundWanderMode;                 // 0x0129CBA4
 
 bool CAIStateGroup_BirdGroundWander::IsRunnable()
 {
-    CTCCreatureModeManager* modes;
-    PBrain->Creature->GetTC(TCI_NAVIGATION, &modes);
-    if (modes->GetCurrentModeType() == g_groundWanderMode) {
+    CTCCreatureNavigation* navigation;
+    GetCreature().GetTC(TCI_NAVIGATION, &navigation);
+    if (navigation->GetNavigatorType() == g_groundWanderMode) {
         if (FrameLastFinishedWalking == 0)
             return true;
-        long framesPerSecond = PeekWorld().GetFramesPerSecond();
-        if (CWorld::GetFrame() - FrameLastFinishedWalking > (unsigned long)(framesPerSecond * 2))
+        if (PeekWorld().GetFrame() - FrameLastFinishedWalking > (unsigned long)(CMainGameComponent::GetConstantFPS() * 2))
             return true;
     }
     return false;

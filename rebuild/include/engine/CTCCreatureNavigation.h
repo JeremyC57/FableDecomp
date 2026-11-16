@@ -79,6 +79,11 @@ public:
     // Nested opt-in (w22 agent2007, row 0x00665860 CThingCreatureBase::UpdateAnimation): Ego_r.pdb / FableWin.pdb
     // ?GetNavigatorType@CTCCreatureNavigation@@QBEKXZ (public const, out of line in retail at 0x006CB6A0). Declaration only.
     unsigned long GetNavigatorType() const;                                                                 // 0x006CB6A0
+#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_SETNAVIGATORTOTYPE
+    // NF41 (2026-11-16, row 0x00912700 CAIStateGroup_FlyingThingBase::GetRandomFlightPos): Ego_r.pdb 0x00701A10 / FableWin.pdb
+    // 0x02478060 ?SetNavigatorToType@CTCCreatureNavigation@@QAEXK@Z (public, retail 0x006CBA80). Declaration only.
+    void SetNavigatorToType(unsigned long type);                                                            // 0x006CBA80
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_LINEOFSIGHT
     // Nested opt-in (chunk 770, row 0x006CB610): Ego_r.pdb ?IsPosNavLineOfSightToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0@Z

@@ -1,7 +1,7 @@
-// CQ_OrchardFarmRaidScript::MakeTeamMemberComment(const CCharString& line, const CScriptThing& speaker, bool unused) -- if the comment timer has run out, start a conversation in which the speaker says "<TextSystemScriptCode><speaker data>_<line>" to the hero, then restart the timer
+// NScript::CQ_OrchardFarmRaidScript::MakeTeamMemberComment(const CCharString& line, CScriptThing& speaker, ERaidComment comment) -- if the comment timer has run out, start a conversation in which the speaker says "<TextSystemScriptCode><speaker data>_<line>" to the hero, then restart the timer
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00DCDA80, length 251 bytes, `ret 0xc` (the third argument is unused).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00DCDA80, length 251 bytes, `ret 0xc` (the third argument, the nested ERaidComment, is unused).
 // Callees: the interface global 0x0143E8F8 GetTimer(long) (slot 90, +0x168, 0x006E7710) and SetTimer(long, long) (slot 89,
 // +0x164, 0x006E76E0); CScriptBase::IsActiveThreadTerminating 0x00CB7940 (result unused); through the game script
 // interface (+0x40): AddNewConversation (slot 364, +0x5b0), GetHero (slot 70, +0x118, x2), AddPersonToConversation (slot
@@ -14,59 +14,41 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CCharString {
-public:
-    void* PStringData;
-    ~CCharString();                                    // 0x0099EAE0
-};
-CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570 (hidden result in ecx)
-CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600 (hidden result in ecx)
-
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-
-class CCPPointerInfo;
+// Leaf: ?MakeTeamMemberComment@CQ_OrchardFarmRaidScript@NScript@@QAE_NABVCCharString@@AAVCScriptThing@@W4ERaidComment@12@@Z
+// Name: Ego_r.pdb + FableWin.pdb ?MakeTeamMemberComment@CQ_OrchardFarmRaidScript@NScript@@QAE_NABVCCharString@@AAVCScriptThing@@W4ERaidComment@12@@Z
+//   (non-const CScriptThing&, third parameter the nested enum ERaidComment); the landed callers (CCrateTeamMember::Main 0x00DCE230 and
+//   0x00DCD350's family) already bind it.
+// NF41 (2026-11-16): was a local NScript::CQ_OrchardFarmRaidScript model (const CScriptThing&, bool) over CGameScriptInterface; now the
+//   shared engine/CQ_OrchardFarmRaidScript.h (its Game pointer +0x40 is the CGameScriptInterfaceBase whose slots 70 / 364..366 the
+//   row calls), with the include chain of the landed sibling 0x00DCD350.
+#include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CCHARSTRING_CONCAT_STRING
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#include "fable_string.h"
+#include "engine/C3DVector.h"
 #include "engine/CCountedPointer.h"
-// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
-#define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CGameScriptInterface.h"
+#include "stlport/fable_containers.h"
+#include "engine/CGameScriptInterfaceBase.h"
+#include "engine/CQ_SunnyvaleMasterData.h"
+#include "engine/CEntityScriptBase.h"
+#include "engine/CQ_OrchardFarmRaidScript.h"
+#include "engine/CTimer.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
-// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
-//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
-#include "engine/CTimer.h"
-
-// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
-//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
-#include "engine/CScriptBase.h"
-
-namespace NScript {
-class CQ_OrchardFarmRaidScript : public CScriptBase {
-public:
-    CGameScriptInterface* m_pInterface;              // +0x40
-    void*                 m_pOwner;                  // +0x44
-    long                  CrateCount;                // +0x48
-    CTimer                CommentTimer;              // +0x4c
-    unsigned char         _pad50[0x34];
-    CCharString           TextSystemScriptCode;      // +0x84
-    bool MakeTeamMemberComment(const CCharString& line, const CScriptThing& speaker, bool unused);
-};
-} // namespace NScript
-using NScript::CQ_OrchardFarmRaidScript;
-
-bool NScript::CQ_OrchardFarmRaidScript::MakeTeamMemberComment(const CCharString& line, const CScriptThing& speaker, bool unused)
+bool NScript::CQ_OrchardFarmRaidScript::MakeTeamMemberComment(const CCharString& line, CScriptThing& speaker, ERaidComment comment)
 {
     if (pDSTGame->GetTimer(CommentTimer.TimerIndex) > 0) {
         IsActiveThreadTerminating();
         return false;
     }
-    long conversation = m_pInterface->AddNewConversation(speaker, false, false);
-    m_pInterface->AddPersonToConversation(conversation, m_pInterface->GetHero());
-    m_pInterface->AddLineToConversation(conversation, TextSystemScriptCode + speaker.GetDataString() + "_" + line, false, speaker, m_pInterface->GetHero());
+    long conversation = Game->AddNewConversation(speaker, false, false);
+    Game->AddPersonToConversation(conversation, Game->GetHero());
+    Game->AddLineToConversation(conversation, TextSystemScriptCode + speaker.GetDataString() + "_" + line, false, speaker, Game->GetHero());
     pDSTGame->SetTimer(CommentTimer.TimerIndex, 5);
     return true;
 }

@@ -1,64 +1,56 @@
-// CUserProfileManager::GetConfigOptionsDefaultsDef()const -- obtain configuration-option defaults from the active runtime definition manager.
+// CUserProfileManager::GetConfigOptionsDefaultsDef() const -- obtain configuration-option defaults from the active runtime definition manager (the game's when the main game component exists, else the front end's startup manager).
 // Leaf: ?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@XZ
 // Identity (FINDINGS chunk 472; sweep2): Ego_r.pdb name set `?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@XZ`;
 //   the catalog/file name "GetIconsDef" (NUISystem::CManager::GetIconsDef) is propagated.
-// Retail004083E0 length194. Runtime singleton probes13B86A0/13B871C; getters44C6B0/43368D.
-#define CManager CManagerDonor
-#include "engine/CManager.h"
-#undef CManager
-#define CDefinitionManager CDefinitionManagerDonor
-#include "engine/CDefinitionManager.h"
-#undef CDefinitionManager
-#define CIVCountedPointeeBase CIVCountedPointeeBaseDonor
-#include "engine/CIVCountedPointeeBase.h"
-#undef CIVCountedPointeeBase
-#define CCharString CCharStringDonor
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004083E0, 194 bytes. Runtime singletons: ?PMainGameComponent@CMainGameComponent@@1PAV1@A 0x013B86A0
+//   and ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A 0x013B871C (read through their inline Get()); getters
+//   CGameDefinitionManager::Get 0x0044C6B0 / CStartupDefinitionManager::Get 0x0043368D; CDefinitionManager::GetGlobalIndexFromClassIndex
+//   0x009AD390; CDefinitionManager::GetDef<CConfigOptionsDefaultsDef>(long, CDefPointer<const CConfigOptionsDefaultsDef>*) const 0x00410890
+//   (FableWin.pdb 0x01897320 ??$GetDef@VCConfigOptionsDefaultsDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@@Z).
+// NF41 (2026-11-16): was a renaming-macro row with local CDefinitionManager / CDefPointer / CCharString models, a non-const
+//   GetDef(long, CDefPointer*) and two made-up `void*` globals for the singletons; now the include chain of the landed sibling
+//   0x004084B0 (whose file holds this same body and grades RELOCATION_MATCH here) with the shared engine/CNewFrontendGameComponent.h,
+//   (in place of fable_game.h, whose CGameComponent / CMainGameComponent models clash with the engine headers), the PDB static
+//   spellings and the const GetDef template.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CUSERPROFILEMANAGER
+#define FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER
 #include "fable_string.h"
-#undef CCharString
-class CCharString { public: CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
-class CIVCountedPointeeBase { public:
- virtual ~CIVCountedPointeeBase();
- virtual void Delete() const;
- unsigned long IVRefCount;
- void AddReference(){++IVRefCount;}
- void DecRef(){--IVRefCount;}
- void RemoveReference(){DecRef();if(GetRefCount()==0)Delete();}
- long GetRefCount()const{return IVRefCount;}
-};
-template<class T> class CDefPointer { public:
- CIVCountedPointeeBase* PObject;
- CDefPointer():PObject(0){}
- CDefPointer(const CDefPointer& p):PObject(p.PObject){if(PObject)PObject->AddReference();}
- ~CDefPointer(){if(PObject)PObject->RemoveReference();}
- CDefPointer& operator=(const CDefPointer& p){if(PObject!=p.PObject){if(PObject){PObject->RemoveReference();PObject=0;}PObject=p.PObject;if(PObject)PObject->AddReference();}return *this;}
-};
-class CDefClassBase;
-#include "engine/_quarantine/CConfigOptionsDefaultsDef.h"
-class CDefinitionManager { public:
- CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long) const; //009AD9E0
- long GetGlobalIndexFromClassIndex(const CCharString&,long)const; //009AD390
- bool GetDef(long,CDefPointer<const CConfigOptionsDefaultsDef>*); //00410890 native mutable helper projection
-};
-class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
-#pragma auto_inline(off)
-bool CDefinitionManager::GetDef(long index,CDefPointer<const CConfigOptionsDefaultsDef>* out){
- if(index>0){CDefPointer<const CDefClassBase> value=GetPDefFromGlobalIndex(index);if(value.PObject){
-  if(out->PObject!=value.PObject){if(out->PObject){out->PObject->RemoveReference();out->PObject=0;}out->PObject=value.PObject;if(out->PObject)out->PObject->AddReference();}return true;
- }}return false;
+#include "engine/CMainGameComponent.h"
+#include "fable_user_profile.h"
+#include "engine/CParentDefClassBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CStartupDefinitionManager.h"
+#include "engine/CNewFrontendGameComponent.h"
+class CConfigOptionsDefaultsDef;
+
+template<class T> bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* result) const   // 0x00410890 for T = CConfigOptionsDefaultsDef
+{
+    if (index <= 0) return false;
+    CDefPointer<const CDefClassBase> definition = GetPDefFromGlobalIndex(index);
+    if (!definition.IsNull()) { result->SetDynamicCast(definition); return true; }
+    return false;
 }
-#pragma auto_inline(on)
-extern void* g_pMainGameComponent; //013B86A0 (only presence is inspected)
-extern void* g_pFrontendRuntime; //013B871C (only presence is inspected)
-class CStartupDefinitionManager : public CDefinitionManager { public: static CStartupDefinitionManager& __fastcall Get(); };   // 0x0043368D ?Get@CStartupDefinitionManager@@SIAAV1@XZ (Ego_r / FableWin): loads 0x013B8760
-class CUserProfileManager { public:CDefPointer<const CConfigOptionsDefaultsDef> GetConfigOptionsDefaultsDef()const;};
-CDefPointer<const CConfigOptionsDefaultsDef> CUserProfileManager::GetConfigOptionsDefaultsDef()const{
- CDefPointer<const CConfigOptionsDefaultsDef> result;
- if(g_pMainGameComponent){
-  long index;{CCharString name("CONFIG_OPTIONS_DEFAULTS_DEF",-1);index=CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(name,1);}
-  CGameDefinitionManager::Get().GetDef(index,&result);
- }else if(g_pFrontendRuntime){
-  long index;{CCharString name("CONFIG_OPTIONS_DEFAULTS_DEF",-1);index=CStartupDefinitionManager::Get().GetGlobalIndexFromClassIndex(name,1);}
-  CStartupDefinitionManager::Get().GetDef(index,&result);
- }
- return result;
+
+CDefPointer<const CConfigOptionsDefaultsDef> CUserProfileManager::GetConfigOptionsDefaultsDef() const
+{
+    CDefPointer<const CConfigOptionsDefaultsDef> result;
+    if (CMainGameComponent::Get())
+    {
+        long index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex("CONFIG_OPTIONS_DEFAULTS_DEF", 1);
+        CGameDefinitionManager::Get().CDefinitionManager::GetDef(index, &result);
+    }
+    else if (CNewFrontendGameComponent::Get())
+    {
+        long index = CStartupDefinitionManager::Get().GetGlobalIndexFromClassIndex("CONFIG_OPTIONS_DEFAULTS_DEF", 1);
+        CStartupDefinitionManager::Get().GetDef(index, &result);
+    }
+    return result;
 }

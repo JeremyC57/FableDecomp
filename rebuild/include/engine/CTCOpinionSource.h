@@ -32,6 +32,13 @@ public:
     bool IsAlwaysAwareOf() const { return AlwaysAwareOf; }
     EOpinionDeedType PeekVirtualDeed() const { return VirtualDeed; }
     long PeekVirtualDeedID() const { return VirtualDeedID; }
+#ifdef FABLE_RETAIL_CTCOPINIONSOURCE_AWARENESS_PEEKS
+    // Retail opt-in (agentNF41, row 0x00960FC0 CThingFilter_IsOpinionSourceWithFreshDeed::operator()): Ego_r.pdb / FableWin.pdb
+    // ?IsReactNonstop@CTCOpinionSource@@QBE_NXZ and ?PeekUseNavLineOfSight@CTCOpinionSource@@QBE_NXZ (inline in retail: the filter
+    // reads +0x77 at 0x0096102B and +0x18 at 0x00961032 in place).
+    bool IsReactNonstop() const { return ReactNonstopFlag; }
+    bool PeekUseNavLineOfSight() const { return UseNavLineOfSight; }
+#endif
 private:
     unsigned long    DefStack_[3];                       // +0x0c std::vector<long> DefStack (retail STLport, 12 bytes)
     bool             UseNavLineOfSight;                  // +0x18

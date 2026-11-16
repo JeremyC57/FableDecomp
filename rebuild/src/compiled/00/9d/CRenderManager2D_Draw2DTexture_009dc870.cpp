@@ -1,92 +1,83 @@
 // CRenderManager2D::Draw2DTexture(const C2DBoxF& box, const CUVBox& uvs, const CRGBColour& colour, CTexture& texture, unsigned long flags) -- queue a textured screen-space box as two triangles, nudging the UVs by a hundredth of a texel
-// Leaf: Draw2DTexture
+// Leaf: ?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCUVBox@@ABVCRGBColour@@AAVCTexture@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009DC870, length 525 bytes (ret 0x14); PDB
 // ?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCUVBox@@ABVCRGBColour@@AAVCTexture@@K@Z.
 // Callees: GFVBoxToABox 0x009E1E70 (__fastcall, box in, converted box out), CTexture::GetPixelFormat 0x009F9D80
 // (CPixelFormat by hidden pointer), CTexture::GetDimensions 0x009F9DB0 (C2DExtentsI by hidden pointer, level 0) twice,
-// the pixel-format info table 0x0129BA60 (36-byte rows, leading bool), the screen RHW float 0x0139652C,
+// GD3DFormats[format].Linear (0x0129BA60 = 0x0129BA40 + 0x20, CPixelFormat::IsLinear, FableWin.pdb, inline), the screen RHW float 0x0139652C,
 // CRenderManager2D::Add2DTri 0x009DC030 (v0, v1, v2, mode, &texture) twice.
 // Layout: CUVBox (Ego_r.pdb) is { float U[4]; float V[4]; } for the TL, TR, BR, BL corners.
 // Shape: corners from the converted box (TL, TR, BR, BL) and the ARGB word first, then the texel offset: 0.01 for a
 // format whose table row flag is set, else 0.01 / width and 0.01 / height (unsigned to float); then Z 0, RHW, and
 // U/V = offset + uv (per vertex: Diffuse, X, Y first; U, V, Z, RHW after the offset -- the store order that
 // reproduces retail's schedule). Blend mode: flag 2 picks 2, else flag 1 picks 3, else 1. Triangles (0, 1, 2) and (0, 2, 3).
-class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
-class CUVBox { public: float U[4]; float V[4]; };
-class CRGBColour { public:
-    unsigned char B, G, R, A;
-    unsigned long GetARGB() const { return (((((unsigned long)A << 8) | R) << 8 | G) << 8) | B; }
-};
-class CPixelFormat { public: long FormatIndex; };
-class C2DExtentsI { public: unsigned long Width, Height; };
-class CTexture { public:
-    CPixelFormat GetPixelFormat() const;               // 0x009F9D80
-public:
-    C2DExtentsI GetDimensions(unsigned long) const;   // 0x009F9DB0
-};
-struct SPixelFormatInfo {                              // 36-byte rows
-    bool          IsCompressed;
-    unsigned char _pad01[0x23];
-};
-extern SPixelFormatInfo g_PixelFormatInfo[];          // 0x0129BA60
-class CTVertexRHWColSpecTex1 { public:
-    float X, Y, Z, RHW;
-    unsigned long Diffuse;
-    unsigned long Specular;
-    float U, V;
-};
-void __fastcall GFVBoxToABox(const C2DBoxF* box, C2DBoxF* out);   // 0x009E1E70
-extern const float BIGGEST_RHW_VERTEX_VALUE;                          // 0x0139652C (S_LDATA32 const float in both PDBs; the spelling engine/CTVertexRHWColSpecTex1.h declares)
+// Ego_r.pdb 0x00B30450 (the UV overload, declared in engine/CRenderManager2D.h); Add2DTri is the private
+//   ?Add2DTri@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@00JPAVCTexture@@@Z.
+#define FABLE_RETAIL_CRENDERMANAGERCORE
+#define FABLE_RETAIL_CRENDERMANAGER2D
+#define FABLE_RETAIL_CRENDERMANAGER2D_DRAW2DBOXWITHZ
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CTEXTURE_EXTENTS_INLINE
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CPIXELFORMAT_ISLINEAR
+#define FABLE_RETAIL_CGENERICVERTEX_SETRHWFROMZ
+#define FABLE_RETAIL_CGENERICVERTEX_ORIGINAL_RHW_PASS23   // BIGGEST_RHW_VERTEX_VALUE 0x0139652C (both PDBs, S_LDATA32 const float)
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/C2DBoxF.h"
+#include "engine/CUVBox.h"
+#include "engine/CRGBColour.h"
+#include "engine/CPixelFormat.h"
+#include "engine/C2DExtentsI.h"
+#include "engine/CTexture.h"
+#include "engine/CTVertexRHWColSpecTex1.h"
+#include "engine/CRenderManager2D.h"
+void FABLE_FASTCALL GFVBoxToABox(const C2DBoxF& v, C2DBoxF& a);   // 0x009E1E70
 
-struct CRenderManager2D {
-    void Add2DTri(const CTVertexRHWColSpecTex1& v0, const CTVertexRHWColSpecTex1& v1, const CTVertexRHWColSpecTex1& v2,
-                  long mode, CTexture* texture);   // 0x009DC030
-    bool Draw2DTexture(const C2DBoxF& box, const CUVBox& uvs, const CRGBColour& colour, CTexture& texture,
-                       unsigned long flags);
-};
-
-bool CRenderManager2D::Draw2DTexture(const C2DBoxF& box, const CUVBox& uvs, const CRGBColour& colour,
-                                     CTexture& texture, unsigned long flags)
+bool CRenderManager2D::Draw2DTexture(const C2DBoxF& box, const CUVBox& uvs, const CRGBColour& colour, CTexture& texture,
+                                     unsigned long flags)
 {
-    unsigned long argb = colour.GetARGB();
-    C2DBoxF vbox;
-    GFVBoxToABox(&box, &vbox);
+    unsigned long argb = (((((unsigned long)colour.GetA() << 8) | colour.GetR()) << 8 | colour.GetG()) << 8) | colour.GetB();
+    C2DBoxF screen;
+    GFVBoxToABox(box, screen);
     CTVertexRHWColSpecTex1 v[4];
-    v[0].Diffuse = argb;
-    v[0].X = vbox.TLX;
-    v[0].Y = vbox.TLY;
-    v[1].Diffuse = argb;
-    v[1].X = vbox.BRX;
-    v[1].Y = vbox.TLY;
-    v[2].Diffuse = argb;
-    v[2].X = vbox.BRX;
-    v[2].Y = vbox.BRY;
-    v[3].Diffuse = argb;
-    v[3].X = vbox.TLX;
-    v[3].Y = vbox.BRY;
-    float offsetU;
-    float offsetV;
-    if (g_PixelFormatInfo[texture.GetPixelFormat().FormatIndex].IsCompressed) {
-        offsetU = 0.01f;
-        offsetV = 0.01f;
+    v[0].DiffuseColour = argb;
+    v[0].X = screen.TLX;
+    v[0].Y = screen.TLY;
+    v[1].DiffuseColour = argb;
+    v[1].X = screen.BRX;
+    v[1].Y = screen.TLY;
+    v[2].DiffuseColour = argb;
+    v[2].X = screen.BRX;
+    v[2].Y = screen.BRY;
+    v[3].DiffuseColour = argb;
+    v[3].X = screen.TLX;
+    v[3].Y = screen.BRY;
+    float offset_u;
+    float offset_v;
+    if (texture.GetPixelFormat().IsLinear()) {
+        offset_u = 0.01f;
+        offset_v = 0.01f;
     } else {
-        offsetU = 0.01f / (float)texture.GetDimensions(0).Width;
-        offsetV = 0.01f / (float)texture.GetDimensions(0).Height;
+        offset_u = 0.01f / (float)texture.GetWidth(0);
+        offset_v = 0.01f / (float)texture.GetHeight(0);
     }
-    v[0].U = offsetU + uvs.U[0];
-    v[0].V = offsetV + uvs.V[0];
+    v[0].U1 = offset_u + uvs.U[0];
+    v[0].V1 = offset_v + uvs.V[0];
     v[0].Z = 0.0f;
     v[0].RHW = BIGGEST_RHW_VERTEX_VALUE;
-    v[1].U = offsetU + uvs.U[1];
-    v[1].V = offsetV + uvs.V[1];
+    v[1].U1 = offset_u + uvs.U[1];
+    v[1].V1 = offset_v + uvs.V[1];
     v[1].Z = 0.0f;
     v[1].RHW = BIGGEST_RHW_VERTEX_VALUE;
-    v[2].U = offsetU + uvs.U[2];
-    v[2].V = offsetV + uvs.V[2];
+    v[2].U1 = offset_u + uvs.U[2];
+    v[2].V1 = offset_v + uvs.V[2];
     v[2].Z = 0.0f;
     v[2].RHW = BIGGEST_RHW_VERTEX_VALUE;
-    v[3].U = offsetU + uvs.U[3];
-    v[3].V = offsetV + uvs.V[3];
+    v[3].U1 = offset_u + uvs.U[3];
+    v[3].V1 = offset_v + uvs.V[3];
     v[3].Z = 0.0f;
     v[3].RHW = BIGGEST_RHW_VERTEX_VALUE;
     long mode;

@@ -94,6 +94,11 @@ public:
  const CMatrix3x4& PeekNonHomogenousViewTransform()const{return NoScaleViewTransform;}
  const CMatrix3x4& PeekInverseNonHomogenousViewTransform()const{return InverseNoScaleViewTransform;}
 #endif
+#ifdef FABLE_RETAIL_CENGINECAMERA_SCREENTOHOMOGENOUS
+ // agentNF41 opt-in (row 0x00B63530 CEngineSkyRenderer::RenderScreenSpaceSprite): FableWin.pdb
+ // ?TransformScreenTo2DHomogenousSpace@CEngineCamera@@QAEXAAVC2DVector@@@Z, out of line in retail at 0x00B2FB70 (catalog label; `ret 4`).
+ void TransformScreenTo2DHomogenousSpace(C2DVector& point);
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_VIEWTOSCREEN
  // Opt-in (chunk 2048, RenderSunFlare 0x00B64550): FableWin.pdb ?TransformWorldToView@CEngineCamera@@QBEXAAVC3DVector@@@Z and
  // ?TransformViewToScreen@CEngineCamera@@QBEXAAVC3DVector@@@Z (debug COMDATs listed right after RenderSunFlare = first used there; expanded

@@ -73,6 +73,12 @@ public:
     // with no `this` at 0x00A1C1E9 / 0x00A1C58A).
     static float __fastcall GetSmallestNodeSize();                       // 0x00A76320
 #endif
+#ifdef FABLE_RETAIL_CNAVQUADTREE_SETBLOCKEDNODE
+    // NF41 opt-in (2026-11-16, row 0x00A76340): Ego_r.pdb ?SetBlockedNode@CNavQuadTree@@SIXMMJJ@Z (static __fastcall: the floats on
+    // the stack, layer in ecx, level in edx); it fills the static BlockedNode (Position +4, QuadTreeLevel +0xC, NavLayer +0xD).
+    // The landed callers 0x00A15140 / 0x00A472F0 already bind this spelling. Declaration only.
+    static void __fastcall SetBlockedNode(float x, float y, long navLayer, long level);   // 0x00A76340
+#endif
     virtual ~CNavQuadTree();                                             // slot 0
     const CANavQuadTreeNode* GetNodeAt(const C2DVector& pos, long layer) const;          // 0x00A770B0
     unsigned char GetPreferabilityCostForNode(const CANavQuadTreeNode* node) const;   // 0x00A76E00 (chunk 747; Ego_r QBEEPBV..)

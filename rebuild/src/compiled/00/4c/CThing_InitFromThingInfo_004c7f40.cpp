@@ -1,97 +1,79 @@
-// CThing::InitFromThingInfo(const CThingInfo& info) -- copies the unique id and player number from the info record, resolves the def name through the definition manager (a "NULL" name means no def; an unknown name kills the thing and fails) and binds the base def pointer when an index was found
-// Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the inline CCharString::operator==("NULL") hand-split: null-block strcmp and block compare as two tests that `goto` one out-of-line arm (DefGlobalIndex = 0), the lookup arm in line with its own early return
-// Leaf: InitFromThingInfo
-// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
-//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
+// CThing::InitFromThingInfo(const CThing::CSerialiseInfo& info) -- copies the unique id and player number from the serialise info, resolves the def name through the definition manager (a "NULL" name means no def; an unknown name kills the thing and fails) and binds the base def pointer when an index was found
+// Leaf: ?InitFromThingInfo@CThing@@AAE_NABVCSerialiseInfo@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7F40, 167 bytes (+9 int3). `ret 4`, bool in al.
-// Callees: CBasicString<char>::operator==(const char*) 0x004115A0 on the name's data block (the null-data case is the
-//          inline `repe cmpsb` of "" @ 0x0122D70E against "NULL" @ 0x012393E4), CDefinitionManager::GetDefGlobalIndexFromName
-//          0x009AD410 and GetDef<CThingBaseDef>(long, CDefPointer<const CThingBaseDef>*) const 0x0042AF3C (FableWin.pdb template)
-//          on CThing::GetPCurrentThingManager()->DefinitionManager (+0x20, global 0x013B8A1C).
-// Shape: the two id words copied first, the player byte next, the name's address kept in ebp; the found index is
-//        stored as a 16-bit word and tested through ax (`jne` for the dead/fail exit, unsigned `jbe` for the GetDef guard);
-//        Dead is bit 0 of the +0x91 flag byte (`or ..,1`).
-// Layout: retail CThingInfo: UniqueID +0x00 (8 bytes), DefName +0x08 (CCharString), Player +0x0C; CThing (Ego_r.pdb
-//         minus 0x10 from UsingComponents on): UniqueID +0x18, PBaseDef +0x70, DefGlobalIndex +0x8C, PlayerNumber +0x90,
-//         Dead +0x91 bit 0.
-#pragma pack(push, 1)
-template <class T> class CBasicString { public:                             // CBasicString<char>, 13 bytes
-    char*         PData;
-    unsigned long StringLength;
-    unsigned long DataLength : 31;
-    bool          UseFastExtend : 1;
-    bool operator==(const char* text) const;          // 0x004115A0
-};
-class CCharStringData { public:                              // 17 bytes
-    CBasicString<char> Data;
-    long             NoRefs;
-};
-#pragma pack(pop)
-extern "C" int __cdecl strcmp(const char* a, const char* b);
-class CCharString {
-public:
-    CCharStringData* PStringData;
-};
-class CThingBaseDef;
-template <class T> class CDefPointer { public: T* Object; };   // CDefPointer<const CThingBaseDef>
-class CDefinitionManager { public:
-    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template, const)
-public:
-    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
-};
-class CThingManager { public:
-    unsigned char _pad00[0x20];
-    CDefinitionManager* DefinitionManager;            // +0x20 (PDB +0x2c)
-};
-class CThingInfo { public:
-    unsigned __int64 UniqueID;                        // +0x00
-    CCharString      DefName;                         // +0x08
-    signed char      Player;                          // +0x0c
-};
-class CThing {
-private:
-    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
-public:
-    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
-private: public:
-    unsigned char    _pad00[0x18];
-    unsigned __int64 UniqueID;                        // +0x18
-    unsigned char    _pad20[0x70 - 0x20];
-    CDefPointer<const CThingBaseDef> PBaseDef;        // +0x70
-    unsigned char    _pad74[0x8c - 0x74];
-    unsigned short   DefGlobalIndex;                  // +0x8c
-    short            CurrentMapNumber;                // +0x8e
-    signed char      PlayerNumber;                    // +0x90
-    unsigned char    Dead : 1;                        // +0x91 bit 0
-    unsigned char    CreatedByOwnerThingCreation : 1;
-    unsigned char    IncludeInThingScans : 1;
-    unsigned char    Activated : 1;
-    unsigned char    GloballyLoaded : 1;
-    unsigned char    InLimbo : 1;
-    unsigned char    KillLocked : 1;
-    unsigned char    CreatedBySerialisation : 1;
-    bool InitFromThingInfo(const CThingInfo& info);
-};
-bool CThing::InitFromThingInfo(const CThingInfo& info)
+// Identity: Ego_r.pdb 0x004C9B80 + FableWin.pdb 0x01CEFCE0 ?InitFromThingInfo@CThing@@AAE_NABVCSerialiseInfo@1@@Z (private, nested
+//   CSerialiseInfo); ConstructFromBinarySave 0x004CA449 passes its CSerialiseInfo argument (engine/CThing.h CONSTRUCTFROMBINARYSAVE opt-in).
+// Callees: CBasicString<char>::operator==(const char*) 0x004115A0 on the name's data block (the null-data case is the inline
+//   `repe cmpsb` of "NULL" against "" from the inline CCharString::operator==(const char*)), CDefinitionManager::GetDefGlobalIndexFromName
+//   0x009AD410 and GetDef<CThingBaseDef>(long, CDefPointer<const CThingBaseDef>*) const 0x0042AF3C on
+//   CThing::GetPCurrentThingManager()->PeekDefinitionManager() (+0x20, global 0x013B8A1C).
+// Layout: CThing::CSerialiseInfo UID +0x00, DefinitionType +0x08, Player +0x0C; CThing UniqueID +0x18, PBaseDef +0x70,
+//   DefGlobalIndex +0x8C, PlayerNumber +0x90, Dead +0x91 bit 0.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE_SERIALISE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CTHING_SAVEBINARY
+#define FABLE_RETAIL_CTHING_LOADSINGLE
+#define FABLE_RETAIL_CTHING_CONSTRUCTFROMBINARYSAVE
+#define FABLE_RETAIL_CCLASSFACTORY
+#define FABLE_RETAIL_CTHING_MANAGERACCESS
+#define FABLE_RETAIL_CTHINGBASEDEF
+#define FABLE_RETAIL_CTHINGMANAGER
+#define FABLE_RETAIL_CTHINGMANAGER_PEEKWORLD
+#define FABLE_RETAIL_CTHINGMANAGER_LOADSINGLE
+#define FABLE_RETAIL_CTHINGMANAGER_THINGTYPEFLAGS
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CDATAINPUTSTREAM_TEXT
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
+#define FABLE_RETAIL_CDATAOUTPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAOUTPUTSTREAM
+#define FABLE_RETAIL_CPERSISTCONTEXT
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_EDITOR
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CMemoryDataOutputStream.h"
+#include "engine/CMemoryDataInputStream.h"
+#include "engine/CPersistContext.h"
+#include "engine/CPersistTraits.h"
+#include "engine/CDefString.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CTCBase.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CThing.h"
+#include "engine/CThingManager.h"
+#include "engine/CWorld.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/NProgressDisplay.h"
+
+bool CThing::InitFromThingInfo(const CSerialiseInfo& info)
 {
-    UniqueID = info.UniqueID;
+    UniqueID = info.UID;
     PlayerNumber = info.Player;
-    if (info.DefName.PStringData == 0) {              // CCharString::operator==(const char*) hand-split: the two tests join the same arm
-        if (strcmp("NULL", "") == 0)
-            goto null_name;
-    } else if (info.DefName.PStringData->Data == "NULL") {
-        goto null_name;
+    if (info.DefinitionType == "NULL") {
+        DefGlobalIndex = 0;
+    } else {
+        DefGlobalIndex = (unsigned short)GetPCurrentThingManager()->PeekDefinitionManager().GetDefGlobalIndexFromName(info.DefinitionType);
+        if (DefGlobalIndex == 0) {
+            Dead = true;
+            return false;
+        }
     }
-    DefGlobalIndex = (unsigned short)CThing::GetPCurrentThingManager()->DefinitionManager->GetDefGlobalIndexFromName(info.DefName);
-    if (DefGlobalIndex == 0) {
-        Dead = true;
-        return false;
-    }
-    goto lookup;
-null_name:
-    DefGlobalIndex = 0;
-lookup:
     if (DefGlobalIndex > 0)
-        CThing::GetPCurrentThingManager()->DefinitionManager->GetDef(DefGlobalIndex, &PBaseDef);
+        {
+        const CDefinitionManager& definitions = GetPCurrentThingManager()->PeekDefinitionManager();
+        definitions.GetDef(DefGlobalIndex, &PBaseDef);
+    }
     return true;
 }

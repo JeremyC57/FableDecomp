@@ -14,6 +14,9 @@
 #ifdef FABLE_RETAIL_STLP_UNINIT_FILL_N_FORCEINLINE
 #include "fable_compiler.h"
 #endif
+#ifdef FABLE_RETAIL_STLP_UNINIT_COPY_FORCEINLINE
+#include "fable_compiler.h"
+#endif
 #if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP) || defined(FABLE_RETAIL_STLP_LIST_SORT) || defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
 #ifdef _MSC_VER
 #define FABLE_STLP_NOINLINE __declspec(noinline)
@@ -377,6 +380,14 @@ template<class I,class O> O __uninitialized_copy(I first,I last,O result,const _
     O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
 }
 #pragma auto_inline(on)
+#elif defined(FABLE_RETAIL_STLP_UNINIT_COPY_FORCEINLINE)
+// NF41 opt-in (2026-11-16, row 0x00618420 vector<CTCInventoryMap::CUIRegionInfo>::_M_insert_overflow): retail expands all three
+// non-POD __uninitialized_copy calls of the 40-byte element's overflow path in line (prefix, value, suffix; 303 bytes, no call);
+// plain `inline` leaves the suffix copy as a call (295 bytes) once VC7.1's inline budget is spent. Like the /Os
+// FABLE_RETAIL_STLP_UNINIT_FILL_N_FORCEINLINE above.
+template<class I,class O> FABLE_FORCEINLINE O __uninitialized_copy(I first,I last,O result,const __false_type&) {
+    O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
+}
 #else
 #ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
 // Native 00769930/007698c0 take first/last in ecx/edx and result/tag on the stack.

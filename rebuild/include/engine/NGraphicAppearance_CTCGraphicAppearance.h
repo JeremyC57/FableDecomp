@@ -199,6 +199,19 @@ public:
     CPrimitive* AddPersistentPrimitive(const CPrimitive&);
     void SetPrimitiveGraphics(CPrimitive*,const CEnginePrimitive&,unsigned short);
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETATTACHEDPRIMITIVEGRAPHICS
+    // Retail opt-in (agentNF41, row 0x004BD690): Ego_r.pdb 0x004C0F30 ?SetAttachedPrimitiveGraphics@CTCGraphicAppearance@NGraphicAppearance@@
+    // QAEXPAVCPrimitive@2@ABVCEnginePrimitive@@AAVCEnginePrimitiveAttachmentInfo@@PBV32@@Z, out of line at 0x004BD690. Declaration only.
+    void SetAttachedPrimitiveGraphics(CPrimitive* primitive, const CEnginePrimitive& engine_primitive, CEnginePrimitiveAttachmentInfo& info,
+                                      const CPrimitive* parent);  // 0x004BD690
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_ISDRAWINGAFTERWATER
+    // Retail opt-in (agentNF41, row 0x004BD620 SetPrimitiveGraphics): Ego_r.pdb 0x004C0E30
+    // ?IsDrawingAfterWater@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ (protected), out of line in retail at 0x004BD3C0. Declaration only.
+protected:
+    bool IsDrawingAfterWater() const;                            // 0x004BD3C0
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_REFRESHPRIMITIVEPOS
     // agentC30 (row 0x007E15C0): Ego_r.pdb ?RefreshPrimitivePos@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCPrimitive@2@ABVC3DPositionInterpolator@@ABVC3DOrientationInterpolator@@@Z,
     // out of line at 0x004BC340 (landed row). A declaration only.

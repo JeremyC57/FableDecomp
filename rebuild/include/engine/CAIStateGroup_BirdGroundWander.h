@@ -8,6 +8,22 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER
+// Retail opt-in (agentNF41, row 0x009143E0 IsRunnable): the polymorphic class. RTTI .?AVCAIStateGroup_BirdGroundWander@@ vtable 0x01289670
+// (rebuild/manifest/rtti-vtables.tsv: 9 Cleanup 0x009143C0, 11 IsRunnable 0x009143E0, 12 Update 0x00914460); Ego_r.pdb / FableWin.pdb
+// ?Cleanup@..@@UAEXXZ, ?IsRunnable@..@@UAE_NXZ, ?Update@..@@UAEXXZ (public overrides, UAE, of the protected CAIStateGroupBase virtuals);
+// FrameLastFinishedWalking +0x14 after the 0x14-byte CAIStateGroupBase (Ego_r layout). Needs FABLE_RETAIL_CAISTATEGROUPBASE(_MEMBERS).
+#include "engine/CAIStateGroupBase.h"
+class CAIStateGroup_BirdGroundWander : public CAIStateGroupBase {
+public:
+    virtual void Cleanup();                                              // slot 9  0x009143C0
+    virtual bool IsRunnable();                                           // slot 11 0x009143E0
+    virtual void Update();                                               // slot 12 0x00914460
+protected:
+    unsigned long FrameLastFinishedWalking;                              // +0x14
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BirdGroundWander) == 0x18);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -29,4 +45,5 @@ FABLE_STATIC_ASSERT_AT(22, sizeof(CAIStateGroup_BirdGroundWander) == 0x18);
 FABLE_STATIC_ASSERT_AT(23, offsetof(CAIStateGroup_BirdGroundWander, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_BirdGroundWander, FrameLastFinishedWalking) == 0x14);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER
 #endif // FABLE_ENGINE_CAISTATEGROUP_BIRDGROUNDWANDER_H

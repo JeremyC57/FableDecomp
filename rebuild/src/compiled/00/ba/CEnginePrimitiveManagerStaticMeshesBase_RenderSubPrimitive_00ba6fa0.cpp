@@ -1,60 +1,179 @@
-// CEnginePrimitiveManagerStaticMeshesBase::RenderSubPrimitive(CEngineSubPrimitiveBase& sub, ERenderPassType pass) -- a cloth sub-primitive (byte +0x20) renders through its primitive's simulation info (+0x64): the simulation found by the renderer's current mesh index is rendered with (renderer, sub, pass); otherwise the plain mesh render
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00BA6FA0, length 80 bytes.
-// Callees: CEnginePrimitiveSimulationInfo::FindSimulation @ 0x00B812C0 (on the info at primitive+0x64: the index at renderer(+0x18 of sub)->+0x20->+0->+0xc),
-// CEngineClothSimulationStaticMesh::Render @ 0x00B812F0 (on the simulation: renderer, sub, pass), RenderMeshPrimitive @ 0x00BA5260 (on `this`, ecx passed
-// straight through: sub, pass). Shape: the cloth arm never touches `this`; the info pointer stays in ecx for the find, the renderer in edi for both calls.
-struct CEngineClothSimulationStaticMesh;
-class CEngineSubPrimitiveBase;
+// CEnginePrimitiveManagerStaticMeshesBase::RenderSubPrimitive(CEngineSubPrimitiveBase& sub_primitive, ERenderPassType pass) -- a cloth sub-primitive renders through its parent primitive's simulation info (the simulation of its first cloth primitive), any other as a plain static mesh
+// Leaf: ?RenderSubPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00BA6FA0, length 80 bytes. Ego_r.pdb 0x00A5EE10
+//   ?RenderSubPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z (engine/CEnginePrimitiveManagerStaticMeshesBase.h).
+// Callees: CEnginePrimitiveSimulationInfo::FindSimulation(unsigned long) 0x00B812C0 (on the parent's SimulationInfo +0x64, keyed by the first
+//   cloth primitive's PrimitiveIndex), CEngineClothSimulationStaticMesh::Render(const C3DPrimitive2&, const CEngineSubPrimitiveStaticMesh&,
+//   ERenderPassType) 0x00B812F0, RenderMeshPrimitive 0x00BA5260 (on `this`, ecx passed straight through: sub, pass).
+// Shape: the cloth arm never touches `this`; the info pointer stays in ecx for the find, the mesh primitive in edi for both calls.
+// Local models (no shared header): CEnginePrimitiveSimulationInfo, CEngineSimulationBase, CEngineClothSimulationStaticMesh.
+#define FABLE_RETAIL_C3DPRIMITIVE2_CLOTHPRIMITIVES
+#define FABLE_RETAIL_C3DPRIMITIVE2_GETCLOTHPRIMITIVE
+#define FABLE_RETAIL_C3DCLOTHPRIMITIVE_GETPRIMITIVEINDEX
+#define FABLE_RETAIL_CENGINESUBPRIMITIVEMESHBASE_PUBLICMEMBERS
+#include "fable_compiler.h"
+#define FABLE_RETAIL_C3DMESHMATERIAL_MAPBANKINDICES
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_SATRGBATEXTURE
+#define FABLE_RETAIL_ASSERT_DEAD_ARM
+#include "fable_assert.h"
+#define FABLE_RETAIL_GFDEBUGPDYNAMICCAST_ASSERT
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_C4DVECTOR_INITIALISEFROMCOLOUR
+#define FABLE_RETAIL_CRGBFLOATCOLOUR_CTOR4_INITIALISE
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_C2DBOXF_COPY
+#define FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS_BLOCKDRAW
+#define FABLE_RETAIL_CSHADERRENDERMANAGER_INLINE_BLOCKDRAW
+#define FABLE_RETAIL_CRENDERMANAGERCORE
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_BLANKTEXTURES
+#define FABLE_RETAIL_C3DPRIMITIVE2_RECORDEDSTATE
+#define FABLE_RETAIL_C3DTEXTURESTAGES_EQUALS
+#define FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_STATICBLOCKS
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_STATICBLOCKS
+#define FABLE_RETAIL_C3DPRIMITIVE2_ANIMATEDBLOCKS
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CMOVABLERESOURCE
+#define FABLE_RETAIL_CGRAPHICINFOFRAME_GETBANK_DIRECT
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME
+#define FABLE_RETAIL_CGRAPHICINFOFRAME_TOUCHFRAME
+#define FABLE_RETAIL_CMANAGEDTEXTURE_TOUCHTEXTURE_GET
+#define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+#define FABLE_RETAIL_CGRAPHICFRAME
+#define FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE
+#define FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS
+#define FABLE_RETAIL_C3DPRIMITIVE2_RENDER
+#define FABLE_RETAIL_CINDEXBUFFER
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CENGINEMESHEFFECT
+#define FABLE_RETAIL_CRENDERSTATEMANAGER_OUTLINE_INLINE
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_RENDERMESHPRIMITIVE
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_GETAPPROPRIATEMIPMAP
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGEROCCLUSIONBASE_PREPAREOCCLUSIONTEST
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MESHPRIMITIVE
+#define FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_ACCESSORS
+#define FABLE_RETAIL_CENGINESUBPRIMITIVEMESHBASE_ACCESSORS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_GET
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_CENGINEPRIMITIVEHANDLE
+#define FABLE_RETAIL_CMATRIX3X4
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DTEXTURESTAGES_CTOR
+#define FABLE_RETAIL_C3DVECTOR_MAGNITUDE_NAMED_SQUARED
+#define FABLE_RETAIL_C3DBOUNDINGSPHERE_CENTER_VALUE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_PEEKMESH
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_PEEKMESH_RENDERINFO
+#define FABLE_RETAIL_CMESHDATABANKENTRY
+#define FABLE_RETAIL_CMESHDATABANK_BASES
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK
+#define FABLE_RETAIL_C3DMESHINFO_GETMESH
+#define FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+#define FABLE_RETAIL_CGRAPHICINFO_GETWIDTH
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER
+#define FABLE_RETAIL_CENGINECAMERA_POSITION
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_MEMBERS
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_CLOTH
+#define FABLE_RETAIL_CENGINEOCCLUSIONMANAGER
+#define FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_OCCLUSIONTEST
+#define FABLE_RETAIL_C3DPRIMITIVE2_ISDP3BUMP
+#define FABLE_RETAIL_C3DPRIMITIVE2_ISDP3BUMP_MASK
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_PEEKRENDERINFO
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_SETUPRENDERMODE
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_REFLECTIONTEXTURE
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_2DALPHAMASK
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SETTEXTUREFACTOR
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTHRENDER
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTHSHADERS
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_STATICMESHSHADERS
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTH2D
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SETUPBLANKTEXTURES
+#define FABLE_RETAIL_CENGINESUBPRIMITIVESTATICMESH_PARENTBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH_PEEKLIGHTS
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_SPOTLIGHT
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD_DIRECT
+#define FABLE_RETAIL_CENGINECAMERA_PEEKWINDOW
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_CLOTH2D
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERERSHAREDDATA_SETUPRENDERMODE
+#define FABLE_RETAIL_CRGBFLOATCOLOUR
+#define FABLE_RETAIL_CRGBCOLOUR
+#define FABLE_RETAIL_CRGBCOLOUR_CTOR4_INITIALISE
+#define FABLE_RETAIL_CRGBFLOATCOLOUR_INITIALISE_CTOR
+#define FABLE_RETAIL_CSHADERRENDERMANAGER_PSCONST_INDEX
+#define FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_MEMBER
+#define FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_SHADOWFUNC
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_SHADOWFUNC_CTOR
+#define FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW
+#define FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW_MEMBERS
+#define FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW_DEPTHBUFFERTRANSFORM
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_GETSTIPLEFADETEXTURE
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_ZERORGBATEXTURE
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO
+#define FABLE_RETAIL_CENGINEPRIMITIVE2DVIEWPORTMANAGER
+#define FABLE_RETAIL_CENGINEPRIMITIVE2DVIEWPORTMANAGER_ALPHAMASK
+#include "engine/CRenderManager.h"
+#include "engine/CShaderRenderManager.h"
+#include "engine/CRenderStateCaptureBlock.h"
+#include "engine/CEngineLightingManager.h"
+#include "engine/CEngineCamera.h"
+#include "engine/CEnginePrimitiveRenderer.h"
+#include "engine/CEngineOcclusionManager.h"
+#include "engine/CEnginePrimitiveManagerStaticMeshesBase.h"
+#include "engine/CEngineSubPrimitiveStaticMesh.h"
+#include "engine/CEngineInternalPrimitiveMorphedStaticMesh.h"
+#include "engine/CGraphicInfo.h"
+#include "engine/CMeshDataBank.h"
+#include "engine/C3DMeshInfo.h"
+#include "engine/C3DMesh2.h"
+#include "engine/C3DPrimitive2.h"
+#include "engine/C3DTextureStages.h"
+#include "engine/CVertexBufferWin32.h"
+#include "engine/GFFloatToLongFloor.h"
+#include "engine/GFLimit.h"
+#include "engine/CEngineMeshEffect.h"
+#include "engine/CEngineInternalPrimitiveStaticMesh.h"
+#include "engine/C3DMeshMaterial.h"
+#include "engine/C3DClothPrimitive.h"
 
-class CEnginePrimitiveSimulationInfo { public:
-    CEngineClothSimulationStaticMesh* FindSimulation(long index);   // 0x00B812C0
+class CEngineSimulationBase {                       // the simulation list's element type (Ego_r.pdb); members not used here
+};
+class CEnginePrimitiveSimulationInfo : public CIVCountedPointeeBase {
+public:
+    CEngineSimulationBase* FindSimulation(unsigned long index);          // 0x00B812C0
+};
+class CEngineClothSimulationStaticMesh : public CEngineSimulationBase {
+public:
+    void Render(const C3DPrimitive2& primitive, const CEngineSubPrimitiveStaticMesh& sub_primitive, ERenderPassType pass);   // 0x00B812F0
 };
 
-struct CEngineClothSimulationStaticMesh {
-    void Render(void* renderer, CEngineSubPrimitiveBase& sub, long pass);   // 0x00B812F0
-};
-
-struct CEngineInternalPrimitiveStaticMesh_00ba6fa0 {
-    unsigned char                  _pad[0x64];
-    CEnginePrimitiveSimulationInfo* m_pSimulationInfo;   // +0x64
-};
-
-struct SMeshSlot_00ba6fa0 { void* m_a; void* m_b; void* m_c; long m_index; };   // +0xc = the current mesh index
-
-struct CMeshRenderer_00ba6fa0 {
-    unsigned char      _pad[0x20];
-    SMeshSlot_00ba6fa0** m_ppCurrent;              // +0x20
-    long GetCurrentMeshIndex() const { return (*m_ppCurrent)->m_index; }   // inline: the index lands in eax for the push
-};
-
-class CEngineSubPrimitiveBase { public:
-    unsigned char                              _pad0[0xc];
-    CEngineInternalPrimitiveStaticMesh_00ba6fa0* m_pPrimitive;   // +0x0c
-    unsigned char                              _pad10[8];
-    CMeshRenderer_00ba6fa0*                    m_pRenderer;     // +0x18
-    unsigned char                              _pad1c[4];
-    bool                                       m_cloth;         // +0x20
-};
-
-class CEngineSubPrimitiveStaticMesh : public CEngineSubPrimitiveBase { };   // PDB: the static-mesh sub-primitive (single base at +0)
-enum ERenderPassType { };
-
-struct CEnginePrimitiveManagerStaticMeshesBase {
-    void RenderMeshPrimitive(CEngineSubPrimitiveStaticMesh& sub, ERenderPassType pass);   // 0x00BA5260 (PDB signature)
-    void RenderSubPrimitive(CEngineSubPrimitiveBase& sub, long pass);
-};
-
-void CEnginePrimitiveManagerStaticMeshesBase::RenderSubPrimitive(CEngineSubPrimitiveBase& sub, long pass)
+void CEnginePrimitiveManagerStaticMeshesBase::RenderSubPrimitive(CEngineSubPrimitiveBase& sub_primitive, ERenderPassType pass)
 {
-    if (sub.m_cloth) {
-        CEnginePrimitiveSimulationInfo* info = sub.m_pPrimitive->m_pSimulationInfo;
+    CEngineSubPrimitiveStaticMesh& mesh = static_cast<CEngineSubPrimitiveStaticMesh&>(sub_primitive);
+    if (mesh.IsCloth) {
+        CEnginePrimitiveSimulationInfo* info = mesh.GetParent()->SimulationInfo.Get();
         if (info) {
-            CMeshRenderer_00ba6fa0* renderer = sub.m_pRenderer;
-            CEngineClothSimulationStaticMesh* simulation = info->FindSimulation(renderer->GetCurrentMeshIndex());
+            const C3DPrimitive2& primitive = *mesh.MeshPrimitive;
+            CEngineClothSimulationStaticMesh* simulation =
+                static_cast<CEngineClothSimulationStaticMesh*>(info->FindSimulation(primitive.GetClothPrimitive(0)->GetPrimitiveIndex()));
             if (simulation)
-                simulation->Render(renderer, sub, pass);
+                simulation->Render(primitive, mesh, pass);
         }
     } else {
-        RenderMeshPrimitive(static_cast<CEngineSubPrimitiveStaticMesh&>(sub), (ERenderPassType)pass);
+        RenderMeshPrimitive(mesh, pass);
     }
 }

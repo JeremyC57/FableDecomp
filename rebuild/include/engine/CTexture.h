@@ -106,6 +106,18 @@ public:
     // GetDimensions 0x009F9DB0 into a frame C2DExtentsI and reads its first word, `mov eax,[eax]`). No layout change.
     unsigned long GetWidth(unsigned long mipmapLevel) const { return GetDimensions(mipmapLevel).X; }
 #endif
+#if defined(FABLE_RETAIL_CTEXTURE_EXTENTS_INLINE) && !defined(FABLE_RETAIL_CTEXTURE_FORMATQUERIES)
+    // Retail opt-in (agentNF41, row 0x009DC870 CRenderManager2D::Draw2DTexture, the UV overload): Ego_r.pdb ?GetPixelFormat@CTexture@@QBE?AVCPixelFormat@@XZ
+    // (0x009F9D80, out of line, hidden result) and FableWin.pdb ?GetWidth@CTexture@@QBEKK@Z / ?GetHeight@CTexture@@QBEKK@Z (debug only: inline
+    // in release; the row calls GetDimensions 0x009F9DB0 once for each and converts the unsigned result, `fadd` 2^32 fix-up). No layout change.
+    CPixelFormat GetPixelFormat() const;                                 // 0x009F9D80
+#ifndef FABLE_RETAIL_CTEXTURE_GETWIDTH
+    unsigned long GetWidth(unsigned long mipmapLevel) const { return GetDimensions(mipmapLevel).X; }
+#endif
+#ifndef FABLE_RETAIL_CTEXTURE_WATERDYNAMIC
+    unsigned long GetHeight(unsigned long mipmapLevel) const { return GetDimensions(mipmapLevel).Y; }
+#endif
+#endif
 #ifdef FABLE_RETAIL_CTEXTURE_BLTTORENDERTARGET
     // Retail opt-in (chunk 783): Ego_r.pdb 0x00B6A840 ?BltToRenderTargetWithGPU@CTexture@@QBEX_N00@Z = retail 0x009FA780 (`ret 0Ch`).
     void BltToRenderTargetWithGPU(bool fullRenderTarget, bool scaleHalf, bool pointSample) const;   // 0x009FA780

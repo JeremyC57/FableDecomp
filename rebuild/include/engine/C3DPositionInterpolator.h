@@ -16,7 +16,13 @@ class C3DPositionInterpolator {
 public:
  C3DPositionInterpolator();
  C3DPositionInterpolator(const C3DVector& startPosition,const C3DVector& endPosition);
+#ifndef FABLE_RETAIL_C3DPOSITIONINTERPOLATOR_IMPLICIT_DTOR
  virtual ~C3DPositionInterpolator();
+#else
+ // Opt-in (agentNF41, row 0x004BCFE0 CTCGraphicAppearance::RefreshPrimitiveAnimationAndPos; needs _BASE): the destructor is the implicit
+ // one (virtual through CBaseClass): the CEnginePrimitiveAnimation temporary's WorldPos member is destroyed by a direct ~CBaseClass
+ // 0x0099A2E0 call with no vptr store, as C3DOrientationInterpolator's FABLE_RETAIL_C3DORIENTATIONINTERPOLATOR_IMPLICIT_DTOR.
+#endif
 #ifdef FABLE_RETAIL_C3DPOSITIONINTERPOLATOR_PASS22_GETINTERPOLATED
  // Retail opt-in (Codex pass22): both PDB GetInterpolated(float) const; native0x0077C67F..0x0077C6F7.
  C3DVector GetInterpolated(float interp) const { return StartPosition.Interpolate(EndPosition,interp); }

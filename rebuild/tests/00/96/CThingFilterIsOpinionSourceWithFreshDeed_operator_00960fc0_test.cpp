@@ -17,13 +17,13 @@ class CThing { public:
     { long type = interfaceType; const CInterfaceMap* map = &Components; CInterfaceMap::SEntry* it = map->LowerBound(&type);
       if (it == map->last || interfaceType < it->type) it = map->last; return (T*)it->component; } };
 static int g_aware = 0, g_see = 0; static bool g_awareResult = false, g_seeResult = false; static bool g_lastFlag = false;
-static bool IsAwareOfThingImplementation(CThingAICreature*, CThing*, bool flag) { ++g_aware; g_lastFlag = flag; return g_awareResult; }
-static bool CanCreatureSeeCreature(const CThing*, const CThing*, bool flag) { ++g_see; g_lastFlag = flag; return g_seeResult; }
+static bool IsAwareOfThingIndirectly(CThingAICreature*, CThing*, bool flag) { ++g_aware; g_lastFlag = flag; return g_awareResult; }
+static bool IsAwareOfThing(const CThing*, const CThing*, bool flag) { ++g_see; g_lastFlag = flag; return g_seeResult; }
 struct CIntelligentPointer { CThingAICreature* m_p; CThingAICreature* GetTypedItem() const { return m_p; } };
 class CThingFilter_IsOpinionSourceWithFreshDeed { public:
     CIntelligentPointer PCreature; long LastVDeedID; u64 LastSourceUID;
-    bool IsAware(CThing* s, bool f) const { return IsAwareOfThingImplementation(PCreature.GetTypedItem(), s, f); }
-    bool CanSee(CThing* s, bool f) const { return CanCreatureSeeCreature((CThing*)PCreature.GetTypedItem(), s, f); }
+    bool IsAware(CThing* s, bool f) const { return IsAwareOfThingIndirectly(PCreature.GetTypedItem(), s, f); }
+    bool CanSee(CThing* s, bool f) const { return IsAwareOfThing((CThing*)PCreature.GetTypedItem(), s, f); }
     bool operator()(CThing* source) const
     {
         if (source->HasTC(0x50)) {

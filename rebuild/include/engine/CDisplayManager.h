@@ -32,6 +32,16 @@ public:
  CDisplayManager(CSystemManager&);
  virtual ~CDisplayManager();
  bool GetBestAlphaTextureFormat(unsigned long,CPixelFormat&);
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_ISVIEWPORTOFFSCREEN
+ // Retail opt-in (agentNF41, row 0x009DB700 CRenderManager2D::AddText): FableWin.pdb ?IsViewportOffscreen@CDisplayManager@@QBE_NXZ
+ // (0x02D46420; absent from Ego_r = inline in release: AddText reads +0x1D8 in place, 0x009DB70E). No layout change.
+ bool IsViewportOffscreen() const { return ViewportOffscreen; }
+#endif
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_GETVIEWPORTFLOAT
+ // Retail opt-in (agentNF41, row 0x00A0AAA0 CRenderManagerCore::GetCurrentAWindow): FableWin.pdb ?GetViewportFloat@CDisplayManager@@QBEABVC2DBoxF@@XZ
+ // (absent from Ego_r = inline in release: `add eax,204h`, the address of ViewportBoxFloat +0x204). No layout change.
+ const C2DBoxF& GetViewportFloat() const { return ViewportBoxFloat; }
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER_VERTEXSHADERVERSION
  // Opt-in (wfE7, row 0x00B33B50): Ego_r.pdb / FableWin.pdb ?GetVertexShaderVersion@CDisplayManager@@QBEKXZ (retail 0x009BEDE0, landed). Declaration only.
  unsigned long GetVertexShaderVersion() const;                         // 0x009BEDE0

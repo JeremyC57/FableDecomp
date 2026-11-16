@@ -54,6 +54,11 @@ public:
  C3DMeshStats();virtual ~C3DMeshStats();
 #endif
  bool HasDummyObject(unsigned long)const;
+#ifdef FABLE_RETAIL_C3DMESHSTATS_HASHELPERPOINT
+ // Retail opt-in (agentNF41, row 0x00A36100 C3DMeshObject::HasHelperPoint): Ego_r.pdb ?HasHelperPoint@C3DMeshStats@@QBE_NK@Z (Ego_r
+ // 0x00B8E300, directly before HasDummyObject 0x00B8E340 as retail 0x00A2EA20 / 0x00A2EA60; landed row 0x00A2EA20). Declaration only.
+ bool HasHelperPoint(unsigned long)const;                    // 0x00A2EA20
+#endif
 #ifdef FABLE_RETAIL_C3DMESHSTATS_LOADBINARY
  // Retail opt-in (Codex pass22): both PDB public reference signature, native A2F2D0.
  bool LoadBinary(class CMemoryDataInputStream&);

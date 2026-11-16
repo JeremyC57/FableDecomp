@@ -163,6 +163,11 @@ public:
     // (the retail 12-byte STLport vector). Not combinable with FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER yet. No layout change.
     CArray<CCountedPointer<C3DClothPrimitive> > ClothPrimitives;
     unsigned char Data[4],VertexBuffer[4],IndexBuffer[4];
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_GETCLOTHPRIMITIVE
+    // Nested opt-in (agentNF41, row 0x00BA77B0): FableWin.pdb ?GetClothPrimitive@C3DPrimitive2@@QBEPAVC3DClothPrimitive@@K@Z (debug only:
+    // inline in release, the element's counted-pointer Data read in place). No layout change.
+    C3DClothPrimitive* GetClothPrimitive(unsigned long index) const { return ClothPrimitives[index].Get(); }
+#endif
 #else
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER
     // Opt-in (chunk Q16, row 0x00A90260 CreateDegenerateTriangleIndexBuffer): Ego_r.pdb IndexBuffer is scoped_ptr<CIndexBuffer> (+0x34

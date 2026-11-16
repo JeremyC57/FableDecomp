@@ -85,6 +85,13 @@ public:
     // pushed, as StartFileScan; bound as ...PAG@Z by the landed 0x005955AB: VC7.1 without /Zc:wchar_t spells the buffer unsigned short).
     static bool __fastcall ScanNextFile(const CWideString& pattern,CFileScanInfo& info,unsigned short* nextFile);   // 0x00999850
 #endif
+#ifdef FABLE_RETAIL_CAFILE_EXPANDPATH
+    // NF41 opt-in (2026-11-16, row 0x00999850 ScanNextFile): Ego_r.pdb 0x00AFFC70 ?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ (retail
+    // 0x00997F80) and 0x00B00820 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z (retail 0x00998C90), static __fastcall with the hidden
+    // result in ecx. Declarations only.
+    static CWideString __fastcall GetCurrentPath();                                                     // 0x00997F80
+    static CWideString __fastcall ExpandPath(const CWideString& path,const CWideString& base);          // 0x00998C90
+#endif
 #ifdef FABLE_RETAIL_CAFILE_INSTALLERPATHS
     // Nested opt-in (chunk 2032, row 0x009C47A0 CFileInstaller::AddFile): Ego_r.pdb / FableWin.pdb static __fastcall members, each
     // also the self-symbol of a landed row (0x009990B0, 0x00999140, 0x00997930, 0x00999C50, 0x00999CB0). Wide text is unsigned short.

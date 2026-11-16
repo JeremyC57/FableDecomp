@@ -1,63 +1,79 @@
-// CCreatureAction_DragonBurninateInto::CCreatureAction_DragonBurninateInto(CThingCreatureBase*, const vector<C3DVector>&, const C3DVector&, float, float, const C3DVector&, const C3DVector&) -- base CCombatActionBase(owner, 250, the owner's "SWORD_SWING" sound pair), then the burn path fields from the arguments
-// Leaf: ??0CCreatureAction_DragonBurninateInto@@QAE@PAVCThingCreatureBase@@ABUCVectorC3DVector@@ABVC3DVector@@MM22@Z
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// CCreatureAction_DragonBurninateInto::CCreatureAction_DragonBurninateInto(CThingCreatureBase& creature, std::vector<C3DVector>& movement_points, C3DVector& previous_point, float burn_start, float burn_stop, C3DVector& flame_start_pos, C3DVector& flame_end_pos) -- base CCombatActionBase(creature, 250, the creature's "SWORD_SWING" sound pair), then the flight path, burn window and flame end points
+// Leaf: ??0CCreatureAction_DragonBurninateInto@@QAE@AAVCThingCreatureBase@@AAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAVC3DVector@@MM22@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009537B0, length 208 bytes, `ret 1Ch`. Vtable 0x01294374.
-// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("SWORD_SWING" @ 0x0127AC80), GetSoundPair(CThingCreatureBase*, const CCharString&)
-// 0x008561A0 (`__fastcall`, CSoundPair by hidden pointer), CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&)
-// 0x00858030, std::vector<C3DVector> copy constructor 0x006F0810 (manifest "Vector_CopyFrom").
+// Identity: Ego_r.pdb / FableWin.pdb ??0CCreatureAction_DragonBurninateInto@@QAE@AAVCThingCreatureBase@@AAV?$vector@..@std@@AAVC3DVector@@MM22@Z
+//   (engine/CCreatureAction_DragonBurninateInto.h retail branch); the probed caller binds it.
+// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("SWORD_SWING" @ 0x0127AC80), CCombatActionBase::GetSoundPair 0x008561A0
+//   (`__fastcall`, CSoundPair by hidden pointer), CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&)
+//   0x00858030, std::vector<C3DVector> copy constructor 0x006F0810.
 // Shape: the literal is an implicit CCharString temporary built before the base arguments and destroyed after the base call;
-// init-list members in declaration order (C3DVector's memberwise user copy ctor; floats copied as dwords).
-// Layout: PDB header + 0x18 = retail offsets (the vector is 12 bytes in retail, 16 in the PDB build).
-class CThingCreatureBase;
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
-class CSoundPair { public:                             // two sound ids (user ctor: returned through a hidden pointer)
-    long FirstSound;
-    long LastSound;
-    CSoundPair() : FirstSound(0), LastSound(0) { }
-};
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* creature, const CCharString& name);   // 0x008561A0
-
+//   init-list members in declaration order (C3DVector's memberwise user copy ctor; floats copied as dwords).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_GETTCDRIVER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_GETCOMBATTYPEDEF
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PUMPCOMBATACTIONS
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_NORMALISE_UNPAREN
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTCBOSS_STRIKES
+#define FABLE_RETAIL_CTCENTITYEVENTS
+#define FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
+#define FABLE_RETAIL_CTCPHYSICALSHIELDSPELL_ALLOWREACTIONS
+#define FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_CREATE
+#define FABLE_RETAIL_NCREATUREMODE_QUERIES
+#define FABLE_RETAIL_CCOMBATTYPEDEF
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCREATUREACTION_DRAGONBURNINATEINTO
+#include "fable_string.h"
 #include "engine/C3DVector.h"
-struct CVectorC3DVector {                       // std::vector<C3DVector> (retail 12 bytes)
-    C3DVector* _First;
-    C3DVector* _Last;
-    C3DVector* _End;
-    CVectorC3DVector(const CVectorC3DVector& other);   // 0x006F0810 (out-of-line copy constructor)
-};
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCreatureAction_DragonBurninateInto.h"
 
-class CCombatActionBase { public:                      // retail sizeof 0x114
-    virtual void v00();
-    unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    CCombatActionBase(const CCombatActionBase& other);                                        // 0x0062F3B0
-};
-
-class CCreatureAction_DragonBurninateInto : public CCombatActionBase { public:   // vtable 0x01294374; retail sizeof 0x14c
-    C3DVector        PreviousPoint;             // +0x114 (PDB +0x12c)
-    CVectorC3DVector MovementPoints;            // +0x120 (PDB +0x138)
-    float            BurnStart;                 // +0x12c (PDB +0x148)
-    float            BurnStop;                  // +0x130 (PDB +0x14c)
-    C3DVector        FlameStartPos;             // +0x134 (PDB +0x150)
-    C3DVector        FlameEndPos;               // +0x140 (PDB +0x15c)
-    virtual void v00();
-    CCreatureAction_DragonBurninateInto(CThingCreatureBase* owner, const CVectorC3DVector& movementPoints, const C3DVector& previousPoint,
-                                        float burnStart, float burnStop, const C3DVector& flameStartPos, const C3DVector& flameEndPos);
-    CCreatureAction_DragonBurninateInto(const CCreatureAction_DragonBurninateInto& other);
-};
-
-CCreatureAction_DragonBurninateInto::CCreatureAction_DragonBurninateInto(CThingCreatureBase* owner, const CVectorC3DVector& movementPoints,
-    const C3DVector& previousPoint, float burnStart, float burnStop, const C3DVector& flameStartPos, const C3DVector& flameEndPos)
-    : CCombatActionBase(owner, 250, GetSoundPair(owner, "SWORD_SWING"))
-    , PreviousPoint(previousPoint)
-    , MovementPoints(movementPoints)
-    , BurnStart(burnStart)
-    , BurnStop(burnStop)
-    , FlameStartPos(flameStartPos)
-    , FlameEndPos(flameEndPos)
+CCreatureAction_DragonBurninateInto::CCreatureAction_DragonBurninateInto(CThingCreatureBase& creature, std::vector<C3DVector>& movement_points,
+    C3DVector& previous_point, float burn_start, float burn_stop, C3DVector& flame_start_pos, C3DVector& flame_end_pos)
+    : CCombatActionBase(creature, 250, GetSoundPair(creature, "SWORD_SWING"))
+    , PreviousPoint(previous_point)
+    , MovementPoints(movement_points)
+    , BurnStart(burn_start)
+    , BurnStop(burn_stop)
+    , FlameStartPos(flame_start_pos)
+    , FlameEndPos(flame_end_pos)
 {
 }

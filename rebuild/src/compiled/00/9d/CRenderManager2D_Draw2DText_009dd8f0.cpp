@@ -1,36 +1,28 @@
-// CRenderManager2D::Draw2DText(const C2DVector& position, CWideString text, CFontBank* font, const CRGBColour& colour, unsigned long flags) -- queue a text string at a 2D screen position (z = 0, scale 1) and report success
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009DD8F0, length 109 bytes (`ret 14h`).
-// Callees: CWideString::CWideString(const CWideString&) @ 0x0099B720, CRenderManager2D::AddText @ 0x009DB700
-// (C3DVector, float scale, CWideString, CFontBank*, CRGBColour, flags; see the landed Draw3DScaledText 0x009DBFF0),
-// CWideString::~CWideString @ 0x0099B510 (x2: the copy, then the by-value parameter).
+// CRenderManager2D::Draw2DText(const C2DVector& position, CWideString text, const CFontBank& font, const CRGBColour& colour, unsigned long flags) -- queue a text string at a 2D screen position (z = 0, scale 1) and report success
+// Leaf: ?Draw2DText@CRenderManager2D@@QAE_NABVC2DVector@@VCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009DD8F0, length 109 bytes (`ret 14h`). Ego_r.pdb 0x00B31610 / FableWin.pdb
+//   ?Draw2DText@CRenderManager2D@@QAE_NABVC2DVector@@VCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z (engine/CRenderManager2D.h).
+// Callees: CWideString::CWideString(const CWideString&) 0x0099B720, CRenderManager2D::AddText 0x009DB700 (private, the font by
+//   reference), CWideString::~CWideString 0x0099B510 (x2: the copy, then the by-value parameter).
 // Shape: the 3D position and the string copy are NAMED locals built before the argument pushes (VC homes the string
-// copy in the dead position-argument slot); unnamed temporaries in the call are built after the trailing pushes.
-// `mov al,1`.
-// Leaf: Draw2DText
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-class C2DVector { public: float X, Y; };
+//   copy in the dead position-argument slot); `mov al,1`.
+#define FABLE_RETAIL_CRENDERMANAGERCORE
+#define FABLE_RETAIL_CRENDERMANAGER2D
+#define FABLE_RETAIL_CRENDERMANAGER2D_ADDTEXT
+#define FABLE_RETAIL_C2DBOXF
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/C2DVector.h"
 #include "engine/C3DVector.h"
-class CRGBColour { public: unsigned char B, G, R, A; };
-class CFontBank;
+#include "engine/CRGBColour.h"
+#include "engine/CRenderManager2D.h"
 
-class CWideString { public:
-    void* m_pStringData;
-    CWideString(const CWideString& other);              // 0x0099B720
-    ~CWideString();                                     // 0x0099B510
-};
-
-struct CRenderManager2D {
-    void AddText(const C3DVector& position, float scale, const CWideString& text, CFontBank* font,
-                 const CRGBColour& colour, unsigned long flags);                                // 0x009DB700
-    bool Draw2DText(const C2DVector& position, CWideString text, CFontBank* font, const CRGBColour& colour,
-                    unsigned long flags);
-};
-
-bool CRenderManager2D::Draw2DText(const C2DVector& position, CWideString text, CFontBank* font,
-                                  const CRGBColour& colour, unsigned long flags)
+bool CRenderManager2D::Draw2DText(const C2DVector& position, CWideString text, const CFontBank& font, const CRGBColour& colour,
+                                  unsigned long flags)
 {
-    C3DVector screenPosition(position.X, position.Y, 0.0f);
+    C3DVector screen_position(position.X, position.Y, 0.0f);
     CWideString string(text);
-    AddText(screenPosition, 1.0f, string, font, colour, flags);
+    AddText(screen_position, 1.0f, string, font, colour, flags);
     return true;
 }

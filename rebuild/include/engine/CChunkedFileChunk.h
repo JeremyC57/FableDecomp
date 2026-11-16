@@ -27,6 +27,12 @@ virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const=0;
 virtual CChunkedFileChunk* CreateNewInstance() const=0;
 protected:
 virtual CChunkedFileChunk* InitNewInstance(CChunkedFileChunk*) const;
+#ifdef FABLE_RETAIL_CCHUNKEDFILECHUNK_GETCHUNKTYPE
+// Retail opt-in (agentNF41, rows 0x00AA7F40 / 0x00AA7FF0): FableWin.pdb / Ego_r.pdb ?GetChunkType@CChunkedFileChunk@@QBEPBDXZ (inline in
+// release: the address of ChunkType +0x04). No layout change.
+public:
+const char* GetChunkType() const { return ChunkType; }
+#endif
 private:char ChunkType[5];CChunkedFileSuperChunk* Parent;};
 FABLE_STATIC_ASSERT(sizeof(CChunkedFileChunk)==0x10);
 #endif

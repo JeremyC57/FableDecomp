@@ -66,6 +66,11 @@ public:
     CArray<CDefIndex> CreatureFamilies;                      // +0x0c
     std::list<CIntelligentPointer<CThing> > CreatedCreatures; // +0x18
     bool HasHitCreationLimit() const;                        // 0x0074A190
+#ifdef FABLE_RETAIL_CTCCREATUREGENERATOR_GETNUMGENERATEDCREATURES
+    // NF41 opt-in (2026-11-16, row 0x0074A100): Ego_r.pdb 0x0075C1D0 / FableWin.pdb 0x02519000
+    // ?GetNumGeneratedCreatures@CTCCreatureGenerator@@QBEJXZ (public const). Declaration only.
+    long GetNumGeneratedCreatures() const;                   // 0x0074A100
+#endif
 protected:
     void CreateCreaturesUndead(CThingCreatureBase*);         // 0x0074AF50
     bool GetUndeadGenerationPoint(const CThingCreatureBase&, C3DVector&);   // 0x0074A260

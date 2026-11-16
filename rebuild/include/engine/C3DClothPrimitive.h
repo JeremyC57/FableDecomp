@@ -26,6 +26,11 @@ public:
     CParticleProgram* GetParticleProgram() const { return ParticleProgram.Data; }   // FableWin ?GetParticleProgram@C3DClothPrimitive@@QBEPAVCParticleProgram@@XZ
 #endif
     unsigned long GetMaterialIndex() const { return MaterialIndex; }                // FableWin ?GetMaterialIndex@C3DClothPrimitive@@QBEKXZ
+#ifdef FABLE_RETAIL_C3DCLOTHPRIMITIVE_GETPRIMITIVEINDEX
+    // Opt-in (agentNF41, row 0x00BA77B0): FableWin.pdb ?GetPrimitiveIndex@C3DClothPrimitive@@QBEKXZ (debug only: inline in release, a read
+    // of PrimitiveIndex +0x0C). No layout change.
+    unsigned long GetPrimitiveIndex() const { return PrimitiveIndex; }
+#endif
     void* _vftable;
     CCountedPointer<CParticleProgram> ParticleProgram;                              // +0x04
     unsigned long PrimitiveIndex;                                                   // +0x0C

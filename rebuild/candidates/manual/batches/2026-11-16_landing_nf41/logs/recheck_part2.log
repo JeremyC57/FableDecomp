@@ -1,0 +1,51 @@
+addr       parity           behav  name
+004bc340   RELOCATION_MATCH PASS   RefreshPrimitivePos
+004bd690   RELOCATION_MATCH PASS   SetAttachedPrimitiveGraphics
+0055e6b0   RELOCATION_MATCH PASS   GetScoreAsString
+0061a260   RELOCATION_MATCH PASS   IsQuestCardAvailable
+00746560   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00746560   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+0074f680   MATCH            PASS   _Vector_base
+007d3560   RELOCATION_MATCH PASS   GetCamera
+007f4020   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007f4020   WARN RELOC_NAME: ??RCThingFilter_EnemyCreature@@QBE_NABVCThing@@@Z -> 006a7550 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+007f4020   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@IAEXPAPAVCThingGameObject@@ABQAV3@ABU__true_type@2@I_N@Z -> 00788ffc labelled '_global::Vector_Assign'
+007f4020   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+0083b170   MATCH            PASS   find<EObjectAugmentationType>
+009143e0   RELOCATION_MATCH PASS   IsRunnable
+00960fc0   WARN RELOC_NAME: ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z -> 008645e0 labelled 'CMainGameComponent::BeginInputLoading'
+00960fc0   RELOCATION_MATCH PASS   operator()
+009db700   RELOCATION_MATCH PASS   AddText
+009dbd10   RELOCATION_MATCH PASS   AddAlphaTri
+009dc2c0   RELOCATION_MATCH PASS   Add2DLine
+009dd8f0   RELOCATION_MATCH PASS   Draw2DText
+00a4fd70   WARN RELOC_NAME: ?AddMatrix@C3DAnimFileSequenceChunk@@QAEXABVCMatrix3x4@@@Z -> 00aaf800 labelled 'CRecordOwner_00aaf800::AddRecord'
+00a4fd70   WARN RELOC_NAME: ?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z -> 00a4efc0 labelled 'C3DKeyframe_InitialiseAsConstant'
+00a4fd70   RELOCATION_MATCH PASS   InitialiseAsConstant
+00aa7f40   MATCH            PASS   FindFirstSubChunkOfType
+00b63530   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b63530   RELOCATION_MATCH PASS   RenderScreenSpaceSprite
+00be9530   MATCH            PASS   KeepHistoryInRange
+00f39a50   RELOCATION_MATCH PASS   CompositeQuad
+
+WINS: 20
+  004bc340 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?RefreshPrimitivePos@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCPrimitive@2@ABVC3DPositionInterpolator@@ABVC3DOrientationInterpolator@@@Z
+  004bd690 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?SetAttachedPrimitiveGraphics@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCPrimitive@2@ABVCEnginePrimitive@@AAVCEnginePrimitiveAttachmentInfo@@PBV32@@Z
+  0055e6b0 RELOCATION_MATCH CTCHeroOnlineScoreboard::CActivity::?GetScoreAsString@CActivity@CTCHeroOnlineScoreboard@@QAE?AVCWideString@@M@Z
+  0061a260 RELOCATION_MATCH CTCInventoryQuests::?IsQuestCardAvailable@CTCInventoryQuests@@QBE_NABVCTCQuestCard@@@Z
+  00746560 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_HasPhysicsMesh@@VCThingFilter_RadiusIntersectsInfiniteLine@@VCThingFilter_IsNot@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_HasPhysicsMesh@@VCThingFilter_RadiusIntersectsInfiniteLine@@VCThingFilter_IsNot@@@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z
+  0074f680 MATCH std::_Vector_base<std::pair<long,CCharString>,std::allocator<std::pair<long,CCharString> > >::??0?$_Vector_base@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@JVCCharString@@@std@@@1@@Z
+  007d3560 RELOCATION_MATCH CTCTavernGameCoinGolf::?GetCamera@CTCTavernGameCoinGolf@@QAEXAAVC3DVector@@0@Z
+  007f4020 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@VCThingFilter_EnemyCreature@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@VCThingFilter_EnemyCreature@@@@AAV?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@@Z
+  0083b170 MATCH std::_Rb_tree<EObjectAugmentationType,std::pair<const EObjectAugmentationType,CWeaponTrailGraphicSet>,std::_Select1st<std::pair<const EObjectAugmentationType,CWeaponTrailGraphicSet> >,std::less<EObjectAugmentationType>,std::allocator<std::pair<const EObjectAugmentationType,CWeaponTrailGraphicSet> > >::??$find@W4EObjectAugmentationType@@@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Const_traits@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@2@@1@ABW4EObjectAugmentationType@@@Z
+  009143e0 RELOCATION_MATCH CAIStateGroup_BirdGroundWander::?IsRunnable@CAIStateGroup_BirdGroundWander@@UAE_NXZ
+  00960fc0 RELOCATION_MATCH CThingFilter_IsOpinionSourceWithFreshDeed::??RCThingFilter_IsOpinionSourceWithFreshDeed@@QBE_NABVCThing@@@Z
+  009db700 RELOCATION_MATCH CRenderManager2D::?AddText@CRenderManager2D@@AAEXABVC3DVector@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
+  009dbd10 RELOCATION_MATCH CRenderManager2D::?AddAlphaTri@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@00JPAVCTexture@@@Z
+  009dc2c0 RELOCATION_MATCH CRenderManager2D::?Add2DLine@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@0JPAVCTexture@@@Z
+  009dd8f0 RELOCATION_MATCH CRenderManager2D::?Draw2DText@CRenderManager2D@@QAE_NABVC2DVector@@VCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
+  00a4fd70 RELOCATION_MATCH C3DAnimationSequenceData::?InitialiseAsConstant@C3DAnimationSequenceData@@QAEXABVCMatrix3x4@@KMAAVCSimpleMemoryPool@@@Z
+  00aa7f40 MATCH CChunkedFileSuperChunk::?FindFirstSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@PBD@Z
+  00b63530 RELOCATION_MATCH CEngineSkyRenderer::?RenderScreenSpaceSprite@CEngineSkyRenderer@@AAEXPBVCTexture@@MMMMVCRGBColour@@@Z
+  00be9530 MATCH CEngineWaterSettings::?KeepHistoryInRange@CEngineWaterSettings@@QBEXPAVC2DVector@@M@Z
+  00f39a50 RELOCATION_MATCH CSurfaceCompositor::?CompositeQuad@CSurfaceCompositor@@QAEXABVCTexture@@QBVCVertexType@1@W4ECompositeBlendType@@@Z

@@ -39,6 +39,12 @@ public:
     void StartComposition(bool alpha_target);                            // 0x00F39730
     void EndComposition();                                               // 0x00F38930
     void CompositeQuad(const CTexture& texture, const CVertexType* const vertices, ECompositeBlendType blend);   // 0x00F39A50
+#ifdef FABLE_RETAIL_CSURFACECOMPOSITOR_SETBLENDMODE
+    // Retail opt-in (agentNF41, row 0x00F39A50 CompositeQuad): Ego_r.pdb 0x00BDD3F0 / FableWin.pdb
+    // ?SetBlendMode@CSurfaceCompositor@@IAEXW4ECompositeBlendType@@@Z (protected; retail 0x00F38A10, landed). Declaration only.
+protected:
+    void SetBlendMode(ECompositeBlendType blend);                        // 0x00F38A10
+#endif
 private:
     ECompositeBlendType            CurrentBlend;             // +0x04
     CRenderStateCaptureBlock       StateCaptureBlock;        // +0x08

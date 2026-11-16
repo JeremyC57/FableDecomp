@@ -27,6 +27,10 @@ FABLE_FORCEINLINE void CrossProduct(C3DVector& r, const C3DVector& a, const C3DV
     r.Y = a.Z * b.X - a.X * b.Z;
     r.Z = a.X * b.Y - a.Y * b.X;
 }
+// NF41 (2026-11-16): VC7.1 emits the constant products of `fov * a * b * c` as `fmul c ; fmul b ; fmul a` here, so the operands are
+//   written in reverse of retail's fmul order (360 0x01238020, 1/360 0x01238E00, 2*pi 0x0128F608): with the old text the two outer
+//   relocations bound g_TwoPi to 0x01238020 and g_DegreesPerTurn to 0x0128F608 (same bytes); now each name binds its own constant
+//   (g_TwoPi 0x0128F608 as the landed 0x00B4AC10 binds it).
 extern const float g_DegreesPerTurn;                    // 0x01238020 (360.0f)
 extern const float g_TurnsPerDegree;                    // 0x01238E00 (1/360)
 extern const float g_TwoPi;                             // 0x0128F608
@@ -85,9 +89,9 @@ void CEngineCamera::Process(bool flag)
     } else {
         GFVBoxToABox(GameWindow, &desc.Window);
     }
-    desc.HorizontalFOV = GameCamera->GetHorizontalFOV() * g_DegreesPerTurn * g_TurnsPerDegree * g_TwoPi;
+    desc.HorizontalFOV = GameCamera->GetHorizontalFOV() * g_TwoPi * g_TurnsPerDegree * g_DegreesPerTurn;
     if (GameCamera->GetFOVFlags() & 2) {
-        desc.VerticalFOV = GameCamera->GetVerticalFOV() * g_DegreesPerTurn * g_TurnsPerDegree * g_TwoPi;
+        desc.VerticalFOV = GameCamera->GetVerticalFOV() * g_TwoPi * g_TurnsPerDegree * g_DegreesPerTurn;
         desc.Use2DFOV = true;
     } else {
         desc.VerticalFOV = 0.0f;

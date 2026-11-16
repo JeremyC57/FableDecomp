@@ -1,0 +1,17 @@
+# NF41 lessons (one line each)
+- MSVC resolves quote includes from the includer's directory first. An overlay copy of a header that a repo header includes (stlport/fable_containers.h from fable_string.h) is ignored unless the row includes the overlay header first.
+- Never overlay a root `#pragma once` header (fable_string.h). It double-defines classes in any TU that also reaches another root fable_*.h header; keep overlays to `#ifndef`-guarded engine/ headers.
+- engine/CQuickDrawTriInfo.h defines FABLE_RETAIL_CTEXTURE only when it is the first to include engine/CTexture.h. A row that includes CTexture.h first must define it itself, or ~CTexture silently disappears.
+- engine/CDisplayManager.h needs engine/Direct3D9Types.h included before it (D3DCAPS9 / HWND).
+- A static member called through an object expression still evaluates the object call first. Retail's order (call, global load, static call) comes from writing the global read inside the comparison.
+- For NOT_MANGLED entries, the probe's "bad" count is an artifact of the unmangled correct_symbol. Compare binder spellings with each other and with the self Leaf before calling them wrong.
+- An explicit out-of-line STL member instantiation only works when the header's container template has bodies. The std::map seen through stlport/fable_containers.h is declaration-only (OBJDUMP_ERR).
+- vland reports the last pragma/flag sweep status. A SRC_FAIL there next to a q.py RM means the base compile failed in vland's environment (an overlay include conflict), not a codegen difference.
+- Unquoted heredocs run backtick spans in C++ comments as shell commands. Quote the delimiter (`'EOF'`) whenever the text holds backticks.
+- Self rows of CThingSearchTools::GetAllThingsInRoughArea<T,C,F> land in 1-3 grades as an explicit instantiation on the ORIGINAL_ROUGHAREA body (the 0x0095C7C0 preamble). Use T's own STATTYPEFLAGS opt-in (a missing one gives mask 0: `xor dl,dl`), FABLE_RETAIL_CTHINGFILTER_HASTC_OUTOFLINE for an out-of-line HasTC, and FABLE_RETAIL_STLP_REMOVE_COPY_IF for std::unary_negate.
+- STLport tree members (insert_unique and friends) land as one explicit instantiation on stlport/fable_map.h FABLE_RETAIL_STLP_MAP (the 0x005685E0 pattern). The landed callee rows of that tree then need NAME_FIXES.
+- CGameDefinitionManager's GetDef overloads hide CDefinitionManager::GetDef(long, CDefPointer<const T>*). Call it through a `const CDefinitionManager&`.
+- Never append to an `ls` lookup without a fallback (`2>/dev/null; true`). A missing path makes the Bash call exit 2.
+- A row's own `// Grade:` comment can be stale: grade the unmodified row once before blocking on it (0x00A4FD70 said DIFFER and was RM).
+- Re-diff every overlay against the repo just before hand-back (`grep '^<'` must be empty): repo headers move while you work.
+- CRGBColour::GetD3DCOLOR (repo opt-in) is the dword read; the channel packing seen in some rows is the row's own expression over GetA/GetR/GetG/GetB.

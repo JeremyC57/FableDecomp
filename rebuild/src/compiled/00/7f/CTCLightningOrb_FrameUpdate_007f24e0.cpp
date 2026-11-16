@@ -1,92 +1,94 @@
 // CTCLightningOrb::FrameUpdate() -- move the orb along its spline (eased); when it reaches the end, outlives LifeTime or enters the target's bounding sphere it explodes (when the def names an explosion) and the orb thing is killed
-// Leaf: ?FrameUpdate@CTCLightningOrb@@QAEXXZ
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
-// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+// Leaf: ?FrameUpdate@CTCLightningOrb@@UAEXXZ
+// Retail: Fable.exe 0x007F24E0. Ego_r.pdb / FableWin.pdb ?FrameUpdate@CTCLightningOrb@@UAEXXZ; slot 9 of CTCLightningOrb's vtable 0x01240A2C
+//   (rebuild/manifest/rtti-vtables.tsv; engine/CTCLightningOrb.h).
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (IS_THING_ALIVE, the GetTC owner); CTCHitLocations::GetBoundingSphere 0x00815420;
+//   CThing::GetPos 0x004C73D0; CTCDExplosion::Create(long, const C3DVector&) 0x0080C460 (static __fastcall); CThing::Kill;
+//   NBBBMaths::CLinearSpline::GetPointWithParam 0x00A57F70; CTCPhysicsBase SetPosition (virtual) and SetAsMoving 0x006B0130.
 // Shape: early `if (!PDef) return;` and the explode/kill and spline-overrun paths each `Kill(true); return;` (VC7.1 cross-jumps
 //   the two Kill calls; the early-out joins the final SetAsMoving epilogue as retail); ONE function-scope C3DVector serves as
-//   the hit-test sphere centre and the new spline position (same frame slot as retail), and the CVectorMap LowerBound
-//   instantiation is defined in this TU (noinline).
-#include "engine/C3DVector.h"
-class CTCBase;
+//   the hit-test sphere centre and the new spline position (same frame slot as retail).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
-#include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CTCPhysicsBase { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
-    virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
-    virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
-    virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void SetPosition(const C3DVector& position);   // slot 30 (+0x78)
-    void SetAsMoving(bool moving);                      // 0x006B0130
-};
-
-class CTCHitLocations { public:                                // interface 0x7F
-    void GetBoundingSphere(C3DVector& centre, float& radius, bool flag) const;   // 0x00815420 Ego_r/FableWin ?GetBoundingSphere@CTCHitLocations@@QBEXAAVC3DVector@@AAM_N@Z
-};
-CThing* __fastcall CreateExplosion(long defIndex, const C3DVector* position);   // 0x0080C460
-
-class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_C3DVECTOR_ANGLE_BODIES
+#define FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES
+#define FABLE_RETAIL_C3DVECTOR_SUBTRACT_ASSIGN
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE_SETASMOVING
+#define FABLE_RETAIL_CTCPHYSICSBASE_LASTPOSITION
+#define FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CWORLDMAP_HEIGHTZ
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CDEFSTRING_EQUALS
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FORCERESEND
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_TYPENAME
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+#define FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_BODY
+#define FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CTCBase.h"
 #include "engine/CIntelligentPointer.h"
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
-{
-    if (((CThing*)p.GetPItem()) != 0) {
-        if (!((CThing*)p.GetPItem())->IsDead())
-            return true;
-    }
-    return false;
-}
-namespace NBBBMaths {
-class CLinearSpline { public:
-    C3DVector GetPointWithParam(float t);               // 0x00A57F70
-};
-}
-class CLightningOrbDef { public:
-    unsigned char _pad00[0x28];
-    long  LightningDefIndex;                            // +0x28
-    float LifeTime;                                     // +0x2c
-    float Speed;                                        // +0x30
-    float ExplosionRange;                               // +0x34
-    long  ExplosionDefIndex;                            // +0x38
-};
-class CTCLightningOrb { public:
-    void*                    __vftable;                 // +0x00
-    CThing*                  ParentThing;               // +0x04
-    unsigned char            _pad08[0x0c - 0x08];
-    CBaseIntelligentPointer  PParent;                   // +0x0c
-    CBaseIntelligentPointer  PTarget;                   // +0x14
-    const CLightningOrbDef*  PDef;                      // +0x1c
-    long                     Timer;                     // +0x20
-    long                     LifeTime;                  // +0x24
-    long                     NumFramesForSplineTraversal;   // +0x28
-    NBBBMaths::CLinearSpline* PSpline;                  // +0x2c (CCountedPointer data)
-    void*                    PSplineBlock;              // +0x30
-    void FrameUpdate();
-};
+#include "engine/ThingAlive.h"
+#include "engine/CDefPointer.h"
+#include "engine/C3DVector.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
+#include "engine/CWorld.h"
+#include "engine/CWorldMap.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/GFFloatRandom.h"
+#include "engine/CTCDParticleEmitter.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#include "engine/CDefString.h"
+#include "engine/CTCLightningNode.h"
+#include "engine/CTCLightningOrb.h"
+#include "engine/CTCHitLocations.h"
+#include "engine/CTCDExplosion.h"
 
 void CTCLightningOrb::FrameUpdate()
 {
-    if (!PDef)
+    if (PDef.IsNull())
         return;
     bool hit = false;
     CTCHitLocations* hitLocations;
     C3DVector centre;
     float radius;
-    if (IS_THING_ALIVE(PTarget) && ((CThing*)PTarget.GetPItem())->GetTC(TCI_HIT_LOCATIONS, &hitLocations)) {
+    if (IS_THING_ALIVE(PTarget) && PTarget->GetTC(TCI_HIT_LOCATIONS, &hitLocations)) {
         float range = PDef->ExplosionRange;
         hitLocations->GetBoundingSphere(centre, radius, true);
         if ((centre - ParentThing->GetPos()).GetSquaredMagnitude() < range * range)
             hit = true;
     }
     if ((LifeTime >= 0 && Timer > LifeTime) || hit) {
-        const CLightningOrbDef* def = PDef;
+        const CLightningOrbDef* def = PDef.Get();
         if (def->ExplosionDefIndex > 0)
-            CreateExplosion(def->ExplosionDefIndex, &ParentThing->GetPos());
+            CTCDExplosion::Create(def->ExplosionDefIndex, ParentThing->GetPos());
         ParentThing->Kill(true);
         return;
     }

@@ -6,7 +6,14 @@
 #include "fable_compiler.h"
 #endif
 class CEngineTreeFilerBase {
+#ifdef FABLE_RETAIL_CENGINETREEFILER_NODEHEADER_STRUCT
+ // NF41 opt-in (2026-11-16, row 0x00BF3030): Ego_r.pdb / FableWin.pdb spell the nested node type a struct (`PAUCNodeHeader@1@` in
+ // ?AddNodeAutoExpandTree / ?FindNode / ?AllocNode); the forward declaration and the definition below both take the struct key
+ // under this opt-in (VC7.1 mangles the class-key of the definition).
+ struct CNodeHeader;
+#else
  class CNodeHeader;
+#endif
  CNodeHeader* BaseNode;
  long KeySize;
 #ifdef FABLE_RETAIL_CENGINETREEFILER_INLINES
@@ -14,7 +21,11 @@ class CEngineTreeFilerBase {
  // IAEPAXK, SetGenericObject IAEXKPAX, FindNode AAEPAUCNodeHeader@1@PAU21@PAK, AddNewKey AAEKPAK). FindID's and AddKey's
  // unreferenced out-of-line copies are 0x00BC9B80 / 0x00BC9FB0, FindNode's 0x00BC9B30 (inlined one level, recursion = call),
  // AddNewKey 0x00BF3030 is out of line. Ego_r.pdb CNodeHeader, 28 bytes; the child pointers / the key words follow it.
+#ifdef FABLE_RETAIL_CENGINETREEFILER_NODEHEADER_STRUCT
+ struct CNodeHeader {
+#else
  class CNodeHeader {
+#endif
  public:
   unsigned char IsLeaf;
   unsigned char KeyOffset;
@@ -64,6 +75,12 @@ protected:
 private:
  CNodeHeader* FindNode(CNodeHeader* node, unsigned long* key);
  unsigned long AddNewKey(unsigned long* key);
+#ifdef FABLE_RETAIL_CENGINETREEFILER_ADDNODEAUTOEXPANDTREE
+ // NF41 opt-in (2026-11-16, row 0x00BF3030 AddNewKey): Ego_r.pdb 0x00AAA590 / FableWin.pdb 0x02EF1A60
+ // ?AddNodeAutoExpandTree@CEngineTreeFilerBase@@AAEPAUCNodeHeader@1@PAU21@0@Z (private), retail 0x00BF2E50: links the new leaf
+ // into the tree and returns a replacement root (or null). Declaration only.
+ CNodeHeader* AddNodeAutoExpandTree(CNodeHeader* root, CNodeHeader* node);   // 0x00BF2E50
+#endif
 #endif
 };
 #ifdef FABLE_RETAIL_CENGINETREEFILER_INLINES

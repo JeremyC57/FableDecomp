@@ -122,6 +122,37 @@ public:
     // ?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z (reloc_bindings 0x009DBFF0).
     bool Draw3DScaledText(const C3DVector&,float,CWideString,const CFontBank&,const CRGBColour&,unsigned long);   // 0x009DBFF0
 #endif
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_ADDTEXT
+    // Retail opt-in (agentNF41, row 0x009DB700): Ego_r.pdb 0x00B2F040 / FableWin.pdb 0x030DF3D0
+    // ?AddText@CRenderManager2D@@AAEXABVC3DVector@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z (private). Declaration only.
+private:
+    void AddText(const C3DVector& position, float scale, const CWideString& text, const CFontBank& font, const CRGBColour& colour,
+                 unsigned long flags);                                   // 0x009DB700
+public:
+#endif
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_ADD2DLINE
+    // Retail opt-in (agentNF41, row 0x009DC2C0): Ego_r.pdb 0x00B2FE90 / FableWin.pdb
+    // ?Add2DLine@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@0JPAVCTexture@@@Z (private). Declaration only.
+private:
+    void Add2DLine(const CTVertexRHWColSpecTex1& v0, const CTVertexRHWColSpecTex1& v1, long blend_mode, CTexture* texture);   // 0x009DC2C0
+public:
+#endif
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_ADDLINE
+    // Retail opt-in (agentNF41, rows 0x009DBAE0 / 0x009DB810 / 0x009DBD10): Ego_r.pdb / FableWin.pdb private
+    // ?AddLine@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@0JPAVCTexture@@@Z, ?AddTri@..@@AAEXABVCTVertexRHWColSpecTex1@@00JPAVCTexture@@@Z,
+    // ?AddAlphaTri@..@@AAEXABVCTVertexRHWColSpecTex1@@00JPAVCTexture@@@Z. Declarations only.
+private:
+    void AddTri(const CTVertexRHWColSpecTex1& v0, const CTVertexRHWColSpecTex1& v1, const CTVertexRHWColSpecTex1& v2, long blend_mode,
+                CTexture* texture);                                      // 0x009DB810
+    void AddLine(const CTVertexRHWColSpecTex1& v0, const CTVertexRHWColSpecTex1& v1, long blend_mode, CTexture* texture);   // 0x009DBAE0
+    void AddAlphaTri(const CTVertexRHWColSpecTex1& v0, const CTVertexRHWColSpecTex1& v1, const CTVertexRHWColSpecTex1& v2, long blend_mode,
+                     CTexture* texture);                                 // 0x009DBD10
+public:
+    // and the public ?AddQuadToDrawBuffer@CRenderManager2D@@QAEXABVCTVertexRHWColSpecTex1@@000KPAVCTexture@@@Z (Ego_r.pdb 0x00B30140, retail
+    // 0x009DC500) that splits a quad into two AddTri / AddAlphaTri triangles.
+    void AddQuadToDrawBuffer(const CTVertexRHWColSpecTex1& v0, const CTVertexRHWColSpecTex1& v1, const CTVertexRHWColSpecTex1& v2,
+                             const CTVertexRHWColSpecTex1& v3, unsigned long blend_mode, CTexture* texture);   // 0x009DC500
+#endif
 #ifdef FABLE_RETAIL_CRENDERMANAGER2D_VIEWPORTBOXFLOAT
     // Retail opt-in (chunk 784, row 0x00BC6DB0 CEnginePrimitiveManagerText::RenderSubPrimitive): the out-of-line viewport box getter
     // 0x00A0AAA0 (`ret`, returns the address of the float viewport box), called on NEngineInternal::GPRenderManager (0x01436E18) there and
