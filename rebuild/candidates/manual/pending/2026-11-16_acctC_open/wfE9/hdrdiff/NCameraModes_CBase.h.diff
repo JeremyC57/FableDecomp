@@ -1,0 +1,56 @@
+--- a/rebuild/include/engine/NCameraModes_CBase.h
++++ b/rebuild/include/engine/NCameraModes_CBase.h
+@@ -65,10 +65,21 @@
+ #else
+  const C3DVector & GetPosition() const;
+ #endif
++#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_SETTERS
++ // wfE9 opt-in (row 0x00879900): FableWin.pdb ?SetPosition / ?SetObservedPos@CBase@NCameraModes@@QAEXABVC3DVector@@@Z and
++ // ?SetFOV@CBase@NCameraModes@@QAEXM@Z, absent from Ego_r.pdb (inline in release); retail stores in place: CameraFOV +0x84
++ // (0x0087A3D6), GoTo.Position +0x54 and LookAt.Position +0x10 (0x0087A601..0x0087A63D); the landed script-module rows
++ // 0x008520C0 / 0x008521E0 expand the same bodies.
++ void SetPosition(const C3DVector & p0) { GoTo.Position = p0; }
++ const C3DVector & GetObservedPos() const;
++ void SetObservedPos(const C3DVector & p0) { LookAt.Position = p0; }
++ void SetFOV(float p0) { CameraFOV = p0; }
++#else
+  void SetPosition(const C3DVector & p0);
+  const C3DVector & GetObservedPos() const;
+  void SetObservedPos(const C3DVector & p0);
+  void SetFOV(float p0);
++#endif
+ #ifndef FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS // agentFAM04 (2026-11-11)
+  float GetFOV() const;
+ #else // FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS
+@@ -123,7 +134,13 @@
+  const CWorld & GetWorld() const;
+  void SetCameraModeDef(const CDefPointer<CCameraModeDef const > & p0);
+  const C2DVector & GetRightStickVector() const;
++ #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_LEFTSTICK
++ // wfE9 opt-in (row 0x00879900): FableWin.pdb 0x0288BF60 ?GetLeftStickVector@CBase@NCameraModes@@IBEABVC2DVector@@XZ, absent from
++ // Ego_r.pdb (inline in release); retail copies LeftStickVector (+0x98/+0x9C) in place at 0x00879959.
++ const C2DVector & GetLeftStickVector() const { return LeftStickVector; }
++ #else
+  const C2DVector & GetLeftStickVector() const;
++ #endif
+  CCamera & GetCamera();
+  const CCamera & GetCamera() const;
+  float DefaultFOV;
+@@ -165,7 +182,7 @@
+ public:
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CBase)==0xa4);
++FABLE_STATIC_ASSERT_AT(168, sizeof(CBase)==0xa4);
+ }
+ 
+ #else
+@@ -287,7 +304,7 @@
+ #endif
+ };
+ #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES
+-FABLE_STATIC_ASSERT(sizeof(CBase)==0xa4);
++FABLE_STATIC_ASSERT_AT(290, sizeof(CBase)==0xa4);
+ #endif
+ } // namespace NCameraModes
+ #endif // FABLE_RETAIL_NCAMERAMODES_CBASE_CYLINDER

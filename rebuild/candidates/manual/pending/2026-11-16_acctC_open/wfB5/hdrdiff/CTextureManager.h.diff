@@ -1,0 +1,41 @@
+--- a/rebuild/include/engine/CTextureManager.h
++++ b/rebuild/include/engine/CTextureManager.h
+@@ -75,6 +75,11 @@
+     // (static __fastcall, retail 0x00A698F0). Declarations only.
+     bool AllocateTexture(CManagedTexture& texture, unsigned long width, unsigned long height, long mip_levels, const CPixelFormat& format,
+                          CManagedTextureOwner* owner);               // 0x00A69B70
++#ifdef FABLE_RETAIL_CTEXTUREMANAGER_ALLOCATEVOLUMETEXTURE
++    // agentC27 (row 0x009FDE80): Ego_r.pdb / FableWin.pdb ?AllocateVolumeTexture@CTextureManager@@QAE_NAAVCManagedTexture@@KKKJABVCPixelFormat@@PAVCManagedTextureOwner@@@Z, retail 0x00A69C20.
++    bool AllocateVolumeTexture(CManagedTexture& texture, unsigned long width, unsigned long height, unsigned long depth, long mip_levels,
++                               const CPixelFormat& format, CManagedTextureOwner* owner);   // 0x00A69C20
++#endif
+     static unsigned long __fastcall CalculateTextureSize(unsigned long width, unsigned long height, bool flag, const CPixelFormat& format);   // 0x00A698F0
+ private:
+     long GetPoolIndex(unsigned long size);                           // 0x00A69730
+@@ -83,17 +88,17 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTextureManager) == 0x5d4);
++FABLE_STATIC_ASSERT_AT(86, sizeof(CTextureManager) == 0x5d4);
+ #ifndef FABLE_RETAIL_CTEXTUREMANAGER_VIRTUAL_DTOR
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(88, offsetof(CTextureManager, __vftable) == 0x0);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, Initialised) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, PoolCount) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, PreallocSizes) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, PreallocPools) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, FailedAllocations) == 0x58c);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, BufferSize) == 0x5cc);
+-FABLE_STATIC_ASSERT(offsetof(CTextureManager, TextureBuffer) == 0x5d0);
++FABLE_STATIC_ASSERT_AT(90, offsetof(CTextureManager, Initialised) == 0x4);
++FABLE_STATIC_ASSERT_AT(91, offsetof(CTextureManager, PoolCount) == 0x8);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CTextureManager, PreallocSizes) == 0xc);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CTextureManager, PreallocPools) == 0x4c);
++FABLE_STATIC_ASSERT_AT(94, offsetof(CTextureManager, FailedAllocations) == 0x58c);
++FABLE_STATIC_ASSERT_AT(95, offsetof(CTextureManager, BufferSize) == 0x5cc);
++FABLE_STATIC_ASSERT_AT(96, offsetof(CTextureManager, TextureBuffer) == 0x5d0);
+ #endif // FABLE_RETAIL_CTEXTUREMANAGER_CLASS
+ 
+ #endif // FABLE_ENGINE_CTEXTUREMANAGER_H

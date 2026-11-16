@@ -1,0 +1,13 @@
+--- a/rebuild/include/engine/CRGBColour.h
++++ b/rebuild/include/engine/CRGBColour.h
+@@ -15,6 +15,10 @@
+     // 18 instructions / 44 bytes at /Od = the four-channel constructor forwarding to ?Initialise@CRGBColour@@QAEXEEEE@Z (19i/48b),
+     // like the three-channel constructor below; the member-store body is 20i/51b. Same release bytes, one more inline layer.
+     CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Initialise(r,g,b,a); }
++#elif defined(FABLE_RETAIL_CRGBCOLOUR_FORCEINLINE_CTOR4)
++    // Opt-in (wfE3, 2026-11-15, row 0x00F1EED0 PlayWave): retail never calls ??0CRGBColour@@QAE@EEEE@Z out of line (no binding in
++    // rebuild/oracles/reloc_bindings.tsv) and expands it at 0x00F21108 where c2's plain-inline score is 888 (f 0.0024): always inline.
++    FABLE_FORCEINLINE CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
+ #else
+     CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
+ #endif

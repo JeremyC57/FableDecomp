@@ -1,0 +1,18 @@
+--- a/rebuild/include/engine/C3DMeshFileHelperPointChunk.h
++++ b/rebuild/include/engine/C3DMeshFileHelperPointChunk.h
+@@ -17,6 +17,15 @@
+     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
+     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
+     virtual CChunkedFileChunk* CreateNewInstance() const;
++#ifdef FABLE_RETAIL_C3DMESHFILEHELPERPOINTCHUNK_GETTERS
++    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?GetPosition@C3DMeshFileHelperPointChunk@@QBE?AVC3DVector@@XZ,
++    // ?GetSubMeshIndex@..@@QBEJXZ, ?GetBoneIndex@..@@QBEJXZ, ?GetName@..@@QBEABVCCharString@@XZ -- inline in retail (0x00A2F858..0x00A2F86D
++    // reads Position +0x2C, BoneIndex +0x3C and Name +0x40 in place).
++    C3DVector GetPosition() const { return Position; }
++    long GetSubMeshIndex() const { return SubMeshIndex; }
++    long GetBoneIndex() const { return BoneIndex; }
++    const CCharString& GetName() const { return Name; }
++#endif
+ private:
+     C3DVector Position;
+     long SubMeshIndex;

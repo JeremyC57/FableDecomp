@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00e1feb0	?ResetTraderRandomSpeechTime@CQR_EscortTraderScript@NScript@@QAEXXZ	Ego_r + FableWin name sets (engine/NScript_CQR_EscortTraderScript.h declares it); called by 0x00E20600 as ParentClass.ResetTraderRandomSpeechTime(); the body is ICF-shared (landed file CVAmbushScamScript_ResetRandomSpeechTime_00e1feb0.cpp)	?RestartRandomSpeechTimer@CQR_EscortTraderScript@@QAEXXZ (rebuild/oracles/reloc_bindings.tsv: no namespace, not a PDB spelling)

@@ -1,0 +1,24 @@
+--- a/rebuild/include/engine/CThingBuilding.h
++++ b/rebuild/include/engine/CThingBuilding.h
+@@ -79,6 +79,14 @@
+ #ifdef FABLE_RETAIL_CTHINGBUILDING
+     void SetOverrideAutomaticLocking(bool value) { OverrideAutomaticLocking = value; }   // FableWin ?SetOverrideAutomaticLocking@CThingBuilding@@QAEX_N@Z (inline)
+     void LockAllDoors(bool lock, bool immediately);                  // 0x0082DB00 ?LockAllDoors@CThingBuilding@@QAEX_N0@Z (Ego_r / FableWin)
++#ifdef FABLE_RETAIL_CTHINGBUILDING_LOCKSTATE
++    // Nested opt-in (wfE9, row 0x00931390 CAIStateGroup_MinionReactToCriminal::Update): Ego_r.pdb ?IsLockable@CThingBuilding@@QBE_NXZ /
++    // ?IsLocked@CThingBuilding@@QBE_NXZ (donor order LockAllDoors, IsLockable, IsLocked, IsUnlocked, IsLockedOrLocking = retail 0x0082DB00,
++    // 0x0082DD90, 0x0082DE20, 0x0082DEF0, 0x0082DFC0; bodies: any live TCI_DOOR thing in the TCI_THING_OWNER list / every such door
++    // neither Opening, Closing nor CurrentOpen). Declarations only.
++    bool IsLockable() const;                                         // 0x0082DD90
++    bool IsLocked() const;                                           // 0x0082DE20
++#endif
+ #endif
+ #ifdef FABLE_RETAIL_CTHINGBUILDING_VSLOTS
+     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+@@ -92,5 +100,5 @@
+ public:
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CThingBuilding)==0xd8);
++FABLE_STATIC_ASSERT_AT(95, sizeof(CThingBuilding)==0xd8);
+ #endif

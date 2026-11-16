@@ -1,0 +1,27 @@
+--- a/rebuild/include/engine/NEntityEvents_EventFilters.h
++++ b/rebuild/include/engine/NEntityEvents_EventFilters.h
+@@ -1,6 +1,9 @@
+ #ifndef FABLE_ENTITY_EVENT_FILTERS_H
+ #define FABLE_ENTITY_EVENT_FILTERS_H
+ #include "stlport/fable_containers.h"
++#ifdef FABLE_RETAIL_NENTITYEVENTS_CISEVENTOFTYPE
++#include "engine/NEntityEvents_EEventType.h"
++#endif
+ // Original Ego_r types acfe/ad38/ad79/af43; donor02c4bd00 constructors and argument types.
+ namespace NEntityEvents {
+ class CEventBase;class CEventHitBase;class CEventHitBy;class CEventHitBySpecialAbility;
+@@ -8,6 +11,14 @@
+ public:explicit CIsEventCreatedAfter(long frame):WorldFrame(frame){} bool operator()(const CEventBase*)const;
+ private:long WorldFrame;
+ };
++#ifdef FABLE_RETAIL_NENTITYEVENTS_CISEVENTOFTYPE
++// Opt-in (wfA3, row 0x00981410): Ego_r.pdb CIsEventOfType { EEventType Type +0 } (4 bytes); FableWin.pdb
++// ??0CIsEventOfType@NEntityEvents@@QAE@W4EEventType@1@@Z and ??RCIsEventOfType@NEntityEvents@@QBE_NPBVCEventBase@1@@Z (declared only).
++class CIsEventOfType {
++public:CIsEventOfType(EEventType type):Type(type){} bool operator()(const CEventBase*)const;
++private:EEventType Type;
++};
++#endif
+ class CIsHitEventHitByShot {public:CIsHitEventHitByShot(){} bool operator()(const CEventHitBase*)const;};
+ class CIsHitEventHitByMelee {public:CIsHitEventHitByMelee(){} bool operator()(const CEventHitBase*)const;};
+ #ifdef FABLE_RETAIL_NENTITYEVENTS_CISHITEVENTHITBY

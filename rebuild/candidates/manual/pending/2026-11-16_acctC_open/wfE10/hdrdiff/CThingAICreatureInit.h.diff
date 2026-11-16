@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/CThingAICreatureInit.h
++++ b/rebuild/include/engine/CThingAICreatureInit.h
+@@ -31,6 +31,11 @@
+     CThingAICreatureInit(CThingPhysical* original = 0, CThingPhysical* previous = 0, bool playerCharacter = false,
+                          const CCharString& scriptName = "", const CCharString& overridingBrainName = "", bool drawable = true);   // 0x004FACD0
+ #endif
++#ifdef FABLE_RETAIL_CTHINGAICREATUREINIT_DTOR
++    // agentC36 (row 0x0074AF50 CTCCreatureGenerator::CreateCreaturesUndead): FableWin.pdb ??1CThingAICreatureInit@@QAE@XZ, out of line in
++    // retail at 0x004FAD50 (`lea ecx,[esp+38h] ; call 0x004FAD50`, 0x0074B1ED / 0x0074B253 / 0x0074B265). Declaration only.
++    ~CThingAICreatureInit();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CThingAICreatureInit) == 0x1c);
++FABLE_STATIC_ASSERT_AT(35, sizeof(CThingAICreatureInit) == 0x1c);
+ #endif // FABLE_ENGINE_CTHINGAICREATUREINIT_H

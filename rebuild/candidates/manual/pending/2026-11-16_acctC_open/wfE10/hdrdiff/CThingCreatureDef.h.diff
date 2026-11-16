@@ -1,0 +1,46 @@
+--- a/rebuild/include/engine/CThingCreatureDef.h
++++ b/rebuild/include/engine/CThingCreatureDef.h
+@@ -3,6 +3,9 @@
+ #include "engine/CThingBaseDef.h"
+ #ifdef FABLE_RETAIL_CTHINGCREATUREDEF_MEMBERS
+ #include <stddef.h>
++#ifdef FABLE_RETAIL_CTHINGCREATUREDEF_SEX_TYPED
++enum ESex; enum ECreatureType;
++#endif
+ #include "engine/CEngineGraphic.h"
+ #endif
+ // Original TPI0x14ae8; complete native14c, original flags begin148.
+@@ -34,8 +37,15 @@
+     float MaxAcceleration;                                  // +0xB4 (PDB +184)
+     float HearingRadius;                                    // +0xB8 (PDB +188)
+     float FOV;                                              // +0xBC (PDB +192)
++#ifdef FABLE_RETAIL_CTHINGCREATUREDEF_SEX_TYPED
++    // agent wfE10 (row 0x00502E90 CWorldMap::PopulateRegionWithVillagers, which compares the shopkeeper def's Sex in place): the same two
++    // words with their Ego_r.pdb types (ESex / ECreatureType, MS forward enums). Same offsets and sizes.
++    ESex Sex;                                               // +0xC0 (PDB +196)
++    ECreatureType CreatureType;                             // +0xC4 (PDB +200)
++#else
+     unsigned char Sex[0x4];                                 // +0xC0 ESex (PDB +196)
+     unsigned char CreatureType[0x4];                        // +0xC4 ECreatureType (PDB +200)
++#endif
+     unsigned char NavigatorTypes[0xc];                      // +0xC8 vector<ENavigatorType> (PDB +204)
+     long InitialWeaponDef;                                  // +0xD4 (PDB +220)
+     long PrimaryMeleeWeaponDef;                             // +0xD8 (PDB +224)
+@@ -88,12 +98,12 @@
+     bool IsPushedByExplosions:1;
+     unsigned char _pad_0x14a[2];
+ };
+-FABLE_STATIC_ASSERT(sizeof(CThingCreatureDef)==0x14c);
++FABLE_STATIC_ASSERT_AT(91, sizeof(CThingCreatureDef)==0x14c);
+ #ifdef FABLE_RETAIL_CTHINGCREATUREDEF_MEMBERS
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef,MaxWalkingSpeed)==0x90);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef,BrainDef)==0xe8);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef,CombatTypeDef)==0x124);
+-FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef,LeaderTypeDef)==0x13c);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CThingCreatureDef,MaxWalkingSpeed)==0x90);
++FABLE_STATIC_ASSERT_AT(94, offsetof(CThingCreatureDef,BrainDef)==0xe8);
++FABLE_STATIC_ASSERT_AT(95, offsetof(CThingCreatureDef,CombatTypeDef)==0x124);
++FABLE_STATIC_ASSERT_AT(96, offsetof(CThingCreatureDef,LeaderTypeDef)==0x13c);
+ #endif
+ // CThingCreatureBase::PeekDefinition (inline, FableWin-only): defined here when engine/CThingCreatureBase.h came first.
+ #if defined(FABLE_ENGINE_CTHINGCREATUREBASE_H) && defined(FABLE_RETAIL_CTHINGCREATUREBASE)

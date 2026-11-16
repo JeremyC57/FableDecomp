@@ -1,0 +1,23 @@
+--- a/rebuild/include/engine/C3DBoundingBox.h
++++ b/rebuild/include/engine/C3DBoundingBox.h
+@@ -29,6 +29,20 @@
+     const C3DVector& PeekMinCoord() const { return MinCoord; }
+     const C3DVector& PeekMaxCoord() const { return MaxCoord; }
+ #endif
++#ifdef FABLE_RETAIL_C3DBOUNDINGBOX_OBB
++    // Row 0x00ADE080: Ego_r.pdb 0x00BCFDA0 / FableWin.pdb 0x03313830 ?InitialiseFromOBB@C3DBoundingBox@@QAEXABV1@ABVCMatrix3x4@@@Z --
++    // the axis-aligned box around a box transformed by a 3x4 matrix (an SSE path behind g_SSEAvailable 0x013D2880, else x87).
++public:
++    void InitialiseFromOBB(const C3DBoundingBox& obb, const class CMatrix3x4& transform);
++#endif
++#ifdef FABLE_RETAIL_C3DBOUNDINGBOX_GETDIAGONAL
++    // FableWin.pdb ?GetDiagonal@C3DBoundingBox@@QBE?BVC3DVector@@XZ (0x02E34510, 22i/58b = GetCenter's size: two operator calls)
++    // and ?GetDimentions@C3DBoundingBox@@QBE?BVC3DVector@@XZ (0x02CFBD10, 15i/35b: one operator call); inline in retail (no copy).
++    // GetDiagonal = the half diagonal (SetCenterDiag(centre, diag) is its setter pair); GetDimentions = the full extent.
++public:
++    const C3DVector GetDimentions() const { return MaxCoord - MinCoord; }
++    const C3DVector GetDiagonal() const { return (MaxCoord - MinCoord) * 0.5f; }
++#endif
+ private:
+     C3DVector MinCoord;
+     C3DVector MaxCoord;

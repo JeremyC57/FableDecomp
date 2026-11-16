@@ -1,0 +1,32 @@
+--- a/rebuild/include/engine/CCreatureAction_ReleaseDivineWrathSpell.h
++++ b/rebuild/include/engine/CCreatureAction_ReleaseDivineWrathSpell.h
+@@ -9,6 +9,18 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CCREATUREACTION_DIVINEWRATH
++// Retail opt-in (row 0x0078FD60 CTCDivineWrath::FrameUpdate, agent wfE10 twin of the CTCUnholyPower opt-in of row 0x00795300): the polymorphic retail class (RTTI .?AVCCreatureAction_ReleaseDivineWrathSpell@@ :
++// CCombatActionBase, retail 0x114, no own members), constructor FableWin.pdb ??0CCreatureAction_ReleaseDivineWrathSpell@@QAE@AAVCThingCreatureBase@@@Z.
++// Needs engine/CCombatActionBase.h (FABLE_RETAIL_CCREATUREACTIONBASE). The generated opaque model stays in the #else.
++#include "engine/CCombatActionBase.h"
++class CThingCreatureBase; class CCharString;
++class CCreatureAction_ReleaseDivineWrathSpell : public CCombatActionBase {
++public:
++    CCreatureAction_ReleaseDivineWrathSpell(CThingCreatureBase& creature);
++};
++FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseDivineWrathSpell) == 0x114);
++#else
+ #pragma pack(push, 1)
+ class CCreatureAction_ReleaseDivineWrathSpell {
+ public:
+@@ -27,7 +39,8 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseDivineWrathSpell) == 0x114);
+-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ReleaseDivineWrathSpell, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_ReleaseDivineWrathSpell) == 0x114);
++FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_ReleaseDivineWrathSpell, __vftable) == 0x0);
+ 
++#endif // FABLE_RETAIL_CCREATUREACTION_DIVINEWRATH
+ #endif // FABLE_ENGINE_CCREATUREACTION_RELEASEDIVINEWRATHSPELL_H

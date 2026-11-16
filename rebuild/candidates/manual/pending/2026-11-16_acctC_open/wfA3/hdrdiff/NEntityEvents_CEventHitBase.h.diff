@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/NEntityEvents_CEventHitBase.h
++++ b/rebuild/include/engine/NEntityEvents_CEventHitBase.h
+@@ -33,6 +33,13 @@
+ #else
+ class CEventBase {
+ public:
++#ifdef FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_CTOR
++    // Opt-in (wfA3, row 0x00981410): FableWin.pdb ??0CEventBase@NEntityEvents@@QAE@XZ, inline in retail: a derived constructor stores
++    // WorldFrame = 0 before its own vtable (0x00981665 `mov dword ptr [edi+4],0` in the expanded CEventVillagerInteraction ctor).
++    // FableWin.pdb ?GetWorldFrame@CEventBase@NEntityEvents@@QBEJXZ (inline: `mov edi,[event+4]`, 0x009817FA).
++    CEventBase():WorldFrame(0){}
++    long GetWorldFrame()const{return WorldFrame;}
++#endif
+     virtual ~CEventBase();                               // slot 0
+     long WorldFrame;                                     // +0x04
+ #ifdef FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS

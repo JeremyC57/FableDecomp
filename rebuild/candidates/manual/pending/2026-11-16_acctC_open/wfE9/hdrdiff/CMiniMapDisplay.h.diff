@@ -1,0 +1,85 @@
+--- a/rebuild/include/engine/CMiniMapDisplay.h
++++ b/rebuild/include/engine/CMiniMapDisplay.h
+@@ -27,6 +27,9 @@
+ #include "engine/CFadeInFadeOutBase.h"
+ class CEnginePrimitiveHandle; class CEnginePrimitivePrepareInfo; class C2DBoxF; class CRegion; class CTexture;
+ #endif
++#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_DRAWAPI
++class CEnginePrimitivePrepareInfo; class C2DBoxF; class C2DVector; class C3DVector;
++#endif
+ #ifdef FABLE_RETAIL_CMINIMAPDISPLAY_ADDMARKER
+ #include "engine/CBaseClassNonCopyable.h"
+ class CMiniMapDisplay:public CBaseClassNonCopyable {
+@@ -61,6 +64,22 @@
+ #endif
+     void RemoveAllMarkers();                                 // 0x0082A300
+     void RemoveMarker(const CThing& thing);                  // 0x0082A380
++#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_GETNONAUTOMARKERS
++    // Retail opt-in (agentC14, row 0x00603000 CTCInventoryMap::CreateMiniMapMarkers; first found by chunk 729): Ego_r.pdb / FableWin.pdb
++    // ?GetNonAutoMarkers@CMiniMapDisplay@@QBEXAAV?$list@PBVCMarkerInfo@CMiniMapDisplay@@V?$allocator@PBVCMarkerInfo@CMiniMapDisplay@@@std@@@std@@@Z
++    // (const), landed out of line at 0x0082A390. Declaration only.
++    void GetNonAutoMarkers(std::list<const CMarkerInfo*>& markers) const;   // 0x0082A390
++#endif
++#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_DRAWAPI
++    // Retail opt-in (wfE9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): Ego_r.pdb
++    // ?DrawPreparePrimitivesForEngine@CMiniMapDisplay@@QAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@E_N@Z (0x0082C060),
++    // ?IsThingAsPosBeingDrawn@CMiniMapDisplay@@QBE_NABVC3DVector@@@Z (0x00829D20) and
++    // ?GetDrawPosition@CMiniMapDisplay@@QBE?AVC2DVector@@ABVC3DVector@@ABVC2DBoxF@@@Z (0x0082A020), all public, called out of line by
++    // the row. Declarations only, no layout change.
++    void DrawPreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front);   // 0x0082C060
++    bool IsThingAsPosBeingDrawn(const C3DVector& pos) const;                                       // 0x00829D20
++    C2DVector GetDrawPosition(const C3DVector& pos, const C2DBoxF& box) const;                      // 0x0082A020
++#endif
+ #ifdef FABLE_RETAIL_CMINIMAPDISPLAY_DRAWMARKERS
+ protected:
+     void AddAutoMarker(const CThing& thing, long graphic_index);                                  // 0x0082A500
+@@ -91,8 +110,8 @@
+     unsigned char _pad_0x24[0x9c];                           // +0x24 MarkerFlashFade .. UpdateRequired (opaque)
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CMiniMapDisplay::CMarkerInfo)==0x10);
+-FABLE_STATIC_ASSERT(sizeof(CMiniMapDisplay)==0xc0);
++FABLE_STATIC_ASSERT_AT(94, sizeof(CMiniMapDisplay::CMarkerInfo)==0x10);
++FABLE_STATIC_ASSERT_AT(95, sizeof(CMiniMapDisplay)==0xc0);
+ #else
+ 
+ class CRegion;
+@@ -120,22 +139,22 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CMiniMapDisplay) == 0xc0);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, MapPrimitiveHandles) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, MarkerPrimitiveHandles) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, MiniMapGraphic) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, Markers) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, MarkerFlashFade) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, MiniMapIsPrisonCourtyard1) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, MiniMapIsPrisonCourtyard2) == 0x41);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, MiniMapIsHeadsmansHillNorth) == 0x42);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, MiniMapIsHeadsmansHillSouth) == 0x43);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, MinimapList) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, RegionMinimapTexture) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, RegionMinimap) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, PRegion) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, UpdateRequired) == 0xbc);
++FABLE_STATIC_ASSERT_AT(123, sizeof(CMiniMapDisplay) == 0xc0);
++FABLE_STATIC_ASSERT_AT(124, offsetof(CMiniMapDisplay, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(125, offsetof(CMiniMapDisplay, MapPrimitiveHandles) == 0x4);
++FABLE_STATIC_ASSERT_AT(126, offsetof(CMiniMapDisplay, MarkerPrimitiveHandles) == 0x10);
++FABLE_STATIC_ASSERT_AT(127, offsetof(CMiniMapDisplay, MiniMapGraphic) == 0x1c);
++FABLE_STATIC_ASSERT_AT(128, offsetof(CMiniMapDisplay, Markers) == 0x20);
++FABLE_STATIC_ASSERT_AT(129, offsetof(CMiniMapDisplay, MarkerFlashFade) == 0x24);
++FABLE_STATIC_ASSERT_AT(130, offsetof(CMiniMapDisplay, MiniMapIsPrisonCourtyard1) == 0x40);
++FABLE_STATIC_ASSERT_AT(131, offsetof(CMiniMapDisplay, MiniMapIsPrisonCourtyard2) == 0x41);
++FABLE_STATIC_ASSERT_AT(132, offsetof(CMiniMapDisplay, MiniMapIsHeadsmansHillNorth) == 0x42);
++FABLE_STATIC_ASSERT_AT(133, offsetof(CMiniMapDisplay, MiniMapIsHeadsmansHillSouth) == 0x43);
++FABLE_STATIC_ASSERT_AT(134, offsetof(CMiniMapDisplay, MinimapList) == 0x44);
++FABLE_STATIC_ASSERT_AT(135, offsetof(CMiniMapDisplay, RegionMinimapTexture) == 0x50);
++FABLE_STATIC_ASSERT_AT(136, offsetof(CMiniMapDisplay, RegionMinimap) == 0x54);
++FABLE_STATIC_ASSERT_AT(137, offsetof(CMiniMapDisplay, PRegion) == 0xb8);
++FABLE_STATIC_ASSERT_AT(138, offsetof(CMiniMapDisplay, UpdateRequired) == 0xbc);
+ 
+ #endif // FABLE_RETAIL_CMINIMAPDISPLAY
+ #endif // FABLE_ENGINE_CMINIMAPDISPLAY_H

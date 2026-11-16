@@ -1,0 +1,24 @@
+--- a/rebuild/include/engine/NPlayerGui_Graphics.h
++++ b/rebuild/include/engine/NPlayerGui_Graphics.h
+@@ -2,6 +2,9 @@
+ #define FABLE_ENGINE_NPLAYERGUI_GRAPHICS_H
+ #include "rebuild_abi.h"
+ #include "engine/C2DVector.h"
++#ifdef FABLE_RETAIL_NPLAYERGUI_GFTOSCREENSCALED
++#include "engine/C2DBoxF.h"
++#endif
+ namespace NPlayerGui {
+ // Original Ego00686ac7/FableWin020d908c: PC mapping copies the input vector.
+ inline C2DVector FABLE_FASTCALL GFToScreen(const C2DVector& pos) { return pos; }
+@@ -16,5 +19,11 @@
+ C2DVector FABLE_FASTCALL GFAnchorToBottomLeft(const C2DVector& pos);                       // 0x00643CDA
+ C2DVector FABLE_FASTCALL GFAnchorToBottomRight(const C2DVector& pos);                      // 0x00643D0C
+ #endif
++#ifdef FABLE_RETAIL_NPLAYERGUI_GFTOSCREENSCALED
++// Retail opt-in (wfE9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): Ego_r.pdb / FableWin.pdb
++// ?GFToScreenScaled@NPlayerGui@@YI?AVC2DBoxF@@ABV2@@Z (__fastcall, hidden C2DBoxF result), out of line at 0x00643BFC (landed row
++// NPlayerGui_GFToScreenScaled_00643bfc.cpp). Declaration only (includes engine/C2DBoxF.h).
++C2DBoxF FABLE_FASTCALL GFToScreenScaled(const C2DBoxF& box);                               // 0x00643BFC
++#endif
+ }
+ #endif

@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/C3DClothRenderVertex.h
++++ b/rebuild/include/engine/C3DClothRenderVertex.h
+@@ -5,6 +5,12 @@
+ // PositionIndex (`movzx edi,word ptr [ecx+eax*4]`, 0x00BB204B).
+ class C3DClothRenderVertex {
+ public:
++#ifdef FABLE_RETAIL_C3DCLOTHRENDERVERTEX_CTOR
++    // Retail opt-in (wfA6, row 0x00AE3C30 CParticleProgram::ReadFromFile): FableWin.pdb ??0C3DClothRenderVertex@@QAE@XZ (0x033587B0), a
++    // user-declared empty default ctor: the vector<C3DClothRenderVertex>::resize(n) temporary is passed by address and never written
++    // (0x00AE3F32 `lea ecx,[esp+24h]` .. 0x00AE3F40 `call 0x00AE7830`, no store), where the implicit value-init zeroes it.
++    C3DClothRenderVertex() { }
++#endif
+     unsigned short PositionIndex;                                        // +0x00
+     unsigned short TexCoordIndex;                                        // +0x02
+ };

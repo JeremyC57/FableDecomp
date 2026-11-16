@@ -1,0 +1,35 @@
+--- a/rebuild/include/engine/NScript_CQR_EscortTraderScript.h
++++ b/rebuild/include/engine/NScript_CQR_EscortTraderScript.h
+@@ -92,4 +92,32 @@
+ };
+ }
+ FABLE_STATIC_ASSERT(sizeof(NScript::CQR_EscortTraderScript)==0x120);
++#ifdef FABLE_RETAIL_CQR_ESCORTTRADERSCRIPT_TRADERTOESCORT
++// Retail opt-in (chunk 818): the escorted trader entity, Ego_r.pdb CTraderToEscort (44 bytes, member names as the PDB);
++// vtable 0x012E151C stored by Alloc 0x00E1E7A0: slot 0 scalar deleting dtor 0x00E1E860, 1 Main 0x00E20600, 2 Init 0x00E1F7E0,
++// 3 GetParentScript 0x00E1E840, 4 CEntityScriptBase::OnPersist 0x00CDEBC0, 5 OnPredicateFail 0x00E1E850. GetRandomSpeech 0x00E23F30.
++#include "engine/CEntityScriptBase.h"
++namespace NScript {
++class CQR_EscortTraderScript::CTraderToEscort:public CEntityScriptBase {
++public:
++ typedef CQR_EscortTraderScript TParentClass;
++protected:
++ TParentClass& ParentClass;                                              // +0x14
++ CQ_SunnyvaleMasterData* PMasterData;                                    // +0x18
++public:
++ static CCountedPointer<CEntityScriptBase> __fastcall Alloc(TParentClass&,CScriptDataBase*,const CScriptThing&); // 0x00E1E7A0
++ virtual CScriptBase* GetParentScript()const;                            // 0x00E1E840
++private:
++ long lastRandomSpeechFollowIdx1;                                        // +0x1c
++ long lastRandomSpeechFollowIdx2;                                        // +0x20
++ long lastRandomSpeechWaitIdx1;                                          // +0x24
++ long lastRandomSpeechWaitIdx2;                                          // +0x28
++ CCharString GetRandomSpeech();                                          // 0x00E23F30
++ virtual void Init();                                                    // 0x00E1F7E0
++ virtual void Main();                                                    // 0x00E20600
++ virtual void OnPredicateFail();                                         // 0x00E1E850
++};
++}
++FABLE_STATIC_ASSERT(sizeof(NScript::CQR_EscortTraderScript::CTraderToEscort) == 0x2C);
++#endif
+ #endif

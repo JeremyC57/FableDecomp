@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/C3DMeshFileDummyObjectChunk.h
++++ b/rebuild/include/engine/C3DMeshFileDummyObjectChunk.h
+@@ -17,6 +17,13 @@
+     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
+     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
+     virtual CChunkedFileChunk* CreateNewInstance() const;
++#ifdef FABLE_RETAIL_C3DMESHFILEDUMMYOBJECTCHUNK_GETTERS
++    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?GetTransform@C3DMeshFileDummyObjectChunk@@QBE?AVCMatrix3x4@@XZ
++    // and ?GetUseLocalOrigin@..@@QBE_NXZ, inline in retail (0x00A2FA30..0x00A2FA45: the flag byte +0x80, then the 12-dword `rep movsd`
++    // of Transform +0x50); the bone index and name come from the C3DMeshFileHelperPointChunk base's getters.
++    CMatrix3x4 GetTransform() const { return Transform; }
++    bool GetUseLocalOrigin() const { return UseLocalOrigin; }
++#endif
+ private:
+     C3DVector Direction;
+     CMatrix3x4 Transform;

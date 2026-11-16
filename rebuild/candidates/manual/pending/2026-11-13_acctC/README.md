@@ -133,3 +133,9 @@ arm inside the shared-header StartsWith opt-in), 0x00D0A830 (nested `do { } whil
 `GF_SSE_MATRIX_ALIGNED_TRANSFORM_TRANSPOSED_ASSUME_W` and `LIBPK_MMX_COPY64` (0x00A5CB90, shared-header kernels with
 FABLE_PORTABLE twins), and FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT_SCALE_SQUARED. The owner's acceptance test is in the
 section above.
+
+## State when the round-six workflows stopped (2026-11-16)
+161 reserved rows (+ the bonus row) are `MATCHED_STAGED`. The 19 others are `PARKED`; their latest drafts, notes and header
+diffs are in `../2026-11-16_acctC_open/` (see its README; two rows are marked BLOCKED). The workflow rules the agents worked
+under, including the owner decisions of 2026-11-15/16 on dead asserts and the tips that closed stuck rows, are in
+`lane/WF_RULES.md`.

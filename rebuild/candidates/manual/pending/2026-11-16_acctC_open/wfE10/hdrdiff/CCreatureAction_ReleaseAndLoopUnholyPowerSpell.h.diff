@@ -1,0 +1,32 @@
+--- a/rebuild/include/engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h
++++ b/rebuild/include/engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h
+@@ -9,6 +9,18 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CCREATUREACTION_UNHOLYPOWER
++// Retail opt-in (row 0x00795300 CTCUnholyPower::FrameUpdate): the polymorphic retail class (RTTI .?AVCCreatureAction_ReleaseAndLoopUnholyPowerSpell@@ :
++// CCombatActionBase, retail 0x114, no own members), constructor FableWin.pdb ??0CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@QAE@AAVCThingCreatureBase@@@Z.
++// Needs engine/CCombatActionBase.h (FABLE_RETAIL_CCREATUREACTIONBASE). The generated opaque model stays in the #else.
++#include "engine/CCombatActionBase.h"
++class CThingCreatureBase; class CCharString;
++class CCreatureAction_ReleaseAndLoopUnholyPowerSpell : public CCombatActionBase {
++public:
++    CCreatureAction_ReleaseAndLoopUnholyPowerSpell(CThingCreatureBase& creature);
++};
++FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseAndLoopUnholyPowerSpell) == 0x114);
++#else
+ #pragma pack(push, 1)
+ class CCreatureAction_ReleaseAndLoopUnholyPowerSpell {
+ public:
+@@ -27,7 +39,8 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseAndLoopUnholyPowerSpell) == 0x114);
+-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ReleaseAndLoopUnholyPowerSpell, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_ReleaseAndLoopUnholyPowerSpell) == 0x114);
++FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_ReleaseAndLoopUnholyPowerSpell, __vftable) == 0x0);
+ 
++#endif // FABLE_RETAIL_CCREATUREACTION_UNHOLYPOWER
+ #endif // FABLE_ENGINE_CCREATUREACTION_RELEASEANDLOOPUNHOLYPOWERSPELL_H

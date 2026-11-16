@@ -1,0 +1,60 @@
+--- a/rebuild/include/engine/CTCEntityEvents.h
++++ b/rebuild/include/engine/CTCEntityEvents.h
+@@ -15,6 +15,20 @@
+ #include "engine/CCountedPointer.h"
+ #include "stlport/fable_containers.h"
+ namespace NEntityEvents{class CEventBase;}
++#ifdef FABLE_RETAIL_CTCENTITYEVENTS_REMOVEEVENTS
++// Opt-in (wfA3, row 0x00981410): Ego_r.pdb NEntityEvents::CConvFilterToCP<F> { F* Filter +0 } (4 bytes) with FableWin.pdb
++// ??0?$CConvFilterToCP@VCIsEventOfType@NEntityEvents@@@NEntityEvents@@QAE@ABVCIsEventOfType@1@@Z and its
++// ??R...QBE_NAAV?$CCountedPointer@VCEventBase@NEntityEvents@@@@@Z (declared only: the remove_if instantiation 0x008AC890 is out of line).
++namespace NEntityEvents{
++template<class F> class CConvFilterToCP {
++public:
++ CConvFilterToCP(const F& filter):Filter(&filter){}
++ bool operator()(CCountedPointer<CEventBase>& event)const;
++private:
++ const F* Filter;
++};
++}
++#endif
+ class CTCEntityEvents:public CTCBase {
+ public:
+  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_ENTITY_EVENTS;}
+@@ -37,6 +51,12 @@
+  const std::list<CCountedPointer<NEntityEvents::CEventBase> >& GetEvents() const { return Events; }
+  void RemoveEvent(NEntityEvents::CEventBase& event);                // 0x008112D0
+ #endif
++#ifdef FABLE_RETAIL_CTCENTITYEVENTS_REMOVEEVENTS
++ // Nested opt-in (wfA3, row 0x00981410): FableWin.pdb ??$RemoveEvents@VCIsEventOfType@NEntityEvents@@@CTCEntityEvents@@QAEXABVCIsEventOfType@NEntityEvents@@@Z
++ // (public, inline in retail: `lea ecx,[events+0Ch] ; push &filter ; call 0x008AC890`, 0x00981E51), the STLport list::remove_if
++ // (FABLE_RETAIL_STLP_LIST_REMOVE_IF_OUTOFLINE) over the counted-pointer adaptor (Ego_r ??$remove_if@V?$CConvFilterToCP@..).
++ template<class F> void RemoveEvents(const F& filter){Events.remove_if(NEntityEvents::CConvFilterToCP<F>(filter));}
++#endif
+ protected:std::list<CCountedPointer<NEntityEvents::CEventBase> > Events;
+ #ifdef FABLE_RETAIL_CTCENTITYEVENTS_VSLOTS
+     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+@@ -47,7 +67,7 @@
+ public:
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCEntityEvents)==0x10);
++FABLE_STATIC_ASSERT_AT(50, sizeof(CTCEntityEvents)==0x10);
+ #else
+ #ifdef FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
+ namespace NEntityEvents{class CEventBase;}
+@@ -74,10 +94,10 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTCEntityEvents) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, sub) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, Events) == 0xc);
++FABLE_STATIC_ASSERT_AT(77, sizeof(CTCEntityEvents) == 0x10);
++FABLE_STATIC_ASSERT_AT(78, offsetof(CTCEntityEvents, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(79, offsetof(CTCEntityEvents, sub) == 0x4);
++FABLE_STATIC_ASSERT_AT(80, offsetof(CTCEntityEvents, Events) == 0xc);
+ 
+ #endif // retail branch
+ #endif // FABLE_ENGINE_CTCENTITYEVENTS_H

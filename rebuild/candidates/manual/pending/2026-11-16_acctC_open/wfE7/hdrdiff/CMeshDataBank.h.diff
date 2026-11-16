@@ -1,0 +1,155 @@
+--- a/rebuild/include/engine/CMeshDataBank.h
++++ b/rebuild/include/engine/CMeshDataBank.h
+@@ -27,6 +27,9 @@
+ #endif
+ #ifdef FABLE_RETAIL_CMESHDATABANK_BASES
+ #include "engine/CBankFile.h"
++#ifdef FABLE_RETAIL_CMESHDATABANK_CTOR
++#include "engine/CBankFileAsync.h"                     // (wfE7 opt-in below: included ahead of the pack(1) region)
++#endif
+ #endif
+ 
+ #ifdef FABLE_RETAIL_CMESHDATABANK_PEEKSTATICANIMATED
+@@ -55,9 +58,28 @@
+ // CBankFileAsync (0x110..0x164) has no model yet: its bytes stay opaque below (header debt). Ego_r.pdb
+ // ?PeekMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z is out of line at 0x00A24270 (landed, CMeshDataBank_PeekMesh_00a24270.cpp).
+ class C3DMeshInfo;
++#ifdef FABLE_RETAIL_CMESHDATABANK_CTOR
++// Retail opt-in (wfE7, row 0x00B3CB30 CEngineResourceManager::CEngineResourceManager; needs FABLE_RETAIL_CMESHDATABANK_BASES and the
++// polymorphic CBankFile / CBankFileAsync of FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS): the RTTI base CBankFileAsync typed (0x110..0x164,
++// engine/CBankFileAsync.h; rtti_bases.tsv .?AVCMeshDataBank@@ : CBankFileAsync), and the Ego_r.pdb / FableWin.pdb members that ctor calls:
++// ??0CMeshDataBank@@QAE@XZ (0x00A27030), ?SetTextureBank@CMeshDataBank@@QAEXPBVCGraphicDataBank@@@Z (0x00A23B50),
++// ?SetAnimationMemoryPool@..@@QAEXV?$CCountedPointer@VCMovableResourceMemoryPool@@@@_N@Z (0x00A24050), ?SetClothMemoryPool@..@@QAEXV?$CCountedPointer@..@@@Z
++// (0x00A240E0), ?SetMeshDataMemoryPool@..@@QAEXV?$CCountedPointer@..@@_N@Z (0x00A24150). Declarations only.
++class CMeshDataBank : public CBankFileAsync {
++public:
++    CMeshDataBank();                                                     // 0x00A27030
++protected:
++    virtual unsigned long GetDataFormatVersion();                        // Ego_r.pdb ?GetDataFormatVersion@..@@MAEKXZ (the CBankFile pure virtual)
++public:
++    void SetTextureBank(const CGraphicDataBank* bank);                   // 0x00A23B50
++    void SetAnimationMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool, bool use);   // 0x00A24050
++    void SetClothMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool);                 // 0x00A240E0
++    void SetMeshDataMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool, bool use);    // 0x00A24150
++#else
+ class CMeshDataBank : public CBankFile {
+ public:
+     unsigned char                 _CBankFileAsync_0x110[0x164 - 0x110]; // +0x110 CBankFileAsync (base, opaque)
++#endif
+     const C3DMeshInfo* PeekMesh(unsigned long index) const;
+ #ifdef FABLE_RETAIL_CMESHDATABANK_PEEKINFO
+     const C3DMeshInfo* PeekMeshInfo(unsigned long index) const;
+@@ -206,6 +228,11 @@
+     // reloc_bindings.tsv from landed 0x00861950). Declaration only.
+     const C3DAnimationInfo* PeekAnimation(unsigned long index) const;  // 0x00A242C0
+ #endif
++#ifdef FABLE_RETAIL_CMESHDATABANK_SETDP3BUMPENABLE
++    // Retail opt-in (wfE7, row 0x00B33B50): FableWin.pdb ?SetDP3BumpEnable@CMeshDataBank@@QAEX_N@Z, out of line at 0x00A23B60 (stores the bool
++    // DP3BumpEnable +0x3D8; landed under a placeholder name -- NAME_FIXES.tsv). Declaration only.
++    void SetDP3BumpEnable(bool enable);                                  // 0x00A23B60
++#endif
+ #ifdef FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK
+     // Retail opt-in (chunk 1021, row 0x00BEC680): FableWin.pdb ?GetTextureBank@CMeshDataBank@@QBEPBVCGraphicDataBank@@XZ (0x02DDA5C0;
+     // no Ego_r.pdb or Fable.exe copy: inline, the caller reads TextureBank +0x3D4 in place, `mov ecx,[eax+3D4h]`, 0x00BEC74D).
+@@ -234,57 +261,57 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CMeshDataBank) == 0x460);
++FABLE_STATIC_ASSERT_AT(237, sizeof(CMeshDataBank) == 0x460);
+ #ifndef FABLE_RETAIL_CMESHDATABANK_BASES
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(239, offsetof(CMeshDataBank, __vftable) == 0x0);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshLoader_ptr) == 0x164);
++FABLE_STATIC_ASSERT_AT(241, offsetof(CMeshDataBank, MeshLoader_ptr) == 0x164);
+ #ifndef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimLoader_ptr) == 0x168);
++FABLE_STATIC_ASSERT_AT(243, offsetof(CMeshDataBank, AnimLoader_ptr) == 0x168);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, Filename_PStringData) == 0x16c);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshResourceBank) == 0x170);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshStatsResourceBank) == 0x1ec);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimationResourceBank) == 0x268);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, PhysicsMeshResourceBank) == 0x2e4);
++FABLE_STATIC_ASSERT_AT(245, offsetof(CMeshDataBank, Filename_PStringData) == 0x16c);
++FABLE_STATIC_ASSERT_AT(246, offsetof(CMeshDataBank, MeshResourceBank) == 0x170);
++FABLE_STATIC_ASSERT_AT(247, offsetof(CMeshDataBank, MeshStatsResourceBank) == 0x1ec);
++FABLE_STATIC_ASSERT_AT(248, offsetof(CMeshDataBank, AnimationResourceBank) == 0x268);
++FABLE_STATIC_ASSERT_AT(249, offsetof(CMeshDataBank, PhysicsMeshResourceBank) == 0x2e4);
+ #ifndef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimationMemoryPool_Data) == 0x360);
++FABLE_STATIC_ASSERT_AT(251, offsetof(CMeshDataBank, AnimationMemoryPool_Data) == 0x360);
+ #endif
+ #ifndef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimationMemoryPool_Info) == 0x364);
++FABLE_STATIC_ASSERT_AT(254, offsetof(CMeshDataBank, AnimationMemoryPool_Info) == 0x364);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, ClothMemoryPool_Data) == 0x368);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, ClothMemoryPool_Info) == 0x36c);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshDataMemoryPool_Data) == 0x370);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshDataMemoryPool_Info) == 0x374);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, XboxMemoryPool_Data) == 0x378);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, XboxMemoryPool_Info) == 0x37c);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshesAndAnimations) == 0x380);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshInfoBuffer) == 0x38c);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, PhysicsMeshInfoBuffer) == 0x398);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimationInfoBuffer) == 0x3a4);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, DynamicInfoBuffer) == 0x3b0);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimationEnumType_PStringData) == 0x3bc);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimationManager_Data) == 0x3c0);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimationManager_Info) == 0x3c4);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, LipSyncAnimations) == 0x3c8);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, TextureBank) == 0x3d4);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, DP3BumpEnable) == 0x3d8);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, GroupBlockSizes) == 0x3dc);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MaxBonesPerVertex) == 0x3e8);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MaxParticleMeshFacesToRepeat) == 0x3ec);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshOptimiser_Data) == 0x3f0);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshOptimiser_Info) == 0x3f4);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshStripifier_Data) == 0x3f8);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshStripifier_Info) == 0x3fc);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MaximumLODErrors) == 0x400);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MiminumLODReductionPercent) == 0x410);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MiminumLODReductionFaces) == 0x414);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MinimumAnimationMatch) == 0x418);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, PushBufferBuildInfo_Data) == 0x41c);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, PushBufferBuildInfo_Info) == 0x420);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, UnloadableMeshMemory) == 0x424);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, UnloadMeshFrameDelay) == 0x428);
+-FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, StateBlock) == 0x42c);
++FABLE_STATIC_ASSERT_AT(256, offsetof(CMeshDataBank, ClothMemoryPool_Data) == 0x368);
++FABLE_STATIC_ASSERT_AT(257, offsetof(CMeshDataBank, ClothMemoryPool_Info) == 0x36c);
++FABLE_STATIC_ASSERT_AT(258, offsetof(CMeshDataBank, MeshDataMemoryPool_Data) == 0x370);
++FABLE_STATIC_ASSERT_AT(259, offsetof(CMeshDataBank, MeshDataMemoryPool_Info) == 0x374);
++FABLE_STATIC_ASSERT_AT(260, offsetof(CMeshDataBank, XboxMemoryPool_Data) == 0x378);
++FABLE_STATIC_ASSERT_AT(261, offsetof(CMeshDataBank, XboxMemoryPool_Info) == 0x37c);
++FABLE_STATIC_ASSERT_AT(262, offsetof(CMeshDataBank, MeshesAndAnimations) == 0x380);
++FABLE_STATIC_ASSERT_AT(263, offsetof(CMeshDataBank, MeshInfoBuffer) == 0x38c);
++FABLE_STATIC_ASSERT_AT(264, offsetof(CMeshDataBank, PhysicsMeshInfoBuffer) == 0x398);
++FABLE_STATIC_ASSERT_AT(265, offsetof(CMeshDataBank, AnimationInfoBuffer) == 0x3a4);
++FABLE_STATIC_ASSERT_AT(266, offsetof(CMeshDataBank, DynamicInfoBuffer) == 0x3b0);
++FABLE_STATIC_ASSERT_AT(267, offsetof(CMeshDataBank, AnimationEnumType_PStringData) == 0x3bc);
++FABLE_STATIC_ASSERT_AT(268, offsetof(CMeshDataBank, AnimationManager_Data) == 0x3c0);
++FABLE_STATIC_ASSERT_AT(269, offsetof(CMeshDataBank, AnimationManager_Info) == 0x3c4);
++FABLE_STATIC_ASSERT_AT(270, offsetof(CMeshDataBank, LipSyncAnimations) == 0x3c8);
++FABLE_STATIC_ASSERT_AT(271, offsetof(CMeshDataBank, TextureBank) == 0x3d4);
++FABLE_STATIC_ASSERT_AT(272, offsetof(CMeshDataBank, DP3BumpEnable) == 0x3d8);
++FABLE_STATIC_ASSERT_AT(273, offsetof(CMeshDataBank, GroupBlockSizes) == 0x3dc);
++FABLE_STATIC_ASSERT_AT(274, offsetof(CMeshDataBank, MaxBonesPerVertex) == 0x3e8);
++FABLE_STATIC_ASSERT_AT(275, offsetof(CMeshDataBank, MaxParticleMeshFacesToRepeat) == 0x3ec);
++FABLE_STATIC_ASSERT_AT(276, offsetof(CMeshDataBank, MeshOptimiser_Data) == 0x3f0);
++FABLE_STATIC_ASSERT_AT(277, offsetof(CMeshDataBank, MeshOptimiser_Info) == 0x3f4);
++FABLE_STATIC_ASSERT_AT(278, offsetof(CMeshDataBank, MeshStripifier_Data) == 0x3f8);
++FABLE_STATIC_ASSERT_AT(279, offsetof(CMeshDataBank, MeshStripifier_Info) == 0x3fc);
++FABLE_STATIC_ASSERT_AT(280, offsetof(CMeshDataBank, MaximumLODErrors) == 0x400);
++FABLE_STATIC_ASSERT_AT(281, offsetof(CMeshDataBank, MiminumLODReductionPercent) == 0x410);
++FABLE_STATIC_ASSERT_AT(282, offsetof(CMeshDataBank, MiminumLODReductionFaces) == 0x414);
++FABLE_STATIC_ASSERT_AT(283, offsetof(CMeshDataBank, MinimumAnimationMatch) == 0x418);
++FABLE_STATIC_ASSERT_AT(284, offsetof(CMeshDataBank, PushBufferBuildInfo_Data) == 0x41c);
++FABLE_STATIC_ASSERT_AT(285, offsetof(CMeshDataBank, PushBufferBuildInfo_Info) == 0x420);
++FABLE_STATIC_ASSERT_AT(286, offsetof(CMeshDataBank, UnloadableMeshMemory) == 0x424);
++FABLE_STATIC_ASSERT_AT(287, offsetof(CMeshDataBank, UnloadMeshFrameDelay) == 0x428);
++FABLE_STATIC_ASSERT_AT(288, offsetof(CMeshDataBank, StateBlock) == 0x42c);
+ 
+ #endif // FABLE_ENGINE_CMESHDATABANK_H

@@ -1,0 +1,54 @@
+--- a/rebuild/include/fable_user_profile.h
++++ b/rebuild/include/fable_user_profile.h
+@@ -49,6 +49,15 @@
+     float GetSoundVolume() const { return UseNewProfileValues ? SoundVolumeNewProfile : SoundVolume; }         // COMDAT 0x0047CFC2
+     float GetMusicVolume() const { return UseNewProfileValues ? MusicVolumeNewProfile : MusicVolume; }         // COMDAT 0x0054A4F0
+     float GetDialogueVolume() const { return UseNewProfileValues ? DialogueVolumeNewProfile : DialogueVolume; } // COMDAT 0x0047CFD3
++#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_CAMERAINPUT
++    // wfE9 opt-in (row 0x00879900; needs FABLE_RETAIL_CUSERPROFILEMANAGER_VIDEODEFAULTS for CameraSensitivity): FableWin.pdb
++    // ?IsCameraFPBowXYInverted / ?IsCameraFPBowYZInverted@CUserProfileManager@@QBE_NXZ and ?GetCameraSensitivity@..@@QBEMXZ (Ego_r.pdb
++    // 0x005C3FE0), the same `UseNewProfileValues ? <X>NewProfile : <X>` bodies as the getters above; retail expands them at
++    // 0x0087997B (+0x0C ? +0xD2 : +0x12), 0x008799A0 (+0xD1 : +0x11) and 0x00879A56 (+0x130 : +0x7C).
++    bool IsCameraFPBowXYInverted() const { return UseNewProfileValues ? CameraFPBowXYInvertedNewProfile : CameraFPBowXYInverted; }
++    bool IsCameraFPBowYZInverted() const { return UseNewProfileValues ? CameraFPBowYZInvertedNewProfile : CameraFPBowYZInverted; }
++    float GetCameraSensitivity() const { return UseNewProfileValues ? CameraSensitivityNewProfile : CameraSensitivity; }
++#endif
+     // Retail opt-in addition (chunk 719): the config-options defaults def (landed 0x004083E0) and the four detail caps that read it,
+     // Ego_r.pdb / FableWin.pdb QBE members in Ego_r order (0x00406D40 / D80 / DC0 / E00 = retail 0x004084B0 / 0x00408500 /
+     // 0x00408550 / 0x004085A0; fields MaxEffectsDetail +0x70, MaxTextureDetail +0x58, MaxShadowDetail +0x60, MaxMeshDetail +0x68).
+@@ -170,15 +179,21 @@
+     unsigned long AntialiasingNewProfile;                                // +0xF4
+     float         TextureDetailNewProfile;                               // +0xF8
+     float         ShadowDetailNewProfile;                                // +0xFC
++#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_CAMERAINPUT
++    unsigned char _pad_0x100[0x130 - 0x100];                             // +0x100 MeshDetailNewProfile .. CameraResettingNewProfile (opaque)
++    float         CameraSensitivityNewProfile;                           // +0x130 (Ego_r.pdb +0x134)
++    unsigned char _pad_0x134[0x140 - 0x134];                             // +0x134 ShowTargetingStatusNewProfile .. (opaque)
++#else
+     unsigned char _pad_0x100[0x140 - 0x100];                             // +0x100 MeshDetailNewProfile .. (opaque)
++#endif
+ public:
+     static void CheckRetailLayout() {
+-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,UseNewProfileValues)==0x0c);
+-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,DialogueVolume)==0x2c);
+-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,StereoReversed)==0x51);
+-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,SubtitlingEnabledNewProfile)==0xcd);
+-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,SoundVolumeNewProfile)==0xe4);
+-        FABLE_STATIC_ASSERT(offsetof(CUserProfileManager,ShadowDetailNewProfile)==0xfc);
++        FABLE_STATIC_ASSERT_AT(176, offsetof(CUserProfileManager,UseNewProfileValues)==0x0c);
++        FABLE_STATIC_ASSERT_AT(177, offsetof(CUserProfileManager,DialogueVolume)==0x2c);
++        FABLE_STATIC_ASSERT_AT(178, offsetof(CUserProfileManager,StereoReversed)==0x51);
++        FABLE_STATIC_ASSERT_AT(179, offsetof(CUserProfileManager,SubtitlingEnabledNewProfile)==0xcd);
++        FABLE_STATIC_ASSERT_AT(180, offsetof(CUserProfileManager,SoundVolumeNewProfile)==0xe4);
++        FABLE_STATIC_ASSERT_AT(181, offsetof(CUserProfileManager,ShadowDetailNewProfile)==0xfc);
+     }
+ };
+ #else
+@@ -223,5 +238,5 @@
+ extern CCountedUserProfileManager
+     g_CUserProfileManagerSingleton_013B7D4C;
+ 
+-FABLE_STATIC_ASSERT(sizeof(CUserProfileManager) == 0x140);
+-FABLE_STATIC_ASSERT(sizeof(CCountedUserProfileManager) == 0x08);
++FABLE_STATIC_ASSERT_AT(226, sizeof(CUserProfileManager) == 0x140);
++FABLE_STATIC_ASSERT_AT(227, sizeof(CCountedUserProfileManager) == 0x08);

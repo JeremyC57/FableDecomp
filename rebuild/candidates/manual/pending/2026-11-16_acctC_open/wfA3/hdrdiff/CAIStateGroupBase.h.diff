@@ -1,0 +1,29 @@
+--- a/rebuild/include/engine/CAIStateGroupBase.h
++++ b/rebuild/include/engine/CAIStateGroupBase.h
+@@ -76,6 +76,11 @@
+     void SetPushableByHero(bool pushable);                               // 0x0097E330
+ #endif
+     unsigned long* GetPWorldSeed() const;                                // 0x008FCFD0 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (chunk 751)
++#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEKPLAYERMANAGER
++    // agentC29 (row 0x00944940 CAIStateGroup_WorkSawingWood::Update): Ego_r.pdb / FableWin.pdb ?PeekPlayerManager@CAIStateGroupBase@@IBEABVCPlayerManager@@XZ
++    // (protected), out of line in retail at 0x008FCF80 (landed; call at 0x00944A94). Declaration only.
++    const CPlayerManager& PeekPlayerManager() const;                     // 0x008FCF80
++#endif
+     // Chunk 754 (row 0x00945BD0 CAIStateGroup_SitForMeal::Update): Ego_r.pdb ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
+     // (protected; retail 0x0097E200).
+ #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+@@ -217,6 +222,14 @@
+     EAIActionReturn AIAction_FindAGuardAndGiveMessage(CDefPointer<const class CMessageEventDef> message, C3DVector position,
+         long parameter);   // 0x009810B0
+ #endif
++#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_INTERACTWITH) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS)
++    // Opt-in (wfA3, row 0x00981410): Ego_r.pdb / FableWin.pdb
++    // ?AIAction_InteractWith@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingAICreature@@@@VCCharString@@H_N@Z
++    // (protected; `ret 18h`). Declaration only; no layout change.
++protected:
++    EAIActionReturn AIAction_InteractWith(EAIActionRepeat repeat, CIntelligentPointer<CThingAICreature> other, CCharString interaction,
++        int timeout, bool initiator);                                     // 0x00981410
++#endif
+ #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
+     // Chunk 756 (row 0x009104D0): Ego_r.pdb ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ (0x008FCFA0) and
+     // ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ (0x008FD000), protected, out of line in retail.

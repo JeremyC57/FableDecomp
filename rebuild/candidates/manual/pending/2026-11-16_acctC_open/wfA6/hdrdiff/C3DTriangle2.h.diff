@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/C3DTriangle2.h
++++ b/rebuild/include/engine/C3DTriangle2.h
+@@ -4,6 +4,12 @@
+ // stride 6, movzx word). GetVertexIndex: FableWin ?GetVertexIndex@C3DTriangle2@@QBEKK@Z 0x02EBE3D0, inline in retail.
+ class C3DTriangle2 {
+ public:
++#ifdef FABLE_RETAIL_C3DTRIANGLE2_CTOR
++    // Retail opt-in (wfA6n, row 0x00AE3C30 CParticleProgram::ReadFromFile): FableWin.pdb ??0C3DTriangle2@@QAE@XZ (0x02E67070), a
++    // user-declared empty default ctor (the vector<C3DTriangle2>::resize(n) temporary is passed by address and never written,
++    // 0x00AE3D5D `lea ecx,[esp+10h]` .. 0x00AE3D6B `call 0x00A97A50`). Same form as FABLE_RETAIL_C3DCLOTHRENDERVERTEX_CTOR.
++    C3DTriangle2() { }
++#endif
+     unsigned long GetVertexIndex(unsigned long index) const { return VertexIndex[index]; }
+ #ifdef FABLE_RETAIL_C3DPRIMITIVE_CORNER_ACCESSORS
+     // Retail opt-in (chunk 3017, row 0x00BB1F50): FableWin.pdb ?GetA/B/C@C3DTriangle2@@QBEKXZ, the corner accessors the cloth TU instantiates

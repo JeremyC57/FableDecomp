@@ -1,0 +1,332 @@
+--- a/rebuild/include/engine/CTCHeroStats.h
++++ b/rebuild/include/engine/CTCHeroStats.h
+@@ -15,6 +15,10 @@
+ #include "engine/CHeroMarriageInfo.h"
+ #include "engine/EHeroTrainingStatus.h"
+ class CPersistContext;
++#ifdef FABLE_RETAIL_CTCHEROSTATS_PERSONALITY
++#include "engine/EHeroExperienceStatCategory.h"
++enum EHeroSexuality;                                         // MS forward enum
++#endif
+ #endif
+ #ifdef FABLE_RETAIL_CTCHEROSTATS_MARRIAGE
+ #ifdef FABLE_RETAIL_CTCWIFE_MARRY
+@@ -306,6 +310,80 @@
+     float            RotCounter;                                         // +0x1d0
+     bool             IsInCutSceneFirstTime;                              // +0x1d4
+     std::list<CHeroMarriageInfo> Marriages;                              // +0x1d8
++#ifdef FABLE_RETAIL_CTCHEROSTATS_PERSONALITY
++    // Nested opt-in (chunk 4006, rows 0x005D1F0C / 0x005CE0E6 CTCInventoryStats::ConstructPersonalityListPC / ConstructPersonalityList):
++    // the statistics the personality page prints. Out of line in retail (Ego_r.pdb + FableWin.pdb manglings, public):
++    // ?UpdateAppearanceStats@CTCHeroStats@@QAEX_N@Z 0x0057D23B, ?GetFavouriteWeapon@..@@QBE?AVCWideString@@J@Z 0x0057AEB4,
++    // ?GetFavouriteAbility@..@@QBEJXZ 0x0057AA5B, ?GetNumberOfAbilityCasts@..@@QBEJXZ 0x0057AAA8, ?GetNumberOfAvailableAbilities@..@@QBEJXZ
++    // 0x0057B3E2, ?GetHeroSexuality@..@@QBE?AW4EHeroSexuality@@XZ 0x0057ACC4, ?GetNumberOfCurrentSpouses@..@@QBEJXZ 0x0057AD1D,
++    // ?GetFavouriteRegion@..@@QBE?AVCWideString@@AAJ@Z 0x0057A989, ?GetNumRegionsExplored@..@@QBEJXZ 0x0057AA1B (FableWin.pdb),
++    // ?GetDrinkResistance@..@@QBE?AVCWideString@@XZ 0x0057A7B9, ?GetHeroStatExperience@..@@QBEJW4EHeroExperienceStatCategory@@@Z
++    // 0x0057A8AF, ?GetPercentageThroughRenownLevel@..@@QBEMXZ 0x0057AAD9.
++    void UpdateAppearanceStats(bool);
++    CWideString GetFavouriteWeapon(long) const;
++    long GetFavouriteAbility() const;
++    long GetNumberOfAbilityCasts() const;
++    long GetNumberOfAvailableAbilities() const;
++    EHeroSexuality GetHeroSexuality() const;
++    long GetNumberOfCurrentSpouses() const;
++    CWideString GetFavouriteRegion(long&) const;
++    long GetNumRegionsExplored() const;
++    CWideString GetDrinkResistance() const;
++    long GetHeroStatExperience(EHeroExperienceStatCategory) const;
++    float GetPercentageThroughRenownLevel() const;
++    // Inline one-line getters (FableWin.pdb keeps an out-of-line copy of each, all `QBE..XZ` except GetMaxMoney `QAEJXZ`; Ego_r.pdb and
++    // retail have none: the rows read the member in place, e.g. `mov edx,[edi+24h]` 0x005D3285 for GetNumberOfDecapitations).
++    float GetFatness() const { return Fatness; }
++    long GetNumberOfDecapitations() const { return NumberOfDecapitations; }
++    long GetMaximumMultiplier() const { return MaximumMultiplier; }
++    long GetNumberOfLoversAcquired() const { return NumLoversAcquired; }
++    long GetNumberOfWeddings() const { return NumWeddings; }
++    long GetNumberOfDivorces() const { return NumDivorces; }
++    long GetNumberOfSpousesMurdered() const { return NumSpousesMurdered; }
++    long GetNumberOfTimesHadSex() const { return NumSex; }
++    long GetNumTeleports() const { return NumTeleports; }
++    long GetNumCompletedAQuest() const { return NumCompletedAQuest; }
++    long GetRewardMoney() const { return RewardMoney; }
++    long GetNumCompletedACoreQuest() const { return NumCompletedACoreQuest; }
++    long GetNumCompletedAnOptionalQuest() const { return NumCompletedAnOptionalQuest; }
++    long GetNumBoastsTaken() const { return NumBoastsTaken; }
++    long GetNumBoastsCompleted() const { return NumBoastsCompleted; }
++    long GetNumMountedTrophies() const { return NumMountedTrophies; }
++    long GetNumTrophyGamePlayed() const { return NumTrophyGamePlayed; }
++    long GetNumberOfShopsOwned() const { return NumberOfShopsOwned; }
++    // FITTED body (acctC agentC1): the value passes through a named local. Retail 0x005D4698 / 0x005D00AB `lea edx,[eax+ecx]` (houses
++    // the SIB base, shops the index) needs one more record on the houses side of the NUMBUILDINGS sum; written plainly the row gives
++    // `[ecx+eax]`. Same out-of-line bytes as retail's COMDAT copy 0x005CC5FD (`mov eax,[ecx+0E4h] ; ret`). The made-up sum helper of
++    // the stale chunk-4006 overlay is NOT used: retail keeps this TU's inline getter COMDATs (0x005CC58E..0x005CC685, header order)
++    // and has no sum helper among them or anywhere in .text; FableWin.pdb and the Anniversary class list have none either.
++    long GetNumberOfHousesOwned() const { long houses = NumberOfHousesOwned; return houses; }
++    long GetNumberOfBuildingsRented() const { return NumberOfBuildingsRented; }
++    long GetRentMoney() const { return RentMoney; }
++    float GetMaxChickenThrow() const { return MaxChickenThrow; }
++    float GetBiggestFish() const { return BiggestFish; }
++    float GetBestScoreCoinGolfOakVale() const { return BestScoreCoinGolfOakVale; }
++    float GetBestScoreCoinGolfSnowSpire() const { return BestScoreCoinGolfSnowSpire; }
++    float GetBestScoreShoveHaPenny() const { return BestScoreShoveHaPenny; }
++    float GetBestTimeGuessTheAddition() const { return BestTimeGuessTheAddition; }
++    float GetBestTimePairs() const { return BestTimePairs; }
++    float GetBestTimeSorting() const { return BestTimeSorting; }
++    long GetNumberOfVomits() const { return NumberOfVomits; }
++    long GetNumberOfDrinks() const { return NumberOfDrinks; }
++    long GetNumberOfCrimes() const { return NumberOfCrimes; }
++    long GetTotalFine() const { return TotalFine; }
++    long GetFinePaid() const { return FinePaid; }
++    long GetTimesThrownOut() const { return TimesThrownOut; }
++    long GetTotalBribeAmount() const { return TotalBribeAmount; }
++    // 0x005D5A76: `lea ecx,[edi+40h] ; mov edx,[ecx] ; lea eax,[edi+3Ch] ; cmp edx,[eax] ; jl ; mov eax,ecx ; mov edx,[eax]` -- the
++    // larger of MaxMoney and Money through STLport's reference-returning max (FableWin.pdb ?GetMaxMoney@CTCHeroStats@@QAEJXZ, non-const).
++    long GetMaxMoney() { return std::max(MaxMoney, Money); }
++    long GetTotalMoneyEarned() const { return TotalMoneyEarned; }
++    long GetTotalMoneySpent() const { return TotalMoneySpent; }
++    long GetSpentExperience() const { return TotalSpentExperience; }
++    long GetRenownLevel() const { return RenownLevel; }
++    long GetRenownLevelMaxLevel() const { return RenownMaxLevel; }
++    // GetAge / GetBestTrophyWitnesses: FABLE_RETAIL_CTCHEROSTATS_AGE / FABLE_RETAIL_CTCHEROSTATS_TROPHYWITNESSES.
++#endif
+ #ifdef FABLE_RETAIL_CTCHEROSTATS_GETRENOWNLEVEL
+     // Nested opt-in (chunk 882, row 0x0061E6D0 CTCInventoryQuests::ConstructQuestListPC): FableWin.pdb ?GetRenownLevel@CTCHeroStats@@QBEJXZ
+     // (0x01E6E164), inline in retail (absent from Ego_r.pdb's out-of-line set; the row reads RenownLevel +0x70 in place, `cmp [ecx+70h],edi`
+@@ -402,7 +480,7 @@
+     long GetTotalMoneyEarned() const { return TotalMoneyEarned; }
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCHeroStats) == 0x1dc);
++FABLE_STATIC_ASSERT_AT(405, sizeof(CTCHeroStats) == 0x1dc);
+ #endif
+ #else
+ #ifndef FABLE_ENGINE_CTCHEROSTATS_H
+@@ -546,117 +624,117 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CTCHeroStats) == 0x1dc);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, OutstandingCrimes) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, ExperienceSpentOn) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumberOfDecapitations) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, Morality) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, MoralityChangingEnabled) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, Age) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, SunTan) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, Fatness) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, Money) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, MaxMoney) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, ConfiscatedMoney) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, TotalMoneyEarned) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, TotalMoneySpent) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, RewardMoney) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, RentMoney) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, Stamina) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, MaxStamina) == 0x5c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, FramesUntilStaminaRefills) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, FramesUntilHealthRefills) == 0x64);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, ScriptOverridePreventStaminaRefill) == 0x68);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, FramesUntilFatnessReduces) == 0x6c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, RenownLevel) == 0x70);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, RenownMaxLevel) == 0x74);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, RenownPointsInLevel) == 0x78);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, RenownTotal) == 0x7c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, Agreeableness) == 0x80);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, InherentAttractiveness) == 0x84);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, InherentScariness) == 0x88);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, ExtraMaxHealth) == 0x8c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, ExtraMaxStamina) == 0x90);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, FramesLeftForSpeedMultiplier) == 0x94);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, MaximumMultiplier) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, Attractiveness) == 0x9c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, Scariness) == 0xa0);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, AppearanceGoodstrength) == 0xa4);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, SoundRadiusMultiplier) == 0xa8);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, VisibilityMultiplier) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, FrameUpdatedClothingStats) == 0xb0);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, FrameUpdatedTattooStats) == 0xb4);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumFailedAQuest) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumCompletedAQuest) == 0xbc);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumCompletedACoreQuest) == 0xc0);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumCompletedAFeatQuest) == 0xc4);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumCompletedAnOptionalQuest) == 0xc8);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumBoastsTaken) == 0xcc);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumBoastsCompleted) == 0xd0);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumMountedTrophies) == 0xd4);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumTrophyGamePlayed) == 0xd8);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, BestTrophyWitnesses) == 0xdc);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumberOfShopsOwned) == 0xe0);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumberOfHousesOwned) == 0xe4);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumberOfBuildingsRented) == 0xe8);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumberOfVomits) == 0xec);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumberOfDrinks) == 0xf0);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumberOfCrimes) == 0xf4);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumberOfCrimesOfMurder) == 0xf8);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, TotalFine) == 0xfc);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, FinePaid) == 0x100);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, TimesThrownOut) == 0x104);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, TotalBribeAmount) == 0x108);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumTeleports) == 0x10c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, MaxChickenThrow) == 0x110);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, TrainingStatus) == 0x114);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, HeroStatsExperience) == 0x118);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, RegionTime) == 0x124);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumberOfTimesUsedAbility) == 0x130);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, TotalSpentExperience) == 0x13c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumLoversAcquired) == 0x140);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumWeddings) == 0x144);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumSpousesMurdered) == 0x148);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumSpousesDied) == 0x14c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumDivorces) == 0x150);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, NumSex) == 0x154);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, HadScriptedSex) == 0x158);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, HadScriptedGaySex) == 0x159);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, BiggestFish) == 0x15c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, HousePositions) == 0x160);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, InfiniteStamina) == 0x16c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, DeathRecoveryMarkerName_PStringData) == 0x170);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, FailQuestOnDeath) == 0x174);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, BestTimePairs) == 0x178);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, BestTimeSorting) == 0x17c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, BestScoreBlackjack) == 0x180);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, BestScoreCoinGolfOakVale) == 0x184);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, BestScoreCoinGolfSnowSpire) == 0x188);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, BestScoreShoveHaPenny) == 0x18c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, BestTimeGuessTheAddition) == 0x190);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, PrizeGivenPairs) == 0x194);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, PrizeGivenSorting) == 0x195);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, PrizeGivenBlackjack) == 0x196);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, PrizeGivenCoinGolfOakVale) == 0x197);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, PrizeGivenCoinGolfSnowSpire) == 0x198);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, PrizeGivenShoveHaPenny) == 0x199);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, PrizeGivenGuessTheAddition) == 0x19a);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, Drunkenness) == 0x19c);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, BeerReservoir) == 0x1a0);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, DrinkAffectMultiplier) == 0x1a4);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, DrinkAffectMultiplierMultiplier) == 0x1a8);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, FrameToVomit) == 0x1ac);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, DeedHandle) == 0x1b0);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, FrameEndVomit) == 0x1b4);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, UpdateDrunkenness) == 0x1b8);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, PDef_Object) == 0x1bc);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, PrimitiveHandle) == 0x1c0);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, UCounter) == 0x1c8);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, VCounter) == 0x1cc);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, RotCounter) == 0x1d0);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, IsInCutSceneFirstTime) == 0x1d4);
+-FABLE_STATIC_ASSERT(offsetof(CTCHeroStats, Marriages) == 0x1d8);
++FABLE_STATIC_ASSERT_AT(549, sizeof(CTCHeroStats) == 0x1dc);
++FABLE_STATIC_ASSERT_AT(550, offsetof(CTCHeroStats, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(551, offsetof(CTCHeroStats, OutstandingCrimes) == 0xc);
++FABLE_STATIC_ASSERT_AT(552, offsetof(CTCHeroStats, ExperienceSpentOn) == 0x18);
++FABLE_STATIC_ASSERT_AT(553, offsetof(CTCHeroStats, NumberOfDecapitations) == 0x24);
++FABLE_STATIC_ASSERT_AT(554, offsetof(CTCHeroStats, Morality) == 0x28);
++FABLE_STATIC_ASSERT_AT(555, offsetof(CTCHeroStats, MoralityChangingEnabled) == 0x2c);
++FABLE_STATIC_ASSERT_AT(556, offsetof(CTCHeroStats, Age) == 0x30);
++FABLE_STATIC_ASSERT_AT(557, offsetof(CTCHeroStats, SunTan) == 0x34);
++FABLE_STATIC_ASSERT_AT(558, offsetof(CTCHeroStats, Fatness) == 0x38);
++FABLE_STATIC_ASSERT_AT(559, offsetof(CTCHeroStats, Money) == 0x3c);
++FABLE_STATIC_ASSERT_AT(560, offsetof(CTCHeroStats, MaxMoney) == 0x40);
++FABLE_STATIC_ASSERT_AT(561, offsetof(CTCHeroStats, ConfiscatedMoney) == 0x44);
++FABLE_STATIC_ASSERT_AT(562, offsetof(CTCHeroStats, TotalMoneyEarned) == 0x48);
++FABLE_STATIC_ASSERT_AT(563, offsetof(CTCHeroStats, TotalMoneySpent) == 0x4c);
++FABLE_STATIC_ASSERT_AT(564, offsetof(CTCHeroStats, RewardMoney) == 0x50);
++FABLE_STATIC_ASSERT_AT(565, offsetof(CTCHeroStats, RentMoney) == 0x54);
++FABLE_STATIC_ASSERT_AT(566, offsetof(CTCHeroStats, Stamina) == 0x58);
++FABLE_STATIC_ASSERT_AT(567, offsetof(CTCHeroStats, MaxStamina) == 0x5c);
++FABLE_STATIC_ASSERT_AT(568, offsetof(CTCHeroStats, FramesUntilStaminaRefills) == 0x60);
++FABLE_STATIC_ASSERT_AT(569, offsetof(CTCHeroStats, FramesUntilHealthRefills) == 0x64);
++FABLE_STATIC_ASSERT_AT(570, offsetof(CTCHeroStats, ScriptOverridePreventStaminaRefill) == 0x68);
++FABLE_STATIC_ASSERT_AT(571, offsetof(CTCHeroStats, FramesUntilFatnessReduces) == 0x6c);
++FABLE_STATIC_ASSERT_AT(572, offsetof(CTCHeroStats, RenownLevel) == 0x70);
++FABLE_STATIC_ASSERT_AT(573, offsetof(CTCHeroStats, RenownMaxLevel) == 0x74);
++FABLE_STATIC_ASSERT_AT(574, offsetof(CTCHeroStats, RenownPointsInLevel) == 0x78);
++FABLE_STATIC_ASSERT_AT(575, offsetof(CTCHeroStats, RenownTotal) == 0x7c);
++FABLE_STATIC_ASSERT_AT(576, offsetof(CTCHeroStats, Agreeableness) == 0x80);
++FABLE_STATIC_ASSERT_AT(577, offsetof(CTCHeroStats, InherentAttractiveness) == 0x84);
++FABLE_STATIC_ASSERT_AT(578, offsetof(CTCHeroStats, InherentScariness) == 0x88);
++FABLE_STATIC_ASSERT_AT(579, offsetof(CTCHeroStats, ExtraMaxHealth) == 0x8c);
++FABLE_STATIC_ASSERT_AT(580, offsetof(CTCHeroStats, ExtraMaxStamina) == 0x90);
++FABLE_STATIC_ASSERT_AT(581, offsetof(CTCHeroStats, FramesLeftForSpeedMultiplier) == 0x94);
++FABLE_STATIC_ASSERT_AT(582, offsetof(CTCHeroStats, MaximumMultiplier) == 0x98);
++FABLE_STATIC_ASSERT_AT(583, offsetof(CTCHeroStats, Attractiveness) == 0x9c);
++FABLE_STATIC_ASSERT_AT(584, offsetof(CTCHeroStats, Scariness) == 0xa0);
++FABLE_STATIC_ASSERT_AT(585, offsetof(CTCHeroStats, AppearanceGoodstrength) == 0xa4);
++FABLE_STATIC_ASSERT_AT(586, offsetof(CTCHeroStats, SoundRadiusMultiplier) == 0xa8);
++FABLE_STATIC_ASSERT_AT(587, offsetof(CTCHeroStats, VisibilityMultiplier) == 0xac);
++FABLE_STATIC_ASSERT_AT(588, offsetof(CTCHeroStats, FrameUpdatedClothingStats) == 0xb0);
++FABLE_STATIC_ASSERT_AT(589, offsetof(CTCHeroStats, FrameUpdatedTattooStats) == 0xb4);
++FABLE_STATIC_ASSERT_AT(590, offsetof(CTCHeroStats, NumFailedAQuest) == 0xb8);
++FABLE_STATIC_ASSERT_AT(591, offsetof(CTCHeroStats, NumCompletedAQuest) == 0xbc);
++FABLE_STATIC_ASSERT_AT(592, offsetof(CTCHeroStats, NumCompletedACoreQuest) == 0xc0);
++FABLE_STATIC_ASSERT_AT(593, offsetof(CTCHeroStats, NumCompletedAFeatQuest) == 0xc4);
++FABLE_STATIC_ASSERT_AT(594, offsetof(CTCHeroStats, NumCompletedAnOptionalQuest) == 0xc8);
++FABLE_STATIC_ASSERT_AT(595, offsetof(CTCHeroStats, NumBoastsTaken) == 0xcc);
++FABLE_STATIC_ASSERT_AT(596, offsetof(CTCHeroStats, NumBoastsCompleted) == 0xd0);
++FABLE_STATIC_ASSERT_AT(597, offsetof(CTCHeroStats, NumMountedTrophies) == 0xd4);
++FABLE_STATIC_ASSERT_AT(598, offsetof(CTCHeroStats, NumTrophyGamePlayed) == 0xd8);
++FABLE_STATIC_ASSERT_AT(599, offsetof(CTCHeroStats, BestTrophyWitnesses) == 0xdc);
++FABLE_STATIC_ASSERT_AT(600, offsetof(CTCHeroStats, NumberOfShopsOwned) == 0xe0);
++FABLE_STATIC_ASSERT_AT(601, offsetof(CTCHeroStats, NumberOfHousesOwned) == 0xe4);
++FABLE_STATIC_ASSERT_AT(602, offsetof(CTCHeroStats, NumberOfBuildingsRented) == 0xe8);
++FABLE_STATIC_ASSERT_AT(603, offsetof(CTCHeroStats, NumberOfVomits) == 0xec);
++FABLE_STATIC_ASSERT_AT(604, offsetof(CTCHeroStats, NumberOfDrinks) == 0xf0);
++FABLE_STATIC_ASSERT_AT(605, offsetof(CTCHeroStats, NumberOfCrimes) == 0xf4);
++FABLE_STATIC_ASSERT_AT(606, offsetof(CTCHeroStats, NumberOfCrimesOfMurder) == 0xf8);
++FABLE_STATIC_ASSERT_AT(607, offsetof(CTCHeroStats, TotalFine) == 0xfc);
++FABLE_STATIC_ASSERT_AT(608, offsetof(CTCHeroStats, FinePaid) == 0x100);
++FABLE_STATIC_ASSERT_AT(609, offsetof(CTCHeroStats, TimesThrownOut) == 0x104);
++FABLE_STATIC_ASSERT_AT(610, offsetof(CTCHeroStats, TotalBribeAmount) == 0x108);
++FABLE_STATIC_ASSERT_AT(611, offsetof(CTCHeroStats, NumTeleports) == 0x10c);
++FABLE_STATIC_ASSERT_AT(612, offsetof(CTCHeroStats, MaxChickenThrow) == 0x110);
++FABLE_STATIC_ASSERT_AT(613, offsetof(CTCHeroStats, TrainingStatus) == 0x114);
++FABLE_STATIC_ASSERT_AT(614, offsetof(CTCHeroStats, HeroStatsExperience) == 0x118);
++FABLE_STATIC_ASSERT_AT(615, offsetof(CTCHeroStats, RegionTime) == 0x124);
++FABLE_STATIC_ASSERT_AT(616, offsetof(CTCHeroStats, NumberOfTimesUsedAbility) == 0x130);
++FABLE_STATIC_ASSERT_AT(617, offsetof(CTCHeroStats, TotalSpentExperience) == 0x13c);
++FABLE_STATIC_ASSERT_AT(618, offsetof(CTCHeroStats, NumLoversAcquired) == 0x140);
++FABLE_STATIC_ASSERT_AT(619, offsetof(CTCHeroStats, NumWeddings) == 0x144);
++FABLE_STATIC_ASSERT_AT(620, offsetof(CTCHeroStats, NumSpousesMurdered) == 0x148);
++FABLE_STATIC_ASSERT_AT(621, offsetof(CTCHeroStats, NumSpousesDied) == 0x14c);
++FABLE_STATIC_ASSERT_AT(622, offsetof(CTCHeroStats, NumDivorces) == 0x150);
++FABLE_STATIC_ASSERT_AT(623, offsetof(CTCHeroStats, NumSex) == 0x154);
++FABLE_STATIC_ASSERT_AT(624, offsetof(CTCHeroStats, HadScriptedSex) == 0x158);
++FABLE_STATIC_ASSERT_AT(625, offsetof(CTCHeroStats, HadScriptedGaySex) == 0x159);
++FABLE_STATIC_ASSERT_AT(626, offsetof(CTCHeroStats, BiggestFish) == 0x15c);
++FABLE_STATIC_ASSERT_AT(627, offsetof(CTCHeroStats, HousePositions) == 0x160);
++FABLE_STATIC_ASSERT_AT(628, offsetof(CTCHeroStats, InfiniteStamina) == 0x16c);
++FABLE_STATIC_ASSERT_AT(629, offsetof(CTCHeroStats, DeathRecoveryMarkerName_PStringData) == 0x170);
++FABLE_STATIC_ASSERT_AT(630, offsetof(CTCHeroStats, FailQuestOnDeath) == 0x174);
++FABLE_STATIC_ASSERT_AT(631, offsetof(CTCHeroStats, BestTimePairs) == 0x178);
++FABLE_STATIC_ASSERT_AT(632, offsetof(CTCHeroStats, BestTimeSorting) == 0x17c);
++FABLE_STATIC_ASSERT_AT(633, offsetof(CTCHeroStats, BestScoreBlackjack) == 0x180);
++FABLE_STATIC_ASSERT_AT(634, offsetof(CTCHeroStats, BestScoreCoinGolfOakVale) == 0x184);
++FABLE_STATIC_ASSERT_AT(635, offsetof(CTCHeroStats, BestScoreCoinGolfSnowSpire) == 0x188);
++FABLE_STATIC_ASSERT_AT(636, offsetof(CTCHeroStats, BestScoreShoveHaPenny) == 0x18c);
++FABLE_STATIC_ASSERT_AT(637, offsetof(CTCHeroStats, BestTimeGuessTheAddition) == 0x190);
++FABLE_STATIC_ASSERT_AT(638, offsetof(CTCHeroStats, PrizeGivenPairs) == 0x194);
++FABLE_STATIC_ASSERT_AT(639, offsetof(CTCHeroStats, PrizeGivenSorting) == 0x195);
++FABLE_STATIC_ASSERT_AT(640, offsetof(CTCHeroStats, PrizeGivenBlackjack) == 0x196);
++FABLE_STATIC_ASSERT_AT(641, offsetof(CTCHeroStats, PrizeGivenCoinGolfOakVale) == 0x197);
++FABLE_STATIC_ASSERT_AT(642, offsetof(CTCHeroStats, PrizeGivenCoinGolfSnowSpire) == 0x198);
++FABLE_STATIC_ASSERT_AT(643, offsetof(CTCHeroStats, PrizeGivenShoveHaPenny) == 0x199);
++FABLE_STATIC_ASSERT_AT(644, offsetof(CTCHeroStats, PrizeGivenGuessTheAddition) == 0x19a);
++FABLE_STATIC_ASSERT_AT(645, offsetof(CTCHeroStats, Drunkenness) == 0x19c);
++FABLE_STATIC_ASSERT_AT(646, offsetof(CTCHeroStats, BeerReservoir) == 0x1a0);
++FABLE_STATIC_ASSERT_AT(647, offsetof(CTCHeroStats, DrinkAffectMultiplier) == 0x1a4);
++FABLE_STATIC_ASSERT_AT(648, offsetof(CTCHeroStats, DrinkAffectMultiplierMultiplier) == 0x1a8);
++FABLE_STATIC_ASSERT_AT(649, offsetof(CTCHeroStats, FrameToVomit) == 0x1ac);
++FABLE_STATIC_ASSERT_AT(650, offsetof(CTCHeroStats, DeedHandle) == 0x1b0);
++FABLE_STATIC_ASSERT_AT(651, offsetof(CTCHeroStats, FrameEndVomit) == 0x1b4);
++FABLE_STATIC_ASSERT_AT(652, offsetof(CTCHeroStats, UpdateDrunkenness) == 0x1b8);
++FABLE_STATIC_ASSERT_AT(653, offsetof(CTCHeroStats, PDef_Object) == 0x1bc);
++FABLE_STATIC_ASSERT_AT(654, offsetof(CTCHeroStats, PrimitiveHandle) == 0x1c0);
++FABLE_STATIC_ASSERT_AT(655, offsetof(CTCHeroStats, UCounter) == 0x1c8);
++FABLE_STATIC_ASSERT_AT(656, offsetof(CTCHeroStats, VCounter) == 0x1cc);
++FABLE_STATIC_ASSERT_AT(657, offsetof(CTCHeroStats, RotCounter) == 0x1d0);
++FABLE_STATIC_ASSERT_AT(658, offsetof(CTCHeroStats, IsInCutSceneFirstTime) == 0x1d4);
++FABLE_STATIC_ASSERT_AT(659, offsetof(CTCHeroStats, Marriages) == 0x1d8);
+ 
+ #endif // FABLE_ENGINE_CTCHEROSTATS_H
+ #endif

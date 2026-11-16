@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/C3DDummyObject.h
++++ b/rebuild/include/engine/C3DDummyObject.h
+@@ -12,6 +12,11 @@
+     C3DDummyObject();                                                    // 0x00A2E4B0
+     const CMatrix3x4& PeekTransform() const { return Transform; }
+     long GetBoneIndex() const { return BoneIndex; }
++#ifdef FABLE_RETAIL_C3DDUMMYOBJECT_TRANSFORMCTOR
++    // Retail opt-in (wfE8, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ??0C3DDummyObject@@QAE@ABVCMatrix3x4@@K@Z,
++    // inline in retail (0x00A2FA30..: the chunk transform copied with a 12-dword `rep movsd`, then the bone index stored).
++    C3DDummyObject(const CMatrix3x4& transform, unsigned long bone_index) : Transform(transform), BoneIndex((long)bone_index) { }
++#endif
+ private:
+     CMatrix3x4 Transform;                                                // +0x00
+     long BoneIndex;                                                      // +0x30

@@ -1,0 +1,101 @@
+--- a/rebuild/include/engine/CDisplayEngine.h
++++ b/rebuild/include/engine/CDisplayEngine.h
+@@ -69,6 +69,22 @@
+     // place, 0x007E27A2). ScreenFadeOutInfo is typed CFadeInFadeOutBase under this opt-in (same 0x1c bytes, pack 1).
+     bool IsScreenFadeOut() const { return ScreenFadeOutInfo.IsActive(); }
+ #endif
++#ifdef FABLE_RETAIL_CDISPLAYENGINE_REGIONLOADFADE
++    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?IsScreenFullyFadedOut@CDisplayEngine@@QBE_NXZ (out of line at
++    // 0x004A9210, called 3x: ScreenFadeOutInfo Active && !Opening && !Closing), ?EndScreenFadeOut@CDisplayEngine@@QAEXXZ (0x00434C90, called),
++    // ?IsScreenFadeOutClosing@CDisplayEngine@@QBE_NXZ (inline: byte +0xC8 in place, 0x004A477E) and ?IsScreenFadeOutLockFlagSet@CDisplayEngine@@QBE_NXZ
++    // (inline: ScreenFadeOutLocked +0xD8 in place, 0x004A5895). Needs FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT (typed ScreenFadeOutInfo) and
++    // FABLE_RETAIL_CFADEINFADEOUTBASE_ISCLOSING. No layout change.
++    bool IsScreenFullyFadedOut() const;                                 // 0x004A9210
++    void EndScreenFadeOut();                                            // 0x00434C90
++    bool IsScreenFadeOutClosing() const { return ScreenFadeOutInfo.IsClosing(); }
++    bool IsScreenFadeOutLockFlagSet() const { return ScreenFadeOutLocked; }
++#endif // FABLE_RETAIL_CDISPLAYENGINE_REGIONLOADFADE
++#ifdef FABLE_RETAIL_CDISPLAYENGINE_GETMAINWINDOW
++    // Retail opt-in (wfE9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): Ego_r.pdb ?GetMainWindow@CDisplayEngine@@QBE?AVC2DBoxF@@XZ,
++    // out of line at 0x00434B50 (the row passes a hidden result slot: `push eax ; call 0x00434B50`). Declaration only, no layout change.
++    class C2DBoxF GetMainWindow() const;                                // 0x00434B50
++#endif // FABLE_RETAIL_CDISPLAYENGINE_GETMAINWINDOW
+ #ifdef FABLE_RETAIL_CDISPLAYENGINE_GET3DENGINE
+     // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): FableWin.pdb ?Get3DEngine@CDisplayEngine@@QAEAAVCIEngine@@XZ,
+     // inline in retail (the caller reads Engine3D +0x2C in place, 0x005E790E). Define FABLE_RETAIL_CIENGINE for the polymorphic CIEngine.
+@@ -121,40 +137,40 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CDisplayEngine) == 0x100);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, EnginePreloadFlags) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, Component) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PlayerManager) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, DefinitionManager) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, EngineGraphicBank) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MeshBank) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_TLX) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_TLY) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_BRX) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_BRY) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, Engine3D) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, Camera) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, Frame) == 0x68);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, DrawGame) == 0x6c);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, LetterBox) == 0x70);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, CameraInputsOn) == 0x90);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, LastRefreshTime) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, LastRenderTimeLength) == 0xa0);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, LastWorldUpdateRenderTime) == 0xa8);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PreparePrimitives) == 0xb0);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, GammaRamp) == 0xb4);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, OldGammaRamp) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, ScreenFadeOutInfo) == 0xbc);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, ScreenFadeOutLocked) == 0xd8);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, DrawMemoryUse) == 0xd9);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, DrawDebugPage) == 0xdc);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PViewManager_Data) == 0xe0);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PViewManager_Info) == 0xe4);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, InitialFadeReadynessCount) == 0xe8);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, InitialFadeActive) == 0xec);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, ScreenFadeDuration) == 0xf0);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, TimeSinceFadeStarted) == 0xf4);
+-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, World) == 0xf8);
++FABLE_STATIC_ASSERT_AT(124, sizeof(CDisplayEngine) == 0x100);
++FABLE_STATIC_ASSERT_AT(125, offsetof(CDisplayEngine, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(126, offsetof(CDisplayEngine, EnginePreloadFlags) == 0x4);
++FABLE_STATIC_ASSERT_AT(127, offsetof(CDisplayEngine, Component) == 0x8);
++FABLE_STATIC_ASSERT_AT(128, offsetof(CDisplayEngine, PlayerManager) == 0xc);
++FABLE_STATIC_ASSERT_AT(129, offsetof(CDisplayEngine, DefinitionManager) == 0x10);
++FABLE_STATIC_ASSERT_AT(130, offsetof(CDisplayEngine, EngineGraphicBank) == 0x14);
++FABLE_STATIC_ASSERT_AT(131, offsetof(CDisplayEngine, MeshBank) == 0x18);
++FABLE_STATIC_ASSERT_AT(132, offsetof(CDisplayEngine, MainWindow_TLX) == 0x1c);
++FABLE_STATIC_ASSERT_AT(133, offsetof(CDisplayEngine, MainWindow_TLY) == 0x20);
++FABLE_STATIC_ASSERT_AT(134, offsetof(CDisplayEngine, MainWindow_BRX) == 0x24);
++FABLE_STATIC_ASSERT_AT(135, offsetof(CDisplayEngine, MainWindow_BRY) == 0x28);
++FABLE_STATIC_ASSERT_AT(136, offsetof(CDisplayEngine, Engine3D) == 0x2c);
++FABLE_STATIC_ASSERT_AT(137, offsetof(CDisplayEngine, Camera) == 0x30);
++FABLE_STATIC_ASSERT_AT(138, offsetof(CDisplayEngine, Frame) == 0x68);
++FABLE_STATIC_ASSERT_AT(139, offsetof(CDisplayEngine, DrawGame) == 0x6c);
++FABLE_STATIC_ASSERT_AT(140, offsetof(CDisplayEngine, LetterBox) == 0x70);
++FABLE_STATIC_ASSERT_AT(141, offsetof(CDisplayEngine, CameraInputsOn) == 0x90);
++FABLE_STATIC_ASSERT_AT(142, offsetof(CDisplayEngine, LastRefreshTime) == 0x98);
++FABLE_STATIC_ASSERT_AT(143, offsetof(CDisplayEngine, LastRenderTimeLength) == 0xa0);
++FABLE_STATIC_ASSERT_AT(144, offsetof(CDisplayEngine, LastWorldUpdateRenderTime) == 0xa8);
++FABLE_STATIC_ASSERT_AT(145, offsetof(CDisplayEngine, PreparePrimitives) == 0xb0);
++FABLE_STATIC_ASSERT_AT(146, offsetof(CDisplayEngine, GammaRamp) == 0xb4);
++FABLE_STATIC_ASSERT_AT(147, offsetof(CDisplayEngine, OldGammaRamp) == 0xb8);
++FABLE_STATIC_ASSERT_AT(148, offsetof(CDisplayEngine, ScreenFadeOutInfo) == 0xbc);
++FABLE_STATIC_ASSERT_AT(149, offsetof(CDisplayEngine, ScreenFadeOutLocked) == 0xd8);
++FABLE_STATIC_ASSERT_AT(150, offsetof(CDisplayEngine, DrawMemoryUse) == 0xd9);
++FABLE_STATIC_ASSERT_AT(151, offsetof(CDisplayEngine, DrawDebugPage) == 0xdc);
++FABLE_STATIC_ASSERT_AT(152, offsetof(CDisplayEngine, PViewManager_Data) == 0xe0);
++FABLE_STATIC_ASSERT_AT(153, offsetof(CDisplayEngine, PViewManager_Info) == 0xe4);
++FABLE_STATIC_ASSERT_AT(154, offsetof(CDisplayEngine, InitialFadeReadynessCount) == 0xe8);
++FABLE_STATIC_ASSERT_AT(155, offsetof(CDisplayEngine, InitialFadeActive) == 0xec);
++FABLE_STATIC_ASSERT_AT(156, offsetof(CDisplayEngine, ScreenFadeDuration) == 0xf0);
++FABLE_STATIC_ASSERT_AT(157, offsetof(CDisplayEngine, TimeSinceFadeStarted) == 0xf4);
++FABLE_STATIC_ASSERT_AT(158, offsetof(CDisplayEngine, World) == 0xf8);
+ 
+ #endif // FABLE_ENGINE_CDISPLAYENGINE_H
