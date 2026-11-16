@@ -4,12 +4,14 @@
 //   0x0040F020 (non-const, interface 0x6f) and 0x004365B0 (const, interface 0xa7), CInputProcessGameBase 0x00687A90/0x00687BD0/
 //   0x00687C70/0x00687CF0/0x00687D40, GetAssignableSpecialMoveIndexForEvent 0x00445FA0, TriggerSpecialAbility 0x005EED4C,
 //   CycleAssignedAbilities 0x005F64DD, CheckTermination 0x0072A860, GetName 0x0072B870, CCharString operator!= 0x0099E960 / dtor
-//   0x0099EAE0, AddGameEvent 0x0041649C on CMainGameComponent::Get() 0x013B86A0, SetHandled 0x00A0D390, _ftol 0x00BFEA70.
+//   0x0099EAE0, AddGameEvent 0x0041649C on CMainGameComponent::Get() 0x013B86A0, SetAsPerformedEvent 0x00A0D390, _ftol 0x00BFEA70.
 // Layout: engine/CInputProcessGameBase.h fields (MyPlayer +0x18, PGamePlayerInterface +0x24); CThing interface map +0x44,
 //   presence bits +0x20, Dead bit +0x91 (retail CThing); the other members are descriptive offsets read from retail.
-// Shape: SetHandled written in both arms of the scroll-loop if/else (VC tail-merges the calls, and the second use gives
+// Shape: SetAsPerformedEvent written in both arms of the scroll-loop if/else (VC tail-merges the calls, and the second use gives
 //   processed esi over the countdown); the hero-state test is a switch with case 0x10 first; the GetName result is a named local.
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -50,7 +52,7 @@ private: public:
 };
 class CProcessedInput {
 public:
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -108,6 +110,7 @@ class CGamePlayerInterface { public:
     long GetAssignableSpecialMoveIndexForEvent(const CInputEvent& event) const;   // 0x00445FA0
 };
 class CWorld; class CDefinitionManager;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -120,7 +123,7 @@ public:
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
     bool IsEventAssignableSpecialMoveButton(const CInputEvent& event);   // 0x00687C70
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
     float GetEventScrollAmount(const CInputEvent& event);             // 0x00687D40 (descriptive)
 };
 class CInputProcessSpecialAbilities : public CInputProcessGameBase {
@@ -138,11 +141,11 @@ void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProc
         if (IsEventAssignableSpecialMoveButton(event)) {
             if (IsEventButtonPressed(event)) {
                 abilities->TriggerSpecialAbility(PGamePlayerInterface->GetAssignableSpecialMoveIndexForEvent(event));
-                processed.SetHandled();
+                processed.SetAsPerformedEvent();
             } else if (IsEventButtonHeld(event)) {
-                processed.SetHandled();
+                processed.SetAsPerformedEvent();
             }
-        } else if (IsEventGameAction(0x39, event)) {
+        } else if (IsEventGameAction((EGameAction)(0x39), event)) {
             if (state && !state->CheckTermination()) {
                 if (event.Type == 0xe) {
                     float amount = GetEventScrollAmount(event);
@@ -152,21 +155,21 @@ void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProc
                         for (long i = 0; i < steps; ++i) {
                             if (amount > 0.0f) {
                                 abilities->CycleAssignedAbilities(true);
-                                processed.SetHandled();
+                                processed.SetAsPerformedEvent();
                             } else {
                                 abilities->CycleAssignedAbilities(false);
-                                processed.SetHandled();
+                                processed.SetAsPerformedEvent();
                             }
                         }
                     }
                 } else if (IsEventButtonHeld(event)) {
                     abilities->CycleAssignedAbilities(true);
-                    processed.SetHandled();
+                    processed.SetAsPerformedEvent();
                 }
             }
-        } else if (IsEventGameAction(0x5e, event) && state && !state->CheckTermination() && IsEventButtonPressed(event)) {
+        } else if (IsEventGameAction((EGameAction)(0x5e), event) && state && !state->CheckTermination() && IsEventButtonPressed(event)) {
             abilities->CycleAssignedAbilities(true);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         }
     }
     const CThing* creature = MyPlayer->PeekPControlledCreature();

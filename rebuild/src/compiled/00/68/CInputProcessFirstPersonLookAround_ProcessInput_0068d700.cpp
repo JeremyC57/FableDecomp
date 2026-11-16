@@ -1,5 +1,7 @@
 // CInputProcessFirstPersonLookAround::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- feed the analogue vector of game action 0x4b to the camera manager's first-person look vector: doubled for event kind 0xd, run through the stick dead-zone curve for kind 0x11
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068D700, length 129 bytes.
 // Callees: CInputProcessGameBase::GetEventGameActionVector(long, const CInputEvent&, C2DVector*) @ 0x00687D00,
 // CInputEvent::GetEventType @ 0x00A03B40, PreProcessStickVector(C2DVector*) @ 0x0068D5F0 (__fastcall), the current game
@@ -32,6 +34,7 @@ class CWorld { public:
     CAIGameCameraBase* GetCurrentGameCamera() { return PCurrentGameCamera; }
 };
 class CPlayer; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -41,7 +44,7 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool GetEventGameActionVector(long action, const CInputEvent& event, C2DVector* vector); // 0x00687D00
+    bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& vector) const; // 0x00687D00
 };
 class CInputProcessFirstPersonLookAround : public CInputProcessGameBase {
 public:
@@ -51,7 +54,7 @@ public:
 void CInputProcessFirstPersonLookAround::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
     C2DVector look;
-    if (!GetEventGameActionVector(0x4b, event, &look))
+    if (!GetControlMovementFromGameActionEvent((EGameAction)(0x4b), event, look))
         return;
     if (event.GetEventType() == 0xd) {
         look.x += look.x;

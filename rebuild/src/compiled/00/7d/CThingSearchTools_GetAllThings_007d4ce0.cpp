@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007d4ce0, 140 bytes, thiscall, `ret 8`.
 // Identity (proven): Ego_r.pdb ??$GetAllThings@VCThingCreatureBase@@V?$list@PAVCThingCreatureBase@@...@std@@VCThingFilter_IsHuman@@@CThingSearchTools@@QBEX...@Z; the
 //   filter callee 0x006A7B90 is CThingFilter_IsHuman::operator() and the type mask 0xF is CThingCreatureBase's; caller CTCTavernGameCoinGolf::FadeOutTableOccupants 0x007D46D0.
-// Callees: CThingSearchTools::PeekClassList() const 0x0049C770, CThingFilter_IsHuman::operator()(const CThing&) const 0x006A7B90, malloc
+// Callees: CThingSearchTools::PeekClassList() const 0x0049C770, CThingFilter_IsHuman::operator()(const CThingCreatureBase&) const 0x006A7B90, malloc
 //   0x00BFEA0E (the 0x0C-byte list node).
 // Shape (family L020): the landed GetPBestThing walk (family K044: IsIncludedInThingScans inline, the type mask through a
 //   local) with STLport 4.6 list::push_back = insert(end(), x) (iterator with a user copy constructor; the previous node
@@ -113,6 +113,6 @@ void CThingSearchTools::GetAllThings(const TFilter& filter, TList& out) const
 }
 class CThingFilter_IsHuman {
 public:
-    bool operator()(const CThing& thing) const;           // 0x006A7B90
+    bool operator()(const CThingCreatureBase& creature) const;   // 0x006A7B90 (Ego_r 0x005A3150 + FableWin 0x01F95C80; NF33, was const CThing&)
 };
 template void CThingSearchTools::GetAllThings<CThingCreatureBase, std::list<CThingCreatureBase*>, CThingFilter_IsHuman>(const CThingFilter_IsHuman&, std::list<CThingCreatureBase*>&) const;

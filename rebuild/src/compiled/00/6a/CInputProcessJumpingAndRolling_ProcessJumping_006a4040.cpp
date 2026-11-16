@@ -1,6 +1,8 @@
 // CInputProcessJumpingAndRolling::ProcessJumping(const CInputEvent& event, CProcessedInput& processed) -- while jumping is enabled (global flag), a press of game action 0x1d queues game event 0x32 (jump)
 // Grade: DIFFER(116v112) -- /GS lane gap: both reference parameters shadowed into ebp/edi at entry; retail loads the event into edi after the flag test and re-reads `processed` late
 // Leaf: ProcessJumping
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A4040, length 112 bytes.
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
@@ -26,6 +28,7 @@ public:
 };
 class CPlayer;
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -37,7 +40,7 @@ public:
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90 (kind 0x13)
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 extern bool g_JumpingEnabled;                      // 0x013B86E5
 class CInputProcessJumpingAndRolling : public CInputProcessGameBase {
@@ -47,7 +50,7 @@ public:
 
 void CInputProcessJumpingAndRolling::ProcessJumping(const CInputEvent& event, CProcessedInput& processed)
 {
-    if (g_JumpingEnabled && IsEventButtonPressed(event) && IsEventGameAction(0x1d, event)) {
+    if (g_JumpingEnabled && IsEventButtonPressed(event) && IsEventGameAction((EGameAction)(0x1d), event)) {
         CGameEvent gameEvent(0x32);
         processed.AddGameEvent(gameEvent);
     }

@@ -20,7 +20,7 @@ class CGameEvent : public CMemoryBuffer { public:
 };
 class CProcessedInput {
 public:
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class C2DVector { public: float X, Y; };
 class CInputEvent {
@@ -91,56 +91,56 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
         event.GetAnalogueVector(stick);
         if (stick.Y > 0.6f) {
             NUISystem::CManager::GetInstance()->SendEvent(1);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (stick.Y < -0.6f) {
             NUISystem::CManager::GetInstance()->SendEvent(0);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         }
         if (stick.X > 0.6f) {
             NUISystem::CManager::GetInstance()->SendEvent(0x15);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (stick.X < -0.6f) {
             NUISystem::CManager::GetInstance()->SendEvent(0x14);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         }
     } else if (event.GetKey_00a03b40() == 0x12) {
         C2DVector stick;
         event.GetAnalogueVector(stick);
         if (stick.Y > 0.6f) {
             NUISystem::CManager::GetInstance()->SendEvent(7);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (stick.Y < -0.6f) {
             NUISystem::CManager::GetInstance()->SendEvent(6);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         }
     } else if (IsEventButtonPressed(event)) {
         if (IsEventGameAction(0x25, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(0x26, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(1);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(0x27, event)) {
             if (PInGameMenu->IsAnySliderReceivingInput())
                 NUISystem::CManager::GetInstance()->SendEvent(0x14);
             else if (!PInGameMenu->IsQuitMenuReceivingInput() && !PInGameMenu->IsListReceivingInputA() && !PInGameMenu->IsListReceivingInputB())
                 NUISystem::CManager::GetInstance()->SendEvent(5);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(0x28, event)) {
             if (PInGameMenu->IsAnySliderReceivingInput())
                 NUISystem::CManager::GetInstance()->SendEvent(0x15);
             else if (!PInGameMenu->IsQuitMenuReceivingInput() && !PInGameMenu->IsListReceivingInputA() && !PInGameMenu->IsListReceivingInputB())
                 NUISystem::CManager::GetInstance()->SendEvent(4);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(0x21, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(4);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(0x22, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(5);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(3, event)) {
             PInGameMenu->CloseInGameMenuViaGameEvent();
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(2, event)) {
             PInGameMenu->CloseInGameMenuViaGameEvent();
             CThingPlayerCreature* const& hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
@@ -150,15 +150,15 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
                 gameEvent.AddLong(4);
                 CMainGameComponent::Get()->AddGameEvent(gameEvent);
             }
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         }
     } else if (IsEventButtonReleased(event)) {
         if (IsEventGameAction(0x25, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(0x26, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(1);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         }
     }
 }

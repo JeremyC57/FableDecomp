@@ -67,8 +67,8 @@ class CTCPhysicsBase { public:
     float GetRadius() const { return Radius; }
 protected:
     CWorldMap& GetWorldMap();   // 0x006AF620 Ego_r.pdb (was GetWorldMap)
+    void ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse& response) const;   // 0x006B0610 (Ego_r 0x006ED540 + FableWin: protected const, reference; NF33)
 public:
-    void ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse* response);   // 0x006B0610
     void SetThingStandingOn(CTCPhysicsBase* other);     // 0x006AF6D0
 };
 struct CTCPhysicsStandard : CTCPhysicsBase {
@@ -110,7 +110,7 @@ void CTCPhysicsControlled::UpdateOnSurface(const vector<CThing*>& things, C3DVec
                 C3DVector to = pos + down;
                 C3DVector from = pos + C3DVector(0.0f, 0.0f, radius);
                 if (HasSphereMeshCollidedFromTo(*other, from, to, response)) {
-                    ModifyResponseForNearVerticalSlopes(&response);
+                    ModifyResponseForNearVerticalSlopes(response);
                     if ((float)fabs(response.CollideNormal.Z) > DELTA_NOTIONAL_ZERO) {
                         if (response.CollidePos.Z > pos.Z)
                             pos.Z = response.CollidePos.Z - 0.199f;

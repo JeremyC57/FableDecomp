@@ -1,0 +1,99 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x004BBFF0	NGraphicAppearance::CTCGraphicAppearance	GetFullScale	?GetFullScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ	CMap::DrawGetSeaLevel	?CMap_DrawGetSeaLevel@@YIMPAVCMap@@@Z	Ego_r 0x004BF740 + FableWin 0x01D0A3C0; body fld [ecx+4Ch] (MainGraphic.RenderSizeX) * [ecx+34h] (Scale) differs from inline GetScale; row moved onto engine/NGraphicAppearance_CTCGraphicAppearance.h (_MOVEMENT + _FULLSCALE); test self-contained, unchanged; MATCH
+0x006DE8B0	CTCTrophy	OnShowTrophyInitialise	?OnShowTrophyInitialise@CTCTrophy@@QAEXAAVCThing@@@Z	CTCTrophy::OnShowTrophyInitialise	?OnShowTrophyInitialise@S@@QAEXPAX@Z (inferred from the landed source: no mangled Leaf line)	Ego_r 0x0070C2C0 + FableWin 0x0249D4B0; body jmp PlaySoundW(PDef->SoundShowTrophy +0x4C); moved onto engine/CTCTrophy.h + CTrophyDef.h from a stand-in struct S; test self-contained, unchanged; RELOCATION_MATCH
+0x006DDCD0	CTCTrophy	PlaySoundW	?PlaySoundW@CTCTrophy@@AAEKABVCCharString@@@Z	CTCTrophy::PlaySoundW	?PlaySoundW@CTCTrophy@@QAEKABVCCharString@@@Z (inferred from the landed source: no mangled Leaf line)	access fix: private in Ego_r 0x0070B4F0 + FableWin (engine/CTCTrophy.h private:); RELOCATION_MATCH
+0x006DD7E0	CTCTrophy	StartDialogBox	?StartDialogBox@CTCTrophy@@AAEXVCWideString@@K000@Z	CTCTrophy::StartDialogBox	?StartDialogBox@CTCTrophy@@QAEXVCWideString@@K000@Z (inferred from the landed source: no mangled Leaf line)	access fix: private in Ego_r 0x0070B0F0 + FableWin; RELOCATION_MATCH
+0x006DEE80	CTCTrophy	UpdateGainedWitnessSounds	?UpdateGainedWitnessSounds@CTCTrophy@@AAEXXZ	CTCTrophy::UpdateGainedWitnessSounds	?UpdateGainedWitnessSounds@CTCTrophy@@QAEXXZ (inferred from the landed source: no mangled Leaf line)	access fix: private in Ego_r 0x0070C940 + FableWin; Leaf line added; RELOCATION_MATCH
+0x006B0610	CTCPhysicsBase	ModifyResponseForNearVerticalSlopes	?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@IBEXAAVCPhysicsCollideResponse@@@Z	CTCPhysicsBase::ModifyResponseForNearVerticalSlopes	?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@QBEXAAVCPhysicsCollideResponse@@@Z	access fix: protected in Ego_r 0x006ED540 + FableWin 0x024710B0; RELOCATION_MATCH
+0x00747030	CTCStealth	SetActionPermittedToSneak	?SetActionPermittedToSneak@CTCStealth@@QAEXPBVCCreatureActionBase@@@Z	CDrawEnvironmentUser_00747030::SetWorld	?SetWorld@CDrawEnvironmentUser_00747030@@QAEXPAVCWorld@@@Z (inferred from the landed source: no mangled Leaf line)	Ego_r 0x00759460 + FableWin 0x025941C0; body stores action->GetActionID() (0x00692620, both PDBs) at +0x2C = Ego_r ActionPermittedToSneakID; bound so by 0x007EB6A0; moved onto engine/CTCStealth.h + CCreatureActionBase.h GETACTIONID; test self-contained, unchanged; RELOCATION_MATCH
+0x00812340	CTCSearchableContainer	Search	?Search@CTCSearchableContainer@@QAEXAAVCThing@@@Z	CTCSearchableContainer::Search	?Search@CTCSearchableContainer@@QAEXJ@Z (inferred from the landed source: no mangled Leaf line)	Ego_r 0x0080B650 + FableWin 0x025A7410 (CThing& parameter, unused: ret 4); bound so by 0x007EB6A0; RELOCATION_MATCH
+0x0074E500	CTCContainerRewardHero	HasReward	?HasReward@CTCContainerRewardHero@@QBE_NXZ	CTCContainerRewardHero::HasReward	?HasReward@CTCContainerRewardHero@@QAEJXZ	Ego_r 0x007605A0 + FableWin 0x0259C630 (bool, const); `return a || b` keeps retail mov eax,1 / xor eax,eax; bound so by 0x007EB6A0; RELOCATION_MATCH
+0x0071A730	CTCMapwho	RemoveFromMapwho	?RemoveFromMapwho@CTCMapwho@@QAEXXZ	CTCMapwho::OnDie	?CTCMapwho_OnDie@@YIXPAVCTCMapwho@@@Z (inferred from the landed source: no mangled Leaf line)	Ego_r 0x0072D990 + FableWin 0x0259A2C0; OnDie is slot 13 0x0071A7C0; moved onto engine/CTCMapwho.h (body as landed ~CTCMapwho 0x0071A790); RELOCATION_MATCH
+0x00ABFDC0	C3DMeshFileMaterialExtChunk	GetSelfIllumination	?GetSelfIllumination@C3DMeshFileMaterialExtChunk@@QBEKXZ	CWorld::DrawGetEnvironment	?DrawGetEnvironment@CWorld@@QAEPAVCIDrawEnvironment@@XZ (inferred from the landed source: no mangled Leaf line)	Ego_r 0x00C3C8E0 + FableWin 0x0347D170; sole retail caller 0x00AC53F0 binds it; onto engine/C3DMeshFileMaterialExtChunk.h _METHODS; MATCH
+0x00810F40	NEntityEvents::CEventHitBase	GetHitParams	?GetHitParams@CEventHitBase@NEntityEvents@@QBEABVCHitParameters@@XZ	_global::GetMember_dword0x8_00810f40	?DrawGetEnvironment@@YIHPBE@Z (inferred from the landed source: no mangled Leaf line)	Ego_r 0x00807060 + FableWin 0x025A7ED0; body mov eax,[ecx+8] = PHitParams; sole retail caller 0x0094F180 binds it; onto engine/NEntityEvents_CEventHitBase.h GETHITPARAMS; MATCH
+0x009D47C0	CBankCreatorException	~CBankCreatorException	??1CBankCreatorException@@QAE@XZ	_global::Dtor_CCharStringBase_009d47c0	?Destroy@Pair@@QAEXXZ	Ego_r 0x00B19590 + FableWin 0x02F730A0; only reference is ThrowInfo 0x013693B4 (.?AVCBankCreatorException@@) pmfnUnwind; Ego_r members EntrySymbol/ErrorText CCharString; catalog module _global, RENAMES module CBankCreatorException; RELOCATION_MATCH
+0x0049B760	std::vector<CCharString,std::allocator<CCharString> >	resize	?resize@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXI@Z	CCharStringVector::resize	?resize@CCharStringVector@@QAEXI@Z	descriptive-by-library (STLport; PDBs are Dinkumware); binders 0x009CE5E0 + 0x00CBFB7D already bind this symbol; explicit instantiation over stlport/fable_containers.h (+ERASE_RANGE_OUTOFLINE); RELOCATION_MATCH
+0x00464931	std::vector<unsigned long,std::allocator<unsigned long> >	resize	?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z	CArray::resize	?resize@CArrayElem@@QAEXIABUElem@@@Z (inferred from the landed source: no mangled Leaf line)	descriptive-by-library (STLport const& form); landed binders 0x004648A1 / 0x00B22B40 / 0x009CE5E0 bind it; explicit instantiation over stlport/fable_containers.h (+optimize s, ERASE_RANGE_OUTOFLINE); RELOCATION_MATCH
+0x009D3DF0	std::vector<CBankFileEntryUpdateData*,std::allocator<CBankFileEntryUpdateData*> >	resize	?resize@?$vector@PAVCBankFileEntryUpdateData@@V?$allocator@PAVCBankFileEntryUpdateData@@@std@@@std@@QAEXIABQAVCBankFileEntryUpdateData@@@Z	_global::Resize_CRetailVector_009d3df0	?Resize_CRetailVector_009d3df0@CRetailVector_009d3df0@@QAEXKABJ@Z (inferred from the landed source: no mangled Leaf line)	descriptive-by-library (STLport const& form; FableWin 0x02F9E960 is the Dinkumware by-value form); binder 0x009CE5E0 binds it; explicit instantiation over stlport/fable_containers.h; RELOCATION_MATCH
+0x0066FB10	CTCCoopSpirit	AddScore	?AddScore@CTCCoopSpirit@@QAEXJ@Z	CTCCoopSpirit::AddExperience	@CTCCoopSpirit_AddExperience_0066fb10@12 (inferred from the landed source: no mangled Leaf line)	Ego_r 0x00677220 (+FableWin); Ego_r order AddExperience/AddScore/GetScore/ResetScore/GetSpiritDef; body Score(+0x10)+=n; 0x00854DD0 binds it; MATCH
+0x0066FB30	CTCCoopSpirit	ResetScore	?ResetScore@CTCCoopSpirit@@QAEXXZ	ClearField10	@ClearField10_0066fb30@4 (inferred from the landed source: no mangled Leaf line)	Ego_r 0x00677240 (+FableWin); body Score(+0x10)=0; Ego_r order; MATCH
+0x0066FB40	CTCCoopSpirit	GetSpiritDef	?GetSpiritDef@CTCCoopSpirit@@ABEABVCCoopSpiritDef@@XZ	ReturnField28	@ReturnField28_0066fb40@4 (inferred from the landed source: no mangled Leaf line)	Ego_r 0x00677250 (+FableWin), private const; body returns PCoopSpiritDef (+0x28); Ego_r order; MATCH
+0x00670000	CTCCoopSpirit	GetMeleeTargetRange	?GetMeleeTargetRange@CTCCoopSpirit@@QBEMXZ	CTCPhysicsBase::GetAirResistance	?CTCPhysicsBase_GetAirResistance@@YIMPBVCTCPhysicsBase@@@Z (inferred from the landed source: no mangled Leaf line)	Ego_r 0x00677730 (+FableWin); body def(+0x28)->MeleeTargetRange (+0x38, Ego_r CCoopSpiritDef); 0x00854DD0 binds it; MATCH
+0x006B2BD0	CEnvironment	GetRainStrength	?GetRainStrength@CEnvironment@@QBEMXZ	_global::GetMember_float0x1c4_006b2bd0	?M@C006b2bd0@@QAEMXZ	Ego_r 0x006EE650 + FableWin 0x0244E1E0; fld [ecx+1C4h]; binder 0x006B2260 already right; engine/CEnvironment.h RAINSTRENGTH + WEATHERSCALERS; MATCH
+0x006B5D80	NEnvironmentInternal::CBlendedEnvironmentTheme	~CBlendedEnvironmentTheme	??1CBlendedEnvironmentTheme@NEnvironmentInternal@@QAE@XZ	CBlendedEnvironmentTheme::~CBlendedEnvironmentTheme	??1CBufferPairTriple_006b5d80@@QAE@XZ (inferred from the landed source: no mangled Leaf line)	Ego_r 0x006F1D10 + FableWin 0x0244D5F0; ctor/dtor pairing in 0x006B3FF0; six landed binders already bind it; on engine/CBlendedEnvironmentTheme.h; RELOCATION_MATCH
+0x004379E0	CPlayerGui	ShowScreenshotMessage	?ShowScreenshotMessage@CPlayerGui@@QAEXXZ	_global::Forward_BoughtSomething_via0x248_004379e0	?Run@T@@QAEXXZ	Ego_r 0x0044A6C0 + FableWin 0x01A80960; body forwards PDrawNPCName(+0x248)->ShowScreenshotMessage 0x00657280 (Ego_r 0x00699480 + FableWin 0x02114070); binder 0x0055D180 already right; engine/CPlayerGui.h MEMBERS + SCREENSHOTMESSAGE, overlay opt-in on NPlayerGui_CDrawNPCName.h; RELOCATION_MATCH
+0x00A0D980	CXBConfig	FormatDateTime	?FormatDateTime@CXBConfig@@SIXABU_FILETIME@@PAG1H@Z	_global::FormatDateTime	?FormatDateTime@@YIXABU_FILETIME@@PAG1J@Z	Ego_r 0x00B77FA0 + FableWin 0x0318FD40 (PA_W there; unsigned short on the lane as engine/CXBConfig.h); binders 0x0055D180 / 0x00595CC1 already bind it; RELOCATION_MATCH
+0x006A7B90	CThingFilter_IsHuman	operator()	??RCThingFilter_IsHuman@@QBE_NABVCThingCreatureBase@@@Z	CThingFilter_IsHuman::operator()	??RCThingFilter_IsHuman@@QAEJPAUCThingCreatureBaseCalls@@@Z (inferred from the landed source: no mangled Leaf line)	Ego_r 0x005A3150 + FableWin 0x01F95C80; body GetCreatureType 0x00662000 (both PDBs) != NOT_HUMAN; on engine/CThingCreatureBase.h CREATURETYPE; RELOCATION_MATCH
+0x0055D4C0	CTCPhotojournalCapture	TakeTheBloodyScreenshot	?TakeTheBloodyScreenshot@CTCPhotojournalCapture@@QAEXXZ	std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	?Dest_val@@YIXPAX@Z (inferred from the landed source: no mangled Leaf line)	Ego_r 0x005D67F0 + FableWin 0x023E2F90; body TakeQuickScreenshot 0x0055D180 + CPlayerGui singleton Open 0x004374B0; engine/CPlayerGui.h _OPEN; no landed caller; RELOCATION_MATCH
+# Section 2
+0x00747330	?GetScale@CTCGraphicAppearance@@QAEMXZ	?GetFullScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ
+0x0075A530	?GetScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ	?GetFullScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ
+0x0095FED0	?GetHeadPendingDeed@CTCCreatureOpinionOfHero@@QAEPAVCOpinionDeed@@XZ	?GetHeadPendingDeed@CTCCreatureOpinionOfHero@@QAEPBVCOpinionDeed@@XZ
+0x006DE8B0	?Helper@S@@QAEXPAX@Z	?PlaySoundW@CTCTrophy@@AAEKABVCCharString@@@Z
+0x006DEE80	?PlaySoundW@CTCTrophy@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCTrophy@@AAEKABVCCharString@@@Z
+0x006DF480	?PlaySound@CTCTrophy@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCTrophy@@AAEKABVCCharString@@@Z
+0x006DF480	?UpdateGainedWitnessSounds@CTCTrophy@@QAEXXZ	?UpdateGainedWitnessSounds@CTCTrophy@@AAEXXZ
+0x006DF480	?StartDialogBox@CTCTrophy@@QAEXVCWideString@@K000@Z	?StartDialogBox@CTCTrophy@@AAEXVCWideString@@K000@Z
+0x006DDA50	?StartDialogBox@CTCTrophy@@QAEXVCWideString@@K000@Z	?StartDialogBox@CTCTrophy@@AAEXVCWideString@@K000@Z
+0x00725290	?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@QAEXPAVCPhysicsCollideResponse@@@Z	?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@IBEXAAVCPhysicsCollideResponse@@@Z
+0x007617A0	?EditorDrawSphere@@YIXPAVCEnginePrimitivePrepareInfo@@ABVC3DVector@@1M@Z	?DrawSquare@NCameraModes@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@1M@Z
+0x004C8C00	?OnDie@CTCMapwho@@QAEXXZ	?RemoveFromMapwho@CTCMapwho@@QAEXXZ
+0x0075A530	?OnDie@CTCMapwho@@QAEXXZ	?RemoveFromMapwho@CTCMapwho@@QAEXXZ
+0x009CC750	CBankStateBlock::GetCRC() const (virtual slot 2, member name)	CBankStateBlock::CreateCRC() (virtual slot 2, non-const)
+0x00581B33	?GetSaveDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	?GetPhotojournalDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ
+0x007D4CE0	??RCThingFilter_IsHuman@@QBE_NABVCThing@@@Z	??RCThingFilter_IsHuman@@QBE_NABVCThingCreatureBase@@@Z
+0x00943830	??RCThingFilter_IsHuman@@QBE_NABVCThing@@@Z	??RCThingFilter_IsHuman@@QBE_NABVCThingCreatureBase@@@Z
+0x00687F80	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00687FD0	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00688EB0	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x006894C0	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00689C40	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x0068AE30	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x0068B2E0	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x0068B7C0	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x0068C6E0	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x0068C880	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x0068CAC0	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x0068D890	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x0068F320	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00690030	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00690390	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00690480	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x006909A0	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00690B20	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00690E70	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00690FD0	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00691130	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00691680	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00691870	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x007E5230	?SetHandled@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x00690360	?RequestReboot@CProcessedInput@@QAEXXZ	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
+0x006882F0	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x00688EB0	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x00689050	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x00689C40	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x0068C6E0	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x0068C760	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x0068C7F0	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x0068CAC0	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x0068D790	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x0068D790	?GetEventGameActionVector@CInputProcessGameBase@@QAE_NJABVCInputEvent@@PAVC2DVector@@@Z	?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z
+0x0068E2C0	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x0068E8F0	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x0068EA60	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x0068ECA0	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x0068F180	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x00690030	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x006909A0	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x00690C70	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x00690D30	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x00691470	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x006A4040	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x00688A80	?GetEventGameActionVector@CInputProcessGameBase@@QAE_NJABVCInputEvent@@PAVC2DVector@@@Z	?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z
+0x0068D700	?GetEventGameActionVector@CInputProcessGameBase@@QAE_NJABVCInputEvent@@PAVC2DVector@@@Z	?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z
+0x0068D890	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x0068D890	?GetEventGameActionVector@CInputProcessGameBase@@QAE_NJABVCInputEvent@@PAVC2DVector@@@Z	?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z
+0x00690390	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x007E5230	?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+0x007E5230	?GetEventGameActionVector@CInputProcessGameBase@@QAE_NJABVCInputEvent@@PAVC2DVector@@@Z	?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z
+0x00845350	?SetShowingCreature@CTCTrophy@@QAEXPAVCThing@@@Z	?OnShowTrophyInitialise@CTCTrophy@@QAEXAAVCThing@@@Z

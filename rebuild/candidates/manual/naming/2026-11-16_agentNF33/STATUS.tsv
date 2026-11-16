@@ -1,0 +1,81 @@
+address	change	grade	test	grades_used	entries	note
+0x004BBFF0	self rename (onto shared header)	MATCH	PASS (recheck_final.log)	1	004bbff0	was free CMap_DrawGetSeaLevel; test self-contained, unchanged
+0x00747330	caller respell (local model declaration)	RELOCATION_MATCH	PASS (recheck_final.log)	1	004bbff0	pre-existing local CTCGraphicAppearance stand-in put in namespace NGraphicAppearance with GetFullScale() const
+0x0075A530	caller respell (local model declarations)	RELOCATION_MATCH	PASS (recheck_final.log)	6	004bbff0,0071a730	OnDie->RemoveFromMapwho (grade 6); GetScale->GetFullScale; 0x00A358F0 respell to C3DMeshObject::GetPositionMatrixFromRHSet tried 3 ways (header TransformVector, named local, const-ref), all DIFFER in BoundingRadius scheduling: left
+0x0095FED0	caller respell (local model declaration)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00683770	GetHeadPendingDeed returns const COpinionDeed*
+0x006DE8B0	self rename (onto shared header)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006ddcd0	stand-in struct S -> CTCTrophy::OnShowTrophyInitialise on engine/CTCTrophy.h (first compile timed out on a CDefString #error; not counted as a grade result)
+0x006DDCD0	self rename (access)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006ddcd0	private:
+0x006DD7E0	self rename (access)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006dd7e0	private:
+0x006DEE80	self rename (access) + callee respell	RELOCATION_MATCH	PASS (recheck_final.log)	1	006dee80,006ddcd0	private:; Leaf line added
+0x006DF480	caller respell (access, PlaySound->PlaySoundW)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006dee80,006ddcd0,006dd7e0	local model
+0x006DDA50	caller respell (access)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006dd7e0	local model
+0x006B0610	self rename (access)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006b0610	protected:
+0x00725290	caller respell (access, const, reference)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006b0610	local model
+0x007617A0	caller respell (free function)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00875fb0	EditorDrawSphere(info*) -> NCameraModes::DrawSquare(const info&)
+0x00747030	self rename (onto shared header)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00747030	
+0x00812340	self rename (parameter type)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00812340	
+0x0074E500	self rename (bool const)	RELOCATION_MATCH	PASS (recheck_final.log)	2	0074e500	first try (if/return true) emitted mov al,1
+0x0071A730	self rename (onto shared header)	RELOCATION_MATCH	PASS (recheck_final.log)	2	0071a730	test rewritten (the old one linked the free CTCMapwho_OnDie; now links the row with stubbed GetWorldMap / RemoveThing, PassPattern kept)
+0x004C8C00	caller respell (local model declaration)	RELOCATION_MATCH	PASS (recheck_final.log)	1	0071a730	
+0x00ABFDC0	self rename (onto shared header)	MATCH	PASS (recheck_final.log)	1	00abfdc0	
+0x00810F40	self rename (onto shared header)	MATCH	PASS (recheck_final.log)	3	00810f40	grade 1 PRECHECK #error (no compile), 2 C2440 (CThing incomplete), 3 MATCH
+0x009D47C0	self rename (local model, no header)	RELOCATION_MATCH	PASS (recheck_final.log)	1	009d47c0	test self-contained, unchanged
+0x0049B760	self rename (shared stlport header)	RELOCATION_MATCH	PASS (recheck_final.log)	1	0049b760	test self-contained? see final recheck
+0x00464931	self rename (shared stlport header)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00464931	
+0x009D3DF0	self rename (shared stlport header)	RELOCATION_MATCH	PASS (recheck_final.log)	1	009d3df0	
+0x009CC750	member respell (local model virtual slot 2)	RELOCATION_MATCH	PASS (recheck_final.log)	1	009cc750	virtual call, no relocation; pre-existing local CBankStateBlock model
+0x0066FB10	self rename + test rewrite (local model, no header)	MATCH	PASS (recheck_final.log)	1	0066fb10	test links the row: rewritten on the same model, catalog PassPattern kept
+0x0066FB30	self rename + test rewrite (local model, no header)	MATCH	PASS (recheck_final.log)	1	0066fb30	test links the row: rewritten on the same model, catalog PassPattern kept
+0x0066FB40	self rename + test rewrite (local model, no header)	MATCH	PASS (recheck_final.log)	1	0066fb40	test links the row: rewritten on the same model, catalog PassPattern kept
+0x00670000	self rename + test rewrite (local model, no header)	MATCH	PASS (recheck_final.log)	1	00670000	test links the row: rewritten on the same model, catalog PassPattern kept
+0x006B2BD0	self rename (onto shared header)	MATCH	PASS (recheck_final.log)	2	006b2bd0	first compile C2270 (missing RAINSTRENGTH opt-in)
+0x006B5D80	self rename (onto shared header)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006b5d80	
+0x004379E0	self rename (onto shared header + overlay opt-in)	RELOCATION_MATCH	PASS (recheck_final.log)	2	004379e0	first compile C2227 (missing CPLAYERGUI_MEMBERS); callee 0x00657280 is landed as CAIStateGroup_BuyFromSeller::BoughtSomething (propagated label; its PDB name is CDrawNPCName::ShowScreenshotMessage, outside the queue)
+0x00A0D980	self rename (onto shared header)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d980	test self-contained, unchanged
+0x00581B33	caller respell (free function)	RELOCATION_MATCH	PASS (recheck_final.log)	1	0041a600	GetSaveDir is 0x0041A540 (bound so by 0x00406780)
+0x006A7B90	self rename (onto shared header)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006a7b90	test self-contained, unchanged
+0x007D4CE0	caller respell (local filter model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006a7b90	
+0x00943830	caller respell (local filter model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006a7b90	
+0x0055D4C0	self rename (callees on shared header)	RELOCATION_MATCH	PASS (recheck_final.log)	1	0055d4c0	test self-contained, unchanged
+0x00687F80	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x00687FD0	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x00688EB0	caller respell (local CProcessedInput model) + IsEventGameAction	RELOCATION_MATCH	PASS (recheck_final.log)	2	00a0d390,00687cf0	SetHandled -> SetAsPerformedEvent
+0x006894C0	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x00689C40	caller respell (local CProcessedInput model) + IsEventGameAction	RELOCATION_MATCH	PASS (recheck_final.log)	2	00a0d390,00687cf0	SetHandled -> SetAsPerformedEvent
+0x0068AE30	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x0068B2E0	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x0068B7C0	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x0068C6E0	caller respell (local CProcessedInput model) + IsEventGameAction	RELOCATION_MATCH	PASS (recheck_final.log)	2	00a0d390,00687cf0	SetHandled -> SetAsPerformedEvent
+0x0068C880	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x0068CAC0	caller respell (local CProcessedInput model) + IsEventGameAction	RELOCATION_MATCH	PASS (recheck_final.log)	2	00a0d390,00687cf0	SetHandled -> SetAsPerformedEvent
+0x0068D890	caller respell (local CProcessedInput model) + IsEventGameAction / GetControlMovementFromGameActionEvent	RELOCATION_MATCH	PASS (recheck_final.log)	2	00a0d390,00687cf0,00687d00	SetHandled -> SetAsPerformedEvent
+0x0068F320	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x00690030	caller respell (local CProcessedInput model) + IsEventGameAction	RELOCATION_MATCH	PASS (recheck_final.log)	2	00a0d390,00687cf0	SetHandled -> SetAsPerformedEvent
+0x00690390	caller respell (local CProcessedInput model) + IsEventGameAction	RELOCATION_MATCH	PASS (recheck_final.log)	2	00a0d390,00687cf0	SetHandled -> SetAsPerformedEvent
+0x00690480	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x006909A0	caller respell (local CProcessedInput model) + IsEventGameAction	RELOCATION_MATCH	PASS (recheck_final.log)	2	00a0d390,00687cf0	SetHandled -> SetAsPerformedEvent
+0x00690B20	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x00690E70	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x00690FD0	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x00691130	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x00691680	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x00691870	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	SetHandled -> SetAsPerformedEvent
+0x007E5230	caller respell (local CProcessedInput model) + IsEventGameAction / GetControlMovementFromGameActionEvent	RELOCATION_MATCH	PASS (recheck_final.log)	2	00a0d390,00687cf0,00687d00	SetHandled -> SetAsPerformedEvent
+0x00690360	caller respell (local CProcessedInput model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00a0d390	RequestReboot -> SetAsPerformedEvent
+0x006882F0	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x00689050	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x0068C760	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x0068C7F0	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x0068D790	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0,00687d00	(long, ..) -> (EGameAction, ..) const; GetEventGameActionVector(.., C2DVector*) -> GetControlMovementFromGameActionEvent(.., C2DVector&) const
+0x0068E2C0	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x0068E8F0	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x0068EA60	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x0068ECA0	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x0068F180	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x00690C70	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x00690D30	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x00691470	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x006A4040	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687cf0	(long, ..) -> (EGameAction, ..) const
+0x00688A80	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687d00	GetEventGameActionVector(.., C2DVector*) -> GetControlMovementFromGameActionEvent(.., C2DVector&) const
+0x0068D700	caller respell (local CInputProcessGameBase model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	00687d00	GetEventGameActionVector(.., C2DVector*) -> GetControlMovementFromGameActionEvent(.., C2DVector&) const
+0x00845350	caller respell (local CTCTrophy model)	RELOCATION_MATCH	PASS (recheck_final.log)	1	006de8b0	found by the leaf-collision check (reloc_bindings target scan); SetShowingCreature was descriptive

@@ -1,10 +1,12 @@
 // CInputProcessFirstPerson::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- leave first-person mode (player mode 0x10) and mark the input handled on a left-stick deflection longer than 0.0001, or on a held button that is not game action 5, 2 or 0x13
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068CAC0, length 149 bytes.
 // Callees: CInputEvent::GetEventType @ 0x00A03B40 (`mov eax,[ecx+28h]`), CInputEvent::GetAnalogueVector @ 0x00A043A0
 // (C2DVector by hidden pointer; manifest label GetDefaultVal<CEngineGraphic> is propagated),
 // CInputProcessGameBase::IsEventButtonHeld @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, CPlayer::RemoveMode @ 0x00634190
-// (MyPlayer +0x18), CProcessedInput::SetHandled @ 0x00A0D390. Float constant 0x0129BA3C = 0.0001f.
+// (MyPlayer +0x18), CProcessedInput::SetAsPerformedEvent @ 0x00A0D390. Float constant 0x0129BA3C = 0.0001f.
 // Shape: `!(len > eps)` (not `len <= eps`, which adds a `jnp`); `x*x + y*y` in one expression squares y first; the length test and the action tests both end
 // in one shared `jne` to the exit; the event rides in esi, `this` in edi.
 // Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
@@ -22,13 +24,14 @@ public:
 };
 class CProcessedInput {
 public:
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class CPlayer {
 public:
     void RemoveMode(EPlayerMode mode);                    // 0x00634190
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -39,7 +42,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessFirstPerson : public CInputProcessGameBase {
 public:
@@ -53,10 +56,10 @@ void CInputProcessFirstPerson::ProcessInput(const CInputEvent& event, CProcessed
         if (!(sqrt(stick.x * stick.x + stick.y * stick.y) > 0.0001f))
             return;
     } else {
-        if (!IsEventButtonHeld(event) || IsEventGameAction(5, event) || IsEventGameAction(2, event)
-            || IsEventGameAction(0x13, event))
+        if (!IsEventButtonHeld(event) || IsEventGameAction((EGameAction)(5), event) || IsEventGameAction((EGameAction)(2), event)
+            || IsEventGameAction((EGameAction)(0x13), event))
             return;
     }
     MyPlayer->RemoveMode((EPlayerMode)(0x10));
-    processed.SetHandled();
+    processed.SetAsPerformedEvent();
 }

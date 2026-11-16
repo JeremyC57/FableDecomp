@@ -4,7 +4,7 @@
 // Callees: CInputEvent::GetType @ 0x00A03B40, CInputEvent::GetAnaloguePosition @ 0x00A043A0 (C2DVector by hidden pointer, as the
 //   landed CTCAssassinRush::UpdateDirectionOverride 0x007A9960), CInputProcessInventoryBase::ChangeSelection @ 0x006893D0,
 //   CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90 / IsEventButtonReleased @ 0x00687B30 / IsEventGameAction
-//   @ 0x00687CF0 (manifest "_Cons_val" label is propagated), CProcessedInput::SetHandled @ 0x00A0D390.
+//   @ 0x00687CF0 (manifest "_Cons_val" label is propagated), CProcessedInput::SetAsPerformedEvent @ 0x00A0D390.
 // Layout: rebuild/include/engine/CInputProcessInventoryBase.h (sizeof 0x34): CurrentMovement +0x28 (ECurrentMovement). Modelled
 //   locally because the slot-9 screen accessor (pure in the base vtable 0x012376CC, overridden per screen at 0x006896A0..) and
 //   the screen's slots 38..41 / 62..65 need real virtuals. Stick thresholds: 0x0125BEC8 = 0.6f, 0x0125BED4 = -0.6f,
@@ -18,7 +18,7 @@ public:
 };
 class CProcessedInput {
 public:
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class CInventoryScreen {
 public:
@@ -120,17 +120,17 @@ void CInputProcessInventoryBase::ProcessInput(const CInputEvent& event, CProcess
         if (stick.Y > 0.6f) {
             if (ChangeSelection(MOVEMENT_UP))
                 screen->OnStickUp();
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (stick.Y < -0.6f) {
             if (ChangeSelection(MOVEMENT_DOWN))
                 screen->OnStickDown();
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (stick.X < -0.9f) {
             screen->OnStickLeft();
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (stick.X > 0.9f) {
             screen->OnStickRight();
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else
             CurrentMovement = MOVEMENT_NONE;
     }
@@ -138,17 +138,17 @@ void CInputProcessInventoryBase::ProcessInput(const CInputEvent& event, CProcess
         if (IsEventGameAction(0x25, event)) {
             if (ChangeSelection(MOVEMENT_UP))
                 GetScreen()->OnPreviousPage();
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(0x26, event)) {
             if (ChangeSelection(MOVEMENT_UP))
                 GetScreen()->OnNextPage();
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(0x27, event)) {
             GetScreen()->OnPreviousTab();
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(0x28, event)) {
             GetScreen()->OnNextTab();
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         }
     }
 }

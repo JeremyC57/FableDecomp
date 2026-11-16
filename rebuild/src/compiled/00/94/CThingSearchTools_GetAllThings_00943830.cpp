@@ -94,7 +94,7 @@ template <class T> __declspec(noinline) void CResultVector<T>::_M_insert_overflo
 class CThingCreatureBase : public CThing { public: enum { ThingTypeMask = 0xf }; };
 class CThingFilter_IsHuman { public:
     long Data;
-    bool operator()(const CThing& thing) const;       // 0x006A7B90
+    bool operator()(const CThingCreatureBase& creature) const;   // 0x006A7B90 (Ego_r 0x005A3150 + FableWin 0x01F95C80; NF33, was const CThing&)
 };
 class CThingFilter_IsNot { public:
     const CThing* Thing;

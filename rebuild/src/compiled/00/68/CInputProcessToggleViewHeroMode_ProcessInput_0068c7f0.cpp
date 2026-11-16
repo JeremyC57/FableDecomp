@@ -1,6 +1,8 @@
 // CInputProcessToggleViewHeroMode::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a held button that is game action 0x70, or (while the player is in mode 0x2f) any held button from controller 1, queue game event 0x55 (toggle view-hero mode)
 // Retry 10: matches under the RTM 13.10.3077 compiler with /GS (the QFE shadowing of `processed` into ebx was the DDK compiler).
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068C7F0, length 129 bytes.
 // Callees: CInputProcessGameBase::IsEventButtonHeld @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, CPlayer::HasMode
@@ -35,6 +37,7 @@ public:
     bool HasMode(EPlayerMode mode) const;                       // 0x00634160 ?HasMode@CPlayer@@QBE_NW4EPlayerMode@@@Z (agentNF16)
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -46,7 +49,7 @@ public:
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90 (kind 0x13)
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessToggleViewHeroMode : public CInputProcessGameBase {
 public:
@@ -56,6 +59,6 @@ public:
 void CInputProcessToggleViewHeroMode::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
     if (IsEventButtonHeld(event)
-        && (IsEventGameAction(0x70, event) || (MyPlayer->HasMode((EPlayerMode)0x2f) && event.GetControllerIndex() == 1)))
+        && (IsEventGameAction((EGameAction)(0x70), event) || (MyPlayer->HasMode((EPlayerMode)0x2f) && event.GetControllerIndex() == 1)))
         processed.AddGameEvent(0x55);
 }

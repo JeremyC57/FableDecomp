@@ -1,6 +1,8 @@
 // CInputProcessBButtonExitMode::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a held-button event that is game action 0x30 (B), queue an "exit mode" game event (type 0x3f) carrying the player's current mode
 // Retry 10: matches under the RTM 13.10.3077 compiler with /GS (the QFE shadowing of `processed` into ebx was the DDK compiler).
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068C760, length 131 bytes.
 // Callees: CInputProcessGameBase::IsEventButtonHeld @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, CPlayer::GetCurrentMode
@@ -37,6 +39,7 @@ public:
     EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                   // 0x00633BE0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -48,7 +51,7 @@ public:
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90 (kind 0x13; manifest "IsEventButtonHeld")
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
     bool IsGameActionEventInQueue(long action, long buttonEventType); // 0x00687D50
 };
 class CInputProcessBButtonExitMode : public CInputProcessGameBase {
@@ -58,7 +61,7 @@ public:
 
 void CInputProcessBButtonExitMode::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    if (IsEventButtonHeld(event) && IsEventGameAction(0x30, event)) {
+    if (IsEventButtonHeld(event) && IsEventGameAction((EGameAction)(0x30), event)) {
         CGameEvent gameEvent(0x3f);
         gameEvent.AddLong(MyPlayer->GetCurrentMode());
         processed.AddGameEvent(gameEvent);

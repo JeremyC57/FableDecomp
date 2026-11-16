@@ -1,4 +1,4 @@
-// CInputProcessRebootGame::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- for an event of kind 0x15 (0x00A03B40), consume it (0x00A03B90) and request the reboot through the processed input (0x00A0D390)
+// CInputProcessRebootGame::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- for an event of kind 0x15 (0x00A03B40), consume it (0x00A03B90) and mark the processed input performed (CProcessedInput::SetAsPerformedEvent 0x00A0D390)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690360, length 48 bytes.
 // Leaf: ?ProcessInput@CInputProcessRebootGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
 // The callee labels ("CWorld::DrawGetEnvironment", "GetCanItemBeQuickAssigned", "CWomanToAttract::Init") are propagated. Shape: the event in esi, `cmp eax,15h`, `ret 8`.
@@ -7,7 +7,7 @@ class CInputEvent { public:
     void MarkAsUsed() const;                       // 0x00A03B90
 };
 class CProcessedInput { public:
-    void RequestReboot();                          // 0x00A0D390
+    void SetAsPerformedEvent();                    // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830; NF33, was the made-up RequestReboot)
 };
 class CInputProcessRebootGame { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
@@ -18,6 +18,6 @@ void CInputProcessRebootGame::ProcessInput(const CInputEvent& event, CProcessedI
 {
     if (event.GetKind() == 0x15) {
         event.MarkAsUsed();
-        processed.RequestReboot();
+        processed.SetAsPerformedEvent();
     }
 }

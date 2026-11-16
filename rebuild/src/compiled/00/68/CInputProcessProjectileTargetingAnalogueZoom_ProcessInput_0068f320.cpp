@@ -4,7 +4,7 @@
 // Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), CInputProcessGameBase::GetEventGameActionVector(long,
 //   const CInputEvent&, C2DVector*) @ 0x00687D00 (landed name), IsEventGameAction @ 0x00687CF0, IsEventButtonPressed
 //   @ 0x00687A90, the component map's LowerBound @ 0x0040F020, the zoom component's AdjustZoom(float) @ 0x00789A10
-//   (adds delta * k to +0x40 and clamps it to [0,1]; manifest "ZoomControl_Update"), CProcessedInput::SetHandled @ 0x00A0D390.
+//   (adds delta * k to +0x40 and clamps it to [0,1]; manifest "ZoomControl_Update"), CProcessedInput::SetAsPerformedEvent @ 0x00A0D390.
 //   Float pool: 1/255 @ 0x01231724; the +-196/255 deltas are pushed as immediates.
 // Layout: `this` is engine/CInputProcessGameBase.h (MyPlayer +0x18); CThing dead flag bit 0 of +0x91, component bitset +0x20
 //   (0x81 = word 4 bit 1, read as `test al,2` on +0x30) and map +0x44 as in the landed CInputProcessBetting 0x00691560.
@@ -19,7 +19,7 @@ class C2DVector { public:
 class CInputEvent;
 class CProcessedInput {
 public:
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 struct CTCProjectileZoom {
     void AdjustZoom(float delta);                  // 0x00789A10
@@ -86,5 +86,5 @@ void CInputProcessProjectileTargetingAnalogueZoom::ProcessInput(const CInputEven
         hero->GetTC(0x81)->AdjustZoom(-196.0f / 255.0f);
     else
         return;
-    processed.SetHandled();
+    processed.SetAsPerformedEvent();
 }

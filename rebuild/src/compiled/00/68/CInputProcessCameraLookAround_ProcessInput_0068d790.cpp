@@ -1,5 +1,7 @@
 // CInputProcessCameraLookAround::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- turn the right-stick look-around input into the camera manager's look vector: the analogue vector of game action 0x4d or 0x3d, else +1 / -1 along x for the digital actions 0x3e / 0x3f; nothing for other events
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068D790, length 155 bytes.
 // Callees: CInputProcessGameBase::GetEventGameActionVector(long, const CInputEvent&, C2DVector*) @ 0x00687D00 (forwards to
 // the game player interface at +0x24; manifest label propagated), IsEventGameAction @ 0x00687CF0, the current game
@@ -28,6 +30,7 @@ class CWorld { public:
     CAIGameCameraBase* GetCurrentGameCamera() { return PCurrentGameCamera; }
 };
 class CPlayer; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -37,8 +40,8 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventGameAction(long action, const CInputEvent& event);                          // 0x00687CF0
-    bool GetEventGameActionVector(long action, const CInputEvent& event, C2DVector* vector); // 0x00687D00
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;                          // 0x00687CF0
+    bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& vector) const; // 0x00687D00
 };
 class CInputProcessCameraLookAround : public CInputProcessGameBase {
 public:
@@ -48,10 +51,10 @@ public:
 void CInputProcessCameraLookAround::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
     C2DVector look(0.0f, 0.0f);
-    if (!GetEventGameActionVector(0x4d, event, &look) && !GetEventGameActionVector(0x3d, event, &look)) {
-        if (IsEventGameAction(0x3e, event))
+    if (!GetControlMovementFromGameActionEvent((EGameAction)(0x4d), event, look) && !GetControlMovementFromGameActionEvent((EGameAction)(0x3d), event, look)) {
+        if (IsEventGameAction((EGameAction)(0x3e), event))
             look.x = 1.0f;
-        else if (IsEventGameAction(0x3f, event))
+        else if (IsEventGameAction((EGameAction)(0x3f), event))
             look.x = -1.0f;
         else
             return;

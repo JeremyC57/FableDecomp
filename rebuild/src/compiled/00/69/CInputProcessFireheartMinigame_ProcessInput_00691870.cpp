@@ -25,7 +25,7 @@ class CGameEvent : public CMemoryBuffer { public:
 class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class C2DVector { public: float X, Y; };
 class CTCBase;
@@ -95,16 +95,16 @@ void CInputProcessFireheartMinigame::ProcessInput(const CInputEvent& event, CPro
         if (GetEventGameActionVector(0x3c, event, stick)) {
             if (stick.Y > 0.5) {
                 minigame->ProcessInput(0);
-                processed.SetHandled();
+                processed.SetAsPerformedEvent();
             } else if (stick.Y < -0.5) {
                 minigame->ProcessInput(2);
-                processed.SetHandled();
+                processed.SetAsPerformedEvent();
             } else if (stick.X > 0.5) {
                 minigame->ProcessInput(1);
-                processed.SetHandled();
+                processed.SetAsPerformedEvent();
             } else if (stick.X < -0.5) {
                 minigame->ProcessInput(3);
-                processed.SetHandled();
+                processed.SetAsPerformedEvent();
             }
         }
     }
@@ -114,17 +114,17 @@ void CInputProcessFireheartMinigame::ProcessInput(const CInputEvent& event, CPro
     CTCFireheartMinigame* minigame = hero->GetInterface<CTCFireheartMinigame>(0x108);
     if (IsEventGameAction(0x2c, event) && !minigame->Quitting) {
         minigame->DelayedQuit();
-        processed.SetHandled();
+        processed.SetAsPerformedEvent();
         return;
     }
     if (IsEventGameAction(0x16, event)) {
         minigame->Answer(true);
-        processed.SetHandled();
+        processed.SetAsPerformedEvent();
         return;
     }
     if (IsEventGameAction(0x17, event)) {
         minigame->Answer(false);
-        processed.SetHandled();
+        processed.SetAsPerformedEvent();
         return;
     }
     if (IsEventGameAction(3, event) && hero->HasTC(0xc6)) {

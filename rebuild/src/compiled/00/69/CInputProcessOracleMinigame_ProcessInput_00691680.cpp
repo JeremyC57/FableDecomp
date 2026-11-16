@@ -6,11 +6,11 @@
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
 //   CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), the component map's LowerBound @ 0x0040F020,
 //   CTCOracleMinigame::PushSymbolToQueue(long) @ 0x007E5F70 and Quit() @ 0x007E62D0, CMemoryBuffer::Copy @ 0x009F1760,
-//   CProcessedInput::AddGameEvent(const CGameEvent&) @ 0x00A0D340 / SetHandled @ 0x00A0D390.
+//   CProcessedInput::AddGameEvent(const CGameEvent&) @ 0x00A0D340 / SetAsPerformedEvent @ 0x00A0D390.
 // Layout: `this` is engine/CInputProcessGameBase.h (MyPlayer +0x18); CThing component bitset +0x20..+0x43 (0x107 = word 8
 //   bit 7, read as the sign of the byte at +0x40; 0xC6 = word 6 bit 6) and map +0x44 as in the landed
 //   CInputProcessBetting 0x00691560; CGameEvent (Ego_r.pdb, 40 bytes) as in the landed 0x0068E8F0.
-// Shape: the same press/fishing-style event arm as CInputProcessFishing::ProcessInput 0x00690B20; SetHandled closes every
+// Shape: the same press/fishing-style event arm as CInputProcessFishing::ProcessInput 0x00690B20; SetAsPerformedEvent closes every
 //   pressed path, including the no-match one.
 #include "fable_compiler.h"
 #include "engine/CInputProcessGameBase.h"
@@ -32,7 +32,7 @@ class CGameEvent : public CMemoryBuffer { public:
 class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class CTCOracleMinigame { public:
     void PushSymbolToQueue(long symbol);           // 0x007E5F70
@@ -99,5 +99,5 @@ void CInputProcessOracleMinigame::ProcessInput(const CInputEvent& event, CProces
         gameEvent.AddBool(true);
         processed.AddGameEvent(gameEvent);
     }
-    processed.SetHandled();
+    processed.SetAsPerformedEvent();
 }

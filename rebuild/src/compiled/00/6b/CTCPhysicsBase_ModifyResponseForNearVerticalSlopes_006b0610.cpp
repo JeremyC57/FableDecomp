@@ -1,5 +1,6 @@
 // CTCPhysicsBase::ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse& response) const -- for class-2 things, flatten a collision normal that is steeper than the physics def's clamped maximum slope into a horizontal unit normal
-// Leaf: ?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@QBEXAAVCPhysicsCollideResponse@@@Z
+// Leaf: ?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@IBEXAAVCPhysicsCollideResponse@@@Z
+// NF33 (2026-11-16): protected per Ego_r.pdb 0x006ED540 + FableWin.pdb (the row emitted the public QBE spelling).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B0610, length 286 bytes (+ int3 padding), `ret 4`. FableWin.pdb:
 // ?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@IBEXAAVCPhysicsCollideResponse@@@Z (protected, const).
@@ -71,6 +72,7 @@ protected:
 class CTCPhysicsBase : public CTCBase { public:
     void*     __vftable;                        // +0x00
     CThing*   ParentThing;                      // +0x04
+protected:
     void ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse& response) const;
 };
 

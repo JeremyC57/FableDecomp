@@ -10,8 +10,10 @@
 // test, the time-buffer arm with its own epilogue, its null case jumping to the shared one; a 24-byte frame
 // holding the local FILETIME then the SYSTEMTIME; GetUserDefaultLCID is a dllimport used twice (`mov esi,[imp] ;
 // call esi`), evaluated last for each formatter call (VC pushes right to left).
-// Leaf: ?FormatDateTime@@YIXABU_FILETIME@@PAG1J@Z
-struct _FILETIME { unsigned long dwLowDateTime; unsigned long dwHighDateTime; };
+// Leaf: ?FormatDateTime@CXBConfig@@SIXABU_FILETIME@@PAG1H@Z
+// NF33 (2026-11-16): the public static CXBConfig::FormatDateTime of Ego_r.pdb 0x00B77FA0 + FableWin.pdb 0x0318FD40 (engine/CXBConfig.h;
+//   PA_W there, unsigned short on the lane, flags int), as 0x0055D180 / 0x00595CC1 bind it (was the free function with long flags).
+#include "engine/CXBConfig.h"
 struct _SYSTEMTIME {
     unsigned short wYear, wMonth, wDayOfWeek, wDay, wHour, wMinute, wSecond, wMilliseconds;
 };
@@ -23,7 +25,7 @@ extern "C" __declspec(dllimport) int __stdcall GetDateFormatW(unsigned long loca
 extern "C" __declspec(dllimport) int __stdcall GetTimeFormatW(unsigned long locale, unsigned long flags, const _SYSTEMTIME* time,
                                                              const unsigned short* format, unsigned short* text, int size);  // IAT 0x0143FD2C
 
-void __fastcall FormatDateTime(const _FILETIME& time, unsigned short* dateText, unsigned short* timeText, long flags)
+void __fastcall CXBConfig::FormatDateTime(const _FILETIME& time, unsigned short* dateText, unsigned short* timeText, int flags)
 {
     if (time.dwLowDateTime == 0 && time.dwHighDateTime == 0) {
         if (dateText)

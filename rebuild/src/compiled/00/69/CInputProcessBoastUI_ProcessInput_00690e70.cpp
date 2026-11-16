@@ -3,18 +3,18 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690E70, length 323 bytes, `ret 8`.
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventButtonHeld @ 0x00687BD0,
 //   IsEventButtonReleased @ 0x00687B30, IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance
-//   @ 0x0041E5F2 (`__fastcall`, no arguments), the manager's virtual slot 0 (send a UI event), CProcessedInput::SetHandled
+//   @ 0x0041E5F2 (`__fastcall`, no arguments), the manager's virtual slot 0 (send a UI event), CProcessedInput::SetAsPerformedEvent
 //   @ 0x00A0D390 (manifest "CWomanToAttract::Init" is propagated).
 // Layout: `this` is engine/CInputProcessGameBase.h (engine/CInputProcessBoastUI.h is the same 0x28 bytes flattened);
 //   the event's mouse movement C2DVector sits at +0x0C and the front-end manager's at +0xB0 (as in the landed
 //   CInputProcessPhotojournalCapture::ProcessInput 0x00691AE0, which reaches the same members).
-// Shape: every arm ends in `Send(x)` + the shared SetHandled tail; the press and release arms end in the same
+// Shape: every arm ends in `Send(x)` + the shared SetAsPerformedEvent tail; the press and release arms end in the same
 //   0x58/0x59 tests, which VC7.1 cross-jumps into one block. The mouse vector is copied into a named local through
 //   C2DVector's user copy constructor before GetInstance runs.
 #include "engine/CInputProcessGameBase.h"
 class CProcessedInput {
 public:
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class C2DVector { public:
     float X, Y;
@@ -80,5 +80,5 @@ void CInputProcessBoastUI::ProcessInput(const CInputEvent& event, CProcessedInpu
         NUISystem::CManager::GetInstance()->SendEvent(0x19);
     } else
         return;
-    processed.SetHandled();
+    processed.SetAsPerformedEvent();
 }

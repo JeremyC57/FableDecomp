@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CC750, length 235 bytes (+5 int3), ret 0xc. Ego_r.pdb
 // ?Equals@CBankFileEntryUpdateData@@ABE_NABV?$CArray@VCCharString@@@@V?$CCountedPointer@VCBankStateBlock@@@@@Z (private
 // there; public here).
-// Callees: the state block's virtual slot 2 (+0x08, GetCRC), strcmp @ 0x00BFEBA8, operator delete @ 0x00BFE9BC (the by-value
+// Callees: the state block's virtual slot 2 (+0x08, CreateCRC), strcmp @ 0x00BFEBA8, operator delete @ 0x00BFE9BC (the by-value
 // counted pointer's count block, released on each of the three exits). "" @ 0x0129AAF4 for empty strings.
 // Shape: CCharString's inline c_str() tests the null block first (`if (p == 0) return ""; return p->Text;`, retail's
 //   `test ; jne` to the load); the loop names `const CCharString& mine = Filenames[i]` before the strcmp (its element
@@ -34,7 +34,7 @@ template <class T, int N> class CSmallVector { public:
 class CBankStateBlock {
 public:
     virtual void v00(); virtual void v01();
-    virtual unsigned long GetCRC() const;          // slot 2 (+0x08)
+    virtual unsigned long CreateCRC();             // slot 2 (+0x08): Ego_r / FableWin ?CreateCRC@<derived>@@UAEKXZ, engine/CBankStateBlock.h (NF33; was GetCRC() const)
 };
 
 class CBankFileEntryUpdateData {
@@ -51,7 +51,7 @@ public:
 bool CBankFileEntryUpdateData::Equals(const CArray<CCharString>& filenames, CCountedPointer<CBankStateBlock> stateBlock) const
 {
     unsigned long crc = StateBlockCRC;
-    if (crc != stateBlock->GetCRC())
+    if (crc != stateBlock->CreateCRC())
         return false;
     if (Filenames.size() != filenames.size())
         return false;

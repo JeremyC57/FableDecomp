@@ -7,7 +7,7 @@
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DF480, 292 bytes (plain `ret`).
 // Callees: CTCTrophy::UpdateGainedWitnessSounds() 0x006DEE80; CTCBase::GetThingManager() 0x00686AE0 (x2);
-//          CTCTrophy::PlaySound(const CCharString&) 0x006DDCD0; CCharString(const char*, long) 0x0099EBF0
+//          CTCTrophy::PlaySoundW(const CCharString&) 0x006DDCD0 (private); CCharString(const char*, long) 0x0099EBF0
 //          ("TEXT_GUI_TROPHY_TIME_UP" 0x0125FE78); NGameText::CDataBank::GetTextBySymbol(const CCharString&) 0x009C95E0
 //          (text bank CMainGameComponent::Get() +0x14); ~CCharString 0x0099EAE0; CWideString(const wchar_t*) 0x0099B6B0
 //          (L"" 0x0122D70C, x3); CWideString(const CWideString&) 0x0099B720; CTCTrophy::StartDialogBox(CWideString,
@@ -90,9 +90,11 @@ class CTCTrophy : public CTCBase { public:
     long          NumberOfWitnessesLeft;        // +0x28
     unsigned char _pad_0x2c[0x12];
     bool          WaitingForTerminate;          // +0x3e
+private:
     void UpdateGainedWitnessSounds();           // 0x006DEE80
-    unsigned long PlaySound(const CCharString& name);   // 0x006DDCD0
+    unsigned long PlaySoundW(const CCharString& name);  // 0x006DDCD0 (windows.h PlaySound -> PlaySoundW in the original source)
     void StartDialogBox(CWideString text, unsigned long flags, CWideString button1, CWideString button2, CWideString button3);   // 0x006DD7E0
+public:
     virtual void FrameUpdate();
 };
 
@@ -103,7 +105,7 @@ void CTCTrophy::FrameUpdate()
         return;
     long framesLeft = --MinigameCurrentFramesLeft;
     if (framesLeft <= 0) {
-        PlaySound(PDef->SoundOutOfTime);
+        PlaySoundW(PDef->SoundOutOfTime);
         CWideString text = CMainGameComponent::Get()->PTextBank->GetTextBySymbol("TEXT_GUI_TROPHY_TIME_UP");
         StartDialogBox(text, 10, L"", L"", L"");
         WaitingForTerminate = true;

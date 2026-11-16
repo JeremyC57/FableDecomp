@@ -1,5 +1,7 @@
 // CTCBetting::ProcessInput(const CInputEvent& event, CProcessedInput& processed, CInputProcessGameBase* input) -- while betting: the left stick's vertical push steps the bet up or down (repeat rate speeds up the longer it is held; clamped to the def's range and the hero's gold) with a tavern sound, the horizontal push snaps the bet to 1 or the previous donation; the accept / cancel game actions close the subtitle and end betting
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // SW2 sweep (advisor/007e5230/probe/t1.cpp).
@@ -7,7 +9,7 @@
 // CPlayer::GetPControlledCreature 0x00487DC0, LowerBound 0x0040F020, GetSubDef<CBettingDef> 0x007E5820,
 // CInputProcessGameBase::GetEventGameActionVector 0x00687D00 / IsEventButtonPressed 0x00687A90 / IsEventGameAction
 // 0x00687CF0, CMainGameComponent::GetFrame 0x00416225, CInputEvent::GetEventType 0x00A03B40, CCharString 0x0099EBF0 /
-// dtor 0x0099EAE0, CTCBetting::PlaySound 0x007E51D0, CProcessedInput::SetHandled 0x00A0D390, CSubtitleRenderer::Clear
+// dtor 0x0099EAE0, CTCBetting::PlaySound 0x007E51D0, CProcessedInput::SetAsPerformedEvent 0x00A0D390, CSubtitleRenderer::Clear
 // 0x00492BAB. Globals: betting flag 0x013BAE1D, bet placed 0x013BAE1E, bet 0x013BAE20, repeat delay/rates 0x01384040..4C.
 // Layout: CTCBetting as the landed 0x007E57C0; CBettingDef MaxBet +0x3c, MinBet +0x38, Step +0x40; hero gold TC (4) +0x3c.
 #include "fable_compiler.h"
@@ -25,12 +27,13 @@ public:
 };
 class CProcessedInput {
 public:
-    void SetHandled();                                  // 0x00A0D390
+    void SetAsPerformedEvent();                                  // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
+#include "engine/EGameAction.h"
 struct CInputProcessGameBase {
     bool IsEventButtonPressed(const CInputEvent& event);                // 0x00687A90
-    bool IsEventGameAction(long action, const CInputEvent& event);      // 0x00687CF0
-    bool GetEventGameActionVector(long action, const CInputEvent& event, C2DVector* vector);   // 0x00687D00
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;      // 0x00687CF0
+    bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& vector) const;   // 0x00687D00
 };
 class CSubtitleRenderer { public:
     void Clear(bool now);                               // 0x00492BAB
@@ -167,7 +170,7 @@ void CTCBetting::ProcessInput(const CInputEvent& event, CProcessedInput& process
     CDefPointer<CBettingDef> def;
     if (g_BettingActive && ParentThing->GetDef()->GetSubDef(&def)) {
     C2DVector stick;
-    if (input->GetEventGameActionVector(0x72, event, &stick) && FrameToStart <= CMainGameComponent::Get()->GetFrame()
+    if (input->GetControlMovementFromGameActionEvent((EGameAction)(0x72), event, stick) && FrameToStart <= CMainGameComponent::Get()->GetFrame()
         && event.GetEventType() == 2) {
         long held = CMainGameComponent::Get()->GetFrame() - FrameBetChangeStarted;
         bool change = false;
@@ -188,7 +191,7 @@ void CTCBetting::ProcessInput(const CInputEvent& event, CProcessedInput& process
                 PlaySound("TAVERN_GAME_BET_INCREMENT");
                 g_CurrentBet += def->BetStep * Mult;
             }
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         } else if (stick.y < -0.2f) {
             FrameBetWasLastChanged = CMainGameComponent::Get()->GetFrame();
             if (g_CurrentBet != def->MinBet && change) {
@@ -197,7 +200,7 @@ void CTCBetting::ProcessInput(const CInputEvent& event, CProcessedInput& process
                 if (g_CurrentBet < def->MinBet)
                     g_CurrentBet = def->MinBet;
             }
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         }
         if (stick.x < -0.2f)
             g_CurrentBet = 1;
@@ -207,15 +210,15 @@ void CTCBetting::ProcessInput(const CInputEvent& event, CProcessedInput& process
             g_CurrentBet = stats->Gold;
     }
     if (input->IsEventButtonPressed(event)) {
-        if (input->IsEventGameAction(0x16, event)) {
+        if (input->IsEventGameAction((EGameAction)(0x16), event)) {
             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.Clear(false);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
             g_BettingActive = false;
             g_BetPlaced = true;
             PreviousDonation = g_CurrentBet;
-        } else if (input->IsEventGameAction(0x17, event)) {
+        } else if (input->IsEventGameAction((EGameAction)(0x17), event)) {
             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.Clear(false);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
             g_BettingActive = false;
             g_BetPlaced = false;
         }

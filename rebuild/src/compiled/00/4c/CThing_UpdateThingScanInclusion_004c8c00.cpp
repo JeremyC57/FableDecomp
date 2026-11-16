@@ -4,11 +4,11 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C8C00, 143 bytes. __fastcall, `ret`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020; CThing virtual slot 17 (+0x44, 0x004C7B80; the bool
 //          query whose PDB name is most likely IsToBePlacedInMap() const -- not verified); CTCPhysicsBase::GetMapwhoPosition()
-//          0x006AFCB0 (C3DVector by value); CTCMapwho::PlaceInMapwho(const C3DVector&) 0x0071A710; CTCMapwho::OnDie()
+//          0x006AFCB0 (C3DVector by value); CTCMapwho::PlaceInMapwho(const C3DVector&) 0x0071A710; CTCMapwho::RemoveFromMapwho()
 //          0x0071A730.
 // Shape: interface 0x3A (CTCMapwho, bitset word 1 bit 26: `test dword ptr [edi+24h],4000000h`) fetched into a named local
 //        (esi); PhysicsTC (+0x60) read once into ebp; not-yet-placed + physics + query true -> PlaceInMapwho(position);
-//        else placed + physics + query false -> OnDie() (the `else if` re-tests the +0x50 bit 0 flag on the fall-through).
+//        else placed + physics + query false -> RemoveFromMapwho() (the `else if` re-tests the +0x50 bit 0 flag on the fall-through).
 // Layout: retail CThing = Ego_r.pdb - 0x10 (bitset +0x20, interface map +0x44, PhysicsTC +0x60); CTCMapwho flag byte +0x50
 //         bit 0 (descriptive name InMapwho).
 #include "fable_compiler.h"
@@ -24,7 +24,7 @@ class CTCMapwho { public:
     unsigned char _pad00[0x50];
     unsigned char InMapwho : 1;                  // +0x50 bit 0
     void PlaceInMapwho(const C3DVector& position);   // 0x0071A710
-    void OnDie();                                // 0x0071A730
+    void RemoveFromMapwho();                     // 0x0071A730 (Ego_r + FableWin ?RemoveFromMapwho@CTCMapwho@@QAEXXZ; NF33, was OnDie)
 };
 class CThing {
 public:
@@ -60,6 +60,6 @@ void CThing::UpdateThingScanInclusion()
         if (!mapwho->InMapwho && physics && IsToBePlacedInMap())
             mapwho->PlaceInMapwho(physics->GetMapwhoPosition());
         else if (mapwho->InMapwho && physics && !IsToBePlacedInMap())
-            mapwho->OnDie();
+            mapwho->RemoveFromMapwho();
     }
 }

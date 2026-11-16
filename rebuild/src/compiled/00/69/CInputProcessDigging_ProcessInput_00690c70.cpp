@@ -1,6 +1,8 @@
 // Grade: RELOCATION_MATCH with cl 13.10.3077 (RTM); the DDK 13.10.4035 build emits a different /GS prologue for this body.
 // CInputProcessDigging::ProcessInput(const CInputEvent& event, CProcessedInput& input) -- when the digging action button (game action 3) is pressed and the hero thing has component kind 0xc6, queue game event 0x1a carrying the long 0x17 and the byte 1
 // Leaf: ?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00690C70, 162 bytes, `ret 8`.
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90 and IsEventGameAction @ 0x00687CF0 (the landed
@@ -45,6 +47,7 @@ public:
     CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -55,7 +58,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90 (kind 0x13)
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessDigging : public CInputProcessGameBase {
 public:
@@ -64,7 +67,7 @@ public:
 
 void CInputProcessDigging::ProcessInput(const CInputEvent& event, CProcessedInput& input)
 {
-    if (IsEventButtonPressed(event) && IsEventGameAction(3, event) && MyPlayer->GetPControlledCreature()->HasTC(TCI_IN_GAME_MENU)) {
+    if (IsEventButtonPressed(event) && IsEventGameAction((EGameAction)(3), event) && MyPlayer->GetPControlledCreature()->HasTC(TCI_IN_GAME_MENU)) {
         input.AddGameEvent(0x1a, 0x17, 1);
     }
 }

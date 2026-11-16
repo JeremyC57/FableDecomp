@@ -1,5 +1,7 @@
 // CInputProcessSetRangedWeaponMode::ProcessInput(const CInputEvent& event, CProcessedInput& input) -- while the ranged-weapon-mode button (game action 0x2d) is held, queue game event 0x31 for a live hero; when the global gate is set, the player is not first-person targeting and the hero has component kind 0x81, that component's +0x15 flag must also be set
 // Leaf: ?ProcessInput@CInputProcessSetRangedWeaponMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068F180, 201 bytes, `ret 8`.
 // Callees: CInputProcessGameBase::IsEventButtonHeld @ 0x00687BD0 and IsEventGameAction @ 0x00687CF0 (landed model
 //   names), CPlayer::IsFirstPersonTargeting @ 0x004874D0, CPlayer::GetPControlledCreature @ 0x00487DC0 (x2), the const component-map
@@ -91,6 +93,7 @@ public:
 };
 extern bool g_rangedWeaponModeGate;                // 0x01375752
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -101,7 +104,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessSetRangedWeaponMode : public CInputProcessGameBase {
 public:
@@ -110,7 +113,7 @@ public:
 
 void CInputProcessSetRangedWeaponMode::ProcessInput(const CInputEvent& event, CProcessedInput& input)
 {
-    if (IsEventButtonHeld(event) && IsEventGameAction(0x2d, event)) {
+    if (IsEventButtonHeld(event) && IsEventGameAction((EGameAction)(0x2d), event)) {
         if (g_rangedWeaponModeGate && !MyPlayer->IsFirstPersonTargeting()) {
             CTC81* tc;
             if (MyPlayer->GetPControlledCreature()->GetInterface(&tc, 0x81) && !tc->m_15)

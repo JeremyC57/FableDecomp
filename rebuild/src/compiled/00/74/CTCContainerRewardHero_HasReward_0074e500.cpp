@@ -1,5 +1,6 @@
 // CTCContainerRewardHero::HasReward() -- true (1) when the container holds items or the parent thing's gold component (interface 204) holds a positive amount; 0 otherwise
-// Leaf: ?HasReward@CTCContainerRewardHero@@QAEJXZ
+// Leaf: ?HasReward@CTCContainerRewardHero@@QBE_NXZ
+// NF33 (2026-11-16): bool, const per Ego_r.pdb 0x007605A0 + FableWin.pdb 0x0259C630 ?HasReward@CTCContainerRewardHero@@QBE_NXZ (was long, non-const).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074E500, length 96 bytes.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (another instantiation of the
@@ -37,16 +38,14 @@ class CTCContainerRewardHero { public:
     SContainerItem* ItemsFinish;            // +0x10
     SContainerItem* ItemsEndOfStorage;      // +0x14
     unsigned long ItemCount() const { return ItemsFinish - ItemsStart; }
-    long HasReward();
+    bool HasReward() const;
 };
 
-long CTCContainerRewardHero::HasReward()
+bool CTCContainerRewardHero::HasReward() const
 {
     long gold = 0;
     const CTCGold* goldComponent;
     if (ParentThing->PeekTC(TCI_GOLD, &goldComponent))
         gold = goldComponent->GetGold();
-    if (ItemCount() > 0 || gold > 0)
-        return 1;
-    return 0;
+    return ItemCount() > 0 || gold > 0;
 }

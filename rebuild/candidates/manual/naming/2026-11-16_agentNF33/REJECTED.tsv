@@ -1,0 +1,3 @@
+tag	address	correct_symbol	reason
+land1011fk	00464931	?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIK@Z	by-value form is the FableWin Dinkumware spelling; retail STLport resize takes const T& (fable_containers.h note, 0x004428F0) and the landed binders bind QAEXIABK@Z; the const& form was applied (land1113fy)
+land1011fk	009d3df0	?resize@?$vector@PAVCBankFileEntryUpdateData@@..@QAEXIPAVCBankFileEntryUpdateData@@@Z	by-value form is FableWin Dinkumware (0x02F9E960); retail STLport takes const T& and binder 0x009CE5E0 binds QAEXIABQAV..; the const& form was applied instead (entry partial)

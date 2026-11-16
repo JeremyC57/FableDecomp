@@ -1,5 +1,7 @@
 // CInputProcessCreditsUI::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- while the hero's credits-UI component (kind 0x101) is active and not already quitting, a press of game action 0x22 starts quitting the credits
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00691470, length 121 bytes.
 // Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // @ 0x0040F020 (the thing's component map at +0x44, key by address), CInputProcessGameBase::IsEventButtonPressed
@@ -56,6 +58,7 @@ public:
     CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -66,7 +69,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90 (kind 0x13)
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessCreditsUI : public CInputProcessGameBase {
 public:
@@ -79,7 +82,7 @@ void CInputProcessCreditsUI::ProcessInput(const CInputEvent& event, CProcessedIn
     if (hero->HasTC(0x101)) {
         CTCCreditsUI* credits = (CTCCreditsUI*)hero->m_tcs.Find(0x101);
         if (credits->Active && !credits->Quitting
-            && IsEventButtonPressed(event) && IsEventGameAction(0x22, event))
+            && IsEventButtonPressed(event) && IsEventGameAction((EGameAction)(0x22), event))
             credits->Quit();
     }
 }

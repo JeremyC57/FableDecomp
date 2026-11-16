@@ -884,9 +884,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00670000'
-        Module = 'CTCPhysicsBase'
-        Source = '00/67/CTCPhysicsBase_GetAirResistance_00670000.cpp'
-        TestSource = '00/67/CTCPhysicsBase_GetAirResistance_00670000_test.cpp'
+        Module = 'CTCCoopSpirit'
+        Source = '00/67/CTCCoopSpirit_GetMeleeTargetRange_00670000.cpp'
+        TestSource = '00/67/CTCCoopSpirit_GetMeleeTargetRange_00670000_test.cpp'
         PassPattern = 'CTCPhysicsBase_00670000_TEST PASS'
     }
     [pscustomobject]@{
@@ -11939,9 +11939,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00810f40'
-        Module = '_global'
-        Source = '00/81/global_DrawGetEnvironment_00810f40.cpp'
-        TestSource = '00/81/global_DrawGetEnvironment_00810f40_test.cpp'
+        Module = 'NEntityEvents::CEventHitBase'
+        Source = '00/81/NEntityEventsCEventHitBase_GetHitParams_00810f40.cpp'
+        TestSource = '00/81/NEntityEventsCEventHitBase_GetHitParams_00810f40_test.cpp'
         PassPattern = 'AUTO_TINY_00810f40_TEST PASS'
     }
     [pscustomobject]@{
@@ -30417,8 +30417,8 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0066fb10'; Module = 'CTCCoopSpirit'
-        Source = '00/66/CTCCoopSpirit_AddExperience_0066fb10.cpp'
-        TestSource = '00/66/CTCCoopSpirit_AddExperience_0066fb10_test.cpp'
+        Source = '00/66/CTCCoopSpirit_AddScore_0066fb10.cpp'
+        TestSource = '00/66/CTCCoopSpirit_AddScore_0066fb10_test.cpp'
         PassPattern = 'PASS CTCCoopSpirit::AddExperience 0x0066FB10'
     }
     [pscustomobject]@{
@@ -30428,15 +30428,15 @@ $catalog = @(
         PassPattern = 'PASS CWorld::DrawGetEnvironment 0x0066FB20'
     }
     [pscustomobject]@{
-        Address = '0066fb30'; Module = 'runtime'
-        Source = '00/66/ClearField10_0066fb30.cpp'
-        TestSource = '00/66/ClearField10_0066fb30_test.cpp'
+        Address = '0066fb30'; Module = 'CTCCoopSpirit'
+        Source = '00/66/CTCCoopSpirit_ResetScore_0066fb30.cpp'
+        TestSource = '00/66/CTCCoopSpirit_ResetScore_0066fb30_test.cpp'
         PassPattern = 'PASS field-0x10 clear 0x0066FB30'
     }
     [pscustomobject]@{
-        Address = '0066fb40'; Module = 'runtime'
-        Source = '00/66/ReturnField28_0066fb40.cpp'
-        TestSource = '00/66/ReturnField28_0066fb40_test.cpp'
+        Address = '0066fb40'; Module = 'CTCCoopSpirit'
+        Source = '00/66/CTCCoopSpirit_GetSpiritDef_0066fb40.cpp'
+        TestSource = '00/66/CTCCoopSpirit_GetSpiritDef_0066fb40_test.cpp'
         PassPattern = 'PASS field-0x28 getter 0x0066FB40'
     }
     [pscustomobject]@{
@@ -30797,9 +30797,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004bbff0'
-        Module = 'CMap'
-        Source = '00/4b/CMap_DrawGetSeaLevel_004bbff0.cpp'
-        TestSource = '00/4b/CMap_DrawGetSeaLevel_004bbff0_test.cpp'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetFullScale_004bbff0.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetFullScale_004bbff0_test.cpp'
         PassPattern = 'OK_0x004bbff0'
     }
     [pscustomobject]@{
@@ -34521,9 +34521,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0055d4c0'
-        Module = '_global'
-        Source = '00/55/global_Destval_0055d4c0.cpp'
-        TestSource = '00/55/global_Destval_0055d4c0_test.cpp'
+        Module = 'CTCPhotojournalCapture'
+        Source = '00/55/CTCPhotojournalCapture_TakeTheBloodyScreenshot_0055d4c0.cpp'
+        TestSource = '00/55/CTCPhotojournalCapture_TakeTheBloodyScreenshot_0055d4c0_test.cpp'
         PassPattern = '0055d4c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -44864,8 +44864,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0071a730'
         Module = 'CTCMapwho'
-        Source = '00/71/CTCMapwho_OnDie_0071a730.cpp'
-        TestSource = '00/71/CTCMapwho_OnDie_0071a730_test.cpp'
+        Source = '00/71/CTCMapwho_RemoveFromMapwho_0071a730.cpp'
+        TestSource = '00/71/CTCMapwho_RemoveFromMapwho_0071a730_test.cpp'
         PassPattern = '0071a730_TEST PASS'
     }
     [pscustomobject]@{
@@ -47329,9 +47329,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00abfdc0'
-        Module = 'CWorld'
-        Source = '00/ab/CWorld_DrawGetEnvironment_00abfdc0.cpp'
-        TestSource = '00/ab/CWorld_DrawGetEnvironment_00abfdc0_test.cpp'
+        Module = 'C3DMeshFileMaterialExtChunk'
+        Source = '00/ab/C3DMeshFileMaterialExtChunk_GetSelfIllumination_00abfdc0.cpp'
+        TestSource = '00/ab/C3DMeshFileMaterialExtChunk_GetSelfIllumination_00abfdc0_test.cpp'
         PassPattern = 'DRAWENV_OK'
     }
     [pscustomobject]@{
@@ -68075,9 +68075,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b2bd0'
-        Module = '_global'
-        Source = '00/6b/DrawGetSeaLevel_DrawGetSeaLevel_006b2bd0.cpp'
-        TestSource = '00/6b/DrawGetSeaLevel_DrawGetSeaLevel_006b2bd0_test.cpp'
+        Module = 'CEnvironment'
+        Source = '00/6b/CEnvironment_GetRainStrength_006b2bd0.cpp'
+        TestSource = '00/6b/CEnvironment_GetRainStrength_006b2bd0_test.cpp'
         PassPattern = 'OK_006b2bd0'
     }
     [pscustomobject]@{
@@ -74830,9 +74830,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004379e0'
-        Module = '_global'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379e0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379e0_test.cpp'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_ShowScreenshotMessage_004379e0.cpp'
+        TestSource = '00/43/CPlayerGui_ShowScreenshotMessage_004379e0_test.cpp'
         PassPattern = 'PASS_004379e0'
     }
     [pscustomobject]@{
@@ -77469,9 +77469,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009d47c0'
-        Module = '_global'
-        Source = '00/9d/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009d47c0.cpp'
-        TestSource = '00/9d/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009d47c0_test.cpp'
+        Module = 'CBankCreatorException'
+        Source = '00/9d/CBankCreatorException_CBankCreatorException_009d47c0.cpp'
+        TestSource = '00/9d/CBankCreatorException_CBankCreatorException_009d47c0_test.cpp'
         PassPattern = 'PASS_009d47c0'
     }
     [pscustomobject]@{
@@ -90651,9 +90651,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00464931'
-        Module = 'CArray'
-        Source = '00/46/CArray_resize_00464931.cpp'
-        TestSource = '00/46/CArray_resize_00464931_test.cpp'
+        Module = 'std::vector<unsigned long,std::allocator<unsigned long> >'
+        Source = '00/46/stdvector_resize_00464931.cpp'
+        TestSource = '00/46/stdvector_resize_00464931_test.cpp'
         PassPattern = 'PASS_00464931'
     }
     [pscustomobject]@{
@@ -175932,9 +175932,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009d3df0'
-        Module = '_global'
-        Source = '00/9d/global_ResizeCRetailVector009d3df0_009d3df0.cpp'
-        TestSource = '00/9d/global_ResizeCRetailVector009d3df0_009d3df0_test.cpp'
+        Module = 'std::vector<CBankFileEntryUpdateData*,std::allocator<CBankFileEntryUpdateData*> >'
+        Source = '00/9d/stdvector_resize_009d3df0.cpp'
+        TestSource = '00/9d/stdvector_resize_009d3df0_test.cpp'
         PassPattern = '009d3df0_TEST PASS'
     }
     [pscustomobject]@{
@@ -187847,9 +187847,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00747030'
-        Module = 'CDrawEnvironmentUser_00747030'
-        Source = '00/74/CDrawEnvironmentUser00747030_SetWorld_00747030.cpp'
-        TestSource = '00/74/CDrawEnvironmentUser00747030_SetWorld_00747030_test.cpp'
+        Module = 'CTCStealth'
+        Source = '00/74/CTCStealth_SetActionPermittedToSneak_00747030.cpp'
+        TestSource = '00/74/CTCStealth_SetActionPermittedToSneak_00747030_test.cpp'
         PassPattern = '00747030_TEST PASS'
     }
     [pscustomobject]@{
@@ -201099,9 +201099,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b5d80'
-        Module = 'CBlendedEnvironmentTheme'
-        Source = '00/6b/CBufferPairTriple006b5d80_CBufferPairTriple006b5d80_006b5d80.cpp'
-        TestSource = '00/6b/CBufferPairTriple006b5d80_CBufferPairTriple006b5d80_006b5d80_test.cpp'
+        Module = 'NEnvironmentInternal::CBlendedEnvironmentTheme'
+        Source = '00/6b/NEnvironmentInternalCBlendedEnvironmentTheme_CBlendedEnvironmentTheme_006b5d80.cpp'
+        TestSource = '00/6b/NEnvironmentInternalCBlendedEnvironmentTheme_CBlendedEnvironmentTheme_006b5d80_test.cpp'
         PassPattern = '006b5d80_TEST PASS'
     }
     [pscustomobject]@{
@@ -288339,9 +288339,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0049b760'
-        Module = 'std::vector<CCharString>'
-        Source = '00/49/STLvectorCCharString_resize_0049b760.cpp'
-        TestSource = '00/49/STLvectorCCharString_resize_0049b760_test.cpp'
+        Module = 'std::vector<CCharString,std::allocator<CCharString> >'
+        Source = '00/49/stdvector_resize_0049b760.cpp'
+        TestSource = '00/49/stdvector_resize_0049b760_test.cpp'
         PassPattern = '0049b760_TEST PASS'
     }
     [pscustomobject]@{
@@ -299561,9 +299561,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a0d980'
-        Module = '_global'
-        Source = '00/a0/global_FormatDateTime_00a0d980.cpp'
-        TestSource = '00/a0/global_FormatDateTime_00a0d980_test.cpp'
+        Module = 'CXBConfig'
+        Source = '00/a0/CXBConfig_FormatDateTime_00a0d980.cpp'
+        TestSource = '00/a0/CXBConfig_FormatDateTime_00a0d980_test.cpp'
         PassPattern = '00a0d980_TEST PASS'
     }
     [pscustomobject]@{

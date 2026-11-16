@@ -1,5 +1,7 @@
 // CInputProcessSetRangedWeaponThirdPersonMode::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- unless the player's flag +0x218 is already set, a press of game action 9 or 10 queues game event 0x3a (enter ranged-weapon third-person mode)
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068EA60, length 123 bytes.
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
 // CProcessedInput::AddGameEvent @ 0x00A0D340.
@@ -28,6 +30,7 @@ public:
     bool          m_inRangedWeaponMode;            // +0x218
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -39,7 +42,7 @@ public:
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90 (kind 0x13)
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessSetRangedWeaponThirdPersonMode : public CInputProcessGameBase {
 public:
@@ -49,10 +52,10 @@ public:
 void CInputProcessSetRangedWeaponThirdPersonMode::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
     if (MyPlayer->m_inRangedWeaponMode == false && IsEventButtonPressed(event)) {
-        if (IsEventGameAction(9, event)) {
+        if (IsEventGameAction((EGameAction)(9), event)) {
             CGameEvent gameEvent(0x3a);
             processed.AddGameEvent(gameEvent);
-        } else if (IsEventGameAction(10, event)) {
+        } else if (IsEventGameAction((EGameAction)(10), event)) {
             CGameEvent gameEvent(0x3a);
             processed.AddGameEvent(gameEvent);
         }

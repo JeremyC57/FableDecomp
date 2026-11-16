@@ -1,5 +1,6 @@
 // CTCTrophy::PlaySoundW(const CCharString&) -- plays a sound through the owner's sound component (interface 16) and returns its handle, or the invalid handle when the owner has no sound component
-// Leaf: PlaySoundW
+// Leaf: ?PlaySoundW@CTCTrophy@@AAEKABVCCharString@@@Z
+// NF33 (2026-11-16): access per Ego_r.pdb + FableWin.pdb (private AAE: StartDialogBox, PlaySoundW, UpdateGainedWitnessSounds; engine/CTCTrophy.h).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DDCD0, length 95 bytes. PDB `?PlaySoundW@CTCTrophy@@AAEKABVCCharString@@@Z`
 // (the W is windows.h's PlaySound macro applied to the original source).
@@ -27,6 +28,7 @@ extern unsigned long g_InvalidSoundHandle;  // 0x0129D25C
 class CTCTrophy { public:
     void*   __vftable;                      // +0x00
     CThing* Thing;                          // +0x04
+private:
     unsigned long PlaySoundW(const CCharString& name);
 };
 

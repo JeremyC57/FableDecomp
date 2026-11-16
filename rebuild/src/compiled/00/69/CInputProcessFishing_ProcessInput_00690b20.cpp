@@ -7,7 +7,7 @@
 //   CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), the component map's LowerBound @ 0x0040F020,
 //   CTCFishing::ReelInButtonPressed @ 0x007B0BA0 and the fishing component's 0x007B0CC0 (a one-line `Xxx(0)` forwarder
 //   to 0x007B0950; manifest label "_Dest_val<..CFlash>" is propagated, named CastButtonPressed here),
-//   CProcessedInput::SetHandled @ 0x00A0D390 / AddGameEvent(const CGameEvent&) @ 0x00A0D340, CMemoryBuffer::Copy
+//   CProcessedInput::SetAsPerformedEvent @ 0x00A0D390 / AddGameEvent(const CGameEvent&) @ 0x00A0D340, CMemoryBuffer::Copy
 //   @ 0x009F1760.
 // Layout: `this` is engine/CInputProcessGameBase.h (MyPlayer +0x18); CThing component bitset +0x20 (0xB1 = word 5 bit
 //   17, 0xC6 = word 6 bit 6) and map +0x44 as in the landed CInputProcessBetting 0x00691560; CGameEvent (Ego_r.pdb, 40
@@ -34,7 +34,7 @@ class CGameEvent : public CMemoryBuffer { public:
 class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class CTCFishing { public:
     void ReelInButtonPressed();                    // 0x007B0BA0
@@ -88,10 +88,10 @@ void CInputProcessFishing::ProcessInput(const CInputEvent& event, CProcessedInpu
         fishing = hero->GetTC(0xb1);
     if (IsEventGameAction(0x2b, event)) {
         fishing->ReelInButtonPressed();
-        processed.SetHandled();
+        processed.SetAsPerformedEvent();
     } else if (IsEventGameAction(0x2c, event)) {
         fishing->CastButtonPressed();
-        processed.SetHandled();
+        processed.SetAsPerformedEvent();
     } else if (IsEventGameAction(3, event) && hero->HasTC(0xc6)) {
         CGameEvent gameEvent(0x1a);
         gameEvent.AddLong(0x17);

@@ -84,7 +84,7 @@ class CTCHeroOpinionDeedLog { public:                  // interface 0x51
 };
 class COpinionDeed { public: long Type; };
 class CTCCreatureOpinionOfHero { public:               // interface 0x4f
-    COpinionDeed* GetHeadPendingDeed();         // 0x00683770
+    const COpinionDeed* GetHeadPendingDeed();   // 0x00683770 (Ego_r 0x00591380 + FableWin 0x01F472F0: const COpinionDeed*; NF33)
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -114,7 +114,7 @@ bool CAIStateGroup_DeedReactionRoot::IsStillValid() const
         if (Reactee.GetPItemConst()->GetInterface(&reactions, 0x51)) {
             CTCCreatureOpinionOfHero* opinion;
             PBrain->Creature->GetInterface(&opinion, 0x4f);
-            COpinionDeed* deed = opinion->GetHeadPendingDeed();
+            const COpinionDeed* deed = opinion->GetHeadPendingDeed();
             if (deed && deed->Type != DeedType && reactions->GetDeedEffectsDef(deed->Type)->Priority < reactions->GetDeedEffectsDef(DeedType)->Priority)
                 return false;
         }

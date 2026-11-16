@@ -1,0 +1,490 @@
+addr       parity           behav  name
+004379e0   WARN RELOC_NAME: ?ShowScreenshotMessage@CDrawNPCName@NPlayerGui@@QAEXXZ -> 00657280 labelled 'CAIStateGroup_BuyFromSeller::BoughtSomething'
+004379e0   RELOCATION_MATCH PASS   ShowScreenshotMessage
+00464931   RELOCATION_MATCH PASS   resize
+0049b760   RELOCATION_MATCH PASS   resize
+004bbff0   MATCH            PASS   GetFullScale
+004c8c00   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+004c8c00   WARN SHARED_HEADER_AVAILABLE CTCMapwho
+004c8c00   WARN SHARED_HEADER_AVAILABLE CThing
+004c8c00   RELOCATION_MATCH PASS   UpdateThingScanInclusion
+0055d4c0   RELOCATION_MATCH PASS   TakeTheBloodyScreenshot
+00581b33   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00581b33   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+00581b33   WARN SHARED_HEADER_AVAILABLE CAFile
+00581b33   WARN SHARED_HEADER_AVAILABLE CTCInventory
+00581b33   RELOCATION_MATCH PASS   HasScreenshots
+0066fb10   MATCH            PASS   AddScore
+0066fb30   MATCH            PASS   ResetScore
+0066fb40   MATCH            PASS   GetSpiritDef
+00670000   MATCH            PASS   GetMeleeTargetRange
+00687f80   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00687f80   WARN SHARED_HEADER_AVAILABLE CInputProcessConsole
+00687f80   WARN RELOC_CONFLICT: ?ProcessInput@CConsole@@QAE_NABVCInputEvent@@@Z -> 009ea530 here, 009ea540 in landed 00687fd0
+00687f80   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00687f80   RELOCATION_MATCH PASS   ProcessInput
+00687fd0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00687fd0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00687fd0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00687fd0   WARN SHARED_HEADER_AVAILABLE CThing
+00687fd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00687fd0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00687fd0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+00687fd0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00687fd0   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+00687fd0   WARN SHARED_HEADER_AVAILABLE CInputProcessMain
+00687fd0   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00687fd0   WARN RELOC_NAME: ?ProcessInput@CConsole@@QAE_NABVCInputEvent@@@Z -> 009ea540 labelled '_global::ReturnFalse_ret4_009ea540'
+00687fd0   WARN RELOC_NAME: ?GetMouseMovement@CInputProcessMain@@QAE?AVC2DVector@@ABVCInputEvent@@@Z -> 00687d20 labelled 'NScript::GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00687fd0   RELOCATION_MATCH PASS   ProcessInput
+006882f0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+006882f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+006882f0   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+006882f0   RELOCATION_MATCH PASS   ProcessInput
+00688a80   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00688a80   WARN SHARED_HEADER_AVAILABLE C2DVector
+00688a80   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00688a80   WARN SHARED_HEADER_AVAILABLE CPlayer
+00688a80   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 labelled 'CInputProcessGameBase::GetEventGameActionVector'
+00688a80   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00688a80   RELOCATION_MATCH PASS   ProcessInput
+00688eb0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00688eb0   WARN SHARED_HEADER_AVAILABLE CThing
+00688eb0   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+00688eb0   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase
+00688eb0   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00688eb0   RELOCATION_MATCH PASS   ProcessInput
+00689050   WARN SHARED_HEADER_AVAILABLE CThing
+00689050   WARN SHARED_HEADER_AVAILABLE CTCTargetingPlayer
+00689050   WARN SHARED_HEADER_AVAILABLE CPlayer
+00689050   RELOCATION_MATCH PASS   ProcessInput
+006894c0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+006894c0   WARN SHARED_HEADER_AVAILABLE C2DVector
+006894c0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+006894c0   WARN RELOC_NAME: ?GetAnaloguePosition@CInputEvent@@QBE?AUC2DVector@1@XZ -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+006894c0   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+006894c0   RELOCATION_MATCH PASS   ProcessInput
+00689c40   WARN SHARED_HEADER_AVAILABLE C2DVector
+00689c40   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00689c40   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00689c40   WARN SHARED_HEADER_AVAILABLE CManager
+00689c40   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+00689c40   WARN RELOC_NAME: ?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+00689c40   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00689c40   RELOCATION_MATCH PASS   ProcessInput
+0068ae30   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068ae30   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068ae30   WARN SHARED_HEADER_AVAILABLE CManager
+0068ae30   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0068ae30   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap
+0068ae30   WARN SHARED_HEADER_AVAILABLE CThing
+0068ae30   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068ae30   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0068ae30   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068ae30   RELOCATION_MATCH PASS   ProcessInput
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CManager
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CThing
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068b2e0   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0068b2e0   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068b2e0   RELOCATION_MATCH PASS   ProcessInput
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CManager
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CThing
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068b7c0   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0068b7c0   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068b7c0   RELOCATION_MATCH PASS   ProcessInput
+0068c6e0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068c6e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068c6e0   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068c6e0   RELOCATION_MATCH PASS   ProcessInput
+0068c760   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068c760   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068c760   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0068c760   RELOCATION_MATCH PASS   ProcessInput
+0068c7f0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068c7f0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068c7f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068c7f0   WARN RELOC_NAME: ?GetControllerIndex@CInputEvent@@QBEJXZ -> 00a03b70 labelled 'CInputEvent::GetKey'
+0068c7f0   RELOCATION_MATCH PASS   ProcessInput
+0068c880   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068c880   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068c880   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+0068c880   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0068c880   WARN RELOC_NAME: ?GetKey_00a03b40@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+0068c880   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0068c880   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068c880   WARN RELOC_NAME: ?CanCancel@CPlayerGuiQuestion@@QAE_NXZ -> 0048db98 labelled '_global::Forward_operator___member0x6c_0048db98'
+0068c880   RELOCATION_MATCH PASS   ProcessInput
+0068cac0   WARN SHARED_HEADER_AVAILABLE C2DVector
+0068cac0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068cac0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068cac0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068cac0   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+0068cac0   WARN RELOC_NAME: ?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+0068cac0   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068cac0   RELOCATION_MATCH PASS   ProcessInput
+0068d700   WARN SHARED_HEADER_AVAILABLE C2DVector
+0068d700   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068d700   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0068d700   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+0068d700   WARN SHARED_HEADER_AVAILABLE CWorld
+0068d700   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 labelled 'CInputProcessGameBase::GetEventGameActionVector'
+0068d700   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+0068d700   WARN RELOC_NAME: ?SetFirstPersonLookAroundVector@CGameCameraManager@@QAEXABVC2DVector@@@Z -> 00697b60 labelled '_global::Forward_OnEngineSurveyLMBHeld_via0x98_00697b60'
+0068d700   RELOCATION_MATCH PASS   ProcessInput
+0068d790   WARN SHARED_HEADER_AVAILABLE C2DVector
+0068d790   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0068d790   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+0068d790   WARN SHARED_HEADER_AVAILABLE CWorld
+0068d790   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 labelled 'CInputProcessGameBase::GetEventGameActionVector'
+0068d790   RELOCATION_MATCH PASS   ProcessInput
+0068d890   WARN SHARED_HEADER_AVAILABLE C2DVector
+0068d890   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068d890   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068d890   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0068d890   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+0068d890   WARN SHARED_HEADER_AVAILABLE CWorld
+0068d890   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068d890   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 labelled 'CInputProcessGameBase::GetEventGameActionVector'
+0068d890   WARN RELOC_CONFLICT: ?PushLookAround@CGameCameraManager@@QAEXXZ -> 00699970 here, 00699a50 in landed 007d34a0
+0068d890   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068d890   RELOCATION_MATCH PASS   ProcessInput
+0068e2c0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068e2c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068e2c0   RELOCATION_MATCH PASS   ProcessInput
+0068e8f0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068e8f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0068e8f0   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0068e8f0   RELOCATION_MATCH PASS   ProcessUnarmedInput
+0068ea60   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068ea60   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068ea60   RELOCATION_MATCH PASS   ProcessInput
+0068eca0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068eca0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0068eca0   WARN SHARED_HEADER_AVAILABLE CTCCombat
+0068eca0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068eca0   WARN SHARED_HEADER_AVAILABLE CWorld
+0068eca0   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0068eca0   RELOCATION_MATCH PASS   ProcessArmedMeleeInput
+0068f180   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068f180   WARN SHARED_HEADER_AVAILABLE CThing
+0068f180   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068f180   RELOCATION_MATCH PASS   ProcessInput
+0068f320   WARN SHARED_HEADER_AVAILABLE C2DVector
+0068f320   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068f320   WARN SHARED_HEADER_AVAILABLE CThing
+0068f320   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068f320   WARN RELOC_NAME: ?AdjustZoom@CTCProjectileZoom@@QAEXM@Z -> 00789a10 labelled 'CTCHeroRangedAttacks::SetProjectileTargetingZoomDelta'
+0068f320   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068f320   RELOCATION_MATCH PASS   ProcessInput
+00690030   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00690030   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00690030   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690030   WARN SHARED_HEADER_AVAILABLE CThing
+00690030   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+00690030   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690030   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+00690030   WARN RELOC_NAME: ?TriggerSpecialAbility@CTCInventoryAbilities@@QAEXJ@Z -> 005eed4c labelled 'CTCInventoryAbilities::OnSpecialAbilityButtonPressed'
+00690030   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00690030   WARN RELOC_NAME: ?GetEventScrollAmount@CInputProcessGameBase@@QAEMABVCInputEvent@@@Z -> 00687d40 labelled 'CInputProcessGameBase::GetMouseWheelMovement'
+00690030   WARN RELOC_NAME: ?GetName@CTCHeroState@@QBE?AVCCharString@@XZ -> 0072b870 labelled 'CTCSpecialAbilities::GetCurrentAbilityStrafeAnim'
+00690030   RELOCATION_MATCH PASS   ProcessInput
+00690360   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00690360   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690360   WARN SHARED_HEADER_AVAILABLE CInputProcessRebootGame
+00690360   WARN RELOC_NAME: ?GetKind@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+00690360   WARN RELOC_NAME: ?MarkAsUsed@CInputEvent@@QBEXXZ -> 00a03b90 labelled 'CInputEvent::GetJoystickButton'
+00690360   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00690360   RELOCATION_MATCH PASS   ProcessInput
+00690390   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690390   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690390   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00690390   RELOCATION_MATCH PASS   ProcessInput
+00690480   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690480   WARN SHARED_HEADER_AVAILABLE C2DVector
+00690480   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00690480   WARN SHARED_HEADER_AVAILABLE CManager
+00690480   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690480   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00690480   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu
+00690480   WARN RELOC_NAME: ?GetKey_00a03b40@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+00690480   WARN RELOC_NAME: ?GetAnalogueVector@CInputEvent@@QBEXAAVC2DVector@@@Z -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+00690480   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00690480   WARN RELOC_NAME: ?IsListReceivingInputA@CTCInGameMenu@@QAE_NXZ -> 0047d6f2 labelled 'CTCInGameMenu::IsSaveComponentReceivingInput'
+00690480   WARN RELOC_NAME: ?IsListReceivingInputB@CTCInGameMenu@@QAE_NXZ -> 0047d648 labelled 'CTCInGameMenu::IsLoadMenuReceivingInput'
+00690480   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00690480   RELOCATION_MATCH PASS   ProcessInput
+006909a0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+006909a0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+006909a0   WARN SHARED_HEADER_AVAILABLE CWorld
+006909a0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+006909a0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+006909a0   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+006909a0   RELOCATION_MATCH PASS   ProcessInput
+00690b20   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690b20   WARN SHARED_HEADER_AVAILABLE CTCFishing
+00690b20   WARN SHARED_HEADER_AVAILABLE CThing
+00690b20   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690b20   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00690b20   WARN RELOC_NAME: ?CastButtonPressed@CTCFishing@@QAEXXZ -> 007b0cc0 labelled '_unattributed::CallWith_007b0cc0'
+00690b20   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00690b20   RELOCATION_MATCH PASS   ProcessInput
+00690c70   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690c70   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690c70   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00690c70   RELOCATION_MATCH PASS   ProcessInput
+00690d30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00690d30   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00690d30   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690d30   RELOCATION_MATCH PASS   ProcessInput
+00690e70   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690e70   WARN SHARED_HEADER_AVAILABLE C2DVector
+00690e70   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00690e70   WARN SHARED_HEADER_AVAILABLE CManager
+00690e70   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00690e70   RELOCATION_MATCH PASS   ProcessInput
+00690fd0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690fd0   WARN SHARED_HEADER_AVAILABLE CManager
+00690fd0   WARN SHARED_HEADER_AVAILABLE CTCQuickAccessMenu
+00690fd0   WARN SHARED_HEADER_AVAILABLE CThing
+00690fd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690fd0   WARN RELOC_NAME: ?IsActive@CTCQuickAccessMenu@@QBE_NXZ -> 00625930 labelled '_global::GetMember_byte0xc_00625930'
+00690fd0   WARN RELOC_NAME: ?IsClosing@CTCQuickAccessMenu@@QBE_NXZ -> 00625940 labelled '_global::GetMember_byte0x1c_00625940'
+00690fd0   WARN RELOC_NAME: ?RequestClose@CTCQuickAccessMenu@@QAEXXZ -> 00625920 labelled 'CTCCreditsUI::Deactivate'
+00690fd0   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00690fd0   RELOCATION_MATCH PASS   ProcessInput
+00691130   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00691130   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00691130   WARN SHARED_HEADER_AVAILABLE CManager
+00691130   WARN SHARED_HEADER_AVAILABLE CTCQuestCompletionUI
+00691130   WARN SHARED_HEADER_AVAILABLE CThing
+00691130   WARN SHARED_HEADER_AVAILABLE CPlayer
+00691130   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00691130   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+00691130   RELOCATION_MATCH PASS   ProcessInput
+00691470   WARN SHARED_HEADER_AVAILABLE CPlayer
+00691470   WARN RELOC_NAME: ?Quit@CTCCreditsUI@@QAEXXZ -> 007e49c0 labelled 'CTCCreditsUI::Deactivate'
+00691470   RELOCATION_MATCH PASS   ProcessInput
+00691680   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00691680   WARN SHARED_HEADER_AVAILABLE CTCOracleMinigame
+00691680   WARN SHARED_HEADER_AVAILABLE CThing
+00691680   WARN SHARED_HEADER_AVAILABLE CPlayer
+00691680   WARN RELOC_NAME: ?PushSymbolToQueue@CTCOracleMinigame@@QAEXJ@Z -> 007e5f70 labelled 'CTCOracleMinigame::ProcessInput'
+00691680   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00691680   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00691680   RELOCATION_MATCH PASS   ProcessInput
+00691870   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00691870   WARN SHARED_HEADER_AVAILABLE C2DVector
+00691870   WARN SHARED_HEADER_AVAILABLE CThing
+00691870   WARN SHARED_HEADER_AVAILABLE CPlayer
+00691870   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00691870   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00691870   RELOCATION_MATCH PASS   ProcessInput
+006a4040   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+006a4040   RELOCATION_MATCH PASS   ProcessJumping
+006a7b90   RELOCATION_MATCH PASS   operator()
+006b0610   WARN SHARED_HEADER_AVAILABLE C3DVector
+006b0610   WARN SHARED_HEADER_AVAILABLE CPhysicsCollideResponse
+006b0610   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+006b0610   WARN SHARED_HEADER_AVAILABLE CTCBase
+006b0610   RELOCATION_MATCH PASS   ModifyResponseForNearVerticalSlopes
+006b2bd0   MATCH            PASS   GetRainStrength
+006b5d80   RELOCATION_MATCH PASS   ~CBlendedEnvironmentTheme
+006dd7e0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+006dd7e0   WARN SHARED_HEADER_AVAILABLE CManager
+006dd7e0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+006dd7e0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+006dd7e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+006dd7e0   WARN SHARED_HEADER_AVAILABLE CTCBase
+006dd7e0   RELOCATION_MATCH PASS   StartDialogBox
+006dda50   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+006dda50   WARN SHARED_HEADER_AVAILABLE CTCTrophy
+006dda50   RELOCATION_MATCH PASS   EndMinigame
+006ddcd0   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer
+006ddcd0   RELOCATION_MATCH PASS   PlaySoundW
+006de8b0   RELOCATION_MATCH PASS   OnShowTrophyInitialise
+006dee80   WARN SHARED_HEADER_AVAILABLE CWorld
+006dee80   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+006dee80   RELOCATION_MATCH PASS   UpdateGainedWitnessSounds
+006df480   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+006df480   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+006df480   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+006df480   WARN SHARED_HEADER_AVAILABLE CThingManager
+006df480   WARN SHARED_HEADER_AVAILABLE CTrophyDef
+006df480   WARN SHARED_HEADER_AVAILABLE CTCBase
+006df480   RELOCATION_MATCH PASS   FrameUpdate
+0071a730   WARN RELOC_NAME: ?RemoveThing@CThingMapManager@NThingMap@@QAEXAAVCTCMapwho@@@Z -> 00637a10 labelled 'NThingMap::CThingMapManager::DestroyMapwhoNode'
+0071a730   RELOCATION_MATCH PASS   RemoveFromMapwho
+00725290   WARN SHARED_HEADER_AVAILABLE CPhysicsCollideResponse
+00725290   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00725290   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00725290   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00725290   RELOCATION_MATCH PASS   UpdateOnSurface
+00747030   RELOCATION_MATCH PASS   SetActionPermittedToSneak
+0074e500   WARN SHARED_HEADER_AVAILABLE CTCGold
+0074e500   WARN SHARED_HEADER_AVAILABLE CTCContainerRewardHero
+0074e500   RELOCATION_MATCH PASS   HasReward
+0075a530   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+0075a530   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0075a530   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+0075a530   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+0075a530   WARN SHARED_HEADER_AVAILABLE CWorld
+0075a530   WARN SHARED_HEADER_AVAILABLE CVectorMap
+0075a530   WARN SHARED_HEADER_AVAILABLE CTCMapwho
+0075a530   WARN SHARED_HEADER_AVAILABLE CThing
+0075a530   WARN SHARED_HEADER_AVAILABLE C2DVector
+0075a530   WARN SHARED_HEADER_AVAILABLE CTCBase
+0075a530   WARN RELOC_NAME: ?GetMatrixFromRHSet@@YIABVC3DMatrix@@AAV1@ABVCRightHandedSet@@@Z -> 00a358f0 labelled 'C3DMeshObject::GetPositionMatrixFromRHSet'
+0075a530   RELOCATION_MATCH PASS   SetPhysicsMeshBankIndex
+007617a0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+007617a0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+007617a0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive
+007617a0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo
+007617a0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+007617a0   RELOCATION_MATCH PASS   EditorDrawHighlightPoints
+007d4ce0   WARN SHARED_HEADER_AVAILABLE CClass
+007d4ce0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007d4ce0   RELOCATION_MATCH PASS   allocator<CThingCreatureBase *>>, CThingFilter_IsHuman>
+007e5230   WARN SHARED_HEADER_AVAILABLE C2DVector
+007e5230   WARN SHARED_HEADER_AVAILABLE CInputEvent
+007e5230   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+007e5230   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase
+007e5230   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007e5230   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e5230   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+007e5230   WARN SHARED_HEADER_AVAILABLE CThing
+007e5230   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e5230   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007e5230   WARN SHARED_HEADER_AVAILABLE CBettingDef
+007e5230   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007e5230   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007e5230   WARN SHARED_HEADER_AVAILABLE CTCBetting
+007e5230   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 labelled 'CInputProcessGameBase::GetEventGameActionVector'
+007e5230   WARN RELOC_NAME: ?GetFrame@CMainGameComponent@@QAEJXZ -> 00416225 labelled 'CMainGameComponent::GetCurrentServerFrame'
+007e5230   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+007e5230   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+007e5230   RELOCATION_MATCH PASS   ProcessInput
+00810f40   MATCH            PASS   GetHitParams
+00812340   WARN RELOC_NAME: ?FinishSearch@CTCSearchableContainer@@QAEXXZ -> 0074ee90 labelled 'CTCContainerRewardHero::RewardHeroWithItems'
+00812340   RELOCATION_MATCH PASS   Search
+00845350   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00845350   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00845350   WARN SHARED_HEADER_AVAILABLE CTCTrophy
+00845350   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+00845350   WARN SHARED_HEADER_AVAILABLE CThing
+00845350   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00845350   RELOCATION_MATCH PASS   Initialise
+00943830   WARN SHARED_HEADER_AVAILABLE CThing
+00943830   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+00943830   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+00943830   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00943830   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3
+00943830   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00943830   RELOCATION_MATCH PASS   GetAllThings
+0095fed0   WARN SHARED_HEADER_AVAILABLE CThing
+0095fed0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0095fed0   WARN SHARED_HEADER_AVAILABLE CWorld
+0095fed0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0095fed0   WARN SHARED_HEADER_AVAILABLE CTCHeroOpinionDeedLog
+0095fed0   WARN SHARED_HEADER_AVAILABLE COpinionDeed
+0095fed0   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+0095fed0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095fed0   WARN RELOC_NAME: ?GetDeedEffectsDef@CTCHeroOpinionDeedLog@@QAE?AV?$CDefPointer@VCOpinionDeedEffectsDef@@@@J@Z -> 006c5630 labelled 'CTCHeroOpinionDeedLog::PeekPDeedEffectsDef'
+0095fed0   RELOCATION_MATCH PASS   IsStillValid
+009cc750   WARN SHARED_HEADER_AVAILABLE CBankFileEntryUpdateData
+009cc750   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+009cc750   RELOCATION_MATCH PASS   Equals
+009d3df0   RELOCATION_MATCH PASS   resize
+009d47c0   RELOCATION_MATCH PASS   ~CBankCreatorException
+00a0d980   RELOCATION_MATCH PASS   FormatDateTime
+00abfdc0   MATCH            PASS   GetSelfIllumination
+
+WINS: 79
+  004379e0 RELOCATION_MATCH CPlayerGui::?ShowScreenshotMessage@CPlayerGui@@QAEXXZ
+  00464931 RELOCATION_MATCH std::vector<unsigned long,std::allocator<unsigned long> >::?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z
+  0049b760 RELOCATION_MATCH std::vector<CCharString,std::allocator<CCharString> >::?resize@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXI@Z
+  004bbff0 MATCH NGraphicAppearance::CTCGraphicAppearance::?GetFullScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ
+  004c8c00 RELOCATION_MATCH CThing::UpdateThingScanInclusion
+  0055d4c0 RELOCATION_MATCH CTCPhotojournalCapture::?TakeTheBloodyScreenshot@CTCPhotojournalCapture@@QAEXXZ
+  00581b33 RELOCATION_MATCH CTCInventory::?HasScreenshots@CTCInventory@@QAE_NXZ
+  0066fb10 MATCH CTCCoopSpirit::?AddScore@CTCCoopSpirit@@QAEXJ@Z
+  0066fb30 MATCH CTCCoopSpirit::?ResetScore@CTCCoopSpirit@@QAEXXZ
+  0066fb40 MATCH CTCCoopSpirit::?GetSpiritDef@CTCCoopSpirit@@ABEABVCCoopSpiritDef@@XZ
+  00670000 MATCH CTCCoopSpirit::?GetMeleeTargetRange@CTCCoopSpirit@@QBEMXZ
+  00687f80 RELOCATION_MATCH CInputProcessConsole::ProcessInput
+  00687fd0 RELOCATION_MATCH CInputProcessMain::ProcessInput
+  006882f0 RELOCATION_MATCH CInputProcessControlCreatureActivateZTargetOnPress::ProcessInput
+  00688a80 RELOCATION_MATCH CInputProcessStrafe::?ProcessInput@CInputProcessStrafe@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00688eb0 RELOCATION_MATCH CInputProcessZTarget::ProcessInput
+  00689050 RELOCATION_MATCH CInputProcessTargetLockCycleTargets::?ProcessInput@CInputProcessTargetLockCycleTargets@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  006894c0 RELOCATION_MATCH CInputProcessInventoryBase::ProcessInput
+  00689c40 RELOCATION_MATCH CInputProcessInventoryStatsScreen::ProcessInput
+  0068ae30 RELOCATION_MATCH CInputProcessInventoryMapScreen::ProcessInput
+  0068b2e0 RELOCATION_MATCH CInputProcessInventoryExperienceScreen::ProcessInput
+  0068b7c0 RELOCATION_MATCH CInputProcessInventoryTradeScreen::ProcessInput
+  0068c6e0 RELOCATION_MATCH CInputProcessClickPastText::ProcessInput
+  0068c760 RELOCATION_MATCH CInputProcessBButtonExitMode::ProcessInput
+  0068c7f0 RELOCATION_MATCH CInputProcessToggleViewHeroMode::ProcessInput
+  0068c880 RELOCATION_MATCH CInputProcessYesNoQuestion::ProcessInput
+  0068cac0 RELOCATION_MATCH CInputProcessFirstPerson::ProcessInput
+  0068d700 RELOCATION_MATCH CInputProcessFirstPersonLookAround::ProcessInput
+  0068d790 RELOCATION_MATCH CInputProcessCameraLookAround::ProcessInput
+  0068d890 RELOCATION_MATCH CInputProcessControlCreatureRightStick::ProcessInput
+  0068e2c0 RELOCATION_MATCH CInputProcessBlock::ProcessInput
+  0068e8f0 RELOCATION_MATCH CInputProcessCombat::ProcessUnarmedInput
+  0068ea60 RELOCATION_MATCH CInputProcessSetRangedWeaponThirdPersonMode::ProcessInput
+  0068eca0 RELOCATION_MATCH CInputProcessCombat::ProcessArmedMeleeInput
+  0068f180 RELOCATION_MATCH CInputProcessSetRangedWeaponMode::?ProcessInput@CInputProcessSetRangedWeaponMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  0068f320 RELOCATION_MATCH CInputProcessProjectileTargetingAnalogueZoom::ProcessInput
+  00690030 RELOCATION_MATCH CInputProcessSpecialAbilities::ProcessInput
+  00690360 RELOCATION_MATCH CInputProcessRebootGame::?ProcessInput@CInputProcessRebootGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690390 RELOCATION_MATCH CInputProcessFirstPersonTargeting::ProcessInput
+  00690480 RELOCATION_MATCH CInputProcessInGameMenu::ProcessInput
+  006909a0 RELOCATION_MATCH CInputProcessCutScene::?ProcessInput@CInputProcessCutScene@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690b20 RELOCATION_MATCH CInputProcessFishing::ProcessInput
+  00690c70 RELOCATION_MATCH CInputProcessDigging::?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690d30 RELOCATION_MATCH CInputProcessParalysed::ProcessInput
+  00690e70 RELOCATION_MATCH CInputProcessBoastUI::ProcessInput
+  00690fd0 RELOCATION_MATCH CInputProcessQuickAccessMenu::ProcessInput
+  00691130 RELOCATION_MATCH CInputProcessQuestCompletionUI::ProcessInput
+  00691470 RELOCATION_MATCH CInputProcessCreditsUI::ProcessInput
+  00691680 RELOCATION_MATCH CInputProcessOracleMinigame::ProcessInput
+  00691870 RELOCATION_MATCH CInputProcessFireheartMinigame::ProcessInput
+  006a4040 RELOCATION_MATCH CInputProcessJumpingAndRolling::ProcessJumping
+  006a7b90 RELOCATION_MATCH CThingFilter_IsHuman::??RCThingFilter_IsHuman@@QBE_NABVCThingCreatureBase@@@Z
+  006b0610 RELOCATION_MATCH CTCPhysicsBase::?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@IBEXAAVCPhysicsCollideResponse@@@Z
+  006b2bd0 MATCH CEnvironment::?GetRainStrength@CEnvironment@@QBEMXZ
+  006b5d80 RELOCATION_MATCH NEnvironmentInternal::CBlendedEnvironmentTheme::??1CBlendedEnvironmentTheme@NEnvironmentInternal@@QAE@XZ
+  006dd7e0 RELOCATION_MATCH CTCTrophy::?StartDialogBox@CTCTrophy@@AAEXVCWideString@@K000@Z
+  006dda50 RELOCATION_MATCH CTCTrophy::EndMinigame
+  006ddcd0 RELOCATION_MATCH CTCTrophy::?PlaySoundW@CTCTrophy@@AAEKABVCCharString@@@Z
+  006de8b0 RELOCATION_MATCH CTCTrophy::?OnShowTrophyInitialise@CTCTrophy@@QAEXAAVCThing@@@Z
+  006dee80 RELOCATION_MATCH CTCTrophy::?UpdateGainedWitnessSounds@CTCTrophy@@AAEXXZ
+  006df480 RELOCATION_MATCH CTCTrophy::?FrameUpdate@CTCTrophy@@UAEXXZ
+  0071a730 RELOCATION_MATCH CTCMapwho::?RemoveFromMapwho@CTCMapwho@@QAEXXZ
+  00725290 RELOCATION_MATCH CTCPhysicsControlled::?UpdateOnSurface@CTCPhysicsControlled@@QAEXABU?$vector@PAVCThing@@@@AAVC3DVector@@@Z
+  00747030 RELOCATION_MATCH CTCStealth::?SetActionPermittedToSneak@CTCStealth@@QAEXPBVCCreatureActionBase@@@Z
+  0074e500 RELOCATION_MATCH CTCContainerRewardHero::?HasReward@CTCContainerRewardHero@@QBE_NXZ
+  0075a530 RELOCATION_MATCH CTCPhysicsRigidBody::SetPhysicsMeshBankIndex
+  007617a0 RELOCATION_MATCH NShape::CShape::?EditorDrawHighlightPoints@CShape@NShape@@QAEXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@ABVCRGBColour@@@Z
+  007d4ce0 RELOCATION_MATCH CThingSearchTools::??$GetAllThings@VCThingCreatureBase@@V?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@VCThingFilter_IsHuman@@@CThingSearchTools@@QBEXABVCThingFilter_IsHuman@@AAV?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@@Z
+  007e5230 RELOCATION_MATCH CTCBetting::ProcessInput
+  00810f40 MATCH NEntityEvents::CEventHitBase::?GetHitParams@CEventHitBase@NEntityEvents@@QBEABVCHitParameters@@XZ
+  00812340 RELOCATION_MATCH CTCSearchableContainer::?Search@CTCSearchableContainer@@QAEXAAVCThing@@@Z
+  00845350 RELOCATION_MATCH CCreatureAction_ShowTrophy::?Initialise@CCreatureAction_ShowTrophy@@UAEXXZ
+  00943830 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  0095fed0 RELOCATION_MATCH CAIStateGroup_DeedReactionRoot::IsStillValid@CAIStateGroup_DeedReactionRoot
+  009cc750 RELOCATION_MATCH CBankFileEntryUpdateData::?Equals@CBankFileEntryUpdateData@@
+  009d3df0 RELOCATION_MATCH std::vector<CBankFileEntryUpdateData*,std::allocator<CBankFileEntryUpdateData*> >::?resize@?$vector@PAVCBankFileEntryUpdateData@@V?$allocator@PAVCBankFileEntryUpdateData@@@std@@@std@@QAEXIABQAVCBankFileEntryUpdateData@@@Z
+  009d47c0 RELOCATION_MATCH CBankCreatorException::??1CBankCreatorException@@QAE@XZ
+  00a0d980 RELOCATION_MATCH CXBConfig::?FormatDateTime@CXBConfig@@SIXABU_FILETIME@@PAG1H@Z
+  00abfdc0 MATCH C3DMeshFileMaterialExtChunk::?GetSelfIllumination@C3DMeshFileMaterialExtChunk@@QBEKXZ

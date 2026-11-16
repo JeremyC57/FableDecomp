@@ -19,6 +19,12 @@ public:
         : CDrawBase(playerGui, illustrators), ScreenShotMessageCounter(-1) { }
 #endif
     void SetName(const CWideString& name);                               // 0x00657230
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWNPCNAME_SHOWSCREENSHOTMESSAGE
+    // Opt-in (NF33, row 0x004379E0 CPlayerGui::ShowScreenshotMessage): Ego_r.pdb 0x00699480 ?ShowScreenshotMessage@CDrawNPCName@NPlayerGui@@QAEXXZ
+    // (retail 0x00657280, Ego_r donor order above; CPlayerGui::ShowScreenshotMessage forwards to it through PDrawNPCName +0x248).
+    // Declaration only: no layout change.
+    void ShowScreenshotMessage();                                        // 0x00657280
+#endif
 #ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWNPCNAME_DRAW
     // Retail opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): Ego_r.pdb / FableWin.pdb
     // ?Draw@CDrawNPCName@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z (retail 0x006572A0, landed; Ego_r order SetName / ... / Draw,

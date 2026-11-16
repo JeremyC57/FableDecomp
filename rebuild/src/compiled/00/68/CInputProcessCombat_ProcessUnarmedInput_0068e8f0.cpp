@@ -1,5 +1,7 @@
 // CInputProcessCombat::ProcessUnarmedInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press: game action 0xb queues game event 0x16 carrying the CREATURE_ABILITY definition index (2 bytes) and the button pressure; game action 0xd / 0xe queue event 0x21 / 0x22 carrying a true byte
 // Leaf: ProcessUnarmedInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068E8F0, length 275 bytes (+ int3 padding), `ret 8`.
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
@@ -41,6 +43,7 @@ class CDefinitionManager { public:
 };
 class CPlayer;
 class CWorld; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -51,7 +54,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
     float GetButtonPressureForEvent(const CInputEvent& event);        // 0x00687D10
 };
 class CInputProcessCombat : public CInputProcessGameBase {
@@ -63,16 +66,16 @@ void CInputProcessCombat::ProcessUnarmedInput(const CInputEvent& event, CProcess
 {
     if (!IsEventButtonPressed(event))
         return;
-    if (IsEventGameAction(0xb, event)) {
+    if (IsEventGameAction((EGameAction)(0xb), event)) {
         CGameEvent gameEvent(0x16);
         gameEvent.AddUWORD(DefinitionManager->GetDefGlobalIndexFromName("CREATURE_ABILITY"));
         gameEvent.AddFloat(GetButtonPressureForEvent(event));
         processed.AddGameEvent(gameEvent);
-    } else if (IsEventGameAction(0xd, event)) {
+    } else if (IsEventGameAction((EGameAction)(0xd), event)) {
         CGameEvent gameEvent(0x21);
         gameEvent.AddBool(true);
         processed.AddGameEvent(gameEvent);
-    } else if (IsEventGameAction(0xe, event)) {
+    } else if (IsEventGameAction((EGameAction)(0xe), event)) {
         CGameEvent gameEvent(0x22);
         gameEvent.AddBool(true);
         processed.AddGameEvent(gameEvent);

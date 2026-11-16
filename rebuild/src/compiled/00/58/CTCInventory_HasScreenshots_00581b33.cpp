@@ -6,11 +6,11 @@
 // (`optimize("s", on)` with /GS: the biased `lea ebp,[esp-1ACh]` frame and the cookie check @ 0x00BFE9F9 against
 // 0x0139C8A8); Ego_r.pdb ?HasScreenshots@CTCInventory@@QAE_NXZ, a thiscall member that never reads `this` (plain `ret`).
 // Callees: CTBaseSingleton<CUserProfileManager>::Get() @ 0x0040D2A0 (__fastcall), GetValidProfileName(const
-//          CWideString&) @ 0x00406350 and NResourceDirectoryNames::GetSaveDir() @ 0x0041A600 (__fastcall, hidden result in ecx), operator+(const
+//          CWideString&) @ 0x00406350 and NResourceDirectoryNames::GetPhotojournalDir() @ 0x0041A600 (__fastcall, hidden result in ecx), operator+(const
 //          CWideString&, const CWideString&) @ 0x0099BE70, operator+(const CWideString&, const wchar_t*) @ 0x0099BF30
 //          (x2), ~CWideString @ 0x0099B510 (x5), CAFile::StartFileScan @ 0x00999760 (static __fastcall: pattern in ecx,
 //          the CFileScanInfo in edx, the 0x20C-byte name buffer on the stack; returns bool; reloc_bindings + Ego_r.pdb).
-// Shape: the profile-manager singleton into a reference local first, then `GetSaveDir() + GetValidProfileName(name) + L"\\" + L"*.jpg"`: the literal
+// Shape: the profile-manager singleton into a reference local first, then `GetPhotojournalDir() + GetValidProfileName(name) + L"\\" + L"*.jpg"`: the literal
 // arguments of the outer concatenations are pushed first and the profile name is built before the save
 // directory (arguments right to left); four temporaries die in reverse order once the pattern is built; the find
 // result rides in bl across the pattern's destructor.
@@ -28,7 +28,7 @@ CWideString __fastcall operator+(const CWideString& left, const wchar_t16* right
 
 CWideString __fastcall GetValidProfileName(const CWideString& name);   // 0x00406350 ?GetValidProfileName@@YI?AVCWideString@@ABV1@@Z
 namespace NResourceDirectoryNames {
-CWideString __fastcall GetSaveDir();                                    // 0x0041A600 ?GetSaveDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ
+CWideString __fastcall GetPhotojournalDir();                            // 0x0041A600 ?GetPhotojournalDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ (NF33: GetSaveDir is 0x0041A540)
 }
 
 class CUserProfileManager { public:
@@ -61,7 +61,7 @@ public:
 bool CTCInventory::HasScreenshots()
 {
     CUserProfileManager& profiles = CTBaseSingleton<CUserProfileManager>::Get();
-    CWideString pattern = NResourceDirectoryNames::GetSaveDir() + GetValidProfileName(profiles.ProfileName) + s_backslash + s_jpgMask;
+    CWideString pattern = NResourceDirectoryNames::GetPhotojournalDir() + GetValidProfileName(profiles.ProfileName) + s_backslash + s_jpgMask;
     CAFile::CFileScanInfo scanInfo;
     wchar_t16 fileName[0x20C / 2];
     bool found = CAFile::StartFileScan(pattern, scanInfo, fileName);

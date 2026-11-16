@@ -58,7 +58,11 @@ class CEnginePrimitivePrepareInfo { public:
 class CWorldMap { public:
     float GetGroundSizeZAt(const C3DVector& position) const;  // 0x0063A300 ?GetGroundSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z
 };
-void __fastcall EditorDrawSphere(CEnginePrimitivePrepareInfo* info, const C3DVector& position, const C3DVector& colour, float radius);   // 0x00875FB0
+namespace NCameraModes {
+// 0x00875FB0: Ego_r.pdb 0x0085CCF0 + FableWin.pdb 0x029C46F0 ?DrawSquare@NCameraModes@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@1M@Z
+// (manifest label NCameraModes::DrawSquare; NF33 2026-11-16, was the made-up EditorDrawSphere)
+void __fastcall DrawSquare(const CEnginePrimitivePrepareInfo& info, const C3DVector& position, const C3DVector& colour, float size);
+}
 namespace NCameraModes {
 // agentNF31 2026-11-12: was the stand-in EditorDrawCross(CEnginePrimitivePrepareInfo*, ...); Ego_r.pdb 0x0085D1F0 + FableWin.pdb
 //   0x029C4CB0 ?DrawPyramid@NCameraModes@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@M@Z (landed caller 0x006992A0 binds it).
@@ -86,7 +90,7 @@ void NShape::CShape::EditorDrawHighlightPoints(const CEnginePrimitivePrepareInfo
         float dx = top.X - cursor.X;
         float dy = top.Y - cursor.Y;
         if (dy * dy + dx * dx < 0.0625f)
-            EditorDrawSphere(const_cast<CEnginePrimitivePrepareInfo*>(&info), top, C3DVector(0.05f, 0.05f, 0.95f), 0.25f);
+            NCameraModes::DrawSquare(info, top, C3DVector(0.05f, 0.05f, 0.95f), 0.25f);
         info.Engine->AddPrimitive(CEnginePrimitiveLine(0, top, bottom, colour, 0.05f, 0, 0, true, 0, 0));
     }
     for (C3DVector** sel = SelectedPoints._M_start; sel != SelectedPoints._M_finish; ++sel) {

@@ -1,24 +1,31 @@
-// CThingFilter_IsHuman::operator()(CThingCreatureBase*)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x006A7B90, oracle length 18 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
-//
-// Retail bytes:  mov ecx,[esp+4] ; call <creature->IsHuman> ; neg eax ; sbb eax,eax ; neg eax ; ret 4
-// Thing-search predicate: true for human creatures. The callee at 0x00662000 is __fastcall on
-// the creature with no stack arguments (its manifest label is a propagated byte-identical name
-// and is not trusted). The neg/sbb/neg idiom is VC7.1's `x != 0` normalisation into a 32-bit
-// result, so the predicate returns an int-sized boolean (long), not a `bool` in al.
-
-// Call-surface view of CThingCreatureBase (engine/CThingCreatureBase.h carries the layout only).
-struct CThingCreatureBaseCalls {
-    long IsHuman();                       // 0x00662000 (__fastcall, no args)
+// CThingFilter_IsHuman::operator()(const CThingCreatureBase&) const -- true for a creature whose def type is not NOT_HUMAN
+// Leaf: ??RCThingFilter_IsHuman@@QBE_NABVCThingCreatureBase@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006A7B90, 18 bytes: the creature's out-of-line GetCreatureType 0x00662000, then `neg ; sbb ; neg`
+//   (!= NOT_HUMAN), `ret 4`.
+// Name: Ego_r.pdb 0x005A3150 + FableWin.pdb 0x01F95C80 ??RCThingFilter_IsHuman@@QBE_NABVCThingCreatureBase@@@Z; callee both PDBs
+//   ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ (engine/CThingCreatureBase.h CREATURETYPE); the PDB inline
+//   CThingCreatureBase::IsHuman (Ego_r 0x0053CD90) is that test. Landed binders 0x007D4CE0 / 0x00943830 bind this symbol.
+//   No shared header for the filter; modelled here. NF33 2026-11-16: was long operator()(CThingCreatureBaseCalls*).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_CREATURETYPE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/C3DVector.h"
+#include "engine/ECreatureType.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+class CThingFilter_IsHuman {
+public:
+    bool operator()(const CThingCreatureBase& creature) const;
 };
-
-class CThingFilter_IsHuman { public:
-    long operator()(CThingCreatureBaseCalls* creature);
-};
-
-long CThingFilter_IsHuman::operator()(CThingCreatureBaseCalls* creature)
+bool CThingFilter_IsHuman::operator()(const CThingCreatureBase& creature) const
 {
-    return creature->IsHuman() != 0;
+    return creature.GetCreatureType() != NOT_HUMAN;
 }

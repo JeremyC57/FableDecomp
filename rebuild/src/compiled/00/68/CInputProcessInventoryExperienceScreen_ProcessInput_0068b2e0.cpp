@@ -9,7 +9,7 @@
 //   IsEventGameAction @ 0x00687CF0, NUISystem::CManager::GetInstance @ 0x0041E5F2 (+ slot 0 SendEvent, slot 8 IsBusy, slot 38
 //   +0x98, ScrollMenu @ 0x0041DA2D), CPlayerManager::GetMainPlayerNumber @ 0x00449700, CMainGameComponent::AddGameEvent
 //   @ 0x0041649C (on 0x013B86A0), CTCInventoryMap::PanMap @ 0x005FB140, CInputEvent::GetWheelDelta @ 0x00A03BB0,
-//   floor @ 0x00689370, CProcessedInput::SetHandled @ 0x00A0D390, __security_check_cookie @ 0x00BFE9F9.
+//   floor @ 0x00689370, CProcessedInput::SetAsPerformedEvent @ 0x00A0D390, __security_check_cookie @ 0x00BFE9F9.
 // GS note: /GS -- the CGameEvent's 32-byte data array gives the cookie frame.
 // Layout: engine/CInputProcessGameBase.h (MyPlayer +0x18); the game event, mouse position and component-map
 //   lookups as the landed siblings; same shape as the chunk-319 sibling
@@ -31,7 +31,7 @@ public:
 };
 class CProcessedInput {
 public:
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 float __cdecl floor(float value);                  // 0x00689370 (float overload of MSVCR71 floor; first landed as ceil)
 namespace NUISystem {
@@ -202,5 +202,5 @@ void CInputProcessInventoryExperienceScreen::ProcessInput(const CInputEvent& eve
         NUISystem::CManager::GetInstance()->ScrollMenu((long)floor(event.GetWheelDelta() * 0.008333334f));
     else
         return;
-    processed.SetHandled();
+    processed.SetAsPerformedEvent();
 }

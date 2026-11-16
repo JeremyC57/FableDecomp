@@ -8,7 +8,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00845350, length 617 bytes, plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10,
-//   CVectorMap::LowerBound 0x0040F020, the CTCTrophy member 0x006DE8B0 taking the showing creature (descriptive name),
+//   CVectorMap::LowerBound 0x0040F020, CTCTrophy::OnShowTrophyInitialise(CThing&) 0x006DE8B0,
 //   CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580, CSpecialEffectsDef::GetEffectFromString 0x00669D30,
 //   CThing::GetPos 0x004C73D0, CTCGraphicAppearance::GetDummyObject 0x004C08C0, CreateEffectThing 0x006E0880,
 //   CTCDParticleEmitter::AttachToThing 0x006E0BE0, PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME 0x013BAC30,
@@ -81,7 +81,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDe
 class CThing;
 class CTCBase;
 class CTCTrophy { public:
-    void SetShowingCreature(CThing* creature);  // 0x006DE8B0
+    void OnShowTrophyInitialise(CThing& creature);   // 0x006DE8B0 (Ego_r 0x0070C2C0 + FableWin 0x0249D4B0; NF33, was the descriptive SetShowingCreature)
 };
 class CTCDParticleEmitter {
 public:
@@ -166,7 +166,7 @@ public:
 void CCreatureAction_ShowTrophy::Initialise()
 {
     if (((CThing*)PTrophyBeingShown.GetPItem()) && !(((CThing*)PTrophyBeingShown.GetPItem())->m_flags91 & 1))
-        GetTrophy()->SetShowingCreature(GetCreature());
+        GetTrophy()->OnShowTrophyInitialise(*GetCreature());
     CDefPointer<CSpecialEffectsDef> effects;
     long effectType = 0;
     if (GetCreature() && GetCreature()->GetDef()->GetSubDef(&effects)

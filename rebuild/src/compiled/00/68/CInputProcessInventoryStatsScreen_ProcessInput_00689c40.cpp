@@ -1,11 +1,13 @@
 // CInputProcessInventoryStatsScreen::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- refresh the process, then page the stats screen: analogue events 0x11/0x12 past +-0.6 on the stick's Y axis send front-end UI events 1/0 and 7/6, presses of actions 0x25/0x26/0x21/0x22 send 0/1/4/5 and releases of 0x25/0x26 send 0/1; a sent event marks the input handled
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00689C40, length 335 bytes, `ret 8`.
 // Callees: the process's own virtual slot 9 (+0x24, no arguments), CInputEvent::GetEventType @ 0x00A03B40,
 //   CInputEvent::GetAnalogueVector @ 0x00A043A0 (C2DVector by hidden pointer; manifest "GetDefaultVal<CEngineGraphic>"
 //   is propagated; names as in the landed CInputProcessFirstPerson::ProcessInput 0x0068CAC0),
 //   CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventButtonReleased @ 0x00687B30, IsEventGameAction
-//   @ 0x00687CF0, NUISystem::CManager::GetInstance @ 0x0041E5F2 + slot 0, CProcessedInput::SetHandled
+//   @ 0x00687CF0, NUISystem::CManager::GetInstance @ 0x0041E5F2 + slot 0, CProcessedInput::SetAsPerformedEvent
 //   @ 0x00A0D390. Float pool: 0.6f @ 0x0125BEC8, -0.6f @ 0x0125BED4.
 // Layout: engine/CInputProcessInventoryStatsScreen.h (0x28 bytes, flattened over CInputProcessGameBase) -- modelled
 //   locally because the process's own virtual is called (the header's vptr is a plain word).
@@ -21,7 +23,7 @@ public:
 };
 class CProcessedInput {
 public:
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 namespace NUISystem {
 class CManager {
@@ -30,6 +32,7 @@ public:
     static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -38,7 +41,7 @@ public:
     unsigned char _pad04[0x24];                    // +0x04 CAInputProcess .. PGamePlayerInterface
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessInventoryStatsScreen : public CInputProcessGameBase {
 public:
@@ -65,24 +68,24 @@ void CInputProcessInventoryStatsScreen::ProcessInput(const CInputEvent& event, C
         else
             return;
     } else if (IsEventButtonPressed(event)) {
-        if (IsEventGameAction(0x25, event))
+        if (IsEventGameAction((EGameAction)(0x25), event))
             NUISystem::CManager::GetInstance()->SendEvent(0);
-        else if (IsEventGameAction(0x26, event))
+        else if (IsEventGameAction((EGameAction)(0x26), event))
             NUISystem::CManager::GetInstance()->SendEvent(1);
-        else if (IsEventGameAction(0x21, event))
+        else if (IsEventGameAction((EGameAction)(0x21), event))
             NUISystem::CManager::GetInstance()->SendEvent(4);
-        else if (IsEventGameAction(0x22, event))
+        else if (IsEventGameAction((EGameAction)(0x22), event))
             NUISystem::CManager::GetInstance()->SendEvent(5);
         else
             return;
     } else if (IsEventButtonReleased(event)) {
-        if (IsEventGameAction(0x25, event))
+        if (IsEventGameAction((EGameAction)(0x25), event))
             NUISystem::CManager::GetInstance()->SendEvent(0);
-        else if (IsEventGameAction(0x26, event))
+        else if (IsEventGameAction((EGameAction)(0x26), event))
             NUISystem::CManager::GetInstance()->SendEvent(1);
         else
             return;
     } else
         return;
-    processed.SetHandled();
+    processed.SetAsPerformedEvent();
 }

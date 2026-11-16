@@ -2,12 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00687F80, length 80 bytes. Vtable 0x01237F24 slot 4 (CInputProcessConsole); `this` is unused.
 // Callees: operator new @ 0x00BFEA1A (__cdecl, `add esp,4`), CConsole::CConsole @ 0x009ECD80 (vtable 0x0129C600; null-checked
 // placement), CCountedPointer<CConsole>::Reset @ 0x00413520, CConsole::ProcessInput(const CInputEvent&) @ 0x009EA530 (the stub
-// `xor al,al ; ret 4`; the label "CThingFilter_IsUnconscious::operator()" is propagated), CProcessedInput::SetHandled @ 0x00A0D390
+// `xor al,al ; ret 4`; the label "CThingFilter_IsUnconscious::operator()" is propagated), CProcessedInput::SetAsPerformedEvent @ 0x00A0D390
 // (NoGameEvents = 0, Type = 2; labelled "CWomanToAttract::Init"). Shape: the global's object word is tested, the `new` result
 // null-tested around the constructor, then `Reset`; the console pointer is re-read into ecx after the event is loaded.
 class CInputEvent;
 class CProcessedInput { public:
-    void SetHandled();                              // 0x00A0D390
+    void SetAsPerformedEvent();                              // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class CConsole { public:                                   // vtable 0x0129C600, 0x9c bytes
     virtual void v00();
@@ -31,5 +31,5 @@ void CInputProcessConsole::ProcessInput(const CInputEvent& event, CProcessedInpu
     if (g_pConsole.m_pObject == 0)
         g_pConsole.Reset(new CConsole());
     if (g_pConsole.m_pObject->ProcessInput(event))
-        processed.SetHandled();
+        processed.SetAsPerformedEvent();
 }

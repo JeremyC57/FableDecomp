@@ -1,0 +1,7 @@
+- A row whose catalog test links the row (extern declaration of the old stand-in) gets LINK_FAIL after a self rename: rewrite the test on the same model/header, keep its PassPattern line.
+- Precheck every new header-based row with `cpp` for #error before compiling: wine cl hangs on #error until the 240 s timeout.
+- An ALREADY_OK screen can hide a wrong binder: reloc_bindings keeps one line per symbol, so a symbol whose first caller binds another address never shows here (0x0041A600: 0x00581B33 bound GetSaveDir, which is 0x0041A540). Compile the callers before marking done-already when it is cheap.
+- A family of rows with the same local model (the CInputProcess* ProcessInput rows) can be respelled by one scripted regex over the local class body plus a cast at each call site; grade every row and check the bound symbol in full, not a prefix.
+- An ICF-free STLport member (vector<T>::resize) can be emitted from stlport/fable_containers.h by an explicit instantiation; add the per-TU out-of-line opt-in (ERASE_RANGE_OUTOFLINE) when retail calls the range erase.
+- Claims that spell a value parameter by value (FableWin Dinkumware) are wrong for retail STLport, which takes const T&; check the landed binders' spelling before applying.
+- Moving a call onto a by-value-return shared declaration (C3DMeshObject::GetPositionMatrixFromRHSet) can perturb x87 scheduling elsewhere in the function; three tries failed on 0x0075A530, so the old stand-in stays.

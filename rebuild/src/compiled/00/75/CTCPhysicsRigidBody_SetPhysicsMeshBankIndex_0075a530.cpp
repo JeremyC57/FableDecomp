@@ -4,11 +4,11 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075A530, 610 bytes, `ret 4`.
-// Callees: operator new 0x00BFEA1A, CTCBase::PeekWorld 0x00686A80, NGraphicAppearance::CTCGraphicAppearance::GetScale 0x004BBFF0,
+// Callees: operator new 0x00BFEA1A, CTCBase::PeekWorld 0x00686A80, NGraphicAppearance::CTCGraphicAppearance::GetFullScale 0x004BBFF0,
 //   CMeshDataBank::PeekPhysicsMeshInfo 0x00A24250, CPhysicsMeshInfo::GetMesh 0x00A262B0 (CIVCountedPointer<CPhysicsMesh const> by value,
 //   x3), the orientation matrix builder 0x00A358F0 (__fastcall), virtual slot 93 GetPhysicsMeshInfo (+0x174),
 //   CTCPhysicsBase::CalculateRadius 0x006AFE20, GetMapwhoPosition 0x006AFCB0, CVectorMap LowerBound 0x0040F020,
-//   CTCMapwho::OnDie 0x0071A730 / PlaceInMapwho 0x0071A710. 0.5f 0x0122F59C, 0.01f 0x01230A5C.
+//   CTCMapwho::RemoveFromMapwho 0x0071A730 / PlaceInMapwho 0x0071A710. 0.5f 0x0122F59C, 0.01f 0x01230A5C.
 // Layout: as the landed ctor 0x0075AA80 / OnCreate 0x0075B2D0: PPhysicsMeshInfo +0x64, RHSet +0x68, OffsetVector +0x98
 //   (C2DVector); retail CPhysicsMesh = PDB - 0x1c (bounding sphere radius +0x80, bounding box +0x84, circle radius +0xa4).
 //   Same shape as the sibling CTCPhysicsStandard::SetPhysicsMeshBankIndex 0x00724630.
@@ -93,7 +93,7 @@ class CThingPhysicsMeshInfo { public:                  // 0x1c bytes
 };
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
-    float GetScale() const;                     // 0x004BBFF0 (Ego_r + FableWin ?GetScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ)
+    float GetFullScale() const;                 // 0x004BBFF0 (Ego_r 0x004BF740 + FableWin 0x01D0A3C0; NF33: was the inline GetScale)
 };
 }
 class CTCBase;
@@ -113,7 +113,7 @@ class CTCMapwho { public:
     unsigned char _pad00[0x50];
     unsigned char InMapwho : 1;                 // +0x50 bit 0
     void PlaceInMapwho(const C3DVector& position);   // 0x0071A710
-    void OnDie();                               // 0x0071A730
+    void RemoveFromMapwho();                    // 0x0071A730 (Ego_r + FableWin ?RemoveFromMapwho@CTCMapwho@@QAEXXZ; NF33, was OnDie)
 };
 class CThing {
 public:
@@ -168,7 +168,7 @@ void CTCPhysicsRigidBody::SetPhysicsMeshBankIndex(long index)
     if (!PPhysicsMeshInfo)
         PPhysicsMeshInfo = new CThingPhysicsMeshInfo;
     PPhysicsMeshInfo->BankIndex = (unsigned short)index;
-    PPhysicsMeshInfo->RenderSizeX = ParentThing->PGraphicAppearance->GetScale();
+    PPhysicsMeshInfo->RenderSizeX = ParentThing->PGraphicAppearance->GetFullScale();
     CMeshDataBank* bank = PeekWorld().PMainMeshBank;
     const CPhysicsMeshInfo* meshInfo = bank->PeekPhysicsMeshInfo(index);
     C3DVector centre = meshInfo->GetMesh()->GetBoundingBoxCentre();
@@ -184,7 +184,7 @@ void CTCPhysicsRigidBody::SetPhysicsMeshBankIndex(long index)
     CTCMapwho* mapwho;
     ParentThing->GetInterface(&mapwho, 0x3a);
     if (mapwho->InMapwho) {
-        mapwho->OnDie();
+        mapwho->RemoveFromMapwho();
         mapwho->PlaceInMapwho(GetMapwhoPosition());
     }
 }

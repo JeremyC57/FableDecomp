@@ -8,13 +8,15 @@
 //   CInputEvent::GetDeviceType 0x00A03B50 / GetType 0x00A03B40, CInputProcessGameBase::GetEventGameActionVector 0x00687D00 /
 //   IsEventGameAction 0x00687CF0 / IsEventButtonPressed 0x00687A90, CGameCameraManager PushCurrentManualMode 0x006988B0,
 //   PushUpManualCameraList 0x00698B50, PushDownManualCameraList 0x00698C30, PushLookAround 0x00699970 (FableWin.pdb names
-//   for the class, addresses by order), CProcessedInput::SetHandled 0x00A0D390. Constants -1.0f 0x0122DEE0, 0.0f 0x0122DEDC,
+//   for the class, addresses by order), CProcessedInput::SetAsPerformedEvent 0x00A0D390. Constants -1.0f 0x0122DEE0, 0.0f 0x0122DEDC,
 //   0.0001f 0x0129BA3C, 0.8f 0x01254DA8, 10 / 80 degrees in radians (double, PI/180.0*deg) 0x0125BF10 / 0x0125BF08.
 // Layout: engine/CInputProcessControlCreatureRightStick.h (PushingCameraModeUp +0x28, PushingCameraModeDown +0x29,
 //   LookingAround +0x2a); the game base modelled locally as in the landed Update; CPlayer +0x218 as the landed 0x0068EF50 row.
 // Shape: the mouse flag is `bool x = false; if (...) x = true;` (kept in bl); the angle tests use a float Abs (a double fabs
 //   compares in double with fcompp); the stick magnitude and the up component live in the dead argument slots.
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 extern "C" double __cdecl cos(double);
 extern "C" double __cdecl sqrt(double);
 extern "C" double __cdecl fabs(double);
@@ -36,7 +38,7 @@ public:
 };
 class CProcessedInput {
 public:
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class CGameCameraManager { public:
     void PushCurrentManualMode();                  // 0x006988B0
@@ -57,6 +59,7 @@ class CPlayer { public:
     unsigned char _pad00[0x218];
     bool          InRangedWeaponMode;              // +0x218 (descriptive)
 };
+#include "engine/EGameAction.h"
 struct CInputProcessGameBase {                     // engine/CInputProcessGameBase.h layout
     virtual void v00();
     unsigned char _pad04[0x10];                    // +0x04 CAInputProcess
@@ -66,8 +69,8 @@ struct CInputProcessGameBase {                     // engine/CInputProcessGameBa
     void*         Component;                       // +0x20
     void*         PGamePlayerInterface;            // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
-    bool GetEventGameActionVector(long action, const CInputEvent& event, C2DVector* vector);   // 0x00687D00
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
+    bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& vector) const;   // 0x00687D00
 };
 class CInputProcessControlCreatureRightStick : public CInputProcessGameBase { public:   // vtable 0x01237A40
     bool PushingCameraModeUp;                      // +0x28
@@ -84,7 +87,7 @@ void CInputProcessControlCreatureRightStick::ProcessInput(const CInputEvent& eve
     if (event.GetDeviceType() == 3)
         isMouse = true;
     C2DVector stick;
-    if (GetEventGameActionVector(0x3d, event, &stick)) {
+    if (GetControlMovementFromGameActionEvent((EGameAction)(0x3d), event, stick)) {
         stick.Y *= -1.0f;
         float deadZone = 0.2f;
         float magnitude = (float)sqrt(stick.X * stick.X + stick.Y * stick.Y);
@@ -149,15 +152,15 @@ void CInputProcessControlCreatureRightStick::ProcessInput(const CInputEvent& eve
     }
     if (MyPlayer->InRangedWeaponMode)
         return;
-    if (IsEventGameAction(0x40, event)) {
+    if (IsEventGameAction((EGameAction)(0x40), event)) {
         if (IsEventButtonPressed(event) || event.GetType() == 0xe) {
             cameraManager->PushUpManualCameraList();
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         }
-    } else if (IsEventGameAction(0x41, event)) {
+    } else if (IsEventGameAction((EGameAction)(0x41), event)) {
         if (IsEventButtonPressed(event) || event.GetType() == 0xe) {
             cameraManager->PushDownManualCameraList();
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
         }
     }
 }

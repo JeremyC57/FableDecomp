@@ -1,5 +1,6 @@
 // CTCTrophy::StartDialogBox(CWideString text, unsigned long flags, CWideString button1, CWideString button2, CWideString button3) -- unless a hero-information screen is up, shows the trophy dialog through the player GUI's subtitle renderer (three-button or two-button form), then waits for confirmation and registers the trophy for global updates once
-// Leaf: StartDialogBox
+// Leaf: ?StartDialogBox@CTCTrophy@@AAEXVCWideString@@K000@Z
+// NF33 (2026-11-16): access per Ego_r.pdb + FableWin.pdb (private AAE: StartDialogBox, PlaySoundW, UpdateGainedWitnessSounds; engine/CTCTrophy.h).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -75,6 +76,7 @@ class CTCTrophy : public CTCBase { public:
     bool          WaitingForTerminate;          // +0x3e
     bool          WaitingForNextInstructionsPage;   // +0x3f
     bool          IsGlobalTC;                   // +0x40
+private:
     void StartDialogBox(CWideString text, unsigned long flags, CWideString button1, CWideString button2, CWideString button3);
 };
 

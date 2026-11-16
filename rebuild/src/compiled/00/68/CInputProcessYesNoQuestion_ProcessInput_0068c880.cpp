@@ -22,7 +22,7 @@ class CGameEvent : public CMemoryBuffer { public:
 class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {
@@ -64,32 +64,32 @@ void CInputProcessYesNoQuestion::ProcessInput(const CInputEvent& event, CProcess
             CGameEvent gameEvent(0x1d);
             gameEvent.AddLong(1);
             gameEvent.AddLong(PreviousMode);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
             processed.AddGameEvent(gameEvent);
         } else if (event.GetDeviceType() == 3 && event.GetKey_00a03b40() == 10) {
             CGameEvent gameEvent(0x1d);
             gameEvent.AddLong(0);
             gameEvent.AddLong(PreviousMode);
-            processed.SetHandled();
+            processed.SetAsPerformedEvent();
             processed.AddGameEvent(gameEvent);
         }
     } else if (IsEventGameAction(0x16, event)) {
         CGameEvent gameEvent(0x1d);
         gameEvent.AddLong(1);
         gameEvent.AddLong(PreviousMode);
-        processed.SetHandled();
+        processed.SetAsPerformedEvent();
         processed.AddGameEvent(gameEvent);
     } else if (IsEventGameAction(0x17, event)) {
         CGameEvent gameEvent(0x1d);
         gameEvent.AddLong(0);
         gameEvent.AddLong(PreviousMode);
-        processed.SetHandled();
+        processed.SetAsPerformedEvent();
         processed.AddGameEvent(gameEvent);
     } else if (IsEventGameAction(0x18, event) && CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Question.CanCancel()) {
         CGameEvent gameEvent(0x1d);
         gameEvent.AddLong(2);
         gameEvent.AddLong(PreviousMode);
-        processed.SetHandled();
+        processed.SetAsPerformedEvent();
         processed.AddGameEvent(gameEvent);
     }
 }

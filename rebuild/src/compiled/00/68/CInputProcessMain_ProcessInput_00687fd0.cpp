@@ -14,7 +14,7 @@
 //   0x00487DC0; the component map LowerBound 0x0040F020; GetAsyncKeyState (import 0x014402CC);
 //   CTCPhotojournalCapture::TakeQuickScreenshotNoHud 0x0055D490 / TakeQuickScreenshot 0x0055D180; operator new 0x00BFEA1A,
 //   CConsole ctor 0x009ECD80, CCountedPointer<CConsole>::Reset 0x00413520, CConsole::Get 0x00414C90, CConsole::ProcessInput
-//   0x009EA540 (a `xor al,al` stub); CPlayerGui::MoveCursor 0x004379C0; CProcessedInput::SetHandled 0x00A0D390.
+//   0x009EA540 (a `xor al,al` stub); CPlayerGui::MoveCursor 0x004379C0; CProcessedInput::SetAsPerformedEvent 0x00A0D390.
 // Layout: the main game component singleton 0x013B86A0 (PPlayerManager +0x1c, PWorld +0x24 as Ego_r.pdb CMainGameComponent);
 //   CWorld RegionLoadStatus +0x104 and SaveGameLoadStatus +0xf8 (engine/CWorld.h, retail STLport 4.6 offsets; the landed
 //   CDrawMiniMap::Update 0x0064401C reads the same +0x104 region-load stage); g_bAutoSaveProgressShown
@@ -36,7 +36,7 @@ public:
 };
 class CProcessedInput {
 public:
-    void SetHandled();                             // 0x00A0D390
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class CTCPhotojournalCapture { public:
     void TakeQuickScreenshotNoHud();               // 0x0055D490
@@ -145,10 +145,10 @@ void CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& 
                 CTCPhotojournalCapture* capture = hero->GetTC(0x10e);
                 if (GetAsyncKeyState(0x10) < 0) {
                     capture->TakeQuickScreenshotNoHud();
-                    processed.SetHandled();
+                    processed.SetAsPerformedEvent();
                 } else {
                     capture->TakeQuickScreenshot();
-                    processed.SetHandled();
+                    processed.SetAsPerformedEvent();
                 }
                 return;
             }
@@ -159,7 +159,7 @@ void CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& 
     if (g_pConsole.m_pObject->IsOpen)
         return;
     if (CTBaseSingleton<CConsole>::Get().ProcessInput(event))
-        processed.SetHandled();
+        processed.SetAsPerformedEvent();
     if (event.GetType() == 1)
         return;
     if (IsEventButtonPressed(event))

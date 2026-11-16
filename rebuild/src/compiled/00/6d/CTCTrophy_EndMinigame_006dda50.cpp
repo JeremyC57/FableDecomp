@@ -46,8 +46,10 @@ class CTCTrophy { public:
     bool          WaitingForConfirmation;                         // +0x3c
     bool          WaitingForScore;                                // +0x3d
     bool          WaitingForTerminate;                            // +0x3e
+private:
     void StartDialogBox(CWideString text, unsigned long dialog, CWideString button1, CWideString button2,
                         CWideString button3);                     // 0x006DD7E0
+public:
     void EndMinigame();
 };
 

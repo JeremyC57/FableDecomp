@@ -1,6 +1,8 @@
 // CInputProcessBlock::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press that is game action 0x56 (block), queue a "block" game event (type 0x3d)
 // Grade: DIFFER(107v103) -- /GS lane gap: the lane caches `processed` in ebx at entry, retail re-reads `[esp+3Ch]`; without /GS (or with an unnamed temporary, which loses the cookie) the caching disappears
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068E2C0, length 103 bytes.
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
@@ -35,6 +37,7 @@ public:
     long GetCurrentMode() const;                   // 0x00633BE0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -46,7 +49,7 @@ public:
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90 (kind 0x13; manifest "IsEventButtonHeld")
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
     bool IsGameActionEventInQueue(long action, long buttonEventType); // 0x00687D50
 };
 class CInputProcessBlock : public CInputProcessGameBase {
@@ -57,7 +60,7 @@ public:
 
 void CInputProcessBlock::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    if (IsEventButtonPressed(event) && IsEventGameAction(0x56, event)) {
+    if (IsEventButtonPressed(event) && IsEventGameAction((EGameAction)(0x56), event)) {
         CGameEvent gameEvent(0x3d);
         processed.AddGameEvent(gameEvent);
     }

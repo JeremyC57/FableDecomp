@@ -1,5 +1,7 @@
 // CInputProcessStrafe::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- for the strafe action's analogue vector (game action 0x3c; a keyboard event only when it is a button release), queue game event 0x2b for the live controlled creature: its unique id, the vector, and the key (-1 for non-keyboard devices)
 // Leaf: ?ProcessInput@CInputProcessStrafe@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00688A80, length 283 bytes (+ int3 padding), `ret 8`.
 // Callees: CPlayer::PeekPControlledCreature @ 0x00487DD0, CInputProcessGameBase::GetEventGameActionVector(long, const
@@ -44,6 +46,7 @@ public:
     const CThingPlayerCreature* PeekPControlledCreature() const;         // 0x00487DD0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -54,7 +57,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonReleased(const CInputEvent& event);            // 0x00687B30
-    bool GetEventGameActionVector(long action, const CInputEvent& event, C2DVector* vector); // 0x00687D00
+    bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& vector) const; // 0x00687D00
 };
 class CInputProcessStrafe : public CInputProcessGameBase {
 public:
@@ -65,7 +68,7 @@ void CInputProcessStrafe::ProcessInput(const CInputEvent& event, CProcessedInput
 {
     const CThing* creature = MyPlayer->PeekPControlledCreature();
     C2DVector strafe;
-    if (!GetEventGameActionVector(0x3c, event, &strafe))
+    if (!GetControlMovementFromGameActionEvent((EGameAction)(0x3c), event, strafe))
         return;
     if (event.GetDeviceType() == 2 && !IsEventButtonReleased(event))
         return;

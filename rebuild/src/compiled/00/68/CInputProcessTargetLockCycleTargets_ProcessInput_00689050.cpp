@@ -1,5 +1,7 @@
 // CInputProcessTargetLockCycleTargets::ProcessInput(const CInputEvent& event, CProcessedInput& input) -- on the release of the target-lock button (game action 1): detect a click (the pressure crossing the threshold upwards while a pulse window is open), update the pulse timer (reopen at 10 above the threshold, else count it down when pulses-only), store the pressure, and on a click make a live hero's targeting component (kind 8) target the next thing
 // Leaf: ?ProcessInput@CInputProcessTargetLockCycleTargets@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00689050, 222 bytes, `ret 8`.
 // Callees: CInputProcessGameBase::IsEventGameAction @ 0x00687CF0, IsEventButtonReleased @ 0x00687B30 (labelled
 //   IsEventButtonHeld; see GOTCHAS chunk 144), GetButtonPressureForEvent @ 0x00687D10 (landed, returns float),
@@ -61,6 +63,7 @@ public:
     CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -71,7 +74,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30 (kind 0x14)
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
     float GetButtonPressureForEvent(const CInputEvent& event);        // 0x00687D10
 };
 class CInputProcessTargetLockCycleTargets : public CInputProcessGameBase {
@@ -86,7 +89,7 @@ public:
 void CInputProcessTargetLockCycleTargets::ProcessInput(const CInputEvent& event, CProcessedInput& input)
 {
     bool click = false;
-    if (IsEventGameAction(1, event) && IsEventButtonReleased(event)) {
+    if (IsEventGameAction((EGameAction)(1), event) && IsEventButtonReleased(event)) {
         float pressure = GetButtonPressureForEvent(event);
         long timer = ClickAcceptancePulseTimer;
         if (timer >= 0 && LastButtonPressure < ButtonPressureThresholdForClick && pressure > ButtonPressureThresholdForClick)

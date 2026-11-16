@@ -1,5 +1,7 @@
 // CInputProcessParalysed::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- count held presses of game action 9; past ten, a live hero breaks off the drain holding it (current action = CCombatAction_GenericBreakOffDrain)
 // Leaf: ProcessInput
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690D30, length 116 bytes. Vtable 0x01237D88 slot 4.
 // Callees: CInputProcessGameBase::IsEventGameAction @ 0x00687CF0, IsEventButtonHeld @ 0x00687BD0, CPlayer::GetPControlledCreature
 // @ 0x00487DC0 (MyPlayer +0x18), CCombatAction_GenericBreakOffDrain::CCombatAction_GenericBreakOffDrain(CThingCreatureBase*)
@@ -35,6 +37,7 @@ public:
     CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();
@@ -45,7 +48,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
-    bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessParalysed : public CInputProcessGameBase {
 public:
@@ -55,7 +58,7 @@ public:
 
 void CInputProcessParalysed::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    if (IsEventGameAction(9, event) && IsEventButtonHeld(event)) {
+    if (IsEventGameAction((EGameAction)(9), event) && IsEventButtonHeld(event)) {
         if (++m_pressCount > 10) {
             CThingCreatureBase* hero = MyPlayer->GetPControlledCreature();
             if (hero && !hero->m_dead)

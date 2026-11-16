@@ -1,4 +1,6 @@
 // CTCTrophy::UpdateGainedWitnessSounds() -- when witness sounds are pending and their frame has come, plays the "gained witness" sound, counts it off and schedules the next one SecsDelayPerGainedWitnessSound seconds later
+// Leaf: ?UpdateGainedWitnessSounds@CTCTrophy@@AAEXXZ
+// NF33 (2026-11-16): private per Ego_r.pdb 0x0070C940 + FableWin.pdb (engine/CTCTrophy.h); PlaySoundW private too.
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DEE80, length 94 bytes.
@@ -41,6 +43,7 @@ class CTCTrophy { public:
     unsigned char        _pad_0x10[0x1C];
     long                 PendingGainedWitnessSounds;        // +0x2C
     long                 FrameForNextGainedWitnessSound;    // +0x30
+private:
     unsigned long PlaySoundW(const CCharString& name);      // 0x006DDCD0
     void UpdateGainedWitnessSounds();
 };
