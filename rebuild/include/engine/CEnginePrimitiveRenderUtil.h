@@ -352,7 +352,7 @@ public:
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_CLOTHRENDER
     // Opt-in (bwf1 / agentC2, row 0x00BB3E80 CEngineClothRenderer::RenderClothPrimitive): the outline set-ups the cloth renderer calls out of
     // line (Ego_r.pdb / FableWin.pdb names; `this` unused). Identities by pass: 0x00BF0740 = SetupOutlineStencilStates (pass 12), 0x00BF0B20 =
-    // SetupOutlineFillStates (pass 13) -- the _OUTLINESTENCILSTATES opt-in binds SetupOutlineStencilStates to 0x00BF0B20: see NAME_FIXES.tsv.
+    // SetupOutlineFillStates (pass 13); the _OUTLINESTENCILSTATES opt-in declares both (landing gj fixed its 0x00BF0B20 binding).
     void SetupOutlineSmoothStencilStates(const CEngineMeshEffectOutline& effect, float scale);                       // 0x00BEFD90
 #ifndef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_OUTLINESTENCIL
     void SetupOutlineSmoothAlphaStencilMaskStates(const CEngineMeshEffectOutline& effect);                          // 0x00BF01E0

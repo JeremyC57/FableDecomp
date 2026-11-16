@@ -6,7 +6,7 @@ with their behaviour tests passing, `LANDVERIFY_STRICT_HEADERS=1`, on the repo h
 
 | row | function | what closed it |
 |---|---|---|
-| 0x0047042A | CSoundMap::TransferBinaryIn | a release-ASSERT dead arm in `CArray<T>::operator[]` (new `FABLE_RETAIL_CARRAY_INDEX_ASSERT`, with `FABLE_RETAIL_ASSERT_DEAD_ARM`) gives retail's `lea ecx,[eax+ecx+4]` |
+| 0x0047042A | CSoundMap::TransferBinaryIn | a release-ASSERT dead arm in `CArray<T>::operator[]` (new `FABLE_RETAIL_CARRAY_INDEX_ASSERT`, with `FABLE_RETAIL_ASSERT_DEAD_ARM`) gives retail's `lea ecx,[eax+ecx+4]`; the assert is INFERRED (FableWin.pdb has the out-of-line indexer 0x01D2F450, its body is not readable without FableWin.exe) and its effect on the SIB order was graded, not measured |
 | 0x0090C900 | CThingFilter_IsValidGossipee::operator() | retail pairs its two `return false` copies crosswise; the factionless-enemy test and the village mismatch share one return block, written as a `goto` into the village arm's return -- a FITTED structure (no evidence for the original's shape); callee 0x00658D5D is IsSociableTime |
 | 0x00959380 | CThingSearchTools::GetAllThingsInRoughArea<const CThingObject, vector<const CThingObject*>, CThingFilter_None> | ported from a local model to the shared rough-area template; SIB order through the FITTED `FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_CELL_BYTEOFFSET` (the byte-offset cell spelling the landed siblings 0x006F3570 / 0x007197C0 carry); identity from the landed caller 0x00959800 |
 | 0x0095C7C0 | CThingSearchTools::GetAllThingsInRoughArea<CThingObject, vector<CThing*>, CThingFilter_None> | as 0x00959380 |
