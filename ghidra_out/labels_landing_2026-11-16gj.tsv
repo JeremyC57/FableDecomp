@@ -1,0 +1,3 @@
+address	name	evidence
+0x00BF0740	?SetupOutlineStencilStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@M@Z	landing gj (w24C); pass 12 setter
+0x00BF0B20	?SetupOutlineFillStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@M@Z	landing gj respelling (land1113fy / land1115ga)

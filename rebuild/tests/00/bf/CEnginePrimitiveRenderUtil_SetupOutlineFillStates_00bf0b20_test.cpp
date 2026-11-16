@@ -427,8 +427,8 @@ class CShaderRenderManager{public:
 };
 namespace NEngineInternal{CRenderManager* GPRenderManager=&manager;CShaderRenderManager* GPShaderRenderManager;CEngineScreenEffectOutlineGlow* GPScreenEffectOutlineGlow;}
 using namespace NEngineInternal;
-class CEnginePrimitiveRenderUtil{public:void SetupOutlineStencilStates(const CEngineMeshEffectOutline&,float);};
-void CEnginePrimitiveRenderUtil::SetupOutlineStencilStates(const CEngineMeshEffectOutline& effect, float mesh_scale)
+class CEnginePrimitiveRenderUtil{public:void SetupOutlineFillStates(const CEngineMeshEffectOutline&,float);};
+void CEnginePrimitiveRenderUtil::SetupOutlineFillStates(const CEngineMeshEffectOutline& effect, float mesh_scale)
 {
     float width_world_space=effect.WidthWorldSpace*NEngineInternal::GPScreenEffectOutlineGlow->PeekOutlineGlowScaleFactor();
     float width_screen_space=effect.WidthScreenSpace*NEngineInternal::GPScreenEffectOutlineGlow->PeekOutlineGlowScaleFactor();
@@ -554,13 +554,13 @@ for(int i=0;i<8;++i)all[all_count++]=&manager.DeviceState.TextureBumpEnvMat11[i]
    if(!(old_mask[idx]&masks[mask])){captured[capture_count]=order[j];prior[capture_count++]=old_value[idx];new_mask[idx]|=masks[mask];}
    if(!old_dirty[idx])queued[queue_count++]=order[j];new_dirty[idx]=true;
   }
-  uploads=0;block.SetupOutlineStencilStates(effect,mesh_scale);
+  uploads=0;block.SetupOutlineFillStates(effect,mesh_scale);
   Check(uploads==2);Check(manager.StateStackSize==2+capture_count&&manager.StateUpdateListSize==3+queue_count);
   Check(manager.StateStack[0].State==all[0]&&manager.StateStack[0].Value==123&&manager.StateStack[1].Value==456);Check(manager.StateUpdateList[0]==all[2]&&manager.StateUpdateList[2]==all[4]);
   for(int j=0;j<capture_count;++j)Check(manager.StateStack[2+j].State==captured[j]&&manager.StateStack[2+j].Value==prior[j]);
   for(int j=0;j<queue_count;++j)Check(manager.StateUpdateList[3+j]==queued[j]);
   for(int j=0;j<all_count;++j){Check(all[j]->DesiredState==new_value[j]&&all[j]->BookmarkMask==new_mask[j]&&all[j]->DirtyListFlag==new_dirty[j]);Check(all[j]->CurrentState==(unsigned long)(71+j)&&all[j]->RenderStateParam==55&&all[j]->StateType==6&&all[j]->TextureStage==7);}
-  uploads=0;block.SetupOutlineStencilStates(effect,mesh_scale);Check(manager.StateStackSize==2+capture_count&&manager.StateUpdateListSize==3+queue_count);Check(uploads==2);++cases;
+  uploads=0;block.SetupOutlineFillStates(effect,mesh_scale);Check(manager.StateStackSize==2+capture_count&&manager.StateUpdateListSize==3+queue_count);Check(uploads==2);++cases;
  }
  Check(cases==16384);std::puts("00bf0b20_TEST PASS");return 0;
 }

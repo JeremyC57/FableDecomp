@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00bf0740   RELOCATION_MATCH PASS   SetupOutlineStencilStates
+
+WINS: 1
+  00bf0740 RELOCATION_MATCH CEnginePrimitiveRenderUtil::?SetupOutlineStencilStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@M@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveRenderUtil_SetupOutlineStencilStates_00bf0740

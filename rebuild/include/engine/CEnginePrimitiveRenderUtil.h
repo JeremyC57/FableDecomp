@@ -286,9 +286,11 @@ public:
     // that never reads `this`; retail `ret 4`).
     void SetupOutlineSmoothAlphaStencilMaskStates(const CEngineMeshEffectOutline& effect);   // 0x00BF01E0
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_OUTLINESTENCILSTATES
-    // Nested opt-in (chunk Q25, row 0x00BF0B20): Ego_r.pdb / FableWin.pdb
-    // ?SetupOutlineStencilStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@M@Z (`this` unused; retail `ret 8`).
-    void SetupOutlineStencilStates(const CEngineMeshEffectOutline& effect, float scale);   // 0x00BF0B20
+    // Nested opt-in (chunk Q25 row 0x00BF0B20; w24C row 0x00BF0740): Ego_r.pdb / FableWin.pdb, the two (effect, float) outline setters
+    // (`this` unused; retail `ret 8`). By render pass (0x00BB3E80 / 0x00BA2350): 0x00BF0740 = SetupOutlineStencilStates (pass 12),
+    // 0x00BF0B20 = SetupOutlineFillStates (pass 13); landing gj respelled 0x00BF0B20, which this block first bound to the stencil name.
+    void SetupOutlineStencilStates(const CEngineMeshEffectOutline& effect, float scale);   // 0x00BF0740
+    void SetupOutlineFillStates(const CEngineMeshEffectOutline& effect, float scale);      // 0x00BF0B20
 #endif
 #endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_MESHPRIMITIVE

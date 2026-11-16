@@ -397438,8 +397438,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00bf0b20'
         Module = 'CEnginePrimitiveRenderUtil'
-        Source = '00/bf/CEnginePrimitiveRenderUtil_SetupOutlineStencilStates_00bf0b20.cpp'
-        TestSource = '00/bf/CEnginePrimitiveRenderUtil_SetupOutlineStencilStates_00bf0b20_test.cpp'
+        Source = '00/bf/CEnginePrimitiveRenderUtil_SetupOutlineFillStates_00bf0b20.cpp'
+        TestSource = '00/bf/CEnginePrimitiveRenderUtil_SetupOutlineFillStates_00bf0b20_test.cpp'
         PassPattern = '00bf0b20_TEST PASS'
     }
     [pscustomobject]@{
@@ -397529,6 +397529,13 @@ $catalog = @(
         TestSource = '00/bc/CEngineInternalPrimitive2DAnimatedMesh_Initialise_00bcf4f0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /d2inlT144'
         PassPattern = '00bcf4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf0740'
+        Module = 'CEnginePrimitiveRenderUtil'
+        Source = '00/bf/CEnginePrimitiveRenderUtil_SetupOutlineStencilStates_00bf0740.cpp'
+        TestSource = '00/bf/CEnginePrimitiveRenderUtil_SetupOutlineStencilStates_00bf0740_test.cpp'
+        PassPattern = '00bf0740_TEST PASS'
     }
 )
 
