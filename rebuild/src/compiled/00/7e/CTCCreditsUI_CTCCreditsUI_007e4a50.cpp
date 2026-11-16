@@ -1,7 +1,7 @@
 // CTCCreditsUI::CTCCreditsUI(CThing* parent) -- CTCBase, own vtable, inactive, no components, empty credit part, zero render time
 // Leaf: ??0CTCCreditsUI@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreditsUI@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCCreditsUI@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E4A50, length 59 bytes (+5 int3). Vtable 0x012705AC (CTCCreditsUI).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CCharString::CCharString() @ 0x0099E4B0. Constant 0.0 (double)
 // @ 0x0122ED70.

@@ -1,7 +1,7 @@
 // CTCSmokeGenerator::CTCSmokeGenerator(CThing* parent) -- thing-component base, zero generation distance, empty position vector, positions not created
 // Leaf: ??0CTCSmokeGenerator@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCSmokeGenerator@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCSmokeGenerator@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00722540, length 48 bytes.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite", propagated).
 // Layout: Ego_r.pdb CTCSmokeGenerator (0x24 bytes) with the retail 12-byte vector: GenerationDistance +0x0c,

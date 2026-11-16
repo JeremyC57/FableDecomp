@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- PDef as a CDefPointer record with an inline ctor (the -1 store stays above it) and UpdateOffset assigned in the body (its `and edx,3` sinks below the radius stores)
 // Leaf: ??0CTCPerceiveThing@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCPerceiveThing@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCPerceiveThing@@QAE@AAVCThing@@@Z).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007445E0, 128 bytes. Vtable 0x012688CC (CTCPerceiveThing, RTTI: slot 0 0x007462D0, slot 4
 //   OnCreate 0x00744ED0); the member's vtable 0x01237F1C is CIntelligentPointer<CThing const>.

@@ -1,7 +1,7 @@
 // CTCHeroCentre::CTCHeroCentre(CThing&) -- CTCBase(thing), the hero-centre vtable, a null def pointer, GUI mode / quest-card frame zeroed, two empty vectors (QuestCards, QuestCardPositions) and the tutorial-wait flag cleared
 // Leaf: ??0CTCHeroCentre@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroCentre@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCHeroCentre@@QAE@AAVCThing@@@Z).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077D470, length 57 bytes (+ int3 padding). Vtable 0x0126AF94 = CTCHeroCentre.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800.

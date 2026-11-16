@@ -1,7 +1,7 @@
 // CTCWillEnflame::CTCWillEnflame(CThing* parent) -- constructor: CTCBase, cleared flags, null def pointer and spell level, null removed-item and target pointers; arm the owner's spell-cast state component, load SPECIAL_ABILITIES_ENFLAME_DEF and take the spell level from the owner's ability inventory
 // Leaf: ??0CTCWillEnflame@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCWillEnflame@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCWillEnflame@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A43A0, 281 bytes (+7 int3), `ret 4`; vtable 0x0126C824.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800; CBaseIntelligentPointer ctor/SetPItem @ 0x00A01B10/0x00A01B90 (x2,
 //   CIntelligentPointer<CThing> vtable 0x01238C6C); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (non-const,

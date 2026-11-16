@@ -1,7 +1,7 @@
 // CTCHeroAttachableAppearanceModifiers::CTCHeroAttachableAppearanceModifiers(CThing&) -- thing-component and appearance-component bases, change flags cleared, empty primitive list, hidden-material set and graphics list, three empty appearance-modifier lists, then registration with the owner's graphic appearance
 // Leaf: ??0CTCHeroAttachableAppearanceModifiers@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroAttachableAppearanceModifiers@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCHeroAttachableAppearanceModifiers@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00706D10, 226 bytes (+ int3 padding), `ret 4`.
 // Label correction: the catalog's "CEngineSubPrimitive2DClockSprite::Ctor" is propagated; the vtables stored are 0x01264F0C
 //   (primary) / 0x01264EF4 (component base) = CTCHeroAttachableAppearanceModifiers (rtti-vtables.tsv).

@@ -1,7 +1,7 @@
 // CTCFishing::CTCFishing(CThing&) -- CTCBase(thing), no fish, stage 0 not initialised, all counters/distances/score cleared, empty text, then the fishing def taken from the parent's definition
 // Leaf: ??0CTCFishing@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCFishing@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCFishing@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 //
 // Retail 0x007B0800, 127 bytes (`ret 4`). Callees: CTCBase::CTCBase(CThing&) @ 0x00686800,

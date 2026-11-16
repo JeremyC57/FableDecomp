@@ -1,6 +1,6 @@
 // CTCCameraPointGeneralCase::CTCCameraPointGeneralCase(CThing* parent) -- shape-activation base, then the camera defaults (string 5, cage radius and height offset 2, three stick/target flags on)
 // Leaf: ??0CTCCameraPointGeneralCase@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCCameraPointShapeActivationBase(CThing&) (0x004D3A03) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCCameraPointShapeActivationBase(CThing&) (0x004D3A03, as FableWin.pdb spells it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D3B41, length 55 bytes. Called only from the factory at 0x004D82A3
 // (`new` of 0x54 bytes).
 // Callees: CTCCameraPointShapeActivationBase::CTCCameraPointShapeActivationBase(CThing&) @ 0x004D3A03 (stores vtable

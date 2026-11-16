@@ -1,7 +1,7 @@
 // CTCBoastingPodium::CTCBoastingPodium(CThing* thing) -- CTCBase(thing), own vtable, the empty BoastingPositions vector map, the boast counters cleared, BoastingActive false, PDef null
 // Leaf: ??0CTCBoastingPodium@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCBoastingPodium@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCBoastingPodium@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E7513, length 50 bytes; a size-optimised TU
 // (`push dword ptr [esp+8]` pass-through): `#pragma optimize("s", on)`.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800. Vtable 0x0124346C = CTCBoastingPodium (rtti-vtables.tsv).

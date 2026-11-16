@@ -1,7 +1,7 @@
 // CTCTavernTable::CTCTavernTable(CThing* owner) -- tavern-table component constructor: CTCBase(owner), empty occupant/tankard/food/seat containers, cleared flags, available for use, and the lengths of the five action-point name prefixes
 // Leaf: ??0CTCTavernTable@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCTavernTable@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCTavernTable@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B8710, 303 bytes (`ret 4`). Vtable 0x0126DBB4 (CTCTavernTable).
 // Callees: CTCBase::CTCBase(CThing&) 0x00686800; CCharString(const char*, long) 0x0099EBF0 ("ACTION_POINT_SIT_" 0x0126DB98,
 //          "ACTION_POINT_GAME_MASTER_" 0x0126DB7C, "ACTION_POINT_HERO_" 0x0126DB68, "DUMMY_POINT_TANKARD_" 0x0126DB50,

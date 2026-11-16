@@ -1,7 +1,7 @@
 // CTCMultiArrow::CTCMultiArrow(CThing&) -- CTCBase(owner), vtable, counters and the ammo-effect vector cleared, BowEffect = 0, then Init()
 // Leaf: ??0CTCMultiArrow@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBase_007cc7d0, which bound a made-up constructor name to
-//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CC7D0, length 92 bytes (vtable 0x0126ED7C).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10,
 // CBaseIntelligentPointer::SetPItem(CBaseObject*) @ 0x00A01B90, CTCMultiArrow::Init() @ 0x007CC4D0.

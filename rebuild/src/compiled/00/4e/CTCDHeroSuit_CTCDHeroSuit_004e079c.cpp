@@ -1,6 +1,6 @@
 // CTCDHeroSuit::CTCDHeroSuit(CThing* parent) -- CTCDriverBase(parent), own vtable, null def pointer and empty SuitParts vector
 // Leaf: ??0CTCDHeroSuit@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E079C, length 38 bytes.
 // Callees: CTCDriverBase::CTCDriverBase(CThing&) @ 0x00771200 (vtable 0x0126A79C = CTCDriverBase, rtti-vtables.tsv).
 // Vtable 0x01242004 = CTCDHeroSuit (rtti-vtables.tsv). PDB CTCDHeroSuit: PDef

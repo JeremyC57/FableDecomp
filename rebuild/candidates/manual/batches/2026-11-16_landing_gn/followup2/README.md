@@ -19,7 +19,7 @@ copy, and old rows binding wrong names to 0x00686800 (CTCBase::CTCBase(CThing&))
   C4DVector / CParticleSimulation in the two others).
 - **0x007448F0:** 0x00933B30, 0x00936210, 0x009207A0 (made-up `CTCUndergroundMover::GetSurfaceRange`), 0x00935AD0 and 0x00665190
   are respelled `GetSightRadius() const`. The first three use engine/CTCPerceiveThing.h through the new declaration-only opt-in
-  `FABLE_RETAIL_CTCPERCEIVETHING_GETSIGHTRADIUS`. All 17 retail calls into 0x007448F0 from landed rows now bind
+  `FABLE_RETAIL_CTCPERCEIVETHING_GETSIGHTRADIUS`. All 11 retail calls into 0x007448F0 that sit in landed rows (of 17; the other 6 are in rows not landed yet) now bind
   `?GetSightRadius@CTCPerceiveThing@@QBEMXZ`.
 - **0x00686800**, first part: the 12 component constructors whose bindings named a local base, all re-authored on engine/CTCBase.h
   (`FABLE_RETAIL_CTCBASE`) with the PDB `(CThing&)` signature: 0x004D49DD, 0x004D7E46, 0x007E08E0, 0x00749810, 0x0075C180,

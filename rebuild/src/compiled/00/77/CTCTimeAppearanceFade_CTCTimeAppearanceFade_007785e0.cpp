@@ -1,7 +1,7 @@
 // CTCTimeAppearanceFade::CTCTimeAppearanceFade(CThing&) -- base CEngineSubPrimitive2DClockSprite(argument) then this class's vtable
 // Leaf: ??0CTCTimeAppearanceFade@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CEngineSubPrimitive2DClockSprite (which bound ??0CEngineSubPrimitive2DClockSprite@@QAE@PAVCEngineInternalPrimitive2DClockSprite@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCTimeAppearanceFade@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCTimeAppearanceFade@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007785E0, oracle length 25 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

@@ -1,7 +1,7 @@
 // CTCFireheartMinigame::CTCFireheartMinigame(CThing&) -- CTCBase(thing), no session / forced quit / initialisation / move, an empty scripted-thing handle and primitive-handle vector, then the minigame def taken from the parent's definition
 // Leaf: ??0CTCFireheartMinigame@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCFireheartMinigame@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCFireheartMinigame@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 //
 // Retail 0x007E7640, 109 bytes (`ret 4`). Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, the

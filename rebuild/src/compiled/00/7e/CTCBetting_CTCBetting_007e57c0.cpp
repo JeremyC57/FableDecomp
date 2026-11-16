@@ -1,7 +1,7 @@
 // CTCBetting::CTCBetting(CThing* thing) -- CTCBase(thing), own vtable, two empty primitive-handle vectors resized to 5, Active cleared, the frame counters and PreviousDonation zeroed
 // Leaf: ??0CTCBetting@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCBetting@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCBetting@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E57C0, length 81 bytes (+ int3 padding).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, vector<CEnginePrimitiveHandle>::Resize(long) @ 0x00443F90
 // (x2, count 5; the manifest label "CEnginePrimitiveRenderer::AddPrimitive" is propagated).

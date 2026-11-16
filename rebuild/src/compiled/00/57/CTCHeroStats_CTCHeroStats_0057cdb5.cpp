@@ -1,7 +1,7 @@
 // CTCHeroStats::CTCHeroStats(CThing&) -- the hero-stats component: CTCBase, zeroed counters and records, default multipliers and recovery marker, sized experience/region/ability tables, random wobble counters and the def-derived age, stamina, fatness timer and renown cap
 // Leaf: ??0CTCHeroStats@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroStats@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCHeroStats@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057CDB5, 1007 bytes, `ret 4`; frame-pointer size TU, no EH frame.
 // Callees: CTCBase::CTCBase(CThing&) 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" propagated), the crime map ctor
 //   0x00581114 (manifest "CopyBackBufferToTexture"), CCharString copy ctor 0x0099EC30 (global 0x013B8B0C), the primitive-handle

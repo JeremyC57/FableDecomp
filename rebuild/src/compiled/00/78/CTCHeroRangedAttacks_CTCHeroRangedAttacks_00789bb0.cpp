@@ -1,7 +1,7 @@
 // CTCHeroRangedAttacks::CTCHeroRangedAttacks(CThing* thing) -- CTCBase(thing), own vtable, null combat def, no fire cycle, timers -1, accuracy 100, damage multiplier 1, button pressures 0.01, Z-lock pressure -1, zoom mode -1
 // Leaf: ??0CTCHeroRangedAttacks@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroRangedAttacks@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCHeroRangedAttacks@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00789BB0, length 101 bytes (`ret 4`). Catalog label "CTCOpinionSource::CTCOpinionSource"
 // is propagated: the vtable store 0x0126BAF4 is RTTI .?AVCTCHeroRangedAttacks@@ (CTCBase, CBaseClassNonCopyable, CBaseClass); the
 // only caller is the component factory @ 0x004D4A25.

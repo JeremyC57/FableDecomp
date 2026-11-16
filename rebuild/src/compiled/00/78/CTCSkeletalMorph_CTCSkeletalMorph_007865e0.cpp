@@ -1,7 +1,7 @@
 // CTCSkeletalMorph::CTCSkeletalMorph(CThing* thing) -- CTCBase(thing), unchanged, empty Morphs array, then PSkeletalMorph takes a new C3DSkeletalMorph
 // Leaf: ??0CTCSkeletalMorph@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCSkeletalMorph@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCSkeletalMorph@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe 0x007865E0, 96 bytes (`ret 4`). Vtable 0x0126B6F4 = CTCSkeletalMorph (rtti-vtables).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, operator new @ 0x00BFEA1A (0x18 bytes), C3DSkeletalMorph::

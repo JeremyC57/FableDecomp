@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 // CTCGatherPointRadialArea::CTCGatherPointRadialArea(CThing&) -- base CTCGatherPointBase(argument) then this class's vtable
 // Leaf: ??0CTCGatherPointRadialArea@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCGatherPointBase(CThing&) (0x004E0AAB) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCGatherPointBase(CThing&) (0x004E0AAB, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (FableWin.pdb).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E0B23, oracle length 24 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

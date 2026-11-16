@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071A670, length 94 bytes.
 // Leaf: ??0CTCMapwho@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCMapwho@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCMapwho@@QAE@AAVCThing@@@Z).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800. Vtable: CTCMapwho @ 0x01265A3C.
 // Layout: engine/CTCMapwho.h gives the PDB layout (0x54 bytes: four CMapwhoNode records {PMapwho, PNext, PPrevious, PCell}
 // at +0x0c/+0x1c/+0x2c/+0x3c, SearchID +0x4c, the InMapwho bit in the byte at +0x50). The generated header is a flat POD [superseded 2026-11-16: the header's FABLE_RETAIL_CTCBASE branch is polymorphic; see the Ported note]

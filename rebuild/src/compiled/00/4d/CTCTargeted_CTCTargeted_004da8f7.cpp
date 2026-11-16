@@ -2,7 +2,7 @@
 #pragma optimize("s", on)
 // Leaf: ??0CTCTargeted@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCTargeted@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCTargeted@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DA8F7, length 43 bytes (ret 4). Vtable 0x0123F024 (CTCTargeted).
 // Callee: CTCBase::CTCBase(CThing&) @ 0x00686800. Created by Create_CTCTargeted @ 0x004DBF1D.
 // Layout: engine/CTCTargeted.h (Ego_r.pdb, 0x18 bytes): TargetingFlags +0x0c, Targetable +0x10, UseTargetGlow +0x11,

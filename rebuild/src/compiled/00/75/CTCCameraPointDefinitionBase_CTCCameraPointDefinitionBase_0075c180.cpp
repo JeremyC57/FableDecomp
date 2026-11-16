@@ -3,7 +3,7 @@
 // "CTCOpinionSource::CTCOpinionSource"; the vtable it stores, 0x01269B04, is CTCCameraPointDefinitionBase's).
 // Leaf: ??0CTCCameraPointDefinitionBase@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBase_0075c180, which bound a made-up constructor name to
-//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800.
 // PDB CTCCameraPointDefinitionBase (0x40 bytes, packed): CutInto +0x0c, CutOutOf +0x0d, TestAngleBeforeActivation +0x0e,

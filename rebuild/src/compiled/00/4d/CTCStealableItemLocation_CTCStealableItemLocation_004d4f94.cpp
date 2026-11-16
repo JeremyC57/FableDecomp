@@ -1,7 +1,7 @@
 // CTCStealableItemLocation::CTCStealableItemLocation(CThing* thing) -- CTCBase(thing), own vtable, RadiusToBeWithin = 1.0, RadiusToTakeItemsBackTo = 0.0
 // Leaf: ??0CTCStealableItemLocation@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCStealableItemLocation@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCStealableItemLocation@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D4F94, length 34 bytes. Size-optimised TU: `#pragma optimize("s", on)`.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (landed; the manifest's "CEngineSubPrimitive2DClockSprite" label is propagated).
 // Identity: the stored vtable 0x0123C65C is CTCStealableItemLocation (rtti-vtables.tsv); the manifest's

@@ -1,7 +1,7 @@
 // CTCBattleCharge::CTCBattleCharge(CThing* parent) -- set up the battle-charge component: members cleared, its special-ability def fetched, a player's spell-cast state switched to charge mode, the spell level read from the inventory abilities, then Reset and the creature's current action finished
 // Leaf: ??0CTCBattleCharge@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCBattleCharge@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCBattleCharge@@QAE@AAVCThing@@@Z).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x007A71B0, 448 bytes (`ret 4`). Vtable 0x0126CBFC (CTCBattleCharge, RTTI). Callees: CTCBase(CThing*) @ 0x00686800,
 // CBaseIntelligentPointer() @ 0x00A01B10, SetPItem @ 0x00A01B90 (CIntelligentPointer<CThing> vtable 0x01238C6C),

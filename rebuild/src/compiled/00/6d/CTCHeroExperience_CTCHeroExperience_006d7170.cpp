@@ -1,7 +1,7 @@
 // CTCHeroExperience::CTCHeroExperience(CThing* parent) -- hero-experience component ctor: fishing level 1, zero experience, the three per-stat vectors (3, 10 and 10 zeroed longs), the pickup and attack-history lists, able to gain experience, and the hero-stats def taken from the definition manager
 // Leaf: ??0CTCHeroExperience@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroExperience@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCHeroExperience@@QAE@AAVCThing@@@Z).
 //
 // Retail 0x006D7170, 344 bytes (+8 int3 padding, `ret 4`). Vtable 0x0125F6C4 (the landed dtor 0x006DB7E0 names the class).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, malloc @ 0x00BFEA0E (STLport __malloc_alloc: the three vector

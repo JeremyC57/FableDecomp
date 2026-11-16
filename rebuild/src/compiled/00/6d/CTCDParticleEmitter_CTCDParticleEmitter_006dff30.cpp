@@ -1,6 +1,6 @@
 // CTCDParticleEmitter::CTCDParticleEmitter(CThing* parent) -- particle-emitter driver component: CTCDriverBase(parent), empty names, null emitter / attached-thing pointers, zeroed attachment data, no die-off timer, no creation parameters; only the reset-position/orientation flags set
 // Leaf: ??0CTCDParticleEmitter@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DFF30, length 114 bytes (+ int3 padding). Vtable 0x0125FEEC (CTCDParticleEmitter).

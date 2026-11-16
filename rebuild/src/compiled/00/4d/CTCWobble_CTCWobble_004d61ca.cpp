@@ -2,7 +2,7 @@
 // last rotation direction +1, zero wobble angle.
 // Leaf: ??0CTCWobble@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCWobble@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCWobble@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D61CA, length 38 bytes.
 // Callee: CTCBase::CTCBase(CThing&) @ 0x00686800 (its vtable 0x0125BE0C is CTCBase in
 // rtti-vtables.tsv; the manifest's "CEngineSubPrimitive2DClockSprite" label for it is propagated).

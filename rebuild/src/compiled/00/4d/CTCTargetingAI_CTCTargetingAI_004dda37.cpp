@@ -11,7 +11,7 @@
 // ThingsToNotAttack +0x48 (list, 4 bytes in retail). Shape as the landed CTCThingOwner 0x004DDAED:
 // the list takes its allocator by const reference to an empty temporary with a user constructor.
 // Leaf: ??0CTCTargetingAI@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCTargetingBase(CThing&) (0x007F58E0) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCTargetingBase(CThing&) (0x007F58E0, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 #pragma optimize("y", off)
 #pragma optimize("s", on)

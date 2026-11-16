@@ -1,7 +1,7 @@
 // CTCObjectAugmentations::CTCObjectAugmentations(CThing* thing) -- empty augmentation slots, sound maps, effect lists and trail pointer; then the thing definition's object-augmentations sub-def is fetched and the slot vector sized to its NumberOfSlots
 // Leaf: ??0CTCObjectAugmentations@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCObjectAugmentations@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCObjectAugmentations@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007673C0, 222 bytes (`ret 4`). Vtable 0x0126A3A4 (CTCObjectAugmentations).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, malloc @ 0x00BFEA0E (the two map header nodes, 0x20 each),
 //   CBaseIntelligentPointer() @ 0x00A01B10 + SetPItem @ 0x00A01B90 (vtable 0x01238C6C = CIntelligentPointer<CThing>),

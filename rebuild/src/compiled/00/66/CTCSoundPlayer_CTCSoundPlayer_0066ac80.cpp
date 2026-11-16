@@ -1,7 +1,7 @@
 // CTCSoundPlayer::CTCSoundPlayer(CThing* parent) -- thing-component base, null attached-emitter pointer, two empty strings, zero clip distance and material index
 // Leaf: ??0CTCSoundPlayer@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCSoundPlayer@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCSoundPlayer@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066AC80, length 81 bytes.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10,
 // CBaseIntelligentPointer::SetPItem @ 0x00A01B90, CCharString::CCharString() @ 0x0099E4B0 (twice).

@@ -1,6 +1,6 @@
 // CTCDRegionExit::CTCDRegionExit(CThing&) -- CTCDriverBase(thing), own vtable, the exit flags (active, waiting for activation / for the player to leave the message area), unit radius, no connected entrance, the entrance intelligent pointer constructed, then the parent thing's cutscene pause behaviour set to 2
 // Leaf: ??0CTCDRegionExit@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00778FA0, length 94 bytes (+ int3 padding).
 // Callees: CTCDriverBase::CTCDriverBase(CThing&) @ 0x00771200 (installs vtable 0x0126A79C = CTCDriverBase),

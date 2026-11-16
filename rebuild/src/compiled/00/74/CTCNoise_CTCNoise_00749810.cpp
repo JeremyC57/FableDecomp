@@ -5,7 +5,7 @@
 // read-modify-write (`mov cl,[edi+24h] ; xor eax,eax ; and cl,0F8h ; mov [edi+24h],cl`) and stores PDefManager from eax.
 // Leaf: ??0CTCNoise@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBase_00749810, which bound a made-up constructor name to
-//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00749810, length 79 bytes (vtable 0x01268A74).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, the def root constructor @ 0x009FBEC0 (labelled "CResource::CResource"),
 // CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10.

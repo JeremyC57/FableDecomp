@@ -1,7 +1,7 @@
 // CTCFlammable::CTCFlammable(CThing&) -- CTCBase(thing), the flammable vtable, a null def pointer, an empty fire-point vector, not burning, fire damage frame / resistance / strength / damage caused zeroed and both per-point flags cleared
 // Leaf: ??0CTCFlammable@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCFlammable@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCFlammable@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00780820, length 60 bytes. Manifest label "CTCHeroCentre::CTCHeroCentre" is
 // propagated; vtable 0x0126B1A4 = CTCFlammable (rtti-vtables.tsv).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800.

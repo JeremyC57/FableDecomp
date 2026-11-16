@@ -1,6 +1,6 @@
 // CTCCameraPointScriptedSpline::CTCCameraPointScriptedSpline(CThing&) -- the spline camera point: empty splines, key cameras, message list and anim set, default tension 0.8
 // Leaf: ??0CTCCameraPointScriptedSpline@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCCameraPointDefinitionBase(CThing&) (0x0075C180) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCCameraPointDefinitionBase(CThing&) (0x0075C180, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075DD10, 221 bytes, `ret 4`. Label correction: the catalog calls this
 // row "CTCHeroRangedAttacks::CTCHeroRangedAttacks"; the vtable it stores, 0x0126A0BC, is CTCCameraPointScriptedSpline
 // (rtti-vtables.tsv / RTTI locator); the real CTCHeroRangedAttacks ctor is 0x00789BB0.

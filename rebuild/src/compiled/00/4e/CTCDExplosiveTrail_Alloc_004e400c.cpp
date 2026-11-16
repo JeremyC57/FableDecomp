@@ -4,7 +4,7 @@
 // Leaf: ?Alloc@CTCDExplosiveTrail@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E400C, oracle length 29 bytes.
 // Retail bytes:  push esi ; push 0x30 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCDExplosiveTrail::CTCDExplosiveTrail ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCDExplosiveTrail@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+// Identity: Ego_r.pdb and FableWin.pdb ?Alloc@CTCDExplosiveTrail@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
 //   ??0CTCDExplosiveTrail@@QAE@AAVCThing@@@Z (0x004E3401, landed). (Landed earlier as a generated free function CTCDExplosiveTrail_Alloc(CThing*) returning CTCDExplosiveTrail*;
 //   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
 #define FABLE_RETAIL_CTCBASE

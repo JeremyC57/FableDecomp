@@ -5,7 +5,7 @@
 //   struct, so the polymorphic base is modelled locally for the constructor), AffectedByGravity bool:1 at +0x40.
 // Shape: the bit cleared (`and byte ptr [esi+40h],0FEh`) before the vtable store.
 // Leaf: ??0CTCPhysicsLight@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCPhysicsBase(CThing&) (0x006B0730) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCPhysicsBase(CThing&) (0x006B0730, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (Ego_r.pdb and FableWin.pdb).
 class CThing;
 
 class CTCPhysicsBase { public:

@@ -1,6 +1,6 @@
 // CTCCarriedActionUseTrophy::CTCCarriedActionUseTrophy(CThing&) -- CTCCarriedActionUseBase(thing), own vtable, the embedded CTCCarriedActionUseWallMount built from the same thing
 // Leaf: ??0CTCCarriedActionUseTrophy@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCCarriedActionUseBase(CThing&) (0x004DAC61) and CTCCarriedActionUseWallMount(CThing&) (0x004DAE20) as both PDBs spell them; this constructor too.
+// Respelled 2026-11-16: CTCCarriedActionUseBase(CThing&) (0x004DAC61) and CTCCarriedActionUseWallMount(CThing&) (0x004DAE20) as FableWin.pdb spells them; this constructor too (Ego_r.pdb and FableWin.pdb).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DAE4D, length 36 bytes.
 // Callees: CTCCarriedActionUseBase::CTCCarriedActionUseBase(CThing&) @ 0x004DAC61 (vtable 0x0123F894),
 // CTCCarriedActionUseWallMount::CTCCarriedActionUseWallMount(CThing&) @ 0x004DAE20 (vtable 0x0123FE6C)

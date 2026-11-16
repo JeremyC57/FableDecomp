@@ -1,7 +1,7 @@
 // CTCFishingSpot::CTCFishingSpot(CThing&) -- CTCBase(thing), the two particle pointers and the fish particle pointer constructed empty, enabled
 // Leaf: ??0CTCFishingSpot@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCFishingSpot@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCFishingSpot@@QAE@AAVCThing@@@Z).
 //
 // Retail 0x007B0150, 106 bytes (`ret 4`). Callees: CTCBase::CTCBase(CThing&) @ 0x00686800,
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 and ::SetPItem @ 0x00A01B90 (three of

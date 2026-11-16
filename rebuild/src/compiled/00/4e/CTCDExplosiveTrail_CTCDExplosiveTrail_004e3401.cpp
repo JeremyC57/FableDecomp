@@ -1,7 +1,7 @@
 // CTCDExplosiveTrail::CTCDExplosiveTrail(CThing* owner) -- construct the explosive-trail driver: CTCDriverBase(owner), the PTarget intelligent pointer, Timer -1, Terminated false, an empty ComponentTraps list, an empty ThingsToIgnore vector and a null PDef
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3401, length 80 bytes.
 // Leaf: ??0CTCDExplosiveTrail@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Callees: CTCDriverBase::CTCDriverBase(CThing&) @ 0x00771200, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
 // the list<pair<CIntelligentPointer<CThing>, long>> constructor @ 0x004DB72D (out of line: head = malloc(0x14) linked to

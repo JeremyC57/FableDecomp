@@ -4,7 +4,7 @@
 // only caller @ 0x004D5E86 is the factory).
 // Leaf: ??0CTCInfoDisplay@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBase_007e1ac0, which bound a made-up constructor name to
-//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, CCharString::CCharString() @ 0x0099E4B0 (twice).
 // PDB CTCInfoDisplay (0x20 bytes): Forward +0x0c, Backward +0x0d, TextTag +0x10, TextTagBack +0x14, Radius +0x18,
 // DisplayTime +0x1c.

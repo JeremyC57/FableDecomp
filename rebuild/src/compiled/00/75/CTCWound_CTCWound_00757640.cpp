@@ -1,7 +1,7 @@
 // CTCWound::CTCWound(CThing* parent) -- CTCBase(parent), own vtable, LastFrameChanged = 0 and the Wounds list (list<CTCWound::CWound>, 0x4c-byte nodes) default-constructed
 // Leaf: ??0CTCWound@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCWound@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCWound@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe @ 0x00757640, 51 bytes (+ int3 padding).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, malloc @ 0x00BFEA0E (the STLport node allocator).
 // Label: the manifest's "CTextContainer::CTextContainer" is propagated -- the vtable stored, 0x012698B4, is CTCWound in

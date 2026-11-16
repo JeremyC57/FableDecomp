@@ -1,7 +1,7 @@
 // CTCHeroPodium::CTCHeroPodium(CThing&) -- component constructor: CTCBase(parent), no crowd occupants, an empty occupation vector
 // Leaf: ??0CTCHeroPodium@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroPodium@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCHeroPodium@@QAE@AAVCThing@@@Z).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771DB0, 39 bytes (+9 int3 padding). Vtable 0x0126A89C (CTCHeroPodium).
 // Single caller: the component factory at 0x004D4015 (global CreateCTCHeroPodium, landed).

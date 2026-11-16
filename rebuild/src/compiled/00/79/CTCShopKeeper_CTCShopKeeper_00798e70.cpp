@@ -1,7 +1,7 @@
 // CTCShopKeeper::CTCShopKeeper(CThing&) -- constructor: thing-component base, empty customer and shop pointers, three empty previous-customer slots, cleared customer index / shop-occupancy state / graphic / opinion flag, then the customer list emptied
 // Leaf: ??0CTCShopKeeper@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCShopKeeper@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCShopKeeper@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00798E70, 213 bytes (+ int3 padding), `ret 4`.
 // Label correction: the catalog's "CEngineSubPrimitive2DClockSprite::Constructor" is propagated; the vtable stored is
 //   0x0126C154 = CTCShopKeeper (rtti-vtables.tsv), and 0x00798E10 is CTCShopKeeper::EmptyCustomerList.

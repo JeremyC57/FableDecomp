@@ -3,7 +3,7 @@
 // CTCEntityEvents::CTCEntityEvents(CThing&) -- CThingComponent(owner), this vtable, the member list constructed (sentinel node), nothing else.
 // Leaf: ??0CTCEntityEvents@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CThingComponent (which bound ??0CThingComponent@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCEntityEvents@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCEntityEvents@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3CD7, length 39 bytes; frame-pointer size TU (`push ebp ; mov ebp,esp`,
 // `push dword ptr [ebp+8]` pass-through): `optimize("y",off)` + `("s",on)`.
 // Callees: CThingComponent::CThingComponent(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite", a

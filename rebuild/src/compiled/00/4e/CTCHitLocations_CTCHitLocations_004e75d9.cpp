@@ -2,7 +2,7 @@
 // CTCHitLocations::CTCHitLocations(CThing* parent) -- CTCBase(parent), own vtable, an empty hit-location vector, no default hit location or definition, a zero bounding sphere not yet cached
 // Leaf: ??0CTCHitLocations@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHitLocations@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCHitLocations@@QAE@AAVCThing@@@Z).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E75D9, length 64 bytes.
 // Callee: CTCBase::CTCBase(CThing&) 0x00686800 (manifest label "CEngineSubPrimitive2DClockSprite" is

@@ -1,6 +1,6 @@
 // Leaf: ??0CTCPhysicsBase@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCPhysicsBase@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCPhysicsBase@@QAE@AAVCThing@@@Z).
 // CTCPhysicsBase::CTCPhysicsBase(CThing&) -- base ctor, then zero position/old position/velocity, Radius = -1, null def pointer, clear the two moving bits
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define FABLE_RETAIL_CTCBASE

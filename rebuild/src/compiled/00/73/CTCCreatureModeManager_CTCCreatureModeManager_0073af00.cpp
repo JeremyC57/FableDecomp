@@ -1,7 +1,7 @@
 // CTCCreatureModeManager::CTCCreatureModeManager(CThing* parent) -- CTCBase(parent), empty PModes list and AvailableIdleModes vector, TimeForNextIdleMode = 30 s of frames, then AddMode(0)
 // Leaf: ??0CTCCreatureModeManager@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreatureModeManager@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCCreatureModeManager@@QAE@AAVCThing@@@Z).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0073AF00, 87 bytes (+9 int3).

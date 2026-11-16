@@ -1,7 +1,7 @@
 // CTCHeroGuide::CTCHeroGuide(CThing* parent) -- CTCBase(parent), own vtable, the QuestRewards list (list<CTCHeroGuide::CQuestReward>, 0x14-byte nodes) default-constructed
 // Leaf: ??0CTCHeroGuide@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroGuide@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCHeroGuide@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe @ 0x00780070, 50 bytes (+ int3 padding).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, malloc @ 0x00BFEA0E (the STLport node allocator).
 // Label: the manifest's "CTextContainer::CTextContainer" is propagated -- the vtable stored, 0x0126B0F4, is CTCHeroGuide

@@ -1,7 +1,7 @@
 // CTCCreatureExpression::CTCCreatureExpression(CThing&) -- CTCBase(owner), own vtable, an empty expression-state list, not blinking
 // Leaf: ??0CTCCreatureExpression@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreatureExpression@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCCreatureExpression@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00729360, length 52 bytes (+ int3 padding).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is a
 // propagated name), malloc @ 0x00BFEA0E (the list's sentinel node).

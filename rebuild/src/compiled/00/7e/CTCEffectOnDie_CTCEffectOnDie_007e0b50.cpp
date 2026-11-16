@@ -1,7 +1,7 @@
 // CTCEffectOnDie::CTCEffectOnDie(CThing* parent) -- CTCBase(parent), own vtable, cleared flags and timers, empty DeathSoundCriteria, Pausable = true
 // Leaf: ??0CTCEffectOnDie@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCEffectOnDie@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCEffectOnDie@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E0B50, length 56 bytes.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800; CCharString::CCharString() @ 0x0099E4B0.
 // Vtable 0x0126FEB4 = CTCEffectOnDie (rtti-vtables.tsv).

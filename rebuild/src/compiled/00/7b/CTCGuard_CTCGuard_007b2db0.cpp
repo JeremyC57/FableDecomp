@@ -1,7 +1,7 @@
 // CTCGuard::CTCGuard(CThing* thing) -- construct the guard component: CTCBase, a null guard def, an empty pending-crime deque, and the bribe / crime frame counters
 // Leaf: ??0CTCGuard@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCGuard@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCGuard@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B2DB0, length 98 bytes (+14 int3 padding), `ret 4`.
 // Label correction: the catalog row says "CTCHeroRangedAttacks::CTCHeroRangedAttacks", but the vtable store is CTCGuard's
 // (0x0126D80C, rtti-vtables.tsv) and the members match Ego_r.pdb CTCGuard (0x44; 0x54 in retail with the 0x28-byte STLport deque).

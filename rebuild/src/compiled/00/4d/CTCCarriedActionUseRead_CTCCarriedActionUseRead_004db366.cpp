@@ -1,6 +1,6 @@
 // CTCCarriedActionUseRead::CTCCarriedActionUseRead(CThing&) -- CTCCarriedActionUseBase(owner), own vtable, null readable def, not yet read
 // Leaf: ??0CTCCarriedActionUseRead@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCCarriedActionUseBase(CThing&) (0x004DAC61) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCCarriedActionUseBase(CThing&) (0x004DAC61, as FableWin.pdb spells it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DB366, length 32 bytes (a /Os module: unaligned entry,
 // `push dword ptr [esp+8]` pass-through, `and dword ptr [..],0` zero store).
 // Callee: CTCCarriedActionUseBase::CTCCarriedActionUseBase(CThing&) @ 0x004DAC61 (it calls

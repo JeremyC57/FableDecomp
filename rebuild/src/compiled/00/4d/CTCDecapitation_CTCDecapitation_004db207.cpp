@@ -1,7 +1,7 @@
 // CTCDecapitation::CTCDecapitation(CThing&) -- base CTCBase(thing), own vtable, Decapitated = false, null def pointer
 // Leaf: ??0CTCDecapitation@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCDecapitation@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCDecapitation@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DB207, length 32 bytes.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (vtable 0x0125BE0C = CTCBase; manifest label propagated).
 // Vtable 0x01240534 = CTCDecapitation (rtti-vtables.tsv). PDB CTCDecapitation (0x14 bytes):

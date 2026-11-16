@@ -1,7 +1,7 @@
 // CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero(CThing* parent) -- opinion-of-hero thing component ctor: default counters, all-on attitude/reaction/deed masks, an empty opinion set, deed lists and the threat pointer, then the masks and personality applied from the owner's COpinionOfHeroDef and every deed's last-applied frame set to -1
 // Leaf: ??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00684420, length 496 bytes (body 0x1ed + int3 padding), `ret 4`.
 // Label correction: the catalog says CEngineSubPrimitive2DClockSprite::ctor, but the vtable stored, 0x0125BC3C, is
 //   CTCCreatureOpinionOfHero (the ??_G at 0x006866D0 / dtor 0x006866F0 store the same vtable; labels_chunk190_195 corrections).

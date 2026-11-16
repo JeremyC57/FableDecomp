@@ -1,7 +1,7 @@
 // CTCLight::CTCLight(CThing* thing) -- CTCBase(thing) + the graphic-appearance component base, everything cleared (flicker factors 1.0), then register with the owner's graphic appearance and fetch the light sub-def
 // Leaf: ??0CTCLight@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCLight@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCLight@@QAE@AAVCThing@@@Z).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00640F00, length 120 bytes (`ret 4`). Vtables: CTCLight primary 0x0125A194, the
 // NGraphicAppearance::CAGraphicAppearanceComponent base 0x0125A170 (stored first by its inline ctor) and CTCLight's side 0x0125A208 at +0xC

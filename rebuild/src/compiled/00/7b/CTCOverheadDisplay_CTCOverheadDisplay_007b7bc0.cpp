@@ -1,7 +1,7 @@
 // CTCOverheadDisplay::CTCOverheadDisplay(CThing* parent) -- overhead-display component: CTCBase(parent), three empty damage/repair/renown value lists, a null def pointer and no primitive handles
 // Leaf: ??0CTCOverheadDisplay@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCOverheadDisplay@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCOverheadDisplay@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B7BC0, length 98 bytes (+ int3 padding).
 // Label correction: the catalog's "CTCDHeroSuit::CTCDHeroSuit" is propagated and wrong: the vtable stored, 0x0126DA94, is
 // CTCOverheadDisplay's (rtti-vtables.tsv), and the stores fit Ego_r.pdb CTCOverheadDisplay with retail 4-byte lists.

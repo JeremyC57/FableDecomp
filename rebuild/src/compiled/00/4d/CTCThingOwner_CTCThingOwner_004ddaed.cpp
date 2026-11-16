@@ -3,7 +3,7 @@
 // CTCThingOwner::CTCThingOwner(CThing&) -- CTCBase(owner), this vtable, the member list constructed (sentinel node), then CallOnDie cleared.
 // Leaf: ??0CTCThingOwner@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CThingComponent, which bound a made-up constructor name to
-//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DDAED, length 43 bytes; frame-pointer size TU (`push ebp ; mov ebp,esp`,
 // `push dword ptr [ebp+8]` pass-through): `optimize("y",off)` + `("s",on)`.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite", a

@@ -2,7 +2,7 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retry 10: RELOCATION_MATCH -- the vector modelled as STLport _Vector_base (m_pEnd an _STLP_alloc_proxy with its own ctor); three plain pointers put `mov ecx,edi` one store too early.
 // Leaf: ??0CTCDPhysicalObstruction@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DF14B, length 91 bytes.
 // Callees: CTCDriverBase::CTCDriverBase(CThing&) @ 0x00771200; CBaseClass::CBaseClass @ 0x0099A2D0 (x3, the
 // base of each CEnginePrimitiveHandle, vtable 0x01231710).

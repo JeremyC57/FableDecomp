@@ -2,7 +2,7 @@
 // Retry 10: RELOCATION_MATCH -- CMeshMorphSet modelled as two STLport vectors (_M_end_of_storage an _STLP_alloc_proxy with its own ctor); six plain zero stores put the `push eax ; mov ecx,edi` for Reset after the sixth store.
 // Leaf: ??0CTCHeroMorph@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCHeroMorph@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCHeroMorph@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071E180, 220 bytes, `ret 4`; vtable 0x01265CF4.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, malloc @ 0x00BFEA0E (the two list header nodes and the map
 //          header), operator new @ 0x00BFEA1A (the 24-byte CMeshMorphSet), CCountedPointer<CMeshMorphSet>::Reset(T*)

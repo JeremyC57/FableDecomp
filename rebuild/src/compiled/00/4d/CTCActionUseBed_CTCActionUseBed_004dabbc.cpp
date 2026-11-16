@@ -1,6 +1,6 @@
 // CTCActionUseBed::CTCActionUseBed(CThing&) -- CTCActionUseBase(owner), own vtable, idle bed state, usable by the hero, two empty thing pointers
 // Leaf: ??0CTCActionUseBed@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCActionUseBase(CThing&) (0x004DA939) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCActionUseBase(CThing&) (0x004DA939, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DABBC, length 75 bytes (a /Os module: unaligned entry,
 // `push dword ptr [esp+0Ch]` pass-through, `or dword ptr [..],-1`).
 // Callees: CTCActionUseBase::CTCActionUseBase(CThing&) @ 0x004DA939, CIntelligentPointer<CThing>::

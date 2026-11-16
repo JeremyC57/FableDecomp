@@ -4,7 +4,7 @@
 // Leaf: ?Alloc@CTCDExperienceOrb@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D434C, oracle length 29 bytes.
 // Retail bytes:  push esi ; push 0x20 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCDExperienceOrb::CTCDExperienceOrb ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// Identity: Ego_r.pdb / FableWin.pdb ?Alloc@CTCDExperienceOrb@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
+// Identity: Ego_r.pdb and FableWin.pdb ?Alloc@CTCDExperienceOrb@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); the constructor is
 //   ??0CTCDExperienceOrb@@QAE@AAVCThing@@@Z (0x00779CA0, landed). (Landed earlier as a generated free function CTCDExperienceOrb_Alloc(CThing*) returning CTCDExperienceOrb*;
 //   re-authored 2026-11-16 on the shared engine/CTCBase.h, same bytes: CTCBase is the first base, so the upcast needs no adjustment.)
 #define FABLE_RETAIL_CTCBASE

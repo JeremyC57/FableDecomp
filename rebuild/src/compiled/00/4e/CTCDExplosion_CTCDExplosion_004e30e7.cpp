@@ -1,6 +1,6 @@
 // CTCDExplosion::CTCDExplosion(CThing&) -- explosion driver constructor: zero radii, no life timer / ring (-1), an armed trigger and empty emitter / hit lists
 // Leaf: ??0CTCDExplosion@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCDriverBase(CThing&) (0x00771200, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E30E7, 93 bytes. Manifest label "CTCHeroRangedAttacks::CTCHeroRangedAttacks"
 // is propagated from an unrelated body: the vtable stored is CTCDExplosion's (0x01242A54, rtti-vtables.tsv) and the

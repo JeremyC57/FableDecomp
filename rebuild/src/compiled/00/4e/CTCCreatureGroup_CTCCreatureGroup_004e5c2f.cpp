@@ -12,7 +12,7 @@
 // (map<unsigned __int64, CGroupMemberData>) +0x18. Base modelled as in the landed CTCRockTrollShield 0x007AEE10.
 // Leaf: ??0CTCCreatureGroup@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreatureGroup@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCCreatureGroup@@QAE@AAVCThing@@@Z).
 
 #pragma optimize("s", on)
 

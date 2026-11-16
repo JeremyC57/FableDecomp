@@ -1,7 +1,7 @@
 // CTCParticleAttacher::CTCParticleAttacher(CThing* parent) -- CTCBase, own vtable, empty def pointer and particle list
 // Leaf: ??0CTCParticleAttacher@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCParticleAttacher@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCParticleAttacher@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DE7FD, length 38 bytes (size-optimised def/factory module: unaligned
 // entry and `push dword ptr [esp+8]` -> #pragma optimize("s", on)). Vtable 0x0124176C is CTCParticleAttacher's (RTTI); the
 // manifest label "CTCDHeroSuit::CTCDHeroSuit" is propagated (the HeroSuit body has the same shape).

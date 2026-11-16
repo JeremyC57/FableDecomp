@@ -1,6 +1,6 @@
 // CTCCreatureGroupTag::CTCCreatureGroupTag(CThing* owner) -- base group constructor, zero the tagger UID and frame, own vtable
 // Leaf: ??0CTCCreatureGroupTag@@QAE@AAVCThing@@@Z
-// Respelled 2026-11-16: CTCCreatureGroup(CThing&) (0x004E5C2F) as both PDBs spell it; this constructor too.
+// Respelled 2026-11-16: CTCCreatureGroup(CThing&) (0x004E5C2F, as Ego_r.pdb and FableWin.pdb spell it); this constructor too (Ego_r.pdb and FableWin.pdb).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E5F18, length 35 bytes (size-optimised def/factory module 0x004Dxxxx-
 // 0x004Exxxx: unaligned entry, `push dword ptr [esp+8]` pass-through -> #pragma optimize("s", on)).
 // Callee: CTCCreatureGroup::CTCCreatureGroup(CThing&) @ 0x004E5C2F (manifest label "CScrollingViewport" is propagated).

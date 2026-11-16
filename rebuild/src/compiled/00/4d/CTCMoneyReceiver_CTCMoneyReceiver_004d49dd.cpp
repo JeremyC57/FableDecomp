@@ -1,7 +1,7 @@
 // CTCMoneyReceiver::CTCMoneyReceiver(CThing&) -- CTCBase(owner), the class vtable, AmountOfMoneyWanted from the default getter
 // Leaf: ??0CTCMoneyReceiver@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model (CTCBase_004d49dd, which bound a made-up constructor name to
-//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as both PDBs spell it.
+//   0x00686800) is gone; the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D49DD, length 32 bytes (built by Create_CTCMoneyReceiver @ 0x004D87DF).
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800; the default-amount getter @ 0x007898F0 (`mov eax,32h ; ret`, a
 // static with no `this`: nothing is loaded into ecx before the call).

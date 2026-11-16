@@ -1,7 +1,7 @@
 // CTCCreatureItemLevitationBase::CTCCreatureItemLevitationBase(CThing&) -- CTCBase(parent), own vtable, an empty list of levitated items (+0xc) and two cleared words (+0x10, +0x14)
 // Leaf: ??0CTCCreatureItemLevitationBase@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCCreatureItemLevitationBase@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCCreatureItemLevitationBase@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DE6B6, length 47 bytes.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800, the STLport list constructor list(const allocator_type&) @ 0x004AB470
 // (head word cleared, a 12-byte self-linked sentinel from operator new; manifest "ListNode_AllocateSelfLinked").

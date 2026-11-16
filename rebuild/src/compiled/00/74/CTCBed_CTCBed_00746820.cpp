@@ -1,7 +1,7 @@
 // CTCBed::CTCBed(CThing* parent) -- CTCBase(parent), own vtable, Empty/Animating = true, GettingIn/GettingOut = false, BedSleepAnim = -1, null def
 // Leaf: ??0CTCBed@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase_Calls (which bound ??0CTCBase_Calls@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
-//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as the PDBs spell it (??0CTCBed@@QAE@AAVCThing@@@Z).
+//   the base call is ??0CTCBase@@QAE@AAVCThing@@@Z and this constructor takes CThing& as Ego_r.pdb and FableWin.pdb spell it (??0CTCBed@@QAE@AAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00746820, length 51 bytes.
 // Callees: CTCBase::CTCBase(CThing&) @ 0x00686800.
 // Vtable 0x01268964 = CTCBed (rtti-vtables.tsv): the chunk label "CTCEditor" is propagated.
