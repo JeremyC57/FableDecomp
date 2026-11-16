@@ -1,0 +1,2 @@
+tag	address	correct_symbol	reason
+land1011fp	00a0d980	?FormatDateTime@CXBConfig@@SIXABU_FILETIME@@PA_W1H@Z	wide text is unsigned short in the retail build (project convention, engine/CWStringParser.h / CXBConfig.h); the landed self row already emits the PAG1H spelling claimed by q161; the remaining binder 0x0047EEE4 is tracked under q161

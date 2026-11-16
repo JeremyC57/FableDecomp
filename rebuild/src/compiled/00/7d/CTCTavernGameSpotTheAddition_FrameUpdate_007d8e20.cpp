@@ -123,7 +123,9 @@ public:
     float           MaxX;                         // +0x17c
     float           MinY;                         // +0x180
     float           MaxY;                         // +0x184
-    CThing* FindTarget(float range);              // 0x007D7C40
+private:
+    CThingObject* FindTarget(float range);        // 0x007D7C40 (Ego_r + FableWin ?FindTarget@CTCTavernGameSpotTheAddition@@AAEPAVCThingObject@@M@Z)
+public:
     void UpdatePointerScale();                    // 0x007D8C20
     void PositionCover(float amount);             // 0x007D7F10
     void UpdateHighlightedObject();               // 0x007D8290
@@ -150,7 +152,7 @@ void CTCTavernGameSpotTheAddition::FrameUpdate()
             }
             if (Selected < KnickKnacks.size() && Selected >= 0 && KnickKnacks[Selected].Thing) {
                 NGraphicAppearance::CTCGraphicAppearance* appearance;
-                FindTarget(100000.0f)->GetTC(TCI_GRAPHIC_APPEARANCE_NEW, &appearance);
+                ((CThing*)FindTarget(100000.0f))->GetTC(TCI_GRAPHIC_APPEARANCE_NEW, &appearance);
                 appearance->SetAsHighlighted(def->HighlightWidth, 0.0f, def->HighlightColour, false, false,
                                              (NGraphicAppearance::EAppearanceMeshEffectPriority)3, this);
             }

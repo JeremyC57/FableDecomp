@@ -1,4 +1,5 @@
 // CAIStateGroup_TrollBase::ThrowRocks() -- post a CCreatureAction_TrollThrowProjectile at the enemy through a brain
+// Leaf: ThrowRocks
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // output (flag 8), yield once, and count a shot when the creature is now performing a different action. Returns 2
@@ -103,14 +104,16 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
 };
+enum EAIActionReturn;                              // MS forward enum (Ego_r ?ThrowRocks@CAIStateGroup_TrollBase@@IAE?AW4EAIActionReturn@@XZ)
 struct CAIStateGroup_TrollBase : CAIStateGroupBase {
     CBaseIntelligentPointer PEnemy;                 // +0x14 CIntelligentPointer<CThingCreatureBase>
     long EnemyKnockDownFrame;                       // +0x1c
     long ShotCounter;                               // +0x20
-    long ThrowRocks();
+protected:
+    EAIActionReturn ThrowRocks();
 };
 
-long CAIStateGroup_TrollBase::ThrowRocks()
+EAIActionReturn CAIStateGroup_TrollBase::ThrowRocks()
 {
     long result = 4;
     long previousAction = 0;
@@ -125,5 +128,5 @@ long CAIStateGroup_TrollBase::ThrowRocks()
         ++ShotCounter;
         result = 2;
     }
-    return result;
+    return (EAIActionReturn)result;
 }

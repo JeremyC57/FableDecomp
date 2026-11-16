@@ -1,5 +1,5 @@
 // CScriptInfoManager::RegisterDefs() -- register the three script definition classes (CScriptDef, CCutsceneDef, CRegionScriptDef) with the global definition manager
-// Leaf: RegisterDefs
+// Leaf: ?RegisterDefs@CScriptInfoManager@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F2A0F0, length 220 bytes (`ret`).
 // PDB: ?RegisterDefs@CScriptInfoManager@@IAEXXZ.
 // Callees: GFGetPDefinitionManager @ 0x00CD3EF0, CCharString(const char*, long) @ 0x0099EBF0, CCharString(const CCharString&)
@@ -34,7 +34,9 @@ CDefClassBase* AllocCRegionScriptDef();                // 0x00F29FA0
 
 class CScriptInfoManager {
 public:
-    void RegisterDefs();
+protected:
+    void RegisterDefs();   // NF35: Ego_r + FableWin access/const spelling (see the Leaf line)
+public:
 };
 
 void CScriptInfoManager::RegisterDefs()

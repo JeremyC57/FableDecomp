@@ -1,5 +1,5 @@
-// CThing::CreateTCsFromString(const CCharString&) -- parse `CreateTC "<name>";` statements from a text block and add each named thing component (activated)
-// Leaf: CreateTCsFromString
+// CThing::CreateSerialiseCreatableTCs(const CCharString&) (protected) -- parse `CreateTC "<name>";` statements from a text block and add each named thing component (activated)
+// Leaf: CreateSerialiseCreatableTCs
 // Retail 0x004CA230, 349 bytes, ret 4. Label correction: the catalog's "CScriptBase::LoadGameState" is propagated; the
 // only caller (0x004CAE62) is CThing code that passes the thing in ecx right after a CThing::AddTC call, and the body
 // calls CThing::AddTC 0x004C9D60 on `this`; the method name is descriptive.
@@ -36,13 +36,13 @@ class CStringParser : public CBaseClass { public:                // retail 0x28 
     long                     CursorPos[3];         // +0x1c CCursorPos
     CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
-    bool NextItemIs(const CCharString& item);              // 0x009B9BA0
+    bool SkipPastString(const CCharString& item);              // 0x009B9BA0 NF35: Ego_r ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z (catalog CStringParser::SkipPastString)
     bool SkipPastNextItemIfIs(const CCharString& item);    // 0x009B9E00
     CCharString ReadAsString();                            // 0x009BA6F0
     bool NextItemIsText(const char* text)
     {
         CCharString item(text, -1);
-        return NextItemIs(item);
+        return SkipPastString(item);
     }
     void SkipPastText(const char* text)
     {
@@ -55,13 +55,13 @@ extern const char g_quote[];                      // 0x0122DF24 "\""
 extern const char g_semicolon[];                  // 0x0123542C ";"
 class CTCBase;
 class CTCParamsBase;
-class CThing { public:
-    void CreateTCsFromString(const CCharString& text);
+class CThing { protected:
+    void CreateSerialiseCreatableTCs(const CCharString& text);
 public:
     CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 
-void CThing::CreateTCsFromString(const CCharString& text)
+void CThing::CreateSerialiseCreatableTCs(const CCharString& text)
 {
     CStringParser parser(text, 0, CCharString("", -1), 0);
     while (parser.NextItemIsText(g_createTC)) {

@@ -21,7 +21,7 @@ class CWorld { public:
 };
 
 class CThingAICreature { public:
-    void GetSleepTimes(long* start, long* end);             // 0x00833390
+    void GetSleepTimes(long& start, long& end) const;             // 0x00833390 (NF35: Ego_r + FableWin ?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z)
 };
 
 class CAIBrain { public:
@@ -64,7 +64,7 @@ CThingGameObject* CAIStateGroup_Gaze::FindFreeGazePos()
     if (IsStateGroupStillValid()) {
         CGameTime* gameTime = GetWorld().GameTime;
         long start, end;
-        PBrain->Creature->GetSleepTimes(&start, &end);
+        PBrain->Creature->GetSleepTimes(start, end);
         inSleepTime = gameTime->IsTimeOfDayInRange(start, end);
     }
     CThingGameObject* marker = FindFreeParticularGazePos(PrimaryMarkerDef, inSleepTime);

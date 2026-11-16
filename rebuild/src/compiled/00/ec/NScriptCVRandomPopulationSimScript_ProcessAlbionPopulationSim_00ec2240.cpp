@@ -51,7 +51,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();                                         // 0x0099EAE0
-    CCharString ToUpper();                                  // 0x0099EE20
+    CCharString GetAsUpperCase() const;                                  // 0x0099EE20 NF35: Ego_r + FableWin ?GetAsUpperCase@CCharString@@QBE?AV1@XZ (was ToUpper)
     FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
@@ -176,7 +176,7 @@ void NScript::CV_RandomPopulationSimScript::ProcessAlbionPopulationSim()
             }
             HighDetailSimulationActive = false;
             CDefPointer def;
-            CCharString defName = CCharString("REGION_") + CCharString(region).ToUpper();
+            CCharString defName = CCharString("REGION_") + CCharString(region).GetAsUpperCase();
             if (!bountyHuntRegion && GFGetPDefinitionManager()->GetDef_00cde280(defName, def)) {
                 if (IsActiveThreadTerminating())
                     return;

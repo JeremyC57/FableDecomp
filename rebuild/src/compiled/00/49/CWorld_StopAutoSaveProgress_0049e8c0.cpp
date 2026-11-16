@@ -1,5 +1,5 @@
 // CWorld::StopAutoSaveProgress() -- if the auto-save progress display is up, keeps it on screen (100 ms sleeps, re-displaying with no text) until its minimum display time has passed, stops the progress, restores the previous progress display and releases the saved handle
-// Leaf: StopAutoSaveProgress
+// Leaf: ?StopAutoSaveProgress@CWorld@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049E8C0, 212 bytes, plain `ret` (`this` is never read).
 //   PDB name ?StopAutoSaveProgress@CWorld@@IAEXXZ.
 // Callees: GFGetTime 0x009E1BC0 (`__fastcall`, double), KERNEL32 Sleep (import 0x0143FE1C, loaded once into esi),
@@ -45,7 +45,9 @@ extern bool g_bAutoSaveProgressShown;              // 0x013B89C1
 extern double g_AutoSaveProgressEndTime;           // 0x013B89C8
 extern CCountedPointer_CAProgressDisplay GOldAutoSaveProgressDisplay;   // 0x013B89E0
 class CWorld { public:
-    void StopAutoSaveProgress();
+protected:
+    void StopAutoSaveProgress();   // NF35: Ego_r + FableWin access/const spelling (see the Leaf line)
+public:
 };
 void CWorld::StopAutoSaveProgress()
 {

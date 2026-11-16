@@ -1,4 +1,4 @@
-// Behaviour test for 0x00b52090 CEngineWeatherRenderer::IsPointInPrecipitation
+// Behaviour test for 0x00b52090 CEngineWeatherRenderer::ClipBoxToWeatherMaskSphere
 #include <cstdio>
 #include <cmath>
 class C3DVector { public:
@@ -12,7 +12,7 @@ class CWeatherMask { public: C3DBoundingSphere BSphere; };
 class CEngineWeatherRenderer { public:
     CWeatherMask WeatherMaskList[3]; float m_boxRadiusSquared;
     float GetBoxBoundingSphereRadiusSquared() { return m_boxRadiusSquared; }
-    long IsPointInPrecipitation(const C3DVector& point)
+    long ClipBoxToWeatherMaskSphere(const C3DVector& point)
     {
         float boxRadius = (float)std::sqrt(GetBoxBoundingSphereRadiusSquared());
         for (long i = 0; i < 3; ++i) {
@@ -26,10 +26,10 @@ int main()
 {
     CWeatherMask m0 = { { C3DVector(0, 0, 0), 1.0f } }, m1 = { { C3DVector(100, 0, 0), 5.0f } }, m2 = { { C3DVector(0, 50, 0), 2.0f } };
     CEngineWeatherRenderer r = { { m0, m1, m2 }, 4.0f };   // box radius 2
-    bool ok = r.IsPointInPrecipitation(C3DVector(2.5f, 0, 0)) == 1      // inside mask 0 (1 + 2)
-           && r.IsPointInPrecipitation(C3DVector(106, 0, 0)) == 1       // inside mask 1 (5 + 2)
-           && r.IsPointInPrecipitation(C3DVector(0, 54.5f, 0)) == 0     // outside mask 2 (2 + 2)
-           && r.IsPointInPrecipitation(C3DVector(0, 0, 3.0f)) == 0;     // exactly on the edge is outside
+    bool ok = r.ClipBoxToWeatherMaskSphere(C3DVector(2.5f, 0, 0)) == 1      // inside mask 0 (1 + 2)
+           && r.ClipBoxToWeatherMaskSphere(C3DVector(106, 0, 0)) == 1       // inside mask 1 (5 + 2)
+           && r.ClipBoxToWeatherMaskSphere(C3DVector(0, 54.5f, 0)) == 0     // outside mask 2 (2 + 2)
+           && r.ClipBoxToWeatherMaskSphere(C3DVector(0, 0, 3.0f)) == 0;     // exactly on the edge is outside
     if (!ok) { std::printf("00b52090_TEST FAIL\n"); return 1; }
     std::printf("00b52090_TEST PASS\n");
     return 0;

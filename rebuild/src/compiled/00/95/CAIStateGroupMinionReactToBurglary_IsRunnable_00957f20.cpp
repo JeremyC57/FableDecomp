@@ -71,7 +71,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
 #include "engine/C3DVector.h"
 
 class CThingAICreature { public:
-    void GetSleepTimes(long* start, long* end); // 0x00833390
+    void GetSleepTimes(long& start, long& end) const; // 0x00833390 (NF35: Ego_r + FableWin ?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z)
 };
 struct CThingPos {
     const C3DVector& GetPosition();             // 0x004C73D0
@@ -114,7 +114,7 @@ bool CAIStateGroup_MinionReactToBurglary::IsRunnable()
 {
     long start;
     long end;
-    ((CThingAICreature*)PBrain->PCreature)->GetSleepTimes(&start, &end);
+    ((CThingAICreature*)PBrain->PCreature)->GetSleepTimes(start, end);
     CWorldClock* clock = GetWorld().PClock;
     bool sleepTime = clock->IsTimeOfDayInRange(start, end);
     CThingBuilding* home = (CThingBuilding*)((CHomeOwner*)PBrain->PCreature)->GetPHome();

@@ -9,7 +9,7 @@
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                  // 0x0099EAE0
-    CCharString ToUpper() const;                     // 0x0099EE20
+    CCharString GetAsUpperCase() const;                     // 0x0099EE20 NF35: Ego_r + FableWin ?GetAsUpperCase@CCharString@@QBE?AV1@XZ (was ToUpper)
 };
 
 class CSymbolMap { public:
@@ -26,6 +26,6 @@ struct CParticleEmitterDatabase {
 long CParticleEmitterDatabase::GetEmitterTemplateHandleFromName(const CCharString& name)
 {
     long handle;
-    bool found = SymbolMap.Lookup(name.ToUpper(), &handle);
+    bool found = SymbolMap.Lookup(name.GetAsUpperCase(), &handle);
     return found ? handle : 0;
 }

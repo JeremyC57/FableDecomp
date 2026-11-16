@@ -13,7 +13,7 @@ class CEngineInternalAttachedPrimitive { public:
     unsigned char _pad80[0x28];
     CMatrix3x4    m_childInverseTransform;         // +0xa8
     bool          m_childInverseValid;             // +0xd8
-    bool GetChildInverseTransformStaticMesh(CMatrix3x4* inverse);   // 0x00B393D0
+    bool GetChildInverseTransformStaticMesh(CMatrix3x4& inverse);   // 0x00B393D0 (NF35: Ego_r + FableWin ..QAE_NAAVCMatrix3x4@@@Z)
     bool GetChildInverseTransform();
 };
 
@@ -24,7 +24,7 @@ bool CEngineInternalAttachedPrimitive::GetChildInverseTransform()
     bool valid = false;
     switch (m_childType) {
     case 1:
-        valid = GetChildInverseTransformStaticMesh(&m_childInverseTransform);
+        valid = GetChildInverseTransformStaticMesh(m_childInverseTransform);
         break;
     }
     m_childInverseValid = valid;

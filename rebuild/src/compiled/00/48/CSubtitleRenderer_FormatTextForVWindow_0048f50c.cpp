@@ -43,16 +43,11 @@ void __fastcall WordWrap_SetOption(unsigned int option, unsigned int value);   /
 void __fastcall WordWrap_SetCallback(unsigned int (__fastcall* charWidth)(wchar),
                                      unsigned int (__fastcall* lineHeight)());   // 0x00A0FD90
 
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct CWStringParser : CBaseClass {
-    wchar*        String;                                    // +0x04
-    unsigned long StringPos;                                 // +0x08
-    unsigned long Line;                                      // +0x0C
-    CWStringParser(wchar* text);                             // 0x00437260
-    void Set(wchar* text);                                   // 0x00A0C8E0
-    void SkipWhitespace();                                   // 0x00A0C910
-    CWideString ReadAsStringUntilCharacter(wchar stop);      // 0x00A0CCD0
-};
+// NF35 (2026-11-16): the local CWStringParser model replaced by engine/CWStringParser.h (Ego_r + FableWin ??0CWStringParser@@QAE@PB_W@Z,
+//   ?SkipWhitespace@CWStringParser@@QAEJXZ, ?Init@CWStringParser@@QAEXPB_W@Z; wide text is unsigned short, the retail PBG spelling).
+#define FABLE_RETAIL_CWSTRINGPARSER_READUNTIL
+#define FABLE_RETAIL_CWSTRINGPARSER_INIT
+#include "engine/CWStringParser.h"                     // ctor 0x00437260, Init 0x00A0C8E0, SkipWhitespace 0x00A0C910, ReadAsStringUntilCharacter 0x00A0CCD0
 
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();           // 0x009BEDC0
@@ -102,7 +97,7 @@ void CSubtitleRenderer::FormatTextForVWindow(const C2DBoxF& box, const CFontBank
     float maxWidth = 0.0f;
     long lines = 0;
     CWStringParser parser(text.GetBuffer());
-    parser.Set(outText.GetBuffer());
+    parser.Init(outText.GetBuffer());
     CWideString line = parser.ReadAsStringUntilCharacter(L'\n');
     while (line != L"") {
         float width = font.GetVStringExtents(line).Width;

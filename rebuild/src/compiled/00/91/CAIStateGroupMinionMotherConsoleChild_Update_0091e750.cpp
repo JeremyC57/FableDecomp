@@ -118,6 +118,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
+enum EAIActionReturn;                           // NF35: MS forward enum (as engine/CAIStateGroupBase.h)
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -125,7 +126,9 @@ class CAIStateGroupBase { public:
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     void Terminate();                           // 0x008FCF40
     long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
+public:
 };
 struct CAIStateGroup_MinionMotherConsoleChild : CAIStateGroupBase {
     virtual void Update();
@@ -148,7 +151,7 @@ void CAIStateGroup_MinionMotherConsoleChild::Update()
                     (child->GetPos() - GetCreature()->PeekPos()).GetLengthSquared() > 9.0f)
                     break;
             }
-            result = AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), "ST_BLOW_KISS_LOOP",
+            result = AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "ST_BLOW_KISS_LOOP",
                 CSoundPair(0, 0), false, true, false, 0, 0));
         }
     }

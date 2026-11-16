@@ -1,4 +1,4 @@
-// CQuestManager::AddActivatedQuestName(const CCharString& questName) -- record a quest as between its start and end screens (once), counting it; false when it was already listed
+// CQuestManager::OnQuestStartScreenDisplayed(const CCharString& questName) -- record a quest as between its start and end screens (once), counting it; false when it was already listed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B2FE0, length 114 bytes (`ret 4`, bool).
 // Layout (retail CQuestManager: STLport lists are one word, vectors three): BetweenStartAndEndScreenQuests
 // (vector<CCharString>) +0x4c (PDB +0x6c), NumberOfQuestsBetweenStartAndFinishScreens +0x98 (PDB +0xf4).
@@ -11,7 +11,7 @@
 // four-way unrolled body + remainder switch over the inlined CCharString operator==, value and tag by const reference)
 // as retail compiled it in the caller's TU; with the body visible VC7.1 schedules `lea esi,[edi+4Ch]` between the tag
 // and key pushes as retail. Compare 0x00411570 is the landed body.
-// Leaf: AddActivatedQuestName
+// Leaf: OnQuestStartScreenDisplayed
 #include <stddef.h>
 #include <new>
 
@@ -114,10 +114,10 @@ class CQuestManager { public:
     CStringVector BetweenStartAndEndScreenQuests;               // +0x4c
     unsigned char _pad58[0x40];
     long          NumberOfQuestsBetweenStartAndFinishScreens;   // +0x98
-    bool AddActivatedQuestName(const CCharString& questName);
+    bool OnQuestStartScreenDisplayed(const CCharString& questName);
 };
 
-bool CQuestManager::AddActivatedQuestName(const CCharString& questName)
+bool CQuestManager::OnQuestStartScreenDisplayed(const CCharString& questName)
 {
     if (find(BetweenStartAndEndScreenQuests.begin(), BetweenStartAndEndScreenQuests.end(), questName) == BetweenStartAndEndScreenQuests.end()) {
         ++NumberOfQuestsBetweenStartAndFinishScreens;

@@ -21,7 +21,10 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-bool __fastcall IsSpeaking(CThing* creature);   // 0x008644E0
+class CThingCreatureBase;
+namespace NCreatureAI {
+bool __fastcall IsSpeaking(const CThingCreatureBase& creature);   // 0x008644E0 (NF35: Ego_r + FableWin ?IsSpeaking@NCreatureAI@@YI_NABVCThingCreatureBase@@@Z)
+}
 class CTCShop { public:
     unsigned char _pad[0x50];
     bool OnTheSpot;                             // +0x50 (descriptive)
@@ -85,7 +88,7 @@ bool CAIStateGroup_MinionHawkingFromStall::IsRunnable()
     CThing* creature = GetCreature();
     if (creature->HasTC(TCI_SHOP_KEEPER)) {
         CTCShopKeeper* keeper = ((CTCShopKeeper*)&creature->GetTC(TCI_SHOP_KEEPER));
-        if (!IsSpeaking(creature) && IsInWorkHours()) {
+        if (!NCreatureAI::IsSpeaking(*(const CThingCreatureBase*)creature) && IsInWorkHours()) {
             CTCShop* shop = keeper->GetShopTC();
             if (shop) {
                 PStall = keeper->GetShopThing();

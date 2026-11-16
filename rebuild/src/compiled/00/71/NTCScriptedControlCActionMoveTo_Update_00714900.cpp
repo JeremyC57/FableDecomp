@@ -121,7 +121,7 @@ class CTCCreatureNavigation { public:                  // interface 7
 };
 class CTCLook { public:                                // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
-    bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b);   // 0x007534B0
+    bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b) const;// 0x007534B0  // NF35: Ego_r + FableWin ?IsPosInViewRange@CTCLook@@QBE_NABVC3DVector@@M_N1@Z (const)
     void StopLooking(long timeToStop);          // 0x00751B80
 };
 extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (0.0001f)

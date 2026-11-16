@@ -1,6 +1,5 @@
 // CNewFrontendGameComponent::Shutdown() -- tear the front end down: drop the front-end def, unregister the component, release the scene, hand the game state back unless a game is being created, unload the XMV code, empty the save-file lists and clear the screen to opaque black
-// Leaf: ?Shutdown@CNewFrontendGameComponent@@QAEXXZ
-// Leaf: Shutdown
+// Leaf: ?Shutdown@CNewFrontendGameComponent@@AAEXXZ
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042EBB6, 198 bytes (`ret`). Size-optimised TU with a frame pointer: `#pragma optimize("y",
 //   off)` + `#pragma optimize("s", on)` (as the landed CNewFrontendGameComponent rows of this module).
@@ -71,7 +70,8 @@ public:
     unsigned char             _pad40[0x2c];
     vector<CWideString>       FileNames;           // +0x6c
     vector<CDateAndTime>      FileTimes;           // +0x78
-    void ReleaseScene_0042dd28();                  // 0x0042DD28
+private:                                           // NF35: Ego_r + FableWin private (AAE) members
+    void CleanUpInterfaces();                      // 0x0042DD28 (was the made-up ReleaseScene_0042dd28)
     void ReleaseXMVCode();                         // 0x0042DBD8
     void Shutdown();
 };
@@ -81,7 +81,7 @@ void CNewFrontendGameComponent::Shutdown()
     m_pFrontEndDef = 0;
     SetActiveFrontend_004336b0(0);
     g_pNewFrontendGameComponent = 0;
-    ReleaseScene_0042dd28();
+    CleanUpInterfaces();
     ((CFrontendGlobal_013b838c*)PFontManager)->Flag38 = true;
     if (!m_bCreateGame && PSoundManager) {
         PSoundManager->StopAllSounds();

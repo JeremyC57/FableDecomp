@@ -34,7 +34,8 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CTCEmoteIcon { public:
     unsigned char _pad_0x00[0x14];
     long          EmoteIcon;                    // +0x14
-    void SetEmoteIcon(long priority, long icon, float activeTime, float scale, unsigned char alpha);   // 0x0071AAB0
+    enum EEmotePriority { };                    // NF35: nested (Ego_r + FableWin ?SetEmoteIcon@CTCEmoteIcon@@QAEXW4EEmotePriority@1@JMME@Z)
+    void SetEmoteIcon(EEmotePriority priority, long icon, float activeTime, float scale, unsigned char alpha);   // 0x0071AAB0
 };
 struct CWifeIconDefs {                          // the global definitions' +0xd0 record (descriptive)
     unsigned char _pad_0x00[0x11c];
@@ -85,14 +86,14 @@ void CTCWife::SetAttractionIcon(bool show, float scale, unsigned char alpha)
     if (show) {
         if (IsMarriageFrameReached()) {
             const CGameDefinitionManager* definitions = (&GetDefinitionManager());
-            icon->SetEmoteIcon(3, definitions->Defs->WifeAttractionIconMarried, -1.0f, scale, alpha);
+            icon->SetEmoteIcon((CTCEmoteIcon::EEmotePriority)3, definitions->Defs->WifeAttractionIconMarried, -1.0f, scale, alpha);
         } else
-            icon->SetEmoteIcon(4, ReceivedWeddingRing ? GetDefinitionManager().Defs->WifeAttractionIconWithRing
+            icon->SetEmoteIcon((CTCEmoteIcon::EEmotePriority)4, ReceivedWeddingRing ? GetDefinitionManager().Defs->WifeAttractionIconWithRing
                                                       : GetDefinitionManager().Defs->WifeAttractionIcon,
                                -1.0f, scale, alpha);
     } else {
         bool married = IsMarriageFrameReached();
-        icon->SetEmoteIcon(married ? 3 : 4, 0, -1.0f, 1.0f, 0xff);
+        icon->SetEmoteIcon((CTCEmoteIcon::EEmotePriority)(married ? 3 : 4), 0, -1.0f, 1.0f, 0xff);
     }
     if (show != wasShowing)
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);

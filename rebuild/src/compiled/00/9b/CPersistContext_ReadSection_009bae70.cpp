@@ -61,7 +61,7 @@ class CStringParser : public CBase { public:                         // retail 0
     TErrorCallback ErrorCallback;                      // +0x18
     CCursorPos     CursorPos;                          // +0x1c
     void Init(const char* text, TErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);   // 0x009B9530
-    bool FindKeyword(const CCharString& keyword);      // 0x009B9BA0
+    bool SkipPastString(const CCharString& keyword);      // 0x009B9BA0 NF35: Ego_r ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z (catalog CStringParser::SkipPastString)
     long SkipPastNewline();                            // 0x009B9D70
     CCharString ReadAsStringUntilString(const CCharString& end);   // 0x009BA330
     FABLE_FORCEINLINE void Init(const CCharString& text, const CCharString& filename = "")
@@ -184,7 +184,7 @@ bool CPersistContext::ReadSection(CPersistContextReadSection& section, const CCh
         section.InputStream.OpenMemorySource(size > 0 ? (const void*)stream->GetDataAndSkip(size) : 0, size);
         section.Context.InitBinaryLoad(&section.InputStream);
     } else if (Mode == MODE_LOAD_TEXT) {
-        if (PParser->FindKeyword("START_" + name)) {
+        if (PParser->SkipPastString("START_" + name)) {
             PParser->SkipPastNewline();
             section.Text = PParser->ReadAsStringUntilString("END_" + name);
         } else {

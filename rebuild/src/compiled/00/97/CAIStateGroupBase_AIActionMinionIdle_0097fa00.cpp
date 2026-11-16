@@ -25,7 +25,7 @@ class CAnimationEntry;
 
 class CThingAICreature : public CThing { public:
     CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool b);   // 0x00662FA0
-    void GetSleepTimes(long* wakeTime, long* sleepTime);    // 0x00833390
+    void GetSleepTimes(long& wakeTime, long& sleepTime) const;    // 0x00833390 (NF35: Ego_r + FableWin ?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z)
 };
 class CTCLook { public:                                // interface 0x43
     void TrackNearestInterestingThing(bool b);  // 0x00753840
@@ -81,7 +81,9 @@ public:
     protected:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
     public:
-    EAIActionReturn AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
+public:
 protected:
     EAIActionReturn AIAction_MinionIdle();
 public:
@@ -96,7 +98,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MinionIdle()
         look->TrackNearestInterestingThing(true);
     if (WorldRandomRange(*GetPWorldSeed(), 100) < 80) {
         long wakeTime, sleepTime;
-        GetCreature()->GetSleepTimes(&wakeTime, &sleepTime);
+        GetCreature()->GetSleepTimes(wakeTime, sleepTime);
         long beforeWake = wakeTime - 100;
         if (beforeWake < 0)
             beforeWake = 2330;
@@ -109,7 +111,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MinionIdle()
             animation = GetCreature()->GetRandomLoadedAnimFromName("STANDARD_YAWN", true);
         else
             animation = GetCreature()->GetRandomLoadedAnimFromName("ST_IDLE", true);
-        return AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(), false, true, false, 0, 0));
+        return AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(), false, true, false, 0, 0));
     }
     return AI_ACTION_DONE;
 }

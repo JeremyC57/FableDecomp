@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-// behaviour test: CThing::CreateTCsFromString adds one activated component per `CreateTC "<name>";` statement
+// behaviour test: CThing::CreateSerialiseCreatableTCs adds one activated component per `CreateTC "<name>";` statement
 class CCharString { public:
     char m[32];
     CCharString(const char* text, long) { std::strncpy(m, text, 31); m[31] = 0; }
@@ -26,9 +26,9 @@ class CThing { public:
     char added[4][32]; int n; bool allActive;
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params)
     { std::strcpy(added[n++], name.m); allActive = allActive && activate && params == 0; return 0; }
-    void CreateTCsFromString(const CCharString& text);
+    void CreateSerialiseCreatableTCs(const CCharString& text);
 };
-void CThing::CreateTCsFromString(const CCharString& text)
+void CThing::CreateSerialiseCreatableTCs(const CCharString& text)
 {
     CStringParser parser(text, 0, CCharString(g_emptyString_0122d70e, -1), 0);
     while (parser.NextItemIsText(g_createTC)) {
@@ -44,10 +44,10 @@ int main()
     CThing t; t.n = 0; t.allActive = true;
     g_text = "CreateTC \"TCLight\"; CreateTC \"TCDoor\"; Other";
     CCharString text("x", -1);
-    t.CreateTCsFromString(text);
+    t.CreateSerialiseCreatableTCs(text);
     bool ok = t.n == 2 && std::strcmp(t.added[0], "TCLight") == 0 && std::strcmp(t.added[1], "TCDoor") == 0 && t.allActive;
     CThing u; u.n = 0; u.allActive = true; g_text = "";
-    u.CreateTCsFromString(text);
+    u.CreateSerialiseCreatableTCs(text);
     ok = ok && u.n == 0;
     if (!ok) { std::printf("004ca230_TEST FAIL\n"); return 1; }
     std::printf("004ca230_TEST PASS\n");

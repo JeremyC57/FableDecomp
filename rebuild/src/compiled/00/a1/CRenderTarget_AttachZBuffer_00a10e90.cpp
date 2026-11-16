@@ -1,4 +1,5 @@
-// CRenderTarget::AttachTarget(const CSurface& target) -- attach a depth surface: uninitialise the current one if it holds a surface, then copy the new one in
+// CRenderTarget::AttachZBuffer(const CSurface& target) -- attach a depth surface: uninitialise the current one if it holds a surface, then copy the new one in
+// Leaf: AttachZBuffer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A10E90, length 35 bytes.
 // Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+18h] ; test eax,eax ; je A ; lea ecx,[esi+14h] ; call CSurface::Uninitialise ;
 //                A: mov eax,[esp+8] ; push eax ; lea ecx,[esi+14h] ; call CSurface::operator= ; pop esi ; ret 4
@@ -27,10 +28,10 @@ class CSurface { public:                               // vtable 0x0122F84C, 0x1
 class CRenderTarget : public CBase { public:                  // vtable 0x0129C800
     CSurface m_colour;                          // +0x04
     CSurface m_depth;                           // +0x14
-    void AttachTarget(const CSurface& target);
+    void AttachZBuffer(const CSurface& target);
 };
 
-void CRenderTarget::AttachTarget(const CSurface& target)
+void CRenderTarget::AttachZBuffer(const CSurface& target)
 {
     if (m_depth.IsInitialised())
         m_depth.Uninitialise();

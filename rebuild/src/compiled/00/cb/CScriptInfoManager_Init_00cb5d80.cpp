@@ -62,6 +62,7 @@ public:
     CScriptMap    Scripts;                             // +0x04
     unsigned char CodeSectionNames[0x0c];              // +0x14 vector<CCharString>
     void Init();
+protected:                                         // NF35: Ego_r + FableWin IAE (protected)
     void RegisterDefs();                               // 0x00F2A0F0
     void RegisterScripts();                            // 0x00CD52D0
 };

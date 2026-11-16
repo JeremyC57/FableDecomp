@@ -89,7 +89,8 @@ public:
 };
 class CTCHeroOnlineScoreboard : public CTCBase {
 public:
-    void UpdateScoreForActivity(long activity, float value, bool flag);   // 0x0055F3B0
+    enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
+    void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float value, bool flag);   // 0x0055F3B0
 };
 class CTCFish : public CTCBase {
 public:
@@ -160,7 +161,7 @@ void CTCFishing::FinishFishing(bool caught)
         CThing* fishThing = PFish.Get();
         if (fishThing->HasTC(TCI_FISH))
             fishTC = (CTCFish*)((CTCFish*)&fishThing->GetTC(TCI_FISH));
-        scoreboard->UpdateScoreForActivity(7, fishTC->Weight, false);
+        scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)7, fishTC->Weight, false);
     }
     C3DVector zero(0.0f, 0.0f, 0.0f);
     CWorld* world = &GetWorld();

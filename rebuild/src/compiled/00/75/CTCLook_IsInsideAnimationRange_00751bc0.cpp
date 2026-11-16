@@ -1,3 +1,4 @@
+// Leaf: ?IsInsideAnimationRange@CTCLook@@QBE_NXZ
 // CTCLook::IsInsideAnimationRange() -- whether the creature is close enough to the camera (in the XY plane) for its look animation to matter, and is either on screen or in a movie sequence
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751BC0, length 176 bytes (+ int3 padding); speed TU (no frame pointer, esp-relative frame).
@@ -61,9 +62,9 @@ class CTCLook : public CTCBase { public:
     CThing*       ParentThing;                       // +0x04
     unsigned char _pad08[0x0c];
     CDefPointer<CLookDef> PDef;                      // +0x14
-    bool IsInsideAnimationRange();
+    bool IsInsideAnimationRange() const;   // NF35: Ego_r + FableWin access/const spelling (see the Leaf line)
 };
-bool CTCLook::IsInsideAnimationRange()
+bool CTCLook::IsInsideAnimationRange() const
 {
     C3DVector position = ParentThing->GetPos();
     C3DVector view = GetWorld().GetViewPosition();

@@ -111,8 +111,8 @@ private:
 protected:
     const CCharString& GetNarrator() const { return Messages[CurrentMessageIndex].Narrator; }   // Ego_r ?GetNarrator@..@@IBEABVCCharString@@XZ
     long GetNextCameraTagIndex(long current_index);                             // 0x00712E40
-    void SetUpCamera(const CSubtitledMessage::CCameraTag& tag);                 // 0x00715A70
 private:
+    void SetUpCamera(const CSubtitledMessage::CCameraTag& tag);                 // 0x00715A70 (Ego_r + FableWin AAE: private)
     void SetUpTextAndSpeech();
 };
 

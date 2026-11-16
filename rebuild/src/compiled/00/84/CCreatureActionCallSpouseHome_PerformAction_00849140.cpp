@@ -41,7 +41,7 @@ class CThing : public CThingPhysical { public:
 };
 
 class CMessageEventManager { public:
-    CMessageEvent* AddMessage(CMessageEventDef* def, const C3DVector* position, CThing* thing1, CThing* thing2, long priority);   // 0x00687730
+    CMessageEvent* AddMessage(const CMessageEventDef& def, const C3DVector& position, CThing* thing1, CThing* thing2, long priority);   // 0x00687730  // NF35: Ego_r + FableWin ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z
 };
 
 class CWorld { public:
@@ -93,7 +93,7 @@ void CCreatureAction_CallSpouseHome::PerformAction()
         CThing* pCreatureThing = PCreature.GetPItem();   // fetched but unused: retail keeps the dead call
         CThing* pCreature = PCreature.GetPItem();
         CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;   // named: resolved before the arguments
-        pManager->AddMessage(p, &pCreature->PeekPos(), PCreature.GetPItem(), 0, 0);
+        pManager->AddMessage(*p, pCreature->PeekPos(), PCreature.GetPItem(), 0, 0);
     }
     if (p) {
         if (--p->m_count == 0)

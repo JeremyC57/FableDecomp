@@ -1,11 +1,11 @@
 // Behaviour test for 004b2fe0: src/004b2fe0.cpp copied verbatim, the declared callees stubbed below so calls and arguments
-// are observable. CQuestManager::AddActivatedQuestName
+// are observable. CQuestManager::OnQuestStartScreenDisplayed
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 // ---- source (verbatim) ----
-// CQuestManager::AddActivatedQuestName(const CCharString& questName) -- record a quest as between its start and end screens (once), counting it; false when it was already listed
+// CQuestManager::OnQuestStartScreenDisplayed(const CCharString& questName) -- record a quest as between its start and end screens (once), counting it; false when it was already listed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B2FE0, length 114 bytes (`ret 4`, bool).
 // Layout (retail CQuestManager: STLport lists are one word, vectors three): BetweenStartAndEndScreenQuests
 // (vector<CCharString>) +0x4c (PDB +0x6c), NumberOfQuestsBetweenStartAndFinishScreens +0x98 (PDB +0xf4).
@@ -18,7 +18,7 @@ static int fails = 0;
 // four-way unrolled body + remainder switch over the inlined CCharString operator==, value and tag by const reference)
 // as retail compiled it in the caller's TU; with the body visible VC7.1 schedules `lea esi,[edi+4Ch]` between the tag
 // and key pushes as retail. Compare 0x00411570 is the landed body.
-// Leaf: AddActivatedQuestName
+// Leaf: OnQuestStartScreenDisplayed
 #include <stddef.h>
 #include <new>
 
@@ -121,10 +121,10 @@ class CQuestManager { public:
     CStringVector BetweenStartAndEndScreenQuests;               // +0x4c
     unsigned char _pad58[0x40];
     long          NumberOfQuestsBetweenStartAndFinishScreens;   // +0x98
-    bool AddActivatedQuestName(const CCharString& questName);
+    bool OnQuestStartScreenDisplayed(const CCharString& questName);
 };
 
-bool CQuestManager::AddActivatedQuestName(const CCharString& questName)
+bool CQuestManager::OnQuestStartScreenDisplayed(const CCharString& questName)
 {
     if (find(BetweenStartAndEndScreenQuests.begin(), BetweenStartAndEndScreenQuests.end(), questName) == BetweenStartAndEndScreenQuests.end()) {
         ++NumberOfQuestsBetweenStartAndFinishScreens;
@@ -159,18 +159,18 @@ int main()
     qm->NumberOfQuestsBetweenStartAndFinishScreens = 10;
     // already listed: same block, and an equal string in another block (unrolled part and remainder)
     CCharStringData* sameRaw = &d[1]; CCharString& same = *(CCharString*)&sameRaw;
-    CHECK(!qm->AddActivatedQuestName(same) && qm->NumberOfQuestsBetweenStartAndFinishScreens == 10 && g_copies == 0);
+    CHECK(!qm->OnQuestStartScreenDisplayed(same) && qm->NumberOfQuestsBetweenStartAndFinishScreens == 10 && g_copies == 0);
     CCharStringData q5 = MakeData("Q5"); CCharStringData* eqRaw = &q5; CCharString& eq = *(CCharString*)&eqRaw;
-    CHECK(!qm->AddActivatedQuestName(eq) && qm->NumberOfQuestsBetweenStartAndFinishScreens == 10);
+    CHECK(!qm->OnQuestStartScreenDisplayed(eq) && qm->NumberOfQuestsBetweenStartAndFinishScreens == 10);
     CCharStringData q2 = MakeData("Q2"); eq.PStringData = &q2;
-    CHECK(!qm->AddActivatedQuestName(eq));
+    CHECK(!qm->OnQuestStartScreenDisplayed(eq));
     // new name, room left: copied in place
     CCharStringData* nxRaw = &d[6]; CCharString& nx = *(CCharString*)&nxRaw;
-    CHECK(qm->AddActivatedQuestName(nx) && qm->NumberOfQuestsBetweenStartAndFinishScreens == 11 && g_copies == 1 && g_over == 0);
+    CHECK(qm->OnQuestStartScreenDisplayed(nx) && qm->NumberOfQuestsBetweenStartAndFinishScreens == 11 && g_copies == 1 && g_over == 0);
     CHECK(qm->BetweenStartAndEndScreenQuests._M_finish == storage + 7 && storage[6].PStringData == &d[6]);
     // same length, different text: still new; storage full -> overflow path
     CCharStringData qy = MakeData("QY"); CCharStringData* nyRaw = &qy; CCharString& ny = *(CCharString*)&nyRaw;
-    CHECK(qm->AddActivatedQuestName(ny) && qm->NumberOfQuestsBetweenStartAndFinishScreens == 12 && g_over == 1);
+    CHECK(qm->OnQuestStartScreenDisplayed(ny) && qm->NumberOfQuestsBetweenStartAndFinishScreens == 12 && g_over == 1);
     CHECK(g_overPos == storage + 7 && g_overX == &ny && g_overN == 1 && g_overEnd && g_copies == 1);
     CHECK(qm->BetweenStartAndEndScreenQuests._M_finish - qm->BetweenStartAndEndScreenQuests._M_start == 8);
     // null block entry versus a non-null key: not equal; null key equals the null entry
@@ -178,11 +178,11 @@ int main()
     qm->BetweenStartAndEndScreenQuests._M_start = one; qm->BetweenStartAndEndScreenQuests._M_finish = one + 1;
     qm->BetweenStartAndEndScreenQuests._M_end_of_storage = one + 2;
     CCharStringData* nulRaw = 0; CCharString& nul = *(CCharString*)&nulRaw;
-    CHECK(!qm->AddActivatedQuestName(nul));
-    CHECK(qm->AddActivatedQuestName(nx) && one[1].PStringData == &d[6]);
+    CHECK(!qm->OnQuestStartScreenDisplayed(nul));
+    CHECK(qm->OnQuestStartScreenDisplayed(nx) && one[1].PStringData == &d[6]);
     // empty vector
     qm->BetweenStartAndEndScreenQuests._M_start = qm->BetweenStartAndEndScreenQuests._M_finish = one;
-    CHECK(qm->AddActivatedQuestName(nx));
+    CHECK(qm->OnQuestStartScreenDisplayed(nx));
     if (fails == 0) printf("004b2fe0_TEST PASS\n"); else printf("004b2fe0_TEST FAIL\n");
     return fails;
 }

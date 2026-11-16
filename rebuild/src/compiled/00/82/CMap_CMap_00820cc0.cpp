@@ -42,7 +42,9 @@ class CThemePaletteEntry { public:
 };
 
 class CHeightMap { public:
-    void Clear();                                       // 0x008F6050
+private:
+    void Clear();                                       // 0x008F6050 (NF35: Ego_r + FableWin private, AAE)
+    friend class CMap;
 };
 
 template <class T> struct scoped_ptr {

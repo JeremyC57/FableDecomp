@@ -1,3 +1,4 @@
+// Leaf: ?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z
 // CAIStateGroupBase::AIAction_PerformAction(CCreatureActionBase* action) -- wait until the creature is free to perform the action (or the group stops), post it in a brain output (flag 8), yield once, and report 1 (stopping) or 2 (performed)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097D8B0, length 203 bytes (`ret 4`).
@@ -78,6 +79,7 @@ class CThingCreatureBase
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
 };
 
+enum EAIActionReturn { };                           // NF35: values from the body (1 stopping, 2 done)
 class CAIStateGroupBase
 { public:
     virtual void v00();
@@ -85,24 +87,23 @@ class CAIStateGroupBase
     unsigned char _pad08[0x0c];                     // +0x08
 protected:
     bool IsStopping() const;                              // 0x008FD010 (Ego_r.pdb protected const)
-public:
-    long AIAction_PerformAction(CCreatureActionBase* action);
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // NF35: Ego_r + FableWin protected, enum result, const&
 };
 
-long CAIStateGroupBase::AIAction_PerformAction(CCreatureActionBase* action)
+EAIActionReturn CAIStateGroupBase::AIAction_PerformAction(const CCreatureActionBase& action)
 {
     if (IsStopping())
-        return 1;
-    while (!((CThingCreatureBase*)PBrain->Creature)->IsFreeToPerformAction(action) && !IsStopping())
+        return (EAIActionReturn)1;
+    while (!((CThingCreatureBase*)PBrain->Creature)->IsFreeToPerformAction(&action) && !IsStopping())
         PBrain->SuspendSuspendableProcess();
     if (IsStopping())
-        return 1;
+        return (EAIActionReturn)1;
     CBrainOutput output;
     output.Flags |= 8;
-    output.PAction.Reset(action->Clone());
+    output.PAction.Reset(action.Clone());
     PBrain->SetOutput(output);
     PBrain->SuspendSuspendableProcess();
     if (IsStopping())
-        return 1;
-    return 2;
+        return (EAIActionReturn)1;
+    return (EAIActionReturn)2;
 }

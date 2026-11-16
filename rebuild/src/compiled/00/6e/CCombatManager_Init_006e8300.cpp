@@ -1,4 +1,5 @@
-// CCombatManager::ResetDialogue() -- re-initialise the combat dialogue manager, reset the attack-pattern idle interval to half a second and clear the nearest-combatant-only flag
+// CCombatManager::Init() -- re-initialise the combat dialogue manager, reset the attack-pattern idle interval to half a second and clear the nearest-combatant-only flag
+// Leaf: Init
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E8300, length 24 bytes.
 // Callees: CombatDialogueManager::Init() @ 0x008AF2B0 (on the embedded manager at +0x38). The chunk label "CDrawQuickAccessIcons::OnHeroHit" is a
 // propagated shape name (the real OnHeroHit is @ 0x0064DA5C, landed); this body sits in the 0x006Exxxx combat/AI module and its layout is
@@ -16,10 +17,10 @@ class CCombatManager { public:
     bool                  AttacksFromNearestCombatantOnly;     // +0x34
     unsigned char         _pad35[3];
     CombatDialogueManager DialogueManager;         // +0x38
-    void ResetDialogue();
+    void Init();
 };
 
-void CCombatManager::ResetDialogue()
+void CCombatManager::Init()
 {
     DialogueManager.Init();
     AttackPatternIdleStandardInterval = 0.5f;

@@ -118,7 +118,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     bool CreatureHasAnim(const CCharString& name, const CAnimFilterBase& filter) const { return GetCreature()->HasAnim(name, filter); }
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
+public:
     protected:
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& arrived, EMovementType movement, bool a, bool b, const CThing* avoid, bool c, float speed);   // 0x0097EC00
     public:
@@ -150,7 +152,7 @@ void CAIStateGroup_GoToBed::Update()
     if (FindFreeBed(false) || FindFreeBanditBed()) {
         bool arrived;
         bool failed = CreatureHasAnim("STANDARD_YAWN", CAnimFilterAnyGroup())
-            && AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), "STANDARD_YAWN", CSoundPair(),
+            && AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "STANDARD_YAWN", CSoundPair(),
                    false, true, false, 0, 0)) != 2;
         if (!failed) {
             long movement = 3;

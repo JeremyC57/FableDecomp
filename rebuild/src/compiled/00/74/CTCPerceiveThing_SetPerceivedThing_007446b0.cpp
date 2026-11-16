@@ -34,8 +34,8 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
 };
 class CPlayerGui { public:                             // the global (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790
-    void AddPerceivingThing(CThing* thing);     // 0x004378F0 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
-    void RemovePerceivingThing(CThing* thing);  // 0x00437900 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
+    void AddPerceivingThing(CThing& thing);       // 0x004378F0 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>") [NF35: CThing&, Ego_r + FableWin QAEXAAVCThing@@@Z]
+    void RemovePerceivingThing(CThing& thing);  // 0x00437900 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
 };
 class CDefPointeeBase;
 #include "engine/C3DVector.h"
@@ -69,9 +69,9 @@ class CTCPerceiveThing { public:
     void UpdateDrawPerceivers()
     {
         if (PerceivedThing.GetPItem())
-            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().AddPerceivingThing(ParentThing);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().AddPerceivingThing(*ParentThing);
         else
-            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(ParentThing);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(*ParentThing);
     }
     void SetPerceivedThing(const CThing* thing);
     void SetThingLineOfSight(bool lineOfSight);

@@ -138,7 +138,7 @@ struct CThingPositioned : public CThing {
 };
 
 class CThingAICreature { public:
-    void GetSleepTimes(long* start, long* end); // 0x00833390
+    void GetSleepTimes(long& start, long& end) const; // 0x00833390 (NF35: Ego_r + FableWin ?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z)
 };
 
 struct CTCSleeper {                             // interface 0xd4
@@ -173,7 +173,7 @@ struct CAIStateGroup_GoToBed : CAIStateGroupBaseW {
         CGameTime* pTime = GetWorld().m_pTime;
         long sleepEnd;
         long sleepStart;
-        ((CThingAICreature*)PBrain->PCreature)->GetSleepTimes(&sleepStart, &sleepEnd);
+        ((CThingAICreature*)PBrain->PCreature)->GetSleepTimes(sleepStart, sleepEnd);
         return pTime->IsTimeOfDayInRange(sleepStart + m_bedTimeDelay, sleepEnd);
     }
 };

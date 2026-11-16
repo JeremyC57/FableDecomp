@@ -101,8 +101,8 @@ class CTCHeroStats { public:                                       // interface 
     unsigned char _pad00[0x154];
     long          TimesHadSex;                              // +0x154 (descriptive)
 };
-enum EOnlineScoreboardActivity { ONLINE_SCOREBOARD_ACTIVITY_SEX = 6 };
 class CTCHeroOnlineScoreboard { public:                            // interface 0x10D
+    enum EOnlineScoreboardActivity { ONLINE_SCOREBOARD_ACTIVITY_SEX = 6 };   // NF35: nested (Ego_r + FableWin ..QAEXW4EOnlineScoreboardActivity@1@M_N@Z)
     void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float value, bool flag);   // 0x0055F3B0
 };
 
@@ -172,6 +172,6 @@ void CTCWife::HaveSex()
         CTCHeroOnlineScoreboard* scoreboard;
         if (hero->HasTC(0x10d))
             scoreboard = (CTCHeroOnlineScoreboard*)hero->GetTC(0x10d);
-        scoreboard->UpdateScoreForActivity(ONLINE_SCOREBOARD_ACTIVITY_SEX, (float)stats->TimesHadSex, false);
+        scoreboard->UpdateScoreForActivity(CTCHeroOnlineScoreboard::ONLINE_SCOREBOARD_ACTIVITY_SEX, (float)stats->TimesHadSex, false);
     }
 }

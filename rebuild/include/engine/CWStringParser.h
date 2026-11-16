@@ -15,6 +15,10 @@ public:
  CWStringParser(const unsigned short* text);                         // 0x00437260
  class CWideString ReadAsStringUntilCharacter(unsigned short c);     // 0x00A0CCD0
  long SkipWhitespace();                                              // 0x00A0C910
+#ifdef FABLE_RETAIL_CWSTRINGPARSER_INIT
+ // Retail opt-in (NF35 2026-11-16, row 0x0048F50C): Ego_r.pdb ?Init@CWStringParser@@QAEXPB_W@Z (0x00A0C8E0, catalog CWStringParser::Init).
+ void Init(const unsigned short* text);                              // 0x00A0C8E0
+#endif
 #else
  virtual ~CWStringParser();
 #endif

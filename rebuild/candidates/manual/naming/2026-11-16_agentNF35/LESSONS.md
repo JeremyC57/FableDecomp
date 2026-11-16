@@ -1,0 +1,12 @@
+# NF35 lessons (one line each)
+- A caller's bare inner call is not a declaration: respell the declaration the call binds through, never the call site.
+- A POD return comes back in EDX:EAX, but a class with a user-declared ctor comes back through a hidden pointer; a local C2DVector model needs the ctor to match.
+- selfacc.py does not handle overloads, const bodies or inline class bodies; hand-edit those rows.
+- Data rows have no E8/E9 callers, so a "no wrong binder" result on a data global means nothing; probe its absolute (dir32) references separately.
+- End every probe pipeline (grep -c and the like) with `; true`, or a zero count exits 1.
+- Parse mangled names with llvm-undname, not a regex: a regex split invents classes such as `VCWideString` and `std`, and misses ctor/dtor scopes.
+- Renaming a local stand-in class to the real name of a class with a shared header is a new local model (0x009624D0 reverted).
+- A test is a standalone copy of the logic; when a row's own name changes, respell the test too so one address has one name.
+- Rows with no `// Leaf:` line take the catalog name in mkpay; add a Leaf line when the self name changes.
+- The `port` label needs a reason you can show (the row models the class as a stand-in); do not use it for entries you have not looked at.
+- The lane environment (`source $S/wine/env.sh`) must be sourced for vland, or it looks for D:\ paths.

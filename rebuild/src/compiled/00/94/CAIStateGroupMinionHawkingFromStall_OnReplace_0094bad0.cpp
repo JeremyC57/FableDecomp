@@ -9,9 +9,10 @@
 // before the pointer), names descriptive.
 class CThing;
 
-class CThingCreatureBase { public:
-    void StopSpeaking();                    // 0x00864580
-};
+class CThingCreatureBase;
+namespace NCreatureAI {
+void __fastcall StopSpeaking(CThingCreatureBase& creature);   // 0x00864580 (NF35: Ego_r + FableWin ?StopSpeaking@NCreatureAI@@YIXAAVCThingCreatureBase@@@Z; was a member)
+}
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -48,5 +49,5 @@ struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroupBase {
 void CAIStateGroup_MinionHawkingFromStall::OnReplace()
 {
     PStall = 0;
-    PBrain->Creature->StopSpeaking();
+    NCreatureAI::StopSpeaking(*PBrain->Creature);
 }

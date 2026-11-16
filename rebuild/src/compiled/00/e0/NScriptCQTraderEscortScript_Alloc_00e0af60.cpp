@@ -1,5 +1,5 @@
-// NScript::CQ_TraderEscortScript::Alloc(CScriptDataBase* data, CGameScriptInterface& game) -- script factory: `new CQ_TraderEscortScript(data, game)` with the constructor inlined (registered at 0x00CD77E5 as "S_QTE" / "Q_TraderEscort")
-// Leaf: ?Alloc@CQ_TraderEscortScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterface@@@Z
+// NScript::CQ_TraderEscortScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- script factory: `new CQ_TraderEscortScript(data, game)` with the constructor inlined (registered at 0x00CD77E5 as "S_QTE" / "Q_TraderEscort")
+// Leaf: ?Alloc@CQ_TraderEscortScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0AF60, 79 bytes, static __fastcall (data in ecx, game in edx). PDB:
@@ -15,18 +15,9 @@
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
-class CScriptDataBase;
-class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];                          // +0x04..+0x3f
-    CScriptBase();                                      // 0x00CB8110
-};
-template <class TData>
-struct __declspec(novtable) CLevelScriptBase : CScriptBase {
-    CGameScriptInterface* Game;                         // +0x40
-    TData*                MasterScriptData;             // +0x44
-    CLevelScriptBase(CScriptDataBase* data, CGameScriptInterface& game) : CScriptBase(), Game(&game), MasterScriptData((TData*)data) { }
-};
+// NF35: moved onto engine/CLevelScriptBase.h (+ engine/CScriptBase.h), as the landed sibling 0x00D68EA0 is; Alloc takes
+//   CGameScriptInterfaceBase& (Ego_r + FableWin).
+#include "engine/CLevelScriptBase.h"
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
@@ -58,11 +49,11 @@ public:
     bool ShownEarthTroll;                               // +0x71
     long TimesBantered;                                 // +0x74
     CCharString TraderToTalk;                           // +0x78
-    CQ_TraderEscortScript(CScriptDataBase* data, CGameScriptInterface& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game) { }
+    CQ_TraderEscortScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game) { }
     virtual ~CQ_TraderEscortScript();
-    static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterface& game);
+    static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
-CScriptBase* __fastcall CQ_TraderEscortScript::Alloc(CScriptDataBase* data, CGameScriptInterface& game)
+CScriptBase* __fastcall CQ_TraderEscortScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
 {
     return new CQ_TraderEscortScript(data, game);
 }

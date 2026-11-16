@@ -28,7 +28,7 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
     bool operator!=(const char* text) const;                // 0x0099E960
-    CCharString ToUpper() const;                            // 0x0099EE20
+    CCharString GetAsUpperCase() const;                            // 0x0099EE20 NF35: Ego_r + FableWin ?GetAsUpperCase@CCharString@@QBE?AV1@XZ (was ToUpper)
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 
@@ -193,7 +193,7 @@ void CTCDParticleEmitter::AttachToThing(CThing& thing, long flags, const CCharSt
     if (thing.PDef->GetSubDef(&soundDef) && soundDef->SoundIdentifier != "") {
         if (PEmitter.GetPItem()) {
             NParticleEngine::CParticleEmitter* emitter = PEmitter.GetPItem();
-            CCharString criteria = "PARTICLE_" + emitter->Name.ToUpper();
+            CCharString criteria = "PARTICLE_" + emitter->Name.GetAsUpperCase();
             CTCSoundPlayer* sound;
             if (thing.GetTC(&sound, 0x10))
                 sound->PlayAttachedCriteria(criteria, 1, 0, 0, -1);

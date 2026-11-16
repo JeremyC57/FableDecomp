@@ -20,7 +20,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCLook { public:                                   // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);           // 0x00753E90
-    bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b);   // 0x007534B0
+    bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b) const;// 0x007534B0  // NF35: Ego_r + FableWin ?IsPosInViewRange@CTCLook@@QBE_NABVC3DVector@@M_N1@Z (const)
 };
 class CTCScriptedControl { public:
     void*   __vftable;

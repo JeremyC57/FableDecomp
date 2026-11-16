@@ -60,7 +60,7 @@ struct CTCUserActionPointBase {
 public:
     void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
 public:                 // interface 0x2d
-    bool GetFreeActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
+    bool GetFreeActionPoint(CThing& user, C3DVector& position, CRightHandedSet& orientation, long& index);   // 0x007FEDE0 (NF35: Ego_r + FableWin ..QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z)
 };
 class CTCCarrying;
 class CTCCarryable {                            // interface 0x47 (vtable 0x0123B35C slot 21: `push 47h ; pop eax`)
@@ -135,7 +135,7 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
     unsigned long endFrame = CWorld::GetFrame() + (long)(fps * seconds);
     C3DVector pos;
     CRightHandedSet orientation;
-    while (!point->GetFreeActionPoint(GetCreature(), &pos, &orientation, &index)) {
+    while (!point->GetFreeActionPoint(*(CThing*)(GetCreature()), pos, orientation, index)) {
         if (AIAction_MinionWander(3, 0) == 1)
             return 1;
         if (CWorld::GetFrame() > endFrame)

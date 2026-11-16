@@ -18,7 +18,7 @@ class CCharString { public:
     CCharString(const CCharString& other);           // 0x0099EC30
     CCharString(const char* text, long length);      // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
-    CCharString ToUpper() const;                     // 0x0099EE20
+    CCharString GetAsUpperCase() const;                     // 0x0099EE20 NF35: Ego_r + FableWin ?GetAsUpperCase@CCharString@@QBE?AV1@XZ (was ToUpper)
 };
 class CSymbolMap { public:
     unsigned char m_data[0x24];
@@ -57,7 +57,7 @@ void CParticleEmitterDatabase::CreateSymbolMap()
     for (SEmitterEntry* it = Emitters.m_first; it != Emitters.m_last; ++it) {
         CCharString name(it->second->Name);
         CCharString prefix("", -1);
-        SymbolMap.AddSymbolDirty(prefix, name.ToUpper(), it->first);
+        SymbolMap.AddSymbolDirty(prefix, name.GetAsUpperCase(), it->first);
     }
     SymbolMap.UpdateDirty();
 }

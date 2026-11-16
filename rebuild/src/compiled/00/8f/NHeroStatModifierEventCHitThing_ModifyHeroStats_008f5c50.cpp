@@ -10,6 +10,7 @@
 // Shape: the experience component comes through the inline accessor with an unset local (the absent path reads the
 // dead argument slot); the morality sum is written def-first (`mov eax,[def+2Ch] ; add eax,[stats+28h]`).
 #include "fable_compiler.h"
+#include "engine/EHeroExperienceStatCategory.h"
 class CTCHeroExperience;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -46,7 +47,7 @@ FABLE_FORCEINLINE CTCHeroExperience* GetTCIfPresent(CThing* thing, long kind)
     return tc;
 }
 class CTCHeroExperience { public:
-    void AddTrainableStatExperience(long stat, long amount);   // 0x006D8300
+    void AddTrainableStatExperience(EHeroExperienceStatCategory stat, long amount);   // 0x006D8300 (NF35: Ego_r + FableWin ..QAEXW4EHeroExperienceStatCategory@@J@Z)
 };
 class CTCHeroStats { public:
     void*         __vftable;                       // +0x00
@@ -75,7 +76,7 @@ void CHitThing::ModifyHeroStats(CTCHeroStats* heroStats)
 {
     CTCHeroExperience* experience = GetTCIfPresent(heroStats->ParentThing, 0x68);
     if (DoStatIncrement)
-        experience->AddTrainableStatExperience(StatToIncrement, (long)IncrementAmount);
+        experience->AddTrainableStatExperience((EHeroExperienceStatCategory)StatToIncrement, (long)IncrementAmount);
     if (Unarmed)
         heroStats->SetMorality(StatsDefOfHitThing->MoralityForPunch + heroStats->Morality);
     else

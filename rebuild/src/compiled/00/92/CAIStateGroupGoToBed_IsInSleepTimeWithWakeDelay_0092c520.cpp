@@ -19,7 +19,7 @@ class CWorld { public:
 };
 
 class CThingAICreature { public:
-    void GetSleepTimes(long* pStart, long* pEnd);    // 0x00833390
+    void GetSleepTimes(long& pStart, long& pEnd) const;    // 0x00833390 (NF35: Ego_r + FableWin ?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z)
 };
 
 class CAIBrain { public:
@@ -56,6 +56,6 @@ bool CAIStateGroup_GoToBed::IsInSleepTimeWithWakeDelay()
     CGameTime* pTime = GetWorld().m_pTime;
     long sleepEnd;
     long sleepStart;
-    PBrain->PCreature->GetSleepTimes(&sleepStart, &sleepEnd);
+    PBrain->PCreature->GetSleepTimes(sleepStart, sleepEnd);
     return pTime->IsTimeOfDayInRange(sleepStart, sleepEnd + m_wakeTimeDelay);
 }

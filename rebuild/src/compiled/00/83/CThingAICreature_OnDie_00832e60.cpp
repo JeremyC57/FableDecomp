@@ -62,7 +62,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThing;
 class CMessageEventManager { public:
-    CMessageEvent* AddMessage(CMessageEventDef* def, const C3DVector* position, CThing* thing1, CThing* thing2, long priority);   // 0x00687730
+    CMessageEvent* AddMessage(const CMessageEventDef& def, const C3DVector& position, CThing* thing1, CThing* thing2, long priority);   // 0x00687730  // NF35: Ego_r + FableWin ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z
 };
 class CWorld { public:
     unsigned char _pad[0x60];
@@ -167,7 +167,7 @@ void CThingAICreature::OnDie()
         }
         if (found) {
             CMessageEventManager* manager = GetWorld().MessageEventManager;
-            manager->AddMessage(def.m_p, &PeekPos(), killer, this, 0);
+            manager->AddMessage(*def.m_p, PeekPos(), killer, this, 0);
         }
     }
     CTCWife* wife = 0;

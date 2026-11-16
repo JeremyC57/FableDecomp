@@ -1,3 +1,4 @@
+// Leaf: ?CleanUpInterfaces@CNewFrontendGameComponent@@AAEXXZ
 // Retry 10b: the mesh bank manager comes from an inline getter (`GFGetSystemManager()->GetMeshBankManager()`, B-4/B-5 accessor idiom): retail keeps the shared zero in ebp and the manager in ebx (a plain member read swaps them).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // CNewFrontendGameComponent::CleanUpInterfaces() -- tears down the front end's engine-side objects: deletes the front-end manager, drops the engine, closes and drops the front-end graphic bank and mesh bank, and drops the menu font
@@ -58,7 +59,8 @@ public:
     CCountedPointer<CIEngine>         m_pEngine;         // +0x58
     unsigned char                     _pad60[0x54];
     CFrontEndManager*                 m_pFrontEndManager;   // +0xb4
-    void CleanUpInterfaces();
+private:
+    void CleanUpInterfaces();                    // NF35: Ego_r + FableWin private (AAE)
 };
 
 void CNewFrontendGameComponent::CleanUpInterfaces()

@@ -69,7 +69,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
-    long AIAction_PerformAction(CCreatureActionBase* action);                     protected: // 0x0097D8B0
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);                     // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
+protected:
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:  // 0x0097DB70
 };
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
@@ -99,7 +101,7 @@ bool CAIStateGroup_GoToPub::PlayAnims(const CCharString& intoAnim, const CCharSt
     }
     if (game && game->IsBeingPlayed)
         return true;
-    failed = AIAction_PerformAction(&CCreatureAction_PlayAnimation(PBrain->GetPCreature(), outAnim, CSoundPair(),
+    failed = AIAction_PerformAction(CCreatureAction_PlayAnimation(PBrain->GetPCreature(), outAnim, CSoundPair(),
                                                                   false, true, false, 0, 0)) != 2;
     if (failed)
         return false;

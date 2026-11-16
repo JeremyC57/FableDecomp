@@ -141,7 +141,9 @@ class CV_FisticuffsClubScript::CFisticuffsClubRing : public CEntityScriptBase {
 public:
     CV_FisticuffsClubScript* ParentClass;               // +0x14
     void*                PMasterData;                   // +0x18
-    void SetUpRing();                                   // 0x00E83230
+private:
+    void SetRelevantRegion();                           // 0x00E83230 (NF35: Ego_r + FableWin ?SetRelevantRegion@CFisticuffsClubRing@CV_FisticuffsClubScript@NScript@@AAEXXZ)
+public:
 private:
     virtual void Main();                          // PDB ?Main@CFisticuffsClubRing@CV_FisticuffsClubScript@NScript@@EAEXXZ
 };
@@ -160,7 +162,7 @@ void NScript::CV_FisticuffsClubScript::CFisticuffsClubRing::Main()
             return;
 #pragma inline_depth()
         }
-    SetUpRing();
+    SetRelevantRegion();
     ParentClass->InitialiseVariables();
     CTimer warningTimer;
     CTimer interruptTimer;

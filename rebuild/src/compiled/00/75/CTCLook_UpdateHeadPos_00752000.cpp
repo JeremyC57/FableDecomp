@@ -61,7 +61,7 @@ class CTCLook : public CTCBase { public:
     C3DVector           CachedHeadPos;          // +0xa1 (PDB +0xa5)
     unsigned char       _padAD[0xb0 - 0xad];
     long                HeadCacheTimer;         // +0xb0 (PDB +0xb4)
-    bool ShouldGetExactHeadPos();               // 0x00751BC0
+    bool IsInsideAnimationRange() const;// 0x00751BC0 NF35: Ego_r + FableWin ?IsInsideAnimationRange@CTCLook@@QBE_NXZ (was ShouldGetExactHeadPos)
     void UpdateHeadPos();
 };
 #pragma pack(pop)
@@ -79,7 +79,7 @@ void CTCLook::UpdateHeadPos()
         if (PParentCreature == 0)
             return;
     }
-    C3DVector head = PParentCreature->GetHeadPos(ShouldGetExactHeadPos());
+    C3DVector head = PParentCreature->GetHeadPos(IsInsideAnimationRange());
     if ((CachedHeadPos - head).GetSquaredMagnitude() > g_HeadPosCacheTolerance)
         HeadCacheTimer = 0;
     else

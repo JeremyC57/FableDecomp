@@ -1,5 +1,5 @@
 // CGameCameraBase::GetRotationAngle(const C3DVector& from, const C3DVector& to) -- signed rotation in turns from `from` to the XY projection of `to`: acos of the normalised dot / 2pi, negative when `to` lies clockwise; 0 outside the acos domain
-// Leaf: ?GetRotationAngle@CGameCameraBase@@
+// Leaf: ?GetRotationAngle@CGameCameraBase@@AAEMABVC3DVector@@0@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FD4F0, 227 bytes, `ret 8`.
 // Label correction: catalog "Vector3_AngleBetween" -> CGameCameraBase::GetRotationAngle (Ego_r.pdb name set).
@@ -16,7 +16,9 @@ extern "C" double __cdecl acos(double x);
 class CGameCameraBase {
 public:
     virtual ~CGameCameraBase();
-    float GetRotationAngle(const C3DVector& from, const C3DVector& to);
+private:
+    float GetRotationAngle(const C3DVector& from, const C3DVector& to);   // NF35: Ego_r + FableWin access/const spelling (see the Leaf line)
+public:
 };
 
 float CGameCameraBase::GetRotationAngle(const C3DVector& from, const C3DVector& to)

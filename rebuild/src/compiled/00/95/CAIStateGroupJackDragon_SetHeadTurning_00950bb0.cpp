@@ -1,5 +1,5 @@
 // CAIStateGroup_JackDragon::SetHeadTurning(bool enable) -- when the creature's current mode is one of the two dragon modes (types 0x4e / 0x47), set its head-turning flag
-// Leaf: ?SetHeadTurning@CAIStateGroup_JackDragon@@QAEX_N@Z
+// Leaf: ?SetHeadTurning@CAIStateGroup_JackDragon@@AAEX_N@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00950BB0, length 120 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined interface lookup, type 0x31 = CTCCreatureModeManager,
@@ -45,7 +45,8 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_JackDragon : CAIStateGroupBase {
-    void SetHeadTurning(bool enable);
+private:
+    void SetHeadTurning(bool enable);           // NF35: Ego_r + FableWin private (AAE)
 };
 
 void CAIStateGroup_JackDragon::SetHeadTurning(bool enable)

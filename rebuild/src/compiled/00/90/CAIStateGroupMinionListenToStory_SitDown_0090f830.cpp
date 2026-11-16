@@ -134,6 +134,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
+enum EAIActionReturn;                           // NF35: MS forward enum (as engine/CAIStateGroupBase.h)
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -142,7 +143,9 @@ class CAIStateGroupBase { public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
 public:
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
+public:
 };
 CModeSitListen::CModeSitListen(const CAIStateGroupBase* group, const CCharString& anim)
     : CModeSitBase(group->GetCreature()), Filter(anim)
@@ -159,7 +162,7 @@ bool CAIStateGroup_MinionListenToStory::SitDown()
     CCountedPointer<CModeSitBase> mode(new CModeSitListen(this, anim->GroupName));
     if (IsStopping())
         return false;
-    if (AIAction_PerformAction(&CCreatureAction_SitDown(GetCreature(), anim, mode)) != 2)
+    if (AIAction_PerformAction(CCreatureAction_SitDown(GetCreature(), anim, mode)) != 2)
         return false;
     return true;
 }

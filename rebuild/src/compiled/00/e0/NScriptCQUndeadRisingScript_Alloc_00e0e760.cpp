@@ -1,5 +1,5 @@
-// NScript::CQ_UndeadRisingScript::Alloc(CScriptDataBase* data, CGameScriptInterface& game) -- script factory: `new CQ_UndeadRisingScript(data, game)` with the constructor inlined (registered at 0x00CD79B0 as "S_QUR" / "Q_UndeadRising")
-// Leaf: ?Alloc@CQ_UndeadRisingScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterface@@@Z
+// NScript::CQ_UndeadRisingScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- script factory: `new CQ_UndeadRisingScript(data, game)` with the constructor inlined (registered at 0x00CD79B0 as "S_QUR" / "Q_UndeadRising")
+// Leaf: ?Alloc@CQ_UndeadRisingScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0E760, 77 bytes, static __fastcall (data in ecx, game in edx). PDB:
 //   ?Alloc@CQ_UndeadRisingScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z.
 // Callees: operator new 0x00BFEA1A (0x78 bytes), CScriptBase::CScriptBase 0x00CB8110. Vtable 0x012DFD3C.
@@ -13,18 +13,9 @@
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-class CScriptDataBase;
-class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];                          // +0x04..+0x3f
-    CScriptBase();                                      // 0x00CB8110
-};
-template <class TData>
-struct __declspec(novtable) CLevelScriptBase : CScriptBase {
-    CGameScriptInterface* Game;                         // +0x40
-    TData*                MasterScriptData;             // +0x44
-    CLevelScriptBase(CScriptDataBase* data, CGameScriptInterface& game) : CScriptBase(), Game(&game), MasterScriptData((TData*)data) { }
-};
+// NF35: moved onto engine/CLevelScriptBase.h (+ engine/CScriptBase.h), as the landed sibling 0x00D68EA0 is; Alloc takes
+//   CGameScriptInterfaceBase& (Ego_r + FableWin).
+#include "engine/CLevelScriptBase.h"
 template <class T> struct allocator {                  // STLport allocator<T>: empty
     allocator() { }
 };
@@ -56,11 +47,11 @@ public:
     long quest_status;                                  // +0x5c (an unnamed enum in the PDB)
     vector<CScriptThing> activation_points;             // +0x60
     vector<CScriptThing> boss_points;                   // +0x6c
-    CQ_UndeadRisingScript(CScriptDataBase* data, CGameScriptInterface& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game) { }
+    CQ_UndeadRisingScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game) { }
     virtual ~CQ_UndeadRisingScript();
-    static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterface& game);
+    static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
-CScriptBase* __fastcall CQ_UndeadRisingScript::Alloc(CScriptDataBase* data, CGameScriptInterface& game)
+CScriptBase* __fastcall CQ_UndeadRisingScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
 {
     return new CQ_UndeadRisingScript(data, game);
 }

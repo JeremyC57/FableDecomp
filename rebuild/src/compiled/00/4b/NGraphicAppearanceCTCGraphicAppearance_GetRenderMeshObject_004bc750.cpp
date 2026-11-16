@@ -59,7 +59,7 @@ C3DMeshObject::~C3DMeshObject()
 }
 
 class CMeshDataBank { public:
-    const C3DMeshInfo* GetMeshInfo(long index);             // 0x00A24270
+    const C3DMeshInfo* PeekMesh(unsigned long index) const;             // 0x00A24270 NF35: Ego_r + FableWin ?PeekMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z (was GetMeshInfo)
 };
 class CWorld { public:
     unsigned char _pad00[0x3c];
@@ -97,7 +97,7 @@ bool CTCGraphicAppearance::GetRenderMeshObject(C3DMeshObject& out, const C3DVect
     if (MainGraphic.Type != 5 && MainGraphic.Type != 4)
         return false;
     CMeshDataBank* bank = PeekWorld().PMainMeshBank;
-    const C3DMeshInfo* meshInfo = bank->GetMeshInfo(MainGraphic.BankIndex);
+    const C3DMeshInfo* meshInfo = bank->PeekMesh(MainGraphic.BankIndex);
     out = C3DMeshObject(meshInfo, position, orientation, MainGraphic.RenderSizeX * Scale * 0.01f);
     return true;
 }

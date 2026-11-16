@@ -96,7 +96,9 @@ class CNewFrontendGameComponent : public CGameComponent { public:        // vtab
     CWideStringVector                      FileNames;                  // +0x6c
     CDateAndTimeVector                     FileTimes;                  // +0x78
     CWideString                            SaveGame;                   // +0x84
-    void Shutdown();                                       // 0x0042EBB6
+private:
+    void Shutdown();                                       // 0x0042EBB6 (NF35: Ego_r + FableWin private, AAE)
+public:
     virtual ~CNewFrontendGameComponent();
 };
 

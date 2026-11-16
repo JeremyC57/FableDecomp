@@ -156,7 +156,9 @@ class CActionTalkBase : public CActionBase {
 public:
     virtual void OnActivate();
     CThingCreatureBase& GetParentCreature() const { return *(CThingCreatureBase*)PTCScript->ParentThing; }   // FableWin.pdb ?GetParentCreature@CActionBase@CTCScriptedControl@@IAEAAVCThingCreatureBase@@XZ (inline)
-    void SetUpTextAndSpeech();                          // 0x00716B30
+private:
+    void SetUpTextAndSpeech();                          // 0x00716B30 (Ego_r + FableWin AAE: private)
+public:
     CScriptThing          PTargetThing;                 // +0x0C
     unsigned char         _pad18[0x68 - 0x18];          // UpdateCounter .. CameraToBeMovedDueToMovedSetupPositionsCount
     EConversationAttitude PreviousConversationAttitude; // +0x68

@@ -1,5 +1,5 @@
 // CAIStateGroupBase::AIAction_MoveToPreCalcRoute(const CThing& routeThing, bool& speed, EMovementType anim, const CAIFilterBase& condition, bool extra) -- walk to the route thing, then (on arrival) along its precalculated route to the destination, polling the condition each step
-// Leaf: ?AIAction_MoveToPreCalcRoute@CAIStateGroupBase@@QAEJABVCThing@@AA_NW4EMovementType@@ABVCAIFilterBase@1@_N@Z
+// Leaf: ?AIAction_MoveToPreCalcRoute@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCThing@@AA_NW4EMovementType@@ABVCAIFilterBase@1@_N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097F690, length 226 bytes (`ret 14h`).
 // Callees: CThing::GetPos @ 0x004C73D0, CAIStateGroupBase::AIAction_MoveToPos @ 0x0097EC00 (mode 2, C3DVector by
@@ -33,11 +33,12 @@ class CAIStateGroupBase
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat mode, C3DVector pos, bool& speed, EMovementType anim, bool extra, bool b1, const CThing* target, bool b3, float f);          // 0x0097EC00
     public:
     C3DVector SetUpPreCalcNav(const CThing& routeThing);                                // 0x0097F5B0
-    long AIAction_MoveToPreCalcRoute(const CThing& routeThing, bool& speed, EMovementType anim,
+    protected:
+    EAIActionReturn AIAction_MoveToPreCalcRoute(const CThing& routeThing, bool& speed, EMovementType anim,
                                      const CAIFilterBase& condition, bool extra);
 };
 
-long CAIStateGroupBase::AIAction_MoveToPreCalcRoute(const CThing& routeThing, bool& speed, EMovementType anim,
+EAIActionReturn CAIStateGroupBase::AIAction_MoveToPreCalcRoute(const CThing& routeThing, bool& speed, EMovementType anim,
                                                     const CAIFilterBase& condition, bool extra)
 {
     long result;
@@ -45,16 +46,16 @@ long CAIStateGroupBase::AIAction_MoveToPreCalcRoute(const CThing& routeThing, bo
     {
         result = AIAction_MoveToPos((EAIActionRepeat)(2), routeThing.GetPos(), speed, (EMovementType)(anim), extra, true, 0, true, 0.0f);
         if (!condition.IsStillValid())
-            return AI_ACTION_ABORTED;
+            return (EAIActionReturn)AI_ACTION_ABORTED;
     } while (result == AI_ACTION_RUNNING);
     if (result != AI_ACTION_DONE)
-        return result;
+        return (EAIActionReturn)result;
     C3DVector destination = SetUpPreCalcNav(routeThing);
     do
     {
         result = AIAction_MoveToPos((EAIActionRepeat)(2), destination, speed, (EMovementType)(anim), extra, true, 0, true, 0.0f);
         if (!condition.IsStillValid())
-            return AI_ACTION_ABORTED;
+            return (EAIActionReturn)AI_ACTION_ABORTED;
     } while (result == AI_ACTION_RUNNING);
-    return result;
+    return (EAIActionReturn)result;
 }

@@ -126,7 +126,8 @@ class CTCHeroStats { public:                       // interface type 4
 };
 
 class CTCHeroOnlineScoreboard { public:            // interface type 0x10d
-    void UpdateScoreForActivity(long activity, float score, bool increment);   // 0x0055F3B0
+    enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
+    void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool increment);   // 0x0055F3B0
 };
 
 struct CModeStandBase {                     // retail sizeof 0x68
@@ -166,7 +167,7 @@ void CModeCreatureIsProjectile::OnDeactivate()
                 stats->LongestChickenKick = distance;
             CTCHeroOnlineScoreboard* scoreboard;
             hero->GetInterface(&scoreboard, 0x10d);
-            scoreboard->UpdateScoreForActivity(4, distance, false);
+            scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)4, distance, false);
         }
     }
     PCreature->PPhysics->SetPhysicsActive(false);

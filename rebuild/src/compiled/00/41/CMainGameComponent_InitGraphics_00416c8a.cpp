@@ -48,13 +48,13 @@ class CGraphicDataBankInit { public:                      // 0x2c bytes
 };
 class CDisplayManager { public:
     bool IsSupportingCompressedTextures();                                                       // 0x009BE800
-    bool GetBestCompressedNonAlphaTextureFormat(unsigned long bitDepth, CPixelFormat* out);       // 0x009BE830
-    bool GetBestCompressedAlphaTextureFormat(unsigned long bitDepth, CPixelFormat* out);          // 0x009BE870
-    bool GetBestCompressedBooleanAlphaTextureFormat(unsigned long bitDepth, CPixelFormat* out);   // 0x009BE8B0
-    bool GetBestOpaqueTextureFormat(unsigned long bitDepth, CPixelFormat* out, bool flag);        // 0x009BE610
-    bool GetBestAlphaTextureFormat(unsigned long bitDepth, CPixelFormat* out);                    // 0x009BE6C0
+    bool GetBestCompressedOpaqueTextureFormat(unsigned long bitDepth, CPixelFormat& out);       // 0x009BE830
+    bool GetBestCompressedAlphaTextureFormat(unsigned long bitDepth, CPixelFormat& out);          // 0x009BE870
+    bool GetBestCompressedBooleanAlphaTextureFormat(unsigned long bitDepth, CPixelFormat& out);   // 0x009BE8B0
+    bool GetBestOpaqueTextureFormat(unsigned long bitDepth, CPixelFormat& out, bool flag);        // 0x009BE610
+    bool GetBestAlphaTextureFormat(unsigned long bitDepth, CPixelFormat& out);                    // 0x009BE6C0
     bool GetBestBooleanAlphaTextureFormat(unsigned long bitDepth, CPixelFormat* out);             // 0x009BE750
-    bool GetBestSignedTextureFormat(unsigned long bitDepth, CPixelFormat* out);                   // 0x009BE590
+    bool GetBestSignedTextureFormat(unsigned long bitDepth, CPixelFormat& out);                   // 0x009BE590
 };
 class CGraphicDataBank;
 #include "engine/CCountedPointer.h"
@@ -89,18 +89,18 @@ bool CMainGameComponent::InitGraphics()
     }
     CGraphicDataBankInit init;
     if (GPDisplayManager->IsSupportingCompressedTextures() && g_AllowCompressedTextures) {
-        GPDisplayManager->GetBestCompressedNonAlphaTextureFormat(g_TextureBitDepth, &init.NonAlphaFormat);
-        GPDisplayManager->GetBestCompressedAlphaTextureFormat(g_TextureBitDepth, &init.AlphaFormat);
-        GPDisplayManager->GetBestCompressedBooleanAlphaTextureFormat(g_TextureBitDepth, &init.BooleanAlphaFormat);
+        GPDisplayManager->GetBestCompressedOpaqueTextureFormat(g_TextureBitDepth, init.NonAlphaFormat);
+        GPDisplayManager->GetBestCompressedAlphaTextureFormat(g_TextureBitDepth, init.AlphaFormat);
+        GPDisplayManager->GetBestCompressedBooleanAlphaTextureFormat(g_TextureBitDepth, init.BooleanAlphaFormat);
         init.InterpolatedAlphaFormat.Initialise(D3DFMT_DXT5);   // D3DFMT_DXT5
     } else {
-        GPDisplayManager->GetBestOpaqueTextureFormat(g_TextureBitDepth, &init.NonAlphaFormat, false);
-        GPDisplayManager->GetBestAlphaTextureFormat(g_TextureBitDepth, &init.AlphaFormat);
+        GPDisplayManager->GetBestOpaqueTextureFormat(g_TextureBitDepth, init.NonAlphaFormat, false);
+        GPDisplayManager->GetBestAlphaTextureFormat(g_TextureBitDepth, init.AlphaFormat);
         GPDisplayManager->GetBestBooleanAlphaTextureFormat(g_TextureBitDepth, &init.BooleanAlphaFormat);
     }
-    GPDisplayManager->GetBestAlphaTextureFormat(g_TextureBitDepth, &init.UncompressedAlphaFormat);
-    GPDisplayManager->GetBestOpaqueTextureFormat(g_TextureBitDepth, &init.UncompressedNonAlphaFormat, false);
-    GPDisplayManager->GetBestSignedTextureFormat(g_TextureBitDepth, &init.SignedFormat);
+    GPDisplayManager->GetBestAlphaTextureFormat(g_TextureBitDepth, init.UncompressedAlphaFormat);
+    GPDisplayManager->GetBestOpaqueTextureFormat(g_TextureBitDepth, init.UncompressedNonAlphaFormat, false);
+    GPDisplayManager->GetBestSignedTextureFormat(g_TextureBitDepth, init.SignedFormat);
     init.MaxGraphicWidth = g_MaxGraphicWidth;
     init.MaxGraphicHeight = g_MaxGraphicHeight;
     init.GenerateMipmaps = true;

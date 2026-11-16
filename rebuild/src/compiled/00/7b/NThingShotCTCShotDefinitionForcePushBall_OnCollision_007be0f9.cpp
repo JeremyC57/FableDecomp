@@ -126,7 +126,7 @@ class CThingShotDef { public:
 };
 class CMessageEvent;
 class CMessageEventManager { public:
-    CMessageEvent* AddMessage(CMessageEventDef* def, const C3DVector* position, CThing* thing1, CThing* thing2, long priority);   // 0x00687730
+    CMessageEvent* AddMessage(const CMessageEventDef& def, const C3DVector& position, CThing* thing1, CThing* thing2, long priority);   // 0x00687730  // NF35: Ego_r + FableWin ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z
 };
 class CWorld { public:
     unsigned char _pad[0x60];
@@ -209,7 +209,7 @@ void CTCShotDefinitionForcePushBall::OnCollision(ECollideType type, const C3DVec
             }
             if (found) {
                 CMessageEventManager* manager = GetWorld().MessageEventManager;
-                manager->AddMessage(def.Data, &((CThing*)thing)->GetPos(), shooter, thing, 1);
+                manager->AddMessage(*def.Data, ((CThing*)thing)->GetPos(), shooter, thing, 1);
             }
             if (thing->HasTC(0x34)) {
                 CTCPerceiveThing* perceive = thing->GetTC<CTCPerceiveThing>(0x34);

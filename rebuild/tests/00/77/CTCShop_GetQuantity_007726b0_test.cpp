@@ -21,7 +21,7 @@ struct CStockMap {
 };
 class CTCShop { public:
     unsigned char _pad00[0x34]; CStockMap Stock;
-    long GetStockQuantity(long item) { CStockMap::iterator it = Stock.find(item); if (it.m_pNode != Stock.m_pHead) return GFFloatToLongCeil(it.m_pNode->Item.Quantity); return 0; }
+    long GetQuantity(long item) { CStockMap::iterator it = Stock.find(item); if (it.m_pNode != Stock.m_pHead) return GFFloatToLongCeil(it.m_pNode->Item.Quantity); return 0; }
     long GetMaxStock(long item) { CStockMap::iterator it = Stock.find(item); if (it.m_pNode != Stock.m_pHead) return GFFloatToLongCeil(it.m_pNode->Item.MaxStock); return 0; }
 };
 static SStockNode g_head, g_n5, g_n9;
@@ -37,7 +37,7 @@ static CTCShop* MakeShop()
 int main()
 {
     CTCShop* s = MakeShop();
-    bool ok = s->GetStockQuantity(9) == 3 && s->GetStockQuantity(5) == 1 && s->GetStockQuantity(7) == 0 && s->GetStockQuantity(100) == 0;
+    bool ok = s->GetQuantity(9) == 3 && s->GetQuantity(5) == 1 && s->GetQuantity(7) == 0 && s->GetQuantity(100) == 0;
     std::printf(ok ? "007726b0_TEST PASS\n" : "007726b0_TEST FAIL\n");
     return ok ? 0 : 1;
 }

@@ -58,7 +58,7 @@ class CStringParser : public CBaseClass { public:                    // retail 0
     long                     CursorPos[3];             // +0x1c CCursorPos
     CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
                   long baseLineOffset);                // 0x00404720
-    bool FindKeyword(const CCharString& keyword);      // 0x009B9BA0
+    bool SkipPastString(const CCharString& keyword);      // 0x009B9BA0 NF35: Ego_r ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z (catalog CStringParser::SkipPastString)
     long ReadAsInteger();                              // 0x009BA540
     CCharString ReadAsStringUntilString(const CCharString& end);   // 0x009BA330
 };
@@ -147,7 +147,7 @@ void CWorldMap::LoadAllLoadableGlobalThingsFromSingleFile(const CWideString& fil
     CDiskFileWin32 file(filename, FILE_ACCESS_READ, 2);
     text.LoadFromFile(*(CAFile*)&file, 0, -1);
     CStringParser parser(text, 0, CCharString(""), 0);
-    while (parser.FindKeyword("NEWMAP")) {
+    while (parser.SkipPastString("NEWMAP")) {
         long map = parser.ReadAsInteger();
         CCharString block = parser.ReadAsStringUntilString("ENDMAP");
         NProgressDisplay::DisplayProgress("LoadAllLoadableGlobalThingsFromSingleFile", -1.0f, false, false);
@@ -155,6 +155,6 @@ void CWorldMap::LoadAllLoadableGlobalThingsFromSingleFile(const CWideString& fil
         stream->Init(block.c_str(), block.length());
         CDataInputStreamPointer pointer(stream);
         World->GetThingManager()->LoadGlobalThingBatch(pointer, map);
-        parser.FindKeyword("ENDMAP");
+        parser.SkipPastString("ENDMAP");
     }
 }

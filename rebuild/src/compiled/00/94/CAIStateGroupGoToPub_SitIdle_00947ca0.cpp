@@ -52,7 +52,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad[0x0c];                       // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     protected: EAIActionReturn AIAction_DoNothing(); public:                      // 0x0097E200 (EAIActionReturn)
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0 (EAIActionReturn)
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z) (EAIActionReturn)
+public:
 };
 
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
@@ -68,6 +70,6 @@ bool CAIStateGroup_GoToPub::SitIdle()
     if (HandsOffMode)
         return AIAction_DoNothing() == 4;
     CCharString animation("SIT_AT_TABLE_LOOP", -1);
-    return AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
+    return AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
         false, true, false, 0, 0)) == 2;
 }

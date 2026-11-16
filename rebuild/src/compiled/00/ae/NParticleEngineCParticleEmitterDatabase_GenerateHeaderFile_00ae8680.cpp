@@ -24,7 +24,7 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CCharString ToUpper() const;                        // 0x0099EE20
+    CCharString GetAsUpperCase() const;                        // 0x0099EE20 NF35: Ego_r + FableWin ?GetAsUpperCase@CCharString@@QBE?AV1@XZ (was ToUpper)
     CWideString ToWideString() const;                   // 0x0099E480
     void SaveToFile(CAFile& file) const;                // 0x0099E5F0
 };
@@ -89,7 +89,7 @@ void CParticleEmitterDatabase::GenerateHeaderFile()
     long index = 1;
     for (CEmitterEntry* it = m_entriesBegin; it != m_entriesEnd; ++it) {
         CCharString name(it->Data->Name);
-        name = name.ToUpper();
+        name = name.GetAsUpperCase();
         CCharString line = "\t" + name + " = " + GFIntToCharString(index) + ",\r\n";
         file << line;
         ++index;

@@ -130,7 +130,9 @@ class CAIStateGroupBase { public:
     EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat repeat, C3DVector pos, float proximity, bool& moving,
                                                 EMovementType anim, bool b1, bool b2, bool b3, const CThing* target,
                                                 bool b4, float f);     // 0x0097E890
-    EAIActionReturn AIAction_PerformAction(CCreatureActionBase* action);   protected: // 0x0097D8B0
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
+protected:
     EAIActionReturn AIAction_DoNothing(); public:       // 0x0097E200
 };
 struct CAIStateGroup_BalverineWander : CAIStateGroupBase {
@@ -161,10 +163,10 @@ void CAIStateGroup_BalverineWander::Update()
             return;
         }
         if (Random(100) < 20) {
-            AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), "HOWL",
+            AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "HOWL",
                                    GetCreature()->GetSoundPair("HOWL"), false, true, false, 0, 0));
         } else
-            AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), "ST_IDLE", CSoundPair(), false,
+            AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "ST_IDLE", CSoundPair(), false,
                                    true, false, 0, 0));
     } while (AIAction_DoNothing() == AI_ACTION_RUNNING);
 }

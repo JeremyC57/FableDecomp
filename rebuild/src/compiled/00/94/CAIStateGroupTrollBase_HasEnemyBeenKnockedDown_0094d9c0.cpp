@@ -1,3 +1,4 @@
+// Leaf: ?HasEnemyBeenKnockedDown@CAIStateGroup_TrollBase@@IAE_NXZ
 // CAIStateGroup_TrollBase::HasEnemyBeenKnockedDown() -- the (alive) enemy was knocked down since the last check when
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
@@ -234,7 +235,9 @@ struct CAIStateGroup_TrollBase : CAIStateGroupBase {
     float TROLL_STOP_POUNDING_DISTANCE;         // +0x2c
     float TROLL_STOP_THROWING_DISTANCE;         // +0x30
     CWorldF* GetPWorld();                       // 0x008FCFC0
-    bool HasEnemyBeenKnockedDown();             // 0x0094D9C0
+protected:
+    bool HasEnemyBeenKnockedDown();             // 0x0094D9C0   // NF35: Ego_r + FableWin access/const spelling (see the Leaf line)
+public:
 };
 namespace NEntityEvents {
 class CEventHitBy { public:

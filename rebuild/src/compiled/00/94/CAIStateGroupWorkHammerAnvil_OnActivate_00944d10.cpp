@@ -53,7 +53,7 @@ class CRightHandedSet;
 
 struct CTCUserActionPointBase {                 // interface type 0x2D component
     bool IsActionPointFree() const;                   // 0x007FEBF0
-    bool GetFreeActionPoint(CThing* creature, C3DVector* pos, CRightHandedSet* rhSet, long* index); // 0x007FEDE0
+    bool GetFreeActionPoint(class CThing& user, C3DVector& position, CRightHandedSet& orientation, long& index); // 0x007FEDE0 (NF35: Ego_r + FableWin ..QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z)
 };
 
 struct CAIStateGroup_WorkHammerAnvil_Methods : CAIStateGroup_WorkHammerAnvil {
@@ -69,8 +69,7 @@ void CAIStateGroup_WorkHammerAnvil_Methods::OnActivate()
     if (IS_THING_ALIVE(Anvil()) && Anvil().Get()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &actionPoint)
         && actionPoint->IsActionPointFree()) {
         CThing* creature = GetPBrain()->PCreature;
-        if (actionPoint->GetFreeActionPoint(creature, (C3DVector*)&ActionPointPos_X,
-                                            (CRightHandedSet*)ActionPointRHSet, &ActionPointIndex)) {
+        if (actionPoint->GetFreeActionPoint(*creature, *(C3DVector*)&ActionPointPos_X, *((CRightHandedSet*)ActionPointRHSet), ActionPointIndex)) {
             TookActionPoint = true;
             return;
         }

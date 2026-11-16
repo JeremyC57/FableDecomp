@@ -65352,8 +65352,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a5d5f0'
         Module = 'CShaderResource'
-        Source = '00/a5/CShaderResource_GetPixelShader_00a5d5f0.cpp'
-        TestSource = '00/a5/CShaderResource_GetPixelShader_00a5d5f0_test.cpp'
+        Source = '00/a5/CShaderResource_GetVertexShader_00a5d5f0.cpp'
+        TestSource = '00/a5/CShaderResource_GetVertexShader_00a5d5f0_test.cpp'
         PassPattern = 'PARITY_OK_a5d5f0'
     }
     [pscustomobject]@{
@@ -66597,16 +66597,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0078bed0'
-        Module = '_global'
-        Source = '00/78/CountReferences_CountReferences_0078bed0.cpp'
-        TestSource = '00/78/CountReferences_CountReferences_0078bed0_test.cpp'
+        Module = 'CTCBerserk'
+        Source = '00/78/CTCBerserk_GetWeaponTrailAttack_0078bed0.cpp'
+        TestSource = '00/78/CTCBerserk_GetWeaponTrailAttack_0078bed0_test.cpp'
         PassPattern = 'OK_0078bed0'
     }
     [pscustomobject]@{
         Address = '0078bee0'
-        Module = '_global'
-        Source = '00/78/CountReferences_CountReferences_0078bee0.cpp'
-        TestSource = '00/78/CountReferences_CountReferences_0078bee0_test.cpp'
+        Module = 'CTCBerserk'
+        Source = '00/78/CTCBerserk_GetWeaponTrailKnockDown_0078bee0.cpp'
+        TestSource = '00/78/CTCBerserk_GetWeaponTrailKnockDown_0078bee0_test.cpp'
         PassPattern = 'OK_0078bee0'
     }
     [pscustomobject]@{
@@ -199728,8 +199728,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006e8300'
         Module = 'CCombatManager'
-        Source = '00/6e/CCombatManager_ResetDialogue_006e8300.cpp'
-        TestSource = '00/6e/CCombatManager_ResetDialogue_006e8300_test.cpp'
+        Source = '00/6e/CCombatManager_Init_006e8300.cpp'
+        TestSource = '00/6e/CCombatManager_Init_006e8300_test.cpp'
         PassPattern = '006e8300_TEST PASS'
     }
     [pscustomobject]@{
@@ -208670,8 +208670,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004bbe10'
         Module = 'CRightHandedSet'
-        Source = '00/4b/CRightHandedSet_Set_004bbe10.cpp'
-        TestSource = '00/4b/CRightHandedSet_Set_004bbe10_test.cpp'
+        Source = '00/4b/CRightHandedSet_Init_004bbe10.cpp'
+        TestSource = '00/4b/CRightHandedSet_Init_004bbe10_test.cpp'
         PassPattern = '004bbe10_TEST PASS'
     }
     [pscustomobject]@{
@@ -208831,8 +208831,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a10e90'
         Module = 'CRenderTarget'
-        Source = '00/a1/CRenderTarget_AttachTarget_00a10e90.cpp'
-        TestSource = '00/a1/CRenderTarget_AttachTarget_00a10e90_test.cpp'
+        Source = '00/a1/CRenderTarget_AttachZBuffer_00a10e90.cpp'
+        TestSource = '00/a1/CRenderTarget_AttachZBuffer_00a10e90_test.cpp'
         PassPattern = '00a10e90_TEST PASS'
     }
     [pscustomobject]@{
@@ -225494,8 +225494,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b52090'
         Module = 'CEngineWeatherRenderer'
-        Source = '00/b5/CEngineWeatherRenderer_IsPointInPrecipitation_00b52090.cpp'
-        TestSource = '00/b5/CEngineWeatherRenderer_IsPointInPrecipitation_00b52090_test.cpp'
+        Source = '00/b5/CEngineWeatherRenderer_ClipBoxToWeatherMaskSphere_00b52090.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_ClipBoxToWeatherMaskSphere_00b52090_test.cpp'
         PassPattern = '00b52090_TEST PASS'
     }
     [pscustomobject]@{
@@ -253543,8 +253543,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004ca230'
         Module = 'CThing'
-        Source = '00/4c/CThing_CreateTCsFromString_004ca230.cpp'
-        TestSource = '00/4c/CThing_CreateTCsFromString_004ca230_test.cpp'
+        Source = '00/4c/CThing_CreateSerialiseCreatableTCs_004ca230.cpp'
+        TestSource = '00/4c/CThing_CreateSerialiseCreatableTCs_004ca230_test.cpp'
         PassPattern = '004ca230_TEST PASS'
     }
     [pscustomobject]@{
@@ -258556,8 +258556,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0099ee20'
         Module = 'CCharString'
-        Source = '00/99/CCharString_ToUpper_0099ee20.cpp'
-        TestSource = '00/99/CCharString_ToUpper_0099ee20_test.cpp'
+        Source = '00/99/CCharString_GetAsUpperCase_0099ee20.cpp'
+        TestSource = '00/99/CCharString_GetAsUpperCase_0099ee20_test.cpp'
         PassPattern = '0099ee20_TEST PASS'
     }
     [pscustomobject]@{
@@ -263132,8 +263132,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004b2fe0'
         Module = 'CQuestManager'
-        Source = '00/4b/CQuestManager_AddActivatedQuestName_004b2fe0.cpp'
-        TestSource = '00/4b/CQuestManager_AddActivatedQuestName_004b2fe0_test.cpp'
+        Source = '00/4b/CQuestManager_OnQuestStartScreenDisplayed_004b2fe0.cpp'
+        TestSource = '00/4b/CQuestManager_OnQuestStartScreenDisplayed_004b2fe0_test.cpp'
         PassPattern = '004b2fe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -297653,8 +297653,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0097c580'
         Module = 'CAIStateGroup_ScorpionKing'
-        Source = '00/97/CAIStateGroupScorpionKing_SpawnBabies_0097c580.cpp'
-        TestSource = '00/97/CAIStateGroupScorpionKing_SpawnBabies_0097c580_test.cpp'
+        Source = '00/97/CAIStateGroupScorpionKing_UpdatePhase2_0097c580.cpp'
+        TestSource = '00/97/CAIStateGroupScorpionKing_UpdatePhase2_0097c580_test.cpp'
         PassPattern = '0097c580_TEST PASS'
     }
     [pscustomobject]@{
@@ -309677,8 +309677,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00e5fc70'
         Module = 'NScript::CV_BodyGuardScript::CBodyGuard'
-        Source = '00/e5/NScriptCVBodyGuardScriptCBodyGuard_GetHenchmanGoldCost_00e5fc70.cpp'
-        TestSource = '00/e5/NScriptCVBodyGuardScriptCBodyGuard_GetHenchmanGoldCost_00e5fc70_test.cpp'
+        Source = '00/e5/NScriptCVBodyGuardScriptCBodyGuard_GetGoldCost_00e5fc70.cpp'
+        TestSource = '00/e5/NScriptCVBodyGuardScriptCBodyGuard_GetGoldCost_00e5fc70_test.cpp'
         PassPattern = '00e5fc70_TEST PASS'
     }
     [pscustomobject]@{
@@ -333438,8 +333438,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007726b0'
         Module = 'CTCShop'
-        Source = '00/77/CTCShop_GetStockQuantity_007726b0.cpp'
-        TestSource = '00/77/CTCShop_GetStockQuantity_007726b0_test.cpp'
+        Source = '00/77/CTCShop_GetQuantity_007726b0.cpp'
+        TestSource = '00/77/CTCShop_GetQuantity_007726b0_test.cpp'
         PassPattern = '007726b0_TEST PASS'
     }
     [pscustomobject]@{

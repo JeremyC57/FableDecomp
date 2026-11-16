@@ -1,5 +1,5 @@
 // CUserProfileManager::ClampAntialiasing(unsigned long* level, long max_level) -- validates an antialiasing setting against the display manager's supported list: an out-of-range index resets to 0, and with a cap (not -1) the index steps down until the supported level no longer exceeds the cap
-// Leaf: ClampAntialiasing
+// Leaf: ?ClampAntialiasing@CUserProfileManager@@AAEXAAKJ@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00409140, length 126 bytes (padded to 128), `ret 8` (`this` unused).
 // Callees: GFGetSystemManager @ 0x009A4EC0 (__fastcall), the display manager's supported-levels query
@@ -33,10 +33,13 @@ class CSystemManager { public:
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 class CUserProfileManager { public:
-    void ClampAntialiasing(unsigned long* level, long max_level);
+private:
+    void ClampAntialiasing(unsigned long& level, long max_level);   // NF35: Ego_r + FableWin private, reference out parameter
+public:
 };
-void CUserProfileManager::ClampAntialiasing(unsigned long* level, long max_level)
+void CUserProfileManager::ClampAntialiasing(unsigned long& levelRef, long max_level)
 {
+    unsigned long* level = &levelRef;                       // NF35: the PDB parameter is a reference (AA); the body keeps its pointer spelling
     CLongVector levels;
     CSystemManager* system = GFGetSystemManager();
     system->PDisplayManager->GetSupportedAntialiasingLevels(levels);

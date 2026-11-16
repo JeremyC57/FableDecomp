@@ -1,4 +1,4 @@
-// CDisplayManager::GetBestOpaqueTextureFormat(long bitDepth, CPixelFormat& out, bool renderTarget) -- among the RGB texture formats of the requested bit depth with real red/green/blue channels that the device supports (optionally as a render target), pick the one with the fewest alpha bits
+// CDisplayManager::GetBestOpaqueTextureFormat(unsigned long bitDepth, CPixelFormat& out, bool renderTarget) -- among the RGB texture formats of the requested bit depth with real red/green/blue channels that the device supports (optionally as a render target), pick the one with the fewest alpha bits
 // Leaf: GetBestOpaqueTextureFormat
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
@@ -44,10 +44,10 @@ class CDisplayManager { public:
     unsigned long AdapterOrdinal;                  // +0x60 D3DDeviceCaps.AdapterOrdinal
     unsigned char _caps[0x1c4 - 0x64];             // rest of the caps, extents, flags, formats, window handle, mode size
     long          CurrentModeFormat;               // +0x1c4 CurrentMode.Format
-    bool GetBestOpaqueTextureFormat(long bitDepth, CPixelFormat& out, bool renderTarget);
+    bool GetBestOpaqueTextureFormat(unsigned long bitDepth, CPixelFormat& out, bool renderTarget);
 };
 
-bool CDisplayManager::GetBestOpaqueTextureFormat(long bitDepth, CPixelFormat& out, bool renderTarget)
+bool CDisplayManager::GetBestOpaqueTextureFormat(unsigned long bitDepth, CPixelFormat& out, bool renderTarget)
 {
     const CD3DFormatInfo* best = 0;
     for (long i = 0; GD3DFormats[i].BitDepth != -1; ++i) {

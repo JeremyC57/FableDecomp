@@ -41,11 +41,14 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;                  // +0x18
 };
 
+enum EAIActionReturn;                           // NF35: MS forward enum (as engine/CAIStateGroupBase.h)
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                       // +0x08..+0x13
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
+public:
 protected:
     bool IsStopping() const;                              // 0x008FD010 (Ego_r.pdb protected const)
 public:
@@ -59,7 +62,7 @@ struct CAIStateGroup_KrakenTentacleIdle : CAIStateGroupBase {
 void CAIStateGroup_KrakenTentacleIdle::Update()
 {
     while (!IsStopping()) {
-        if (AIAction_PerformAction(&CCreatureAction_TentacleIdle(PBrain->PCreature)) != 2)
+        if (AIAction_PerformAction(CCreatureAction_TentacleIdle(PBrain->PCreature)) != 2)
             break;
     }
     Terminate();

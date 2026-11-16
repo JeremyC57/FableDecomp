@@ -32,7 +32,7 @@ template <> class CIntelligentPointer<const CThing> : public CBaseIntelligentPoi
 typedef CIntelligentPointer<const CThing> CIntelligentPointerConstThing;
 template <class T> bool __fastcall IS_THING_ALIVE(const T& p);              // Ego_r / FableWin: T = CIntelligentPointer<CThing> 0x004CC340, CIntelligentPointer<const CThing> 0x0069CE20
 struct CTCUserActionPointBase {
-    bool GetFreeActionPoint(CThingCreatureBase* creature, C3DVector* pos, CRightHandedSet* set, long* index);   // 0x007FEDE0
+    bool GetFreeActionPoint(class CThing& user, C3DVector& position, CRightHandedSet& orientation, long& index);   // 0x007FEDE0 (NF35: Ego_r + FableWin ..QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z)
 };
 struct CTCStealable {                           // interface 0x47
     unsigned char _pad[0x10];
@@ -95,7 +95,7 @@ void CAIStateGroup_StealStealableItem::Update()
     reinterpret_cast<CThing*>(PStealableItem.GetPItem())->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &actionPoint);
     C3DVector pos;
     CRightHandedSet set;
-    if (!actionPoint->GetFreeActionPoint(GetCreature(), &pos, &set, &ActionPointIndex)) {
+    if (!actionPoint->GetFreeActionPoint(*(CThing*)(GetCreature()), pos, set, ActionPointIndex)) {
         Terminate();
         return;
     }

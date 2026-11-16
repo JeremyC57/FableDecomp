@@ -1,0 +1,192 @@
+address	change	grade	test	grades_used	entries	note
+0x00416C8A	caller respell (local CDisplayManager model)	RELOCATION_MATCH	PASS	1	009be590 009be610 009be6c0 009be830 009be870 009be8b0	GetBest*TextureFormat take CPixelFormat& (PDB names by address)
+0x0041E3F6	caller respell (local NUISystem::CManager / CDisplayManager models)	RELOCATION_MATCH	PASS	1	0041df10 009be590 009be610 009be6c0 009be830 009be870 009be8b0	EInputType nested in CManager; GetBest*TextureFormat PDB names, CPixelFormat&
+0x0042DDB3	caller respell (local CDisplayManager model)	RELOCATION_MATCH	PASS	1	009be590 009be610 009be6c0 009be830 009be870 009be8b0	GetBest*TextureFormat take CPixelFormat&
+0x005BFF07	caller respell (local CDisplayManager model)	RELOCATION_MATCH	PASS	1	009be590 009be610 009be6c0 009be830 009be870 009be8b0	GetBest*TextureFormat PDB names, CPixelFormat&
+0x0066CB00	caller respell (local CDisplayManager model)	RELOCATION_MATCH	PASS	1	009be870	CPixelFormat&
+0x0048F50C	caller respell (local CWStringParser model -> engine/CWStringParser.h)	RELOCATION_MATCH	PASS	1	00437260 00a0c910	READUNTIL + overlay INIT opt-in; Set -> Init (0x00A0C8E0, catalog CWStringParser::Init)
+0x004B5080	caller respell (local CStringParser model)	RELOCATION_MATCH	PASS	1	009b9ba0	NextItemIs -> SkipPastString
+0x006BA480	caller respell (local CStringParser model)	RELOCATION_MATCH	PASS	1	009b9ba0	NextItemIs -> SkipPastString
+0x00CB8440	caller respell (local CStringParser model)	RELOCATION_MATCH	PASS	1	009b9ba0	NextItemIs -> SkipPastString
+0x00CB8690	caller respell (local CStringParser model)	RELOCATION_MATCH	PASS	1	009b9ba0	NextItemIs -> SkipPastString
+0x004FE2A0	caller respell (local CStringParser model)	RELOCATION_MATCH	PASS	1	009b9ba0	FindKeyword -> SkipPastString
+0x009BAE70	caller respell (local CStringParser model)	RELOCATION_MATCH	PASS	1	009b9ba0	FindKeyword -> SkipPastString
+0x009E5AD0	caller respell (local CStringParser model)	RELOCATION_MATCH	PASS	1	009b9ba0	FindKeyword -> SkipPastString
+0x00A38E50	caller respell (local CStringParser model)	RELOCATION_MATCH	PASS	1	009b9ba0	FindKeyword -> SkipPastString
+0x004BC410	caller respell (local CMeshDataBank model)	RELOCATION_MATCH	PASS	1	00a24270	GetMeshInfo(long) -> PeekMesh(unsigned long) const
+0x004BC4F0	caller respell (local CMeshDataBank model)	RELOCATION_MATCH	PASS	1	00a24270	GetMeshInfo(long) -> PeekMesh(unsigned long) const
+0x004BC670	caller respell (local CMeshDataBank model)	RELOCATION_MATCH	PASS	1	00a24270	GetMeshInfo(long) -> PeekMesh(unsigned long) const
+0x004BC750	caller respell (local CMeshDataBank model)	RELOCATION_MATCH	PASS	1	00a24270	GetMeshInfo(long) -> PeekMesh(unsigned long) const
+0x004BD160	caller respell (local CMeshDataBank model)	RELOCATION_MATCH	PASS	1	00a24270	GetMeshInfo(long) -> PeekMesh(unsigned long) const
+0x004BE170	caller respell (local CMeshDataBank model)	RELOCATION_MATCH	PASS	1	00a24270	GetMeshInfo(long) -> PeekMesh(unsigned long) const
+0x004BE2C0	caller respell (local CMeshDataBank model)	RELOCATION_MATCH	PASS	1	00a24270	GetMeshInfo(long) -> PeekMesh(unsigned long) const
+0x006E0BE0	caller respell (local CCharString model)	RELOCATION_MATCH	PASS	1	0099ee20	ToUpper -> GetAsUpperCase
+0x006E0E80	caller respell (local CCharString model)	RELOCATION_MATCH	PASS	1	0099ee20	ToUpper -> GetAsUpperCase
+0x006E0F10	caller respell (local CCharString model)	RELOCATION_MATCH	PASS	1	0099ee20	ToUpper -> GetAsUpperCase
+0x0098E1E0	caller respell (local CCharString model)	RELOCATION_MATCH	PASS	1	0099ee20	ToUpper -> GetAsUpperCase
+0x00ADD380	caller respell (local CCharString model)	RELOCATION_MATCH	PASS	1	0099ee20	ToUpper -> GetAsUpperCase
+0x00ADD4A0	caller respell (local CCharString model)	RELOCATION_MATCH	PASS	1	0099ee20	ToUpper -> GetAsUpperCase
+0x00AE85B0	caller respell (local CCharString model)	RELOCATION_MATCH	PASS	1	0099ee20	ToUpper -> GetAsUpperCase
+0x00AE85F0	caller respell (local CCharString model)	RELOCATION_MATCH	PASS	1	0099ee20	ToUpper -> GetAsUpperCase
+0x00AE8680	caller respell (local CCharString model)	RELOCATION_MATCH	PASS	1	0099ee20	ToUpper -> GetAsUpperCase
+0x00EC2240	caller respell (local CCharString model)	RELOCATION_MATCH	PASS	1	0099ee20	ToUpper (non-const) -> GetAsUpperCase const
+0x006650E0	caller respell (local CTCLook model)	RELOCATION_MATCH	PASS	1	007534b0	IsPosInViewRange const
+0x00713EE0	caller respell (local CTCLook model)	RELOCATION_MATCH	PASS	1	007534b0	IsPosInViewRange const
+0x00714900	caller respell (local CTCLook model)	RELOCATION_MATCH	PASS	1	007534b0	IsPosInViewRange const
+0x00714CC0	caller respell (local CTCLook model)	RELOCATION_MATCH	PASS	1	007534b0	IsPosInViewRange const
+0x007CABD0	caller respell (local CTCInventoryItem model; local empty enum -> engine/ETCInterfaceType.h)	RELOCATION_MATCH	PASS	1	005d9030	GetInventoryType returns ETCInterfaceType
+0x00849380	caller respell (local CTCInventoryItem model; local empty enum -> engine/ETCInterfaceType.h)	RELOCATION_MATCH	PASS	1	005d9030	GetInventoryType returns ETCInterfaceType
+0x008ED090	caller respell (local CTCInventoryItem model; local empty enum -> engine/ETCInterfaceType.h)	RELOCATION_MATCH	PASS	1	005d9030	GetInventoryType const, returns ETCInterfaceType
+0x009261F0	caller respell (local CTCInventoryItem model; local empty enum -> engine/ETCInterfaceType.h)	RELOCATION_MATCH	PASS	1	005d9030	GetInventoryType const, returns ETCInterfaceType
+0x007BE0F9	caller respell (local CMessageEventManager model)	RELOCATION_MATCH	PASS	1	00687730	AddMessage takes const CMessageEventDef& / const C3DVector&
+0x00832E60	caller respell (local CMessageEventManager model)	RELOCATION_MATCH	PASS	1	00687730	AddMessage takes const CMessageEventDef& / const C3DVector&
+0x00849140	caller respell (local CMessageEventManager model)	RELOCATION_MATCH	PASS	1	00687730	AddMessage takes const CMessageEventDef& / const C3DVector&
+0x008491E0	caller respell (local CMessageEventManager model)	RELOCATION_MATCH	PASS	1	00687730	AddMessage returns CMessageEvent*, takes references
+0x00716B30	caller respell (local CActionTalkBase model)	RELOCATION_MATCH	PASS	1	00715a70	SetUpCamera private
+0x00717710	caller respell (local CActionTalkBase model)	RELOCATION_MATCH	PASS	1	00716b30	SetUpTextAndSpeech private
+0x007446B0	caller respell (local CPlayerGui model)	RELOCATION_MATCH	PASS	1	004378f0 00437900	Add/RemovePerceivingThing take CThing&
+0x00744A00	caller respell (local CPlayerGui model)	RELOCATION_MATCH	PASS	1	004378f0 00437900	Add/RemovePerceivingThing take CThing&
+0x00744A70	caller respell (local CPlayerGui model)	RELOCATION_MATCH	PASS	1	004378f0 00437900	Add/RemovePerceivingThing take CThing&
+0x007A1870	caller respell (local CTCWillLightning model)	RELOCATION_MATCH	PASS	1	007a0630	CLightningBeam nested in CTCWillLightning
+0x007D8E20	caller respell (local CTCTavernGameSpotTheAddition model)	RELOCATION_MATCH	PASS	2	007d7c40	FindTarget private, returns CThingObject*
+0x00A05970	caller respell (local CRenderStateManager model)	RELOCATION_MATCH	PASS	1	00a079b0	CDeviceState nested in CRenderStateManager
+0x00B39900	caller respell (local model)	RELOCATION_MATCH	PASS	1	00b393d0	GetChildInverseTransformStaticMesh takes CMatrix3x4&
+0x00B8B550	caller respell (local model)	RELOCATION_MATCH	PASS	1	00b89080	ReleaseTextures -> FinishWithDynamicTextures (private)
+0x00CB5D80	caller respell (local CScriptInfoManager model)	RELOCATION_MATCH	PASS	1	00cd52d0 00f2a0f0	RegisterDefs / RegisterScripts protected
+0x00E82950	caller respell (local CFisticuffsClubRing model)	RELOCATION_MATCH	PASS	1	00e83230	SetUpRing -> SetRelevantRegion (private)
+0x00B52090	self rename onto engine/CEngineWeatherRenderer.h	RELOCATION_MATCH	PASS	1	00b52090 00b50e50	IsPointInPrecipitation -> ClipBoxToWeatherMaskSphere (ABE, enum); callee GetBoxBoundingSphereRadiusSquared ABEMXZ
+0x0078BED0	self rename onto engine/CTCBerserk.h	MATCH	PASS	3	0078bed0	placeholder C_0078bed0::M -> CTCBerserk::GetWeaponTrailAttack
+0x0078BEE0	self rename onto engine/CTCBerserk.h	MATCH	PASS	3	0078bee0	placeholder C_0078bee0::M -> CTCBerserk::GetWeaponTrailKnockDown
+0x0057B327	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x0057B783	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x0057BB8D	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x0057BC6E	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x006D77C0	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x006D7F20	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x007B0950	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x007D0850	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x007D4410	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x007D5730	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x007D6F70	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x007D8AB0	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x007DAB60	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x007E62D0	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x008D90B0	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity nested enum (empty; retail values cast)
+0x006CF920	caller respell (local CTCHeroOnlineScoreboard model)	RELOCATION_MATCH	PASS	1	0055f3b0	EOnlineScoreboardActivity moved into the class
+0x00595A06	caller respell (local std::map model)	RELOCATION_MATCH	PASS	1	0059b5d7	STLport map<K,V,less<K>,allocator<pair<const K,V> > > template arguments
+0x00595AD9	caller respell (local std::map model)	RELOCATION_MATCH	PASS	1	0059b5d7	STLport map<K,V,less<K>,allocator<pair<const K,V> > > template arguments
+0x0059630E	caller respell (local std::map model)	RELOCATION_MATCH	PASS	1	0059b5d7	STLport map<K,V,less<K>,allocator<pair<const K,V> > > template arguments
+0x00596379	caller respell (local std::map model)	RELOCATION_MATCH	PASS	1	0059b5d7	STLport map<K,V,less<K>,allocator<pair<const K,V> > > template arguments
+0x00596550	caller respell (local std::map model)	RELOCATION_MATCH	PASS	1	0059b5d7	STLport map<K,V,less<K>,allocator<pair<const K,V> > > template arguments
+0x005966F2	caller respell (local std::map model)	RELOCATION_MATCH	PASS	1	0059b5d7	STLport map<K,V,less<K>,allocator<pair<const K,V> > > template arguments
+0x00596763	caller respell (local std::map model)	RELOCATION_MATCH	PASS	1	0059b5d7	STLport map<K,V,less<K>,allocator<pair<const K,V> > > template arguments
+0x00596917	caller respell (local std::map model)	RELOCATION_MATCH	PASS	1	0059b5d7	STLport map<K,V,less<K>,allocator<pair<const K,V> > > template arguments
+0x00597B20	caller respell (local std::map model)	RELOCATION_MATCH	PASS	1	0059b5d7	STLport map<K,V,less<K>,allocator<pair<const K,V> > > template arguments
+0x0059A238	caller respell (local std::map model)	RELOCATION_MATCH	PASS	1	0059b5d7	STLport map<K,V,less<K>,allocator<pair<const K,V> > > template arguments
+0x00596CCE	caller respell (local std::map / std::vector models)	RELOCATION_MATCH	PASS	1	0059b5d7 00412130	STLport map four template arguments; vector<T, allocator<T> >
+0x00599D5C	caller respell (local std::map / std::vector models)	RELOCATION_MATCH	PASS	1	0059b5d7 00412130	STLport map four template arguments; vector<T, allocator<T> >
+0x00951B20	caller respell (local CAIStateGroup_JackDragon / C3DVector models)	RELOCATION_MATCH	PASS	1	00a14040 0094fff0 00950950 00950bb0	RotateXY; SetHeadTurning / WaitForAnimLoop(float) / ChooseHoverOrStrafeState (EDragonState) private
+0x0094FFF0	self rename (access + nested enum result, local model)	RELOCATION_MATCH	PASS	1	0094fff0	QAEJXZ -> AAE?AW4EDragonState@1@XZ; Leaf line added
+0x00950950	self rename (access, local model)	RELOCATION_MATCH	PASS	1	00950950	QAEXM -> AAEXM; Leaf line added
+0x00950BB0	self rename (access, local model)	RELOCATION_MATCH	PASS	1	00950bb0	QAEX_N -> AAEX_N
+0x0042EBB6	self rename (access) + caller respell (local model)	RELOCATION_MATCH	PASS	2	0042ebb6 0042dbd8 0042dd28	Shutdown / ReleaseXMVCode / CleanUpInterfaces private; ReleaseScene_0042dd28 -> CleanUpInterfaces; duplicate Leaf line dropped
+0x0042F50B	caller respell (local model)	RELOCATION_MATCH	PASS	1	0042ebb6	Shutdown private
+0x0042DD28	self rename (access, local model)	RELOCATION_MATCH	PASS	1	0042dd28	CleanUpInterfaces private; Leaf line added
+0x009498B0	caller respell (local model)	RELOCATION_MATCH	PASS	1	009486d0	FreeSeat protected
+0x00B50510	self rename (signature, local model) + caller respell	RELOCATION_MATCH	PASS	2	00b50510 00b4fc40	CColorBufferDepthPackParameters nested, const& params; Leaf line added
+0x0094BAD0	caller respell (member stand-in -> namespace function)	RELOCATION_MATCH	PASS	1	00864580	CThingCreatureBase::StopSpeaking() -> NCreatureAI::StopSpeaking(CThingCreatureBase&)
+0x0094BCA0	caller respell (free stand-in -> namespace function)	RELOCATION_MATCH	PASS	1	008644e0	IsSpeaking(CThing*) -> NCreatureAI::IsSpeaking(const CThingCreatureBase&)
+0x008A9C40	caller respell (local CThingCompare_Nearest stand-in -> engine/CThingCompare_NearestToPos.h)	RELOCATION_MATCH	PASS	2	007a4260	sort comparator type
+0x00658020	caller respell (free stand-in -> namespace function; local C2DVector given its user ctor)	RELOCATION_MATCH	PASS	2	00643d0c	GFAPositionToScreen(C2DVector*, const C2DVector*) -> NPlayerGui::GFAnchorToBottomRight(const C2DVector&) by value
+0x00918880	caller respell (local CThingAICreature model)	RELOCATION_MATCH	PASS	1	00833390	GetSleepTimes(long&, long&) const
+0x0092C4E0	caller respell (local CThingAICreature model)	RELOCATION_MATCH	PASS	1	00833390	GetSleepTimes(long&, long&) const
+0x0092C520	caller respell (local CThingAICreature model)	RELOCATION_MATCH	PASS	1	00833390	GetSleepTimes(long&, long&) const
+0x0092C560	caller respell (local CThingAICreature model)	RELOCATION_MATCH	PASS	1	00833390	GetSleepTimes(long&, long&) const
+0x0092D600	caller respell (local CThingAICreature model)	RELOCATION_MATCH	PASS	1	00833390	GetSleepTimes(long&, long&) const
+0x00957F20	caller respell (local CThingAICreature model)	RELOCATION_MATCH	PASS	1	00833390	GetSleepTimes(long&, long&) const
+0x008A1B10	caller respell (local CTCUserActionPointBase model)	RELOCATION_MATCH	PASS	1	007fede0	GetFreeActionPoint takes CThing& / C3DVector& / CRightHandedSet& / long&
+0x009385F0	caller respell (local CTCUserActionPointBase model)	RELOCATION_MATCH	PASS	1	007fede0	GetFreeActionPoint takes CThing& / C3DVector& / CRightHandedSet& / long&
+0x009445F0	caller respell (local CTCUserActionPointBase model)	RELOCATION_MATCH	PASS	1	007fede0	GetFreeActionPoint takes CThing& / C3DVector& / CRightHandedSet& / long&
+0x00944D10	caller respell (local CTCUserActionPointBase model)	RELOCATION_MATCH	PASS	1	007fede0	GetFreeActionPoint takes CThing& / C3DVector& / CRightHandedSet& / long&
+0x00946850	caller respell (local CTCUserActionPointBase model)	RELOCATION_MATCH	PASS	1	007fede0	GetFreeActionPoint takes CThing& / C3DVector& / CRightHandedSet& / long&
+0x009647C0	caller respell (local CTCUserActionPointBase model)	RELOCATION_MATCH	PASS	1	007fede0	GetFreeActionPoint takes CThing& / C3DVector& / CRightHandedSet& / long&
+0x00980770	caller respell (local CTCUserActionPointBase model)	RELOCATION_MATCH	PASS	1	007fede0	GetFreeActionPoint takes CThing& / C3DVector& / CRightHandedSet& / long&
+0x0090F830	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x0091BD10	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x0091E750	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x009250F0	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x0092D7C0	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x009352C0	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x00947CA0	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x00947D30	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x00948D40	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x00948EF0	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x0094CE60	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x00958000	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x009689C0	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x0097FA00	caller respell (local CThingAICreature / CAIStateGroupBase models)	RELOCATION_MATCH	PASS	2	00833390 0097d8b0	GetSleepTimes(long&, long&) const; AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x009804A0	caller respell (local CAIStateGroupBase model)	RELOCATION_MATCH	PASS	1	0097d8b0	AIAction_PerformAction protected, EAIActionReturn result, const CCreatureActionBase& argument
+0x0097D8B0	self rename (signature, local model)	RELOCATION_MATCH	PASS	1	0097d8b0	protected, EAIActionReturn result, const CCreatureActionBase&; Leaf line added
+0x009D9A30	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00B52250	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00B5A1D0	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00B5C460	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00B86C00	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00B8D780	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00BABB50	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00BAD040	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00BB6E00	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00BBA480	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00BBEAF0	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00BC34D0	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00BC4D90	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00BC6B50	caller respell (local CShaderResource model)	RELOCATION_MATCH	PASS	1	00a5d5f0	GetVertexShader const
+0x00A5D5F0	self rename onto engine/CShaderResource.h + CShaderDataBank.h	RELOCATION_MATCH	PASS	2	00a5d5f0	July free-function stand-in GetPixelShader -> CShaderResource::GetVertexShader(const CCharString&) const
+0x00B52160	self rename onto engine/CEngineWeatherRenderer.h + caller respell	RELOCATION_MATCH	PASS	2	00b52160 00989b00	stand-in WeatherRendererMethods -> CEngineWeatherRenderer (private, long&); five-float setter -> SetUserVertexShaderConstant
+0x005EEA9B	caller respell (local CTCHeroExperience model; engine/EHeroExperienceStatCategory.h)	RELOCATION_MATCH	PASS	1	006d8300	AddTrainableStatExperience(EHeroExperienceStatCategory, long)
+0x008F5C50	caller respell (local CTCHeroExperience model; engine/EHeroExperienceStatCategory.h)	RELOCATION_MATCH	PASS	1	006d8300	AddTrainableStatExperience(EHeroExperienceStatCategory, long)
+0x00820CC0	caller respell (local CHeightMap model)	RELOCATION_MATCH	PASS	1	008f6050	Clear private (friend CMap in the local model so the inline CMap::Clear can call it)
+0x006CFC90	caller respell (local CTCEmoteIcon model)	RELOCATION_MATCH	PASS	1	0071aab0	nested EEmotePriority (retail values cast)
+0x00751BC0	self rename (const, local model)	RELOCATION_MATCH	PASS	1	00751bc0	access/const respell to the PDB spelling
+0x005FB7E0	self rename (protected; CRegion&, local model)	RELOCATION_MATCH	PASS	2	005fb7e0	access/const respell to the PDB spelling
+0x0094D680	self rename (protected, local model)	RELOCATION_MATCH	PASS	1	0094d680	access/const respell to the PDB spelling
+0x0094D9C0	self rename (protected, local model)	RELOCATION_MATCH	PASS	1	0094d9c0	access/const respell to the PDB spelling
+0x0049E8C0	self rename (protected, local model)	RELOCATION_MATCH	PASS	1	0049e8c0	access/const respell to the PDB spelling
+0x00F2A0F0	self rename (protected, local model)	RELOCATION_MATCH	PASS	1	00f2a0f0	access/const respell to the PDB spelling
+0x00B50E50	self rename (private const, local model)	RELOCATION_MATCH	PASS	1	00b50e50	access/const respell to the PDB spelling
+0x006FD4F0	self rename (private, local model)	RELOCATION_MATCH	PASS	1	006fd4f0	access/const respell to the PDB spelling
+0x006A99D0	self rename (protected const, local model)	RELOCATION_MATCH	PASS	1	006a99d0	access/const respell to the PDB spelling
+0x00B61AA0	self rename (private const, local model)	MATCH	PASS	1	00b61aa0	access/const respell to the PDB spelling
+0x00753BA0	caller respell (local CTCLook model)	RELOCATION_MATCH	PASS	1	00751bc0	IsInsideAnimationRange const
+0x00752000	caller respell (local CTCLook model)	RELOCATION_MATCH	PASS	2	00751bc0	ShouldGetExactHeadPos -> IsInsideAnimationRange const
+0x004A0AE0	caller respell (local CWorld model)	RELOCATION_MATCH	PASS	1	0049e7c0 0049e8c0	Start/StopAutoSaveProgress protected
+0x004A0CD0	caller respell (local CWorld model)	RELOCATION_MATCH	PASS	1	0049e7c0 0049e8c0	Start/StopAutoSaveProgress protected
+0x004068D0	self rename (signature, local model)	RELOCATION_MATCH	PASS	1	004068d0	private + reference out parameter; Leaf line set
+0x00409140	self rename (signature, local model)	RELOCATION_MATCH	PASS	1	00409140	private + reference out parameter; Leaf line set
+0x00406D90	self rename (signature, local model)	MATCH	PASS	1	00406d90	private + reference out parameter; Leaf line set
+0x007726B0	self rename (local model)	RELOCATION_MATCH	PASS	2	007726b0	GetStockQuantity -> GetQuantity
+0x004BBE10	self rename (local model)	MATCH	PASS	1	004bbe10	Set -> Init
+0x004B2FE0	self rename (local model)	RELOCATION_MATCH	PASS	1	004b2fe0	AddActivatedQuestName -> OnQuestStartScreenDisplayed
+0x0099EE20	self rename (local model)	RELOCATION_MATCH	PASS	1	0099ee20	ToUpper -> GetAsUpperCase
+0x0097C580	self rename (local model)	RELOCATION_MATCH	PASS	1	0097c580	SpawnBabies -> UpdatePhase2
+0x006E8300	self rename (local model)	RELOCATION_MATCH	PASS	1	006e8300	ResetDialogue -> Init
+0x00A10E90	self rename (local model)	RELOCATION_MATCH	PASS	1	00a10e90	AttachTarget -> AttachZBuffer
+0x00AD92E0	self signature respell (local model)	RELOCATION_MATCH	PASS	1	00ad92e0	private, unsigned long& out-count (was a pointer); landed caller AddBlocks 0x00AD9F10 already binds the claim
+0x00687A90	self access/const respell (local model)	RELOCATION_MATCH	PASS	1	00687a90	protected const; body tests the pressed codes, its Released twin 0x00687B30 the codes +1; no landed caller
+0x00B38E30	self signature respell (local model)	RELOCATION_MATCH	PASS	1	00b38e30	const, CMatrix3x4& (was a pointer); Ego_r 0x009D7B90, FableWin 0x02D97D70; landed caller 0x00B399A0 already binds the claim; Leaf line added
+0x00B393D0	self signature respell (local model)	RELOCATION_MATCH	PASS	1	00b393d0	CMatrix3x4& (was a pointer); Ego_r 0x009D8310, FableWin 0x02D97A40; landed caller 0x00B39900 respelled in this pass
+0x009BE610	self signature respell (local model)	RELOCATION_MATCH	PASS	1	009be610	unsigned long bit depth (was long); landed callers 0x00416C8A 0x0041E3F6 0x0042DDB3 0x005BFF07 respelled in this pass, 0x00B2CB40 already binds the claim
+0x009BE590	self signature respell (local model)	RELOCATION_MATCH	PASS	1	009be590	unsigned long bit depth (was long); landed callers 0x00416C8A 0x0041E3F6 0x0042DDB3 0x005BFF07 respelled in this pass, 0x00B2CB40 already binds the claim; Leaf 
+0x009BE6C0	self signature respell (local model)	RELOCATION_MATCH	PASS	1	009be6c0	unsigned long bit depth (was long); landed callers 0x00416C8A 0x0041E3F6 0x0042DDB3 0x005BFF07 respelled in this pass, 0x00B2CB40 0x009A3640 0x00B3CB30 already 
+0x0041DF10	self signature respell (local model)	RELOCATION_MATCH	PASS	1	0041df10	EInputType nested in CManager (as engine/NUISystem_CManager.h declares it); landed caller 0x004A6E30 already binds the claim, 0x0041E3F6 respelled in this pass;
+0x00DDACB0	self signature respell, moved onto engine/CLevelScriptBase.h	RELOCATION_MATCH	PASS	1	00ddacb0	Alloc takes CGameScriptInterfaceBase&; local CScriptBase/CLevelScriptBase model replaced by the shared header
+0x00DFA020	self signature respell, moved onto engine/CLevelScriptBase.h	RELOCATION_MATCH	PASS	1	00dfa020	Alloc takes CGameScriptInterfaceBase&; local CScriptBase/CLevelScriptBase model replaced by the shared header
+0x00E0AF60	self signature respell, moved onto engine/CLevelScriptBase.h	RELOCATION_MATCH	PASS	1	00e0af60	Alloc takes CGameScriptInterfaceBase&; local CScriptBase/CLevelScriptBase model replaced by the shared header
+0x00E0E760	self signature respell, moved onto engine/CLevelScriptBase.h	RELOCATION_MATCH	PASS	1	00e0e760	Alloc takes CGameScriptInterfaceBase&; local CScriptBase/CLevelScriptBase model replaced by the shared header
+0x00E81EB0	self signature respell, moved onto engine/CLevelScriptBase.h	RELOCATION_MATCH	PASS	1	00e81eb0	Alloc takes CGameScriptInterfaceBase&; local CScriptBase/CLevelScriptBase model replaced by the shared header
+0x00E5FC70	self rename (local model)	RELOCATION_MATCH	PASS	1	00e5fc70	FableWin.pdb 0x039A1B20 (Ego_r inlines it; it is the only long() member of CBodyGuard); both landed callers 0x00E5FB80 and 0x00E621F0 already bind it; body returns the ch
+0x004CA230	caller respell (local CStringParser model) + self rename	RELOCATION_MATCH	PASS	2	009b9ba0 004ca230	Ego_r 0x004CC640 + FableWin 0x01CF0320 (protected); the load twin of the landed SaveSerialiseCreatableTCs 0x004C72D0; landed caller 0x004CAA00 already binds it
+0x009DDA50	self signature respell (local model)	RELOCATION_MATCH	PASS	1	009dda50	Ego_r 0x00B31770 + FableWin 0x030E2A80: the colours parameter is an array (const CRGBColour colours[]); landed caller 0x0061AD60 already binds it
+0x00B2B790	self signature respell (local model)	RELOCATION_MATCH	PASS	1	00b2b790	both PDB name sets: private, returns const CGraphicInfoFrame*; landed caller 0x00B2D330 already binds it; Leaf line added
+0x0094DC40	self signature respell (local model)	RELOCATION_MATCH	PASS	1	0094dc40	both PDB name sets: protected, returns EAIActionReturn (MS forward enum); landed caller 0x0094E7B0 already binds it; Leaf line added
+0x0097F690	self signature respell (local model)	RELOCATION_MATCH	PASS	1	0097f690	both PDB name sets: protected, returns EAIActionReturn; landed caller 0x00915B60 already binds it

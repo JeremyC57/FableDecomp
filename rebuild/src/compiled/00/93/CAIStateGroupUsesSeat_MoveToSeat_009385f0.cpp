@@ -33,7 +33,7 @@ struct CIntelligentPointerThingObject : CBaseIntelligentPointer {  // CIntellige
     virtual void v00();
 };
 struct CTCUserActionPointBase {                 // interface 0x2d
-    bool GetFreeActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
+    bool GetFreeActionPoint(CThing& user, C3DVector& position, CRightHandedSet& orientation, long& index);   // 0x007FEDE0 (NF35: Ego_r + FableWin ..QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z)
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -78,7 +78,7 @@ bool CAIStateGroup_UsesSeat::MoveToSeat(long movement)
     {
         CTCUserActionPointBase* point;
         ((CThing*)PSeat.GetPItem())->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &point);
-        if (!point->GetFreeActionPoint(GetCreature(), &SeatPos, &orientation, &SeatPosIndex))
+        if (!point->GetFreeActionPoint(*(CThing*)(GetCreature()), SeatPos, orientation, SeatPosIndex))
             return false;
     }
     GotSeatPos = true;

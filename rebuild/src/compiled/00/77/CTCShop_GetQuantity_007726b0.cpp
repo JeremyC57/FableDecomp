@@ -1,5 +1,5 @@
-// CTCShop::GetStockQuantity(long item) -- look the item up in the Stock map and return its Quantity rounded up to a whole unit (0 when the shop has no such item)
-// Leaf: GetStockQuantity
+// CTCShop::GetQuantity(long item) const -- look the item up in the Stock map and return its Quantity rounded up to a whole unit (0 when the shop has no such item)
+// Leaf: GetQuantity
 // Retail-asm: 0x007726E7..0x007726F6 `fld [ebp-0Ch] ; fadd [ebp-8] ; fistp dword ptr [ebp+8] ; fild [ebp+8] ; fsub [ebp-4] ; fstp [ebp-10h]` -- the engine's inline-assembly ceiling helper expanded in place (the member copied into the by-value parameter word, 0.5f / 1.0f stored as frame constants, a bare dword fistp into a long homed in the dead `item` argument slot). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si: rasm1 probe family (a)); the fix-up `mov eax,value ; cmp ; jne ; dec dword ptr [ebp+8]` is part of the same block (10 instructions, one jne: rasm1 family (b)), the result read back by C++.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007726B0, 101 bytes (`ret 4`, ebp frame from the inline asm). Twin of 0x00772720
@@ -29,13 +29,13 @@ struct CStockMap {                                   // STLport map<long, CShopI
         iterator() { }
         iterator(SStockNode* node) : m_pNode(node) { }
     };
-    iterator find(const long& key);                  // 0x00777170 (the same-TU instantiation; the landed 0x00772790 model)
+    iterator find(const long& key) const;                // 0x00777170 (the same-TU instantiation; the landed 0x00772790 model)
 };
 // Same-TU body of the STLport map::find instantiation 0x00777170 (the landed 0x00772790 model): lower_bound walk from the
 // root (header +4; left +8, right +0xc) reading the key through its const reference, then the end() test. With the body in
 // the TU VC7.1 knows the key's address does not escape, so the dead `item` slot and the iterator word are reused by the helper.
 #pragma auto_inline(off)
-__declspec(noinline) CStockMap::iterator CStockMap::find(const long& key)
+__declspec(noinline) CStockMap::iterator CStockMap::find(const long& key) const
 {
     SStockNode* y = m_pHead;
     SStockNode* x = *(SStockNode**)((unsigned char*)m_pHead + 4);
@@ -55,7 +55,7 @@ class CTCShop {
 public:
     unsigned char _pad00[0x34];
     CStockMap     Stock;                             // +0x34
-    long GetStockQuantity(long item);                // 0x007726B0
+    long GetQuantity(long item) const;              // 0x007726B0
     long GetMaxStock(long item);                     // 0x00772720
 };
 // the engine's inline-assembly FPU ceiling helper (0x004FA9A0 is its standalone copy): VC7.1 expands the __forceinline body in
@@ -63,7 +63,7 @@ public:
 // The whole 10-instruction block is asm (the bit compare and the memory decrement included: rasm1 family (b)); the result
 // is read back by C++ after the block.
 #include "engine/GFFloatToLongCeil.h"
-long CTCShop::GetStockQuantity(long item)
+long CTCShop::GetQuantity(long item) const
 {
     CStockMap::iterator it = Stock.find(item);
     if (it.m_pNode != Stock.m_pHead)

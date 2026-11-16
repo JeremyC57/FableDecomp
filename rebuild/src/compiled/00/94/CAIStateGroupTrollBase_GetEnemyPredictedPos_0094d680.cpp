@@ -1,3 +1,4 @@
+// Leaf: ?GetEnemyPredictedPos@CAIStateGroup_TrollBase@@IAE?AVC3DVector@@XZ
 // CAIStateGroup_TrollBase::GetEnemyPredictedPos() -- predict where the enemy will be when a thrown rock lands: its
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // position plus ten times the physics displacement scaled by the troll def's lead time (0 without the sub-def).
@@ -268,7 +269,9 @@ inline CDefClassBase* GetThingDef(CThing* thing) { return *(CDefClassBase**)((un
 
 struct CAIStateGroup_TrollBase : CAIStateGroupBase {
     CBaseIntelligentPointer PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
-    C3DVector GetEnemyPredictedPos();
+protected:
+    C3DVector GetEnemyPredictedPos();   // NF35: Ego_r + FableWin access/const spelling (see the Leaf line)
+public:
 };
 
 C3DVector CAIStateGroup_TrollBase::GetEnemyPredictedPos()

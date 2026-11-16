@@ -36,7 +36,7 @@ class C3DMeshInfo { public:
     CCountedPointer<const C3DMeshStats> GetMeshStats() const;   // 0x00A25530
 };
 class CMeshDataBank { public:
-    const C3DMeshInfo* GetMeshInfo(long index);             // 0x00A24270
+    const C3DMeshInfo* PeekMesh(unsigned long index) const;             // 0x00A24270 NF35: Ego_r + FableWin ?PeekMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z (was GetMeshInfo)
 };
 extern CMeshDataBank* g_pMeshDataBank;                      // 0x013B8A04
 
@@ -73,7 +73,7 @@ const CPrimitive* CTCGraphicAppearance::GetFirstPrimitiveWithDummyObject(const C
     for (CPrimitiveListNode* node = Primitives->_M_next; node != Primitives; node = node->_M_next) {
         const CPrimitive& primitive = node->_M_data;
         if ((primitive.Type == PRIMITIVE_TYPE_MESH_1 || primitive.Type == PRIMITIVE_TYPE_MESH_2) && primitive.BankIndex != 0) {
-            const C3DMeshInfo* meshInfo = g_pMeshDataBank->GetMeshInfo(primitive.BankIndex);
+            const C3DMeshInfo* meshInfo = g_pMeshDataBank->PeekMesh(primitive.BankIndex);
             if (meshInfo->GetMeshStats()->HasDummyObject(key))
                 return &primitive;
         }

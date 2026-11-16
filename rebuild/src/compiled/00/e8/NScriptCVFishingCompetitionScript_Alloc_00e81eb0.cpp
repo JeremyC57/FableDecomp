@@ -1,5 +1,5 @@
-// NScript::CV_FishingCompetitionScript::Alloc(CScriptDataBase* data, CGameScriptInterface& game) -- script factory: `new CV_FishingCompetitionScript(data, game)` with the constructor inlined (registered at 0x00CD88CB as "S_VFC" / "V_FishingCompetition")
-// Leaf: ?Alloc@CV_FishingCompetitionScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterface@@@Z
+// NScript::CV_FishingCompetitionScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- script factory: `new CV_FishingCompetitionScript(data, game)` with the constructor inlined (registered at 0x00CD88CB as "S_VFC" / "V_FishingCompetition")
+// Leaf: ?Alloc@CV_FishingCompetitionScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E81EB0, 86 bytes, static __fastcall (data in ecx, game in edx). PDB:
 //   ?Alloc@CV_FishingCompetitionScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z.
 // Callees: operator new 0x00BFEA1A (0x80 bytes), CScriptBase::CScriptBase 0x00CB8110, CCharString::CCharString() 0x0099E4B0. Vtable 0x012EA478.
@@ -13,18 +13,9 @@
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-class CScriptDataBase;
-class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];                          // +0x04..+0x3f
-    CScriptBase();                                      // 0x00CB8110
-};
-template <class TData>
-struct __declspec(novtable) CLevelScriptBase : CScriptBase {
-    CGameScriptInterface* Game;                         // +0x40
-    TData*                MasterScriptData;             // +0x44
-    CLevelScriptBase(CScriptDataBase* data, CGameScriptInterface& game) : CScriptBase(), Game(&game), MasterScriptData((TData*)data) { }
-};
+// NF35: moved onto engine/CLevelScriptBase.h (+ engine/CScriptBase.h), as the landed sibling 0x00D68EA0 is; Alloc takes
+//   CGameScriptInterfaceBase& (Ego_r + FableWin).
+#include "engine/CLevelScriptBase.h"
 class CCharString { public: void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
 template <class T> struct allocator {                  // STLport allocator<T>: empty
     allocator() { }
@@ -65,11 +56,11 @@ public:
     float BiggestFish;                                  // +0x6c
     float BiggestCompetitorFish;                        // +0x70
     vector<long> SizeComment;                           // +0x74
-    CV_FishingCompetitionScript(CScriptDataBase* data, CGameScriptInterface& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game) { }
+    CV_FishingCompetitionScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game) { }
     virtual ~CV_FishingCompetitionScript();
-    static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterface& game);
+    static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
-CScriptBase* __fastcall CV_FishingCompetitionScript::Alloc(CScriptDataBase* data, CGameScriptInterface& game)
+CScriptBase* __fastcall CV_FishingCompetitionScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
 {
     return new CV_FishingCompetitionScript(data, game);
 }

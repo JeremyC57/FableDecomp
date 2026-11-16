@@ -55,7 +55,7 @@ struct CTCUserActionPointBase {
 public:
     void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
 public:
-    bool GetFreeActionPoint(CThing_Retail* user, C3DVector* position, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
+    bool GetFreeActionPoint(class CThing& user, C3DVector& position, CRightHandedSet& orientation, long& index);   // 0x007FEDE0 (NF35: Ego_r + FableWin ..QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z)
 };
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -66,7 +66,7 @@ FABLE_FORCEINLINE bool ClaimFreeActionPoint(CTCUserActionPointBase* points, cons
 {
     CRightHandedSet axes;
     long index;
-    if (points->GetFreeActionPoint(((CThing_Retail*)user.GetPThing()), &position, &axes, &index)) {
+    if (points->GetFreeActionPoint(*(CThing*)user.GetPThing(), position, axes, index)) {
         orientation = axes.Forward;
         ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
         return true;

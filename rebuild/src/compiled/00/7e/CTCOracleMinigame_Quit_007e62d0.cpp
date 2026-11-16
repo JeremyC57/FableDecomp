@@ -36,7 +36,8 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThingPlayerCreature : public CThing { };
 class CTCHeroOnlineScoreboard { public:
-    void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
+    enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
+    void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
 class CPlayer { public:
     EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                      // 0x00633BE0
@@ -156,5 +157,5 @@ void CTCOracleMinigame::Quit()
     CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCHeroOnlineScoreboard* scoreboard;
     hero->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
-    scoreboard->UpdateScoreForActivity(0x15, (float)Level, false);
+    scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)0x15, (float)Level, false);
 }

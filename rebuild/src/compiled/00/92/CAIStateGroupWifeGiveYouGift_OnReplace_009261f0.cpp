@@ -30,7 +30,7 @@ extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"                 // NF35: the shared enum (was a local empty enum)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
@@ -91,7 +91,7 @@ class CThingObject { public:
 };
 namespace NInventory { class CTCInventoryBase; }
 class CTCInventoryItem { public:
-    long GetInventoryType();                            // 0x005D9030
+    ETCInterfaceType GetInventoryType() const;   // NF35: Ego_r + FableWin ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ                            // 0x005D9030
     bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
     CWideString GetDescription();                       // 0x005D9070
 };

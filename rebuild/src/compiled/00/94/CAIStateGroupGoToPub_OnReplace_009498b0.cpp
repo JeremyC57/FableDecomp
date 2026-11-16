@@ -65,7 +65,9 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     long BarActionPointIndex;                   // +0x74
     unsigned char _pad78[0xa0 - 0x78];          // BarPos, BarRHSet, BarIndex
     bool HandsOffMode;                          // +0xa0
-    void FreeSeat();                            // 0x009486D0
+protected:
+    void FreeSeat();                            // 0x009486D0 (NF35: Ego_r + FableWin protected, IAE)
+public:
     void FreeBarPoint();                        // 0x00949320
     virtual void OnReplace();
 };

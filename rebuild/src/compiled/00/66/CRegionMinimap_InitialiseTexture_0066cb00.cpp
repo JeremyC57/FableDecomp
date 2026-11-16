@@ -28,7 +28,7 @@ class CPixelFormat { public:
     CPixelFormat() : FormatIndex(-1) { }
 };
 class CDisplayManager { public:
-    bool GetBestCompressedAlphaTextureFormat(unsigned long flags, CPixelFormat* format);   // 0x009BE870
+    bool GetBestCompressedAlphaTextureFormat(unsigned long flags, CPixelFormat& format);   // 0x009BE870
 };
 class CSystemManager { public:
     unsigned char    _pad00[0x60];
@@ -70,7 +70,7 @@ void CRegionMinimap_Methods::InitialiseTexture()
     size.Y = RegionMinimapSize;
     CPixelFormat format;
     CSystemManager* system = GFGetSystemManager();
-    system->PDisplayManager->GetBestCompressedAlphaTextureFormat(0x10, &format);
+    system->PDisplayManager->GetBestCompressedAlphaTextureFormat(0x10, format);
     texture.Initialise(&size, 1, &format, 0, 1, false, false);
     C2DBoxI box(0, 0, size.X, size.Y);
     texture.GetSurface(0).CopyFromSurface(&box, &Surface(), &box, 1);

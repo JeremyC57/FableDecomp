@@ -32,7 +32,7 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 }
 
 class CMessageEventManager { public:
-    void* AddMessage(CMessageEventDef* def, const C3DVector* position, CThing* sender, CThing* receiver, long extra);   // 0x00687730
+    class CMessageEvent* AddMessage(const CMessageEventDef& def, const C3DVector& position, CThing* sender, CThing* receiver, long extra);   // 0x00687730  // NF35: Ego_r + FableWin ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z
 };
 class CWorld { public:
     unsigned char _pad0[0x60];
@@ -56,7 +56,7 @@ class CCreatureAction_SendMessage : public CCreatureActionBase { public:
     void PostMessage(CMessageEventDef* def, CThing* sender, CThing* receiver)
     {
         CWorld* world = GetWorld();
-        world->MessageEventManager->AddMessage(def, &Position, sender, receiver, Extra);
+        world->MessageEventManager->AddMessage(*def, Position, sender, receiver, Extra);
     }
 };
 

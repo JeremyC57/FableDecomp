@@ -16,8 +16,10 @@
 //   ahead of the argument; the layer is a named local defaulting to 0x44.
 #include "fable_compiler.h"
 #include <stdlib.h>
-class C2DVector { public: float X, Y; };
-void __fastcall GFAPositionToScreen(C2DVector* out, const C2DVector* in);   // 0x00643D0C
+class C2DVector { public: float X, Y; C2DVector() { } };   // NF35: user default ctor (retail C2DVector is a class: GFAnchorToBottomRight returns it through a hidden ecx pointer)
+namespace NPlayerGui {
+C2DVector __fastcall GFAnchorToBottomRight(const C2DVector& position);   // 0x00643D0C (NF35: Ego_r + FableWin ?GFAnchorToBottomRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z; was GFAPositionToScreen)
+}
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -126,8 +128,7 @@ void CDrawAbilityButtonsPC::DrawExpressionButton(CEnginePrimitivePrepareInfo* in
                 if (index < (count + 2) / Columns * Columns && (unsigned int)index < expressions->size()) {
                     const CPlayerGuiDef* def = (&CPlayerGui::PeekGuiDef());
                     long button = def->AbilityButtons.size() + index + 7;
-                    C2DVector pos;
-                    GFAPositionToScreen(&pos, &def->ExpressionOrigin);
+                    C2DVector pos = NPlayerGui::GFAnchorToBottomRight(def->ExpressionOrigin);
                     pos.X += def->ExpressionButtons.Start[types[slot]].Position.X;
                     pos.Y += def->ExpressionButtons.Start[types[0]].Position.Y;
                     CDefPointer<const CDefClassBase> icon;

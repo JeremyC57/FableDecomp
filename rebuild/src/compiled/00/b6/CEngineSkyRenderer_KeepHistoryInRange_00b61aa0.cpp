@@ -1,3 +1,4 @@
+// Leaf: ?KeepHistoryInRange@CEngineSkyRenderer@@ABEXPAVC2DVector@@M@Z
 // CEngineSkyRenderer::KeepHistoryInRange(C2DVector*, float) -- wrap a two-entry 2D scroll history back into [-range, range]: when the current X (or Y) has run past +range or -range, shift both history entries' X (or Y) by the range
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B61AA0, length 143 bytes (+ int3 padding). No callees.
 // The body is byte-identical to 0x00BE9530 (the same inline helper compiled into a second sky/cloud TU).
@@ -10,10 +11,12 @@ class C2DVector { public:
 };
 
 class CEngineSkyRenderer { public:
-    void KeepHistoryInRange(C2DVector* history, float range);
+private:
+    void KeepHistoryInRange(C2DVector* history, float range) const;   // NF35: Ego_r + FableWin access/const spelling (see the Leaf line)
+public:
 };
 
-void CEngineSkyRenderer::KeepHistoryInRange(C2DVector* history, float range)
+void CEngineSkyRenderer::KeepHistoryInRange(C2DVector* history, float range) const
 {
     if (history[0].X > range) {
         history[0].X -= range;

@@ -82,7 +82,7 @@ class CShaderResource { public:
     void OpenShaderBank(const CShaderDataBank* bank);                       // 0x00A5D7C0
     void SetVertexShaderDeclaration(const _D3DVERTEXELEMENT9* declaration); // 0x00A5D4E0
     void SetVertexFormat(EVertexType format);                               // 0x00A5D4F0
-    CVertexShader GetVertexShader(const CCharString& name);                 // 0x00A5D5F0
+    CVertexShader GetVertexShader(const CCharString& name) const;// 0x00A5D5F0  // NF35: Ego_r + FableWin ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z (const)
 };
 typedef void (__fastcall *CCPPointerDeleteFunc)(void*);
 class CCPPointerInfo { public:

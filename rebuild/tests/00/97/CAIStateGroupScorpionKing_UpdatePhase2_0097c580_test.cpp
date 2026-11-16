@@ -1,4 +1,4 @@
-// Behaviour test for 0x0097C580 CAIStateGroup_ScorpionKing::SpawnBabies: the summon action is built against the creature
+// Behaviour test for 0x0097C580 CAIStateGroup_ScorpionKing::UpdatePhase2: the summon action is built against the creature
 // and its enemy, performed without waiting, destroyed straight after the call, and the state terminates when it is no
 // longer runnable. (The source's `&Temporary(...)` is written as a scoped local here: plain C++ has no address of a
 // temporary; the destruction still happens before IsStillRunnable.)
@@ -49,10 +49,10 @@ public:
     CBaseIntelligentPointer PEnemy;
     bool Runnable;
     bool IsStillRunnable() { Log(LOG_RUNNABLE); return Runnable; }
-    void SpawnBabies();
+    void UpdatePhase2();
 };
 
-void CAIStateGroup_ScorpionKing::SpawnBabies()
+void CAIStateGroup_ScorpionKing::UpdatePhase2()
 {
     CThingCreatureBase* creature = GetCreature();
     {
@@ -71,7 +71,7 @@ int main()
     group.PBrain = &brain; group.PEnemy.m_pItem = &hero; group.LastWait = true;
 
     group.Runnable = true;
-    group.SpawnBabies();
+    group.UpdatePhase2();
     if (g_logCount != 4 || g_log[0] != LOG_BUILT || g_log[1] != LOG_PERFORMED || g_log[2] != LOG_DESTROYED ||
         g_log[3] != LOG_RUNNABLE || group.LastWait || group.LastCreature != &king || group.LastEnemy != &hero) {
         std::printf("0097c580_TEST FAIL\n");
@@ -79,7 +79,7 @@ int main()
     }
     g_logCount = 0;
     group.Runnable = false;
-    group.SpawnBabies();
+    group.UpdatePhase2();
     if (g_logCount != 5 || g_log[3] != LOG_RUNNABLE || g_log[4] != LOG_TERMINATED) {
         std::printf("0097c580_TEST FAIL\n");
         return 1;

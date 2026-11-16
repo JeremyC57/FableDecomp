@@ -1,4 +1,4 @@
-// CVertexGroupBlockOptimiser::InsertBlock(unsigned long index, unsigned long* added) -- take input block `index` off the remaining list and merge its groups into the current block, counting the groups that were new
+// CVertexGroupBlockOptimiser::InsertBlock(unsigned long index, unsigned long& added) (private) -- take input block `index` off the remaining list and merge its groups into the current block, counting the groups that were new
 // Leaf: ?InsertBlock@CVertexGroupBlockOptimiser@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD92E0, length 153 bytes (padded to 160), `ret 8`.
 // Callees: CVertexGroupBlock::AddGroup(unsigned long) @ 0x00AD91F0 (catalog "AnimBlockGroup_AddBlock").
@@ -69,19 +69,21 @@ struct CVertexGroupBlockOptimiser {                // retail layout (PDB 128 byt
     CRetailVector<CVertexGroupBlock> CurrentBlockSegmentGroups;   // +0x24
     CRetailVector<long>       CurrentBlockSegmentIndices;         // +0x30
     unsigned long             CurrentBlockSegmentCount;           // +0x3c
-    void InsertBlock(unsigned long index, unsigned long* added);
+private:
+    void InsertBlock(unsigned long index, unsigned long& added);
+public:
     void PaintCurrentBlockSegment(unsigned long index);
 };
-void CVertexGroupBlockOptimiser::InsertBlock(unsigned long index, unsigned long* added)
+void CVertexGroupBlockOptimiser::InsertBlock(unsigned long index, unsigned long& added)
 {
     RemainingBlocks[index] = false;
-    *added = 0;
+    added = 0;
     const CVertexGroupBlock& block = InputList[index];
     for (unsigned long i = 0; i < block.Groups.size(); ++i) {
         unsigned long group = block.Groups[i];
         if (CurrentBlock->GroupToIndexMap.find(group) == CurrentBlock->GroupToIndexMap.Header) {
             CurrentBlock->AddGroup(group);
-            ++*added;
+            ++added;
         }
     }
 }

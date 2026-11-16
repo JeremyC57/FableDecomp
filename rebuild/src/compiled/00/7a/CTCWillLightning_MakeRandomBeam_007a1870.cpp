@@ -136,33 +136,6 @@ struct CDefPointer {
     CSpecialAbilitiesLightningSpellDef* operator->() const { return Object; }
 };
 
-struct CLightningBeam;
-typedef CRetailList<CCountedPointer<CLightningBeam> > CBeamList;
-struct CLightningBeam {
-    long State;                                 // +0x00
-    CIntelligentPointer<CThing> ParticleHandle;     // +0x04
-    CIntelligentPointer<CThing> Home;               // +0x0c
-    CIntelligentPointer<CThing> Target;             // +0x14
-    C3DVector Start, End, Destination;          // +0x1c
-    float DamagePerHit, Time, TimeBase;         // +0x40
-    CBeamList Children;                         // +0x4c
-    bool Temporary;                             // +0x50
-    bool MainBeam;                              // +0x51
-    bool RightHand;                             // +0x52
-    float ActivationTime;                       // +0x54
-    float DeactivationTime;                     // +0x58
-    float Life;                                 // +0x5c
-    float DecapitationTime;                     // +0x60
-    float DecapitationClock;                    // +0x64
-    float Delay;                                // +0x68
-    long OnhitEveryFrame;                       // +0x6c
-    long FrameCount;                            // +0x70
-    CDefPointer PDef;                           // +0x74
-    bool SuccessfulHit;                         // +0x78
-    CLightningBeam(CThing* home, CThing* target);   // 0x007A0630
-    void Activate();                            // 0x007A1380
-};
-
 class CTCBase
 {
 public:
@@ -172,6 +145,33 @@ protected:
 };
 
 class CTCWillLightning : public CTCBase { public:
+    // NF35 (2026-11-16): CLightningBeam nested in CTCWillLightning (Ego_r + FableWin ??0CLightningBeam@CTCWillLightning@@QAE@PAVCThing@@0@Z).
+    class CLightningBeam;
+    typedef CRetailList<CCountedPointer<CLightningBeam> > CBeamList;
+    class CLightningBeam { public:
+        long State;                                 // +0x00
+        CIntelligentPointer<CThing> ParticleHandle;     // +0x04
+        CIntelligentPointer<CThing> Home;               // +0x0c
+        CIntelligentPointer<CThing> Target;             // +0x14
+        C3DVector Start, End, Destination;          // +0x1c
+        float DamagePerHit, Time, TimeBase;         // +0x40
+        CBeamList Children;                         // +0x4c
+        bool Temporary;                             // +0x50
+        bool MainBeam;                              // +0x51
+        bool RightHand;                             // +0x52
+        float ActivationTime;                       // +0x54
+        float DeactivationTime;                     // +0x58
+        float Life;                                 // +0x5c
+        float DecapitationTime;                     // +0x60
+        float DecapitationClock;                    // +0x64
+        float Delay;                                // +0x68
+        long OnhitEveryFrame;                       // +0x6c
+        long FrameCount;                            // +0x70
+        CDefPointer PDef;                           // +0x74
+        bool SuccessfulHit;                         // +0x78
+        CLightningBeam(CThing* home, CThing* target);   // 0x007A0630
+        void Activate();                            // 0x007A1380
+    };
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x0c - 0x08];
     long  WeaponState;                          // +0x0c

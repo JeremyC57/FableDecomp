@@ -67,7 +67,7 @@ C3DMeshObject::~C3DMeshObject()
 
 class CMeshDataBank {
 public:
-    const C3DMeshInfo* GetMeshInfo(long index);             // 0x00A24270
+    const C3DMeshInfo* PeekMesh(unsigned long index) const;             // 0x00A24270 NF35: Ego_r + FableWin ?PeekMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z (was GetMeshInfo)
 };
 extern CMeshDataBank* g_pMeshDataBank;                      // 0x013B8A04
 
@@ -106,7 +106,7 @@ void CTCGraphicAppearance::GetMeshObject(const CMeshInfo& info, float interpolat
 {
     const CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
     C3DVector position = GetRenderPositionForThing(*ParentThing, interpolation);
-    const C3DMeshInfo* meshInfo = g_pMeshDataBank->GetMeshInfo(info.Index);
+    const C3DMeshInfo* meshInfo = g_pMeshDataBank->PeekMesh(info.Index);
     if (interpolation == 1.0f)
         out = C3DMeshObject(meshInfo, position, physics->GetRHSet(), info.SizeX * Scale * 0.01f);
     else

@@ -13,7 +13,7 @@ class CSurface { public:
 class CRenderTarget { public:
     CSurface m_colour;
     CSurface m_depth;
-    void AttachTarget(const CSurface& target)
+    void AttachZBuffer(const CSurface& target)
     {
         if (m_depth.IsInitialised())
             m_depth.Uninitialise();
@@ -24,10 +24,10 @@ class CRenderTarget { public:
 int main()
 {
     CRenderTarget t; int a = 1, b = 2; CSurface s; s.m_pSurface = &a; s.m_format = 77;
-    t.AttachTarget(s);
+    t.AttachZBuffer(s);
     if (g_uninit != 0 || g_assign != 1 || t.m_depth.m_pSurface != &a || t.m_depth.m_format != 77 || t.m_colour.m_pSurface)
     { std::printf("00a10e90_TEST FAIL\n"); return 1; }
-    s.m_pSurface = &b; t.AttachTarget(s);
+    s.m_pSurface = &b; t.AttachZBuffer(s);
     if (g_uninit != 1 || g_assign != 2 || t.m_depth.m_pSurface != &b) { std::printf("00a10e90_TEST FAIL\n"); return 1; }
     std::printf("00a10e90_TEST PASS\n");
     return 0;

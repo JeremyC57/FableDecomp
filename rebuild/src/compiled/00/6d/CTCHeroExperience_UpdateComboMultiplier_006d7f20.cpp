@@ -32,7 +32,8 @@ class CTCCombat { public: void SetMeleeFlourishValid(bool valid); };   // 0x0073
 class CTCHeroStats : public CTCHeroStatsDonor {
  public:
 };
-class CTCHeroOnlineScoreboard { public: void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter); };   // 0x0055F3B0
+class CTCHeroOnlineScoreboard { public: enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
+    void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool onlyIfBetter); };   // 0x0055F3B0
 
 struct CComboMultiplierSounds { unsigned char _map[0xc]; };   // map<long, CDefString>
 
@@ -99,7 +100,7 @@ void CTCHeroExperience::UpdateComboMultiplier(bool)
     }
     CTCHeroOnlineScoreboard* scoreboard;
     ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
-    scoreboard->UpdateScoreForActivity(2, (float)multiplier, false);
+    scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)2, (float)multiplier, false);
     long fallback = GetExperienceFallbackMultiplier();
     if (fallback > GetExperienceFallbackMultiplierForMultiplier(lastMultiplier))
         PlayCombatMultiplierSound(ParentThing, PDef->ComboMultiplierLock, fallback);

@@ -75,7 +75,7 @@ class CPixelShader : public CShaderBase { public:                // vtable 0x012
 };
 
 class CShaderResource { public:
-    CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
+    CVertexShader GetVertexShader(const CCharString& name) const;// 0x00A5D5F0  // NF35: Ego_r + FableWin ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z (const)
     CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
 };
 class CPixelFormat { public:

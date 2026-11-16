@@ -1,4 +1,5 @@
-// CEngineInternalAttachedPrimitive::RedoMatrixConversion(CMatrix3x4* matrix) -- rescale a 3x4 matrix in place: the third row (elements 6..8) by 0.01f, the first two rows (elements 0..5) by -0.01f
+// CEngineInternalAttachedPrimitive::RedoMatrixConversion(CMatrix3x4& matrix) const -- rescale a 3x4 matrix in place: the third row (elements 6..8) by 0.01f, the first two rows (elements 0..5) by -0.01f
+// Leaf: RedoMatrixConversion
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B38E30, length 113 bytes (+ int3 padding).
 // Callees: none. Float pool: 0x01230A5C = 0.01f, 0x01231564 = -0.01f.
 // Shape: `this` is never read (thiscall member, `ret 4`); every element is `fld [m+i] ; fmul [pool] ; fstp [m+i]`
@@ -11,18 +12,18 @@ class CMatrix3x4 { public:
 };
 
 class CEngineInternalAttachedPrimitive { public:
-    void RedoMatrixConversion(CMatrix3x4* matrix);
+    void RedoMatrixConversion(CMatrix3x4& matrix) const;
 };
 
-void CEngineInternalAttachedPrimitive::RedoMatrixConversion(CMatrix3x4* matrix)
+void CEngineInternalAttachedPrimitive::RedoMatrixConversion(CMatrix3x4& matrix) const
 {
-    matrix->m_elements[6] *= 0.01f;
-    matrix->m_elements[7] *= 0.01f;
-    matrix->m_elements[8] *= 0.01f;
-    matrix->m_elements[0] *= -0.01f;
-    matrix->m_elements[1] *= -0.01f;
-    matrix->m_elements[2] *= -0.01f;
-    matrix->m_elements[3] *= -0.01f;
-    matrix->m_elements[4] *= -0.01f;
-    matrix->m_elements[5] *= -0.01f;
+    matrix.m_elements[6] *= 0.01f;
+    matrix.m_elements[7] *= 0.01f;
+    matrix.m_elements[8] *= 0.01f;
+    matrix.m_elements[0] *= -0.01f;
+    matrix.m_elements[1] *= -0.01f;
+    matrix.m_elements[2] *= -0.01f;
+    matrix.m_elements[3] *= -0.01f;
+    matrix.m_elements[4] *= -0.01f;
+    matrix.m_elements[5] *= -0.01f;
 }

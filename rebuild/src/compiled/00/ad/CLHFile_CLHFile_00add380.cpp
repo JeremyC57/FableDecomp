@@ -45,7 +45,7 @@ public:
     CCharString();                                                 // 0x0099E4B0
     CCharString(const char* text, long length = -1);               // 0x0099EBF0
     ~CCharString();                                                // 0x0099EAE0
-    CCharString ToUpper() const;                                   // 0x0099EE20
+    CCharString GetAsUpperCase() const;                                   // 0x0099EE20 NF35: Ego_r + FableWin ?GetAsUpperCase@CCharString@@QBE?AV1@XZ (was ToUpper)
     CWideString ToWideString() const;                              // 0x0099E480
     FABLE_FORCEINLINE bool operator==(const char* text) const
     {
@@ -120,7 +120,7 @@ CLHFile::CLHFile(CLHFileManager*, const char* fileName)
     m_bIsWMA = false;
     CCharString ext;
     CAFile::SplitPath(CCharString(fileName), 0, 0, 0, &ext);
-    if (ext.ToUpper() == ".WMA")
+    if (ext.GetAsUpperCase() == ".WMA")
         m_bIsWMA = true;
     m_pFile->Open(CCharString(fileName).ToWideString(), true);
 }
@@ -132,7 +132,7 @@ CLHFile::CLHFile(CLHFileManager*, const unsigned short* fileName)
     m_bIsWMA = false;
     CWideString ext;
     CAFile::SplitPath(CWideString(fileName), 0, 0, 0, &ext);
-    if (ext.ToCharString().ToUpper() == ".WMA")
+    if (ext.ToCharString().GetAsUpperCase() == ".WMA")
         m_bIsWMA = true;
     m_pFile->Open(fileName, true);
 }

@@ -19,7 +19,7 @@ class CCharString {
 public:
     void* PStringData;
     ~CCharString();                                         // 0x0099EAE0
-    CCharString ToUpper() const;                            // 0x0099EE20
+    CCharString GetAsUpperCase() const;                            // 0x0099EE20 NF35: Ego_r + FableWin ?GetAsUpperCase@CCharString@@QBE?AV1@XZ (was ToUpper)
 };
 CCharString __fastcall operator+(const char* text, const CCharString& tail);   // 0x0099F690
 
@@ -72,7 +72,7 @@ void __fastcall CTCDParticleEmitter::SendDestructionCriteriaSound(CThing& thing)
     CTCDParticleEmitter* emitter = thing.PTCDriver;
     CTCSoundPlayer* sound;
     if (thing.GetInterface(&sound, 16)) {
-        CCharString name = "DESTROY_PARTICLE_" + emitter->EmitterName.ToUpper();
+        CCharString name = "DESTROY_PARTICLE_" + emitter->EmitterName.GetAsUpperCase();
         sound->PlayAttachedCriteria(name, true, 0, 0, -1);
     }
 }

@@ -50,7 +50,8 @@ struct CHeroMarriageList {                           // std::list<CHeroMarriageI
 };
 
 class CTCHeroOnlineScoreboard { public:
-    void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);  // 0x0055F3B0
+    enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
+    void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool onlyIfBetter);  // 0x0055F3B0
 };
 
 class CTCHeroStats { public:
@@ -78,7 +79,7 @@ void CTCHeroStats::AddNewMarriage(CThingCreatureBase* wife, CThing* home, EMarri
     ++NumWeddings;
     CTCHeroOnlineScoreboard* scoreboard;
     ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
-    scoreboard->UpdateScoreForActivity(12, (float)NumWeddings, false);
+    scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)12, (float)NumWeddings, false);
     long currentSpouses = NumWeddings - NumSpousesDied - NumSpousesMurdered;
-    scoreboard->UpdateScoreForActivity(9, (float)currentSpouses, false);
+    scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)9, (float)currentSpouses, false);
 }

@@ -1,4 +1,4 @@
-// CInputProcessGameBase::IsEventButtonPressed(const CInputEvent& event) -- true when the event is a button press: keyboard event kind 0x13, mouse event kind 1, or a joystick button event of kind 4/7/10 or in 22..26
+// CInputProcessGameBase::IsEventButtonPressed(const CInputEvent& event) const (protected) -- true when the event is a button press: keyboard event kind 0x13, mouse event kind 1, or a joystick button event of kind 4/7/10 or in 22..26
 // Leaf: IsEventButtonPressed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00687A90, length 154 bytes.
 // Callees: CInputEvent::GetDeviceType() @ 0x00A03B50 (`mov eax,[ecx+20h]`; 1 keyboard, 2 mouse, 3 joystick) and
@@ -16,10 +16,12 @@ public:
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h (members not used here)
 public:
     virtual void v00();
-    bool IsEventButtonPressed(const CInputEvent& event);
+protected:
+    bool IsEventButtonPressed(const CInputEvent& event) const;
+public:
 };
 
-bool CInputProcessGameBase::IsEventButtonPressed(const CInputEvent& event)
+bool CInputProcessGameBase::IsEventButtonPressed(const CInputEvent& event) const
 {
     if (event.GetDeviceType() == 1)
         return event.GetEventType() == 0x13;

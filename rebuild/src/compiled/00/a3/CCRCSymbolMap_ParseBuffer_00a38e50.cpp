@@ -61,7 +61,7 @@ class CStringParser : public CBaseClass { public:                        // vtab
         Init(text, callback, filename, baseLine);
     }
     void Init(const char* text, TErrorCallback callback, const CCharString& filename, long baseLine);   // 0x009B9530
-    bool FindKeyword(const CCharString& keyword);          // 0x009B9BA0
+    bool SkipPastString(const CCharString& keyword);          // 0x009B9BA0 NF35: Ego_r ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z (catalog CStringParser::SkipPastString)
 };
 struct SParseToken {                                       // 12 bytes: two POD words and the token text
     long        Type;
@@ -78,7 +78,7 @@ bool CCRCSymbolMap::ParseBuffer(const char* buffer, const CCharString& wantedNam
 {
     CStringParser parser(buffer, 0, CCharString(""), 0);
     SParseToken token;
-    while (parser.FindKeyword("enum")) {
+    while (parser.SkipPastString("enum")) {
         if (!ParseEnum(parser, wantedName))
             return false;
     }

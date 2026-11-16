@@ -48,7 +48,8 @@ public:
 extern "C" void __cdecl free(void* block);
 
 namespace std {
-template <class T> class vector
+template <class T> class allocator;                                // NF35: STLport vector<T, allocator<T> > (Ego_r/FableWin ??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)
+template <class T, class A = allocator<T> > class vector
 {
 public:
     T* _M_start;
@@ -59,7 +60,10 @@ public:
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     T& operator[](unsigned int n) { return *(_M_start + n); }
 };
-template <class K, class V> class map
+template <class T> struct less { };                              // NF35: STLport 4.6 map takes four template arguments
+template <class T1, class T2> struct pair { };                   //   (?$map@..U?$less@..@std@@V?$allocator@U?$pair@$$CB..@std@@@5@@std@@,
+template <class T> class allocator { };                          //   Ego_r/FableWin + stlport/fable_map.h); declarations only
+template <class K, class V, class C = less<K>, class A = allocator<pair<const K, V> > > class map
 {
 public:
     void* _body[3];

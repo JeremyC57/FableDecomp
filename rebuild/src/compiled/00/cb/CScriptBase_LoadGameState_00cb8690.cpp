@@ -35,7 +35,7 @@ class CStringParser : public CBaseClass { public:                // retail 0x28 
     long                     CursorPos[3];         // +0x1c CCursorPos
     CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
-    bool NextItemIs(const CCharString& item);              // 0x009B9BA0
+    bool SkipPastString(const CCharString& item);              // 0x009B9BA0 NF35: Ego_r ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z (catalog CStringParser::SkipPastString)
     bool SkipPastNextItemIfIs(const CCharString& item);    // 0x009B9E00
     CCharString ReadAsString();                            // 0x009BA6F0
     CCharString ReadAsStringUntilString(const CCharString& end);   // 0x009BA330
@@ -47,7 +47,7 @@ class CStringParser : public CBaseClass { public:                // retail 0x28 
     bool NextItemIsText(const char* text)
     {
         CCharString item(text, -1);
-        return NextItemIs(item);
+        return SkipPastString(item);
     }
     void SkipPastText(const char* text)
     {

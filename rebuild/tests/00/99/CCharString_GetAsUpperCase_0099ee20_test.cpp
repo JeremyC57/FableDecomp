@@ -1,4 +1,4 @@
-// CCharString::ToUpper() const -- copy of the string with every ASCII (< 0x80) character passed through toupper (copy-on-write: a shared block is cloned first)
+// CCharString::GetAsUpperCase() const -- copy of the string with every ASCII (< 0x80) character passed through toupper (copy-on-write: a shared block is cloned first)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099EE20, length 278 bytes (hidden result pointer, `ret 4`).
 // Callees: CCharString::UnassignString @ 0x0099E9B0 (landed; its body is repeated above under
 //          `auto_inline(off)` so VC7.1 knows what it clobbers), operator new @ 0x00BFEA1A, CBasicString<char>
@@ -81,7 +81,7 @@ public:
     }
     long GetLength() const { return PStringData ? (long)PStringData->Data.StringLength : 0; }
     const char& GetChar(long i) const { return PStringData->Data.PData[i]; }
-    CCharString ToUpper() const;
+    CCharString GetAsUpperCase() const;
 };
 
 #pragma auto_inline(off)
@@ -99,7 +99,7 @@ void CCharString::UnassignString()
 }
 #pragma auto_inline(on)
 
-CCharString CCharString::ToUpper() const
+CCharString CCharString::GetAsUpperCase() const
 {
     CCharString result(*this);
     result.MakeOwnCopyOfData();
@@ -135,7 +135,7 @@ int main()
     CCharString* s = (CCharString*)rawS;
     s->PStringData = new CCharStringData("Hello, World z\xE9!");
     {
-        CCharString up = s->ToUpper();
+        CCharString up = s->GetAsUpperCase();
         CHECK(up.PStringData != 0 && up.PStringData != s->PStringData);   // shared block cloned
         CHECK(strcmp(up.PStringData->Data.PData, "HELLO, WORLD Z\xE9!") == 0);
         CHECK(strcmp(s->PStringData->Data.PData, "Hello, World z\xE9!") == 0);
@@ -148,7 +148,7 @@ int main()
     CCharString* e = (CCharString*)rawE;
     e->PStringData = 0;
     {
-        CCharString up = e->ToUpper();
+        CCharString up = e->GetAsUpperCase();
         CHECK(up.PStringData == 0);
     }
     CHECK(g_CCharStringInstanceCount == 0);

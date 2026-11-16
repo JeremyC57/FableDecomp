@@ -61,7 +61,8 @@ class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; 
 
 class CTCHero { public: bool GiveTutorialForCategory(long category, bool force); };   // 0x006C9FA0
 class CTCHeroStats { public: void AddHeroStatExperience(long category, long amount); };   // 0x0057A8DA
-class CTCHeroOnlineScoreboard { public: void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter); };   // 0x0055F3B0
+class CTCHeroOnlineScoreboard { public: enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
+    void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool onlyIfBetter); };   // 0x0055F3B0
 
 class CHeroStatsDef { public:
     unsigned char _pad00[0x60];
@@ -178,5 +179,5 @@ void CTCHeroExperience::AddExperience(long amount)
     stats->AddHeroStatExperience(3, added);
     CTCHeroOnlineScoreboard* scoreboard;
     ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
-    scoreboard->UpdateScoreForActivity(3, (float)TotalExperiencePoints, false);
+    scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)3, (float)TotalExperiencePoints, false);
 }

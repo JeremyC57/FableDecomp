@@ -1,4 +1,5 @@
-// CCharString::ToUpper() const -- copy of the string with every ASCII (< 0x80) character passed through toupper (copy-on-write: a shared block is cloned first)
+// CCharString::GetAsUpperCase() const -- copy of the string with every ASCII (< 0x80) character passed through toupper (copy-on-write: a shared block is cloned first)
+// Leaf: GetAsUpperCase
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099EE20, length 278 bytes (hidden result pointer, `ret 4`).
 // Callees: CCharString::UnassignString @ 0x0099E9B0 (landed; its body is repeated above under
 //          `auto_inline(off)` so VC7.1 knows what it clobbers), operator new @ 0x00BFEA1A, CBasicString<char>
@@ -81,7 +82,7 @@ public:
     }
     long GetLength() const { return PStringData ? (long)PStringData->Data.StringLength : 0; }
     const char& GetChar(long i) const { return PStringData->Data.PData[i]; }
-    CCharString ToUpper() const;
+    CCharString GetAsUpperCase() const;
 };
 
 #pragma auto_inline(off)
@@ -99,7 +100,7 @@ void CCharString::UnassignString()
 }
 #pragma auto_inline(on)
 
-CCharString CCharString::ToUpper() const
+CCharString CCharString::GetAsUpperCase() const
 {
     CCharString result(*this);
     result.MakeOwnCopyOfData();

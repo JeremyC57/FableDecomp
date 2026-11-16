@@ -47,7 +47,8 @@ struct CHeroMarriageList {                           // std::list<CHeroMarriageI
 };
 
 class CTCHeroOnlineScoreboard { public:
-    void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);  // 0x0055F3B0
+    enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
+    void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool onlyIfBetter);  // 0x0055F3B0
 };
 
 class CTCHeroStats { public:
@@ -76,21 +77,21 @@ void CTCHeroStats::SetMarriageState(CThingAICreature* wife, EMarriageState state
                     ++NumSpousesMurdered;
                     CTCHeroOnlineScoreboard* scoreboard;
                     ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
-                    scoreboard->UpdateScoreForActivity(14, (float)(NumSpousesDied + NumSpousesMurdered), false);
+                    scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)14, (float)(NumSpousesDied + NumSpousesMurdered), false);
                     long currentSpouses = NumWeddings - NumSpousesDied - NumSpousesMurdered;
-                    scoreboard->UpdateScoreForActivity(9, (float)currentSpouses, false);
+                    scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)9, (float)currentSpouses, false);
                 } else if (state == 6) {
                     ++NumSpousesDied;
                     CTCHeroOnlineScoreboard* scoreboard;
                     ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
-                    scoreboard->UpdateScoreForActivity(14, (float)(NumSpousesDied + NumSpousesMurdered), false);
+                    scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)14, (float)(NumSpousesDied + NumSpousesMurdered), false);
                     long currentSpouses = NumWeddings - NumSpousesDied - NumSpousesMurdered;
-                    scoreboard->UpdateScoreForActivity(9, (float)currentSpouses, false);
+                    scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)9, (float)currentSpouses, false);
                 } else if (state == 5) {
                     ++NumDivorces;
                     CTCHeroOnlineScoreboard* scoreboard;
                     ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
-                    scoreboard->UpdateScoreForActivity(13, (float)NumDivorces, false);
+                    scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)13, (float)NumDivorces, false);
                 }
             }
         }

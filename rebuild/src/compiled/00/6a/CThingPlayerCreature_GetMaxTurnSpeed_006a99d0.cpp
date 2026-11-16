@@ -1,3 +1,4 @@
+// Leaf: ?GetMaxTurnSpeed@CThingPlayerCreature@@IBEMXZ
 // CThingPlayerCreature::GetMaxTurnSpeed() -- the movement def's MaxTurnSpeedHeavyWeapon while carrying a too-heavy weapon, else its MaxTurnSpeed
 // Retail: Fable.exe 0x006A99D0, 34 bytes.
 // Callee: IsCarryingTooHeavyWeapon(CThing*) 0x0085EF70 (__fastcall, `this` in ecx).
@@ -23,10 +24,12 @@ template <class T> class CDefPointer { public:
 class CThingPlayerCreature { public:
     unsigned char                    _pad00[0x1ec];
     CDefPointer<CPlayerMovementDef>  PPlayerMovementDef; // +0x1ec
-    float GetMaxTurnSpeed();
+protected:
+    float GetMaxTurnSpeed() const;   // NF35: Ego_r + FableWin access/const spelling (see the Leaf line)
+public:
 };
 
-float CThingPlayerCreature::GetMaxTurnSpeed()
+float CThingPlayerCreature::GetMaxTurnSpeed() const
 {
     if (IsCarryingTooHeavyWeapon((CThing*)this))
         return PPlayerMovementDef->MaxTurnSpeedHeavyWeapon;

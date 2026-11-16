@@ -54,6 +54,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
+enum EAIActionReturn;                           // NF35: MS forward enum (as engine/CAIStateGroupBase.h)
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -70,7 +71,9 @@ class CAIStateGroupBase { public:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
     void SetPushableByHero(bool pushable);      // 0x0097E330
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
+public:
 };
 struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     CIntelligentPointer<CThing> PJug;               // +0x14 CIntelligentPointer<CThingObject>
@@ -112,7 +115,7 @@ bool CAIStateGroup_TavernKeeper::LeanOnBar()
             SetPushableByHero(true);
             return true;
         }
-        result = AIAction_PerformAction(&CCreatureAction_PlayIntoLoopOutOfAnimation(
+        result = AIAction_PerformAction(CCreatureAction_PlayIntoLoopOutOfAnimation(
             GetCreatureBase(), "BARMAN_LEAN_INTO", "BARMAN_LEAN_LOOP",
             "BARMAN_LEAN_OUTOF", loopTime, false, 0, 0));
     } while (result == 4);

@@ -27,7 +27,8 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThingPlayerCreature : public CThing { };
 
 class CTCHeroOnlineScoreboard { public:
-    void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
+    enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
+    void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0
@@ -68,8 +69,8 @@ bool CTCTavernGameCardBlackjack::UpdateValues()
         hero->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
         long winnings = TotalWinnings;
         if (winnings > 0) {
-            scoreboard->UpdateScoreForActivity(0x18, (float)winnings, false);
-            scoreboard->UpdateScoreForActivity(0x20, (float)NumConsecutiveRoundsWon, false);
+            scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)0x18, (float)winnings, false);
+            scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)0x20, (float)NumConsecutiveRoundsWon, false);
         }
     }
     LastBet = BaseBet;

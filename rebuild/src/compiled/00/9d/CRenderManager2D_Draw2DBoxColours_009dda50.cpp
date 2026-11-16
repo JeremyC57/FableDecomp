@@ -1,4 +1,4 @@
-// CRenderManager2D::Draw2DBoxColours(const C2DBoxF& box, const CRGBColour* colours, unsigned long flags) -- queue a screen-space box with one colour per corner (TL, TR, BR, BL) as two triangles
+// CRenderManager2D::Draw2DBoxColours(const C2DBoxF& box, const CRGBColour colours[], unsigned long flags) -- queue a screen-space box with one colour per corner (TL, TR, BR, BL) as two triangles
 // Leaf: Draw2DBoxColours
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009DDA50, length 515 bytes (ret 0xC); PDB
 // ?Draw2DBoxColours@CRenderManager2D@@QAE_NABVC2DBoxF@@QBVCRGBColour@@K@Z.
@@ -28,10 +28,10 @@ extern float g_ScreenRHW;                          // 0x0139652C
 struct CRenderManager2D {
     void Add2DTri(const CTVertexRHWColSpecTex1& v0, const CTVertexRHWColSpecTex1& v1, const CTVertexRHWColSpecTex1& v2,
                   long mode, CTexture* texture);   // 0x009DC030
-    bool Draw2DBoxColours(const C2DBoxF& box, const CRGBColour* colours, unsigned long flags);
+    bool Draw2DBoxColours(const C2DBoxF& box, const CRGBColour colours[], unsigned long flags);
 };
 
-bool CRenderManager2D::Draw2DBoxColours(const C2DBoxF& box, const CRGBColour* colours, unsigned long flags)
+bool CRenderManager2D::Draw2DBoxColours(const C2DBoxF& box, const CRGBColour colours[], unsigned long flags)
 {
     unsigned long argb[4];
     argb[0] = colours[0].GetARGB();

@@ -38,7 +38,7 @@ class C3DMeshInfo { public:
     CCountedPointer<const C3DMeshStats> GetMeshStats() const;   // 0x00A25530
 };
 class CMeshDataBank { public:
-    const C3DMeshInfo* GetMeshInfo(long index);             // 0x00A24270
+    const C3DMeshInfo* PeekMesh(unsigned long index) const;             // 0x00A24270 NF35: Ego_r + FableWin ?PeekMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z (was GetMeshInfo)
 };
 extern CMeshDataBank* g_pMeshDataBank;                      // 0x013B8A04
 
@@ -112,7 +112,7 @@ bool CTCGraphicAppearance::HasHelperPoint(const CCharString& name) const
     GetAllMeshes(meshes);
     unsigned long key = CCRC::Calc(0, name.GetPString(), name.GetLength());
     for (CMeshInfo* mesh = meshes.begin(); mesh != meshes.end(); ++mesh) {
-        const C3DMeshInfo* meshInfo = g_pMeshDataBank->GetMeshInfo(mesh->Index);
+        const C3DMeshInfo* meshInfo = g_pMeshDataBank->PeekMesh(mesh->Index);
         if (meshInfo && meshInfo->GetMeshStats()->HasHelperPoint(key))
             return true;
     }

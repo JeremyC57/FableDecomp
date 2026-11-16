@@ -11,7 +11,9 @@ class CEngineScreenEffectOutlineGlow { public:
     unsigned char _pad[8];
     bool          m_enabled;                       // +0x08
     void ApplyOutline();                           // 0x00B89C30
-    void ReleaseTextures();                        // 0x00B89080
+private:
+    void FinishWithDynamicTextures();              // 0x00B89080 (NF35: Ego_r + FableWin ?FinishWithDynamicTextures@CEngineScreenEffectOutlineGlow@@AAEXXZ)
+public:
     void Render(const CEngineComponentRenderParams& params);
 };
 
@@ -19,6 +21,6 @@ void CEngineScreenEffectOutlineGlow::Render(const CEngineComponentRenderParams& 
 {
     if (m_enabled && params.m_kind == 0x4000000) {
         ApplyOutline();
-        ReleaseTextures();
+        FinishWithDynamicTextures();
     }
 }

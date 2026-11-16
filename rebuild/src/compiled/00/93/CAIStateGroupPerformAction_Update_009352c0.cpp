@@ -111,6 +111,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
+enum EAIActionReturn;                           // NF35: MS forward enum (as engine/CAIStateGroupBase.h)
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -119,7 +120,9 @@ class CAIStateGroupBase { public:
     CPlayerManager* GetPPlayerManager_008fcf80();        // 0x008FCF80
     void Terminate();                           // 0x008FCF40
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   // 0x0097D6F0
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
+public:
     long AIAction_SpeakToTarget(long repeat, CIntelligentPointerCreature speaker, CIntelligentPointerConstThing target,
         unsigned long speech, bool interrupt, long priority, bool wait);   // 0x00980BD0
 };
@@ -159,7 +162,7 @@ void CAIStateGroup_PerformAction::Update()
             case 1: {
                 bool face = scratchpad->FaceHeroForAction;
                 CCharString action(scratchpad->Action);
-                result = AIAction_PerformAction(&CCreatureAction_PlayCombatAnimation(GetCreature(), hero, action, face));
+                result = AIAction_PerformAction(CCreatureAction_PlayCombatAnimation(GetCreature(), hero, action, face));
                 break;
             }
             case 2:

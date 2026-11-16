@@ -44,7 +44,8 @@ class CThing { public:
 class CThingPlayerCreature : public CThing { };
 
 class CTCHeroOnlineScoreboard { public:
-    void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
+    enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
+    void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0
@@ -130,8 +131,8 @@ bool CTCTavernGameCoinGolf::UpdateValues()
             CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
             CTCHeroOnlineScoreboard* scoreboard;
             hero->GetInterface(&scoreboard, 0x10d);
-            scoreboard->UpdateScoreForActivity(0x16, Score, true);
-            scoreboard->UpdateScoreForActivity(0x1e, (float)NumConsecutiveRoundsWon, false);
+            scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)0x16, Score, true);
+            scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)0x1e, (float)NumConsecutiveRoundsWon, false);
             if (stats->BestScoreCoinGolf == 0.0f || Score < stats->BestScoreCoinGolf) {
                 stats->BestScoreCoinGolf = Score;
                 return true;
@@ -145,8 +146,8 @@ bool CTCTavernGameCoinGolf::UpdateValues()
         CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         hero->GetInterface(&scoreboard, 0x10d);
-        scoreboard->UpdateScoreForActivity(0x17, Score, true);
-        scoreboard->UpdateScoreForActivity(0x1f, (float)NumConsecutiveRoundsWon, false);
+        scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)0x17, Score, true);
+        scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)0x1f, (float)NumConsecutiveRoundsWon, false);
         if (stats->BestScoreCoinGolfSnowspire == 0.0f || Score < stats->BestScoreCoinGolfSnowspire) {
             stats->BestScoreCoinGolfSnowspire = Score;
             return true;

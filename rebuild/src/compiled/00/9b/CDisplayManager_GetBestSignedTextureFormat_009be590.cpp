@@ -1,5 +1,5 @@
 // CDisplayManager::GetBestSignedTextureFormat(long, CPixelFormat&) -- pick the first signed texture format of the requested bit depth that the device supports on the current mode
-// Leaf: ?GetBestSignedTextureFormat@CDisplayManager@@QAE_NJAAVCPixelFormat@@@Z
+// Leaf: ?GetBestSignedTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BE590, length 126 bytes.
@@ -43,10 +43,10 @@ class CDisplayManager { public:
     unsigned long AdapterOrdinal;                  // +0x60 D3DDeviceCaps.AdapterOrdinal
     unsigned char _caps[0x1c4 - 0x64];             // rest of the caps, extents, flags, formats, window handle, mode size
     long          CurrentModeFormat;               // +0x1c4 CurrentMode.Format
-    bool GetBestSignedTextureFormat(long bitDepth, CPixelFormat& out);
+    bool GetBestSignedTextureFormat(unsigned long bitDepth, CPixelFormat& out);
 };
 
-bool CDisplayManager::GetBestSignedTextureFormat(long bitDepth, CPixelFormat& out)
+bool CDisplayManager::GetBestSignedTextureFormat(unsigned long bitDepth, CPixelFormat& out)
 {
     const CD3DFormatInfo* best = 0;
     for (long i = 0; GD3DFormats[i].BitDepth != -1; ++i) {

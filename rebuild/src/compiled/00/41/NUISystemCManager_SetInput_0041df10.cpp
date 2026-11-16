@@ -1,4 +1,5 @@
 // NUISystem::CManager::SetInput(EInputType type) -- store the input type (+0x30) and fill the UI-key -> engine-key map (+0x24) for it: sixteen keyboard bindings for type 0, four pad bindings for type 1
+// Leaf: SetInput
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041DF10, length 509 bytes. Frame-pointer size TU: `#pragma optimize("y", off)` + `("s", on)`.
 // Callees: the key map's operator[] @ 0x0042D201 (map<EUsedKeys, long>, const EUsedKeys& -> long&).
 // Layout (retail NUISystem::CManager, see the landed IsKeyHeld 0x0041E10D): key map +0x24, input type +0x30; engine/CManager.h is the
@@ -8,8 +9,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 namespace NUISystem {
-enum EInputType { EIT_KEYBOARD = 0, EIT_PAD = 1 };
 class CManager { public:
+    enum EInputType { EIT_KEYBOARD = 0, EIT_PAD = 1 };   // nested in CManager (Ego_r ?SetInput@CManager@NUISystem@@QAEXW4EInputType@12@@Z)
     enum EUsedKeys {
         EUK_0, EUK_1, EUK_2, EUK_3, EUK_4, EUK_5, EUK_6, EUK_7,
         EUK_8, EUK_9, EUK_10, EUK_11, EUK_12, EUK_13, EUK_14, EUK_15

@@ -1,5 +1,5 @@
-// CAIStateGroup_ScorpionKing::SpawnBabies() -- the scorpion king performs its summon action against the current enemy and waits for it; the state terminates if it is no longer runnable afterwards
-// Leaf: ?SpawnBabies@CAIStateGroup_ScorpionKing@@IAEXXZ
+// CAIStateGroup_ScorpionKing::UpdatePhase2() -- the scorpion king performs its summon action against the current enemy and waits for it; the state terminates if it is no longer runnable afterwards
+// Leaf: ?UpdatePhase2@CAIStateGroup_ScorpionKing@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097C580, 81 bytes (+ int3 padding to 96), plain `ret`; a 0x114-byte frame
 //   holds the action temporary.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy at +0x30), CCreatureAction_ScorpionSummon::
@@ -14,8 +14,10 @@
 //   bIsRangeAttack +0x28, ChargeCount +0x2c, PEnemy +0x30 (Ego_r.pdb's debug vector is 16 bytes, so it lists PEnemy at
 //   +0x34); the summon action is a 0x114-byte CCombatActionBase.
 // Label: catalog "CAIStateGroup_ScorpionKing_ExecuteBriarRoseAbility" -> Ego_r.pdb
-//   ?SpawnBabies@CAIStateGroup_ScorpionKing@@IAEXXZ; 0x008E46D0 is the CCreatureAction_ScorpionSummon constructor (not
+//   ?UpdatePhase2@CAIStateGroup_ScorpionKing@@IAEXXZ; 0x008E46D0 is the CCreatureAction_ScorpionSummon constructor (not
 //   BriarRoseShotFarInto) and 0x0062E900 is ~CCombatActionBase (not ~CTCLightningOrb).
+// NF35: renamed SpawnBabies -> UpdatePhase2 (Ego_r + FableWin ?UpdatePhase2@CAIStateGroup_ScorpionKing@@IAEXXZ; Ego_r UpdatePhase2 is 0x60 bytes =
+//   this retail extent, while Ego_r SpawnBabies is an empty one-byte ret).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
 class CThingCreatureBase;
 
@@ -76,10 +78,10 @@ public:
     float HealthAtLastTailStrike;               protected: // +0x3c
     bool IsStillRunnable(); public:                     // 0x0097B870
 protected:
-    void SpawnBabies();
+    void UpdatePhase2();
 };
 
-void CAIStateGroup_ScorpionKing::SpawnBabies()
+void CAIStateGroup_ScorpionKing::UpdatePhase2()
 {
     CThingCreatureBase* creature = GetCreature();
     AIAction_PerformActionAndWait(CCreatureAction_ScorpionSummon(*creature, *PEnemy.GetPItem()), false);

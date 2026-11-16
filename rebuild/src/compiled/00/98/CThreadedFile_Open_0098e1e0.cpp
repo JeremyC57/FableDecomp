@@ -31,7 +31,7 @@ class CCharString {
 public:
     CCharStringData* PStringData;
     ~CCharString();                                            // 0x0099EAE0
-    CCharString ToUpper() const;                               // 0x0099EE20
+    CCharString GetAsUpperCase() const;                               // 0x0099EE20 NF35: Ego_r + FableWin ?GetAsUpperCase@CCharString@@QBE?AV1@XZ (was ToUpper)
     bool operator==(const char* text) const
     {
         if (PStringData == 0)
@@ -90,7 +90,7 @@ bool CThreadedFile::Open(const CWideString& filename, bool unbuffered)
     CWideString drive;
     CAFile::SplitPath(fullPath, &drive, 0, 0, 0);
     OpenedForWrite = false;
-    bool onDriveD = ((CWideString*)&drive)->ToCharString().ToUpper() == "D:";
+    bool onDriveD = ((CWideString*)&drive)->ToCharString().GetAsUpperCase() == "D:";
     DeviceID = (EThreadedFileDeviceID)(onDriveD != 0);
     unsigned long flags = 0x40000001;                          // FILE_FLAG_OVERLAPPED | FILE_ATTRIBUTE_READONLY
     if (unbuffered)

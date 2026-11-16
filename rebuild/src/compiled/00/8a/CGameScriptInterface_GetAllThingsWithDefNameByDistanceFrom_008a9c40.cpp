@@ -76,12 +76,10 @@ class CThingFilter_HasDefGlobalIndex { public:
     unsigned long DefGlobalIndex;
     CThingFilter_HasDefGlobalIndex(unsigned long index) : DefGlobalIndex(index) {}
 };
-class CThingCompare_Nearest { public:
-    C3DVector Pos;
-    CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) {}
-};
+#include "engine/CThingCompare_NearestToPos.h"     // NF35: the comparator is CThingCompare_NearestToPos (the landed sort 0x007A4260 models it; FableWin
+                                                  //   ??$?RVCThing@@@CThingCompare_NearestToPos@@QBE_NPAVCThing@@0@Z); was a local CThingCompare_Nearest stand-in
 namespace std {
-template <class It, class Cmp> void __fastcall sort(It first, It last, Cmp comp);   // 0x007A4260 for CThing** (comparator type unproven)
+template <class It, class Cmp> void __fastcall sort(It first, It last, Cmp comp);   // 0x007A4260 for CThing** with CThingCompare_NearestToPos
 }
 class CThing { public:
     CScriptThing GetScriptThing() const;                // 0x004C7E50
@@ -131,7 +129,7 @@ long CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom(const CScriptTh
     if (found.empty())
         return 0;
     things.reserve(found.size());
-    std::sort(found._M_start, found._M_finish, CThingCompare_Nearest(from.GetPos()));
+    std::sort(found._M_start, found._M_finish, CThingCompare_NearestToPos(from.GetPos()));
     for (CThing** it = found._M_start; it != found._M_finish; ++it) {
         CThing* thing = *it;
         things.push_back(thing->GetScriptThing());

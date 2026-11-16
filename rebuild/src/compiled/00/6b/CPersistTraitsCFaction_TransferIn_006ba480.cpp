@@ -22,7 +22,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 class CStringParser { public:
-    bool NextItemIs(const CCharString& name);          // 0x009B9BA0
+    bool SkipPastString(const CCharString& name);          // 0x009B9BA0 NF35: Ego_r ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z (catalog CStringParser::SkipPastString)
 };
 class CPersistContext;
 void __fastcall PersistTransferInLong(CPersistContext& context, CStringParser& parser, long* value);   // 0x009E2590
@@ -64,17 +64,17 @@ template <> struct CPersistTraits<CFaction> {
 
 void CPersistTraits<CFaction>::TransferIn(CPersistContext& context, CStringParser& parser, CFaction& value)
 {
-    if (!parser.NextItemIs("Name"))
+    if (!parser.SkipPastString("Name"))
         return;
     CPersistTraits<CCharString> stringTraits;
     stringTraits.TransferIn(context, parser, value.Name);
     {
-        if (!parser.NextItemIs("NumberOfAllies"))
+        if (!parser.SkipPastString("NumberOfAllies"))
             return;
         long numberOfAllies;
         PersistTransferInLong(context, parser, &numberOfAllies);
         for (long i = 0; i < numberOfAllies; ++i) {
-            if (!parser.NextItemIs("Ally"))
+            if (!parser.SkipPastString("Ally"))
                 return;
             CCharString ally;
             stringTraits.TransferIn(context, parser, ally);
@@ -82,18 +82,18 @@ void CPersistTraits<CFaction>::TransferIn(CPersistContext& context, CStringParse
         }
     }
     {
-        if (!parser.NextItemIs("NumberOfEnemies"))
+        if (!parser.SkipPastString("NumberOfEnemies"))
             return;
         long numberOfEnemies;
         PersistTransferInLong(context, parser, &numberOfEnemies);
         for (long i = 0; i < numberOfEnemies; ++i) {
-            if (!parser.NextItemIs("Enemy"))
+            if (!parser.SkipPastString("Enemy"))
                 return;
             CCharString enemy;
             stringTraits.TransferIn(context, parser, enemy);
             value.EnemyFactions.insert(enemy);
         }
     }
-    if (!parser.NextItemIs("EndFaction"))
+    if (!parser.SkipPastString("EndFaction"))
         return;
 }

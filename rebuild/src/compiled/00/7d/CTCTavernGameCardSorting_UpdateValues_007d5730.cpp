@@ -40,7 +40,8 @@ class CThing { public:
 class CThingPlayerCreature : public CThing { };
 
 class CTCHeroOnlineScoreboard { public:
-    void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
+    enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
+    void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0
@@ -122,8 +123,8 @@ bool CTCTavernGameCardSorting::UpdateValues()
         CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         hero->GetInterface(&scoreboard, 0x10d);
-        scoreboard->UpdateScoreForActivity(0x13, Score, true);
-        scoreboard->UpdateScoreForActivity(0x1b, (float)NumConsecutiveRoundsWon, false);
+        scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)0x13, Score, true);
+        scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)0x1b, (float)NumConsecutiveRoundsWon, false);
         if (stats->BestTimeSorting == 0.0f || Score < stats->BestTimeSorting) {
             stats->BestTimeSorting = Score;
             return true;

@@ -25,17 +25,16 @@ struct CStateInfo {                                  // 20 bytes (PDB)
     unsigned char TextureStage;                      // +0x12
 };
 
-struct CDeviceState {                                // 0x120C bytes
-    CDeviceState();                                  // 0x00A079B0
-    unsigned char _states[0x120C];
-};
-
 struct CStateStackElement {
     CStateInfo*   State;
     unsigned long Value;
 };
 
 class CRenderStateManager : public CBaseClassNonCopyable { public: // vtable 0x0129C978
+    struct CDeviceState {                            // 0x120C bytes; NF35: nested (Ego_r + FableWin ??0CDeviceState@CRenderStateManager@@QAE@XZ)
+        CDeviceState();                              // 0x00A079B0
+        unsigned char _states[0x120C];
+    };
     CRenderStateManager(unsigned long initFlags);
     virtual ~CRenderStateManager();
 

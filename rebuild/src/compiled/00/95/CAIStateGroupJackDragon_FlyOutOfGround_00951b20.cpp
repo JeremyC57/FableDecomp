@@ -16,7 +16,7 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    void RotateAboutZ(float angle);             // 0x00A14040
+    void RotateXY(float angle);                 // 0x00A14040 (NF35: Ego_r + FableWin ?RotateXY@C3DVector@@QAEXM@Z, was RotateAboutZ)
 };
 #pragma pack(pop)
 struct CPhysicsBody {
@@ -115,9 +115,12 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
     C3DVector DragonPosOutOfGround3Right;       // +0x96
     C3DVector DragonPosOutOfGround4Left;        // +0xa2
     C3DVector DragonPosOutOfGround4Right;       // +0xae
+private:                                    // NF35: Ego_r + FableWin private (AAE) members
+    enum EDragonState { };
     void SetHeadTurning(bool on);               // 0x00950BB0
-    void WaitForAnimLoop(bool b);               // 0x00950950
-    long ChooseHoverOrStrafeState();            // 0x0094FFF0
+    void WaitForAnimLoop(float time);           // 0x00950950 (AAEXM@Z: float)
+    EDragonState ChooseHoverOrStrafeState();    // 0x0094FFF0
+public:
     void FlyOutOfGround();
 };
 #pragma pack(pop)
@@ -127,7 +130,7 @@ void CAIStateGroup_JackDragon::FlyOutOfGround()
     if (IS_THING_ALIVE(PInvisibleBodgeCreature))
         PInvisibleBodgeCreature.Get()->Kill(true);
     SetHeadTurning(false);
-    WaitForAnimLoop(false);
+    WaitForAnimLoop(0.0f);
     if (!IS_THING_ALIVE(PEnemy)) {
         Terminate();
         return;
@@ -137,7 +140,7 @@ void CAIStateGroup_JackDragon::FlyOutOfGround()
         return;
     }
     C3DVector up(0.0f, 50.0f, 0.0f);
-    up.RotateAboutZ(GetCreature()->GetPhysicsTC()->GetHeading());
+    up.RotateXY(GetCreature()->GetPhysicsTC()->GetHeading());
     GetCreature()->GetPos();
     CVector3DList route;
     if (WorldRandomRange(GetWorld().GetWorldSeed(), 100) > 50)

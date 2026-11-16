@@ -52,7 +52,7 @@ class CTCLook { public:
     unsigned char _pad34[0xcc - 0x34];
     bool          FirstTimeThrough;                  // +0xcc
     void InitialiseHeadAnims();                      // 0x00752640
-    bool IsInsideAnimationRange();                   // 0x00751BC0
+    bool IsInsideAnimationRange() const;// 0x00751BC0  // NF35: Ego_r + FableWin ?IsInsideAnimationRange@CTCLook@@QBE_NXZ (const)
     void ImplementHeadSettings();
 private:
     void UpdateHeadCreatureAnim(const CCharString& name, ECreatureAnim type, CAnimateThing* animation);   // 0x00752F30 Ego_r/FableWin ?UpdateHeadCreatureAnim@CTCLook@@AAEXABVCCharString@@W4ECreatureAnim@@PAVCAnimateThing@@@Z

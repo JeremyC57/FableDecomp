@@ -1,3 +1,4 @@
+// Leaf: ?ClampResolution@CUserProfileManager@@AAEXAAKJ@Z
 // CUserProfileManager::ClampResolution(unsigned long*, long) -- reset an out-of-range display-mode index to 0, then step it down until the mode's width fits the given maximum (-1 = no limit)
 // Retail: Fable.exe @ 0x00406D90, 84 bytes (+ int3 padding), `ret 8`. No callees.
 // Layout: the retail DisplayModes vector<CDisplayModeDesc> sits at +0x80 (first) / +0x84 (last) -- 8 bytes below
@@ -33,12 +34,15 @@ struct CRetailVector {        // STLport vector: three pointers, 12 bytes
 class CUserProfileManager { public:
     unsigned char _pad00[0x80];
     CRetailVector<CDisplayModeDesc> DisplayModes;   // +0x80
-    void ClampResolution(unsigned long* resolution, long maxWidth);
+private:
+    void ClampResolution(unsigned long& resolution, long maxWidth);   // NF35: Ego_r + FableWin private, reference out parameter
+public:
     FABLE_FORCEINLINE bool IsModeWiderThan(unsigned long index, long width) { if (DisplayModes[index].Dimensions.X > width) return true; return false; }
 };
 
-void CUserProfileManager::ClampResolution(unsigned long* resolution, long maxWidth)
+void CUserProfileManager::ClampResolution(unsigned long& resolutionRef, long maxWidth)
 {
+    unsigned long* resolution = &resolutionRef;                       // NF35: the PDB parameter is a reference (AA); the body keeps its pointer spelling
     if (*resolution >= DisplayModes.size())
         *resolution = 0;
     if (maxWidth != -1) {

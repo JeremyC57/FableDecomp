@@ -134,7 +134,9 @@ public:
                                                  float f);   // 0x0097E380
     EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointerConstThing thing, long frames,
                                          float speed);   // 0x0097D6F0
-    EAIActionReturn AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
+public:
     EAIActionReturn AIAction_FleeToThingProximity(CIntelligentPointerConstCreature threat, float proximity,
                                                   CCreatureActionBase* action, CAIFilterBase* filter);
 };
@@ -186,7 +188,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_FleeToThingProximity(CIntelligentPoi
                     continue;
                 }
             }
-            AIAction_PerformAction(action);
+            AIAction_PerformAction(*action);
         }
     } while (result == AI_ACTION_RUNNING);
     return result;

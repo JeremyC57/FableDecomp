@@ -45,13 +45,16 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;                  // +0x18
 };
 
+enum EAIActionReturn;                           // NF35: MS forward enum (as engine/CAIStateGroupBase.h)
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                       // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     long AIAction_DoNothing();                      // 0x0097E200 (EAIActionReturn)
-    long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0 (EAIActionReturn)
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z) (EAIActionReturn)
+public:
 };
 
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
@@ -65,7 +68,7 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
 bool CAIStateGroup_GoToPub::Laugh()
 {
     CCharString animation("SEATED_TAVERN_LAUGH", -1);
-    bool failed = AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), animation,
+    bool failed = AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation,
         CSoundPair(), false, true, false, 0, 0)) != 2;
     return !failed;
 }

@@ -1,4 +1,5 @@
-// CEngineSurfaceCompositionManager::GetGraphicInfo(unsigned long) -- resolve a graphic handle to its frame: handles with the top bit set index the manager's own composed-graphic table, the others the engine's global graphic bank; out-of-range handles read through a null record
+// Leaf: GetGraphicInfo
+// CEngineSurfaceCompositionManager::GetGraphicInfo(unsigned long) (private, const CGraphicInfoFrame* result) -- resolve a graphic handle to its frame: handles with the top bit set index the manager's own composed-graphic table, the others the engine's global graphic bank; out-of-range handles read through a null record
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B2B790, length 137 bytes (+ int3 padding). No callees.
 // Globals: the engine @ 0x01436E98 (graphic bank pointer at +0x954, its 0x2c-byte record vector at +0x1e0).
 // Layout: the manager's own 0x2c-byte record vector sits at +0x884 in retail (engine/CEngineSurfaceCompositionManager.h
@@ -46,10 +47,11 @@ class CEngineSurfaceCompositionManager { public:
     unsigned char                   _pad[0x884];
     CRetailVector<SComposedGraphic> m_composedGraphics;   // +0x884
     SComposedGraphic* GetComposed(unsigned long index) { return index < m_composedGraphics.size() ? &m_composedGraphics[index] : 0; }
-    CGraphicInfoFrame* GetGraphicInfo(unsigned long handle);
+private:
+    const CGraphicInfoFrame* GetGraphicInfo(unsigned long handle);
 };
 
-CGraphicInfoFrame* CEngineSurfaceCompositionManager::GetGraphicInfo(unsigned long handle)
+const CGraphicInfoFrame* CEngineSurfaceCompositionManager::GetGraphicInfo(unsigned long handle)
 {
     if (handle & 0x80000000)
         return GetComposed(handle & 0x7fffffff)->m_pFrame;

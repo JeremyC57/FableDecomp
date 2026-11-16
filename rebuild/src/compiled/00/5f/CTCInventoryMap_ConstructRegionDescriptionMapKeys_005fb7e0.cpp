@@ -1,4 +1,5 @@
-// CTCInventoryMap::ConstructRegionDescriptionMapKeys(NUISystem::CComponent* parent, CRegion* region, bool pc) -- creates the map-keys container component (PC or console layout) and adds it under the parent
+// Leaf: ?ConstructRegionDescriptionMapKeys@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z
+// CTCInventoryMap::ConstructRegionDescriptionMapKeys(NUISystem::CComponent* parent, CRegion& region, bool pc) -- creates the map-keys container component (PC or console layout) and adds it under the parent
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail 0x005FB7E0, 272 bytes (+ int3), `ret 0Ch`, esp frame (speed TU); `this` and `region` are unused (the
 // retail body keeps only the container part: an unused CWideString local and the UI misc-things def fetch survive).
@@ -163,10 +164,12 @@ class CManager { public:
 class CRegion;
 
 class CTCInventoryMap { public:
-    void ConstructRegionDescriptionMapKeys(NUISystem::CComponent* parent, CRegion* region, bool pc);
+protected:
+    void ConstructRegionDescriptionMapKeys(NUISystem::CComponent* parent, CRegion& region, bool pc);   // NF35: Ego_r + FableWin access/const spelling (see the Leaf line)
+public:
 };
 
-void CTCInventoryMap::ConstructRegionDescriptionMapKeys(NUISystem::CComponent* parent, CRegion* region, bool pc)
+void CTCInventoryMap::ConstructRegionDescriptionMapKeys(NUISystem::CComponent* parent, CRegion& region, bool pc)
 {
     NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     CWideString text;

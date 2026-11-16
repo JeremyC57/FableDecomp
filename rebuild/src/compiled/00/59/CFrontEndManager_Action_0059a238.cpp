@@ -62,7 +62,10 @@ bool __fastcall ConstructString(CWideString& text, const CWideString& parameter)
 double __fastcall GFGetTime();                            // 0x009E1BC0
 
 namespace std {
-template <class K, class V> class map
+template <class T> struct less { };                              // NF35: STLport 4.6 map takes four template arguments
+template <class T1, class T2> struct pair { };                   //   (?$map@..U?$less@..@std@@V?$allocator@U?$pair@$$CB..@std@@@5@@std@@,
+template <class T> class allocator { };                          //   Ego_r/FableWin + stlport/fable_map.h); declarations only
+template <class K, class V, class C = less<K>, class A = allocator<pair<const K, V> > > class map
 {
 public:
     void* _body[3];

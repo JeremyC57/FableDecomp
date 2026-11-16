@@ -65,7 +65,8 @@ class CPlayer { public:
 #include "engine/CPlayerManager.h"
 
 class CTCHeroOnlineScoreboard { public:
-    void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);  // 0x0055F3B0
+    enum EOnlineScoreboardActivity { };   /* NF35: nested enum, Ego_r + FableWin ?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z */
+    void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool onlyIfBetter);  // 0x0055F3B0
 };
 class CThingAICreature;
 class CFaction;
@@ -137,7 +138,7 @@ void CTCHeroStats::Vomit()
     ++NumberOfVomits;
     CTCHeroOnlineScoreboard* scoreboard;
     ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
-    scoreboard->UpdateScoreForActivity(15, (float)NumberOfVomits, false);
+    scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)15, (float)NumberOfVomits, false);
     if (hero->IsFreeToPerformAction(&action)) {
         FrameToVomit = -1;
         if (hero) {

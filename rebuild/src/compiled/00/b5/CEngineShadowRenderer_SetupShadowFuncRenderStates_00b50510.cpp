@@ -1,3 +1,4 @@
+// Leaf: ?SetupShadowFuncRenderStates@CEngineShadowRenderer@@QAEXJABUCColorBufferDepthPackParameters@1@@Z
 // CEngineShadowRenderer::SetupShadowFuncRenderStates(long, CColorBufferDepthPackParameters*) -- forward to the matrix overload with an identity texture transform
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B50510, length 125 bytes.
@@ -19,16 +20,15 @@ class CMatrix3x4 { public:
     }
 };
 
-struct CColorBufferDepthPackParameters;
-
 class CEngineShadowRenderer { public:
-    void SetupShadowFuncRenderStates(long stage, CMatrix3x4* textureTransform, CColorBufferDepthPackParameters* pack);   // 0x00B4FC40
-    void SetupShadowFuncRenderStates(long stage, CColorBufferDepthPackParameters* pack);
+    struct CColorBufferDepthPackParameters;     // NF35: nested (Ego_r + FableWin ..ABUCColorBufferDepthPackParameters@1@@Z)
+    void SetupShadowFuncRenderStates(long stage, const CMatrix3x4& textureTransform, const CColorBufferDepthPackParameters& pack);   // 0x00B4FC40
+    void SetupShadowFuncRenderStates(long stage, const CColorBufferDepthPackParameters& pack);
 };
 
-void CEngineShadowRenderer::SetupShadowFuncRenderStates(long stage, CColorBufferDepthPackParameters* pack)
+void CEngineShadowRenderer::SetupShadowFuncRenderStates(long stage, const CColorBufferDepthPackParameters& pack)
 {
     CMatrix3x4 identity;
     identity.SetIdentity();
-    SetupShadowFuncRenderStates(stage, &identity, pack);
+    SetupShadowFuncRenderStates(stage, identity, pack);
 }

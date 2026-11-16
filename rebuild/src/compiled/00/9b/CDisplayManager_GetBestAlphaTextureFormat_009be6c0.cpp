@@ -1,5 +1,5 @@
 // CDisplayManager::GetBestAlphaTextureFormat(long, CPixelFormat&) -- pick the first RGB texture format of the requested bit depth with real red/green/blue/alpha channels that the device supports on the current mode
-// Leaf: ?GetBestAlphaTextureFormat@CDisplayManager@@QAE_NJAAVCPixelFormat@@@Z
+// Leaf: ?GetBestAlphaTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BE6C0, length 140 bytes.
@@ -43,10 +43,10 @@ class CDisplayManager { public:
     unsigned long AdapterOrdinal;                  // +0x60 D3DDeviceCaps.AdapterOrdinal
     unsigned char _caps[0x1c4 - 0x64];             // rest of the caps, extents, flags, formats, window handle, mode size
     long          CurrentModeFormat;               // +0x1c4 CurrentMode.Format
-    bool GetBestAlphaTextureFormat(long bitDepth, CPixelFormat& out);
+    bool GetBestAlphaTextureFormat(unsigned long bitDepth, CPixelFormat& out);
 };
 
-bool CDisplayManager::GetBestAlphaTextureFormat(long bitDepth, CPixelFormat& out)
+bool CDisplayManager::GetBestAlphaTextureFormat(unsigned long bitDepth, CPixelFormat& out)
 {
     for (long i = 0; GD3DFormats[i].BitDepth != -1; ++i) {
         const CD3DFormatInfo& info = GD3DFormats[i];

@@ -43,12 +43,12 @@ struct CGraphicBankParams {                     // 0x2c bytes, ctor 0x00415B80 (
     CGraphicBankParams();
 };
 class CDisplayManager { public:
-    bool GetBestCompressedAlphaTextureFormat_009be830(unsigned long bits, CPixelFormat* out);    // 0x009BE830
-    bool GetBestCompressedAlphaTextureFormat2(unsigned long bits, CPixelFormat* out);   // 0x009BE870
-    bool GetBestCompressedAlphaTextureFormat3(unsigned long bits, CPixelFormat* out);   // 0x009BE8B0
-    bool GetBestAlphaTextureFormat(unsigned long bits, CPixelFormat* out);              // 0x009BE6C0
-    bool GetBestOpaqueTextureFormat(unsigned long bits, CPixelFormat* out, bool flag);  // 0x009BE610
-    bool GetBestSignedTextureFormat(unsigned long bits, CPixelFormat* out);             // 0x009BE590
+    bool GetBestCompressedOpaqueTextureFormat(unsigned long bits, CPixelFormat& out);    // 0x009BE830
+    bool GetBestCompressedAlphaTextureFormat(unsigned long bits, CPixelFormat& out);   // 0x009BE870
+    bool GetBestCompressedBooleanAlphaTextureFormat(unsigned long bits, CPixelFormat& out);   // 0x009BE8B0
+    bool GetBestAlphaTextureFormat(unsigned long bits, CPixelFormat& out);              // 0x009BE6C0
+    bool GetBestOpaqueTextureFormat(unsigned long bits, CPixelFormat& out, bool flag);  // 0x009BE610
+    bool GetBestSignedTextureFormat(unsigned long bits, CPixelFormat& out);             // 0x009BE590
 };
 class CGraphicBankManager { public:
     CCountedPointer<CGraphicDataBank> CreateAndInitialize(const CCharString& name, CGraphicBankParams* params, bool a, bool b);   // 0x009F83D0
@@ -80,7 +80,6 @@ public:
 };
 }
 namespace NUISystem {
-enum EInputType { EIT_KEYBOARD = 0, EIT_PAD = 1 };
 struct SAllocator { SAllocator() { } };
 struct CKeyMap { unsigned char _d[0xc]; CKeyMap(); };                                   // 0x0042BF67
 struct CActionParamList { void* _M_node; CActionParamList(const SAllocator& a = SAllocator()); };   // 0x0042AB01
@@ -93,6 +92,7 @@ struct CManagerBase {
     unsigned char _d04[0xc];
 };
 class CManager : public CManagerBase { public:
+    enum EInputType { EIT_KEYBOARD = 0, EIT_PAD = 1 };  // NF35: nested (Ego_r + FableWin ?SetInput@CManager@NUISystem@@QAEXW4EInputType@12@@Z)
     CCountedPointer<CGraphicDataBank> PGraphicsBank;    // +0x10
     CCountedPointer<CGraphicDataBank> PMeshBank;        // +0x18
     void*            PInputManager;             // +0x20
@@ -159,12 +159,12 @@ CManager::CManager()
     SetInput(EIT_KEYBOARD);
     PWeaponsInventory = 0;
     CGraphicBankParams params;
-    GPDisplayManager->GetBestCompressedAlphaTextureFormat_009be830(0x10, &params.CompressedAlpha);
-    GPDisplayManager->GetBestCompressedAlphaTextureFormat2(0x10, &params.CompressedAlpha2);
-    GPDisplayManager->GetBestCompressedAlphaTextureFormat3(0x10, &params.CompressedAlpha3);
-    GPDisplayManager->GetBestAlphaTextureFormat(0x20, &params.Alpha);
-    GPDisplayManager->GetBestOpaqueTextureFormat(0x20, &params.Opaque, false);
-    GPDisplayManager->GetBestSignedTextureFormat(0x10, &params.Signed);
+    GPDisplayManager->GetBestCompressedOpaqueTextureFormat(0x10, params.CompressedAlpha);
+    GPDisplayManager->GetBestCompressedAlphaTextureFormat(0x10, params.CompressedAlpha2);
+    GPDisplayManager->GetBestCompressedBooleanAlphaTextureFormat(0x10, params.CompressedAlpha3);
+    GPDisplayManager->GetBestAlphaTextureFormat(0x20, params.Alpha);
+    GPDisplayManager->GetBestOpaqueTextureFormat(0x20, params.Opaque, false);
+    GPDisplayManager->GetBestSignedTextureFormat(0x10, params.Signed);
     params.Value20 = -1;
     params.Value24 = -1;
     params.Flag1c = false;

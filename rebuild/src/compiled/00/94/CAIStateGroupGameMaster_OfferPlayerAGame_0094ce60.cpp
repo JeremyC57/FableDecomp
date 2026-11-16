@@ -104,7 +104,9 @@ class CAIStateGroupBase { public:
     protected:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
     public:
-    EAIActionReturn AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
+protected:
+    EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
+public:
     EAIActionReturn AIAction_SpeakAISpeechToTarget(EAIActionRepeat repeat, CIntelligentPointerCreature speaker,
         CIntelligentPointerConstThing target, unsigned long speech, bool interrupt, long priority);   // 0x009812C0
 };
@@ -127,7 +129,7 @@ bool CAIStateGroup_GameMaster::OfferPlayerAGame()
     long banter = game->GetBanter();
     {
         CCharString animation("OFFER_GAME");
-        AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(), false, true, false, 0, 0));
+        AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(), false, true, false, 0, 0));
     }
     EAIActionReturn result;
     do {

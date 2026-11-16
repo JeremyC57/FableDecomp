@@ -1,3 +1,5 @@
+// Leaf: ?ChooseHoverOrStrafeState@CAIStateGroup_JackDragon@@AAE?AW4EDragonState@1@XZ
+// NF35 (2026-11-16): renamed to the Ego_r.pdb + FableWin.pdb private spelling with the nested EDragonState result (was QAEJXZ).
 // CAIStateGroup_JackDragon::ChooseHoverOrStrafeState() -- hover (state 2) when the enemy is within the dragon
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH -- the stored XY delta is a 12-byte local (z never written), giving retail's sub esp,0x10 frame.
@@ -306,10 +308,12 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
     long CurrentState;                          // +0x5c EDragonState
     long GoLeft;                                // +0x60
     long ChooseIntoGroundState();
-    long ChooseHoverOrStrafeState();
+private:
+    enum EDragonState { };                      // NF35: Ego_r + FableWin nested enum (values from the body)
+    EDragonState ChooseHoverOrStrafeState();    // NF35: private (AAE), was public long
 };
 
-long CAIStateGroup_JackDragon::ChooseHoverOrStrafeState()
+CAIStateGroup_JackDragon::EDragonState CAIStateGroup_JackDragon::ChooseHoverOrStrafeState()
 {
     CThingPositioned* enemy = (CThingPositioned*)PEnemy.GetPItem();
     const C3DVector& landed = ((CThingPositioned*)PLandedMarker.GetPItem())->GetPos();
@@ -321,6 +325,6 @@ long CAIStateGroup_JackDragon::ChooseHoverOrStrafeState()
     def.m_p = 0;
     ((CThingAICreatureDef*)PBrain->PCreature)->PDef->GetSubDef(def);
     if (delta.Length() < def.m_p->HoverRange)
-        return 2;
-    return 4;
+        return (EDragonState)2;
+    return (EDragonState)4;
 }

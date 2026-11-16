@@ -46,7 +46,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"                 // NF35: the shared enum (was a local empty enum)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CFontBank;
@@ -159,7 +159,7 @@ class CTCInventoryBase { public:
 };
 }
 class CTCInventoryItem { public:
-    long GetInventoryType() const;                      // 0x005D9030
+    ETCInterfaceType GetInventoryType() const;   // NF35: Ego_r + FableWin ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ                      // 0x005D9030
     long GetMaxNumberItems() const;                     // 0x005D9050
     bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long price, bool c, bool d);   // 0x005D8D50
 };

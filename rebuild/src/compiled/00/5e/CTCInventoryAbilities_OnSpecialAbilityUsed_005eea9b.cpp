@@ -97,7 +97,8 @@ class CTCHeroStats { public:                                          // interfa
 };
 struct CTCHeroState { unsigned char _pad00[0xd]; bool CanUseAbilities; };   // interface 0x29
 struct CTCSpellCost { long GetCost(); };                       // interface 0x91, 0x0079A610
-class CTCHeroExperience { public: void AddTrainableStatExperience(long stat, long amount); };   // interface 0x68, 0x006D8300
+#include "engine/EHeroExperienceStatCategory.h"
+class CTCHeroExperience { public: void AddTrainableStatExperience(EHeroExperienceStatCategory stat, long amount); };   // NF35: Ego_r + FableWin ..QAEXW4EHeroExperienceStatCategory@@J@Z   // interface 0x68, 0x006D8300
 class CTCSoundPlayer { public: public:
     unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };   // interface 0x10, 0x0066BD00
@@ -172,7 +173,7 @@ void CTCInventoryAbilities::OnSpecialAbilityUsed(EHeroAbility ability, bool from
             if (ability != 0xb && ability != 5 && ability != 0x12 && ability != 0x13) {
                 CTCHeroExperience* experience = 0;
                 ParentThing->GetInterface(&experience, 0x68);
-                experience->AddTrainableStatExperience(def->TrainableStat, def->TrainableStatExperience);
+                experience->AddTrainableStatExperience((EHeroExperienceStatCategory)def->TrainableStat, def->TrainableStatExperience);
             }
         }
     } else {
