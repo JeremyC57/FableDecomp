@@ -1,0 +1,96 @@
+--- a/rebuild/include/engine/CMatrix3x4.h
++++ b/rebuild/include/engine/CMatrix3x4.h
+@@ -446,5 +446,93 @@
+         return scale;
+     }
+ #endif
++#if defined(FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT) && !defined(FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY)
++    // Retail opt-in (agentC42, rows 0x00772BB0 CTCShop::AddSaleItem / 0x007DE710 CTCWallMount::AttachObject): FableWin.pdb
++    // ?SetInverseOfUniformScaleRotationTranslation@CMatrix3x4@@QAEMABV1@@Z alone (the same text as the FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY
++    // block's, for a TU whose PostMultiply goes through SetMultiply: FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY_POSTMULTIPLY). No retail
++    // out-of-line copy; expanded at 0x00772E9C.
++    FABLE_FORCEINLINE float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
++        float scale = 1.0f / (m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13);
++        E11 = m.E11 * scale; E21 = m.E12 * scale; E31 = m.E13 * scale;
++        E12 = m.E21 * scale; E22 = m.E22 * scale; E32 = m.E23 * scale;
++        E13 = m.E31 * scale; E23 = m.E32 * scale; E33 = m.E33 * scale;
++        E41 = -(E11 * m.E41 + E21 * m.E42 + E31 * m.E43);
++        E42 = -(E12 * m.E41 + E22 * m.E42 + E32 * m.E43);
++        E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
++        return scale;
++    }
++#endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_SETYZROTATE
++    // Retail opt-in (wfA1 successor, row 0x006B2CA0 CEnvironment::UpdateSunAndMoonPositions): FableWin.pdb ?SetYRotate@CMatrix3x4@@QAEXM@Z
++    // (0x02453F00, 88 debug bytes) and ?SetZRotate@CMatrix3x4@@QAEXM@Z (0x02454000, 88), emitted around ?SetIdentity@CMatrix3x4@@QAEXXZ in the
++    // environment TU; inline in retail (no out-of-line copy). Identity plus the four rotation entries: the row's x87 trace keeps the
++    // identity's 0/1 entries as compile-time constants (fmul by 0.0f, *1 folded): Y turn E11 = E33 = cos, E13 = sin, E31 = -sin; Z turn
++    // E11 = E22 = cos, E21 = sin, E12 = -sin. Body only: no layout change, default path unchanged.
++    void SetYRotate(float angle) {
++        SetIdentity();
++        float c = (float)cos(angle);
++        float s = (float)sin(angle);
++        E11 = c; E13 = s; E31 = -s; E33 = c;
++    }
++    void SetZRotate(float angle) {
++        SetIdentity();
++        float c = (float)cos(angle);
++        float s = (float)sin(angle);
++        E11 = c; E12 = -s; E21 = s; E22 = c;
++    }
++#endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_SETYZROTATE_GF
++    // Retail opt-in (wfA1 successor 3, row 0x006B2CA0 CEnvironment::UpdateSunAndMoonPositions, still DIFFER): the SetYRotate / SetZRotate
++    // bodies through GFCos / GFSin (FableWin.pdb ?GFCos@@YINM@Z / ?GFSin@@YINM@Z; angle in turns). EVIDENCE: the row multiplies every
++    // angle by the double at 0x0124F2B8 = 6.2831854820251465 = (double)6.2831855f, which is the GFCos / GFSin constant (a plain
++    // cos(x * 2pi) text uses 6.283185307179586 and only LOOKS right under the relocation mask); cos of the Y turn is stored twice
++    // from one x87 value (`fst [E11] ; fstp [E33]`, 0x006B2CE5), i.e. two double -> float entry stores. The entry ORDER and whether
++    // sin goes through E13 or a local `s` are FITTED and not final (the row does not match yet). Include engine/GFCos.h and engine/GFSin.h
++    // (after rebuild_abi.h) before this header. Do not define together with FABLE_RETAIL_CMATRIX3X4_SETYZROTATE. Body only.
++    void SetYRotate(float angle) { SetIdentity(); E11 = GFCos(angle); E33 = GFCos(angle); float s = GFSin(angle); E13 = s; E31 = -s; }
++    void SetZRotate(float angle) { SetIdentity(); E11 = GFCos(angle); E22 = GFCos(angle); float s = GFSin(angle); E21 = s; E12 = -s; }
++#endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_SETYZROTATE_GF_NEGENTRY
++    // Retail opt-in (wfA1 successor 4, row 0x006B2CA0 CEnvironment::UpdateSunAndMoonPositions): SetYRotate / SetZRotate through GFCos / GFSin
++    // (angle in turns, FableWin.pdb ?GFCos@@YINM@Z / ?GFSin@@YINM@Z) with the negated sine entry read back from the stored one
++    // (E31 = -E13, E12 = -E21). EVIDENCE: constant 0x0124F2B8 = (double)6.2831855f (the GF constant); cos stored twice from one x87 value
++    // (`fst [E11] ; fstp [E33]`, 0x006B2CE5 / 0x006B2DF4 = two double -> float entry stores of one CSE'd call); the sine kept on the
++    // x87 stack and multiplied in after the point (`fxch ; fmul xx`, 0x006B2D3D / 0x006B2E50), which the `float s` text of _GF gives
++    // the other way round (c2 leaf of the transformed E13 = the stored entry, not a local). Do not define together with
++    // FABLE_RETAIL_CMATRIX3X4_SETYZROTATE or _SETYZROTATE_GF. Include engine/GFCos.h and engine/GFSin.h first. Body only.
++    void SetYRotate(float angle) { SetIdentity(); E11 = GFCos(angle); E33 = GFCos(angle); E13 = GFSin(angle); E31 = -E13; }
++    void SetZRotate(float angle) { SetIdentity(); E11 = GFCos(angle); E22 = GFCos(angle); E21 = GFSin(angle); E12 = -E21; }
++#endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_SETYZROTATE_GF_PAREN
++    // Retail opt-in (wfA1 successor 5, row 0x006B2CA0 CEnvironment::UpdateSunAndMoonPositions): the _GF_NEGENTRY bodies with each entry
++    // assignment parenthesised. Same instructions as _GF_NEGENTRY; the parentheses leave three no-code PAREN tuples per call (the two
++    // cosines CSE to one) and so move VC7.1's 81-tuple scheduling cut: retail's `lea ecx,[vector]` placed right before both
++    // AccurateNormalise calls (0x006B2DB9, 0x006B2EBA) and the Scalers[5] / SunVector copy order (0x006B2EE3) need exactly three per call
++    // (measured: 2 or 4 per call leave the leas hoisted; sched2 region dumps). FITTED (the parenthesis count is fixed by grading, not by
++    // a source text). Do not define together with _SETYZROTATE, _SETYZROTATE_GF or _SETYZROTATE_GF_NEGENTRY. Body only.
++    void SetYRotate(float angle) { SetIdentity(); E11 = (GFCos(angle)); E33 = (GFCos(angle)); E13 = (GFSin(angle)); E31 = (-E13); }
++    void SetZRotate(float angle) { SetIdentity(); E11 = (GFCos(angle)); E22 = (GFCos(angle)); E21 = (GFSin(angle)); E12 = (-E21); }
++#endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_SETYZROTATE_GF_PAREN5
++    // Retail opt-in (wfA1 successor 7, row 0x006B2CA0 CEnvironment::UpdateSunAndMoonPositions): the _GF_NEGENTRY bodies with the
++    // SetYRotate entry assignments parenthesised (3 no-code PAREN tuples) and SetZRotate's cosine and sine entries parenthesised (2);
++    // same instructions as _GF_NEGENTRY. With the row's parenthesised `((float)GFCos(t))` vector X arguments (one high-priority PAREN
++    // each, which places the xx copy store after fsin as retail 0x006B2CCF / 0x006B2DDE) exactly 5 tuples per Y+Z pair place VC7.1's
++    // 81-tuple scheduling cuts as retail (sun / moon `lea ecx,[vector]` right before AccurateNormalise, 0x006B2DB9 / 0x006B2EBA; measured:
++    // Y/Z counts 3+2 and 2+3 match, 3+3 / 2+2 / others do not). FITTED (the count is fixed by grading). Do not define together with
++    // _SETYZROTATE, _SETYZROTATE_GF, _SETYZROTATE_GF_NEGENTRY or _SETYZROTATE_GF_PAREN. Body only.
++    void SetYRotate(float angle) { SetIdentity(); E11 = (GFCos(angle)); E33 = (GFCos(angle)); E13 = (GFSin(angle)); E31 = (-E13); }
++    void SetZRotate(float angle) { SetIdentity(); E11 = (GFCos(angle)); E22 = (GFCos(angle)); E21 = (GFSin(angle)); E12 = -E21; }
++#endif
+ };
++#ifdef FABLE_RETAIL_CMATRIX3X4_SET_RHSET_INLINE
++// Retail opt-in (chunk 850 text re-applied by agentC42, row 0x00772BB0 CTCShop::AddSaleItem): the body of
++// ?Set@CMatrix3x4@@QAEXABVCRightHandedSet@@ABVC3DVector@@@Z (out of line at 0x007767A0 in the CTCShop TU: GetRight, Forward, Up, then
++// the translation), which AddSaleItem expands three times. Force-inline: with plain inline VC7.1 calls it out of line there (2161 v 2585 bytes).
++#include "engine/CRightHandedSet.h"
++FABLE_FORCEINLINE void CMatrix3x4::Set(const CRightHandedSet& orientation,const C3DVector& translation)
++{
++    Set(orientation.GetRight(), orientation.GetForward(), orientation.GetUp(), translation);
++}
++#endif
+ #endif

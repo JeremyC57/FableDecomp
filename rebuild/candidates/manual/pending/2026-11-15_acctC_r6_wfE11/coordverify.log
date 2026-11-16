@@ -1,0 +1,4 @@
+004a3740 CWorld UpdateRegionLoad None
+addr       parity           behav  name
+004a3740   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+004a3740   RELOCATION_MATCH PASS   UpdateRegionLoad

@@ -1,0 +1,23 @@
+--- a/rebuild/include/engine/CRegionDef.h
++++ b/rebuild/include/engine/CRegionDef.h
+@@ -43,10 +43,15 @@
+     C2DVector     NameGraphicOffset;                         // +0xb4
+     unsigned char NameGraphic[4];                            // +0xbc EWorldMapNameGraphic
+     float         FishWeightMult;                            // +0xc0
++#ifdef FABLE_RETAIL_CREGIONDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CRegionDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(offsetof(CRegionDef, EnvironmentTheme) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CRegionDef, PreventHeroWeaponUse) == 0x70);
+-FABLE_STATIC_ASSERT(offsetof(CRegionDef, RegionDescription) == 0xa0);
+-FABLE_STATIC_ASSERT(offsetof(CRegionDef, WorldMapOffset) == 0xac);
+-FABLE_STATIC_ASSERT(sizeof(CRegionDef) == 0xc4);
++FABLE_STATIC_ASSERT_AT(47, offsetof(CRegionDef, EnvironmentTheme) == 0x3c);
++FABLE_STATIC_ASSERT_AT(48, offsetof(CRegionDef, PreventHeroWeaponUse) == 0x70);
++FABLE_STATIC_ASSERT_AT(49, offsetof(CRegionDef, RegionDescription) == 0xa0);
++FABLE_STATIC_ASSERT_AT(50, offsetof(CRegionDef, WorldMapOffset) == 0xac);
++FABLE_STATIC_ASSERT_AT(51, sizeof(CRegionDef) == 0xc4);
+ #endif // FABLE_ENGINE_CREGIONDEF_H

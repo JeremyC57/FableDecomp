@@ -1,0 +1,6 @@
+# acctC hand-back 2026-11-15_acctC_r6_wfB4
+
+Rows: 0x00b89c30.
+
+Coordinator-verified RELOCATION_MATCH / test PASS (`coordverify.log`). RULE AUDIT DONE: independent audit found no hard-rule violation. independent audit (Opus verifier, round 6): no source-rule violation; the invented helper and unused locals are gone. Known warning RELOC_CONFLICT D3DAlphaFuncModeTable (this row binds the table base 0x01396DD8; the landed 0x00BBC460 binding 0x01396DE8 has its index addend folded in: fix that landed binding, see LANDING GUIDE). Device d: ONE dead assert `FABLE_RETAIL_ASSERT(OutlineTexture->GetWidth(0) == 256)` with its // Inferred: note (owner decision 2026-11-15: accepted with the note). OWNER REVIEW: `static volatile` BlurOffsetU / BlurOffsetV with a // Retail-volatile: line (without volatile VC7.1 keeps the reads but copies them with integer moves, DIFFER 6408v6431); precedent is the landed sibling 0x00B5FAB0 under the 2026-11-13 ruling - confirm it covers this row. Stale LABELS.tsv line for the rejected SetCompositeAlphaRef helper: ignore it. Behaviour tests are standalone models unless stated.
+Fitted items and devices are marked in each source header comment; residue history in NOTES.md (grep the address).

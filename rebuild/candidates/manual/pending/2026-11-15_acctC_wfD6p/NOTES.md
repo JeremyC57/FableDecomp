@@ -186,3 +186,5 @@
   test removed) all FAIL.
 - Grades used this session: ~30 (incl. sweeps).
 - Read-only vland (overlay set): all 5 batch rows RELOCATION_MATCH + behaviour PASS; only WARN RELOC_NAME DELTA_NOTIONAL_ZERO (NAME_FIXES row 0129BA3C) and the _CIfmod thunk alias. lv/ removed.
+- Fix-up (inline-budget audit): Flags measured, not borrowed: /d2inlT332 alone (was the twin's /d2inlT1537 /d2inlS15). Sweep: default 3239v3777, T100 3291,
+  T300..T331 3522v3777 (one extra call: CQuaternion::ToRightHandedSet, retail expands it at 0x00B02455..0x00B02595), T332..T1537 RELOCATION_MATCH; S15 alone = default, S not needed. // Inline-budget: line added; q.py + vt PASS + addmatch + read-only vland (5/5 RELOCATION_MATCH PASS) redone.

@@ -1,0 +1,44 @@
+--- a/rebuild/include/stlport/fable_map.h
++++ b/rebuild/include/stlport/fable_map.h
+@@ -450,6 +450,21 @@
+     return pair<iterator,bool>(j,false);
+ }
+ #endif
++#if defined(FABLE_RETAIL_STLP_MAP) && defined(FABLE_RETAIL_STLP_TREE_INSERT_EQUAL_BODY)
++// Per-TU opt-in (row 0x00ACA830 COptimisedPrimitive::Initialise): the STLport 4.6 _tree.c insert_equal(const V&) body, visible as
++// _tree.c is in every retail TU; retail expands it twice there (0x00ACBD94, 0x00ACC109: the key walk, then a call to _M_insert
++// 0x00AD4540 with w = 0) while the same-TU UpdateCost 0x00AC8A60 calls the COMDAT 0x00AD54B0.
++template<class K,class V,class KeyOfValue,class Compare,class A>
++_Rb_tree_iterator<V,_Nonconst_traits<V> > _Rb_tree<K,V,KeyOfValue,Compare,A>::insert_equal(const V& v) {
++    _Link_type y=this->_M_header._M_data;
++    _Link_type x=_M_root();
++    while(x!=0) {
++        y=x;
++        x=_M_key_compare(KeyOfValue()(v),_S_key(x))?_S_left(x):_S_right(x);
++    }
++    return _M_insert(x,y,v);
++}
++#endif
+ #if defined(FABLE_RETAIL_STLP_MAP) && defined(FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_HINT_BODY)
+ // Opt-in (chunk 4007, row 0x0061B610 CTCInventoryQuests::ConstructQuestList): the STLport 4.6 _tree.c hinted
+ // insert_unique(iterator, const value_type&) body, visible in every retail TU that includes <map> like insert_unique(const V&)
+@@ -675,6 +690,12 @@
+     typedef typename _Rep_type::iterator iterator;
+     multimap():_M_t(Compare(),A()){}
+     iterator insert(const value_type& x){return _M_t.insert_equal(x);}
++#ifdef FABLE_RETAIL_STLP_MULTIMAP_BEGIN_END
++    // Per-TU opt-in (row 0x00ACA830): STLport 4.6 _multimap.h begin() / end() (inline; 0x00ACC24F walks VertexPairContractions
++    // from the header's left link to the header).
++    iterator begin(){return _M_t.begin();}
++    iterator end(){return _M_t.end();}
++#endif
+     void clear(){_M_t.clear();}
+ #ifdef FABLE_RETAIL_STLP_MULTIMAP_EQUAL_RANGE
+     // Retail opt-in (wf13, row 0x009CCEF0 CBankFile::FindIndicesByFilename): STLport 4.6 _map.h multimap const equal_range, forwarding
+@@ -696,5 +717,5 @@
+ #endif
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(std::map<unsigned long,long>)==12);
++FABLE_STATIC_ASSERT_AT(699, sizeof(std::map<unsigned long,long>)==12);
+ #endif

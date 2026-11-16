@@ -1,0 +1,6 @@
+# acctC hand-back 2026-11-15_acctC_r6_wfE8e
+
+Rows: 0x00aca830, 0x00b10b10, 0x00b03ca0.
+
+Coordinator-verified RELOCATION_MATCH / test PASS (`coordverify.log`). RULE AUDIT DONE: independent audit found no hard-rule violation. Independent audit PASS on all three (RELOCATION_MATCH, test PASS). 0x00ACA830: six dead release asserts (device d, owner-accepted with the Inferred note; 7..12 also match, 0..5 do not); depends on wfD6 overlay opt-in FABLE_RETAIL_C3DVECTOR_SUBTRACT_NAMED_RESULT (land wfD6 headers first); same-TU GetFaceNormal 0x00AC7CB0 is not landed. 0x00B10B10: OWNER REVIEW inline control /d2inlT158 with Inline-budget line (smallest N; TransformVector expanded at 0x00B119A1/0x00B11A2B); eleven dead asserts with Inferred note. 0x00B03CA0: OWNER REVIEW inline controls: three scoped pragma inline_depth(0) blocks plus /d2inlT1537 /d2inlS15, with Inline-budget line; three local class models (no usable engine header); visible noinline callee bodies respelled vs landed texts (settle one text per address at landing); one local holds a discarded real call result. Behaviour tests are standalone models unless stated.
+Fitted items and devices are marked in each source header comment; residue history in NOTES.md (grep the address).

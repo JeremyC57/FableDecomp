@@ -1,0 +1,12 @@
+--- a/rebuild/include/engine/CShopDef.h
++++ b/rebuild/include/engine/CShopDef.h
+@@ -58,4 +58,9 @@
+ };
+ FABLE_STATIC_ASSERT(sizeof(CShopDef)==0xd0);
+ FABLE_STATIC_ASSERT(offsetof(CShopDef,IsStockDisplayPermanent)==0x98);
++#ifdef FABLE_RETAIL_CSHOPDEF_STATGETTYPENAME_INLINE
++// Additive opt-in (agent wfE10-15, row 0x00502E90): CShopDef::StatGetTypeName is inline in retail, like the other def classes'
++// (GetSubDef<CShopDef> 0x005130A0 builds CCharString("CShopDef", -1) in place: `push -1 ; push 0x01244044 ; call 0x0099EBF0`).
++inline CCharString FABLE_FASTCALL CShopDef::StatGetTypeName() { return CCharString("CShopDef", -1); }
++#endif
+ #endif

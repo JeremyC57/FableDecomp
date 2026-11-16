@@ -1,0 +1,28 @@
+--- a/rebuild/include/engine/C3DMeshFileTrianglesChunk.h
++++ b/rebuild/include/engine/C3DMeshFileTrianglesChunk.h
+@@ -22,8 +22,11 @@
+     unsigned long GetCount() const;                 // 0x00ABA370 (Ego_r ?GetCount@C3DMeshFileTrianglesChunk@@QBEKXZ)
+ #endif
+     CArray<C3DTriangle2> TriangleList;              // +0x2C
++#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
++    static const char* FABLE_FASTCALL GetStaticChunkType() { return "TRIS"; }   // FableWin ?GetStaticChunkType@C3DMeshFileTrianglesChunk@@SIPBDXZ
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileTrianglesChunk) == 0x38);
++FABLE_STATIC_ASSERT_AT(26, sizeof(C3DMeshFileTrianglesChunk) == 0x38);
+ #endif // FABLE_ENGINE_C3DMESHFILETRIANGLESCHUNK_H
+ #else
+ #ifndef FABLE_ENGINE_C3DMESHFILETRIANGLESCHUNK_H
+@@ -50,9 +53,9 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileTrianglesChunk) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileTrianglesChunk, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileTrianglesChunk, TriangleList) == 0x2c);
++FABLE_STATIC_ASSERT_AT(53, sizeof(C3DMeshFileTrianglesChunk) == 0x38);
++FABLE_STATIC_ASSERT_AT(54, offsetof(C3DMeshFileTrianglesChunk, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(55, offsetof(C3DMeshFileTrianglesChunk, TriangleList) == 0x2c);
+ 
+ #endif // FABLE_ENGINE_C3DMESHFILETRIANGLESCHUNK_H
+ #endif // FABLE_RETAIL_C3DMESHFILETRIANGLESCHUNK

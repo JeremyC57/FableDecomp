@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/CAIStateGroupBase.h
++++ b/rebuild/include/engine/CAIStateGroupBase.h
+@@ -132,6 +132,12 @@
+     EAIActionReturn AIAction_PerformActionTargetFaceAndWait(const class CCreatureActionBase&,CIntelligentPointer<const CThing>,bool);
+ #endif
+     EAIActionReturn AIAction_PerformActionAndWait(const class CCreatureActionBase& action, bool wait);   // 0x0097DB70
++#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTIONTARGETFACE
++    // Nested opt-in (wfE9, row 0x00931390): Ego_r.pdb / FableWin.pdb
++    // ?AIAction_PerformActionTargetFace@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@V?$CIntelligentPointer@$$CBVCThing@@@@@Z
++    // (protected; retail 0x0097DF60). Declaration only.
++    EAIActionReturn AIAction_PerformActionTargetFace(const class CCreatureActionBase& action, CIntelligentPointer<const CThing> target);
++#endif
+ #endif
+ #if defined(FABLE_RETAIL_CAISTATEGROUPBASE_PROJECTILESTRAFE) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS)
+     // Nested opt-in (chunk Q17, row 0x009711D0 CAIStateGroup_CreatureUseCoverBase::MoveIntoCover): Ego_r.pdb

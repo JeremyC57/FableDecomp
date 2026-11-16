@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/C3DPositionInterpolator.h
++++ b/rebuild/include/engine/C3DPositionInterpolator.h
+@@ -19,7 +19,12 @@
+  virtual ~C3DPositionInterpolator();
+  C3DVector StartPosition;
+  C3DVector EndPosition;
++#ifdef FABLE_RETAIL_C3DPOSITIONINTERPOLATOR_GETINTERPOLATED
++ // agentC30 (row 0x007E15C0): FableWin.pdb ?GetInterpolated@C3DPositionInterpolator@@QBE?AVC3DVector@@M@Z, expanded in retail
++ // 0x007E17E6..0x007E1848 (`fld End ; fsub Start` x3, `fmul t`, `fadd Start`: the text of the landed out-of-line copy 0x004C2EF0).
++ C3DVector GetInterpolated(float t) const { return (EndPosition - StartPosition) * t + StartPosition; }
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DPositionInterpolator)==28);
++FABLE_STATIC_ASSERT_AT(23, sizeof(C3DPositionInterpolator)==28);
+ #endif
+ #endif

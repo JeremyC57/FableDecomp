@@ -1,0 +1,114 @@
+--- a/rebuild/include/engine/CEngineResourceManager.h
++++ b/rebuild/include/engine/CEngineResourceManager.h
+@@ -84,6 +84,15 @@
+     // inline in retail (UpdateDiskCache 0x00B2DA07 / 0x00B2DBA2 read GraphicBanks[0] at +0x954 and write through it).
+     CGraphicDataBank* GetGraphicBank(EGraphicBankNo bank) { return GraphicBanks[bank]; }
+ #endif
++#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKVSCONSTANTLAYOUTREPEATEDMESH
++    // Opt-in (wfA5, row 0x00B9AC30): FableWin.pdb ?PeekVSConstantLayoutRepeatedMesh@CEngineResourceManager@@QAEABVCEngineVSConstantLayoutRepeatedMesh@@XZ,
++    // inline in retail (ObjectMatricies.Count read in place at +0x3034 = VSConstantLayoutRepeatedMesh +0x2EC8 + 0x16C, 0x00B9B969). The member
++    // stays opaque, as in the LIGHTSBONES opt-in; the includer supplies engine/CEngineVSConstantLayoutRepeatedMesh.h (retail branch).
++    const class CEngineVSConstantLayoutRepeatedMesh& PeekVSConstantLayoutRepeatedMesh()
++    {
++        return *reinterpret_cast<const class CEngineVSConstantLayoutRepeatedMesh*>(VSConstantLayoutRepeatedMesh);
++    }
++#endif
+ #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKVSCONSTANTLAYOUTLIGHTSBONES
+     // Retail opt-in (chunk F2, row 0x00BCFB00): FableWin.pdb ?PeekVSConstantLayoutLightsBones@CEngineResourceManager@@QAEABVCEngineVSConstantLayoutLightsBones@@XZ,
+     // inline in retail (the row reads the layout's BoneMatrices at +0x2E50 = VSConstantLayoutLightsBones +0x2D7C + 0xD4 in place).
+@@ -169,7 +178,7 @@
+     unsigned char GPUScratchBufferTextureManager[0x44];      // CGPUScratchBufferTextureManager
+     unsigned char ExternalTexturesAllocatedFromEnginePools[12];   // +0x31D4 map<CTexture*,CExternalTextureAllocationInfo>
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineResourceManager)==0x31e0);
++FABLE_STATIC_ASSERT_AT(172, sizeof(CEngineResourceManager)==0x31e0);
+ #endif // FABLE_ENGINE_CENGINERESOURCEMANAGER_H
+ #else // generated flattened default (unchanged)
+ #ifndef FABLE_ENGINE_CENGINERESOURCEMANAGER_H
+@@ -250,46 +259,46 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEngineResourceManager) == 0x3410);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MeshBanks) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MainMeshBank) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, EditorMeshBank) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, EngineMeshBank) == 0x480);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, LoadingMemoryPool_Data) == 0x8e0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, LoadingMemoryPool_Info) == 0x8e4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, LoadingMemoryFailureHandler_Data) == 0x8e8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, LoadingMemoryFailureHandler_Info) == 0x8ec);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, AnimationMemoryPool_Data) == 0x8f0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, AnimationMemoryPool_Info) == 0x8f4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ClothMemoryPool_Data) == 0x8f8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ClothMemoryPool_Info) == 0x8fc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MeshDataMemoryPool_Data) == 0x900);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MeshDataMemoryPool_Info) == 0x904);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, AnimationManager) == 0x908);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, GraphicBanks) == 0x954);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MainGraphicBank) == 0x958);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, EngineFont) == 0x95c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, VShaderBanks) == 0x960);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ShaderBankPixel) == 0x2ab4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, VShaderResources) == 0x2bf0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ShaderResourcePixel) == 0x2cc8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MaxLoadingTime) == 0x2cd0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, VertexBufferUsageFlags) == 0x2cd8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, StipleFadeTexture) == 0x2cdc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, HWInverseStipplePatterns) == 0x2ce4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, DitherTextureList) == 0x2cf0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, EngineCachePath_PStringData) == 0x2cfc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, WriteableEngineCachePath_PStringData) == 0x2d00);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ZeroRGBATexture) == 0x2d04);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, SatRGBATexture) == 0x2d0c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, VSConstantLayoutBasic) == 0x2d14);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, VSConstantLayoutLights) == 0x2e60);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, VSConstantLayoutLightsBones) == 0x2fac);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, VSConstantLayoutRepeatedMesh) == 0x30f8);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, VSConstantLayoutParticles) == 0x3274);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, GPUScratchBufferTextureManager) == 0x33c0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ExternalTexturesAllocatedFromEnginePools) == 0x3404);
++FABLE_STATIC_ASSERT_AT(253, sizeof(CEngineResourceManager) == 0x3410);
++FABLE_STATIC_ASSERT_AT(254, offsetof(CEngineResourceManager, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(255, offsetof(CEngineResourceManager, MeshBanks) == 0x10);
++FABLE_STATIC_ASSERT_AT(256, offsetof(CEngineResourceManager, MainMeshBank) == 0x1c);
++FABLE_STATIC_ASSERT_AT(257, offsetof(CEngineResourceManager, EditorMeshBank) == 0x20);
++FABLE_STATIC_ASSERT_AT(258, offsetof(CEngineResourceManager, EngineMeshBank) == 0x480);
++FABLE_STATIC_ASSERT_AT(259, offsetof(CEngineResourceManager, LoadingMemoryPool_Data) == 0x8e0);
++FABLE_STATIC_ASSERT_AT(260, offsetof(CEngineResourceManager, LoadingMemoryPool_Info) == 0x8e4);
++FABLE_STATIC_ASSERT_AT(261, offsetof(CEngineResourceManager, LoadingMemoryFailureHandler_Data) == 0x8e8);
++FABLE_STATIC_ASSERT_AT(262, offsetof(CEngineResourceManager, LoadingMemoryFailureHandler_Info) == 0x8ec);
++FABLE_STATIC_ASSERT_AT(263, offsetof(CEngineResourceManager, AnimationMemoryPool_Data) == 0x8f0);
++FABLE_STATIC_ASSERT_AT(264, offsetof(CEngineResourceManager, AnimationMemoryPool_Info) == 0x8f4);
++FABLE_STATIC_ASSERT_AT(265, offsetof(CEngineResourceManager, ClothMemoryPool_Data) == 0x8f8);
++FABLE_STATIC_ASSERT_AT(266, offsetof(CEngineResourceManager, ClothMemoryPool_Info) == 0x8fc);
++FABLE_STATIC_ASSERT_AT(267, offsetof(CEngineResourceManager, MeshDataMemoryPool_Data) == 0x900);
++FABLE_STATIC_ASSERT_AT(268, offsetof(CEngineResourceManager, MeshDataMemoryPool_Info) == 0x904);
++FABLE_STATIC_ASSERT_AT(269, offsetof(CEngineResourceManager, AnimationManager) == 0x908);
++FABLE_STATIC_ASSERT_AT(270, offsetof(CEngineResourceManager, GraphicBanks) == 0x954);
++FABLE_STATIC_ASSERT_AT(271, offsetof(CEngineResourceManager, MainGraphicBank) == 0x958);
++FABLE_STATIC_ASSERT_AT(272, offsetof(CEngineResourceManager, EngineFont) == 0x95c);
++FABLE_STATIC_ASSERT_AT(273, offsetof(CEngineResourceManager, VShaderBanks) == 0x960);
++FABLE_STATIC_ASSERT_AT(274, offsetof(CEngineResourceManager, ShaderBankPixel) == 0x2ab4);
++FABLE_STATIC_ASSERT_AT(275, offsetof(CEngineResourceManager, VShaderResources) == 0x2bf0);
++FABLE_STATIC_ASSERT_AT(276, offsetof(CEngineResourceManager, ShaderResourcePixel) == 0x2cc8);
++FABLE_STATIC_ASSERT_AT(277, offsetof(CEngineResourceManager, MaxLoadingTime) == 0x2cd0);
++FABLE_STATIC_ASSERT_AT(278, offsetof(CEngineResourceManager, VertexBufferUsageFlags) == 0x2cd8);
++FABLE_STATIC_ASSERT_AT(279, offsetof(CEngineResourceManager, StipleFadeTexture) == 0x2cdc);
++FABLE_STATIC_ASSERT_AT(280, offsetof(CEngineResourceManager, HWInverseStipplePatterns) == 0x2ce4);
++FABLE_STATIC_ASSERT_AT(281, offsetof(CEngineResourceManager, DitherTextureList) == 0x2cf0);
++FABLE_STATIC_ASSERT_AT(282, offsetof(CEngineResourceManager, EngineCachePath_PStringData) == 0x2cfc);
++FABLE_STATIC_ASSERT_AT(283, offsetof(CEngineResourceManager, WriteableEngineCachePath_PStringData) == 0x2d00);
++FABLE_STATIC_ASSERT_AT(284, offsetof(CEngineResourceManager, ZeroRGBATexture) == 0x2d04);
++FABLE_STATIC_ASSERT_AT(285, offsetof(CEngineResourceManager, SatRGBATexture) == 0x2d0c);
++FABLE_STATIC_ASSERT_AT(286, offsetof(CEngineResourceManager, VSConstantLayoutBasic) == 0x2d14);
++FABLE_STATIC_ASSERT_AT(287, offsetof(CEngineResourceManager, VSConstantLayoutLights) == 0x2e60);
++FABLE_STATIC_ASSERT_AT(288, offsetof(CEngineResourceManager, VSConstantLayoutLightsBones) == 0x2fac);
++FABLE_STATIC_ASSERT_AT(289, offsetof(CEngineResourceManager, VSConstantLayoutRepeatedMesh) == 0x30f8);
++FABLE_STATIC_ASSERT_AT(290, offsetof(CEngineResourceManager, VSConstantLayoutParticles) == 0x3274);
++FABLE_STATIC_ASSERT_AT(291, offsetof(CEngineResourceManager, GPUScratchBufferTextureManager) == 0x33c0);
++FABLE_STATIC_ASSERT_AT(292, offsetof(CEngineResourceManager, ExternalTexturesAllocatedFromEnginePools) == 0x3404);
+ 
+ #endif // FABLE_ENGINE_CENGINERESOURCEMANAGER_H
+ #endif // FABLE_RETAIL_CENGINERESOURCEMANAGER

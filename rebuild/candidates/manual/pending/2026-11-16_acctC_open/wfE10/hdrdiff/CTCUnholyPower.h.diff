@@ -1,0 +1,60 @@
+--- a/rebuild/include/engine/CTCUnholyPower.h
++++ b/rebuild/include/engine/CTCUnholyPower.h
+@@ -1,5 +1,7 @@
+ #ifndef FABLE_ENGINE_CTCUNHOLYPOWER_H
+ #define FABLE_ENGINE_CTCUNHOLYPOWER_H
++// Retail opt-in FABLE_RETAIL_CTCUNHOLYPOWER_IMPLICIT_INFO_DTORS (row 0x00795300): PerCreatureInfo / PerEffectInfo destructors are the
++// implicit ones in retail (??_GPerEffectInfo 0x007939A0 runs only ~CIntelligentPointer; FrameUpdate expands both in place).
+ // Complete original owner: Ego_r0x2ef4e/FableWin0x31a89; native retail size208.
+ #include "engine/CTCBase.h"
+ #include "engine/CIntelligentPointer.h"
+@@ -21,7 +23,9 @@
+  CEnginePrimitiveThemeChannelDesc DefaultChannel;
+  PerCreatureInfo(const PerCreatureInfo & p0);
+  PerCreatureInfo();
++#ifndef FABLE_RETAIL_CTCUNHOLYPOWER_IMPLICIT_INFO_DTORS
+  ~PerCreatureInfo();
++#endif
+  PerCreatureInfo & operator=(const PerCreatureInfo & p0);
+  };
+  struct PerEffectInfo {
+@@ -30,7 +34,9 @@
+  CIntelligentPointer<CThing> Effect;
+  PerEffectInfo(const PerEffectInfo & p0);
+  PerEffectInfo();
++#ifndef FABLE_RETAIL_CTCUNHOLYPOWER_IMPLICIT_INFO_DTORS
+  ~PerEffectInfo();
++#endif
+  PerEffectInfo & operator=(const PerEffectInfo & p0);
+  };
+  typedef std::map<CThingCreatureBase*,PerCreatureInfo> MapOfCreaturesToPerCreatureInfo;
+@@ -52,11 +58,22 @@
+  void FinishMove();
+  void CancelMove();
+  void CancelForCutscene();
++#ifdef FABLE_RETAIL_CTCUNHOLYPOWER_INLINE_ACCESSORS
++ // Opt-in (row 0x00795300): FableWin.pdb header-inline accessors (debug copies 0x02A217E0 / 0x02211510 / 0x0280F2F0, far from the
++ // TU's own functions 0x0268E050..0x02694960; no Ego_r.pdb out-of-line copy).
++ void SetUnholyPowerActionInitialised(bool initialised){UnholyPowerActionInitialised=initialised;}
++ bool HasUnholyPowerActionInitialised() const{return UnholyPowerActionInitialised;}
++#else
+  void SetUnholyPowerActionInitialised(bool p0);
+  bool HasUnholyPowerActionInitialised() const;
++#endif
+  void SetPItemRemoved(CIntelligentPointer<CThing> p0);
+  float GetDamageMultiplier() const;
++#ifdef FABLE_RETAIL_CTCUNHOLYPOWER_INLINE_ACCESSORS
++ bool IsCharging() const{return CurFramesForEnvChange<NumFramesForEnvChange;}
++#else
+  bool IsCharging() const;
++#endif
+ private:
+  void FinalCleanup();
+  bool Attackable(CThingCreatureBase * p0);
+@@ -96,5 +113,5 @@
+ public:
+  CTCUnholyPower & operator=(const CTCUnholyPower & p0);
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCUnholyPower)==208);
++FABLE_STATIC_ASSERT_AT(99, sizeof(CTCUnholyPower)==208);
+ #endif

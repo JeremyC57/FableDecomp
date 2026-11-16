@@ -1,0 +1,22 @@
+--- a/rebuild/include/engine/CTCCreatureNavigation.h
++++ b/rebuild/include/engine/CTCCreatureNavigation.h
+@@ -48,6 +48,12 @@
+ #endif
+     bool GetNearbyWanderPosition(const C3DVector&,float,C3DVector&,bool) const;
+     bool GetNearestNavigablePosTo(const C3DVector&,float,C3DVector&) const;
++#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_DIRECTEDPOSITION
++    // Opt-in (wfE9, row 0x00931390): Ego_r.pdb / FableWin.pdb ?GetNearbyDirectedPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@M0MAAV2@@Z
++    // (retail 0x006CB780) and ?IsPosNavigable@CTCCreatureNavigation@@QBE_NABVC3DVector@@@Z (retail 0x006CBA50). Declarations only.
++    bool GetNearbyDirectedPosition(const C3DVector& pos, float radius, const C3DVector& direction, float angle, C3DVector& result) const;
++    bool IsPosNavigable(const C3DVector& pos) const;
++#endif
+ #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION
+     // Retail opt-in (chunk 725): FableWin.pdb members that retail compiles to PNavigator vtable forwards (CNavigatorBase
+     // slots, engine/CNavigatorBase.h FABLE_RETAIL_CNAVIGATORBASE): InterruptNavigation 0x006CB6B0 (slot 18 Interrupt),
+@@ -78,5 +84,5 @@
+ #endif
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCCreatureNavigation)==0x60);
++FABLE_STATIC_ASSERT_AT(81, sizeof(CTCCreatureNavigation)==0x60);
+ #endif

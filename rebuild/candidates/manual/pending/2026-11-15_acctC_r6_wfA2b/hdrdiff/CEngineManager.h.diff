@@ -1,0 +1,18 @@
+--- a/rebuild/include/engine/CEngineManager.h
++++ b/rebuild/include/engine/CEngineManager.h
+@@ -20,9 +20,14 @@
+     void AddEngine(CIEngine& engine);                       // 0x006404D0
+     void AddMap(long map);                                  // 0x006403A0
+     void AddChangedArea(const C2DBoxI& area);               // 0x00640560
++#ifdef FABLE_RETAIL_CENGINEMANAGER_ONRENDER
++    // Opt-in (wfA2, row 0x00435530 CDisplayEngine::DoRender): Ego_r.pdb ?OnRender@CEngineManager@@QAEXXZ, out of line in retail at
++    // 0x00640500 (DoRender 0x004356EA, ecx = CTBaseSingleton<CEngineManager>::Get()). Declaration only.
++    void OnRender();                                        // 0x00640500
++#endif
+ private:
+     std::list<CIEngine*> Engines;                           // +0x04
+     std::vector<C2DBoxI> ChangedAreas;                      // +0x08
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineManager) == 0x14);
++FABLE_STATIC_ASSERT_AT(27, sizeof(CEngineManager) == 0x14);
+ #endif

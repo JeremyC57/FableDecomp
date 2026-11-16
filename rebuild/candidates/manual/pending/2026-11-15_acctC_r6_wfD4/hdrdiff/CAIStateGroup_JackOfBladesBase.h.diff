@@ -1,0 +1,56 @@
+--- a/rebuild/include/engine/CAIStateGroup_JackOfBladesBase.h
++++ b/rebuild/include/engine/CAIStateGroup_JackOfBladesBase.h
+@@ -17,7 +17,7 @@
+ // Original Ego_r full base/fields; native STLport vector12 replaces donor16.
+ class CAIStateGroup_JackOfBladesBase:public CAIStateGroupBase {
+ protected:
+-#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
++#if defined(FABLE_RETAIL_JACK_STAGE1_UPDATE) || defined(FABLE_RETAIL_JACKOFBLADESBASE_STAGE2_UPDATE)   // FABLE_RETAIL_JACKOFBLADESBASE_STAGE2_UPDATE: wfD4, row 0x00974AA0 (IsStillRunnable 0x00971B00)
+  bool IsStillRunnable();
+  void Summon(long,bool);
+  bool HasEnemyBeenKnockedDown();
+@@ -31,6 +31,10 @@
+  // Overlay opt-in (row 0x00973DC0): Ego_r/FableWin ?SummonPillars@CAIStateGroup_JackOfBladesBase@@IAEXXZ (protected, non-virtual).
+  void SummonPillars();
+ #endif
++#ifdef FABLE_RETAIL_JACKOFBLADESBASE_SUMMONPILLARSOLD
++ // wfD4 (row 0x00974AA0 Stage2::Update, call at 0x00975040): Ego_r.pdb ?SummonPillarsOld@CAIStateGroup_JackOfBladesBase@@IAEXXZ; retail 0x00973900. Declaration only.
++ void SummonPillarsOld();
++#endif
+ #ifdef FABLE_RETAIL_CAISTATEGROUP_JACKOFBLADESBASE_SUMMON
+  // Nested opt-in (chunk 2017): Ego_r.pdb ?Summon@CAIStateGroup_JackOfBladesBase@@IAEXJ_N@Z (protected; donor 0x009992F0 after SummonPillars
+  // 0x00998F40 = retail 0x00974110).
+@@ -41,7 +45,7 @@
+  long EnemyKnockDownFrame,SpeechCounter;
+  std::vector<CIntelligentPointer<CThing> > PillarMarkers,Pillars;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_JackOfBladesBase)==0x4c);
++FABLE_STATIC_ASSERT_AT(44, sizeof(CAIStateGroup_JackOfBladesBase)==0x4c);
+ #else
+ #pragma pack(push, 1)
+ struct CAIStateGroup_JackOfBladesBase {
+@@ -60,15 +64,15 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_JackOfBladesBase) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, PSwordEmitter) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, PArenaCentre) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, PTargetThing) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, EnemyKnockDownFrame) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, SpeechCounter) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, PillarMarkers) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, Pillars) == 0x40);
++FABLE_STATIC_ASSERT_AT(63, sizeof(CAIStateGroup_JackOfBladesBase) == 0x4c);
++FABLE_STATIC_ASSERT_AT(64, offsetof(CAIStateGroup_JackOfBladesBase, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(65, offsetof(CAIStateGroup_JackOfBladesBase, PSwordEmitter) == 0x14);
++FABLE_STATIC_ASSERT_AT(66, offsetof(CAIStateGroup_JackOfBladesBase, PArenaCentre) == 0x1c);
++FABLE_STATIC_ASSERT_AT(67, offsetof(CAIStateGroup_JackOfBladesBase, PTargetThing) == 0x24);
++FABLE_STATIC_ASSERT_AT(68, offsetof(CAIStateGroup_JackOfBladesBase, EnemyKnockDownFrame) == 0x2c);
++FABLE_STATIC_ASSERT_AT(69, offsetof(CAIStateGroup_JackOfBladesBase, SpeechCounter) == 0x30);
++FABLE_STATIC_ASSERT_AT(70, offsetof(CAIStateGroup_JackOfBladesBase, PillarMarkers) == 0x34);
++FABLE_STATIC_ASSERT_AT(71, offsetof(CAIStateGroup_JackOfBladesBase, Pillars) == 0x40);
+ 
+ #endif // FABLE_RETAIL_CAISTATEGROUP_JACKOFBLADESBASE
+ #endif // FABLE_ENGINE_CAISTATEGROUP_JACKOFBLADESBASE_H

@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/C2DBoxF.h
++++ b/rebuild/include/engine/C2DBoxF.h
+@@ -6,6 +6,12 @@
+  // Retail opt-in (movie row 0x006286F0): FableWin.pdb ??0C2DBoxF@@QAE@MMMM@Z (debug only: inline in release; 0x006286F0
+  // builds C2DBoxF(0, 0, VIRTUAL_SCREEN_WIDTH, VIRTUAL_SCREEN_HEIGHT) on the stack, four stores, no call).
+  C2DBoxF(float tlx,float tly,float brx,float bry):TLX(tlx),TLY(tly),BRX(brx),BRY(bry){}
++#ifdef FABLE_RETAIL_C2DBOXF_INITIALISE
++ // Retail opt-in (agentC43, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility): FableWin.pdb ?Initialise@C2DBoxF@@QAEXMMMM@Z and ?Initialise@C2DBoxF@@QAEXABV1@@Z
++ // (inline in retail).
++ void Initialise(float tlx,float tly,float brx,float bry){TLX=tlx;TLY=tly;BRX=brx;BRY=bry;}
++ void Initialise(const C2DBoxF& box){TLX=box.TLX;TLY=box.TLY;BRX=box.BRX;BRY=box.BRY;}
++#endif
+ #ifdef FABLE_RETAIL_C2DBOXF_COPY
+  // Nested opt-in (chunk 853, row 0x0050A650 CWorldMap::GetMapNavigationAreaInit): the authored copy constructor, FableWin.pdb
+  // ??0C2DBoxF@@QAE@ABV0@@Z (0x01A664E0; inline in release). Member-wise float copies let VC7.1 build the CThingFilter_InArea copy of

@@ -1,0 +1,5 @@
+00b5a3f0 CEngineScreenEffectColourFilter ApplyColourFilter None
+00bb2540 CEngineClothRenderer RenderPolygons None
+addr       parity           behav  name
+00b5a3f0   RELOCATION_MATCH PASS   ApplyColourFilter
+00bb2540   RELOCATION_MATCH PASS   RenderPolygons

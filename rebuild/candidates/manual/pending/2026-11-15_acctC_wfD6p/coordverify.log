@@ -1,6 +1,5 @@
-addr       parity           behav  name
-00b01900   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
-00b01900   RELOCATION_MATCH PASS   AddToBoundingSphere
-
-WINS: 1
-  00b01900 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::AddToBoundingSphere
+    known_manifest = manifest_addresses()
+  File "/home/user/FableDecomp/tools/decomp_pipeline/verify_and_land.py", line 238, in manifest_addresses
+    rows = list(csv.DictReader(open(path, encoding="utf-8-sig"), delimiter="\t"))
+                               ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Documents\\FableTLC/rebuild/manifest/functions.tsv'

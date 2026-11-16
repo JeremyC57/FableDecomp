@@ -1,6 +1,3 @@
+007db6a0 CTCTavernGameCardBlackjack CardsMainGame None
 addr       parity           behav  name
-007db6a0   WARN RELOC_NAME: ?Split@CTCTavernGameCardBlackjack@@QAEXXZ -> 007db5c0 labelled 'CTCTavernGameCardBlackjack_DealCards'
 007db6a0   RELOCATION_MATCH PASS   CardsMainGame
-
-WINS: 1
-  007db6a0 RELOCATION_MATCH CTCTavernGameCardBlackjack::CardsMainGame

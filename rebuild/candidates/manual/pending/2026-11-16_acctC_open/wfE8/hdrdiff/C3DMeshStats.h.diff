@@ -1,0 +1,62 @@
+--- a/rebuild/include/engine/C3DMeshStats.h
++++ b/rebuild/include/engine/C3DMeshStats.h
+@@ -6,6 +6,24 @@
+ #include "engine/C3DBoundingBox.h"
+ #include "fable_string.h"
+ class CMovableResourceMemoryPool;
++#ifdef FABLE_RETAIL_C3DMESHSTATS_INITIALISEFROMFILEDATA
++// Retail opt-in (wfE8, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): the three vector maps typed (Ego_r.pdb
++// struct_layouts_egor.tsv: CPreAllocVectorMap<unsigned long,C3DHelperPoint> +0x38, CPreAllocVectorMap<unsigned long,C3DDummyObject>
++// +0x48, CVectorMap<unsigned long,C3DMeshVolume> +0x58, 16 bytes each; no layout change) and the loader with its private helpers
++// (Ego_r.pdb ?InitialiseFromFileData@C3DMeshStats@@QAE_NABVCCharString@@ABVC3DMeshFile@@_NPAVCMovableResourceMemoryPool@@@Z,
++// ?AllocateBuffers@C3DMeshStats@@AAE_NKKK@Z 0x00A2E760, ?PackNames@C3DMeshStats@@AAEXAAV?$CArray@D@@ABV?$set@VCCharString@@..@std@@1@Z
++// 0x00A2EEF0). Needs FABLE_RETAIL_C3DMESHSTATS_GENERATORS.
++#ifndef FABLE_RETAIL_C3DMESHSTATS_GENERATORS
++#error FABLE_RETAIL_C3DMESHSTATS_INITIALISEFROMFILEDATA needs FABLE_RETAIL_C3DMESHSTATS_GENERATORS
++#endif
++#include "stlport/fable_map.h"
++#include "engine/C3DHelperPoint.h"
++#include "engine/C3DDummyObject.h"
++#include "engine/C3DMeshVolume.h"
++#include "engine/CPreAllocVectorMap.h"
++#include "engine/CVectorMap.h"
++class C3DMeshFile;
++#endif
+ #ifdef FABLE_RETAIL_C3DMESHSTATS_GENERATORS
+ #include "engine/CArray.h"
+ #include "engine/C3DGeneratorObject.h"
+@@ -60,15 +78,34 @@
+  const C3DGeneratorObject* GetMeshGeneratorsBegin()const{return MeshGenerators.begin();}
+  const C3DGeneratorObject* GetMeshGeneratorsEnd()const{return MeshGenerators.end();}
+ #endif
++#ifdef FABLE_RETAIL_C3DMESHSTATS_INITIALISEFROMFILEDATA
++ bool InitialiseFromFileData(const CCharString& name,const C3DMeshFile& file,bool animated,CMovableResourceMemoryPool* pool);   // 0x00A2F740
+ private:
++ bool AllocateBuffers(unsigned long helper_points,unsigned long dummy_objects,unsigned long packed_names_size);   // 0x00A2E760
++ void PackNames(CArray<char>& packed,const std::set<CCharString>& helper_point_names,const std::set<CCharString>& dummy_object_names);   // 0x00A2EEF0
++#endif
++#ifdef FABLE_RETAIL_C3DMESHSTATS_PROTECTED_POOL
++// Retail opt-in (wfE8 6th agent, row 0x00A8B990): the derived C3DMesh2's own members read the pool (PackBoneNames 0x00A8B6C0
++// `mov ecx,[esi+4]` before AllocateResource, InitialiseBoneNamePointers 0x00A892E0), so the original access is protected, not
++// private. Access only: no layout or codegen change.
++protected:
++#else
++private:
++#endif
+  CMovableResourceMemoryPool* MemoryPool;
+  long StatsMemoryHandle;
+  CCharString Name;
+  C3DBoundingSphere BoundingSphere;
+  C3DBoundingBox BoundingBox;
++ #ifdef FABLE_RETAIL_C3DMESHSTATS_INITIALISEFROMFILEDATA
++ CPreAllocVectorMap<unsigned long,C3DHelperPoint> HelperPoints;   // +0x38
++ CPreAllocVectorMap<unsigned long,C3DDummyObject> DummyObjects;   // +0x48
++ CVectorMap<unsigned long,C3DMeshVolume> MeshVolumes;             // +0x58
++ #else
+  unsigned char HelperPoints[16]; // CPreAllocVectorMap<unsigned long,C3DHelperPoint,...>
+  unsigned char DummyObjects[16]; // CPreAllocVectorMap<unsigned long,C3DDummyObject,...>
+  unsigned char MeshVolumes[16]; // CVectorMap<unsigned long,C3DMeshVolume,...>
++ #endif
+ #ifdef FABLE_RETAIL_C3DMESHSTATS_GENERATORS
+  CArray<C3DGeneratorObject> MeshGenerators;
+ #else

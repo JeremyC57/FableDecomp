@@ -1,0 +1,57 @@
+--- a/rebuild/include/engine/CEnginePrimitiveManagerParticleMeshGroup.h
++++ b/rebuild/include/engine/CEnginePrimitiveManagerParticleMeshGroup.h
+@@ -53,6 +53,24 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEMESHGROUP_CLASS
++// Retail opt-in (wfE7, row 0x00B33B50; for TUs that also need engine/CEnginePrimitiveManagerParticleSpriteGroup.h, whose retail branch defines
++// the same CEngineParticleConstantBlock as this header's): the polymorphic class only, RTTI CEnginePrimitiveManagerParticleMeshGroup :
++// CEnginePrimitiveManagerMeshBase, sizeof 0x2DC, ??0..@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z (retail 0x00BC34D0) and the three
++// CEnginePrimitiveManager pure-virtual overrides (Ego_r.pdb names). Members opaque. Needs FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS.
++#include "engine/CEnginePrimitiveManagerMeshBase.h"
++class CEnginePrimitiveManagerParticleMeshGroup : public CEnginePrimitiveManagerMeshBase {
++public:
++    CEnginePrimitiveManagerParticleMeshGroup(CArray<CEngineScene*>& scenes);   // 0x00BC34D0
++    virtual ~CEnginePrimitiveManagerParticleMeshGroup();
++    virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);
++    virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;
++    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);
++private:
++    unsigned char Unmodeled_MeshGroup[0x2dc - sizeof(CEnginePrimitiveManagerMeshBase)];
++};
++FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleMeshGroup) == 0x2dc);
++#else
+ #pragma pack(push, 1)
+ class CEnginePrimitiveManagerParticleMeshGroup {
+ public:
+@@ -81,18 +99,19 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleMeshGroup) == 0x2dc);
++FABLE_STATIC_ASSERT_AT(84, sizeof(CEnginePrimitiveManagerParticleMeshGroup) == 0x2dc);
+ #ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEMESHGROUP_VIRTUAL_DTOR
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleMeshGroup, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(86, offsetof(CEnginePrimitiveManagerParticleMeshGroup, __vftable) == 0x0);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleMeshGroup, VertexShadersMeshPointLights) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleMeshGroup, VertexShaderDisplacement) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleMeshGroup, PixelShader) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleMeshGroup, PixelShaderStipple) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleMeshGroup, PixelShaderAdditiveAlpha) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleMeshGroup, PixelShaderAdditiveAlphaStipple) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleMeshGroup, PixelShaderDisplacement) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleMeshGroup, ConstantBlock) == 0x5c);
++FABLE_STATIC_ASSERT_AT(88, offsetof(CEnginePrimitiveManagerParticleMeshGroup, VertexShadersMeshPointLights) == 0x20);
++FABLE_STATIC_ASSERT_AT(89, offsetof(CEnginePrimitiveManagerParticleMeshGroup, VertexShaderDisplacement) == 0x2c);
++FABLE_STATIC_ASSERT_AT(90, offsetof(CEnginePrimitiveManagerParticleMeshGroup, PixelShader) == 0x34);
++FABLE_STATIC_ASSERT_AT(91, offsetof(CEnginePrimitiveManagerParticleMeshGroup, PixelShaderStipple) == 0x3c);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CEnginePrimitiveManagerParticleMeshGroup, PixelShaderAdditiveAlpha) == 0x44);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CEnginePrimitiveManagerParticleMeshGroup, PixelShaderAdditiveAlphaStipple) == 0x4c);
++FABLE_STATIC_ASSERT_AT(94, offsetof(CEnginePrimitiveManagerParticleMeshGroup, PixelShaderDisplacement) == 0x54);
++FABLE_STATIC_ASSERT_AT(95, offsetof(CEnginePrimitiveManagerParticleMeshGroup, ConstantBlock) == 0x5c);
+ 
++#endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEMESHGROUP_CLASS
+ #endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEMESHGROUP
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERPARTICLEMESHGROUP_H

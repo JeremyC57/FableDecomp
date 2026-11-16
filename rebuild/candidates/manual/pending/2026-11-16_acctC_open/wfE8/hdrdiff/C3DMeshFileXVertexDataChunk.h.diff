@@ -1,0 +1,57 @@
+--- a/rebuild/include/engine/C3DMeshFileXVertexDataChunk.h
++++ b/rebuild/include/engine/C3DMeshFileXVertexDataChunk.h
+@@ -24,8 +24,16 @@
+     unsigned long InitFlags;              // +0x1C
+     CVertexCompressionParams VBCParams;   // +0x20
+     CArray<char> VertexData;              // +0x40
++#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
++    static const char* FABLE_FASTCALL GetStaticChunkType() { return "XVBD"; }   // FableWin ?GetStaticChunkType@C3DMeshFileXVertexDataChunk@@SIPBDXZ
++    unsigned long GetVertexCount() const { return VertexCount; }
++    unsigned long GetVertexSize() const { return VertexSize; }
++    unsigned long GetInitFlags() const { return InitFlags; }
++    const CVertexCompressionParams& GetVBCompressionParams() const { return VBCParams; }
++    const void* PeekVertexData() const { return VertexData.GetAsCArray(); }
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXVertexDataChunk) == 0x4C);
++FABLE_STATIC_ASSERT_AT(28, sizeof(C3DMeshFileXVertexDataChunk) == 0x4C);
+ #endif // FABLE_ENGINE_C3DMESHFILEXVERTEXDATACHUNK_H
+ #else
+ #ifndef FABLE_ENGINE_C3DMESHFILEXVERTEXDATACHUNK_H
+@@ -62,21 +70,21 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXVertexDataChunk) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, FormatID) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VertexCount) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VertexSize) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, InitFlags) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleX) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleY) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleZ) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleW) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasX) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasY) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasZ) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasW) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VertexData) == 0x40);
++FABLE_STATIC_ASSERT_AT(65, sizeof(C3DMeshFileXVertexDataChunk) == 0x4c);
++FABLE_STATIC_ASSERT_AT(66, offsetof(C3DMeshFileXVertexDataChunk, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(67, offsetof(C3DMeshFileXVertexDataChunk, FormatID) == 0x10);
++FABLE_STATIC_ASSERT_AT(68, offsetof(C3DMeshFileXVertexDataChunk, VertexCount) == 0x14);
++FABLE_STATIC_ASSERT_AT(69, offsetof(C3DMeshFileXVertexDataChunk, VertexSize) == 0x18);
++FABLE_STATIC_ASSERT_AT(70, offsetof(C3DMeshFileXVertexDataChunk, InitFlags) == 0x1c);
++FABLE_STATIC_ASSERT_AT(71, offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleX) == 0x20);
++FABLE_STATIC_ASSERT_AT(72, offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleY) == 0x24);
++FABLE_STATIC_ASSERT_AT(73, offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleZ) == 0x28);
++FABLE_STATIC_ASSERT_AT(74, offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleW) == 0x2c);
++FABLE_STATIC_ASSERT_AT(75, offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasX) == 0x30);
++FABLE_STATIC_ASSERT_AT(76, offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasY) == 0x34);
++FABLE_STATIC_ASSERT_AT(77, offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasZ) == 0x38);
++FABLE_STATIC_ASSERT_AT(78, offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasW) == 0x3c);
++FABLE_STATIC_ASSERT_AT(79, offsetof(C3DMeshFileXVertexDataChunk, VertexData) == 0x40);
+ 
+ #endif // FABLE_ENGINE_C3DMESHFILEXVERTEXDATACHUNK_H
+ #endif // FABLE_RETAIL_C3DMESHFILEXVERTEXDATACHUNK

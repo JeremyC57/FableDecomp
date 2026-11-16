@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/C3DTriangle2.h
++++ b/rebuild/include/engine/C3DTriangle2.h
+@@ -12,6 +12,11 @@
+     unsigned long GetB() const { return VertexIndex[1]; }
+     unsigned long GetC() const { return VertexIndex[2]; }
+ #endif
++#ifdef FABLE_RETAIL_C3DTRIANGLE2_SETVERTEXINDEX
++    // Retail opt-in (wfE6, row 0x00B6EDF0 BuildConstantBuffers): FableWin.pdb ?SetVertexIndex@C3DTriangle2@@QAEXKG@Z (0x0333C310), inline
++    // in retail: the row writes the ten triangles' indices as in-order immediate word stores.
++    void SetVertexIndex(unsigned long index, unsigned short value) { VertexIndex[index] = value; }
++#endif
+ private:
+     unsigned short VertexIndex[3];
+ };

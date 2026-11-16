@@ -1,0 +1,29 @@
+--- a/rebuild/include/engine/CSoundDef.h
++++ b/rebuild/include/engine/CSoundDef.h
+@@ -26,14 +26,19 @@
+     unsigned char MusicEntries[12],MusicSetEntries[12],ReverbEnvironmentEntries[12];
+ #endif
+     float AtmosListenerDampingMin,AtmosListenerDampingRange,DistanceModelCurve;
++#ifdef FABLE_RETAIL_CSOUNDDEF_ALLOC
++// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
++// ?Alloc@CSoundDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
++public: static class CDefClassBase* FABLE_FASTCALL Alloc();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CSoundBankEntry)==20);
+-FABLE_STATIC_ASSERT(sizeof(CAtmosBankEntry)==8);
+-FABLE_STATIC_ASSERT(offsetof(CSoundDef,SoundBankEntries)==0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CSoundDef,AtmosBankEntries)==0x48);
+-FABLE_STATIC_ASSERT(sizeof(CSoundDef)==0x84);
++FABLE_STATIC_ASSERT_AT(30, sizeof(CSoundBankEntry)==20);
++FABLE_STATIC_ASSERT_AT(31, sizeof(CAtmosBankEntry)==8);
++FABLE_STATIC_ASSERT_AT(32, offsetof(CSoundDef,SoundBankEntries)==0x3c);
++FABLE_STATIC_ASSERT_AT(33, offsetof(CSoundDef,AtmosBankEntries)==0x48);
++FABLE_STATIC_ASSERT_AT(34, sizeof(CSoundDef)==0x84);
+ #ifdef FABLE_RETAIL_CSOUNDDEF_MUSICSETENTRIES
+-FABLE_STATIC_ASSERT(sizeof(CMusicSetEntry)==12);
+-FABLE_STATIC_ASSERT(offsetof(CSoundDef,MusicSetEntries)==0x60);
++FABLE_STATIC_ASSERT_AT(36, sizeof(CMusicSetEntry)==12);
++FABLE_STATIC_ASSERT_AT(37, offsetof(CSoundDef,MusicSetEntries)==0x60);
+ #endif
+ #endif

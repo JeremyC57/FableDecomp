@@ -1,5 +1,6 @@
+00cfe030 NScript::CQ_AwakeningTheOracleScript::COracleTablet Main None
+00d75060 NScript::CQ_HangingTreeGoodScript FinalRound None
 addr       parity           behav  name
 00cfe030   RELOCATION_MATCH PASS   Main
-
-WINS: 1
-  00cfe030 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::COracleTablet::Main
+00d75060   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d75060   RELOCATION_MATCH PASS   FinalRound

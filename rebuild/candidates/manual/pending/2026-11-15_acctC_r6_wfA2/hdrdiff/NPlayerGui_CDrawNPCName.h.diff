@@ -1,0 +1,20 @@
+--- a/rebuild/include/engine/NPlayerGui_CDrawNPCName.h
++++ b/rebuild/include/engine/NPlayerGui_CDrawNPCName.h
+@@ -19,10 +19,16 @@
+         : CDrawBase(playerGui, illustrators), ScreenShotMessageCounter(-1) { }
+ #endif
+     void SetName(const CWideString& name);                               // 0x00657230
++#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWNPCNAME_DRAW
++    // Retail opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): Ego_r.pdb / FableWin.pdb
++    // ?Draw@CDrawNPCName@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z (retail 0x006572A0, landed; Ego_r order SetName / ... / Draw,
++    // this header's comment). Declaration only: no layout change.
++    void Draw(const class CEnginePrimitivePrepareInfo& info);           // 0x006572A0
++#endif
+ protected:
+     CWideString Name;                                                    // +0x28
+     long ScreenShotMessageCounter;                                       // +0x2c
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(NPlayerGui::CDrawNPCName) == 0x30);
++FABLE_STATIC_ASSERT_AT(27, sizeof(NPlayerGui::CDrawNPCName) == 0x30);
+ #endif

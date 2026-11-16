@@ -1,0 +1,60 @@
+--- a/rebuild/include/engine/CTCDivineWrath.h
++++ b/rebuild/include/engine/CTCDivineWrath.h
+@@ -1,5 +1,7 @@
+ #ifndef FABLE_ENGINE_CTCDIVINEWRATH_H
+ #define FABLE_ENGINE_CTCDIVINEWRATH_H
++// Opt-ins FABLE_RETAIL_CTCDIVINEWRATH_IMPLICIT_INFO_DTORS / _INLINE_ACCESSORS (agent wfE10, row 0x0078FD60): the twins of the
++// CTCUnholyPower opt-ins of row 0x00795300 (identical FrameUpdate text, 11 constants apart).
+ // Complete original owner: Ego0x2ed75/FableWin0x3189e; native size200.
+ #include "engine/CTCBase.h"
+ #include "engine/CIntelligentPointer.h"
+@@ -20,7 +22,9 @@
+  CEnginePrimitiveThemeChannelDesc DefaultChannel;
+  PerCreatureInfo(const PerCreatureInfo & p0);
+  PerCreatureInfo();
++#ifndef FABLE_RETAIL_CTCDIVINEWRATH_IMPLICIT_INFO_DTORS
+  ~PerCreatureInfo();
++#endif
+  PerCreatureInfo & operator=(const PerCreatureInfo & p0);
+  };
+  struct PerEffectInfo{
+@@ -29,7 +33,9 @@
+  CIntelligentPointer<CThing> Effect;
+  PerEffectInfo(const PerEffectInfo & p0);
+  PerEffectInfo();
++#ifndef FABLE_RETAIL_CTCDIVINEWRATH_IMPLICIT_INFO_DTORS
+  ~PerEffectInfo();
++#endif
+  PerEffectInfo & operator=(const PerEffectInfo & p0);
+  };
+  typedef std::map<CThingCreatureBase*,PerCreatureInfo> MapOfCreaturesToPerCreatureInfo;
+@@ -51,11 +57,22 @@
+  void FinishMove();
+  void CancelMove();
+  void CancelForCutscene();
++#ifdef FABLE_RETAIL_CTCDIVINEWRATH_INLINE_ACCESSORS
++ // Opt-in (agent wfE10, row 0x0078FD60, the twin of CTCUnholyPower's _INLINE_ACCESSORS used by 0x00795300): FableWin.pdb header-inline
++ // accessors (no Ego_r.pdb out-of-line copy); retail reads / writes the flag in place.
++ void SetDivineWrathActionInitialised(bool initialised){DivineWrathActionInitialised=initialised;}
++ bool HasDivineWrathActionInitialised() const{return DivineWrathActionInitialised;}
++#else
+  void SetDivineWrathActionInitialised(bool p0);
+  bool HasDivineWrathActionInitialised() const;
++#endif
+  void SetPItemRemoved(CIntelligentPointer<CThing> p0);
+  float GetDamageMultiplier() const;
++#ifdef FABLE_RETAIL_CTCDIVINEWRATH_INLINE_ACCESSORS
++ bool IsCharging() const{return CurFramesForEnvChange<NumFramesForEnvChange;}
++#else
+  bool IsCharging() const;
++#endif
+ private:
+  void FinalCleanup();
+  bool Attackable(CThingCreatureBase * p0);
+@@ -101,5 +118,5 @@
+ public:
+  CTCDivineWrath & operator=(const CTCDivineWrath & p0);
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCDivineWrath)==200);
++FABLE_STATIC_ASSERT_AT(104, sizeof(CTCDivineWrath)==200);
+ #endif

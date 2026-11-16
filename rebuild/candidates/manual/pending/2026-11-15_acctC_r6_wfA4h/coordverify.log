@@ -1,0 +1,3 @@
+00b77370 CEngineWaterRenderer RenderSeaReflectiveForeground None
+addr       parity           behav  name
+00b77370   RELOCATION_MATCH PASS   RenderSeaReflectiveForeground

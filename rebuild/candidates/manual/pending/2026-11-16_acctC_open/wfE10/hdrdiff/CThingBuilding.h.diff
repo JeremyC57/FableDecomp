@@ -1,0 +1,21 @@
+--- a/rebuild/include/engine/CThingBuilding.h
++++ b/rebuild/include/engine/CThingBuilding.h
+@@ -40,6 +40,11 @@
+     // Both PDBs and native 0082d2d0, caller 0090bc1c.
+     CDefPointer<const CSimBuildingDef> PeekPSimDefinition() const;
+ #endif
++#ifdef FABLE_RETAIL_CTHINGBUILDING_RESIDENCY
++    // agent wfE10 (row 0x00502E90, chunk 879's SIMDEF text re-based): FableWin.pdb ?GetIsAvailableForResidency@CThingBuilding@@QBE_NXZ,
++    // the spelling bound to retail 0x0082E0E0 (rebuild/oracles/reloc_bindings.tsv; Ego_r spells it QAE). Declaration only.
++    bool GetIsAvailableForResidency() const;                             // 0x0082E0E0
++#endif
+     bool IsPointInside(const C3DVector&) const;
+ #ifdef FABLE_RETAIL_CTHINGBUILDING_DEFINITION
+     // Retail opt-in (agentNF9). Spellings: Ego_r.pdb / FableWin.pdb name sets, all `@CThingBuilding@@`; Ego_r donor order
+@@ -92,5 +97,5 @@
+ public:
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CThingBuilding)==0xd8);
++FABLE_STATIC_ASSERT_AT(95, sizeof(CThingBuilding)==0xd8);
+ #endif

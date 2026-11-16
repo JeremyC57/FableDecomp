@@ -1,0 +1,23 @@
+--- a/rebuild/include/engine/CEnginePrimitiveHandle.h
++++ b/rebuild/include/engine/CEnginePrimitiveHandle.h
+@@ -57,6 +57,13 @@
+     // Retail opt-in (chunk 737, CPSCLight::PreparePrimitives 0x00B19C60; the landed CPSCLight::Kill 0x00B19C20 model): FableWin.pdb
+     // ?Clear@CEnginePrimitiveHandle@@QAEXXZ, inline in retail: the last handle notifies the primitive (slot 3), then `Data = 0`
+     // through the counted pointer's Reset (needs FABLE_RETAIL_CIVCOUNTEDPOINTER: release inside the null test, then the second store).
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_FORCEINLINE_CLEAR
++    // Nested opt-in (chunk 2056, row 0x0048E78E CSubtitleRenderer::DrawButtonGraphics): the same body, forced. The subtitle TU is
++    // size-optimised; retail expands Clear() on primitive_handles[1] in place (0x0048EE4B..0x0048EE84: GetRefCount, the slot-3
++    // NotifyReleased call, the release inside the null test and the two stores), where c2 calls a plain-inline copy out of line in
++    // a size TU (it refuses plain inlines over its size limit without a score, so no /d2inlT reaches it). One text for all rows.
++    FABLE_FORCEINLINE
++#endif
+     void Clear() {
+         if (Data.GetRefCount() == 1) Data->NotifyReleased(*this);
+         Data.Reset(0);
+@@ -73,5 +80,5 @@
+ private:
+     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveHandle) == 8);
++FABLE_STATIC_ASSERT_AT(76, sizeof(CEnginePrimitiveHandle) == 8);
+ #endif

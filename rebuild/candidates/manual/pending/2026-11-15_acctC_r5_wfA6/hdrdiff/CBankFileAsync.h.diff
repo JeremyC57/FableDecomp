@@ -1,0 +1,21 @@
+--- a/rebuild/include/engine/CBankFileAsync.h
++++ b/rebuild/include/engine/CBankFileAsync.h
+@@ -30,6 +30,10 @@
+     // Retail opt-in (chunk F2, row 0x009D5BF0): Ego_r.pdb / FableWin.pdb ?HandleFailedAllocation@CBankFileAsync@@QAE_NXZ. Declaration only.
+     bool HandleFailedAllocation();                                       // 0x009D5BF0
+ #endif
++#ifdef FABLE_RETAIL_CBANKFILEASYNC_CREATEENTRY
++    // agentC27 (row 0x009FDE80): Ego_r.pdb ?CreateEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z, retail 0x009D58D0.
++    CCountedPointer<class CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0
++#endif
+ private:
+     CCountedPointer<CThreadedFile> ThreadedFile;
+     CCountedPointer<CMovableResourceMemoryPool> LoadingMemoryPool;
+@@ -51,6 +55,6 @@
+     unsigned char CriticalSection[24]; // SDK _RTL_CRITICAL_SECTION, retained opaque
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CBankFileAsync)==0x164);
++FABLE_STATIC_ASSERT_AT(54, sizeof(CBankFileAsync)==0x164);
+ #endif
+ #endif

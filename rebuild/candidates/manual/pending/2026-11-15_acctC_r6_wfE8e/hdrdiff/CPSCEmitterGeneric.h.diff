@@ -1,0 +1,19 @@
+--- a/rebuild/include/engine/CPSCEmitterGeneric.h
++++ b/rebuild/include/engine/CPSCEmitterGeneric.h
+@@ -48,7 +48,15 @@
+     unsigned short NonUniformScalingZ : 11;             // +0x48
+     unsigned long StartedTimer : 1;                     // +0x4c
+     unsigned long FinishedGenerating : 1;
++#ifdef FABLE_RETAIL_CPSCEMITTERGENERIC_GENERATEPARTICLE
++    // Retail opt-in (wfE8 6th agent, row 0x00B10B10): Ego_r.pdb / FableWin.pdb private ?GenerateParticle@CPSCEmitterGeneric@NParticleEngine@@
++    // AAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@M@Z and its same-TU callees ?ChangeOrientation@..@@AAE?AVC3DVector@@ABV3@@Z
++    // (0x00B10360, landed) and ?GetRandomRadius@..@@ABEMPAK@Z (0x00B102C0, landed). Declarations only; no layout change.
++    C3DVector ChangeOrientation(const C3DVector& v);                                   // 0x00B10360
++    float GetRandomRadius(unsigned long* seed) const;                                  // 0x00B102C0
++    void GenerateParticle(CParticleSystem& system, const CParticleUpdateParameters<unsigned long, unsigned long>& params, float creationTime);
++#endif
+  };
+ }
+-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CPSCEmitterGeneric)==0x50);
++FABLE_STATIC_ASSERT_AT(53, sizeof(NParticleEngine::CPSCEmitterGeneric)==0x50);
+ #endif

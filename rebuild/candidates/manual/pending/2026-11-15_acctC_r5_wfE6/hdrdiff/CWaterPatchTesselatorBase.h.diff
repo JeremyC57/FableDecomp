@@ -1,0 +1,17 @@
+--- a/rebuild/include/engine/CWaterPatchTesselatorBase.h
++++ b/rebuild/include/engine/CWaterPatchTesselatorBase.h
+@@ -12,7 +12,14 @@
+ #endif
+ template <class T> class CWaterPatchTesselatorBase : public CLandscapeTesselatorBase {
+ public:
++#ifdef FABLE_RETAIL_CWATERPATCHTESSELATORBASE_INLINE_CTOR
++    // Retail opt-in (wfE6, row 0x00B73760): FableWin.pdb ??0?$CWaterPatchTesselatorBase@VCTVertexWaterBackground@@@@QAE@XZ / ..Sea.. (debug
++    // 0x02CBDA30 / 0x02CBDB00), expanded by the CEngineWaterRenderer ctor (0x00B73A54..0x00B73AA4: base, vtable 0x012A3334 / 0x012A334C,
++    // BridgeVertexBuffer zeros); no out-of-line copy in retail.
++    CWaterPatchTesselatorBase() { }
++#else
+     CWaterPatchTesselatorBase();
++#endif
+ private:
+     virtual void TesselateEdge(CPatchTesselationEdgeStrip* strip, long a, long b, bool c, bool d, LANDSCAPE_EDGE_STRIP_SIDE side, unsigned short* indices);   // slot 0
+     virtual long GetBridgeVertexBufferSize();                            // slot 1

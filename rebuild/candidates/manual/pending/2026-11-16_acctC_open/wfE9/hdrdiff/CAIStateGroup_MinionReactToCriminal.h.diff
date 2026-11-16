@@ -1,0 +1,50 @@
+--- a/rebuild/include/engine/CAIStateGroup_MinionReactToCriminal.h
++++ b/rebuild/include/engine/CAIStateGroup_MinionReactToCriminal.h
+@@ -22,6 +22,11 @@
+ class CAIStateGroup_MinionReactToCriminal : public CAIStateGroupBase {
+ public:
+     virtual bool IsStillValid() const;                                   // slot 5 0x00931200
++#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOCRIMINAL_UPDATE
++    // Nested opt-in (wfE9, row 0x00931390): Ego_r.pdb / FableWin.pdb ?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ (public virtual,
++    // slot 12; retail 0x00931390).
++    virtual void Update();
++#endif
+ private:
+     bool IsValid() const;                                                // 0x00930EE0
+     CIntelligentPointer<CThingPlayerCreature> PHero;                     // +0x14
+@@ -33,7 +38,7 @@
+     mutable bool MeInsideHouse;                                          // +0x2e
+     mutable bool GuardInsideHouse;                                       // +0x2f
+ };
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionReactToCriminal) == 0x30);
++FABLE_STATIC_ASSERT_AT(36, sizeof(CAIStateGroup_MinionReactToCriminal) == 0x30);
+ #else
+ 
+ #pragma pack(push, 1)
+@@ -54,16 +59,16 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionReactToCriminal) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, PHero) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, PHome) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, FrameLastLeftStategroup) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, FrameToNextSpeak) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, OverrodeLocking) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, HeroInsideHouse) == 0x2d);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, MeInsideHouse) == 0x2e);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, GuardInsideHouse) == 0x2f);
++FABLE_STATIC_ASSERT_AT(57, sizeof(CAIStateGroup_MinionReactToCriminal) == 0x30);
++FABLE_STATIC_ASSERT_AT(58, offsetof(CAIStateGroup_MinionReactToCriminal, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(59, offsetof(CAIStateGroup_MinionReactToCriminal, PHero) == 0x14);
++FABLE_STATIC_ASSERT_AT(60, offsetof(CAIStateGroup_MinionReactToCriminal, PHome) == 0x1c);
++FABLE_STATIC_ASSERT_AT(61, offsetof(CAIStateGroup_MinionReactToCriminal, FrameLastLeftStategroup) == 0x24);
++FABLE_STATIC_ASSERT_AT(62, offsetof(CAIStateGroup_MinionReactToCriminal, FrameToNextSpeak) == 0x28);
++FABLE_STATIC_ASSERT_AT(63, offsetof(CAIStateGroup_MinionReactToCriminal, OverrodeLocking) == 0x2c);
++FABLE_STATIC_ASSERT_AT(64, offsetof(CAIStateGroup_MinionReactToCriminal, HeroInsideHouse) == 0x2d);
++FABLE_STATIC_ASSERT_AT(65, offsetof(CAIStateGroup_MinionReactToCriminal, MeInsideHouse) == 0x2e);
++FABLE_STATIC_ASSERT_AT(66, offsetof(CAIStateGroup_MinionReactToCriminal, GuardInsideHouse) == 0x2f);
+ 
+ #endif // FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOCRIMINAL
+ #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONREACTTOCRIMINAL_H

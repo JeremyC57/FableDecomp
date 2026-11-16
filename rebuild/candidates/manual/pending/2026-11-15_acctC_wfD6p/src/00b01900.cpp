@@ -8,7 +8,11 @@
 //   smallest of the 3..6 window); FableWin /Od size (604i v ours 474i without / 537i with 3 asserts) says the debug row carries asserts.
 // Earlier lane Grade: DIFFER(3755v3777) on local stand-in models (frame, pad, Z rows, magnitude load order, matrix block).
 // Leaf: ?AddToBoundingSphere@CPSCRenderMesh@NParticleEngine@@UAE_NAAVC3DBoundingSphere@@MAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@@Z
-// Flags: /d2inlT1537 /d2inlS15
+// Flags: /d2inlT332
+// Inline-budget: /d2inlT332 -- inline CQuaternion::ToRightHandedSet (orientation.ToRightHandedSet(rhs)) is expanded in retail at 0x00B02455..0x00B02595 (no call
+//   to it in the row); at the default budget VC7.1 also calls CParticle::GetRecordedPos x2, IsActive(float), CParticleSystem::TransformPosIfLocal x3
+//   (3239v3777). Measured: T331 and below DIFFER(3522v3777) with exactly one extra call, ToRightHandedSet; T332 is the smallest RELOCATION_MATCH
+//   (sampled up to T1537); /d2inlS is not needed (S15 alone = default, T332 alone matches). Replaces the borrowed twin flags /d2inlT1537 /d2inlS15.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B01900, 3777 bytes, thiscall, `ret 10h`, returns bool.
 // Identity: FableWin.pdb ?AddToBoundingSphere@CPSCRenderMesh@NParticleEngine@@UAE_NAAVC3DBoundingSphere@@MAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@@Z;
 //   slot 19 of vtable 0x0129F96C (CPSCBase's slot 19 is AddToBoundingSphere 0x00AF2A30; the CPSCLight twin 0x00B18AF0 is landed); `ret 10h`

@@ -1,0 +1,3 @@
+00bca950 CEnginePrimitiveManagerSpriteTrails RenderSpriteTrail None
+addr       parity           behav  name
+00bca950   RELOCATION_MATCH PASS   RenderSpriteTrail

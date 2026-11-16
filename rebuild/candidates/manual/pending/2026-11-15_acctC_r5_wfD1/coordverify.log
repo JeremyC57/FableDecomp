@@ -1,0 +1,3 @@
+00eaf810 NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff DoAskingHeroToKillAssassin None
+addr       parity           behav  name
+00eaf810   RELOCATION_MATCH PASS   DoAskingHeroToKillAssassin

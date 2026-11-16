@@ -1,0 +1,21 @@
+--- a/rebuild/include/engine/CTCSoundPlayer.h
++++ b/rebuild/include/engine/CTCSoundPlayer.h
+@@ -68,6 +68,11 @@
+     // modelled as a friend (unproven: the TLC header may have made the member public instead). No layout change.
+     friend class CTCTalk;
+ #endif
++#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYUNATTACHEDCRITERIA
++    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?PlayUnattachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@ABVC3DVector@@_N2@Z
++    // (0x0066BDF0, called 0x004A595F with "BIG_DOOR_SLAM_SHUT", the hero's position, false, false). Declaration only.
++    unsigned long PlayUnattachedCriteria(const CCharString&, const C3DVector&, bool, bool);   // 0x0066BDF0
++#endif // FABLE_RETAIL_CTCSOUNDPLAYER_PLAYUNATTACHEDCRITERIA
+ protected:
+     CIntelligentPointer<CThingSoundEmitter> PAttachedEmitter;
+     CCharString VoiceName,ExtraTag;
+@@ -89,5 +94,5 @@
+ public:
+ #endif // FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS3
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCSoundPlayer)==36);
++FABLE_STATIC_ASSERT_AT(92, sizeof(CTCSoundPlayer)==36);
+ #endif

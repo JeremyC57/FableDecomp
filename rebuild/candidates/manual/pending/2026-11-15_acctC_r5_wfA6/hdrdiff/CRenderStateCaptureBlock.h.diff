@@ -1,0 +1,43 @@
+--- a/rebuild/include/engine/CRenderStateCaptureBlock.h
++++ b/rebuild/include/engine/CRenderStateCaptureBlock.h
+@@ -10,6 +10,9 @@
+ #endif
+ #include "rebuild_abi.h"
+ #include "engine/CRenderStateManager.h"
++#ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
++#include "fable_compiler.h"
++#endif
+ class CRenderStateScopedCaptureBlock;
+ #ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE
+ // Opt-in (chunk 2048): the retail-era inline bodies (Ego_r.pdb has no out-of-line CRenderStateCaptureBlock function; FableWin.pdb
+@@ -21,7 +24,15 @@
+     CRenderStateCaptureBlock() : Open(false) { }
+     ~CRenderStateCaptureBlock() { if (Open) Restore(); }
+     void Capture() { StateManager->StartCaptureBlock(this); Open = true; }
++#ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_RESTORE_OPEN_FIRST
++    // Nested opt-in (agentC8, row 0x00B783F0 CEngineWaterRenderer::Render): Open cleared before the RestoreCaptureBlock call -- retail
++    // 0x00B7911F..0x00B7912A `mov ecx,[StateManager] ; mov byte ptr [esp+24h],0 ; call 0x00A05840` (the block's address has escaped
++    // through StartCaptureBlock(this), so VC7.1 cannot move the store above the call: the source order is store first), as the
++    // INLINE_DTOR opt-in's `Open = false; StateManager->RestoreCaptureBlock();`.
++    void Restore() { Open = false; StateManager->RestoreCaptureBlock(); }
++#else
+     void Restore() { StateManager->RestoreCaptureBlock(); Open = false; }
++#endif
+     static void __fastcall SetStateManager(CRenderStateManager* manager);
+ private:
+     bool Open;
+@@ -73,7 +84,14 @@
+ };
+ class CRenderStateScopedCaptureBlock {
+ public:
++#ifdef FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
++    // Retail opt-in (wfA6b, row 0x00BA6240): the same constructor force-inlined. No out-of-line ??0CRenderStateScopedCaptureBlock
++    // exists in retail (reloc_bindings) or Ego_r.pdb; retail expands StartCaptureBlock at 0x00BA62A6..0x00BA62CF, plain inline is
++    // called out of line by VC7.1 in that 2.9 KB caller. Needs fable_compiler.h (FABLE_FORCEINLINE).
++    FABLE_FORCEINLINE CRenderStateScopedCaptureBlock() { CRenderStateCaptureBlock::StateManager->StartCaptureBlock(this); }
++#else
+     CRenderStateScopedCaptureBlock() { CRenderStateCaptureBlock::StateManager->StartCaptureBlock(this); }
++#endif
+     ~CRenderStateScopedCaptureBlock() { CRenderStateCaptureBlock::StateManager->RestoreCaptureBlock(); }
+ };
+ #endif

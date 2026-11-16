@@ -1,0 +1,25 @@
+--- a/rebuild/include/engine/CTCHitLocations.h
++++ b/rebuild/include/engine/CTCHitLocations.h
+@@ -71,6 +71,14 @@
+     // whose def's instantiation name equals the argument. Supersedes the descriptive GetPHitLocationFromName (NAME_FIXES.tsv).
+     NHitLocations::CHitLocation* GetPHitLocationWithDefName(const CCharString& defName);   // 0x00815820
+ #endif
++#ifdef FABLE_RETAIL_CTCHITLOCATIONS_TRIANGLE
++    // Retail opt-in (agentC24, row 0x007BFE30 NThingShot::CTCShotDefinitionBase::UpdateCollision): Ego_r.pdb / FableWin.pdb
++    // ?GetPCombatFirstHitLocationIntersectionWithTriangle@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABV?$vector@VC3DVector@@...
++    // (the non-const overload, out of line at 0x008169B0; the row passes a CArray<C3DVector>(3), the two out vectors and 0.25f).
++    // Declaration only; parameter names descriptive.
++    NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithTriangle(const std::vector<C3DVector>& triangle,
++        C3DVector& hitPos, C3DVector& hitNormal, float tolerance);   // 0x008169B0
++#endif
+ private:
+     unsigned char HitLocations[0xC];                                  // +0x0C vector<pair<NHitLocations::CHitLocation,long> >
+     NHitLocations::CHitLocation* PDefaultHitLocation;                 // +0x18
+@@ -79,6 +87,6 @@
+     float BoundingSphereRadius;                                       // +0x2C
+     bool CachedBoundingSphere;                                        // +0x30
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCHitLocations) == 0x34);
++FABLE_STATIC_ASSERT_AT(82, sizeof(CTCHitLocations) == 0x34);
+ #endif
+ #endif

@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/NCreatureMode.h
++++ b/rebuild/include/engine/NCreatureMode.h
+@@ -124,6 +124,11 @@
+ bool __fastcall IsLightningable(const CThing& thing);                   // 0x0085FAA0
+ }
+ #endif
++#ifdef FABLE_RETAIL_NCREATUREMODE_HERORUN
++// Opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?IsAvailableForHeroRun@NCreatureMode@@YI_NABVCThing@@@Z (0x0085F560). Declaration only.
++class CThing;
++namespace NCreatureMode { bool __fastcall IsAvailableForHeroRun(const CThing& thing); }   // 0x0085F560
++#endif
+ #ifdef FABLE_RETAIL_FIRE_RANGED_WEAPON
+ class CThing;
+ namespace NCreatureMode{bool FABLE_FASTCALL IsValidRangedWeaponTargetForShooter(const CThing&,const CThing&,float);}

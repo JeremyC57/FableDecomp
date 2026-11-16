@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/C3DGeneratorObject.h
++++ b/rebuild/include/engine/C3DGeneratorObject.h
+@@ -13,6 +13,12 @@
+     unsigned long GetBankIndex() const { return BankIndex; }
+     bool GetUseLocalOrigin() const { return UseLocalOrigin; }
+     const CCharString& GetObjectName() const { return ObjectName; }
++#ifdef FABLE_RETAIL_C3DGENERATOROBJECT_CTOR
++    // Retail opt-in (wfE8, row 0x00A2F740): FableWin.pdb ??0C3DGeneratorObject@@QAE@ABVC3DDummyObject@@_NABVCCharString@@K@Z, inline in
++    // retail (0x00A2FAF8..0x00A2FB39: dummy copied with `rep movsd`, name copy-constructed 0x0099EC30, bank index and flag stored).
++    C3DGeneratorObject(const C3DDummyObject& dummy, bool use_local_origin, const CCharString& object_name, unsigned long bank_index)
++        : C3DDummyObject(dummy), ObjectName(object_name), BankIndex(bank_index), UseLocalOrigin(use_local_origin) { }
++#endif
+ private:
+     CCharString ObjectName;                                              // +0x34
+     unsigned long BankIndex;                                             // +0x38

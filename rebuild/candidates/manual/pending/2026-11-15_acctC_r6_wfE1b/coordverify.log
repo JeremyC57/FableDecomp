@@ -1,0 +1,3 @@
+00cf68c0 NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard Main ['/d2inlS15', '/d2inlT69']
+addr       parity           behav  name
+00cf68c0   RELOCATION_MATCH PASS   Main

@@ -1,0 +1,28 @@
+--- a/rebuild/include/engine/C3DMeshMaterial.h
++++ b/rebuild/include/engine/C3DMeshMaterial.h
+@@ -22,6 +22,18 @@
+     bool HasValidDiffuseMap() const { return DiffuseMapBankIndex != 0; }
+     unsigned long GetSelfIllumination() const { return SelfIllumination; }
+ #endif
++#ifdef FABLE_RETAIL_C3DMESHMATERIAL_FLAGS
++    // Opt-in (bwf1 / agentC2, row 0x00BB3E80): FableWin.pdb inline ?GetSelfIllumination@C3DMeshMaterial@@QBEKXZ, ?IsTwoSided@C3DMeshMaterial@@QBE_NXZ,
++    // ?IsTransparent@C3DMeshMaterial@@QBE_NXZ (no out-of-line copy; +0x24 / +0x28 / +0x29 read in place). Members shared with the
++    // _PARTICLEMESH / _FLAG_ACCESSORS opt-ins are declared here only without them.
++#ifndef FABLE_RETAIL_C3DMESHMATERIAL_PARTICLEMESH
++    unsigned long GetSelfIllumination() const{return SelfIllumination;}
++#endif
++    bool IsTwoSided() const{return TwoSided;}
++#ifndef FABLE_RETAIL_C3DMESHMATERIAL_FLAG_ACCESSORS
++    bool IsTransparent() const{return Transparent;}
++#endif
++#endif
+ #ifdef FABLE_RETAIL_C3DMESHMATERIAL_FLAG_ACCESSORS
+     // Retail opt-in (chunk 3013, row 0x00B9A4A0 CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive): the FableWin.pdb inline
+     // accessors ?IsTransparent@C3DMeshMaterial@@QBE_NXZ / ?IsBooleanAlpha@C3DMeshMaterial@@QBE_NXZ / ?GetMapFlags@C3DMeshMaterial@@QBEKXZ
+@@ -35,5 +47,5 @@
+     bool TwoSided,Transparent,BooleanAlpha,DegenerateTriangles;
+     unsigned char Filenames[4]; // CIVCountedPointer<CFilenames>, one word.
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshMaterial)==0x30);
++FABLE_STATIC_ASSERT_AT(38, sizeof(C3DMeshMaterial)==0x30);
+ #endif

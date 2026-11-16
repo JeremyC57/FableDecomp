@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/CChunkedFile.h
++++ b/rebuild/include/engine/CChunkedFile.h
+@@ -10,6 +10,12 @@
+ CChunkedFile(const CChunkedFile&);
+ CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>&);
+ virtual ~CChunkedFile();
++#ifdef FABLE_RETAIL_CCHUNKEDFILE_GETCHUNKEDFILEROOT
++// Retail opt-in (wfE8, row 0x00A2F740): FableWin.pdb ?GetChunkedFileRoot@CChunkedFile@@QBE?AV?$CCountedPointer@$$CBVCChunkedFileSuperChunk@@@@XZ,
++// inline (no Ego_r.pdb / retail out-of-line copy): the root super-chunk as a const counted pointer (the converting copy the landed
++// C3DMeshFile::GetRoot 0x00A32620 performs).
++CCountedPointer<const CChunkedFileSuperChunk> GetChunkedFileRoot()const{return RootChunk;}
++#endif
+ private:CCountedPointer<CChunkedFileSuperChunk> RootChunk;unsigned long Version;CCharString FileComment;};
+ FABLE_STATIC_ASSERT(sizeof(CChunkedFile)==0x14);
+ #endif

@@ -202,3 +202,182 @@ terms.py (x87 term order per store), sweep.sh (one line per variant), calls.sh <
   RenderPrimitiveBlocksIndexBuffer 0x00BCFB00, SetupMesh 0x00BCF2E0, GetBoneTransformations 0x00BD2D90 -- landed with local models,
   not ported here) differs. Best kept: differ/00bd5c90.cpp = LTR + DBX + k=9 (2935v2935, m=40). Test test/00bd5c90.cpp written (host
   model, not run against a match). Parked for this run (~330 grades).
+
+## 0x00BD5C90 -- wfA6d (successor, 2026-11-15)
+- Measured: residue (a) (scene-data push schedule) is NOT moved by k (0..30) with LTR/DBX; it is fixed by an explicit X-row tree
+  ((E11x+E31z)+E21y)+E41 (probe opt-in TRANSFORMPOINT_PROBE1 in hdr/engine/CMatrix3x4.h, probe only): with PROBE1 + DBX + k=17/20 the
+  centre transform, the push and all four stage-0 test/or are equal; only the mipmap TransformPoint X row is left (2933v2935, m=37).
+- Inference (EVIDENCED by trees): retail's centre rows are ((E1kx+E3kz)+E2ky) trees; the mipmap rows (this row and the matched static
+  row 0x00BA6240, both contexts there) are default-text trees E1kx+(E2ky+E3kz). No single 1-arg TransformPoint text can give both, so the
+  centre is most likely NOT the 1-arg TransformPoint: 2-arg TransformPoint(source, dest) (FableWin has it), with default 1-arg for the
+  mipmap. Tried 2-arg texts SOURCE_DEST_SUMS (=SDPROBE3, operand order inert), SDPROBE1 (default 2-arg text, forceinline), SDPROBE4
+  (grouped), x {N, D, DBX} x k: best m=52 (push still wrong). `.Center` source instead of GetCenter(): worse (m=70..90).
+- Named-local / expression shifts between the residues (distance inline, render_info unnamed, scene_data named, mesh_radius inline,
+  type named, min_w_clamp inline, mesh_info dropped) x k=0..20: none better than 40.
+- Same-TU evidence (new): IsInsideFrustum@CEngineInternalPrimitiveAnimatedMesh 0x00BCF040 (same TU, same CalcInterpolatedObjectTransform
+  + MeshInfo+0x28 centre) transforms its centre with DEFAULT-text trees ((E3kz+E2ky)+E1kx). This row's centre trees are
+  ((E1kx+E3kz)+E2ky) with `fld Ejk ; fmul st(i)` products. So the centre here is spelled differently from IsInsideFrustum's
+  (not the 1-arg default TransformPoint): open question which helper/text. Tried as candidates (all with the default 1-arg for the
+  mipmap): 2-arg SOURCE_DEST_SUMS, default 2-arg text forceinline (SDPROBE1), all-rows-accumulated x,z,y (SDPROBE2, the 2-arg
+  default's own Y/Z style), grouped (SDPROBE4), COPY_SUMS, each x {N,D,DB,DBX,X,DX} x k in {0,9,10,13,17,20}: best m=52..55; the
+  2-arg forms emit `fld st(i) ; fmul Ejk` products (retail `fld Ejk ; fmul st(i)`) and leave the push wrong. Probe opt-ins were
+  removed again (hdr/engine/CMatrix3x4.h restored byte-identical; 0x00BA6240 regraded RELOCATION_MATCH).
+- ~290 grades this run. Parked again; best stays differ/00bd5c90.cpp (2935v2935, m=40).
+
+## 0x00AE3C30 -- wfA6d
+- New facts: retail's `this` is a pure memory variable (reloaded from [esp+10h] everywhere) and the never-written C3DTriangle2
+  resize(n) fill temp is packed ON this's home ([esp+10h], `lea ecx,[esp+10h]` at 0x00AE3D5D); ours packs the temp at +14h over the
+  pair temp and makes `this` a register candidate (ebx from 0x00AE416F). Frame 0x10 v 0xC follows. So the open question is why c2
+  treats `this` as memory-only in retail.
+- Tried (byte-identical): k = 10/20/40 unused locals; explicit `resize(n, C3DTriangle2())`; named `C3DTriangle2 blank` (at top, in a
+  block, before the call). /Op identical; /Oa, /Ow much worse (no sibling carries them). Parked (~10 grades).
+
+## 0x00C79FD0 -- wfA6d
+- Tried (byte-identical): k=1..7 unused `__m64 unusedN = _mm_setzero_si64();` (MMX-class records); ivec.h's
+  `operator=(const M64&)` members on Is32vec2 / I32vec2 / Is16vec4 / I16vec4. The s3 colour (mm1 retail v mm2 ours) is the register
+  the final paddd result takes (retail: into the partial-sum reg then copied to p1's dead reg). Parked (~10 grades).
+
+## 0x00BD5C90 -- wfA6e (2026-11-15, successor): m=40 -> 28 (22 of the 28 masked lines are relocation noise; real residue = 1 push schedule)
+- NEW lever: two dead release asserts (hdr/fable_assert.h, FABLE_RETAIL_ASSERT_DEAD_ARM; agentC6 measured the same residue class on
+  0x00BB3E80) fix both stage-0 filter-setter test/or swaps at k=9..13 (a=1..8 all similar; count-only); they flip the hidden-materials
+  SIB (`cmp byte [eax+ecx]` retail v ours [ecx+eax]); a named `const unsigned long material_index = mesh_primitive.GetMaterialIndex();`
+  for the two uses fixes that. differ/00bd5c90.cpp = LTR + DBX + k=9 + 2 asserts + material_index: DIFFER(2935v2935), m=28.
+- Left: scene-data copy push (0x00BD5DBB..) scheduled two x87 instructions early in retail. Measured with asserts: all 108 X/Y/Z row-tree
+  combos (flat F, default D, ((x,z),y) T, ((x,y),z) P) at k=10/12: X=F push late, X=T push one early (and mipmap X breaks), X=D push
+  exact but centre X order wrong; Y/Z trees inert for the push. 2-arg centre TransformPoint (accumulated / copies / flat) x {SUMS, LTR}:
+  m>=44. Named sphere copy: worse. Assert expressions with float / class temporaries: none below 30.
+
+## 0x00BD5C90 -- MATCHED (wfA6e, 2026-11-15): src/00bd5c90.cpp + test/00bd5c90.cpp, RELOCATION_MATCH, vt PASS, read-only vland RELOCATION_MATCH PASS, addmatch done
+- What closed it (each graded, in order): (1) two dead FABLE_RETAIL_ASSERTs (hdr/fable_assert.h, dead arm) -> both stage-0 filter-setter
+  bookmark test/or equal (m 40 -> 30); (2) a named `material_index` for GetMaterial + hidden_materials (the asserts had flipped the SIB at
+  0x00BD6379) -> 28; (3) the radius spelled `((Radius + |Center|) * Scale) + BoundingRadiusFix` (natural grouping paren; same tree; its
+  no-code PAREN tuple moves the scene-data copy push 0x00BD5DBB into the Z-row sum as in retail -- MATCHING_PLAYBOOK scheduler rule)
+  -> RELOCATION_MATCH. `+ (BoundingRadiusFix)` paren works too; parens elsewhere in the radius expression do not.
+- Minimal set measured: k=9 exactly (k=0..8 differ), both asserts (one assert: test/or back), material_index needed, DBX opt-ins still
+  needed (none / D / DB / X / DX / BX / B all differ). TRANSFORMPOINT_LTR = FableWin ?TransformPoint text (61i/168b SAME, fwsize).
+- Retail-asm evidence line for the shared GFFloatToLongFloor (0x00BD65D1..) added so purity = retail_asm (vland said NOT_GENUINE without it).
+- Header: hdr/fable_assert.h added (copy of agentC6's shared header via wfE3; new file, additive; 0x00BA6240 does not include it, regraded
+  RELOCATION_MATCH in the same vland run).
+
+## 0x00C79FD0 -- wfA6e (2026-11-15)
+- c2prio (tools/decomp_pipeline/linux_lane/lane_tools/c2probe/c2prio.py, --flags /GS; trace in tmp/c79/c2p/base.txt): case 0 s1 = web #37
+  prio 168 key 198 (split, memory), s3 = web #40 prio 168 key 118 -> reg60 (mm2). Retail = s3 coloured BEFORE s1 (s3 takes reg59 = mm1,
+  the s1 reload piece mm2). Equal prio, key = number of the last tuple writing the web (tuples numbered per block from the last tuple
+  back, so the earlier def wins): with one straight-line loop body and s1 defined before s3, ours can only colour s1 first. Retail
+  therefore had either a higher prio for s3 (more references / another block) or a block boundary between the two defs.
+- Measured inert (byte-identical, m=147): k = 1..20 `int unusedN = 0;`; 1..8 dead FABLE_RETAIL_ASSERTs (pointer and int conditions);
+  renaming s3 (7 names); a separate copy `Is32vec2 t = s3;` for b; reusing s1 / s3 / s0+s2 as the a / b results (webs are rebuilt).
+- Parked (~40 grades). Open: find a no-code IL block boundary or an extra s3 reference that the original source had.
+
+## 0x00AE3C30 -- wfA6f (2026-11-15, successor; ~25 grades + 3 c2 traces)
+- Read c2's own allocation (tools/ae3c30_c2prio.py = C41 c2prio_f.py; traces tmp/ae3/prio1*.txt): first-run priorities `this` -298
+  (split: esi #8, edi #7, ebx #46) v `const 0` -322 (refs 90, "split, immediate"). In the third split pass every const-0 piece is
+  SKIPPED with spill -1 ("not worth a register"), then this-piece #46 (prio -77, allowed only ebx) takes ebx = ours from
+  0x00AE416F. Retail's const-0 piece over 0x00AE40CB..0x00AE441E (loop guard) must have spill > 0 (it gets ebx; the loop counter
+  takes ebx after). So the open fact is the COST of the const-0 piece (sum w*cost over its blocks), not a key tie: k locals cannot move it.
+- Frame (EVIDENCED): C3DTriangle2 is 6 bytes; retail frame = [+0 this home shared with the 8-byte never-written fill temp]
+  [+8 pair<CCharString,ulong> temp]; ours = [+0 this spill] [+4 fill temp over the pair temp]. A consequence of `this` being a
+  spilled candidate in ours (pieces), packer runs after allocation.
+- Tried, all inert (2278v2310, 127..131 masked lines): FABLE_RETAIL_CVECTORMAP_INSERT_KEYVALUE (+ _VALUE_TYPE) with
+  `ExportParticles.Insert(name, index)` (byte-identical; the pair dies before Dirty either way); same-TU ReadGroups 0x00AE3A60 body
+  visible above the row (probe-only opt-in FABLE_RETAIL_C3DGROUP2_READGROUPS: GetVertexBlends / Resize decls, kept in
+  probe/ae3h/engine/C3DGroup2.h, NOT in hdr/ since inert; source tmp/ae3/v3.cpp); probe overlay probe/ae3h also has a Read body
+  through IsValidPosition(__int64) (the landed ReadGroups reader's spelling): inert; resize(n) via
+  FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_OUTOFLINE (noinline body) + explicit two-arg resize(n, T()) for Tris / Vertices / long;
+  named count locals per resize (all / first three / last three: 127 best, no allocation change); named float for AveragePatchSize;
+  named NonSimCount local; signed loop counter / ReadSLONG count; an empty inline `T* const&` toucher of `this` (inert; a throwing
+  one changes code). None produces `xor ebx,ebx`.
+- Next (untried): find what makes a const-0 block cost +1 v -1 in c2 (0x10782473 pass: cost of a constant reference) -- e.g. trace
+  one tiny probe TU with `mov [mem],0` / 64-bit compare / test shapes; then look for the IL shape in the second half that retail had
+  (candidate: the 64-bit range check spelled through IsValidPosition(__int64) as the landed ReadGroups local reader does, which
+  changes the compare tuples against 0 without changing bytes).
+
+## 0x00ADE080 -- wfA6f (2026-11-15, successor; ~95 grades)
+- Real residue of differ/00ade080.cpp with relocation noise ALSO masked (tools/ade080_md.sh: `[0]` v `[ADDR]`, call/jump targets):
+  17 lines, not 43 (26 of the 43 were relocation-mask noise). Left: (1) v0 X row association, retail (x*E11 + y*E21) + z*E31 at
+  0x00ADE485..0x00ADE497, ours (x*E11 + z*E31) + y*E21 from the FITTED GROUPED_XZY body (v1..v3 need that grouping); (2) centre
+  TransformPoint Y row inner pair, retail z*E32 computed first (`fld st(2) ; fmul [eax+1Ch] ; fxch st(4) ; fmul [eax+10h] ;
+  faddp st(4)`, 0x00ADE624..), ours y*E22 first (one fxch fewer = the 2 bytes); (3) `lea ecx,[esi+0Ch] ; mov ebx,ecx` scheduled
+  13 instructions earlier in ours (0x00ADE60C / 0x00ADE612 in retail).
+- FableWin COMDAT order after InitialiseFromOBB (0x03313830): ??4C4DVector@@QAEABV0@ABVC3DVector@@@Z, then
+  AlignedTransformTransposedAssumeW / TransformTransposedAssumeW: the original SSE arm uses C4DVector::operator=(const C3DVector&).
+  Measured: `C4DVector centre; centre = obb.GetCenter();` (FABLE_RETAIL_C4DVECTOR_ASSIGN3D) is byte-identical to the ctor form
+  (kept the ctor); corners through operator= is worse (2743, 272 lines).
+- Sweeps (all >= 17, none better): k unused locals 1..19 (int / float) at function top, x87-arm start, before centre (period ~6;
+  k=13..18 give equal length 2735 but 40..44 lines: other x87 orders rotate); dead release asserts (FABLE_RETAIL_ASSERT_DEAD_ARM)
+  n=1..6 x k=0..7: an assert shifts numbering like k (the fields it names do not matter: E31,E21,E11 v E11,E21,E31 identical), best
+  24; flat TransformVector / TransformPoint with k=0..11: 51..66 lines. Shared-symbol spellings (one `half` for both arms, half
+  transformed in place, `half` + v0 copy): 190..295 lines.
+- Conclusion: the remaining orders are relative c2 record/key orders (not a uniform shift), so devices (c)/(d) cannot close it.
+  Parked. Best stays differ/00ade080.cpp (unchanged).
+
+## 0x00C79FD0 -- wfA6g (2026-11-15, successor; ~41 grades + 3 c2prio traces; parked again, best unchanged differ/00c79fd0.cpp)
+- Decision re-measured (c2prio --trace --blocks, tmp/c79n/base_trace.txt): in the third-pass re-sort of case 0 the s1 reload piece
+  #167 (prio 168, key 198 copied from s1 #37) sorts before s3 #40 (prio 168, key 118) and takes reg59 = mm1, so s3 gets reg60 = mm2.
+  Retail = s3 first. Case 2 (K 15): s1 pieces 184 v s3 180, so there it is the PRIORITY, not the key, that decides.
+- Priority arithmetic from the trace (MMX class, loop block, w 2): K = 7 non-window candidates (s0..s3, a, b, pan) + q window-quad
+  CSE temps (q = 7 in case 0, 8 in cases 1-3). s3 keeps its first-pass prio 2*K*6 = 12K; the s1 piece is recomputed with
+  K' = K + q (the quad pieces): 2*K'*4 = 8(K+q). s3 colours first only if 12K > 8(K+q), i.e. (non-quad candidates) c > q:
+  retail's IL would need about two more non-split MMX candidates in each loop block (or s3 with a 4th reference). Retail's code
+  shows no other multi-use MMX value, so the source fact is still unknown.
+- Mono sibling evidence: retail ResampleMonoMMX 0x00C78C4C uses exactly our stereo pattern (`movq mm2,mm0; paddd mm2,mm1`, s3 = mm2,
+  s1 reload mm1): with the same sums, only the stereo outputs (a/b used twice, pan) make retail colour s3 first.
+- Tried this run, all byte-identical (2884v2884, 49 hunks) unless noted: the REAL VS2003 ivec.h (sdk/vs2003/include/ivec.h, full class
+  library instead of the local model; tmp/c79n/iv1.cpp); copy of s1 (and s0) placed after s3 (`Is32vec2 s1 = t1;`); `s3 +=` last term,
+  full `+=` chain for s3, `s1 +=` last term; named single-use intermediates (fold sum w/x, pan product pa, Is16vec4 temp) -- K stays
+  14 (traced); `a >>= 1` / `b >>= 1` in place before the pan output; `(void)&s1` / pointer / reference to s1; s3 or s1 or all four
+  declared at function scope (s1/all: frame-slot changes only, 122/163 hunks); label / goto before the a-fold (no RA block boundary,
+  K unchanged, scheduling hunk added); sums in an array `Is32vec2 s[4]` (scalar-replaced, slots differ, 2852); sum-order
+  permutations (emitted order follows source: 2892); named window quads (3252); inline fold helper by const ref (2940; by value
+  does not compile: C2719 aligned parameter).
+- Open: a natural source construct that adds MMX candidates (or a 4th s3 reference) in each loop block without code. Not a k-locals /
+  assert / inline-flag residue (those re-key symbols, not tuple numbers or K).
+
+## 0x00ADE080 -- wfA6g (2026-11-15, third agent; ~25 grades + 3 linearizer traces)
+- Linearizer trace (tools/00ade080_lk: wfB6 lk.py comparator log of 0x1076A394 + an.py naming leaves; traces tmp/00ade080_lk/*.json):
+  the x87-arm products are (IND E, local) with keys hash = hE + 64*id + 48, hE = 0x6E + 2*offset (E11 is a count-1 IND, its product
+  count 3, always sorted apart); leaves are the TransformVector locals xx/yy/zz (ids 498..509, one batch for all four expansions, in
+  declaration order) in EVERY row, also with field spellings (v.Y / v.Z in the rows: inert, c2 canonicalises them to the locals).
+- Model result: with one leaf per component, no id assignment (wraps included) gives retail's v1..v3 Y and Z orders together (the key
+  difference of the (y,z) pair is 0x18 + 64(z-y) in both rows), AND the emitted order is not the key order: declaring zz,yy,xx
+  (ids z<y<x) flips the Y-pair keys but ours still emits y*E22 first (it only changed which values stay on the x87 stack: 31 lines).
+  So the remaining x87 orders are decided by the x87 stack code generator (stack state), not by the linearizer keys; record-id
+  devices (k locals, asserts) and leaf spellings cannot reach them. Declaration orders XZY / ZXY: identical (17).
+- Also tried (worse or inert): 2-arg TransformVector(half, v0) (frame +247 lines), in-place TransformVector(half, half) (41/21),
+  2-arg TransformPoint(obb.GetCenter(), centre) with SOURCE_DEST_SUMS (37) / COPY_SUMS (40); fwsize on the best source: the
+  C3DVector operator+/-/* (+6i), GetCenter (+2i), LimitLower/Upper (+3i), InitialiseTransposed (+4i/-8b = fldz/fld1 constant
+  stores) differ from FableWin, all float-code helpers (FableWin's compiler differs on float code), TransformVector / TransformPoint
+  / C4DVector ctors SAME. SCALE_NAMED_RESULT operator* 29i v FableWin 31i (not closer to proof).
+- PROGRESS (wfA6g): helper-local DECLARATION ORDER is the lever for the x87-stack orders (rulers / k / asserts are not): TransformPoint
+  with locals declared z, x, y and the FableWin-sized flat LTR text (new opt-in FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_ZXY_LOCALS in
+  hdr/engine/CMatrix3x4.h, FITTED order) -> DIFFER(2735v2735), 14 real lines (was 2733v2735, 17): centre loads and centre X / Y rows
+  now equal retail. differ/00ade080.cpp updated (previous best kept as tmp/00ade080_differ_prev_wfA6f.cpp). 0x00BA6240 / 0x00BD5C90
+  regraded RELOCATION_MATCH after the header change.
+- Left (14): v0 X row (4 lines), lea/mov ebx schedule (5), centre Z row (5: retail y,z,x; ours z,x,y = a rotation).
+  Sweeps on the new state, all >= 14: 6 TransformPoint declaration orders x 15 bodies (probe/00ade080_h, TPORD_* x TPB_*: ZXY or ZYX
+  with several bodies tie at 14); TransformVector declaration orders x {grouped, flat} (grouped XZY/ZXY 14, others 28; flat 40..58);
+  live-initialised rulers `float rulerN = obb.MinCoord.X;` k=1..13 at x87 start / before centre (14 at k=0,6,7,8; never fixes Z or v0);
+  C3DVector SUBTRACT/ADD_XY_GROUP, SCALE_X_PAREN, SCALE_NAMED_RESULT (58..282, worse: they touch the SSE arm); MinCoord/MaxCoord init
+  spellings (`MinCoord = MaxCoord = centre + v0` identical; others worse); redundant parens in the TV body (inert).
+  NOTE: the TVB_* field-spelling probes of the first half of this run were void (a `#el#if` typo) and were re-run after the fix: inert.
+- More on the 14-line state (wfA6g): a TransformVector X row spelled flat / (x+z)+y / (x+y)+z with grouped Y/Z rows: all 14 (the X row
+  form is irrelevant once Y/Z are grouped); x 6 declaration orders: >= 14; outer spellings (v1..v3 reversed, copy-and-negate,
+  `half` then v0..v3 ctors, v0 declared last, one-line v1,v2,v3): 14..251. The v0 X row stays (x+z)+y in every variant: in ours all four
+  TransformVector expansions get their locals in one record batch; retail's v0 differs from v1..v3, so its v0 expansion is probably
+  different text or a different expansion time (open). Probe overlay probe/00ade080_h (TPORD_* / TPB_* / TVORD_* / TVB_* / TVB_MACRO
+  switches on a copy of CMatrix3x4.h WITHOUT the ZXY_LOCALS opt-in: emulate it with GROUPED_XZY + TPORD_ZXY + TPB_1) is kept for reuse.
+
+## 0x00AE3C30 -- wfA6g (third agent; 7 grades, no progress)
+- c2prio first-run trace re-read: const 0 (#1, allowed only ebx) loses in pass 1 because pool (#9, -175, ebx over lines 47..56) holds
+  ebx; in pass 2 the big const-0 piece #138 (-270) again finds ebx taken by pool, so it must overlap pool's range in ours; in retail
+  the const-0 piece that gets ebx starts after AllocateArrays (0x00AE40CB). The cost-1 blocks of const 0 are 134 (lines 61-62) and 157
+  (63-64), the two long() fill-temp stores, plus 219; a piece needs both (spill = sum - 1 > 0). Open fact: the piece boundaries.
+- Lexical scopes around the second-half statements (each pair / all reads / loop + count / from IndexedTextureCoords on): inert
+  (2278v2310, 131 real lines, no `xor ebx,ebx`).
+- Decomposition of the 14 (wfA6g): TransformPoint local declaration order decides three things at once: load order (xx declared
+  before yy -> retail's `fld [28h] ; fld st(2)`), Y-row pair (z first in ZXY / ZYX, y first in XYZ / XZY) and Z-row order (right in
+  XYZ / XZY / ZYX, wrong in ZXY). No order gives all three: XZY = loads + Z right, Y wrong (17); ZXY = loads + Y right, Z wrong (14);
+  ZYX = Y + Z right, loads wrong (14). const / non-const mixes of the three locals (8 variants x 2 bodies): inert (14). Next idea for a
+  successor: a body whose rows read the LOCALS in a different order per row is inert (c2 canonicalises); look instead at what retail
+  had ON the x87 stack before the transform (GetCenter's text decides which of x / y / z stay in registers: retail stores x to
+  [esp+28h] and keeps y, z) -- e.g. GetCenter / operator+ / operator* texts that leave a different value in memory.

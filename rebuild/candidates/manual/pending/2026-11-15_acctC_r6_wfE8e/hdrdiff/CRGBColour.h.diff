@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/CRGBColour.h
++++ b/rebuild/include/engine/CRGBColour.h
+@@ -9,7 +9,13 @@
+         struct { unsigned char B,G,R,A; };
+         unsigned long IntValue;
+     };
++#ifdef FABLE_RETAIL_CRGBCOLOUR_DEFAULTCTOR_OUTOFLINE
++    // Opt-in (wfE8, row 0x00B03CA0, PROBE): the default ctor not visible to the TU -- retail builds the row's two CRGBColour[3] locals with
++    // `vector constructor iterator` 0x004038C0 over the folded empty ctor 0x004048E0 (pushes at 0x00B040EF / 0x00B042AC). Declaration only.
++    CRGBColour();
++#else
+     CRGBColour() { }
++#endif
+ #if defined(FABLE_RETAIL_CRGBCOLOUR) && defined(FABLE_RETAIL_CRGBCOLOUR_CTOR4_INITIALISE)
+     // Opt-in (chunk 4007, row 0x0061B610; first measured by hand882 on the PC twin 0x0061E6D0): FableWin ??0CRGBColour@@QAE@EEEE@Z is
+     // 18 instructions / 44 bytes at /Od = the four-channel constructor forwarding to ?Initialise@CRGBColour@@QAEXEEEE@Z (19i/48b),

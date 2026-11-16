@@ -1,10 +1,22 @@
 --- a/rebuild/include/engine/CMatrix3x4.h
 +++ b/rebuild/include/engine/CMatrix3x4.h
-@@ -247,7 +247,17 @@
+@@ -247,7 +247,29 @@
      // __forceinline (owner 2026-11-01 helper rule): retail expands it in place in both PreparePrimitives rows and Fable.exe has no
      // out-of-line ?TransformPoint@CMatrix3x4@@QBEXAAVC3DVector@@@Z (the catalog has none; only the debug PDBs carry a copy); with
      // plain inline VC7.1 calls it out of line twice in 0x00B19C60 (landing 2026-11-03h probe).
 -#if defined(FABLE_RETAIL_CPARTICLE_SPRITE) || defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_LTR)
++#if defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_ZXY_LOCALS)
++    // Retail opt-in (wfA6g, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB; FITTED declaration order): the FableWin-sized flat
++    // text (same 61i/168b as TRANSFORMPOINT_LTR) with the locals declared z, x, y. Arithmetic identical to the default; the order
++    // in which VC7.1 loads / keeps the three copies on the x87 stack follows the declaration order: z, x, y gives retail's centre
++    // loads (0x00ADE600 `fld [esp+28h] ; fld st(2) ; fld [esp+28h]`) and the X / Y rows (z*E32 before y*E22, 0x00ADE624).
++    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
++        const float zz=point.Z,xx=point.X,yy=point.Y;
++        point.X=E11*xx+E21*yy+E31*zz+E41;
++        point.Y=E12*xx+E22*yy+E32*zz+E42;
++        point.Z=E13*xx+E23*yy+E33*zz+E43;
++    }
++#else
 +#if defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_GROUPED_XZY)
 +    // Nested opt-in (wfA6, row 0x00ADE080 C3DBoundingBox::InitialiseFromOBB; FITTED grouping): the x87 arm's centre transform
 +    // 0x00ADE6xx sums the X row as (x*E11 + z*E31) + y*E21 + E41 and the Y / Z rows with x last; this grouping is the one that
@@ -19,7 +31,15 @@
      // Donor024543E0: original non-incremental left-associated coordinate sums.
      // FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_LTR (chunk 3001, row 0x00A12EE0): the same plain left-to-right rows E1k*x + E2k*y + E3k*z + E4k.
      FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
-@@ -329,6 +339,14 @@
+@@ -305,6 +327,7 @@
+         point.Z=E13*xx+(E23*yy+E33*zz)+E43;
+     }
+ #endif
++#endif
+ #else
+     void TransformPoint(C3DVector& point) const {
+         const float xx=point.X;
+@@ -329,6 +352,14 @@
          const float xx=v.X;
          const float yy=v.Y;
          const float zz=v.Z;
@@ -34,7 +54,7 @@
  #ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR_GROUPED_X
          // Nested opt-in (chunk 2014 / 3010, row 0x00A4E300 C3DAnimation2::GetDeltaMovement): the X row grouped like TransformPoint's
          // (`E11*x+(E21*y+E31*z)`): GetDeltaMovement 0x00A4E8A5..0x00A4E8BC adds zz*E31 + yy*E21 first and xx*E11 last (the ungrouped
-@@ -339,6 +357,7 @@
+@@ -339,6 +370,7 @@
  #endif
          v.Y=xx*E12+yy*E22+zz*E32;
          v.Z=xx*E13+yy*E23+zz*E33;
@@ -42,7 +62,7 @@
      }
  #endif
  #ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMPLANE
-@@ -446,5 +465,31 @@
+@@ -446,5 +478,31 @@
          return scale;
      }
  #endif

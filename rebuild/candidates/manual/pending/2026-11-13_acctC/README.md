@@ -59,7 +59,7 @@ bodies, diagnostic builds and local class models where a shared header exists fa
 ## LANDING GUIDE for the main-branch account (acctC coordinator, 2026-11-15)
 
 **What is ready.** `STATUS.tsv` in this folder is the ledger (address, state, true_length, staged_in, note). Every row with
-state `MATCHED_STAGED` (103 reserved rows + the bonus support row 0x00B9E5B0 on 2026-11-15) is in the folder named in its
+state `MATCHED_STAGED` (161 reserved rows + the bonus support row 0x00B9E5B0 on 2026-11-15, round 5) is in the folder named in its
 `staged_in` column, under `rebuild/candidates/manual/pending/`. Each such folder holds `src/<addr>.cpp`, `test/<addr>.cpp`,
 `payload.json` (addmatch format, only the verified rows), `hdrdiff/` (the header changes those rows need, as diffs against
 rebuild/include or `NEW_<file>` for new headers), `coordverify.log` (my read-only vland output), `HDR_README.md` (the
@@ -67,10 +67,10 @@ batch's overlay opt-in list with evidence), `NAME_FIXES.tsv` / `LABELS.tsv` wher
 review items of each row. Every staged row was byte-verified twice (author + my own read-only strict-header vland) and
 rule-audited by an independent agent.
 
-**What is NOT ready.** Folders whose README says "RULE AUDIT PENDING" (the `2026-11-15_acctC_wf*p` folders: 12 rows that
-byte-match with tests passing, not yet audited) and anything under an `open/`, `*open` or `differ` folder (unmatched
+**What is NOT ready.** Folders whose README says "RULE AUDIT PENDING" (none at the moment: the twelve `2026-11-15_acctC_wf*p` rows were audited in round 5 and their
+READMEs now say "RULE AUDIT DONE" with the review items) and anything under an `open/`, `*open` or `differ` folder (unmatched
 drafts). Earlier audits rejected about one fresh match in five for rule problems (local class models, stand-in callee
-bodies), so wait until the pending line is replaced. Those rows are not `MATCHED_STAGED` in the ledger.
+bodies), so wait until the pending line is replaced. Those rows are not `MATCHED_STAGED` in the ledger. The rows once held for rule fix-ups (0x00439070, 0x00531EC0, 0x00B89C30, 0x00DF6010) are all rule-clean, re-audited and staged.
 
 **This lane never ran `--land`.** Your `verify_and_land.py` run is the real gate. My check was
 `lane/coordverify.sh <agent-dir> <stage-dir> <addr8>...` = vland read-only with `LANDVERIFY_STRICT_HEADERS=1` and a minimal
@@ -85,6 +85,16 @@ overlay made of exactly the headers in `hdrdiff/`.
 2. `fable_assert.h` is NOT in the repo (10 folders carry it as `NEW_fable_assert.h`; all copies are agentC6's header, and
    wfC1's copy adds one macro, `FABLE_RETAIL_ASSERT_ARM`). It must land with the rows that use dead release asserts
    (0x00CBFB7D, 0x00E50FD0, 0x00E3BB70, 0x00BBAC60, 0x00B5CA70 and others: grep `FABLE_RETAIL_ASSERT` in the sources).
+   **Owner decision (2026-11-15): dead asserts stay as they are, provided each row carries a note saying why they are
+   there.** Every staged source that uses `FABLE_RETAIL_ASSERT` has that note in its header comment (an `// Inferred:` line,
+   or for 0x00BA5260 the header paragraph on its 18 + 1 asserts). Why they are there, in general: the debug build expands
+   Lionhead's ASSERT to a real check; retail carries no assert code, but the release macro left a dead branch the compiler
+   still saw before deleting it, and that dead code feeds VC7.1's ordering and inline-size decisions. A lab run on
+   2026-11-15 (21 assert-using rows, independently re-run) ruled out the forms that vanish in preprocessing (`((void)0)`,
+   `sizeof`), `__assume`, a stub call and `if (0 && (c)) {}`: only the debug body behind `if (0)` inside `do { } while (0)`
+   matches broadly (20 of 21; 0x00CBFB7D also needs the unwrapped `FABLE_RETAIL_ASSERT_ARM`). Counts and conditions are
+   inferred, not recovered: our macro is lighter than the original, so a row can need more copies than the function really
+   had (0x004A3740: 79..87 identical copies with this macro, 35..38 with a full-debug-text form; only the total matters).
 3. Rows with companion headers: 0x0121F86F needs 126 `engine/CAIStateGroup_*.h` overlay headers (one shared opt-in
    `FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC`); 0x0044C72B needs 69 `FABLE_RETAIL_<CLASS>_ALLOC` opt-ins; 0x00B1C880 /
    0x00B1F200 / 0x00B1E380 need the new `engine/CPSCDecalRenderer.h`; 0x00678760 needs new `engine/CReactionMatch*.h`.
@@ -123,3 +133,9 @@ arm inside the shared-header StartsWith opt-in), 0x00D0A830 (nested `do { } whil
 `GF_SSE_MATRIX_ALIGNED_TRANSFORM_TRANSPOSED_ASSUME_W` and `LIBPK_MMX_COPY64` (0x00A5CB90, shared-header kernels with
 FABLE_PORTABLE twins), and FABLE_RETAIL_CMATRIX3X4_SETINVERSEUSRT_SCALE_SQUARED. The owner's acceptance test is in the
 section above.
+
+## State when the round-six workflows stopped (2026-11-16)
+161 reserved rows (+ the bonus row) are `MATCHED_STAGED`. The 19 others are `PARKED`; their latest drafts, notes and header
+diffs are in `../2026-11-16_acctC_open/` (see its README; two rows are marked BLOCKED). The workflow rules the agents worked
+under, including the owner decisions of 2026-11-15/16 on dead asserts and the tips that closed stuck rows, are in
+`lane/WF_RULES.md`.

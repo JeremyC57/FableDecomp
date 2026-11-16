@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/CParticleSimulation.h
++++ b/rebuild/include/engine/CParticleSimulation.h
+@@ -59,7 +59,13 @@
+     static void __fastcall ReadVectorArray(C4DVector* vectors, unsigned long count, CDataInputStream& in, float w);
+ public:
+ #endif
++#ifdef FABLE_RETAIL_CPARTICLESIMULATION_MUTABLE_RENDERDATA
++    // Overlay opt-in (wfA4, row 0x00BB2540): the renderer's cache, created / released through a const CParticleSimulation&
++    // (CEngineClothRenderer::RenderPolygons calls Reset 0x00BB64A0 and the inline ReleaseData on it). No layout change.
++    mutable CCountedPointer<CParticleSimulationRenderData> RenderData;
++#else
+     CCountedPointer<CParticleSimulationRenderData> RenderData;
++#endif
+ protected:
+     float Timestep;
+     bool TimestepChanged;

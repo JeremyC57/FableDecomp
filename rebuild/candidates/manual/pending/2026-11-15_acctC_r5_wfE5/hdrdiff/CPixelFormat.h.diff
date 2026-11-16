@@ -1,0 +1,25 @@
+--- a/rebuild/include/engine/CPixelFormat.h
++++ b/rebuild/include/engine/CPixelFormat.h
+@@ -30,6 +30,11 @@
+  void Initialise(const class CPixelFormatInit& init);           // 0x009E3640
+  bool IsCompressed() const;                                     // 0x009E3940
+ #endif
++#ifdef FABLE_RETAIL_CPIXELFORMAT_ISLINEAR
++ // Opt-in (wfE5, row 0x00BB0970): FableWin.pdb ?IsLinear@CPixelFormat@@QBE_NXZ, inline in retail (GD3DFormats[i].Linear: byte 0x0129BA60 =
++ // 0x0129BA40 + 0x20 read at 0x00BB0DC6).
++ bool IsLinear() const {return GD3DFormats[FormatIndex].Linear;}
++#endif
+ #ifdef FABLE_RETAIL_CPIXELFORMAT_COLOURDEPTH
+  unsigned long GetColourDepth()const;
+ #endif
+@@ -117,8 +122,8 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CPixelFormat) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CPixelFormat, FormatIndex) == 0x0);
++FABLE_STATIC_ASSERT_AT(120, sizeof(CPixelFormat) == 0x4);
++FABLE_STATIC_ASSERT_AT(121, offsetof(CPixelFormat, FormatIndex) == 0x0);
+ 
+ #endif // FABLE_ENGINE_CPIXELFORMAT_H
+ 

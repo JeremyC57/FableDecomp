@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+(enumerator)	ENTITY_MOVE_RUN (EScriptEntityMoveType, engine/EScriptEntityMoveType.h)	shared header used by CScriptGameResourceObjectScriptedThingBase.h; landed CFishermansWife::Main	MOVE_TYPE_RUNNING (made up, earlier draft of 0x00DEA3F0; not landed)

@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/C2DVector.h
++++ b/rebuild/include/engine/C2DVector.h
+@@ -132,6 +132,11 @@
+     bool IsNonZero() const { return GetSquaredMagnitude()>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO; }
+ #endif
+ #endif
++#ifdef FABLE_RETAIL_C2DVECTOR_GETRANDOMUNITVECTOR
++    // Retail opt-in (wfE8 6th agent, row 0x00B10B10): Ego_r.pdb / FableWin.pdb ?GetRandomUnitVector@C2DVector@@SI?AV1@PAK@Z (static
++    // __fastcall, 0x00A13EB0: seed in edx, result slot in ecx). Declaration only.
++    static C2DVector FABLE_FASTCALL GetRandomUnitVector(unsigned long* seed);
++#endif
+ };
+ #pragma pack(pop)
+ #ifdef FABLE_RETAIL_C2DVECTOR_FROM3D

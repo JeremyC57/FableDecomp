@@ -1,0 +1,20 @@
+--- a/rebuild/include/engine/CManagedTexture.h
++++ b/rebuild/include/engine/CManagedTexture.h
+@@ -30,9 +30,16 @@
+     const CManagedTexture& operator=(const CManagedTexture&);  // 0x00A69B20
+     bool Release();                                             // 0x00A69AD0
+ #endif
++#ifdef FABLE_RETAIL_CMANAGEDTEXTURE_LOCK
++    // agentC27 (row 0x009FDE80): FableWin.pdb ?Lock@CManagedTexture@@QAEXXZ / ?Unlock@CManagedTexture@@QAEXXZ (inline: the data's
++    // Locked byte +0x49 set / cleared when Data is set) and the out-of-line ??1CManagedTexture@@UAE@XZ (retail 0x00A69E20).
++    void Lock() { if (!Data.IsNull()) Data->SetLocked(true); }
++    void Unlock() { if (!Data.IsNull()) Data->SetLocked(false); }
++    virtual ~CManagedTexture();                                 // 0x00A69E20
++#endif
+ private:
+     CIVCountedPointer<CManagedTextureData> Data;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CManagedTexture)==8);
++FABLE_STATIC_ASSERT_AT(36, sizeof(CManagedTexture)==8);
+ #endif
+ #endif

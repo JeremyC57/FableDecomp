@@ -1,0 +1,41 @@
+--- a/rebuild/include/engine/CHeroMarriageInfo.h
++++ b/rebuild/include/engine/CHeroMarriageInfo.h
+@@ -9,20 +9,33 @@
+ #include "rebuild_abi.h"
+ 
+ #pragma pack(push, 1)
++#ifdef FABLE_RETAIL_CHEROMARRIAGEINFO_CTOR
++enum EMarriageState;                                         // MS forward enum
++#endif
+ class CHeroMarriageInfo {
+ public:
++#ifdef FABLE_RETAIL_CHEROMARRIAGEINFO_CTOR
++    // Retail opt-in (acctC wfA1, row 0x00682810): FableWin ??0CHeroMarriageInfo@@QAE@XZ (FableWin.exe.signatures.tsv), inline in
++    // retail (0x0068301A..0x0068302E: the four UID dwords, State and the GayMarriage byte zeroed in member order); State typed
++    // EMarriageState (the row compares it with 5, 0x00683049). Same layout.
++    CHeroMarriageInfo() : WifeUID(0), MaritalHomeUID(0), State((EMarriageState)0), GayMarriage(false) { }
++#endif
+     unsigned __int64 WifeUID;                                // +0x00
+     unsigned __int64 MaritalHomeUID;                         // +0x08
++#ifdef FABLE_RETAIL_CHEROMARRIAGEINFO_CTOR
++    EMarriageState   State;                                  // +0x10
++#else
+     unsigned char    State[0x4];                             // +0x10 EMarriageState
++#endif
+     bool             GayMarriage;                            // +0x14
+     unsigned char    _pad_0x15[0x3];                         // +0x15
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CHeroMarriageInfo) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageInfo, WifeUID) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageInfo, MaritalHomeUID) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageInfo, State) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageInfo, GayMarriage) == 0x14);
++FABLE_STATIC_ASSERT_AT(22, sizeof(CHeroMarriageInfo) == 0x18);
++FABLE_STATIC_ASSERT_AT(23, offsetof(CHeroMarriageInfo, WifeUID) == 0x0);
++FABLE_STATIC_ASSERT_AT(24, offsetof(CHeroMarriageInfo, MaritalHomeUID) == 0x8);
++FABLE_STATIC_ASSERT_AT(25, offsetof(CHeroMarriageInfo, State) == 0x10);
++FABLE_STATIC_ASSERT_AT(26, offsetof(CHeroMarriageInfo, GayMarriage) == 0x14);
+ 
+ #endif // FABLE_ENGINE_CHEROMARRIAGEINFO_H

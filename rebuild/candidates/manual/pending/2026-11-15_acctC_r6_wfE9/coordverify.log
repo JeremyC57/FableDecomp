@@ -1,0 +1,3 @@
+005a4cdd CTCInventoryTrade ConstructActualSellInventoryPC None
+addr       parity           behav  name
+005a4cdd   RELOCATION_MATCH PASS   ConstructActualSellInventoryPC

@@ -1,0 +1,38 @@
+--- a/rebuild/include/engine/CThing.h
++++ b/rebuild/include/engine/CThing.h
+@@ -303,6 +303,10 @@
+     // (catalog CThing::IsIncludedInThingScans; Ego_r.pdb / FableWin.pdb ?IsIncludedInThingScans@CThing@@QBE_NXZ). Everywhere else
+     // retail expands the body below.
+     bool IsIncludedInThingScans() const;                         // 0x0048BC40
++#elif defined(FABLE_RETAIL_CTHING_SCANINCLUSION_ISALIVE)
++    // wfA1 (row 0x006D0830 CTCWife::GlobalUpdate, through its same-TU GetAllLeafThings<CThingVillage> COMDAT 0x006D4600): the alive test
++    // as IsAlive()'s `!Dead` (`mov cl,al ; not cl ; test cl,1`, out-of-line copy 0x0048BC4E, expanded at 0x006D4637). No layout change.
++    bool IsIncludedInThingScans() const { return IncludeInThingScans && Activated && IsAlive() && !InLimbo; }
+ #else
+     bool IsIncludedInThingScans() const { return IncludeInThingScans && Activated && !Dead && !InLimbo; }
+ #endif
+@@ -450,11 +454,11 @@
+ #endif
+     CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }
+     static void CheckRetailLayout() {
+-        FABLE_STATIC_ASSERT(offsetof(CThing,UniqueID)==0x18);
+-        FABLE_STATIC_ASSERT(offsetof(CThing,UsingComponents)==0x20);
+-        FABLE_STATIC_ASSERT(offsetof(CThing,Components)==0x44);
+-        FABLE_STATIC_ASSERT(offsetof(CThing,PhysicsTC)==0x60);
+-        FABLE_STATIC_ASSERT(offsetof(CThing,PBaseDef)==0x70);
++        FABLE_STATIC_ASSERT_AT(453, offsetof(CThing,UniqueID)==0x18);
++        FABLE_STATIC_ASSERT_AT(454, offsetof(CThing,UsingComponents)==0x20);
++        FABLE_STATIC_ASSERT_AT(455, offsetof(CThing,Components)==0x44);
++        FABLE_STATIC_ASSERT_AT(456, offsetof(CThing,PhysicsTC)==0x60);
++        FABLE_STATIC_ASSERT_AT(457, offsetof(CThing,PBaseDef)==0x70);
+     }
+     const CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
+     const C3DVector& GetPos() const;
+@@ -700,6 +704,6 @@
+     static void __fastcall SetCurrentThingManager(CThingManager& thing_manager);   // 0x004C74F0
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CThing)==0x98);
++FABLE_STATIC_ASSERT_AT(703, sizeof(CThing)==0x98);
+ 
+ #endif

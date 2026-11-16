@@ -1,0 +1,33 @@
+--- a/rebuild/include/engine/C3DMeshFileXUVTangentChunk.h
++++ b/rebuild/include/engine/C3DMeshFileXUVTangentChunk.h
+@@ -20,8 +20,14 @@
+     virtual CChunkedFileChunk* CreateNewInstance() const;
+     CArray<C3DVector> UTangents;          // +0x10
+     CArray<C3DVector> VTangents;          // +0x1C
++#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
++    static const char* FABLE_FASTCALL GetStaticChunkType() { return "XUVT"; }   // FableWin ?GetStaticChunkType@C3DMeshFileXUVTangentChunk@@SIPBDXZ
++    unsigned long GetCount() const { return UTangents.size(); }
++    C3DVector GetUTangent(unsigned long index) const { return UTangents[index]; }
++    C3DVector GetVTangent(unsigned long index) const { return VTangents[index]; }
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXUVTangentChunk) == 0x28);
++FABLE_STATIC_ASSERT_AT(24, sizeof(C3DMeshFileXUVTangentChunk) == 0x28);
+ #endif // FABLE_ENGINE_C3DMESHFILEXUVTANGENTCHUNK_H
+ #else
+ #ifndef FABLE_ENGINE_C3DMESHFILEXUVTANGENTCHUNK_H
+@@ -47,10 +53,10 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXUVTangentChunk) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXUVTangentChunk, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXUVTangentChunk, UTangents) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXUVTangentChunk, VTangents) == 0x1c);
++FABLE_STATIC_ASSERT_AT(50, sizeof(C3DMeshFileXUVTangentChunk) == 0x28);
++FABLE_STATIC_ASSERT_AT(51, offsetof(C3DMeshFileXUVTangentChunk, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(52, offsetof(C3DMeshFileXUVTangentChunk, UTangents) == 0x10);
++FABLE_STATIC_ASSERT_AT(53, offsetof(C3DMeshFileXUVTangentChunk, VTangents) == 0x1c);
+ 
+ #endif // FABLE_ENGINE_C3DMESHFILEXUVTANGENTCHUNK_H
+ #endif // FABLE_RETAIL_C3DMESHFILEXUVTANGENTCHUNK

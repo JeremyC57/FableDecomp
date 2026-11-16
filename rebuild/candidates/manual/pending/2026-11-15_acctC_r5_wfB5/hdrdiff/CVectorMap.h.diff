@@ -1,0 +1,20 @@
+--- a/rebuild/include/engine/CVectorMap.h
++++ b/rebuild/include/engine/CVectorMap.h
+@@ -50,6 +50,17 @@
+         return last;
+     }
+ #endif
++#ifdef FABLE_RETAIL_CVECTORMAP_VALFIND_CONST
++    // Retail opt-in (agentC32, row 0x006A1A00 CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation): FableWin.pdb 0x0221C0F0
++    // ??$ValFind@PBVCThing@@@?$CVectorMap@JV?$CIntelligentPointer@VCThing@@@@..@@QBE?AV?$_Vector_const_iterator.. -- the const linear
++    // search by value, expanded in retail (0x006A1A07..0x006A1A33: end() re-read after every compare call and once more for the
++    // not-found return; FABLE_FORCEINLINE like the VALFIND opt-in: a plain inline is called out of line). The value is compared through Get() (CBaseIntelligentPointer::GetPItem 0x00A01B50).
++    template<class V2> FABLE_FORCEINLINE const_iterator ValFind(const V2& value) const {
++        for(const_iterator it=this->begin();it!=this->end();++it)
++            if(it->second.Get()==value)return it;
++        return this->end();
++    }
++#endif
+ #ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
+     // Retail opt-in (2026-11-03, chunk 720, the size-optimised CTCInventoryWeapons TU): retail expands Find inside the
+     // forced-inline CThing::GetTC there (`call LowerBound; mov esi,[esi+4]; cmp eax,esi; je; cmp [eax],ebx; jle`); under

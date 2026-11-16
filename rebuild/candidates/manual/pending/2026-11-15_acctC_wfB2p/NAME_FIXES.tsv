@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+007021f0	?GetTeleporterRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ	Ego_r.pdb + FableWin.pdb name sets; vland RELOC_NAME warning on matched row 0x005FF190	CTCQuestCard::GetMarkerRegionName (catalog label)
+005faba0	?IsThingAsPosBeingDrawn@CTCInventoryMap@@IBE_NABVC3DVector@@@Z	Ego_r 0x0064B620 + FableWin 0x020A1AA0 name sets (the only CTCInventoryMap member of that signature; Ego_r order IsTeleportValid < GetMenuEntryFromCategory < IsThingAsPosBeingDrawn = retail 0x005FAA60 < 0x005FAA90 < 0x005FABA0); called 8x by matched row 0x00603000; shared header CTCInventoryMap.h already declares it	CTCInventoryMap::IsPositionInsideClipEdges (landed descriptive, local class model)

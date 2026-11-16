@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/C2DVector.h
++++ b/rebuild/include/engine/C2DVector.h
+@@ -84,7 +84,13 @@
+     // Ego_r.pdb / FableWin.pdb ?GetMagnitude@C2DVector@@QBEMXZ, inline in retail: CNavigatorAStar::UpdateGoal 0x00A1E030 squares
+     // Y then X, adds, and runs fsqrt through the float overload (`fsqrt ; fstp st(2) ; fstp st(0)`, the dead difference
+     // vector popped under the result), which `(float)sqrt(X*X+Y*Y)` does not give (it stores before popping).
++#ifdef FABLE_RETAIL_C2DVECTOR_MAGNITUDE_SQUARED_LOCAL
++    // Nested opt-in (row 0x00B4D370): the FableWin text of ?GetMagnitude@C2DVector@@QBEMXZ (21i / 52b at /Od, fwsize SAME): the sum
++    // in a named local, then sqrtf.
++    float GetMagnitude() const { float squared=X*X+Y*Y; return sqrtf(squared); }
++#else
+     float GetMagnitude() const { return sqrtf(X*X+Y*Y); }
++#endif
+     // Chunk 752 (row 0x0054AC90 CSlider::ProcessEvent): Ego_r.pdb ??8C2DVector@@QBE_NABV0@@Z, the epsilon compare against
+     // ?DELTA_NOTIONAL_ZERO@@3MB 0x0129BA3C (`fld [a.X] ; fsub [b.X] ; fabs ; fcomp [129BA3Ch] ; test ah,41h ; jp`, then the Y test),
+     // `<=` per component as the landed ~CSlider 0x0054B360 proved. __forceinline: retail expands it at every site, including the

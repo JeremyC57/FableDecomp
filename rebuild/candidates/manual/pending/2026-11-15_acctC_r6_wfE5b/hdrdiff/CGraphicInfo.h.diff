@@ -1,0 +1,24 @@
+--- a/rebuild/include/engine/CGraphicInfo.h
++++ b/rebuild/include/engine/CGraphicInfo.h
+@@ -46,6 +46,12 @@
+ class CGraphicInfo {
+ public:
+     const CGraphicInfoFrame* PeekInfoFrame(unsigned long index) const {return Frames+index;}
++#ifdef FABLE_RETAIL_CGRAPHICINFO_GETWIDTH
++    // Opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): FableWin.pdb ?GetWidth@CGraphicInfo@@QBEKXZ (9 debug instructions =
++    // one movzx of a header word: FrameWidth +6, 0x00BA54EB / 0x00BB43C0 `movzx ..,word ptr [..+6]`). Needs the typed header
++    // (FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT). FITTED: which header word GetWidth returns is taken from the retail read.
++    unsigned long GetWidth() const {return Header.FrameWidth;}
++#endif
+ #ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+     // Retail opt-in (wf8, row 0x00BA4A40): FableWin.pdb ?GetTextureType@CGraphicInfo@@QBE?AW4ETextureType@CGraphicDataBank@@XZ
+     // (inline in retail: +0x1C read in place, 0x00BA4B1C). No layout change.
+@@ -118,7 +124,7 @@
+     long Index;
+     CGraphicInfoFrame* Frames;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CGraphicInfo)==44);
++FABLE_STATIC_ASSERT_AT(121, sizeof(CGraphicInfo)==44);
+ #ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+ // FableWin.pdb ?GetTextureType@CGraphicInfoFrame@@QBE?AW4ETextureType@CGraphicDataBank@@XZ (inline: GraphicInfo +0xC, then +0x1C).
+ inline CGraphicDataBank::ETextureType CGraphicInfoFrame::GetTextureType() const {return GraphicInfo->GetTextureType();}

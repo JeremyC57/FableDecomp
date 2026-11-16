@@ -1,0 +1,91 @@
+--- a/rebuild/include/engine/CEnginePrimitiveManagerRepeatedZSprites.h
++++ b/rebuild/include/engine/CEnginePrimitiveManagerRepeatedZSprites.h
+@@ -13,6 +13,45 @@
+ class CSurface;
+ class CTexture;
+ 
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDZSPRITES_TYPED
++// Overlay opt-in (row 0x00BAA870 RenderFromSortList): the class on its retail base CEnginePrimitiveManagerOcclusionBase (0x20 bytes;
++// needs FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS) with the members typed at the generated offsets, and CEngineBillboard (Ego_r.pdb,
++// 24 bytes: Texture, ZBuffer, Offset, Scale; no header of its own). Private ?RenderFromSortList@...@@AAEXAAVCEngineInternalPrimitiveRepeatedZSprite@@@Z.
++#include "engine/CEnginePrimitiveManagerOcclusionBase.h"
++#include "engine/CPixelShader.h"
++#include "engine/CVertexBufferWin32.h"
++#include "engine/CIndexBuffer.h"
++#include "engine/C3DVector.h"
++class CEngineInternalPrimitiveRepeatedZSprite;
++class CEngineBillboard {
++public:
++    CTexture*     Texture;                                   // +0x00
++    CSurface*     ZBuffer;                                   // +0x04
++    C3DVector     Offset;                                    // +0x08
++    float         Scale;                                     // +0x14
++};
++class CEnginePrimitiveManagerRepeatedZSprites : public CEnginePrimitiveManagerOcclusionBase {
++private:
++    void RenderFromSortList(CEngineInternalPrimitiveRepeatedZSprite& sprite);   // 0x00BAA870
++public:
++    CVertexShader      VertexShader;                         // +0x20
++    CPixelShader       PixelShader;                          // +0x28
++    CPixelShader       PixelShaderNoStipple;                 // +0x30
++    CVertexBufferWin32 VertexBuffer;                         // +0x38
++    CIndexBuffer       IndexBuffer;                          // +0x6c
++    unsigned char      PrimitiveSortList[0xc];               // +0x80 CArray<CEngineInternalPrimitiveRepeatedZSprite*> (retail STLport vector)
++    CEngineBillboard   BillboardTexture;                     // +0x8c
++    long          BillboardTextureHandle;                    // +0xa4
++    long          ZBufferTextureHandle;                      // +0xa8
++    long          DynamicTexturePageHandle;                  // +0xac
++    float         NonStippleAlphaFactor;                     // +0xb0
++    bool          EnableZSpriteAlpha;                        // +0xb4
++    float         VerticalControlPointWeightingFactor;       // +0xb8
++    float         ControlPointWeightingPower;                // +0xbc
++    C3DMeshInfo*  CurrentRenderedMesh;                       // +0xc0
++};
++FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerRepeatedZSprites) == 0xc4);
++#else
+ #pragma pack(push, 1)
+ class CEnginePrimitiveManagerRepeatedZSprites {
+ public:
+@@ -49,24 +88,25 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerRepeatedZSprites) == 0xc4);
++FABLE_STATIC_ASSERT_AT(52, sizeof(CEnginePrimitiveManagerRepeatedZSprites) == 0xc4);
+ #ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDZSPRITES_VIRTUAL_DTOR
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(54, offsetof(CEnginePrimitiveManagerRepeatedZSprites, __vftable) == 0x0);
++#endif
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, VertexShader) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, PixelShader) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, PixelShaderNoStipple) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, VertexBuffer) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, IndexBuffer) == 0x6c);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, PrimitiveSortList) == 0x80);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, BillboardTexture) == 0x8c);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, BillboardTextureHandle) == 0xa4);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, ZBufferTextureHandle) == 0xa8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, DynamicTexturePageHandle) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, NonStippleAlphaFactor) == 0xb0);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, EnableZSpriteAlpha) == 0xb4);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, VerticalControlPointWeightingFactor) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, ControlPointWeightingPower) == 0xbc);
+-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedZSprites, CurrentRenderedMesh) == 0xc0);
++FABLE_STATIC_ASSERT_AT(56, offsetof(CEnginePrimitiveManagerRepeatedZSprites, VertexShader) == 0x20);
++FABLE_STATIC_ASSERT_AT(57, offsetof(CEnginePrimitiveManagerRepeatedZSprites, PixelShader) == 0x28);
++FABLE_STATIC_ASSERT_AT(58, offsetof(CEnginePrimitiveManagerRepeatedZSprites, PixelShaderNoStipple) == 0x30);
++FABLE_STATIC_ASSERT_AT(59, offsetof(CEnginePrimitiveManagerRepeatedZSprites, VertexBuffer) == 0x38);
++FABLE_STATIC_ASSERT_AT(60, offsetof(CEnginePrimitiveManagerRepeatedZSprites, IndexBuffer) == 0x6c);
++FABLE_STATIC_ASSERT_AT(61, offsetof(CEnginePrimitiveManagerRepeatedZSprites, PrimitiveSortList) == 0x80);
++FABLE_STATIC_ASSERT_AT(62, offsetof(CEnginePrimitiveManagerRepeatedZSprites, BillboardTexture) == 0x8c);
++FABLE_STATIC_ASSERT_AT(63, offsetof(CEnginePrimitiveManagerRepeatedZSprites, BillboardTextureHandle) == 0xa4);
++FABLE_STATIC_ASSERT_AT(64, offsetof(CEnginePrimitiveManagerRepeatedZSprites, ZBufferTextureHandle) == 0xa8);
++FABLE_STATIC_ASSERT_AT(65, offsetof(CEnginePrimitiveManagerRepeatedZSprites, DynamicTexturePageHandle) == 0xac);
++FABLE_STATIC_ASSERT_AT(66, offsetof(CEnginePrimitiveManagerRepeatedZSprites, NonStippleAlphaFactor) == 0xb0);
++FABLE_STATIC_ASSERT_AT(67, offsetof(CEnginePrimitiveManagerRepeatedZSprites, EnableZSpriteAlpha) == 0xb4);
++FABLE_STATIC_ASSERT_AT(68, offsetof(CEnginePrimitiveManagerRepeatedZSprites, VerticalControlPointWeightingFactor) == 0xb8);
++FABLE_STATIC_ASSERT_AT(69, offsetof(CEnginePrimitiveManagerRepeatedZSprites, ControlPointWeightingPower) == 0xbc);
++FABLE_STATIC_ASSERT_AT(70, offsetof(CEnginePrimitiveManagerRepeatedZSprites, CurrentRenderedMesh) == 0xc0);
+ 
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERREPEATEDZSPRITES_H

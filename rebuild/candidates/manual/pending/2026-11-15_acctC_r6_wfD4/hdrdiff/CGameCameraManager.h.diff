@@ -1,0 +1,144 @@
+--- a/rebuild/include/engine/CGameCameraManager.h
++++ b/rebuild/include/engine/CGameCameraManager.h
+@@ -257,6 +257,11 @@
+ #pragma pack(push, 1)
+ class CGameCameraManager {
+ public:
++#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_RESETCAMERA
++ // Retail opt-in (wfA1, row 0x006D0830 CTCWife::GlobalUpdate): Ego_r.pdb ?ResetCamera@CGameCameraManager@@QAEXXZ (0x006C2B40);
++ // retail 0x0069A990 (reloc_bindings), called at 0x006D0B98. Declaration only.
++ void ResetCamera();                                     // 0x0069A990
++#endif
+ #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_RELEASESCRIPTEDCONTROL
+     // Q19 opt-in (row 0x008CDD40 CCreatureAction_ReleaseTimeSpell::FinishAction): Ego_r.pdb ?ReleaseScriptedControl@CGameCameraManager@@QAEXXZ
+     // (public, out of line at 0x00698950, landed). Declaration only: no layout change.
+@@ -424,71 +429,71 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CGameCameraManager) == 0x160);
++FABLE_STATIC_ASSERT_AT(427, sizeof(CGameCameraManager) == 0x160);
+ #ifndef FABLE_RETAIL_CGAMECAMERAMANAGER_ANGLES
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(429, offsetof(CGameCameraManager, __vftable) == 0x0);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, Camera) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, OldCamera) == 0x3c);
++FABLE_STATIC_ASSERT_AT(431, offsetof(CGameCameraManager, Camera) == 0x4);
++FABLE_STATIC_ASSERT_AT(432, offsetof(CGameCameraManager, OldCamera) == 0x3c);
+ #ifndef FABLE_RETAIL_CGAMECAMERAMANAGER_WORLD
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, World) == 0x74);
++FABLE_STATIC_ASSERT_AT(434, offsetof(CGameCameraManager, World) == 0x74);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CamTools) == 0x78);
++FABLE_STATIC_ASSERT_AT(436, offsetof(CGameCameraManager, CamTools) == 0x78);
+ #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CurrentMode) == 0x98);
++FABLE_STATIC_ASSERT_AT(438, offsetof(CGameCameraManager, CurrentMode) == 0x98);
+ #else
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CurrentMode_Data) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CurrentMode_Info) == 0x9c);
++FABLE_STATIC_ASSERT_AT(440, offsetof(CGameCameraManager, CurrentMode_Data) == 0x98);
++FABLE_STATIC_ASSERT_AT(441, offsetof(CGameCameraManager, CurrentMode_Info) == 0x9c);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, PendingMode_Data) == 0xa0);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, PendingMode_Info) == 0xa4);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, NewAutoMode) == 0xa8);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, ObservedThingInMelee) == 0xa9);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, ObservedThingInBuilding) == 0xaa);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, AvailableCamPoints) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, SingleCut) == 0xb0);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, ChangeInControlDirection) == 0xb1);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, InsideHeroCount) == 0xb4);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, ControlAngleXY) == 0xb8);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, AngleChange) == 0xbc);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, ControlNoControlMovement) == 0xbd);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, ControlNoControlMovementStartFrame) == 0xc0);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, RightStickLookAroundAngles_X) == 0xc4);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, RightStickLookAroundAngles_Y) == 0xc8);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, RightStickTargetLookAroundAngles_X) == 0xcc);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, RightStickTargetLookAroundAngles_Y) == 0xd0);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, PCurrentScriptModule_Data) == 0xd4);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, PCurrentScriptModule_Info) == 0xd8);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, PPendingScriptModule_Data) == 0xdc);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, PPendingScriptModule_Info) == 0xe0);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, ScriptedCameraRemoveTimer) == 0xe4);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CameraPreload) == 0xe8);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CameraPreloadUseFastMode) == 0xe9);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, ScriptHasPreloadedCamera) == 0xea);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, EarthQuakes) == 0xec);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, MinWorldHeight) == 0xf8);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, MaxWorldHeight) == 0xfc);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, PObservedThing) == 0x100);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CameraList) == 0x108);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CameraListIndex) == 0x114);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, InitialModeCameraListIndex) == 0x118);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, SpecialCameraList) == 0x11c);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, SpecialCameraListIndex) == 0x128);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, UsingCameraManually) == 0x12c);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, BlockModeChange) == 0x12d);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, PCameraManagerSet_Object) == 0x130);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, PDef_Object) == 0x134);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, RegisteredModes) == 0x138);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, ScriptedCameraModeFromGame) == 0x144);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, ScriptedCameraPreloadFlag) == 0x145);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CamRSLookAroundDeltaTheta) == 0x148);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CamZoomMinHeightFactor) == 0x14c);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, AutoFOVZoomInCombat) == 0x150);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CamAutoGoBehind) == 0x151);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, LimitMinMaxWorldHeight) == 0x152);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DrawDebugGraphics) == 0x154);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DebugPersistFrame) == 0x158);
+-FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DebugPoints) == 0x15c);
++FABLE_STATIC_ASSERT_AT(443, offsetof(CGameCameraManager, PendingMode_Data) == 0xa0);
++FABLE_STATIC_ASSERT_AT(444, offsetof(CGameCameraManager, PendingMode_Info) == 0xa4);
++FABLE_STATIC_ASSERT_AT(445, offsetof(CGameCameraManager, NewAutoMode) == 0xa8);
++FABLE_STATIC_ASSERT_AT(446, offsetof(CGameCameraManager, ObservedThingInMelee) == 0xa9);
++FABLE_STATIC_ASSERT_AT(447, offsetof(CGameCameraManager, ObservedThingInBuilding) == 0xaa);
++FABLE_STATIC_ASSERT_AT(448, offsetof(CGameCameraManager, AvailableCamPoints) == 0xac);
++FABLE_STATIC_ASSERT_AT(449, offsetof(CGameCameraManager, SingleCut) == 0xb0);
++FABLE_STATIC_ASSERT_AT(450, offsetof(CGameCameraManager, ChangeInControlDirection) == 0xb1);
++FABLE_STATIC_ASSERT_AT(451, offsetof(CGameCameraManager, InsideHeroCount) == 0xb4);
++FABLE_STATIC_ASSERT_AT(452, offsetof(CGameCameraManager, ControlAngleXY) == 0xb8);
++FABLE_STATIC_ASSERT_AT(453, offsetof(CGameCameraManager, AngleChange) == 0xbc);
++FABLE_STATIC_ASSERT_AT(454, offsetof(CGameCameraManager, ControlNoControlMovement) == 0xbd);
++FABLE_STATIC_ASSERT_AT(455, offsetof(CGameCameraManager, ControlNoControlMovementStartFrame) == 0xc0);
++FABLE_STATIC_ASSERT_AT(456, offsetof(CGameCameraManager, RightStickLookAroundAngles_X) == 0xc4);
++FABLE_STATIC_ASSERT_AT(457, offsetof(CGameCameraManager, RightStickLookAroundAngles_Y) == 0xc8);
++FABLE_STATIC_ASSERT_AT(458, offsetof(CGameCameraManager, RightStickTargetLookAroundAngles_X) == 0xcc);
++FABLE_STATIC_ASSERT_AT(459, offsetof(CGameCameraManager, RightStickTargetLookAroundAngles_Y) == 0xd0);
++FABLE_STATIC_ASSERT_AT(460, offsetof(CGameCameraManager, PCurrentScriptModule_Data) == 0xd4);
++FABLE_STATIC_ASSERT_AT(461, offsetof(CGameCameraManager, PCurrentScriptModule_Info) == 0xd8);
++FABLE_STATIC_ASSERT_AT(462, offsetof(CGameCameraManager, PPendingScriptModule_Data) == 0xdc);
++FABLE_STATIC_ASSERT_AT(463, offsetof(CGameCameraManager, PPendingScriptModule_Info) == 0xe0);
++FABLE_STATIC_ASSERT_AT(464, offsetof(CGameCameraManager, ScriptedCameraRemoveTimer) == 0xe4);
++FABLE_STATIC_ASSERT_AT(465, offsetof(CGameCameraManager, CameraPreload) == 0xe8);
++FABLE_STATIC_ASSERT_AT(466, offsetof(CGameCameraManager, CameraPreloadUseFastMode) == 0xe9);
++FABLE_STATIC_ASSERT_AT(467, offsetof(CGameCameraManager, ScriptHasPreloadedCamera) == 0xea);
++FABLE_STATIC_ASSERT_AT(468, offsetof(CGameCameraManager, EarthQuakes) == 0xec);
++FABLE_STATIC_ASSERT_AT(469, offsetof(CGameCameraManager, MinWorldHeight) == 0xf8);
++FABLE_STATIC_ASSERT_AT(470, offsetof(CGameCameraManager, MaxWorldHeight) == 0xfc);
++FABLE_STATIC_ASSERT_AT(471, offsetof(CGameCameraManager, PObservedThing) == 0x100);
++FABLE_STATIC_ASSERT_AT(472, offsetof(CGameCameraManager, CameraList) == 0x108);
++FABLE_STATIC_ASSERT_AT(473, offsetof(CGameCameraManager, CameraListIndex) == 0x114);
++FABLE_STATIC_ASSERT_AT(474, offsetof(CGameCameraManager, InitialModeCameraListIndex) == 0x118);
++FABLE_STATIC_ASSERT_AT(475, offsetof(CGameCameraManager, SpecialCameraList) == 0x11c);
++FABLE_STATIC_ASSERT_AT(476, offsetof(CGameCameraManager, SpecialCameraListIndex) == 0x128);
++FABLE_STATIC_ASSERT_AT(477, offsetof(CGameCameraManager, UsingCameraManually) == 0x12c);
++FABLE_STATIC_ASSERT_AT(478, offsetof(CGameCameraManager, BlockModeChange) == 0x12d);
++FABLE_STATIC_ASSERT_AT(479, offsetof(CGameCameraManager, PCameraManagerSet_Object) == 0x130);
++FABLE_STATIC_ASSERT_AT(480, offsetof(CGameCameraManager, PDef_Object) == 0x134);
++FABLE_STATIC_ASSERT_AT(481, offsetof(CGameCameraManager, RegisteredModes) == 0x138);
++FABLE_STATIC_ASSERT_AT(482, offsetof(CGameCameraManager, ScriptedCameraModeFromGame) == 0x144);
++FABLE_STATIC_ASSERT_AT(483, offsetof(CGameCameraManager, ScriptedCameraPreloadFlag) == 0x145);
++FABLE_STATIC_ASSERT_AT(484, offsetof(CGameCameraManager, CamRSLookAroundDeltaTheta) == 0x148);
++FABLE_STATIC_ASSERT_AT(485, offsetof(CGameCameraManager, CamZoomMinHeightFactor) == 0x14c);
++FABLE_STATIC_ASSERT_AT(486, offsetof(CGameCameraManager, AutoFOVZoomInCombat) == 0x150);
++FABLE_STATIC_ASSERT_AT(487, offsetof(CGameCameraManager, CamAutoGoBehind) == 0x151);
++FABLE_STATIC_ASSERT_AT(488, offsetof(CGameCameraManager, LimitMinMaxWorldHeight) == 0x152);
++FABLE_STATIC_ASSERT_AT(489, offsetof(CGameCameraManager, DrawDebugGraphics) == 0x154);
++FABLE_STATIC_ASSERT_AT(490, offsetof(CGameCameraManager, DebugPersistFrame) == 0x158);
++FABLE_STATIC_ASSERT_AT(491, offsetof(CGameCameraManager, DebugPoints) == 0x15c);
+ 
+ #endif // FABLE_RETAIL_CGAMECAMERAMANAGER_LOOKAROUND
+ #endif // FABLE_ENGINE_CGAMECAMERAMANAGER_H

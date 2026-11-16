@@ -1,0 +1,35 @@
+--- a/rebuild/include/engine/CGraphicInfoFrame.h
++++ b/rebuild/include/engine/CGraphicInfoFrame.h
+@@ -119,6 +119,11 @@
+     bool GetTexture(const CTexture**,unsigned long,unsigned long) const;
+     const CTexture* GetBlankTexture() const; // native009fd3f0
+     void TouchFrame(unsigned long) const;
++#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_ISALPHA
++    // Opt-in (chunk 4010, row 0x00BD3070): FableWin.pdb ?IsAlpha@CGraphicInfoFrame@@QBE_NXZ (inline; 0x00BD50DA `mov edx,[eax+0Ch] ;
++    // mov al,[edx+10h] ; test al,al`: the graphic's transparency type is not 0). Body in engine/CGraphicInfo.h. FITTED.
++    bool IsAlpha() const;
++#endif
+ #ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+     // Retail opt-in (wf8, row 0x00BA4A40): FableWin.pdb ?GetTextureType@CGraphicInfoFrame@@QBE?AW4ETextureType@CGraphicDataBank@@XZ;
+     // the inline body is in engine/CGraphicInfo.h (needs the complete CGraphicInfo). No layout change.
+@@ -215,8 +220,8 @@
+     unsigned long TouchedFrame;
+     const CGraphicInfoFrame* GraphicInfoFrame;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame)==0x10);
+-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame::CFrameData)==0x44);
++FABLE_STATIC_ASSERT_AT(218, sizeof(CGraphicInfoFrame)==0x10);
++FABLE_STATIC_ASSERT_AT(219, sizeof(CGraphicInfoFrame::CFrameData)==0x44);
+ 
+ #else
+ // New header (chunk 767, row 0x009FD4D0 CGraphicInfoFrame::CFrameData::ResetDebugMemoryInUse). Retail RTTI .?AVCGraphicInfoFrame@@ :
+@@ -253,7 +258,7 @@
+     unsigned long      TouchedFrame;                         // +0x3c
+     CGraphicInfoFrame* GraphicInfoFrame;                     // +0x40
+ };
+-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame) == 0x10);
+-FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame::CFrameData) == 0x44);
++FABLE_STATIC_ASSERT_AT(256, sizeof(CGraphicInfoFrame) == 0x10);
++FABLE_STATIC_ASSERT_AT(257, sizeof(CGraphicInfoFrame::CFrameData) == 0x44);
+ #endif
+ #endif // FABLE_ENGINE_CGRAPHICINFOFRAME_H

@@ -1,0 +1,55 @@
+--- a/rebuild/include/engine/CParticleSystem.h
++++ b/rebuild/include/engine/CParticleSystem.h
+@@ -47,7 +47,22 @@
+  // 0x00B05840, out of line; ?GetNormalisedTime@...@QBEMXZ inline (the +0x50 bit 3 test, then the +0x5C read).
+  void ScaleParticleDimensions(C2DVector&) const;
+  void ScaleParticleDimensions(unsigned long&) const;
++#ifdef FABLE_RETAIL_CPARTICLESYSTEM_SCALEVECTOR
++ // Opt-in (wfD6, row 0x00B01900): FableWin ?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAVC3DVector@@@Z, inline in retail
++ // (no retail copy; CPSCRenderMesh::AddToBoundingSphere 0x00B01900 scales the mesh size per axis). Needs a typed Scale (FABLE_RETAIL_CPARTICLESYSTEM_SCALE).
++ void ScaleParticleDimensions(C3DVector& dim) const { if (ScaleParticles) { dim.X *= Scale.X; dim.Y *= Scale.Y; dim.Z *= Scale.Z; } }
++#endif
+  void GetUnscaledWorldTransform(CMatrix3x4&) const;
++#ifdef FABLE_RETAIL_CPARTICLESYSTEM_PARTICLEWORLDTRANSFORM
++ // Opt-in (wfE8, row 0x00B03CA0): FableWin.pdb ?GetParticleWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z, out of line
++ // (retail 0x00B05980, landed). Declaration only.
++ void GetParticleWorldTransform(CMatrix3x4&) const;
++#endif
++#ifdef FABLE_RETAIL_CPARTICLESYSTEM_GETSCALE
++ // Opt-in (wfE8, row 0x00B03CA0): FableWin.pdb ?GetScale@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ (inline; no Ego_r copy).
++ // Needs the typed Scale (FABLE_RETAIL_CPARTICLESYSTEM_UPDATE / _SCALE).
++ const C3DVector& GetScale() const { return Scale; }
++#endif
+  float GetNormalisedTime() const { return NormalisedTimeEnabled ? NormalisedTime : 0.0f; }
+  float GetGlobalAlpha() const { return GlobalAlpha; }
+  float GetFadeAlpha() const { return FadeAlpha; }
+@@ -91,9 +106,22 @@
+  // Opt-in (row 0x00AF5430): Ego_r.pdb + FableWin.pdb ?ClearDecal@CParticleSystem@NParticleEngine@@QAEXAAV?$_List_iterator@..CDecal..@std@@@Z.
+  void ClearDecal(std::list<CDecal*>::iterator&);
+ #endif
++#ifdef FABLE_RETAIL_CPARTICLESYSTEM_GETDECALLIST
++ // Opt-in (wfD6, row 0x00B1F200): FableWin.pdb ?GetDecalList@CParticleSystem@NParticleEngine@@QAEAAV?$list@PAVCDecal@NParticleEngine@@..@std@@XZ
++ // (inline; the row reads the list head at +0x20 in place, as GetParticleList).
++ std::list<CDecal*>& GetDecalList(){return Decals;}
++#endif
+  void TransformVectorIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformVector(v);}}
+  void TransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformPoint(v);}}
+  void InverseTransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetInverseSystemTransform(t);t.TransformPoint(v);}}
++#ifdef FABLE_RETAIL_CPARTICLESYSTEM_GENERATEPARTICLE
++ // Retail opt-in (wfE8 6th agent, row 0x00B10B10 CPSCEmitterGeneric::GenerateParticle): FableWin.pdb ?TransformVectorIfWorld@ / ?InverseTransformVector
++ // IfLocal@CParticleSystem@NParticleEngine@@QBEXAAVC3DVector@@@Z (inline, the siblings TransformVectorIfLocal / InverseTransformPosIfLocal
++ // text) and ?GetComponentOfType@..@@QAEPAVCPSCBase@2@W4EPSCType@2@K@Z (0x00AF4360, out of line). No layout change.
++ void TransformVectorIfWorld(C3DVector& v)const{if(!StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformVector(v);}}
++ void InverseTransformVectorIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetInverseSystemTransform(t);t.TransformVector(v);}}
++ CPSCBase* GetComponentOfType(EPSCType type,unsigned long index);   // 0x00AF4360
++#endif
+ #endif
+ #ifdef FABLE_RETAIL_CPARTICLESYSTEM_PEEKEMITTERTRANSFORM
+  // Opt-in (agentNF22, row 0x00AF3D80): Ego_r.pdb + FableWin.pdb ?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ
+@@ -123,5 +151,5 @@
+  CCharString Name;
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CParticleSystem)==0x70);
++FABLE_STATIC_ASSERT_AT(126, sizeof(NParticleEngine::CParticleSystem)==0x70);
+ #endif

@@ -1,0 +1,68 @@
+--- a/rebuild/include/stlport/fable_map.h
++++ b/rebuild/include/stlport/fable_map.h
+@@ -365,6 +365,12 @@
+         }
+         return iterator(y);
+     }
++#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
++    // Nested opt-in (chunk 879, row 0x00502E90 CWorldMap::PopulateRegionWithVillagers; re-based by agent wfE10): that TU expands
++    // erase(const K&) in place (0x005034BE, its distance count dead) and CALLS both halves out of line (equal_range 0x00514730, pair
++    // through a hidden pointer; erase(first, last) 0x0051AF80, iterators by value): the same STLport bodies, kept out of line.
++    __declspec(noinline)
++#endif
+     pair<iterator,iterator> equal_range(const K& key) { return pair<iterator,iterator>(lower_bound(key),upper_bound(key)); }
+ #ifdef FABLE_RETAIL_STLP_SET_UPPER_BOUND
+     // Retail opt-in (chunk F2, row 0x009D5BF0 CBankFileAsync::HandleFailedAllocation): STLport 4.6 _tree.h const upper_bound (the
+@@ -379,10 +385,27 @@
+         return const_iterator(y);
+     }
+ #endif
++#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
++    __declspec(noinline)
++#endif
+     void erase(iterator first,iterator last) {
+         if(first==begin()&&last==end()) clear();
+         else while(first!=last) erase(first++);
+     }
++#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
++    __forceinline
++#endif
++#ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY_DISTANCE
++    // Nested opt-in (agent wfE10-5, row 0x00502E90): STLport 4.6 _tree.c's own text, `size_type __n = distance(__p.first, __p.second);`
++    // (needs FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE's distance / __distance). VC7.1 then drops the dead count loop as retail does
++    // (0x005034BE: equal_range 0x00514730 straight into erase(first, last) 0x0051AF80, no node walk); the hand loop below is kept.
++    size_t erase(const K& key) {
++        pair<iterator,iterator> p=equal_range(key);
++        size_t n=distance(p.first,p.second);
++        erase(p.first,p.second);
++        return n;
++    }
++#else
+     size_t erase(const K& key) {
+         pair<iterator,iterator> p=equal_range(key);
+         size_t n=0;
+@@ -391,6 +414,7 @@
+         return n;
+     }
+ #endif
++#endif
+ };
+ template<class K,class V,class KeyOfValue,class Compare,class A>
+ void _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_erase(_Rb_tree_node<V>* x) {
+@@ -591,6 +615,9 @@
+     void erase(iterator position){_M_t.erase(position);}
+ #endif
+ #ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY
++#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
++    __forceinline
++#endif
+     size_t erase(const K& key){return _M_t.erase(key);}
+ #endif
+ };
+@@ -696,5 +723,5 @@
+ #endif
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(std::map<unsigned long,long>)==12);
++FABLE_STATIC_ASSERT_AT(699, sizeof(std::map<unsigned long,long>)==12);
+ #endif

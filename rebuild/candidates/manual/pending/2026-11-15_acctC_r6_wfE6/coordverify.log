@@ -1,0 +1,4 @@
+00b783f0 CEngineWaterRenderer Render None
+addr       parity           behav  name
+00b783f0   WARN RELOC_CONFLICT: ?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA -> 01396dd8 here, 01396de8 in landed 00bbc460
+00b783f0   RELOCATION_MATCH PASS   Render

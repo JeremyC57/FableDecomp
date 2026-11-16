@@ -1,0 +1,18 @@
+--- a/rebuild/include/engine/C3DMeshInfo.h
++++ b/rebuild/include/engine/C3DMeshInfo.h
+@@ -59,8 +59,15 @@
+     // FableWin.pdb inline ?PeekTextureBank@C3DMeshInfo@@QBEPBVCGraphicDataBank@@XZ (0x02E77A90; the caller reads Bank +0x04, then
+     // the bank's TextureBank, in place: 0x00BEC74A). Needs FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK. No layout change.
+     bool GetMesh(CCountedPointer<const C3DMesh2>& mesh, unsigned long lod, unsigned long flags) const;   // 0x00A25E70
++#ifdef FABLE_RETAIL_C3DMESHINFO_PEEKTEXTUREBANK_DIRECT
++    // Nested opt-in (wfA5, row 0x00B9AC30): FableWin.pdb ?PeekTextureBank@C3DMeshInfo@@QBEPBVCGraphicDataBank@@XZ is 10 debug
++    // instructions / 25 bytes = the bank's TextureBank (+0x3D4, disp32) read in place after PeekBank (plain VC7.1 /Od of this text:
++    // 10 / 25, fwsize SAME); through GetTextureBank it is 11 / 26. Code-identical in release.
++    const CGraphicDataBank* PeekTextureBank() const { return PeekBank()->TextureBank; }
++#else
+     const CGraphicDataBank* PeekTextureBank() const { return PeekBank()->GetTextureBank(); }
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_C3DMESHINFO_BEGINLOADINGTEXTURES
+     // Retail opt-in (chunk 2059, row 0x00BC25F0; the r3013 NAME_FIXES spelling; also rows 0x00B9A4A0 / 0x00BA6FF0): Ego_r.pdb
+     // ?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z (donor 0x00B5FEA0 between HasPhysicsMesh and AreTexturesLoaded =

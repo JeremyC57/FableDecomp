@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/C3DMeshVolume.h
++++ b/rebuild/include/engine/C3DMeshVolume.h
+@@ -9,6 +9,11 @@
+ class CContainmentVolume;
+ class C3DMeshVolume {
+ public:
++#ifdef FABLE_RETAIL_C3DMESHVOLUME_CHUNKCTOR
++    // Retail opt-in (wfE8, row 0x00A2F740): FableWin.pdb ??0C3DMeshVolume@@QAE@ABVC3DMeshFileConvexVolumeChunk@@PAVCMovableResourceMemoryPool@@@Z
++    // (retail 0x00A2E9A0, landed). The implicit copy / destructor are expanded by the caller (0x00A2FD45.., 0x00A2FDD1..).
++    C3DMeshVolume(const class C3DMeshFileConvexVolumeChunk& chunk, class CMovableResourceMemoryPool* pool);   // 0x00A2E9A0
++#endif
+     const CContainmentVolume* GetConvexVolume() const { return ConvexVolume.Get(); }
+ private:
+     CCharString                         Name;           // +0x00

@@ -1,0 +1,126 @@
+--- a/rebuild/include/engine/CParticleProgram.h
++++ b/rebuild/include/engine/CParticleProgram.h
+@@ -34,6 +34,18 @@
+ #ifdef FABLE_RETAIL_CPARTICLEPROGRAM_REMAPBONEINDICES
+ #include "stlport/fable_map.h"
+ #endif
++#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_READ
++// Nested opt-in (wfA6, row 0x00AE3C30 CParticleProgram::ReadFromFile; needs FABLE_RETAIL_CPARTICLEPROGRAM_RENDERACCESS for the typed
++// RenderVertices and FABLE_RETAIL_CCHARSTRING): the typed members the reader fills (Ego_r TPI types at the retail offsets below:
++// ExportParticles CVectorMap<CCharString,unsigned long> 0x10, IndexedTextureCoords CArray<C2DVector> (`sar 3`), ParticleIndices /
++// VertexIndices CArray<long>, SimGroups / NonSimGroups CArray<C3DGroup2>) and the private helpers it calls: Ego_r.pdb
++// ?AllocateArrays@CParticleProgram@@AAE_NKAAVCMovableResourceMemoryPool@@@Z (0x00ADF460) and
++// ?ReadGroups@CParticleProgram@@CIXAAVCDataInputStream@@AAV?$CArray@VC3DGroup2@@@@@Z (0x00AE3A60, landed). No layout change.
++#include "engine/CVectorMap.h"
++#include "engine/C2DVector.h"
++#include "fable_string.h"
++class CDataInputStream;
++#endif
+ class CMatrix3x4;
+ class CMatrix4x4;
+ class C3DGroup2;
+@@ -78,8 +90,19 @@
+     // calls on SimGroups and NonSimGroups.
+     static void __fastcall RemapBoneIndices(std::map<unsigned long, unsigned long>& remap, CArray<C3DGroup2>& groups);   // 0x00AE3920
+ #endif
++#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_READ
++    bool AllocateArrays(unsigned long count, CMovableResourceMemoryPool& pool);                 // 0x00ADF460
++    static void __fastcall ReadGroups(CDataInputStream& stream, CArray<C3DGroup2>& groups);   // 0x00AE3A60
++public:
++    bool ReadFromFile(CDataInputStream& in, CMovableResourceMemoryPool& pool);                 // 0x00AE3C30
++private:
++#endif
+     CParticleSimulation InitialSimulation;                   // +0x08
++#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_READ
++    CVectorMap<CCharString,unsigned long> ExportParticles;   // +0x88
++#else
+     unsigned char ExportParticles[16];                       // +0x88 CVectorMap<CCharString,unsigned long,CKeyPairCompareLess<CCharString,unsigned long> >
++#endif
+     CArray<C3DTriangle2> RenderTris;                         // +0x98
+     CArray<C3DQuad2> RenderQuads;                            // +0xA4
+ #ifdef FABLE_RETAIL_CPARTICLEPROGRAM_RENDERACCESS
+@@ -102,21 +125,34 @@
+ #endif
+     unsigned long NonSimCount;                               // +0xBC
+     C4DVector* NonSimPositions;                              // +0xC0
++#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_READ
++    CArray<C2DVector> IndexedTextureCoords;                  // +0xC4
++    unsigned char TempVertexPositions[12];                   // +0xD0 CArray<C4DVector>
++    CArray<long> ParticleIndices;                            // +0xDC
++    CArray<long> VertexIndices;                              // +0xE8
++#else
+     unsigned char IndexedTextureCoords[12];                  // +0xC4 CArray<C2DVector>
+     unsigned char TempVertexPositions[12];                   // +0xD0 CArray<C4DVector>
+     unsigned char ParticleIndices[12];                       // +0xDC CArray<long>
+     unsigned char VertexIndices[12];                         // +0xE8 CArray<long>
++#endif
+     bool BezierEnable;                                       // +0xF4
+     float AveragePatchSize;                                  // +0xF8
++#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_READ
++    CArray<C3DGroup2> SimGroups;                             // +0xFC
++    const CArray<C3DGroup2>& PeekSimGroups() const { return SimGroups; }   // chunk 748
++    CArray<C3DGroup2> NonSimGroups;                          // +0x108
++#else
+     unsigned char SimGroups[12];                             // +0xFC CArray<C3DGroup2>
+     const CArray<C3DGroup2>& PeekSimGroups() const { return *reinterpret_cast<const CArray<C3DGroup2>*>(SimGroups); }   // chunk 748
+     unsigned char NonSimGroups[12];                          // +0x108 CArray<C3DGroup2>
++#endif
+     CMemoryDataOutputStream Constraints;                     // +0x114
+     unsigned char LoopStack[12];                             // +0x12C CArray<CParticleProgram::CLoopBegin>
+     long MemoryHandle;                                       // +0x138
+     CMovableResourceMemoryPool* MemoryPool;                  // +0x13C
+ };
+-FABLE_STATIC_ASSERT(sizeof(CParticleProgram)==0x140);
++FABLE_STATIC_ASSERT_AT(119, sizeof(CParticleProgram)==0x140);
+ #endif // FABLE_ENGINE_CPARTICLEPROGRAM_H
+ #else // generated flattened default (unchanged)
+ #ifndef FABLE_ENGINE_CPARTICLEPROGRAM_H
+@@ -161,27 +197,27 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CParticleProgram) == 0x140);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, InitialSimulation) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, ExportParticles) == 0x88);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, RenderTris) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, RenderQuads) == 0xa4);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, RenderVertices) == 0xb0);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, NonSimCount) == 0xbc);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, NonSimPositions) == 0xc0);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, IndexedTextureCoords) == 0xc4);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, TempVertexPositions) == 0xd0);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, ParticleIndices) == 0xdc);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, VertexIndices) == 0xe8);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, BezierEnable) == 0xf4);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, AveragePatchSize) == 0xf8);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, SimGroups) == 0xfc);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, NonSimGroups) == 0x108);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, Constraints) == 0x114);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, LoopStack) == 0x12c);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, MemoryHandle) == 0x138);
+-FABLE_STATIC_ASSERT(offsetof(CParticleProgram, MemoryPool) == 0x13c);
++FABLE_STATIC_ASSERT_AT(164, sizeof(CParticleProgram) == 0x140);
++FABLE_STATIC_ASSERT_AT(165, offsetof(CParticleProgram, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(166, offsetof(CParticleProgram, InitialSimulation) == 0x8);
++FABLE_STATIC_ASSERT_AT(167, offsetof(CParticleProgram, ExportParticles) == 0x88);
++FABLE_STATIC_ASSERT_AT(168, offsetof(CParticleProgram, RenderTris) == 0x98);
++FABLE_STATIC_ASSERT_AT(169, offsetof(CParticleProgram, RenderQuads) == 0xa4);
++FABLE_STATIC_ASSERT_AT(170, offsetof(CParticleProgram, RenderVertices) == 0xb0);
++FABLE_STATIC_ASSERT_AT(171, offsetof(CParticleProgram, NonSimCount) == 0xbc);
++FABLE_STATIC_ASSERT_AT(172, offsetof(CParticleProgram, NonSimPositions) == 0xc0);
++FABLE_STATIC_ASSERT_AT(173, offsetof(CParticleProgram, IndexedTextureCoords) == 0xc4);
++FABLE_STATIC_ASSERT_AT(174, offsetof(CParticleProgram, TempVertexPositions) == 0xd0);
++FABLE_STATIC_ASSERT_AT(175, offsetof(CParticleProgram, ParticleIndices) == 0xdc);
++FABLE_STATIC_ASSERT_AT(176, offsetof(CParticleProgram, VertexIndices) == 0xe8);
++FABLE_STATIC_ASSERT_AT(177, offsetof(CParticleProgram, BezierEnable) == 0xf4);
++FABLE_STATIC_ASSERT_AT(178, offsetof(CParticleProgram, AveragePatchSize) == 0xf8);
++FABLE_STATIC_ASSERT_AT(179, offsetof(CParticleProgram, SimGroups) == 0xfc);
++FABLE_STATIC_ASSERT_AT(180, offsetof(CParticleProgram, NonSimGroups) == 0x108);
++FABLE_STATIC_ASSERT_AT(181, offsetof(CParticleProgram, Constraints) == 0x114);
++FABLE_STATIC_ASSERT_AT(182, offsetof(CParticleProgram, LoopStack) == 0x12c);
++FABLE_STATIC_ASSERT_AT(183, offsetof(CParticleProgram, MemoryHandle) == 0x138);
++FABLE_STATIC_ASSERT_AT(184, offsetof(CParticleProgram, MemoryPool) == 0x13c);
+ 
+ #endif // FABLE_ENGINE_CPARTICLEPROGRAM_H
+ #endif // FABLE_RETAIL_CPARTICLEPROGRAM

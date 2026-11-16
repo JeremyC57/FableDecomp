@@ -1,0 +1,19 @@
+--- a/rebuild/include/engine/CEngineLightingManager.h
++++ b/rebuild/include/engine/CEngineLightingManager.h
+@@ -179,8 +179,16 @@
+     // Inline-budget: retail 0x00B68DA0 RenderSortedPatches expands this setter, guard included, at its call sites.
+     FABLE_FORCEINLINE void SetEnableFadedShadowFactor(bool enable)
+     {
++#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWMODE_DIRECT
++        // Nested opt-in (wfA5, row 0x00B9AC30): FableWin.pdb ?SetEnableFadedShadowFactor@CEngineLightingManager@@QAEX_N@Z is 24 debug
++        // instructions / 80 bytes = the guard reading the member directly (plain VC7.1 /Od of this text: 24 / 80, fwsize SAME); through
++        // PeekGlobalShadowMode() it is 25 / 81. Code-identical in release.
++        if (ShadowMode != (ELightingManagerShadowMode)1)
++            enable = false;
++#else
+         if (PeekGlobalShadowMode() != (ELightingManagerShadowMode)1)
+             enable = false;
++#endif
+         if (enable != FadedShadowDiffuseFactorEnabled) {
+             FadedShadowDiffuseFactorEnabled = enable;
+             StateUpdateFlags |= 1;

@@ -1,0 +1,4 @@
+006d0830 CTCWife GlobalUpdate None
+addr       parity           behav  name
+006d0830   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+006d0830   RELOCATION_MATCH PASS   GlobalUpdate
