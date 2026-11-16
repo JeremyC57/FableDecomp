@@ -69,6 +69,15 @@ It found 181 rows binding wrong names (`callers_wrong_symbol.tsv`): 175 to 0x006
   and new symbols get a first-caller line (102), via `tools/rebind.py`. No sources other than the rows changed, and no headers,
   so header equivalence is unaffected.
 
+## Verification of the committed tree (third commit)
+- **Callers.** A relocation scan of all 530 landed rows that call 0x00686800, 0x007448F0, 0x007C2AB0 or a re-signed ctor
+  finds every row RELOCATION_MATCH. The rows still binding a wrong name are exactly the 42 in `held_rows.tsv`.
+- **Factories by address.** A 4-byte absolute scan finds the factories referenced from one landed function,
+  CTCBase::RegisterTCs 0x004EE23F. It already declared `X::Alloc(CThing&)`, and all 198 of its references bind the re-authored
+  rows' new leaves.
+- **Labels.** `ghidra_out/labels_landing_2026-11-16gn.tsv` gains 408 labels, one per row whose leaf changed, each naming the PDB
+  that holds it.
+
 ## Still open: 42 rows (`held_rows.tsv`)
 42 constructors still call 0x00686800 under `??0CTCBase@@QAE@PAVCThing@@@Z` or `??0CTCBase_Calls@@QAE@PAVCThing@@@Z`. Those two
 lines stay in reloc_bindings.tsv, naming one of these rows, so later landings still see the conflict.
