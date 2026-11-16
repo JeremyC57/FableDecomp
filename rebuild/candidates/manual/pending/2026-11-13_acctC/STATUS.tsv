@@ -118,7 +118,7 @@ address	state	true_length	staged_in	agent_and_note	kind	catalog_name
 007de710	MATCHED_STAGED	2578	2026-11-14_acctC_wfB7	workflow parked/Fable match + shared-header fix-up; coordinator-verified	parked	CTCWallMount::AttachObject
 00772bb0	MATCHED_STAGED	2585	2026-11-14_acctC_wfB7	workflow parked/Fable match + shared-header fix-up; coordinator-verified	parked	CTCShop::AddSaleItem
 00dce230	MATCHED_STAGED	2589	2026-11-15_acctC_wfA2p	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Main
-006d0830	PARKED	2584	2026-11-14_acctC_wfA1/open	workflow unworked/Opus: DIFFER(2581v2584): wedding zero hoist + dowry register	parked	CTCWife::GlobalUpdate
+006d0830	MATCHED_STAGED	2584	2026-11-15_acctC_r6_wfA1h	round 5 (Opus): RELOCATION_MATCH + test PASS, coordinator-verified, rule audit done	parked	CTCWife::GlobalUpdate
 00d4a270	MATCHED_STAGED	9388	2026-11-14_acctC_wfD3	workflow unworked/Opus round 2: match / PASS, verifier + coordinator-verified	never_worked	NScript::CQ_GuildTrainingScript::CCombatApprentice::Main
 004804de	MATCHED_STAGED	11203	2026-11-15_acctC_wfE11	workflow unworked/Opus round 3: match / PASS, verifier + coordinator-verified	never_worked	CTCInGameMenu::OpenInGameMenuPC
 0060c900	MATCHED_STAGED	9635	2026-11-13_acctC_c14a	C14; real name CTCInventoryMap::ConstructMapList	never_worked	CTCInventoryMap::CTCInventoryMap::BuildMapTeleportUI
