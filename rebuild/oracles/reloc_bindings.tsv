@@ -41353,3 +41353,4 @@ _mip	0139a838	00b70230
 ?noFilterSaturation@?1??RenderUIBackground@CUserProfileManager@@QAEXM@Z@4MA	013b7d34	004075c0
 ?ClampResolution@CUserProfileManager@@AAEXAAKJ@Z	00406d90	0040bca0
 ?push_back@?$vector@UCEmbeddedIcon@CIconText@NUISystem@@V?$allocator@UCEmbeddedIcon@CIconText@NUISystem@@@std@@@std@@QAEXABUCEmbeddedIcon@CIconText@NUISystem@@@Z	00543c90	00542780
+?GPPrimitiveRenderer2D@NEngineInternal@@3PAVCEnginePrimitiveRenderer2D@@A	01436e7c	00bcf4f0

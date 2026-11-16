@@ -1,0 +1,6 @@
+address	name	evidence
+0x00989830	?InitialiseLight@CShaderRenderManager@@QAEXKABVCShaderLight@@@Z	landing gi (2026-11-16, w24C): match + test PASS, strict headers
+0x00C44090	?EAXSet@CCodaSource@@QAEXPBU_GUID@@HPAXH@Z	landing gi (2026-11-16, w24C): match + test PASS, strict headers; DESCRIPTIVE member name (CSalVoice slot 15/16 EAXSet/EAXGet forwarder; no SDK symbol found)
+0x00C44100	?EAXGet@CCodaSource@@QAEXPBU_GUID@@HPAXH@Z	landing gi (2026-11-16, w24C): match + test PASS, strict headers; DESCRIPTIVE member name (CSalVoice slot 15/16 EAXSet/EAXGet forwarder; no SDK symbol found)
+0x0090E3D0	??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@@@@Z	landing gi (2026-11-16, w24C): match + test PASS, strict headers
+0x00BCF4F0	?Initialise@CEngineInternalPrimitive2DAnimatedMesh@@QAEXXZ	landing gi (2026-11-16, w24C): match + test PASS, strict headers

@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00989830   MATCH            PASS   InitialiseLight
+00c44090   RELOCATION_MATCH PASS   EAXSet
+00c44100   RELOCATION_MATCH PASS   EAXGet
+0090e3d0   WARN RELOC_NAME: ??RCThingFilter_IsValidGossipee@@QBE_NABVCThingAICreature@@@Z -> 0090c900 labelled '??RCThingFilter_IsValidGossipee@@QBE_NABVCThingAICreature@@@Z'
+0090e3d0   WARN STANDIN_LEAF ??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@@@@Z (catalog CMessageEventManager::FindMostRecentMessage<CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_Thing; names another function)
+0090e3d0   RELOCATION_MATCH PASS   FindMostRecentMessage
+00bcf4f0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00bcf4f0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 5
+  00989830 MATCH CShaderRenderManager::?InitialiseLight@CShaderRenderManager@@QAEXKABVCShaderLight@@@Z
+  00c44090 RELOCATION_MATCH CCodaSource::?EAXSet@CCodaSource@@QAEXPBU_GUID@@HPAXH@Z
+  00c44100 RELOCATION_MATCH CCodaSource::?EAXGet@CCodaSource@@QAEXPBU_GUID@@HPAXH@Z
+  0090e3d0 RELOCATION_MATCH CMessageEventManager::??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@@@@Z
+  00bcf4f0 RELOCATION_MATCH CEngineInternalPrimitive2DAnimatedMesh::?Initialise@CEngineInternalPrimitive2DAnimatedMesh@@QAEXXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CShaderRenderManager_InitialiseLight_00989830
+  CCodaSource_EAXSet_00c44090
+  CCodaSource_EAXGet_00c44100
+  CMessageEventManager_FindMostRecentMessage_0090e3d0
+  CEngineInternalPrimitive2DAnimatedMesh_Initialise_00bcf4f0

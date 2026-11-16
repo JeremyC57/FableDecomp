@@ -7,6 +7,9 @@
 // Layout: native+0c caps,+10 status,+50 voice,+54 queue,+78 buffer;
 // SDK release object agrees, debug adds only the base diagnostic word.
 class CCoda3DSource;
+#ifdef FABLE_RETAIL_CCODASOURCE_EAX
+struct _GUID;
+#endif
 #if defined(FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS) || defined(FABLE_RETAIL_CCODACONTEXT_CREATE2D)
 class CCoda2DSource;
 #endif
@@ -45,6 +48,20 @@ public:
  virtual bool Create(unsigned int);
 #ifdef FABLE_RETAIL_PASS22_CCODA3D_CREATE
  virtual void Release();
+#endif
+#ifdef FABLE_RETAIL_CCODASOURCE_EAX
+ // Retail opt-in (w24C, rows 0x00C44090 / 0x00C44100; needs FABLE_RETAIL_PASS22_CCODA3D_CREATE for slots 0..4): the rest of the native
+ // source vtable 0x012B5A88. Slot 5 is pure and returns the source's effective gain (2D 0x00C445B0 `fld [ecx+18h]`, 3D 0x00C412D0,
+ // landed as GetEffectiveGain); slots 6 / 7 (0x00C43780 / 0x00C437A0) store the CODASOURCE pLPFilter / pEQFilter records
+ // (+0x24 / +0x28); slot 8 is pure: the 2D / 3D source allocates the voice for a buffer (0x00C448A0 / 0x00C418C0) and returns the
+ // error. Slot names are descriptive (no SDK symbol list on hand). EAXSet / EAXGet forward to CSalVoice::EAXSet / EAXGet (SDK
+ // CodeView, voice slots 15 / 16), allocating the voice first when the source has none.
+ virtual float GetEffectiveGain()const=0;
+ virtual void SetLPFilter(const _CLPFILTER*);
+ virtual void SetEQFilter(const _CEQFILTER*);
+ virtual int AllocateVoice(CSalBuffer*,CSalVoice**)=0;
+ void EAXSet(const _GUID*,int,void*,int);
+ void EAXGet(const _GUID*,int,void*,int);
 #endif
  bool IsBufferSet()const{return m_pBuffer!=0 || (m_Queue.IsCreated() && !m_Queue.IsEmpty());}
  // Native Play returns its voice-acquisition error or zero; SDK2.10 changed this return to void.

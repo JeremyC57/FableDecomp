@@ -397493,6 +397493,43 @@ $catalog = @(
         TestSource = '00/7d/CTCCreatureFlyInCircles_QueueSwoop_007dda30_test.cpp'
         PassPattern = '007dda30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00989830'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_InitialiseLight_00989830.cpp'
+        TestSource = '00/98/CShaderRenderManager_InitialiseLight_00989830_test.cpp'
+        PassPattern = '00989830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c44090'
+        Module = 'CCodaSource'
+        Source = '00/c4/CCodaSource_EAXSet_00c44090.cpp'
+        TestSource = '00/c4/CCodaSource_EAXSet_00c44090_test.cpp'
+        PassPattern = '00c44090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c44100'
+        Module = 'CCodaSource'
+        Source = '00/c4/CCodaSource_EAXGet_00c44100.cpp'
+        TestSource = '00/c4/CCodaSource_EAXGet_00c44100_test.cpp'
+        PassPattern = '00c44100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090e3d0'
+        Module = 'CMessageEventManager'
+        Source = '00/90/CMessageEventManager_FindMostRecentMessage_0090e3d0.cpp'
+        TestSource = '00/90/CMessageEventManager_FindMostRecentMessage_0090e3d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT107'
+        PassPattern = '0090e3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bcf4f0'
+        Module = 'CEngineInternalPrimitive2DAnimatedMesh'
+        Source = '00/bc/CEngineInternalPrimitive2DAnimatedMesh_Initialise_00bcf4f0.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitive2DAnimatedMesh_Initialise_00bcf4f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT144'
+        PassPattern = '00bcf4f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
