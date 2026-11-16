@@ -1,0 +1,72 @@
+addr       parity           behav  name
+00416005   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00416005   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00416005   RELOCATION_MATCH PASS   InitDefinitions
+0042a18f   RELOCATION_MATCH PASS   clear
+0042ad6c   MATCH            PASS   _M_lower_bound
+0042b6b8   RELOCATION_MATCH PASS   push_back
+0042cee3   RELOCATION_MATCH PASS   insert_unique
+0042d2c6   RELOCATION_MATCH PASS   insert_unique
+0042d5b1   RELOCATION_MATCH PASS   operator[]
+005838dd   WARN SHARED_HEADER_AVAILABLE CTCInventory
+005838dd   RELOCATION_MATCH PASS   AdjustVideoOptionsSliders
+00595356   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+00595356   WARN RELOC_NAME: ?back@?$deque@PAVCComponent@NUISystem@@@std@@QAEAAPAVCComponent@NUISystem@@XZ -> 0059b039 labelled 'CScreenStack::Top'
+00595356   RELOCATION_MATCH PASS   ResetSlidersToProfileValues
+005b1dfe   WARN STANDIN_LEAF ?_M_lower_bound@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@ABEPAU_Rb_tree_node_base@2@ABQAVCComponent@NUISystem@@@Z (catalog std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> >, std::_Select1st<std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> > >, std::less<NUISystem::CComponent*>, std::allocator<std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> > > >::_M_lower_bound; names another function)
+005b1dfe   MATCH            PASS   _M_lower_bound
+005b3100   RELOCATION_MATCH PASS   operator[]
+005b322b   WARN RELOC_NAME: ?_M_lower_bound@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@ABEPAU_Rb_tree_node_base@2@ABQAVCComponent@NUISystem@@@Z -> 005b1d38 labelled '_global::BinarySearchTree_Find'
+005b322b   RELOCATION_MATCH PASS   operator[]
+0066000a   RELOCATION_MATCH PASS   find_if
+00779b90   MATCH            PASS   operator--
+0089cd30   RELOCATION_MATCH PASS   CanThingBe_NearlySeen_ByOtherThing
+0090df30   RELOCATION_MATCH PASS   GetPOriginator<CThingAICreature>
+00a4aac0   RELOCATION_MATCH PASS   __copy_backward<CLipSyncFrameData*,CLipSyncFrameData*,int>
+00a4adb0   RELOCATION_MATCH PASS   __copy<CLipSyncFrameData*,CLipSyncFrameData*,int>
+00a9ba70   WARN SHARED_HEADER_AVAILABLE CArray
+00a9ba70   WARN SHARED_HEADER_AVAILABLE CChunkedFile
+00a9ba70   WARN RELOC_NAME: ??0CMemoryDataOutputStreamMethods@X_00a9ba70@@QAE@XZ -> 00996af0 labelled 'CMemoryDataOutputStream::CMemoryDataOutputStream'
+00a9ba70   WARN RELOC_NAME: ??1CMemoryDataOutputStreamMethods@X_00a9ba70@@QAE@XZ -> 00996b30 labelled 'CMemoryDataOutputStream::~CMemoryDataOutputStream'
+00a9ba70   RELOCATION_MATCH PASS   SaveMeshFileCompressed
+00b23c00   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b23c00   RELOCATION_MATCH PASS   SetSpotlightShadowMode
+00bac0f0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveRepeatedZSprite
+00bac0f0   WARN SHARED_HEADER_AVAILABLE CGPUScratchBufferTextureManager
+00bac0f0   WARN RELOC_NAME: ?g_pDisplayManager@@3PAUCDisplayManagerView@@A -> 01436e98 labelled 'g_pResourceManager'
+00bac0f0   WARN RELOC_NAME: ?EndSurfaceUse@CGPUScratchBufferTextureManager@@QAEXJ@Z -> 00f36f00 labelled 'CGPUScratchBufferTextureManager::EndTextureUse'
+00bac0f0   WARN RELOC_NAME: ?EndSurfaceUse2@CGPUScratchBufferTextureManager@@QAEXJ@Z -> 00f36f30 labelled '_global::Nop_ret4_00f36f30'
+00bac0f0   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00bac0f0   RELOCATION_MATCH PASS   RenderNonsortedPrimitives
+00c21620   WARN RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'
+00c21620   WARN RELOC_NAME: ?IsPlayingVirtual_00c207a0@CSoundEvent@@QAEJXZ -> 00c207a0 labelled 'CUnprovenStateObject_00C20720::IsState5_00C207A0'
+00c21620   RELOCATION_MATCH PASS   Stop
+00c25c70   WARN RELOC_NAME: ?AddRef@CSoundSample@@QAEXXZ -> 00c1ea30 labelled 'CParticle::IncrementLifetimer'
+00c25c70   RELOCATION_MATCH PASS   Bind
+00c4b010   RELOCATION_MATCH PASS   ReturnAllBuffers
+
+WINS: 24
+  00416005 RELOCATION_MATCH CMainGameComponent::?InitDefinitions@CMainGameComponent@@IAE_N_N@Z
+  0042a18f RELOCATION_MATCH std::_List_base<NUISystem::CComponent*>::?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ
+  0042ad6c MATCH std::_Rb_tree<unsigned long, std::pair<const unsigned long, NUISystem::CUIState>, std::_Select1st<std::pair<const unsigned long, NUISystem::CUIState> >, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, NUISystem::CUIState> > >::?_M_lower_bound@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@ABEPAU_Rb_tree_node_base@2@ABK@Z
+  0042b6b8 RELOCATION_MATCH std::list<NUISystem::CComponent*>::?push_back@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXABQAVCComponent@NUISystem@@@Z
+  0042cee3 RELOCATION_MATCH std::_Rb_tree<unsigned long, std::pair<const unsigned long, NUISystem::CUIState>, std::_Select1st<std::pair<const unsigned long, NUISystem::CUIState> >, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, NUISystem::CUIState> > >::?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z
+  0042d2c6 RELOCATION_MATCH std::_Rb_tree<K, pair<const K, T>, ...>::?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z
+  0042d5b1 RELOCATION_MATCH std::map<unsigned long, NUISystem::CUIState>::??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAEAAVCUIState@NUISystem@@ABK@Z
+  005838dd RELOCATION_MATCH CTCInventory::?AdjustVideoOptionsSliders@CTCInventory@@QAEXXZ
+  00595356 RELOCATION_MATCH NUISystem::CFrontEndManager::?ResetSlidersToProfileValues@CFrontEndManager@NUISystem@@QAEXXZ
+  005b1dfe MATCH std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> >, std::_Select1st<std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> > >, std::less<NUISystem::CComponent*>, std::allocator<std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> > > >::?_M_lower_bound@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@ABEPAU_Rb_tree_node_base@2@ABQAVCComponent@NUISystem@@@Z
+  005b3100 RELOCATION_MATCH std::map<NUISystem::CComponent*, std::pair<CWideString, long> >::??A?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@QAEAAU?$pair@VCWideString@@J@1@ABQAVCComponent@NUISystem@@@Z
+  005b322b RELOCATION_MATCH std::map<NUISystem::CComponent*, std::pair<long,long> >::??A?$map@PAVCComponent@NUISystem@@U?$pair@JJ@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@QAEAAU?$pair@JJ@1@ABQAVCComponent@NUISystem@@@Z
+  0066000a RELOCATION_MATCH std::??$find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@U10@0UHasGuardProperty@@@Z
+  00779b90 MATCH std::_Rb_tree_iterator<std::pair<const long,float>, std::_Const_traits<std::pair<const long,float> > >::??F?$_Rb_tree_iterator@U?$pair@$$CBJM@std@@U?$_Const_traits@U?$pair@$$CBJM@std@@@2@@std@@QAEAAU01@XZ
+  0089cd30 RELOCATION_MATCH CGameScriptInterface::?CanThingBe_NearlySeen_ByOtherThing@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z
+  0090df30 RELOCATION_MATCH CMessageEvent::??$GetPOriginator@VCThingAICreature@@@CMessageEvent@@QBEPAVCThingAICreature@@XZ
+  00a4aac0 RELOCATION_MATCH std::??$__copy_backward@PAVCLipSyncFrameData@@PAV1@H@std@@YIPAVCLipSyncFrameData@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+  00a4adb0 RELOCATION_MATCH std::??$__copy@PAVCLipSyncFrameData@@PAV1@H@std@@YIPAVCLipSyncFrameData@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+  00a9ba70 RELOCATION_MATCH C3DMeshFileSaver::SaveMeshFileCompressed
+  00b23c00 RELOCATION_MATCH CEngine::?SetSpotlightShadowMode@CEngine@@UAEX_N@Z
+  00bac0f0 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::RenderNonsortedPrimitives
+  00c21620 RELOCATION_MATCH CSoundEvent::?Stop@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z
+  00c25c70 RELOCATION_MATCH CSampleRef::?Bind@CSampleRef@@QAEXPAVCSoundSample@@JJJ@Z
+  00c4b010 RELOCATION_MATCH PKCBufferedReader::?ReturnAllBuffers@PKCBufferedReader@@QAEXXZ

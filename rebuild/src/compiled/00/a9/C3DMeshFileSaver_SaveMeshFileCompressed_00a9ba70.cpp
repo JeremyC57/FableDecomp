@@ -1,6 +1,7 @@
 // 00a9ba70 C3DMeshFileSaver::SaveMeshFileCompressed
 // Flags: /O2 /Oy /W3
 // Leaf: SaveMeshFileCompressed
+// NF42 (round 5): WriteULONG binds CDataOutputStream::WriteULONG (0x00993EA0, engine/CDataOutputStream.h); the method adapter no longer redeclares it.
 #include "fable_compiler.h"
 #define FABLE_RETAIL_MEMORY_OUTPUT_STREAM
 #include "engine/CMemoryDataOutputStream.h"
@@ -10,7 +11,7 @@
 namespace X_00a9ba70{
 // Layout: active retail opt-in header owns all24 bytes. Method-only adapters add no fields. Actual base storage is8 bytes; virtual slot2 position, slot4 write.
 struct CDataOutputStreamSlots{virtual void Slot0()=0;virtual void Slot1()=0;virtual unsigned long GetPosition()const=0;virtual void Slot3()=0;virtual void Write(const void*,long)=0;};
-struct CDataOutputStreamMethods: ::CDataOutputStream{void WriteULONG(unsigned long);FABLE_FORCEINLINE unsigned long GetPosition()const{return ((const CDataOutputStreamSlots*)this)->GetPosition();}FABLE_FORCEINLINE void Write(const void*p,long n){((CDataOutputStreamSlots*)this)->Write(p,n);}};
+struct CDataOutputStreamMethods: ::CDataOutputStream{FABLE_FORCEINLINE unsigned long GetPosition()const{return ((const CDataOutputStreamSlots*)this)->GetPosition();}FABLE_FORCEINLINE void Write(const void*p,long n){((CDataOutputStreamSlots*)this)->Write(p,n);}};
 struct CMemoryDataOutputStreamMethods: ::CMemoryDataOutputStream{CMemoryDataOutputStreamMethods();~CMemoryDataOutputStreamMethods();unsigned long GetLength()const;const void*PeekData()const;};
 // Layout: retail CArray<char> has three pointers, copies bytes and releases storage through free.
 template<class T>FABLE_FORCEINLINE T*uninitialized_fill_n(T*first,unsigned n,const T&v){memset(first,v,n*sizeof(T));return first+n;}

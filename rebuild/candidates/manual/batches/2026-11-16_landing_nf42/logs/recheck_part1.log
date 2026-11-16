@@ -1,0 +1,59 @@
+addr       parity           behav  name
+0042955b   MATCH            PASS   _Rotate_right
+0042abca   RELOCATION_MATCH PASS   ~list
+0042b4c3   RELOCATION_MATCH PASS   _M_insert_dispatch<const_iterator>
+0042cb08   RELOCATION_MATCH PASS   _M_insert
+0042d1a3   RELOCATION_MATCH PASS   insert
+0042d4d3   RELOCATION_MATCH PASS   insert
+00583815   WARN SHARED_HEADER_AVAILABLE CTCInventory
+00583815   RELOCATION_MATCH PASS   AdjustAudioOptionsSliders
+005839a5   WARN SHARED_HEADER_AVAILABLE CTCInventory
+005839a5   RELOCATION_MATCH PASS   AdjustGameplayOptionsSliders
+005b1afd   RELOCATION_MATCH PASS   __distance
+005b1ff4   RELOCATION_MATCH PASS   distance
+005b31cf   RELOCATION_MATCH PASS   insert
+0065f9ab   RELOCATION_MATCH PASS   __find_if
+006a7140   WARN RELOC_NAME: ?GetHasInformation@CThingAICreature@@QBE_NXZ -> 008300d0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+006a7140   RELOCATION_MATCH PASS   operator()
+0089cd10   RELOCATION_MATCH PASS   CanThingBe_Seen_ByOtherThing
+008f84a0   RELOCATION_MATCH PASS   Think
+009f2450   RELOCATION_MATCH PASS   GetTotalMemoryAllocated
+00a4ad80   RELOCATION_MATCH PASS   fill<CLipSyncFrameData*,CLipSyncFrameData>
+00a99840   WARN SHARED_HEADER_AVAILABLE CArray
+00a99840   WARN SHARED_HEADER_AVAILABLE CChunkedFile
+00a99840   WARN RELOC_NAME: ??0CMemoryDataOutputStreamMethods@X_00a99840@@QAE@XZ -> 00996af0 labelled 'CMemoryDataOutputStream::CMemoryDataOutputStream'
+00a99840   WARN RELOC_NAME: ??1CMemoryDataOutputStreamMethods@X_00a99840@@QAE@XZ -> 00996b30 labelled 'CMemoryDataOutputStream::~CMemoryDataOutputStream'
+00a99840   RELOCATION_MATCH PASS   SaveAnimFileCompressed
+00aa4af0   RELOCATION_MATCH PASS   WriteToFile
+00b32230   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b32230   WARN RELOC_NAME: ?g_pRenderStateManager_01436e18@@3PAVCRenderStateManager@@A -> 01436e18 labelled 'g_pRenderManagerCore'
+00b32230   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b32230   RELOCATION_MATCH PASS   PostRenderLayer
+00bacd80   MATCH            PASS   AddEnableConsoleVariable
+00c25c50   MATCH            PASS   CSampleRef
+00c25cb0   RELOCATION_MATCH PASS   Release
+
+WINS: 23
+  0042955b MATCH std::_Rb_global<bool>::?_Rotate_right@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z
+  0042abca RELOCATION_MATCH std::list<NUISystem::CComponent*>::??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+  0042b4c3 RELOCATION_MATCH std::list<NUISystem::CComponent*>::??$_M_insert_dispatch@U?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@1@U?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@1@1ABU__false_type@1@@Z
+  0042cb08 RELOCATION_MATCH std::_Rb_tree<unsigned long, std::pair<const unsigned long, NUISystem::CUIState>, std::_Select1st<std::pair<const unsigned long, NUISystem::CUIState> >, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, NUISystem::CUIState> > >::?_M_insert@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKVCUIState@NUISystem@@@2@0@Z
+  0042d1a3 RELOCATION_MATCH std::map<unsigned long, NUISystem::CUIState>::?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z
+  0042d4d3 RELOCATION_MATCH std::map<unsigned long, NUISystem::CUIState>::?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z
+  00583815 RELOCATION_MATCH CTCInventory::?AdjustAudioOptionsSliders@CTCInventory@@QAEXXZ
+  005839a5 RELOCATION_MATCH CTCInventory::?AdjustGameplayOptionsSliders@CTCInventory@@QAEXXZ
+  005b1afd RELOCATION_MATCH std::??$__distance@U?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z
+  005b1ff4 RELOCATION_MATCH std::??$distance@U?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@@0@0@Z
+  005b31cf RELOCATION_MATCH std::map<NUISystem::CComponent*, std::pair<long,long> >::?insert@?$map@PAVCComponent@NUISystem@@U?$pair@JJ@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@2@@Z
+  0065f9ab RELOCATION_MATCH std::??$__find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@U10@0UHasGuardProperty@@ABUinput_iterator_tag@0@@Z
+  006a7140 RELOCATION_MATCH CThingFilter_HasInformation::??RCThingFilter_HasInformation@@QBE_NABVCThingAICreature@@@Z
+  0089cd10 RELOCATION_MATCH CGameScriptInterface::?CanThingBe_Seen_ByOtherThing@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z
+  008f84a0 RELOCATION_MATCH LHNetworkLib::LSocket::?Think@LSocket@LHNetworkLib@@SI_NXZ
+  009f2450 RELOCATION_MATCH CMemoryAllocator::?GetTotalMemoryAllocated@CMemoryAllocator@@QAEKXZ
+  00a4ad80 RELOCATION_MATCH std::??$fill@PAVCLipSyncFrameData@@V1@@std@@YIXPAVCLipSyncFrameData@@0ABV1@@Z
+  00a99840 RELOCATION_MATCH C3DAnimFileSaver::SaveAnimFileCompressed
+  00aa4af0 RELOCATION_MATCH C3DMeshFileXTextureIndexChunk::?WriteToFile@C3DMeshFileXTextureIndexChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
+  00b32230 RELOCATION_MATCH CEnginePrimitiveRenderer::PostRenderLayer
+  00bacd80 MATCH CEnginePrimitiveManager::?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+  00c25c50 MATCH CSampleRef::??0CSampleRef@@QAE@XZ
+  00c25cb0 RELOCATION_MATCH CSampleRef::?Release@CSampleRef@@QAEXXZ

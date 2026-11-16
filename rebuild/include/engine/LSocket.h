@@ -97,6 +97,17 @@ public:
     // stlport/fable_containers.h). Declaration only: no layout change.
     static bool FABLE_FASTCALL CheckForActivity(std::list<LSocket*>& sockets, LSOCKET_SELECT mode, unsigned long timeoutMs);   // 0x008F8540
 #endif
+#ifdef FABLE_RETAIL_LSOCKET_THINK
+    // Opt-in (NF42 round 5, row 0x008F84A0 LSocket::Think): Ego_r.pdb ?Think@LSocket@LHNetworkLib@@SI_NXZ (public static __fastcall),
+    // ?TryToSendDataFromQueue@LSocket@LHNetworkLib@@AAE_NXZ (private, 0x008F8440) and the public static GlobalList (0x013BB000, the
+    // spelling the landed dynamic initializer 0x0121F850 emits). Needs FABLE_RETAIL_LSOCKET_SEND_PASS23 (NeedToFlush, IsConnected) and
+    // std::list from stlport/fable_containers.h. Declarations only.
+public:
+    static std::list<LSocket*> GlobalList;
+    static bool FABLE_FASTCALL Think();
+private:
+    bool TryToSendDataFromQueue();
+#endif
 };
 }
 #ifdef _MSC_VER

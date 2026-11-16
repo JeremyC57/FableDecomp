@@ -14,29 +14,13 @@
 // Layout: the list is STLport's one word, the sentinel-node pointer (_M_node); a node is {next, prev, CComponent* data}.
 // Shape: size TU (`pop ecx` after the free); the sentinel is re-read after clear() and null-tested by
 // allocator<T>::deallocate (`if (p) free(p)`, STLport's malloc allocator).
+// NF42 (round 5): the local list / _List_node / allocator stand-ins replaced by the shared stlport/fable_containers.h
+// (FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST: the clear+free body in ~list itself, FableWin.pdb names ??1?$list; declaration-only
+// _List_base::clear under FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE), so the
+// clear callee binds STLport's ?clear@?$_List_base@..@std@@QAEXXZ (it was the list's own clear).
 #pragma optimize("s", on)
-extern "C" void __cdecl free(void*);
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST
+#include "stlport/fable_containers.h"
 namespace NUISystem { class CComponent; }
-namespace std {
-template <class T> struct _List_node {
-    _List_node* _M_next;
-    _List_node* _M_prev;
-    T           _M_data;
-};
-template <class T> class allocator {                     // STLport: a class (V)
-public:
-    void deallocate(_List_node<T>* p, unsigned long) { if (p) ::free(p); }
-};
-template <class T, class A> class list {
-public:
-    _List_node<T>* _M_node;                      // the sentinel
-    void clear();                                // 0x0042A18F (_List_base::clear)
-    ~list();
-};
-template <class T, class A> list<T, A>::~list()
-{
-    clear();
-    A().deallocate(_M_node, 1);
-}
-template class list<NUISystem::CComponent*, allocator<NUISystem::CComponent*> >;
-}
+template std::list<NUISystem::CComponent*, std::allocator<NUISystem::CComponent*> >::~list();

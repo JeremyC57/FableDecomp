@@ -13,7 +13,7 @@
 //   @ 0x00C207C0 (states 2..4, 6) and the state-5 ("Playing using virtual player") query @ 0x00C207A0, ReturnToIdle
 //   @ 0x00C21560, the group's RemoveAgent(manager, event) @ 0x00C29EE0 (landed as CSteeringGroup; on +0x30), the manager
 //   lists' virtual slot 8 (+0x20, Remove) at +0x1F4 (only when the event's +0xB0 listening flag is set), +0x1C4 and
-//   +0x104, the +0x18 sample reference's Reset() @ 0x00C25CB0, the manager event set's Add(event) @ 0x00C21F30 (+0x2C).
+//   +0x104, the +0x18 sample reference's Release() @ 0x00C25CB0, the manager event set's Add(event) @ 0x00C21F30 (+0x2C).
 // Shape: `this` stays in ecx across the state helpers because their bodies (here stand-ins, compiled above with
 // auto_inline off) are known not to clobber it; the queries return int (`test eax,eax`) -- only `mov esi,ecx` is kept for the later calls; the three member
 // resets sit between the last call's push and the call.
@@ -41,17 +41,16 @@ struct CSoundEventManager {
 struct CSteeringGroup {
     void RemoveAgent(CSoundEventManager* manager, CSoundEvent* event);   // 0x00C29EE0
 };
-struct CSampleRef {
-    void Reset();                                    // 0x00C25CB0
-};
+// NF42 (round 5): the local one-method CSampleRef stand-in (Reset) replaced by the shared libpk/CSampleRef.h (16 bytes at +0x18;
+// Release() 0x00C25CB0), so the +0x0F pad after it is gone.
+#include "libpk/CSampleRef.h"
 
 struct CSoundEvent {
     void*                     __vftable;             // +0x00
     unsigned char             _pad_0x04[0x08];
     long                      Index;                 // +0x0C
     unsigned char             _pad_0x10[0x08];
-    CSampleRef     m_sample;                 // +0x18
-    unsigned char             _pad_0x19[0x0F];
+    CSampleRef     m_sample;                 // +0x18 (16 bytes)
     long                      Pending;               // +0x28
     unsigned char             _pad_0x2c[0x04];
     CSteeringGroup* m_pGroup;             // +0x30
@@ -110,7 +109,7 @@ void CSoundEvent::Stop(CSoundEventManager* manager)
         manager->m_list1F4.Remove(this);
     manager->m_list1C4.Remove(this);
     manager->m_list104.Remove(this);
-    m_sample.Reset();
+    m_sample.Release();
     Pending = 0;
     m_state = 0;
     Index = -1;

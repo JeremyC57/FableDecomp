@@ -8,6 +8,10 @@
 //   ControlPointWeightingPower/count +0xc0).
 #include "fable_compiler.h"
 #include <string.h>
+// Lighting: the shared engine/CEngineLightingManager.h (retail branch); the closing reset is its inline
+//   ?RestoreDefaultPrimitiveParameters@CEngineLightingManager@@QAEXXZ (faded-shadow off, default theme channel, self-illumination 0).
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER
+#include "engine/CEngineLightingManager.h"
 
 class CEngineInternalPrimitiveRepeatedZSprite { public:
     unsigned char _pad00[0x50];
@@ -69,43 +73,7 @@ struct CDisplayManagerView {
 };
 extern CDisplayManagerView* g_pDisplayManager;     // 0x01436E98
 
-struct SFogColour { unsigned char A, B, C, D; };
-struct CEngineLightingManagerView {
-    unsigned char _pad00[0xce];
-    bool          PendingAmbient;                  // +0xce
-    unsigned char _padcf[0xe0 - 0xcf];
-    SFogColour    Colour;                          // +0xe0
-    unsigned long DirtyFlags;                      // +0xe4
-    long          PendingLights;                   // +0xe8
-    FABLE_FORCEINLINE void SetColour(const SFogColour& c)
-    {
-        if (Colour.A != c.A || Colour.B != c.B || Colour.C != c.C) {
-            Colour = c;
-            if (Colour.C == 0xff) {
-                Colour.A = Colour.B;
-                Colour.C = 0;
-            }
-            DirtyFlags |= 0xf;
-        }
-    }
-    FABLE_FORCEINLINE void Flush()
-    {
-        if (PendingAmbient) {
-            PendingAmbient = false;
-            DirtyFlags |= 1;
-        }
-        SFogColour none;
-        none.A = 0;
-        none.B = 0;
-        none.C = 0;
-        SetColour(none);
-        if (PendingLights != 0) {
-            PendingLights = 0;
-            DirtyFlags |= 2;
-        }
-    }
-};
-extern CEngineLightingManagerView* g_pEngineLightingManager;   // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C
 
 class CEnginePrimitiveManagerRepeatedZSprites { public:
     unsigned char _pad00[0x80];
@@ -140,5 +108,5 @@ void CEnginePrimitiveManagerRepeatedZSprites::RenderNonsortedPrimitives()
     BillboardSurface = 0;
     scratch->EndSurfaceUse2(ZBufferTextureHandle);
     ZBufferSurface = 0;
-    g_pEngineLightingManager->Flush();
+    NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
 }

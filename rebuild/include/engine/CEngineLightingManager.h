@@ -334,6 +334,12 @@ public:
     // inline in retail: `mov ecx,[0x01436E9C] ; cmp dword ptr [ecx+4694h],1` (0x00B5030F).
     ELightingManagerShadowMode PeekGlobalShadowMode() const { return ShadowMode; }
 #endif
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETSHADOWMODE
+    // Nested opt-in (NF42, row 0x00B23C00 CEngine::SetSpotlightShadowMode): FableWin.pdb
+    // ?SetShadowMode@CEngineLightingManager@@QAEXW4ELightingManagerShadowMode@@@Z (0x02C9E7C0, 10 debug instructions; no Fable.exe copy),
+    // inline in retail: `mov ecx,[0x01436E9C] ; ... ; mov [ecx+4694h],eax` (0x00B23C00).
+    void SetShadowMode(ELightingManagerShadowMode mode) { ShadowMode = mode; }
+#endif
 #else
 private:
     unsigned char          _pad_0xec[0x46d0 - 0xec];                     // +0xec LightLookupGrid .. (opaque)

@@ -38,6 +38,11 @@ public:
  bool WaitForSlot(unsigned long slot);
 #endif
  void ReturnBuffer(bool* more);
+ #ifdef FABLE_RETAIL_PKCBUFFEREDREADER_RETURNALLBUFFERS
+ // Opt-in (NF42 round 5, row 0x00C4B010): ReturnBuffer(0) until m_outstanding (+0x68) is zero. No libpk PDB or SDK symbol exists:
+ // descriptive name, the landed row's method name (was on the address-named class CBufferOwner_00c4b010). Declaration only.
+ void ReturnAllBuffers();
+ #endif
  void Refill();
  bool PollReadCompletion();
 };

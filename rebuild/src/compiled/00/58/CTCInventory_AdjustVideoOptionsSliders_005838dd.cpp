@@ -10,6 +10,9 @@
 // Shape (family M145, representative 0x00583815): the loop counter and the found-branch list share the [ebp-8] slot; the
 //   slider half is the landed CFrontEndManager::ResetSlidersToProfileValues 0x00595356 on the found list component.
 //   Layout: NInventory::CTCInventoryBase::Components (vector<CComponent*>) at +0x0C as in Ego_r.pdb (CTCBase is 12 bytes).
+// NF42 (round 5): the local std::list / _List_node / _List_iterator / allocator / vector stand-ins replaced by the shared
+// stlport/fable_containers.h (list ctor / dtor COMDATs kept out of line: FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE overlay opt-in,
+// FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE; clear() declaration-only), so clear binds STLport's _List_base<CComponent*>::clear.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString {
@@ -19,38 +22,10 @@ public:
     CCharString(const CCharString& other);                // 0x0099EC30
     ~CCharString();                                       // 0x0099EAE0
 };
-namespace std {
-template <class T> class allocator { public: allocator() { } };
-template <class T> struct _List_node {
-    _List_node* _M_next;
-    _List_node* _M_prev;
-    T           _M_data;
-};
-template <class T> struct _List_iterator {
-    _List_node<T>* _M_node;
-    T& operator*() const { return _M_node->_M_data; }
-    _List_iterator& operator++() { _M_node = _M_node->_M_next; return *this; }
-    bool operator!=(const _List_iterator& x) const { return _M_node != x._M_node; }
-};
-template <class T, class A = allocator<T> > class list {
-public:
-    typedef _List_iterator<T> iterator;
-    _List_node<T>* _M_node;
-    explicit list(const A& a = A());                      // 0x0042ABAF
-    ~list();                                              // 0x0042ABCA
-    void clear();                                         // 0x0042A18F
-    iterator begin() { iterator i; i._M_node = _M_node->_M_next; return i; }
-    iterator end() { iterator i; i._M_node = _M_node; return i; }
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
-public:
-    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
-    _Tp& operator[](unsigned int __n) { return *(_M_start + __n); }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-};
-}
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE
+#include "stlport/fable_containers.h"
 namespace NUISystem {
 class CComponent {
 public:

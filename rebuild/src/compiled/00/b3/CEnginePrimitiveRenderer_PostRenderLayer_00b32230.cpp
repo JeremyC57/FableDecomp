@@ -3,12 +3,13 @@
 #ifndef _MSC_VER
 #define __forceinline inline
 class CEnginePrimitiveRenderer { public:unsigned char _pad_0x78[sizeof(long)];unsigned char _pad_0x260[4];};
-class CEngineLightingManager { public:};
+class CEngineLightingManager { public:void DisablePointLights();};
 struct CStateInfo;
 class CRenderStateManager { public:unsigned char StateStack[32768];CStateInfo* StateUpdateList[256];long StateStackSize,StateUpdateListSize;unsigned long CurrentBookmarkMask;unsigned char DeviceState[16384];};
 #else
 #include "engine/CEnginePrimitiveRenderer.h"
 #include "engine/CRenderStateManager.h"
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER
 #include "engine/CEngineLightingManager.h"
 #endif
 struct CStateInfo {unsigned long CurrentState,DesiredState,BookmarkMask,DeviceStateID;bool DirtyListFlag;unsigned char StateType,TextureStage;};
@@ -20,10 +21,9 @@ class CShaderRenderManager { public:unsigned char EarlierMembers[0x390];bool Ver
  void EnableVertexShaders(); //00987fe0
  void DisableVertexShaders(); //009880e0
 };
-struct CEngineLightingManager_Methods:CEngineLightingManager {void DisablePointLights();}; //00b44d50
 extern CRenderStateManager* g_pRenderStateManager_01436e18; //01436e18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; } //01436e14
-extern CEngineLightingManager_Methods* g_pLightingManager; //01436e9c
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; } //01436e9c (CEngineLightingManager::DisablePointLights 00b44d50)
 static FABLE_FORCEINLINE void ClearNormalizeNormals()
 {
  CRenderStateManager* manager=g_pRenderStateManager_01436e18;
@@ -46,7 +46,7 @@ void CEnginePrimitiveRenderer_Methods::PostRenderLayer()
 {
  reinterpret_cast<long&>(_pad_0x78)=-1;
  ClearNormalizeNormals();
- g_pLightingManager->DisablePointLights();
+ NEngineInternal::GPLightingManager->DisablePointLights();
  ResetWorldTransform();
  if(_pad_0x260[0]!=NEngineInternal::GPShaderRenderManager->PixelShadersEnabled){if(_pad_0x260[0])NEngineInternal::GPShaderRenderManager->EnablePixelShaders();else NEngineInternal::GPShaderRenderManager->DisablePixelShaders();}
  if(_pad_0x260[1]!=NEngineInternal::GPShaderRenderManager->VertexShadersEnabled){if(_pad_0x260[1])NEngineInternal::GPShaderRenderManager->EnableVertexShaders();else NEngineInternal::GPShaderRenderManager->DisableVertexShaders();}

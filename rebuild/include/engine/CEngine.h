@@ -39,6 +39,10 @@ public:
     // Nested opt-in (chunk 758): the slot-12 override, FableWin.pdb ?ConvertScreenPosToWorldPosAtViewDistance@CEngine@@UBE_NMABVC2DVector@@AAVC3DVector@@@Z 0x00B24400.
     virtual bool ConvertScreenPosToWorldPosAtViewDistance(float distance, const C2DVector& screenPos, C3DVector& worldPos) const;
 #endif
+#ifdef FABLE_RETAIL_CENGINE_SETSPOTLIGHTSHADOWMODE
+    // Nested opt-in (NF42, row 0x00B23C00): the slot-62 CIEngine override, Ego_r.pdb / FableWin.pdb ?SetSpotlightShadowMode@CEngine@@UAEX_N@Z.
+    virtual void SetSpotlightShadowMode(bool enable);
+#endif
 private:
     void SetDefaultRenderStates();                                       // 0x00B24850 ?SetDefaultRenderStates@CEngine@@AAEXXZ
     // ??$AddEngineComponent@V<T>@@@CEngine@@AAEXPAV<T>@@AAPAV1@E@Z (Ego_r.pdb; out of line in retail, one COMDAT per component:

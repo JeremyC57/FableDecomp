@@ -46,6 +46,12 @@ public:
     typedef _Rb_tree_node_base* _Base_ptr;
 public:
     static void __cdecl _Rebalance(_Rb_tree_node_base*,_Rb_tree_node_base*&);
+#ifdef FABLE_RETAIL_STLP_RB_GLOBAL_ROTATE
+    // Opt-in (NF42 round 5, row 0x0042955B): STLport 4.6 _tree.c _Rb_global::_Rotate_left / _Rotate_right, out of line in retail
+    // (0x0042951B / 0x0042955B, static __cdecl (node, root&)); the including row defines the body. Declarations only.
+    static void __cdecl _Rotate_left(_Rb_tree_node_base*,_Rb_tree_node_base*&);
+    static void __cdecl _Rotate_right(_Rb_tree_node_base*,_Rb_tree_node_base*&);
+#endif
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE_BODY
     // Nested opt-in (agentFAM12, the erase(first, last) rows 0x00638EE0 ..): STLport 4.6 _tree.c _Rb_global::_Rebalance_for_erase,
     // out of line (0x0042A34E, landed ?_Rebalance_for_erase@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@AAPAU32@11@Z).

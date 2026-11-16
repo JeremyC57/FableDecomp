@@ -2,18 +2,19 @@
 // Leaf: ?InitDefinitions@CMainGameComponent@@IAE_N_N@Z
 // Retail: Fable.exe @ 0x00416005, 66 bytes, `ret 4` (thiscall, `this` unused); one caller (0x004185D9); Ego_r.pdb
 // ?InitDefinitions@CMainGameComponent@@IAE_N_N@Z.
-// Body: if the global at 0x013CAA90 is set, call 0x009F2450 on it; CGameDefinitionManager::Get() (0x0044C6B0, static
+// Body: if CMemoryAllocator::PMemoryAllocator (0x013CAA90) is set, call CMemoryAllocator::GetTotalMemoryAllocated (0x009F2450) on
+// it and drop the result (the same pattern as CDefinitionManager::SaveBinaryDefinitions 0x009AF7A0, engine/CMemoryAllocator.h); CGameDefinitionManager::Get() (0x0044C6B0, static
 // __fastcall) -> virtual slot 2 (+8; taken as InitAndCompile, Ego_r.pdb ?InitAndCompile@CGameDefinitionManager@@UAEXXZ);
 // if (flag) Get() -> ClearSymbols 0x009ACB10 (CDefinitionManager, Ego_r ?ClearSymbols@CDefinitionManager@@QAEXXZ; naming wave 24,
 // labels_chunk691); the global call again; return true. CGameDefinitionManager derives from CDefinitionManager (Ego_r).
-// The global's class and its callee are not identified; their names here are placeholders.
+// NF42 (round 5): the CGlobalService placeholder replaced by the shared engine/CMemoryAllocator.h (protected static
+// PMemoryAllocator through the public inline Get(); Ego_r / FableWin ?GetTotalMemoryAllocated@CMemoryAllocator@@QAEKXZ).
 // Opt: size TU (unaligned entry).
 #pragma optimize("s", on)
-class CGlobalService {                                   // object behind 0x013CAA90 (class not identified)
-public:
-    void Step();                                         // 0x009F2450
-};
-extern CGlobalService* g_pGlobalService_13CAA90;         // 0x013CAA90
+#define FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE
+#define FABLE_RETAIL_CMEMORYALLOCATOR_SAVEBINARY_PASS23
+#include "rebuild_abi.h"
+#include "engine/CMemoryAllocator.h"
 class CDefinitionManager {
 public:
     virtual ~CDefinitionManager();
@@ -33,12 +34,12 @@ protected:
 };
 bool CMainGameComponent::InitDefinitions(bool flag)
 {
-    if (g_pGlobalService_13CAA90)
-        g_pGlobalService_13CAA90->Step();
+    if (CMemoryAllocator::Get())
+        CMemoryAllocator::Get()->GetTotalMemoryAllocated();
     CGameDefinitionManager::Get().InitAndCompile();
     if (flag)
         CGameDefinitionManager::Get().ClearSymbols();
-    if (g_pGlobalService_13CAA90)
-        g_pGlobalService_13CAA90->Step();
+    if (CMemoryAllocator::Get())
+        CMemoryAllocator::Get()->GetTotalMemoryAllocated();
     return true;
 }

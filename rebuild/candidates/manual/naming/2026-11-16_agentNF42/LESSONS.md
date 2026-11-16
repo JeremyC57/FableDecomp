@@ -1,0 +1,10 @@
+- An overlay header that includes a sibling by relative path ("LHNetworkTypes.h") needs that sibling copied into hdr/ too, or the grade hangs to its timeout.
+- VC7.1 rejects explicit instantiation of a function template whose return type is dependent (`typename iterator_traits<I>::difference_type`): C2785, whatever the spelling.
+- A plain STLport ~list jumps to ~_List_base; retail rows that inline the clear need FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST.
+- map operator[] rows that build a named default value need the LIP_SYNC default-constructed path, not the temporary.
+- A visible inline _M_increment in an /Os TU stays a call but lets the caller cache registers; an out-of-line-only declaration changes the bytes.
+- Ported rows whose old test linked a helper symbol the row no longer emits fail LINK in recheck; write a new test on the shared header.
+- FableWin.pdb function order is evidence: a setter that sits right after its caller there is usually the inline the retail body expanded.
+- Before porting a binder onto a big shared header, grep the row for local copies of C4DVector / CArray / CMatrix3x4: they collide (C2011/C2953) and turn a 1-grade respell into a full port.
+- rebuild/oracles/reloc_bindings.tsv can be stale; confirm caller bindings with a fresh compile before reporting them.
+- A port marked blocked needs real grades; triage without a grade attempt is carry.

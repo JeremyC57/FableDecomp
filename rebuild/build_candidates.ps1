@@ -31126,9 +31126,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b1dfe'
-        Module = '_global'
-        Source = '00/5b/global_RBTreeFindNodeUint3_005b1dfe.cpp'
-        TestSource = '00/5b/global_RBTreeFindNodeUint3_005b1dfe_test.cpp'
+        Module = 'std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> >, std::_Select1st<std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> > >, std::less<NUISystem::CComponent*>, std::allocator<std::pair<NUISystem::CComponent* const, std::pair<CWideString, long> > > >'
+        Source = '00/5b/stdRbtree_Mlowerbound_005b1dfe.cpp'
+        TestSource = '00/5b/stdRbtree_Mlowerbound_005b1dfe_test.cpp'
         PassPattern = 'OK_0x005b1dfe'
     }
     [pscustomobject]@{
@@ -32294,9 +32294,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042955b'
-        Module = '_Rb_global<bool>'
-        Source = '00/42/Rbglobalbool_Rotateright_0042955b.cpp'
-        TestSource = '00/42/Rbglobalbool_Rotateright_0042955b_test.cpp'
+        Module = 'std::_Rb_global<bool>'
+        Source = '00/42/stdRbglobal_Rotateright_0042955b.cpp'
+        TestSource = '00/42/stdRbglobal_Rotateright_0042955b_test.cpp'
         PassPattern = 'ROTATE_LEFT_OK'
     }
     [pscustomobject]@{
@@ -32385,9 +32385,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006a7140'
-        Module = '_global'
-        Source = '00/6a/std_Consvalpairmorpha_006a7140.cpp'
-        TestSource = '00/6a/std_Consvalpairmorpha_006a7140_test.cpp'
+        Module = 'CThingFilter_HasInformation'
+        Source = '00/6a/CThingFilterHasInformation_operator_006a7140.cpp'
+        TestSource = '00/6a/CThingFilterHasInformation_operator_006a7140_test.cpp'
         PassPattern = 'CONS_VAL_PAIR_MORPH_A_OK'
     }
     [pscustomobject]@{
@@ -43848,9 +43848,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b1ff4'
-        Module = 'CEngineSceneGrid'
-        Source = '00/5b/CEngineSceneGrid_GetCellBoundingBox_005b1ff4.cpp'
-        TestSource = '00/5b/CEngineSceneGrid_GetCellBoundingBox_005b1ff4_test.cpp'
+        Module = 'std'
+        Source = '00/5b/std_distance_005b1ff4.cpp'
+        TestSource = '00/5b/std_distance_005b1ff4_test.cpp'
         PassPattern = '005b1ff4_TEST PASS'
     }
     [pscustomobject]@{
@@ -68957,9 +68957,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bacd80'
-        Module = '_global'
-        Source = '00/ba/E2_E2_00bacd80.cpp'
-        TestSource = '00/ba/E2_E2_00bacd80_test.cpp'
+        Module = 'CEnginePrimitiveManager'
+        Source = '00/ba/CEnginePrimitiveManager_AddEnableConsoleVariable_00bacd80.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManager_AddEnableConsoleVariable_00bacd80_test.cpp'
         PassPattern = 'OK_00bacd80'
     }
     [pscustomobject]@{
@@ -74102,9 +74102,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042a18f'
-        Module = 'std::list<NUISystem::CComponent*>'
-        Source = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a18f.cpp'
-        TestSource = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a18f_test.cpp'
+        Module = 'std::_List_base<NUISystem::CComponent*>'
+        Source = '00/42/stdListbase_clear_0042a18f.cpp'
+        TestSource = '00/42/stdListbase_clear_0042a18f_test.cpp'
         PassPattern = 'PASS_0042a18f'
     }
     [pscustomobject]@{
@@ -93389,9 +93389,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042ad6c'
-        Module = '_global'
-        Source = '00/42/global_BinarySearchTreeFindEqualOrGreater_0042ad6c.cpp'
-        TestSource = '00/42/global_BinarySearchTreeFindEqualOrGreater_0042ad6c_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, std::pair<const unsigned long, NUISystem::CUIState>, std::_Select1st<std::pair<const unsigned long, NUISystem::CUIState> >, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, NUISystem::CUIState> > >'
+        Source = '00/42/stdRbtree_Mlowerbound_0042ad6c.cpp'
+        TestSource = '00/42/stdRbtree_Mlowerbound_0042ad6c_test.cpp'
         PassPattern = 'PASS_0042ad6c'
     }
     [pscustomobject]@{
@@ -121495,9 +121495,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c25c50'
-        Module = 'C3DGroup2'
-        Source = '00/c2/C3DGroup2_C3DGroup2_00c25c50.cpp'
-        TestSource = '00/c2/C3DGroup2_C3DGroup2_00c25c50_test.cpp'
+        Module = 'CSampleRef'
+        Source = '00/c2/CSampleRef_CSampleRef_00c25c50.cpp'
+        TestSource = '00/c2/CSampleRef_CSampleRef_00c25c50_test.cpp'
         PassPattern = 'PASS_00c25c50'
     }
     [pscustomobject]@{
@@ -123245,9 +123245,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042b6b8'
-        Module = '_global'
-        Source = '00/42/global_StdListPushFront_0042b6b8.cpp'
-        TestSource = '00/42/global_StdListPushFront_0042b6b8_test.cpp'
+        Module = 'std::list<NUISystem::CComponent*>'
+        Source = '00/42/stdlist_pushback_0042b6b8.cpp'
+        TestSource = '00/42/stdlist_pushback_0042b6b8_test.cpp'
         PassPattern = 'STD_LIST_PUSH_FRONT_PASS'
     }
     [pscustomobject]@{
@@ -152332,9 +152332,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00779b90'
-        Module = 'std::_Rb_tree_iterator<CUnprovenValue_00779b90,CUnprovenTraits_00779b90<CUnprovenValue_00779b90> >'
-        Source = '00/77/stdRbtreeiteratorCUnprovenValue00779b90CUnprovenTraits00779b90CUnprovenValue0077_operator_00779b90.cpp'
-        TestSource = '00/77/stdRbtreeiteratorCUnprovenValue00779b90CUnprovenTraits00779b90CUnprovenValue0077_operator_00779b90_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<const long,float>, std::_Const_traits<std::pair<const long,float> > >'
+        Source = '00/77/stdRbtreeiterator_operator_00779b90.cpp'
+        TestSource = '00/77/stdRbtreeiterator_operator_00779b90_test.cpp'
         PassPattern = '00779b90_TEST PASS'
     }
     [pscustomobject]@{
@@ -164287,9 +164287,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042cee3'
-        Module = 'CRetailTree_ulongkey_ins0042cb08'
-        Source = '00/42/CRetailTreeulongkeyins0042cb08_insert_0042cee3.cpp'
-        TestSource = '00/42/CRetailTreeulongkeyins0042cb08_insert_0042cee3_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, std::pair<const unsigned long, NUISystem::CUIState>, std::_Select1st<std::pair<const unsigned long, NUISystem::CUIState> >, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, NUISystem::CUIState> > >'
+        Source = '00/42/stdRbtree_insertunique_0042cee3.cpp'
+        TestSource = '00/42/stdRbtree_insertunique_0042cee3_test.cpp'
         PassPattern = '0042cee3_TEST PASS'
     }
     [pscustomobject]@{
@@ -164630,9 +164630,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042cb08'
-        Module = 'CRetailTree_ulongkey_buy0042bdf0'
-        Source = '00/42/CRetailTreeulongkeybuy0042bdf0_Insert_0042cb08.cpp'
-        TestSource = '00/42/CRetailTreeulongkeybuy0042bdf0_Insert_0042cb08_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, std::pair<const unsigned long, NUISystem::CUIState>, std::_Select1st<std::pair<const unsigned long, NUISystem::CUIState> >, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, NUISystem::CUIState> > >'
+        Source = '00/42/stdRbtree_Minsert_0042cb08.cpp'
+        TestSource = '00/42/stdRbtree_Minsert_0042cb08_test.cpp'
         PassPattern = '0042cb08_TEST PASS'
     }
     [pscustomobject]@{
@@ -174931,9 +174931,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0066000a'
-        Module = '_unattributed'
-        Source = '00/66/unattributed_ConstructCRangeString0066000a_0066000a.cpp'
-        TestSource = '00/66/unattributed_ConstructCRangeString0066000a_0066000a_test.cpp'
+        Module = 'std'
+        Source = '00/66/std_findif_0066000a.cpp'
+        TestSource = '00/66/std_findif_0066000a_test.cpp'
         PassPattern = '0066000a_TEST PASS'
     }
     [pscustomobject]@{
@@ -175414,9 +175414,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042d4d3'
-        Module = '_unattributed'
-        Source = '00/42/unattributed_ForwardCForwarder0042d4d3_0042d4d3.cpp'
-        TestSource = '00/42/unattributed_ForwardCForwarder0042d4d3_0042d4d3_test.cpp'
+        Module = 'std::map<unsigned long, NUISystem::CUIState>'
+        Source = '00/42/stdmap_insert_0042d4d3.cpp'
+        TestSource = '00/42/stdmap_insert_0042d4d3_test.cpp'
         PassPattern = '0042d4d3_TEST PASS'
     }
     [pscustomobject]@{
@@ -175477,9 +175477,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b31cf'
-        Module = 'std::map<NUISystem::CComponent *,std::pair<long,long>,std::less<NUISystem::CComponent *> >'
-        Source = '00/5b/STLmapNUISystemCComponentSTLpairlonglongSTLlessNUISystemCComponent_insert_005b31cf.cpp'
-        TestSource = '00/5b/STLmapNUISystemCComponentSTLpairlonglongSTLlessNUISystemCComponent_insert_005b31cf_test.cpp'
+        Module = 'std::map<NUISystem::CComponent*, std::pair<long,long> >'
+        Source = '00/5b/stdmap_insert_005b31cf.cpp'
+        TestSource = '00/5b/stdmap_insert_005b31cf_test.cpp'
         PassPattern = '005b31cf_TEST PASS'
     }
     [pscustomobject]@{
@@ -179838,9 +179838,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b1afd'
-        Module = '_global'
-        Source = '00/5b/global_Distance005b1afd_005b1afd.cpp'
-        TestSource = '00/5b/global_Distance005b1afd_005b1afd_test.cpp'
+        Module = 'std'
+        Source = '00/5b/std_distance_005b1afd.cpp'
+        TestSource = '00/5b/std_distance_005b1afd_test.cpp'
         PassPattern = '005b1afd_TEST PASS'
     }
     [pscustomobject]@{
@@ -190654,9 +190654,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c25c70'
-        Module = 'CParticleRef_00c25c70'
-        Source = '00/c2/CParticleRef00c25c70_Bind_00c25c70.cpp'
-        TestSource = '00/c2/CParticleRef00c25c70_Bind_00c25c70_test.cpp'
+        Module = 'CSampleRef'
+        Source = '00/c2/CSampleRef_Bind_00c25c70.cpp'
+        TestSource = '00/c2/CSampleRef_Bind_00c25c70_test.cpp'
         PassPattern = '00c25c70_TEST PASS'
     }
     [pscustomobject]@{
@@ -198576,9 +198576,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c4b010'
-        Module = 'CBufferOwner_00c4b010'
-        Source = '00/c4/CBufferOwner00c4b010_ReturnAllBuffers_00c4b010.cpp'
-        TestSource = '00/c4/CBufferOwner00c4b010_ReturnAllBuffers_00c4b010_test.cpp'
+        Module = 'PKCBufferedReader'
+        Source = '00/c4/PKCBufferedReader_ReturnAllBuffers_00c4b010.cpp'
+        TestSource = '00/c4/PKCBufferedReader_ReturnAllBuffers_00c4b010_test.cpp'
         PassPattern = '00c4b010_TEST PASS'
     }
     [pscustomobject]@{
@@ -202590,9 +202590,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0090df30'
-        Module = 'CThingHolder_0090df30'
-        Source = '00/90/CThingHolder0090df30_GetPThing_0090df30.cpp'
-        TestSource = '00/90/CThingHolder0090df30_GetPThing_0090df30_test.cpp'
+        Module = 'CMessageEvent'
+        Source = '00/90/CMessageEvent_GetPOriginator_0090df30.cpp'
+        TestSource = '00/90/CMessageEvent_GetPOriginator_0090df30_test.cpp'
         PassPattern = '0090df30_TEST PASS'
     }
     [pscustomobject]@{
@@ -204789,8 +204789,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009f2450'
         Module = 'CMemoryAllocator'
-        Source = '00/9f/CMemoryAllocator_GetHeaderOverhead_009f2450.cpp'
-        TestSource = '00/9f/CMemoryAllocator_GetHeaderOverhead_009f2450_test.cpp'
+        Source = '00/9f/CMemoryAllocator_GetTotalMemoryAllocated_009f2450.cpp'
+        TestSource = '00/9f/CMemoryAllocator_GetTotalMemoryAllocated_009f2450_test.cpp'
         PassPattern = '009f2450_TEST PASS'
     }
     [pscustomobject]@{
@@ -207381,9 +207381,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042d5b1'
-        Module = 'CComponentStateMap'
-        Source = '00/42/CComponentStateMap_operator_0042d5b1.cpp'
-        TestSource = '00/42/CComponentStateMap_operator_0042d5b1_test.cpp'
+        Module = 'std::map<unsigned long, NUISystem::CUIState>'
+        Source = '00/42/stdmap_operator_0042d5b1.cpp'
+        TestSource = '00/42/stdmap_operator_0042d5b1_test.cpp'
         PassPattern = '0042d5b1_TEST PASS'
     }
     [pscustomobject]@{
@@ -216417,9 +216417,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c25cb0'
-        Module = 'CParticleHandle'
-        Source = '00/c2/CParticleHandle_CParticleHandle_00c25cb0.cpp'
-        TestSource = '00/c2/CParticleHandle_CParticleHandle_00c25cb0_test.cpp'
+        Module = 'CSampleRef'
+        Source = '00/c2/CSampleRef_Release_00c25cb0.cpp'
+        TestSource = '00/c2/CSampleRef_Release_00c25cb0_test.cpp'
         PassPattern = '00c25cb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -259347,8 +259347,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0042b4c3'
         Module = 'std::list<NUISystem::CComponent*>'
-        Source = '00/42/stdlistNUISystemCComponent_Minsertdispatch_0042b4c3.cpp'
-        TestSource = '00/42/stdlistNUISystemCComponent_Minsertdispatch_0042b4c3_test.cpp'
+        Source = '00/42/stdlist_Minsertdispatch_0042b4c3.cpp'
+        TestSource = '00/42/stdlist_Minsertdispatch_0042b4c3_test.cpp'
         PassPattern = '0042b4c3_TEST PASS'
     }
     [pscustomobject]@{
@@ -278357,9 +278357,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042d1a3'
-        Module = 'std::map<unsigned long, CAllocationNode*>'
-        Source = '00/42/stdmapunsignedlongCAllocationNode_insert_0042d1a3.cpp'
-        TestSource = '00/42/stdmapunsignedlongCAllocationNode_insert_0042d1a3_test.cpp'
+        Module = 'std::map<unsigned long, NUISystem::CUIState>'
+        Source = '00/42/stdmap_insert_0042d1a3.cpp'
+        TestSource = '00/42/stdmap_insert_0042d1a3_test.cpp'
         PassPattern = '0042d1a3_TEST PASS'
     }
     [pscustomobject]@{
@@ -290081,9 +290081,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b3100'
-        Module = 'std::map<CComponent*, pair<CWideString, long> >'
-        Source = '00/5b/stdmapCComponentpairCWideStringlong_operator_005b3100.cpp'
-        TestSource = '00/5b/stdmapCComponentpairCWideStringlong_operator_005b3100_test.cpp'
+        Module = 'std::map<NUISystem::CComponent*, std::pair<CWideString, long> >'
+        Source = '00/5b/stdmap_operator_005b3100.cpp'
+        TestSource = '00/5b/stdmap_operator_005b3100_test.cpp'
         PassPattern = '005b3100_TEST PASS'
     }
     [pscustomobject]@{
@@ -310194,9 +310194,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b322b'
-        Module = 'std::map'
-        Source = '00/5b/STLmap_operator_005b322b.cpp'
-        TestSource = '00/5b/STLmap_operator_005b322b_test.cpp'
+        Module = 'std::map<NUISystem::CComponent*, std::pair<long,long> >'
+        Source = '00/5b/stdmap_operator_005b322b.cpp'
+        TestSource = '00/5b/stdmap_operator_005b322b_test.cpp'
         PassPattern = '005b322b_TEST PASS'
     }
     [pscustomobject]@{

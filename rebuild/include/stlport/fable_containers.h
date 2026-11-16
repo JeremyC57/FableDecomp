@@ -1284,6 +1284,12 @@ public:
     typedef _Tp value_type;
     typedef _List_iterator<_Tp,_Nonconst_traits<_Tp> > iterator;
     typedef _List_iterator<_Tp,_Const_traits<_Tp> > const_iterator;
+#ifdef FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE
+    // Per-TU opt-in (NF42 round 5, rows 0x00583815 / 0x005838DD / 0x005839A5 CTCInventory::Adjust*OptionsSliders): STLport's inline
+    // default constructor kept out of line with its body visible, as those TUs call the list<CComponent*> COMDAT (0x0042ABAF).
+    // Needs FABLE_STLP_NOINLINE (e.g. FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, which the same rows use for ~list 0x0042ABCA).
+    FABLE_STLP_NOINLINE
+#endif
     explicit list(const _Alloc& a=_Alloc()) : _List_base<_Tp,_Alloc>(a) { }
 #ifdef FABLE_RETAIL_STLP_LIST_CTORS_PASS22
     FABLE_STLP_NOINLINE
