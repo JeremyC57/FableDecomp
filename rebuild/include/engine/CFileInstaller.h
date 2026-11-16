@@ -42,7 +42,13 @@ public:
  CFileInfo(const CWideString&,const CWideString&,long,bool,bool);
 #endif
  CFileInfo();
+#ifdef FABLE_RETAIL_CFILEINSTALLER_CFILEINFO_INLINE_DTOR
+ // NF39 opt-in (row 0x009C6640 DeleteData<const CFileInfo>): the destructor's body visible (retail's deleter expands it: ~CWideString
+ // 0x0099B510 on DstPath +4 then SrcPath +0, no ??1CFileInfo call). Same members, no layout change.
+ ~CFileInfo() { }
+#else
  ~CFileInfo();
+#endif
  CFileInfo& operator=(const CFileInfo&);
 };
 

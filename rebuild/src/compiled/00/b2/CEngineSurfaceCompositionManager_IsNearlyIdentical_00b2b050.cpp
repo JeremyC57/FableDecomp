@@ -1,52 +1,79 @@
-// CEngineSurfaceCompositionManager::IsNearlyIdentical(const CEngineTextureMorph& a, const CEngineTextureMorph& b, float tolerance) -- two texture morphs match when they blend the same textures in the same order with diffuse and specular colours each within `tolerance`
-// Leaf: ?IsNearlyIdentical@CEngineSurfaceCompositionManager_Methods@@QBE_NABVCEngineTextureMorph@@0M@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00B2B050, 197 bytes (+ int3 padding), `ret 0Ch`; Ego_r.pdb names it
-//   ?IsNearlyIdentical@CEngineSurfaceCompositionManager@@AAE_NABVCEngineTextureMorph@@0M@Z.
-// Callees: the colour-distance helper 0x00B2AF50 (catalogued CalcColourDifference; a `__fastcall` member that ignores `this`: the
-//   Euclidean distance between the four byte channels of two CRGBColour, `ret 8`).
-// Shape: CEngineTextureMorph (Ego_r.pdb: OriginalTextureIndex +0, MorphID +4, Blends +8, a 12-byte retail STLport vector
-//   of 16-byte CCompositeBlendDesc {TextureIndex, BlendType, DiffuseColour +8, SpecularColour +0xC}). VC folds
-//   `a.Blends.size() != b.Blends.size()` into `xor` of the two byte lengths tested against 0xFFFFFFF0. The count is
-//   read once after that test; each pass names the two blends (a's, then b's), which makes b's blend the walked pointer
-//   and a's the a-b offset (unnamed indexing walks a). The index lives in the dead `a` argument slot, the offset in the
-//   dead `b` slot; `this` is spilled into the `push ecx` frame word for the two helper calls; `dist > tolerance` is
-//   `fcomp ; test ah,41h ; je` to the false exit. BlendType is not compared. The helper's body is defined above the
-//   caller under `auto_inline(off)` (the retail neighbour order): it is pure, so the pointers and the count stay in
-//   registers across the calls.
+// CEngineSurfaceCompositionManager::IsNearlyIdentical(const CEngineTextureMorph& a, const CEngineTextureMorph& b, float tolerance) -- the same
+// number of blends, and per blend the same texture index and diffuse / specular colours within the tolerance (CalcColourDifference 0x00B2AF50)
+// Leaf: ?IsNearlyIdentical@CEngineSurfaceCompositionManager@@AAE_NABVCEngineTextureMorph@@0M@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B2B050.
+// NF39 (2026-11-16): moved off its `CEngineSurfaceCompositionManager_Methods` stand-in (const, with local CRGBColour / CCompositeBlendDesc /
+//   vector / CEngineTextureMorph models) onto the shared engine/CEngineSurfaceCompositionManager.h (MEMBERS opt-in, which names 0x00B2B050; new
+//   nested CALCCOLOURDIFFERENCE opt-in for the private callee), engine/CEngineTextureMorph.h, engine/CCompositeBlendDesc.h and engine/CRGBColour.h.
+//   Evidence: Ego_r.pdb / FableWin.pdb private non-const ?IsNearlyIdentical@CEngineSurfaceCompositionManager@@AAE_NABVCEngineTextureMorph@@0M@Z;
+//   UpdateDiskCacheTexture 0x00B2D430 calls it with DiskCacheTolerance (already bound).
+// Defines: the landed 0x00B2D330 UpdateDiskCacheTexture preamble + CALCCOLOURDIFFERENCE.
+#define FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER
+#define FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_MEMBERS
+#define FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_CALCCOLOURDIFFERENCE
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER
+#define FABLE_RETAIL_CENGINERESOURCEMANAGER_GETGRAPHICBANK
+#define FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_TEXTURES
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_CONCAT_STRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CBANKFILE_ENTRIES
+#define FABLE_RETAIL_CGRAPHICBANKSTATEBLOCK
+#define FABLE_RETAIL_CGRAPHICFRAME_CTOR
+#define FABLE_RETAIL_CRENDERMANAGERCORE
+#define FABLE_RETAIL_CRENDERMANAGER2D
+#define FABLE_RETAIL_CRENDERMANAGERCORE_WAITWHILEGPUISBUSY
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#define FABLE_RETAIL_AUGMENTATION_PARTICLES
+#define FABLE_RETAIL_GFGETTOPBIT_FORCEINLINE
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CTEXTURE_SIZED
+#define FABLE_RETAIL_CTEXTURE_GENERATEMIPMAPS
+#define FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CSURFACE_COPYFROMMEMORY
+#define FABLE_RETAIL_CSURFACE_COPYFROMSURFACE
+#define FABLE_RETAIL_C2DBOXI_CTORS
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE_DTOR
+#define FABLE_RETAIL_CGRAPHICFRAME
+#define FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE
+#define FABLE_RETAIL_CRGBCOLOUR_GETD3DCOLOR
+#include "engine/Direct3D9Types.h"
 #include "engine/CEngineSurfaceCompositionManager.h"
+#include "engine/CEngineResourceManager.h"
+#include "engine/CGPUScratchBufferTextureManager.h"
+#include "engine/CGraphicInfo.h"
+#include "engine/CGraphicInfoFrame.h"
+#include "engine/CCompositeSurfaceCache.h"
+#include "engine/CGraphicBankStateBlock.h"
+#include "engine/C2DExtentsI.h"
+#include "engine/CArray.h"
+#include "engine/CRenderManager.h"
+#include "engine/GFGetNextPowerOfTwo.h"
+#include "engine/C2DBoxI.h"
+#include "engine/C2DBoxF.h"
+#include "engine/C3DVector.h"
+#include "engine/CTexture.h"
+#include "engine/CSurface.h"
+#include "engine/CGraphicFrame.h"
+#include "engine/CShaderRenderManager.h"
+#include "engine/CScopedShadersEnable.h"
+#include "engine/CScopedVertexShaderConstantLayout.h"
+#include "engine/CSurfaceCompositor.h"
+#include "engine/CRGBColour.h"
+#include "engine/CEngineTextureMorph.h"
 
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 
-class CRGBColour { public: unsigned char B, G, R, A; };
-class CCompositeBlendDesc { public:
-    unsigned long TextureIndex;                     // +0x0
-    long          BlendType;                        // +0x4 ECompositeBlendType
-    CRGBColour    DiffuseColour;                    // +0x8
-    CRGBColour    SpecularColour;                   // +0xC
-};
-template <class T> struct vector {
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned int size() const { return _M_finish - _M_start; }
-    const T& operator[](unsigned int index) const { return _M_start[index]; }
-};
-class CEngineTextureMorph { public:
-    long                         OriginalTextureIndex;   // +0x0
-    long                         MorphID;                // +0x4
-    vector<CCompositeBlendDesc>  Blends;                 // +0x8
-};
-
-struct CEngineSurfaceCompositionManager_Methods : CEngineSurfaceCompositionManager {
-    float CalcColourDifference(const CRGBColour& a, const CRGBColour& b) const;   // 0x00B2AF50
-    bool IsNearlyIdentical(const CEngineTextureMorph& a, const CEngineTextureMorph& b, float tolerance) const;
-};
-
-#pragma auto_inline(off)
-// Same-TU body of the helper (0x00B2AF50 sits directly above): seeing that it only reads lets VC keep both blend
-// arrays' pointers and the count in registers across the calls. Not part of the graded symbol.
-float CEngineSurfaceCompositionManager_Methods::CalcColourDifference(const CRGBColour& a, const CRGBColour& b) const
+// The private callee's body is defined in this TU (as in the landed model this row replaces) so VC7.1 sees that it writes no memory and
+//   keeps the two blend-array starts in registers across the calls; retail calls it out of line. Its
+//   own landed row is 0x00B2AF50 (not part of the graded body here). Written `inline` (a COMDAT, so it never clashes with that row's
+//   definition at link time) and kept out of line with __declspec(noinline).
+__declspec(noinline) inline float CEngineSurfaceCompositionManager::CalcColourDifference(const CRGBColour& a, const CRGBColour& b)
 {
     float dr = (float)((long)a.R - (long)b.R);
     float dg = (float)((long)a.G - (long)b.G);
@@ -54,9 +81,8 @@ float CEngineSurfaceCompositionManager_Methods::CalcColourDifference(const CRGBC
     float da = (float)((long)a.A - (long)b.A);
     return (float)sqrt(da * da + db * db + dg * dg + dr * dr);
 }
-#pragma auto_inline(on)
 
-bool CEngineSurfaceCompositionManager_Methods::IsNearlyIdentical(const CEngineTextureMorph& a, const CEngineTextureMorph& b, float tolerance) const
+bool CEngineSurfaceCompositionManager::IsNearlyIdentical(const CEngineTextureMorph& a, const CEngineTextureMorph& b, float tolerance)
 {
     if (a.Blends.size() != b.Blends.size())
         return false;

@@ -64,6 +64,12 @@ private:
     // Ego_r.pdb / FableWin.pdb private members (AAE), the spellings UpdateDiskCacheTexture calls (NAME_FIXES.tsv for the landed ones):
     void GetDimensionsAndAdjustMipmapLevel(C2DExtentsI& dimensions, const CGraphicInfoFrame* frame, unsigned long& mipmap_level);   // 0x00B2AEF0
     bool IsNearlyIdentical(const CEngineTextureMorph& a, const CEngineTextureMorph& b, float tolerance);   // 0x00B2B050
+#ifdef FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_CALCCOLOURDIFFERENCE
+    // Nested opt-in (NF39, row 0x00B2B050 IsNearlyIdentical): Ego_r.pdb / FableWin.pdb
+    // ?CalcColourDifference@CEngineSurfaceCompositionManager@@AAEMABVCRGBColour@@0@Z (private), out of line in retail at 0x00B2AF50
+    // (landed). Declaration only; no layout change. Needs CRGBColour declared.
+    float CalcColourDifference(const class CRGBColour& a, const class CRGBColour& b);                  // 0x00B2AF50
+#endif
     const CGraphicInfoFrame* GetGraphicInfo(unsigned long index);                                         // 0x00B2B790
     void WriteTextureToBank(CTexture& texture, CGraphicDataBank& bank, unsigned long index, bool alpha);  // 0x00B2BD80
     bool UpdateDiskCacheTexture(CCompositeSurfaceCache& surface_cache, unsigned long mipmap_level, bool is_bump);   // 0x00B2D330

@@ -1,39 +1,23 @@
-// CClass_00916640::AssignTarget_00916640(CBaseObject*) -- routes the argument through a temporary CIntelligentPointer into the member pointer at +0xc
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00916640, oracle length 71 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  sub esp,8 ; push esi ; mov esi,ecx ; lea ecx,[esp+4] ; call CBaseIntelligentPointer::CBaseIntelligentPointer ; mov eax,[esp+10h] ; push eax ; lea ecx,[esp+8] ; mov dword ptr [esp+8],offset CIntelligentPointer::`vftable' ; call SetPItem ; lea ecx,[esp+4] ; call GetPItem ; push eax ; lea ecx,[esi+0xc] ; call SetPItem ; lea ecx,[esp+4] ; call ~CBaseIntelligentPointer ; pop esi ; add esp,8 ; ret 4
-// A stack CIntelligentPointer (8 bytes: vtable 0x01238C6C from rtti-vtables.tsv + item; constructed by the
-// inlined default ctor over CBaseIntelligentPointer() @ 0x00A01B10) is pointed at the argument
-// with SetPItem @ 0x00A01B90, read back with GetPItem @ 0x00A01B50 into the member pointer at
-// +0xc, and destroyed @ 0x00A01C10. The class comes from the manifest label when unique.
-// One of 17 bodies of this shape.
-class CBaseObject;
+// CTCExclusiveUse::SetUser(CThing*) -- routes the argument through a temporary CIntelligentPointer<CThing> into User (+0x0C)
+// Leaf: ?SetUser@CTCExclusiveUse@@QAEXPAVCThing@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00916640.
+// A stack CIntelligentPointer<CThing> (vtable 0x01238C6C, over CBaseIntelligentPointer() @ 0x00A01B10) is pointed at the argument
+// with SetPItem @ 0x00A01B90, read back with GetPItem @ 0x00A01B50 into User (+0x0C) by SetPItem, and destroyed @ 0x00A01C10.
+// NF39 (2026-11-16): moved off its address-suffixed stand-in (CClass_00916640::AssignTarget_00916640) onto the shared
+// engine/CTCExclusiveUse.h (opt-in FABLE_RETAIL_CTCEXCLUSIVEUSE, which names 0x00916640): Ego_r.pdb 0x0080C470 + FableWin.pdb 0x017F33BB
+// ?SetUser@CTCExclusiveUse@@QAEXPAVCThing@@@Z; Ego_r TPI CTCExclusiveUse::User (CIntelligentPointer<CThing>) +0x0C. Include chain from the
+// landed 0x00915B60 PlaceGoods (the caller of this row).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CTCEXCLUSIVEUSE
+#include "engine/CThing.h"
+#include "engine/CTCExclusiveUse.h"
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                  // +4 (an 8-byte temporary: `sub esp,8`)
-    CBaseIntelligentPointer();             // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();            // 0x00A01C10
-    CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CBaseObject* item);      // 0x00A01B90
-};
-
-struct CIntelligentPointer : CBaseIntelligentPointer {
-    virtual void v00();
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-};
-
-struct CClass_00916640 {
-    unsigned char _pad[0xc];
-    CBaseIntelligentPointer m_target;      // +0xc
-    void AssignTarget_00916640(CBaseObject* thing);
-};
-
-void CClass_00916640::AssignTarget_00916640(CBaseObject* thing)
+void CTCExclusiveUse::SetUser(CThing* user)
 {
-    CIntelligentPointer pointer;
-    pointer.SetPItem(thing);
-    m_target.SetPItem(pointer.GetPItem());
+    User = user;
 }

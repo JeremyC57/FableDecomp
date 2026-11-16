@@ -1,0 +1,73 @@
+addr       parity           behav  name
+0040e250   RELOCATION_MATCH PASS   GetDefaultVal
+0041b9c0   RELOCATION_MATCH PASS   TouchResource
+00429460   RELOCATION_MATCH PASS   ShareData
+004378f0   RELOCATION_MATCH PASS   AddPerceivingThing
+00437980   RELOCATION_MATCH PASS   AddAutoPickup
+0048da89   MATCH            PASS   GetStringWidth
+0049417d   RELOCATION_MATCH PASS   push_back
+00564b20   RELOCATION_MATCH PASS   pair
+0057fc46   MATCH            PASS   GetTypeBalancedAttractiveness
+00668a80   MATCH            PASS   IsFinished
+006df860   RELOCATION_MATCH PASS   ~CCreatureAction_UnsheatheToShowToSheatheTrophy
+00742460   RELOCATION_MATCH PASS   Alloc
+00751a70   RELOCATION_MATCH PASS   IsOverriddenByParent
+007d7c40   MATCH            PASS   FindTarget
+007e3aa0   RELOCATION_MATCH PASS   Transfer
+007f39f0   RELOCATION_MATCH PASS   SetPSourceOfFaction
+007f3ad0   RELOCATION_MATCH PASS   CLightningBranch
+007f3e90   WARN RELOC_NAME: ??$__copy@PAV?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@PAV1@H@std@@YIPAV?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z -> 007f3ce0 labelled '_global::Move_CountedPointer_007f3ce0'
+007f3e90   RELOCATION_MATCH PASS   erase
+007f4780   RELOCATION_MATCH PASS   Reset
+008b8590   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheWeapons
+00915810   RELOCATION_MATCH PASS   CCreatureAction_PutGoodsDown
+0092c520   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0092c520   RELOCATION_MATCH PASS   IsInSleepTime
+0097c900   RELOCATION_MATCH PASS   ~CCreatureAction_ScorpionChargeInto
+009ad3b0   WARN RELOC_NAME: ?GetPDefClassInfo@CDefinitionManager@@IBEPBVCDefClassInfo@1@ABVCCharString@@@Z -> 009ad2e0 labelled 'CFactionDatabase::FindFactionBySymbolName'
+009ad3b0   RELOCATION_MATCH PASS   GetNoInstantiatedDefsOfType
+009c6640   RELOCATION_MATCH PASS   DeleteData
+009ffb20   RELOCATION_MATCH PASS   GetVolumeTexture
+00a52650   MATCH            PASS   ConvertTimeToFrames
+00a96da0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00a96da0   RELOCATION_MATCH PASS   ~CVertexGroupBlock
+00adb570   MATCH            PASS   size
+00b2aef0   MATCH            PASS   GetDimensionsAndAdjustMipmapLevel
+00b89080   RELOCATION_MATCH PASS   FinishWithDynamicTextures
+00cb5ac0   RELOCATION_MATCH PASS   CheckSectionIsNotAlreadyRegistered
+00f38990   RELOCATION_MATCH PASS   CSurfaceCompositor
+
+WINS: 33
+  0040e250 RELOCATION_MATCH CPersistContext::??$GetDefaultVal@M@CPersistContext@@KIMXZ
+  0041b9c0 RELOCATION_MATCH CResource::?TouchResource@CResource@@QAEXXZ
+  00429460 RELOCATION_MATCH CCountedPointer<NUISystem::CText>::?ShareData@?$CCountedPointer@VCText@NUISystem@@@@QAEXPAVCText@NUISystem@@PAVCCPPointerInfo@@@Z
+  004378f0 RELOCATION_MATCH CPlayerGui::?AddPerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z
+  00437980 RELOCATION_MATCH CPlayerGui::?AddAutoPickup@CPlayerGui@@QAEXJ@Z
+  0048da89 MATCH CFontBank::?GetStringWidth@CFontBank@@QBEMPBG@Z
+  0049417d RELOCATION_MATCH std::vector<CSubtitleRenderer::CEmbeddedGraphic>::?push_back@?$vector@VCEmbeddedGraphic@CSubtitleRenderer@@V?$allocator@VCEmbeddedGraphic@CSubtitleRenderer@@@std@@@std@@QAEXABVCEmbeddedGraphic@CSubtitleRenderer@@@Z
+  00564b20 RELOCATION_MATCH std::pair<float,CWideString>::??0?$pair@MVCWideString@@@std@@QAE@ABU01@@Z
+  0057fc46 MATCH CTattooDef::?GetTypeBalancedAttractiveness@CTattooDef@@QBEMABV?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@@Z
+  00668a80 MATCH CAnimSet::?IsFinished@CAnimSet@@QBE_NXZ
+  006df860 RELOCATION_MATCH CCreatureAction_UnsheatheToShowToSheatheTrophy::??1CCreatureAction_UnsheatheToShowToSheatheTrophy@@UAE@XZ
+  00742460 RELOCATION_MATCH NCreatureMode::CModeBasic::?Alloc@CModeBasic@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z
+  00751a70 RELOCATION_MATCH CTCLook::?IsOverriddenByParent@CTCLook@@QBE_NXZ
+  007d7c40 MATCH CTCTavernGameSpotTheAddition::?FindTarget@CTCTavernGameSpotTheAddition@@AAEPAVCThingObject@@M@Z
+  007e3aa0 RELOCATION_MATCH CPersistContext::??$Transfer@VCDefString@@@CPersistContext@@QAEXPBDAAVCDefString@@@Z
+  007f39f0 RELOCATION_MATCH CTCLightningNode::?SetPSourceOfFaction@CTCLightningNode@@QAEXPBVCThing@@@Z
+  007f3ad0 RELOCATION_MATCH CTCLightningNode::CLightningBranch::??0CLightningBranch@CTCLightningNode@@QAE@AAVCThing@@@Z
+  007f3e90 RELOCATION_MATCH std::vector<CCountedPointer<CTCLightningNode::CLightningBranch> >::?erase@?$vector@V?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@V?$allocator@V?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@@std@@@std@@QAEPAV?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@PAV3@@Z
+  007f4780 RELOCATION_MATCH CCountedPointer<NBBBMaths::CLinearSpline>::?Reset@?$CCountedPointer@VCLinearSpline@NBBBMaths@@@@QAEXPAVCLinearSpline@NBBBMaths@@@Z
+  008b8590 RELOCATION_MATCH CCreatureAction_UnsheatheWeapons::??0CCreatureAction_UnsheatheWeapons@@QAE@AAVCThingCreatureBase@@@Z
+  00915810 RELOCATION_MATCH CCreatureAction_PutGoodsDown::??0CCreatureAction_PutGoodsDown@@QAE@AAVCThingCreatureBase@@ABVCCharString@@@Z
+  0092c520 RELOCATION_MATCH CAIStateGroup_MinionSleep::?IsInSleepTime@CAIStateGroup_MinionSleep@@QBE_NXZ
+  0097c900 RELOCATION_MATCH CCreatureAction_ScorpionChargeInto::??1CCreatureAction_ScorpionChargeInto@@UAE@XZ
+  009ad3b0 RELOCATION_MATCH CDefinitionManager::?GetNoInstantiatedDefsOfType@CDefinitionManager@@QBEJABVCCharString@@@Z
+  009c6640 RELOCATION_MATCH CCountedPointer<const CFileInstaller::CFileInfo>::?DeleteData@?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@SIXPAX@Z
+  009ffb20 RELOCATION_MATCH CGraphicInfo::?GetVolumeTexture@CGraphicInfo@@QBE_NPAPAVCVolumeTexture@@K@Z
+  00a52650 MATCH C3DAnimation2::?ConvertTimeToFrames@C3DAnimation2@@QBEXMAAJAAM@Z
+  00a96da0 RELOCATION_MATCH CVertexGroupBlock::??1CVertexGroupBlock@@QAE@XZ
+  00adb570 MATCH std::list<CVertexGroupBlock,std::allocator<CVertexGroupBlock> >::?size@?$list@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QBEIXZ
+  00b2aef0 MATCH CEngineSurfaceCompositionManager::?GetDimensionsAndAdjustMipmapLevel@CEngineSurfaceCompositionManager@@AAEXAAVC2DExtentsI@@PBVCGraphicInfoFrame@@AAK@Z
+  00b89080 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::?FinishWithDynamicTextures@CEngineScreenEffectOutlineGlow@@AAEXXZ
+  00cb5ac0 RELOCATION_MATCH CScriptInfoManager::?CheckSectionIsNotAlreadyRegistered@CScriptInfoManager@@IAEXVCCharString@@@Z
+  00f38990 RELOCATION_MATCH CSurfaceCompositor::??0CSurfaceCompositor@@QAE@AAVCSurface@@@Z

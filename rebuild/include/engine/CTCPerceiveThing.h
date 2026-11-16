@@ -121,6 +121,24 @@ public:
  CTCPerceiveThing & operator=(const CTCPerceiveThing & p0);
 };
 FABLE_STATIC_ASSERT_AT(123, sizeof(CTCPerceiveThing)==0x58);
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_TIMEVISIBILITY_INLINE
+// Nested opt-in (NF39, row 0x007448F0 GetSightRadius): the body of the private Ego_r.pdb / FableWin.pdb
+// ?GetTimeBasedVisibilityMultiplier@CTCPerceiveThing@@ABEMXZ (out-of-line copy 0x00744580, landed), inline where retail expands it
+// (GetSightRadius 0x007448F0 / GetExtendedSightRadius 0x00744950: the multiplier first, then `fmul` by the radius; each arm returns on its
+// own). The def's day-time / night-time multiplier, their average at dusk and dawn. Needs FABLE_RETAIL_HEARING (CPerceivedThingDef),
+// FABLE_RETAIL_CWORLD, FABLE_RETAIL_CGAMETIMEMANAGER_FULL (IsDay / IsNightTime) and FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CPerceivedThingDef.h"
+#include "engine/CGameTimeManager.h"
+#include "engine/CWorld.h"
+inline float CTCPerceiveThing::GetTimeBasedVisibilityMultiplier() const
+{
+    if (PeekWorld().PeekGameTimeManager().IsDay())
+        return PDef->DayTimeVisibilityMultiplier;
+    if (PeekWorld().PeekGameTimeManager().IsNightTime())
+        return PDef->NightTimeVisibilityMultiplier;
+    return (PDef->NightTimeVisibilityMultiplier + PDef->DayTimeVisibilityMultiplier) * 0.5f;
+}
+#endif
 #else
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING
 // Retail opt-in (chunk 765, row 0x007446A0 CTCPerceiveThing::GetPerceivedThing): the polymorphic class, RTTI .?AVCTCPerceiveThing@@,

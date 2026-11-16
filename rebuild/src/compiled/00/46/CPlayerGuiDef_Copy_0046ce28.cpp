@@ -1,17 +1,18 @@
-#include "rebuild_abi.h"
+// CPlayerGuiDef::Copy(const CDefClassBase*) -- the slot-19 def copy: a 5-byte `jmp` to the implicit operator= COMDAT 0x0046CE2D
+// Leaf: ?Copy@CPlayerGuiDef@@UAEXPBVCDefClassBase@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0046CE28 (5 bytes: `jmp 0x0046CE2D`).
+// NF39 (2026-11-16): moved off its free __fastcall stand-in (CPlayerGuiDef_Copy -> CPlayerGuiDef_Copy_impl) onto the shared
+// engine/CPlayerGuiDef.h (FABLE_RETAIL_CPLAYERGUIDEF_CLASS; the header names slot 19 Copy 0x0046CE28): FableWin.exe.signatures.tsv
+// ?Copy@CPlayerGuiDef@@UAEXPBVCDefClassBase@@@Z + vtable 0x012352DC slot 19. The same source as the landed 0x0046CE2D row (the operator=
+// COMDAT this thunk tail-calls); this row grades the Copy symbol of that object.
+#include "fable_compiler.h"
+#pragma optimize("s", on)
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#define FABLE_RETAIL_CPLAYERGUIDEF_CLASS
+#include "engine/CPlayerGuiDef.h"
 
-// 0x0046ce28 CPlayerGuiDef::Copy -- 5-byte jmp-thunk (tail-call to real impl).
-// Retail: e9 00000000 => jmp rel32 (target relocation-masked).
-// Model the destination as an extern free function; the thunk is a plain tail call.
-
-class CPlayerGuiDef;
-
-// Real implementation target (address relocation-masked in parity).
-extern void __fastcall CPlayerGuiDef_Copy_impl(CPlayerGuiDef* thisptr, void* other);
-
-// The thunk itself: __fastcall(this, other) tail-calls the impl, producing a
-// single `jmp rel32`.
-void __fastcall CPlayerGuiDef_Copy(CPlayerGuiDef* thisptr, void* other)
+void CPlayerGuiDef::Copy(const CDefClassBase* def)
 {
-    CPlayerGuiDef_Copy_impl(thisptr, other);
+    *this = *static_cast<const CPlayerGuiDef*>(def);
 }

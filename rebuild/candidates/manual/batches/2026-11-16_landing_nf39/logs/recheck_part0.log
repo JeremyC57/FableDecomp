@@ -1,0 +1,73 @@
+addr       parity           behav  name
+0040e160   MATCH            PASS   GetDefaultVal
+004107e0   RELOCATION_MATCH PASS   Transfer
+0042925c   RELOCATION_MATCH PASS   ReleaseData
+00437260   RELOCATION_MATCH PASS   CWStringParser
+00437900   WARN RELOC_NAME: ?RemovePerceivingThing@CDrawPerceivers@NPlayerGui@@QAEXAAVCThing@@@Z -> 0064639c labelled 'CPlayerGuiThingList_0064639c::RemoveThing'
+00437900   RELOCATION_MATCH PASS   RemovePerceivingThing
+0046ce28   MATCH            PASS   Copy
+0048daa2   RELOCATION_MATCH PASS   GetStringExtents
+0055e7c0   RELOCATION_MATCH PASS   ActivityEnumToCharString
+0057aa1b   MATCH            PASS   GetNumRegionsExplored
+005e8f50   RELOCATION_MATCH PASS   erase
+006b6340   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00706860   RELOCATION_MATCH PASS   GetHiddenMaterialNames
+007448f0   RELOCATION_MATCH PASS   GetSightRadius
+007a4210   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@SIXPAX@Z -> 007a4120 labelled '_global::DeleteObject_007a4120'
+007a4210   RELOCATION_MATCH PASS   CCountedPointer
+007e37c0   MATCH            PASS   GetDefaultVal
+007f39a0   RELOCATION_MATCH PASS   SetPParent
+007f3a40   RELOCATION_MATCH PASS   SetPSourceOfHit
+007f3bb0   RELOCATION_MATCH PASS   GetDef
+007f3f60   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@SIXPAX@Z -> 007f3f00 labelled '_global::DeleteObject_CLightningBranch_007f3f00'
+007f3f60   RELOCATION_MATCH PASS   CCountedPointer
+00842400   RELOCATION_MATCH PASS   CCreatureAction_PlayConversationAnimation
+008c4e20   RELOCATION_MATCH PASS   CCreatureAction_ScorpionChargeInto
+00916640   RELOCATION_MATCH PASS   SetUser
+009531a0   RELOCATION_MATCH PASS   ~CCreatureAction_DragonRearUpFull
+009ad390   WARN RELOC_NAME: ?GetPDefClassInfo@CDefinitionManager@@IBEPBVCDefClassInfo@1@ABVCCharString@@@Z -> 009ad2e0 labelled 'CFactionDatabase::FindFactionBySymbolName'
+009ad390   RELOCATION_MATCH PASS   GetGlobalIndexFromClassIndex
+009c3130   RELOCATION_MATCH PASS   CFileInfo
+009c6a70   RELOCATION_MATCH PASS   CCountedPointer
+00a2e4b0   MATCH            PASS   C3DDummyObject
+00a5b210   RELOCATION_MATCH PASS   OpenFromFile
+00ac4f20   MATCH            PASS   GetCount
+00adbe50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00b2b050   RELOCATION_MATCH PASS   IsNearlyIdentical
+00bbbf40   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleGroup
+00f333b0   RELOCATION_MATCH PASS   TransferVector
+
+WINS: 33
+  0040e160 MATCH CPersistContext::??$GetDefaultVal@J@CPersistContext@@KIJXZ
+  004107e0 RELOCATION_MATCH CPersistContext::??$Transfer@M@CPersistContext@@QAEXPBDAAM@Z
+  0042925c RELOCATION_MATCH CCountedPointer<NUISystem::CText>::?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ
+  00437260 RELOCATION_MATCH CWStringParser::??0CWStringParser@@QAE@PBG@Z
+  00437900 RELOCATION_MATCH CPlayerGui::?RemovePerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z
+  0046ce28 MATCH CPlayerGuiDef::?Copy@CPlayerGuiDef@@UAEXPBVCDefClassBase@@@Z
+  0048daa2 RELOCATION_MATCH CFontBank::?GetStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@_N@Z
+  0055e7c0 RELOCATION_MATCH CTCHeroOnlineScoreboard::?ActivityEnumToCharString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@ABW4EOnlineScoreboardActivity@1@@Z
+  0057aa1b MATCH CTCHeroStats::?GetNumRegionsExplored@CTCHeroStats@@QBEJXZ
+  005e8f50 RELOCATION_MATCH std::map<long,unsigned long>::?erase@?$map@JKU?$less@J@std@@V?$allocator@U?$pair@$$CBJK@std@@@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBJK@std@@U?$_Nonconst_traits@U?$pair@$$CBJK@std@@@2@@2@@Z
+  006b6340 RELOCATION_MATCH NEnvironmentInternal::CBlendedEnvironmentTheme::??_GCBlendedEnvironmentTheme@NEnvironmentInternal@@QAEPAXI@Z
+  00706860 RELOCATION_MATCH CTCHeroAttachableAppearanceModifiers::?GetHiddenMaterialNames@CTCHeroAttachableAppearanceModifiers@@QBE_NAAV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@@Z
+  007448f0 RELOCATION_MATCH CTCPerceiveThing::?GetSightRadius@CTCPerceiveThing@@QBEMXZ
+  007a4210 RELOCATION_MATCH CCountedPointer<CTCWillLightning::CLightningBeam>::??0?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@QAE@PAVCLightningBeam@CTCWillLightning@@@Z
+  007e37c0 MATCH CPersistContext::??$GetDefaultVal@VCDefString@@@CPersistContext@@KI?AVCDefString@@XZ
+  007f39a0 RELOCATION_MATCH CTCLightningNode::?SetPParent@CTCLightningNode@@QAEXAAVCThing@@@Z
+  007f3a40 RELOCATION_MATCH CTCLightningNode::?SetPSourceOfHit@CTCLightningNode@@QAEXPAVCThing@@@Z
+  007f3bb0 RELOCATION_MATCH CDefinitionManager::??$GetDef@VCLightningDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCLightningDef@@@@@Z
+  007f3f60 RELOCATION_MATCH CCountedPointer<CTCLightningNode::CLightningBranch>::??0?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@QAE@PAVCLightningBranch@CTCLightningNode@@@Z
+  00842400 RELOCATION_MATCH CCreatureAction_PlayConversationAnimation::??0CCreatureAction_PlayConversationAnimation@@QAE@AAVCThingCreatureBase@@W4EConversationAttitude@@ABVCSoundPair@@JJ@Z
+  008c4e20 RELOCATION_MATCH CCreatureAction_ScorpionChargeInto::??0CCreatureAction_ScorpionChargeInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@M@Z
+  00916640 RELOCATION_MATCH CTCExclusiveUse::?SetUser@CTCExclusiveUse@@QAEXPAVCThing@@@Z
+  009531a0 RELOCATION_MATCH CCreatureAction_DragonRearUpFull::??1CCreatureAction_DragonRearUpFull@@UAE@XZ
+  009ad390 RELOCATION_MATCH CDefinitionManager::?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z
+  009c3130 RELOCATION_MATCH CFileInstaller::CFileInfo::??0CFileInfo@CFileInstaller@@QAE@ABVCWideString@@0J_N1@Z
+  009c6a70 RELOCATION_MATCH CCountedPointer<const CFileInstaller::CFileInfo>::??0?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@QAE@PBVCFileInfo@CFileInstaller@@@Z
+  00a2e4b0 MATCH C3DDummyObject::??0C3DDummyObject@@QAE@XZ
+  00a5b210 RELOCATION_MATCH CCachedFile::?OpenFromFile@CCachedFile@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z
+  00ac4f20 MATCH CMirroredTextureHighlightsChunk::?GetCount@CMirroredTextureHighlightsChunk@@QBEKXZ
+  00adbe50 RELOCATION_MATCH CVertexGroupBlock::??_GCVertexGroupBlock@@QAEPAXI@Z
+  00b2b050 RELOCATION_MATCH CEngineSurfaceCompositionManager::?IsNearlyIdentical@CEngineSurfaceCompositionManager@@AAE_NABVCEngineTextureMorph@@0M@Z
+  00bbbf40 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::??0CEnginePrimitiveManagerParticleGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z
+  00f333b0 RELOCATION_MATCH CPersistContext::??$TransferVector@VCDefString@@@CPersistContext@@QAEXPBDAAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z

@@ -67,7 +67,14 @@ public:
     unsigned char AppearanceModifiersLoaded[0x2];            // +0x14 bitfield group: bool:1
     unsigned char _pad_0x16[0x2];                            // +0x16
     unsigned char PrimHandles[0xc];                          // +0x18 vector<NGraphicAppearance::CPrimitive_*,std::allocator<NGraphicAppearance::CPrimitive_*>_>
+#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_HIDDENMATERIALS_TYPED
+    // NF39 opt-in (row 0x00706860 GetHiddenMaterialNames): the Ego_r.pdb member type set<CCharString> (STLport 4.6, 0xC bytes, the
+    // same layout as the opaque default); the landed body assigns it (_Rb_tree operator= 0x006B9E00) and reads its count +0x28.
+    // Needs fable_string.h and stlport/fable_map.h.
+    std::set<CCharString> HiddenMaterialNames;                // +0x24
+#else
     unsigned char HiddenMaterialNames[0xc];                  // +0x24 set<CCharString,std::less<CCharString>,std::allocator<CCharString>_>
+#endif
     unsigned char AppearanceModifiers[0xc];                  // +0x30 vector<std::vector<CTCHeroAttachableAppearanceModifiers::CModifierEntry,std::allocator<CTCHeroAttachableAppearanceModifiers::CModifierEntry>_>,std::allocator<std::vector<CTCHeroAttachableAppearanceModifiers::CModifierEntry,std::allocator<CTCHeroAttachableAppearanceModifiers::CModifierEntry>_>_>_>
     unsigned char Graphics[0xc];                             // +0x3c vector<CTCHeroAttachableAppearanceModifiers::CModifierGraphic,std::allocator<CTCHeroAttachableAppearanceModifiers::CModifierGraphic>_>
 #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_VSLOTS

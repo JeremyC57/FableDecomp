@@ -25,9 +25,17 @@ public:
     class CLightningBranch;
     CTCLightningNode(CThing&);                                           // ??0CTCLightningNode@@QAE@AAVCThing@@@Z
     virtual ~CTCLightningNode();
+#ifdef FABLE_RETAIL_CTCLIGHTNINGNODE_SETTERS_DECL
+    // NF39 opt-in (rows 0x007F39A0 / 0x007F39F0 / 0x007F3A40): the three pointer setters declared only, for the rows that define their
+    // out-of-line copies (the same bodies as the default in-class ones).
+    void SetPParent(CThing& parent);                                     // 0x007F39A0
+    void SetPSourceOfFaction(const CThing* source);                      // 0x007F39F0
+    void SetPSourceOfHit(CThing* source);                                // 0x007F3A40
+#else
     void SetPParent(CThing& parent) { PParent = &parent; }               // ?SetPParent@CTCLightningNode@@QAEXAAVCThing@@@Z (0x007F39A0)
     void SetPSourceOfFaction(const CThing* source) { PSourceOfFaction = source; }   // ?SetPSourceOfFaction@..QAEXPBVCThing@@@Z (0x007F39F0)
     void SetPSourceOfHit(CThing* source) { PSourceOfHit = source; }      // ?SetPSourceOfHit@..QAEXPAVCThing@@@Z (0x007F3A40)
+#endif
     void SetPDef(const CDefPointer<const CLightningDef>& def) { PDef = def; }   // ?SetPDef@..QAEXABV?$CDefPointer@$$CBVCLightningDef@@@@@Z (0x007F3A90)
 #ifdef FABLE_RETAIL_CTCLIGHTNINGNODE_FRAMEUPDATE
     // Nested opt-in (w22 agent2042, row 0x007F2DC0): Ego_r.pdb / FableWin.pdb ?FrameUpdate@CTCLightningNode@@UAEXXZ (vtable 0x0124337C slot 9)
@@ -51,7 +59,12 @@ public:
 // sizeof 0x14 (`push 14h ; call operator new`, 0x007F3085).
 class CTCLightningNode::CLightningBranch {
 public:
+#ifdef FABLE_RETAIL_CTCLIGHTNINGNODE_BRANCH_CTOR_DECL
+    // NF39 opt-in (row 0x007F3AD0): declaration only, for the row that defines the out-of-line ctor copy (the same body).
+    CLightningBranch(CThing& target);                                    // 0x007F3AD0
+#else
     CLightningBranch(CThing& target) : PTarget(&target), Timer(0) { }
+#endif
     CIntelligentPointer<CThing> PTarget;                                 // +0x00 (descriptive)
     CIntelligentPointer<CThing> PEffect;                                 // +0x08 (descriptive)
     long                        Timer;                                   // +0x10 (descriptive)

@@ -154,6 +154,12 @@ class CCombatActionBase : public CCreatureActionBase {
 public: CCombatActionBase(CThingCreatureBase& creature, long priority, const CSoundPair& sound);   // 0x00858030
 protected: static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
 #endif
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+    // Retail opt-in (NF39, row 0x008C4E20 the CCreatureAction_ScorpionChargeInto constructor): Ego_r.pdb
+    // ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@AAVCThing@@JABVCSoundPair@@@Z (creature, target, priority, sound), out of line in
+    // retail at 0x00857F30 (the first branch above declares the same constructor). Declaration only; no layout change.
+public: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long priority, const CSoundPair& sound);   // 0x00857F30
+#endif
 public: virtual ~CCombatActionBase();
     virtual void PerformAction();
 protected: virtual CCreatureActionBase* Clone() const;
@@ -199,6 +205,12 @@ protected: CCombatActionBase(long priority);                             // 0x00
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
 public: CCombatActionBase(CThingCreatureBase& creature, long priority, const CSoundPair& sound);   // 0x00858030
 protected: static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+#endif
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+    // Retail opt-in (NF39, row 0x008C4E20 the CCreatureAction_ScorpionChargeInto constructor): Ego_r.pdb
+    // ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@AAVCThing@@JABVCSoundPair@@@Z (creature, target, priority, sound), out of line in
+    // retail at 0x00857F30 (the first branch above declares the same constructor). Declaration only; no layout change.
+public: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long priority, const CSoundPair& sound);   // 0x00857F30
 #endif
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_STRIKEEVENT
     // Per-TU opt-in (agentFAM01 2026-11-11, row 0x0062D9A0 ~CCountedPointer<CCombatActionBase::CStrikeEvent>): the PDB nested class

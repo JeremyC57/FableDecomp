@@ -130,6 +130,20 @@ protected:
     };
     CDefClassInfo* GetPDefClassInfo(const CCharString& name);            // 0x009AD580
     bool InstantiateDef(const CCharString& class_name, const CCharString& instantiation_name, bool is_template);   // 0x009ADC90
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_CLASSINFO_QUERIES
+    // NF39 opt-in (rows 0x009AD390 / 0x009AD3B0; needs _INSTANTIATEDEF for CDefClassInfo): Ego_r.pdb donor order
+    // ?GetPDefClassInfo@CDefinitionManager@@IBEPBVCDefClassInfo@1@ABVCCharString@@@Z 0x00B05200,
+    // ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z 0x00B05260 and
+    // ?GetNoInstantiatedDefsOfType@CDefinitionManager@@QBEJABVCCharString@@@Z 0x00B052D0 = retail 0x009AD2E0 / 0x009AD390 / 0x009AD3B0
+    // (the const lookup by name, out of line; FableWin.pdb has the same spellings). Declarations only.
+    const CDefClassInfo* GetPDefClassInfo(const CCharString& name) const;   // 0x009AD2E0
+public:
+    // GetGlobalIndexFromClassIndex is the header's existing public declaration (0x009AD390).
+#ifndef FABLE_RETAIL_CDEFINITIONMANAGER_NOINSTANTIATED
+    long GetNoInstantiatedDefsOfType(const CCharString&) const;         // 0x009AD3B0
+#endif
+protected:
+#endif
 #endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATESUBDEF
     // Retail opt-in (wf5, row 0x009ADAE0 CDefinitionManager::InstantiateSubDef; needs FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF):

@@ -1,54 +1,32 @@
-// CSurfaceCompositor::CSurfaceCompositor(CSurface* destSurface) -- CBase ctor, clear the capture block, take the destination surface, create the compositor's own CRenderTarget into its counted pointer, zero the blend type and layer count
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+// CSurfaceCompositor::CSurfaceCompositor(CSurface& dest_surface) -- CBaseClass ctor, clear the capture block, take the destination surface, create
+// the compositor's own CRenderTarget into its counted pointer, zero the blend type and layer count
+// Leaf: ??0CSurfaceCompositor@@QAE@AAVCSurface@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F38990, length 117 bytes (+11 int3 padding). `ret 4`.
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 (twice: own base, then the new CRenderTarget's base), operator new @ 0x00BFEA1A (0x24 bytes),
-// CCountedPointer<CRenderTarget>::Reset(CRenderTarget*) @ 0x00F39CA0 (catalog label is a byte-twin instantiation for
-// CIPhysicsFacesSegmentBase). Vtables: CSurfaceCompositor 0x01301CF0, CRenderTarget 0x0129C800, CSurface 0x0122F84C.
-// Shape: init list = StateCaptureBlock (its inline ctor clears the byte at +8), DestSurface, RenderTarget (two zero words);
-// body = Reset(new CRenderTarget), then CurrentBlend = 0 and LayerCount = 0 (stored last). The CRenderTarget default ctor is
-// inline: CBase, vtable, two embedded CSurface (vtable shared through eax, PD3DSurface/AllocationSource zeroed).
-// Model: PDB CSurfaceCompositor (0x30 bytes): +4 CurrentBlend, +8 StateCaptureBlock, +9 WasRendering, +0xC DestSurface,
-// +0x10 CCountedPointer<CRenderTarget> RenderTarget, +0x18 C2DBoxF OldWindow, +0x28 LayerCount, +0x2C AlphaTarget.
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-void* __cdecl operator new(unsigned int size);  // 0x00BFEA1A
+//   CCountedPointer<CRenderTarget>::Reset(CRenderTarget*) @ 0x00F39CA0. Vtables: CSurfaceCompositor 0x01301CF0, CRenderTarget 0x0129C800,
+//   CSurface 0x0122F84C.
+// Shape: init list = StateCaptureBlock (its inline ctor clears the byte at +8), DestSurface, RenderTarget (two zero words); body =
+//   Reset(new CRenderTarget), then CurrentBlend = 0 and LayerCount = 0 (stored last). The CRenderTarget default ctor is inline: CBaseClass,
+//   vtable, two embedded CSurface (vtable shared through eax, PD3DSurface / AllocationSource zeroed).
+// NF39 (2026-11-16): moved off its local CSurfaceCompositor / CRenderTarget / CSurface / capture-block models (pointer argument) onto the shared
+//   engine/CSurfaceCompositor.h (which names 0x00F38990), engine/CRenderTarget.h, engine/CSurface.h, engine/CRenderStateCaptureBlock.h (inline
+//   ctor) and engine/CCountedPointer.h. Evidence: Ego_r.pdb / FableWin.pdb ??0CSurfaceCompositor@@QAE@AAVCSurface@@@Z; RenderToTexture 0x00B2B180
+//   passes the render surface by reference (already bound).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE_CTOR
+#include "engine/Direct3D9Types.h"
+#include "engine/C2DBoxF.h"
+#include "engine/C3DVector.h"
+#include "engine/CSurface.h"
+#include "engine/CRenderTarget.h"
+#include "engine/CSurfaceCompositor.h"
 
-struct IDirect3DSurface9;
-class CSurface { public:                               // vtable 0x0122F84C, 0x10 bytes
-    virtual ~CSurface();
-    IDirect3DSurface9* PD3DSurface;             // +0x04
-    unsigned long AllocationSource;             // +0x08
-    void* PAllocatedMemory;                     // +0x0c
-    CSurface() : PD3DSurface(0), AllocationSource(0) {}
-};
-class CRenderTarget : public CBaseClass { public:                  // vtable 0x0129C800, 0x24 bytes
-    CSurface ColourSurface;                     // +0x04
-    CSurface DepthSurface;                      // +0x14
-    CRenderTarget() {}
-    virtual ~CRenderTarget();
-};
-#include "engine/CCountedPointer.h"
-struct CRenderStateCaptureBlock {
-    bool Captured;
-    CRenderStateCaptureBlock() : Captured(false) {}
-};
-class C2DBoxF { public: float left, top, right, bottom; };
-struct CSurfaceCompositor : CBaseClass {             // vtable 0x01301CF0, 0x30 bytes
-    long CurrentBlend;                          // +0x04 ECompositeBlendType
-    CRenderStateCaptureBlock StateCaptureBlock; // +0x08
-    bool WasRendering;                          // +0x09
-    CSurface* DestSurface;                      // +0x0c
-    CCountedPointer<CRenderTarget> RenderTarget;    // +0x10
-    C2DBoxF OldWindow;                          // +0x18
-    long LayerCount;                            // +0x28
-    bool AlphaTarget;                           // +0x2c
-    CSurfaceCompositor(CSurface* destSurface);
-    virtual ~CSurfaceCompositor();
-};
-
-CSurfaceCompositor::CSurfaceCompositor(CSurface* destSurface)
-    : DestSurface(destSurface)
+CSurfaceCompositor::CSurfaceCompositor(CSurface& dest_surface)
+    : DestSurface(&dest_surface)
 {
     RenderTarget.Reset(new CRenderTarget);
-    CurrentBlend = 0;
+    CurrentBlend = COMPOSITE_BLEND_NULL;
     LayerCount = 0;
 }

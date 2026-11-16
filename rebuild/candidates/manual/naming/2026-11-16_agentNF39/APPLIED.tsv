@@ -1,0 +1,291 @@
+tag	address	correct_symbol	status	binders_respelled	note
+land1011fk	0049b760	?resize@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXI@Z	carry	0	not reached
+land1011fm	008ce1b0	??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@M_NJV?$CCountedPointer@VCCreatureActionBase@@@@@Z	carry	0	not reached
+land1011fm	00668610	?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z	carry	0	not reached
+land1011fm	0076b120	?push_back@?$CArray@U?$pair@KVC3DVector@@@std@@@@QAEXABU?$pair@KVC3DVector@@@std@@@Z	carry	0	not reached
+land1011fm	00a358f0	?GetPositionMatrixFromRHSet@C3DMeshObject@@SI?AVCMatrix3x4@@ABVCRightHandedSet@@@Z	carry	0	not reached
+land1011fp	007d3560:+108	CTCTavernGameCoinBase::Held	carry	0	not reached
+land1011fp	007d3560:+10c	CTCTavernGameCoinBase::BoardPos	carry	0	not reached
+land1011fq	004d18e0	?push_back@?$CArray@U?$pair@MVCCameraTag@CSubtitledMessage@@@std@@@@QAEXABU?$pair@MVCCameraTag@CSubtitledMessage@@@std@@@Z	carry	0	not reached
+land1011fq	00bbbf40	??0CEnginePrimitiveManagerParticleGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z	done	0	self row 0x00BBBF40 renamed onto its PDB spelling ??0CEnginePrimitiveManagerParticleGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e9]
+land1011fq	0122ad60	(comment fix inside the landed _$E2 row) 0x00BA1AC0 is ??0CEnginePrimitiveManager2DStaticMeshes, not AnimatedMeshes	carry	0	not reached
+land1011fq	008aae20	CScriptThing::operator==(const CScriptThing&) const, body PImp->IsEqualTo(*other.PImp) (take the mangled leaf from the PDBs)	carry	0	not reached
+land1011fq	00687cf0	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z	carry	0	not reached
+land1011fq	00b314e0	(caller fix) in row 0x00B314E0 the two constant names are swapped: 0x0128F608 is the two-pi constant, 0x01238020 is 360.0	carry	0	not reached
+land1011fr	00a0aaa0	?GetCurrentAWindow@CRenderManagerCore@@QBEABVC2DBoxF@@XZ	blocked	0	port (0 grades): the 6 wrong binders are CRenderManager2D rows that model CRenderManagerCore / CRenderManager2D and their callees locally; each needs a move onto engine/CRenderManager2D.h (not reached in this pass beyond reading) [e14]
+land1011fr	00a0aa80	?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z	carry	0	not reached
+land1011fr	00916640	?SetUser@CTCExclusiveUse@@QAEXPAVCThing@@@Z	done	0	self row 0x00916640 renamed onto its PDB spelling ?SetUser@CTCExclusiveUse@@QAEXPAVCThing@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e16]
+land1011fr	00815820	?GetPHitLocationWithDefName@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVCCharString@@@Z	carry	0	not reached
+land1011fs	0083aea0	??F?$_Rb_tree_iterator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Const_traits@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@2@@std@@QAEAAU01@XZ	carry	0	not reached
+land1011fs	0083b170	??$find@W4EObjectAugmentationType@@@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Const_traits@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@2@@1@ABW4EObjectAugmentationType@@@Z	blocked	0	port (0 grades): the self row is one row of a std::_Rb_tree instantiation whose key/value are the shared per-instantiation placeholders CUnprovenKey/Value_0083b170; renaming it onto map<EObjectAugmentationType,CWeaponTrailGraphicSet> (stlport/fable_map.h + CWeaponDef) means respelling every row of that instantiation together [e19]
+land1011fu	00adb570	?size@?$list@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QBEIXZ	done	0	self row 0x00ADB570 renamed onto its PDB spelling ?size@?$list@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QBEIXZ (section 1), MATCH; landed callers already bind it (probe) [e20]
+land1011fu	00a96da0	??1CVertexGroupBlock@@QAE@XZ	done	1	self row 0x00A96DA0 renamed onto ??1CVertexGroupBlock@@QAE@XZ (section 1, RM); the last wrong binder 0x00ADBE50 ported onto CVertexGroupBlock.h as ??_GCVertexGroupBlock@@QAEPAXI@Z (FableWin.pdb name set), RM; 5 of 5 callers bind it [e21]
+land1011fv	013b86a0	?PMainGameComponent@CMainGameComponent@@1PAV1@A	carry	0	not reached
+land1011fv	013b871c	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A	carry	0	not reached
+land1011fv	00410890	??$GetDef@VCConfigOptionsDefaultsDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@@Z	blocked	0	port (0 grades): the wrong binder 0x004083E0 models CDefinitionManager locally (GetDef non-const QAE vs the header's const GetDef); needs that row moved onto engine/CDefinitionManager.h with the GETDEF_GLOBAL_BODY opt-in [e24]
+land1011fw	004d9c5d	std::_Vector_base<std::pair<long,CCharString>,std::allocator<std::pair<long,CCharString> > >::~_Vector_base (folded COMDAT)	carry	0	not reached
+land1011fw	0074f680	std::_Vector_base<std::pair<long,CCharString>,std::allocator<std::pair<long,CCharString> > >::_Vector_base(const allocator&) (folded COMDAT)	carry	0	not reached
+land1011fx	00706860	?GetHiddenMaterialNames@CTCHeroAttachableAppearanceModifiers@@QBE_NAAV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@@Z	done	0	self row 0x00706860 renamed onto its PDB spelling ?GetHiddenMaterialNames@CTCHeroAttachableAppearanceModifiers@@QBE_NAAV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e27]
+land1011fx	013b8a18	g_pCurrentPrimitivePrepareInfo (type: const CEnginePrimitivePrepareInfo*)	carry	0	not reached
+land1011fx	00a36100	?HasHelperPoint@C3DMeshObject@@QBE_NABVCCharString@@@Z	blocked	0	port (0 grades): HasHelperPoint needs C3DMeshObject's statistics member and C3DMeshStats::HasDummyObject (0x00A2EA20) declared in a shared header; neither header declares them (authoring) [e29]
+land1011fx	009d68b0	?AsyncUpdatePending@CBankFileAsync@@QAEXXZ	carry	0	not reached
+land1011fx	005178a0	?push_back@?$CArray@K@@QAEXABK@Z (probable; folded with the long instantiation) -- BINDING CONFLICT with 00485ff3	carry	0	not reached
+land1113fy	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	carry	0	not reached
+land1113fy	00464931	?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z	carry	0	not reached
+land1113fy	007d7c40	?FindTarget@CTCTavernGameSpotTheAddition@@AAEPAVCThingObject@@M@Z	done	0	self row 0x007D7C40 renamed onto its PDB spelling ?FindTarget@CTCTavernGameSpotTheAddition@@AAEPAVCThingObject@@M@Z (section 1), MATCH; landed callers already bind it (probe) [e34]
+land1113fy	005eabc0	?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z	carry	0	not reached
+land1113fy	00687cf0	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z	carry	0	not reached
+land1113fy	007e8590	?SetPOwner@CTCOwnedEntity@@QAEXPAVCThing@@@Z	carry	0	not reached
+land1113fy	007d9a80	??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z	carry	0	not reached
+land1113fy	00a3add0	?InternalCompress@CCompressorZlib@@QAEKPBXKAAV?$CArray@E@@@Z	carry	0	not reached
+land1113fy	009b9ba0	?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z	blocked	0	port (7 grades): SkipPastString on the shared CStringParser.h needs CalcInQuotes 0x009B9570 out of line (no such opt-in: the header force-inlines it) and a MoveStringPos spelling the header lacks; with both added in an overlay the best try is DIFFER(81v81): only the register of the final StringPos add differs (retail add ebx,edi = pos+=n kept in ebx; VC7.1 gave add edi,ebx) and lea operand order; 27 landed callers already bind ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z; row left unchanged (attempt kept in work/blocked/) [e40]
+land1113fy	0059b5d7	??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z	carry	0	not reached
+land1113fy	00412130	??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ	carry	0	not reached
+land1113fy	0042bed4	??0CDeletion@NUISystem@@QAE@XZ	carry	0	not reached
+land1113fy	0042cd84	??0CDeletion@NUISystem@@QAE@ABV01@@Z	carry	0	not reached
+land1113fy	007448f0	?GetSightRadius@CTCPerceiveThing@@QBEMXZ	done	0	self row 0x007448F0 renamed onto its PDB spelling ?GetSightRadius@CTCPerceiveThing@@QBEMXZ (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e45]
+land1113fy	005ed300	??4?$CIntelligentPointer@$$CBVCThing@@@@QAEAAV0@ABV0@@Z	carry	0	not reached
+land1113fy	0056c860	??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@PBVCThing@@@Z	carry	0	not reached
+land1113fy	009e37f0	?IsEquivalent@CPixelFormat@@QBE_NABV1@@Z	carry	0	not reached
+land1113fy	009f2dc0	?Unlock@CSurface@@QBEXXZ	carry	0	not reached
+land1113fy	007243c0	?UpdateVelocityForImpassability@CTCPhysicsStandard@@IAEXABVC3DVector@@AAV2@@Z	carry	0	not reached
+land1113fy	00912700	?GetRandomFlightPos@CAIStateGroup_FlyingThingBase@@IBE_NABVC3DVector@@MAAV2@_N@Z	carry	0	not reached
+land1113fy	00960fc0	??RCThingFilter_IsOpinionSourceWithFreshDeed@@QBE_NABVCThing@@@Z	carry	0	not reached
+land1113fy	00a52650	?ConvertTimeToFrames@C3DAnimation2@@QBEXMAAJAAM@Z	done	0	self row 0x00A52650 renamed onto its PDB spelling ?ConvertTimeToFrames@C3DAnimation2@@QBEXMAAJAAM@Z (section 1), MATCH; landed callers already bind it (probe) [e53]
+land1113fy	00b3b090	?GetVertexBufferMemPool@CEngineResourceManager@@QAE?AW4EVertexBufferPool@@XZ	carry	0	not reached
+land1113fy	00687d80	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@AAM@Z	carry	0	not reached
+land1113fy	008ef910	?UpdateCoinSounds@CTCTavernGameCoinBase@@QAEX_N@Z	done-already	0	self row and both landed callers already bind ?UpdateCoinSounds@CTCTavernGameCoinBase@@QAEX_N@Z (probe ok=2 bad=0) [e56]
+land1113fy	006a0150	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z	carry	0	not reached
+land1113fy	008302d0	?SetStateGroupEnabled@CThingAICreature@@QAEXABVCCharString@@_N@Z	carry	0	not reached
+land1113fy	0070c0e0	?IsMainAnimFinished@CAnimateThing@@QBE_NXZ	carry	0	not reached
+land1113fy	00668a80	?IsFinished@CAnimSet@@QBE_NXZ	done	0	self row 0x00668A80 renamed onto its PDB spelling ?IsFinished@CAnimSet@@QBE_NXZ (section 1), MATCH; landed callers already bind it (probe) [e60]
+land1113fy	005b33f4	??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z	carry	0	not reached
+land1113fy	006cb6a0	?GetNavigatorType@CTCCreatureNavigation@@QBEKXZ	carry	0	not reached
+land1113fy	006655a0	?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ	carry	0	not reached
+land1113fy	006df860	??1CCreatureAction_UnsheatheToShowToSheatheTrophy@@UAE@XZ	done	0	self row 0x006DF860 renamed onto its PDB spelling ??1CCreatureAction_UnsheatheToShowToSheatheTrophy@@UAE@XZ (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e64]
+land1113fy	0065f17b	?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ	carry	0	not reached
+land1113fy	0051e580	?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z	carry	0	not reached
+land1113fy	004c7f40	?InitFromThingInfo@CThing@@AAE_NABVCSerialiseInfo@1@@Z	carry	0	not reached
+land1113fy	00b66190	?RenderSky@CEngineSkyRenderer@@AAEXMABVC3DVector@@_N@Z	carry	0	not reached
+land1113fy	00b2fc50	?RefreshD3DTransforms@CEngineCamera@@QAEXXZ	carry	0	not reached
+land1113fy	009d8cf0	?ClearRenderTarget@CRenderManager2D@@QAEXABVCRGBColour@@K@Z	carry	0	not reached
+land1113fy	00b51f60	?ClipBoxToCamera@CEngineWeatherRenderer@@ABE?AW4EWeatherBoxVisible@1@ABVC3DVector@@M@Z	carry	0	not reached
+land1113fy	009ffb20	?GetVolumeTexture@CGraphicInfo@@QBE_NPAPAVCVolumeTexture@@K@Z	done	0	self row 0x009FFB20 renamed onto its PDB spelling ?GetVolumeTexture@CGraphicInfo@@QBE_NPAPAVCVolumeTexture@@K@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e72]
+land1113fy	00437900	?RemovePerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z	partial	0	self row 0x00437900 renamed onto ?RemovePerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z (section 1, RM, rechecked PASS); 4 landed callers bind it; 3 binders left unported (port, 0 grades): 0x00744730 (a GObj::NotifyB stand-in), 0x00744DB0 and 0x00745730 (local CPlayerGui models with a CThing* argument) -- each needs its row moved onto engine/CPlayerGui.h [e73]
+land1113fy	004378f0	?AddPerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z	partial	0	self row 0x004378F0 renamed onto ?AddPerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z (section 1, RM, rechecked PASS); 4 landed callers bind it; binder 0x00744730 (a GObj::NotifyA stand-in) left unported (port, 0 grades) [e74]
+land1113fy	006a7390	??RCThingFilter_IsInFOV@@QBE_NABVCThing@@@Z	carry	0	not reached
+land1113fy	007463e0	?reserve@?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@QAEXI@Z	carry	0	not reached
+land1113fy	00746560	??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_HasPhysicsMesh@@VCThingFilter_RadiusIntersectsInfiniteLine@@VCThingFilter_IsNot@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_HasPhysicsMesh@@VCThingFilter_RadiusIntersectsInfiniteLine@@VCThingFilter_IsNot@@@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	carry	0	not reached
+land1113fy	007445d0	?GetFOV@CTCPerceiveThing@@QBEMXZ	carry	0	not reached
+land1113fy	009531a0	??1CCreatureAction_DragonRearUpFull@@UAE@XZ	done	0	self row 0x009531A0 renamed onto its PDB spelling ??1CCreatureAction_DragonRearUpFull@@UAE@XZ (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e79]
+land1113fy	00751a70	?IsOverriddenByParent@CTCLook@@QBE_NXZ	done	0	self row 0x00751A70 renamed onto its PDB spelling ?IsOverriddenByParent@CTCLook@@QBE_NXZ (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e80]
+land1113fy	00842400	??0CCreatureAction_PlayConversationAnimation@@QAE@AAVCThingCreatureBase@@W4EConversationAttitude@@ABVCSoundPair@@JJ@Z	done	1	self row 0x00842400 renamed onto ??0CCreatureAction_PlayConversationAnimation@@QAE@AAVCThingCreatureBase@@W4EConversationAttitude@@ABVCSoundPair@@JJ@Z (section 1, RM); its callee 0x004CD9B0 respelled to the landed CConversationAttitude::GetAnimName (section 2); caller already bound [e81]
+land1113fy	0048da89	?GetStringWidth@CFontBank@@QBEMPBG@Z	done	0	self row 0x0048DA89 renamed onto its PDB spelling ?GetStringWidth@CFontBank@@QBEMPBG@Z (section 1), MATCH; landed callers already bind it (probe) [e82]
+land1113fy	0048daa2	?GetStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@_N@Z	done	0	self row 0x0048DAA2 renamed onto its PDB spelling ?GetStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@_N@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e83]
+land1113fy	0049417d	?push_back@?$vector@VCEmbeddedGraphic@CSubtitleRenderer@@V?$allocator@VCEmbeddedGraphic@CSubtitleRenderer@@@std@@@std@@QAEXABVCEmbeddedGraphic@CSubtitleRenderer@@@Z	done	0	self row 0x0049417D renamed onto its PDB spelling ?push_back@?$vector@VCEmbeddedGraphic@CSubtitleRenderer@@V?$allocator@VCEmbeddedGraphic@CSubtitleRenderer@@@std@@@std@@QAEXABVCEmbeddedGraphic@CSubtitleRenderer@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e84]
+land1113fy	00999850	?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z	carry	0	not reached
+land1113fy	00437260	??0CWStringParser@@QAE@PBG@Z	done	0	self row 0x00437260 renamed onto its PDB spelling ??0CWStringParser@@QAE@PBG@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e86]
+land1113fy	00440d70	?erase@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@PAV3@0@Z	carry	0	not reached
+land1113fy	00ba0fc0	?AddStaticMesh@CEnginePrimitiveManagerStaticMeshesBase@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z	carry	0	not reached
+land1113fy	00a2e4b0	??0C3DDummyObject@@QAE@XZ	done	0	self row 0x00A2E4B0 renamed onto its PDB spelling ??0C3DDummyObject@@QAE@XZ (section 1), MATCH; landed callers already bind it (probe) [e89]
+land1113fy	0143b934	?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A (+0x54: InterpolationSetList[0].WFInterpolate)	carry	0	not reached
+land1113fy	00682310	?ClearPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXXZ	carry	0	not reached
+land1113fy	004091c0	?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z	carry	0	not reached
+land1113fy	005ccc91	?GetTimeSpentInGame@CTCInventoryStats@@SI?AVCWideString@@KPBVCDataBank@NGameText@@@Z	carry	0	not reached
+land1113fy	00a0d980	?FormatDateTime@CXBConfig@@SIXABU_FILETIME@@PAG1H@Z	carry	0	not reached
+land1113fy	009cc410	?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z	carry	0	not reached
+land1113fy	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	carry	0	not reached
+land1113fy	00a4fd70	?InitialiseAsConstant@C3DAnimationSequenceData@@QAEXABVCMatrix3x4@@KMAAVCSimpleMemoryPool@@@Z	carry	0	not reached
+land1113fy	008fcfb0	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	carry	0	not reached
+land1113fy	007923c0	??$GetDef@VCMessageEventDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCMessageEventDef@@@@@Z	carry	0	not reached
+land1113fy	006e3b30	?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@ABVCCharString@@_NW4EDialogueLayer@NSpeechGainManager@@11@Z	carry	0	not reached
+land1113fy	008112d0	?RemoveEvent@CTCEntityEvents@@QAEXAAVCEventBase@NEntityEvents@@@Z	carry	0	not reached
+land1113fy	006691c0	?ClearAttackedByCreature@CThingCreatureBase@@QAEXXZ	carry	0	not reached
+land1113fy	007a0630	??0CLightningBeam@CTCWillLightning@@QAE@PAVCThing@@0@Z	carry	0	not reached
+land1113fy	007a4210	??0?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@QAE@PAVCLightningBeam@CTCWillLightning@@@Z	done	0	self row 0x007A4210 renamed onto its PDB spelling ??0?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@QAE@PAVCLightningBeam@CTCWillLightning@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e104]
+land1113fy	007a3ca0	??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind4@VCThingFilter_IsNot@@V1@VCThingFilter_IsTargetable@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_IsNot@@V1@VCThingFilter_IsTargetable@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	carry	0	not reached
+land1113fy	00950c30	?StartFlying@CAIStateGroup_JackDragon@@AAEXAAVCThingCreatureBase@@AAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAVC3DVector@@V?$CCountedPointer@VCCreatureActionBase@@@@@Z	carry	0	not reached
+land1113fy	009537b0	??0CCreatureAction_DragonBurninateInto@@QAE@AAVCThingCreatureBase@@AAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAVC3DVector@@MM22@Z	carry	0	not reached
+land1113fy	0074d220	??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z	blocked	0	port (0 grades): binders 0x00749F00 / 0x0074A100 model CDefinitionManager locally (non-const GetDef with struct defs); need a move onto engine/CDefinitionManager.h [e108]
+land1113fy	0097d8b0	?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z	carry	0	not reached
+land1113fy	00f36ee0	?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z	carry	0	not reached
+land1113fy	00f36f00	?EndTextureUse@CGPUScratchBufferTextureManager@@QAEXJ@Z	partial	1	1 of 9 wrong binders fixed: 0x00B89080 now binds ?EndTextureUse@CGPUScratchBufferTextureManager@@QAEXJ@Z (ported with e130, RM); the other 8 binders not reached [e111]
+land1113fy	009cd620	?AddEntry@CBankFile@@QAEXABVCCharString@@K0V?$CCountedPointer@VCBankStateBlock@@@@@Z	carry	0	not reached
+land1113fy	00b2e340	??0?$CCountedPointer@VCGraphicBankStateBlock@@@@QAE@PAVCGraphicBankStateBlock@@@Z	carry	0	not reached
+land1113fy	00b2b050	?IsNearlyIdentical@CEngineSurfaceCompositionManager@@AAE_NABVCEngineTextureMorph@@0M@Z	done	0	self row 0x00B2B050 renamed onto its PDB spelling ?IsNearlyIdentical@CEngineSurfaceCompositionManager@@AAE_NABVCEngineTextureMorph@@0M@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e114]
+land1113fy	00b2aef0	?GetDimensionsAndAdjustMipmapLevel@CEngineSurfaceCompositionManager@@AAEXAAVC2DExtentsI@@PBVCGraphicInfoFrame@@AAK@Z	done	0	self row 0x00B2AEF0 renamed onto its PDB spelling ?GetDimensionsAndAdjustMipmapLevel@CEngineSurfaceCompositionManager@@AAEXAAVC2DExtentsI@@PBVCGraphicInfoFrame@@AAK@Z (section 1), MATCH; landed callers already bind it (probe) [e115]
+land1113fy	00f38990	??0CSurfaceCompositor@@QAE@AAVCSurface@@@Z	done	0	self row 0x00F38990 renamed onto its PDB spelling ??0CSurfaceCompositor@@QAE@AAVCSurface@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e116]
+land1113fy	00f39a50	?CompositeQuad@CSurfaceCompositor@@QAEXABVCTexture@@QBVCVertexType@1@W4ECompositeBlendType@@@Z	blocked	0	port (0 grades): CompositeQuad on engine/CSurfaceCompositor.h also needs the private SetBlendMode 0x00F38A10, the CSystemManager -> CDisplayManager -> CRenderManagerCore chain with DrawAsIndexedTris and the quad index table 0x013AC928 named in shared headers (none declare them: authoring) [e117]
+land1113fy	00658e38	?GetNearestBuildingWithProperty@CTCVillage@@QAEPAVCThingBuilding@@ABVC3DVector@@W4ESimBuildingProperty@@@Z	carry	0	not reached
+land1113fy	0065f8ca	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingBuilding@@@@@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@@Z	carry	0	not reached
+land1113fy	007d4bd0	??$GetSubDef@VCTavernGameCoinGolfDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameCoinGolfDef@@@@@Z	carry	0	not reached
+land1113fy	007f39a0	?SetPParent@CTCLightningNode@@QAEXAAVCThing@@@Z	done	0	self row 0x007F39A0 renamed onto its PDB spelling ?SetPParent@CTCLightningNode@@QAEXAAVCThing@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e121]
+land1113fy	007f39f0	?SetPSourceOfFaction@CTCLightningNode@@QAEXPBVCThing@@@Z	done	0	self row 0x007F39F0 renamed onto its PDB spelling ?SetPSourceOfFaction@CTCLightningNode@@QAEXPBVCThing@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e122]
+land1113fy	007f3a40	?SetPSourceOfHit@CTCLightningNode@@QAEXPAVCThing@@@Z	done	0	self row 0x007F3A40 renamed onto its PDB spelling ?SetPSourceOfHit@CTCLightningNode@@QAEXPAVCThing@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e123]
+land1113fy	007f3bb0	??$GetDef@VCLightningDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCLightningDef@@@@@Z	done	0	self row 0x007F3BB0 renamed onto its PDB spelling ??$GetDef@VCLightningDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCLightningDef@@@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e124]
+land1113fy	007f4780	?Reset@?$CCountedPointer@VCLinearSpline@NBBBMaths@@@@QAEXPAVCLinearSpline@NBBBMaths@@@Z	done	0	self row 0x007F4780 renamed onto its PDB spelling ?Reset@?$CCountedPointer@VCLinearSpline@NBBBMaths@@@@QAEXPAVCLinearSpline@NBBBMaths@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e125]
+land1113fy	007f23d0	?OnInitialActivate@CTCLightningOrb@@UAEXXZ	blocked	0	port (0 grades): the lightning-orb rows model CTCLightningNode / CLightningDef / the thing classes locally; the move onto engine/CTCLightningNode.h needs more opt-ins than this pass reached [e126]
+land1113fy	007f24e0	?FrameUpdate@CTCLightningOrb@@UAEXXZ	blocked	0	port (0 grades): as e126 (same lightning-orb family, 453 bytes) [e127]
+land1113fy	0094bef0	?StayInShop@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	carry	0	not reached
+land1113fy	00798d90	?AddNewCustomer@CTCShopKeeper@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	carry	0	not reached
+land1113fy	00b89080	?FinishWithDynamicTextures@CEngineScreenEffectOutlineGlow@@AAEXXZ	done	0	self row 0x00B89080 renamed onto its PDB spelling ?FinishWithDynamicTextures@CEngineScreenEffectOutlineGlow@@AAEXXZ (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e130]
+land1113fy	00618420	?_M_insert_overflow@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@IAEXPAVCUIRegionInfo@CTCInventoryMap@@ABV34@ABU__false_type@2@I_N@Z	carry	0	not reached
+land1113fy	00860060	??0CCreatureAction_GetOutOfBed@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@@Z	carry	0	not reached
+land1113fy	008b8590	??0CCreatureAction_UnsheatheWeapons@@QAE@AAVCThingCreatureBase@@@Z	done	0	self row 0x008B8590 renamed onto ??0CCreatureAction_UnsheatheWeapons@@QAE@AAVCThingCreatureBase@@@Z (section 1, RM); 3 landed callers bind it; the 4th, 0x00904F60, carries no relocation to it in its object (NOREL) but declares the constructor with the same (CThingCreatureBase&) spelling, so no wrong binder exists [e133]
+land1113fy	0092c520	?IsInSleepTime@CAIStateGroup_MinionSleep@@QBE_NXZ	done	1	self row 0x0092C520 renamed onto ?IsInSleepTime@CAIStateGroup_MinionSleep@@QBE_NXZ (section 1, RM); no landed row calls it out of line (the landed Update 0x0092DA20 defines and expands the same body); its callee 0x006BB390 respelled to ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z (section 2) [e134]
+land1113fy	0091f990	??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	carry	0	not reached
+land1113fy	0094dbc0	?ForceRiseUp@CAIStateGroup_TrollBase@@IAEXXZ	blocked	0	port (0 grades): ForceRiseUp models CBaseIntelligentPointer / CAIBrain / CTCCreatureModeManager / CCreatureAction_RiseUp locally around the CAIStateGroup_TrollBase header; needs those moved onto their shared headers [e136]
+land1113fy	00733210	?ResetComboChainPos@CTCCombat@@QAEXXZ	carry	0	not reached
+land1113fy	006bb390	?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z	partial	1	1 of 9 wrong binders fixed: 0x0092C520 now binds ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z (ported with e134, RM); the other 8 binders not reached [e138]
+land1113fy	006622a0	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ	carry	0	not reached
+land1113fy	00dcda80	?MakeTeamMemberComment@CQ_OrchardFarmRaidScript@NScript@@QAE_NABVCCharString@@AAVCScriptThing@@W4ERaidComment@12@@Z	carry	0	not reached
+land1113fy	0072ac40	?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z	carry	0	not reached
+land1113fy	0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	carry	0	not reached
+land1113fy	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	carry	0	not reached
+land1113fy	00669d30	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	carry	0	not reached
+land1113fy	00916640	?SetUser@CTCExclusiveUse@@QAEXPAVCThing@@@Z	done	0	self row 0x00916640 renamed onto its PDB spelling ?SetUser@CTCExclusiveUse@@QAEXPAVCThing@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e145]
+land1113fy	00915810	??0CCreatureAction_PutGoodsDown@@QAE@AAVCThingCreatureBase@@ABVCCharString@@@Z	done	0	self row 0x00915810 renamed onto its PDB spelling ??0CCreatureAction_PutGoodsDown@@QAE@AAVCThingCreatureBase@@ABVCCharString@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e146]
+land1113fy	0097f690	?AIAction_MoveToPreCalcRoute@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCThing@@AA_NW4EMovementType@@ABVCAIFilterBase@1@_N@Z	carry	0	not reached
+land1113fy	00915890	?FetchGoods@CAIStateGroup_MoveGoodsBase@@IAE_NV?$CIntelligentPointer@VCThing@@@@MV?$vector@PBVCCharString@@V?$allocator@PBVCCharString@@@std@@@std@@ABVCAIFilterBase@CAIStateGroupBase@@PBVCThing@@@Z	carry	0	not reached
+land1113fy	005d99d0	?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z	carry	0	not reached
+land1113fy	00a5d5f0	?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z	carry	0	not reached
+land1113fy	01436e38	g_pDisplacementRenderer_01436e38	carry	0	not reached
+land1113fy	0046ce28	?Copy@CPlayerGuiDef@@UAEXPBVCDefClassBase@@@Z	done	0	self row 0x0046CE28 renamed onto ?Copy@CPlayerGuiDef@@UAEXPBVCDefClassBase@@@Z (section 1, MATCH); a vtable slot with no direct landed caller, nothing else binds a wrong spelling (probe: 0 callers) [e152]
+land1113fy	0046ce2d	??4CPlayerGuiDef@@QAEAAV0@ABV0@@Z	done	1	its only caller, the thunk 0x0046CE28, now binds ??4CPlayerGuiDef@@QAEAAV0@ABV0@@Z (ported in the same change as e152, MATCH) [e153]
+land1113fy	00485aef	?clear@?$_Rb_tree@VCWideString@@...(map<CWideString,bool> Signatures clear)	carry	0	not reached
+land1113fy	005e8f50	?erase@?$map@JKU?$less@J@std@@V?$allocator@U?$pair@$$CBJK@std@@@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBJK@std@@U?$_Nonconst_traits@U?$pair@$$CBJK@std@@@2@@2@@Z	done	0	self row 0x005E8F50 renamed onto its PDB spelling ?erase@?$map@JKU?$less@J@std@@V?$allocator@U?$pair@$$CBJK@std@@@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBJK@std@@U?$_Nonconst_traits@U?$pair@$$CBJK@std@@@2@@2@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e155]
+land1113fy	006b5d80	??1CBlendedEnvironmentTheme@NEnvironmentInternal@@QAE@XZ	done	1	self row already bound; the one wrong landed binder 0x006B6340 (T::VecDel stand-in) ported onto CBlendedEnvironmentTheme.h as its ??_G (RM); the atexit stub 0x01229390 carries no relocation to it (NOREL) but declares NEnvironmentInternal::CBlendedEnvironmentTheme::~CBlendedEnvironmentTheme, the same spelling [e156]
+land1113fy	00454886	??4?$vector@JV?$allocator@J@std@@@std@@QAEAAV01@ABV01@@Z	carry	0	not reached
+land1113fy	0045ef2d	??4?$vector@MV?$allocator@M@std@@@std@@QAEAAV01@ABV01@@Z	carry	0	not reached
+land1113fy	00a23c50	?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z	carry	0	not reached
+land1113fy	00b98b10	??0CEngineSubPrimitiveBoundingBox@@QAE@PAVCEngineInternalPrimitiveOcclusionBase@@@Z	carry	0	not reached
+land1113fy	00b2fac0	?GetOccludedFrames@CEnginePrimitiveOcclusionManager@@QAEJAAVCEnginePrimitiveOcclusionInfo@@@Z	carry	0	not reached
+land1113fy	00be9530	?KeepHistoryInRange@CEngineWaterSettings@@QBEXPAVC2DVector@@M@Z	carry	0	not reached
+land1113fy	0041b9c0	?TouchResource@CResource@@QAEXXZ	done	1	self row 0x0041B9C0 renamed onto ?TouchResource@CResource@@QAEXXZ (section 1, RM); retail has no call to it (every use expands it inline), so no caller follows; its callees 0x009FBFB0 / 0x009FBF90 respelled to ListRemove / ListInsert (section 2) [e163]
+land1113fy	009fbfb0	?ListRemove@CResource@@AAEXXZ	partial	1	1 of 2 wrong binders fixed: 0x0041B9C0 now binds ?ListRemove@CResource@@AAEXXZ (ported with e163, RM); 0x0041B550 (an NUISystem::CResource stand-in) not ported (0 grades) [e164]
+land1113fy	009fbf90	?ListInsert@CResource@@AAEXPAV1@0@Z	partial	1	1 of 2 wrong binders fixed: 0x0041B9C0 now binds ?ListInsert@CResource@@AAEXPAV1@0@Z (ported with e163, RM); 0x0041B550 (an NUISystem::CResource stand-in) not ported (0 grades) [e165]
+land1113fy	00989b50	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVCRGBFloatColour@@@Z	carry	0	not reached
+land1113fy	009c3130	??0CFileInfo@CFileInstaller@@QAE@ABVCWideString@@0J_N1@Z	done	0	self row 0x009C3130 renamed onto its PDB spelling ??0CFileInfo@CFileInstaller@@QAE@ABVCWideString@@0J_N1@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e167]
+land1113fy	009c6a70	??0?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@QAE@PBVCFileInfo@CFileInstaller@@@Z	done	0	self row 0x009C6A70 renamed onto its PDB spelling ??0?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@QAE@PBVCFileInfo@CFileInstaller@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e168]
+land1113fy	009c6640	?DeleteData@?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@SIXPAX@Z	done	1	both DIR32 users bind DeleteData<const CFileInfo>: 0x009C47A0 already did, 0x009C6A70 respelled by its own port (e168); the self row 0x009C6640 renamed too (section 1, RELOCATION_MATCH) [e169]
+land1113fy	009c46b0	?IsCompressedFilename@CFileInstaller@@IBE_NABVCWideString@@AAV2@@Z	blocked	0	port (0 grades): the row reaches CCharStringCore and the CFileInstaller map through renaming macros; the move onto fable_string.h / engine/CFileInstaller.h was not reached [e170]
+land1113fy	0069d900	?insert_unique@?$_Rb_tree@W4EMode@NCameraModes@@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@U?$_Select1st@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@@4@U?$less@W4EMode@NCameraModes@@@4@V?$allocator@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@@4@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@2@@Z	carry	0	not reached
+land1113fy	00637650	??$GetDef@VCCameraModeDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z	carry	0	not reached
+land1113fy	004ab990	??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z	carry	0	not reached
+land1113fy	0069ac90	?SetCameraManagerSetDef@CGameCameraManager@@QAEXABV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z	carry	0	not reached
+land1113fy	007aed50	?ResetStrikesSinceHitHero@CTCBoss@@QAEXXZ	carry	0	not reached
+land1113fy	0097d980	?AIAction_PumpCombatActions@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ	carry	0	not reached
+land1113fy	0097c900	??1CCreatureAction_ScorpionChargeInto@@UAE@XZ	done	0	self row 0x0097C900 renamed onto its PDB spelling ??1CCreatureAction_ScorpionChargeInto@@UAE@XZ (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e177]
+land1113fy	008c4e20	??0CCreatureAction_ScorpionChargeInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@M@Z	done	0	self row 0x008C4E20 renamed onto its PDB spelling ??0CCreatureAction_ScorpionChargeInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@M@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e178]
+land1113fy	0049d9d0	?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ	carry	0	not reached
+land1113fy	0057fc46	?GetTypeBalancedAttractiveness@CTattooDef@@QBEMABV?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@@Z	done	0	self row 0x0057FC46 renamed onto its PDB spelling ?GetTypeBalancedAttractiveness@CTattooDef@@QBEMABV?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@@Z (section 1), MATCH; landed callers already bind it (probe) [e180]
+land1113fy	01231728	pooled wide literal L"\n" (??_C@_13LBAGMAIH@?$AA?6?$AA?$AA@)	carry	0	not reached
+land1113fy	00b30610	?ClipBox@CEngineCamera@@QBE_NABVCMatrix3x4@@@Z	carry	0	not reached
+land1113fy	00988020	?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z	carry	0	not reached
+land1113fy	00988140	?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z	carry	0	not reached
+land1113fy	0098b930	?SetVSConstants@CShaderRenderManager@@AAEXJPBXK@Z	carry	0	not reached
+land1113fy	00989700	?UpdateCameraPos@CShaderRenderManager@@AAEXXZ	done-already	0	self row binds the claim; 24 landed callers bind it; 0x00BEACA0 declares the private UpdateCameraPos with the claimed spelling but its object has no relocation to it (NOREL), and 0x00BE6F70 / 0x00BF4570 model their render paths through pending candidate headers that do not reference 0x00989700 at all; no wrong spelling found [e186]
+land1113fy	00a0af40	?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z	carry	0	not reached
+land1113fy	004c79a0	?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ	carry	0	not reached
+land1113fy	006ac200	?CreateAndAddObjectToInventory@CThingPlayerCreature@@QAEPAVCThingObject@@JJ_NABVCCharString@@@Z	carry	0	not reached
+land1113fy	0055f3b0	?UpdateScoreForActivity@CTCHeroOnlineScoreboard@@QAEXW4EOnlineScoreboardActivity@1@M_N@Z	carry	0	not reached
+land1113fy	00437980	?AddAutoPickup@CPlayerGui@@QAEXJ@Z	done	0	self row 0x00437980 renamed onto its PDB spelling ?AddAutoPickup@CPlayerGui@@QAEXJ@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e191]
+land1113fy	005f7f4c	?LowerBound@?$CVectorMap@JW4EHeroAbility@@V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@@QAEPAU?$pair@JW4EHeroAbility@@@std@@ABJ@Z	carry	0	not reached
+land1113fy	005f8f89	?erase@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEPAW4EHeroAbility@@PAW43@0@Z	carry	0	not reached
+land1113fy	005f9bcd	?push_back@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXABW4EHeroAbility@@@Z	carry	0	not reached
+land1113fy	005f9df8	?resize@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXIABW4EHeroAbility@@@Z	carry	0	not reached
+land1113fy	0043336a	?erase@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAVCCharString@@PAV3@0@Z	carry	0	not reached
+land1113fy	009ad390	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z	done	0	self row 0x009AD390 renamed onto its PDB spelling ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e197]
+land1113fy	006e24d0	??0?$CParticleUpdateParameters@KK@NParticleEngine@@QAE@XZ	carry	0	not reached
+land1113fy	007f4020	??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@VCThingFilter_EnemyCreature@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@VCThingFilter_EnemyCreature@@@@AAV?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@@Z	carry	0	not reached
+land1113fy	007f42a0	??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@@@AAV?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@@Z	carry	0	not reached
+land1113fy	007f4500	??$GetAllThingsInRoughArea@VCThingObject@@V?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@VCThingFilter_IsElectrocutable@?A0xae168d2d@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_In3DRange@@V?$unary_negate@VCThingFilter_HasTC@@@std@@VCThingFilter_IsElectrocutable@?A0xae168d2d@@@@AAV?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@@Z	carry	0	not reached
+land1113fy	007f3e90	?erase@?$vector@V?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@V?$allocator@V?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@@std@@@std@@QAEPAV?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@PAV3@@Z	done	0	self row 0x007F3E90 renamed onto its PDB spelling ?erase@?$vector@V?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@V?$allocator@V?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@@std@@@std@@QAEPAV?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@PAV3@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e202]
+land1113fy	007f3f60	??0?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@QAE@PAVCLightningBranch@CTCLightningNode@@@Z	done	0	self row 0x007F3F60 renamed onto its PDB spelling ??0?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@QAE@PAVCLightningBranch@CTCLightningNode@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e203]
+land1113fy	007f3ad0	??0CLightningBranch@CTCLightningNode@@QAE@AAVCThing@@@Z	done	0	self row 0x007F3AD0 renamed onto its PDB spelling ??0CLightningBranch@CTCLightningNode@@QAE@AAVCThing@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e204]
+land1113fy	009ff8d0	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	carry	0	not reached
+land1113fy	009fcba0	?Uninitialise@CGraphicFrameData@@QAEXXZ	carry	0	not reached
+land1113fy	00a05840	?RestoreCaptureBlock@CRenderStateManager@@QAEXXZ	carry	0	not reached
+land1113fy	00987fe0	?EnableVertexShaders@CShaderRenderManager@@QAEXXZ	carry	0	not reached
+land1113fy	00988110	?EnablePixelShaders@CShaderRenderManager@@QAEXXZ	carry	0	not reached
+land1113fy	009880e0	?DisableVertexShaders@CShaderRenderManager@@QAEXXZ	carry	0	not reached
+land1113fy	00988190	?DisablePixelShaders@CShaderRenderManager@@QAEXXZ	carry	0	not reached
+land1113fy	0098b5e0	?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z	carry	0	not reached
+land1113fy	00f35b30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	carry	0	not reached
+land1113fy	008ac970	??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ	carry	0	not reached
+land1113fy	008ac9d0	?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@0@Z	carry	0	not reached
+land1113fy	009fe620	?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z	carry	0	not reached
+land1113fy	00b63530	?RenderScreenSpaceSprite@CEngineSkyRenderer@@AAEXPBVCTexture@@MMMMVCRGBColour@@@Z	carry	0	not reached
+land1113fy	004ae810	??$checked_delete@VCScriptConversationManager@@@boost@@YIXPAVCScriptConversationManager@@@Z	carry	0	not reached
+land1113fy	013bab10	?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A	carry	0	not reached
+land1113fy	00595a03	?CanStartAttractMode@CFrontEndManager@NUISystem@@QAE_NXZ	carry	0	not reached
+land1113fy	006286f0	?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z	carry	0	not reached
+land1113fy	00410ac0	??$Transfer@VCWideString@@@CPersistContext@@QAEXPBDAAVCWideString@@ABV1@@Z	carry	0	not reached
+land1113fy	004ab710	??$Transfer@N@CPersistContext@@QAEXPBDAANABN@Z	carry	0	not reached
+land1113fy	0049f180	?ActivateWorld@CWorld@@QAEX_N@Z	carry	0	not reached
+land1113fy	004ab640	??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z	carry	0	not reached
+land1113fy	00516180	??$ReadVar@H@CAFile@@QAEXAAHPAVCASuspendableProcess@@@Z	carry	0	not reached
+land1113fy	00a80a20	?clear@?$_List_base@V?$CCountedPointer@VCNavRegionConnection@@@@V?$allocator@V?$CCountedPointer@VCNavRegionConnection@@@@@std@@@std@@QAEXXZ	carry	0	not reached
+land1113fy	013d2d39	?BlockedNode@CNavQuadTree@@2VCNavBlockedQuadTreeNode@@A + 0xD (member NavLayer; not a symbol of its own)	carry	0	not reached
+land1113fy	00a772d0	??0CNavNavigableLeafNode@@QAE@ABVC2DVector@@EEAAVCAFile@@ABV?$list@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@_N@Z	carry	0	not reached
+land1113fy	00a78800	?SetAsBlocked@CNavSwitchableLeafNode@@QAEX_K_N@Z	carry	0	not reached
+land1113fy	013d2d30	?BlockedNode@CNavQuadTree@@2VCNavBlockedQuadTreeNode@@A + 4 (member Position.X; not a symbol of its own)	carry	0	not reached
+land1113fy	013d2d34	?BlockedNode@CNavQuadTree@@2VCNavBlockedQuadTreeNode@@A + 8 (member Position.Y; not a symbol of its own)	carry	0	not reached
+land1113fy	013d2d38	?BlockedNode@CNavQuadTree@@2VCNavBlockedQuadTreeNode@@A + 0xC (member QuadTreeLevel; not a symbol of its own)	carry	0	not reached
+land1113fy	00a5b210	?OpenFromFile@CCachedFile@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	done	0	self row 0x00A5B210 renamed onto its PDB spelling ?OpenFromFile@CCachedFile@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e234]
+land1113fy	0051cbb0	?ReadFromFile@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	carry	0	not reached
+land1113fy	0063f3a0	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z	blocked	0	port (0 grades): 9 wrong binders, each a row with a local CDefinitionManager model (GetDef family); not reached [e236]
+land1113fy	009ad3b0	?GetNoInstantiatedDefsOfType@CDefinitionManager@@QBEJABVCCharString@@@Z	done	0	self row 0x009AD3B0 renamed onto ?GetNoInstantiatedDefsOfType@CDefinitionManager@@QBEJABVCCharString@@@Z (section 1, RM); 11 landed callers bind it; the 12th, 0x00B687D0 BuildThemes, has no relocation to it and no declaration of it (its model does not reach the call), so no wrong spelling exists [e237]
+land1113fy	0055e7c0	?ActivityEnumToCharString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@ABW4EOnlineScoreboardActivity@1@@Z	done	0	self row 0x0055E7C0 renamed onto its PDB spelling ?ActivityEnumToCharString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@ABW4EOnlineScoreboardActivity@1@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e238]
+land1113fy	0055e6b0	?GetScoreAsString@CActivity@CTCHeroOnlineScoreboard@@QAE?AVCWideString@@M@Z	carry	0	not reached
+land1113fy	00566fe0	?find@?$_Rb_tree@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@U?$pair@$$CBW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@@std@@U?$_Select1st@...@4@U?$less@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@4@V?$allocator@...@4@@std@@QAE?AU?$_Rb_tree_iterator@...@2@ABW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@Z (full text: tmp/syms.txt)	carry	0	not reached
+land1113fy	0056a680	??A?$map@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@U?$less@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@4@V?$allocator@U?$pair@$$CBW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@@std@@@4@@std@@QAEAAV?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@1@ABW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@Z	carry	0	not reached
+land1113fy	00564b20	??0?$pair@MVCWideString@@@std@@QAE@ABU01@@Z	done	0	self row 0x00564B20 renamed onto its PDB spelling ??0?$pair@MVCWideString@@@std@@QAE@ABU01@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e242]
+land1113fy	00429160	?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ	carry	0	not reached
+land1113fy	00a23c60	?AreTexturesLoaded@C3DMeshInfo@@QBE_NXZ	carry	0	not reached
+land1113fy	00cb5ac0	?CheckSectionIsNotAlreadyRegistered@CScriptInfoManager@@IAEXVCCharString@@@Z	done	0	self row 0x00CB5AC0 renamed onto its PDB spelling ?CheckSectionIsNotAlreadyRegistered@CScriptInfoManager@@IAEXVCCharString@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e245]
+land1113fy	007e37c0	??$GetDefaultVal@VCDefString@@@CPersistContext@@KI?AVCDefString@@XZ	done	0	self row 0x007E37C0 renamed onto its PDB spelling ??$GetDefaultVal@VCDefString@@@CPersistContext@@KI?AVCDefString@@XZ (section 1), MATCH; landed callers already bind it (probe) [e246]
+land1113fy	00f333b0	??$TransferVector@VCDefString@@@CPersistContext@@QAEXPBDAAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z	done	0	self row 0x00F333B0 renamed onto its PDB spelling ??$TransferVector@VCDefString@@@CPersistContext@@QAEXPBDAAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e247]
+land1113fy	004107e0	??$Transfer@M@CPersistContext@@QAEXPBDAAM@Z	done	0	self row 0x004107E0 renamed onto its PDB spelling ??$Transfer@M@CPersistContext@@QAEXPBDAAM@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e248]
+land1113fy	007e3aa0	??$Transfer@VCDefString@@@CPersistContext@@QAEXPBDAAVCDefString@@@Z	done	0	self row 0x007E3AA0 renamed onto its PDB spelling ??$Transfer@VCDefString@@@CPersistContext@@QAEXPBDAAVCDefString@@@Z (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e249]
+land1113fy	0040e160	??$GetDefaultVal@J@CPersistContext@@KIJXZ	done	0	self row 0x0040E160 renamed onto its PDB spelling ??$GetDefaultVal@J@CPersistContext@@KIJXZ (section 1), MATCH; landed callers already bind it (probe) [e250]
+land1113fy	0040e250	??$GetDefaultVal@M@CPersistContext@@KIMXZ	done	0	self row 0x0040E250 renamed onto its PDB spelling ??$GetDefaultVal@M@CPersistContext@@KIMXZ (section 1), RELOCATION_MATCH; landed callers already bind it (probe) [e251]
+land1113fy	0046078c	??4?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@QAEAAV01@ABV01@@Z	carry	0	not reached
+land1113fy	00d34d40	??4?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@QAEAAV01@ABV01@@Z	carry	0	not reached
+land1113fy	00e54aa0	??4?$vector@VCConversation@@V?$allocator@VCConversation@@@std@@@std@@QAEAAV01@ABV01@@Z	carry	0	not reached
+land1113fy	00f25980	??4?$vector@VCArenaRoundDef@@V?$allocator@VCArenaRoundDef@@@std@@@std@@QAEAAV01@ABV01@@Z	carry	0	not reached
+land1113fy	005d9930	?IsTrophy@CTCInventoryItem@@SI_NJ@Z	carry	0	not reached
+land1113fy	0057aa1b	?GetNumRegionsExplored@CTCHeroStats@@QBEJXZ	done	0	self row 0x0057AA1B renamed onto its PDB spelling ?GetNumRegionsExplored@CTCHeroStats@@QBEJXZ (section 1), MATCH; landed callers already bind it (probe) [e257]
+land1113fy	0061a260	?IsQuestCardAvailable@CTCInventoryQuests@@QBE_NABVCTCQuestCard@@@Z	blocked	0	port (0 grades): the self row is a static __stdcall stand-in; the claim is a const thiscall member of CTCInventoryQuests that ignores this, so the landed callers (TakeQuest 0x006222AA and the quest-list rows that declare IsQuestCardRegionFree) must be respelled in the same pass [e258]
+land1113fy	00616580	??$find@J@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE?AU?$_Rb_tree_iterator@JU?$_Const_traits@J@std@@@1@ABJ@Z	carry	0	not reached
+land1113fy	005d96f0	?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z	carry	0	not reached
+land1113fy	0059b79a	?GetMenuBranchFromDefIndex@CTCInventoryTrade@@AAEPAVCComponent@NUISystem@@JPAV23@AAW4EItem_Menu_Type@1@@Z	carry	0	not reached
+land1113fy	0059c0c6	?GetMenuBranchFromDefIndexPC@CTCInventoryTrade@@AAEPAVCComponent@NUISystem@@JPAV23@AAW4EItem_Menu_Type@1@@Z	carry	0	not reached
+land1113fy	0042925c	?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ	done	1	self row 0x0042925C renamed onto ReleaseData<CText> (section 1, RELOCATION_MATCH); 20 of 21 callers already bound it; the 21st, ShareData<CText> 0x00429460, ported onto engine/CCountedPointer.h and renamed (section 1, outside the queue), now binds it [e263]
+land1113fy	004115a0	??8?$CBasicString@D@@QBE_NPBD@Z	carry	0	not reached
+land1113fy	00742460	?Alloc@CModeBasic@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z	done	0	self row 0x00742460 renamed onto ?Alloc@CModeBasic@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z (section 1, RM); its only reference is the DIR32 data store 0x0073CA54 in the landed RegisterModes 0x0073B130, whose declaration MODE_REGISTRATION_INTERFACE(CModeBasic) already spells it [e265]
+land1113fy	013bad44	CTCCreatureModeManager::RegisteredModes (static CVectorMap<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo,CKeyPairCompareLess<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo> >); element value member CTCCreatureModeManager::CRegisteredModeInfo::AllocFunc (type CModeBase* (__fastcall*)(CThing&))	carry	0	not reached
+land1113fy	009bee00	?GetPixelShaderVersion@CDisplayManager@@QBEKXZ	carry	0	not reached
+land1113fy	00bebc30	??0CEnginePrimitiveManagerMeshBase@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z	carry	0	not reached
+land1113fy	00412130	CCombatWheel_ResetRings / ResetRings	carry	0	not reached
+land1113fy	00451354	CDefinitionManager::GetDef_00451354	carry	0	not reached
+land1113fy	004513b9	CDefinitionManager::GetDef_004513b9	carry	0	not reached
+land1113fy	004336bc	AddDefinitionType/SDefinitionType/Create*Def (callee spellings in the row)	carry	0	not reached
+land1113fy	004fb470	?GetRegionCount@CWorldMap@@QBEJXZ	carry	0	not reached
+land1113fy	00625930	?IsActive@CTCQuickAccessMenu@@QBE_NXZ	carry	0	not reached
+land1113fy	00a03b30	??1CInputEvent@@QAE@XZ	carry	0	not reached
+land1113fy	00aa7f40	?FindFirstSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@PBD@Z	carry	0	not reached
+land1113fy	00aa7ff0	?FindNextSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@ABV?$CCountedPointer@$$CBVCChunkedFileChunk@@@@@Z	carry	0	not reached
+land1113fy	00ac4f20	?GetCount@CMirroredTextureHighlightsChunk@@QBEKXZ	done	0	self row 0x00AC4F20 renamed onto its PDB spelling ?GetCount@CMirroredTextureHighlightsChunk@@QBEKXZ (section 1), MATCH; landed callers already bind it (probe) [e278]
+land1113fy	00b4d370	?UpdateShadowSpace@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z	carry	0	not reached
+land1113fy	00a5ec00	CBaseIntelligentPointer::CBaseIntelligentPointer()	carry	0	not reached
+land1113fy	009bf160	?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z	carry	0	not reached
+land1113fy	00ba77b0	?RenderMeshPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@QAEXAAVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z (callee declaration inside landed CEnginePrimitiveManager2DStaticMeshes::RenderSubPrimitive 0x00BA77B0)	blocked	0	port (0 grades): the binder is the callee declaration inside 0x00BA77B0, which models CEnginePrimitiveManagerStaticMeshesBase / the sub-primitive / cloth-simulation classes locally; respelling RenderMeshPrimitive(CEngineSubPrimitiveStaticMesh&, ERenderPassType) needs the row moved onto engine/CEnginePrimitiveManagerStaticMeshesBase.h (no header for CEnginePrimitiveManager2DStaticMeshes) [e282]
+land1113fy	00bf3030	?AddNewKey@CEngineTreeFilerBase@@AAEKPAK@Z (private: unsigned long AddNewKey(unsigned long* key))	carry	0	not reached
+land1113fy	00485aef	?clear@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCWideString@@_N@std@@@3@U?$less@VCWideString@@@3@V?$allocator@U?$pair@$$CBVCWideString@@_N@std@@@3@@std@@QAEXXZ	carry	0	not reached
+land1113fy	007448f0	?GetSightRadius@CTCPerceiveThing@@... (the landed 0x00864620 binds ?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ to this address) -- BINDING CONFLICT	carry	0	not reached
+land1113fy	00a2e920	GetDummyObjectPositionAnimated out parameter is C3DDummyObject& (both PDBs: AAV2@), not C3DVector&	carry	0	not reached
+land1113fy	0061a260	?IsQuestCardAvailable@CTCInventoryQuests@@... (PDB name)	blocked	0	port (0 grades): duplicate of e258 (same address and claim, the game-agent report); see e258 [e287]
+land1113fy	00616580	std::_Rb_tree<long,...>::find -- BINDING CONFLICT with 00b2eb20	carry	0	not reached
+land1113fz	01436e38	one global, three bound names: g_pEngineSettings_01436e38 / g_pDisplacementRenderer_01436e38 / g_pShadowRenderer	carry	0	not reached
+land1113fz	0139b7a0	g_particleMeshTailDrawEnabled .. g_particleMeshRenderEnabled (0x0139B7A0..B0): descriptive, address suffixes dropped in landing fz	carry	0	not reached

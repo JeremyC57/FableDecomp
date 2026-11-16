@@ -20,7 +20,13 @@ class CCreatureAction_UnsheatheToShowToSheatheTrophy : public CCreatureAction_Un
 public:
     CCreatureAction_UnsheatheToShowToSheatheTrophy(CThingCreatureBase& creature, CThing& trophy, const CCharString& animation);   // 0x006DF800
     CCreatureAction_UnsheatheToShowToSheatheTrophy(const CCreatureAction_UnsheatheToShowToSheatheTrophy&);                        // 0x006DFC50
+#ifndef FABLE_RETAIL_CCREATUREACTION_UNSHEATHETOSHOWTOSHEATHETROPHY_IMPLICIT_DTOR
     virtual ~CCreatureAction_UnsheatheToShowToSheatheTrophy();                                                                    // 0x006DF860
+#else
+    // Retail opt-in (NF39, row 0x006DF860): the destructor is the implicit one (virtual through the base). Its retail COMDAT stores no
+    // vptr (push esi ; lea ecx,[esi+0BCh] ; call 0x00A01C10 ; lea ecx,[esi+0B8h] ; call 0x0099EAE0 ; jmp 0x005CC091), which only the
+    // compiler-generated destructor gives: a user-declared one stores the vptr first. Name unchanged (??1...@@UAE@XZ).
+#endif
     virtual CCreatureActionBase* Clone() const;
     virtual void FinishAction();
     CCharString                 ShowAnimName;                                // +0xb8

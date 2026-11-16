@@ -1,9 +1,0 @@
-// __fastcall this=ecx, flags=stack. base /O2 /Oy (no pragma). family len30 x22 (template 00412b00)
-// Leaf: ?VecDel@T@@QAEPAXI@Z
-struct T { void Dtor_006b5d80(); void* VecDel(unsigned flags); };
-void __cdecl operator delete(void* p);
-void* T::VecDel(unsigned flags) {
-    this->Dtor_006b5d80();
-    if (flags & 1) ::operator delete(this);
-    return this;
-}

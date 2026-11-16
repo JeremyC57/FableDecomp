@@ -1,24 +1,18 @@
-// CWStringParser::CWStringParser(wchar_t*) -- base CBase_0099a2d0(), this vtable, then Set_00a0c8e0(argument)
-// Leaf: ??0CWStringParser@
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00437260, oracle length 32 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; call CBaseClass::CBaseClass ; mov eax,[esp+8] ; push eax ; mov ecx,esi ; mov dword ptr [esi],offset CWStringParser::`vftable' ; call Set_00a0c8e0 ; mov eax,esi ; pop esi ; ret 4
-// One-argument constructor: default-constructs the base @ 0x0099A2D0, installs this class's
-// vtable (0x01231718, named through rtti-vtables.tsv) and forwards the argument to the member
-// function @ 0x00A0C8E0 from the constructor body. One of 26 bodies of this shape.
+// CWStringParser::CWStringParser(const unsigned short*) -- base CBaseClass(), this vtable, then Init(text)
+// Leaf: ??0CWStringParser@@QAE@PBG@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00437260.
+// One-argument constructor: default-constructs the base @ 0x0099A2D0, installs this class's vtable (0x01231718, rtti-vtables.tsv)
+// and forwards the argument to Init @ 0x00A0C8E0 from the constructor body.
+// NF39 (2026-11-16): moved off its local CWStringParser stand-in (a `wchar_t*` parameter and Set_00a0c8e0) onto the shared
+//   engine/CWStringParser.h (opt-ins FABLE_RETAIL_CWSTRINGPARSER_READUNTIL, which names 0x00437260, and _INIT): Ego_r.pdb + FableWin.pdb
+//   ??0CWStringParser@@QAE@PB_W@Z (const pointer; PBG on the lane, no /Zc:wchar_t) and ?Init@CWStringParser@@QAEXPB_W@Z 0x00A0C8E0.
 #include <stddef.h>      // wchar_t under VC7.1 (not a keyword without /Zc:wchar_t)
+#define FABLE_RETAIL_CWSTRINGPARSER_READUNTIL
+#define FABLE_RETAIL_CWSTRINGPARSER_INIT
+#include "engine/CWStringParser.h"
 
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-
-struct CWStringParser : CBaseClass {
-    CWStringParser(wchar_t* argument);
-    void Set_00a0c8e0(wchar_t* argument);        // 0x00A0C8E0
-};
-
-CWStringParser::CWStringParser(wchar_t* argument)
+CWStringParser::CWStringParser(const unsigned short* text)
     : CBaseClass()
 {
-    Set_00a0c8e0(argument);
+    Init(text);
 }

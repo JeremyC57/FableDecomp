@@ -1,44 +1,22 @@
-// std::vector::erase(iterator position) [vector<CCountedPointer<T> >] -- erase one counted pointer: shift the tail down one slot, release and clear the vacated last slot, return the position
-// Leaf: erase
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007F3E90, length 97 bytes (+15 int3 padding).
-// NOT CScriptBase::RemovePredicate (propagated label): an STLport vector<CCountedPointer<T> >::erase(iterator) on
-// 8-byte elements (callers 0x007F31AA, 0x007F3213). Callees: the STLport `__copy` for random-access ranges @ 0x007F3CE0
-// (`__fastcall` first/last in ecx/edx; result, `const random_access_iterator_tag&`, `(int*)0` on the stack;
-// manifest calls it _Move), operator delete @ 0x00BFE9BC. The counted pointer's count block is {count, __fastcall
-// destroy(object), object}. Element type named after the manifest's instantiation label (unverified).
-// Shape: STLport `if (pos + 1 != end()) __copy_ptrs(pos + 1, _M_finish, pos, ...); --_M_finish; _Destroy(_M_finish);`
-// with the counted pointer's inline destructor (null test, `dec [count]`, re-read, destroy + delete, then both words
-// zeroed); the empty iterator tag sits in the dead `position` argument slot in retail.
-class CGuiVarTransferBase;
-
-struct random_access_iterator_tag {
-    random_access_iterator_tag() {}
-};
-
+// std::vector<CCountedPointer<CTCLightningNode::CLightningBranch> >::erase(iterator position) -- erase one branch pointer: shift the tail down
+// one slot (the out-of-line STLport __copy 0x007F3CE0), release and clear the vacated last slot, return the position
+// Leaf: ?erase@?$vector@V?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@V?$allocator@V?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@@std@@@std@@QAEPAV?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@PAV3@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x007F3E90 (callers 0x007F31AA, 0x007F3213 in CTCLightningNode::FrameUpdate). Callees: STLport __copy for
+//   random-access ranges 0x007F3CE0, operator delete 0x00BFE9BC.
+// NF39 (2026-11-16): moved off its local vector / CCountedPointer<CGuiVarTransferBase> stand-in onto the shared stlport/fable_containers.h
+//   vector erase(position) and engine/CCountedPointer.h: FableWin.pdb vector<CCountedPointer<CTCLightningNode::CLightningBranch> >::erase
+//   (Dinkumware spelling there; the STLport pointer-iterator form here: descriptive-by-library); CTCLightningNode::LightningBranches +0x2C is
+//   vector<CCountedPointer<CLightningBranch> > (engine/CTCLightningNode.h, Ego_r.pdb); FrameUpdate erases dead / out-of-range branches
+//   with it and the landed 0x007F2DC0 binds this symbol.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CCountedPointer.h"
+#include "engine/CThing.h"
+#include "engine/CTCLightningNode.h"
 
-
-typedef CCountedPointer<CGuiVarTransferBase> CElement;
-
-CElement* __fastcall __copy(CElement* first, CElement* last, CElement* result,
-                            const random_access_iterator_tag& tag, int* distance);   // 0x007F3CE0
-
-template <class T> struct vector {
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* end() { return _M_finish; }
-    T* erase(T* position);
-};
-
-template <class T> inline void _Destroy(T* p) { p->~T(); }
-
-template <> CElement* vector<CElement>::erase(CElement* position)
-{
-    if (position + 1 != end())
-        __copy(position + 1, _M_finish, position, random_access_iterator_tag(), (int*)0);
-    --_M_finish;
-    _Destroy(_M_finish);
-    return position;
-}
+template std::vector<CCountedPointer<CTCLightningNode::CLightningBranch> >::iterator
+    std::vector<CCountedPointer<CTCLightningNode::CLightningBranch> >::erase(std::vector<CCountedPointer<CTCLightningNode::CLightningBranch> >::iterator);

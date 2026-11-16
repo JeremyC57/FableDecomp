@@ -1,40 +1,23 @@
-// CPersistContext::Transfer(const char* name, long& value) -- transfer a long with a default of -1
-// Leaf: Transfer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007E3AA0, length 32 bytes.
-// Callees: CPersistContext::Transfer<long>(const char*, long&, const long&) @ 0x007E39D0 (CheckCRC, then the mode switch
-// with dword copies / WriteLong; its label "Transfer<signed char>" is propagated).
-// Shape: a one-dword frame slot (`push ecx`) holds the literal default -1, stored only after the three pushes; `this`
-// stays in ecx; `pop ecx ; ret 8`.
-// Layout: CPersistContext from the PDB (Ego_r.pdb, 0x2c bytes); no engine header exists, so a local model is used.
-class CDefinitionManager;
-class CSymbolMap;
-class CStringParser;
-class CCharString;
-class CMemoryDataInputStream;
-class CDataOutputStream;
+// CPersistContext::Transfer<CDefString>(const char*, CDefString&) -- the two-argument member template: Transfer(name, value,
+// GetDefaultVal<CDefString>()) with the default def string (TablePos -1) built in a one-dword frame slot
+// Leaf: ??$Transfer@VCDefString@@@CPersistContext@@QAEXPBDAAVCDefString@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x007E3AA0.
+// Callees: CPersistContext::Transfer<CDefString>(const char*, CDefString&, const CDefString&) @ 0x007E39D0.
+// NF39 (2026-11-16): moved off its local CPersistContext stand-in (Transfer(const char*, long&)) onto the shared engine/CPersistContext.h:
+//   Ego_r.pdb / FableWin.pdb name sets ??$Transfer@VCDefString@@@CPersistContext@@QAEXPBDAAVCDefString@@@Z; its landed caller (probe:
+//   0x00F2D6E0, ten CDefString members) already binds it. GetDefaultVal's body is the one the landed GetDefaultVal rows define.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CPERSISTCONTEXT
+#define FABLE_RETAIL_CPERSISTCONTEXT_NAMED_DEFAULTS
+#include "engine/CDefString.h"
+#include "engine/CPersistContext.h"
 
-// CPersistContext (0x2c bytes, PDB layout Ego_r.pdb; no engine header, HAND_OWNED in engine/INDEX.tsv)
-class CPersistContext { public:
-    CDefinitionManager*     PDefinitionManager;           // +0x00
-    CSymbolMap*             PSymbolMap;                   // +0x04
-    CStringParser*          PParser;                      // +0x08
-    void (__cdecl*          ErrorCallback)(CCharString*); // +0x0c
-    CCharString*            PStringToClean;               // +0x10
-    bool                    UseDefaults;                  // +0x14
-    bool                    UseCRCCheck;                  // +0x15
-    bool                    SingleTransfer;               // +0x16
-    bool                    Finished;                     // +0x17
-    long                    Mode;                         // +0x18 EMode: 0 text load, 1 text save, 2 binary load, 3 binary save
-    bool                    Binary;                       // +0x1c
-    CCharString*            PStringToSaveTo;              // +0x20
-    CMemoryDataInputStream* PLoadStream;                  // +0x24
-    CDataOutputStream*      PSaveStream;                  // +0x28
-
-    void Transfer_007e39d0(const char* name, long& value, const long& defaultValue);   // 0x007E39D0
-    void Transfer(const char* name, long& value);
-};
-
-void CPersistContext::Transfer(const char* name, long& value)
+template <class T> T FABLE_FASTCALL CPersistContext::GetDefaultVal()
 {
-    Transfer_007e39d0(name, value, -1L);
+    T value = T();
+    return value;
 }
+
+template void CPersistContext::Transfer<CDefString>(const char* name, CDefString& value);

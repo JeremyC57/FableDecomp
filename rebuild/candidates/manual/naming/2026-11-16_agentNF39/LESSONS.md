@@ -1,0 +1,12 @@
+# NF39 lessons (one line each)
+- A compiler-generated destructor's own COMDAT stores no vptr; a user-declared empty `~X() {}` stores it first (DIFFER 28v22): emit the implicit one with `Use_`/`Kill_` helpers that call `object->X::~X()` (qualified, so no virtual dispatch).
+- When a header declares a destructor retail did not have (no vptr store in the COMDAT), add an `_IMPLICIT_DTOR` opt-in that drops the declaration instead of writing an empty body.
+- An unreferenced non-virtual `??_G` (deleting destructor) is landable: `void Kill_<addr>(T* p) { delete p; }` emits the Q-access COMDAT; check the FableWin.pdb name set for `??_GT@@QAEPAXI@Z` as the second source.
+- A header body forced inline (FABLE_FORCEINLINE) still has an out-of-line COMDAT in retail sometimes: taking its address (`void (T::*Use_<addr>)() = &T::F;`) emits it and it matches.
+- STL instantiations (list::size, map::erase(iterator), vector::push_back, pair copy ctor) land with one explicit instantiation on the shared stlport headers plus the opt-in that matches retail's spelling (e.g. FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE, _TREE_ERASE_BODY).
+- A landed caller TU that defines the same body (MinionSleep::Update defines IsInSleepTime) is the cheapest source of the right preamble and spelling for the out-of-line copy.
+- Old stand-in slot names can be wrong: CAFile slot 7 is GetPosition and slot 14 is Clone in the Ego_r TPI order the header keeps, not "GetLength" / "GetSharedFile".
+- RENAMES.tsv section 1 takes module = class and name = method only; never write `Class::Method` in the name column (fixed for 28 lines this pass).
+- Never filter `// Retail-asm:` lines out while viewing a row you will rewrite: the rewrite then drops them and vland reports NOT_GENUINE.
+- Register-allocation-only DIFFERs (the destination of a final `add`) do not move with operand order or `+=` spellings; stop at the grade budget and record the exact difference.
+- A port that fixes a callee binding inside the self row also closes (or advances) the callee's BINDERS_WRONG entry: cross-check every changed row against the other entries' bad-binder lists before the final report.

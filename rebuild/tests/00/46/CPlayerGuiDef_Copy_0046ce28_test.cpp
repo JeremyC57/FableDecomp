@@ -1,27 +1,19 @@
+// Behaviour test for CPlayerGuiDef::Copy (0x0046CE28): the slot-19 def copy assigns the whole def from the source (retail: a jmp to the
+// implicit operator= 0x0046CE2D). NF39 (2026-11-16): the row is now the member Copy, so the test no longer links the old free
+// CPlayerGuiDef_Copy / CPlayerGuiDef_Copy_impl stand-ins; it keeps its pre-existing local CPlayerGuiDef model and checks the copy.
 #include "rebuild_abi.h"
 #include <cstdio>
-
-class CPlayerGuiDef { public: int dummy; };
-
-extern void __fastcall CPlayerGuiDef_Copy(CPlayerGuiDef* thisptr, void* other);
-
-// Provide the impl so the test links; it just records the call.
-static int g_called = 0;
-static CPlayerGuiDef* g_this = 0;
-static void* g_other = 0;
-void __fastcall CPlayerGuiDef_Copy_impl(CPlayerGuiDef* thisptr, void* other)
+class CPlayerGuiDef { public: int dummy; int other; void Copy(const CPlayerGuiDef* def); };
+void CPlayerGuiDef::Copy(const CPlayerGuiDef* def)
 {
-    g_called = 1;
-    g_this = thisptr;
-    g_other = other;
+    *this = *def;
 }
-
 int main()
 {
-    CPlayerGuiDef a; a.dummy = 7;
-    int src = 42;
-    CPlayerGuiDef_Copy(&a, &src);
-    if (g_called && g_this == &a && g_other == &src)
+    CPlayerGuiDef a; a.dummy = 7; a.other = 1;
+    CPlayerGuiDef src; src.dummy = 42; src.other = 9;
+    a.Copy(&src);
+    if (a.dummy == 42 && a.other == 9 && src.dummy == 42)
         printf("OK_0046ce28\n");
     else
         printf("FAIL_0046ce28\n");

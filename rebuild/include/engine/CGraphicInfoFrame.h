@@ -41,6 +41,11 @@ public:
     bool IsLoaded() const;
     long GetCurrentLoadedMipmapLevel() const;
     bool GetFrame(CGraphicFrame& frame, unsigned long mipmap_level, unsigned long flags) const;
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETVOLUMETEXTURE
+    // NF39 opt-in (row 0x009FFB20 CGraphicInfo::GetVolumeTexture, the Frames forwarder): Ego_r.pdb 0x00B5CAA0 / FableWin.pdb 0x03126C40
+    // ?GetVolumeTexture@CGraphicInfoFrame@@QBE_NPAPAVCVolumeTexture@@K@Z, out of line in retail at 0x009FF710. Declaration only.
+    bool GetVolumeTexture(class CVolumeTexture** texture, unsigned long level) const;   // 0x009FF710
+#endif
 private:
     bool InternalGetFrameForcedLoading(unsigned long flags) const;      // 0x009FF6B0
     unsigned short FrameNum;                                 // +0x04
@@ -140,6 +145,11 @@ public:
     // loaded test RenderSunFlare expands (`mov eax,[f+8] ; test ; mov edi,[eax+1Ch] ; test ; setne`): Data set and its frame initialised.
     void BeginLoading(unsigned long mipmap_level, unsigned long flags) const;   // 0x009FE620
     bool IsFrameDataLoaded() const;   // descriptive name (no PDB name found): Data set and its frame initialised
+#endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETVOLUMETEXTURE
+    // NF39 opt-in (row 0x009FFB20 CGraphicInfo::GetVolumeTexture, the Frames forwarder): Ego_r.pdb 0x00B5CAA0 / FableWin.pdb 0x03126C40
+    // ?GetVolumeTexture@CGraphicInfoFrame@@QBE_NPAPAVCVolumeTexture@@K@Z, out of line in retail at 0x009FF710. Declaration only.
+    bool GetVolumeTexture(class CVolumeTexture** texture, unsigned long level) const;   // 0x009FF710
 #endif
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
     bool IsFlatSequence() const;

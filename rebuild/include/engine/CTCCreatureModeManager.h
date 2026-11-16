@@ -20,6 +20,12 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ENTITY_MODE_MANAGER; }
     class CModeBase {
     public:
+#ifdef FABLE_RETAIL_CMODEBASE_CTOR
+        // Retail opt-in (NF39, row 0x00742460 NCreatureMode::CModeBasic::Alloc): Ego_r.pdb / FableWin.pdb
+        // ??0CModeBase@CTCCreatureModeManager@@QAE@AAVCThing@@@Z (the only CModeBase constructor in either PDB), out of line in retail at
+        // 0x0073EAC0 (the mode factories call it on the new object with the thing). Declaration only; no layout change.
+        CModeBase(CThing& parent_thing);                                                         // 0x0073EAC0
+#endif
         virtual ~CModeBase();
         virtual unsigned long GetType() const=0; // Native slot1, used by006680f5.
 #ifdef FABLE_RETAIL_CMODEBASE_VIRTUALS
