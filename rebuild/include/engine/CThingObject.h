@@ -100,6 +100,14 @@ public:
     virtual long GetMaterialOnHitByMelee() const;                        // slot 70, 0x00703040
 public:
 #endif // FABLE_RETAIL_CTHINGOBJECT_VSLOTS2
+#ifdef FABLE_RETAIL_CTHINGOBJECT_GETALPHA
+    // Opt-in (landing gm, row 0x00702E00): Ego_r.pdb ?GetAlpha@CThingObject@@IBEEXZ (protected const, 0x005522B0, between
+    // DrawGetEditDrawInfo and GetProperties as retail 0x00702E00 is; FableWin.pdb 0x01D85F30, followed by its inline helper
+    // GFGetUnsignedAngleDifference 0x01D86050). Declaration only: no layout change.
+protected:
+    unsigned char GetAlpha() const;                                      // 0x00702E00
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHINGOBJECT_STATTYPEFLAGS
     // Opt-in (w24A, rows 0x00959380 / 0x0095C7C0, via the CThingSearchTools rough-area body): FableWin.pdb ?StatGetTypeFlags@CThingObject@@SIKXZ
     // (static fastcall, inline in retail: both GetAllThingsInRoughArea<CThingObject,..> instances test the +0x6C flags against 0x807).

@@ -8426,7 +8426,7 @@ _Flush_00c336a0	00c336a0	00c1c110
 ??0CPredicateBase_00c27070@@QAE@XZ	00c1c810	00c27070
 ??_7CChainNode_00c27070@@6B@	012b4024	00c27070
 ?Register@CChainNode_00c27070@@QAEXXZ	00c2a270	00c27070
-?cons_ctor@@YINPAUPair@@@Z	00c11700	00c271e0
+?GetFaderOutput@CSoundEventManager@@QBEMXZ	00c11700	00c271e0
 ?CodaSource_SetProperty20@@YGXPAXM@Z	00c35b10	00c275e0
 ?CodaSource_SetPropertyFCUnlessAccepted@@YGXPAXM@Z	00c35f20	00c27670
 ?RenderBuffer_00c35dd0@@YGXPAXJ@Z	00c35dd0	00c279a0
@@ -41364,3 +41364,5 @@ _mip	0139a838	00b70230
 ?_M_insert_overflow@?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@IAEXPAPBVCThingObject@@ABQBV3@ABU__true_type@2@I_N@Z	0091ffe0	00959380
 ?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ	0084d080	00872110
 ?FilterRampedWithGain@CStateVariableFilter@@QAEXPAFK@Z	00c6b7c0	00c6b9d0
+??1PKCWorkerQueue_00c14630@@QAE@XZ	00c14630	00c14700
+??1PKCWorkerQueue_00c14560@@QAE@XZ	00c14560	00c14710

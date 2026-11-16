@@ -36,6 +36,19 @@ float FABLE_FASTCALL GET_ROUNDED_ANGLE(float angle) {
  }
  return angle;
 }
+#ifdef FABLE_RETAIL_GFANGLES_UNSIGNED_DIFFERENCE
+// Retail opt-in (landing gm, row 0x00702E00 CThingObject::GetAlpha): FableWin.pdb ?GFGetUnsignedAngleDifference@@YIMMM@Z (0x01D86050, the
+// COMDAT right after ?GetAlpha@CThingObject@@ 0x01D85F30; no Ego_r.pdb or Fable.exe copy, expanded in retail). Body INFERRED from the
+// expansion at 0x00702E00: both angles wrapped into [0, 1) again, the absolute difference, folded above half a turn. Forced inline
+// (inline-budget device, as GET_ROUNDED_ANGLE_FORCEINLINE): plain `inline` stays an out-of-line call under VC7.1's budget there.
+FABLE_FORCEINLINE float FABLE_FASTCALL GFGetUnsignedAngleDifference(float angle1, float angle2)
+{
+    float difference = (float)fabs(GET_ROUNDED_ANGLE(angle1) - GET_ROUNDED_ANGLE(angle2));
+    if (difference > 0.5f)
+        difference = 1.0f - difference;
+    return difference;
+}
+#endif
 #ifdef FABLE_RETAIL_GFANGLES_SIGNED_ROUNDING
 // Retail opt-in (chunk 2041, row 0x006AB820 CThingPlayerCreature::ResolveFacingDirection): the FableWin.pdb COMDATs listed right after
 // ?ResolveFacingDirection@CThingPlayerCreature@@IAEXXZ (0x01DF5810): ?GFGetRoundedSignedAngle@@YIMM@Z 0x01DF7300, ?GFArcCos@@YIMN@Z

@@ -298,7 +298,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00700ae0	COpinionReactionManager	GetOpinions	1328	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00700ae0.cpp	original
 00701010	COpinionReactionManager	GetAttitudeOrReactionType	1408	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00701010.cpp	original
 00701590	COpinionReactionManager	GetReactionMatchStrength	448	parked	DIFFER(435v439)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00701590.cpp	original
-00702e00	_global	CViewBase_GetRotationDegrees	496	parked	matched in a lane, not landed	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/name_review/00702e00.cpp	original
 007055d0	CTCCarryable	GetCarriedPositionInfo	1328	parked	DIFFER(1188v1326)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/007055d0.cpp	original
 007070d0	CTCHeroAttachableAppearanceModifiers	UpdateGraphics	880	parked	DIFFER(910v868)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/007070d0.cpp	original
 00707440	CTCHeroAttachableAppearanceModifiers	CTCHeroAttachableAppearanceModifiers::OnAppearanceDraw	1264	parked	DIFFER(1239v1253)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00707440.alt.cpp	original
@@ -978,7 +977,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00ace600	QuadricOptimiserInternals::COptimisedMesh	COptimisedMesh	1824	parked		0	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00ace600.cpp	original
 00ad8af0	_global	TreeNodes_HaveIntersection	320	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand629/differ/00ad8af0.cpp	original
 00ad9980	CVertexGroupBlockList	FilterBySubset	416	parked	DIFFER(415v416)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00ad9980.cpp	original
-00add5c0	_global	FUN_00add5c0	16	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand767/differ/00add5c0.test.cpp	gapscan/boundary
 00add690	C3DBoundingSphere	FastBuildFromPoints	656	parked	DIFFER(646v648)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00add690.cpp	original
 00ade080	C3DBoundingBox	InitialiseFromOBB	2880	reserved (acctC, parked)	DIFFER(2696v2735)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/00ade080.cpp	original
 00adefc0	CMatrix4x4	AlignedPreMultiplyTransposed	544	parked	DIFFER(472v471)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand690/differ/00adefc0.cpp	original
@@ -1158,10 +1156,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c0bf9b	_global	CCharString_CopyRange_FromOffset	69	parked	not a function start (Codex pass 22 EXTENT_WRONG; BOUNDS_FIX.tsv)	0	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/extent_wrong/00c0bf9b/	original
 00c11230	CSoundEventManager	CheckExisting	256	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand633/differ/00c11230.cpp	original
 00c11520	_global	Inventory_ProcessNavigationItem	176	parked	DIFFER(163v163)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00c11520.cpp	original
-00c11700	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHe	16	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand767/differ/00c11700.cpp	original
 00c12e50	_global	Combat_ExecuteSequenceAction	752	parked	DIFFER(741v741)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand769/differ/00c12e50.test.cpp	original
-00c14700	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHe	16	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand767/differ/00c14700.cpp	original
-00c14710	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHe	16	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand767/differ/00c14710.test.cpp	original
 00c16f00	_global	LHAudioBank_ReadMurderTwistData	864	parked	DIFFER(848v857)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand766/differ/00c16f00.test.cpp	original
 00c17640	_global	Process_BankFileWithGraphicsSetup	256	parked	DIFFER(195v203)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00c17640.cpp	original
 00c1bf00	_global	C3DMeshObject_UpdateQuadricMatrix	176	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c1bf00.cpp	original
@@ -1174,7 +1169,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c29a30	_global	Catch@00c29a30	12	reserved (pass23, never_worked)		0		original
 00c29a3c	_global	Catch@00c29a3c	180	reserved (pass23, test_port)	RELOCATION_MATCH (Codex pass 22) as the whole parent 0x00C298D0 (542 bytes); needs the VC7.1 Dinkumware <vector> ahead of the repo STL in the include order	1	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/matched_test_port/00c29a3c/00c29a3c.cpp	original
 00c2cbd0	_global	CQ_GuildTrainingPreMeleeScript_Initialize	144	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand626/differ/00c2cbd0.cpp	original
-00c2d9b0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHe	16	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand767/differ/00c2d9b0.test.cpp	original
 00c2da20	CLiOnHeAdSegmentReader	CLiOnHeAdSegmentReader	448	parked	DIFFER(443v448)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/00c2da20.cpp	original
 00c35290	_gapscan	sub_00c35290	224	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand505/differ/00c35290.cpp	gapscan/boundary
 00c371c0	_global	CTCTavernGame_OnStateUpdate	256	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand505/differ/00c371c0.cpp	original
@@ -1187,8 +1181,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c41fb0	CCombatant	CCombatant::ComputeDerivedCombatStats	1584	not plain C++ (CRT / hand-written asm / LTCG)	DIFFER(1531v1570)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00c41fb0.cpp	original
 00c425e0	_global	Hero_ProcessExperienceBlockParry	224	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand438/differ/00c425e0.cpp	original
 00c461e0	CMatrix	CMatrix::InterpolateViewport	256	parked	DIFFER(135v163)	3	rebuild/candidates/manual/pending/2026-11-04_linux_hand760/differ/00c461e0.cpp	original
-00c47ea0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHe	16	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand767/differ/00c47ea0.test.cpp	original
-00c48740	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHe	16	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand767/differ/00c48740.cpp	original
 00c49470	_gapscan	sub_00c49470	416	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand601/differ/00c49470.cpp	gapscan/boundary
 00c4aeb0	PKCBufferedReader	WaitForSlot	288	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand589/differ/00c4aeb0.test.cpp	original
 00c4de00	_global	CAudioSoundBuffer_TransferPCMData	944	parked	DIFFER(934v929)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand769/differ/00c4de00.cpp	original

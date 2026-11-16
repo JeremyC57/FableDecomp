@@ -33562,9 +33562,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c271e0'
-        Module = '_global'
-        Source = '00/c2/global_Consval_00c271e0.cpp'
-        TestSource = '00/c2/global_Consval_00c271e0_test.cpp'
+        Module = 'CPhysicalPlayer'
+        Source = '00/c2/CPhysicalPlayer_UpdateManagerTime_00c271e0.cpp'
+        TestSource = '00/c2/CPhysicalPlayer_UpdateManagerTime_00c271e0_test.cpp'
         PassPattern = '00c271e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -397615,6 +397615,62 @@ $catalog = @(
         Source = '00/9a/stdpairconstCCharStringCBankInfo009aa210_pair_009aa440.cpp'
         TestSource = '00/9a/stdpairconstCCharStringCBankInfo009aa210_pair_009aa440_test.cpp'
         PassPattern = '009aa440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c11700'
+        Module = 'CSoundEventManager'
+        Source = '00/c1/CSoundEventManager_GetFaderOutput_00c11700.cpp'
+        TestSource = '00/c1/CSoundEventManager_GetFaderOutput_00c11700_test.cpp'
+        PassPattern = '00c11700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c14700'
+        Module = 'CVtable_012b401c'
+        Source = '00/c1/CVtable012b401c_CVtable012b401c_00c14700.cpp'
+        TestSource = '00/c1/CVtable012b401c_CVtable012b401c_00c14700_test.cpp'
+        PassPattern = '00c14700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c14710'
+        Module = 'CVtable_012b4030'
+        Source = '00/c1/CVtable012b4030_CVtable012b4030_00c14710.cpp'
+        TestSource = '00/c1/CVtable012b4030_CVtable012b4030_00c14710_test.cpp'
+        PassPattern = '00c14710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d9b0'
+        Module = 'SSegment'
+        Source = '00/c2/SSegment_SSegment_00c2d9b0.cpp'
+        TestSource = '00/c2/SSegment_SSegment_00c2d9b0_test.cpp'
+        PassPattern = '00c2d9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c47ea0'
+        Module = 'SOpenArgs'
+        Source = '00/c4/SOpenArgs_SOpenArgs_00c47ea0.cpp'
+        TestSource = '00/c4/SOpenArgs_SOpenArgs_00c47ea0_test.cpp'
+        PassPattern = '00c47ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c48740'
+        Module = 'SDecoderMessage'
+        Source = '00/c4/SDecoderMessage_SDecoderMessage_00c48740.cpp'
+        TestSource = '00/c4/SDecoderMessage_SDecoderMessage_00c48740_test.cpp'
+        PassPattern = '00c48740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00add5c0'
+        Module = 'CCountedPointer<CThreadedFile>'
+        Source = '00/ad/CCountedPointerCThreadedFile_IsNull_00add5c0.cpp'
+        TestSource = '00/ad/CCountedPointerCThreadedFile_IsNull_00add5c0_test.cpp'
+        PassPattern = '00add5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00702e00'
+        Module = 'CThingObject'
+        Source = '00/70/CThingObject_GetAlpha_00702e00.cpp'
+        TestSource = '00/70/CThingObject_GetAlpha_00702e00_test.cpp'
+        PassPattern = '00702e00_TEST PASS'
     }
 )
 

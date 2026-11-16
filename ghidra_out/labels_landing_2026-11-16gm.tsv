@@ -1,0 +1,10 @@
+address	name	evidence
+0x00702E00	?GetAlpha@CThingObject@@IBEEXZ	landing gm (2026-11-16): RELOCATION_MATCH + test PASS, strict headers; Ego_r 0x005522B0 / FableWin 0x01D85F30, PDB order between DrawGetEditDrawInfo and GetProperties
+0x00C11700	?GetFaderOutput@CSoundEventManager@@QBEMXZ	landing gm (2026-11-16): RELOCATION_MATCH + test PASS; DESCRIPTIVE (libpk, no PDB)
+0x00C14700	??1CVtable_012b401c@@QAE@XZ	landing gm (2026-11-16): RELOCATION_MATCH + test PASS; implicit dtor of the landed CVtable_012b401c (ctor 0x00C26A30)
+0x00C14710	??1CVtable_012b4030@@QAE@XZ	landing gm (2026-11-16): RELOCATION_MATCH + test PASS; implicit dtor of the landed CVtable_012b4030 (ctor 0x00C26E90)
+0x00C2D9B0	??1SSegment@@QAE@XZ	landing gm (2026-11-16): RELOCATION_MATCH + test PASS; DESCRIPTIVE (the CSegmentFile segment entry)
+0x00C47EA0	??1SOpenArgs@@QAE@XZ	landing gm (2026-11-16): RELOCATION_MATCH + test PASS; DESCRIPTIVE (Run 0x00C47F10's open-request copy, funclet 0x01215920)
+0x00C48740	??1SDecoderMessage@@QAE@XZ	landing gm (2026-11-16): RELOCATION_MATCH + test PASS; the spelling 0x00C48F80 binds (descriptive)
+0x00ADD5C0	?IsNull@?$CCountedPointer@VCThreadedFile@@@@QBE_NXZ	landing gm (2026-11-16): MATCH + test PASS; INFERRED T (the CLHFile TU's counted pointer)
+0x00C271E0	?UpdateManagerTime@CPhysicalPlayer@@QAEXPAUCSoundEventManager@@@Z	landing gm (2026-11-16) respelling of the landed row (was _global::Cons_val); the spelling Play 0x00C271F0 binds (descriptive); recheck RELOCATION_MATCH + PASS

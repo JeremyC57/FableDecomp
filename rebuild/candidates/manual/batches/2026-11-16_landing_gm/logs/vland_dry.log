@@ -1,0 +1,22 @@
+addr       parity           behav  name
+00c11700   RELOCATION_MATCH PASS   GetFaderOutput
+00c14700   RELOCATION_MATCH PASS   ~CVtable_012b401c
+00c14710   RELOCATION_MATCH PASS   ~CVtable_012b4030
+00c2d9b0   RELOCATION_MATCH PASS   ~SSegment
+00c47ea0   WARN RELOC_NAME: ??1CIntelligentPointer_00c16900@@QAE@XZ -> 00c167c0 labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+00c47ea0   RELOCATION_MATCH PASS   ~SOpenArgs
+00c48740   WARN RELOC_NAME: ??1CIntelligentPointer_00c16900@@QAE@XZ -> 00c167c0 labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+00c48740   RELOCATION_MATCH PASS   ~SDecoderMessage
+00add5c0   MATCH            PASS   IsNull
+00702e00   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00702e00   RELOCATION_MATCH PASS   GetAlpha
+
+WINS: 8
+  00c11700 RELOCATION_MATCH CSoundEventManager::?GetFaderOutput@CSoundEventManager@@QBEMXZ
+  00c14700 RELOCATION_MATCH CVtable_012b401c::??1CVtable_012b401c@@QAE@XZ
+  00c14710 RELOCATION_MATCH CVtable_012b4030::??1CVtable_012b4030@@QAE@XZ
+  00c2d9b0 RELOCATION_MATCH SSegment::??1SSegment@@QAE@XZ
+  00c47ea0 RELOCATION_MATCH SOpenArgs::??1SOpenArgs@@QAE@XZ
+  00c48740 RELOCATION_MATCH SDecoderMessage::??1SDecoderMessage@@QAE@XZ
+  00add5c0 MATCH CCountedPointer<CThreadedFile>::?IsNull@?$CCountedPointer@VCThreadedFile@@@@QBE_NXZ
+  00702e00 RELOCATION_MATCH CThingObject::?GetAlpha@CThingObject@@IBEEXZ

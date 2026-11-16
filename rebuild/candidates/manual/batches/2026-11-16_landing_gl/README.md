@@ -1,8 +1,8 @@
 # 2026-11-16 landing gl -- naming-blocked rows, part 1 (five rows + one respelling)
 
 Owner: "do those 13 blocked on naming now." Thirteen rows the w24 triage found byte-matched but held for want of a proven name.
-This landing takes the six whose names have two-source evidence (or follow an owner convention); the remaining seven are in
-`STATUS.tsv`. All rows RELOCATION_MATCH or MATCH with their behaviour tests passing, `LANDVERIFY_STRICT_HEADERS=1`, repo headers
+This landing takes the six whose names have two-source evidence (or follow an owner convention); the remaining eight are in
+`STATUS.tsv` (all landed in landing gm). All rows RELOCATION_MATCH or MATCH with their behaviour tests passing, `LANDVERIFY_STRICT_HEADERS=1`, repo headers
 (`logs/vland_land.log`, `logs/vland_recheck_006afd40.log`).
 
 | row | function | name evidence |

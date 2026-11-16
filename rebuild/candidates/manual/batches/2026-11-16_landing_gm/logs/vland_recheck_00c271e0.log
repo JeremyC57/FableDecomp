@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00c271e0   RELOCATION_MATCH PASS   UpdateManagerTime
+
+WINS: 1
+  00c271e0 RELOCATION_MATCH CPhysicalPlayer::?UpdateManagerTime@CPhysicalPlayer@@QAEXPAUCSoundEventManager@@@Z
