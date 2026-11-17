@@ -11,6 +11,13 @@
 //   +0x28cc (0), +0x2944 (0) through the landed Diffuse-only `SetState(state, value, core)` (core last).
 // Sprite: CEngineInternalPrimitiveSprite (landed 0x00BAD670 model) keeps ZBuffer as bit 6 of the +0x84 bitfield byte.
 #include "fable_compiler.h"
+// NF52 (round 7): the made-up global g_ShaderRenderManager (0x013BC470, a CShaderLayoutState stand-in) and the made-up CShaderLayoutSaver are
+//   the private static ?SingletonInstance@CShaderRenderManager@@0V1@A and Ego_r/FableWin CScopedVertexShaderConstantLayout (shared
+//   engine/CScopedVertexShaderConstantLayout.h: Get().PeekVertexShaderConstantLayout() / SetVertexShaderConstantLayout 0x0098B5E0, as the
+//   sibling CEnginePrimitiveManagerParticleGroup::RenderSubPrimitive 0x00BBC460 uses it); the local CShaderRenderManager model is replaced
+//   by engine/CShaderRenderManager.h (ResetWorldTransform 0x00988290).
+#include "engine/CShaderRenderManager.h"
+#include "engine/CScopedVertexShaderConstantLayout.h"
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
     unsigned long m_value;                         // +0x04 requested value
@@ -132,30 +139,11 @@ static FABLE_FORCEINLINE void SetStateV(unsigned long value, CTrackedRenderState
         }
     }
 }
-struct CShaderLayoutState {                             // the static shader manager object @ 0x013BC470
-    unsigned char _pad000[0x8];
-    long          CurrentVSConstantLayoutIndex;         // +0x008
-    void SetVertexShaderConstantLayout(long layout);    // 0x0098B5E0
-};
-extern CShaderLayoutState g_ShaderRenderManager;        // 0x013BC470
-struct CShaderLayoutSaver {                             // selects a vertex constant layout, restores the previous one on exit
-    long m_layout;
-    FABLE_FORCEINLINE CShaderLayoutSaver(long layout)
-    {
-        m_layout = g_ShaderRenderManager.CurrentVSConstantLayoutIndex;
-        g_ShaderRenderManager.SetVertexShaderConstantLayout(layout);
-    }
-    FABLE_FORCEINLINE ~CShaderLayoutSaver() { g_ShaderRenderManager.SetVertexShaderConstantLayout(m_layout); }
-};
 struct CRenderStateCaptureBlock {
     FABLE_FORCEINLINE CRenderStateCaptureBlock() { g_pRenderStateManager->OpenCaptureBlock(); }
     FABLE_FORCEINLINE ~CRenderStateCaptureBlock() { g_pRenderStateManager->RestoreCaptureBlock(); }
 };
 
-class CShaderRenderManager {
-public:
-    void ResetWorldTransform();                         // 0x00988290
-};
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }    // 0x01436E14
 class CEngineLightingManager {
 public:
@@ -203,7 +191,7 @@ void CEnginePrimitiveManagerSprites::RenderSubPrimitive(CEngineSubPrimitiveBase&
     CEnginePrimitiveManagerParticleSpriteGroup* group =
         static_cast<CEnginePrimitiveManagerParticleSpriteGroup*>(g_pPrimitiveManagers->Managers[27]);
     CRenderStateCaptureBlock capture;
-    CShaderLayoutSaver layout(5);
+    CScopedVertexShaderConstantLayout layout(5);
     SetState(g_pRenderManagerCore->m_state2ee4, g_renderStateDefault_01396dd0, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state2f84, g_renderStateDefault_01396dd0, g_pRenderManagerCore);
     SetStateV(static_cast<CEngineInternalPrimitiveSprite*>(subPrimitive.Parent)->ZBuffer,

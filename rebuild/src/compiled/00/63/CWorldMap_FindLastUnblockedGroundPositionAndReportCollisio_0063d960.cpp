@@ -65,9 +65,9 @@ public:
     long            MapPlacementPitch;     // +0x58
     C2DBoxI         Area;                  // +0x5C
 
+protected:   // NF52 (round 7): Ego_r.pdb CreateLineSegment / FindMaxGroundZInCell are protected (IBE), as 0x0063B3F0 / 0x0063B750 define them
     bool CreateLineSegment(const C3DVector* start, const C3DVector* end, C3DVector* next, C3DVector* cell) const;   // 0x0063B3F0
     float FindMaxGroundZInCell(const C3DVector* cell) const;                                                        // 0x0063B750
-protected:
     bool FindGroundCollisionPointWithinCell(const C3DVector* start, const C3DVector* end, const C3DVector* cell,
                                             C3DVector* direction, C3DVector* collision) const;                     // 0x0063D0A0
 public:

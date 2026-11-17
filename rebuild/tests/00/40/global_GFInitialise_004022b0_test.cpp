@@ -49,7 +49,31 @@ class CASoundManager; CASoundManager* PSoundManager;          // 0x013B8394 (nam
 CDisplayManager* GPDisplayManager;                               // 0x013B8390
 FableDisplayPrimitive* g_FableDisplayPrimitive_013B8384;
 void* g_FableRenderState_013B8380;
-fable_u8 g_FableRenderStateStorage_013BC470;
+// NF52 (round 7): the row stores &CShaderRenderManager::SingletonInstance (?SingletonInstance@CShaderRenderManager@@0V1@A, 0x013BC470,
+// through the header's public Get()); the fixture defines that static with empty constructor / destructor bodies (the row never
+// touches the object, only its address). Was the made-up g_FableRenderStateStorage_013BC470 byte.
+#include "engine/CShaderRenderManager.h"
+// Empty fixture doubles for the out-of-line members the static's constructor / destructor and vtables reach (the row calls none).
+CBaseClass::CBaseClass() { }
+CBaseClass::~CBaseClass() { }
+CBaseClassNonCopyable::CBaseClassNonCopyable() { }
+CShaderConstantRange::CShaderConstantRange() { }
+CShaderConstantRange::~CShaderConstantRange() { }
+CCharString CVertexShaderConstantLayout::PeekName() const { return CCharString(); }
+CCharString::CCharString() { }
+CPixelShader::CPixelShader() { }
+CSimpleMemoryPool::CSimpleMemoryPool(unsigned long, unsigned long) { }
+CBaseClassNonCopyable::~CBaseClassNonCopyable() { }
+CVertexShaderConstantLayout::CVertexShaderConstantLayout() { }
+CVertexShaderConstantLayout::~CVertexShaderConstantLayout() { }
+void CSimpleMemoryPool::ClearMemoryBlocks() { }
+unsigned long CPixelShader::CountReferences() { return 0; }
+CCharString CPixelShader::GetDebugName() const { return CCharString(); }
+CCharString CShaderBase::GetDebugName() const { return CCharString(); }
+CCharString::~CCharString() { }
+CShaderRenderManager::CShaderRenderManager() : LightPool(0, 0) { }
+CShaderRenderManager::~CShaderRenderManager() { }
+CShaderRenderManager CShaderRenderManager::SingletonInstance;
 class CInputManager; CInputManager* GPInputManager;             // 0x013B8388
 class CFontManager; CFontManager* PFontManager;                 // 0x013B838C
 class CGraphicBankManager; CGraphicBankManager* PGraphicBankManager;   // 0x013B837C
@@ -154,7 +178,7 @@ static int VerifySuccessfulProgressSetup()
     if (
         GPDisplayManager != &g_displayManager ||
         g_FableDisplayPrimitive_013B8384 != &g_displayPrimitive ||
-        g_FableRenderState_013B8380 != &g_FableRenderStateStorage_013BC470)
+        g_FableRenderState_013B8380 != &CShaderRenderManager::Get())
         return 4;
     if (
         g_bitDepthCalls != 3 ||

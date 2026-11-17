@@ -7,15 +7,12 @@
 // Globals: the script runner @ 0x013D2838, the frames-per-second count @ 0x01375550.
 // Shape: the end frame is a float homed in the dead `seconds` slot; the frame rate is read before the clock call; the loop is a
 // `while` whose test is duplicated at the bottom (`fild ; fcomp ; test ah,5 ; jp/jnp`), the runner global re-read every pass.
-struct CScriptRunner {
-    virtual void v00();
-    virtual void v01();
-    virtual void YieldFrame();              // slot 2 (+8)
-    unsigned char m_pad4;                   // +0x04
-    bool          m_bStopRequested;         // +0x05
-};
-
-extern CScriptRunner* g_pScriptRunner;      // 0x013D2838
+// NF52 (round 7): the running script process at 0x013D2838 is the established ?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A
+// (descriptive, the spelling of the landed 0x00A44660 InternalSwitchToProcess / 0x00A44880 RunSuspendableProcess that store it) over
+// engine/CSuspendableProcessMicrothread.h: StopRunning +0x05 (CASuspendableProcess) and the slot-2 virtual SuspendSuspendableProcess
+// (the frame yield). Was the local CScriptRunner stand-in (m_bStopRequested / YieldFrame).
+#include "engine/CSuspendableProcessMicrothread.h"
+extern CSuspendableProcessMicrothread* g_pScriptRunner;   // 0x013D2838
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -37,9 +34,9 @@ void CGameScriptInterface::Rest(float seconds)
         long fps = CMainGameComponent::GetConstantFPS();
         float endFrame = (float)CWorld::GetFrame() + (float)fps * seconds;
         while ((float)CWorld::GetFrame() < endFrame) {
-            if (g_pScriptRunner->m_bStopRequested)
+            if (g_pScriptRunner->StopRunning)
                 break;
-            g_pScriptRunner->YieldFrame();
+            g_pScriptRunner->SuspendSuspendableProcess();
         }
     }
 }

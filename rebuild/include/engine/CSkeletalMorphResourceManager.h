@@ -12,10 +12,21 @@
 class C3DSkeletalMorphTarget;
 class CSkeletalMorphResourceManager : public CTBaseSingleton<CSkeletalMorphResourceManager> {
 public:
+#ifdef FABLE_RETAIL_CSKELETALMORPHRESOURCEMANAGER_INLINE_CTOR
+    // Opt-in (NF52, row 0x00786700): inline in the class -- CTCSkeletalMorph::CalculateSkeletalMorph expands it through the inline
+    // CTBaseSingleton::Get() (0x0078673B: the vtable store, then the map header malloc); 0x004AE2A0 is its out-of-line COMDAT.
+    CSkeletalMorphResourceManager() { }
+#else
     CSkeletalMorphResourceManager();                                           // 0x004AE2A0
+#endif
     virtual ~CSkeletalMorphResourceManager();                                  // ??_G 0x004AE3B0
     void PreloadBoneConfigs();                                                 // 0x006C37D0
     void UnloadBoneConfigs();                                                  // 0x006C35E0
+#ifdef FABLE_RETAIL_CSKELETALMORPHRESOURCEMANAGER_GETMORPHTARGET
+    // Opt-in (NF52, row 0x00786700): Ego_r.pdb / FableWin.pdb
+    // ?GetMorphTarget@CSkeletalMorphResourceManager@@QAEAAV?$CCountedPointer@VC3DSkeletalMorphTarget@@@@ABVCCharString@@@Z. Declaration only.
+    CCountedPointer<C3DSkeletalMorphTarget>& GetMorphTarget(const CCharString& name);   // 0x006C3620
+#endif
 private:
     std::map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> > CachedMorphs;   // +0x04
 };

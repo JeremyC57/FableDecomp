@@ -23,43 +23,14 @@ template <class T> struct CRetailVector {
 };
 // Shape: region 0 is skipped; the name's data block is loaded once, the element name pointer strength-reduced
 // (start + 0x70, step 0x58) while size() is recomputed every pass.
-class CCharStringData { public:
-    const char*   Text;                         // +0x00
-    unsigned long Length;                       // +0x04
-};
-class CCharString { public: CCharStringData* PStringData; };
-#pragma auto_inline(off)
-// The real 0x00411570 body (landed as rebuild/src/compiled/00/41/global_global_00411570.cpp), defined above the
-// caller so VC7.1 knows it writes no memory: the name block and the region start are then hoisted out of the loop.
-long __fastcall CompareText(const char* a, const char* b)   // 0x00411570
-{
-    for (;;) {
-        char ca = *a;
-        if (ca == 0 && *b == 0)
-            return 0;
-        char cb = *b;
-        if (ca < cb)
-            return -1;
-        if (ca > cb)
-            return 1;
-        ++a;
-        ++b;
-    }
-}
-#pragma auto_inline(on)
-
-static FABLE_FORCEINLINE bool operator==(const CCharString& sa, const CCharString& sb)
-{
-    CCharStringData* a = sa.PStringData;
-    CCharStringData* b = sb.PStringData;
-    if (a == b)
-        return true;
-    if (!a || !b)
-        return false;
-    if (a->Length != b->Length)
-        return false;
-    return CompareText(a->Text, b->Text) == 0;
-}
+// NF52 (round 7): the name test is fable_string.h's inline CCharString::operator==(const CCharString&) (data pointers, null tests,
+// then CBasicString<char>::operator==: StringLength and !Compare), binding the protected static ?Compare@?$CBasicString@D@@KIJPBD0@Z
+// (0x00411570); its template body is visible (FABLE_RETAIL_CBASICSTRING_COMPARE_BODY) as the row's same-TU body was. Were local
+// CCharStringData / CCharString models, the free operator== and the made-up CompareText body. The CRetailVector / CRegion / CWorldMap
+// models are pre-existing.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+#include "fable_string.h"
 
 class CRegion { public:
     unsigned char _maps[0x18];                  // +0x00 Maps, VisMaps

@@ -1,0 +1,15 @@
+source	entry	address	correct_symbol	status	note
+nf41	e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	carry	not reached [e27]
+nf41	e199	004115a0	??8?$CBasicString@D@@QBE_NPBD@Z	carry	not reached [e199]
+nf41	e167	013bab10	?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A	carry	not reached [e167]
+nf41	e69	0143b934	?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A (+0x54: InterpolationSetList[0].WFInterpolate)	carry	not reached [e69]
+nf41	e29	005eabc0	?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z	carry	not reached [e29]
+nf41	e68	00ba0fc0	?AddStaticMesh@CEnginePrimitiveManagerStaticMeshesBase@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z	carry	not reached [e68]
+nf44	25	013b9288	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=7 unv=1 ; wrong binders: 00434a30 00434a60 0049d8c0 0049d8e0 0049d980 0049dfb0 0049e1d0
+nf44	26	013ba8c8	?RegisteredActions@CCreatureActionBase@@0V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@U?$less@W4EActionRegisteredType@@@std@@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@4@@std@@A	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=3 unv=2 ; wrong binders: 00692e50 006f5c10 00857430
+nf44	27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	carry	not reached in round 6 (NF44); fresh probe ok=30 bad=15 unv=3 ; wrong binders: 004022b0 009bef80 009c01c0 009c0e50 009d8ad0 009d8b40 009d9a30 00b25c00 00b5e700 00b61690 00b88bc0 00bad2e0 00bbc130 00bcb800 0122a4c0
+nf44	28	013d2838	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A	carry	not reached in round 6 (NF44); fresh probe ok=7 bad=6 unv=0 ; wrong binders: 006e71f0 006e7410 006e7820 008902e0 00898c40 00904380
+nf44	77	0x012668EC	??_7CTCInventoryMagic@@6BCTCInventoryBase@NInventory@@@	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=1 unv=0 ; wrong binders: 0072db90
+nf44	84	0x0137B730	?LineCollisionAround4Square@CWorldMap@@1QBVC2DCoordI@@B	carry	not reached in round 6 (NF44); fresh probe ok=0 bad=2 unv=0 ; wrong binders: 0063b750 0063b7f0
+nf44	96	0x013BABD0	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=7 unv=1 ; wrong binders: 006d0410 007018b0 00890970 00982eb0 00982f10 00982f70 00985f40
+nf44	104	0x012B47D0	??_7CSegmentList@@6B@	carry	not reached in round 6 (NF44); fresh probe ok=1 bad=3 unv=0 ; wrong binders: 00c2dbe0 00c2dfe0 00c2e030

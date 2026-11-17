@@ -36,23 +36,12 @@ template <class T> struct scoped_ptr {
     T* operator->() const { return ptr; }
 };
 
-#include "engine/CCountedPointer.h"
-
-class CSkeletalMorphResourceManager {                 // 16 bytes, vtable 0x01238F84
-public:
-    CSkeletalMorphResourceManager();                  // 0x004AE2A0
-    virtual ~CSkeletalMorphResourceManager();
-    void ReleaseResources();                          // 0x006C35E0
-    static CSkeletalMorphResourceManager& GetInstance()
-    {
-        if (Instance.Data == 0)
-            Instance.Reset(new CSkeletalMorphResourceManager);
-        return *Instance.Data;
-    }
-    static CCountedPointer<CSkeletalMorphResourceManager> Instance;   // 0x013BAB10
-private:
-    unsigned char _body[0xc];
-};
+// NF52 (round 7): the skeletal-morph manager is engine/CSkeletalMorphResourceManager.h's CTBaseSingleton<CSkeletalMorphResourceManager>;
+// its private static PClass (?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A,
+// 0x013BAB10 / count block 0x013BAB14) is reached through the public inline Get() (create on first use, Reset 0x004A9A80), and the
+// method 0x006C35E0 is the header's UnloadBoneConfigs (Ego_r / FableWin ?UnloadBoneConfigs@CSkeletalMorphResourceManager@@QAEXXZ). Was a
+// local CSkeletalMorphResourceManager model with the made-up static Instance / GetInstance / ReleaseResources.
+#include "engine/CSkeletalMorphResourceManager.h"
 
 class CWorld { public:
     virtual void v00();
@@ -72,5 +61,5 @@ void CWorld::Uninitialise()
     CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnWorldDestruction();
     PThingManager.reset(0);
     PGameCameraManager.reset(0);
-    CSkeletalMorphResourceManager::GetInstance().ReleaseResources();
+    CSkeletalMorphResourceManager::Get().UnloadBoneConfigs();
 }

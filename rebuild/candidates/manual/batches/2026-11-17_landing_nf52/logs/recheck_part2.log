@@ -1,0 +1,80 @@
+addr       parity           behav  name
+00434a60   WARN RELOC_NAME: ?GetNoEvents@CGameEventPackage@@QBEKXZ -> 009f16e0 labelled '_global::GetMember_dword0x4_009f16e0'
+00434a60   WARN RELOC_NAME: ?GetEvent@CGameEventPackage@@QBEPBVCGameEvent@@K@Z -> 009f16d0 labelled 'CGraphicDataBank::GetBlankTexture'
+00434a60   RELOCATION_MATCH PASS   ConfirmFeedbackGameEventPackage
+0049d980   RELOCATION_MATCH PASS   ProcessEvent
+004a2e90   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004a2e90   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004a2e90   WARN SHARED_HEADER_AVAILABLE CThingManager
+004a2e90   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+004a2e90   RELOCATION_MATCH PASS   Uninitialise
+004fc210   WARN SHARED_HEADER_AVAILABLE CRegion
+004fc210   RELOCATION_MATCH PASS   GetRegionNumberFromName
+0063b750   RELOCATION_MATCH PASS   FindMaxGroundZInCell
+00692e50   RELOCATION_MATCH PASS   GetPActionFromEnum
+006e7410   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+006e7410   WARN SHARED_HEADER_AVAILABLE CWorld
+006e7410   RELOCATION_MATCH PASS   NewScriptFrame
+0072db90   RELOCATION_MATCH PASS   CTCInventoryMagic
+00856780   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+00856780   RELOCATION_MATCH PASS   IsValidStrikeEventName
+008902e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008902e0   WARN RELOC_NAME: ?CountObjects@ObjContainer@@QAEHH@Z -> 009ad410 labelled 'CDefinitionManager::GetDefGlobalIndexFromName'
+008902e0   WARN RELOC_NAME: ?ctor@Str@@QAEXPBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+008902e0   WARN RELOC_NAME: ?dtor@Str@@QAEXXZ -> 0099eae0 labelled 'CCharString::~CCharString'
+008902e0   RELOCATION_MATCH PASS   GiveHeroObject
+008a03f0   WARN SHARED_HEADER_AVAILABLE CThing
+008a03f0   RELOCATION_MATCH PASS   ClearThingBestEnemyTarget
+00904380   WARN SHARED_HEADER_AVAILABLE CTCScriptedControl
+00904380   RELOCATION_MATCH PASS   WaitWhilePerformingTasks
+00982f70   RELOCATION_MATCH PASS   WifeToHerselfUpdate
+009c0e50   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore
+009c0e50   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+009c0e50   WARN RELOC_ALIAS: _Direct3DCreate9@4 -> 00bfefb0 is the import thunk 'D3D9.DLL::Direct3DCreate9'
+009c0e50   WARN RELOC_NAME: ??0CDynamicTextureList@@QAE@XZ -> 009f70e0 labelled 'CVsyncCallbackTimer::CVsyncCallbackTimer'
+009c0e50   WARN RELOC_NAME: ??1CDynamicTextureList@@QAE@XZ -> 009f7330 labelled 'CVsyncCallbackTimer::~CVsyncCallbackTimer'
+009c0e50   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+009c0e50   RELOCATION_MATCH PASS   Init
+009d9a30   WARN SHARED_HEADER_AVAILABLE CShaderDataBank
+009d9a30   WARN SHARED_HEADER_AVAILABLE CShaderResource
+009d9a30   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore
+009d9a30   WARN RELOC_NAME: ?SetVertexShaderDeclaration@CShaderResource@@QAEXPBU_D3DVERTEXELEMENT9@@@Z -> 00a5d4e0 labelled '_global::SetMember_dword0x34_00a5d4e0'
+009d9a30   WARN RELOC_NAME: ?SetVertexFormat@CShaderResource@@QAEXW4EVertexType@@@Z -> 00a5d4f0 labelled '_global::SetMember_dword0x38_00a5d4f0'
+009d9a30   RELOCATION_MATCH PASS   CRenderManager2D
+00b32f20   RELOCATION_MATCH PASS   AddStaticMesh
+00bcb800   WARN SHARED_HEADER_AVAILABLE CRenderStateCaptureBlock
+00bcb800   WARN SHARED_HEADER_AVAILABLE CTexture
+00bcb800   WARN SHARED_HEADER_AVAILABLE CGraphicFrame
+00bcb800   WARN SHARED_HEADER_AVAILABLE CGraphicInfo
+00bcb800   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveSpriteTrail
+00bcb800   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveBase
+00bcb800   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerSpriteTrails
+00bcb800   WARN RELOC_NAME: ?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A -> 01436e98 labelled 'g_pResourceManager'
+00bcb800   RELOCATION_MATCH PASS   RenderSubPrimitive
+00c2dfe0   RELOCATION_MATCH PASS   CSegmentList
+01229400   RELOCATION_MATCH PASS   `dynamic atexit destructor for 'PClass''
+01213bd0   RELOCATION_MATCH PASS   Unwind@01213bd0
+01213b80   RELOCATION_MATCH PASS   Unwind@01213b80
+
+WINS: 21
+  00434a60 RELOCATION_MATCH CDisplayEngine::?ConfirmFeedbackGameEventPackage@CDisplayEngine@@QAEXPBVCGameEventPackage@@@Z
+  0049d980 RELOCATION_MATCH CWorld::?ProcessEvent@CWorld@@IAEXPBVCGameEvent@@@Z
+  004a2e90 RELOCATION_MATCH CWorld::?Uninitialise@CWorld@@UAEXXZ
+  004fc210 RELOCATION_MATCH CWorldMap::GetRegionNumberFromName
+  0063b750 RELOCATION_MATCH CWorldMap::?FindMaxGroundZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z
+  00692e50 RELOCATION_MATCH CCreatureActionBase::?GetPActionFromEnum@CCreatureActionBase@@SI?AV?$CCountedPointer@VCCreatureActionBase@@@@W4EActionRegisteredType@@AAVCThingCreatureBase@@@Z
+  006e7410 RELOCATION_MATCH CGameScriptInterface::NewScriptFrame
+  0072db90 RELOCATION_MATCH CTCInventoryMagic::??0CTCInventoryMagic@@QAE@AAVCThing@@@Z
+  00856780 RELOCATION_MATCH _global::IsValidStrikeEventName
+  008902e0 RELOCATION_MATCH CGameScriptInterface::GiveHeroObject
+  008a03f0 RELOCATION_MATCH CGameScriptInterface::ClearThingBestEnemyTarget
+  00904380 RELOCATION_MATCH CScriptGameResourceObjectScriptedThing::WaitWhilePerformingTasks
+  00982f70 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::WifeToHerselfUpdate
+  009c0e50 RELOCATION_MATCH CDisplayManager::Init
+  009d9a30 RELOCATION_MATCH CRenderManager2D::??0CRenderManager2D
+  00b32f20 RELOCATION_MATCH CEnginePrimitiveRenderer::?AddStaticMesh@CEnginePrimitiveRenderer@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z
+  00bcb800 RELOCATION_MATCH CEnginePrimitiveManagerSpriteTrails::RenderSubPrimitive
+  00c2dfe0 RELOCATION_MATCH CSegmentList::??0CSegmentList@@QAE@PAUPKCTRAllocator@@@Z
+  01229400 RELOCATION_MATCH CTBaseSingleton<CSkeletalMorphResourceManager>::_$E2
+  01213bd0 RELOCATION_MATCH _global::Unwind@01213bd0
+  01213b80 RELOCATION_MATCH _global::Unwind@01213b80

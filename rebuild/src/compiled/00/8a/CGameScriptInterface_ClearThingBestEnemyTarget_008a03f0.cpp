@@ -2,6 +2,11 @@
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008A03F0,206 bytes; map0040F020,Compare00411570,SetScriptTargetOverride008ABBA0. CTCBase complete native virtual prefix, signatures reconciled to retail overrides and PDB; editor-only donor methods excluded; string uses real fable_string.h storage.
+// NF52 (round 7): the class-name test is fable_string.h's inline CCharString::operator==(const CCharString&) (retail CCharStringData
+// layout under FABLE_RETAIL_CCHARSTRING: data pointers, null tests, then CBasicString<char>::operator==: StringLength and !Compare),
+// binding the protected static ?Compare@?$CBasicString@D@@KIJPBD0@Z (0x00411570). Were the made-up CompareStrings and the
+// StringData / EqualData / EqualStrings helpers over a reinterpret_cast of the string's data pointer.
+#define FABLE_RETAIL_CCHARSTRING
 #include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
@@ -143,12 +148,8 @@ struct TargetingMethods{ //CTCBase virtual prefix, native CTCTargetingAI table01
 };
 FABLE_STATIC_ASSERT(offsetof(TargetingMethods,ParentThing)==offsetof(CTCBase,ParentThing));
 FABLE_STATIC_ASSERT(sizeof(TargetingMethods)==sizeof(CTCBase));
-long __fastcall CompareStrings(const char*,const char*); //00411570
-static FABLE_FORCEINLINE CCharStringData* StringData(const CCharString& s){return *reinterpret_cast<CCharStringData* const*>(&s);}
-static FABLE_FORCEINLINE bool EqualData(const CCharStringData* x,const CCharStringData* y){if(x->unknown04!=y->unknown04)return false;return CompareStrings(x->text,y->text)==0;}
-static FABLE_FORCEINLINE bool EqualStrings(const CCharString& a,const CCharString& b){CCharStringData* x=StringData(a);CCharStringData* y=StringData(b);if(x==y)return 1;if(!x||!y)return 0;return EqualData(x,y);}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void ClearThingBestEnemyTarget(const ScriptMethods&)const;};
 void CGameScriptInterfaceMethods::ClearThingBestEnemyTarget(const ScriptMethods& thing)const{
  if(thing.IsAlive()){CThingNative* owner=thing.GetPThing();if(owner->UsingComponents[0]&0x100){ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)8);ComponentEntry* end=map->Finish;TargetingMethods* targeting=static_cast<TargetingMethods*>(((void*)(it==end||it->first>8?end:it)->second));
- bool matches;{CCharString name("CTCTargetingAI",-1);matches=EqualStrings(targeting->GetClassTypeName(),name);}if(matches)targeting->SetScriptTargetOverride(0);
+ bool matches;{CCharString name("CTCTargetingAI",-1);matches=targeting->GetClassTypeName()==name;}if(matches)targeting->SetScriptTargetOverride(0);
  }}}

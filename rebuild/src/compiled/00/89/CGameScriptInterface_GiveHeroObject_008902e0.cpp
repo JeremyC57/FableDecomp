@@ -23,8 +23,11 @@
 /* literal C-string operand at abs 0x122d70e (relocation-masked -> extern) */
 extern const char GHO_ItemName[];
 
-/* global at ds:0x13d2838 -- gate for the post-give UI refresh */
-extern void* GHO_RefreshGate;
+/* global at ds:0x13d2838 -- gate for the post-give UI refresh. NF52 (round 7): it is the running script process, the established
+   ?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A (descriptive; the spelling of the landed 0x00A44660 / 0x00A44880 that store
+   it); was the made-up void* GHO_RefreshGate. Only its null test is read here, so the class is forward-declared. */
+class CSuspendableProcessMicrothread;
+extern CSuspendableProcessMicrothread* g_pScriptRunner;
 
 /* engine string: single opaque pointer; ctor/dtor manage internals */
 class CCharString { public:
@@ -77,7 +80,7 @@ void __fastcall CGameScriptInterface_GiveHeroObject(void* thisptr, unsigned long
     if ((unsigned char)suppressFlag != 0)                   /* test bl,bl; jne */
         return;
 
-    if (GHO_RefreshGate == 0)                               /* mov eax,ds:0x13d2838; test; je */
+    if (g_pScriptRunner == 0)                               /* mov eax,ds:0x13d2838; test; je */
         return;
 
     /* mov eax,[edi]; mov ecx,edi; call [eax+0x1c]  (twice) */

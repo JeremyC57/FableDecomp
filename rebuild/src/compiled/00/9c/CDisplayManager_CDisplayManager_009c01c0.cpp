@@ -16,7 +16,7 @@
 //   defined out of class as in STLport _list.c), ~CWideString 0x0099B510, CTexture::Uninitialise 0x009F9F70 (inline
 //   ~CTexture), the four CSurface virtual dtors inline (vtable 0x0122F84C + Uninitialise), CRenderManager's virtual deleting
 //   dtor (slot 0) through boost::scoped_ptr, ~CBaseClassNonCopyable 0x0099A300.
-// Shape: user dtor body `if (UsingShaderRenderManager) g_ShaderRenderManager.Uninitialise(); PRenderManager.reset(); ...`;
+// Shape: user dtor body `if (UsingShaderRenderManager) CShaderRenderManager::Get().Uninitialise(); PRenderManager.reset(); ...`;
 //   boost 1.30 scoped_ptr::reset is `this_type(p).swap(*this)`, hence the pointer is cleared before the delete.
 // Layout: engine/CSurface.h and engine/CTexture.h are generated flat layouts (a `__vftable` member, no destructors); CSurface
 //   (virtual ~CSurface, Ego_r ??1CSurface@@UAE@XZ) and CTexture (non-virtual ??1CTexture@@QAE@XZ) are local models of the same
@@ -25,111 +25,22 @@ extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 #include "engine/CBaseClassNonCopyable.h"                   // ~CBaseClassNonCopyable 0x0099A300 (protected virtual)
 
-namespace boost {
-template <class T> inline void checked_delete(T* x)
-{
-    typedef char type_must_be_complete[sizeof(T) ? 1 : -1];
-    (void) sizeof(type_must_be_complete);
-    delete x;
-}
-template <class T> class scoped_ptr { public:
-    typedef scoped_ptr<T> this_type;
-    explicit scoped_ptr(T* p = 0) : ptr(p) { }
-    ~scoped_ptr() { boost::checked_delete(ptr); }
-    void reset(T* p = 0) { this_type(p).swap(*this); }
-    void swap(scoped_ptr& b) { T* tmp = b.ptr; b.ptr = ptr; ptr = tmp; }
-private:
-    T* ptr;
-};
-} // namespace boost
-
-namespace std {
-// STLport 4.6 stl/_alloc.h, stl/_construct.h, stl/_vector.h, stl/_list.h + _list.c (the members this row needs)
-struct __true_type { };
-struct __false_type { };
-template <class _Tp> struct __type_traits { typedef __false_type has_trivial_destructor; };
-template <class _Tp> struct __type_traits<_Tp*> { typedef __true_type has_trivial_destructor; };
-template <class _Tp> class allocator { public:
-    allocator() { }
-    void deallocate(_Tp* __p, unsigned int) { free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc { public:
-    _Value _M_data;
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator>
-inline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
-{
-    for ( ; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-template <class _ForwardIterator>
-inline void __destroy_aux(_ForwardIterator, _ForwardIterator, const __true_type&) { }
-template <class _ForwardIterator, class _Tp>
-inline void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
-{
-    typedef typename __type_traits<_Tp>::has_trivial_destructor _Trivial_destructor;
-    __destroy_aux(__first, __last, _Trivial_destructor());
-}
-template <class _Tp> inline void _Destroy(_Tp* __first, _Tp* __last) { __destroy(__first, __last, __first); }
-template <class _Tp, class _Alloc>
-class _Vector_base { public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-    ~_Vector_base() { if (_M_start != 0) _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
-};
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class vector : protected _Vector_base<_Tp, _Alloc> { public:
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-struct _List_node_base {
-    _List_node_base* _M_next;
-    _List_node_base* _M_prev;
-};
-template <class _Tp> struct _List_node : public _List_node_base {
-    _Tp _M_data;
-};
-template <class _Tp, class _Alloc>
-class _List_base { public:
-    _STLP_alloc_proxy<_List_node_base*, _List_node<_Tp>, allocator<_List_node<_Tp> > > _M_node;
-    ~_List_base() { clear(); _M_node.deallocate((_List_node<_Tp>*)_M_node._M_data, 1); }
-    void clear();
-};
-template <class _Tp, class _Alloc>
-void _List_base<_Tp, _Alloc>::clear()
-{
-    _List_node<_Tp>* __cur = (_List_node<_Tp>*)this->_M_node._M_data->_M_next;
-    while (__cur != this->_M_node._M_data) {
-        _List_node<_Tp>* __tmp = __cur;
-        __cur = (_List_node<_Tp>*)__cur->_M_next;
-        _Destroy(&__tmp->_M_data);
-        this->_M_node.deallocate(__tmp, 1);
-    }
-    this->_M_node._M_data->_M_next = this->_M_node._M_data;
-    this->_M_node._M_data->_M_prev = this->_M_node._M_data;
-}
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class list : protected _List_base<_Tp, _Alloc> { public:
-};
-} // namespace std
-template <class T> class CArray : public std::vector<T> { };   // Fable's CArray over the STLport vector
-
+// NF52 (round 7): the made-up global g_ShaderRenderManager (0x013BC470) is the private static ?SingletonInstance@CShaderRenderManager@@0V1@A,
+//   reached through the public inline ?Get@CShaderRenderManager@@SIAAV1@XZ of the shared engine/CShaderRenderManager.h (Uninitialise
+//   0x0098A7A0 declared there). Including it replaces the local boost / STLport / CArray / IDirect3DDevice9 / CWideString models with
+//   the shared boost/scoped_ptr.h (FABLE_RETAIL_SCOPED_PTR_RESET), stlport/fable_containers.h (FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFCLASS:
+//   _list.c's clear defined after the class), engine/CArray.h, engine/IDirect3DDevice9.h and fable_string.h.
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_SCOPED_PTR_RESET
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFCLASS
+#include "stlport/fable_containers.h"
+#include "boost/scoped_ptr.h"
+#include "engine/CShaderRenderManager.h"
 struct IDirect3D9;
-struct IDirect3DDevice9 {                                   // d3d9.h COM interface (IUnknown slots)
-    virtual long __stdcall QueryInterface(const struct _GUID& riid, void** ppvObj) = 0;
-    virtual unsigned long __stdcall AddRef() = 0;
-    virtual unsigned long __stdcall Release() = 0;
-};
 struct IDirect3DSurface9;
 struct IDirect3DTexture9;
 struct HWND__;
 
-class CShaderRenderManager { public:
-    void Uninitialise();                                    // 0x0098A7A0
-};
-extern CShaderRenderManager g_ShaderRenderManager;          // 0x013BC470
 
 class CSystemManager;
 class CRenderManager { public:
@@ -139,11 +50,6 @@ class CVsyncCallbackTimer { public:
     ~CVsyncCallbackTimer();                                 // 0x009F7330
 };
 class CDeviceResetCallback;
-class CWideStringData;
-class CWideString { public:
-    ~CWideString();                                         // 0x0099B510
-    CWideStringData* PStringData;
-};
 class CSurface { public:                                    // vtable 0x0122F84C, 0x10 bytes (engine/CSurface.h layout)
     virtual ~CSurface() { Uninitialise(); }
     void Uninitialise();                                    // 0x009F2E20
@@ -243,7 +149,7 @@ class CDisplayManager : public CBaseClassNonCopyable { public:   // vtable 0x012
 CDisplayManager::~CDisplayManager()
 {
     if (UsingShaderRenderManager)
-        g_ShaderRenderManager.Uninitialise();
+        CShaderRenderManager::Get().Uninitialise();
     PRenderManager.reset();
     BackBufferSurface.Uninitialise();
     DepthBufferSurface.Uninitialise();

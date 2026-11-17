@@ -2,6 +2,9 @@
 // Frame slots (chunk 821): halton, its position loop and the PositionMesh loop sit in a sibling block before the board-bounds def block, so the
 //   bounds CDefPointer reuses halton's slot [esp+0x18] / [esp+0x1C] as retail (0x007D940E); in one enclosing block it took [esp+0x14] (chunk 800 a18).
 // Leaf: ?FrameUpdate@CTCTavernGameSpotTheAddition@@UAEXXZ
+// NF52 (round 7): PositionMesh is the inherited public static CTCTavernGame::PositionMesh (engine/CTCTavernGame.h opt-in
+//   FABLE_RETAIL_CTCTAVERNGAME_POSITIONMESH, Ego_r/FableWin ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z);
+//   the local class's own static re-declaration (which mangled ?PositionMesh@CTCTavernGameSpotTheAddition@@...) is deleted.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -14,6 +17,7 @@
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #define FABLE_RETAIL_CTCTAVERNGAME
 #define FABLE_RETAIL_CTCTAVERNGAME_GETDEF_OUTOFLINE
+#define FABLE_RETAIL_CTCTAVERNGAME_POSITIONMESH
 #define FABLE_RETAIL_CPLAYERGUI
 #define FABLE_RETAIL_CSUBTITLERENDERER
 #define FABLE_RETAIL_CSUBTITLERENDERER_CLEAR
@@ -130,8 +134,6 @@ public:
     void PositionCover(float amount);             // 0x007D7F10
     void UpdateHighlightedObject();               // 0x007D8290
     void KillThing(CThing* thing);                // 0x005E9A60 (CTCTavernGame)
-    static void __fastcall PositionMesh(CThing* thing, const C3DVector& position, const CRightHandedSet& orientation,
-                                        const C3DVector& offset, float tilt, float angle);   // 0x005EABC0
 };
 
 void CTCTavernGameSpotTheAddition::FrameUpdate()

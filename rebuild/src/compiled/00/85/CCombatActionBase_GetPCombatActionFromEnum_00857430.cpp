@@ -15,78 +15,37 @@
 //   the fall-through of `jne` (one `||` condition moves that block to the end of the function); the clone's null test keeps
 //   the success path on the fall-through with a second null return (after `pop edi`) at the end.
 // Name: the catalog row already says GetPCombatActionFromEnum; the Ego_r.pdb symbol above has the two creature references.
-enum EActionRegisteredType { ACTION_REGISTERED_TYPE_0 = 0 };
-class CThing;
-class CThingCreatureBase;
-#include "engine/CCountedPointer.h"
+// NF52 (round 7): engine/CCreatureActionBase.h with the static RegisteredActions (FABLE_RETAIL_CCREATUREACTIONBASE_REGISTEREDACTIONS) over the
+// shared STLport map (stlport/fable_map.h; find 0x00696680 is the tree's find), SetCreature by the overlay opt-in
+// FABLE_RETAIL_CCREATUREACTIONBASE_SETCREATURE; CCombatActionBase from engine/CCombatActionBase.h (GETPCOMBATACTIONFROMENUM, and the overlay
+// opt-in FABLE_RETAIL_CCOMBATACTIONBASE_SETTARGET for SetTarget 0x0085AA90). Were local std::pair / std::map / CCreatureActionBase /
+// CCombatActionBase / CThing / CThingCreatureBase models and the made-up Registry.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_REGISTEREDACTIONS
+#define FABLE_RETAIL_CCREATUREACTIONBASE_SETCREATURE
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_compiler.h"
+#include "engine/CCreatureActionBase.h"
 
-
-namespace std {
-template <class _T1, class _T2> class pair {
-public:
-    _T1 first;
-    _T2 second;
-};
-
-template <class _Key, class _Tp> class map {
-public:
-    typedef pair<const _Key, _Tp> value_type;
-    class _Node {
-    public:
-        char        _M_color;                               // +0x00
-        _Node*      _M_parent;                              // +0x04
-        _Node*      _M_left;                                // +0x08
-        _Node*      _M_right;                               // +0x0C
-        value_type  _M_value_field;                         // +0x10
-    };
-    class iterator {
-    public:
-        _Node* _M_node;
-        iterator() { }
-        iterator(_Node* node) : _M_node(node) { }
-        value_type* operator->() const { return &_M_node->_M_value_field; }
-        bool operator==(const iterator& other) const { return _M_node == other._M_node; }
-    };
-    _Node*       _M_header;                                 // +0x00
-    unsigned int _M_node_count;                             // +0x04
-    iterator end() { return iterator(_M_header); }
-    iterator find(const _Key& key);                         // 0x00696680
-};
-}
-
-class CCreatureActionBase {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
-    virtual CCreatureActionBase* Clone() const;             // slot 11 (+0x2C)
-protected:
-    void SetCreature(CThingCreatureBase& creature);         // 0x006928C0
-    static std::map<EActionRegisteredType, CCountedPointer<CCreatureActionBase> > Registry;   // 0x013BA8C8
-};
-
-class CCombatActionBase : public CCreatureActionBase {
-public:
-    void SetTarget(CThing& target);                         // 0x0085AA90
-    static CCountedPointer<CCombatActionBase> __fastcall GetPCombatActionFromEnum(EActionRegisteredType type,
-                                                                                  CThingCreatureBase& creature,
-                                                                                  CThingCreatureBase& target);
-};
-class CThing { };
-class CThingCreatureBase : public CThing { };
+#define FABLE_RETAIL_CCOMBATACTIONBASE_GETPCOMBATACTIONFROMENUM
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SETTARGET
+#include "engine/CCombatActionBase.h"
 
 CCountedPointer<CCombatActionBase> __fastcall CCombatActionBase::GetPCombatActionFromEnum(EActionRegisteredType type,
                                                                                           CThingCreatureBase& creature,
                                                                                           CThingCreatureBase& target)
 {
-    std::map<EActionRegisteredType, CCountedPointer<CCreatureActionBase> >::iterator it = Registry.find(type);
-    if (it == Registry.end())
+    std::map<EActionRegisteredType, CCountedPointer<CCreatureActionBase> >::iterator it = RegisteredActions.find(type);
+    if (it == RegisteredActions.end())
         return CCountedPointer<CCombatActionBase>();
     if (!it->second.Data)
         return CCountedPointer<CCombatActionBase>();
     CCombatActionBase* action = (CCombatActionBase*)it->second->Clone();
     if (action) {
         action->SetCreature(creature);
-        action->SetTarget(target);
+        action->SetTarget((CThing&)target);
         return CCountedPointer<CCombatActionBase>(action);
     }
     return CCountedPointer<CCombatActionBase>();

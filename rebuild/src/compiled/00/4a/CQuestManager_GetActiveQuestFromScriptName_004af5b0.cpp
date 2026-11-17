@@ -17,26 +17,16 @@
 // quest is returned from ebx.
 #include "engine/CQuestManager.h"             // PDB layout: ActiveQuests at +0x44 (debug containers); retail +0x38, see above
 
-class CCharStringData { public:                       // the shared string block
-    const char*   m_pData;                     // +0x00
-    unsigned long m_length;                    // +0x04
-};
-long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-
-// The CCharString equality on the two string blocks: the same block, or both present with equal lengths and
-// Compare == 0 (`neg eax ; sbb al,al ; inc al`).
-inline bool SameString(CCharStringData* a, CCharStringData* b)
-{
-    if (a == b)
-        return true;
-    if (a && b && a->m_length == b->m_length)
-        return Compare_00411570(a->m_pData, b->m_pData) == 0;
-    return false;
-}
-
-class CCharString { public:
-    CCharStringData* PStringData;
-};
+// NF52 (round 7): the name test is fable_string.h's inline CCharString::operator==(const CCharString&) (data pointers, null tests,
+// then CBasicString<char>::operator==: StringLength and !Compare), which binds the protected static
+// ?Compare@?$CBasicString@D@@KIJPBD0@Z (0x00411570). Were local CCharStringData / CCharString models, the SameString helper and the
+// made-up Compare_00411570. The CQuestManagerRetail / CActiveQuest / list-node stand-ins are pre-existing (the self leaf is still
+// CQuestManagerRetail; NAME_FIXES.tsv). The Compare template body is visible (FABLE_RETAIL_CBASICSTRING_COMPARE_BODY, as row 0x009C9280):
+// VC7.1 still calls it out of line but knows it writes no memory, so the name's data pointer stays in esi across the loop (retail
+// 0x004AF5BE..0x004AF5C2 loads it once).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+#include "fable_string.h"
 
 struct CActiveQuest {                          // CQuestManager::CActiveQuest, retail layout
     long          ID;                          // +0x00
@@ -69,10 +59,9 @@ CActiveQuest* CQuestManagerRetail::GetActiveQuestFromScriptName(const CCharStrin
     SActiveQuestNode* head = ActiveQuests;
     SActiveQuestNode* node = head->next;
     if (node != head) {
-        CCharStringData* key = name.PStringData;
         do {
             CActiveQuest* quest = node->m_pData;
-            if (SameString(quest->QuestName.PStringData, key))
+            if (quest->QuestName == name)
                 return quest;
             node = node->next;
         } while (node != head);

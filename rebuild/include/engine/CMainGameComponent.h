@@ -63,6 +63,9 @@ class CWorld; class CDisplayEngine; class CGameEventPackage; class CGameEventPac
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTDISPATCH
 class CGameEventDispatch;
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKEVENTDISPATCHTABLEENTRY
+#include "engine/CGameEventDispatch.h"
+#endif
 class CMainGameComponent : public CGameComponent {
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INITSOUND
 protected:
@@ -76,6 +79,13 @@ protected:
     // its initializer `dynamic initializer for 'CMainGameComponent::EventDispatch'' (retail 0x0121B9B0); the Anniversary PDB
     // (WellingtonGame-Xbox360-Test) gives the member: LF_STMEMBER EventDispatch, protected, const CGameEventDispatch[5568 bytes].
     static const CGameEventDispatch EventDispatch[87];
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKEVENTDISPATCHTABLEENTRY
+public:
+    // Nested opt-in (NF52, rows 0x00434A30 / 0x00434A60 / 0x0049D8C0 / 0x0049D8E0 / 0x0049D980 / 0x0049DFB0 / 0x0049E1D0): FableWin.pdb
+    // ?PeekEventDispatchTableEntry@CMainGameComponent@@QBEPBVCGameEventDispatch@@J@Z (public, const), inline in retail: every reader
+    // forms `shl eax,6 ; add eax,0x013B9288` in place with no load of PMainGameComponent (the unused `this` folds away).
+    const CGameEventDispatch* PeekEventDispatchTableEntry(long type) const { return &EventDispatch[type]; }
+#endif
 #endif
 protected:
     static CMainGameComponent* PMainGameComponent;

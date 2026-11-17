@@ -43,6 +43,12 @@ public:
     // (vtable 0x012852CC slot 65). Declaration only (an override: no vtable change).
     virtual bool IsSummonedCreature() const;                             // 65 0x008D08A0
 #endif
+#ifdef FABLE_RETAIL_CGAMESCRIPTTHING_ISNULL
+    // Opt-in (NF52, row 0x008D0110): the CScriptThing slot-77 override Ego_r.pdb 0x00907140 / FableWin.pdb 0x02B007A0
+    // ?IsNull@CGameScriptThing@@UBE_NXZ (retail 0x008D0110: Name compared with the "%%%NULL" string at 0x013BAFCC). Declaration only
+    // (an override: no vtable change).
+    virtual bool IsNull() const;                                         // 77 0x008D0110
+#endif
     CIntelligentPointer<CThing> PThing;                                  // +0x0c
     long                        ScriptCounter;                           // +0x14
     unsigned __int64            ThingUID;                                // +0x18

@@ -1,0 +1,62 @@
+entry	target	correct_symbol	binder_row	bound_symbol_at_probe
+nf41:e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	004af5b0	?Compare_00411570@@YIJPBD0@Z
+nf41:e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	004fc210	?CompareText@@YIJPBD0@Z
+nf41:e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	0051fc20	?Compare_00411570@@YIHPBD0@Z
+nf41:e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	008a03f0	?CompareStrings@@YIJPBD0@Z
+nf41:e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	008d0110	@Thing_Compare@8
+nf41:e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	00ddc6c0	?Compare@@YIJPBD0@Z
+nf41:e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	006d41f0	?Compare@N006d41f0@@YIHPBD0@Z
+nf41:e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	0085b720	?Compare@?$CBasicString@D@StrikeEvents@@SIHPBD0@Z
+nf41:e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	00580194	?Compare@CBasicStringChar@@SIJPBD0@Z
+nf41:e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	00856780	?Compare@?$CBasicString@D@ComboStrikes@@SIHPBD0@Z
+nf41:e199	004115a0	??8?$CBasicString@D@@QBE_NPBD@Z	006d41f0	?Equal@CBasicString@N006d41f0@@QBE_NPBD@Z
+nf41:e199	004115a0	??8?$CBasicString@D@@QBE_NPBD@Z	004fe630	??8?$CBasicString@D@X_004fe630@@QBE_NPBD@Z
+nf41:e199	004115a0	??8?$CBasicString@D@@QBE_NPBD@Z	00a63ee0	?Equals@StringDataMethods@@QBE_NPBD@Z
+nf41:e167	013bab10	?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A	01229400	?g_pointer_013bab10@@3UCCountedPointerStatic@@A
+nf41:e167	013bab10	?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A	00786700	?g_SkeletalMorphResourceManager@@3V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A
+nf41:e167	013bab10	?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A	004a2e90	?Instance@CSkeletalMorphResourceManager@@2V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A
+nf41:e69	0143b934	?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A (+0x54: InterpolationSetList[0].WFInterpolate)	00bd7110	?g_interpolationTimes@@3PAUSInterpolationTime@@A
+nf41:e69	0143b934	?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A (+0x54: InterpolationSetList[0].WFInterpolate)	00b9e950	?g_LODTable_0143b934@@3PAUSLODEntry@@A
+nf41:e29	005eabc0	?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z	007d8e20	?PositionMesh@CTCTavernGameSpotTheAddition@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z
+nf41:e29	005eabc0	?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z	008f06f0	?PositionMesh@@YIXPAVCThingObject@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z
+nf41:e68	00ba0fc0	?AddStaticMesh@CEnginePrimitiveManagerStaticMeshesBase@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z	00b32f20	?AddStaticMesh@CEnginePrimitiveManagerStaticMeshesBase@@QAE?AUSHandle_00b32f20@@JJJJJJJJJJJ@Z
+nf44:25	013b9288	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B	00434a30	
+nf44:25	013b9288	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B	00434a60	
+nf44:25	013b9288	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B	0049d8c0	
+nf44:25	013b9288	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B	0049d8e0	
+nf44:25	013b9288	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B	0049d980	
+nf44:25	013b9288	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B	0049dfb0	
+nf44:25	013b9288	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B	0049e1d0	
+nf44:26	013ba8c8	?RegisteredActions@CCreatureActionBase@@0V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@U?$less@W4EActionRegisteredType@@@std@@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@4@@std@@A	00692e50	
+nf44:26	013ba8c8	?RegisteredActions@CCreatureActionBase@@0V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@U?$less@W4EActionRegisteredType@@@std@@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@4@@std@@A	006f5c10	
+nf44:26	013ba8c8	?RegisteredActions@CCreatureActionBase@@0V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@U?$less@W4EActionRegisteredType@@@std@@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@4@@std@@A	00857430	
+nf44:27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	004022b0	
+nf44:27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	009bef80	
+nf44:27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	009c01c0	
+nf44:27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	009c0e50	
+nf44:27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	009d8ad0	
+nf44:27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	009d8b40	
+nf44:27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	009d9a30	
+nf44:27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	00b25c00	
+nf44:27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	00bad2e0	
+nf44:27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	00bcb800	
+nf44:27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	0122a4c0	
+nf44:28	013d2838	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A	006e71f0	
+nf44:28	013d2838	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A	006e7410	
+nf44:28	013d2838	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A	006e7820	
+nf44:28	013d2838	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A	008902e0	
+nf44:28	013d2838	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A	00898c40	
+nf44:28	013d2838	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A	00904380	
+nf44:77	012668ec	??_7CTCInventoryMagic@@6BCTCInventoryBase@NInventory@@@	0072db90	
+nf44:84	0137b730	?LineCollisionAround4Square@CWorldMap@@1QBVC2DCoordI@@B	0063b750	
+nf44:84	0137b730	?LineCollisionAround4Square@CWorldMap@@1QBVC2DCoordI@@B	0063b7f0	
+nf44:96	013babd0	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B	006d0410	
+nf44:96	013babd0	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B	007018b0	
+nf44:96	013babd0	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B	00890970	
+nf44:96	013babd0	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B	00982eb0	
+nf44:96	013babd0	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B	00982f10	
+nf44:96	013babd0	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B	00982f70	
+nf44:96	013babd0	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B	00985f40	
+nf44:104	012b47d0	??_7CSegmentList@@6B@	00c2dbe0	
+nf44:104	012b47d0	??_7CSegmentList@@6B@	00c2dfe0	
+nf44:104	012b47d0	??_7CSegmentList@@6B@	00c2e030	

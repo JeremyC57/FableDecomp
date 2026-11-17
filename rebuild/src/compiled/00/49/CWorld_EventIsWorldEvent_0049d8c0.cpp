@@ -14,20 +14,20 @@
 // Layout: engine/CWorld.h retail opt-in (FABLE_RETAIL_CWORLD, hdr/); engine/CGameEvent.h (Type +0x00). CGameEventDispatch is Ego_r's
 //   (four 16-byte member pointers; the action pointers are declared while CWorld is still incomplete -- unspecified inheritance,
 //   16 bytes -- which gives the 64-byte stride), as the landed 0x0049D8E0 / 0x0049D980.
-// Data: GameEventDispatchTable 0x013B9288 (no PDB data symbol; the landed 0x0049D8E0 spelling).
+// Data: CMainGameComponent::EventDispatch 0x013B9288 (Anniversary PDB LF_STMEMBER; see the NF52 note below).
 #include "engine/CGameEvent.h"
-class CWorld;
-typedef void (CWorld::*TWorldEventFunction)(const CGameEvent* event);
-class CGameEventDispatch { public:                       // Ego_r.pdb, 64 bytes
-    TWorldEventFunction ActionFunction;                  // +0x00
-    TWorldEventFunction LocalActionFunction;             // +0x10
-    unsigned char       FeedbackFunction[0x10];          // +0x20 CDisplayEngine pointer to member
-    unsigned char       ConfirmFunction[0x10];           // +0x30 CDisplayEngine pointer to member
-};
-FABLE_STATIC_ASSERT(sizeof(CGameEventDispatch) == 0x40);
-extern CGameEventDispatch GameEventDispatchTable[];      // 0x013B9288
+// NF52 (round 7): the table is the protected static CMainGameComponent::EventDispatch (?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B,
+// 0x013B9288; Anniversary PDB LF_STMEMBER, the Ego_r / FableWin dynamic initializer, landed 0x0121B9B0), read through FableWin.pdb's
+// public inline ?PeekEventDispatchTableEntry@CMainGameComponent@@QBEPBVCGameEventDispatch@@J@Z on CMainGameComponent::Get() (overlay
+// opt-in FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKEVENTDISPATCHTABLEENTRY); CGameEventDispatch is engine/CGameEventDispatch.h (included
+// before CWorld.h, so the member pointers keep the 16-byte unspecified-inheritance form). Was a local CGameEventDispatch model and the
+// made-up extern GameEventDispatchTable.
+#include "engine/CGameEventDispatch.h"
 #define FABLE_RETAIL_CWORLD
 #include "engine/CWorld.h"
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTDISPATCH
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKEVENTDISPATCHTABLEENTRY
+#include "engine/CMainGameComponent.h"
 
 bool CWorld::EventIsWorldEvent(const CGameEvent* event) const
 {
@@ -37,5 +37,5 @@ bool CWorld::EventIsWorldEvent(const CGameEvent* event) const
 
 const CGameEventDispatch* CWorld::GetEventDispatchTableEntry(long type) const
 {
-    return &GameEventDispatchTable[type];
+    return CMainGameComponent::Get()->PeekEventDispatchTableEntry(type);
 }

@@ -13,10 +13,10 @@ class CThing;
 
 class CTCInventoryMagic { public:
     unsigned char _body[0x140];       // sizeof(CTCInventoryMagic) = 0x140
-    CTCInventoryMagic(CThing* owner);                   // 0x0072DB90
+    CTCInventoryMagic(CThing& owner);                   // 0x0072DB90 ??0CTCInventoryMagic@@QAE@AAVCThing@@@Z (NF52: Ego_r / FableWin take CThing&)
 };
 
 CTCInventoryMagic* __fastcall CTCInventoryMagic_Alloc(CThing* owner)
 {
-    return new CTCInventoryMagic(owner);
+    return new CTCInventoryMagic(*owner);
 }

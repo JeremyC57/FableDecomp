@@ -27,16 +27,26 @@
 //   `def->Probability > GFFloatRandom(..)` (def loaded into edi before the seed call); the advice pick is the engine's
 //   inline LCG (`seed*0x24A1 + 0x24DF`, GFROR13, `% 4`).
 #include "fable_compiler.h"
-class CCharString {
-public:
-    void* PStringData;
-    ~CCharString();                                         // 0x0099EAE0
-    const CCharString& operator=(const char* text);               // 0x0099EFE0
-    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
-};
-CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
+// NF52 (round 7): the made-up table g_OpinionAttitudeNames (0x013BABD0) is the private static
+//   ?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B, read through FableWin.pdb's public inline
+//   ?GetAttitudeString@COpinionReactionManager@@QBEABVCCharString@@W4EOpinionAttitudeType@@@Z of the shared
+//   engine/COpinionReactionManager.h (FABLE_RETAIL_GREETING_PASS23; GetThingAttitudeToPlayer 0x00701840 by _ATTITUDETOPLAYER) on the
+//   manager CWorld::PeekOpinionReactionManager() returns (engine/CWorld.h, inline: the +0x74 Data word). The local CCharString,
+//   EOpinionAttitudeType, COpinionReactionManager and CWorld models are replaced by fable_string.h, engine/EOpinionAttitudeType.h
+//   (OPINION_ATTITUDE_TYPE_LOVE = 12), the opinion header and engine/CWorld.h (static GetFrame 0x0049D870). The courting-advice table
+//   0x013BAB30 (NF41 lead: CTCWife::CourtingAdviceGroupNames) keeps its descriptive global: the CTCWife model stays local (retail layout
+//   differs from engine/CTCWife.h past +0x78).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_GREETING_PASS23
+#define FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTITUDETOPLAYER
+#include "fable_string.h"
+#include "engine/EOpinion.h"
+#include "engine/EOpinionAttitudeType.h"
+#include "engine/CWorld.h"
+class CTCOpinionSource;
+#include "engine/COpinionReactionManager.h"
 
-extern CCharString g_OpinionAttitudeNames[];                // 0x013BABD0
 extern CCharString g_CourtingAdviceGroupNames[4];           // 0x013BAB30
 
 long __fastcall GFROR13(unsigned long value);      // 0x00497890
@@ -48,18 +58,6 @@ FABLE_FORCEINLINE unsigned long GFRandom(unsigned long range, unsigned long* see
     return range ? *seed % range : 0;
 }
 
-class CThing;
-enum EOpinionAttitudeType { OPINION_ATTITUDE_IN_LOVE_COURTING = 12 };
-class COpinionReactionManager { public:
-    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840 Ego_r.pdb + FableWin.pdb ?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z (name-fix 2026-11-12)
-};
-class CWorld {
-public:
-    unsigned char            _pad00[0x74];
-    COpinionReactionManager* OpinionReactionManager;        // +0x74
-    static long __fastcall GetFrame();                            // 0x0049D870
-    COpinionReactionManager* GetOpinionReactionManager() const { return OpinionReactionManager; }
-};
 struct CThingAICreatureFlags {                              // CThingAICreature bitfield run at +0x1C8
     unsigned char _pad00[0x1c8];
     bool PerformingVillageTaskFlag : 1;                     // +0x1c8
@@ -103,10 +101,6 @@ class CTCWife : public CTCBase { public:
     unsigned char            _pad68[0x91 - 0x68];
     bool                     ReceivedWeddingRing;           // +0x91 (retail)
     bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetFrame(); }
-    EOpinionAttitudeType GetAttitudeToPlayer(CThing* thing) const
-    {
-        return PeekWorld().GetOpinionReactionManager()->GetThingAttitudeToPlayer(*thing);
-    }
     bool IsOfferingSex() const;                             // 0x006CEEA0
     bool IsCourtingHero() const;                            // 0x006CF890
     bool IsWillingToMarry() const;                          // 0x006CFEC0
@@ -121,7 +115,9 @@ bool CTCWife::GetGreetDialogueGroupName(CCharString& groupName) const
             FrameLastGaveSexOffer = GetWorld().GetFrame();
             return true;
         }
-        groupName = "TEXT_AI_WIFE_OPINION_ACT_GREET_TO_HERO_" + g_OpinionAttitudeNames[GetAttitudeToPlayer(ParentThing)];
+        const CThing& thing = *ParentThing;
+        const COpinionReactionManager& manager = PeekWorld().PeekOpinionReactionManager();
+        groupName = "TEXT_AI_WIFE_OPINION_ACT_GREET_TO_HERO_" + manager.GetAttitudeString(manager.GetThingAttitudeToPlayer(thing));
         return true;
     }
     if (!IsCourtingHero())
@@ -130,7 +126,7 @@ bool CTCWife::GetGreetDialogueGroupName(CCharString& groupName) const
         groupName = "TEXT_AI_COMMENT_COURTSHIP_MARRIAGE";
         return true;
     }
-    if (IsCourtingHero() && OpinionAttitude == OPINION_ATTITUDE_IN_LOVE_COURTING) {
+    if (IsCourtingHero() && OpinionAttitude == OPINION_ATTITUDE_TYPE_LOVE) {
         if (ReceivedWeddingRing)
             groupName = "TEXT_AI_COMMENT_COURTSHIP_NEED_HOUSE";
         else

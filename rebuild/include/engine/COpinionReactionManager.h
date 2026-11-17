@@ -62,6 +62,19 @@ private:
 public:
 #endif
     void SetThingOpinionSource(CThing* thing);                           // 0x00700770
+#ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTITUDETOPLAYERASSTRING
+    // Opt-in (NF52, row 0x007018B0): Ego_r.pdb 0x00551D70 / FableWin.pdb 0x01F16020
+    // ?GetThingAttitudeToPlayerAsString@COpinionReactionManager@@QBEABVCCharString@@ABVCThing@@@Z (public const), retail 0x007018B0, and
+    // the private ?GetAttitudeOrReactionType@COpinionReactionManager@@ABE?AW4EOpinionReactionType@@ABVCThing@@_NPB_NPBVCTCOpinionSource@@@Z
+    // it calls (out of line, 0x00701010; FABLE_RETAIL_CTCWIFE_MARRY declares the same member). The includer declares the enums and
+    // CTCOpinionSource. Declarations only, no layout change.
+    const CCharString& GetThingAttitudeToPlayerAsString(const CThing& thing) const;   // 0x007018B0
+#ifndef FABLE_RETAIL_CTCWIFE_MARRY
+private:
+    EOpinionReactionType GetAttitudeOrReactionType(const CThing&,bool,const bool*,const CTCOpinionSource*)const;   // 0x00701010
+public:
+#endif
+#endif
 #ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTACHOPINIONSOURCE
     // Retail opt-in (acctC wfA1, row 0x00682810 CTCCreatureOpinionOfHero::InformOfDeed): Ego_r.pdb
     // ?AttachOpinionSource@COpinionReactionManager@@QBE_NAAVCThing@@ABVCCharString@@PAPAVCTCOpinionSource@@@Z, out of line in retail

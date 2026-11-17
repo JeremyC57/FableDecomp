@@ -35,7 +35,16 @@ struct CSegment {
 class CSegmentList:public PKCTRList<CSegment> {
 public:
  CSegmentList():PKCTRList<CSegment>(&Tree),Tree(0){}
+#ifdef FABLE_RETAIL_CSEGMENTLIST_CTOR_ALLOCATOR
+ // Native C2DFE0 (ret 4): impl4=&Tree8, vtable012b47d0, tree constructed C194F0 from the argument.
+ CSegmentList(PKCTRAllocator* allocator);
+#endif
+#ifdef FABLE_RETAIL_CSEGMENTLIST_DTOR_OUTOFLINE
+ // Native C2E030: out-of-line copy of the inline destructor (??_G C2E080 calls it).
+ virtual ~CSegmentList();
+#else
  virtual ~CSegmentList(){}
+#endif
  virtual int IsEqual(const void*,const void*)const;
  virtual int IsLess(const void*,const void*)const;
  virtual int IsKeyEqual(const void*,const void*)const;

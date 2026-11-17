@@ -20,52 +20,33 @@
 // the tilt is (1.0 - cos) * 0.25 negated for a negative turn and lives in the dead `orientation` argument slot; the lift
 // is sin clamped at 0.0f and CurrentPos = pos + Up * lift * Width * 0.5f, left to right through C3DVector temporaries.
 // cos/sin are the /Oi intrinsics (fcos/fsin).
-class CThingObject;
-#pragma pack(push, 1)
+// NF52 (round 7): moved onto the shared headers so the callee binds Ego_r/FableWin
+//   ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z (public static __fastcall, engine/CTCTavernGame.h
+//   opt-in FABLE_RETAIL_CTCTAVERNGAME_POSITIONMESH; was a made-up global ?PositionMesh@@YIXPAVCThingObject@@...). Local CCard /
+//   CRightHandedSet / CMainGameComponent models deleted: engine/CCard.h (overlay opt-in FABLE_RETAIL_CCARD_FRAMEUPDATE declares
+//   this method), engine/CRightHandedSet.h (FABLE_RETAIL_CRIGHTHANDEDSET: Up is protected, read through the inline GetUp()),
+//   engine/CMainGameComponent.h; C3DVector byte-packed (FABLE_RETAIL_C3DVECTOR_PACKED, as the CCard.h users 0x007D6870 do;
+//   was #pragma pack(1) around the local models). CCard::Thing is a CThingObject* (CThing first base) handed to the CThing* parameter.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCTAVERNGAME
+#define FABLE_RETAIL_CTCTAVERNGAME_POSITIONMESH
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#define FABLE_RETAIL_CCARD_FRAMEUPDATE
+#include "stlport/fable_containers.h"
 #include "engine/C3DVector.h"
-class CRightHandedSet {
-public:
-    C3DVector Up;                             // +0x00
-    C3DVector Forward;                        // +0x0c
-};
-class CCard {
-public:
-    CThingObject* Thing;                      // +0x00
-    long      Name;                           // +0x04
-    long      Value;                          // +0x08
-    float     InitialRotation;                // +0x0c
-    float     FinalRotation;                  // +0x10
-    float     TurnSpeed;                      // +0x14
-    float     TurnFraction;                   // +0x18
-    float     MoveSpeed;                      // +0x1c
-    float     MoveFraction;                   // +0x20
-    bool      Turning;                        // +0x24
-    bool      FaceDown;                       // +0x25
-    bool      Moving;                         // +0x26
-    C3DVector LocalPos;                       // +0x27
-    C3DVector NewLocalPos;                    // +0x33
-    C3DVector CurrentPos;                     // +0x3f
-    unsigned char _pad4b;                     // +0x4b
-    float     Width;                          // +0x4c
-    float     Height;                         // +0x50
-    long      Index;                          // +0x54
-    void FrameUpdate(const C3DVector& position, const CRightHandedSet& orientation);
-};
-#pragma pack(pop)
-
-class CMainGameComponent {
-protected:
-    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
-public:
-    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
-};
+#include "engine/CRightHandedSet.h"
+#include "engine/CCard.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CTCTavernGame.h"
 static const float TWO_PI = 6.2831855f;       // double pool 0x0124F2B8 = (double)6.2831855f
 extern "C" double __cdecl cos(double);
 extern "C" double __cdecl sin(double);
 #pragma intrinsic(cos, sin)
-void __fastcall PositionMesh(CThingObject* piece, const C3DVector& pos, const CRightHandedSet& rh,
-                             const C3DVector& offset, float tilt, float scale);   // 0x005EABC0
-
 void CCard::FrameUpdate(const C3DVector& position, const CRightHandedSet& orientation)
 {
     float dt = 1.0f / CMainGameComponent::GetConstantFPS();
@@ -99,10 +80,10 @@ void CCard::FrameUpdate(const C3DVector& position, const CRightHandedSet& orient
         float lift = (float)sin(angle);
         if (lift < 0.0f)
             lift = 0.0f;
-        CurrentPos = pos + orientation.Up * lift * Width * 0.5f;
+        CurrentPos = pos + orientation.GetUp() * lift * Width * 0.5f;
     } else {
         tilt = FinalRotation;
         CurrentPos = pos;
     }
-    PositionMesh(Thing, position, orientation, CurrentPos, tilt, 0.5f);
+    CTCTavernGame::PositionMesh((CThing*)Thing, position, orientation, CurrentPos, tilt, 0.5f);
 }

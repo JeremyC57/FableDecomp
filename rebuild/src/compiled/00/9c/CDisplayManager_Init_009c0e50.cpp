@@ -16,10 +16,11 @@
 // parameters come from an inline member-init ctor; the exception is an empty class with a user ctor (no zero store; the byte copy reads the
 // dead bool slot); the render-manager base is polymorphic so the derived ctor overwrites the vptr and the object is 0x3ea4 bytes.
 // Leaf: Init
-class CWideString { public:
-    void* m_pData;
-    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-};
+// NF52 (round 7): the made-up global g_ShaderRenderManager (0x013BC470) is the private static
+//   ?SingletonInstance@CShaderRenderManager@@0V1@A, reached through the public inline ?Get@CShaderRenderManager@@SIAAV1@XZ of the
+//   shared engine/CShaderRenderManager.h (its Initialise 0x0098ACF0 declaration too); the local CShaderRenderManager and CWideString
+//   models are deleted (the header brings fable_string.h's CWideString: operator= 0x0099B7D0 out of line).
+#include "engine/CShaderRenderManager.h"
 struct IDirect3DDevice9;
 struct D3DCAPS9 { unsigned char _body[0x130]; };
 struct IDirect3D9 {
@@ -44,10 +45,6 @@ class CRenderManager : public CRenderManager2D { public:             // vtable 0
         : CRenderManager2D(displayManager, fontPath, b) {}
     virtual ~CRenderManager();
 };
-class CShaderRenderManager { public:
-    void Initialise(CRenderManager* renderManager, IDirect3DDevice9* device);   // 0x0098ACF0
-};
-extern CShaderRenderManager g_ShaderRenderManager;    // 0x013BC470
 struct CDynamicTextureList {                           // 0x14 bytes
     unsigned char _body[0x14];
     CDynamicTextureList();                             // 0x009F70E0
@@ -171,7 +168,7 @@ void CDisplayManager::Init(const CDisplayManagerInit& init, bool windowed)
         PRenderManager = new CRenderManager(this, FontPath, init.RenderFlags);
         PRenderManager->Init(PDevice);
         if (UseShaders)
-            g_ShaderRenderManager.Initialise(PRenderManager, PDevice);
+            CShaderRenderManager::Get().Initialise(PRenderManager, PDevice);
     }
     InitVirtualPixels();
 }

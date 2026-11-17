@@ -1,17 +1,18 @@
 // 0085b720 CGetMatchingStrikeEndEventName::operator()
 // Flags: /O2 /Oy /W3
 // Leaf: ??RCGetMatchingStrikeEndEventName@StrikeEvents@@
+// NF52 (round 7) attempt: CCharString from fable_string.h (StartsWith / operator== inline), replacing the StrikeEvents CCharString /
+// CBasicStringData / CBasicString models and the Text / StartsWith / Equal helpers.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_STARTSWITH
 #include "fable_compiler.h"
+#include "fable_string.h"
 #include <stdlib.h>
 #include <new>
 #include <string.h>
 namespace StrikeEvents{
 // Layout: retail CBasicStringData is17 bytes: text0,length4,capacity8,growth12,refs13.
-#pragma pack(push,1)
-struct CBasicStringData{char*PData;unsigned StringLength,DataLength;bool UseFastExtend;int RefCount;};
-#pragma pack(pop)
-struct CCharString{CBasicStringData*PData;CCharString();CCharString(const CCharString&);~CCharString();};
-template<class T>struct CBasicString{static int __fastcall Compare(const T*,const T*);};
+using ::CCharString;
 namespace std{
 template<class A,class B>struct pair{A first;B second;};
 template<class T>struct vector{T*_M_start,*_M_finish,*_M_end_of_storage;FABLE_FORCEINLINE vector():_M_start(0),_M_finish(0),_M_end_of_storage(0){}~vector();};
@@ -20,9 +21,8 @@ template<class T>struct vector{T*_M_start,*_M_finish,*_M_end_of_storage;FABLE_FO
 struct CStrikeEvent{bool Legacy,PrimaryLegacy,Weapon;CCharString HelperPointName;long StrikeEventIndex,StartFrame,EndFrame;unsigned char PWeapon[8];unsigned char StruckThingList[12];};
 extern long FramesPerSecond;
 extern CCharString StrikeStartCarried,StrikeEndCarried,StrikeStart,StrikeEnd,CombatStrike,CombatStop,CombatStrike2,CombatStop2;
-FABLE_FORCEINLINE const char*Text(const CCharString&s){return s.PData?s.PData->PData:"";}
-FABLE_FORCEINLINE bool StartsWith(const CCharString&s,const CCharString&p){return strncmp(Text(s),Text(p),p.PData?p.PData->StringLength:0)==0;}
-FABLE_FORCEINLINE bool Equal(const CCharString&,const CCharString&);
+FABLE_FORCEINLINE bool StartsWith(const CCharString&s,const CCharString&p){return s.StartsWith(p);}
+FABLE_FORCEINLINE bool Equal(const CCharString&a,const CCharString&b){return a==b;}
 __declspec(noinline)bool __fastcall IsValidStrikeEventName(const CCharString&name,bool&start,bool&weapon,bool&legacy,bool&primaryLegacy){
  weapon=false;bool a=StartsWith(name,StrikeStartCarried),b=StartsWith(name,StrikeEndCarried);
  if(!a&&!b){a=StartsWith(name,StrikeStart);b=StartsWith(name,StrikeEnd);}else weapon=true;
@@ -35,7 +35,6 @@ __declspec(noinline)bool __fastcall IsValidStrikeEventName(const CCharString&nam
  return false;
 }
 void __fastcall GetHelperPointNamesFromStrikeEventName(const CCharString&,std::vector<CCharString>&,bool,bool,bool);
-FABLE_FORCEINLINE bool Equal(const CCharString&a,const CCharString&b){if(a.PData==b.PData)return true;if(!a.PData||!b.PData)return false;if(a.PData->StringLength!=b.PData->StringLength)return false;return CBasicString<char>::Compare(a.PData->PData,b.PData->PData)==0;}
 // Layout: PDB functor12 bytes: StrikeEvent0,BestEventEndFrame4,FoundEvent8.
 struct CGetMatchingStrikeEndEventName{CStrikeEvent*StrikeEvent;long BestEventEndFrame;bool FoundEvent;void operator()(const std::pair<CCharString,float>&);};
 void CGetMatchingStrikeEndEventName::operator()(const std::pair<CCharString,float>&event){

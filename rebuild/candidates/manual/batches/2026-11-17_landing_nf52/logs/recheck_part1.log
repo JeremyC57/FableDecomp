@@ -1,0 +1,79 @@
+addr       parity           behav  name
+00434a30   RELOCATION_MATCH PASS   ReceiveFeedbackGameEvent
+0049d8e0   RELOCATION_MATCH PASS   GetEventDispatchTableEntry
+0049e1d0   RELOCATION_MATCH PASS   ReceiveLocalEvent
+004d2f46   WARN SHARED_HEADER_AVAILABLE CTCInventoryMagic
+004d2f46   RELOCATION_MATCH PASS   Alloc
+00580194   WARN SHARED_HEADER_AVAILABLE CStringParser
+00580194   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00580194   WARN SHARED_HEADER_AVAILABLE CHeroMarriageInfo
+00580194   RELOCATION_MATCH PASS   TransferIn
+0063d960   WARN SHARED_HEADER_AVAILABLE C3DVector
+0063d960   WARN SHARED_HEADER_AVAILABLE C2DCoordI
+0063d960   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0063d960   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0063d960   RELOCATION_MATCH PASS   FindLastUnblockedGroundPositionAndReportCollision
+006e71f0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+006e71f0   WARN SHARED_HEADER_AVAILABLE CWorld
+006e71f0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+006e71f0   RELOCATION_MATCH PASS   Rest
+007018b0   RELOCATION_MATCH PASS   GetThingAttitudeToPlayerAsString
+007d8e20   WARN RELOC_NAME: ?KillThing@CTCTavernGameSpotTheAddition@@QAEXPAVCThing@@@Z -> 005e9a60 labelled 'std::_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>'
+007d8e20   RELOCATION_MATCH PASS   FrameUpdate
+0085b720   WARN RELOC_NAME: ?FramesPerSecond@StrikeEvents@@3JA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+0085b720   RELOCATION_MATCH PASS   operator()
+00898c40   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898c40   RELOCATION_MATCH PASS   GiveHeroItemsFromContainer
+008f06f0   RELOCATION_MATCH PASS   FrameUpdate
+00982f10   RELOCATION_MATCH PASS   WifeGeneralUpdate
+009c01c0   WARN SHARED_HEADER_AVAILABLE CRenderManager
+009c01c0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+009c01c0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+009c01c0   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+009c01c0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009c01c0   WARN SHARED_HEADER_AVAILABLE CBusyResourceManager
+009c01c0   WARN RELOC_NAME: ??1CBusyResourceManager@@QAE@XZ -> 00a61b10 labelled 'CDirectInputDeviceLists_00a61b10::~CDirectInputDeviceLists_00a61b10'
+009c01c0   RELOCATION_MATCH PASS   ~CDisplayManager
+009d8b40   RELOCATION_MATCH PASS   ~CScopedShadersEnable
+00b25c00   WARN SHARED_HEADER_AVAILABLE CRenderStateManager
+00b25c00   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectColourFilter
+00b25c00   WARN SHARED_HEADER_AVAILABLE CEngine
+00b25c00   RELOCATION_MATCH PASS   RenderColorFilteredQuad
+00bad2e0   WARN SHARED_HEADER_AVAILABLE CRenderStateCaptureBlock
+00bad2e0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager
+00bad2e0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bad2e0   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveBase
+00bad2e0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager
+00bad2e0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerSprites
+00bad2e0   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00bad2e0   RELOCATION_MATCH PASS   RenderSubPrimitive
+00c2dbe0   WARN RELOC_NAME: ??1CBufferedRangeReader@@QAE@XZ -> 00c3a9d0 labelled 'std::_Dest_val<std::allocator<NScript::CQ_BountyHuntScript::TeleportData>,NScript::CQ_BountyHuntScript::TeleportData>'
+00c2dbe0   WARN STANDIN_LEAF ??1CSegmentFile@@QAE@XZ (catalog _global::TeleportData_Destructor_WithUnwind; names another function)
+00c2dbe0   RELOCATION_MATCH[/EHsc] PASS   TeleportData_Destructor_WithUnwind
+00ddc6c0   WARN SHARED_HEADER_AVAILABLE CQ_PrisonRaceScript
+00ddc6c0   RELOCATION_MATCH PASS   Main
+01213bc8   RELOCATION_MATCH PASS   Unwind@01213bc8
+01213b60   RELOCATION_MATCH PASS   Unwind@01213b60
+
+WINS: 21
+  00434a30 RELOCATION_MATCH CDisplayEngine::?ReceiveFeedbackGameEvent@CDisplayEngine_Methods@@QAEXPBVCGameEvent@@@Z
+  0049d8e0 RELOCATION_MATCH CWorld::?GetEventDispatchTableEntry@CWorld@@IBEPBVCGameEventDispatch@@J@Z
+  0049e1d0 RELOCATION_MATCH CWorld::?ReceiveLocalEvent@CWorld_Methods@@QAEXPBVCGameEvent@@@Z
+  004d2f46 RELOCATION_MATCH CTCInventoryMagic::Alloc
+  00580194 RELOCATION_MATCH CPersistTraits<CHeroMarriageInfo>::?TransferIn@?$CPersistTraits@VCHeroMarriageInfo@@
+  0063d960 RELOCATION_MATCH CWorldMap::FindLastUnblockedGroundPositionAndReportCollision
+  006e71f0 RELOCATION_MATCH CGameScriptInterface::Rest
+  007018b0 RELOCATION_MATCH COpinionReactionManager::?GetThingAttitudeToPlayerAsString@COpinionReactionManager@@QBEABVCCharString@@ABVCThing@@@Z
+  007d8e20 RELOCATION_MATCH CTCTavernGameSpotTheAddition::?FrameUpdate@CTCTavernGameSpotTheAddition@@UAEXXZ
+  0085b720 RELOCATION_MATCH CGetMatchingStrikeEndEventName::??RCGetMatchingStrikeEndEventName@StrikeEvents@@
+  00898c40 RELOCATION_MATCH CGameScriptInterface::?GiveHeroItemsFromContainer@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z
+  008f06f0 RELOCATION_MATCH CCard::?FrameUpdate@CCard@@QAEXABVC3DVector@@ABVCRightHandedSet@@@Z
+  00982f10 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::WifeGeneralUpdate
+  009c01c0 RELOCATION_MATCH CDisplayManager::??1CDisplayManager@@UAE@XZ
+  009d8b40 RELOCATION_MATCH CScopedShadersEnable::??1CScopedShadersEnable@@QAE@XZ
+  00b25c00 RELOCATION_MATCH CEngine::RenderColorFilteredQuad
+  00bad2e0 RELOCATION_MATCH CEnginePrimitiveManagerSprites::RenderSubPrimitive
+  00c2dbe0 RELOCATION_MATCH[/EHsc] _unattributed::??1CSegmentFile@@QAE@XZ
+  00ddc6c0 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CWaypointSpeedCheck::?Main@CWaypointSpeedCheck@CQ_PrisonRaceScript@NScript@@EAEXXZ
+  01213bc8 RELOCATION_MATCH _global::Unwind@01213bc8
+  01213b60 RELOCATION_MATCH _global::Unwind@01213b60

@@ -110,8 +110,12 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
     // 0x00449970
-struct CScriptRunner;
-extern CScriptRunner* g_pScriptRunner;                  // 0x013D2838
+// NF52 (round 7): the running script process at 0x013D2838 is the established ?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A
+// (descriptive, the spelling of the landed 0x00A44660 InternalSwitchToProcess / 0x00A44880 RunSuspendableProcess that store it) over
+// engine/CSuspendableProcessMicrothread.h: StopRunning +0x05 (CASuspendableProcess) and the slot-2 virtual SuspendSuspendableProcess
+// (the frame yield). Was the local CScriptRunner stand-in (m_bStopRequested / YieldFrame).
+#include "engine/CSuspendableProcessMicrothread.h"
+extern CSuspendableProcessMicrothread* g_pScriptRunner;   // 0x013D2838
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

@@ -1,0 +1,119 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0049D980	CWorld	ProcessEvent	?ProcessEvent@CWorld@@IAEXPBVCGameEvent@@@Z	CWorld_Methods::ProcessEvent	?ProcessEvent@CWorld_Methods@@IAEXPBVCGameEvent@@@Z	Ego_r.pdb 0x004A6CD0 and FableWin.pdb 0x01B478D0 ?ProcessEvent@CWorld@@IAEXPBVCGameEvent@@@Z (protected); the row reads ActionFunction (+0x00) as the Ego_r body; no E8 caller (callers.py), Update 0x0049DFB0 expands it; declared through overlay opt-in FABLE_RETAIL_CWORLD_PROCESSEVENT; graded RELOCATION_MATCH, objdump -t shows the leaf
+0x00434A60	CDisplayEngine	ConfirmFeedbackGameEventPackage	?ConfirmFeedbackGameEventPackage@CDisplayEngine@@QAEXPBVCGameEventPackage@@@Z	CDisplayEngine::ConfirmFeedbackGameEventPackage	?ConfirmFeedbackGameEventPackage@CDisplayEngine@@QAEXAAVCGameEventPackage@@@Z	leaf-only (parameter CGameEventPackage& -> const CGameEventPackage*): Ego_r.pdb 0x00446850 and FableWin.pdb 0x01ADE440 ?ConfirmFeedbackGameEventPackage@CDisplayEngine@@QAEXPBVCGameEventPackage@@@Z, the declaration engine/CDisplayEngine.h FABLE_RETAIL_CDISPLAYENGINE_EVENTPACKAGES already carries; the only E8 caller 0x0041726D already binds this spelling (reloc_bindings.tsv); graded RELOCATION_MATCH
+0x00890970	CGameScriptInterface	GetOpinionAttitudeAsString	?GetOpinionAttitudeAsString@CGameScriptInterface@@UBEXW4EOpinionAttitudeType@@AAVCCharString@@@Z	CGameScriptInterface::GetOpinionAttitudeAsString	?CGameScriptInterface_GetOpinionAttitudeAsString@@YGXHPAUStrDest@@@Z	leaf only (the catalog name already right): Ego_r.pdb 0x008CD7F0 and FableWin.pdb 0x02A8FA90 ?GetOpinionAttitudeAsString@CGameScriptInterface@@UBEXW4EOpinionAttitudeType@@AAVCCharString@@@Z; engine/CGameScriptInterface.h vtable slot 607 names 0x00890970; virtual, reached through the vtable only (no E8 caller, no reloc_bindings line); graded RELOCATION_MATCH
+0x007018B0	COpinionReactionManager	GetThingAttitudeToPlayerAsString	?GetThingAttitudeToPlayerAsString@COpinionReactionManager@@QBEABVCCharString@@ABVCThing@@@Z	COpinionReactionManager::GetThingAttitudeToPlayerAsString	?GetThingAttitudeToPlayerAsString@COpinionReactionManager@@QAEABVCCharString@@PBVCThing@@@Z	leaf only (const member, const CThing& parameter): Ego_r.pdb 0x00551D70 and FableWin.pdb 0x01F16020 ?GetThingAttitudeToPlayerAsString@COpinionReactionManager@@QBEABVCCharString@@ABVCThing@@@Z, declared by overlay opt-in FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTITUDETOPLAYERASSTRING; graded RELOCATION_MATCH. Its one E8 caller 0x008909C0 binds the stand-in ?GetThingAttitudeToPlayerAsString@COpinionReactionManager_Retail@@QAEABVCCharString@@PAUCThing_Retail@@@Z both before and after (not in this slice: NAME_FIXES.tsv)
+0x008D0110	CGameScriptThing	IsNull	?IsNull@CGameScriptThing@@UBE_NXZ	CGameScriptThing::IsNull	?CGameScriptThing_IsNull@@YI_NPBVCGameScriptThing@@@Z	leaf only (catalog name already right): Ego_r.pdb 0x00907140 and FableWin.pdb 0x02B007A0 ?IsNull@CGameScriptThing@@UBE_NXZ, override of CScriptThing slot 77 (engine/CScriptThing.h); declared by overlay opt-in FABLE_RETAIL_CGAMESCRIPTTHING_ISNULL; virtual, no E8 caller and no reloc_bindings caller line; graded RELOCATION_MATCH
+0x0085B720	CGetMatchingStrikeEndEventName	operator()	??RCGetMatchingStrikeEndEventName@StrikeEvents@@QAEXABU?$pair@VCCharString@@M@std@1@@Z	CGetMatchingStrikeEndEventName::operator()	??RCGetMatchingStrikeEndEventName@StrikeEvents@@QAEXABU?$pair@UCCharString@StrikeEvents@@M@std@1@@Z	leaf only, parameter type: the pair now holds the shared ::CCharString (class V) instead of the stand-in StrikeEvents::CCharString; the // Leaf: prefix ??RCGetMatchingStrikeEndEventName@StrikeEvents@@ is unchanged and the owner is still the stand-in namespace (its E8 callers 0x00859A70 / 0x0085B840 bind other stand-in spellings, unchanged: NAME_FIXES.tsv); graded RELOCATION_MATCH
+0x0063B750	CWorldMap	FindMaxGroundZInCell	?FindMaxGroundZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z	CWorldMap::FindMaxGroundZInCell	?FindMaxGroundZInCell@CWorldMap@@QBEMPBVC3DVector@@@Z	access only (protected): Ego_r.pdb 0x006E78E0 ?FindMaxGroundZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z (not in FableWin.pdb's name set); declared by overlay opt-in FABLE_RETAIL_CWORLDMAP_FINDMAXZINCELL; its only E8 caller 0x0063D960 is respelled in the same pass (section 2); graded RELOCATION_MATCH
+0x0063B7F0	CWorldMap	FindMaxThemeZInCell	?FindMaxThemeZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z	CWorldMap::FindMaxThemeZInCell	?FindMaxThemeZInCell@CWorldMap@@QBEMPBVC3DVector@@@Z	access only (protected): Ego_r.pdb 0x006E7A00 ?FindMaxThemeZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z; declared by overlay opt-in FABLE_RETAIL_CWORLDMAP_FINDMAXZINCELL; its only E8 caller 0x0063DB30 already binds the IBE spelling (compiled repo copy; reloc_bindings.tsv still shows the older stand-in FindMaxThemeMinCameraZInCell); graded RELOCATION_MATCH
+0x0072DB90	CTCInventoryMagic	CTCInventoryMagic	??0CTCInventoryMagic@@QAE@AAVCThing@@@Z	CTCInventoryMagic::CTCInventoryMagic	??0CTCInventoryMagic@@QAE@PAVCThing@@@Z	leaf only (parameter CThing* -> CThing&): Ego_r.pdb 0x00744AB0 and FableWin.pdb 0x025552E0 ??0CTCInventoryMagic@@QAE@AAVCThing@@@Z; declared by overlay opt-in FABLE_RETAIL_CTCINVENTORYMAGIC_CTOR; its only E8 caller 0x004D2F46 is respelled in the same pass (section 2); graded RELOCATION_MATCH
+0x00C2DFE0	CSegmentList	CSegmentList	??0CSegmentList@@QAE@PAUPKCTRAllocator@@@Z	CVtable_012b47d0::CVtable_012b47d0	??0CVtable_012b47d0@@QAE@PAX@Z	descriptive (libpk ships no PDB): vftable 0x012B47D0 is ??_7CSegmentList@@6B@ (libpk/CSegmentFile.h, NF44 entry 104); the argument goes to PKCTRRedblackTree(PKCTRAllocator*) @ 0x00C194F0 (PKCTRRedblackTree.h); declared by overlay opt-in FABLE_RETAIL_CSEGMENTLIST_CTOR_ALLOCATOR; no E8/E9 callers; graded RELOCATION_MATCH
+0x00C2E030	CSegmentList	~CSegmentList	??1CSegmentList@@UAE@XZ	CVtable_012b47d0::~CVtable_012b47d0	??1CVtable_012b47d0@@QAE@XZ	descriptive (libpk ships no PDB): vftable 0x012B47D0 = ??_7CSegmentList@@6B@; out-of-line copy of the header inline virtual dtor (??1CSegmentList@@UAE@XZ, already the symbol the CSegmentFile EH funclets 0x01213BB0/0x01213BD0 bind); opt-in FABLE_RETAIL_CSEGMENTLIST_DTOR_OUTOFLINE; ??_G caller 0x00C2E080 is a T:: stand-in (NAME_FIXES); graded RELOCATION_MATCH
+0x00B32F20	CEnginePrimitiveRenderer	AddStaticMesh	?AddStaticMesh@CEnginePrimitiveRenderer@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z	CEnginePrimitiveRenderer::AddStaticMesh	?AddStaticMesh@CEnginePrimitiveRenderer@@QAE?AUSHandle_00b32f20@@JJJJJJJJJJJ@Z	leaf only (made-up SHandle/long parameters -> PDB types): Ego_r.pdb / FableWin.pdb spelling quoted by the header opt-in FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDSTATICMESH (wf1, 0x00B32F20); its E8 caller 0x00BFA920 already binds this spelling; graded RELOCATION_MATCH
+0x01229400	CTBaseSingleton<CSkeletalMorphResourceManager>	`dynamic atexit destructor for 'PClass''	_$E2	_global::Release_013bab10	?Release_013bab10@@YAXXZ	compiler-generated: the atexit destructor of the definition of CTBaseSingleton<CSkeletalMorphResourceManager>::PClass (?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A, NF41 e167; 0x013BAB10/14 Data/Info); VC7.1 names a template static member's atexit destructor with the TU-local _$E2 (no public ??__F symbol), its dynamic initializer _$E1 = retail 0x0121E180 (push 01229400h ; call atexit); graded RELOCATION_MATCH + PASS
+# Section 2
+0x004022B0	?g_FableRenderStateStorage_013BC470@@3EA	?SingletonInstance@CShaderRenderManager@@0V1@A
+0x00434A30	?GameEventDispatchTable@@3PAVCGameEventDispatch@@A	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B
+0x00434A60	?ConfirmFeedbackGameEventPackage@CDisplayEngine@@QAEXAAVCGameEventPackage@@@Z	?ConfirmFeedbackGameEventPackage@CDisplayEngine@@QAEXPBVCGameEventPackage@@@Z
+0x00434A60	?GetEvent@CGameEventPackage@@QAEPAVCGameEvent@@K@Z	?GetEvent@CGameEventPackage@@QBEPBVCGameEvent@@K@Z
+0x00434A60	?GetNoEvents@CGameEventPackage@@QAEKXZ	?GetNoEvents@CGameEventPackage@@QBEKXZ
+0x00434A60	?g_GameEventHandlers@@3PAUSGameEventHandler@@A	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B
+0x0049D8C0	?GameEventDispatchTable@@3PAVCGameEventDispatch@@A	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B
+0x0049D8E0	?GameEventDispatchTable@@3PAVCGameEventDispatch@@A	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B
+0x0049D980	?GameEventDispatchTable@@3PAVCGameEventDispatch@@A	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B
+0x0049D980	?ProcessEvent@CWorld_Methods@@IAEXPBVCGameEvent@@@Z	?ProcessEvent@CWorld@@IAEXPBVCGameEvent@@@Z
+0x0049DFB0	?SetCurrentThingManager@@YIXPAVCThingManager@@@Z	?SetCurrentThingManager@CThing@@SIXAAVCThingManager@@@Z
+0x0049DFB0	?g_GameEventHandlers@@3PAUSGameEventHandler@@A	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B
+0x0049E1D0	?GameEventDispatchTable@@3PAVCGameEventDispatch@@A	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B
+0x004A2E90	?Instance@CSkeletalMorphResourceManager@@2V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A	?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A
+0x004A2E90	?ReleaseResources@CSkeletalMorphResourceManager@@QAEXXZ	?UnloadBoneConfigs@CSkeletalMorphResourceManager@@QAEXXZ
+0x004AF5B0	?Compare_00411570@@YIJPBD0@Z	?Compare@?$CBasicString@D@@KIJPBD0@Z
+0x004D2F46	??0CTCInventoryMagic@@QAE@PAVCThing@@@Z	??0CTCInventoryMagic@@QAE@AAVCThing@@@Z
+0x004FC210	?CompareText@@YIJPBD0@Z	?Compare@?$CBasicString@D@@KIJPBD0@Z
+0x0051FC20	?Compare_00411570@@YIHPBD0@Z	?Compare@?$CBasicString@D@@KIJPBD0@Z
+0x00580194	?Compare@CBasicStringChar@@SIJPBD0@Z	?Compare@?$CBasicString@D@@KIJPBD0@Z
+0x0063B750	?FindMaxGroundZInCell@CWorldMap@@QBEMPBVC3DVector@@@Z	?FindMaxGroundZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z
+0x0063B750	?g_CellCornerOffsets@@3PAUCCellCornerOffset@@A	?LineCollisionAround4Square@CWorldMap@@1QBVC2DCoordI@@B
+0x0063B7F0	?FindMaxThemeZInCell@CWorldMap@@QBEMPBVC3DVector@@@Z	?FindMaxThemeZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z
+0x0063B7F0	?g_CellCornerOffsets@@3PAUCCellCornerOffset@@A	?LineCollisionAround4Square@CWorldMap@@1QBVC2DCoordI@@B
+0x0063D960	?CreateLineSegment@CWorldMap@@QBE_NPBVC3DVector@@0PAV2@1@Z	?CreateLineSegment@CWorldMap@@IBE_NPBVC3DVector@@0PAV2@1@Z
+0x0063D960	?FindMaxGroundZInCell@CWorldMap@@QBEMPBVC3DVector@@@Z	?FindMaxGroundZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z
+0x00692E50	?Registry@CCreatureActionBase@@1V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@A	?RegisteredActions@CCreatureActionBase@@1V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@U?$less@W4EActionRegisteredType@@@std@@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@4@@std@@A
+0x00692E50	?find@?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE?AViterator@12@ABW4EActionRegisteredType@@@Z	?find@?$_Rb_tree@W4EActionRegisteredType@@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@U?$_Select1st@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@3@U?$less@W4EActionRegisteredType@@@3@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@2@@2@ABW4EActionRegisteredType@@@Z
+0x006D0410	?g_OpinionAttitudeNames@@3PAVCCharString@@A	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B
+0x006E71F0	?g_pScriptRunner@@3PAUCScriptRunner@@A	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A
+0x006E7410	?g_guard@@3PAUGuard@@A	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A
+0x006E7820	?g_pScriptRunner@@3PAUCScriptRunner@@A	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A
+0x007018B0	?GetThingAttitudeToPlayerAsString@COpinionReactionManager@@QAEABVCCharString@@PBVCThing@@@Z	?GetThingAttitudeToPlayerAsString@COpinionReactionManager@@QBEABVCCharString@@ABVCThing@@@Z
+0x007018B0	?g_OpinionAttitudeNames@@3PAVCCharString@@A	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B
+0x0072DB90	??0CTCInventoryBase@@QAE@PAVCThing@@@Z	??0CTCInventoryBase@NInventory@@QAE@AAVCThing@@@Z
+0x0072DB90	??0CTCInventoryMagic@@QAE@PAVCThing@@@Z	??0CTCInventoryMagic@@QAE@AAVCThing@@@Z
+0x0072DB90	??_7CTCInventoryMagic@@6BCTCInventoryBase@@@	??_7CTCInventoryMagic@@6BCTCInventoryBase@NInventory@@@
+0x00786700	?DeleteData@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VC3DSkeletalMorphParameter@@@@SIXPAX@Z
+0x00786700	?GetMorphTarget@CSkeletalMorphResourceManager@@QAEABV?$CCountedPointer@VC3DSkeletalMorphTarget@@@@ABVCCharString@@@Z	?GetMorphTarget@CSkeletalMorphResourceManager@@QAEAAV?$CCountedPointer@VC3DSkeletalMorphTarget@@@@ABVCCharString@@@Z
+0x00786700	?g_SkeletalMorphResourceManager@@3V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A	?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A
+0x007D8E20	?PositionMesh@CTCTavernGameSpotTheAddition@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z	?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z
+0x00856780	?Compare@?$CBasicString@D@ComboStrikes@@SIHPBD0@Z	?Compare@?$CBasicString@D@@KIJPBD0@Z
+0x00856780	?EmptyString@ComboStrikes@@3QBDB	?NullChar@CCharString@@1DB
+0x00857430	?Registry@CCreatureActionBase@@1V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@A	?RegisteredActions@CCreatureActionBase@@1V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@U?$less@W4EActionRegisteredType@@@std@@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@4@@std@@A
+0x00857430	?find@?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE?AViterator@12@ABW4EActionRegisteredType@@@Z	?find@?$_Rb_tree@W4EActionRegisteredType@@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@U?$_Select1st@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@3@U?$less@W4EActionRegisteredType@@@3@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@2@@2@ABW4EActionRegisteredType@@@Z
+0x0085B720	??1?$vector@UCCharString@StrikeEvents@@@std@StrikeEvents@@QAE@XZ	??1?$vector@VCCharString@@@std@StrikeEvents@@QAE@XZ
+0x0085B720	??RCGetMatchingStrikeEndEventName@StrikeEvents@@QAEXABU?$pair@UCCharString@StrikeEvents@@M@std@1@@Z	??RCGetMatchingStrikeEndEventName@StrikeEvents@@QAEXABU?$pair@VCCharString@@M@std@1@@Z
+0x0085B720	?Compare@?$CBasicString@D@StrikeEvents@@SIHPBD0@Z	?Compare@?$CBasicString@D@@KIJPBD0@Z
+0x0085B720	?GetHelperPointNamesFromStrikeEventName@StrikeEvents@@YIXABUCCharString@1@AAU?$vector@UCCharString@StrikeEvents@@@std@1@_N22@Z	?GetHelperPointNamesFromStrikeEventName@StrikeEvents@@YIXABVCCharString@@AAU?$vector@VCCharString@@@std@1@_N22@Z
+0x0085B720	?IsValidStrikeEventName@StrikeEvents@@YI_NABUCCharString@1@AA_N111@Z	?IsValidStrikeEventName@StrikeEvents@@YI_NABVCCharString@@AA_N111@Z
+0x008902E0	?GHO_RefreshGate@@3PAXA	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A
+0x00890970	?CGameScriptInterface_GetOpinionAttitudeAsString@@YGXHPAUStrDest@@@Z	?GetOpinionAttitudeAsString@CGameScriptInterface@@UBEXW4EOpinionAttitudeType@@AAVCCharString@@@Z
+0x00890970	?g_attTable@@3PAHA	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B
+0x00898C40	?g_pScriptRunner@@3PAUCScriptRunner@@A	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A
+0x008A03F0	?CompareStrings@@YIJPBD0@Z	?Compare@?$CBasicString@D@@KIJPBD0@Z
+0x008D0110	?CGameScriptThing_IsNull@@YI_NPBVCGameScriptThing@@@Z	?IsNull@CGameScriptThing@@UBE_NXZ
+0x008D0110	?g_nullThing@@3PAVCCharStringData@@A	?g_CCharString_013bafcc@@3VCCharString@@A
+0x008D0110	@Thing_Compare@8	?Compare@?$CBasicString@D@@KIJPBD0@Z
+0x008F06F0	?PositionMesh@@YIXPAVCThingObject@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z	?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z
+0x00904380	?g_pScriptRunner@@3PAUCScriptRunner@@A	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A
+0x00982EB0	?g_OpinionAttitudeNames@@3PAVCCharString@@A	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B
+0x00982F10	?g_OpinionAttitudeNames@@3PAVCCharString@@A	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B
+0x00982F70	?g_OpinionAttitudeNames@@3PAVCCharString@@A	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B
+0x00985F40	?g_WifeAppearanceLineSuffix@@3PAVCCharString@@A	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B
+0x009C01C0	?g_ShaderRenderManager@@3VCShaderRenderManager@@A	?SingletonInstance@CShaderRenderManager@@0V1@A
+0x009C0E50	?g_ShaderRenderManager@@3VCShaderRenderManager@@A	?SingletonInstance@CShaderRenderManager@@0V1@A
+0x009D8AD0	?g_ShaderRenderManager@@3VCShaderRenderManager@@A	?SingletonInstance@CShaderRenderManager@@0V1@A
+0x009D8B40	?g_ShaderRenderManager@@3VCShaderRenderManager@@A	?SingletonInstance@CShaderRenderManager@@0V1@A
+0x009D9A30	??4CShaderResourcePointer@@QAEAAU0@ABU0@@Z	??4?$CCountedPointer@VCShaderResource@@@@QAEAAV0@ABV0@@Z
+0x009D9A30	?CreateResource@CShaderRenderManager@@QAE?AUCShaderResourcePointer@@XZ	?CreateResource@CShaderRenderManager@@QAE?AV?$CCountedPointer@VCShaderResource@@@@XZ
+0x009D9A30	?g_ShaderRenderManager@@3VCShaderRenderManager@@A	?SingletonInstance@CShaderRenderManager@@0V1@A
+0x00A63EE0	?Equals@StringDataMethods@@QBE_NPBD@Z	??8?$CBasicString@D@@QBE_NPBD@Z
+0x00B25C00	?g_ShaderRenderManager@@3VCShaderRenderManager@@A	?SingletonInstance@CShaderRenderManager@@0V1@A
+0x00B32F20	?AddStaticMesh@CEnginePrimitiveManagerStaticMeshesBase@@QAE?AUSHandle_00b32f20@@JJJJJJJJJJJ@Z	?AddStaticMesh@CEnginePrimitiveManagerStaticMeshesBase@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z
+0x00B32F20	?AddStaticMesh@CEnginePrimitiveRenderer@@QAE?AUSHandle_00b32f20@@JJJJJJJJJJJ@Z	?AddStaticMesh@CEnginePrimitiveRenderer@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z
+0x00B9E950	?g_LODTable_0143b934@@3PAUSLODEntry@@A	?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A
+0x00BAD2E0	?SetVertexShaderConstantLayout@CShaderLayoutState@@QAEXJ@Z	?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z
+0x00BAD2E0	?g_ShaderRenderManager@@3UCShaderLayoutState@@A	?SingletonInstance@CShaderRenderManager@@0V1@A
+0x00BCB800	?ApplyVertexShader@CShaderRenderManager@@QAEXPAVCVertexShader@@_N@Z	?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z
+0x00BCB800	?DisablePixelShaders@CShaderEnableState@@QAEXXZ	?DisablePixelShaders@CShaderRenderManager@@QAEXXZ
+0x00BCB800	?DisableVertexShaders@CShaderEnableState@@QAEXXZ	?DisableVertexShaders@CShaderRenderManager@@QAEXXZ
+0x00BCB800	?EnablePixelShaders@CShaderEnableState@@QAEXXZ	?EnablePixelShaders@CShaderRenderManager@@QAEXXZ
+0x00BCB800	?EnableVertexShaders@CShaderEnableState@@QAEXXZ	?EnableVertexShaders@CShaderRenderManager@@QAEXXZ
+0x00BCB800	?g_ShaderRenderManager@@3UCShaderEnableState@@A	?SingletonInstance@CShaderRenderManager@@0V1@A
+0x00BD7110	?g_bulletTimeClock@@3MA	?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A
+0x00BD7110	?g_interpolationTimes@@3PAUSInterpolationTime@@A	?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A
+0x00C2DBE0	??1CNode_00c2dbe0@@QAE@XZ	??1PKCTRRedblackTree@@UAE@XZ
+0x00C2DBE0	??1CTeleportBase_00c2dbe0@@QAE@XZ	??1CBufferedRangeReader@@QAE@XZ
+0x00C2DBE0	??_7CContainerRoot_00c2dbe0@@6B@	??_7CTypedListBase@@6B@
+0x00C2DBE0	??_7CContainer_00c2dbe0@@6B@	??_7CSegmentList@@6B@
+0x00C2DFE0	??0CMember_00c194f0@@QAE@PAX@Z	??0PKCTRRedblackTree@@QAE@PAUPKCTRAllocator@@@Z
+0x00C2DFE0	??0CVtable_012b47d0@@QAE@PAX@Z	??0CSegmentList@@QAE@PAUPKCTRAllocator@@@Z
+0x00C2DFE0	??_7CVtable_012b47d0@@6B@	??_7CSegmentList@@6B@
+0x00C2DFE0	__ehhandler$??0CVtable_012b47d0@@QAE@PAX@Z	__ehhandler$??0CSegmentList@@QAE@PAUPKCTRAllocator@@@Z
+0x00C2E030	??1CVtable_012b47d0@@QAE@XZ	??1CSegmentList@@UAE@XZ
+0x00C2E030	??1PKCTRRedblackTree@@QAE@XZ	??1PKCTRRedblackTree@@UAE@XZ
+0x00C2E030	??_7CBase_012b1ab0@@6B@	??_7CTypedListBase@@6B@
+0x00C2E030	??_7CVtable_012b47d0@@6B@	??_7CSegmentList@@6B@
+0x00C2E030	__ehhandler$??1CVtable_012b47d0@@QAE@XZ	__ehhandler$??1CSegmentList@@UAE@XZ
+0x00DDC6C0	?Compare@@YIJPBD0@Z	?Compare@?$CBasicString@D@@KIJPBD0@Z
+0x01229400	?Release_013bab10@@YAXXZ	_$E2
+0x01229400	?g_pointer_013bab10@@3UCCountedPointerStatic@@A	?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A
+0x0122A4C0	?Invoke_0098abf0@AutoTinyThunkTarget@@QAEXXZ	??1CShaderRenderManager@@UAE@XZ
+0x0122A4C0	?g_AutoTinyThunkObject_013bc470@@3UAutoTinyThunkTarget@@A	?SingletonInstance@CShaderRenderManager@@0V1@A

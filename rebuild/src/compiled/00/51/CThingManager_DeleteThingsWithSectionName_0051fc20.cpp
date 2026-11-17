@@ -15,26 +15,12 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
     return (last == first) ? result
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
-class CCharStringData { public:
-    const char*   m_pChars;                     // +0x00
-    unsigned long m_length;                     // +0x04
-};
-class CCharString { public:
-    CCharStringData* m_pStringData;
-};
-int __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-static FABLE_FORCEINLINE bool operator==(const CCharString& sa, const CCharString& sb)
-{
-    CCharStringData* a = sa.m_pStringData;
-    CCharStringData* b = sb.m_pStringData;
-    if (a == b)
-        return true;
-    if (!a || !b)
-        return false;
-    if (a->m_length != b->m_length)
-        return false;
-    return Compare_00411570(a->m_pChars, b->m_pChars) == 0;
-}
+// NF52 (round 7): the name test is fable_string.h's inline CCharString::operator==(const CCharString&) (data pointers, null tests,
+// then CBasicString<char>::operator==: StringLength and !Compare), binding the protected static ?Compare@?$CBasicString@D@@KIJPBD0@Z
+// (0x00411570). Were local CCharStringData / CCharString models, the free operator== and the made-up Compare_00411570. The local
+// CThing / CThingManager models are pre-existing.
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
 class CThing {
 public:
     virtual ~CThing();                          // slot 0 (scalar deleting dtor)

@@ -4,76 +4,19 @@
 //   counted CGraphicFrame and its frame-data release as the landed CGraphicFrame::operator= 0x0041C0E0; the D3D9 device's
 //   SetTexture (slot 65) through the core's stage-0 texture cache (+0x3D00, device +0x3CF0, active texture count +0x3CB8).
 #include "fable_compiler.h"
+// NF52 (round 7): the made-up global g_ShaderRenderManager (0x013BC470, a CShaderEnableState stand-in) and the made-up CShaderEnableSaver are
+//   the private static ?SingletonInstance@CShaderRenderManager@@0V1@A and Ego_r/FableWin CScopedShadersEnable (shared
+//   engine/CScopedShadersEnable.h, FABLE_RETAIL_CSCOPEDSHADERSENABLE_FORCEINLINE: Get().SetVertexShadersEnable / SetPixelShadersEnable
+//   on VertexShadersEnabled +0x390 / PixelShadersEnabled +0x391); the local CShaderRenderManager and IDirect3DDevice9 models are replaced
+//   by engine/CShaderRenderManager.h (ApplyVertexShader 0x00988020 takes const CVertexShader&: the member at +0x0C is an
+//   engine/CVertexShader.h CVertexShader, FABLE_RETAIL_CVERTEXSHADER; ResetWorldTransform 0x00988290) and engine/IDirect3DDevice9.h.
+#define FABLE_RETAIL_CSCOPEDSHADERSENABLE_FORCEINLINE
+#define FABLE_RETAIL_CVERTEXSHADER
+#include "engine/CShaderRenderManager.h"
+#include "engine/CScopedShadersEnable.h"
+#include "engine/CVertexShader.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct IDirect3DBaseTexture9;
-struct IDirect3DDevice9 {
-    virtual void __stdcall Slot0() = 0;
-    virtual void __stdcall Slot1() = 0;
-    virtual void __stdcall Slot2() = 0;
-    virtual void __stdcall Slot3() = 0;
-    virtual void __stdcall Slot4() = 0;
-    virtual void __stdcall Slot5() = 0;
-    virtual void __stdcall Slot6() = 0;
-    virtual void __stdcall Slot7() = 0;
-    virtual void __stdcall Slot8() = 0;
-    virtual void __stdcall Slot9() = 0;
-    virtual void __stdcall Slot10() = 0;
-    virtual void __stdcall Slot11() = 0;
-    virtual void __stdcall Slot12() = 0;
-    virtual void __stdcall Slot13() = 0;
-    virtual void __stdcall Slot14() = 0;
-    virtual void __stdcall Slot15() = 0;
-    virtual void __stdcall Slot16() = 0;
-    virtual void __stdcall Slot17() = 0;
-    virtual void __stdcall Slot18() = 0;
-    virtual void __stdcall Slot19() = 0;
-    virtual void __stdcall Slot20() = 0;
-    virtual void __stdcall Slot21() = 0;
-    virtual void __stdcall Slot22() = 0;
-    virtual void __stdcall Slot23() = 0;
-    virtual void __stdcall Slot24() = 0;
-    virtual void __stdcall Slot25() = 0;
-    virtual void __stdcall Slot26() = 0;
-    virtual void __stdcall Slot27() = 0;
-    virtual void __stdcall Slot28() = 0;
-    virtual void __stdcall Slot29() = 0;
-    virtual void __stdcall Slot30() = 0;
-    virtual void __stdcall Slot31() = 0;
-    virtual void __stdcall Slot32() = 0;
-    virtual void __stdcall Slot33() = 0;
-    virtual void __stdcall Slot34() = 0;
-    virtual void __stdcall Slot35() = 0;
-    virtual void __stdcall Slot36() = 0;
-    virtual void __stdcall Slot37() = 0;
-    virtual void __stdcall Slot38() = 0;
-    virtual void __stdcall Slot39() = 0;
-    virtual void __stdcall Slot40() = 0;
-    virtual void __stdcall Slot41() = 0;
-    virtual void __stdcall Slot42() = 0;
-    virtual void __stdcall Slot43() = 0;
-    virtual void __stdcall Slot44() = 0;
-    virtual void __stdcall Slot45() = 0;
-    virtual void __stdcall Slot46() = 0;
-    virtual void __stdcall Slot47() = 0;
-    virtual void __stdcall Slot48() = 0;
-    virtual void __stdcall Slot49() = 0;
-    virtual void __stdcall Slot50() = 0;
-    virtual void __stdcall Slot51() = 0;
-    virtual void __stdcall Slot52() = 0;
-    virtual void __stdcall Slot53() = 0;
-    virtual void __stdcall Slot54() = 0;
-    virtual void __stdcall Slot55() = 0;
-    virtual void __stdcall Slot56() = 0;
-    virtual void __stdcall Slot57() = 0;
-    virtual void __stdcall Slot58() = 0;
-    virtual void __stdcall Slot59() = 0;
-    virtual void __stdcall Slot60() = 0;
-    virtual void __stdcall Slot61() = 0;
-    virtual void __stdcall Slot62() = 0;
-    virtual void __stdcall Slot63() = 0;
-    virtual void __stdcall Slot64() = 0;
-    virtual long __stdcall SetTexture(unsigned long stage, IDirect3DBaseTexture9* texture) = 0;   // slot 65 (+0x104)
-};
 struct IDirect3DBaseTexture9;
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
@@ -179,63 +122,13 @@ static FABLE_FORCEINLINE void SetStateConst(CTrackedRenderState& state, unsigned
         }
     }
 }
-struct CShaderEnableState {                             // the static shader manager object @ 0x013BC470
-    unsigned char _pad000[0x390];
-    bool          VertexShadersEnabled;                 // +0x390
-    bool          PixelShadersEnabled;                  // +0x391
-    unsigned char _pad392[2];
-    long          _pad394;
-    void EnableVertexShaders();                         // 0x00987FE0
-    void DisableVertexShaders();                        // 0x009880E0
-    void EnablePixelShaders();                          // 0x00988110
-    void DisablePixelShaders();                         // 0x00988190
-    FABLE_FORCEINLINE void SetVertexShadersEnabled(bool enable)
-    {
-        if (enable != VertexShadersEnabled) {
-            if (enable)
-                EnableVertexShaders();
-            else
-                DisableVertexShaders();
-        }
-    }
-    FABLE_FORCEINLINE void SetPixelShadersEnabled(bool enable)
-    {
-        if (enable != PixelShadersEnabled) {
-            if (enable)
-                EnablePixelShaders();
-            else
-                DisablePixelShaders();
-        }
-    }
-};
-extern CShaderEnableState g_ShaderRenderManager;        // 0x013BC470
 
 
 struct CRenderStateCaptureBlock {
     FABLE_FORCEINLINE CRenderStateCaptureBlock() { g_pRenderStateManager->OpenCaptureBlock(); }
     FABLE_FORCEINLINE ~CRenderStateCaptureBlock() { g_pRenderStateManager->RestoreCaptureBlock(); }
 };
-struct CShaderEnableSaver {
-    bool m_vertexShaders;
-    bool m_pixelShaders;
-    FABLE_FORCEINLINE CShaderEnableSaver(bool vertexShaders, bool pixelShaders)
-    {
-        m_vertexShaders = g_ShaderRenderManager.VertexShadersEnabled;
-        g_ShaderRenderManager.SetVertexShadersEnabled(vertexShaders);
-        m_pixelShaders = g_ShaderRenderManager.PixelShadersEnabled;
-        g_ShaderRenderManager.SetPixelShadersEnabled(pixelShaders);
-    }
-    FABLE_FORCEINLINE ~CShaderEnableSaver()
-    {
-        g_ShaderRenderManager.SetVertexShadersEnabled(m_vertexShaders);
-        g_ShaderRenderManager.SetPixelShadersEnabled(m_pixelShaders);
-    }
-};
 class CVertexShader;
-class CShaderRenderManager { public:
-    void ApplyVertexShader(CVertexShader* shader, bool force);   // 0x00988020
-    void ResetWorldTransform();                    // 0x00988290
-};
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
 struct CStateBlockOwnerBase {                      // 0x20 bytes
@@ -342,7 +235,7 @@ class CEngineSubPrimitiveBase { public:
 class CEnginePrimitiveManagerSpriteTrails { public:
     void*         SceneList;                       // +0x04
     bool          Enable;                          // +0x08
-    struct { void* _vptr; void* Data; } VertexShader;   // +0x0c CVertexShader
+    CVertexShader VertexShader;                    // +0x0c (engine/CVertexShader.h; was an anonymous {vptr, Data} pair)
     virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long pass);
     void RenderSpriteTrail(CEngineInternalPrimitiveSpriteTrail* trail, bool textured);   // 0x00BCA950
 };
@@ -351,8 +244,8 @@ void CEnginePrimitiveManagerSpriteTrails::RenderSubPrimitive(CEngineSubPrimitive
 {
     CEngineInternalPrimitiveSpriteTrail* trail = subPrimitive.m_pPrimitive;
     CRenderStateCaptureBlock capture;
-    CShaderEnableSaver shaders(true, false);
-    NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)&VertexShader, false);
+    CScopedShadersEnable shaders(true, false);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(VertexShader, false);
     g_pEngineStateBlock_01436e90->Apply();
     SetStateConst(g_pRenderManagerCore->m_state2854, 0, g_pRenderManagerCore);
     SetStateConst(g_pRenderManagerCore->m_state2890, g_renderStateDefault_01396fb8, g_pRenderManagerCore);

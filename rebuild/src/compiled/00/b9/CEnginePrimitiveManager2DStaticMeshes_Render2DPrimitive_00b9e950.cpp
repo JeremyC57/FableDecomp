@@ -7,6 +7,16 @@
 #include "engine/CEngineLightingManager.h"
 #undef CEngineLightingManager
 #include <stddef.h>
+// NF52 (round 7): the made-up table g_LODTable_0143b934 (SLODEntry) is the public static
+//   ?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A (0x0143B8E0; +0x54 =
+//   InterpolationSetList[0].WFInterpolate), read through the shared engine/CEngineInternalPrimitiveBase.h (opt-in _CURRENTINTERPOLATE)
+//   as the landed CEnginePrimitiveRenderUtil::AddGeneratedObjects 0x00BF18B0 does; the index at +0x2c is the base's InterpolationSet (was LODIndex).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTINTERPOLATE
+#include "stlport/fable_containers.h"
+#include "engine/CEngineInternalPrimitiveBase.h"
 enum EEngine2DLayer { };                         // Ego_r.pdb layer enum (passed as a 32-bit value)
 enum ESubPrimitiveType { };                       // the renderer's sort-list index (values unused here)
 class CEngineInternalPrimitiveBase;
@@ -69,7 +79,7 @@ struct CEngineInternalPrimitive2DStaticMesh {
     unsigned char  _pad10[0x17];
     unsigned char  Alpha;                          // +0x27
     unsigned char  _pad28[4];
-    long           LODIndex;                       // +0x2c
+    long           InterpolationSet;               // +0x2c (CEngineInternalPrimitiveBase::InterpolationSet, PDB)
     unsigned char  _pad30[0x20];
     C3DMeshInfo*   MeshInfo;                       // +0x50
     unsigned char  _pad54[0x4c];
@@ -84,8 +94,6 @@ struct CEngineInternalPrimitive2DStaticMesh {
     void InitialiseSimulation(C3DMeshInfo* info, C3DMesh2* mesh);   // 0x00B9DE90
     bool IsSimulationRunning(unsigned long subMesh);   // 0x00BEBBB0
 };
-struct SLODEntry { float Distance; float _pad[2]; };
-extern SLODEntry g_LODTable_0143b934[];            // 0x0143B934
 
 class CDisplayManager { public:
     unsigned char _pad[0x1f4];
@@ -172,7 +180,7 @@ void CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive(CEngineInternalPri
         return;
     if (!mesh.Initialised)
         mesh.Initialise();
-    mesh.SetLOD(g_LODTable_0143b934[mesh.LODIndex].Distance, true);
+    mesh.SetLOD(CEngineInternalPrimitiveBase::CurrentInterpolationInfo.InterpolationSetList[mesh.InterpolationSet].WFInterpolate, true);
     bool urgent = (mesh.Flags >> 7) & 1;
     C3DMeshInfo* info = mesh.MeshInfo;
     if (!NEngineInternal::GPPrimitiveRenderer->Loading) {

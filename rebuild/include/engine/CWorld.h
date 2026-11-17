@@ -491,6 +491,11 @@ public:
     void ClearRegisteredQuests();                                // 0x004A08D0
 protected:
     const CGameEventDispatch* GetEventDispatchTableEntry(long type) const;   // 0x0049D8E0 ?GetEventDispatchTableEntry@CWorld@@IBEPBVCGameEventDispatch@@J@Z
+#ifdef FABLE_RETAIL_CWORLD_PROCESSEVENT
+    // Opt-in (NF52, rows 0x0049D980 and 0x0049DFB0): Ego_r.pdb / FableWin.pdb ?ProcessEvent@CWorld@@IAEXPBVCGameEvent@@@Z (protected),
+    // out of line in retail at 0x0049D980 (no direct caller) and expanded twice in Update 0x0049DFB0. Declaration only, no layout change.
+    void ProcessEvent(const CGameEvent* event);                  // 0x0049D980
+#endif
     // Chunk 734: protected members (IAE in both PDBs). SetAsPaused is out of line at 0x0049D8F0 (`cmp al,[ecx+0A4h]; je; mov`) and
     // expanded in UpdateFrame (0x004A5E64: `cmp byte ptr [esi+0A4h],1 ; je ; mov byte ptr [esi+0A4h],1`), so it is defined inline.
     void SetAsPaused(bool paused) { if (Paused != paused) Paused = paused; }   // ?SetAsPaused@CWorld@@IAEX_N@Z

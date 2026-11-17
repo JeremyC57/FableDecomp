@@ -8,18 +8,28 @@
 // New 2026-11-03 (Codex pass 13 row 0x009DA9F0; Ego_r.pdb / FableWin.pdb declarations, Codex evidence/009da9f0_*_types.json).
 class CScopedShadersEnable {private:bool OldVertexEnable,OldPixelEnable;
 public:
+#ifdef FABLE_RETAIL_CSCOPEDSHADERSENABLE_CTOR_OUTOFLINE
+ // Per-TU opt-in (NF52, row 0x009D8AD0): the TU that defines the out-of-line ??0CScopedShadersEnable@@QAE@_N0@Z.
+ CScopedShadersEnable(bool vertex,bool pixel);
+#else
  CScopedShadersEnable(bool vertex,bool pixel) {
   CShaderRenderManager::Get().SetVertexShadersEnable(vertex,&OldVertexEnable);
   CShaderRenderManager::Get().SetPixelShadersEnable(pixel,&OldPixelEnable);
  }
+#endif
 #ifdef FABLE_RETAIL_CSCOPEDSHADERSENABLE_FORCEINLINE
  // Per-TU opt-in (bwf2, row 0x00B72180 CEngineWaterRenderer::CreateDynamicTextures): the destructor is expanded in place at
  // 0x00B7369C..0x00B736DE (compare with 0x013BC800 / 0x013BC801, Enable / Disable calls) past the plain-inline budget.
  FABLE_FORCEINLINE
 #endif
+#ifdef FABLE_RETAIL_CSCOPEDSHADERSENABLE_DTOR_OUTOFLINE
+ // Per-TU opt-in (NF52, row 0x009D8B40): the TU that defines the out-of-line ??1CScopedShadersEnable@@QAE@XZ.
+ ~CScopedShadersEnable();
+#else
  ~CScopedShadersEnable() {
   CShaderRenderManager::Get().SetVertexShadersEnable(OldVertexEnable,0);
   CShaderRenderManager::Get().SetPixelShadersEnable(OldPixelEnable,0);
  }
+#endif
 };
 #endif

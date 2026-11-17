@@ -1,0 +1,15 @@
+source	entry	address	correct_symbol	status	binders_respelled	rows	note
+nf41	e27	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	blocked	9	0x004AF5B0 0x004FC210 0x0051FC20 0x008A03F0 0x008D0110 0x00DDC6C0 0x006D41F0 0x0085B720 0x00580194 0x00856780	ported 9, not-a-binder 0; left: 0x006D41F0 blocked
+nf41	e199	004115a0	??8?$CBasicString@D@@QBE_NPBD@Z	blocked	1	0x006D41F0 0x004FE630 0x00A63EE0	ported 1, not-a-binder 0; left: 0x006D41F0 blocked, 0x004FE630 blocked
+nf41	e167	013bab10	?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A	done	3	0x01229400 0x00786700 0x004A2E90	ported 3, not-a-binder 0
+nf41	e69	0143b934	?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A (+0x54: InterpolationSetList[0].WFInterpolate)	done	2	0x00BD7110 0x00B9E950	ported 2, not-a-binder 0
+nf41	e29	005eabc0	?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z	done	2	0x007D8E20 0x008F06F0	ported 2, not-a-binder 0
+nf41	e68	00ba0fc0	?AddStaticMesh@CEnginePrimitiveManagerStaticMeshesBase@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z	done	1	0x00B32F20	ported 1, not-a-binder 0
+nf44	25	013b9288	?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B	done	7	0x00434A30 0x00434A60 0x0049D8C0 0x0049D8E0 0x0049D980 0x0049DFB0 0x0049E1D0	ported 7, not-a-binder 0
+nf44	26	013ba8c8	?RegisteredActions@CCreatureActionBase@@1V?$map@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@U?$less@W4EActionRegisteredType@@@std@@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@4@@std@@A	done	2	0x00692E50 0x006F5C10 0x00857430	ported 2, not-a-binder 1; correct_symbol is the spelling the rows bind: the PROTECTED static (access 1, engine/CCreatureActionBase.h); the entry claimed private (0), which retail contradicts (CCombatActionBase::GetPCombatActionFromEnum reads it at 0x00857440 / 0x00857452) -- see REJECTED.tsv
+nf44	27	013bc470	?SingletonInstance@CShaderRenderManager@@0V1@A	blocked	10	0x004022B0 0x009BEF80 0x009C01C0 0x009C0E50 0x009D8AD0 0x009D8B40 0x009D9A30 0x00B25C00 0x00BAD2E0 0x00BCB800 0x0122A4C0	ported 10, not-a-binder 0; left: 0x009BEF80 blocked
+nf44	28	013d2838	?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A	done	6	0x006E71F0 0x006E7410 0x006E7820 0x008902E0 0x00898C40 0x00904380	ported 6, not-a-binder 0
+nf44	77	0x012668EC	??_7CTCInventoryMagic@@6BCTCInventoryBase@NInventory@@@	done	1	0x0072DB90	ported 1, not-a-binder 0
+nf44	84	0x0137B730	?LineCollisionAround4Square@CWorldMap@@1QBVC2DCoordI@@B	done	2	0x0063B750 0x0063B7F0	ported 2, not-a-binder 0
+nf44	96	0x013BABD0	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B	done	7	0x006D0410 0x007018B0 0x00890970 0x00982EB0 0x00982F10 0x00982F70 0x00985F40	ported 7, not-a-binder 0
+nf44	104	0x012B47D0	??_7CSegmentList@@6B@	done	3	0x00C2DBE0 0x00C2DFE0 0x00C2E030	ported 3, not-a-binder 0

@@ -3,7 +3,14 @@
 // Callees: 0x00B812C0 CEnginePrimitiveSimulationInfo::FindSimulation(unsigned long) (bounds-checked lookup in its
 // 8-byte entry array), the simulation's virtual slot 9 (+0x24, render the simulated mesh), 0x00BD3070
 // CEnginePrimitiveManagerAnimatedMeshesBase::RenderMeshPrimitive(CEngineSubPrimitiveAnimatedMesh&, ERenderPassType).
-// Globals: 0x0143B918 the bullet-time clock value, 0x0143B934 the 12-byte per-interpolation-set time records.
+// Globals: 0x0143B918 / 0x0143B934 are CEngineInternalPrimitiveBase::CurrentInterpolationInfo (0x0143B8E0, CEngineInterpolationInfo)
+// .BulletTimeCurrent.WFInterpolate (+0x38) and .InterpolationSetList[set].WFInterpolate (+0x4C + set*12 + 8).
+// NF52 (round 7): the made-up globals g_bulletTimeClock / g_interpolationTimes (and their SInterpolationTime record) are replaced by the
+//   public static ?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A from the shared
+//   engine/CEngineInternalPrimitiveBase.h (opt-in _CURRENTINTERPOLATE; Ego_r/FableWin dynamic initializer, the landed
+//   CEnginePrimitiveRenderUtil::AddGeneratedObjects 0x00BF18B0 reads the same records). The remaining local models (animated mesh,
+//   sub-primitive, simulation, primitive) are unchanged: the shared CEngineInternalPrimitiveAnimatedMesh.h does not model
+//   BulletTimeAffectsCloth +0x60 / SimulationInfo +0x64 yet.
 // Layout: CEngineSubPrimitiveAnimatedMesh = CEngineSubPrimitiveBase (PDB 0x18: Parent +0xc) + Primitive (C3DPrimitive2*)
 // +0x18, render mode +0x1c, the simulated flag +0x20 (PDB constructor (parent, C3DPrimitive2*, ERenderMode, bool)).
 // CEngineInternalPrimitiveAnimatedMesh (PDB): InterpolationSet +0x2c, BulletTimeAffectsCloth +0x60, SimulationInfo
@@ -14,6 +21,13 @@
 // copied with integer moves, the table entry through the x87); the simulation's vtable is fetched into ebx before
 // the eight argument pushes; the cloth primitive is reached through the counted pointer's `operator->` (a direct
 // `.Data->` read loads the index into edx instead of eax).
+
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTINTERPOLATE
+#include "stlport/fable_containers.h"
+#include "engine/CEngineInternalPrimitiveBase.h"
 
 class C3DAnimationBlendState { public: unsigned long m_a, m_b; };     // 8 bytes (PDB)
 class C3DClothPrimitive { public:
@@ -77,9 +91,6 @@ public:
     bool           Simulated;                            // +0x20
 };
 
-struct SInterpolationTime { float Time; float m_4; float m_8; };   // 12-byte records
-extern float              g_bulletTimeClock;             // 0x0143B918
-extern SInterpolationTime g_interpolationTimes[];        // 0x0143B934
 
 enum ERenderPassType { RENDER_PASS_DEFAULT = 0 };
 
@@ -101,9 +112,9 @@ void CEnginePrimitiveManagerAnimatedMeshesBase::RenderSubPrimitive(CEngineSubPri
                 CEngineInternalPrimitiveAnimatedMesh* parent = mesh.Parent;
                 float time;
                 if (parent->BulletTimeAffectsCloth)
-                    time = g_bulletTimeClock;
+                    time = CEngineInternalPrimitiveBase::CurrentInterpolationInfo.BulletTimeCurrent.WFInterpolate;
                 else
-                    time = g_interpolationTimes[parent->InterpolationSet].Time;
+                    time = CEngineInternalPrimitiveBase::CurrentInterpolationInfo.InterpolationSetList[parent->InterpolationSet].WFInterpolate;
                 simulation->RenderSimulatedMesh(primitive, mesh, parent->RenderInfo, parent->StartState,
                                                 parent->EndState, time,
                                                 *(CEngineRenderInfoBlock*)&parent->_renderBlockAnchor, passType);

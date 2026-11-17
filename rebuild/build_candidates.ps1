@@ -153991,9 +153991,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '01229400'
-        Module = '_global'
-        Source = '01/22/global_Release013bab10_01229400.cpp'
-        TestSource = '01/22/global_Release013bab10_01229400_test.cpp'
+        Module = 'CTBaseSingleton<CSkeletalMorphResourceManager>'
+        Source = '01/22/CTBaseSingleton_dynamicatexitdestructorforPClass_01229400.cpp'
+        TestSource = '01/22/CTBaseSingleton_dynamicatexitdestructorforPClass_01229400_test.cpp'
         PassPattern = '01229400_TEST PASS'
     }
     [pscustomobject]@{
@@ -157013,9 +157013,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c2e030'
-        Module = 'CVtable_012b47d0'
-        Source = '00/c2/CVtable012b47d0_CVtable012b47d0_00c2e030.cpp'
-        TestSource = '00/c2/CVtable012b47d0_CVtable012b47d0_00c2e030_test.cpp'
+        Module = 'CSegmentList'
+        Source = '00/c2/CSegmentList_CSegmentList_00c2e030.cpp'
+        TestSource = '00/c2/CSegmentList_CSegmentList_00c2e030_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c2e030_TEST PASS'
     }
@@ -157841,9 +157841,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c2dfe0'
-        Module = 'CVtable_012b47d0'
-        Source = '00/c2/CVtable012b47d0_CVtable012b47d0_00c2dfe0.cpp'
-        TestSource = '00/c2/CVtable012b47d0_CVtable012b47d0_00c2dfe0_test.cpp'
+        Module = 'CSegmentList'
+        Source = '00/c2/CSegmentList_CSegmentList_00c2dfe0.cpp'
+        TestSource = '00/c2/CSegmentList_CSegmentList_00c2dfe0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c2dfe0_TEST PASS'
     }

@@ -14,32 +14,23 @@
 //   block (dead before the closing read, so it shares the parser slot with the closing symbol temporary as `this`; a
 //   `CPersistTraits<bool>()` temporary would zero its byte); the closing ")" is read and discarded. EBP frame + size TU (`#pragma optimize("y", off)` +
 //   `("s", on)`).
+// NF52 (round 7): CCharString is fable_string.h's (FABLE_RETAIL_CCHARSTRING): the symbol tests are its operator==(const char*) expanded
+// in place (FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ) over CBasicString<char>::operator==(const char*) = Compare(PData, text) == 0
+// (FABLE_RETAIL_CBASICSTRING_TEXT_EQ_COMPARE_ZERO), binding the protected static ?Compare@?$CBasicString@D@@KIJPBD0@Z (0x00411570).
+// Were local CBasicStringChar / CCharString models (Compare as a public static of the stand-in). The local CStringParser /
+// CPersistContext models are pre-existing.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_COMPARE_ZERO
 #include "fable_compiler.h"
+#include "fable_string.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <string.h>
 #pragma intrinsic(strcmp)
-struct CBasicStringChar {
-    char*         PData;
-    unsigned long StringLength;
-    static long __fastcall Compare(const char* a, const char* b);   // 0x00411570
-    FABLE_FORCEINLINE bool operator==(const char* text) const { return Compare(PData, text) == 0; }
-};
-class CCharString { public:
-    CBasicStringChar* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-    const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }
-    FABLE_FORCEINLINE bool operator==(const char* text) const
-    {
-        if (PStringData == 0)
-            return strcmp(text, "") == 0;
-        return *PStringData == text;
-    }
-};
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 extern "C" int __cdecl _stricmp(const char* a, const char* b);                 // 0x00BFEBA8
-FABLE_FORCEINLINE bool EqualsNoCase(const CCharString& a, const CCharString& b) { return _stricmp(a.GetString(), b.GetString()) == 0; }
+FABLE_FORCEINLINE bool EqualsNoCase(const CCharString& a, const CCharString& b) { return _stricmp(a.GetAsCharArray(), b.GetAsCharArray()) == 0; }
 class CStringParser {
 public:
     unsigned __int64 ReadAsUHUGE();   // 0x009BA5B0 (Ego_r.pdb ?ReadAsUHUGE@CStringParser@@QAE_KXZ)

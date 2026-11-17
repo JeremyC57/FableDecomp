@@ -22,18 +22,18 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CWideString { public:
-    void* m_pData;
-    CWideString(const unsigned short* text);                   // 0x0099B6B0
-    ~CWideString();                                     // 0x0099B510
-};
-CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
-CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);      // 0x0099BF30
+// NF52 (round 7): the made-up global g_ShaderRenderManager (0x013BC470) is the private static ?SingletonInstance@CShaderRenderManager@@0V1@A,
+//   reached through the public inline ?Get@CShaderRenderManager@@SIAAV1@XZ of the shared engine/CShaderRenderManager.h (CreateResource
+//   0x0098B860 returns CCountedPointer<CShaderResource>). The local CCharString / CWideString (+ operator+) / CShaderBase / CVertexShader /
+//   CVertexShaderData / CCPPointerInfo / CShaderResourcePointer / CShaderRenderManager models are replaced by fable_string.h,
+//   engine/CShaderBase.h + engine/CVertexShader.h (FABLE_RETAIL_CVERTEXSHADER) and engine/CCountedPointer.h
+//   (FABLE_RETAIL_CCOUNTEDPOINTER_ASSIGN_DECL_ONLY: operator= is the out-of-line COMDAT 0x009DE7C0).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CCOUNTEDPOINTER_ASSIGN_DECL_ONLY
+#include "engine/CShaderRenderManager.h"
+#include "engine/CVertexShader.h"
+#include "engine/EVertexType.h"                                // VERTEX_RHW_COL_SPEC_TEX1 = 0x1C4 (was a local VERTEX_TYPE_2D)
 
 struct CBankFileManager {
     unsigned char _pad[0x14];
@@ -50,69 +50,14 @@ class CShaderDataBank { public:
     CShaderDataBank();                                  // 0x00A62020
 };
 
-struct CVertexShaderData {
-    virtual ~CVertexShaderData();
-    void* VertexDeclaration;
-    void* VertexShader;
-    const void* FormatDecl;
-    long ReferenceCount;                                // +0x10
-    long RemoveReference() { return --ReferenceCount; }
-    void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
-};
-class CShaderBase { public:                                    // vtable 0x0129A030
-    virtual ~CShaderBase() { }
-};
-class CVertexShader : public CShaderBase { public:                    // vtable 0x0129B3D0
-    CVertexShaderData* Data;
-    CVertexShader();                                    // 0x00A62FB0
-    CVertexShader& operator=(const CVertexShader& other)
-    {
-        if (Data) Data->ReleaseReference();
-        Data = other.Data;
-        ++Data->ReferenceCount;
-        return *this;
-    }
-    virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
-};
-
 struct _D3DVERTEXELEMENT9;
 extern const _D3DVERTEXELEMENT9 g_Declaration2D[];     // 0x0129D708
-enum EVertexType { VERTEX_TYPE_2D = 0x1c4 };
 class CShaderResource { public:
     void OpenShaderBank(const CShaderDataBank* bank);                       // 0x00A5D7C0
     void SetVertexShaderDeclaration(const _D3DVERTEXELEMENT9* declaration); // 0x00A5D4E0
     void SetVertexFormat(EVertexType format);                               // 0x00A5D4F0
     CVertexShader GetVertexShader(const CCharString& name) const;// 0x00A5D5F0  // NF35: Ego_r + FableWin ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z (const)
 };
-typedef void (__fastcall *CCPPointerDeleteFunc)(void*);
-class CCPPointerInfo { public:
-    unsigned long RefCount;
-    CCPPointerDeleteFunc DeleteFunc;
-    void* Data;
-};
-void operator delete(void*);
-struct CShaderResourcePointer {                         // CCountedPointer<CShaderResource>
-    CShaderResource* Data;
-    CCPPointerInfo* Info;
-    CShaderResourcePointer() : Data(0), Info(0) { }
-    ~CShaderResourcePointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-    }
-    CShaderResourcePointer& operator=(const CShaderResourcePointer& other);   // 0x009DE7C0
-    CShaderResource* operator->() const { return Data; }
-};
-class CShaderRenderManager { public:
-    CShaderResourcePointer CreateResource();            // 0x0098B860
-};
-extern CShaderRenderManager g_ShaderRenderManager;      // 0x013BC470
-
 class CTVertexRHWColSpecTex1;
 class CQuickDrawTriInfo;
 template<class T> struct CVector {                      // STLport vector (12 bytes)
@@ -128,7 +73,7 @@ struct CRenderManagerCore {
 };
 struct CRenderManager2D : CRenderManagerCore {          // vtable 0x0129B9EC
     CShaderDataBank                  VertexShaderBank;          // +0x3d20
-    CShaderResourcePointer           VertexShaderResource;      // +0x3e48
+    CCountedPointer<CShaderResource> VertexShaderResource;      // +0x3e48
     CVertexShader                    VertexShader2D;            // +0x3e50
     CVector<CTVertexRHWColSpecTex1>  QuickDrawVertices;         // +0x3e58
     CVector<CQuickDrawTriInfo>       QuickDrawTriInfo;          // +0x3e64
@@ -151,10 +96,10 @@ CRenderManager2D::CRenderManager2D(CDisplayManager& display, const CWideString& 
     CCharString bankName("SHADERS_BBBLIB");
     if (g_bankFileManager.BankExists(bankName)) {
         VertexShaderBank.OpenReadOnly(bankName, 0x48);
-        VertexShaderResource = g_ShaderRenderManager.CreateResource();
+        VertexShaderResource = CShaderRenderManager::Get().CreateResource();
         VertexShaderResource->OpenShaderBank(&VertexShaderBank);
         VertexShaderResource->SetVertexShaderDeclaration(g_Declaration2D);
-        VertexShaderResource->SetVertexFormat(VERTEX_TYPE_2D);
+        VertexShaderResource->SetVertexFormat(VERTEX_RHW_COL_SPEC_TEX1);
         VertexShader2D = VertexShaderResource->GetVertexShader("VSHADER_BBBLIB_2D");
     }
     AlternateRenderTargetClearEnabled = (flags & 1) != 0;

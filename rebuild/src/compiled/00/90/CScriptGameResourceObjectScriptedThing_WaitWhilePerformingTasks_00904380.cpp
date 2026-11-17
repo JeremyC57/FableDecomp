@@ -77,14 +77,12 @@ struct CActionBase {                               // vtable 0x01265504
 }
 
 
-struct CScriptRunner {
-    virtual void v00();
-    virtual void v01();
-    virtual void YieldFrame();                    // slot 2 (+8)
-    unsigned char m_pad4;                         // +0x04
-    bool          m_bStopRequested;               // +0x05
-};
-extern CScriptRunner* g_pScriptRunner;            // 0x013D2838
+// NF52 (round 7): the running script process at 0x013D2838 is the established ?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A
+// (descriptive, the spelling of the landed 0x00A44660 InternalSwitchToProcess / 0x00A44880 RunSuspendableProcess that store it) over
+// engine/CSuspendableProcessMicrothread.h: StopRunning +0x05 (CASuspendableProcess) and the slot-2 virtual SuspendSuspendableProcess
+// (the frame yield). Was the local CScriptRunner stand-in (m_bStopRequested / YieldFrame).
+#include "engine/CSuspendableProcessMicrothread.h"
+extern CSuspendableProcessMicrothread* g_pScriptRunner;   // 0x013D2838
 
 class CTCScriptedControl { public:                      // interface 0x1f component
     bool IsActionListEmpty();                     // 0x007122C0
@@ -111,9 +109,9 @@ void CScriptGameResourceObjectScriptedThing_Methods::WaitWhilePerformingTasks()
             thing->GetPItem()->GetInterface(&control, 0x1f);
             while (IS_THING_ALIVE(thing) && !control->IsActionListEmpty()) {
                 if (g_pScriptRunner) {
-                    if (g_pScriptRunner->m_bStopRequested)
+                    if (g_pScriptRunner->StopRunning)
                         break;
-                    g_pScriptRunner->YieldFrame();
+                    g_pScriptRunner->SuspendSuspendableProcess();
                 }
             }
         }

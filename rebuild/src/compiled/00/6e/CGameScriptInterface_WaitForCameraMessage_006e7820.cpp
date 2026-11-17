@@ -112,14 +112,12 @@ class CTCCameraPointScriptedSpline { public:
 };
 
 
-struct CScriptRunner {
-    virtual void v00();
-    virtual void v01();
-    virtual void YieldFrame();                      // slot 2 (+8)
-    unsigned char m_pad4;                           // +0x04
-    bool          m_bStopRequested;                 // +0x05
-};
-extern CScriptRunner* g_pScriptRunner;              // 0x013D2838
+// NF52 (round 7): the running script process at 0x013D2838 is the established ?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A
+// (descriptive, the spelling of the landed 0x00A44660 InternalSwitchToProcess / 0x00A44880 RunSuspendableProcess that store it) over
+// engine/CSuspendableProcessMicrothread.h: StopRunning +0x05 (CASuspendableProcess) and the slot-2 virtual SuspendSuspendableProcess
+// (the frame yield). Was the local CScriptRunner stand-in (m_bStopRequested / YieldFrame).
+#include "engine/CSuspendableProcessMicrothread.h"
+extern CSuspendableProcessMicrothread* g_pScriptRunner;   // 0x013D2838
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -140,6 +138,6 @@ void CGameScriptInterface::WaitForCameraMessage(const CCharString& message) cons
                 }
             }
         }
-        g_pScriptRunner->YieldFrame();
-    } while (!g_pScriptRunner->m_bStopRequested);
+        g_pScriptRunner->SuspendSuspendableProcess();
+    } while (!g_pScriptRunner->StopRunning);
 }

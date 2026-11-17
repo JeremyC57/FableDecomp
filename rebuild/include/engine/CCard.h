@@ -9,6 +9,9 @@
 #include "rebuild_abi.h"
 #include "engine/C3DVector.h"
 class CThingObject;
+#ifdef FABLE_RETAIL_CCARD_FRAMEUPDATE
+class CRightHandedSet;
+#endif
 class CCard {
 public:
 #ifdef FABLE_RETAIL_BLACKJACK_DEAL_PASS23
@@ -17,6 +20,10 @@ public:
 #endif
     // Ego_r.pdb / FableWin.pdb ?Turn@CCard@@QAEXXZ, out of line in retail at 0x008F0620 (the bound spelling). Declaration only.
     void Turn();                                                         // 0x008F0620
+#ifdef FABLE_RETAIL_CCARD_FRAMEUPDATE
+    // Opt-in (NF52, row 0x008F06F0): Ego_r.pdb ?FrameUpdate@CCard@@QAEXABVC3DVector@@ABVCRightHandedSet@@@Z. Declaration only.
+    void FrameUpdate(const C3DVector& position, const CRightHandedSet& orientation);   // 0x008F06F0
+#endif
     CThingObject* Thing;                                                 // +0x00
     long          Name;                                                  // +0x04
     long          Value;                                                 // +0x08

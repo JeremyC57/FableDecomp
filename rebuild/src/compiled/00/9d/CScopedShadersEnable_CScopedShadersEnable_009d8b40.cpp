@@ -10,54 +10,15 @@
 // Shape: the manager's SetVertexShadersEnable / SetPixelShadersEnable(bool, bool* old) are inlined with a null `old`
 // (the save folds away), leaving compare-and-switch; the pixel-shader calls are tail jumps (`jmp`), the destructor
 // returning nothing.
-class CShaderRenderManager
-{ public:
-    unsigned char _pad000[0x390];
-    bool          VertexShadersEnabled;          // +0x390
-    bool          PixelShadersEnabled;           // +0x391
-    void EnableVertexShaders();                  // 0x00987FE0
-    void DisableVertexShaders();                 // 0x009880E0
-    void EnablePixelShaders();                   // 0x00988110
-    void DisablePixelShaders();                  // 0x00988190
-    void SetVertexShadersEnable(bool enable, bool* old)        // out of line @ 0x009D8A80
-    {
-        if (old)
-            *old = VertexShadersEnabled;
-        if (enable != VertexShadersEnabled)
-        {
-            if (enable)
-                EnableVertexShaders();
-            else
-                DisableVertexShaders();
-        }
-    }
-    void SetPixelShadersEnable(bool enable, bool* old)         // out of line @ 0x009D8AA0
-    {
-        if (old)
-            *old = PixelShadersEnabled;
-        if (enable != PixelShadersEnabled)
-        {
-            if (enable)
-                EnablePixelShaders();
-            else
-                DisablePixelShaders();
-        }
-    }
-};
-
-extern CShaderRenderManager g_ShaderRenderManager;   // 0x013BC470
-
-class CScopedShadersEnable
-{
-public:
-    CScopedShadersEnable(bool vertexEnable, bool pixelEnable);   // 0x009D8AD0
-    ~CScopedShadersEnable();
-    bool OldVertexEnable;                        // +0x00
-    bool OldPixelEnable;                         // +0x01
-};
+// NF52 (round 7): moved onto engine/CScopedShadersEnable.h / engine/CShaderRenderManager.h; the singleton is
+// CShaderRenderManager::SingletonInstance (?SingletonInstance@CShaderRenderManager@@0V1@A, 0x013BC470, through Get()) and the
+// inlined setters are the header's SetVertexShadersEnable / SetPixelShadersEnable (FableWin.pdb). Was a local CShaderRenderManager
+// model + the made-up extern g_ShaderRenderManager.
+#define FABLE_RETAIL_CSCOPEDSHADERSENABLE_DTOR_OUTOFLINE
+#include "engine/CScopedShadersEnable.h"
 
 CScopedShadersEnable::~CScopedShadersEnable()
 {
-    g_ShaderRenderManager.SetVertexShadersEnable(OldVertexEnable, 0);
-    g_ShaderRenderManager.SetPixelShadersEnable(OldPixelEnable, 0);
+    CShaderRenderManager::Get().SetVertexShadersEnable(OldVertexEnable, 0);
+    CShaderRenderManager::Get().SetPixelShadersEnable(OldPixelEnable, 0);
 }

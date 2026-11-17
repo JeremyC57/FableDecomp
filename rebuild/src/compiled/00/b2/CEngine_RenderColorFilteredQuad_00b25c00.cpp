@@ -11,9 +11,11 @@
 // call; the six arguments pushed right to left; the render-state manager pointer re-read for the restore.
 class CTexture;
 
-class C4DVector { public:
-    float X, Y, Z, W;
-};
+// NF52 (round 7): C4DVector and CShaderRenderManager come from their shared headers; the singleton is
+// CShaderRenderManager::SingletonInstance (?SingletonInstance@CShaderRenderManager@@0V1@A, 0x013BC470, through Get()) and the
+// layout read is the header's PeekVertexShaderConstantLayout() (CurrentVSConstantLayoutIndex +0x08). Were local models and the
+// made-up extern g_ShaderRenderManager (C4DVector through engine/CShaderRenderManager.h, which sets FABLE_RETAIL_C4DVECTOR).
+#include "engine/CShaderRenderManager.h"
 
 struct CStateInfo {
     unsigned char _body[0x14];
@@ -47,13 +49,6 @@ class CRenderStateManager { public:
 };
 extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
 
-class CShaderRenderManager { public:
-    unsigned char _pad00[0x08];
-    long          m_vertexShaderConstantLayout;      // +0x08
-    void SetVertexShaderConstantLayout(long layout);  // 0x0098B5E0
-};
-extern CShaderRenderManager g_ShaderRenderManager;   // 0x013BC470
-
 class CEngineScreenEffectColourFilter { public:
     void RenderColorFilteredQuad(float x, float y, const C4DVector& colour, float width, float height, CTexture* texture);   // 0x00B5AF80
 };
@@ -69,9 +64,9 @@ void CEngine::RenderColorFilteredQuad(float x, float y, const C4DVector& colour,
 {
     g_pRenderStateManager->CreateCaptureBlock();
     SetDefaultRenderStates();
-    long layout = g_ShaderRenderManager.m_vertexShaderConstantLayout;
-    g_ShaderRenderManager.SetVertexShaderConstantLayout(3);
+    long layout = CShaderRenderManager::Get().PeekVertexShaderConstantLayout();
+    CShaderRenderManager::Get().SetVertexShaderConstantLayout(3);
     g_pScreenEffectColourFilter->RenderColorFilteredQuad(x, y, colour, width, height, texture);
-    g_ShaderRenderManager.SetVertexShaderConstantLayout(layout);
+    CShaderRenderManager::Get().SetVertexShaderConstantLayout(layout);
     g_pRenderStateManager->RestoreCaptureBlock();
 }

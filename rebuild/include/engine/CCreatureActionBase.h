@@ -35,6 +35,13 @@ public:bool HasPerformedAction()const;
 #endif
 public:
     static CCountedPointer<CCreatureActionBase> __fastcall GetPActionFromEnum(EActionRegisteredType,CThingCreatureBase&);
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_SETCREATURE
+protected:
+    // Opt-in (NF52, rows 0x00692E50 / 0x00857430): Ego_r.pdb ?SetCreature@CCreatureActionBase@@IAEXAAVCThingCreatureBase@@@Z (protected,
+    // Ego_r 0x00519220), out of line in retail at 0x006928C0. Declaration only, no layout change.
+    void SetCreature(CThingCreatureBase& creature);                    // 0x006928C0
+public:
+#endif
     // RegisterActionEventTypes 0x006932B0 (Ego_r 0x00519CE0 / FableWin 0x01DB27E0 ?RegisterActionEventTypes@CCreatureActionBase@@SIXXZ).
     static void __fastcall RegisterActionEventTypes();
 private:

@@ -256,6 +256,12 @@ public:
 public:
     static CCountedPointer<CCombatActionBase> FABLE_FASTCALL GetPCombatActionFromEnum(EActionRegisteredType type, CThingCreatureBase& creature, CThingCreatureBase& target);   // 0x00857430
 #endif
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SETTARGET
+    // Opt-in (NF52, row 0x00857430): Ego_r.pdb ?SetTarget@CCombatActionBase@@QAEXAAVCThing@@@Z (public, as the first class branch declares
+    // it), out of line in retail at 0x0085AA90. Declaration only, no layout change.
+public:
+    void SetTarget(CThing& target);                                    // 0x0085AA90
+#endif
 protected: unsigned char _pad_0xa8[0x6c];
 };
 #endif

@@ -317,6 +317,18 @@ public:
     // Declaration only: no layout change.
     bool FindLastUnblockedGroundPositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& result) const;   // 0x0063D960
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_FINDMAXZINCELL
+    // Opt-in (NF52, rows 0x0063B750 / 0x0063B7F0): Ego_r.pdb ?IsPosInMap@CWorldMap@@QBE_NABVC2DCoordI@@@Z (Ego_r 0x004CFD60; retail
+    // 0x004FC5B0), ?GetGroundSizeZAtBlock@CWorldMap@@QBEMABVC2DCoordI@@@Z (Ego_r 0x006E6F30; retail 0x0063A660) and the protected
+    // ?FindMaxGroundZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z / ?FindMaxThemeZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z (Ego_r 0x006E78E0 /
+    // 0x006E7A00; retail 0x0063B750 / 0x0063B7F0). GetThemeSizeZAtBlock is FABLE_RETAIL_CWORLDMAP_THEMEFACENORMAL's. Declarations only.
+    bool IsPosInMap(const C2DCoordI& pos) const;                                          // 0x004FC5B0
+    float GetGroundSizeZAtBlock(const C2DCoordI& pos) const;                              // 0x0063A660
+protected:
+    float FindMaxGroundZInCell(const C3DVector* cell) const;                              // 0x0063B750
+    float FindMaxThemeZInCell(const C3DVector* cell) const;                               // 0x0063B7F0
+public:
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_COLLISION_CORNERS_PASS23
     // Original Ego_r/FableWin typed symbols: protected static const C2DCoordI[4].
     // Donor024a8ab2 indexes LineCollisionAround4Square; native0063d198 uses0137b730.

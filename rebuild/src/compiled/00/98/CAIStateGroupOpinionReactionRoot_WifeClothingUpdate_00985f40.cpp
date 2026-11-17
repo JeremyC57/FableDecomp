@@ -16,15 +16,29 @@
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
-class CWorld { public:
-};
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
+// NF52 (round 7): the suffix table at 0x013BABD0 is the private static COpinionReactionManager::AttitudeStrings
+// (?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B; both PDBs' dynamic initializer / atexit destructor), indexed by the
+// EOpinionAttitudeType and read through FableWin.pdb's public inline
+// ?GetAttitudeString@COpinionReactionManager@@QBEABVCCharString@@W4EOpinionAttitudeType@@@Z on the world's manager (FableWin
+// ?GetOpinionReactionManager@CWorld@@QAEAAVCOpinionReactionManager@@XZ, inline): that is why the GetWorld() call survives with its result
+// unused. CWorld / COpinionReactionManager / EOpinionAttitudeType come from their shared headers (engine/CWorld.h,
+// engine/COpinionReactionManager.h FABLE_RETAIL_GREETING_PASS23). Were local CWorld / EOpinionAttitudeType models and the made-up extern
+// g_WifeAppearanceLineSuffix. The prefix table 0x013BAB40 and the local CAIStateGroupBase / CAIBrain / intelligent-pointer / CTCWife
+// models are pre-existing (outside this entry).
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_GREETING_PASS23
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
+#include "engine/EOpinion.h"
+#include "engine/EOpinionAttitudeType.h"
+#include "engine/CWorld.h"
+class CTCOpinionSource;
+#include "engine/COpinionReactionManager.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CAIBrain { public:
@@ -69,14 +83,12 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
 };
 
 extern CCharString g_WifeAppearanceLinePrefix[];    // 0x013BAB40 (indexed by EWifeAppearanceCategories)
-extern CCharString g_WifeAppearanceLineSuffix[];    // 0x013BABD0
 
 class CTCWife { public:
     bool GetAppearanceChangedNoticed(long* category);   // 0x006CED50
     void ClearAppearanceChangedNoticed(const long* category);   // 0x006CECD0
 };
 
-enum EOpinionAttitudeType { OPINION_ATTITUDE_NONE };
 
 class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     long SayToThingReactingTo(const CCharString& line);  // 0x0095EE70
@@ -90,8 +102,7 @@ bool CAIStateGroup_OpinionReactionRoot::WifeClothingUpdate(EOpinionAttitudeType 
         long category;
         if (wife->GetAppearanceChangedNoticed(&category)) {
             CCharString line(g_WifeAppearanceLinePrefix[category]);
-            GetWorld();
-            line += g_WifeAppearanceLineSuffix[attitude];
+            line += GetWorld().GetOpinionReactionManager().GetAttitudeString(attitude);
             if (SayToThingReactingTo(line) == 2) {
                 wife->ClearAppearanceChangedNoticed(&category);
                 return true;

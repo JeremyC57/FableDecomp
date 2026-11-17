@@ -12,24 +12,24 @@
 // Shape: the 16-byte size is the unspecified-inheritance representation of a pointer to member of a class only
 // forward-declared at the typedef; at the call the class is complete with no virtual bases, so VC7.1 reads only
 // {function, this-adjust} (`mov edx,[eax+20h] ... mov ecx,[eax+24h] ; add ecx,esi`), as 0x0049E1D0.
+// NF52 (round 7): the table is the protected static CMainGameComponent::EventDispatch (?EventDispatch@CMainGameComponent@@1QBVCGameEventDispatch@@B,
+// 0x013B9288; Anniversary PDB LF_STMEMBER, the Ego_r / FableWin dynamic initializer, landed 0x0121B9B0), read through FableWin.pdb's
+// public inline ?PeekEventDispatchTableEntry@CMainGameComponent@@QBEPBVCGameEventDispatch@@J@Z on CMainGameComponent::Get() (overlay
+// opt-in FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKEVENTDISPATCHTABLEENTRY; no PMainGameComponent load survives, as in retail).
+// CGameEventDispatch is engine/CGameEventDispatch.h (included before CDisplayEngine.h). Was a local CGameEventDispatch model and the
+// made-up extern GameEventDispatchTable. The CDisplayEngine_Methods self stand-in is pre-existing (NAME_FIXES.tsv).
+#include "engine/CGameEventDispatch.h"
 #include "engine/CDisplayEngine.h"
 #include "engine/CGameEvent.h"
-struct CDisplayEngine_Methods;
-typedef void (CDisplayEngine_Methods::*TDisplayEventFunction)(const CGameEvent* event);
-class CGameEventDispatch { public:
-    unsigned char         ActionFunction[0x10];          // +0x00 CWorld pointer to member
-    unsigned char         LocalActionFunction[0x10];     // +0x10 CWorld pointer to member
-    TDisplayEventFunction FeedbackFunction;              // +0x20
-    TDisplayEventFunction ConfirmFunction;               // +0x30
-};
-FABLE_STATIC_ASSERT(sizeof(CGameEventDispatch) == 0x40);
-extern CGameEventDispatch GameEventDispatchTable[];      // 0x013B9288
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTDISPATCH
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKEVENTDISPATCHTABLEENTRY
+#include "engine/CMainGameComponent.h"
 struct CDisplayEngine_Methods : CDisplayEngine {
     void ReceiveFeedbackGameEvent(const CGameEvent* event);
 };
 void CDisplayEngine_Methods::ReceiveFeedbackGameEvent(const CGameEvent* event)
 {
-    const CGameEventDispatch& dispatch = GameEventDispatchTable[event->Type];
-    if (dispatch.FeedbackFunction)
-        (this->*dispatch.FeedbackFunction)(event);
+    const CGameEventDispatch* dispatch = CMainGameComponent::Get()->PeekEventDispatchTableEntry(event->Type);
+    if (dispatch->FeedbackFunction)
+        (this->*dispatch->FeedbackFunction)(event);
 }

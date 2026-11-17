@@ -18,47 +18,14 @@
 // Naming wave 35: identity reg 00ddb0af "WaypointSpeedCheck" in 00ddae40; Alloc 00ddc5e0; vtable 012dca64 slot 1; PDB ?Main@CWaypointSpeedCheck@CQ_PrisonRaceScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CWaypointSpeedCheck::Main (wave3/labels_alloc.tsv); PDB ?Main@CWaypointSpeedCheck@CQ_PrisonRaceScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
 #include <string.h>
-#pragma auto_inline(off)
 namespace NScript { class CPredicateBase; }
-long __fastcall Compare(const char* a, const char* b)       // 0x00411570 (the landed body, stand-in)
-{
-    for (;;) {
-        char ca = *a;
-        if (ca == 0 && *b == 0)
-            return 0;
-        char cb = *b;
-        if (ca < cb)
-            return -1;
-        if (ca > cb)
-            return 1;
-        ++a;
-        ++b;
-    }
-}
-#pragma auto_inline(on)
-#pragma pack(push, 1)
-struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
-    char*         PData;                        // +0x00
-    unsigned long StringLength;                 // +0x04
-    unsigned long DataLength : 31;              // +0x08
-    bool          UseFastExtend : 1;            // +0x0c
-    bool operator==(const char* text) const { return Compare(PData, text) ? false : true; }   // 0x004115A0 (inlined here)
-};
-class CCharStringData { public:                        // 17 bytes
-    CBasicStringChar Data;                      // +0x00
-    long             NoRefs;                    // +0x0d
-};
-#pragma pack(pop)
-class CCharString { public:
-    CCharStringData* PStringData;
-    ~CCharString();                                         // 0x0099EAE0
-    bool operator==(const char* text) const
-    {
-        if (PStringData == 0)
-            return strcmp(text, "") == 0;
-        return PStringData->Data == text;
-    }
-};
+// NF52 (round 7): the text tests are fable_string.h's CCharString::operator==(const char*) over CBasicString<char>::operator==(const char*)
+// expanded in place (FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE: `call Compare ; neg ; sbb ; inc`), binding the protected static
+// ?Compare@?$CBasicString@D@@KIJPBD0@Z (0x00411570; declaration only). Were local CBasicStringChar / CCharStringData / CCharString
+// models and the made-up free Compare body.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE
+#include "fable_string.h"
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"

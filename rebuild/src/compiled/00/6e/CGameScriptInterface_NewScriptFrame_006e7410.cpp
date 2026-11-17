@@ -1,14 +1,9 @@
-struct Guard {
-// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
-    void* vt;    // +0x0
-    char pad[1];
-    char flag;   // +0x5
-};
-struct GuardVT {
-    void (__fastcall *fn0)(void*);
-    void (__fastcall *fn4)(void*);
-    void (__fastcall *fn8)(void*);
-};
+// NF52 (round 7): the guard at 0x013D2838 is the running script process, the established
+// ?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A (descriptive; the spelling of the landed 0x00A44660 / 0x00A44880 that store it)
+// over engine/CSuspendableProcessMicrothread.h: StopRunning +0x05 and the slot-2 virtual SuspendSuspendableProcess (the frame yield).
+// Were the made-up Guard / GuardVT stand-ins and extern g_guard.
+#include "engine/CSuspendableProcessMicrothread.h"
+extern CSuspendableProcessMicrothread* g_pScriptRunner;   // 0x013D2838
 
 struct Inner {
     char pad0[0x18];
@@ -28,7 +23,6 @@ struct Big {
     Mid2* p88;   // +0x88
 };
 
-extern Guard* g_guard;   // ds:0x13d2838
 #include "engine/CTBaseSingletonNoDefaultAlloc.h"
 class CQuestManager;
 // 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
@@ -40,12 +34,10 @@ public:
 
 void CGameScriptInterface_NewScriptFrame()
 {
-    Guard* g = g_guard;
-    if (g->flag) return;
-    ((GuardVT*)g->vt)->fn8(g);
+    if (g_pScriptRunner->StopRunning) return;
+    g_pScriptRunner->SuspendSuspendableProcess();
 
-    g = g_guard;
-    if (g->flag) return;
+    if (g_pScriptRunner->StopRunning) return;
 
     Inner* esi = reinterpret_cast<Big*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->p88->p8->p2c;
     int eax = CWorld::GetFrame();

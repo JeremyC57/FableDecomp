@@ -26,6 +26,11 @@ public:
     virtual NHeroInformationScreens::EScreenType GetScreenType() const;
 #endif
     virtual void CloseInventory();
+#ifdef FABLE_RETAIL_CTCINVENTORYMAGIC_CTOR
+    // Opt-in (NF52, row 0x0072DB90): Ego_r.pdb / FableWin.pdb ??0CTCInventoryMagic@@QAE@AAVCThing@@@Z, out of line in retail at 0x0072DB90
+    // (called by the factory 0x004D2F46). Declaration only, no layout change.
+    CTCInventoryMagic(CThing& thing);                                    // 0x0072DB90
+#endif
 private:
     std::vector<CEnginePrimitiveHandle> InventoryMagicPrimitiveHandles;
 };

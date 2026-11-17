@@ -1,3 +1,5 @@
+// NF52 (round 7): the 0x013BC470 store is &CShaderRenderManager::SingletonInstance (?SingletonInstance@CShaderRenderManager@@0V1@A,
+// engine/CShaderRenderManager.h Get()); was the made-up g_FableRenderStateStorage_013BC470 byte.
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 #include "fable_boot.h"
 
@@ -77,7 +79,7 @@ extern void FABLE_CDECL GFGetBuildNumber2();
 extern CDisplayManager* GPDisplayManager;
 extern FableDisplayPrimitive* g_FableDisplayPrimitive_013B8384;
 extern void* g_FableRenderState_013B8380;
-extern fable_u8 g_FableRenderStateStorage_013BC470;
+#include "engine/CShaderRenderManager.h"            // CShaderRenderManager::SingletonInstance 0x013BC470 (through Get())
 class CInputManager;
 extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 class CFontManager;
@@ -106,7 +108,7 @@ bool FABLE_FASTCALL GFInitialise()
         AddChildPrimitive()->displayManager60;
     g_FableDisplayPrimitive_013B8384 =
         GPDisplayManager->displayPrimitive08;
-    g_FableRenderState_013B8380 = &g_FableRenderStateStorage_013BC470;
+    g_FableRenderState_013B8380 = &CShaderRenderManager::Get();
 
     GPInputManager = (CInputManager*)(AddChildPrimitive()->renderDevice58);
     PFontManager = (CFontManager*)(AddChildPrimitive()->resourceManager84);
