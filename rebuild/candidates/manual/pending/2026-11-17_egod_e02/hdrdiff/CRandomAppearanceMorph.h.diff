@@ -1,0 +1,17 @@
+--- a/rebuild/include/engine/CRandomAppearanceMorph.h
++++ b/rebuild/include/engine/CRandomAppearanceMorph.h
+@@ -36,7 +36,14 @@
+   long GroupID; CDefString Name; bool AllowVariation; };
+  class CMorphSet {
+  public:
++#ifdef FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_TEXTUREMORPH_CTOR
++  // e01 opt-in (row 0x0086BE40, same-TU body of GetRandomTextureMorphs 0x0086B810): Ego_d.pdb random_appearance_morph.obj
++  // CMorphSetTextureMorph::CMorphSetTextureMorph(long original_texture, long new_texture) (inline; listed right after
++  // GetRandomTextureMorphs, its first user). No layout change.
++  class CMorphSetTextureMorph { public: CMorphSetTextureMorph(long original_texture,long new_texture):OriginalTexture(original_texture),NewTexture(new_texture){} long OriginalTexture; long NewTexture; };
++#else
+   class CMorphSetTextureMorph { public: long OriginalTexture; long NewTexture; };
++#endif
+   class CMorphSetSkeletalMorph { public: CCharString Name; float Strength; };
+   class CMeshTextureSet { public: long MeshIndex; CArray<CMorphSetTextureMorph> TextureMorphs; ~CMeshTextureSet() {} };
+   CArray<CMeshTextureSet> BodyParts;

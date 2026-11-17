@@ -1,0 +1,15 @@
+--- a/rebuild/include/stlport/fable_map.h
++++ b/rebuild/include/stlport/fable_map.h
+@@ -953,6 +953,12 @@
+ #endif
+ #endif
+     multimap():_M_t(Compare(),A()){}
++#ifdef FABLE_RETAIL_STLP_MULTIMAP_EMPTY
++    // Per-TU opt-in (egod e02, row 0x00ACD960 COptimisedPrimitive::Optimise): STLport 4.6 _multimap.h `bool empty() const
++    // { return _M_t.empty(); }` (inline: the node count +0x38 tested in place, 0x00ACD967 / 0x00ACDAA9). Needs the tree empty() of
++    // FABLE_RETAIL_STLP_SET_EMPTY.
++    bool empty() const { return _M_t.empty(); }
++#endif
+     iterator insert(const value_type& x){return _M_t.insert_equal(x);}
+ #ifdef FABLE_RETAIL_STLP_MULTIMAP_BEGIN_END
+     // Per-TU opt-in (row 0x00ACA830): STLport 4.6 _multimap.h begin() / end() (inline; 0x00ACC24F walks VertexPairContractions

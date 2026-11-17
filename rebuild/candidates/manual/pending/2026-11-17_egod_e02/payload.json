@@ -1,0 +1,73 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00843310",
+    "module": "CCreatureAction_PerformExpressionExtended",
+    "name": "CCreatureAction_PerformExpressionExtended",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/src/00843310.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/test/00843310.cpp",
+    "pass_pattern": "00843310_TEST PASS"
+   },
+   {
+    "address": "00933db0",
+    "module": "CAIStateGroup_MinionKidAnnoy",
+    "name": "Update",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/src/00933db0.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/test/00933db0.cpp",
+    "pass_pattern": "00933db0_TEST PASS"
+   },
+   {
+    "address": "00986ed0",
+    "module": "CThingFilter_IsAICreatureMatchingTypeAndFactionNearby",
+    "name": "CThingFilter_IsAICreatureMatchingTypeAndFactionNearby",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/src/00986ed0.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/test/00986ed0.cpp",
+    "pass_pattern": "00986ed0_TEST PASS"
+   },
+   {
+    "address": "00b9e120",
+    "module": "CEngineInternalPrimitive2DStaticMesh",
+    "name": "Initialise",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/src/00b9e120.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/test/00b9e120.cpp",
+    "pass_pattern": "00b9e120_TEST PASS"
+   },
+   {
+    "address": "009faf70",
+    "module": "CTexture",
+    "name": "GenerateMipmapsWithGPU",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/src/009faf70.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/test/009faf70.cpp",
+    "pass_pattern": "009faf70_TEST PASS"
+   },
+   {
+    "address": "00ac7cb0",
+    "module": "QuadricOptimiserInternals::COptimisedPrimitive",
+    "name": "GetFaceNormal",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/src/00ac7cb0.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/test/00ac7cb0.cpp",
+    "pass_pattern": "00ac7cb0_TEST PASS"
+   },
+   {
+    "address": "0086b9d0",
+    "module": "CRandomAppearanceMorph",
+    "name": "GetRandomSkeletalMorph",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/src/0086b9d0.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/test/0086b9d0.cpp",
+    "pass_pattern": "0086b9d0_TEST PASS"
+   },
+   {
+    "address": "0086be40",
+    "module": "CRandomAppearanceMorph",
+    "name": "GetRandomBodyParts",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/src/0086be40.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e02/test/0086be40.cpp",
+    "pass_pattern": "0086be40_TEST PASS",
+    "flags": [
+     "/d2inlT49"
+    ]
+   }
+  ]
+ }
+}

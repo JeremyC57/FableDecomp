@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/COptimisedPrimitive.h
++++ b/rebuild/include/engine/COptimisedPrimitive.h
+@@ -40,6 +40,11 @@
+  void FindFaceTextureTangents(COptimisedFace& face);                                                // 0x00AC7E10
+  void PerformContraction(CVertexPairContraction& contraction);                                      // 0x00ACD840
+  bool DetectFoldOver(const CVertexPairContraction& contraction);                                    // 0x00ACD900
++#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE_DETECTFOLDOVER_SUB
++ // Retail opt-in (egod e02, row 0x00ACD960): Ego_r.pdb 0x00C65BB0 ?DetectFoldOver@COptimisedPrimitive@QuadricOptimiserInternals@@AAE_NABVCSubContraction@2@ABVC3DVector@@@Z
++ // (private overload; retail 0x00ACD0E0, called per sub-contraction by DetectFoldOver(const CVertexPairContraction&) 0x00ACD92A). Declaration only.
++ bool DetectFoldOver(const CSubContraction& sub_contraction,const C3DVector& position);              // 0x00ACD0E0
++#endif
+  void PopFrontContraction();
+  void UpdateCost(const CCountedPointer<CVertexPairContraction>& contraction);
+ public:

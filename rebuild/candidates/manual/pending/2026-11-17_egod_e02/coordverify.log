@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00843310   RELOCATION_MATCH PASS   CCreatureAction_PerformExpressionExtended
+00933db0   RELOCATION_MATCH PASS   Update
+00986ed0   RELOCATION_MATCH PASS   CThingFilter_IsAICreatureMatchingTypeAndFactionNearby
+00b9e120   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b9e120   RELOCATION_MATCH PASS   Initialise
+009faf70   RELOCATION_MATCH PASS   GenerateMipmapsWithGPU
+00ac7cb0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00ac7cb0   RELOCATION_MATCH PASS   GetFaceNormal
+0086b9d0   RELOCATION_MATCH PASS   GetRandomSkeletalMorph
+0086be40   RELOCATION_MATCH PASS   GetRandomBodyParts
+
+WINS: 8
+  00843310 RELOCATION_MATCH CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended
+  00933db0 RELOCATION_MATCH CAIStateGroup_MinionKidAnnoy::Update
+  00986ed0 RELOCATION_MATCH CThingFilter_IsAICreatureMatchingTypeAndFactionNearby::CThingFilter_IsAICreatureMatchingTypeAndFactionNearby
+  00b9e120 RELOCATION_MATCH CEngineInternalPrimitive2DStaticMesh::Initialise
+  009faf70 RELOCATION_MATCH CTexture::GenerateMipmapsWithGPU
+  00ac7cb0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::GetFaceNormal
+  0086b9d0 RELOCATION_MATCH CRandomAppearanceMorph::GetRandomSkeletalMorph
+  0086be40 RELOCATION_MATCH CRandomAppearanceMorph::GetRandomBodyParts

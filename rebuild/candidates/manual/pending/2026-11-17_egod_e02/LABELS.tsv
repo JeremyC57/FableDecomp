@@ -1,0 +1,3 @@
+address	name	evidence
+00ac8360	?IsIllegal@CVertexPairContraction@QuadricOptimiserInternals@@QAE_NXZ	Ego_r.pdb 0x00C61350 right after CleanUp 0x00C61090; retail 0x00AC8360 calls CleanUp 0x00AC7B00 first; Ego_d lib_3d_quadric_optimiser_internals.obj order CleanUp .. IsIllegal; called on the contraction by Optimise 0x00ACDA3C (open row)
+00acd960	?Optimise@COptimisedPrimitive@QuadricOptimiserInternals@@QAEXM@Z	Ego_r.pdb 0x00C66B10 (draft and manifest used the made-up SimplifyByVertexPairs); caller COptimisedMesh::Optimise 0x00ACDAE0
