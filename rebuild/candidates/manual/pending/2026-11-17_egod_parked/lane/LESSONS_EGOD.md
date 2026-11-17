@@ -10,3 +10,7 @@
   in this row's own statement order. Out-of-class same-TU template bodies (CVectorMap LowerBound / UpperBound / GetKeyList) defined
   plainly (no noinline) closed register ties. Shared inline helpers named in both PDBs (GFWorld2DDistanceSmallerThan) give retail's
   operand order where spellings do not.
+- e03 (6/10 matched): rows parked as "allocation gap" / "register tie" on LOCAL MODELS matched at the first compiling grade once
+  ported onto the shared headers with Ego_d's locals (0x00920DC0, 0x00B81820, 0x00867D20). Port first, diagnose second. Ego_d's debug
+  length equals FableWin's /Od size, so it is a free size target for fwsize (use FW_EXTRA=/EHsc when the row has a destructible
+  local). A class with no header may get a NEW header built from the Ego_d class record (layout cross-checked with Ego_r).
