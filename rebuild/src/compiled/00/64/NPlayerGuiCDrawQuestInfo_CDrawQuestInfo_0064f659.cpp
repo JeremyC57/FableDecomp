@@ -14,8 +14,18 @@
 // Shape: frame-pointer size TU; ebx is the shared zero; the two lists take their default allocator by const reference, a 1-byte
 // temporary homed in the dead argument slot ([ebp+0Fh]); the handle vector's inline constructor zeroes through edi, which the body
 // reuses for clear() = erase(begin(), end()) after the base vector's Resize.
+// NF48 (round 7): the handle vectors are STLport 4.6.2 std::vector<CEnginePrimitiveHandle> and OracleSymbols std::list<long>, both from
+// the shared stlport/fable_containers.h (were a local namespace-std list model, CAllocProxy and the CRetailHandleVector stand-in).
+// Opt-ins keep out of line what retail calls: list<long>'s base constructor / destructor (0x0042AB58 / 0x0042AB73), vector<CEnginePrimitiveHandle>
+// resize(size_type) 0x00443F90 and erase(iterator, iterator) 0x00440D70.
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "engine/CEnginePrimitiveHandle.h"
 class CPlayerGui;
-class CEnginePrimitiveHandle;
 
 struct SAllocator {                                // empty std::allocator stand-in
     SAllocator() { }
@@ -26,38 +36,8 @@ class CWideString { public:
     CWideString();                                 // 0x0099AED0
 };
 
-namespace std {                                    // STLport 4.6 list<long>: its base constructor / destructor are out of line
-template <class _Tp> class allocator { public: allocator() { } };   // empty; a user constructor (the temporary is not zero-filled)
-template <class _Tp, class _Alloc> class _List_base {
-public:
-    void* _M_node;
-    _List_base(const _Alloc&);                     // 0x0042AB58 for long
-    ~_List_base();                                 // 0x0042AB73 for long
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
-public:
-    explicit list(const _Alloc& a = _Alloc()) : _List_base<_Tp, _Alloc>(a) { }
-};
-}
 namespace NPlayerGui {
 
-template <class P> struct CAllocProxy {      // STLport _STLP_alloc_proxy: the end-of-storage pointer with its own ctor
-    P p;
-    CAllocProxy(P v) : p(v) { }
-    operator P() const { return p; }
-    CAllocProxy& operator=(P v) { p = v; return *this; }
-};
-struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEnginePrimitiveHandle>: three words
-    CEnginePrimitiveHandle* m_pFirst;
-    CEnginePrimitiveHandle* m_pLast;
-    CAllocProxy<CEnginePrimitiveHandle*> m_pEnd;
-    CRetailHandleVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
-    CEnginePrimitiveHandle* begin() { return m_pFirst; }
-    CEnginePrimitiveHandle* end() { return m_pLast; }
-    void Resize(long count);                       // 0x00443F90
-    CEnginePrimitiveHandle* erase(CEnginePrimitiveHandle* first, CEnginePrimitiveHandle* last);   // 0x00440D70
-    void clear() { erase(begin(), end()); }
-};
 
 
 struct CRetailElementList {                        // VC6 Dinkumware list<CCountedPointer<CQuestInfoElement>>: one sentinel pointer
@@ -68,7 +48,7 @@ struct CRetailElementList {                        // VC6 Dinkumware list<CCount
 class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
-    CRetailHandleVector PrimitiveHandles;          // +0x1c
+    std::vector<CEnginePrimitiveHandle> PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
@@ -81,7 +61,7 @@ class CDrawQuestInfo : public CDrawBase { public:                // vtable 0x012
     long                FramesUntilMiniMode;       // +0x38
     long                MiniGameElementIndex;      // +0x3c
     std::list<long>     OracleSymbols;             // +0x40
-    CRetailHandleVector OraclePrimitiveHandles;    // +0x44
+    std::vector<CEnginePrimitiveHandle> OraclePrimitiveHandles;    // +0x44
     CWideString         Name;                      // +0x50
     CWideString         Text;                      // +0x54
     CRetailElementList  Elements;                  // +0x58
@@ -92,7 +72,7 @@ CDrawQuestInfo::CDrawQuestInfo(CPlayerGui* gui, void* drawList)
     : CDrawBase(gui, drawList), GuiMode(0), FadeInTimer(0.0f), MiniModeTimer(0.0f), MiniMode(false), FramesUntilMiniMode(0),
       MiniGameElementIndex(0), OracleSymbols(), OraclePrimitiveHandles(), Name(), Text(), Elements()
 {
-    PrimitiveHandles.Resize(9);
+    PrimitiveHandles.resize(9);
     OraclePrimitiveHandles.clear();
 }
 

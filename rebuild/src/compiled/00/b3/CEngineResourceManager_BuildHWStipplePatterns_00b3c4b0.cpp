@@ -8,15 +8,12 @@
 // `stipple[row * 32 + column]` with `1 << (31 - column)`, is unrolled by four (a pointer walk with a down-counting bit stays rolled)
 // by VC7.1 (bit index counting down), the level loop is strength-reduced into the output offset (level*32 + 31) * 4;
 // the byte swap is the explicit two-half shift/mask form.
-template <class T> class CArray { public:
-    T* m_begin;
-    T* m_end;
-    T* m_capacity;
-    T* begin() const { return m_begin; }
-    T& operator[](unsigned long n) { return *(begin() + n); }
-    const T& operator[](unsigned long n) const { return *(begin() + n); }
-    void resize(unsigned long n, const T& value);       // 0x00464931 for T = unsigned long
-};
+// NF48 (round 7): CArray<unsigned long> is the shared engine/CArray.h (a public STLport 4.6.2 std::vector<unsigned long>,
+// a local begin/end/capacity model before); resize(n, const unsigned long&) is vector<unsigned long>::resize 0x00464931
+// (?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z), kept out of line by FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE.
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "engine/CArray.h"
 
 class CEngineResourceManager { public:
     unsigned char         _pad[0x2ab4];

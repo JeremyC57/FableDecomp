@@ -15,6 +15,11 @@
 // found block out before the shared copy-construct tail; handling it inside the loop moves it past the epilogue), with
 // IsDone checks before and after the history rotation.
 namespace NScript { class CPredicateBase; }
+// NF48 (round 7): SongItems is STLport 4.6.2 std::vector<CCharString> from the shared stlport/fable_containers.h (a local
+// CCharStringVector stand-in before): clear() is the header's inline erase(begin(), end()) over the out-of-line
+// vector<CCharString>::erase(iterator, iterator) 0x0043336A (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE).
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 extern "C" int __cdecl rand();                             // 0x00BFEB16
 class CCharString { public:
     void* PStringData;
@@ -24,18 +29,9 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
     bool operator!=(const CCharString& other) const;       // 0x0099E900
 };
-struct CCharStringVector {                                 // STLport vector<CCharString> (12 bytes)
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-    CCharString* erase(CCharString* first, CCharString* last);   // 0x0043336A
-    void clear() { erase(_M_start, _M_finish); }
-    long size() const { return _M_finish - _M_start; }
-    CCharString& operator[](long i) { return _M_start[i]; }
-};
 struct CV_TalentlessBardScript {
     unsigned char     _pad00[0x68];
-    CCharStringVector SongItems;                           // +0x68
+    std::vector<CCharString> SongItems;                           // +0x68
     void ProcessSongsRenown();                             // 0x00EDAAD0
     void ProcessSongsMorality();                           // 0x00EDA9B0
     void ProcessSongsAge();                                // 0x00EDA8C0

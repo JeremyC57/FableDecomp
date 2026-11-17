@@ -23,6 +23,10 @@
 // over erase(begin(), end()) (open-coded forms schedule the environment load and the vector words differently).
 // Opt: /O2 (16-aligned entry).
 // Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+// NF48 (round 7): std::vector is STLport 4.6.2's from the shared stlport/fable_containers.h (was a local namespace-std vector model);
+// FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE keeps vector<CEnginePrimitiveHandle>::erase(iterator, iterator) 0x00440D70 out of line.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 class CCPPointerInfo { public:
     long  RefCount;
@@ -105,18 +109,6 @@ class CMessageEventManager { public:
     CMessageList Messages;                              // +0x04
 };
 class CEnginePrimitiveHandle;
-namespace std {
-template <class T> class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-    T* erase(T* first, T* last);                        // 0x00440D70 for CEnginePrimitiveHandle
-    void clear() { erase(begin(), end()); }
-};
-}
 
 class CWorld {
 public:

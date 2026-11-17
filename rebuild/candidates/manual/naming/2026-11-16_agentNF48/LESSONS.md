@@ -1,0 +1,14 @@
+# NF48 lessons (one line each)
+- `template void std::vector<T>::clear();` (or resize) on the shared header emits an STLport-named self row in one grade (0x008AD5C0, 0x00485FE8, 0x0043332C, 0x005F9DF8).
+- A 2-instruction stub `push [ecx+4] ; push [ecx] ; call erase` is STLport clear(); check the PDB name set for clear<T> before inventing a stand-in.
+- Changing a container type inside a function's own signature changes its leaf: add the new leaf to the grade lookup first, or q.py grades the largest function (0x008A8F20 lost a grade).
+- The header's plain inline ~vector is called out of line at every exit in the script-thread TUs; the mixed split needs DTOR_FORCEINLINE plus a scoped inline_depth(0) region, marked `// Inline-budget:`.
+- A local `operator new(unsigned int, void*)` clashes with <new> from fable_containers.h (C2084); drop it.
+- engine/CTCAIScratchpad.h needs FABLE_RETAIL_CTCBASE, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCHARSTRING and engine/ETCInterfaceType.h before it.
+- A `cpp` precheck catches a header's `#error` opt-in requirement without spending a grade; a cl syntax error (missing type) still costs one.
+- Run callers.py on every self-changed address: a grep for the address finds only comments, and a caller can bind a completely different made-up name (0x00747B00).
+- Check the element type against reloc_bindings.tsv and the PDB member types even when the row's own model looks right (0x00E54990 used vector<unsigned char> where Ego_r and the landed 0x00467686 say vector<bool>).
+- Regenerate the changed-row list right before the final recheck; a list made earlier silently drops the last port.
+- Check who calls a "destructor" row before trusting the label: 0x009D3FB0 was called only from two CBankFile functions and both PDBs name it CArray<CCharString>::DeallocateMemory.
+- A row's local CScriptThing projection can often go entirely: if the callee returns the header class, std::vector<CScriptThing> plus the out-of-line push_back matched in one grade (0x008A8440).
+- A POD header struct versus a stand-in with a zeroing constructor changes `T()` codegen; check value-initialisation before porting resize(n, T()) (0x009CEAE0, 373v375).

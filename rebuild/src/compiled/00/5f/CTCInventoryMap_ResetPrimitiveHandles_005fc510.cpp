@@ -17,6 +17,10 @@
 //   MapScreenTeleportPrimitiveHandles +0x1C4, MapScreenHousePrimitiveHandles +0x1D0. No engine header exists for the class.
 // Shape: speed TU (aligned, no pragma); the dropped functor result of every for_each lives in the one `push ecx` frame word;
 //   `this` stays in esi, each member's address (`lea edi,[esi+N]`) is erase's `this`.
+// NF48 (round 7): std::vector is STLport 4.6.2's from the shared stlport/fable_containers.h (was a local namespace-std vector model);
+// FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE keeps vector<CEnginePrimitiveHandle>::erase(iterator, iterator) 0x00440D70 out of line.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CEnginePrimitiveHandle { public:                    // 8 bytes: vptr + counted primitive pointer
     void* _vtable;
     void* m_pPrimitive;
@@ -38,18 +42,6 @@ template <class R, class T> inline mem_fun_ref_t<R, T> mem_fun_ref(R (T::*pfn)()
 
 template <class It, class F> F __fastcall for_each(It first, It last, F f);   // 0x0043F360 (SGI, /Gr)
 
-namespace std {
-template <class T> class vector {                  // STLport vector: three words
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-    T* erase(T* first, T* last);                   // 0x00440D70
-    void clear() { erase(begin(), end()); }
-};
-}
 
 typedef std::vector<CEnginePrimitiveHandle> CPrimitiveHandleVector;
 

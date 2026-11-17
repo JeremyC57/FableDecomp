@@ -1,0 +1,141 @@
+addr       parity           behav  name
+0043332c   RELOCATION_MATCH PASS   resize
+  WARN leaf 'operator=' matches no symbol in 0045c112.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045c112.obj; graded the largest function
+0045c112   RELOCATION_MATCH PASS   operator=
+  WARN leaf 'operator=' matches no symbol in 0045f635.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045f635.obj; graded the largest function
+0045f635   RELOCATION_MATCH PASS   operator=
+0045f854   RELOCATION_MATCH PASS   operator=
+  WARN leaf 'operator=' matches no symbol in 0045fe2b.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045fe2b.obj; graded the largest function
+0045fe2b   RELOCATION_MATCH PASS   operator=
+  WARN leaf 'operator=' matches no symbol in 00460131.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 00460131.obj; graded the largest function
+00460131   RELOCATION_MATCH PASS   operator=
+004602a4   WARN SHARED_HEADER_AVAILABLE CDefString
+  WARN leaf 'operator=' matches no symbol in 004602a4.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 004602a4.obj; graded the largest function
+004602a4   RELOCATION_MATCH PASS   operator=
+004608c6   WARN SHARED_HEADER_AVAILABLE CDefString
+  WARN leaf 'operator=' matches no symbol in 004608c6.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 004608c6.obj; graded the largest function
+004608c6   RELOCATION_MATCH PASS   operator=
+00462b15   RELOCATION_MATCH PASS   operator=
+0049b860   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVector
+0049b860   RELOCATION_MATCH PASS   Resize
+004b2b70   WARN SHARED_HEADER_AVAILABLE CDefString
+004b2b70   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+004b2b70   WARN SHARED_HEADER_AVAILABLE CThing
+004b2b70   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+004b2b70   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b2b70   RELOCATION_MATCH PASS   GetAllActiveQuestInfo
+00519b80   WARN SHARED_HEADER_AVAILABLE C2DVector
+00519b80   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00519b80   WARN SHARED_HEADER_AVAILABLE CDefPointer
+  WARN leaf 'operator=' matches no symbol in 00519b80.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 00519b80.obj; graded the largest function
+00519b80   RELOCATION_MATCH PASS   operator=
+005f6a6f   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+005f6a6f   RELOCATION_MATCH PASS   ResetAssignedAbilitiesPC
+00602e30   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00602e30   WARN SHARED_HEADER_AVAILABLE CThing
+00602e30   WARN SHARED_HEADER_AVAILABLE CManager
+00602e30   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+00602e30   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00602e30   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00602e30   WARN SHARED_HEADER_AVAILABLE CWorld
+00602e30   WARN SHARED_HEADER_AVAILABLE CTCBase
+00602e30   RELOCATION_MATCH PASS   OnCreate
+00621c80   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00621c80   WARN SHARED_HEADER_AVAILABLE CManager
+00621c80   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00621c80   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00621c80   WARN SHARED_HEADER_AVAILABLE CWorld
+00621c80   WARN SHARED_HEADER_AVAILABLE CManager
+00621c80   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+00621c80   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00621c80   WARN SHARED_HEADER_AVAILABLE CTCBase
+00621c80   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00621c80   WARN RELOC_NAME: ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+00621c80   WARN RELOC_NAME: ?g_frontEndNodeList@@3UCNodeList@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+00621c80   WARN RELOC_NAME: ?__destroy_aux@@YIXPAUCQuestCard@@0ABU__false_type@@@Z -> 005c2a8e labelled '_global::ForEachElem0x2c__CCreatureAction_FireMiss_005c2a8e'
+00621c80   RELOCATION_MATCH PASS   CloseInventory
+006b5df0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+006b5df0   WARN SHARED_HEADER_AVAILABLE CIDrawEnvironmentTextureSet
+006b5df0   WARN SHARED_HEADER_AVAILABLE CBlendedEnvironmentTheme
+006b5df0   RELOCATION_MATCH PASS   operator=
+00747b00   WARN SHARED_HEADER_AVAILABLE CTCStealth
+00747b00   RELOCATION_MATCH PASS   IsAvailableForAttack
+007e7a40   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e7a40   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007e7a40   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+007e7a40   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e7a40   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e7a40   RELOCATION_MATCH PASS   Quit
+008a8f20   WARN SHARED_HEADER_AVAILABLE CDefString
+008a8f20   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008a8f20   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+008a8f20   WARN SHARED_HEADER_AVAILABLE CTCContainer
+008a8f20   WARN SHARED_HEADER_AVAILABLE CThing
+008a8f20   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a8f20   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008a8f20   RELOCATION_MATCH PASS   GetItemDefNamesFromContainer
+008aa4d0   RELOCATION_MATCH PASS   ClearGossipFactions
+00a62120   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a62120   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a62120   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a62120   WARN RELOC_NAME: ??1CMemoryDataInputStream@@QAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00a62120   RELOCATION_MATCH PASS   CShaderBankEntry
+00b21a00   WARN SHARED_HEADER_AVAILABLE CCardinalSpline
+00b21a00   RELOCATION_MATCH PASS   CSplinePosParamData
+00bc5c00   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00bc5c00   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00bc5c00   RELOCATION_MATCH PASS   ClearAllChildPrimitives
+00cb5b90   WARN RELOC_NAME: ??0CParticleMorphManager@@QAE@XZ -> 009f0320 labelled 'CCodeSectionManager::CCodeSectionManager'
+00cb5b90   WARN RELOC_NAME: ?RemoveMorph@CParticleMorphManager@@QAEXVCCharString@@@Z -> 009f03b0 labelled 'CCodeSectionManager::RemoveSection'
+00cb5b90   RELOCATION_MATCH PASS   ~CActiveEntity
+00d347b0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00d347b0   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00d347b0   WARN RELOC_NAME: ?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z -> 00cd3ccb labelled 'CArray<std::pair<long::push_back'
+00d347b0   RELOCATION_MATCH PASS   Init
+00dc2540   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z -> 00cbd510 labelled 'CScriptBase::~CScriptBase'
+00dc2540   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog NScript::CQ_OakValeBanditRaidScript::`scalar deleting destructor'; names another function)
+00dc2540   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e54990   RELOCATION_MATCH PASS   Init
+00ed99d0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ed99d0   RELOCATION_MATCH PASS   GetRandomSpeech
+00f25840   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00f25840   WARN SHARED_HEADER_AVAILABLE CQ_ArenaScript
+00f25840   RELOCATION_MATCH PASS   InitialiseVariables
+
+WINS: 29
+  0043332c RELOCATION_MATCH std::vector<CCharString>::?resize@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXIABVCCharString@@@Z
+  0045c112 RELOCATION_MATCH CMaterialDef::operator=
+  0045f635 RELOCATION_MATCH CSpecialAbilitiesBattleChargeDef::operator=
+  0045f854 RELOCATION_MATCH CSpecialAbilitiesBerserkDef::??4CSpecialAbilitiesBerserkDef
+  0045fe2b RELOCATION_MATCH CSpecialAbilitiesEnflameDef::operator=
+  00460131 RELOCATION_MATCH CSpecialAbilitiesHealLifeDef::operator=
+  004602a4 RELOCATION_MATCH CSpecialAbilitiesLightningSpellDef::operator=
+  004608c6 RELOCATION_MATCH CSpecialAbilitiesUnholyPowerDef::operator=
+  00462b15 RELOCATION_MATCH CBrainDef::??4CBrainDef@@QAEAAV0@ABV0@@Z
+  0049b860 RELOCATION_MATCH CPersistContext_TransferableVector::?Resize@CPersistContext_TransferableVector@@UAEXK@Z
+  004b2b70 RELOCATION_MATCH CQuestManager::GetAllActiveQuestInfo
+  00519b80 RELOCATION_MATCH CRegion::operator=
+  005f6a6f RELOCATION_MATCH CTCInventoryAbilities::ResetAssignedAbilitiesPC
+  00602e30 RELOCATION_MATCH CTCInventoryMap::?OnCreate@CTCInventoryMap@@UAEXXZ
+  00621c80 RELOCATION_MATCH CTCInventoryQuests::?CloseInventory@CTCInventoryQuests@@QAEXXZ
+  006b5df0 RELOCATION_MATCH NEnvironmentInternal::CBlendedEnvironmentTheme::??4CBlendedEnvironmentTheme
+  00747b00 RELOCATION_MATCH CTCStealth::IsAvailableForAttack
+  007e7a40 RELOCATION_MATCH CTCFireheartMinigame::Quit
+  008a8f20 RELOCATION_MATCH CGameScriptInterface::?GetItemDefNamesFromContainer@CGameScriptInterface
+  008aa4d0 RELOCATION_MATCH CGameScriptInterface::?ClearGossipFactions@CGameScriptInterface@@UAEXVCCharString@@@Z
+  00a62120 RELOCATION_MATCH CShaderBankEntry::CShaderBankEntry
+  00b21a00 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplinePosParamData::??0CSplinePosParamData
+  00bc5c00 RELOCATION_MATCH CEngineInternalPrimitiveChanger::ClearAllChildPrimitives
+  00cb5b90 RELOCATION_MATCH CActiveEntity::??1CActiveEntity
+  00d347b0 RELOCATION_MATCH NScript::CQ_FireHeartScript::?Init@CQ_FireHeartScript@NScript@@UAEXXZ
+  00dc2540 RELOCATION_MATCH CVtable_012d9e18::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00e54990 RELOCATION_MATCH NScript::CV_BookCollectingScript::?Init@CV_BookCollectingScript@NScript@@QAEXXZ
+  00ed99d0 RELOCATION_MATCH CTB_Bard::GetRandomSpeech
+  00f25840 RELOCATION_MATCH NScript::CQ_ArenaScript::?InitialiseVariables@CQ_ArenaScript@NScript@@QAEXXZ

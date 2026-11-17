@@ -16,6 +16,13 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+// NF48 (round 7): EffectList is STLport 4.6.2 std::vector<CScriptThing> from the shared stlport/fable_containers.h (a local global-scope
+// vector<T> stand-in before); clear() is the header's inline erase(begin(), end()) over the out-of-line
+// vector<CScriptThing>::erase(iterator, iterator) 0x008AC9D0 (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE). KillAllThingsInVector now
+// carries its landed spelling (0x00CBED82: CGameScriptInterfaceBase&, const vector<CScriptThing>&, bool).
+#include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -27,22 +34,12 @@ class CCPPointerInfo;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 
-template <class T> struct vector {                      // STLport vector (retail 12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-    T* erase(T* first, T* last);                        // 0x008AC9D0 for CScriptThing
-    void clear() { erase(begin(), end()); }
-};
-
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-void __fastcall KillAllThingsInVector(CGameScriptInterface* gsi, vector<CScriptThing>* things, bool b);   // 0x00CBED82
+void __fastcall KillAllThingsInVector(CGameScriptInterfaceBase& gsi, const std::vector<CScriptThing>& things, bool b);   // 0x00CBED82
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
@@ -55,7 +52,7 @@ public:
     CGameScriptInterface*  GSI;                         // +0x40
     void*                  Data;                        // +0x44
     unsigned char          _pad48[0x7c - 0x48];
-    vector<CScriptThing>   EffectList;                  // +0x7c (PDB +0x90)
+    std::vector<CScriptThing> EffectList;                  // +0x7c (PDB +0x90)
     void WatchForRegionLeaving();
 };
 void CV_SingingStonesScript::WatchForRegionLeaving()
@@ -75,7 +72,7 @@ void CV_SingingStonesScript::WatchForRegionLeaving()
         }
         if (IsActiveThreadTerminating())
             return;
-        KillAllThingsInVector(GSI, &EffectList, false);
+        KillAllThingsInVector(*GSI, EffectList, false);
         EffectList.clear();
         GSI->NewScriptFrame();
     }

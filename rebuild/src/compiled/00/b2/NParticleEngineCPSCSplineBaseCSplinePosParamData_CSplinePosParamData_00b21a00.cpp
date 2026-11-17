@@ -11,14 +11,13 @@
 // the expression straight to resize schedules the zero temporary before the member load and colours the zero in eax
 // instead of retail's hoisted `xor edx,edx`); CArray's inline constructor zeroes its three words from one zero register; the `unsigned long()` temporary bound to resize's const reference is homed in
 // the constructor's dead argument slot (`mov [esp+8],edx ; lea edx,[esp+0Ch]`).
+// NF48 (round 7): CArray<unsigned long> is the shared engine/CArray.h (a public STLport 4.6.2 std::vector<unsigned long>,
+// a local begin/end/capacity model before); resize(n, const unsigned long&) is vector<unsigned long>::resize 0x00464931
+// (?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z), kept out of line by FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "engine/CArray.h"
 #include "engine/C3DVector.h"
 
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray() : m_begin(0), m_end(0), m_capacity(0) {}
-    long Size() const { return (long)(m_end - m_begin); }
-    void resize(unsigned long newSize, const T& value);  // 0x00464931 for T = unsigned long
-};
 
 class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;                     // +0x0
@@ -39,6 +38,6 @@ struct CSplinePosParamData {
 CSplinePosParamData::CSplinePosParamData(CCardinalSpline* spline)
     : Spline(spline)
 {
-    unsigned long count = Spline->ControlPoints.Size();
+    unsigned long count = Spline->ControlPoints.size();
     SplinePosParam.resize(count, 0);
 }

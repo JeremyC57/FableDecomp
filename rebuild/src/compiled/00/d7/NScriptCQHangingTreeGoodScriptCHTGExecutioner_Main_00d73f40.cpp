@@ -14,6 +14,11 @@
 //   AudienceMembers +0x1c (12-byte STLport vector; the PDB view is 16).
 // Naming wave 35: identity reg 00d6f7ef "HTG_Executioner" in 00d6f4b0; Alloc 00d731a0; vtable 012d29b8 slot 1; PDB ?Main@CHTG_Executioner@CQ_HangingTreeGoodScript@NScript@@; refs=1; was under-qualified CHTG_Executioner::Main (wave3/labels_alloc.tsv); PDB ?Main@CHTG_Executioner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHTG_Executioner@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_HangingTreeGoodScript moved into NScript); same bytes.
+// NF48 (round 7): AudienceMembers / CurrentGuardVector are STLport 4.6.2 std::vector<CScriptThing> from the shared
+// stlport/fable_containers.h (a local CScriptThingVector stand-in before); clear() is the header's inline erase(begin(), end()) over
+// the out-of-line vector<CScriptThing>::erase(iterator, iterator) 0x008AC9D0 (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE).
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 namespace NScript { class CPredicateBase; }
 enum EHeroAbility { HERO_ABILITY_NONE };
 class CCharString { public:
@@ -51,15 +56,6 @@ class CScriptThing : public CBase { public:                           // vtable 
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CScriptThingVector {                             // std::vector<CScriptThing> (STLport, 12 bytes)
-    CScriptThing* _M_start;
-    CScriptThing* _M_finish;
-    CScriptThing* _M_end_of_storage;
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    CScriptThing& operator[](unsigned int i) { return *(_M_start + i); }
-    CScriptThing* erase(CScriptThing* first, CScriptThing* last);   // 0x008AC9D0
-    void clear() { erase(_M_start, _M_finish); }
-};
 namespace NScript {
 class CPredicateBase
 {
@@ -88,7 +84,7 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void v064() const; virtual void v065() const; virtual void v066() const; virtual void v067() const; virtual void v068() const; virtual void v069() const;
     virtual CScriptThing& GetHero();   // slot 70 (+0x118) 0x00891CA0
     virtual void v071() const; virtual void v072() const; virtual void v073() const; virtual void v074() const;
-    virtual long GetAllThingsWithScriptName(const CCharString& name, CScriptThingVector& things) const;   // slot 75 (+0x12c)
+    virtual long GetAllThingsWithScriptName(const CCharString& name, std::vector<CScriptThing>& things) const;   // slot 75 (+0x12c)
     virtual void v076() const; virtual void v077() const; virtual void v078() const; virtual void v079() const; virtual void v080() const; virtual void v081() const; virtual void v082() const; virtual void v083() const;
     virtual void v084() const; virtual void v085() const; virtual void v086() const; virtual void v087() const; virtual void v088() const; virtual void v089() const; virtual void v090() const; virtual void v091() const;
     virtual void v092() const; virtual void v093() const; virtual void v094() const; virtual void v095() const; virtual void v096() const; virtual void v097() const; virtual void v098() const; virtual void v099() const;
@@ -186,7 +182,7 @@ public:
     char pad57[0x5c - 0x57];
     long HTG_State;                                     // +0x5c (PDB +0x70)
     char pad60[0xac - 0x60];
-    CScriptThingVector CurrentGuardVector;              // +0xac (PDB +0xc4)
+    std::vector<CScriptThing> CurrentGuardVector;              // +0xac (PDB +0xc4)
 public:
     class CHTG_Executioner;          // the entity class below (naming wave 35)
 };
@@ -205,7 +201,7 @@ class CQ_HangingTreeGoodScript::CHTG_Executioner : public CEntityScriptBase {
 public:
     CQ_HangingTreeGoodScript* ParentClass;              // +0x14
     void* PMasterData;                                  // +0x18
-    CScriptThingVector AudienceMembers;                 // +0x1c
+    std::vector<CScriptThing> AudienceMembers;                 // +0x1c
 private:
     virtual void Main();                          // PDB ?Main@CHTG_Executioner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
 };

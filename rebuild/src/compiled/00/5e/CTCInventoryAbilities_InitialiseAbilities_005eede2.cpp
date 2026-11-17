@@ -17,6 +17,11 @@
 // Abilities vector<pair<long, CDefPointer>> +0x160; CHeroAbilityDef::Ability +0x3C; CUIMiscThingsDef::
 // TotalSpellsInPalettes +0x148 (PDB +0x14C).
 #include "fable_compiler.h"
+// NF48 (round 7): ReceivedAbilityOrder is STLport 4.6.2 std::vector<EHeroAbility> (Ego_r.pdb) from the shared
+// stlport/fable_containers.h (a local CAbilityOrderVector stand-in before); resize(n, x) is the out-of-line
+// vector<EHeroAbility>::resize 0x005F9DF8 (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE). The other two lists keep the row's CVector model.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -78,9 +83,6 @@ template <class T> struct CVector {                    // STLport vector (12 byt
     T* begin() { return _M_start; }
     T& operator[](long n) { return *(begin() + n); }
 };
-struct CAbilityOrderVector : CVector<EHeroAbility> {
-    void resize(unsigned long n, const EHeroAbility& value);   // 0x005F9DF8
-};
 
 class CTCBase { public:                                // the component base (members this row reads)
     virtual ~CTCBase();
@@ -90,7 +92,7 @@ protected:
 class CTCInventoryAbilities : public CTCBase { public:
     unsigned char _pad_0x004[0x148 - 0x4];
     CVector<long> ExperienceSpentOnAbilities;          // +0x148
-    CAbilityOrderVector ReceivedAbilityOrder;          // +0x154
+    std::vector<EHeroAbility> ReceivedAbilityOrder;          // +0x154
     CVector<SAbilityEntry> Abilities;                  // +0x160
     void InitialiseAbilities();
 private:

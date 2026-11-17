@@ -10,6 +10,14 @@
 // Shape: a default-constructed local vector stands in for a null `attackers`; the inline STLport push_back (placement new
 //   under its null test, the value temporary and the empty tag both homed in the dead `attackers` slot); each limit narrows
 //   `maximum` only when set (-1 = none); the local vector's destructor runs on both exits.
+// NF48 (round 7): the attacker list is STLport 4.6.2 std::vector<const CThing*> (Ego_r.pdb signature) from the shared
+// stlport/fable_containers.h (the row's CRetailVector<const CThing*> before): reserve is the out-of-line
+// vector<const CThing*>::reserve 0x007463E0 (FABLE_RETAIL_STLP_VECTOR, declaration only); push_back is the header's inline body over
+// the STLport _M_insert_overflow(__true_type) 0x0049C370 (its stl/_vector.c body visible, called out of line); the local vector's
+// destructor is the header's. The definition now carries the Ego_r.pdb signature (private, const, vector<const CThing*>*).
+// DangerThings keeps the row's CRetailVector model.
+#define FABLE_RETAIL_STLP_VECTOR
+#include "stlport/fable_containers.h"
 #include <new>
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 struct SScalarTag { SScalarTag() { } };                 // STLport __true_type
@@ -79,12 +87,13 @@ class CTCStealth { public:
     CRetailVector<SDangerThing> DangerThings;           // +0x38
     long          MaxNumberOfDangerThings;              // +0x44
     long          RegionBasedMaxNumberOfDangerThings;   // +0x48
-    long GetNumberOfAttackersOverMaximum(CRetailVector<const CThing*>* attackers) const;
+private:                                                // Ego_r.pdb: private const
+    long GetNumberOfAttackersOverMaximum(std::vector<const CThing*>* attackers) const;
 };
 
-long CTCStealth::GetNumberOfAttackersOverMaximum(CRetailVector<const CThing*>* attackers) const
+long CTCStealth::GetNumberOfAttackersOverMaximum(std::vector<const CThing*>* attackers) const
 {
-    CRetailVector<const CThing*> localAttackers;
+    std::vector<const CThing*> localAttackers;
     if (!attackers)
         attackers = &localAttackers;
     attackers->reserve(DangerThings.size());

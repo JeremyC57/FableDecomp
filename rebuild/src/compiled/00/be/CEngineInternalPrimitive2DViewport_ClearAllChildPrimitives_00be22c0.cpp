@@ -3,6 +3,10 @@
 // Callees: vector<CEnginePrimitiveHandle>::erase(first, last) @ 0x00440D70 (on the vector at +0x94: the inlined clear()), then the inlined UpdateRenderLayerMask
 // (@ 0x00BE1D80 as its own body): mask zeroed, the walk with the end pointer re-read. Shape: the vector address stays in edi for the erase call and the
 // first re-read.
+// NF48 (round 7): the CRetailHandleVector stand-in is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> from the shared stlport/fable_containers.h;
+// FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE keeps vector<CEnginePrimitiveHandle>::erase(iterator, iterator) 0x00440D70 out of line as retail calls it.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CEngineInternalPrimitiveBase;
 class C3DBoundingBox { public: float Min[3]; float Max[3]; };
 
@@ -32,23 +36,15 @@ class CEnginePrimitiveHandle { public:                    // 8 bytes: the handle
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };
 
-struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEnginePrimitiveHandle>
-    CEnginePrimitiveHandle* m_pFirst;
-    CEnginePrimitiveHandle* m_pLast;
-    CEnginePrimitiveHandle* m_pEnd;
-    unsigned long GetCount() const { return m_pLast - m_pFirst; }
-    void erase(CEnginePrimitiveHandle* first, CEnginePrimitiveHandle* last);   // 0x00440D70 (Vector_EraseRange)
-    void clear() { erase(m_pFirst, m_pLast); }
-};
 void __fastcall UpdatePosition_00b91840(CEngineInternalPrimitiveBase* primitive, unsigned long flags);   // 0x00B91840
 
 class CEngineInternalPrimitive2DViewport : public CEngineInternalPrimitiveBase { public:   // engine/CEngineInternalPrimitive2DViewport.h: Primitives at +0x94
     unsigned char       _pad48[0x94 - 0x48];
-    CRetailHandleVector Primitives;                // +0x94 (retail: three words)
+    std::vector<CEnginePrimitiveHandle> Primitives;                // +0x94 (retail: three words)
     void UpdateRenderLayerMask()
     {
         RenderLayerMask = 0;
-        for (CEnginePrimitiveHandle* h = Primitives.m_pFirst; h != Primitives.m_pLast; ++h) {
+        for (CEnginePrimitiveHandle* h = Primitives.begin(); h != Primitives.end(); ++h) {
             if (h->m_pPrimitive)
                 RenderLayerMask |= h->m_pPrimitive->RenderLayerMask;
         }

@@ -8,6 +8,10 @@
 // Callees: CParentDefClassBase::operator= 0x00431ED0, vector<CDefString>::operator= 0x0046078C, vector<float>::operator=
 //   0x0045EF2D.
 // Shape: the compiler-style memberwise assignment written out in declaration order; scalars as moves through eax.
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<float> (was CFloatVector; operator= 0x0045EF2D), std::vector<CDefString> (was CDefStringVector; operator= 0x0046078C) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -17,38 +21,26 @@
 #pragma pack(pop)
 
 class CDefString { public: long Index; };
-struct CDefStringVector {                   // retail std::vector<CDefString> (12 bytes)
-    CDefString* m_first;
-    CDefString* m_last;
-    CDefString* m_end;
-    CDefStringVector& operator=(const CDefStringVector& other);   // 0x0046078C
-};
-struct CFloatVector {                       // retail std::vector<float> (12 bytes)
-    float* m_first;
-    float* m_last;
-    float* m_end;
-    CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
-};
 
 class CSpecialAbilitiesUnholyPowerDef : public CParentDefClassBase { public:   // vtable 0x012348E4
-    CDefStringVector StartPowerupSound;                   // +0x3c
-    CDefStringVector LoopingPowerupSound;                 // +0x48
-    CDefStringVector ReleaseSound;                        // +0x54
-    CDefStringVector ReleaseLoopSound;                    // +0x60
-    CDefStringVector FinishSound;                         // +0x6c
-    CDefStringVector CancelSound;                         // +0x78
+    std::vector<CDefString> StartPowerupSound;                   // +0x3c
+    std::vector<CDefString> LoopingPowerupSound;                 // +0x48
+    std::vector<CDefString> ReleaseSound;                        // +0x54
+    std::vector<CDefString> ReleaseLoopSound;                    // +0x60
+    std::vector<CDefString> FinishSound;                         // +0x6c
+    std::vector<CDefString> CancelSound;                         // +0x78
     float            RandomFactorForNumSecsBetweenDamageHit;   // +0x84
-    CFloatVector     NumSecsBetweenDamageHit;             // +0x88
-    CFloatVector     DamagePerHit;                        // +0x94
-    CFloatVector     DurationOfSpellSecs;                 // +0xa0
-    CFloatVector     RadiusOfEffect;                      // +0xac
-    CFloatVector     EnvChangeSecs;                       // +0xb8
-    CFloatVector     EnvReturnSecs;                       // +0xc4
+    std::vector<float>     NumSecsBetweenDamageHit;             // +0x88
+    std::vector<float>     DamagePerHit;                        // +0x94
+    std::vector<float>     DurationOfSpellSecs;                 // +0xa0
+    std::vector<float>     RadiusOfEffect;                      // +0xac
+    std::vector<float>     EnvChangeSecs;                       // +0xb8
+    std::vector<float>     EnvReturnSecs;                       // +0xc4
     bool             DoLifting;                           // +0xd0
     float            VelocityOfLift;                      // +0xd4
     float            DistanceToLift;                      // +0xd8
-    CFloatVector     StaminaCostPerSec;                   // +0xdc
-    CFloatVector     DamageTakenMultiplier;               // +0xe8
+    std::vector<float>     StaminaCostPerSec;                   // +0xdc
+    std::vector<float>     DamageTakenMultiplier;               // +0xe8
     float            SmallRingRadius;                     // +0xf4
     float            LargeRingRadius;                     // +0xf8
     CSpecialAbilitiesUnholyPowerDef& operator=(const CSpecialAbilitiesUnholyPowerDef& other);

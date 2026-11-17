@@ -10,6 +10,10 @@
 // member in declaration order: containers through their out-of-line operator=, scalars as eax/al moves.
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes, 16-byte SubDefInfoMap); the retail
 // base is modelled locally as a packed polymorphic base exactly as the landed sibling 0x00460256 does.
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<long> (was CLongVector; operator= 0x00454886), std::vector<float> (was CFloatVector; operator= 0x0045EF2D) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -18,35 +22,30 @@
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 
-#define FABLE_RETAIL_VECTOR(Name) \
-    struct Name { void* m_first; void* m_last; void* m_end; Name& operator=(const Name& other); }
-
-FABLE_RETAIL_VECTOR(CFloatVector);                  // vector<float>::operator= 0x0045EF2D
-FABLE_RETAIL_VECTOR(CLongVector);                   // vector<long>::operator= 0x00454886
 
 class CDefString { public: long m_index; };               // 4-byte string-table handle, copied as one dword
 
 class CSpecialAbilitiesLightningSpellDef : public CParentDefClassBase { public:          // vtable 0x0123460C
-    CFloatVector m_faAreaEffect;
-    CFloatVector m_faDamagePerHit;
-    CFloatVector m_faSubBeamDamagePerHit;
-    CFloatVector m_faActivationTime;
-    CFloatVector m_faDeActivationTime;
-    CLongVector m_naMinMainBeams;
-    CLongVector m_naMaxMainBeams;
-    CLongVector m_naMinSubBeams;
-    CLongVector m_naMaxSubBeams;
-    CFloatVector m_faTemporaryBeamLife;
-    CFloatVector m_faTargettingFOV;
-    CFloatVector m_faStaminaPerSecond;
+    std::vector<float> m_faAreaEffect;
+    std::vector<float> m_faDamagePerHit;
+    std::vector<float> m_faSubBeamDamagePerHit;
+    std::vector<float> m_faActivationTime;
+    std::vector<float> m_faDeActivationTime;
+    std::vector<long> m_naMinMainBeams;
+    std::vector<long> m_naMaxMainBeams;
+    std::vector<long> m_naMinSubBeams;
+    std::vector<long> m_naMaxSubBeams;
+    std::vector<float> m_faTemporaryBeamLife;
+    std::vector<float> m_faTargettingFOV;
+    std::vector<float> m_faStaminaPerSecond;
     float m_fRandomBeamMinAngleX;
     float m_fRandomBeamMaxAngleX;
     float m_fRandomBeamMinAngleZ;
     float m_fRandomBeamMaxAngleZ;
-    CFloatVector m_faMainBeamDecapitationTime;
-    CFloatVector m_faSubBeamDecapitationTime;
-    CFloatVector m_faSubBeamDelay;
-    CFloatVector OnhitEveryNSecs;
+    std::vector<float> m_faMainBeamDecapitationTime;
+    std::vector<float> m_faSubBeamDecapitationTime;
+    std::vector<float> m_faSubBeamDelay;
+    std::vector<float> OnhitEveryNSecs;
     float CombatMultiplierIncreaseTime;
     CDefString InitSound;
     CDefString LoopingSound;

@@ -19,6 +19,11 @@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// NF48 (round 7): the CPrimitiveHandleVector stand-in is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> from the shared stlport/fable_containers.h;
+// FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE + FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL keeps erase(iterator, iterator) 0x00440D70 and resize(size_type) 0x00443F90 out of line as retail calls it.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -65,16 +70,6 @@ class CPlayerGui { public:
 };
 
 class CEnginePrimitiveHandle;
-struct CPrimitiveHandleVector {                 // vector<CEnginePrimitiveHandle> (12 bytes)
-    CEnginePrimitiveHandle* _M_start;
-    CEnginePrimitiveHandle* _M_finish;
-    CEnginePrimitiveHandle* _M_end_of_storage;
-    void Resize(long count);                                                        // 0x00443F90
-    CEnginePrimitiveHandle* erase(CEnginePrimitiveHandle* first, CEnginePrimitiveHandle* last);   // 0x00440D70
-    CEnginePrimitiveHandle* begin() { return _M_start; }
-    CEnginePrimitiveHandle* end() { return _M_finish; }
-    void clear() { erase(begin(), end()); }
-};
 class CWorldMap { public:
     long GetNoMaps() const;                     // 0x004FB470 (PDB ?GetNoMaps@CWorldMap@@QBEJXZ)
 };
@@ -103,10 +98,10 @@ struct CTCInventoryBase_Map : public CTCBase {  // retail 0x130 bytes
 class CTCInventoryMap : public CTCInventoryBase_Map, public NHeroInformationScreens::CBase {
 public:
     unsigned char _pad134[0x1ac - 0x134];
-    CPrimitiveHandleVector MapScreenPrimitiveHandles;          // +0x1ac
-    CPrimitiveHandleVector MapScreenQuestPrimitiveHandles;     // +0x1b8
-    CPrimitiveHandleVector MapScreenTeleportPrimitiveHandles;  // +0x1c4
-    CPrimitiveHandleVector MapScreenHousePrimitiveHandles;     // +0x1d0
+    std::vector<CEnginePrimitiveHandle> MapScreenPrimitiveHandles;          // +0x1ac
+    std::vector<CEnginePrimitiveHandle> MapScreenQuestPrimitiveHandles;     // +0x1b8
+    std::vector<CEnginePrimitiveHandle> MapScreenTeleportPrimitiveHandles;  // +0x1c4
+    std::vector<CEnginePrimitiveHandle> MapScreenHousePrimitiveHandles;     // +0x1d0
     unsigned char _pad1dc[0x238 - 0x1dc];
     long ActiveRegionIndex;                     // +0x238
     long NumRegions;                            // +0x23c
@@ -127,7 +122,7 @@ void CTCInventoryMap::OnCreate()
     CCreatureDef* mapDef = const_cast<CCreatureDef*>(def.Object);
     SetPDef(mapDef->InventoryDefIndex);
     CTCInventoryBase_Map::OnCreate();
-    MapScreenPrimitiveHandles.Resize(2);
+    MapScreenPrimitiveHandles.resize(2);
     MapScreenQuestPrimitiveHandles.clear();
     MapScreenTeleportPrimitiveHandles.clear();
     MapScreenHousePrimitiveHandles.clear();

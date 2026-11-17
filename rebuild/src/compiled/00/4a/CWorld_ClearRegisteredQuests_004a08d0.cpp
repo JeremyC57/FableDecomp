@@ -17,14 +17,22 @@
 //   vectors call their out-of-line erase, the CTestQuest vector's STLport erase is inlined (`pointer i =
 //   __copy(last, _M_finish, first, random_access_iterator_tag(), (int*)0); _Destroy(i, _M_finish); _M_finish = i;`
 //   with `_Destroy` = `__destroy_aux(first, last, __false_type())`); the empty tags need user constructors.
+// NF48 (round 7): RegisteredQuests / InitialActiveQuests are STLport 4.6.2 std::vector<CCharString> / CArray<CCharString> from the shared
+// stlport/fable_containers.h and engine/CArray.h (a local CCharStringVector stand-in and a local CArray before): clear() is the
+// header's inline erase(begin(), end()) over the out-of-line vector<CCharString>::erase(iterator, iterator) 0x0043336A
+// (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE). The row's CTestQuestVector keeps its inline STLport erase (retail expands that one)
+// over the header's __copy, kept out of line as the __fastcall COMDAT 0x004AA580 (FABLE_RETAIL_STLP_COPY_NOINLINE), and the
+// declaration-only __fastcall __destroy_aux 0x004ABD90 (FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL); the local namespace-std
+// tag / __copy / __destroy_aux declarations are gone.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_STLP_COPY_NOINLINE
+#define FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
+#include "stlport/fable_containers.h"
+#include "engine/CArray.h"
 class CCharString { public:
     void* PStringData;
 };
 
-namespace std {
-struct random_access_iterator_tag { random_access_iterator_tag() { } };
-struct __false_type { __false_type() { } };
-}
 using std::random_access_iterator_tag;
 using std::__false_type;
 
@@ -38,23 +46,6 @@ class CTestQuest { public:
     CCharString QuestCardDefName;                   // +0x18
 };
 
-namespace std {
-template <class _RandomAccessIter, class _OutputIter, class _Distance>
-_OutputIter __fastcall __copy(_RandomAccessIter first, _RandomAccessIter last, _OutputIter result,
-                              const random_access_iterator_tag&, _Distance*);       // 0x004AA580 ??$__copy@PAVCTestQuest@@PAV1@H@std@@...
-template <class _ForwardIterator>
-void __fastcall __destroy_aux(_ForwardIterator first, _ForwardIterator last, const __false_type&);   // 0x004ABD90 std::__destroy_aux<CTestQuest*>
-}
-
-struct CCharStringVector {
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-    CCharString* erase(CCharString* first, CCharString* last);                       // 0x0043336A
-    void clear() { erase(_M_start, _M_finish); }
-};
-
-template <class T> class CArray : public CCharStringVector { public: };
 
 struct CTestQuestVector {
     CTestQuest* _M_start;
@@ -73,7 +64,7 @@ struct CTestQuestVector {
 struct CWorld_RetailLayout {
     unsigned char           _pad_0x00[0xAC];
     CArray<CCharString>     InitialActiveQuests;    // +0xAC
-    CCharStringVector       RegisteredQuests;       // +0xB8
+    std::vector<CCharString> RegisteredQuests;      // +0xB8
     CTestQuestVector        ActiveTestQuests;       // +0xC4
     void ClearRegisteredQuests();
 };

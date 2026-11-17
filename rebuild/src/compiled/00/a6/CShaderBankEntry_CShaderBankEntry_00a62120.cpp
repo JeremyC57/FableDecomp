@@ -20,14 +20,22 @@
 //   `size() > 0 ? _M_start : this`; push_back is inline with a `__false_type()` temporary passed to a same-TU member-template
 //   _M_insert_overflow body (the empty-tag rule: the tag shares the name's slot, as retail).
 #include "fable_compiler.h"
+// NF48 (round 7): the three arrays are the shared engine/CArray.h (public STLport 4.6.2 std::vector<T>; a local CArray template with a
+// same-TU _M_insert_overflow body and a CCharBuffer stand-in before): CArray<char>(n) is STLport vector(n) with the char fill as memset
+// (FABLE_RETAIL_CARRAY, FABLE_RETAIL_STLP_FILL_CHAR), GetData is CArray::GetAsCArray, resize(n, x) is the out-of-line
+// vector<unsigned long>::resize 0x00464931 (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE), push_back the header's inline body over
+// vector<CCharString>::_M_insert_overflow 0x00433530 (its stl/_vector.c body visible, called out of line).
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_STLP_FILL_CHAR
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
+#include "engine/CArray.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 #pragma intrinsic(memcpy, memset)
 extern "C" void* __cdecl malloc(unsigned int bytes);
 extern "C" void __cdecl free(void* p);
-inline void* operator new(unsigned int, void* where) { return where; }
 
-struct __false_type { __false_type() {} };
 
 class CCharString { public:
     void* PStringData;
@@ -37,75 +45,8 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 };
 
-template <class T> class CArray { public:                           // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    struct CStorageEnd { T* _M_data; CStorageEnd(T* p) : _M_data(p) {} } _M_end_of_storage;
-    CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    unsigned long size() const { return _M_finish - _M_start; }
-    T* GetData() { return size() > 0 ? _M_start : (T*)this; }
-    void resize(unsigned long count, const T& value);        // 0x00464931 (unsigned long)
-    template <class Tag> void _M_insert_overflow(T* position, const T& x, const Tag&, unsigned long fill_len, bool atend);   // 0x00433530
-    void push_back(const T& x)
-    {
-        if (_M_finish != _M_end_of_storage._M_data) {
-            new (_M_finish) T(x);
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
 
-static inline char* FillN(char* first, unsigned long n)
-{
-    memset(first, 0, n);
-    return first + n;
-}
-// Same-TU body of the STLport vector<CCharString>::_M_insert_overflow instantiation (tag unused).
-template <class T> template <class Tag>
-__declspec(noinline) void CArray<T>::_M_insert_overflow(T* pos, const T& x, const Tag&, unsigned long n, bool atend)
-{
-    unsigned long oldSize = size();
-    unsigned long len = oldSize + (oldSize < n ? n : oldSize);
-    T* ns = len ? (T*)malloc(len * sizeof(T)) : 0;
-    T* nf = ns;
-    T* p;
-    for (p = _M_start; p != pos; ++p, ++nf)
-        new (nf) T(*p);
-    for (; n != 0; --n, ++nf)
-        new (nf) T(x);
-    if (!atend)
-        for (p = pos; p != _M_finish; ++p, ++nf)
-            new (nf) T(*p);
-    for (p = _M_start; p != _M_finish; ++p)
-        p->~T();
-    if (_M_start)
-        free(_M_start);
-    _M_start = ns;
-    _M_finish = nf;
-    _M_end_of_storage._M_data = ns + len;
-}
 
-struct CCharBuffer {                                         // CArray<char> built with a size
-    char* _M_start;
-    char* _M_finish;
-    char* _M_end_of_storage;
-    explicit CCharBuffer(unsigned long n) : _M_start(0), _M_finish(0), _M_end_of_storage(0)
-    {
-        _M_start = n != 0 ? (char*)malloc(n) : 0;
-        _M_finish = _M_start;
-        _M_end_of_storage = _M_start + n;
-        _M_finish = FillN(_M_start, n);
-    }
-    ~CCharBuffer()
-    {
-        if (_M_start)
-            free(_M_start);
-    }
-    unsigned long size() const { return _M_finish - _M_start; }
-    char* GetData() { return size() != 0 ? _M_start : (char*)this; }
-};
 
 class CDataInputStream { friend class CMemoryDataInputStream;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
@@ -169,12 +110,12 @@ CShaderBankEntry::CShaderBankEntry(unsigned long type, unsigned long index, CSha
     : ShaderType(type)
 {
     unsigned long size = bank->GetEntryDataSize(index);
-    CCharBuffer data(size);
-    bank->ReadEntryData(index, 0, data.GetData(), size);
-    CMemoryDataInputStream stream(data.GetData(), size);
+    CArray<char> data(size);
+    bank->ReadEntryData(index, 0, data.GetAsCArray(), size);
+    CMemoryDataInputStream stream(data.GetAsCArray(), size);
     unsigned long codeCount = stream.ReadULong() / 4;
     ShaderCode.resize(codeCount, 0);
-    unsigned long* code = ShaderCode.GetData();
+    unsigned long* code = ShaderCode.GetAsCArray();
     long bytes = codeCount * sizeof(unsigned long);
     if (bytes > 0)
         stream.Read(code, bytes);

@@ -1,5 +1,5 @@
 // CBrainDef::operator=(const CBrainDef&) -- memberwise assignment: base CParentDefClassBase::operator=, then the Behaviours, DisabledBehaviours and UpdateZones vectors by their operator=; returns *this
-// Leaf: ??4CBrainDef
+// Leaf: ??4CBrainDef@@QAEAAV0@ABV0@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00462B15, length 57 bytes.
 // Pragma: #pragma optimize("s", on) (the def module; one register per address pair).
 // Callees: CParentDefClassBase::operator= @ 0x00431ED0,
@@ -15,6 +15,14 @@
 // call). The PDB header (engine/CParentDefClassBase.h) describes the Ego layout, so the retail
 // base is modelled locally.
 #pragma optimize("s", on)   // the def module is size-optimised
+// NF48 (round 7): the three members are STLport 4.6.2 std::vector<CBrainBehaviour> / <CDefString> / <CBrainUpdateZone> (Ego_r.pdb
+// CBrainDef Behaviours / DisabledBehaviours / UpdateZones) from the shared stlport/fable_containers.h (local stand-ins before);
+// FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator= (0x00462B4E / 0x0046078C / 0x00462CB0).
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
+class CBrainBehaviour;
+class CDefString;
+class CBrainUpdateZone;
 
 class CParentDefClassBase { public:
     virtual void v00();
@@ -22,31 +30,10 @@ class CParentDefClassBase { public:
     CParentDefClassBase& operator=(const CParentDefClassBase& other);     // 0x00431ED0
 };
 
-struct CBrainBehaviourVector {                                            // retail std::vector (12 bytes)
-    void* m_first;
-    void* m_last;
-    void* m_end;
-    CBrainBehaviourVector& operator=(const CBrainBehaviourVector& other);   // 0x00462B4E
-};
-
-struct CDefStringVector {                                                 // retail std::vector (12 bytes)
-    void* m_first;
-    void* m_last;
-    void* m_end;
-    CDefStringVector& operator=(const CDefStringVector& other);           // 0x0046078C
-};
-
-struct CBrainUpdateZoneVector {                                           // retail std::vector (12 bytes)
-    void* m_first;
-    void* m_last;
-    void* m_end;
-    CBrainUpdateZoneVector& operator=(const CBrainUpdateZoneVector& other);   // 0x00462CB0
-};
-
 class CBrainDef : public CParentDefClassBase { public:                                  // vtable 0x0123520C
-    CBrainBehaviourVector  Behaviours;                                    // +0x3c
-    CDefStringVector       DisabledBehaviours;                            // +0x48
-    CBrainUpdateZoneVector UpdateZones;                                   // +0x54
+    std::vector<CBrainBehaviour>  Behaviours;                                    // +0x3c
+    std::vector<CDefString>       DisabledBehaviours;                            // +0x48
+    std::vector<CBrainUpdateZone> UpdateZones;                                   // +0x54
     virtual void v00();
     CBrainDef& operator=(const CBrainDef& other);
 };

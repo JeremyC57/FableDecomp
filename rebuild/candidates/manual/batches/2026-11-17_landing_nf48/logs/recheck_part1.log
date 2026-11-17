@@ -1,0 +1,123 @@
+addr       parity           behav  name
+00443f90   RELOCATION_MATCH PASS   resize
+  WARN leaf 'operator=' matches no symbol in 0045ee9b.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045ee9b.obj; graded the largest function
+0045ee9b   RELOCATION_MATCH PASS   operator=
+0045f716   WARN SHARED_HEADER_AVAILABLE CDefString
+  WARN leaf 'operator=' matches no symbol in 0045f716.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045f716.obj; graded the largest function
+0045f716   RELOCATION_MATCH PASS   operator=
+0045fac1   WARN SHARED_HEADER_AVAILABLE CDefString
+0045fac1   RELOCATION_MATCH PASS   operator=
+0045fee3   WARN SHARED_HEADER_AVAILABLE CDefString
+  WARN leaf 'operator=' matches no symbol in 0045fee3.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045fee3.obj; graded the largest function
+0045fee3   RELOCATION_MATCH PASS   operator=
+  WARN leaf 'operator=' matches no symbol in 004601ea.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 004601ea.obj; graded the largest function
+004601ea   RELOCATION_MATCH PASS   operator=
+00460457   WARN SHARED_HEADER_AVAILABLE CDefString
+  WARN leaf 'operator=' matches no symbol in 00460457.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 00460457.obj; graded the largest function
+00460457   RELOCATION_MATCH PASS   operator=
+004611a1   WARN RELOC_NAME: ?BaseCopy@BaseDef@@QAEXPBVCDefClassBase@@@Z -> 00431ed0 labelled 'CParentDefClassBase::operator='
+004611a1   RELOCATION_MATCH PASS   Copy
+  WARN leaf 'operator=' matches no symbol in 00478132.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 00478132.obj; graded the largest function
+00478132   WARN RELOC_NAME: ??4?$vector@VCAbilityTrackDef@@V?$allocator@VCAbilityTrackDef@@@std@@@std@@QAEAAV01@ABV01@@Z -> 0047857d labelled 'Vector<CAbilityTrackDef>::Assign'
+00478132   RELOCATION_MATCH PASS   operator=
+004a0220   WARN SHARED_HEADER_AVAILABLE CPlayer
+004a0220   WARN SHARED_HEADER_AVAILABLE CManager
+004a0220   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+004a0220   WARN SHARED_HEADER_AVAILABLE CMusicManager
+004a0220   WARN SHARED_HEADER_AVAILABLE CEnvironment
+004a0220   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+004a0220   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004a0220   WARN SHARED_HEADER_AVAILABLE CBulletTimeManager
+004a0220   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+004a0220   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+004a0220   WARN SHARED_HEADER_AVAILABLE CMessageEventManager
+004a0220   WARN SHARED_HEADER_AVAILABLE CWorld
+004a0220   WARN RELOC_NAME: ?g_pPlayerGui@@3PAVCPlayerGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+004a0220   WARN RELOC_NAME: ?Close@CManager@NHeroInformationScreens@@QAEXXZ -> 0066e73d labelled '_global::SetMemberConst_0066e73d'
+004a0220   WARN RELOC_NAME: ?PrepareForLoad@CDisplayEngine@@QAEXXZ -> 00434ad0 labelled 'CPlayerGui::ForceOpen'
+004a0220   RELOCATION_MATCH PASS   PrepareForLoad
+004e28b6   RELOCATION_MATCH PASS   Copy
+005eede2   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+005eede2   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005eede2   WARN SHARED_HEADER_AVAILABLE CTCBase
+005eede2   RELOCATION_MATCH PASS   InitialiseAbilities
+005f9df8   RELOCATION_MATCH PASS   resize
+0061b3c0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo
+0061b3c0   WARN SHARED_HEADER_AVAILABLE CManager
+0061b3c0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+0061b3c0   WARN RELOC_NAME: ?DrawInventoryFrame@CTCInventoryBase@@QAEXABVCEnginePrimitivePrepareInfo@@_N@Z -> 005bc4d8 labelled '_global::Nop_ret8_005bc4d8'
+0061b3c0   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+0064f659   WARN RELOC_NAME: ??0CRetailElementList@NPlayerGui@@QAE@ABUSAllocator@@@Z -> 00655b33 labelled 'std_list_allocate_sentinel_0x10'
+0064f659   RELOCATION_MATCH PASS   CDrawQuestInfo
+006b6180   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+006b6180   WARN SHARED_HEADER_AVAILABLE CIDrawEnvironmentTextureSet
+006b6180   RELOCATION_MATCH PASS   operator=
+007713c0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007713c0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+007713c0   WARN SHARED_HEADER_AVAILABLE CWorld
+007713c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007713c0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+007713c0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007713c0   RELOCATION_MATCH PASS   SetupFromDef
+00891530   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+00891530   WARN SHARED_HEADER_AVAILABLE CQuestManager
+00891530   RELOCATION_MATCH PASS   GetAllActiveQuestInfo
+008aa010   RELOCATION_MATCH PASS   ClearGossip
+008ad5c0   RELOCATION_MATCH PASS   clear
+00ac5080   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00ac5080   RELOCATION_MATCH PASS   ReadFromFile
+00b21c90   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b21c90   RELOCATION_MATCH PASS   ReadBinary
+00bc6580   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00bc6580   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00bc6580   RELOCATION_MATCH PASS   ClearAllChildPrimitives
+00d18b20   RELOCATION_MATCH PASS   WatchForDeputy1GruntsKilled
+00d61c00   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z -> 00cbd510 labelled 'CScriptBase::~CScriptBase'
+00d61c00   WARN STANDIN_LEAF ?CEngineSubPrimitiveText_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog NScript::CQ_GuildTrainingWillScript::`scalar deleting destructor'; names another function)
+00d61c00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc8890   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00dc8890   WARN SHARED_HEADER_AVAILABLE CQ_OpeningGraveyardSecretPassageScript
+00dc8890   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dc8890   RELOCATION_MATCH PASS   Main
+00e81d10   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e81d10   RELOCATION_MATCH PASS   Initialize
+00edd060   RELOCATION_MATCH PASS   WatchForAcolyteExit
+00f3a710   WARN SHARED_HEADER_AVAILABLE CRangeCompressor
+00f3a710   RELOCATION_MATCH PASS   TestRedundantBitStrip
+
+WINS: 29
+  00443f90 RELOCATION_MATCH std::vector<CEnginePrimitiveHandle>::?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z
+  0045ee9b RELOCATION_MATCH COpinionSourceDef::operator=
+  0045f716 RELOCATION_MATCH CSpecialAbilitiesMultiStrikeDef::operator=
+  0045fac1 RELOCATION_MATCH CSpecialAbilitiesBulletTimeDef::??4CSpecialAbilitiesBulletTimeDef
+  0045fee3 RELOCATION_MATCH CSpecialAbilitiesPhysicalShieldDef::operator=
+  004601ea RELOCATION_MATCH CSpecialAbilitiesTurncoatSpellDef::operator=
+  00460457 RELOCATION_MATCH CSpecialAbilitiesSummonSpellDef::operator=
+  004611a1 RELOCATION_MATCH CAttackPatternDef::?CAttackPatternDef_Copy@@YIXPAVCObjectFamilyDef@@HPBVCDefClassBase@@@Z
+  00478132 RELOCATION_MATCH CHeroStatsDef::operator=
+  004a0220 RELOCATION_MATCH CWorld::?PrepareForLoad@CWorld@@QAEXXZ
+  004e28b6 RELOCATION_MATCH CSkeletalMorphDef::Copy
+  005eede2 RELOCATION_MATCH CTCInventoryAbilities::InitialiseAbilities
+  005f9df8 RELOCATION_MATCH std::vector<EHeroAbility>::?resize@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXIABW4EHeroAbility@@@Z
+  0061b3c0 RELOCATION_MATCH CTCInventoryQuests::DrawPreparePrimitivesForRendering
+  0064f659 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::CDrawQuestInfo
+  006b6180 RELOCATION_MATCH CThemeChannel::??4CThemeChannel
+  007713c0 RELOCATION_MATCH CTCOpinionSource::SetupFromDef
+  00891530 RELOCATION_MATCH CGameScriptInterface::?GetAllActiveQuestInfo@CGameScriptInterface@@UBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@0@Z
+  008aa010 RELOCATION_MATCH CGameScriptInterface::?ClearGossip@CGameScriptInterface@@UAEXVCCharString@@@Z
+  008ad5c0 RELOCATION_MATCH std::vector<CScriptThing>::?clear@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+  00ac5080 RELOCATION_MATCH CMirroredTextureHighlightsChunk::ReadFromFile@CMirroredTextureHighlightsChunk
+  00b21c90 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplinePosParamData::ReadBinary@CSplinePosParamData
+  00bc6580 RELOCATION_MATCH CEngineInternalPrimitiveGroup::ClearAllChildPrimitives
+  00d18b20 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForDeputy1GruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ
+  00d61c00 RELOCATION_MATCH CVtable_012d1038::?CEngineSubPrimitiveText_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00dc8890 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSpeakingMarker::?Main@CSpeakingMarker@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ
+  00e81d10 RELOCATION_MATCH CFishCompOrganiser::?Initialize@CFishCompOrganiser@@
+  00edd060 RELOCATION_MATCH NScript::CV_TempleOfLightScript::?WatchForAcolyteExit@CV_TempleOfLightScript@NScript@@QAEXXZ
+  00f3a710 RELOCATION_MATCH CRangeCompressor::TestRedundantBitStrip

@@ -20,6 +20,10 @@
 //   primitive-handle loop caches the end pointer and the erase goes through an inline clear().
 // Layout: local view -- Components +0x0C, quest cards (0x2C-byte elements) +0x20, hero-info CBase +0x130, primitive handles
 //   +0x134, refresh flag +0x14D, previous hero-info screen +0x168.
+// NF48 (round 7): the CHandleVector stand-in is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> from the shared stlport/fable_containers.h;
+// FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE keeps vector<CEnginePrimitiveHandle>::erase(iterator, iterator) 0x00440D70 out of line as retail calls it.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 #include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
@@ -78,13 +82,6 @@ struct CQuestCardVector {
 class CEnginePrimitiveHandle { public:
     long a, b;
     void Clear();                                      // 0x0041BE70
-};
-struct CHandleVector {
-    CEnginePrimitiveHandle* _M_start;
-    CEnginePrimitiveHandle* _M_finish;
-    CEnginePrimitiveHandle* _M_end_of_storage;
-    CEnginePrimitiveHandle* erase(CEnginePrimitiveHandle* first, CEnginePrimitiveHandle* last);   // 0x00440D70
-    void clear() { erase(_M_start, _M_finish); }
 };
 struct CRefCounted {
     virtual void v0();
@@ -228,7 +225,7 @@ class CTCInventoryQuests : public NInventory::CTCInventoryBase { public:
     CQuestCardVector QuestCards;                     // +0x20
     unsigned char    _pad2c[0x130 - 0x2c];
     NHeroInformationScreens::CBase Screen;           // +0x130
-    CHandleVector    PrimitiveHandles;               // +0x134
+    std::vector<CEnginePrimitiveHandle>    PrimitiveHandles;               // +0x134
     unsigned char    _pad140[0x14d - 0x140];
     bool             NeedsRefresh;                   // +0x14d
     unsigned char    _pad14e[0x168 - 0x14e];
@@ -260,8 +257,8 @@ void CTCInventoryQuests::CloseInventoryPC()
     }
     BaseCloseInventory();
     NeedsRefresh = true;
-    CEnginePrimitiveHandle* last = PrimitiveHandles._M_finish;
-    for (CEnginePrimitiveHandle* it = PrimitiveHandles._M_start; it != last; ++it)
+    CEnginePrimitiveHandle* last = PrimitiveHandles.end();
+    for (CEnginePrimitiveHandle* it = PrimitiveHandles.begin(); it != last; ++it)
         it->Clear();
     PrimitiveHandles.clear();
     QuestCards.clear();

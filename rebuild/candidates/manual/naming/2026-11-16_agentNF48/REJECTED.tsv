@@ -1,0 +1,2 @@
+entry	target	claimed_symbol	binder_row	reason
+e118	0x00454886	??4?$vector@JV?$allocator@J@std@@@std@@QAEAAV01@ABV01@@Z	0x00517200	the row is an STLport __copy over an anonymous 16-byte element {CCharString, 12-byte vector}; nothing proves that vector is vector<long>: 0x00454886 is the ICF-folded operator= of every vector of a 4-byte trivially assignable T, and none of the four retail callers (0x00507095, 0x00518D2C, 0x0051B7F8, 0x0051BF54) is a landed row or in coverage.tsv with a PDB name that types the element. Not ported; claim unproven for this binder.

@@ -19,6 +19,11 @@
 //   destroyed at every exit); the warning number selects through an if/else-if chain.
 // Naming wave 35: identity reg 00dc2814 "SpeakingMarker" in 00dc27c0; Alloc 00dc84e0; vtable 012daa00 slot 1; PDB ?Main@CSpeakingMarker@CQ_OpeningGraveyardSecretPassageScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CSpeakingMarker::Main (wave3/labels_alloc.tsv); PDB ?Main@CSpeakingMarker@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CSpeakingMarker@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_OpeningGraveyardSecretPassageScript moved into NScript); same bytes.
+// NF48 (round 7): the ambush list is STLport 4.6.2 std::vector<CScriptThing> from the shared stlport/fable_containers.h (a local
+// CScriptThingVector<T> stand-in before), included first so the overlay opt-in applies; its destructor is ~vector<CScriptThing>
+// 0x008AC970, called out of line at every exit (FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE).
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "stlport/fable_containers.h"
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -44,15 +49,6 @@ class CScriptThing : public CBaseClass { public:
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     virtual ~CScriptThing();                                    // 0x004AA840
 };
-template <class T> struct CScriptThingVector {          // STLport vector<CScriptThing> (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~CScriptThingVector();                              // 0x008AC970
-    unsigned int size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned int n) { return *(_M_start + n); }
-};
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CGameScriptInterface { public:
@@ -72,7 +68,7 @@ class CGameScriptInterface { public:
     virtual void v068() const; virtual void v069() const;
     virtual CScriptThing& GetHero();                                    // slot 70 (+0x118)
     virtual void v071() const; virtual void v072() const; virtual void v073() const; virtual void v074() const;
-    virtual long GetAllThingsWithScriptName(const CCharString& name, CScriptThingVector<CScriptThing>& things) const; // slot 75 (+0x12c)
+    virtual long GetAllThingsWithScriptName(const CCharString& name, std::vector<CScriptThing>& things) const; // slot 75 (+0x12c)
     virtual void v076() const; virtual void v077() const; virtual void v078() const; virtual void v079() const; virtual void v080() const; virtual void v081() const;
     virtual void v082() const; virtual void v083() const; virtual void v084() const; virtual void v085() const; virtual void v086() const; virtual void v087() const;
     virtual void v088() const; virtual void v089() const; virtual void v090() const;
@@ -201,7 +197,7 @@ void NScript::CQ_OpeningGraveyardSecretPassageScript::CSpeakingMarker::Main()
         long conversation = Game->AddNewConversation(Me, false, false);
         Game->AddPersonToConversation(conversation, Game->GetHero());
         Game->AddLineToConversation(conversation, "TEXT_QST_049_VOICE_WARN4", false, Me, Game->GetHero());
-        CScriptThingVector<CScriptThing> ambush;
+        std::vector<CScriptThing> ambush;
         Game->GetAllThingsWithScriptName("SecondUndeadAmbush", ambush);
         for (unsigned int i = 0; i < ambush.size(); ++i) {
             if (IsActiveThreadTerminating())

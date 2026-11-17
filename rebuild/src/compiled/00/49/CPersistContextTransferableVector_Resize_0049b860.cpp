@@ -10,35 +10,21 @@
 // `push ecx` frame word; the size is `(finish - start) >> 2`; the
 // shrink arm passes `start + n` and the cached finish, the grow arm reloads finish and passes (finish, n - size, &x);
 // both arms destroy the temporary and return separately (`ret 4`).
+// NF48 (round 7): TransVector points at an STLport 4.6.2 std::vector<CCharString> from the shared stlport/fable_containers.h (a
+// local CCharStringVector stand-in before): the header's inline resize(n, x) calls the out-of-line erase(iterator, iterator)
+// 0x0043336A (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE) and the declaration-only _M_fill_insert 0x004333B3.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CCharString { public:
     void* PStringData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CCharStringVector {                         // STLport vector<CCharString>
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-    CCharString* begin() { return _M_start; }
-    CCharString* end() { return _M_finish; }
-    unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
-    CCharString* erase(CCharString* first, CCharString* last);                         // 0x0043336A
-    void _M_fill_insert(CCharString* position, unsigned long n, const CCharString& x);   // 0x004333B3
-    void insert(CCharString* position, unsigned long n, const CCharString& x) { _M_fill_insert(position, n, x); }
-    void resize(unsigned long newSize, const CCharString& x)
-    {
-        if (newSize < size())
-            erase(begin() + newSize, end());
-        else
-            insert(end(), newSize - size(), x);
-    }
-};
-
 struct CPersistContext_TransferableVector {
     virtual long GetCount();                       // slot 0
     virtual void Resize(unsigned long count);      // slot 1
-    CCharStringVector* TransVector;                // +0x4
+    std::vector<CCharString>* TransVector;         // +0x4
 };
 
 void CPersistContext_TransferableVector::Resize(unsigned long count)

@@ -661,7 +661,21 @@ public:
     }
     template <class _ForwardIter> void _M_range_initialize(_ForwardIter first,_ForwardIter last,const forward_iterator_tag&);
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+    // Per-TU opt-in (NF48 round 7, rows 0x00D2D900 / 0x00D61C00 / 0x00DC2540 deleting destructors and 0x00DC8890
+    // CSpeakingMarker::Main; like FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE): STLport's ~vector is one inline body, which VC7.1
+    // called as a COMDAT in some TUs: ~vector<CScriptThing> 0x008AC970 (landed,
+    // ??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ). Declaration only.
+    ~vector();
+#elif defined(FABLE_RETAIL_STLP_VECTOR_DTOR_FORCEINLINE)
+    // Per-TU inline control (NF48 round 7; like FABLE_RETAIL_CARRAY_SIZE_CTOR_FORCEINLINE, owner decision 2026-11-08, inline budget):
+    // the CScriptThing-list script threads 0x00EE6A40 / 0x00EDD060 / 0x00D18B20 expand ~vector<CScriptThing> at most exits and call the
+    // out-of-line COMDAT 0x008AC970 at one (an inline_depth(0) region there), where VC7.1 otherwise calls the COMDAT at every exit;
+    // CActiveEntity::~CActiveEntity 0x00CB5B90 expands ~vector<CCharString> (no COMDAT call). Same body as the default.
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start,this->_M_finish); }
+#else
     ~vector() { _Destroy(this->_M_start,this->_M_finish); }
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_ASSIGN
     // Retail branch (chunk 735, row 0x00577AC0): STLport 4.6 _vector.c operator=(const vector&), defined out of class (not
     // inline): retail calls its vector<NUISystem::CComponent*> instance at 0x005798C8 for `ExpSliders = ...`.

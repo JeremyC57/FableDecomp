@@ -9,6 +9,11 @@
 // +0x40..+0x88 sit at retail +0x3c..+0x78 (retail base 0x39 bytes, containers 12 bytes instead of 16).
 // Shape: memberwise assignment in declaration order; the bool[79] array is copied by the element loop the
 // compiler writes for an array member (`sub edi,esi` turns the source into a this-relative offset).
+// NF48 (round 7): COpinionSet's one member is Ego_r.pdb's CArray<float> OpinionValues, from the shared engine/CArray.h (a public
+// STLport 4.6.2 std::vector<float>); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares vector<float>::operator= (0x0045EF2D) out of line, which
+// COpinionSet's implicit operator= calls (was a local float-triple stand-in with its own COpinionSet::operator=).
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "engine/CArray.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -27,9 +32,8 @@ struct CReactionFlagMap {               // retail map<EOpinionReactionType,bool>
     CReactionFlagMap& operator=(const CReactionFlagMap& other);   // 0x0045DD2C
 };
 
-class COpinionSet { public:                    // retail 12 bytes: a vector<float> of opinion values
-    float* m_first; float* m_last; float* m_end;
-    COpinionSet& operator=(const COpinionSet& other);       // 0x0045EF2D
+class COpinionSet { public:                    // Ego_r.pdb: one member, CArray<float> OpinionValues (retail 12 bytes)
+    CArray<float> OpinionValues;                // its implicit operator= is the call to vector<float>::operator= 0x0045EF2D
 };
 
 class COpinionSourceDef : public CParentDefClassBase { public:    // vtable 0x01233FF4

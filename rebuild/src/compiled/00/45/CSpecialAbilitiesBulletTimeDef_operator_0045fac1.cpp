@@ -11,6 +11,10 @@
 // Layout: the CParentDefClassBase base is 0x39 retail bytes (12-byte vector map; the PDB says 0x3d), padded
 //   to +0x3C; derived members as in the def's Transfer (0x00464DB5): retail vectors are 12 bytes.
 #pragma optimize("s", on)
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<float> (was CFloatVector; operator= 0x0045EF2D) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -20,10 +24,6 @@
 #pragma pack(pop)
 class CDefString { public: long m_index; };
 #include "engine/C3DVector.h"
-struct CFloatVector {
-    float* m_first; float* m_last; float* m_end;
-    CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
-};
 class CSpecialAbilitiesBulletTimeDef : public CParentDefClassBase { public:
     float SlowTimeDuration[4];                       // +0x3C
     long BulletTimeSlowdownMultiplier[4];            // +0x4C
@@ -58,13 +58,13 @@ class CSpecialAbilitiesBulletTimeDef : public CParentDefClassBase { public:
     float DamageRadialBlurTwist;                     // +0x124
     float DamageRadialBlurFadeTimeSecs;              // +0x128
     float HeroCombatSlowness;                        // +0x12C
-    CFloatVector ScreenFilterAlpha;                  // +0x130
-    CFloatVector ScreenFilterSaturation;             // +0x13C
-    CFloatVector ScreenFilterContrast;               // +0x148
-    CFloatVector ScreenFilterBrightness;             // +0x154
-    CFloatVector ScreenFilterTintR;                  // +0x160
-    CFloatVector ScreenFilterTintG;                  // +0x16C
-    CFloatVector ScreenFilterTintB;                  // +0x178
+    std::vector<float> ScreenFilterAlpha;                  // +0x130
+    std::vector<float> ScreenFilterSaturation;             // +0x13C
+    std::vector<float> ScreenFilterContrast;               // +0x148
+    std::vector<float> ScreenFilterBrightness;             // +0x154
+    std::vector<float> ScreenFilterTintR;                  // +0x160
+    std::vector<float> ScreenFilterTintG;                  // +0x16C
+    std::vector<float> ScreenFilterTintB;                  // +0x178
     float ScreenFilterFadeInSecs;                    // +0x184
     float ScreenFilterFadeOutSecs;                   // +0x188
 };

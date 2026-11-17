@@ -14,6 +14,10 @@
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes, 16-byte SubDefInfoMap); the
 // retail base is 0x39 bytes (12-byte vector map), so it is modelled locally as a packed polymorphic base
 // whose operator= is out of line; the derived members follow at their natural alignment.
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<float> (was CFloatVector; operator= 0x0045EF2D) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -22,19 +26,13 @@
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 
-struct CFloatVector {                   // retail std::vector<float> (12 bytes)
-    float* m_first;
-    float* m_last;
-    float* m_end;
-    CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
-};
 
 class CSpecialAbilitiesTurncoatSpellDef : public CParentDefClassBase { public: // vtable 0x0123453C
-    CFloatVector         StaminaCostPerSec;           // +0x3c
-    CFloatVector         ResistanceDamagePerSec;      // +0x48
-    CFloatVector         TurncoatTime;                // +0x54
-    CFloatVector         TurncoatRange;               // +0x60
-    CFloatVector         TurncoatXPUpEveryNSecs;      // +0x6c
+    std::vector<float>         StaminaCostPerSec;           // +0x3c
+    std::vector<float>         ResistanceDamagePerSec;      // +0x48
+    std::vector<float>         TurncoatTime;                // +0x54
+    std::vector<float>         TurncoatRange;               // +0x60
+    std::vector<float>         TurncoatXPUpEveryNSecs;      // +0x6c
     CSpecialAbilitiesTurncoatSpellDef& operator=(const CSpecialAbilitiesTurncoatSpellDef& other);
 };
 

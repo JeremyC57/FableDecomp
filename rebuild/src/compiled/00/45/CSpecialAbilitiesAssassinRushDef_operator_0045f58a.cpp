@@ -8,6 +8,10 @@
 // body; PDB members +0x40..+0x84 sit at retail +0x3c..+0x80 (retail base 0x39 bytes, vector 12 bytes).
 // Shape: memberwise assignment in declaration order; the last scalar's store sinks below the vector's
 // argument setup (`add edi,80h ; push edi`) because the vector is the final member.
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<float> (was CFloatVector; operator= 0x0045EF2D) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -16,12 +20,6 @@
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 
-struct CFloatVector {                   // retail std::vector<float> (12 bytes)
-    float* m_first;
-    float* m_last;
-    float* m_end;
-    CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
-};
 
 class CSpecialAbilitiesAssassinRushDef : public CParentDefClassBase { public:   // vtable 0x0123405C
     float DistanceAwayFromtargetToAssassinRushTo;   // +0x3c
@@ -41,7 +39,7 @@ class CSpecialAbilitiesAssassinRushDef : public CParentDefClassBase { public:   
     long  AssassinAlpha;                            // +0x74
     long  SlowTimeMultiplier;                       // +0x78
     float RushDelay;                                // +0x7c
-    CFloatVector DashDistance;                      // +0x80
+    std::vector<float> DashDistance;                      // +0x80
     CSpecialAbilitiesAssassinRushDef& operator=(const CSpecialAbilitiesAssassinRushDef& other);
 };
 

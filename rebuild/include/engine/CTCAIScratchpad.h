@@ -6,9 +6,21 @@
 #include "engine/CDefPointer.h"
 #include "engine/EScriptingStateGroups.h"
 #include "fable_string.h"
+#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_GOSSIP_MAPS
+#include "stlport/fable_map.h"
+#endif
 class CAIScratchpadDef;
 class CTCAIScratchpad:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_GOSSIP_MAPS
+    // Opt-in (NF48 round 7, rows 0x008AA010 / 0x008AA270 / 0x008AA4D0 CGameScriptInterface::ClearGossip*): the static gossip maps,
+    // Ego_r.pdb `dynamic initializer for 'CTCAIScratchpad::Gossip'` / GossipVillages / GossipFactions (0x0100CD00..0x0100CE00 in that
+    // build); retail 0x013BAE44 / 0x013BAE50 / 0x013BAE5C, 12-byte STLport maps keyed by name, each value the vector<CCharString>
+    // CGameScriptInterface::GetGossip / GetGossipVillages / GetGossipFactions return. Declarations only.
+    static std::map<CCharString, std::vector<CCharString> > Gossip;
+    static std::map<CCharString, std::vector<CCharString> > GossipVillages;
+    static std::map<CCharString, std::vector<CCharString> > GossipFactions;
+#endif
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
  static float GlobalTargetingDistanceOffset;
  static float __fastcall GetGlobalTargetingDistanceOffset(){return GlobalTargetingDistanceOffset;}

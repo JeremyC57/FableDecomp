@@ -1,5 +1,8 @@
 // CV_TempleOfLightScript::WatchForAcolyteExit() -- script thread: once the hero has attacked, collect the TOL_AcolyteGood things, wait until all are gone and set AllAcolytesEscaped
 // Leaf: ?WatchForAcolyteExit@CV_TempleOfLightScript@NScript@@QAEXXZ
+// Inline-budget: FABLE_RETAIL_STLP_VECTOR_DTOR_FORCEINLINE (header opt-in) + a scoped #pragma inline_depth(0) region at the merged end --
+//   retail expands ~vector<CScriptThing> at the wait loop's terminating return and calls the COMDAT 0x008AC970 at the end; with the
+//   header's plain inline ~vector VC7.1 calls the COMDAT at every exit (the twin 0x00EE6A40 graded DIFFER(246v441) that way).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EDD060, length 270 bytes, plain `ret`.
 // Label: catalog "CQ_BountyHuntScript::WatchForAllGruntsKilled" is propagated; the body is started as the thread
 // "WatchForAcolyteExit" (0x012F3E28) by CV_TempleOfLightScript::Main (0x00EDB190, functor store at 0x00EDB3AD).
@@ -10,20 +13,24 @@
 // (slot 7, +0x1c), GetAllThingsWithScriptName (slot 75, +0x12c). Literal "TOL_AcolyteGood" 0x012F3E54.
 // Layout: Ego_r.pdb CV_TempleOfLightScript - 0x14: AttackedByHero +0x5b, AllAcolytesEscaped +0x5d.
 // Shape: the inline-once destructor band: retail expands the local vector's destructor at the wait loop's terminating
-// return and calls the out-of-line copy at the normal end (the two closing terminating tests jump to that call). The
-// lane calls the out-of-line copy at every site, so the vector's destruction is written per exit: a __forceinline copy
-// of the STLport ~vector body at the wait-loop return and the out-of-line ~vector (Destroy) once at the merged end.
+// return and calls the out-of-line copy at the normal end (the two closing terminating tests jump to that call); the
+// automatic destructor runs at both exits, the end one inside the inline_depth(0) region.
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 #include "fable_compiler.h"
+// NF48 (round 7): the local vector is STLport 4.6.2 std::vector<CScriptThing> from the shared stlport/fable_containers.h (a local
+// namespace-std vector model with Destroy() / DestroyInline() before); its destructor is ~vector<CScriptThing> 0x008AC970, expanded at
+// the terminating return (FABLE_RETAIL_STLP_VECTOR_DTOR_FORCEINLINE, the header body) and called out of line at the merged end,
+// where the inline_depth(0) region (the lever of the landed twin 0x00EE6A40) keeps the COMDAT call.
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_FORCEINLINE
+#include "stlport/fable_containers.h"
 class CCharString {
 public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-extern "C" void free(void* p);                         // 0x00BFEA14 (MSVCR71)
 
 class CCPPointerInfo;
 
@@ -34,29 +41,6 @@ class CCPPointerInfo;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 
-template <class T> inline void _Destroy(T* first, T* last)
-{
-    for (; first != last; ++first)
-        first->~T();
-}
-
-namespace std {
-template <class T> class allocator;
-template <class T, class A = allocator<T> > class vector {
-public:                     // STLport vector (retail 12 bytes), malloc_alloc storage
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    void Destroy();                                    // ~vector, out of line: 0x008AC970
-    FABLE_FORCEINLINE void DestroyInline()                 // the same body, expanded once (VC's inline-once band)
-    {
-        _Destroy(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-};
-}
 using std::vector;
 bool __fastcall AreAllThingsInVectorDead(const vector<CScriptThing>& things);   // 0x00CBED00
 
@@ -104,15 +88,14 @@ void NScript::CV_TempleOfLightScript::WatchForAcolyteExit()
     vector<CScriptThing> acolytes;
     m_pInterface->GetAllThingsWithScriptName("TOL_AcolyteGood", acolytes);
     for (;;) {
-        if (IsActiveThreadTerminating()) {
-            acolytes.DestroyInline();
+        if (IsActiveThreadTerminating())
             return;
-        }
         if (AreAllThingsInVectorDead(acolytes))
             break;
         m_pInterface->NewScriptFrame();
     }
+#pragma inline_depth(0)
     if (!IsActiveThreadTerminating() && !IsActiveThreadTerminating())
         AllAcolytesEscaped = true;
-    acolytes.Destroy();
 }
+#pragma inline_depth()

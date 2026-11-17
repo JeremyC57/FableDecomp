@@ -11,6 +11,13 @@
 // member in declaration order: containers through their out-of-line operator=, scalars as eax/al moves.
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes, 16-byte SubDefInfoMap); the retail
 // base is modelled locally as a packed polymorphic base exactly as the landed sibling 0x00460256 does.
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<float> / <long> / <CAppearanceModifierScalingDef> /
+// <CAbilityTrackDef> (Ego_r.pdb CHeroStatsDef member types) from the shared stlport/fable_containers.h (local stand-ins before);
+// FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator= (0x0045EF2D / 0x00454886 / 0x0047832D / 0x0047857D).
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
+class CAppearanceModifierScalingDef;
+class CAbilityTrackDef;
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -19,13 +26,6 @@
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 
-#define FABLE_RETAIL_VECTOR(Name) \
-    struct Name { void* m_first; void* m_last; void* m_end; Name& operator=(const Name& other); }
-
-FABLE_RETAIL_VECTOR(CFloatVector);                  // vector<float>::operator= 0x0045EF2D
-FABLE_RETAIL_VECTOR(CLongVector);                   // vector<long>::operator= 0x00454886
-FABLE_RETAIL_VECTOR(CAppearanceModifierScalingVector); // operator= 0x0047832D
-FABLE_RETAIL_VECTOR(CAbilityTrackVector);           // operator= 0x0047857D
 
 class CHeroStatsDef : public CParentDefClassBase { public:          // vtable 0x012339DC
     long MaximumStamina;
@@ -41,7 +41,7 @@ class CHeroStatsDef : public CParentDefClassBase { public:          // vtable 0x
     long ExpToSpendAtWhichToDisplayTutorial;
     float MinAge;
     float MaxAge;
-    CAppearanceModifierScalingVector AppearanceModifierScaling;
+    std::vector<CAppearanceModifierScalingDef> AppearanceModifierScaling;
     float AmountFatnessIncreasesPerPointOfOverEating;
     float NumberOfMinutesBetweenFatnessReductions;
     float AmountFatnessDecreasesPerReduction;
@@ -54,9 +54,9 @@ class CHeroStatsDef : public CParentDefClassBase { public:          // vtable 0x
     float PintsToDrunk;
     float PintsToVomit;
     float AlcoholAbsorbtionPerSecond;
-    CLongVector RenownLevelCosts;
-    CLongVector RenownLevelMaxFollowers;
-    CLongVector RenownLevelMaxBoastingCrowd;
+    std::vector<long> RenownLevelCosts;
+    std::vector<long> RenownLevelMaxFollowers;
+    std::vector<long> RenownLevelMaxBoastingCrowd;
     long MaxMorality;
     long MaxMoralityAsChild;
     float MaxExtraMaxHitPoints;
@@ -65,12 +65,12 @@ class CHeroStatsDef : public CParentDefClassBase { public:          // vtable 0x
     long MoralityChangeOnTheftFromShop;
     long MoralityChangeOnPicklock;
     long MoralityChangeOnVandalism;
-    CFloatVector TradeSkillForGuileLevel;
-    CAbilityTrackVector StatLevels;
-    CFloatVector MaxHitPointsPerHealthLevel;
-    CLongVector MaxStaminaPointsPerMagicPowerLevel;
-    CFloatVector SoundDistanceMultiplierPerStealthLevel;
-    CFloatVector VisibilityMultiplierPerStealthLevel;
+    std::vector<float> TradeSkillForGuileLevel;
+    std::vector<CAbilityTrackDef> StatLevels;
+    std::vector<float> MaxHitPointsPerHealthLevel;
+    std::vector<long> MaxStaminaPointsPerMagicPowerLevel;
+    std::vector<float> SoundDistanceMultiplierPerStealthLevel;
+    std::vector<float> VisibilityMultiplierPerStealthLevel;
     CHeroStatsDef& operator=(const CHeroStatsDef& other);
 };
 

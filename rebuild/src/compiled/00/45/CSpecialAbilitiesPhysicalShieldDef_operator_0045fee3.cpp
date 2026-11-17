@@ -11,6 +11,10 @@
 // scalars (floats included) as dword moves, and each vector<float> through its out-of-line operator=.
 // Layout: engine/CSpecialAbilitiesPhysicalShieldDef.h is the PDB view (0x16c, 16-byte vectors, base 0x40);
 // the retail object is 0x148 bytes, so the class is modelled locally on the landed CParentDefClassBase base.
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<float> (was CFloatVector; operator= 0x0045EF2D) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -23,12 +27,6 @@ class CDefString { public:                         // a def-table string referen
     long TablePos;
 };
 
-struct CFloatVector {                       // retail std::vector<float> (12 bytes)
-    float* m_first;
-    float* m_last;
-    float* m_end;
-    CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
-};
 
 class CSpecialAbilitiesPhysicalShieldDef : public CParentDefClassBase { public:
     CDefString   InitSound;                     // +0x3c
@@ -47,18 +45,18 @@ class CSpecialAbilitiesPhysicalShieldDef : public CParentDefClassBase { public:
     float        CastCamFOV;                    // +0xc8
     float        CastCamSwitchTime;             // +0xcc
     float        MinWidth;                      // +0xd0
-    CFloatVector MaxWidth;                      // +0xd4
+    std::vector<float> MaxWidth;                      // +0xd4
     float        BeenHitExtraWidth;             // +0xe0
     float        BeenHitFadeOffTimeSecs;        // +0xe4
     float        WobbleRate;                    // +0xe8
-    CFloatVector ColorStartLevel1;              // +0xec
-    CFloatVector ColorStartLevel2;              // +0xf8
-    CFloatVector ColorStartLevel3;              // +0x104
-    CFloatVector ColorStartLevel4;              // +0x110
-    CFloatVector ColorEnd;                      // +0x11c
-    CFloatVector ColorHit;                      // +0x128
+    std::vector<float> ColorStartLevel1;              // +0xec
+    std::vector<float> ColorStartLevel2;              // +0xf8
+    std::vector<float> ColorStartLevel3;              // +0x104
+    std::vector<float> ColorStartLevel4;              // +0x110
+    std::vector<float> ColorEnd;                      // +0x11c
+    std::vector<float> ColorHit;                      // +0x128
     float        FadeOutPhysicalShieldTimeSecs; // +0x134
-    CFloatVector ManaDamage;                    // +0x138
+    std::vector<float> ManaDamage;                    // +0x138
     bool         ShieldCoversCarriedItems;      // +0x144
     CSpecialAbilitiesPhysicalShieldDef& operator=(const CSpecialAbilitiesPhysicalShieldDef& other);
 };

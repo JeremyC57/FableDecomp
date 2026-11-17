@@ -3,15 +3,12 @@
 // Callees: vector<T>::erase(first, last) @ 0x00440D70 (Vector_EraseRange, a __fastcall taking two element pointers).
 // Shape: the inlined clear() pushes m_pLast then m_pFirst (right to left) and forms `this` of the vector with
 // `add ecx,1Ch`; the erase result is dropped and the `ret 4` of the unused argument blocks a tail jump.
+// NF48 (round 7): the CRetailHandleVector stand-in is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> from the shared stlport/fable_containers.h;
+// FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE keeps vector<CEnginePrimitiveHandle>::erase(iterator, iterator) 0x00440D70 out of line as retail calls it.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CEnginePrimitiveHandle;
 
-struct CRetailHandleVector {                         // VC6 Dinkumware vector: three words
-    CEnginePrimitiveHandle* m_pFirst;
-    CEnginePrimitiveHandle* m_pLast;
-    CEnginePrimitiveHandle* m_pEnd;
-    CEnginePrimitiveHandle* erase(CEnginePrimitiveHandle* first, CEnginePrimitiveHandle* last);   // 0x00440D70
-    void clear() { erase(m_pFirst, m_pLast); }
-};
 
 struct CTCBase_007b7de0 {
     virtual void v00();
@@ -20,7 +17,7 @@ struct CTCBase_007b7de0 {
 
 class CTCOverheadDisplay : public CTCBase_007b7de0 { public:
     unsigned char       _pad0c[0x1c - 0x0c];       // DamageValues/RepairValues/RenownValues (4-byte retail lists), PDef
-    CRetailHandleVector PrimitiveHandles;                   // +0x1c
+    std::vector<CEnginePrimitiveHandle> PrimitiveHandles;                   // +0x1c
     virtual void DrawPreparePrimitivesForRendering(long unused);
 };
 

@@ -1,19 +1,26 @@
 // 00e54990 NScript::CV_BookCollectingScript::Init
 // Flags: /O2 /Oy /W3
-// Leaf: Init
+// Leaf: ?Init@CV_BookCollectingScript@NScript@@QAEXXZ
+// NF48 (round 7): the local namespace X_00e54990 (its std::vector, CConversation, CScriptDef and ScriptDef stand-ins) is gone: the
+// vectors are STLport 4.6.2 std::vector<T> from the shared stlport/fable_containers.h, CConversation / CScriptDef / pGlobalScriptDef
+// (0x0143E90C, Ego_r.pdb CDefPointer<const CScriptDef>) come from engine/CConversation.h and engine/fable_script_def_global.h.
+// BookReactions = ... is the out-of-line vector<CConversation>::operator= 0x00E54AA0 (FABLE_RETAIL_STLP_VECTOR_ASSIGN); the one-argument
+// resize is STLport's inline resize(n, T()) over the out-of-line resize(n, const T&) (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE):
+// vector<CCharString> 0x0043332C, vector<bool> 0x00467686 (Ego_r.pdb types BookDonated / BookOwned vector<bool>; the landed
+// 0x00467686 row is std::vector<bool>::resize and 0x00CDD0A0 binds that spelling; retail's vector<bool> is a plain byte vector).
+// Layout: retail CV_BookCollectingScript (Ego_r.pdb member names): ReadingBook +0x48, BookReactions +0x4c, DoneIntro +0x78 .. BookOwned
+// +0xac; the base prefix and resource wrappers are untouched here. CScriptDef (header, retail offsets): BookReactions +0x4c8,
+// BookDefNames +0x4d4, BooksNumberTotal +0x4ec.
 #include "fable_compiler.h"
-namespace X_00e54990{
-} // (hoisted to global scope: naming wave 9)
-struct CCharStringData;class CCharString{ public:CCharStringData*PStringData;CCharString();CCharString(const CCharString&);~CCharString();const CCharString&operator=(const CCharString&);};
-namespace X_00e54990 {
-namespace std{template<class T>struct vector{T*Start,*Finish,*Storage;vector&operator=(const vector&);void resize(unsigned,const T&);FABLE_FORCEINLINE void resize(unsigned n){resize(n,T());}};}
-// Layout: retail CConversation is92: ten prefix words, Lines40 and four12-byte string vectors44/56/68/80. PDB gives original member names, donor vector size16.
-struct CConversation{unsigned Prefix[10];long Lines;std::vector<CCharString>Speaker,Dialogue,Animation,AnimLoop;};
-// Layout: retail ScriptDef BookReactions4c8, BookDefNames4d4, BooksNumberTotal4ec, from this function. No active header exists.
-struct CScriptDef{unsigned char Prefix[0x4c8];std::vector<CConversation>BookReactions;std::vector<CCharString>BookDefNames;long BooksNumberWanted,BooksNumberAccepted,BooksNumberComment,BooksNumberTotal;};extern CScriptDef*ScriptDef;
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
+#include "engine/CConversation.h"
+#include "engine/fable_script_def_global.h"
 namespace NScript{
-// Layout: original names from PDB CV_BookCollectingScript; retail offsets ReadingBook48, BookReactions4c, DoneIntro78 through BookOwnedac. Base prefix and resource wrappers untouched here.
-struct CV_BookCollectingScript{unsigned char Prefix[0x48];bool ReadingBook;std::vector<CConversation>BookReactions;unsigned char ResourceWrappers[0x20];bool DoneIntro,HatRewarded,KeyRewarded;long GossipState;bool HasInformation;long BooksDonated,GoodBooksDonated,LastBookRequested,BooksInGame;std::vector<CCharString>BookDef;std::vector<unsigned char>BookDonated,BookOwned;void Init();};
-void CV_BookCollectingScript::Init(){ReadingBook=false;BookReactions=ScriptDef->BookReactions;DoneIntro=false;HatRewarded=false;KeyRewarded=false;GossipState=0;HasInformation=false;BooksDonated=0;GoodBooksDonated=0;LastBookRequested=-1;BooksInGame=ScriptDef->BooksNumberTotal;BookDef.resize(BooksInGame);BookDonated.resize(BooksInGame);BookOwned.resize(BooksInGame);for(long i=0;i<BooksInGame;++i){BookDef.Start[i]=ScriptDef->BookDefNames.Start[i];BookOwned.Start[i]=false;BookDonated.Start[i]=false;}}
-}
+struct CV_BookCollectingScript{unsigned char Prefix[0x48];bool ReadingBook;std::vector<CConversation>BookReactions;unsigned char ResourceWrappers[0x20];bool DoneIntro,HatRewarded,KeyRewarded;long GossipState;bool HasInformation;long BooksDonated,GoodBooksDonated,LastBookRequested,BooksInGame;std::vector<CCharString>BookDef;std::vector<bool>BookDonated,BookOwned;void Init();};
+void CV_BookCollectingScript::Init(){ReadingBook=false;BookReactions=pGlobalScriptDef->BookReactions;DoneIntro=false;HatRewarded=false;KeyRewarded=false;GossipState=0;HasInformation=false;BooksDonated=0;GoodBooksDonated=0;LastBookRequested=-1;BooksInGame=pGlobalScriptDef->BooksNumberTotal;BookDef.resize(BooksInGame);BookDonated.resize(BooksInGame);BookOwned.resize(BooksInGame);for(long i=0;i<BooksInGame;++i){BookDef[i]=pGlobalScriptDef->BookDefNames[i];BookOwned[i]=false;BookDonated[i]=false;}}
 }

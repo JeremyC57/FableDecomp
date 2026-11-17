@@ -12,58 +12,18 @@
 //   frame word); push_back inlined (null-tested placement copy, finish += 4, else the overflow with the __false_type tag in
 //   the dead slot); the item count re-derived every pass.
 #include "fable_compiler.h"
-inline void* operator new(unsigned int, void* where) { return where; }
+// NF48 (round 7): names is STLport 4.6.2 std::vector<CCharString> from the shared stlport/fable_containers.h (a local
+// CCharStringVector stand-in with stand-in erase / _M_insert_overflow bodies before): clear() is the header's inline
+// erase(begin(), end()) over the out-of-line vector<CCharString>::erase(iterator, iterator) 0x0043336A
+// (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE); push_back is the header's inline body over the STLport _M_insert_overflow
+// 0x00433530 (its stl/_vector.c body visible, called out of line). The definition now carries the Ego_r.pdb signature.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct __false_type { __false_type() {} };
-struct CCharStringVector {                              // STLport vector<CCharString>
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-    CCharString* erase(CCharString* first, CCharString* last);   // 0x0043336A
-    void clear() { erase(_M_start, _M_finish); }
-    void _M_insert_overflow(CCharString* position, const CCharString& x, const __false_type&,
-                            unsigned long fill_len, bool atend);   // 0x00433530
-    void push_back(const CCharString& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) CCharString(x);
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
-void* FindRef_CCharStringVector_erase_1();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
-// VC7.1 knows the caller's address-taken local does not escape the call.
-#pragma auto_inline(off)
-__declspec(noinline) CCharString* CCharStringVector::erase(CCharString* first, CCharString* last)
-{
-    void* p = FindRef_CCharStringVector_erase_1();
-    if (!p)
-        return 0;
-    *(void**)first = p;
-    *(void**)last = p;
-    return 0;
-}
-#pragma auto_inline(on)
-void* FindRef_CCharStringVector__M_insert_overflow_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
-// VC7.1 knows the caller's address-taken local does not escape the call.
-#pragma auto_inline(off)
-__declspec(noinline) void CCharStringVector::_M_insert_overflow(CCharString* position, const CCharString& x, const __false_type& p2, unsigned long fill_len, bool atend)
-{
-    void* p = FindRef_CCharStringVector__M_insert_overflow_0();
-    if (!p)
-        return;
-    *(void**)position = p;
-    *(void**)&x = p;
-}
-#pragma auto_inline(on)
 class CDefString { public:
     long m_index;
     CDefString(const CDefString& other) : m_index(other.m_index) { }
@@ -79,7 +39,6 @@ class CTCBase;
 // agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
 //   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
 enum ETCInterfaceType { };
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class C> class CVectorMap;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
@@ -148,14 +107,14 @@ class CScriptThing { public:
     void* PImp[2];
 };
 class CGameScriptInterface { public:
-    virtual void GetItemDefNamesFromContainer(const CScriptThing& container, CCharStringVector& names) const;
+    virtual void GetItemDefNamesFromContainer(const CScriptThing& container, std::vector<CCharString>& names) const;
     void*                      World;                   // +0x04
     void*                      Component;               // +0x08
     void*                      DisplayEngine;           // +0x0c
     CDefinitionManager* DefinitionManager;       // +0x10
 };
 
-void CGameScriptInterface::GetItemDefNamesFromContainer(const CScriptThing& container, CCharStringVector& names) const
+void CGameScriptInterface::GetItemDefNamesFromContainer(const CScriptThing& container, std::vector<CCharString>& names) const
 {
     names.clear();
     if (!container.IsAlive())

@@ -61,19 +61,15 @@ class CCreatureStatsDef : public CDefClassBase { public:
     float StrengthDamageMultiplier;         // +0x44
 };
 
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<long> (was CLongVector; operator= 0x00454886), std::vector<CDefString> (was CDefStringVector; operator= 0x0046078C) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #include "engine/CCountedPointer.h"
 
-struct CLongVector {                        // retail std::vector<long> (12 bytes)
-    long* m_first; long* m_last; long* m_end;
-    CLongVector& operator=(const CLongVector& other);   // 0x00454886
-};
 struct CPhonemeAnimMap {                    // retail std::map<CCharString,long> (12 bytes)
     void* m_head; unsigned long m_size; unsigned long m_compare;
     CPhonemeAnimMap& operator=(const CPhonemeAnimMap& other);   // 0x00432B38
-};
-struct CDefStringVector {                   // retail std::vector<CDefString> (12 bytes)
-    void* m_first; void* m_last; void* m_end;
-    CDefStringVector& operator=(const CDefStringVector& other);   // 0x0046078C
 };
 class CDefString { public: long Index; };
 class CHeroAbilityStatWeight { public:             // map<EHeroTrainableStatType,float> StatWeights (12 bytes)
@@ -87,10 +83,10 @@ class CCreatureDef : public CDefClassBase { public:                             
     CCountedPointer<CRandomAppearanceMorph> PRandomAppearanceMorph; // +0x30
     CCountedPointer<CExpressionSet> PExpressions;                   // +0x38
     CCountedPointer<CCreatureStatsDef> PStats;                      // +0x40
-    CLongVector InitialActions;                 // +0x48
-    CLongVector InitialAppearanceModifiers;     // +0x54
+    std::vector<long> InitialActions;                 // +0x48
+    std::vector<long> InitialAppearanceModifiers;     // +0x54
     CPhonemeAnimMap PhonemeAnim;                // +0x60
-    CDefStringVector DialogueVoices;            // +0x6c
+    std::vector<CDefString> DialogueVoices;            // +0x6c
     long Inventory;                             // +0x78
     long ClothingInventory;                     // +0x7c
     long WeaponsInventory;                      // +0x80

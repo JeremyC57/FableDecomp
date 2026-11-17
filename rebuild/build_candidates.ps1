@@ -90701,8 +90701,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005f9df8'
         Module = 'std::vector<EHeroAbility>'
-        Source = '00/5f/stdvectorEHeroAbility_resize_005f9df8.cpp'
-        TestSource = '00/5f/stdvectorEHeroAbility_resize_005f9df8_test.cpp'
+        Source = '00/5f/stdvector_resize_005f9df8.cpp'
+        TestSource = '00/5f/stdvector_resize_005f9df8_test.cpp'
         PassPattern = 'PASS_005f9df8'
     }
     [pscustomobject]@{
@@ -93046,9 +93046,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0043332c'
-        Module = 'CArray<std::pair<long'
-        Source = '00/43/CArraystdpairlong_pushback_0043332c.cpp'
-        TestSource = '00/43/CArraystdpairlong_pushback_0043332c_test.cpp'
+        Module = 'std::vector<CCharString>'
+        Source = '00/43/stdvector_resize_0043332c.cpp'
+        TestSource = '00/43/stdvector_resize_0043332c_test.cpp'
         PassPattern = 'PASS_0043332c'
     }
     [pscustomobject]@{
@@ -127909,9 +127909,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008ad5c0'
-        Module = '_unattributed'
-        Source = '00/8a/unattributed_CallWithPair008ac9d0_008ad5c0.cpp'
-        TestSource = '00/8a/unattributed_CallWithPair008ac9d0_008ad5c0_test.cpp'
+        Module = 'std::vector<CScriptThing>'
+        Source = '00/8a/stdvector_clear_008ad5c0.cpp'
+        TestSource = '00/8a/stdvector_clear_008ad5c0_test.cpp'
         PassPattern = '008ad5c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -169947,9 +169947,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af72d0'
-        Module = '_global'
-        Source = '00/af/global_CopyCElement120045488600af72d0_00af72d0.cpp'
-        TestSource = '00/af/global_CopyCElement120045488600af72d0_00af72d0_test.cpp'
+        Module = 'std'
+        Source = '00/af/std_copy_00af72d0.cpp'
+        TestSource = '00/af/std_copy_00af72d0_test.cpp'
         PassPattern = '00af72d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -183167,9 +183167,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00485fe8'
-        Module = '_unattributed'
-        Source = '00/48/unattributed_ApplyPair00485fe8_00485fe8.cpp'
-        TestSource = '00/48/unattributed_ApplyPair00485fe8_00485fe8_test.cpp'
+        Module = 'std::vector<CCharString>'
+        Source = '00/48/stdvector_clear_00485fe8.cpp'
+        TestSource = '00/48/stdvector_clear_00485fe8_test.cpp'
         PassPattern = '00485fe8_TEST PASS'
     }
     [pscustomobject]@{
@@ -191322,8 +191322,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009d3fb0'
         Module = 'CArray<CCharString>'
-        Source = '00/9d/CArrayCCharString_CArray_009d3fb0.cpp'
-        TestSource = '00/9d/CArrayCCharString_CArray_009d3fb0_test.cpp'
+        Source = '00/9d/CArray_DeallocateMemory_009d3fb0.cpp'
+        TestSource = '00/9d/CArray_DeallocateMemory_009d3fb0_test.cpp'
         PassPattern = '009d3fb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -206126,8 +206126,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004e4d3b'
         Module = 'CObjectAugmentationParticleSet'
-        Source = '00/4e/CObjectAugmentationParticleSet_CObjectAugmentationParticleSet_004e4d3b.cpp'
-        TestSource = '00/4e/CObjectAugmentationParticleSet_CObjectAugmentationParticleSet_004e4d3b_test.cpp'
+        Source = '00/4e/CObjectAugmentationParticleSet_operator_004e4d3b.cpp'
+        TestSource = '00/4e/CObjectAugmentationParticleSet_operator_004e4d3b_test.cpp'
         PassPattern = '004e4d3b_TEST PASS'
     }
     [pscustomobject]@{
@@ -236496,9 +236496,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00443f90'
-        Module = 'std::vector'
-        Source = '00/44/stdvector_Resize_00443f90.cpp'
-        TestSource = '00/44/stdvector_Resize_00443f90_test.cpp'
+        Module = 'std::vector<CEnginePrimitiveHandle>'
+        Source = '00/44/stdvector_resize_00443f90.cpp'
+        TestSource = '00/44/stdvector_resize_00443f90_test.cpp'
         PassPattern = '00443f90_TEST PASS'
     }
     [pscustomobject]@{

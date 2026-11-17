@@ -9,6 +9,12 @@
 // ReadBool() (`test bl,bl ; setne cl`): the count in ebx, `resize(count, 0)` with the zero temporary in the dead
 // stream-argument slot, then a loop of inlined ReadULong() reads stored through `*(begin() + i)`; the array address is
 // kept in the `push ecx` frame word.
+// NF48 (round 7): CArray<unsigned long> is the shared engine/CArray.h (a public STLport 4.6.2 std::vector<unsigned long>,
+// a local begin/end/capacity model before); resize(n, const unsigned long&) is vector<unsigned long>::resize 0x00464931
+// (?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z), kept out of line by FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE.
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "engine/CArray.h"
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -43,12 +49,6 @@ private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-    T* begin() { return m_begin; }
-    T& operator[](unsigned long n) { return *(begin() + n); }
-    void resize(unsigned long n, const T& value);       // 0x00464931 for T = unsigned long
-};
 
 struct CParticleSystem;
 class CCardinalSpline;

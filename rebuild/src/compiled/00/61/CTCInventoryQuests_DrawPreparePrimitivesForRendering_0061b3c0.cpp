@@ -16,6 +16,10 @@
 // Layout: retail CTCInventoryBase as the landed sibling 0x005C2FE1 (Components +0x0C, FirstRenderFrame +0x18,
 //   LastRenderTime +0x50, InventoryOpen +0x58); NHeroInformationScreens::CBase at +0x130;
 //   InventoryQuestCardSelectPrimitiveHandles +0x134, AccumFadeTime +0x184 (Ego_r.pdb order, release containers).
+// NF48 (round 7): the CPrimitiveHandleVector stand-in is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> from the shared stlport/fable_containers.h;
+// FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE keeps vector<CEnginePrimitiveHandle>::erase(iterator, iterator) 0x00440D70 out of line as retail calls it.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 double __fastcall GFGetTime();                                 // 0x009E1BC0
 
 struct CViewport;
@@ -97,15 +101,6 @@ template <class R, class T> struct mem_fun_ref_t {
 template <class R, class T> inline mem_fun_ref_t<R, T> mem_fun_ref(R (T::*f)()) { return mem_fun_ref_t<R, T>(f); }
 template <class I, class F> F __fastcall _For_each(I first, I last, F f);   // 0x0043F360
 template <class I, class F> inline F for_each(I first, I last, F f) { return _For_each(first, last, f); }
-struct CPrimitiveHandleVector {                                // STLport vector<CEnginePrimitiveHandle>
-    CEnginePrimitiveHandle* _M_start;
-    CEnginePrimitiveHandle* _M_finish;
-    CEnginePrimitiveHandle* _M_end_of_storage;
-    CEnginePrimitiveHandle* begin() { return _M_start; }
-    CEnginePrimitiveHandle* end() { return _M_finish; }
-    CEnginePrimitiveHandle* erase(CEnginePrimitiveHandle* first, CEnginePrimitiveHandle* last);   // 0x00440D70
-    void clear() { erase(begin(), end()); }
-};
 
 struct CTCBase_Draw {                                          // the polymorphic root (vptr +0x00, ParentThing +0x04, flags +0x08)
     virtual void v00();
@@ -128,7 +123,7 @@ class CBase { public:
 };
 }
 class CTCInventoryQuests : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
-    CPrimitiveHandleVector InventoryQuestCardSelectPrimitiveHandles;   // +0x134
+    std::vector<CEnginePrimitiveHandle> InventoryQuestCardSelectPrimitiveHandles;   // +0x134
     unsigned char    _pad140[0x184 - 0x140];
     float            AccumFadeTime;                            // +0x184
     void DrawActiveTestQuests(const CEnginePrimitivePrepareInfo& info);   // 0x0061AD60

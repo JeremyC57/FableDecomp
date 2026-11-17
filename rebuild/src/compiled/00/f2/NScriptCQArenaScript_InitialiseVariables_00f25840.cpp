@@ -12,6 +12,11 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+// NF48 (round 7): Rounds and the def's ArenaRounds are STLport 4.6.2 std::vector<CArenaRoundDef> (Ego_r.pdb CQ_ArenaScript::Rounds /
+// CScriptDef::ArenaRounds) from the shared stlport/fable_containers.h (a local CArenaRoundVector stand-in before); the assignment is
+// the out-of-line vector<CArenaRoundDef>::operator= 0x00F25980 (FABLE_RETAIL_STLP_VECTOR_ASSIGN).
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 class CCharString { public:
     void* PStringData;
     const CCharString& operator=(const char* text);        // 0x0099EFE0
@@ -19,16 +24,9 @@ class CCharString { public:
 
 class CArenaRoundDef;
 
-struct CArenaRoundVector {                           // STLport vector<CArenaRoundDef> (12 bytes in retail)
-    CArenaRoundDef* _M_start;
-    CArenaRoundDef* _M_finish;
-    CArenaRoundDef* _M_end_of_storage;
-    CArenaRoundVector& operator=(const CArenaRoundVector& other);   // 0x00F25980
-};
-
 class CScriptDef { public:
     unsigned char _pad0[0x1044];
-    CArenaRoundVector ArenaRounds;                   // +0x1044
+    std::vector<CArenaRoundDef> ArenaRounds;                   // +0x1044
 };
 extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
@@ -37,7 +35,7 @@ class CQ_ArenaScript {
 public:
     unsigned char _base[0x48];                       // CScriptBase + interface/owner pair
     CCharString CrowdLoopTags[4][5];                 // +0x48
-    CArenaRoundVector Rounds;                        // +0x98
+    std::vector<CArenaRoundDef> Rounds;                        // +0x98
     void InitialiseVariables();
 };
 } // namespace NScript

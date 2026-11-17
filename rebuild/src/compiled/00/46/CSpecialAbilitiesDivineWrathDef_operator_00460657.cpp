@@ -5,6 +5,10 @@
 // Callees431ed0 parent assignment,46078c vector<CDefString> assignment,
 // 45ef2d vector<float> assignment; vector bodies and element4 sizes audited.
 #pragma optimize("s",on)
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<float> (was CFloatVector; operator= 0x0045EF2D), std::vector<CDefString> (was CDefStringVector; operator= 0x0046078C) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #define CSpecialAbilitiesDivineWrathDef CSpecialAbilitiesDivineWrathDefDonor
 #include "engine/_quarantine/CSpecialAbilitiesDivineWrathDef.h"
 #undef CSpecialAbilitiesDivineWrathDef
@@ -26,20 +30,12 @@ class CParentDefClassBase { public:
 };
 #pragma pack(pop)
 class CDefString { public: S32 TablePos; };
-struct CDefStringVector {
-    CDefString *Start,*Finish,*End;
-    CDefStringVector& operator=(const CDefStringVector&); // 0x0046078c
-};
-struct CFloatVector {
-    float *Start,*Finish,*End;
-    CFloatVector& operator=(const CFloatVector&); // 0x0045ef2d
-};
 class CSpecialAbilitiesDivineWrathDef : public CParentDefClassBase { public:
-    CDefStringVector StartPowerupSound,LoopingPowerupSound,ReleaseSound,ReleaseLoopSound,FinishSound,CancelSound;
+    std::vector<CDefString> StartPowerupSound,LoopingPowerupSound,ReleaseSound,ReleaseLoopSound,FinishSound,CancelSound;
     float RandomFactorForNumSecsBetweenDamageHit;
-    CFloatVector NumSecsBetweenDamageHit,DamagePerHit,DurationOfSpellSecs,RadiusOfEffect,EnvChangeSecs,EnvReturnSecs;
+    std::vector<float> NumSecsBetweenDamageHit,DamagePerHit,DurationOfSpellSecs,RadiusOfEffect,EnvChangeSecs,EnvReturnSecs;
     bool DoLifting; float VelocityOfLift,DistanceToLift;
-    CFloatVector StaminaCostPerSec,DamageTakenMultiplier;
+    std::vector<float> StaminaCostPerSec,DamageTakenMultiplier;
     float SmallRingRadius,LargeRingRadius;
     CSpecialAbilitiesDivineWrathDef& operator=(const CSpecialAbilitiesDivineWrathDef&);
 };

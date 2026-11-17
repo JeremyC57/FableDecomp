@@ -1,4 +1,4 @@
-// Levers: vector dtor __forceinline with the finish pointer cached in a local (`last`, edi); for(;;) with the terminating return first, both stop conditions break to one trailing terminating test; in-body `#pragma inline_depth(0)` around the all-dead terminate return keeps that vector dtor out of line (0x008AC970).
+// Levers: vector dtor __forceinline (the header body under FABLE_RETAIL_STLP_VECTOR_DTOR_FORCEINLINE; its _Destroy(first, last) takes the finish pointer by value: `last`, edi); for(;;) with the terminating return first, both stop conditions break to one trailing terminating test; in-body `#pragma inline_depth(0)` around the all-dead terminate return keeps that vector dtor out of line (0x008AC970).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CV_TourGuideScript::WatchForNoFollowers() -- collect the tour followers, then watch until the hero leaves the guild complex or (tour unfinished) every follower is dead, flagging AllFollowersDead in the latter case
 // Leaf: ?WatchForNoFollowers@CV_TourGuideScript@NScript@@QAEXXZ
@@ -14,6 +14,12 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 #include "fable_compiler.h"
+// NF48 (round 7): the follower vector is STLport 4.6.2 std::vector<CScriptThing> from the shared stlport/fable_containers.h (a local
+// CScriptThingVector stand-in with a __forceinline destructor before); its destructor is ~vector<CScriptThing> 0x008AC970, expanded
+// inline (the header's body, FABLE_RETAIL_STLP_VECTOR_DTOR_FORCEINLINE) except in the inline_depth(0) region, where VC7.1 calls the
+// out-of-line copy as retail does. AreAllThingsInVectorDead now binds its landed spelling (0x00CBED00, const vector<CScriptThing>&).
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_FORCEINLINE
+#include "stlport/fable_containers.h"
 #include <stdlib.h>
 class CCharString { public:
     void* PStringData;
@@ -31,21 +37,7 @@ struct CScriptThingImpl;
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::~CScriptThing() {}
-struct CScriptThingVector {                                 // std::vector<CScriptThing> (STLport, 12 bytes)
-    CScriptThing* _M_start;
-    CScriptThing* _M_finish;
-    CScriptThing* _M_end_of_storage;
-    CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    FABLE_FORCEINLINE ~CScriptThingVector()                     // out of line 0x008AC970
-    {
-        CScriptThing* last = _M_finish;
-        for (CScriptThing* p = _M_start; p != last; ++p)
-            p->~CScriptThing();
-        if (_M_start)
-            free(_M_start);
-    }
-};
-bool __fastcall AreAllThingsInVectorDead(const CScriptThingVector& things);   // 0x00CBED00
+bool __fastcall AreAllThingsInVectorDead(const std::vector<CScriptThing>& things);   // 0x00CBED00
 class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                           // slot 7 (+0x1c)
@@ -59,7 +51,7 @@ class CGameScriptInterface { public:                   // retail vtable 0x01260F
     virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059(); virtual void v060(); virtual void v061();
     virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
     virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
-    virtual long GetAllThingsWithScriptName(const CCharString& name, CScriptThingVector& things) const; // slot 75 (+0x12c)
+    virtual long GetAllThingsWithScriptName(const CCharString& name, std::vector<CScriptThing>& things) const; // slot 75 (+0x12c)
 };
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
@@ -85,7 +77,7 @@ using NScript::CV_TourGuideScript;
 
 void NScript::CV_TourGuideScript::WatchForNoFollowers()
 {
-    CScriptThingVector followers;
+    std::vector<CScriptThing> followers;
     CCharString unused;
     Game->GetAllThingsWithScriptName("TourGuideFollower", followers);
     for (;;) {

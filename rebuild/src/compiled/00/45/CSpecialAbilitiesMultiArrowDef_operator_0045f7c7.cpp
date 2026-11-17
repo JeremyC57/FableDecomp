@@ -9,6 +9,10 @@
 // Leaf: operator=
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<long> (was CLongVector; operator= 0x00454886), std::vector<float> (was CFloatVector; operator= 0x0045EF2D) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -19,14 +23,6 @@
 
 class CDefString { public: long TablePos; };
 
-struct CLongVector {                    // retail std::vector<long> (12 bytes)
-    long* m_first; long* m_last; long* m_end;
-    CLongVector& operator=(const CLongVector& other);     // 0x00454886
-};
-struct CFloatVector {                   // retail std::vector<float> (12 bytes)
-    float* m_first; float* m_last; float* m_end;
-    CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
-};
 
 class CSpecialAbilitiesMultiArrowDef : public CParentDefClassBase { public:
     long         NumberOfShots[4];                      // +0x3c
@@ -34,8 +30,8 @@ class CSpecialAbilitiesMultiArrowDef : public CParentDefClassBase { public:
     float        AmmoEffectCreationDelaySecs;           // +0x5c
     CDefString   CastSound;                             // +0x60
     float        BowHighlightWidth;                     // +0x64
-    CLongVector  BowHighlightColor;                     // +0x68
-    CFloatVector MultiArrowPerArrowDamageMultiplier;    // +0x74
+    std::vector<long>  BowHighlightColor;                     // +0x68
+    std::vector<float> MultiArrowPerArrowDamageMultiplier;    // +0x74
     CSpecialAbilitiesMultiArrowDef& operator=(const CSpecialAbilitiesMultiArrowDef& other);
 };
 

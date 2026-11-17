@@ -15,6 +15,10 @@
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes, 16-byte SubDefInfoMap); the
 // retail base is 0x39 bytes (12-byte vector map), so it is modelled locally as a packed polymorphic base
 // whose operator= is out of line; the derived members follow at their natural alignment.
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<CCharString> (was CStringVector; operator= 0x00432EE9), std::vector<long> (was CLongVector; operator= 0x00454886), std::vector<float> (was CFloatVector; operator= 0x0045EF2D) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -23,32 +27,14 @@
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 
-struct CFloatVector {                   // retail std::vector<float> (12 bytes)
-    float* m_first;
-    float* m_last;
-    float* m_end;
-    CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
-};
 
-struct CLongVector {                    // retail std::vector<long> (12 bytes)
-    long* m_first;
-    long* m_last;
-    long* m_end;
-    CLongVector& operator=(const CLongVector& other);   // 0x00454886
-};
 
-struct CStringVector {                  // retail std::vector<CCharString> (12 bytes)
-    void* m_first;
-    void* m_last;
-    void* m_end;
-    CStringVector& operator=(const CStringVector& other);   // 0x00432EE9
-};
 
 class CSpecialAbilitiesDrainLifeDef : public CParentDefClassBase { public: // vtable 0x01234404
-    CFloatVector         AmountOfHealthSucked;        // +0x3c
-    CLongVector          NumEffects;                  // +0x48
-    CFloatVector         SpellRange;                  // +0x54
-    CStringVector        ShotName;                    // +0x60
+    std::vector<float>         AmountOfHealthSucked;        // +0x3c
+    std::vector<long>          NumEffects;                  // +0x48
+    std::vector<float>         SpellRange;                  // +0x54
+    std::vector<CCharString>        ShotName;                    // +0x60
     float                SpellDelaySecs;              // +0x6c
     CSpecialAbilitiesDrainLifeDef& operator=(const CSpecialAbilitiesDrainLifeDef& other);
 };

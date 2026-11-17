@@ -10,6 +10,12 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
 #include "fable_compiler.h"
+// NF48 (round 7): the marker list is STLport 4.6.2 std::vector<CScriptThing> from the shared stlport/fable_containers.h (a local
+// CScriptThingVector stand-in before); clear() is the header's inline erase(begin(), end()) over the out-of-line
+// vector<CScriptThing>::erase(iterator, iterator) 0x008AC9D0 (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE); the destructor is the
+// header's plain inline ~vector (expanded or called as 0x008AC970 per VC7.1's per-site rule, as the stand-in's was).
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -28,26 +34,6 @@ class CCPPointerInfo;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 
-template<class T> FABLE_FORCEINLINE void DestroyRange(T* first, T* last)
-{
-    for (; first != last; ++first)
-        first->~T();
-}
-
-struct CScriptThingVector {                             // vector<CScriptThing> (STLport, 12 bytes)
-    CScriptThing* _M_start; CScriptThing* _M_finish; CScriptThing* _M_end_of_storage;
-    FABLE_FORCEINLINE CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~CScriptThingVector()                 // out of line: 0x008AC970
-    {
-        DestroyRange(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-    CScriptThing* erase(CScriptThing* first, CScriptThing* last);   // 0x008AC9D0
-    void clear() { erase(_M_start, _M_finish); }
-    unsigned int size() const { return _M_finish - _M_start; }
-    CScriptThing& operator[](unsigned int i) { return *(_M_start + i); }
-};
 
 struct CScriptThingView {
     void* vptr; void* Data; void* Info;
@@ -66,7 +52,7 @@ class CGameScriptInterfaceBase { public:                          // vtable 0x01
     virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
     virtual CScriptThing& GetHero() const;   // slot 70 (+0x118)
     virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
-    virtual long GetAllThingsWithScriptName(const CCharString& name, CScriptThingVector& things) const;   // slot 75 (+0x12c)
+    virtual long GetAllThingsWithScriptName(const CCharString& name, std::vector<CScriptThing>& things) const;   // slot 75 (+0x12c)
     virtual void v076();
     virtual CScriptThing GetNearestWithScriptName(const CScriptThing& thing, const CCharString& name) const;   // slot 77 (+0x134)
     virtual void v078(); virtual void v079(); virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083(); virtual void v084(); virtual void v085();
@@ -162,7 +148,7 @@ public:
 
 void CQ_TraderEscortScript::WatchForSurprisingBalverines()
 {
-    CScriptThingVector markers;
+    std::vector<CScriptThing> markers;
     for (;;) {
         if (IsActiveThreadTerminating())
             break;

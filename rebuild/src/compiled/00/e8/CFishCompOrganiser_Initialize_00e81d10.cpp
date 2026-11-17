@@ -2,7 +2,7 @@
 // Leaf: ?Initialize@CFishCompOrganiser@@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E81D10, 412 bytes, plain `ret`.
-// Callees: CCharString() 0x0099E4B0 / ~CCharString 0x0099EAE0 / operator= 0x0099EFB0, vector<CCharString>::resize 0x0043332C
+// Callees: CCharString() 0x0099E4B0 / ~CCharString 0x0099EAE0 / operator= 0x0099EFB0, std::vector<CCharString>::resize 0x0043332C
 //   (manifest label push_back), IsDone 0x00F35B30 (on `this`); game-interface slots 360 SetThingHasInformation,
 //   477 SetThingPersistent, 844 SetIsPushableByHero (CScriptThing by value), 529 EntitySetAsUseMovementInActions,
 //   655 GetActiveQuestName, 465 EntityAttachToScript.
@@ -10,6 +10,11 @@
 //   +0x48, Conversation +0x4c, FishingRodsInGame +0x50, FishTypesInGame +0x54, FishingPrizes +0x58, RodDef +0x60, FishDef +0x6c;
 //   the script def 0x0143E90C holds the fish types +0x5a0, rods +0x5a4, prizes +0x5a8, rod defs +0x5b8, fish defs +0x5c4.
 
+// NF48 (round 7, follower of the 0x0043332C respelling): the def-name lists are STLport 4.6.2 std::vector<CCharString> from the shared
+// stlport/fable_containers.h (a local vector<T> stand-in before): the one-argument resize is STLport's inline resize(n, T()) over the
+// out-of-line vector<CCharString>::resize(size_type, const CCharString&) 0x0043332C (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE).
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -29,21 +34,14 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-template <class T> struct vector {
-    T* _M_start; T* _M_finish; T* _M_end_of_storage;
-    void resize(unsigned int n, const T& value);         // 0x0043332C
-    void resize(unsigned int n) { resize(n, T()); }
-    T* begin() { return _M_start; }
-    T& operator[](unsigned int n) { return *(begin() + n); }
-};
 class CScriptDef { public:
     unsigned char Data[0x5a0];
     long          FishTypesInGame;                       // +0x5a0
     long          FishingRodsInGame;                     // +0x5a4
     long          FishingPrizes;                         // +0x5a8
     unsigned char Pad[0xc];
-    vector<CCharString> RodDefs;                         // +0x5b8
-    vector<CCharString> FishDefs;                        // +0x5c4
+    std::vector<CCharString> RodDefs;                         // +0x5b8
+    std::vector<CCharString> FishDefs;                        // +0x5c4
 };
 extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
@@ -59,8 +57,8 @@ public:
     long                  FishTypesInGame;    // +0x54
     long                  FishingPrizes;      // +0x58
     CCharString           CompetitionEntry;   // +0x5c
-    vector<CCharString>   RodDef;             // +0x60
-    vector<CCharString>   FishDef;            // +0x6c
+    std::vector<CCharString>   RodDef;             // +0x60
+    std::vector<CCharString>   FishDef;            // +0x6c
     void Initialize();
 };
 

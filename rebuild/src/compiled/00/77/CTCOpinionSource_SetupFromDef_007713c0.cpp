@@ -12,6 +12,11 @@
 // Tried: holder in the arm (this=edi), the manager in a local (fixes the GetWorld order), a raw pointer + hand release, a
 //   `__forceinline CopyFromDef(def)` helper (this=esi, as retail). Next: move the holder into the helper (one register for the
 //   def) and read CMainGameComponent::Get() into a local before the GetDef pushes; the loop as `def->ReactionFlags[i]` on a local copy.
+// NF48 (round 7): COpinionSet's one member is Ego_r.pdb's CArray<float> OpinionValues, from the shared engine/CArray.h (a public
+// STLport 4.6.2 std::vector<float>); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares vector<float>::operator= (0x0045EF2D) out of line, which
+// COpinionSet's implicit operator= calls (was a local three-word stand-in with its own COpinionSet::operator=).
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "engine/CArray.h"
 #include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 struct CDefVirtual {
@@ -37,9 +42,8 @@ template <class T> struct CDefHolder {                  // owns the handed-over 
 template <class T> class CDefPointer { public:
     T* Object;
 };
-class COpinionSet { public:                                    // 12 bytes in retail
-    long _body[3];
-    COpinionSet& operator=(const COpinionSet& other);   // 0x0045EF2D
+class COpinionSet { public:                                    // Ego_r.pdb: one member (retail 12 bytes)
+    CArray<float> OpinionValues;                        // implicit operator= -> vector<float>::operator= 0x0045EF2D
 };
 class COpinionSourceDef : public CDefBase { public:                   // retail = PDB - 0x0c past the first map
     unsigned char _pad08[0x48 - 0x08];

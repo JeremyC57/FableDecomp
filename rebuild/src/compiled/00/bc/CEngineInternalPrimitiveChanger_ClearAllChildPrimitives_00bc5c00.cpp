@@ -7,6 +7,10 @@
 //   polymorphic -- PDB (Ego_r) 8 bytes with the vptr slot at +0 and Data at +4, RTTI vtable 0x0122F598 (slot 0
 //   0x0041C500). Same size and the primitive still at +4, so the bytes are unchanged; the handle vector comment said
 //   VC6 Dinkumware, retail is STLport.
+// NF48 (round 7): the CRetailHandleVector stand-in is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> from the shared stlport/fable_containers.h;
+// FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE keeps vector<CEnginePrimitiveHandle>::erase(iterator, iterator) 0x00440D70 out of line as retail calls it.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CEngineInternalPrimitiveBase;
 class C3DBoundingBox { public: float Min[3]; float Max[3]; };
 
@@ -36,18 +40,10 @@ class CEnginePrimitiveHandle { public:                    // 8 bytes: vptr + the
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };
 
-struct CRetailHandleVector {                       // STLport vector<CEnginePrimitiveHandle> (12 bytes)
-    CEnginePrimitiveHandle* m_pFirst;
-    CEnginePrimitiveHandle* m_pLast;
-    CEnginePrimitiveHandle* m_pEnd;
-    unsigned long GetCount() const { return m_pLast - m_pFirst; }
-    void erase(CEnginePrimitiveHandle* first, CEnginePrimitiveHandle* last);   // 0x00440D70 (Vector_EraseRange)
-    void clear() { erase(m_pFirst, m_pLast); }
-};
 void __fastcall UpdatePosition_00b91840(CEngineInternalPrimitiveBase* primitive, unsigned long flags);   // 0x00B91840
 
 struct CEngineInternalPrimitiveChanger : CEngineInternalPrimitiveBase {   // no PDB layout: the handle vector at +0x48, the current index at +0x58, the flags at +0x60
-    CRetailHandleVector Primitives;                // +0x48
+    std::vector<CEnginePrimitiveHandle> Primitives;                // +0x48
     unsigned char       _pad54[4];
     long                m_currentIndex;            // +0x58 (-1 = none)
     unsigned char       _pad5c[4];
@@ -56,8 +52,8 @@ struct CEngineInternalPrimitiveChanger : CEngineInternalPrimitiveBase {   // no 
     {
         unsigned long mask = 0;
         long index = m_currentIndex;
-        if (index != -1 && (unsigned long)index < Primitives.GetCount()) {
-            CEngineInternalPrimitiveBase* child = Primitives.m_pFirst[index].m_pPrimitive;
+        if (index != -1 && (unsigned long)index < Primitives.size()) {
+            CEngineInternalPrimitiveBase* child = Primitives[index].m_pPrimitive;
             if (child)
                 mask = child->RenderLayerMask;
         }

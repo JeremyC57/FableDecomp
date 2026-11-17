@@ -9,9 +9,12 @@
 //   WorldMapOffset +0x44, NameGraphicOffset +0x4c, the three flags +0x54..+0x56.
 //   engine/CRegion.h carries the Ego_r 16-byte vectors (every member after Maps is 4..8 bytes late), so this row
 //   uses a local model. CDefPointer releases its pointee through virtual slot 1 when the count at +0x04 drops to 0.
+// NF48 (round 7): Maps / VisMaps are STLport 4.6.2 std::vector<long> (Ego_r.pdb CRegion) from the shared stlport/fable_containers.h
+// (was the local CRetailVector<long>); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares vector<long>::operator= (0x00454886) out of line.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 class CCharString { public: void* PStringData; const CCharString& operator=(const CCharString&); };   // 0x0099EFB0
 class C2DVector { public: float X, Y; };
-template<class T> struct CRetailVector { T* m_first; T* m_last; T* m_end; CRetailVector& operator=(const CRetailVector&); };   // long: 0x00454886
 template<class K, class V> struct CRetailMap { void* m_header; unsigned long m_node_count; unsigned long m_compare; CRetailMap& operator=(const CRetailMap&); };   // 0x00517370
 class CDefPointeeBase { public: virtual void VFunc00(); virtual void Release(); long RefCount; };
 class CRegionDef;
@@ -31,8 +34,8 @@ template<class T> class CDefPointer { public:
     }
 };
 class CRegion { public:
-    CRetailVector<long> Maps;                           // +0x00
-    CRetailVector<long> VisMaps;                        // +0x0c
+    std::vector<long>   Maps;                           // +0x00
+    std::vector<long>   VisMaps;                        // +0x0c
     CCharString Name;                                   // +0x18
     CCharString DisplayName;                            // +0x1c
     CCharString RegionDefName;                          // +0x20

@@ -1,0 +1,17 @@
+tag	address	correct_symbol	status	binders_respelled	note
+land1113fy	0045ef2d	??4?$vector@MV?$allocator@M@std@@@std@@QAEAAV01@ABV01@@Z	done	23	[e119] 23 binder rows ported
+land1113fy	00440d70	?erase@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@PAV3@0@Z	blocked	13	[e67] 13 binder rows ported; left: 0x007E7C90 blocked/port (1 grade): the same Handles vector calls 0x005ED940, a no-argument default-handle append STLport vector has no member for; identify 0x005ED940 first
+land1113fy	0043336a	?erase@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAVCCharString@@PAV3@0@Z	done	12	[e148] 12 binder rows ported
+land1113fy	008ac970	??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ	done	7	[e162] 7 binder rows ported, 1 not-a-binder (0x00DA2A20: already bound the correct spelling)
+land1113fy	00464931	?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z	blocked	6	[e28] 6 binder rows ported; left: 0x009CEAE0 blocked/port (2 grades, DIFFER 373v375): needs CBankFile::CRuntimeData's default constructor proven and added to engine/CBankFile.h first (the stand-in zeroes the four fields member-wise; the header struct is a POD)
+land1113fy	00454886	??4?$vector@JV?$allocator@J@std@@@std@@QAEAAV01@ABV01@@Z	done	6	[e118] 6 binder rows ported, 1 not-a-binder (0x00517200: claim unproven for that binder, REJECTED.tsv)
+land1113fy	0046078c	??4?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@QAEAAV01@ABV01@@Z	done	6	[e189] 6 binder rows ported
+land1113fy	008ac9d0	?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@0@Z	done	5	[e163] 5 binder rows ported
+land1113fy	005f8f89	?erase@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEPAW4EHeroAbility@@PAW43@0@Z	done	3	[e145] 3 binder rows ported
+land1113fy	005f9bcd	?push_back@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXABW4EHeroAbility@@@Z	done	2	[e146] 2 binder rows ported
+land1113fy	007463e0	?reserve@?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@QAEXI@Z	done	1	[e63] 1 binder rows ported
+land1113fy	00f25980	??4?$vector@VCArenaRoundDef@@V?$allocator@VCArenaRoundDef@@@std@@@std@@QAEAAV01@ABV01@@Z	done	1	[e192] 1 binder rows ported
+land1113fy	00e54aa0	??4?$vector@VCConversation@@V?$allocator@VCConversation@@@std@@@std@@QAEAAV01@ABV01@@Z	done	1	[e191] 1 binder rows ported
+land1113fy	00d34d40	??4?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@QAEAAV01@ABV01@@Z	done	1	[e190] 1 binder rows ported
+land1113fy	005f9df8	?resize@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXIABW4EHeroAbility@@@Z	done	1	[e147] 1 binder rows ported
+land1011fk	0049b760	?resize@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXI@Z	blocked	0	[e1] 0 binder rows ported; left: 0x009CEAE0 blocked/port (2 grades, DIFFER 373v375): needs CBankFile::CRuntimeData's default constructor proven and added to engine/CBankFile.h first (the stand-in zeroes the four fields member-wise; the header struct is a POD)

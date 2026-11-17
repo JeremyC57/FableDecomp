@@ -6,16 +6,15 @@
 // Layout (Ego_r.pdb CBlendedEnvironmentTheme with the retail 12-byte CArray, so 0x1F4 not 0x20C): +0 TimeOfDay,
 //          +4 Colours CRGBFloatColour[19], +0x134 Scalers float[30], +0x1AC TextureSets CIDrawEnvironmentTextureSet[3]
 //          (+0 Textures CArray<long>, +0xC Blends CArray<float>).
+// NF48 (round 7): CArray<T> is the shared engine/CArray.h (a public STLport 4.6.2 std::vector<T>, was a local CArray template with
+// its own operator=); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares vector<long>::operator= (0x00454886) and vector<float>::operator=
+// (0x0045EF2D) out of line, which CArray's implicit operator= calls.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "engine/CArray.h"
 class CRGBFloatColour { public:
     float R, G, B, A;
 };
 
-template <class T> class CArray { public:
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    CArray& operator=(const CArray& other);
-};
 
 struct CIDrawEnvironmentTextureSet {
     CArray<long>  Textures;                     // +0x00

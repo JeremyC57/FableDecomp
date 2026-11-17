@@ -15,45 +15,19 @@
 // slots; `this` is parked in the entry frame word for the head re-read.
 // Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 #include "fable_compiler.h"
+// NF48 (round 7): both lists are STLport 4.6.2 std::vector<CCharString> from the shared stlport/fable_containers.h (a local
+// vector<T> stand-in with a GrowVectorStorage stand-in overflow body before): clear() is the header's inline erase(begin(), end())
+// over the out-of-line vector<CCharString>::erase(iterator, iterator) 0x0043336A (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE);
+// push_back is the header's inline body over _M_insert_overflow 0x00433530 (its stl/_vector.c body visible, called out of line).
+// The definition now carries the Ego_r.pdb / FableWin.pdb signature (const, vector<CCharString>&).
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
 };
-struct __false_type { __false_type() {} };             // empty tag with a user constructor (no byte store)
-inline void* operator new(unsigned int, void* where) { return where; }
 
-template <class T> struct vector {                     // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-    T* erase(T* first, T* last);                       // vector<CCharString>: 0x0043336A
-    void clear() { erase(begin(), end()); }
-    void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned long fill_len, bool atend);   // 0x00433530
-    void push_back(const T& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) T(x);
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
-void* GrowVectorStorage_s7(void* vector, unsigned long count);
-#pragma auto_inline(off)
-// Same-TU body of the vector growth template (_M_insert_overflow, instantiated in retail's TU): reads the value through its const
-// reference into the new storage and never touches the empty tag (the landed push_back idiom).
-template <class T>
-__declspec(noinline) void vector<T>::_M_insert_overflow(T* position, const T& x, const __false_type& p2, unsigned long fill_len, bool atend)
-{
-    T* p = (T*)GrowVectorStorage_s7(this, fill_len);
-    if (p)
-        new (p) T(x);
-    
-}
-#pragma auto_inline(on)
 
 class CDefString { public:                                    // a definition-string handle: one table index
     long m_index;
@@ -65,7 +39,6 @@ extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDef
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class TCompare> class CVectorMap;
 typedef std::pair<ETCInterfaceType, CTCBase*> CTCEntry;
@@ -122,10 +95,10 @@ template <class T> struct _List_node {
 class CQuestManager { public:
     unsigned char _pad00[0x5c];
     _List_node<CIntelligentPointer<CThing> >* ActiveQuestCards;   // +0x5c (list head)
-    void GetAllActiveQuestInfo(vector<CCharString>& scriptNames, vector<CCharString>& defNames);
+    void GetAllActiveQuestInfo(std::vector<CCharString>& scriptNames, std::vector<CCharString>& defNames) const;
 };
 
-void CQuestManager::GetAllActiveQuestInfo(vector<CCharString>& scriptNames, vector<CCharString>& defNames)
+void CQuestManager::GetAllActiveQuestInfo(std::vector<CCharString>& scriptNames, std::vector<CCharString>& defNames) const
 {
     scriptNames.clear();
     defNames.clear();

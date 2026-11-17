@@ -17,6 +17,14 @@
 // Layout: retail CTCInventoryAbilities (CTCInventoryBase 0x130 + the screen base vptr, 12-byte vectors; engine/
 // CTCInventoryAbilities.h carries PDB offsets): CurrentAssignedAbilityLevel +0x144, ReceivedAbilityOrder +0x154,
 // AssignedAbilities +0x17C, AssignedAbilitiesSave +0x188.
+// NF48 (round 7): the ability lists are STLport 4.6.2 std::vector<EHeroAbility> (Ego_r.pdb CTCInventoryAbilities::ReceivedAbilityOrder /
+// AssignedAbilities / AssignedAbilitiesSave) from the shared stlport/fable_containers.h, as is std::max (a local CAbilityVector stand-in
+// and a local namespace-std max before): clear() is the header's inline erase(begin(), end()) over the out-of-line
+// vector<EHeroAbility>::erase(iterator, iterator) 0x005F8F89 (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE); push_back is the
+// out-of-line 0x005F9BCD (FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE).
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
+#include "stlport/fable_containers.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -44,28 +52,16 @@ template <> class CDefPointer<const NUISystem::CUIMiscThingsDef> { public:   // 
 
 enum EHeroAbility { HERO_ABILITY_NULL };
 
-struct CAbilityVector {                              // retail std::vector<EHeroAbility> {first, last, end}
-    EHeroAbility* _M_start;
-    EHeroAbility* _M_finish;
-    EHeroAbility* _M_end_of_storage;
-    EHeroAbility* begin() { return _M_start; }
-    EHeroAbility* end() { return _M_finish; }
-    unsigned long size() const { return _M_finish - _M_start; }
-    EHeroAbility& operator[](unsigned long n) { return *(begin() + n); }
-    EHeroAbility* erase(EHeroAbility* first, EHeroAbility* last);   // 0x005F8F89
-    void push_back(const EHeroAbility& value);       // 0x005F9BCD
-    void clear() { erase(begin(), end()); }
-};
 
 class CTCInventoryAbilities { public:
     void*          __vftable;                        // +0x000
     unsigned char  _pad_0x004[0x140];
     long           CurrentAssignedAbilityLevel;      // +0x144 (PDB +0x15C)
     unsigned char  _pad_0x148[0x0C];
-    CAbilityVector ReceivedAbilityOrder;             // +0x154 (PDB +0x170)
+    std::vector<EHeroAbility> ReceivedAbilityOrder;             // +0x154 (PDB +0x170)
     unsigned char  _pad_0x160[0x1C];
-    CAbilityVector AssignedAbilities;                // +0x17C (PDB +0x1A4)
-    CAbilityVector AssignedAbilitiesSave;            // +0x188 (PDB +0x1B4)
+    std::vector<EHeroAbility> AssignedAbilities;                // +0x17C (PDB +0x1A4)
+    std::vector<EHeroAbility> AssignedAbilitiesSave;            // +0x188 (PDB +0x1B4)
 
 private:
     const CDefPointer<const NUISystem::CUIMiscThingsDef> GetMiscThingsDef() const;   // 0x005EE3B3 (Ego_r.pdb: private)

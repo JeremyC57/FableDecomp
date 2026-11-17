@@ -16,6 +16,10 @@
 // still in eax; the empty text is a named CCharString in its own block (destroyed before the erase) in the `push ecx`
 // frame word; the handle vector is
 // cleared through the out-of-line range erase (begin/end read as the two pushes).
+// NF48 (round 7): the CRetailVector stand-in is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> from the shared stlport/fable_containers.h;
+// FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE keeps vector<CEnginePrimitiveHandle>::erase(iterator, iterator) 0x00440D70 out of line as retail calls it.
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
@@ -53,15 +57,6 @@ class CPlayerGui { public:
 };
 
 class CEnginePrimitiveHandle;
-template <class T> struct CRetailVector {                   // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-    T* erase(T* first, T* last);                            // 0x00440D70
-    void clear() { erase(begin(), end()); }
-};
 
 class CThing;
 
@@ -79,7 +74,7 @@ class CTCFireheartMinigame : public CTCBase { public:
     bool          InSession;                                // +0x4c
     bool          ForceQuit;                                // +0x4d
     unsigned char _pad4e[0x8c - 0x4e];
-    CRetailVector<CEnginePrimitiveHandle> Handles;          // +0x8c
+    std::vector<CEnginePrimitiveHandle> Handles;          // +0x8c
     void Quit();
 };
 

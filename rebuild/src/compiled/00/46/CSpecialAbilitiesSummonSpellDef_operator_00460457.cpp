@@ -15,6 +15,10 @@
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes, 16-byte SubDefInfoMap); the
 // retail base is 0x39 bytes (12-byte vector map), so it is modelled locally as a packed polymorphic base
 // whose operator= is out of line; the derived members follow at their natural alignment.
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<long> (was CLongVector; operator= 0x00454886), std::vector<float> (was CFloatVector; operator= 0x0045EF2D) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -23,19 +27,7 @@
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 
-struct CFloatVector {                   // retail std::vector<float> (12 bytes)
-    float* m_first;
-    float* m_last;
-    float* m_end;
-    CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
-};
 
-struct CLongVector {                    // retail std::vector<long> (12 bytes)
-    long* m_first;
-    long* m_last;
-    long* m_end;
-    CLongVector& operator=(const CLongVector& other);   // 0x00454886
-};
 
 class CDefString { public:                         // a def-name table position (4 bytes, plain copy)
     long TablePos;
@@ -47,12 +39,12 @@ class CCharString { public:                        // retail ref-counted string 
 };
 
 class CSpecialAbilitiesSummonSpellDef : public CParentDefClassBase { public: // vtable 0x01234674
-    CFloatVector         TimeOfSummon;                // +0x3c
+    std::vector<float>         TimeOfSummon;                // +0x3c
     CDefString           BaseSummonCreatureName;      // +0x48
     float                FadeInTime;                  // +0x4c
     float                FadeOutTime;                 // +0x50
     long                 ResetCreatureManaCost;       // +0x54
-    CLongVector          SummonTintColour;            // +0x58
+    std::vector<long>          SummonTintColour;            // +0x58
     CCharString          EyeLeftDummyPointName;       // +0x64
     CCharString          EyeRightDummyPointName;      // +0x68
     CSpecialAbilitiesSummonSpellDef& operator=(const CSpecialAbilitiesSummonSpellDef& other);

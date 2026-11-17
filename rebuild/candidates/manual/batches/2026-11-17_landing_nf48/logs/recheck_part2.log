@@ -1,0 +1,115 @@
+addr       parity           behav  name
+00454993   RELOCATION_MATCH PASS   Copy
+  WARN leaf 'operator=' matches no symbol in 0045f58a.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045f58a.obj; graded the largest function
+0045f58a   RELOCATION_MATCH PASS   operator=
+0045f7c7   WARN SHARED_HEADER_AVAILABLE CDefString
+  WARN leaf 'operator=' matches no symbol in 0045f7c7.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045f7c7.obj; graded the largest function
+0045f7c7   RELOCATION_MATCH PASS   operator=
+  WARN leaf 'operator=' matches no symbol in 0045fd53.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045fd53.obj; graded the largest function
+0045fd53   RELOCATION_MATCH PASS   operator=
+  WARN leaf 'operator=' matches no symbol in 004600cb.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 004600cb.obj; graded the largest function
+004600cb   RELOCATION_MATCH PASS   operator=
+  WARN leaf 'operator=' matches no symbol in 00460256.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 00460256.obj; graded the largest function
+00460256   RELOCATION_MATCH PASS   operator=
+00460657   WARN SHARED_HEADER_AVAILABLE CDefString
+  WARN leaf 'operator=' matches no symbol in 00460657.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 00460657.obj; graded the largest function
+00460657   RELOCATION_MATCH PASS   operator=
+00461f7c   WARN SHARED_HEADER_AVAILABLE CFloatRange
+00461f7c   WARN SHARED_HEADER_AVAILABLE CHeroAbilityStatWeight
+00461f7c   WARN SHARED_HEADER_AVAILABLE CHeroAbilityStatPackage
+00461f7c   RELOCATION_MATCH PASS   operator=
+00485fe8   RELOCATION_MATCH PASS   clear
+004a08d0   WARN SHARED_HEADER_AVAILABLE CTestQuest
+004a08d0   RELOCATION_MATCH PASS   ClearRegisteredQuests
+004e4d3b   RELOCATION_MATCH PASS   operator=
+005f694d   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+005f694d   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+005f694d   RELOCATION_MATCH PASS   ResetAssignedAbilities
+005fc510   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+005fc510   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap
+005fc510   RELOCATION_MATCH PASS   ResetPrimitiveHandles
+00621720   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00621720   WARN SHARED_HEADER_AVAILABLE CManager
+00621720   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00621720   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00621720   WARN SHARED_HEADER_AVAILABLE CWorld
+00621720   WARN SHARED_HEADER_AVAILABLE CManager
+00621720   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+00621720   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00621720   WARN SHARED_HEADER_AVAILABLE CTCBase
+00621720   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00621720   WARN RELOC_NAME: ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+00621720   WARN RELOC_NAME: ?g_frontEndNodeList@@3UCNodeList@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+00621720   WARN RELOC_NAME: ?__destroy_aux@@YIXPAUCQuestCard@@0ABU__false_type@@@Z -> 005c2a8e labelled '_global::ForEachElem0x2c__CCreatureAction_FireMiss_005c2a8e'
+00621720   RELOCATION_MATCH PASS   CloseInventoryPC
+00675c00   WARN SHARED_HEADER_AVAILABLE CWoundMorphs
+00675c00   WARN SHARED_HEADER_AVAILABLE CExpressionSet
+00675c00   WARN SHARED_HEADER_AVAILABLE CRandomAppearanceMorph
+00675c00   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00675c00   WARN SHARED_HEADER_AVAILABLE CDefString
+00675c00   WARN SHARED_HEADER_AVAILABLE CHeroAbilityStatWeight
+00675c00   WARN SHARED_HEADER_AVAILABLE CFloatRange
+00675c00   RELOCATION_MATCH PASS   operator=
+00747890   WARN SHARED_HEADER_AVAILABLE CTCStealth
+00747890   RELOCATION_MATCH PASS   GetNumberOfAttackersOverMaximum
+007b7de0   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+008a8440   WARN RELOC_NAME: ?g_HeroPerceptionManager@@3PAUHeroPerceptionManager@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+008a8440   WARN RELOC_NAME: ?GetPerceivingThings@HeroPerceptionManager@@QBEXAAUThingVector@@@Z -> 00437910 labelled '_global::Forward_GetPerceivedThings_via0x1b8_00437910'
+008a8440   RELOCATION_MATCH PASS   GetPerceivingHeroEntityList
+008aa270   RELOCATION_MATCH PASS   ClearGossipVillages
+009d3fb0   RELOCATION_MATCH PASS   DeallocateMemory
+00af72d0   RELOCATION_MATCH PASS   __copy<CArray<long>*,CArray<long>*,int>
+00b3c4b0   RELOCATION_MATCH PASS   BuildHWStipplePatterns
+00be22c0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00be22c0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00be22c0   RELOCATION_MATCH PASS   ClearAllChildPrimitives
+00d2d900   WARN RELOC_NAME: ??1CFrontEndScreen@NUISystem@@QAE@XZ -> 00f35b40 labelled 'CEntityScriptBase::~CEntityScriptBase'
+00d2d900   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog NScript::CQ_EndGameFocalSitesScript::CPermanentBarrier::`scalar deleting destructor'; names another function)
+00d2d900   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d73f40   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d73f40   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d73f40   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeGoodScript
+00d73f40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d73f40   RELOCATION_MATCH PASS   Main
+00e06050   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00e06050   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e06050   RELOCATION_MATCH PASS   WatchForSurprisingBalverines
+00ed2a50   RELOCATION_MATCH PASS   WatchForRegionLeaving
+00ee6a40   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ee6a40   RELOCATION_MATCH PASS   WatchForNoFollowers
+
+WINS: 28
+  00454993 RELOCATION_MATCH CHitLocationsDef::Copy
+  0045f58a RELOCATION_MATCH CSpecialAbilitiesAssassinRushDef::operator=
+  0045f7c7 RELOCATION_MATCH CSpecialAbilitiesMultiArrowDef::operator=
+  0045fd53 RELOCATION_MATCH CSpecialAbilitiesForcePushDef::operator=
+  004600cb RELOCATION_MATCH CSpecialAbilitiesDrainLifeDef::operator=
+  00460256 RELOCATION_MATCH CSpecialAbilitiesFireballSpellDef::operator=
+  00460657 RELOCATION_MATCH CSpecialAbilitiesDivineWrathDef::operator=
+  00461f7c RELOCATION_MATCH CHeroCombatDef::??4CHeroCombatDef
+  00485fe8 RELOCATION_MATCH std::vector<CCharString>::?clear@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXXZ
+  004a08d0 RELOCATION_MATCH CWorld::ClearRegisteredQuests
+  004e4d3b RELOCATION_MATCH CObjectAugmentationParticleSet::??4CObjectAugmentationParticleSet@@QAEAAV0@ABV0@@Z
+  005f694d RELOCATION_MATCH CTCInventoryAbilities::ResetAssignedAbilities
+  005fc510 RELOCATION_MATCH CTCInventoryMap::?ResetPrimitiveHandles@CTCInventoryMap@@QAEXXZ
+  00621720 RELOCATION_MATCH CTCInventoryQuests::?CloseInventoryPC@CTCInventoryQuests@@QAEXXZ
+  00675c00 RELOCATION_MATCH CCreatureDef::??4CCreatureDef
+  00747890 RELOCATION_MATCH CTCStealth::GetNumberOfAttackersOverMaximum
+  007b7de0 RELOCATION_MATCH CTCOverheadDisplay::DrawPreparePrimitivesForRendering
+  008a8440 RELOCATION_MATCH CGameScriptInterface::GetPerceivingHeroEntityList
+  008aa270 RELOCATION_MATCH CGameScriptInterface::?ClearGossipVillages@CGameScriptInterface@@UAEXVCCharString@@@Z
+  009d3fb0 RELOCATION_MATCH CArray<CCharString>::?DeallocateMemory@?$CArray@VCCharString@@@@QAEXXZ
+  00af72d0 RELOCATION_MATCH std::??$__copy@PAV?$CArray@J@@PAV1@H@std@@YIPAV?$CArray@J@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+  00b3c4b0 RELOCATION_MATCH CEngineResourceManager::BuildHWStipplePatterns
+  00be22c0 RELOCATION_MATCH CEngineInternalPrimitive2DViewport::ClearAllChildPrimitives
+  00d2d900 RELOCATION_MATCH CVtable_012cc48c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d73f40 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Executioner::?Main@CHTG_Executioner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00e06050 RELOCATION_MATCH NScript::CQ_TraderEscortScript::WatchForSurprisingBalverines
+  00ed2a50 RELOCATION_MATCH NScript::CV_SingingStonesScript::WatchForRegionLeaving
+  00ee6a40 RELOCATION_MATCH NScript::CV_TourGuideScript::?WatchForNoFollowers@CV_TourGuideScript@NScript@@QAEXXZ

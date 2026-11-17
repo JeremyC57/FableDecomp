@@ -9,6 +9,10 @@
 // Leaf: operator=
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<CCharString> (was CStringVector; operator= 0x00432EE9), std::vector<long> (was CLongVector; operator= 0x00454886), std::vector<float> (was CFloatVector; operator= 0x0045EF2D) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -19,29 +23,17 @@
 
 class CDefString { public: long TablePos; };
 
-struct CLongVector {                    // retail std::vector<long> (12 bytes)
-    long* m_first; long* m_last; long* m_end;
-    CLongVector& operator=(const CLongVector& other);     // 0x00454886
-};
-struct CFloatVector {                   // retail std::vector<float> (12 bytes)
-    float* m_first; float* m_last; float* m_end;
-    CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
-};
 class CCharString;
-struct CStringVector {                  // retail std::vector<CCharString> (12 bytes)
-    CCharString* m_first; CCharString* m_last; CCharString* m_end;
-    CStringVector& operator=(const CStringVector& other); // 0x00432EE9
-};
 
 class CSpecialAbilitiesMultiStrikeDef : public CParentDefClassBase { public:   // vtable 0x0123412C
     CDefString    Sounds[4];                            // +0x3c
     CDefString    Animations[4];                        // +0x4c
     float         HighlightWidth;                       // +0x5c
-    CLongVector   HighlightColor;                       // +0x60
-    CFloatVector  DelayTimeSecs;                        // +0x6c
-    CLongVector   NumHits;                              // +0x78
-    CFloatVector  PerHitDamagerMultiplier;              // +0x84
-    CStringVector AttachmentPoint;                      // +0x90
+    std::vector<long>   HighlightColor;                       // +0x60
+    std::vector<float>  DelayTimeSecs;                        // +0x6c
+    std::vector<long>   NumHits;                              // +0x78
+    std::vector<float>  PerHitDamagerMultiplier;              // +0x84
+    std::vector<CCharString> AttachmentPoint;                      // +0x90
     CSpecialAbilitiesMultiStrikeDef& operator=(const CSpecialAbilitiesMultiStrikeDef& other);
 };
 

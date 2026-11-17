@@ -5,13 +5,11 @@
 // failed with the kept mask at +0x10; +0x14 = bits set in every value). out.resize is 0x00464931 (resize(n, const T&)).
 // Shape: the repack loop walks explicit inBit/outBit masks (`*= 2` gives `add r,r`; `1 << b` gives `shl cl`), and the
 // four scan bools are declared seenClear, setAfterClear, gapRecorded, seenSet (that order gives the dl/bl split).
-template<class T> class CArray { public:
-    T* m_begin; T* m_end; T* m_capacity;
-    unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
-    const T& operator[](unsigned long i) const { return m_begin[i]; }
-    T& operator[](unsigned long i) { return m_begin[i]; }
-    void resize(unsigned long size, const T& value);
-};
+// NF48 (round 7): CArray<unsigned long> is the shared engine/CArray.h (a public STLport 4.6.2 std::vector<unsigned long>,
+// a local begin/end/capacity model before); resize(n, const unsigned long&) is vector<unsigned long>::resize 0x00464931
+// (?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z), kept out of line by FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "engine/CArray.h"
 
 extern const unsigned long g_RangeCompressorByteMasks[];
 
@@ -30,13 +28,13 @@ void CRangeCompressor::TestRedundantBitStrip(const CArray<unsigned long>& in, CA
 {
     unsigned long allClear = g_RangeCompressorByteMasks[bytes];
     unsigned long allSet = allClear;
-    out.resize(in.Size(), 0);
-    for (unsigned long i = 0; i < in.Size(); ++i) {
+    out.resize(in.size(), 0);
+    for (unsigned long i = 0; i < in.size(); ++i) {
         allClear &= ~in[i];
         allSet &= in[i];
     }
     unsigned long redundant = allSet | allClear;
-    for (unsigned long j = 0; j < in.Size(); ++j) {
+    for (unsigned long j = 0; j < in.size(); ++j) {
         unsigned long value = in[j];
         unsigned long packed = 0;
         unsigned long outBit = 1;

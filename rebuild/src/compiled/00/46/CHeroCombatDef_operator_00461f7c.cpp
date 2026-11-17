@@ -2,7 +2,7 @@
 // Leaf: ??4CHeroCombatDef
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00461F7C.
 // Pragma: #pragma optimize("s", on) -- the def module is size-optimised (every copy goes through eax/al).
-// Callees: CParentDefClassBase::operator= @ 0x00431ED0, CHeroAbilityStatWeight::operator= @ 0x0046230E, CLongVector::operator= @ 0x00454886, CFloatVector::operator= @ 0x0045EF2D, CHeroAbilityStatPackage::operator= @ 0x004621E9.
+// Callees: CParentDefClassBase::operator= @ 0x00431ED0, CHeroAbilityStatWeight::operator= @ 0x0046230E, std::vector<long>::operator= @ 0x00454886, std::vector<float>::operator= @ 0x0045EF2D, CHeroAbilityStatPackage::operator= @ 0x004621E9.
 // Identity: the catalog label "CParentDefClassBase::operator=" is propagated. Slot 19 (Copy) of CHeroCombatDef's
 // vtable 0x01234CF4 is the 5-byte `jmp` at 0x00461F77 right before this body (rtti-vtables.tsv).
 // Layout: PDB CHeroCombatDef members from +0x40 sit at retail +0x3c (retail CParentDefClassBase 0x3c bytes; retail
@@ -11,6 +11,10 @@
 // strings/containers through their out-of-line operator=.
 #pragma optimize("s", on)
 
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<long> (was CLongVector; operator= 0x00454886), std::vector<float> (was CFloatVector; operator= 0x0045EF2D) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -31,19 +35,7 @@ class CHeroAbilityStatWeight { public:         // retail 12 bytes: map<EHeroTrai
     CHeroAbilityStatWeight& operator=(const CHeroAbilityStatWeight& other);   // 0x0046230E
 };
 
-struct CLongVector {                    // retail std::vector<long> (12 bytes)
-    void* m_first;
-    void* m_last;
-    void* m_end;
-    CLongVector& operator=(const CLongVector& other);   // 0x00454886
-};
 
-struct CFloatVector {                   // retail std::vector<float> (12 bytes)
-    void* m_first;
-    void* m_last;
-    void* m_end;
-    CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
-};
 
 class CHeroAbilityStatPackage { public:        // retail 12 bytes: map<EHeroTrainableStatType,long>
     void* m_first;
@@ -90,8 +82,8 @@ class CHeroCombatDef : public CParentDefClassBase { public:// vtable 0x01234CF4
     float                   MeleeRecoilMaintainHandednessStrengthThreshold;      // +0x110
     float                   MeleeRecoilMaintainComboChainSkillThreshold;         // +0x114
     float                   MeleeRecoilMaintainComboChainStrengthThreshold;      // +0x118
-    CLongVector             DefaultCombatAbilities;                              // +0x11c
-    CFloatVector            ProjectileWeaponFirstPersonModeMaxFOVValues;         // +0x128
+    std::vector<long>             DefaultCombatAbilities;                              // +0x11c
+    std::vector<float>            ProjectileWeaponFirstPersonModeMaxFOVValues;         // +0x128
     bool                    ProjectileTargetingAcquireTargetTag;                 // +0x134
     bool                    ProjectileTargetingAcquireTargetsAuto;               // +0x135
     bool                    ProjectileTargetingUseAnalogueZoom;                  // +0x136

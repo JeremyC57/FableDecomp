@@ -22,6 +22,16 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+// NF48 (round 7): Pattern / FHPatterns are STLport 4.6.2 std::vector<CFireHeartPatternDef> (Ego_r.pdb CScriptDef::FHPatterns) from the
+// shared stlport/fable_containers.h (a local CFireHeartPatternVector stand-in before); the assignment is the out-of-line
+// vector<CFireHeartPatternDef>::operator= 0x00D34D40 (FABLE_RETAIL_STLP_VECTOR_ASSIGN). The local namespace-std vector<CScriptThing> /
+// vector<CScriptGameResourceObjectScriptedThingBase> specialisations are the header's vector too: STLport's inline resize(n, T()) over
+// the out-of-line resize(n, const T&) 0x00D34AC0 / 0x00CD3CCB (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE).
+// The CBoolVector stand-in is the header's std::vector<bool> too (Ego_r.pdb StartingPattern .. CommentGivenThisRound; retail's
+// vector<bool> is a plain byte vector): resize(n, x) is the landed std::vector<bool>::resize 0x00467686.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -37,34 +47,6 @@ class CScriptGameResourceObjectScriptedThingBase { public:    // 0x10 bytes, vta
     virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
 };
 class CFireHeartPatternDef;
-struct CFireHeartPatternVector {                        // vector<CFireHeartPatternDef> (retail 12 bytes)
-    void* _M_start; void* _M_finish; void* _M_end_of_storage;
-    CFireHeartPatternVector& operator=(const CFireHeartPatternVector& other);   // 0x00D34D40
-};
-struct CBoolVector {                                    // vector<bool> (retail: a plain 12-byte vector)
-    bool* _M_start; bool* _M_finish; bool* _M_end_of_storage;
-    void resize(unsigned int n, const bool& x);         // 0x00467686
-};
-namespace std {
-template <class T> class allocator;
-template <class T, class A> class vector;
-template <> class vector<CScriptThing, allocator<CScriptThing> > {                 // retail 12 bytes
-public:
-    CScriptThing* _M_start;
-    CScriptThing* _M_finish;
-    CScriptThing* _M_end_of_storage;
-    void resize(unsigned int new_size, const CScriptThing& x);                      // 0x00D34AC0
-    void resize(unsigned int new_size) { resize(new_size, CScriptThing()); }       // STLport 4.6 inline
-};
-template <> class vector<CScriptGameResourceObjectScriptedThingBase, allocator<CScriptGameResourceObjectScriptedThingBase> > {   // retail 12 bytes
-public:
-    CScriptGameResourceObjectScriptedThingBase* _M_start;
-    CScriptGameResourceObjectScriptedThingBase* _M_finish;
-    CScriptGameResourceObjectScriptedThingBase* _M_end_of_storage;
-    void resize(unsigned int new_size, const CScriptGameResourceObjectScriptedThingBase& x);   // 0x00CD3CCB
-    void resize(unsigned int new_size) { resize(new_size, CScriptGameResourceObjectScriptedThingBase()); }   // STLport 4.6 inline
-};
-}
 struct CCutsceneFlagMap {                               // map<CCharString, bool> (retail 12 bytes)
     void* _body[3];
     bool& operator[](const CCharString& key);           // 0x008ADF10
@@ -86,7 +68,7 @@ class CScriptDef { public:
     long        FHNumberOfRounds;                       // +0xC20
     long        FHNumberOfSunsEvil;                     // +0xC24
     long        FHNumberOfSunsGood;                     // +0xC28
-    CFireHeartPatternVector FHPatterns;                 // +0xC2C
+    std::vector<CFireHeartPatternDef> FHPatterns;                 // +0xC2C
     unsigned char _padc38[0xc48 - 0xc38];
     long        FHNumberOfVillagers;                    // +0xC48
     long        _padc4c;
@@ -134,17 +116,17 @@ public:
     CScriptThing Effect;                                // +0xa8
     CCharString PadSunFX;                               // +0xb4
     CCharString PadMoonFX;                              // +0xb8
-    CBoolVector StartingPattern;                        // +0xbc
-    CBoolVector ProphetsKilled;                         // +0xc8
-    CBoolVector ProphetsReleased;                       // +0xd4
-    CBoolVector ShouldProphetSpeak;                     // +0xe0
-    CBoolVector ShouldVillagerSpeak;                    // +0xec
-    CBoolVector CommentGivenThisRound;                  // +0xf8
+    std::vector<bool> StartingPattern;                        // +0xbc
+    std::vector<bool> ProphetsKilled;                         // +0xc8
+    std::vector<bool> ProphetsReleased;                       // +0xd4
+    std::vector<bool> ShouldProphetSpeak;                     // +0xe0
+    std::vector<bool> ShouldVillagerSpeak;                    // +0xec
+    std::vector<bool> CommentGivenThisRound;                  // +0xf8
     std::vector<CScriptThing, std::allocator<CScriptThing> > Prophets;                        // +0x104
     std::vector<CScriptThing, std::allocator<CScriptThing> > Villagers;                       // +0x110
     std::vector<CScriptThing, std::allocator<CScriptThing> > Followers;                       // +0x11c
     std::vector<CScriptGameResourceObjectScriptedThingBase, std::allocator<CScriptGameResourceObjectScriptedThingBase> > FollowerHandles;               // +0x128
-    CFireHeartPatternVector Pattern;                    // +0x134
+    std::vector<CFireHeartPatternDef> Pattern;                    // +0x134
     long Guest;                                         // +0x140
     long ProphetsScripted;                              // +0x144
     std::vector<CScriptGameResourceObjectScriptedThingBase, std::allocator<CScriptGameResourceObjectScriptedThingBase> > seh_Prophet;                   // +0x148

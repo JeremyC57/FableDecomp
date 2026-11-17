@@ -9,6 +9,10 @@
 // at retail +0x3c..+0x8c (retail base 0x39 bytes, containers 12 bytes instead of 16).
 // Shape: memberwise assignment in declaration order; the final member's source address is formed with
 // `add edi,8Ch` because nothing reads edi afterwards.
+// NF48 (round 7): the member vectors are STLport 4.6.2 std::vector<long> (was CLongVector; operator= 0x00454886) from the shared stlport/fable_containers.h
+// (local stand-ins before); FABLE_RETAIL_STLP_VECTOR_ASSIGN declares the out-of-line operator=.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
@@ -17,12 +21,6 @@
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 
-struct CLongVector {                    // retail std::vector<long> (12 bytes)
-    long* m_first;
-    long* m_last;
-    long* m_end;
-    CLongVector& operator=(const CLongVector& other);   // 0x00454886
-};
 
 struct CBlendedEffectMap {              // retail map<long,CBlendedParticleEffectSet> (12 bytes)
     void*         m_allocator;
@@ -38,11 +36,11 @@ class CMaterialDef : public CParentDefClassBase { public:     // vtable 0x012336
     float OnHitRumbleFalloff;                   // +0x48
     bool  DeflectAllHits;                       // +0x4c
     bool  IsDiggable;                           // +0x4d
-    CLongVector SlideFootParticleEffect;        // +0x50
-    CLongVector SwordHitParticleEffect;         // +0x5c
-    CLongVector KnockdownHitFloorParticleEffect;// +0x68
-    CLongVector WindBlowDustEffect;             // +0x74
-    CLongVector BerserkedSwordHitParticleEffect;// +0x80
+    std::vector<long> SlideFootParticleEffect;        // +0x50
+    std::vector<long> SwordHitParticleEffect;         // +0x5c
+    std::vector<long> KnockdownHitFloorParticleEffect;// +0x68
+    std::vector<long> WindBlowDustEffect;             // +0x74
+    std::vector<long> BerserkedSwordHitParticleEffect;// +0x80
     CBlendedEffectMap BlendedSwordHitEffects;   // +0x8c
     CMaterialDef& operator=(const CMaterialDef& other);
 };
