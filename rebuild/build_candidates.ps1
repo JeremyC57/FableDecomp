@@ -3643,9 +3643,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045128d'
-        Module = '_global'
-        Source = '00/45/CTCCarryable_OnKill_0045128d.cpp'
-        TestSource = '00/45/CTCCarryable_OnKill_0045128d_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >'
+        Source = '00/45/stdRbtree_clear_0045128d.cpp'
+        TestSource = '00/45/stdRbtree_clear_0045128d_test.cpp'
         PassPattern = 'CTCCarryable_0045128d_TEST PASS'
     }
     [pscustomobject]@{
@@ -3734,9 +3734,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00450903'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/45/LTextTreeWalkThrough_BuildTreeArray_00450903.cpp'
-        TestSource = '00/45/LTextTreeWalkThrough_BuildTreeArray_00450903_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >'
+        Source = '00/45/stdRbtree_Merase_00450903.cpp'
+        TestSource = '00/45/stdRbtree_Merase_00450903_test.cpp'
         PassPattern = 'LTextTreeWalkThrough_00450903_TEST PASS'
     }
     [pscustomobject]@{
@@ -28725,9 +28725,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009edc50'
-        Module = '_global'
-        Source = '00/9e/global_DeleteData_009edc50.cpp'
-        TestSource = '00/9e/global_DeleteData_009edc50_test.cpp'
+        Module = 'CCountedPointer<CConsoleInputBase>'
+        Source = '00/9e/CCountedPointer_DeleteData_009edc50.cpp'
+        TestSource = '00/9e/CCountedPointer_DeleteData_009edc50_test.cpp'
         PassPattern = 'AUTO_TINY_009edc50_TEST PASS'
     }
     [pscustomobject]@{
@@ -64511,9 +64511,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e6e0c'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/4e/LTextTreeWalkThrough_BuildTreeArray_004e6e0c.cpp'
-        TestSource = '00/4e/LTextTreeWalkThrough_BuildTreeArray_004e6e0c_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >'
+        Source = '00/4e/stdRbtree_Merase_004e6e0c.cpp'
+        TestSource = '00/4e/stdRbtree_Merase_004e6e0c_test.cpp'
         PassPattern = 'LTextTreeWalkThrough_004e6e0c_TEST PASS'
     }
     [pscustomobject]@{
@@ -69657,9 +69657,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e81e4'
-        Module = 'std'
-        Source = '00/4e/std_list_T_004e81e4_dtor_004e81e4.cpp'
-        TestSource = '00/4e/std_list_T_004e81e4_dtor_004e81e4_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >'
+        Source = '00/4e/stdRbtree_Rbtree_004e81e4.cpp'
+        TestSource = '00/4e/stdRbtree_Rbtree_004e81e4_test.cpp'
         PassPattern = '004e81e4_TEST PASS'
     }
     [pscustomobject]@{
@@ -150015,9 +150015,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ee540'
-        Module = 'CCountedPointer_009edc50'
-        Source = '00/9e/CCountedPointer009edc50_Reset_009ee540.cpp'
-        TestSource = '00/9e/CCountedPointer009edc50_Reset_009ee540_test.cpp'
+        Module = 'CCountedPointer<CConsoleInputBase>'
+        Source = '00/9e/CCountedPointer_Reset_009ee540.cpp'
+        TestSource = '00/9e/CCountedPointer_Reset_009ee540_test.cpp'
         PassPattern = '009ee540_TEST PASS'
     }
     [pscustomobject]@{
@@ -150841,9 +150841,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006dc020'
-        Module = 'CRetailTree_erase00450903'
-        Source = '00/6d/CRetailTreeerase00450903_CRetailTreeerase00450903_006dc020.cpp'
-        TestSource = '00/6d/CRetailTreeerase00450903_CRetailTreeerase00450903_006dc020_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >'
+        Source = '00/6d/stdRbtree_Rbtree_006dc020.cpp'
+        TestSource = '00/6d/stdRbtree_Rbtree_006dc020_test.cpp'
         PassPattern = '006dc020_TEST PASS'
     }
     [pscustomobject]@{
@@ -292871,8 +292871,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006db060'
         Module = 'CPersistTraits<CComboMultiplierData>'
-        Source = '00/6d/CPersistTraitsCComboMultiplierData_TransferBinaryOut_006db060.cpp'
-        TestSource = '00/6d/CPersistTraitsCComboMultiplierData_TransferBinaryOut_006db060_test.cpp'
+        Source = '00/6d/CPersistTraits_TransferBinaryOut_006db060.cpp'
+        TestSource = '00/6d/CPersistTraits_TransferBinaryOut_006db060_test.cpp'
         PassPattern = '006db060_TEST PASS'
     }
     [pscustomobject]@{

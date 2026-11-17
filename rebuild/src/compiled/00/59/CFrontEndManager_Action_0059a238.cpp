@@ -237,7 +237,6 @@ public:
     bool                                   InstallationPaused;                // +0xD8
     bool                                   FinalInstallationNeverPause;       // +0xD9
 
-    void GotoNewProfileScreen();                                  // 0x00595845
     void SetScoreboardOptionsFromProfile();                       // 0x005963DB
     void GotoNextScreen(CComponent* screen, bool clearStack);     // 0x00596763
     void GotoSpecificPreviousScreen(CComponent* screen);          // 0x0059686D
@@ -249,10 +248,13 @@ protected:
     // NF78 (round 7, q10954): GotoProfileMenu and DoPressStart are protected in Ego_r.pdb / FableWin.pdb (IAEXXZ); were public (QAE).
     void GotoProfileMenu();                                       // 0x00597B20
     void DoPressStart();                                          // 0x00599D5C
+    // NF81 (round 7, q10982 / q10983): Ego_r.pdb / FableWin.pdb protected (?GotoNewProfileScreen@CFrontEndManager@NUISystem@@IAEXXZ,
+    //   ?LoadProfile@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z); were public (QAE). Access only.
+    void GotoNewProfileScreen();                                  // 0x00595845
+    void LoadProfile(const CWideString& name);                    // 0x0059899A
 public:
     void GotoPreviousScreen(bool all);                            // 0x00597BF2
     long RefreshAvailableSavedGamesForProfile();                  // 0x00598463
-    void LoadProfile(const CWideString& name);                    // 0x0059899A
     void Action(const CCountedPointer<CAction>& action);
 };
 

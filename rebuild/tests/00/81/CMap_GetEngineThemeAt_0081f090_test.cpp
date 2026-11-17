@@ -1,6 +1,16 @@
+// NF81 (round 7): the row now defines the protected PDB spelling (?GetEngineThemeAt@CMap@@I...: Ego_r.pdb / FableWin.pdb), so this test
+//   includes the legacy header with the landed FABLE_RETAIL_CMAP_ENGINETHEME_PROTECTED opt-in (same mangled names as engine/CMap.h)
+//   and calls the member through a test-only derived class that re-publishes it.
+#define FABLE_RETAIL_CMAP_ENGINETHEME_PROTECTED
 #include <stdio.h>
 #include <string.h>
 #include "candidates/world_map_theme.h"
+
+class CMapTestAccess : public CMap
+{
+public:
+    using CMap::GetEngineThemeAt;
+};
 
 struct PaletteEntry { unsigned long themeId; unsigned long reserved; };
 struct QuarterGrid {
@@ -31,7 +41,7 @@ int main()
     palette[2].themeId = 0x12345678UL;
     gameData[((4 - 2) * 5 + 1) * 12 + 4 + 3] = 2;
     quarterData[(((4 - 1) - 1) * 4 + 2) * 7 + 3] = 0xA5;
-    const CMap* map = reinterpret_cast<const CMap*>(object);
+    const CMapTestAccess* map = reinterpret_cast<const CMapTestAccess*>(object);
     if (map->GetEngineThemeAt(1, 2, 3, EThemePaintType_Default) != 0x12345678UL) return 1;
     if (map->GetEngineThemeAt(8, 4, 3, EThemePaintType_Replace) != 0xA5) return 2;
     if (map->GetEngineThemeAt(1, 2, 3, static_cast<EThemePaintType>(2)) != 0) return 3;

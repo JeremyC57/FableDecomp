@@ -1,46 +1,38 @@
-#include "candidates/world_map_theme.h"
+// CMap::SetEngineBlendAt(long x, long y, unsigned char blend, unsigned long index, EThemePaintType PaintType) -- set one blend weight of
+// a map cell: paint type 0 stores it in the height-map cell's engine blend layer, paint type 1 in the atmos blend layer of the game-map
+// cell that holds the height-map position (game map units are height map units / 4).
+// Leaf: ?SetEngineBlendAt@CMap@@IAEXJJEKW4EThemePaintType@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0081EFC0, 138 bytes, `ret 14h`.
+// Name: Ego_r.pdb 0x00679BD0 / FableWin.pdb 0x02237F90 ?SetEngineBlendAt@CMap@@IAEXJJEKW4EThemePaintType@@@Z (protected); Ego_d.pdb
+//   parameters x, y, blend, index, PaintType and the block local gpos (C2DCoordI).
+//   NF81 (round 7, q10977): re-authored on engine/CMap.h; the July row (candidates/world_map_theme.h with a local storage cast model)
+//   never byte-matched (DIFFER 144 v 138).
+// Callees: none out of line; inline: CHeightMap::GetCell, CHeightMapCell::SetEngineBlend, CMap::HeightMapUnitToGameMapUnit,
+//   CGameMap::GetCell, CGameMapCell::SetAtmosBlend.
+// Layout: CMap GameMap +0x1A78, HeightMap +0x1A7C; CHeightMap Cells +0x10, SizeX +0x204, SizeY +0x208 (cell 12 bytes, engine blends
+//   +7); CGameMap Cells +0x04, SizeX +0x1C, SizeY +0x20 (cell 7 bytes, atmos blends +3).
+#define FABLE_RETAIL_CMAP_THEMEPALETTE
+#define FABLE_RETAIL_CMAP_LOADFROMFILE          // CMap::HeightMapUnitToGameMapUnit
+#define FABLE_RETAIL_CMAP_ENGINETHEMEAT         // NF81 overlay: EThemePaintType and the protected per-cell theme accessors
+#define FABLE_RETAIL_CHEIGHTMAPCELL
+#define FABLE_RETAIL_CHEIGHTMAPCELL_ACCESSORS
+#define FABLE_RETAIL_CHEIGHTMAP_GETCELL
+#define FABLE_RETAIL_CGAMEMAP
+#define FABLE_RETAIL_C2DBOXI
+#define FABLE_RETAIL_SCOPED_PTR
+class CASuspendableProcess;
+#include "engine/CMap.h"
+#include "engine/CHeightMap.h"
+#include "engine/CGameMap.h"
 
-namespace
-{
-struct QuarterBlendWriteGrid
-{
-    unsigned char padding_00[0x04]; unsigned char* data;
-    unsigned char padding_08[0x14]; long width; long height;
-};
-struct GameBlendWriteGrid
-{
-    unsigned char padding_00[0x10]; unsigned char* data;
-    unsigned char padding_14[0x1F0]; long width; long maxY;
-};
-struct CMapBlendWriteStorage
-{
-    unsigned char padding_00[0x1A78];
-    QuarterBlendWriteGrid* quarterGrid;
-    GameBlendWriteGrid* gameGrid;
-};
-}
 
-FABLE_STATIC_ASSERT(offsetof(CMapBlendWriteStorage, quarterGrid) == 0x1A78);
-FABLE_STATIC_ASSERT(offsetof(CMapBlendWriteStorage, gameGrid) == 0x1A7C);
-
-void CMap::SetEngineBlendAt(
-    long x, long y, unsigned char blendValue, unsigned long blendIndex,
-    EThemePaintType paintType)
+void CMap::SetEngineBlendAt(long x, long y, unsigned char blend, unsigned long index, EThemePaintType PaintType)
 {
-    CMapBlendWriteStorage* storage = reinterpret_cast<CMapBlendWriteStorage*>(this);
-    if (paintType == EThemePaintType_Default)
+    if (PaintType == THEME_PAINT_ENGINE)
+        HeightMap->GetCell(C2DCoordI(x, y)).SetEngineBlend(blend, index);
+    else if (PaintType == THEME_PAINT_ATMOS)
     {
-        GameBlendWriteGrid* grid = storage->gameGrid;
-        grid->data[
-            ((grid->maxY - y) * (grid->width + 1) + x) * 0x0C + 7 + blendIndex] =
-            blendValue;
-        return;
-    }
-    if (paintType == EThemePaintType_Replace)
-    {
-        QuarterBlendWriteGrid* grid = storage->quarterGrid;
-        grid->data[
-            (((grid->height - ((y + ((y >> 31) & 3)) >> 2)) - 1) * grid->width +
-             ((x + ((x >> 31) & 3)) >> 2)) * 7 + 3 + blendIndex] = blendValue;
+        C2DCoordI gpos(HeightMapUnitToGameMapUnit(x), HeightMapUnitToGameMapUnit(y));
+        GameMap->GetCell(gpos).SetAtmosBlend(index, blend);
     }
 }

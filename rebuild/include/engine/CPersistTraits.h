@@ -47,6 +47,19 @@ public:
     void TransferOut(CPersistContext& context,CCharString& out,const T& value);
 #endif
 };
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_COMBOMULTIPLIERDATA_BINARYOUT
+// NF81 opt-in (round 7, q10986 binder, row 0x006DC350 GFSerialiseMapBinaryOut<CComboMultiplierData, long>): the traits of
+// CHeroExperienceDef::ComboMultiplierMap's value, as the CWoundMorphs / CExpressionSet specialisations below: DefaultVal and the
+// writer Ego_r.pdb 0x0058ACE0 / FableWin.pdb 0x01F0ADD0 ?TransferBinaryOut@?$CPersistTraits@VCComboMultiplierData@@@@QAEXAAVCDataOutputStream@@ABVCComboMultiplierData@@@Z
+// (by const reference; retail 0x006DB060, out of line). Needs engine/CComboMultiplierData.h and engine/CDataOutputStream.h first. Do
+// not combine with a CPersistTraits<CComboMultiplierData> member specialisation of the primary template (0x006DCFA0's TransferBinaryIn).
+template<> class CPersistTraits<CComboMultiplierData> {
+public:
+    CComboMultiplierData DefaultVal;
+    CPersistTraits():DefaultVal() {}
+    void TransferBinaryOut(CDataOutputStream& os,const CComboMultiplierData& value);              // 0x006DB060
+};
+#endif
 #ifdef FABLE_RETAIL_CCREATUREDEF_TRANSFER
 #include "engine/CMemoryDataInputStream.h"
 #include "engine/CWoundMorphs.h"

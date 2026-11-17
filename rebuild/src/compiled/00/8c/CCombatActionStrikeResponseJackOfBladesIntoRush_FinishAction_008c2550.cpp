@@ -20,11 +20,12 @@
 //   CCreatureAction_CastAssassinRush, and the NF74 overlay opt-ins CCombatAction_GenericStrikeResponseBase.h FINISHACTION,
 //   CCombatAction_StrikeResponseJackOfBladesIntoRush.h FINISHACTION (FinishAction + the protected Ego_r GetValidRushPosition(C3DVector&))
 //   and CTCBoss.h GETPHASESTARTPOS (FableWin inline). Locals carry the Ego_d.pdb names.
-// Shape: GetValidRushPosition's body (written from the landed 0x008C1600 row with the Ego_d locals and the shared-header types: STLport
-//   vector<C3DVector>, remove_if over not1(CVectorFilter_FurtherFromPointThan) and -- type unproven, see NF74 NOTES -- the plain
-//   CVectorFilter_FurtherFromPointThan for the phase filter, GFRandom over the world seed, IsAbleToNavigateFromPosToPos; not graded at its
-//   own address; only FinishAction is this row's leaf) is visible but out of line, as in the retail TU, so VC7.1 sees that rush_to_pos's address is not kept: retail reuses its dead words for
-//   the rush vector (dz spilled to rush_to_pos.Z; frame 0x16C; with the declaration only the frame is 0x178). Normalise is the
+// Shape: GetValidRushPosition's body is visible but out of line, as in the retail TU, so VC7.1 sees that rush_to_pos's address is not
+//   kept: retail reuses its dead words for the rush vector (dz spilled to rush_to_pos.Z; frame 0x16C; with the declaration only the
+//   frame is 0x178, NF81 grade 1). NF81 (round 7, q10988): the row no longer carries its own older copy of that body (the rejected
+//   CVectorFilter_FurtherFromPointThan phase filter); it includes the one text, the landed 0x008C1600 body, from the NF81 overlay header
+//   engine/CCombatAction_StrikeResponseJackOfBladesIntoRush_GetValidRushPosition.h as an `inline __declspec(noinline)` COMDAT (never
+//   expanded; the row 0x008C1600 defines it), as engine/CMap.h does for GetStrongestEngineThemeAt. The call binds 0x008C1600. Normalise is the
 //   PAREN_SQUARES_ZYX body and GetMagnitude2D the one-expression FableWin body: the shared X*X / Y*Y products land in retail's slots.
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #define FABLE_RETAIL_STLP_VECTOR
@@ -38,6 +39,7 @@
 #define FABLE_RETAIL_CTHINGBASEDEF
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED   // CTCBoss::PhaseStartPos at +0x22 (alignment 1, engine/CTCBoss.h; as 0x008C1600 / 0x009547D0), so the visible GetValidRushPosition COMDAT is compiled as at its own row
 #define FABLE_RETAIL_C3DVECTOR_NORMALISE_PAREN_SQUARES_ZYX
 #define FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D
 #define FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D_ORIGINAL_SUM_PASS23
@@ -85,46 +87,8 @@
 #include "engine/CWorld.h"
 #include "engine/CTCCreatureNavigation.h"
 #include "engine/GFRandom.h"
-namespace std {
-// STLport 4.6 _algo.h remove_if over C3DVector*, out of line in retail (0x008AC060 unary_negate<CVectorFilter_FurtherFromPointThan>,
-// 0x008C34A0 CVectorFilter_FurtherFromPointThan; Ego_r / FableWin ??$remove_if@...). Declaration only.
-template<class _ForwardIter, class _Predicate> _ForwardIter __fastcall remove_if(_ForwardIter first, _ForwardIter last, _Predicate pred);
-}
+#include "engine/CCombatAction_StrikeResponseJackOfBladesIntoRush_GetValidRushPosition.h"   // NF81 overlay: the 0x008C1600 body, visible noinline
 
-// The same-TU callee GetValidRushPosition 0x008C1600 (its own landed row; this text is ungraded at that address), visible but out of
-// line as in retail, so VC7.1 sees that it keeps no address of rush_to_pos (retail reuses the dead rush_to_pos words for the rush
-// vector). Ego_d.pdb locals.
-#pragma auto_inline(off)
-__declspec(noinline) bool CCombatAction_StrikeResponseJackOfBladesIntoRush::GetValidRushPosition(C3DVector& rush_pos)
-{
-    CDefPointer<const CJackOfBladesBattleDef> p_jack_def;
-    reinterpret_cast<CThing*>(PCreature.GetPItem())->PeekBaseDef().GetSubDef<CJackOfBladesBattleDef>(&p_jack_def);
-    CTCBoss* ptc_boss;
-    reinterpret_cast<CThing*>(PCreature.GetPItem())->GetTC(TCI_BOSS, &ptc_boss);
-    std::vector<C3DVector> validPositions;
-    NCreatureHiding::GetValidPositions(validPositions, GetWorld().GetWorldMap(), GetWorld().GetThingSearchTools(),
-        reinterpret_cast<CThing*>(PCreature.GetPItem())->GetPos(), p_jack_def->RushAwayDistance + 2.0f, false, 0);
-    if (validPositions.size() == 0)
-        return false;
-    validPositions.erase(std::remove_if(validPositions.begin(), validPositions.end(),
-        std::not1(CVectorFilter_FurtherFromPointThan(reinterpret_cast<CThing*>(PCreature.GetPItem())->GetPos(), p_jack_def->RushAwayDistance))),
-        validPositions.end());
-    validPositions.erase(std::remove_if(validPositions.begin(), validPositions.end(),
-        CVectorFilter_FurtherFromPointThan(ptc_boss->GetPhaseStartPos(), 21.0f)), validPositions.end());
-    CTCCreatureNavigation* ptc_nav;
-    reinterpret_cast<CThing*>(PCreature.GetPItem())->GetTC(TCI_NAVIGATION, &ptc_nav);
-    bool found = false;
-    while (!found && validPositions.size() != 0) {
-        long random_index = GFRandom(validPositions.size(), GetWorld().GetWorldSeed());
-        if (ptc_nav->IsAbleToNavigateFromPosToPos(reinterpret_cast<CThing*>(PCreature.GetPItem())->GetPos(), validPositions[random_index], 0.0f)) {
-            rush_pos = validPositions[random_index];
-            found = true;
-        } else
-            validPositions.erase(validPositions.begin() + random_index);
-    }
-    return found;
-}
-#pragma auto_inline(on)
 
 void CCombatAction_StrikeResponseJackOfBladesIntoRush::FinishAction()
 {

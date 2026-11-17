@@ -106,11 +106,13 @@ public:
     unsigned char                          _pad00[0x54];
     std::map<FRONTEND_SCREEN, CComponent*> m_mapScreens;  // +0x54
     void GetProfileNames(std::vector<CWideString>& names);    // 0x005955AB (same-TU stand-in below)
-    void GotoNewProfileScreen();                          // 0x00595845
     bool VerifySignatureCached(const CWideString& filename);   // 0x005957D9
-    void LoadProfile(const CWideString& name);            // 0x0059899A
     void GotoNextScreen(CComponent* screen, bool clearStack);  // 0x00596763
 protected:
+    // NF81 (round 7, q10982 / q10983): both protected in Ego_r.pdb / FableWin.pdb (?GotoNewProfileScreen@CFrontEndManager@NUISystem@@IAEXXZ
+    //   0x006030E9 / 0x0201D7DE, ?LoadProfile@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z 0x00605197 / 0x02013326); were modelled public.
+    void GotoNewProfileScreen();                          // 0x00595845
+    void LoadProfile(const CWideString& name);            // 0x0059899A
     // NF78 (round 7, q10954): both protected in Ego_r.pdb / FableWin.pdb (?GotoProfileMenu@CFrontEndManager@NUISystem@@IAEXXZ,
     //   ?DoPressStart@CFrontEndManager@NUISystem@@IAEXXZ); were modelled public (QAE).
     void GotoProfileMenu();                               // 0x00597B20

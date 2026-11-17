@@ -182,6 +182,12 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
 public:
     CHitParameters(const CHitParameters& other);                         // 0x00812170
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_CLEARALLDAMAGE
+    // NF81 opt-in (round 7, q10986 binder, row 0x00868A40): Ego_r.pdb 0x0083EC50 / FableWin.pdb 0x02810E60 ?ClearAllDamage@CHitParameters@@QAEXXZ
+    // (public; retail 0x00868A40, out of line: `DamageMap.clear()`). Needs FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP. Declaration only: no layout change.
+public:
+    void ClearAllDamage();                                               // 0x00868A40
+#endif
 #ifdef FABLE_RETAIL_CHITPARAMETERS_HIT_CTOR
     // Retail opt-in (wf17, row 0x00854DD0 CCreatureAction_SpiritAttack::PerformAction): Ego_r.pdb
     // ??0CHitParameters@@QAE@PAVCHitLocation@NHitLocations@@PAVCThing@@1ABVC3DVector@@2_N333@Z (0x00789238, ret 24h) and

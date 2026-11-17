@@ -4,11 +4,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_WORLDMAPTHEME_C2DCOORDI_SHARED
+// NF81 opt-in (round 7, the tests of 0x0063A970 / 0x0063A9E0 / 0x0063AA50 / 0x0063AAB0): the shared engine/C2DCoordI.h class (Ego_r.pdb
+// C2DCoordI is a class with public long X / Y), so the CWorldMap block accessors and ConvertWorldMapCoordsToLocalCoords mangle
+// ABVC2DCoordI@@ as the rows (now on engine/CWorldMap.h) define them. Same size; members X / Y.
+#include "engine/C2DCoordI.h"
+#else
 struct C2DCoordI
 {
     long x;
     long y;
 };
+#endif
 
 enum EThemePaintType
 {

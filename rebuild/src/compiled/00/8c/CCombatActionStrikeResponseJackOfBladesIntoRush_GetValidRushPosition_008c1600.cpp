@@ -69,52 +69,8 @@
 #include "engine/CWorld.h"
 #include "engine/CTCCreatureNavigation.h"
 #include "engine/GFRandom.h"
-namespace std {
-// STLport 4.6 _algo.h remove_if over C3DVector*, out of line in retail (0x008AC060 unary_negate<CVectorFilter_FurtherFromPointThan>,
-// 0x008C34A0 the descriptive CIsOutsideRadius of its landed row). Declaration only.
-template<class _ForwardIter, class _Predicate> _ForwardIter __fastcall remove_if(_ForwardIter first, _ForwardIter last, _Predicate pred);
-}
-// The boss phase-start filter of remove_if 0x008C34A0 / remove_copy_if 0x008C2ED0: { float Radius; C3DVector Centre }, 3D length > Radius.
-// Descriptive name (the landed 0x008C34A0 / 0x008C2ED0 rows' spelling): which PDB class it is stays unproven (NF74 REJECTED.tsv).
-struct CIsOutsideRadius {
-    float     Radius;                           // +0x00
-    C3DVector Centre;                           // +0x04
-    CIsOutsideRadius(float radius, const C3DVector& centre) : Radius(radius), Centre(centre) { }
-    CIsOutsideRadius(const CIsOutsideRadius& o) : Radius(o.Radius), Centre(o.Centre) { }
-};
-
-bool CCombatAction_StrikeResponseJackOfBladesIntoRush::GetValidRushPosition(C3DVector& rush_pos)
-{
-    CDefPointer<const CJackOfBladesBattleDef> p_jack_def;
-    reinterpret_cast<CThing*>(PCreature.GetPItem())->PeekBaseDef().GetSubDef<CJackOfBladesBattleDef>(&p_jack_def);
-    CTCBoss* ptc_boss;
-    reinterpret_cast<CThing*>(PCreature.GetPItem())->GetTC(TCI_BOSS, &ptc_boss);
-    std::vector<C3DVector> validPositions;
-    CWorld& world = GetWorld();
-    CThing* creature = reinterpret_cast<CThing*>(PCreature.GetPItem());
-    CThingSearchTools& search = GetWorld().GetThingSearchTools();
-    NCreatureHiding::GetValidPositions(validPositions, world.GetWorldMap(), search, creature->GetPos(),
-        p_jack_def->RushAwayDistance + 2.0f, false, 0);
-    if (validPositions.size() == 0)
-        return false;
-    std::vector<C3DVector>::iterator last = validPositions.end();
-    CThing* me = reinterpret_cast<CThing*>(PCreature.GetPItem());
-    float distance = p_jack_def->RushAwayDistance;
-    std::unary_negate<CVectorFilter_FurtherFromPointThan> too_close(CVectorFilter_FurtherFromPointThan(me->GetPos(), distance));
-    validPositions.erase(std::remove_if(validPositions.begin(), validPositions.end(), too_close), last);
-    validPositions.erase(std::remove_if(validPositions.begin(), validPositions.end(),
-        CIsOutsideRadius(21.0f, ptc_boss->GetPhaseStartPos())), validPositions.end());
-    bool found = false;
-    CTCCreatureNavigation* ptc_nav;
-    reinterpret_cast<CThing*>(PCreature.GetPItem())->GetTC(TCI_NAVIGATION, &ptc_nav);
-    while (!found && validPositions.size() != 0) {
-        long random_index = GFRandom(validPositions.size(), GetWorld().GetWorldSeed());
-        CThing* self = reinterpret_cast<CThing*>(PCreature.GetPItem());
-        if (ptc_nav->IsAbleToNavigateFromPosToPos(self->GetPos(), validPositions[random_index], 0.0f)) {
-            rush_pos = validPositions[random_index];
-            found = true;
-        } else
-            validPositions.erase(validPositions.begin() + random_index);
-    }
-    return found;
-}
+// NF81 (round 7, q10988): the body (and the CIsOutsideRadius predicate and the remove_if declaration) moved unchanged into the NF81
+//   overlay header engine/CCombatAction_StrikeResponseJackOfBladesIntoRush_GetValidRushPosition.h, the one text this row and its caller
+//   FinishAction 0x008C2550 (a visible noinline COMDAT there) share; this row defines it out of line through the _DEFINE macro.
+#define FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH_GETVALIDRUSHPOSITION_DEFINE
+#include "engine/CCombatAction_StrikeResponseJackOfBladesIntoRush_GetValidRushPosition.h"

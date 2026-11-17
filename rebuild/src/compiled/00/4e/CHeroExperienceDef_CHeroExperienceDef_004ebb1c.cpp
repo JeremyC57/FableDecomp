@@ -4,7 +4,7 @@
 // Label correction: catalogued as CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip (propagated); the only caller
 // is the scalar deleting destructor @ 0x004EBB00, slot 0 of CHeroExperienceDef's vtable 0x0124390C.
 // Callees: vector<CAttackHistoryCombo> dtor @ 0x004E81C1, map<EDamageAttribute,CHeroStatIncreaseData> dtor @ 0x004E81FB,
-// map<long,CDefString> dtor @ 0x004DD21C (x5), map<long,CComboMultiplierData> dtor @ 0x004E81E4 (all catalogued as the
+// map<long,CDefString> dtor @ 0x004DD21C (x5), map<long,CComboMultiplierData> tree dtor @ 0x004E81E4 (all catalogued as the
 // propagated "CActiveFile::OnReadFinished"), free @ 0x00BFEA14 (x3), CResource::~CResource @ 0x009FC550 (tail jump).
 // Layout: Ego_r.pdb CHeroExperienceDef with the retail 12-byte STLport containers (PDB 16): ExperienceLevelThresholds
 // +0x28, HeroLevelTitles +0x34, FallbackMultipliers +0x40, SoundIntensityThresholds +0x4c, ComboMultiplierMap +0x58,
@@ -14,6 +14,15 @@
 // inline `if (start) free(start)`), the most-derived class `__declspec(novtable)` (no own vtable store), then the
 // inlined CDefPointeeBase destructor's store (0x01230BA0) and the tail jump; `#pragma optimize("s", on)`.
 #pragma optimize("s", on)
+// NF81 (round 7, q10975): the ComboMultiplierMap stand-in (CComboMultiplierMap with a ??1CComboMultiplierMap@@QAE@XZ destructor) is the
+//   shared std::map<long, CComboMultiplierData> (stlport/fable_map.h + engine/CComboMultiplierData.h, Ego_r.pdb member type, as NF78's
+//   0x004F914A swap); FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE keeps the tree destructor a call, so the member's destruction binds
+//   0x004E81E4 as that tree's ~_Rb_tree (its row, NF81); TREE_CLEAR_OUTOFLINE keeps the clear inside that COMDAT a call, as in the
+//   0x004E81E4 row. The other pre-existing stand-ins are unchanged.
+#define FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
+#define FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE   // so the ~_Rb_tree COMDAT of this TU is the 0x004E81E4 text (clear called)
+#include "stlport/fable_map.h"
+#include "engine/CComboMultiplierData.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 class CResource { public:                           // engine/CResource.h: the root of the def hierarchy
@@ -35,10 +44,6 @@ struct CLongDefStringMap {                         // map<long,CDefString>
     unsigned char _body[0x0c];
     ~CLongDefStringMap();                          // 0x004DD21C
 };
-struct CComboMultiplierMap {                       // map<long,CComboMultiplierData>
-    unsigned char _body[0x0c];
-    ~CComboMultiplierMap();                        // 0x004E81E4
-};
 struct CStatIncreaseMap {                          // map<EDamageAttribute,CHeroStatIncreaseData>
     unsigned char _body[0x0c];
     ~CStatIncreaseMap();                           // 0x004E81FB
@@ -54,7 +59,7 @@ struct __declspec(novtable) CHeroExperienceDef : CDefPointeeBase {   // vtable 0
     CLongVector               HeroLevelTitles;                      // +0x34
     CLongVector               FallbackMultipliers;                  // +0x40
     CLongDefStringMap         SoundIntensityThresholds;             // +0x4c
-    CComboMultiplierMap       ComboMultiplierMap;                   // +0x58
+    std::map<long, CComboMultiplierData> ComboMultiplierMap;        // +0x58
     float                     ExperienceMultiplierParamPerUnitComboMultiplier;   // +0x64
     float                     ExperienceMultiplierRegionChangeMultiplier;        // +0x68
     CLongDefStringMap         ComboMultiplierIncrease;              // +0x6c

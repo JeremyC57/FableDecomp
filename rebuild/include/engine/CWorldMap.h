@@ -383,6 +383,18 @@ public:
     // ?GetStrongestEngineThemeAtBlock@CWorldMap@@QBEJABVC2DCoordI@@AAJ@Z. Declaration only: no layout change.
     long GetStrongestEngineThemeAtBlock(const C2DCoordI& pos, long& strength) const;      // 0x0063AE70
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_THEMEATBLOCK
+    // NF81 opt-in (round 7, q10976 / q10977..q10980 binders, rows 0x0063A970 / 0x0063A9E0 / 0x0063AA50 / 0x0063AAB0): Ego_r.pdb 0x006E7260 /
+    // 0x006E72D0 / 0x006E7340 / 0x006E73B0 and FableWin.pdb 0x024A41D0 / 0x024A4280 / 0x024A4330 / 0x024A43C0
+    // ?SetThemeAtBlock@CWorldMap@@QAEXABVC2DCoordI@@KKW4EThemePaintType@@@Z, ?SetThemeBlendAtBlock@CWorldMap@@QAEXABVC2DCoordI@@EKW4EThemePaintType@@@Z,
+    // ?GetThemeAtBlock@CWorldMap@@QBEKABVC2DCoordI@@KW4EThemePaintType@@@Z, ?GetThemeBlendAtBlock@CWorldMap@@QBEKABVC2DCoordI@@KW4EThemePaintType@@@Z
+    // (public; Ego_d.pdb parameter names). Needs engine/CMap.h with FABLE_RETAIL_CMAP_ENGINETHEMEAT included first (EThemePaintType).
+    // Declarations only: no layout change.
+    void SetThemeAtBlock(const C2DCoordI& pos, unsigned long theme, unsigned long theme_index, EThemePaintType PaintType);        // 0x0063A970
+    void SetThemeBlendAtBlock(const C2DCoordI& pos, unsigned char blend, unsigned long theme_index, EThemePaintType PaintType);   // 0x0063A9E0
+    unsigned long GetThemeAtBlock(const C2DCoordI& pos, unsigned long theme_index, EThemePaintType PaintType) const;             // 0x0063AA50
+    unsigned long GetThemeBlendAtBlock(const C2DCoordI& pos, unsigned long theme_index, EThemePaintType PaintType) const;        // 0x0063AAB0
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_NAVIGATIONSECTION
     // Opt-in (NF62, row 0x004FE630): Ego_r.pdb protected const ?GetNavigationSectionOffsetInFile@CWorldMap@@IBE?AU?$pair@VCCharString@@J@std@@
     // AAVCAFile@@ABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@3@@Z (Ego_r 0x004D24E0; retail

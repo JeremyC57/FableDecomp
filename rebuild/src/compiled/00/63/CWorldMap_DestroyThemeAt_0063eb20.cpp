@@ -56,11 +56,13 @@ class CEngineThemeDef : public CDefClassBase { public:            // Ego_r.pdb C
     unsigned char _pad_0x25[0x98 - 0x25];
     long          DestructionThemeDef;             // +0x98
 };
-enum EThemePaintType { THEME_PAINT_NORMAL };
-class CMap {
-public:
-    void SetEngineBlendAt(long x, long y, unsigned char blend, unsigned long layer, EThemePaintType type);   // 0x0081EFC0
-};
+// NF81 (round 7, q10977): the local CMap model (a public SetEngineBlendAt) and the local EThemePaintType are replaced by engine/CMap.h
+//   with the NF81 overlay opt-in FABLE_RETAIL_CMAP_ENGINETHEMEAT: Ego_r.pdb 0x00679BD0 / FableWin.pdb 0x02237F90
+//   ?SetEngineBlendAt@CMap@@IAEXJJEKW4EThemePaintType@@@Z is protected, reached as CWorldMap is CMap's friend (FABLE_RETAIL_CMAP_CWORLDMAP_FRIEND);
+//   paint type 0 is the engine paint (THEME_PAINT_ENGINE, descriptive).
+#define FABLE_RETAIL_CMAP_ENGINETHEMEAT
+#define FABLE_RETAIL_CMAP_CWORLDMAP_FRIEND
+#include "engine/CMap.h"
 class CWorldMap {
 public:
     virtual ~CWorldMap();                                           // slot 0
@@ -108,15 +110,15 @@ void CWorldMap::DestroyThemeAt(const C3DVector& pos)
     unsigned long destructionTheme = def->DestructionThemeDef;
     if (destructionTheme != 0) {
         C2DCoordI block((long)pos.X, (long)pos.Y);
-        SetThemeAtBlock(block, destructionTheme, 0, THEME_PAINT_NORMAL);
+        SetThemeAtBlock(block, destructionTheme, 0, THEME_PAINT_ENGINE);
         DestroyedThemePositions.push_back(block);
         for (long i = 1; i < 3; ++i)
-            SetThemeAtBlock(block, 0, i, THEME_PAINT_NORMAL);
-        SetThemeBlendAtBlock(block, 0xff, 0, THEME_PAINT_NORMAL);
+            SetThemeAtBlock(block, 0, i, THEME_PAINT_ENGINE);
+        SetThemeBlendAtBlock(block, 0xff, 0, THEME_PAINT_ENGINE);
         long map = GetMapNumberAt(block);
         if (map != 0 && IsPosChangeable(block)) {
             C2DCoordI local = ConvertWorldMapCoordsToLocalCoords(map, block);
-            GetMap(map).SetEngineBlendAt(local.X, local.Y, 0, 1, THEME_PAINT_NORMAL);
+            GetMap(map).SetEngineBlendAt(local.X, local.Y, 0, 1, THEME_PAINT_ENGINE);
         }
     }
 }

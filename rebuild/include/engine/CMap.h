@@ -47,6 +47,13 @@ class C3DVector;
 #ifdef FABLE_RETAIL_CMAP_NAVIGATIONLAYER
 class C3DVector;
 #endif
+#ifdef FABLE_RETAIL_CMAP_ENGINETHEMEAT
+// NF81 opt-in (round 7, q10951 / q10977..q10980, rows 0x0081EE60 / 0x0081EFC0 / 0x0081F090 / 0x0081F170): the paint target of the
+// per-cell theme accessors. Ego_r.pdb / FableWin.pdb W4EThemePaintType (a plain enum; its enumerators are in neither name set, so these
+// two are DESCRIPTIVE): 0 paints the height map's engine theme layers (CHeightMapCell +4 / +7), 1 the game map's atmos themes
+// (CGameMapCell +0 / +3), as the retail bodies test `PaintType == 0` then `== 1`.
+enum EThemePaintType { THEME_PAINT_ENGINE = 0, THEME_PAINT_ATMOS = 1 };
+#endif
 // Retail class (header wave 2026-11-03, Codex pass 12 row 0x00821010): RTTI .?AVCMap@@ : CIDrawMap@0, CBaseClassNonCopyable@4
 // (ghidra_out/rtti_bases.tsv); every Ego_r.pdb data member in order (struct_layouts_egor.tsv), composites without a shared header
 // opaque at retail STLport sizes; sizeof 0x1D40.
@@ -198,6 +205,19 @@ protected:
     float GetThemeSizeZAt(const C3DVector& pos) const;                             // 0x008200B0
     float GetThemeSizeZAt(const C2DCoordI& pos) const;                             // 0x00820100
     float GetThemeMinCameraSizeZAt(const C3DVector& pos) const;                    // 0x00820140
+public:
+#endif
+#ifdef FABLE_RETAIL_CMAP_ENGINETHEMEAT
+    // NF81 opt-in (round 7): Ego_r.pdb 0x00679A70 / 0x00679BD0 / 0x00679CA0 / 0x00679D80 and FableWin.pdb 0x02237B90 / 0x02237F90 /
+    // 0x022380B0 / 0x02238200 ?SetEngineThemeAt@CMap@@IAEXJJKKW4EThemePaintType@@@Z, ?SetEngineBlendAt@CMap@@IAEXJJEKW4EThemePaintType@@@Z,
+    // ?GetEngineThemeAt@CMap@@IBEKJJKW4EThemePaintType@@@Z, ?GetEngineBlendAt@CMap@@IBEEJJKW4EThemePaintType@@@Z (protected; Ego_r order =
+    // retail 0x0081EE60 / 0x0081EFC0 / 0x0081F090 / 0x0081F170, out of line; the CWorldMap block accessors 0x0063A970..0x0063AAB0 call
+    // them). Parameter names from Ego_d.pdb. Declarations only; no layout change.
+protected:
+    void SetEngineThemeAt(long x, long y, unsigned long theme_def_index, unsigned long index, EThemePaintType PaintType);   // 0x0081EE60
+    void SetEngineBlendAt(long x, long y, unsigned char blend, unsigned long index, EThemePaintType PaintType);            // 0x0081EFC0
+    unsigned long GetEngineThemeAt(long x, long y, unsigned long index, EThemePaintType PaintType) const;                  // 0x0081F090
+    unsigned char GetEngineBlendAt(long x, long y, unsigned long index, EThemePaintType PaintType) const;                  // 0x0081F170
 public:
 #endif
 };
