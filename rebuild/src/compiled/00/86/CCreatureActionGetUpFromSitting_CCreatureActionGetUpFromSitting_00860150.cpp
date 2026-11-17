@@ -1,41 +1,43 @@
-// CCreatureAction_GetUpFromSitting::CCreatureAction_GetUpFromSitting(CThingCreatureBase*, const CCharString&, long, bool) -- base CCombatActionBase(owner, 50, zeroed CSoundPair), SittingMode and RemoveOnPerformAction from the arguments, own vtable, then the animation name handed to the base setter
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00860150, length 96 bytes.
-// Callees: CCombatActionBase::CCombatActionBase @ 0x00858030, CCombatActionBase::SetCombatAnimation @ 0x008574D0 (propagated
-// manifest label "CTCInGameMenu::SetPDef"; every call site of the landed family passes an animation name).
-// Vtable 0x01276C2C (rtti-vtables.tsv). Retail CCombatActionBase is 0x114 bytes (PDB 0x12c), so this class's
-// members sit at +0x114.. (PDB +0x12c..) and `this` is modelled locally; member names are the Ego_r.pdb names.
-// `ret 10h`: four arguments; the three trailing ones are loaded into registers together after the base call.
+// CCreatureAction_GetUpFromSitting::CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& animation, long sittingMode,
+//   bool removeOnPerformAction) -- base CCombatActionBase(creature, 50, CSoundPair()), SittingMode / RemoveOnPerformAction, own vtable, then
+//   the animation handed to CCombatActionBase::SetCombatAnimation
+// Leaf: ??0CCreatureAction_GetUpFromSitting@@QAE@AAVCThingCreatureBase@@ABVCCharString@@J_N@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00860150, 82 bytes, thiscall `ret 10h`: CCombatActionBase ctor 0x00858030, vtable 0x01276C2C,
+//   SetCombatAnimation 0x008574D0. A COMDAT of retail's NCreatureMode::GetUpFromSitting TU (0x0085FF10, which calls it on a temporary);
+//   also called by CGameScriptInterface::EntitySetAsSittingOnFloor 0x008A8C60.
+// Names: Ego_r.pdb / FableWin.pdb ??0CCreatureAction_GetUpFromSitting@@QAE@AAVCThingCreatureBase@@ABVCCharString@@J_N@Z (creature by reference;
+//   engine/CCreatureAction_GetUpFromSitting.h); both landed callers bind this spelling.
+// NF86 (round 7, q11102 / q11120): was the pointer-parameter stand-in leaf ??0..@@QAE@PAVCThingCreatureBase@@ABVCCharString@@J_N@Z over local
+//   CSoundPair / CCombatActionBase / CCreatureAction_GetUpFromSitting models (a strong definition). Now the ONE shared inline body from the
+//   header (NF86 opt-in FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_CTOR_INLINE, the body NF84 wrote in 0x0085FF10), so this object and
+//   0x0085FF10's both carry it as a pick-any COMDAT (selection 2; comdat.py) and no object defines a nodup copy.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SETCOMBATANIMATION
+#define FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_CTOR_INLINE
 #include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_GetUpFromSitting.h"
 
-class CThingCreatureBase;
-class CThing;
-
-class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
-    long FirstSound;                        //   stack stores before the base call: an embedded object's inline ctor)
-    long LastSound;
-    CSoundPair() : FirstSound(0), LastSound(0) { }
-};
-
-class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: its containers are 4 bytes wider there)
-    virtual void v00();
-    unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
-    CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
-public:
-    void SetCombatAnimation(const CCharString&);   // 0x008574D0
-};
-
-class CCreatureAction_GetUpFromSitting : public CCombatActionBase { public:   // vtable 0x01276C2C
-    long          SittingMode;            // +0x114 (PDB +0x12c)
-    unsigned char RemoveOnPerformAction;   // +0x118 (PDB +0x130, bool)
-    virtual void v00();
-    CCreatureAction_GetUpFromSitting(CThingCreatureBase* owner, const CCharString& animName, long sittingMode, bool removeOnPerformAction);
-};
-
-CCreatureAction_GetUpFromSitting::CCreatureAction_GetUpFromSitting(CThingCreatureBase* owner, const CCharString& animName, long sittingMode, bool removeOnPerformAction)
-    : CCombatActionBase(owner, 50, CSoundPair())
-    , SittingMode(sittingMode)
-    , RemoveOnPerformAction(removeOnPerformAction)
+namespace {
+// Fidelity: scaffolding, not retail: the smallest out-of-line use of the header's inline constructor (a temporary passed by reference, the form
+// retail's GetUpFromSitting 0x0085FF10 calls out of line), so this object emits the constructor as a pick-any COMDAT. Internal to this TU.
+bool ReferenceGetUpFromSittingCtor(CThingCreatureBase& creature, const CCharString& animation)
 {
-    SetCombatAnimation(animName);
+    return creature.IsFreeToPerformAction(CCreatureAction_GetUpFromSitting(creature, animation, 0, false));
+}
 }

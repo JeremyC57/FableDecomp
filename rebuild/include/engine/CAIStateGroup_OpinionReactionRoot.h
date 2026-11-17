@@ -36,8 +36,16 @@ public:
     CTCTalk*      PTCTalk;                                   // +0x14
     unsigned char CurrentReactionType[0x4];                  // +0x18 EOpinionReactionType
     bool          ReactionFlags[79];                         // +0x1c
+#ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_THINGREACTINGTO
+    // NF86 nested opt-in (round 7, q11108 binder, row 0x0095EE70 SayToThingReactingTo; with _WIFEUPDATE): ThingReactingTo as its Ego_r.pdb type
+    // CIntelligentPointer<CThing> (8 bytes: vptr, PData; GetPItem 0x00A01B50 on this+0x6B), the rest of the old 9 + 4 bytes kept as padding
+    // up to CurrentUpdateFunc +0x78. Needs engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER) first. Same layout (asserts below).
+    CIntelligentPointer<CThing> ThingReactingTo;            // +0x6b
+    unsigned char _pad_0x73[0x5];                            // +0x73
+#else
     unsigned char ThingReactingTo[0x9];                      // +0x6b CIntelligentPointer<CThing>
     unsigned char _pad_0x74[0x4];                            // +0x74
+#endif
     unsigned char CurrentUpdateFunc[0x10];                   // +0x78 pmf_3dbe901f
     bool          LastRunWasTryAndLook;                      // +0x88
     bool          ReactingToPlayer;                          // +0x89
@@ -48,9 +56,9 @@ public:
     CThing*       ExtraDataPThing;                           // +0x94
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_OpinionReactionRoot) == 0x98);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, PTCTalk) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_OpinionReactionRoot, ExtraDataPThing) == 0x94);
+FABLE_STATIC_ASSERT_AT(51, sizeof(CAIStateGroup_OpinionReactionRoot) == 0x98);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CAIStateGroup_OpinionReactionRoot, PTCTalk) == 0x14);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CAIStateGroup_OpinionReactionRoot, ExtraDataPThing) == 0x94);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_BEHAVIOURS

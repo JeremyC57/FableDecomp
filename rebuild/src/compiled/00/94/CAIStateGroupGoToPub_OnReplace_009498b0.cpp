@@ -1,4 +1,8 @@
 // CAIStateGroup_GoToPub::OnReplace() -- free the seat and the bar point, get up from the table when sitting (removing the sitting mode if that fails or when not sitting), leave hands-off mode, and clear every tracked pointer and the seat index
+// NF86 (round 7, q11116): the free-function declaration of 0x0085FF10 respelt in place to the PDB spelling NF84 landed there,
+//   ?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z (namespace NCreatureMode; the creature by
+//   reference as CThingCreatureBase, the animation by const reference); was ?GetUpFromSitting@@YI_NPAVCThing@@JPBVCCharString@@PAVCAIBrain@@@Z.
+//   No shared header declares it, so the declaration stays in the row; the row's other local models are unchanged.
 // Leaf: ?OnReplace@CAIStateGroup_GoToPub@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009498B0, length 497 bytes (+ int3 padding). Vtable slot 10.
@@ -46,7 +50,10 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-bool __fastcall GetUpFromSitting(CThing* creature, long movement, const CCharString* anim, CAIBrain* brain);   // 0x0085FF10
+class CThingCreatureBase;
+namespace NCreatureMode {
+bool __fastcall GetUpFromSitting(CThingCreatureBase& creature, long sit_mode_type, const CCharString& anim, CAIBrain* brain);   // 0x0085FF10
+}
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -84,7 +91,7 @@ void CAIStateGroup_GoToPub::OnReplace()
         bool gotUp;
         {
             CCharString anim("SIT_AT_TABLE_OUTOF");
-            gotUp = GetUpFromSitting(PBrain->PCreature, 0xb, &anim, PBrain);
+            gotUp = NCreatureMode::GetUpFromSitting(*(CThingCreatureBase*)PBrain->PCreature, 0xb, anim, PBrain);
         }
         if (gotUp)
             removeMode = false;

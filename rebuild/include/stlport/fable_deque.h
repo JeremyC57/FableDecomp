@@ -69,6 +69,14 @@ template<class T,class Traits>struct iterator_traits<_Deque_iterator<T,Traits> >
 // __fastcall COMDAT (0x0059B49B: hidden result in ecx, the tag in edx, the three iterators by value; `ret 30h`).
 template<class I,class O> O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __true_type&);
 #endif
+#ifdef FABLE_RETAIL_STLP_DEQUE_UNINIT_COPY_BODY
+// NF86 per-TU opt-in (round 7, q11104, row 0x0059B49B; with FABLE_RETAIL_STLP_DEQUE_COPY_CTOR and FABLE_RETAIL_STLP_ORIGINAL_COPY_DISPATCH_PASS22):
+// the STLport 4.6 _uninitialized.h body of that declaration, `return __copy_aux(first, last, result, _BothPtrType<I,O>::_Ret());`, for the
+// TU that defines the deque<NUISystem::CComponent*> instance (retail 0x0059B49B, which calls __copy_aux 0x0059B2CC out of line). Body only.
+template<class I,class O> O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __true_type&) {
+    return __copy_aux(first,last,result,_BothPtrType<I,O>::_Ret());
+}
+#endif
 template<class T,class A>class _Deque_base {
 public:
  typedef T value_type;typedef A allocator_type;typedef allocator<T*> _Map_alloc_type;
@@ -107,6 +115,11 @@ public:
   if(this->_M_start._M_cur!=this->_M_start._M_last-1){_Destroy(this->_M_start._M_cur);++this->_M_start._M_cur;}
   else {_Destroy(this->_M_start._M_cur);this->_M_map_size.deallocate(this->_M_start._M_first,this->buffer_size());this->_M_start._M_set_node(this->_M_start._M_node+1);this->_M_start._M_cur=this->_M_start._M_first;}
  } // STLport4.6 _deque.h / _deque.c, expanded in0040C790
+#endif
+#if defined(FABLE_RETAIL_STLP_STACK_EMPTY) && !defined(FABLE_RETAIL_STLP_DEQUE_PASS22_POP)
+ // NF86 per-TU opt-in (with stack::empty below): STLport 4.6 _deque.h `bool empty() const { return _M_finish == _M_start; }`, inline
+ // (the iterator compare is the _M_cur compare in place, as in the FABLE_RETAIL_STLP_DEQUE_PASS22_POP spelling above). Body only.
+ bool empty()const{return this->_M_finish._M_cur==this->_M_start._M_cur;}
 #endif
  deque():_Deque_base<T,A>(A(),0){}
 #ifdef FABLE_RETAIL_STLP_DEQUE_COPY_CTOR
@@ -227,6 +240,11 @@ template<class T,class Sequence=deque<T> >class stack {protected:Sequence c;publ
  // push_back itself comes from FABLE_RETAIL_STLP_DEQUE_PUSH_BACK_OUTOFLINE (retail 0x0059B61C, out of line).
  typename Sequence::size_type size()const{return c.size();}
  void push(const typename Sequence::value_type& x){c.push_back(x);}
+#endif
+#ifdef FABLE_RETAIL_STLP_STACK_EMPTY
+ // NF86 nested opt-in (round 7, q11112 / q11113 rows 0x0059686D / 0x00597B20): STLport 4.6 _stack.h `bool empty() const { return c.empty(); }`,
+ // inline (deque::empty compares _M_finish._M_cur with _M_start._M_cur in place). Body only.
+ bool empty()const{return c.empty();}
 #endif
 };
 #else

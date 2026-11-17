@@ -25,6 +25,8 @@
 // NF84 (round 7, q11045 binder): port form on the shared headers (the NF65 0x0085F6F0 GetUpFromSleeping recipe):
 //   NCreatureMode::CModeSitBase from engine/NCreatureMode_CModeSitFloor.h (RemoveModeWithAction opt-in), CCreatureAction_GetUpFromSitting
 //   from its header with the 4-argument ctor body visible in this TU (retail's TU holds its COMDAT 0x00860150 next to this function).
+// NF86 (round 7, q11120): that body now comes from the header (FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_CTOR_INLINE), the one shared
+//   inline definition the self row 0x00860150 also emits; this object still carries it as a pick-any COMDAT only.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -43,6 +45,7 @@
 #define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
 #define FABLE_RETAIL_CCOMBATACTIONBASE_SETCOMBATANIMATION
 #define FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_REMOVEMODEWITHACTION
+#define FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_CTOR_INLINE
 #include "fable_string.h"
 #include "engine/CThing.h"
 #include "engine/CThingCreatureBase.h"
@@ -65,15 +68,6 @@ public:
     CBrainOutput();                                         // 0x00835620
     ~CBrainOutput();                                        // 0x006D60C0
 };
-
-inline CCreatureAction_GetUpFromSitting::CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& animation,
-                                                                          long sittingMode, bool removeOnPerformAction)
-    : CCombatActionBase(creature, 0x32, CSoundPair())
-    , SittingMode(sittingMode)
-    , RemoveOnPerformAction(removeOnPerformAction)
-{
-    SetCombatAnimation(animation);
-}
 
 namespace NCreatureMode {
 

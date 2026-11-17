@@ -1,4 +1,7 @@
 // CAIStateGroup_ScreamerPursueTarget::OnReplace() -- if the target is alive, flag it (interface 0x36,
+// NF86 (round 7, q11115): the local CCountBlock / CCountedPointer stand-in is replaced by the shared engine/CCountedPointer.h (Reset declared
+//   only: FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL), so the call at 0x00668D90 binds the explicit instantiation NF83 landed there,
+//   ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z (was ?Reset@CCountedPointer@@QAEXPAX@Z); the local Clone() returns CCreatureActionBase* (its PDB type).
 // SetAsInDanger(creature, 0)); then, if the target is still alive and the creature is not in mode 0x44, perform a
 // CCreatureAction_ScreamerIntoAggressive on it through a CBrainOutput (flag 8)
 // Leaf: OnReplace
@@ -66,7 +69,7 @@ class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
-    virtual void* Clone() const;                    // slot 11 (+0x2c)
+    virtual CCreatureActionBase* Clone() const;                    // slot 11 (+0x2c)
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                         // 0x00693EF0
 };
@@ -76,32 +79,17 @@ class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();                           // 0x0062E900
 };
 struct CCreatureAction_ScreamerIntoAggressive : CCombatActionBase {   // vtable 0x01296F14, sizeof 0x114
-    virtual void* Clone() const;                    // 0x0096E510
+    virtual CCreatureActionBase* Clone() const;                    // 0x0096E510
     FABLE_FORCEINLINE CCreatureAction_ScreamerIntoAggressive(CThingCreatureBase* creature, CThing* target)
         : CCombatActionBase(creature, target, 0x96, CSoundPair()) { }
 };
-struct CCountBlock { long Count; void (__fastcall* Destroy)(void* object); void* Object; };
-struct CCountedPointer {
-    void* Object;
-    CCountBlock* Block;
-    void Reset(void* object);                       // 0x00668D90
-    ~CCountedPointer()
-    {
-        if (Block) {
-            --Block->Count;
-            if (Block->Count == 0) {
-                Block->Destroy(Block->Object);
-                delete Block;
-            }
-        }
-        Object = 0;
-        Block = 0;
-    }
-};
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#include "engine/CCountedPointer.h"                // NF86: CCountedPointer<T> {Data, Info}; Reset(T*) out of line (0x00668D90)
+class CCreatureActionBase;
 class CBrainOutput { public:                               // 0x48 bytes
     unsigned long Flags;                            // +0x00 (8: perform action)
     unsigned char _pad04[0x20 - 0x04];
-    CCountedPointer PAction;                        // +0x20
+    CCountedPointer<CCreatureActionBase> PAction;   // +0x20
     unsigned char _pad28[0x40 - 0x28];
     CBaseIntelligentPointer PTarget;                // +0x40
     CBrainOutput();                                 // 0x00835620

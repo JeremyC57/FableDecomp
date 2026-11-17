@@ -1,139 +1,57 @@
-// CAIStateGroup_OpinionReactionRoot::SayToThingReactingTo(const CCharString&) -- speak the named AI speech to the
+// CAIStateGroup_OpinionReactionRoot::SayToThingReactingTo(const CCharString& text) -- speak the named AI speech to the (alive, creature-typed) thing
+//   this reaction is about, from the brain's creature, priority 0x93; a speaker allowed non-pure-AI speech takes the seven-argument form with
+//   wait = false. Returns the action result, or AI_ACTION_FAILED when there is nothing to speak to.
 // Leaf: ?SayToThingReactingTo@CAIStateGroup_OpinionReactionRoot@@AAE?AW4EAIActionReturn@@ABVCCharString@@@Z
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
-// (alive, creature-typed) thing this reaction is about; the speech priority is 0x93 and non-pure-AI speakers get
-// the extended form. Returns the action result, or 3 when there is nothing to speak to.
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0095EE70, length 259 bytes (+ int3 padding), `ret 4`.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (ThingReactingTo, four times), ctor @ 0x00A01B10, SetPItem
-// @ 0x00A01B90 (the by-value pointer arguments built in their slots: CIntelligentPointer<const CThing> vtable
-// 0x01237F1C for the target, CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8 for the speaker),
-// CAIStateGroupBase::AIAction_SpeakAISpeechToTarget seven-argument @ 0x00981350 / six-argument @ 0x00981EA0.
-// Shape: inlined IS_THING_ALIVE on the packed +0x6b pointer, then the creature type bit (ThingTypeFlags +0x6c bit 3)
-// read through a third GetPItem; the target is a named local (ebx) read through a fourth.
-// Engine header names (rebuild/include/engine/CAIStateGroup_OpinionReactionRoot.h); the header flattens the base,
-// so the class is modelled locally.
-// ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-class CTCBase;
-class CWorld;
-#include "engine/EAIAction.h"                 // NF59: EAIActionReturn (the PDB result type of SayToThingReactingTo)
-
-// A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
-// {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
-// GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-#include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CBaseObject;
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0095EE70, 262 bytes, `ret 4`. Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (ThingReactingTo +0x6B,
+//   four times), the by-value CIntelligentPointer<const CThing> / <CThingCreatureBase> arguments built in place (ctor 0x00A01B10, vtables
+//   0x01237F1C / 0x0123E7D8, SetPItem 0x00A01B90), CAIStateGroupBase::AIAction_SpeakAISpeechToTarget seven-argument 0x00981350 (descriptive,
+//   NF84) / six-argument 0x00981EA0 (Ego_r.pdb).
+// Names: Ego_r.pdb 0x00983400 / FableWin.pdb 0x02C285B0 (NF59); the class members from engine/CAIStateGroup_OpinionReactionRoot.h (WIFEUPDATE:
+//   AllowSpeechOnNonPureAISpeaker +0x8A, ThingReactingTo +0x6B), the speaker CAIStateGroupBase::GetCreature() (PBrain->Creature, FableWin inline).
+// Port (NF86, round 7, q11108 binder; NF64/NF84-blocked): was a local CAIStateGroupBase / CAIStateGroup_OpinionReactionRoot model with local
+//   intelligent-pointer stand-ins binding both callees as ?AIAction_SpeakAISpeechToTarget@CAIStateGroup_OpinionReactionRoot@@QAEJJ...; now the
+//   shared headers, with the NF86 overlay opt-in FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_THINGREACTINGTO (ThingReactingTo typed as
+//   CIntelligentPointer<CThing>; same layout). Both calls now bind the CAIStateGroupBase spellings 0x00981350 / 0x00981EA0 define.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH
+#define FABLE_RETAIL_CAISTATEGROUPBASE_SPEAKAISPEECH_WAIT
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_WIFEUPDATE
+#define FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_THINGREACTINGTO
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
 #include "engine/CIntelligentPointer.h"
+#include "engine/ThingAlive.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_OpinionReactionRoot.h"
 
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
-};
-
-// IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+EAIActionReturn CAIStateGroup_OpinionReactionRoot::SayToThingReactingTo(const CCharString& text)
 {
-    if (((CThing*)p.GetPItem()) != 0) {
-        if (!((CThing*)p.GetPItem())->IsDead())
-            return true;
-    }
-    return false;
-}
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
-};
-
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();               // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08();
-    virtual void Cleanup();                     // slot 9  (+0x24)
-    virtual void OnReplace();                   // slot 10 (+0x28)
-    virtual bool IsRunnable();                  // slot 11 (+0x2c)
-    virtual void Update();                      // slot 12 (+0x30)
-    virtual void v13();
-    virtual long GetTimeToInitiate();           // slot 14 (+0x38)
-    virtual void v15(); virtual void v16(); virtual void v17();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
-    // the landed GetRandomObject random step: seed = ror13(seed*0x24A1 + 0x24DF), r = seed % range
-    unsigned long Random(unsigned long range)
-    {
-        unsigned long* seed = GetPWorldSeed();
-        unsigned long next = *seed * 0x24A1U + 0x24DFU;
-        *seed = next;
-        unsigned long rotated = GFROR13(next);
-        *seed = rotated;
-        return rotated % range;
-    }
-};
-
-// vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
-#define V4(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3();
-#define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
-extern "C" double __cdecl sqrt(double);
-#pragma intrinsic(sqrt)
-class CCharString;
-
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>
-    virtual void v00();
-    CIntelligentPointerConstThing(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)((CThing*)item)); }
-};
-struct CIntelligentPointerCreature : CBaseIntelligentPointer {       // CIntelligentPointer<CThingCreatureBase>
-    virtual void v00();
-    CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-};
-inline bool IsCreatureThing(const CThing* thing)        // ThingTypeFlags (+0x6c) bit 3
-{
-    return (((const unsigned char*)thing)[0x6c] & 8) != 0;
-}
-
-#pragma pack(push, 1)
-class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
-    void* PTCTalk;                              // +0x14
-    long CurrentReactionType;                   // +0x18
-    bool ReactionFlags[79];                     // +0x1c
-    CBaseIntelligentPointer ThingReactingTo;    // +0x6b CIntelligentPointer<CThing>
-    unsigned char _pad73[0x88 - 0x73];
-    bool LastRunWasTryAndLook;                  // +0x88
-    bool ReactingToPlayer;                      // +0x89
-    bool AllowSpeechOnNonPureAISpeaker;         // +0x8a
-    long AIAction_SpeakAISpeechToTarget(long repeat, CIntelligentPointerCreature speaker,
-        CIntelligentPointerConstThing target, const CCharString& speech, bool interrupt, long priority,
-        bool allowNonPureAI);                   // 0x00981350
-    long AIAction_SpeakAISpeechToTarget(long repeat, CIntelligentPointerCreature speaker,
-        CIntelligentPointerConstThing target, const CCharString& speech, bool interrupt, long priority);  // 0x00981EA0
-private:
-    // NF59 (q10526): Ego_r.pdb 0x00983400 + FableWin.pdb 0x02C285B0 ?SayToThingReactingTo@CAIStateGroup_OpinionReactionRoot@@AAE?AW4EAIActionReturn@@ABVCCharString@@@Z
-    //   (private, EAIActionReturn result: engine/EAIAction.h; engine/CAIStateGroup_OpinionReactionRoot.h WIFEUPDATE declares it so and the
-    //   landed Wife updates 0x00982EB0 / 0x00982F10 / 0x00985F40 bind it); was public returning long.
-    EAIActionReturn SayToThingReactingTo(const CCharString& speech);
-};
-#pragma pack(pop)
-
-EAIActionReturn CAIStateGroup_OpinionReactionRoot::SayToThingReactingTo(const CCharString& speech)
-{
-    if (IS_THING_ALIVE(ThingReactingTo) && IsCreatureThing(((CThing*)ThingReactingTo.GetPItem()))) {
-        CThing* target = ((CThing*)ThingReactingTo.GetPItem());
+    if (IS_THING_ALIVE(ThingReactingTo) && (ThingReactingTo.Get()->GetTypeFlags() & 8)) {
+        const CThing* target = ThingReactingTo.Get();
         if (AllowSpeechOnNonPureAISpeaker)
-            return (EAIActionReturn)AIAction_SpeakAISpeechToTarget(1, PBrain->PCreature, target, speech, false, 0x93, false);
-        return (EAIActionReturn)AIAction_SpeakAISpeechToTarget(1, PBrain->PCreature, target, speech, false, 0x93);
+            return AIAction_SpeakAISpeechToTarget(ACTION_REPEAT_UNTIL_FINISHED, &GetCreature(), target, text, false, 0x93, false);
+        return AIAction_SpeakAISpeechToTarget(ACTION_REPEAT_UNTIL_FINISHED, &GetCreature(), target, text, false, 0x93);
     }
     return AI_ACTION_FAILED;
 }

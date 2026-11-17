@@ -25,4 +25,21 @@ private:
     bool RemoveOnPerformAction;                                          // +0x118
 };
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_GetUpFromSitting) == 0x11c);
+#ifdef FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_CTOR_INLINE
+// NF86 opt-in (round 7, q11102 / q11120, rows 0x00860150 and 0x0085FF10): the one shared body of the 4-argument constructor
+// ??0CCreatureAction_GetUpFromSitting@@QAE@AAVCThingCreatureBase@@ABVCCharString@@J_N@Z (retail 0x00860150, `ret 10h`), defined `inline`
+// so every TU that calls it out of line emits a pick-any COMDAT (selection 2) and no TU defines a strong copy: the base
+// CCombatActionBase(creature, 50, CSoundPair()) 0x00858030, SittingMode / RemoveOnPerformAction, the own vtable 0x01276C2C, then
+// CCombatActionBase::SetCombatAnimation 0x008574D0. Retail's GetUpFromSitting TU (0x0085FF10) calls it on a temporary and expands it on a
+// named local. Needs engine/CSoundPair.h and FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR + _SETCOMBATANIMATION. Body only: no layout change.
+#include "engine/CSoundPair.h"
+inline CCreatureAction_GetUpFromSitting::CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& animation,
+                                                                          long sittingMode, bool removeOnPerformAction)
+    : CCombatActionBase(creature, 0x32, CSoundPair())
+    , SittingMode(sittingMode)
+    , RemoveOnPerformAction(removeOnPerformAction)
+{
+    SetCombatAnimation(animation);
+}
+#endif
 #endif // FABLE_ENGINE_CCREATUREACTION_GETUPFROMSITTING_H

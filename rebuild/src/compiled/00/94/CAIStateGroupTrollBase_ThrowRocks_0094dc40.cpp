@@ -1,4 +1,7 @@
 // CAIStateGroup_TrollBase::ThrowRocks() -- post a CCreatureAction_TrollThrowProjectile at the enemy through a brain
+// NF86 (round 7, q11115): the local CCountBlock / CCountedPointer stand-in is replaced by the shared engine/CCountedPointer.h (Reset declared
+//   only: FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL), so the call at 0x00668D90 binds the explicit instantiation NF83 landed there,
+//   ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z (was ?Reset@CCountedPointer@@QAEXPAX@Z); the local Clone() returns CCreatureActionBase* (its PDB type).
 // Leaf: ThrowRocks
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -23,32 +26,13 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-struct CCountBlock {                                // CCountedPointer's shared block
-    long Count;                                     // +0x00
-    void (__fastcall* Destroy)(void* object);       // +0x04
-    void* Object;                                   // +0x08
-};
-struct CCountedPointer {                            // CCountedPointer<..> {object, block}
-    void* Object;                                   // +0x00
-    CCountBlock* Block;                             // +0x04
-    void Reset(void* object);                       // 0x00668D90
-    ~CCountedPointer()
-    {
-        if (Block) {
-            --Block->Count;
-            if (Block->Count == 0) {
-                Block->Destroy(Block->Object);
-                delete Block;
-            }
-        }
-        Object = 0;
-        Block = 0;
-    }
-};
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#include "engine/CCountedPointer.h"                // NF86: CCountedPointer<T> {Data, Info}; Reset(T*) out of line (0x00668D90)
+class CCreatureActionBase;
 class CBrainOutput { public:                               // 0x48 bytes
     unsigned long Flags;                            // +0x00 (8: perform action)
     unsigned char _pad04[0x20 - 0x04];
-    CCountedPointer PAction;                        // +0x20
+    CCountedPointer<CCreatureActionBase> PAction;   // +0x20
     unsigned char _pad28[0x40 - 0x28];
     CBaseIntelligentPointer PTarget;                // +0x40 CIntelligentPointer<const CThing>
     CBrainOutput();                                 // 0x00835620
@@ -61,7 +45,7 @@ class CCombatActionBase { public:                          // retail sizeof 0x11
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
-    virtual void* Clone() const;                    // slot 11 (+0x2c, a counted copy of itself)
+    virtual CCreatureActionBase* Clone() const;                    // slot 11 (+0x2c, a counted copy of itself)
     unsigned char _body[0x114 - 4];
     virtual ~CCombatActionBase();                           // 0x0062E900
 };
