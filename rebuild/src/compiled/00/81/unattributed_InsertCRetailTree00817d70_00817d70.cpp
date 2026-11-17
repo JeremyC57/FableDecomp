@@ -9,9 +9,13 @@
 // right. The node is malloc'd (0x18 bytes) and its 8-byte POD value placement-copied at
 // +0x10 (hence the null test); the header's root/rightmost (y == header), leftmost or
 // rightmost links are fixed, the node's parent/children set, the __cdecl rebalance @ 0x0042971D
-// run with the root by reference, the count incremented and the iterator written through the
+// (std::_Rb_global<bool>::_Rebalance) run with the root by reference, the count incremented and the iterator written through the
 // explicit result pointer. Labels are propagated; names are descriptive. One of 15 bodies.
 #include <new>
+// NF50 (round 7): the rebalance call binds the STLport ?_Rebalance@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z
+// of the shared stlport/fable_map.h (was a local extern "C" `Rebalance_0042971d` stand-in); SNode now derives from the header's
+// std::_Rb_tree_node_base. The row's own name is unchanged (see NF50 NOTES, "self name still a stand-in").
+#include "stlport/fable_map.h"
 extern "C" void* __cdecl malloc(unsigned int size);
 
 struct SValue {
@@ -19,19 +23,13 @@ struct SValue {
     long m_data;
 };
 
-struct SNode {
-    long m_color;                          // +0
-    SNode* m_parent;                       // +4
-    SNode* m_left;                         // +8
-    SNode* m_right;                        // +0xC
+struct SNode : std::_Rb_tree_node_base {   // colour +0, parent +4, left +8, right +0xC (stlport/fable_map.h)
     SValue m_value;                        // +0x10
 };
 
 struct SIterator {
     SNode* m_node;
 };
-
-extern "C" void __cdecl Rebalance_0042971d(SNode* node, SNode*& root);   // 0x0042971D
 
 struct CRetailTree_00817d70 {
     SNode* m_header;                       // +0
@@ -50,24 +48,24 @@ SIterator* CRetailTree_00817d70::Insert_CRetailTree_00817d70(SIterator* result, 
     SNode* z;
     if (y == m_header || (w == 0 && (x != 0 || value.m_key < y->m_value.m_key))) {
         z = CreateNode(value);
-        y->m_left = z;
+        y->_M_left = z;
         if (y == m_header) {
-            m_header->m_parent = z;
-            m_header->m_right = z;
+            m_header->_M_parent = z;
+            m_header->_M_right = z;
         }
-        else if (y == m_header->m_left)
-            m_header->m_left = z;
+        else if (y == m_header->_M_left)
+            m_header->_M_left = z;
     }
     else {
         z = CreateNode(value);
-        y->m_right = z;
-        if (y == m_header->m_right)
-            m_header->m_right = z;
+        y->_M_right = z;
+        if (y == m_header->_M_right)
+            m_header->_M_right = z;
     }
-    z->m_parent = y;
-    z->m_left = 0;
-    z->m_right = 0;
-    Rebalance_0042971d(z, m_header->m_parent);
+    z->_M_parent = y;
+    z->_M_left = 0;
+    z->_M_right = 0;
+    std::_Rb_global<bool>::_Rebalance(z, m_header->_M_parent);
     ++m_size;
     result->m_node = z;
     return result;

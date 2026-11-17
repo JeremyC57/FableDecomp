@@ -1,0 +1,9 @@
+- A local `namespace std` tree model cannot sit beside stlport/fable_map.h. For such a row, step 1 forces step 2: move it onto the header instance.
+- A size TU (`optimize("s")`) leaves tiny header inlines out of line (`std::less<T>::operator()`, `~_Rb_tree`). Force a member with an explicit specialisation, or name the COMDAT that VC emits.
+- If the owner calls a tree destructor COMDAT, it is `~_Rb_tree`: STLport 4.6 map declares no destructor, and VC7.1 expands the implicit one in the owner.
+- When a row's "same-TU stand-in body" for an out-of-line callee is respelled to the callee's real symbol, it becomes a duplicate strong definition. Try the header's real bodies first; they reproduced the escape analysis (0x005331A0: hint insert_unique + `_M_insert` visible).
+- `_M_find` declaration-only vs visible-noinline matters: with a visible body, VC keeps the container pointer in a register across the call. MFIND_NOINLINE is now an overlay opt-in.
+- A row's local class declared `public:` mangles QAE where the PDB has AAE. Match the PDB access when the self leaf must equal what header-based callers bind.
+- Before writing section 2, probe-compile each caller of a renamed row: 2 of the 8 callers I expected to be stale already bound the new name (0x005954AD, 0x00632B90).
+- `callers.py` plus `absrefs.py` showing no caller and no data reference means the COMDAT's identity (~list vs owner dtor) is unprovable. Keep the stand-in name and do step 1 only.
+- Chain the transform and the grade with `&&`, so a failed transformer cannot spend a grade on a missing file.

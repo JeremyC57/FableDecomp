@@ -16,51 +16,19 @@
 //   vector operator[] as *(begin() + n) gives retail's ecx reuse in the child loop; a named CUIState local (a temporary copies through eax).
 #include "fable_compiler.h"
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
-namespace std {
-template <class T1, class T2> struct pair {
-    T1 first;
-    T2 second;
-    pair(const T1& a, const T2& b) : first(a), second(b) { }
-};
-struct _Rb_tree_node_base {
-    bool                _M_color;
-    _Rb_tree_node_base* _M_parent;
-    _Rb_tree_node_base* _M_left;
-    _Rb_tree_node_base* _M_right;
-};
-template <class V> struct _Rb_tree_iterator {
-    _Rb_tree_node_base* _M_node;
-    _Rb_tree_iterator(_Rb_tree_node_base* x) : _M_node(x) { }
-    _Rb_tree_iterator(const _Rb_tree_iterator& it) : _M_node(it._M_node) { }
-};
-template <class K, class V> class _Rb_tree {
-public:
-    typedef _Rb_tree_iterator<V> iterator;
-    _Rb_tree_node_base* _M_header;
-    unsigned int        _M_node_count;
-    unsigned char       _M_key_compare;
-    iterator begin() { return iterator(_M_header->_M_left); }
-    iterator insert_unique(iterator position, const V& value);    // 0x0042D2C6
-};
-template <class K, class T> class map {                     // STLport map (12 bytes)
-public:
-    typedef pair<const K, T> value_type;
-    typedef _Rb_tree_iterator<value_type> iterator;
-    _Rb_tree<K, value_type> _M_t;
-    iterator begin() { return _M_t.begin(); }
-    iterator insert(iterator position, const value_type& value) { return _M_t.insert_unique(position, value); }
-};
-template <class T> class vector {                           // STLport vector (12 bytes)
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    T* begin() { return _M_start; }
-    T& operator[](unsigned int i) { return *(begin() + i); }
-    vector& operator=(const vector& other);                 // 0x0045BC09 (vector<unsigned long>)
-};
-}
+// NF50 (round 7): the local std::pair / _Rb_tree / map / vector stand-ins are the shared stlport/fable_map.h and fable_containers.h
+// (map<unsigned long, CUIState> = Ego_r.pdb CComponent::States), so the hinted insert at 0x0042D2C6 binds the STLport
+// ?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z
+// (nf44 entry 42; was the two-argument local _Rb_tree spelling) and vector<unsigned long>::operator= 0x0045BC09 binds the
+// two-argument STLport vector (FABLE_RETAIL_STLP_VECTOR_ASSIGN, declaration only).
+// The same-TU read-only stand-in specialisation of insert_unique (see Grade above) is gone: with the header's real STLport 4.6
+// _tree.c bodies of the hinted insert_unique (FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_HINT_BODY) and of _M_insert
+// (FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY) both visible, VC7.1 sees the value is only read and keeps retail's store order.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_HINT_BODY
+#define FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
+#include "stlport/fable_map.h"
 
 #include "engine/CCountedPointer.h"
 
@@ -191,18 +159,6 @@ public:
 };
 
 }
-// Same-TU stand-in for the out-of-line insert_unique (0x0042D2C6, a size-optimised tree TU). It must be a NON-template body
-// (explicit specialisation) that only READS the value: with the extern declaration, or a body passing the value on to an
-// extern _M_insert, VC7.1 treats the pair temporary as escaped and orders every pair store ahead of the hint's arg-slot copy.
-#pragma auto_inline(off)
-template <> std::_Rb_tree<unsigned long, std::pair<const unsigned long, NUISystem::CUIState> >::iterator
-std::_Rb_tree<unsigned long, std::pair<const unsigned long, NUISystem::CUIState> >::insert_unique(iterator position, const std::pair<const unsigned long, NUISystem::CUIState>& value)
-{
-    if (_M_node_count != 0 && value.first < *(const unsigned long*)(position._M_node + 1))
-        return position;
-    return iterator(_M_header);
-}
-#pragma auto_inline(on)
 namespace NUISystem {
 void CComponent::GetDataFromDef()
 {

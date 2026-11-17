@@ -1,0 +1,4 @@
+line	tag	address	claim	reason
+-	approach	0x005331A0	keep the row's same-TU read-only explicit specialisation of insert_unique, respelled on the header _Rb_tree (graded RELOCATION_MATCH, work/attempts/005331a0_spec.cpp)	rejected: under the corrected spelling it defines the same strong symbol as the landed 0x0042D2C6 (a fake body for a real function); the header's real STLport hint insert_unique + _M_insert bodies match instead
+-	approach	0x0059FAFE	FABLE_RETAIL_STLP_TREE_MFIND_DECL (declaration-only _M_find)	rejected: DIFFER 293 v 281 (the map pointer is reloaded after the call); replaced by the overlay opt-in FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+-	approach	0x00485E45	keep the stand-in name with an explicit ~map call on a CActiveFile member	rejected: DIFFER 5 v 23 (VC7.1 tail-jumps to the out-of-line ~_Rb_tree COMDAT in this size TU), which identifies the row as that ~_Rb_tree; renamed instead

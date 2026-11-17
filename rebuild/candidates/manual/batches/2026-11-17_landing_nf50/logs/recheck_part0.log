@@ -1,0 +1,96 @@
+addr       parity           behav  name
+0042b98b   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy0042b5a8@@QAEPAUnode@1@ABK@Z -> 0042b5a8 labelled 'BinarySearchTreeNode_Create'
+0042b98b   RELOCATION_MATCH PASS   Insert
+004313e9   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy00431471@@QAEPAUnode@1@ABK@Z -> 00431471 labelled '_global::RbTree_CreateNode_sz0x18_00431471'
+004313e9   RELOCATION_MATCH PASS   Insert
+0045e4b4   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy0045e2b1@@QAEPAUnode@1@ABJ@Z -> 0045e2b1 labelled '_global::RbTree_CreateNode_sz0x18_0045e2b1'
+0045e4b4   RELOCATION_MATCH PASS   Insert
+0046180c   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy0046149e@@QAEPAUnode@1@ABJ@Z -> 0046149e labelled '_global::RbTree_CreateNode_sz0x18_0046149e'
+0046180c   RELOCATION_MATCH PASS   Insert
+004647b9   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004630e7@@QAEPAUnode@1@ABJ@Z -> 004630e7 labelled '_global::RbTree_CreateNode_sz0x18_004630e7'
+004647b9   RELOCATION_MATCH PASS   Insert
+00469639   RELOCATION_MATCH PASS   Insert
+004759ad   RELOCATION_MATCH PASS   _M_insert
+004e51f6   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e4fef@@QAEPAUnode@1@ABJ@Z -> 004e4fef labelled '_global::RbTree_CreateNode_sz0x18_004e4fef'
+004e51f6   RELOCATION_MATCH PASS   Insert
+004e5ba7   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e597b@@QAEPAUnode@1@ABJ@Z -> 004e597b labelled '_global::RbTree_CreateNode_sz0x18_004e597b'
+004e5ba7   RELOCATION_MATCH PASS   Insert
+004e6c39   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e6748@@QAEPAUnode@1@ABJ@Z -> 004e6748 labelled '_global::RbTree_CreateNode_sz0x18_004e6748'
+004e6c39   RELOCATION_MATCH PASS   Insert
+004e94c8   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e4d19@@QAEPAUnode@1@ABJ@Z -> 004e4d19 labelled '_global::RbTree_CreateNode_sz0x18_004e4d19'
+004e94c8   RELOCATION_MATCH PASS   Insert
+004ecee6   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e9ab1@@QAEPAUnode@1@ABJ@Z -> 004e9ab1 labelled '_global::RbTree_CreateNode_sz0x18_004e9ab1'
+004ecee6   RELOCATION_MATCH PASS   Insert
+00529150   WARN RELOC_NAME: ?_M_create_node@?$_Rb_tree@_KU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@U?$_Select1st@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@ABU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@2@@Z -> 005288f0 labelled 'CRetailTree_005288f0::BuyNode'
+00529150   RELOCATION_MATCH PASS   _M_insert
+0052e0e0   RELOCATION_MATCH PASS   _M_insert
+00567af0   WARN STANDIN_LEAF ?Insert_CRetailTree_00567af0@CRetailTree_00567af0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_00567af0; address-only name)
+00567af0   RELOCATION_MATCH PASS   Insert_CRetailTree_00567af0
+005808a0   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy00580428@@QAEPAUnode@1@ABK@Z -> 00580428 labelled '_global::RbTree_CreateNode_sz0x18_00580428'
+005808a0   RELOCATION_MATCH PASS   Insert
+0059db82   WARN SHARED_HEADER_AVAILABLE CManager
+0059db82   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@XZ -> 0042bed4 labelled 'NUISystem::CDeletion::CDeletion'
+0059db82   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@ABU012@@Z -> 0042cd84 labelled 'NUISystem::CDeletion::CDeletion'
+0059db82   WARN RELOC_NAME: ??1CActionParamList@NUISystem@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0059db82   RELOCATION_MATCH PASS   RefreshEntriesAmountsAndAvailabilities
+005b2337   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy005b200c@@QAEPAUnode@1@ABK@Z -> 005b200c labelled 'NEditGui::CRegionDialog::GetTreeHandleFromMapIndex'
+005b2337   RELOCATION_MATCH PASS   Insert
+005b25db   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy005b206c@@QAEPAUnode@1@ABK@Z -> 005b206c labelled '_global::RbTree_CreateNode_sz0x18_005b206c'
+005b25db   RELOCATION_MATCH PASS   Insert
+005f926b   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy005f8c41@@QAEPAUnode@1@ABJ@Z -> 005f8c41 labelled 'BinaryTree_AllocateNode'
+005f926b   RELOCATION_MATCH PASS   Insert
+00630fe0   RELOCATION_MATCH PASS   clear
+00632a30   WARN STANDIN_LEAF ?Insert_CRetailTree_00632a30@CRetailTree_00632a30@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_00632a30; address-only name)
+00632a30   RELOCATION_MATCH PASS   Insert_CRetailTree_00632a30
+0067b4a0   WARN STANDIN_LEAF ?_M_insert@CRbTree@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog CMemoryAllocatorVariableSize::InsertNode; names another function)
+0067b4a0   RELOCATION_MATCH PASS   InsertNode
+006dafa0   WARN STANDIN_LEAF ?Insert_CRetailTree_006dafa0@CRetailTree_006dafa0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_006dafa0; address-only name)
+006dafa0   RELOCATION_MATCH PASS   Insert_CRetailTree_006dafa0
+006f1280   RELOCATION_MATCH PASS   Insert
+00739670   WARN SHARED_HEADER_AVAILABLE CCombatAbility
+00739670   WARN STANDIN_LEAF ?_M_insert@CCombatAbilityTree@@QAE?AU_Rb_tree_iterator@@PAU_Rb_tree_node_base@@0ABUSCombatAbilityValue@@0@Z (catalog _Rb_tree<ECombatAbilityDataType, pair<const ECombatAbilityDataType, pair<CCountedPointer<CCombatAbilityData>, CCombatAbility> > >::_M_insert; names another function)
+00739670   RELOCATION_MATCH PASS   _M_insert
+00777790   RELOCATION_MATCH PASS   _M_insert
+00817d70   WARN STANDIN_LEAF ?Insert_CRetailTree_00817d70@CRetailTree_00817d70@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_00817d70; address-only name)
+00817d70   RELOCATION_MATCH PASS   Insert_CRetailTree_00817d70
+008b29a0   WARN STANDIN_LEAF ?Insert_CRetailTree_008b29a0@CRetailTree_008b29a0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_008b29a0; address-only name)
+008b29a0   RELOCATION_MATCH PASS   Insert_CRetailTree_008b29a0
+00990830   RELOCATION_MATCH PASS   _M_insert
+00a61270   RELOCATION_MATCH PASS   _M_insert
+00a833b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ad8ca0   RELOCATION_MATCH PASS   IsProperSubsetOf
+
+WINS: 33
+  0042b98b RELOCATION_MATCH CRetailTree_ulongkey_buy0042b5a8::Insert
+  004313e9 RELOCATION_MATCH CRetailTree_ulongkey_buy00431471::Insert
+  0045e4b4 RELOCATION_MATCH CRetailTree_longkey_buy0045e2b1::Insert
+  0046180c RELOCATION_MATCH CRetailTree_longkey_buy0046149e::Insert
+  004647b9 RELOCATION_MATCH CRetailTree_longkey_buy004630e7::Insert
+  00469639 RELOCATION_MATCH CRetailTree_longkey_buy0045c2a2::Insert
+  004759ad RELOCATION_MATCH std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st<..>, less<CCharString>, allocator<..> >::?_M_insert@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@J@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCCharString@@J@2@0@Z
+  004e51f6 RELOCATION_MATCH CRetailTree_longkey_buy004e4fef::Insert
+  004e5ba7 RELOCATION_MATCH CRetailTree_longkey_buy004e597b::Insert
+  004e6c39 RELOCATION_MATCH CRetailTree_longkey_buy004e6748::Insert
+  004e94c8 RELOCATION_MATCH CRetailTree_longkey_buy004e4d19::Insert
+  004ecee6 RELOCATION_MATCH CRetailTree_longkey_buy004e9ab1::Insert
+  00529150 RELOCATION_MATCH std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>, _Select1st<..>, less<unsigned __int64>, allocator<..> >::?_M_insert@?$_Rb_tree@_KU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@U?$_Select1st@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@2@0@Z
+  0052e0e0 RELOCATION_MATCH std::_Rb_tree<NUISystem::EEvent, NUISystem::EEvent, _Identity<..>, less<NUISystem::EEvent>, allocator<..> >::?_M_insert@?$_Rb_tree@W4EEvent@NUISystem@@W412@U?$_Identity@W4EEvent@NUISystem@@@std@@U?$less@W4EEvent@NUISystem@@@4@V?$allocator@W4EEvent@NUISystem@@@4@@std@@AAE?AU?$_Rb_tree_iterator@W4EEvent@NUISystem@@U?$_Nonconst_traits@W4EEvent@NUISystem@@@std@@@2@PAU_Rb_tree_node_base@2@0ABW4EEvent@NUISystem@@0@Z
+  00567af0 RELOCATION_MATCH _unattributed::Insert_CRetailTree_00567af0
+  005808a0 RELOCATION_MATCH CRetailTree_ulongkey_buy00580428::Insert
+  0059db82 RELOCATION_MATCH CTCInventoryTrade::RefreshEntriesAmountsAndAvailabilities@CTCInventoryTrade
+  005b2337 RELOCATION_MATCH CRetailTree_ulongkey_buy005b200c::Insert
+  005b25db RELOCATION_MATCH CRetailTree_ulongkey_buy005b206c::Insert
+  005f926b RELOCATION_MATCH CRetailTree_longkey_buy005f8c41::Insert
+  00630fe0 RELOCATION_MATCH std::_Rb_tree<unsigned long, pair<const unsigned long, CCharString>, _Select1st<..>, less<unsigned long>, allocator<..> >::?clear@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@QAEXXZ
+  00632a30 RELOCATION_MATCH _unattributed::Insert_CRetailTree_00632a30
+  0067b4a0 RELOCATION_MATCH CMemoryAllocatorVariableSize::_M_insert
+  006dafa0 RELOCATION_MATCH _unattributed::Insert_CRetailTree_006dafa0
+  006f1280 RELOCATION_MATCH CThingCompareMap::Insert
+  00739670 RELOCATION_MATCH _Rb_tree<ECombatAbilityDataType, pair<const ECombatAbilityDataType, pair<CCountedPointer<CCombatAbilityData>, CCombatAbility> > >::?_M_insert@CCombatAbilityTree
+  00777790 RELOCATION_MATCH std::_Rb_tree<long, pair<const long, CShopItem>, _Select1st<..>, less<long>, allocator<..> >::?_M_insert@?$_Rb_tree@JU?$pair@$$CBJVCShopItem@@@std@@U?$_Select1st@U?$pair@$$CBJVCShopItem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCShopItem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCShopItem@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBJVCShopItem@@@2@0@Z
+  00817d70 RELOCATION_MATCH _unattributed::Insert_CRetailTree_00817d70
+  008b29a0 RELOCATION_MATCH _unattributed::Insert_CRetailTree_008b29a0
+  00990830 RELOCATION_MATCH std::_Rb_tree<CThreadedFileManager::CPendingObjectSortKey, pair<const CPendingObjectSortKey, CThreadedFileManager::CFileObject*>, _Select1st<..>, less<..>, allocator<..> >::?_M_insert@?$_Rb_tree@VCPendingObjectSortKey@CThreadedFileManager@@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@U?$_Select1st@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@4@U?$less@VCPendingObjectSortKey@CThreadedFileManager@@@4@V?$allocator@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@4@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@2@0@Z
+  00a61270 RELOCATION_MATCH std::_Rb_tree<CWideString, pair<const CWideString, CChecksumCacheFile::CEntry>, _Select1st<..>, less<CWideString>, allocator<..> >::?_M_insert@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@U?$_Select1st@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@3@U?$less@VCWideString@@@3@V?$allocator@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@2@0@Z
+  00a833b0 RELOCATION_MATCH CCountedPointerListOwner_00a833b0::??_G
+  00ad8ca0 RELOCATION_MATCH CVertexGroupBlock::?IsProperSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z

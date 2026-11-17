@@ -9,25 +9,19 @@
 // head's left/parent/right are reset through `head` re-read per store and size is zeroed; finally
 // the head node itself is released with free @ 0x00BFEA14 (null-checked). Only the erase callee
 // distinguishes the instantiations, so the class is named by it. One of 119 bodies.
-extern "C" void __cdecl free(void* block);
+// Leaf: ??1CRetailTree_erase00630d90@@QAE@XZ
+// NF50 (round 7): the erase call @ 0x00630D90 binds the STLport
+// ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCCharString@@@std@@@2@@Z
+// (nf44 entry 55, map<unsigned long, CCharString>, Ego_r.pdb CUIDef::ActionMap) through the shared stlport/fable_map.h: the stand-in
+// now derives from that map, whose inline ~map / ~_Rb_tree (clear) / ~_Rb_tree_base give this body. Its own name stays a stand-in:
+// the address has no caller and no data reference, so ~_Rb_tree vs. ~map vs. an owner's destructor is not provable (NF50 NOTES).
+#include "fable_string.h"
+#include "stlport/fable_map.h"
 
-struct CRetailTree_erase00630d90 {
-    struct node { unsigned char colour; unsigned char _pad[3]; node* parent; node* left; node* right; };
-    node* head;
-    unsigned long size;
-    void Erase(node* root);                // 0x00630D90
+struct CRetailTree_erase00630d90 : std::map<unsigned long, CCharString> {   // stand-in: a map<unsigned long, CCharString> destructor
     ~CRetailTree_erase00630d90();
 };
 
 CRetailTree_erase00630d90::~CRetailTree_erase00630d90()
 {
-    if (size) {
-        Erase(head->parent);
-        head->left = head;
-        head->parent = 0;
-        head->right = head;
-        size = 0;
-    }
-    if (head)
-        free(head);
 }

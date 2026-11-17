@@ -2,18 +2,21 @@
 // Leaf: ??1list_T_00a81470@std@@
 // Renamed (fistp pass, 2026-10-24) from CFileInstaller::CActiveFile::OnReadFinished @ 00/a8/CActiveFile_OnReadFinished_00a81470.cpp: 23/25-byte STLport list destructor: `mov esi,ecx ; call clear (0x00A80A20) ; if (sentinel) free(sentinel)`; the node type T is not recoverable from the bytes (the label CFileInstaller::CActiveFile::OnReadFinished was propagated across 165 byte-twins); descriptive placeholder
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A81470, 25 bytes.
-
-extern "C" void __cdecl free(void*);
+// NF50 (round 7): the out-of-line clear @ 0x00A80A20 binds the STLport
+// ?clear@?$_List_base@V?$CCountedPointer@VCNavRegionConnection@@@@V?$allocator@V?$CCountedPointer@VCNavRegionConnection@@@@@std@@@std@@QAEXXZ
+// (nf41 e175: Ego_r.pdb CNavRegion::Connections = list<CCountedPointer<CNavRegionConnection> >, the landed 0x00A82590 / 0x00A83110 /
+// 0x00A80E90 rows) through the shared stlport/fable_containers.h (FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE, declaration only): the
+// stand-in now derives from that list, whose inline ~list / ~_List_base give the clear-then-free body. Its own name stays a stand-in:
+// the address has no caller and no data reference, so ~list vs. an owner's implicit destructor is not provable (NF50 NOTES).
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#include "stlport/fable_containers.h"
+class CNavRegionConnection;
+#include "engine/CCountedPointer.h"
 namespace std {
-struct list_T_00a81470 {
-    void* _M_node;                                   // +0x00 the sentinel node (STLport _List_base)
-    void clear();                                    // 0x00A80A20 (_List_base::clear, out of line)
+struct list_T_00a81470 : list<CCountedPointer<CNavRegionConnection> > {   // stand-in: a list<CCountedPointer<CNavRegionConnection> > destructor
     ~list_T_00a81470();
 };
 }
 std::list_T_00a81470::~list_T_00a81470()
 {
-    clear();
-    if (_M_node)
-        free(_M_node);
 }

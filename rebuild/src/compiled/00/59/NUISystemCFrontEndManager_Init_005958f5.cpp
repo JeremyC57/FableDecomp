@@ -23,6 +23,14 @@
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CWideString { public: void* PStringData; };
+// NF50 (round 7): the local std::vector / std::map models are the shared stlport headers: Signatures.clear() is STLport map::clear
+// (inline) calling the tree's clear out of line (FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE, declaration only), so the call at 0x00595905
+// binds ?clear@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCWideString@@_N@std@@@3@U?$less@VCWideString@@@3@V?$allocator@U?$pair@$$CBVCWideString@@_N@std@@@3@@std@@QAEXXZ
+// (nf41 e117/e217; was the local ?clear@?$map@VCWideString@@_N@std@@QAEXXZ); ~vector<CWideString> 0x00412130 stays out of line
+// (FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE). CWideString stays the row's pre-existing local model.
+#define FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
+#include "stlport/fable_map.h"
 class CGraphicDataBank;
 class CMeshDataBank;
 class CInputManager;
@@ -39,26 +47,6 @@ template <class T> class CTBaseSingleton {
 public:
     static T& __fastcall Get();                          // 0x0040D2A0 for CUserProfileManager
 };
-namespace std {
-template <class T> class allocator;                  // STLport 4.6 (class key V)
-template <class T, class A = allocator<T> > class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~vector();                                           // 0x00412130 for CWideString (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)
-    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
-    T* begin() { return _M_start; }
-    T& operator[](unsigned int n) { return _M_start[n]; }
-};
-template <class K, class V> class map {
-public:
-    void* _M_header;
-    unsigned int _M_node_count;
-    void clear();                                        // 0x00485AEF for <CWideString, bool>
-};
-}
 namespace NUISystem {
 class CComponent;
 class CManager : public CManagerDonor {

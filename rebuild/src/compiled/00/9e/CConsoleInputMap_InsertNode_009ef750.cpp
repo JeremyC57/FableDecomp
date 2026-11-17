@@ -6,6 +6,10 @@
 #include "fable_string.h"
 #include <new>
 #include <stdlib.h>
+// NF50 (round 7): the rebalance call binds the STLport ?_Rebalance@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z
+// of the shared stlport/fable_map.h (was a local `Rebalance` stand-in); the local node now derives from the header's
+// std::_Rb_tree_node_base. The row's own name is unchanged (see NF50 NOTES, "self name still a stand-in").
+#include "stlport/fable_map.h"
 struct CStringCopy : CCharString {
     CStringCopy();
     CStringCopy(const CStringCopy& source); // 0x0099EC30
@@ -19,9 +23,8 @@ struct Value {
     Value(const Value& v) : Key(v.Key), Data(v.Data), Info(v.Info) { if (Info) ++Info->References; }
     ~Value() { if (Info && --Info->References==0) { Info->Destroy(Info->Object); operator delete(Info); } }
 };
-struct Node { unsigned long Colour; Node* Parent; Node* Left; Node* Right; Value Pair; };
+struct Node : std::_Rb_tree_node_base { Value Pair; };   // colour +0, parent +4, left +8, right +0xC (stlport/fable_map.h)
 struct Iterator { Node* Pointer; explicit Iterator(Node* p) : Pointer(p) {} };
-void Rebalance(Node* node, Node*& root); // 0x0042971D
 struct CConsoleInputMap {
     Node* Header; unsigned long Count;
     Iterator InsertNode(Node* before, Node* parent, const Value& value, long forceRight);
@@ -37,14 +40,14 @@ static bool Less(const CStringCopy& a, const CStringCopy& b) {
 Iterator CConsoleInputMap::InsertNode(Node* before, Node* parent, const Value& value, long forceRight) {
     Node* n;
     if (parent == Header || (!forceRight && (before != 0 || Less(value.Key, parent->Pair.Key)))) {
-        n = MakeNode(value); parent->Left=n;
-        if (parent==Header) { Header->Parent=n; Header->Right=n; }
-        else if (parent==Header->Left) Header->Left=n;
+        n = MakeNode(value); parent->_M_left=n;
+        if (parent==Header) { Header->_M_parent=n; Header->_M_right=n; }
+        else if (parent==Header->_M_left) Header->_M_left=n;
     } else {
-        n = MakeNode(value); parent->Right=n;
-        if (parent==Header->Right) Header->Right=n;
+        n = MakeNode(value); parent->_M_right=n;
+        if (parent==Header->_M_right) Header->_M_right=n;
     }
-    n->Parent=parent; n->Left=0; n->Right=0;
-    Rebalance(n, Header->Parent); ++Count;
+    n->_M_parent=parent; n->_M_left=0; n->_M_right=0;
+    std::_Rb_global<bool>::_Rebalance(n, Header->_M_parent); ++Count;
     return Iterator(n);
 }

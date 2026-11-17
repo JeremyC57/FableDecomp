@@ -263,6 +263,12 @@ private:
 #ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
     // Inline-budget: native 00769fe0 expands the original search inside find.
     template<class Key> FABLE_FORCEINLINE _Rb_tree_node<V>* _M_find(const Key& key)const {
+#elif defined(FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE) && defined(_MSC_VER)
+    // Per-TU opt-in (NF50 round 7, rows 0x0059DB82 / 0x0059E6BD / 0x0059FAFE CTCInventoryTrade refresh): the same STLport 4.6.1 _tree.h
+    // _M_find body, visible but kept out of line, as those TUs call the map<NUISystem::CComponent*,NUISystem::CList*> instance 0x005B1A43
+    // (`push &key ; mov ecx,edi ; call`); seeing it writes nothing, VC7.1 keeps the map pointer in edi across the call (0x0059FB38..
+    // 0x0059FB3F `cmp eax,[edi]`), where the declaration-only FABLE_RETAIL_STLP_TREE_MFIND_DECL reloads it (293 v 281 bytes).
+    template<class Key> __declspec(noinline) _Rb_tree_node<V>* _M_find(const Key& key)const {
 #else
     template<class Key> _Rb_tree_node<V>* _M_find(const Key& key)const {
 #endif

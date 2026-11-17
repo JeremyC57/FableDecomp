@@ -18,6 +18,10 @@ public:
     // (the including row picks how their copy constructors are emitted), and FableWin.pdb / Ego_r.pdb
     // ?IsProperSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z (landed 0x00AD8CA0). Same layout as the opaque default.
     bool IsProperSubsetOf(const CVertexGroupBlock& other) const;   // 0x00AD8CA0
+#ifdef FABLE_RETAIL_CVERTEXGROUPBLOCK_ISSUBSETOF
+    // Per-TU opt-in (NF50 round 7, row 0x00AD8C30): FableWin.pdb / Ego_r.pdb ?IsSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z (landed 0x00AD8C30).
+    bool IsSubsetOf(const CVertexGroupBlock& other) const;         // 0x00AD8C30
+#endif
 #ifdef FABLE_RETAIL_CVERTEXGROUPBLOCK_REMOVELAST
     // Per-TU opt-in (wf20, row 0x00AD9F10): FableWin.pdb / Ego_r.pdb ?RemoveLast@CVertexGroupBlock@@QAEXK@Z (landed 0x00AD9470).
     void RemoveLast(unsigned long count);   // 0x00AD9470

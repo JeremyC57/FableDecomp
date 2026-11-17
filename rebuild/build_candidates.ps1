@@ -42678,9 +42678,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00485e45'
-        Module = '_global'
-        Source = '00/48/CActiveFile_OnReadFinished_00485e45.cpp'
-        TestSource = '00/48/CActiveFile_OnReadFinished_00485e45_test.cpp'
+        Module = 'std::_Rb_tree<CWideString, pair<const CWideString, bool>, _Select1st<..>, less<CWideString>, allocator<..> >'
+        Source = '00/48/stdRbtree_Rbtree_00485e45.cpp'
+        TestSource = '00/48/stdRbtree_Rbtree_00485e45_test.cpp'
         PassPattern = 'OK_00485e45'
     }
     [pscustomobject]@{
@@ -61288,9 +61288,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00630fe0'
-        Module = '_global'
-        Source = '00/63/CTCCarryable_OnKill_00630fe0.cpp'
-        TestSource = '00/63/CTCCarryable_OnKill_00630fe0_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, pair<const unsigned long, CCharString>, _Select1st<..>, less<unsigned long>, allocator<..> >'
+        Source = '00/63/stdRbtree_clear_00630fe0.cpp'
+        TestSource = '00/63/stdRbtree_clear_00630fe0_test.cpp'
         PassPattern = 'CTCCARRYABLE_ONKILL_00630FE0_TEST PASS'
     }
     [pscustomobject]@{
@@ -153179,9 +153179,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00566fe0'
-        Module = 'std::_Rb_tree<CUnprovenKey_00566fe0,CUnprovenValue_00566fe0,CUnprovenKeyOfValue_00566fe0,std::less<CUnprovenKey_00566fe0>,std::allocator<CUnprovenValue_00566fe0> >'
-        Source = '00/56/stdRbtreeCUnprovenKey00566fe0CUnprovenValue00566fe0CUnprovenKeyOfValue00566fe0st_find_00566fe0.cpp'
-        TestSource = '00/56/stdRbtreeCUnprovenKey00566fe0CUnprovenValue00566fe0CUnprovenKeyOfValue00566fe0st_find_00566fe0_test.cpp'
+        Module = 'std::_Rb_tree<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, pair<const .., vector<pair<float, CWideString> > >, _Select1st<..>, less<..>, allocator<..> >'
+        Source = '00/56/stdRbtree_find_00566fe0.cpp'
+        TestSource = '00/56/stdRbtree_find_00566fe0_test.cpp'
         PassPattern = '00566fe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -166833,9 +166833,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00630d90'
-        Module = '_unattributed'
-        Source = '00/63/unattributed_FreeTreeCTreeOwner00630d90_00630d90.cpp'
-        TestSource = '00/63/unattributed_FreeTreeCTreeOwner00630d90_00630d90_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, pair<const unsigned long, CCharString>, _Select1st<..>, less<unsigned long>, allocator<..> >'
+        Source = '00/63/stdRbtree_Merase_00630d90.cpp'
+        TestSource = '00/63/stdRbtree_Merase_00630d90_test.cpp'
         PassPattern = '00630d90_TEST PASS'
     }
     [pscustomobject]@{
@@ -203108,9 +203108,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a84110'
-        Module = 'CRetailList_ListOfCountedPointer'
-        Source = '00/a8/CRetailListListOfCountedPointer_clear_00a84110.cpp'
-        TestSource = '00/a8/CRetailListListOfCountedPointer_clear_00a84110_test.cpp'
+        Module = 'std::_List_base<CNavRegion, allocator<CNavRegion> >'
+        Source = '00/a8/stdListbase_clear_00a84110.cpp'
+        TestSource = '00/a8/stdListbase_clear_00a84110_test.cpp'
         PassPattern = '00a84110_TEST PASS'
     }
     [pscustomobject]@{
@@ -287719,9 +287719,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004759ad'
-        Module = 'std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >'
-        Source = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Minsert_004759ad.cpp'
-        TestSource = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Minsert_004759ad_test.cpp'
+        Module = 'std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st<..>, less<CCharString>, allocator<..> >'
+        Source = '00/47/stdRbtree_Minsert_004759ad.cpp'
+        TestSource = '00/47/stdRbtree_Minsert_004759ad_test.cpp'
         PassPattern = '004759ad_TEST PASS'
     }
     [pscustomobject]@{
@@ -288418,9 +288418,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004abc70'
-        Module = 'std::_Rb_tree<CCharString, CCharString, _Identity, less<CCharString> >'
-        Source = '00/4a/STLRbtreeCCharStringCCharStringIdentitylessCCharString_Minsert_004abc70.cpp'
-        TestSource = '00/4a/STLRbtreeCCharStringCCharStringIdentitylessCCharString_Minsert_004abc70_test.cpp'
+        Module = 'std::_Rb_tree<CCharString, CCharString, _Identity<CCharString>, less<CCharString>, allocator<CCharString> >'
+        Source = '00/4a/stdRbtree_Minsert_004abc70.cpp'
+        TestSource = '00/4a/stdRbtree_Minsert_004abc70_test.cpp'
         PassPattern = '004abc70_TEST PASS'
     }
     [pscustomobject]@{
@@ -289416,9 +289416,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0051aa00'
-        Module = 'CBuildingCreatureMapTree'
-        Source = '00/51/CBuildingCreatureMapTree_Minsert_0051aa00.cpp'
-        TestSource = '00/51/CBuildingCreatureMapTree_Minsert_0051aa00_test.cpp'
+        Module = 'std::_Rb_tree<CThingBuilding*, pair<CThingBuilding* const, list<CThingAICreature*> >, _Select1st<..>, less<CThingBuilding*>, allocator<..> >'
+        Source = '00/51/stdRbtree_Minsert_0051aa00.cpp'
+        TestSource = '00/51/stdRbtree_Minsert_0051aa00_test.cpp'
         PassPattern = '0051aa00_TEST PASS'
     }
     [pscustomobject]@{
@@ -290095,9 +290095,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00529150'
-        Module = 'std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CPersistedDeadEntity>, _Select1st, less<unsigned __int64> >'
-        Source = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CPersistedDeadEntitySelect1stlessuns_Minsert_00529150.cpp'
-        TestSource = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CPersistedDeadEntitySelect1stlessuns_Minsert_00529150_test.cpp'
+        Module = 'std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>, _Select1st<..>, less<unsigned __int64>, allocator<..> >'
+        Source = '00/52/stdRbtree_Minsert_00529150.cpp'
+        TestSource = '00/52/stdRbtree_Minsert_00529150_test.cpp'
         PassPattern = '00529150_TEST PASS'
     }
     [pscustomobject]@{
@@ -290109,16 +290109,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005292f0'
-        Module = 'std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CThing*>, _Select1st, less<unsigned __int64> >'
-        Source = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CThingSelect1stlessunsignedint64_Minsert_005292f0.cpp'
-        TestSource = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CThingSelect1stlessunsignedint64_Minsert_005292f0_test.cpp'
+        Module = 'std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CThing*>, _Select1st<..>, less<unsigned __int64>, allocator<..> >'
+        Source = '00/52/stdRbtree_Minsert_005292f0.cpp'
+        TestSource = '00/52/stdRbtree_Minsert_005292f0_test.cpp'
         PassPattern = '005292f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005293d0'
-        Module = 'std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, pair<CCharString, CWideString> >, _Select1st, less<unsigned __int64> >'
-        Source = '00/52/STLRbtreeunsignedint64pairconstunsignedint64pairCCharStringCWideStringSelect1stl_Minsert_005293d0.cpp'
-        TestSource = '00/52/STLRbtreeunsignedint64pairconstunsignedint64pairCCharStringCWideStringSelect1stl_Minsert_005293d0_test.cpp'
+        Module = 'std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, pair<CCharString, CWideString> >, _Select1st<..>, less<unsigned __int64>, allocator<..> >'
+        Source = '00/52/stdRbtree_Minsert_005293d0.cpp'
+        TestSource = '00/52/stdRbtree_Minsert_005293d0_test.cpp'
         PassPattern = '005293d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -290200,9 +290200,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052e0e0'
-        Module = 'std::_Rb_tree<EEvent, EEvent, _Identity, less<EEvent> >'
-        Source = '00/52/STLRbtreeEEventEEventIdentitylessEEvent_Minsert_0052e0e0.cpp'
-        TestSource = '00/52/STLRbtreeEEventEEventIdentitylessEEvent_Minsert_0052e0e0_test.cpp'
+        Module = 'std::_Rb_tree<NUISystem::EEvent, NUISystem::EEvent, _Identity<..>, less<NUISystem::EEvent>, allocator<..> >'
+        Source = '00/52/stdRbtree_Minsert_0052e0e0.cpp'
+        TestSource = '00/52/stdRbtree_Minsert_0052e0e0_test.cpp'
         PassPattern = '0052e0e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -293823,8 +293823,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00769980'
         Module = 'std::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >'
-        Source = '00/76/STLRbtreeEObjectAugmentationTypepairconstEObjectAugmentationTypeCObjectAugmentat_Mcreatenode_00769980.cpp'
-        TestSource = '00/76/STLRbtreeEObjectAugmentationTypepairconstEObjectAugmentationTypeCObjectAugmentat_Mcreatenode_00769980_test.cpp'
+        Source = '00/76/stdRbtree_Mcreatenode_00769980.cpp'
+        TestSource = '00/76/stdRbtree_Mcreatenode_00769980_test.cpp'
         PassPattern = '00769980_TEST PASS'
     }
     [pscustomobject]@{
@@ -293851,8 +293851,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0076a110'
         Module = 'std::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >'
-        Source = '00/76/STLRbtreeEObjectAugmentationTypepairconstEObjectAugmentationTypeCObjectAugmentat_Minsert_0076a110.cpp'
-        TestSource = '00/76/STLRbtreeEObjectAugmentationTypepairconstEObjectAugmentationTypeCObjectAugmentat_Minsert_0076a110_test.cpp'
+        Source = '00/76/stdRbtree_Minsert_0076a110.cpp'
+        TestSource = '00/76/stdRbtree_Minsert_0076a110_test.cpp'
         PassPattern = '0076a110_TEST PASS'
     }
     [pscustomobject]@{
@@ -294095,9 +294095,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00777790'
-        Module = 'std::_Rb_tree<long, pair<const long,CShopItem>, _Select1st<pair<const long,CShopItem> >, less<long> >'
-        Source = '00/77/stdRbtreelongpairconstlongCShopItemSelect1stpairconstlongCShopItemlesslong_Minsert_00777790.cpp'
-        TestSource = '00/77/stdRbtreelongpairconstlongCShopItemSelect1stpairconstlongCShopItemlesslong_Minsert_00777790_test.cpp'
+        Module = 'std::_Rb_tree<long, pair<const long, CShopItem>, _Select1st<..>, less<long>, allocator<..> >'
+        Source = '00/77/stdRbtree_Minsert_00777790.cpp'
+        TestSource = '00/77/stdRbtree_Minsert_00777790_test.cpp'
         PassPattern = '00777790_TEST PASS'
     }
     [pscustomobject]@{
@@ -297764,9 +297764,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00990830'
-        Module = 'std::_Rb_tree<CPendingObjectSortKey>'
-        Source = '00/99/STLRbtreeCPendingObjectSortKey_Minsert_00990830.cpp'
-        TestSource = '00/99/STLRbtreeCPendingObjectSortKey_Minsert_00990830_test.cpp'
+        Module = 'std::_Rb_tree<CThreadedFileManager::CPendingObjectSortKey, pair<const CPendingObjectSortKey, CThreadedFileManager::CFileObject*>, _Select1st<..>, less<..>, allocator<..> >'
+        Source = '00/99/stdRbtree_Minsert_00990830.cpp'
+        TestSource = '00/99/stdRbtree_Minsert_00990830_test.cpp'
         PassPattern = '00990830_TEST PASS'
     }
     [pscustomobject]@{
@@ -301611,9 +301611,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a61270'
-        Module = 'std::_Rb_tree'
-        Source = '00/a6/STLRbtree_Minsert_00a61270.cpp'
-        TestSource = '00/a6/STLRbtree_Minsert_00a61270_test.cpp'
+        Module = 'std::_Rb_tree<CWideString, pair<const CWideString, CChecksumCacheFile::CEntry>, _Select1st<..>, less<CWideString>, allocator<..> >'
+        Source = '00/a6/stdRbtree_Minsert_00a61270.cpp'
+        TestSource = '00/a6/stdRbtree_Minsert_00a61270_test.cpp'
         PassPattern = '00a61270_TEST PASS'
     }
     [pscustomobject]@{

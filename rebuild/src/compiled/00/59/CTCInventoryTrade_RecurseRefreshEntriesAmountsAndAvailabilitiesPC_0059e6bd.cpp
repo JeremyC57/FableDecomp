@@ -1,4 +1,4 @@
-// CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC(NUISystem::CComponent* component, CListMap& lists) -- PC trade screen: as the console RefreshEntriesAmountsAndAvailabilities (0x0059DB82) but it recurses only into sold-out type-7 children and always hides the PC_MENU_ENTRY_ARROW (resetting its action) when nothing was counted
+// CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC(NUISystem::CComponent* component, std::map<NUISystem::CComponent*, NUISystem::CList*>& lists) -- PC trade screen: as the console RefreshEntriesAmountsAndAvailabilities (0x0059DB82) but it recurses only into sold-out type-7 children and always hides the PC_MENU_ENTRY_ARROW (resetting its action) when nothing was counted
 // Leaf: RecurseRefreshEntriesAmountsAndAvailabilitiesPC
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059E6BD, 656 bytes, `ret 0Ch` (hidden pair result). Frame-pointer size TU: optimize("y",off) + ("s",on).
 // FableWin.pdb ?RecurseRefreshEntriesAmountsAndAvailabilitiesPC@CTCInventoryTrade@@AAE?AU?$pair@KK@std@@PAVCComponent@NUISystem@@AAV?$map@...@Z;
@@ -14,13 +14,14 @@
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "engine/CCountedPointer.h"
-namespace std {
-template <class A, class B> struct pair {
-    A first;
-    B second;
-    pair(const A& a, const B& b) : first(a), second(b) { }
-};
-}
+// NF50 (round 7): the local std::pair / CListMap / SListMapNode stand-ins are the shared stlport/fable_map.h
+// map<NUISystem::CComponent*, NUISystem::CList*> (FableWin.pdb parameter type), with STLport's _M_find member template called out of line
+// (FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE), so the call @ 0x005B1A43 binds
+// ??$_M_find@PAVCComponent@NUISystem@@@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@4@@std@@ABEPAU?$_Rb_tree_node@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@1@ABQAVCComponent@NUISystem@@@Z
+// (nf44 entry 53). The row's own leaf is now the PDB symbol: the real map parameter (AAV?$map@..., was AAUCListMap@@) and the PDB
+// access (AAE private, as engine/CTCInventoryTrade.h and the landed callers bind it; was QAE).
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#include "stlport/fable_map.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -88,49 +89,21 @@ class CComponent { public:
 class CList : public CComponent { public:
 };
 }
-struct SListMapNode {                           // STLport _Rb_tree_node<pair<CComponent* const, CList*> >
-    long          _M_color;
-    SListMapNode* _M_parent;
-    SListMapNode* _M_left;
-    SListMapNode* _M_right;
-    NUISystem::CComponent* Key;                 // +0x10
-    NUISystem::CList*      List;                // +0x14
-};
-struct CListMap {                               // std::map<NUISystem::CComponent*, NUISystem::CList*> (12 bytes)
-    SListMapNode* _M_header;
-    unsigned long _M_node_count;
-    long          _M_key_compare;
-    SListMapNode* find(NUISystem::CComponent* const& key);   // 0x005B1A43
-    SListMapNode* end() const { return _M_header; }
-};
-#pragma auto_inline(off)
-__declspec(noinline) SListMapNode* CListMap::find(NUISystem::CComponent* const& key)
-{
-    SListMapNode* y = _M_header;
-    SListMapNode* x = _M_header->_M_parent;
-    while (x != 0) {
-        if (!(x->Key < key)) { y = x; x = x->_M_left; }
-        else x = x->_M_right;
-    }
-    if (y == _M_header || key < y->Key) y = _M_header;
-    return y;
-}
-#pragma auto_inline(on)
 
-class CTCInventoryTrade { public:
-    std::pair<unsigned long, unsigned long> RecurseRefreshEntriesAmountsAndAvailabilitiesPC(NUISystem::CComponent* component, CListMap& lists);
+class CTCInventoryTrade { private:              // Ego_r.pdb / FableWin.pdb: private members (AAE), as engine/CTCInventoryTrade.h
+    std::pair<unsigned long, unsigned long> RecurseRefreshEntriesAmountsAndAvailabilitiesPC(NUISystem::CComponent* component, std::map<NUISystem::CComponent*, NUISystem::CList*>& lists);
 };
 
-std::pair<unsigned long, unsigned long> CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC(NUISystem::CComponent* component, CListMap& lists)
+std::pair<unsigned long, unsigned long> CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC(NUISystem::CComponent* component, std::map<NUISystem::CComponent*, NUISystem::CList*>& lists)
 {
     std::pair<unsigned long, unsigned long> result(0, 0);
     bool hasList = false;
     const NUISystem::CChildVector& children = component->GetChildren();
     for (unsigned long i = 0; i < children.size(); ++i) {
         if (children[i]->GetType() == 8) {
-            SListMapNode* found = lists.find(component);
+            std::map<NUISystem::CComponent*, NUISystem::CList*>::iterator found = lists.find(component);
             if (found != lists.end()) {
-                NUISystem::CList* list = found->List;
+                NUISystem::CList* list = found->second;
                 for (unsigned long j = 0; j < list->GetChildren().size(); ++j) {
                     if (list->GetChildren()[j]->GetType() == 7 && *list->GetChildren()[j]->GetAmountLeft() == 0) {
                         ++result.first;

@@ -11,7 +11,11 @@
 //   calls the out-of-line member in the right-hand branch. The iterator returns through the hidden pointer.
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
-inline void* operator new(unsigned int, void* where) { return where; }
+// NF50 (round 7): the rebalance call binds the STLport ?_Rebalance@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z
+// of the shared stlport/fable_map.h (was the local extern "C" Rebalance_0042971d); std::pair / _Rb_tree_node_base /
+// _Rb_tree_node come from the header (the local std block is gone). CSoundSetTree keeps its name: the mixed inline/out-of-line
+// _M_create_node shape is not the header body (see NF50 NOTES, "self name still a stand-in").
+#include "stlport/fable_map.h"
 
 enum EObjectAugmentationType { OBJECT_AUGMENTATION_TYPE_NONE };
 
@@ -27,34 +31,9 @@ class CObjectAugmentationSoundSet { public:                        // Ego_r.pdb,
     unsigned long Handle;                                   // +0x08
 };
 
-namespace std {
-
-template <class _T1, class _T2>
-class pair {
-public:
-    _T1 first;
-    _T2 second;
-    pair(const pair& o) : first(o.first), second(o.second) { }
-};
-
-struct _Rb_tree_node_base {
-    long                _M_color;                           // +0x00
-    _Rb_tree_node_base* _M_parent;                          // +0x04
-    _Rb_tree_node_base* _M_left;                            // +0x08
-    _Rb_tree_node_base* _M_right;                           // +0x0c
-};
-
-template <class _Value>
-struct _Rb_tree_node : public _Rb_tree_node_base {
-    _Value _M_value_field;                                  // +0x10
-};
-
-}
 
 typedef std::pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> SSoundSetValue;   // 0x10 bytes
 typedef std::_Rb_tree_node<SSoundSetValue> SSoundSetNode;                                          // 0x20 bytes
-
-extern "C" void __cdecl Rebalance_0042971d(std::_Rb_tree_node_base* node, std::_Rb_tree_node_base*& root);   // 0x0042971D
 
 struct CSoundSetTree {                                      // _Rb_tree<EObjectAugmentationType, SSoundSetValue, ...>
     std::_Rb_tree_node_base* _M_header;                    // +0x00
@@ -98,7 +77,7 @@ CSoundSetTree::iterator CSoundSetTree::_M_insert(std::_Rb_tree_node_base* __x_, 
     __z->_M_parent = __y;
     __z->_M_left = 0;
     __z->_M_right = 0;
-    Rebalance_0042971d(__z, _M_header->_M_parent);
+    std::_Rb_global<bool>::_Rebalance(__z, _M_header->_M_parent);
     ++_M_node_count;
     return iterator(__z);
 }

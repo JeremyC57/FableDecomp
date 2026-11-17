@@ -15,6 +15,13 @@
 //   intermediate def bases with generated dtors store no vtable); STLport containers with inline destructors: vector =
 //   destroy range + `if (start) free(start)`, map = clear() (erase root, reset header links, zero count) + header free.
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
+// NF50 (round 7): ActionMap is the shared stlport/fable_map.h map<unsigned long, CCharString> (Ego_r.pdb CUIDef::ActionMap; was the
+// local CRbTree<1>), so its inline destructor's erase call @ 0x00630D90 binds the STLport
+// ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCCharString@@@std@@@2@@Z
+// (nf44 entry 55). CWideString / CCharString come from the shared fable_string.h (the local CWideString stand-in is gone). The other
+// containers, CResource / CDefPointeeBase and the CUIDef layout stay the row's pre-existing local models (NF50 NOTES).
+#include "fable_string.h"
+#include "stlport/fable_map.h"
 
 class CResource { public:                                    // engine/CResource.h: the 0x1c-byte root
     virtual void v00();
@@ -71,10 +78,6 @@ template<int Kind> struct CRbTree {                         // STLport map (12 b
     }
 };
 
-class CWideString { public:
-    void* m_pData;
-    ~CWideString();                                         // 0x0099B510
-};
 
 namespace NUISystem {
 class CUIStateDef { public:                                        // 0x7c bytes, virtual destructor in slot 0
@@ -104,7 +107,7 @@ class CUIDef : public CParentDefClassBase { public:                       // vta
     CRetailVector<unsigned long> VerticalSeparations;       // +0x88
     CRetailVector<unsigned long> NonScrollingChildren;      // +0x94
     unsigned char              _padA0[0x1a8 - 0xa0];        // MeshType .. Redefiner
-    CRbTree<1>                 ActionMap;                   // +0x1a8 map<unsigned long, CCharString>
+    std::map<unsigned long, CCharString> ActionMap;         // +0x1a8 (stlport/fable_map.h)
     CRbTree<2>                 ActionMapAliases;            // +0x1b4 map<unsigned long, unsigned long>
     CRetailVector<unsigned long> ActionOrder;               // +0x1c0
     unsigned char              _pad1cc[0x1d8 - 0x1cc];      // edit-box settings

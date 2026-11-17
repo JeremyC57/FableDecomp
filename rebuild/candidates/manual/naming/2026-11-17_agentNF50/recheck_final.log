@@ -1,0 +1,300 @@
+addr       parity           behav  name
+0042b98b   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy0042b5a8@@QAEPAUnode@1@ABK@Z -> 0042b5a8 labelled 'BinarySearchTreeNode_Create'
+0042b98b   RELOCATION_MATCH PASS   Insert
+0042ba99   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy0042b5ca@@QAEPAUnode@1@ABJ@Z -> 0042b5ca labelled 'BinarySearchTreeNode_CreateDuplicate'
+0042ba99   RELOCATION_MATCH PASS   Insert
+0042bba7   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy0042b5ec@@QAEPAUnode@1@ABJ@Z -> 0042b5ec labelled 'BinarySearchTreeNode_CreateCopy'
+0042bba7   RELOCATION_MATCH PASS   Insert
+004313e9   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy00431471@@QAEPAUnode@1@ABK@Z -> 00431471 labelled '_global::RbTree_CreateNode_sz0x18_00431471'
+004313e9   RELOCATION_MATCH PASS   Insert
+0045ca8f   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy0045c8a1@@QAEPAUnode@1@ABK@Z -> 0045c8a1 labelled '_global::RbTree_CreateNode_sz0x18_0045c8a1'
+0045ca8f   RELOCATION_MATCH PASS   Insert
+0045e0fa   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy0045de2f@@QAEPAUnode@1@ABJ@Z -> 0045de2f labelled '_global::RbTree_CreateNode_sz0x18_0045de2f'
+0045e0fa   RELOCATION_MATCH PASS   Insert
+0045e4b4   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy0045e2b1@@QAEPAUnode@1@ABJ@Z -> 0045e2b1 labelled '_global::RbTree_CreateNode_sz0x18_0045e2b1'
+0045e4b4   RELOCATION_MATCH PASS   Insert
+0045ee0e   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy0045e797@@QAEPAUnode@1@ABJ@Z -> 0045e797 labelled '_global::RbTree_CreateNode_sz0x18_0045e797'
+0045ee0e   RELOCATION_MATCH PASS   Insert
+0045f4fd   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy0045f13d@@QAEPAUnode@1@ABJ@Z -> 0045f13d labelled '_global::RbTree_CreateNode_sz0x18_0045f13d'
+0045f4fd   RELOCATION_MATCH PASS   Insert
+0046180c   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy0046149e@@QAEPAUnode@1@ABJ@Z -> 0046149e labelled '_global::RbTree_CreateNode_sz0x18_0046149e'
+0046180c   RELOCATION_MATCH PASS   Insert
+00461a40   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004615c3@@QAEPAUnode@1@ABJ@Z -> 004615c3 labelled '_global::RbTree_CreateNode_sz0x18_004615c3'
+00461a40   RELOCATION_MATCH PASS   Insert
+00463eb4   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004622ec@@QAEPAUnode@1@ABJ@Z -> 004622ec labelled '_global::RbTree_CreateNode_sz0x18_004622ec'
+00463eb4   RELOCATION_MATCH PASS   Insert
+004647b9   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004630e7@@QAEPAUnode@1@ABJ@Z -> 004630e7 labelled '_global::RbTree_CreateNode_sz0x18_004630e7'
+004647b9   RELOCATION_MATCH PASS   Insert
+00465dbc   RELOCATION_MATCH PASS   Insert
+004669bf   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy00462411@@QAEPAUnode@1@ABJ@Z -> 00462411 labelled '_global::RbTree_CreateNode_sz0x18_00462411'
+004669bf   RELOCATION_MATCH PASS   Insert
+00469639   RELOCATION_MATCH PASS   Insert
+0046fbc9   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy0045c4d2@@QAEPAUnode@1@ABJ@Z -> 0045c4d2 labelled '_global::RbTree_CreateNode_sz0x18_0045c4d2'
+0046fbc9   RELOCATION_MATCH PASS   Insert
+00472a05   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy00466255@@QAEPAUnode@1@ABJ@Z -> 00466255 labelled 'std::_Rb_tree<long, std::pair<long const, CCharString>, std::_Select1st<std::pair<long const, CCharString>>, std::less<long>, std::allocator<std::pair<long const, CCharString>>>::_M_create_node'
+00472a05   RELOCATION_MATCH PASS   Insert
+004759ad   RELOCATION_MATCH PASS   _M_insert
+00485e45   RELOCATION_MATCH PASS   StdList_Dtor_00485e45
+004abc70   RELOCATION_MATCH PASS   _M_insert
+004e51f6   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e4fef@@QAEPAUnode@1@ABJ@Z -> 004e4fef labelled '_global::RbTree_CreateNode_sz0x18_004e4fef'
+004e51f6   RELOCATION_MATCH PASS   Insert
+  WARN leaf '_M_insert' matches no symbol in 004e5425.obj; graded the largest function
+  WARN leaf '_M_insert' matches no symbol in 004e5425.obj; graded the largest function
+004e5425   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e4eca@@QAEPAUnode@1@ABJ@Z -> 004e4eca labelled '_global::RbTree_CreateNode_sz0x18_004e4eca'
+004e5425   WARN STANDIN_LEAF ?Insert@CRetailTree_longkey_buy004e4eca@@QAE?AUiterator@1@PAUnode@1@0ABJJ@Z (catalog std::_Rb_tree<...>::_M_insert; names another function)
+004e5425   RELOCATION_MATCH PASS   _M_insert
+004e57ac   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e55cf@@QAEPAUnode@1@ABJ@Z -> 004e55cf labelled '_global::RbTree_CreateNode_sz0x18_004e55cf'
+004e57ac   RELOCATION_MATCH PASS   Insert
+004e5ba7   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e597b@@QAEPAUnode@1@ABJ@Z -> 004e597b labelled '_global::RbTree_CreateNode_sz0x18_004e597b'
+004e5ba7   RELOCATION_MATCH PASS   Insert
+004e6466   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e6210@@QAEPAUnode@1@ABJ@Z -> 004e6210 labelled '_global::RbTree_CreateNode_sz0x18_004e6210'
+004e6466   RELOCATION_MATCH PASS   Insert
+004e699e   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e6623@@QAEPAUnode@1@ABJ@Z -> 004e6623 labelled '_global::RbTree_CreateNode_sz0x18_004e6623'
+004e699e   RELOCATION_MATCH PASS   Insert
+004e6c39   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e6748@@QAEPAUnode@1@ABJ@Z -> 004e6748 labelled '_global::RbTree_CreateNode_sz0x18_004e6748'
+004e6c39   RELOCATION_MATCH PASS   Insert
+004e7c3b   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e4429@@QAEPAUnode@1@ABJ@Z -> 004e4429 labelled 'AllocAndCopyFields'
+004e7c3b   RELOCATION_MATCH PASS   Insert
+004e9299   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e4bee@@QAEPAUnode@1@ABJ@Z -> 004e4bee labelled 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, CWeaponTrailGraphicSet>, std::_Select1st<std::pair<EObjectAugmentationType const, CWeaponTrailGraphicSet>>, std::less<EObjectAugmentationType>, std::allocator<std::pair<EObjectAugmentationType const, CWeaponTrailGraphicSet>>>::_M_create_node'
+004e9299   RELOCATION_MATCH PASS   Insert
+004e94c8   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e4d19@@QAEPAUnode@1@ABJ@Z -> 004e4d19 labelled '_global::RbTree_CreateNode_sz0x18_004e4d19'
+004e94c8   RELOCATION_MATCH PASS   Insert
+004ec79d   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004ec31c@@QAEPAUnode@1@ABJ@Z -> 004ec31c labelled '_global::RbTree_CreateNode_sz0x18_004ec31c'
+004ec79d   RELOCATION_MATCH PASS   Insert
+004eca59   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004ec441@@QAEPAUnode@1@ABJ@Z -> 004ec441 labelled 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet>, std::_Select1st<std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet>>, std::less<EObjectAugmentationType>, std::allocator<std::pair<EObjectAugmentationType const, CObjectAugmentationParticleSet>>>::_M_create_node'
+004eca59   RELOCATION_MATCH PASS   Insert
+004ecee6   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy004e9ab1@@QAEPAUnode@1@ABJ@Z -> 004e9ab1 labelled '_global::RbTree_CreateNode_sz0x18_004e9ab1'
+004ecee6   RELOCATION_MATCH PASS   Insert
+00511430   WARN STANDIN_LEAF ?_M_insert@CRbTree@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog CMemoryAllocatorVariableSize::InsertNode; names another function)
+00511430   RELOCATION_MATCH PASS   InsertNode
+0051aa00   WARN STANDIN_LEAF ?_M_insert@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Select1st@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@2@0@Z (catalog CBuildingCreatureMapTree::_M_insert; names another function)
+0051aa00   RELOCATION_MATCH PASS   _M_insert
+00529150   WARN RELOC_NAME: ?_M_create_node@?$_Rb_tree@_KU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@U?$_Select1st@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@ABU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@2@@Z -> 005288f0 labelled 'CRetailTree_005288f0::BuyNode'
+00529150   RELOCATION_MATCH PASS   _M_insert
+005292f0   RELOCATION_MATCH PASS   _M_insert
+005293d0   RELOCATION_MATCH PASS   _M_insert
+0052e0e0   RELOCATION_MATCH PASS   _M_insert
+005331a0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005331a0   WARN SHARED_HEADER_AVAILABLE C2DVector
+005331a0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+005331a0   WARN SHARED_HEADER_AVAILABLE CManager
+005331a0   RELOCATION_MATCH PASS   GetDataFromDef
+00566fe0   MATCH            PASS   find
+00567af0   WARN STANDIN_LEAF ?Insert_CRetailTree_00567af0@CRetailTree_00567af0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_00567af0; address-only name)
+00567af0   RELOCATION_MATCH PASS   Insert_CRetailTree_00567af0
+00579fd8   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy00579f3e@@QAEPAUnode@1@ABJ@Z -> 00579f3e labelled '_global::RbTree_CreateNode_sz0x48_00579f3e'
+00579fd8   RELOCATION_MATCH PASS   Insert
+0057a060   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy00579f5f@@QAEPAUnode@1@ABJ@Z -> 00579f5f labelled '_global::RbTree_CreateNode_sz0x48_00579f5f'
+0057a060   RELOCATION_MATCH PASS   Insert
+005808a0   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy00580428@@QAEPAUnode@1@ABK@Z -> 00580428 labelled '_global::RbTree_CreateNode_sz0x18_00580428'
+005808a0   RELOCATION_MATCH PASS   Insert
+005958f5   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+005958f5   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+005958f5   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+005958f5   WARN RELOC_NAME: ?SetDefinitionManager@CManager@NUISystem@@QAEXPAVCDefinitionManager@@@Z -> 0041cd89 labelled '_global::SetMember_dword0x64_0041cd89'
+005958f5   WARN RELOC_NAME: ?SetDefaultValues_00409b70@CUserProfileManager@@QAEXXZ -> 00409b70 labelled '?SetDefaultValuesForNewProfile@CUserProfileManager@@QAEXXZ'
+005958f5   WARN RELOC_NAME: ?DeleteTempSavesForProfile@CUserProfileManager@@QAEXABVCWideString@@@Z -> 00406770 labelled '_global::Nop_ret4_00406770'
+005958f5   RELOCATION_MATCH PASS   Init
+0059b1be   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy0059afab@@QAEPAUnode@1@ABJ@Z -> 0059afab labelled 'AllocatorNode_Allocate_24Byte'
+0059b1be   RELOCATION_MATCH PASS   Insert
+0059db82   WARN SHARED_HEADER_AVAILABLE CManager
+0059db82   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@XZ -> 0042bed4 labelled 'NUISystem::CDeletion::CDeletion'
+0059db82   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@ABU012@@Z -> 0042cd84 labelled 'NUISystem::CDeletion::CDeletion'
+0059db82   WARN RELOC_NAME: ??1CActionParamList@NUISystem@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0059db82   RELOCATION_MATCH PASS   RefreshEntriesAmountsAndAvailabilities
+0059e6bd   WARN SHARED_HEADER_AVAILABLE CManager
+0059e6bd   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@XZ -> 0042bed4 labelled 'NUISystem::CDeletion::CDeletion'
+0059e6bd   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@ABU012@@Z -> 0042cd84 labelled 'NUISystem::CDeletion::CDeletion'
+0059e6bd   WARN RELOC_NAME: ??1CActionParamList@NUISystem@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0059e6bd   RELOCATION_MATCH PASS   RecurseRefreshEntriesAmountsAndAvailabilitiesPC
+0059fafe   RELOCATION_MATCH PASS   RefreshEntriesAmountsAndAvailabilitiesPC
+005b2337   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy005b200c@@QAEPAUnode@1@ABK@Z -> 005b200c labelled 'NEditGui::CRegionDialog::GetTreeHandleFromMapIndex'
+005b2337   RELOCATION_MATCH PASS   Insert
+005b23bf   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy005b2029@@QAEPAUnode@1@ABK@Z -> 005b2029 labelled '_global::RbTree_CreateNode_sz0x18_005b2029'
+005b23bf   RELOCATION_MATCH PASS   Insert
+005b24cd   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy005b204b@@QAEPAUnode@1@ABK@Z -> 005b204b labelled '_global::RbTree_CreateNode_sz0x1c_005b204b'
+005b24cd   RELOCATION_MATCH PASS   Insert
+005b25db   WARN RELOC_NAME: ?Buynode@CRetailTree_ulongkey_buy005b206c@@QAEPAUnode@1@ABK@Z -> 005b206c labelled '_global::RbTree_CreateNode_sz0x18_005b206c'
+005b25db   RELOCATION_MATCH PASS   Insert
+005bb220   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy005baf06@@QAEPAUnode@1@ABJ@Z -> 005baf06 labelled 'TreeNode_AllocateWithTag'
+005bb220   RELOCATION_MATCH PASS   Insert
+005bbcbe   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy005bbba5@@QAEPAUnode@1@ABJ@Z -> 005bbba5 labelled '_global::RbTree_CreateNode_sz0x1c_005bbba5'
+005bbcbe   RELOCATION_MATCH PASS   Insert
+005f926b   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy005f8c41@@QAEPAUnode@1@ABJ@Z -> 005f8c41 labelled 'BinaryTree_AllocateNode'
+005f926b   RELOCATION_MATCH PASS   Insert
+006301a0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCCharString@@@std@@@2@@Z -> 00630d90 labelled '_unattributed::FreeTree_CTreeOwner_00630d90'
+006301a0   RELOCATION_MATCH PASS   ~CUIDef
+00630d90   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCCharString@@@std@@@2@@Z -> 00630d90 labelled '_unattributed::FreeTree_CTreeOwner_00630d90'
+00630d90   RELOCATION_MATCH PASS   FreeTree_CTreeOwner_00630d90
+00630fe0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCCharString@@@std@@@2@@Z -> 00630d90 labelled '_unattributed::FreeTree_CTreeOwner_00630d90'
+00630fe0   RELOCATION_MATCH PASS   RbTree_Clear_00630fe0
+006311d0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCCharString@@@std@@@2@@Z -> 00630d90 labelled '_unattributed::FreeTree_CTreeOwner_00630d90'
+006311d0   RELOCATION_MATCH PASS   ~CRetailTree_erase00630d90
+00631420   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCCharString@@@std@@@2@@Z -> 00630d90 labelled '_unattributed::FreeTree_CTreeOwner_00630d90'
+00631420   RELOCATION_MATCH PASS   ~CRetailTree_erase00630d90
+00632a30   WARN STANDIN_LEAF ?Insert_CRetailTree_00632a30@CRetailTree_00632a30@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_00632a30; address-only name)
+00632a30   RELOCATION_MATCH PASS   Insert_CRetailTree_00632a30
+0067b320   WARN STANDIN_LEAF ?Insert_CRetailTree_0067b320@CRetailTree_0067b320@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_0067b320; address-only name)
+0067b320   RELOCATION_MATCH PASS   Insert_CRetailTree_0067b320
+0067b3e0   WARN STANDIN_LEAF ?Insert_CRetailTree_0067b3e0@CRetailTree_0067b3e0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_0067b3e0; address-only name)
+0067b3e0   RELOCATION_MATCH PASS   Insert_CRetailTree_0067b3e0
+0067b4a0   WARN STANDIN_LEAF ?_M_insert@CRbTree@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog CMemoryAllocatorVariableSize::InsertNode; names another function)
+0067b4a0   RELOCATION_MATCH PASS   InsertNode
+0069d520   RELOCATION_MATCH PASS   _M_insert
+006ae900   RELOCATION_MATCH PASS   _M_insert
+006dafa0   WARN STANDIN_LEAF ?Insert_CRetailTree_006dafa0@CRetailTree_006dafa0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_006dafa0; address-only name)
+006dafa0   RELOCATION_MATCH PASS   Insert_CRetailTree_006dafa0
+006db390   WARN STANDIN_LEAF ?Insert_CRetailTree_006db390@CRetailTree_006db390@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_006db390; address-only name)
+006db390   RELOCATION_MATCH PASS   Insert_CRetailTree_006db390
+006dcb20   WARN RELOC_NAME: ??0CInnerMap@@QAE@ABU0@@Z -> 004f97b3 labelled 'NPairLongMapTree::_Rb_tree::_Rb_tree'
+006dcb20   RELOCATION_MATCH PASS   Insert
+006f1280   RELOCATION_MATCH PASS   Insert
+006f4d00   WARN SHARED_HEADER_AVAILABLE CCombatantInfo
+006f4d00   RELOCATION_MATCH PASS   Insert
+0070aea0   WARN SHARED_HEADER_AVAILABLE CEngineTextureDecal
+0070aea0   RELOCATION_MATCH PASS   _M_insert
+00739670   WARN SHARED_HEADER_AVAILABLE CCombatAbility
+00739670   WARN STANDIN_LEAF ?_M_insert@CCombatAbilityTree@@QAE?AU_Rb_tree_iterator@@PAU_Rb_tree_node_base@@0ABUSCombatAbilityValue@@0@Z (catalog _Rb_tree<ECombatAbilityDataType, pair<const ECombatAbilityDataType, pair<CCountedPointer<CCombatAbilityData>, CCombatAbility> > >::_M_insert; names another function)
+00739670   RELOCATION_MATCH PASS   _M_insert
+00769980   WARN SHARED_HEADER_AVAILABLE CObjectAugmentationSoundSet
+00769980   WARN STANDIN_LEAF ?_M_create_node@CSoundSetTree@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@std@@@std@@ABU?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@3@@Z (catalog std::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >::_M_create_node; names another function)
+00769980   RELOCATION_MATCH PASS   _M_create_node
+0076a110   WARN SHARED_HEADER_AVAILABLE CObjectAugmentationSoundSet
+0076a110   WARN STANDIN_LEAF ?_M_insert@CSoundSetTree@@QAE?AUiterator@1@PAU_Rb_tree_node_base@std@@0ABU?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationSoundSet@@@4@0@Z (catalog std::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >::_M_insert; names another function)
+0076a110   RELOCATION_MATCH PASS   _M_insert
+00777790   RELOCATION_MATCH PASS   _M_insert
+00783f00   WARN RELOC_NAME: ?_M_create_node@CThingMap64@@QAEPAUSRbNode@@ABUSThingMapValue@@@Z -> 00783dd0 labelled 'CRetailTree_00783dd0::BuyNode'
+00783f00   RELOCATION_MATCH PASS   Insert
+00801730   WARN STANDIN_LEAF ?Insert_CRetailTree_00801730@CRetailTree_00801730@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_00801730; address-only name)
+00801730   RELOCATION_MATCH PASS   Insert_CRetailTree_00801730
+00817d70   WARN STANDIN_LEAF ?Insert_CRetailTree_00817d70@CRetailTree_00817d70@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_00817d70; address-only name)
+00817d70   RELOCATION_MATCH PASS   Insert_CRetailTree_00817d70
+0085ded0   WARN STANDIN_LEAF ?_M_insert@CRbTree@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog CMemoryAllocatorVariableSize::InsertNode; names another function)
+0085ded0   RELOCATION_MATCH PASS   InsertNode
+00869ca0   WARN STANDIN_LEAF ?_M_insert@CRbTree@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog std::multimap::_M_insert; names another function)
+00869ca0   RELOCATION_MATCH PASS   _M_insert
+008b29a0   WARN STANDIN_LEAF ?Insert_CRetailTree_008b29a0@CRetailTree_008b29a0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_008b29a0; address-only name)
+008b29a0   RELOCATION_MATCH PASS   Insert_CRetailTree_008b29a0
+008b2a60   WARN STANDIN_LEAF ?Insert_CRetailTree_008b2a60@CRetailTree_008b2a60@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_008b2a60; address-only name)
+008b2a60   RELOCATION_MATCH PASS   Insert_CRetailTree_008b2a60
+008b2b20   WARN STANDIN_LEAF ?Insert_CRetailTree_008b2b20@CRetailTree_008b2b20@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog _unattributed::Insert_CRetailTree_008b2b20; address-only name)
+008b2b20   RELOCATION_MATCH PASS   Insert_CRetailTree_008b2b20
+00990830   RELOCATION_MATCH PASS   _M_insert
+009c2350   WARN STANDIN_LEAF ?_M_insert@CRbTree@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z (catalog CMemoryAllocatorVariableSize::InsertNode_24byte; names another function)
+009c2350   RELOCATION_MATCH PASS   InsertNode_24byte
+009ef750   WARN RELOC_NAME: ?Less@CStringOrder@@QBE_NPBVCCharStringData@@@Z -> 00429950 labelled 'CBasicString<char>::operator<'
+009ef750   WARN RELOC_NAME: ??0CStringCopy@@QAE@ABU0@@Z -> 0099ec30 labelled 'CCharString::CCharString'
+009ef750   WARN STANDIN_LEAF ?InsertNode@CConsoleInputMap@@QAE?AUIterator@@PAUNode@@0ABUValue@@J@Z (catalog CCacheInfo::InsertNode; names another function)
+009ef750   RELOCATION_MATCH PASS   InsertNode
+00a61270   RELOCATION_MATCH PASS   _M_insert
+00a81470   WARN STANDIN_LEAF ??1list_T_00a81470@std@@QAE@XZ (catalog std::list<T_00a81470>::~list; address-only name)
+00a81470   RELOCATION_MATCH PASS   ~list
+00a82230   WARN STANDIN_LEAF ??1list_T_00a82230@std@@QAE@XZ (catalog std::list<T_00a82230>::~list; address-only name)
+00a82230   RELOCATION_MATCH PASS   ~list
+00a833b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00a84110   WARN STANDIN_LEAF ?clear@?$_List_base@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@QAEXXZ (catalog CRetailList_ListOfCountedPointer::clear; names another function)
+00a84110   RELOCATION_MATCH PASS   clear
+00ad8c30   RELOCATION_MATCH PASS   IsSubsetOf
+00ad8ca0   RELOCATION_MATCH PASS   IsProperSubsetOf
+00cd300b   WARN RELOC_NAME: ?Buynode@CRetailTree_longkey_buy00cd2c5b@@QAEPAUnode@1@ABJ@Z -> 00cd2c5b labelled '_global::RbTree_CreateNode_sz0x18_00cd2c5b'
+00cd300b   RELOCATION_MATCH PASS   Insert
+
+WINS: 98
+  0042b98b RELOCATION_MATCH CRetailTree_ulongkey_buy0042b5a8::Insert
+  0042ba99 RELOCATION_MATCH CRetailTree_longkey_buy0042b5ca::Insert
+  0042bba7 RELOCATION_MATCH CRetailTree_longkey_buy0042b5ec::Insert
+  004313e9 RELOCATION_MATCH CRetailTree_ulongkey_buy00431471::Insert
+  0045ca8f RELOCATION_MATCH CRetailTree_ulongkey_buy0045c8a1::Insert
+  0045e0fa RELOCATION_MATCH CRetailTree_longkey_buy0045de2f::Insert
+  0045e4b4 RELOCATION_MATCH CRetailTree_longkey_buy0045e2b1::Insert
+  0045ee0e RELOCATION_MATCH CRetailTree_longkey_buy0045e797::Insert
+  0045f4fd RELOCATION_MATCH CRetailTree_longkey_buy0045f13d::Insert
+  0046180c RELOCATION_MATCH CRetailTree_longkey_buy0046149e::Insert
+  00461a40 RELOCATION_MATCH CRetailTree_longkey_buy004615c3::Insert
+  00463eb4 RELOCATION_MATCH CRetailTree_longkey_buy004622ec::Insert
+  004647b9 RELOCATION_MATCH CRetailTree_longkey_buy004630e7::Insert
+  00465dbc RELOCATION_MATCH CRetailTree_longkey_buy00461cf3::Insert
+  004669bf RELOCATION_MATCH CRetailTree_longkey_buy00462411::Insert
+  00469639 RELOCATION_MATCH CRetailTree_longkey_buy0045c2a2::Insert
+  0046fbc9 RELOCATION_MATCH CRetailTree_longkey_buy0045c4d2::Insert
+  00472a05 RELOCATION_MATCH CRetailTree_longkey_buy00466255::Insert
+  004759ad RELOCATION_MATCH std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >::?_M_insert@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@J@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCCharString@@J@2@0@Z
+  00485e45 RELOCATION_MATCH _global::??1?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCWideString@@_N@std@@@3@U?$less@VCWideString@@@3@V?$allocator@U?$pair@$$CBVCWideString@@_N@std@@@3@@std@@QAE@XZ
+  004abc70 RELOCATION_MATCH std::_Rb_tree<CCharString, CCharString, _Identity, less<CCharString> >::?_M_insert@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@AAE?AU?$_Rb_tree_iterator@VCCharString@@U?$_Nonconst_traits@VCCharString@@@std@@@2@PAU_Rb_tree_node_base@2@0ABVCCharString@@0@Z
+  004e51f6 RELOCATION_MATCH CRetailTree_longkey_buy004e4fef::Insert
+  004e5425 RELOCATION_MATCH CRetailTree_longkey_buy004e4eca::_M_insert
+  004e57ac RELOCATION_MATCH CRetailTree_longkey_buy004e55cf::Insert
+  004e5ba7 RELOCATION_MATCH CRetailTree_longkey_buy004e597b::Insert
+  004e6466 RELOCATION_MATCH CRetailTree_longkey_buy004e6210::Insert
+  004e699e RELOCATION_MATCH CRetailTree_longkey_buy004e6623::Insert
+  004e6c39 RELOCATION_MATCH CRetailTree_longkey_buy004e6748::Insert
+  004e7c3b RELOCATION_MATCH CRetailTree_longkey_buy004e4429::Insert
+  004e9299 RELOCATION_MATCH CRetailTree_longkey_buy004e4bee::Insert
+  004e94c8 RELOCATION_MATCH CRetailTree_longkey_buy004e4d19::Insert
+  004ec79d RELOCATION_MATCH CRetailTree_longkey_buy004ec31c::Insert
+  004eca59 RELOCATION_MATCH CRetailTree_longkey_buy004ec441::Insert
+  004ecee6 RELOCATION_MATCH CRetailTree_longkey_buy004e9ab1::Insert
+  00511430 RELOCATION_MATCH CMemoryAllocatorVariableSize::_M_insert
+  0051aa00 RELOCATION_MATCH CBuildingCreatureMapTree::?_M_insert@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Select1st@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@2@0@Z
+  00529150 RELOCATION_MATCH std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CPersistedDeadEntity>, _Select1st, less<unsigned __int64> >::?_M_insert@?$_Rb_tree@_KU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@U?$_Select1st@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@2@0@Z
+  005292f0 RELOCATION_MATCH std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CThing*>, _Select1st, less<unsigned __int64> >::?_M_insert@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KPAVCThing@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KPAVCThing@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CB_KPAVCThing@@@2@0@Z
+  005293d0 RELOCATION_MATCH std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, pair<CCharString, CWideString> >, _Select1st, less<unsigned __int64> >::?_M_insert@?$_Rb_tree@_KU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Select1st@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@2@0@Z
+  0052e0e0 RELOCATION_MATCH std::_Rb_tree<EEvent, EEvent, _Identity, less<EEvent> >::?_M_insert@?$_Rb_tree@W4EEvent@NUISystem@@W412@U?$_Identity@W4EEvent@NUISystem@@@std@@U?$less@W4EEvent@NUISystem@@@4@V?$allocator@W4EEvent@NUISystem@@@4@@std@@AAE?AU?$_Rb_tree_iterator@W4EEvent@NUISystem@@U?$_Nonconst_traits@W4EEvent@NUISystem@@@std@@@2@PAU_Rb_tree_node_base@2@0ABW4EEvent@NUISystem@@0@Z
+  005331a0 RELOCATION_MATCH NUISystem::CComponent::?GetDataFromDef@CComponent@NUISystem@@QAEXXZ
+  00566fe0 MATCH std::_Rb_tree<CUnprovenKey_00566fe0,CUnprovenValue_00566fe0,CUnprovenKeyOfValue_00566fe0,std::less<CUnprovenKey_00566fe0>,std::allocator<CUnprovenValue_00566fe0> >::?find@?$_Rb_tree@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@U?$pair@$$CBW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@@std@@U?$_Select1st@U?$pair@$$CBW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@@std@@@4@U?$less@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@4@V?$allocator@U?$pair@$$CBW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@@std@@@2@@2@ABW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@Z
+  00567af0 RELOCATION_MATCH _unattributed::Insert_CRetailTree_00567af0
+  00579fd8 RELOCATION_MATCH CRetailTree_longkey_buy00579f3e::Insert
+  0057a060 RELOCATION_MATCH CRetailTree_longkey_buy00579f5f::Insert
+  005808a0 RELOCATION_MATCH CRetailTree_ulongkey_buy00580428::Insert
+  005958f5 RELOCATION_MATCH NUISystem::CFrontEndManager::?Init@CFrontEndManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@V?$CCountedPointer@VCMeshDataBank@@@@PAVCInputManager@@PAVCDefinitionManager@@@Z
+  0059b1be RELOCATION_MATCH CRetailTree_longkey_buy0059afab::Insert
+  0059db82 RELOCATION_MATCH CTCInventoryTrade::RefreshEntriesAmountsAndAvailabilities@CTCInventoryTrade
+  0059e6bd RELOCATION_MATCH CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC
+  0059fafe RELOCATION_MATCH CTCInventoryTrade::RefreshEntriesAmountsAndAvailabilitiesPC
+  005b2337 RELOCATION_MATCH CRetailTree_ulongkey_buy005b200c::Insert
+  005b23bf RELOCATION_MATCH CRetailTree_ulongkey_buy005b2029::Insert
+  005b24cd RELOCATION_MATCH CRetailTree_ulongkey_buy005b204b::Insert
+  005b25db RELOCATION_MATCH CRetailTree_ulongkey_buy005b206c::Insert
+  005bb220 RELOCATION_MATCH CRetailTree_longkey_buy005baf06::Insert
+  005bbcbe RELOCATION_MATCH CRetailTree_longkey_buy005bbba5::Insert
+  005f926b RELOCATION_MATCH CRetailTree_longkey_buy005f8c41::Insert
+  006301a0 RELOCATION_MATCH NUISystem::CUIDef::??1CUIDef
+  00630d90 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCCharString@@@std@@@2@@Z
+  00630fe0 RELOCATION_MATCH _global::?clear@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@QAEXXZ
+  006311d0 RELOCATION_MATCH CRetailTree_erase00630d90::??1CRetailTree_erase00630d90@@QAE@XZ
+  00631420 RELOCATION_MATCH CRetailTree_erase00630d90::??1CRetailTree_erase00630d90@@QAE@XZ
+  00632a30 RELOCATION_MATCH _unattributed::Insert_CRetailTree_00632a30
+  0067b320 RELOCATION_MATCH _unattributed::Insert_CRetailTree_0067b320
+  0067b3e0 RELOCATION_MATCH _unattributed::Insert_CRetailTree_0067b3e0
+  0067b4a0 RELOCATION_MATCH CMemoryAllocatorVariableSize::_M_insert
+  0069d520 RELOCATION_MATCH CCameraModeMap::_M_insert
+  006ae900 RELOCATION_MATCH CMovementAccelerationMap::_M_insert
+  006dafa0 RELOCATION_MATCH _unattributed::Insert_CRetailTree_006dafa0
+  006db390 RELOCATION_MATCH _unattributed::Insert_CRetailTree_006db390
+  006dcb20 RELOCATION_MATCH CUIBinaryTree::Insert
+  006f1280 RELOCATION_MATCH CThingCompareMap::Insert
+  006f4d00 RELOCATION_MATCH CCombatantMap::Insert
+  0070aea0 RELOCATION_MATCH CEngineTextureDecalMap::_M_insert
+  00739670 RELOCATION_MATCH _Rb_tree<ECombatAbilityDataType, pair<const ECombatAbilityDataType, pair<CCountedPointer<CCombatAbilityData>, CCombatAbility> > >::?_M_insert@CCombatAbilityTree
+  00769980 RELOCATION_MATCH std::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >::?_M_create_node@
+  0076a110 RELOCATION_MATCH std::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >::?_M_insert@
+  00777790 RELOCATION_MATCH std::_Rb_tree<long, pair<const long,CShopItem>, _Select1st<pair<const long,CShopItem> >, less<long> >::?_M_insert@?$_Rb_tree@JU?$pair@$$CBJVCShopItem@@@std@@U?$_Select1st@U?$pair@$$CBJVCShopItem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCShopItem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCShopItem@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBJVCShopItem@@@2@0@Z
+  00783f00 RELOCATION_MATCH CThingMap64::Insert
+  00801730 RELOCATION_MATCH _unattributed::Insert_CRetailTree_00801730
+  00817d70 RELOCATION_MATCH _unattributed::Insert_CRetailTree_00817d70
+  0085ded0 RELOCATION_MATCH CMemoryAllocatorVariableSize::_M_insert
+  00869ca0 RELOCATION_MATCH std::multimap::_M_insert
+  008b29a0 RELOCATION_MATCH _unattributed::Insert_CRetailTree_008b29a0
+  008b2a60 RELOCATION_MATCH _unattributed::Insert_CRetailTree_008b2a60
+  008b2b20 RELOCATION_MATCH _unattributed::Insert_CRetailTree_008b2b20
+  00990830 RELOCATION_MATCH std::_Rb_tree<CPendingObjectSortKey>::?_M_insert@?$_Rb_tree@VCPendingObjectSortKey@CThreadedFileManager@@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@U?$_Select1st@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@4@U?$less@VCPendingObjectSortKey@CThreadedFileManager@@@4@V?$allocator@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@4@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@2@0@Z
+  009c2350 RELOCATION_MATCH CMemoryAllocatorVariableSize::_M_insert
+  009ef750 RELOCATION_MATCH CConsoleInputMap::InsertNode
+  00a61270 RELOCATION_MATCH std::_Rb_tree::?_M_insert@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@U?$_Select1st@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@3@U?$less@VCWideString@@@3@V?$allocator@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@2@0@Z
+  00a81470 RELOCATION_MATCH std::??1list_T_00a81470@std@@
+  00a82230 RELOCATION_MATCH std::??1list_T_00a82230@std@@
+  00a833b0 RELOCATION_MATCH CCountedPointerListOwner_00a833b0::??_G
+  00a84110 RELOCATION_MATCH CRetailList_ListOfCountedPointer::?clear@?$_List_base@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@QAEXXZ
+  00ad8c30 RELOCATION_MATCH CVertexGroupBlock::?IsSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z
+  00ad8ca0 RELOCATION_MATCH CVertexGroupBlock::?IsProperSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z
+  00cd300b RELOCATION_MATCH CRetailTree_longkey_buy00cd2c5b::Insert

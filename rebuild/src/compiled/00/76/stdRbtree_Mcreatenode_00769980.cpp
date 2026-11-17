@@ -11,7 +11,10 @@
 //   the pair's user copy constructor copies the key, then the sound set's implicit memberwise copy (byte, string
 //   copy, dword). The node is returned in eax.
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
-inline void* operator new(unsigned int, void* where) { return where; }
+// NF50 (round 7): std::pair / _Rb_tree_node_base / _Rb_tree_node come from the shared stlport/fable_map.h (the local std block
+// is gone), in step with its caller _M_insert 0x0076A110: the pair class key is the header's `struct` (U?$pair, was V?$pair) in
+// this row's own leaf and in the 0x0076A110 call. CSoundSetTree stays a stand-in (see NF50 NOTES).
+#include "stlport/fable_map.h"
 
 enum EObjectAugmentationType { OBJECT_AUGMENTATION_TYPE_NONE };
 
@@ -27,29 +30,6 @@ class CObjectAugmentationSoundSet { public:                        // Ego_r.pdb,
     unsigned long Handle;                                   // +0x08
 };
 
-namespace std {
-
-template <class _T1, class _T2>
-class pair {
-public:
-    _T1 first;
-    _T2 second;
-    pair(const pair& o) : first(o.first), second(o.second) { }
-};
-
-struct _Rb_tree_node_base {
-    long                _M_color;                           // +0x00
-    _Rb_tree_node_base* _M_parent;                          // +0x04
-    _Rb_tree_node_base* _M_left;                            // +0x08
-    _Rb_tree_node_base* _M_right;                           // +0x0c
-};
-
-template <class _Value>
-struct _Rb_tree_node : public _Rb_tree_node_base {
-    _Value _M_value_field;                                  // +0x10
-};
-
-}
 
 typedef std::pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> SSoundSetValue;   // 0x10 bytes
 typedef std::_Rb_tree_node<SSoundSetValue> SSoundSetNode;                                          // 0x20 bytes

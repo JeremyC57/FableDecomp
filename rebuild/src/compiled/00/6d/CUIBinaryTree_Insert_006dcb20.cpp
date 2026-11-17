@@ -10,7 +10,10 @@
 // placement copy of the pair: key, inner map copy, two longs) is inlined at its first call and called out of line at the
 // second, so the left arm builds the node in place while the right arm calls 0x004F9763.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
-inline void* operator new(unsigned int, void* where) { return where; }
+// NF50 (round 7): the rebalance call binds the STLport ?_Rebalance@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z
+// of the shared stlport/fable_map.h (was a local `Rebalance_0042971d` stand-in); the local node now derives from the header's
+// std::_Rb_tree_node_base. The row's own name is unchanged (see NF50 NOTES, "self name still a stand-in").
+#include "stlport/fable_map.h"
 
 struct CInnerMap {                                          // VC6 map (12 bytes: allocator byte, head, size)
     void*         m_head;
@@ -29,12 +32,7 @@ struct SUITreePair {                                        // pair<const long, 
 };
 
 struct CUIBinaryTree {
-    struct node {                                           // 0x28 bytes
-        unsigned char color;
-        unsigned char _pad[3];
-        node*         parent;                               // +0x04
-        node*         left;                                 // +0x08
-        node*         right;                                // +0x0c
+    struct node : std::_Rb_tree_node_base {                 // 0x28 bytes: colour +0, parent +4, left +8, right +0xC
         SUITreePair   value;                                // +0x10
     };
     struct iterator { node* current; iterator(node* n) : current(n) { } };
@@ -49,31 +47,29 @@ struct CUIBinaryTree {
     iterator Insert(node* trynode, node* wherenode, const SUITreePair& value, long forceRight);
 };
 
-void __cdecl Rebalance_0042971d(CUIBinaryTree::node* newnode, CUIBinaryTree::node** root);   // 0x0042971D
-
 CUIBinaryTree::iterator CUIBinaryTree::Insert(node* trynode, node* wherenode, const SUITreePair& value, long forceRight)
 {
     node* newnode;
     if (wherenode == head || (!forceRight && (trynode != 0 || value.first < wherenode->value.first))) {
         newnode = _Buynode(value);
-        wherenode->left = newnode;
+        wherenode->_M_left = newnode;
         if (wherenode == head) {
-            head->parent = newnode;
-            head->right = newnode;
+            head->_M_parent = newnode;
+            head->_M_right = newnode;
         }
-        else if (wherenode == head->left)
-            head->left = newnode;
+        else if (wherenode == head->_M_left)
+            head->_M_left = newnode;
     }
     else {
         newnode = _Buynode(value);
-        wherenode->right = newnode;
-        if (wherenode == head->right)
-            head->right = newnode;
+        wherenode->_M_right = newnode;
+        if (wherenode == head->_M_right)
+            head->_M_right = newnode;
     }
-    newnode->left = 0;
-    newnode->right = 0;
-    newnode->parent = wherenode;
-    Rebalance_0042971d(newnode, &head->parent);
+    newnode->_M_left = 0;
+    newnode->_M_right = 0;
+    newnode->_M_parent = wherenode;
+    std::_Rb_global<bool>::_Rebalance(newnode, head->_M_parent);
     ++size;
     return iterator(newnode);
 }

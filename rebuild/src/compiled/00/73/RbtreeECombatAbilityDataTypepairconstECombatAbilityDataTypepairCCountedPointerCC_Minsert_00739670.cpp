@@ -12,7 +12,11 @@
 //   with its null test, the memberwise value copy with the counted pointer's `if (Count) ++*Count`); the iterator
 //   (user constructor) is returned through the hidden pointer.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-inline void* operator new(unsigned int, void* p) throw() { return p; }
+// NF50 (round 7): the rebalance call binds the STLport ?_Rebalance@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z
+// of the shared stlport/fable_map.h (was the local `_Rb_global` stand-in). The local ::_Rb_tree_node_base keeps its name (the
+// row's own leaf and its landed caller 0x00739B00 carry it) but now derives from the header's std::_Rb_tree_node_base, whose
+// links the helpers return (see NF50 NOTES, "self name still a stand-in").
+#include "stlport/fable_map.h"
 
 #include "engine/CCountedPointer.h"
 class CCombatAbilityData;
@@ -34,17 +38,10 @@ inline void _Construct(T1* p, const T2& value)
     new (p) T1(value);
 }
 
-struct _Rb_tree_node_base {
-    long                _M_color;               // +0x00
-    _Rb_tree_node_base* _M_parent;              // +0x04
-    _Rb_tree_node_base* _M_left;                // +0x08
-    _Rb_tree_node_base* _M_right;               // +0x0c
+struct _Rb_tree_node_base : std::_Rb_tree_node_base {   // colour +0, parent +4, left +8, right +0xc (stlport/fable_map.h)
 };
 struct _Rb_tree_node : _Rb_tree_node_base {     // 0x24 bytes
     SCombatAbilityValue _M_value_field;         // +0x10
-};
-struct _Rb_global {                             // STLport 4.6 _Rb_global<bool>
-    static void __cdecl _Rebalance(_Rb_tree_node_base* x, _Rb_tree_node_base*& root);   // 0x0042971D
 };
 struct _Rb_tree_iterator {
     _Rb_tree_node_base* _M_node;
@@ -60,12 +57,12 @@ struct CCombatAbilityTree {
     unsigned long       _M_node_count;          // +0x04
     unsigned long       _M_key_compare;         // +0x08 (empty less<>, padded)
 
-    _Rb_tree_node_base*& _M_root() const { return _M_header->_M_parent; }
-    _Rb_tree_node_base*& _M_leftmost() const { return _M_header->_M_left; }
-    _Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
-    static _Rb_tree_node_base*& _S_left(_Rb_tree_node_base* x) { return x->_M_left; }
-    static _Rb_tree_node_base*& _S_right(_Rb_tree_node_base* x) { return x->_M_right; }
-    static _Rb_tree_node_base*& _S_parent(_Rb_tree_node_base* x) { return x->_M_parent; }
+    std::_Rb_tree_node_base*& _M_root() const { return _M_header->_M_parent; }
+    std::_Rb_tree_node_base*& _M_leftmost() const { return _M_header->_M_left; }
+    std::_Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
+    static std::_Rb_tree_node_base*& _S_left(_Rb_tree_node_base* x) { return x->_M_left; }
+    static std::_Rb_tree_node_base*& _S_right(_Rb_tree_node_base* x) { return x->_M_right; }
+    static std::_Rb_tree_node_base*& _S_parent(_Rb_tree_node_base* x) { return x->_M_parent; }
     static const long& _S_key(_Rb_tree_node_base* x) { return ((_Link_type)x)->_M_value_field.first; }
     static _Link_type allocate(unsigned int n) { return n != 0 ? (_Link_type)malloc(n * sizeof(_Rb_tree_node)) : 0; }
     _Link_type _M_create_node(const value_type& x)
@@ -104,7 +101,7 @@ CCombatAbilityTree::iterator CCombatAbilityTree::_M_insert(_Rb_tree_node_base* x
     _S_parent(z) = y;
     _S_left(z) = 0;
     _S_right(z) = 0;
-    _Rb_global::_Rebalance(z, _M_header->_M_parent);
+    std::_Rb_global<bool>::_Rebalance(z, _M_header->_M_parent);
     ++_M_node_count;
     return iterator(z);
 }

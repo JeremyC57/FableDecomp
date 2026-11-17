@@ -13,7 +13,10 @@
 //   value's memberwise copy constructor gives the three edx word moves. Same shape as the landed
 //   CCombatantMap::Insert 0x006F4D00.
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
-inline void* operator new(unsigned int, void* where) { return where; }
+// NF50 (round 7): the rebalance call binds the STLport ?_Rebalance@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z
+// of the shared stlport/fable_map.h (was a local stand-in declaration); SRbNodeBase now derives from the header's
+// std::_Rb_tree_node_base (its name stays because the row's own leaf carries it; see NF50 NOTES, "self name still a stand-in").
+#include "stlport/fable_map.h"
 
 class CThing;
 
@@ -23,18 +26,12 @@ struct SThingCompareValue {                                 // pair<const unsign
     SThingCompareValue(const SThingCompareValue& other) : first(other.first), second(other.second) { }
 };
 
-struct SRbNodeBase {
-    long         _M_color;                                  // +0x00
-    SRbNodeBase* _M_parent;                                 // +0x04
-    SRbNodeBase* _M_left;                                   // +0x08
-    SRbNodeBase* _M_right;                                  // +0x0c
+struct SRbNodeBase : std::_Rb_tree_node_base {              // colour +0, parent +4, left +8, right +0xC (stlport/fable_map.h)
 };
 
 struct SRbNode : SRbNodeBase {
     SThingCompareValue _M_value_field;                      // +0x10
 };
-
-extern "C" void __cdecl Rebalance_0042971d(SRbNodeBase* node, SRbNodeBase*& root);   // 0x0042971D
 
 struct CThingCompareMap {
     SRbNodeBase*  _M_header;                                // +0x00
@@ -77,7 +74,7 @@ CThingCompareMap::iterator CThingCompareMap::Insert(SRbNodeBase* x_, SRbNodeBase
     z->_M_parent = y;
     z->_M_left = 0;
     z->_M_right = 0;
-    Rebalance_0042971d(z, _M_header->_M_parent);
+    std::_Rb_global<bool>::_Rebalance(z, _M_header->_M_parent);
     ++_M_node_count;
     return iterator(z);
 }

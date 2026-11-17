@@ -7,21 +7,16 @@
 // Shape: the explicit iterator out-pointer form; the node is malloc'd and its value placement-copied under VC's null test; the new node
 // goes left when y is the header, or (w null) when x is set or the key orders before y's.
 #include <new>
+// NF50 (round 7): the rebalance call binds the STLport ?_Rebalance@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z
+// of the shared stlport/fable_map.h; the local global-scope _Rb_tree_node_base / _Rb_global models (which bound a std-less
+// spelling) are gone. The row's own name is unchanged (see NF50 NOTES, "self name still a stand-in").
+#include "stlport/fable_map.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct _Rb_tree_node_base {
-    bool                _M_color;               // +0x00
-    _Rb_tree_node_base* _M_parent;              // +0x04
-    _Rb_tree_node_base* _M_left;                // +0x08
-    _Rb_tree_node_base* _M_right;               // +0x0c
-};
-template <class _Dummy> struct _Rb_global {
-    static void __cdecl _Rebalance(_Rb_tree_node_base* __x, _Rb_tree_node_base*& __root);   // 0x0042971D
-};
 struct SValue {                                 // 8 bytes
     long Key;
     long Data;
 };
-struct SNode : _Rb_tree_node_base {
+struct SNode : std::_Rb_tree_node_base {
     SValue Value;                               // +0x10
 };
 struct SIterator {
@@ -61,7 +56,7 @@ SIterator* CRbTree::_M_insert(SIterator* result, SNode* x, SNode* y, const SValu
     z->_M_parent = y;
     z->_M_left = 0;
     z->_M_right = 0;
-    _Rb_global<bool>::_Rebalance(z, m_header->_M_parent);
+    std::_Rb_global<bool>::_Rebalance(z, m_header->_M_parent);
     ++m_node_count;
     result->m_node = z;
     return result;
