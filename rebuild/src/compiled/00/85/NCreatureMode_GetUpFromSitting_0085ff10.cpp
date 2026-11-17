@@ -17,153 +17,87 @@
 // Layout: CThing UsingComponents +0x20, Components +0x44; TC 0x31 CTCCreatureModeManager. CCreatureAction_GetUpFromSitting
 //   (vtable 0x01276C2C) is 0x11C bytes: CCombatActionBase 0x114, the mode type +0x114, a bool +0x118. CBrainOutput 0x48
 //   bytes: Types +0, PAction +0x20.
-// Shape: the mode manager pointer is assigned under HasTC(0x31) into an otherwise unset local (absent: the dead key slot is
-//   read); the sitting path's action is a temporary of the out-of-line 4-argument ctor; the other path's action is a
-//   named local in its own block (it shares the temporary's frame slot) built by a second, __forceinline 2-argument ctor
-//   (0 / false, the same base call and SetCombatAnimation as 0x00860150); the clone goes through an inline CBrainOutput
-//   helper taking `const CCreatureActionBase&` (a call on the named local itself is devirtualised by VC7.1, retail keeps
-//   the slot-11 virtual call).
-#include "fable_compiler.h"
-class CCharString {
-public:
-    void* PStringData;
-};
-
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 UsingComponents bitset
-    CInterfaceMap m_interfaces;                             // +0x44 Components
-
-    FABLE_FORCEINLINE bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    FABLE_FORCEINLINE const CTCBase* PeekTC(long type) const
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(key);
-        const CInterfaceMap::value_type* end = map->end();
-        return (it == end || type < it->first ? end : it)->second;
-    }
-};
-
-class CCreatureActionBase;
-class CThingCreatureBase : public CThing {
-public:
-    bool SetCurrentAction(const CCreatureActionBase& action);        // 0x006644F0
-public:
-    bool IsFreeToPerformAction(const CCreatureActionBase&) const;   // 0x00662210
-};
-
-class CSoundPair {
-public:
-    long First;
-    long Second;
-    CSoundPair() : First(0), Second(0) { }
-};
-
-class CCreatureActionBase {
-public:
-    virtual ~CCreatureActionBase();
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
-    virtual CCreatureActionBase* Clone() const;             // slot 11 (+0x2c)
-};
-
-class CCombatActionBase : public CCreatureActionBase {      // retail sizeof 0x114
-public:
-    unsigned char _pad04[0x114 - 0x04];
-    CCombatActionBase(CThingCreatureBase& creature, long priority, const CSoundPair& sound);   // 0x00858030
-    ~CCombatActionBase();                                   // 0x0062E900
-    void SetCombatAnimation(const CCharString& name);       // 0x008574D0
-};
-
-class CCreatureAction_GetUpFromSitting : public CCombatActionBase {   // retail sizeof 0x11c, vtable 0x01276C2C
-public:
-    long SitModeType;                                       // +0x114
-    bool Flag;                                              // +0x118
-    CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& anim, long sit_mode_type,
-                                     bool flag);            // 0x00860150
-    FABLE_FORCEINLINE CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& anim)
-        : CCombatActionBase(creature, 0x32, CSoundPair()), SitModeType(0), Flag(false)
-    {
-        SetCombatAnimation(anim);
-    }
-    virtual CCreatureActionBase* Clone() const;
-};
-
-class CModeBase {
-public:
-    virtual ~CModeBase();
-    virtual unsigned long GetType() const;                  // slot 1
-};
-class CModeSitBase : public CModeBase {
-public:
-    void RemoveModeWithAction(const CCreatureActionBase& action);   // 0x008D7230
-};
-
-class CTCCreatureModeManager {                              // interface type 0x31
-public:
-    CModeBase* GetCurrentMode() const;                      // 0x0073A6E0
-};
-
+// Shape: the mode manager pointer comes from the inline CThing::PeekTC(0x31) out-parameter form (absent: the dead key slot is
+//   read); the sitting path's action is a temporary passed to RemoveModeWithAction, built by an out-of-line call of the
+//   4-argument ctor 0x00860150; the other path's action is a named local (it shares the temporary's frame slot) for which
+//   VC7.1 expands the same ctor inline (0 / false; the base ctor call, the vtable store and SetCombatAnimation); the clone
+//   goes through a `const CCreatureActionBase&` (retail keeps the slot-11 virtual call).
+// NF84 (round 7, q11045 binder): port form on the shared headers (the NF65 0x0085F6F0 GetUpFromSleeping recipe):
+//   NCreatureMode::CModeSitBase from engine/NCreatureMode_CModeSitFloor.h (RemoveModeWithAction opt-in), CCreatureAction_GetUpFromSitting
+//   from its header with the 4-argument ctor body visible in this TU (retail's TU holds its COMDAT 0x00860150 next to this function).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER
+#define FABLE_RETAIL_CAIBRAIN_SETOUTPUT
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SETCOMBATANIMATION
+#define FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_REMOVEMODEWITHACTION
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_GetUpFromSitting.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/NCreatureMode_CModeSitFloor.h"
 #include "engine/CCountedPointer.h"
+#include "engine/CAIBrain.h"
 
-class CBrainOutput {                                        // 0x48 bytes
+class CBrainOutput {                                        // 0x48 bytes (no shared header; the landed 0x0085F6F0 / 0x0097D8B0 model)
 public:
-    unsigned long Types;                                    // +0x00
+    unsigned long Types;                                    // +0x00 (8: perform action)
     long          LookFlags;                                // +0x04
     unsigned char NavigationInput[0x18];                    // +0x08
     CCountedPointer<CCreatureActionBase> PAction;           // +0x20
     unsigned char _pad28[0x48 - 0x28];
     CBrainOutput();                                         // 0x00835620
-    void SetAsPerformAction(const CCreatureActionBase& action)   // inline (descriptive name: sets type 8 + the clone)
-    {
-        Types |= 8;
-        PAction.Reset(action.Clone());
-    }
     ~CBrainOutput();                                        // 0x006D60C0
 };
 
-class CAIBrain {
-public:
-    void SetOutput(const CBrainOutput& output);             // 0x0088B8F0
-};
+inline CCreatureAction_GetUpFromSitting::CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& animation,
+                                                                          long sittingMode, bool removeOnPerformAction)
+    : CCombatActionBase(creature, 0x32, CSoundPair())
+    , SittingMode(sittingMode)
+    , RemoveOnPerformAction(removeOnPerformAction)
+{
+    SetCombatAnimation(animation);
+}
 
 namespace NCreatureMode {
 
 bool __fastcall GetUpFromSitting(CThingCreatureBase& creature, long sit_mode_type, const CCharString& anim, CAIBrain* brain)
 {
-    const CTCCreatureModeManager* mode_manager;
-    if (creature.HasTC(0x31))
-        mode_manager = (const CTCCreatureModeManager*)creature.PeekTC(0x31);
-    CModeBase* mode = mode_manager->GetCurrentMode();
-    if (mode->GetType() == sit_mode_type) {
-        static_cast<CModeSitBase*>(mode)->RemoveModeWithAction(
-            CCreatureAction_GetUpFromSitting(creature, anim, sit_mode_type, true));
+    const CTCCreatureModeManager* modeManager;
+    creature.PeekTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
+    CTCCreatureModeManager::CModeBase& mode = modeManager->GetCurrentMode();
+    if (mode.GetType() == sit_mode_type) {
+        static_cast<CModeSitBase&>(mode).RemoveModeWithAction(CCreatureAction_GetUpFromSitting(creature, anim, sit_mode_type, true));
         return true;
-    }
-    {
-        CCreatureAction_GetUpFromSitting action(creature, anim);
+    } else {
+        CCreatureAction_GetUpFromSitting action(creature, anim, 0, false);
         if (creature.IsFreeToPerformAction(action)) {
-            if (brain != 0) {
+            if (brain) {
                 CBrainOutput output;
-                output.SetAsPerformAction(action);
+                output.Types |= 8;
+                const CCreatureActionBase& base = action;
+                output.PAction.Reset(base.Clone());
                 brain->SetOutput(output);
             } else
                 creature.SetCurrentAction(action);
         }
+        return false;
     }
-    return false;
 }
-
 }

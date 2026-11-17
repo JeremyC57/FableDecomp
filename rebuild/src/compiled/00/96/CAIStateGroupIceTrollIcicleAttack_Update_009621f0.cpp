@@ -1,5 +1,8 @@
 // CAIStateGroup_IceTrollIcicleAttack::Update() -- with a live target: mark the target's stealth component in danger, rise up if knocked down, face the target, then post the icicle attack through a brain output for two free frames, wait out any running action and boast; terminate at the end or on any failure
 // Leaf: ?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ
+// NF84 (round 7, q11050 binder): the local CThingCreatureBase model's IsFreeToPerformAction respelt in place to the Ego_r.pdb /
+//   FableWin.pdb form ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z (const, by const reference; the
+//   landed self row 0x00662210 defines it), as NF83 did in 0x00662210 itself; the call passes the action by reference.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009621F0, length 733 bytes (+ int3 padding).
@@ -28,7 +31,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
+    bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210
     bool IsPerformingAnyAction() const;               // 0x006622A0
 };
 class CTCStealth { public:                             // interface 0x36
@@ -166,7 +169,7 @@ void CAIStateGroup_IceTrollIcicleAttack::Update()
             do {
                 CThingCreatureBase* creature = GetCreature();
                 CCreatureAction_IceTrollIcicleAttack action(creature, ((CThing*)PTarget.GetPItem()));
-                if (GetCreature()->IsFreeToPerformAction(&action)) {
+                if (GetCreature()->IsFreeToPerformAction(action)) {
                     CBrainOutput output;
                     SetPerformAction(output, &action);
                     PBrain->SetOutput(output);

@@ -9,6 +9,9 @@
 // by the AIAction_CombatPerformActionAndWait wait loop (the bool hoisted into bl, `id == current->GetActionID()`).
 // Layout: the creature's current action at +0x100, the action id at +0x28.
 // Leaf: AIAction_PerformActionAndWait
+// NF84 (round 7, q11050 binder): the local CThingCreatureBase model's IsFreeToPerformAction respelt in place to the Ego_r.pdb /
+//   FableWin.pdb form ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z (const, by const reference; the
+//   landed self row 0x00662210 defines it), as NF83 did in 0x00662210 itself; the call passes the action by reference.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 class CThing;
 
@@ -76,7 +79,7 @@ class CThingCreatureBase
 { public:
     unsigned char _pad[0x100];
     CCreatureActionBase* CurrentAction;             // +0x100
-    bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
+    bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210
     bool IsPerformingAnyAction() const;                   // 0x006622A0
 };
 
@@ -100,7 +103,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_PerformActionAndWait(const CCreature
     if (IsStopping())
         return AI_ACTION_STOPPING;
     long id = action->GetActionID();
-    while (!((CThingCreatureBase*)PBrain->Creature)->IsFreeToPerformAction(action) && !IsStopping())
+    while (!((CThingCreatureBase*)PBrain->Creature)->IsFreeToPerformAction(*action) && !IsStopping())
         PBrain->SuspendSuspendableProcess();
     if (IsStopping())
         return AI_ACTION_STOPPING;

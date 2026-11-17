@@ -1,5 +1,8 @@
 // CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& action) -- make `action` (its preceding action when it has one, else a clone) the creature's current action when the creature is free to perform it: the new action takes over from the old one and starts; if it is still current afterwards, update it now during a frame update and tell the unfinished old action it was replaced. A refused combat action is offered to the combat component (0x30) as the possible queued action
 // Leaf: ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z
+// NF84 (round 7, q11050 binder): the local CThingCreatureBase model's IsFreeToPerformAction respelt in place to the Ego_r.pdb /
+//   FableWin.pdb form ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z (const, by const reference; the
+//   landed self row 0x00662210 defines it), as NF83 did in 0x00662210 itself; the call passes the action by reference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006644F0, length 384 bytes (`ret 4`).
 //   Signature from Ego_r.pdb `?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z`; the
 //   CCountedPointer overload follows at 0x00664670.
@@ -106,14 +109,14 @@ class CThingCreatureBase : public CThing { public:
     CCountedPointer<CCreatureActionBase> PCurrentAction;   // +0x100
     unsigned char _pad108[0x15c - 0x108];
     unsigned char CurrentlyFrameUpdating : 1;           // +0x15c bit 0
-    bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
+    bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210
     void UpdateAction();                                // 0x006643C0
     bool SetCurrentAction(const CCreatureActionBase& action);
 };
 
 bool CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& action)
 {
-    if (IsFreeToPerformAction(&action)) {
+    if (IsFreeToPerformAction(action)) {
         CCountedPointer<CCreatureActionBase> oldAction = PCurrentAction;
         if (action.HasPrecedingAction()) {
             CCreatureActionBase* preceding = 0;

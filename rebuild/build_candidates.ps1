@@ -6968,9 +6968,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059aae3'
-        Module = 'CFrontEndManager'
-        Source = '00/59/FrontEndHistoryDequeIterator_DistanceThunk_0059aae3.cpp'
-        TestSource = '00/59/FrontEndHistoryDequeIterator_DistanceThunk_0059aae3_test.cpp'
+        Module = 'std::_Deque_iterator<NUISystem::CComponent *, std::_Nonconst_traits<NUISystem::CComponent *>>'
+        Source = '00/59/stdDequeiterator_operator_0059aae3.cpp'
+        TestSource = '00/59/stdDequeiterator_operator_0059aae3_test.cpp'
         PassPattern = '0059aae3_TEST PASS'
     }
     [pscustomobject]@{
@@ -150841,9 +150841,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006dc020'
-        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >'
-        Source = '00/6d/stdRbtree_Rbtree_006dc020.cpp'
-        TestSource = '00/6d/stdRbtree_Rbtree_006dc020_test.cpp'
+        Module = 'CPersistTraits<CComboMultiplierData>'
+        Source = '00/6d/CPersistTraits_CPersistTraits_006dc020.cpp'
+        TestSource = '00/6d/CPersistTraits_CPersistTraits_006dc020_test.cpp'
         PassPattern = '006dc020_TEST PASS'
     }
     [pscustomobject]@{
@@ -165470,9 +165470,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004585bd'
-        Module = '_unattributed'
-        Source = '00/45/unattributed_CAggregate004585bd_004585bd.cpp'
-        TestSource = '00/45/unattributed_CAggregate004585bd_004585bd_test.cpp'
+        Module = 'CArmourDef'
+        Source = '00/45/CArmourDef_CArmourDef_004585bd.cpp'
+        TestSource = '00/45/CArmourDef_CArmourDef_004585bd_test.cpp'
         PassPattern = '004585bd_TEST PASS'
     }
     [pscustomobject]@{
@@ -202807,9 +202807,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00789358'
-        Module = 'CHitParameters_00789358'
-        Source = '00/78/CHitParameters00789358_CHitParameters00789358_00789358.cpp'
-        TestSource = '00/78/CHitParameters00789358_CHitParameters00789358_00789358_test.cpp'
+        Module = 'CHitParameters'
+        Source = '00/78/CHitParameters_CHitParameters_00789358.cpp'
+        TestSource = '00/78/CHitParameters_CHitParameters_00789358_test.cpp'
         PassPattern = '00789358_TEST PASS'
     }
     [pscustomobject]@{
@@ -209534,9 +209534,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059b4fe'
-        Module = '_unattributed::PointerDeque'
-        Source = '00/59/unattributedPointerDeque_PointerDeque_0059b4fe.cpp'
-        TestSource = '00/59/unattributedPointerDeque_PointerDeque_0059b4fe_test.cpp'
+        Module = 'std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>'
+        Source = '00/59/stddeque_deque_0059b4fe.cpp'
+        TestSource = '00/59/stddeque_deque_0059b4fe_test.cpp'
         PassPattern = '0059b4fe_TEST PASS'
     }
     [pscustomobject]@{
@@ -217257,9 +217257,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059b576'
-        Module = 'CDwordDeque'
-        Source = '00/59/CDwordDeque_Mpushbackauxv_0059b576.cpp'
-        TestSource = '00/59/CDwordDeque_Mpushbackauxv_0059b576_test.cpp'
+        Module = 'std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>'
+        Source = '00/59/stddeque_Mpushbackauxv_0059b576.cpp'
+        TestSource = '00/59/stddeque_Mpushbackauxv_0059b576_test.cpp'
         PassPattern = '0059b576_TEST PASS'
     }
     [pscustomobject]@{
@@ -311254,9 +311254,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0053cb9b'
-        Module = 'std::_Rb_tree'
-        Source = '00/53/STLRbtree_Rbtree_0053cb9b.cpp'
-        TestSource = '00/53/STLRbtree_Rbtree_0053cb9b_test.cpp'
+        Module = 'std::map<unsigned long, NUISystem::CUIState>'
+        Source = '00/53/stdmap_map_0053cb9b.cpp'
+        TestSource = '00/53/stdmap_map_0053cb9b_test.cpp'
         PassPattern = '0053cb9b_TEST PASS'
     }
     [pscustomobject]@{

@@ -2673,7 +2673,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00458573	CArmourDef	CArmourDef	__thiscall	undefined	1	CTattooDef *	0	yes	accepted									
 0045859d	GetSizeofClass	CArmourDef	__thiscall	ulong	1	CArmourDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CArmourDef_GetSizeofClass_0045859d.cpp
 004585a1	`scalar_deleting_destructor'	CArmourDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_004585a1.cpp
-004585bd	~CAggregate_004585bd	_unattributed	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
+004585bd	~CArmourDef	CArmourDef	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
 004585e0	CHitLocationDef	CHitLocationDef	__thiscall	undefined	1	CCarriedReadableDef *	0	yes	accepted									
 004585fa	GetSizeofClass	CHitLocationDef	__thiscall	ulong	1	CHitLocationDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CHitLocationDef_GetSizeofClass_004585fa.cpp
 004585fe	Transfer	CHitLocationDef	__fastcall	void	0		1	yes	accepted									
@@ -9389,7 +9389,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053cb20	list	std::list<std::pair<long, long>, std::allocator<std::pair<long, long>>>	unknown	undefined	0		0	yes	accepted									
 0053cb4f	push_back	std::vector<bool>	unknown	undefined	0		0	yes	accepted									
 0053cb7f	ScalarDeletingDtor_0053cb7f	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CLandscapeBackgroundPatch_vectordeletingdestructor_0053cb7f.cpp
-0053cb9b	_Rb_tree	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
+0053cb9b	map	std::map<unsigned long, NUISystem::CUIState>	unknown	undefined	0		0	yes	accepted									
 0053cc38	__copy<std::map<unsigned long, NUISystem::CUIState, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, NUISystem::CUIState>>> *, std::map<unsigned long, NUISystem::CUIState, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, NUISystem::CUIState>>> *, int>	std	__fastcall	CArray<CRandomAppearanceMorph::CBodyPartMesh> *	3	CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *	1	yes	accepted									
 0053cc6a	ForEachElem0xc_OnReadFinished_0053cc6a	_global	__fastcall	void	3	pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,CAnimationEntry> *,allocator<std::pair<unsigned_long,CAnimationEntry>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_0053cc6a.cpp
 0053cc90	Forward_CForwarder_0053cc90	_unattributed	__thiscall	undefined	2	CCombatAction_GenericResponseToDecapitation *,CThingCreatureBase *	0	yes	accepted									
@@ -11198,7 +11198,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0059aa64	_M_destroy_nodes	std::_Deque_base<NUISystem::CComponent*>	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\FrontEndHistoryDeque_FreeBlocks_0059aa64.cpp
 0059aa86	ShareData	CCountedPointer<NUISystem::CScrollableList>	__thiscall	void	3	CCountedPointer<NUISystem::CAction> *,CAction *,CCPPointerInfo *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CCountedPointerNUISystemCAction_ShareData_0059aa86.cpp
 0059aae0	Current	FrontEndHistoryDequeIterator	unknown	undefined	0		0			accepted	gapscan							
-0059aae3	DistanceThunk	FrontEndHistoryDequeIterator	unknown	undefined	0		0			discovered	boundary							
+0059aae3	operator-	std::_Deque_iterator<NUISystem::CComponent *, std::_Nonconst_traits<NUISystem::CComponent *>>	unknown	undefined	0		0			discovered	boundary							
 0059aae8	AddChildPrimitive	CEngineInternalPrimitiveBase	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CEngineInternalPrimitiveBase_AddChildPrimitive_0059aae8.cpp
 0059aaf9	IncrementStatIndicator	CTCInventoryExperience	__thiscall	void	1	CTCInventoryExperience *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CTCInventoryExperience_IncrementStatIndicator_0059aaf9.cpp
 0059ab1f	AddChildPrimitive	CEngineInternalPrimitiveBase	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CEngineInternalPrimitiveBase_AddChildPrimitive_0059ab1f.cpp
@@ -11237,9 +11237,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0059b35c	insert_unique	std::_Rb_tree<FRONTEND_SCREEN, std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>, std::_Select1st<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>, std::less<FRONTEND_SCREEN>, std::allocator<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>>	unknown	undefined	0		0	yes	accepted									
 0059b49b	CStaticMeshPlacement_0059b49b	CStaticMeshPlacement_0059b49b	__thiscall	CEnginePrimitiveHandle	12	CEnginePrimitiveRenderer *,C3DMeshInfo *,C3DMeshInfo *,CMatrix3x4 *,float,CEngineFadeDistance *,long,CRGBColour *,long,float,bool,ulong	1	yes	accepted									
 0059b4d8	_M_reserve_map_at_back	std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>	__thiscall	long	1	CTCUserActionPointBase *	1	yes	accepted									
-0059b4fe	PointerDeque	_unattributed::PointerDeque	__thiscall	void	3	CShaderRenderManager *,_D3DMATRIX *,CMatrix3x4 *	1	yes	accepted									
+0059b4fe	deque	std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>	__thiscall	void	3	CShaderRenderManager *,_D3DMATRIX *,CMatrix3x4 *	1	yes	accepted									
 0059b559	insert	std::map<FRONTEND_SCREEN,NUISystem::CComponent*,std::less<FRONTEND_SCREEN>,std::allocator<std::pair<FRONTEND_SCREEN const,NUISystem::CComponent*>>>	__thiscall	C2DVector	3	CPersistTraits<C2DVector> *,CPersistContext *,CStringParser *	1	yes	accepted									
-0059b576	_M_push_back_aux_v	CDwordDeque	unknown	undefined	0		0	yes	accepted									
+0059b576	_M_push_back_aux_v	std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>	unknown	undefined	0		0	yes	accepted									
 0059b5c2	Update	NUISystem::CFrontEndManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0059b5d7	operator[]	std::map<FRONTEND_SCREEN, NUISystem::CComponent *, std::less<FRONTEND_SCREEN>, std::allocator<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>>	__thiscall	long *	2	map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_> *,EUsedKeys *	1	yes	accepted									
 0059b61c	push_back	std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>	__thiscall	void	1	CCreatureAction_FireMissileWeapon *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CCreatureActionFireMissileWeapon_FrameUpdate_0059b61c.cpp
@@ -17346,7 +17346,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006dbdc0	__copy_backward<CAttackHistoryCombo*,CAttackHistoryCombo*,int>	std	__fastcall	CLipSyncPhoneme *	4	CLipSyncPhoneme *,CLipSyncPhoneme *,CLipSyncPhoneme *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 006dbe00	TransferBinaryIn	CPersistTraits<CComboMultiplierData>	__thiscall	void	3	CPersistTraits<CComboMultiplierData> *,CMemoryDataInputStream *,CComboMultiplierData *	1	yes	accepted									
 006dbfe0	CUnprovenContainer_006dbfe0	CUnprovenContainer_006dbfe0	unknown	undefined	0		0	yes	review-medium									
-006dc020	~_Rb_tree	std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >	unknown	undefined	0		0	yes	accepted									
+006dc020	~CPersistTraits	CPersistTraits<CComboMultiplierData>	unknown	undefined	0		0	yes	accepted									
 006dc070	TransferBinaryIn	CPersistTraits<CHeroStatIncreaseData>	__thiscall	void	3	CPersistTraits<CHeroStatIncreaseData> *,CMemoryDataInputStream *,CHeroStatIncreaseData *	1	yes	accepted									
 006dc1b0	CUnprovenContainer_006dc1b0	CUnprovenContainer_006dc1b0	unknown	undefined	0		0	yes	review-medium									
 006dc1f0	~CRetailTree_erase004da252	CRetailTree_erase004da252	unknown	undefined	0		0	yes	accepted									
@@ -21464,7 +21464,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00789238	CHitParameters	CHitParameters	__thiscall	undefined	10	CHitParameters *,CHitLocation *,CThing *,CThing *,C3DVector *,C3DVector *,bool,bool,bool,bool	0	yes	accepted									
 007892ea	operator()	CThingFilter_IsAffectedByTraps	__thiscall	bool	2	CThingFilter_IsAffectedByTraps *,CThing *	1	yes	accepted									
 00789341	GetTypeAsString	CTCMeleeTrap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00789358	~CHitParameters_00789358	CHitParameters_00789358	__thiscall	void	1	CHitParameters *	1	yes	accepted									
+00789358	~CHitParameters	CHitParameters	__thiscall	void	1	CHitParameters *	1	yes	accepted									
 00789397	GetTypeAsString	CTCProjectileTrap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007893ae	_M_insert_overflow	std::vector<std::pair<CIntelligentPointer<CThing>, long>, std::allocator<std::pair<CIntelligentPointer<CThing>, long>>>	unknown	undefined	0		0	yes	accepted									
 007894b7	`scalar_deleting_destructor'	CTCTrapBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\CLandscapeBackgroundPatch_vectordeletingdestructor_007894b7.cpp

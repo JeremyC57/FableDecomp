@@ -1,4 +1,7 @@
 // Leaf: ?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z
+// NF84 (round 7, q11050 binder): the local CThingCreatureBase model's IsFreeToPerformAction respelt in place to the Ego_r.pdb /
+//   FableWin.pdb form ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z (const, by const reference; the
+//   landed self row 0x00662210 defines it), as NF83 did in 0x00662210 itself; the call passes the action by reference.
 // CAIStateGroupBase::AIAction_PerformAction(CCreatureActionBase* action) -- wait until the creature is free to perform the action (or the group stops), post it in a brain output (flag 8), yield once, and report 1 (stopping) or 2 (performed)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097D8B0, length 203 bytes (`ret 4`).
@@ -76,7 +79,7 @@ class CCreatureActionBase
 
 class CThingCreatureBase
 { public:
-    bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
+    bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210
 };
 
 enum EAIActionReturn { };                           // NF35: values from the body (1 stopping, 2 done)
@@ -94,7 +97,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_PerformAction(const CCreatureActionB
 {
     if (IsStopping())
         return (EAIActionReturn)1;
-    while (!((CThingCreatureBase*)PBrain->Creature)->IsFreeToPerformAction(&action) && !IsStopping())
+    while (!((CThingCreatureBase*)PBrain->Creature)->IsFreeToPerformAction(action) && !IsStopping())
         PBrain->SuspendSuspendableProcess();
     if (IsStopping())
         return (EAIActionReturn)1;

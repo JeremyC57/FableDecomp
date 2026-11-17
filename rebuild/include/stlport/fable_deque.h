@@ -2,6 +2,9 @@
 #define FABLE_STLPORT_FABLE_DEQUE_H
 // STLport4.6.2 stl/_deque.h and _deque.c: native iterator/base hierarchy.
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_STLP_DEQUE_COPY_CTOR
+#include "rebuild_abi.h"                     // FABLE_FASTCALL (NF84 opt-in below)
+#endif
 namespace std {
 template<class T>struct _Deque_iterator_base {
  enum _Constants {_blocksize=128,__buffer_size=sizeof(T)<_blocksize?_blocksize/sizeof(T):1};
@@ -60,12 +63,24 @@ template<class T,class Traits>struct iterator_traits<_Deque_iterator<T,Traits> >
  typedef T value_type;typedef random_access_iterator_tag iterator_category;typedef ptrdiff_t difference_type;
  typedef typename Traits::reference reference;typedef typename Traits::pointer pointer;
 };
+#ifdef FABLE_RETAIL_STLP_DEQUE_COPY_CTOR
+// NF84 per-TU opt-in (row 0x0059B4FE): STLport 4.6 _uninitialized.h __uninitialized_copy(_InputIter, _InputIter, _ForwardIter,
+// const __true_type&) for non-pointer iterators, declared only: retail calls the deque<NUISystem::CComponent*> instance out of line as a
+// __fastcall COMDAT (0x0059B49B: hidden result in ecx, the tag in edx, the three iterators by value; `ret 30h`).
+template<class I,class O> O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __true_type&);
+#endif
 template<class T,class A>class _Deque_base {
 public:
  typedef T value_type;typedef A allocator_type;typedef allocator<T*> _Map_alloc_type;
  typedef _Deque_iterator<T,_Nonconst_traits<T> > iterator;
  static size_t buffer_size(){return _Deque_iterator_base<T>::__buffer_size;}
+#ifdef FABLE_RETAIL_STLP_DEQUE_COPY_CTOR
+ // NF84 per-TU opt-in (round 7, row 0x0059B4FE, the deque<NUISystem::CComponent*> copy constructor): the counted base constructor,
+ // declared only: retail calls the instance out of line (0x0059AEF9, landed `??0?$_Deque_base@...@QAE@ABV?$allocator@...@1@I@Z`).
+ _Deque_base(const A& a,size_t count);
+#else
  _Deque_base(const A& a,size_t count):_M_start(),_M_finish(),_M_map(allocator<T*>(),0),_M_map_size(a,0){_M_initialize_map(count);}
+#endif
  _Deque_base(const A& a):_M_start(),_M_finish(),_M_map(allocator<T*>(),0),_M_map_size(a,0){}
  ~_Deque_base(){if(_M_map._M_data){_M_destroy_nodes(_M_start._M_node,this->_M_finish._M_node+1);_M_map.deallocate(_M_map._M_data,_M_map_size._M_data);}}
 protected:
@@ -94,6 +109,20 @@ public:
  } // STLport4.6 _deque.h / _deque.c, expanded in0040C790
 #endif
  deque():_Deque_base<T,A>(A(),0){}
+#ifdef FABLE_RETAIL_STLP_DEQUE_COPY_CTOR
+ // NF84 per-TU opt-in (round 7, row 0x0059B4FE): STLport 4.6 _deque.h deque(const deque&) -- the base sized from the source
+ // (`__x.get_allocator(), __x.size()`; size() is the out-of-line _M_subtract 0x0059A8F3 through the inline operator-, so this
+ // needs FABLE_RETAIL_STLP_STACK_SIZE_PUSH + FABLE_RETAIL_STLP_STACK_TOP_POP), then __uninitialized_copy(__x.begin(), __x.end(),
+ // _M_start, _IsPODType()) with the pointer element's __true_type (the iterator overload declared below, out of line in retail:
+ // 0x0059B49B). get_allocator() / const begin() / end() are STLport's.
+ typedef _Deque_iterator<T,_Const_traits<T> > const_iterator;
+ A get_allocator()const{return this->_M_map_size;}
+ const_iterator begin()const{return this->_M_start;}
+ const_iterator end()const{return this->_M_finish;}
+ deque(const deque& x):_Deque_base<T,A>(x.get_allocator(),x.size()){
+  __uninitialized_copy(x.begin(),x.end(),this->_M_start,typename __type_traits<T>::is_POD_type());
+ }
+#endif
 #if defined(FABLE_RETAIL_STLP_DEQUE_BACK_POP_BODIES) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
  // NF79 per-TU opt-in (rows 0x0059B039 / 0x0059AEE5, the out-of-line deque<NUISystem::CComponent*> COMDATs themselves): STLport 4.6 _deque.h
  // back() and pop_back() with their bodies; _M_pop_back_aux (_deque.c, protected; retail 0x0059AD35) declared only.

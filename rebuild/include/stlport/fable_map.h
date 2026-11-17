@@ -40,6 +40,13 @@ struct _Rb_tree_node_base {
     _Rb_tree_node_base* _M_parent;
     _Rb_tree_node_base* _M_left;
     _Rb_tree_node_base* _M_right;
+#ifdef FABLE_RETAIL_STLP_TREE_COPY_CTOR_SMINMAX
+    // NF84 per-TU opt-in (round 7, row 0x0053CB9B map<unsigned long, NUISystem::CUIState>::map(const map&)): STLport 4.6 _tree.h's static
+    // node-base walks, declared only: that TU calls them out of line (`call 0x0041C7E0` / `call 0x0041C800`, __cdecl, landed
+    // _Rb_tree_node_base::_S_minimum / _S_maximum; the landed 0x0042CE7A binds the same spellings). No layout change.
+    static _Rb_tree_node_base* _S_minimum(_Rb_tree_node_base* x);       // 0x0041C7E0
+    static _Rb_tree_node_base* _S_maximum(_Rb_tree_node_base* x);       // 0x0041C800
+#endif
 };
 template<class V> struct _Rb_tree_node:public _Rb_tree_node_base { V _M_value_field; };
 template<class Dummy> class _Rb_global {
@@ -304,12 +311,18 @@ public:
         else {
             this->_M_header._M_data->_M_color=false;
             _M_root()=_M_copy(x._M_root(),this->_M_header._M_data);
+#ifdef FABLE_RETAIL_STLP_TREE_COPY_CTOR_SMINMAX
+            // NF84 (row 0x0053CB9B): STLport's `_S_minimum(_M_root())` / `_S_maximum(_M_root())`, the node-base walks out of line.
+            _M_leftmost()=static_cast<_Link_type>(_Rb_tree_node_base::_S_minimum(_M_root()));
+            _M_rightmost()=static_cast<_Link_type>(_Rb_tree_node_base::_S_maximum(_M_root()));
+#else
             _Rb_tree_node_base* n=_M_root();
             while(n->_M_left!=0) n=n->_M_left;
             _M_leftmost()=static_cast<_Link_type>(n);
             n=_M_root();
             while(n->_M_right!=0) n=n->_M_right;
             _M_rightmost()=static_cast<_Link_type>(n);
+#endif
         }
         _M_node_count=x._M_node_count;
     }

@@ -11,108 +11,87 @@
 // Shape: the seat release is guarded by the flag and a live seat (out-param GetTC, miss reads the key slot); the get-up
 //          name is copied from one of two global strings; an unused CBrainOutput local (0x48 bytes) is constructed and
 //          destroyed around the get-up call.
-// Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04) with PSeat +0x14,
-//          the seat flag +0x1c, sitting +0x1d, the action point index +0x20 and the alternate flag +0x30 (descriptive).
+// Layout: engine/CAIStateGroup_UsesSeat.h (Ego_r.pdb CAIStateGroup_UsesSeat: PSeat +0x14, GotSeatPos +0x1c, Sitting +0x1d,
+//          SeatPosIndex +0x20, SeatPos +0x24, SittingOnBench +0x30) over engine/CAIStateGroupBase.h (PBrain +0x04).
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
 //   `dynamic initializer for '...'`, defining rows named by agentFAM09):
 //   0x013BB6E8 GET_UP_FROM_BENCH_ANIM_NAME (anonymous namespace; initializer 0x01221B00), was g_GetUpNameAlternate.
 //   0x013BB6E0 GET_UP_FROM_CHAIR_ANIM_NAME (anonymous namespace; initializer 0x01221AC0), was g_GetUpName.
-#include "fable_compiler.h"
-class CCharStringData;
+// NF84 (round 7, q11045 binder): ported onto the shared headers (engine/CAIStateGroup_UsesSeat.h + CAIStateGroupBase.h GetCreature,
+//   CAIBrain.h, CThingAICreature.h, CThingObject.h, CTCUserActionPointBase.h, CTCCreatureModeManager.h, ThingAlive.h IS_THING_ALIVE<T>,
+//   CCountedPointer.h); the local CAIStateGroupBase / CAIStateGroup_UsesSeat / CAIBrain / CTCCreatureModeManager / CTCUserActionPointBase
+//   / CCountedPointer models are gone. GetUpFromSitting is declared with its Ego_r.pdb / FableWin.pdb spelling
+//   (?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z, the landed self row 0x0085FF10).
+//   CBrainOutput has no shared header and stays local (implicit destructor, expanded here as retail does).
 #define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
-#include "engine/CThing.h"
-namespace { extern CCharString GET_UP_FROM_CHAIR_ANIM_NAME; }                 // 0x013BB6E0 (descriptive)
-namespace { extern CCharString GET_UP_FROM_BENCH_ANIM_NAME; }        // 0x013BB6E8 (descriptive)
-class CTCBase;
-
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CBaseObject;
-class CBaseObjectPointer;
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER
+#define FABLE_RETAIL_CTCUSERACTIONPOINTBASE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CThingObject.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_UsesSeat.h"
+#include "engine/CTCUserActionPointBase.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/CCountedPointer.h"
+#include "engine/ThingAlive.h"
 
-FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
-{
-    if (p.Get() != 0) {
-        if (!p.Get()->IsDead())
-            return true;
-    }
-    return false;
-}
-struct CTCUserActionPointBase {
+namespace { extern CCharString GET_UP_FROM_CHAIR_ANIM_NAME; }      // 0x013BB6E0
+namespace { extern CCharString GET_UP_FROM_BENCH_ANIM_NAME; }      // 0x013BB6E8
+
+class CCreatureActionBase;
+class CBrainOutput {                                        // 0x48 bytes (no shared header; implicit destructor)
 public:
-    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
-public:                 // interface 0x2d
-};
-class CTCCreatureModeManager { public:                 // interface 0x31
-    void RemoveMode(unsigned long mode);        // 0x0073ABA0
-};
-struct CCountBlock { long Count; void (__fastcall* Deleter)(void*); void* Object; };
-struct CCountedPointer {                        // CCountedPointer<T>: object + count block, released inline
-    void* Object;
-    CCountBlock* Block;
-    ~CCountedPointer()
-    {
-        if (Block) {
-            --Block->Count;
-            if (Block->Count == 0) {
-                Block->Deleter(Block->Object);
-                operator delete(Block);
-            }
-        }
-        Object = 0;
-        Block = 0;
-    }
-};
-class CBrainOutput { public:
-    unsigned char _pad[0x20];
-    CCountedPointer Counted;                    // +0x20
+    unsigned long Types;                                    // +0x00
+    long          LookFlags;                                // +0x04
+    unsigned char NavigationInput[0x18];                    // +0x08
+    CCountedPointer<CCreatureActionBase> PAction;           // +0x20
     unsigned char _pad28[0x40 - 0x28];
-    CIntelligentPointer<CThing> PTarget;            // +0x40 (retail offset; the frame places it 0x40 into the 0x48-byte local)
-    CBrainOutput();                             // 0x00835620
+    CIntelligentPointer<CThing> PTarget;                    // +0x40
+    CBrainOutput();                                         // 0x00835620
 };
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
-};
-bool __fastcall GetUpFromSitting(CThing* creature, long movement, const CCharString* anim, CAIBrain* brain);   // 0x0085FF10
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    unsigned char _pad[0x0c];
-    CThing* GetCreature() const { return PBrain->PCreature; }
-};
-struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
-    CIntelligentPointer<CThing> PSeat;              // +0x14
-    bool GotSeat;                               // +0x1c (descriptive)
-    bool Sitting;                               // +0x1d (descriptive)
-    unsigned char _pad1e[2];
-    long ActionPointIndex;                      // +0x20 (descriptive)
-    unsigned char _pad24[0x30 - 0x24];
-    bool AlternateGetUp;                        // +0x30 (descriptive)
-    virtual void OnReplace();
-};
+namespace NCreatureMode {
+bool __fastcall GetUpFromSitting(CThingCreatureBase& creature, long sit_mode_type, const CCharString& anim, CAIBrain* brain);   // 0x0085FF10
+}
 
 void CAIStateGroup_UsesSeat::OnReplace()
 {
-    if (GotSeat && IS_THING_ALIVE(PSeat)) {
+    if (GotSeatPos && IS_THING_ALIVE(PSeat)) {
         CTCUserActionPointBase* points;
-        PSeat.Get()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &points);
-        ((CTCUserActionPointBase*)points)->SetActionPointAsFree(ActionPointIndex);
-        GotSeat = false;
+        PSeat->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &points);
+        points->SetActionPointAsFree(SeatPosIndex);
+        GotSeatPos = false;
     }
-    ActionPointIndex = -1;
+    SeatPosIndex = -1;
     if (Sitting) {
-        long movement = (AlternateGetUp != 0) + 8;
-        CCharString anim(AlternateGetUp ? GET_UP_FROM_BENCH_ANIM_NAME : GET_UP_FROM_CHAIR_ANIM_NAME);
+        long movement = (SittingOnBench != 0) + 8;
+        CCharString anim(SittingOnBench ? GET_UP_FROM_BENCH_ANIM_NAME : GET_UP_FROM_CHAIR_ANIM_NAME);
         CBrainOutput output;
-        if (!GetUpFromSitting(GetCreature(), movement, &anim, PBrain)) {
+        if (!NCreatureMode::GetUpFromSitting(GetCreature(), movement, anim, PBrain)) {
             CTCCreatureModeManager* modes;
-            GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
+            GetCreature().GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
             modes->RemoveMode(movement);
         }
         Sitting = false;

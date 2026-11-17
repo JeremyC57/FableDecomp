@@ -1,5 +1,8 @@
 //   CTCDiceGame::GetCurrentPlayer() (`return CurrentPlayer.GetPItem();`) compared as `DiceGame->GetCurrentPlayer() ==
 // Leaf: ?OnReplace@CAIStateGroup_BanditPlayDice@@QAEXXZ
+// NF84 (round 7, q11050 binder): the local CThingCreatureBase model's IsFreeToPerformAction respelt in place to the Ego_r.pdb /
+//   FableWin.pdb form ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z (const, by const reference; the
+//   landed self row 0x00662210 defines it), as NF83 did in 0x00662210 itself; the call passes the action by reference.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //   GetCreature()`: the extra inline level gives DiceGame its own temp (eax, `lea ecx,[eax+10h]`) and lets the creature load
 //   (edi) schedule ahead of the call, with the later action/IsFree block keeping retail's colouring. Direct
@@ -31,7 +34,7 @@ class CThingCreatureBase : public CThing { public:
     CCreatureActionQueue* PActionQueue;         // +0x100
     void UnsheatheDefaultWeapon();              // 0x00664A50
     bool IsPerformingAnyAction();               // 0x006622A0
-    bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
+    bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -143,7 +146,7 @@ void CAIStateGroup_BanditPlayDice::OnReplace()
         DiceGame = 0;
         CCreatureAction_PlayAnimation action(GetCreature(), "ST_DICEGAME_WATCHING_OUTOF", CSoundPair(), false, true, false, 0, 0);
         CBrainOutput output;
-        if (GetCreature()->IsFreeToPerformAction(&action)) {
+        if (GetCreature()->IsFreeToPerformAction(action)) {
             output.Flags |= 8;
             CCreatureActionBase* performed = &action;
             output.PAction.Reset(performed->Clone());
