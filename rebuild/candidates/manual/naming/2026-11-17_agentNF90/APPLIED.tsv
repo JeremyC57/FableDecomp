@@ -1,0 +1,13 @@
+entry	queue_address	correct_symbol	status	binders_ported	note
+q11178	0x004DD1DB	??1?$_Rb_tree@W4EHeroExperienceStatCategory@@...@std@@QAE@XZ	done	1	all slice binders ported / not-a-binder 0x004DD1DB: 0x004E3644
+q11179	0x004E6E43	?_M_erase@?$_Rb_tree@W4EDamageAttribute@@...CHeroStatIncreaseData...	done	3	all slice binders ported / not-a-binder 0x006DD1C0: 0x004E6E43 0x004E7749 0x006DC9B0
+q11180	0x004F9960	??0?$map@W4EHeroExperienceStatCategory@@M...@std@@QAE@ABV01@@Z	done	2	all slice binders ported / not-a-binder 0x004F97B3 0x006DD1C0: 0x004F9960 0x006DCBF0
+q11181	0x006DCE90	?insert_unique@?$_Rb_tree@W4EDamageAttribute@@...CHeroStatIncreaseData...	done	1	all slice binders ported / not-a-binder 0x006DCDD0 0x006DCFA0 0x006DD1C0: 0x006DCE90
+q11182	0x005BE85B	?GetSlotWithItemsOfType@CCategory@NInventory@@ABEJJ@Z	done	3	all slice binders ported / not-a-binder 0x005BF1D7: 0x005BE85B 0x005BF060 0x005BF16E
+q11183	0x005BD96B	?GetFirstEmptySlot@CCategory@NInventory@@ABEJXZ	done	2	all slice binders ported / not-a-binder 0x005BF1D7: 0x005BD96B 0x005BF060
+q11184	0x005BF19C	?IsSpaceInCategoryForItem@CCategory@NInventory@@QBE_NJ@Z	done	1	all slice binders ported / not-a-binder 0x005BF2ED: 0x005BF19C
+q11185	0x005BEAF5	?GetAllSelectedItems@CTCInventoryBase@NInventory@@IBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z	done	1	all slice binders ported / not-a-binder 0x005BEAD5: 0x005BEAF5
+q11186	0x005C1921	??$find_if@PBVCItem@NInventory@@VCIsSameItemType@@@std@@YIPBVCItem@NInventory@@PBV12@0VCIsSameItemType@@@Z	done	1	all slice binders ported / not-a-binder 0x005C1818 0x005BE839 0x005BE8B1: 0x005C1921
+q11187	0x00664670	?SetCurrentAction@CThingCreatureBase@@QAE_NABV?$CCountedPointer@VCCreatureActionBase@@@@@Z	done	1	all slice binders ported / not-a-binder 0x00664670: 0x008E74F0
+q11188	0x00686F10	?AllocateTC@CTCBase@@SIPAV1@ABVCCharString@@AAVCThing@@@Z	done	1	all slice binders ported / not-a-binder 0x00686F10: 0x004C9D60
+q11189	0x00739E60 0x008E74F0	(coordinator: CModeBase::OnDeactivate one definition)	done	2	all slice binders ported / not-a-binder 0x0081F910 0x008C1600: 0x00739E60 0x008E74F0

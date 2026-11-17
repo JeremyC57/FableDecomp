@@ -7,6 +7,29 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CMODEDRAGONBASE_MODEBASE
+// NF90 opt-in (round 7, q11189 row 0x008E74F0 NCreatureMode::CModeIntangible::OnDeactivate): the class as it is, NCreatureMode::CModeDragonBase
+// derived from CTCCreatureModeManager::CModeBase (FableWin.pdb ??0CModeDragonBase@NCreatureMode@@QAE@AAVCThing@@ABVCCharString@@@Z, the
+// overrides GetAnimFilter (slot 4, 0x00741D50) / OnActivate / OnDeactivate (Ego_r.pdb 0x0090EE30 / 0x0090EE50 = retail 0x008E7290 / 0x008E72B0);
+// Ego_r.pdb members Filter (CAnimFilterOfGroup, +0x1C) and PTarget (CIntelligentPointer<CThing>, +0x28) after the 0x1C-byte base, the
+// generated layout below. Needs engine/CTCCreatureModeManager.h with FABLE_RETAIL_CMODEBASE_VIRTUALS and FABLE_RETAIL_CINTELLIGENTPOINTER.
+// Declarations only.
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/CAnimFilterOfGroup.h"
+#include "engine/CIntelligentPointer.h"
+namespace NCreatureMode {
+class CModeDragonBase : public CTCCreatureModeManager::CModeBase {
+public:
+    virtual const CAnimFilterBase& GetAnimFilter() const;   // slot 4, 0x00741D50
+    virtual void OnActivate();                               // slot 5, 0x008E7290
+    virtual void OnDeactivate();                             // slot 6, 0x008E72B0
+    // Members public, as in the generated layout below (the asserts read them at namespace scope).
+    CAnimFilterOfGroup Filter;                               // +0x1c
+    CIntelligentPointer<CThing> PTarget;                     // +0x28
+};
+}  // namespace NCreatureMode
+#define FABLE_CMODEDRAGONBASE_T NCreatureMode::CModeDragonBase
+#else
 #ifdef FABLE_RETAIL_CMODEDRAGONBASE_VSLOTS
 // Landing cf (2026-11-11): the real class is NCreatureMode::CModeDragonBase (?GetAnimFilter@CModeDragonBase@NCreatureMode@@UBEABVCAnimFilterBase@@XZ,
 // retail 0x00741D50). The opt-in puts it in its namespace, declares the retail virtual in place of the vptr member and types Filter; same layout.
@@ -43,13 +66,16 @@ struct CModeDragonBase {
 #define FABLE_CMODEDRAGONBASE_T CModeDragonBase
 #endif
 
-FABLE_STATIC_ASSERT(sizeof(FABLE_CMODEDRAGONBASE_T) == 0x30);
-#ifndef FABLE_RETAIL_CMODEDRAGONBASE_VSLOTS
-FABLE_STATIC_ASSERT(offsetof(CModeDragonBase, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(FABLE_CMODEDRAGONBASE_T, holder) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(FABLE_CMODEDRAGONBASE_T, active) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(FABLE_CMODEDRAGONBASE_T, Filter) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(FABLE_CMODEDRAGONBASE_T, PTarget) == 0x28);
+FABLE_STATIC_ASSERT_AT(46, sizeof(FABLE_CMODEDRAGONBASE_T) == 0x30);
+#if !defined(FABLE_RETAIL_CMODEDRAGONBASE_VSLOTS) && !defined(FABLE_RETAIL_CMODEDRAGONBASE_MODEBASE)
+FABLE_STATIC_ASSERT_AT(48, offsetof(CModeDragonBase, __vftable) == 0x0);
+#endif
+#ifndef FABLE_RETAIL_CMODEDRAGONBASE_MODEBASE
+FABLE_STATIC_ASSERT_AT(50, offsetof(FABLE_CMODEDRAGONBASE_T, holder) == 0x4);
+FABLE_STATIC_ASSERT_AT(51, offsetof(FABLE_CMODEDRAGONBASE_T, active) == 0x18);
+#endif
+FABLE_STATIC_ASSERT_AT(52, offsetof(FABLE_CMODEDRAGONBASE_T, Filter) == 0x1c);
+FABLE_STATIC_ASSERT_AT(53, offsetof(FABLE_CMODEDRAGONBASE_T, PTarget) == 0x28);
 
 #endif // FABLE_ENGINE_CMODEDRAGONBASE_H

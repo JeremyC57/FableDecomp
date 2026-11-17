@@ -276,6 +276,22 @@ public:
 #endif
 #endif
     CTCBase* AddTC(const CCharString&,bool,const CTCParamsBase*);
+#ifdef FABLE_RETAIL_CTHING_INITTC
+    // NF90 opt-in (round 7, q11188 binder row 0x004C9D60 AddTC): Ego_r.pdb (0x004C94D0) + FableWin.pdb (0x01CF5BD0) ?InitTC@CThing@@AAEXPAVCTCBase@@@Z
+    // (private, out of line at 0x004C73E0). Declaration only: no layout change.
+private:
+    void InitTC(CTCBase* tc);                                            // 0x004C73E0
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_TCSTOBEREMOVED
+    // NF90 opt-in (round 7, q11188 binder row 0x004C9D60 AddTC): the private static
+    // ?TCsToBeRemoved@CThing@@0V?$list@U?$pair@V?$CIntelligentPointer@VCThing@@@@PAVCTCBase@@@std@@..@std@@A (Ego_d.pdb PUB32; Ego_r / FableWin
+    // name its dynamic initializer and atexit destructor; retail 0x013B8A24, initializer 0x0121A440). Needs engine/CIntelligentPointer.h and
+    // the STLport list. Declaration only: no layout change.
+private:
+    static std::list<std::pair<CIntelligentPointer<CThing>, CTCBase*> > TCsToBeRemoved;   // 0x013B8A24
+public:
+#endif
     CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }
     const CThingBaseDef& PeekBaseDef() const;                    // inline in retail: body `return *PBaseDef;` defined after CThingBaseDef is complete
 #ifdef FABLE_RETAIL_CTHING_HASBASEDEF

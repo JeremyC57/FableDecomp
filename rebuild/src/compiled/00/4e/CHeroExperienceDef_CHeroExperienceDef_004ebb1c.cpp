@@ -1,77 +1,31 @@
-// CHeroExperienceDef::~CHeroExperienceDef() -- destroy the attack-combo vector and the seven maps out of line, free the three long vectors, then the inlined CDefPointeeBase destructor stores its vtable and tail-calls ~CResource
-// Leaf: ??1CHeroExperienceDef
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004EBB1C, length 135 bytes (size-optimised module: `pop ecx` after free).
-// Label correction: catalogued as CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip (propagated); the only caller
-// is the scalar deleting destructor @ 0x004EBB00, slot 0 of CHeroExperienceDef's vtable 0x0124390C.
-// Callees: vector<CAttackHistoryCombo> dtor @ 0x004E81C1, map<EDamageAttribute,CHeroStatIncreaseData> dtor @ 0x004E81FB,
-// map<long,CDefString> dtor @ 0x004DD21C (x5), map<long,CComboMultiplierData> tree dtor @ 0x004E81E4 (all catalogued as the
-// propagated "CActiveFile::OnReadFinished"), free @ 0x00BFEA14 (x3), CResource::~CResource @ 0x009FC550 (tail jump).
-// Layout: Ego_r.pdb CHeroExperienceDef with the retail 12-byte STLport containers (PDB 16): ExperienceLevelThresholds
-// +0x28, HeroLevelTitles +0x34, FallbackMultipliers +0x40, SoundIntensityThresholds +0x4c, ComboMultiplierMap +0x58,
-// two floats +0x64/+0x68, ComboMultiplierIncrease +0x6c, ComboMultiplierLock +0x78, ComboMultiplierLost +0x84,
-// ComboMultiplierRunningHitsIncrease +0x90, StatIncreasePerHitType +0x9c, AttackHistoryCombos +0xa8 (retail 0xb4).
-// Shape: members destroyed in reverse order (the map/combo-vector destructors out of line, the vector<long> destructor
-// inline `if (start) free(start)`), the most-derived class `__declspec(novtable)` (no own vtable store), then the
-// inlined CDefPointeeBase destructor's store (0x01230BA0) and the tail jump; `#pragma optimize("s", on)`.
+// CHeroExperienceDef::~CHeroExperienceDef() -- the destructor (modelled as the compiler-generated one): the attack-combo vector and the seven maps destroyed out of line, the three long vectors freed, then the inlined def-base destructors (the CDefPointeeBase vtable store and the tail jump to ~CResource)
+// Leaf: ??1CHeroExperienceDef@@UAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004EBB1C, 135 bytes, thiscall; size-optimised def TU (`pop ecx` after free). Its only caller is the
+//   scalar deleting destructor 0x004EBB00 (vtable 0x0124390C slot 0).
+// Name: Ego_r.pdb 0x0050C568 + FableWin.pdb 0x01B9C01C ??1CHeroExperienceDef@@UAE@XZ.
+// Callees: ~vector<CAttackHistoryCombo> 0x004E81C1, ~_Rb_tree<EDamageAttribute, pair<const EDamageAttribute, CHeroStatIncreaseData> ..>
+//   0x004E81FB (q11179 / NF90), ~_Rb_tree<long, pair<const long, CDefString> ..> 0x004DD21C (x5), ~_Rb_tree<long, pair<const long,
+//   CComboMultiplierData> ..> 0x004E81E4, free 0x00BFEA14 (x3, the inline ~vector<long>), CResource::~CResource 0x009FC550 (tail jump).
+// Layout: engine/CHeroExperienceDef.h, FABLE_RETAIL_CHEROEXPERIENCEDEF_TRANSFER (the Ego_r.pdb STLport member types, retail 0xB4).
+// Shape: the compiler-generated destructor (no vptr store of its own, family K050 as 0x00F26DF0): members in reverse order, then the
+//   CDefPointeeBase vptr 0x01230BA0 and `jmp ~CResource`; the tree destructors stay calls (TREE_CTOR_DTOR_OUTOFLINE / TREE_CLEAR_OUTOFLINE,
+//   as the 0x004E81E4 row).
 #pragma optimize("s", on)
-// NF81 (round 7, q10975): the ComboMultiplierMap stand-in (CComboMultiplierMap with a ??1CComboMultiplierMap@@QAE@XZ destructor) is the
-//   shared std::map<long, CComboMultiplierData> (stlport/fable_map.h + engine/CComboMultiplierData.h, Ego_r.pdb member type, as NF78's
-//   0x004F914A swap); FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE keeps the tree destructor a call, so the member's destruction binds
-//   0x004E81E4 as that tree's ~_Rb_tree (its row, NF81); TREE_CLEAR_OUTOFLINE keeps the clear inside that COMDAT a call, as in the
-//   0x004E81E4 row. The other pre-existing stand-ins are unchanged.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CATTACKHISTORYCOMBO
+#define FABLE_RETAIL_CHEROEXPERIENCEDEF_TRANSFER
 #define FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
-#define FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE   // so the ~_Rb_tree COMDAT of this TU is the 0x004E81E4 text (clear called)
+#define FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE
 #include "stlport/fable_map.h"
-#include "engine/CComboMultiplierData.h"
-extern "C" void __cdecl free(void* block);         // 0x00BFEA14
+#include "engine/CHeroExperienceDef.h"
 
-class CResource { public:                           // engine/CResource.h: the root of the def hierarchy
-    virtual void v00();
-    virtual ~CResource();                            // 0x009FC550
-};
-class CDefPointeeBase : public CResource { public:         // vtable 0x01230BA0
-    virtual void v00();
-    ~CDefPointeeBase() { }
-};
-
-struct CLongVector {                               // retail vector<long>: start / finish / end_of_storage
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-    ~CLongVector() { if (_M_start) free(_M_start); }
-};
-struct CLongDefStringMap {                         // map<long,CDefString>
-    unsigned char _body[0x0c];
-    ~CLongDefStringMap();                          // 0x004DD21C
-};
-struct CStatIncreaseMap {                          // map<EDamageAttribute,CHeroStatIncreaseData>
-    unsigned char _body[0x0c];
-    ~CStatIncreaseMap();                           // 0x004E81FB
-};
-struct CAttackHistoryComboVector {                 // vector<CAttackHistoryCombo>
-    unsigned char _body[0x0c];
-    ~CAttackHistoryComboVector();                  // 0x004E81C1
-};
-
-struct __declspec(novtable) CHeroExperienceDef : CDefPointeeBase {   // vtable 0x0124390C, retail 0xb4 bytes
-    unsigned char             _base[0x28 - 0x04];
-    CLongVector               ExperienceLevelThresholds;            // +0x28
-    CLongVector               HeroLevelTitles;                      // +0x34
-    CLongVector               FallbackMultipliers;                  // +0x40
-    CLongDefStringMap         SoundIntensityThresholds;             // +0x4c
-    std::map<long, CComboMultiplierData> ComboMultiplierMap;        // +0x58
-    float                     ExperienceMultiplierParamPerUnitComboMultiplier;   // +0x64
-    float                     ExperienceMultiplierRegionChangeMultiplier;        // +0x68
-    CLongDefStringMap         ComboMultiplierIncrease;              // +0x6c
-    CLongDefStringMap         ComboMultiplierLock;                  // +0x78
-    CLongDefStringMap         ComboMultiplierLost;                  // +0x84
-    CLongDefStringMap         ComboMultiplierRunningHitsIncrease;   // +0x90
-    CStatIncreaseMap          StatIncreasePerHitType;               // +0x9c
-    CAttackHistoryComboVector AttackHistoryCombos;                  // +0xa8
-    virtual void v00();
-    ~CHeroExperienceDef();
-};
-
-CHeroExperienceDef::~CHeroExperienceDef()
-{
+namespace {
+// Fidelity: scaffolding, not retail: the shared header declares no destructor, so the destructor is the compiler-generated one (retail
+// stores no CHeroExperienceDef vptr in it, the K050 family's implicit-destructor shape; whether the original source declared one is not
+// recorded here: the PDB name sets list ??1 either way, and 0x004F9CFC gets the same shape from a declared one under novtable). This TU emits its
+// out-of-line COMDAT through a qualified call (too large for the size-optimised inliner); retail's emitter is the scalar deleting destructor 0x004EBB00.
+void DestroyHeroExperienceDef(CHeroExperienceDef& def)
+{ def.CHeroExperienceDef::~CHeroExperienceDef(); }
 }

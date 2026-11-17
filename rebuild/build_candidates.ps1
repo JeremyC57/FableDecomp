@@ -1374,9 +1374,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bd96b'
-        Module = 'CCategory'
-        Source = '00/5b/CCategory_GetFirstEmptySlot_005bd96b.cpp'
-        TestSource = '00/5b/CCategory_GetFirstEmptySlot_005bd96b_test.cpp'
+        Module = 'NInventory::CCategory'
+        Source = '00/5b/NInventoryCCategory_GetFirstEmptySlot_005bd96b.cpp'
+        TestSource = '00/5b/NInventoryCCategory_GetFirstEmptySlot_005bd96b_test.cpp'
         PassPattern = 'CCategory_005bd96b_TEST PASS'
     }
     [pscustomobject]@{
@@ -17735,9 +17735,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e7749'
-        Module = '_global'
-        Source = '00/4e/CTCCarryable_OnKill_004e7749.cpp'
-        TestSource = '00/4e/CTCCarryable_OnKill_004e7749_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, CHeroStatIncreaseData>, std::_Select1st<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>'
+        Source = '00/4e/stdRbtree_clear_004e7749.cpp'
+        TestSource = '00/4e/stdRbtree_clear_004e7749_test.cpp'
         PassPattern = 'AUTO_TINY_004e7749_TEST PASS'
     }
     [pscustomobject]@{
@@ -61365,9 +61365,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006dc9b0'
-        Module = '_global'
-        Source = '00/6d/CTCCarryable_OnKill_006dc9b0.cpp'
-        TestSource = '00/6d/CTCCarryable_OnKill_006dc9b0_test.cpp'
+        Module = 'std::map<EDamageAttribute, CHeroStatIncreaseData, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>'
+        Source = '00/6d/stdmap_clear_006dc9b0.cpp'
+        TestSource = '00/6d/stdmap_clear_006dc9b0_test.cpp'
         PassPattern = 'CTCCARRYABLE_ONKILL_006DC9B0_TEST PASS'
     }
     [pscustomobject]@{
@@ -69664,9 +69664,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e81fb'
-        Module = 'std'
-        Source = '00/4e/std_list_T_004e81fb_dtor_004e81fb.cpp'
-        TestSource = '00/4e/std_list_T_004e81fb_dtor_004e81fb_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, CHeroStatIncreaseData>, std::_Select1st<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>'
+        Source = '00/4e/stdRbtree_Rbtree_004e81fb.cpp'
+        TestSource = '00/4e/stdRbtree_Rbtree_004e81fb_test.cpp'
         PassPattern = '004e81fb_TEST PASS'
     }
     [pscustomobject]@{
@@ -91141,9 +91141,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e6e43'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/4e/LTextTreeWalkThrough_BuildTreeArray_004e6e43.cpp'
-        TestSource = '00/4e/LTextTreeWalkThrough_BuildTreeArray_004e6e43_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, CHeroStatIncreaseData>, std::_Select1st<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>'
+        Source = '00/4e/stdRbtree_Merase_004e6e43.cpp'
+        TestSource = '00/4e/stdRbtree_Merase_004e6e43_test.cpp'
         PassPattern = 'PASS_004e6e43'
     }
     [pscustomobject]@{
@@ -91379,9 +91379,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e3644'
-        Module = '_global'
-        Source = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e3644.cpp'
-        TestSource = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e3644_test.cpp'
+        Module = 'std::pair<const EDamageAttribute,CHeroStatIncreaseData>'
+        Source = '00/4e/stdpair_scalardeletingdestructor_004e3644.cpp'
+        TestSource = '00/4e/stdpair_scalardeletingdestructor_004e3644_test.cpp'
         PassPattern = 'PASS_004e3644'
     }
     [pscustomobject]@{
@@ -120670,8 +120670,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00739e60'
         Module = 'CTCCreatureModeManager::CModeBase'
-        Source = '00/73/CTCCreatureModeManagerCModeBase_vfunc6_00739e60.cpp'
-        TestSource = '00/73/CTCCreatureModeManagerCModeBase_vfunc6_00739e60_test.cpp'
+        Source = '00/73/CTCCreatureModeManagerCModeBase_OnDeactivate_00739e60.cpp'
+        TestSource = '00/73/CTCCreatureModeManagerCModeBase_OnDeactivate_00739e60_test.cpp'
         PassPattern = 'PASS_00739e60'
     }
     [pscustomobject]@{
@@ -127502,9 +127502,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bf16e'
-        Module = 'CCategory'
-        Source = '00/5b/CCategory_UpdateItemStatsForThing_005bf16e.cpp'
-        TestSource = '00/5b/CCategory_UpdateItemStatsForThing_005bf16e_test.cpp'
+        Module = 'NInventory::CCategory'
+        Source = '00/5b/NInventoryCCategory_UpdateItemStatsForThing_005bf16e.cpp'
+        TestSource = '00/5b/NInventoryCCategory_UpdateItemStatsForThing_005bf16e_test.cpp'
         PassPattern = '005bf16e_TEST PASS'
     }
     [pscustomobject]@{
@@ -168748,9 +168748,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004f98a4'
-        Module = 'CRetailTree_004f9934'
-        Source = '00/4f/CRetailTree004f9934_Copy_004f98a4.cpp'
-        TestSource = '00/4f/CRetailTree004f9934_Copy_004f98a4_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, CHeroStatIncreaseData>, std::_Select1st<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>'
+        Source = '00/4f/stdRbtree_Mcopy_004f98a4.cpp'
+        TestSource = '00/4f/stdRbtree_Mcopy_004f98a4_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '004f98a4_TEST PASS'
     }
@@ -168995,9 +168995,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004f9831'
-        Module = 'CRetailTree_004f98a4'
-        Source = '00/4f/CRetailTree004f98a4_operator_004f9831.cpp'
-        TestSource = '00/4f/CRetailTree004f98a4_operator_004f9831_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, CHeroStatIncreaseData>, std::_Select1st<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>'
+        Source = '00/4f/stdRbtree_operator_004f9831.cpp'
+        TestSource = '00/4f/stdRbtree_operator_004f9831_test.cpp'
         PassPattern = '004f9831_TEST PASS'
     }
     [pscustomobject]@{
@@ -176345,9 +176345,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006dce90'
-        Module = '_unattributed'
-        Source = '00/6d/unattributed_InsertUniqueCRetailTree006dce90_006dce90.cpp'
-        TestSource = '00/6d/unattributed_InsertUniqueCRetailTree006dce90_006dce90_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, CHeroStatIncreaseData>, std::_Select1st<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>'
+        Source = '00/6d/stdRbtree_insertunique_006dce90.cpp'
+        TestSource = '00/6d/stdRbtree_insertunique_006dce90_test.cpp'
         PassPattern = '006dce90_TEST PASS'
     }
     [pscustomobject]@{
@@ -192123,16 +192123,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005be85b'
-        Module = 'CCategory'
-        Source = '00/5b/CCategory_GetSlotWithItemsOfType_005be85b.cpp'
-        TestSource = '00/5b/CCategory_GetSlotWithItemsOfType_005be85b_test.cpp'
+        Module = 'NInventory::CCategory'
+        Source = '00/5b/NInventoryCCategory_GetSlotWithItemsOfType_005be85b.cpp'
+        TestSource = '00/5b/NInventoryCCategory_GetSlotWithItemsOfType_005be85b_test.cpp'
         PassPattern = '005be85b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005bf19c'
-        Module = 'CCategory'
-        Source = '00/5b/CCategory_CanAddItem_005bf19c.cpp'
-        TestSource = '00/5b/CCategory_CanAddItem_005bf19c_test.cpp'
+        Module = 'NInventory::CCategory'
+        Source = '00/5b/NInventoryCCategory_IsSpaceInCategoryForItem_005bf19c.cpp'
+        TestSource = '00/5b/NInventoryCCategory_IsSpaceInCategoryForItem_005bf19c_test.cpp'
         PassPattern = '005bf19c_TEST PASS'
     }
     [pscustomobject]@{
@@ -222424,9 +222424,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004f9960'
-        Module = '_Rb_tree'
-        Source = '00/4f/Rbtree_Rbtree_004f9960.cpp'
-        TestSource = '00/4f/Rbtree_Rbtree_004f9960_test.cpp'
+        Module = 'std::map<EHeroExperienceStatCategory, float, std::less<EHeroExperienceStatCategory>, std::allocator<std::pair<EHeroExperienceStatCategory const, float>>>'
+        Source = '00/4f/stdmap_map_004f9960.cpp'
+        TestSource = '00/4f/stdmap_map_004f9960_test.cpp'
         PassPattern = '004f9960_TEST PASS'
     }
     [pscustomobject]@{
@@ -222466,9 +222466,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bf103'
-        Module = 'CCategory'
-        Source = '00/5b/CCategory_AddInventoryItem_005bf103.cpp'
-        TestSource = '00/5b/CCategory_AddInventoryItem_005bf103_test.cpp'
+        Module = 'NInventory::CCategory'
+        Source = '00/5b/NInventoryCCategory_AddInventoryItem_005bf103.cpp'
+        TestSource = '00/5b/NInventoryCCategory_AddInventoryItem_005bf103_test.cpp'
         PassPattern = '005bf103_TEST PASS'
     }
     [pscustomobject]@{
@@ -231734,9 +231734,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005beaf5'
-        Module = 'CTCInventoryBase'
-        Source = '00/5b/CTCInventoryBase_GetAllSelectedItems_005beaf5.cpp'
-        TestSource = '00/5b/CTCInventoryBase_GetAllSelectedItems_005beaf5_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_GetAllSelectedItems_005beaf5.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_GetAllSelectedItems_005beaf5_test.cpp'
         PassPattern = '005beaf5_TEST PASS'
     }
     [pscustomobject]@{
@@ -235845,16 +235845,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bf060'
-        Module = 'CCategory'
-        Source = '00/5b/CCategory_AddItem_005bf060.cpp'
-        TestSource = '00/5b/CCategory_AddItem_005bf060_test.cpp'
+        Module = 'NInventory::CCategory'
+        Source = '00/5b/NInventoryCCategory_AddItem_005bf060.cpp'
+        TestSource = '00/5b/NInventoryCCategory_AddItem_005bf060_test.cpp'
         PassPattern = '005bf060_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005bf5a4'
-        Module = 'CCategory'
-        Source = '00/5b/CCategory_AddItem_005bf5a4.cpp'
-        TestSource = '00/5b/CCategory_AddItem_005bf5a4_test.cpp'
+        Module = 'NInventory::CCategory'
+        Source = '00/5b/NInventoryCCategory_AddItem_005bf5a4.cpp'
+        TestSource = '00/5b/NInventoryCCategory_AddItem_005bf5a4_test.cpp'
         PassPattern = '005bf5a4_TEST PASS'
     }
     [pscustomobject]@{
@@ -261083,9 +261083,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005c1921'
-        Module = 'std::find_if<const NInventory'
-        Source = '00/5c/stdfindifconstNInventory_CItemCIsSameItemTypeforwardstotherandomaccessfin_005c1921.cpp'
-        TestSource = '00/5c/stdfindifconstNInventory_CItemCIsSameItemTypeforwardstotherandomaccessfin_005c1921_test.cpp'
+        Module = 'std'
+        Source = '00/5c/std_findif_005c1921.cpp'
+        TestSource = '00/5c/std_findif_005c1921_test.cpp'
         PassPattern = '005c1921_TEST PASS'
     }
     [pscustomobject]@{
@@ -327086,7 +327086,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006dcbf0'
-        Module = 'std::_Rb_tree'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, CHeroStatIncreaseData>, std::_Select1st<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>'
         Source = '00/6d/stdRbtree_Minsert_006dcbf0.cpp'
         TestSource = '00/6d/stdRbtree_Minsert_006dcbf0_test.cpp'
         PassPattern = '006dcbf0_TEST PASS'
@@ -343396,7 +343396,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004f9934'
-        Module = 'std::_Rb_tree'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, CHeroStatIncreaseData>, std::_Select1st<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, CHeroStatIncreaseData>>>'
         Source = '00/4f/stdRbtree_Mcreatenode_004f9934.cpp'
         TestSource = '00/4f/stdRbtree_Mcreatenode_004f9934_test.cpp'
         PassPattern = '004f9934_TEST PASS'

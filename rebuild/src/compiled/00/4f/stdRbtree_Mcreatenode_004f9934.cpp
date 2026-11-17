@@ -1,61 +1,24 @@
-// std::_Rb_tree::_M_create_node(const value_type& __x) -- (map<EDamageAttribute, CHeroStatIncreaseData>) allocate a node and copy-construct the pair into it
-// Leaf: ?_M_create_node@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@ABU?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@2@@Z
+// std::_Rb_tree<EDamageAttribute, pair<const EDamageAttribute, CHeroStatIncreaseData>, ...>::_M_create_node(const value_type& x) -- STLport
+//   4.6 _tree.h: allocate a node and copy-construct the pair into it
+// Flags: /d2inlS22
+// Inline-budget: /d2inlS22 (EXTRA_RULES 2026-11-08 preference 2, source untouched) -- retail expands _Construct and pair<const EDamageAttribute, CHeroStatIncreaseData>'s copy constructor here (key word, then the out-of-line map copy 0x004F9960 on +4); at the default /Os budget VC7.1 calls the pair copy as a COMDAT (33 v 44 bytes). Sweep: /d2inlS15 DIFFER 33v44, /d2inlS22 / 30 / 60 / 200 RELOCATION_MATCH (16..21 not tried).
+// Leaf: ?_M_create_node@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@ABU?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004F9934, 44 bytes, thiscall (this unused), `ret 4` (size-optimised module).
-// Identity (proven): the value copy is the map<EHeroExperienceStatCategory, float> copy constructor 0x004F9960 (bound), i.e. the implicit copy of Ego_r.pdb CHeroStatIncreaseData { StatIncreases }; node 0x20 = 0x10 + key + 0xC; the tree copy 0x004F98A4 is reached from CHeroExperienceDef::operator= 0x004F914A: Ego_r.pdb StatIncreasePerHitType is map<EDamageAttribute, CHeroStatIncreaseData>.
-// Callees: malloc 0x00BFEA0E (node allocator), CHeroStatIncreaseData copy constructor 0x004F9960.
-// Shape (family M049, representative 0x00466255): STLport `__tmp = _M_header.allocate(1); _Construct(&__tmp->_M_value_field,
-//   __x); return __tmp;` -- allocate/_Construct `__forceinline`; STLport's explicit pair copy constructor copies the key
-//   dword, then calls V's copy constructor at +4.
+// Identity (proven, landed): the value copy is the map<EHeroExperienceStatCategory, float> copy constructor 0x004F9960 (NF90, q11180), i.e.
+//   the implicit copy of Ego_r.pdb CHeroStatIncreaseData { StatIncreases }; the tree copy 0x004F98A4 (NF90) is reached from
+//   CHeroExperienceDef::operator= 0x004F914A: Ego_r.pdb StatIncreasePerHitType is map<EDamageAttribute, CHeroStatIncreaseData>.
+// Access (NF90, q11180 follow-on): STLport declares _M_create_node protected (IAE), as the byte-twin row 0x004F9763 (NF70) and 64 landed
+//   bindings spell it; the old all-local model made it public (QAE), which no caller bound. Byte twin of 0x004F9763.
+// Port (NF90): an explicit instantiation of stlport/fable_map.h's _M_create_node (the 0x004F9763 recipe; MAP_COPY_OUTOFLINE keeps the
+//   value's map copy constructor a call). Grades 1-5 tried header opt-ins forcing the pair copy / _Construct inline (RM, withdrawn for the
+//   less invasive per-row flag above).
+//   Was a local allocator / pair / map / _Rb_tree model.
 #include "fable_compiler.h"
 #pragma optimize("s", on)
-extern "C" void* __cdecl malloc(unsigned int);
-inline void* __cdecl operator new(unsigned int, void* p) { return p; }
+#define FABLE_RETAIL_STLP_MAP_COPY_OUTOFLINE
+#include "stlport/fable_map.h"
+#include "engine/EDamageAttribute.h"
+#include "engine/CHeroStatIncreaseData.h"
 namespace std {
-template <class _Tp> class allocator { public: allocator() { } FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return (_Tp*)malloc(__n * sizeof(_Tp)); } };
-template <class _Tp> struct less { };
-template <class _T1, class _T2> struct pair {
-    FABLE_FORCEINLINE pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
-    _T1 first;
-    _T2 second;
-};
-}
-enum EDamageAttribute { DAMAGE_ATTRIBUTE_NONE = 0 };
-enum EHeroExperienceStatCategory { HERO_EXPERIENCE_STAT_CATEGORY_NONE = 0 };
-namespace std {
-template <class _Key, class _Tp, class _Compare, class _Alloc> class map {
-public:
-    map(const map& __x);                                  // 0x004F9960
-    void* _M_header;
-    unsigned int _M_node_count;
-    _Compare _M_key_compare;
-};
-}
-class CHeroStatIncreaseData {                            // Ego_r.pdb: { map<EHeroExperienceStatCategory, float> StatIncreases; }
-public:
-    std::map<EHeroExperienceStatCategory, float, std::less<EHeroExperienceStatCategory>, std::allocator<std::pair<const EHeroExperienceStatCategory, float> > > StatIncreases;
-};
-namespace std {
-template <class _Pair> struct _Select1st { };
-template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
-struct _Rb_tree_node_base {
-    bool _M_color;
-    _Rb_tree_node_base* _M_parent;
-    _Rb_tree_node_base* _M_left;
-    _Rb_tree_node_base* _M_right;
-};
-template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base { _Value _M_value_field; };
-template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public: _Tp _M_data; };
-template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc = allocator<_Value> > class _Rb_tree {
-public:
-    _Rb_tree_node<_Value>* _M_create_node(const _Value& __x)
-    {
-        _Rb_tree_node<_Value>* __tmp = _M_header.allocate(1);
-        _Construct(&__tmp->_M_value_field, __x);
-        return __tmp;
-    }
-    _STLP_alloc_proxy<_Rb_tree_node<_Value>*, allocator<_Rb_tree_node<_Value> > > _M_header;
-    unsigned int _M_node_count;
-    _Compare _M_key_compare;
-};
-template class _Rb_tree<EDamageAttribute, pair<const EDamageAttribute, CHeroStatIncreaseData>, _Select1st<pair<const EDamageAttribute, CHeroStatIncreaseData> >, less<EDamageAttribute>, allocator<pair<const EDamageAttribute, CHeroStatIncreaseData> > >;
+template _Rb_tree<EDamageAttribute, pair<const EDamageAttribute, CHeroStatIncreaseData>, _Select1st<pair<const EDamageAttribute, CHeroStatIncreaseData> >, less<EDamageAttribute>, allocator<pair<const EDamageAttribute, CHeroStatIncreaseData> > >::_Link_type _Rb_tree<EDamageAttribute, pair<const EDamageAttribute, CHeroStatIncreaseData>, _Select1st<pair<const EDamageAttribute, CHeroStatIncreaseData> >, less<EDamageAttribute>, allocator<pair<const EDamageAttribute, CHeroStatIncreaseData> > >::_M_create_node(const pair<const EDamageAttribute, CHeroStatIncreaseData>&);
 }

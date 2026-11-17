@@ -1,0 +1,7 @@
+entry	target	binder_row	bound_symbol
+q11178	004dd1db	004e3644	?Sub_Dtor_004dd1db@@YIXPAX@Z
+q11182	005be85b	005bf060	?GetSlotWithItemsOfType@CCategory_Retail@@QAEJJ@Z
+q11182	005be85b	005bf16e	?GetSlotWithItemsOfType@CCategory_Methods@@QAEJJ@Z
+q11183	005bd96b	005bf060	?GetFirstEmptySlot@CCategory_Retail@@QAEJXZ
+q11187	00664670	008e74f0	?SetCurrentAction@CThing@@QAE_NABV?$CCountedPointer@VCCreatureActionBase@@@@@Z
+q11188	00686f10	004c9d60	?CreateTC@@YIPAVCTCBase@@ABVCCharString@@PAVCThing@@@Z

@@ -122,6 +122,13 @@ public:
 #endif // FABLE_RETAIL_CTCCREATUREMODEMANAGER_FRAMEUPDATE
 };
 FABLE_STATIC_ASSERT_AT(106, sizeof(CTCCreatureModeManager)==0x24);
+#if defined(FABLE_RETAIL_CMODEBASE_VIRTUALS) && defined(FABLE_RETAIL_CMODEBASE_ONDEACTIVATE_INLINE)
+// NF90 opt-in (round 7, q11189: rows 0x00739E60 and 0x008E74F0): the one body of CModeBase::OnDeactivate (Ego_r.pdb 0x0051C5E0 / FableWin.pdb
+// ?OnDeactivate@CModeBase@CTCCreatureModeManager@@UAEXXZ, slot 6), inline in retail: NCreatureMode::CModeIntangible::OnDeactivate 0x008E74F0
+// expands its qualified base call (`mov byte ptr [esi+18h],0` between its first two calls), and the out-of-line copy 0x00739E60 is the
+// pick-any COMDAT the mode vtables reference (`mov byte ptr [ecx+18h],0 ; ret`). No layout change.
+inline void CTCCreatureModeManager::CModeBase::OnDeactivate() { Active = false; }
+#endif
 
 #if defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER_ALLOCATEMODE) && defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER_ALLOCATEMODE_BODY)
 // NF70 opt-in (round 7, row 0x0073AE10 AddMode): the one header body of AllocateMode 0x0073A8E0 (the landed row's text), for the rows of its

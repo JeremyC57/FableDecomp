@@ -29,6 +29,31 @@ public:
     bool IsSlotEmpty() const { return NumberOfItems == 0; }
     void GetItemThings(std::vector<std::pair<long,long> >&) const;
 #endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_ISSLOTFULL
+    // NF90 opt-in (round 7, q11184 row 0x005BF19C CCategory::IsSpaceInCategoryForItem): Ego_r.pdb (0x00620B75) + FableWin.pdb
+    // ?IsSlotFull@CItem@NInventory@@QBE_NXZ (public const), out of line in retail at 0x005BDE50. Declaration only: no layout change.
+    bool IsSlotFull() const;                            // 0x005BDE50
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_UPDATEITEMSTATS
+    // NF90 opt-in (round 7, q11182 binder row 0x005BF16E CCategory::UpdateItemStatsForThing): Ego_r.pdb (0x00621B5D) + FableWin.pdb
+    // ?UpdateItemStats@CItem@NInventory@@QAEXABVCThing@@@Z (public), out of line in retail at 0x005BEDCB. Declaration only: no layout change.
+    void UpdateItemStats(const ::CThing& thing);        // 0x005BEDCB
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_ADDITEM
+    // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF060 CCategory::AddItem): Ego_r.pdb (0x00621A1C) + FableWin.pdb
+    // ?AddItem@CItem@NInventory@@QAEXJJJ@Z (public; the landed self row 0x005BEC92 defines this spelling). Declaration only.
+    void AddItem(long itemType, long number, long price); // 0x005BEC92
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_ADDINVENTORYITEM
+    // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF103 CCategory::AddInventoryItem): Ego_r.pdb (0x00620B0A) + FableWin.pdb
+    // ?AddInventoryItem@CItem@NInventory@@QAEXABV12@@Z (public), out of line in retail at 0x005BDDE4. Declaration only.
+    void AddInventoryItem(const CItem& item);           // 0x005BDDE4
+#endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_ADDITEM_THING
+    // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF5A4 CCategory::AddItem(CThing&, bool, long)): Ego_r.pdb (0x00622353) + FableWin.pdb
+    // ?AddItem@CItem@NInventory@@QAEXAAVCThing@@J@Z (public; the landed self row 0x005BF556 defines this spelling). Declaration only.
+    void AddItem(::CThing& thing, long price);          // 0x005BF556
+#endif
     long ItemType;                                      // +0x00
     long NumberOfItems;                                 // +0x04
     CCountedPointer<CPerItemData> PPerItemData;         // +0x08
@@ -430,6 +455,13 @@ public:
  // NF89 opt-in (q11167, rows 0x0056E5AB / 0x005BD328): Ego_r.pdb (0x00620259) + FableWin.pdb ?GetNumberOfSlotsForCategory@CTCInventoryBase@NInventory@@QBEJJ@Z
  // (public const), out of line at 0x005BD328 (Categories[index].GetNumberOfSlots()). Declaration only.
  long GetNumberOfSlotsForCategory(long index) const;                                          // 0x005BD328
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_GETALLSELECTEDITEMS
+ // NF90 opt-in (round 7, q11185 row 0x005BEAF5): Ego_r.pdb 0x006213AB ?GetAllSelectedItems@CTCInventoryBase@NInventory@@IBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+ // (protected const; the ORIGINAL_COMPLETE_METHODS_PASS22 branch declares it there too), out of line at 0x005BEAF5. Declaration only.
+protected:
+ void GetAllSelectedItems(std::vector<long>& items) const;                                    // 0x005BEAF5
+public:
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_CAPTUREBACKBUFFER
  // Retail opt-in (chunk 1007, row 0x0058F649 CTCInventory::OpenPCInventory): Ego_r.pdb

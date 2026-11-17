@@ -1737,6 +1737,12 @@ public:
 #else
     bool test(size_t n) const { if(n>=_Nb) __stl_throw_out_of_range("bitset"); return _Unchecked_test(n); }
 #endif
+#ifdef FABLE_RETAIL_STLP_BITSET_SET_DECL
+    // NF90 per-TU opt-in (round 7, q11188 binder row 0x004C9D60 CThing::AddTC): STLport 4.6 _bitset.h set(size_t) (the range check, then
+    // _Unchecked_set), declared only. That retail TU calls the bitset<274> instance out of line (0x004CC090, landed as std::bitset::set,
+    // `push type ; lea ecx,[UsingComponents] ; call` at 0x004C9F13) while it expands test() in place. No layout change.
+    bitset<_Nb>& set(size_t n);
+#endif
 #ifdef FABLE_RETAIL_STLP_BITSET_INDEX
     // Per-TU opt-in (plan phase 4, 2026-11-05): STLport 4.6 _bitset.h bitset<_Nb>::reference and operator[]. Retail expands the
     // indexed bit test inline as a word test on the bitset, with no call: 0x0062D032 `test dword ptr [ebx+0x24],0x10000`

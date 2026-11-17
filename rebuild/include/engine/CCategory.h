@@ -115,6 +115,11 @@ private:
  long GetNextOccupiedSlot(long index) const;                                                   // 0x005BCF61
 public:
 #endif
+#ifdef FABLE_RETAIL_CCATEGORY_SETSELECTEDITEMINDEX
+ // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF060 CCategory::AddItem): Ego_r.pdb (0x0061F2FF) + FableWin.pdb
+ // ?SetSelectedItemIndex@CCategory@NInventory@@QAEXJ@Z (public), out of line at 0x005BC479. Declaration only: no layout change.
+ void SetSelectedItemIndex(long index);                                                        // 0x005BC479
+#endif
 #ifdef FABLE_RETAIL_CCATEGORY_ITEMQUERIES
  // NF88 nested opt-in (round 7, q11153..q11159; rows 0x005BE839 / 0x005BE8B1 / 0x005BF1D7 and the CTCInventoryBase wrappers that tail-jump
  // to them): the item queries of the inventory TU, Ego_r.pdb (TU order 0x00620FCD .. 0x00621FB3) and FableWin.pdb spellings, all out of line
@@ -130,6 +135,26 @@ private:
  long GetSlotWithItemsOfType(long itemDefIndex) const;                                         // 0x005BE85B
  friend class CIsInventoryCategory;
 public:
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_UPDATEITEMSTATSFORTHING
+ // NF90 opt-in (round 7, q11182 binder row 0x005BF16E): Ego_r.pdb (0x00621F4C) + FableWin.pdb
+ // ?UpdateItemStatsForThing@CCategory@NInventory@@QAEXABVCThing@@@Z (public), out of line at 0x005BF16E. Declaration only: no layout change.
+ void UpdateItemStatsForThing(const CThing& thing);                                            // 0x005BF16E
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_ADDINVENTORYITEM
+ // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF103): Ego_r.pdb (0x00621EE3) + FableWin.pdb
+ // ?AddInventoryItem@CCategory@NInventory@@QAE_NABVCItem@2@@Z (public), out of line at 0x005BF103. Declaration only: no layout change.
+ bool AddInventoryItem(const CItem& item);                                                     // 0x005BF103
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_ADDITEM_THING
+ // NF90 opt-in (round 7, q11182 / q11183 binder row 0x005BF5A4): Ego_r.pdb (0x0062239E) + FableWin.pdb
+ // ?AddItem@CCategory@NInventory@@QAE_NAAVCThing@@_NJ@Z (the (CThing&, bool, long) overload, public), out of line at 0x005BF5A4. Declaration only.
+ bool AddItem(CThing& thing, bool select, long price);                                         // 0x005BF5A4
+#endif
+#ifdef FABLE_RETAIL_CCATEGORY_GETHIGHLIGHTEDITEM
+ // NF90 opt-in (round 7, q11185 row 0x005BEAF5): Ego_r.pdb (0x0061F7B1) + FableWin.pdb ?GetHighlightedItem@CCategory@NInventory@@QBEJXZ (public const),
+ // out of line at 0x005BC99C. Declaration only: no layout change.
+ long GetHighlightedItem() const;                                                              // 0x005BC99C
 #endif
 };
 FABLE_STATIC_ASSERT_AT(67, sizeof(CCategory)==44);

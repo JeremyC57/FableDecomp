@@ -1,0 +1,2 @@
+entry	address	claim	reason
+# none: no queue claim in q11178..q11189 was rejected (every entry's correct_symbol was confirmed from two sources)
