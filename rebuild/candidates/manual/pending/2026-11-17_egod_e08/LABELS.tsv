@@ -1,0 +1,5 @@
+address	name	evidence
+00878430	CThingSearchTools::GetAllThingsInRoughArea<CThing,std::list<const CThing*>,CFilter_Bind2<CThingFilter_IsOfType,CThingFilter_OverlappingSphere> >	reloc_bindings + Ego_d record + landed caller 0x00877720
+0049c6f0	CThingSearchTools::GetAllThingMapsInArea	Ego_r.pdb + FableWin.pdb
+00b80ce0	CEngineClothSimulationMeshBase::GetDeltaTransform	Ego_r.pdb + FableWin.pdb ?GetDeltaTransform@CEngineClothSimulationMeshBase@@UBEXAAVCMatrix3x4@@@Z
+00b45cf0	CEngineLightingManager::CalcSWLightingNoClip	Ego_r.pdb + FableWin.pdb ?CalcSWLightingNoClip@CEngineLightingManager@@QAEXABVC3DVector@@0ABVCEngineLocalLightArray@@AAVCRGBFloatColour@@@Z

@@ -112,7 +112,7 @@ address	kind	name	state	true_length	staged_folder	note
 0068f470	named	CInputProcessCombat::ProcessCombatInput	OPEN			
 00694890	named	CCreatureActionBase::UpdateActionAnimation	OPEN			
 00697f80	named	CGameCameraManager::CGameCameraManager::Is2DAreaInViewingFrustrum	OPEN			
-00698170	named	CGameCameraManager::?IsVolumeInViewingFrustrum@CGameCameraManager@@UBE_NABVC3DVector@@M@Z	IN_PROGRESS			batch e08
+00698170	named	CGameCameraManager::?IsVolumeInViewingFrustrum@CGameCameraManager@@UBE_NABVC3DVector@@M@Z	PARKED			PARKED e08: DIFFER(693v693) one scheduling slot at 0x00698299 (mov esi,[origin] v fld/fmul); callees CCamera::GetFOV 0x00A0BEB0, C3DVector::AccurateNormalise; draft ../2026-11-17_egod_open/e08/00698170.cpp
 00698540	identify	_global::CGameCameraManager_UpdatePointLightAccumulation	OPEN			
 00699670	named	CGameCameraManager::UpdateHeightLimits	OPEN			
 0069a2a0	identify	_global::CGameCameraManager_UpdateMode	OPEN			
@@ -257,7 +257,7 @@ address	kind	name	state	true_length	staged_folder	note
 007d04f0	named	CTCTavernGameShoveHaPenny::OnInitialActivate	OPEN			
 007d2ff0	named	CTCTavernGameCoinGolf::FrameUpdate	OPEN			
 007d3f80	named	CTCTavernGameCoinGolf::OnInitialActivate	OPEN			
-007d75a0	named	CTCTavernGameCardPairs::GetRandomCard	IN_PROGRESS			batch e08
+007d75a0	named	CTCTavernGameCardPairs::GetRandomCard	PARKED			PARKED e08: DIFFER(268v465) needs the inline CCardDef default ctor / copy-assign / dtor bodies; card_sorting_types.h clashes with engine/CTCTavernGameCardBase.h / Pairs.h (reconcile first); draft ../2026-11-17_egod_open/e08/007d75a0.cpp
 007da400	named	CTCTavernGameCardBlackjack::GetCurrentScore	MATCHED_STAGED	280	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
 007da520	named	CTCTavernGameCardBlackjack::GetRequiredScore	MATCHED_STAGED	286	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
 007da640	named	CTCTavernGameCardBlackjack::GetBet	MATCHED_STAGED	274	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
@@ -339,7 +339,7 @@ address	kind	name	state	true_length	staged_folder	note
 00875fb0	named	NCameraModes::DrawSquare	OPEN			
 008764e0	named	NCameraModes::DrawPyramid	OPEN			
 00877840	named	NCameraModes::CTools::IsLineOfSight	OPEN			
-00878430	named	CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	IN_PROGRESS			batch e08
+00878430	named	CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	MATCHED_STAGED	673	rebuild/candidates/manual/pending/2026-11-17_egod_e08	batch e08
 00879070	named	NCameraModes::CProjectileWeapon::GetHeightParamForPostionWithPhi	OPEN			
 00879680	identify	_global::ProjectileWeapon_CalcPhiAngle	OPEN			
 00879900	named	NCameraModes::CProjectileWeapon::Update	OPEN			
@@ -676,7 +676,7 @@ address	kind	name	state	true_length	staged_folder	note
 00b439c0	named	CEngineMap::PeekLandscapeHeight	OPEN			
 00b45720	named	CEngineLightingManager::CalcSWLighting	OPEN			
 00b45a40	named	CEngineLightingManager::CalcSWLightingNoClipSeparateMainLight	OPEN			
-00b45cf0	named	CEngineLightingManager::CalcSWLightingNoClip	IN_PROGRESS			batch e08
+00b45cf0	named	CEngineLightingManager::CalcSWLightingNoClip	MATCHED_STAGED	697	rebuild/candidates/manual/pending/2026-11-17_egod_e08	batch e08
 00b47390	named	CEngineLightingManager::SetupShaderSpotLight	MATCHED_STAGED	665	rebuild/candidates/manual/pending/2026-11-17_egod_e06	batch e06
 00b4b8b0	named	CEngineShadowRenderer::CalcLocalWorldToBaseShadowSpace	MATCHED_STAGED	421	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03
 00b4d370	named	CEngineShadowRenderer::UpdateShadowSpace	OPEN			
@@ -695,7 +695,7 @@ address	kind	name	state	true_length	staged_folder	note
 00b6df50	named	CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader	OPEN			
 00b6df90	named	CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader	OPEN			
 00b6dfd0	named	CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader	OPEN			
-00b80ce0	named	CEngineClothSimulationMeshBase::CEngineClothSimulationMeshBase::GetDeltaTransform	IN_PROGRESS			batch e08
+00b80ce0	named	CEngineClothSimulationMeshBase::CEngineClothSimulationMeshBase::GetDeltaTransform	MATCHED_STAGED	682	rebuild/candidates/manual/pending/2026-11-17_egod_e08	batch e08
 00b81820	named	CEngineSimulationManager::CEngineSimulationManager::FrameStart	MATCHED_STAGED	433	rebuild/candidates/manual/pending/2026-11-17_egod_e03	batch e03
 00b84b20	identify	_global::RadixSort_CountingPass_b84b20	OPEN			
 00b8c830	named	CEngineEnvironment::CEngineEnvironment::FrameStart	OPEN			

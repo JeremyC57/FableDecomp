@@ -1,0 +1,3 @@
+- 0x00878430: a robust post-loop reload-order residue (spilled-piece order) closed by writing a test through the class's inline accessors (C2DBoxI::GetWidth/GetHeight from Ego_d's method list) and the box through the PDB's inline GetMapwhoArea: the extra inline layers change c2 record creation order.
+- 0x00B80CE0: Ego_d's DEBUG LENGTH of a tiny wrapper tells which inline helpers it calls (43 bytes = two thiscalls), and the helper's own Ego_d locals (PreMultiply's copy `m`) pick between competing shared-header helper texts.
+- 0x00B45CF0: Ego_d's locals list is negative evidence for helper names too: a named `scale` the draft added (not in Ego_d) moved the loop's pointer base and frame words; reusing the Ego_d local (`dot *= falloff`) matched.

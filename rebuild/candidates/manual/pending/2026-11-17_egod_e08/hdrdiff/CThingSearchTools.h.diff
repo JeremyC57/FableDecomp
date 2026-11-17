@@ -1,0 +1,70 @@
+--- a/rebuild/include/engine/CThingSearchTools.h
++++ b/rebuild/include/engine/CThingSearchTools.h
+@@ -174,7 +174,66 @@
+     // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): no user destructor -- retail expands the implicit one in place (0x004A72D7: the vector at +0xC freed,
+     // then operator delete).
+ #endif
+-#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA
++#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_EGOD) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA)
++    // egod opt-in (e08, row 0x00878430, the <CThing, std::list<const CThing*>, CFilter_Bind2<CThingFilter_IsOfType,
++    // CThingFilter_OverlappingSphere> > instance): the GetAllThingsInRoughArea<T,Container,Filter> body with Ego_d.pdb's own parameter
++    // names, locals and scopes (cm_helper_functions.obj record: filter_func, things, the function-scope `flags`, it (a const_iterator),
++    // thing_map, local_area, c1, clipped_area, cy, pcell, cx, ploop_node, pmapwho, loop_thing, tthing; no named map list), the empty
++    // test through C2DBoxI::GetWidth / GetHeight (needs FABLE_RETAIL_C2DBOXI_GETWIDTH + FABLE_RETAIL_C2DBOXI_GETHEIGHT) and the
++    // protected inline GetMapwhoArea (Ego_r.pdb / FableWin.pdb ?GetMapwhoArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@JABV2@@Z,
++    // expanded in retail) with Ego_d.pdb's locals layer_info / clipped_area (Ego_d's third local, `const C2DExtentsI& extents`, is
++    // used only by the debug build's checks: FableWin's /Od copy is 540 bytes, not recovered). The named result is returned through
++    // C2DBoxI's user copy constructor (Ego_d method list 0xAE3E, FableWin ??0C2DBoxI@@QAE@ABV0@@Z 24i/62b = FABLE_RETAIL_C2DBOXI_COPY,
++    // which needs FABLE_RETAIL_C2DBOXI): the same text reproduces the out-of-line copy 0x00436500 (RELOCATION_MATCH) and the row's
++    // expansion. FITTED only: field stores rather than the four-coordinate constructor (both grade the same at both addresses).
++    // The search statics, GetAllThingMapsInArea and the inline PeekCell (FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE) are
++    // those of FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA, which must be on too.
++protected:
++    C2DBoxI GetMapwhoArea(const NThingMap::CThingMap& map,long layer,const C2DBoxI& area) const {
++        const NThingMap::CLayerInfo& layer_info=NThingMap::LayerInfo[layer];
++        C2DBoxI clipped_area;
++        clipped_area.TLX=area.TLX>>layer_info.ScaleShift;
++        clipped_area.TLY=area.TLY>>layer_info.ScaleShift;
++        clipped_area.BRX=((area.BRX-1)>>layer_info.ScaleShift)+1;
++        clipped_area.BRY=((area.BRY-1)>>layer_info.ScaleShift)+1;
++        return clipped_area;
++    }
++public:
++    template<class T,class Container,class Filter> void GetAllThingsInRoughArea(const C2DBoxI& area,const Filter& filter_func,Container& things) const {
++        unsigned long flags=T::StatGetTypeFlags();
++        GetAllThingMapsInArea(area,const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps));
++        ++NoLookups;
++        NoThingsScanned=0;
++        ++SearchID;
++        for(std::vector<NThingMap::CThingMap*>::const_iterator it=AreaMaps.begin();it!=AreaMaps.end();++it) {
++            NThingMap::CThingMap& thing_map=**it;
++            C2DBoxI local_area=ClipAndConvertWorldMapAreaToLocalArea(thing_map,area);
++            for(long c1=0;c1<NThingMap::MaxLayers;++c1) {
++                C2DBoxI clipped_area=GetMapwhoArea(thing_map,c1,local_area);
++                if(clipped_area.GetWidth()==0 || clipped_area.GetHeight()==0)
++                    continue;
++                for(long cy=clipped_area.TLY;cy<clipped_area.BRY;++cy) {
++                    const NThingMap::CThingMapCell* pcell=&thing_map.PeekCell((unsigned char)c1,clipped_area.TLX,cy);
++                    for(long cx=clipped_area.TLX;cx<clipped_area.BRX;++cx,++pcell) {
++                        for(const NThingMap::CMapwhoNode* ploop_node=pcell->PFirstNode;ploop_node;ploop_node=ploop_node->PNext) {
++                            CTCMapwho* pmapwho=ploop_node->PMapwho;
++                            if(pmapwho->GetSearchID()<SearchID) {
++                                pmapwho->SetSearchID(SearchID);
++                                CThing* loop_thing=&pmapwho->GetParentThing();
++                                if((loop_thing->GetTypeFlags()&flags)==flags) {
++                                    T* tthing=static_cast<T*>(loop_thing);
++                                    if(filter_func(*tthing))
++                                        things.push_back(tthing);
++                                }
++                            }
++                        }
++                    }
++                }
++            }
++        }
++        const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps).clear();
++    }
++#elif defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA)
+     template<class T,class Container,class Filter> void GetAllThingsInRoughArea(const C2DBoxI& area,const Filter& filter,Container& result) const {
+         std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
+         GetAllThingMapsInArea(area,maps);

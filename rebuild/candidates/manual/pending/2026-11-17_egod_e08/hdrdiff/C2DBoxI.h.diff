@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/C2DBoxI.h
++++ b/rebuild/include/engine/C2DBoxI.h
+@@ -39,6 +39,12 @@
+ // (0x00B55222..0x00B55236: `mov edi,[box+4] ... mov edx,[box+0Ch] ; sub edx,edi`).
+ long GetHeight()const{return BRY-TLY;}
+ #endif
++#ifdef FABLE_RETAIL_C2DBOXI_GETWIDTH
++// egod opt-in (e08, row 0x00878430 GetAllThingsInRoughArea): Ego_d.pdb C2DBoxI::GetWidth (debug length 22, the GetHeight twin of
++// FABLE_RETAIL_C2DBOXI_GETHEIGHT above, debug length 23), inline in retail (0x008784E1 `mov ecx,edx ; sub ecx,ebx`, the width kept as
++// the x-loop count). Body only: no layout change.
++long GetWidth()const{return BRX-TLX;}
++#endif
+ #ifdef FABLE_RETAIL_C2DBOXI_ACCESSORS
+ // Retail opt-in (agentC43, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility): FableWin.pdb ?GetTLX@C2DBoxI@@QBEJXZ, ?GetTLY@C2DBoxI@@QBEJXZ,
+ // ?GetBRX@C2DBoxI@@QBEJXZ, ?GetBRY@C2DBoxI@@QBEJXZ (inline in retail: `fild [def+14Ch]` .. `fiadd [def+158h]`, 0x00537B6A..0x00537BD5).

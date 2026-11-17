@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00878430   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00878430   RELOCATION_MATCH PASS   ??$GetAllThingsInRoughArea@VCThing@@V?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@AAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z
+00b45cf0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b45cf0   RELOCATION_MATCH PASS   CalcSWLightingNoClip
+00b80ce0   RELOCATION_MATCH PASS   GetDeltaTransform
+
+WINS: 3
+  00878430 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThing@@V?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@AAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z
+  00b45cf0 RELOCATION_MATCH CEngineLightingManager::CalcSWLightingNoClip
+  00b80ce0 RELOCATION_MATCH CEngineClothSimulationMeshBase::GetDeltaTransform
