@@ -1,4 +1,5 @@
 // CBankFileAsyncEntry::CBankFileAsyncEntry(CBankFileAsync*, unsigned long) -- bind to one bank entry, cache its aligned size
+// Leaf: ??0CBankFileAsyncEntry@@AAE@AAVCBankFileAsync@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D5260, oracle length 52 bytes.
 // Callees: CBase::CBase @ 0x0099A2F0 (the root with vtable 0x0129A7C4), CBankFile::GetEntryDataSize @ 0x009CC240,
 //          CBankFile::Align @ 0x009CBB90.
@@ -9,17 +10,6 @@
 // rtti-vtables.tsv), the bank pointer and the entry index; the body computes
 // `m_pBank->Align(m_pBank->GetEntryDataSize(index))`: the inner call's `this` is the just-stored
 // bank still in ecx, the outer re-reads the member after the call.
-struct CBase {                       // the 4-slot root at 0x0099A2F0, stores vtable 0x0129A7C4
-    virtual void v00();
-    virtual void v01();
-    virtual void v02();
-    virtual void v03();
-    CBase();                         // 0x0099A2F0
-};
-
-// NF72 (round 7, q10882): GetEntryDataSize 0x009CC240 and Align 0x009CBB90 are CBankFile's (Ego_r.pdb ?GetEntryDataSize@CBankFile@@QBEKK@Z
-//   0x00B19F40 and ?Align@CBankFile@@QBEKK@Z 0x00B198E0): the local CBankFileAsync model is replaced by engine/CBankFile.h (ENTRYDATASIZE and the
-//   overlay opt-in ALIGN) and engine/CBankFileAsync.h, so both calls bind the CBankFile spellings.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -30,15 +20,22 @@ struct CBase {                       // the 4-slot root at 0x0099A2F0, stores vt
 #include "engine/CBankFile.h"
 #include "engine/CBankFileAsync.h"
 
-class CBankFileAsyncEntry : public CBase { public:
-    CBankFileAsync* m_pBank;         // +0x04
-    unsigned long   m_index;         // +0x08
-    unsigned long   m_alignedSize;   // +0x0c
-    CBankFileAsyncEntry(CBankFileAsync* bank, unsigned long index);   // 0x009D5260
+// NF75 (round 7, land1117fu q10932): Ego_r.pdb ??0CBankFileAsyncEntry@@AAE@AAVCBankFileAsync@@K@Z (private, the bank by reference) and the
+//   Ego_r layout (BankFile +4, Index +8, PaddedSize +0xC; ??1CBankFileAsyncEntry@@UAE@XZ virtual); no engine/ header exists for the class.
+//   Its base is the shared engine/CBaseClassNonCopyable.h (ctor 0x0099A2F0; was a four-slot CBase stand-in).
+#include "engine/CBaseClassNonCopyable.h"
+class CBankFileAsyncEntry : public CBaseClassNonCopyable {
+public:
+    virtual ~CBankFileAsyncEntry();
+private:
+    CBankFileAsyncEntry(CBankFileAsync& bank_file, unsigned long index);   // 0x009D5260
+    CBankFileAsync* BankFile;        // +0x04
+    unsigned long   Index;           // +0x08
+    unsigned long   PaddedSize;      // +0x0c
 };
 
-CBankFileAsyncEntry::CBankFileAsyncEntry(CBankFileAsync* bank, unsigned long index)
-    : CBase(), m_pBank(bank), m_index(index)
+CBankFileAsyncEntry::CBankFileAsyncEntry(CBankFileAsync& bank_file, unsigned long index)
+    : BankFile(&bank_file), Index(index)
 {
-    m_alignedSize = m_pBank->Align(m_pBank->GetEntryDataSize(index));
+    PaddedSize = BankFile->Align(BankFile->GetEntryDataSize(index));
 }

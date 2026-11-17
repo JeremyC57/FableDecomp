@@ -9,6 +9,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTSTRENGTHMULTISTRIKE_CLASS
+// NF75 opt-in (round 7, land1117fu q10916, row 0x008E6390 FrameUpdate): the polymorphic retail class on CCombatActionBase (0x114) with
+// its one own member NumberOfStrikes +0x114 (Ego_r.pdb +0x12C less the Dinkumware container bytes; sizeof 0x118 as below). Vtable
+// 0x0128764C: slot 4 FinishAction 0x008E6AE0, slot 56 FrameUpdate 0x008E6390. Ego_r.pdb / FableWin.pdb
+// ?FrameUpdate@CCreatureAction_CastStrengthMultiStrike@@UAEXXZ and ?FinishAction@CCreatureAction_CastStrengthMultiStrike@@UAEXXZ.
+// Needs engine/CCombatActionBase.h (retail) first, with FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE.
+class CCreatureAction_CastStrengthMultiStrike : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                         // slot 4, 0x008E6AE0
+    virtual void FrameUpdate();                                          // slot 56, 0x008E6390
+protected:
+    long NumberOfStrikes;                                                // +0x114
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_CastStrengthMultiStrike {
 public:
@@ -77,8 +91,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastStrengthMultiStrike) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastStrengthMultiStrike, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastStrengthMultiStrike, NumberOfStrikes) == 0x114);
+FABLE_STATIC_ASSERT_AT(80, sizeof(CCreatureAction_CastStrengthMultiStrike) == 0x118);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CCreatureAction_CastStrengthMultiStrike, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_CastStrengthMultiStrike, NumberOfStrikes) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_CASTSTRENGTHMULTISTRIKE_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTSTRENGTHMULTISTRIKE_H

@@ -89,9 +89,13 @@ public:
     unsigned char                          _pad60[0x98 - 0x60];
     CComponent*                            PScreenToDeactivate;   // +0x98
     CComponent*                            PScreenToActivate;     // +0x9c
-    long RefreshAvailableProfiles();                     // 0x00596CCE
     void GotoNextScreen(CComponent* screen, bool flag);  // 0x00596763
     void GotoProfileMenu();
+protected:
+    // NF75 (round 7, land1117fu q10937): Ego_r.pdb 0x00603398 / FableWin.pdb 0x02018987 ?RefreshAvailableProfiles@CFrontEndManager@NUISystem@@IAEJXZ
+    //   (protected; engine/CFrontEndManager.h REFRESHAVAILABLEPROFILES), the spelling the self row 0x00596CCE now defines; was public (QAE).
+    long RefreshAvailableProfiles();                     // 0x00596CCE
+public:
 };
 void CFrontEndManager::GotoProfileMenu()
 {

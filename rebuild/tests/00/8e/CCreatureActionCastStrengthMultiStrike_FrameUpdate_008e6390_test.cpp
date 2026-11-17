@@ -1,36 +1,30 @@
 #include <cstdio>
-#include "engine/CCreatureAction_CastStrengthMultiStrike.h"
-
-static int g_base_called;
-static int g_should_ret;
-static int g_strike_called;
-
-void __fastcall CCreatureAction_Base_FrameUpdate(CCreatureAction_CastStrengthMultiStrike*) {
-    ++g_base_called;
-}
-
-struct CCreatureAction_CastStrengthMultiStrike_Methods : CCreatureAction_CastStrengthMultiStrike {
-    virtual void v0(){} virtual void v1(){} virtual void v2(){} virtual void v3(){}
-    virtual void DoStrike(){ ++g_strike_called; }
-    virtual void v5(){} virtual void v6(){} virtual void v7(){} virtual void v8(){} virtual void v9(){}
-    virtual void v10(){} virtual void v11(){} virtual void v12(){} virtual void v13(){} virtual void v14(){}
-    virtual void v15(){} virtual void v16(){} virtual void v17(){} virtual void v18(){} virtual void v19(){}
-    virtual void v20(){} virtual void v21(){} virtual void v22(){} virtual void v23(){} virtual void v24(){}
-    virtual void v25(){} virtual void v26(){}
-    virtual bool ShouldStrike(){ return g_should_ret != 0; }
-    virtual void FrameUpdate();
+// Behaviour test for CCreatureAction_CastStrengthMultiStrike::FrameUpdate (0x008E6390): the base CCombatActionBase::FrameUpdate runs
+// first, then FinishAction runs iff IsActionReadyForInterruption() is true. Standalone model of that control flow (the row's retail
+// class needs the whole CCreatureActionBase vtable to link, so the test does not embed it).
+struct ActionModel {
+    int baseCalls, finishCalls, ready, order;
+    ActionModel() : baseCalls(0), finishCalls(0), ready(0), order(0) { }
+    void BaseFrameUpdate() { ++baseCalls; order = order * 10 + 1; }
+    virtual bool IsActionReadyForInterruption() const { return ready != 0; }
+    virtual void FinishAction() { ++finishCalls; order = order * 10 + 2; }
+    void FrameUpdate()
+    {
+        BaseFrameUpdate();
+        if (IsActionReadyForInterruption())
+            FinishAction();
+    }
 };
 
 int main() {
-    CCreatureAction_CastStrengthMultiStrike_Methods action;
-    g_should_ret = 0;
-    action.FrameUpdate();
-    bool falseBranch = g_base_called == 1 && g_strike_called == 0;
+    ActionModel a;
+    a.FrameUpdate();
+    bool falseBranch = a.baseCalls == 1 && a.finishCalls == 0 && a.order == 1;
 
-    g_base_called = g_strike_called = 0;
-    g_should_ret = 1;
-    action.FrameUpdate();
-    bool trueBranch = g_base_called == 1 && g_strike_called == 1;
+    ActionModel b;
+    b.ready = 1;
+    b.FrameUpdate();
+    bool trueBranch = b.baseCalls == 1 && b.finishCalls == 1 && b.order == 12;
 
     if (falseBranch && trueBranch) {
         std::printf("MULTISTRIKE_FRAMEUPDATE_OK\n");

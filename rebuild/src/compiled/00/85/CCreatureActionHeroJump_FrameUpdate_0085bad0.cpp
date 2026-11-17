@@ -1,33 +1,46 @@
-// Byte-exact reconstruction of CCreatureActionHeroJump::FrameUpdate 0x0085bad0
-// Leaf: ?CCreatureActionHeroJump_FrameUpdate@@YIXPAVCCreatureActionHeroJump@@@Z
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-
-struct SubObj8;
-
-// method at 0xa01b50 called with ecx = &self at +8 (subobject)
-class CBaseObject;
+// CCreatureActionHeroJump::FrameUpdate() -- when the jump's frames running come within 7 frames of its total time, read the acting
+//   creature (out-of-line CBaseIntelligentPointer::GetPItem, result unused), then run the base CCombatActionBase::FrameUpdate (tail jmp)
+// Leaf: ?FrameUpdate@CCreatureActionHeroJump@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0085BAD0, virtual slot 56 of vtable 0x012766A4 (RTTI .?AVCCreatureActionHeroJump@@).
+// NF75 (round 7, land1117fu q10916): was the free __fastcall stand-in CCreatureActionHeroJump_FrameUpdate(CCreatureActionHeroJump*) on a
+//   local int-field model calling the stand-in ?Base_FrameStep@@YIXPAVCCreatureActionHeroJump@@@Z. Now the PDB virtual
+//   ?FrameUpdate@CCreatureActionHeroJump@@UAEXXZ (Ego_r.pdb / FableWin.pdb) of a class on the shared engine/CCombatActionBase.h (no
+//   engine/ header exists for CCreatureActionHeroJump); its base call binds Ego_r.pdb ?FrameUpdate@CCombatActionBase@@UAEXXZ (0x00859D80,
+//   overlay opt-in FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE). The fields are CCreatureActionBase's (Ego_r.pdb, retail offsets =
+//   PDB: PCreature +0x08, TotalTime +0x10, FramesRunning +0x1C; engine/CCreatureActionBase.h FULL_MEMBERS).
+#include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
 #include "engine/CIntelligentPointer.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/NCreatureActionEvents.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
 
-class CCreatureActionHeroJump { public:
-    int   m00;      // +0x00
-    int   m04;      // +0x04
-    int   m08;      // +0x08  (subobject start)
-    int   m0c;      // +0x0c
-    int   m10;      // +0x10
-    int   m14;      // +0x14
-    int   m18;      // +0x18
-    int   m1c;      // +0x1c
+class CCreatureActionHeroJump : public CCombatActionBase {
+public:
+    virtual void FrameUpdate();
 };
 
-// tail-called method at 0x859d80 (ecx = self)
-void __fastcall Base_FrameStep(CCreatureActionHeroJump* action);
-
-void __fastcall CCreatureActionHeroJump_FrameUpdate(CCreatureActionHeroJump* action)
+void CCreatureActionHeroJump::FrameUpdate()
 {
-    int v = action->m1c + 7;
-    if (v >= action->m10) {
-        ((CBaseIntelligentPointer*)((SubObj8*)&action->m08))->GetPItem();
-    }
-    Base_FrameStep(action);
+    if (FramesRunning + 7 >= TotalTime)
+        PCreature.GetPItem();
+    CCombatActionBase::FrameUpdate();
 }

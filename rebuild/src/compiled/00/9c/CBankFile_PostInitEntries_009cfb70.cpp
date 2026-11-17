@@ -1,5 +1,7 @@
 // CBankFile::PostInitEntries() -- sorts the symbol-CRC index if it is dirty, trims its storage, and packs the runtime data of a read-only bank
-// Leaf: PostInitEntries
+// Leaf: ?PostInitEntries@CBankFile@@AAEXXZ
+// NF75 (round 7, land1117fu q10926): PostInitEntries is private in Ego_r.pdb (0x00B1CF60 ?PostInitEntries@CBankFile@@AAEXXZ); the row's
+//   pre-existing local declaration is now under private: (was public, QAE).
 // NF72 (round 7, q10869 follow-up): the callee 0x009CD740 PackRuntimeData is private in Ego_r.pdb (AAE; its row is now the private member of
 //   engine/CBankFile.h); the local declaration is under `private:`, so the tail jump binds ?PackRuntimeData@CBankFile@@AAEXXZ.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CFB70, length 69 bytes.
@@ -48,8 +50,8 @@ class CBankFile { public:
     CCRCVectorMap SymbolCRCIndices;         // +0xD0
 private:
     void PackRuntimeData();                 // 0x009CD740 ?PackRuntimeData@CBankFile@@AAEXXZ (Ego_r.pdb 0x00B1C8D0, private)
+    void PostInitEntries();                 // ?PostInitEntries@CBankFile@@AAEXXZ (Ego_r.pdb 0x00B1CF60, private)
 public:
-    void PostInitEntries();
 };
 
 void CBankFile::PostInitEntries()

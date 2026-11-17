@@ -1,5 +1,7 @@
 // CInputManager::SetEventsFromEventPackage(const CInputEventPackage& package) -- replay a recorded event package: clear the processed events, take the package's events as the event store (and their count), and hand the recorded mouse and joystick positions to the mouse and the first joystick
-// Leaf: SetEventsFromEventPackage
+// Leaf: ?SetEventsFromEventPackage@CInputManager@@IAEXABVCInputEventPackage@@@Z
+// NF75 (round 7, land1117fu q10928): protected in Ego_r.pdb 0x00B49150 / FableWin.pdb 0x030D07F0 (IAE); the row's pre-existing local
+//   declaration is now under protected: (was public, QAE).
 // NF72 (round 7, q10873): the local CInputEvent / CRetailVector / CInputEventPackage / C2DVector models are replaced by engine/CInputEvent.h,
 //   stlport/fable_containers.h (STLport 4.6 vector: operator= declared out of line by FABLE_RETAIL_STLP_VECTOR_ASSIGN, erase(first, last)
 //   by FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE) and engine/CInputEventPackage.h (FABLE_RETAIL_CINPUTEVENTPACKAGE). The calls now bind
@@ -44,7 +46,9 @@ public:
     CMouse*                    PMouse;             // +0x24 scoped_ptr<CMouse>
     CKeyboard*                 PKeyboard;          // +0x28 scoped_ptr<CKeyboard>
     std::vector<CCountedPointer<CJoystick> > PJoysticks;   // +0x2c
-    void SetEventsFromEventPackage(const CInputEventPackage& package);
+protected:
+    void SetEventsFromEventPackage(const CInputEventPackage& package);   // ?SetEventsFromEventPackage@CInputManager@@IAEXABVCInputEventPackage@@@Z
+public:
 };
 
 void CInputManager::SetEventsFromEventPackage(const CInputEventPackage& package)

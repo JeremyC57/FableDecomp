@@ -6849,9 +6849,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00596cce'
-        Module = 'CFrontEndManager'
-        Source = '00/59/CFrontEndManager_RefreshAvailableProfiles_00596cce.cpp'
-        TestSource = '00/59/CFrontEndManager_RefreshAvailableProfiles_00596cce_test.cpp'
+        Module = 'NUISystem::CFrontEndManager'
+        Source = '00/59/NUISystemCFrontEndManager_RefreshAvailableProfiles_00596cce.cpp'
+        TestSource = '00/59/NUISystemCFrontEndManager_RefreshAvailableProfiles_00596cce_test.cpp'
         PassPattern = 'FSE2_00596CCE_TEST PASS'
     }
     [pscustomobject]@{
@@ -6863,9 +6863,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00597006'
-        Module = 'CFrontEndManager'
-        Source = '00/59/CFrontEndManager_RefreshAvailableProfilesForDelete_00597006.cpp'
-        TestSource = '00/59/CFrontEndManager_RefreshAvailableProfilesForDelete_00597006_test.cpp'
+        Module = 'NUISystem::CFrontEndManager'
+        Source = '00/59/NUISystemCFrontEndManager_RefreshAvailableProfilesForDelete_00597006.cpp'
+        TestSource = '00/59/NUISystemCFrontEndManager_RefreshAvailableProfilesForDelete_00597006_test.cpp'
         PassPattern = '00597006_TEST PASS'
     }
     [pscustomobject]@{
@@ -69552,9 +69552,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00429486'
-        Module = 'CCountedPointer<NUISystem::CAction>'
-        Source = '00/42/CCountedPointerNUISystemCAction_ShareData_00429486.cpp'
-        TestSource = '00/42/CCountedPointerNUISystemCAction_ShareData_00429486_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CList>'
+        Source = '00/42/CCountedPointer_ShareData_00429486.cpp'
+        TestSource = '00/42/CCountedPointer_ShareData_00429486_test.cpp'
         PassPattern = 'PASS_00429486'
     }
     [pscustomobject]@{
@@ -78981,9 +78981,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00429288'
-        Module = '_global'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429288.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429288_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CList>'
+        Source = '00/42/CCountedPointer_ReleaseData_00429288.cpp'
+        TestSource = '00/42/CCountedPointer_ReleaseData_00429288_test.cpp'
         PassPattern = 'PASS_00429288'
     }
     [pscustomobject]@{
@@ -93984,16 +93984,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059a994'
-        Module = '_global'
-        Source = '00/59/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0059a994.cpp'
-        TestSource = '00/59/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0059a994_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CScrollableList>'
+        Source = '00/59/CCountedPointer_ReleaseData_0059a994.cpp'
+        TestSource = '00/59/CCountedPointer_ReleaseData_0059a994_test.cpp'
         PassPattern = 'PASS_0059a994'
     }
     [pscustomobject]@{
         Address = '0059aa86'
-        Module = 'CCountedPointer<NUISystem::CAction>'
-        Source = '00/59/CCountedPointerNUISystemCAction_ShareData_0059aa86.cpp'
-        TestSource = '00/59/CCountedPointerNUISystemCAction_ShareData_0059aa86_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CScrollableList>'
+        Source = '00/59/CCountedPointer_ShareData_0059aa86.cpp'
+        TestSource = '00/59/CCountedPointer_ShareData_0059aa86_test.cpp'
         PassPattern = 'PASS_0059aa86'
     }
     [pscustomobject]@{
@@ -168988,9 +168988,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004f9660'
-        Module = 'CRetailTree_004f96d3'
-        Source = '00/4f/CRetailTree004f96d3_operator_004f9660.cpp'
-        TestSource = '00/4f/CRetailTree004f96d3_operator_004f9660_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<long const, CComboMultiplierData >,std::_Select1st<std::pair<long const, CComboMultiplierData > >,std::less<long >,std::allocator<std::pair<long const, CComboMultiplierData > > >'
+        Source = '00/4f/stdRbtree_operator_004f9660.cpp'
+        TestSource = '00/4f/stdRbtree_operator_004f9660_test.cpp'
         PassPattern = '004f9660_TEST PASS'
     }
     [pscustomobject]@{
@@ -219623,9 +219623,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004f9784'
-        Module = 'std::pair<const long, SMarkerSet>'
-        Source = '00/4f/stdpairconstlongSMarkerSet_pair_004f9784.cpp'
-        TestSource = '00/4f/stdpairconstlongSMarkerSet_pair_004f9784_test.cpp'
+        Module = 'std::pair<long const, CComboMultiplierData>'
+        Source = '00/4f/stdpair_pair_004f9784.cpp'
+        TestSource = '00/4f/stdpair_pair_004f9784_test.cpp'
         PassPattern = '004f9784_TEST PASS'
     }
     [pscustomobject]@{
@@ -275578,9 +275578,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c80e0'
-        Module = 'std'
-        Source = '00/6c/std_vectorinsertpairs_006c80e0.cpp'
-        TestSource = '00/6c/std_vectorinsertpairs_006c80e0_test.cpp'
+        Module = 'std::vector<std::pair<long, COpinionDeed *>, std::allocator<std::pair<long, COpinionDeed *>>>'
+        Source = '00/6c/stdvector_Minsertoverflow_006c80e0.cpp'
+        TestSource = '00/6c/stdvector_Minsertoverflow_006c80e0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006c80e0_TEST PASS'
     }

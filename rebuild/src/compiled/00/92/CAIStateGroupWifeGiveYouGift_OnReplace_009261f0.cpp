@@ -84,7 +84,12 @@ class CWideString { public:
     void* m_pData;
     ~CWideString();                                     // 0x0099B510
 };
-bool __fastcall ConstructString(CWideString* text, const CWideString* argument);   // 0x009C7980
+// NF75 (round 7, land1117fu q10935): Ego_r.pdb 0x00B156F0 / FableWin.pdb 0x02F6E6F0 ?ConstructString@NGameText@@YI_NAAVCWideString@@ABV2@@Z
+//   (namespace NGameText, __fastcall, references; engine/NGameText_CDataBank.h FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING); was a namespace-less
+//   pointer form. Same bytes.
+namespace NGameText {
+bool __fastcall ConstructString(CWideString& text, const CWideString& argument);   // 0x009C7980
+}
 class CThingObject;
 class CThingObject { public:
     static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
@@ -168,7 +173,7 @@ void CAIStateGroup_WifeGiveYouGift::OnReplace()
     long type = item->GetInventoryType();
     item->AddToInventory(*(NInventory::CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);
     CWideString text = CMainGameComponent::Get()->PTextBank->GetTextBySymbol("TEXT_GUI_WIFE_GIVEN_YOU_GIFT");
-    ConstructString(&text, &item->GetDescription());
+    NGameText::ConstructString(text, item->GetDescription());
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(CMainGameComponent::Get()->PSubtitleFont, &text, 0x122, 0.0f, false, true);
     if (PBrain->PCreature->HasTC(0xd7))
         ((CTCWife*)PBrain->PCreature->GetTC(0xd7))->GiftState = 0;

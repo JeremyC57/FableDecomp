@@ -57,7 +57,11 @@ public:
 };
 CWideString __fastcall operator+(const CWideString& text, const unsigned short* suffix);   // 0x0099BF30
 CWideString __fastcall operator+(const CWideString& text, const CWideString& suffix);  // 0x0099BE70
+// NF75 (round 7, land1117fu q10935): Ego_r.pdb 0x00B156F0 / FableWin.pdb 0x02F6E6F0 ?ConstructString@NGameText@@YI_NAAVCWideString@@ABV2@@Z
+//   (namespace NGameText; engine/NGameText_CDataBank.h FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING); was namespace-less.
+namespace NGameText {
 bool __fastcall ConstructString(CWideString& text, const CWideString& parameter);     // 0x009C7980
+}
 
 double __fastcall GFGetTime();                            // 0x009E1BC0
 
@@ -237,8 +241,12 @@ public:
     void SetScoreboardOptionsFromProfile();                       // 0x005963DB
     void GotoNextScreen(CComponent* screen, bool clearStack);     // 0x00596763
     void GotoSpecificPreviousScreen(CComponent* screen);          // 0x0059686D
+protected:
+    // NF75 (round 7, land1117fu q10937 / q10938): Ego_r.pdb / FableWin.pdb protected (IAEJXZ; engine/CFrontEndManager.h
+    //   REFRESHAVAILABLEPROFILES), the spellings the self rows 0x00596CCE / 0x00597006 now define; were public (QAE).
     long RefreshAvailableProfiles();                              // 0x00596CCE
     long RefreshAvailableProfilesForDelete();                     // 0x00597006
+public:
     void GotoProfileMenu();                                       // 0x00597B20
     void GotoPreviousScreen(bool all);                            // 0x00597BF2
     long RefreshAvailableSavedGamesForProfile();                  // 0x00598463
@@ -369,7 +377,7 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
             if (message && parameter)
             {
                 CWideString text = g_pNewFrontendGameComponent->m_pTextBank->GetTextBySymbol("TEXT_GUI_MENU_INVALID_SAVE");
-                ConstructString(text, parameter->Value);
+                NGameText::ConstructString(text, parameter->Value);
                 message->SetText(text, true, true);
             }
         }

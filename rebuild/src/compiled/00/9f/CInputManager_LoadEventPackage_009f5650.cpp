@@ -1,6 +1,11 @@
 // CInputManager::LoadEventPackage() -- when the next loaded package (LoadedEventPackages.first[CurrentFilePackageIndex], 48-byte records) carries the current TimeStamp, install its events, refresh Checksum4 from the internal checksum and advance the index
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F5650, length 50 bytes (+ int3 padding).
-// Callees: CInputManager::SetEventsFromEventPackage(CInputEventPackage*) @ 0x009F54D0, CInputManager::CalculateInternalChecksum @ 0x009F5170.
+// Leaf: ?LoadEventPackage@CInputManager@@IAEXXZ
+// Callees: CInputManager::SetEventsFromEventPackage(const CInputEventPackage&) @ 0x009F54D0, CInputManager::CalculateInternalChecksum() const @ 0x009F5170.
+// NF75 (round 7, land1117fu q10928): Ego_r.pdb / FableWin.pdb spellings in the row's pre-existing local declarations: the protected
+//   ?SetEventsFromEventPackage@CInputManager@@IAEXABVCInputEventPackage@@@Z (const reference; was a public pointer form), the public const
+//   ?CalculateInternalChecksum@CInputManager@@QBEKXZ (was non-const) and the row's own protected ?LoadEventPackage@CInputManager@@IAEXXZ
+//   (Ego_r 0x00B49310 / FableWin 0x030CF990; was public). Same bytes.
 // Layout from Ego_r.pdb with 12-byte vectors: CInputEventPackage {Events +0, TimeStamp +0xc, Checksum +0x10, MousePos +0x20,
 // JoystickPos +0x28} = 48 bytes; CInputManager Checksum +0x3c (Checksum4 at +0x48), LoadedEventPackages.first +0x4c,
 // CurrentFilePackageIndex +0x58, TimeStamp +0x5c.
@@ -27,16 +32,18 @@ class CInputManager { public:
     CInputEventPackage* m_pLoadedPackagesEnd;       // +0x54
     long                CurrentFilePackageIndex;    // +0x58
     long                TimeStamp;                  // +0x5c
-    void SetEventsFromEventPackage(CInputEventPackage* package);   // 0x009F54D0
-    unsigned long CalculateInternalChecksum();      // 0x009F5170
-    void LoadEventPackage();
+    unsigned long CalculateInternalChecksum() const;   // 0x009F5170 ?CalculateInternalChecksum@CInputManager@@QBEKXZ
+protected:
+    void SetEventsFromEventPackage(const CInputEventPackage& package);   // 0x009F54D0 ?SetEventsFromEventPackage@CInputManager@@IAEXABVCInputEventPackage@@@Z
+    void LoadEventPackage();                        // ?LoadEventPackage@CInputManager@@IAEXXZ
+public:
 };
 
 void CInputManager::LoadEventPackage()
 {
     CInputEventPackage* package = &m_pLoadedPackagesFirst[CurrentFilePackageIndex];
     if (package->TimeStamp == TimeStamp) {
-        SetEventsFromEventPackage(package);
+        SetEventsFromEventPackage(*package);
         Checksum.Checksum4 = CalculateInternalChecksum();
         ++CurrentFilePackageIndex;
     }

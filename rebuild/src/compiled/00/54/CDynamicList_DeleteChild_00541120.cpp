@@ -8,23 +8,20 @@
 #include <stddef.h>
 #include <string.h>
 #include "rebuild_abi.h"
+// NF75 (round 7, land1117fu q10919): the child search is STLport 4.6 find(first, last, val) (inline forwarder) over the out-of-line
+//   std::__find<NUISystem::CComponent**, NUISystem::CComponent*> 0x00535FE4, whose body the TU sees (stlport/fable_algorithm.h
+//   FIND_RANDOM_DISPATCH + FIND_NOINLINE_BODY, the landed 0x007BF510 form); was the same-TU noinline stand-in
+//   NUISystem::FindChild(.., const RandomAccessTag&) behind a FindRange forwarder, with local iterator-tag structs.
+#define FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH
+#define FABLE_RETAIL_STLP_FIND_NOINLINE_BODY
+#include "stlport/fable_containers.h"
+#include "stlport/fable_algorithm.h"
 #define CComponent CComponentDonor
 #include "engine/_quarantine/CComponent.h"
 #undef CComponent
 namespace NUISystem {
 class CComponent;
 struct ChildPointer {CComponent* Data;void* CountInfo;CComponent* GetPItem()const{return Data;}};
-struct InputTag {InputTag(){}};struct ForwardTag:InputTag {};struct BidirectionalTag:ForwardTag {};struct RandomAccessTag:BidirectionalTag {};
-CComponent** __fastcall FindChild(CComponent**,CComponent**,CComponent* const&,const RandomAccessTag&); //00535FE4
-#pragma auto_inline(off)
-CComponent** __fastcall FindChild(CComponent** first,CComponent** last,CComponent* const& value,const RandomAccessTag&){
- long groups=(last-first)/4;
- for(;groups>0;--groups){if(*first==value)return first;++first;if(*first==value)return first;++first;if(*first==value)return first;++first;if(*first==value)return first;++first;}
- switch(last-first){case 3:if(*first==value)return first;++first;case 2:if(*first==value)return first;++first;case 1:if(*first==value)return first;}
- return last;
-}
-#pragma auto_inline(on)
-inline CComponent** FindRange(CComponent** first,CComponent** last,CComponent* const& value){return FindChild(first,last,value,RandomAccessTag());}
 struct ChildArray {ChildPointer* Start;ChildPointer* Finish;ChildPointer* Limit;ChildPointer* begin()const{return Start;}unsigned long size()const{return Finish-begin();}ChildPointer& operator[](unsigned long n){return *(begin()+n);}};
 struct ScrollingArray {CComponent** Start;CComponent** Finish;CComponent** Limit;unsigned long size()const{return Finish-Start;}CComponent*& operator[](unsigned long n){return Start[n];}
  void erase(CComponent** pos){CComponent** next=pos+1;if(Finish!=next)memmove(pos,next,reinterpret_cast<char*>(Finish)-reinterpret_cast<char*>(next));--Finish;}
@@ -46,7 +43,7 @@ void CDynamicList::RemoveChild(unsigned long index){
  if(index<Children.size()){
   CComponent* child=Children[index].GetPItem();
   CComponent** first=ScrollingChildren.Start;CComponent** last=ScrollingChildren.Finish;
-  CComponent** found=FindRange(first,last,child);
+  CComponent** found=std::find(first,last,child);
   if(found!=last){
    long scrollingIndex=found-first;
    ScrollingChildren.erase(found);

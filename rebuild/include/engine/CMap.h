@@ -135,7 +135,7 @@ protected:
     }
     void CopyPos(const CMap& source, const C2DCoordI& from, const C2DCoordI& to);   // 0x0081F240
 #endif
-public:
+protected: // NF75 (q10924): Ego_r.pdb / FableWin.pdb ?AddThemeDefIndexToPalette@CMap@@IAEEK@Z is protected (was public: here)
     unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex); // 0x008F70F0
 #endif
 public:

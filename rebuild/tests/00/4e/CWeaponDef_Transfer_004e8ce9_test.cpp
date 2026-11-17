@@ -39,8 +39,8 @@ class CPersistContext { public:
     void Transfer(EWeaponClass& value);                 // 0x004E8F8C
     template <class T> void Transfer(T& value);                // 0x00431020
     void Transfer(EDamageAttribute& value);             // 0x00459042
-    void Transfer(CObjectAugmentationParticleSet& value); // 0x004E9550
-    void Transfer(CWeaponTrailGraphicSet& value);       // 0x004E8FCD
+    void TransferHelper(CObjectAugmentationParticleSet* value); // 0x004E9550
+    void TransferHelper(CWeaponTrailGraphicSet* value);       // 0x004E8FCD
     void Transfer(CWeaponTrailMap& value);              // 0x004E90DA
     void Transfer(CArrowTrailMap& value);               // 0x004E9321
     // the default value is only checked in debug builds
@@ -104,8 +104,8 @@ void CWeaponDef::Transfer(CPersistContext& context)
     context.Transfer(Damage);
     context.Transfer(DamageType);
     context.Transfer(Explosion);
-    context.Transfer(FlourishParticles);
-    context.Transfer(FlourishSpecialWeaponTrail);
+    context.TransferHelper(&FlourishParticles);
+    context.TransferHelper(&FlourishSpecialWeaponTrail);
     context.Transfer(WeaponTrails);
     context.Transfer(UseAnalogueLoading);
     context.Transfer(MissileLoadCarrySlot);
@@ -145,8 +145,8 @@ template <> void CPersistContext::Transfer<long>(long& v) { rec(&v, 'l'); }
 template <> void CPersistContext::Transfer<bool>(bool& v) { rec(&v, 'b'); v = !v; }
 template <> void CPersistContext::Transfer<float>(float& v) { rec(&v, 'f'); }
 void CPersistContext::Transfer(EDamageAttribute& v) { rec(&v, 'D'); }
-void CPersistContext::Transfer(CObjectAugmentationParticleSet& v) { rec(&v, 'P'); }
-void CPersistContext::Transfer(CWeaponTrailGraphicSet& v) { rec(&v, 'G'); }
+void CPersistContext::TransferHelper(CObjectAugmentationParticleSet* v) { rec(v, 'P'); }
+void CPersistContext::TransferHelper(CWeaponTrailGraphicSet* v) { rec(v, 'G'); }
 void CPersistContext::Transfer(CWeaponTrailMap& v) { rec(&v, 'M'); }
 void CPersistContext::Transfer(CArrowTrailMap& v) { rec(&v, 'A'); }
 template <> void CPersistContext::Transfer<CFloatRange>(CFloatRange& v) { rec(&v, 'R'); }

@@ -13,8 +13,15 @@
 // LTCG-compiled (`__fastcall`), so its caller knows the call writes no memory and does not reload _M_finish. The stand-in
 // gives the same knowledge. Its `last - first` count clobbers edx, so the caller still reloads edx before the call
 // as retail does (a plain `first != last` loop lets VC7.1's register-usage tracking keep last in edx).
+// NF75 (round 7, land1117fu q10919): the search is STLport 4.6 find(first, last, val) (inline forwarder) over the out-of-line
+//   std::__find<NUISystem::CComponent**, NUISystem::CComponent*> 0x00535FE4, whose STLport body the TU sees (stlport/fable_algorithm.h
+//   FIND_RANDOM_DISPATCH + FIND_NOINLINE_BODY, the landed 0x007BF510 form); was the same-TU noinline stand-in NUISystem::find(..,
+//   const random_access_iterator_tag&) with a local tag struct.
+#define FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH
+#define FABLE_RETAIL_STLP_FIND_NOINLINE_BODY
+#include "stlport/fable_containers.h"
+#include "stlport/fable_algorithm.h"
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
-struct random_access_iterator_tag { random_access_iterator_tag() {} };
 class CEnginePrimitiveHandle;
 struct CEnginePrimitiveBase {               // counted primitive: vptr, then the reference count
     virtual void v00();
@@ -59,17 +66,6 @@ class CEnginePrimitiveHandle : public CBase { public:     // vtable 0x0122F598
 };
 namespace NUISystem {
 class CComponent;
-#pragma auto_inline(off)
-__declspec(noinline) CComponent** __fastcall find(CComponent** first, CComponent** last, CComponent* const& value,
-                             const random_access_iterator_tag&)   // 0x00535FE4 stand-in
-{
-    long n = last - first;
-    for (; n > 0; --n, ++first)
-        if (*first == value)
-            break;
-    return first;
-}
-#pragma auto_inline(on)
 inline CComponent** __copy_trivial(const CComponent* const* first, const CComponent* const* last, CComponent** result)
 {
     return (last == first) ? result :
@@ -95,7 +91,7 @@ class CScrollingViewport { public:
 };
 void CScrollingViewport::RemoveChild(CComponent* child)
 {
-    CComponent** it = find(m_children._M_start, m_children._M_finish, child, random_access_iterator_tag());
+    CComponent** it = std::find(m_children._M_start, m_children._M_finish, child);
     if (it != m_children._M_finish) {
         m_children.erase(it);
         m_handle.Clear();

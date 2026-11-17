@@ -43,7 +43,6 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const CCharString& a, const char* b);   // 0x0099F600
 
-class CAFile { public: static bool __fastcall PathExists(const CWideString& path); };                     // 0x00999230
 void __fastcall CreateDirectory(const CWideString& path);                // 0x009994A0
 
 class CDateAndTime { public:
@@ -52,7 +51,13 @@ class CDateAndTime { public:
                  long millisecond = 0);                 // 0x009E9A70
     bool operator>(const CDateAndTime& other) const;    // 0x009E9BE0
 };
-CDateAndTime __fastcall GetFileModifiedTime(const CWideString& path);    // 0x009992A0
+// NF75 (round 7, land1117fu q10941): GetFileModifiedTime is CAFile's static member (engine/CAFile.h MODIFIEDTIME; Ego_r / FableWin
+//   ?GetFileModifiedTime@CAFile@@SI?AVCDateAndTime@@ABVCWideString@@@Z, as the landed 0x00A60FB0 / 0x004091C0 bind it); was a free function.
+//   The row's pre-existing local CAFile declaration moves below CDateAndTime to declare it.
+class CAFile { public:
+    static bool __fastcall PathExists(const CWideString& path);                                           // 0x00999230
+    static CDateAndTime __fastcall GetFileModifiedTime(const CWideString& path);                          // 0x009992A0
+};
 
 extern CWideString minimapFilePathArtist;              // 0x013BAF38
 extern CWideString minimapFilePathProgmr;             // 0x013BAF3C
@@ -120,15 +125,15 @@ void CMiniMapDisplay::InitialiseMiniMapFileLoading_Region(const CWorldRegion* re
     CDateAndTime cacheTime;
     CDateAndTime dataTime;
     CWideString levelsDir(L"Data\\Levels\\");
-    CDateAndTime wldTime = GetFileModifiedTime(levelsDir + levelName.ToWideString() + L".wld");
+    CDateAndTime wldTime = CAFile::GetFileModifiedTime(levelsDir + levelName.ToWideString() + L".wld");
     if (CAFile::PathExists(dataPath)) {
-        dataTime = GetFileModifiedTime(dataPath);
+        dataTime = CAFile::GetFileModifiedTime(dataPath);
         if (regenerate && wldTime > dataTime)
             RegionMinimap.GenerateAndSave(worldMap, cachePath);
         else
             RegionMinimap.LoadRegionMinimapTGAFile(dataPath);
     } else if (CAFile::PathExists(cachePath)) {
-        cacheTime = GetFileModifiedTime(cachePath);
+        cacheTime = CAFile::GetFileModifiedTime(cachePath);
         if (regenerate && wldTime > cacheTime)
             RegionMinimap.GenerateAndSave(worldMap, cachePath);
         else

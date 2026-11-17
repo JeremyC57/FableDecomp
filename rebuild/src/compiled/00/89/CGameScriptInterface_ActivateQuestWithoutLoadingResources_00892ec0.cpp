@@ -11,7 +11,9 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public:
-  void Activate(CCharString* cs, int a, int b);
+  // NF75 (round 7, land1117fu q10942): Ego_r.pdb ?ActivateQuest@CQuestManager@@QAE_NABVCCharString@@_N1@Z (0x004B4A10; bool result, name by
+  //   reference; engine/CQuestManager.h ACTIVATEQUEST) in the row's pre-existing local declaration (was the made-up Activate(CCharString*, int, int)).
+  bool ActivateQuest(const CCharString& quest_name, bool game_script, bool load_resources);   // 0x004B4A10
 };
 
 
@@ -21,5 +23,5 @@ struct CGameScriptInterface_Methods : CGameScriptInterface {
 
 void CGameScriptInterface_Methods::ActivateQuestWithoutLoadingResources(CCharString* cs)
 {
-  CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().Activate(cs, 1, 0);
+  CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateQuest(*cs, true, false);
 }

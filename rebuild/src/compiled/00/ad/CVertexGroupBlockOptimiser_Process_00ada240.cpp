@@ -11,7 +11,12 @@
 // Layout (retail, STLport containers 12 bytes, lists 4 bytes): InputList +0x00, OptimalBlockList +0x0c, Blocks +0x10,
 // CurrentBlock +0x14, RemainingBlocks +0x18 (byte per block), MaxN +0x44, OptimalSize +0x48, Greedy +0x50,
 // Iterations +0x54.
+// NF75 (round 7, land1117fu q10917): the local CByteArray / CopyTrivial stand-ins of RemainingBlocks are replaced by the shared STLport
+//   std::vector<bool> of stlport/fable_containers.h (Ego_r.pdb CVertexGroupBlockOptimiser::RemainingBlocks); the fill-insert call
+//   binds ?_M_fill_insert@?$vector@_NV?$allocator@_N@std@@@std@@QAEXPA_NIAB_N@Z (0x004676EF; was ?_M_fill_insert@CByteArray@@..).
 #include <new>
+#define FABLE_RETAIL_STLP_VECTOR_ORIGINAL_RESIZE_INSERT_CHAIN_PASS22   // STLport 4.6 insert(pos, n, x) forwarding to _M_fill_insert
+#include "stlport/fable_containers.h"
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
 extern "C" void* __cdecl malloc(unsigned int size);            // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                     // 0x00BFEA14
@@ -137,36 +142,13 @@ struct CBlockList {                                            // list<CVertexGr
     void push_back(const CVertexGroupBlock& x) { insert(end(), x); }
 };
 
-inline void* CopyTrivial(const void* first, const void* last, void* result)
-{
-    return (last == first) ? result
-                           : (char*)memmove(result, first, (const char*)last - (const char*)first) +
-                                 ((const char*)last - (const char*)first);
-}
-
-struct CByteArray {                                            // the retail RemainingBlocks (one byte per block)
-    bool* _M_start;
-    bool* _M_finish;
-    bool* _M_end_of_storage;
-    bool* begin() const { return _M_start; }
-    bool* end() const { return _M_finish; }
-    void _M_fill_insert(bool* position, unsigned long n, const bool& x);   // 0x004676EF
-    void insert(bool* position, unsigned long n, const bool& x) { _M_fill_insert(position, n, x); }
-    bool* erase(bool* first, bool* last)
-    {
-        _M_finish = (bool*)CopyTrivial(last, _M_finish, first);
-        return first;
-    }
-    void clear() { erase(begin(), end()); }
-};
-
 class CVertexGroupBlockOptimiser {
 public:
     CBlockArray InputList;                                     // +0x00
     CBlockList OptimalBlockList;                               // +0x0c
     CBlockList Blocks;                                         // +0x10
     CVertexGroupBlock* CurrentBlock;                           // +0x14
-    CByteArray RemainingBlocks;                                // +0x18
+    std::vector<bool> RemainingBlocks;                         // +0x18 (STLport 4.6 vector<bool>, stlport/fable_containers.h)
     unsigned char _pad24[0x44 - 0x24];
     unsigned long MaxN;                                        // +0x44
     unsigned long OptimalSize;                                 // +0x48
