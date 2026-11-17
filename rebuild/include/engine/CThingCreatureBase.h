@@ -289,6 +289,20 @@ public:
     }
     virtual void OnHit(CHitParameters&);
     bool SetCurrentAction(const CCreatureActionBase&);
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_WORLDUPDATE
+    // NF66 opt-in (row 0x006666A0): Ego_r.pdb / FableWin.pdb ?WorldUpdate@CThingCreatureBase@@UAE_NXZ (the CThing slot-19 override,
+    // retail 0x006666A0) and the protected ?UpdateBodyReorientation@CThingCreatureBase@@IAEXXZ (out of line at 0x006622D0).
+    // Declarations only: an override adds no slot and no layout.
+    virtual bool WorldUpdate();                                        // 0x006666A0
+protected:
+    void UpdateBodyReorientation();                                    // 0x006622D0
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETPITEMTOUNSHEATHE
+    // NF66 opt-in (row 0x00694430): the setter of PItemToUnsheatheAfterCutscene (+0x150) out of line at 0x00662450 (a CIntelligentPointer
+    // temporary from the argument, then assigned). No PDB / FSE / Ego_d name: DESCRIPTIVE name, the spelling the landed caller already used.
+    void SetPItemToUnsheatheAfterCutscene(CThing* item);               // 0x00662450
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FINISHACTION
     // Nested opt-in (chunk 1010, row 0x00896390 CGameScriptInterface::OpenChest): FableWin.pdb ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ,
     // out of line in retail at 0x00662650 (`mov ecx,ebp ; call 0x00662650` before the open-chest SetCurrentAction). Declaration only.

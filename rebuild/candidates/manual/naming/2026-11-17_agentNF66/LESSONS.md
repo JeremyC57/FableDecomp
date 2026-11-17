@@ -1,0 +1,12 @@
+# NF66 lessons (one line each)
+- RELOCATION_MATCH is not enough: diff every binding against the baseline (work/cmp.sh); a non-const GetTC bound the non-const LowerBound at the const 0x004365B0 (0x004B11A0).
+- A row whose landed model fakes a same-TU callee body (push_back storing one byte, a swap over a global) usually ports with the header's visible noinline opt-in (STLP_VECTOR_PUSHBACK_NOINLINE, STLP_VECTOR_ERASE_NOINLINE, STLP_FIND_NOINLINE_BODY_FORWARDER): 0x0053822B / 0x0053B321 matched first time.
+- Out-of-line CBasicString<char>::operator==(const char*) with the caller keeping PStringData across both calls = TEXT_EQ_NOINLINE + COMPARE_BODY (0x004FE630).
+- Header vtable slots: count the CList virtuals after CChangingStateComponent's 142, overloads reversed; the landed descriptive slots 150/161/165/181 were SetMaxToDraw (CListArrow) / SetSelectedChild / protected ScrollUp(5 args) / SetRecomputeOffsets.
+- A plain-inline CIntelligentPointer operator= under ASSIGN_DIRECT can be called out of line; ASSIGN + ASSIGN_FORCEINLINE expanded it (0x006666A0).
+- Including NUISystem_CListArrow.h pulls CSprite -> CEnginePrimitiveHandle, which needs FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE.
+- An x87 commutative-operand tie (0x0075A530) moved only with an extra by-value return layer; macro variants of GetCenter / operator+ / operator* did not move it.
+- Port the closest rows of one TU family first: the CList trio shared one define block and took 2-3 grades each.
+- Verify every "done" entry with callers.py on the target before reporting: q10462 / q10472 had a sixth binder (0x0053BF20) outside both NF62's list and rows.txt, ported in 1 grade with the sibling's recipe.
+- Private members a row writes (CAnimSet UpdateMode / Finished) usually have FableWin inline setters (SetUpdateMode, SetAsFinished()); grep the debug PDB member list before modelling access.
+- A file-local retail helper (Ego_r ?Name@?A0x<hash>@@) can be declared in an unnamed namespace; the relocation then carries this TU's hash, which differs per compile.

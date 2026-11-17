@@ -101,6 +101,11 @@ public:
     void SetSaveSlotFileName(long slot, const CWideString& name);
 #endif
     void ProcessPendingTutorials();                                      // 0x0040BB30
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_GETPROFILEDIR
+    // NF66 opt-in (rows 0x00596CCE / 0x00597006): Ego_r.pdb 0x00406C00 / FableWin.pdb 0x0187D400
+    // ?GetProfileDir@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z, out of line in retail (0x004082D0). Declaration only.
+    CWideString GetProfileDir(const CWideString& profile, bool create);  // 0x004082D0
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
     // Opt-in (chunk 2003, row 0x00598463 CFrontEndManager::RefreshAvailableSavedGamesForProfile): Ego_r.pdb / FableWin.pdb spellings,
     // out of line in retail. IsDebugProfile is retail's two-byte `xor al,al ; ret` 0x00407030 (FableWin.pdb lays it right before

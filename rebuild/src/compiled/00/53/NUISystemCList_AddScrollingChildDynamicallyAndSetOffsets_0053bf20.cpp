@@ -1,5 +1,5 @@
 // NUISystem::CList::AddScrollingChildDynamicallyAndSetOffsets(const CCountedPointer<CComponent>& child) -- add a scrolling child at run time at the list's next scrolling-child position / alpha: write the position into the child's states 1, 4, 5 (and 0, 3 when the list def asks for it) and the clamped alpha byte into states 1, 4, 5, advance the next position / alpha (bouncing the offsets), then the base dynamic add, the scrolling-children, visibility and scroll-layout records, and -- while the list is live (slot 113) -- focus the child on the front end for scroll types 3 / 5 and record its child index as a shape child
-// Leaf: ?AddScrollingChildDynamicallyAndSetOffsets@CList@NUISystem
+// Leaf: ?AddScrollingChildDynamicallyAndSetOffsets@CList@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
 // Retail: Fable.exe @ 0x0053BF20, 1042 bytes, `ret 4`; /Os + optimize("y", off) TU.
 // Callees: map operator[] 0x0042D5B1, CChangingStateComponent::AddChildDynamically 0x0052CAB0 (direct base call), vector
 //   push_backs 0x00486024 (CComponent*), 0x0053CB4F (bool), 0x005178A0 (unsigned long), the scroll layout's AddChild
@@ -9,194 +9,63 @@
 //   function's), plus the landed CList::AddScrollingChildDynamically 0x0053BEAC (+0x17c scroll layout); the scroll type
 //   +0x148 is descriptive. The child's event-listener base sits at +4 (`neg/sbb/and` null-checked conversion for the
 //   front-end argument, unchecked `lea ecx,[edi+4]` for its own slot-3 call).
+// NF66 (round 7): ported onto engine/NUISystem_CList.h exactly as its landed sibling 0x0053AD07 (same define block, plus
+//   engine/NUISystem_CManager.h): the local CComponent / CComponentDef / CDefPointer / CCountedPointer / CList / vector / scroll-layout
+//   stand-ins deleted. Names from the header: the scroll layout is ScrollingChildrenStates (push_back 0x0053CFC2), IsLive is CComponent
+//   slot 113 IsPCStyle, ScrollType +0x148 is CChangingStateComponent::TargetState, SetFocusListener is CObservable slot 2 AddObserver,
+//   HandleEvent is CObserver slot 3 ObserveEvent(UI_EVENT_MOUSE_MOVEMENT = 0x19). The self is the PDB virtual (UAE, non-const reference).
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-
-// NF44 (round 6): the local C2DVector / CUIState / state-map stand-ins replaced by the shared engine/C2DVector.h,
-// engine/NUISystem_CUIState.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP + _INDEX_DECL_ONLY: operator[] out of line), so the
-// subscript binds STLport map<unsigned long, NUISystem::CUIState>::operator[] 0x0042D5B1 (the landed row spelling).
-#include "engine/C2DVector.h"
-#include "engine/NUISystem_CUIState.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_CUIDEF
+#define FABLE_RETAIL_CLIST
+#define FABLE_RETAIL_CMANAGER
 #define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
-#include "stlport/fable_map.h"
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
+#include "engine/CDefPointer.h"
+#include "engine/NUISystem_CUIDef.h"
+#include "engine/NUISystem_CList.h"
+#include "engine/NUISystem_CManager.h"
 
 namespace NUISystem {
 
-typedef std::map<unsigned long, CUIState> CStateMap;   // STLport, 12 bytes (the alpha byte +0x1b is CUIState::Colour.A)
-struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
-    long GetRefCount() const { return m_count; }
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                 // slot 1
-};
-#pragma pack(push, 2)
-struct CComponentDef : CDefVirtual, CRefCounted {
-    unsigned char _pad08[0x221 - 8];
-    bool          SetOffsetsForAllStates;   // +0x221 (descriptive)
-    void ReleaseTemporary()
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Destroy();
-    }
-};
-#pragma pack(pop)
-template <class T> struct CDefPointer {
-    T* Data;
-    FABLE_FORCEINLINE ~CDefPointer()
-    {
-        if (Data) {
-            Data->ReleaseTemporary();
-            Data = 0;
-        }
-    }
-    T* operator->() const { return Data; }
-};
-
-struct CComponentBase {
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
-    virtual C2DVector GetScale() const;   // slot 12 (+0x30)
-    virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018();
-    virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024();
-    virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029(); virtual void v030();
-    virtual void ChangePosition(const C2DVector& position, float time, bool b);   // slot 31 (+0x7c)
-    virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037();
-    virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043();
-    virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049();
-    virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054(); virtual void v055();
-    virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059(); virtual void v060(); virtual void v061();
-    virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067();
-    virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073();
-    virtual void v074(); virtual void v075(); virtual void v076(); virtual void v077(); virtual void v078(); virtual void v079();
-    virtual void v080(); virtual void v081();
-    virtual CStateMap& GetStateMap();   // slot 82 (+0x148)
-    virtual void v083(); virtual void v084(); virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088();
-    virtual void v089(); virtual void v090(); virtual void v091(); virtual void v092(); virtual void v093(); virtual void v094();
-    virtual void v095(); virtual void v096(); virtual void v097(); virtual void v098(); virtual void v099(); virtual void v100();
-    virtual void v101(); virtual void v102(); virtual void v103(); virtual void v104(); virtual void v105(); virtual void v106();
-    virtual void v107();
-    virtual CDefPointer<CComponentDef> GetDef();   // slot 108 (+0x1b0)
-    virtual void v109(); virtual void v110(); virtual void v111(); virtual void v112(); virtual bool IsLive(); /* slot 113 (+0x1c4) */ virtual void v114();
-    virtual void v115(); virtual void v116(); virtual void v117(); virtual void v118(); virtual void v119(); virtual void v120();
-    virtual void v121(); virtual void v122(); virtual void v123(); virtual void v124(); virtual void v125(); virtual void v126();
-    virtual void v127(); virtual void v128(); virtual void v129(); virtual void v130(); virtual void v131(); virtual void v132();
-    virtual void v133(); virtual void v134(); virtual void v135(); virtual void v136(); virtual void v137(); virtual void v138();
-    virtual void v139(); virtual void v140(); virtual void v141(); virtual void v142(); virtual void v143(); virtual void v144();
-    virtual void v145(); virtual void v146(); virtual void v147(); virtual void v148(); virtual void v149();
-    virtual bool IsMoving();   // slot 150 (+0x258)
-    virtual void SetBasePosition(const C2DVector& position);   // slot 151 (+0x25c)
-    virtual void v152(); virtual void v153();
-    virtual void SetUpOffset(const C2DVector& offset);   // slot 154 (+0x268)
-    virtual void SetDownOffset(const C2DVector& offset);   // slot 155 (+0x26c)
-    virtual void v156(); virtual void v157();
-    virtual void SetUpCount(unsigned long count);   // slot 158 (+0x278)
-    virtual void SetDownCount(unsigned long count);   // slot 159 (+0x27c)
-};
-struct CEventListener {
-    virtual void e00(); virtual void e01(); virtual void e02();
-    virtual void HandleEvent(long event);   // slot 3 (+0x0c)
-};
-class CComponent : public CComponentBase, public CEventListener { public:
-};
-class CManager {
-public:
-    virtual void f00(); virtual void f01();
-    virtual void SetFocusListener(CEventListener* listener);   // slot 2 (+0x08)
-    static CManager* __fastcall GetInstance();   // 0x0041E5F2
-};
-struct CScrollLayout {
-    void* m_pRows;
-    void AddChild(CStateMap& states);       // 0x0053CFC2
-};
-
-template <class T> struct CCountedPointer {
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-    T* GetPtr() const { return Data; }
-};
-struct CComponentVector {                   // vector<CComponent*>
-    CComponent** First; CComponent** Last; CComponent** End;
-    void push_back(CComponent* const& value);           // 0x00486024
-};
-struct CBoolVector {                        // vector<bool> as retail stores it
-    unsigned char* First; unsigned char* Last; unsigned char* End;
-    void push_back(const bool& value);                   // 0x0053CB4F
-};
-struct CULongVector {                       // vector<unsigned long>
-    unsigned long* First; unsigned long* Last; unsigned long* End;
-    void push_back(const unsigned long& value);          // 0x005178A0
-};
-struct CCountedPointerVector {              // vector<CCountedPointer<CComponent> >
-    CCountedPointer<CComponent>* First; CCountedPointer<CComponent>* Last; CCountedPointer<CComponent>* End;
-    unsigned int size() const { return (unsigned int)(Last - First); }
-};
-
-class CChangingStateComponent : public CComponent { public:
-    void AddChildDynamically(const CCountedPointer<CComponent>& child);   // 0x0052CAB0
-};
-class CList : public CChangingStateComponent { public:
-    unsigned char           _pad008[0xb0 - 8];
-    CCountedPointerVector   Children;                       // +0xb0
-    unsigned char           _pad0bc[0xe4 - 0xbc];
-    CULongVector            ShapeChildren;                  // +0xe4
-    unsigned char           _pad0f0[0x148 - 0xf0];
-    long                    ScrollType;                     // +0x148 (descriptive)
-    unsigned char           _pad14c[0x15c - 0x14c];
-    int                     SelectedChild;                  // +0x15c
-    float                   LastInputTime;                  // +0x160
-    CComponentVector        ScrollingChildren;              // +0x164
-    unsigned char           _pad170[0x17c - 0x170];
-    CScrollLayout           ScrollLayout;                   // +0x17c
-    unsigned char           _pad180[0x188 - 0x180];
-    C2DVector               PositionOffset;                 // +0x188
-    C2DVector               PositionOffsetToUse;            // +0x190
-    float                   AlphaOffset;                    // +0x198
-    float                   AlphaOffsetToUse;               // +0x19c
-    float                   NextScrollingChildAlpha;        // +0x1a0
-    C2DVector               NextScrollingChildPosition;     // +0x1a4
-    unsigned char           _pad1ac[0x1c8 - 0x1ac];
-    CBoolVector             ScrollingChildrenVisibility;    // +0x1c8
-    void AddScrollingChildDynamicallyAndSetOffsets(const CCountedPointer<CComponent>& child);
-};
-
-void CList::AddScrollingChildDynamicallyAndSetOffsets(const CCountedPointer<CComponent>& child)
+void CList::AddScrollingChildDynamicallyAndSetOffsets(CCountedPointer<CComponent>& child)
 {
     CComponent* c;
-    c = child.Data;
-    c->GetStateMap()[1].Position = NextScrollingChildPosition;
-    c = child.Data;
-    c->GetStateMap()[4].Position = NextScrollingChildPosition;
-    c = child.Data;
-    c->GetStateMap()[5].Position = NextScrollingChildPosition;
-    if (GetDef()->SetOffsetsForAllStates) {
-        c = child.Data;
-        c->GetStateMap()[0].Position = NextScrollingChildPosition;
-        c = child.Data;
-        c->GetStateMap()[3].Position = NextScrollingChildPosition;
+    c = child.operator->();
+    c->GetStates()[1].Position = NextScrollingChildPosition;
+    c = child.operator->();
+    c->GetStates()[4].Position = NextScrollingChildPosition;
+    c = child.operator->();
+    c->GetStates()[5].Position = NextScrollingChildPosition;
+    if (LoadAndReturnDef()->PCStyle) {
+        c = child.operator->();
+        c->GetStates()[0].Position = NextScrollingChildPosition;
+        c = child.operator->();
+        c->GetStates()[3].Position = NextScrollingChildPosition;
     }
     if (NextScrollingChildAlpha < 0.0f) {
-        child->GetStateMap()[1].Colour.A = 0;
-        c = child.Data;
-        c->GetStateMap()[4].Colour.A = 0;
-        c = child.Data;
-        c->GetStateMap()[5].Colour.A = 0;
+        child->GetStates()[1].Colour.A = 0;
+        c = child.operator->();
+        c->GetStates()[4].Colour.A = 0;
+        c = child.operator->();
+        c->GetStates()[5].Colour.A = 0;
     } else if (NextScrollingChildAlpha > 1.0f) {
-        child->GetStateMap()[1].Colour.A = 0xff;
-        c = child.Data;
-        c->GetStateMap()[4].Colour.A = 0xff;
-        c = child.Data;
-        c->GetStateMap()[5].Colour.A = 0xff;
+        child->GetStates()[1].Colour.A = 0xff;
+        c = child.operator->();
+        c->GetStates()[4].Colour.A = 0xff;
+        c = child.operator->();
+        c->GetStates()[5].Colour.A = 0xff;
     } else {
-        child->GetStateMap()[1].Colour.A = (unsigned char)(NextScrollingChildAlpha * 255.0f);
-        child->GetStateMap()[4].Colour.A = (unsigned char)(NextScrollingChildAlpha * 255.0f);
-        child->GetStateMap()[5].Colour.A = (unsigned char)(NextScrollingChildAlpha * 255.0f);
+        child->GetStates()[1].Colour.A = (unsigned char)(NextScrollingChildAlpha * 255.0f);
+        child->GetStates()[4].Colour.A = (unsigned char)(NextScrollingChildAlpha * 255.0f);
+        child->GetStates()[5].Colour.A = (unsigned char)(NextScrollingChildAlpha * 255.0f);
     }
     NextScrollingChildPosition.Y += PositionOffsetToUse.Y;
     float alpha = AlphaOffsetToUse + NextScrollingChildAlpha;
@@ -215,13 +84,13 @@ void CList::AddScrollingChildDynamicallyAndSetOffsets(const CCountedPointer<CCom
         }
     }
     CChangingStateComponent::AddChildDynamically(child);
-    ScrollingChildren.push_back(child.GetPtr());
+    ScrollingChildren.push_back(child.operator->());
     ScrollingChildrenVisibility.push_back(true);
-    ScrollLayout.AddChild(child->GetStateMap());
-    if (IsLive()) {
-        if (ScrollType == 3 || ScrollType == 5) {
-            CManager::GetInstance()->SetFocusListener(child.GetPtr());
-            child->HandleEvent(0x19);
+    ScrollingChildrenStates.push_back(child->GetStates());
+    if (IsPCStyle()) {
+        if (TargetState == 3 || TargetState == 5) {
+            CManager::GetInstance()->AddObserver(child.operator->());
+            child->ObserveEvent(UI_EVENT_MOUSE_MOVEMENT);
         }
         ShapeChildren.push_back(Children.size() - 1);
     }

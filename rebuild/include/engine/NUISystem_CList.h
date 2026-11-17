@@ -67,6 +67,11 @@ protected: virtual void DoRecomputeOffsets();
 protected: virtual void ComputeChildrenVisibility();
 protected: virtual void ComputeScrollBarPosition();
 protected: virtual void ComputeScrollBarZoom();
+#ifdef FABLE_RETAIL_CLIST_GETDATAFROMDEF
+// NF66 opt-in (row 0x0053822B): Ego_r.pdb 0x005B4112 / FableWin.pdb 0x02193548 ?GetDataFromDef@CList@NUISystem@@QAEXXZ (public,
+// non-virtual; out of line at 0x0053822B). Declaration only.
+public: void GetDataFromDef();
+#endif
 protected: long SelectedChild;
 protected: float LastInputTime;
 protected: std::vector<NUISystem::CComponent *,std::allocator<NUISystem::CComponent *> > ScrollingChildren;

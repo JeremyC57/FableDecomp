@@ -305,6 +305,12 @@ public:
 public:
     float GetMass() const;                                             // 0x006AFE00
 #endif // FABLE_RETAIL_CTCPHYSICSBASE_GETMASS
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_GETTURNSPEEDANGLEXY
+// NF66 opt-in (row 0x006666A0 CThingCreatureBase::WorldUpdate): Ego_r.pdb / FableWin.pdb ?GetTurnSpeedAngleXY@CTCPhysicsBase@@QBEMXZ
+// (public const, out of line at 0x006AFF40, landed under that leaf). Declaration only: no layout change.
+public:
+    float GetTurnSpeedAngleXY() const;                                 // 0x006AFF40
+#endif // FABLE_RETAIL_CTCPHYSICSBASE_GETTURNSPEEDANGLEXY
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_DUMMYRHSET
 // agentFAM04 (2026-11-11): the static right-handed set the base GetRHSet() / GetLastRHSet() return (0x006B1290 /
 // 0x006B12A0 `mov eax,0137F9B4h`, 0x006B1450 copies it): FableWin.pdb names its initializer `dynamic initializer for

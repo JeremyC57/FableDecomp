@@ -53,6 +53,11 @@ public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SHOT_DEFINITION;}
 #endif
     CThing* GetPWeapon() const;                                         // 0x007BEFF0
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_UPDATE
+    // NF66 opt-in (row 0x006666A0 CThingCreatureBase::WorldUpdate): Ego_r.pdb ?Update@CTCShotDefinitionBase@NThingShot@@QAEXXZ (public,
+    // out of line at 0x007C21A0). Declaration only: no layout change.
+    void Update();                                                      // 0x007C21A0
+#endif
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT
     // Retail opt-in (chunk 1025, row 0x007C0AD0 NThingShot::CreateShot): Ego_r.pdb / FableWin.pdb
     // ?Init@CTCShotDefinitionBase@NThingShot@@QAEXV?$CDefPointer@$$CBVCThingShotDef@@@@PAVCThing@@1PBV4@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z

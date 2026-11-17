@@ -1,4 +1,5 @@
 // CQuestManager::IsRegionStartOfRegionLockingMode(const CRegion&) const -- whether some active non-vignette, non-feat quest card's running quest contains the region
+// Leaf: ?IsRegionStartOfRegionLockingMode@CQuestManager@@QBE_NABVCRegion@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B11A0, length 193 bytes, `ret 4`
 // (PDB ?IsRegionStartOfRegionLockingMode@CQuestManager@@QBE_NABVCRegion@@@Z).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const
@@ -11,128 +12,46 @@
 // register seeded from the argument word before the walk), the definition held by a scoped counted copy whose
 // AddRef/DecRef run in memory, one null test shared by the copy, the `&&` guard and the release; `FeatIndex <= -1`
 // gives `cmp -1 ; jg`; the early `return true` duplicates the release before the `mov al,1` exit.
-#include "fable_compiler.h"
-class CCharString { public:
-    class CCharStringData* PStringData;
-    bool operator!=(const char* text) const;             // 0x0099E960
-};
-class CDefString { public:                                      // 4-byte def-name handle
-    long m_index;
-    bool operator==(const CCharString& name) const;      // 0x004B7980
-};
-
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-typedef std::pair<ETCInterfaceType, CTCBase*> CTCEntry;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                          // CThing::Components: a sorted vector of pairs (12 bytes)
-    CTCEntry* _M_start;
-    CTCEntry* _M_finish;
-    CTCEntry* _M_end_of_storage;
-    const CTCEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0 (the const instantiation)
-    FABLE_FORCEINLINE CTCBase* Find(long type) const         // the inlined map find: the end entry when absent
-    {
-        const CTCEntry* it = LowerBound((ETCInterfaceType)type);
-        if (it == _M_finish || type < it->first)
-            it = _M_finish;
-        return it->second;
-    }
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
-class CThing { public:                                          // retail CThing (local model: offsets PDB -0x10 past the containers)
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[8];                    // +0x20 which TC types the thing holds
-    unsigned char _pad40[4];
-    CTCMap        Components;                            // +0x44
-    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    FABLE_FORCEINLINE CTCBase* GetTC(long type) const { return Components.Find(type); }
-};
-
-class CQuestCardDef { public:                                   // intrusively counted definition (vptr, count +4)
-    virtual void v00();
-    virtual void Release();                              // slot 1 (+4): destroys the definition
-    long          RefCount;                              // +0x04
-    void AddRef() { ++RefCount; }
-    void DecRef() { if (--RefCount == 0) Release(); }
-    unsigned char _pad08[0x34 - 0x08];
-    CDefString    RegionName;                            // +0x34 (PDB +0x38)
-    CDefString    TeleporterRegionName;                  // +0x38 (PDB +0x3c)
-    unsigned char _pad3c[0x59 - 0x3c];
-    bool          IsVignette;                            // +0x59 (PDB +0x5d)
-};
-struct CQuestCardDefPointer {                            // CDefPointer<const CQuestCardDef>
-    CQuestCardDef* Object;
-    CQuestCardDefPointer(const CQuestCardDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
-    ~CQuestCardDefPointer() { if (Object) Object->DecRef(); }
-};
-class CTCQuestCard { public:                                    // TC type 0x6c (retail layout = PDB, 0x34 bytes)
-    unsigned char        _pad00[0x0c];                   // CTCBase: vptr, ParentThing, flags
-    CQuestCardDefPointer PDef;                           // +0x0c
-    bool                 Finished;                       // +0x10
-    bool                 Replayable;                     // +0x11
-    long                 FeatIndex;                      // +0x14
-    CCharString          QuestName;                      // +0x18
-    CCharString          ObjectiveName;                  // +0x1c
-    CCharString          RegionName;                     // +0x20
-    CCharString          TeleporterRegionName;           // +0x24
-    CCharString          ScriptQuestName;                // +0x28
-    long                 GoldReward;                     // +0x2c
-    long                 RenownReward;                   // +0x30
-    bool IsVignette() const;                             // 0x007022E0 (PDef->IsVignette)
-};
-FABLE_FORCEINLINE CTCQuestCard* GetQuestCard(CThing* thing)  // the unchecked lookup: unset when the thing has no quest card TC
-{
-    CTCQuestCard* tc;
-    if (thing->HasTC(0x6c))
-        tc = (CTCQuestCard*)thing->GetTC(0x6c);
-    return tc;
-}
-
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-struct CCardNode {                                       // STLport list<CIntelligentPointer<CThing>> node
-    CCardNode*              _M_next;
-    CCardNode*              _M_prev;
-    CIntelligentPointer<CThing> _M_data;                     // +0x08
-};
-
-class CRegion;
-struct CActiveQuest {                                    // CQuestManager::CActiveQuest
-    bool ContainsRegion(const CRegion& region) const;    // 0x004AFD80
-};
-
-class CQuestManager { public:
-    unsigned char _pad00[0x5c];
-    CCardNode*    ActiveQuestCards;                      // +0x5c list<CIntelligentPointer<CThing>> (head node)
-    CCardNode*    CompletedQuestCards;                   // +0x60
-    CActiveQuest* GetActiveQuestFromScriptName(const CCharString& name) const;   // 0x004AF5B0
-    bool IsRegionStartOfRegionLockingMode(const CRegion& region) const;
-};
+// NF66 (round 7): ported onto engine/CQuestManager.h (the define block of the landed GetActiveQuestFromScriptName 0x004AF5B0 plus
+//   ANYQUEST_LOCKSTART for the self and the NF66 opt-in FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST_CONTAINSREGION), engine/CTCQuestCard.h,
+//   engine/CQuestCardDef.h and engine/CThing.h: the local CCharString / CDefString / CThing / CQuestCardDef / CTCQuestCard /
+//   CQuestManager / CActiveQuest models deleted, so the lookup binds
+//   ?GetActiveQuestFromScriptName@CQuestManager@@QBEPAVCActiveQuest@1@ABVCCharString@@@Z (the nested CActiveQuest; was a global struct).
+//   The quest card comes from the const PeekTC (const LowerBound 0x004365B0) with an uninitialised out pointer (retail keeps the caller's register when the thing has no card).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CQUESTMANAGER
+#define FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE
+#define FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST
+#define FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST_CONTAINSREGION
+#define FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+#define FABLE_RETAIL_CQUESTMANAGER_GETACTIVEQUESTFROMSCRIPTNAME
+#define FABLE_RETAIL_CQUESTMANAGER_ANYQUEST_LOCKSTART
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTCQUESTCARD
+#define FABLE_RETAIL_CTCQUESTCARD_ACCESSORS
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CQuestManager.h"
+#include "engine/CTCQuestCard.h"
+#include "engine/CQuestCardDef.h"
 
 bool CQuestManager::IsRegionStartOfRegionLockingMode(const CRegion& region) const
 {
-    for (CCardNode* node = ActiveQuestCards->_M_next; node != ActiveQuestCards; node = node->_M_next) {
-        CTCQuestCard* tc = GetQuestCard(node->_M_data.GetPItem());
-        if (tc) {
-            CQuestCardDefPointer def(tc->PDef);
-            if (def.Object && !def.Object->IsVignette && tc->FeatIndex <= -1) {
-                CActiveQuest* quest = GetActiveQuestFromScriptName(tc->ScriptQuestName);
+    for (std::list<CIntelligentPointer<CThing> >::const_iterator it = ActiveQuestCards.begin(); it != ActiveQuestCards.end(); ++it) {
+        const CTCQuestCard* card;
+        (*it).Get()->PeekTC(TCI_QUEST_CARD, &card);
+        if (card) {
+            CDefPointer<const CQuestCardDef> def = card->PDef;
+            if (def.Get() && !def->IsVignette && card->FeatIndex <= -1) {
+                CActiveQuest* quest = GetActiveQuestFromScriptName(card->ScriptQuestName);
                 if (quest && quest->ContainsRegion(region))
                     return true;
             }
