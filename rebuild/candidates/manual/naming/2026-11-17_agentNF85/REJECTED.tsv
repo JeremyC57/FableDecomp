@@ -1,0 +1,7 @@
+entry	address	claim	reason
+q11058	0x006B94E0	WORKLIST: binds 0x004BB270 as ?erase@CCharStringSet@@QAEKABUCCharString@@@Z	probe of the landed row (RELOCATION_MATCH): it already binds 0x004BB270 under the q11058 set<CCharString> erase(const K&) spelling; the reloc_bindings.tsv line is stale. Row not-a-binder; the entry itself holds (done-already).
+q11058	0x006B9510	WORKLIST: binds 0x004BB270 as ?Assign@CountedPtr@@QAEXPAUCComp@@@Z	probe: both calls bind 0x004BB270 under the q11058 spelling; stale reloc_bindings line. Row not-a-binder.
+q11059	0x006276F0	WORKLIST/slice: a binder of 0x00428494	probe: the landed row's function makes no call to 0x00428494. Row not-a-binder.
+q11074	0x004EB9A6	WORKLIST: binds 0x004E415D under another spelling	probe: it already binds 0x004E415D under the template __final_insertion_sort spelling the NF85 self row now emits. Row not-a-binder.
+q11086	0x00A41B60	WORKLIST: binds 0x00A41960 under another spelling	probe: it already binds 0x00A408E0 under the q11082 symbol and 0x00A41960 under the ??$sort_heap@..PAVCSoundBankLH.. spelling the NF85 self row now emits. Row not-a-binder.
+q11089	0x004BBBC0	WORKLIST: binds 0x004BBB40 as ?helper_4bbb40@@YIXPAX0_N@Z	probe of the landed row: its +0x0F call already binds 0x004BBB40 under the exact q11089 symbol. Row not-a-binder; entry done-already.

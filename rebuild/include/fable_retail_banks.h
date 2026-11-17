@@ -51,6 +51,13 @@ namespace NBankFileManager
         unsigned long InfoOffset;                                        // +0x08
         unsigned long InfoSize;                                          // +0x0C
         unsigned long Alignment;                                         // +0x10
+#ifdef FABLE_RETAIL_NBANKFILEMANAGER_CCONTAINEDBANK_CTOR
+        // NF85 opt-in (row 0x009AC530 map<CCharString, CContainedBank>::operator[]): FableWin.pdb ??0CContainedBank@NBankFileManager@@QAE@XZ,
+        // the user default constructor (all five words zero), inline: STLport's `value_type(k, _Tp())` then builds the zeroed default in
+        // its own frame temporary and copies it into the pair, as retail 0x009AC530 does (`sub esp,30h`); without it VC7.1 folds the
+        // value-initialised POD straight into the pair. Layout unchanged.
+        CContainedBank() : DataVersion(0), EntryCount(0), InfoOffset(0), InfoSize(0), Alignment(0) {}
+#endif
     };
     class CRetailBank : public CBaseClassNonCopyable
     {
@@ -63,8 +70,8 @@ namespace NBankFileManager
         CCharString FilePath;                                            // +0x24
     };
 }
-FABLE_STATIC_ASSERT(sizeof(NBankFileManager::CContainedBank) == 0x14);
-FABLE_STATIC_ASSERT(sizeof(NBankFileManager::CRetailBank) == 0x28);
+FABLE_STATIC_ASSERT_AT(66, sizeof(NBankFileManager::CContainedBank) == 0x14);
+FABLE_STATIC_ASSERT_AT(67, sizeof(NBankFileManager::CRetailBank) == 0x28);
 
 class CBankFileManager : public CBaseClass
 {

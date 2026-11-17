@@ -1,55 +1,26 @@
-// std::__pop_heap(pair<CCharString,NParticleEngine::CRegisteredPSCInfo>* first, ..., pair value, CKeyPairCompareLess comp, int*) -- SGI pop_heap core for the registered particle-component table: *result = *first, then sift `value` down from the root
+// std::__pop_heap<std::pair<CCharString,NParticleEngine::CRegisteredPSCInfo>*, CKeyPairCompareLess<CCharString,NParticleEngine::CRegisteredPSCInfo>> (STLport 4.6, element std::pair<CCharString,NParticleEngine::CRegisteredPSCInfo>) -- SGI pop_heap core for the registered particle-component table: *result = *first, then sift `value` down from the root
 // Flags: /Gr
-// Leaf: __pop_heap
+// Leaf: ??$__pop_heap@PAU?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@std@@U12@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@@H@std@@YIXPAU?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@0@00U10@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@@PAH@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF3430, 131 bytes.
-// Label correction: the catalog name TeleportData::operator= is propagated; the callee 0x00AF3290
-// carries the manifest name `_Adjust_heap<pair<CCharString,NParticleEngine::CRegisteredPSCInfo>*,...>`
-// and the body is the SGI __pop_heap that feeds it (the family of the landed 0x00720610).  Callers:
-// 0x00AF3589, 0x00AF36A9, 0x00AF37C1, 0x00AF3988 (the sort/pop loops of the same table, whose
-// lower_bound is 0x00AF3000).
-// Callees: CCharString::operator= @ 0x0099EFB0, CCharString copy ctor @ 0x0099EC30, ~CCharString
-// @ 0x0099EAE0, __adjust_heap @ 0x00AF3290.  The SGI algorithm TUs are /Gr: first in ecx, last in
-// edx, then result, the 16-byte value, the empty comparator and the distance-type pointer (`ret 0x1c`).
-// Element (16 bytes): CCharString key +0, NParticleEngine::CRegisteredPSCInfo +4 (PDB: AllocFunc +0,
-// EPSCType ComponentType +4, CCharString GUIName +8 -> element +0xc).
-// Shape: `*result = *first` is the implicit pair assignment inline (string, two words, string); the
-// by-value copy for __adjust_heap is the implicit pair copy ctor built in the argument area; the
-// by-value `value` is destroyed here at the end (GUIName, then the key).
-class CPSCBase;
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-
-enum EPSCType { PSC_TYPE_NONE = 0 };
-
+// NF85: moved off the row-local CBasicString / CCharString / element / comparator models onto the shared headers:
+//   stlport/fable_containers.h (the STLport 4.6 __pop_heap body, explicit instantiation; generator work/gen/algo.py), fable_string.h
+//   (FABLE_RETAIL_CCHARSTRING_LESS_INLINE + FABLE_RETAIL_CBASICSTRING_LESS_BODY) and the element's own header; `// Flags: /Gr` (the
+//   algorithm TU; the old row spelled __fastcall by hand). Element std::pair<CCharString,NParticleEngine::CRegisteredPSCInfo>, comparator CKeyPairCompareLess<CCharString,NParticleEngine::CRegisteredPSCInfo>.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_LESS_INLINE
+#define FABLE_RETAIL_CBASICSTRING_LESS_BODY
+#define FABLE_RETAIL_STLP_HEAP
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/CPSCBase.h"
+// NParticleEngine::CRegisteredPSCInfo: no shared header exists; Ego_r.pdb members (struct_layouts_egor.tsv, 12 bytes), as NF82 0x00AF3290.
 namespace NParticleEngine {
-class CRegisteredPSCInfo { public:
-    CPSCBase* (__cdecl* AllocFunc)();           // +0x0
-    EPSCType ComponentType;                     // +0x4
-    CCharString GUIName;                        // +0x8
+class CRegisteredPSCInfo {
+public:
+    CPSCBase* (__cdecl* AllocFunc)();                      // +0x00
+    EPSCType ComponentType;                                // +0x04
+    CCharString GUIName;                                   // +0x08
 };
 }
-
-namespace std {
-template <class T1, class T2> struct pair {
-    T1 first;
-    T2 second;
-};
-}
-template <class K, class V> class CKeyPairCompareLess { public:
-    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
-};
-typedef std::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
-typedef CKeyPairCompareLess<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCLess;
-
-void __fastcall __adjust_heap(CPSCPair* first, int holeIndex, int len, CPSCPair value, CPSCLess comp);   // 0x00AF3290
-
-void __fastcall __pop_heap(CPSCPair* first, CPSCPair* last, CPSCPair* result, CPSCPair value, CPSCLess comp, int*)
-{
-    *result = *first;
-    __adjust_heap(first, 0, int(last - first), value, comp);
-}
+#include "engine/CVectorMap.h"
+template void FABLE_STLP_FASTCALL std::__pop_heap(std::pair<CCharString,NParticleEngine::CRegisteredPSCInfo>*,std::pair<CCharString,NParticleEngine::CRegisteredPSCInfo>*,std::pair<CCharString,NParticleEngine::CRegisteredPSCInfo>*,std::pair<CCharString,NParticleEngine::CRegisteredPSCInfo>,CKeyPairCompareLess<CCharString,NParticleEngine::CRegisteredPSCInfo>,int*);

@@ -88,6 +88,12 @@ public:
         return 0;
     }
     const CCharString* GetQuestMasterDataPersistScript(const CCharString& quest_name) const;   // 0x004B27F0
+#ifdef FABLE_RETAIL_CQUESTMANAGER_CLEARQUESTPERSISTSCRIPT
+    // NF85 opt-in (row 0x004B39B0 CQuestManager::ClearQuestPersistScript): Ego_r.pdb / FableWin.pdb
+    // ?ClearPersistScript@CRuntimeQuestPersistence@NQuestManager@@QAEXABVCCharString@@@Z (Ego_d.pdb: this, quest_name; one call), inline
+    // in retail: PersistScripts' EraseFromKey. Needs FABLE_RETAIL_CVECTORMAP_ERASEFROMKEY.
+    void ClearPersistScript(const CCharString& quest_name) { PersistScripts.EraseFromKey(quest_name); }
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_PERSISTINFO_SETTERS
     // NF82 opt-in: Ego_r.pdb 0x004BA540 / 0x004BA660 and FableWin.pdb ?SetQuestScriptPersistScript@CRuntimeQuestPersistence@NQuestManager@@
     // QAEXABVCCharString@@0@Z (retail 0x004B4E30, map at +0) and ?SetQuestMasterDataPersistScript@..@@QAEXABVCCharString@@0@Z (retail
@@ -437,6 +443,11 @@ public:
 #endif
     // Ego_r.pdb / FableWin.pdb ?LoadGameState@CQuestManager@@QAEXAAVCStringParser@@@Z (retail 0x004B5500).
     void LoadGameState(CStringParser& parser);
+#ifdef FABLE_RETAIL_CQUESTMANAGER_CLEARQUESTPERSISTSCRIPT
+    // (NF85, row 0x004B39B0) Ego_r.pdb / FableWin.pdb ?ClearQuestPersistScript@CQuestManager@@QAEXABVCCharString@@@Z (Ego_d.pdb: this,
+    // quest_name): the runtime persistence entry dropped, then the thing manager's persistence data for that section.
+    void ClearQuestPersistScript(const CCharString& quest_name);
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
     // (chunk Q25) Ego_r.pdb / FableWin.pdb ?SaveGameState@CQuestManager@@QAEXAAVCCharString@@@Z (retail 0x004B5EE0) and the private
     // ?SaveMasterScriptDataToGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z (retail 0x004B5030).

@@ -196,6 +196,18 @@ public:
     void Sort();
     void Update() { if(Dirty) Sort(); }
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_ERASEFROMKEY
+    // NF85 opt-in (row 0x004B39B0 CQuestManager::ClearQuestPersistScript): FableWin.pdb ?EraseFromKey@?$CVectorMap@VCCharString@@VCPersistInfo@
+    // CRuntimeQuestPersistence@NQuestManager@@..@@QAEXABVCCharString@@@Z (Ego_d.pdb locals: key, `lower`, then `upper` in an inner block),
+    // inline in retail: LowerBound, the end() test, UpperBound, then the vector's range erase. Needs FABLE_RETAIL_CVECTORMAP_PODIUM_UPPERBOUND.
+    void EraseFromKey(const K& key) {
+        iterator lower=LowerBound(key);
+        if(lower!=this->end()) {
+            iterator upper=UpperBound(key);
+            this->erase(lower,upper);
+        }
+    }
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_SETDIRTY
     // Opt-in (chunk Q7, row 0x0086BFB0 CRandomAppearanceMorph::TransferBinaryIn): Ego_r.pdb ?SetDirty@?$CVectorMap@..@@QAEX_N@Z
     // (CSkeletalMorph, CSkeletalMorphs::CEntry, CAnimComponentBase instances), inline in retail (`mov byte ptr [map+0Dh],0`).
@@ -230,8 +242,16 @@ inline typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType
 template<class K,class V,class CompareType>
 __declspec(noinline) typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K& key)
 {
+#ifdef FABLE_RETAIL_CVECTORMAP_LOWERBOUND_COUNT_FIRST
+    // NF85 opt-in (row 0x004B9750, CVectorMap<CCharString, CRuntimeQuestPersistence::CPersistInfo>::LowerBound): the count taken before
+    // `first`, the non-const twin of NF82's FABLE_RETAIL_CVECTORMAP_CONST_LOWERBOUND_COUNT_FIRST (retail 0x004B9750 and the const
+    // 0x004B97D0 are byte-identical apart from the operator< call displacement).
+    long count=this->size();
+    iterator first=this->begin();
+#else
     iterator first=this->begin();
     long count=this->end()-first;
+#endif
     while(count>0) {
         long half=count/2;
         iterator middle=first+half;
@@ -243,10 +263,20 @@ __declspec(noinline) typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K
 #endif
 #ifdef FABLE_RETAIL_CVECTORMAP_PODIUM_UPPERBOUND
 template<class K,class V,class CompareType>
+#ifdef FABLE_RETAIL_CVECTORMAP_UPPERBOUND_COUNT_FIRST
+// NF85 opt-in (rows 0x004B9850 / 0x004B39B0, the CVectorMap<CCharString, CRuntimeQuestPersistence::CPersistInfo> instance): out of line
+// (every retail caller calls it) with the count taken before `first`, as the LowerBound twin 0x004B9750 computes it.
+__declspec(noinline)
+#endif
 typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::UpperBound(const K& key)
 {
+#ifdef FABLE_RETAIL_CVECTORMAP_UPPERBOUND_COUNT_FIRST
+    long count=this->size();
+    iterator first=this->begin();
+#else
     iterator first=this->begin();
     long count=this->end()-first;
+#endif
     while(count>0){
         long half=count/2;
         iterator middle=first+half;

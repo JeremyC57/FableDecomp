@@ -92044,9 +92044,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004b93e0'
-        Module = 'vector<std::pair<CCharString'
-        Source = '00/4b/vectorstdpairCCharString_Destroy_004b93e0.cpp'
-        TestSource = '00/4b/vectorstdpairCCharString_Destroy_004b93e0_test.cpp'
+        Module = 'std'
+        Source = '00/4b/std_destroyaux_004b93e0.cpp'
+        TestSource = '00/4b/std_destroyaux_004b93e0_test.cpp'
         PassPattern = 'PASS_004b93e0'
     }
     [pscustomobject]@{
@@ -92156,9 +92156,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e36c3'
-        Module = '_global'
-        Source = '00/4e/global_operatordelete_004e36c3.cpp'
-        TestSource = '00/4e/global_operatordelete_004e36c3_test.cpp'
+        Module = 'std'
+        Source = '00/4e/std_makeheap_004e36c3.cpp'
+        TestSource = '00/4e/std_makeheap_004e36c3_test.cpp'
         PassPattern = 'PASS_004e36c3'
     }
     [pscustomobject]@{
@@ -117274,9 +117274,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008364b0'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub008364b0_008364b0.cpp'
-        TestSource = '00/83/gapscan_sub008364b0_008364b0_test.cpp'
+        Module = 'CCountedPointer<CAnimFilterBase>'
+        Source = '00/83/CCountedPointer_DeleteData_008364b0.cpp'
+        TestSource = '00/83/CCountedPointer_DeleteData_008364b0_test.cpp'
         PassPattern = 'PASS_008364b0'
     }
     [pscustomobject]@{
@@ -224000,9 +224000,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077ed20'
-        Module = '_global'
-        Source = '00/77/global_popheap_0077ed20.cpp'
-        TestSource = '00/77/global_popheap_0077ed20_test.cpp'
+        Module = 'std'
+        Source = '00/77/std_popheap_0077ed20.cpp'
+        TestSource = '00/77/std_popheap_0077ed20_test.cpp'
         PassPattern = '0077ed20_TEST PASS'
     }
     [pscustomobject]@{
@@ -226438,9 +226438,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a34420'
-        Module = '_global'
-        Source = '00/a3/global_popheap_00a34420.cpp'
-        TestSource = '00/a3/global_popheap_00a34420_test.cpp'
+        Module = 'std'
+        Source = '00/a3/std_popheap_00a34420.cpp'
+        TestSource = '00/a3/std_popheap_00a34420_test.cpp'
         PassPattern = '00a34420_TEST PASS'
     }
     [pscustomobject]@{
@@ -273979,9 +273979,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077ea60'
-        Module = 'SGI'
-        Source = '00/77/SGI_AdjustHeapstring160077ea60_0077ea60.cpp'
-        TestSource = '00/77/SGI_AdjustHeapstring160077ea60_0077ea60_test.cpp'
+        Module = 'std'
+        Source = '00/77/std_adjustheap_0077ea60.cpp'
+        TestSource = '00/77/std_adjustheap_0077ea60_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0077ea60_TEST PASS'
     }
@@ -274073,9 +274073,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a333a0'
-        Module = 'SGI'
-        Source = '00/a3/SGI_PushHeapnamed16u00a333a0_00a333a0.cpp'
-        TestSource = '00/a3/SGI_PushHeapnamed16u00a333a0_00a333a0_test.cpp'
+        Module = 'std'
+        Source = '00/a3/std_pushheap_00a333a0.cpp'
+        TestSource = '00/a3/std_pushheap_00a333a0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a333a0_TEST PASS'
     }
@@ -274105,9 +274105,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a707d0'
-        Module = 'SGI'
-        Source = '00/a7/SGI_PushHeapnamed16s00a707d0_00a707d0.cpp'
-        TestSource = '00/a7/SGI_PushHeapnamed16s00a707d0_00a707d0_test.cpp'
+        Module = 'std'
+        Source = '00/a7/std_pushheap_00a707d0.cpp'
+        TestSource = '00/a7/std_pushheap_00a707d0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a707d0_TEST PASS'
     }
@@ -278091,9 +278091,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004b9750'
-        Module = 'CVectorMap<CCharString,CQuestMapValue,CKeyPairCompareLess<CCharString,CQuestMapValue> >'
-        Source = '00/4b/CVectorMapCCharStringCQuestMapValueCKeyPairCompareLessCCharStringCQuestMapValue_LowerBound_004b9750.cpp'
-        TestSource = '00/4b/CVectorMapCCharStringCQuestMapValueCKeyPairCompareLessCCharStringCQuestMapValue_LowerBound_004b9750_test.cpp'
+        Module = 'CVectorMap<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo,CKeyPairCompareLess<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> >'
+        Source = '00/4b/CVectorMap_LowerBound_004b9750.cpp'
+        TestSource = '00/4b/CVectorMap_LowerBound_004b9750_test.cpp'
         PassPattern = '004b9750_TEST PASS'
     }
     [pscustomobject]@{
@@ -278105,9 +278105,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004b9850'
-        Module = 'CVectorMap<CCharString,CQuestMapValue,CKeyPairCompareLess<CCharString,CQuestMapValue> >'
-        Source = '00/4b/CVectorMapCCharStringCQuestMapValueCKeyPairCompareLessCCharStringCQuestMapValue_UpperBound_004b9850.cpp'
-        TestSource = '00/4b/CVectorMapCCharStringCQuestMapValueCKeyPairCompareLessCCharStringCQuestMapValue_UpperBound_004b9850_test.cpp'
+        Module = 'CVectorMap<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo,CKeyPairCompareLess<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> >'
+        Source = '00/4b/CVectorMap_UpperBound_004b9850.cpp'
+        TestSource = '00/4b/CVectorMap_UpperBound_004b9850_test.cpp'
         PassPattern = '004b9850_TEST PASS'
     }
     [pscustomobject]@{
@@ -279654,9 +279654,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ac530'
-        Module = 'std::map<CCharString,NBankFileManager::CContainedBank>'
-        Source = '00/9a/STLmapCCharStringNBankFileManagerCContainedBank_operator_009ac530.cpp'
-        TestSource = '00/9a/STLmapCCharStringNBankFileManagerCContainedBank_operator_009ac530_test.cpp'
+        Module = 'std::map<CCharString, NBankFileManager::CContainedBank, std::less<CCharString>, std::allocator<std::pair<CCharString const, NBankFileManager::CContainedBank>>>'
+        Source = '00/9a/stdmap_operator_009ac530.cpp'
+        TestSource = '00/9a/stdmap_operator_009ac530_test.cpp'
         PassPattern = '009ac530_TEST PASS'
     }
     [pscustomobject]@{
@@ -284190,9 +284190,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077e170'
-        Module = '_global'
-        Source = '00/77/global_CopyBackwardPairCharStringValue0C0077e170_0077e170.cpp'
-        TestSource = '00/77/global_CopyBackwardPairCharStringValue0C0077e170_0077e170_test.cpp'
+        Module = 'std'
+        Source = '00/77/std_copybackward_0077e170.cpp'
+        TestSource = '00/77/std_copybackward_0077e170_test.cpp'
         PassPattern = '0077e170_TEST PASS'
     }
     [pscustomobject]@{
@@ -284393,9 +284393,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004b84f0'
-        Module = '_global'
-        Source = '00/4b/global_CopyPairCharStringPersistInfo004b84f0_004b84f0.cpp'
-        TestSource = '00/4b/global_CopyPairCharStringPersistInfo004b84f0_004b84f0_test.cpp'
+        Module = 'std'
+        Source = '00/4b/std_copy_004b84f0.cpp'
+        TestSource = '00/4b/std_copy_004b84f0_test.cpp'
         PassPattern = '004b84f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -285271,9 +285271,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004babf0'
-        Module = '_global'
-        Source = '00/4b/global_popheap_004babf0.cpp'
-        TestSource = '00/4b/global_popheap_004babf0_test.cpp'
+        Module = 'std'
+        Source = '00/4b/std_popheap_004babf0.cpp'
+        TestSource = '00/4b/std_popheap_004babf0_test.cpp'
         PassPattern = '004babf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -285397,9 +285397,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077ecb0'
-        Module = '_global'
-        Source = '00/77/global_insertionsort_0077ecb0.cpp'
-        TestSource = '00/77/global_insertionsort_0077ecb0_test.cpp'
+        Module = 'std'
+        Source = '00/77/std_insertionsort_0077ecb0.cpp'
+        TestSource = '00/77/std_insertionsort_0077ecb0_test.cpp'
         PassPattern = '0077ecb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -285432,9 +285432,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009b6d80'
-        Module = '_global'
-        Source = '00/9b/global_popheapaux_009b6d80.cpp'
-        TestSource = '00/9b/global_popheapaux_009b6d80_test.cpp'
+        Module = 'std'
+        Source = '00/9b/std_popheapaux_009b6d80.cpp'
+        TestSource = '00/9b/std_popheapaux_009b6d80_test.cpp'
         PassPattern = '009b6d80_TEST PASS'
     }
     [pscustomobject]@{
@@ -285467,9 +285467,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a41260'
-        Module = '_global'
-        Source = '00/a4/global_popheapaux_00a41260.cpp'
-        TestSource = '00/a4/global_popheapaux_00a41260_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_popheapaux_00a41260.cpp'
+        TestSource = '00/a4/std_popheapaux_00a41260_test.cpp'
         PassPattern = '00a41260_TEST PASS'
     }
     [pscustomobject]@{
@@ -285594,8 +285594,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0077f190'
         Module = 'std'
-        Source = '00/77/std_Sortheap_0077f190.cpp'
-        TestSource = '00/77/std_Sortheap_0077f190_test.cpp'
+        Source = '00/77/std_sortheap_0077f190.cpp'
+        TestSource = '00/77/std_sortheap_0077f190_test.cpp'
         PassPattern = '0077f190_TEST PASS'
     }
     [pscustomobject]@{
@@ -285636,8 +285636,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009b8170'
         Module = 'std'
-        Source = '00/9b/std_Sortheap_009b8170.cpp'
-        TestSource = '00/9b/std_Sortheap_009b8170_test.cpp'
+        Source = '00/9b/std_sortheap_009b8170.cpp'
+        TestSource = '00/9b/std_sortheap_009b8170_test.cpp'
         PassPattern = '009b8170_TEST PASS'
     }
     [pscustomobject]@{
@@ -285678,8 +285678,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a41960'
         Module = 'std'
-        Source = '00/a4/std_Sortheap_00a41960.cpp'
-        TestSource = '00/a4/std_Sortheap_00a41960_test.cpp'
+        Source = '00/a4/std_sortheap_00a41960.cpp'
+        TestSource = '00/a4/std_sortheap_00a41960_test.cpp'
         PassPattern = '00a41960_TEST PASS'
     }
     [pscustomobject]@{
@@ -288591,8 +288591,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004e415d'
         Module = 'std'
-        Source = '00/4e/STL_finalinsertionsort_004e415d.cpp'
-        TestSource = '00/4e/STL_finalinsertionsort_004e415d_test.cpp'
+        Source = '00/4e/std_finalinsertionsort_004e415d.cpp'
+        TestSource = '00/4e/std_finalinsertionsort_004e415d_test.cpp'
         PassPattern = '004e415d_TEST PASS'
     }
     [pscustomobject]@{
@@ -288793,9 +288793,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004b9c10'
-        Module = 'std::_Rb_tree<CCharString,pair<const CCharString,long>>'
-        Source = '00/4b/stdRbtreeCCharStringpairconstCCharStringlong_erase_004b9c10.cpp'
-        TestSource = '00/4b/stdRbtreeCCharStringpairconstCCharStringlong_erase_004b9c10_test.cpp'
+        Module = 'std::_Rb_tree<CCharString, CCharString, std::_Identity<CCharString>, std::less<CCharString>, std::allocator<CCharString>>'
+        Source = '00/4b/stdRbtree_erase_004b9c10.cpp'
+        TestSource = '00/4b/stdRbtree_erase_004b9c10_test.cpp'
         PassPattern = '004b9c10_TEST PASS'
     }
     [pscustomobject]@{
@@ -290692,8 +290692,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005e0fe0'
         Module = 'std'
-        Source = '00/5e/STL_copybackward_005e0fe0.cpp'
-        TestSource = '00/5e/STL_copybackward_005e0fe0_test.cpp'
+        Source = '00/5e/std_copybackward_005e0fe0.cpp'
+        TestSource = '00/5e/std_copybackward_005e0fe0_test.cpp'
         PassPattern = '005e0fe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -290734,8 +290734,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005e1be0'
         Module = 'std'
-        Source = '00/5e/STL_makeheap_005e1be0.cpp'
-        TestSource = '00/5e/STL_makeheap_005e1be0_test.cpp'
+        Source = '00/5e/std_makeheap_005e1be0.cpp'
+        TestSource = '00/5e/std_makeheap_005e1be0_test.cpp'
         PassPattern = '005e1be0_TEST PASS'
     }
     [pscustomobject]@{
@@ -294705,8 +294705,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0077eda0'
         Module = 'std'
-        Source = '00/77/STL_makeheap_0077eda0.cpp'
-        TestSource = '00/77/STL_makeheap_0077eda0_test.cpp'
+        Source = '00/77/std_makeheap_0077eda0.cpp'
+        TestSource = '00/77/std_makeheap_0077eda0_test.cpp'
         PassPattern = '0077eda0_TEST PASS'
     }
     [pscustomobject]@{
@@ -294719,8 +294719,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0077f370'
         Module = 'std'
-        Source = '00/77/STL_introsortloop_0077f370.cpp'
-        TestSource = '00/77/STL_introsortloop_0077f370_test.cpp'
+        Source = '00/77/std_introsortloop_0077f370.cpp'
+        TestSource = '00/77/std_introsortloop_0077f370_test.cpp'
         PassPattern = '0077f370_TEST PASS'
     }
     [pscustomobject]@{
@@ -301391,8 +301391,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a71be0'
         Module = 'std'
-        Source = '00/a7/STL_popheap_00a71be0.cpp'
-        TestSource = '00/a7/STL_popheap_00a71be0_test.cpp'
+        Source = '00/a7/std_popheap_00a71be0.cpp'
+        TestSource = '00/a7/std_popheap_00a71be0_test.cpp'
         PassPattern = '00a71be0_TEST PASS'
     }
     [pscustomobject]@{
@@ -310229,9 +310229,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006bd6a0'
-        Module = 'std::map'
-        Source = '00/6b/STLmap_operator_006bd6a0.cpp'
-        TestSource = '00/6b/STLmap_operator_006bd6a0_test.cpp'
+        Module = 'std::map<CCharString, C2DVector, std::less<CCharString>, std::allocator<std::pair<CCharString const, C2DVector>>>'
+        Source = '00/6b/stdmap_operator_006bd6a0.cpp'
+        TestSource = '00/6b/stdmap_operator_006bd6a0_test.cpp'
         PassPattern = '006bd6a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -310243,16 +310243,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00721640'
-        Module = 'std::map'
-        Source = '00/72/STLmap_operator_00721640.cpp'
-        TestSource = '00/72/STLmap_operator_00721640_test.cpp'
+        Module = 'std::map<CCharString, std::pair<long, CDateAndTime>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::pair<long, CDateAndTime>>>>'
+        Source = '00/72/stdmap_operator_00721640.cpp'
+        TestSource = '00/72/stdmap_operator_00721640_test.cpp'
         PassPattern = '00721640_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00756be0'
-        Module = 'std::map'
-        Source = '00/75/STLmap_operator_00756be0.cpp'
-        TestSource = '00/75/STLmap_operator_00756be0_test.cpp'
+        Module = 'std::map<CCharString, std::pair<long, long>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::pair<long, long>>>>'
+        Source = '00/75/stdmap_operator_00756be0.cpp'
+        TestSource = '00/75/stdmap_operator_00756be0_test.cpp'
         PassPattern = '00756be0_TEST PASS'
     }
     [pscustomobject]@{
@@ -310264,16 +310264,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007aebe0'
-        Module = 'std::map'
-        Source = '00/7a/STLmap_operator_007aebe0.cpp'
-        TestSource = '00/7a/STLmap_operator_007aebe0_test.cpp'
+        Module = 'std::map<CCharString, std::vector<CCharString, std::allocator<CCharString>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>>'
+        Source = '00/7a/stdmap_operator_007aebe0.cpp'
+        TestSource = '00/7a/stdmap_operator_007aebe0_test.cpp'
         PassPattern = '007aebe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008adf10'
-        Module = 'std::map'
-        Source = '00/8a/STLmap_operator_008adf10.cpp'
-        TestSource = '00/8a/STLmap_operator_008adf10_test.cpp'
+        Module = 'std::map<CCharString, bool, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool>>>'
+        Source = '00/8a/stdmap_operator_008adf10.cpp'
+        TestSource = '00/8a/stdmap_operator_008adf10_test.cpp'
         PassPattern = '008adf10_TEST PASS'
     }
     [pscustomobject]@{
@@ -310285,9 +310285,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ac700'
-        Module = 'std::map'
-        Source = '00/9a/STLmap_operator_009ac700.cpp'
-        TestSource = '00/9a/STLmap_operator_009ac700_test.cpp'
+        Module = 'std::map<CCharString, CCharString, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString>>>'
+        Source = '00/9a/stdmap_operator_009ac700.cpp'
+        TestSource = '00/9a/stdmap_operator_009ac700_test.cpp'
         PassPattern = '009ac700_TEST PASS'
     }
     [pscustomobject]@{
@@ -345111,7 +345111,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007564f0'
-        Module = 'std::_Rb_tree'
+        Module = 'std::_Rb_tree<CCharString, std::pair<CCharString const, std::pair<long, long>>, std::_Select1st<std::pair<CCharString const, std::pair<long, long>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::pair<long, long>>>>'
         Source = '00/75/stdRbtree_Mupperbound_007564f0.cpp'
         TestSource = '00/75/stdRbtree_Mupperbound_007564f0_test.cpp'
         PassPattern = '007564f0_TEST PASS'

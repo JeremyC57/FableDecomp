@@ -1964,7 +1964,14 @@ template<class _InputIter,class _OutputIter> _OutputIter __fastcall copy(_InputI
 // argument slot as retail does (0x00808AD2). __unguarded_linear_insert (0x008074A0, landed) is declared only.
 template<class _ForwardIter1,class _ForwardIter2> inline void iter_swap(_ForwardIter1 a,_ForwardIter2 b) { swap(*a,*b); }
 template<class _RandomAccessIter,class _BidirectionalIter,class _Distance>
+#ifdef FABLE_RETAIL_STLP_SORT_COPY_BACKWARD_AUX_INLINE
+// NF85 opt-in (row 0x005E0FE0, the /O2 CCharString sort TU's out-of-line copy_backward; with FABLE_RETAIL_STLP_SORT_COPY_BACKWARD_NOINLINE):
+// the same STLport __copy_backward, plain inline, so that TU's copy_backward COMDAT carries the copy loop itself (retail 0x005E0FE0
+// calls only CCharString::operator=); the #else arm is the repo's out-of-line __fastcall form (0x00806310 / 0x0077E170).
+inline _BidirectionalIter __copy_backward(_RandomAccessIter first,_RandomAccessIter last,
+#else
 FABLE_STLP_NOINLINE _BidirectionalIter FABLE_STLP_FASTCALL __copy_backward(_RandomAccessIter first,_RandomAccessIter last,
+#endif
                                                                            _BidirectionalIter result,const random_access_iterator_tag&,_Distance*) {
     for(_Distance n=last-first;n>0;--n) *--result=*--last;
     return result;
@@ -2250,6 +2257,101 @@ __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex,
 
 
 
+#endif
+
+#ifdef FABLE_RETAIL_STLP_SORT_HEAP_BODY
+// NF85 opt-in (rows 0x0077F190 / 0x00A41960 / 0x009B8170, the /Gr pair<CCharString, ..> sort TUs): STLport 4.6 _heap.c
+// `sort_heap(first, last, comp) { while (last - first > 1) pop_heap(first, last--, comp); }`, the out-of-line __fastcall COMDAT (first in
+// ecx, last in edx, the empty comparator pushed, `ret 4`), with _heap.h pop_heap and _heap.c __pop_heap_aux / __pop_heap inline over the
+// out-of-line __adjust_heap (declared here unless FABLE_RETAIL_STLP_HEAP / _DECAL_HEAP carry it). The text of the landed CCharString
+// instance 0x005E27F0.
+#if !defined(FABLE_RETAIL_STLP_HEAP) && !defined(FABLE_RETAIL_STLP_DECAL_HEAP)
+template<class _RandomAccessIterator,class _Distance,class _Tp,class _Compare>
+void __fastcall __adjust_heap(_RandomAccessIterator first,_Distance holeIndex,_Distance len,_Tp val,_Compare comp);
+#endif
+#if !defined(FABLE_RETAIL_STLP_HEAP)
+template<class _RandomAccessIterator,class _Tp,class _Compare,class _Distance>
+inline void __pop_heap(_RandomAccessIterator first,_RandomAccessIterator last,_RandomAccessIterator result,_Tp val,_Compare comp,_Distance*) {
+    *result=*first;
+    __adjust_heap(first,_Distance(0),_Distance(last-first),val,comp);
+}
+#endif
+#if !defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
+template<class _RandomAccessIterator,class _Tp,class _Compare>
+inline void __pop_heap_aux(_RandomAccessIterator first,_RandomAccessIterator last,_Tp*,_Compare comp) {
+    __pop_heap(first,last-1,last-1,_Tp(*(last-1)),comp,(ptrdiff_t*)0);
+}
+#endif
+template<class _RandomAccessIterator,class _Compare>
+inline void pop_heap(_RandomAccessIterator first,_RandomAccessIterator last,_Compare comp) {
+    __pop_heap_aux(first,last,(typename iterator_traits<_RandomAccessIterator>::value_type*)0,comp);
+}
+template<class _RandomAccessIterator,class _Compare>
+void __fastcall sort_heap(_RandomAccessIterator first,_RandomAccessIterator last,_Compare comp) {
+    while(last-first>1)
+        pop_heap(first,last--,comp);
+}
+#endif
+#if defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_FASTCALL_BODY) && !defined(FABLE_RETAIL_STLP_SORT_HEAP_BODY) && !defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
+// NF85 opt-in (rows 0x009B6D80 / 0x00A41260, the /Gr pair<CCharString, ..> sort TUs): STLport 4.6 _heap.c __pop_heap_aux(first, last,
+// _Tp*, comp) as the out-of-line __fastcall COMDAT (first in ecx, last in edx, the (T*)0 and the comparator pushed, `ret 8`), with
+// __pop_heap inline over the out-of-line __adjust_heap (declared here unless FABLE_RETAIL_STLP_HEAP / _DECAL_HEAP carry it).
+#if !defined(FABLE_RETAIL_STLP_HEAP) && !defined(FABLE_RETAIL_STLP_DECAL_HEAP)
+template<class _RandomAccessIterator,class _Distance,class _Tp,class _Compare>
+void __fastcall __adjust_heap(_RandomAccessIterator first,_Distance holeIndex,_Distance len,_Tp val,_Compare comp);
+#endif
+#if !defined(FABLE_RETAIL_STLP_HEAP)
+template<class _RandomAccessIterator,class _Tp,class _Compare,class _Distance>
+inline void __pop_heap(_RandomAccessIterator first,_RandomAccessIterator last,_RandomAccessIterator result,_Tp val,_Compare comp,_Distance*) {
+    *result=*first;
+    __adjust_heap(first,_Distance(0),_Distance(last-first),val,comp);
+}
+#endif
+template<class _RandomAccessIterator,class _Tp,class _Compare>
+void __fastcall __pop_heap_aux(_RandomAccessIterator first,_RandomAccessIterator last,_Tp*,_Compare comp) {
+    __pop_heap(first,last-1,last-1,_Tp(*(last-1)),comp,(ptrdiff_t*)0);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_MAKE_HEAP_FRONT_BODY
+// NF85 opt-in (row 0x004E36C3, the /Os registered-TC table sort; not with FABLE_RETAIL_STLP_PARTIAL_SORT_INLINE_MAKE_HEAP): STLport 4.6
+// _heap.c `make_heap(first, last, comp) { __make_heap(first, last, comp, _STLP_VALUE_TYPE(..), _STLP_DISTANCE_TYPE(..)); }`, the
+// out-of-line __fastcall front end (`push 0 ; push 0 ; push comp ; call __make_heap ; ret 4`) over the out-of-line __make_heap
+// (0x004E1D68 there; declared here unless FABLE_RETAIL_STLP_HEAP + _MAKE_HEAP_BODY give its body).
+#if !(defined(FABLE_RETAIL_STLP_HEAP) && defined(FABLE_RETAIL_STLP_MAKE_HEAP_BODY))
+template<class _RandomAccessIterator,class _Compare,class _Tp,class _Distance>
+void __fastcall __make_heap(_RandomAccessIterator __first,_RandomAccessIterator __last,_Compare __comp,_Tp*,_Distance*);
+#endif
+template<class _RandomAccessIterator,class _Compare>
+void __fastcall make_heap(_RandomAccessIterator __first,_RandomAccessIterator __last,_Compare __comp) {
+    __make_heap(__first,__last,__comp,(typename iterator_traits<_RandomAccessIterator>::value_type*)0,(ptrdiff_t*)0);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_FINAL_INSERTION_SORT_BODY
+// NF85 opt-in (row 0x004E415D, the /Os registered-TC table sort): STLport 4.6 _algo.c __final_insertion_sort(first, last, comp) as the
+// out-of-line __fastcall COMDAT (first in ecx, last in edx, the comparator pushed, `ret 4`) over the out-of-line __insertion_sort
+// (0x004E3686) and __unguarded_insertion_sort_aux (0x004DFD60), declared here unless FABLE_RETAIL_STLP_INSERTION_SORT_BODY /
+// _UNGUARDED_INSERTION_SORT_AUX_BODY give their bodies; __unguarded_insertion_sort is the inline _algo.c forwarder.
+#ifndef FABLE_RETAIL_STLP_INSERTION_SORT_BODY
+template<class _RandomAccessIter,class _Compare>
+void __fastcall __insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp);
+#endif
+#ifndef FABLE_RETAIL_STLP_UNGUARDED_INSERTION_SORT_AUX_BODY
+template<class _RandomAccessIter,class _Tp,class _Compare>
+void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first,_RandomAccessIter __last,_Tp*,_Compare __comp);
+#endif
+template<class _RandomAccessIter,class _Compare>
+inline void __unguarded_insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
+    __unguarded_insertion_sort_aux(__first,__last,(typename iterator_traits<_RandomAccessIter>::value_type*)0,__comp);
+}
+template<class _RandomAccessIter,class _Compare>
+void __fastcall __final_insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
+    if(__last-__first>16) {
+        __insertion_sort(__first,__first+16,__comp);
+        __unguarded_insertion_sort(__first+16,__last,__comp);
+    }
+    else
+        __insertion_sort(__first,__last,__comp);
+}
 #endif
 
 }
