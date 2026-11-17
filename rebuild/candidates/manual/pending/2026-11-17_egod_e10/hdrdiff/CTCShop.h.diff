@@ -1,0 +1,16 @@
+--- a/rebuild/include/engine/CTCShop.h
++++ b/rebuild/include/engine/CTCShop.h
+@@ -34,6 +34,13 @@
+     // Retail opt-in (Codex pass22,row00927F30): both original PUBLIC/class records.
+     void SetStockState(ESTOCK_STATE);
+ #endif
++#ifdef FABLE_RETAIL_CTCSHOP_STALL_STOCK_ACCESSORS
++    // e09 opt-in (row 0x007993F0 CTCShopKeeper::WitnessedCrime): the inline accessors FableWin.pdb ?GetStockState@CTCShop@@QBE?AW4ESTOCK_STATE@1@XZ
++    // (0x0269D800) / ?IsStallLike@CTCShop@@QAE_NXZ (0x0269DD10), Ego_d.pdb tc_shopkeeper.obj CTCShop::GetStockState / CTCShop::IsStallLike
++    // (inline in retail: `cmp dword ptr [ebp+0Ch],1` 0x007994CE, `mov al,[ebp+50h]` 0x00799483). Bodies only: no layout change.
++    ESTOCK_STATE GetStockState() const { return StockState; }
++    bool IsStallLike() { return StallLike; }
++#endif
+ #ifdef FABLE_RETAIL_CTCSHOP_BUYITEM
+     // Retail opt-in (Codex pass22): original BuyItem name in both PDBs, native00774d20.
+     void BuyItem(long);

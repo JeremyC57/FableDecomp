@@ -1,0 +1,13 @@
+addr       parity           behav  name
+007993f0   RELOCATION_MATCH PASS   WitnessedCrime
+006c14d0   RELOCATION_MATCH PASS   OnInitialActivate
+008f0bd0   WARN RELOC_CONFLICT: _mult_to_stay_off_table -> 0138927c here, 01383c98 in landed 007daef0
+008f0bd0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+008f0bd0   RELOCATION_MATCH PASS   DealCards
+007c7c40   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 4
+  007993f0 RELOCATION_MATCH CTCShopKeeper::WitnessedCrime
+  006c14d0 RELOCATION_MATCH CTCBuyableHouse::OnInitialActivate
+  008f0bd0 RELOCATION_MATCH CTCTavernGameCardBase::DealCards
+  007c7c40 RELOCATION_MATCH CTCTurncoat::FrameUpdate

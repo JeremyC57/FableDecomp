@@ -132,7 +132,7 @@ address	kind	name	state	true_length	staged_folder	note
 006bd900	named	CMusicManager::PlayMusic	OPEN			
 006c0970	named	CTCBuyableHouse::CreateSignPost	OPEN			
 006c0b20	named	CTCBuyableHouse::FindPosToCreateNewVillager	OPEN			
-006c14d0	named	CTCBuyableHouse::OnInitialActivate	IN_PROGRESS			batch e10
+006c14d0	named	CTCBuyableHouse::OnInitialActivate	MATCHED_STAGED	734	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10
 006c1ed0	identify	_Copy_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>,std::_Iterator_base0>,std::back_insert_iterator<std::list<CIntelligentPointer<CThingAICreature>,std::_Copy_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<CThingAICr	OPEN			
 006c5a80	named	CTCHeroOpinionDeedLog::CTCHeroOpinionDeedLog	OPEN			
 006c6040	named	CTCHeroOpinionDeedLog::InformRelevantThingsOfDeed	OPEN			
@@ -200,7 +200,7 @@ address	kind	name	state	true_length	staged_folder	note
 00760020	identify	_global::IsLineIntersectingWithOthersInList	OPEN			
 00760190	identify	_global::IsTriangleWithPointsInside	OPEN			
 007602f0	named	NShape::IsShapeConvex	OPEN			
-00761280	named	NShape::DrawPrimitiveLineOverLandscape	IN_PROGRESS			batch e10
+00761280	named	NShape::DrawPrimitiveLineOverLandscape	PARKED			PARKED e10: DIFFER(733v733) one home-slot store (max_index) at 0x00761374 v retail 0x0076138B; /Od 146 v FableWin 162 instructions (text incomplete); draft ../2026-11-17_egod_open/e10/00761280.cpp
 00762620	named	NShape::CShape::StatOnSerialise	OPEN			
 00763060	identify	_global::Polygon_GeneratePath_WithCirculation	OPEN			
 007634e0	identify	_global::CPatchTesselation_GenerateTriangles	OPEN			
@@ -223,7 +223,7 @@ address	kind	name	state	true_length	staged_folder	note
 00793370	identify	_global::Vector_InsertRange_CBaseIntelligentPointer	OPEN			
 00795300	named	CTCDivineWrath::FrameUpdate	OPEN			
 00798940	named	CTCForcePushed::FrameUpdate	MATCHED_STAGED	615	rebuild/candidates/manual/pending/2026-11-17_egod_e05	batch e05
-007993f0	named	CTCShopKeeper::WitnessedCrime	IN_PROGRESS			batch e10
+007993f0	named	CTCShopKeeper::WitnessedCrime	MATCHED_STAGED	698	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10
 0079a890	named	CTCSummonSpell::IsValidTeleportPos	OPEN			
 0079deb0	named	CTCPhysicalShieldSpell::PlayEffect	OPEN			
 0079e5f0	named	CTCPhysicalShieldSpell::CTCPhysicalShieldSpell	OPEN			
@@ -249,7 +249,7 @@ address	kind	name	state	true_length	staged_folder	note
 007c3fb0	named	CTCHealLife::FrameUpdate	OPEN			
 007c57c0	named	CTCGhostSword::AddSword	OPEN			
 007c60a0	named	CTCGhostSword::UpdateGhostSwordParticleEffects	OPEN			
-007c7c40	named	CTCTurncoat::FrameUpdate	IN_PROGRESS			batch e10
+007c7c40	named	CTCTurncoat::FrameUpdate	MATCHED_STAGED	744	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10
 007c81f0	named	CTCHitOnCollision::OnCollision	IN_PROGRESS			batch e11
 007c977c	named	CTCCreatureGeneratorCreator::OnSerialise	OPEN			
 007c99f0	named	CTCCreatureGeneratorCreator::FrameUpdate	OPEN			
@@ -374,7 +374,7 @@ address	kind	name	state	true_length	staged_folder	note
 008ef200	named	Coin::Coin	OPEN			
 008ef520	named	CTCTavernGameCoinBase::UpdateCoins	OPEN			
 008efb00	named	CTCTavernGameCoinBase::FindObstacles	OPEN			
-008f0bd0	named	CTCTavernGameCardBase::DealCards	IN_PROGRESS			batch e10
+008f0bd0	named	CTCTavernGameCardBase::DealCards	MATCHED_STAGED	722	rebuild/candidates/manual/pending/2026-11-17_egod_e10	batch e10
 008f12d0	named	CTCTavernGameCardBase::ProcessInput	OPEN			
 008f18c0	named	CTCTavernGameCardBase::UpdateHighlightedCard	OPEN			
 008f1e30	named	CTCTavernGameCardBase::EnterGame	OPEN			

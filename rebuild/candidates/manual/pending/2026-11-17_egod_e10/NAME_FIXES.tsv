@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00659c32	?StartSecuritySweep@CTCVillage@@QAEX_N@Z	Ego_r 0x0069D890 / FableWin 0x02161B25; Ego_d tc_village.obj CTCVillage::StartSecuritySweep(bool urgent); landed row 0x00659C32 already uses it	CTCVillage::RecalculateSecuritySweep(long) in landed 0x007B2FD0 CTCGuard::WitnessedCrime and reloc_bindings (?RecalculateSecuritySweep@CTCVillage@@QAEXJ@Z)
+0088aff0	?GFRemapToThingAfterSerialisation@@YIXAAV?$CIntelligentPointer@VCThing@@@@@Z	Ego_r 0x008CA220 / FableWin 0x0287E7A0 (both reference AAV); Ego_d param ptr	?GFRemapToThingAfterSerialisation@@YIXPAV?$CIntelligentPointer@VCThing@@@@@Z (landed 0x006C5680, reloc_bindings)

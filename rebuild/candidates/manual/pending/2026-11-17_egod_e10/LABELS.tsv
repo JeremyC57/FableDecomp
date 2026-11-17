@@ -1,0 +1,7 @@
+address	name	evidence
+007993f0	?WitnessedCrime@CTCShopKeeper@@QAEXABVCOpinionDeed@@J@Z	Ego_r 0x0079EFA0 / FableWin 0x0269EAE0; Ego_d tc_shopkeeper.obj (deed, deed_handle)
+0065914b	?HasCrimeBeenReported@CTCVillage@@QAE_NJ@Z	Ego_r 0x0069AEEB / FableWin 0x02164E8E; Ego_d tc_village.obj (deed_handle)
+006c14d0	?OnInitialActivate@CTCBuyableHouse@@UAEXXZ	Ego_r / FableWin name sets; Ego_d tc_buyable_house.obj
+008f0bd0	?DealCards@CTCTavernGameCardBase@@UAEXXZ	Ego_r / FableWin; Ego_d tc_tavern_game_card_base.obj; vtable slot 51
+0138927c	mult_to_stay_off_table	Ego_d LDATA32 float file static in tc_tavern_game_card_base.obj (descriptive only in the sense of no decorated name: internal linkage); retail .data 2.0f read only by 0x008F0BD0
+007c7c40	?FrameUpdate@CTCTurncoat@@UAEXXZ	Ego_r / FableWin; Ego_d tc_turncoat.obj
