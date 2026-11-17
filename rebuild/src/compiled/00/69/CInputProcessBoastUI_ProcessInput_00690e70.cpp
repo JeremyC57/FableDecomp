@@ -1,5 +1,7 @@
 // CInputProcessBoastUI::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- translate boast-screen buttons into front-end UI events (press/held/release of actions 0x19/0x4c/0x58/0x59, mouse capture on 0x47) and mark the input handled
 // Leaf: ProcessInput
+// NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
+//   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690E70, length 323 bytes, `ret 8`.
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventButtonHeld @ 0x00687BD0,
 //   IsEventButtonReleased @ 0x00687B30, IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance
@@ -13,6 +15,7 @@
 //   C2DVector's user copy constructor before GetInstance runs.
 #define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
+#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
 #include "engine/CInputProcessGameBase.h"
 class CProcessedInput {
 public:
@@ -38,9 +41,6 @@ public:
 }
 class CInputProcessBoastUI : public CInputProcessGameBase {
 public:
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 

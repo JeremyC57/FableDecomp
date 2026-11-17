@@ -21,7 +21,7 @@
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"                        // NF64: the shared enum (was a local empty enum; CTCInventoryItem.h includes it)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad_0x00[0x20];
@@ -79,7 +79,11 @@ class CTCHero { public:                                     // interface type 0x
 };
 bool __fastcall IsAugmentation_005d9830(long itemDefIndex);           // 0x005D9830
 bool __fastcall IsTutorialSubDefItem(long itemDefIndex);     // 0x005D98B0
-long __fastcall GetInventoryCategory_005d9b70(long itemDefIndex);     // 0x005D9B70
+// NF64 (round 7, q10650): the free stand-in `GetInventoryCategory_005d9b70` is the static __fastcall CTCInventoryItem::GetTutorialCategory (Ego_r.pdb / FableWin.pdb; the
+//   NF59 self row defines it), declared by engine/CTCInventoryItem.h.
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_GETTUTORIALCATEGORY_STATIC
+#include "engine/CTCInventoryItem.h"
 
 namespace NInventory {
 class CTCInventoryBase { public:
@@ -99,7 +103,7 @@ void CTCInventoryBase::OnItemAdded(long itemDefIndex, bool unused, bool suppress
                 hero->GiveTutorialForCategory(3, false);
             if (IsTutorialSubDefItem(itemDefIndex))
                 hero->GiveTutorialForCategory(0x20, false);
-            long category = GetInventoryCategory_005d9b70(itemDefIndex);
+            long category = CTCInventoryItem::GetTutorialCategory(itemDefIndex);
             if (category)
                 hero->GiveTutorialForCategory(category, false);
         }

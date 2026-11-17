@@ -1,11 +1,14 @@
 // CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- drive the in-game menu while no sub-page (+0xC8) is open: analogue keys 0x11/0x12 past +-0.6 send front-end events, pressed actions 0x25..0x28/0x21/0x22 send navigation events (left/right go to an active slider first), actions 3/2 close the menu (2 also queues game event 0x1A for the live hero), released 0x25/0x26 send 0/1
 // Leaf: ProcessInput
+// NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
+//   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00690480, 848 bytes, `ret 8` (/GS cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
 #define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
+#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
 #include "engine/CInputProcessGameBase.h"
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
@@ -78,8 +81,6 @@ class CTCInGameMenu { public:
 class CInputProcessInGameMenu : public CInputProcessGameBase {
 public:
     CTCInGameMenu* PInGameMenu;                    // +0x28
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 

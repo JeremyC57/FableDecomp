@@ -1,5 +1,7 @@
 // CInputProcessInventoryExperienceScreen::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- route input to the front end and the hero's inventory map (component 0x1B): pressed / held / released menu actions become front-end events (the page actions 0x27/0x28 and the held close action 0x48 only while the front end is not busy, slot 8), held action 0x48 queues a close-inventory game event, released d-pad actions zoom (front-end slot 38) or pan the map, mouse moves update the cursor and the wheel scrolls the menu
 // Leaf: ProcessInput
+// NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
+//   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
@@ -18,6 +20,7 @@
 #include "fable_compiler.h"
 #define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
+#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
 #include "engine/CInputProcessGameBase.h"
 struct CMousePosition {
     float X, Y;
@@ -117,9 +120,6 @@ public:
 };
 class CInputProcessInventoryExperienceScreen : public CInputProcessGameBase {
 public:
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
     CMousePosition GetMousePosition(const CInputEvent& event) const { return event.Position; }
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };

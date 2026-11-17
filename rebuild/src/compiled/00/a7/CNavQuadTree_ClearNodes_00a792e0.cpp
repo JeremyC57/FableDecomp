@@ -1,4 +1,7 @@
 // CNavQuadTree::ClearNodes() -- empty the connector map, then for every navigation layer delete its quad-tree nodes (except the shared blocked node) and release the layer's node array storage
+// Leaf: ?ClearNodes@CNavQuadTree@@AAEXXZ
+// NF64 (round 7, q10673): access-only self fix: ClearNodes is private in Ego_r.pdb (and engine/CNavQuadTree.h CLEARNODES), as its only
+//   landed caller 0x00A7A7F0 binds it; the row's pre-existing local CNavQuadTree model now declares it under `private:`.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A792E0, 238 bytes (+ int3 padding). __fastcall, `ret`.
 // Callees: the connector map's clear 0x00A83FD0 (CVectorMap<long, CCountedPointer<CNavConnectorNode> >; manifest label
 //   "Vector_DestroyAndClear_ParticleEmitter" is a propagated guess), each node's virtual deleting dtor (slot 0, `push 1`),
@@ -84,7 +87,8 @@ public:
     vector<CNavigationLayer> NavigationLayers;      // +0x1c
     unsigned char _pad28[0x50];                     // TransitionPoints .. Regions
     CNavConnectorNodeMap ConnectorNodes;            // +0x78
-    void ClearNodes();
+private:
+    void ClearNodes();                              // Ego_r.pdb ?ClearNodes@CNavQuadTree@@AAEXXZ (private; NF64 q10673)
 };
 
 void CNavQuadTree::ClearNodes()

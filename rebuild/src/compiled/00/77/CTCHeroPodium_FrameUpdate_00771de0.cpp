@@ -1,5 +1,8 @@
 // CTCHeroPodium::FrameUpdate() -- when the hero steps onto the podium post the podium message event (and reset the crowd), when he leaves remove it
 // Leaf: FrameUpdate
+// NF64 (round 7, q10639): CrowdOccupation (Ego_r.pdb vector<long>) moved from the local CLongVector to stlport/fable_containers.h
+//   std::vector<long>; resize and clear kept out of line (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE / _CLEAR_OUTOFLINE) bind
+//   ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z (0x004428F0) and ?clear@?$vector@JV?$allocator@J@std@@@std@@QAEXXZ (0x00485D1A).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771DE0, 225 bytes (+ int3 padding).
 // Callees: CThing::GetPos() const @ 0x004C73D0 (x2), CTCBase::GetWorld() @ 0x00686A70 (x2), CWorld::
@@ -43,13 +46,9 @@ private: public:
     CMessageEventManager* PMessageEventManager;      // +0x60
 };
 
-struct CLongVector {                                 // retail std::vector<long> (12 bytes)
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-    void resize(unsigned long n, const long& value); // 0x004428F0
-    void clear();                                    // 0x00485D1A
-};
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_CLEAR_OUTOFLINE
+#include "stlport/fable_containers.h"
 
 class CTCBase { public:
     virtual ~CTCBase();
@@ -62,7 +61,7 @@ protected:
 
 class CTCHeroPodium : public CTCBase { public:
     long        NumberOfCrowdOccupants;              // +0x0C
-    CLongVector CrowdOccupation;                     // +0x10
+    std::vector<long> CrowdOccupation;               // +0x10 (Ego_r.pdb std::vector<long>)
     virtual void FrameUpdate();
 };
 

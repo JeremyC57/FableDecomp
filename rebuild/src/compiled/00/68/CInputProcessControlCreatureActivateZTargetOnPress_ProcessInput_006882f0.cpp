@@ -7,6 +7,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006882F0, length 103 bytes.
 // Callees: CInputProcessGameBase::IsEventGameAction @ 0x00687CF0, IsEventButtonPressed @ 0x00687A90 (event kind 0x13),
 // CProcessedInput::AddGameEvent @ 0x00A0D340, __security_check_cookie @ 0x00BFE9F9.
+// NF64 (round 7, q10652): the local CInputProcessGameBase model is gone; the row uses engine/CInputProcessGameBase.h (retail branch,
+//   FABLE_RETAIL_INPUTPROCESS_ZTARGET), so IsEventButtonPressed binds the Ego_r.pdb + FableWin.pdb protected const member.
 // Model: CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 (Ego_r.pdb, 40 bytes); its char
 // array gives the /GS cookie frame. The input-process base as engine/CInputProcessGameBase.h.
 #include "fable_compiler.h"
@@ -37,19 +39,9 @@ public:
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent;
 #include "engine/EGameAction.h"
-class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
-public:
-    virtual void v00();
-    unsigned char           _pad04[0x10];          // +0x04 CAInputProcess
-    CWorld*                 World;                 // +0x14
-    CPlayer*                MyPlayer;              // +0x18
-    CGameDefinitionManager* DefinitionManager;     // +0x1c
-    CMainGameComponent*     Component;             // +0x20
-    CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90 (kind 0x13)
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
-    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
-};
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
+#include "engine/CInputProcessGameBase.h"
 class CInputProcessControlCreatureActivateZTargetOnPress : public CInputProcessGameBase {
 public:
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);

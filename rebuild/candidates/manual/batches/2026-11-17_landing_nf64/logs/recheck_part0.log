@@ -1,0 +1,140 @@
+addr       parity           behav  name
+00403eb0   RELOCATION_MATCH PASS   TransferBinaryIn
+0045e1ae   RELOCATION_MATCH PASS   operator=
+0046139b   RELOCATION_MATCH PASS   operator=
+004621e9   RELOCATION_MATCH PASS   operator=
+00464ace   RELOCATION_MATCH PASS   _M_insert_overflow
+004df86c   WARN RELOC_NAME: ??0?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE@ABU?$less@J@1@ABV?$allocator@U?$pair@$$CBJJ@std@@@1@@Z -> 004dd287 labelled 'TextureFormat_Handler_06'
+004df86c   RELOCATION_MATCH PASS   map
+004e4c16   RELOCATION_MATCH PASS   operator=
+004e54cc   RELOCATION_MATCH PASS   operator=
+004e6520   RELOCATION_MATCH PASS   operator=
+00579114   MATCH            PASS   _M_find<EHeroTrainableStatType>
+00579e1b   WARN STANDIN_LEAF ??$?0W4EHeroAbility@@USExpSpendUndo@@@?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@QAE@ABU?$pair@W4EHeroAbility@@USExpSpendUndo@@@1@@Z (catalog std::pair<EHeroAbility const, SExpSpendUndo>::pair<EHeroAbility,SExpSpendUndo>; names another function)
+00579e1b   RELOCATION_MATCH PASS   pair<EHeroAbility,SExpSpendUndo>
+00590d32   WARN SHARED_HEADER_AVAILABLE CTCBase
+00590d32   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00590d32   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00590d32   WARN SHARED_HEADER_AVAILABLE CPlayer
+00590d32   WARN RELOC_NAME: ??0CEditBoxList@@QAE@ABU?$CAllocator@PAX@@@Z -> 005931da labelled 'DoublyLinkedList_InitHead'
+00590d32   WARN RELOC_NAME: ??0CComponentByLongMap@@QAE@XZ -> 00593ed0 labelled 'std::map<T_00593ed0>::map'
+00590d32   WARN RELOC_NAME: ?GetNumQuickAccessSlots@CGameProfile@@QBEKXZ -> 00445950 labelled 'CGamePlayerInterface::GetNumberOfQuickAccessItemButtons'
+00590d32   WARN RELOC_NAME: ?reserve@CRetailHandleVector@@QAEXK@Z -> 00443f90 labelled 'std::vector<CEnginePrimitiveHandle>::resize'
+00590d32   WARN RELOC_NAME: ?GetNumContextSensitiveSlots@CGameProfile@@QBEKXZ -> 00445960 labelled 'CShaderPreParser::GetConstantCount'
+00590d32   WARN RELOC_NAME: ?reserve@?$CPODVector@J@@QAEXK@Z -> 004433f0 labelled 'std::vector<long, std::allocator<long>>::resize'
+00590d32   WARN RELOC_NAME: ?reserve@?$CPODVector@VCFadeInFadeOutBase@@@@QAEXK@Z -> 00594df4 labelled 'CTimedEntryArray_00594df4::ResetEntry'
+00590d32   RELOCATION_MATCH PASS   CTCInventory
+005bc4df   RELOCATION_MATCH PASS   SetCanItemBeUsed
+005bf1d7   RELOCATION_MATCH PASS   GetAmountOfItemsContainable
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CThing
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+005ec0f0   WARN RELOC_NAME: ?GetSubDef_005ed4a0@CDefClassBase@@QAE_NAAUCDefPointer@@@Z -> 005ed4a0 labelled 'CDefClassBase::GetSubDef<CTavernGameDef>'
+005ec0f0   WARN RELOC_NAME: ?OpenGameUI@CPlayerGui@@QAEXXZ -> 00437ff0 labelled '_global::Forward_Clear_via0x1f0_00437ff0'
+005ec0f0   RELOCATION_MATCH PASS   EnterGame
+00687fd0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00687fd0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00687fd0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00687fd0   WARN SHARED_HEADER_AVAILABLE CThing
+00687fd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00687fd0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00687fd0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+00687fd0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00687fd0   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton
+00687fd0   WARN RELOC_CONFLICT: ?ProcessInput@CConsole@@QAE_NABVCInputEvent@@@Z -> 009ea540 here, 009ea530 in landed 00687f80
+00687fd0   WARN RELOC_NAME: ?ProcessInput@CConsole@@QAE_NABVCInputEvent@@@Z -> 009ea540 labelled '_global::ReturnFalse_ret4_009ea540'
+00687fd0   WARN RELOC_NAME: ?GetMouseMovement@CInputProcessMain@@QAE?AVC2DVector@@ABVCInputEvent@@@Z -> 00687d20 labelled 'NScript::GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00687fd0   RELOCATION_MATCH PASS   ProcessInput
+0068ae30   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068ae30   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068ae30   WARN SHARED_HEADER_AVAILABLE CManager
+0068ae30   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0068ae30   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap
+0068ae30   WARN SHARED_HEADER_AVAILABLE CThing
+0068ae30   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068ae30   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0068ae30   RELOCATION_MATCH PASS   ProcessInput
+0068c6d0   RELOCATION_MATCH PASS   ProcessInput
+00690480   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690480   WARN SHARED_HEADER_AVAILABLE C2DVector
+00690480   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00690480   WARN SHARED_HEADER_AVAILABLE CManager
+00690480   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690480   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00690480   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu
+00690480   WARN RELOC_NAME: ?GetKey_00a03b40@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+00690480   WARN RELOC_NAME: ?GetAnalogueVector@CInputEvent@@QBEXAAVC2DVector@@@Z -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+00690480   WARN RELOC_NAME: ?IsListReceivingInputA@CTCInGameMenu@@QAE_NXZ -> 0047d6f2 labelled 'CTCInGameMenu::IsSaveComponentReceivingInput'
+00690480   WARN RELOC_NAME: ?IsListReceivingInputB@CTCInGameMenu@@QAE_NXZ -> 0047d648 labelled 'CTCInGameMenu::IsLoadMenuReceivingInput'
+00690480   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00690480   RELOCATION_MATCH PASS   ProcessInput
+00690e70   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690e70   WARN SHARED_HEADER_AVAILABLE C2DVector
+00690e70   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00690e70   WARN SHARED_HEADER_AVAILABLE CManager
+00690e70   RELOCATION_MATCH PASS   ProcessInput
+00691680   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00691680   WARN SHARED_HEADER_AVAILABLE CTCOracleMinigame
+00691680   WARN SHARED_HEADER_AVAILABLE CThing
+00691680   WARN SHARED_HEADER_AVAILABLE CPlayer
+00691680   WARN RELOC_NAME: ?PushSymbolToQueue@CTCOracleMinigame@@QAEXJ@Z -> 007e5f70 labelled 'CTCOracleMinigame::ProcessInput'
+00691680   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00691680   RELOCATION_MATCH PASS   ProcessInput
+00745730   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00745730   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00745730   WARN SHARED_HEADER_AVAILABLE CTCBase
+00745730   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00745730   RELOCATION_MATCH PASS   UpdatePerception
+0078b640   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0078b640   RELOCATION_MATCH PASS   FinishAction
+008c7480   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008c7480   RELOCATION_MATCH PASS   FinishAction
+009fbbd0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+009fbbd0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009fbbd0   WARN SHARED_HEADER_AVAILABLE CTexture
+009fbbd0   RELOCATION_MATCH PASS   CalcAlphaHistogram
+00abcf40   RELOCATION_MATCH PASS   ReadFromFile
+00ad9b20   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock
+00ad9b20   WARN RELOC_NAME: ?CopyBlocks@@YIPAVCVertexGroupBlock@@PAV1@00ABU__false_type@@PAH@Z -> 00adc0d0 labelled '_global::Copy_SArrayTreePair18_00adc0d0'
+00ad9b20   WARN RELOC_NAME: ?DestroyBlocks@@YIXPAVCVertexGroupBlock@@0ABU__false_type@@@Z -> 00adc190 labelled 'std::__destroy_aux'
+00ad9b20   WARN RELOC_NAME: ??0CGroupArray@@QAE@ABU0@@Z -> 00535470 labelled 'std::vector::vector'
+00ad9b20   WARN RELOC_NAME: ??0CGroupToIndexMap@@QAE@ABU0@@Z -> 00a96e40 labelled 'std::map::map'
+00ad9b20   WARN RELOC_NAME: ?_M_erase@CGroupToIndexMap@@QAEXPAUCRbNode@@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00ad9b20   RELOCATION_MATCH PASS   CalcCurrentBlockSegments
+00e39540   RELOCATION_MATCH PASS   Init
+
+WINS: 28
+  00403eb0 RELOCATION_MATCH CPersistTraits<bool>::?TransferBinaryIn@?$CPersistTraits@_N@@QAEXAAVCMemoryDataInputStream@@AA_N@Z
+  0045e1ae RELOCATION_MATCH std::_Rb_tree<EOpinionDeedType, std::pair<EOpinionDeedType const, bool>, std::_Select1st<std::pair<EOpinionDeedType const, bool> >, std::less<EOpinionDeedType >, std::allocator<std::pair<EOpinionDeedType const, bool> > >::??4?$_Rb_tree@W4EOpinionDeedType@@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@U?$less@W4EOpinionDeedType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  0046139b RELOCATION_MATCH std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, float>, std::_Select1st<std::pair<EObjectAugmentationType const, float> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, float> > >::??4?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  004621e9 RELOCATION_MATCH std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, long>, std::_Select1st<std::pair<EHeroTrainableStatType const, long> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, long> > >::??4?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  00464ace RELOCATION_MATCH std::vector<unsigned long>::?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z
+  004df86c RELOCATION_MATCH std::map<long, long, std::less<long>, std::allocator<std::pair<long const, long>>>::??0?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE@XZ
+  004e4c16 RELOCATION_MATCH std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, long>, std::_Select1st<std::pair<EObjectAugmentationType const, long> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, long> > >::??4?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  004e54cc RELOCATION_MATCH std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, long>, std::_Select1st<std::pair<EClothingSuitPart const, long> >, std::less<EClothingSuitPart >, std::allocator<std::pair<EClothingSuitPart const, long> > >::??4?$_Rb_tree@W4EClothingSuitPart@@U?$pair@$$CBW4EClothingSuitPart@@J@std@@U?$_Select1st@U?$pair@$$CBW4EClothingSuitPart@@J@std@@@3@U?$less@W4EClothingSuitPart@@@3@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@J@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  004e6520 RELOCATION_MATCH std::_Rb_tree<EQuakeStrength, std::pair<EQuakeStrength const, float>, std::_Select1st<std::pair<EQuakeStrength const, float> >, std::less<EQuakeStrength >, std::allocator<std::pair<EQuakeStrength const, float> > >::??4?$_Rb_tree@W4EQuakeStrength@@U?$pair@$$CBW4EQuakeStrength@@M@std@@U?$_Select1st@U?$pair@$$CBW4EQuakeStrength@@M@std@@@3@U?$less@W4EQuakeStrength@@@3@V?$allocator@U?$pair@$$CBW4EQuakeStrength@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  00579114 MATCH std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroTrainableStatType const, SExpSpendUndo> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, SExpSpendUndo> > >::??$_M_find@W4EHeroTrainableStatType@@@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@1@ABW4EHeroTrainableStatType@@@Z
+  00579e1b RELOCATION_MATCH std::pair<EHeroAbility const, SExpSpendUndo>::??$?0W4EHeroAbility@@USExpSpendUndo@@@?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@QAE@ABU?$pair@W4EHeroAbility@@USExpSpendUndo@@@1@@Z
+  00590d32 RELOCATION_MATCH CTCInventory::??0CTCInventory
+  005bc4df RELOCATION_MATCH CTCInventoryBase::SetCanItemBeUsed
+  005bf1d7 RELOCATION_MATCH CCategory::GetAmountOfItemsContainable
+  005ec0f0 RELOCATION_MATCH CTCTavernGame::?EnterGame@CTCTavernGame
+  00687fd0 RELOCATION_MATCH CInputProcessMain::ProcessInput
+  0068ae30 RELOCATION_MATCH CInputProcessInventoryMapScreen::ProcessInput
+  0068c6d0 RELOCATION_MATCH CInputProcessHeroInformationScreens::?ProcessInput@CInputProcessHeroInformationScreens@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690480 RELOCATION_MATCH CInputProcessInGameMenu::ProcessInput
+  00690e70 RELOCATION_MATCH CInputProcessBoastUI::ProcessInput
+  00691680 RELOCATION_MATCH CInputProcessOracleMinigame::ProcessInput
+  00745730 RELOCATION_MATCH CTCPerceiveThing::?UpdatePerception@CTCPerceiveThing@@AAEXXZ
+  0078b640 RELOCATION_MATCH CCreatureAction_HeroLoadRangedWeapon::?FinishAction@CCreatureAction_HeroLoadRangedWeapon@@UAEXXZ
+  008c7480 RELOCATION_MATCH CCreatureAction_TrollGroundPound::?FinishAction@CCreatureAction_TrollGroundPound@@UAEXXZ
+  009fbbd0 RELOCATION_MATCH CTexture::?CalcAlphaHistogram@CTexture@@QBEXAAV?$CHistogram@J@@@Z
+  00abcf40 RELOCATION_MATCH C3DMeshFilePrimitiveChunk::ReadFromFile
+  00ad9b20 RELOCATION_MATCH CVertexGroupBlockOptimiser::CalcCurrentBlockSegments
+  00e39540 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::?Init@CV_AssassinAttacksScript@NScript@@UAEXXZ

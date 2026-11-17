@@ -1,0 +1,2 @@
+address	claimed_symbol	reason
+0x00694020	?FrameUpdate@CCreatureActionBase@@QAEXXZ	Wrong access: Ego_r.pdb (0x0051A410) and FableWin.pdb (0x01DB65E0) both spell ?FrameUpdate@CCreatureActionBase@@MAEXXZ (protected virtual). Corrected spelling prepared in work/ready/00694020.cpp

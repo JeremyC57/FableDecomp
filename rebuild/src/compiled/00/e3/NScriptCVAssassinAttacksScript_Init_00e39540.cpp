@@ -1,5 +1,7 @@
 // CV_AssassinAttacksScript::Init() -- reset the assassin-attack state and the five region records (names and limits from the script def), then spawn the WatchForQuestComplete thread
 // Leaf: ?Init@CV_AssassinAttacksScript@NScript@@UAEXXZ
+// NF64 (round 7, q10639): the local vector stand-in replaced by stlport/fable_containers.h std::vector<long>; resize kept out of line
+//   (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE), binding ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0 (landed self row).
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E39540, length 268 bytes.
@@ -39,13 +41,8 @@ template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
 
-template <class T> struct CRetailVector {               // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T& operator[](unsigned long n) const { return *(_M_start + n); }
-    void resize(unsigned long n, const T& value);       // 0x004428F0
-};
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
 
 // agentNF60: AssassinAttackRegionNames / Limits (+0x3cc / +0x3d8, local CRetailVector stand-ins) -> AssassinLocationName / AssassinRegionKillCount (std::vector) through operator[].
 #define FABLE_RETAIL_CDEFSTRINGTABLE
@@ -73,7 +70,7 @@ public:
     bool                  Activated;                    // +0x50
     CCharString           RegionOfMostRecentKill;       // +0x54
     RegionData            RegionInfo[5];                // +0x58
-    CRetailVector<long>   RegionKillCounts;             // +0xa8
+    std::vector<long>   RegionKillCounts;             // +0xa8
     bool                  QuestComplete;                // +0xb4
     bool                  RewardsGiven;                 // +0xb5
     bool                  GivenQuestCard;               // +0xb6

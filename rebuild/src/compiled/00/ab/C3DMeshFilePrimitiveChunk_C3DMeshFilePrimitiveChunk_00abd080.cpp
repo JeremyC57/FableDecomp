@@ -10,6 +10,9 @@
 // Layout: the PDB (Ego_r) CChunkedFileSuperChunk is 0x34 bytes with 16-byte CArrays; retail's is 0x2c with 12-byte
 // CArrays (begin/end/end-of-storage), which is why every derived member sits 8 bytes below the PDB offset and why
 // the generated engine headers for these chunk classes cannot model the bodies -- a local model is used instead.
+// NF64 (round 7, q10639): the local CArray<T> / CArrayLong stand-ins replaced by the shared engine/CArray.h (CArray<T> : std::vector<T>;
+//   Ego_r.pdb MaterialIndices is CArray<long>); the inherited resize is kept out of line (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE) and binds
+//   ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0 (was CArrayLong::Resize).
 class CChunkedFileSaver;
 
 class CCharString { public:
@@ -30,16 +33,8 @@ class CDataOutputStream { public:
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
 };
 
-template <class T>
-class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
-    T* m_pBegin;                            // +0
-    T* m_pEnd;                              // +4
-    T* m_pEndOfStorage;                     // +8
-    CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) {}
-    unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); }
-    T& operator[](unsigned long i) { return m_pBegin[i]; }
-    const T& operator[](unsigned long i) const { return m_pBegin[i]; }
-};
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "engine/CArray.h"
 
 #include "engine/CCountedPointer.h"
 
@@ -77,18 +72,15 @@ class CChunkedFileSuperChunk : public CChunkedFileChunk { public:   // retail si
     CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const; // 0x00AA7F40
 };
 
-struct CArrayLong : CArray<long> {
-    void Resize(unsigned long count, const long& fill);                  // 0x004428F0
-};
 
 class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk { public:   // retail sizeof 0x3c (PDB 0x44)
-    CArrayLong MaterialIndices;             // +0x2c
+    CArray<long> MaterialIndices;           // +0x2c (Ego_r.pdb CArray<long>)
     C3DMeshFilePrimitiveChunk();
 };
 
 C3DMeshFilePrimitiveChunk::C3DMeshFilePrimitiveChunk()
     : CChunkedFileSuperChunk("PRIM")        // literal @ 0x0129DEE4
 {
-    MaterialIndices.Resize(1, 0);
+    MaterialIndices.resize(1, 0);
     MaterialIndices[0] = -1;
 }

@@ -277,6 +277,12 @@ protected:
 private:
     _Link_type _M_copy(_Link_type x,_Link_type p);
 #endif
+#if defined(FABLE_RETAIL_STLP_TREE_ASSIGN_BODY) && !defined(FABLE_RETAIL_STLP_TREE_MCOPY_BODY)
+    // NF64 opt-in (round 7, the size-TU tree assignments 0x00432A35 .. 0x004EC33E): the private _tree.c `_M_copy(x, p)` declared
+    // only (retail calls each instance's _M_copy COMDAT from operator=; NF61's MCOPY_BODY rows define them). Body of operator= below.
+private:
+    _Link_type _M_copy(_Link_type x,_Link_type p);
+#endif
 protected:
     _Link_type& _M_root()const { return (_Link_type&)this->_M_header._M_data->_M_parent; }
     static _Link_type& __fastcall _S_left(_Link_type x){return (_Link_type&)x->_M_left;}
@@ -587,6 +593,35 @@ _Rb_tree_node<V>* _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_copy(_Rb_tree_node<V>* 
         x=_S_left(x);
     }
     return top;
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_TREE_ASSIGN_BODY
+// NF64 opt-in: STLport 4.6.2 stl/_tree.c `operator=(const _Rb_tree&)`: unless self-assigned, clear() (retail calls each instance's
+// clear COMDAT), zero the count, copy the comparator, then either reset the header to an empty tree or _M_copy the source root under
+// the header and re-derive leftmost / rightmost (_S_minimum / _S_maximum walks, written out: fable_map.h has no node-base helpers).
+template<class K,class V,class KeyOfValue,class Compare,class A>
+_Rb_tree<K,V,KeyOfValue,Compare,A>& _Rb_tree<K,V,KeyOfValue,Compare,A>::operator=(const _Rb_tree<K,V,KeyOfValue,Compare,A>& x) {
+    if(this!=&x) {
+        clear();
+        _M_node_count=0;
+        _M_key_compare=x._M_key_compare;
+        if(x._M_root()==0) {
+            _M_root()=0;
+            _M_leftmost()=this->_M_header._M_data;
+            _M_rightmost()=this->_M_header._M_data;
+        }
+        else {
+            _M_root()=_M_copy(x._M_root(),this->_M_header._M_data);
+            _Rb_tree_node_base* n=_M_root();
+            while(n->_M_left!=0) n=n->_M_left;
+            _M_leftmost()=static_cast<_Link_type>(n);
+            n=_M_root();
+            while(n->_M_right!=0) n=n->_M_right;
+            _M_rightmost()=static_cast<_Link_type>(n);
+            _M_node_count=x._M_node_count;
+        }
+    }
+    return *this;
 }
 #endif
 #ifdef FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY

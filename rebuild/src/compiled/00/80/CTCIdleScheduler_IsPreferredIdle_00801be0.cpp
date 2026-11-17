@@ -17,12 +17,11 @@ class CWorld { public:
     static long __fastcall GetFrame();                     // 0x0049D870
 };
 
-struct CIdleStateMap {                               // std::map<EIdleStateGroup, CAIStateGroupBase*> (retail 12 bytes)
-    void*         _M_header;
-    unsigned long _M_node_count;
-    unsigned long _M_compare;
-    CAIStateGroupBase*& operator[](const long& group);   // 0x00802110
-};
+// NF64 (round 7, q10722): IdleStates / IdleStatesWeight are the Ego_r.pdb std::map<EIdleStateGroup, CAIStateGroupBase*> /
+//   std::map<EIdleStateGroup, long> (stlport/fable_map.h; engine/CTCIdleScheduler.h spells them so); operator[] is the out-of-line COMDAT
+//   0x00802110 NF61 re-authored. Was the stand-in CIdleStateMap keyed by long.
+#include "stlport/fable_map.h"
+enum EIdleStateGroup;                                // MS forward enum, as engine/CTCIdleScheduler.h declares it
 
 class CTCBase
 {
@@ -36,9 +35,9 @@ class CTCIdleScheduler : public CTCBase { public:
     bool          ToBeRemoved;                       // +0x08
     bool          IsInGlobalUpdateTCs;               // +0x09
     unsigned char _pad_0x0a[0x2];
-    CIdleStateMap IdleStates;                        // +0x0C
-    CIdleStateMap IdleStatesWeight;                  // +0x18 (map<EIdleStateGroup, long>)
-    long          Preferred;                         // +0x24 EIdleStateGroup
+    std::map<EIdleStateGroup, CAIStateGroupBase*> IdleStates;   // +0x0C
+    std::map<EIdleStateGroup, long> IdleStatesWeight;           // +0x18
+    EIdleStateGroup Preferred;                       // +0x24 (Ego_r.pdb EIdleStateGroup)
     long          FrameLastChecked;                  // +0x28
 
     void ChooseNewIdle();                            // 0x00801A50
@@ -52,7 +51,7 @@ bool CTCIdleScheduler::IsPreferredIdle(CAIStateGroupBase* idle)
         return true;
     if (FrameLastChecked != GetWorld().GetFrame()) {
         if (Preferred == 0 || IdleStates[Preferred] == idle) {
-            Preferred = 0;
+            Preferred = (EIdleStateGroup)0;
             ChooseNewIdle();
         }
     }

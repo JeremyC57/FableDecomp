@@ -32,6 +32,13 @@ public:
     // ?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z (0x00687CF0; engine/CInputProcessGameBase.h
     // ZTARGET declares the same), moved here from the derived class's local `long` redeclaration; actions from engine/EGameAction.h.
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;   // 0x00687CF0
+protected:
+    // NF64 (round 7, q10652): the button queries, moved here from the derived class's local public non-const redeclarations, as
+    // Ego_r.pdb / FableWin.pdb spell them (?IsEventButton{Pressed,Held,Released}@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z,
+    // protected const; engine/CInputProcessGameBase.h ZTARGET / MOVEMENT declare the same).
+    bool IsEventButtonPressed(const CInputEvent& event) const;        // 0x00687A90
+    bool IsEventButtonReleased(const CInputEvent& event) const;       // 0x00687B30
+    bool IsEventButtonHeld(const CInputEvent& event) const;           // 0x00687BD0
 };
 struct CMousePosition {
     float X, Y;
@@ -131,9 +138,6 @@ public:
 };
 class CInputProcessInventoryTradeScreen : public CInputProcessGameBase {
 public:
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
     CMousePosition GetMousePosition(const CInputEvent& event) const { return event.Position; }
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };

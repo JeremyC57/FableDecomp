@@ -105,7 +105,12 @@ FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 
-bool __fastcall IsInMeleeWithCombatWheelAttackers(CThing* creature);   // 0x00979910
+// NF64 (round 7, q10654): Ego_r.pdb 0x0099E590 + FableWin.pdb 0x02C1C760 spell 0x00979910 as the file-local (anonymous-namespace)
+//   __fastcall ?IsInMeleeWithCombatWheelAttackers@?A0x...@@YI_NABVCThingCreatureBase@@@Z (its self row and 0x00979D80 use it; the ?A0x
+//   hash is per TU, matched by prefix); was the global (CThing*) declaration.
+namespace {
+bool __fastcall IsInMeleeWithCombatWheelAttackers(const CThingCreatureBase& creature);   // 0x00979910
+}
 
 // pointer form of the alive test: one GetPItem read
 FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* thing)
@@ -135,7 +140,7 @@ bool CAIStateGroup_CreatureTakeCover::IsStillRunnable()
 {
     if (IS_THING_ALIVE(PTargetThing)
         && IS_THING_ALIVE(((CThing*)PCoverThing.GetPItem()))
-        && !IsInMeleeWithCombatWheelAttackers(((CThing*)PTargetThing.GetPItem())))
+        && !IsInMeleeWithCombatWheelAttackers(*(const CThingCreatureBase*)PTargetThing.GetPItem()))
     {
         CTCCarrying* carrying;
         if (((CThing*)PTargetThing.GetPItem())->GetInterface(0x46, &carrying))

@@ -1,12 +1,16 @@
-// CTexture::CalcAlphaHistogram(vector<unsigned long>& histogram) const -- lock mip level 0 and count, for each of the 256 alpha values, how many texels carry it
-// Leaf: ?CalcAlphaHistogram@CTexture
+// CTexture::CalcAlphaHistogram(CHistogram<long>& histogram) const -- lock mip level 0 and count, for each of the 256 alpha values, how many texels carry it
+// Leaf: ?CalcAlphaHistogram@CTexture@@QBEXAAV?$CHistogram@J@@@Z
+// NF64 (round 7, q10639): the argument is Ego_r.pdb's CHistogram<long>& (?CalcAlphaHistogram@CTexture@@QBEXAAV?$CHistogram@J@@@Z: Ego_r.pdb 0x00B6BBA0,
+//   FableWin.pdb 0x030DDEB0), whose Data member (+0x00) is CArray<long>; the local vector<T>
+//   stand-in is replaced by the shared engine/CArray.h and the resize (kept out of line, FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE) binds
+//   ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0. CHistogram has no engine header (modelled with its PDB member only).
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009FBBD0, 250 bytes (+2 int3), `ret 4`.
 // Callees: IDirect3DTexture9::GetLevelDesc (COM slot 17, +0x44; twice), LockRect (slot 19, +0x4c) and UnlockRect (slot 20,
 //   +0x50); CPixelFormat::Initialise(D3DFORMAT) @ 0x009E3830 (through a converting constructor), CPixelFormat::
 //   ConvertPFDDataToRGB(const unsigned char*, CRGBColour&) const @ 0x009E3DF0, CPixelFormat::GetByteColourDepth() const
-//   @ 0x009E3800; vector<unsigned long>::resize(size_t, const unsigned long&) @ 0x004428F0.
+//   @ 0x009E3800; vector<long>::resize(size_t, const long&) @ 0x004428F0 (CHistogram<long>::Data is CArray<long>).
 // Layout: PDB CTexture (PD3DTexture +0) and CPixelFormat (FormatIndex); D3DSURFACE_DESC (Width +0x18, Height +0x1C),
 //   D3DLOCKED_RECT {Pitch, pBits}, RECT; CRGBColour {B, G, R, A} (alpha the fourth byte).
 // Shape: the level description is fetched twice through the inline GetPixelFormat (0x009F9D80) and GetDimensions(0)
@@ -65,12 +69,10 @@ class CPixelFormat { public:
     void ConvertPFDDataToRGB(const unsigned char* data, CRGBColour& colour) const; // 0x009E3DF0 ?ConvertPFDDataToRGB@CPixelFormat@@QBEXPBEAAVCRGBColour@@@Z (Ego_r.pdb / FableWin.pdb; NF28)
     unsigned long GetByteColourDepth() const;                                // 0x009E3800
 };
-template<class T> struct vector {               // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T& operator[](unsigned long i) { return *(_M_start + i); }
-    void resize(unsigned int size, const T& value);                          // 0x004428F0
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "engine/CArray.h"
+template <class T> class CHistogram { public:     // Ego_r.pdb CHistogram<long>: Data (CArray<long>) +0x00; no engine header
+    CArray<T> Data;
 };
 class CTexture {
 public:
@@ -89,10 +91,10 @@ public:
         PD3DTexture->GetLevelDesc(level, &desc);
         return C2DExtentsI(desc.Width, desc.Height);
     }
-    void CalcAlphaHistogram(vector<unsigned long>& histogram) const;
+    void CalcAlphaHistogram(CHistogram<long>& histogram) const;
 };
 
-void CTexture::CalcAlphaHistogram(vector<unsigned long>& histogram) const
+void CTexture::CalcAlphaHistogram(CHistogram<long>& histogram) const
 {
     CPixelFormat format = GetPixelFormat();
     C2DExtentsI size = GetDimensions(0);
@@ -103,14 +105,14 @@ void CTexture::CalcAlphaHistogram(vector<unsigned long>& histogram) const
     rect.right = size.X;
     rect.bottom = size.Y;
     long result = PD3DTexture->LockRect(0, &locked, &rect, 0);
-    histogram.resize(256, 0);
+    histogram.Data.resize(256, 0);
     if (result >= 0) {
         unsigned char* texel = (unsigned char*)locked.pBits;
         for (long y = 0; y < size.Y; ++y) {
             for (long x = 0; x < size.X; ++x) {
                 CRGBColour colour;
                 format.ConvertPFDDataToRGB(texel, colour);
-                ++histogram[colour.A];
+                ++histogram.Data[colour.A];
                 texel += format.GetByteColourDepth();
             }
             texel = (unsigned char*)locked.pBits + locked.Pitch * y;

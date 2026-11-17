@@ -1,5 +1,7 @@
 // CTCPerceiveThing::UpdatePerception() -- an incapacitated parent loses all three lines of sight and its smell / hearing / direct awareness; otherwise update sight (unless lying down), smell and hearing, then become directly aware on sight or smell, or let the awareness timer run down (4 per second) and drop direct awareness when it expires
-// Leaf: UpdatePerception
+// Leaf: ?UpdatePerception@CTCPerceiveThing@@AAEXXZ
+// NF64 (round 7, q10655): access-only fix: UpdatePerception (this row) and its callee UpdateHearing are private in Ego_r.pdb /
+//   FableWin.pdb and engine/CTCPerceiveThing.h; the row's pre-existing local model now declares both under `private:`.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
@@ -130,9 +132,9 @@ private:
     void UpdateSmell();                         // 0x00744B50
     void UpdateLineOfSight();                   // 0x00745120 ?UpdateLineOfSight@CTCPerceiveThing@@AAEXXZ (Ego_r.pdb / FableWin.pdb private;
                                                 //   engine/CTCPerceiveThing.h; NF59 q10523: access-only callee fix, was public)
+    void UpdateHearing();                       // 0x00744FB0 ?UpdateHearing@CTCPerceiveThing@@AAEXXZ (Ego_r.pdb private; NF64 q10655)
+    void UpdatePerception();                    // ?UpdatePerception@CTCPerceiveThing@@AAEXXZ (Ego_r.pdb 0x00758320 / FableWin.pdb private; NF64 q10655)
 public:
-    void UpdateHearing();                       // 0x00744FB0
-    void UpdatePerception();
     float& GetAwarenessTimer() { return AwarenessTimer; }
 };
 

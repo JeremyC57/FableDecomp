@@ -1,88 +1,17 @@
-// std::_Rb_tree::_M_find(const key_type& k) const -- (map<EHeroAbility, SExpSpendUndo >) STLport exact-key lookup over a signed 32-bit key: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
-// Leaf: ?_M_find@?$_Rb_tree@
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0057914C, 56 bytes (unaligned entry, size-optimised TU), thiscall, `ret 4`;
-//   returns the node pointer (header node pointer = end()).
-// Identity: map<EHeroAbility, SExpSpendUndo > -- proven; evidence: CTCInventoryExperience::BuyAbility 0x005785B3 / UndoBuyAbility 0x00576C4F look abilities up in this+0x14C = Ego_r UndoableAbilityBuys (map<EHeroAbility, SExpSpendUndo>, PDB +0x16C) through it.
-//   Family G008 (10 byte-identical bodies, each its own COMDAT: retail has no ICF, so each address is one tree type).
-//   STLport 4.6 _tree.h `_Rb_tree::_M_find` (the out-of-line node lookup behind map::find; `jl` = signed key compare).
-//   The manifest label "BinaryTree_FindLowerBound_Ability" is propagated/behavioural.
-// Node layout: color +0, parent +4, left +8, right +0xC, key at +0x10 (first word of the value); tree: header node
-//   pointer +0, node count +4, comparator +8. Only the key is read; the mapped type only names the instantiation.
+// std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroAbility const, SExpSpendUndo> >, std::less<EHeroAbility>, std::allocator<std::pair<EHeroAbility const, SExpSpendUndo> > >::_M_find<EHeroAbility>(const EHeroAbility& key) const -- STLport 4.6.1 _tree.h member-template lookup: walk from the root keeping the last node
+//   whose key is not less than `key`, then return the header unless that node's key equals it
+// Leaf: ??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0057914C, size TU.
+// NF64 (round 7, q10682): an explicit instantiation of the stlport/fable_map.h member-template _M_find (const, ABE) for the
+//   map<EHeroAbility, SExpSpendUndo> tree of CTCInventoryExperience (Ego_r.pdb SExpSpendUndo through engine/CTCInventoryExperience.h
+//   FABLE_RETAIL_SEXPSPENDUNDO_ONLY). The landed callers 0x005729D8 / 0x00576C4F and NF61's 0x005786B5 / 0x005785B3 bind this spelling.
+//   Was a local STLport model whose leaf was the non-template prefix ?_M_find@?$_Rb_tree@. Descriptive-by-library (retail is STLport
+//   4.6; both PDBs are Dinkumware builds).
+// Was: std::_Rb_tree::_M_find(const key_type& k) const -- (map<EHeroAbility, SExpSpendUndo >) STLport exact-key lookup over a signed 32-bit key: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
 #pragma optimize("s", on)
-enum EHeroAbility { HERO_ABILITY_0 }; struct SExpSpendUndo { long Cost; };
-namespace std {
+#define FABLE_RETAIL_SEXPSPENDUNDO_ONLY
+#include "stlport/fable_map.h"
+#include "engine/EHeroAbility.h"
+#include "engine/CTCInventoryExperience.h"
 
-template <class _Tp> class allocator { };
-
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-
-template <class _T1, class _T2> struct pair {
-    typedef _T1 first_type;
-    typedef _T2 second_type;
-    _T1 first;
-    _T2 second;
-};
-
-template <class _Tp> struct less {
-    bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
-};
-template <class _Pair> struct _Select1st {
-    const typename _Pair::first_type& operator()(const _Pair& __x) const { return __x.first; }
-};
-
-struct _Rb_tree_node_base {
-    bool                _M_color;
-    _Rb_tree_node_base* _M_parent;
-    _Rb_tree_node_base* _M_left;
-    _Rb_tree_node_base* _M_right;
-};
-template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base {
-    _Value _M_value_field;
-};
-
-template <class _Tp, class _Alloc> class _Rb_tree_base {
-public:
-    _STLP_alloc_proxy<_Rb_tree_node<_Tp>*, _Rb_tree_node<_Tp>, allocator<_Rb_tree_node<_Tp> > > _M_header;
-};
-
-template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc = allocator<_Value> >
-class _Rb_tree : public _Rb_tree_base<_Value, _Alloc> {
-public:
-    typedef _Rb_tree_node<_Value>* _Link_type;
-    unsigned int _M_node_count;
-    _Compare _M_key_compare;
-    static const _Key& _S_key(_Link_type __x) { return _KeyOfValue()(__x->_M_value_field); }
-    static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
-    static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
-    protected:
-    _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
-    public:
-    private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
-    public:
-};
-
-template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _Key& __k) const
-{
-    _Link_type __y = this->_M_header._M_data;      // last node which is not less than __k
-    _Link_type __x = _M_root();                    // current node
-    while (__x != 0)
-        if (!_M_key_compare(_S_key(__x), __k))
-            __y = __x, __x = _S_left(__x);
-        else
-            __x = _S_right(__x);
-    if (__y == this->_M_header._M_data || _M_key_compare(__k, _S_key(__y)))
-        __y = this->_M_header._M_data;
-    return __y;
-}
-
-typedef EHeroAbility _TreeKey;
-typedef pair<const _TreeKey, SExpSpendUndo > _TreeValue;
-template class _Rb_tree<_TreeKey, _TreeValue, _Select1st<_TreeValue>, less<_TreeKey>, allocator<_TreeValue> >;
-
-} // namespace std
+template std::_Rb_tree_node<std::pair<EHeroAbility const, SExpSpendUndo> >* std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroAbility const, SExpSpendUndo> >, std::less<EHeroAbility>, std::allocator<std::pair<EHeroAbility const, SExpSpendUndo> > >::_M_find<EHeroAbility>(const EHeroAbility&) const;

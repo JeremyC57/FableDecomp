@@ -1,5 +1,7 @@
 // CInputProcessFireheartMinigame::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- feed the hero's fireheart minigame: the stick (game action 0x3C) past +-0.5 on Y then X sends inputs 0/2/1/3; a press of 0x2C quits (unless already quitting), 0x16 / 0x17 answer yes / no, and game action 3 queues game event 0x1A (0x17, true) when the hero has component 0xC6
 // Leaf: ProcessInput
+// NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
+//   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00691870, 592 bytes, `ret 8` (/GS cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
@@ -8,6 +10,7 @@
 #include "fable_compiler.h"
 #define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
+#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 struct CMemoryBuffer {
@@ -82,7 +85,6 @@ public:
 };
 class CInputProcessFireheartMinigame : public CInputProcessGameBase {
 public:
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 

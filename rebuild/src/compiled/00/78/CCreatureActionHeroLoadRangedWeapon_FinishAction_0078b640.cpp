@@ -5,14 +5,30 @@
 // Callees: CCreatureAction_HeroLoadRangedWeapon::SetWeaponLoaded @ 0x0078B6B0 (thiscall, `this` still in ecx),
 // CCreatureActionBase::FinishAction @ 0x00694430 (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8),
 // CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface for type 0x8C = bit 12 of the presence word at +0x30, `test ch,10h`),
-// the component's keyed-map erase @ 0x0058119B (a frame-pointer tree erase(const key&); the manifest label
-// "CBankFile::CompareDataOffset::operator()" is propagated), the component's recalculation @ 0x00800020 (manifest
+// the CTCHaste component's map erase @ 0x0058119B (a frame-pointer tree erase(const key&); the manifest label
+// "CBankFile::CompareDataOffset::operator()" is propagated), CTCHaste::UpdateActionSpeedMultiplier @ 0x00800020 (manifest
 // "CAnimation_RecalculateScale": it resets +0xc to 1.0f and multiplies in every map value).
 // Shape: `Finished` is CCreatureActionBase +0x61 (PDB header, which agrees with retail below +0x84); the erase key is `this`
 // bound to a `const&` parameter -- VC builds the temporary in the lookup-key frame word (`mov [esp+0Ch],edi` after the
 // push), the component stays in esi for both calls. Retail CCreatureActionBase is 0xa8 bytes (the PDB vectors are 16 bytes,
 // retail 12), so the class is modelled locally.
-class CTCBase;
+// NF64 (round 7, q10667 / q10668): the local CTCActionScaled / CActionKeyedMap stand-ins replaced by engine/CTCHaste.h (the type-0x8C
+//   component is CTCHaste: Ego_r.pdb std::map<void*,float> Multipliers at +0x18; FABLE_RETAIL_CTCHASTE_UNSET_INLINE, NF61's opt-in:
+//   ?UnsetActionSpeedMultiplier@CTCHaste@@QAEXPAX@Z with its body visible, which retail expands here). The erase now binds the STLport
+//   _Rb_tree::erase(const key_type&) spelling at 0x0058119B and the update the private ?UpdateActionSpeedMultiplier@CTCHaste@@AAEXXZ at
+//   0x00800020 (was CActionKeyedMap::Erase / CTCActionScaled::Recalculate).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCHASTE
+#define FABLE_RETAIL_CTCHASTE_UNSET_INLINE
+#define FABLE_RETAIL_STLP_TREE_ERASE
+#define FABLE_RETAIL_STLP_TREE_ERASE_KEY
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCHaste.h"
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
@@ -25,15 +41,6 @@ class CBaseObjectPointer;
 
 
 class CCreatureActionBase;
-struct CActionKeyedMap {                    // std::map keyed by the action pointer
-    unsigned long Erase(CCreatureActionBase* const& key);   // 0x0058119B
-};
-struct CTCActionScaled {                    // interface type 0x8C component
-    unsigned char _pad00[0x18];
-    CActionKeyedMap m_actions;              // +0x18
-    void Recalculate();                     // 0x00800020
-};
-
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4: 0x00694430
@@ -54,9 +61,7 @@ void CCreatureAction_HeroLoadRangedWeapon::FinishAction()
     if (Finished)
         SetWeaponLoaded();
     CCreatureActionBase::FinishAction();
-    CTCActionScaled* scaled;
-    if (PCreature.Get()->GetTC(TCI_HASTE, &scaled)) {
-        scaled->m_actions.Erase(this);
-        scaled->Recalculate();
-    }
+    CTCHaste* haste;
+    if (PCreature.Get()->GetTC(TCI_HASTE, &haste))
+        haste->UnsetActionSpeedMultiplier(this);
 }

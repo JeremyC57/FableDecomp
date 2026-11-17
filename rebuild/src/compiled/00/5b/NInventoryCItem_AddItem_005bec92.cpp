@@ -8,16 +8,16 @@ void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement
 #pragma optimize("s", on)
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 bool __fastcall IsAugmentation(long itemType);     // 0x005D97F0
-long __fastcall GetMaxNumberOfItems(long itemType);   // 0x005D99F0 (labelled GetInventoryCategory)
-template <class T> struct vector {                 // STLport vector, 12 bytes
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned long i) { return _M_start[i]; }
-    const T& operator[](unsigned long i) const { return _M_start[i]; }
-    void resize(unsigned long count, const T& value);   // 0x004428F0
-};
+// NF64 (round 7, q10648): the free stand-in `GetMaxNumberOfItems` is the static __fastcall CTCInventoryItem::GetMaxNumberOfItems (Ego_r.pdb / FableWin.pdb; the
+//   NF59 self row defines it), declared by engine/CTCInventoryItem.h.
+// NF64 (round 7, q10639): the local vector<T> stand-in replaced by stlport/fable_containers.h; both members are vector<long> in Ego_r.pdb
+//   (CObjectAugmentationsDef::InitialAugmentations, CPerItemData::Augmentations). resize kept out of line (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE),
+//   binding ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0.
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_GETMAXNUMBEROFITEMS
+#include "engine/CTCInventoryItem.h"
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
 struct CDefBase {
     virtual void v00();
     virtual void Destroy();                        // slot 1
@@ -43,7 +43,7 @@ class CObjectAugmentationsDef : public CDefClassBase { public:   // Ego_r.pdb la
     unsigned char _pad08[0x28 - 0x08];
     long NumberOfSlots;                            // +0x28
     unsigned char _pad2c[0x40 - 0x2c];
-    vector<unsigned long> InitialAugmentations;    // +0x40 (PDB +0x44)
+    std::vector<long> InitialAugmentations;        // +0x40 (PDB +0x44, Ego_r.pdb vector<long>)
 };
 class CThingBaseDef : public CDefClassBase { public: };
 void* FindDef_s7r_0();
@@ -89,7 +89,7 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0,
 }
 #pragma auto_inline(on)
 struct CPerItemData {                              // 0x24 bytes
-    vector<unsigned long> SlotValues;              // +0x00
+    std::vector<long> SlotValues;                  // +0x00 (Ego_r.pdb CPerItemData::Augmentations, vector<long>)
     unsigned char _body[0x24 - 0x0c];
     CPerItemData();                                // 0x005C14A6
 };
@@ -133,7 +133,7 @@ void NInventory::CItem::AddItem(long itemType, long number, long price)
         }
     }
     ItemType = itemType;
-    long room = GetMaxNumberOfItems(itemType) - NumberOfItems;
+    long room = CTCInventoryItem::GetMaxNumberOfItems(itemType) - NumberOfItems;
     long added = Min(number, room);
     if (price != -1) {
         AverageBoughtPrice = AverageBoughtPrice * NumberOfItems + added * price;

@@ -1,5 +1,7 @@
 // CVertexGroupBlockOptimiser::CalcCurrentBlockSegments() -- reset the per-block segment indices to -1 and the segment group list, then paint one new segment from every remaining block that no segment has claimed yet
 // Leaf: CalcCurrentBlockSegments
+// NF64 (round 7, q10639): the local vector stand-in replaced by stlport/fable_containers.h std::vector<long>; resize kept out of line
+//   (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE), binding ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0 (landed self row).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD9B20, 494 bytes + int3, plain `ret`.
 // The catalog row says CVertexGroupBlockOptimiser::Optimise; the body is the PDB's private
 // ?CalcCurrentBlockSegments@CVertexGroupBlockOptimiser@@AAEXXZ (no arguments, it resets CurrentBlockSegmentIndices /
@@ -105,15 +107,8 @@ struct CBlockArray {                                           // CArray<CVertex
     }
 };
 
-struct CLongArray {                                            // vector<long>
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-    unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
-    long& operator[](unsigned long n) const { return *(_M_start + n); }
-    void resize(unsigned long newSize, const long& x);         // 0x004428F0
-    void resize(unsigned long newSize) { resize(newSize, long()); }
-};
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
 
 struct CByteArray {                                            // the retail RemainingBlocks (one byte per block)
     bool* _M_start;
@@ -130,7 +125,7 @@ public:
     CVertexGroupBlock* CurrentBlock;                           // +0x14
     CByteArray RemainingBlocks;                                // +0x18
     CBlockArray CurrentBlockSegmentGroups;                     // +0x24
-    CLongArray CurrentBlockSegmentIndices;                     // +0x30
+    std::vector<long> CurrentBlockSegmentIndices;                     // +0x30
     unsigned long CurrentBlockSegmentCount;                    // +0x3c
 
     void PaintCurrentBlockSegment(unsigned long block);        // 0x00AD9380

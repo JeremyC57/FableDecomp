@@ -8,9 +8,19 @@
 // Member names: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv). Virtuals other than the inherited destructor are not modelled.
 #include "rebuild_abi.h"
 #include "engine/CInputProcessGameBase.h"
+#ifdef FABLE_RETAIL_CINPUTPROCESSHEROINFORMATIONSCREENS_PROCESSINPUT
+class CInputEvent;
+class CProcessedInput;
+#endif
 class CInputProcessHeroInformationScreens : public CInputProcessGameBase {
 public:
     CInputProcessHeroInformationScreens(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_CINPUTPROCESSHEROINFORMATIONSCREENS_PROCESSINPUT
+    // NF64 opt-in (round 7, q10652, row 0x0068C6D0): Ego_r.pdb 0x006B83C0 / FableWin.pdb 0x021E12B0
+    // ?ProcessInput@CInputProcessHeroInformationScreens@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z (the override, retail 0x0068C6D0).
+    // Declaration only (needs FABLE_RETAIL_INPUTPROCESS_ZTARGET for the base's CInputEvent / button queries).
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CInputProcessHeroInformationScreens) == 0x28);
 #else // the generated Ego_r layout (the landed default, unchanged)

@@ -36,7 +36,7 @@ typedef long ETavernGameStates;
 
 extern bool g_bTavernGameQuitRequested;         // 0x013BAE1C
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"                        // NF64: the shared enum (CTCQuickAccessMenu.h DEACTIVATE includes it; was a local empty enum)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CDefVirtual {
@@ -128,9 +128,6 @@ class CTCTavernGame;
 class CTCGamePlayer { public:
     void SetGame(CTCTavernGame* game);          // 0x005EDC00
 };
-struct CHeroMenuComponent {
-    void RequestClose();                        // 0x00625920
-};
 class CTCHeroStats : public CTCHeroStatsDonor {
  public:
 };
@@ -151,6 +148,13 @@ private: public:
     CPlayerManager* PlayerManager;              // +0x1c
 };
 #include "engine/CCountedPointer.h"
+// NF64 (round 7, q10651): the menu component is the hero's CTCQuickAccessMenu (TC 0xF6 = TCI_QUICK_ACCESS_MENU) and its call the
+//   Ego_r.pdb 0x0066A140 / FableWin.pdb 0x02119DD0 CTCQuickAccessMenu::Deactivate (engine/CTCQuickAccessMenu.h DEACTIVATE; out of
+//   line at 0x00625920); was the stand-in CHeroMenuComponent::RequestClose.
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCQUICKACCESSMENU_DEACTIVATE
+class CEnginePrimitivePrepareInfo;
+#include "engine/CTCQuickAccessMenu.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:
@@ -221,9 +225,9 @@ void CTCTavernGame::EnterGame()
         gamePlayer->SetGame(this);
     }
     {
-        CHeroMenuComponent* menu;
+        CTCQuickAccessMenu* menu;
         hero->GetInterfaceDirect(&menu, 0xf6);
-        menu->RequestClose();
+        menu->Deactivate();
     }
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Close(false);
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_bShowing = true;

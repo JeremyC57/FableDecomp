@@ -1,5 +1,7 @@
 // CPersistTraits<NInventory::CItem>::TransferBinaryIn(CMemoryDataInputStream& stream, NInventory::CItem& value) -- binary read of one inventory item
 // Leaf: ?TransferBinaryIn@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCMemoryDataInputStream@@AAVCItem@NInventory@@@Z
+// NF64 (round 7, q10639): the local vector stand-in replaced by stlport/fable_containers.h std::vector<long>; resize kept out of line
+//   (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE), binding ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0 (landed self row).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C19A3, 1165 bytes, EBP frame, `ret 8` (traits `this` unused); same TU as the
@@ -64,18 +66,8 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     }
     template <class T> FABLE_FORCEINLINE T ReadType() { T v; Read(&v, sizeof(T)); return v; }
 };
-namespace std {
-template <class T> class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~vector() { if (_M_start) free(_M_start); }
-    void resize(unsigned long n, const T& x);           // 0x004428F0
-    T& operator[](unsigned long n) { return _M_start[n]; }
-};
-}
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
 struct SCountBlock;
 #include "engine/CCountedPointer.h"
 namespace NInventory {

@@ -1,5 +1,7 @@
 // CTCPerceiveThing::FrameUpdate() -- per frame: age the direct-perception counter, then (every fourth frame on the component's offset, or at once when the creature has just entered melee) refresh the distance and perception of the perceived thing, or reset when it is gone; a component searching for the player starts perceiving the controlled creature
 // Leaf: FrameUpdate
+// NF64 (round 7, q10655): UpdatePerception 0x00745730 and UpdateDistanceFromPerceivedThing 0x007447E0 are private in Ego_r.pdb /
+//   FableWin.pdb (engine/CTCPerceiveThing.h); the row's pre-existing local model now declares them under `private:` (access-only).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00745C70, 220 bytes (plain `ret`). CTCPerceiveThing vtable slot 9 (catalog "vfunc_9";
@@ -101,8 +103,10 @@ public:
     long          FrameHitByPerceivedThing;             // +0x54
     bool IsUpdatingThisFrame() const { return CWorld::GetFrame() % 4 == UpdateOffset; }
     void ResetPerceptionVariables();                    // 0x00744DB0
-    void UpdateDistanceFromPerceivedThing();            // 0x007447E0
-    void UpdatePerception();                            // 0x00745730
+private:
+    void UpdateDistanceFromPerceivedThing();            // 0x007447E0 ?UpdateDistanceFromPerceivedThing@CTCPerceiveThing@@AAEXXZ (Ego_r.pdb 0x00757280 private, as its landed self row defines; NF64)
+    void UpdatePerception();                            // 0x00745730 ?UpdatePerception@CTCPerceiveThing@@AAEXXZ (Ego_r.pdb private; NF64 q10655)
+public:
     void SetThingToPerceive(const CThing* thing);       // 0x007447A0
 };
 

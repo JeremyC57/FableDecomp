@@ -24,7 +24,11 @@ struct CItemVector {
     bool empty() const { return first == last; }
     CItem_Methods& operator[](unsigned long n) { return first[n]; }
 };
-long __fastcall GetMaxItemsPerSlot(long itemType);   // 0x005D99F0
+// NF64 (round 7, q10648): the free stand-in `GetMaxItemsPerSlot` is the static __fastcall CTCInventoryItem::GetMaxNumberOfItems (Ego_r.pdb / FableWin.pdb; the
+//   NF59 self row defines it), declared by engine/CTCInventoryItem.h.
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_GETMAXNUMBEROFITEMS
+#include "engine/CTCInventoryItem.h"
 
 struct CCategory_Retail {
     unsigned char PAssociatedThing[0x8];         // +0x00 CIntelligentPointer<CThing>
@@ -36,7 +40,7 @@ struct CCategory_Retail {
 
 long CCategory_Retail::GetAmountOfItemsContainable(long itemType)
 {
-    long maxPerSlot = GetMaxItemsPerSlot(itemType);
+    long maxPerSlot = CTCInventoryItem::GetMaxNumberOfItems(itemType);
     long slot = GetSlotWithItemsOfType(itemType);
     if (slot == -1)
         return GetFirstEmptySlot() != -1 ? maxPerSlot : 0;

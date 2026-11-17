@@ -1,5 +1,7 @@
 // CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- route input to the front end while the hero's quest-completion screen (component 0xFC) is up: pressed / held / released confirm, back, page-left and page-right actions become front-end events, action 0x48 closes the screen, mouse moves update the cursor and the wheel scrolls the menu
 // Leaf: ProcessInput
+// NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
+//   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00691130, 755 bytes, `ret 8`.
 // Shape: the action-0x47 arm copies the event's mouse position (a C2DVector, floats, inside UInputEventData at +0x0c)
 //   into the front-end manager's MousePosition (+0xB0) through an 8-byte frame temporary that lives across the
@@ -13,6 +15,7 @@
 #include "fable_compiler.h"
 #define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
+#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
 #include "engine/CInputProcessGameBase.h"
 struct CMousePosition {
     float X, Y;
@@ -82,9 +85,6 @@ public:
 };
 class CInputProcessQuestCompletionUI : public CInputProcessGameBase {
 public:
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
     CMousePosition GetMousePosition(const CInputEvent& event) const { return event.Position; }
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };

@@ -25,7 +25,11 @@ struct CItemVector {                                           // std::vector<NI
     void reserve(unsigned long n);                             // 0x005C2013
     void push_back(const CItem& item);                         // 0x005C2996
 };
-bool __fastcall IsConfiscatable(long itemType);                // 0x005D9790
+// NF64 (round 7, q10644): the free stand-in `IsConfiscatable` is the static __fastcall CTCInventoryItem::IsConfiscatable (Ego_r.pdb / FableWin.pdb; the
+//   NF59 self row defines it), declared by engine/CTCInventoryItem.h.
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_ISCONFISCATABLE
+#include "engine/CTCInventoryItem.h"
 
 namespace NInventory {
 
@@ -128,7 +132,7 @@ void NInventory::CTCInventoryBase::ConfiscateItems(CItemVector& items)
     ConfiscatedItems.reserve(ConfiscatedItems.size() + items.size());
     for (unsigned long i = 0; i < items.size(); ++i) {
         CItem& item = items[i];
-        if (IsConfiscatable(item.ItemType)) {
+        if (CTCInventoryItem::IsConfiscatable(item.ItemType)) {
             ConfiscatedItems.push_back(item);
             RemoveItemsOfType(item.ItemType, item.NumberOfItems);
         }

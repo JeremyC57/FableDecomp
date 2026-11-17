@@ -1,5 +1,7 @@
 // CInputProcessQuickAccessMenu::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- while the live hero's quick-access menu (component 0xF6) is open and not closing, translate press/release of actions 0x25..0x28 into front-end UI events 0..3, and close the menu on a press of action 2; handled input is marked
 // Leaf: ProcessInput
+// NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
+//   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690FD0, length 325 bytes, `ret 8`.
 // Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), the component map's LowerBound @ 0x0040F020, the
 //   menu component's IsActive() @ 0x00625930 (+0x0C), IsQuitting() @ 0x00625940 (+0x1C) and Deactivate() @ 0x00625920
@@ -14,6 +16,7 @@
 #include "fable_compiler.h"
 #define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
+#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 class CProcessedInput {
@@ -61,8 +64,6 @@ public:
 };
 class CInputProcessQuickAccessMenu : public CInputProcessGameBase {
 public:
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 

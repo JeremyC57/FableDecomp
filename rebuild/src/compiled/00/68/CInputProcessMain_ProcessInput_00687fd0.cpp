@@ -1,5 +1,7 @@
 // CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a press of action 0x35 in normal play (world load status 0 or 9, nothing pending, no auto-save banner) take a quick photojournal screenshot (without the HUD while Shift is held) and mark the input handled; otherwise make the console on first use, let it see the event unless it is open, and on a non-type-1 event steer the player GUI's mouse cursor for action 0x47
 // Leaf: ProcessInput
+// NF64 (round 7, q10652): the local IsEventButtonPressed redeclaration on the derived class is gone; the calls bind the Ego_r.pdb +
+//   FableWin.pdb protected const CInputProcessGameBase member the header declares (FABLE_RETAIL_INPUTPROCESS_ZTARGET).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -133,7 +135,6 @@ class CInputProcessMain : public CInputProcessGameBase {
 public:
     virtual void v01(); virtual void v02(); virtual void v03();
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);   // slot 4
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     C2DVector GetMouseMovement(const CInputEvent& event);             // 0x00687D20
 };
 

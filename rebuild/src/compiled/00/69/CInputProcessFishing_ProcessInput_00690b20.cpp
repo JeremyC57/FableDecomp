@@ -1,5 +1,7 @@
 // CInputProcessFishing::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press: game action 0x2b / 0x2c tells the hero's fishing component (0xB1) that reel-in / the second fishing button was pressed and marks the input handled; game action 3 (when the hero has component 0xC6) queues game event 0x1a carrying (long 0x17, true)
 // Leaf: ProcessInput
+// NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
+//   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690B20, length 325 bytes, `ret 8` (/GS cookie 0x0139C8A8,
 //   __security_check_cookie @ 0x00BFE9F9).
@@ -17,6 +19,7 @@
 #include "fable_compiler.h"
 #define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
+#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 struct CMemoryBuffer {
@@ -75,7 +78,6 @@ public:
 };
 class CInputProcessFishing : public CInputProcessGameBase {
 public:
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 

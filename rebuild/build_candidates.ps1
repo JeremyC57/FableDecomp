@@ -32343,9 +32343,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00625920'
-        Module = 'CTCCreditsUI'
-        Source = '00/62/CTCCreditsUI_CTCCreditsUIDeactivate_00625920.cpp'
-        TestSource = '00/62/CTCCreditsUI_CTCCreditsUIDeactivate_00625920_test.cpp'
+        Module = 'CTCQuickAccessMenu'
+        Source = '00/62/CTCQuickAccessMenu_Deactivate_00625920.cpp'
+        TestSource = '00/62/CTCQuickAccessMenu_Deactivate_00625920_test.cpp'
         PassPattern = 'DEACTIVATE_TEST_PASS'
     }
     [pscustomobject]@{
@@ -40359,9 +40359,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005ee01a'
-        Module = 'CEngineLandscapeRenderer'
-        Source = '00/5e/CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation_005ee01a.cpp'
-        TestSource = '00/5e/CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation_005ee01a_test.cpp'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_SetAbilityLevelTo_005ee01a.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_SetAbilityLevelTo_005ee01a_test.cpp'
         PassPattern = 'ZSORT_OK'
     }
     [pscustomobject]@{
@@ -84071,9 +84071,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004dd2b1'
-        Module = 'std'
-        Source = '00/4d/std_list_T_004dd2b1_dtor_004dd2b1.cpp'
-        TestSource = '00/4d/std_list_T_004dd2b1_dtor_004dd2b1_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long> >, std::less<long >, std::allocator<std::pair<long const, long> > >'
+        Source = '00/4d/stdRbtree_Rbtree_004dd2b1.cpp'
+        TestSource = '00/4d/stdRbtree_Rbtree_004dd2b1_test.cpp'
         PassPattern = '004dd2b1_TEST PASS'
     }
     [pscustomobject]@{
@@ -93837,9 +93837,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004df86c'
-        Module = 'std::map<T_004df86c>'
-        Source = '00/4d/std_map_T_004df86c_map_004df86c.cpp'
-        TestSource = '00/4d/std_map_T_004df86c_map_004df86c_test.cpp'
+        Module = 'std::map<long, long, std::less<long>, std::allocator<std::pair<long const, long>>>'
+        Source = '00/4d/stdmap_map_004df86c.cpp'
+        TestSource = '00/4d/stdmap_map_004df86c_test.cpp'
         PassPattern = '004df86c_TEST PASS'
     }
     [pscustomobject]@{
@@ -165692,9 +165692,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00579cde'
-        Module = '_unattributed'
-        Source = '00/57/unattributed_SPairLongCSecond00579c35_00579cde.cpp'
-        TestSource = '00/57/unattributed_SPairLongCSecond00579c35_00579cde_test.cpp'
+        Module = 'std::pair<EHeroTrainableStatType const, SExpSpendUndo>'
+        Source = '00/57/stdpair_pair_00579cde.cpp'
+        TestSource = '00/57/stdpair_pair_00579cde_test.cpp'
         PassPattern = '00579cde_TEST PASS'
     }
     [pscustomobject]@{
@@ -165706,16 +165706,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00579e1b'
-        Module = '_unattributed'
-        Source = '00/57/unattributed_SPairLongCSecond00579c35_00579e1b.cpp'
-        TestSource = '00/57/unattributed_SPairLongCSecond00579c35_00579e1b_test.cpp'
+        Module = 'std::pair<EHeroAbility const, SExpSpendUndo>'
+        Source = '00/57/stdpair_pair_00579e1b.cpp'
+        TestSource = '00/57/stdpair_pair_00579e1b_test.cpp'
         PassPattern = '00579e1b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00579e4e'
-        Module = '_unattributed'
-        Source = '00/57/unattributed_SPairLongCSecond00579c35_00579e4e.cpp'
-        TestSource = '00/57/unattributed_SPairLongCSecond00579c35_00579e4e_test.cpp'
+        Module = 'std::pair<EHeroTrainableStatType const, SExpSpendUndo>'
+        Source = '00/57/stdpair_pair_00579e4e.cpp'
+        TestSource = '00/57/stdpair_pair_00579e4e_test.cpp'
         PassPattern = '00579e4e_TEST PASS'
     }
     [pscustomobject]@{
@@ -165727,9 +165727,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bb37d'
-        Module = '_unattributed'
-        Source = '00/5b/unattributed_SPairLongCSecond0043f450_005bb37d.cpp'
-        TestSource = '00/5b/unattributed_SPairLongCSecond0043f450_005bb37d_test.cpp'
+        Module = 'std::pair<long const, CEnginePrimitiveHandle>'
+        Source = '00/5b/stdpair_pair_005bb37d.cpp'
+        TestSource = '00/5b/stdpair_pair_005bb37d_test.cpp'
         PassPattern = '005bb37d_TEST PASS'
     }
     [pscustomobject]@{
@@ -165741,9 +165741,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cd2395'
-        Module = '_unattributed'
-        Source = '00/cd/unattributed_SPairLongCSecond0099ec30_00cd2395.cpp'
-        TestSource = '00/cd/unattributed_SPairLongCSecond0099ec30_00cd2395_test.cpp'
+        Module = 'std::pair<int const, CCharString>'
+        Source = '00/cd/stdpair_pair_00cd2395.cpp'
+        TestSource = '00/cd/stdpair_pair_00cd2395_test.cpp'
         PassPattern = '00cd2395_TEST PASS'
     }
     [pscustomobject]@{
@@ -168764,9 +168764,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00432a35'
-        Module = 'CRetailTree_00432aa8'
-        Source = '00/43/CRetailTree00432aa8_operator_00432a35.cpp'
-        TestSource = '00/43/CRetailTree00432aa8_operator_00432a35_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, std::pair<unsigned long const, unsigned long>, std::_Select1st<std::pair<unsigned long const, unsigned long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, unsigned long> > >'
+        Source = '00/43/stdRbtree_operator_00432a35.cpp'
+        TestSource = '00/43/stdRbtree_operator_00432a35_test.cpp'
         PassPattern = '00432a35_TEST PASS'
     }
     [pscustomobject]@{
@@ -168778,9 +168778,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045c19f'
-        Module = 'CRetailTree_0045c212'
-        Source = '00/45/CRetailTree0045c212_operator_0045c19f.cpp'
-        TestSource = '00/45/CRetailTree0045c212_operator_0045c19f_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, CBlendedParticleEffectSet>, std::_Select1st<std::pair<long const, CBlendedParticleEffectSet> >, std::less<long >, std::allocator<std::pair<long const, CBlendedParticleEffectSet> > >'
+        Source = '00/45/stdRbtree_operator_0045c19f.cpp'
+        TestSource = '00/45/stdRbtree_operator_0045c19f_test.cpp'
         PassPattern = '0045c19f_TEST PASS'
     }
     [pscustomobject]@{
@@ -168813,72 +168813,72 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045e1ae'
-        Module = 'CRetailTree_0045e221'
-        Source = '00/45/CRetailTree0045e221_operator_0045e1ae.cpp'
-        TestSource = '00/45/CRetailTree0045e221_operator_0045e1ae_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionDeedType, std::pair<EOpinionDeedType const, bool>, std::_Select1st<std::pair<EOpinionDeedType const, bool> >, std::less<EOpinionDeedType >, std::allocator<std::pair<EOpinionDeedType const, bool> > >'
+        Source = '00/45/stdRbtree_operator_0045e1ae.cpp'
+        TestSource = '00/45/stdRbtree_operator_0045e1ae_test.cpp'
         PassPattern = '0045e1ae_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045e694'
-        Module = 'CRetailTree_0045e707'
-        Source = '00/45/CRetailTree0045e707_operator_0045e694.cpp'
-        TestSource = '00/45/CRetailTree0045e707_operator_0045e694_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionAttitudeType, std::pair<EOpinionAttitudeType const, bool>, std::_Select1st<std::pair<EOpinionAttitudeType const, bool> >, std::less<EOpinionAttitudeType >, std::allocator<std::pair<EOpinionAttitudeType const, bool> > >'
+        Source = '00/45/stdRbtree_operator_0045e694.cpp'
+        TestSource = '00/45/stdRbtree_operator_0045e694_test.cpp'
         PassPattern = '0045e694_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045f03a'
-        Module = 'CRetailTree_0045f0ad'
-        Source = '00/45/CRetailTree0045f0ad_operator_0045f03a.cpp'
-        TestSource = '00/45/CRetailTree0045f0ad_operator_0045f03a_test.cpp'
+        Module = 'std::_Rb_tree<EOpinion, std::pair<EOpinion const, float>, std::_Select1st<std::pair<EOpinion const, float> >, std::less<EOpinion >, std::allocator<std::pair<EOpinion const, float> > >'
+        Source = '00/45/stdRbtree_operator_0045f03a.cpp'
+        TestSource = '00/45/stdRbtree_operator_0045f03a_test.cpp'
         PassPattern = '0045f03a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046139b'
-        Module = 'CRetailTree_0046140e'
-        Source = '00/46/CRetailTree0046140e_operator_0046139b.cpp'
-        TestSource = '00/46/CRetailTree0046140e_operator_0046139b_test.cpp'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, float>, std::_Select1st<std::pair<EObjectAugmentationType const, float> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, float> > >'
+        Source = '00/46/stdRbtree_operator_0046139b.cpp'
+        TestSource = '00/46/stdRbtree_operator_0046139b_test.cpp'
         PassPattern = '0046139b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004614c0'
-        Module = 'CRetailTree_00461533'
-        Source = '00/46/CRetailTree00461533_operator_004614c0.cpp'
-        TestSource = '00/46/CRetailTree00461533_operator_004614c0_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >'
+        Source = '00/46/stdRbtree_operator_004614c0.cpp'
+        TestSource = '00/46/stdRbtree_operator_004614c0_test.cpp'
         PassPattern = '004614c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00461bf0'
-        Module = 'CRetailTree_00461c63'
-        Source = '00/46/CRetailTree00461c63_operator_00461bf0.cpp'
-        TestSource = '00/46/CRetailTree00461c63_operator_00461bf0_test.cpp'
+        Module = 'std::_Rb_tree<EWeaponClass, EWeaponClass, std::_Identity<EWeaponClass >, std::less<EWeaponClass >, std::allocator<EWeaponClass > >'
+        Source = '00/46/stdRbtree_operator_00461bf0.cpp'
+        TestSource = '00/46/stdRbtree_operator_00461bf0_test.cpp'
         PassPattern = '00461bf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004621e9'
-        Module = 'CRetailTree_0046225c'
-        Source = '00/46/CRetailTree0046225c_operator_004621e9.cpp'
-        TestSource = '00/46/CRetailTree0046225c_operator_004621e9_test.cpp'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, long>, std::_Select1st<std::pair<EHeroTrainableStatType const, long> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, long> > >'
+        Source = '00/46/stdRbtree_operator_004621e9.cpp'
+        TestSource = '00/46/stdRbtree_operator_004621e9_test.cpp'
         PassPattern = '004621e9_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046230e'
-        Module = 'CRetailTree_00462381'
-        Source = '00/46/CRetailTree00462381_operator_0046230e.cpp'
-        TestSource = '00/46/CRetailTree00462381_operator_0046230e_test.cpp'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, float>, std::_Select1st<std::pair<EHeroTrainableStatType const, float> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, float> > >'
+        Source = '00/46/stdRbtree_operator_0046230e.cpp'
+        TestSource = '00/46/stdRbtree_operator_0046230e_test.cpp'
         PassPattern = '0046230e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00462fe4'
-        Module = 'CRetailTree_00463057'
-        Source = '00/46/CRetailTree00463057_operator_00462fe4.cpp'
-        TestSource = '00/46/CRetailTree00463057_operator_00462fe4_test.cpp'
+        Module = 'std::_Rb_tree<EWorldMapNameGraphic, std::pair<EWorldMapNameGraphic const, unsigned long>, std::_Select1st<std::pair<EWorldMapNameGraphic const, unsigned long> >, std::less<EWorldMapNameGraphic >, std::allocator<std::pair<EWorldMapNameGraphic const, unsigned long> > >'
+        Source = '00/46/stdRbtree_operator_00462fe4.cpp'
+        TestSource = '00/46/stdRbtree_operator_00462fe4_test.cpp'
         PassPattern = '00462fe4_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00466152'
-        Module = 'CRetailTree_004661c5'
-        Source = '00/46/CRetailTree004661c5_operator_00466152.cpp'
-        TestSource = '00/46/CRetailTree004661c5_operator_00466152_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, CCharString>, std::_Select1st<std::pair<long const, CCharString> >, std::less<long >, std::allocator<std::pair<long const, CCharString> > >'
+        Source = '00/46/stdRbtree_operator_00466152.cpp'
+        TestSource = '00/46/stdRbtree_operator_00466152_test.cpp'
         PassPattern = '00466152_TEST PASS'
     }
     [pscustomobject]@{
@@ -168890,9 +168890,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e4326'
-        Module = 'CRetailTree_004e4399'
-        Source = '00/4e/CRetailTree004e4399_operator_004e4326.cpp'
-        TestSource = '00/4e/CRetailTree004e4399_operator_004e4326_test.cpp'
+        Module = 'std::_Rb_tree<EQuestCardPrerequisite, std::pair<EQuestCardPrerequisite const, long>, std::_Select1st<std::pair<EQuestCardPrerequisite const, long> >, std::less<EQuestCardPrerequisite >, std::allocator<std::pair<EQuestCardPrerequisite const, long> > >'
+        Source = '00/4e/stdRbtree_operator_004e4326.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004e4326_test.cpp'
         PassPattern = '004e4326_TEST PASS'
     }
     [pscustomobject]@{
@@ -168904,58 +168904,58 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e4c16'
-        Module = 'CRetailTree_004e4c89'
-        Source = '00/4e/CRetailTree004e4c89_operator_004e4c16.cpp'
-        TestSource = '00/4e/CRetailTree004e4c89_operator_004e4c16_test.cpp'
+        Module = 'std::_Rb_tree<EObjectAugmentationType, std::pair<EObjectAugmentationType const, long>, std::_Select1st<std::pair<EObjectAugmentationType const, long> >, std::less<EObjectAugmentationType >, std::allocator<std::pair<EObjectAugmentationType const, long> > >'
+        Source = '00/4e/stdRbtree_operator_004e4c16.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004e4c16_test.cpp'
         PassPattern = '004e4c16_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e4dc7'
-        Module = 'CRetailTree_004e4e3a'
-        Source = '00/4e/CRetailTree004e4e3a_operator_004e4dc7.cpp'
-        TestSource = '00/4e/CRetailTree004e4e3a_operator_004e4dc7_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long> >, std::less<long >, std::allocator<std::pair<long const, long> > >'
+        Source = '00/4e/stdRbtree_operator_004e4dc7.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004e4dc7_test.cpp'
         PassPattern = '004e4dc7_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e4eec'
-        Module = 'CRetailTree_004e4f5f'
-        Source = '00/4e/CRetailTree004e4f5f_operator_004e4eec.cpp'
-        TestSource = '00/4e/CRetailTree004e4f5f_operator_004e4eec_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, float>, std::_Select1st<std::pair<long const, float> >, std::less<long >, std::allocator<std::pair<long const, float> > >'
+        Source = '00/4e/stdRbtree_operator_004e4eec.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004e4eec_test.cpp'
         PassPattern = '004e4eec_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e54cc'
-        Module = 'CRetailTree_004e553f'
-        Source = '00/4e/CRetailTree004e553f_operator_004e54cc.cpp'
-        TestSource = '00/4e/CRetailTree004e553f_operator_004e54cc_test.cpp'
+        Module = 'std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, long>, std::_Select1st<std::pair<EClothingSuitPart const, long> >, std::less<EClothingSuitPart >, std::allocator<std::pair<EClothingSuitPart const, long> > >'
+        Source = '00/4e/stdRbtree_operator_004e54cc.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004e54cc_test.cpp'
         PassPattern = '004e54cc_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e5878'
-        Module = 'CRetailTree_004e58eb'
-        Source = '00/4e/CRetailTree004e58eb_operator_004e5878.cpp'
-        TestSource = '00/4e/CRetailTree004e58eb_operator_004e5878_test.cpp'
+        Module = 'std::_Rb_tree<CDefString, std::pair<CDefString const, long>, std::_Select1st<std::pair<CDefString const, long> >, CCompareDefString<long>, std::allocator<std::pair<CDefString const, long> > >'
+        Source = '00/4e/stdRbtree_operator_004e5878.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004e5878_test.cpp'
         PassPattern = '004e5878_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e610d'
-        Module = 'CRetailTree_004e6180'
-        Source = '00/4e/CRetailTree004e6180_operator_004e610d.cpp'
-        TestSource = '00/4e/CRetailTree004e6180_operator_004e610d_test.cpp'
+        Module = 'std::_Rb_tree<EIdleStateGroup, std::pair<EIdleStateGroup const, long>, std::_Select1st<std::pair<EIdleStateGroup const, long> >, std::less<EIdleStateGroup >, std::allocator<std::pair<EIdleStateGroup const, long> > >'
+        Source = '00/4e/stdRbtree_operator_004e610d.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004e610d_test.cpp'
         PassPattern = '004e610d_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e6520'
-        Module = 'CRetailTree_004e6593'
-        Source = '00/4e/CRetailTree004e6593_operator_004e6520.cpp'
-        TestSource = '00/4e/CRetailTree004e6593_operator_004e6520_test.cpp'
+        Module = 'std::_Rb_tree<EQuakeStrength, std::pair<EQuakeStrength const, float>, std::_Select1st<std::pair<EQuakeStrength const, float> >, std::less<EQuakeStrength >, std::allocator<std::pair<EQuakeStrength const, float> > >'
+        Source = '00/4e/stdRbtree_operator_004e6520.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004e6520_test.cpp'
         PassPattern = '004e6520_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e6645'
-        Module = 'CRetailTree_004e66b8'
-        Source = '00/4e/CRetailTree004e66b8_operator_004e6645.cpp'
-        TestSource = '00/4e/CRetailTree004e66b8_operator_004e6645_test.cpp'
+        Module = 'std::_Rb_tree<EQuakeLength, std::pair<EQuakeLength const, float>, std::_Select1st<std::pair<EQuakeLength const, float> >, std::less<EQuakeLength >, std::allocator<std::pair<EQuakeLength const, float> > >'
+        Source = '00/4e/stdRbtree_operator_004e6645.cpp'
+        TestSource = '00/4e/stdRbtree_operator_004e6645_test.cpp'
         PassPattern = '004e6645_TEST PASS'
     }
     [pscustomobject]@{
@@ -277244,8 +277244,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00403eb0'
         Module = 'CPersistTraits<bool>'
-        Source = '00/40/CPersistTraitsbool_TransferBinaryIn_00403eb0.cpp'
-        TestSource = '00/40/CPersistTraitsbool_TransferBinaryIn_00403eb0_test.cpp'
+        Source = '00/40/CPersistTraits_TransferBinaryIn_00403eb0.cpp'
+        TestSource = '00/40/CPersistTraits_TransferBinaryIn_00403eb0_test.cpp'
         PassPattern = '00403eb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -287384,8 +287384,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00464ace'
         Module = 'std::vector<unsigned long>'
-        Source = '00/46/stdvectorunsignedlong_Minsertoverflow_00464ace.cpp'
-        TestSource = '00/46/stdvectorunsignedlong_Minsertoverflow_00464ace_test.cpp'
+        Source = '00/46/stdvector_Minsertoverflow_00464ace.cpp'
+        TestSource = '00/46/stdvector_Minsertoverflow_00464ace_test.cpp'
         PassPattern = '00464ace_TEST PASS'
     }
     [pscustomobject]@{
@@ -321899,14 +321899,14 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00579114'
-        Module = 'std::_Rb_tree'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroTrainableStatType const, SExpSpendUndo> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, SExpSpendUndo> > >'
         Source = '00/57/stdRbtree_Mfind_00579114.cpp'
         TestSource = '00/57/stdRbtree_Mfind_00579114_test.cpp'
         PassPattern = '00579114_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0057914c'
-        Module = 'std::_Rb_tree'
+        Module = 'std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroAbility const, SExpSpendUndo> >, std::less<EHeroAbility >, std::allocator<std::pair<EHeroAbility const, SExpSpendUndo> > >'
         Source = '00/57/stdRbtree_Mfind_0057914c.cpp'
         TestSource = '00/57/stdRbtree_Mfind_0057914c_test.cpp'
         PassPattern = '0057914c_TEST PASS'

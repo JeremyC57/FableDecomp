@@ -1,5 +1,7 @@
 // CInputProcessProjectileTargetingAnalogueZoom::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- for a live hero: the analogue action 0x54 zooms the projectile-targeting camera by its Y value / 255, presses of actions 0x6e / 0x6f zoom by +-196/255; a zoom marks the input handled
 // Leaf: ProcessInput
+// NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
+//   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068F320, length 323 bytes, `ret 8`.
 // Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), CInputProcessGameBase::GetEventGameActionVector(long,
 //   const CInputEvent&, C2DVector*) @ 0x00687D00 (landed name), IsEventGameAction @ 0x00687CF0, IsEventButtonPressed
@@ -14,6 +16,7 @@
 #include "fable_compiler.h"
 #define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
+#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
 #include "engine/CInputProcessGameBase.h"
 class C2DVector { public:
     float x, y;
@@ -66,7 +69,6 @@ public:
 };
 class CInputProcessProjectileTargetingAnalogueZoom : public CInputProcessGameBase {
 public:
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 

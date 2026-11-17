@@ -11,7 +11,11 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CThing;
-long __fastcall GetReplacementItemForType(long itemType);      // 0x005D99B0
+// NF64 (round 7, q10647): the free stand-in `GetReplacementItemForType` is the static __fastcall CTCInventoryItem::GetItemToSelectUponRemoval (Ego_r.pdb / FableWin.pdb; the
+//   NF59 self row defines it), declared by engine/CTCInventoryItem.h.
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_GETITEMTOSELECTUPONREMOVAL
+#include "engine/CTCInventoryItem.h"
 namespace NInventory {
 class CTCInventoryBase { public:                                // vptr +0x000
     CThing* ParentThing;                                        // +0x004
@@ -38,7 +42,7 @@ void CTCInventoryClothing::RemoveItemFromInventory(long itemType, long count)
     NInventory::CTCInventoryBase::RemoveItemFromInventory(itemType, count);
     if (!Dying) {
         if (wasSelected)
-            SelectItemWithDefIndex(GetReplacementItemForType(itemType));
+            SelectItemWithDefIndex(CTCInventoryItem::GetItemToSelectUponRemoval(itemType));
         SetThingAsWearingSelectedClothes(*ParentThing);
     }
     UseMannequin = useMannequin;

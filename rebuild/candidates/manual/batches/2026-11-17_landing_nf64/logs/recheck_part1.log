@@ -1,0 +1,116 @@
+addr       parity           behav  name
+00432a35   WARN RELOC_NAME: ?clear@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAEXXZ -> 00430046 labelled 'CTCCarryable::OnKill'
+00432a35   RELOCATION_MATCH PASS   operator=
+0045e694   RELOCATION_MATCH PASS   operator=
+004614c0   RELOCATION_MATCH PASS   operator=
+0046230e   RELOCATION_MATCH PASS   operator=
+00466152   RELOCATION_MATCH PASS   operator=
+004e27e0   WARN SHARED_HEADER_AVAILABLE CResource
+004e27e0   WARN RELOC_NAME: ??1CContainer_004dd42f@@QAE@XZ -> 004dd42f labelled '_global::StdList_Dtor_004dd42f'
+004e27e0   RELOCATION_MATCH PASS   ~CDefPointeeBase_Derived_004e27e0
+004e4dc7   RELOCATION_MATCH PASS   operator=
+004e5878   RELOCATION_MATCH PASS   operator=
+004e6645   RELOCATION_MATCH PASS   operator=
+0057914c   MATCH            PASS   _M_find<EHeroAbility>
+00579e4e   WARN STANDIN_LEAF ??$?0W4EHeroTrainableStatType@@USExpSpendUndo@@@?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@QAE@ABU?$pair@W4EHeroTrainableStatType@@USExpSpendUndo@@@1@@Z (catalog std::pair<EHeroTrainableStatType const, SExpSpendUndo>::pair<EHeroTrainableStatType,SExpSpendUndo>; names another function)
+00579e4e   RELOCATION_MATCH PASS   pair<EHeroTrainableStatType,SExpSpendUndo>
+005b4340   RELOCATION_MATCH PASS   RemoveItemFromInventory
+005be028   WARN SHARED_HEADER_AVAILABLE CThing
+005be028   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+005be028   WARN SHARED_HEADER_AVAILABLE CTCHero
+005be028   WARN RELOC_NAME: ?IsAugmentation_005d9830@@YI_NJ@Z -> 005d9830 labelled 'CTCInventoryItem::IsExpression'
+005be028   WARN RELOC_NAME: ?IsTutorialSubDefItem@@YI_NJ@Z -> 005d98b0 labelled 'CTCInventoryItem::IsStockItem'
+005be028   RELOCATION_MATCH PASS   OnItemAdded
+005bfb01   RELOCATION_MATCH PASS   ConfiscateItems
+005ee01a   MATCH            PASS   SetAbilityLevelTo
+006882f0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+006882f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+006882f0   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+006882f0   RELOCATION_MATCH PASS   ProcessInput
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CManager
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CThing
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068b2e0   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0068b2e0   RELOCATION_MATCH PASS   ProcessInput
+0068c880   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068c880   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068c880   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+0068c880   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0068c880   WARN RELOC_NAME: ?GetKey_00a03b40@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+0068c880   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0068c880   WARN RELOC_NAME: ?CanCancel@CPlayerGuiQuestion@@QAE_NXZ -> 0048db98 labelled '_global::Forward_operator___member0x6c_0048db98'
+0068c880   RELOCATION_MATCH PASS   ProcessInput
+00690830   WARN SHARED_HEADER_AVAILABLE C2DVector
+00690830   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00690830   WARN SHARED_HEADER_AVAILABLE CManager
+00690830   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+00690830   WARN SHARED_HEADER_AVAILABLE CThing
+00690830   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690830   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00690830   RELOCATION_MATCH PASS   ProcessInput
+00690fd0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690fd0   WARN SHARED_HEADER_AVAILABLE CManager
+00690fd0   WARN SHARED_HEADER_AVAILABLE CThing
+00690fd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690fd0   RELOCATION_MATCH PASS   ProcessInput
+00691870   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00691870   WARN SHARED_HEADER_AVAILABLE C2DVector
+00691870   WARN SHARED_HEADER_AVAILABLE CThing
+00691870   WARN SHARED_HEADER_AVAILABLE CPlayer
+00691870   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00691870   RELOCATION_MATCH PASS   ProcessInput
+00745c70   WARN SHARED_HEADER_AVAILABLE CThing
+00745c70   WARN SHARED_HEADER_AVAILABLE CTCCombat
+00745c70   WARN SHARED_HEADER_AVAILABLE CPlayer
+00745c70   WARN SHARED_HEADER_AVAILABLE CWorld
+00745c70   WARN SHARED_HEADER_AVAILABLE CPerceivedThingDef
+00745c70   WARN SHARED_HEADER_AVAILABLE CTCBase
+00745c70   RELOCATION_MATCH PASS   FrameUpdate
+00801be0   WARN SHARED_HEADER_AVAILABLE CWorld
+00801be0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00801be0   RELOCATION_MATCH PASS   IsPreferredIdle
+00979e90   WARN SHARED_HEADER_AVAILABLE CThing
+00979e90   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00979e90   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureTakeCover
+00979e90   RELOCATION_MATCH PASS   IsStillRunnable
+00a792e0   WARN SHARED_HEADER_AVAILABLE CArray
+00a792e0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a792e0   WARN RELOC_NAME: ?clear@CNavConnectorNodeMap@@QAEXXZ -> 00a83fd0 labelled 'CVectorMap::DeallocateMemory'
+00a792e0   RELOCATION_MATCH PASS   ClearNodes
+00abd080   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00abd080   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk
+00abd080   RELOCATION_MATCH PASS   C3DMeshFilePrimitiveChunk
+00cd2395   RELOCATION_MATCH PASS   pair
+
+WINS: 27
+  00432a35 RELOCATION_MATCH std::_Rb_tree<unsigned long, std::pair<unsigned long const, unsigned long>, std::_Select1st<std::pair<unsigned long const, unsigned long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, unsigned long> > >::??4?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAEAAV01@ABV01@@Z
+  0045e694 RELOCATION_MATCH std::_Rb_tree<EOpinionAttitudeType, std::pair<EOpinionAttitudeType const, bool>, std::_Select1st<std::pair<EOpinionAttitudeType const, bool> >, std::less<EOpinionAttitudeType >, std::allocator<std::pair<EOpinionAttitudeType const, bool> > >::??4?$_Rb_tree@W4EOpinionAttitudeType@@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@@3@U?$less@W4EOpinionAttitudeType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  004614c0 RELOCATION_MATCH std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float> >, std::less<EDamageAttribute >, std::allocator<std::pair<EDamageAttribute const, float> > >::??4?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  0046230e RELOCATION_MATCH std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, float>, std::_Select1st<std::pair<EHeroTrainableStatType const, float> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, float> > >::??4?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  00466152 RELOCATION_MATCH std::_Rb_tree<long, std::pair<long const, CCharString>, std::_Select1st<std::pair<long const, CCharString> >, std::less<long >, std::allocator<std::pair<long const, CCharString> > >::??4?$_Rb_tree@JU?$pair@$$CBJVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBJVCCharString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCCharString@@@std@@@2@@std@@QAEAAV01@ABV01@@Z
+  004e27e0 RELOCATION_MATCH CDefPointeeBase_Derived_004e27e0::??1CDefPointeeBase_Derived_004e27e0@@UAE@XZ
+  004e4dc7 RELOCATION_MATCH std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long> >, std::less<long >, std::allocator<std::pair<long const, long> > >::??4?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAEAAV01@ABV01@@Z
+  004e5878 RELOCATION_MATCH std::_Rb_tree<CDefString, std::pair<CDefString const, long>, std::_Select1st<std::pair<CDefString const, long> >, CCompareDefString<long>, std::allocator<std::pair<CDefString const, long> > >::??4?$_Rb_tree@VCDefString@@U?$pair@$$CBVCDefString@@J@std@@U?$_Select1st@U?$pair@$$CBVCDefString@@J@std@@@3@V?$CCompareDefString@J@@V?$allocator@U?$pair@$$CBVCDefString@@J@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  004e6645 RELOCATION_MATCH std::_Rb_tree<EQuakeLength, std::pair<EQuakeLength const, float>, std::_Select1st<std::pair<EQuakeLength const, float> >, std::less<EQuakeLength >, std::allocator<std::pair<EQuakeLength const, float> > >::??4?$_Rb_tree@W4EQuakeLength@@U?$pair@$$CBW4EQuakeLength@@M@std@@U?$_Select1st@U?$pair@$$CBW4EQuakeLength@@M@std@@@3@U?$less@W4EQuakeLength@@@3@V?$allocator@U?$pair@$$CBW4EQuakeLength@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z
+  0057914c MATCH std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroAbility const, SExpSpendUndo> >, std::less<EHeroAbility >, std::allocator<std::pair<EHeroAbility const, SExpSpendUndo> > >::??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z
+  00579e4e RELOCATION_MATCH std::pair<EHeroTrainableStatType const, SExpSpendUndo>::??$?0W4EHeroTrainableStatType@@USExpSpendUndo@@@?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@QAE@ABU?$pair@W4EHeroTrainableStatType@@USExpSpendUndo@@@1@@Z
+  005b4340 RELOCATION_MATCH CTCInventoryClothing::RemoveItemFromInventory
+  005be028 RELOCATION_MATCH NInventory::CTCInventoryBase::OnItemAdded
+  005bfb01 RELOCATION_MATCH NInventory::CTCInventoryBase::?ConfiscateItems@CTCInventoryBase@NInventory@@MAEX
+  005ee01a MATCH CTCInventoryAbilities::?SetAbilityLevelTo@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J@Z
+  006882f0 RELOCATION_MATCH CInputProcessControlCreatureActivateZTargetOnPress::ProcessInput
+  0068b2e0 RELOCATION_MATCH CInputProcessInventoryExperienceScreen::ProcessInput
+  0068c880 RELOCATION_MATCH CInputProcessYesNoQuestion::ProcessInput
+  00690830 RELOCATION_MATCH CInputProcessTavernGame::ProcessInput
+  00690fd0 RELOCATION_MATCH CInputProcessQuickAccessMenu::ProcessInput
+  00691870 RELOCATION_MATCH CInputProcessFireheartMinigame::ProcessInput
+  00745c70 RELOCATION_MATCH CTCPerceiveThing::FrameUpdate
+  00801be0 RELOCATION_MATCH CTCIdleScheduler::IsPreferredIdle
+  00979e90 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::IsStillRunnable
+  00a792e0 RELOCATION_MATCH CNavQuadTree::?ClearNodes@CNavQuadTree@@AAEXXZ
+  00abd080 RELOCATION_MATCH C3DMeshFilePrimitiveChunk::C3DMeshFilePrimitiveChunk
+  00cd2395 RELOCATION_MATCH std::pair<int const, CCharString>::??0?$pair@$$CBHVCCharString@@@std@@QAE@ABU01@@Z

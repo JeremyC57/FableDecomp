@@ -11,6 +11,10 @@
 // _M_insert_overflow (the const-ref taker of the pushed value).
 // Layout: Ego_r.pdb FaceGroupsList +0x10 (CArray<unsigned long>, retail 12-byte {start, finish, end_of_storage}).
 // Leaf: ReadFromFile@C3DMeshFileSmoothingGroupsChunk
+// NF64 (round 7, q10669): the local CArray<T> stand-in (and its placeholder overflow body) replaced by the shared engine/CArray.h
+//   CArray<unsigned long> (Ego_r.pdb FaceGroupsList) with FABLE_RETAIL_STLP_VECTOR (reserve declared): push_back binds
+//   ?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z (0x00464ACE) and reserve
+//   ?reserve@?$vector@KV?$allocator@K@std@@@std@@QAEXI@Z (0x009B4030).
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);   // 0x00BFEAE6
@@ -53,43 +57,13 @@ inline void* __copy_trivial(const void* first, const void* last, void* result)
         ((char*)memmove(result, first, ((const char*)last - (const char*)first))) + ((const char*)last - (const char*)first);
 }
 
-template <class T> class CArray { public:                 // retail STLport vector layout
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    void reserve(unsigned int n);                  // 0x009B4030
-    void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned int fillLength, bool atEnd);   // 0x00464ACE
-    T* erase(T* first, T* last)
-    {
-        T* i = (T*)__copy_trivial(last, _M_finish, first);
-        _M_finish = i;
-        return first;
-    }
-    void clear() { erase(_M_start, _M_finish); }
-    void push_back(const T& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            if (_M_finish)
-                *_M_finish = x;
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
-    }
-};
-// Same-TU stand-in for _M_insert_overflow 0x00464ACE (not the retail body).
-void InsertOverflow_00464ace(void* v, void* position, const void* x, unsigned int fill);
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) void CArray<T>::_M_insert_overflow(T* position, const T& x, const __true_type&, unsigned int fillLength, bool atEnd)
-{
-    InsertOverflow_00464ace(this, position, &x, fillLength);
-}
-#pragma auto_inline(on)
+#define FABLE_RETAIL_STLP_VECTOR   // vector::reserve declared (out of line in retail)
+#include "engine/CArray.h"
 
 class C3DMeshFileSmoothingGroupsChunk { public:
     virtual void v0();
     unsigned char _base_body[0x0c];        // CChunkedFileChunk: ChunkType[5] + pad + Parent
-    CArray<unsigned long> FaceGroupsList;  // +0x10
+    CArray<unsigned long> FaceGroupsList;  // +0x10 (Ego_r.pdb CArray<unsigned long>; the shared engine/CArray.h)
     virtual void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);
 };
 

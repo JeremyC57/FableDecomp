@@ -3,6 +3,9 @@
 // engine/C3DMeshFilePrimitiveChunk.h and CChunkedFileSuperChunk.h use donor 16-byte vectors:
 // MaterialIndices +0x34 vs retail +0x2c. The retail 12-byte vector/base model below agrees
 // with landed constructor 0x00ABD080 and WriteToFile 0x00ABC390. Shared chunk/stream storage headers are reused.
+// NF64 (round 7, q10639): the local CArray<T> stand-in replaced by the shared engine/CArray.h (CArray<T> : std::vector<T>; Ego_r.pdb
+//   MaterialIndices is CArray<long>); the inherited resize is kept out of line (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE) and binds
+//   ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0 (was CArray<int>::Resize).
 #include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CInputStreamAccess   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
@@ -25,11 +28,8 @@ struct CInputStreamAccess : CDataInputStream {
  }
  FABLE_FORCEINLINE int ReadLong() {int value;Read(&value,4);return value;}
 };
-template<class T> class CArray { public:
- T* Begin; T* End; T* EndOfStorage;
- void Resize(unsigned long,const T&); // material-index specialization 0x004428F0
- T& operator[](long i) {return Begin[i];}
-};
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "engine/CArray.h"
 struct CCountedChunk {void* Object;void* Count;};
 class CChunkedFileLoader;
 class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
@@ -39,7 +39,7 @@ class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
  void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&); // 0x00AA8830
 };
 class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk { public:
- CArray<int> MaterialIndices;
+ CArray<long> MaterialIndices;   // Ego_r.pdb CArray<long>
  void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
 };
 void C3DMeshFilePrimitiveChunk::ReadFromFile(CDataInputStream& input,unsigned long chunkSize,CChunkedFileLoader& loader) {
@@ -48,10 +48,10 @@ void C3DMeshFilePrimitiveChunk::ReadFromFile(CDataInputStream& input,unsigned lo
  int index=in.ReadLong();
  if(index!=-1 && (index&0x80000000)!=0) {
   int count=index&0x7fffffff;
-  MaterialIndices.Resize(count,0);
+  MaterialIndices.resize(count,0);
   for(int i=0;i<count;++i) MaterialIndices[i]=in.ReadLong();
  } else {
-  MaterialIndices.Resize(1,0);
+  MaterialIndices.resize(1,0);
   MaterialIndices[0]=index;
  }
  unsigned long headerSize=in.GetPosition()-start;

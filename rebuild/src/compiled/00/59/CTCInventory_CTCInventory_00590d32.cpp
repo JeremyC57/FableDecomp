@@ -4,9 +4,13 @@
 // three opinion-expression vectors to six entries
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00590D32, 471 bytes, `ret 4` (frame pointer, `leave`).
 // Leaf: ??0CTCInventory
+// NF64 (round 7, q10639): the four resized members (QuickAccessItems, NumberOfCSOpinionExpressions, LastCSOpinionExpression,
+//   LastButOneCSOpinionExpression; Ego_r.pdb vector<long>) retyped from the local CPODVector<unsigned long> to stlport/fable_containers.h
+//   std::vector<long> (resize kept out of line, FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE): the calls bind
+//   ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0. The other local stand-ins are left as landed.
 // Callees: NInventory::CTCInventoryBase::CTCInventoryBase(CThing*) @ 0x005BFF07, NHeroInformationScreens::CBase::CBase @ 0x0066E734,
 // list<CEditBox*>(const allocator&) @ 0x005931DA, map<long, CComponent*>() @ 0x00593ED0 (x2), CTCBase::PeekPlayerManager 0x00686D50 -> CPlayerManager::GetMainPlayer() const 0x00449960 ->
-// +0x0C -> the quick-access (0x00445950) / context-sensitive (0x00445960) slot counts, vector<unsigned>::resize(n, const T&)
+// +0x0C -> the quick-access (0x00445950) / context-sensitive (0x00445960) slot counts, vector<long>::resize(n, const long&)
 // @ 0x004428F0 (x4), the handle vectors' 0x00443F90 (x2), 0x004433F0 and 0x00594DF4 (one-argument sizing calls).
 // Layout: as the landed destructor 0x00589C55 (Ego_r.pdb CTCInventory at retail offsets); vtables 0x01250DE4 / 0x01250DD0.
 // Shape: size TU with a frame pointer; the list's default allocator tag lives in the high byte of the dead `owner` slot
@@ -60,9 +64,11 @@ template<class T> struct CPODVector {              // STLport vector of a trivia
     CAllocProxy<T, CAllocator<T> > _M_end_of_storage;
     explicit CPODVector(const CAllocator<T>& a = CAllocator<T>()) : _M_start(0), _M_finish(0), _M_end_of_storage(a, (T*)0) { }
     ~CPODVector();
-    void resize(unsigned long n, const T& x);                 // 0x004428F0 (vector<unsigned int>)
+    void resize(unsigned long n, const T& x);                 // unused now (the four resized members are std::vector<long>)
     void reserve(unsigned long n);                            // 0x004433F0 (long) / 0x00594DF4 (fade times)
 };
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
 struct CRetailHandleVector {                                  // vector<CEnginePrimitiveHandle>
     void* m_pFirst;
     void* m_pLast;
@@ -97,7 +103,7 @@ public:
     NUISystem::CComponent*   PComponentSlotToSwap;            // +0x13c
     long                     ScreenToShortcut;                // +0x140
     CEditBoxList             EditBoxes;                       // +0x144
-    CPODVector<unsigned long> QuickAccessItems;               // +0x148
+    std::vector<long>         QuickAccessItems;               // +0x148 (Ego_r.pdb vector<long>)
     CPODVector<long>         ContextSensitiveItems;           // +0x154
     CPODVector<CFadeInFadeOutBase> ContextSensitiveFadeTimes; // +0x160
     CRetailHandleVector      InventoryMainPrimitiveHandles;   // +0x16c
@@ -113,9 +119,9 @@ public:
     bool                     QuickAccessFlashState;           // +0x1ce
     long                     QuickAccessFlashTimer;           // +0x1d0
     bool                     ContextSensitiveUpdate;          // +0x1d4
-    CPODVector<unsigned long> NumberOfCSOpinionExpressions;   // +0x1d8
-    CPODVector<unsigned long> LastCSOpinionExpression;        // +0x1e4
-    CPODVector<unsigned long> LastButOneCSOpinionExpression;  // +0x1f0
+    std::vector<long>         NumberOfCSOpinionExpressions;   // +0x1d8 (Ego_r.pdb vector<long>)
+    std::vector<long>         LastCSOpinionExpression;        // +0x1e4 (Ego_r.pdb vector<long>)
+    std::vector<long>         LastButOneCSOpinionExpression;  // +0x1f0 (Ego_r.pdb vector<long>)
     CComponentByLongMap      ItemsMenuEntries;                // +0x1fc
     CComponentByLongMap      AssignedIcons;                   // +0x208
     NUISystem::CComponent*   PMouse_Pointer;                  // +0x214

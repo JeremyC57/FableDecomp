@@ -12,6 +12,9 @@
 // CChunkedFileSuperChunk base is 0x34 bytes; in retail TLC it is 0x2c (every derived member sits 8 bytes
 // lower, and the vtable slots are the same).  The bytes decide, so this file models the retail layout
 // with the PDB member names and says so here instead of including the disagreeing header.
+// NF64 (round 7, q10639): the local allocator / _STLP_alloc_proxy / _Vector_base / CArray stand-ins replaced by the shared engine/CArray.h
+//   (CArray<T> : std::vector<T>); the inherited resize is kept out of line (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE) and binds
+//   ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0 (was CArray<long>::resize).
 class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default
     CCharString(const char* text, long length);         // 0x0099EBF0 (-1 = strlen)
@@ -57,32 +60,11 @@ class CChunkedFileSuperChunk { public:      // RTTI direct base of the mesh/anim
 
 // ------------------------------------------------------------------------------------------------
 
-template <class T> struct allocator { allocator() {} };
-
-template <class T>
-struct _STLP_alloc_proxy {
-    T* _M_data;
-    _STLP_alloc_proxy(const allocator<T>&, T* p) : _M_data(p) {}
-};
-
-template <class T>
-struct _Vector_base {
-    T* _M_start;
-    T* _M_finish;
-    _STLP_alloc_proxy<T> _M_end_of_storage;
-    _Vector_base(const allocator<T>& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, 0) {}
-};
-
-template <class T>
-class CArray : public _Vector_base<T> { public:           // retail CArray = STLport vector
-    CArray() : _Vector_base<T>(allocator<T>()) {}
-    T* begin() { return this->_M_start; }
-    T& operator[](unsigned long n) { return *(begin() + n); }
-    void resize(unsigned long n, const T& value = T());   // 0x004428F0
-};
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "engine/CArray.h"
 
 class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk { public:
-    CArray<long> MaterialIndices;   // +0x2c (PDB +0x34)   sizeof == 0x38
+    CArray<long> MaterialIndices;   // +0x2c (PDB +0x34; Ego_r.pdb CArray<long>, the shared engine/CArray.h)   sizeof == 0x38
     C3DMeshFilePrimitiveChunk() : CChunkedFileSuperChunk("PRIM")
     {
         MaterialIndices.resize(1);

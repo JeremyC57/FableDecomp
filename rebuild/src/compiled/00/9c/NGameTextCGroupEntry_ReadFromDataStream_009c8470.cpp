@@ -1,5 +1,8 @@
 // NGameText::CGroupEntry::ReadFromDataStream -- PDB00B15EF0
 // Leaf: ReadFromDataStream
+// NF64 (round 7, q10639): the local LongArray stand-in replaced by the shared engine/CArray.h (CArray<T> : std::vector<T>); the inherited
+//   resize is kept out of line (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE) and binds ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at
+//   0x004428F0 (was LongArray::Resize).
 #include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct InputReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
@@ -21,15 +24,17 @@ struct ResourceMethods:CResource {ResourceMethods();void SetResourceSize(unsigne
 struct BankFileAsync;
 struct BankFileData {BankFileData(void*,unsigned long,BankFileAsync&);unsigned long Sizeof()const;}; //actual ctor PDB00B29D50; opaque constructor boundary //009D5620/PDB00B29690, no repository header, opaque pointee
 struct CountedFile {CountedFile();~CountedFile();BankFileData*Data;void*Info;unsigned long Sizeof()const{return Data?Data->Sizeof()+sizeof(CountedFile):sizeof(CountedFile);}}; // genuine counted-pointer default PDB02CD4830
-struct LongArray {LongArray();~LongArray();NativeLong*First,*Last,*End;unsigned long capacity()const{return End-First;}void Resize(unsigned long,const NativeLong&);}; //004428F0 native vector resize, not an opaque CArray method
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_C   // STLport 4.6 _vector.h includes _vector.c; the repo header declares capacity() in that branch
+#include "engine/CArray.h"   // Ego_r.pdb CGroupEntry::Entries is CArray<long> (NF64: was a local LongArray stand-in)
 struct CDataBankGroupEntry;
 struct CGroupEntry:ResourceMethods {CGroupEntry(CountedFile&,const CDataBankGroupEntry*); //actual PDB00B15D40
- LongArray Entries;CountedFile PFileData;const CDataBankGroupEntry*Owner;
+ CArray<long> Entries;CountedFile PFileData;const CDataBankGroupEntry*Owner;
  void ReadFromDataStream(InputReader&);
 }; //native52 vs donor56, Entries vector12 vs donor16
 void CGroupEntry::ReadFromDataStream(InputReader& stream){
- NativeLong count=stream.ReadLong();Entries.Resize(count,0);
- for(long i=0;i<count;++i)Entries.First[i]=stream.ReadLong();
+ NativeLong count=stream.ReadLong();Entries.resize(count,0);
+ for(long i=0;i<count;++i)Entries[i]=stream.ReadLong();
  unsigned long size=sizeof(CGroupEntry)+Entries.capacity()*sizeof(NativeLong);
  size+=PFileData.Sizeof()-sizeof(CountedFile);SetResourceSize(size);
 }

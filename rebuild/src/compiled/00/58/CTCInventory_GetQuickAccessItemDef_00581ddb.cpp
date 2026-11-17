@@ -4,7 +4,7 @@
 // CTCInventory::GetQuickAccessItemDef(unsigned long index) -- inventory-item definition of the item in a combined slot, a null def pointer for an empty slot
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00581DDB, length 88 bytes; size-optimised TU with a frame
 // pointer (`optimize("y",off)` + `("s",on)`).
-// Callees: GetPDef(long) 0x005D97D0 (__fastcall by-value CDefPointer<const CInventoryItemDef>: result slot in
+// Callees: CTCInventoryItem::GetPDef(long) 0x005D97D0 (__fastcall by-value CDefPointer<const CInventoryItemDef>: result slot in
 //          ecx, item type in edx); CTCInventory::GetQuickAccessItem (0x00581E33) is inlined.
 // Ego_r PDB: ?GetQuickAccessItemDef@CTCInventory@@QAE?AV?$CDefPointer@$$CBVCInventoryItemDef@@@@K@Z.
 // Retail layout: engine/CTCInventory.h is the wider Ego_r.pdb layout (16-byte vectors); the shipped object
@@ -15,13 +15,14 @@
 // constructor (`and [eax],0`).
 class CInventoryItemDef;
 
-template<class T> class CDefPointer { public:
-    T* Object;                                       // +0x00
-    CDefPointer() : Object(0) { }
-    CDefPointer(const CDefPointer& other);
-};
 
-CDefPointer<const CInventoryItemDef> __fastcall GetPDef(long itemType);   // 0x005D97D0
+// NF64 (round 7, q10646): the local CDefPointer model is replaced by engine/CDefPointer.h; the free stand-in `GetPDef` is the static __fastcall CTCInventoryItem::GetPDef (Ego_r.pdb / FableWin.pdb; the
+//   NF59 self row defines it), declared by engine/CTCInventoryItem.h.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_GETPDEF_STATIC
+#include "engine/CDefPointer.h"
+#include "engine/CTCInventoryItem.h"
 
 struct CLongVector {
     long* first;                                     // +0x00
@@ -48,6 +49,6 @@ CDefPointer<const CInventoryItemDef> CTCInventory::GetQuickAccessItemDef(unsigne
 {
     long item = GetQuickAccessItem(index);
     if (item > 0)
-        return GetPDef(item);
+        return CTCInventoryItem::GetPDef(item);
     return CDefPointer<const CInventoryItemDef>();
 }

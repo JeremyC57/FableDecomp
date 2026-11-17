@@ -1,5 +1,7 @@
 // CInputProcessTavernGame::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- hand the input to the hero's current tavern game (game-player component 0xD0), then translate press/held of actions 0x19/0x4c and mouse capture 0x47 into front-end UI events
 // Leaf: ProcessInput
+// NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
+//   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690830, length 359 bytes, `ret 8`.
@@ -18,6 +20,7 @@
 #include "fable_compiler.h"
 #define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
+#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
 #include "engine/CInputProcessGameBase.h"
 class CProcessedInput;
 class C2DVector { public:
@@ -95,8 +98,6 @@ private: public:
 };
 class CInputProcessTavernGame : public CInputProcessGameBase {
 public:
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 

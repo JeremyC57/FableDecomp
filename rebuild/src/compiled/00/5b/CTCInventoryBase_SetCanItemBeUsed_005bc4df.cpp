@@ -12,7 +12,11 @@
 // Shape: a non-positive index stores false directly; otherwise the lookup's non-null test is stored
 //        (`test eax,eax ; setne al`).
 
-long __fastcall LookUpInventoryItemDef(long defIndex);   // 0x005D9710
+// NF64 (round 7, q10643): the free stand-in `LookUpInventoryItemDef` is the static __fastcall CTCInventoryItem::GetUseButtonActionType (Ego_r.pdb / FableWin.pdb; the
+//   NF59 self row defines it), declared by engine/CTCInventoryItem.h.
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_USEBUTTONACTION
+#include "engine/CTCInventoryItem.h"
 
 struct CTCInventoryBase_Retail {
     unsigned char _pad_0x00[0x2C];
@@ -27,7 +31,7 @@ struct CTCInventoryBase_Retail {
 void CTCInventoryBase_Retail::SetCanItemBeUsed(long defIndex)
 {
     if (defIndex > 0)
-        CanItemBeUsed = LookUpInventoryItemDef(defIndex) != 0;
+        CanItemBeUsed = CTCInventoryItem::GetUseButtonActionType(defIndex) != 0;
     else
         CanItemBeUsed = false;
 }

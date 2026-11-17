@@ -1,5 +1,7 @@
 // CInputProcessInventoryBase::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- for an analogue event, move the inventory screen's selection up/down (ChangeSelection 1/2) or page it left/right from the stick position past +-0.6 / +-0.9, else clear the current movement; on a button press or release, route game actions 0x25..0x28 to the screen's previous/next item and tab handlers and mark the input handled
 // Leaf: ProcessInput
+// NF64 (round 7, q10652): the local IsEventButtonPressed / Released redeclarations on the derived class are gone; the calls bind the Ego_r.pdb +
+//   FableWin.pdb protected const CInputProcessGameBase members the header declares (FABLE_RETAIL_INPUTPROCESS_ZTARGET / _MOVEMENT).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006894C0, length 474 bytes (`ret 8`).
 // Callees: CInputEvent::GetType @ 0x00A03B40, CInputEvent::GetAnaloguePosition @ 0x00A043A0 (C2DVector by hidden pointer, as the
 //   landed CTCAssassinRush::UpdateDirectionOverride 0x007A9960), CInputProcessInventoryBase::ChangeSelection @ 0x006893D0,
@@ -95,6 +97,7 @@ class CWorld; class CPlayer; class CGameDefinitionManager; class CMainGameCompon
 // IsEventGameAction(EGameAction, const CInputEvent&) const is the Ego_r spelling; slot 0 is CAInputProcess's virtual destructor.
 #define FABLE_RETAIL_INPUTPROCESS
 #define FABLE_RETAIL_INPUTPROCESS_ZTARGET
+#define FABLE_RETAIL_INPUTPROCESS_MOVEMENT   // NF64: IsEventButtonReleased (protected const)
 #include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 class CInputProcessInventoryBase : public CInputProcessGameBase {
@@ -106,8 +109,6 @@ public:
     ECurrentMovement        CurrentMovement;       // +0x28
     unsigned long           FrameSinceLastMovement;   // +0x2c
     bool                    StartedRepeatingMovement; // +0x30
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
     bool ChangeSelection(ECurrentMovement movement);                  // 0x006893D0
 };
 

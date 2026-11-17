@@ -1,5 +1,7 @@
 // CRegion::LoadBinary(CMemoryDataInputStream* stream) -- read the map and visible-map counts, then each map id and visible-map id; read the name, display name and region def name (looking the region def up by that name), the mini-map graphic, the appear-on-world-map / creature-generation / sound-theme flags, the mini-map scale and offset, the world-map offset, and finally the mini-map region-exit text offsets keyed by exit name
 // Leaf: LoadBinary
+// NF64 (round 7, q10639): the local vector stand-in replaced by stlport/fable_containers.h std::vector<long>; resize kept out of line
+//   (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE), binding ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0 (landed self row).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006BC510, 1480 bytes, `ret 4`.
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, ReadPresizedString 0x00996390, C2DVector read
 //   0x00995030, vector<long>::resize 0x004428F0, vector<ENavigatorType> fill insert 0x00440F00, memmove 0x00BFEAE6,
@@ -73,13 +75,8 @@ class CDefinitionManager { public:
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 enum ENavigatorType { NAVIGATOR_TYPE_NONE };
-struct CLongVector {
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-    void resize(unsigned int count, const long& value);   // 0x004428F0
-    void resize(unsigned int count) { resize(count, 0); }
-};
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "stlport/fable_containers.h"
 struct CNavigatorTypeVector {
     ENavigatorType* _M_start;
     ENavigatorType* _M_finish;
@@ -108,7 +105,7 @@ struct CExitTextOffsetMap {
     C2DVector& operator[](const CCharString& key);   // 0x006BD6A0
 };
 class CRegion { public:
-    CLongVector          Maps;                      // +0x00
+    std::vector<long>          Maps;                      // +0x00
     CNavigatorTypeVector VisMaps;                   // +0x0c
     CCharString          Name;                      // +0x18
     CCharString          DisplayName;               // +0x1c
@@ -139,7 +136,7 @@ void CRegion::LoadBinary(CMemoryDataInputStream* stream)
     long numVisMaps = stream->ReadLong();
     Maps.resize(numMaps);
     for (long i = 0; i < numMaps; ++i)
-        Maps._M_start[i] = stream->ReadLong();
+        Maps[i] = stream->ReadLong();
     VisMaps.resize(numVisMaps);
     for (long j = 0; j < numVisMaps; ++j)
         VisMaps._M_start[j] = (ENavigatorType)stream->ReadLong();

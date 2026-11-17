@@ -105,8 +105,22 @@ class CInputEvent;
 class C2DVector;
 #endif
 
+#ifdef FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON
+class CInputEvent;                                           // NF64 opt-in below
+#endif
 #pragma pack(push, 1)
 struct CInputProcessGameBase {
+#ifdef FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON
+    // NF64 opt-in (round 7, q10652: the CInputProcess* ProcessInput rows on this generated layout), the flat-branch twin of the retail
+    // branch's FABLE_RETAIL_INPUTPROCESS_ZTARGET / _MOVEMENT button queries, as Ego_r.pdb (0x006B2BA0 / 0x006B2C40 / 0x006B2CE0) and
+    // FableWin.pdb (0x021D3D20 / 0x021D3E10 / 0x021D3F00) spell them: ?IsEventButtonPressed / ?IsEventButtonHeld /
+    // ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z (protected const). Declarations only, the layout is unchanged.
+protected:
+    bool IsEventButtonPressed(const CInputEvent& event) const;                                                        // 0x00687A90
+    bool IsEventButtonHeld(const CInputEvent& event) const;                                                           // 0x00687BD0
+    bool IsEventButtonReleased(const CInputEvent& event) const;                                                       // 0x00687B30
+public:
+#endif
 #ifdef FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS
     // NF37 opt-in (the CInputProcess* ProcessInput / Update rows on this generated layout): the three queries the retail opt-ins
     // FABLE_RETAIL_INPUTPROCESS_ZTARGET / _MOVEMENT / _EVENTINQUEUE declare on the retail class, as Ego_r.pdb / FableWin.pdb spell them:

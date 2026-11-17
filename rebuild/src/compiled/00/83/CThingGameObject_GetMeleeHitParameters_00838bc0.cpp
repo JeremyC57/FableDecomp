@@ -85,14 +85,15 @@ template<class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 class CTCHeroExperience;
-struct CExperienceCurve {
-    float GetAbilityMultiplier(const CTCHeroExperience* experience) const;   // 0x00851BD0
-};
+// NF64 (round 7, q10687): the def's +0xb0 weighting is a CHeroAbilityStatWeight (engine/CHeroAbilityStatWeight.h; Ego_r.pdb
+//   ?GetParameter@CHeroAbilityStatWeight@@QBEMABVCTCHeroExperience@@@Z 0x00851BD0, the experience by reference), as NF61 moved 0x0078B410;
+//   was the stand-in CExperienceCurve::GetAbilityMultiplier(const CTCHeroExperience*).
+#include "engine/CHeroAbilityStatWeight.h"
 class CExperienceDef : public CCountedBase { public:
     unsigned char _pad08[0xa8 - 0x08];
     float High;                                      // +0xa8
     float Low;                                       // +0xac
-    CExperienceCurve Curve;                          // +0xb0
+    CHeroAbilityStatWeight Curve;                    // +0xb0
 };
 class CTCHeroExperience { public:                           // interface 0x68
     unsigned char _pad00[0x58];
@@ -266,7 +267,7 @@ void CThingGameObject::GetMeleeHitParameters(NHitLocations::CHitLocation* locati
     const CTCHeroExperience* experience;
     if (hitter.GetConstInterface(&experience, 0x68)) {
         CCountedPointer<CExperienceDef> def = experience->Def;
-        float t = def->Curve.GetAbilityMultiplier(experience);
+        float t = def->Curve.GetParameter(*experience);
         float low = def->Low;
         multiplier *= low + (def->High - low) * t;
     }

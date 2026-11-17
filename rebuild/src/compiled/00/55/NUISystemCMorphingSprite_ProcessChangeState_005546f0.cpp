@@ -4,9 +4,9 @@
 struct SStateInfo_005546f0 {
     unsigned long m_flags;                         // +0x00 (bit 8)
 };
-struct CStateMorphMap_005546f0 {                   // map<long, long> at +0x18c
-    long& operator[](const long& state);           // 0x00553E60
-};
+// NF64 (round 7, q10718): the +0x18c member is the Ego_r.pdb CMorphingSprite::GraphicIndices, a std::map<unsigned long, unsigned long>
+//   (stlport/fable_map.h; operator[] is the out-of-line COMDAT 0x00553E60); was the stand-in CStateMorphMap_005546f0 (map<long,long>).
+#include "stlport/fable_map.h"
 
 struct CChangingStateComponent {                   // the polymorphic root: the sprite's vtable (slots 135 / 151 below) sits at +0, so the base call takes `this` unchanged
     virtual void v000();
@@ -144,7 +144,7 @@ struct CChangingStateComponent {                   // the polymorphic root: the 
     virtual void v132();
     virtual void v133();
     virtual void v134();
-    virtual const SStateInfo_005546f0* GetState(long state);   // slot 135 (+0x21c) 0x0052CEB0 GetState (Ego_r.pdb / FableWin.pdb ?GetState@CChangingStateComponent@NUISystem@@UAEPAVCUIState@2@K@Z; name-fix 2026-11-12)
+    virtual const SStateInfo_005546f0* GetState(unsigned long state);   // slot 135 (+0x21c) 0x0052CEB0 GetState (Ego_r.pdb / FableWin.pdb ?GetState@CChangingStateComponent@NUISystem@@UAEPAVCUIState@2@K@Z; name-fix 2026-11-12)
     virtual void v136();
     virtual void v137();
     virtual void v138();
@@ -167,11 +167,11 @@ struct CChangingStateComponent {                   // the polymorphic root: the 
 namespace NUISystem {
 class CMorphingSprite : public CChangingStateComponent { public:
     unsigned char          _pad04[0x144];          // +0x04 .. +0x148
-    long                   m_currentState;         // +0x148
+    unsigned long          m_currentState;         // +0x148 (unsigned: the GetState key and the GraphicIndices key; NF64)
     long                   m_14c;
     long                   m_morphWord;            // +0x150
     unsigned char          _pad154[0x38];          // +0x154 .. +0x18c
-    CStateMorphMap_005546f0 m_stateMorphs;         // +0x18c
+    std::map<unsigned long, unsigned long> m_stateMorphs;   // +0x18c GraphicIndices
     void ProcessChangeState();
 };
 
