@@ -1,0 +1,14 @@
+--- a/rebuild/include/engine/CUserProfileManager.h
++++ b/rebuild/include/engine/CUserProfileManager.h
+@@ -248,6 +248,11 @@
+     std::vector<CActionInputControl> AssignedInputsAggressive;           // +0x60
+     void ResetAssignedInputs();                                          // 0x004085F0
+ #endif
++#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_RESETASSIGNEDINPUTSWASD
++    // e01 opt-in (row 0x00408820): Ego_r.pdb ?ResetAssignedInputsWASD@CUserProfileManager@@QAEXXZ (public, right after
++    // ResetAssignedInputs) + Ego_d.pdb user_profile_manager.obj record. Declaration only: no layout change.
++    void ResetAssignedInputsWASD();                                      // 0x00408820
++#endif
+ #endif
+ #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_TARGETINGSTATUS
+     // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the targeting-status pair the row

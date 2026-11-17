@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00408820   RELOCATION_MATCH PASS   ResetAssignedInputsWASD
+007da520   RELOCATION_MATCH PASS   GetRequiredScore
+007da640   RELOCATION_MATCH PASS   GetBet
+00747c70   WARN RELOC_NAME: ?erase@?$vector@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@@2@@std@@QAEPAU?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@2@PAU32@0@Z -> 00749280 labelled '_global::CTargetPoint_Copy_WithDestruction'
+00747c70   RELOCATION_MATCH PASS   UpdateDangerInfo
+007da400   RELOCATION_MATCH PASS   GetCurrentScore
+004b01b0   RELOCATION_MATCH PASS   IsRegionValidInRegionLockingMode
+
+WINS: 6
+  00408820 RELOCATION_MATCH CUserProfileManager::ResetAssignedInputsWASD
+  007da520 RELOCATION_MATCH CTCTavernGameCardBlackjack::GetRequiredScore
+  007da640 RELOCATION_MATCH CTCTavernGameCardBlackjack::GetBet
+  00747c70 RELOCATION_MATCH CTCStealth::UpdateDangerInfo
+  007da400 RELOCATION_MATCH CTCTavernGameCardBlackjack::GetCurrentScore
+  004b01b0 RELOCATION_MATCH CQuestManager::IsRegionValidInRegionLockingMode

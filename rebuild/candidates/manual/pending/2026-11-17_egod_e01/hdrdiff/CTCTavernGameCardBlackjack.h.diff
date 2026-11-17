@@ -1,0 +1,22 @@
+--- a/rebuild/include/engine/CTCTavernGameCardBlackjack.h
++++ b/rebuild/include/engine/CTCTavernGameCardBlackjack.h
+@@ -38,6 +38,19 @@
+     bool HasGoneBust();                                                  // 0x007DA8B0
+     bool CardsFaceDown();
+ #endif
++#ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBLACKJACK_SCORETEXT
++    // e01 opt-in (rows 0x007DA400 / 0x007DA520 / 0x007DA640): the slot-44 / 45 / 47 overrides (Ego_r.pdb / FableWin.pdb
++    // ?GetCurrentScore / ?GetRequiredScore / ?GetBet@CTCTavernGameCardBlackjack@@UAE?AVCWideString@@XZ; Ego_d blackjack TU order) and
++    // GetHandValue 0x007DA230 (landed) when CARDSMAINGAME does not declare it. Declarations only: no layout change.
++#ifndef FABLE_RETAIL_BLACKJACK_DEAL_PASS23
++    virtual CWideString GetCurrentScore();                               // 44 0x007DA400
++    virtual CWideString GetRequiredScore();                              // 45 0x007DA520
++#endif
++    virtual CWideString GetBet();                                        // 47 0x007DA640
++#ifndef FABLE_RETAIL_CTCTAVERNGAMECARDBLACKJACK_CARDSMAINGAME
++    long GetHandValue(std::vector<CCard*>* cards, bool includeFaceDown); // 0x007DA230
++#endif
++#endif
+     std::vector<CCard*>               DealersCards;                      // +0x318
+     std::vector<std::vector<CCard*> > PlayersCards;                      // +0x324
+     std::vector<long>                 Bets;                              // +0x330

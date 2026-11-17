@@ -1,6 +1,6 @@
 address	kind	name	state	true_length	staged_folder	note
 00402510	named	_global::GFMain	OPEN			
-00408820	named	CUserProfileManager::ResetAssignedInputsWASD	IN_PROGRESS			batch e01
+00408820	named	CUserProfileManager::ResetAssignedInputsWASD	MATCHED_STAGED	185	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
 00409730	named	CUserProfileManager::VerifySignature	OPEN			
 00409b70	named	CUserProfileManager::SetDefaultValuesForNewProfile	OPEN			
 0040a7f0	named	CUserProfileManager::ApplyVideoValues	OPEN			
@@ -28,7 +28,7 @@ address	kind	name	state	true_length	staged_folder	note
 0049ed80	identify	_global::ConsoleSetFreeCameraLookVector	OPEN			
 004a1c8e	named	CTCTrophy::OnShowTrophyInitialise	OPEN			
 004a1cb0	named	CWorld::CWorld::PreparePrimitivesForEngine	OPEN			
-004b01b0	named	CQuestManager::IsRegionValidInRegionLockingMode	IN_PROGRESS			batch e01
+004b01b0	named	CQuestManager::IsRegionValidInRegionLockingMode	MATCHED_STAGED	277	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
 004b1d30	named	CQuestManager::SetQuestAsCompleted	OPEN			
 004b2890	named	CQuestManager::PostBoastTransfer	OPEN			
 004b2ca0	identify	_global::WorldMap_BuildLoadSectionsList	OPEN			
@@ -183,7 +183,7 @@ address	kind	name	state	true_length	staged_folder	note
 00734c60	named	CTCCombat::SetStruck	OPEN			
 00745840	identify	CTCPerceiveThing::CTCPerceiveThing::vfunc_11	OPEN			
 00746db0	identify	_global::GetStabPosOnThing	OPEN			
-00747c70	named	CTCStealth::UpdateDangerInfo	IN_PROGRESS			batch e01
+00747c70	named	CTCStealth::UpdateDangerInfo	MATCHED_STAGED	303	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
 00749620	identify	_global::CTargetPoint_Vector_PushBack	OPEN			
 0074a4e0	named	CTCCreatureGenerator::DoNavCheck	OPEN			
 0074b2b0	named	CTCCreatureGenerator::CreateCreatures	OPEN			
@@ -258,9 +258,9 @@ address	kind	name	state	true_length	staged_folder	note
 007d2ff0	named	CTCTavernGameCoinGolf::FrameUpdate	OPEN			
 007d3f80	named	CTCTavernGameCoinGolf::OnInitialActivate	OPEN			
 007d75a0	named	CTCTavernGameCardPairs::GetRandomCard	OPEN			
-007da400	named	CTCTavernGameCardBlackjack::GetCurrentScore	IN_PROGRESS			batch e01
-007da520	named	CTCTavernGameCardBlackjack::GetRequiredScore	IN_PROGRESS			batch e01
-007da640	named	CTCTavernGameCardBlackjack::GetBet	IN_PROGRESS			batch e01
+007da400	named	CTCTavernGameCardBlackjack::GetCurrentScore	MATCHED_STAGED	280	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
+007da520	named	CTCTavernGameCardBlackjack::GetRequiredScore	MATCHED_STAGED	286	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
+007da640	named	CTCTavernGameCardBlackjack::GetBet	MATCHED_STAGED	274	rebuild/candidates/manual/pending/2026-11-17_egod_e01	batch e01
 007dac10	named	CTCTavernGameCardBlackjack::DealCards	OPEN			
 007db5c0	named	CTCTavernGameCardBlackjack::Split	OPEN			
 007dd540	named	CTCCreatureFlyInCircles::UpdateSwoop	OPEN			
@@ -331,7 +331,7 @@ address	kind	name	state	true_length	staged_folder	note
 00867200	named	CCombatAction_GenericResponseToExplosion::?Initialise@CCombatAction_GenericResponseToExplosion@@UAEXXZ	OPEN			
 00867d20	named	CCombatAction_GenericResponseToExplosion::CCombatAction_GenericResponseToExplosion::FinishAction	OPEN			
 0086b9d0	named	CRandomAppearanceMorph::GetRandomSkeletalMorph	OPEN			
-0086be40	named	CRandomAppearanceMorph::GetRandomBodyParts	IN_PROGRESS			batch e01
+0086be40	named	CRandomAppearanceMorph::GetRandomBodyParts	MATCHED_HELD			MATCHED_HELD e01: RELOCATION_MATCH + test PASS but audit FAIL: TU-wide STLP_VECTOR_PUSHBACK_NOINLINE steers the row without an Inline-budget line and makes the same-TU GetRandomTextureMorphs non-retail (191v230 at 0x0086B810); try /d2inlT or scoped inline_depth; src ../2026-11-17_egod_open/e01/0086be40.held.cpp
 00871fd0	named	NCameraModes::CStringAndCageBase::UpdateXYVars	OPEN			
 008722d0	identify	_global::ParticleMorph_UpdatePositionWithVelocity	OPEN			
 00873690	identify	_global::CVertexBufferWin32_UpdateTransform	OPEN			
@@ -383,7 +383,7 @@ address	kind	name	state	true_length	staged_folder	note
 008f61a0	named	CHeightMap::Resize	OPEN			
 008f92fd	identify	_gapscan::sub_008f92fd	OPEN			
 008fa800	identify	_global::DoAttractToPoint_ComputeAcceleration	OPEN			
-00903f30	named	CScriptGameResourceObjectScriptedThing::CScriptGameResourceObjectScriptedThing::FollowPreCalculatedRoute	IN_PROGRESS			batch e01
+00903f30	named	CScriptGameResourceObjectScriptedThing::CScriptGameResourceObjectScriptedThing::FollowPreCalculatedRoute	PARKED			PARKED e01: DIFFER(254v254) register tie proute/ai_move_type; draft ../2026-11-17_egod_open/e01/00903f30.cpp
 0090cc40	named	CAIStateGroup_MinionGossip::?IsRunnable@CAIStateGroup_MinionGossip@@MAE_NXZ	OPEN			
 0090ebe0	identify	_global::FindMessage	OPEN			
 009101c0	named	CAIStateGroup_MinionListenToStory::?Update@CAIStateGroup_MinionListenToStory@@MAEXXZ	OPEN			
@@ -580,7 +580,7 @@ address	kind	name	state	true_length	staged_folder	note
 00a446ce	identify	_global::NScript_CIngredientOwner_RunThread	OPEN			
 00a44719	identify	_global::NScript_MicroThread_Idle	OPEN			
 00a4b670	identify	_global::IsPosInFOVWithWeight	OPEN			
-00a55f90	named	CMatrix3x4::SetFromVectorAndAngle	IN_PROGRESS			batch e01
+00a55f90	named	CMatrix3x4::SetFromVectorAndAngle	PARKED			PARKED e01: DIFFER(259v259) x87 order vxvy/vxvz loads; draft ../2026-11-17_egod_open/e01/00a55f90.cpp
 00a56270	named	CMatrix3x4::Orthonormalise	OPEN			
 00a57030	named	C2DLineF::Intersects2D	OPEN			
 00a57140	named	C2DLineF::GetPointOnInfiniteLine	OPEN			
@@ -625,7 +625,7 @@ address	kind	name	state	true_length	staged_folder	note
 00ab2520	named	C3DAnimationBuilder::BuildMeshAnimation	OPEN			
 00ab3870	named	CVertexShaderInput::GenerateD3DDeclaration	OPEN			
 00ab4bb0	named	CMouseDX::GetNonExclusiveModeDeviceMouseEvent	OPEN			
-00ab7b00	named	CStaticFontBank::CStaticFontBank::GetStringExtents	IN_PROGRESS			batch e01
+00ab7b00	named	CStaticFontBank::CStaticFontBank::GetStringExtents	PARKED			PARKED e01: DIFFER(287v287) x87 Offset/Advance order at 0x00AB7BB2; draft ../2026-11-17_egod_open/e01/00ab7b00.cpp
 00ab7c20	named	CStaticFontBank::CStaticFontBank::Render	OPEN			
 00ac70f0	identify	_global::GetInverseMatrixPart	OPEN			
 00ac7750	named	QuadricOptimiserInternals::COptimisedPrimitive::ComputeOptimalVertexPlacement	OPEN			

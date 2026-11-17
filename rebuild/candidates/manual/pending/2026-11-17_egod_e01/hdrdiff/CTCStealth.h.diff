@@ -1,0 +1,22 @@
+--- a/rebuild/include/engine/CTCStealth.h
++++ b/rebuild/include/engine/CTCStealth.h
+@@ -6,7 +6,11 @@
+ #include "stlport/fable_containers.h"
+ class CStealthDef; class CCreatureActionBase;
+ namespace NStealth {
+-#if defined(_MSC_VER)||!defined(FABLE_RETAIL_STEALTH_DRAW)
++#if defined(FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
++// e01 opt-in (row 0x00747C70, same-TU body of GetNumberOfAttackersOverMaximum 0x00747890): Ego_d.pdb LF_ENUM NStealth::EDangerStatus
++// (W4EDangerStatus@NStealth@@, int) enumerators; retail compares 3 / 2 (0x007478D8 / 0x007478DD). No layout change.
++enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
++#elif defined(_MSC_VER)||!defined(FABLE_RETAIL_STEALTH_DRAW)
+ enum EDangerStatus;
+ #else
+ enum EDangerStatus{};
+@@ -136,5 +140,5 @@
+  virtual ~CTCStealth();
+  CTCStealth & operator=(const CTCStealth & p0);
+ };
+-FABLE_STATIC_ASSERT(sizeof(CTCStealth)==76);
++FABLE_STATIC_ASSERT_AT(139, sizeof(CTCStealth)==76);
+ #endif

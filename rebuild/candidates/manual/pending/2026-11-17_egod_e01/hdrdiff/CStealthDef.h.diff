@@ -1,0 +1,56 @@
+--- a/rebuild/include/engine/CStealthDef.h
++++ b/rebuild/include/engine/CStealthDef.h
+@@ -8,6 +8,26 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CSTEALTHDEF_SUBDEF
++// e01 opt-in (row 0x00747C70 CTCStealth::UpdateDangerInfo): the retail def chain. Ego_d.pdb / Ego_r.pdb CStealthDef : CSubDefClassBase
++// (Ego_d LF_BCLASS 0xAFE5 at offset 0; members at the same offsets in both PDBs and retail: the row reads DangerFeedbackHangtimeSeconds
++// +0x40, `fmul dword ptr [eax+40h]` 0x00747D57). Methods declared as Ego_d lists them (Copy, GetSizeofClass, Alloc, StatGetTypeName,
++// Transfer); declarations only. Needs FABLE_RETAIL_DEF_CLASS_BASE.
++#include "engine/CSubDefClassBase.h"
++class CPersistContext;
++class CStealthDef : public CSubDefClassBase {
++public:
++    float DistanceMovementCanBeHeardFrom;                                // +0x28
++    float RunningNoiseMultiplier;                                        // +0x2c
++    float JoggingNoiseMultiplier;                                        // +0x30
++    float WalkingNoiseMultiplier;                                        // +0x34
++    float DayTimeLampVisibilityMultiplier;                               // +0x38
++    float NightTimeLampVisibilityMultiplier;                             // +0x3c
++    float DangerFeedbackHangtimeSeconds;                                 // +0x40
++    float RunningAwayFromCombatHangtimeSeconds;                          // +0x44
++};
++FABLE_STATIC_ASSERT(offsetof(CStealthDef, DangerFeedbackHangtimeSeconds) == 0x40);
++#else
+ #pragma pack(push, 1)
+ class CStealthDef {
+ public:
+@@ -32,15 +52,16 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CStealthDef) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CStealthDef, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CStealthDef, DistanceMovementCanBeHeardFrom) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CStealthDef, RunningNoiseMultiplier) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CStealthDef, JoggingNoiseMultiplier) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CStealthDef, WalkingNoiseMultiplier) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CStealthDef, DayTimeLampVisibilityMultiplier) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CStealthDef, NightTimeLampVisibilityMultiplier) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CStealthDef, DangerFeedbackHangtimeSeconds) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CStealthDef, RunningAwayFromCombatHangtimeSeconds) == 0x44);
++FABLE_STATIC_ASSERT_AT(35, sizeof(CStealthDef) == 0x48);
++FABLE_STATIC_ASSERT_AT(36, offsetof(CStealthDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(37, offsetof(CStealthDef, DistanceMovementCanBeHeardFrom) == 0x28);
++FABLE_STATIC_ASSERT_AT(38, offsetof(CStealthDef, RunningNoiseMultiplier) == 0x2c);
++FABLE_STATIC_ASSERT_AT(39, offsetof(CStealthDef, JoggingNoiseMultiplier) == 0x30);
++FABLE_STATIC_ASSERT_AT(40, offsetof(CStealthDef, WalkingNoiseMultiplier) == 0x34);
++FABLE_STATIC_ASSERT_AT(41, offsetof(CStealthDef, DayTimeLampVisibilityMultiplier) == 0x38);
++FABLE_STATIC_ASSERT_AT(42, offsetof(CStealthDef, NightTimeLampVisibilityMultiplier) == 0x3c);
++FABLE_STATIC_ASSERT_AT(43, offsetof(CStealthDef, DangerFeedbackHangtimeSeconds) == 0x40);
++FABLE_STATIC_ASSERT_AT(44, offsetof(CStealthDef, RunningAwayFromCombatHangtimeSeconds) == 0x44);
+ 
++#endif // FABLE_RETAIL_CSTEALTHDEF_SUBDEF
+ #endif // FABLE_ENGINE_CSTEALTHDEF_H

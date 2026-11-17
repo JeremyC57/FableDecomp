@@ -1,0 +1,37 @@
+--- a/rebuild/include/engine/CQuestManager.h
++++ b/rebuild/include/engine/CQuestManager.h
+@@ -20,7 +20,7 @@
+ #include "engine/C2DCoordI.h"
+ class CScriptInfo;class CScriptBase;class CScriptDataBase;class CRegion;
+ #endif
+-#ifdef FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK
++#if defined(FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK) || defined(FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST_REGIONLOCK)   // e01: also for ACTIVEQUEST_REGIONLOCK
+ class CRegion;
+ namespace std {
+ // STLport 4.6 _algobase.c: the random-access __find (out of line in retail: 0x004B74E0 for const CRegion* const*, __fastcall);
+@@ -130,6 +130,14 @@
+         // ?ContainsRegion@CActiveQuest@CQuestManager@@QBE_NABVCRegion@@@Z, called out of line in that TU (0x004AFD80). Declaration only.
+         bool ContainsRegion(const class CRegion& region) const;              // 0x004AFD80
+ #endif
++#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST_REGIONLOCK
++        // e01 opt-in (row 0x004B01B0 IsRegionValidInRegionLockingMode, on the full record): the REGIONLOCK block's inline ContainsRegion /
++        // ContainsAnyRegions / GetRegions (same bodies; expanded in that row: std::__find 0x004B74E0, the by-value copy malloc / memmove /
++        // free). Ego_d quest_manager.obj lists ContainsAnyRegions and GetRegions right after the row. Not with _CONTAINSREGION.
++        bool ContainsRegion(const CRegion& region) const { return std::find(Regions.begin(), Regions.end(), &region) != Regions.end(); }
++        bool ContainsAnyRegions() const { return !Regions.empty(); }
++        const std::vector<const CRegion*> GetRegions() const { return Regions; }
++#endif
+ #ifdef FABLE_RETAIL_CQUESTMANAGER_POSTBOAST
+         // Retail opt-in (Codex pass20): both PDBs and native004b29d4 use QuestName+0x30.
+         const CCharString& GetName()const{return QuestName;}
+@@ -168,6 +176,10 @@
+     // FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST (the REGIONLOCK block declares the same member on its partial nested record). Declaration only.
+     CActiveQuest* GetActiveQuestFromScriptName(const CCharString& name) const;    // 0x004AF5B0
+ #endif
++#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST_REGIONLOCK
++    // e01: Ego_r.pdb / FableWin.pdb ?IsRegionValidInRegionLockingMode@CQuestManager@@QBE_NABVCRegion@@@Z (retail 0x004B01B0). Declaration only.
++    bool IsRegionValidInRegionLockingMode(const CRegion& region) const;
++#endif
+ #ifndef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+     // (chunk Q25: the SAVEGAMESTATE row uses the LOADGAMESTATE layout, which has no PQuestCurrentlyRunning member)
+     CActiveQuest* GetPActiveQuest()const{return PQuestCurrentlyRunning;}

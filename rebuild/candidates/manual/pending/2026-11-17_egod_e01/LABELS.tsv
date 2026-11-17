@@ -1,0 +1,9 @@
+address	name	evidence
+00408820	?ResetAssignedInputsWASD@CUserProfileManager@@QAEXXZ	Ego_r.pdb (after ResetAssignedInputs) + Ego_d user_profile_manager.obj; landed caller 0x005565C0
+007da400	?GetCurrentScore@CTCTavernGameCardBlackjack@@UAE?AVCWideString@@XZ	Ego_r/FableWin name + vtable 0x0126F8F4 slot 44 + Ego_d TU order
+007da520	?GetRequiredScore@CTCTavernGameCardBlackjack@@UAE?AVCWideString@@XZ	Ego_r/FableWin name + vtable slot 45 + Ego_d TU order
+007da640	?GetBet@CTCTavernGameCardBlackjack@@UAE?AVCWideString@@XZ	Ego_r/FableWin name + vtable slot 47 + Ego_d TU order
+009a08b0	?GFFloatToCharString@@YI?AVCCharString@@NJ@Z	Ego_r + FableWin
+0086be40	?GetRandomBodyParts@CRandomAppearanceMorph@@IBEXAAKAAVCMorphSet@1@_N@Z	Ego_r/FableWin + Ego_d random_appearance_morph.obj
+004b01b0	?IsRegionValidInRegionLockingMode@CQuestManager@@QBE_NABVCRegion@@@Z	Ego_r/FableWin + Ego_d quest_manager.obj
+00747c70	?UpdateDangerInfo@CTCStealth@@AAEXXZ	Ego_r/FableWin + Ego_d tc_stealth.obj

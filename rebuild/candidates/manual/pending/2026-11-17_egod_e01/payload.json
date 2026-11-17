@@ -1,0 +1,54 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00408820",
+    "module": "CUserProfileManager",
+    "name": "ResetAssignedInputsWASD",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/src/00408820.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/test/00408820.cpp",
+    "pass_pattern": "00408820_TEST PASS"
+   },
+   {
+    "address": "007da520",
+    "module": "CTCTavernGameCardBlackjack",
+    "name": "GetRequiredScore",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/src/007da520.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/test/007da520.cpp",
+    "pass_pattern": "007da520_TEST PASS"
+   },
+   {
+    "address": "007da640",
+    "module": "CTCTavernGameCardBlackjack",
+    "name": "GetBet",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/src/007da640.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/test/007da640.cpp",
+    "pass_pattern": "007da640_TEST PASS"
+   },
+   {
+    "address": "00747c70",
+    "module": "CTCStealth",
+    "name": "UpdateDangerInfo",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/src/00747c70.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/test/00747c70.cpp",
+    "pass_pattern": "00747c70_TEST PASS"
+   },
+   {
+    "address": "007da400",
+    "module": "CTCTavernGameCardBlackjack",
+    "name": "GetCurrentScore",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/src/007da400.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/test/007da400.cpp",
+    "pass_pattern": "007da400_TEST PASS"
+   },
+   {
+    "address": "004b01b0",
+    "module": "CQuestManager",
+    "name": "IsRegionValidInRegionLockingMode",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/src/004b01b0.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e01/test/004b01b0.cpp",
+    "pass_pattern": "004b01b0_TEST PASS"
+   }
+  ]
+ }
+}
