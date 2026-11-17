@@ -1,0 +1,65 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "0091c0d0",
+    "module": "CAIStateGroup_NymphFloatAround",
+    "name": "IsRunnable",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/src/0091c0d0.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/test/0091c0d0.cpp",
+    "pass_pattern": "0091c0d0_TEST PASS"
+   },
+   {
+    "address": "00ba9830",
+    "module": "CEnginePrimitiveManagerMeshBase",
+    "name": "GetReflectionTexture",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/src/00ba9830.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/test/00ba9830.cpp",
+    "pass_pattern": "00ba9830_TEST PASS"
+   },
+   {
+    "address": "00871fd0",
+    "module": "NCameraModes::CStringAndCageBase",
+    "name": "UpdateXYVars",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/src/00871fd0.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/test/00871fd0.cpp",
+    "pass_pattern": "00871fd0_TEST PASS"
+   },
+   {
+    "address": "00954f40",
+    "module": "CAIStateGroup_MazeTeleport",
+    "name": "Update",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/src/00954f40.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/test/00954f40.cpp",
+    "pass_pattern": "00954f40_TEST PASS",
+    "flags": [
+     "/GS"
+    ]
+   },
+   {
+    "address": "0057aeb4",
+    "module": "CTCHeroStats",
+    "name": "GetFavouriteWeapon",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/src/0057aeb4.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/test/0057aeb4.cpp",
+    "pass_pattern": "0057aeb4_TEST PASS"
+   },
+   {
+    "address": "005ad305",
+    "module": "CTCInventoryTrade",
+    "name": "ApplyTattooCard",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/src/005ad305.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/test/005ad305.cpp",
+    "pass_pattern": "005ad305_TEST PASS"
+   },
+   {
+    "address": "004b2890",
+    "module": "CQuestManager",
+    "name": "PostBoastTransfer",
+    "source_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/src/004b2890.cpp",
+    "test_cpp": "rebuild/candidates/manual/pending/2026-11-17_egod_e04/test/004b2890.cpp",
+    "pass_pattern": "004b2890_TEST PASS"
+   }
+  ]
+ }
+}

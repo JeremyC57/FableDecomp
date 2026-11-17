@@ -1,0 +1,14 @@
+address	name	evidence
+0091c0d0	?IsRunnable@CAIStateGroup_NymphFloatAround@@UAE_NXZ	Ego_r + Ego_d (ai_state_group_nymph_attacks.obj)
+00871fd0	?UpdateXYVars@CStringAndCageBase@NCameraModes@@AAEXXZ	Ego_r + Ego_d
+0057aeb4	?GetFavouriteWeapon@CTCHeroStats@@QBE?AVCWideString@@J@Z	Ego_r + FableWin + Ego_d (tc_hero_stats.obj)
+005be8d3	?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z	Ego_r + Ego_d local type (see NAME_FIXES)
+005be8b1	?GetPerItemDataForItem@CCategory@NInventory@@QBEPBVCPerItemData@2@J@Z	Ego_r + body (see NAME_FIXES)
+0071d940	?AddTattoo@CTCHeroMorph@@QAEXAAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	Ego_r (0x00568390) + retail order / call shape (row 0x005AD305)
+0071da70	?AddTattoo@CTCHeroMorph@@QAEXJ@Z	Ego_r (0x005684E0) + retail order / call shape (row 0x005AD305)
+005ad305	?ApplyTattooCard@CTCInventoryTrade@@QAEXJ@Z	Ego_r + FableWin + Ego_d
+00ba9830	?GetReflectionTexture@CEnginePrimitiveManagerMeshBase@@SIPBVCTexture@@PBVC3DMeshMaterial@@KAA_NPBVCGraphicDataBank@@_N@Z	Ego_r + FableWin + Ego_d
+004b2890	?PostBoastTransfer@CQuestManager@@QAEXXZ	Ego_r + Ego_d
+004b1960	?GetAcceptedBoastsForScript@CQuestManager@@QBEXABVCCharString@@AAV?$list@VCBoast@CQuestManager@@V?$allocator@VCBoast@CQuestManager@@@std@@@std@@@Z	Ego_r name (identical to the object symbol) + landed row; graded RELOCATION_MATCH from row 0x004B2890
+00954f40	?Update@CAIStateGroup_MazeTeleport@@UAEXXZ	Ego_r + Ego_d
+007fd110	??$GetPFirstThingInRoughArea@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z	Ego_r instance name + landed binding (row 0x00954F40 passes a CCharString filter)
