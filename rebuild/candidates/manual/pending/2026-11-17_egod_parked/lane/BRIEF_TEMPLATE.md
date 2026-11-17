@@ -58,6 +58,7 @@ tree) adds source facts none of them had:
   always pipe through grep; rule in docs/re_reference/FABLE_ANNIVERSARY.md).
 
 ## Read first (large files in parts; grep rather than read whole where you can)
+0. rebuild/candidates/manual/pending/2026-11-17_egod_parked/lane/LESSONS_EGOD.md (what closed this lane's rows so far; short)
 1. /home/user/FableDecomp/CLAUDE.md
 2. docs/pipeline/ASM_RULES.md
 3. tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md (later sections override earlier ones)
