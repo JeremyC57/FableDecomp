@@ -1,0 +1,61 @@
+addr       parity           behav  name
+0063a390   RELOCATION_MATCH PASS   GetThemeSizeZAt
+0063a7e0   RELOCATION_MATCH PASS   GetThemeSizeZAtBlock
+0063ae70   RELOCATION_MATCH PASS   GetStrongestEngineThemeAtBlock
+0081fa20   RELOCATION_MATCH PASS   GetThemeSizeZOffsetAt
+008200b0   WARN RELOC_NAME: ?GetGroundSizeZAt@CMap@@IBEMABVC3DVector@@@Z -> 0081ea50 labelled 'Terrain_InterpolateHeightAtPosition'
+008200b0   RELOCATION_MATCH PASS   GetThemeSizeZAt
+00820140   WARN RELOC_NAME: ?GetGroundSizeZAt@CMap@@IBEMABVC3DVector@@@Z -> 0081ea50 labelled 'Terrain_InterpolateHeightAtPosition'
+00820140   RELOCATION_MATCH PASS   GetThemeMinCameraSizeZAt
+0121167d   RELOCATION_MATCH PASS   Unwind@0121167d
+012116e9   RELOCATION_MATCH PASS   Unwind@012116e9
+01211dc1   RELOCATION_MATCH PASS   Unwind@01211dc1
+01212280   RELOCATION_MATCH PASS   Unwind@01212280
+0121291d   RELOCATION_MATCH PASS   Unwind@0121291d
+01213b60   RELOCATION_MATCH PASS   Unwind@01213b60
+01214e60   RELOCATION_MATCH[/GS] PASS   Unwind@01214e60
+01215ae0   RELOCATION_MATCH PASS   Unwind@01215ae0
+01215e98   RELOCATION_MATCH PASS   Unwind@01215e98
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+  WARN leaf '?AddThemeDefIndexToPalette@CMap@@IAEEK@Z' matches no symbol in 008f70f0.obj; graded the largest function
+008f70f0   DIFFER(297v164)  PASS   AddThemeDefIndexToPalette
+
+WINS: 15
+  0063a390 RELOCATION_MATCH CWorldMap::?GetThemeSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z
+  0063a7e0 RELOCATION_MATCH CWorldMap::?GetThemeSizeZAtBlock@CWorldMap@@QBEMABVC2DCoordI@@@Z
+  0063ae70 RELOCATION_MATCH CWorldMap::?GetStrongestEngineThemeAtBlock@CWorldMap@@QBEJABVC2DCoordI@@AAJ@Z
+  0081fa20 RELOCATION_MATCH CMap::?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+  008200b0 RELOCATION_MATCH CMap::?GetThemeSizeZAt@CMap@@IBEMABVC3DVector@@@Z
+  00820140 RELOCATION_MATCH CMap::?GetThemeMinCameraSizeZAt@CMap@@IBEMABVC3DVector@@@Z
+  0121167d RELOCATION_MATCH _global::Unwind@0121167d
+  012116e9 RELOCATION_MATCH _global::Unwind@012116e9
+  01211dc1 RELOCATION_MATCH _global::Unwind@01211dc1
+  01212280 RELOCATION_MATCH _global::Unwind@01212280
+  0121291d RELOCATION_MATCH _global::Unwind@0121291d
+  01213b60 RELOCATION_MATCH _global::Unwind@01213b60
+  01214e60 RELOCATION_MATCH[/GS] _global::Unwind@01214e60
+  01215ae0 RELOCATION_MATCH _global::Unwind@01215ae0
+  01215e98 RELOCATION_MATCH _global::Unwind@01215e98
